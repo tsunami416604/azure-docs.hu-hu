@@ -15,12 +15,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 05/24/2018
 ms.author: tdykstra
-ms.openlocfilehash: c5211b43a85383c7c9f42a1d56271addae6d956e
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
-ms.translationtype: MT
+ms.openlocfilehash: 5e7e6608003b365d5516ca2e94a51c0710ad1125
+ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34725343"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37061353"
 ---
 # <a name="azure-functions-triggers-and-bindings-concepts"></a>Az Azure Functions eseményindítók és kötések fogalmak
 
@@ -46,48 +46,53 @@ Információ arról, hogy mely kötések még csak előzetes verziójúak vagy �
 
 ## <a name="register-binding-extensions"></a>Regisztrálja a kötési bővítmény
 
-A verzió, az Azure Functions futtatókörnyezettel 2.x, explicit módon regisztrálnia kell az függvény alkalmazásban használt kötés extensions (kötéstípust). 
+Bizonyos fejlesztési környezetekben, hogy explicit módon *regisztrálása* használni kívánt egyik kötése. Kötési bővítmények NuGet-csomagok szerepelnek, és regisztrálhat egy kiterjesztést a csomag telepítése. A következő táblázat azt jelzi, hogy mikor és hogyan regisztrálja kötés bővítmények.
 
-Verzió funkciók futásidejű 2.x jelenleg előzetes verzió. Verzióját használja egy függvény alkalmazás telepítésével kapcsolatos információkat a Functions futtatókörnyezete 2.x lásd: [bemutatásához az Azure Functions futásidejű verziók](set-runtime-version.md).
+|Fejlesztési környezet |Regisztráció<br/> a funkciók 1.x  |Regisztráció<br/> a funkciók 2.x  |
+|---------|---------|---------|
+|Azure Portal|Automatikus|[Automatikus kérdéshez](#azure-portal-development)|
+|Helyi az Azure Functions alapvető eszközökkel|Automatikus|[Alapvető eszközök parancssori felület parancsai használni](#local-development-azure-functions-core-tools)|
+|A Visual Studio 2017 használatával C# osztálytár|[NuGet-eszközök](#c-class-library-with-visual-studio-2017)|[NuGet-eszközök](#c-class-library-with-visual-studio-2017)|
+|Visual Studio Code használatával C# osztálytár|–|[A .NET Core CLI használata](#c-class-library-with-visual-studio-code)|
 
-Egy sor kötések verzióban van 2.x automatikusan regisztrált, így nem kell explicit módon regisztrálja őket: HTTP időzítő és Azure Storage (BLOB, üzenetsorok és táblák). 
+A következő kötéstípusok kivételeket, amelyek nem igényelnek explicit regisztrálása, mert a rendszer automatikusan regisztrálja az összes verziója és környezetekben: HTTP időzítő és Azure Storage (BLOB, üzenetsorok és táblák). 
 
-Bővítmények érkeznek NuGet csomag, amelyben a csomag általában kezdetű névvel rendelkező [microsoft.azure.webjobs.extensions](https://www.nuget.org/packages?q=microsoft.azure.webjobs.extensions).  A kötés bővítmények regisztrálnia módja attól függ, hogyan fejleszthet-e a funkciók: 
+### <a name="azure-portal-development"></a>Azure portál fejlesztési
 
-+ [Helyileg a C# segítségével a Visual Studio vagy Visual STUDIO Code](#local-c-development-using-visual-studio-or-vs-code)
-+ [Helyileg használata az Azure Functions Core eszközök](#local-development-azure-functions-core-tools)
-+ [Az Azure-portálon](#azure-portal-development) 
+Hozzon létre egy függvényt vagy felvenni egy kötést, megkérdezi, ha az eseményindító vagy a kötési bővítmény regisztrációs igényel. Válaszolnia kell a figyelmeztetésre kattintva **telepítése** regisztrálni a bővítményt. Telepítés egy fogyasztás terv akár 10 percet vehet igénybe.
 
-Ebben a szakaszban szereplő alkalmazáscsomag-verziók csak példaként szolgálnak. Ellenőrizze a [NuGet.org hely](https://www.nuget.org/packages?q=microsoft.azure.webjobs.extensions) annak meghatározásához, hogy egy adott bővítmény melyik verziója szükséges a függvény alkalmazásban más függőségek.    
-
-### <a name="local-csharp"></a>A Visual Studio vagy Visual STUDIO Code helyi C# fejlesztési
-
-Használatakor a Visual Studio vagy Visual Studio Code helyileg fejlesztéséhez funkciók C# nyelven íródtak, telepítse a NuGet-csomagot, a bővítmény. 
-
-+ **A Visual Studio**: a NuGet Package Manager eszközök használatára. A következő [Install-Package](https://docs.microsoft.com/nuget/tools/ps-ref-install-package) parancs telepíti az Azure Cosmos adatbázis bővítmény a Csomagkezelő konzolról:
-
-    ```powershell
-    Install-Package Microsoft.Azure.WebJobs.Extensions.CosmosDB -Version 3.0.0-beta6 
-    ```
-
-+ **A Visual Studio Code**: csomagokat telepítheti a parancssor használatával a [dotnet csomag hozzáadása](https://docs.microsoft.com/dotnet/core/tools/dotnet-add-package) a .NET CLI-t, a következő parancsot:
-
-    ```terminal
-    dotnet add package Microsoft.Azure.WebJobs.Extensions.CosmosDB --version 3.0.0-beta6 
-    ```
+Csak telepítenie kell minden egyes bővítmény egy adott funkció alkalmazást egyszer. 
 
 ### <a name="local-development-azure-functions-core-tools"></a>Helyi fejlesztési Azure Functions Core eszközök
 
 [!INCLUDE [functions-core-tools-install-extension](../../includes/functions-core-tools-install-extension.md)]
 
-### <a name="azure-portal-development"></a>Azure portál fejlesztési
+<a name="local-csharp"></a>
+### <a name="c-class-library-with-visual-studio-2017"></a>C# osztály függvénytár, amely a Visual Studio 2017
 
-Hozzon létre egy függvényt vagy kötés hozzáadása egy meglévő függvény, megkérdezi, ha az eseményindító vagy a hozzáadni kívánt kötési bővítmény regisztrációs igényel.   
+A **Visual Studio 2017**, csomagokat a Csomagkezelő konzol használatával telepítheti a [Install-Package](https://docs.microsoft.com/nuget/tools/ps-ref-install-package) parancs, a következő példában látható módon:
 
-Miután az adott bővítmény telepítése folyamatban megjelenik egy figyelmeztetés, kattintson **telepítése** regisztrálni a bővítmény. Csak telepítenie kell minden egyes bővítmény egy adott funkció alkalmazást egyszer. 
+```powershell
+Install-Package Microsoft.Azure.WebJobs.ServiceBus --Version <target_version>
+```
 
->[!Note] 
->A portál a telepítési folyamat egy fogyasztás terv akár 10 percet vehet igénybe.
+Egy adott kötéshez használandó a csomag nevét, hogy a kötéshez a áttekintésével foglalkozó cikkben találhatók. Egy vonatkozó példáért lásd: a [csomagok a Service Bus kötés áttekintésével foglalkozó cikkben szakasza](functions-bindings-service-bus.md#packages---functions-1x).
+
+Cserélje le `<target_version>` a példában a csomaghoz, az adott verzióval rendelkező például `3.0.0-beta5`. A következő egyes csomagot lapokon felsorolt érvényes verziók [NuGet.org](https://nuget.org). A Functions futtatókörnyezete megfelelő Főverziók a áttekintésével foglalkozó cikkben a kötéshez megadott 1.x vagy 2.x.
+
+### <a name="c-class-library-with-visual-studio-code"></a>C# osztálytár a Visual Studio Code
+
+A **Visual Studio Code**, a parancssor a csomagok telepítése is a [dotnet csomag hozzáadása](https://docs.microsoft.com/dotnet/core/tools/dotnet-add-package) a .NET Core CLI-t, a parancsot a következő példában látható módon:
+
+```terminal
+dotnet add package Microsoft.Azure.WebJobs.ServiceBus --version <target_version>
+```
+
+A .NET Core CLI csak az Azure Functions 2.x fejlesztési használható.
+
+Egy adott kötéshez használandó a csomag nevét, hogy a kötéshez a áttekintésével foglalkozó cikkben találhatók. Egy vonatkozó példáért lásd: a [csomagok a Service Bus kötés áttekintésével foglalkozó cikkben szakasza](functions-bindings-service-bus.md#packages---functions-1x).
+
+Cserélje le `<target_version>` a példában a csomaghoz, az adott verzióval rendelkező például `3.0.0-beta5`. A következő egyes csomagot lapokon felsorolt érvényes verziók [NuGet.org](https://nuget.org). A Functions futtatókörnyezete megfelelő Főverziók a áttekintésével foglalkozó cikkben a kötéshez megadott 1.x vagy 2.x.
 
 ## <a name="example-trigger-and-binding"></a>Példa eseményindító és kötés
 
@@ -474,7 +479,7 @@ Például az Azure Queue storage eseményindító támogatja a következő tulaj
 
 * QueueTrigger - indítására üzenet tartalmát, ha egy érvényes karakterláncot
 * DequeueCount
-* ExpirationTime
+* expirationTime
 * Azonosító
 * InsertionTime
 * NextVisibleTime

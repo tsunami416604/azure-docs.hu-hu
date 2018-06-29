@@ -8,17 +8,17 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 06/24/2018
+ms.date: 06/27/2018
 author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: craigg
-ms.openlocfilehash: aca67ceff2650a5470b1c08b20c21d71f00bae62
-ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
+ms.openlocfilehash: eae350f751788eb09271e70f71f79b12e27c4e16
+ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36751530"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37061401"
 ---
 # <a name="join-an-azure-ssis-integration-runtime-to-a-virtual-network"></a>Egy Azure-SSIS-integrációs futásidejű csatlakoztatása egy virtuális hálózatot
 Az Azure-SSIS-integrációs futásidejű (IR) csatlakoztassa egy Azure virtuális hálózatra, a következő esetekben: 
@@ -27,10 +27,7 @@ Az Azure-SSIS-integrációs futásidejű (IR) csatlakoztassa egy Azure virtuáli
 
 - Az SQL Server Integration Services (SSIS) katalógus adatbázis az Azure SQL Database virtuális hálózati szolgáltatás végpontok/felügyelt példány (előzetes verzió) üzemeltet. 
 
- Az Azure Data Factory (előzetes verzió) 2-es lehetővé teszi az Azure-SSIS-integrációs futásidejű csatlakoztatása a klasszikus üzembe helyezési modellt vagy az Azure Resource Manager telepítési modell használatával létrehozott virtuális hálózatban. 
-
-> [!NOTE]
-> Ez a cikk a Data Factory 2. verziójára vonatkozik, amely jelenleg előzetes verzióban érhető el. A Data Factory szolgáltatásnak, amely általában elérhetőségével (GA), 1 verziójának használatakor tekintse meg a [Data Factory 1-es verziójú dokumentáció](v1/data-factory-introduction.md). 
+ Az Azure Data Factory lehetővé teszi az Azure-SSIS-integrációs futásidejű csatlakoztatása a klasszikus üzembe helyezési modellt vagy az Azure Resource Manager telepítési modell használatával létrehozott virtuális hálózatban. 
 
 ## <a name="access-to-on-premises-data-stores"></a>Hozzáférés a helyszíni adattárolókhoz.
 Ha SSIS-csomagok hozzáférést, csak a nyilvános felhő, nem kell az Azure-SSIS infravörös csatlakoztatása egy virtuális hálózatot. SSIS-csomagok hozzáférést, a helyszínen, ha az Azure-SSIS infravörös a helyszíni hálózathoz csatlakozó virtuális hálózathoz kell csatlakoztatni. 
@@ -114,7 +111,10 @@ Ha aggódik való vizsgálja meg az adott alhálózat kimenő internetforgalom, 
 Lásd: [a PowerShell parancsfájl](https://gallery.technet.microsoft.com/scriptcenter/Adds-Azure-Datacenter-IP-dbeebe0c) példát. Akkor kell futtatnia a parancsfájl hetente és naprakész állapotban tarthatja az Azure data center IP-címek listájából. 
 
 ### <a name="resource-group"></a> Az erőforráscsoport követelmények
-Az Azure-SSIS-IR kell létrehoznia a virtuális hálózatnak, beleértve az Azure terheléselosztó, az Azure nyilvános IP-cím és munkahelyi hálózati biztonsági csoport ugyanabban az erőforráscsoportban bizonyos hálózati erőforrásokhoz. 
+-   Az Azure-SSIS infravörös kell létrehoznia a virtuális hálózatnak ugyanahhoz az erőforráscsoporthoz tartozik bizonyos hálózati erőforrásokhoz. Ilyen erőforrások többek között a következőket:
+    -   Egy Azure terheléselosztó nevű  *<Guid>- azurebatch-cloudserviceloadbalancer*.
+    -   Az Azure nyilvános IP-címnek, nevű  *<Guid>- azurebatch-cloudservicepublicip*.
+    -   A hálózati munkahelyi biztonsági csoport nevű  *<Guid>- azurebatch-cloudservicenetworksecuritygroup*. 
 
 -   Győződjön meg arról, hogy nincs-e bármilyen erőforrás zárolását az erőforráscsoportba vagy előfizetést, amelyhez a virtuális hálózat tartozik. Ha konfigurál egy olvasási zárolás vagy a delete zárolja, indítása és leállítása az infravörös is sikertelen, vagy lefagy. 
 

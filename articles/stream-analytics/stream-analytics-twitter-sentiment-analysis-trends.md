@@ -9,12 +9,12 @@ manager: kfile
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/29/2017
-ms.openlocfilehash: 4c77c8a7209825477929ddc0997b75ace5fe04a1
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 0b920d21486fc0003d8b11bef79bd44be4b28adf
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2018
-ms.locfileid: "30910526"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37030614"
 ---
 # <a name="real-time-twitter-sentiment-analysis-in-azure-stream-analytics"></a>Azure Stream Analytics elemzés, valós idejű Twitter véleményeket
 
@@ -60,7 +60,7 @@ Ebben az eljárásban először létre kell hoznia egy event hub névtér, és e
 
     ![Az Eseményközpont hozzáadása gombra egy új eseményközpont létrehozása ](./media/stream-analytics-twitter-sentiment-analysis-trends/stream-analytics-create-eventhub-button.png)    
  
-6. Az új eseményközpont neve `socialtwitter-eh`. Használhat egy másik nevet. Ha így tesz, jegyezze fel, mert később szüksége nevét. Nem kell minden egyéb beállításainak megadása az eseményközpontba.
+6. Az új eseményközpont neve `socialtwitter-eh`. Más nevet is használhat. Ha így tesz, jegyezze fel, mert később szüksége nevét. Nem kell minden egyéb beállításainak megadása az eseményközpontba.
 
     ![Egy új eseményközpont létrehozása panel](./media/stream-analytics-twitter-sentiment-analysis-trends/stream-analytics-create-eventhub.png)
  
@@ -69,7 +69,7 @@ Ebben az eljárásban először létre kell hoznia egy event hub névtér, és e
 
 ### <a name="grant-access-to-the-event-hub"></a>Hozzáférést biztosít az event hubs
 
-Egy folyamat adatokat küldhet egy eseményközpontot, az event hubs egy házirendet, amely lehetővé teszi, hogy a megfelelő hozzáféréssel kell rendelkeznie. A hozzáférési házirendet hoz létre egy kapcsolati karakterláncot, amely tartalmazza az engedélyezési adatok.
+Egy folyamat adatokat küldhet egy eseményközpontot, az event hubs egy házirendet, amely lehetővé teszi, hogy a megfelelő hozzáféréssel kell rendelkeznie. A hozzáférési szabályzat egy kapcsolati sztringet hoz létre, amelyben megtalálhatók az engedélyezési információk.
 
 1.  Az esemény névtér paneljén kattintson **Event Hubs** és kattintson az új eseményközpont nevét.
 
@@ -90,7 +90,7 @@ Egy folyamat adatokat küldhet egy eseményközpontot, az event hubs egy házire
     
     ![A hozzáférési házirendben az elsődleges kapcsolódási karakterlánc kulcs másolása](./media/stream-analytics-twitter-sentiment-analysis-trends/stream-analytics-shared-access-policy-copy-connection-string.png)
  
-7.  A kapcsolati karakterlánc illessze be a szövegszerkesztőben. Ez a kapcsolati karakterlánc szükséges ahhoz, hogy a következő szakaszban után néhány kisebb módosításokat végez.
+7.  Illessze be a kapcsolati sztringet egy szövegszerkesztőbe. Ez a kapcsolati karakterlánc szükséges ahhoz, hogy a következő szakaszban után néhány kisebb módosításokat végez.
 
     A kapcsolati karakterlánc így néz ki:
 
@@ -139,7 +139,7 @@ Tartani lesz szüksége, ez az információ, mivel a következő eljárásban sz
 ### <a name="configure-the-client-application"></a>Az ügyfélalkalmazás konfigurálása
 Létrehoztunk Önnek egy Twitter-adatok használatával csatlakozó ügyfélalkalmazás [Twitter a Streamelési API-k](https://dev.twitter.com/streaming/overview) tweetet eseménygyűjtési kapcsolatos témakörök egy adott készletét. Az alkalmazás használja a [Sentiment140](http://help.sentiment140.com/) nyílt forráskódú eszközt, amely a következő véleményeket értéket rendel hozzá minden egyes tweetet:
 
-* 0 = negative
+* 0 = negatív.
 * 2 = neutral
 * 4 = pozitív
 
@@ -251,7 +251,7 @@ Hasonlítsa össze a témakörök között megjegyzések számát, használhatja
 
     Azure-minták a bemeneti adatfolyam adatait 3 perc alatt érkezett, és értesíti, amikor készen áll a mintaadatok. (Ez időt vesz igénybe egy rövid ideig.) 
 
-    A mintaadatok ideiglenesen tárolja, és áll rendelkezésre, míg a lekérdezési ablakban nyissa meg a rendelkezik. Ha bezárja a lekérdezési ablakban, a minta adatait a rendszer törli, és létre kell hoznia egy új minta adatkészletet. 
+    A rendszer ideiglenesen tárolja a mintaadatokat, amelyek akkor érhetők el, amikor meg van nyitva a lekérdezési ablak. Ha bezárja a lekérdezési ablakban, a minta adatait a rendszer törli, és létre kell hoznia egy új minta adatkészletet. 
 
 5. Módosítsa a lekérdezést a kód szerkesztése a következő:
 
@@ -278,7 +278,7 @@ A következő táblázat a mezők a streamelési adatok JSON részét képező. 
 
 |JSON-tulajdonság | Meghatározás|
 |--- | ---|
-|createdAt | Az a tweetet létrehozásának időpontja|
+|CreatedAt | Az a tweetet létrehozásának időpontja|
 |Témakör | A témakör, amely megfelel a megadott kulcsszó|
 |SentimentScore | A céggel kapcsolatos véleményeket pontszám a Sentiment140|
 |Szerző | A tweetet küldött Twitter-leíró|
@@ -316,7 +316,7 @@ Ebben az oktatóanyagban írt összesített tweetet események a feladat lekérd
 5. Zárja be a **kimenetek** panelen. 
 
 
-## <a name="start-the-job"></a>Indítsa el a feladatot
+## <a name="start-the-job"></a>A feladat indítása
 
 Egy feladat bemeneti, a lekérdezés és a kimeneti meg van adva. Készen áll a Stream Analytics-feladat indítása.
 
@@ -338,7 +338,7 @@ Egy feladat bemeneti, a lekérdezés és a kimeneti meg van adva. Készen áll a
 
 A feladat elindult, és a valós idejű Twitter-adatfolyam feldolgozása után tekintheti meg a kimeneti véleményeket elemzés céljából.
 
-Egy eszköz, például használhatja [Azure Tártallózó](https://http://storageexplorer.com/) vagy [Azure Explorer](http://www.cerebrata.com/products/azure-explorer/introduction) valós időben a feladat kimenetére megtekintéséhez. Itt használható [Power BI](https://powerbi.com/) kiterjesztése az alkalmazás közé tartoznak például az alábbi képernyőfelvételen látható módon egy személyre szabott irányítópultot:
+Egy eszköz, például használhatja [Azure Tártallózó](https://storageexplorer.com/) vagy [Azure Explorer](http://www.cerebrata.com/products/azure-explorer/introduction) valós időben a feladat kimenetére megtekintéséhez. Itt használható [Power BI](https://powerbi.com/) kiterjesztése az alkalmazás közé tartoznak például az alábbi képernyőfelvételen látható módon egy személyre szabott irányítópultot:
 
 ![Power BI](./media/stream-analytics-twitter-sentiment-analysis-trends/power-bi.png)
 

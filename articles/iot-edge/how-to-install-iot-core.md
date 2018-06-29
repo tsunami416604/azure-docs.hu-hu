@@ -9,23 +9,24 @@ ms.date: 03/05/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: af6ce22d1b41ebfe9b64ea5fc1a2cf99478af925
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: ae5644a62b794dc8d6ace52f21a452fa70027d39
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34630034"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37029560"
 ---
 # <a name="install-the-iot-edge-runtime-on-windows-iot-core---preview"></a>Az IoT-Edge futásidejű telepíteni a Windows IoT alapvető – előzetes
 
 Az Azure IoT peremhálózati és [Windows IoT Core](https://docs.microsoft.com/windows/iot-core/) együttműködve még kis eszközökön számítástechnikai biztonsági engedélyezése. Az Azure IoT peremhálózati futásidejű még apró egyetlen tábla számítógép (SBC) készülékek, amelyek nagyon gyakori az IoT-megoldásokat is futtathatók. 
 
-Ez a cikk végigvezeti a futtatókörnyezet kiépítése a egy [MinnowBoard nagy rombuszhal] [ lnk-minnow] futó Windows IoT Core fejlesztési tábla. Windows IoT Core támogatja Azure IoT peremhálózati csak Intel x64-alapú processzort. 
+Ez a cikk végigvezeti egy fejlesztési táblán futó Windows IoT Core runtime kiépítés. 
 
-## <a name="install-the-runtime"></a>A futtatókörnyezet telepítése
+**Windows IoT Core jelenleg csak Intel x64-alapú processzort a támogatja az Azure IoT peremhálózati.**
 
-1. Telepítés [Windows 10 IoT Core irányítópult] [ lnk-core] a gazdarendszer.
-1. Kövesse a [-eszköz beállításához] [ lnk-board] konfigurálása a tábla a MinnowBoard nagy rombuszhal és maximális Build 16299 lemezképpel. 
+## <a name="install-the-container-runtime"></a>A tároló futásidejű telepítése
+
+1. A kártya konfigurálása **Build 17134 (RS4)** IoT Core kép. 
 1. Kapcsolja be az eszközt, majd [PowerShell távolról történő bejelentkezés][lnk-powershell].
 1. A PowerShell-konzolban a tároló futásidejű telepítése: 
 
@@ -42,26 +43,16 @@ Ez a cikk végigvezeti a futtatókörnyezet kiépítése a egy [MinnowBoard nagy
    >[!NOTE]
    >A tároló futásidejű Moby project build kiszolgálóról, és csak tesztelési célokra. Nem tesztelt, által támogatott, vagy Docker által támogatott.
 
-1. Az IoT-Edge futásidejű telepítése, és a konfiguráció ellenőrzése:
+## <a name="finish-installing"></a>Telepítésének befejezése
 
-   ```powershell
-   Invoke-Expression (Invoke-WebRequest -useb https://aka.ms/iotedgewin)
-   ```
-
-   Ezt a parancsfájlt az alábbi előnyöket nyújtja: 
-   * Python 3.6.
-   * Az IoT-Edge vezérlő parancsfájl (iotedgectl.exe)
-
-A távoli PowerShell-ablakban zöld iotedgectl.exe eszközből tájékoztató kimeneti jelenhet meg. Ez nem feltétlenül jelent hibát. 
+Az IoT-Edge biztonsági démon telepítse és konfigurálja az utasításokat követve [Ez a cikk][lnk-install-windows-on-windows]
 
 ## <a name="next-steps"></a>További lépések
 
 Most, hogy az IoT-Edge futásidejű-t futtató eszközeiken, megtudhatja, hogyan [központi telepítése és figyelése IoT peremhálózati modulok léptékű][lnk-deploy].
 
 <!--Links-->
-[lnk-minnow]: https://minnowboard.org/ 
-[lnk-core]: https://docs.microsoft.com/windows/iot-core/connect-your-device/iotdashboard
-[lnk-board]: https://developer.microsoft.com/windows/iot/Docs/GetStarted/mbm/sdcard/stable/getstartedstep2
+[lnk-install-windows-on-windows]: how-to-install-iot-edge-windows-with-windows.md#download-the-edge-daemon-package-and-install
 [lnk-powershell]: https://docs.microsoft.com/windows/iot-core/connect-your-device/powershell
 [lnk-deploy]: how-to-deploy-monitor.md
 [lnk-docker-install]: https://docs.docker.com/engine/installation/linux/docker-ce/binaries#install-server-and-client-binaries-on-windows

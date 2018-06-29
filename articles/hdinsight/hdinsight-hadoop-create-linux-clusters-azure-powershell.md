@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/21/2018
 ms.author: nitinme
-ms.openlocfilehash: 57ae7c3cab6c0084bb43585f65d79ae6cc265356
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 11e98117a93f541f6f88b213f59dcf4aba3e7f36
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31400452"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37045211"
 ---
 # <a name="create-linux-based-clusters-in-hdinsight-using-azure-powershell"></a>Linux-alapú fürtök létrehozása a Hdinsightban Azure PowerShell használatával
 
@@ -63,7 +63,7 @@ Az SSH-felhasználó számára megadott érték az SSH-felhasználó a fürt lé
 > [!IMPORTANT]
 > Ha több mint 32 munkavégző csomópontokhoz (vagy a fürt létrehozásakor, vagy a fürt létrehozása után skálázással) használja, is meg kell egy átjárócsomóponttal mérete legalább 8 maggal és 14 GB RAM-mal rendelkező.
 >
-> A csomópont-méretek és a társuló költségeket további információkért lásd: [HDInsight árképzési](https://azure.microsoft.com/pricing/details/hdinsight/).
+> További információ a csomópontméretekről és a velük járó költségekről: [A HDInsight díjszabása](https://azure.microsoft.com/pricing/details/hdinsight/).
 
 A fürt létrehozásához akár 20 percig is tarthat.
 
@@ -71,7 +71,7 @@ A fürt létrehozásához akár 20 percig is tarthat.
 
 Egy HDInsight konfigurációs objektum használatával is létrehozhat `New-AzureRmHDInsightClusterConfig` parancsmag. Ezt követően módosíthatja a konfigurációs objektum ahhoz, hogy a fürt további konfigurációs beállítások. Végül a `-Config` paramétere a `New-AzureRmHDInsightCluster` parancsmag segítségével használja a konfigurációt.
 
-A következő parancsfájl egy konfigurációs objektumot az R-kiszolgáló konfigurálása a HDInsight-fürt típusa hoz létre. A konfiguráció lehetővé teszi, hogy egy élcsomópontot Rstudióból és egy további storage-fiókot.
+A következő parancsfájl egy konfigurációs objektumot az ML-szolgáltatások konfigurálásához a HDInsight-fürt típusa hoz létre. A konfiguráció lehetővé teszi, hogy egy élcsomópontot Rstudióból és egy további storage-fiókot.
 
 [!code-powershell[main](../../powershell_scripts/hdinsight/create-cluster/create-cluster-with-config.ps1?range=59-98)]
 

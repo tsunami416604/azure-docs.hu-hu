@@ -1,5 +1,5 @@
 ---
-title: Adatok másolása az Azure Data Factory (béta) használatával Oracle Responsys |} Microsoft Docs
+title: Adatok másolása az Azure Data Factory használatával Oracle Responsys |} Microsoft Docs
 description: 'Útmutató: adatok másolása az Oracle Responsys támogatott fogadó adattárolókhoz egy Azure Data Factory-folyamat a másolási tevékenység használatával.'
 services: data-factory
 documentationcenter: ''
@@ -11,24 +11,21 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 04/30/2018
+ms.date: 06/15/2018
 ms.author: jingwang
-ms.openlocfilehash: 3d4c36578402d5a31464bc8a1c77f60cba9104c0
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 1368a75fb8ae44949ef25def19589ab164e25d8b
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34617402"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37058913"
 ---
-# <a name="copy-data-from-oracle-responsys-using-azure-data-factory-beta"></a>Adatok másolása az Azure Data Factory (béta) használatával Oracle Responsys
+# <a name="copy-data-from-oracle-responsys-using-azure-data-factory"></a>Adatok másolása az Azure Data Factory használatával Oracle Responsys
 
 Ez a cikk ismerteti, hogyan használható a másolási tevékenység során az Azure Data Factory adatok másolása az Oracle Responsys. Buildekről nyújtanak a [másolása tevékenység áttekintése](copy-activity-overview.md) cikket, amely megadja a másolási tevékenység általános áttekintést.
 
-> [!NOTE]
-> Ez a cikk a Data Factory 2. verziójára vonatkozik, amely jelenleg előzetes verzióban érhető el. A Data Factory szolgáltatásnak, amely általánosan elérhető (GA), 1 verziójának használatakor lásd [másolási tevékenység során a V1](v1/data-factory-data-movement-activities.md).
-
 > [!IMPORTANT]
-> Ez az összekötő jelenleg bétaverziójú. Próbálja ki, és küldjön visszajelzést. Ne használja éles környezetben.
+> Ez az összekötő jelenleg előzetes verzió. Próbálja ki, és küldjön visszajelzést. Ha függőséget szeretne felvenni a megoldásában található előzetes verziójú összekötőkre, lépjen kapcsolatba az [Azure-támogatással](https://azure.microsoft.com/support/).
 
 ## <a name="supported-capabilities"></a>Támogatott képességei
 

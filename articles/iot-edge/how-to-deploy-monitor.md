@@ -5,18 +5,20 @@ keywords: ''
 author: kgremban
 manager: timlt
 ms.author: kgremban
-ms.date: 12/07/2017
+ms.date: 06/07/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 941568f697ca507ce190bab1b06eb0d426672fa1
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: be52a57f10f286bded9a31d84b36a49717b94006
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34630714"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37029757"
 ---
-# <a name="deploy-and-monitor-iot-edge-modules-at-scale---preview"></a>Központi telepítése és figyelése IoT peremhálózati modulok léptékű – előzetes
+# <a name="deploy-and-monitor-iot-edge-modules-at-scale-using-the-azure-portal"></a>Üzembe helyezése és figyelése az Azure portál használatával léptékű IoT Edge-modulok
+
+[!INCLUDE [iot-edge-how-to-deploy-monitor-selector](../../includes/iot-edge-how-to-deploy-monitor-selector.md)]
 
 Azure IoT peremhálózati lehetővé teszi analytics áthelyezése a peremhálózaton, és a felhő felületet biztosít, így kezelheti és figyelheti az IoT-peremeszközök anélkül, hogy minden egyes fizikailag eléréséhez. Távolról kezelheti az eszközöket képesség, egyre fontosabb az eszközök internetes hálózatát megoldások nagyobb és összetettebb folyamatosan nőnek. Az üzleti céljaihoz, függetlenül attól, hány eszközt ad hozzá Azure IoT peremhálózati terveztek.
 
@@ -24,7 +26,7 @@ Egyes eszközök kezeléséhez és a modulok telepíteni őket egyenként. Azonb
 
 ## <a name="identify-devices-using-tags"></a>Címkék használatával eszközök azonosítása
 
-Mielőtt létrehozna egy központi telepítést, akkor lehet megadni, mely eszközöket szeretné befolyásolni. Az Azure IoT peremhálózati azonosítja eszközök **címkék** az eszköz iker a. Minden eszköz lehet több címkét, és meghatározhatja azokat bármilyen módon legjobb megoldást. Például ha egy intelligens épületek egyetemi kezelni, hozzáadhatja a következő címkék eszköz:
+Mielőtt létrehozna egy központi telepítést, akkor lehet megadni, mely eszközöket szeretné befolyásolni. Az Azure IoT peremhálózati azonosítja eszközök **címkék** az eszköz iker a. Minden eszköz lehet több címkét, és meghatározhatja azokat bármilyen módon legjobb megoldást. Kezelheti egy egyetemi intelligens épületek, előfordulhat, hogy egy eszközre például hozzáadása a következő címkékkel:
 
 ```json
 "tags":{
@@ -42,14 +44,14 @@ Eszköz twins és címkékkel kapcsolatos további információkért lásd: [meg
 ## <a name="create-a-deployment"></a>Hozzon létre telepítést
 
 1. Az a [Azure-portálon][lnk-portal], keresse fel az IoT hub. 
-1. Válassza ki **IoT peremhálózati (előzetes verzió)**.
+1. Válassza ki **IoT peremhálózati**.
 1. Válassza ki **IoT Edge-telepítés hozzáadása**.
 
 A központi telepítés létrehozásához öt lépésből áll. A következő szakaszok segítségével minden egyes ismerteti. 
 
 ### <a name="step-1-name-and-label"></a>1. lépés: Nevét és a felirat
 
-1. Adjon meg egy egyedi nevet a központi telepítés. Elkerülendő, a szóközöket és a következő érvénytelen karaktereket: `& ^ [ ] { } \ | " < > /`.
+1. Adjon meg legfeljebb 128 kisbetűk egy egyedi nevet a központi telepítés. Elkerülendő, a szóközöket és a következő érvénytelen karaktereket: `& ^ [ ] { } \ | " < > /`.
 1. Adjon hozzá a központi telepítések nyomon követéséhez. Címkék: **neve**, **érték** tartalmaznak, amelyek a központi telepítés ismertetik. Például `HostPlatform, Linux` vagy `Version, 3.0.1`.
 1. Válassza ki **következő** lépés két ugrás. 
 
@@ -57,20 +59,24 @@ A központi telepítés létrehozásához öt lépésből áll. A következő sz
 
 A modulok, amely egy központi telepítést adhat hozzá két típusa van. Az egyik ki az Azure-szolgáltatások, például a Tárfiók, vagy a Stream Analytics-alapú modul. A második pedig egy modul ki saját kód alapján. A központi telepítés vagy típus több modul adhat hozzá. 
 
-Ha a központi telepítés létrehozásához engedélyezi nincsenek modulok, meglévő modul eltávolítása az eszközöket. 
+Ha a központi telepítés létrehozásához engedélyezi nincsenek modulok, az eszközök aktuális modul eltávolítása. 
 
 >[!NOTE]
 >Az Azure Machine Learning és az Azure Functions automatizált Azure szolgáltatás központi telepítése még nem támogatott. A modul egyéni központi telepítés segítségével manuálisan ezekbe a szolgáltatásokba hozzá szeretne adni a telepítéshez. 
 
 Azure Stream Analytics egy modul hozzáadásához kövesse az alábbi lépéseket:
-1. Válassza ki **importálási Azure Stream Analytics IoT peremhálózati modul**.
-1. A legördülő menükben segítségével válassza ki az Azure szolgáltatáspéldány, amely számára telepíteni kívánja.
+1. Az a **telepítési modulok** szakaszban kattintson a lap **Hozzáadás**.
+1. Válassza ki **Azure Stream Analytics modul**.
+1. Válassza ki a **előfizetés** a legördülő menüből.
+1. Válassza ki a **peremhálózati feladat** a legördülő menüből.
 1. Válassza ki **mentése** a modul hozzá szeretne adni a telepítéshez. 
 
 Adja hozzá az egyéni kódot modulként, vagy manuálisan adja hozzá az Azure-szolgáltatások modul, kövesse az alábbi lépéseket:
-1. Válassza az **Add IoT Edge module** (IoT Edge-modul hozzáadása) lehetőséget.
+1. Az a **beállításjegyzék-beállítások** szakasz az oldal a nevét és hitelesítő adatainak megadása semmilyen személyes tárolót nyilvántartó, amelyek a modul képeket ehhez a központi telepítéshez. A peremhálózati ügynök fog jelentéseket 500-as hiba, ha egy docker-lemezkép a contrainer beállításjegyzék hitelesítő adat nem található.
+1. Az a **telepítési modulok** szakaszban kattintson a lap **Hozzáadás**.
+1. Válassza ki **IoT peremhálózati modul**.
 1. A modul adjon egy **neve**.
-1. Az a **lemezkép URI** mezőbe írja be a Docker-tároló kép a modulhoz. 
+1. Az a **lemezkép URI** mezőbe írja be a tároló kép a modulhoz. 
 1. Adja meg az esetleges **tároló létrehozása beállítások** , amely a tárolóban kell átadni. További információkért lásd: [docker létrehozása][lnk-docker-create].
 1. Válassza ki a legördülő menü segítségével egy **indítsa újra a házirend**. A következő lehetőségek közül választhat: 
    * **Mindig** -a modul mindig újraindul, ha bármilyen okból állítja le.
@@ -81,22 +87,26 @@ Adja hozzá az egyéni kódot modulként, vagy manuálisan adja hozzá az Azure-
    * **Futó** -Ez az alapértelmezett beállítás. A modul futtató üzembe helyezése után azonnal elindul.
    * **Leállítva** -üzembe helyezése után a modul üresjárat mindaddig, amíg Ön vagy egy másik modul start alapján kell.
 1. Válassza ki **engedélyezése** Ha azt szeretné, a címkéket és a kívánt tulajdonságok hozzáadása a modul iker. 
+1. Adja meg **környezeti változók** a modulhoz. Környezeti változók alakíthatja ki a konfigurációs folyamat modul supplement információt tartalmaznak.
 1. Válassza ki **mentése** a modul hozzá szeretne adni a telepítéshez. 
 
 Ha már konfigurált a modulok, válassza ki a **következő** három lépés áthelyezése.
 
 ### <a name="step-3-specify-routes-optional"></a>3. lépés: Adja meg az útvonalakat (nem kötelező)
 
-Útvonalak határozza meg, hogyan modulok kommunikálnak egymással a központi telepítés belül. Adja meg a központi telepítés bármely útvonalakat, és válasszon **következő** négy lépésben áthelyezése. 
+Útvonalak határozza meg, hogyan modulok kommunikálnak egymással a központi telepítés belül. A varázsló lehetővé teszi az alapértelmezés szerint egy útvonal neve **útvonal** és definiált, **FROM /* $előtt be **, ami azt jelenti, az IoT hub küldött kimenetét modul az üzeneteket.  
+
+Hozzáadása vagy az útvonalak frissítése adataival [útvonalak deklarálható](module-composition.md#declare-routes), majd jelölje be **következő** továbbra is a tekintse át a szakasz.
+
 
 ### <a name="step-4-target-devices"></a>4. lépés: A Céleszközök számára
 
 A tulajdonsággal címkéket az eszközökről, amelyekre a kívánt eszközök, amelyek megkapják a központi telepítéshez. 
 
-Mivel több központi telepítéssel is céloz ugyanarra az eszközre, adjon egyes központi telepítések egy prioritást. Ha valaha is ütközést, a központi telepítés a legmagasabb prioritású wins. Ha két központi telepítések ugyanazt a prioritást, a legtöbb létrehozott egy közelmúltban wins. 
+Mivel több központi telepítéssel is céloz ugyanarra az eszközre, adjon egyes központi telepítések egy prioritást. Ha valaha is ütközést, wins-a központi telepítés a legmagasabb prioritású (nagyobb értékek azt jelzik, magasabb prioritású virtuális gép). Ha két központi telepítések ugyanazt a prioritást, a legtöbb létrehozott egy közelmúltban wins. 
 
-1. Adjon meg egy pozitív egész szám a központi telepítés **prioritás**.
-1. Adjon meg egy **céloz feltétel** határozza meg, hogy mely eszközök fog ezzel az üzembe helyezéssel a. A feltétel eszköz iker címkék alapul, és meg kell felelnie a kifejezés formátumban. Például: `tags.environment='test'`. 
+1. Adjon meg egy pozitív egész szám a központi telepítés **prioritás**. Abban az esetben, ha két vagy több üzemelő példány célzott ugyanazon az eszközön, a legnagyobb numerikus értéket prioritás a központi telepítés érvényesek.
+1. Adjon meg egy **céloz feltétel** határozza meg, hogy mely eszközök fog ezzel az üzembe helyezéssel a. A feltétel alapján eszköz iker címkék vagy eszköz iker tulajdonságok szükséges, és meg kell felelnie a kifejezés formátumban. Például `tags.environment='test'` vagy `properties.desired.devicemodel='4000x'`. 
 1. Válassza ki **következő** áthelyezése az utolsó lépését.
 
 ### <a name="step-5-review-template"></a>5. lépés: Felülvizsgálati sablonja
@@ -108,7 +118,7 @@ Tekintse át a központi telepítési adatait, majd válasszon **Submit**.
 A központi telepítés részleteinek megtekintéséhez, és figyelje az eszközöket is fut, tegye a következőket:
 
 1. Jelentkezzen be a [Azure-portálon] [ lnk-portal] , és keresse meg az IoT hub. 
-1. Válassza ki **IoT peremhálózati (előzetes verzió)**.
+1. Válassza ki **IoT peremhálózati**.
 1. Válassza ki **IoT peremhálózati központi telepítések**. 
 
    ![Nézet IoT peremhálózati központi telepítések][1]
@@ -117,16 +127,11 @@ A központi telepítés részleteinek megtekintéséhez, és figyelje az eszköz
    * **Azonosító** -a központi telepítés nevét.
    * **Cél feltétel** -megcélzott eszköz definiáló tag.
    * **Prioritás** -a prioritást az üzemelő példányhoz társítva.
-   * **Az IoT-Edge ügynök állapota** -eszközöket, amelyek a központi telepítést, és hozzájuk állapotfigyelő állapotok számát. 
-   * **A nem megfelelő modulok** -a központi telepítés hibajelentést modulok száma. 
+   * **Rendszer metrikák** - **megcélzott** megadható, hogy az eszköz twins a célcsoport-kezelési feltételnek megfelelő IoT-központ és **történt** eszközökre, amelyeken száma a telepítési tartalom alkalmazott volt a modul twins az IoT-központot. 
+   * **Eszköz metrikák** -peremeszközök a központi telepítés sikeres vagy az IoT-Edge ügyfél futásidejű hibák száma.
    * **Létrehozás ideje** -a központi telepítés létrehozásakor az időbélyegző. Az időbélyegző szolgál, bontsa ki, amikor két központi telepítések a azonos prioritással rendelkezik. 
-1. Válassza ki a figyelni kívánt telepítést.  
-1. Vizsgálja meg a központi telepítés részleteit. Lapok segítségével megtekintheti a részletes adatait az eszközöket, amelyek a központi telepítés érkezett: 
-   * **Megcélzott** -a peremhálózati eszköz a célként megadott feltételnek megfelelő. 
-   * **Alkalmazott** – a megcélzott peremhálózati eszköz, amely nem a nagyobb prioritású egy másik telepítés által célzott. Ezek azok az eszközöket, amelyek ténylegesen megkapná a központi telepítést. 
-   * **Sikeres Reporting** - az alkalmazott peremeszközök küldött vissza a szolgáltatás számára, hogy a modulok üzembe helyezése sikeresen befejeződött. 
-   * **Hiba Reporting** – az alkalmazott peremhálózati eszköz, amely jelentett vissza a szolgáltatás, amelyre egy vagy több modulok nem települtek-e sikeresen. A további vizsgálathoz a hiba, szüksége lesz az eszközök távolról csatlakozni és megtekinteni a rendszernapló fájljaiban. 
-   * **A nem megfelelő modulok Reporting** – az alkalmazott peremhálózati eszköz, amely jelentette vissza a szolgáltatásnak, hogy egy vagy több modulok üzembe helyezése sikeresen befejeződött, de most jelentik a hibákat. 
+2. Válassza ki a figyelni kívánt telepítést.  
+3. Vizsgálja meg a központi telepítés részleteit. Lapok használatával ellenőrizze a központi telepítés részleteit.
 
 ## <a name="modify-a-deployment"></a>Módosítsa a központi telepítés
 
@@ -140,7 +145,7 @@ Ha frissíti a cél feltétel, a következő frissítéseket fordulhat elő:
 A telepítés módosításához tegye a következőket: 
 
 1. Jelentkezzen be a [Azure-portálon] [ lnk-portal] , és keresse meg az IoT hub. 
-1. Válassza ki **IoT peremhálózati (előzetes verzió)**.
+1. Válassza ki **IoT peremhálózati**.
 1. Válassza ki **IoT peremhálózati központi telepítések**. 
 
    ![Nézet IoT peremhálózati központi telepítések][1]
@@ -158,14 +163,14 @@ A telepítés módosításához tegye a következőket:
 Ha töröl egy központi telepítést, azokat az eszközöket, a következő legmagasabb prioritású telepítésekhez igénybe. Ha az eszközök nem felelnek meg a célként megadott feltétel más központi telepítés, majd a modulok nem törlődnek, amikor a központi telepítést törölték. 
 
 1. Jelentkezzen be a [Azure-portálon] [ lnk-portal] , és keresse meg az IoT hub. 
-1. Válassza ki **IoT peremhálózati (előzetes verzió)**.
+1. Válassza ki **IoT peremhálózati**.
 1. Válassza ki **IoT peremhálózati központi telepítések**. 
 
    ![Nézet IoT peremhálózati központi telepítések][1]
 
 1. A jelölőnégyzet segítségével válassza ki a törölni kívánt központi telepítését. 
 1. Válassza a **Törlés** elemet.
-1. A kérdés tájékoztatja, hogy ez a művelet törli a központi telepítés és az összes eszköz korábbi állapotának visszaállításához.  Ez azt jelenti, hogy az alacsonyabb prioritású központi telepítés alkalmazza.  Ha nincs másik üzemelő példány, nincsenek modulok törlődik. Az ügyfelek érdemes alkalmazni, ha szükségük nulla modulok egy központi telepítés létrehozásához, és telepítse azt a azonos eszközökre. Válassza ki **Igen** Ha továbbra is szeretné. 
+1. A kérdés tájékoztatja, hogy ez a művelet törli a központi telepítés és az összes eszköz korábbi állapotának visszaállításához.  Ez azt jelenti, hogy az alacsonyabb prioritású központi telepítés alkalmazza.  Ha nincs másik üzemelő példány, nincsenek modulok törlődik. Ha azt szeretné, minden modul eltávolítása az eszközről, a központi telepítés, a nulla modulok, és telepítse azt a azonos eszközökre. Válassza ki **Igen** folytatja. 
 
 ## <a name="next-steps"></a>További lépések
 

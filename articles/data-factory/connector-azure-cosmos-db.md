@@ -10,25 +10,23 @@ ms.service: multiple
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 04/27/2018
+ms.topic: conceptual
+ms.date: 05/15/2018
 ms.author: jingwang
-ms.openlocfilehash: 58e1c88629c21940e09efd6832d536c0b2b47ace
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 92b45c1038fd099926360dc80802ababf0e8ee93
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37052766"
 ---
 # <a name="copy-data-to-or-from-azure-cosmos-db-using-azure-data-factory"></a>Másolja az adatokat, vagy az Azure Data Factory használatához Azure Cosmos-Adatbázisból
 
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [1. verzió – Általánosan elérhető](v1/data-factory-azure-documentdb-connector.md)
-> * [2. verzió – Előzetes verzió](connector-azure-cosmos-db.md)
+> * [1-es verziójával](v1/data-factory-azure-documentdb-connector.md)
+> * [Aktuális verzió](connector-azure-cosmos-db.md)
 
 Ez a cikk ismerteti, hogyan használható a másolási tevékenység során az Azure Data Factory másolja az adatokat, a kezdő és a Azure Cosmos DB (SQL API-t). Buildekről nyújtanak a [másolása tevékenység áttekintése](copy-activity-overview.md) cikket, amely megadja a másolási tevékenység általános áttekintést.
-
-> [!NOTE]
-> Ez a cikk a Data Factory 2. verziójára vonatkozik, amely jelenleg előzetes verzióban érhető el. A Data Factory szolgáltatásnak, amely általánosan elérhető (GA), 1 verziójának használatakor lásd [Azure Cosmos DB connnector a V1](v1/data-factory-azure-documentdb-connector.md).
 
 ## <a name="supported-capabilities"></a>Támogatott képességei
 
@@ -87,7 +85,7 @@ Adatok másolása Azure Cosmos DB vagy állítsa be a adatkészlet type tulajdon
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
 | type | A type tulajdonságot az adathalmaz értékre kell állítani: **DocumentDbCollection** |Igen |
-| CollectionName |A Cosmos DB dokumentum gyűjtemény nevét. |Igen |
+| collectionName |A Cosmos DB dokumentum gyűjtemény nevét. |Igen |
 
 **Példa**
 
@@ -111,8 +109,8 @@ Adatok másolása Azure Cosmos DB vagy állítsa be a adatkészlet type tulajdon
 
 Sémamentesadat-tárolókhoz, például az Azure Cosmos DB a másolási tevékenység során a következő módszerek valamelyikével kikövetkezteti a séma. Ezért hacsak nem szeretné [importálási/exportálási JSON-dokumentumokat,-van](#importexport-json-documents), a bevált gyakorlat az, hogy adja meg az adatok szerkezete a **struktúra** szakasz.
 
-1. Ha az adatok szerkezete használatával adja meg a **struktúra** tulajdonsághoz a DataSet adatkészlet-definícióban a Data Factory szolgáltatásnak eleget tegyen a séma szerint ez a struktúra. Ebben az esetben ha egy sort tartalmaz egy olyan oszlop értékét, null értékű nyújtanak az.
-2. Ha nincs megadva az adatok szerkezete használatával a **struktúra** tulajdonság az adatkészlet-definícióban, a Data Factory szolgáltatásnak kikövetkezteti a séma az adatok első sora használatával. Ebben az esetben ha az első sort tartalmazza a teljes séma, néhány oszlop nem érhető el a másolási művelet eredménye.
+*. Ha az adatok szerkezete használatával adja meg a **struktúra** tulajdonsághoz a DataSet adatkészlet-definícióban a Data Factory szolgáltatásnak eleget tegyen a séma szerint ez a struktúra. Ebben az esetben ha egy sort tartalmaz egy olyan oszlop értékét, null értékű nyújtanak az.
+*. Ha nincs megadva az adatok szerkezete használatával a **struktúra** tulajdonság az adatkészlet-definícióban, a Data Factory szolgáltatásnak kikövetkezteti a séma az adatok első sora használatával. Ebben az esetben ha az első sort tartalmazza a teljes séma, néhány oszlop nem érhető el a másolási művelet eredménye.
 
 ## <a name="copy-activity-properties"></a>Másolási tevékenység tulajdonságai
 
@@ -210,8 +208,8 @@ A Cosmos DB összekötő használatával egyszerűen
 
 A séma-független másolat eléréséhez:
 
-- A Cosmos DB adatkészlet(ek), ne adja meg a "structure" szakasz; és a másolási tevékenység Cosmos DB forrás/fogadó, nem adja meg a "nestingSeparator".
-- Amikor importálja / exportálása a JSON-fájlokat a megfelelő fájlt tároló adatkészlet, adja meg formázási típusa "JsonFormat" és a konfiguráció "filePattern" megfelelően (lásd: [JSON formátumban](supported-file-formats-and-compression-codecs.md#json-format) szakaszát), majd nem adja meg a "structure "szakaszt, és hagyja ki a többi formátum beállításait.
+* Másolás eszköz használata esetén ellenőrizze a **"exportálni-JSON-fájlokat vagy Cosmos DB gyűjtemény"** lehetőséget.
+* Ha használatával szerzői tevékenység, nem adnak meg a "structure" (más néven séma) szakasz Cosmos DB adatkészlet(ek), sem "nestingSeparator" tulajdonságának Cosmos DB forrás/fogadó a másolási tevékenység. Amikor importálja / exportálása a JSON-fájlokat a megfelelő fájlt tároló adatkészlet, adja meg formázási típusa "JsonFormat" és a konfiguráció "filePattern" megfelelően (lásd: [JSON formátumban](supported-file-formats-and-compression-codecs.md#json-format) szakaszát), majd nem adja meg a "structure "(más néven séma) szakaszt, és hagyja ki a többi formátum beállításait.
 
 ## <a name="next-steps"></a>További lépések
 Támogatott források és mosdók által a másolási tevékenység során az Azure Data Factory adattárolókhoz listájáért lásd: [adattárolókhoz támogatott](copy-activity-overview.md##supported-data-stores-and-formats).

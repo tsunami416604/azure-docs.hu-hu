@@ -14,15 +14,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/10/2018
 ms.author: shlo
-ms.openlocfilehash: 56128a7fe28f1599b74ba9f1475ef636e0e8718c
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: c07199887faf073d19007f1ef410c193bbdbf3ee
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34617980"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37049366"
 ---
 # <a name="get-metadata-activity-in-azure-data-factory"></a>Az Azure Data Factory metaadatok tevékenység beolvasása
-GetMetadata tevékenység használható beolvasása **metaadatok** az Azure Data Factory adatok. Ez a tevékenység csak 2-es verzióját az adat-előállítók esetén támogatott. A következő esetekben használhatók:
+GetMetadata tevékenység használható beolvasása **metaadatok** az Azure Data Factory adatok. Ez a tevékenység a következő esetekben használhatók:
 
 - A metaadatok adatok ellenőrzése
 - Egy folyamat indul el, ha adatok készen / érhető el
@@ -31,9 +31,6 @@ A következő funkciókat a vezérlési folyamatában érhető el:
 
 - A GetMetadata tevékenység kimenete ellenőrzéshez feltételes kifejezéseket is használható.
 - Egy folyamat is elindítható, amikor keresztül tegye feltétel teljesül-e-amíg ismétlési
-
-> [!NOTE]
-> Ez a cikk a Data Factory 2. verziójára vonatkozik, amely jelenleg előzetes verzióban érhető el. A Data Factory szolgáltatásnak, amely általánosan elérhető (GA), 1 verziójának használatakor lásd [Data Factory V1 dokumentáció](v1/data-factory-introduction.md).
 
 ## <a name="supported-capabilities"></a>Támogatott képességei
 
@@ -46,14 +43,18 @@ A GetMetadata tevékenység egy kötelező bemeneti adatkészlet szükséges, é
 
 **Fájltároló:**
 
-| Összekötő/metaadatok | itemName<br>(fájl vagy mappa) | ItemType<br>(fájl vagy mappa) | méret<br>(fájl) | létrehozva<br>(fájl vagy mappa) | Módosítás dátuma<br>(fájl vagy mappa) |childItems<br>(mappa) |contentMD5<br>(fájl) | struktúra<br/>(fájl) | Oszlopszám<br>(fájl) | létezik-e<br>(fájl vagy mappa) |
+| Összekötő/metaadatok | itemName<br>(fájl vagy mappa) | itemType<br>(fájl vagy mappa) | méret<br>(fájl) | létrehozva<br>(fájl vagy mappa) | módosítás dátuma<br>(fájl vagy mappa) |childItems<br>(mappa) |contentMD5<br>(fájl) | struktúra<br/>(fájl) | Oszlopszám<br>(fájl) | létezik-e<br>(fájl vagy mappa) |
 |:--- |:--- |:--- |:--- |:--- |:--- |:--- |:--- |:--- |:--- |:--- |
-| Azure-blob | √/√ | √/√ | √ | x/x | √/√ | √ | √ | √ | √ | √/√ |
+| Amazon S3 | √/√ | √/√ | √ | x/x | √ / √ * | √ | x | √ | √ | √ / √ * |
+| Azure-blob | √/√ | √/√ | √ | x/x | √ / √ * | √ | √ | √ | √ | √/√ |
 | Azure Data Lake Store | √/√ | √/√ | √ | x/x | √/√ | √ | x | √ | √ | √/√ |
 | Azure File Storage | √/√ | √/√ | √ | √/√ | √/√ | √ | x | √ | √ | √/√ |
 | Fájlrendszer | √/√ | √/√ | √ | √/√ | √/√ | √ | x | √ | √ | √/√ |
 | SFTP | √/√ | √/√ | √ | x/x | √/√ | √ | x | √ | √ | √/√ |
 | FTP | √/√ | √/√ | √ | x/x | √/√ | √ | x | √ | √ | √/√ |
+
+- Az Amazon S3 a `lastModified` gyűjtő és kulcs, de nem virtuális mappa; vonatkozik; és a `exists` vagy alkalmazza a gyűjtő és a kulcs azonban nem előtag virtuális mappa.
+- Az Azure Blob a `lastModified` tároló és a blob, de nem virtuális mappa vonatkozik.
 
 **Relációs adatbázis:**
 
@@ -70,10 +71,10 @@ A következő metaadat-típusok beolvasása a GetMetadata tevékenység mezőlis
 | Metaadatok típusa | Leírás |
 |:--- |:--- |
 | itemName | A fájl vagy mappa neve. |
-| ItemType | A fájl vagy mappa típusú. Kimeneti érték `File` vagy `Folder`. |
+| itemType | A fájl vagy mappa típusú. Kimeneti érték `File` vagy `Folder`. |
 | méret | A fájl bájtos mérete. A következő fájl csak alkalmazható. |
 | létrehozva | A fájl vagy mappa létrehozott datetime. |
-| Módosítás dátuma | Utolsó módosítás dátum és idő, a fájl vagy mappa. |
+| módosítás dátuma | Utolsó módosítás dátum és idő, a fájl vagy mappa. |
 | childItems | Almappák és a megadott mappában lévő fájlok listájának. Csak a mappára érvényes. Kimeneti értéke nevét és típusát az egyes alárendelt elemek listáját. |
 | contentMD5 | A fájl a MD5-kivonata. A következő fájl csak alkalmazható. |
 | struktúra | A fájl vagy a relációs adatbázis tábla belül adatstruktúra. Kimeneti értéke oszlopnév és oszloptípus listáját. |

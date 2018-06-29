@@ -16,12 +16,12 @@ ms.date: 06/18/2018
 ms.author: markvi
 ms.custom: it-pro
 ms.reviewer: jeedes
-ms.openlocfilehash: 193be37f4c804d087bf404f14bc60e27349038ad
-ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
+ms.openlocfilehash: 63fa305a94321fef87e5c60cb4ad78e83a3ca356
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/22/2018
-ms.locfileid: "36319037"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37054687"
 ---
 # <a name="saas-application-integration-with-azure-active-directory"></a>SaaS alkalmazások integrálása az Azure Active Directoryval
 
@@ -136,8 +136,8 @@ Törölték az Azure AD-be előre integrált Szolgáltatottszoftver-alkalmazáso
 | ![embléma](./media/tutorial-list/active-directory-saas-cimpl-tutorial.png)| [Cimpl](cimpl-tutorial.md)|
 | ![embléma](./media/tutorial-list/active-directory-saas-ciscocloud-tutorial.png)| [Cisco felhő](ciscocloud-tutorial.md)|
 | ![embléma](./media/tutorial-list/active-directory-saas-ciscocloudlock-tutorial.png)| [Cisco Cloudlock](ciscocloudlock-tutorial.md)|
-| ![embléma](./media/tutorial-list/active-directory-saas-cisco-spark-tutorial.png)| [Cisco Spark](cisco-spark-tutorial.md)|
-| ![embléma](./media/tutorial-list/active-directory-saas-cisco-webex-tutorial.png)| [Cisco Webex](cisco-webex-tutorial.md)|[Cisco Webex – a felhasználók átadása](cisco-webex-provisioning-tutorial.md)|
+| ![embléma](./media/tutorial-list/active-directory-saas-cisco-spark-tutorial.png)| [Cisco Spark](cisco-spark-tutorial.md)|[Cisco Spark - a felhasználók átadása](cisco-spark-provisioning-tutorial.md)|
+| ![embléma](./media/tutorial-list/active-directory-saas-cisco-webex-tutorial.png)| [Cisco Webex](cisco-webex-tutorial.md)|)|[Cisco Webex – a felhasználók átadása](cisco-webex-provisioning-tutorial.md)|
 | ![embléma](./media/tutorial-list/active-directory-saas-sharefile-tutorial.png)| [Citrix ShareFile](sharefile-tutorial.md)|
 | ![embléma](./media/tutorial-list/active-directory-saas-clarizen-tutorial.png)| [Clarizen](clarizen-tutorial.md)|[Clarizen – a felhasználók átadása](clarizen-provisioning-tutorial.md)|
 | ![embléma](./media/tutorial-list/active-directory-saas-clearreview-tutorial.png)| [Törölje a jelet áttekintése](clearreview-tutorial.md)|

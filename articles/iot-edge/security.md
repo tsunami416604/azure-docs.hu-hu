@@ -8,23 +8,20 @@ ms.date: 10/05/2017
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: effe33182435d2a4afbad3356c6840070ba96325
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: f198efe9ff5e4862a3bbe872ab50e5848c9dbb5c
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34631428"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37030580"
 ---
-# <a name="securing-azure-iot-edge---preview"></a>Biztonságossá tétele az Azure IoT Edge - minta
+# <a name="securing-azure-iot-edge"></a>Az Azure IoT peremhálózati biztonságossá tétele
 
 Biztonságossá tétele az intelligens él szükség, felruházza a művelet egy teljes körű IoT-megoldás-be vetett bizalmat. Azure IoT peremhálózati készült biztonsági bővíthető különböző kockázati profilok, a központi telepítési forgatókönyve esetén, és az összes Azure-szolgáltatásokat a várt azonos védelmet nyújt.
 
 Az Azure IoT peremhálózati fut másik hardverre, támogatja a Linux és a Windows, és különböző telepítési forgatókönyvek alkalmazandó.  Becsült kockázattal sok szempontok, beleértve a megoldás tulajdonjogát, központi telepítési geográfiai, adatok érzékenysége, adatvédelmi, alkalmazás függőleges és szabályozási követelmények függ.  Ahelyett, hogy az adott forgatókönyveket konkrét megoldást kínál, így megtervezheti egy bővíthető biztonsági keretrendszer méretezési tervezett jól grounded alapelvek alapján. 
  
 Ez a cikk áttekintést biztonsági keretében. További információkért lásd: [biztonságossá tétele az intelligens él][lnk-edge-blog].
-
->[!NOTE]
->Az alábbiakban ismertetett biztonsági keretrendszere a termék most hozzáadása folyamatban, azaz az Azure IoT peremhálózati általánosan rendelkezésre álló kiadásában érhető el. A termék jelenleg nyilvános előzetes verziójában, kiadási olyan fejlesztési és biztonsági megoldások, a teljes biztonsági keretrendszert igénylő nem teljes üzemelő prototípusának.   
 
 ## <a name="standards"></a>Szabványok
 

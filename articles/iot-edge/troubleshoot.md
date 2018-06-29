@@ -4,16 +4,16 @@ description: Az Azure IoT Edge gyakori problémáinak megoldása és a hibaelhá
 author: kgremban
 manager: timlt
 ms.author: kgremban
-ms.date: 03/23/2018
+ms.date: 06/26/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: ad22b0cd1457c1d4146a75047ff18e916c0c7ccd
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: efe3e31a1a92e21f2c3a3461deba248d2a8c97fa
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34633536"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37029441"
 ---
 # <a name="common-issues-and-resolutions-for-azure-iot-edge"></a>Az Azure IoT Edge gyakori problémái és azok megoldásai
 
@@ -23,36 +23,135 @@ Ha a környezetében az Azure IoT Edge futtatásakor problémákat tapasztal, ez
 
 Ha problémát tapasztal, a tárolónaplók és az eszközre küldött és az arról származó üzenetek áttekintésével további információt tudhat meg az IoT Edge-eszköz állapotáról. Az ebben a szakaszban szereplő parancsokkal és eszközökkel további információt gyűjthet. 
 
-* A hibák észleléséhez tekintse meg a Docker-tárolók naplóit. Kezdje az üzembe helyezett tárolókkal, majd tekintse meg az IoT Edge-futtatókörnyezetet alkotó tárolókat: az Edge Agentet és az Edge Hubot. Az Edge Agent-naplók általában az egyes tárolók életciklusáról nyújtanak információt. Az Edge Hub-naplók az üzenetküldésről és az útválasztásról nyújtanak információt. 
+### <a name="check-the-status-of-the-iot-edge-security-manager-and-its-logs"></a>Az IoT-peremhálózati biztonságkezelő és a naplók állapotának ellenőrzése:
 
-   ```cmd
-   docker logs <container name>
+Linux:
+- Az IoT Edge-biztonságkezelő állapotának megtekintése:
+
+   ```bash
+   sudo systemctl status iotedge
    ```
 
-* Tekintse meg az Edge Hubon áthaladó üzeneteket, és az eszköztulajdonságok frissítéseiről gyűjtsön információt a futtatókörnyezet tárolóiból származó részletes naplókkal.
+- A naplók a IoT peremhálózati biztonsági Manager megtekintéséhez:
 
-   ```cmd
-   iotedgectl setup --connection-string "{device connection string}" --runtime-log-level debug
-   ```
+    ```bash
+    sudo journalctl -u iotedge -f
+    ```
+
+- Az IoT Edge-biztonságkezelő naplók részletes megjelenítése:
+
+   - A iotedge démon beállításainak szerkesztése:
+
+      ```bash
+      sudo systemctl edit iotedge.service
+      ```
    
-* Az iotedgectl-parancsokból származó részletes naplók megtekintése:
+   - Frissítse a következő sorokat:
+    
+      ```
+      [Service]
+      Environment=IOTEDGE_LOG=edgelet=debug
+      ```
+    
+   - Indítsa újra az IoT-Edge biztonsági démon:
+    
+      ```bash
+      sudo systemctl cat iotedge.service
+      sudo systemctl daemon-reload
+      sudo systemctl restart iotedge
+      ```
 
-   ```cmd
-   iotedgectl --verbose DEBUG <command>
+Windows rendszeren:
+- Az IoT Edge-biztonságkezelő állapotának megtekintése:
+
+   ```powershell
+   Get-Service iotedge
    ```
 
-* Ha csatlakozási problémákba ütközik, vizsgálja meg a peremhálózati eszköz környezeti változóit, például az eszköz kapcsolati sztringjét:
+- A naplók a IoT peremhálózati biztonsági Manager megtekintéséhez:
+
+   ```powershell
+   # Displays logs from today, newest at the bottom.
+ 
+   Get-WinEvent -ea SilentlyContinue `
+   -FilterHashtable @{ProviderName= "iotedged";
+     LogName = "application"; StartTime = [datetime]::Today} |
+   select TimeCreated, Message |
+   sort-object @{Expression="TimeCreated";Descending=$false}
+   ```
+
+### <a name="if-the-iot-edge-security-manager-is-not-running-verify-your-yaml-configuration-file"></a>Ha az IoT-peremhálózati biztonságkezelő nem fut, ellenőrizze a yam konfigurációs fájlt
+
+> [!WARNING]
+> YAM-fájlok nem lehetnek identation lapokon. 2 szóközt használja.
+
+Linux:
+
+   ```bash
+   sudo nano /etc/iotedge/config.yaml
+   ```
+
+Windows rendszeren:
 
    ```cmd
-   docker exec edgeAgent printenv
+   notepad C:\ProgramData\iotedge\config.yaml
+   ```
+
+### <a name="check-container-logs-for-issues"></a>Tároló naplókban problémák
+
+Ha az IoT-Edge biztonsági démon fut, tekintse meg a naplókat a problémák észlelése tárolók. Kezdje az üzembe helyezett tárolókkal, majd tekintse meg az IoT Edge-futtatókörnyezetet alkotó tárolókat: az Edge Agentet és az Edge Hubot. Az Edge Agent-naplók általában az egyes tárolók életciklusáról nyújtanak információt. Az Edge Hub-naplók az üzenetküldésről és az útválasztásról nyújtanak információt. 
+
+   ```cmd
+   iotedge logs <container name>
+   ```
+
+### <a name="view-the-messages-going-through-the-edge-hub"></a>A peremhálózati hub áthaladás üzenetek megjelenítése
+
+A peremhálózati hub áthaladás üzenetek megjelenítése, és elemzések gyűjt az eszköz tulajdonságok frissítések részletes naplókat a edgeAgent és edgeHub futtatókörnyezet tárolókból. Ezek a tárolók részletes naplókat bekapcsolásához állítsa be a `RuntimeLogLevel` környezeti változót: 
+
+Linux:
+    
+   ```cmd
+   export RuntimeLogLevel="debug"
+   ```
+    
+Windows rendszeren:
+    
+   ```powershell
+   [Environment]::SetEnvironmentVariable("RuntimeLogLevel", "debug")
    ```
 
 Az IoT Hub és az IoT Edge-eszközök között küldött üzeneteket is ellenőrizheti. Ezeket az üzeneteket a Visual Studio Code [Azure IoT-eszközkészlet](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit) bővítményével tekintheti meg. További útmutatásért lásd [az Azure IoT-fejlesztések esetén hasznos eszközt](https://blogs.msdn.microsoft.com/iotdev/2017/09/01/handy-tool-when-you-develop-with-azure-iot/).
 
-Miután megvizsgálta a naplók és üzenetek információit, az Azure IoT Edge-futtatókörnyezet újraindításával is megpróbálkozhat:
+### <a name="restart-containers"></a>Indítsa újra a tárolók
+Után vizsgálja meg a naplókat és az üzenetek információt, próbálkozhat újraindítással tárolók:
+
+```
+iotedge restart <container name>
+```
+
+Indítsa újra az IoT-Edge futásidejű tárolókban:
+
+```
+iotedge restart edgeAgent && iotedge restart edgeHub
+```
+
+### <a name="restart-the-iot-edge-security-manager"></a>Indítsa újra a IoT Edge-kezelő
+
+Ha a probléma továbbra is megőrzése, megpróbálhatja az IoT-Edge biztonságkezelő újraindítani.
+
+Linux:
 
    ```cmd
-   iotedgectl restart
+   sudo systemctl restart iotedge
+   ```
+
+Windows rendszeren:
+
+   ```powershell
+   Stop-Service iotedge -NoWait
+   sleep 5
+   Start-Service iotedge
    ```
 
 ## <a name="edge-agent-stops-after-about-a-minute"></a>Az Edge Agent körülbelül egy perc után leáll
@@ -100,29 +199,11 @@ Egy tároló nem fut, és az Edge Agent-naplók a 403-as hibát tartalmazzák.
 Az Edge Agentnek nincs engedélye egy modul rendszerképének eléréséhez. 
 
 ### <a name="resolution"></a>Megoldás:
-Próbálja meg ismét futtatni az `iotedgectl login` parancsot.
+Győződjön meg arról, hogy a beállításjegyzék hitelesítő adatok helyesen vannak-e megadva az üzembe helyezési jegyzékben
 
-## <a name="iotedgectl-cant-find-docker"></a>Az iotedgectl nem találja a Dockert.
+## <a name="iot-edge-security-daemon-fails-with-an-invalid-hostname"></a>Az IoT-Edge biztonsági démon meghiúsul, és egy érvénytelen állomásnév
 
-A parancsok `iotedgectl setup` vagy `iotedgectl start` sikertelen lesz, és nyomtassa ki a naplók a következő üzenetet:
-```output
-File "/usr/local/lib/python2.7/dist-packages/edgectl/host/dockerclient.py", line 98, in get_os_type
-  info = self._client.info()
-File "/usr/local/lib/python2.7/dist-packages/docker/client.py", line 174, in info
-  return self.api.info(*args, **kwargs)
-File "/usr/local/lib/python2.7/dist-packages/docker/api/daemon.py", line 88, in info
-  return self._result(self._get(self._url("/info")), True)
-```
-
-### <a name="root-cause"></a>Gyökérok
-Az iotedgectl nem találja a Dockert, amely előfeltétel.
-
-### <a name="resolution"></a>Megoldás:
-Telepítse a Dockert, futtassa, majd próbálkozzon újra.
-
-## <a name="iotedgectl-setup-fails-with-an-invalid-hostname"></a>iotedgectl telepítője a egy érvénytelen állomásnév
-
-A parancs `iotedgectl setup` sikertelen lesz, és kiírja a következő üzenetet: 
+A parancs `sudo journalctl -u iotedge` sikertelen lesz, és kiírja a következő üzenetet: 
 
 ```output
 Error parsing user input data: invalid hostname. Hostname cannot be empty or greater than 64 characters
@@ -143,9 +224,17 @@ Ha ez a hibaüzenet jelenik meg, hogyan oldható meg konfigurálásával a virtu
 4. Másolja az új DNS-neve, ami a formátumúnak kell lennie  **\<DNSnamelabel\>.\< vmlocation\>. cloudapp.azure.com**.
 5. A virtuális gépen belül az alábbi parancs segítségével állítsa be a DNS-névvel az IoT peremhálózati futásidejű:
 
-   ```input
-   iotedgectl setup --connection-string "<connection string>" --nopass --edge-hostname "<DNS name>"
-   ```
+   - Linux:
+
+      ```bash
+      sudo nano /etc/iotedge/config.yaml
+      ```
+
+   - Windows rendszeren:
+
+      ```cmd
+      notepad C:\ProgramData\iotedge\config.yaml
+      ```
 
 ## <a name="next-steps"></a>További lépések
 Úgy gondolja, hogy hibát talált az IoT Edge platformon? Kérjük, a kijavításához [küldje el a problémát](https://github.com/Azure/iot-edge/issues). 

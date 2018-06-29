@@ -1,5 +1,5 @@
 ---
-title: A számlázási megismerése az Azure-bA
+title: A számlázási megismerése az Azure-bA |} Microsoft Docs
 description: Elolvastam és megértettem a használati és az Azure-előfizetéshez tartozó számlázási útmutató
 services: ''
 documentationcenter: ''
@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/31/2017
+ms.date: 06/14/2018
 ms.author: tonguyen
-ms.openlocfilehash: f3e0e3eeab88ad8ad0c4a21eb69a6340dbbe0441
-ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.openlocfilehash: 689ea9e0d029bb65bc579fc914c6ed3073b4a96b
+ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/04/2018
-ms.locfileid: "33204891"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37064001"
 ---
 # <a name="understand-your-bill-for-microsoft-azure"></a>A Microsoft Azure-hoz kapcsolódó számlák magyarázata
 Az Azure számlázásának ismertetése, hasonlítsa össze a számla a részletes napi használati fájl és a költségek jelentések az Azure portálon.
@@ -101,6 +101,40 @@ Ha Ön [kell fizetnie, amennyit számlázás által](billing-how-to-pay-by-invoi
 ## <a name="how-do-i-check-the-status-of-a-payment-made-by-credit-card"></a>Hogyan által hitelkártya állapotának ellenőrzése?
 
 [Támogatási jegy létrehozásával](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) kérje meg a befizetést állapotának. 
+
+## <a name="are-there-different-azure-customer-types-how-do-i-know-what-customer-type-i-am"></a>Vannak-e az Azure különböző ügyfél-típusok? Honnan tudhatom, hogy milyen felhasználói típusú vagyok?
+Nincsenek Azure-ügyfél különböző típusú. Jobb megértése érdekében a tarifa- és számlázási, tekintse meg az alábbi ügyfél típusú leírásokat.
+
+- **Vállalati**: a vállalati felhasználók regisztráltak-e az egyeztetett pénzügyi kötelezettségvállalások és az Azure-erőforrások egyéni díjszabása eléréséhez Azure nagyvállalati szerződéssel.
+- **Webalkalmazás-közvetlen**: webes közvetlen ügyfelek még nem igényelt bármilyen egyéni megállapodás az Azure-ral. Ezen ügyfelek regisztráltak-e az Azure-keresztül Azure.com webhelyre, és az összes Azure-erőforrások nyilvános irányuló árak fogadhat.
+- **A felhő szolgáltató**: Felhőszolgáltatók jellemzően vállalatok számára a megoldások Azure fölött egy záró-ügyfél által felvett.
+
+## <a name="why-dont-i-see-the-cost-the-resource-i-have-created-in-my-bill"></a>Miért nem látom, hogy az erőforrás, a számlázási létrehoztam költsége?
+Az Azure nem nem számlázási közvetlenül erőforrás költsége alapján. Számlázási ki egy vagy több mérőszámok, amelyek segítségével nyomon követhető a teljes élettartamuk egy erőforrás-használat alapján történik. Ezek a mérőszámok használata a számlázási kiszámításához. Lásd: további információk az Azure-mérés alatt.
+
+## <a name="how-does-azure-charge-metering-work"></a>Hogyan díjat számítanak a Azure mérési munkahelyi?
+Ha Ön léptetési egyetlen Azure erőforrást, például egy virtuális gép egy vagy több mérő példánylétrehozás is lesz. Ezek a mérőszámok segítségével nyomon követhető az erőforrás-felhasználásának adott idő alatt. Minden bocsát ki, majd által használt Azure a használatmérő rendszer költségek kiszámításához a számlázási rekordok. 
+
+Előfordulhat például, hogy egyetlen virtuális gép létrehozása az Azure-ban a következő mérőszámok a használatát nyomon követésére:
+
+- Compute Hours – számítási óraszám
+- IP-címszolgáltatási óra
+- Bejövő adatforgalom
+- Kimenő adatforgalom
+- Standard szintű felügyelt lemezes
+- Standard szintű felügyelt lemezes műveletek
+- Standard IO – lemez
+- Standard I/O-blokk Blob olvasása
+- Standard I/O-blokk Blob írási
+- Standard I/O-blokk Blob törlése
+
+A virtuális gép létrehozása után a fenti mérőszámok megkezdődik a rekordok kibocsátó. A használati fog majd használható Azure mérési rendszerről és a mérési ár annak meghatározásához, hogy mekkora az ügyfél fel van töltve.
+
+> [!Note]
+> A fenti példa mérőszámok csak lehet létrehozni egy virtuális Gépet, amely jön létre a mérőszámok egy részét.
+
+## <a name="what-is-the-difference-between-azure-1st-party-charges-and-azure-marketplace-charges"></a>Mi az Azure közötti különbség az 1. fél és Azure piactér díjakat?
+Azure 1. fél díjak vonatkoznak közvetlenül fejlesztett, Azure által kínált erőforrások. Az Azure piactér díjak hozott létre, amelyek használhatók az Azure piactéren keresztül szoftvergyártók harmadik féltől származó erőforrások vannak. Például egy Barracuda tűzfal egy harmadik fél által kínált Azure piactér erőforrás. A tűzfal és a megfelelő mérőszámok díjak megfizetése piactér díjak néven jelennek meg. 
 
 ## <a name="tips-for-cost-management"></a>Költség felügyeleti tippek
 - Becsült költségeit használatával a [árképzési Számológép](https://azure.microsoft.com/pricing/calculator/) és [összköltsége tulajdonjoga Számológép](https://aka.ms/azure-tco-calculator), és a [részletes díjszabási információk minden egyes szolgáltatás](https://azure.microsoft.com/pricing/).

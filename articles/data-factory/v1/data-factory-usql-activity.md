@@ -14,20 +14,20 @@ ms.topic: conceptual
 ms.date: 10/01/2017
 ms.author: douglasl
 robots: noindex
-ms.openlocfilehash: a0f4a823d9a484dcae35a2741bf7904eb17a1502
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 534fbeaa8ba3c27c8d3f3bbcc59717d8bdb5c654
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34622853"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37050318"
 ---
 # <a name="transform-data-by-running-u-sql-scripts-on-azure-data-lake-analytics"></a>Adatok átalakítása Azure Data Lake Analytics U-SQL-parancsfájlok futtatásával 
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [1. verzió – Általánosan elérhető](data-factory-usql-activity.md)
-> * [2. verzió – Előzetes verzió](../transform-data-using-data-lake-analytics.md)
+> * [1-es verziójával](data-factory-usql-activity.md)
+> * [(Az aktuális verzió) 2-es verzió](../transform-data-using-data-lake-analytics.md)
 
 > [!NOTE]
-> Ez a cikk a Data Factory általánosan elérhető 1. verziójára vonatkozik. Lásd a 2-es verziójának a Data Factory szolgáltatásnak, amely jelenleg előzetes verzióban érhető, használatakor [V2 U-SQL tevékenység](../transform-data-using-data-lake-analytics.md).
+> Ez a cikk a Data Factory 1 verziójára vonatkozik. A Data Factory szolgáltatásnak aktuális verziójának használatakor lásd [V2 U-SQL tevékenység](../transform-data-using-data-lake-analytics.md).
 
 Egy folyamatot egy az Azure data factory az adatokat a csatolt tárolószolgáltatások csatolt számítási szolgáltatások használatával dolgozza fel. Ha minden tevékenység egyedi feldolgozása műveletet hajt végre tevékenységek sorrendje tartalmaz. Ez a cikk ismerteti a **Data Lake Analytics U-SQL tevékenység** , amelyen fut a **U-SQL** a parancsfájl egy **Azure Data Lake Analytics** számítási kapcsolódó szolgáltatás. 
 
@@ -149,7 +149,7 @@ if (linkedService.Properties.TypeProperties is AzureDataLakeStoreLinkedService |
 }
 ```
 
-Lásd: [AzureDataLakeStoreLinkedService osztály](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.azuredatalakestorelinkedservice.aspx), [AzureDataLakeAnalyticsLinkedService osztály](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.azuredatalakeanalyticslinkedservice.aspx), és [AuthorizationSessionGetResponse osztály](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.authorizationsessiongetresponse.aspx) témakörök a Data Factory osztályok, a kódban használt vonatkozó további információért. Adjon hozzá egy hivatkozást,: Microsoft.IdentityModel.Clients.ActiveDirectory.WindowsForms.dll WindowsFormsWebAuthenticationDialog osztálynál. 
+Lásd: [AzureDataLakeStoreLinkedService osztály](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.azuredatalakestorelinkedservice.aspx), [AzureDataLakeAnalyticsLinkedService osztály](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.azuredatalakeanalyticslinkedservice.aspx), és [AuthorizationSessionGetResponse osztály](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.authorizationsessiongetresponse.aspx) részletes kapcsolatos témakörök információk a Data Factory osztályok, a kódban használt. Adjon hozzá egy hivatkozást,: Microsoft.IdentityModel.Clients.ActiveDirectory.WindowsForms.dll WindowsFormsWebAuthenticationDialog osztálynál. 
 
 ## <a name="data-lake-analytics-u-sql-activity"></a>Data Lake Analytics U-SQL-tevékenység
 A következő JSON-részlet egy folyamatot, egy Data Lake Analytics U-SQL tevékenység határozza meg. A tevékenység definíciójának van a korábban létrehozott Azure Data Lake Analytics társított szolgáltatás hivatkozása.   
@@ -213,7 +213,7 @@ A következő táblázat ismerteti a neveket és leírásokat erre a tevékenys�
 | linkedServiceName   | A Data Factory kapcsolt szolgáltatásként regisztrálva az Azure Data Lake Analytics mutató hivatkozás | Igen                                      |
 | scriptPath          | A U-SQL parancsfájlt tartalmazó mappa elérési útja. A fájl neve nem kis-és nagybetűket. | Nem (Ha a parancsfájl használata)                   |
 | scriptLinkedService | Kapcsolódó szolgáltatás, amely a tárolóban, amely tartalmazza az adat-előállító parancsfájl | Nem (Ha a parancsfájl használata)                   |
-| Parancsfájl              | Adja meg a beágyazott parancsfájlja scriptPath és a scriptLinkedService megadása helyett. Például: `"script": "CREATE DATABASE test"`. | Nem (Ha a ScriptPath tulajdonságot is és a scriptLinkedService használ) |
+| parancsfájl              | Adja meg a beágyazott parancsfájlja scriptPath és a scriptLinkedService megadása helyett. Például: `"script": "CREATE DATABASE test"`. | Nem (Ha a ScriptPath tulajdonságot is és a scriptLinkedService használ) |
 | degreeOfParallelism | A feladat futtatásához egyidejűleg használt csomópontok maximális száma. | Nem                                       |
 | prioritás            | Azt határozza meg, melyet futtatni kíván szereplő várólistáján szereplő feladatok közül melyeket. Az alacsonyabb a szám, annál magasabb a prioritás. | Nem                                       |
 | paraméterek          | A U-SQL parancsfájl paraméterek          | Nem                                       |

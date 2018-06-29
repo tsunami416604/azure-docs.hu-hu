@@ -11,14 +11,14 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 01/11/2018
+ms.date: 06/27/2018
 ms.author: maxluk
-ms.openlocfilehash: c6f6e691ef4b317854aef1d7397d5fb840d25ff2
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: eb7b538737e54b2c3d8a32e2ba65f7e0762a302c
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31409322"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37047156"
 ---
 # <a name="submit-jobs-from-r-tools-for-visual-studio"></a>Feladatok beküldése az R Tools for Visual Studio használatával
 
@@ -37,7 +37,7 @@ RTVS kibővíti az R munkafolyamat eszközök felajánlásával a [R interaktív
 3. Nyilvános és titkos kulcsokat az SSH hitelesítés van szükség.
 <!-- {TODO tbd, no such file yet}[use SSH with HDInsight](hdinsight-hadoop-linux-use-ssh-windows.md) -->
 
-4. Telepítés [R Server](https://msdn.microsoft.com/microsoft-r/rserver-install-windows) a számítógépen. R Server biztosít a [ `RevoScaleR` ](https://msdn.microsoft.com/microsoft-r/scaler/scaler) és `RxSpark` funkciók.
+4. Telepítés [ML Server](https://msdn.microsoft.com/microsoft-r/rserver-install-windows) a számítógépen. Gépi tanulás összetevő-kiszolgáló biztosítja azt a [ `RevoScaleR` ](https://msdn.microsoft.com/microsoft-r/scaler/scaler) és `RxSpark` funkciók.
 
 5. Telepítés [PuTTY](http://www.putty.org/) arra, hogy a számítási környezet futtatásához `RevoScaleR` funkciók a helyi ügyfélről a HDInsight-fürthöz.
 
@@ -53,7 +53,7 @@ RTVS kibővíti az R munkafolyamat eszközök felajánlásával a [R interaktív
 
 ## <a name="execute-local-r-methods"></a>Helyi R metódusok végrehajtása
 
-1. Hozzon létre a [R Server HDInsight-fürt](r-server-get-started.md).
+1. Hozzon létre a [ML-szolgáltatások HDInsight-fürt](r-server-get-started.md).
 2. Telepítse a [RTVS bővítmény](https://docs.microsoft.com/visualstudio/rtvs/installation).
 3. Töltse le a [minták a zip-fájl](https://github.com/Microsoft/RTVS-docs/archive/master.zip).
 4. Nyissa meg `examples/Examples.sln` elindíthatja a Visual Studio megoldás.
@@ -66,11 +66,11 @@ RTVS kibővíti az R munkafolyamat eszközök felajánlásával a [R interaktív
 
     ![Tudományos beállítások...](./media/r-server-submit-jobs-r-tools-vs/workspace.png)
 
-## <a name="submit-jobs-to-an-hdinsight-r-cluster"></a>Az HDInsight R fürt feladatok elküldéséhez
+## <a name="submit-jobs-to-an-hdinsight-ml-services-cluster"></a>Az ML-szolgáltatások HDInsight-fürt feladatok elküldéséhez
 
-Egy Microsoft R Server vagy a Microsoft R-ügyfélprogram segítségével PuTTY ellátott Windows rendszerű számítógépről egy elosztott futó számítási környezetet hozhat létre `RevoScaleR` funkciók a helyi ügyfélről a HDInsight-fürthöz. Használjon `RxSpark` létrehozása a számítási környezet, adja meg a felhasználónevet, a Hadoop-fürt élcsomópont, SSH kapcsolók, és így tovább.
+Egy Microsoft ML kiszolgáló vagy a Microsoft R-ügyfélprogram segítségével PuTTY ellátott Windows rendszerű számítógépről egy elosztott futó számítási környezetet hozhat létre `RevoScaleR` funkciók a helyi ügyfélről a HDInsight-fürthöz. Használjon `RxSpark` létrehozása a számítási környezet, adja meg a felhasználónevet, a Hadoop-fürt élcsomópont, SSH kapcsolók, és így tovább.
 
-1. A élcsomópont állomásnév található, nyissa meg az Azure HDInsight R fürt ablaktábláján, majd válassza ki a **Secure Shell (SSH)** a felső menüjében az Áttekintés ablaktábláján.
+1. A élcsomópont állomásnév megkereséséhez nyissa meg a Azure ML-szolgáltatások HDInsight fürt ablaktábláján, majd jelölje ki **Secure Shell (SSH)** a felső menüjében az Áttekintés ablaktábláján.
 
     ![Secure Shell (SSH)](./media/r-server-submit-jobs-r-tools-vs/ssh.png)
 
@@ -122,7 +122,7 @@ Egy Microsoft R Server vagy a Microsoft R-ügyfélprogram segítségével PuTTY 
 
 5. Ellenőrizze, hogy a `rxHadoopCopy` sikeresen másolt a `people.json` fájlt adatmappából a példa az újonnan létrehozott `/user/RevoShare/newUser` mappába:
 
-    1. Az Azure-ban a HDInsight R fürt ablaktáblán válassza ki a **tárfiókok** a bal oldali menüből.
+    1. Az Azure-ban az ML-szolgáltatások HDInsight fürt ablaktáblán válassza ki a **tárfiókok** a bal oldali menüből.
 
         ![Tárfiókok](./media/r-server-submit-jobs-r-tools-vs/storage-accounts.png)
 
@@ -144,6 +144,6 @@ Egy Microsoft R Server vagy a Microsoft R-ügyfélprogram segítségével PuTTY 
 
 ## <a name="next-steps"></a>További lépések
 
-* [Számítási környezeti beállítások a HDInsighton belüli R Server esetében](r-server-compute-contexts.md)
+* [Számítási környezet lehetőségek az ML-szolgáltatások hdinsight](r-server-compute-contexts.md)
 * [ScaleR és SparkR](../hdinsight-hadoop-r-scaler-sparkr.md) légitársaság repülési késleltetés előrejelzéseket egy példát.
 <!-- * You can also submit R jobs with the [R Studio Server](hdinsight-submit-jobs-from-r-studio-server.md) -->

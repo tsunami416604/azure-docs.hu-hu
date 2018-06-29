@@ -9,14 +9,14 @@ ms.component: face-api
 ms.topic: article
 ms.date: 03/01/2018
 ms.author: sbowles
-ms.openlocfilehash: bb3ee9431f24a51dfd3877f1c4d621f7ba633b96
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: fb1d14ff80bf53adc3008d79cc998739ffffde1b
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35347599"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37048669"
 ---
-# <a name="what-is-face-api"></a>Mi az a Arcfelismerési API-t?
+# <a name="what-is-face-api"></a>Mi a Face API?
 
 Üdvözli a Microsoft Arcfelismerési API-val, a legtöbb haladó arcfelismerési algoritmusok biztosító felhőalapú szolgáltatás. Arcfelismerési API két fő funkciókkal rendelkezik: attribútumokkal rendelkező észlelési szembesülhetnek, és a felismerési szembesülhetnek.
 
@@ -85,6 +85,8 @@ Az alábbi oktatóanyagok bemutatják az alapvető funkciók Arcfelismerési API
 
 Vessen egy pillantást a Arcfelismerési API-t használó alkalmazásokat.
 
+- [Microsoft Arcfelismerési API: Windows ügyféloldali kódtár & minta](https://github.com/Microsoft/Cognitive-Face-Windows)
+  - Azt mutatja be, több forgatókönyv szerint Arcfelismerési észlelési, elemzés és azonosító WPF mintaalkalmazást.
 - [FamilyNotes UWP-alkalmazást](https://github.com/Microsoft/Windows-appsample-familynotes)
   - Univerzális Windows Platform (UWP) mintaalkalmazás, amely beszéd átalakítás, Cortana, szabadkézi és forgatókönyv megosztását család Megjegyzés a fényképezőgép használatát mutatja.
 - [Videó keret elemzési minta](https://github.com/microsoft/cognitive-samples-videoframeanalysis)

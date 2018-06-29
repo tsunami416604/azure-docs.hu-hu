@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 08/24/2017
 ms.author: briz
-ms.openlocfilehash: 82a3ebcf4d208b550a792deddba5ce214105af13
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: c4d0b5d5ba429dc5d839fa054476461f96a52143
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34632747"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37030733"
 ---
 # <a name="overview-of-device-management-with-iot-hub"></a>Az IoT Hub-eszközfelügyelet áttekintése
 
@@ -51,16 +51,16 @@ A teljes megoldás megvalósításához számos eszközkezelői követelménynek
 
 * **Tervezés**: Lehetővé teszi a kezelők számára olyan eszközmetaadat-séma létrehozását, amellyel egyszerű és pontos lekérdezés végezhető el egy adott eszközcsoporton a tömeges felügyeleteken. Az ikereszközök használatával e metaadatokat címkék és tulajdonságok formájában tárolhatja.
   
-    *További információk*: [Ikereszközök – első lépések][lnk-twins-getstarted], [Az ikereszközök áttekintése][lnk-twins-devguide], [Az ikertulajdonságok használata][lnk-twin-properties]
+    *A további olvasási*: [Ismerkedés az eszköz twins][lnk-twins-getstarted], [eszköz twins ismertetése][lnk-twins-devguide], [hogyan használja a két eszköztulajdonságok][lnk-twin-properties], [ajánlott eljárások az eszköz konfigurációs belül egy IoT-megoldás][lnk-adm-best-practices].
 * **Üzembe helyezés**: Lehetővé teszi az új IoT Hub-eszközök biztonságos üzembe helyezését, valamint a kezelők számára az eszközök képességeinek azonnali elsajátítását.  Az IoT Hub-identitásjegyzék alkalmazásával rugalmas eszközidentitások és -hitelesítő adatok hozhatók létre, illetve egy feladat használatával ez a művelet tömegesen is végrehajtható. Az eszközök felépítését úgy végezze el, hogy azok képességei és állapotai az ikereszköz tulajdonságaiban nyomon követhetőek legyenek.
   
-    *További információk*: [Eszközidentitások kezelése][lnk-identity-registry], [Az eszközidentitások tömeges kezelése][lnk-bulk-identity], [Az ikertulajdonságok használata][lnk-twin-properties], [Azure IoT Hub Device Provisioning Service][lnk-dps].
+    *A további olvasási*: [eszköz Identitáskezelést][lnk-identity-registry], [felügyeleti eszköz identitások tömeges][lnk-bulk-identity], [Iker eszköztulajdonságok használata][lnk-twin-properties], [ajánlott eljárások az eszköz konfigurációs belül egy IoT-megoldás][lnk-adm-best-practices], [Azure IoT Hub eszköz-üzembehelyezési szolgáltatás][lnk-dps].
 * **Konfigurálás**: az eszközök kötegelt konfigurációmódosításainak és belső vezérlőprogramjuk frissítéseinek megkönnyítése üzemi állapotuk és biztonságuk megőrzésével. A kívánt tulajdonságok, illetve közvetlen módszerek és szórásos feladatok használatával ezek az eszközfelügyeleti műveletek tömegesen is végrehajthatók.
   
-    *További információk*: [Közvetlen metódusok használata][lnk-c2d-methods], [Közvetlen metódus meghívása egy eszközön][lnk-methods-devguide], [Az ikertulajdonságok használata][lnk-twin-properties], [Feladatok ütemezése és szórása][lnk-jobs], [Feladatok ütemezése több eszközön][lnk-jobs-devguide]
+    *A további olvasási*: [iker eszköztulajdonságok használata][lnk-twin-properties], [konfigurálása és figyelheti az IoT-eszközök léptékű][lnk-adm-how-to], [ Ajánlott eljárások az eszköz konfigurációs belül egy IoT-megoldás][lnk-adm-best-practices].
 * **Figyelés**: A teljes eszközgyűjtemény és a folyamatban lévő műveletek állapotának figyelése, valamint a kezelők riasztása az esetlegesen figyelmet érdemlő problémák kapcsán.  Az ikereszközök alkalmazásával az eszközök képesek a valós idejű működési feltételek és a frissítési műveletek állapotának jelentésére. Nagyteljesítményű irányítópulti jelentések hozhatók létre, amelyek az ikereszköz-lekérdezések használatával felszínre hozzák az azonnali intézkedést igénylő problémákat.
   
-    *További információ*: [Az ikertulajdonságok használata][lnk-twin-properties], [IoT Hub lekérdezési nyelv az ikereszközökhöz és feladatokhoz, valamint az üzenettovábbításhoz][lnk-query-language].
+    *A további olvasási*: [iker eszköztulajdonságok használata][lnk-twin-properties], [IoT-központ lekérdezési nyelv eszköz twins, a feladatok és az üzenet-útválasztás] [ lnk-query-language], [Konfigurálása és figyelheti az IoT-eszközök léptékű][lnk-adm-how-to], [ajánlott eljárások az eszköz konfigurációs belül egy IoT-megoldás] [lnk-adm-best-practices].
 * **Kivonás**: az eszközök lecserélése vagy leszerelése meghibásodás vagy frissítési ciklus után, illetve a szolgáltatás élettartamának végén.  Az ikereszközök használatával az eszközinformációk abban az esetben is megőrizhetők, ha a fizikai eszközt kicserélik vagy a kivonás során archiválják. Az IoT Hub-identitásjegyzék alkalmazásával lehetséges az eszközidentitások és -hitelesítő adatok biztonságos visszahívása.
   
     *További információk*: [Az ikertulajdonságok használata][lnk-twin-properties], [Eszközidentitások kezelése][lnk-identity-registry]
@@ -77,7 +77,7 @@ Az IoT Hub az alábbi eszközfelügyeleti mintákat engedélyezi.  Az [eszközfe
 * **Konfigurálás** – A háttéralkalmazás az eszköz kívánt tulajdonságait felhasználva konfigurálja az eszközön futó szoftvert.  Az eszköz a jelentett tulajdonságokat felhasználva frissíti az eszköz konfigurálási állapotát.
   
     ![Az eszközfelügyelet konfigurációs mintájának ábrája][img-config_pattern]
-* **Belső vezérlőprogram frissítése** – A háttéralkalmazás közvetlen módszerrel értesíti az eszközt arról, hogy kezdeményezte a belső vezérlőprogram frissítését.  Az eszköz többlépéses folyamatot kezdeményez, amelynek keretében megtörténik a belső vezérlőprogram rendszerképének letöltése és alkalmazása, végül pedig az IoT Hub-szolgáltatáshoz történő újracsatlakozás.  A több lépésből álló folyamat során az eszköz a jelentett tulajdonságokat felhasználva frissíti az eszköz előrehaladását és állapotát.
+* **Belső vezérlőprogram frissítési** -a háttér-alkalmazás az automatikus Eszközkezelési konfiguráció segítségével válassza ki a eszközöket kapja meg, hogy az eszközök hol keresse meg a frissítést, és a frissítési folyamat figyelésére, a frissítést. Az eszköz letöltéséhez, győződjön meg arról, és alkalmazza a belső vezérlőprogram lemezképet, és indítsa újra az eszközt az IoT-központ szolgáltatáshoz újracsatlakozás előtt a többlépéses folyamatot indít el.  A több lépésből álló folyamat során az eszköz a jelentett tulajdonságokat felhasználva frissíti az eszköz előrehaladását és állapotát.
   
     ![Az eszközfelügyelet belsővezérlőprogram-frissítési mintájának ábrája][img-fwupdate_pattern]
 * **Előrehaladási és állapotjelentések** – A megoldás a háttérben ikereszköz-lekérdezéseket futtat több eszközön, így képes az eszközökön futó műveletek állapotának és előrehaladásának jelentésére.
@@ -111,3 +111,5 @@ Ha szeretne részletesebben is megismerkedni az IoT Hub eszközfelügyeleti funk
 [lnk-jobs]: iot-hub-node-node-schedule-jobs.md
 [lnk-jobs-devguide]: iot-hub-devguide-jobs.md
 [lnk-dps]: https://azure.microsoft.com/documentation/services/iot-dps
+[lnk-adm-best-practices]: iot-hub-configuration-best-practices.md
+[lnk-adm-how-to]: iot-hub-auto-device-config.md

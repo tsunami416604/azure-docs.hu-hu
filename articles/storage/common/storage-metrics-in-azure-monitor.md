@@ -14,11 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: storage
 ms.date: 09/05/2017
 ms.author: fryu
-ms.openlocfilehash: b1d82f9b527a62109e0301907b87bd683f9912af
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 05021d5ab8d33e36bff16ce7d2ebacd3db72639a
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37036040"
 ---
 # <a name="azure-storage-metrics-in-azure-monitor"></a>Azure Storage-metrikák az Azure Monitorban
 
@@ -38,7 +39,7 @@ Figyelheti a metrikák adott idő alatt az Azure portálon. A következő példa
 
 ![Képernyőkép a metrikát a az Azure-portál elérése](./media/storage-metrics-in-azure-monitor/access-metrics-in-portal.png)
 
-A dimenziók támogató metrika szűrheti kell a kívánt dimenzió értékű. A következő példa bemutatja, hogyan megtekintéséhez **tranzakciók** a fiók szintjén **sikeres** válaszának típusa.
+A dimenziók támogató metrika a kívánt dimenzióérték metrika végezhet. A következő példa bemutatja, hogyan megtekintéséhez **tranzakciók** egy bizonyos művelet értékeinek kijelölésével fiók szintjén **API-név** dimenzió.
 
 ![képernyőfelvétel az Azure portálon dimenzió metrikák elérése](./media/storage-metrics-in-azure-monitor/access-metrics-in-portal-with-dimension.png)
 
@@ -317,7 +318,7 @@ Az alábbiakban látható ad meg az erőforrás-azonosítója a tárolási szolg
 /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{storageAccountName}/queueServices/default
 `
 * Szolgáltatás erőforrás-azonosító `
-/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{storageAccountName}/fileServices/default
+/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{storageAccountName}/default
 `
 
 ### <a name="resource-id-in-azure-monitor-rest-api"></a>Erőforrás-azonosító az Azure figyelő REST API-n
@@ -402,6 +403,12 @@ A metrikák támogató dimenziók esetében meg kell adnia a megfelelő mérősz
 ## <a name="service-continuity-of-legacy-metrics"></a>A szolgáltatás folytonosságának örökölt mérőszámokat
 
 A hagyományos metrikák felügyelt Azure-figyelő metrikák párhuzamosan érhetők el. A támogatási tartja azonos mindaddig, amíg az Azure Storage karakterlánccal végződik-e a szolgáltatás örökölt mérőszámokat.
+
+## <a name="faq"></a>GYIK
+
+**Azure Storage támogatja a mérőszámok lemezek felügyelt vagy nem felügyelt lemezek?**
+
+Nem, Azure számítási támogatja a mérőszámok lemezeken. Lásd: [cikk](https://azure.microsoft.com/en-us/blog/per-disk-metrics-managed-disks/) további részleteket.
 
 ## <a name="next-steps"></a>További lépések
 

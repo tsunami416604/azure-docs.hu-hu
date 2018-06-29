@@ -13,19 +13,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/22/2018
 ms.author: jingwang
-ms.openlocfilehash: 8e3c4ec0062b6a155d0f4b11da1c699a0906c442
-ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
+ms.openlocfilehash: 338df0e258f66b6639e59a4fe31b6cfb6c283dd3
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/22/2018
-ms.locfileid: "36318228"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37045527"
 ---
 # <a name="schema-mapping-in-copy-activity"></a>A másolási tevékenység séma-hozzárendelése
 Ez a cikk ismerteti, hogyan működik az Azure Data Factory másolási tevékenység során a séma-hozzárendelése és a forrásadatok adatok gyűjtésének adattípus-leképezés amikor hajtsa végre az adatok másolását.
-
-> [!NOTE]
-> Ez a cikk a Data Factory 2. verziójára vonatkozik, amely jelenleg előzetes verzióban érhető el. Ha a Data Factory szolgáltatás általánosan elérhető 1. verzióját használja, lásd: [A Data Factory 1. verziójának dokumentációja](v1/data-factory-introduction.md).
-
 
 ## <a name="column-mapping"></a>Oszlop leképezése
 

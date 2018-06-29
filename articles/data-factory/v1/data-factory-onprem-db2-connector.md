@@ -14,20 +14,20 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: fc4ce0a2ae33e99ecede371d9f17fb9a63851f64
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 88e56f522545f9c1f38bf0d0fdbcebdc171c294b
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34622023"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37046530"
 ---
 # <a name="move-data-from-db2-by-using-azure-data-factory-copy-activity"></a>Azure Data Factory másolási tevékenység segítségével DB2 tárolt adatok mozgatása
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [1. verzió – Általánosan elérhető](data-factory-onprem-db2-connector.md)
-> * [2. verzió – Előzetes verzió](../connector-db2.md)
+> * [1-es verziójával](data-factory-onprem-db2-connector.md)
+> * [(Az aktuális verzió) 2-es verzió](../connector-db2.md)
 
 > [!NOTE]
-> Ez a cikk a Data Factory általánosan elérhető 1. verziójára vonatkozik. Lásd a 2-es verziójának a Data Factory szolgáltatásnak, amely jelenleg előzetes verzióban érhető, használatakor [DB2-összekötő a V2](../connector-db2.md).
+> Ez a cikk a Data Factory 1 verziójára vonatkozik. A Data Factory szolgáltatásnak aktuális verziójának használatakor lásd [DB2-összekötő a V2](../connector-db2.md).
 
 
 Ez a cikk azt ismerteti, hogyan használható másolási tevékenység az Azure Data Factory adatok másolása egy helyszíni DB2-adatbázishoz a tárolóban. Bármely tároló, amely egy támogatott fogadó a blokkolandóként adatokat másolhat a [adat-előállító adatok mozgása tevékenységek](data-factory-data-movement-activities.md#supported-data-stores-and-formats) cikk. Ez a témakör a Data Factory cikket, amely áttekintést nyújt az adatátvitelt jelölik a másolási tevékenység segítségével, és felsorolja a támogatott adatokat tároló kombinációk épül. 
@@ -87,12 +87,12 @@ Az alábbi táblázat a DB2 rendszerhez kapcsolódó szolgáltatásra vonatkozó
 | **database** |Neve a DB2-adatbázishoz. |Igen |
 | **schema** |A DB2-adatbázishoz a séma neve. Ez a tulajdonság a kis-és nagybetűket. |Nem |
 | **authenticationType** |A DB2-adatbázishoz való kapcsolódáshoz használt hitelesítés típusa. A lehetséges értékek: névtelen, alapszintű és a Windows. |Igen |
-| **Felhasználónév** |A Basic vagy Windows-hitelesítés használata esetén a felhasználói fiók nevét. |Nem |
-| **Jelszó** |A felhasználói fiók jelszavát. |Nem |
+| **felhasználónév** |A Basic vagy Windows-hitelesítés használata esetén a felhasználói fiók nevét. |Nem |
+| **jelszó** |A felhasználói fiók jelszavát. |Nem |
 | **gatewayName** |Az átjáró, amely használatával a Data Factory szolgáltatásnak csatlakoznia a helyszíni DB2-adatbázishoz való kapcsolódáshoz neve. |Igen |
 
 ## <a name="dataset-properties"></a>Adatkészlet tulajdonságai
-A szakaszok és meghatározásához adatkészletek rendelkezésre álló tulajdonságok listáját lásd: a [adatkészletek létrehozása](data-factory-create-datasets.md) cikk. Szakasz, például a **struktúra**, **rendelkezésre állási**, és a **házirend** adatkészlet JSON hasonlóak az összes adatkészlet esetében (Azure SQL Azure Blob Storage tárolóban, Azure Table storage és így tovább).
+A szakaszok és meghatározásához adatkészletek rendelkezésre álló tulajdonságok listáját lásd: a [adatkészletek létrehozása](data-factory-create-datasets.md) cikk. Szakasz, például a **struktúra**, **rendelkezésre állási**, és a **házirend** adatkészlet JSON hasonlóak az összes adatkészlet esetében (Azure SQL, Azure Blob Storage tárolóban, az Azure Table-tároló és így tovább).
 
 A **typeProperties** szakasz eltérő adatkészlet egyes típusai és információkat nyújt azokról az adattárban adatok helyét. A **typeProperties** szakasz egy adatkészlet típusú **RelationalTable**, mely tartalmazza a DB2 adatkészlet a következő tulajdonság tartozik:
 
@@ -101,7 +101,7 @@ A **typeProperties** szakasz eltérő adatkészlet egyes típusai és informáci
 | **Táblanév** |A tábla, amelyre a társított szolgáltatás hivatkozik DB2-adatbázispéldány neve. Ez a tulajdonság a kis-és nagybetűket. |Nem (Ha a **lekérdezés** tulajdonság típusa másolási tevékenység **RelationalSource** van megadva) |
 
 ## <a name="copy-activity-properties"></a>Másolási tevékenység tulajdonságai
-A szakaszok és definiálása a másolási tevékenység rendelkezésre álló tulajdonságok listáját lásd: a [létrehozása folyamatok](data-factory-create-pipelines.md) cikk. Másolja a tevékenység tulajdonságai, például a **neve**, **leírása**, **bemenetek** tábla, **kimenete** tábla, és **házirend**, tevékenységi érhetők el. Az elérhető tulajdonságok a **typeProperties** szakasz a tevékenység eltérőek az egyes tevékenységhez. A másolási tevékenység során a tulajdonságok az adatforrások és mosdók függenek.
+A szakaszok és definiálása a másolási tevékenység rendelkezésre álló tulajdonságok listáját lásd: a [létrehozása folyamatok](data-factory-create-pipelines.md) cikk. Másolja a tevékenység tulajdonságai, például a **neve**, **leírás**, **bemenetek** tábla, **kimenete** tábla, és **házirend**, minden típusú tevékenységek érhetők el. Az elérhető tulajdonságok a **typeProperties** szakasz a tevékenység eltérőek az egyes tevékenységhez. A másolási tevékenység során a tulajdonságok az adatforrások és mosdók függenek.
 
 A másolási tevékenység, ha az adatforrás típusú **RelationalSource** (amely tartalmazza a DB2 rendszerhez), a következő tulajdonságok érhetők el a **typeProperties** szakasz:
 
@@ -322,19 +322,19 @@ A következő megfeleltetéseket szolgálnak, amikor a másolási tevékenység 
 | Time |A TimeSpan |
 | Időbélyeg |DateTime |
 | Xml |Byte] |
-| Karakter |Karakterlánc |
-| VarChar |Karakterlánc |
-| LongVarChar |Karakterlánc |
-| DB2DynArray |Karakterlánc |
+| karakter |Sztring |
+| VarChar |Sztring |
+| LongVarChar |Sztring |
+| DB2DynArray |Sztring |
 | Bináris |Byte] |
 | VarBinary |Byte] |
 | LongVarBinary |Byte] |
-| Kép |Karakterlánc |
-| VarGraphic |Karakterlánc |
-| LongVarGraphic |Karakterlánc |
-| CLOB |Karakterlánc |
+| Kép |Sztring |
+| VarGraphic |Sztring |
+| LongVarGraphic |Sztring |
+| CLOB |Sztring |
 | Blob |Byte] |
-| DbClob |Karakterlánc |
+| DbClob |Sztring |
 | SmallInt |Int16 |
 | Egész szám |Int32 |
 | BigInt |Int64 |
@@ -348,7 +348,7 @@ A következő megfeleltetéseket szolgálnak, amikor a másolási tevékenység 
 | Time |A TimeSpan |
 | Időbélyeg |DateTime |
 | Xml |Byte] |
-| Karakter |Karakterlánc |
+| karakter |Sztring |
 
 ## <a name="map-source-to-sink-columns"></a>Térkép forrás oszlopok gyűjtése
 A forrás adatkészletben levő oszlopok hozzárendelése oszlop szerepel a fogadó dataset, lásd: [Azure Data Factory dataset oszlopai leképezési](data-factory-map-columns.md).

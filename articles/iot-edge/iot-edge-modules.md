@@ -8,14 +8,14 @@ ms.date: 02/15/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 60c2c17d7a5cca66a6323f43e1ab2662afff54ee
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 9c196ec92fc7997617fa464d676dc93ca9fe84f0
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34630836"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37029090"
 ---
-# <a name="understand-azure-iot-edge-modules---preview"></a>Azure IoT peremhálózati modulok megismerése – előzetes
+# <a name="understand-azure-iot-edge-modules"></a>Azure IoT peremhálózati modulok ismertetése
 
 Az Azure IoT peremhálózati lehetővé teszi, hogy telepíthetnek és kezelhetnek olyan üzleti logika formájában oldal *modulok*. Azure IoT peremhálózati modulok a legkisebb egység kezeli az IoT-Edge-számítás, és Azure-szolgáltatásokhoz (például az Azure Stream Analytics) vagy a saját Megoldásfüggő kódot tartalmazhatnak. Hogyan modulok kifejlesztett, telepített, és karbantartott, négy fogalmi alkotóelemeit modul gondol segít megérteni:
 
@@ -60,6 +60,17 @@ await client.OpenAsync();
 // Get the model twin 
 Twin twin = await client.GetTwinAsync(); 
 ```
+
+## <a name="offline-capabilities"></a>Kapcsolat nélküli képességek
+
+Azure IoT peremhálózati támogatja az IoT-Edge eszközök offline műveleteket. Ezek a képességek legfeljebb a lépést, és további helyzeteket is vannak fejlesztés alatt áll. 
+
+IoT peremhálózati modulok hosszabb ideig offline állapotban lehet, mindaddig, amíg a következő feltételek teljesülnek: 
+
+* **Üzenet-élettartama (TTL) még mindig érvényes**. Üzenet TTL alapértelmezett értéke két óra, de módosított magasabb vagy alacsonyabb lehet a tárolóban és továbbítsa az IoT él konfiguráció központ beállításait. 
+* **Modulok nem kell újból hitelesítésre a peremhálózati IoT hubbal nélküli**. Modulok csak hitelesítheti a peremhálózati hubs, amelyek rendelkeznek egy aktív kapcsolatot létesít az IoT-központ. Modulok kell újra hitelesíteni, ha bármilyen okból újraindítást. Modulok továbbra is küldhet üzeneteket a peremhálózati hub után a SAS-token érvényessége lejárt. Ha folytatja a kapcsolatot, a peremhálózati hub egy új jogkivonatot kér a modul, és és az IoT hub érvényesíti azt. Ha sikeres, a peremhálózati hub továbbítja modul tárolt, még akkor is a távozó üzeneteinek során a modul token lejárt. 
+* **A modult, amely során az üzenetek küldése offline működőképességét amikor a kapcsolat folytatása**. Az IoT-központ csatlakozni, akkor a peremhálózati hub kell érvényesítenie egy új modul token (ha az előzőre lejárt) előtt továbbíthatja a modul üzenetek. Ha a modul nem egy új jogkivonatot kínálnak, nem a modul tárolt üzenetek hajthat végre a peremhálózati központ. 
+* **Az Edge-hubhoz hely a lemezen tárolja az üzeneteket**. Alapértelmezés szerint üzenetek a peremhálózati hub tároló filesystem vannak tárolva. Nincs olyan konfigurációs beállítás határozza meg az üzenetek tárolásához helyette csatlakoztatott kötetet. Mindkét esetben kell adni a késleltetett kézbesítéséhez az IoT-központ üzenetek tárolásához rendelkezésre álló terület.  
 
 ## <a name="next-steps"></a>További lépések
  - [Az Azure IoT peremhálózati futásidejű és az architektúra][lnk-runtime]

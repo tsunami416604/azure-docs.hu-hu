@@ -11,15 +11,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/22/2018
+ms.date: 03/22/2018
 ms.author: mabrigg
 ms.reviewer: alfredop
-ms.openlocfilehash: 763b0af9c258a70392e8c7ebbb4c107e94fce5b2
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: 46e46cfea621f99e150446fcc75b71feb468fa49
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2018
-ms.locfileid: "29877279"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37052698"
 ---
 # <a name="provider-resource-usage-api"></a>Szolgáltatói erőforrás-használati API
 A kifejezés *szolgáltató* minden vonatkozik, a szolgáltatás-rendszergazda vagy olyan meghatalmazott szolgáltatót. Azure verem operátorok és delegált szolgáltatók használatával a szolgáltató használati API tekintse meg a közvetlen bérlőiknek. Például ahogy az ábrán is látható, P0 hívhatják meg a szolgáltató a P1 tartozó használati adatainak megszerzése API, és P2 tartozó közvetlen használatát, és P1 P3 és P4 használati információt kérjen.
@@ -34,12 +34,12 @@ API használata egy szolgáltató API-t, így a hívó egy a szolgáltató előf
 
 | **Módszer** | **Kérelem URI-azonosítója** |
 | --- | --- |
-| GET |https://{armendpoint}/subscriptions/{subId}/providers/Microsoft.Commerce/subscriberUsageAggregates?reportedStartTime={reportedStartTime}&reportedEndTime={reportedEndTime}&aggregationGranularity={granularity}&subscriberId={sub1.1}&api-version=2015-06-01-preview&continuationToken={token-value} |
+| GET |https://{armendpoint}/subscriptions/{subId}/providers/Microsoft.Commerce.Admin/subscriberUsageAggregates?reportedStartTime={reportedStartTime}&reportedEndTime={reportedEndTime}&aggregationGranularity={granularity} & subscriberId = {sub1.1} & api-version = 2015-06-01. dátumú előnézeti & continuationToken = {jogkivonat-value} |
 
 ### <a name="arguments"></a>Argumentumok
 | **Argumentum** | **Leírás** |
 | --- | --- |
-| *armendpoint* |Az Azure Resource Manager végpont Azure verem környezet. Az Azure-verem egyezmény, hogy az Azure Resource Manager-végpont neve nem formátumú `https://adminmanagement.{domain-name}`. Például a csomag, ha a tartománynév *local.azurestack.external*, akkor a Resource Manager-végpont esetében `https://adminmanagement.local.azurestack.external`. |
+| *Armendpoint* |Az Azure Resource Manager végpont Azure verem környezet. Az Azure-verem egyezmény, hogy az Azure Resource Manager-végpont neve nem formátumú `https://adminmanagement.{domain-name}`. Például a csomag, ha a tartománynév *local.azurestack.external*, akkor a Resource Manager-végpont esetében `https://adminmanagement.local.azurestack.external`. |
 | *subId* |Előfizetés-azonosítója a felhasználó, aki a hívást. |
 | *reportedStartTime* |Kezdési időpontja a lekérdezést. A következő *DateTime* az egyezményes világidő (UTC) és a például 13:00 óra elején kell lennie. A napi aggregáció UTC éjfél érték beállítása. A formátum *escape-karaktersorozatot* ISO 8601. Például *2015-06-16T18 % 3a53 % 3a11 % 2b00 % 3a00Z*, ahol a kettőspont escape-karakterrel megjelölve a *% 3a* és a plusz escape-karakterrel megjelölve a *% 2b* úgy, hogy rövid URI. |
 | *reportedEndTime* |Befejezési időpontja a lekérdezést. A vonatkozó megkötések *reportedStartTime* ezt az argumentumot is vonatkozik. A következő *reportedEndTime* értéke nem lehet a jövőben vagy az aktuális dátumot. Ha igen, az eredmény értéke "feldolgozása nem teljes." |
@@ -49,7 +49,7 @@ API használata egy szolgáltató API-t, így a hívó egy a szolgáltató előf
 | *continuationToken* |A használati API szolgáltató legutóbbi hívásának jogkivonatot beolvasni. Ez a token van szükség, ha egy válasz érték nagyobb, mint 1000 sorok, és úgy működik, mint egy könyvjelzőt folyamatához. Ha a jogkivonat nincs megadva, a nap kezdetén az adatok lekérésére, vagy átadott óra, a részletesség alapján. |
 
 ### <a name="response"></a>Válasz
-GET /subscriptions/sub1/providers/Microsoft.Commerce/subscriberUsageAggregates?reportedStartTime=reportedStartTime=2014-05-01T00%3a00%3a00%2b00%3a00&reportedEndTime=2015-06-01T00%3a00%3a00%2b00%3a00&aggregationGranularity=Daily&subscriberId=sub1.1&api-version=1.0
+/Subscriptions/sub1/providers/Microsoft.Commerce.Admin/subscriberUsageAggregates?reportedStartTime=reportedStartTime=2014-05-01T00%3a00%3a00%2b00%3a00 és reportedEndTime LEKÉRÉSE = 2015-06-01T00 % 3a00 % 3a00 % 2b00 % 3a00 & aggregationGranularity = napi & subscriberId sub1.1 & api-version = = 1.0
 
 ```json
 {
@@ -57,11 +57,11 @@ GET /subscriptions/sub1/providers/Microsoft.Commerce/subscriberUsageAggregates?r
 {
 
 "id":
-"/subscriptions/sub1.1/providers/Microsoft.Commerce/UsageAggregate/sub1.1-
+"/subscriptions/sub1.1/providers/Microsoft.Commerce.Admin/UsageAggregate/sub1.1-
 
 meterID1",
 "name": "sub1.1-meterID1",
-"type": "Microsoft.Commerce/UsageAggregate",
+"type": "Microsoft.Commerce.Admin/UsageAggregate",
 
 "properties": {
 "subscriptionId":"sub1.1",
@@ -82,12 +82,12 @@ meterID1",
 | --- | --- |
 | *id* |A használati összesítés egyedi azonosítója. |
 | *name* |A használati összesítés neve. |
-| *Típusa* |Erőforrás-definícióban. |
+| *type* |Erőforrás-definícióban. |
 | *subscriptionId* |Előfizetés-azonosító az Azure-verem felhasználó. |
 | *usageStartTime* |UTC kezdési időpontja a használati gyűjtő, amelyhez az használati összesítés tartozik.|
 | *usageEndTime* |Befejezési időpontja UTC a használati gyűjtő, amelyhez az használati összesítés tartozik. |
 | *instanceData* |Kulcs-érték pár (új formátumban) példány részletei:<br> *resourceUri*: teljesen minősített az erőforrás-azonosító, amely tartalmazza az erőforráscsoportok és a példány nevét. <br> *hely*: régióban, amelyben ez a szolgáltatás futtatták. <br> *címkék*: a felhasználó által megadott erőforrás-címkéket. <br> *additionalinfo részben*: részletesebben az erőforrást a felhasznált, például az operációs rendszer verziója vagy a kép típusa. |
-| *mennyiség* |Ez időkereten belül történt hálózatierőforrás-fogyasztás mennyisége. |
+| *Mennyiség* |Ez időkereten belül történt hálózatierőforrás-fogyasztás mennyisége. |
 | *meterId* |Az erőforrás, a felhasznált egyedi azonosítója (más néven *ResourceID*). |
 
 

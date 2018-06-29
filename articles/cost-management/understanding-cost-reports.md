@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 04/26/2018
+ms.date: 06/18/2018
 ms.topic: conceptual
 ms.service: cost-management
 manager: dougeby
 ms.custom: ''
-ms.openlocfilehash: b2f33a8dce441312e74688ca766ab65c028451d9
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 75709e099c6126997d91bf4b679de473fc75a485
+ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32167892"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37064004"
 ---
 # <a name="understanding-cost-management-reports"></a>Költség jelentések ismertetése
 
@@ -121,7 +121,7 @@ Az előző ábrán minden számozott területen a következő információ rész
     -   **Használat típusa**
           - Használat típusa lehet díjak egyszeri vagy ismétlődő díjakat.
 
-5. **szűrők**
+5. **Szűrők**
 
     Egyetlen vagy többszörös kiválasztási szűrők segítségével beállíthatja a kijelölt értékekre tartományokat. Szeretne szűrőt beállítani, kattintson a **Hozzáadás** , és válassza ki a szűrő kategóriákat és az értékeket.
 
@@ -141,7 +141,7 @@ Az előző ábrán minden számozott területen a következő információ rész
 
   A sablon, válassza a **költség Amortized** vagy **tényleges költség**.
 
-8. **Megoldás**
+8. **megoldás**
 
     Megoldás segítségével válassza ki a kijelölt dátumtartományban idő felbontása. A idő felbontása határozza meg, hogyan jelennek meg a jelentés egységeket, és lehet:
     - Napi
@@ -162,7 +162,7 @@ Az előző ábrán minden számozott területen a következő információ rész
 
     A megjelenítése/elrejtése beállítás nincs hatással a jelentésekben.
 
-12.   **megjelenítési formátum**
+12.   **Megjelenítési formátum**
 
     Megjelenítési formátum segítségével válassza ki a grafikon vagy tábla különböző nézeteket.
 
@@ -175,6 +175,10 @@ Az előző ábrán minden számozott területen a következő információ rész
 14. **Műveletek**
 
     Műveletek segítségével mentése, exportálhatja vagy ütemezni a jelentést.
+
+15. **Szabályzat**
+
+    Bár nem használatosak, a bizonyos jelentéseket tartalmazza a tervezett költség számítási házirendet. A jelentésekben a **konszolidált** házirend minden fiókjaihoz és előfizetéseihez alatt az aktuális entitás, például a Microsoft regisztrációs vagy AWS fizető javaslatok jeleníti meg. A **önálló** házirend mutatja egy fiók vagy előfizetés ajánlásokat, mintha csak egyetlen másik előfizetés létezik. A kiválasztott házirendet az optimalizálás stratégiát a szervezet által használt függően változik. Költség leképezések az elmúlt 30 napban használati alapulnak.
 
 ## <a name="save-and-schedule-reports"></a>Mentse és jelentések ütemezése
 
@@ -199,4 +203,5 @@ Kattintson a jelentés megtekintésekor **műveletek** , és válassza **összes
 
 ## <a name="next-steps"></a>További lépések
 
-- Ha még nem fejezte első oktatóanyaga, amely költség-kezelésre, olvassa el a [tekintse át a használati és költségek](tutorial-review-usage.md).
+- További tudnivalók a jelentések, amelyek szerepelnek a Cloudyn [használata költség felügyeleti jelentések](use-reports.md).
+- Megtudhatja, hogyan jelentések létrehozásához használandó [irányítópultok](dashboards.md).

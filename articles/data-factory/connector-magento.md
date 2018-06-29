@@ -1,5 +1,5 @@
 ---
-title: Adatok másolása az Azure Data Factory (előzetes verzió) használatával Magento |} Microsoft Docs
+title: Adatok másolása az Azure Data Factory használatával Magento |} Microsoft Docs
 description: 'Útmutató: adatok másolása Magento támogatott fogadó adattárolókhoz egy Azure Data Factory-folyamat a másolási tevékenység használatával.'
 services: data-factory
 documentationcenter: ''
@@ -13,19 +13,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/15/2018
 ms.author: jingwang
-ms.openlocfilehash: fc37b9f678a9864ba5c2a79bd1544d0082275b89
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: cdea8b6f24673186e3a3d2b44183b2c622aaaf41
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "36337848"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37047173"
 ---
-# <a name="copy-data-from-magento-using-azure-data-factory-preview"></a>Adatok másolása az Azure Data Factory (előzetes verzió) használatával Magento
+# <a name="copy-data-from-magento-using-azure-data-factory"></a>Adatok másolása az Azure Data Factory használatával Magento
 
 Ez a cikk ismerteti, hogyan használható a másolási tevékenység az Azure Data Factory adatokat másolni Magento. Buildekről nyújtanak a [másolása tevékenység áttekintése](copy-activity-overview.md) cikket, amely megadja a másolási tevékenység általános áttekintést.
-
-> [!NOTE]
-> Ez a cikk a Data Factory 2. verziójára vonatkozik, amely jelenleg előzetes verzióban érhető el. A Data Factory szolgáltatásnak, amely általánosan elérhető (GA), 1 verziójának használatakor lásd [másolási tevékenység során a V1](v1/data-factory-data-movement-activities.md).
 
 > [!IMPORTANT]
 > Ez az összekötő jelenleg előzetes verzió. Próbálja ki, és küldjön visszajelzést. Ha függőséget szeretne felvenni a megoldásában található előzetes verziójú összekötőkre, lépjen kapcsolatba az [Azure-támogatással](https://azure.microsoft.com/support/).

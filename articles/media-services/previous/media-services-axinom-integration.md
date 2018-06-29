@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/19/2017
 ms.author: willzhan;Mingfeiy;rajputam;Juliako
-ms.openlocfilehash: 0aaf0eea0414d234c9a24f707df5eed491a61c08
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 81247863eb86752113989f6e48e79f5c8bc75505
+ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33788794"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37061154"
 ---
 # <a name="using-axinom-to-deliver-widevine-licenses-to-azure-media-services"></a>Az Axinom használata a Widevine-licencek kézbestéséhez az Azure Media Servicesbe
 > [!div class="op_single_selector"]
@@ -59,7 +59,7 @@ Lásd: [JWT jogkivonat generációs](media-services-axinom-integration.md#jwt-to
 
 ## <a name="azure-media-player-preparation"></a>Az Azure Media Player előkészítése
 AMP v1.4.0 PlayReady és Widevine DRM-Védelemmel is dinamikusan csomagolt AMS tartalom lejátszását támogatja.
-Widevine-licenckiszolgáló nem token hitelesítés szükséges, ha nincs szükség további kell tennie a Widevine által védett DASH tartalom tesztelése. Tegyük fel, a AMP team biztosít egy egyszerű [minta](http://amp.azure.net/libs/amp/latest/samples/dynamic_multiDRM_PlayReadyWidevine_notoken.html), ahol megtekintheti a peremhálózati és IE11 a PlayReady és Widevine a Chrome működéséhez.
+Widevine-licenckiszolgáló nem token hitelesítés szükséges, ha nincs szükség további kell tennie a Widevine által védett DASH tartalom tesztelése. Tegyük fel, a AMP team biztosít egy egyszerű [minta](https://amp.azure.net/libs/amp/latest/samples/dynamic_multiDRM_PlayReadyWidevineFairPlay_notoken.html), ahol megtekintheti a peremhálózati és IE11 a PlayReady és Widevine a Chrome működéséhez.
 A Widevine licenckiszolgáló Axinom által biztosított JWT jogkivonat hitelesítést igényel. A JWT jogkivonat kell küldhető el az "X-AxDRM-üzenet" HTTP-fejléc licenc kérelmet. Erre a célra adja hozzá a következő javascript a weblapot üzemeltető AMP a forrás beállítása előtt kell:
 
     <script>AzureHtml5JS.KeySystem.WidevineCustomAuthorizationHeader = "X-AxDRM-Message"</script>
@@ -176,7 +176,7 @@ Természetesen többféleképpen is kulcs fenntartási beolvasandó azonosítój
     }
 
 ## <a name="summary"></a>Összegzés
-Widevine-támogatás az Azure Media Services Content Protection, mind az Azure Media Player legújabb hozzáadásával dolgozunk beállításától adatfolyamként való küldése a kötőjel + több-native-DRM (PlayReady + Widevine) mindkét AMS és Widevine licenckiszolgáló a Axinom a következő modern böngészők PlayReady licenc szolgáltatással:
+Widevine-támogatás az Azure Media Services Content Protection, mind az Azure Media Player legújabb hozzáadásával dolgozunk beállításától adatfolyamként való küldése a kötőjel + több-native-DRM (PlayReady + Widevine) mindkét AMS és Widevine-licenc PlayReady licenc szolgáltatással kiszolgáló Axinom a következő modern böngészők:
 
 * Chrome
 * Windows 10-es Microsoft Edge

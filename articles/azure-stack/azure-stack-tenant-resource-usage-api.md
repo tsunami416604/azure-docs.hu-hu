@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/22/2018
+ms.date: 03/26/2018
 ms.author: mabrigg
 ms.reviewer: alfredop
-ms.openlocfilehash: bc0b9993119342f07c28ed0384c11ae0f15bc439
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: 8472d8ce733c07641a7fa6d53aeb6909cd709990
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2018
-ms.locfileid: "29873487"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37048390"
 ---
 # <a name="tenant-resource-usage-api"></a>A bérlői API-erőforrás-használat
 
@@ -39,7 +39,7 @@ A kérelem lekérdezi a kért előfizetések és a kért időkeretet használat 
 ### <a name="arguments"></a>Argumentumok
 | **Argumentum** | **Leírás** |
 | --- | --- |
-| *armendpoint* |Az Azure Resource Manager végpont Azure verem környezet. Az Azure-verem egyezmény, hogy az Azure Resource Manager-végpont neve nem formátumú `https://management.{domain-name}`. Például a csomag, a tartománynév local.azurestack.external, akkor a Resource Manager-végpont esetében `https://management.local.azurestack.external`. |
+| *Armendpoint* |Az Azure Resource Manager végpont Azure verem környezet. Az Azure-verem egyezmény, hogy az Azure Resource Manager-végpont neve nem formátumú `https://management.{domain-name}`. Például a csomag, a tartománynév local.azurestack.external, akkor a Resource Manager-végpont esetében `https://management.local.azurestack.external`. |
 | *subId* |A felhasználó, aki a hívás előfizetés-azonosítója. Ez az API csak a lekérdezés egyetlen előfizetéssel használati is használhatja. Szolgáltatók használhatja a szolgáltató Erőforrás kihasználtsága API-t lekérdezés használatra az összes bérlőre vonatkozó. |
 | *reportedStartTime* |Kezdési időpontja a lekérdezést. A következő *dátum és idő* UTC szerint, és a például 13:00 óra elején kell lennie. A napi aggregáció UTC éjfél érték beállítása. A formátum *escape-karakterrel megjelölve* ISO 8601, például 2015-06-16T18 % 3a53 % 3a11 % 2b00 % 3a00Z, ahol kettőspont escape-karakterrel megjelölve a % 3a és plus escape-karakterrel megjelölve % 2b számára, hogy az URI rövid. |
 | *reportedEndTime* |Befejezési időpontja a lekérdezést. A vonatkozó megkötések *reportedStartTime* ezt az argumentumot is vonatkozik. A következő *reportedEndTime* a jövőben nem lehet. |
@@ -79,12 +79,12 @@ GET /subscriptions/sub1/providers/Microsoft.Commerce/UsageAggregates?reportedSta
 | --- | --- |
 | *id* |A használati összesítés egyedi azonosítója |
 | *name* |A használati összesítés neve |
-| *Típusa* |Az erőforrás-definíció |
+| *type* |Az erőforrás-definíció |
 | *subscriptionId* |A felhasználó Azure előfizetés-azonosító |
 | *usageStartTime* |A használati gyűjtő, amelyhez az használati összesítés tartozik UTC kezdete |
 | *usageEndTime* |A használati gyűjtő, amelyhez az használati összesítés tartozik befejezési időpontja UTC szerint |
 | *instanceData* |Kulcs-érték pár (új formátumban) példány részletei:<br>  *resourceUri*: teljesen minősített az erőforrás-azonosító, beleértve a csoportok és a példány neve <br>  *hely*: régióban, amelyben ez a szolgáltatás futtatása <br>  *címkék*: a felhasználó által az erőforráscímkék <br>  *additionalinfo részben*: további részleteket a felhasznált, például az erőforrás operációs rendszerének verziója vagy a kép típusa |
-| *mennyiség* |Az erőforrás-felhasználás a időkereten belül történt összeg |
+| *Mennyiség* |Az erőforrás-felhasználás a időkereten belül történt összeg |
 | *meterId* |Az erőforrás, a felhasznált egyedi azonosítója (más néven *ResourceID*) |
 
 

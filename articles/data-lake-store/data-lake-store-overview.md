@@ -1,26 +1,26 @@
 ---
-title: Az Azure Data Lake Store áttekintése | Microsoft Docs
-description: Megtudhatja, mi az Azure Data Lake Store, és milyen értékeket nyújt az egyéb adattárakhoz képest
+title: Az Azure Data Lake tárolási Gen1 áttekintése |} Microsoft Docs
+description: Milyen Data Lake tárolási Gen1 van (korábbi nevén az Azure Data Lake Store), és milyen értékeket nyújt az egyéb adattárakhoz képest
 services: data-lake-store
 documentationcenter: ''
 author: nitinme
 manager: jhubbard
-editor: cgronlun
-ms.assetid: b3475057-9427-4492-a3af-25a802a23a79
 ms.service: data-lake-store
 ms.devlang: na
-ms.topic: get-started-article
-ms.tgt_pltfrm: na
-ms.workload: big-data
-ms.date: 03/26/2018
+ms.topic: conceptual
+ms.date: 06/27/2018
 ms.author: nitinme
-ms.openlocfilehash: 111906bc9e7e85e30a879d7bacff37edb4b204ac
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
-ms.translationtype: HT
+ms.openlocfilehash: 4dff8f4ff9fc324d48391c0399677b64824493c6
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37036099"
 ---
-# <a name="overview-of-azure-data-lake-store"></a>Az Azure Data Lake Store áttekintése
+# <a name="overview-of-azure-data-lake-storage-gen1"></a>Az Azure Data Lake tárolási Gen1 áttekintése
+
+[!INCLUDE [data-lake-storage-gen1-rename-note.md](../../includes/data-lake-storage-gen1-rename-note.md)]
+
 Az Azure Data Lake Store egy vállalati szintű, nagy kapacitású adattár a big data koncepción alapuló adatelemzési célokra. Az Azure Data Lake lehetővé teszi mindenféle méretű, típusú és feldolgozási sebességű adatok egy helyen történő műveleti és felderítési jellegű feldolgozását.
 
 > [!TIP]
@@ -81,24 +81,8 @@ A Data Lake Store-hoz az új fájlrendszer, (a HDInsight-fürttel hozzáférhet�
 
 A Data Lake Store-ban lévő adatait az `adl://<data_lake_store_name>.azuredatalakestore.net` használatával érheti el. A Data Lake Store-ban lévő adatok elérésével kapcsolatos további információkért lásd: [A tárolt adatok tulajdonságainak megtekintése](data-lake-store-get-started-portal.md#properties)
 
-## <a name="how-do-i-start-using-azure-data-lake-store"></a>Hogyan kezdhetem meg az Azure Data Lake Store használatát?
-Data Lake Store kiépítése az Azure Portal használatával: [A Data Lake Store használatának első lépései az Azure Portal használatával](data-lake-store-get-started-portal.md). Az Azure Data Lake kiépítése után megtudhatja, hogyan használja az Azure Data Lake Analytics vagy az Azure HDInsight big data ajánlatokat a Data Lake Store-ral. .NET-alkalmazásokat készíthet is egy Azure Data Lake Store-fiók létrehozásához, illetve műveletek, például adatok letöltése, feltöltése stb. végrehajtásához.
+## <a name="next-steps"></a>További lépések
 
-* [Ismerkedés az Azure Data Lake Analytics szolgáltatással](../data-lake-analytics/data-lake-analytics-get-started-portal.md)
-* [Az Azure HDInsight használata a Data Lake Store-ral](data-lake-store-hdinsight-hadoop-use-portal.md)
+* [Ismerkedés a Data Lake Store az Azure portál használatával](data-lake-store-get-started-portal.md)
 * [Az Azure Data Lake Store használatának első lépései a .NET SDK-val](data-lake-store-get-started-net-sdk.md)
-
-## <a name="data-lake-store-videos"></a>Data Lake Store-videók
-Ha könnyebben tanul videók megtekintésével, a Data Lake Store számos szolgáltatáshoz biztosít videókat.
-
-* [Azure Data Lake Store-fiók létrehozása](https://mix.office.com/watch/1k1cycy4l4gen)
-* [Adatkezelés az Azure Data Lake Store-ban az Adatkezelő használatával](https://mix.office.com/watch/icletrxrh6pc)
-* [Az Azure Data Lake Analytics és az Azure Data Lake Store összekapcsolása](https://mix.office.com/watch/qwji0dc9rx9k)
-* [Az Azure Data Lake Store elérése a Data Lake Analytics használatával](https://mix.office.com/watch/1n0s45up381a8)
-* [Az Azure HDInsight és az Azure Data Lake Store összekapcsolása](https://mix.office.com/watch/l93xri2yhtp2)
-* [Az Azure Data Lake Store elérése a Hive és a Pig használatával](https://mix.office.com/watch/1n9g5w0fiqv1q)
-* [Adatok másolása az Azure Data Lake Store-ba és az Azure Data Lake Store-ból a DistCP (Hadoop Distributed Copy) használatával](https://mix.office.com/watch/1liuojvdx6sie)
-* [Adatok áthelyezése relációs források és az Azure Data Lake Store között az Apache Sqoop használatával](https://mix.office.com/watch/1butcdjxmu114)
-* [Adatok előkészítése az Azure Data Lake Store-hoz készült Azure Data Factory használatával](https://mix.office.com/watch/1oa7le7t2u4ka)
-* [Az adatok védelme az Azure Data Lake Store-ban](https://mix.office.com/watch/1q2mgzh9nn5lx)
-
+* [Az Azure HDInsight használata a Data Lake Store-ral](data-lake-store-hdinsight-hadoop-use-portal.md)

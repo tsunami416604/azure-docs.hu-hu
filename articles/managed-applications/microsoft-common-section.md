@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/30/2018
+ms.date: 06/27/2018
 ms.author: tomfitz
-ms.openlocfilehash: e6d7d5d7b205d275c72e96df527a354b072a9dd3
-ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
+ms.openlocfilehash: 90ffae3dd8b05041c34d766e464eb68f793f6066
+ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/17/2018
-ms.locfileid: "34260969"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37062978"
 ---
 # <a name="microsoftcommonsection-ui-element"></a>Microsoft.Common.Section felhasználói felületi elem
 A vezérlő, amely csoportosítja a fejléc alatt egy vagy több elemet.
@@ -31,17 +31,17 @@ A vezérlő, amely csoportosítja a fejléc alatt egy vagy több elemet.
 {
   "name": "section1",
   "type": "Microsoft.Common.Section",
-  "label": "Some section",
+  "label": "Example section",
   "elements": [
     {
-      "name": "element1",
+      "name": "text1",
       "type": "Microsoft.Common.TextBox",
-      "label": "Some text box 1"
+      "label": "Example text box 1"
     },
     {
-      "name": "element2",
+      "name": "text2",
       "type": "Microsoft.Common.TextBox",
-      "label": "Some text box 2"
+      "label": "Example text box 2"
     }
   ],
   "visible": true
@@ -49,14 +49,14 @@ A vezérlő, amely csoportosítja a fejléc alatt egy vagy több elemet.
 ```
 
 ## <a name="remarks"></a>Megjegyzések
-- `elements` legalább egy elemet kell tartalmaznia, és kivételével az összes elem típust is tartalmazhatnak `Microsoft.Common.Section`.
+- `elements` rendelkeznie kell legalább egy elemet, és rendelkezhetnek kivételével minden elemtípus `Microsoft.Common.Section`.
 - Ez az elem nem támogatja a `toolTip` tulajdonság.
 
 ## <a name="sample-output"></a>Példa kimenet
 A kimeneti értékek elemek eléréséhez `elements`, használja a [basics()](create-uidefinition-functions.md#basics) vagy [steps()](create-uidefinition-functions.md#steps) funkciók és felépítését:
 
 ```json
-basics('section1').element1
+steps('configuration').section1.text1
 ```
 
 Típusú elemek `Microsoft.Common.Section` nincs kimeneti értékűek magukat.

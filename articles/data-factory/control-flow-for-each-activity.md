@@ -13,18 +13,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
-ms.openlocfilehash: 2240ebc7fb4fd39ea063240987fec64f26608a8a
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: a029cb815f7765e6fe4e2fdbf81d437d5ac4ebe3
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34619048"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37047581"
 ---
 # <a name="foreach-activity-in-azure-data-factory"></a>Az Azure Data Factory ForEach tevékenység
 A ForEach tevékenység ismétlődő folyamatábrán az adatcsatorna határozza meg. Ez a tevékenység egy gyűjtemény megismétlésére, valamint egy megadott ciklustevékenység végrehajtására szolgál. E tevékenység ciklusos megvalósítása hasonló a Foreach ciklusos szerkezetéhez a programozási nyelvek esetében.
-
-> [!NOTE]
-> Ez a cikk a Data Factory 2. verziójára vonatkozik, amely jelenleg előzetes verzióban érhető el. A Data Factory szolgáltatásnak, amely általánosan elérhető (GA), 1 verziójának használatakor lásd [Data Factory V1 dokumentáció](v1/data-factory-introduction.md).
 
 ## <a name="syntax"></a>Szintaxis
 A tulajdonságok a cikk ismerteti. A cikkek tulajdonság a gyűjtemény és a gyűjtemény minden elemén használatával hivatkozik a `@item()` látható módon a következő szintaxist:  
@@ -75,8 +72,8 @@ A tulajdonságok a cikk ismerteti. A cikkek tulajdonság a gyűjtemény és a gy
 
 Tulajdonság | Leírás | Megengedett értékek | Szükséges
 -------- | ----------- | -------------- | --------
-név | A minden tevékenység nevét. | Karakterlánc | Igen
-type | Meg kell **ForEach** | Karakterlánc | Igen
+név | A minden tevékenység nevét. | Sztring | Igen
+type | Meg kell **ForEach** | Sztring | Igen
 isSequential | Meghatározza, hogy a hurok egymás után, vagy párhuzamosan kell végrehajtani.  Legfeljebb 20 hurok ismétlési hajtható végre egyszerre párhuzamosan). Például, ha egy ForEach tevékenység léptetés keresztül a másolási tevékenység adatkészletekkel 10 eltérő forrás- és fogadó rendelkező **isSequential** False értékű, minden másolatot végrehajtásának egyszerre. Alapértelmezett értéke False. <br/><br/> "IsSequential" értéke HAMIS, ha győződjön meg arról, hogy nincs-e a megfelelő konfigurációs több végrehajtható fájlok futtatásához. Ellenkező esetben ez a tulajdonság használandó körültekintően írási ütközések megcélzásával elkerülheti. További információkért lásd: [párhuzamos végrehajtása](#parallel-execution) szakasz. | Logikai | Nem. Alapértelmezett értéke False.
 Elemek | A JSON-tömb lehet többször is keresztül visszaadó kifejezés. | Kifejezés (egy JSON-tömböt ad vissza) | Igen
 Tevékenységek | A tevékenységek hajtható végre. | Tevékenységek listája | Igen

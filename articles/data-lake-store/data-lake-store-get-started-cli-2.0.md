@@ -1,26 +1,23 @@
 ---
-title: "Az Azure Data Lake Store használatának első lépései az Azure 2.0-s verziójú parancssori felületével | Microsoft Docs"
-description: "Data Lake Store-fiók létrehozása és alapszintű műveletek végrehajtása az Azure 2.0-s verziójú, platformfüggetlen parancssorával"
+title: Használja az Azure parancssori 2.0 felületet Azure Data Lake tárolási Gen1 használatába |} Microsoft Docs
+description: Data Lake Store-fiók létrehozása és alapszintű műveletek végrehajtása az Azure 2.0-s verziójú, platformfüggetlen parancssorával
 services: data-lake-store
-documentationcenter: 
+documentationcenter: ''
 author: nitinme
 manager: jhubbard
-editor: cgronlun
-ms.assetid: 4ffa0f4a-1cca-46ac-803d-1fc8538c685b
 ms.service: data-lake-store
 ms.devlang: na
-ms.topic: get-started-article
-ms.tgt_pltfrm: na
-ms.workload: big-data
-ms.date: 01/09/2018
+ms.topic: conceptual
+ms.date: 06/27/2018
 ms.author: nitinme
-ms.openlocfilehash: b93b9a801b3e5e1fd869cda7f3d67554e2d03195
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
-ms.translationtype: HT
+ms.openlocfilehash: acd1182fdc66374e9abbc4964207417a7de3aadb
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37036133"
 ---
-# <a name="get-started-with-azure-data-lake-store-using-azure-cli-20"></a>Az Azure Data Lake Store használatának első lépései az Azure CLI 2.0 használatával
+# <a name="get-started-with-azure-data-lake-storage-gen1-using-azure-cli-20"></a>Ismerkedés az Azure Data Lake tárolási Gen1 Azure CLI 2.0 használatával
 > [!div class="op_single_selector"]
 > * [Portál](data-lake-store-get-started-portal.md)
 > * [PowerShell](data-lake-store-get-started-powershell.md)
@@ -28,7 +25,9 @@ ms.lasthandoff: 03/09/2018
 >
 > 
 
-Ismerje meg, hogyan hozhat létre Azure Data Lake Store-fiókot az Azure CLI 2.0 használatával, illetve hogyan végezhet el olyan alapvető műveleteket, mint például mappák létrehozása, adatfájlok le- és feltöltése, fiók törlése stb. További információk a Data Lake Store-ról: [Overview of Data Lake Store](data-lake-store-overview.md) (A Data Lake Store áttekintése).
+[!INCLUDE [data-lake-storage-gen1-rename-note.md](../../includes/data-lake-storage-gen1-rename-note.md)]
+
+Ismerje meg, hogyan hozhat létre Azure Data Lake Store-fiókot az Azure CLI 2.0 használatával, illetve hogyan végezhet el olyan alapvető műveleteket, mint például mappák létrehozása, adatfájlok le- és feltöltése, fiók törlése stb. További információ a Data Lake Store: [a Data Lake tárolási Gen1 áttekintése](data-lake-store-overview.md).
 
 Az Azure CLI 2.0 az Azure új parancssori felülete, amely Azure-erőforrások felügyeletére szolgál. A szolgáltatás macOS, Linux és Windows rendszereken használható. További információért lásd: [Az Azure CLI 2.0 áttekintése](https://docs.microsoft.com/cli/azure). A parancsok és a szintaxis teljes listája az [Azure Data Lake Store CLI 2.0 dokumentációjában](https://docs.microsoft.com/cli/azure/dls) található.
 
@@ -53,7 +52,7 @@ Ez a cikk egy egyszerűbb hitelesítési módszert használ a Data Lake Store-ra
     az login
     ```
 
-    Kap egy kódot a következő lépésben való használatra. A webböngészővel nyissa meg a https://aka.ms/devicelogin oldalt, és a hitelesítéshez adja meg a kódot. A rendszer kéri a hitelesítési adatokkal való bejelentkezést.
+    Kap egy kódot a következő lépésben való használatra. Nyissa meg a lap egy webböngésző segítségével https://aka.ms/devicelogin , és írja be a kódot a hitelesítéshez. A rendszer kéri a hitelesítési adatokkal való bejelentkezést.
 
 2. Bejelentkezés után az ablakban megjelenő listában találhatók a fiókhoz társított Azure-előfizetések. Az alábbi paranccsal használhat egy adott előfizetést.
    

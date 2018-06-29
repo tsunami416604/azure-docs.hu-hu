@@ -14,29 +14,29 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/17/2017
 ms.author: rodsan
-ms.openlocfilehash: 9a8e0154faccca356c7fb8ce93e43ce67cc0aae2
-ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
+ms.openlocfilehash: 3fae9390b41d12361b820e2c37601283b37bc302
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2018
-ms.locfileid: "28019585"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37031712"
 ---
 # <a name="security-frame-exception-management--mitigations"></a>Biztonsági keret: Kivételek kezelése |} Megoldást 
 | A termék vagy szolgáltatás | Cikk |
 | --------------- | ------- |
 | **WCF** | <ul><li>[WCF - ne szerepeljen az serviceDebug csomópont a konfigurációs fájl](#servicedebug)</li><li>[WCF - ne szerepeljen az serviceMetadata csomópont a konfigurációs fájl](#servicemetadata)</li></ul> |
-| **Webes API** | <ul><li>[Győződjön meg arról, hogy a megfelelő kivételkezelést történik-e az ASP.NET Web API](#exception)</li></ul> |
-| **Webalkalmazás** | <ul><li>[Nem teszi közzé a látható a hibaüzenetekben biztonsági részletei](#messages)</li><li>[Alapértelmezett hibakezelési lap végrehajtása](#default)</li><li>[Az üzembe helyezési módszer beállítása az IIS-ben kereskedelmi](#deployment)</li><li>[Kivételek biztonságosan kell-e sikertelen](#fail)</li></ul> |
+| **Webes API** | <ul><li>[Győződjön meg arról, hogy a megfelelő kivételkezelést történik-e az ASP.NET Web API ](#exception)</li></ul> |
+| **Webalkalmazás** | <ul><li>[Nem teszi közzé a látható a hibaüzenetekben biztonsági részletei ](#messages)</li><li>[Alapértelmezett hibakezelési lap végrehajtása ](#default)</li><li>[Az üzembe helyezési módszer beállítása az IIS-ben kereskedelmi](#deployment)</li><li>[Kivételek biztonságosan kell-e sikertelen](#fail)</li></ul> |
 
 ## <a id="servicedebug"></a>WCF - ne szerepeljen az serviceDebug csomópont a konfigurációs fájl
 
 | Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | WCF | 
-| **SDL Phase**               | Felépítés |  
+| **SDL fázis**               | Felépítés |  
 | **Alkalmazandó technológiák** | Általános, NET-keretrendszer 3 |
 | **Attribútumok**              | –  |
-| **Hivatkozások**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx), [erősítse meg Királyság](https://vulncat.fortify.com/en/vulncat/index.html) |
+| **Hivatkozások**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx), [erősítse meg Királyság](https://vulncat.fortify.com/en/detail?id=desc.config.dotnet.wcf_misconfiguration_debug_information) |
 | **Lépések** | A Windows kommunikációs keretrendszer (WCF) szolgáltatásait teszi közzé a hibakeresési adatok konfigurálható. Hibakeresési információ nem használható üzemi környezetben. A `<serviceDebug>` címke határozza meg, hogy a hibakeresési információ szolgáltatás engedélyezve van-e a WCF-szolgáltatás számára. Ha az attribútum includeExceptionDetailInFaults az alkalmazásból értéke true, kivételek adatai visszatér az ügyfelek számára. A támadók kihasználhatják a további információt a hibakeresés csatlakoztatni a célzott támadások keretében, adatbázis vagy más erőforrások, az alkalmazás által használt kimeneti kapnak. |
 
 ### <a name="example"></a>Példa
@@ -57,10 +57,10 @@ Tiltsa le a szolgáltatást a hibakeresési adatok. Eltávolításával ehhez a 
 | Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | WCF | 
-| **SDL Phase**               | Felépítés |  
+| **SDL fázis**               | Felépítés |  
 | **Alkalmazandó technológiák** | Általános |
 | **Attribútumok**              | Általános, NET-keretrendszer 3 |
-| **Hivatkozások**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx), [erősítse meg Királyság](https://vulncat.fortify.com/en/vulncat/index.html) |
+| **Hivatkozások**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx), [erősítse meg Királyság](https://vulncat.fortify.com/en/detail?id=desc.config.dotnet.wcf_misconfiguration_service_enumeration) |
 | **Lépések** | Nyilvánosan kitettségének szolgáltatás információt biztosíthat a támadók értékes betekintést nyerhet hogyan azok használhatja ki a szolgáltatás. A `<serviceMetadata>` címke engedélyezi a metaadatok közzétételi szolgáltatást. Szolgáltatás metaadatai tartalmazhatnak bizalmas adatokat, amelyeket nem kell nyilvánosan elérhető. Minimális csak a megbízható felhasználóknak engedélyezze a metaadatok eléréséhez, és győződjön meg arról, hogy a szükségtelen adatokat nem lesz közzétéve. Még jobb teljes mértékben tiltsa le a metaadatokat közzétételére képes. A biztonságos WCF-konfiguráció nem tartalmaz a `<serviceMetadata>` címke. |
 
 ## <a id="exception"></a>Győződjön meg arról, hogy a megfelelő kivételkezelést történik-e az ASP.NET Web API
@@ -68,11 +68,11 @@ Tiltsa le a szolgáltatást a hibakeresési adatok. Eltávolításával ehhez a 
 | Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Webes API | 
-| **SDL Phase**               | Felépítés |  
-| **Alkalmazandó technológiák** | MVC 5, MVC 6 |
+| **SDL fázis**               | Felépítés |  
+| **Alkalmazandó technológiák** | MVC 5, 6 MVC |
 | **Attribútumok**              | –  |
 | **Hivatkozások**              | [ASP.NET webes API-t a kivételkezelő](http://www.asp.net/web-api/overview/error-handling/exception-handling), [-ellenőrzés az ASP.NET Web API minta](http://www.asp.net/web-api/overview/formats-and-model-binding/model-validation-in-aspnet-web-api) |
-| **Lépések** | Alapértelmezés szerint az ASP.NET Web API leginkább a nem kezelt kivételek lefordítását egy HTTP-válasz állapotkód:`500, Internal Server Error`|
+| **Lépések** | Alapértelmezés szerint az ASP.NET Web API leginkább a nem kezelt kivételek lefordítását egy HTTP-válasz állapotkód: `500, Internal Server Error`|
 
 ### <a name="example"></a>Példa
 Az API által visszaadott állapotkód vezérlésére `HttpResponseException` alább látható módon használhatja: 
@@ -186,18 +186,18 @@ Ellenőrizze a hivatkozásokra a references szakaszában, különleges kezelést
 | Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Web Application | 
-| **SDL Phase**               | Felépítés |  
+| **SDL fázis**               | Felépítés |  
 | **Alkalmazandó technológiák** | Általános |
 | **Attribútumok**              | –  |
 | **Hivatkozások**              | –  |
-| **Lépések** | <p>Általános hibaüzenetek közvetlenül a felhasználó számára biztosított nélkül az alkalmazás bizalmas adatokat is beleértve. Bizalmas adatok közé tartoznak például:</p><ul><li>Kiszolgáló neve</li><li>Kapcsolati karakterláncok</li><li>Felhasználónevek</li><li>Jelszavak</li><li>SQL-eljárások</li><li>A dinamikus SQL-hibák részletei</li><li>A veremkivonatot és sornyi kód</li><li>A memóriában tárolt változók</li><li>Meghajtó és mappa</li><li>Alkalmazás telepítése pontok</li><li>Gazdagép konfigurációs beállításai</li><li>Egyéb részleteket a belső alkalmazás</li></ul><p>Az alkalmazáson belül az összes hiba túltöltés és nyújtó általános hibaüzenetek, valamint IIS belül az egyéni hibák engedélyezése segítségével információ felfedésének megakadályozására. SQL Server-adatbázis és a .NET kivételkezelő, más hibakezelési architektúrák, között is különösen részletes és rendkívül hasznos, ha egy rosszindulatú felhasználó, az alkalmazás profilkészítési szeretné. Közvetlenül nem jeleníti meg a .NET-kivételt osztályból származtatott osztályt tartalmát, és győződjön meg arról, hogy megfelelő kivételkezelést, hogy egy váratlan kivétel véletlenül kiváltott nem közvetlenül a felhasználók számára.</p><ul><li>Általános hiba üzenetek közvetlenül a felhasználót, hogy közvetlenül a kivétel/hibaüzenet található kötelező részletes absztrakt biztosítása</li><li>Ne jelenjen meg a .NET kivételosztály tartalmát közvetlenül a felhasználók számára</li><li>Feldolgozzák-e az összes hibaüzenet, és adott esetben tájékoztatja a felhasználót, egy általános hibaüzenetet kap meg az alkalmazás ügyfél keresztül</li><li>Nem tegye elérhetővé a kivételosztály tartalmát közvetlenül a felhasználó, különösen a visszatérési érték a `.ToString()`, vagy az üzenet vagy Veremkivonat tulajdonságok értékeit. Biztonságosan jelentkezzen ezt az információt, és a felhasználó több ártalmatlan üzenetben</li></ul>|
+| **Lépések** | <p>Általános hibaüzenetek közvetlenül a felhasználó számára biztosított nélkül az alkalmazás bizalmas adatokat is beleértve. Bizalmas adatok közé tartoznak például:</p><ul><li>Kiszolgáló neve</li><li>Kapcsolati sztringek</li><li>Felhasználónevek</li><li>Jelszavak</li><li>SQL-eljárások</li><li>A dinamikus SQL-hibák részletei</li><li>A veremkivonatot és sornyi kód</li><li>A memóriában tárolt változók</li><li>Meghajtó és mappa</li><li>Alkalmazás telepítése pontok</li><li>Gazdagép konfigurációs beállításai</li><li>Egyéb részleteket a belső alkalmazás</li></ul><p>Az alkalmazáson belül az összes hiba túltöltés és nyújtó általános hibaüzenetek, valamint IIS belül az egyéni hibák engedélyezése segítségével információ felfedésének megakadályozására. SQL Server-adatbázis és a .NET kivételkezelő, más hibakezelési architektúrák, között is különösen részletes és rendkívül hasznos, ha egy rosszindulatú felhasználó, az alkalmazás profilkészítési szeretné. Közvetlenül nem jeleníti meg a .NET-kivételt osztályból származtatott osztályt tartalmát, és győződjön meg arról, hogy megfelelő kivételkezelést, hogy egy váratlan kivétel véletlenül kiváltott nem közvetlenül a felhasználók számára.</p><ul><li>Általános hiba üzenetek közvetlenül a felhasználót, hogy közvetlenül a kivétel/hibaüzenet található kötelező részletes absztrakt biztosítása</li><li>Ne jelenjen meg a .NET kivételosztály tartalmát közvetlenül a felhasználók számára</li><li>Feldolgozzák-e az összes hibaüzenet, és adott esetben tájékoztatja a felhasználót, egy általános hibaüzenetet kap meg az alkalmazás ügyfél keresztül</li><li>Nem tegye elérhetővé a kivételosztály tartalmát közvetlenül a felhasználó, különösen a visszatérési érték a `.ToString()`, vagy az üzenet vagy Veremkivonat tulajdonságok értékeit. Biztonságosan jelentkezzen ezt az információt, és a felhasználó több ártalmatlan üzenetben</li></ul>|
 
 ## <a id="default"></a>Alapértelmezett hibakezelési lap végrehajtása
 
 | Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Web Application | 
-| **SDL Phase**               | Felépítés |  
+| **SDL fázis**               | Felépítés |  
 | **Alkalmazandó technológiák** | Általános |
 | **Attribútumok**              | –  |
 | **Hivatkozások**              | [Az ASP.NET lapok beállításainak szerkesztése párbeszédpanel](https://technet.microsoft.com/library/dd569096(WS.10).aspx) |
@@ -208,18 +208,18 @@ Ellenőrizze a hivatkozásokra a references szakaszában, különleges kezelést
 | Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Web Application | 
-| **SDL Phase**               | Környezet |  
+| **SDL fázis**               | Környezet |  
 | **Alkalmazandó technológiák** | Általános |
 | **Attribútumok**              | –  |
 | **Hivatkozások**              | [központi telepítés elem (ASP.NET beállítási séma)](https://msdn.microsoft.com/library/ms228298(VS.80).aspx) |
-| **Lépések** | <p>A `<deployment retail>` kapcsoló éles IIS-kiszolgálókkal való használatra készült. A kapcsolót az alkalmazás képes létrehozni a nyomkövetési kimeneti oldalon letiltásával, letiltása, végfelhasználók számára a részletes hibaüzenetek megjelenítése lehetőséget, és a hibakeresési kapcsoló letiltása a lehető legjobb teljesítményt és a lehető legkisebb biztonsági információk szivárgást alkalmazás segítségével.</p><p>Gyakran, a kapcsolók és a kapcsolókról developer-arra irányul, például a sikertelen kérelmek nyomkövetésére vonatkozó és a hibakeresést, aktív fejlesztése során. Javasoljuk, hogy az üzembe helyezési módszer bármely az üzemi kiszolgáló frissítését a kereskedelmi állítható be. Nyissa meg a machine.config fájl, és győződjön meg arról, hogy `<deployment retail="true" />` továbbra is igaz értékre állítva.</p>|
+| **Lépések** | <p>A `<deployment retail>` kapcsoló éles IIS-kiszolgálókkal való használatra készült. Ezt a kapcsolót használja, az alkalmazás képességét a nyomkövetés letiltása a részletes hibaüzenetek megjelenítése lehetőséget lapon letiltásával a lehető legjobb teljesítményt és a lehető legkisebb biztonsági információk szivárgást alkalmazás a végfelhasználók és a hibakeresési kapcsoló letiltása.</p><p>Gyakran, a kapcsolók és a kapcsolókról developer-arra irányul, például a sikertelen kérelmek nyomkövetésére vonatkozó és a hibakeresést, aktív fejlesztése során. Javasoljuk, hogy az üzembe helyezési módszer bármely az üzemi kiszolgáló frissítését a kereskedelmi állítható be. Nyissa meg a machine.config fájl, és győződjön meg arról, hogy `<deployment retail="true" />` továbbra is igaz értékre állítva.</p>|
 
 ## <a id="fail"></a>Kivételek biztonságosan kell-e sikertelen
 
 | Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Web Application | 
-| **SDL Phase**               | Felépítés |  
+| **SDL fázis**               | Felépítés |  
 | **Alkalmazandó technológiák** | Általános |
 | **Attribútumok**              | –  |
 | **Hivatkozások**              | [Biztonságos helyen sikertelen](https://www.owasp.org/index.php/Fail_securely) |

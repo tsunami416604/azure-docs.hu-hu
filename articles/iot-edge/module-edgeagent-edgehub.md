@@ -8,18 +8,18 @@ ms.date: 03/14/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 0b9e7421bb09e619b4a820910db5faa9edfcc5d5
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 2858179d42ebf51cbb24d95d2e0093f8577bacef
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34632907"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37030563"
 ---
 # <a name="properties-of-the-edge-agent-and-edge-hub-module-twins"></a>A peremhálózati ügynök és a peremhálózati hub modul twins tulajdonságait
 
 A peremhálózati ügynök és a peremhálózati hub is két az IoT-Edge futásidejű alkotó modulok. Minden modul végrehajt milyen feladatokat kapcsolatos további információkért lásd: [megismerése az Azure IoT peremhálózati futásidejű és az architektúra](iot-edge-runtime.md). 
 
-Ez a cikk a kívánt tulajdonságokat és a futásidejű modul twins jelentett tulajdonságait tartalmazza. Lásd: [központi telepítési és figyelési] [ lnk-deploy] IoT peremeszközök modul telepítéséről további információt.
+Ez a cikk a kívánt tulajdonságokat és a futásidejű modul twins jelentett tulajdonságait tartalmazza. IoT peremeszközök modul telepítéséről további információkért lásd: [központi telepítési és figyelési][lnk-deploy].
 
 ## <a name="edgeagent-desired-properties"></a>Szükségeskonfiguráció-EdgeAgent tulajdonságai
 
@@ -31,22 +31,25 @@ A modul iker az Edge ügynök nevezik `$edgeAgent` és koordinálja a peremhál�
 | Runtime.Type | "Docker" lehet. | Igen |
 | runtime.settings.minDockerVersion | Ez az üzembe helyezési jegyzék által megkövetelt minimális Docker verzió beállítása | Igen |
 | runtime.settings.loggingOptions | A naplózási beállításokat, a peremhálózati ügynök tároló tartalmazó stringified JSON. [Docker naplózási beállítások][lnk-docker-logging-options] | Nem |
+| runtime.settings.registryCredentials<br>. {registryId} .username | A tároló beállításjegyzék felhasználóneve. Az Azure-tároló beállításjegyzék, a felhasználónév megadását általában a neve.<br><br> Bármely modul lemezképbe, amelyek nem nyilvános beállításjegyzék hitelesítő adatok szükségesek. | Nem |
+| runtime.settings.registryCredentials<br>. {registryId} .password | A tároló beállításjegyzék jelszavát. | Nem |
+| runtime.settings.registryCredentials<br>. {registryId} .address | A tároló beállításjegyzék címe. Az Azure-tároló beállításjegyzék, a címe általában *{registryname}.azurecr.io*. | Nem |  
 | systemModules.edgeAgent.type | "Docker" lehet. | Igen |
 | systemModules.edgeAgent.settings.image | Az URI-je a peremhálózati ügynök képe. A peremhálózati ügynök jelenleg nem tudja frissíteni a saját magát. | Igen |
-| systemModules.edgeAgent.settings.createOptions | A peremhálózati ügynök tároló létrehozásához a beállításokat tartalmazó stringified JSON. [Docker-beállítások létrehozása][lnk-docker-create-options] | Nem |
-| systemModules.edgeAgent.configuration.id | A telepítésben Ez a modul telepített azonosítója. | Ezt állítja be az IoT-központ alkalmazásakor a jegyzékfájlban központi telepítéssel. Nem része egy üzembe helyezési jegyzékben. |
+| systemModules.edgeAgent.settings<br>.createOptions | A peremhálózati ügynök tároló létrehozásához a beállításokat tartalmazó stringified JSON. [Docker-beállítások létrehozása][lnk-docker-create-options] | Nem |
+| systemModules.edgeAgent.configuration.id | A telepítésben Ez a modul telepített azonosítója. | Ez a tulajdonság értéke az IoT-központ alkalmazásakor a jegyzékfájlban központi telepítéssel. Nem része egy üzembe helyezési jegyzékben. |
 | systemModules.edgeHub.type | "Docker" lehet. | Igen |
 | systemModules.edgeHub.status | A "fut" rendelkezik | Igen |
 | systemModules.edgeHub.restartPolicy | Kell lennie a "mindig" | Igen |
 | systemModules.edgeHub.settings.image | Az él központnak a lemezkép URI. | Igen |
-| systemModules.edgeHub.settings.createOptions | A peremhálózati hub tároló létrehozásához a beállításokat tartalmazó stringified JSON. [Docker-beállítások létrehozása][lnk-docker-create-options] | Nem |
-| systemModules.edgeHub.configuration.id | A telepítésben Ez a modul telepített azonosítója. | Ezt állítja be az IoT-központ alkalmazásakor a jegyzékfájlban központi telepítéssel. Nem része egy üzembe helyezési jegyzékben. |
+| systemModules.edgeHub.settings<br>.createOptions | A peremhálózati hub tároló létrehozásához a beállításokat tartalmazó stringified JSON. [Docker-beállítások létrehozása][lnk-docker-create-options] | Nem |
+| systemModules.edgeHub.configuration.id | A telepítésben Ez a modul telepített azonosítója. | Ez a tulajdonság értéke az IoT-központ alkalmazásakor a jegyzékfájlban központi telepítéssel. Nem része egy üzembe helyezési jegyzékben. |
 | modules.{moduleId}.version | Ez a modul verziója megfelelő, felhasználó által definiált karakterláncot. | Igen |
 | modulok. {moduleId} .type | "Docker" lehet. | Igen |
 | modulok. {moduleId} .restartPolicy | {"soha" \| "a-sikertelen" \| "meg-a nem megfelelő" \| "always"} | Igen |
 | modules.{moduleId}.settings.image | A modul lemezkép URI. | Igen |
 | modules.{moduleId}.settings.createOptions | A modul tároló létrehozásához a beállításokat tartalmazó stringified JSON. [Docker-beállítások létrehozása][lnk-docker-create-options] | Nem |
-| modules.{moduleId}.configuration.id | A telepítésben Ez a modul telepített azonosítója. | Ezt állítja be az IoT-központ alkalmazásakor a jegyzékfájlban központi telepítéssel. Nem része egy üzembe helyezési jegyzékben. |
+| modules.{moduleId}.configuration.id | A telepítésben Ez a modul telepített azonosítója. | Ez a tulajdonság értéke az IoT-központ alkalmazásakor a jegyzékfájlban központi telepítéssel. Nem része egy üzembe helyezési jegyzékben. |
 
 ## <a name="edgeagent-reported-properties"></a>EdgeAgent jelentett tulajdonságai
 
@@ -59,7 +62,7 @@ A peremhálózati ügynök jelentett tulajdonságai közé tartozik a három fő
 Az utolsó adat, akkor hasznos, abban az esetben a legújabb kívánt tulajdonságok nem alkalmazása sikeresen megtörtént a futtatókörnyezet, és az eszköz még fut egy előző üzembe helyezési jegyzékben.
 
 > [!NOTE]
-> A peremhálózati ügynök jelentett tulajdonságainak hasznosak, a lekérdezhetők a [IoT-központ lekérdezési nyelv] [ lnk-iothub-query] vizsgálja meg a léptékű telepítések állapotát. Tekintse meg [központi telepítések] [ lnk-deploy] ezzel a szolgáltatással kapcsolatos további információt.
+> A peremhálózati ügynök jelentett tulajdonságainak hasznosak, a lekérdezhetők a [IoT-központ lekérdezési nyelv] [ lnk-iothub-query] vizsgálja meg a léptékű telepítések állapotát. Az állapotot a peremhálózati ügynök tulajdonságainak használatával további információkért lásd: [megértéséhez IoT peremhálózati telepítések egyetlen eszközökhöz vagy léptékű][lnk-deploy].
 
 A következő táblázat az információt, amely a kívánt tulajdonságokkal átmásolva nem tartalmaz.
 
@@ -68,7 +71,7 @@ A következő táblázat az információt, amely a kívánt tulajdonságokkal á
 | lastDesiredVersion | Az egész utolsó hivatkozik a kívánt tulajdonságokkal dolgozza fel a peremhálózati ügynök verzióját. |
 | lastDesiredStatus.code | Ez az az állapotkódot az Edge ügynök által látott utolsó kívánt tulajdonságokkal hivatkozik. Megengedett értékek: `200` sikeres, `400` Érvénytelen konfiguráció `412` érvénytelen séma verziója `417` a kívánt tulajdonságai nincsenek megadva, `500` sikertelen |
 | lastDesiredStatus.description | Az állapot szöveges leírása |
-| DeviceHealth | `healthy` Ha az összes modul futási állapotát `running` vagy `stopped`, `unhealthy` egyéb |
+| deviceHealth | `healthy` Ha az összes modul futási állapotát `running` vagy `stopped`, `unhealthy` egyéb |
 | configurationHealth.{deploymentId}.health | `healthy` Ha a futási állapotát a központi telepítés {deploymentId} által beállított összes modul `running` vagy `stopped`, `unhealthy` egyéb |
 | runtime.platform.OS | Jelentéskészítés az eszközön futó operációs rendszer |
 | Runtime.platform.Architecture | A Processzor architektúrájától Reporting az eszközön |

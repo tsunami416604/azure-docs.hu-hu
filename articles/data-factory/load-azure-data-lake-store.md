@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/17/2018
 ms.author: jingwang
-ms.openlocfilehash: fdfb35b0e1c52ad2aad164a38ae308f9142880a6
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 25df96664f6b5fe9da26bee43bc726e05504e5b8
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34619626"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37058917"
 ---
 # <a name="load-data-into-azure-data-lake-store-by-using-azure-data-factory"></a>Adatok betöltése az Azure Data Lake Store Azure Data Factory használatával
 
@@ -35,9 +35,6 @@ A cikkből megtudhatja, hogyan használható a Data Factory adatok másolása es
 
 > [!NOTE]
 > További információkért lásd: [másolása adatok vagy az Azure Data Lake Store az Azure Data Factory használatával](connector-azure-data-lake-store.md).
->
-> Ez a cikk az Azure Data Factory 2. verziójára vonatkozik, amely jelenleg előzetes verzióban érhető el. A Data Factory szolgáltatásnak, amely általánosan elérhető (GA), 1 verziójának használata lásd [másolási tevékenység során az Azure Data Factoryben az 1-es](v1/data-factory-data-movement-activities.md).
-
 ## <a name="prerequisites"></a>Előfeltételek
 
 * Azure-előfizetés: Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/) megkezdése előtt.
@@ -56,7 +53,7 @@ A cikkből megtudhatja, hogyan használható a Data Factory adatok másolása es
     * **Név**: Adja meg az az Azure data factory globálisan egyedi nevet. Ha a hibaüzenet "adat-előállító \"LoadADLSDemo\" nem áll rendelkezésre," írjon be egy másik nevet az adat-előállítóban. Például használhatja a név  _**saját_név**_**ADFTutorialDataFactory**. Próbálja meg újra létrehozni az adat-előállítóban. A Data Factory-összetevők elnevezési szabályait a [Data Factory elnevezési szabályait](naming-rules.md) ismertető cikkben találja.
     * **Előfizetés**: válassza ki az Azure-előfizetéshez használandó adat-előállító létrehozása. 
     * **Erőforráscsoport**: a legördülő listából válasszon ki egy meglévő erőforráscsoportot, vagy válassza ki a **hozzon létre új** lehetőséget, majd írja be az erőforráscsoport nevét. Az erőforráscsoportokkal kapcsolatos információkért tekintse meg a [Using resource groups to manage your Azure resources](../azure-resource-manager/resource-group-overview.md) (Erőforráscsoportok használata az Azure-erőforrások kezeléséhez) című cikket.  
-    * **Verzió**: válasszon **V2 (előzetes verzió)**.
+    * **Verzió**: válasszon **V2**.
     * **Hely**: Jelölje ki az adat-előállítóban helyét. A legördülő listán csak a támogatott helyek jelennek meg. Az adattároló adat-előállító által használt más helyek és a régióban lehet. Ezekkel az áruházakkal adatok közé tartoznak a Azure Data Lake Store, Azure Storage, Azure SQL Database és így tovább.
 
 3. Kattintson a **Létrehozás** gombra.
@@ -74,35 +71,45 @@ A cikkből megtudhatja, hogyan használható a Data Factory adatok másolása es
 2. Az a **tulajdonságok** adja meg azokat **CopyFromAmazonS3ToADLS** a a **feladatnév** mezőjét, majd válassza **következő**:
 
     ![Tulajdonságok lap](./media/load-data-into-azure-data-lake-store/copy-data-tool-properties-page.png)
-3. Az a **forrás adattár** lapon jelölje be **Amazon S3**, és válassza ki **következő**:
+3. Az a **forrás adattár** kattintson **+ új kapcsolat létrehozása**:
 
     ![Forrásadattár lap](./media/load-data-into-azure-data-lake-store/source-data-store-page.png)
+    
+    Válassza ki **Amazon S3**, és válassza ki **Folytatás**
+    
+    ![Forrás adatokat tároló s3 lap](./media/load-data-into-azure-data-lake-store/source-data-store-page-s3.png)
+    
 4. Az a **adja meg, Amazon S3 kapcsolat** lapon esetén tegye a következőket: 
    1. Adja meg a **hozzáférési kulcs azonosító** érték.
    2. Adja meg a **titkos hívóbetű** érték.
-   3. Kattintson a **Tovább** gombra.
+   3. Válassza a **Finish** (Befejezés) elemet.
    
    ![Adja meg az Amazon S3 fiók](./media/load-data-into-azure-data-lake-store/specify-amazon-s3-account.png)
+   
+   4. Új kapcsolat jelenik meg. Kattintson a **Tovább** gombra.
+   
+   ![Adja meg az Amazon S3 fiók](./media/load-data-into-azure-data-lake-store/specify-amazon-s3-account-created.png)
+   
 5. Az a **válassza ki azt a bemeneti fájl vagy mappa** párbeszédpanelen keresse meg a mappát és a fájlt, amelyet másolja át. Válassza ki a mappát vagy fájlt, jelölje be **válasszon**, majd válassza ki **következő**:
 
     ![Bemeneti fájl vagy mappa kiválasztása](./media/load-data-into-azure-data-lake-store/choose-input-folder.png)
 
-6. Az a **adatok céltár** lapon jelölje be **Azure Data Lake Store**, és válassza ki **következő**:
-
-    ![Céladattár lap](./media/load-data-into-azure-data-lake-store/destination-data-storage-page.png)
-
-7. Válassza ki a példány viselkedést kiválasztásával a **fájlok másolása a rekurzív módon** és **bináris másolási** (mint a fájlok másolása-van) beállítások. Válassza ki **következő**:
+6. Válassza ki a példány viselkedést kiválasztásával a **fájlok másolása a rekurzív módon** és **bináris másolási** (mint a fájlok másolása-van) beállítások. Válassza ki **következő**:
 
     ![Adja meg a kimeneti mappa](./media/load-data-into-azure-data-lake-store/specify-binary-copy.png)
+    
+7. A a **adatok céltár** lapján kattintson **+ új kapcsolat létrehozása**, majd válassza ki **Azure Data Lake Store**, és válassza ki **Folytatás**:
+
+    ![Céladattár lap](./media/load-data-into-azure-data-lake-store/destination-data-storage-page.png)
 
 8. Az a **megadása Data Lake Store kapcsolat** lapon esetén tegye a következőket: 
 
    1. Válassza ki a Data Lake Store a a **Data Lake Store-fiók neve**.
-   2. Adja meg a szolgáltatás egyszerű adatokat: **bérlői**, **résztvevő-azonosító szolgáltatás**, és **szolgáltatás elsődleges kulcsa**.
+   2. Adja meg a **bérlői**, és válassza ki a Befejezés gombra.
    3. Kattintson a **Tovább** gombra.
    
    > [!IMPORTANT]
-   > Ebben a bemutatóban használhat egy _egyszerű_ a Data Lake Store hitelesítéséhez. Ügyeljen arra, hogy adja meg az egyszerű szolgáltatás a megfelelő engedélyeket az Azure Data Lake Store következő [ezeket az utasításokat](connector-azure-data-lake-store.md#using-service-principal-authentication).
+   > Ebben a bemutatóban használhat egy _identitás_ a Data Lake Store hitelesítéséhez. Ügyeljen arra, hogy adja meg az egyszerű szolgáltatás a megfelelő engedélyeket az Azure Data Lake Store következő [ezeket az utasításokat](connector-azure-data-lake-store.md#using-managed-service-identity-authentication).
    
    ![Adja meg az Azure Data Lake Store-fiók](./media/load-data-into-azure-data-lake-store/specify-adls.png)
 9. Az a **válassza ki azt a kimeneti fájl vagy mappa** lapján adja meg **copyfroms3** a kimeneti mappa nevét, és válassza ki **következő**: 

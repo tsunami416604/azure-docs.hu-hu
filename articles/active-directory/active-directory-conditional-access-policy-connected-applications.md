@@ -1,6 +1,6 @@
 ---
-title: Azure Active Directory eszközalapú feltételes hozzáférési szabályzatok konfigurálására |} Microsoft Docs
-description: 'Útmutató: Azure Active Directory eszközalapú feltételes hozzáférési házirendek konfigurálása.'
+title: Hogyan - szükség által kezelt eszköz alkalmazás-hozzáférési felhőalapú Azure Active Directory feltételes hozzáférésű |} Microsoft Docs
+description: Megtudhatja, hogyan konfigurálja az Azure Active Directory (Azure AD) eszközalapú feltételes hozzáférési szabályzatok, amely felügyelt eszközök igényel a felhőbeli alkalmazás eléréséhez.
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
@@ -13,38 +13,48 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/07/2018
+ms.date: 06/14/2018
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: 1c21c915bc0a83cdafb221a2cd592890577437ee
-ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
-ms.translationtype: HT
+ms.openlocfilehash: 066d25e8953a2be4bd64cdd1af79b7f2a25dd5f9
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34849525"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37036069"
 ---
-# <a name="configure-azure-active-directory-device-based-conditional-access-policies"></a>Azure Active Directory eszközalapú feltételes hozzáférési házirendek konfigurálása
+# <a name="how-to-require-managed-devices-for-cloud-app-access-with-conditional-access"></a>Útmutató: Szükséges által kezelt eszköz alkalmazás-hozzáférési felhő feltételes hozzáféréssel
 
-A [Azure Active Directory (Azure AD) feltételes hozzáférés](active-directory-conditional-access-azure-portal.md), szabályozhatja, hogy hogyan engedéllyel rendelkező felhasználók férhetnek hozzá az erőforrásokat. Például korlátozhatja a kezelt eszközökre bizonyos erőforrások elérésére. Egy feltételes hozzáférési szabályzatot, amely egy felügyelt eszközt eszközalapú feltételes hozzáférési szabályzat is nevezik.
+Mobileszköz-first, a felhő-első világában Azure Active Directory (Azure AD) lehetővé teszi, hogy az egyszeri bejelentkezés alkalmazásokhoz és szolgáltatásokhoz bárhonnan. Hitelesített felhasználók érhetik el a felhőalkalmazások eszközt, beleértve a mobil, és személyes eszközök széles skáláját. Azonban a legtöbb környezetben legalább néhány olyan alkalmazásokat, amelyek csak legyenek elérhetők a biztonsági és megfelelőségi szabványoknak megfelelő eszközök rendelkeznek. Ezek az eszközök felügyelt eszközökön is ismertek. 
 
-Ez a témakör azt ismerteti, hogyan konfigurálhatja az eszközalapú feltételes hozzáférési házirendeket az Azure AD-kompatibilis alkalmazásokat. 
+Ez a cikk azt ismerteti, hogyan konfigurálhat feltételes hozzáférési szabályzatok, amelyek igénylik a felügyelt eszközök férhessenek hozzá az egyes felhőalapú alkalmazásokat a környezetben. 
 
 
-## <a name="before-you-begin"></a>Előkészületek
+## <a name="prerequisites"></a>Előfeltételek
 
-Eszközalapú feltételes hozzáférési ties **Azure AD feltételes hozzáférésével** és **együtt az Azure AD Eszközkezelés**. Ha még nem ismeri a következő területeken, olvassa el a következő témakörök először:
+Felügyelt eszközök megkövetelése a cloud app hozzáférés ties **Azure AD feltételes hozzáférésével** és **az Azure AD Eszközkezelés** együtt. Ha még nem ismeri a következő területeken, olvassa el a következő témakörök először:
 
-- **[Feltételes hozzáférés az Azure Active Directoryban](active-directory-conditional-access-azure-portal.md)**  – Ez a témakör a feltételes hozzáférés és a kapcsolódó terminológia elméleti áttekintését.
+- **[Feltételes hozzáférés az Azure Active Directoryban](active-directory-conditional-access-azure-portal.md)**  – Ez a cikk a feltételes hozzáférés és a kapcsolódó terminológia áttekintést biztosít.
 
-- **[Bevezetés az Azure Active Directoryban eszközfelügyeletre](device-management-introduction.md)**  – Ez a témakör áttekintést nyújt az eszközök csatlakoztatása az Azure ad-vel, hogy különböző lehetőségek közül. 
+- **[Bevezetés az Azure Active Directoryban eszközfelügyeletre](device-management-introduction.md)**  – Ez a cikk áttekintést nyújt a különböző lehetőségek eszközök szervezeti vezérlése alatt van. 
 
+
+## <a name="scenario-description"></a>Forgatókönyv leírása
+
+Biztonság és a termelékenység közötti egyensúly elsajátítása kihívást jelent. A támogatott eszközök a felhőben lévő erőforrások eléréséhez elterjedése segítségével a felhasználók a termelékenység növelése érdekében. A tükrözés oldalon nem érdemes bizonyos erőforrásoknál a környezetében, amelyet egy ismeretlen védelmi szint eszközök érhet el. Az érintett erőforrások érdemes beállítani, hogy felhasználók csak érhetik el azokat a felügyelt eszközök használata. 
+
+A feltételes hozzáférés az Azure AD meg lehet oldani ezt a követelményt, amely hozzáférést biztosít egy házirendnek:
+
+- Kijelölt felhőalapú alkalmazásokhoz
+
+- A kijelölt felhasználók és csoportok
+
+- A felügyelt eszközök megkövetelése
 
 
 ## <a name="managed-devices"></a>Felügyelt eszköz  
 
-Mobileszköz-first, a felhő-első világában Azure Active Directory lehetővé teszi, hogy az egyszeri bejelentkezés eszközök, alkalmazások és szolgáltatások bárhonnan. Az egyes erőforrásoknak a környezetben, és hozzáférést biztosít az arra jogosult felhasználók előfordulhat elég helyes. Az arra jogosult felhasználók mellett is szüksége lehet, hogy hozzáférések csak hajtható végre egy felügyelt eszközt használ.
-
-Egy felügyelt eszközről, amely megfelel a biztonsági és megfelelőségi előírások. Egyszerű feltételeket, a felügyelt eszközök alatt állnak, amelyek eszközök *valamilyen* szervezeti vezérlő. Az Azure ad-ben egy felügyelt eszközt előfeltételeivel, hogy az regisztrálva van az Azure ad-val. Eszköz regisztrálása az eszköz identitásának hoz létre egy eszközobjektumot formája. Ez az objektum az Azure-ban nyomon követésére szolgál egy eszköz vonatkozó állapotadatokat. Az Azure AD a rendszergazdák már használhatja ezt az objektumot a váltógomb (engedélyezése vagy letiltása) az eszköz állapotát.
+Egyszerű feltételeket, a felügyelt eszközök alatt állnak, amelyek eszközök *valamilyen* szervezeti vezérlő. Az Azure ad-ben egy felügyelt eszközt előfeltételeivel, hogy az regisztrálva van az Azure ad-val. Eszköz regisztrálása az eszköz identitásának hoz létre egy eszközobjektumot formája. Ez az objektum az Azure-ban nyomon követésére szolgál egy eszköz vonatkozó állapotadatokat. Az Azure AD a rendszergazdák már használhatja ezt az objektumot a váltógomb (engedélyezése vagy letiltása) az eszköz állapotát.
   
 ![Eszköz-alapú feltételek](./media/active-directory-conditional-access-policy-connected-applications/32.png)
 
@@ -56,10 +66,9 @@ Ahhoz, hogy az Azure ad-vel regisztrált egy eszközt, három lehetőség közü
 
 - **[Az Azure AD hibrid csatlakoztatott eszközök](device-management-introduction.md#hybrid-azure-ad-joined-devices)**  – egy helyszíni tartományhoz csatlakoztatott Windows 10-es eszköz az Azure ad-vel regisztrált AD.
 
-Felügyelt eszközzé válik, a regisztrált egy eszközt az Azure AD csatlakoznia vagy megfelelőnek jelölt eszköz hibrid lehet.  
+Felügyelt eszközzé válik, egy regisztrált eszközre kell lennie vagy a **az Azure AD hibrid csatlakoztatott eszközök** vagy egy **jelölt megfelelőnek eszköz**.  
 
 ![Eszköz-alapú feltételek](./media/active-directory-conditional-access-policy-connected-applications/47.png)
-
 
  
 ## <a name="require-hybrid-azure-ad-joined-devices"></a>Szükséges a hibrid Azure AD csatlakoztatott eszközök
@@ -83,8 +92,8 @@ A beállítással *szükséges az eszköz megfelelőnek kell megjelölni* kérje
 
 Ez a beállítás használatához egy eszközt az Azure AD-regisztráció és által megfelelőnek kell megjelölni:
          
-- Intune 
-- Egy harmadik fél mobileszköz felügyelete rendszer, amely kezeli a Windows 10-eszközöket az Azure AD-integrációs 
+- Intune-ban.
+- Egy harmadik fél mobileszköz-felügyelet (MDM) rendszer, amely a Windows 10-eszközöket az Azure AD-integrációs kezeli. Külső MDM rendszerek eltérő Windows 10-es eszköz operációs rendszere típusok nem támogatottak.
  
 ![Eszköz-alapú feltételek](./media/active-directory-conditional-access-policy-connected-applications/46.png)
 

@@ -13,16 +13,16 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 1c8ea748297b8fe4052b60f08b8f00b1e41275fb
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: f1dd8c4c5e38547492887425bb5732d87d5f8071
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34620357"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37045884"
 ---
 # <a name="map-source-dataset-columns-to-destination-dataset-columns"></a>A dataset Forrásoszlopok leképezése cél adatkészlet oszlopok
 > [!NOTE]
-> Ez a cikk a Data Factory általánosan elérhető 1. verziójára vonatkozik. 
+> Ez a cikk a Data Factory 1 verziójára vonatkozik. 
 
 Adja meg, hogyan megadott oszlopoknak a "szerkezetének" forrás tábla térkép oszlop szerepel a fogadó tábla "structure" oszlopleképezés is használható. A **columnMapping** tulajdonság érhető el a **typeProperties** a másolási tevékenység szakasza.
 

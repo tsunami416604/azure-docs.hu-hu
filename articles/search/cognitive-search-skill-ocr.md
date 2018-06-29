@@ -4,8 +4,6 @@ description: Szöveg kinyerése képfájlok egy Azure Search dúsító folyamat.
 services: search
 manager: pablocas
 author: luiscabrer
-documentationcenter: ''
-ms.assetid: ''
 ms.service: search
 ms.devlang: NA
 ms.workload: search
@@ -13,12 +11,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.date: 05/01/2018
 ms.author: luisca
-ms.openlocfilehash: 4ac86be25ebe7d12190cce290603ce83037a7b47
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 478afe81ed739b98487973eb092ee9cad0aa17fd
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34640370"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37059080"
 ---
 # <a name="ocr-cognitive-skill"></a>OCR kognitív szakértelem
 
@@ -38,14 +36,14 @@ A paraméterei a kis-és nagybetűket.
 | Paraméter neve     | Leírás |
 |--------------------|-------------|
 | detectOrientation | Lehetővé teszi, hogy a kép tájolása autodetection. <br/> Érvényes értékek: true / false.|
-|defaultLanguageCode |  A bemeneti szöveg nyelvkódot. Támogatott nyelvek: `ar, cs, da, de, en, es, fi, fr, he, hu, it, ko, pt-br, pt`.  Ha a nyelvi kód meghatározatlan vagy null, a nyelv a hálózati kártya automatikus észlelése.|
+|defaultLanguageCode | <p>  A bemeneti szöveg nyelvkódot. A támogatott nyelvek közé tartoznak a következők: <br/> zh-Hans (ChineseSimplified) <br/> zh-Hant (ChineseTraditional) <br/>cs (Cseh) <br/>da (dán) <br/>NL (holland) <br/>en (angol nyelven) <br/>Fi (finn)  <br/>FR (magyar) <br/>  Németország (német) <br/>el (görög) <br/> hu (magyar) <br/> az (olasz) <br/>  japán (japán) <br/> ko (koreai) <br/> NB (norvég) <br/>   pl (lengyel) <br/> PT (portugál) <br/>  RU (orosz) <br/>  es (spanyol) <br/>  SV (svéd) <br/>  tr (török) <br/> ar (arab) <br/> ro (román) <br/> az SR-Cyrl (SerbianCyrillic) <br/> az SR-Latn (SerbianLatin) <br/>  SK (szlovák). <br/>  (ismeretlen) UNK <br/><br/> Ha a nyelvi kód meghatározatlan vagy null, a nyelv a hálózati kártya automatikus észlelése. </p> |
 | textExtractionAlgorithm | "nyomtatott" vagy "kézzel". A "kézzel" szöveget felismerés OCR algoritmus jelenleg előzetes verzióban érhetők, és csak akkor támogatott a angol. |
 
 ## <a name="skill-inputs"></a>Szakértelem bemenetek
 
 | Bemeneti név      | Leírás                                          |
 |---------------|------------------------------------------------------|
-| Kép         | Összetett típus. Az Azure Blob indexelő által előállított jelenleg csak akkor működik a "/ dokumentum/normalized_images" mező, amikor ```imageAction``` értéke ```generateNormalizedImages```. Tekintse meg a [minta](#sample-output) további információt.|
+| image         | Összetett típus. Az Azure Blob indexelő által előállított jelenleg csak akkor működik a "/ dokumentum/normalized_images" mező, amikor ```imageAction``` értéke ```generateNormalizedImages```. Tekintse meg a [minta](#sample-output) további információt.|
 
 
 ## <a name="skill-outputs"></a>Szakértelem kimenetek

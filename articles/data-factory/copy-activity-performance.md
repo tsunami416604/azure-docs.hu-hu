@@ -13,23 +13,20 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/27/2018
 ms.author: jingwang
-ms.openlocfilehash: 6b0f576538f159155dcf602fe39b0ea67254e4c7
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: b6de6331b4d829f183c8b5dc03d6a29095a47479
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34619252"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37049332"
 ---
 # <a name="copy-activity-performance-and-tuning-guide"></a>Másolja a tevékenység teljesítmény- és hangolási útmutató
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [1. verzió – Általánosan elérhető](v1/data-factory-copy-activity-performance.md)
-> * [2. verzió – Előzetes verzió](copy-activity-performance.md)
+> * [1-es verziójával](v1/data-factory-copy-activity-performance.md)
+> * [Aktuális verzió](copy-activity-performance.md)
 
 
 Az Azure Data Factory másolási tevékenység egy első osztályú biztonságos, megbízható és nagy teljesítményű Adatbetöltési megoldást nyújt. Ez lehetővé teszi terabájtos adatkészleteket több példányát minden nap felhő gazdag számos és a helyszíni adattárolókhoz. Blazing-gyors Adatbetöltési teljesítmény annak érdekében, hogy az alapvető "big data" probléma összpontosíthat kulcs: speciális elemzési megoldások kialakításához, és lekérése mélyebben elemezheti az adatokat.
-
-> [!NOTE]
-> Ez a cikk a Data Factory 2. verziójára vonatkozik, amely jelenleg előzetes verzióban érhető el. A Data Factory szolgáltatásnak, amely általánosan elérhető (GA), 1 verziójának használatakor lásd [a másolási tevékenység az 1-es adat-előállítóban](v1/data-factory-copy-activity-performance.md).
 
 Azure számos vállalati szintű adatok tárolási és adatok adatraktár megoldások, és a másolási tevékenység során magas szinten optimalizált Adatbetöltési konfigurálása, és állítson be egyszerű élményt nyújt. Csak egyetlen példány tevékenységgel érhet el:
 
@@ -40,7 +37,7 @@ Azure számos vállalati szintű adatok tárolási és adatok adatraktár megold
 Ez a cikk ismerteti:
 
 * [Hivatkozás számok](#performance-reference) támogatott forrás és a fogadó adattárolókhoz segítségével megtervezheti a projekt;
-* Funkciókat, amelyek különböző helyzetekben, például a Másolás átviteli képes javítani [adatátviteli adategységek cloud](#cloud-data-movement-units), [másolási párhuzamos](#parallel-copy), és [másolási előkészített](#staged-copy);
+* Funkciókat, amelyek különböző helyzetekben, például a Másolás átviteli képes javítani [integrációs adategységek](#data-integration-units), [másolási párhuzamos](#parallel-copy), és [másolási előkészített](#staged-copy);
 * [Teljesítményhangolás útmutatást](#performance-tuning-steps) hogyan javítható a teljesítmény és a Másolás teljesítményre gyakorolt hatásáról tényezők a.
 
 > [!NOTE]
@@ -49,12 +46,12 @@ Ez a cikk ismerteti:
 
 ## <a name="performance-reference"></a>Teljesítmény-hivatkozás
 
-Referenciaként alábbi táblázat a számát mutatja, másolása átviteli **MB/s mértékegységben** a megadott forrás- és fogadó párok a **egy egyetlen másolási tevékenység során futtassa a** belső fejlesztésű tesztekre alapozva. Az összehasonlításhoz, azt is bemutatja, különböző beállításait [adatátviteli adategységek cloud](#cloud-data-movement-units) vagy [Self-hosted integrációs futásidejű méretezhetőség](concepts-integration-runtime.md#self-hosted-integration-runtime) a fájlmásolás (több csomópont) segítségével.
+Referenciaként alábbi táblázat a számát mutatja, másolása átviteli **MB/s mértékegységben** a megadott forrás- és fogadó párok a **egy egyetlen másolási tevékenység során futtassa a** belső fejlesztésű tesztekre alapozva. Az összehasonlításhoz, azt is bemutatja, különböző beállításainak [integrációs adategységek](#data-integration-units) vagy [Self-hosted integrációs futásidejű méretezhetőség](concepts-integration-runtime.md#self-hosted-integration-runtime) a fájlmásolás (több csomópont) segítségével.
 
 ![Teljesítmény mátrix](./media/copy-activity-performance/CopyPerfRef.png)
 
->[!IMPORTANT]
->Azure Data Factory 2-es verzióját, a másolási tevékenység végrehajtása az Azure integrációs futásidejű, a minimális megengedett felhő adatok adatátviteli egység esetén két. Ha nincs megadva, tekintse meg az alapértelmezett adatátviteli adategységek használatban lévő [adatátviteli adategységek felhőalapú](#cloud-data-movement-units).
+> [!IMPORTANT]
+> Egy Azure integrációs futásidejű másolási tevékenység végrehajtása, a minimális megengedett integrációs adategységek (korábbi nevén adatátviteli adategységek) esetén két. Ha nincs megadva, tekintse meg az alapértelmezett integrációs adategységek használatban lévő [integrációs adategységek](#data-integration-units).
 
 Vegye figyelembe a következő szempontok:
 
@@ -79,25 +76,25 @@ Vegye figyelembe a következő szempontok:
 
 
 > [!TIP]
-> Nagyobb átviteli teljesítményt érhet el további adatok adatátviteli egység (DMUs) az engedélyezett maximális DMUs, amelyek egy felhő-felhőbe történő másolás tevékenységfuttatási 32 alapértelmezett használatával. Például a 100 DMUs érhet el az adatok másolását az Azure Blob az Azure Data Lake Store: **1.0GBps**. Tekintse meg a [adatátviteli adategységek Cloud](#cloud-data-movement-units) szakasz ezt a szolgáltatást és a támogatott forgatókönyv szerint. Ügyfél [az Azure támogatási](https://azure.microsoft.com/support/) további DMUs kéréséhez.
+> Nagyobb átviteli teljesítményt érhet el további adatok integrációs egységek (DIU) az engedélyezett maximális DIUs, amelyek egy felhő-felhőbe történő másolás tevékenységfuttatási 32 alapértelmezett használatával. Például a 100 DIUs érhet el az adatok másolását az Azure Blob az Azure Data Lake Store: **1.0GBps**. Tekintse meg a [integrációs adategységek](#data-integration-units) szakasz ezt a szolgáltatást és a támogatott forgatókönyv szerint. Ügyfél [az Azure támogatási](https://azure.microsoft.com/support/) további DIUs kéréséhez.
 
-## <a name="cloud-data-movement-units"></a>A mozgás adategységek felhő
+## <a name="data-integration-units"></a>Integráció adategységek
 
-A **felhő adatok adatátviteli egység (DMU)** egy mérték, amely jelöli az (a Processzor, memória és a hálózatierőforrás-lefoglalás kombinációja) adat-előállítóban egyetlen egységben. **Csak érvényes DMU [Azure integrációs futásidejű](concepts-integration-runtime.md#azure-integration-runtime)**, de nem [Self-hosted integrációs futásidejű](concepts-integration-runtime.md#self-hosted-integration-runtime).
+A **adatok integrációs egység (DIU)** (korábbi nevén felhő adatok adatátviteli egység vagy DMU) egy mérték, amely jelöli az (a Processzor, memória és a hálózatierőforrás-lefoglalás kombinációja) adat-előállítóban egyetlen egységben. **Csak érvényes DIU [Azure integrációs futásidejű](concepts-integration-runtime.md#azure-integration-runtime)**, de nem [Self-hosted integrációs futásidejű](concepts-integration-runtime.md#self-hosted-integration-runtime).
 
-**A minimális felhő adatátviteli adategységek építve a másolási tevékenység során futtassa két.** Ha nincs megadva, az alábbi táblázat a különböző másolással használt alapértelmezett DMUs:
+**A minimális integrációs adategységek építve a másolási tevékenység során futtassa két.** Ha nincs megadva, az alábbi táblázat a különböző másolással használt alapértelmezett DIUs:
 
-| Másolja át a forgatókönyvben | Szolgáltatás által meghatározott alapértelmezett DMUs |
+| Másolja át a forgatókönyvben | Szolgáltatás által meghatározott alapértelmezett DIUs |
 |:--- |:--- |
 | Adatok másolása a fájlalapú tárolók között | 4 – 32 számát és a fájlok méretétől függően. |
 | Minden egyéb másolatot forgatókönyvek | 4 |
 
-Ez az alapértelmezett felülbírálásához adjon meg értéket a **cloudDataMovementUnits** tulajdonság az alábbiak szerint. A **engedélyezett értékek** a a **cloudDataMovementUnits** tulajdonság **legfeljebb 256**. A **felhő DMUs tényleges száma** egyenlő vagy kisebb, mint a konfigurált érték, attól függően, hogy a adatmintát, hogy használja-e a másolási művelet futásidőben. Egy adott másolási forrását, és a fogadó további egységek konfigurálásakor kaphat jobb teljesítménye szintjét kapcsolatos információk: a [teljesítményfigyelési](#performance-reference).
+Ez az alapértelmezett felülbírálásához adjon meg értéket a **dataIntegrationUnits** tulajdonság az alábbiak szerint. A **engedélyezett értékek** a a **dataIntegrationUnits** tulajdonság **legfeljebb 256**. A **DIUs tényleges száma** egyenlő vagy kisebb, mint a konfigurált érték, attól függően, hogy a adatmintát, hogy használja-e a másolási művelet futásidőben. Egy adott másolási forrását, és a fogadó további egységek konfigurálásakor kaphat jobb teljesítménye szintjét kapcsolatos információk: a [teljesítményfigyelési](#performance-reference).
 
-Minden egyes példányra, futtassa a másolási tevékenység során kimenet, amikor egy figyelése, futtassa a ténylegesen használt felhő adatok adatátviteli egység tekintheti meg. További részletek a [figyelése másolása](copy-activity-overview.md#monitoring).
+A ténylegesen használt integrációs adategységek minden egyes példányra, futtassa a másolási tevékenység során kimenet, amikor a program futtatása tevékenység figyelési tekintheti meg. További részletek a [figyelése másolása](copy-activity-overview.md#monitoring).
 
 > [!NOTE]
-> Ha további felhőalapú DMUs magasabb átviteli van szüksége, forduljon a [az Azure támogatási](https://azure.microsoft.com/support/). 8 beállítása, a fenti jelenleg működik csak akkor, ha Ön **több fájlok másolását a Blob storage/Data Lake Store/Amazon S3/felhő FTP/felhő SFTP bármely más felhőalapú adattárolókhoz**.
+> Ha egy nagyobb átviteli sebesség eléréséhez további DIUs van szüksége, forduljon a [az Azure támogatási](https://azure.microsoft.com/support/). 8 beállítása, a fenti jelenleg működik csak akkor, ha Ön **több fájlok másolását a Blob storage/Data Lake Store/Amazon S3/felhő FTP/felhő SFTP bármely más felhőalapú adattárolókhoz**.
 >
 
 **Példa**
@@ -116,15 +113,15 @@ Minden egyes példányra, futtassa a másolási tevékenység során kimenet, am
             "sink": {
                 "type": "AzureDataLakeStoreSink"
             },
-            "cloudDataMovementUnits": 32
+            "dataIntegrationUnits": 32
         }
     }
 ]
 ```
 
-### <a name="cloud-data-movement-units-billing-impact"></a>Felhő adatátviteli adategységek számlázási gyakorolt hatás
+### <a name="data-integration-units-billing-impact"></a>Adatok integrációs egységek számlázási gyakorolt hatás
 
-Rendelkezik **fontos** jegyezze meg, hogy van szó, a másolási művelet teljes ideje alapján. A teljes időtartam kell fizetni az adatmozgás időtartamának összege DMUs között. A másolási feladat használt egyórás két felhő egységek használatával, és most már nyolc felhő egységek 15 percet vesz igénybe, ha az általános számlázási szinte változatlan marad.
+Rendelkezik **fontos** jegyezze meg, hogy van szó, a másolási művelet teljes ideje alapján. A teljes időtartam kell fizetni az adatmozgás időtartamának összege DIUs között. A másolási feladat használt egyórás két felhő egységek használatával, és most már nyolc felhő egységek 15 percet vesz igénybe, ha az általános számlázási szinte változatlan marad.
 
 ## <a name="parallel-copy"></a>Párhuzamos másolása
 
@@ -134,7 +131,7 @@ Minden egyes futtatása másolási tevékenységhez adat-előállító száma p�
 
 | Másolja át a forgatókönyvben | Alapértelmezett párhuzamos példányszám szolgáltatás határozza meg |
 | --- | --- |
-| Adatok másolása a fájlalapú tárolók között |A fájlok és a felhő adatok adatátviteli egység (DMUs) átmásolhatja az adatok között két felhőalapú adattároló vagy a fizikai konfigurációját a Self-hosted integrációs futásidejű gép méretétől függ. |
+| Adatok másolása a fájlalapú tárolók között |A fájlok és integrációs adategységek (DIUs) száma átmásolhatja az adatok között két felhőalapú adattároló vagy a fizikai konfigurációját a Self-hosted integrációs futásidejű gép méretétől függ. |
 | Adatok másolása az összes adatforrás adattár az Azure Table storage |4 |
 | Minden egyéb másolatot forgatókönyvek |1 |
 
@@ -168,7 +165,7 @@ Vegye figyelembe a következő szempontok:
 * Fájlalapú tárolók közötti adatok másolásakor a **parallelCopies** határozza meg a fájlok szintjén párhuzamosságát. Egyetlen fájlba adattömbösítő történne alá, automatikusan és transzparens módon, és úgy van kialakítva, párhuzamos és merőleges parallelCopies az adatok betöltése az ajánlott megfelelő adatrészletméretnek az egy adott forrás adattároló-típus használatával. Tényleges száma párhuzamos adatátviteli szolgáltatást használja, a másolási művelet futásidőben nem több, mint a fájlok száma. Ha a Másolás viselkedése **mergeFile**, másolási tevékenység fájlszintű párhuzamossági tudják kihasználni.
 * Ha ad meg értéket a **parallelCopies** tulajdonság, fontolja meg a terhelést növelni a forrás és a fogadó adattárolókhoz, valamint Self-Hosted integrációs futásidejű, ha a másolási tevékenység felhatalmazást általa például hibrid másolására. Ez akkor fordul elő, különösen ha van több tevékenységek vagy tevékenységének ugyanazt az adattárat futtathat egyidejű futtatását. Ha azt észleli, hogy a tároló vagy Self-hosted integrációs futásidejű túlterhelik a a terhelés, csökkentse a **parallelCopies** érték a terhelés alól.
 * Adatok másolása, amelyek nem fájl alapú áruházak, amelyek a fájlalapú tárolók, az adatátviteli szolgáltatás figyelmen kívül hagyja a **parallelCopies** tulajdonság. Akkor is, ha a párhuzamos végrehajtás meg van adva, akkor nem lesz alkalmazva ebben az esetben.
-* **parallelCopies** a merőleges **cloudDataMovementUnits**. A korábbi számít minden a felhő adatok adatátviteli egység között.
+* **parallelCopies** a merőleges **dataIntegrationUnits**. A korábbi számít az adatok integrációs egységek között.
 
 ## <a name="staged-copy"></a>Előkészített másolása
 
@@ -246,14 +243,14 @@ Javasoljuk, hogy szánjon a Data Factory szolgáltatásnak a másolási tevéken
 
    * Teljesítménnyel kapcsolatos szolgáltatások:
      * [Párhuzamos másolása](#parallel-copy)
-     * [A mozgás adategységek felhő](#cloud-data-movement-units)
+     * [Integráció adategységek](#data-integration-units)
      * [Előkészített másolása](#staged-copy)
      * [Önálló üzemeltetett integrációs futásidejű méretezhetőség](concepts-integration-runtime.md#self-hosted-integration-runtime)
    * [Önálló üzemeltetett integrációs futásidejű](#considerations-for-self-hosted-integration-runtime)
    * [Forrás](#considerations-for-the-source)
    * [Sink](#considerations-for-the-sink)
    * [Szerializálás és a deszerializálás](#considerations-for-serialization-and-deserialization)
-   * [Tömörítés](#considerations-for-compression)
+   * [tömörítés](#considerations-for-compression)
    * [Oszlop leképezése](#considerations-for-column-mapping)
    * [Egyéb szempontok](#other-considerations)
 

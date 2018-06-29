@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 10/12/2017
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: cb8382a9801c3570a190259416d846fe518cc6ea
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 967184d9a7590dc0b8c88a49cf178bbd9eb83267
+ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34595036"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37063595"
 ---
 # <a name="azure-active-directory-pass-through-authentication-security-deep-dive"></a>Az Azure Active Directory átmenő hitelesítést biztonsági részletes bemutatója
 
@@ -132,20 +132,21 @@ Az alábbi ábrán látható, hogy átmenő hitelesítés hogyan dolgozza fel a 
 1. Egy felhasználó megpróbál hozzáférni egy alkalmazás, például [Outlook Web App](https://outlook.office365.com/owa).
 2. Ha a felhasználó már nem jelentkezett be, az alkalmazás az Azure AD bejelentkezési oldalára irányítja át a böngészőben.
 3. Az Azure AD STS szolgáltatás válasza biztonsági a **felhasználói bejelentkezés** lap.
-4. A felhasználó megadja a felhasználónevét és jelszavát, az a **felhasználói bejelentkezés** lapot, és választják ki a **bejelentkezési** gombra.
-5. Az Azure AD STS egy HTTPS POST kérelemben elküldi a felhasználónevet és jelszót.
-6. Az Azure AD STS nyilvános kulcsok beolvasása a bérlő az Azure SQL adatbázis regisztrált hitelesítési ügynökök, és a jelszó titkosítja azokat a. 
+4. A felhasználó megadja a felhasználónevét, azokat a **felhasználói bejelentkezés** lapot, és választják ki a **következő** gombra.
+5. A felhasználó beírja a jelszavát, azokat a **felhasználói bejelentkezés** lapot, és választják ki a **bejelentkezési** gombra.
+6. Az Azure AD STS egy HTTPS POST kérelemben elküldi a felhasználónevet és jelszót.
+7. Az Azure AD STS nyilvános kulcsok beolvasása a bérlő az Azure SQL adatbázis regisztrált hitelesítési ügynökök, és a jelszó titkosítja azokat a. 
     - "N" titkosított jelszót értékek az "N" hitelesítési ügynökökhöz a bérlő regisztrált hoz létre.
-7. Az Azure AD STS a jelszó érvényesítése kérést, a felhasználónév és a titkosított értékek, a Service Bus-üzenetsorba az bérlőjéhez tartozik, amely helyezi.
-8. Az inicializált hitelesítési ügynökök tartósan csatlakozik a Service Bus-üzenetsorba, mert az egyik rendelkezésre álló hitelesítési ügynökön lekéri a jelszó-ellenőrzési kérelem.
-9. A hitelesítési ügynök a nyilvános kulcsát, az azonosítója alapján, és annak titkos kulcsát segítségével visszafejti a titkosított értéket keresi.
-10. A hitelesítési ügynök megpróbálja ellenőrizni a felhasználónevét és jelszavát a helyszíni Active Directoryban használatával a [Win32 LogonUser API](https://msdn.microsoft.com/library/windows/desktop/aa378184.aspx) rendelkező a **dwLogonType** paraméter értéke **LOGON32_LOGON_NETWORK**. 
+8. Az Azure AD STS a jelszó érvényesítése kérést, a felhasználónév és a titkosított értékek, a Service Bus-üzenetsorba az bérlőjéhez tartozik, amely helyezi.
+9. Az inicializált hitelesítési ügynökök tartósan csatlakozik a Service Bus-üzenetsorba, mert az egyik rendelkezésre álló hitelesítési ügynökön lekéri a jelszó-ellenőrzési kérelem.
+10. A hitelesítési ügynök a nyilvános kulcsát, az azonosítója alapján, és annak titkos kulcsát segítségével visszafejti a titkosított értéket keresi.
+11. A hitelesítési ügynök megpróbálja ellenőrizni a felhasználónevét és jelszavát a helyszíni Active Directoryban használatával a [Win32 LogonUser API](https://msdn.microsoft.com/library/windows/desktop/aa378184.aspx) rendelkező a **dwLogonType** paraméter értéke **LOGON32_LOGON_NETWORK**. 
     - Ez az API a azonos API, amellyel Active Directory összevonási szolgáltatások (AD FS) összevont bejelentkezés esetén a felhasználók bejelentkezés.
     - Ez az API a tartományvezérlő található Windows Server standard névfeloldási folyamat támaszkodik.
-11. A hitelesítési ügynök a eredményt kap az Active Directoryból, például a sikeres, a felhasználónév vagy jelszó helytelen, vagy a jelszó lejárt.
-12. A hitelesítési ügynök továbbítja az eredményt vissza az Azure AD STS kölcsönösen hitelesített HTTPS kimenő csatornán 443-as porton keresztül. Kölcsönös hitelesítést használ, a regisztráció során a hitelesítési ügynök korábban kiadott tanúsítványt.
-13. Az Azure AD STS ellenőrzi, hogy ez az eredmény megfelel a megadott bejelentkezési kérését a bérlő.
-14. Az Azure AD STS továbbra is a bejelentkezési művelet konfigurált módon. Például ha a jelszó érvényesítése sikeresen befejeződött, a felhasználó lehet, hogy lekéri a multi-factor Authentication vagy az alkalmazás átirányítva.
+12. A hitelesítési ügynök a eredményt kap az Active Directoryból, például a sikeres, a felhasználónév vagy jelszó helytelen, vagy a jelszó lejárt.
+13. A hitelesítési ügynök továbbítja az eredményt vissza az Azure AD STS kölcsönösen hitelesített HTTPS kimenő csatornán 443-as porton keresztül. Kölcsönös hitelesítést használ, a regisztráció során a hitelesítési ügynök korábban kiadott tanúsítványt.
+14. Az Azure AD STS ellenőrzi, hogy ez az eredmény megfelel a megadott bejelentkezési kérését a bérlő.
+15. Az Azure AD STS továbbra is a bejelentkezési művelet konfigurált módon. Például ha a jelszó érvényesítése sikeresen befejeződött, a felhasználó lehet, hogy lekéri a multi-factor Authentication vagy az alkalmazás átirányítva.
 
 ## <a name="operational-security-of-the-authentication-agents"></a>A hitelesítési ügynök a működési biztonság
 
@@ -208,7 +209,7 @@ Az automatikus frissítés hitelesítési ügynök:
 ## <a name="next-steps"></a>További lépések
 - [Aktuális korlátozások](active-directory-aadconnect-pass-through-authentication-current-limitations.md): megtudhatja, mely forgatókönyvek is támogatottak, és melyek nem.
 - [Gyors üzembe helyezési](active-directory-aadconnect-pass-through-authentication-quick-start.md):, amelyekből megismerheti az Azure AD áteresztő hitelesítés.
-- [Intelligens zárolás](active-directory-aadconnect-pass-through-authentication-smart-lockout.md): az intelligens zárolás funkció konfigurálásához a bérlő felhasználói fiókok védelme.
+- [Intelligens zárolás](../authentication/howto-password-smart-lockout.md): az intelligens zárolás funkció konfigurálásához a bérlő felhasználói fiókok védelme.
 - [Hogyan működik](active-directory-aadconnect-pass-through-authentication-how-it-works.md): alapismeretei Azure AD áteresztő hitelesítés működéséről.
 - [Gyakori kérdések](active-directory-aadconnect-pass-through-authentication-faq.md): gyakran feltett kérdésekre adott válaszok.
 - [Hibaelhárítás](active-directory-aadconnect-troubleshoot-pass-through-authentication.md): Útmutató: az áteresztő hitelesítés szolgáltatás kapcsolatos gyakori problémák megoldásához.

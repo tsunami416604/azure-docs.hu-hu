@@ -12,14 +12,14 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/04/2018
+ms.date: 06/27/2018
 ms.author: chackdan
-ms.openlocfilehash: a5046a5e3771e95d76bb6edc7987a1e3176abeb0
-ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
+ms.openlocfilehash: aca03452ff5655d3a7180009f42df14c9459a9ff
+ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/21/2018
-ms.locfileid: "36309415"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37061558"
 ---
 # <a name="service-fabric-cluster-capacity-planning-considerations"></a>A Service Fabric fürt kapacitástervezésének szempontjai
 Minden éles telepítésében kapacitásának megtervezése fontos lépés. Az alábbiakban néhány kell figyelembe venni, hogy a folyamat részeként elemek.
@@ -27,6 +27,10 @@ Minden éles telepítésében kapacitásának megtervezése fontos lépés. Az a
 * A fürt kell kezdődnie csomóponttípusok száma
 * Az egyes (méret, elsődleges, internetre irányuló, virtuális gépek száma stb.) típusú csomópont tulajdonságait
 * A fürt megbízhatóságra és tartósságra vonatkozó jellemzői.
+
+> [!NOTE]
+> Minimálisan tekintse át az összes **nem engedélyezett** házirend frissítése a tervezés során. Ez az győződjön meg arról, hogy megfelelően állítsa be az értékeket, és mérséklése, ehhez írja a fürt később nem módosítható rendszer konfigurációs beállítások miatt. 
+> 
 
 Ossza meg velünk rövid időre tekintse át az összes ezeket az elemeket.
 

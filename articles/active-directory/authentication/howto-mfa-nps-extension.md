@@ -1,6 +1,6 @@
 ---
-title: Az Azure MFA képességek biztosítása a meglévő hálózati házirend-kiszolgálók használatával |} Microsoft Docs
-description: Felhőalapú kétlépéses vericiation-képességeket adhat a meglévő hitelesítési infrastruktúra
+title: Az Azure MFA képességek biztosítása a meglévő hálózati házirend-kiszolgálók használatával
+description: Felhőalapú kétlépéses ellenőrzés-képességeket adhat a meglévő hitelesítési infrastruktúra
 services: multi-factor-authentication
 ms.service: active-directory
 ms.component: authentication
@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: richagi
-ms.openlocfilehash: 2b08c3adb0c638cdfa0ccd9ae4c5beacac822eb4
-ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
+ms.openlocfilehash: ac2b0e2ba3eff83462ded91bcd0ac9a7309f73b4
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 06/27/2018
-ms.locfileid: "37018304"
+ms.locfileid: "37031141"
 ---
 # <a name="integrate-your-existing-nps-infrastructure-with-azure-multi-factor-authentication"></a>A meglévő hálózati házirend-kiszolgáló infrastruktúra integrálása az Azure multi-factor Authentication
 
@@ -58,8 +58,8 @@ Windows Server 2008 R2 SP1 vagy újabb.
 
 Ezek a könyvtárak a rendszer automatikusan telepíti a kiterjesztéssel.
 
--   [Visual C++ újraterjeszthető csomag a Visual Studio 2013 (X64)](https://www.microsoft.com/download/details.aspx?id=40784)
--   [Microsoft Active Directory modul Windows Powershellhez készült Azure 1.1.166.0 verziója](https://www.powershellgallery.com/packages/MSOnline/1.1.166.0)
+- [Visual C++ újraterjeszthető csomag a Visual Studio 2013 (X64)](https://www.microsoft.com/download/details.aspx?id=40784)
+- [Microsoft Active Directory modul Windows Powershellhez készült Azure 1.1.166.0 verziója](https://www.powershellgallery.com/packages/MSOnline/1.1.166.0)
 
 A Microsoft Active Directory modul Windows Powershellhez készült Azure telepítve van, ha még nincs jelen, a telepítési folyamat részeként futtatja konfigurációs parancsfájl használatával. Nincs szükség a modul időben telepítésére, ha még nincs telepítve.
 
@@ -70,6 +70,13 @@ Mindenki számára a hálózati házirend-kiszolgáló kiterjesztéssel kell szi
 A bővítmény telepítésekor szüksége a könyvtár azonosítója és rendszergazdai hitelesítő adatokat az Azure AD-bérlő. A könyvtár-azonosítója a található a [Azure-portálon](https://portal.azure.com). Jelentkezzen be rendszergazdaként, válassza ki a **Azure Active Directory** ikonra a bal oldalon, majd válassza ki **tulajdonságok**. A GUID-azonosítóját a **könyvtár-azonosítója** és mentse azt. A GUID használják a bérlő azonosítója, amikor a hálózati házirend-kiszolgáló-bővítményének telepítése.
 
 ![A könyvtár-azonosító az Azure Active Directoryban található](./media/howto-mfa-nps-extension/find-directory-id.png)
+
+### <a name="network-requirements"></a>A hálózatra vonatkozó követelmények
+
+A hálózati házirend-kiszolgálónak kell lennie a képes kommunikálni a következő URL-címeket a 80-as és 443-as porton keresztül.
+
+* https://adnotifications.windowsazure.com  
+* https://login.microsoftonline.com
 
 ## <a name="prepare-your-environment"></a>A környezet előkészítése
 
@@ -115,7 +122,7 @@ Is [tiltsa le a nem támogatott hitelesítési módszerek](howto-mfa-mfasettings
 
 ### <a name="register-users-for-mfa"></a>A multi-factor Authentication a felhasználók regisztrálása
 
-Mielőtt központilag telepíti, és a hálózati házirend-kiszolgáló a kiterjesztést használni, felhasználók kétlépéses ellenőrzés végrehajtásához szükséges regisztrálva kell lennie az MFA szolgáltatásra. Több azonnal módon telepítheti azt a bővítmény teszteléséhez kell legalább egy olyan fiókot, amely teljes mértékben regisztrálva a többtényezős hitelesítés.
+Mielőtt központilag telepíti, és a hálózati házirend-kiszolgáló a kiterjesztést használni, felhasználók, amelyek szükségesek a kétlépéses ellenőrzés regisztrálva kell lennie az MFA szolgáltatásra. Több azonnal módon telepítheti azt a bővítmény teszteléséhez kell legalább egy olyan fiókot, amely teljes mértékben regisztrálva a többtényezős hitelesítés.
 
 A lépések teszt fiók tegye a következőket:
 1. Jelentkezzen be [ https://aka.ms/mfasetup ](https://aka.ms/mfasetup) teszt-fiókkal. 
@@ -131,19 +138,19 @@ A felhasználók is kell kövesse az alábbi lépéseket ahhoz, azok képes hite
 
 ### <a name="download-and-install-the-nps-extension-for-azure-mfa"></a>Töltse le és telepítse az NPS-bővítmény az Azure MFA számára
 
-1.  [Töltse le a hálózati házirend-kiszolgáló bővítményt](https://aka.ms/npsmfa) a Microsoft letöltőközpontból.
-2.  A bináris fájlt másolja a konfigurálni kívánt hálózati házirend-kiszolgáló.
-3.  Futtatás *setup.exe* és a telepítési utasításokat. Ha hibákba ütközik, ellenőrizze, hogy a két könyvtárak Előfeltételek szakaszában sikeresen megtörtént.
+1. [Töltse le a hálózati házirend-kiszolgáló bővítményt](https://aka.ms/npsmfa) a Microsoft letöltőközpontból.
+2. A bináris fájlt másolja a konfigurálni kívánt hálózati házirend-kiszolgáló.
+3. Futtatás *setup.exe* és a telepítési utasításokat. Ha hibákba ütközik, ellenőrizze, hogy a két könyvtárak Előfeltételek szakaszában sikeresen megtörtént.
 
 ### <a name="run-the-powershell-script"></a>A PowerShell-parancsprogram futtatása
 
-A telepítő létrehoz egy PowerShell-parancsfájlt ezen a helyen: `C:\Program Files\Microsoft\AzureMfa\Config` (ahol a C:\ az a telepítési meghajtó). A PowerShell-parancsfájl a következő műveleteket hajtja végre:
+A telepítő létrehoz egy PowerShell-parancsfájlt ezen a helyen: `C:\Program Files\Microsoft\AzureMfa\Config` (ahol a C:\ az a telepítési meghajtó). Ezt a PowerShell parancsfájlt minden egyes futtatásakor a következő műveleteket hajtja végre:
 
--   Hozzon létre egy önaláírt tanúsítványt.
--   Társítsa az egyszerű szolgáltatásnév Azure ad-val a tanúsítvány nyilvános kulcsát.
--   A tanúsítvány a helyi számítógép-tanúsítvány tárolójában tárolja.
--   Adjon hozzáférést a tanúsítvány titkos kulcsához hálózati felhasználó számára.
--   Indítsa újra a hálózati házirend-kiszolgáló.
+- Hozzon létre egy önaláírt tanúsítványt.
+- Társítsa az egyszerű szolgáltatásnév Azure ad-val a tanúsítvány nyilvános kulcsát.
+- A tanúsítvány a helyi számítógép-tanúsítvány tárolójában tárolja.
+- Adjon hozzáférést a tanúsítvány titkos kulcsához hálózati felhasználó számára.
+- Indítsa újra a hálózati házirend-kiszolgáló.
 
 Hacsak nem szeretné a saját (helyett az önaláírt tanúsítványokat, amely a PowerShell-parancsfájlt hoz létre) tanúsítványokat használ, futtassa a PowerShell-parancsfájl a telepítés befejezéséhez. A bővítmény telepítése több kiszolgálón, ha minden egyes saját tanúsítvánnyal kell rendelkeznie.
 
@@ -162,8 +169,8 @@ Hacsak nem szeretné a saját (helyett az önaláírt tanúsítványokat, amely 
 
 Ismételje meg ezeket a lépéseket a semmilyen további NPS-kiszolgálókon, amelyet a terheléselosztás beállítása.
 
->[!NOTE]
->Ha a tanúsítványok a PowerShell-parancsfájllal generálása helyett használhatja a saját tanúsítványait, győződjön meg arról, hogy a hálózati házirend-kiszolgáló elnevezés szabály szerint rendezve. A tulajdonos nevének kell **CN =\<TenantID\>, OU = a Microsoft hálózati házirend-kiszolgáló bővítmény**. 
+> [!NOTE]
+> Ha a tanúsítványok a PowerShell-parancsfájllal generálása helyett használhatja a saját tanúsítványait, győződjön meg arról, hogy a hálózati házirend-kiszolgáló elnevezés szabály szerint rendezve. A tulajdonos nevének kell **CN =\<TenantID\>, OU = a Microsoft hálózati házirend-kiszolgáló bővítmény**. 
 
 ## <a name="configure-your-nps-extension"></a>A hálózati házirend-kiszolgáló-kiterjesztés konfigurálása
 
@@ -172,7 +179,7 @@ Ez a szakasz a kialakítási szempontokat és javaslatokat sikeres hálózati h�
 ### <a name="configuration-limitations"></a>Konfiguráció korlátozásai
 
 - Az Azure MFA számára a hálózati házirend-kiszolgáló bővítmény nem tartalmazza az eszközök, felhasználók és a beállítások áttelepítéséhez az MFA kiszolgáló a felhőbe. Ezért javasoljuk, hogy az új központi telepítéséhez, nem pedig meglévő központi telepítési bővítményének használatával. A bővítmény egy meglévő telepítéshez használja, ha a felhasználók rendelkeznek igazolása-fel újra az MFA adatait a felhőben feltöltéséhez végrehajtásához.  
-- Használja az egyszerű felhasználónév a helyszíni Active Directoryból a hálózati házirend-kiszolgáló kiterjesztést a másodlagos Outlookhoz végrehajtásához az Azure MFA azonosításhoz A bővítmény beállítható úgy, hogy a másodlagos bejelentkezési Azonosítóval vagy eltérő UPN egyéni Active Directory mező egy másik azonosítót. Lásd: [speciális konfigurációs beállítások az NPS-bővítmény a multi-factor Authentication](howto-mfa-nps-extension-advanced.md) további információt.
+- Használja az egyszerű felhasználónév a helyszíni Active Directoryból a hálózati házirend-kiszolgáló kiterjesztést a másodlagos Outlookhoz végrehajtásához az Azure MFA azonosításhoz A bővítmény beállítható úgy, hogy a másodlagos bejelentkezési Azonosítóval vagy eltérő UPN egyéni Active Directory mező egy másik azonosítót. További információkért lásd: a cikk [speciális konfigurációs beállítások az NPS-bővítmény a multi-factor Authentication](howto-mfa-nps-extension-advanced.md).
 - Nem minden titkosítási protokollokkal támogatja az összes ellenőrzési módszert.
    - **PAP** támogatja a telefonhívás, a egyirányú SMS-üzenet, a mobilalkalmazáson keresztüli értesítések és a mobilalkalmazás ellenőrzőkódjának
    - **CHAPv2** és **EAP** telefonhívás és a mobilalkalmazáson keresztüli értesítések támogatása
@@ -232,12 +239,15 @@ Ez a hiba lehetséges oka, több oka. Hibaelhárítás elősegítése érdekébe
 
 Győződjön meg arról, hogy fut-e AD Connectet, és, hogy a felhasználó megtalálható a Windows Active Directory és az Azure Active Directory is.
 
-------------------------------------------------------------
+-------------------------------------------------------------
 
 ### <a name="why-do-i-see-http-connect-errors-in-logs-with-all-my-authentications-failing"></a>Miért látom HTTP-hibák rögzít minden a hitelesítések sikertelenek lesznek csatlakozás?
 
 Ellenőrizze, hogy https://adnotifications.windowsazure.com elérhető-e a hálózati házirend-kiszolgáló bővítményt futtató kiszolgáló.
 
+## <a name="managing-the-tlsssl-protocols-and-cipher-suites"></a>A TLS/SSL-protokollok és a titkosítási csomagok kezelése
+
+Régebbi és gyengébb titkosítási csomagok letiltott vagy eltávolított, kivéve, ha a szervezet ajánlott. Hogyan teljes Ez a feladat is található a cikkben szereplő információk [kezelése SSL/TLS-protokollok és a titkosítási csomagok az AD FS Szolgáltatásokhoz](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/manage-ssl-protocols-in-ad-fs)
 
 ## <a name="next-steps"></a>További lépések
 

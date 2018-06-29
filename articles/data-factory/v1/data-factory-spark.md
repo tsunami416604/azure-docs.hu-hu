@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: d22829217209b7d0b1b5690d6a864b58bf102e3c
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: e775798dbaaf93d5a9b497323a3b2fa365820550
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34622278"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37046464"
 ---
 # <a name="invoke-spark-programs-from-azure-data-factory-pipelines"></a>Az Azure Data Factory folyamatok Spark programok meghívása
 
@@ -37,7 +37,7 @@ ms.locfileid: "34622278"
 > * [.NET egyéni tevékenység](data-factory-use-custom-activities.md)
 
 > [!NOTE]
-> Ez a cikk az Azure Data Factory általánosan elérhető 1-es verziójára vonatkozik. Ha 2-es verziójának a Data Factory szolgáltatásnak, amely jelenleg előzetes verzióban érhető, [adatok átalakítása a Data Factory 2-es verzióját az Apache Spark tevékenység segítségével](../transform-data-using-spark.md).
+> Ez a cikk az Azure Data Factory általánosan elérhető 1-es verziójára vonatkozik. Ha a Data Factory szolgáltatásnak jelenlegi verzióját használja, tekintse meg [adatok átalakítása az Apache Spark tevékenység használatával a Data Factory](../transform-data-using-spark.md).
 
 ## <a name="introduction"></a>Bevezetés
 A Spark tevékenység egyike a [adatok átalakítása tevékenységek](data-factory-data-transformation-activities.md) adat-előállító által támogatott. Ez a tevékenység fut a megadott Spark programot az Azure hdinsight Spark-fürt. 
@@ -268,8 +268,7 @@ Ebben a lépésben egy HDInsightSpark tevékenységet hoz létre egy folyamatot.
 
     ![Jupyter lekérdezés eredményei](media/data-factory-spark/jupyter-notebook-results.png)
 
-<!-- Removed bookmark #run-a-hive-query-using-spark-sql since it doesn't exist in the target article -->
-Részletes útmutatásért lásd a szakasz [Spark SQL-lekérdezés futtatható](../../hdinsight/spark/apache-spark-jupyter-spark-sql.md). 
+<!-- Removed bookmark #run-a-hive-query-using-spark-sql since it doesn't exist in the target article --> Részletes útmutatásért lásd a szakasz [Spark SQL-lekérdezés futtatható](../../hdinsight/spark/apache-spark-jupyter-spark-sql.md). 
 
 ### <a name="troubleshooting"></a>Hibaelhárítás
 Mert getDebugInfo értékre állítva **mindig**, megjelenik egy napló almappát a blobtárolókban lévő pyFiles mappában. A napló mappában a naplófájl további információkat tartalmaz. Ez a naplófájl akkor különösen akkor hasznos, ha nem sikerül. Termelési környezetben érdemes állítsa be **hiba**.
@@ -337,7 +336,7 @@ A következő táblázat ismerteti a JSON-definícióból használt JSON-tulajdo
 | rootPath | A blob-tároló és a Spark-fájlt tartalmazó mappát. A fájlnév pedig kis-és nagybetűket. | Igen |
 | entryFilePath | A gyökérmappában található azon a Spark kódcsomag relatív elérési útja. | Igen |
 | Osztálynév | Az alkalmazás fő Java/Spark-osztály. | Nem |
-| Argumentumok | A Spark program parancssori argumentumokat listáját. | Nem |
+| argumentumok | A Spark program parancssori argumentumokat listáját. | Nem |
 | proxyUser | A felhasználói fiók megszemélyesíthet-e a Spark program végrehajtásához. | Nem |
 | sparkConfig | Adja meg a felsorolt Spark konfigurációs tulajdonságok értékeit [Spark konfigurációs: alkalmazástulajdonságok](https://spark.apache.org/docs/latest/configuration.html#available-properties). | Nem |
 | getDebugInfo | Határozza meg, amikor a tárolót a HDInsight-fürt által használt kerülnek a Spark naplófájlokat (vagy) leírt módon sparkJobLinkedService. Megengedett értékek: None, mindig, vagy sikertelen. Az alapértelmezett érték: nincs. | Nem |

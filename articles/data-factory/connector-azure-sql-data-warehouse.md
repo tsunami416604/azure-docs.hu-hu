@@ -13,22 +13,19 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/28/2018
 ms.author: jingwang
-ms.openlocfilehash: 5a7ee7862e102093efa2c203eac2497b025af4e5
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 42ffdbf117b3f522e27e6e46628231ddb8221018
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "36337820"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37051627"
 ---
 #  <a name="copy-data-to-or-from-azure-sql-data-warehouse-by-using-azure-data-factory"></a>Másolja a adatok vagy az Azure SQL Data Warehouse Azure Data Factory használatával 
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you're using:"]
-> * [1-es verziójával: GA](v1/data-factory-azure-sql-data-warehouse-connector.md)
-> * [2. verzió: Preview](connector-azure-sql-data-warehouse.md)
+> * [Version1 ](v1/data-factory-azure-sql-data-warehouse-connector.md)
+> * [Aktuális verzió](connector-azure-sql-data-warehouse.md)
 
 Ez a cikk ismerteti, hogyan másolási tevékenység az Azure Data Factoryben az adatok másolása, vagy az Azure SQL Data Warehouse. Buildekről nyújtanak a [másolási tevékenység áttekintése](copy-activity-overview.md) cikket, amely megadja a másolási tevékenység általános áttekintést.
-
-> [!NOTE]
-> Ez a cikk vonatkozik 2 a Data Factory jelenleg az előzetes verzió. Ha a Data Factory szolgáltatásnak, amely általánosan elérhető (GA), 1 verziót [Azure SQL Data Warehouse-összekötő a V1](v1/data-factory-azure-sql-data-warehouse-connector.md).
 
 ## <a name="supported-capabilities"></a>Támogatott képességei
 

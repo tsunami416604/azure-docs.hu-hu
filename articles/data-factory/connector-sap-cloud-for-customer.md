@@ -13,19 +13,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/17/2018
 ms.author: jingwang
-ms.openlocfilehash: 7003e68fcbceb4e45477f4f13dfa75b920405ace
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: df45613105c8fb005fc8ba0c796ef768e293c57e
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34617654"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37052432"
 ---
 # <a name="copy-data-from-sap-cloud-for-customer-c4c-using-azure-data-factory"></a>Azure Data Factory használatával SAP felhőből ügyfél (C4C) adatok másolása
 
 Ez a cikk ismerteti, hogyan használható a másolási tevékenység során az Azure Data Factory adatok másolása az/SAP felhő ügyfél (C4C). Buildekről nyújtanak a [másolása tevékenység áttekintése](copy-activity-overview.md) cikket, amely megadja a másolási tevékenység általános áttekintést.
-
-> [!NOTE]
-> Ez a cikk a Data Factory 2. verziójára vonatkozik, amely jelenleg előzetes verzióban érhető el. A Data Factory szolgáltatásnak, amely általánosan elérhető (GA), 1 verziójának használatakor lásd [másolási tevékenység során a V1](v1/data-factory-data-movement-activities.md).
 
 ## <a name="supported-capabilities"></a>Támogatott képességei
 
@@ -160,8 +157,8 @@ Adatok másolása SAP felhő ügyfél, állítsa be a fogadó típusa a másolá
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
 | type | A type tulajdonságot kell beállítani: **SapCloudForCustomerSink**  | Igen |
-| WriteBehavior | A művelet írási viselkedését. "Insert", "Update" lehet. | Nem. Alapértelmezett "Insert". |
-| WriteBatchSize | A Köteg mérete írási művelet. A Köteg mérete, a legjobb teljesítmény különböző tábla vagy a kiszolgáló eltérőek lehetnek. | Nem. Alapértelmezés szerint 10. |
+| writeBehavior | A művelet írási viselkedését. "Insert", "Update" lehet. | Nem. Alapértelmezett "Insert". |
+| writeBatchSize | A Köteg mérete írási művelet. A Köteg mérete, a legjobb teljesítmény különböző tábla vagy a kiszolgáló eltérőek lehetnek. | Nem. Alapértelmezés szerint 10. |
 
 **Példa**
 
@@ -188,7 +185,7 @@ Adatok másolása SAP felhő ügyfél, állítsa be a fogadó típusa a másolá
                 "writeBatchSize": 30
             },
             "parallelCopies": 10,
-            "cloudDataMovementUnits": 4,
+            "dataIntegrationUnits": 4,
             "enableSkipIncompatibleRow": true,
             "redirectIncompatibleRowSettings": {
                 "linkedServiceName": {
@@ -209,7 +206,7 @@ Amikor adatokat másol SAP felhő ügyfél, a következő megfeleltetéseket seg
 | SAP C4C OData adattípus | Data factory ideiglenes adattípus |
 |:--- |:--- |
 | Edm.Binary | Byte] |
-| Edm.Boolean | logikai érték |
+| Edm.Boolean | Logikai érték |
 | Edm.Byte | Byte] |
 | Edm.DateTime | DateTime |
 | Edm.Decimal | Decimális |
@@ -220,7 +217,7 @@ Amikor adatokat másol SAP felhő ügyfél, a következő megfeleltetéseket seg
 | Edm.Int32 | Int32 |
 | Edm.Int64 | Int64 |
 | Edm.SByte | Int16 |
-| Edm.String | Karakterlánc |
+| Edm.String | Sztring |
 | Edm.Time | A TimeSpan |
 | Edm.DateTimeOffset | DateTimeOffset |
 

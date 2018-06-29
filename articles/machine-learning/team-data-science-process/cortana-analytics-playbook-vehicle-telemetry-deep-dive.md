@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2018
 ms.author: deguhath
-ms.openlocfilehash: a856c59191a1e35b78d1ab6c2c88ab5288ea1419
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 991e4b86a1d3e75c02e5ed8fe97727c625f174a4
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34836483"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37059091"
 ---
 # <a name="vehicle-telemetry-analytics-solution-playbook-deep-dive-into-the-solution"></a>Vehicle Telemetriai elemzési megoldások forgatókönyv: mély alaposabban tanulmányozhatja a megoldás
 Ez a forgatókönyv szakaszait menü hivatkozásokat: 
@@ -35,7 +35,7 @@ A megoldás két különböző adatforrásból használ:
 * Szimulált vehicle jelek és diagnosztikai adatkészlet
 * Vehicle katalógus
 
-A vehicle telematika szimulátor Ez a megoldás részét, az alábbi képernyőfelvételen látható módon. Általa kibocsátott diagnosztikai adatokat, és azt jelzi, hogy felel meg a vehicle állapotát, és a vezetői típusnak egy időben. A Vehicle telematika szimulátor Visual Studio megoldás a követelmények alapján testreszabni letöltéséhez keresse fel a [Vehicle telematika szimulátor](http://go.microsoft.com/fwlink/?LinkId=717075) weblap. A vehicle katalógus, amely leképezhető vehicle azonosítószámok (VINs) modellek hivatkozás adatkészlet tartalmazza.
+A vehicle telematika szimulátor Ez a megoldás részét, az alábbi képernyőfelvételen látható módon. Általa kibocsátott diagnosztikai adatokat, és azt jelzi, hogy felel meg a vehicle állapotát, és a vezetői típusnak egy időben.  A vehicle katalógus, amely leképezhető vehicle azonosítószámok (VINs) modellek hivatkozás adatkészlet tartalmazza. Megjegyzés: A Vehicle telematika szimulátor Visual Studio megoldás adatkészlet már nem érhető el. 
 
 ![Vehicle telematika szimulátor](./media/cortana-analytics-playbook-vehicle-telemetry-deep-dive/fig1-vehicle-telematics-simulator.png)
 
@@ -363,7 +363,7 @@ Egy alkalmazás tartalmazzák a megoldás a valós idejű gépi tanulási modell
 
 Ezt a mintát, amely szintén alkalmazható helyzetekben, amelyben a sor üzleti alkalmazás integrálható a valós idejű elemzési folyamat szeretné. Ilyen például, riasztások, értesítések és üzenetkezelés.
 
-A testreszabások RealtimeDashboardApp Visual Studio megoldás letöltéséhez lásd: a [RealtimeDashboardApp letöltési](http://go.microsoft.com/fwlink/?LinkId=717078) weblap. 
+Megjegyzés: a RealtimeDashboardApp Visual Studio megoldás az adatok már nem áll rendelkezésre.
 
 #### <a name="execute-the-real-time-dashboard-application"></a>**A valós idejű irányítópulton alkalmazás végrehajtása**
 1. Bontsa ki a RealtimeDashboardApp, és mentse helyileg.
@@ -669,10 +669,9 @@ Ez a dokumentum a Vehicle Telemetriai Analytics megoldás részletes Lehatolás 
 
 ### <a name="references"></a>Referencia
 
-* [Vehicle telematika szimulátor Visual Studio megoldás](http://go.microsoft.com/fwlink/?LinkId=717075) 
 * [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/)
 * [Azure Data Factory](https://azure.microsoft.com/documentation/learning-paths/data-factory/)
 * [Az Azure Event Hubs SDK a streameket](../../event-hubs/event-hubs-csharp-ephcs-getstarted.md)
-* [A mozgás képességek az Azure Data Factory adatok](../../data-factory/v1/data-factory-data-movement-activities.md)
-* [Az Azure Data Factory .NET tevékenység](../../data-factory/v1/data-factory-use-custom-activities.md)
+* [A mozgás képességek az Azure Data Factory adatok](../../data-factory/copy-activity-overview.md)
+* [Az Azure Data Factory .NET tevékenység](../../data-factory/transform-data-using-dotnet-custom-activity.md)
 * [Az Azure Data Factory .NET tevékenység használt mintaadatok létrehozása a Visual Studio megoldás](http://go.microsoft.com/fwlink/?LinkId=717077) 

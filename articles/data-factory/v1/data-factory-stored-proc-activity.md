@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: douglasl
 robots: noindex
-ms.openlocfilehash: 3a0d6998671df7f05d7077da6fffc20a5bf27e8a
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: b10fbd953eb9ca904043973ebc1f7c6adb9f9abc
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34622499"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37047388"
 ---
 # <a name="sql-server-stored-procedure-activity"></a>SQL Server tárolt eljárási tevékenység
 > [!div class="op_single_selector" title1="Transformation Activities"]
@@ -35,7 +35,7 @@ ms.locfileid: "34622499"
 > * [.NET egyéni tevékenység](data-factory-use-custom-activities.md)
 
 > [!NOTE]
-> Ez a cikk az Azure Data Factory általánosan elérhető 1. verziójára vonatkozik. Lásd a 2-es verziójának a Data Factory szolgáltatásnak, amely jelenleg előzetes verzióban érhető, használatakor [tárolt eljárási tevékenység adat-előállítóban 2-es verzióját használó adatok](../transform-data-using-stored-procedure.md).
+> Ez a cikk az Azure Data Factory 1 verziójára vonatkozik. A Data Factory szolgáltatásnak aktuális verziójának használatakor lásd [tárolt eljárási tevékenység használatával a Data Factory adatok](../transform-data-using-stored-procedure.md).
 
 ## <a name="overview"></a>Áttekintés
 Adatok átalakítása tevékenységek használata egy adat-előállítóban [csővezeték](data-factory-create-pipelines.md) átalakító és előrejelzéseket és elemzések nyers adatok feldolgozása. A tárolt eljárási tevékenység, amely támogatja a Data Factory átalakítása tevékenységek egyike. Ez a cikk épít, a [adatok átalakítása tevékenységek](data-factory-data-transformation-activities.md) cikk, amelynek során az adatok átalakítása és a Data Factory támogatott átalakítása tevékenységek általános áttekintést.
@@ -49,7 +49,7 @@ A tárolt eljárási tevékenység segítségével meghívása tárolt eljárás
 > [!IMPORTANT]
 > Ha az adatok másolása az Azure SQL Database vagy az SQL Server, konfigurálhatja a **SqlSink** a másolási tevékenység tárolt eljárás használatával meghívni a **sqlWriterStoredProcedureName** tulajdonság. További információkért lásd: [meghívása tárolt eljárás a másolási tevékenység](data-factory-invoke-stored-procedure-from-copy-activity.md). A tulajdonság kapcsolatos tudnivalókért lásd az alábbi összekötő cikkek: [Azure SQL Database](data-factory-azure-sql-connector.md#copy-activity-properties), [SQL Server](data-factory-sqlserver-connector.md#copy-activity-properties). Adatok másolása az Azure SQL Data Warehouse a másolási tevékenység során a tárolt eljárás meghívása nem támogatott. De a tárolt eljárási tevékenység segítségével az SQL Data Warehouse tárolt eljárás hívása. 
 >  
-> Ha az adatok másolása az Azure SQL Database vagy az SQL Server vagy az Azure SQL Data Warehouse, konfigurálhatja a **SqlSource** a másolási tevékenység meghívni egy tárolt eljárás a forrás-adatbázis használatával adatokat olvasni az **sqlReaderStoredProcedureName** tulajdonság. További információkért tekintse meg a következő összekötő-cikkek: [Azure SQL Database](data-factory-azure-sql-connector.md#copy-activity-properties), [SQL Server](data-factory-sqlserver-connector.md#copy-activity-properties), [Azure SQL Data Warehouse](data-factory-azure-sql-data-warehouse-connector.md#copy-activity-properties)          
+> Ha az adatok másolása az Azure SQL Database vagy az SQL Server vagy az Azure SQL Data Warehouse, konfigurálhatja a **SqlSource** a másolási tevékenység meghívni egy tárolt eljárás a forrás-adatbázis használatával adatokat olvasni az  **sqlReaderStoredProcedureName** tulajdonság. További információkért tekintse meg a következő összekötő-cikkek: [Azure SQL Database](data-factory-azure-sql-connector.md#copy-activity-properties), [SQL Server](data-factory-sqlserver-connector.md#copy-activity-properties), [Azure SQL Data Warehouse](data-factory-azure-sql-data-warehouse-connector.md#copy-activity-properties)          
 
 
 A következő forgatókönyv egy folyamaton belül a tárolt eljárási tevékenység segítségével Azure SQL-adatbázisban tárolt eljárás hívása. 
@@ -153,7 +153,7 @@ Meg kell adnia egy kimeneti adatkészlet egy tárolt eljárás tevékenység, m�
     ```
 3. A dataset telepítéséhez kattintson **telepítés** a parancssávon. Győződjön meg arról, hogy a fanézetben a dataset látni.
 
-    ![Fanézet, a társított szolgáltatások](media/data-factory-stored-proc-activity/tree-view-2.png)
+    ![fanézet, a társított szolgáltatások](media/data-factory-stored-proc-activity/tree-view-2.png)
 
 ### <a name="create-a-pipeline-with-sqlserverstoredprocedure-activity"></a>Hozzon létre egy folyamatot SqlServerStoredProcedure tevékenység
 Most hozzon létre egy folyamatot egy tárolt eljárás tevékenységet. 
@@ -203,13 +203,13 @@ Figyelje meg a következő tulajdonságokkal:
 ### <a name="monitor-the-pipeline"></a>A folyamat figyelése
 1. A Data Factory Editor paneljeinek a bezárásához és a Data Factory panelre való visszatéréshez kattintson az **X**, majd a **Diagram** elemre.
 
-    ![Diagram csempe](media/data-factory-stored-proc-activity/data-factory-diagram-tile.png)
+    ![diagram csempe](media/data-factory-stored-proc-activity/data-factory-diagram-tile.png)
 2. A **diagramnézet** áttekintést nyújt az oktatóanyagban használt folyamatokról és adatkészletekről.
 
-    ![Diagram csempe](media/data-factory-stored-proc-activity/data-factory-diagram-view.png)
+    ![diagram csempe](media/data-factory-stored-proc-activity/data-factory-diagram-view.png)
 3. A Diagram nézet megnyitásához kattintson duplán a dataset `sprocsampleout`. Megjelenik a szeletek üzemkész állapotban. Lehetnek öt szeletek mert szelet állítanak elő minden órában a kezdési és befejezési időpontja a JSON formátumból között.
 
-    ![Diagram csempe](media/data-factory-stored-proc-activity/data-factory-slices.png)
+    ![diagram csempe](media/data-factory-stored-proc-activity/data-factory-slices.png)
 4. A szelet esetén a **készen** állapot, futtassa a `select * from sampletable` győződjön meg arról, hogy az adatok lett szúrja be a tábla a következő tárolt eljárást az Azure SQL-adatbázis lekérdezése.
 
    ![Kimeneti adatok](./media/data-factory-stored-proc-activity/output.png)
@@ -278,12 +278,12 @@ A láncolás tevékenységek további információkért lásd: [több tevékenys
 }
 ```
 
-Hasonlóképpen a tárolási eljárás tevékenység csatolásához **alárendelt tevékenységek** (a futtató tevékenységek a tárolt eljárási tevékenység befejezése után), a folyamat az alárendelt tevékenység bemeneti adatokként adja meg a tárolt eljárás tevékenység kimeneti adatkészlet.
+Hasonlóképpen a tárolási eljárás tevékenység csatolni **alárendelt tevékenységek** (a futtató tevékenységek a tárolt eljárási tevékenység befejezése után), adja meg a tárolt eljárás tevékenység kimeneti adatkészlet a bemenetként a Az adatcsatorna alárendelt tevékenysége.
 
 > [!IMPORTANT]
 > Ha az adatok másolása az Azure SQL Database vagy az SQL Server, konfigurálhatja a **SqlSink** a másolási tevékenység tárolt eljárás használatával meghívni a **sqlWriterStoredProcedureName** tulajdonság. További információkért lásd: [meghívása tárolt eljárás a másolási tevékenység](data-factory-invoke-stored-procedure-from-copy-activity.md). A tulajdonság, lásd: a következő összekötő-cikkek: [Azure SQL Database](data-factory-azure-sql-connector.md#copy-activity-properties), [SQL Server](data-factory-sqlserver-connector.md#copy-activity-properties).
 >  
-> Ha az adatok másolása az Azure SQL Database vagy az SQL Server vagy az Azure SQL Data Warehouse, konfigurálhatja a **SqlSource** a másolási tevékenység meghívni egy tárolt eljárás a forrás-adatbázis használatával adatokat olvasni az **sqlReaderStoredProcedureName** tulajdonság. További információkért tekintse meg a következő összekötő-cikkek: [Azure SQL Database](data-factory-azure-sql-connector.md#copy-activity-properties), [SQL Server](data-factory-sqlserver-connector.md#copy-activity-properties), [Azure SQL Data Warehouse](data-factory-azure-sql-data-warehouse-connector.md#copy-activity-properties)          
+> Ha az adatok másolása az Azure SQL Database vagy az SQL Server vagy az Azure SQL Data Warehouse, konfigurálhatja a **SqlSource** a másolási tevékenység meghívni egy tárolt eljárás a forrás-adatbázis használatával adatokat olvasni az  **sqlReaderStoredProcedureName** tulajdonság. További információkért tekintse meg a következő összekötő-cikkek: [Azure SQL Database](data-factory-azure-sql-connector.md#copy-activity-properties), [SQL Server](data-factory-sqlserver-connector.md#copy-activity-properties), [Azure SQL Data Warehouse](data-factory-azure-sql-data-warehouse-connector.md#copy-activity-properties)          
 
 ## <a name="json-format"></a>JSON formátumban
 A tárolt eljárási tevékenység meghatározásához a JSON formátum a következő:

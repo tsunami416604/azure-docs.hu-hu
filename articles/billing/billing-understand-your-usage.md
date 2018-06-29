@@ -1,5 +1,5 @@
 ---
-title: Az Azure részletes használatának megismerése
+title: Az Azure részletes használatának megértéséhez |} Microsoft Docs
 description: Megtudhatja, hogyan Elolvastam és megértettem a részletes használati CSV Azure-előfizetése szakasza
 services: ''
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/31/2017
 ms.author: tonguyen
-ms.openlocfilehash: 0f698bff1506484e1dd4afe22f7c14e0a710937c
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.openlocfilehash: 723e42d2bb2af09eb2236c3cbefeee33987ea45b
+ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/03/2018
-ms.locfileid: "32771138"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37060800"
 ---
 # <a name="understand-terms-on-your-microsoft-azure-detailed-usage-charges"></a>A Microsoft Azure részletes használati költségek feltételek megismerése 
 
@@ -59,7 +59,7 @@ A részletes használati CSV-fájl felső részén látható a szolgáltatások 
 |Rate (Egységár) |Most számítjuk fel számlázható egységenként száma másodpercenként |
 |Érték |A Túlhasználati mennyiség oszlop arány oszlop eredménye látható. Ha a felhasznált mennyiség nem haladhatja meg a szereplő mennyiséget, akkor nem kell fizetni ebben az oszlopban. |
 
-### <a name="daily-usage"></a>Napi használat
+### <a name="daily-usage"></a>Napi forgalom
 
 A CSV-fájlt a napi használat részén látható, amelyek hatással vannak a számlázási rangsorolja a használat részleteiről. A következő táblázat a használati leírása itt látható.
 

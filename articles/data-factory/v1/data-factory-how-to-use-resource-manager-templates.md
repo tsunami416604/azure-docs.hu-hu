@@ -15,16 +15,16 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 0a03bb836f789a2a1cb58705a6758000c07036d1
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 3419f8718396bfb4ec894310e545f6a8a5b8f718
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34621309"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37049264"
 ---
 # <a name="use-templates-to-create-azure-data-factory-entities"></a>Azure Data Factory entitásokat hozhatnak létre a sablonok segítségével
 > [!NOTE]
-> Ez a cikk a Data Factory általánosan elérhető 1. verziójára vonatkozik. 
+> Ez a cikk a Data Factory 1 verziójára vonatkozik. 
 
 ## <a name="overview"></a>Áttekintés
 Során azt tapasztalhatja, saját maga az adat-integráció igényeinek Azure Data Factory használatával újból felhasználja a ugyanilyen mintájú különböző környezetek vagy végrehajtási ugyanahhoz a megoldáshoz belül többször is ugyanezt a feladatot. A sablonok révén megvalósítása és kezelése forgatókönyvekben egyszerű módon. Sablonok az Azure Data Factory ideálisak újrahasznosításának és ismétlődési forgatókönyveit.

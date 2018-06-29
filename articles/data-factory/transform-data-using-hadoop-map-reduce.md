@@ -12,24 +12,19 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/16/2018
 ms.author: douglasl
-ms.openlocfilehash: be925521178bba0ae4ae9820e78042509b2f1741
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: cb7009d0e7f31b2f503ac51d378fd117fff9f9b2
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34621003"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37049951"
 ---
 # <a name="transform-data-using-hadoop-mapreduce-activity-in-azure-data-factory"></a>Hadoop-MapReduce művelethez használata az Azure Data Factory adatok átalakítása
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [1. verzió – Általánosan elérhető](v1/data-factory-map-reduce.md)
-> * [2. verzió – Előzetes verzió](transform-data-using-hadoop-map-reduce.md)
-
+> * [1-es verziójával](v1/data-factory-map-reduce.md)
+> * [Aktuális verzió](transform-data-using-hadoop-map-reduce.md)
 
 A HDInsight MapReduce művelethez egy adat-előállítóban [csővezeték](concepts-pipelines-activities.md) MapReduce program meghívja a [saját](compute-linked-services.md#azure-hdinsight-linked-service) vagy [igény szerinti](compute-linked-services.md#azure-hdinsight-on-demand-linked-service) HDInsight-fürthöz. Ez a cikk épít, a [adatok átalakítása tevékenységek](transform-data.md) cikk, amelynek során az adatok átalakítása és a támogatott átalakítása tevékenységek általános áttekintést.
-
-> [!NOTE]
-> Ez a cikk a Data Factory 2. verziójára vonatkozik, amely jelenleg előzetes verzióban érhető el. A Data Factory szolgáltatásnak, amely általánosan elérhető (GA), 1 verziójának használatakor lásd [MapReduce művelethez a V1](v1/data-factory-map-reduce.md).
-
 
 Ha most ismerkedik az Azure Data Factory, olvassa végig [Bevezetés az Azure Data Factory](introduction.md) hajtsa végre az oktatóanyag: [oktatóanyag: adatok](tutorial-transform-data-spark-powershell.md) a cikk elolvasása előtt. 
 
@@ -77,7 +72,7 @@ Lásd: [Pig](transform-data-using-hadoop-pig.md) és [Hive](transform-data-using
 | jarFilePath       | Adja meg a jarLinkedService által hivatkozott Azure Storage-ban tárolt a Jar-fájlok elérési útját. A fájlnév pedig kis-és nagybetűket. | Igen      |
 | jarlibs           | A fájlok elérési útját a Jar könyvtár a jarLinkedService meghatározott Azure Storage szolgáltatásban tárolja a feladat által hivatkozott tömbje karakterlánc. A fájlnév pedig kis-és nagybetűket. | Nem       |
 | getDebugInfo      | Itt adhatja meg, ha a naplófájlok kerülnek az Azure Storage HDInsight-fürt által használt (vagy) leírt módon jarLinkedService. Megengedett értékek: None, mindig, vagy sikertelen. Alapértelmezett érték: nincs. | Nem       |
-| Argumentumok         | Hadoop-feladat argumentumok tömbjét adja meg. Az argumentumok parancssori argumentumként átadott minden egyes tevékenységhez. | Nem       |
+| argumentumok         | Hadoop-feladat argumentumok tömbjét adja meg. Az argumentumok parancssori argumentumként átadott minden egyes tevékenységhez. | Nem       |
 | határozza meg           | Adja meg a paraméterek kulcs/érték párok való hivatkozás a Hive-parancsfájl belül. | Nem       |
 
 

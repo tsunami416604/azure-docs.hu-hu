@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/14/2017
 ms.author: ashishth
-ms.openlocfilehash: f121a1f95eed04bf8086c03a5d4406c092dc9445
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: ea6ffa9d07be719c43ca33cfca76876c161d69bc
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31400673"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37048471"
 ---
 # <a name="deep-dive---advanced-analytics"></a>Részletes bemutatója - speciális elemzés
 
@@ -61,7 +61,7 @@ A legjobban záró aránytól kiválasztásával, valamint kell figyelembe venni
 HDInsight több gépi tanulási a beállítások egy speciális elemzésekre munkafolyamat rendelkezik:
 
 * [Gépi tanulás és Spark](#machine-learning-and-spark)
-* [R és R Server](#r-and-r-server)
+* [R és ML-szolgáltatások](#r-and-r-server)
 * [Az Azure Machine Learning és a Hive](#azure-machine-learning-and-hive)
 * [Spark és részletes tanulás](#spark-and-deep-learning)
 
@@ -75,9 +75,9 @@ Nincsenek három algoritmikus modellezési képességekkel kerüljön az eloszto
 * [**SparkML** ](https://spark.apache.org/docs/1.2.2/ml-guide.html) -SparkML csomag egy újabb, amely egy magasabb szintű API ML folyamatok megalkotásához Spark DataFrames platformra épül.
 * [**MMLSpark** ](https://github.com/Azure/mmlspark) – a Microsoft Machine Learning-könyvtárral az Apache Spark (MMLSpark) adatszakértőkön hatékonyabbá téve a kísérleti növelésére, valamint a legmodernebb machine learning szolgáltatást használja, a Spark célja technikák, beleértve a mély learning, nagy méretű adatkészleteken. A MMLSpark könyvtárban a PySpark modelljei felépítéséhez közös modellezési feladatok egyszerűbbé teszi. 
 
-### <a name="r-and-r-server"></a>R és R Server
+### <a name="r-and-ml-services"></a>R és ML-szolgáltatások
 
-HDInsight részeként a HDInsight-fürtöt hozhat létre [R Server](../r-server/r-server-overview.md) nagy adatkészletek és modellek használatra kész. Ez az új képesség biztosít az adatelemzők és egy ismert R felülettel is méretezhető Statisztikusok igény szerinti HDInsight keresztül nem növeli a fürt beállítása és karbantartása.
+HDInsight részeként a HDInsight-fürtöt hozhat létre [ML szolgáltatások](../r-server/r-server-overview.md) nagy adatkészletek és modellek használatra kész. Ez az új képesség biztosít az adatelemzők és egy ismert R felülettel is méretezhető Statisztikusok igény szerinti HDInsight keresztül nem növeli a fürt beállítása és karbantartása.
 
 ### <a name="azure-machine-learning-and-hive"></a>Az Azure Machine Learning és a Hive
 

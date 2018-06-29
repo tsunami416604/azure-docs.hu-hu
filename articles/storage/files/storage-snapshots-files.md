@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/17/2018
 ms.author: renash
-ms.openlocfilehash: cfb1e6810285886da13aa0bf69faee9c65e2b222
-ms.sourcegitcommit: c722760331294bc8532f8ddc01ed5aa8b9778dec
+ms.openlocfilehash: af113ae76d81c82ff6c4ced1569aa16f3a9ee27c
+ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34738227"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37063851"
 ---
 # <a name="overview-of-share-snapshots-for-azure-files"></a>Azure-fájlok megosztási pillanatképek áttekintése 
 Az Azure Files lehetővé teszi a megosztás pillanatképek készítése fájlmegosztások. A fájlmegosztási állapot pillanatképek rögzítési ezen a ponton idő megosztás. Ez a cikk azt írják le, milyen lehetőségek megosztás pillanatképek adja meg, és hogyan fordíthatja előnyére azokat az egyéni használati eset a.
@@ -46,7 +46,7 @@ A fájl fájlmegosztási szinten megosztás pillanatkép-készítés valósul me
 
 Fájlmegosztás megosztás pillanatképe megegyezik az alap fájlmegosztást. Az egyetlen különbség, hogy egy **DateTime** értéket fűzi hozzá a megosztás URI-t, ahol a megosztás pillanatkép készült időpontját jelzi. Például ha egy fájlmegosztás URI van http://storagesample.core.file.windows.net/myshare, a megosztás pillanatkép URI hasonlít:
 ```
-http://storagesample.core.file.windows.net/myshare?snapshot=2011-03-09T01:42:34.9360000Z
+http://storagesample.file.core.windows.net/myshare?snapshot=2011-03-09T01:42:34.9360000Z
 ```
 
 Megosztás pillanatképek továbbra is fennáll, addig, amíg explicit módon törlődnek. Egy megosztás pillanatkép nem outlive az alap fájlmegosztást. A pillanatképek a base-megosztás és nyomon követheti a jelenlegi pillanatképek társított enumerálása. 

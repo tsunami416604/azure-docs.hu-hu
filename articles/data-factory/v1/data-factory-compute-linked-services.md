@@ -13,16 +13,16 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 51a0f43587b9d34a3693eb4a2927d10c71bd95d1
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 59631ee0115c817da1b0588c1ad37d2f8b34db67
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34621751"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37053661"
 ---
 # <a name="compute-environments-supported-by-azure-data-factory"></a>Számítási környezetek Azure Data Factory által támogatott
 > [!NOTE]
-> Ez a cikk az Azure Data Factory általánosan elérhető 1. verziójára vonatkozik. Lásd a 2-es verziójának a Data Factory szolgáltatásnak, amely jelenleg előzetes verzióban érhető, használatakor [2-es társított szolgáltatások számítási](../compute-linked-services.md).
+> Ez a cikk az Azure Data Factory 1 verziójára vonatkozik. A Data Factory szolgáltatásnak aktuális verziójának használatakor lásd [társított szolgáltatások számítási](../compute-linked-services.md).
 
 Ez a cikk a számítási környezetek használható adatainak feldolgozása vagy átalakítási mutatja be. Is biztosít a különböző konfigurációt (a tárolt és kapcsolása-a-saját) adatait, hogy a Data Factory támogatja ezek hivatkozó összekapcsolt szolgáltatások konfigurálásakor számítási környezetek számára egy Azure data factory.
 
@@ -66,7 +66,7 @@ Miután július 31, 2018:
 - Ha egy igény szerinti HDInsight kapcsolódó szolgáltatás segítségével hajtható végre az adat-előállító 1-es verziójú DotNet egyéni tevékenység, frissítés a DotNet egyéni tevékenység JSON-definíció, használja az Azure Batch társított szolgáltatás. További információkért lásd: [egyéni tevékenységeket felhasználni a Data Factory-folyamathoz](https://docs.microsoft.com/azure/data-factory/v1/data-factory-use-custom-activities). 
 
 > [!Note]
-> Ha használja a meglévő, a HDInsight fürt kerüljön-a-saját kapcsolódó adat-előállítóban az 1-es eszköz, vagy az Azure Data Factoryben 2,-es intézkedés kerüljön-a-tulajdonosai, és igény szerinti HDInsight kapcsolódó szolgáltatás szükséges. A legújabb verzió támogatási szabályzata a HDInsight-fürtök adott esetben már érvényesíti. 
+> Ha használja a meglévő, HDInsight fürt kerüljön-a-saját kapcsolódó adat-előállítót az 1-es eszközt, vagy az Azure Data Factoryben, nincs teendője kerüljön-a-tulajdonosai, és igény szerinti HDInsight kapcsolódó szolgáltatás szükséges. A legújabb verzió támogatási szabályzata a HDInsight-fürtök adott esetben már érvényesíti. 
 >
 > 
 

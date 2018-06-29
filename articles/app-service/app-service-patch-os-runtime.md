@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/02/2018
 ms.author: cephalin
-ms.openlocfilehash: 92b6945ad13842e926d53be6dcc0d21554485ff3
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 0626b958a9b822569f4d3b6d27f3395bed853174
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32151008"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37030053"
 ---
 # <a name="os-and-runtime-patching-in-azure-app-service"></a>Az operációs rendszer és a futásidejű javítás az Azure App Service-ben
 
@@ -74,31 +74,31 @@ az webapp config set --python-version 3.4 --resource-group <groupname> --name <a
 az webapp config set --java-version 1.8 --java-container Tomcat --java-container-version 9.0 --resource-group <groupname> --name <appname>
 ```
 
-### <a name="deprecated-versions"></a>Elavult verzió
+### <a name="deprecated-versions"></a>Elavult verzió  
 
 Ha egy régebbi verziója elavult, a profileltávolítási dátum elavulásának bejelentéséig, hogy a futtatókörnyezet verziófrissítés megtervezheti ennek megfelelően. 
 
-## <a name="how-can-i-query-os-and-runtime-update-status-on-my-instances"></a>Hogyan tudja lekérdezni a példányokon az operációs rendszer és futásidejű frissítés állapota?
+## <a name="how-can-i-query-os-and-runtime-update-status-on-my-instances"></a>Hogyan tudja lekérdezni a példányokon az operációs rendszer és futásidejű frissítés állapota?  
 
 Zárolt kritikus operációs rendszer adatainak le a hozzáférési (lásd: [operációs rendszer működőképességét Azure App Service](web-sites-available-operating-system-functionality.md)), a [Kudu konzol](https://github.com/projectkudu/kudu/wiki/Kudu-console) lehetővé teszi a App Service-példány kapcsolatban az operációs rendszer lekérdezése futásidejű verziójához és. 
 
 Az alábbi táblázat az alkalmazásokat futtatja verziók a Windows és a nyelvi futtatókörnyezet módjáról:
 
-| Információ | Hol található az |
+| Információ | Hol található az | 
 |-|-|
 | Windows-verzió | Lásd: `https://<appname>.scm.azurewebsites.net/Env.cshtml` (a rendszeradatok) |
 | .NET-verziója | A `https://<appname>.scm.azurewebsites.net/DebugConsole`, a következő parancsot a parancssorba: <br>`powershell -command "gci 'Registry::HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Net Framework Setup\NDP\CDF'"` |
 | A .NET core verziója | A `https://<appname>.scm.azurewebsites.net/DebugConsole`, a következő parancsot a parancssorba: <br> `dotnet --version` |
 | PHP-verzió | A `https://<appname>.scm.azurewebsites.net/DebugConsole`, a következő parancsot a parancssorba: <br> `php --version` |
 | Alapértelmezett Node.js verziót | Az a [felhő rendszerhéj](../cloud-shell/overview.md), a következő parancsot: <br> `az webapp config appsettings list --resource-group <groupname> --name <appname> --query "[?name=='WEBSITE_NODE_DEFAULT_VERSION']"` |
-| Python-verzió | A `https://<appname>.scm.azurewebsites.net/DebugConsole`, a következő parancsot a parancssorba: <br> `python --version` |
+| Python-verzió | A `https://<appname>.scm.azurewebsites.net/DebugConsole`, a következő parancsot a parancssorba: <br> `python --version` |  
 
-> [!NOTE]
+> [!NOTE]  
 > Beállításjegyzék-helyhez való hozzáférés `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Component Based Servicing\Packages`, ahol információkat ["KB" javítások]((https://docs.microsoft.com/security-updates/SecurityBulletins/securitybulletins)) található, zárolva van.
 >
 >
 
 ## <a name="more-resources"></a>További erőforrások
 
-[Biztonsági és adatkezelési központ: biztonsági](https://www.microsoft.com/TrustCenter/Security/default.aspx)  
+[Biztonsági és adatkezelési központ: biztonsági](https://www.microsoft.com/en-us/trustcenter/security)  
 [64 bites ASP.NET Core Azure App Service](https://gist.github.com/glennc/e705cd85c9680d6a8f1bdb62099c7ac7)

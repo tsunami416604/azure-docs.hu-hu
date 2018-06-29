@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/01/2017
 ms.author: TomSh
-ms.openlocfilehash: a5f323b98fa30d2c4c89fa8fe8e75c1d89089b6e
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: c0794ebd953160c8569502db5d58c6d2b9ad892a
+ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2018
-ms.locfileid: "33895275"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37061496"
 ---
 # <a name="governance-in-azure"></a>Irányítás az Azure-ban
 
@@ -41,7 +41,7 @@ Ez a dokumentum segítenek megérteni, hogyan Azure irányítás képességek se
 
 Microsoft Azure felhőbe irányítás biztosít egy integrált naplózási és áttekintését, és hogy tanácsadást a szervezet az Azure platformon a felhasználási tanácsadási megközelítést. A Microsoft Azure felhőbe irányítás hivatkozik a döntéshozó folyamatainak, a feltételek és a házirendeket a tervezés, architektúra, beszerzési, telepítési, műveletet és egy felhőalapú felügyeleti részt számítástechnikai.
 
-Megtervezheti a Microsoft Azure felhőbe irányításhoz, meg kell elfogadnia egy részletes nézze meg a személyeket, folyamatok és technológiák jelenleg helyen, majd kialakítható keretrendszerek, amelyek megkönnyítik az informatikai részleg következetesen támogatja az üzleti igények ugyanakkor biztosítható a rugalmasság a végfelhasználók számára a hatékony Microsoft Azure szolgáltatásainak használatára.
+Megtervezheti a Microsoft Azure felhőbe irányításhoz, meg kell elfogadnia egy részletes nézze meg a személyeket, folyamatok és technológiák jelenleg helyen, majd kialakítható keretrendszerek, amelyek megkönnyítik az informatikai következetesen ugyanakkor biztosítható a végfelhasználók számára az üzleti igények támogatásához a Microsoft Azure hatékony szolgáltatásainak használatára rugalmasságot.
 
 A dokumentum azt ismerteti, hogyan érhet el egy emelt szintű szintet, az irányítás az informatikai erőforrások a Microsoft Azure-ban. A dokumentum azt segítenek megérteni a építve a Microsoft Azure biztonsági és irányítási funkciókat.
 
@@ -178,21 +178,21 @@ Előfizetésenként 2000 szerepkör-hozzárendelés osztható ki.
 
 ## <a name="resource-management"></a>Erőforrás-kezelés
 
-Azure eredetileg csak a klasszikus üzembe helyezési modell tartalmaz. Ebben a modellben minden erőforrás már létezett a egymástól függetlenül; nem lehetett kapcsolódó erőforrások csoportosítása. Ehelyett kellett manuálisan nyomon követése a megoldás vagy az alkalmazáshoz készült erőforrásokat, és ne felejtse el összehangolt kezelheti őket.
+Az Azure-ban eredetileg csak a klasszikus üzemi modell volt elérhető. Ebben a modellben az erőforrások egymástól függetlenül léteztek, a kapcsolódó erőforrásokat nem lehetett csoportosítani. Manuálisan kellett nyomon követni, hogy az egyes megoldások és alkalmazások melyik erőforrásokból épültek fel, és gondot kellett fordítani azok összehangolt kezelésére.
 
-A megoldás telepítéséhez kellett létrehozni az egyes erőforrások külön-külön az Azure portálon keresztül, vagy hozzon létre olyan parancsfájlt, amely a megfelelő sorrendben az erőforrások telepítése. Megoldás törlése, az egyes erőforrások törlése külön-külön kellett. Akkor lehetett könnyen nem vonatkoznak, és kapcsolódó erőforrások hozzáférés-vezérlési házirendek frissítése. Végül, akkor nem alkalmazható a következő címkék a erőforrásokhoz, hogy lássa el a feltételeket, amelyek segítenek az erőforrások figyelése és kezelése.
+A megoldás telepítéséhez kellett létrehozni az egyes erőforrások külön-külön az Azure portálon keresztül, vagy hozzon létre olyan parancsfájlt, amely a megfelelő sorrendben az erőforrások telepítése. A megoldások törléséhez külön-külön kellett törölni az egyes erőforrásokat. A kapcsolódó erőforrások hozzáférés-vezérlési szabályzatait nem volt egyszerű alkalmazni és frissíteni. Végül pedig címkéket sem lehetett az erőforrásokra alkalmazni, hogy segítsenek azok monitorozásában és a számlázás kezelésében.
 
-A 2014-re az Azure erőforrás-kezelő, amely hozzá, az erőforráscsoport fogalmát vezette be. Erőforráscsoport egy olyan tároló, amelyek egy közös életciklussal erőforrások. A Resource Manager üzembe helyezési modellel számos előnyt kínál:
+Az Azure 2014-ben mutatta be a Resource Managert, amely bevezette az erőforráscsoportok fogalmát. Az erőforráscsoport közös életciklussal rendelkező erőforrások tárolója. A Resource Manager-alapú üzemi modell számos előnyt kínál:
 
-- Ezt központi telepítése, kezelése, és figyelheti a megoldás a szolgáltatások csoportosan helyett külön-külön szolgáltatások ezek kezelése.
+- A megoldás összes szolgáltatását egy csoportként helyezheti üzembe, felügyelheti és figyelheti meg, és nem különálló erőforrásokként kell kezelnie azokat.
 
-- Ismételten a teljes életciklus megoldás üzembe helyezése, és lehet abban, hogy az erőforrások telepítése konzisztens lesz.
+- A megoldás a teljes életciklusa során ismételten üzembe helyezhető, és az erőforrások üzembe helyezése biztosan konzisztens lesz.
 
-- Az erőforráscsoportban összes erőforrásokhoz való hozzáférés-vezérlés is alkalmazhat, és ezek a házirendek automatikusan alkalmazza, amikor új erőforrásokat ad az erőforráscsoportot.
+- Hozzáférés-vezérlést alkalmazhat az összes erőforrásra az erőforráscsoportban, és a rendszer automatikusan alkalmazza ezeket a szabályzatokat, amikor új erőforrásokat ad a csoporthoz.
 
 - Címkékkel láthatja el az erőforrásokat, így logikusan rendszerezhető az előfizetés összes erőforrása.
 
-- JavaScript Object Notation (JSON) segítségével határozza meg az infrastruktúra megoldást. A JSON-fájlt egy Resource Manager-sablon néven ismert.
+- A megoldás infrastruktúráját JavaScript Object Notation (JSON) formátumban definiálhatja. Ez a JSON-fájl az úgynevezett Resource Manager-sablon.
 
 - Meghatározhatja az erőforrások közti függőségeket, hogy azok a megfelelő sorrendben legyenek telepítve.
 
@@ -245,7 +245,7 @@ Az alábbi korlátozások érvényesek a címkékre:
 
 - Az egyes erőforráscsoportokra alkalmazott címkéket nem öröklik az adott erőforráscsoportba tartozó erőforrások.
 
-Ha több mint 15 értéket kell társítania egy erőforráshoz, használjon JSON-karakterláncot a címke értékéhez. A JSON-karakterláncban tartalmazhat egyetlen címke kulcs alkalmazott sok értéket.
+Ha több mint 15 értéket kell társítania egy erőforráshoz, használjon JSON-sztringet a címke értékéhez. A JSON-karakterláncban tartalmazhat egyetlen címke kulcs alkalmazott sok értéket.
 
 ### <a name="tags-and-billing"></a>Címkék és a számlázás
 
@@ -276,7 +276,7 @@ Szerepköralapú hozzáférés-vezérlés, ellentétben a felügyeleti zárolás
 
 A szülő hatókörben zárolást alkalmazásakor hatókörön belüli összes erőforrás öröklik az azonos zárolása. A későbbiekben még akkor is, erőforrások örökölt a zárolást. Az öröklés a legszigorúbb zár lép érvénybe.
 
-Hozzon létre, vagy törölje a felügyeleti zárolás, Microsoft.Authorization/ hozzáféréssel kell rendelkeznie _vagy Microsoft.Authorization/locks/_ műveletek. A beépített szerepkörök, csak **tulajdonos** és **felhasználói hozzáférés adminisztrátora** kapnak a csatolási műveleteket.
+Hozzon létre, vagy törölje a felügyeleti zárolás, Microsoft.Authorization/ hozzáféréssel kell rendelkeznie _vagy Microsoft.Authorization/locks/_ műveletek. A beépített szerepkörök esetén ezek a műveletek csak a **Tulajdonosi** és a **Felhasználói hozzáférés rendszergazdájának** vannak engedélyezve.
 
 ## <a name="api-access-to-billing-information"></a>API-hozzáférés az számlázási adatokat
 
@@ -388,9 +388,9 @@ A [az Azure Security Center](https://docs.microsoft.com/azure/security-center/se
 
 A Security Center itt integrált biztonsági monitorozást és kezelése az Azure-előfizetések között, megkönnyíti a nehezen észlelhető fenyegetések azonosítását szabályzatkezelést, és számos biztonsági megoldással együttműködik. Miután engedélyezte a [biztonsági házirendek](https://docs.microsoft.com/azure/security-center/security-center-policies) az előfizetéshez tartozó erőforrásokra, a Security Center a potenciális biztonsági réseket azonosításához az erőforrások biztonsági elemzi. A hálózati konfigurációval kapcsolatos információk azonnal elérhetők.
 
-Az Azure Security Center ajánlott eljárás elemzési és biztonsági házirendek kezelése Azure-előfizetés belül az összes erőforrás kombinációját jelenti. A hatékony és könnyen használható eszköz lehetővé teszi, hogy biztonsági csoportok és kockázatkezelési tisztviselő megakadályozása, észlelését és válaszadás a biztonsági fenyegetések automatikusan gyűjti és elemzi az Azure-erőforrások, a hálózati és a partneri megoldások, például kártevőirtó programok és tűzfalak biztonsági adatait.
+Az Azure Security Center ajánlott eljárás elemzési és biztonsági házirendek kezelése Azure-előfizetés belül az összes erőforrás kombinációját jelenti. A hatékony és könnyen használható eszköz lehetővé teszi, hogy biztonsági csoportok és kockázatkezelési tisztviselő megakadályozása, észlelését és válaszadás a biztonsági fenyegetések automatikusan gyűjti és elemzi az Azure-erőforrások, a hálózati és a partneri megoldások, például kártevőirtó biztonsági adatait programok és tűzfalak.
 
-Ezenkívül az Azure Security Center bővített analitikát alkalmaz, beleértve a gépi tanulási és viselkedési elemzési során, ami a Microsoft-termékek és a szolgáltatások, a Microsoft Digital Crimes Unit (DCU), a Microsoft biztonsági válasz Center (MSRC), a külső hírcsatornák globális fenyegetésfelderítési adataival. [Biztonsági irányítás](https://www.credera.com/blog/credera-site/azure-governance-part-4-other-tools-in-the-toolbox/) körben alkalmazza az előfizetés szintjén vagy maradt meg egyedi erőforrás-házirenddefiníción keresztül alkalmazott meghatározott, a részletes követelményeinek.
+Ezenkívül az Azure Security Center bővített analitikát alkalmaz, beleértve a gépi tanulási és viselkedési elemzési során, ami a Microsoft-termékek és szolgáltatások, a Microsoft Digital Crimes Unit (DCU), a Microsoft globális fenyegetésfelderítési adataival Biztonsági válasz Center (MSRC), valamint külső hírcsatornák. [Biztonsági irányítás](https://www.credera.com/blog/credera-site/azure-governance-part-4-other-tools-in-the-toolbox/) körben alkalmazza az előfizetés szintjén vagy maradt meg egyedi erőforrás-házirenddefiníción keresztül alkalmazott meghatározott, a részletes követelményeinek.
 
 Végül az Azure Security Center erőforrás biztonsági állapota ezek a házirendek alapján elemzi, és használja ahhoz, hogy adja meg a osztályon irányítópultok és a riasztás esemény, például a kártevő-észlelési vagy kártékony IP-kapcsolatot kísérletek.
 
@@ -413,7 +413,7 @@ Az Azure Security Center figyeli a következő Azure-erőforrások:
 
 ### <a name="log-analytics"></a>Log Analytics
 
-A Naplóelemzési szoftverek fejlesztési és szolgáltatás csapat információ-biztonság és [cégirányítási program](https://github.com/Microsoft/azure-docs/blob/master/articles/log-analytics/log-analytics-security.md) támogatja az üzleti követelmények és részben ismertetett módon törvény és szabályozás megfelelő [Microsoft Azure megbízhatóság Center](https://azure.microsoft.com/support/trust-center/) és [Microsoft adatvédelmi központ megfelelőségi](https://www.microsoft.com/TrustCenter/Compliance/default.aspx). Hogyan Naplóelemzési biztonsági követelmények meghatározásához, biztonsági vezérlők azonosítja, kezeli, és figyeli a kockázatok is létezik ismerteti. Évente, azt felülvizsgálati házirendeket, szabványokat, eljárásokra és útmutatást.
+A Naplóelemzési szoftverek fejlesztési és szolgáltatás csapat információ-biztonság és [cégirányítási program](https://github.com/Microsoft/azure-docs/blob/master/articles/log-analytics/log-analytics-security.md) támogatja az üzleti követelmények és részben ismertetett módon törvény és szabályozás megfelelő [Microsoft Azure megbízhatóság Center](https://azure.microsoft.com/support/trust-center/) és [Microsoft adatvédelmi központ megfelelőségi](https://microsoft.com/en-us/trustcenter/compliance). Hogyan Naplóelemzési biztonsági követelmények meghatározásához, biztonsági vezérlők azonosítja, kezeli, és figyeli a kockázatok is létezik ismerteti. Évente, azt felülvizsgálati házirendeket, szabványokat, eljárásokra és útmutatást.
 
 Minden Naplóelemzési fejlesztési csoport egy tagja megkapja a formális alkalmazás biztonsági képzés. A verziókezelő rendszer belsőleg, szoftverek fejlesztésére használjuk. Minden szoftver projekt védik a rendszerhez.
 

@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 05/11/2018
 ms.author: Brenduns
 ms.reviewer: JeffGoldner
-ms.openlocfilehash: d90ac726ae689cf299ee41d4e7ff4c17769e7455
-ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
+ms.openlocfilehash: 8d9337053c8905886ed4429d64f8ef5b4e2c7d14
+ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/12/2018
-ms.locfileid: "34074830"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37060447"
 ---
 # <a name="guest-operating-systems-supported-on-azure-stack"></a>Azure-veremben támogatott vendég operációs rendszerek
 
@@ -40,7 +40,7 @@ Az Azure verem támogatja a Windows operációs rendszereiről a következő tá
 | Windows Server 2008 SP2 | 64 bites |  Saját rendszerkép kapcsolása |
 | Windows 10 *(lásd az 1. megjegyzés)* | 64 bites, Pro és Enterprise | Saját rendszerkép kapcsolása |
 
-***1. Megjegyzés:*** *telepítheti a Windows 10-es ügyfél operációs rendszereket Azure veremben, rendelkeznie kell [Windows felhasználói licencelési](https://www.microsoft.com/Licensing/product-licensing/windows10.aspx) vagy a vételi keresztül egy minősített több-Bérlős szolgáltató ([QMTH](https://www.microsoft.com/CloudandHosting/licensing_sca.aspx)).*
+***1. Megjegyzés:*** *telepítheti a Windows 10-es ügyfél operációs rendszereket Azure veremben, rendelkeznie kell [Windows felhasználói licencelési](https://www.microsoft.com/en-us/Licensing/product-licensing/windows10.aspx) vagy a vételi keresztül egy minősített több-Bérlős szolgáltató ([QMTH](https://www.microsoft.com/en-us/CloudandHosting/licensing_sca.aspx)).*
 
 Piactéren elérhető rendszerkép fizetési,-akkor-használható vagy BYOL (EA/SPLA) licencelési érhetők el. Mindkét szolgáltatás egyetlen Azure veremben példányra használata nem támogatott. A telepítés során Azure verem esetében a vendégügynök megfelelő verzióját a lemezképpel.
 

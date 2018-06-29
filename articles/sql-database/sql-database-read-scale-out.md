@@ -7,14 +7,14 @@ manager: craigg
 ms.service: sql-database
 ms.custom: monitor & tune
 ms.topic: conceptual
-ms.date: 06/26/2018
+ms.date: 06/27/2018
 ms.author: sashan
-ms.openlocfilehash: fb6e8f4420b739b5ac84f1d5c185fddc740c551a
-ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
+ms.openlocfilehash: 7b504306e32f97a0392239f9e6adc6c460848580
+ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 06/27/2018
-ms.locfileid: "37018513"
+ms.locfileid: "37060008"
 ---
 # <a name="use-read-only-replicas-to-load-balance-read-only-query-workloads-preview"></a>Csak olvasható replikákat használ a csak olvasható elosztásában (előzetes verzió) betöltése
 
@@ -22,7 +22,7 @@ ms.locfileid: "37018513"
 
 ## <a name="overview-of-read-scale-out"></a>Olvassa el a kibővített áttekintése
 
-A prémium szinten lévő minden egyes adatbázis ([alapjául szolgáló vásárlási modell DTU-alapú](sql-database-service-tiers-dtu.md)) vagy a fontos üzleti szinten lévő ([vCore-alapú alapjául szolgáló vásárlási modell (előzetes verzió)](sql-database-service-tiers-vcore.md)) automatikusan ki van építve több Always ON replikák SLA-elérhetőséget támogatásához. Ezekre a replikákra ki vannak építve az írható-olvasható replika rendszeres adatbázis-kapcsolatok által használt teljesítmény szintjét. A **olvasási kibővített** funkció lehetővé teszi, hogy SQL-adatbázis csak olvasható elosztásában a csak olvasható replika kapacitása nem osztja meg a írható-olvasható replika használatával. Ezzel a módszerrel a csak olvasható munkaterhelés elkülönül a fő olvasási és írási terhelést, és nem lesz hatással a teljesítményét. A szolgáltatás célja, az alkalmazásokat, amelyek logikailag tartalmaznak csak olvasható munkaterhelések, például az elemzés, szóközzel, és ezért szerezhet jobb teljesítményt nyújt a további tartalékkapacitását használja, nem kapcsolódik további költség.
+A prémium szinten lévő minden egyes adatbázis ([alapjául szolgáló vásárlási modell DTU-alapú](sql-database-service-tiers-dtu.md)) vagy a fontos üzleti szinten lévő ([vCore-alapú alapjául szolgáló vásárlási modell (előzetes verzió)](sql-database-service-tiers-vcore.md)) automatikusan ki van építve több AlwaysON replikák SLA-elérhetőséget támogatásához. Ezekre a replikákra ki vannak építve az írható-olvasható replika rendszeres adatbázis-kapcsolatok által használt teljesítmény szintjét. A **olvasási kibővített** funkció lehetővé teszi, hogy egyenleg SQL-adatbázis csak olvasható munkaterhelés kapacitásának egyik csak olvasható replikán nem osztja meg a írható-olvasható replika. Ezzel a módszerrel a csak olvasható munkaterhelés elkülönül a fő olvasási és írási terhelést, és nem lesz hatással a teljesítményét. A szolgáltatás célja, az alkalmazásokat, amelyek logikailag tartalmaznak csak olvasható munkaterhelések, például az elemzés, szóközzel, és ezért szerezhet jobb teljesítményt nyújt a további tartalékkapacitását használja, nem kapcsolódik további költség.
 
 Az olvasási kibővített szolgáltatással az adott adatbázishoz, explicit módon engedélyeznie kell azt az adatbázis létrehozásakor vagy ezek után a PowerShell használatával való konfigurációját megváltoztatásával a [Set-AzureRmSqlDatabase](/powershell/module/azurerm.sql/set-azurermsqldatabase) vagy a [ Új AzureRmSqlDatabase](/powershell/module/azurerm.sql/new-azurermsqldatabase) parancsmagok vagy az Azure Resource Manager REST API használatával a [- adatbázisok létrehozása vagy frissítése](/rest/api/sql/databases/createorupdate) metódust. 
 
@@ -61,10 +61,12 @@ Server=tcp:<server>.database.windows.net;Database=<mydatabase>;User ID=<myLogin>
 
 Ellenőrizheti, hogy csatlakozik egy csak olvasható replika a következő lekérdezés futtatásával. Ha csatlakozik egy csak olvasható replika READ_ONLY ad vissza.
 
+
 ```SQL
 SELECT DATABASEPROPERTYEX(DB_NAME(), 'Updateability')
 ```
-
+> [!NOTE]
+> Egy adott időpontban csak az egyik az AlwaysON-replikák érhető el a csak olvasható munkamenetek által.
 
 ## <a name="enable-and-disable-read-scale-out-using-azure-powershell"></a>Engedélyezheti vagy letilthatja a olvasási kibővített Azure PowerShell használatával
 
@@ -108,9 +110,9 @@ Body:
 
 További információkért lásd: [- adatbázis létrehozása vagy frissítése](/rest/api/sql/databases/createorupdate).
 
-## <a name="using-read-scale-out-with-geo-replicated-databases"></a>Georeplikált adatbázisok olvasási kibővítési lehetőséget használ
+## <a name="using-read-scale-out-with-geo-replicated-databases"></a>Georeplikált adatbázisok olvasható kibővítési lehetőséget használ
 
-Ha a következők olvasási kibővített egyenleg írásvédett munkaterhelését (pl. egy feladatátvételi csoport tagjai), a georeplikált adatbázist használ, győződjön meg arról, hogy olvasási kibővített engedélyezve van az elsődleges, mind a georeplikált másodlagos adatbázisok. Ez biztosítja, hogy a program a terheléselosztás hatást, amikor a feladatátvételt követően az új elsődleges kapcsolódik az alkalmazás. Ha olvasható méretezési engedélyezve van, a georeplikált másodlagos adatbázishoz kapcsolódik a munkamenetek `ApplicationIntent=ReadOnly` továbbítja a egyik replikán azt útvonal-kapcsolatok az elsődleges adatbázisban azonos módon.  A munkamenetek nélkül `ApplicationIntent=ReadOnly` továbbítja az elsődleges másodpéldány, a georeplikált másodlagos, amely írásvédett is. 
+Ha a következők olvasási kibővített egyenleg írásvédett munkaterhelését (pl. egy feladatátvételi csoport tagjai), a georeplikált adatbázist használ, győződjön meg arról, hogy olvasási kibővített engedélyezve van az elsődleges, mind a georeplikált másodlagos adatbázisok. Ez biztosítja, hogy a program a terheléselosztás hatást, amikor a feladatátvételt követően az új elsődleges kapcsolódik az alkalmazás. Ha olvasható méretezési engedélyezve van, a georeplikált másodlagos adatbázishoz kapcsolódik a munkamenetek `ApplicationIntent=ReadOnly` továbbítja a egyik replikán azt útvonal-kapcsolatok az elsődleges adatbázisban azonos módon.  A munkamenetek nélkül `ApplicationIntent=ReadOnly` továbbítja az elsődleges másodpéldány, a georeplikált másodlagos, amely írásvédett is. Georeplikált másodlagos adatbázis tartozik, mint az elsődleges adatbázis egy másik végponti, mert korábban a másodlagos eléréséhez azt nem kell beállítania `ApplicationIntent=ReadOnly`. Előző verziókkal való kompatibilitás érdekében `sys.geo_replication_links` DMV látható `secondary_allow_connections=2` (minden ügyfél-kapcsolat engedélyezett).
 
 > [!NOTE]
 > Előzetes nem végezzük el ciklikus multiplexelés, vagy bármely más elosztott terhelésű helyi replikáit a másodlagos adatbázis között. 

@@ -11,15 +11,15 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 05/30/2018
+ms.date: 06/27/2018
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 9c4c126663d34d65cc7e0aa641bf93b848a5dcae
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: d2445713aa5d6a839950ca0fe9567133c06d1ffa
+ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34658315"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37062241"
 ---
 # <a name="sap-hana-large-instances-high-availability-and-disaster-recovery-on-azure"></a>SAP HANA nagy példányok magas rendelkezésre állási és vészhelyreállítási helyreállítási az Azure-on 
 
@@ -44,10 +44,12 @@ Az alábbi táblázat a jelenleg támogatott magas rendelkezésre állási és v
 | Támogatott HANA nagy példányát forgatókönyv | Magas rendelkezésre állási beállítása | Vész-helyreállítási lehetőség | Megjegyzések |
 | --- | --- | --- | --- |
 | Egyetlen csomópont | Nem érhető el. | Dedikált DR-telepítés.<br /> Multipurpose DR-telepítés. | |
-| Gazdagép automatikus feladatátvételt: N + m<br /> például 1 + 1 | A készenléti véve az aktív szerepkör használhatóságát.<br /> HANA határozza meg a szerepkör kapcsolót. | Dedikált DR-telepítés.<br /> Multipurpose DR-telepítés.<br /> DR szinkronizálási storage replikáció használatával. | HANA kötet beállítása a csomópontok (n + m) vannak csatolva.<br /> DR helynek kell lennie a csomópontok azonos számú. |
+| Gazdagép automatikus feladatátvételt: kibővített (vagy anélkül készenléti)<br /> például 1 + 1 | A készenléti véve az aktív szerepkör használhatóságát.<br /> HANA határozza meg a szerepkör kapcsolót. | Dedikált DR-telepítés.<br /> Multipurpose DR-telepítés.<br /> DR szinkronizálási storage replikáció használatával. | HANA kötet beállítása a csomópontok vannak csatolva.<br /> DR helynek kell lennie a csomópontok azonos számú. |
 | HANA replikációs | Elsődleges vagy másodlagos telepítés lehetséges.<br /> Másodlagos áthelyezi egy feladatátvételi esetben elsődleges szerepkör.<br /> HANA replikációs és az operációs rendszer szabályozhatja a feladatátvételt. | Dedikált DR-telepítés.<br /> Multipurpose DR-telepítés.<br /> DR szinkronizálási storage replikáció használatával.<br /> DR HANA replikációs használatával még nem lehetséges, külső gyártótól származó összetevőkhöz nélkül. | Minden csomópont csatolt kötetek külön készletét.<br /> A munkakörnyezeti helyet a másodlagos másodpéldány csak lemezkötetek a vész-Helyreállítási helyre replikálja.<br /> A vész-Helyreállítási helyen szükség egy olyan kötetek készlete. | 
 
 A dedikált DR-telepítés, ahol a HANA nagy példány egység a vész-Helyreállítási helyen nem használatos a futó alkalmazások és szolgáltatások vagy nem éles rendszerek. Az egység passzív, és csak akkor, ha katasztrófa feladatátvevő végrehajtja a rendszer van telepítve. Azonban ez a beállítás nincs előnyben részesített téve a sok ügyfél.
+
+Tekintse meg a [HLI támogatott forgatókönyvek](hana-supported-scenario.md) további tárolási elrendezés és ethernet részleteit a architektúra.
 
 > [!NOTE]
 > [SAP HANA MCOD központi telepítések](https://launchpad.support.sap.com/#/notes/1681092) (több HANA példányt egy egységen) a táblázatban felsorolt forgatókönyvek munkahelyi felirataként a magas rendelkezésre ÁLLÁSÚ és vész-Helyreállítási módszer. Kivételt jelent a HANA replikációs egy támasztja alapján automatikus feladatátvevő fürttel. Ilyen esetben csak egy HANA példány egységenként támogatja. A [SAP HANA MDC](https://launchpad.support.sap.com/#/notes/2096000) központi telepítések, az csak nem tárolási alapú magas rendelkezésre ÁLLÁSÚ és vész-Helyreállítási módszerek működik, ha egynél több bérlő van telepítve. Egy bérlő telepített, a felsorolt összes módszerek érvényesek.  
@@ -60,7 +62,7 @@ A következő SAP cikkekben található SAP HANA magas rendelkezésre állás to
 - [SAP HANA magas rendelkezésre állású tanulmány](http://go.sap.com/documents/2016/05/f8e5eeba-737c-0010-82c7-eda71af511fa.html)
 - [SAP HANA felügyeleti útmutató](http://help.sap.com/hana/SAP_HANA_Administration_Guide_en.pdf)
 - [Az SAP HANA replikációs SAP HANA Academy videó](http://scn.sap.com/community/hana-in-memory/blog/2015/05/19/sap-hana-system-replication)
-- [Támogatási Megjegyzés #1999880 – gyakori kérdések az SAP HANA replikációs SAP](https://bcs.wdf.sap.corp/sap/support/notes/1999880)
+- [Támogatási Megjegyzés #1999880 – gyakori kérdések az SAP HANA replikációs SAP](https://apps.support.sap.com/sap/support/knowledge/preview/en/1999880)
 - [SAP támogatási Megjegyzés #2165547 – SAP HANA biztonsági mentése és visszaállítása SAP HANA rendszer replikációs környezeten belül](https://websmp230.sap-ag.de/sap(bD1lbiZjPTAwMQ==)/bc/bsp/sno/ui_entry/entry.htm?param=69765F6D6F64653D3030312669765F7361706E6F7465735F6E756D6265723D3231363535343726)
 - [Támogatási Megjegyzés #1984882 – SAP HANA replikációs használatával SAP minimális vagy nulla állásidővel hardver Exchange-hez](https://websmp230.sap-ag.de/sap(bD1lbiZjPTAwMQ==)/bc/bsp/sno/ui_entry/entry.htm?param=69765F6D6F64653D3030312669765F7361706E6F7465735F6E756D6265723D3139383438383226)
 

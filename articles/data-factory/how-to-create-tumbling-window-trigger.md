@@ -13,18 +13,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/05/2018
 ms.author: shlo
-ms.openlocfilehash: 61d53e0d5f32f40b67f5b2d4ce888b047f8c4cea
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 02f84047d0e1d3e73fac991250da814176f3995d
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34619711"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37049924"
 ---
 # <a name="create-a-trigger-that-runs-a-pipeline-on-a-tumbling-window"></a>Hozzon létre egy eseményindítót, amely egy folyamat fut egy átfedésmentes ablak
 Ez a cikk lépéseit létrehozása, indítsa el, és figyelheti a átfedésmentes ablak eseményindítót. Eseményindítók és a támogatott típusok kapcsolatos általános információkért lásd: [csővezeték-végrehajtási és eseményindítók](concepts-pipeline-execution-triggers.md).
-
-> [!NOTE]
-> Ez a cikk az Azure Data Factory 2. verziójára vonatkozik, amely jelenleg előzetes verzióban érhető el. Ha szeretne megtudni az Azure Data Factory 1-es verziójú, amely általánosan elérhető (GA), lásd: [Ismerkedés az Azure Data Factory 1-es verziójú](v1/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md).
 
 Az átfedésmentes ablakos eseményindítók olyan eseményindítók, amelyek rendszeres időközönként aktiválódnak a megadott kezdési időponttól kezdve, az állapot megőrzése mellett. Az átfedésmentes ablakok rögzített méretű, egymást nem fedő és összefüggő időintervallumok. Átfedésmentes ablak eseményindító egy folyamatot egy az egyhez típusú kapcsolattal rendelkezik, és csak egy szinguláris folyamat hivatkozhat.
 
@@ -75,9 +72,9 @@ A következő táblázat a fő JSON-elemek szerepelnek, amelyek kapcsolódnak is
 
 | JSON-elem | Leírás | Típus | Megengedett értékek | Szükséges |
 |:--- |:--- |:--- |:--- |:--- |
-| **type** | Az eseményindító típusa. A típus a rögzített érték "TumblingWindowTrigger." | Karakterlánc | "TumblingWindowTrigger" | Igen |
-| **runtimeState** | A jelenlegi állapotában az eseményindító futási időt.<br/>**Megjegyzés:**: Ez az elem \<readOnly >. | Karakterlánc | "Lépések", "leállt," "Letiltva" | Igen |
-| **frequency** | A gyakoriság egységet (perc vagy óra), az eseményindító ismét előfordul jelölő karakterlánccá. Ha a **startTime** dátum értékei részletesebben, mint a **gyakoriság** érték, a **startTime** dátumok minősülnek, ha az ablak határok arra az esetre vonatkoznak. Például ha a **gyakoriság** értéke óránkénti és a **startTime** értéke 2016-04-01T10:10:10Z, az első ablakban van (2017-09-01T10:10:10Z, 2017-09-01T11:10:10Z). | Karakterlánc | "minute", "hour"  | Igen |
+| **type** | Az eseményindító típusa. A típus a rögzített érték "TumblingWindowTrigger." | Sztring | "TumblingWindowTrigger" | Igen |
+| **runtimeState** | A jelenlegi állapotában az eseményindító futási időt.<br/>**Megjegyzés:**: Ez az elem \<readOnly >. | Sztring | "Lépések", "leállt," "Letiltva" | Igen |
+| **frequency** | A gyakoriság egységet (perc vagy óra), az eseményindító ismét előfordul jelölő karakterlánccá. Ha a **startTime** dátum értékei részletesebben, mint a **gyakoriság** érték, a **startTime** dátumok minősülnek, ha az ablak határok arra az esetre vonatkoznak. Például ha a **gyakoriság** értéke óránkénti és a **startTime** értéke 2016-04-01T10:10:10Z, az első ablakban van (2017-09-01T10:10:10Z, 2017-09-01T11:10:10Z). | Sztring | "minute", "hour"  | Igen |
 | **interval** | Pozitív egész szám, amely az eseményindító futásának gyakoriságát meghatározó **frequency** érték időközét jelöli. Például ha a **időköz** 3 és a **gyakoriság** "óra," az eseményindító 3 óránként ismétlődik. | Egész szám | Egy pozitív egész szám. | Igen |
 | **startTime**| A első előfordulása, amely az elmúlt lehet. Az első eseményindító időköz (**startTime**, **startTime** + **időköz**). | DateTime | Egy DateTime értéket. | Igen |
 | **endTime**| A utolsó előfordulása, amely ezelőtti lehet. | DateTime | Egy DateTime értéket. | Igen |

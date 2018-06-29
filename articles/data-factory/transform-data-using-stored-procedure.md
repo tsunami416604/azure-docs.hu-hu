@@ -12,24 +12,21 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/16/2018
 ms.author: douglasl
-ms.openlocfilehash: 25329d65861dc31e67bba146e15a6446a6449e83
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: e8e0f8352404892ea8af6a0fa176c336dd2c1659
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34620588"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37054024"
 ---
 # <a name="transform-data-by-using-the-sql-server-stored-procedure-activity-in-azure-data-factory"></a>Adatok átalakítása a SQL Server tárolt eljárási tevékenység az Azure Data Factory használatával
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [1. verzió – Általánosan elérhető](v1/data-factory-stored-proc-activity.md)
-> * [2. verzió – Előzetes verzió](transform-data-using-stored-procedure.md)
-
+> * [1-es verziójával](v1/data-factory-stored-proc-activity.md)
+> * [Aktuális verzió](transform-data-using-stored-procedure.md)
 
 Adatok átalakítása tevékenységek használata egy adat-előállítóban [csővezeték](concepts-pipelines-activities.md) átalakító és előrejelzéseket és elemzések nyers adatok feldolgozása. A tárolt eljárási tevékenység, amely támogatja a Data Factory átalakítása tevékenységek egyike. Ez a cikk épít, a [adatok átalakítása](transform-data.md) cikk, amelynek során az adatok átalakítása és a Data Factory támogatott átalakítása tevékenységek általános áttekintést.
 
 > [!NOTE]
-> Ez a cikk a Data Factory 2. verziójára vonatkozik, amely jelenleg előzetes verzióban érhető el. A Data Factory szolgáltatásnak, amely általánosan elérhető (GA), 1 verziójának használatakor lásd [tárolt eljárási tevékenység a V1](v1/data-factory-stored-proc-activity.md).
-> 
 > Ha most ismerkedik az Azure Data Factory, olvassa végig [Bevezetés az Azure Data Factory](introduction.md) hajtsa végre az oktatóanyag: [oktatóanyag: adatok](tutorial-transform-data-spark-powershell.md) a cikk elolvasása előtt. 
 
 A tárolt eljárási tevékenység segítségével meghívása tárolt eljárás valamelyik a következő adatokat tárolja, a vállalati vagy egy Azure virtuális gépen (VM): 
@@ -41,7 +38,7 @@ A tárolt eljárási tevékenység segítségével meghívása tárolt eljárás
 > [!IMPORTANT]
 > Ha az adatok másolása az Azure SQL Database vagy az SQL Server, konfigurálhatja a **SqlSink** a másolási tevékenység tárolt eljárás használatával meghívni a **sqlWriterStoredProcedureName** tulajdonság. A tulajdonság kapcsolatos tudnivalókért lásd az alábbi összekötő cikkek: [Azure SQL Database](connector-azure-sql-database.md), [SQL Server](connector-sql-server.md). Adatok másolása az Azure SQL Data Warehouse a másolási tevékenység során a tárolt eljárás meghívása nem támogatott. De a tárolt eljárási tevékenység segítségével az SQL Data Warehouse tárolt eljárás hívása. 
 >
-> Ha az adatok másolása az Azure SQL Database vagy az SQL Server vagy az Azure SQL Data Warehouse, konfigurálhatja a **SqlSource** a másolási tevékenység meghívni egy tárolt eljárás a forrás-adatbázis használatával adatokat olvasni az **sqlReaderStoredProcedureName** tulajdonság. További információkért tekintse meg a következő összekötő-cikkek: [Azure SQL Database](connector-azure-sql-database.md), [SQL Server](connector-sql-server.md), [Azure SQL Data Warehouse](connector-azure-sql-data-warehouse.md)          
+> Ha az adatok másolása az Azure SQL Database vagy az SQL Server vagy az Azure SQL Data Warehouse, konfigurálhatja a **SqlSource** a másolási tevékenység meghívni egy tárolt eljárás a forrás-adatbázis használatával adatokat olvasni az  **sqlReaderStoredProcedureName** tulajdonság. További információkért tekintse meg a következő összekötő-cikkek: [Azure SQL Database](connector-azure-sql-database.md), [SQL Server](connector-sql-server.md), [Azure SQL Data Warehouse](connector-azure-sql-data-warehouse.md)          
 
  
 

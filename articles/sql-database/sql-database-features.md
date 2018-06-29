@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 06/08/2018
 ms.author: jovanpop
 manager: craigg
-ms.openlocfilehash: de85a555def31d164f2cda5c6c6bc9fae9fb5a7e
-ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
-ms.translationtype: MT
+ms.openlocfilehash: c48a0f078da8e56038ec74ee398bd26fe1dc2718
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/21/2018
-ms.locfileid: "36309282"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37054755"
 ---
 # <a name="feature-comparison-azure-sql-database-versus-sql-server"></a>Szolgáltatások összehasonlítása: Azure SQL Database és SQL Server 
 
@@ -121,7 +121,7 @@ A következő táblázat az SQL Server főbb szolgáltatásokat sorolja fel, és
 | [SQL Server Analysis Services (SSAS)](https://docs.microsoft.com/sql/analysis-services/analysis-services) | Nem - látható [Azure Analysis Services](https://azure.microsoft.com/services/analysis-services/) | Nem - látható [Azure Analysis Services](https://azure.microsoft.com/services/analysis-services/) |
 | [SQL Server-naplózás](https://docs.microsoft.com/sql/relational-databases/security/auditing/sql-server-audit-database-engine) | Nem - látható [SQL Database auditing](sql-database-auditing.md) | Igen – lásd: [különbségek naplózás](sql-database-managed-instance-transact-sql-information.md#auditing) |
 | [SQL Server Data Tools (SSDT)] (https://docs.microsoft.com/sql/ssdt/download-sql-server-data-tools-ssdt) | Igen | Igen |
-| [Az SQL Server Integration Services (SSIS)](https://docs.microsoft.com/sql/integration-services/sql-server-integration-services) | Igen, az Azure Data Factory (ADF) környezetben, az Azure SQL Database működteti, és végre SSISDB csomagok tárolására a felügyelt SSIS [Azure SSIS integrációs futásidejű](../data-factory/tutorial-deploy-ssis-packages-azure-powershell.md). | Igen, az Azure Data Factory (ADF) környezetben, az SSISDB felügyelt példány által birtokolt, és végre a csomagok tárolására a felügyelt SSIS [Azure SSIS integrációs futásidejű](../data-factory/tutorial-deploy-ssis-packages-azure-powershell.md). |
+| [Az SQL Server Integration Services (SSIS)](https://docs.microsoft.com/sql/integration-services/sql-server-integration-services) | Igen, az Azure Data Factory (ADF) környezetben, a csomagok tárolására az Azure SQL Database működteti, és az Azure SSIS integrációs futásidejű (IR) végre SSISDB, egy felügyelt SSIS lásd [létrehozása Azure-SSIS-IR az ADF](https://docs.microsoft.com/en-us/azure/data-factory/create-azure-ssis-integration-runtime). | Igen, az Azure Data Factory (ADF) környezetben, ahol csomagok találhatók az SSISDB felügyelt példány által birtokolt, és végre az Azure SSIS integrációs futásidejű (IR), egy felügyelt SSIS lásd [létrehozása Azure-SSIS-IR az ADF](https://docs.microsoft.com/en-us/azure/data-factory/create-azure-ssis-integration-runtime). |
 | [SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) | Igen | Igen |
 | [SQL Server PowerShell](https://docs.microsoft.com/sql/relational-databases/scripting/sql-server-powershell) | Igen | Igen |
 | [SQL Server Profiler](https://docs.microsoft.com/sql/tools/sql-server-profiler/sql-server-profiler) | Nem - látható [kiterjesztett események](sql-database-xevent-db-diff-from-svr.md) | Igen |

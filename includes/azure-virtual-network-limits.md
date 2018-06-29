@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/20/2018
 ms.author: jdial
 ms.custom: include file
-ms.openlocfilehash: b9e06865b4a401cd925cce564b9c30594c912bae
-ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
+ms.openlocfilehash: 326da32f91b263bbd09a4c6f521c9ec72094820c
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36297966"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37066067"
 ---
 <a name="virtual-networking-limits-classic"></a>Az alábbi korlátozások kizárólag olyan hálózati erőforrásokra érvényesek, amelyek kezelése előfizetésenként, a klasszikus üzemi modellel történik. Megtudhatja, hogyan [megtekintheti az aktuális erőforrás-használata az előfizetés korlátozások](../articles/networking/check-usage-against-limits.md).
 
@@ -44,7 +44,7 @@ Az alábbi korlátozások kizárólag olyan hálózati erőforrásokra érvénye
 | Virtuális hálózati társviszony virtuális hálózatonként |10 |50 |
 | DNS-kiszolgálók száma virtuális hálózatonként |9 |25 |
 | Magánhálózati IP-címek száma virtuális hálózatonként |16384 ** |16384 |
-| Magánhálózati IP-címek száma hálózati adapterenként |256 |1024 |
+| Magánhálózati IP-címek száma hálózati adapterenként |256 |256 |
 | Egyidejű TCP vagy UDP-forgalmat egy hálózati Adapterének virtuális gép vagy szerepkörpéldány |500 000 |500 000 |
 | Hálózati adapterek (NIC) |24000 ** |24000 |
 | Hálózati biztonsági csoportok (NSG) |100 |5000 |

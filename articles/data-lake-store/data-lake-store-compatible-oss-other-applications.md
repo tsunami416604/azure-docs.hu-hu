@@ -1,25 +1,26 @@
 ---
-title: A Data Lake Store kompatibilis big data-alkalmazások |} Microsoft Docs
-description: Azure Data Lake Store a nyílt forráskódú alkalmazások listáját
+title: Kompatibilis a Data Lake tárolási Gen1 big data-alkalmazások |} Microsoft Docs
+description: Azure Data Lake tárolási Gen1 (korábbi nevén az Azure Data Lake Store) együtt használható nyílt forráskódú alkalmazások listája
 services: data-lake-store
 documentationcenter: ''
 author: nitinme
 manager: jhubbard
-editor: cgronlun
-ms.assetid: 699e1805-cb76-4807-9ac1-8bd9d9bbb72b
 ms.service: data-lake-store
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/29/2018
+ms.date: 06/27/2018
 ms.author: nitinme
-ms.openlocfilehash: fdeaf4d1d25d1669002b696219adfb6eaff4fd40
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 61187a26190e8d449a572e00d5abe8338d9060c2
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34624704"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37029638"
 ---
-# <a name="open-source-big-data-applications-that-work-with-azure-data-lake-store"></a>Nyissa meg az Azure Data Lake Store használható forráskódú Big Data-alkalmazások
+# <a name="open-source-big-data-applications-that-work-with-azure-data-lake-storage-gen1"></a>Nyissa meg a forrás Big Data-alkalmazások Azure Data Lake tárolási Gen1 együtt használható
+
+[!INCLUDE [data-lake-storage-gen1-rename-note.md](../../includes/data-lake-storage-gen1-rename-note.md)]
+
 Ez a cikk az Azure Data Lake Store a nyílt forráskódú big data-alkalmazások listája. Az alábbi táblázat az alkalmazások csak az elérhető a felsorolt terjesztési verziók támogatottak. Ezeket az alkalmazásokat mely verziói érhetők el a hdinsight eszközzel kapcsolatos tudnivalókért lásd: [HDInsight-összetevők verziószámozása](../hdinsight/hdinsight-component-versioning.md).
 
 | Nyílt forráskódú szoftvereket | Disztribúció |
@@ -38,5 +39,5 @@ Ez a cikk az Azure Data Lake Store a nyílt forráskódú big data-alkalmazások
 
 
 ## <a name="see-also"></a>Lásd még
-* [Az Azure Data Lake Store áttekintése](data-lake-store-overview.md)
+* [Az Azure Data Lake tárolási Gen1 áttekintése](data-lake-store-overview.md)
 

@@ -13,22 +13,19 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/26/2018
 ms.author: jingwang
-ms.openlocfilehash: 99429b8090eca6d8633abfb1309f02168f1d06fb
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: c139b68421061362f40856af55ad0338118ab49a
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34618310"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37051882"
 ---
 # <a name="copy-data-from-and-to-salesforce-by-using-azure-data-factory"></a>Adatok másolása a kezdő és a Salesforce Azure Data Factory használatával
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [1. verzió – Általánosan elérhető](v1/data-factory-salesforce-connector.md)
-> * [2. verzió – Előzetes verzió](connector-salesforce.md)
+> * [1-es verziójával](v1/data-factory-salesforce-connector.md)
+> * [Aktuális verzió](connector-salesforce.md)
 
 Ez a cikk ismerteti, hogyan használja a másolási tevékenység az Azure Data Factory a kezdő és a Salesforce-adatok másolása. Buildekről nyújtanak a [másolási tevékenység áttekintése](copy-activity-overview.md) cikket, amely megadja a másolási tevékenység általános áttekintést.
-
-> [!NOTE]
-> Ez a cikk a Data Factory 2. verziójára vonatkozik, amely jelenleg előzetes verzióban érhető el. Ha a Data Factory, amely általában a rendelkezésre álló, 1 verzióját használja [Salesforce-összekötőt a 1-es verziójú](v1/data-factory-salesforce-connector.md).
 
 ## <a name="supported-capabilities"></a>Támogatott képességei
 
@@ -237,9 +234,9 @@ Adatok másolása Salesforce, állítsa be a fogadó típusa a másolási tevék
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
 | type | A másolási tevékenység fogadó type tulajdonsága értékre kell állítani **SalesforceSink**. | Igen |
-| WriteBehavior | Az írási viselkedésének a művelethez.<br/>Két érték engedélyezett **beszúrása** és **Upsert**. | Nem (alapértelmezett érték Insert) |
+| writeBehavior | Az írási viselkedésének a művelethez.<br/>Két érték engedélyezett **beszúrása** és **Upsert**. | Nem (alapértelmezett érték Insert) |
 | externalIdFieldName | A külső azonosító mezőben a upsert művelet neve. A megadott mező "Külső azonosító mezője" a Salesforce-objektum definiálni kell. A megfelelő bemeneti adatok azt nem lehet NULL értékeket. | Igen, a "Upsert" |
-| WriteBatchSize | A sorok számát az egyes kötegekben Salesforce írt adatok. | Nem (alapértelmezett érték 5 000) |
+| writeBatchSize | A sorok számát az egyes kötegekben Salesforce írt adatok. | Nem (alapértelmezett érték 5 000) |
 | ignoreNullValues | Azt jelzi, hogy figyelmen kívül hagyja a bemeneti adat NULL értékek írási művelet során.<br/>Két érték engedélyezett **igaz** és **hamis**.<br>- **Igaz**: változatlanul a célobjektum lévő adatokat egy upsert vagy az update művelet végrehajtásakor. Szúrja be egy meghatározott alapértelmezett értéket, ha így tesz, az insert művelet.<br/>- **Hamis**: frissítse a célobjektum adatait NULL értékre, ha így tesz, upsert vagy az update művelet. Helyezze be NULL értékre, ha így tesz, az insert művelet. | Nem (alapértelmezett értéke "false") |
 
 **Példa: Salesforce fogadó a a másolási tevékenység**
@@ -303,25 +300,25 @@ Salesforce adatokat másolni, ha a következő megfeleltetéseket segítségéve
 
 | Salesforce-adattípus | Data Factory ideiglenes adattípus |
 |:--- |:--- |
-| Automatikus szám |Karakterlánc |
+| Automatikus szám |Sztring |
 | Jelölőnégyzet |Logikai |
 | Currency (Pénznem) |Dupla |
 | Dátum |DateTime |
 | Dátum/idő |DateTime |
-| E-mail |Karakterlánc |
-| Azonosító |Karakterlánc |
-| Keresési kapcsolat |Karakterlánc |
-| Többszörös kiválasztási lista |Karakterlánc |
+| E-mail |Sztring |
+| Azonosító |Sztring |
+| Keresési kapcsolat |Sztring |
+| Többszörös kiválasztási lista |Sztring |
 | Szám |Dupla |
 | Százalék |Dupla |
-| Telefonszám |Karakterlánc |
-| Választási lista |Karakterlánc |
-| Szöveg |Karakterlánc |
-| Szövegmező |Karakterlánc |
-| Szövegmező (nagy) |Karakterlánc |
-| Szövegmező (gazdag) |Karakterlánc |
-| Szöveg (titkosítva) |Karakterlánc |
-| URL-cím |Karakterlánc |
+| Telefonszám |Sztring |
+| Választási lista |Sztring |
+| Szöveg |Sztring |
+| Szövegmező |Sztring |
+| Szövegmező (nagy) |Sztring |
+| Szövegmező (gazdag) |Sztring |
+| Szöveg (titkosítva) |Sztring |
+| URL-cím |Sztring |
 
 ## <a name="next-steps"></a>További lépések
 Források és mosdók adat-előállítóban másolási tevékenység által támogatott adattárolókhoz listájáért lásd: [adattárolókhoz támogatott](copy-activity-overview.md#supported-data-stores-and-formats).

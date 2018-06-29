@@ -12,12 +12,12 @@ ms.author: josack
 ms.suite: sql
 ms.prod_service: sql-database
 ms.component: migration
-ms.openlocfilehash: 2a0a411d5f2b19eda844cba160429ecfe958c45e
-ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
+ms.openlocfilehash: d97e0bf94b911936cacf04f7f26c172b9975c56f
+ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/21/2018
-ms.locfileid: "36309613"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37061644"
 ---
 # <a name="new-dba-in-the-cloud--managing-your-database-in-azure-sql-database"></a>A felhőben – az Azure SQL Database adatbázis új DBA
 
@@ -170,7 +170,7 @@ Expressroute is lehetővé teszi kapacitásnövelés legfeljebb 2 x a sávszéle
 - [Munkafolyamatok](../expressroute/expressroute-workflows.md)
 
 ### <a name="is-sql-database-compliant-with-any-regulatory-requirements-and-how-does-that-help-with-my-own-organizations-compliance"></a>Az SQL-adatbázis bármely szabályozási követelményeknek megfelelő, és hogyan, amely segít a saját szervezet?
-SQL-adatbázis szabályozó megfelelőségi számos megfelel. Tekintse meg a legújabb, hogy teljesülnek-megfelelőségi, látogasson el a [Microsoft Trust Center](https://www.microsoft.com/trustcenter/compliance/complianceofferings) és a megjelenítéséhez, ha SQL-adatbázis szerepel-e a megfelelő Azure-szolgáltatás a szervezet számára fontos a megfelelőségi részletek. Fontos megjegyezni, hogy bár SQL-adatbázis megfelelő szolgáltatásként igazolhatják, azt a szervezet szolgáltatása megfelelőségi támogatások, de automatikusan garantálja az.
+SQL-adatbázis szabályozó megfelelőségi számos megfelel. Tekintse meg a legújabb, hogy teljesülnek-megfelelőségi, látogasson el a [Microsoft Trust Center](https://microsoft.com/en-us/trustcenter/compliance/complianceofferings) és a megjelenítéséhez, ha SQL-adatbázis szerepel-e a megfelelő Azure-szolgáltatás a szervezet számára fontos a megfelelőségi részletek. Fontos megjegyezni, hogy bár SQL-adatbázis megfelelő szolgáltatásként igazolhatják, azt a szervezet szolgáltatása megfelelőségi támogatások, de automatikusan garantálja az.
 
 ## <a name="intelligent-database-monitoring-and-maintenance-after-migration"></a>Intelligens adatbázis figyelését és karbantartását az áttelepítés után
 
@@ -245,11 +245,11 @@ SQL-adatbázis bizonyos intelligens módszereket, amelyek lehetővé teszik, hog
 
 - **Exportálás**: Azure-portálról BACPAC-fájlként exportálhatja az Azure SQL-adatbázis
 
-   ![Adatbázis exportálása](./media/sql-database-export/database-export.png)
+   ![adatbázis exportálása](./media/sql-database-export/database-export.png)
 
 - **Importálás**: is importálhat adatokat BACPAC-fájlként az adatbázisba, az Azure portál használatával.
 
-   ![Adatbázis importálása](./media/sql-database-import/import.png)
+   ![adatbázis importálása](./media/sql-database-import/import.png)
 
 ### <a name="how-do-i-synchronize-data-between-sql-database-and-sql-server"></a>Hogyan szinkronizálni a SQL Database és SQL Server közötti?
 Ennek eléréséhez többféleképpen közül választhat: 

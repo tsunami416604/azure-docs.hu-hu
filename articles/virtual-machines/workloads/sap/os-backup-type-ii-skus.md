@@ -11,24 +11,24 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 10/31/2017
+ms.date: 06/27/2018
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 0d5caf5836b96555e01b55d408e51f3df2407d35
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: f01a32612b335003856a372ece15ef300b9d93db
+ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34657604"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37063274"
 ---
 # <a name="os-backup-and-restore-for-type-ii-skus"></a>Az operációs rendszer biztonsági mentéséhez és visszaállításához a típus II termékváltozatok
 
-Ez a dokumentum ismerteti, hogyan végezhető el az operációs rendszer biztonsági mentése és visszaállítása a **típus II termékváltozatok** nagy HANA-példánya. 
+Ez a dokumentum ismerteti, hogyan hajtsa végre az operációs rendszer szintű biztonsági mentés, és visszaállíthatja a **típus II termékváltozatok** nagy HANA-példánya. 
 
 >[!NOTE]
 >Az operációs rendszer biztonsági mentési parancsfájlokat használ a hátsó a kiszolgálón telepített szoftver.  
 
-A Microsoft Service Management csapat, alapértelmezés szerint a létesítési befejeződése után a kiszolgáló két biztonsági mentést ütemezést, és készítsen biztonsági másolatot a teljes operációs rendszer van beállítva. Az ütemezés a biztonsági mentési feladat a következő paranccsal ellenőrizheti:
+A Microsoft Service Management csapat, alapértelmezés szerint a létesítési befejeződése után a kiszolgálót két biztonsági mentést ütemezéssel biztonsági mentése a fájlrendszer szintjén, készítsen biztonsági másolatot az operációs rendszer. Az ütemezés a biztonsági mentési feladat a következő paranccsal ellenőrizheti:
 ```
 #crontab –l
 ```
@@ -38,14 +38,14 @@ A biztonsági mentés ütemezése a következő paranccsal bármikor módosítha
 ```
 ## <a name="how-to-take-a-manual-backup"></a>Manuális biztonsági mentés készítése hogyan?
 
-Az operációs rendszer biztonsági másolat használatával ütemezett egy **cron feladat** már. Azonban az operációs rendszer biztonsági mentés manuálisan is végezheti el. Manuális biztonsági mentés, futtassa a következő parancsot:
+Az operációs rendszer fájlrendszer biztonsági mentése van ütemezve, használja a **cron feladat** már. Azonban az operációs rendszer szintű biztonsági mentés manuálisan is végezheti el. Manuális biztonsági mentés, futtassa a következő parancsot:
 
 ```
 #rear -v mkbackup
 ```
 A következő képernyő megjelenítése a minta manuális biztonsági mentés jeleníti meg:
 
-![Hogyan](media/HowToHLI/OSBackupTypeIISKUs/HowtoTakeManualBackup.PNG)
+![hogyan](media/HowToHLI/OSBackupTypeIISKUs/HowtoTakeManualBackup.PNG)
 
 
 ## <a name="how-to-restore-a-backup"></a>A biztonsági másolat visszaállításával hogyan?

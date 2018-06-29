@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 04/02/2018
 ms.author: kgremban
-ms.openlocfilehash: b7751bd1b309333d5ef40530b0fa499a42a57cd1
-ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
+ms.openlocfilehash: d77953100bb7007553cf1c5ab00b9cdafea281e9
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36752248"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37030437"
 ---
 # <a name="choose-the-right-iot-hub-tier-for-your-solution"></a>A megoldás a megfelelő IoT-központ szint kiválasztása
 
@@ -43,7 +43,7 @@ Az IoT hub létrehozása után frissítheti az alapszintű rétegben standard cs
 | [Megfigyelési és diagnosztikai](iot-hub-monitor-resource-health.md) | Igen | Igen |
 | [Felhő eszközre üzenetkezelés](iot-hub-devguide-c2d-guidance.md) |   | Igen |
 | [Eszköz twins](iot-hub-devguide-device-twins.md), [modul twins](iot-hub-devguide-module-twins.md) és [Eszközkezelés](iot-hub-device-management-overview.md) |   | Igen |
-| [Azure IoT Edge](../iot-edge/how-iot-edge-works.md) |   | Igen |
+| [Azure IoT Edge](../iot-edge/about-iot-edge.md) |   | Igen |
 
 Az IoT-központ is biztosít, egy ingyenes szint, amely készült tesztelésében és értékelésében. A standard szint, de korlátozott üzenetkezelési támogatás minden képességet tartalmaz. Ingyenes szint az alapszintű vagy standard nem verzióról. 
 
@@ -59,9 +59,9 @@ A támogatott képességek közötti különbség a basic és standard rétegek 
 | Modul beolvasása | Igen | Igen |
 | [Megtekintheti a beállításjegyzék statisztikákat](https://docs.microsoft.com/en-us/rest/api/iothub/service/service/getdeviceregistrystatistics) | Igen | Igen |
 | [Get-szolgáltatásokra vonatkozó statisztikák](https://docs.microsoft.com/en-us/rest/api/iothub/service/service/getservicestatistics) | Igen | Igen |
-| [Helyezze az eszközt](https://docs.microsoft.com/rest/api/iothub/deviceapi/putdevice) | Igen | Igen |
+| [Hozzon létre vagy az eszköz frissítése](https://docs.microsoft.com/rest/api/iothub/service/service/createorupdatedevice) | Igen | Igen |
 | PUT modul | Igen | Igen |
-| [Eszközök lekérdezése](https://docs.microsoft.com/rest/api/iothub/deviceapi/querydevices) | Igen | Igen |
+| [Az IoT-központ lekérdezése](https://docs.microsoft.com/rest/api/iothub/service/service/queryiothub) | Igen | Igen |
 | Lekérdezés-modulok | Igen | Igen |
 | [Fájl feltöltése SAS URI-t létrehozni](https://docs.microsoft.com/en-us/rest/api/iothub/device/device/createfileuploadsasuri) | Igen | Igen |
 | [Eszköz kötött értesítés](https://docs.microsoft.com/en-us/rest/api/iothub/device/device/receivedeviceboundnotification) | Igen | Igen |

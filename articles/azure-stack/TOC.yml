@@ -294,15 +294,15 @@
             - name: Ajánlat Kubernetes fürt
               href: azure-stack-solution-template-kubernetes-cluster-add.md
         - name: Használat és számlázás
+          href: azure-stack-billing-and-chargeback.md
           items:
-            - name: Áttekintés
-              href: azure-stack-billing-and-chargeback.md
             - name: 'Felhasználás kezelésére és a számlázási, egy CSP-hez'
               href: azure-stack-add-manage-billing-as-a-csp.md
-            - name: A használati és elszámolási bérlők hozzáadása
-              href: azure-stack-csp-howto-register-tenants.md
-            - name: Bérlői regisztrációs kezelése
-              href: azure-stack-csp-ref-operations.md
+              items:
+                - name: A használati és elszámolási bérlők hozzáadása
+                  href: azure-stack-csp-howto-register-tenants.md
+                - name: Bérlői regisztrációs kezelése
+                  href: azure-stack-csp-ref-operations.md
             - name: Használati és számlázási referencia
               items:
                 - name: Jelentéskészítés a használati adatokról

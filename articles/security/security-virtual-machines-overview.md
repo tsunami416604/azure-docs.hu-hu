@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: terrylan
-ms.openlocfilehash: 7d31a434d4ead6dd8f8a13a08d368389904b5b4a
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 5ffba386ae6b1e1e5d18f92803bc8cb74b2ff89e
+ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34364233"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37061299"
 ---
 # <a name="azure-virtual-machines-security-overview"></a>Az Azure virtuális gépek biztonsági áttekintése
 Azure virtuális gépek segítségével számos különféle számítógépes megoldások üzembe egy gyors módja. A szolgáltatás támogatja a Microsoft Windows, Linux, a Microsoft SQL Server, Oracle, IBM, SAP, és Azure BizTalk szolgáltatások. Ezért bármilyen munkaterhelést és szinte bármilyen operációs rendszeren bármilyen nyelvet is telepíthet.
@@ -142,5 +142,5 @@ Az Azure virtuális gépek FISMA, a FedRAMP, a HIPAA, a PCI DSS szintjét 1 és 
 
 További információ:
 
-* [A Microsoft biztonsági és adatkezelési központ: megfelelőségi](https://www.microsoft.com/TrustCenter/Compliance/default.aspx)
+* [A Microsoft biztonsági és adatkezelési központ: megfelelőségi](https://www.microsoft.com/en-us/trustcenter/compliance)
 * [Megbízható felhő: Microsoft Azure biztonsági, adatvédelmi és megfelelőségi](http://download.microsoft.com/download/1/6/0/160216AA-8445-480B-B60F-5C8EC8067FCA/WindowsAzure-SecurityPrivacyCompliance.pdf)

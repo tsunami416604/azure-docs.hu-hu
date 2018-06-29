@@ -11,15 +11,15 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 06/19/2018
+ms.date: 06/27/2018
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 18b6aaf7396c16714370435d2ee6d3a4960ecf21
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 3918096a977cfd48e2128646d7c552e842ab8834
+ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "36337974"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37063680"
 ---
 # <a name="sap-hana-large-instances-overview-and-architecture-on-azure"></a>SAP HANA (nagy példányok) – áttekintés és az Azure-architektúra
 
@@ -393,6 +393,8 @@ Ezen értékek nyers mennyiségi számát, amelyek alapján némileg üzembe hel
 Szükség lehet további tárhelyet. 1 TB méretű egységekbe további tárterület megvásárlásával tárolási is hozzáadhat. A további tárhely további kötetként lehet hozzáadni. Azt is használható egy vagy több kötetnek a meglévő kiterjeszteni. Nem lehet a kötetek méretének csökkentése eredetileg telepített, és többnyire részletes ismertetését lásd az előző táblázatokban által. Még nem lehet módosítható a köteteket a neve, vagy csatlakoztassa a neveket. A korábban ismertetett tárolási köteteket a HANA nagy példány mértékegységet NFS4 kötetek vannak csatolva.
 
 Biztonsági mentés és visszaállítás és vész helyreállítási célokra használható storage-pillanatfelvételekkel. További információkért lásd: [SAP HANA (nagy példányok) magas rendelkezésre állási és vészhelyreállítási helyreállítási Azure](hana-overview-high-availability-disaster-recovery.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+
+Tekintse meg a [HLI támogatott forgatókönyvek](hana-supported-scenario.md) a forgatókönyvnek a tárolási elrendezés részletekért.
 
 ### <a name="encryption-of-data-at-rest"></a>A tárolt adatok titkosítása
 A HANA nagy példány használt tároló lehetővé teszi, hogy az adatok átlátható titkosítási a lemezen tárolt. Amikor telepít egy HANA nagy példány egység, engedélyezheti a titkosítás eredő. Is titkosított kötetek után módosíthatja a központi telepítés akkor történik meg. Áthelyezést nem titkosított titkosított kötetek átlátható, és nincs szükség az állásidő. 

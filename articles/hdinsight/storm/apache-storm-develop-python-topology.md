@@ -14,12 +14,12 @@ ms.devlang: python
 ms.topic: conceptual
 ms.date: 04/30/2018
 ms.author: larryfr
-ms.openlocfilehash: 0a8930da2d44714573155477d791dd9cb78d872a
-ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
+ms.openlocfilehash: 9ad6ab9e280762fbdb04ba0c1790cd6d01526556
+ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/01/2018
-ms.locfileid: "32311692"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37063442"
 ---
 # <a name="develop-apache-storm-topologies-using-python-on-hdinsight"></a>Python használata a HDInsight alatt futó Apache Storm-topológiák fejlesztése
 
@@ -38,7 +38,7 @@ Ez a projekt kódját érhető el: [ https://github.com/Azure-Samples/hdinsight-
 
 * 3 maven
 
-* (Választható) A helyi Storm környezet. A helyi Storm-környezet csak akkor van szükség, ha a topológia helyileg futtatja. További információkért lásd: [a fejlesztési környezet létrehozása](http://storm.apache.org/releases/1.1.0/Setting-up-development-environment.html).
+* (Választható) A helyi Storm környezet. A helyi Storm-környezet csak akkor van szükség, ha a topológia helyileg futtatja. További információkért lásd: [a fejlesztési környezet létrehozása](http://storm.apache.org/releases/1.1.2/Setting-up-development-environment.html).
 
 ## <a name="storm-multi-language-support"></a>A Storm több nyelv támogatása
 
@@ -97,7 +97,7 @@ storm jar WordCount-1.0-SNAPSHOT.jar org.apache.storm.flux.Flux -l -R /topology.
 ```
 
 > [!NOTE]
-> Ez a parancs a helyi Storm környezet szükséges. További információkért lásd: [a fejlesztési környezet létrehozása](http://storm.apache.org/releases/1.0.1/Setting-up-development-environment.html)
+> Ez a parancs a helyi Storm környezet szükséges. További információkért lásd: [a fejlesztési környezet létrehozása](http://storm.apache.org/releases/1.0.6/Setting-up-development-environment.html)
 
 Egyszer a topológia indul el, akkor bocsát ki a helyi konzol, az alábbihoz hasonló információkat:
 

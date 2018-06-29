@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 6826d87e5613ce4892e9fd839c66ec26282ad188
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: e8d3b83c8508ae5913975edcbf89f4e70a8b08be
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34622125"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37050848"
 ---
 # <a name="transform-data-using-hive-activity-in-azure-data-factory"></a>Azure Data Factory használatával Hive tevékenység adatok átalakítása 
 > [!div class="op_single_selector" title1="Transformation Activities"]
@@ -35,7 +35,7 @@ ms.locfileid: "34622125"
 > * [.NET egyéni tevékenység](data-factory-use-custom-activities.md)
 
 > [!NOTE]
-> Ez a cikk a Data Factory általánosan elérhető 1. verziójára vonatkozik. Lásd a 2-es verziójának a Data Factory szolgáltatásnak, amely jelenleg előzetes verzióban érhető, használatakor [Hive tevékenység adat-előállítóban 2-es verzióját használó adatok](../transform-data-using-hadoop-hive.md).
+> Ez a cikk a Data Factory 1 verziójára vonatkozik. A Data Factory szolgáltatásnak aktuális verziójának használatakor lásd [Hive tevékenység használatával a Data Factory adatok](../transform-data-using-hadoop-hive.md).
 
 A HDInsight Hive tevékenység egy adat-előállítóban [csővezeték](data-factory-create-pipelines.md) Hive-lekérdezések végrehajtása a [saját](data-factory-compute-linked-services.md#azure-hdinsight-linked-service) vagy [igény szerinti](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service) Windows/Linux-alapú HDInsight-fürthöz. Ez a cikk épít, a [adatok átalakítása tevékenységek](data-factory-data-transformation-activities.md) cikk, amelynek során az adatok átalakítása és a támogatott átalakítása tevékenységek általános áttekintést.
 
@@ -82,7 +82,7 @@ A HDInsight Hive tevékenység egy adat-előállítóban [csővezeték](data-fac
 | bemenetek |A Hive tevékenység által felhasznált bemeneti |Nem |
 | kimenetek |A Hive tevékenység által létrehozott kimenet |Igen |
 | linkedServiceName |A HDInsight-fürthöz, a Data Factory kapcsolt szolgáltatásként regisztrált mutató hivatkozás |Igen |
-| Parancsfájl |Adja meg a Hive parancsfájl beágyazott |Nem |
+| parancsfájl |Adja meg a Hive parancsfájl beágyazott |Nem |
 | parancsfájl elérési útja |A Hive-parancsfájl az Azure blob Storage tárolóban tárolja, és adja meg a fájl elérési útját. Használja a "script" vagy "scriptPath" tulajdonságot. Mindkettő nem használható együtt. A fájlnév pedig kis-és nagybetűket. |Nem |
 | határozza meg |Kulcs/érték párok paraméterek meghatározni a Hive-parancsfájl segítségével történő "hiveconf" belül hivatkozik |Nem |
 

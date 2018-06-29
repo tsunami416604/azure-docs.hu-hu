@@ -1,6 +1,6 @@
 ---
 title: Hogyan olvasására vagy írására particionálva adatokat az Azure Data Factory |} Microsoft Docs
-description: Megtudhatja, hogyan olvasására vagy írására particionált adatokat az Azure Data Factory 2-es verzióját.
+description: Megtudhatja, hogyan olvasására vagy írására particionált adatokat az Azure Data Factory.
 services: data-factory
 documentationcenter: ''
 author: sharonlo101
@@ -13,15 +13,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/15/2018
 ms.author: shlo
-ms.openlocfilehash: cdf305e3607d7483186185a014883cff5458b89f
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 59644f3318e2bf9c4f0ea6c3f5699fe1d19f2089
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34619082"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37053710"
 ---
-# <a name="how-to-read-or-write-partitioned-data-in-azure-data-factory-version-2"></a>Hogyan olvasására vagy írására particionálva adatokat az Azure Data Factory 2-es verzió
-1-es verziójával Azure Data Factory Olvasás vagy írás a particionált SliceStart/SliceEnd/WindowStart/WindowEnd rendszerváltozók használatával támogatott. A 2-es verzióját ez a viselkedés a paraméter értékének csővezeték paraméter és a trigger elem ütemezett időpont/kezdete segítségével érhet el. 
+# <a name="how-to-read-or-write-partitioned-data-in-azure-data-factory"></a>Hogyan olvasására vagy írására particionálva az Azure Data Factoryben az adatok
+1-es verziójával Azure Data Factory Olvasás vagy írás a particionált SliceStart/SliceEnd/WindowStart/WindowEnd rendszerváltozók használatával támogatott. Adat-előállító jelenlegi verziójában ez a viselkedés érhet el, a paraméter értékének a feldolgozási sor paraméter és eseményindító ütemezett időpont/kezdete használatával. 
 
 ## <a name="use-a-pipeline-parameter"></a>Egy folyamat paraméterrel 
 1. verziójában használhatja a partitionedBy tulajdonság és SliceStart rendszer változó a következő példában látható módon: 
@@ -37,7 +37,7 @@ ms.locfileid: "34619082"
 
 A partitonedBy tulajdonságra vonatkozó további információkért lásd: [1-es verziójú Azure Blob összekötő](v1/data-factory-azure-blob-connector.md#dataset-properties) cikk. 
 
-2. verziója Ez a viselkedés érdekében, hogy a következő műveleteket hajthatja végre: 
+A Data Factory jelenlegi verziója Ez a viselkedés érdekében, hogy a következő műveleteket hajthatja végre: 
 
 1. Adja meg a **paraméter a következő feldolgozási sorban** karakterlánc típusú. A következő példában az adatcsatorna paraméter neve nem **windowStartTime**. 
 2. Állítsa be **folderPath** hivatkozhasson rá az adatcsatorna paraméter értékének adatkészlet-definícióban. 

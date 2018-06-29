@@ -10,19 +10,19 @@ ms.technology: Speech
 ms.topic: article
 ms.date: 06/07/2018
 ms.author: wolfma
-ms.openlocfilehash: 37228ca2f887f0993f707a2b10a2b5dcd888b1b9
-ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
+ms.openlocfilehash: 0bcdc3c4357cb8985fad16c607957bffad4a2b8c
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36753668"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37049230"
 ---
 # <a name="quickstart-for-c-and-windows"></a>A C++ és a Windows gyors üzembe helyezés
 
 A szolgáltatások kognitív beszéd SDK aktuális verziója `0.4.0`.
 
 A C++-alapú Konzolalkalmazás létrehozása, amely a beszédfelismerés SDK használja a Windows asztal azt ismertetik.
-Az alkalmazás alapul a [Microsoft kognitív szolgáltatások SDK NuGet-csomag](https://www.nuget.org/packages/Microsoft.CognitiveServices.Speech) és a Microsoft VisualStudio 2017.
+Az alkalmazás alapul a [Microsoft kognitív szolgáltatások SDK NuGet-csomag](https://www.nuget.org/packages/Microsoft.CognitiveServices.Speech) és a Microsoft Visual Studio 2017.
 
 > [!NOTE]
 > Ha a gyors üzembe helyezés C++ és a Linux keres, lépjen [Itt](quickstart-cpp-linux.md).<br>

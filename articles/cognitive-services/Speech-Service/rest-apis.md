@@ -9,12 +9,12 @@ ms.technology: speech
 ms.topic: article
 ms.date: 05/09/2018
 ms.author: v-jerkin
-ms.openlocfilehash: e80c69657dfb7cbab7d29c94d3dd3c56574de7b7
-ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
-ms.translationtype: MT
+ms.openlocfilehash: a25c2b7ea7fdfcc6bcaa10baff3a5ae14ae9753b
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/22/2018
-ms.locfileid: "36321994"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37044820"
 ---
 # <a name="speech-service-rest-apis"></a>Beszéd szolgáltatás REST API-k
 
@@ -24,14 +24,7 @@ Az egyesített beszéd szolgáltatás REST API-k által nyújtott API-kat hasonl
 
 A szöveg API beszéd átalakítás csak a használt végpontok térnek el egymástól, az előző beszéd szolgáltatásból Beszéd felismerés API. Az új végpontok az alábbi táblázatban láthatók. Használja az egyik, amely megfelel az előfizetése régiójában.
 
-Régió| Beszédfelismerés szöveg végpont
--|-
-USA nyugati régiója| `https://westus.stt.speech.microsoft.com/speech/recognition/conversation/cognitiveservices/v1`
-Kelet-Ázsia| `https://eastasia.stt.speech.microsoft.com/speech/recognition/conversation/cognitiveservices/v1`
-Észak-Európa| `https://northeurope.stt.speech.microsoft.com/speech/recognition/conversation/cognitiveservices/v1`
-
-> [!NOTE]
-> A szükséges nyelvi az URI azonosító a http 401-es hiba elkerülése érdekében hozzá kell fűzni. Így en-US a megfelelő URI a következő lesz: https://westus.stt.speech.microsoft.com/speech/recognition/conversation/cognitiveservices/v1?language=en-US
+[!include[](includes/endpoints-speech-to-text.md)]
 
 A beszédfelismerés szöveg API hasonlít ellenkező esetben a [REST API](https://docs.microsoft.com/azure/cognitive-services/speech/getstarted/getstartedrest) az előző Diktálásfelismerési API-hoz.
 
@@ -40,7 +33,7 @@ A beszédfelismerés szöveg REST API támogatja a csak rövid utterances. Kére
 > [!NOTE]
 > Ha testreszabta a akusztikus modell vagy a nyelvi modell, vagy a kiejtés, használja az egyéni végpontot.
 
-## <a name="text-to-speech"></a>Szöveg-hang transzformáció
+## <a name="text-to-speech"></a>Szövegfelolvasás
 
 Az új szöveg-hang transzformációs API 24-KHz hangkimeneti támogatja. A `X-Microsoft-OutputFormat` most fejlécében a következő értékeket.
 
@@ -62,14 +55,7 @@ hu-HU  | Amerikai angol | Férfi   | "Microsoft Server beszéd szöveg beszéd h
 
 Az alábbiakban a REST-végpontok az egyesített beszéd szolgáltatás szöveg-hang transzformációs API számára. A végpontot, amely megfelel az előfizetése régiójában használni.
 
-Régió| Szöveg-beszéd átalakítás végpont
--|-
-USA nyugati régiója|    `https://westus.tts.speech.microsoft.com/cognitiveservices/v1`
-Kelet-Ázsia|  `https://eastasia.tts.speech.microsoft.com/cognitiveservices/v1`
-Észak-Európa|   `https://northeurope.tts.speech.microsoft.com/cognitiveservices/v1`
-
-> [!NOTE]
-> Ha létrehozott egy egyedi Hangüzenetek betűkészletet, használja az egyéni végpontot.
+[!include[](includes/endpoints-text-to-speech.md)]
 
 Ezek a különbségek szem előtt tartani, akkor tekintse meg a [REST API-dokumentáció](https://docs.microsoft.com/azure/cognitive-services/speech/api-reference-rest/bingvoiceoutput) az előző Diktálásfelismerési API-hoz.
 
@@ -77,11 +63,7 @@ Ezek a különbségek szem előtt tartani, akkor tekintse meg a [REST API-dokume
 
 Olyan hozzáférési jogkivonatot egy kérést küld a beszédfelismerés szolgáltatás REST API szükséges. Ön jogkivonat beszerzése az Előfizetés kulcs regionális beszéd szolgáltatás megadásával `issueToken` végpont, az alábbi táblázatban látható. A végpontot, amely megfelel az előfizetése régiójában használni.
 
-Régió| Token szolgáltatási végpont
--|-
-USA nyugati régiója|    `https://westus.api.cognitive.microsoft.com/sts/v1.0/issueToken`
-Kelet-Ázsia|  `https://eastasia.api.cognitive.microsoft.com/sts/v1.0/issueToken`
-Észak-Európa|   `https://northeurope.api.cognitive.microsoft.com/sts/v1.0/issueToken`
+[!include[](includes/endpoints-token-service.md)]
 
 A hozzáférési tokenek 10 percig érvényes. Előfordulhat, hogy megszerezzen egy olyan új jogkivonatot, bármikor – Ha kívánja, beleértve, közvetlenül az előtt minden beszéd REST API-kérelem. Hálózati forgalom és a Késleltetés minimalizálása érdekében azonban javasoljuk ugyanezt a tokent kilenc percig.
 

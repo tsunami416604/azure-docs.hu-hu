@@ -14,20 +14,20 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: dddb29d2a796449d6a2c9b68e01e94f32d3022e4
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 98f7494c87683eda858da5970e12073ce2204303
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34621989"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37048287"
 ---
 # <a name="move-data-from-salesforce-by-using-azure-data-factory"></a>Adatok áthelyezése Salesforce Azure Data Factory használatával
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [1. verzió – Általánosan elérhető](data-factory-salesforce-connector.md)
-> * [2. verzió – Előzetes verzió](../connector-salesforce.md)
+> * [1-es verziójával](data-factory-salesforce-connector.md)
+> * [(Az aktuális verzió) 2-es verzió](../connector-salesforce.md)
 
 > [!NOTE]
-> Ez a cikk a Data Factory általánosan elérhető 1. verziójára vonatkozik. Lásd a 2-es verziójának a Data Factory szolgáltatásnak, amely jelenleg előzetes verzióban érhető, használatakor [Salesforce-összekötőt, a V2](../connector-salesforce.md).
+> Ez a cikk a Data Factory 1 verziójára vonatkozik. A Data Factory szolgáltatásnak aktuális verziójának használatakor lásd [Salesforce-összekötőt, a V2](../connector-salesforce.md).
 
 
 Ez a cikk ismerteti, hogyan használhatja másolási tevékenység az Azure data factoryban Salesforce bármely adattárolóhoz, amely szerepel a fogadó oszlopában az adatok másolása az [támogatott források és mosdók](data-factory-data-movement-activities.md#supported-data-stores-and-formats) tábla. Ez a cikk épít, a [adatok mozgása tevékenységek](data-factory-data-movement-activities.md) cikk, amely adatmozgás általános áttekintést során másolási tevékenység és a támogatott adatokat tároló kombinációja.
@@ -54,7 +54,7 @@ A másolási tevékenység, mely az adatok Salesforce különböző eszközök/A
 
 Hozzon létre egy folyamatot a legegyszerűbb módja használatára a **másolása varázsló**. Lásd: [oktatóanyag: hozzon létre egy folyamatot, másolása varázslóval](data-factory-copy-data-wizard-tutorial.md) létrehozásával egy folyamatot, az adatok másolása varázsló segítségével gyorsan útmutatást.
 
-Az alábbi eszközöket használhatja a folyamatokat létrehozni: **Azure-portálon**, **Visual Studio**, **Azure PowerShell**, **Azure Resource Manager sablon**, **.NET API**, és **REST API**. Lásd: [másolási tevékenység oktatóanyag](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) hozzon létre egy folyamatot a másolási tevékenység részletes útmutatóját. 
+Az alábbi eszközöket használhatja a folyamatokat létrehozni: **Azure-portálon**, **Visual Studio**, **Azure PowerShell**, **Azure Resource Manager-sablon** , **.NET API**, és **REST API-t**. Lásd: [másolási tevékenység oktatóanyag](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) hozzon létre egy folyamatot a másolási tevékenység részletes útmutatóját. 
 
 Akár az eszközök vagy API-k, hajtsa végre a következő lépésekkel hozza létre egy folyamatot, amely mozgatja az adatokat a forrás-tárolóban a fogadó tárolóban: 
 
@@ -287,25 +287,25 @@ Lásd: [RelationalSource típustulajdonságokat](#copy-activity-properties) a Re
 ### <a name="type-mapping-for-salesforce"></a>A Salesforce leképezésének
 | Salesforce-típus | . A NET-alapú típusa |
 | --- | --- |
-| Automatikus szám |Karakterlánc |
+| Automatikus szám |Sztring |
 | Jelölőnégyzet |Logikai |
 | Currency (Pénznem) |Dupla |
 | Dátum |DateTime |
 | Dátum/idő |DateTime |
-| E-mail |Karakterlánc |
-| Azonosító |Karakterlánc |
-| Keresési kapcsolat |Karakterlánc |
-| Többszörös kiválasztási lista |Karakterlánc |
+| E-mail |Sztring |
+| Azonosító |Sztring |
+| Keresési kapcsolat |Sztring |
+| Többszörös kiválasztási lista |Sztring |
 | Szám |Dupla |
 | Százalék |Dupla |
-| Telefonszám |Karakterlánc |
-| Választási lista |Karakterlánc |
-| Szöveg |Karakterlánc |
-| Szövegmező |Karakterlánc |
-| Szövegmező (nagy) |Karakterlánc |
-| Szövegmező (gazdag) |Karakterlánc |
-| Szöveg (titkosítva) |Karakterlánc |
-| URL-cím |Karakterlánc |
+| Telefonszám |Sztring |
+| Választási lista |Sztring |
+| Szöveg |Sztring |
+| Szövegmező |Sztring |
+| Szövegmező (nagy) |Sztring |
+| Szövegmező (gazdag) |Sztring |
+| Szöveg (titkosítva) |Sztring |
+| URL-cím |Sztring |
 
 > [!NOTE]
 > Képezze le a fogadó adatkészletből oszlopok forrás adatkészletből oszlopokat, lásd: [Azure Data Factory dataset oszlopai leképezési](data-factory-map-columns.md).

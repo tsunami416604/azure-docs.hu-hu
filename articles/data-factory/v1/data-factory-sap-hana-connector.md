@@ -14,20 +14,20 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 0149b15fdfbd9fd7a3c9f9c099db9d505d27d1c5
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: f475135f019994900f39a0a4007e8c4cf49af484
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34623060"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37054636"
 ---
 # <a name="move-data-from-sap-hana-using-azure-data-factory"></a>Helyezze át az adatokat az SAP HANA Azure Data Factory használatával
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [1. verzió – Általánosan elérhető](data-factory-sap-hana-connector.md)
-> * [2. verzió – Előzetes verzió](../connector-sap-hana.md)
+> * [1-es verziójával](data-factory-sap-hana-connector.md)
+> * [(Az aktuális verzió) 2-es verzió](../connector-sap-hana.md)
 
 > [!NOTE]
-> Ez a cikk a Data Factory általánosan elérhető 1. verziójára vonatkozik. Lásd a 2-es verziójának a Data Factory szolgáltatásnak, amely jelenleg előzetes verzióban érhető, használatakor [SAP HANA-összekötőt, a V2](../connector-sap-business-warehouse.md).
+> Ez a cikk a Data Factory 1 verziójára vonatkozik. A Data Factory szolgáltatásnak aktuális verziójának használatakor lásd [SAP HANA-összekötőt, a V2](../connector-sap-business-warehouse.md).
 
 Ez a cikk ismerteti, hogyan a másolási tevékenység során az Azure Data Factoryben az adatok mozgatása egy helyszíni SAP HANA. Buildekről nyújtanak a [adatok mozgása tevékenységek](data-factory-data-movement-activities.md) cikk, amelynek során adatátvitel a másolási tevékenység az általános áttekintést.
 
@@ -44,7 +44,7 @@ Ahhoz, hogy a kapcsolat az SAP HANA-példányra, a következő összetevők tele
 A másolási tevékenység, mely az adatok egy helyszíni SAP HANA-adattároló különböző eszközök/API-k használatával létrehozhat egy folyamatot. 
 
 - Hozzon létre egy folyamatot a legegyszerűbb módja használatára a **másolása varázsló**. Lásd: [oktatóanyag: hozzon létre egy folyamatot, másolása varázslóval](data-factory-copy-data-wizard-tutorial.md) létrehozásával egy folyamatot, az adatok másolása varázsló segítségével gyorsan útmutatást. 
-- Az alábbi eszközöket használhatja a folyamatokat létrehozni: **Azure-portálon**, **Visual Studio**, **Azure PowerShell**, **Azure Resource Manager sablon**, **.NET API**, és **REST API**. Lásd: [másolási tevékenység oktatóanyag](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) hozzon létre egy folyamatot a másolási tevékenység részletes útmutatóját. 
+- Az alábbi eszközöket használhatja a folyamatokat létrehozni: **Azure-portálon**, **Visual Studio**, **Azure PowerShell**, **Azure Resource Manager-sablon** , **.NET API**, és **REST API-t**. Lásd: [másolási tevékenység oktatóanyag](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) hozzon létre egy folyamatot a másolási tevékenység részletes útmutatóját. 
 
 Akár az eszközök vagy API-k, hajtsa végre a következő lépésekkel hozza létre egy folyamatot, amely mozgatja az adatokat a forrás-tárolóban a fogadó tárolóban:
 
@@ -61,12 +61,12 @@ A következő táblázat a JSON-elemek szerepelnek SAP HANA kapcsolódó szolgá
 
 Tulajdonság | Leírás | Megengedett értékek | Szükséges
 -------- | ----------- | -------------- | --------
-kiszolgáló | A kiszolgálóra az SAP HANA-példány neve. Ha a kiszolgáló egy testreszabott portot használ, adja meg a `server:port`. | karakterlánc | Igen
-authenticationType | Hitelesítés típusa. | Karakterlánc. "Basic" vagy "Windows" | Igen 
-felhasználónév | Az SAP-kiszolgálóhoz hozzáféréssel rendelkező felhasználó neve | karakterlánc | Igen
-jelszó | A felhasználó jelszavát. | karakterlánc | Igen
-gatewayName | Az átjáró, amely a Data Factory szolgáltatásnak csatlakoznia való kapcsolódáshoz a helyszíni SAP HANA-példány neve. | karakterlánc | Igen
-encryptedCredential | A titkosított hitelesítő adatokban karakterlánc. | karakterlánc | Nem
+kiszolgáló | A kiszolgálóra az SAP HANA-példány neve. Ha a kiszolgáló egy testreszabott portot használ, adja meg a `server:port`. | sztring | Igen
+authenticationType | Hitelesítés típusa. | karakterlánc. "Basic" vagy "Windows" | Igen 
+felhasználónév | Az SAP-kiszolgálóhoz hozzáféréssel rendelkező felhasználó neve | sztring | Igen
+jelszó | A felhasználó jelszavát. | sztring | Igen
+gatewayName | Az átjáró, amely a Data Factory szolgáltatásnak csatlakoznia való kapcsolódáshoz a helyszíni SAP HANA-példány neve. | sztring | Igen
+encryptedCredential | A titkosított hitelesítő adatokban karakterlánc. | sztring | Nem
 
 ## <a name="dataset-properties"></a>Adatkészlet tulajdonságai
 Szakaszok & meghatározása adatkészletek esetében elérhető tulajdonságok teljes listáját lásd: a [adatkészletek létrehozása](data-factory-create-datasets.md) cikk. Például struktúra, a rendelkezésre állás és a házirend a DataSet adatkészlet JSON hasonlítanak minden adatkészlet esetében (Azure SQL, az Azure blob, Azure-tábla, stb.).
@@ -293,10 +293,10 @@ VALÓS | Önálló
 DUPLA | Önálló
 DECIMÁLIS | Decimális
 LOGIKAI ÉRTÉK | Bájt
-VARCHAR | Karakterlánc
-NVARCHAR | Karakterlánc
+VARCHAR | Sztring
+NVARCHAR | Sztring
 CLOB | Byte]
-ALPHANUM | Karakterlánc
+ALPHANUM | Sztring
 A BLOB | Byte]
 DATE | DateTime
 IDŐ | A TimeSpan

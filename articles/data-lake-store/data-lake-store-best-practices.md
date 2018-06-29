@@ -1,24 +1,26 @@
 ---
-title: Ajánlott eljárások az Azure Data Lake Store használatára vonatkozó |} Microsoft Docs
-description: Ismerje meg az ajánlott eljárásokat adatfeldolgozást, dátum biztonsági és az Azure Data Lake Store használatához kapcsolódó teljesítmény
+title: Ajánlott eljárások az Azure Data Lake tárolási Gen1 |} Microsoft Docs
+description: Ismerje meg az ajánlott eljárásokat adatfeldolgozást, a dátum biztonsági és az Azure Data Lake tárolási Gen1 (korábbi nevén az Azure Data Lake Store) használatához kapcsolódó teljesítmény
 services: data-lake-store
 documentationcenter: ''
 author: sachinsbigdata
 manager: jhubbard
-editor: cgronlun
 ms.service: data-lake-store
 ms.devlang: na
 ms.topic: article
-ms.date: 05/25/2018
+ms.date: 06/27/2018
 ms.author: sachins
-ms.openlocfilehash: 9fd6b72a7d09f85f7a6e60e5af4035ffc3862d2c
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
-ms.translationtype: HT
+ms.openlocfilehash: 00eb2b6b60aa6c3224b58556f6dad64d4294c308
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34625338"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37036077"
 ---
-# <a name="best-practices-for-using-azure-data-lake-store"></a>Azure Data Lake Store használatának ajánlott eljárásai
+# <a name="best-practices-for-using-azure-data-lake-storage-gen1"></a>Azure Data Lake tárolási Gen1 használatának ajánlott eljárásai
+
+[!INCLUDE [data-lake-storage-gen1-rename-note.md](../../includes/data-lake-storage-gen1-rename-note.md)]
+
 Ebből a cikkből megismerheti kapcsolatos ajánlott eljárásokról és az Azure Data Lake Store használata szempontjai. A cikkben információkat biztosít a biztonsági, a teljesítmény, a rugalmasság és a Data Lake Store figyelését. Data Lake Store, mielőtt Azure HDInsight hasonló szolgáltatások valóban nagy adatokkal végzett bonyolult volt. Kellett részekre bonthatók az adatok több Blob storage-fiókok között, hogy petabájtnyi tárolási és optimális teljesítményt, hogy biztosít. A Data Lake Store a szigorú korlátok mérete és a teljesítményt a legtöbb törlődnek. Van azonban továbbra is számításba kell, hogy ez a cikk ismerteti, hogy a legjobb teljesítmény érdekében a Data Lake Store kaphat. 
 
 ## <a name="security-considerations"></a>Biztonsági szempontok
@@ -114,7 +116,7 @@ Apache Oozie munkafolyamatok gyakorisága vagy adatok eseményindítók, valamin
 
 ### <a name="use-azure-data-factory-to-schedule-copy-jobs"></a>Azure Data Factory használatával másolási feladatok ütemezése 
 
-Az Azure Data Factory is használható másolási feladat ütemezése egy **másolási tevékenység**, még akkor is beállítható a keresztül gyakoriságot és a **másolása varázsló**. Ne feledje, hogy az Azure Data Factory felhő adatok adatátviteli egység (DMUs) legfeljebb, és végül caps nagy data számítási feladatokat az átviteli sebesség/számítási. Emellett Azure Data Factory jelenleg nem ajánlja fel a különbözeti frissítések Data Lake Store fiókokba, így például a Hive táblák mappák igényelnének replikálásához teljes másolata. Tekintse meg a [másolási tevékenység teljesítményhangolási útmutató](../data-factory/v1/data-factory-copy-activity-performance.md) további információt a Data Factory másolásán alapulnak. 
+Az Azure Data Factory is használható másolási feladat ütemezése egy **másolási tevékenység**, még akkor is beállítható a keresztül gyakoriságot és a **másolása varázsló**. Ne feledje, hogy az Azure Data Factory felhő adatok adatátviteli egység (DMUs) legfeljebb, és végül caps nagy data számítási feladatokat az átviteli sebesség/számítási. Emellett Azure Data Factory jelenleg nem ajánlja fel a különbözeti frissítések Data Lake Store fiókokba, így például a Hive táblák mappák igényelnének replikálásához teljes másolata. Tekintse meg a [másolási tevékenység teljesítményhangolási útmutató](../data-factory/copy-activity-performance.md) további információt a Data Factory másolásán alapulnak. 
 
 ### <a name="adlcopy"></a>AdlCopy
 

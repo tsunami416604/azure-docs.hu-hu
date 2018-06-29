@@ -13,23 +13,20 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/07/2018
 ms.author: jingwang
-ms.openlocfilehash: 85c854e697e7178bbdb3429c5384d67731770117
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: d31859a2af0402789b03447510d510a9658961de
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "36335512"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37051008"
 ---
 # <a name="copy-data-to-an-azure-search-index-using-azure-data-factory"></a>Adatok másolása az Azure Search-index Azure Data Factory használatával
 
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [1. verzió – Általánosan elérhető](v1/data-factory-azure-search-connector.md)
-> * [2. verzió – Előzetes verzió](connector-azure-search.md)
+> * [1-es verziójával](v1/data-factory-azure-search-connector.md)
+> * [Aktuális verzió](connector-azure-search.md)
 
 Ez a cikk ismerteti, hogyan használható a másolási tevékenység során az Azure Data Factory adatait átmásolja az Azure Search-index. Buildekről nyújtanak a [másolása tevékenység áttekintése](copy-activity-overview.md) cikket, amely megadja a másolási tevékenység általános áttekintést.
-
-> [!NOTE]
-> Ez a cikk a Data Factory 2. verziójára vonatkozik, amely jelenleg előzetes verzióban érhető el. A Data Factory szolgáltatásnak, amely általánosan elérhető (GA), 1 verziójának használatakor lásd [Azure Search-összekötőt a V1](v1/data-factory-azure-search-connector.md).
 
 ## <a name="supported-capabilities"></a>Támogatott képességei
 

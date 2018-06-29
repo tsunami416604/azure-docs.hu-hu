@@ -14,20 +14,20 @@ ms.topic: conceptual
 ms.date: 06/06/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 9075c774d0b56b6609616205e30b5a7d484fa031
-ms.sourcegitcommit: 6cf20e87414dedd0d4f0ae644696151e728633b6
+ms.openlocfilehash: 34de57188dffb7375889ed9ed89a759238b035ac
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34808094"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37046884"
 ---
 # <a name="move-data-from-mysql-using-azure-data-factory"></a>Helyezze át az adatokat a MySQL Azure Data Factory használatával
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [1. verzió – Általánosan elérhető](data-factory-onprem-mysql-connector.md)
-> * [2. verzió – Előzetes verzió](../connector-mysql.md)
+> * [1-es verziójával](data-factory-onprem-mysql-connector.md)
+> * [(Az aktuális verzió) 2-es verzió](../connector-mysql.md)
 
 > [!NOTE]
-> Ez a cikk a Data Factory általánosan elérhető 1. verziójára vonatkozik. Lásd a 2-es verziójának a Data Factory szolgáltatásnak, amely jelenleg előzetes verzióban érhető, használatakor [MySQL-összekötőt, a V2](../connector-mysql.md).
+> Ez a cikk a Data Factory 1 verziójára vonatkozik. A Data Factory szolgáltatásnak aktuális verziójának használatakor lásd [MySQL-összekötőt, a V2](../connector-mysql.md).
 
 
 Ez a cikk ismerteti, hogyan a másolási tevékenység során az Azure Data Factoryben az adatok mozgatása egy helyszíni MySQL-adatbázis. Buildekről nyújtanak a [adatok mozgása tevékenységek](data-factory-data-movement-activities.md) cikk, amelynek során adatátvitel a másolási tevékenység az általános áttekintést.
@@ -52,7 +52,7 @@ Az adatkezelési átjáró a MySQL-adatbázishoz való kapcsolódáshoz, telepí
 A másolási tevékenység, mely az adatok egy helyszíni Cassandra adattároló különböző eszközök/API-k használatával létrehozhat egy folyamatot. 
 
 - Hozzon létre egy folyamatot a legegyszerűbb módja használatára a **másolása varázsló**. Lásd: [oktatóanyag: hozzon létre egy folyamatot, másolása varázslóval](data-factory-copy-data-wizard-tutorial.md) létrehozásával egy folyamatot, az adatok másolása varázsló segítségével gyorsan útmutatást. 
-- Az alábbi eszközöket használhatja a folyamatokat létrehozni: **Azure-portálon**, **Visual Studio**, **Azure PowerShell**, **Azure Resource Manager sablon**, **.NET API**, és **REST API**. Lásd: [másolási tevékenység oktatóanyag](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) hozzon létre egy folyamatot a másolási tevékenység részletes útmutatóját. 
+- Az alábbi eszközöket használhatja a folyamatokat létrehozni: **Azure-portálon**, **Visual Studio**, **Azure PowerShell**, **Azure Resource Manager-sablon** , **.NET API**, és **REST API-t**. Lásd: [másolási tevékenység oktatóanyag](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) hozzon létre egy folyamatot a másolási tevékenység részletes útmutatóját. 
 
 Akár az eszközök vagy API-k, hajtsa végre a következő lépésekkel hozza létre egy folyamatot, amely mozgatja az adatokat a forrás-tárolóban a fogadó tárolóban:
 
@@ -306,40 +306,40 @@ Ha az adatok áthelyezése a MySQL, .NET típusú a következő megfeleltetések
 | bigint |Int64 |
 | bit |Decimális |
 | blob |Byte] |
-| logikai érték |Logikai |
-| Karakter |Karakterlánc |
+| Logikai érték |Logikai |
+| karakter |Sztring |
 | dátum |Dátum és idő |
 | dátum/idő |Dátum és idő |
 | Decimális |Decimális |
 | a kétszeres pontosság |Dupla |
 | double |Dupla |
-| Enum |Karakterlánc |
+| Enum |Sztring |
 | lebegőpontos |Önálló |
 | aláíratlan int |Int64 |
 | int |Int32 |
 | aláíratlan egész szám |Int64 |
 | egész szám |Int32 |
 | hosszú varbinary |Byte] |
-| hosszú varchar |Karakterlánc |
+| hosszú varchar |Sztring |
 | longblob |Byte] |
-| LONGTEXT |Karakterlánc |
+| LONGTEXT |Sztring |
 | mediumblob |Byte] |
 | aláíratlan mediumint |Int64 |
 | mediumint |Int32 |
-| mediumtext |Karakterlánc |
-| Numerikus |Decimális |
+| mediumtext |Sztring |
+| numerikus |Decimális |
 | valós |Dupla |
-| Állítsa be |Karakterlánc |
+| Állítsa be |Sztring |
 | aláíratlan smallint |Int32 |
 | smallint |Int16 |
-| szöveg |Karakterlánc |
+| szöveg |Sztring |
 | time |A TimeSpan |
 | időbélyeg |Dátum és idő |
 | tinyblob |Byte] |
 | aláíratlan tinyint |Int16 |
 | tinyint |Int16 |
-| tinytext |Karakterlánc |
-| varchar |Karakterlánc |
+| tinytext |Sztring |
+| varchar |Sztring |
 | év |Int |
 
 ## <a name="map-source-to-sink-columns"></a>Térkép forrás oszlopok gyűjtése

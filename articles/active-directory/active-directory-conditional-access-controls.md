@@ -17,12 +17,12 @@ ms.workload: identity
 ms.date: 06/13/2018
 ms.author: markvi
 ms.reviewer: calebb
-ms.openlocfilehash: 924c41b060f56b4a21e4d29e059eb2968fa19330
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: dc1e3fd3984d0ccbfb0565a3216ec907894e88ea
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36232383"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37028948"
 ---
 # <a name="what-are-access-controls-in-azure-active-directory-conditional-access"></a>Mik azok a hozzáférés-vezérlést az Azure Active Directory feltételes hozzáférés? 
 
@@ -77,7 +77,7 @@ A multi-factor authentication segítségével erőforrások védelme a fent konf
 
 ### <a name="compliant-device"></a>Megfelelő eszköz
 
-Konfigurálhatja, amelyek az eszközalapú feltételes hozzáférési szabályzatokat. Eszközalapú feltételes hozzáférési házirend célja hozzáférés biztosítása csak a konfigurált erőforrásait [által felügyelt eszközök](active-directory-conditional-access-policy-connected-applications.md#managed-devices). Megfelelő eszközökre használata egy beállítás határozza meg, hogy milyen kezelt eszközt. Ezt a beállítást, ha a feltételes hozzáférési házirend engedélyezi a hozzáférést a hozzáférés kísérletek eszközökkel, amelyek [regisztrált](device-management-introduction.md) Azure Active Directory és a jelölte meg megfelelőnek MDM-megoldásként.
+Konfigurálhatja, amelyek az eszközalapú feltételes hozzáférési szabályzatokat. Eszközalapú feltételes hozzáférési házirend célja hozzáférés biztosítása csak a konfigurált erőforrásait [által felügyelt eszközök](active-directory-conditional-access-policy-connected-applications.md#managed-devices). Megfelelő eszközökre használata egy beállítás határozza meg, hogy milyen kezelt eszközt. Ezt a beállítást, ha a feltételes hozzáférési házirend engedélyezi a hozzáférést a hozzáférés kísérletek eszközökkel, amelyek [regisztrált](device-management-introduction.md) Azure Active Directory és a megjelölt Intune (a bármely eszköz operációs rendszere) vagy által megfelelőnek a külső MDM-rendszer Windows 10 rendszerű eszközökhöz. Külső MDM rendszerek eltérő Windows 10-es eszköz operációs rendszere típusok nem támogatottak.
 
 További információkért lásd: [Azure Active Directory eszközalapú feltételes hozzáférés szabályzatainak beállítása](active-directory-conditional-access-policy-connected-applications.md).
 

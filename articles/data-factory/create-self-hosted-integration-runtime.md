@@ -12,18 +12,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/15/2018
 ms.author: abnarain
-ms.openlocfilehash: 6f3259170a1b3fe0bbd33899a74863f5e71a49f6
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 832e4672a15368768977feedade83707a26b9965
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34618453"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37048788"
 ---
 # <a name="how-to-create-and-configure-self-hosted-integration-runtime"></a>Hozzon létre, és Self-hosted integrációs futásidejű konfigurálása
 Az integrációs futásidejű (IR) a számítási infrastruktúrától által használt Azure Data Factory adatok integrációs funkciók különböző hálózati környezetek között. Infravörös kapcsolatos részletekért lásd: [integrációs futásidejű áttekintése](concepts-integration-runtime.md).
-
-> [!NOTE]
-> Ez a cikk a Data Factory 2. verziójára vonatkozik, amely jelenleg előzetes verzióban érhető el. Ha a Data Factory szolgáltatás általánosan elérhető 1. verzióját használja, lásd: [A Data Factory 1. verziójának dokumentációja](v1/data-factory-introduction.md).
 
 Egy önálló üzemeltetett integrációs futásidejű rendszere között egy felhőbeli adatát másolási tevékenység futtatására képes, tárolók és a magánhálózati és átalakítás tevékenységeket célozzon terjesztéséhez adattárat számítási erőforrásokat egy helyszíni vagy Azure virtuális hálózat. Önálló üzemeltetett integrációs futásidejű szükségleteinek telepíthető egy a helyi számítógépen vagy egy virtuális gépet egy magánhálózaton belül.  
 

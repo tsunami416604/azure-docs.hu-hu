@@ -11,29 +11,26 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/01/2018
+ms.date: 06/15/2018
 ms.author: jingwang
-ms.openlocfilehash: c5ec07603088edd3f95f08f12b6982022b396d05
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 8e34b0823b7f10455ac0b66fb0614d3946f2382e
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34618487"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37059068"
 ---
 # <a name="copy-activity-in-azure-data-factory"></a>Az Azure Data Factory a másolási tevékenység
 
 ## <a name="overview"></a>Áttekintés
 
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [1. verzió – Általánosan elérhető](v1/data-factory-data-movement-activities.md)
-> * [2. verzió – Előzetes verzió](copy-activity-overview.md)
+> * [1-es verziójával](v1/data-factory-data-movement-activities.md)
+> * [Aktuális verzió](copy-activity-overview.md)
 
 Az Azure Data Factoryben a másolási tevékenység követve másolja át az adatok között adatokat tárolja a helyszínen és a felhőben. Miután a rendszer átmásolja az adatokat, azt kell tovább át legyenek-e és elemzése. Használhatja a másolási tevékenység közzététele átalakítását és az elemzés eredményeinek az üzleti intelligenciával és alkalmazás-fogyasztás.
 
 ![Másolási tevékenység szerepe](media/copy-activity-overview/copy-activity.png)
-
-> [!NOTE]
-> Ez a cikk a Data Factory 2. verziójára vonatkozik, amely jelenleg előzetes verzióban érhető el. A Data Factory szolgáltatásnak, amely általánosan elérhető (GA), 1 verziójának használatakor lásd [másolási tevékenység során a V1](v1/data-factory-data-movement-activities.md).
 
 Másolási tevékenység végrehajtása egy [integrációs futásidejű](concepts-integration-runtime.md). A különböző adatok másolásának esetéhez integrációs futtatókörnyezet különböző kiadása is javítható ki:
 
@@ -114,7 +111,7 @@ A másolási tevékenység a következő sablon tartalmazza a támogatott tulajd
                 "type": "TabularTranslator",
                 "columnMappings": "<column mapping>"
             },
-            "cloudDataMovementUnits": <number>,
+            "dataIntegrationUnits": <number>,
             "parallelCopies": <number>,
             "enableStaging": true/false,
             "stagingSettings": {
@@ -138,9 +135,9 @@ A másolási tevékenység a következő sablon tartalmazza a támogatott tulajd
 | kimenetek | Adja meg az adatkészlet mely pontok, a fogadó adatok létrehozott. Másolási tevékenység során csak egyetlen kimeneti támogatja. | Igen |
 | typeProperties | Tulajdonságok másolása tevékenység konfigurálása csoportja. | Igen |
 | source | Adja meg a másolási adatforrás típusa és a vonatkozó tulajdonságok kapcsolatos adatok lekéréséhez.<br/><br/>További részletek az összekötő a cikkben szereplő "Másolása a tevékenység tulajdonságai" szakaszából [adatokról és formátumok támogatott](#supported-data-stores-and-formats). | Igen |
-| a fogadó | Adja meg a másolási a fogadó típusa és a vonatkozó tulajdonságok hogyan adatokat írni.<br/><br/>További részletek az összekötő a cikkben szereplő "Másolása a tevékenység tulajdonságai" szakaszából [adatokról és formátumok támogatott](#supported-data-stores-and-formats). | Igen |
-| A fordító | Adjon meg explicit oszlop-hozzárendelések gyűjtése forrásból. Érvényes, ha az alapértelmezett példány viselkedés nem teljesíthető az igényeknek.<br/><br/>További részletek a [séma- és adatok hozzárendelése](copy-activity-schema-and-type-mapping.md). | Nem |
-| cloudDataMovementUnits | Adja meg a powerfulness [Azure integrációs futásidejű](concepts-integration-runtime.md) építve az adatok másolását.<br/><br/>További részletek a [adatátviteli adategységek felhőalapú](copy-activity-performance.md). | Nem |
+| A fogadó | Adja meg a másolási a fogadó típusa és a vonatkozó tulajdonságok hogyan adatokat írni.<br/><br/>További részletek az összekötő a cikkben szereplő "Másolása a tevékenység tulajdonságai" szakaszából [adatokról és formátumok támogatott](#supported-data-stores-and-formats). | Igen |
+| a fordító | Adjon meg explicit oszlop-hozzárendelések gyűjtése forrásból. Érvényes, ha az alapértelmezett példány viselkedés nem teljesíthető az igényeknek.<br/><br/>További részletek a [séma- és adatok hozzárendelése](copy-activity-schema-and-type-mapping.md). | Nem |
+| dataIntegrationUnits | Adja meg a powerfulness [Azure integrációs futásidejű](concepts-integration-runtime.md) építve az adatok másolását. Korábbi nevén felhő adatok adatátviteli egység (DMU). <br/><br/>További részletek a [integrációs adategységek](copy-activity-performance.md#data-integration-units). | Nem |
 | parallelCopies | Adja meg, amelyet a másolási tevékenység gyűjtése adatok a forrás adatok írásakor vagy olvasásakor használandó párhuzamosságát.<br/><br/>További részletek a [másolási párhuzamos](copy-activity-performance.md#parallel-copy). | Nem |
 | enableStaging<br/>stagingSettings | Válassza ki az átmeneti adatok helyett közvetlenül adatok gyűjtésének forrásból aa blob Storage előkészítése.<br/><br/>Ismerje meg a hasznos forgatókönyvek és a konfigurációs adatait a [másolási előkészített](copy-activity-performance.md#staged-copy). | Nem |
 | enableSkipIncompatibleRow<br/>redirectIncompatibleRowSettings| Válassza ki, hogyan kezelje a nem kompatibilis sorok gyűjtése forrásból származó adatok másolásakor.<br/><br/>További részletek a [hibatűrés](copy-activity-fault-tolerance.md). | Nem |
@@ -173,8 +170,8 @@ Másolási tevékenység végrehajtási részletei és a teljesítményt is megj
 
 | Tulajdonság neve  | Leírás | Unit (Egység) |
 |:--- |:--- |:--- |
-| DataRead | Forrásoldali adatok mérete | Int64 típusú érték a **bájt** |
-| DataWritten | Gyűjtése írt adatok mérete | Int64 típusú érték a **bájt** |
+| dataRead | Forrásoldali adatok mérete | Int64 típusú érték a **bájt** |
+| dataWritten | Gyűjtése írt adatok mérete | Int64 típusú érték a **bájt** |
 | filesRead | Ha az adatok másolása a file storage másolásának fájlok száma. | Int64 típusú érték (egység) |
 | filesWritten | A file storage adatok másolásakor másolásának fájlok száma. | Int64 típusú érték (egység) |
 | rowsCopied | Másolással (bináris példány nem használható) sorok száma. | Int64 típusú érték (egység) |
@@ -185,7 +182,7 @@ Másolási tevékenység végrehajtási részletei és a teljesítményt is megj
 | redshiftUnload | Ha az adatok másolása Redshift UNLOAD használatos. | Logikai |
 | hdfsDistcp | Ha az adatok másolása HDFS ból a DistCp használatos. | Logikai |
 | effectiveIntegrationRuntime | Integráció Runtime(s) használt a tevékenység fut, a kell ellenőrizniük megjelenítése `<IR name> (<region if it's Azure IR>)`. | Szöveg (karakterlánc) |
-| usedCloudDataMovementUnits | A hatékony felhő adatátviteli adategységek másolása során. | Int32 érték |
+| usedDataIntegrationUnits | A hatékony integrációs adategységek másolása során. | Int32 érték |
 | usedParallelCopies | A hatékony parallelCopies másolása során. | Int32 érték|
 | redirectRowPath | A blob-tároló "redirectIncompatibleRowSettings" alapján konfigurálja a rendszer kihagyta nem kompatibilis sorok a napló elérési útja. Lásd az alábbi példa. | Szöveg (karakterlánc) |
 | executionDetails | További részleteket a másolási tevékenység során megy keresztül, szakaszt, és a megfelelő lépéseket, időtartama, használt konfigurációk, stb. Ez a szakasz elemzése, meg nem javasolt. | Tömb |
@@ -200,7 +197,7 @@ Másolási tevékenység végrehajtási részletei és a teljesítményt is megj
     "throughput": 467707.344,
     "errors": [],
     "effectiveIntegrationRuntime": "DefaultIntegrationRuntime (East US 2)",
-    "usedCloudDataMovementUnits": 32,
+    "usedDataIntegrationUnits": 32,
     "usedParallelCopies": 8,
     "executionDetails": [
         {
@@ -213,7 +210,7 @@ Másolási tevékenység végrehajtási részletei és a teljesítményt is megj
             "status": "Succeeded",
             "start": "2018-01-17T15:13:00.3515165Z",
             "duration": 221,
-            "usedCloudDataMovementUnits": 32,
+            "usedDataIntegrationUnits": 32,
             "usedParallelCopies": 8,
             "detailedDurations": {
                 "queuingDuration": 2,
@@ -237,10 +234,10 @@ Alapértelmezés szerint a másolási tevékenység leállítja az adatok másol
 Tekintse meg a [másolási tevékenység teljesítmény- és hangolási útmutató](copy-activity-performance.md), amely ismerteti az Azure Data Factory (másolási tevékenység) adatátvitel teljesítményét befolyásoló tényezők. Felsorolja a belső tesztelése során a megfigyelt teljesítmény és a másolási tevékenység teljesítményének optimalizálásához különböző módját tárgyalja.
 
 ## <a name="incremental-copy"></a>Növekményes másolása 
-Adat-előállító 2-es szituációkat Növekményesen másolására különbözeti adatokat a forrás-tárolóban a cél-tárolóban. Lásd: [oktatóanyag: adatok Növekményesen másolása](tutorial-incremental-copy-overview.md). 
+Adat-előállító szituációkat Növekményesen másolására különbözeti adatokat a forrás-tárolóban a cél-tárolóban. Lásd: [oktatóanyag: adatok Növekményesen másolása](tutorial-incremental-copy-overview.md). 
 
 ## <a name="read-and-write-partitioned-data"></a>Olvasási és írási particionált adatok
-1-es verziójával Azure Data Factory Olvasás vagy írás a particionált SliceStart/SliceEnd/WindowStart/WindowEnd rendszerváltozók használatával támogatott. A 2-es verzióját ez a viselkedés a paraméter értékének csővezeték paraméter és a trigger elem ütemezett időpont/kezdete segítségével érhet el. További információkért lásd: [olvasására vagy írására, hogyan particionálva adatok](how-to-read-write-partitioned-data.md).
+1-es verziójával Azure Data Factory Olvasás vagy írás a particionált SliceStart/SliceEnd/WindowStart/WindowEnd rendszerváltozók használatával támogatott. A jelenlegi verzióban érhető el ez a viselkedés csővezeték paraméter és a trigger elem ütemezett időpont/kezdete segítségével egy paraméter értéke. További információkért lásd: [olvasására vagy írására, hogyan particionálva adatok](how-to-read-write-partitioned-data.md).
 
 ## <a name="next-steps"></a>További lépések
 Tekintse meg a következő quickstarts, oktatóanyagok és minták:

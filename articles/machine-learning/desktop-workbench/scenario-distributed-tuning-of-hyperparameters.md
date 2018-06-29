@@ -4,19 +4,19 @@ description: Ez a forgatókönyv bemutatja, hogyan hajtsa végre az Azure Machin
 services: machine-learning
 author: pechyony
 ms.service: machine-learning
-ms.component: desktop-workbench
+ms.component: core
 ms.workload: data-services
 ms.topic: article
 ms.author: dmpechyo
 manager: mwinkle
 ms.reviewer: garyericson, jasonwhowell, mldocs
 ms.date: 09/20/2017
-ms.openlocfilehash: c6eccda4329572a181b6a7e7e3870ace4bfac13b
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 6347500b8968394a922969dd3dd2f00dd51cb6dd
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34832747"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37036093"
 ---
 # <a name="distributed-tuning-of-hyperparameters-using-azure-machine-learning-workbench"></a>Elosztott, az Azure Machine Learning-munkaterület használatával hiperparaméterek beállítása
 
@@ -157,9 +157,9 @@ Ezt követően tároló adatkészlet válasszon a listából, majd kattintson a 
 
 A fájlok feltöltése néhány percig, attól függően, hogy az internetkapcsolat. 
 
-A kódban, használjuk [Azure Storage szolgáltatás SDK](https://azure-storage.readthedocs.io/en/latest/) töltheti le a dataset blob-tároló az aktuális végrehajtási környezetnek. A letöltés megtörténik a terhelés\_data() függvény load_data.py fájlból. Ez a kód használatához ki kell cserélni < fióknév > és < ACCOUNT_KEY > nevű és a tároló adatkészlet tárfiók elsődleges kulcs. A fiók nevét a a tárfiók Azure lap bal felső sarokban látható. Fiók lekérése a kulcs, jelölje be a tárolási Azure oldalán elérési kulcsok fiók (lásd az első képernyőfelvételen adatfeldolgozást szakaszban), és másolja a hosszú karakterlánc kulcsként megadott oszlop első sorában:
+A kódban, használjuk [Azure Storage szolgáltatás SDK](https://docs.microsoft.com/en-us/python/azure/) töltheti le a dataset blob-tároló az aktuális végrehajtási környezetnek. A letöltés megtörténik a terhelés\_data() függvény load_data.py fájlból. Ez a kód használatához ki kell cserélni < fióknév > és < ACCOUNT_KEY > nevű és a tároló adatkészlet tárfiók elsődleges kulcs. A fiók nevét a a tárfiók Azure lap bal felső sarokban látható. Fiók lekérése a kulcs, jelölje be a tárolási Azure oldalán elérési kulcsok fiók (lásd az első képernyőfelvételen adatfeldolgozást szakaszban), és másolja a hosszú karakterlánc kulcsként megadott oszlop első sorában:
  
-![A hozzáférési kulcsot](media/scenario-distributed-tuning-of-hyperparameters/access_key.png)
+![a hozzáférési kulcsot](media/scenario-distributed-tuning-of-hyperparameters/access_key.png)
 
 Load_data() függvény a következő kód egy fájl tölti le:
 

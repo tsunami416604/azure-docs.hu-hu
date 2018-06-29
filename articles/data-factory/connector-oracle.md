@@ -10,24 +10,22 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 02/07/2018
+ms.topic: conceptual
+ms.date: 06/14/2018
 ms.author: jingwang
-ms.openlocfilehash: aa96356b01d63aa21c55f1b2e6998e65f9d617f6
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 6a232787793f9f4992a4dece821ae0bcc9059afc
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37058918"
 ---
 # <a name="copy-data-from-and-to-oracle-by-using-azure-data-factory"></a>Adatok másolása az és Oracle Azure Data Factory használatával
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [1. verzió – Általánosan elérhető](v1/data-factory-onprem-oracle-connector.md)
-> * [2. verzió – Előzetes verzió](connector-oracle.md)
+> * [1-es verziójával](v1/data-factory-onprem-oracle-connector.md)
+> * [Aktuális verzió](connector-oracle.md)
 
 Ez a cikk ismerteti a másolási tevékenység használata az Azure Data Factory-adatok másolása az és Oracle-adatbázishoz. Buildekről nyújtanak a [másolási tevékenység áttekintése](copy-activity-overview.md) cikket, amely megadja a másolási tevékenység általános áttekintést.
-
-> [!NOTE]
-> Ez a cikk a Data Factory 2. verziójára vonatkozik, amely jelenleg előzetes verzióban érhető el. Ha a Data Factory, amely általában a rendelkezésre álló, 1 verzióját használja [1-es verziójú Oracle-összekötőjét](v1/data-factory-onprem-oracle-connector.md).
 
 ## <a name="supported-capabilities"></a>Támogatott képességei
 
@@ -40,6 +38,9 @@ Az Oracle-összekötő kifejezetten, Oracle-adatbázishoz a következő verziói
 - Oracle 10g R1 vagy R2 (10.1, 10,2)
 - Oracle 9i R1 vagy R2 (9.0.1, 9.2)
 - Oracle 8i R3 (8.1.7-es)
+
+> [!Note]
+> Oracle-proxy kiszolgáló nem támogatott.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -58,7 +59,7 @@ Az Oracle csatolt szolgáltatás a következő tulajdonságok támogatottak.
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
 | type | A type tulajdonságot meg kell **Oracle**. | Igen |
-| connectionString | Adja meg az Oracle-adatbázispéldány való kapcsolódáshoz szükséges adatokat. Ez a mező megjelölése a SecureString tárolja biztonságos helyen, a Data factoryban vagy [hivatkozik az Azure Key Vault tárolt titkos kulcs](store-credentials-in-key-vault.md).<br><br>**Kapcsolattípus támogatott**: használható **Oracle SID** vagy **Oracle szolgáltatásnév** az adatbázis azonosításához:<br>– Ha SID használ: `Host=<host>;Port=<port>;Sid=<sid>;User Id=<username>;Password=<password>;`<br>-Ha a szolgáltatás a nevet használja: `Host=<host>;Port=<port>;ServiceName=<sid>;User Id=<username>;Password=<password>;` | Igen |
+| connectionString | Adja meg az Oracle-adatbázispéldány való kapcsolódáshoz szükséges adatokat. Ez a mező megjelölése a SecureString tárolja biztonságos helyen, a Data factoryban vagy [hivatkozik az Azure Key Vault tárolt titkos kulcs](store-credentials-in-key-vault.md).<br><br>**Kapcsolattípus támogatott**: használható **Oracle SID** vagy **Oracle szolgáltatásnév** az adatbázis azonosításához:<br>– Ha SID használ: `Host=<host>;Port=<port>;Sid=<sid>;User Id=<username>;Password=<password>;`<br>-Ha a szolgáltatás a nevet használja: `Host=<host>;Port=<port>;ServiceName=<servicename>;User Id=<username>;Password=<password>;` | Igen |
 | connectVia | A [integrációs futásidejű](concepts-integration-runtime.md) csatlakozni az adattárolóhoz használandó. Használhatja Self-hosted integrációs futásidejű vagy Azure integrációs futásidejű (ha az adattároló nyilvánosan elérhető). Ha nincs megadva, akkor használja az alapértelmezett Azure integrációs futásidejű. |Nem |
 
 **Példa**
@@ -208,26 +209,26 @@ A kezdő és Oracle a másolt adatok, a következő megfeleltetéseket segítsé
 | Oracle-adattípusra | Data Factory ideiglenes adattípus |
 |:--- |:--- |
 | BFILE |Byte] |
-| BLOB |Byte]<br/>(csak támogatja az Oracle 10g és újabb) |
-| KARAKTER |Karakterlánc |
-| CLOB |Karakterlánc |
+| A BLOB |Byte]<br/>(csak támogatja az Oracle 10g és újabb) |
+| KARAKTER |Sztring |
+| CLOB |Sztring |
 | DATE |DateTime |
 | LEBEGŐPONTOS |Decimális, karakterlánc (Ha pontosság > 28) |
 | EGÉSZ SZÁM |Decimális, karakterlánc (Ha pontosság > 28) |
-| HOSSZÚ |Karakterlánc |
+| HOSSZÚ |Sztring |
 | HOSSZÚ NYERS |Byte] |
-| NCHAR |Karakterlánc |
-| NCLOB |Karakterlánc |
+| NCHAR |Sztring |
+| NCLOB |Sztring |
 | SZÁM |Decimális, karakterlánc (Ha pontosság > 28) |
-| NVARCHAR2 |Karakterlánc |
+| NVARCHAR2 |Sztring |
 | RAW |Byte] |
-| ROWID |Karakterlánc |
+| ROWID |Sztring |
 | IDŐBÉLYEG |DateTime |
-| A HELYI IDŐZÓNÁRA IDŐBÉLYEG |Karakterlánc |
-| AZ IDŐZÓNA IDŐBÉLYEG |Karakterlánc |
+| A HELYI IDŐZÓNÁRA IDŐBÉLYEG |Sztring |
+| AZ IDŐZÓNA IDŐBÉLYEG |Sztring |
 | ELŐJEL NÉLKÜLI EGÉSZKÉNT. |Szám |
-| VARCHAR2 |Karakterlánc |
-| XML |Karakterlánc |
+| VARCHAR2 |Sztring |
+| XML |Sztring |
 
 > [!NOTE]
 > Az adattípusok IDŐKÖZ év TO hónap és nap TO IDŐKÖZ második nem támogatottak.

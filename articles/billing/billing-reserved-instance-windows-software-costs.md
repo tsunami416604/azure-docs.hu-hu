@@ -1,5 +1,5 @@
 ---
-title: Az Azure tartalék példányok Windows szoftverek költségeit - Azure számlázási |} Microsoft Docs
+title: Az Azure tartalék példányok Windows szoftverek költségeit |} Microsoft Docs
 description: Ismerje meg, melyik Windows szoftver mérőszámok nem szerepelnek az Azure fenntartott Virtuálisgép-példány költségeket.
 services: billing
 documentationcenter: ''
@@ -14,11 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/09/2018
 ms.author: manshuk
-ms.openlocfilehash: b526ca578a72d7d35fb4198affeb02db4d308b20
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.openlocfilehash: 6602424e2b2e4a4c2c3c51b5cb4bb1024a39d2e0
+ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/17/2018
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37063843"
 ---
 # <a name="windows-software-costs-not-included-with-azure-reserved-instances"></a>A Windows szoftverek költségeit Azure fenntartott példányok nem találhatók
 
@@ -54,9 +55,9 @@ Ezek a mérőszámok költségét Azure RateCard API-n keresztül érheti el. A 
 ## <a name="next-steps"></a>További lépések
 Azure fenntartott példányok kapcsolatos további tudnivalókért tekintse meg a következő cikkeket:
 
-- [Kevesebbet költeni a virtuális gépek Azure fenntartott osztályt](billing-save-compute-costs-reservations.md)
-- [A virtuális gépek fenntartott osztályt előre fizetés](../virtual-machines/windows/prepay-reserved-vm-instances.md)
-- [Fenntartott példányok kezelése](billing-manage-reserved-vm-instance.md)
+- [Mik azok a Azure fenntartott Virtuálisgép-példányok?](billing-save-compute-costs-reservations.md)
+- [A virtuális gépek Azure fenntartott virtuális gép osztályt előre fizetés](../virtual-machines/windows/prepay-reserved-vm-instances.md)
+- [Az Azure-ban fenntartott példányok kezelése](billing-manage-reserved-vm-instance.md)
 - [A fenntartott példány kedvezményeket alkalmazásának a módját ismertetése](billing-understand-vm-reservation-charges.md)
 - [A használatalapú fizetéses előfizetésre fenntartott példány használatának megértéséhez](billing-understand-reserved-instance-usage.md)
 - [A nagyvállalati beléptetés használata fenntartott példány ismertetése](billing-understand-reserved-instance-usage-ea.md)

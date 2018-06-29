@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/16/2018
 ms.author: douglasl
-ms.openlocfilehash: 90089c009d3515df3df2453c710bac143ee7d90f
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 23471a4ae912ee4947a91f0aef7fb2557e6ebba3
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34619748"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37050966"
 ---
 # <a name="transform-data-in-azure-data-factory"></a>Az Azure Data Factoryben az adatok átalakítása
 > [!div class="op_single_selector"]
@@ -35,10 +35,6 @@ ms.locfileid: "34619748"
 Ez a cikk ismerteti az Azure Data Factory használatával átalakító, és feldolgozza a nyers adatok előrejelzéseket és elemzések adatok átalakítása tevékenységek. Egy átalakítási tevékenységet hajtja végre, például az Azure HDInsight-fürt vagy egy Azure Batch számítási környezetben. Cikkek hivatkozásainak átalakítása tevékenységeiről részletes információkat biztosít.
 
 Adat-előállító támogatja a következő adatok átalakítása tevékenységek is hozzáadhatók [folyamatok](concepts-pipelines-activities.md) vagy önállóan vagy egy másik tevékenységgel kapcsolt.
-
-> [!NOTE]
-> Ez a cikk a Data Factory 2. verziójára vonatkozik, amely jelenleg előzetes verzióban érhető el. A Data Factory szolgáltatásnak, amely általánosan elérhető (GA), 1 verziójának használatakor lásd [átalakítása tevékenységek adat-előállítóban 1-es verziójú](v1/data-factory-data-transformation-activities.md).
- 
 
 ## <a name="hdinsight-hive-activity"></a>HDInsight Hive tevékenység
 A HDInsight Hive tevékenység a Data Factory-folyamat saját Hive-lekérdezéseket vagy igény szerinti Windows/Linux-alapú HDInsight-fürt hajt végre. Lásd: [tevékenység Hive](transform-data-using-hadoop-hive.md) szóló cikkben olvashat ennek a tevékenységnek. 

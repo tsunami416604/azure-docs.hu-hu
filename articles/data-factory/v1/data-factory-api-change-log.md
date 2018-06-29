@@ -15,16 +15,16 @@ ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: c5f47379072f4e5d15ffd96c5e45a23d10fff187
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: f53c9e2b21e4758bccb6b0f89eb69501df2a6009
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34620248"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37051399"
 ---
 # <a name="azure-data-factory---net-api-change-log"></a>Az Azure Data Factory - .NET API Változásnapló
 > [!NOTE]
-> Ez a cikk a Data Factory általánosan elérhető 1. verziójára vonatkozik. 
+> Ez a cikk a Data Factory 1 verziójára vonatkozik. 
 
 Ez a cikk változásairól nyújt információt az Azure Data Factory SDK egy adott verziójában. A legújabb NuGet-csomagot az Azure Data Factory található [Itt](https://www.nuget.org/packages/Microsoft.Azure.Management.DataFactories)
 
@@ -43,9 +43,9 @@ A szolgáltatás kiegészítéseket:
 
 ## <a name="version-4100"></a>4.10.0 verzió
 * A következő választható tulajdonságok szöveges bővült:
-  * [SkipLineCount](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.textformat.skiplinecount.aspx)
+  * [skipLineCount](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.textformat.skiplinecount.aspx)
   * [FirstRowAsHeader](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.textformat.firstrowasheader.aspx)
-  * [TreatEmptyAsNull](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.textformat.treatemptyasnull.aspx)
+  * [treatEmptyAsNull](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.textformat.treatemptyasnull.aspx)
 * A következő kapcsolódószolgáltatás-típusok bővült:
   * [OnPremisesCassandraLinkedService](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.onpremisescassandralinkedservice.aspx)
   * [SalesforceLinkedService](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.salesforcelinkedservice.aspx)
@@ -184,5 +184,5 @@ A következő osztályok átnevezték. Az új nevek osztályok eredeti nevei el�
 * **Lista** csővezeték API csak a teljes leírást helyett adatcsatorna kivonat adja vissza. Például csővezeték összefoglaló tevékenységet csak tartalmazhat nevét és típusát.
 
 ### <a name="feature-additions"></a>A szolgáltatás elemek felvétele
-* A [SqlDWSink](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.sqldwsink.aspx) az osztály támogatja a két új tulajdonságok, **SliceIdentifierColumnName** és **SqlWriterCleanupScript**idempotent másolása az Azure SQL Data Warehouse támogatásához. Tekintse meg a [Azure SQL Data Warehouse](data-factory-azure-sql-data-warehouse-connector.md) szóló cikkben olvashat ezeket a tulajdonságokat.
+* A [SqlDWSink](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.sqldwsink.aspx) az osztály támogatja a két új tulajdonságok, **SliceIdentifierColumnName** és **SqlWriterCleanupScript**, Azure SQL Data idempotent másolás támogatásához Adatraktár. Tekintse meg a [Azure SQL Data Warehouse](data-factory-azure-sql-data-warehouse-connector.md) szóló cikkben olvashat ezeket a tulajdonságokat.
 * Most már támogatott a tárolt eljárás futtatott Azure SQL Database és az Azure SQL Data Warehouse források a másolási tevékenység részeként. A [SqlSource](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.sqlsource.aspx) és [SqlDWSource](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.sqldwsource.aspx) osztályok a következő jellemzőkkel rendelkezik: **SqlReaderStoredProcedureName** és **StoredProcedureParameters**. Tekintse meg a [Azure SQL Database](data-factory-azure-sql-connector.md#sqlsource) és [Azure SQL Data Warehouse](data-factory-azure-sql-data-warehouse-connector.md#sqldwsource) cikkek az Azure.com-on, ezek a Tulajdonságok vonatkozó további információért.  

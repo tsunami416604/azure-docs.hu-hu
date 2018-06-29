@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 04/19/2018
+ms.date: 06/26/2018
 ms.author: bwren
-ms.openlocfilehash: 5201d02b4f70f964f39b4fe135e4715732b9741a
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: e0366e6a2403f7cea83efde35c7b3b42565a1cf2
+ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2018
-ms.locfileid: "31792548"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37062779"
 ---
 # <a name="data-sources-in-log-analytics"></a>A Naplóelemzési adatforrások
 A Naplóelemzési adatokat gyűjti össze a csatlakoztatott források, és azt a Naplóelemzési munkaterület tárolja.  Az egyes összegyűjtött adatokon az adatforrásokat, amelyeknél megadta határozzák meg.  A Naplóelemzési adatok rekordkészlet tárolja.  Az egyes adatforrások egy adott típusú rekordot hoz létre a saját tulajdonságkészletbe minden típus.
@@ -37,9 +37,9 @@ A következő táblázat sorolja fel az adatforrásokat, amelyek jelenleg a Napl
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | [Egyéni naplók](log-analytics-data-sources-custom-logs.md) | Windows |&#8226; |  | |  |  | érkezésükkor |
 | [Egyéni naplók](log-analytics-data-sources-custom-logs.md) | Linux   |&#8226; |  | |  |  | érkezésükkor |
-| [IIS-naplók](log-analytics-data-sources-iis-logs.md) | Windows |&#8226; |&#8226; |&#8226; |  |  |5 perc |
-| [Teljesítményszámlálók](log-analytics-data-sources-performance-counters.md) | Windows |&#8226; |&#8226; |  |  |  |Ütemezés szerint, a 10 másodperces minimális |
-| [Teljesítményszámlálók](log-analytics-data-sources-performance-counters.md) | Linux |&#8226; |  |  |  |  |Ütemezés szerint, a 10 másodperces minimális |
+| [IIS-naplók](log-analytics-data-sources-iis-logs.md) | Windows |&#8226; |&#8226; |&#8226; |  |  |naplófájlváltás beállítás függ |
+| [Teljesítményszámlálók](log-analytics-data-sources-performance-counters.md) | Windows |&#8226; |&#8226; |  |  |  |ütemezett, legalább 10 másodperc |
+| [Teljesítményszámlálók](log-analytics-data-sources-performance-counters.md) | Linux |&#8226; |  |  |  |  |ütemezett, legalább 10 másodperc |
 | [Syslog](log-analytics-data-sources-syslog.md) | Linux |&#8226; |  |  |  |  |az Azure storage: 10 perc; az ügynök: érkezésükkor |
 | [Windows-Eseménynapló](log-analytics-data-sources-windows-events.md) |Windows |&#8226; |&#8226; |&#8226; |  |&#8226; | érkezésükkor |
 

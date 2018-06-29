@@ -1,25 +1,26 @@
 ---
-title: Data Lake Store érintő adatáttelepítések esetében |} Microsoft Docs
-description: Megérteni a különböző alkalmazási helyzetek és eszközök használatával, mely adatokra is okozhatnak, feldolgozása, letöltése és ábrázolt egy Data Lake Store-ban
+title: Data Lake tárolási Gen1 érintő adatáttelepítések esetében |} Microsoft Docs
+description: Különböző alkalmazási helyzetek és eszközök használatával, mely adatokra is okozhatnak, feldolgozása, letöltése és a Data Lake tárolási Gen1 (korábbi nevén az Azure Data Lake Store) ábrázolt megismeréséhez
 services: data-lake-store
 documentationcenter: ''
 author: nitinme
 manager: jhubbard
-editor: cgronlun
-ms.assetid: 37409a71-a563-4bb7-bc46-2cbd426a2ece
 ms.service: data-lake-store
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/29/2018
+ms.date: 06/27/2018
 ms.author: nitinme
-ms.openlocfilehash: cc48bf011d95b3e60a78d2102d88dc188155ddc1
-ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
+ms.openlocfilehash: e0c7ed22762ef19c6e68ad69d0cabcfeb8007251
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 06/27/2018
-ms.locfileid: "37017368"
+ms.locfileid: "37031039"
 ---
-# <a name="using-azure-data-lake-store-for-big-data-requirements"></a>Azure Data Lake Store használatát a big Data típusú adatok követelmények
+# <a name="using-azure-data-lake-storage-gen1-for-big-data-requirements"></a>Azure Data Lake tárolási Gen1 használatával big Data típusú adatok követelmények
+
+[!INCLUDE [data-lake-storage-gen1-rename-note.md](../../includes/data-lake-storage-gen1-rename-note.md)]
+
 Nagy adatfeldolgozási négy fő szakaszból áll:
 
 * Választásával dolgozhat fel nagy mennyiségű adat adatok tárolóba, valós idejű vagy kötegek

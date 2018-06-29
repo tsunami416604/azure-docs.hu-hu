@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 6/1/2018
 ms.author: raiye
-ms.openlocfilehash: 73771aaff59c3db46907ffd9f74c03f0ac0830cb
-ms.sourcegitcommit: c722760331294bc8532f8ddc01ed5aa8b9778dec
+ms.openlocfilehash: dd6a9b3e8777c6efa4d6db07d4d65c86463f6cfe
+ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34736779"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37063612"
 ---
 # <a name="azure-guest-os-releases-and-sdk-compatibility-matrix"></a>Az Azure vendég operációs rendszereinek kiadásait és SDK-kompatibilitási mátrix
 Itt való naprakész információkat a legújabb Azure vendég operációs rendszer feloldja a Felhőszolgáltatásai számára. Ez az információ segít a frissítési lépések megtervezéséről, mielőtt egy vendég operációs rendszer le van tiltva. Ha a szerepkörök használatára konfigurálja *automatikus* vendég operációs rendszer frissíti a [Azure vendég operációs rendszer frissítési beállítások][Azure Guest OS Update Settings], nem elengedhetetlen, hogy olvassa el ezen a lapon.
@@ -75,7 +75,7 @@ Szeptembertől vendég operációs rendszer adott ki. A Windows Server 2016. sze
 
 
 
-## <a name="releases"></a>Kiadások
+## <a name="releases"></a>feloldja a
 ## <a name="family-5-releases"></a>Feloldja a családja 5
 **Windows Server 2016**
 
@@ -222,7 +222,7 @@ A Microsoft Azure folyamatosan kiadásával frissítések. A vendég operációs
 
 A vendég operációs rendszer új verziót meg van nyitva, egész Azure teljesen propagálása időbe telhet. Szolgáltatások frissítve lett, hogy az új vendég operációs rendszer, mivel azok újraindítása van frissítési tartományok érvényesítenie. "Automatikus" frissítések használandó szolgáltatások a kiadási első fogja kapni. A frissítés után az új vendég operációs rendszer verzió a szolgáltatás az Azure portálon felsorolt láthatja. Ebben az időszakban újból kiadott biztonsági frissítések fordulhat elő. Egyes verziói telepítésére hosszabb idő alatt, és az automatikus frissítési újraindítások esetleg nem kerül sor a hivatalos kiadás dátuma után sok hétig. Miután a vendég operációs rendszer nem érhető el, majd explicit módon kiválaszthatja verzió a portálról, vagy a konfigurációs fájlban.
 
-Ezután újraindul, és további technikai adatai Vendég és a gazda operációs Rendszerével frissítések mutatók értékes információk nagy mennyiségű, lásd az MSDN blogbejegyzésében [szerepkör példány újraindítása miatt az operációs rendszer frissítései][restarts].
+Ezután újraindul, és további technikai adatai Vendég és a gazda operációs Rendszerével frissítések mutatók értékes információk nagy mennyiségű, lásd az MSDN blogbejegyzésében [szerepkör példány újraindítása miatt az operációs rendszer frissítései] [ restarts].
 
 Ha manuálisan módosítja a vendég operációs rendszer, tekintse meg a [vendég operációs rendszer használatból való kivonást házirend] [ retirepolicy] további információt.
 
@@ -242,7 +242,7 @@ A vendég operációs rendszer támogatásának és a használatból való kivon
 [server and gos]: https://msdn.microsoft.com/library/dn775043.aspx
 [azuresupport]: http://azure.microsoft.com/support/options/
 [net install pkg]: http://www.microsoft.com/download/details.aspx?id=42643
-[msrc]: http://www.microsoft.com/security/msrc/default.aspx
+[msrc]: https://technet.microsoft.com/en-us/security/dn440717.aspx
 [update guest os portal]: https://msdn.microsoft.com/library/gg433101.aspx
 [update guest os svc]: https://msdn.microsoft.com/library/gg456324.aspx
 [restarts]: http://blogs.msdn.com/b/kwill/archive/2012/09/19/role-instance-restarts-due-to-os-upgrades.aspx

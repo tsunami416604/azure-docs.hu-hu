@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 11/08/2016
 ms.author: sedusch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 7848aa2e620218463bbe3faa325b4589ae6ac3b5
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 7f1c2b028521983081ba5f276789af9701b568b7
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34657498"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37047258"
 ---
 # <a name="azure-virtual-machines-planning-and-implementation-for-sap-netweaver"></a>Azure virtuális gépek tervezési és megvalósítási az SAP NetWeaver
 [767598]:https://launchpad.support.sap.com/#/notes/767598
@@ -775,7 +775,7 @@ A nyers döntési fa eldöntheti, hogy egy SAP rendszer Azure virtuális gép sz
 
 ![Döntse el, hogy lehetővé teszi az Azure-on SAP telepítését döntési fája][planning-guide-figure-700]
 
-**1. lépés**: A legfontosabb adatokat kezdődnie esetében az SAP követelmény egy adott SAP rendszerhez. Az SAP-követelmények kell bontható az adatbázis-kezelő és az SAP alkalmazás részét, még akkor is, ha az SAP rendszer már telepített helyszíni 2 szintű konfiguráció. Meglévő rendszerek a SAP, gyakran kapcsolódik a a hardver meghatározott vagy meglévő SAP-referenciaalapok alapján. Az eredmények itt található: <http://global.sap.com/campaigns/benchmark/index.epx>.
+**1. lépés**: A legfontosabb adatokat kezdődnie esetében az SAP követelmény egy adott SAP rendszerhez. Az SAP-követelmények kell bontható az adatbázis-kezelő és az SAP alkalmazás részét, még akkor is, ha az SAP rendszer már telepített helyszíni 2 szintű konfiguráció. Meglévő rendszerek a SAP, gyakran kapcsolódik a a hardver meghatározott vagy meglévő SAP-referenciaalapok alapján. Az eredmények itt található: <https://sap.com/about/benchmark.html>.
 Az újonnan telepített SAP rendszerek kell megtettünk mindent keresztül egy méretezési gyakorlatban kell meghatározni, hogy a rendszer a SAP követelményeinek.
 Lásd még: Ebben a blogban és az SAP méretezési csatolt dokumentumot az Azure-on: <http://blogs.msdn.com/b/saponsqlserver/archive/2015/12/01/new-white-paper-on-sizing-sap-solutions-on-azure-public-cloud.aspx>
 
@@ -870,7 +870,7 @@ Adott javítás szükségletek az operációs rendszer vagy az adatbázis-kezel�
 >
 
 - - -
-Ha már telepítette a helyszíni virtuális gépre (különösen a 2-réteg rendszerek) SAP tartalom, módosíthatja az SAP rendszerbeállítások után az Azure virtuális Gépen keresztül a példány központi telepítését, nevezze át a SAP szoftver kiépítés Manager által támogatott eljárás (SAP Megjegyzés [1619720]). Lásd: fejezetek [specifikus képének a virtuális gépek telepítése az SAP-előkészítése] [ planning-guide-5.2.2] és [feltöltése az Azure-bA a helyi virtuális merevlemez] [ planning-guide-5.3.2]a jelen dokumentum előkészítő lépések helyszíni és a feltöltése a általánosított virtuális gépek Azure-bA. Fejezet elolvasása [2. forgatókönyv: központi telepítése a virtuális gép és egy egyéni lemezképet az SAP] [ deployment-guide-3.3] a a [telepítési útmutató] [ deployment-guide] történő telepítésének részletes lépései ilyen lemezkép az Azure-ban.
+Ha már telepítette a helyszíni virtuális gépre (különösen a 2-réteg rendszerek) SAP tartalom, módosíthatja az SAP rendszerbeállítások után az Azure virtuális Gépen keresztül a példány központi telepítését, nevezze át az eljárás szerint az SAP szoftver kiépítés Manager (SAP támogatott Ne feledje [1619720]). Lásd: fejezetek [specifikus képének a virtuális gépek telepítése az SAP-előkészítése] [ planning-guide-5.2.2] és [feltöltése az Azure-bA a helyi virtuális merevlemez] [ planning-guide-5.3.2]a jelen dokumentum előkészítő lépések helyszíni és a feltöltése a általánosított virtuális gépek Azure-bA. Fejezet elolvasása [2. forgatókönyv: központi telepítése a virtuális gép és egy egyéni lemezképet az SAP] [ deployment-guide-3.3] a a [telepítési útmutató] [ deployment-guide] történő telepítésének részletes lépései ilyen lemezkép az Azure-ban.
 
 #### <a name="deploying-a-vm-out-of-the-azure-marketplace"></a>Az Azure piactéren kívüli virtuális gép telepítése
 Szeretné használni a Microsoft vagy harmadik fél megadott Virtuálisgép-lemezkép központi telepítése a virtuális Gépet az Azure piactérről. Miután telepítette a virtuális Gépet az Azure-ban, az azonos irányelvek és eszközök telepítése, a SAP szoftver és/vagy az adatbázis-kezelő a virtuális Gépen belül, mint a helyszíni környezetben hajtsa végre. Részletes leírás a telepítés, ellenőrizze a fejezet [1. forgatókönyv: központi telepítése egy virtuális Gépet az Azure piactéren az SAP kívül] [ deployment-guide-3.2] a a [telepítési útmutató] [deployment-guide].
@@ -988,7 +988,7 @@ Ebben az esetben szeretnénk töltse fel a virtuális Merevlemezt, vagy anélkü
 
 * A Powershell vagy Azure CLI feltöltéséhez
 * (Választható) A virtuális merevlemezről végzett Powershell, az Azure parancssori felület és az Azure-portálon kezelt lemez létrehozása
-* Telepítse a virtuális Gépet egy JSON-sablon hivatkozik a VHD-t, ahogy az a [példa JSON sablon](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-vm-specialized-vhd/azuredeploy.json) vagy felügyelt lemezt használ, ahogy az [példa JSON sablon](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/sap-2-tier-user-disk-md/azuredeploy.json).
+* Telepítse a virtuális Gépet egy JSON-sablon hivatkozik a VHD-t, ahogy az a [példa JSON sablon](https://github.com/Azure/azure-quickstart-templates/blob/master/201-vm-specialized-vhd-new-or-existing-vnet/azuredeploy.json) vagy felügyelt lemezt használ, ahogy az [példa JSON sablon](https://github.com/Azure/azure-quickstart-templates/blob/master/sap-2-tier-user-image-md/azuredeploy.json).
 
 #### <a name="deployment-of-a-vm-image"></a>A Virtuálisgép-lemezkép központi telepítése
 Egy meglévő virtuális vagy virtuális merevlemez feltöltése a helyi hálózatról történő használatához azt egy Azure Virtuálisgép-lemezkép egy virtuális gép vagy VHD-t kell fejezetben felsorolt követelményeknek [specifikus képének a virtuális gépek telepítése az SAP-előkészítése] [ planning-guide-5.2.2] ebben a dokumentumban.

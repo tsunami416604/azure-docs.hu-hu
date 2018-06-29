@@ -8,14 +8,16 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 04/13/2018
 ms.author: chrisgre
-ms.openlocfilehash: fe5ce960663f39d4f2c87a7bbffa091d327e9559
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 29a56e212f842e8f4243eca7fc865175fd275a39
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34632448"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37030767"
 ---
-# <a name="configure-and-monitor-iot-devices-at-scale---preview"></a>Konfigurálja és az IoT-eszközök léptékű figyelése – előzetes
+# <a name="configure-and-monitor-iot-devices-at-scale-using-the-azure-portal"></a>Konfigurálhatja és figyelheti az Azure portál használatával léptékű az IoT-eszközök
+
+[!INCLUDE [iot-edge-how-to-deploy-monitor-selector](../../includes/iot-hub-auto-device-config-selector.md)]
 
 Automatikus kezelés az Azure IoT Hub automatizálja az ismétlődő és az összetett feladatok nagy eszköz flották kezelését a teljes egészében a életciklusának keresztül. Automatikus felügyeleti (MDM) az eszközök tulajdonságaik alapján célozza, adja meg a kívánt konfiguráció, és lehetővé teszik az IoT-központ frissítése az eszközöket, amikor a hatókör származnak.  Ez egy automatikus eszközkonfiguráció, amely lehetővé teszi, hogy összesítse a befejezése és a megfelelőség, a leíró egyesítése és a ütközések, és fokozatosan konfigurációk szakaszos megközelítéssel használatával történik.
 
@@ -28,9 +30,6 @@ Automatikus eszköz konfigurációk munkahelyi eszköz twins csoportja frissít�
 * A **céloz tartalom** kell hozzáadni, vagy a céleszköz twins frissített kívánt tulajdonságait határozza meg. A tartalom elérési útját a módosítani kívánt tulajdonságok szakasza tartalmazza.
 
 * A **metrikák** határozza meg az összefoglaló számát is különböző konfigurációs állapotnak, mint **sikeres**, **folyamatban lévő**, és **hiba**. Egyéni metrikák eszközön lekérdezések vannak megadva a két jelentett tulajdonságok.  Rendszer-adatok gyűjtése le alapértelmezett metrikák mérő iker frissítési állapot, például az eszköz twins irányuló számát és a sikeresen frissített twins számát. 
-
-> [!Note]
-> Előzetes Ez a szolgáltatás nem áll rendelkezésre az IoT-központok USA keleti régiója, USA nyugati régiója, Észak-Európában és Nyugat-Európában régiókban.
 
 ## <a name="implement-device-twins-to-configure-devices"></a>Eszközök konfigurálása eszköz twins megvalósítása
 
@@ -52,7 +51,7 @@ Mielőtt létrehozna egy konfigurációs, mely eszközöket szeretné befolyáso
 ## <a name="create-a-configuration"></a>Konfiguráció létrehozása
 
 1. Az a [Azure-portálon][lnk-portal], keresse fel az IoT hub. 
-1. Válassza ki **IoT-eszközök konfigurációját (előzetes verzió)**.
+1. Válassza ki **IoT-eszközök konfigurációs**.
 1. Válassza ki **konfiguráció hozzáadása**.
 
 A konfiguráció létrehozásához öt lépésből áll. A következő szakaszok segítségével minden egyes ismerteti. 
@@ -96,7 +95,7 @@ Az eszköz twins a címkék tulajdonságot használja, amelyekre az adott eszkö
 Mivel több konfigurációt is céloz ugyanarra az eszközre, adjon minden konfigurációs számot. Ha valaha is ütközés esetén az a legmagasabb prioritású wins-konfigurációt. 
 
 1. Egy pozitív egész számot adjon meg a konfigurációs **prioritás**. A legmagasabb prioritású legnagyobb numerikus értéket számít. Ha két konfiguráció ugyanazt a prioritást, a legtöbb létrehozott egy közelmúltban wins. 
-1. Adjon meg egy **céloz feltétel** határozza meg, hogy mely eszközök lesz ezzel a konfigurációval való. A feltétel alapján eszköz iker címkék vagy eszköz iker tulajdonságok jelentette, és meg kell felelnie a kifejezés formátumban. Például `tags.environment='test'` vagy `properties.reported.chillerProperties.model='4000x'`. 
+1. Adjon meg egy **céloz feltétel** határozza meg, hogy mely eszközök lesz ezzel a konfigurációval való. A feltétel alapján eszköz iker címkék vagy eszköz iker tulajdonságok jelentette, és meg kell felelnie a kifejezés formátumban. Például `tags.environment='test'` vagy `properties.reported.chillerProperties.model='4000x'`. Megadhat `*` , amelyekre az összes eszközt.
 1. Válassza ki **következő** áthelyezése az utolsó lépését.
 
 ### <a name="step-5-review-configuration"></a>5. lépés: Konfiguráció áttekintése
@@ -108,8 +107,8 @@ Ellenőrizze a konfigurációs adatokat, majd válasszon **Submit**.
 Egy konfigurációs részleteit megtekintheti, és figyelheti az eszközök is fut, tegye a következőket:
 
 1. Az a [Azure-portálon][lnk-portal], keresse fel az IoT hub. 
-1. Válassza ki **IoT-eszközök konfigurációját (előzetes verzió)**.
-1. Vizsgálja meg a konfigurációs listát. Az egyes konfigurációs tekintheti meg a következő adatokat:
+1. Válassza ki **IoT-eszközök konfigurációs**.
+2. Vizsgálja meg a konfigurációs listát. Az egyes konfigurációs tekintheti meg a következő adatokat:
    * **Azonosító** -konfiguráció neve.
    * **Cél feltétel** -célzott eszközeiket használt lekérdezés.
    * **Prioritás** -a prioritást, a konfiguráció rendelt.
@@ -136,25 +135,25 @@ Ha frissíti a cél feltétel, a következő frissítéseket fordulhat elő:
 A konfiguráció módosításához tegye a következőket: 
 
 1. Az a [Azure-portálon][lnk-portal], keresse fel az IoT hub. 
-1. Válassza ki **IoT-eszközök konfigurációját (előzetes verzió)**. 
-1. Válassza ki a módosítani kívánt konfigurációról. 
-1. Frissítések készítése a következő mezőket: 
+1. Válassza ki **IoT-eszközök konfigurációs**. 
+2. Válassza ki a módosítani kívánt konfigurációról. 
+3. Frissítések készítése a következő mezőket: 
    * Cél feltétel 
    * Címkék 
    * Prioritás 
    * Mérőszámok
-1. Kattintson a **Mentés** gombra.
-1. Kövesse a [figyelő a konfigurációs] [horgonyzási-figyelő] bemutató megkezdik a módosításokat. 
+4. Kattintson a **Mentés** gombra.
+5. Kövesse a [figyelő a konfigurációs] [horgonyzási-figyelő] bemutató megkezdik a módosításokat. 
 
 ## <a name="delete-a-configuration"></a>Konfiguráció törlése
 
 Ha töröl egy konfigurációt, bármely eszköz twins a következő legmagasabb prioritású konfigurációs igénybe. Eszköz twins nem felelnek meg cél más beállításokat, ha nincs más beállítások érvényesek. 
 
 1. Az a [Azure-portálon][lnk-portal], keresse fel az IoT hub. 
-1. Válassza ki **IoT-eszközök konfigurációját (előzetes verzió)**. 
-1. A jelölőnégyzet segítségével válassza ki a törölni kívánt konfigurációról. 
-1. Válassza a **Törlés** elemet.
-1. A kérdés kérni fogja annak megerősítéséhez.
+1. Válassza ki **IoT-eszközök konfigurációs**. 
+2. A jelölőnégyzet segítségével válassza ki a törölni kívánt konfigurációról. 
+3. Válassza a **Törlés** elemet.
+4. A kérdés kérni fogja annak megerősítéséhez.
 
 ## <a name="next-steps"></a>További lépések
 Ebben a cikkben megtanulta, hogyan konfigurálhatja és figyelheti a léptékű az IoT-eszközök. Az alábbi hivatkozásokból tudhat meg többet az Azure IoT Hub kezelése:

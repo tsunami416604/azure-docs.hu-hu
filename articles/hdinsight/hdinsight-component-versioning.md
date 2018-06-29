@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/09/2018
 ms.author: kakampf
-ms.openlocfilehash: 170d1d9bca8ffa788560c6a015f41062dd4ed40f
-ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
+ms.openlocfilehash: 3ac3df7f7861b8a12778190072e5554927706e08
+ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 06/27/2018
-ms.locfileid: "37018663"
+ms.locfileid: "37061419"
 ---
 # <a name="what-are-the-hadoop-components-and-versions-available-with-hdinsight"></a>Mik azok a Hadoop-összetevők és a hdinsight eszközzel verziók?
 
@@ -53,12 +53,13 @@ A HDInsight-fürt verziókról társított összetevő-verziók a következő t�
 | Apache Storm |1.1.0 |1.0.1 |0.10.0 |0.10.0 |0.9.3 |0.9.1 |-|
 | Apache Mahout |0.9.0+ |0.9.0+ |0.9.0+ |0.9.0+ |0.9.0 |0.9.0 |-|
 | Apache Phoenix |4.7.0 |4.7.0 |4.4.0 |4.4.0 |4.2.0 |4.0.0.2.1.7.0-2162 |-|
-| Apache Spark |2.1.0, 2.2.0 |1.6.2, 2.0-s |1.6.0 |1.5.2 |1.3.1 (csak Windows) |-|-|
+| Apache Spark |2.3.0, 2.2.0, 2.1.0 |1.6.2, 2.0-s |1.6.0 |1.5.2 |1.3.1 (csak Windows) |-|-|
 | Apache Livy |0.4 |0,3 |0,3 |0.2 |-|-|-|
-| Apache Kafka | 0.10.1 | 0.10.0 | 0.9.0 |-|-|-|-|
+| Apache Kafka | 1.0, 0.10.1 | 0.10.0 | 0.9.0 |-|-|-|-|
 | Apache Ambari | 2.6.0 | 2.4.0 | 2.2.1 | 2.1.0 |-|-|-|
 | Apache Zeppelin | 0.7.0 |-|-|-|-|-|-|
 | Monó |4.2.1 |4.2.1 |3.2.8 |-|-|-|
+| Apache csúszka | 0.92.0 |-|-|-|-|-|-|
 
 ## <a name="check-for-current-hadoop-component-version-information"></a>Ellenőrizze a jelenlegi Hadoop összetevő verzióinformáció
 
@@ -234,7 +235,7 @@ Az alábbi táblázatok a HDInsight-fürtök az alapértelmezett virtuális gép
 
 * Dél-Brazília és Nyugat-japán kivételével minden támogatott régiók:
 
-  | Fürttípus | Hadoop | HBase | Interaktív lekérdezés | Storm | Spark | R Server |
+  | Fürttípus | Hadoop | HBase | Interaktív lekérdezés | Storm | Spark | Gépi tanulás összetevő-kiszolgáló |
   | --- | --- | --- | --- | --- | --- | --- |
   | HEAD: alapértelmezett Virtuálisgép-méretet |D3 v2 |D3 v2 | D13, D14 |A3 |D12 v2 |D12 v2 |
   | HEAD: ajánlott Virtuálisgép-méretek |D3 v2, D4 v2, D12 v2 |D3 v2, D4 v2, D12 v2  | D13, D14 |A3 MÉRETŰ, A4 MÉRETŰ, A5 CSOMAG |D12 v2, D13 v2, D14 v2 |D12 v2, D13 v2, D14 v2 |
@@ -246,7 +247,7 @@ Az alábbi táblázatok a HDInsight-fürtök az alapértelmezett virtuális gép
   | Peremhálózati: ajánlott Virtuálisgép-mérettel | | | | | |Windows: D12 v2, D13 v2, D14 v2; Linux: D4 v2, D12 v2, D13 v2, D14 v2 |
 * Dél-Brazília és Nyugat-japán csak (nincs v2 méretű):
 
-  | Fürttípus | Hadoop | HBase | Interaktív lekérdezés |Storm | Spark | R Server |
+  | Fürttípus | Hadoop | HBase | Interaktív lekérdezés |Storm | Spark | Gépi tanulás összetevő-kiszolgáló |
   | --- | --- | --- | --- | --- | --- | --- |
   | HEAD: alapértelmezett Virtuálisgép-méretet |D3 |D3  | D13, D14 |A3 |D12 |D12 |
   | HEAD: ajánlott Virtuálisgép-méretek |D3 D4, D12 |D3 D4, D12  | D13, D14 |A3 MÉRETŰ, A4 MÉRETŰ, A5 CSOMAG |D12, D13, D14 |D12, D13, D14 |

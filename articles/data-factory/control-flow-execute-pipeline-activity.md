@@ -13,18 +13,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
-ms.openlocfilehash: 3a858e3e901f300ce5f0dbc44437106905078375
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 2aa25004fb9c2e914cd8c669095953e174686197
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34617715"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37051763"
 ---
 # <a name="execute-pipeline-activity-in-azure-data-factory"></a>Feldolgozási sor tevékenység végrehajtása az Azure Data Factory
 A feldolgozási sor végrehajtása tevékenység lehetővé teszi, hogy a Data Factory-folyamathoz meghívni egy másik folyamat.
-
-> [!NOTE]
-> Ez a cikk a Data Factory 2. verziójára vonatkozik, amely jelenleg előzetes verzióban érhető el. A Data Factory szolgáltatásnak, amely általánosan elérhető (GA), 1 verziójának használatakor lásd [Data Factory V1 dokumentáció](v1/data-factory-introduction.md).
 
 ## <a name="syntax"></a>Szintaxis
 
@@ -65,8 +62,8 @@ A feldolgozási sor végrehajtása tevékenység lehetővé teszi, hogy a Data F
 ## <a name="type-properties"></a>A típus tulajdonságai
 Tulajdonság | Leírás | Megengedett értékek | Szükséges
 -------- | ----------- | -------------- | --------
-név | A végrehajtási folyamat tevékenység nevét. | Karakterlánc | Igen
-type | Értékre kell állítani: **ExecutePipeline**. | Karakterlánc | Igen
+név | A végrehajtási folyamat tevékenység nevét. | Sztring | Igen
+type | Értékre kell állítani: **ExecutePipeline**. | Sztring | Igen
 adatcsatorna | Hivatkozás a függő folyamat, amely ebben az adatcsatornában hívja meg a következő feldolgozási sorban. A folyamat referenciaobjektum két tulajdonságokkal rendelkezik: **hivatkozásnév** és **típus**. A hivatkozásnév tulajdonság határozza meg a referencia-feldolgozási folyamat nevét. A type tulajdonságot meg kell PipelineReference. | PipelineReference | Igen
 paraméterek | A meghívott csővezeték átadandó paraméterek | Egy JSON-objektum, amely leképezhető argumentumérték paraméterének neve | Nem
 waitOnCompletion | Meghatározza, hogy tevékenység végrehajtási megvárja-e a függő feldolgozási sor végrehajtása befejeződik. | Az alapértelmezett érték a false (hamis). | Logikai | Nem

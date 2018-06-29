@@ -10,15 +10,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/10/2018
+ms.date: 06/27/2018
 ms.author: mabrigg
 ms.reviewer: sijuman
-ms.openlocfilehash: ee4321b905396f78e7dad9248b9e377dad250a13
-ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
+ms.openlocfilehash: 1a516c890441c3b703d43f31816b7c37cac364fd
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "34010975"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37054381"
 ---
 # <a name="resource-provider-api-versions-supported-by-profiles-in-azure-stack"></a>Erőforrás-szolgáltató API verziókat támogatja Azure verem profilok
 
@@ -26,7 +26,7 @@ Az erőforrás-szolgáltató és a verziószámokra minden ebben a cikkben az Az
 
 Az API-profil három elnevezési konvenciót használ:
  - legújabb
- - Éééé-hh-nn-hibrid
+ - éééé-hh-nn-hibrid
  - éééé-hh-nn-profil
 
 Egy ismertetése API profilok és verzió kiadás ütemben történik az Azure-verem [kezelése API verziója profilok Azure verem](azure-stack-version-profiles.md).
@@ -144,11 +144,14 @@ Az Azure számítási API-k adnia Önnek programozott hozzáférést a virtuáli
 
 | Erőforrástípusok | API-verziók |
 |--------------------|--------------------|
-| Riasztási szabályok | 2016-03-01 |
-| Kategóriák | 2017 03-01. dátumú előnézeti |
-| Eseménytípusok | 2017 03-01. dátumú előnézeti |
-| Metrikadefiníciók | 2016-03-01 |
 | Műveletek | 2015-04-01 |
+| Eseménytípusok | 2015-04-01 |
+| Kategóriák | 2015-04-01 |
+| Metrikadefiníciók | 2018-01-01 |
+| Mérőszámok | 2018-01-01 |
+| Diagnosztikai beállítások | 2017-05-01. dátumú előnézeti |
+| Diagnosztikai beállítások kategóriák | 2017-05-01. dátumú előnézeti |
+
 
 ### <a name="microsoftkeyvault"></a>Microsoft.KeyVault
 
@@ -157,7 +160,7 @@ A kulcs kezelése-tárolók és a kulcsokat, a titkos kulcsok és a tanúsítvá
 | Erőforrástípusok | API-verziók |
 |-------------------------|--------------|
 | Műveletek | 2016-10-01 |
-| Tárolók | 2016-10-01 |
+| tárolók | 2016-10-01 |
 | Tárolók / hozzáférési házirendek | 2016-10-01 |
 | Tárolók/titkos kulcsok | 2016-10-01 |
 
@@ -168,7 +171,7 @@ Műveletek hívás eredménye a a rendelkezésre álló hálózati felhő művel
 | Erőforrástípusok | API-verziók |
 |---------------------------|--------------|
 | Kapcsolatok | 2015-06-15 |
-| DNS-zónák | 2016-04-01 |
+| DNS Zones | 2016-04-01 |
 | Terheléselosztók | 2015-06-15 |
 | Helyi hálózati átjáró | 2015-06-15 |
 | Helyek | 2016-04-01 |
@@ -267,7 +270,7 @@ A Storage erőforrás-szolgáltató (SRP) lehetővé teszi a tárfiók és a kul
 | Erőforrástípusok | API-verziók |
 |---------------------------|--------------|
 | Kapcsolatok | 2015-06-15 |
-| DNS-zónák | 2016-04-01 |
+| DNS Zones | 2016-04-01 |
 | Terheléselosztók | 2015-06-15 |
 | Helyi hálózati átjáró | 2015-06-15 |
 | Helyek | 2016-04-01 |

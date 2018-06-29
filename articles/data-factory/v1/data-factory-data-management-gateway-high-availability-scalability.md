@@ -10,19 +10,20 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: d04500e770bf43278b88c2f980a10693590c7d16
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 2d636eb381710c5e8341e24af8cd157a627348ef
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37053836"
 ---
 # <a name="data-management-gateway---high-availability-and-scalability-preview"></a>Az adatkezelési átjáró - magas rendelkezésre állás és méretezhetőség (előzetes verzió)
 > [!NOTE]
-> Ez a cikk a Data Factory általánosan elérhető 1. verziójára vonatkozik. Lásd a 2-es verziójának a Data Factory szolgáltatásnak, amely jelenleg előzetes verzióban érhető, használatakor [önállóan üzemel a 2-es integrációs futásidejű](../create-self-hosted-integration-runtime.md). 
+> Ez a cikk a Data Factory 1 verziójára vonatkozik. A Data Factory szolgáltatásnak aktuális verziójának használatakor lásd [önállóan üzemel a integrációs futásidejű](../create-self-hosted-integration-runtime.md). 
 
 
 Ez a cikk segít a magas rendelkezésre állás és méretezhetőség megoldás konfigurálása az adatkezelési átjárót / integráció.    
@@ -182,14 +183,14 @@ Az Azure portálon minden csomóponton együtt átjáró csomópontok állapotok
 
 ![Az adatkezelési átjáró - több csomópont figyelése](media/data-factory-data-management-gateway-high-availability-scalability/data-factory-gateway-multi-node-monitoring.png)
 
-Engedélyezheti a **speciális beállítások** a a **átjáró** lapot, melyen megtekintheti például speciális metrikák **hálózati**(in/out), **szerepkör & hitelesítő adatok állapot**, ez az átjáró hibáinak feltárására lehet hasznos és **egyidejűleg futó feladatainak** (futtató / Limit) amely is lehet módosított / megváltozott ennek megfelelően során teljesítményhangolás. A következő táblázat ismerteti az oszlopok a **Átjárócsomópontok** listája:  
+Engedélyezheti a **speciális beállítások** a a **átjáró** lapot, melyen megtekintheti például speciális metrikák **hálózati**(in/out), **szerepkör & hitelesítő adatok állapot**, ez segíthet átjáró hibáinak feltárására és **egyidejűleg futó feladatainak** (futtató / Limit) amely is lehet módosított / megváltozott ennek megfelelően során teljesítményhangolás. A következő táblázat ismerteti az oszlopok a **Átjárócsomópontok** listája:  
 
 Figyelési tulajdonság | Leírás
 :------------------ | :---------- 
 Name (Név) | A logikai átjáró és az átjáróhoz társított csomópont neve.  
 status | A logikai átjáró és az átjáró csomópontok állapota. Példa: Online/Offline/korlátozott/stb. A fenti állapotok megjelenése kapcsolatos információkért lásd: [az átjáró állapotának](#gateway-status) szakasz. 
 Verzió | A logikai átjáró és az egyes átjárócsomópont verzióját jeleníti meg. A logikai átjáró verziója határozza meg a csoportban lévő csomópontok többsége verzióján alapul. Ha nincs a logikai átjáró beállítás, csak a csomópontok a azonos verziószámú a logikai átjáró függvényében eltérő verziójú csomópontok megfelelően. Mások korlátozott módban van, és manuálisan kell frissíteni, (csak abban az esetben az automatikus frissítés sikertelen lesz). 
-Rendelkezésre álló memória | Rendelkezésre álló memória egy átjáró-csomóponton. Ez az érték közel valós idejű pillanatképet. 
+Elérhető memória | Rendelkezésre álló memória egy átjáró-csomóponton. Ez az érték közel valós idejű pillanatképet. 
 Processzorkihasználtság | Egy átjáró csomópont CPU-felhasználását. Ez az érték közel valós idejű pillanatképet. 
 Hálózatkezelés (In/Out) | Hálózathasználat egy átjáró csomópont. Ez az érték közel valós idejű pillanatképet. 
 Egyidejűleg futó feladatainak (futtató / Limit) | Feladatok vagy minden egyes csomóponton futó feladatok száma. Ez az érték közel valós idejű pillanatképet. Korlát azt jelzi, hogy az egyes csomópontok maximális egyidejűleg futó feladatainak. Ez az érték van megadva a mérete alapján. Egyidejű feladatok végrehajtásának speciális forgatókönyvekhez, növelheti a korlát növelhető ahol Processzor / memória / hálózati alatt szükség, de a tevékenységek vannak időtúllépés miatt. Ez a funkció érhető el egy egy csomópontos átjáró (még akkor is, ha a méretezhetőség és a rendelkezésre állási funkció nincs engedélyezve). További információkért lásd: [szempontok méretezése](#scale-considerations) szakasz. 
@@ -214,7 +215,7 @@ A következő táblázat a lehetséges állapotok egy **logikai átjáró**. Az 
 
 status | Megjegyzések
 :----- | :-------
-Needs Registration | Nincs csomópont még regisztrálva van a logikai átjáró
+Regisztrálnia kell az Adatátjárót | Nincs csomópont még regisztrálva van a logikai átjáró
 Online | Átjáró csomópontja online állapotban.
 Offline | Nincs csomópontja online állapotát.
 Korlátozott | Ez az átjáró nem minden csomópontja kifogástalan állapotban vannak. Ez az állapot nem figyelmezteti rá, hogy néhány csomópont esetleg nem működik! <br/><br/>Hitelesítő adatok szinkronizálási problémája kézbesítő/munkavégző csomóponton okozhatja. 

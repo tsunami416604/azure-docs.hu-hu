@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/03/2017
 ms.author: ganesr;cherylmc
-ms.openlocfilehash: 37db218010288912bf75d00fd5868aab171aef71
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
-ms.translationtype: MT
+ms.openlocfilehash: 20914eec070452186295f6d87a85ea0675ebaf4c
+ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/19/2018
-ms.locfileid: "31592905"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37060086"
 ---
 # <a name="move-expressroute-circuits-from-the-classic-to-the-resource-manager-deployment-model-using-powershell"></a>A klasszikus ExpressRoute-Kapcsolatcsoportok áthelyezése a Resource Manager üzembe helyezési modellel PowerShell használatával
 
@@ -96,6 +96,10 @@ A kapcsolatcsoport áthelyezéséhez módosíthatja, és futtassa a következő 
 ```powershell
 Move-AzureRmExpressRouteCircuit -Name "MyCircuit" -ResourceGroupName "DemoRG" -Location "West US" -ServiceKey "<Service-key>"
 ```
+
+> [!NOTE]
+> Klasszikus módban ExpressRoute-kapcsolatcsoportot nem rendelkezik a fogalom a régió nem kötődik. A Resource Manager (ARM), minden erőforrás meg kell feleltetni Azure-régióhoz. A régió van megadva. a Move-AzureRmExpressRouteCircuit parancsmagban technikailag lehet bármely régióban. Szervezeti célokra érdemes lehet a társviszony-létesítési helye szorosan jelölő egy régiót válassza.
+> 
 
 > [!NOTE]
 > Az áthelyezés után, az új név szerepel-e az előző parancsmag használandó cím az erőforrás. A kapcsolatcsoport lényegében lehet átnevezni.

@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 12/15/2017
 ms.author: skwan
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: a70f02fca5ebf575bc009623c3af648a5a80fd70
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 358827722e8d77cd91410fae842ad2ba99967d98
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32153744"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37028897"
 ---
 # <a name="use-a-linux-vm-managed-service-identity-msi-to-access-azure-data-lake-store"></a>Azure Data Lake Store eléréséhez használja egy Linux virtuális gép felügyelt szolgáltatás Identity (MSI)
 
@@ -190,7 +190,7 @@ Gratulálunk!  A Data Lake Store-fájlrendszer használatával egy virtuális g�
 - MSI áttekintését lásd: [Szolgáltatásidentitás felügyelete – áttekintés](msi-overview.md).
 - A felügyeleti műveletek Data Lake Store az Azure Resource Managert használja.  További információk a virtuális gép MSI hitelesítésére az erőforrás-kezelő használatával, [egy Linux virtuális gép felügyelt szolgáltatás Identity (MSI) használatával férjenek hozzá a Resource Manager](../managed-service-identity/msi-tutorial-linux-vm-access-arm.md).
 - További információ [Azure Active Directory használatával a Data Lake Store hitelesítési](~/articles/data-lake-store/data-lakes-store-authentication-using-azure-active-directory.md).
-- További információ [fájlrendszer-műveleteket a Azure Data Lake Store REST API használatával](~/articles/data-lake-store/data-lake-store-data-operations-rest-api.md) vagy a [WebHDFS fájlrendszer API-k](https://docs.microsoft.com/rest/api/datalakestore/webhdfs-filesystem-apis.md).
+- További információ [fájlrendszer-műveleteket a Azure Data Lake Store REST API használatával](~/articles/data-lake-store/data-lake-store-data-operations-rest-api.md) vagy a [WebHDFS fájlrendszer API-k](https://docs.microsoft.com/rest/api/datalakestore/webhdfs-filesystem-apis).
 - További információ [hozzáférés-vezérlés a Data Lake Store](~/articles/data-lake-store/data-lake-store-access-control.md).
 
 Az alábbi Megjegyzések szakasz segítségével visszajelzést, és segítsen pontosítsa és a tartalom.

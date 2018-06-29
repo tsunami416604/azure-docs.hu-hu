@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/01/2017
 ms.author: TomSh
-ms.openlocfilehash: 44abf7a4fc24893146179b34d3357f54450decab
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 27f6ccadaa89042ebced759ac3040b5b79e1f8f8
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34365144"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37051525"
 ---
 # <a name="azure-database-security-overview"></a>Azure-adatbázis biztonsági áttekintése
 
@@ -69,7 +69,7 @@ Az adatbázis biztonságossá több óvintézkedéseket is igénybe vehet. Péld
 
 Egy megoldás, titkosíthatja a bizalmas adatokat az adatbázisban, és a tanúsítvánnyal az adatok titkosításához használt kulcs védelme. Ez a megoldás megakadályozza, hogy ezek a kulcsok az adatokat, de ilyen védelemre tervezett kell lennie.
 
-Ez a probléma, SQL Server és SQL-adatbázisok támogatása megoldására [átlátható adattitkosítás](https://docs.microsoft.com/sql/relational-databases/securityrecryption/transparent-data-encryption-tde). Átlátható adattitkosítás titkosítja az SQL Server és SQL-adatbázis az adatfájlok, inaktív adatok titkosítása néven ismert.
+Ez a probléma, SQL Server és SQL-adatbázisok támogatása megoldására [átlátható adattitkosítás](https://docs.microsoft.com/en-us/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql?view=azuresqldb-current&viewFallbackFrom=sql-server-2017). Átlátható adattitkosítás titkosítja az SQL Server és SQL-adatbázis az adatfájlok, inaktív adatok titkosítása néven ismert.
 
 Átlátható adattitkosítás abban a fenyegetését, hogy a rosszindulatú tevékenységhez. Valós idejű titkosítási és visszafejtési az adatbázis, a társított biztonsági másolatok és a tranzakciós naplófájlok nyugalmi végrehajtása anélkül, hogy az alkalmazást módosítani kellene.  
 

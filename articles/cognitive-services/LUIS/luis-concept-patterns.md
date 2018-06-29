@@ -10,12 +10,12 @@ ms.technology: luis
 ms.topic: article
 ms.date: 06/08/2018
 ms.author: v-geberr
-ms.openlocfilehash: 58bfae51fda10d14d9b1c4ea34cc10345d9a90ac
-ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
+ms.openlocfilehash: c3c0d12bbbeec85d2cbf0daead49ee16ca7728fb
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/22/2018
-ms.locfileid: "36318058"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37046258"
 ---
 # <a name="patterns-improve-prediction-accuracy"></a>Minták előrejelzési pontosság növeléséhez.
 Minták pontosság növeléséhez, ha több utterances nagyon hasonló készültek. A minta biztosítva a utterance, LUIS lehet a magas megbízhatósági előrejelzését. 
@@ -42,6 +42,9 @@ Minták előrejelzés technológiák vegyesen használni. Egy olyan sablon utter
 
 ## <a name="patterns-do-not-improve-entity-detection"></a>Minták növelhető az entitás észlelése
 Pedig minták entitások igényelnek, akkor a minta nem működik a észlelésére az entitás. A minta csak arra szolgál, hogy súgó leképezések és szerepköröket előrejelzését.  
+
+## <a name="patterns-use-entity-roles"></a>Minták entitás szerepkörök használatával
+Ha két vagy több entitás bankkártyaszám összefüggéseikben való kapcsolódó, a minták entitás használható [szerepkörök](luis-concept-roles.md) környezetfüggő-entitások kapcsolatos információkat. Ez a hierarchikus gyermekek egyenértékűek, de **csak** minták érhető el. 
 
 ## <a name="prediction-scores-with-and-without-patterns"></a>Előrejelzés pontszámok rendelkező és anélküli minták
 Elegendő példa utterances tekintve LUIS lenne növelheti a előrejelzés abban, hogy mintákat nélkül. Minták növelje az vetett bizalmat pontszám annyi utterances megadása nélkül.  
@@ -92,7 +95,7 @@ Tegyük fel például, van egy mintát tartalmazó mindkét választható szinta
 
 Fontolja meg a minta "[keresése] e-mail vonatkozó {} [személytől {}]". A következő utterances a **tulajdonos** és **személy** entitást ki kell olvasni a helyes és helytelen:
 
-|utterance|Entitás|Megfelelő kivonása|
+|Kimondott szöveg|Entitás|Megfelelő kivonása|
 |--|--|:--:|
 |a e-mailekhez kapcsolatos kutya Chris|tulajdonos kutya =<br>személy = Chris|✔|
 |e-mailben a La Mancha man kapcsolatos|tulajdonos a man =<br>személy La Mancha =|X|

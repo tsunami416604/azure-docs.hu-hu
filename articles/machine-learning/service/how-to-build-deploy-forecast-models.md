@@ -3,18 +3,18 @@ title: Hozza létre, és központi telepítése egy Azure Machine Learning csoma
 description: Megtudhatja, hogyan létre, betanítását, tesztelése és telepítése az Azure Machine Learning csomagot használ előrejelzés előrejelzési modell.
 services: machine-learning
 ms.service: machine-learning
-ms.component: service
+ms.component: core
 ms.topic: conceptual
 ms.reviewer: jmartens
 ms.author: mattcon
 author: matthewconners
 ms.date: 05/07/2018
-ms.openlocfilehash: 0891f49da479b4209c305ebb532b053d85a7b2a6
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 320a7cf4a34657138c9096cdc4b573170be376e9
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34833529"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37036172"
 ---
 # <a name="build-and-deploy-forecasting-models-with-azure-machine-learning"></a>Hozza létre és telepítheti az előrejelzési modell Azure Machine Learning segítségével
 
@@ -336,7 +336,7 @@ print('{} time series in the data frame.'.format(nseries))
 
 Az adatok körülbelül 250 különböző kombinációkban store és a márka adatok keret tartalmazza. Minden egyes meghatározza az értékesítési saját idősor. 
 
-Használhatja a [TimeSeriesDataFrame](https://docs.microsoft.com/python/api/ftk.dataframets.timeseriesdataframe) osztály egyetlen struktúra használata több sorozat kényelmesen modellezésére a _bontásban_. A felbontása megadja a `store` és `brand` oszlopok.
+Használhatja a [TimeSeriesDataFrame](https://docs.microsoft.com/en-us/python/api/ftk.dataframe_ts.timeseriesdataframe?view=azure-ml-py-latest) osztály egyetlen struktúra használata több sorozat kényelmesen modellezésére a _bontásban_. A felbontása megadja a `store` és `brand` oszlopok.
 
 A különbség a között _bontásban_ és _csoport_ az, hogy felbontása mindig fizikailag kifejező, a valós életben, amíg a csoport nem kell lennie. Belső csomag funkciók csoportot hozhat létre a több idősorozatban egyetlen modellt, ha a felhasználó úgy véli, hogy ez a csoportosítás javítja a modell teljesítmény használni. Alapértelmezés szerint csoportja felbontása egyenlőnek kell lennie, és minden olyan aggregációs időközt egyetlen modellt lett tervezve. 
 
@@ -498,7 +498,7 @@ whole_tsdf.loc[pd.IndexSlice['1990-06':'1990-09', 2, 'dominicks'], ['Quantity']]
 
 
 
-A [TimeSeriesDataFrame.ts_report](https://docs.microsoft.com/en-us/python/api/ftk.dataframets.timeseriesdataframe#ts-report) függvény az adatsorozat adatainak időkeretet átfogó jelentést hoz létre. A jelentés tartalmazza a is egy általános adatok leírása, valamint idő adatsor adott statisztika. 
+A [TimeSeriesDataFrame.ts_report](https://docs.microsoft.com/en-us/python/api/ftk.dataframe_ts.timeseriesdataframe?view=azure-ml-py-latest#ts-report) függvény az adatsorozat adatainak időkeretet átfogó jelentést hoz létre. A jelentés tartalmazza a is egy általános adatok leírása, valamint idő adatsor adott statisztika. 
 
 
 ```python
@@ -887,14 +887,14 @@ whole_tsdf.head()
 
 ## <a name="preprocess-data-and-impute-missing-values"></a>Az adatok előfeldolgozása és a hiányzó értékeket imputálására
 
-Indítsa el az adatok felosztása tanítási és tesztelési meg a [ftk.tsutils.last_n_periods_split](https://docs.microsoft.com/python/api/ftk.tsutils) segédprogram függvény. A létrejövő készletet tesztelése tartalmazza a legutóbbi 40 minden idősorozat. 
+Indítsa el az adatok felosztása tanítási és tesztelési meg a [ftk.tsutils.last_n_periods_split](https://docs.microsoft.com/en-us/python/api/ftk.ts_utils?view=azure-ml-py-latest) segédprogram függvény. A létrejövő készletet tesztelése tartalmazza a legutóbbi 40 minden idősorozat. 
 
 
 ```python
 train_tsdf, test_tsdf = last_n_periods_split(whole_tsdf, 40)
 ```
 
-Alapszintű idő adatsorozat modellek összefüggő idősor igényelnek. Ellenőrizze, hogy az adatsorozat-rendszeres, ami azt jelenti, hogy rendelkezik-e egy idő index mintát rendszeres időközönként, használja a [check_regularity_by_grain](https://docs.microsoft.compython/api/ftk.dataframets.timeseriesdataframe) függvény.
+Alapszintű idő adatsorozat modellek összefüggő idősor igényelnek. Ellenőrizze, hogy az adatsorozat-rendszeres, ami azt jelenti, hogy rendelkezik-e egy idő index mintát rendszeres időközönként, használja a [check_regularity_by_grain](https://docs.microsoft.com/en-us/python/api/ftk.dataframe_ts.timeseriesdataframe?view=azure-ml-py-latest#check-regularity-by-grain) függvény.
 
 
 ```python
@@ -969,7 +969,7 @@ print(ts_regularity[ts_regularity['regular'] == False])
     [213 rows x 2 columns]
     
 
-Láthatja, hogy az adatsorozat (213 kívüli 249) többsége szabálytalan. Egy [imputálási átalakító](https://docs.microsoft.com/python/api/ftk.transforms.tsimputer.timeseriesimputer) hiányzó értékesítési mennyiség érték szükséges. Többféleképpen imputálási, amíg az az alábbi példakód egy lineáris köztes használja.
+Láthatja, hogy az adatsorozat (213 kívüli 249) többsége szabálytalan. Egy [imputálási átalakító](https://docs.microsoft.com/en-us/python/api/ftk.transforms.ts_imputer?view=azure-ml-py-latest) hiányzó értékesítési mennyiség érték szükséges. Többféleképpen imputálási, amíg az az alábbi példakód egy lineáris köztes használja.
 
 
 ```python
@@ -1035,7 +1035,7 @@ arima_model = Arima(oj_series_freq, arima_order)
 
 ### <a name="combine-multiple-models"></a>Több modellek egyesítése
 
-A [ForecasterUnion](https://docs.microsoft.com/python/api/ftk.models.forecasterunion.forecasterunion) négyzetgyökének lehetővé teszi több estimators kombinálhatja, és azokat egy kódsort a méretezési/előrejelzése.
+A [ForecasterUnion](https://docs.microsoft.com/en-us/python/api/ftk.models.forecaster_union.forecasterunion?view=azure-ml-py-latest) négyzetgyökének lehetővé teszi több estimators kombinálhatja, és azokat egy kódsort a méretezési/előrejelzése.
 
 
 ```python
@@ -1108,7 +1108,7 @@ univariate_model_errors
   <thead>
     <tr style="text-align: right;">
       <th></th>
-      <th>modelName</th>
+      <th>ModelName</th>
       <th>MAPE</th>
       <th>MedianAPE</th>
     </tr>
@@ -1249,7 +1249,7 @@ print(train_feature_tsdf.head())
 
  **RegressionForecaster**
 
-A [RegressionForecaster](https://docs.microsoft.com/python/api/ftk.models.regressionforecaster.regressionforecaster) függvény sklearn regressziós estimators becsomagolja, így azok a TimeSeriesDataFrame kell képezni. A burkolt forecaster is elhelyezi mindegyik csoportnál a nagybetűk tárolóban levő ugyanannak a modellnek. A forecaster is találhat egy modell hasonló tekintik, és együtt készletezett sorozat egy csoportja számára. Egy modell adatsorozat csoportjának gyakran az adatok hosszabb sorozatból javítására használja előrejelzések rövid adatsorozathoz. Ezek a modellek bármely más modellek a könyvtárban, amely támogatja a regressziós helyére is. 
+A [RegressionForecaster](https://docs.microsoft.com/en-us/python/api/ftk.models.regression_forecaster.regressionforecaster?view=azure-ml-py-latest) függvény sklearn regressziós estimators becsomagolja, így azok a TimeSeriesDataFrame kell képezni. A burkolt forecaster is elhelyezi mindegyik csoportnál a nagybetűk tárolóban levő ugyanannak a modellnek. A forecaster is találhat egy modell hasonló tekintik, és együtt készletezett sorozat egy csoportja számára. Egy modell adatsorozat csoportjának gyakran az adatok hosszabb sorozatból javítására használja előrejelzések rövid adatsorozathoz. Ezek a modellek bármely más modellek a könyvtárban, amely támogatja a regressziós helyére is. 
 
 
 ```python
@@ -1298,7 +1298,7 @@ all_errors.sort_values('MedianAPE')
   <thead>
     <tr style="text-align: right;">
       <th></th>
-      <th>modelName</th>
+      <th>ModelName</th>
       <th>MAPE</th>
       <th>MedianAPE</th>
     </tr>

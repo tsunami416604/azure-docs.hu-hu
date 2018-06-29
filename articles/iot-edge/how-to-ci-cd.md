@@ -4,28 +4,28 @@ description: A folyamatos integrációt és Azure IoT szegély folyamatos üzemb
 author: shizn
 manager: ''
 ms.author: xshi
-ms.date: 04/30/2018
+ms.date: 06/27/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 5fbac725894d01b2dc622d3542f865a66b240743
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 62d8d770f6b4c3a62a2395eb8c1505dbc3835c28
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "36333776"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37047455"
 ---
-# <a name="continuous-integration-and-continuous-deployment-to-azure-iot-edge---preview"></a>Folyamatos integrációt és folyamatos üzembe helyezés Azure IoT szegélyhez – előzetes
-Ez az oktatóanyag bemutatja, hogyan használhatja a folyamatos integrációt és a folyamatos üzembe helyezési funkcióival Visual Studio Team Services (VSTS) és a Microsoft Team Foundation Server (TFS) hozhat létre, tesztelheti, és gyors és hatékony az alkalmazások központi telepítése a Az Azure IoT peremhálózati. 
+# <a name="continuous-integration-and-continuous-deployment-to-azure-iot-edge"></a>Folyamatos integrációt és Azure IoT szegélyhez folyamatos üzembe helyezés
 
-Az oktatóanyag során a következőket fogja elsajátítani:
-> [!div class="checklist"]
-> * Hozzon létre, és ellenőrizze, hogy szerepel egy minta IoT peremhálózati megoldás tartalmazó egység tesztek.
-> * A VSTS az Azure IoT Edge-kiterjesztés telepítése.
-> * Állítsa be a folyamatos integrációt (CI) a megoldás felépítéséhez és az egység tesztek futtatásához.
-> * Konfigurálhatja a folyamatos telepítést (CD) a megoldás üzembe helyezéséhez és válaszok megtekintése.
+Ez a cikk bemutatja, hogyan lehet a folyamatos integrációt és a Visual Studio Team Services (VSTS) és a Microsoft Team Foundation Server (TFS) folyamatos üzembe helyezési funkcióival létre, tesztelheti, és gyors és hatékony Azure alkalmazások központi telepítése Az IoT-Edge. 
 
-Az oktatóanyag elvégzéséhez 30 percig tart.
+Ebből a cikkből megtudhatja, hogyan:
+* Hozzon létre, és ellenőrizze, hogy szerepel egy minta IoT peremhálózati megoldás tartalmazó egység tesztek.
+* A VSTS az Azure IoT Edge-kiterjesztés telepítése.
+* Állítsa be a folyamatos integrációt (CI) a megoldás felépítéséhez és az egység tesztek futtatásához.
+* Konfigurálhatja a folyamatos telepítést (CD) a megoldás üzembe helyezéséhez és válaszok megtekintése.
+
+A cikkben ismertetett 30 percig tart.
 
 ![CI és a CD-ről](./media/how-to-ci-cd/cd.png)
 
@@ -82,13 +82,7 @@ Ebben a szakaszban egy minta IoT peremhálózati megoldás tartalmazó egység t
 
             static void Main(string[] args)
             {
-                // The Edge runtime gives us the connection string we need -- it is injected as an environment variable
-                string connectionString = Environment.GetEnvironmentVariable("EdgeHubConnectionString");
-
-                // Cert verification is not yet fully functional when using Windows OS for the container
-                bool bypassCertVerification = RuntimeInformation.IsOSPlatform(OSPlatform.Windows);
-                if (!bypassCertVerification) InstallCert();
-                Init(connectionString, bypassCertVerification).Wait();
+                Init().Wait();
 
                 // Wait until the app unloads or is cancelled
                 var cts = new CancellationTokenSource();
@@ -108,94 +102,55 @@ Ebben a szakaszban egy minta IoT peremhálózati megoldás tartalmazó egység t
             }
 
             /// <summary>
-            /// Add certificate in local cert store for use by client for secure connection to IoT Edge runtime
-            /// </summary>
-            static void InstallCert()
-            {
-                string certPath = Environment.GetEnvironmentVariable("EdgeModuleCACertificateFile");
-                if (string.IsNullOrWhiteSpace(certPath))
-                {
-                    // We cannot proceed further without a proper cert file
-                    Console.WriteLine($"Missing path to certificate collection file: {certPath}");
-                    throw new InvalidOperationException("Missing path to certificate file.");
-                }
-                else if (!File.Exists(certPath))
-                {
-                    // We cannot proceed further without a proper cert file
-                    Console.WriteLine($"Missing path to certificate collection file: {certPath}");
-                    throw new InvalidOperationException("Missing certificate file.");
-                }
-                X509Store store = new X509Store(StoreName.Root, StoreLocation.CurrentUser);
-                store.Open(OpenFlags.ReadWrite);
-                store.Add(new X509Certificate2(X509Certificate2.CreateFromCertFile(certPath)));
-                Console.WriteLine("Added Cert: " + certPath);
-                store.Close();
-            }
-            /// <summary>
-            /// Initializes the DeviceClient and sets up the callback to receive
+            /// Initializes the ModuleClient and sets up the callback to receive
             /// messages containing temperature information
             /// </summary>
-            static async Task Init(string connectionString, bool bypassCertVerification = false)
+            static async Task Init()
             {
-                Console.WriteLine("Connection String {0}", connectionString);
-
                 MqttTransportSettings mqttSetting = new MqttTransportSettings(TransportType.Mqtt_Tcp_Only);
-                // During dev you might want to bypass the cert verification. It is highly recommended to verify certs systematically in production
-                if (bypassCertVerification)
-                {
-                    mqttSetting.RemoteCertificateValidationCallback = (sender, certificate, chain, sslPolicyErrors) => true;
-                }
                 ITransportSettings[] settings = { mqttSetting };
 
                 // Open a connection to the Edge runtime
-                DeviceClient ioTHubModuleClient = DeviceClient.CreateFromConnectionString(connectionString, settings);
+                ModuleClient ioTHubModuleClient = await ModuleClient.CreateFromEnvironmentAsync(settings);
                 await ioTHubModuleClient.OpenAsync();
                 Console.WriteLine("IoT Hub module client initialized.");
 
                 // Register callback to be called when a message is received by the module
-                // await ioTHubModuleClient.SetImputMessageHandlerAsync("input1", PipeMessage, iotHubModuleClient);
-
-                // Read TemperatureThreshold from Module Twin Desired Properties
-                var moduleTwin = await ioTHubModuleClient.GetTwinAsync();
-                var moduleTwinCollection = moduleTwin.Properties.Desired;
-                try {
-                    temperatureThreshold = moduleTwinCollection["TemperatureThreshold"];
-                } catch(ArgumentOutOfRangeException) {
-                    Console.WriteLine("Proerty TemperatureThreshold not exist");
-                }
-
-                // Attach callback for Twin desired properties updates
-                await ioTHubModuleClient.SetDesiredPropertyUpdateCallbackAsync(onDesiredPropertiesUpdate, null);
-
-                // Register callback to be called when a message is received by the module
-                await ioTHubModuleClient.SetInputMessageHandlerAsync("input1", FilterMessages, ioTHubModuleClient);
+                await ioTHubModuleClient.SetInputMessageHandlerAsync("input1", FilterMessage, ioTHubModuleClient);
             }
 
-            static Task onDesiredPropertiesUpdate(TwinCollection desiredProperties, object userContext)
+            /// <summary>
+            /// This method is called whenever the module is sent a message from the EdgeHub. 
+            /// It just pipe the messages without any change.
+            /// It prints all the incoming messages.
+            /// </summary>
+            static async Task<MessageResponse> FilterMessage(Message message, object userContext)
             {
-                try
+                int counterValue = Interlocked.Increment(ref counter);
+
+                var moduleClient = userContext as ModuleClient;
+                if (moduleClient == null)
                 {
-                    Console.WriteLine("Desired property change:");
-                    Console.WriteLine(JsonConvert.SerializeObject(desiredProperties));
-
-                    if (desiredProperties["TemperatureThreshold"] != null)
-                        temperatureThreshold = desiredProperties["TemperatureThreshold"];
-
+                    throw new InvalidOperationException("UserContext doesn't contain " + "expected values");
                 }
-                catch (AggregateException ex)
+
+                byte[] messageBytes = message.GetBytes();
+                string messageString = Encoding.UTF8.GetString(messageBytes);
+                Console.WriteLine($"Received message: {counterValue}, Body: [{messageString}]");
+
+                var filteredMessage = filter(message);
+
+                if (filteredMessage != null && !string.IsNullOrEmpty(messageString))
                 {
-                    foreach (Exception exception in ex.InnerExceptions)
+                    var pipeMessage = new Message(messageBytes);
+                    foreach (var prop in message.Properties)
                     {
-                        Console.WriteLine();
-                        Console.WriteLine("Error when receiving desired property: {0}", exception);
+                        pipeMessage.Properties.Add(prop.Key, prop.Value);
                     }
+                    await moduleClient.SendEventAsync("output1", pipeMessage);
+                    Console.WriteLine("Received message sent");
                 }
-                catch (Exception ex)
-                {
-                    Console.WriteLine();
-                    Console.WriteLine("Error when receiving desired property: {0}", ex.Message);
-                }
-                return Task.CompletedTask;
+                return MessageResponse.Completed;
             }
 
             public static Message filter(Message message)
@@ -223,42 +178,6 @@ Ebben a szakaszban egy minta IoT peremhálózati megoldás tartalmazó egység t
                     return filteredMessage;
                 }
                 return null;
-            }
-
-            static async Task<MessageResponse> FilterMessages(Message message, object userContext)
-            {
-                try
-                {
-                    DeviceClient deviceClient = (DeviceClient)userContext;
-
-                    var filteredMessage = filter(message);
-                    if (filteredMessage != null)
-                    {
-                        await deviceClient.SendEventAsync("output1", filteredMessage);
-                    }
-
-                    // Indicate that the message treatment is completed
-                    return MessageResponse.Completed;
-                }
-                catch (AggregateException ex)
-                {
-                    foreach (Exception exception in ex.InnerExceptions)
-                    {
-                        Console.WriteLine();
-                        Console.WriteLine("Error in sample: {0}", exception);
-                    }
-                    // Indicate that the message treatment is not completed
-                    var deviceClient = (DeviceClient)userContext;
-                    return MessageResponse.Abandoned;
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine();
-                    Console.WriteLine("Error in sample: {0}", ex.Message);
-                    // Indicate that the message treatment is not completed
-                    DeviceClient deviceClient = (DeviceClient)userContext;
-                    return MessageResponse.Abandoned;
-                }
             }
         }
     }
@@ -404,7 +323,7 @@ Ez a szakasz során létrehoz egy build-definíciót, amely a módosítások a m
 
     ![IoT Edge](./media/how-to-ci-cd/add-azure-iot-edge.png)
 
-1. Az első Azure IoT peremhálózati feladat, frissítse a **megjelenített név** való **modul készítse el és leküldéses**, és a a **művelet** legördülő listában válassza ki **hozza létre, és leküldéses**. Az a **Module.json fájl** szövegmezőhöz felvétele alatti elérési utat. Válassza a **tároló beállítástípus**, ellenőrizze, hogy konfigurálja, és válassza ki ugyanazt a beállításjegyzékben a kódban. Ez a feladat elkészíti és a modulok leküldéses a megoldás és a megadott tároló beállításjegyzék közzététele. 
+1. Az első Azure IoT peremhálózati feladat, frissítse a **megjelenített név** való **modul készítse el és leküldéses**, és a a **művelet** legördülő listában válassza ki **hozza létre, és leküldéses**. Az a **Module.json fájl** szövegmezőhöz felvétele alatti elérési utat. Válassza a **tároló beállítástípus**, ellenőrizze, hogy konfigurálja, és válassza ki ugyanazt a beállításjegyzékben a kódban. Ez a feladat elkészíti és a modulok leküldéses a megoldás és a megadott tároló beállításjegyzék közzététele. Ha a modulok különböző nyilvántartó leküldött, rendelkezhet több **modul készítse el és leküldéses** feladatok.
 
     ```
     **/module.json
@@ -449,16 +368,5 @@ Igen IoT peremeszközök telepítésekor nincsenek három fő környezetekben.
 
 ## <a name="next-steps"></a>További lépések
 
-Ez az oktatóanyag bemutatja, hogyan használhatja a folyamatos integrációt és a folyamatos üzembe helyezési funkcióival VSTS vagy TFS. 
-
 * IoT peremhálózati telepítését megértéséhez [megértéséhez IoT peremhálózati telepítések egyetlen eszközökhöz vagy léptékű](module-deployment-monitoring.md)
 * A létrehozása, frissítése vagy törlése a központi telepítés lépéseit ismerteti [központi telepítése és figyelése IoT peremhálózati modulok léptékű](how-to-deploy-monitor.md).
-
-
-
-
-
-
-
-
-

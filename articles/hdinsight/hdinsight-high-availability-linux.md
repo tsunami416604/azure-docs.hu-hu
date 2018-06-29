@@ -15,12 +15,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 03/22/2018
 ms.author: larryfr
-ms.openlocfilehash: 974ed70fbda88dfcb775e021474583f7afb0576b
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 835e649959164aee5cc8edb1f2e34170d8a321f1
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31404960"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37046679"
 ---
 # <a name="availability-and-reliability-of-hadoop-clusters-in-hdinsight"></a>A HDInsight-beli Hadoop-fürtök rendelkezésre állása és megbízhatósága
 
@@ -38,7 +38,7 @@ HDInsight-fürtök csomópontjai Azure virtuális gépek segítségével lehet l
 > [!NOTE]
 > A fürt típusa nem minden csomópont-típusok használhatók. Például egy Hadoop-fürt típusa nem rendelkezik egyetlen Nimbus csomópontot. A HDInsight-fürttípusok által használt csomópontok további információkért lásd: a fürt típusok szakasza a [hdinsight létrehozása Linux-alapú Hadoop-fürtök](hdinsight-hadoop-provision-linux-clusters.md#cluster-types) dokumentum.
 
-### <a name="head-nodes"></a>HEAD csomópontok
+### <a name="head-nodes"></a>Átjárócsomópontok
 
 Ahhoz, hogy a magas rendelkezésre állású Hadoop szolgáltatásokat, a HDInsight két átjárócsomópontokkal biztosít. Mindkét átjárócsomópontokkal egyidejűleg aktív és a HDInsight-fürtön belül futnak. Egyes szolgáltatások, például a HDFS vagy YARN, egy adott időpontban csak "active", egy központi csomóponton. Más szolgáltatásokon, például a hiveserver2-n vagy a Hive Metaadattárhoz aktívak mindkét központi csomóponton egyidejűleg.
 
@@ -51,7 +51,7 @@ HEAD csomópontok (és más csomópontok a Hdinsightban) rendelkezik egy numerik
 
 Nimbus csomópont alatt futó Storm-fürtökkel érhetők el. A Nimbus csomópontot ellátni hasonló a Hadoop JobTracker terjesztése és feldolgozási munkavégző csomópontokhoz átívelő figyelésére is alkalmas. A HDInsight két Nimbus csomóponttal rendelkezik a Storm-fürtök
 
-### <a name="zookeeper-nodes"></a>Zookeeper csomópontok
+### <a name="zookeeper-nodes"></a>Zookeeper-csomópontok
 
 [ZooKeeper](http://zookeeper.apache.org/) csomópontok használt fő szolgáltatást az átjárócsomópontokkal vezető választás. Akkor is használhatók biztosítását, hogy szolgáltatások, a adatcsomópontokat (munkavégző) és az átjárók tudja, hogy mely átjárócsomópont szolgáltatás főkulcsának aktív. Alapértelmezés szerint a HDInsight nyújt három ZooKeeper csomópontok.
 
@@ -63,9 +63,9 @@ Munkavégző csomópontokhoz hajtsa végre a tényleges adatok elemzéséhez, am
 
 Egy élcsomópontot aktívan nem vesz részt a fürtön belül adatelemzés. Amikor olyan Hadoop fejlesztők vagy adatszakértőkön szolgál. Élcsomópont él, mint a fürt többi csomópontjának azonos Azure virtuális hálózatban, és közvetlenül hozzáférhet az összes csomóponton. Élcsomópont kritikus Hadoop-szolgáltatás vagy a feladatok távol erőforrások anélkül is használható.
 
-Az R Server on HDInsight jelenleg az egyetlen fürt típus, amely alapértelmezés szerint egy élcsomópontot biztosít. Az R Server on HDInsight, az élcsomópont használatos teszt R-kód helyileg a csomóponton a fürt elosztott feldolgozásra való továbbítás előtt.
+Jelenleg a HDInsight ML szolgáltatások csak akkor fürt, amely alapértelmezés szerint egy élcsomópontot biztosít. Az ML-szolgáltatások hdinsight élcsomópont használatos teszt R-kód helyileg a csomóponton a fürt elosztott feldolgozásra való továbbítás előtt.
 
-Egy élcsomópontot fürt típusa nem R Server használatáról információkért lásd: a [peremhálózati csomópontok használata a Hdinsightban](hdinsight-apps-use-edge-node.md) dokumentum.
+Tájékoztatást egy élcsomópontot más fürttípusok, tekintse meg a [peremhálózati csomópontok használata a Hdinsightban](hdinsight-apps-use-edge-node.md) dokumentum.
 
 ## <a name="accessing-the-nodes"></a>A csomópontok elérése
 

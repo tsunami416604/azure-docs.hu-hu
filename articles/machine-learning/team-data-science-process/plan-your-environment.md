@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/13/2017
 ms.author: deguhath
-ms.openlocfilehash: 16cc7c5841708b8b27cff4fcc7c93cdbb2fe0fa4
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 7754fccdfe8a2c4fad24f61fc22c722d2640ffa6
+ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34838333"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37064000"
 ---
 # <a name="how-to-identify-scenarios-and-plan-for-advanced-analytics-data-processing"></a>Forgatókönyvek azonosítása és a bővített analitika adatfeldolgozása
 Milyen erőforrásokat kell tervezett egy környezet beállításakor ehhez a dataset feldolgozási speciális elemzésekre? Ez a cikk megkönnyítő megválaszolandó kérdések sorát teszi fel javasolja a feladatok és a kapcsolódó erőforrások azonosítása a forgatókönyvéhez. A prediktív elemzés magas szintű lépések sorrendjének szemlélteti az [Mi az a csoport adatok tudományos folyamat (TDSP)?](overview.md). A lépések az adott forgatókönyvhöz kapcsolódó feladatok egy adott erőforráshoz van szükség. A forgatókönyv azonosításához fontos kérdések adatok logisztikai, jellemzők, ennek az adatkészletek és az eszközök, inkább az elemzést nyelvek minőségének vonatkoznak.
@@ -48,7 +48,7 @@ A logisztikai kérdéseket vonatkoznak a helyét a **adatforrás**, a **célhely
    
    * [Adatok betöltése az elemzés a tárolási környezetekben](ingest-data.md)
    * [A betanítási adatok importálása az Azure Machine Learning Studio a különféle adatforrásokból származó](../studio/import-data.md).
-4. **Az adatok rendszeres időközönként át vagy az áttelepítés során módosíthat nem kell?** Érdemes lehet használni az Azure Data Factory (ADF), ha adatokat folyamatosan telepíti át, különösen akkor, ha egy hibrid forgatókönyvben, amely hozzáfér a helyszíni és felhőalapú erőforrások van szó, vagy ha az adatok tranzakcióalapú van vagy módosítható, vagy az üzleti logika áttelepítendő során hozzá kell. További információkért lásd: [tárolt adatok mozgatása egy helyi SQL server az SQL Azure-bA az Azure Data Factoryvel](move-sql-azure-adf.md)
+4. **Az adatok rendszeres időközönként át vagy az áttelepítés során módosíthat nem kell?** Érdemes lehet használni az Azure Data Factory (ADF), ha adatokat folyamatosan telepíti át, különösen akkor, ha egy hibrid forgatókönyvben, amely hozzáfér a helyszíni és felhőalapú erőforrások van szó, vagy ha az adatok van tranzakcióalapú vagy kell módosítani vagy üzleti logikát, hozzá kell az áttelepítés alatt álló során. További információkért lásd: [tárolt adatok mozgatása egy helyi SQL server az SQL Azure-bA az Azure Data Factoryvel](move-sql-azure-adf.md)
 5. **Az adatok mekkora kell helyezni az Azure?** Rendkívül nagyméretű adatkészletek haladhatja meg a tárolási kapacitást az egyes környezetekben. Példa tanulmányozza a méretkorlátozásokról a Machine Learning Studio a következő szakaszban. Ebben az esetben az adatok minta az elemzés során is használható. Lefelé-minta egy adatkészlet különböző Azure-alapú környezetekben a részletekért lásd: [az adatokat az adatok tudományos folyamatban](sample-data.md).
 
 ## <a name="data-characteristics-questions-type-format-and-size"></a>Adatok jellemzőit kérdések: típusa, formátum és mérete
@@ -97,9 +97,9 @@ Az számos beállítások itt attól függően, hogy milyen nyelveket és fejles
    
    * [A Microsoft Azure Powershell](/powershell/azure/overview) -egy parancsfájl nyelvét, a parancsfájl nyelvének az Azure-erőforrások felügyeletéhez.
    * [Az Azure Machine Learning Studióban](../studio/what-is-ml-studio.md)
-   * [Fordulat elemzés](http://www.revolutionanalytics.com/revolution-r-open)
+   * [Fordulat elemzés](https://www.microsoft.com/sql-server/machinelearningserver)
    * [Rstudióból](http://www.rstudio.com)
-   * [Python Tools for Visual Studio](http://microsoft.github.io/PTVS/)
+   * [Python Tools for Visual Studio](http://aka.ms/ptvsdocs)
    * [Anaconda](https://www.continuum.io/why-anaconda)
    * [Jupyter notebookok](http://jupyter.org/)
    * [Microsoft Power BI](http://powerbi.microsoft.com)

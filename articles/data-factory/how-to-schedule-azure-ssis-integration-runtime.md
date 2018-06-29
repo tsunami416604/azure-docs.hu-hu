@@ -13,12 +13,12 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: craigg
-ms.openlocfilehash: 84d81dd9e1ef51a2a1705210cd7002a685bdf8fb
-ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
+ms.openlocfilehash: 3758b04fc9b5ecd5dc69c82a8bd07999a9f1074a
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36266821"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37050607"
 ---
 # <a name="how-to-start-and-stop-the-azure-ssis-integration-runtime-on-a-schedule"></a>Indítása és leállítása a Azure SSIS-integrációs futásidejű ütemezés szerint
 Ez a cikk ismerteti, hogyan ütemezése indítása és leállítása egy Azure SSIS-integráció futtatókörnyezetet (IR) Azure Automation és az Azure Data Factory használatával. Egy Azure SSIS (SQL Server Integration Services) integrációs futásidejű fut (IR) van társítva költségekkel. Ezért általában futtatni kívánt az infravörös csak akkor, ha SSIS-csomagok futtatásához az Azure-ban, és állítsa le az infravörös, ha már nincs szükség van szüksége. A Data Factory felhasználói felületén vagy az Azure PowerShell [manuálisan indítsa el, vagy állítsa le az Azure SSIS-IR](manage-azure-ssis-integration-runtime.md)).
@@ -34,10 +34,6 @@ Ebben a cikkben leírt magas szintű lépései a következők:
 3. **A forgatókönyv két webhook létrehozása**, egyet a START műveletet, a másik pedig a STOP műveletet. A Data Factory-folyamathoz webes tevékenységek konfigurálásakor használhatja a webhook URL-címei. 
 4. **Hozzon létre a Data Factory-folyamathoz**. A folyamat létrehozása három tevékenységek áll. Az első **webes** tevékenység hív meg elindítani a Azure SSIS infravörös első webhook A **tárolt eljárás** tevékenység fut egy SQL-parancsfájl, amely futtatja a SSIS-csomagot. A második **webes** tevékenység leállítja az Azure SSIS infravörös Egy SSIS-csomagot a Data Factory-folyamathoz meghívása a tárolt eljárási tevékenység használatával kapcsolatos további információkért lásd: [meghívni egy SSIS-csomag](how-to-invoke-ssis-package-stored-procedure-activity.md). Ezután a létrehozott ütemezés futtatásához megadott ütemben folyamat ütemezéséhez.
 
-> [!NOTE]
-> Ez a cikk a Data Factory 2. verziójára vonatkozik, amely jelenleg előzetes verzióban érhető el. A Data Factory szolgáltatásnak, amely általánosan elérhető (GA), 1 verziójának használatakor lásd [meghívása SSIS-csomagok használata tárolt eljárási tevékenység az 1-es](v1/how-to-invoke-ssis-package-stored-procedure-activity.md).
-
- 
 ## <a name="prerequisites"></a>Előfeltételek
 Ha egy Azure SSIS-integrációs futásidejű már még nem létesített, építi ki a következő témakör utasításait: a [oktatóanyag](tutorial-create-azure-ssis-runtime-portal.md). 
 
@@ -254,7 +250,7 @@ Létrehozott, és tesztelje a folyamatot, egy ütemezést létrehozni, és rende
       - Kattintson az **Új létrehozása** elemre, és adja meg az erőforráscsoport nevét.   
          
       Az erőforráscsoportokkal kapcsolatos információkért tekintse meg a [Using resource groups to manage your Azure resources](../azure-resource-manager/resource-group-overview.md) (Erőforráscsoportok használata az Azure-erőforrások kezeléséhez) című cikket.  
-4. Válassza a **V2 (előzetes verzió)** értéket a **verzió** esetén.
+4. Válassza ki **V2** a a **verzió**.
 5. Válassza ki a Data Factory **helyét**. A listában csak az adat-előállítók létrehozását támogató helyek jelennek meg.
 6. Válassza a **Rögzítés az irányítópulton** lehetőséget.     
 7. Kattintson a **Create** (Létrehozás) gombra.

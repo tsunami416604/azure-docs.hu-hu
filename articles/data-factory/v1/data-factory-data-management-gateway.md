@@ -14,16 +14,16 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: d28d25b74ce46c0323b01670bfdb639c02b92d8a
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 67b8e35f0ddafd0a39bf29757927f4ace6230547
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "36335805"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37048917"
 ---
 # <a name="data-management-gateway"></a>Adatkezelési átjáró
 > [!NOTE]
-> Ez a cikk a Data Factory általánosan elérhető 1. verziójára vonatkozik. Lásd a 2-es verziójának a Data Factory szolgáltatásnak, amely jelenleg előzetes verzióban érhető, használatakor [önállóan üzemel a 2-es integrációs futásidejű](../create-self-hosted-integration-runtime.md). 
+> Ez a cikk a Data Factory 1 verziójára vonatkozik. A Data Factory szolgáltatásnak aktuális verziójának használatakor lásd [önállóan üzemel a integrációs futásidejű](../create-self-hosted-integration-runtime.md). 
 
 > [!NOTE]
 > Az adatkezelési átjáró Self-hosted integrációs futásidejű, most már rebranded.  
@@ -288,12 +288,12 @@ Akkor is tiltása/engedélyezése az automatikus frissítési szolgáltatás a k
     ```PowerShell
     .\IntegrationRuntimeAutoUpdateToggle.ps1 -on  
     ```
-[Több csomópontos magas rendelkezésre állású és méretezhető átjáró (előzetes verzió)](data-factory-data-management-gateway-high-availability-scalability.md)
+[Több csomópontos magas rendelkezésre állású és méretezhető átjáró](data-factory-data-management-gateway-high-availability-scalability.md)
 1. Indítsa el a Windows Powershellt az átjárót működtető gépen.
 2. Váltás a C:\Program Files\Microsoft integrációs Runtime\3.0\PowerShellScript\ mappába.
 3. Futtassa a következő parancs futtatásával kapcsolja be az automatikus frissítés kikapcsolása (Letiltás) szolgáltatás.   
 
-    Átjáró (előzetes verzió) magas rendelkezésre állás szolgáltatással egy extra AuthKey paraméter megadása kötelező.
+    Átjáró magas rendelkezésre állás szolgáltatással egy extra AuthKey paraméter megadása kötelező.
     ```PowerShell
     .\IntegrationRuntimeAutoUpdateToggle.ps1  -off -AuthKey <your auth key>
     ```

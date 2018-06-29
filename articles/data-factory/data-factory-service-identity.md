@@ -12,19 +12,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/15/2018
 ms.author: jingwang
-ms.openlocfilehash: f4ce76385897c24bd5259d5a39aa1756769fe2aa
-ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
+ms.openlocfilehash: ba965b0610525f66c24dd6d5bad3fd113a6b6758
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36284480"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37050865"
 ---
 # <a name="azure-data-factory-service-identity"></a>Az Azure Data Factory-szolgáltatási identitás
 
 Ez a cikk segít megérteni a data factory szolgáltatásidentitás Újdonságok és annak működéséről.
-
-> [!NOTE]
-> Ez a cikk a Data Factory 2. verziójára vonatkozik, amely jelenleg előzetes verzióban érhető el. A Data Factory szolgáltatásnak, amely általánosan elérhető (GA), 1 verziójának használatakor lásd [adat-előállító version1 dokumentációja](v1/data-factory-introduction.md).
 
 ## <a name="overview"></a>Áttekintés
 
@@ -39,7 +36,7 @@ Data factory szolgáltatásidentitás a következő két szolgáltatás előnyö
 
 Data factory szolgáltatásidentitás jön létre az alábbiak szerint:
 
-- Adat-előállító keresztül létrehozásakor **az Azure portál vagy PowerShell**, szolgáltatásidentitás mindig automatikusan létrejön az ADF V2 nyilvános előzetes verzió óta.
+- Adat-előállító keresztül létrehozásakor **az Azure portál vagy PowerShell**, szolgáltatásidentitás mindig automatikusan létrejön.
 - Adat-előállító keresztül létrehozásakor **SDK**, szolgáltatásidentitás hozható létre, csak akkor, ha megadja "identitás új FactoryIdentity() =" a gyári objektum létrehozásához. A következő példa [.NET gyors üzembe helyezés – adat-előállító létrehozása](quickstart-create-data-factory-dot-net.md#create-a-data-factory).
 - Adat-előállító keresztül létrehozásakor **REST API**, szolgáltatásidentitás hozható létre, csak akkor, ha a kérés törzsében megadott "identity" szakasz. A következő példa [REST-gyors üzembe helyezés – adat-előállító létrehozása](quickstart-create-data-factory-rest-api.md#create-a-data-factory).
 

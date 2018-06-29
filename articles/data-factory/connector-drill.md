@@ -1,5 +1,5 @@
 ---
-title: Adatok másolása az Azure Data Factory (előzetes verzió) használatával részletezési |} Microsoft Docs
+title: Adatok másolása az Azure Data Factory használatával részletezési |} Microsoft Docs
 description: 'Útmutató: adatok másolása részletezési támogatott fogadó adattárolókhoz egy Azure Data Factory-folyamat a másolási tevékenység használatával.'
 services: data-factory
 documentationcenter: ''
@@ -13,19 +13,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/15/2018
 ms.author: jingwang
-ms.openlocfilehash: 6e03ad282717c6527cd7b5952949d90399450224
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 31dcae5dde53a9a3933c15dcf3b6869ec943cbea
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "36337575"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37050284"
 ---
-# <a name="copy-data-from-drill-using-azure-data-factory-preview"></a>Adatok másolása az Azure Data Factory (előzetes verzió) használatával részletezés
+# <a name="copy-data-from-drill-using-azure-data-factory"></a>Adatok másolása az Azure Data Factory használatával részletezés
 
 Ez a cikk a másolási tevékenység használható az Azure Data Factory adatokat másolni részletezési módját ismerteti. Buildekről nyújtanak a [másolása tevékenység áttekintése](copy-activity-overview.md) cikket, amely megadja a másolási tevékenység általános áttekintést.
-
-> [!NOTE]
-> Ez a cikk a Data Factory 2. verziójára vonatkozik, amely jelenleg előzetes verzióban érhető el. A Data Factory szolgáltatásnak, amely általánosan elérhető (GA), 1 verziójának használatakor lásd [másolási tevékenység során a V1](v1/data-factory-data-movement-activities.md).
 
 > [!IMPORTANT]
 > Ez az összekötő jelenleg előzetes verzió. Próbálja ki, és küldjön visszajelzést. Ha függőséget szeretne felvenni a megoldásában található előzetes verziójú összekötőkre, lépjen kapcsolatba az [Azure-támogatással](https://azure.microsoft.com/support/).

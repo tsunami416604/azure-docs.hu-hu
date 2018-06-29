@@ -10,15 +10,17 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 06/20/2018
 ms.author: v-geberr
-ms.openlocfilehash: 8e04853e0044e045158642fea51c225378eb3ad6
-ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
+ms.openlocfilehash: 14c53bd25913922a0cd7cc438ad0fbe8b4663dd1
+ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/22/2018
-ms.locfileid: "36319054"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37061964"
 ---
-# <a name="prebuilt-domain-reference"></a>Előre elkészített útmutatója
-Ez a hivatkozás az előre elkészített tartományok gyűjteményei előre elkészített leképezések és LUIS kínál entitások információkat biztosít.
+# <a name="prebuilt-domain-reference"></a>Előre összeállított tartományhivatkozás
+Ez az útmutató információt nyújt a [előre elkészített tartományok](luis-how-to-use-prebuilt-domains.md), amely gyűjteményei előre elkészített leképezések és entitások LUIS kínál.
+
+[Egyéni tartományok](create-new-app.md), ellentétben nem leképezések és modellek kezdődhet. Egy egyéni modell bármely előre elkészített tartomány leképezések és entitások adhat hozzá.
 
 ## <a name="list-of-prebuilt-domains"></a>Előre elkészített tartományok listáját
 LUIS 20 előre elkészített tartományok kínál. 
@@ -41,7 +43,7 @@ LUIS 20 előre elkészített tartományok kínál.
 | Emlékeztető | Kezelési létrehozására, szerkesztésére és emlékeztetők keresése kapcsolódó kérelem.| hu-HU<br/> zh-CN |
 | RestaurantReservation | Kezelési kérelem éttermi foglalások kezelése.| hu-HU<br/> zh-CN |
 | Taxi | A taxiban foglalások kezelése.| hu-HU<br/> zh-CN |
-| Fordítása | A megadott nyelv fordítása szöveg.| hu-HU<br/> zh-CN |
+| Fordítás | A megadott nyelv fordítása szöveg.| hu-HU<br/> zh-CN |
 | TV | Televízió vezérlése.| hu-HU |
 | Közművek  | Kezelési kérelem, az adott sok tartományokban, például a "Súgó", "ismételje meg a", "kezdje újra a folyamatot."| hu-HU |
 | Időjárás | Időjárás-jelentések és előrejelzések beolvasásakor.| hu-HU<br/> zh-CN |
@@ -442,7 +444,7 @@ restart|
 | RouteAvoidanceCriteria | Meghatározott útvonalakat például véletlenül, építmények vagy autópályadíjak elkerülhető elkerülése szempontjai | Autópályadíjak <br/>Építmények<br/>Útvonal 11|
 | ServiceProvided | Ez az üzleti vagy feladat, például a hely által biztosított szolgáltatás hó plowing, környezetével. | feladat<br/>szerelő<br/>plumber|
 | TransportationCompany | A szállítási szolgáltató neve.|Amtrak<br/>Acela<br/>Greyhound|
-| TransportationType | A szállítási típusa.|Busz<br/>Tanítás<br/>Vezetés|
+| TransportationType | A szállítási típusa.|Busz<br/>Betanítás<br/>Vezetés|
 
 ## <a name="reminder"></a>Emlékeztető 
 A felszólítás tartományi biztosítja a leképezések és identitások létrehozására, szerkesztésére és emlékeztetők keresése.
@@ -523,9 +525,9 @@ Cancel my Uber
 | PlaceName | Helyi üzleti, éttermi, nyilvános vonzás vagy intézmény neve. |Központi Park<br/>Safeway<br/>Walmart|
 | PlaceType| A hely taxiban foglalható le a kérelem típusa.|Étterem<br/>Opera<br/>film|
 | TransportationCompany | A szállítási szolgáltató neve.|Amtrak<br/>Acela<br/>Greyhound|
-| TransportationType | A szállítási típusa.|Busz<br/>Tanítás<br/>Vezetés|
+| TransportationType | A szállítási típusa.|Busz<br/>Betanítás<br/>Vezetés|
 
-## <a name="translate"></a>Fordítása 
+## <a name="translate"></a>Fordítás 
 A fordítás tartomány leképezések és a kapcsolódó szöveges cél nyelvre fordítása entitások biztosít.
 
 ### <a name="examples"></a>Példák
@@ -538,7 +540,7 @@ Translate this sentence to English
 ### <a name="intents"></a>Leképezések
 | Leképezési neve | Leírás | Példák |
 | ---------------- |-----------------------|----|
-| Fordítása| A szöveg más nyelven történő fordításához.|Francia fordítás<br/>Német hello fordítása|
+| Fordítás| A szöveg más nyelven történő fordításához.|Francia fordítás<br/>Német hello fordítása|
 
 
 ### <a name="entities"></a>Entitások

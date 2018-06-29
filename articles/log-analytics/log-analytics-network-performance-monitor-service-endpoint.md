@@ -14,18 +14,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/20/2018
 ms.author: abshamsft
-ms.openlocfilehash: 05abd943d85fcdd709143bf7fce221dcdfb86011
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: f6196c1403ded7bb8a72ee5483c2c2056b0e8020
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36215099"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37030709"
 ---
-# <a name="service-endpoint-monitor"></a>Szolgáltatási végpont-figyelő
+# <a name="service-connectivity-monitor"></a>Szolgáltatás-összekapcsolhatósági monitor
 
-A végpont-figyelő szolgáltatás funkcióval a [hálózati Teljesítményfigyelő](log-analytics-network-performance-monitor.md) figyelése a tetszőleges végpontot, amely egy nyitott TCP-porttal rendelkezik hálózati kapcsolattal. Ilyen végpontok közé tartoznak a webhelyek, SaaS-alkalmazásokhoz, PaaS alkalmazások és SQL-adatbázisok. 
+A szolgáltatás kapcsolódási figyelő funkcióval a [hálózati Teljesítményfigyelő](log-analytics-network-performance-monitor.md) figyelése a tetszőleges végpontot, amely egy nyitott TCP-porttal rendelkezik hálózati kapcsolattal. Ilyen végpontok közé tartoznak a webhelyek, SaaS-alkalmazásokhoz, PaaS alkalmazások és SQL-adatbázisok. 
 
-A végpont-figyelő szolgáltatás a következő feladatokat végezheti el: 
+A szolgáltatás kapcsolódási figyelőjét a következő feladatokat végezheti el: 
 
 - A hálózati kapcsolattal az alkalmazások és a hálózati szolgáltatások több fiókirodákban, vagy a helyek figyelése. Alkalmazások és hálózati szolgáltatások közé tartoznak az Office 365, a Dynamics CRM, a belső üzleti alkalmazások és az SQL-adatbázisok.
 - Az Office 365 szolgáltatáshoz figyelőt hálózati kapcsolatot és Dynamics 365 végpontok beépített tesztek használata. 
@@ -34,7 +34,7 @@ A végpont-figyelő szolgáltatás a következő feladatokat végezheti el:
 - A hálózaton, amelyek gyenge alkalmazásteljesítmény okozta a topológia-térképként egyes ugrások által közzétett várakozási megtekintésével interaktív területek azonosítása.
 
 
-![Szolgáltatási végpont-figyelő](media/log-analytics-network-performance-monitor/service-endpoint-intro.png)
+![Szolgáltatás-összekapcsolhatósági monitor](media/log-analytics-network-performance-monitor/service-endpoint-intro.png)
 
 
 ## <a name="configuration"></a>Konfiguráció 
@@ -55,11 +55,11 @@ netsh advfirewall firewall add rule name="NPMDICMPV4TimeExceeded" protocol="icmp
 netsh advfirewall firewall add rule name="NPMDICMPV6TimeExceeded" protocol="icmpv6:3,any" dir=in action=allow 
 ```
 
-### <a name="create-service-endpoint-monitor-tests"></a>Végpont-figyelő szolgáltatás tesztek létrehozása 
+### <a name="create-service-connectivity-monitor-tests"></a>Szolgáltatás kapcsolódási figyelő tesztek létrehozása 
 
 A tesztek figyelése szolgáltatásvégpontokra hálózati kapcsolat létrehozásához.
 
-1. Válassza ki a **végpont-figyelő szolgáltatás** fülre.
+1. Válassza ki a **kapcsolat Szolgáltatásfigyelő** fülre.
 2. Válassza ki **hozzáadása tesztelése**, és adja meg a teszt neve és leírása. 
 3. Válassza ki a teszt típusát:<br>
 
@@ -84,7 +84,7 @@ A tesztek figyelése szolgáltatásvégpontokra hálózati kapcsolat létrehozá
 
 ## <a name="walkthrough"></a>Útmutatás 
 
-A hálózati teljesítményt figyelő irányítópult nézet megnyitása. Ahhoz, hogy a különböző tesztek létrehozott állapotának összegzését, tekintse meg a **végpont-figyelő szolgáltatás** lap. 
+A hálózati teljesítményt figyelő irányítópult nézet megnyitása. Ahhoz, hogy a különböző tesztek létrehozott állapotának összegzését, tekintse meg a **kapcsolat Szolgáltatásfigyelő** lap. 
 
 ![Végpont-figyelő szolgáltatás lap](media/log-analytics-network-performance-monitor/service-endpoint-blade.png)
 

@@ -11,15 +11,15 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 06/25/2018
+ms.date: 06/27/2018
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 4b703f6d141005cf3cf29531a0586eebb61693a2
-ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
+ms.openlocfilehash: 8927b2a32956f73e75ac7b157ebad6bf6596ea88
+ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36754510"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37063629"
 ---
 # <a name="supported-scenarios-for-hana-large-instances"></a>Támogatott esetek nagy HANA-példányok
 Ez a dokumentum ismerteti a támogatott forgatókönyvek mellett az architektúra részleteiről a HANA nagy példányok (HLI) számára.
@@ -78,6 +78,22 @@ Szükség esetén további hálózati kártyák definiálhat a saját. Azonban a
 
 >[!NOTE]
 >További felületek, amelyek fizikai összeköttetések vagy ragasztás találhatja. A használt eset vegye figyelembe a fent említett felületek, a többi figyelmen kívül hagyja vagy vagy nem rendelkező mérsékelni kell.
+
+Az egységek két IP-címek hozzárendelve a terjesztési hasonlóan kell kinéznie:
+
+"A" Ethernet kell egy hozzárendelt IP-címet, amely a kiszolgáló IP-készlet címtartománya, a Microsoftnak küldött kívül esik. Az IP-cím alkalmazzák az operációs rendszer/etc/hosts kezelésével.
+
+"B" Ethernet egy hozzárendelt IP-címet az NFS-kommunikációhoz használt kell rendelkeznie. Ezért ezeknél a címeknél tegye **nem** kell annak érdekében, hogy a bérlő belül példányt forgalom etc/hosts kezelhetők.
+
+Két IP-címek hozzárendelve a panel-konfiguráció nem megfelelő HANA replikációs vagy HANA kibővített esetekben. Ha két IP-címtartományból csak, és meg szeretne ilyen konfiguráció alkalmazását, lépjen kapcsolatba az Azure szolgáltatásfelügyelet egy harmadik IP-cím beolvasása a harmadik SAP HANA VLAN van társítva. HANA nagy példány egységek három IP-címtartományból három hálózati portokra a következő használati szabályokat alkalmazza:
+
+- "A" Ethernet kell egy hozzárendelt IP-címet, amely a kiszolgáló IP-készlet címtartománya, a Microsoftnak küldött kívül esik. Ezért az IP-címet kell nem használható az/etc/hosts az operációs rendszer karbantartásához.
+
+- "B" Ethernet kell egy hozzárendelt IP-címet, amely az NFS-tárhelyre kommunikációra használja. Ezért az ilyen típusú cím nem fenn kell tartani a etc/hosts.
+
+- "C" Ethernet kizárólag használandó stb/gazdagépeken a különböző példányok közötti kommunikáció fenntartásához. Ezek a címek is használhatók lesznek az IP-cím HANA használ a csomópontok közötti konfigurációs kibővített HANA konfigurációk fenntartásához az IP-címeket.
+
+- Ethernet "D" kizárólag használandó hozzáférési STONITH eszköz támasztja. Ez akkor szükséges, ha HANA rendszer replikációs (HSR) konfigurálása és automatikus feladatátvételt, az operációs rendszer alapján SBD eszközön megvalósítására.
 
 
 ### <a name="storage"></a>Storage
@@ -221,6 +237,7 @@ Az előre a következő csatlakozási pontok le:
 - MCOS: a kötet mérete terjesztési adatbázis méretét a memóriában épül. Tekintse meg a [áttekintése és architektúra](https://docs.microsoft.com/en-us/azure/virtual-machines/workloads/sap/hana-overview-architecture) részből megtudhatja, milyen adatbázis méretét a memóriában multisid környezet használata támogatott.
 - A vész-Helyreállítási:: (megjelölve "HANA telepítéshez szükséges") konfigurált a kötetek és a csatlakozási pontok le az üzemi HANA-példány telepítése a vész-Helyreállítási HLI egység. 
 - A vész-Helyreállítási,:, logbackups, az adatokat a fürt megosztott kötetei ("Tárolóreplikálást" jelölésű) keresztül a munkakörnyezeti helyet a pillanatkép replikálódnak. Ezek a kötetek csatlakoztatva vannak, csak a feladatátvételi idő alatt. Tekintse meg a [vész-helyreállítási folyamattal feladatátvételi](https://docs.microsoft.com/en-us/azure/virtual-machines/workloads/sap/hana-overview-high-availability-disaster-recovery#disaster-recovery-failover-procedure) további részleteket.
+- Rendszerindító kötet a **i. osztály SKU típusú** vész-Helyreállítási csomópont replikálódik.
 
 
 ## <a name="4-single-node-with-dr-multipurpose"></a>4. A vész-Helyreállítási (Multipurpose) egyetlen csomópont
@@ -270,6 +287,7 @@ Az előre a következő csatlakozási pontok le:
 - A vész-Helyreállítási:: (megjelölve "HANA telepítéshez szükséges") konfigurált a kötetek és a csatlakozási pontok le az üzemi HANA-példány telepítése a vész-Helyreállítási HLI egység. 
 - A vész-Helyreállítási,:, logbackups, az adatokat a fürt megosztott kötetei ("Tárolóreplikálást" jelölésű) keresztül a munkakörnyezeti helyet a pillanatkép replikálódnak. Ezek a kötetek csatlakoztatva vannak, csak a feladatátvételi idő alatt. Tekintse meg a [vész-helyreállítási folyamattal feladatátvételi](https://docs.microsoft.com/en-us/azure/virtual-machines/workloads/sap/hana-overview-high-availability-disaster-recovery#disaster-recovery-failover-procedure) további részleteket. 
 - A vész-Helyreállítási:: az adatok, a logbackups, a napló, a QA-példány telepítése (a "QA példány telepítés" jelölésű) QA megosztott kötetek vannak beállítva.
+- Rendszerindító kötet a **i. osztály SKU típusú** vész-Helyreállítási csomópont replikálódik.
 
 ## <a name="5-hsr-with-stonith"></a>5. A STONITH HSR
  
@@ -378,6 +396,7 @@ Az előre a következő csatlakozási pontok le:
 - A vész-Helyreállítási:: (megjelölve "HANA telepítéshez szükséges") konfigurált a kötetek és a csatlakozási pontok le az üzemi HANA-példány telepítése a vész-Helyreállítási HLI egység. 
 - A vész-Helyreállítási,:, logbackups, az adatokat a fürt megosztott kötetei ("Tárolóreplikálást" jelölésű) keresztül a munkakörnyezeti helyet a pillanatkép replikálódnak. Ezek a kötetek csatlakoztatva vannak, csak a feladatátvételi idő alatt. Tekintse meg a [vész-helyreállítási folyamattal feladatátvételi](https://docs.microsoft.com/en-us/azure/virtual-machines/workloads/sap/hana-overview-high-availability-disaster-recovery#disaster-recovery-failover-procedure) további részleteket. 
 - A vész-Helyreállítási:: az adatok, a logbackups, a napló, a QA-példány telepítése (a "QA példány telepítés" jelölésű) QA megosztott kötetek vannak beállítva.
+- Rendszerindító kötet a **i. osztály SKU típusú** vész-Helyreállítási csomópont replikálódik.
 
 
 ## <a name="7-host-auto-failover-11"></a>7. Állomás automatikus feladatátvétel (1 + 1)
@@ -540,6 +559,7 @@ Az előre a következő csatlakozási pontok le:
 - /usr/SAP/SID /hana/shared/SID a szimbolikus hivatkozást.
 -  A vész-Helyreállítási:: (megjelölve "HANA telepítéshez szükséges") konfigurált a kötetek és a csatlakozási pontok le az üzemi HANA-példány telepítése a vész-Helyreállítási HLI egység. 
 - A vész-Helyreállítási,:, logbackups, az adatokat a fürt megosztott kötetei ("Tárolóreplikálást" jelölésű) keresztül a munkakörnyezeti helyet a pillanatkép replikálódnak. Ezek a kötetek csatlakoztatva vannak, csak a feladatátvételi idő alatt. Tekintse meg a [vész-helyreállítási folyamattal feladatátvételi](https://docs.microsoft.com/en-us/azure/virtual-machines/workloads/sap/hana-overview-high-availability-disaster-recovery#disaster-recovery-failover-procedure) további részleteket. 
+- Rendszerindító kötet a **i. osztály SKU típusú** vész-Helyreállítási csomópont replikálódik.
 
 
 ## <a name="next-steps"></a>További lépések

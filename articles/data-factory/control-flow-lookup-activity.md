@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/22/2018
+ms.date: 06/15/2018
 ms.author: shlo
-ms.openlocfilehash: 032b14051c5c2b06fa23ee67858706fada545967
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 25ed439674fcf7136e29034eb97e0652ae9ba111
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34618657"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37059065"
 ---
 # <a name="lookup-activity-in-azure-data-factory"></a>Az Azure Data Factory keresési tevékenység
 
@@ -26,9 +26,6 @@ Keresési tevékenység használható bármelyik az ADF-támogatott adatforrás 
 - Dinamikus meghatározásához mely objektumok (fájlok, táblák stb) működését a soron következő tevékenységek, helyett bekódolásának az objektum neve
 
 Keresési tevékenység olvashatja, és egy konfigurációs fájlban, konfigurációs táblázat vagy egy lekérdezés vagy tárolt eljárás végrehajtása eredményét tartalmát adja vissza.  Keresési tevékenység kimenetét a singleton értéke esetén egy további példányát vagy átalakítási tevékenység szerepel, illetve egy ForEach tevékenység szerepel, ha az attribútumok tömbjét.
-
-> [!NOTE]
-> Ez a cikk az Azure Data Factory 2. verziójára vonatkozik, amely jelenleg előzetes verzióban érhető el. Ha a Data Factory szolgáltatás általánosan elérhető 1. verzióját használja, lásd: [A Data Factory 1. verziójának dokumentációja](v1/data-factory-introduction.md).
 
 ## <a name="supported-capabilities"></a>Támogatott képességei
 

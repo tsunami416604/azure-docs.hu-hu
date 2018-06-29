@@ -13,26 +13,26 @@ ms.devlang: powershell
 ms.topic: conceptual
 ms.date: 01/19/2018
 ms.author: jingwang
-ms.openlocfilehash: 9608af734d39627435a81e1d853c2546eabcdb0f
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: bf91b1cb1e764c1350cead0c5dfb109b73e9dad3
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34623434"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37052715"
 ---
 # <a name="invoke-an-ssis-package-using-stored-procedure-activity-in-azure-data-factory"></a>Egy SSIS-csomagot, a tárolt eljárási tevékenység az Azure Data Factory meghívása
 Ez a cikk ismerteti, hogyan lehet meghívni egy SSIS-csomagot az Azure Data Factory-folyamat a tárolt eljárási tevékenység használatával. 
 
 > [!NOTE]
-> Ez a cikk vonatkozik 1 a Data Factory általánosan elérhető. Lásd a 2-es verziójának a Data Factory szolgáltatásnak, amely a nyilvános előzetes verziójához, használatakor [meghívása SSIS-csomagok használata a tárolt eljárási tevékenység a 2](../how-to-invoke-ssis-package-stored-procedure-activity.md).
+> Ez a cikk a Data Factory 1 verziójára vonatkozik. A Data Factory szolgáltatásnak aktuális verziójának használatakor lásd [meghívása SSIS-csomagok használata a tárolt eljárási tevékenység](../how-to-invoke-ssis-package-stored-procedure-activity.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 ### <a name="azure-sql-database"></a>Azure SQL Database 
-Ez a cikk a forgatókönyv, amelyen az SSIS-katalógus Azure SQL-adatbázis. Egy Azure SQL felügyelt példányát (előzetes verzió) is használhatja.
+Ez a cikk a forgatókönyv, amelyen az SSIS-katalógus Azure SQL-adatbázis. Egy Azure SQL adatbázis felügyelt példány (előzetes verzió) is használhatja.
 
 ### <a name="create-an-azure-ssis-integration-runtime"></a>Azure SSIS integrációs modul létrehozása
-Ha még nem rendelkezik a részletes utasításokat a következő, hozzon létre egy Azure-SSIS-integrációs futásidejű a [oktatóanyag: telepítése SSIS-csomagok](../tutorial-create-azure-ssis-runtime-portal.md). Egy adat-előállító létrehozása az Azure-SSIS-integrációs futásidejű 2-es verzióját, létre kell hoznia. 
+Ha még nem rendelkezik a részletes utasításokat a következő, hozzon létre egy Azure-SSIS-integrációs futásidejű a [oktatóanyag: telepítése SSIS-csomagok](../tutorial-create-azure-ssis-runtime-portal.md). 1-es verziójú adat-előállító nem hozhat létre egy Azure-SSIS-integráció futtatókörnyezetet. 
 
 ## <a name="azure-portal"></a>Azure Portal
 Ebben a szakaszban az Azure-portálon a tárolt eljárás tevékenység, amely hívja meg az SSIS-csomag létrehozása a Data Factory-folyamat használja.

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/20/2018
 ms.author: nitinme
-ms.openlocfilehash: 17ba4af006587dd1d34f61a0f5f77cbcd768fcf8
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: a53bc6459e431d855ba09cda59680c5d8698c488
+ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31410090"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37063257"
 ---
 # <a name="release-notes-for-hadoop-components-on-azure-hdinsight"></a>Az Azure HDInsight Hadoop-összetevők kibocsátási megjegyzései
 
@@ -27,6 +27,17 @@ Ez a cikk nyújt tájékoztatást a **legutóbbi** Azure HDInsight kiadás friss
 
 > [!IMPORTANT]
 > A Linux az egyetlen operációs rendszer, amely a HDInsight 3.4-es vagy újabb verziói esetében használható. További információkért lásd: [HDInsight versioning cikk](hdinsight-component-versioning.md).
+
+## <a name="notes-for-06272018---release-of-new-open-source-versions-adls-gen2-etc-on-hdinsight-36"></a>Új nyílt forráskódú verziók kiadása, a HDInsight 3.6 ADLS Gen2 stb. 06/27/2018 - megjegyzései
+HDInsight. június 2018 kiadása van kialakításában akár jelentős kiadási kell a nagy mennyiségű új frissítések és képességek adhatunk ügyfeleink az alábbiakban leírt módon. Olvassa el a [utáni](https://azure.microsoft.com/en-us/blog/enterprises-get-deeper-insights-with-hadoop-and-spark-updates-on-azure-hdinsight/) további részleteket.
+
+Az alábbiakban a emeli ki. Az ismert problémák stb., a részletes kibocsátási megjegyzéseket, a javított, olvassa el a [dokumentum](https://aka.ms/hdirelnotes).
+
+- **Frissítse a Hadoop és egyéb nyílt forráskódú projekteket** – mellett, hibajavításokat tartalmaz 1000 + között 20 + nyílt forráskódú projekteket, a frissítés a Spark (2.3) és Kafka (1.0) egy új verzióját tartalmazza.
+- **R Server 9.1 frissítés a Machine Learning szolgáltatás 9.3** – ebben a kiadásban azt ad adatelemzők és mérnökök és nyílt forráskódú fokozott algoritmikus innovációinak és könnyű használatának operationalization, az összes elérhető legjobb a kívánt nyelvet, Apache Spark sebessége. Ebben a kiadásban kibontása után a Python, a fürt névváltoztatás R Server ML szolgáltatásokhoz vezető támogatása az R Server biztosított képességeket. 
+- **Támogatja az Azure Data Lake tárolási Gen2** – HDInsight támogatja az Azure Data Lake tárolási Gen2 előzetes verziójára. Az elérhető régiók, az ügyfelek is egyet az ADLS Gen2 a HDInsight-fürtök egy tárolóként.
+- **HDInsight vállalati biztonsági csomag frissítések (előzetes verzió)** – (előzetes verzió) virtuális hálózati szolgáltatási végpont támogatja az Azure BLOB tároló, ADLS Gen1, Cosmos adatbázis és az Azure-adatbázis. 
+
 
 ## <a name="notes-for-03202018---release-of-spark-22-on-hdinsight-36"></a>Megjegyzések a 03/20/2018 - 2.2 Spark on HDInsight 3.6 kiadása
 

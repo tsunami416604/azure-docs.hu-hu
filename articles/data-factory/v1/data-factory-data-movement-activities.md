@@ -14,20 +14,20 @@ ms.topic: conceptual
 ms.date: 12/05/2017
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: cdea020ad4c9c9e828d62fff8639acec2e3d6c74
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 6b13c70d86af195e50190083aa562811236cdd4b
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34621921"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37054258"
 ---
 # <a name="move-data-by-using-copy-activity"></a>Adatok áthelyezése a másolási tevékenység használatával
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [1. verzió – Általánosan elérhető](data-factory-data-movement-activities.md)
-> * [2. verzió – Előzetes verzió](../copy-activity-overview.md)
+> * [1-es verziójával](data-factory-data-movement-activities.md)
+> * [(Az aktuális verzió) 2-es verzió](../copy-activity-overview.md)
 
 > [!NOTE]
-> Ez a cikk a Data Factory általánosan elérhető 1. verziójára vonatkozik. Lásd a 2-es verziójának a Data Factory szolgáltatásnak, amely jelenleg előzetes verzióban érhető, használatakor [másolási tevékenység során a V2](../copy-activity-overview.md).
+> Ez a cikk a Data Factory 1 verziójára vonatkozik. A Data Factory szolgáltatásnak aktuális verziójának használatakor lásd [másolási tevékenység során a V2](../copy-activity-overview.md).
 
 ## <a name="overview"></a>Áttekintés
 Az Azure Data Factoryben, az másolási tevékenység követve másolja át a helyszíni és a felhő közötti adattárolókhoz. Miután a rendszer átmásolja az adatokat, azt kell tovább át legyenek-e és elemzése. Használhatja a másolási tevékenység közzététele átalakítását és az elemzés eredményeinek az üzleti intelligenciával és alkalmazás-fogyasztás.

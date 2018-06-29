@@ -12,15 +12,21 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 1/09/2018
+ms.date: 06/27/2018
 ms.author: aljo
-ms.openlocfilehash: 118a6d10eeba691fd0886967f90156a0ab8d9fae
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
-ms.translationtype: MT
+ms.openlocfilehash: 6783c2b3b431e99050bc6762c1855b22e0701686
+ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34642648"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37062279"
 ---
+# <a name="description-of-the-different-upgrade-policies"></a>A különböző frissítési házirendek leírása
+
+- **Dinamikus** – a dinamikus konfiguráció módosításainak nem indítják el a Service Fabric folyamatokhoz vagy a szolgáltatás gazdafolyamat folyamat újraindítja. 
+- **Statikus** – statikus konfigurációjának módosításai, akkor a Service Fabric-csomópont felhasználásához a módosítás újraindítására. A csomópontok szolgáltatások újraindul.
+- **NotAllowed** – ezek a beállítások nem módosíthatók. Ezek a beállítások szükséges, hogy a fürt semmisíteni módosítása és egy új fürt létrehozása. 
+
 # <a name="customize-service-fabric-cluster-settings-and-fabric-upgrade-policy"></a>A Service Fabric-fürt beállításait és a háló házirend testreszabása
 Ez a dokumentum azt ismerteti, hogyan szabhatja testre a különböző hálóbeállításokat, és a háló frissítéséhez a Service Fabric-fürt házirendet. Testre szabhatja azokat keresztül a [Azure-portálon](https://portal.azure.com) vagy Azure Resource Manager-sablonnal.
 
@@ -80,7 +86,7 @@ Az alábbiakban olvashat egy listát háló beállítások testre szabható, sza
 ## <a name="backuprestoreservice"></a>BackupRestoreService
 | **A paraméter** | **Megengedett értékek** | **Frissítési házirend** | **Útmutatás vagy rövid leírása** |
 | --- | --- | --- | --- |
-|MinReplicaSetSize|Int, alapértelmezett érték a 0|Statikus|A MinReplicaSetSize a BackupRestoreService |
+|MinReplicaSetSize|int, alapértelmezett érték 0|Statikus|A MinReplicaSetSize a BackupRestoreService |
 |PlacementConstraints|wstring, alapértelmezett értéke L""|Statikus| A PlacementConstraints BackupRestore szolgáltatás |
 |SecretEncryptionCertThumbprint|wstring, alapértelmezett értéke L""|Dinamikus|A titkos X509 tanúsítvány ujjlenyomata |
 |SecretEncryptionCertX509StoreName|wstring, alapértelmezett értéke L "My"|  Dinamikus|    Ez azt jelzi, hogy a titkosítási és visszafejtési visszafejtésekor adattárolóhoz használandó hitelesítő adatok biztonsági mentése és helyreállítása szolgáltatás által használt titkosításához használt hitelesítő adatok nevét az X.509 tanúsítvány tároló használni kívánt tanúsítványt |
@@ -140,13 +146,13 @@ Az alábbiakban olvashat egy listát háló beállítások testre szabható, sza
 |AppDiagnosticStoreAccessRequiresImpersonation |Logikai érték, az alapértelmezett érték true | Dinamikus |-E megszemélyesítési, ha az alkalmazás nevében elérése diagnosztikai tárolja. |
 |AppEtwTraceDeletionAgeInDays |Int, alapértelmezett érték 3 | Dinamikus |Nap elteltével nem törölni alkalmazás ETW-nyomkövetési adatokat tartalmazó régi ETL-fájlok száma. |
 |ApplicationLogsFormatVersion |Int, alapértelmezett érték a 0 | Dinamikus |Alkalmazás verziója formátum naplózza. Támogatott értékek: 0 és 1. Az 1-es verzió 0-nál a ETW-esemény rekordból további mezőket tartalmazza. |
-|ClusterId |Karakterlánc | Dinamikus |A fürt egyedi azonosítója. Ez jön létre, amikor létrehozza a fürtöt. |
-|ConsumerInstances |Karakterlánc | Dinamikus |A DCA fogyasztói példányok listáját. |
+|ClusterId |Sztring | Dinamikus |A fürt egyedi azonosítója. Ez jön létre, amikor létrehozza a fürtöt. |
+|ConsumerInstances |Sztring | Dinamikus |A DCA fogyasztói példányok listáját. |
 |DiskFullSafetySpaceInMB |Int, alapértelmezett érték: 1024 | Dinamikus |Fennmaradó szabad lemezterület (MB) megvédeni a DCA használja. |
 |EnableCircularTraceSession |Logikai érték, alapértelmezett értéke "false" | Statikus |A jelző azt jelzi, hogy használják-e körkörös nyomkövetési munkamenet. |
 |EnableTelemetry |Logikai érték, az alapértelmezett érték true | Dinamikus |Ez lesz engedélyezheti vagy tilthatja le a telemetriai adatokat. |
 |MaxDiskQuotaInMB |Int, alapértelmezett érték 65536 | Dinamikus |Lemezkvóta Windows Fabric MB a rendszernapló fájljaiban. |
-|ProducerInstances |Karakterlánc | Dinamikus |A DCA készítő példányok listáját. |
+|ProducerInstances |Sztring | Dinamikus |A DCA készítő példányok listáját. |
 
 ## <a name="dnsservice"></a>DnsService
 | **A paraméter** | **Megengedett értékek** |**Frissítési házirend**| **Útmutatás vagy rövid leírása** |
@@ -207,9 +213,9 @@ Az alábbiakban olvashat egy listát háló beállítások testre szabható, sza
 | **A paraméter** | **Megengedett értékek** | **Frissítési házirend** | **Útmutatás vagy rövid leírása** |
 | --- | --- | --- | --- |
 |BuildReplicaTimeLimit|TimeSpan érték, alapértelmezett érték Common::TimeSpan::FromSeconds(3600)|Dinamikus|Adja meg az időtartam másodpercben. Az időkorlát készítéséhez állapot-nyilvántartó replika; amely után a figyelmeztetés állapotjelentése indul el |
-|ClusterPauseThreshold|Int, alapértelmezett érték 1|Dinamikus|Ha ez alatt nyissa meg a rendszer a csomópontok száma érték majd elhelyezési; terheléselosztás; és feladatátvételi le van állítva. |
+|ClusterPauseThreshold|int, alapértelmezett értéke 1|Dinamikus|Ha ez alatt nyissa meg a rendszer a csomópontok száma érték majd elhelyezési; terheléselosztás; és feladatátvételi le van állítva. |
 |CreateInstanceTimeLimit|TimeSpan érték, alapértelmezett érték Common::TimeSpan::FromSeconds(300)|Dinamikus|Adja meg az időtartam másodpercben. A határidő; állapotmentes példány létrehozása amely után a figyelmeztetés állapotjelentése indul el |
-|ExpectedClusterSize|Int, alapértelmezett érték 1|Dinamikus|Ha a fürt először elindul. az FM megvárja, hogy ez sok csomópont helyezi el az egyéb szolgáltatások; megkezdése előtt jelentésének maguk mentése beleértve a rendszer-szolgáltatásokat, például elnevezési. Az érték növelésével növeli a elindításához; fürt szükséges idő de megakadályozza, hogy az túlterheléséhez a korai csomópontokat, és a további helyezi át, amely szükséges, több csomópontot ismét online elérhető lesz. Ez az érték általában néhány töredéke a fürtcsomópontok kezdeti méret kell megadni. |
+|ExpectedClusterSize|int, alapértelmezett értéke 1|Dinamikus|Ha a fürt először elindul. az FM megvárja, hogy ez sok csomópont helyezi el az egyéb szolgáltatások; megkezdése előtt jelentésének maguk mentése beleértve a rendszer-szolgáltatásokat, például elnevezési. Az érték növelésével növeli a elindításához; fürt szükséges idő de megakadályozza, hogy az túlterheléséhez a korai csomópontokat, és a további helyezi át, amely szükséges, több csomópontot ismét online elérhető lesz. Ez az érték általában néhány töredéke a fürtcsomópontok kezdeti méret kell megadni. |
 |ExpectedNodeDeactivationDuration|TimeSpan érték, alapértelmezett érték Common::TimeSpan::FromSeconds(60.0 * 30)|Dinamikus|Adja meg az időtartam másodpercben. Ez az a csomópont inaktiválása a befejezéséhez a várható időtartama. |
 |ExpectedNodeFabricUpgradeDuration|TimeSpan érték, alapértelmezett érték Common::TimeSpan::FromSeconds(60.0 * 30)|Dinamikus|Adja meg az időtartam másodpercben. Ez egy csomópont frissítve lesz a várható időtartama a Windows Fabric frissítés során. |
 |ExpectedReplicaUpgradeDuration|TimeSpan érték, alapértelmezett érték Common::TimeSpan::FromSeconds(60.0 * 30)|Dinamikus|Adja meg az időtartam másodpercben. Ez az alkalmazásfrissítés során frissítendő csomóponton található összes replika várható időtartamát. |
@@ -231,7 +237,7 @@ Az alábbiakban olvashat egy listát háló beállítások testre szabható, sza
 | --- | --- | --- | --- |
 |CompletedActionKeepDurationInSeconds | Int, alapértelmezett érték 604800 |Statikus| Ez körülbelül az mennyi ideig tartsa egy terminál állapotban lévő műveletek. Ez is attól függ, StoredActionCleanupIntervalInSeconds; mivel a karbantartási feladat csak adott időközönként történik. 604800 érték 7 nap. |
 |DataLossCheckPollIntervalInSeconds|int, alapértelmezett érték 5|Statikus|Ez az az idő a rendszer hajt végre, miközben az adatvesztés fordulhat elő, az ellenőrzések között. Az adatok elvesztését szám ellenőrzött / belső iterációs hányszor DataLossCheckWaitDurationInSeconds ez van. |
-|DataLossCheckWaitDurationInSeconds|Int, alapértelmezett érték 25|Statikus|A teljes időmennyiséget; másodpercben; hogy a rendszer megvárja adatvesztés megtörténjen-e. Ha a StartPartitionDataLossAsync() api hívása belső használatos. |
+|DataLossCheckWaitDurationInSeconds|int, alapértelmezett érték 25|Statikus|A teljes időmennyiséget; másodpercben; hogy a rendszer megvárja adatvesztés megtörténjen-e. Ha a StartPartitionDataLossAsync() api hívása belső használatos. |
 |MinReplicaSetSize |Int, alapértelmezett érték a 0 |Statikus|A MinReplicaSetSize FaultAnalysisService számára. |
 |PlacementConstraints | karakterlánc, alapértelmezett érték a ""|Statikus| A FaultAnalysisService PlacementConstraints. |
 |QuorumLossWaitDuration | Idő (másodpercben), alapértelmezett érték a MaxValue |Statikus|Adja meg az időtartam másodpercben. A FaultAnalysisService QuorumLossWaitDuration. |
@@ -298,7 +304,7 @@ Az alábbiakban olvashat egy listát háló beállítások testre szabható, sza
 | **A paraméter** | **Megengedett értékek** | **Frissítési házirend** | **Útmutatás vagy rövid leírása** |
 | --- | --- | --- | --- |
 |A MaxPercentDeltaUnhealthyNodes|Int, alapértelmezett érték 10|Statikus|A fürt frissítési állapotházirend értékelése: különbözeti nem kifogástalan csomópontokat maximális százalékát engedélyezett lesz kifogástalan, a fürt |
-|MaxPercentUpgradeDomainDeltaUnhealthyNodes|Int, alapértelmezett érték 15|Statikus|A fürt frissítési állapotházirend értékelése: a frissítési tartományok sérült csomópontok különbözeti maximális százalék engedélyezett lesz kifogástalan, a fürt |
+|MaxPercentUpgradeDomainDeltaUnhealthyNodes|int, alapértelmezett érték 15|Statikus|A fürt frissítési állapotházirend értékelése: a frissítési tartományok sérült csomópontok különbözeti maximális százalék engedélyezett lesz kifogástalan, a fürt |
 
 ## <a name="hosting"></a>Hosting
 | **A paraméter** | **Megengedett értékek** | **Frissítési házirend** | **Útmutatás vagy rövid leírása** |
@@ -379,7 +385,7 @@ Az alábbiakban olvashat egy listát háló beállítások testre szabható, sza
 | **A paraméter** | **Megengedett értékek** | **Frissítési házirend** | **Útmutatás vagy rövid leírása** |
 | --- | --- | --- | --- |
 |AzureStorageMaxConnections | Int, alapértelmezett érték 5000 |Dinamikus|Az azure storage létesített egyidejű kapcsolatok maximális száma. |
-|AzureStorageMaxWorkerThreads | Int, alapértelmezett érték 25 |Dinamikus|A párhuzamos munkaszálak maximális száma. |
+|AzureStorageMaxWorkerThreads | int, alapértelmezett érték 25 |Dinamikus|A párhuzamos munkaszálak maximális száma. |
 |AzureStorageOperationTimeout | Idő (másodpercben), az alapértelmezett érték 6000 |Dinamikus|Adja meg az időtartam másodpercben. Időtúllépés xstore művelet elvégzéséhez. |
 |CleanupApplicationPackageOnProvisionSuccess|logikai érték, alapértelmezett értéke hamis |Dinamikus|Ez a konfiguráció vagy a sikeres kiépítési alkalmazáscsomag automatikus karbantartási letiltása. |
 |DisableChecksumValidation | Logikai érték, alapértelmezett értéke "false" |Statikus| Ez a konfiguráció lehetővé teszi engedélyezése vagy letiltása az ellenőrzőösszeg-érvényesítés alkalmazás kiépítése során. |
@@ -449,7 +455,7 @@ Az alábbiakban olvashat egy listát háló beállítások testre szabható, sza
 ## <a name="performancecounterlocalstore"></a>PerformanceCounterLocalStore
 | **A paraméter** | **Megengedett értékek** | **Frissítési házirend** | **Útmutatás vagy rövid leírása** |
 | --- | --- | --- | --- |
-|Számlálók |Karakterlánc | Dinamikus |Teljesítményszámlálók gyűjtéséhez vesszővel tagolt listája. |
+|Számlálók |Sztring | Dinamikus |Teljesítményszámlálók gyűjtéséhez vesszővel tagolt listája. |
 |IsEnabled |Logikai érték, az alapértelmezett érték true | Dinamikus |A jelző azt jelzi, hogy engedélyezve van-e a teljesítményszámlálók gyűjteményét a helyi csomóponton. |
 |MaxCounterBinaryFileSizeInMB |Int, alapértelmezett érték 1 | Dinamikus |Maximális mérete (MB) a teljesítmény számláló bináris fájl. |
 |NewCounterBinaryFileCreationIntervalInMinutes |Int, alapértelmezett érték 10 | Dinamikus |Maximális korlát (másodperc) után, amely egy új teljesítmény számláló bináris fájl jön létre. |
@@ -469,9 +475,9 @@ Az alábbiakban olvashat egy listát háló beállítások testre szabható, sza
 |ConstraintFixPartialDelayAfterNodeDown | Idő (másodpercben), alapértelmezett érték a 120 |Dinamikus| Adja meg az időtartam másodpercben. Hajtsa végre a nem Fix FaultDomain és UpgradeDomain korlátozások megsértésének ez idő alatt a csomópont esemény után. |
 |ConstraintViolationHealthReportLimit | Int, alapértelmezett érték 50 |Dinamikus| A szám, ahányszor korlátozás megsértése replika kifejezetten tartósan megoldatlan diagnosztika végzik, és a rendszerállapot-jelentéseket kibocsátott előtt határozza meg. |
 |DetailedConstraintViolationHealthReportLimit | Int, alapértelmezett érték 200 |Dinamikus| A szám, ahányszor korlátozás megsértése replika kifejezetten tartósan megoldatlan előtt diagnosztika végzik, és a jelentések kibocsátott állapotának részletes meghatározása. |
-|DetailedDiagnosticsInfoListLimit | Int, alapértelmezett érték 15 |Dinamikus| Határozza meg a számú diagnosztikai bejegyzést (részletes adatokkal) / korlátozást a diagnosztika a csonkolási előtt.|
-|DetailedNodeListLimit | Int, alapértelmezett érték 15 |Dinamikus| Meghatározza a korlátozást a előtt a helyezett replika jelentések csonkolása csomópontok számát. |
-|DetailedPartitionListLimit | Int, alapértelmezett érték 15 |Dinamikus| A diagnosztika csonkolása előtt felvenni megkötés diagnosztikai bejegyzésenként partíciók száma határozza meg. |
+|DetailedDiagnosticsInfoListLimit | int, alapértelmezett érték 15 |Dinamikus| Határozza meg a számú diagnosztikai bejegyzést (részletes adatokkal) / korlátozást a diagnosztika a csonkolási előtt.|
+|DetailedNodeListLimit | int, alapértelmezett érték 15 |Dinamikus| Meghatározza a korlátozást a előtt a helyezett replika jelentések csonkolása csomópontok számát. |
+|DetailedPartitionListLimit | int, alapértelmezett érték 15 |Dinamikus| A diagnosztika csonkolása előtt felvenni megkötés diagnosztikai bejegyzésenként partíciók száma határozza meg. |
 |DetailedVerboseHealthReportLimit | Int, alapértelmezett érték 200 | Dinamikus|A szám, ahányszor egy helyezett replika kifejezetten tartósan helyezett előtt részletes állapotjelentések kibocsátott határozza meg. |
 |FaultDomainConstraintPriority | Int, alapértelmezett érték a 0 |Dinamikus| Meghatározza, hogy a tartalék tartomány korlátozás prioritás: 0: rögzített; 1: enyhe; negatív: figyelmen kívül hagyja. |
 |GlobalMovementThrottleCountingInterval | Idő (másodpercben), az alapértelmezett érték 600 |Statikus| Adja meg az időtartam másodpercben. Azt jelzi, amelyek esetében szeretne nyomon követése (GlobalMovementThrottleThreshold párhuzamosan használva) tartomány replika áthelyezések száma az elmúlt időköz hossza. 0 értékre állítható figyelmen kívül hagyja a globális sávszélesség-szabályozás regisztrálását. |
@@ -527,10 +533,10 @@ Az alábbiakban olvashat egy listát háló beállítások testre szabható, sza
 | **A paraméter** | **Megengedett értékek** | **Frissítési házirend**| **Útmutatás vagy rövid leírása** |
 | --- | --- | --- | --- |
 |BatchAcknowledgementInterval|TimeSpan érték, alapértelmezett érték Common::TimeSpan::FromMilliseconds(15)|Statikus|Adja meg az időtartam másodpercben. Meghatározza, hogy az, hogy mennyi ideig a replikátor megvárja-e olyan műveleteket, mielőtt küld vissza nyugtázást fogadása után. Más műveletek kapott ebben az időszakban a nyugtázás a küldött vissza egy egyetlen -> csökkentése hálózati forgalmat, de lehetséges csökkenteni az átviteli sebessége a replikátor fog rendelkezni.|
-|MaxCopyQueueSize|Uint, alapértelmezett érték: 1024|Statikus|Ez az a maximális értéke határozza meg a kezdeti replikálási műveletek fenntartó várólista. Vegye figyelembe, hogy 2 szintűnek kell lennie. Ha ez a méret a várólista eléri a futtatás során művelet számára halmozódni fog, az elsődleges és másodlagos gyártóitól között.|
+|MaxCopyQueueSize|uint, alapértelmezett érték: 1024|Statikus|Ez az a maximális értéke határozza meg a kezdeti replikálási műveletek fenntartó várólista. Vegye figyelembe, hogy 2 szintűnek kell lennie. Ha ez a méret a várólista eléri a futtatás során művelet számára halmozódni fog, az elsődleges és másodlagos gyártóitól között.|
 |MaxPrimaryReplicationQueueMemorySize|Uint, alapértelmezett érték a 0|Statikus|Ez az a maximális érték az elsődleges replikációs sor bájtokban.|
-|MaxPrimaryReplicationQueueSize|Uint, alapértelmezett érték: 1024|Statikus|Ez az az elsődleges replikációs várólistában lévő létező sikerült műveletek maximális száma. Vegye figyelembe, hogy 2 szintűnek kell lennie.|
-|MaxReplicationMessageSize|Uint, alapértelmezett érték 52428800|Statikus|Replikációs műveletek maximális méretét. Az alapértelmezett érték 50MB.|
+|MaxPrimaryReplicationQueueSize|uint, alapértelmezett érték: 1024|Statikus|Ez az az elsődleges replikációs várólistában lévő létező sikerült műveletek maximális száma. Vegye figyelembe, hogy 2 szintűnek kell lennie.|
+|MaxReplicationMessageSize|uint, alapértelmezett értéke 52428800|Statikus|Replikációs műveletek maximális méretét. Az alapértelmezett érték 50MB.|
 |MaxSecondaryReplicationQueueMemorySize|Uint, alapértelmezett érték a 0|Statikus|Ez az a maximális érték a másodlagos replikációs sor bájtokban.|
 |MaxSecondaryReplicationQueueSize|uint, alapértelmezett értéke 2048|Statikus|Ez az volt a másodlagos replikációs várólistában lévő létező műveletek maximális száma. Vegye figyelembe, hogy 2 szintűnek kell lennie.|
 |QueueHealthMonitoringInterval|TimeSpan érték, alapértelmezett érték Common::TimeSpan::FromSeconds(30)|Statikus|Adja meg az időtartam másodpercben. Ez az érték határozza meg az adott időszakban a replikátor által a replikációs művelet várólistára figyelmeztetés/hiba állapotfigyelő eseményeket figyelésére használható. "0" érték letiltja az állapotfigyelés |
@@ -538,7 +544,7 @@ Az alábbiakban olvashat egy listát háló beállítások testre szabható, sza
 |ReplicatorAddress|karakterlánc, alapértelmezett értéke L "localhost:0"|Statikus|A végpont egy karakterlánc-"IP:Port", amely a Windows Fabric replikátor ahhoz, hogy a küldési és fogadási műveletek más replikák-kapcsolatok létesítéséhez használt formában.|
 |ReplicatorListenAddress|karakterlánc, alapértelmezett értéke L "localhost:0"|Statikus|A végpont egy karakterlánc-"IP:Port" műveletek fogadása más replikák a Windows Fabric replikátor által használt formában.|
 |ReplicatorPublishAddress|karakterlánc, alapértelmezett értéke L "localhost:0"|Statikus|A végpont egy karakterlánc-"IP:Port" műveletek küldendő más replikák a Windows Fabric replikátor által használt formában.|
-|RetryInterval|TimeSpan érték, alapértelmezett érték Common::TimeSpan::FromSeconds(5)|Statikus|Adja meg az időtartam másodpercben. Ha egy művelet elvész, vagy nem utasítható el ez az időzítő határozza meg, milyen gyakran próbálkozik újra a replikátor küldése a műveletet.|
+|retryInterval|TimeSpan érték, alapértelmezett érték Common::TimeSpan::FromSeconds(5)|Statikus|Adja meg az időtartam másodpercben. Ha egy művelet elvész, vagy nem utasítható el ez az időzítő határozza meg, milyen gyakran próbálkozik újra a replikátor küldése a műveletet.|
 
 ## <a name="resourcemonitorservice"></a>ResourceMonitorService
 | **A paraméter** | **Megengedett értékek** | **Frissítési házirend**| **Útmutatás vagy rövid leírása** |
@@ -742,10 +748,10 @@ Az alábbiakban olvashat egy listát háló beállítások testre szabható, sza
 | --- | --- | --- | --- |
 |ContainerNetworkName|karakterlánc, alapértelmezett értéke L""| Statikus |A hálózatok nevét, a tároló hálózati beállítása során.|
 |ContainerNetworkSetup|logikai érték, alapértelmezett értéke hamis| Statikus |E tároló hálózat beállítása.|
-|FabricDataRoot |Karakterlánc | Nem engedélyezett |A Service Fabric-adatok gyökérkönyvtár. Alapértelmezett Azure d:\svcfab: |
-|Fabriclogroot mappában |Karakterlánc | Nem engedélyezett |Service fabric napló gyökérkönyvtár. Ez azért, ahol kerülnek ú naplók és a nyomkövetési adatokat. |
+|FabricDataRoot |Sztring | Nem engedélyezett |A Service Fabric-adatok gyökérkönyvtár. Alapértelmezett Azure d:\svcfab: |
+|Fabriclogroot mappában |Sztring | Nem engedélyezett |Service fabric napló gyökérkönyvtár. Ez azért, ahol kerülnek ú naplók és a nyomkövetési adatokat. |
 |NodesToBeRemoved|karakterlánc, alapértelmezett érték a ""| Dinamikus |A csomópontokat, amelyeknek konfigurációs frissítés részeként el kell távolítani. (Csak az önálló verziója telepítéseinek)|
-|ServiceRunAsAccountName |Karakterlánc | Nem engedélyezett |A fabric host szolgáltatás futtatásához használt fiók nevét. |
+|ServiceRunAsAccountName |Sztring | Nem engedélyezett |A fabric host szolgáltatás futtatásához használt fiók nevét. |
 |SkipFirewallConfiguration |Logikai érték, alapértelmezett értéke "false" | Nem engedélyezett |Itt adhatja meg, ha a tűzfal beállításait meg kell adnia a rendszer, vagy nem. Ez vonatkozik, csak akkor, ha a windows tűzfalat használja. Ha külső gyártótól származó tűzfalak használ, majd nyissa meg a portokat a rendszer és alkalmazások az |
 
 ## <a name="tokenvalidationservice"></a>TokenValidationService
@@ -765,7 +771,7 @@ Az alábbiakban olvashat egy listát háló beállítások testre szabható, sza
 |MaxCopyQueueSize |Uint, alapértelmezett érték 16384 | Statikus |Ez az a maximális értéke határozza meg a kezdeti replikálási műveletek fenntartó várólista. Vegye figyelembe, hogy 2 szintűnek kell lennie. Ha ez a méret a várólista eléri a futtatás során művelet számára halmozódni fog, az elsődleges és másodlagos gyártóitól között. |
 |MaxPrimaryReplicationQueueMemorySize |Uint, alapértelmezett érték a 0 | Statikus |Ez az a maximális érték az elsődleges replikációs sor bájtokban. |
 |MaxPrimaryReplicationQueueSize |Uint, alapértelmezett érték 8192 | Statikus |Ez az az elsődleges replikációs várólistában lévő létező sikerült műveletek maximális száma. Vegye figyelembe, hogy 2 szintűnek kell lennie. |
-|MaxReplicationMessageSize |Uint, alapértelmezett érték 52428800 | Statikus | Replikációs műveletek maximális méretét. Az alapértelmezett érték 50MB. |
+|MaxReplicationMessageSize |uint, alapértelmezett értéke 52428800 | Statikus | Replikációs műveletek maximális méretét. Az alapértelmezett érték 50MB. |
 |MaxSecondaryReplicationQueueMemorySize |Uint, alapértelmezett érték a 0 | Statikus |Ez az a maximális érték a másodlagos replikációs sor bájtokban. |
 |MaxSecondaryReplicationQueueSize |Uint, alapértelmezett érték 16384 | Statikus |Ez az volt a másodlagos replikációs várólistában lévő létező műveletek maximális száma. Vegye figyelembe, hogy 2 szintűnek kell lennie. |
 |ReplicatorAddress |karakterlánc, alapértelmezett értéke "localhost:0" | Statikus | A végpont egy karakterlánc-"IP:Port", amely a Windows Fabric replikátor ahhoz, hogy a küldési és fogadási műveletek más replikák-kapcsolatok létesítéséhez használt formában. |
@@ -791,7 +797,7 @@ Az alábbiakban olvashat egy listát háló beállítások testre szabható, sza
 ## <a name="upgradeservice"></a>UpgradeService
 | **A paraméter** | **Megengedett értékek** | **Frissítési házirend** | **Útmutatás vagy rövid leírása** |
 | --- | --- | --- | --- |
-|BaseUrl | karakterlánc, alapértelmezett érték a "" |Statikus|A UpgradeService BaseUrl. |
+|baseUrl | karakterlánc, alapértelmezett érték a "" |Statikus|A UpgradeService BaseUrl. |
 |ClusterId | karakterlánc, alapértelmezett érték a "" |Statikus|A UpgradeService ClusterId. |
 |CoordinatorType | karakterlánc, alapértelmezett értéke "WUTest"|Nem engedélyezett|A UpgradeService CoordinatorType. |
 |MinReplicaSetSize | Int, alapértelmezett érték a 2. régiója |Nem engedélyezett| A MinReplicaSetSize UpgradeService számára. |

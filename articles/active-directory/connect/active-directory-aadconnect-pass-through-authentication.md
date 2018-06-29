@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 09/29/2017
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 37239a45cffe18478b8302ccf1ee95c8edd0423a
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 9b36014057eb1713b2b056cd203a099c59d9b5d4
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34592160"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37031770"
 ---
 # <a name="user-sign-in-with-azure-active-directory-pass-through-authentication"></a>Felhasználó bejelentkezhet az Azure Active Directory áteresztő hitelesítés
 
@@ -49,7 +49,7 @@ Ez a szolgáltatás nem helyett [Azure AD Jelszókivonat-szinkronizálást](acti
 - *Biztonságos*
   - A helyszíni jelszavak soha nem a felhő semmilyen formában vannak tárolva.
   - Az ügynök csak lehetővé teszi a kimenő kapcsolatok a hálózaton belül. Ezért nincs szükség a szegélyhálózaton, más néven DMZ az ügynök telepítéséhez.
-  - A felhasználói fiókok védi használata zökkenőmentesen [Azure AD feltételes hozzáférési házirendek](../active-directory-conditional-access-azure-portal.md), beleértve a multi-factor Authentication (MFA) és az [találgatásos jelszó támadások kiszűrése](active-directory-aadconnect-pass-through-authentication-smart-lockout.md).
+  - A felhasználói fiókok védi használata zökkenőmentesen [Azure AD feltételes hozzáférési házirendek](../active-directory-conditional-access-azure-portal.md), beleértve a multi-factor Authentication (MFA) és az [találgatásos jelszó támadások kiszűrése](../authentication/howto-password-smart-lockout.md).
 - *Magas rendelkezésre állású*
   - További ügynökök bejelentkezési kérelmek magas rendelkezésre állás biztosításához több helyszíni kiszolgálókon telepíthető.
 
@@ -64,12 +64,12 @@ Ez a szolgáltatás nem helyett [Azure AD Jelszókivonat-szinkronizálást](acti
 - Keresztül engedélyezhető [az Azure AD Connect](active-directory-aadconnect.md).
 - Egy egyszerűsített helyszíni ügynök figyeli, és a jelszó érvényesítése kérelmére reagálás használ.
 - Több ügynökök telepítése bejelentkezési kérelmek magas rendelkezésre állású biztosít.
-- Az [védi](active-directory-aadconnect-pass-through-authentication-smart-lockout.md) a helyszíni fiókok elleni találgatásos kényszerítése jelszó támadások a felhőben.
+- Az [védi](../authentication/howto-password-smart-lockout.md) a helyszíni fiókok elleni találgatásos kényszerítése jelszó támadások a felhőben.
 
 ## <a name="next-steps"></a>További lépések
 
 - [**Gyors üzembe helyezési** ](active-directory-aadconnect-pass-through-authentication-quick-start.md) - létrehozásához, és fut az Azure AD áteresztő hitelesítés.
-- [**Intelligens zárolás** ](active-directory-aadconnect-pass-through-authentication-smart-lockout.md) -intelligens zárolás konfigurálása képességet a bérlő a felhasználói fiókok védelme.
+- [**Intelligens zárolás** ](../authentication/howto-password-smart-lockout.md) -intelligens zárolás konfigurálása képességet a bérlő a felhasználói fiókok védelme.
 - [**Aktuális korlátozások** ](active-directory-aadconnect-pass-through-authentication-current-limitations.md) – ismerje meg, melyik forgatókönyvek is támogatottak, és melyek nem.
 - [**Műszaki mélyreható** ](active-directory-aadconnect-pass-through-authentication-how-it-works.md) – Ez a funkció működésének megismerése.
 - [**Gyakran ismételt kérdések** ](active-directory-aadconnect-pass-through-authentication-faq.md) -gyakran feltett kérdésekre adott válaszokat.

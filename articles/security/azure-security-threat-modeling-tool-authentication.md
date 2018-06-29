@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/17/2017
 ms.author: rodsan
-ms.openlocfilehash: 1ac614156755b9b29db7c968c708a5cff706f7a8
-ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
+ms.openlocfilehash: d53ade1e5c31ca25636b95d4f8b9e0fe29f9d081
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2018
-ms.locfileid: "28019670"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37031107"
 ---
 # <a name="security-frame-authentication--mitigations"></a>Biztonsági keret: Hitelesítési |} Megoldást 
 | A termék vagy szolgáltatás | Cikk |
@@ -43,7 +43,7 @@ ms.locfileid: "28019670"
 | Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Web Application | 
-| **SDL Phase**               | Felépítés |  
+| **SDL fázis**               | Felépítés |  
 | **Alkalmazandó technológiák** | Általános |
 | **Attribútumok**              | –  |
 | **Hivatkozások**              | –  |
@@ -54,7 +54,7 @@ ms.locfileid: "28019670"
 | Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Web Application | 
-| **SDL Phase**               | Felépítés |  
+| **SDL fázis**               | Felépítés |  
 | **Alkalmazandó technológiák** | Általános |
 | **Attribútumok**              | –  |
 | **Hivatkozások**              | –  |
@@ -65,7 +65,7 @@ ms.locfileid: "28019670"
 | Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Web Application | 
-| **SDL Phase**               | Felépítés |  
+| **SDL fázis**               | Felépítés |  
 | **Alkalmazandó technológiák** | Általános |
 | **Attribútumok**              | –  |
 | **Hivatkozások**              | –  |
@@ -76,7 +76,7 @@ ms.locfileid: "28019670"
 | Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Web Application | 
-| **SDL Phase**               | Felépítés |  
+| **SDL fázis**               | Felépítés |  
 | **Alkalmazandó technológiák** | Általános |
 | **Attribútumok**              | –  |
 | **Hivatkozások**              | –  |
@@ -87,7 +87,7 @@ ms.locfileid: "28019670"
 | Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Web Application | 
-| **SDL Phase**               | Felépítés |  
+| **SDL fázis**               | Felépítés |  
 | **Alkalmazandó technológiák** | Általános |
 | **Attribútumok**              | –  |
 | **Hivatkozások**              | –  |
@@ -98,7 +98,7 @@ ms.locfileid: "28019670"
 | Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Web Application | 
-| **SDL Phase**               | Felépítés |  
+| **SDL fázis**               | Felépítés |  
 | **Alkalmazandó technológiák** | Általános |
 | **Attribútumok**              | –  |
 | **Hivatkozások**              | –  |
@@ -109,7 +109,7 @@ ms.locfileid: "28019670"
 | Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Web Application | 
-| **SDL Phase**               | Felépítés |  
+| **SDL fázis**               | Felépítés |  
 | **Alkalmazandó technológiák** | Általános |
 | **Attribútumok**              | –  |
 | **Hivatkozások**              | –  |
@@ -120,7 +120,7 @@ ms.locfileid: "28019670"
 | Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Adatbázis | 
-| **SDL Phase**               | Felépítés |  
+| **SDL fázis**               | Felépítés |  
 | **Alkalmazandó technológiák** | A helyi üzemeltetésű |
 | **Attribútumok**              | SQL-verzió - minden |
 | **Hivatkozások**              | [SQL Server - hitelesítési módjának kiválasztása](https://msdn.microsoft.com/library/ms144284.aspx) |
@@ -131,7 +131,7 @@ ms.locfileid: "28019670"
 | Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Adatbázis | 
-| **SDL Phase**               | Felépítés |  
+| **SDL fázis**               | Felépítés |  
 | **Alkalmazandó technológiák** | SQL Azure |
 | **Attribútumok**              | SQL-verzió - 12-es verzió |
 | **Hivatkozások**              | [Csatlakozás az SQL Database az Azure Active Directory-hitelesítés használatával](https://azure.microsoft.com/documentation/articles/sql-database-aad-authentication/) |
@@ -142,7 +142,7 @@ ms.locfileid: "28019670"
 | Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Adatbázis | 
-| **SDL Phase**               | Felépítés |  
+| **SDL fázis**               | Felépítés |  
 | **Alkalmazandó technológiák** | Általános |
 | **Attribútumok**              | –  |
 | **Hivatkozások**              | [SQL Server jelszóházirend](https://technet.microsoft.com/library/ms161959(v=sql.110).aspx) |
@@ -153,8 +153,8 @@ ms.locfileid: "28019670"
 | Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Adatbázis | 
-| **SDL Phase**               | Felépítés |  
-| **Alkalmazandó technológiák** | OnPrem, SQL Azure |
+| **SDL fázis**               | Felépítés |  
+| **Alkalmazandó technológiák** | A helyi üzemeltetésű SQL Azure |
 | **Attribútumok**              | SQL - MSSQL2012, SQL verzió - verzió 12-es verzió |
 | **Hivatkozások**              | [Ajánlott biztonsági eljárások tartalmazott adatbázisok](http://msdn.microsoft.com/library/ff929055.aspx) |
 | **Lépések** | Az érvényben levő jelszóházirendnek hiányában növelheti a gyenge hitelesítő adat jött létre egy tartalmazott adatbázisban ennek valószínűségét. Éljen az olyan Windows-hitelesítést. |
@@ -163,8 +163,8 @@ ms.locfileid: "28019670"
 
 | Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
-| **Összetevő**               | Azure Event Hub | 
-| **SDL Phase**               | Felépítés |  
+| **Összetevő**               | Azure-eseményközpont | 
+| **SDL fázis**               | Felépítés |  
 | **Alkalmazandó technológiák** | Általános |
 | **Attribútumok**              | –  |
 | **Hivatkozások**              | [Event Hubs hitelesítés és a biztonsági modell – áttekintés](https://azure.microsoft.com/documentation/articles/event-hubs-authentication-and-security-model-overview/) |
@@ -175,7 +175,7 @@ ms.locfileid: "28019670"
 | Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Az Azure megbízhatósági kapcsolat határán | 
-| **SDL Phase**               | Környezet |  
+| **SDL fázis**               | Környezet |  
 | **Alkalmazandó technológiák** | Általános |
 | **Attribútumok**              | –  |
 | **Hivatkozások**              | [Mi az az Azure Multi-Factor Authentication?](https://azure.microsoft.com/documentation/articles/multi-factor-authentication/) |
@@ -186,7 +186,7 @@ ms.locfileid: "28019670"
 | Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Service Fabric megbízhatósági kapcsolat határán | 
-| **SDL Phase**               | Környezet |  
+| **SDL fázis**               | Környezet |  
 | **Alkalmazandó technológiák** | Általános |
 | **Attribútumok**              | Környezet – Azure  |
 | **Hivatkozások**              | [A Service Fabric-fürt biztonsági forgatókönyvek](https://azure.microsoft.com/documentation/articles/service-fabric-cluster-security) |
@@ -197,7 +197,7 @@ ms.locfileid: "28019670"
 | Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Service Fabric megbízhatósági kapcsolat határán | 
-| **SDL Phase**               | Környezet |  
+| **SDL fázis**               | Környezet |  
 | **Alkalmazandó technológiák** | Általános |
 | **Attribútumok**              | Önálló – Azure, környezet - környezet |
 | **Hivatkozások**              | [A Service Fabric-csomópont ügyfél tanúsítvány biztonsági](https://azure.microsoft.com/documentation/articles/service-fabric-cluster-security/#_client-to-node-certificate-security), [csatlakozás ügyfél-tanúsítvány használatával biztonságos fürthöz](https://azure.microsoft.com/documentation/articles/service-fabric-connect-to-secure-cluster/) |
@@ -208,7 +208,7 @@ ms.locfileid: "28019670"
 | Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Service Fabric megbízhatósági kapcsolat határán | 
-| **SDL Phase**               | Környezet |  
+| **SDL fázis**               | Környezet |  
 | **Alkalmazandó technológiák** | Általános |
 | **Attribútumok**              | Környezet – Azure |
 | **Hivatkozások**              | [Fürtök biztonsági forgatókönyveinek - biztonsági javaslatok](https://azure.microsoft.com/documentation/articles/service-fabric-cluster-security/#security-recommendations) |
@@ -219,7 +219,7 @@ ms.locfileid: "28019670"
 | Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Service Fabric megbízhatósági kapcsolat határán | 
-| **SDL Phase**               | Környezet |  
+| **SDL fázis**               | Környezet |  
 | **Alkalmazandó technológiák** | Általános |
 | **Attribútumok**              | Környezet – Azure |
 | **Hivatkozások**              | [X.509-tanúsítványokat és a Service Fabric](https://azure.microsoft.com/documentation/articles/service-fabric-cluster-security/#x509-certificates-and-service-fabric) |
@@ -229,8 +229,8 @@ ms.locfileid: "28019670"
 
 | Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
-| **Összetevő**               | Identity Server | 
-| **SDL Phase**               | Felépítés |  
+| **Összetevő**               | Identity Serverben | 
+| **SDL fázis**               | Felépítés |  
 | **Alkalmazandó technológiák** | Általános |
 | **Attribútumok**              | –  |
 | **Hivatkozások**              | [IdentityServer3 - átfogó képet](https://identityserver.github.io/Documentation/docsv2/overview/bigPicture.html) |
@@ -240,8 +240,8 @@ ms.locfileid: "28019670"
 
 | Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
-| **Összetevő**               | Identity Server | 
-| **SDL Phase**               | Környezet |  
+| **Összetevő**               | Identity Serverben | 
+| **SDL fázis**               | Környezet |  
 | **Alkalmazandó technológiák** | Általános |
 | **Attribútumok**              | –  |
 | **Hivatkozások**              | [Identitáskezelési kiszolgáló telepítési - gyorsítótárazás](https://identityserver.github.io/Documentation/docsv2/advanced/deployment.html) |
@@ -252,7 +252,7 @@ ms.locfileid: "28019670"
 | Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Gép megbízhatósági kapcsolat határán | 
-| **SDL Phase**               | Környezet |  
+| **SDL fázis**               | Környezet |  
 | **Alkalmazandó technológiák** | Általános |
 | **Attribútumok**              | –  |
 | **Hivatkozások**              | –  |
@@ -263,7 +263,7 @@ ms.locfileid: "28019670"
 | Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | WCF | 
-| **SDL Phase**               | Felépítés |  
+| **SDL fázis**               | Felépítés |  
 | **Alkalmazandó technológiák** | Általános, NET-keretrendszer 3 |
 | **Attribútumok**              | – |
 | **Hivatkozások**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx) |
@@ -303,10 +303,10 @@ A `<netMsmqBinding/>` elem a WCF konfigurációs fájl az alábbi arra utasítja
 | Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | WCF | 
-| **SDL Phase**               | Felépítés |  
+| **SDL fázis**               | Felépítés |  
 | **Alkalmazandó technológiák** | .NET-keretrendszer 3 |
 | **Attribútumok**              | Ügyfél-hitelesítő adat típusa: nincs |
-| **Hivatkozások**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx), [erősítse meg](https://vulncat.fortify.com/en/vulncat/index.html) |
+| **Hivatkozások**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx), [erősítse meg](https://vulncat.fortify.com/en/detail?id=desc.semantic.dotnet.wcf_misconfiguration_anonymous_message_client) |
 | **Lépések** | Hitelesítés hiányában azt jelenti, hogy mindenki érhessék el az ezt a szolgáltatást. Egy szolgáltatás, amely nem hitelesíti az ügyfeleket lehetővé teszi a hozzáférést minden felhasználó számára. Az alkalmazás ügyfél-hitelesítő adatok hitelesítése beállítása. Ezt megteheti úgy, hogy az üzenet clientCredentialType Windows vagy a tanúsítvány. |
 
 ### <a name="example"></a>Példa
@@ -319,10 +319,10 @@ A `<netMsmqBinding/>` elem a WCF konfigurációs fájl az alábbi arra utasítja
 | Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | WCF | 
-| **SDL Phase**               | Felépítés |  
+| **SDL fázis**               | Felépítés |  
 | **Alkalmazandó technológiák** | Általános, .NET-keretrendszer 3 |
 | **Attribútumok**              | Ügyfél-hitelesítő adat típusa: nincs |
-| **Hivatkozások**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx), [erősítse meg](https://vulncat.fortify.com/en/vulncat/index.html) |
+| **Hivatkozások**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx), [erősítse meg](https://vulncat.hpefod.com/en/detail?id=desc.semantic.dotnet.wcf_misconfiguration_anonymous_transport_client) |
 | **Lépések** | Hitelesítés hiányában azt jelenti, hogy mindenki érhessék el az ezt a szolgáltatást. Egy szolgáltatás, amely nem hitelesíti az ügyfeleket lehetővé teszi, hogy minden felhasználó a funkciók eléréséhez. Az alkalmazás ügyfél-hitelesítő adatok hitelesítése beállítása. Ezt megteheti úgy, hogy az átviteli clientCredentialType Windows vagy a tanúsítvány. |
 
 ### <a name="example"></a>Példa
@@ -335,7 +335,7 @@ A `<netMsmqBinding/>` elem a WCF konfigurációs fájl az alábbi arra utasítja
 | Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Webes API | 
-| **SDL Phase**               | Felépítés |  
+| **SDL fázis**               | Felépítés |  
 | **Alkalmazandó technológiák** | Általános |
 | **Attribútumok**              | –  |
 | **Hivatkozások**              | [Hitelesítési és engedélyezési ASP.NET webes API](http://www.asp.net/web-api/overview/security/authentication-and-authorization-in-aspnet-web-api), [külső hitelesítési szolgáltatások a ASP.NET Web API (C#)](http://www.asp.net/web-api/overview/security/external-authentication-services) |
@@ -346,7 +346,7 @@ A `<netMsmqBinding/>` elem a WCF konfigurációs fájl az alábbi arra utasítja
 | Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Azure AD | 
-| **SDL Phase**               | Felépítés |  
+| **SDL fázis**               | Felépítés |  
 | **Alkalmazandó technológiák** | Általános |
 | **Attribútumok**              | –  |
 | **Hivatkozások**              | [Hitelesítési forgatókönyvek az Azure AD](https://azure.microsoft.com/documentation/articles/active-directory-authentication-scenarios/), [Azure Active Directory-Kódminták](https://azure.microsoft.com/documentation/articles/active-directory-code-samples/), [Azure Active Directory fejlesztői útmutatója](https://azure.microsoft.com/documentation/articles/active-directory-developers-guide/) |
@@ -357,7 +357,7 @@ A `<netMsmqBinding/>` elem a WCF konfigurációs fájl az alábbi arra utasítja
 | Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Azure AD | 
-| **SDL Phase**               | Felépítés |  
+| **SDL fázis**               | Felépítés |  
 | **Alkalmazandó technológiák** | Általános |
 | **Attribútumok**              | –  |
 | **Hivatkozások**              | [Modern hitelesítést és az Azure Active Directory-webalkalmazások számára történő](https://blogs.msdn.microsoft.com/microsoft_press/2016/01/04/new-book-modern-authentication-with-azure-active-directory-for-web-applications/), [ADAL jogkivonatok gyorsítótárát, Redis használatával](https://blogs.msdn.microsoft.com/mrochon/2016/09/19/using-redis-as-adal-token-cache/)  |
@@ -368,7 +368,7 @@ A `<netMsmqBinding/>` elem a WCF konfigurációs fájl az alábbi arra utasítja
 | Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Azure AD | 
-| **SDL Phase**               | Felépítés |  
+| **SDL fázis**               | Felépítés |  
 | **Alkalmazandó technológiák** | Általános |
 | **Attribútumok**              | –  |
 | **Hivatkozások**              | [Modern hitelesítést és az Azure Active Directory-webalkalmazások számára történő](https://blogs.msdn.microsoft.com/microsoft_press/2016/01/04/new-book-modern-authentication-with-azure-active-directory-for-web-applications/) |
@@ -422,14 +422,14 @@ OpenIdConnectOptions openIdConnectOptions = new OpenIdConnectOptions
 }
 ```
 
-Ne feledje, hogy ez a konfiguráció a helyi OIDC által védett alkalmazásba bejelentkezési hatékonyságát, és a kérelem rögzítését `"/signin-oidc"` a fiddler végpont. Ha a védelem nem van beállítva, a kérelem a fiddler visszajátszását állítja be egy új munkamenetcookie-t. Ha a kérelmet a rendszer játssza vissza a TokenReplayCache védelem hozzáadása után, az alkalmazás fogja kivételt jelez az alábbiak szerint:`SecurityTokenReplayDetectedException: IDX10228: The securityToken has previously been validated, securityToken: 'eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik1uQ19WWmNBVGZNNXBPWWlKSE1iYTlnb0VLWSIsImtpZCI6Ik1uQ1......`
+Ne feledje, hogy ez a konfiguráció a helyi OIDC által védett alkalmazásba bejelentkezési hatékonyságát, és a kérelem rögzítését `"/signin-oidc"` a fiddler végpont. Ha a védelem nem van beállítva, a kérelem a fiddler visszajátszását állítja be egy új munkamenetcookie-t. Ha a kérelmet a rendszer játssza vissza a TokenReplayCache védelem hozzáadása után, az alkalmazás fogja kivételt jelez az alábbiak szerint: `SecurityTokenReplayDetectedException: IDX10228: The securityToken has previously been validated, securityToken: 'eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik1uQ19WWmNBVGZNNXBPWWlKSE1iYTlnb0VLWSIsImtpZCI6Ik1uQ1......`
 
 ## <a id="adal-oauth2"></a>Segítségével ADAL könyvtárakat kezelheti a jogkivonat-kérelmeket az OAuth2-ügyfelektől az aad-be (vagy a helyszíni AD)
 
 | Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Azure AD | 
-| **SDL Phase**               | Felépítés |  
+| **SDL fázis**               | Felépítés |  
 | **Alkalmazandó technológiák** | Általános |
 | **Attribútumok**              | –  |
 | **Hivatkozások**              | [ADAL](https://azure.microsoft.com/documentation/articles/active-directory-authentication-libraries/) |
@@ -440,7 +440,7 @@ Ne feledje, hogy ez a konfiguráció a helyi OIDC által védett alkalmazásba b
 | Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Az IoT-mező átjáró | 
-| **SDL Phase**               | Felépítés |  
+| **SDL fázis**               | Felépítés |  
 | **Alkalmazandó technológiák** | Általános |
 | **Attribútumok**              | –  |
 | **Hivatkozások**              | –  |
@@ -450,8 +450,8 @@ Ne feledje, hogy ez a konfiguráció a helyi OIDC által védett alkalmazásba b
 
 | Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
-| **Összetevő**               | IoT Cloud Gateway | 
-| **SDL Phase**               | Felépítés |  
+| **Összetevő**               | Az IoT átjáró | 
+| **SDL fázis**               | Felépítés |  
 | **Alkalmazandó technológiák** | Általános, C#, Node.JS,  |
 | **Attribútumok**              | Nincs; átjáró choice - Azure IoT Hub |
 | **Hivatkozások**              | Nincs; [.NET Azure IoT hubot](https://azure.microsoft.com/documentation/articles/iot-hub-csharp-csharp-getstarted/), [egyidejűleg az IoT-központ bevezetés és csomópont JS](https://azure.microsoft.com/documentation/articles/iot-hub-node-node-getstarted), [SAS és tanúsítványok védelmét biztosító IoT](https://azure.microsoft.com/documentation/articles/iot-hub-sas-tokens/), [Git-tárház](https://github.com/Azure/azure-iot-sdks/tree/master/node) |
@@ -491,7 +491,7 @@ await deviceClient.SendEventAsync(message);
     ```
 #### <a name="sas-token"></a>SAS-azonosító
 * Lekérdezi belsőleg generáltak, de szimmetrikus kulcs használata esetén is létrehozhatják és explicit módon is használhatják
-* Egy protokoll megadása:`var Http = require('azure-iot-device-http').Http;`
+* Egy protokoll megadása: `var Http = require('azure-iot-device-http').Http;`
 * Hozzon létre egy sas-jogkivonat:
     ```javascript
     resourceUri = encodeURIComponent(resourceUri.toLowerCase()).toLowerCase();
@@ -550,8 +550,8 @@ await deviceClient.SendEventAsync(message);
 
 | Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
-| **Összetevő**               | IoT Cloud Gateway  | 
-| **SDL Phase**               | Felépítés |  
+| **Összetevő**               | Az IoT átjáró  | 
+| **SDL fázis**               | Felépítés |  
 | **Alkalmazandó technológiák** | Általános |
 | **Attribútumok**              | Átjáró choice - Azure IoT Hub |
 | **Hivatkozások**              | [Az Azure IoT-központ biztonsági jogkivonatokat](https://azure.microsoft.com/documentation/articles/iot-hub-sas-tokens/) |
@@ -562,7 +562,7 @@ await deviceClient.SendEventAsync(message);
 | Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Azure Storage | 
-| **SDL Phase**               | Felépítés |  
+| **SDL fázis**               | Felépítés |  
 | **Alkalmazandó technológiák** | Általános |
 | **Attribútumok**              | StorageType - Blob |
 | **Hivatkozások**              | [Tárolók és blobok névtelen olvasási hozzáférés kezelése](https://azure.microsoft.com/documentation/articles/storage-manage-access-to-resources/), [megosztott hozzáférési aláírásokkal, 1. rész: az SAS-modell ismertetése](https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-1/) |
@@ -573,7 +573,7 @@ await deviceClient.SendEventAsync(message);
 | Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Azure Storage | 
-| **SDL Phase**               | Felépítés |  
+| **SDL fázis**               | Felépítés |  
 | **Alkalmazandó technológiák** | Általános |
 | **Attribútumok**              | – |
 | **Hivatkozások**              | [A közös hozzáférésű Jogosultságkód, 1. rész: Ismertetése a SAS-modell](https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-1/), [megosztott hozzáférési aláírásokkal, 2. rész: létrehozása és SAS-kód használatát a Blob storage](https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-2/), [hogyan adhat hozzáférést a felhasználó fiókját megosztott objektumok Hozzáférési aláírásokkal és tárolt hozzáférési házirendek](https://azure.microsoft.com/documentation/articles/storage-security-guide/#_how-to-delegate-access-to-objects-in-your-account-using-shared-access-signatures-and-stored-access-policies) |

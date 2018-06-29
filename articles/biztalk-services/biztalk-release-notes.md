@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/15/2016
 ms.author: deonhe
-ms.openlocfilehash: 0f3662ed386c3a3d2d132a483e7192bddc26de06
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 5c05c7c4c0f8f0b3619b36390c8a0224a03c900a
+ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
-ms.locfileid: "26633817"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37063542"
 ---
 # <a name="release-notes-for-azure-biztalk-services"></a>Kibocsátási megjegyzések a Azure BizTalk szolgáltatások
 
@@ -65,12 +65,12 @@ Vegye figyelembe a BizTalk szolgáltatások projekt egy Visual Studio megoldás 
 Ön "" a megoldás felépítéséhez a Visual Studio sikeresen megtörtént. Ezt követően "Rebuild" vagy "Tiszta" a megoldás. Ezt követően tiszta újra, vagy építse újra a következő hiba történt:  
   Nem sikerült a másolás, <Path to DLL> "bin\Debug\FileName.dll" számára. A folyamat nem éri a "bin\Debug\FileName.dll" fájlt, mert egy másik folyamat használja.  
 
-#### <a name="workaround"></a>Megkerülő megoldás
-* Ha [Visual Studio 2012 Update 3](https://www.microsoft.com/download/details.aspx?id=39305) van telepítve, a következő lehetőségei vannak:
+#### <a name="workaround"></a>Áthidaló megoldás
+* Ha [Visual Studio 2012 Update 3](https://docs.microsoft.com/en-us/visualstudio/releasenotes/vs2012-update3-vs) van telepítve, a következő lehetőségei vannak:
   
   * Indítsa újra a Visual Studio vagy
   * Indítsa újra a megoldás. Ezután hajtson végre Build csak a megoldásban.  
-* Ha [Visual Studio 2012 Update 3](https://www.microsoft.com/download/details.aspx?id=39305) nincs telepítve, nyissa meg a Feladatkezelő, kattintson a folyamatok lapon, kattintson a MSBuild.exe folyamat, majd a folyamat leállítása gombra.  
+* Ha [Visual Studio 2012 Update 3](https://docs.microsoft.com/en-us/visualstudio/releasenotes/vs2012-update3-vs) nincs telepítve, nyissa meg a Feladatkezelő, kattintson a folyamatok lapon, kattintson a MSBuild.exe folyamat, majd a folyamat leállítása gombra.  
 
 ### <a name="routing-to-basichttprelay-endpoints-is-not-supported-from-bridges-and-biztalk-services-portal-if-non-printable-characters-are-promoted-as-http-headers"></a>Útválasztás BasicHttpRelay végpontokhoz nem támogatott hidak és a BizTalk szolgáltatások portálja nem nyomtatható karakterek van előléptetve, mint a HTTP-fejlécek Ha
 Használatakor nem nyomtatható karakterek előléptetett tulajdonságainak üzenetek azokat az üzeneteket nem lehet továbbküldeni BasicHttpRelay kötésének használó továbbítási célhelyre. Az előléptetett tulajdonságok, amely is elérhető részét követési URL-kódolású a blobok és megbízhatatlan kódolt célhoz vannak.  
@@ -108,7 +108,7 @@ Vegye figyelembe a forgatókönyv a következő sorrendben:
 * A módosítások mentése nélkül zárja be a a .bcs fájlt (a Visual Studio lapján bezárásával).  
 * .Bcs újból megnyitni a megoldáskezelőjében.  
   Megfigyelheti, hogy míg a társított .bridgeconfig fájl a megadott új nevet, a entitás neve a Tervező felületére, továbbra is a régi név. Ha megpróbálja megnyitni az kattintson duplán a híd összetevő, akkor a következő hibaüzenet:  
-  `‘<old name>’ Entity’s associated file ‘<old name>.bridgeconfig’ does not exist`Ebben a forgatókönyvben elkerülje, győződjön meg arról, hogy az entitások BizTalk szolgáltatás projekt átnevezése után a módosítások mentése.  
+  `‘<old name>’ Entity’s associated file ‘<old name>.bridgeconfig’ does not exist` Ebben a forgatókönyvben elkerülje, győződjön meg arról, hogy az entitások BizTalk szolgáltatás projekt átnevezése után a módosítások mentése.  
   
 ### <a name="biztalk-service-project-builds-successfully-even-if-an-artifact-has-been-excluded-from-a-visual-studio-project"></a>BizTalk szolgáltatás projekt sikeresen hoz létre, akkor is, ha egy közbülső ki lett zárva a Visual Studio-projekt
 Fontolja meg egy olyan forgatókönyvet, ahol hozzáadhat egy összetevő (például egy XSD-fájlt) BizTalk szolgáltatás projektbe, (például megadásával, egy kérelem üzenet típusa) az adott összetevő bevonni és kizárni a Visual Studio-projekt. Ebben az esetben a projekt nem küld olyan hiba, amíg a törölt összetevő ugyanazon a helyen, ahol ezt a Visual Studio-projekt tartalmazzák-e a rendszer a lemezen.
@@ -223,5 +223,5 @@ Tegyük fel, a helyzetet, amelyben egy XML híd BizTalk szolgáltatás előzetes
 Ez a dokumentum a kifejezés "folyamatok" és "hidak" van megegyezik. Mindkét lényegében ugyanazt, amely, egy üzenet feldolgozása egysége BizTalk szolgáltatások telepíthetők jelenti.  
 
 ### <a name="concepts"></a>Alapelvek
-[BizTalk szolgáltatások](https://msdn.microsoft.com/library/azure/hh689864.aspx)   
+[BizTalk Services](https://msdn.microsoft.com/library/azure/hh689864.aspx)   
 

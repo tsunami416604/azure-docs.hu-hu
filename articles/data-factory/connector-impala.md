@@ -1,5 +1,5 @@
 ---
-title: Adatok másolása az Impala Azure Data Factory (előzetes verzió) használatával |} Microsoft Docs
+title: Adatok másolása az Impala Azure Data Factory használatával |} Microsoft Docs
 description: 'Útmutató: adatok másolása Impala támogatott fogadó adattárolókhoz a másolási tevékenység használatával a data factory-folyamathoz.'
 services: data-factory
 documentationcenter: ''
@@ -13,19 +13,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/15/2018
 ms.author: jingwang
-ms.openlocfilehash: 49e9c338128cc857347bbf052c19dc34dd08f9c6
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 366d0945bfac8546aa757648b6f797c2605a43ea
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "36337617"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37045867"
 ---
-# <a name="copy-data-from-impala-by-using-azure-data-factory-preview"></a>Adatok másolása az Impala Azure Data Factory (előzetes verzió) használatával
+# <a name="copy-data-from-impala-by-using-azure-data-factory"></a>Adatok másolása az Impala Azure Data Factory használatával
 
 Ez a cikk a másolási tevékenység használható az Azure Data Factory adatokat másolni Impala módját ismerteti. Buildekről nyújtanak a [másolási tevékenység áttekintése](copy-activity-overview.md) cikket, amely megadja a másolási tevékenység általános áttekintést.
-
-> [!NOTE]
-> Ez a cikk a Data Factory 2. verziójára vonatkozik, amely jelenleg előzetes verzióban érhető el. Ha a Data Factory, amely általában a rendelkezésre álló, 1 verzióját használja [másolási tevékenység az 1-es verziójú](v1/data-factory-data-movement-activities.md).
 
 > [!IMPORTANT]
 > Ez az összekötő jelenleg előzetes verzió. Próbálja ki, és visszajelzést. Ha függőséget szeretne felvenni a megoldásában található előzetes verziójú összekötőkre, lépjen kapcsolatba az [Azure-támogatással](https://azure.microsoft.com/support/).

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/22/2017
 ms.author: maxluk
-ms.openlocfilehash: ce8764e79d24d36eb3b162fb5f3f688b3e9fab3f
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 8a8344388e9d31846770d5989d1ddd43fbe15336
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31402002"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37047479"
 ---
 # <a name="capacity-planning-for-hdinsight-clusters"></a>A HDInsight-fürtök kapacitástervezését
 
@@ -114,5 +114,5 @@ Azonban néhány rögzített kvóta korlátozott, például egy Azure-előfizet�
 
 ## <a name="next-steps"></a>További lépések
 
-* [Állítsa be a HDInsight Hadoop, Spark, Kafka és több fürt](hdinsight-hadoop-provision-linux-clusters.md): megtudhatja, hogyan telepítheti és konfigurálhatja a fürtök hdinsight Hadoop, Spark, Kafka, interaktív struktúra, HBase, R Server, vagy a Storm.
+* [Állítsa be a HDInsight Hadoop, Spark, Kafka és több fürt](hdinsight-hadoop-provision-linux-clusters.md): megtudhatja, hogyan telepítheti és konfigurálhatja a fürtök hdinsight Hadoop, Spark, Kafka, interaktív struktúra, HBase, ML szolgáltatásokat, vagy a Storm.
 * [Fürt teljesítményének figyelése](hdinsight-key-scenarios-to-monitor.md): további információk a HDInsight-fürthöz, amelyek hatással lehetnek a fürt kapacitásának figyelése főbb forgatókönyvek.

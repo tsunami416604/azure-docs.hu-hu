@@ -14,15 +14,15 @@ ms.tgt_pltfrm: na
 ms.workload: Supportability
 ms.date: 03/27/2018
 ms.author: robb
-ms.openlocfilehash: f0efe96684d77fb83b69a4da12d312872da2f768
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: f7fd27dc9be161059dc62071fee33374106e18ef
+ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2018
-ms.locfileid: "30262874"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37061281"
 ---
 # <a name="service-health"></a>Service Health
-Szolgáltatás állapota egy testre szabható irányítópultot, amely nyomon követi a régiókban, ahol használhatja azokat az Azure-szolgáltatások állapotáról biztosít. Az irányítópulton például a folyamatos szolgáltatás problémák, a tervezett jövőbeli maintence vagy a megfelelő egészségügyi tanácsadók aktív események követheti nyomon. Események inaktív állapotba, ha azok elhelyezett állapotfigyelő előzményekben 90 napig. Végezetül segítségével a szolgáltatás irányítópult létrehozása és kezelése a szolgáltatás állapotát, de riasztások proaktív értesítést küldenek, ha a szolgáltatás problémák vannak érinti Önt.
+Szolgáltatás állapota egy testre szabható irányítópultot, amely nyomon követi a régiókban, ahol használhatja azokat az Azure-szolgáltatások állapotáról biztosít. Az irányítópulton nyomon követheti a folyamatban lévő szolgáltatásokkal kapcsolatos problémákról, küszöbönálló tervezett karbantartási vagy vonatkozó egészségügyi tanácsadók aktív események. Események inaktív állapotba, ha azok elhelyezett állapotfigyelő előzményekben 90 napig. Végezetül segítségével a szolgáltatás irányítópult létrehozása és kezelése a szolgáltatás állapotát, de riasztások proaktív értesítést küldenek, ha a szolgáltatás problémák vannak érinti Önt.
 
 ## <a name="service-health-events"></a>Szolgáltatás állapotával kapcsolatos események
 Szolgáltatás állapotát követi nyomon, hogy háromféle állapotával kapcsolatos események, amely hatással lehet az erőforrások:

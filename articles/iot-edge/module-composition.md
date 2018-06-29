@@ -1,37 +1,37 @@
 ---
 title: Az Azure IoT peremhálózati modul-összeállítást |} Microsoft Docs
-description: Ismerje meg, mi az Azure IoT peremhálózati modulok kerül, és hogyan felhasználhatók
+description: Ismerje meg, hogyan egy üzembe helyezési jegyzék deklarálja telepítése melyik modulokat, hogyan telepheti őket, és közöttük üzenet útvonalak létrehozásához.
 author: kgremban
 manager: timlt
 ms.author: kgremban
-ms.date: 03/23/2018
+ms.date: 06/06/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: c886d1d9dea120a243693c12ae861a58126daadc
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
-ms.translationtype: MT
+ms.openlocfilehash: 84a0698a61e68c141cc79dbc779f352aab528afa
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34631683"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37031481"
 ---
-# <a name="understand-how-iot-edge-modules-can-be-used-configured-and-reused---preview"></a>Megérteni, hogyan használható a IoT peremhálózati modulok, konfigurálva, és használja fel újra – előzetes
+# <a name="learn-how-to-use-deployment-manifests-to-deploy-modules-and-establish-routes"></a>Üzembe helyezési jegyzékben elmaradt modulok telepítése, és létrehozza a útvonalak használata
 
-Minden egyes IoT peremhálózati eszköz futtatja legalább két modulokat: $edgeAgent és $edgeHub, az IoT-Edge futásidejű alkotó. Ezeket a szabványos két mellett minden IoT peremhálózati eszköz futtatható több modul folyamatok tetszőleges számú végrehajtásához. Ezek a modulok egyszerre egy eszközhöz telepíti, meg kell oly módon, hogy melyik modulokat-e adva hogyan léphetnek kapcsolatba egymással. 
+Minden egyes IoT peremhálózati eszköz futtatja legalább két modulokat: $edgeAgent és $edgeHub, az IoT-Edge futásidejű alkotó. Ezeket a szabványos két mellett minden IoT peremhálózati eszköz futtatható több modul folyamatok tetszőleges számú végrehajtásához. Ezek a modulok egyszerre egy eszközhöz telepíti, meg kell tudni, melyik modulokat, és hogyan léphetnek kapcsolatba egymással deklarálható. 
 
 A *üzembe helyezési jegyzék* JSON-dokumentumok, amelyeket ismerteti:
 
-* Mely IoT peremhálózati modulokat kell telepíteni, azok létrehozását és kezelését beállítások mellett.
+* A konfiguráció a peremhálózati ügynök, beleértve a tároló-lemezkép minden modul, a hitelesítő adatok hozzáférési személyes tárolót nyilvántartó és hogyan modulokhoz kell létrehozni és felügyelt vonatkozó utasításokat.
 * A peremhálózati hub, beleértve, hogyan üzenetek flow modulok között, és végül az IoT-központ konfigurációját.
-* Másik lehetőségként értékek beállítása a modul twins kívánt tulajdonságait konfigurálhatja az egyes modul alkalmazásokat.
+* Szükség esetén a kívánt tulajdonságai a modul twins.
 
 Minden IoT peremhálózati eszköz egy üzembe helyezési jegyzék konfigurálni kell. Egy újonnan telepített IoT peremhálózati futásidejű jelentést készít egy hibakódot, amíg a egy érvényes jegyzékfájl konfigurálva. 
 
-Az Azure IoT peremhálózati oktatóanyagok hoz egy üzembe helyezési jegyzék haladjon végig a varázsló az Azure IoT peremhálózati portálon létre. Egy üzembe helyezési jegyzék programozott módon, REST- vagy a IoT Hub SDK is alkalmazhat. Tekintse meg [telepítés és figyelés] [ lnk-deploy] IoT peremhálózati központi telepítések további információt.
+Az Azure IoT peremhálózati oktatóanyagok hoz egy üzembe helyezési jegyzék haladjon végig a varázsló az Azure IoT peremhálózati portálon létre. Egy üzembe helyezési jegyzék programozott módon, REST- vagy a IoT Hub SDK is alkalmazhat. További információkért lásd: [megértéséhez IoT peremhálózati központi telepítések][lnk-deploy].
 
 ## <a name="create-a-deployment-manifest"></a>Hozzon létre egy üzembe helyezési jegyzék
 
-Magas szinten az üzembe helyezési jegyzék konfigurálja az IoT peremhálózati modulok IoT peremhálózati eszköz a telepített egy modul iker kívánt tulajdonságait. Ezek a modulok két mindig találhatók: a peremhálózati ügynök és a peremhálózati központ.
+Magas szinten az üzembe helyezési jegyzék konfigurálja az IoT peremhálózati modulok IoT peremhálózati eszköz a telepített egy modul iker kívánt tulajdonságait. Ezek a modulok két mindig találhatók: `$edgeAgent`, és `$edgeHub`.
 
 Érvénytelen egy üzembe helyezési jegyzék, amely csak az IoT-Edge futásidejű (ügynök és hub) tartalmazza.
 
@@ -44,6 +44,7 @@ A jegyzékfájl Ez a struktúra követi:
             "properties.desired": {
                 // desired properties of the Edge agent
                 // includes the image URIs of all modules
+                // includes container registry credentials
             }
         },
         "$edgeHub": {
@@ -67,7 +68,7 @@ A jegyzékfájl Ez a struktúra követi:
 
 ## <a name="configure-modules"></a>Modulok konfigurálása
 
-Létrehozó modulokat, amelyet központilag telepíteni szeretne a kívánt tulajdonságait, mellett kell tájékoztatása az IoT-Edge futásidejű a telepítést. Minden modul konfigurációjának és kezelésének információi belül kerül a **$edgeAgent** szükséges tulajdonságai. Ezt az információt a peremhálózati ügynök önmagát konfigurációs paramétereket tartalmazza. 
+Meg kell adnia az IoT-Edge futásidejű a modulok telepítése a központi telepítés. Minden modul konfigurációjának és kezelésének információi belül kerül a **$edgeAgent** szükséges tulajdonságai. Ezt az információt a peremhálózati ügynök önmagát konfigurációs paramétereket tartalmazza. 
 
 Vagy szerepelnie kell függvénykötésnek tulajdonságok teljes listáját lásd: [a peremhálózati ügynök és a peremhálózati hub tulajdonságainak](module-edgeagent-edgehub.md).
 
@@ -78,6 +79,11 @@ A $edgeAgent tulajdonságok hajtsa végre ezt a struktúrát:
     "properties.desired": {
         "schemaVersion": "1.0",
         "runtime": {
+            "settings":{
+                "registryCredentials":{ // give the edge agent access to container images that aren't public
+                    }
+                }
+            }
         },
         "systemModules": {
             "edgeAgent": {
@@ -88,7 +94,7 @@ A $edgeAgent tulajdonságok hajtsa végre ezt a struktúrát:
             }
         },
         "modules": {
-            "{module1}": { //optional
+            "{module1}": { // optional
                 // configuration and management details
             },
             "{module2}": { // optional
@@ -158,7 +164,7 @@ A fogadó határozza meg, ahol az üzenetek küldése történik-e. Ez a követk
 | `$upstream` | Az üzenet küldése az IoT hubhoz |
 | `BrokeredEndpoint("/modules/{moduleId}/inputs/{input}")` | A bemeneti üzenet küldése `{input}` modul `{moduleId}` |
 
-Fontos megjegyezni, hogy él hub: legalább egyszeri garanciákat nyújt, ami azt jelenti, hogy üzenetek helyi tárolásának abban az esetben egy útvonalat nem lehet kézbesíteni az üzenetet a fogadó, például a peremhálózati hub nem lehet csatlakozni az IoT-központ vagy a cél modul nincs csatlakoztatva.
+Az IoT él, legalább egyszeri garanciákat nyújt. A peremhálózati hub helyileg, ha egy olyan útvonalat nem lehet kézbesíteni az üzenetet a fogadó tárolja az üzeneteket. Például ha a biztonsági központ nem tud csatlakozni az IoT-központ vagy a cél modul nincs csatlakoztatva.
 
 Biztonsági központ tárolja az üzeneteket a megadott idő a `storeAndForwardConfiguration.timeToLiveSecs` tulajdonsága a [peremhálózati hub szükséges tulajdonságok](module-edgeagent-edgehub.md).
 
@@ -168,7 +174,7 @@ Az üzembe helyezési jegyzék kívánt tulajdonságokat adhat meg a modul iker 
 
 Ha egy modul iker kívánt tulajdonságok az üzembe helyezési jegyzékben nincs megadva, az IoT-központ nem módosítják a modul iker bármely olyan módon, és állítsa be a kívánt tulajdonságokat programozott módon lesz.
 
-Ugyanazt a mechanizmust, amely lehetővé teszi az eszköz twins módosítása modul twins módosítására szolgálnak. Tekintse meg a [eszköz iker – útmutató fejlesztőknek](../iot-hub/iot-hub-devguide-device-twins.md) további tájékoztatást talál.   
+Ugyanazt a mechanizmust, amely lehetővé teszi az eszköz twins módosítása modul twins módosítására szolgálnak. További információkért lásd: a [eszköz iker – útmutató fejlesztőknek](../iot-hub/iot-hub-devguide-device-twins.md).   
 
 ## <a name="deployment-manifest-example"></a>Manifest központi telepítés példája
 
@@ -176,72 +182,79 @@ Ez egy példa egy központi telepítési jegyzék JSON-dokumentum.
 
 ```json
 {
-"moduleContent": {
+  "moduleContent": {
     "$edgeAgent": {
-        "properties.desired": {
-            "schemaVersion": "1.0",
-            "runtime": {
-                "type": "docker",
-                "settings": {
-                    "minDockerVersion": "v1.25",
-                    "loggingOptions": ""
-                }
-            },
-            "systemModules": {
-                "edgeAgent": {
-                    "type": "docker",
-                    "settings": {
-                    "image": "microsoft/azureiotedge-agent:1.0-preview",
-                    "createOptions": ""
-                    }
-                },
-                "edgeHub": {
-                    "type": "docker",
-                    "status": "running",
-                    "restartPolicy": "always",
-                    "settings": {
-                    "image": "microsoft/azureiotedge-hub:1.0-preview",
-                    "createOptions": ""
-                    }
-                }
-            },
-            "modules": {
-                "tempSensor": {
-                    "version": "1.0",
-                    "type": "docker",
-                    "status": "running",
-                    "restartPolicy": "always",
-                    "settings": {
-                    "image": "microsoft/azureiotedge-simulated-temperature-sensor:1.0-preview",
-                    "createOptions": "{}"
-                    }
-                },
-                "filtermodule": {
-                    "version": "1.0",
-                    "type": "docker",
-                    "status": "running",
-                    "restartPolicy": "always",
-                    "settings": {
-                    "image": "myacr.azurecr.io/filtermodule:latest",
-                    "createOptions": "{}"
-                    }
-                }
+      "properties.desired": {
+        "schemaVersion": "1.0",
+        "runtime": {
+          "type": "docker",
+          "settings": {
+            "minDockerVersion": "v1.25",
+            "loggingOptions": "",
+            "registryCredentials": {
+              "ContosoRegistry": {
+                "username": "myacr",
+                "password": "{password}",
+                "address": "myacr.azurecr.io"
+              }
             }
+          }
+        },
+        "systemModules": {
+          "edgeAgent": {
+            "type": "docker",
+            "settings": {
+              "image": "microsoft/azureiotedge-agent:1.0-preview",
+              "createOptions": ""
+            }
+          },
+          "edgeHub": {
+            "type": "docker",
+            "status": "running",
+            "restartPolicy": "always",
+            "settings": {
+              "image": "microsoft/azureiotedge-hub:1.0-preview",
+              "createOptions": ""
+            }
+          }
+        },
+        "modules": {
+          "tempSensor": {
+            "version": "1.0",
+            "type": "docker",
+            "status": "running",
+            "restartPolicy": "always",
+            "settings": {
+              "image": "mcr.microsoft.com/azureiotedge-simulated-temperature-sensor:1.0",
+              "createOptions": "{}"
+            }
+          },
+          "filtermodule": {
+            "version": "1.0",
+            "type": "docker",
+            "status": "running",
+            "restartPolicy": "always",
+            "settings": {
+              "image": "myacr.azurecr.io/filtermodule:latest",
+              "createOptions": "{}"
+            }
+          }
         }
+      }
     },
     "$edgeHub": {
-        "properties.desired": {
-            "schemaVersion": "1.0",
-            "routes": {
-                "sensorToFilter": "FROM /messages/modules/tempSensor/outputs/temperatureOutput INTO BrokeredEndpoint(\"/modules/filtermodule/inputs/input1\")",
-                "filterToIoTHub": "FROM /messages/modules/filtermodule/outputs/output1 INTO $upstream"
-            },
-            "storeAndForwardConfiguration": {
-                "timeToLiveSecs": 10
-            }
+      "properties.desired": {
+        "schemaVersion": "1.0",
+        "routes": {
+          "sensorToFilter": "FROM /messages/modules/tempSensor/outputs/temperatureOutput INTO BrokeredEndpoint(\"/modules/filtermodule/inputs/input1\")",
+          "filterToIoTHub": "FROM /messages/modules/filtermodule/outputs/output1 INTO $upstream"
+        },
+        "storeAndForwardConfiguration": {
+          "timeToLiveSecs": 10
         }
+      }
     }
-}
+  }
 }
 ```
 

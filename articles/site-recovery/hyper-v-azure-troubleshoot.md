@@ -9,12 +9,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 04/09/2018
 ms.author: rayne
-ms.openlocfilehash: 95a33c80b1aeef7fbf8bea0ab760bbd66babdac8
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 8b16f495a21ff0b3da415390877777650a9fbb82
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31427089"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37048203"
 ---
 # <a name="troubleshoot-hyper-v-to-azure-replication-and-failover"></a>Hyper-V Azure replikációs és feladatátvételi hibaelhárítása
 
@@ -58,7 +58,7 @@ Elhárítása kezdeti és folyamatos replikálási az alábbiak szerint:
 5. Ellenőrizze, hogy ha a Hyper-V-gazdagépek képesek-e csatlakozni az Azure storage blob URL-CÍMÉT. Ehhez az szükséges, válassza ki, és ellenőrizze **cbengine.exe**. Nézet **TCP-kapcsolatok** a gazdagép és az Azure storage-blob ellenőrzésére.
 6. Az alább ismertetett teljesítménnyel kapcsolatos problémák ellenőrzése
     
-### <a name="performance-issues"></a>teljesítménnyel kapcsolatos problémák
+### <a name="performance-issues"></a>Teljesítménnyel kapcsolatos problémák
 
 Hálózati sávszélességgel kapcsolatos korlátozásai hatással lehet a replikáció. Problémamegoldás az alábbiak szerint:
 
@@ -116,7 +116,7 @@ Az alkalmazáskonzisztens pillanatkép a virtuális Gépen belül az alkalmazás
         - A számláló: "írási bájt / mp"</br>
         - Az adatok változási sebessége növeli vagy továbbra is magas szinten, attól függően, hogy hogyan foglalt a virtuális gép vagy az alkalmazások vannak.
         - Az átlagos forrás lemez adatforgalommal szabványos Site Recovery-tároló 2 MB/s. [További információ](hyper-v-deployment-planner-analyze-report.md#azure-site-recovery-limits)
-    - Ezen kívül is [ellenőrizze a tárolási méretezhetőségi célok](https://docs.microsoft.com/azure/storage/common/storage-scalability-targets.md#scalability-targets-for-a-storage-account).
+    - Ezen kívül is [ellenőrizze a tárolási méretezhetőségi célok](https://docs.microsoft.com/azure/storage/common/storage-scalability-targets#scalability-targets-for-a-storage-account).
 8. Futtassa a [telepítési Planner](hyper-v-deployment-planner-run.md).
 9. Tekintse át a javaslatok [hálózati](hyper-v-deployment-planner-analyze-report.md#recommendations-with-available-bandwidth-as-input) és [tárolási](hyper-v-deployment-planner-analyze-report.md#recommendations-with-available-bandwidth-as-input).
 
@@ -135,7 +135,7 @@ Az alkalmazáskonzisztens pillanatkép a virtuális Gépen belül az alkalmazás
 
 ### <a name="common-errors"></a>Gyakori hibák
 
-**Hibakód:** | **Üzenet** | **Részletek**
+**Hibakód:** | **üzenet** | **Részletek**
 --- | --- | ---
 **0x800700EA** | "A Hyper-V VSS pillanatképkészlet a virtuális gép létrehozása nem sikerült: több adat. (0x800700EA). VSS-pillanatkép beállított-létrehozás sikertelen lehet, ha a biztonsági mentési művelet van folyamatban.<br/><br/> Nem sikerült a virtuális gép replikációs művelet: több adat. " | Ellenőrizze, hogy a virtuális gép rendelkezik-e dinamikus lemez engedélyezve van. Ez a funkció nem támogatott.
 **0x80070032** | "Hyper-V Kötet árnyékmásolata másolási kérelmező nem lehet kapcsolódni a virtuális gép <. / VMname >, mert a verziója nem egyezik meg a Hyper-V által várt verzió | A legújabb Windows-frissítések telepítésének ellenőrzése.<br/><br/> [Frissítés](https://docs.microsoft.com/windows-server/virtualization/hyper-v/manage/manage-hyper-v-integration-services.md#keep-integration-services-up-to-date) az integrációs szolgáltatásokat a legújabb verzióra.

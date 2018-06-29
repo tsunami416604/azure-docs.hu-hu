@@ -13,21 +13,21 @@ ms.topic: conceptual
 ms.date: 03/27/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: d0826db686b7fdea8389944b4b56f549ea03f751
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 5cfab02fc248139c76bd6123ac942832f8e1a21a
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34621047"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37052511"
 ---
 # <a name="add-fault-tolerance-in-copy-activity-by-skipping-incompatible-rows"></a>A hibatűrés hozzáadása a másolási tevékenység nem kompatibilis sorok kihagyása
 
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [1. verzió – Általánosan elérhető](data-factory-copy-activity-fault-tolerance.md)
-> * [2. verzió – Előzetes verzió](../copy-activity-fault-tolerance.md)
+> * [1-es verziójával](data-factory-copy-activity-fault-tolerance.md)
+> * [(Az aktuális verzió) 2-es verzió](../copy-activity-fault-tolerance.md)
 
 > [!NOTE]
-> Ez a cikk a Data Factory általánosan elérhető 1. verziójára vonatkozik. Lásd a 2-es verziójának a Data Factory szolgáltatásnak, amely jelenleg előzetes verzióban érhető, használatakor [hibatűrés a Data Factory 2-es verzióját a másolási tevékenység](../copy-activity-fault-tolerance.md).
+> Ez a cikk a Data Factory 1 verziójára vonatkozik. A Data Factory szolgáltatásnak aktuális verziójának használatakor lásd [hibatűrés a másolási tevékenység az adat-előállító](../copy-activity-fault-tolerance.md).
 
 Az Azure Data Factory [másolási tevékenység](data-factory-data-movement-activities.md) kétféleképpen Ön szeretné kezelni a forrás és a fogadó adattároló közötti másolás nem kompatibilis sorok:
 

@@ -14,20 +14,20 @@ ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 5731e4249c94e77846f07870e4bba28aab70682e
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 7ece34809734478ddb52c12d5dbd92291231f439
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34619524"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37045687"
 ---
 # <a name="move-data-from-amazon-redshift-using-azure-data-factory"></a>Helyezze át az adatokat az Amazon Redshift Azure Data Factory használatával
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [1. verzió – Általánosan elérhető](data-factory-amazon-redshift-connector.md)
-> * [2. verzió – Előzetes verzió](../connector-amazon-redshift.md)
+> * [1-es verziójával](data-factory-amazon-redshift-connector.md)
+> * [(Az aktuális verzió) 2-es verzió](../connector-amazon-redshift.md)
 
 > [!NOTE]
-> Ez a cikk a Data Factory általánosan elérhető 1. verziójára vonatkozik. Lásd a 2-es verziójának a Data Factory szolgáltatásnak, amely jelenleg előzetes verzióban érhető, használatakor [Amazon Redshift összekötőt, a V2](../connector-amazon-redshift.md).
+> Ez a cikk a Data Factory 1 verziójára vonatkozik. A Data Factory szolgáltatásnak aktuális verziójának használatakor lásd [Amazon Redshift összekötőt, a V2](../connector-amazon-redshift.md).
 
 Ez a cikk ismerteti, hogyan a másolási tevékenység során az Azure Data Factoryben az adatok mozgatása Amazon Redshift. A cikk épít, a [adatok mozgása tevékenységek](data-factory-data-movement-activities.md) cikk, amelynek során adatátvitel a másolási tevékenység az általános áttekintést. 
 
@@ -67,8 +67,8 @@ A következő táblázat ismerteti a JSON-elemek szerepelnek, amelyek az Amazon 
 | **server** |A kiszolgáló IP-címét vagy állomásnevét kiszolgálónevét az Amazon Redshift. |Igen |
 | **port** |A TCP-portot, amelyen az Amazon Redshift kiszolgáló ügyfélkapcsolatokat száma. |Nem (alapértelmezett érték 5439) |
 | **database** |Az Amazon Redshift adatbázis nevét. |Igen |
-| **Felhasználónév** |A felhasználó, aki hozzáféréssel rendelkezik az adatbázishoz neve. |Igen |
-| **Jelszó** |A felhasználói fiók jelszavát. |Igen |
+| **felhasználónév** |A felhasználó, aki hozzáféréssel rendelkezik az adatbázishoz neve. |Igen |
+| **jelszó** |A felhasználói fiók jelszavát. |Igen |
 
 ## <a name="dataset-properties"></a>Adatkészlet tulajdonságai
 
@@ -337,12 +337,12 @@ A következő megfeleltetéseket szolgálnak, amikor a másolási tevékenység 
 | DECIMÁLIS |Decimális |
 | VALÓS |Önálló |
 | A KÉTSZERES PONTOSSÁG |Dupla |
-| LOGIKAI ÉRTÉK |Karakterlánc |
-| KARAKTER |Karakterlánc |
-| VARCHAR |Karakterlánc |
+| LOGIKAI ÉRTÉK |Sztring |
+| KARAKTER |Sztring |
+| VARCHAR |Sztring |
 | DATE |DateTime |
 | IDŐBÉLYEG |DateTime |
-| SZÖVEG |Karakterlánc |
+| SZÖVEG |Sztring |
 
 ## <a name="map-source-to-sink-columns"></a>Térkép forrás oszlopok gyűjtése
 A forrás adatkészletben levő oszlopok hozzárendelése oszlop szerepel a fogadó dataset, lásd: [Azure Data Factory dataset oszlopai leképezési](data-factory-map-columns.md).

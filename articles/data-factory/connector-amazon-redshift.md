@@ -13,23 +13,20 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/07/2018
 ms.author: jingwang
-ms.openlocfilehash: 5787f944211c5dd6c0c83e7dc10170d8a0cd9a23
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 6d36733b63645fd86580ccdc5af756739f77338c
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34616610"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37048145"
 ---
 # <a name="copy-data-from-amazon-redshift-using-azure-data-factory"></a>Adatok másolása az Azure Data Factory használatával Amazon Redshift
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [1. verzió – Általánosan elérhető](v1/data-factory-amazon-redshift-connector.md)
-> * [2. verzió – Előzetes verzió](connector-amazon-redshift.md)
+> * [1-es verziójával](v1/data-factory-amazon-redshift-connector.md)
+> * [Aktuális verzió](connector-amazon-redshift.md)
 
 
 Ez a cikk ismerteti, hogyan használható a másolási tevékenység során az Azure Data Factory adatok másolása az Amazon Redshift. Buildekről nyújtanak a [másolása tevékenység áttekintése](copy-activity-overview.md) cikket, amely megadja a másolási tevékenység általános áttekintést.
-
-> [!NOTE]
-> Ez a cikk a Data Factory 2. verziójára vonatkozik, amely jelenleg előzetes verzióban érhető el. A Data Factory szolgáltatásnak, amely általánosan elérhető (GA), 1 verziójának használatakor lásd [Amazon Redshift connnector a V1](v1/data-factory-amazon-redshift-connector.md).
 
 ## <a name="supported-capabilities"></a>Támogatott képességei
 
@@ -201,7 +198,7 @@ Ez a minta a használati eset, a másolási tevékenység eltávolítást adatai
                 "linkedServiceName": "AzureStorageLinkedService",
                 "path": "adfstagingcopydata"
             },
-            "cloudDataMovementUnits": 32
+            "dataIntegrationUnits": 32
         }
     }
 ]
@@ -214,17 +211,17 @@ Az adatok másolása Amazon Redshift, amikor az Azure Data Factory ideiglenes ad
 | Amazon Redshift adattípus | Data factory ideiglenes adattípus |
 |:--- |:--- |
 | BIGINT |Int64 |
-| LOGIKAI ÉRTÉK |Karakterlánc |
-| KARAKTER |Karakterlánc |
+| LOGIKAI ÉRTÉK |Sztring |
+| KARAKTER |Sztring |
 | DATE |DateTime |
 | DECIMÁLIS |Decimális |
 | A KÉTSZERES PONTOSSÁG |Dupla |
 | EGÉSZ SZÁM |Int32 |
 | VALÓS |Önálló |
 | SMALLINT |Int16 |
-| SZÖVEG |Karakterlánc |
+| SZÖVEG |Sztring |
 | IDŐBÉLYEG |DateTime |
-| VARCHAR |Karakterlánc |
+| VARCHAR |Sztring |
 
 ## <a name="next-steps"></a>További lépések
 Támogatott források és mosdók által a másolási tevékenység során az Azure Data Factory adattárolókhoz listájáért lásd: [adattárolókhoz támogatott](copy-activity-overview.md##supported-data-stores-and-formats).

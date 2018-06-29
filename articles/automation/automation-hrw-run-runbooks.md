@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 04/25/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: a4cf32ea7b77db3fc78a404063b8a4d69ecebf58
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 32cc1a436521574917c8e52b2fa4e045d32a4f09
+ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34195709"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37062574"
 ---
 # <a name="running-runbooks-on-a-hybrid-runbook-worker"></a>A hibrid forgatókönyv-feldolgozók a futó runbookot
 
@@ -157,13 +157,9 @@ Mentse a *Export-RunAsCertificateToHybridWorker* a számítógépet a runbook eg
 
 Feladatok kezelése némileg eltérő hibrid forgatókönyv-feldolgozók mint Azure védőfalak működnek. Egy fő különbség az, hogy a hibrid forgatókönyv-feldolgozók feladat időtartama korlátozva van. Ha a hosszan futó runbook kívánt győződjön meg arról, hogy az refs lehetséges újraindítja a számítógépet, például ha a számítógép, amelyen a hibrid feldolgozó újraindul. Ha hibrid feldolgozó gazdaszámítógépen újraindul, majd minden futó runbook-feladat újraindítja az elejéről, vagy a PowerShell-munkafolyamati forgatókönyvek a legutóbbi ellenőrzőponttól. Ha a runbook-feladatok újraindítása legfeljebb 3-szor, majd azt fel van függesztve.
 
-## <a name="troubleshooting-runbooks-on-hybrid-runbook-worker"></a>A hibrid forgatókönyv-feldolgozó hibaelhárítási runbookok
+## <a name="troubleshoot"></a>Hibaelhárítás
 
-Naplók minden hibridfeldolgozó C:\ProgramData\Microsoft\System Center\Orchestrator\7.2\SMA\Sandboxes, helyileg tárolja. Hibrid feldolgozók is rögzítse a hibák és események a a Windows eseménynaplóban **alkalmazások és szolgáltatások Logs\Microsoft-SMA\Operational**. A munkavégző végre runbookokkal kapcsolatos eseményeket jegyez **alkalmazások és szolgáltatások Logs\Microsoft-Automation\Operational**. A **Microsoft-SMA** napló a runbook-feladat a dolgozó és a runbook a feldolgozási leküldött kapcsolódó számos további eseményeket is tartalmazza. Amíg a **Microsoft-automatizálás** Eseménynapló nem rendelkezik a runbook végrehajtása hibaelhárítás védelmével adatokkal sok eseményt, a runbook-feladat eredményének tartalmaz.
-
-[Runbook kimenet és üzenetek](automation-runbook-output-and-messages.md) az Azure Automation hibrid küldi munkavállalók hasonlóan a runbook-feladatok futtatása a felhőben. A részletes és az állapot adatfolyamokat a módon más runbookok is engedélyezheti.
-
-Ha a runbookok nem sikeres befejezését, és a feladat összegzése állapotot jelez, **felfüggesztett**, tekintse át a hibaelhárítási [hibrid forgatókönyv-feldolgozó: A runbook-feladat leállításafelfüggesztettállapotú](automation-troubleshooting-hybrid-runbook-worker.md#a-runbook-job-terminates-with-a-status-of-suspended).
+Ha a runbookok nem sikeres befejezését és az összefoglaló feladat állapota **felfüggesztett**, tekintse át a hibaelhárítási útmutató [runbook végrehajtása sikertelen](troubleshoot/hybrid-runbook-worker.md#runbook-execution-fails).
 
 ## <a name="next-steps"></a>További lépések
 

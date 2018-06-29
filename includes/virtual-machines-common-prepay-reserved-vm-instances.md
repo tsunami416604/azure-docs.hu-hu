@@ -1,15 +1,15 @@
 ---
 ms.topic: include
-ms.openlocfilehash: 32fdc23aded78ca491fbde2ef5c76247c56d0c4c
-ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
+ms.openlocfilehash: 509d2bc3f58c57a3e2e15eed2ea2c70ed17856f3
+ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/21/2018
-ms.locfileid: "36313744"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37063697"
 ---
 # <a name="prepay-for-virtual-machines-with-azure-reserved-vm-instances"></a>A virtuális gépek Azure fenntartott virtuális gép osztályt előre fizetés
 
-A virtuális gépek előre fizetés léptékű és költségtakarékosabb munkavégzésben Azure fenntartott virtuális gép (VM) osztályt. További információkért lásd: [Azure fenntartott példányok ajánlat](https://azure.microsoft.com/pricing/reserved-vm-instances/).
+A virtuális gépek előre fizetés léptékű és költségtakarékosabb munkavégzésben Azure fenntartott virtuális gép (VM) osztályt. További információkért lásd: [Azure fenntartott Virtuálisgép-példányok ajánlat](https://azure.microsoft.com/pricing/reserved-vm-instances/).
 
 Megvásárolhatja Azure fenntartott példányok a [Azure-portálon](https://portal.azure.com). Vásárolhat egy fenntartott példány:
 -   Legalább egy vállalati vagy használatalapú előfizetés tulajdonosának szerepkört kell lennie.
@@ -50,12 +50,12 @@ A azonosításához az alább ismertetett módszerek egyikét kell használnia a
 ## <a name="next-steps"></a>További lépések 
 A fenntartott példány kedvezményeket automatikusan alkalmazzák a futó virtuális gépek, amelyek megfelelnek a fenntartott példány hatókör és attribútumok számát. Frissítheti a hatókör keresztül fenntartott példány [Azure-portálon](https://portal.azure.com), PowerShell, a parancssori felületen vagy az API-n keresztül. 
 
-A fenntartott példánya kezelése című témakörben talál [Azure fenntartott példányok kezelése](../articles/billing/billing-manage-reserved-vm-instance.md).
+A fenntartott példánya kezelése című témakörben talál [kezelése az Azure-ban fenntartott példányok](../articles/billing/billing-manage-reserved-vm-instance.md).
 
 Azure fenntartott példányok kapcsolatos további tudnivalókért tekintse meg a következő cikkeket:
 
-- [Kevesebbet költeni a virtuális gépek fenntartott osztályt](../articles/billing/billing-save-compute-costs-reservations.md)
-- [Az Azure fenntartott példányok kezelése](../articles/billing/billing-manage-reserved-vm-instance.md)
+- [Mik azok a Azure fenntartott Virtuálisgép-példányok?](../articles/billing/billing-save-compute-costs-reservations.md)
+- [Az Azure-ban fenntartott példányok kezelése](../articles/billing/billing-manage-reserved-vm-instance.md)
 - [A fenntartott példány kedvezményeket alkalmazásának a módját ismertetése](../articles/billing/billing-understand-vm-reservation-charges.md)
 - [A használatalapú fizetéses előfizetésre fenntartott példány használatának megértéséhez](../articles/billing/billing-understand-reserved-instance-usage.md)
 - [A nagyvállalati beléptetés használata fenntartott példány ismertetése](../articles/billing/billing-understand-reserved-instance-usage-ea.md)

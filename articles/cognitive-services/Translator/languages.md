@@ -6,18 +6,19 @@ author: Jann-Skotdal
 manager: chriswendt1
 ms.service: cognitive-services
 ms.component: translator-text
-ms.topic: article
-ms.date: 10/30/2017
+ms.topic: conceptual
+ms.date: 06/27/2018
 ms.author: v-jansko
-ms.openlocfilehash: f388e9e39809774f307c0d1752e29f34b041ed13
-ms.sourcegitcommit: 50f82f7682447245bebb229494591eb822a62038
+ms.openlocfilehash: 5542c1c0eee5e4c7c85c566908dc8999b118f06e
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35350067"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37032451"
 ---
-# <a name="supported-languages-in-the-microsoft-translator-text-api"></a>A Microsoft Translator szöveg API támogatott nyelvek 
-A Microsoft Translator szöveg API a következő nyelveket támogatja szöveg a fordításhoz. Neurális gépi fordítás (NMT) kiváló minőségű AI táplált gép fordítások új szabványa, és az alapértelmezett V3 a fordító szöveg API használatával elérhető a Neurális rendszer esetén érhető el. Neurális gépi fordítás érhető el a V2 a "generalnn" kategóriája használatával. 
+# <a name="supported-languages-in-the-microsoft-translator-text-api"></a>A Microsoft Translator szöveg API támogatott nyelvek
+
+A Microsoft Translator szöveg API a következő nyelveket támogatja szöveg a fordításhoz. Neurális gépi fordítás (NMT) kiváló minőségű AI táplált gép fordítások új szabványa, és az alapértelmezett V3 a fordító szöveg API használatával elérhető a Neurális rendszer esetén érhető el. Neurális gépi fordítás érhető el a V2 a "generalnn" kategóriája használatával.
 
 [További információ a gépi fordítás működése](https://www.microsoft.com/translator/mt.aspx)
 
@@ -25,6 +26,7 @@ A Microsoft Translator szöveg API a következő nyelveket támogatja szöveg a 
 |:----------- |:-------:|:-------------:|
 | afrikaans      | Statisztikai |`af`          |
 | arab      | Neurális | `ar`          |
+| Arab, Levantine    | Neurális | `apc`
 | Bengáli      | Neurális |`bn`          |
 | bosnyák (latin betűs)      | Statisztikai |`bs`          |
 | bolgár     |  Neurális |`bg`          |
@@ -116,7 +118,7 @@ A Transliterate metódus a következő nyelveket támogatja. A "/", a "<>--" azt
 
 ## <a name="dictionary"></a>Könyvtár
 
-A szótár vagy a Keresés és példákat módszerekkel angol arról a következő nyelveket támogatja. 
+A szótár vagy a Keresés és példákat módszerekkel angol arról a következő nyelveket támogatja.
 
 | Nyelv    | Nyelvkód |
 |:----------- |:-------------:|
@@ -173,12 +175,12 @@ A szótár vagy a Keresés és példákat módszerekkel angol arról a következ
 
 ## <a name="languages-detected-by-the-detect-method"></a>A hibakeresés metódus által észlelt nyelvek
 
-A következő nyelvek észlelik a hibakeresés metódust. Előfordulhat, hogy észlelni észleli a nyelveket, amelyek a Microsoft Translator nem fordítható le. 
+A következő nyelvek észlelik a hibakeresés metódust. Előfordulhat, hogy észlelni észleli a nyelveket, amelyek a Microsoft Translator nem fordítható le.
 
-| Nyelv    | 
+| Nyelv    |
 |:----------- |
 | afrikaans |
-| albán | 
+| albán |
 | arab |
 | baszk |
 | belorusz |
@@ -248,7 +250,7 @@ A következő nyelvek észlelik a hibakeresés metódust. Előfordulhat, hogy é
 
 Elérheti V3.0 szöveg API a nyelvek művelet programozott módon támogatott nyelvek listáját. Angol, vagy bármely más támogatott nyelvi szolgáltatás, a nyelvi kódot, valamint a nyelv nevének a listában tekintheti meg. Amint elérhetővé válnak az új nyelvek a lista automatikusan frissíti a Microsoft Translator szolgáltatás.
 
-[Nyelvek művelet referenciadokumentációt megtekintése](/reference/languages.md)
+[Nyelvek művelet referenciadokumentációt megtekintése](reference/v3-0-languages.md)
 
 ## <a name="access-the-list-on-the-microsoft-translator-website"></a>Hozzáférés a Microsoft Translator webhelyen listája
 

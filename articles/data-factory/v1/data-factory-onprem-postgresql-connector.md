@@ -14,20 +14,20 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 1d566a719abaf09146965a677868d363d33d10e5
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 189adf27795172bb08b52af1a9e3428d854a50a0
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34622764"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37046730"
 ---
 # <a name="move-data-from-postgresql-using-azure-data-factory"></a>Adatok áthelyezése az Azure Data Factory használatával PostgreSQL
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [1. verzió – Általánosan elérhető](data-factory-onprem-postgresql-connector.md)
-> * [2. verzió – Előzetes verzió](../connector-postgresql.md)
+> * [1-es verziójával](data-factory-onprem-postgresql-connector.md)
+> * [(Az aktuális verzió) 2-es verzió](../connector-postgresql.md)
 
 > [!NOTE]
-> Ez a cikk a Data Factory általánosan elérhető 1. verziójára vonatkozik. Lásd a 2-es verziójának a Data Factory szolgáltatásnak, amely jelenleg előzetes verzióban érhető, használatakor [PostgreSQL-összekötőt, a V2](../connector-postgresql.md).
+> Ez a cikk a Data Factory 1 verziójára vonatkozik. A Data Factory szolgáltatásnak aktuális verziójának használatakor lásd [PostgreSQL-összekötőt, a V2](../connector-postgresql.md).
 
 
 Ez a cikk ismerteti, hogyan a másolási tevékenység az Azure Data Factoryben az adatok mozgatása egy helyszíni PostgreSQL-adatbázishoz. Buildekről nyújtanak a [adatok mozgása tevékenységek](data-factory-data-movement-activities.md) cikk, amelynek során adatátvitel a másolási tevékenység az általános áttekintést.
@@ -312,41 +312,41 @@ Amikor adatokat PostgreSQL helyezi át, a következő megfeleltetéseket segíts
 | bigserial |serial8 |Int64 |
 | bit [(n)] | |Byte [], karakterlánc | &nbsp;
 | bit különböző [(n)] |varbit |Byte [], karakterlánc |
-| logikai |logikai érték |Logikai |
+| logikai |Logikai érték |Logikai |
 | Mezőbe | |Byte [], karakterlánc |&nbsp;
 | bytea | |Byte [], karakterlánc |&nbsp;
-| [(n)] karakter |a char [(n)] |Karakterlánc |
-| [(n)] eltérő karaktert |varchar [(n)] |Karakterlánc |
-| CID | |Karakterlánc |&nbsp;
-| CIDR | |Karakterlánc |&nbsp;
+| [(n)] karakter |a char [(n)] |Sztring |
+| [(n)] eltérő karaktert |varchar [(n)] |Sztring |
+| CID | |Sztring |&nbsp;
+| CIDR | |Sztring |&nbsp;
 | kör | |Byte [], karakterlánc |&nbsp;
 | dátum | |Dátum és idő |&nbsp;
-| DateRange | |Karakterlánc |&nbsp;
+| DateRange | |Sztring |&nbsp;
 | a kétszeres pontosság |FLOAT8 |Dupla |
 | INet | |Byte [], karakterlánc |&nbsp;
-| intarry | |Karakterlánc |&nbsp;
-| int4range | |Karakterlánc |&nbsp;
-| int8range | |Karakterlánc |&nbsp;
+| intarry | |Sztring |&nbsp;
+| int4range | |Sztring |&nbsp;
+| int8range | |Sztring |&nbsp;
 | egész szám |int, int4 |Int32 |
 | időköz [mezők] [(p)] | |Időtartomány |&nbsp;
-| JSON | |Karakterlánc |&nbsp;
+| JSON | |Sztring |&nbsp;
 | jsonb | |Byte] |&nbsp;
-| sor | |Byte [], karakterlánc |&nbsp;
+| Sor | |Byte [], karakterlánc |&nbsp;
 | lseg | |Byte [], karakterlánc |&nbsp;
 | macaddr | |Byte [], karakterlánc |&nbsp;
 | pénz | |Decimális |&nbsp;
 | numerikus [(p, s)] |Decimal [(p, s)] |Decimális |
-| numrange | |Karakterlánc |&nbsp;
+| numrange | |Sztring |&nbsp;
 | OID | |Int32 |&nbsp;
 | elérési út | |Byte [], karakterlánc |&nbsp;
 | pg_lsn | |Int64 |&nbsp;
-| pont | |Byte [], karakterlánc |&nbsp;
+| Pont | |Byte [], karakterlánc |&nbsp;
 | Sokszög | |Byte [], karakterlánc |&nbsp;
 | valós |float4 |Önálló |
 | smallint |int2 |Int16 |
 | smallserial |serial2 |Int16 |
 | gyártási |serial4 |Int32 |
-| szöveg | |Karakterlánc |&nbsp;
+| szöveg | |Sztring |&nbsp;
 
 ## <a name="map-source-to-sink-columns"></a>Térkép forrás oszlopok gyűjtése
 A forrás oszlop szerepel a fogadó dataset adatkészlet leképezési oszlopok, lásd: [Azure Data Factory dataset oszlopai leképezési](data-factory-map-columns.md).

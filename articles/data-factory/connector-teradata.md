@@ -13,22 +13,19 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/07/2018
 ms.author: jingwang
-ms.openlocfilehash: 4360ff12a435afc4347fa97bba4506ccd81618aa
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: a2928b202f56674c69e6431201db6d846a9feb9a
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34618980"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37045755"
 ---
 # <a name="copy-data-from-teradata-using-azure-data-factory"></a>Adatok másolása az Azure Data Factory használatával teradata rendszerhez
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [1. verzió – Általánosan elérhető](v1/data-factory-onprem-teradata-connector.md)
-> * [2. verzió – Előzetes verzió](connector-teradata.md)
+> * [1-es verziójával](v1/data-factory-onprem-teradata-connector.md)
+> * [Aktuális verzió](connector-teradata.md)
 
 Ez a cikk ismerteti, hogyan használható a másolási tevékenység során az Azure Data Factory adatokat másolni egy Teradata-adatbázishoz. Buildekről nyújtanak a [másolása tevékenység áttekintése](copy-activity-overview.md) cikket, amely megadja a másolási tevékenység általános áttekintést.
-
-> [!NOTE]
-> Ez a cikk a Data Factory 2. verziójára vonatkozik, amely jelenleg előzetes verzióban érhető el. A Data Factory szolgáltatásnak, amely általánosan elérhető (GA), 1 verziójának használatakor lásd [Teradata-összekötőt a V1](v1/data-factory-onprem-teradata-connector.md).
 
 ## <a name="supported-capabilities"></a>Támogatott képességei
 
@@ -171,12 +168,12 @@ Az adatok másolása Teradata, amikor az Azure Data Factory ideiglenes adattípu
 | Blob |Byte] |
 | Bájt |Byte] |
 | ByteInt |Int16 |
-| Karakter |Karakterlánc |
-| CLOB |Karakterlánc |
+| karakter |Sztring |
+| CLOB |Sztring |
 | Dátum |DateTime |
 | Decimális |Decimális |
 | Dupla |Dupla |
-| Kép |Karakterlánc |
+| Kép |Sztring |
 | Egész szám |Int32 |
 | Időköz nap |A TimeSpan |
 | Időköz nap, óra |A TimeSpan |
@@ -187,25 +184,25 @@ Az adatok másolása Teradata, amikor az Azure Data Factory ideiglenes adattípu
 | Második intervallum óra |A TimeSpan |
 | Időköz percben |A TimeSpan |
 | Másik időköz percben |A TimeSpan |
-| Időköz hónap |Karakterlánc |
+| Időköz hónap |Sztring |
 | Időköz második |A TimeSpan |
-| Időköz év |Karakterlánc |
-| Időköz hónap év |Karakterlánc |
+| Időköz év |Sztring |
+| Időköz hónap év |Sztring |
 | Szám |Dupla |
-| Period(date) |Karakterlánc |
-| Period(Time) |Karakterlánc |
-| Időtartam (idő időzóna) |Karakterlánc |
-| Period(Timestamp) |Karakterlánc |
-| Időtartam (időbélyegzője az időzóna) |Karakterlánc |
+| Period(date) |Sztring |
+| Period(Time) |Sztring |
+| Időtartam (idő időzóna) |Sztring |
+| Period(Timestamp) |Sztring |
+| Időtartam (időbélyegzője az időzóna) |Sztring |
 | SmallInt |Int16 |
 | Time |A TimeSpan |
-| Időzóna idő |Karakterlánc |
+| Időzóna idő |Sztring |
 | Időbélyeg |DateTime |
 | Az időzóna időbélyeg |DateTimeOffset |
 | VarByte |Byte] |
-| VarChar |Karakterlánc |
-| VarGraphic |Karakterlánc |
-| Xml |Karakterlánc |
+| VarChar |Sztring |
+| VarGraphic |Sztring |
+| Xml |Sztring |
 
 
 ## <a name="next-steps"></a>További lépések

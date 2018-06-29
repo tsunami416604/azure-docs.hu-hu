@@ -11,12 +11,12 @@ ms.custom: managed instance
 ms.topic: conceptual
 ms.date: 04/10/2018
 ms.author: bonova
-ms.openlocfilehash: a5a81279726e5c221d9ae4734466a04ae5912af6
-ms.sourcegitcommit: 828d8ef0ec47767d251355c2002ade13d1c162af
+ms.openlocfilehash: 1015600343886333655a921f2e0944ebb676f3e6
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36936802"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37050126"
 ---
 # <a name="sql-server-instance-migration-to-azure-sql-database-managed-instance"></a>Azure SQL adatbázis felügyelt példány SQL Server példány áttelepítés
 
@@ -82,6 +82,8 @@ Felügyelt példányát támogatja a következő adatbázis áttelepítési lehe
 ### <a name="azure-database-migration-service"></a>Azure Database Migration Service
 
 A [Azure adatbázis áttelepítési szolgáltatás (DMS)](../dms/dms-overview.md) lehetővé minimális állásidővel adatok Azure platformon több adatbázis forrásból zökkenőmentes áttelepítés egy teljes körűen felügyelt szolgáltatás. Ez a szolgáltatás leegyszerűsíti a meglévő harmadik féltől származó és az SQL Server-adatbázisok áthelyezése az Azure-bA szükséges feladatok. A nyilvános előzetes verzió központi telepítési lehetőségek között az Azure SQL Database, a példány által felügyelt és az SQL Server egy Azure virtuális gépen. DMS az ajánlott módszer az áttelepítés a vállalati alkalmazások. 
+
+Ha az SQL Server, a helyszíni SQL Server Integration Services (SSIS) használ, DMS egyelőre nem támogatják a áttelepítése SSIS-katalógus (SSISDB) SSIS-csomagok tárolja, de megadhat Azure-SSIS integrációs futásidejű (IR) az Azure Data Factory (ADF), amely a rendszer Hozzon létre egy új SSISDB az Azure SQL-adatbázis/felügyelt példányt, és ezután telepítse újra a csomagok szoftverben: [létrehozása Azure-SSIS-IR az ADF](https://docs.microsoft.com/en-us/azure/data-factory/create-azure-ssis-integration-runtime).
 
 További információt ebben a forgatókönyvben és konfigurációs lépéseket a DMS, lásd: [áttelepítése a helyi adatbázis felügyelt példányhoz DMS használatával](../dms/tutorial-sql-server-to-managed-instance.md).  
 

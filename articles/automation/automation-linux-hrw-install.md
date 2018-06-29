@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 04/25/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 8507cf99ea22b24aa3026565cb7c4139e4c3742d
-ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
-ms.translationtype: MT
+ms.openlocfilehash: d37dbb85dc85ee8bae0447f18f771dc658de18e3
+ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36268121"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37060238"
 ---
 # <a name="deploy-a-linux-hybrid-runbook-worker"></a>A Linux hibrid forgatókönyv-feldolgozók telepítése
 
@@ -50,7 +50,7 @@ A Linux hibrid forgatókönyv-feldolgozók minimális követelményei a követke
 |--------------------- | --------------------- | -------------------|
 |Glibc |GNU C-függvénytár| 2.5-12 |
 |Openssl| OpenSSL-függvénytárak | 0.9.8e vagy 1.0|
-|Curl | cURL-webügyfél | 7.15.5|
+|curl | cURL-webügyfél | 7.15.5|
 |Python-ctypes | |
 |A PAM | Cserélhető hitelesítési modulok|
 | **Nem kötelező csomag** | **Leírás** | **Minimális verzió**|
@@ -109,41 +109,9 @@ A következő runbook-típusok nem működnek a Linux hibrid feldolgozók:
 * Grafikus
 * Grafikus PowerShell-munkafolyamat
 
-## <a name="troubleshooting"></a>Hibaelhárítás
+## <a name="troubleshoot"></a>Hibaelhárítás
 
-A Linux hibrid forgatókönyv-feldolgozó attól függ, hogy az OMS Linux-ügynök kommunikáljon az Automation-fiók regisztrálása a munkavégző, runbook-feladatok fogadása és jelentse állapotát. A dolgozó regisztrálása meghiúsul, ha az alábbiakban néhány a hiba lehetséges okait.
-
-### <a name="the-oms-agent-for-linux-isnt-running"></a>A Linux OMS-ügynök nem fut
-
-Ha a Linux OMS-ügynök nem fut, a Linux hibrid forgatókönyv-feldolgozó Azure Automation nem tud kommunikálni. Ellenőrizze, hogy az ügynök fut-e a parancs `ps -ef | grep python`. 
-
-A következőhöz hasonló kimenetnek kell megjelennie (a Python és feldolgozza a **nxautomation** felhasználói fiók). A frissítéskezelés vagy az Azure Automation-megoldás nem engedélyezett, ha az a következő folyamatok egyike sem fog futni.
-
-```bash
-nxautom+   8567      1  0 14:45 ?        00:00:00 python /opt/microsoft/omsconfig/modules/nxOMSAutomationWorker/DSCResources/MSFT_nxOMSAutomationWorkerResource/automationworker/worker/main.py /var/opt/microsoft/omsagent/state/automationworker/oms.conf rworkspace:<workspaceId> <Linux hybrid worker version>
-nxautom+   8593      1  0 14:45 ?        00:00:02 python /opt/microsoft/omsconfig/modules/nxOMSAutomationWorker/DSCResources/MSFT_nxOMSAutomationWorkerResource/automationworker/worker/hybridworker.py /var/opt/microsoft/omsagent/state/automationworker/worker.conf managed rworkspace:<workspaceId> rversion:<Linux hybrid worker version>
-nxautom+   8595      1  0 14:45 ?        00:00:02 python /opt/microsoft/omsconfig/modules/nxOMSAutomationWorker/DSCResources/MSFT_nxOMSAutomationWorkerResource/automationworker/worker/hybridworker.py /var/opt/microsoft/omsagent/<workspaceId>/state/automationworker/diy/worker.conf managed rworkspace:<workspaceId> rversion:<Linux hybrid worker version>
-```
-
-A következő folyamat indítása a Linux hibrid forgatókönyv-feldolgozók esetén. Ezek még összes található, a `/var/opt/microsoft/omsagent/state/automationworker/` könyvtár.
-
-* **OMS.conf**: manager munkavégző folyamat. Közvetlenül a Szükségeskonfiguráció-konfiguráló (DSC) elindul.
-
-* **Worker.conf**: automatikus regisztrált hibrid munkavégző folyamat. A worker-kezelő elindul. Ez a folyamat felügyeletéhez használja, és átlátható a felhasználó. Ez a folyamat csak akkor, ha a frissítés-kezelési megoldás engedélyezve van a számítógépen megtalálható.
-
-* **diy/Worker.conf**: DIY hibrid munkavégző folyamat. A DIY hibrid munkavégző folyamat hajthatók végre a felhasználó a runbookok a hibrid forgatókönyv-feldolgozót a. Az automatikus regisztrált hibrid munkavégző folyamat csak abban, hogy használja egy másik konfigurációs abban különbözik. Ez a folyamat megtalálható, csak akkor, ha az Azure Automation-megoldás engedélyezve van, és regisztrálva van-e a DIY Linux hibrid feldolgozó.
-
-Ha az OMS-ügynököt a Linux nem fut, a következő parancsot a szolgáltatás elindítása: `sudo /opt/microsoft/omsagent/bin/service_control restart`.
-
-### <a name="the-specified-class-doesnt-exist"></a>A megadott osztály nem létezik.
-
-Ha a hiba megjelenik "a megadott osztály nem szerepel" `/var/opt/microsoft/omsconfig/omsconfig.log`, Linux OMS-ügynököt frissíteni kell. A következő paranccsal telepítse újra az OMS-ügynököt:
-
-```bash
-wget https://raw.githubusercontent.com/Microsoft/OMS-Agent-for-Linux/master/installer/scripts/onboard_agent.sh && sh onboard_agent.sh -w <WorkspaceID> -s <WorkspaceKey>
-```
-
-A frissítés-kezeléssel kapcsolatos problémák elhárítása a további lépéseket lásd: [frissítéskezelés: hibaelhárítási](automation-update-management.md#troubleshooting).
+A hibrid forgatókönyv-feldolgozók hibaelhárítása kapcsolatban [hibaelhárítási Linux hibrid forgatókönyv-feldolgozók](troubleshoot/hybrid-runbook-worker.md#linux)
 
 ## <a name="next-steps"></a>További lépések
 

@@ -14,16 +14,16 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: fa3ab6df9b471a596cc229edf5fb555009c3101d
-ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
+ms.openlocfilehash: 1db10a1578133021b976231a66aee6b550d71faf
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/22/2018
-ms.locfileid: "36318393"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37046754"
 ---
 # <a name="azure-data-factory---frequently-asked-questions"></a>Az Azure Data Factory - gyakran ismételt kérdések
 > [!NOTE]
-> Ez a cikk a Data Factory általánosan elérhető 1. verziójára vonatkozik. Lásd a 2-es verziójának a Data Factory szolgáltatásnak, amely jelenleg előzetes verzióban érhető, használatakor [gyakran feltett kérdés - adat-előállító 2-es](../frequently-asked-questions.md).
+> Ez a cikk a Data Factory 1 verziójára vonatkozik. A Data Factory szolgáltatásnak aktuális verziójának használatakor lásd [gyakran feltett kérdés - adat-előállító](../frequently-asked-questions.md).
 
 ## <a name="general-questions"></a>Általános kérdések
 ### <a name="what-is-azure-data-factory"></a>Mi az az Azure Data Factory?

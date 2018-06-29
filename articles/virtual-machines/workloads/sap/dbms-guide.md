@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 02/26/2018
 ms.author: sedusch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 356e44b063fbd65de23d3aab313f58b5572840ea
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 79e77aa067cbb7262a945d94ce8ac1750e80b2d5
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34656193"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37054789"
 ---
 # <a name="azure-virtual-machines-dbms-deployment-for-sap-netweaver"></a>Az SAP NetWeaver Azure virtuális gépek adatbázis-kezelő telepítése
 [767598]:https://launchpad.support.sap.com/#/notes/767598
@@ -288,7 +288,7 @@ ms.locfileid: "34656193"
 [virtual-machines-sql-server-performance-best-practices]:./../../windows/sql/virtual-machines-windows-sql-performance.md
 [virtual-machines-upload-image-windows-resource-manager]:../../virtual-machines-windows-upload-image.md
 [virtual-machines-windows-tutorial]:../../virtual-machines-windows-hero-tutorial.md
-[virtual-machines-workload-template-sql-alwayson]:https://azure.microsoft.com/documentation/templates/sql-server-2014-alwayson-dsc/
+[virtual-machines-workload-template-sql-alwayson]:https://azure.microsoft.com/en-us/resources/templates/sql-server-2014-alwayson-existing-vnet-and-ad/
 [virtual-network-deploy-multinic-arm-cli]:../linux/multiple-nics.md
 [virtual-network-deploy-multinic-arm-ps]:../windows/multiple-nics.md
 [virtual-network-deploy-multinic-arm-template]:../../../virtual-network/template-samples.md
@@ -554,7 +554,7 @@ Szeretné, hogy a Microsoft vagy harmadik féltől származó lemezkép az Azure
 #### <a name="deploying-a-vm-with-a-customer-specific-generalized-image"></a>Virtuális gép és ügyfél-specifikus általános lemezkép központi telepítése
 Az operációs rendszer vagy az adatbázis-kezelő verziójával kapcsolatos követelményeket konkrét javítás, mert a megadott lemezképek az Azure piactéren előfordulhat, hogy nem felelnek meg az igényeinek. Ezért szükség lehet a saját "private" az operációs rendszer vagy adatbázis-kezelő Virtuálisgép-lemezkép, amelyet ezután többször telepítve virtuális gép létrehozása. Ilyen "private" lemezkép előkészítése duplikálva lettek-e, hogy az operációs rendszer a helyszíni virtuális Gépre általánosítva van. Tekintse meg a [telepítési útmutató] [ deployment-guide] talál részletes általánosítja egy virtuális Gépet.
 
-Ha már telepítette a helyszíni virtuális gépre (különösen a 2-réteg rendszerek) SAP tartalom, módosíthatja az SAP rendszerbeállítások után az Azure virtuális Gépen keresztül a példány központi telepítését, nevezze át a SAP szoftver kiépítés Manager által támogatott eljárás (SAP Megjegyzés [1619720]). Ellenkező esetben az Azure virtuális gép központi telepítése után később a SAP szoftvert is telepíthet.
+Ha már telepítette a helyszíni virtuális gépre (különösen a 2-réteg rendszerek) SAP tartalom, módosíthatja az SAP rendszerbeállítások után az Azure virtuális Gépen keresztül a példány központi telepítését, nevezze át az eljárás szerint az SAP szoftver kiépítés Manager (SAP támogatott Ne feledje [1619720]). Ellenkező esetben az Azure virtuális gép központi telepítése után később a SAP szoftvert is telepíthet.
 
 Az adatbázis tartalom az SAP-alkalmazás által használt, vagy létrehozhat a tartalom frissen egy SAP telepítése, illetve importálhatja a tartalom Azure egy adatbázis-kezelő adatbázis biztonsági másolatából egy virtuális Merevlemezt vagy közvetlenül biztonsági mentéséhez be az adatbázis-kezelő képességei kihasználva  A Microsoft Azure Storage. Ebben az esetben sikerült is előkészítése az adatbázis-kezelő adatainak és naplókönyvtárainak fájlok helyszíni virtuális merevlemezek és majd importálja azokat lemezként Azure. De az adatbázis-kezelő adatokat, amelyeket az Azure-bA helyszíni első betöltődnek az átvitel akkor működik olyan nagy távolságú elő kell készíteni a helyi VHD lemezek.
 
@@ -931,7 +931,7 @@ Mint a helyszíni rendszerekkel több lépések szükségesek a DBACockpit Webdy
 > 
 > 
 
-Attól függően Ha, és hogyan keresztül helyek, a az SAP rendszert futtató Azure virtuális gép csatlakozik többhelyes vagy ExpressRoute (létesítmények közötti telepítési), győződjön meg arról, hogy ICM kell használ egy teljesen minősített állomásnév, amely feloldható a gépen amelyre próbálja megnyitni a DBACockpit. Lásd az SAP megjegyzést [773830] megértése, hogyan ICM határozza meg a teljesen minősített állomásnév attól függően, hogy a profil paraméterek és a set paraméter icm/host_name_full explicit módon ha szükséges.
+Attól függően Ha, és hogyan keresztül helyek, a az SAP rendszert futtató Azure virtuális gép csatlakozik többhelyes vagy ExpressRoute (létesítmények közötti telepítési), győződjön meg arról, hogy ICM kell használ egy teljesen minősített állomásnév, amely feloldható a gépen ahol Nyissa meg a DBACockpit kívánt. Lásd az SAP megjegyzést [773830] megértése, hogyan ICM határozza meg a teljesen minősített állomásnév attól függően, hogy a profil paraméterek és a set paraméter icm/host_name_full explicit módon ha szükséges.
 
 Ha telepítette a virtuális gép közötti kapcsolatot nyújthassanak a helyszíni és az Azure közötti nélkül csak felhőalapú esetén, egy nyilvános IP-címet és egy domainlabel szeretné. A virtuális gép nyilvános DNS-nevének formátuma így néz ki:
 
@@ -1084,7 +1084,7 @@ Mint a helyszíni rendszerekkel több lépések szükségesek a DBACockpit Webdy
 > 
 > 
 
-Attól függően Ha, és hogyan keresztül helyek, a az SAP rendszert futtató Azure virtuális gép csatlakozik többhelyes vagy ExpressRoute (létesítmények közötti telepítési), győződjön meg arról, hogy ICM kell használ egy teljesen minősített állomásnév, amely feloldható a gépen amelyre próbálja megnyitni a DBACockpit. Lásd az SAP megjegyzést [773830] megértése, hogyan ICM határozza meg a teljesen minősített állomásnév attól függően, hogy a profil paraméterek és a set paraméter icm/host_name_full explicit módon ha szükséges.
+Attól függően Ha, és hogyan keresztül helyek, a az SAP rendszert futtató Azure virtuális gép csatlakozik többhelyes vagy ExpressRoute (létesítmények közötti telepítési), győződjön meg arról, hogy ICM kell használ egy teljesen minősített állomásnév, amely feloldható a gépen ahol Nyissa meg a DBACockpit kívánt. Lásd az SAP megjegyzést [773830] megértése, hogyan ICM határozza meg a teljesen minősített állomásnév attól függően, hogy a profil paraméterek és a set paraméter icm/host_name_full explicit módon ha szükséges.
 
 Ha telepítette a virtuális gép közötti kapcsolatot nyújthassanak a helyszíni és az Azure közötti nélkül csak felhőalapú esetén, egy nyilvános IP-címet és egy domainlabel szeretné. A virtuális gép nyilvános DNS-nevének formátuma így néz ki:
 
@@ -1363,7 +1363,7 @@ Erősen ajánlott a Microsoft Windows Server legújabb verzióját használja.
 
 ### <a name="sap-content-server-configuration-guidelines-for-sap-installations-in-azure-vms"></a>SAP tartalomkiszolgáló beállítási útmutatója SAP-telepítések az Azure virtuális gépeken
 #### <a name="storage-configuration"></a>Tároló konfigurációja
-Ha konfigurálja a fájlok tárolására az SAP MaxDB adatbázisban SAP tartalomkiszolgáló, ajánlott az Azure storage eljárásokat a fejezet az SAP MaxDB említett javaslat [tárolási konfigurációt] [ dbms-guide-8.4.1] a SAP kiszolgáló-forgatókönyv esetében is érvényesek. 
+Ha konfigurálja a fájlok tárolására az SAP MaxDB adatbázisban SAP tartalomkiszolgáló, ajánlott az Azure storage eljárásokat a fejezet az SAP MaxDB említett javaslat [tárkonfiguráció] [ dbms-guide-8.4.1] is érvényesek az SAP tartalomkiszolgáló forgatókönyvhöz. 
 
 Ha a fájlok tárolásához a fájlrendszer SAP tartalomkiszolgáló konfigurálásához dedikált logikai meghajtó használata ajánlott. Windows tárolóhelyek használatával lehetővé teszi, hogy is növelheti a logikai lemez méretét és IOPS átviteli fejezetben leírtak [szoftver RAID][dbms-guide-2.2]. 
 
@@ -1386,7 +1386,7 @@ Itt két lehetőség közül választhat:
 <a name="642f746c-e4d4-489d-bf63-73e80177a0a8"></a>
 
 #### <a name="backup--restore"></a>Biztonsági mentés / helyreállítás
-Ha a fájlok tárolására az SAP MaxDB adatbázisban a SAP-tartalomkiszolgáló konfigurálásához a biztonsági mentési/visszaállítási művelet és a teljesítménnyel kapcsolatos megfontolásokról már ismertetett SAP MaxDB fejezet [biztonsági mentése és visszaállítása] [ dbms-guide-8.4.2] és fejezet [teljesítménnyel kapcsolatos szempontok a biztonsági mentési és visszaállítási][dbms-guide-8.4.3]. 
+Ha a fájlok tárolására az SAP MaxDB adatbázisban a SAP-tartalomkiszolgáló konfigurálásához a biztonsági mentési/visszaállítási művelet és a teljesítménnyel kapcsolatos megfontolásokról már ismertetett SAP MaxDB fejezet [biztonsági mentése és visszaállítása] [ dbms-guide-8.4.2]és fejezet [teljesítménnyel kapcsolatos szempontok a biztonsági mentési és visszaállítási][dbms-guide-8.4.3]. 
 
 Ha a fájlrendszer fájlok tárolására az SAP tartalomkiszolgáló konfigurálásához egy beállítás nem végrehajtása manuális biztonsági mentés/visszaállítás az egész fájl struktúra hol találhatók a dokumentumokat. SAP MaxDB biztonsági mentés/visszaállítás hasonló, javasoljuk, hogy rendelkezik dedikált lemezkötetek biztonsági mentési célra. 
 

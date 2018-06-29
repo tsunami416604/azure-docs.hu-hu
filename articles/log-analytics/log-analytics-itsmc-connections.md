@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/24/2018
 ms.author: v-jysur
-ms.openlocfilehash: 18398094dfff03739a3d3d44d2c9c58149271123
-ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
+ms.openlocfilehash: 1c1c294a877a996dc0e6cb916b038dc0ca27ed5c
+ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 06/27/2018
-ms.locfileid: "34638636"
+ms.locfileid: "37061709"
 ---
 # <a name="connect-itsm-productsservices-with-it-service-management-connector"></a>Csatlakozás ITSM termékek vagy szolgáltatások IT Service Management-összekötő
 Ez a cikk tájékoztatást ad azokról a ITSM termékszolgáltatásból és az informatikai szolgáltatás Management Connector (ITSMC) közötti kapcsolat konfigurálása a Log Analyticshez központilag a a munkaelemek kezeléséhez. ITSMC kapcsolatos további információkért lásd: [áttekintése](log-analytics-itsmc-overview.md).
@@ -191,7 +191,7 @@ Győződjön meg arról, a következő előfeltételek teljesülését:
 **A ServiceNow rendszergazdák a következőképpen kell a ServiceNow példányban**:
 - Ügyfél-azonosító és a ServiceNow termék ügyfélkulcs létrehozása. Ügyfél-azonosító és a titkos kulcs létrehozása módjáról további információkért lásd: a következő információkat szükség szerint:
 
-    - [A Kingston OAuth beállítása](https://docs.servicenow.com/bundle/kingston-platform-administration/page/administer/security/concept/OAuth-setup.html)
+    - [A Kingston OAuth beállítása](https://docs.servicenow.com/bundle/kingston-platform-administration/page/administer/security/task/t_SettingUpOAuth.html)
     - [A Dzsakarta OAuth beállítása](https://docs.servicenow.com/bundle/jakarta-platform-administration/page/administer/security/task/t_SettingUpOAuth.html)
     - [A Isztambuli OAuth beállítása](https://docs.servicenow.com/bundle/istanbul-platform-administration/page/administer/security/task/t_SettingUpOAuth.html)
     - [A Helsinki OAuth beállítása](https://docs.servicenow.com/bundle/helsinki-platform-administration/page/administer/security/task/t_SettingUpOAuth.html)

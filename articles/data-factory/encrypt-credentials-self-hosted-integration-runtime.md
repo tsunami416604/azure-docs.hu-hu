@@ -13,20 +13,17 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/15/2018
 ms.author: abnarain
-ms.openlocfilehash: 1cadcdd45e648f315e292bbc806abc9337725670
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: b577c276627c3a187215cd0da551428fbb32791f
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34619218"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37050906"
 ---
 # <a name="encrypt-credentials-for-on-premises-data-stores-in-azure-data-factory"></a>A helyszíni adattárolókhoz az Azure Data Factory a hitelesítő adatok titkosításához
 Titkosításához, és a helyszíni adattárolókhoz (bizalmas információkat tartalmazó összekapcsolt szolgáltatások) a virtuális gép önálló üzemeltetett integrációs futásidejű tartozó hitelesítő adatok tárolására. 
 
 Adja meg a JSON-definíciós fájl hitelesítő adatokkal a <br/>[**Új AzureRmDataFactoryV2LinkedServiceEncryptedCredential** ](https://docs.microsoft.com/powershell/module/azurerm.datafactoryv2/New-AzureRmDataFactoryV2LinkedServiceEncryptedCredential?view=azurermps-4.4.0) parancsmag egy kimeneti JSON csomagdefiníciós fájlt, a titkosított hitelesítő adatok létrehozásához. Ezután a frissített JSON-definícióból segítségével a társított szolgáltatások létrehozásához.
-
-> [!NOTE]
-> Ez a cikk a Data Factory 2. verziójára vonatkozik, amely jelenleg előzetes verzióban érhető el. Ha a Data Factory szolgáltatás általánosan elérhető 1. verzióját használja, lásd: [A Data Factory 1. verziójának dokumentációja](v1/data-factory-introduction.md).
 
 ## <a name="author-sql-server-linked-service"></a>Szerző kapcsolódó SQL Server szolgáltatás
 Hozzon létre egy JSON fájlt **SqlServerLinkedService.json** bármely mappában, amelynek a következőket:  

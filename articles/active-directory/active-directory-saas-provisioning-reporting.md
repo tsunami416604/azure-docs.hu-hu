@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/12/2017
 ms.author: asmalser-msft
-ms.openlocfilehash: e2ab7efdec326a7f1a2c7f3e7b7d0f379efa8606
-ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
+ms.openlocfilehash: 5011dfbe496472e21a85dee9fa4901dad429a984
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 06/27/2018
-ms.locfileid: "37025820"
+ms.locfileid: "37031729"
 ---
 # <a name="tutorial-reporting-on-automatic-user-account-provisioning"></a>Oktatóanyag: Jelentések automatikus felhasználói fiók kiépítése
 
@@ -112,6 +112,9 @@ A telepítési naplók a leggyakrabban használt használati eset egyedi felhasz
 
 7. Kattintson az egyes események megtekintéséhez kiterjesztett adatait, többek között az összes felhasználó tulajdonságai beolvasni, értékeli ki, vagy az esemény-ként.
 
+A bemutató a vizsgálati naplók használatáról tekintse meg az alábbi videó. A vizsgálati naplók jelenjenek meg az 5:30 körül jelölje meg:
+
+> [!VIDEO https://www.youtube.com/embed/pKzyts6kfrw]
 
 ### <a name="tips-for-viewing-the-provisioning-audit-logs"></a>Tippek a telepítési naplók megtekintése
 

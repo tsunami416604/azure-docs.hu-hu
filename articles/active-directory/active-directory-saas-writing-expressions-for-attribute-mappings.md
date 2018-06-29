@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/15/2018
 ms.author: markvi
-ms.openlocfilehash: 06fd2f3ef4a17c5626afc95ed8ae5999778ebda6
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: 24b20766997a9a41956f575f6cab8ee5ef0d9e25
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35293160"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37036104"
 ---
 # <a name="writing-expressions-for-attribute-mappings-in-azure-active-directory"></a>Attribútum-leképezésekhez kifejezések írása az Azure Active Directoryban
 Egy SaaS-alkalmazáshoz történő konfigurálásakor megadhatja attribútum-leképezésekhez típusú egyik egy kifejezés-hozzárendelést. Ezeknél a parancsfájl-szerű kifejezés, amely lehetővé teszi a felhasználók adatok átalakítása több biztosítható a SaaS-alkalmazás formátumokba kell írnia.
@@ -37,7 +37,7 @@ Attribútum-leképezésekhez kifejezések szintaxisa a Visual Basic Applications
 * A karakterlánckonstansokat Ha egy fordított perjel (\) vagy az idézőjel (") a karakterláncban kell azt kell megjelölni a fordított perjel (\) szimbólum. Például: "vállalatnév: \"Contoso\""
 
 ## <a name="list-of-functions"></a>Függvények listája
-[Hozzáfűzendő](#append) &nbsp; &nbsp; &nbsp; &nbsp; [FormatDateTime](#formatdatetime) &nbsp; &nbsp; &nbsp; &nbsp; [Csatlakozás](#join) &nbsp; &nbsp; &nbsp; &nbsp; [Mid](#mid) &nbsp; &nbsp; &nbsp; &nbsp; [nem](#not) &nbsp; &nbsp; &nbsp; &nbsp; [Cserélje le](#replace) &nbsp; &nbsp; &nbsp; &nbsp; [SingleAppRoleAssignment](#singleapproleassignment) &nbsp; &nbsp; &nbsp; &nbsp; [StripSpaces](#stripspaces) &nbsp; &nbsp; &nbsp; &nbsp; [kapcsoló](#switch)
+[Hozzáfűzendő](#append) &nbsp; &nbsp; &nbsp; &nbsp; [FormatDateTime](#formatdatetime) &nbsp; &nbsp; &nbsp; &nbsp; [Csatlakozás](#join) &nbsp; &nbsp; &nbsp; &nbsp; [Mid](#mid) &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; [NormalizeDiacritics](#normalizediacritics) [nem](#not) &nbsp; &nbsp; &nbsp; &nbsp; [cserélje le](#replace) &nbsp; &nbsp; &nbsp; &nbsp; [SingleAppRoleAssignment](#singleapproleassignment) &nbsp; &nbsp; &nbsp; &nbsp; [StripSpaces](#stripspaces) &nbsp; &nbsp; &nbsp; &nbsp; [Kapcsoló](#switch)
 
 - - -
 ### <a name="append"></a>Hozzáfűzés
@@ -93,10 +93,22 @@ Ha a forrás-értékeket egy többértékű attribútum, akkor minden értékét
 | --- | --- | --- | --- |
 | **source** |Szükséges |Sztring |Általában az attribútum neve. |
 | **start** |Szükséges |egész szám |Az index a **forrás** karakterlánc, ahol a substring kell kezdődnie. A karakterlánc első karaktere az 1 indexe lesz, a második karakter 2 mutatója, és így tovább. |
-| **Hossza** |Szükséges |egész szám |A substring hosszát. Hossza kívül lejártát a **forrás** karakterlánc, a függvény karakterláncrészletet ad vissza **start** végét indextől **forrás** karakterlánc. |
+| **hossza** |Szükséges |egész szám |A substring hosszát. Hossza kívül lejártát a **forrás** karakterlánc, a függvény karakterláncrészletet ad vissza **start** végét indextől **forrás** karakterlánc. |
 
 - - -
-### <a name="not"></a>nem
+### <a name="normalizediacritics"></a>NormalizeDiacritics
+**Függvény:**<br> NormalizeDiacritics(source)
+
+**Leírás:**<br> Egy karakterlánc-argumentumot igényel. A karakterláncot ad vissza, de bármely diakritikus karakterekkel egyenértékű nem diakritikus karakterek helyett. A különböző felhasználói azonosítók például az egyszerű felhasználónevek, a SAM-fiók nevét és az e-mail címek használt értékek jellemzően konvertálni az első és utolsó nevét tartalmazó diakritikus karakterek (ékezetes).
+
+**Paraméterek:**<br> 
+
+| Name (Név) | Kötelező / ismétlődő | Típus | Megjegyzések |
+| --- | --- | --- | --- |
+| **source** |Szükséges |Sztring | Általában a Keresztnév vagy utolsó name attribútuma |
+
+- - -
+### <a name="not"></a>Nem
 **Függvény:**<br> Not(Source)
 
 **Leírás:**<br> Logikai értéke tükrözi a **forrás**. Ha **forrás** értéke "*igaz*", adja vissza "*hamis*". Ellenkező esetben adja vissza "*igaz*".
@@ -129,7 +141,6 @@ Lecseréli az értékeket karakterláncként. Attól függően, hogy a megadott 
   * Ha **forrás** értéke, használja a **regexPattern** és **regexGroupName** csereértékre kibontani a tulajdonság **replacementPropertyName** . Helyettesítő értéke az eredményt adja vissza a rendszer
 
 **Paraméterek:**<br> 
-
 | Name (Név) | Kötelező / ismétlődő | Típus | Megjegyzések |
 | --- | --- | --- | --- |
 | **source** |Szükséges |Sztring |Általában az attribútum neve a forrás-objektumból. |
@@ -144,7 +155,7 @@ Lecseréli az értékeket karakterláncként. Attól függően, hogy a megadott 
 ### <a name="singleapproleassignment"></a>SingleAppRoleAssignment
 **Függvény:**<br> SingleAppRoleAssignment([appRoleAssignments])
 
-**Leírás:**<br> Egyetlen appRoleAssignment egy adott alkalmazáshoz a felhasználóhoz rendelt összes appRoleAssignments listáját adja vissza. Ez a függvény van szükség a appRoleAssignments objektum egy egyetlen szerepkör neve karakterlánccá egyesít. Vegye figyelembe, hogy az ajánlott eljárás csak egy appRoleAssignment egyszerre egy felhasználóhoz rendelt, és ha több szerepkör van hozzárendelve a szerepkör visszaadott karakterlánc nem lehet előre jelezhető biztosításához.
+**Leírás:**<br> Egy karakterlánc-argumentumot igényel. A karakterláncot ad vissza, de bármely diakritikus karakterek repalced egyenértékű nem diakritikus karakternél.
 
 **Paraméterek:**<br> 
 
@@ -162,7 +173,7 @@ Lecseréli az értékeket karakterláncként. Attól függően, hogy a megadott 
 
 | Name (Név) | Kötelező / ismétlődő | Típus | Megjegyzések |
 | --- | --- | --- | --- |
-| **source** |Szükséges |Sztring |**Forrás** érték frissítéséhez. |
+| **source** |Szükséges |Sztring |**forrás** érték frissítéséhez. |
 
 - - -
 ### <a name="switch"></a>Kapcsoló
@@ -215,16 +226,16 @@ A felhasználói alias létrehozására alapul véve a felhasználó utónevét 
 * **BEMENETI** (Vezetéknév): "Doe"
 * **KIMENETI**: "JohDoe"
 
-### <a name="remove-diacritics-from-a-string-and-convert-to-lowercase"></a>Távolítsa el az ékezetek karakterláncból, és a kisbetűssé alakítandó
-Távolítsa el a különleges karaktereket egy karakterlánc, és a nagybetűk kisbetűssé alakítandó kell.
+### <a name="remove-diacritics-from-a-string"></a>Egy karakterlánc ékezetek eltávolítása
+Ki kell cserélni a karakterek, ékezetes egyenértékű karakterek, ékezetes nem tartalmazó tartalmazó.
 
 **Kifejezés:** <br>
-`Replace(Replace(Replace(Replace(Replace(Replace(Replace( Replace(Replace(Replace(Replace(Replace(Replace(Replace(Replace( Replace(Replace(Replace(Replace(Replace(Replace(Replace(Replace(Replace(Replace(Replace(Replace(Replace([givenName], , "([Øø])", , "oe", , ), , "[Ææ]", , "ae", , ), , "([äãàâãåáąÄÃÀÂÃÅÁĄA])", , "a", , ), , "([B])", , "b", , ), , "([CçčćÇČĆ])", , "c", , ), , "([ďĎD])", , "d", , ), , "([ëèéêęěËÈÉÊĘĚE])", , "e", , ), , "([F])", , "f", , ), , "([G])", , "g", , ), , "([H])", , "h", , ), , "([ïîìíÏÎÌÍI])", , "i", , ), , "([J])", , "j", , ), , "([K])", , "k", , ), , "([ľłŁĽL])", , "l", , ), , "([M])", , "m", , ), , "([ñńňÑŃŇN])", , "n", , ), , "([öòőõôóÖÒŐÕÔÓO])", , "o", , ), , "([P])", , "p", , ), , "([Q])", , "q", , ), , "([řŘR])", , "r", , ), , "([ßšśŠŚS])", , "s", , ), , "([TŤť])", , "t", , ), , "([üùûúůűÜÙÛÚŮŰU])", , "u", , ), , "([V])", , "v", , ), , "([W])", , "w", , ), , "([ýÿýŸÝY])", , "y", , ), , "([źžżŹŽŻZ])", , "z", , ), " ", , , "", , )`
+NormalizeDiacritics([givenName])
 
 **Minta bemeneti/kimeneti:** <br>
 
 * **BEMENETI** (givenName): "Zoë"
-* **KIMENETI**: "zoe"
+* **KIMENETI**: "Zoe"
 
 ### <a name="output-date-as-a-string-in-a-certain-format"></a>Bizonyos formátumban karakterláncként kimeneti dátum
 Szeretne küldeni a dátumok adott formátumot SaaS-alkalmazás. <br>
@@ -259,5 +270,5 @@ Ha az állapot kód nem egyezik az előre definiált beállításokat, használj
 * [Helyezése Hatókörszűrőkkel felhasználói történő üzembe helyezéséhez](active-directory-saas-scoping-filters.md)
 * [SCIM használata a felhasználók és csoportok automatikus üzembe helyezésének engedélyezéséhez az Azure Active Directoryból az alkalmazásokba](manage-apps/use-scim-to-provision-users-and-groups.md)
 * [Alkalmazás-kiépítési értesítések](active-directory-saas-account-provisioning-notifications.md)
-* [SaaS-alkalmazások integrációjával kapcsolatos bemutatók felsorolása](active-directory-saas-tutorial-list.md)
+* [SaaS-alkalmazások integrációjával kapcsolatos bemutatók felsorolása](saas-apps/tutorial-list.md)
 

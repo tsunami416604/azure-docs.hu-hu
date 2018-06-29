@@ -1,6 +1,6 @@
 ---
-title: Az R Server on HDInsight - Azure azok |} Microsoft Docs
-description: R Server, az Azure HDInsight azok útmutató.
+title: A HDInsight - Azure ML-szolgáltatásokat üzemeltető |} Microsoft Docs
+description: Útmutató az Azure HDInsight ML-szolgáltatásokat üzemeltető.
 services: hdinsight
 documentationcenter: ''
 author: nitinme
@@ -10,28 +10,31 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.devlang: R
 ms.topic: conceptual
-ms.date: 03/23/2018
+ms.date: 06/27/2018
 ms.author: nitinme
-ms.openlocfilehash: 6de6e78d9b4ad68d268b59cff18c75fbdd7be757
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: caefe30ff567a5e24e1f4c3a11309bd35e06190c
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31412841"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37046139"
 ---
-# <a name="operationalize-r-server-cluster-on-azure-hdinsight"></a>Azok az Azure hdinsight R Server fürt
+# <a name="operationalize-ml-services-cluster-on-azure-hdinsight"></a>Azok az Azure HDInsight fürt ML-szolgáltatások
 
-Után R Server-fürt hdinsightban kell használni a modellezési adatait befejezéséhez, üzembe előrejelzéseket készítsen a modellt. Ez a cikk útmutatás a feladat végrehajtásához.
+Után ML szolgáltatások fürt a Hdinsightban kell használni a modellezési adatait befejezéséhez, üzembe előrejelzéseket készítsen a modellt. Ez a cikk útmutatás a feladat végrehajtásához.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* **Az R Server-fürt a HDInsight**: útmutatásért lásd: [az R Server on HDInsight használatába](r-server-get-started.md).
+* **Az ML-Services-fürttel hdinsighton**: útmutatásért lásd: [Ismerkedés az ML-szolgáltatások hdinsight](r-server-get-started.md).
 
 * **Secure Shell- (SSH-) ügyfél**: Egy SSH-ügyféllel távolról csatlakozhat a HDInsight-fürthöz, és közvetlenül a fürtön futtathat parancsokat. További információ: [Az SSH használata HDInsighttal](../hdinsight-hadoop-linux-use-ssh-unix.md).
 
-## <a name="operationalize-r-server-cluster-with-one-box-configuration"></a>R Server-fürt egyik-mezőben konfigurációjával kapcsolatban üzemeltető
+## <a name="operationalize-ml-services-cluster-with-one-box-configuration"></a>Azok az ML-szolgáltatások fürt egyik-mezőben konfigurációjával kapcsolatban
 
-1. Jelentkezzen be SSH-n keresztül az élcsomópontba.  
+> [!NOTE]
+> R Server 9.0 és ML Server 9.1 vonatkoznak az alábbi lépéseket. Gépi tanulás Server 9.3, tekintse meg a [a szolgáltatásfelügyeleti eszközzel felügyelje a operationalization konfigurációt](https://docs.microsoft.com/machine-learning-server/operationalize/configure-admin-cli-launch).
+
+1. Jelentkezzen be SSH-n keresztül az élcsomópontba.
 
         ssh USERNAME@CLUSTERNAME-ed-ssh.azurehdinsight.net
 
@@ -39,7 +42,7 @@ Után R Server-fürt hdinsightban kell használni a modellezési adatait befejez
 
 2. Módosítsa a könyvtárat a megfelelő verzióját és a sudo pont nettó DLL-re: 
 
-    - Microsoft R Server 9.1 esetén:
+    - A Microsoft ML Server 9.1:
 
             cd /usr/lib64/microsoft-r/rserver/o16n/9.1.0
             sudo dotnet Microsoft.RServer.Utils.AdminUtil/Microsoft.RServer.Utils.AdminUtil.dll
@@ -49,11 +52,11 @@ Után R Server-fürt hdinsightban kell használni a modellezési adatait befejez
             cd /usr/lib64/microsoft-deployr/9.0.1
             sudo dotnet Microsoft.DeployR.Utils.AdminUtil/Microsoft.DeployR.Utils.AdminUtil.dll
 
-3. Megnyílik a választási lehetőséget. Válassza ki az első lehetőség, ahogy az az alábbi képernyőfelvételen a **R Server konfigurálása a Operationalization**.
+3. Megnyílik a választási lehetőséget. Válassza ki az első lehetőség, ahogy az az alábbi képernyőfelvételen a **ML-kiszolgáló konfigurálása Operationalization**.
 
     ![one box op](./media/r-server-operationalize/admin-util-one-box-1.png)
 
-4. Most már lehetősége lesz választhatja ki, hogyan szeretné azok R Server. A bemutatott lehetőségek közül válassza ki az elsőt megadásával **A**.
+4. Most már lehetősége lesz választhatja ki, hogyan szeretné azok ML-kiszolgáló. A bemutatott lehetőségek közül válassza ki az elsőt megadásával **A**.
 
     ![one box op](./media/r-server-operationalize/admin-util-one-box-2.png)
 
@@ -99,7 +102,7 @@ Ha hosszú késleltetést tapasztal, amikor egy Spark számítási környezetben
 
 Az operacionalizálás konfigurációja ezzel befejeződött. Most már használhatja a `mrsdeploy` csomagot a peremhálózati csomóponton operationalization és indíthatja annak szolgáltatásait, például a RClient [távoli végrehajtás](https://docs.microsoft.com/machine-learning-server/r/how-to-execute-code-remotely) és [-webszolgáltatások](https://docs.microsoft.com/machine-learning-server/operationalize/concept-what-are-web-services). Attól függően, hogy fürt virtuális hálózaton van-e beállítva, szükség lehet porttovábbító bújtatás kialakítására SSH-bejelentkezésen keresztül. Az alábbi szakaszok ismertetik, hogyan állíthatja be ezt az alagutat.
 
-### <a name="r-server-cluster-on-virtual-network"></a>R Server-fürt virtuális hálózaton
+### <a name="ml-services-cluster-on-virtual-network"></a>Gépi tanulás szolgáltatások fürt virtuális hálózaton
 
 Bizonyosodjon meg róla, hogy engedélyezett a forgalom az 12800-as porton az élcsomópont felé. Így az élcsomópont használatával kapcsolódhat az operacionalizálási szolgáltatáshoz.
 
@@ -115,7 +118,7 @@ Bizonyosodjon meg róla, hogy engedélyezett a forgalom az 12800-as porton az é
 
 Ha a `remoteLogin()` metódus nem tud kapcsolódni az élcsomóponthoz, de SSH-n be tud jelentkezni az élcsomópontba, győződjön meg róla, hogy a szabály, amely engedélyezi a forgalmat az 12800-as porton, megfelelően van-e beállítva. Ha a probléma továbbra is jelentkezik, egy másik megoldás segítségével is beállíthat porttovábbító alagutat az SSH-n keresztül. Útmutatásért lásd a következő:
 
-### <a name="r-server-cluster-not-set-up-on-virtual-network"></a>R Server-fürt virtuális hálózaton nincs beállítva
+### <a name="ml-services-cluster-not-set-up-on-virtual-network"></a>Gépi tanulás szolgáltatások fürt virtuális hálózaton nincs beállítva
 
 Ha a fürt nem a virtuális hálózaton van beállítva vagy problémás a kapcsolódás a virtuális hálózaton keresztül, akkor használhatja az SSH porttovábbító alagutat:
 
@@ -139,7 +142,7 @@ A számítási csomópontok méretezéséhez először szerelje le a munkavégz�
 
 ### <a name="step-1-decommission-the-worker-nodes"></a>1. lépés: A feldolgozó csomópontok leszerelése
 
-R Server fürt nem áll a YARN keresztül. Ha a munkavégző csomópontokhoz nincs leszerelve, a YARN erőforrás-kezelő nem működik megfelelően, mivel nincs tisztában az erőforrások foglalja el a kiszolgáló. Ennek a helyzetnek az elkerülésére javasoljuk a feldolgozó csomópontok leszerelését a számítási csomópontok horizontális felskálázása előtt.
+Gépi tanulás szolgáltatások fürt YARN nem kezeli. Ha a munkavégző csomópontokhoz nincs leszerelve, a YARN erőforrás-kezelő nem működik megfelelően, mivel nincs tisztában az erőforrások foglalja el a kiszolgáló. Ennek a helyzetnek az elkerülésére javasoljuk a feldolgozó csomópontok leszerelését a számítási csomópontok horizontális felskálázása előtt.
 
 Kövesse az alábbi lépéseket leszerelése munkavégző csomópontokhoz:
 
@@ -163,11 +166,11 @@ Kövesse az alábbi lépéseket leszerelése munkavégző csomópontokhoz:
 
 1. Jelentkezzen be SSH-n keresztül minden egyes leszerelt feldolgozó csomópontba.
 
-2. Az R Server-fürt, amely rendelkezik a megfelelő dll-fájl használatával felügyeleti segédprogram futtatásához. R Server 9.1, futtassa a következő parancsot:
+2. Futtassa az ML-szolgáltatások fürt, amely rendelkezik a megfelelő dll-fájl használatával admin segédprogramot. Gépi tanulás Server 9.1, futtassa a következő parancsot:
 
         dotnet /usr/lib64/microsoft-deployr/9.0.1/Microsoft.DeployR.Utils.AdminUtil/Microsoft.DeployR.Utils.AdminUtil.dll
 
-3. Adja meg **1** lehetőségnek a választásához **R Server konfigurálása a Operationalization**.
+3. Adja meg **1** lehetőségnek a választásához **ML-kiszolgáló konfigurálása Operationalization**.
 
 4. Adja meg **C** lehetőségnek a választásához `C. Compute node`. Ez konfigurálja a számítási csomópontot a feldolgozó csomóponton.
 
@@ -175,7 +178,7 @@ Kövesse az alábbi lépéseket leszerelése munkavégző csomópontokhoz:
 
 ### <a name="step-3-add-compute-nodes-details-on-web-node"></a>3. lépés: Adja hozzá a számítási csomópontok részletek webes csomóponton
 
-Leszerelt feldolgozó csomópontjaihoz futtatásához a számítási csomópont konfigurálása után térjen vissza a peremhálózati csomóponton, és az R Server webes csomópont-konfiguráció a leszerelt munkavégző csomópontokhoz IP-címek hozzáadása:
+Leszerelt feldolgozó csomópontjaihoz futtatásához a számítási csomópont konfigurálása után térjen vissza a peremhálózati csomóponton, és a kiszolgáló ML web csomópont-konfiguráció a leszerelt munkavégző csomópontokhoz IP-címek hozzáadása:
 
 1. Jelentkezzen be SSH-n keresztül az élcsomópontba.
 
@@ -192,6 +195,6 @@ Leszerelt feldolgozó csomópontjaihoz futtatásához a számítási csomópont 
 
 ## <a name="next-steps"></a>További lépések
 
-* [R Server-fürt kezelése a HDInsighton](r-server-hdinsight-manage.md)
-* [Számítási környezeti beállítások a HDInsighton belüli R Server-fürt esetében](r-server-compute-contexts.md)
-* [Azure Storage-lehetőségek a HDInsighton belüli R Server-fürthöz](r-server-storage.md)
+* [Gépi tanulás szolgáltatások-fürttel hdinsighton kezelése](r-server-hdinsight-manage.md)
+* [Számítási környezet lehetőségek az ML-Services-fürttel hdinsighton](r-server-compute-contexts.md)
+* [Gépi tanulás szolgáltatások fürt a HDInsight az Azure tárolási lehetőségek](r-server-storage.md)

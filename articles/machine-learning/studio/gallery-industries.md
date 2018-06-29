@@ -15,28 +15,28 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/31/2017
 ms.author: garye
-ms.openlocfilehash: b2b55c550a75be977b040070926953308c387639
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: c1ca9c45a7bd070ba0dbcee3b428f986ebac47d3
+ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34834566"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37062097"
 ---
 # <a name="discover-industry-specific-solutions-in-the-azure-ai-gallery"></a>Az Azure Eszközintelligencia-katalógus iparág-specifikus megoldások felderítése
 [!INCLUDE [machine-learning-gallery-item-selector](../../../includes/machine-learning-gallery-item-selector.md)]
 
 ## <a name="industry-specific-cortana-intelligence-solutions"></a>Iparág-specifikus Cortana Intelligence megoldások
-A **[iparágakban](https://gallery.cortanaintelligence.com/industries)** szakasz a tár összegyűjti az adott ilyen iparágakban, mint a különböző erőforrások
+A **[iparágakban](https://gallery.azure.ai/industries)** szakasz a tár összegyűjti az adott ilyen iparágakban, mint a különböző erőforrások
 
-* [Kereskedelmi](https://gallery.cortanaintelligence-int.com/industries/retail) -kereskedelmi megoldások, például az értékesítés előrejelzés, a felhasználói forgalom becslése, és a fájlrendszersérülések árképzési modellekkel.
-* [A gyártási](https://gallery.cortanaintelligence-int.com/industries/manufacturing) - gyártási például berendezések karbantartási előrejelző és az előrejelzés energia árak megoldások keresése.
-* [Banki](https://gallery.cortanaintelligence-int.com/industries/banking) - megoldások, például a hitelkockázat előrejelzése banki keresés kockázat és online csalás figyelését.
-* [Egészségügy](https://gallery.cortanaintelligence-int.com/industries/healthcare) -egészségügyi megoldások, például elleni észlelésére, és kórháznak readmissions előrejelzésére található.
+* [Kereskedelmi](https://gallery.azure.ai/industries/retail) -kereskedelmi megoldások, például az értékesítés előrejelzés, a felhasználói forgalom becslése, és a fájlrendszersérülések árképzési modellekkel.
+* [A gyártási](https://gallery.azure.ai/industries/manufacturing) - gyártási például berendezések karbantartási előrejelző és az előrejelzés energia árak megoldások keresése.
+* [Banki](https://gallery.azure.ai/industries/banking) - megoldások, például a hitelkockázat előrejelzése banki keresés kockázat és online csalás figyelését.
+* [Egészségügy](https://gallery.azure.ai/industries/healthcare) -egészségügyi megoldások, például elleni észlelésére, és kórháznak readmissions előrejelzésére található.
 
 Ilyen erőforrások többek között a kísérleteket, egyéni modulokat, API-k, gyűjtemények és bármely más gyűjteményelemek, melyek segíthetnek az iparág dolgozunk jellemző megoldások fejlesztése.
 
 ## <a name="discover"></a>Ismertetők
- Tallózzon az iparág-specifikus megoldás a katalógusban, nyissa meg a [gyűjtemény](http://gallery.cortanaintelligence.com), mutasson az egérrel a **iparágakban** felső részén a galéria kezdőlapjára, egy adott iparági szegmens, vagy válasszon **nézet összes** az Áttekintés lap minden iparágak számára.
+ Tallózzon az iparág-specifikus megoldás a katalógusban, nyissa meg a [gyűjtemény](http://gallery.cortanaintelligence.com), mutasson az egérrel a **iparágakban** felső részén a galéria kezdőlapjára, egy adott iparági szegmens, vagy válasszon **Nézet összes** az Áttekintés lap minden iparágak számára.
 
  Minden iparági lapon megjeleníti, hogy iparági társított legnépszerűbb gyűjteményelemet.
 Kattintson a **láthatja az összes** az iparág-specifikus erőforrások megtekintése a gyűjteményben.

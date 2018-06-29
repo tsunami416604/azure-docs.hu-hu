@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/26/2018
 ms.author: seguler
-ms.openlocfilehash: 80b112de1fd8417dd64d9d95b7a037ec876d18c7
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 3ed449912df1e16b5c8f1dfa3c83b81eaf635227
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32194668"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37036092"
 ---
 # <a name="transfer-data-with-azcopy-on-linux"></a>Adatátvitel az AzCopy Linux rendszeren
 
@@ -35,7 +35,9 @@ AzCopy, letöltheti a két verziója van. Linux AzCopy parancssori kapcsolókat 
 ### <a name="installation-on-linux"></a>Linux-telepítés
 
 > [!NOTE]
-> Előfordulhat, hogy szeretne telepíteni a .NET Core 2.1 függőségek, a kiemelt [.NET Core Előfeltételek cikk](https://docs.microsoft.com/dotnet/core/linux-prerequisites?tabs=netcore2x) attól függően, hogy a terjesztési. Az alapvető technikai terjesztéseket például Ubuntu 16.04 és RHEL 7 Ez általában nem szükséges.
+> Előfordulhat, hogy szeretne telepíteni a .NET Core 2.1 függőségek, a kiemelt [.NET Core Előfeltételek cikk](https://docs.microsoft.com/dotnet/core/linux-prerequisites?tabs=netcore2x) attól függően, hogy a terjesztési. 
+>
+> Az RHEL 7 azokat a terjesztéseket ICU és libunwind függőségek telepítése: ```yum install -y libunwind icu```
 
 AzCopy telepítése Linux (v7.2 vagy újabb) egyszerű módon bont csomag beolvasása és a telepítési parancsfájl futtatásával. 
 
@@ -723,4 +725,3 @@ További, az Azure Storage szolgáltatással és az AzCopyval kapcsolatos adatok
 * [AzCopy: Adatátvitelt újraindítható móddal és SAS-jogkivonat](http://blogs.msdn.com/b/windowsazurestorage/archive/2013/09/07/azcopy-transfer-data-with-re-startable-mode-and-sas-token.aspx)
 * [AzCopy: Kereszt-fiók másolási Blob használatával](http://blogs.msdn.com/b/windowsazurestorage/archive/2013/04/01/azcopy-using-cross-account-copy-blob.aspx)
 * [AzCopy: Feltöltése/fájlok letöltése Azure Blobokra vonatkozó](http://blogs.msdn.com/b/windowsazurestorage/archive/2012/12/03/azcopy-uploading-downloading-files-for-windows-azure-blobs.aspx)
-

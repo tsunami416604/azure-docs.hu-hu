@@ -7,14 +7,14 @@ manager: kfile
 ms.service: cosmos-db
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/07/2018
+ms.date: 06/26/2018
 ms.author: rimman
-ms.openlocfilehash: 9021d0c3f650d64480f2881508d456ce98beab2a
-ms.sourcegitcommit: 0408c7d1b6dd7ffd376a2241936167cc95cfe10f
+ms.openlocfilehash: 160ff4e09f70036fd261c07fa59e13772bc00660
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/26/2018
-ms.locfileid: "36961945"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37053327"
 ---
 # <a name="request-units-in-azure-cosmos-db"></a>Azure Cosmos DB egység kérése
 
@@ -41,7 +41,7 @@ Azure Cosmos-adatbázis gyors, az alkalmazás átviteli igényeinek kielégíté
 
 Az Azure Cosmos DB fenntartott átviteli sebességet másodpercenkénti feldolgozási kérés egységben van megadva. Az eltolásokat tekintheti kérelemegység átviteli pénznemként. Garantált kérelemegység / másodperces időközönként az alkalmazás elérhető legyen több, akkor foglalhat le. Azure Cosmos DB, például egy dokumentum írása lévő egyes műveletek, a lekérdezés végrehajtása, és a dokumentumok frissítése, fel, Processzor, memória és iops-érték. Ez azt jelenti, hogy minden egyes művelet azt eredményezi azok háromszorosa kérelem járnak, amely kérelemegység van kifejezve. Miután megismerte a tényezőt jelent a kérelem egység díjakat és az alkalmazás átviteli követelmények, a lehető leghatékonyabban költséggel futtathatja az alkalmazást. 
 
-Első lépések segítségével Azure Cosmos DB Programvezető Andrew Liu kérelem egység az alábbi videó ismerteti: <br /><br />
+Első lépések segítségével Azure Cosmos DB Programvezető Andrew Liu ismerteti, amelyek kérelemegység az alábbi videóban (nincs egy kisebb elírás a kérelem egységek példájában a videót. 100 000 rekordot 1 KB adatot használata esetén a teljes tárterület 100 MB és nem 100 GB): <br /><br />
 
 > [!VIDEO https://www.youtube.com/embed/stk5WSp5uX0]
 > 

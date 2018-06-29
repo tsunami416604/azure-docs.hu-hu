@@ -10,12 +10,12 @@ ms.devlang: java
 ms.topic: conceptual
 ms.date: 01/02/2018
 ms.author: sngun
-ms.openlocfilehash: 92a7ed065b2ab29037e8c2467e210e7fd0ba3a07
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
-ms.translationtype: MT
+ms.openlocfilehash: 2c0290ef160283f5aef8b1a4a5f67e69222aec0e
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34613176"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37029356"
 ---
 > [!div class="op_single_selector"]
 > * [Aszinkron Java](performance-tips-async-java.md)
@@ -36,8 +36,8 @@ Ezért ha még kérése "Hogyan javítható az adatbázis teljesítménye?" Vegy
 
     Hogyan ügyfél csatlakozik-e Azure Cosmos DB rendelkezik fontos gyakorolt hatása a teljesítményre, különös tekintettel az megfigyelt ügyféloldali késés. Több kulcs konfiguráció számára, hogy az ügyfél konfigurálása [ConnectionPolicy](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb._connection_policy) – a [ConnectionMode](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb._connection_mode).  A két rendelkezésre álló ConnectionModes a következők:
 
-   1. [Átjáró (alapértelmezett)](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb._connection_mode.gateway)
-   2. [DirectHttps](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb._connection_mode.directhttps)
+   1. [Átjáró (alapértelmezett)](https://docs.microsoft.com/en-us/java/api/com.microsoft.azure.documentdb._connection_mode)
+   2. [DirectHttps](https://docs.microsoft.com/en-us/java/api/com.microsoft.azure.documentdb._connection_mode)
 
     Átjáró mód minden SDK-platformon támogatott, és a beállított alapértelmezett.  Ha az alkalmazás fut a vállalati hálózatról szigorú tűzfal korlátozások, átjáróra a legjobb választás, mivel a szabványos HTTPS-port és egy végpontot. A teljesítmény kompromisszumot azonban, hogy az átjáró mód érint egy további hálózati ugrások minden alkalommal, amikor adatait olvasni vagy írni az Azure Cosmos DB. Emiatt a DirectHttps mód miatt kevesebb hálózati ugrásokat jobb teljesítményt nyújt. 
 

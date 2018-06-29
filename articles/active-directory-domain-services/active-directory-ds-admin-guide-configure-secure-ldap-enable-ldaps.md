@@ -13,14 +13,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/23/2018
+ms.date: 06/27/2018
 ms.author: maheshu
-ms.openlocfilehash: 4263034408de059880b91e8106f6832ccacc6085
-ms.sourcegitcommit: ea5193f0729e85e2ddb11bb6d4516958510fd14c
+ms.openlocfilehash: 5838dbefab9f7100ed4776eebef7a1d07d2db1a6
+ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/21/2018
-ms.locfileid: "36300968"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37061045"
 ---
 # <a name="configure-secure-ldap-ldaps-for-an-azure-ad-domain-services-managed-domain"></a>Biztonságos LDAP (LDAPS) használatos az Azure AD tartományi szolgáltatások által felügyelt tartományokhoz tartozó konfigurálása
 
@@ -48,7 +48,7 @@ Ahhoz, hogy a biztonságos LDAP, hajtsa végre az alábbi konfigurációs lépé
 4. Alapértelmezés szerint le van tiltva a felügyelt tartományra biztonságos LDAP-hozzáférés. Váltás **biztonságos LDAP** való **engedélyezése**.
 
     ![Biztonságos LDAP engedélyezése](./media/active-directory-domain-services-admin-guide/secure-ldap-blade-configure.png)
-5. Alapértelmezés szerint le van tiltva az interneten keresztül a felügyelt tartományra biztonságos LDAP-hozzáférés. Váltás **biztonságos LDAP-hozzáférés engedélyezése az interneten keresztül** való **engedélyezése**, ha szükséges. 
+5. Alapértelmezés szerint le van tiltva az interneten keresztül a felügyelt tartományra biztonságos LDAP-hozzáférés. Váltás **biztonságos LDAP-hozzáférés engedélyezése az interneten keresztül** való **engedélyezése**, ha szükséges.
 
     > [!WARNING]
     > Biztonságos LDAP-hozzáférés engedélyezésével az interneten keresztül, a tartomány hajlamos jelszó találgatásos támadásokkal szemben az interneten keresztül. Ezért ajánlott egy NSG eléréséhez szükséges forrás IP-címtartományok zárolását beállítását. Az utasításokat lásd: [LDAPS hozzáférés az interneten keresztül a felügyelt tartományra zárolása](#task-5---lock-down-secure-ldap-access-to-your-managed-domain-over-the-internet).
@@ -111,6 +111,23 @@ Az alábbi táblázat mutatja be egy minta NSG-t is konfigurálhat, biztonságos
 
 <br>
 
+## <a name="bind-to-the-managed-domain-over-ldap-using-ldpexe"></a>LDAP használatával LDP.exe keresztül kötést létrehozni a felügyelt tartományhoz
+Használhatja az LDP.exe eszközt, amely a Távoli kiszolgálófelügyelet eszközei csomag kötést létrehozni, és a keresés során LDAP tartalmazza.
+
+Első lépésként nyissa meg az LDP, és a felügyelt tartományra kapcsolódjon. Kattintson a **kapcsolat** kattintson **Connect...**  a menüben. Adja meg a felügyelt tartomány DNS-tartomány nevét. Adja meg a kapcsolatokhoz használandó portot. Az LDAP-kapcsolatokhoz 389-es portot használja. LDAPS kapcsolatok 636-os port használatára. Kattintson a **OK** csatlakozás a felügyelt tartományra.
+
+A következő kötési a felügyelt tartományra. Kattintson a **kapcsolat** kattintson **kötési...**  a menüben. Adja meg az "AAD DC rendszergazdák" csoportba tartozó felhasználói fiók hitelesítő adatait.
+
+Válassza ki **nézet**, majd válassza ki **fa** a menüben. Az alap megkülönböztető név mező üresen hagyja, és kattintson az OK gombra. Nyissa meg a tároló, amelyet meg szeretne keresni, kattintson a jobb gombbal a tároló és válassza ki a keresés.
+
+> [!TIP]
+> - Felhasználók és az Azure Active Directoryból szinkronizált csoportok tárolódnak a **AADDC felhasználók** tároló. A keresési elérési út a tároló a következőképpen néz ```CN=AADDC\ Users,DC=CONTOSO100,DC=COM```.
+> - Számítógépes fiókok a felügyelt tartományhoz csatlakozó számítógépek tárolják a **AADDC számítógépek** tároló. A keresési elérési út a tároló a következőképpen néz ```CN=AADDC\ Computers,DC=CONTOSO100,DC=COM```.
+>
+>
+
+További információ - [LDAP-lekérdezés alapjai](https://technet.microsoft.com/library/aa996205.aspx)
+
 
 ## <a name="troubleshooting"></a>Hibaelhárítás
 Ha sikerült csatlakozni a biztonságos LDAP a felügyelt tartományra, hajtsa végre a következő hibaelhárítási lépéseket:
@@ -129,6 +146,7 @@ Ha továbbra is problémákat tapasztal a felügyelt tartományra biztonságos L
 ## <a name="related-content"></a>Kapcsolódó tartalom
 * [Azure AD tartományi szolgáltatások – első lépések útmutató](active-directory-ds-getting-started.md)
 * [Azure AD tartományi szolgáltatások által kezelt tartomány felügyelete](active-directory-ds-admin-guide-administer-domain.md)
+* [LDAP-lekérdezés alapjai](https://technet.microsoft.com/library/aa996205.aspx)
 * [Csoportházirend a egy Azure AD tartományi szolgáltatások által kezelt tartomány felügyelete](active-directory-ds-admin-guide-administer-group-policy.md)
 * [Hálózati biztonsági csoportok](../virtual-network/security-overview.md)
 * [Hálózati biztonsági csoport létrehozása](../virtual-network/tutorial-filter-network-traffic.md)

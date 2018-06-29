@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: integration
 ms.date: 05/23/2016
 ms.author: LADocs; jehollan
-ms.openlocfilehash: 89fcd88643bd793935e7476ef32641ffa5ff4713
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: 6bc845e4ec329d308ed87770d0dec6a7d5e447c7
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35299793"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37030953"
 ---
 # <a name="scenario-trigger-a-logic-app-with-azure-functions-and-azure-service-bus"></a>Forgatókönyv: Egy logikai alkalmazást az Azure Functions és az Azure Service Bus indítás
 
@@ -39,7 +39,7 @@ Ebben a példában, hogy a funkciót, az egyes logikai alkalmazás, amelyet a el
 ## <a name="build-the-function"></a>A függvény létrehozása
 A következő hozzon létre egy függvényt, amely az eseményindító funkcionál, és figyeli a várólistára.
 
-1. Az a [Azure Functions portálon](https://functions.azure.com/signin), jelölje be **új függvény**, majd válassza ki a **ServiceBusQueueTrigger - C#** sablon.
+1. Az a [Azure Functions portálon](https://functions.azure.com/), jelölje be **új függvény**, majd válassza ki a **ServiceBusQueueTrigger - C#** sablon.
    
     ![Az Azure Functions portálra][2]
 2. Állítsa be a kapcsolatot a Service Bus-üzenetsorba, amely használja az Azure Service Bus SDK `OnMessageReceive()` figyelő.

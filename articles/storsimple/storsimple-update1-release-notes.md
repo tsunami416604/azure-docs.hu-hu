@@ -15,12 +15,12 @@ ms.workload: TBD
 ms.date: 11/03/2017
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 67603c04cf7b5f45517d16620e5b79241aaae94d
-ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
+ms.openlocfilehash: 7810027e4ab9df6742b4431d12daf9ba2b678bf6
+ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/11/2018
-ms.locfileid: "34057961"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37061809"
 ---
 # <a name="update-12-release-notes-for-your-storsimple-8000-series-device"></a>1.2-es kibocsátási megjegyzések a StorSimple 8000 series eszköz frissítése
 
@@ -54,7 +54,7 @@ Ezek a funkciók először kiadott frissítés 1., amely csak bizonyos felhaszn�
   * **Az üzletmenet folytonossága**, mivel lehetővé teszi az 5000-7000-es adatsorozat készülékek 8000 sorozat készülékek számára a meglévő adatok áttelepítésének.
   * **Továbbfejlesztett szolgáltatás ajánlatok 8000 sorozat készülékek**, hatékony központi felügyelet több készülékek StorSimple Manager szolgáltatással, például jobb osztály hardver és a belső vezérlőprogram, a virtuális készülékek, az adatok mobilitási frissítése és a jövőbeli terv szolgáltatások.
     
-    Tekintse meg a [áttelepítési útmutató](http://www.microsoft.com/download/details.aspx?id=47322) a további tudnivalókat hogyan telepítheti át a StorSimple 8000 series eszközön való 5000-7000-es adatsorozat. 
+    Tekintse meg a [áttelepítési útmutató](https://gallery.technet.microsoft.com/Azure-StorSimple-50007000-c1a0460b) a további tudnivalókat hogyan telepítheti át a StorSimple 8000 series eszközön való 5000-7000-es adatsorozat. 
 * **Az Azure Government portálon rendelkezésre állási** – StorSimple már elérhető az Azure Government portálon. Lásd: hogyan [az Azure Government portálon a StorSimple eszköz üzembe helyezése](storsimple-deployment-walkthrough-gov.md).
 * **Egyéb felhőszolgáltatók támogatása** – az egyéb felhőszolgáltatók támogatott Amazon S3, Amazon S3 with RRS, HP és OpenStack (béta).
 * **Frissítés a legújabb Storage API-k** – ezzel a kiadással, a StorSimple is frissült a legújabb Azure Storage szolgáltatás API-k. 1 frissítés előtti szoftvert verzióját futtató StorSimple 8000 sorozat eszközeire (kiadásban 0,1, 0,2 és 0,3) az Azure Storage szolgáltatás API-k 2009. július 17 régebbi verzióját használja. Ahogy az a frissített [kapcsolatos tárolási szolgáltatásverziók eltávolításának hirdetmény](http://blogs.msdn.com/b/windowsazurestorage/archive/2015/10/19/microsoft-azure-storage-service-version-removal-update-extension-to-2016.aspx), 1 megjelenésével 2016 augusztusától, amelyet ezen API-k elavulttá válik. Rendkívül fontos, hogy érvényesek-e a StorSimple 8000 Series Update 1 2016 augusztusától 1 előtt. Ha nem sikerül, a StorSimple eszköz leáll, megfelelően működik-e.

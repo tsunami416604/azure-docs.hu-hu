@@ -12,21 +12,18 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/25/2017
 ms.author: jingwang
-ms.openlocfilehash: f12c3a2a1193adc08c408292a4e0eca2e2458085
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: e1be16ec6a7536cedf3a27ffacb9c4dffe42bbef
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34620666"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37052415"
 ---
 # <a name="store-credential-in-azure-key-vault"></a>Hitelesítő adatok tárolása az Azure Key Vault
 
 Az adattároló, és kiszámítja a hitelesítő adatok tárolhatók egy [Azure Key Vault](../key-vault/key-vault-whatis.md). Az Azure Data Factory lekéri a hitelesítő adatokat, használja az adatok tárolási/számítási tevékenység végrehajtása közben.
 
 Jelenleg az egyéni tevékenység kivételével az összes tevékenységtípus támogatja ezt a szolgáltatást. -Összekötő konfigurációjában, ellenőrizze a "társított szolgáltatás tulajdonságai" szakaszban [minden összekötő témakör](copy-activity-overview.md#supported-data-stores-and-formats) részleteiről.
-
-> [!NOTE]
-> Ez a cikk a Data Factory 2. verziójára vonatkozik, amely jelenleg előzetes verzióban érhető el. A Data Factory szolgáltatásnak, amely általánosan elérhető (GA), 1 verziójának használatakor lásd [adat-előállító version1 dokumentációja](v1/data-factory-introduction.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -51,7 +48,7 @@ Csatolt Azure Key Vault szolgáltatás támogatott a következő tulajdonságokk
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
 | type | A type tulajdonságot kell beállítani: **AzureKeyVault**. | Igen |
-| BaseUrl | Adja meg az Azure Key Vault URL-CÍMÉT. | Igen |
+| baseUrl | Adja meg az Azure Key Vault URL-CÍMÉT. | Igen |
 
 **Használatával szerzői felhasználói felületén:**
 

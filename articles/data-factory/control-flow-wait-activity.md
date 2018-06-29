@@ -13,18 +13,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
-ms.openlocfilehash: 9eaa8f369c69468a9bd6f4c5403d6a11476e8595
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 74a5d687535915fab7d518faaf916b98ab262c4b
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34619014"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37053898"
 ---
 # <a name="wait-activity-in-azure-data-factory"></a>Várjon, amíg az Azure Data Factory tevékenység
 Ha Wait tevékenységet használ egy folyamatban, akkor a folyamat kivárja a megadott időtartamot, és csak az után folytatja a további tevékenységek futtatását. 
-
-> [!NOTE]
-> Ez a cikk a Data Factory 2. verziójára vonatkozik, amely jelenleg előzetes verzióban érhető el. A Data Factory szolgáltatásnak, amely általánosan elérhető (GA), 1 verziójának használatakor lásd [Data Factory V1 dokumentáció](v1/data-factory-introduction.md).
 
 ## <a name="syntax"></a>Szintaxis
 
@@ -43,8 +40,8 @@ Ha Wait tevékenységet használ egy folyamatban, akkor a folyamat kivárja a me
 
 Tulajdonság | Leírás | Megengedett értékek | Szükséges
 -------- | ----------- | -------------- | --------
-név | Neve a `Wait` tevékenység. | Karakterlánc | Igen
-type | Meg kell **Várjon, amíg**. | Karakterlánc | Igen
+név | Neve a `Wait` tevékenység. | Sztring | Igen
+type | Meg kell **Várjon, amíg**. | Sztring | Igen
 waitTimeInSeconds | A feldolgozási folytatása előtt megvárja-e a folyamat másodpercek száma. | Egész szám | Igen
 
 ## <a name="example"></a>Példa

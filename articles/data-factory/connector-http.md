@@ -13,22 +13,19 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/22/2018
 ms.author: jingwang
-ms.openlocfilehash: f7c82b3aa88e874328452aae46dc14972d63192f
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: a27d90006d31c83b5ebe6cfc4a8d97969743a91e
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34616943"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37049858"
 ---
 # <a name="copy-data-from-http-endpoint-using-azure-data-factory"></a>Adatok másolása az Azure Data Factory használatával HTTP-végpont
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [1. verzió – Általánosan elérhető](v1/data-factory-http-connector.md)
-> * [2. verzió – Előzetes verzió](connector-http.md)
+> * [1-es verziójával](v1/data-factory-http-connector.md)
+> * [Aktuális verzió](connector-http.md)
 
 Ez a cikk ismerteti, hogyan használható a másolási tevékenység az Azure Data Factory adatokat másolni egy HTTP-végpont. Buildekről nyújtanak a [másolása tevékenység áttekintése](copy-activity-overview.md) cikket, amely megadja a másolási tevékenység általános áttekintést.
-
-> [!NOTE]
-> Ez a cikk a Data Factory 2. verziójára vonatkozik, amely jelenleg előzetes verzióban érhető el. A Data Factory szolgáltatásnak, amely általánosan elérhető (GA), 1 verziójának használatakor lásd [V1-es HTTP-összekötőjét](v1/data-factory-http-connector.md).
 
 ## <a name="supported-capabilities"></a>Támogatott képességei
 
@@ -103,7 +100,7 @@ ClientCertificate hitelesítés használatához állítsa "authenticationType" t
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
 | embeddedCertData | A Base64 kódolású tanúsítványának adatait. | Adja meg a `embeddedCertData` vagy `certThumbprint`. |
-| CertThumbprint | A tanúsítványtároló Self-hosted integrációs futásidejű számítógépre telepített tanúsítvány ujjlenyomatát. Csak akkor, ha önálló üzemeltetett integrációs futásidejű van megadva a connectVia vonatkozik. | Adja meg a `embeddedCertData` vagy `certThumbprint`. |
+| certThumbprint | A tanúsítványtároló Self-hosted integrációs futásidejű számítógépre telepített tanúsítvány ujjlenyomatát. Csak akkor, ha önálló üzemeltetett integrációs futásidejű van megadva a connectVia vonatkozik. | Adja meg a `embeddedCertData` vagy `certThumbprint`. |
 | jelszó | A tanúsítványhoz tartozó jelszót. Ez a mező megjelölése a SecureString tárolja biztonságos helyen, a Data factoryban vagy [hivatkozik az Azure Key Vault tárolt titkos kulcs](store-credentials-in-key-vault.md). | Nem |
 
 Ha a "certThumbprint" használatakor a hitelesítéshez, és a tanúsítvány telepítve van a helyi számítógép személyes tárolójában, olvasási engedélyt ad a Self-hosted integrációs futásidejű szeretné:
@@ -171,7 +168,7 @@ Adatok másolása HTTP, a adatkészlet típus tulajdonságának beállítása **
 | additionalHeaders | További HTTP-kérelemfejlécekben. | Nem |
 | requestBody | A HTTP-kérelmek törzsében. | Nem |
 | Formátumban | Ha azt szeretné, hogy **adatainak lekérése, a HTTP-végpont-van** nélkül, és másolja a fájlalapú tárolóhoz elemzése, hagyja ki a Formátum szakasz mindkét bemeneti és kimeneti adatkészlet-definíciókban.<br/><br/>Ha azt szeretné, a HTTP-válasz tartalom elemzése során másolása, a következő formátumban típusú támogatottak: **szöveges**, **JsonFormat**, **AvroFormat**, **OrcFormat**, **ParquetFormat**. Állítsa be a **típus** tulajdonság a formátuma a következő értékek egyikét. További információkért lásd: [Json formátumban](supported-file-formats-and-compression-codecs.md#json-format), [szövegformátum](supported-file-formats-and-compression-codecs.md#text-format), [az Avro formátum](supported-file-formats-and-compression-codecs.md#avro-format), [Orc formátum](supported-file-formats-and-compression-codecs.md#orc-format), és [Parquet formátum](supported-file-formats-and-compression-codecs.md#parquet-format) szakaszok. |Nem |
-| Tömörítés | Adja meg a típus és az adatok tömörítése szintjét. További információkért lásd: [támogatott formátumok és a tömörítési kodek](supported-file-formats-and-compression-codecs.md#compression-support).<br/>Támogatott típusok a következők: **GZip**, **Deflate**, **BZip2**, és **ZipDeflate**.<br/>Támogatott szintek a következők: **Optimal** és **leggyorsabb**. |Nem |
+| tömörítés | Adja meg a típus és az adatok tömörítése szintjét. További információkért lásd: [támogatott formátumok és a tömörítési kodek](supported-file-formats-and-compression-codecs.md#compression-support).<br/>Támogatott típusok a következők: **GZip**, **Deflate**, **BZip2**, és **ZipDeflate**.<br/>Támogatott szintek a következők: **Optimal** és **leggyorsabb**. |Nem |
 
 **1. példa: használja a Get metódust (alapértelmezett)**
 

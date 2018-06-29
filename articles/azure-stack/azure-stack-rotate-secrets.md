@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 05/15/2018
 ms.author: mabrigg
 ms.reviewer: ppacent
-ms.openlocfilehash: a3dfce6ce1b136e39047cfd47b336b2fb2a35af9
-ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
+ms.openlocfilehash: 8ac151a70a81f78dab5ed1f30df51a1121a42cbd
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/17/2018
-ms.locfileid: "34258681"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37029016"
 ---
 # <a name="rotate-secrets-in-azure-stack"></a>Forgassa el a titkos kulcsok Azure verem
 
@@ -84,11 +84,12 @@ Az alábbi utasításokat követve titkos Elforgatás futtató fogja szervizelni
     > [!note]  
     > A következő lépések csak akkor alkalmazható, ha a külső kulcsok Azure verem elforgatása.
 
-2.  Készítse el új helyettesítő külső tanúsítványok. Az új készlet megfelel az előírásoknak tanúsítványt a [Azure verem PKI-tanúsítványkövetelmények](https://docs.microsoft.com/azure/azure-stack/azure-stack-pki-certs).
-3.  A biztonsági mentés Elforgatás biztonsági mentési biztonságos helyen használt tanúsítványok tárolása. A forgatási fut, és akkor sikertelen lesz, ha cserélje le a tanúsítványokat a fájlmegosztás a biztonsági másolatok előtt futtassa újra a elforgatási. Jegyezze fel, a biztonsági mentési biztonságos helyre a biztonsági másolatok megőrzése.
-3.  Hozzon létre egy fájlmegosztás a ERCS virtuális gépek érhető el. A fájlmegosztás kell lennie az írható és olvasható a **CloudAdmin** identitás.
-4.  Nyissa meg a PowerShell ISE konzoljába egy olyan számítógépről, melyekben a fájlmegosztáshoz való hozzáférést. Nyissa meg a fájlmegosztás. 
-5.  Futtatás **[CertDirectoryMaker.ps1](http://www.aka.ms/azssecretrotationhelper)** a külső tanúsítványok szükséges könyvtárak létrehozása.
+2. Győződjön meg arról, titkos Elforgatás még nem lett sikeresen végrehajtva a környezetében az elmúlt hónapban. Ezen a ponton a időben történő Azure verem csak a titkos Elforgatás havonta egyszer támogatja. 
+3. Készítse el új helyettesítő külső tanúsítványok. Az új készlet megfelel az előírásoknak tanúsítványt a [Azure verem PKI-tanúsítványkövetelmények](https://docs.microsoft.com/azure/azure-stack/azure-stack-pki-certs).
+4.  A biztonsági mentés Elforgatás biztonsági mentési biztonságos helyen használt tanúsítványok tárolása. A forgatási fut, és akkor sikertelen lesz, ha cserélje le a tanúsítványokat a fájlmegosztás a biztonsági másolatok előtt futtassa újra a elforgatási. Jegyezze fel, a biztonsági mentési biztonságos helyre a biztonsági másolatok megőrzése.
+5.  Hozzon létre egy fájlmegosztás a ERCS virtuális gépek érhető el. A fájlmegosztás kell lennie az írható és olvasható a **CloudAdmin** identitás.
+6.  Nyissa meg a PowerShell ISE konzoljába egy olyan számítógépről, melyekben a fájlmegosztáshoz való hozzáférést. Nyissa meg a fájlmegosztás. 
+7.  Futtatás **[CertDirectoryMaker.ps1](http://www.aka.ms/azssecretrotationhelper)** a külső tanúsítványok szükséges könyvtárak létrehozása.
 
 ## <a name="rotating-external-and-internal-secrets"></a>Belső és külső kulcsok elforgatása
 
@@ -157,8 +158,8 @@ A Start-SecretRotation parancsmag az infrastruktúra titkokat az Azure-verem ren
 
 | Paraméter | Típus | Szükséges | Pozíció | Alapértelmezett | Leírás |
 | -- | -- | -- | -- | -- | -- |
-| PfxFilesPath | Karakterlánc  | False (Hamis)  | nevű  | None  | A fájlmegosztási elérési útját a **\Certificates** tartalmazó minden külső hálózati végpont tanúsítványokat. Csak akkor kötelező, ha a belső és külső kulcsok elforgatása. Záró könyvtárnak kell lennie **\Certificates**. |
-| CertificatePassword | SecureString | False (Hamis)  | nevű  | None  | A jelszó - PfXFilesPath megadott tanúsítvány esetében. Ha PfxFilesPath áll rendelkezésre, ha a külső és belső titkok legyenek-e elforgatva szükséges érték. |
+| PfxFilesPath | Sztring  | False (Hamis)  | Nevű  | None  | A fájlmegosztási elérési útját a **\Certificates** tartalmazó minden külső hálózati végpont tanúsítványokat. Csak akkor kötelező, ha a belső és külső kulcsok elforgatása. Záró könyvtárnak kell lennie **\Certificates**. |
+| CertificatePassword | SecureString | False (Hamis)  | Nevű  | None  | A jelszó - PfXFilesPath megadott tanúsítvány esetében. Ha PfxFilesPath áll rendelkezésre, ha a külső és belső titkok legyenek-e elforgatva szükséges érték. |
 |
 
 ### <a name="examples"></a>Példák

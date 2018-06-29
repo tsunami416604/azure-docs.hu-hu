@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/19/2018
 ms.author: nitinme
-ms.openlocfilehash: b80c49b67c7cca835ae08346561984e168e3df4e
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 6ccdb1fff5ecdcb61beedf1b12904d3785d4921d
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31392170"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37048501"
 ---
 # <a name="machine-learning-on-hdinsight"></a>Gépi tanulási a HDInsight-on
 
@@ -33,13 +33,13 @@ Apache Spark-hez a Microsoft Machine Learning könyvtár [MMLSpark](https://gith
 
 ## <a name="r"></a>R
 
-[R](https://www.r-project.org/) jelenleg a legnépszerűbb statisztikai programozási nyelvet a világon. Egy nyílt forráskódú képi megjelenítés eszköz több mint 2,5 millió felhasználó alapján, és inkább a Közösséggel. Az alap thriving felhasználóhoz, és több mint 8000 átadott csomagokat, az R esetén sok vállalatoknak gépi tanulás kell valószínűleg választani. HDInsight-fürtöt hozhat létre az R Server nagy adatkészletek és modellek használatra kész. Ezt a képességet biztosít az adatelemzők és egy ismert R felülettel is méretezhető Statisztikusok igény szerinti HDInsight keresztül nem növeli a fürt beállítása és karbantartása.
+[R](https://www.r-project.org/) jelenleg a legnépszerűbb statisztikai programozási nyelvet a világon. Egy nyílt forráskódú képi megjelenítés eszköz több mint 2,5 millió felhasználó alapján, és inkább a Közösséggel. Az alap thriving felhasználóhoz, és több mint 8000 átadott csomagokat, az R esetén sok vállalatoknak gépi tanulás kell valószínűleg választani. HDInsight-fürtöt hozhat létre ML szolgáltatásokkal nagy adatkészletek és modellek használatra kész. Ezt a képességet biztosít az adatelemzők és egy ismert R felülettel is méretezhető Statisztikusok igény szerinti HDInsight keresztül nem növeli a fürt beállítása és karbantartása.
 
 ![R Server előrejelzés képzési](./media/hdinsight-machine-learning-overview/r-training.png)
 
 A fürt élcsomópont kényelmes csatlakozzon a fürthöz, és az R parancsfájlok futtatásához.  Lehetősége is van a R parancsfájlokat futtasson a fürt csomópontjai között ScaleR a Hadoop térkép csökkentése használatával, vagy Spark számítási környezeteket.
 
-A Spark on HDInsight R Server akkor is parallelize képzési a fürt csomópontjai között egy Spark számítási környezet használatával. R parancsfájlok futtathatók közvetlenül a peremhálózati csomóponton, igény szerint az összes rendelkezésre álló magot párhuzamos, használatával. Alternatív megoldásként futtathatja a kódot, amely a fürt összes csomópontja között van elosztva feldolgozási indítsa a élcsomópont. Az R Server on HDInsight Spark is lehetővé teszi a nyílt forráskódú R csomagok parallelizing funkciókat, ha szükséges.
+A HDInsight Spark az ML-szolgáltatásokkal akkor is parallelize képzési a fürt csomópontjai között egy Spark számítási környezet használatával. R parancsfájlok futtathatók közvetlenül a peremhálózati csomóponton, igény szerint az összes rendelkezésre álló magot párhuzamos, használatával. Alternatív megoldásként futtathatja a kódot, amely a fürt összes csomópontja között van elosztva feldolgozási indítsa a élcsomópont. A HDInsight Spark az ML-szolgáltatások is lehetővé teszi, hogy nyílt forráskódú R csomagok parallelizing funkciókat igény.
 
 ## <a name="azure-machine-learning-and-hive"></a>Az Azure Machine Learning és a Hive
 

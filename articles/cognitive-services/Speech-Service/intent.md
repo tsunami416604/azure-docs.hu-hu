@@ -8,14 +8,14 @@ manager: onano
 ms.service: cognitive-services
 ms.technology: Speech
 ms.topic: article
-ms.date: 05/07/2018
+ms.date: 06/07/2018
 ms.author: wolfma
-ms.openlocfilehash: 47527087dc008c201949524f193820e636a8744f
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 38f7f038a803546adb83245519efc5de0c0d1599
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "35349983"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37045010"
 ---
 # <a name="sample-for-intent-recognition"></a>A leképezési felismerés minta
 
@@ -23,7 +23,7 @@ ms.locfileid: "35349983"
 > Ez a minta és mások letöltése útmutatásért lásd: [beszéd SDK-példák](samples.md).
 
 > [!NOTE]
-> Először szerezze be egy előfizetés kulcs. Más a kognitív beszéd SDK által támogatott szolgáltatásokkal, ellentétben a leképezés felismerés szolgáltatások adott subscribtion kulcs szükséges. [Itt](https://www.luis.ai) további információt a leképezési felismerés technológia, valamint egy előfizetés kulcs beszerzésére vonatkozó található. Cserélje le a saját előfizetés kulcs, a szolgáltatás a régió, valamint a megfelelő helyen, a mintában a leképezési modell AppId.
+> Először szerezze be egy előfizetés kulcs. Más a kognitív beszéd SDK által támogatott szolgáltatásokkal, ellentétben a leképezés felismerés szolgáltatások adott előfizetés kulcs szükséges. [Itt](https://www.luis.ai) található a leképezési felismerés technológiával kapcsolatos további információk, valamint egy előfizetés kulcs beszerzésére vonatkozó információkat. Cserélje le a saját előfizetés kulcs, a szolgáltatás a területet, és a megfelelő helyen, a mintában a leképezési modell AppId.
 
 > [!NOTE]
 > Az összes, az alábbi minta a következő legfelső szintű nyilatkozatokat helyen kell lennie:
@@ -54,7 +54,7 @@ A következő kódrészletet felismeri az alapértelmezett nyelven hangfájl lek
 
 [!include[Sample Audio](includes/sample-audio.md)]
 
-[!code-cpp[Intent Recognition From a File](~/samples-cognitive-services-speech-sdk/Windows/cxx_samples/intent_recognition_samples.cpp?IntentRecognitionWithFile)]
+[!code-cpp[Intent Recognition From a File](~/samples-cognitive-services-speech-sdk/Windows/cxx_samples/intent_recognition_samples.cpp#IntentRecognitionWithFile)]
 
 - - -
 
@@ -72,6 +72,6 @@ A minták legújabb készletét, tekintse meg a [kognitív szolgáltatások besz
 
 ## <a name="next-steps"></a>További lépések
 
-- [A beszédfelismerés](./speech-to-text-sample.md)
+- [Beszédfelismerés](./speech-to-text-sample.md)
 
-- [Fordítási](./translation.md)
+- [Fordítás](./translation.md)

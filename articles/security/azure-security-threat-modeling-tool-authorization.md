@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/17/2017
 ms.author: rodsan
-ms.openlocfilehash: b9ad3ceeb77a4adc2c47b262aa40a48c14423198
-ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
+ms.openlocfilehash: 9ab106a78aa56b8308207bcadb3db0b5a9714a9d
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2018
-ms.locfileid: "28019517"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37029492"
 ---
 # <a name="security-frame-authorization--mitigations"></a>Biztonsági keret: Engedélyezési |} Megoldást 
 | A termék vagy szolgáltatás | Cikk |
@@ -46,7 +46,7 @@ ms.locfileid: "28019517"
 | Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Gép megbízhatósági kapcsolat határán | 
-| **SDL Phase**               | Környezet |  
+| **SDL fázis**               | Környezet |  
 | **Alkalmazandó technológiák** | Általános |
 | **Attribútumok**              | –  |
 | **Hivatkozások**              | –  |
@@ -57,7 +57,7 @@ ms.locfileid: "28019517"
 | Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Gép megbízhatósági kapcsolat határán | 
-| **SDL Phase**               | Környezet |  
+| **SDL fázis**               | Környezet |  
 | **Alkalmazandó technológiák** | Általános |
 | **Attribútumok**              | –  |
 | **Hivatkozások**              | –  |
@@ -68,7 +68,7 @@ ms.locfileid: "28019517"
 | Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Gép megbízhatósági kapcsolat határán | 
-| **SDL Phase**               | Környezet |  
+| **SDL fázis**               | Környezet |  
 | **Alkalmazandó technológiák** | Általános |
 | **Attribútumok**              | –  |
 | **Hivatkozások**              | –  |
@@ -79,7 +79,7 @@ ms.locfileid: "28019517"
 | Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Web Application | 
-| **SDL Phase**               | Felépítés |  
+| **SDL fázis**               | Felépítés |  
 | **Alkalmazandó technológiák** | Általános |
 | **Attribútumok**              | –  |
 | **Hivatkozások**              | –  |
@@ -90,7 +90,7 @@ ms.locfileid: "28019517"
 | Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Web Application | 
-| **SDL Phase**               | Felépítés |  
+| **SDL fázis**               | Felépítés |  
 | **Alkalmazandó technológiák** | Általános |
 | **Attribútumok**              | –  |
 | **Hivatkozások**              | –  |
@@ -101,7 +101,7 @@ ms.locfileid: "28019517"
 | Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Web Application | 
-| **SDL Phase**               | Felépítés |  
+| **SDL fázis**               | Felépítés |  
 | **Alkalmazandó technológiák** | Általános |
 | **Attribútumok**              | –  |
 | **Hivatkozások**              | –  |
@@ -112,7 +112,7 @@ ms.locfileid: "28019517"
 | Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Web Application | 
-| **SDL Phase**               | Felépítés |  
+| **SDL fázis**               | Felépítés |  
 | **Alkalmazandó technológiák** | Általános |
 | **Attribútumok**              | –  |
 | **Hivatkozások**              | –  |
@@ -131,7 +131,7 @@ Most egy esetleges támadó is védelmet, és nem módosítható a alkalmazás m
 | Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Web Application | 
-| **SDL Phase**               | Felépítés |  
+| **SDL fázis**               | Felépítés |  
 | **Alkalmazandó technológiák** | Általános |
 | **Attribútumok**              | –  |
 | **Hivatkozások**              | –  |
@@ -142,7 +142,7 @@ Most egy esetleges támadó is védelmet, és nem módosítható a alkalmazás m
 | Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Adatbázis | 
-| **SDL Phase**               | Felépítés |  
+| **SDL fázis**               | Felépítés |  
 | **Alkalmazandó technológiák** | Általános |
 | **Attribútumok**              | –  |
 | **Hivatkozások**              | [SQL Database engedélyekkel hierarchia](https://msdn.microsoft.com/library/ms191465), [SQL adatbázis securables](https://msdn.microsoft.com/library/ms190401) |
@@ -153,8 +153,8 @@ Most egy esetleges támadó is védelmet, és nem módosítható a alkalmazás m
 | Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Adatbázis | 
-| **SDL Phase**               | Felépítés |  
-| **Alkalmazandó technológiák** | Sql Azure, OnPrem |
+| **SDL fázis**               | Felépítés |  
+| **Alkalmazandó technológiák** | Az SQL Azure, a helyi üzemeltetésű |
 | **Attribútumok**              | SQL - 12-es verzió, az SQL-verzió - verzió MsSQL2016 |
 | **Hivatkozások**              | [SQL Server a sorszintű biztonságot (RLS)](https://msdn.microsoft.com/library/azure/dn765131.aspx) |
 | **Lépések** | <p>A sorszintű biztonság lehetővé teszi az ügyfelek számára, hogy szabályozzák egy adatbázistábla soraihoz való hozzáférést a lekérdezést végrehajtó felhasználó jellemzői alapján (például csoporttagság vagy végrehajtási környezet).</p><p>A sorszintű biztonságot (RLS) egyszerűbbé teszi a terv és az alkalmazás biztonsági kódolása. Az RLS használatával korlátozásokat érvényesíthet az adatsorokhoz való hozzáférésre. Biztosítható például, hogy a munkavállalók csak a szervezeti egységükre vonatkozó adatsorokhoz férjenek hozzá, vagy egy ügyfél adathozzáférése korlátozható a vállalatával kapcsolatos adatokra.</p><p>A hozzáférés korlátozási logika található az adatbázis-rétegből, hanem helyezkedik el az adatokat egy másik alkalmazás réteg. Az adatbázis-rendszer a hozzáférési korlátozásokat alkalmazza, minden alkalommal, amikor az adott adatok próbál meg elérni a réteg alapján. Ez lehetővé teszi a biztonsági rendszer megbízhatóbb és robusztus a biztonsági rendszer felületének csökkentése révén.</p><p>|
@@ -166,7 +166,7 @@ Vegye figyelembe, hogy az a-kész adatbázis szolgáltatás RLS tulajdonság csa
 | Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Adatbázis | 
-| **SDL Phase**               | Felépítés |  
+| **SDL fázis**               | Felépítés |  
 | **Alkalmazandó technológiák** | Általános |
 | **Attribútumok**              | –  |
 | **Hivatkozások**              | [SQL Database engedélyekkel hierarchia](https://msdn.microsoft.com/library/ms191465), [SQL adatbázis securables](https://msdn.microsoft.com/library/ms190401) |
@@ -176,8 +176,8 @@ Vegye figyelembe, hogy az a-kész adatbázis szolgáltatás RLS tulajdonság csa
 
 | Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
-| **Összetevő**               | IoT Cloud Gateway | 
-| **SDL Phase**               | Környezet |  
+| **Összetevő**               | Az IoT átjáró | 
+| **SDL fázis**               | Környezet |  
 | **Alkalmazandó technológiák** | Általános |
 | **Attribútumok**              | Átjáró choice - Azure IoT Hub |
 | **Hivatkozások**              | [Az IOT-központ hozzáférés-vezérlés](https://azure.microsoft.com/documentation/articles/iot-hub-devguide/#Security) |
@@ -187,8 +187,8 @@ Vegye figyelembe, hogy az a-kész adatbázis szolgáltatás RLS tulajdonság csa
 
 | Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
-| **Összetevő**               | Azure Event Hub | 
-| **SDL Phase**               | Felépítés |  
+| **Összetevő**               | Azure-eseményközpont | 
+| **SDL fázis**               | Felépítés |  
 | **Alkalmazandó technológiák** | Általános |
 | **Attribútumok**              | –  |
 | **Hivatkozások**              | [Event Hubs hitelesítés és a biztonsági modell – áttekintés](https://azure.microsoft.com/documentation/articles/event-hubs-authentication-and-security-model-overview/) |
@@ -198,8 +198,8 @@ Vegye figyelembe, hogy az a-kész adatbázis szolgáltatás RLS tulajdonság csa
 
 | Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
-| **Összetevő**               | Azure Event Hub | 
-| **SDL Phase**               | Felépítés |  
+| **Összetevő**               | Azure-eseményközpont | 
+| **SDL fázis**               | Felépítés |  
 | **Alkalmazandó technológiák** | Általános |
 | **Attribútumok**              | –  |
 | **Hivatkozások**              | [Event Hubs hitelesítés és a biztonsági modell – áttekintés](https://azure.microsoft.com/documentation/articles/event-hubs-authentication-and-security-model-overview/) |
@@ -209,8 +209,8 @@ Vegye figyelembe, hogy az a-kész adatbázis szolgáltatás RLS tulajdonság csa
 
 | Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
-| **Összetevő**               | Azure Event Hub | 
-| **SDL Phase**               | Felépítés |  
+| **Összetevő**               | Azure-eseményközpont | 
+| **SDL fázis**               | Felépítés |  
 | **Alkalmazandó technológiák** | Általános |
 | **Attribútumok**              | –  |
 | **Hivatkozások**              | [Event Hubs hitelesítés és a biztonsági modell – áttekintés](https://azure.microsoft.com/documentation/articles/event-hubs-authentication-and-security-model-overview/) |
@@ -221,7 +221,7 @@ Vegye figyelembe, hogy az a-kész adatbázis szolgáltatás RLS tulajdonság csa
 | Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Az Azure Document DB rendszerbe | 
-| **SDL Phase**               | Felépítés |  
+| **SDL fázis**               | Felépítés |  
 | **Alkalmazandó technológiák** | Általános |
 | **Attribútumok**              | –  |
 | **Hivatkozások**              | –  |
@@ -232,7 +232,7 @@ Vegye figyelembe, hogy az a-kész adatbázis szolgáltatás RLS tulajdonság csa
 | Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Az Azure megbízhatósági kapcsolat határán | 
-| **SDL Phase**               | Felépítés |  
+| **SDL fázis**               | Felépítés |  
 | **Alkalmazandó technológiák** | Általános |
 | **Attribútumok**              | –  |
 | **Hivatkozások**              | [Az Azure-előfizetések erőforrásaihoz való hozzáférés kezelése szerepkör-hozzárendelésekkel](https://azure.microsoft.com/documentation/articles/role-based-access-control-configure/)  |
@@ -243,7 +243,7 @@ Vegye figyelembe, hogy az a-kész adatbázis szolgáltatás RLS tulajdonság csa
 | Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Service Fabric megbízhatósági kapcsolat határán | 
-| **SDL Phase**               | Környezet |  
+| **SDL fázis**               | Környezet |  
 | **Alkalmazandó technológiák** | Általános |
 | **Attribútumok**              | Környezet – Azure |
 | **Hivatkozások**              | [A Service Fabric ügyfelek szerepköralapú hozzáférés-vezérlés](https://azure.microsoft.com/documentation/articles/service-fabric-cluster-security-roles/) |
@@ -254,7 +254,7 @@ Vegye figyelembe, hogy az a-kész adatbázis szolgáltatás RLS tulajdonság csa
 | Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Dynamics CRM | 
-| **SDL Phase**               | Felépítés |  
+| **SDL fázis**               | Felépítés |  
 | **Alkalmazandó technológiák** | Általános |
 | **Attribútumok**              | –  |
 | **Hivatkozások**              | –  |
@@ -265,7 +265,7 @@ Vegye figyelembe, hogy az a-kész adatbázis szolgáltatás RLS tulajdonság csa
 | Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Dynamics CRM-portál | 
-| **SDL Phase**               | Felépítés |  
+| **SDL fázis**               | Felépítés |  
 | **Alkalmazandó technológiák** | Általános |
 | **Attribútumok**              | –  |
 | **Hivatkozások**              | –  |
@@ -276,7 +276,7 @@ Vegye figyelembe, hogy az a-kész adatbázis szolgáltatás RLS tulajdonság csa
 | Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Azure Storage | 
-| **SDL Phase**               | Felépítés |  
+| **SDL fázis**               | Felépítés |  
 | **Alkalmazandó technológiák** | Általános |
 | **Attribútumok**              | StorageType - tábla |
 | **Hivatkozások**              | [Hogyan adhat hozzáférést a SAS használatával az Azure-tárfiókban lévő objektumok](https://azure.microsoft.com/documentation/articles/storage-security-guide/#_data-plane-security) |
@@ -287,7 +287,7 @@ Vegye figyelembe, hogy az a-kész adatbázis szolgáltatás RLS tulajdonság csa
 | Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Azure Storage | 
-| **SDL Phase**               | Felépítés |  
+| **SDL fázis**               | Felépítés |  
 | **Alkalmazandó technológiák** | Általános |
 | **Attribútumok**              | –  |
 | **Hivatkozások**              | [A storage-fiókkal, és a szerepköralapú hozzáférés-vezérlést (RBAC) biztonságossá tétele](https://azure.microsoft.com/documentation/articles/storage-security-guide/#management-plane-security) |
@@ -298,21 +298,21 @@ Vegye figyelembe, hogy az a-kész adatbázis szolgáltatás RLS tulajdonság csa
 | Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Mobileszköz ügyfél | 
-| **SDL Phase**               | Felépítés |  
+| **SDL fázis**               | Felépítés |  
 | **Alkalmazandó technológiák** | Általános |
 | **Attribútumok**              | –  |
 | **Hivatkozások**              | –  |
-| **Lépések** | <p>Alkalmazás megvédik az esetben, ha a telefonszám feltörték vagy függetlenített saját konfigurációs és a felhasználó adatait. Telepítés/jailbreakelve megtörje azt jelenti, hogy jogosulatlan hozzáférés, mely a normál felhasználók a saját telefonokon nem tegye. Ezért az alkalmazás kell rendelkeznie az implicit észlelési logika alkalmazás következő indításakor, észleli, hogy a telefon rootolt-e.</p><p>Az észlelési logika is egyszerűen hozzáférhet az melyik általában csak gyökér szintű felhasználó férhet hozzá, például fájlok:</p><ul><li>/system/app/Superuser.apk</li><li>/ sbin/su</li><li>/System/bin/su</li><li>/system/xbin/su</li><li>/Data/Local/xbin/su</li><li>/Data/local/bin/su</li><li>/system/sd/xbin/su</li><li>/System/bin/FailSafe/su</li><li>/Data/Local/su</li></ul><p>Alkalmazások hozzáférhetnek az ezeket a fájlokat, ha azt jelöli, hogy fut-e az alkalmazás legfelső szintű felhasználóként.</p>|
+| **Lépések** | <p>Alkalmazás megvédik az esetben, ha a telefonszám feltörték vagy függetlenített saját konfigurációs és a felhasználó adatait. Telepítés/jailbreakelve megtörje azt jelenti, hogy jogosulatlan hozzáférés, mely a normál felhasználók a saját telefonokon nem tegye. Ezért az alkalmazás kell rendelkeznie az implicit észlelési logika alkalmazás következő indításakor, észleli, hogy a telefon rootolt-e.</p><p>Az észlelési logika is egyszerűen hozzáférhet az melyik általában csak gyökér szintű felhasználó férhet hozzá, például fájlok:</p><ul><li>/system/app/Superuser.apk</li><li>/ sbin/su</li><li>/System/bin/su</li><li>/System/xbin/su</li><li>/Data/Local/xbin/su</li><li>/Data/local/bin/su</li><li>/System/SD/xbin/su</li><li>/System/bin/FailSafe/su</li><li>/Data/Local/su</li></ul><p>Alkalmazások hozzáférhetnek az ezeket a fájlokat, ha azt jelöli, hogy fut-e az alkalmazás legfelső szintű felhasználóként.</p>|
 
 ## <a id="weak-class-wcf"></a>A WCF gyenge Osztályhivatkozást
 
 | Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | WCF | 
-| **SDL Phase**               | Felépítés |  
+| **SDL fázis**               | Felépítés |  
 | **Alkalmazandó technológiák** | Általános, NET-keretrendszer 3 |
 | **Attribútumok**              | –  |
-| **Hivatkozások**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx), [erősítse meg Királyság](https://vulncat.fortify.com/en/vulncat/index.html) |
+| **Hivatkozások**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx), [erősítse meg Királyság](https://vulncat.fortify.com/en/detail?id=desc.config.dotnet.wcf_misconfiguration_weak_class_reference) |
 | **Lépések** | <p>A rendszer a gyenge osztályait ismertető dokumentációban, amely előfordulhat, hogy egy támadó jogosulatlan kódot használja. A program egy felhasználói osztály, amely egyedileg azonosítja nem hivatkozik. Ez az osztály gyengén azonosított .NET betöltésekor a CLR-típus betöltési keresi az osztály a következő helyeken a megadott sorrendben:</p><ol><li>Ha a típus a szerelvény ismert, a betöltő a konfigurációs fájl átirányítási helyeken keresi, GAC-ban, az aktuális szerelvény konfigurációs adatokat, és az alkalmazás alapkönyvtárának használatával</li><li>Ha a szerelvény ismeretlen, a betöltő keres az aktuális szerelvény, mscorlib használatát, és a TypeResolve eseménykezelő által visszaadott helye</li><li>Például a továbbítási típus mechanizmus és a AppDomain.TypeResolve esemény hurkok módosíthatók a CLR-beli keresési sorrendje</li></ol><p>Ha egy támadó kihasználja a CLR-keresés sorrendjét hozzon létre egy másik osztály ugyanazzal a névvel és véletlenül helyezés egy másodlagos helyet, hogy a közös nyelvi Futtatókörnyezet tölti be először, a közös nyelvi Futtatókörnyezet fogja végrehajtani a támadó által megadott kódot</p>|
 
 ### <a name="example"></a>Példa
@@ -346,10 +346,10 @@ A `<behaviorExtensions/>` elem a WCF konfigurációs fájl az alábbi arra utas�
 | Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | WCF | 
-| **SDL Phase**               | Felépítés |  
+| **SDL fázis**               | Felépítés |  
 | **Alkalmazandó technológiák** | Általános, NET-keretrendszer 3 |
 | **Attribútumok**              | –  |
-| **Hivatkozások**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx), [erősítse meg Királyság](https://vulncat.fortify.com/en/vulncat/index.html) |
+| **Hivatkozások**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx), [erősítse meg Királyság](https://vulncat.hpefod.com/en/detail?id=desc.semantic.dotnet.wcf_misconfiguration_unauthorized_access) |
 | **Lépések** | <p>Ez a szolgáltatás nem használ olyan engedélyezési vezérlőt. Amikor egy ügyfél meghívja az adott WCF-szolgáltatások, WCF biztosít a különböző hitelesítési sémák, ellenőrizze, hogy a hívó jogosult a metódus végrehajtása a kiszolgálón. Ha engedélyezési vezérlők WCF-szolgáltatások nincsenek engedélyezve, a hitelesített felhasználók jogosultság-eszkalációs érhető el.</p>|
 
 ### <a name="example"></a>Példa
@@ -394,7 +394,7 @@ return result;
 | Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Webes API | 
-| **SDL Phase**               | Felépítés |  
+| **SDL fázis**               | Felépítés |  
 | **Alkalmazandó technológiák** | Általános, MVC5 |
 | **Attribútumok**              | Nincs; Identity Provider - ADFS, identitásszolgáltató - az Azure AD |
 | **Hivatkozások**              | [Hitelesítési és engedélyezési ASP.NET webes API](http://www.asp.net/web-api/overview/security/authentication-and-authorization-in-aspnet-web-api) |
@@ -445,7 +445,7 @@ public class CustomController : ApiController
 | Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | IoT-eszközök | 
-| **SDL Phase**               | Felépítés |  
+| **SDL fázis**               | Felépítés |  
 | **Alkalmazandó technológiák** | Általános |
 | **Attribútumok**              | –  |
 | **Hivatkozások**              | –  |
@@ -456,7 +456,7 @@ public class CustomController : ApiController
 | Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Az IoT-mező átjáró | 
-| **SDL Phase**               | Felépítés |  
+| **SDL fázis**               | Felépítés |  
 | **Alkalmazandó technológiák** | Általános |
 | **Attribútumok**              | –  |
 | **Hivatkozások**              | –  |

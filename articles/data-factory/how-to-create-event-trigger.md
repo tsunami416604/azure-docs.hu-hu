@@ -10,20 +10,20 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 06/24/2018
+ms.date: 06/27/2018
 ms.author: douglasl
-ms.openlocfilehash: 2bcb0d4e6af00b56d083690439be45379ce4d175
-ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
+ms.openlocfilehash: a9c15b239ee0bd0dde0b1f11691565b2676e3d07
+ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36752809"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37062121"
 ---
 # <a name="create-a-trigger-that-runs-a-pipeline-in-response-to-an-event"></a>Egy adott esemény bekövetkezésekor egy folyamatot futtató eseményindító létrehozása
 
 Ez a cikk ismerteti a eseményalapú eseményindítókat, amelyek az adat-előállító adatcsatornák hozhatja létre.
 
-Eseményvezérelt architektúra (EDA) olyan közös adatok integrációs mintát, amely magában foglalja a termelési, észlelési, felhasználása és szembeni események. Adatok integrációs feladatokhoz gyakran megkövetelik a Data Factory ügyfelek való folyamatok események alapján.
+Eseményvezérelt architektúra (EDA) olyan közös adatok integrációs mintát, amely magában foglalja a termelési, észlelési, felhasználása és szembeni események. Adatok integrációs feladatokhoz gyakran megkövetelik a Data Factory ügyfelek való folyamatok események alapján. Adat-előállító most integrálva [Azure esemény rács](https://azure.microsoft.com/services/event-grid/), amellyel indít el egy olyan eseményre folyamatok.
 
 ## <a name="data-factory-ui"></a>A Data Factory felhasználói felülete
 
@@ -64,11 +64,20 @@ Az alábbi táblázat áttekintést a eseményvezérelt kapcsolódó séma eleme
 Ez a szakasz példákat eseményalapú eseményindító beállításokat.
 
 -   **BLOB elérési út kezdődik**("/ containername /" –) kap események bármely BLOB a tárolóban.
--   **BLOB elérési út kezdődik**("/ containername/Mappanév") – a containername tárolóhoz és mappanév mappa bármely BLOB események fogadása.
--   **BLOB elérési út kezdődik**("/ containername/foldername/file.txt") – a containername tárolóban Mappanév mappában file.txt nevű blob eseményeket fogad.
+-   **BLOB elérési út kezdődik**("/ containername/blobok/Mappanév") – a containername tárolóhoz és mappanév mappa bármely BLOB események fogadása.
+-   **BLOB elérési út kezdődik**("/ containername/blobs/foldername/file.txt") – a containername tárolóban Mappanév mappában file.txt nevű blob eseményeket fogad.
 -   **A BLOB elérési útja végződik**("file.txt") – egy BLOB Receives események nevű file.txt bármely elérési úton.
--   **BLOB elérési út végződik**("/ containername/file.txt") – a tároló containername file.txt nevű blob eseményeket fogad.
+-   **BLOB elérési út végződik**("/ containername/blobs/file.txt") – a tároló containername file.txt nevű blob eseményeket fogad.
 -   **A BLOB elérési útja végződik**("foldername/file.txt") – egy BLOB Receives események nevű file.txt Mappanév mappában található a tárolóban.
+
+> [!NOTE]
+> Fel kell vennie a `/blobs/` szegmens az elérési út, amikor adja meg a tároló és a mappa, a tároló és a fájl, vagy a tárolót, mappa, és fájlt.
+
+## <a name="using-blob-events-trigger-properties"></a>A Blob események eseményindító tulajdonságokkal
+
+Egy blob események eseményindító következik be, amikor azt elérhetővé teszi két változót a folyamat: *folderPath* és *Fájlnév*. Ezek a változók elérésére, a `@triggerBody().fileName` vagy `@triggerBody().folderPath` kifejezések.
+
+Vegye figyelembe például az érvényesítést, ha egy blobot jön létre a konfigurált eseményindító `.csv` értékeként `blobPathEndsWith`. Amikor egy CSV-fájlt a tároló figyelembe megszakad a *folderPath* és *Fájlnév* a .csv fájl helyét írják le. Például *folderPath* értéke `/containername/foldername/nestedfoldername` és *Fájlnév* értéke `filename.csv`.
 
 ## <a name="next-steps"></a>További lépések
 Eseményindítók kapcsolatos részletes információkért lásd: [csővezeték-végrehajtási és eseményindítók](concepts-pipeline-execution-triggers.md#triggers).

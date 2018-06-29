@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 06/19/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: c6ec168332d8a655d78c3deffe89f51f7d75a840
-ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
-ms.translationtype: MT
+ms.openlocfilehash: a8ac62986eb7eb184ae6d102a956ee051e3aa88a
+ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36751880"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37063510"
 ---
 # <a name="update-management-solution-in-azure"></a>Frissítse a felügyeleti megoldás az Azure-ban
 
@@ -505,39 +505,9 @@ Felügyeleti frissítése azonban továbbra is előfordulhat, hogy jelenti, hogy
 
 Frissítési besorolás frissítések telepítése nem működik a CentOS kívül a mezőbe. A SUSE kiválasztásával *csak* más frissítések a besorolás azt eredményezheti, néhány biztonsági frissíti is, ha biztonsági frissítések telepítve kapcsolódó zypper (Csomagkezelő), vagy annak függőségeit először szükség. Ez a zypper korlátozása. Egyes esetekben, akkor előfordulhat, hogy kell futtassa újra a frissítés központi telepítését, ellenőrizze, hogy a frissítés a naplóban.
 
-## <a name="troubleshooting"></a>Hibaelhárítás
+## <a name="troubleshoot"></a>Hibaelhárítás
 
-Ez a témakör a frissítéskezelés megoldással rendelkező problémák elhárításához nyújt segítséget.
-
-### <a name="windows"></a>Windows
-
-Ha tapasztal, amikor megkísérli a bevezetni a megoldás vagy egy virtuális gépet, akkor ellenőrizze a **alkalmazások és szolgáltatások Logs\Operations kezelője** események, amelyek Event ID 4502 és az esemény a helyi számítógépen Eseménynapló-üzenetek tartalmazhat **Microsoft.EnterpriseManagement.HealthService.AzureAutomation.HybridAgent**. A következő táblázat az egyes vonatkozó hibaüzeneteket és egy lehetséges megoldás emeli ki:
-
-| Üzenet | Ok | Megoldás |
-|----------|----------|----------|
-| A gép nem regisztrálható a javításkezelőhöz,<br/>A regisztráció kivétel miatt meghiúsult<br/>System.InvalidOperationException: {„Üzenet”:„A gép már<br/>regisztrálva van egy másik fiókhoz. "} | Számítógép már egy másik munkaterületet, a felügyeletéhez előkészítve. | Karbantartást végez, a régi összetevők által [a hibrid forgatókönyv-csoport törlése](automation-hybrid-runbook-worker.md#remove-a-hybrid-worker-group).|
-| Nem sikerült regisztrálni a gépet a javítások, regisztrációs kivétel miatt sikertelen volt<br/>System.Net.Http.HttpRequestException: Hiba történt a kérés küldése során. ---><br/>System.Net.WebException: Az alapul szolgáló kapcsolat<br/>megszakadt: Váratlan hiba<br/>történt a fogadó oldalon. ---> System.ComponentModel.Win32Exception:<br/>Az ügyfél és a kiszolgáló nem képes kommunikálni,<br/>mert nem rendelkeznek közös algoritmussal | Proxy/átjáró/tűzfal blokkolja a kommunikációt. | [Tekintse át a hálózati követelmények](automation-hybrid-runbook-worker.md#network-planning).|
-| A gép nem regisztrálható a javításkezelőhöz,<br/>A regisztráció kivétel miatt meghiúsult<br/>Newtonsoft.Json.JsonReaderException: Hiba történt a pozitív végtelen érték elemzése közben. | Proxy/átjáró/tűzfal blokkolja a kommunikációt. | [Tekintse át a hálózati követelmények](automation-hybrid-runbook-worker.md#network-planning).|
-| A szolgáltatás által bemutatott tanúsítványt \<wsid\>. oms.opinsights.azure.com<br/>nem a Microsoft szolgáltatásaihoz használt<br/>hitelesítésszolgáltató bocsátotta ki. Kapcsolatfelvétel<br/>a hálózati rendszergazdánál, hogy futtat-e olyan proxyt, amely elfogja a<br/>TLS/SSL-kommunikációt. |Proxy/átjáró/tűzfal blokkolja a kommunikációt. | [Tekintse át a hálózati követelmények](automation-hybrid-runbook-worker.md#network-planning).|
-| A gép nem regisztrálható a javításkezelőhöz,<br/>A regisztráció kivétel miatt meghiúsult<br/>AgentService.HybridRegistration.<br/>PowerShell.Certificates.CertificateCreationException:<br/>Nem sikerült önaláírt tanúsítványt létrehozni. ---><br/>System.UnauthorizedAccessException: A hozzáférés megtagadva. | Önaláírt tanúsítvány létrehozása sikertelen. | Ellenőrizze, hogy a rendszerfióknak<br/>van-e olvasási hozzáférése a következő mappához:<br/>**C:\ProgramData\Microsoft\**<br/>** Crypto\RSA**|
-
-### <a name="linux"></a>Linux
-
-Frissítési menetek nem indítható el a Linux-számítógépen, ha másolatot készít a következő naplófájlt, és megőrizheti a hibaelhárítás céljából:
-
-```
-/var/opt/microsoft/omsagent/run/automationworker/worker.log
-```
-
-Ha hiba fordul elő sikeresen Linux elindulása után frissítési, tekintse meg a feladat, a fertőzött gép futtató kimenetét. Előfordulhat, hogy a vonatkozó hibaüzeneteket a kutatás és művelet végrehajtása a Csomagkezelő a gép. Frissítéskezelés a lesz kifogástalan, a sikeres központi telepítést a Csomagkezelő igényel.
-
-Bizonyos esetekben csomag frissítések zavarhatja frissítése felügyeleti akadályozza meg, hogy egy frissítés központi telepítés befejeződését. Ha megjelenik, amely, vagy zárja ki ezeket a csomagokat a jövőbeli frissítési menetek, vagy telepítse manuálisan a összekapcsolta magát.
-
-Nem oldható fel egy javítási hiba, ha másolatot készít a következő naplófájlt, és megőrizni **előtt** hibaelhárítási célból elindítja a következő központi telepítéséhez:
-
-```
-/var/opt/microsoft/omsagent/run/automationworker/omsupdatemgmt.log
-```
+A frissítéskezelés hibaelhárítása kapcsolatban [hibaelhárítási felügyelete](troubleshoot/update-management.md)
 
 ## <a name="next-steps"></a>További lépések
 

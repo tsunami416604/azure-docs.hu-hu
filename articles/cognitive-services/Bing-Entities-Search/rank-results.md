@@ -10,16 +10,16 @@ ms.component: bing-entity-search
 ms.topic: article
 ms.date: 12/12/2017
 ms.author: v-jerkin
-ms.openlocfilehash: ff5b004aaa863dbdfc460a774a5dfd658ce52537
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 53354c0f78419a37e8896bb4d00e0d7aebf32203
+ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35346903"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37059991"
 ---
 # <a name="using-ranking-to-display-results"></a>Eredmények megjelenítéséhez használja a prioritása  
 
-Minden entitás keresési válasz tartalmazza a [RankingResponse](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-entities-v7-reference#rankingresponse) fogadja a hívást, hasonló egy, a Bing webes keresés választ, amely meghatározza, hogyan meg kell jelenítenie a keresési eredmények között. A rangsorolási válasz sarkpontot mainline, az eredmények és az oldalsó sáv tartalom felsorolását tartalmazza. A sarkpontot eredmény fontos vagy a jól láthatóan elhelyezett eredménye, és először üzenetnek kell megjelennie. Ha nem jelenik meg a fennmaradó eredményezi egy hagyományos mainline és az oldalsó sáv formátumát, mint az oldalsó sáv mainline tartalom magasabb látható kell megadnia. 
+Minden entitás keresési válasz tartalmazza a [RankingResponse](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#rankingresponse) fogadja a hívást, hasonló egy, a Bing webes keresés választ, amely meghatározza, hogyan meg kell jelenítenie a keresési eredmények között. A rangsorolási válasz sarkpontot mainline, az eredmények és az oldalsó sáv tartalom felsorolását tartalmazza. A sarkpontot eredmény fontos vagy a jól láthatóan elhelyezett eredménye, és először üzenetnek kell megjelennie. Ha nem jelenik meg a fennmaradó eredményezi egy hagyományos mainline és az oldalsó sáv formátumát, mint az oldalsó sáv mainline tartalom magasabb látható kell megadnia. 
   
 Az egyes csoportok a [elemek](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#rankinggroup-items) tömb azonosítja a megfelelő szerepelnie kell a tartalmát. Minden elem azonosításához az eredmény választ belül két lehetőséget biztosít.  
   

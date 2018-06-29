@@ -9,12 +9,12 @@ ms.component: custom-speech
 ms.topic: article
 ms.date: 06/11/2018
 ms.author: panosper
-ms.openlocfilehash: fa25f16d3ef7ee8c7ec4c0c9ee17ccc89e8c52a2
-ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
-ms.translationtype: MT
+ms.openlocfilehash: 64e505889ef9472603471d67a961985c1290663a
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/22/2018
-ms.locfileid: "36321854"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37045843"
 ---
 # <a name="custom-speech-service-frequently-asked-questions"></a>Egyéni beszéd szolgáltatás gyakran ismételt kérdések
 
@@ -88,7 +88,7 @@ Lépjen kapcsolatba velünk, ha nagyobb méretezéshez van szüksége.
 
 **Kérdés**: A jelentés szerint a utterances sikertelen volt. Mi az a probléma?
 
-**Válasz**: nem sikerült feltölteni egy fájlban utterences 100 %-os nincs probléma.
+**Válasz**: nem sikerült feltölteni egy fájlban utterances 100 %-os nincs probléma.
 Ha az adatok akusztikus vagy nyelvi utterances többsége (például > 95 %-os) sikeresen importálva, az adatkészlet is használható. Ajánlott azonban, hogy megpróbálja megállapítani, hogy a utterances miért bukott, és hárítsa el a problémákat. Leggyakoribb problémák, például formázási hibákat, amelyek könnyen javítsa ki. 
 
 ## <a name="creating-am"></a>DE létrehozása
@@ -148,7 +148,7 @@ Meg kell célja, hogy a modell létrehozásához a testreszabási megfelelőbb j
 **Kérdés**: I csak feltöltheti szavak listáját?
 
 **Válasz**: szavakat feltöltése fogja lekérni a Szójegyzék a szavakat azonban tanítja meg a rendszer a szavakat általában használata.
-Teljes vagy részleges utterances (mondat vagy felhasználók várhatóan mondja ki a műveleteket kifejezések) megadásával a nyelvi modell megtudhatja a szavakat, valamint, hogy használhatók. Az egyéni nyelvi modell helyes, nem csak az első, a rendszer új szavakat, hanem az alkalmazás ismert szavak valószínűségét hangolását. A rendszer további ebtter teljes utterances biztosító segítségével. 
+Teljes vagy részleges utterances (mondat vagy felhasználók várhatóan mondja ki a műveleteket kifejezések) megadásával a nyelvi modell megtudhatja a szavakat, valamint, hogy használhatók. Az egyéni nyelvi modell helyes, nem csak az első, a rendszer új szavakat, hanem az alkalmazás ismert szavak valószínűségét hangolását. A rendszer, ismerje meg, jobban teljes utterances biztosító segítségével. 
 
 ## <a name="next-steps"></a>További lépések
 

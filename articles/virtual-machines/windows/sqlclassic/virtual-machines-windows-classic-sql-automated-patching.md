@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 03/07/2018
 ms.author: jroth
-ms.openlocfilehash: 1da89bbf88e9f1f2105e7afab5c3fdabcecdbc64
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 4bb13ec9d835959273801c2f53c8d736491080a6
+ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/09/2018
-ms.locfileid: "29852710"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37061335"
 ---
 # <a name="automated-patching-for-sql-server-in-azure-virtual-machines-classic"></a>Automatikus javítás az SQL Server Azure virtuális gépekben (klasszikus)
 > [!div class="op_single_selector"]
@@ -68,7 +68,7 @@ A következő táblázat ismerteti a beállításokat, amelyek képesek automati
 | Beállítás | Lehetséges értékek | Leírás |
 | --- | --- | --- |
 | **Automatikus javítás** |Engedélyezi/letiltja (letiltva) |Engedélyezi vagy letiltja az automatikus javítás egy Azure virtuális géphez. |
-| **Karbantartási ütemezését** |Everyday, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday |A virtuális gép Windows, az SQL Server és a Microsoft-frissítések letöltése és telepítése ütemezés. |
+| **Karbantartási ütemezését** |Mindennap, hétfő, kedd, szerda, csütörtök, péntek, szombat, vasárnap |A virtuális gép Windows, az SQL Server és a Microsoft-frissítések letöltése és telepítése ütemezés. |
 | **A karbantartás indításának időpontja** |0-24 |A helyi kezdési ideje frissíteni a virtuális gépet. |
 | **Karbantartási ablak időtartama** |30-180 |A percet engedélyezett a letöltés és a frissítések telepítésének befejezéséhez. |
 | **Javítás kategória** |Fontos |A kategória a frissítések letöltéséhez és telepítéséhez. |
@@ -86,7 +86,7 @@ Ez a példa alapján, az alábbi táblázat ismerteti a cél Azure virtuális g�
 | --- | --- |
 | **DayOfWeek** |Javítások minden csütörtök telepítve. |
 | **MaintenanceWindowStartingHour** |A kezdő frissítések 11:00 órakor. |
-| **MaintenanceWindowsDuration** |Javítások 120 percen belül kell telepíteni. A kezdési idő alapján, el kell végezniük 1:00 pm által. |
+| **MaintenanceWindowDuration** |Javítások 120 percen belül kell telepíteni. A kezdési idő alapján, el kell végezniük 1:00 pm által. |
 | **PatchCategory** |Ez a paraméter csak lehetséges értéke "Fontos". |
 
 Eltarthat néhány percig, telepítése és konfigurálása az SQL Server IaaS-ügynök.

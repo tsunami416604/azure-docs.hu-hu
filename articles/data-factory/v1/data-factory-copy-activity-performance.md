@@ -14,21 +14,21 @@ ms.topic: conceptual
 ms.date: 05/25/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 27d74ce2cf8fdc4434c48c36dd0c0751dbbab232
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 505f7345af6224b767d6d3719c123d91f54e48f5
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34622312"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37054292"
 ---
 # <a name="copy-activity-performance-and-tuning-guide"></a>Másolja a tevékenység teljesítmény- és hangolási útmutató
 
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [1. verzió – Általánosan elérhető](data-factory-copy-activity-performance.md)
-> * [2. verzió – Előzetes verzió](../copy-activity-performance.md)
+> * [1-es verziójával](data-factory-copy-activity-performance.md)
+> * [(Az aktuális verzió) 2-es verzió](../copy-activity-performance.md)
 
 > [!NOTE]
-> Ez a cikk a Data Factory általánosan elérhető 1. verziójára vonatkozik. Lásd a 2-es verziójának a Data Factory szolgáltatásnak, amely jelenleg előzetes verzióban érhető, használatakor [másolása tevékenység teljesítmény és a Data Factory 2-es hangolási útmutatója](../copy-activity-performance.md).
+> Ez a cikk a Data Factory 1 verziójára vonatkozik. A Data Factory szolgáltatásnak aktuális verziójának használatakor lásd [másolása tevékenység teljesítmény és a Data Factory hangolási útmutatója](../copy-activity-performance.md).
 
 Az Azure Data Factory másolási tevékenység egy első osztályú biztonságos, megbízható és nagy teljesítményű Adatbetöltési megoldást nyújt. Ez lehetővé teszi terabájtos adatkészleteket több példányát minden nap felhő gazdag számos és a helyszíni adattárolókhoz. Blazing-gyors Adatbetöltési teljesítmény annak érdekében, hogy az alapvető "big data" probléma összpontosíthat kulcs: speciális elemzési megoldások kialakításához, és lekérése mélyebben elemezheti az adatokat.
 
@@ -268,7 +268,7 @@ Javasoljuk, hogy szánjon a Data Factory szolgáltatásnak a másolási tevéken
    * [Forrás](#considerations-for-the-source)
    * [Sink](#considerations-for-the-sink)
    * [Szerializálás és a deszerializálás](#considerations-for-serialization-and-deserialization)
-   * [Tömörítés](#considerations-for-compression)
+   * [tömörítés](#considerations-for-compression)
    * [Oszlop leképezése](#considerations-for-column-mapping)
    * [Egyéb szempontok](#other-considerations)
 3. **Bontsa ki a teljes adatkészletet a**. Ha elégedett a végrehajtási eredményt és a teljesítményt, bővítheti a definíció- és adatcsatorna aktív időszakának fedik le a teljes adatkészletet.

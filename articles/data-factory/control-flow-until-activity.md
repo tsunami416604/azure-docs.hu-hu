@@ -13,18 +13,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
-ms.openlocfilehash: 8ceecdefe644cb5dd1b6038636960cbb5dd9167e
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: cd4b58dea43e497a2d7a5b977379d95f7004af45
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34618963"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37052307"
 ---
 # <a name="until-activity-in-azure-data-factory"></a>Amíg az Azure Data Factory tevékenység
 A Until tevékenység ugyanezt a funkcionalitást biztosítja, hogy egy tegye-mindaddig, amíg az ismétlési struktúra programozási nyelvek nyújt. Egy tevékenységkészletet futtat le ciklusosan addig, amíg a tevékenységhez rendelt feltétel igaz értéket nem ad vissza. Megadhat egy időtúllépési értéket az Until tevékenységhez a Data Factoryban. 
-
-> [!NOTE]
-> Ez a cikk a Data Factory 2. verziójára vonatkozik, amely jelenleg előzetes verzióban érhető el. A Data Factory szolgáltatásnak, amely általánosan elérhető (GA), 1 verziójának használatakor lásd [Data Factory V1 dokumentáció](v1/data-factory-introduction.md).
 
 ## <a name="syntax"></a>Szintaxis
 
@@ -58,10 +55,10 @@ A Until tevékenység ugyanezt a funkcionalitást biztosítja, hogy egy tegye-mi
 
 Tulajdonság | Leírás | Megengedett értékek | Szükséges
 -------- | ----------- | -------------- | --------
-név | Neve a `Until` tevékenység. | Karakterlánc | Igen
-type | Meg kell **amíg**. | Karakterlánc | Igen
+név | Neve a `Until` tevékenység. | Sztring | Igen
+type | Meg kell **amíg**. | Sztring | Igen
 kifejezés | IGAZ vagy hamis kifejezés | Kifejezés.  | Igen
-timeout | A ne-csak a megadott idő elteltével időtúllépést hurok. | Karakterlánc. `d.hh:mm:ss` (vagy) `hh:mm:ss`. Az alapértelmezett érték 7 nap. Maximális érték: 90 nap. | Nem
+timeout | A ne-csak a megadott idő elteltével időtúllépést hurok. | karakterlánc. `d.hh:mm:ss` (vagy) `hh:mm:ss`. Az alapértelmezett érték 7 nap. Maximális érték: 90 nap. | Nem
 Tevékenységek | Amíg a kifejezés eredménye végrehajtott tevékenység `true`. | Tevékenységek tömbje. |  Igen
 
 ## <a name="example-1"></a>1. példa

@@ -1,6 +1,6 @@
 ---
-title: A telepítő a Hadoop, Spark, Kafka, HBase vagy R Server - Azure HDInsight fürt |} Microsoft Docs
-description: Hadoop, Kafka, Spark, HBase, R Server, vagy beállítása Storm-fürtök a HDInsight egy böngészőt, az Azure parancssori felület, Azure PowerShell, REST vagy SDK.
+title: A telepítő Hadoop, a Spark, a Kafka, a HBase és a gépi tanulás szolgáltatások - Azure HDInsight fürt |} Microsoft Docs
+description: Hadoop, Kafka, Spark, HBase, ML-szolgáltatások vagy Storm-fürtök az beállítása HDInsight egy böngészőt, az Azure parancssori felület, Azure PowerShell, REST vagy SDK.
 keywords: hadoop-fürt beállítása, kafka fürtbeállítás, spark-fürt beállítása, mi az hadoop-fürt
 services: hdinsight
 documentationcenter: ''
@@ -15,18 +15,18 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/14/2018
 ms.author: jgao
-ms.openlocfilehash: 2afe1e91465c92c6f6cba00c4383456ef78d225c
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: eddbd3f171cee9df9ff306368df47501ff9dcfca
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34200197"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37051593"
 ---
 # <a name="set-up-clusters-in-hdinsight-with-hadoop-spark-kafka-and-more"></a>Hdinsight Hadoop, Spark, Kafka és több fürt beállítása
 
 [!INCLUDE [selector](../../includes/hdinsight-create-linux-cluster-selector.md)]
 
-Megtudhatja, hogyan telepítheti és konfigurálhatja a fürtök hdinsight Hadoop, Spark, Kafka, interaktív lekérdezés, HBase, R Server, vagy a Storm. Emellett útmutató fürtök testreszabása és biztonsági hozzáadása egy tartományhoz való csatlakozás őket.
+Megtudhatja, hogyan telepítheti és konfigurálhatja a fürtök hdinsight Hadoop, Spark, Kafka, interaktív lekérdezés, HBase, ML szolgáltatásokat, vagy a Storm. Emellett útmutató fürtök testreszabása és biztonsági hozzáadása egy tartományhoz való csatlakozás őket.
 
 A Hadoop fürtök több virtuális gépek (csomópontok), a feladatok elosztott feldolgozásához használt áll. Az Azure HDInsight kezeli a megvalósítás részletei telepítési és konfigurációs az egyes csomópontokon, csak meg kell adnia az általános konfigurációs információkat. 
 
@@ -81,7 +81,7 @@ Az Azure HDInsight jelenleg a következő fürttípusok, az összetevők arra, h
 | [HBase](hbase/apache-hbase-overview.md) |Nagy mennyiségű séma nélküli, nosql típusú adatok számára történő feldolgozásakor. |
 | [Interaktív lekérdezés](./interactive-query/apache-interactive-query-get-started.md) |A memóriában történő gyorsítótárazás gyorsabb és interaktív Hive-lekérdezések |
 | [Kafka](kafka/apache-kafka-introduction.md) | A valós idejű streamelési adatok folyamatok és alkalmazások készítéséhez használható elosztott adatfolyam platform |
-| [R Server](r-server/r-server-overview.md) |Különböző big Data típusú adatok statisztika, prediktív modellezési és gépi tanulási képességek |
+| [Gépi tanulás szolgáltatások](r-server/r-server-overview.md) |Különböző big Data típusú adatok statisztika, prediktív modellezési és gépi tanulási képességek |
 | [Spark](spark/apache-spark-overview.md) |A memórián belüli feldolgozást, interaktív lekérdezések micro-kötegelt adatfolyam feldolgozása |
 | [Storm](storm/apache-storm-overview.md) |Valós idejű eseményfeldolgozás |
 

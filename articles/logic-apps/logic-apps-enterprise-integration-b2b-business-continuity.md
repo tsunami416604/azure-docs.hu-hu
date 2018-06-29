@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/10/2017
 ms.author: LADocs; padmavc
-ms.openlocfilehash: 65c7262916219a74dcd6bdab487306b5bd5f709f
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: 1882207207327214ee6519a98715d06a7e32ab93
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35299096"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37045602"
 ---
 # <a name="logic-apps-b2b-cross-region-disaster-recovery"></a>Logic Apps B2B kereszt-régió katasztrófa utáni helyreállítás
 
@@ -85,7 +85,7 @@ Visszatérés egy elsődleges régióban elérhető esetén, kövesse az alábbi
 X 12 dokumentumok EDI üzletmenet folytonossága vezérlő számok alapján:
 
 > [!TIP]
-> Használhatja a [X12 quick start sablon](https://azure.microsoft.com/documentation/templates/201-logic-app-x12-disaster-recovery-replication/) logic Apps alkalmazások létrehozásához. Létrehozás elsődleges és másodlagos integrációs fiókok előfeltételei használhatja a sablont. A sablon segítségével két a logic apps, kapott vezérlő számok egyet, majd egy másikat a létrehozott vezérlő számok létrehozásához. A logikai alkalmazás, az eseményindító csatlakozik a elsődleges integrációs fiók és a művelet a másodlagos integrációs fiókhoz megfelelő eseményindítók és műveletek jönnek létre.
+> Használhatja a [X12 quick start sablon](https://azure.microsoft.com/resources/templates/201-logic-app-b2b-disaster-recovery-replication/) logic Apps alkalmazások létrehozásához. Létrehozás elsődleges és másodlagos integrációs fiókok előfeltételei használhatja a sablont. A sablon segítségével két a logic apps, kapott vezérlő számok egyet, majd egy másikat a létrehozott vezérlő számok létrehozásához. A logikai alkalmazás, az eseményindító csatlakozik a elsődleges integrációs fiók és a művelet a másodlagos integrációs fiókhoz megfelelő eseményindítók és műveletek jönnek létre.
 
 **Előfeltételek**
 

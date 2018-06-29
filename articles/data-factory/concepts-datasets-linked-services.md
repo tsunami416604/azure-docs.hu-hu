@@ -13,22 +13,19 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: shlo
-ms.openlocfilehash: 93729646cf1a501b5502e2666ed68944fe474f72
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: d5cf4005ad50c9c75f22b2fa2719925afbe69f26
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34616005"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37044976"
 ---
 # <a name="datasets-and-linked-services-in-azure-data-factory"></a>Adatkészletek és az Azure Data Factory összekapcsolt szolgáltatások 
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [1. verzió – Általánosan elérhető](v1/data-factory-create-datasets.md)
-> * [2. verzió – Előzetes verzió](concepts-datasets-linked-services.md)
+> * [1-es verziójával](v1/data-factory-create-datasets.md)
+> * [Aktuális verzió](concepts-datasets-linked-services.md)
 
-Ez a cikk ismerteti, milyen adatkészletek, hogyan vannak definiálva JSON formátumú, és hogy ezek hogyan használhatók az Azure Data Factory V2 folyamatok. 
-
-> [!NOTE]
-> Ez a cikk a Data Factory 2. verziójára vonatkozik, amely jelenleg előzetes verzióban érhető el. A Data Factory szolgáltatásnak, amely általánosan elérhető (GA), 1 verziójának használatakor lásd [a Data Factory V1 adatkészletek](v1/data-factory-create-datasets.md).
+Ez a cikk ismerteti, milyen adatkészletek, hogyan vannak definiálva JSON formátumú, és hogy ezek hogyan használhatók az Azure Data Factory folyamatok. 
 
 Ha most ismerkedik a Data Factory, lásd: [Bevezetés az Azure Data Factory](introduction.md) áttekintése. 
 
@@ -193,7 +190,7 @@ Tulajdonság | Leírás | Szükséges
 -------- | ----------- | --------
 név | Az oszlop neve. | Igen
 type | Az oszlop adattípusát. Adat-előállító megengedett értékek, a következő ideiglenes adattípusokat támogatja: **Int16, Int32, Int64, egyetlen, Double, Decimal, Byte [], logikai érték, karakterlánc, Guid, Datetime, Datetimeoffset és Timespan** | Nem
-Kulturális környezet | . A NET-alapú kulturális környezet lehet használni, ha a típus a .NET-típus: `Datetime` vagy `Datetimeoffset`. Az alapértelmezett érték `en-us`. | Nem
+kulturális környezet | . A NET-alapú kulturális környezet lehet használni, ha a típus a .NET-típus: `Datetime` vagy `Datetimeoffset`. Az alapértelmezett érték `en-us`. | Nem
 Formátumban | Formázó karakterlánc kell használni, ha a típus a .NET-típus: `Datetime` vagy `Datetimeoffset`. Tekintse meg [egyéni dátum és idő formátumú karakterláncok](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings) a dátum és idő formázása. | Nem
 
 ### <a name="example"></a>Példa
@@ -220,13 +217,13 @@ A következő irányelveket segítenek megérteni, mikor struktúra információ
 ## <a name="create-datasets"></a>Adatkészletek létrehozása
 Ezen eszközök vagy az SDK-k használatával is létrehozhat a adatkészletek: [.NET API](quickstart-create-data-factory-dot-net.md), [PowerShell](quickstart-create-data-factory-powershell.md), [REST API](quickstart-create-data-factory-rest-api.md), Azure Resource Manager-sablon, és az Azure-portálon
 
-## <a name="v1-vs-v2-datasets"></a>V1 vs. V2 adatkészletek
+## <a name="current-version-vs-version-1-datasets"></a>1-es verziójú adatkészletek és aktuális verzió
 
-Az alábbiakban néhány különbség az adat-előállító v1 és v2 adatkészletek között: 
+Az alábbiakban néhány különbség az adat-előállító és a Data Factory 1-es verziójú adatkészletek között: 
 
-- A v2 nem támogatja a külső tulajdonságot. A rendszer felülírja a [eseményindító](concepts-pipeline-execution-triggers.md).
-- A házirend és a rendelkezésre állási tulajdonságok nem támogatottak a 2. Egy folyamat kezdési időpontja függ [eseményindítók](concepts-pipeline-execution-triggers.md).
-- Hatókört használó adatkészletek (adatcsatorna meghatározott adatkészletek) V2 nem támogatottak. 
+- A külső tulajdonság nem támogatott a jelenlegi verzióban. A rendszer felülírja a [eseményindító](concepts-pipeline-execution-triggers.md).
+- A házirend és a rendelkezésre állási tulajdonságok nem támogatottak a jelenlegi verzióban. Egy folyamat kezdési időpontja függ [eseményindítók](concepts-pipeline-execution-triggers.md).
+- A jelenlegi verzióban nem támogatottak a hatókörön belüli adatkészletek (adathalmaz egy folyamat definiált). 
 
 ## <a name="next-steps"></a>További lépések
 Tekintse meg az alábbi részletes útmutatás adatcsatornákat és adathalmazokat egyikével a következő eszközök, illetve az SDK-k létrehozásához. 

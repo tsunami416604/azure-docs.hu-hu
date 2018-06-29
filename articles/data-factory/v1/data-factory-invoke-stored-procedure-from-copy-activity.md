@@ -14,16 +14,16 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: c06e8c1a64f6f784f106c9b925f698b33c196320
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: e75573513f107977e1d5fe62fbae89cb4439e0e9
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34621836"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37048951"
 ---
 # <a name="invoke-stored-procedure-from-copy-activity-in-azure-data-factory"></a>A másolási tevékenység során az Azure Data Factory tárolt eljárás meghívása
 > [!NOTE]
-> Ez a cikk a Data Factory általánosan elérhető 1. verziójára vonatkozik. Lásd a 2-es verziójának a Data Factory szolgáltatásnak, amely jelenleg előzetes verzióban érhető, használatakor [tárolt eljárási tevékenység adat-előállítóban 2-es verzióját használó adatok](../transform-data-using-stored-procedure.md).
+> Ez a cikk a Data Factory 1 verziójára vonatkozik. A Data Factory szolgáltatásnak aktuális verziójának használatakor lásd [tárolt eljárási tevékenység használatával a Data Factory adatok](../transform-data-using-stored-procedure.md).
 
 
 Az adatok másolásakor [SQL Server](data-factory-sqlserver-connector.md) vagy [Azure SQL Database](data-factory-azure-sql-connector.md), konfigurálhatja a **SqlSink** a másolási tevékenység meghívni a tárolt eljárást. Érdemes lehet használni a tárolt eljárást a további feldolgozás (egyesítés oszlopok, keresés, szúrás több táblák, stb.) az adatok a céltáblázatba való beszúrása előtt meg kell adni. Ez a szolgáltatás kihasználja a [Table-Valued paraméterek](https://msdn.microsoft.com/library/bb675163.aspx). 

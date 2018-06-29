@@ -15,14 +15,14 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 05/11/2018
 ms.author: ningk
-ms.openlocfilehash: 1f4afbe1849210c55c392d014449224f2fe97b04
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 0959617185694d48c593996d5cd8c836098dd1cd
+ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34655119"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37062206"
 ---
-# <a name="integrate-cloud-foundry-with-azure"></a>Felhő Foundry integrálása az Azure-ral
+# <a name="integrate-cloud-foundry-with-azure"></a>A Cloud Foundry Azure-ral való integrálása
 
 [A felhő Foundry](https://docs.cloudfoundry.org/) egy felhőbeli szolgáltatók IaaS platform felett futó PaaS platform. Különböző szolgáltatók kínál konzisztens alkalmazás üzembe helyezését. Ezenkívül is integrálása különböző Azure-szolgáltatások enterprise osztályú magas rendelkezésre ÁLLÁSÚ, méretezhetőségi és költségmegtakarításhoz.
 Nincsenek [a felhő Foundry 6 alrendszerek](https://docs.cloudfoundry.org/concepts/architecture/), amely lehet rugalmasan méretezési online, beleértve: útválasztási, hitelesítési, alkalmazáskezelés életciklusát, szolgáltatás-felügyeleti üzenetküldési és figyelését. Az egyes a alrendszereket konfigurálhatja a felhő Foundry kapcsolattartó Azure szolgáltatás használatára. 
@@ -81,7 +81,7 @@ Amíg F és D VM sorozat gyakran javasolt döntő felhő Foundry éles környeze
 #### <a name="managed-standard-disk"></a>Standard szintű felügyelt lemezes: 
 Prémium szintű lemezekhez megbízható teljesítmény éles környezetben javasolt.  A [kezelt lemez](https://azure.microsoft.com/services/managed-disks/), Standard szintű tárolást is biztosíthat más-más teljesítménybeli, hasonló megbízhatóságát. Amely nincs teljesítmény érzékeny terheléshez, például a fejlesztési és tesztelési célú vagy a nem kritikus környezetben felügyelt standard lemezek kínálnak, alacsonyabb költségű másik lehetséges.  
 ### <a name="cost-saving-in-general"></a>Általában mentése költsége 
-#### <a name="significant-vm-cost-saving-with-reserved-instances"></a>VM jelentős költségmegtakarítást fenntartott osztályt: 
+#### <a name="significant-vm-cost-saving-with-reserved-instances"></a>Jelentős VM költsége mentése fenntartott osztályt: 
 A mai CF virtuális gépeinek számlázása, használja az "igény" árképzési, annak ellenére, hogy a környezetben be általában határozatlan ideig maradnak. Most tartalékkapacitás 1-es vagy 3 éves távon a virtuális gép, és kedvezmények 45-65 % kapnak. A számlázási rendszer, az a környezetben nem történtek változások alkalmazzák. További információkért lásd: [hogyan fenntartott példányok works](https://azure.microsoft.com/pricing/reserved-vm-instances/). 
 #### <a name="managed-premium-disk-with-smaller-sizes"></a>Prémium szintű lemez, amelyik kisebb méretű kezelése: 
 Lemezek támogatási kisebb lemezméret, például a P4(32 GB) és a prémium és standard lemezek P6(64 GB) kezeli. Ha kis munkaterhelés, költség mentheti felügyelt prémium szintű lemezekhez standard premium lemezek áttelepítése.

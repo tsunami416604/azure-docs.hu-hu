@@ -1,6 +1,6 @@
 ---
 title: ScaleR és SparkR használata az Azure HDInsight |} Microsoft Docs
-description: R Server és a HDInsight ScaleR és SparkR használata
+description: ScaleR és SparkR használata a HDInsight ML-szolgáltatások
 services: hdinsight
 documentationcenter: ''
 author: bradsev
@@ -14,24 +14,24 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/19/2017
 ms.author: bradsev
-ms.openlocfilehash: 4306f265bf7f52f9bc307def2256dd62e94e004f
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 34d923cdf2dd96412996c766632ae42aac576e8c
+ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31399966"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37061478"
 ---
 # <a name="combine-scaler-and-sparkr-in-hdinsight"></a>ScaleR és SparkR a Hdinsightban
 
 Ez a dokumentum bemutatja, hogyan repülési érkezési késések használatával megjósolható egy **ScaleR** logisztikai regresszió modell. A példában repülési késleltetés és a időjárási adatokat illesztve **SparkR**.
 
-Bár mindkét csomagot Hadoop a Spark végrehajtási motorján futnak, akkor sem, minden egyes van szükségük a saját megfelelő Spark-munkamenetek megosztása a memóriában levő. Ezzel a problémával az R Server egy jövőbeli verziójában, amíg a megoldás, Spark-munkameneteket mozaikként, átfedés nélkül, és az exchange-adatok keresztül közbülső fájlok. Az utasítások mutatja, hogy ezek a követelmények egyszerű eléréséhez.
+Bár mindkét csomagot Hadoop a Spark végrehajtási motorján futnak, akkor sem, minden egyes van szükségük a saját megfelelő Spark-munkamenetek megosztása a memóriában levő. Ezzel a problémával az ML Server egy jövőbeli verziójában, amíg a megoldás, Spark-munkameneteket mozaikként, átfedés nélkül, és az exchange-adatok keresztül közbülső fájlok. Az utasítások mutatja, hogy ezek a követelmények egyszerű eléréséhez.
 
 Ez a példa kezdetben megosztott egy előadás rétegek 2016, az Mario Inchiosa és Roni Burd. A következő előadás található [egy méretezhető tudományos Adatplatform r felépítése](http://event.on24.com/eventRegistration/console/EventConsoleNG.jsp?uimode=nextgeneration&eventid=1160288&sessionid=1&key=8F8FB9E2EB1AEE867287CD6757D5BD40&contenttype=A&eventuserid=305999&playerwidth=1000&playerheight=650&caller=previewLobby&text_language_id=en&format=fhaudio).
 
-A kód eredetileg készült az R Serverhez fut a Spark on Azure HDInsight-fürtöt. De a SparkR és ScaleR használatát egy parancsfájlban keverése fogalma is a helyszíni környezetben környezetében érvényes. 
+A kód eredetileg készült ML-kiszolgáló fut a Spark on Azure HDInsight-fürtöt. De a SparkR és ScaleR használatát egy parancsfájlban keverése fogalma is a helyszíni környezetben környezetében érvényes.
 
-A jelen dokumentumban leírt lépések azt feltételezik, hogy rendelkezik-e a közbenső szintű Tudásbázis R és a [ScaleR](https://msdn.microsoft.com/microsoft-r/scaler-user-guide-introduction) az R Server könyvtárban. Ön belépnek [SparkR](https://spark.apache.org/docs/2.1.0/sparkr.html) ebben a forgatókönyvben közben.
+A jelen dokumentumban leírt lépések azt feltételezik, hogy rendelkezik-e a közbenső szintű Tudásbázis R és a [ScaleR](https://msdn.microsoft.com/microsoft-r/scaler-user-guide-introduction) ML Server könyvtárban. Ön belépnek [SparkR](https://spark.apache.org/docs/2.1.0/sparkr.html) ebben a forgatókönyvben közben.
 
 ## <a name="the-airline-and-weather-datasets"></a>A légitársaság és időjárási adatkészletek
 
@@ -200,7 +200,7 @@ rxDataStep(weatherDF, outFile = weatherDF1, rowsPerRead = 50000, overwrite = T,
 
 ## <a name="importing-the-airline-and-weather-data-to-spark-dataframes"></a>A légitársaság és időjárási adatok importálása a Spark DataFrames
 
-Most a SparkR használjuk [read.df()](https://docs.databricks.com/spark/latest/sparkr/functions/read.df.html) működnek, mint a időjárása és a légitársaság adatok importálása a Spark DataFrames. Ez a funkció számos más Spark módszerek, például végrehajtása lazily, ami azt jelenti, hogy a végrehajtási sorba állított, de nem hajtotta végre a kötelező.
+Most a SparkR használjuk [read.df()](https://docs.databricks.com/spark/1.6/sparkr/functions/read.df.html#read-df) működnek, mint a időjárása és a légitársaság adatok importálása a Spark DataFrames. Ez a funkció számos más Spark módszerek, például végrehajtása lazily, ami azt jelenti, hogy a végrehajtási sorba állított, de nem hajtotta végre a kötelező.
 
 ```
 airPath     <- file.path(inputDataDir, "AirOnTime08to12CSV")
@@ -360,7 +360,7 @@ A CSV-fájl illesztett légitársaság és időjárási adataikat sikerült hasz
 ```
 logmsg('Import the CSV to compressed, binary XDF format') 
 
-# set the Spark compute context for R Server 
+# set the Spark compute context for ML Services 
 rxSetComputeContext(sparkCC)
 rxGetComputeContext()
 
@@ -537,15 +537,15 @@ logmsg(paste('Elapsed time=',sprintf('%6.2f',elapsed),'(sec)\n\n'))
 
 ## <a name="summary"></a>Összegzés
 
-Ez a cikk azt már látható hogyan is lehet kombinálni SparkR használható modell fejlesztési Hadoop Spark ScaleR adatok módosítását. Ebben a forgatókönyvben csak fut egyszerre csak egy munkamenet külön Spark munkamenetek, karbantartása és exchange-adatok CSV-fájlok keresztül igényel. Egyszerű, bár ez a folyamat lehet egy jövőbeli R Server a kiadásban még egyszerűbbé SparkR és ScaleR is megosztani egy Spark-munkamenetet, és így megosztani a Spark DataFrames.
+Ez a cikk azt már látható hogyan is lehet kombinálni SparkR használható modell fejlesztési Hadoop Spark ScaleR adatok módosítását. Ebben a forgatókönyvben csak fut egyszerre csak egy munkamenet külön Spark munkamenetek, karbantartása és exchange-adatok CSV-fájlok keresztül igényel. Egyszerű, bár ez a folyamat lehet egy jövőbeli ML szolgáltatások a kiadásban még egyszerűbbé SparkR és ScaleR is megosztani egy Spark-munkamenetet, és így megosztani a Spark DataFrames.
 
 ## <a name="next-steps-and-more-information"></a>Következő lépések és további információ
 
-- Spark R-kiszolgáló használatára vonatkozó további információkért lásd: a [kezdeti lépések útmutatóban az MSDN webhelyen](https://msdn.microsoft.com/microsoft-r/scaler-spark-getting-started)
+- Spark ML-kiszolgáló használatára vonatkozó további információkért tekintse meg a [kezdeti lépések útmutatóban](https://msdn.microsoft.com/microsoft-r/scaler-spark-getting-started)
 
-- R Server általános információkért tekintse meg a [Ismerkedés az R](https://msdn.microsoft.com/microsoft-r/microsoft-r-get-started-node) cikk.
+- Gépi tanulás kiszolgálón általános információkért lásd: a [Ismerkedés az R](https://msdn.microsoft.com/microsoft-r/microsoft-r-get-started-node) cikk.
 
-- Az R Server on HDInsight információkért lásd: [az R Server on Azure HDInsight áttekintése](r-server/r-server-overview.md) és [az R Server on Azure HDInsight](r-server/r-server-get-started.md).
+- Információk a HDInsight ML-szolgáltatásoknak: [áttekintése az ML szolgáltatások, a HDInsight](r-server/r-server-overview.md) és [Ismerkedés az Azure hdinsight ML Services](r-server/r-server-get-started.md).
 
 SparkR használatára vonatkozó további információkért lásd:
 

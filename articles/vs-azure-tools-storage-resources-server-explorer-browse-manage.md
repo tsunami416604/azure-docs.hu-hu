@@ -11,12 +11,12 @@ ms.workload: azure
 ms.topic: conceptual
 ms.date: 8/24/2017
 ms.author: ghogen
-ms.openlocfilehash: 0beeb8fb7f7e46db97e179f3eacf3c68dd92cff3
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: c9828504ab40a1e62c107f218fda024be6330c23
+ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2018
-ms.locfileid: "31798577"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37061743"
 ---
 # <a name="browse-and-manage-storage-resources-by-using-server-explorer"></a>Keresse meg és tárolási erőforrások kezelése a Server Explorer használatával
 
@@ -157,7 +157,7 @@ Az alábbi ábrán egy két üzeneteket tartalmazó sor:
 
 ![A várólista megtekintéséhez](./media/vs-azure-tools-storage-resources-server-explorer-browse-manage/IC651470.png)
 
-További információ a tárolási szolgáltatási várólisták létrehozásáról: [Ismerkedés az Azure Queue storage használatának .NET](http://go.microsoft.com/fwlink/?LinkID=264702). A webszolgáltatás tárolási szolgáltatási várólisták, lásd: [a Queue szolgáltatás alapfogalmai](http://go.microsoft.com/fwlink/?LinkId=264788). Üzenetek küldése egy tárolási szolgáltatások üzenetsorba Visual Studio használatával kapcsolatos információkért lásd: [tárolási szolgáltatások várólista-üzenetek küldése](https://msdn.microsoft.com/library/azure/jj649344.aspx).
+További információ a tárolási szolgáltatási várólisták létrehozásáról: [Ismerkedés az Azure Queue storage használatának .NET](http://go.microsoft.com/fwlink/?LinkID=264702). A webszolgáltatás tárolási szolgáltatási várólisták, lásd: [a Queue szolgáltatás alapfogalmai](http://go.microsoft.com/fwlink/?LinkId=264788). Üzenetek küldése egy tárolási szolgáltatások üzenetsorba Visual Studio használatával kapcsolatos információkért lásd: [tárolási szolgáltatások várólista-üzenetek küldése](https://docs.microsoft.com/azure/visual-studio/vs-storage-cloud-services-getting-started-queues).
 
 > [!NOTE]
 > Tárolási szolgáltatások sorok különbözőek az Azure Service Bus-üzenetsorok. További információ a Service Bus-üzenetsorok: [Service Bus-üzenetsorok, témakörök és előfizetések](https://docs.microsoft.com/azure/service-bus-messaging/service-bus-queues-topics-subscriptions).
@@ -215,7 +215,7 @@ Testre szabhatja az entitásokat, amely egy táblázat jelenik meg, ha a lekérd
 
     A **Lekérdezésszerkesztő** párbeszédpanel jelenik meg. A következő ábrán egy lekérdezést, amely éppen készül a Lekérdezésszerkesztőben.
 
-    ![Lekérdezés-szerkesztő](./media/vs-azure-tools-storage-resources-server-explorer-browse-manage/IC652231.png)
+    ![Lekérdezéskészítő](./media/vs-azure-tools-storage-resources-server-explorer-browse-manage/IC652231.png)
 1. Ha elkészült a lekérdezés létrehozása a párbeszédpanel bezárásához. A lekérdezés megjelenő szöveg képernyőn a WCF Data Services szűrő beviteli mezőben jelenik meg.
 1. A lekérdezés futtatásához jelölje ki a zöld háromszögnek ikonra.
 

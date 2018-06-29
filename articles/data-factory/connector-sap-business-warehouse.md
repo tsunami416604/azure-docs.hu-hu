@@ -13,22 +13,19 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/07/2018
 ms.author: jingwang
-ms.openlocfilehash: f5af46017dede0deac92ff5a7f35f17e083590d6
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 9934e9757b5def444afb39d110e490aa6516521f
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34618606"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37045075"
 ---
 # <a name="copy-data-from-sap-business-warehouse-using-azure-data-factory"></a>Adatok másolása az SAP Business Warehouse Azure Data Factory használatával
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [1. verzió – Általánosan elérhető](v1/data-factory-sap-business-warehouse-connector.md)
-> * [2. verzió – Előzetes verzió](connector-sap-business-warehouse.md)
+> * [1-es verziójával](v1/data-factory-sap-business-warehouse-connector.md)
+> * [Aktuális verzió](connector-sap-business-warehouse.md)
 
 Ez a cikk ismerteti, hogyan használható a másolási tevékenység során az Azure Data Factory egy SAP Business Warehouse (BW) az adatok másolása. Buildekről nyújtanak a [másolása tevékenység áttekintése](copy-activity-overview.md) cikket, amely megadja a másolási tevékenység általános áttekintést.
-
-> [!NOTE]
-> Ez a cikk a Data Factory 2. verziójára vonatkozik, amely jelenleg előzetes verzióban érhető el. A Data Factory szolgáltatásnak, amely általánosan elérhető (GA), 1 verziójának használatakor lásd [SAP BW-összekötőt a V1](v1/data-factory-sap-business-warehouse-connector.md).
 
 ## <a name="supported-capabilities"></a>Támogatott képességei
 
@@ -169,27 +166,27 @@ Ha az adatok másolása az SAP BW Programhoz, a következő megfeleltetéseket s
 | SAP BW-adattípus | Data factory ideiglenes adattípus |
 |:--- |:--- |
 | ACCP | Int |
-| KARAKTER | Karakterlánc |
-| CLNT | Karakterlánc |
+| KARAKTER | Sztring |
+| CLNT | Sztring |
 | PÉNZNEM | Decimális |
-| CUKY | Karakterlánc |
+| CUKY | Sztring |
 | DEC | Decimális |
 | FLTP | Dupla |
 | INT1 | Bájt |
 | INT2 | Int16 |
 | INT4 | Int |
-| LANG | Karakterlánc |
-| LCHR | Karakterlánc |
+| LANG | Sztring |
+| LCHR | Sztring |
 | LRAW | Byte] |
 | PREC | Int16 |
 | QUAN | Decimális |
 | RAW | Byte] |
 | RAWSTRING | Byte] |
-| STRING | Karakterlánc |
-| EGYSÉG | Karakterlánc |
-| DATS | Karakterlánc |
-| NUMC | Karakterlánc |
-| TIMS | Karakterlánc |
+| STRING | Sztring |
+| EGYSÉG | Sztring |
+| DATS | Sztring |
+| NUMC | Sztring |
+| TIMS | Sztring |
 
 
 ## <a name="next-steps"></a>További lépések

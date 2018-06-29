@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/30/2018
+ms.date: 06/27/2018
 ms.author: tomfitz
-ms.openlocfilehash: 591fe2222c54aad50acc378be7f3399518a8087e
-ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
+ms.openlocfilehash: c41ff548ed4020ab85d15f610503a3b1592910a5
+ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/17/2018
-ms.locfileid: "34266918"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37059889"
 ---
 # <a name="microsoftcommonfileupload-ui-element"></a>Microsoft.Common.FileUpload felhasználói felületi elem
 Lehetővé teszi a felhasználóknak adjon meg egy vagy több fájl feltöltése vezérlő.
@@ -50,19 +50,19 @@ Lehetővé teszi a felhasználóknak adjon meg egy vagy több fájl feltöltése
 ## <a name="remarks"></a>Megjegyzések
 - `constraints.accept` Adja meg a fájlokat, amelyek megjelennek a böngésző fájlpárbeszédpanelt típusú. Tekintse meg a [HTML5-specifikációt](http://www.w3.org/TR/html5/forms.html#attr-input-accept) az engedélyezett értékek. Az alapértelmezett érték **null**.
 - Ha `options.multiple` értéke **igaz**, a felhasználó által megadható egynél több fájl a böngésző fájl párbeszédpanelen. Az alapértelmezett érték **hamis**.
-- Ez az elem feltöltése fájlokat támogatja a két mód értéke alapján `options.uploadMode`. Ha **fájl** van megadva, a kimenet tartalmazza a fájlt egy blobba tartalmát. Ha **URL-cím** van megadva, akkor a fájl feltöltése egy ideiglenes helyre, és a kimenet tartalmazza a blob URL-CÍMÉT. Ideiglenes blobok kiürítendő 24 óra múlva. Az alapértelmezett érték **fájl**.
+- Ez az elem feltöltése fájlokat támogatja a két mód értéke alapján `options.uploadMode`. Ha **fájl** van megadva, a kimeneti blob, a fájl tartalma. Ha **URL-cím** van megadva, akkor a fájl feltöltése egy ideiglenes helyre, és a kimeneti tartalmaz a blob URL-CÍMÉT. Ideiglenes blobok kiürítendő 24 óra múlva. Az alapértelmezett érték **fájl**.
 - Értékének `options.openMode` határozza meg, hogy a fájl írásvédett. Ha a fájl várt egyszerű szövegként, adja meg **szöveg**; más, adja meg **bináris**. Az alapértelmezett érték **szöveg**.
 - Ha `options.uploadMode` értéke **fájl** és `options.openMode` értéke **bináris**, a base64-kódolású kimenete.
 - `options.encoding` Meghatározza, hogy a fájl olvasásánál használandó kódolás. Az alapértelmezett érték **UTF-8**, és csak akkor, ha `options.openMode` értéke **szöveg**.
 
 ## <a name="sample-output"></a>Példa kimenet
-Ha options.multiple értéke false, és options.uploadMode fájlt, majd a kimenet tartalmazza a fájl tartalmát egy JSON-karakterlánc:
+Ha options.multiple értéke false, és options.uploadMode fájl, akkor a kimeneti rendelkezik a fájl tartalmát egy JSON-karakterlánc:
 
 ```json
 "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
 ```
 
-Ha igaz options.multiple and'options.uploadMode fájl, akkor a kimenet tartalmazza a fájlok tartalmát egy JSON-tömb:
+Ha igaz options.multiple and'options.uploadMode fájl, akkor a kimeneti fájl tartalmának rendelkezik egy JSON-tömb:
 
 ```json
 [
@@ -73,13 +73,13 @@ Ha igaz options.multiple and'options.uploadMode fájl, akkor a kimenet tartalmaz
 ]
 ```
 
-Ha options.multiple értéke false, és options.uploadMode URL-címet, majd a kimeneti egy URL-címet tartalmaz JSON karakterláncként:
+Ha options.multiple értéke false, és options.uploadMode URL-címet, majd a kimeneti rendelkezik JSON karakterláncnak egy URL-cím:
 
 ```json
 "https://myaccount.blob.core.windows.net/pictures/profile.jpg?sv=2013-08-15&st=2013-08-16&se=2013-08-17&sr=c&sp=r&rscd=file;%20attachment&rsct=binary &sig=YWJjZGVmZw%3d%3d&sig=a39%2BYozJhGp6miujGymjRpN8tsrQfLo9Z3i8IRyIpnQ%3d"
 ```
 
-Ha options.multiple értéke true, és options.uploadMode URL-címet, majd a kimenet tartalmazza URL-címek listáját egy JSON-tömb:
+Ha options.multiple értéke true, és options.uploadMode URL-címet, majd a kimeneti rendelkezik egy JSON-tömb URL-címek listáját:
 ```json
 [
   "https://myaccount.blob.core.windows.net/pictures/profile1.jpg?sv=2013-08-15&st=2013-08-16&se=2013-08-17&sr=c&sp=r&rscd=file;%20attachment&rsct=binary &sig=YWJjZGVmZw%3d%3d&sig=a39%2BYozJhGp6miujGymjRpN8tsrQfLo9Z3i8IRyIpnQ%3d",

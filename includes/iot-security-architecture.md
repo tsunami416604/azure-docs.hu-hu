@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 04/24/2018
 ms.author: dobett
 ms.custom: include file
-ms.openlocfilehash: 62856d4743d853d5685503b5c21faedc46575e55
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 6f28df6f2faa78af90fb4b5e62f218e3b391000b
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33814798"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37066084"
 ---
 # <a name="internet-of-things-security-architecture"></a>Az eszközök internetes hálózatát biztonsági architektúrája
 
@@ -29,7 +29,7 @@ Sok a fejlesztési csapat munkaköre egy kiválóan alkalmas a rendszer a funkci
 
 ### <a name="when-to-threat-model"></a>Mikor érdemes a fenyegetés modell
 
-[Modellezni](http://www.microsoft.com/security/sdl/adopt/threatmodeling.aspx) kínál a legnagyobb értéket, ha a tervezési szakaszban tartalmaznia. Tervezésekor, hogy a legnagyobb rugalmasságot módosításokat elkerülése érdekében a fenyegetések. A kívánt eredmény fenyegetések kiküszöbölése azért. Sokkal egyszerűbb, mint azok mérséklési hozzáadása, kipróbálása és biztosítása naprakészek maradjanak és továbbá ilyen eltávolítási nem mindig lehetséges legyen. Fenyegetések kiküszöbölhetők a termék több érett válik, és végül pedig szükséges a további munkahelyi és a fenyegetések modellezése a korai fejlesztésében mint sokkal nehezebb kompromisszumot nehezebben válik.
+[Modellezni](https://www.microsoft.com/en-us/sdl/adopt/threatmodeling.aspx) kínál a legnagyobb értéket, ha a tervezési szakaszban tartalmaznia. Tervezésekor, hogy a legnagyobb rugalmasságot módosításokat elkerülése érdekében a fenyegetések. A kívánt eredmény fenyegetések kiküszöbölése azért. Sokkal egyszerűbb, mint azok mérséklési hozzáadása, kipróbálása és biztosítása naprakészek maradjanak és továbbá ilyen eltávolítási nem mindig lehetséges legyen. Fenyegetések kiküszöbölhetők a termék több érett válik, és végül pedig szükséges a további munkahelyi és a fenyegetések modellezése a korai fejlesztésében mint sokkal nehezebb kompromisszumot nehezebben válik.
 
 ### <a name="what-to-threat-model"></a>Mi a fenyegetések modellezése
 
@@ -103,7 +103,7 @@ Az alábbi szakaszok ismertetik az ezekben a zónákban található szabványos 
 
 ### <a name="the-device-zone"></a>Az eszköz zóna
 
-Az eszköz környezet egy körül az eszköz azonnali fizikai hely, ahol fizikai hozzáférés, illetve a "helyi hálózat" az eszköz társ-társ digitális elérése esetén valósítható meg. A "helyi hálózat" feltételezett, hogy önálló, és a – szigetelt, de számára – a nyilvános internethez potenciálisan össze, és bármely rövid hatótávolságú vezeték nélküli rádió technológia, amely lehetővé teszi az eszközök társ-társ kommunikációs magában foglalja a hálózat lehet. Létezik *nem* közé tartozik a hálózati virtualizálási technológia létrehozása a helyi hálózaton érhet, és nem is szerepelnek a két eszközök kommunikálhassanak a nyilvános hálózati helyet, ha azok egy társ-társ kommunikációs kapcsolat megadását igénylő nyilvános operátor hálózatok.
+Az eszköz környezet egy körül az eszköz azonnali fizikai hely, ahol fizikai hozzáférés, illetve a "helyi hálózat" az eszköz társ-társ digitális elérése esetén valósítható meg. A "helyi hálózat" feltételezett, hogy önálló, és a – szigetelt, de számára – a nyilvános internethez potenciálisan össze, és bármely rövid hatótávolságú vezeték nélküli rádió technológia, amely lehetővé teszi az eszközök társ-társ kommunikációs magában foglalja a hálózat lehet. Létezik *nem* közé tartozik a hálózati virtualizálási technológia létrehozása a helyi hálózaton érhet, és nem is tartalmazza a nyilvános operátor hálózatok kommunikálhassanak nyilvános hálózati helyet, ha két eszközök igénylő Adjon meg egy társ-társ kommunikációs kapcsolat voltak.
 
 ### <a name="the-field-gateway-zone"></a>A mező átjáró zóna
 
@@ -250,13 +250,13 @@ Minden eszköz és a mező átjáró storage (az adatok, az operációs rendszer
 
 ### <a name="device-and-event-processingcloud-gateway-zone"></a>Eszköz és az esemény feldolgozása/felhő átjáró zóna
 
-Egy átjáró a rendszer, amely lehetővé teszi a távoli kommunikációs eszközök vagy több különböző helyére a mező átjárók és nyilvános hálózati helyet, általában egy felhőalapú vezérlő és az adatok elemző rendszer, az ilyen rendszerek összevonási felé között. Bizonyos esetekben egy felhőátjáróhoz azonnal megkönnyíthetik hozzáférés speciális eszközökre például táblagépek és telefonok részére. A környezetben, az itt tárgyalt célja, hogy "a felhő" hivatkozik egy dedikált adatfeldolgozási rendszer, amely nincs kötve a csatlakoztatott eszközök vagy mező átjárók ugyanazon a helyen, és ahol a működési intézkedések megakadályozása megcélzott fizikai hozzáféréssel, de nem feltétlenül "nyilvános felhő" infrastruktúrára. Egy felhőátjáróhoz potenciálisan társítja a hálózati virtualizálási átmeneti területre az átjáró és az összes csatlakoztatott eszközök vagy bármely más hálózati forgalmaktól mező átjárók háromszintű. Maga az átjáró nincs eszköz ellenőrző rendszer vagy egy feldolgozás, vagy a tárolási létesítmény eszköz adatok; azok a felhő-átjáróval való kapcsolat. A felhő átjáró felhő magához az átjáróhoz valamint mező átjárók és az eszköz közvetlenül vagy közvetve csatlakoztatva tartozik.
+Egy átjáró a rendszer, amely lehetővé teszi a távoli kommunikációs eszközök vagy több különböző helyére a mező átjárók és nyilvános hálózati helyet, általában egy felhőalapú vezérlő és az adatok elemző rendszer, az ilyen rendszerek összevonási felé között. Bizonyos esetekben egy felhőátjáróhoz azonnal megkönnyíthetik hozzáférés speciális eszközökre például táblagépek és telefonok részére. Az adott környezetben tárgyalt itt "cloud" célja, hogy egy dedikált adatfeldolgozási rendszer, amely nincs kötve a csatlakoztatott eszközök vagy mező átjárók ugyanazon a helyen, és ahol a működési intézkedések célzott fizikai hozzáférés megakadályozása hivatkozik, de nem feltétlenül a egy " nyilvános felhő"infrastruktúra. Egy felhőátjáróhoz potenciálisan társítja a hálózati virtualizálási átmeneti területre az átjáró és az összes csatlakoztatott eszközök vagy bármely más hálózati forgalmaktól mező átjárók háromszintű. Maga az átjáró nincs eszköz ellenőrző rendszer vagy egy feldolgozás, vagy a tárolási létesítmény eszköz adatok; azok a felhő-átjáróval való kapcsolat. A felhő átjáró felhő magához az átjáróhoz valamint mező átjárók és az eszköz közvetlenül vagy közvetve csatlakoztatva tartozik.
 
 Átjáró többnyire egyéni beépített, amelyhez a mező átjáró és az eszközök csatlakozni kitett végpontokon szolgáltatásként futó szoftver. Ilyen úgy kell megtervezni a biztonságot szem előtt. Hajtsa végre a [SDL](http://www.microsoft.com/sdl) folyamatok tervezéséről és kiépítéséről ezt a szolgáltatást.
 
 #### <a name="services-zone"></a>Szolgáltatások zóna
 
-A rendszer (vagy a tartományvezérlő) nem egy szoftveres megoldás, amely egy eszközt, vagy egy mező átjáróval vagy a felhő-átjáró egy vagy több eszköz ellenőrzésére és/vagy gyűjtése és/vagy tárolására és/vagy eszköz adatelemzés bemutató vagy későbbi ellenőrzési célból felületek. Vezérlő rendszereket, amely személyek való együttműködéshez azonnal elősegíti az ismertető a hatókör csak entitást. A kivételek olyan eszközök, például egy kapcsoló, amely lehetővé teszi, hogy egy személy, kapcsolja ki az eszközt, vagy más tulajdonságainak módosítása, és amelynek nincs digitálisan elérhető funkcionális egyenértékű köztes fizikai vezérlő felületek.
+A rendszer (vagy a tartományvezérlő) egy szoftveres megoldás, amely egy eszközt, vagy egy mező átjáróval vagy a felhő átjárót egy vagy több eszköz ellenőrzésére és/vagy gyűjtése és/vagy tárolására és/vagy eszköz adatelemzés bemutató, felületeihez vagy További ellenőrzési célból. Vezérlő rendszereket, amely személyek való együttműködéshez azonnal elősegíti az ismertető a hatókör csak entitást. A kivételek olyan eszközök, például egy kapcsoló, amely lehetővé teszi, hogy egy személy, kapcsolja ki az eszközt, vagy más tulajdonságainak módosítása, és amelynek nincs digitálisan elérhető funkcionális egyenértékű köztes fizikai vezérlő felületek.
 
 Köztes fizikai vezérlő felületek azok, ahol a függvény a fizikai vezérlő felület logika szabályozó korlátozza, úgy, hogy megfelelője távolról kezdeményezhetők, vagy távoli bemeneti bemeneti ütközik elkerülhetők – például adatbázisoktól vezérlő felületek fogalmilag csatlakoztatott egy helyi verziókezelő rendszer, amely kihasználja a azonos alapul szolgáló bármely más távvezérlési rendszert, hogy az eszköz párhuzamosan is kapcsolódhat. A felhőre lehet olvasni a felső veszélyek [felhőalapú biztonsági Alliance (CSA)](https://cloudsecurityalliance.org/research/top-threats/) lap.
 

@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: b71ad5701cfd1f8a274318c69d3464cf4fa34708
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 3f234e49f1a28fd0881e47ede13ae72483ed31f3
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34621088"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37053116"
 ---
 # <a name="monitor-and-manage-azure-data-factory-pipelines-by-using-the-monitoring-and-management-app"></a>Figyelheti és kezelheti az Azure Data Factory adatcsatornák a figyelés és felügyelet alkalmazással
 > [!div class="op_single_selector"]
@@ -29,7 +29,7 @@ ms.locfileid: "34621088"
 >
 
 > [!NOTE]
-> Ez a cikk a Data Factory általánosan elérhető 1. verziójára vonatkozik. Lásd a 2-es verziójának a Data Factory szolgáltatásnak, amely jelenleg előzetes verzióban érhető, használatakor [felügyeletéhez és kezeléséhez az adat-előállító adatcsatornák 2-es](../monitor-visually.md).
+> Ez a cikk a Data Factory 1 verziójára vonatkozik. A Data Factory szolgáltatásnak aktuális verziójának használatakor lásd [felügyeletéhez és kezeléséhez az adat-előállító adatcsatornák](../monitor-visually.md).
 
 A cikkből megtudhatja, hogyan használható a figyelés és a felügyeleti alkalmazás figyeléséhez, kezeléséhez és az adat-előállító adatcsatornák debug. Ismerkedés az alkalmazás által a következő videolejátszás használatával:
 
@@ -49,7 +49,7 @@ Meg kell jelennie egy külön ablakban nyissa meg a figyelés és a felügyeleti
 ![Figyelési és felügyeleti alkalmazás](./media/data-factory-monitor-manage-app/AppLaunched.png)
 
 > [!NOTE]
-> Ha azt látja, hogy a webböngésző akadt-e a "Engedélyező...", törölje a jelet a **külső cookie-k blokkolását, és a helyadatok** jelölőnégyzet – vagy a tárolás során is garantálják az kiválasztva, hozzon létre egy kivételt **login.microsoftonline.com**, és próbálja meg újra megnyitni az alkalmazás.
+> Ha azt látja, hogy a webböngésző akadt-e a "Engedélyező...", törölje a jelet a **külső cookie-k blokkolását, és a helyadatok** jelölőnégyzet – vagy a tárolás során is garantálják az kiválasztva, hozzon létre egy kivételt **login.microsoftonline.com**, és Próbálja meg újra megnyitni az alkalmazás.
 
 
 A középső ablaktáblán tevékenység Windows listájában látni egy tevékenység ablakban tevékenység minden egyes futtatásához. Például ha a tevékenység öt órán keresztül óránkénti futásra ütemezett, látni öt tevékenység windows társított öt adatszeletek. Ha nem látja a lista alján tevékenységablakok, tegye a következőket:
@@ -246,7 +246,7 @@ Használhatja a **parancsfájl** fülre kattintva megtekintheti a kijelölt adat
 ![Parancsfájl lap](./media/data-factory-monitor-manage-app/ScriptTab.png)
 
 ## <a name="use-system-views"></a>Rendszer-nézetek
-A figyelés és felügyelet alkalmazást tartalmaz, előre összeállított rendszernézetek (**legutóbbi tevékenységek windows**, **sikertelen volt a tevékenység windows**, **folyamatban lévő tevékenységek windows**), amelyek lehetővé teszik, hogy a data factory legutóbbi/nem sikerült/folyamatban tevékenységablakok megtekintése.
+A figyelés és felügyelet alkalmazást tartalmaz, előre összeállított rendszernézetek (**legutóbbi tevékenységek windows**, **sikertelen volt a tevékenység windows**, **folyamatban lévő tevékenységek windows**), amelyek lehetővé teszik Önnek, hogy a data factory legutóbbi/nem sikerült/folyamatban tevékenységablakok.
 
 Váltás a **figyelési nézetei** lapon kattintson a bal oldalon.
 

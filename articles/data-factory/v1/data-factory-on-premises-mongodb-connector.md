@@ -14,20 +14,20 @@ ms.topic: conceptual
 ms.date: 04/13/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 301a1a9934f9d7e76399dfe46a65481351a61e22
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 7c6751a0432d66aee0ff3056b212dc1b348e333f
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34621445"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37045826"
 ---
 # <a name="move-data-from-mongodb-using-azure-data-factory"></a>Helyezze át az adatokat a MongoDB Azure Data Factory használatával
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [1. verzió – Általánosan elérhető](data-factory-on-premises-mongodb-connector.md)
-> * [2. verzió – Előzetes verzió](../connector-mongodb.md)
+> * [1-es verziójával](data-factory-on-premises-mongodb-connector.md)
+> * [(Az aktuális verzió) 2-es verzió](../connector-mongodb.md)
 
 > [!NOTE]
-> Ez a cikk a Data Factory általánosan elérhető 1. verziójára vonatkozik. Lásd a 2-es verziójának a Data Factory szolgáltatásnak, amely jelenleg előzetes verzióban érhető, használatakor [MongoDB-összekötőt, a V2](../connector-mongodb.md).
+> Ez a cikk a Data Factory 1 verziójára vonatkozik. A Data Factory szolgáltatásnak aktuális verziójának használatakor lásd [MongoDB-összekötőt, a V2](../connector-mongodb.md).
 
 
 Ez a cikk ismerteti, hogyan a másolási tevékenység során az Azure Data Factoryben az adatok mozgatása egy helyszíni MongoDB-adatbázist. Buildekről nyújtanak a [adatok mozgása tevékenységek](data-factory-data-movement-activities.md) cikk, amelynek során adatátvitel a másolási tevékenység az általános áttekintést.
@@ -50,7 +50,7 @@ A másolási tevékenység, mely az adatok egy helyszíni MongoDB adattároló k
 
 Hozzon létre egy folyamatot a legegyszerűbb módja használatára a **másolása varázsló**. Lásd: [oktatóanyag: hozzon létre egy folyamatot, másolása varázslóval](data-factory-copy-data-wizard-tutorial.md) létrehozásával egy folyamatot, az adatok másolása varázsló segítségével gyorsan útmutatást.
 
-Az alábbi eszközöket használhatja a folyamatokat létrehozni: **Azure-portálon**, **Visual Studio**, **Azure PowerShell**, **Azure Resource Manager sablon**, **.NET API**, és **REST API**. Lásd: [másolási tevékenység oktatóanyag](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) hozzon létre egy folyamatot a másolási tevékenység részletes útmutatóját. 
+Az alábbi eszközöket használhatja a folyamatokat létrehozni: **Azure-portálon**, **Visual Studio**, **Azure PowerShell**, **Azure Resource Manager-sablon** , **.NET API**, és **REST API-t**. Lásd: [másolási tevékenység oktatóanyag](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) hozzon létre egy folyamatot a másolási tevékenység részletes útmutatóját. 
 
 Akár az eszközök vagy API-k, hajtsa végre a következő lépésekkel hozza létre egy folyamatot, amely mozgatja az adatokat a forrás-tárolóban a fogadó tárolóban: 
 
@@ -74,7 +74,7 @@ A következő táblázat tartalmazza a JSON-elemek szerepelnek jellemző leírá
 | felhasználónév |Felhasználói fiók MongoDB eléréséhez. |Igen (Ha alapszintű hitelesítést használ). |
 | jelszó |A felhasználó jelszavát. |Igen (Ha alapszintű hitelesítést használ). |
 | authSource |A MongoDB-adatbázist, amely a hitelesítő adatok kereséséhez használni kívánt nevét. |Választható (Ha alapszintű hitelesítést használ). alapértelmezett: a rendszergazdai fiókot és a databaseName tulajdonsággal megadott adatbázis használ. |
-| DatabaseName |A MongoDB-adatbázist, amely az elérni kívánt nevét. |Igen |
+| databaseName |A MongoDB-adatbázist, amely az elérni kívánt nevét. |Igen |
 | gatewayName |Az átjáró, aki hozzáfér az adattár neve. |Igen |
 | encryptedCredential |A hitelesítőadat-átjáró által titkosított. |Optional |
 
@@ -85,7 +85,7 @@ A **typeProperties** szakasz eltérő adatkészlet egyes típusai és informáci
 
 | Tulajdonság | Leírás | Szükséges |
 | --- | --- | --- |
-| CollectionName |A MongoDB-adatbázist a gyűjtemény nevét. |Igen |
+| collectionName |A MongoDB-adatbázist a gyűjtemény nevét. |Igen |
 
 ## <a name="copy-activity-properties"></a>Másolási tevékenység tulajdonságai
 Szakaszok & rendelkezésre álló tevékenységek meghatározó tulajdonságok teljes listáját lásd: a [létrehozása folyamatok](data-factory-create-pipelines.md) cikk. Például a nevét, leírását, valamint bemeneti és kimeneti táblák és házirend tulajdonságai minden típusú tevékenységek érhetők el.
@@ -302,8 +302,8 @@ Ha az adatok áthelyezése a MongoDB .NET típusú a következő megfeleltetése
 | NumberDouble |Dupla |
 | NumberInt |Int32 |
 | NumberLong |Int64 |
-| ObjectID |Karakterlánc |
-| Karakterlánc |Karakterlánc |
+| ObjectID |Sztring |
+| Sztring |Sztring |
 | UUID |GUID |
 | Objektum |Renormalized történő egybesimítására "_" beágyazott elválasztójelként oszlopok |
 

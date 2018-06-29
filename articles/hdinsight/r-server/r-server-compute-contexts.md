@@ -1,6 +1,6 @@
 ---
-title: Adatkörnyezet beállításai R Server on HDInsight - Azure számítási |} Microsoft Docs
-description: További tudnivalók a különböző számítási környezetben lehetőség legyen elérhető a felhasználók az R Server a HDInsight
+title: A HDInsight - Azure ML szolgáltatások adatkörnyezet beállításai számítási |} Microsoft Docs
+description: Tudja meg, hogyan különböző számítási környezet ML szolgáltatásokkal a felhasználók rendelkezésére a HDInsight-on
 services: hdinsight
 documentationcenter: ''
 author: nitinme
@@ -11,26 +11,26 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.devlang: R
 ms.topic: conceptual
-ms.date: 03/22/2018
+ms.date: 06/27/2018
 ms.author: nitinme
-ms.openlocfilehash: 2aa10e1eab6cabe058062519ecc023b88361d742
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 57480cef48182a56b315d7d6932883c485f5a7c8
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31409069"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37050108"
 ---
-# <a name="compute-context-options-for-r-server-on-hdinsight"></a>Számítási környezet lehetőségek R Server on HDInsight
+# <a name="compute-context-options-for-ml-services-on-hdinsight"></a>Számítási környezet lehetőségek az ML-szolgáltatások hdinsight
 
-A Microsoft az R Server on Azure HDInsight szabályozza hívások úgy, hogy a számítási környezet végrehajtásának módját. Ez a cikk ismerteti a megadása, hogyan végrehajtási párhuzamos működésű-e a élcsomópont vagy a HDInsight-fürt mag között elérhető beállítások.
+Gépi tanulás szolgáltatások on Azure HDInsight szabályozza hívások végrehajtásának módját a úgy, hogy a számítási környezet. Ez a cikk ismerteti a megadása, hogyan végrehajtási párhuzamos működésű-e a élcsomópont vagy a HDInsight-fürt mag között elérhető beállítások.
 
 A fürt élcsomópont kényelmes csatlakozzon a fürthöz, és az R parancsfájlok futtatásához. Egy élcsomópontot az informatikai részleg parallelized elosztott feladatai RevoScaleR a peremhálózati kiszolgáló a magokon futtassák. Is futtathatja őket a fürt csomópontjai között RevoScaleR a Hadoop térkép csökkentése használatával, vagy Spark számítási környezeteket.
 
-## <a name="microsoft-r-server-on-azure-hdinsight"></a>A Microsoft az R Server on Azure HDInsight
-[A Microsoft az R Server on Azure HDInsight](r-server-overview.md) a legújabb funkciókat biztosít az R-alapú használatával. Egy a HDFS-tárolóban tárolt adatokat képes használni a [Azure Blob](../../storage/common/storage-introduction.md "Azure Blob Storage tárolóban") tárfiókot, egy Data Lake store vagy a Linux helyi fájlrendszer. R Server nyílt forráskódú R épül, mivel az R-alapú alkalmazások létrehozása a 8000 + nyílt forráskódú R csomagok bármelyikét alkalmazhatja. Használhatja a feladatok az [RevoScaleR](https://docs.microsoft.com/machine-learning-server/r-reference/revoscaler/revoscaler), a Microsoft big data elemzés csomag R Server részét képező.  
+## <a name="ml-services-on-azure-hdinsight"></a>A HDInsight az Azure ML szolgáltatások
+[Gépi tanulás szolgáltatások on Azure HDInsight](r-server-overview.md) a legújabb funkciókat biztosít az R-alapú használatával. Egy a HDFS-tárolóban tárolt adatokat képes használni a [Azure Blob](../../storage/common/storage-introduction.md "Azure Blob Storage tárolóban") tárfiókot, egy Data Lake store vagy a Linux helyi fájlrendszer. ML szolgáltatások nyílt forráskódú R épül, mivel az R-alapú alkalmazások létrehozása a 8000 + nyílt forráskódú R csomagok bármelyikét is alkalmazhatja. Használhatja a feladatok az [RevoScaleR](https://docs.microsoft.com/machine-learning-server/r-reference/revoscaler/revoscaler), a Microsoft big data elemzés csomag ML-szolgáltatások részét képező.  
 
 ## <a name="compute-contexts-for-an-edge-node"></a>Számítási környezetek számára egy élcsomópontot
-Az R Server rendszeren futó élcsomópont R-parancsfájl általában az R parancsértelmező belül fut, ezen a csomóponton. A kivételek olyan RevoScaleR függvény témakör lépéseit. A RevoScaleR hívások határozza meg, hogyan állíthatja a RevoScaleR számítási környezet számítási környezetben fusson.  Amikor az R-parancsfájl egy élcsomópontot futtatja, a számítási környezet lehetséges értékei a következők:
+Általában a élcsomópont ML szolgáltatások fürtben futó R-parancsfájl tevékenykedhet az R parancsértelmező ezen a csomóponton. A kivételek olyan RevoScaleR függvény témakör lépéseit. A RevoScaleR hívások határozza meg, hogyan állíthatja a RevoScaleR számítási környezet számítási környezetben fusson.  Amikor az R-parancsfájl egy élcsomópontot futtatja, a számítási környezet lehetséges értékei a következők:
 
 - szekvenciális helyi (*helyi*)
 - helyi párhuzamos (*localpar*)
@@ -41,7 +41,7 @@ A *helyi* és *localpar* más-más lehetőségek csak a hogyan **rxExec** hívá
 
 A következő táblázat összefoglalja a különböző számítási környezet lehetőségek beállításához hívások végrehajtásának módját:
 
-| Számítási környezet  | Hogyan kell beállítani                      | A végrehajtási környezet                        |
+| Számítási környezet  | Hogyan kell beállítani                      | Végrehajtási környezet                        |
 | ---------------- | ------------------------------- | ---------------------------------------- |
 | Szekvenciális helyi | rxSetComputeContext('local')    | Párhuzamos működésű végrehajtása a magokon a biztonsági csomópont kiszolgáló kivételével Feladattervek végrehajtásának rxExec hívások |
 | Helyi párhuzamos   | rxSetComputeContext('localpar') | Párhuzamos működésű végrehajtása a magokon a peremhálózati kiszolgáló |
@@ -65,7 +65,7 @@ Megadott alapelvek, az alábbi szakaszok nyújtanak néhány általános szabál
 * Ha elemzéséhez adatmennyiség a kis- és közepes méretű és ismételt elemzése szükséges, majd másolja azt a helyi fájlrendszer XDF importálja és elemezze keresztül *helyi* vagy *localpar*.
 
 ### <a name="hadoop-spark"></a>Hadoop Spark
-* Ha elemzéséhez adatok mennyisége túl nagy, majd importálni kell a Spark DataFrame használatával **RxHiveData** vagy **RxParquetData**, vagy a HDFS-ben XDF (kivéve, ha probléma a tároló), és elemezze a Spark számítási környezetet használ.
+* Ha elemzéséhez adatok mennyisége túl nagy, majd importálni kell a Spark DataFrame használatával **RxHiveData** vagy **RxParquetData**, vagy XDF HDFS-ben (kivéve, ha probléma a tároló), és elemezze a Spark számítási használatával a környezetben.
 
 ### <a name="hadoop-map-reduce"></a>Hadoop térkép csökkentése
 * A térkép csökkentheti a számítási környezetben használja, ha a Spark számítási környezet módon hibát tapasztal, mert általában lassabban működik.  
@@ -78,9 +78,9 @@ További információt és példákat a RevoScaleR számítási környezeteket t
 Azt is jelentheti a [elosztott számítástechnikai áttekintése](https://docs.microsoft.com/machine-learning-server/r/how-to-revoscaler-distributed-computing) a [Machine Learning Server dokumentációjában](https://docs.microsoft.com/machine-learning-server/).
 
 ## <a name="next-steps"></a>További lépések
-Ebben a cikkben megtanulta, adja meg, hogyan végrehajtási párhuzamos működésű-e a élcsomópont vagy a HDInsight-fürt mag között rendelkezésre álló beállításokkal kapcsolatos. R Server használata a HDInsight-fürtökkel kapcsolatos további tudnivalókért tekintse meg a következő témaköröket:
+Ebben a cikkben megtanulta, adja meg, hogyan végrehajtási párhuzamos működésű-e a élcsomópont vagy a HDInsight-fürt mag között rendelkezésre álló beállításokkal kapcsolatos. A HDInsight-fürtök az ML-szolgáltatások használatával kapcsolatos további tudnivalókért lásd a következő témaköröket:
 
-* [R Server, a Hadoop – áttekintés](r-server-overview.md)
-* [R Server a Hadoop első lépései](r-server-get-started.md)
-* [Azure Storage lehetőségek a HDInsighton belüli R Server esetében](r-server-storage.md)
+* [A Hadoop ML-szolgáltatások áttekintése](r-server-overview.md)
+* [Ismerkedés a Hadoop ML-szolgáltatások](r-server-get-started.md)
+* [A HDInsight az ML-szolgáltatások az Azure tárolási lehetőségek](r-server-storage.md)
 

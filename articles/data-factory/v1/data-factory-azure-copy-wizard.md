@@ -15,16 +15,16 @@ ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: ebd8abf8c34be1fa6fcd282c9bfbc63d81a56239
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 6330854f4ee9b2db1597d916c815bb6646da6a29
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34621132"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37052749"
 ---
 # <a name="azure-data-factory-copy-wizard"></a>Az Azure Data Factory másolása varázsló
 > [!NOTE]
-> Ez a cikk a Data Factory általánosan elérhető 1. verziójára vonatkozik. 
+> Ez a cikk a Data Factory 1 verziójára vonatkozik. 
 
 Az Azure Data Factory másolása varázsló megkönnyíti a folyamat választásával dolgozhat fel adatokat, amely általában az első lépés egy végpont integrációs forgatókönyvet. Az Azure Data Factory másolása varázsló áthaladás, ha nem kell bármely JSON-definíciók társított szolgáltatások, adathalmazok és adatcsatornák ismertetése. A varázsló automatikusan létrehozza a kijelölt adatforrás adatainak másolása a kiválasztott cél csővezeték. Ezenkívül másolása varázsló segít a szerzői időpontjában okozhatnak alatt álló adatok érvényesítéséhez. Ezzel időt takaríthat meg különösen ha meg vannak adatok bevitele először az adatforrásból. A varázsló elindításához kattintson a **adatok másolása** csempét a data factory kezdőlapján.
 

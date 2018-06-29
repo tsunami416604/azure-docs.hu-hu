@@ -9,16 +9,18 @@ ms.component: bing-spell-check
 ms.topic: conceptual
 ms.date: 05/08/2018
 ms.author: nolachar
-ms.openlocfilehash: e33fe5a30d154e8396c17d01487ef4420313527d
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 7cab8e0471151cd2ae7c2e31406f2460fdff6a0b
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35349107"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37050386"
 ---
 # <a name="supported-language-list-and-status"></a>Támogatott nyelvek listája és állapota
 
-Ezeken a nyelveken a Bing helyesírás-ellenőrzése API támogatja.
+Ezeken a nyelveken a Bing helyesírás-ellenőrzése API által támogatott (csak a `spell` módot). 
+
+Ne feledje, mint bármely más nyelven használható `en-US`, a `mkt` kell állítani és vagy `Accept-Language` vagy `setLang` kell beállítani a már leírt [helyesírás ellenőrizze API v7 referencia](https://docs.microsoft.com/en-us/rest/api/cognitiveservices/bing-spell-check-api-v7-reference)
 
 | Nyelv    | Nyelvkód |
 |:----------- |:-------------:|

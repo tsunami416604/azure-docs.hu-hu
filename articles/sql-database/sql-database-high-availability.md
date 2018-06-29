@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 06/20/2018
 ms.author: jovanpop
 ms.reviewer: carlrab, sashan
-ms.openlocfilehash: 4e1963e97a7458db8badb63e28dbc3d215ad88b2
-ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
+ms.openlocfilehash: a9874681d59d193fc3c3d0fd4271e2a6a0fb0dc6
+ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/21/2018
-ms.locfileid: "36309630"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37060383"
 ---
 # <a name="high-availability-and-azure-sql-database"></a>Magas rendelkezésre állású és az Azure SQL-adatbázis
 
@@ -60,7 +60,7 @@ A magas rendelkezésre állású architektúra redundáns zóna verziója által
 ![magas rendelkezésre állású architektúra zónaredundáns](./media/sql-database-high-availability/high-availability-architecture-zone-redundant.png)
 
 ## <a name="read-scale-out"></a>Olvassa el a kibővített
-Ismertetettek szerint Premium és fontos üzleti (előzetes verzió) szolgáltatás rétegek emelés Kvórum beállítása és az AlwaysOn technológia a magas rendelkezésre állás egyetlen zóna és a redundáns zónabeállítások egyaránt. A AlwasyON előnyeit egyike, hogy a replikákat mindig a tranzakciós úton konzisztens állapotban van. A replikának az elsődleges teljesítmény szintjét, mert az alkalmazás kihasználhatja a csak olvasható munkaterhelések nem extra a karbantartáshoz, hogy további kapacitást költség (olvasási kibővített). Ezzel a módszerrel a csak olvasható lekérdezések elkülönül a fő olvasási és írási terhelést, és nem lesz hatással a teljesítményét. Olvasási kibővített szolgáltatás célja az alkalmazásokhoz, amelyek logikailag tartalmazzák például írásvédett munkaterhelések elválasztva, és ezért sikerült kihasználja a további kapacitást anélkül, hogy az elsődleges. 
+Ismertetettek szerint Premium és fontos üzleti (előzetes verzió) szolgáltatás rétegek emelés Kvórum beállítása és az AlwaysOn technológia a magas rendelkezésre állás egyetlen zóna és a redundáns zónabeállítások egyaránt. Az AlwaysOn előnyei egyike, hogy a replikákat mindig a tranzakciós úton konzisztens állapotban van. A replikának az elsődleges teljesítmény szintjét, mert az alkalmazás kihasználhatja a csak olvasható munkaterhelések nem extra a karbantartáshoz, hogy további kapacitást költség (olvasási kibővített). Ezzel a módszerrel a csak olvasható lekérdezések elkülönül a fő olvasási és írási terhelést, és nem lesz hatással a teljesítményét. Olvasási kibővített szolgáltatás célja az alkalmazásokhoz, amelyek logikailag tartalmazzák például írásvédett munkaterhelések elválasztva, és ezért sikerült kihasználja a további kapacitást anélkül, hogy az elsődleges. 
 
 Az olvasási kibővített szolgáltatással az adott adatbázishoz, explicit módon aktiválnia kell az adatbázis létrehozásakor vagy ezek után a PowerShell használatával való konfigurációját megváltoztatásával a [Set-AzureRmSqlDatabase](/powershell/module/azurerm.sql/set-azurermsqldatabase) vagy a [New-AzureRmSqlDatabase](/powershell/module/azurerm.sql/new-azurermsqldatabase) parancsmagok vagy az Azure Resource Manager REST API használatával a [- adatbázisok létrehozása vagy frissítése](/rest/api/sql/databases/createorupdate) metódust.
 

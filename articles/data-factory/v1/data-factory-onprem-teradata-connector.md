@@ -14,20 +14,20 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 62b838212f94c48e39daf31877aeb5b344836571
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: ee2440171b54e1279571ec4fcb0c5be7bec207a1
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34622560"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37045738"
 ---
 # <a name="move-data-from-teradata-using-azure-data-factory"></a>Adatok áthelyezése az Azure Data Factory használatával teradata rendszerhez
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [1. verzió – Általánosan elérhető](data-factory-onprem-teradata-connector.md)
-> * [2. verzió – Előzetes verzió](../connector-teradata.md)
+> * [1-es verziójával](data-factory-onprem-teradata-connector.md)
+> * [(Az aktuális verzió) 2-es verzió](../connector-teradata.md)
 
 > [!NOTE]
-> Ez a cikk a Data Factory általánosan elérhető 1. verziójára vonatkozik. Lásd a 2-es verziójának a Data Factory szolgáltatásnak, amely jelenleg előzetes verzióban érhető, használatakor [Teradata-összekötőt, a V2](../connector-teradata.md).
+> Ez a cikk a Data Factory 1 verziójára vonatkozik. A Data Factory szolgáltatásnak aktuális verziójának használatakor lásd [Teradata-összekötőt, a V2](../connector-teradata.md).
 
 Ez a cikk ismerteti, hogyan a másolási tevékenység során az Azure Data Factoryben az adatok mozgatása egy helyszíni Teradata-adatbázishoz. Buildekről nyújtanak a [adatok mozgása tevékenységek](data-factory-data-movement-activities.md) cikk, amelynek során adatátvitel a másolási tevékenység az általános áttekintést.
 
@@ -48,7 +48,7 @@ Az adatkezelési átjáró a Teradata-adatbázishoz való kapcsolódáshoz, tele
 A másolási tevékenység, mely az adatok egy helyszíni Cassandra adattároló különböző eszközök/API-k használatával létrehozhat egy folyamatot. 
 
 - Hozzon létre egy folyamatot a legegyszerűbb módja használatára a **másolása varázsló**. Lásd: [oktatóanyag: hozzon létre egy folyamatot, másolása varázslóval](data-factory-copy-data-wizard-tutorial.md) létrehozásával egy folyamatot, az adatok másolása varázsló segítségével gyorsan útmutatást. 
-- Az alábbi eszközöket használhatja a folyamatokat létrehozni: **Azure-portálon**, **Visual Studio**, **Azure PowerShell**, **Azure Resource Manager sablon**, **.NET API**, és **REST API**. Lásd: [másolási tevékenység oktatóanyag](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) hozzon létre egy folyamatot a másolási tevékenység részletes útmutatóját. 
+- Az alábbi eszközöket használhatja a folyamatokat létrehozni: **Azure-portálon**, **Visual Studio**, **Azure PowerShell**, **Azure Resource Manager-sablon** , **.NET API**, és **REST API-t**. Lásd: [másolási tevékenység oktatóanyag](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) hozzon létre egy folyamatot a másolási tevékenység részletes útmutatóját. 
 
 Akár az eszközök vagy API-k, hajtsa végre a következő lépésekkel hozza létre egy folyamatot, amely mozgatja az adatokat a forrás-tárolóban a fogadó tárolóban:
 
@@ -286,11 +286,11 @@ Adatok áthelyezése a teradata rendszerhez, amikor a következő leképezéseit
 
 | Teradata-adatbázishoz típusa | .NET-keretrendszer típusa |
 | --- | --- |
-| Karakter |Karakterlánc |
-| CLOB |Karakterlánc |
-| Kép |Karakterlánc |
-| VarChar |Karakterlánc |
-| VarGraphic |Karakterlánc |
+| karakter |Sztring |
+| CLOB |Sztring |
+| Kép |Sztring |
+| VarChar |Sztring |
+| VarGraphic |Sztring |
 | Blob |Byte] |
 | Bájt |Byte] |
 | VarByte |Byte] |
@@ -303,7 +303,7 @@ Adatok áthelyezése a teradata rendszerhez, amikor a következő leképezéseit
 | SmallInt |Int16 |
 | Dátum |DateTime |
 | Time |A TimeSpan |
-| Időzóna idő |Karakterlánc |
+| Időzóna idő |Sztring |
 | Időbélyeg |DateTime |
 | Az időzóna időbélyeg |DateTimeOffset |
 | Időköz nap |A TimeSpan |
@@ -316,15 +316,15 @@ Adatok áthelyezése a teradata rendszerhez, amikor a következő leképezéseit
 | Időköz percben |A TimeSpan |
 | Másik időköz percben |A TimeSpan |
 | Időköz második |A TimeSpan |
-| Időköz év |Karakterlánc |
-| Időköz hónap év |Karakterlánc |
-| Időköz hónap |Karakterlánc |
-| Period(date) |Karakterlánc |
-| Period(Time) |Karakterlánc |
-| Időtartam (idő időzóna) |Karakterlánc |
-| Period(Timestamp) |Karakterlánc |
-| Időtartam (időbélyegzője az időzóna) |Karakterlánc |
-| Xml |Karakterlánc |
+| Időköz év |Sztring |
+| Időköz hónap év |Sztring |
+| Időköz hónap |Sztring |
+| Period(date) |Sztring |
+| Period(Time) |Sztring |
+| Időtartam (idő időzóna) |Sztring |
+| Period(Timestamp) |Sztring |
+| Időtartam (időbélyegzője az időzóna) |Sztring |
+| Xml |Sztring |
 
 ## <a name="map-source-to-sink-columns"></a>Térkép forrás oszlopok gyűjtése
 A forrás oszlop szerepel a fogadó dataset adatkészlet leképezési oszlopok, lásd: [Azure Data Factory dataset oszlopai leképezési](data-factory-map-columns.md).

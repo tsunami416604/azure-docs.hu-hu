@@ -13,19 +13,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/26/2018
 ms.author: jingwang
-ms.openlocfilehash: 95b0440dbec1a13096928bdefd31383d07a1f86d
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: f9f6d2e43fff9a3e57145f39863f66eed64869b2
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34618572"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37048583"
 ---
 # <a name="copy-data-from-sap-ecc-using-azure-data-factory"></a>Adatok másolása az Azure Data Factory használatával SAP ECC
 
 Ez a cikk ismerteti, hogyan használható a másolási tevékenység során az Azure Data Factory adatok másolása az SAP ECC (SAP vállalati központi összetevő). Buildekről nyújtanak a [másolása tevékenység áttekintése](copy-activity-overview.md) cikket, amely megadja a másolási tevékenység általános áttekintést.
-
-> [!NOTE]
-> Ez a cikk a Data Factory 2. verziójára vonatkozik, amely jelenleg előzetes verzióban érhető el. A Data Factory szolgáltatásnak, amely általánosan elérhető (GA), 1 verziójának használatakor lásd [másolási tevékenység során a V1](v1/data-factory-data-movement-activities.md).
 
 ## <a name="supported-capabilities"></a>Támogatott képességei
 
@@ -165,19 +162,19 @@ SAP ECC történő másolás, ha a következő megfeleltetéseket szolgálnak az
 
 | Az OData-adattípus | Data factory ideiglenes adattípus |
 |:--- |:--- |:--- |
-| Edm.Binary | Karakterlánc |
-| Edm.Boolean | logikai érték |
-| Edm.Byte | Karakterlánc |
+| Edm.Binary | Sztring |
+| Edm.Boolean | Logikai érték |
+| Edm.Byte | Sztring |
 | Edm.DateTime | DateTime |
 | Edm.Decimal | Decimális |
 | Edm.Double | Dupla |
 | Edm.Single | Önálló |
-| Edm.Guid | Karakterlánc |
+| Edm.Guid | Sztring |
 | Edm.Int16 | Int16 |
 | Edm.Int32 | Int32 |
 | Edm.Int64 | Int64 |
 | Edm.SByte | Int16 |
-| Edm.String | Karakterlánc |
+| Edm.String | Sztring |
 | Edm.Time | A TimeSpan |
 | Edm.DateTimeOffset | DateTimeOffset |
 

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/14/2017
 ms.author: mbullwin
-ms.openlocfilehash: cdfc3ceb1ce94c4653a710658c1df991d9ca2c30
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: 8253dfb6525496c78515a9382778a767f7da0771
+ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35294445"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37063578"
 ---
 # <a name="troubleshooting-no-data---application-insights-for-net"></a>Adathiány hibaelhárítása – Application Insights .NET-hez
 ## <a name="some-of-my-telemetry-is-missing"></a>A telemetriai adatok némelyike hiányzik
@@ -41,7 +41,7 @@ ms.locfileid: "35294445"
 *Az egér jobb gombjával egy meglévő projektben a Megoldáskezelőre, nem szerepel az Application Insights beállításokat.*
 
 * Nem minden típusú .NET projekt támogatja az eszközök által. Webes és WCF-projektek támogatottak. Más projekttípusok például asztali vagy service alkalmazások még [az Application Insights SDK manuális hozzáadása a projekthez](app-insights-windows-desktop.md).
-* Győződjön meg arról, hogy [Visual Studio 2013 Update 3-as vagy újabb](http://go.microsoft.com/fwlink/?LinkId=397827). Előre telepített és a fejlesztői Analytics eszközök, amelyek az Application Insights SDK származik.
+* Győződjön meg arról, hogy [Visual Studio 2013 Update 3-as vagy újabb](https://docs.microsoft.com/en-us/visualstudio/releasenotes/vs2013-update3-rtm-vs). Előre telepített és a fejlesztői Analytics eszközök, amelyek az Application Insights SDK származik.
 * Válassza ki **eszközök**, **bővítmények és frissítések** és ellenőrizze, hogy **Analytics Fejlesztőeszközök** van telepítve és engedélyezve van. Ha igen, kattintson a **frissítések** ha van egy frissítés.
 * Az új projekt párbeszédpanel megnyitásához, és válassza ki az ASP.NET-webalkalmazás. Az Application Insights beállítás nem jelenik meg, ha az eszközök vannak telepítve. Ha nem, akkor távolítsa el, majd újból telepíti az Application Insights-eszközökkel.
 

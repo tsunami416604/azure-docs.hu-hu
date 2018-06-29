@@ -9,12 +9,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 05/09/2018
 ms.author: jingwang
-ms.openlocfilehash: c96d8b273a0e74ced5b121d19e1c3e5343a754b4
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 534df0dfef1f69297c5728ed892a5457944e4468
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34621819"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37052290"
 ---
 # <a name="supported-file-formats-and-compression-codecs-in-azure-data-factory"></a>Támogatott fájlformátumok és az Azure Data Factory tömörítési kodek
 
@@ -27,9 +27,6 @@ Ha azt szeretné, hogy **másolja a fájlokat-van** közötti fájlalapú tárol
 * [Az Avro formátum](#avro-format)
 * [ORC formátum](#orc-format)
 * [Parquet formátum](#parquet-format)
-
-> [!NOTE]
-> Ez a cikk a Data Factory 2. verziójára vonatkozik, amely jelenleg előzetes verzióban érhető el. A Data Factory szolgáltatásnak, amely általánosan elérhető (GA), 1 verziójának használatakor lásd [formátumú és tömörítést támogatja a Data Factory version1](v1//data-factory-supported-file-and-compression-formats.md).
 
 > [!TIP]
 > Ismerje meg, hogyan másolási tevékenység leképezi a gyűjtése a forrásadatok [séma-hozzárendelése a másolási tevékenység](copy-activity-schema-and-type-mapping.md), beleértve a módját a metaadatok határoz meg a fájl formátuma beállítások alapján, és arról, hogy adja meg, mikor tippek a [dataset `structure` ](concepts-datasets-linked-services.md#dataset-structure) szakasz.
@@ -457,17 +454,17 @@ Vegye figyelembe a következő szempontokat:
 | Int32 | Int |
 | UInt32 | Hosszú |
 | Int64 | Hosszú |
-| UInt64 | Karakterlánc |
+| UInt64 | Sztring |
 | Önálló | Lebegőpontos |
 | Dupla | Dupla |
 | Decimális | Decimális |
-| Karakterlánc | Karakterlánc |
+| Sztring | Sztring |
 | DateTime | Időbélyeg |
 | DateTimeOffset | Időbélyeg |
 | A TimeSpan | Időbélyeg |
 | ByteArray | Bináris |
-| GUID | Karakterlánc |
-| Karakter | Char(1) |
+| GUID | Sztring |
+| karakter | Char(1) |
 
 ## <a name="parquet-format"></a>Parquet formátum
 
@@ -505,13 +502,13 @@ Vegye figyelembe a következő szempontokat:
 | Önálló | Lebegőpontos | – | – |
 | Dupla | Dupla | – | – |
 | Decimális | Bináris | Decimális | Decimális |
-| Karakterlánc | Bináris | Utf8 | Utf8 |
+| Sztring | Bináris | Utf8 | Utf8 |
 | DateTime | Int96 | – | – |
 | A TimeSpan | Int96 | – | – |
 | DateTimeOffset | Int96 | – | – |
 | ByteArray | Bináris | – | – |
 | GUID | Bináris | Utf8 | Utf8 |
-| Karakter | Bináris | Utf8 | Utf8 |
+| karakter | Bináris | Utf8 | Utf8 |
 | CharArray | Nem támogatott | – | – |
 
 ## <a name="compression-support"></a>Tömörítés támogatása

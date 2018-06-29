@@ -13,23 +13,19 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/05/2018
 ms.author: jingwang
-ms.openlocfilehash: 24d641247ad9bb0b5e6199952cbde9cb56fcaea7
-ms.sourcegitcommit: 6cf20e87414dedd0d4f0ae644696151e728633b6
+ms.openlocfilehash: debb27f49c730df4a8bef42b1f1ef9ec50f1faf0
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34809294"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37054058"
 ---
 # <a name="copy-data-from-mongodb-using-azure-data-factory"></a>Adatok másolása az Azure Data Factory használatával MongoDB
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [1. verzió – Általánosan elérhető](v1/data-factory-on-premises-mongodb-connector.md)
-> * [2. verzió – Előzetes verzió](connector-mongodb.md)
+> * [1-es verziójával](v1/data-factory-on-premises-mongodb-connector.md)
+> * [Aktuális verzió](connector-mongodb.md)
 
 Ez a cikk ismerteti, hogyan használható a másolási tevékenység során az Azure Data Factory adatokat másolni a MongoDB-adatbázist. Buildekről nyújtanak a [másolása tevékenység áttekintése](copy-activity-overview.md) cikket, amely megadja a másolási tevékenység általános áttekintést.
-
-> [!NOTE]
-> Ez a cikk a Data Factory 2. verziójára vonatkozik, amely jelenleg előzetes verzióban érhető el. A Data Factory szolgáltatásnak, amely általánosan elérhető (GA), 1 verziójának használatakor lásd [MongoDB-összekötőt a V1](v1/data-factory-on-premises-mongodb-connector.md).
-
 
 ## <a name="supported-capabilities"></a>Támogatott képességei
 
@@ -59,7 +55,7 @@ MongoDB kapcsolódó szolgáltatás támogatott a következő tulajdonságokkal:
 | type |A type tulajdonságot kell beállítani: **mongodb-Protokolltámogatással** |Igen |
 | kiszolgáló |Kiszolgáló IP-címét vagy állomásnevét kiszolgálónevét a mongodb-Protokolltámogatással. |Igen |
 | port |A MongoDB-kiszolgálóhoz a kapcsolatok figyelésére használt TCP portot. |Nem (alapértelmezett érték 27017) |
-| DatabaseName |A MongoDB-adatbázist, amely az elérni kívánt nevét. |Igen |
+| databaseName |A MongoDB-adatbázist, amely az elérni kívánt nevét. |Igen |
 | authenticationType | A MongoDB-adatbázishoz való kapcsolódáshoz használt hitelesítés típusa.<br/>Két érték engedélyezett: **alapvető**, és **névtelen**. |Igen |
 | felhasználónév |Felhasználói fiók MongoDB eléréséhez. |Igen (Ha alapszintű hitelesítést használ). |
 | jelszó |A felhasználó jelszavát. Ez a mező megjelölése a SecureString tárolja biztonságos helyen, a Data factoryban vagy [hivatkozik az Azure Key Vault tárolt titkos kulcs](store-credentials-in-key-vault.md). |Igen (Ha alapszintű hitelesítést használ). |
@@ -102,7 +98,7 @@ Adatok másolása a MongoDB, az adatkészlet típus tulajdonságának beállít�
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
 | type | A type tulajdonságot az adathalmaz értékre kell állítani: **MongoDbCollection** | Igen |
-| CollectionName |A MongoDB-adatbázist a gyűjtemény nevét. |Igen |
+| collectionName |A MongoDB-adatbázist a gyűjtemény nevét. |Igen |
 
 **Példa**
 
@@ -186,8 +182,8 @@ Amikor adatokat másol a MongoDB, a következő megfeleltetéseket szolgálnak a
 | NumberDouble |Dupla |
 | NumberInt |Int32 |
 | NumberLong |Int64 |
-| ObjectID |Karakterlánc |
-| Karakterlánc |Karakterlánc |
+| ObjectID |Sztring |
+| Sztring |Sztring |
 | UUID |GUID |
 | Objektum |Renormalized történő egybesimítására "_" beágyazott elválasztójelként oszlopok |
 

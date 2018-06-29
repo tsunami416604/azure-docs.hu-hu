@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/10/2017
 ms.author: mabrigg
-ms.openlocfilehash: 446df7922422ccfcf3fbb92ecf153c6dec2f6197
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.openlocfilehash: e20670476f4549a06d80d5f85e2ebd8ab1f50b05
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
-ms.locfileid: "26640378"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37047241"
 ---
 # <a name="monitor-health-and-alerts-in-azure-stack"></a>A figyelő állapotát és az Azure-készletben riasztások
 
@@ -32,6 +32,17 @@ Azure verem infrastruktúra-figyelési funkciókat nyújtanak, amelyek lehetőv�
  ## <a name="understand-health-in-azure-stack"></a>Azure-készletben állapotfigyelő ismertetése
 
  Állapot és riasztások állapotfigyelő erőforrás-szolgáltató kezeli. Az állapotfigyelő erőforrás-szolgáltató Azure verem központi telepítése és konfigurálása során regisztrálja verem Azure infrastruktúra-összetevőihez. Ez a regisztráció lehetővé teszi az állapot és riasztások az egyes összetevők. Azure-készletben állapotfigyelő fogalma egyszerű. Ha egy összetevő regisztrált példányának riasztások, adott összetevő állapotát tükrözi a legrosszabb aktív riasztás súlyossága; figyelmeztető vagy kritikus.
+
+## <a name="alert-severity-definition"></a>Riasztás súlyossága meghatározása
+
+Azure-készletben riasztásokról értesítő csak két súlyosságokkal: **figyelmeztetés** és **kritikus**.
+
+**Figyelmeztetés**  
+Operátor ütemezett módon lehet oldani a figyelmeztetés. A riasztás általában nem befolyásolja a felhasználó munkaterhelések.
+
+**Kritikus**  
+Operátor sürgős eleget kell tennie a kritikus riasztás. Ezek a problémák, amelyek jelenleg hatással van, vagy Azure verem felhasználók hamarosan hatással lesz. 
+
  
  ## <a name="view-and-manage-component-health-state"></a>Megtekintheti és kezelheti az összetevő állapotát
  
@@ -71,7 +82,7 @@ Egy adott riasztást a riasztás részleteinek megtekintése gombra. A riasztás
 
 Után az infrastruktúra-szerepkör példánya újra online állapotba kerül, a riasztás automatikusan bezáródik. Számos, de nem minden riasztás automatikusan bezáródik a mögöttes probléma megoldása után. Azt javasoljuk, hogy kiválassza **Bezárás riasztási** szervizelési lépések végrehajtása után. Ha a probléma továbbra is fennáll, az Azure-verem létrehoz egy új riasztást. Ha a probléma megoldásához a riasztás lezárt marad, és nincs szükség további felhasználói beavatkozásra.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [Azure-készletben frissítések kezelése](azure-stack-updates.md)
 
