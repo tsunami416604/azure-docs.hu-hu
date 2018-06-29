@@ -1,21 +1,21 @@
 ---
-title: 'Az Azure Active Directory B2C: Ismerkedés a egyéni szabályzatokkal |} Microsoft Docs'
-description: Ismerkedés az Azure Active Directory B2C egyéni házirendek
+title: Ismerkedés az Azure Active Directory B2C az egyéni házirendek |} Microsoft Docs
+description: Ismerkedés az Azure Active Directory B2C egyéni házirendek hogyan.
 services: active-directory-b2c
-documentationcenter: ''
 author: davidmu1
 manager: mtillman
-editor: ''
-ms.service: active-directory-b2c
+ms.service: active-directory
 ms.workload: identity
 ms.topic: article
 ms.date: 08/04/2017
 ms.author: davidmu
-ms.openlocfilehash: 502f88bd08c05f71988763fedeba4d596aa409b6
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.component: B2C
+ms.openlocfilehash: 8ff69942971950e2d4a274e7d3502379a26326c7
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "34709291"
 ---
 # <a name="azure-active-directory-b2c-get-started-with-custom-policies"></a>Az Azure Active Directory B2C: Egyéni házirendek első lépések
 
@@ -52,7 +52,7 @@ A folytatás előtt ellenőrizze, hogy az Azure AD B2C bérlő számára, amely 
  e. A **dátumok**, használja az alapértelmezett értékeket.<br>
  f. A **kulcshasználat**, használjon **titkosítási**.<br>
  g. Kattintson a **Létrehozás** gombra.<br>
-5. Create B2C_1A_FacebookSecret. <br>
+5. Hozzon létre B2C_1A_FacebookSecret. <br>
 Ha már rendelkezik egy Facebook alkalmazás titkos kulcs, adja hozzá a házirend kulcsként a bérlő. Ellenkező esetben létre kell hoznia a kulcsot egy helyőrző értékét úgy, hogy a házirendek érvényesíteni.<br>
  a. Válassza a **Hozzáadás** lehetőséget.<br>
  b. A **beállítások**, használjon **manuális**.<br>
@@ -73,8 +73,8 @@ Az Azure AD B2C meg, és a felhasználók bejelentkezését a motor által haszn
 
 1. Az a [Azure-portálon](https://portal.azure.com), átváltani a [az Azure AD B2C-bérlő kontextusában](active-directory-b2c-navigate-to-b2c-context.md).
 2. Nyissa meg a **Azure Active Directory** panel (nem a **az Azure AD B2C** panel). Előfordulhat, hogy kell kiválasztania **több szolgáltatások** megtalálni.
-3. Válassza ki **App regisztrációk**.
-4. Válassza ki **új alkalmazás regisztrációja**.
+3. Válassza az **Alkalmazásregisztrációk** elemet.
+4. Válassza az **Új alkalmazás regisztrálása** elemet.
    * A **neve**, használjon `IdentityExperienceFramework`.
    * A **alkalmazástípus**, használjon **Web app/API**.
    * A **bejelentkezési URL-cím**, használjon `https://login.microsoftonline.com/yourtenant.onmicrosoft.com`, ahol `yourtenant` van az Azure AD B2C-bérlő tartománynevét.
@@ -85,8 +85,8 @@ Az Azure AD B2C meg, és a felhasználók bejelentkezését a motor által haszn
 
 ### <a name="create-the-proxyidentityexperienceframework-application"></a>A ProxyIdentityExperienceFramework alkalmazás létrehozása
 
-1. Válassza ki **App regisztrációk**.
-1. Válassza ki **új alkalmazás regisztrációja**.
+1. Válassza az **Alkalmazásregisztrációk** elemet.
+1. Válassza az **Új alkalmazás regisztrálása** elemet.
    * A **neve**, használjon `ProxyIdentityExperienceFramework`.
    * A **alkalmazástípus**, használjon **natív**.
    * A **átirányítási URI-**, használjon `https://login.microsoftonline.com/yourtenant.onmicrosoft.com`, ahol `yourtenant` az Azure AD B2C-bérlő.
@@ -99,7 +99,7 @@ Az Azure AD B2C meg, és a felhasználók bejelentkezését a motor által haszn
 1. Válassza ki **API kiválasztása**.
 1. Keresse meg a IdentityExperienceFramework nevét. Válassza ki **IdentityExperienceFramework** az eredményeket, majd **válasszon**.
 1. Jelölje be a jelölőnégyzetet a **hozzáférés IdentityExperienceFramework**, és kattintson a **válasszon**.
-1. Válassza ki **végzett**.
+1. Válassza a **Done** (Kész) lehetőséget.
 1. Válassza ki **engedélyt adjon**, majd erősítse meg kiválasztásával **Igen**.
 
 ## <a name="download-starter-pack-and-modify-policies"></a>Alapszintű csomag letöltése, és módosítsa a házirendek

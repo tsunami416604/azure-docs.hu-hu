@@ -1,21 +1,21 @@
 ---
-title: 'Az Azure Active Directory B2C: KMSI |} Microsoft Docs'
-description: A témakör bemutatja, hogyan lehet beállítani a "me bejelentkezve megőrzése"
+title: Bejelentkezve szeretnék maradni az Azure Active Directory B2C |} Microsoft Docs
+description: A témakör bemutatja, hogyan lehet beállítani a "me bejelentkezve megőrzése".
 services: active-directory-b2c
-documentationcenter: ''
 author: davidmu1
 manager: mtillman
-editor: ''
-ms.service: active-directory-b2c
+ms.service: active-directory
 ms.workload: identity
 ms.topic: article
 ms.date: 09/05/2016
 ms.author: davidmu
-ms.openlocfilehash: 073ba8eef7f2f42d1c308fb20d3bfdbfc8d321b7
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.component: B2C
+ms.openlocfilehash: a32aaa5d91426199c29765d2d9645e8a4ddb03b4
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "34709155"
 ---
 # <a name="azure-active-directory-b2c-enable-keep-me-signed-in-kmsi"></a>Az Azure Active Directory B2C: Engedélyezése "Megtartása (KMSI) bejelentkezve"  
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]

@@ -1,21 +1,21 @@
 ---
-title: 'Az Azure Active Directory B2C: Módosítsa a bejelentkezési be az egyéni házirendek, és saját magas szolgáltató konfigurálása'
+title: Módosítsa a bejelentkezési be az egyéni házirendek és önkiszolgáló magas szolgáltató konfigurálása |} Microsoft Docs
 description: Egy általános bemutató hozzáadása regisztrálhat és konfigurálása a felhasználó által megadott jogcímek
 services: active-directory-b2c
-documentationcenter: ''
 author: davidmu1
 manager: mtillman
-editor: ''
-ms.service: active-directory-b2c
+ms.service: active-directory
 ms.workload: identity
 ms.topic: article
 ms.date: 04/29/2017
 ms.author: davidmu
-ms.openlocfilehash: b9ea48f0700509194602dd15ff42c7c689685a53
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.component: B2C
+ms.openlocfilehash: 9d8f644e819ceb83f0b436789d6d8610ed01f6a6
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "34710797"
 ---
 # <a name="azure-active-directory-b2c-modify-sign-up-to-add-new-claims-and-configure-user-input"></a>Az Azure Active Directory B2C: A módosítás jelentkezzen be új jogcímeket adhatnak hozzá, és konfigurálja a felhasználói bevitel.
 

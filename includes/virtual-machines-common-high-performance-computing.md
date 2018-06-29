@@ -9,10 +9,11 @@ ms.date: 05/11/2018
 ms.author: danlep
 ms.custom: include file
 ms.openlocfilehash: 32a438d393077cfe4cb7f6ee62f3a01edfce0571
-ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
-ms.translationtype: MT
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/12/2018
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "34152223"
 ---
 Szervezet már rendelkezik a nagyméretű számítógépes igényeinek. Az ilyen nagy számítási terhelések például a műszaki tervezés és elemzés, pénzügyi kockázat számítások, kép megjelenítési, összetett modellezési, Monte Carlo szimulációja és több. 
 
@@ -153,7 +154,7 @@ További információ:
 
 Az Azure virtuális gépek, a virtuálisgép-méretezési csoportok, a kötegelt és a kapcsolódó számítási szolgáltatások olyan Azure HPC-megoldások többsége alapját. A megoldás azonban számos kapcsolódó Azure-szolgáltatások előnyeinek életbe. Ez egy részleges lista:
 
-### <a name="storage"></a>Tárhely
+### <a name="storage"></a>Storage
 
 * [A BLOB, table és a queue storage](../articles/storage/storage-introduction.md)
 * [A File storage](../articles/storage/storage-files-introduction.md)
@@ -170,11 +171,11 @@ Az Azure virtuális gépek, a virtuálisgép-méretezési csoportok, a kötegelt
 * [Batch AI](../articles/batch-ai/overview.md)
 * [Genomika](../articles/genomics/overview-what-is-genomics.md)
 
-### <a name="networking"></a>Hálózatkezelés
+### <a name="networking"></a>Hálózat
 * [Virtual Network](../articles/virtual-network/virtual-networks-overview.md)
 * [ExpressRoute](../articles/expressroute/expressroute-introduction.md)
 
-### <a name="containers"></a>Tárolók
+### <a name="containers"></a>Containers
 * [Container Service](../articles/container-service/dcos-swarm/container-service-intro.md)
 * [Az Azure Kubernetes szolgáltatás (AKS)](../articles/aks/intro-kubernetes.md)
 * [Container Registry](../articles/container-registry/container-registry-intro.md)

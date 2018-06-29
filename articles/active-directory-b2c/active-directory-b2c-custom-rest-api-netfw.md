@@ -1,21 +1,21 @@
 ---
-title: 'Az Azure Active Directory B2C: Integrálása az Azure AD B2C felhasználói út a REST API jogcím cseréje, felhasználói bevitel ellenőrzése'
+title: REST API jogcím cseréje az az Azure Active Directory B2C felhasználói út integrálása |} Microsoft Docs
 description: REST API jogcím cseréje a Azure AD B2C felhasználói használatában az integrálását, felhasználói bevitel ellenőrzése.
 services: active-directory-b2c
-documentationcenter: ''
 author: davidmu1
 manager: mtillman
-editor: ''
-ms.service: active-directory-b2c
+ms.service: active-directory
 ms.workload: identity
 ms.topic: article
 ms.date: 09/30/2017
 ms.author: davidmu
-ms.openlocfilehash: c4a530b3d6b4f6d4f5ec6087adcee839422dd01d
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.component: B2C
+ms.openlocfilehash: e17647016da0e877bd8f21357a4bd38121820f22
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "34709359"
 ---
 # <a name="integrate-rest-api-claims-exchanges-in-your-azure-ad-b2c-user-journey-as-validation-of-user-input"></a>Az Azure AD B2C felhasználói út a REST API jogcímek cseréjét integrálása, felhasználói bevitel ellenőrzése
 
@@ -82,7 +82,7 @@ A minta a bemeneti jogcímek, és a kimeneti jogcímek a RESTful szolgáltatás 
 Hozzon létre egy modell a bemeneti jogcímek a következő módon:
 
 1. Ha még nincs megnyitva Megoldáskezelőben, válassza ki **nézet** > **Megoldáskezelőben**. 
-2. A Megoldáskezelőben kattintson a jobb gombbal a **modellek** mappára, válassza **Hozzáadás**, majd válassza ki **osztály**.
+2. A Solution Explorer (Megoldáskezelő) ablakában kattintson a jobb gombbal a **Models** (Modellek) mappára, kattintson az **Add** (Hozzáadás) parancsra, majd kattintson a **Class** (Osztály) gombra.
 
     ![Modell hozzáadása](media/aadb2c-ief-rest-api-netfw/aadb2c-ief-rest-api-netfw-add-model.png)
 
@@ -136,7 +136,7 @@ Hozzon létre egy modell a bemeneti jogcímek a következő módon:
 ### <a name="step-22-add-a-controller"></a>2.2. lépés: A vezérlő hozzáadása
 A webes API-t egy _vezérlő_ olyan objektum, amely HTTP-kérelmeket kezeli. A vezérlő adja vissza a kimeneti jogcímek, vagy a Keresztnév megadása nem érvényes, ha egy ütköző HTTP-hibaüzenetet jelez.
 
-1. A Megoldáskezelőben kattintson a jobb gombbal a **tartományvezérlők** mappára, válassza **Hozzáadás**, majd válassza ki **vezérlő**.
+1. A Solution Explorer (Megoldáskezelő) ablakában kattintson a jobb gombbal a **Controllers** (Vezérlők) mappára, kattintson az **Add** (Hozzáadás) parancsra, majd kattintson a **Controller** (Vezérlő) gombra.
 
     ![Új tartományvezérlő](media/aadb2c-ief-rest-api-netfw/aadb2c-ief-rest-api-netfw-add-controller-1.png)
 
