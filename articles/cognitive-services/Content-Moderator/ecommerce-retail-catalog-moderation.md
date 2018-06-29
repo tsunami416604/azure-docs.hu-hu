@@ -9,12 +9,12 @@ ms.component: content-moderator
 ms.topic: article
 ms.date: 09/25/2017
 ms.author: sajagtap
-ms.openlocfilehash: 5cb93941751c8744a19a5473d13f1e135a589eaa
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 6177758eaa3e611ad67da0778d889df48b052d90
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35347122"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37095751"
 ---
 # <a name="ecommerce-catalog-moderation-with-machine-learning"></a>Kereskedelmi katalógus moderálás machine Learning segítségével
 
@@ -158,7 +158,7 @@ Ebben az esetben ezeket az egyéni címkéket meghatároztuk (**celebrity**, **j
 
 ## <a name="classify-into-flags-toys-and-pens"></a>Jelző, játékok és toll besorolása
 
-1. [Jelentkezzen be a](https://www.customvision.ai/account/signin) számára a [egyéni Látástechnológiai API előzetes](https://www.customvision.ai/).
+1. [Jelentkezzen be a](https://azure.microsoft.com/en-us/services/cognitive-services/custom-vision-service/) számára a [egyéni Látástechnológiai API előzetes](https://www.customvision.ai/).
 2. Használja a [gyors üzembe helyezés](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/getting-started-build-a-classifier) hozhat létre az egyéni osztályozó jelzők, játékok és toll lehetséges észleléséhez.
    ![Egyéni stratégiai képzési lemezképek](images/tutorial-ecommerce-custom-vision.PNG)
 3. [Az előrejelzés végpont URL-cím beszerzése](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/use-prediction-api) az egyéni osztályozó.

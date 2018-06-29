@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: richagi
-ms.openlocfilehash: cfdb89ae833dc2450a4670a84af305f1caa10591
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: dfd28c5abea668e704fb5ee8b02d85d552e9ae77
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2018
-ms.locfileid: "33869512"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37098872"
 ---
 # <a name="integrate-your-vpn-infrastructure-with-azure-mfa-by-using-the-network-policy-server-extension-for-azure"></a>A VPN-infrastruktúra integrálása az Azure MFA bővítményével a hálózati házirend-kiszolgáló az Azure-bA
 
@@ -305,7 +305,7 @@ Ezek a problémák elhárításához egy ideális kiindulási, a RADIUS-kiszolg�
  
 ## <a name="configure-multi-factor-authentication"></a>Többtényezős hitelesítés beállítása
 
-Ha segítségre van szüksége a multi-factor Authentication a felhasználók konfigurálásával tekintse meg a cikkek [használatának megkövetelése a kétlépéses ellenőrzés egy felhasználó vagy csoport](howto-mfa-userstates.md) és [a kétlépéses ellenőrzéshez a fiók beállítása](../../multi-factor-authentication/end-user/multi-factor-authentication-end-user-first-time.md)
+Ha segítségre van szüksége a multi-factor Authentication a felhasználók konfigurálásával tekintse meg a cikkek [használatának megkövetelése a kétlépéses ellenőrzés egy felhasználó vagy csoport](howto-mfa-userstates.md) és [a kétlépéses ellenőrzéshez a fiók beállítása](end-user/current/multi-factor-authentication-end-user-first-time.md)
 
 ## <a name="install-and-configure-the-nps-extension"></a>Telepítse és konfigurálja a hálózati házirend-kiszolgáló bővítmény
 
@@ -393,7 +393,7 @@ A parancsfájl használatát, adja meg az Azure Active Directory rendszergazdai 
 
 6. Indítsa újra a kiszolgálót.
 
-### <a name="verify-the-configuration"></a>A konfiguráció ellenőrzése
+### <a name="verify-the-configuration"></a>Ellenőrizze
 A konfiguráció ellenőrzése a VPN-kiszolgáló egy új VPN-kapcsolatot kell létesítenie. Miután sikeresen beírt hitelesítő adatait az elsődleges hitelesítéshez, a VPN-kapcsolatot vár a másodlagos hitelesítés sikeres, a kapcsolat létrejötte előtt alább látható módon. 
 
 ![A Windows VPN-beállítások ablak](./media/howto-mfa-nps-extension-vpn/image42.png)

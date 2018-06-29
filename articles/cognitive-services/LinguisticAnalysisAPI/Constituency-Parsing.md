@@ -9,12 +9,12 @@ ms.component: linguistic-analysis
 ms.topic: article
 ms.date: 03/21/2016
 ms.author: lesun
-ms.openlocfilehash: 1cd5ac3eceb9b36654f1b012bce482c5151c4462
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: bff5e587621e1278c260d555aec280a0f4c7c8a1
+ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35347119"
+ms.lasthandoff: 06/28/2018
+ms.locfileid: "37082172"
 ---
 # <a name="constituency-parsing"></a>Választókerülete elemzése
 
@@ -66,14 +66,14 @@ Nincsenek az számos ilyen kifejezések: *I*, *egy új hibrid automobile*, *Blue
 |ADVP   | Módosítószót kifejezés | "Törlés keresztül" |
 |CONJP  | Együtt kifejezés | ", valamint" |
 |ILLETHETI   | Töredék, hiányos vagy fragmentary bemenetek használt | "Erősen ajánlott..." |
-|INTJ   | Interjection | "Hooray" |
+|INTJ   | interjection | "Hooray" |
 |LST    | Lista jelölő, beleértve az absztrakt | "#4)" |
 |NAC    | Nem A bennük foglalt, azt jelzi, hogy nem alkotó kifejezés hatókörére |  "és a helyes üzlet" a ", a folyamat, és jó kezelése" |
 |NP | Főnév kifejezés | "tasty burgonya pancake" |
 |NX | A head megjelölni bizonyos összetett hálózati házirend-kiszolgáló belül használt| |
 |PP | Prepositional kifejezés| "a"a készletben |
 |PRN    | Zárójeles| "(úgynevezett)" |
-|PRT    | Alkotóelem| "out" a "bemásolt kimenő" |
+|PRT    | alkotóelem| "out" a "bemásolt kimenő" |
 |QP | Mennyiség kifejezésre (pl., összetett mérték vagy összeg) főnév kifejezés| "körül $75" |
 |REGISZTRÁCIÓS KÓDJA    | Csökkentett relatív záradék.| "továbbra is feloldva" a "sok problémák még feloldatlan." |
 |S  | Mondat vagy záradék. | "Ez az néhány mondatot."
@@ -92,4 +92,4 @@ Nincsenek az számos ilyen kifejezések: *I*, *egy új hibrid automobile*, *Blue
 
 ## <a name="specification"></a>Meghatározása
 
-Itt fák használja az S-kifejezéseknek a [Penn Treebank](https://www.cis.upenn.edu/~treebank/).
+Itt fák használja az S-kifejezéseknek a [Penn Treebank](https://catalog.ldc.upenn.edu/ldc99t42).

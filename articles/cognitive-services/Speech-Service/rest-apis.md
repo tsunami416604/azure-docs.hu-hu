@@ -9,12 +9,12 @@ ms.technology: speech
 ms.topic: article
 ms.date: 05/09/2018
 ms.author: v-jerkin
-ms.openlocfilehash: a25c2b7ea7fdfcc6bcaa10baff3a5ae14ae9753b
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
-ms.translationtype: HT
+ms.openlocfilehash: 53560fd4f8240c4446898f58992a9319e5177435
+ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37044820"
+ms.lasthandoff: 06/28/2018
+ms.locfileid: "37085371"
 ---
 # <a name="speech-service-rest-apis"></a>Beszéd szolgáltatás REST API-k
 
@@ -265,5 +265,7 @@ Mint korábban, győződjön meg arról, hogy a `FetchTokenUri` értéke megegye
 
 ## <a name="next-steps"></a>További lépések
 
-* [Beszéd próbaverziós előfizetés beszerzése](https://azure.microsoft.com/try/cognitive-services/)
-* [Tekintse meg a beszédfelismerés modell testreszabása](how-to-customize-speech-models.md)
+- [Beszéd próbaverziós előfizetés beszerzése](https://azure.microsoft.com/try/cognitive-services/)
+- [Akusztikus modellek testreszabása](how-to-customize-acoustic-models.md)
+- [Nyelvi modellek testreszabása](how-to-customize-language-model.md)
+

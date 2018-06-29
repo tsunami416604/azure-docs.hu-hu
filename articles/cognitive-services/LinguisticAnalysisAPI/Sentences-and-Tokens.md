@@ -9,12 +9,12 @@ ms.component: linguistic-analysis
 ms.topic: article
 ms.date: 03/21/2016
 ms.author: davl
-ms.openlocfilehash: 4681098a0e56640e95463272be44f7432be26839
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 78e539f365728ad540308e9cfb07af44bf6d8fe7
+ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35347046"
+ms.lasthandoff: 06/28/2018
+ms.locfileid: "37084042"
 ---
 # <a name="sentence-separation-and-tokenization"></a>Mondat elkülönítését és létrehozása
 
@@ -68,4 +68,4 @@ Végezetül nincsenek képviselő összevonásokat például több szokatlan jog
 ## <a name="specification"></a>Meghatározása
 
 Fontos konzisztens döntenie néhány mondatot, és egy jogkivonat foglalja magában.
-Azt a meghatározás támaszkodjon a [Penn Treebank](https://www.cis.upenn.edu/~treebank/) (néhány további részletek itt érhetők el: [https://www.cis.upenn.edu/~treebank/tokenization.html]).
+Azt a meghatározás támaszkodjon a [Penn Treebank](https://catalog.ldc.upenn.edu/ldc99t42) (néhány további részletek találhatók ftp://ftp.cis.upenn.edu/pub/treebank/public_html/tokenization.html).

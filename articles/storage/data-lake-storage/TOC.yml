@@ -1,0 +1,72 @@
+- name: Azure Storage-dokumentáció
+  href: /azure/storage/
+- name: Váltás az 1. generációs Data Lake Storage dokumentációjára
+  href: /azure/data-lake-store/
+- name: Áttekintés
+  items:
+    - name: Bevezetés
+      href: introduction.md
+- name: Gyors útmutatók
+  items:
+    - name: 2. generációs Data Lake Storage-kompatibilis tárfiók létrehozása
+      href: quickstart-create-account.md
+    - name: Databricks-fiók létrehozása vagy csatlakoztatása
+      href: quickstart-create-databricks-account.md
+    - name: HDInsight-fürt létrehozása
+      href: quickstart-create-connect-hdi-cluster.md
+- name: Oktatóanyagok
+  items:
+    - name: 'Adatok kinyerése, átalakítása és betöltése az Azure Databricks használatával'
+      href: handle-data-using-databricks.md
+    - name: Hozzáférés a Data Lake Storage-adatokhoz a Databricks és a Spark használatával
+      href: using-databricks-spark.md
+    - name: 'Adatok kinyerése, átalakítása és betöltése az Azure HDInsight-alapú Apache Hive használatával'
+      href: tutorial-extract-transform-load-hive.md
+- name: Alapelvek
+  items:
+    - name: Azure Blob FileSystem-illesztőprogram Hadoophoz
+      href: abfs-driver.md
+    - name: Az Azure Blob File System URI-jának ismertetése
+      href: introduction-abfs-uri.md
+    - name: 'A HNS (Hierarchical Namespace Service, hierarchikus névtér-szolgáltatás)'
+      href: namespace.md
+    - name: Biztonság
+      items:
+        - name: Inaktív adatok titkosítása
+          href: ../common/storage-service-encryption.md?toc=%2fazure%2fstorage%2fdata-lake-storage%2ftoc.json
+        - name: Inaktív adatok titkosítása ügyfélkulcsokkal
+          href: ../common/storage-service-encryption-customer-managed-keys.md?toc=%2fazure%2fstorage%2fdata-lake-storage%2ftoc.json
+    - name: A 2. generációs Data Lake Storage kiértékelése
+      href: evaluation.md
+- name: Útmutatók
+  items:
+    - name: A 2. generációs Data Lake Storage használata Azure HDInsight-fürtökkel
+      href: use-hdi-cluster.md
+    - name: A Hadoop fájlrendszer parancssori felületének használata a 2. generációs Data Lake Storage szolgáltatással
+      href: use-hdfs-data-lake-storage.md
+    - name: Adatok betöltése
+      items:
+        - name: Adatok másolása a 2. generációs Data Lake Storage-ba a Distcp használatával
+          href: use-distcp.md
+        - name: Adatok másolása a 2. generációs Data Lake Storage-ba az Azure Data Factory használatával
+          href: ../../data-factory/load-azure-data-lake-storage-gen2.md
+    - name: Csatlakozás az Azure DataBrickshez
+      href: 'https://docs.azuredatabricks.net/spark/latest/data-sources/azure/azure-datalake-gen2.html'
+- name: További források
+  items:
+    - name: Azure-ütemterv
+      href: 'https://azure.microsoft.com/roadmap/?category=storage'
+    - name: Azure Storage-ügyféleszközök
+      href: ../common/storage-explorers.md?toc=%2fazure%2fstorage%2fdata-lake-storage%2ftoc.json
+    - name: Fórum
+      href: 'https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazuredata'
+    - name: Díjszabás
+      href: 'https://azure.microsoft.com/pricing/details/storage/data-lake/'
+    - name: Díjkalkulátor
+      href: 'https://azure.microsoft.com/pricing/calculator/'
+    - name: Szolgáltatási hírek
+      href: 'https://azure.microsoft.com/updates/?product=storage'
+    - name: Stack Overflow
+      href: 'http://stackoverflow.com/questions/tagged/windows-azure-storage'
+    - name: Videók
+      href: 'https://azure.microsoft.com/documentation/videos/index/?services=storage'

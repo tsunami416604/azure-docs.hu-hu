@@ -6,15 +6,15 @@ ms.service: automation
 ms.component: update-management
 author: georgewallace
 ms.author: gwallace
-ms.date: 06/19/2018
+ms.date: 06/28/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: a8ac62986eb7eb184ae6d102a956ee051e3aa88a
-ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
-ms.translationtype: HT
+ms.openlocfilehash: 3de93c06285f36353d91a66db975c0a579c1379c
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37063510"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37097444"
 ---
 # <a name="update-management-solution-in-azure"></a>Frissítse a felügyeleti megoldás az Azure-ban
 
@@ -35,9 +35,9 @@ Az alábbi ábrán látható konceptuális ábrázolása viselkedését, és ada
 
 ![Frissítse a felügyeleti folyamatot](media/automation-update-management/update-mgmt-updateworkflow.png)
 
-Miután a számítógép frissítési megfelelőség szempontjából vizsgálatot végez, az ügynök továbbítja a tömeges az Azure Naplóelemzés szolgáltatáshoz. A Windows-számítógépen a megfelelőségi vizsgálat alapértelmezett 12 óránként végzi. 
+Miután a számítógép frissítési megfelelőség szempontjából vizsgálatot végez, az ügynök továbbítja a tömeges az Azure Naplóelemzés szolgáltatáshoz. A Windows-számítógépen a megfelelőségi vizsgálat alapértelmezett 12 óránként végzi.
 
-A vizsgálati ütemezés szerint mellett vizsgálata frissítési megfelelőség szempontjából a frissítés telepítése előtt, ha újraindul a MMA 15 percen belül és frissítés telepítése után indítható. 
+A vizsgálati ütemezés szerint mellett vizsgálata frissítési megfelelőség szempontjából a frissítés telepítése előtt, ha újraindul a MMA 15 percen belül és frissítés telepítése után indítható.
 
 A Linux rendszerű számítógépek esetén a megfelelőségi vizsgálat alapértelmezett 3 óránként végzi. Az MMA ügynök újraindítása, ha a megfelelőségi vizsgálat 15 percen belül megkezdődik.
 
@@ -86,7 +86,7 @@ Windows-ügynökök be kell állítani a WSUS-kiszolgálóval való kommunikáci
 
 #### <a name="linux"></a>Linux
 
-A Linux a gép hozzáféréssel kell rendelkeznie egy frissítés tárházba. A frissítés tárház magán- vagy nyilvános lehet. Ez a megoldás nem támogatott a Linux több Naplóelemzési munkaterület jelentés konfigurált Operations Management Suite (OMS) ügynök.
+A Linux a gép hozzáféréssel kell rendelkeznie egy frissítés tárházba. A frissítés tárház magán- vagy nyilvános lehet. A TLS 1.1 és TLS 1.2-es frissítés felügyeleti együttműködhet szükséges. Ez a megoldás nem támogatott a Linux több Naplóelemzési munkaterület jelentés konfigurált Operations Management Suite (OMS) ügynök.
 
 Az OMS-ügynök telepítése Linux és a legújabb verzió letöltéséhez kapcsolatos információkért lásd: [Operations Management Suite-ügynök Linux](https://github.com/microsoft/oms-agent-for-linux). A Windows MOBILE ügynök telepítésével kapcsolatos információkért lásd: [Operations Management Suite Windowsra ügynök](../log-analytics/log-analytics-windows-agent.md).
 
@@ -214,7 +214,7 @@ Egy új központi telepítés létrehozásához válassza **ütemezés központi
 |Operációs rendszer| Válassza ki **Linux** vagy **Windows**.|
 |Gépek frissítése |A mentett kereséseket, vagy válasszon **gép** elemet a legördülő listából válassza ki, majd válassza ki az egyes gépek. |
 |Frissítési besorolások|Válassza ki a szükséges összes frissítési besorolásokat. CentOS ezt nem támogatja a kezdő verzióról.|
-|Kihagyandó frissítések|Adja meg a frissítések kizárása. A Windows, adja meg a Tudásbázis következő cikkét nélkül a **KB** előtag. A Linux adja meg a csomag nevét vagy helyettesítő karaktert.  |
+|Frissítések kizárása|Adja meg a frissítések kizárása. A Windows, adja meg a Tudásbázis következő cikkét nélkül a **KB** előtag. A Linux adja meg a csomag nevét vagy helyettesítő karaktert.  |
 |Ütemezési beállítások|Válassza ki a kezdési idejét, és válassza **egyszer** vagy **ismétlődő** az ismétlődés.|| Karbantartási időszak |Állítsa be a frissítéseket percek számát. Az érték nem lehet kisebb, mint 30 perc és 6 óránál. |
 
 ## <a name="update-classifications"></a>Frissítési besorolások
@@ -253,7 +253,7 @@ Jelenleg nincs támogatott metódus módszer natív besorolás-adatok elérhető
 
 A következő címekre kifejezetten a kezeléséhez szükségesek. Ezeknél a címeknél kommunikációt a 443-as porton keresztül történik.
 
-|Azure Public  |Azure Government  |
+|Az Azure nyilvános  |Azure Government  |
 |---------|---------|
 |*.ods.opinsights.azure.com     |*. ods.opinsights.azure.us         |
 |*.oms.opinsights.azure.com     | *. oms.opinsights.azure.us        |
@@ -268,7 +268,7 @@ Mellett a részletek a az Azure-portál által biztosított a naplók elleni ker
 Is megismerheti a lekérdezések és használhatja őket a különböző ügyfelek és több ellátogatva: [Naplóelemzési címsorának API dokumentációjában](
 https://dev.loganalytics.io/).
 
-### <a name="sample-queries"></a>Mintalekérdezések
+### <a name="sample-queries"></a>A lekérdezés
 
 A következő szakaszokban napló mintalekérdezések a frissítés azt jelzi, hogy ez a megoldás által gyűjtött:
 

@@ -11,15 +11,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/26/2018
+ms.date: 06/27/2018
 ms.author: barbkess
 ms.reviewer: asteen
-ms.openlocfilehash: ed1179663823bc5a16f3ef348a649731814cdd5a
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
-ms.translationtype: HT
+ms.openlocfilehash: d091a56fd5190ea9b40f7933e217eabac87967a5
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35293092"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37098763"
 ---
 # <a name="article-index-for-application-management-in-azure-active-directory"></a>Article Index for Application Management in Azure Active Directory (Az Azure Active Directory segítségével végzett alkalmazásfelügyeletre vonatkozó cikkek jegyzéke)
 Ezen a lapon minden egyes dokumentum írása az alkalmazással kapcsolatos szolgáltatásokra vonatkozó az Azure Active Directory (Azure AD) átfogó listáját tartalmazza.
@@ -54,8 +54,8 @@ Egyszeri bejelentkezés lehetővé teszi a különböző alkalmazások és szolg
 | Útmutató a következő cikket: |  |
 |:---:| --- |
 | Összevonási és más bejelentkezési bemutatása |[Egyszeri bejelentkezés az Azure ad szolgáltatással](manage-apps/what-is-single-sign-on.md) |
-| Az Azure AD-val előre integrált Szolgáltatottszoftver-alkalmazásoknál ezer egyszerűsített egyszeri bejelentkezés konfigurációs lépések |[Ismerkedés az Azure AD application gallery a](manage-apps/what-is-single-sign-on.md#get-started-with-the-azure-ad-application-gallery)<br /><br />[Összevonási támogató előre integrált alkalmazások teljes listája](active-directory-saas-tutorial-list.md)<br /><br />[Az alkalmazás felvétele az Azure AD-Alkalmazásgyűjtemény](active-directory-app-gallery-listing.md) |
-| Több mint 150 app oktatóanyagok konfigurálásával egyszeri bejelentkezés alkalmazásokhoz, mint [Salesforce](active-directory-saas-salesforce-tutorial.md), [ServiceNow](active-directory-saas-servicenow-tutorial.md), [Google Apps](active-directory-saas-google-apps-tutorial.md), [Workday](active-directory-saas-workday-tutorial.md), és sok más |[Az Azure Active Directoryval SaaS-alkalmazások integrációjával kapcsolatos bemutatók felsorolása](active-directory-saas-tutorial-list.md) |
+| Az Azure AD-val előre integrált Szolgáltatottszoftver-alkalmazásoknál ezer egyszerűsített egyszeri bejelentkezés konfigurációs lépések |[Ismerkedés az Azure AD application gallery a](manage-apps/what-is-single-sign-on.md#get-started-with-the-azure-ad-application-gallery)<br /><br />[Összevonási támogató előre integrált alkalmazások teljes listája](saas-apps/tutorial-list.md)<br /><br />[Az alkalmazás felvétele az Azure AD-Alkalmazásgyűjtemény](active-directory-app-gallery-listing.md) |
+| Több mint 150 app oktatóanyagok konfigurálásával egyszeri bejelentkezés alkalmazásokhoz, mint [Salesforce](saas-apps/salesforce-tutorial.md), [ServiceNow](saas-apps/servicenow-tutorial.md), [Google Apps](saas-apps/google-apps-tutorial.md), [Workday](saas-apps/workday-tutorial.md), és sok más |[Az Azure Active Directoryval SaaS-alkalmazások integrációjával kapcsolatos bemutatók felsorolása](saas-apps/tutorial-list.md) |
 | Manuálisan állítsa be, és az egyszeri bejelentkezés konfigurációs testreszabása |[Hogyan való konfigurálása összevont egyszeri bejelentkezést az alkalmazásokat, amelyek nem találhatók az Azure Active Directory Alkalmazáskatalógusában](application-config-sso-how-to-configure-federated-sso-non-gallery.md)<br /><br />[A SAML-jogkivonat előzetesen beépített alkalmazások számára kiállított jogcímek testreszabása](active-directory-saml-claims-customization.md) |
 | A összevont alkalmazásokat, az SAML-protokollt használó hibaelhárítási útmutatója |[Hibaelhárítási SAML-alapú egyszeri bejelentkezést.](active-directory-saml-debugging.md) |
 | Az alkalmazás tanúsítvány lejárati dátuma konfigurálása és a tanúsítványok megújítása |[Tanúsítványok kezelése az összevont egyszeri bejelentkezés az Azure Active Directoryban](manage-apps/manage-certificates-for-federated-single-sign-on.md) |
@@ -112,23 +112,18 @@ Beállítása után az egyszeri bejelentkezés az alkalmazások és erőforráso
 | A következő típusú erőforrásokat a feltételes hozzáférés engedélyezése |[Feltételes hozzáférés a Szolgáltatottszoftver-alkalmazásoknál](active-directory-conditional-access-azure-portal-get-started.md)<br /><br />[Feltételes hozzáférés az Office 365-szolgáltatásokhoz](active-directory-conditional-access-device-policies.md)<br /><br />[Feltételes hozzáférés a helyszíni alkalmazások](active-directory-conditional-access-azure-portal.md)<br /><br />[Feltételes hozzáférés a helyszíni alkalmazások közzététele az Azure AD alkalmazás-proxyn keresztül](manage-apps/application-proxy-integrate-with-sharepoint-server.md) |
 | Eszközök regisztrálása az Azure Active Directoryban ahhoz, hogy az eszközalapú feltételes hozzáférési házirend engedélyezése |[Az Azure Active Directory Eszközregisztráció – áttekintés](active-directory-conditional-access-device-registration-overview.md)<br /><br />[Automatikus Eszközregisztráció engedélyezése a tartományhoz csatlakoztatott Windows-eszközök](active-directory-conditional-access-automatic-device-registration.md)<br />– [Lépéseket a Windows 8.1-eszközök](active-directory-conditional-access-automatic-device-registration-setup.md)<br />– [Lépéseket a Windows 7-eszközök](active-directory-conditional-access-automatic-device-registration-setup.md) |
 
-| A Microsoft Authenticator alkalmazás használata a kétlépéses ellenőrzéshez |} [Microsoft hitelesítő](../multi-factor-authentication/end-user/microsoft-authenticator-app-how-to.md) |
+| A Microsoft Authenticator alkalmazás használata a kétlépéses ellenőrzéshez |} [Microsoft hitelesítő](authentication/end-user/current/microsoft-authenticator-app-how-to.md) |
 
 Feltételes hozzáférés egy [Azure AD Premium](https://azure.microsoft.com/pricing/details/active-directory/) szolgáltatás.
 
 ## <a name="apps--azure-ad"></a>Alkalmazások és az Azure AD
-### <a name="cloud-app-discovery-find-which-saas-apps-are-being-used-in-your-organization"></a>A cloud App Discovery: Található mely SaaS-alkalmazások van használatban a szervezet
-A cloud App Discovery segítségével informatikai részlegek ismerje meg, melyik SaaS-alkalmazások vannak használatban a szervezetben. Azt is mérheti az alkalmazások használatát és a népszerűségét úgy, hogy az informatikai megállapíthatja, hogy mely alkalmazások előnyösek a legjobban alatt informatikai vezérlő és integrálva van az Azure AD.
+### <a name="cloud-discovery-find-which-saas-apps-are-being-used-in-your-organization"></a>A cloud Discovery: Található mely SaaS-alkalmazások van használatban a szervezet
+A cloud Discovery elemzi a forgalmi naplók szemben a Microsoft Cloud App Security felhőalkalmazások katalógusa a több mint 16 000 felhőalapú alkalmazások, amelyek szerint rangsorolunk és pontozunk több mint 70 kockázati tényezők alapján, adja meg a folyamatban lévő betekinthet a felhőalapú használhatja, FELTÁRÁSÁT, és a kockázati Árnyékmásolat be a szervezet informatikai kockázatot.
 
 | Útmutató a következő cikket: |  |
 |:---:| --- |
-| Egy általános működésének áttekintése |[A Cloud App Discovery megállapítás nem engedélyezett a felhőalapú alkalmazásokhoz](manage-apps/cloud-app-discovery.md) |
-| A mélyebb bemutatója ismerteti, hogyan működik, az adatvédelmi a kérdésekre adott válaszok |[Biztonsági és adatvédelmi megfontolások](active-directory-cloudappdiscovery-security-and-privacy-considerations.md) |
-| Gyakori kérdések |[Gyakori kérdések a Cloud App Discovery modulra](http://social.technet.microsoft.com/wiki/contents/articles/24037.cloud-app-discovery-frequently-asked-questions.aspx) |
-| A Cloud App Discovery telepítéséhez oktatóprogramok |[Csoport házirendjének telepítési útmutatója](http://social.technet.microsoft.com/wiki/contents/articles/30965.cloud-app-discovery-group-policy-deployment-guide.aspx)<br /><br />[A System Center telepítési útmutatója](http://social.technet.microsoft.com/wiki/contents/articles/30968.cloud-app-discovery-system-center-deployment-guide.aspx)<br /><br />[A Proxy kiszolgálókon egyéni portok telepítése](active-directory-cloudappdiscovery-registry-settings-for-proxy-services.md) |
-| A módosítási napló a Cloud App Discovery-ügynök frissítések |[Változásnapló](http://social.technet.microsoft.com/wiki/contents/articles/24616.cloud-app-discovery-agent-changelog.aspx) |
+| Egy általános működésének áttekintése |[Cloud Discovery beállítása](/cloud-app-security/set-up-cloud-discovery) |
 
-A cloud App Discovery van egy [Azure AD Premium](https://azure.microsoft.com/pricing/details/active-directory/) szolgáltatás.
 
 ### <a name="automatically-provision-and-deprovision-user-accounts-in-saas-apps"></a>Automatikusan kiépítése és felhasználói fiókok a Szolgáltatottszoftver-alkalmazásoknál kiosztásának megszüntetése
 A létrehozási, karbantartási és SaaS-alkalmazásokhoz, például a Dropbox, Salesforce, a ServiceNow és több felhasználói identitások eltávolítása automatizálását. Azonos, meglévő identitások az Azure AD közötti szinkronizálása és a Szolgáltatottszoftver-alkalmazásoknál, és automatikusan letiltja a fiókokat, amikor a felhasználók elhagyják a munkahelyet elérés.
@@ -160,9 +155,9 @@ Segítséget a kezelése, akik hozzáférhetnek a erőforrásokat, Azure Active 
 
 | Útmutató a következő cikket: |  |
 |:---:| --- |
-| Az Azure AD hozzáférési felügyeleti funkciókat áttekintése |[Bevezetés az alkalmazásokhoz való hozzáférés kezelése](manage-apps/what-is-access-management.md)<br /><br />[Hozzáférés-kezelés az Azure AD működése](active-directory-manage-groups.md)<br /><br />[Csoportok használata az SaaS-alkalmazásokhoz való hozzáférés kezelése](active-directory-accessmanagement-group-saasapps.md) |
+| Az Azure AD hozzáférési felügyeleti funkciókat áttekintése |[Bevezetés az alkalmazásokhoz való hozzáférés kezelése](manage-apps/what-is-access-management.md)<br /><br />[Hozzáférés-kezelés az Azure AD működése](fundamentals/active-directory-manage-groups.md)<br /><br />[Csoportok használata az SaaS-alkalmazásokhoz való hozzáférés kezelése](active-directory-accessmanagement-group-saasapps.md) |
 | Alkalmazások és a csoportok a önkiszolgáló felügyeletének lehetővé tételéhez |[Önkiszolgáló alkalmazások kezelése](active-directory-self-service-application-access.md)<br /><br />[Önkiszolgáló csoportkezelés](active-directory-accessmanagement-self-service-group-management.md) |
-| Az Azure ad-ben a csoportok beállításával kapcsolatos útmutatás |[Biztonsági csoportok létrehozása](active-directory-groups-create-azure-portal.md)<br /><br />[Egy csoport tulajdonosainak kijelölése](active-directory-accessmanagement-managing-group-owners.md)<br /><br />[A "Minden felhasználók" csoport használata](active-directory-accessmanagement-dedicated-groups.md) |
+| Az Azure ad-ben a csoportok beállításával kapcsolatos útmutatás |[Biztonsági csoportok létrehozása](fundamentals/active-directory-groups-create-azure-portal.md)<br /><br />[Egy csoport tulajdonosainak kijelölése](fundamentals/active-directory-accessmanagement-managing-group-owners.md)<br /><br />[A "Minden felhasználók" csoport használata](active-directory-accessmanagement-dedicated-groups.md) |
 | Dinamikus csoportok segítségével automatikusan az attribútumalapú tagsági szabályokkal csoporttagság feltöltéséhez |[Dinamikus csoporttagság: Speciális szabályok](active-directory-groups-dynamic-membership-azure-portal.md)<br /><br />[Dinamikus csoporttagság hibaelhárítása](active-directory-accessmanagement-troubleshooting.md) |
 
 Csoportalapú hozzáférés Alkalmazáskezelés érhető el [Azure AD alapvető](https://azure.microsoft.com/pricing/details/active-directory/) és [Azure AD Premium](https://azure.microsoft.com/pricing/details/active-directory/). Önkiszolgáló csoportfelügyelet, önkiszolgáló Alkalmazáskezelés és a dinamikus csoportok [Azure AD Premium](https://azure.microsoft.com/pricing/details/active-directory/) szolgáltatásokat.
@@ -205,7 +200,7 @@ Az Azure Active Directory biztosít több jelentései és figyelmeztetései seg�
 Mely jelentések érhetők el az Azure Active Directory különböző kiadásait megjelenítéséhez [ide](active-directory-view-access-usage-reports.md).
 
 ## <a name="see-also"></a>Lásd még
-[Mi az az Azure Active Directory?](active-directory-whatis.md)
+[Mi az az Azure Active Directory?](fundamentals/active-directory-whatis.md)
 
 [Azure Active Directory B2C](https://azure.microsoft.com/services/active-directory-b2c/)
 

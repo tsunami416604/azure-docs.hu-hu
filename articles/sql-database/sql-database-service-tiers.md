@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 06/20/2018
 manager: craigg
 ms.author: carlrab
-ms.openlocfilehash: dda37600dffaf1e8e1c85c9757696f2d8219febb
-ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
+ms.openlocfilehash: 1a5424b69fc70f69359b12beac86060f4e23ff27
+ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36751670"
+ms.lasthandoff: 06/28/2018
+ms.locfileid: "37083991"
 ---
 # <a name="azure-sql-database-purchasing-models-and-resources"></a>Az Azure SQL Database beszerzési modellek és erőforrások 
 
@@ -40,7 +40,7 @@ A következő diagram és táblázat összehasonlítása és két vásárlási m
 
 Egy virtuális core jelenti. a logikai Processzor érhető el, hogy a hardver generációja közül választhat. VCore-alapú alapjául szolgáló vásárlási modell (előzetes verzió) biztosít, a rugalmasságot, vezérlő, az egyéni erőforrás-felhasználás átláthatóság és egy egyszerű módon lefordítani a helyszíni munkaterhelési követelményeinek a felhőbe. Ez a modell méretezési számítási, memória és az alkalmazások és szolgáltatások igényeik alapján tároló lehetővé teszi. A vCore-alapú alapjául szolgáló vásárlási modell (előzetes verzió), az ügyfelek választhat általános célú és üzleti kritikus szolgáltatási szinteket (előzetes verzió) mindkét [adatbázisok egyetlen](sql-database-single-database-scale.md) és [rugalmas készletek](sql-database-elastic-pool.md). 
 
-He vCore alapú alapjául szolgáló vásárlási modell (előzetes verzió) lehetővé teszi egymástól függetlenül válik a számítási és tárolási erőforrások felel meg a helyszíni teljesítmény és ár optimalizálása. Ha az adatbázis vagy a rugalmas készlethez használ több mint 300 DTU átalakítás vCore csökkentheti az költsége. Átválthat a választott API használatával vagy az Azure-portálon az állásidő nélkül. Azonban az átváltási nincs szükség. A DTU alapjául szolgáló vásárlási modell megfelel-e a teljesítményt és üzleti követelményeinek megfelelően, ha Ön továbbra is használja. Ha úgy dönt, hogy a DTU-modellből átalakítása vCore-modell, ki kell jelölni a használatával a következő tapasztalatok teljesítményszintet: minden 100 DTU Standard szint szükséges legalább 1 vCore általános célú réteg; Prémium szinten lévő minden egyes 125 DTU legalább 1 vCore fontos üzleti szint szükséges.
+VCore-alapú alapjául szolgáló vásárlási modell (előzetes verzió) lehetővé teszi egymástól függetlenül válik a számítási és tárolási erőforrások felel meg a helyszíni teljesítmény és ár optimalizálása. Ha az adatbázis vagy a rugalmas készlethez használ több mint 300 DTU átalakítás vCore csökkentheti az költsége. Átválthat a választott API használatával vagy az Azure-portálon az állásidő nélkül. Azonban az átváltási nincs szükség. A DTU alapjául szolgáló vásárlási modell megfelel-e a teljesítményt és üzleti követelményeinek megfelelően, ha Ön továbbra is használja. Ha úgy dönt, hogy a DTU-modellből átalakítása vCore-modell, ki kell jelölni a használatával a következő tapasztalatok teljesítményszintet: minden 100 DTU Standard szint szükséges legalább 1 vCore általános célú réteg; Prémium szinten lévő minden egyes 125 DTU legalább 1 vCore fontos üzleti szint szükséges.
 
 A vCore-alapú alapjául szolgáló vásárlási modell (előzetes verzió), az ügyfelek díj ellenében:
 - Számítási (szolgáltatásréteg + vCores + hardver generációja száma) *

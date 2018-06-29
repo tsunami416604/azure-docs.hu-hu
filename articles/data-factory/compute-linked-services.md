@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 06/06/2018
 ms.author: douglasl
-ms.openlocfilehash: b4e8a2dba65973919d9716655c4fbb4d533b1c78
-ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
+ms.openlocfilehash: 14cb59487788f272533fd7ec7eccf313654bf857
+ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34824931"
+ms.lasthandoff: 06/28/2018
+ms.locfileid: "37082807"
 ---
 # <a name="compute-environments-supported-by-azure-data-factory"></a>Számítási környezetek Azure Data Factory által támogatott
 Ez a cikk ismerteti a különböző számítási környezeteket, melyekkel folyamat vagy átalakítási adatok. Emellett biztosítja az adat-előállító támogatott, ha ezek linking összekapcsolt szolgáltatások konfigurálása (igény szerinti és kapcsolja a saját) különböző konfigurációkkal kapcsolatos részletek számítási környezetek számára egy Azure data factory.
@@ -106,7 +106,7 @@ A következő JSON igény kapcsolódó HDInsight Linux-alapú szolgáltatás hat
 | linkedServiceName            | Az Azure tárolás társított szolgáltatásának történő tárolására és feldolgozására adatok az igény szerinti fürt által használható. A HDInsight-fürt létrehozása az Azure Storage-fiók ugyanabban a régióban. Az Azure HDInsightban korlátozott azon magok száma, amelyek az egyes támogatott Azure-régiókban felhasználhatók. Győződjön meg arról, hogy elegendő core kvóták az adott Azure-régió, hogy megfeleljen a szükséges nagyobbnak. További információkért tekintse meg [hdinsight Hadoop, Spark, Kafka és több fürt beállítása](../hdinsight/hdinsight-hadoop-provision-linux-clusters.md)<p>Jelenleg nem hozható létre, amely egy Azure Data Lake Store használ a tárolási igény szerinti HDInsight-fürtöt. Ha szeretné tárolni az eredményadatok a HDInsight-feldolgozás alatt álló egy Azure Data Lake Store-ból, a másolási tevékenység segítségével az adatok másolása az Azure Blob Storage-ból az Azure Data Lake Store. </p> | Igen      |
 | clusterResourceGroup         | A HDInsight-fürt létrehozása az erőforráscsoportban. | Igen      |
 | a TimeToLive tulajdonság                   | A megengedett üresjárati idő az igény szerinti HDInsight-fürthöz. Meghatározza, mennyi ideig az igény szerinti HDInsight-fürt aktív marad egy tevékenység fut, ha nincsenek a fürt más aktív feladatok befejezése után. A minimális megengedett érték érték 5 perc (00: 05:00).<br/><br/>Például ha egy tevékenység futott 6 percig tart, és az élettartam értéke 5 perc, a fürt marad, a figyelő életben 5 perc, a 6 percnél feldolgozásának a tevékenység futtatása után. Ha egy másik tevékenységfuttatási 6-perc időkeretet, dolgoz fel ugyanabban a fürtben.<br/><br/>Igény szerinti HDInsight fürtök létrehozásával egy (igénybe vehet) drága művelet, ezt a beállítást, mint egy adat-előállító teljesítményének javításával újból felhasználja az igény szerinti HDInsight-fürtök által szükséges Igen használja.<br/><br/>A TimeToLive tulajdonság értékét 0-ra állítja be, ha törölni a fürtöt, amint a tevékenység futtatása befejeződött. Mivel ha a magas érték, a fürt néhány hibaelhárítási bejelentkezést inaktív felfüggesztheti a céllal, de az eredményezhet nagy költségek. Ezért fontos, hogy beállította-e a megfelelő értéket a igényei szerint.<br/><br/>A timetolive tulajdonság értékének megfelelően van beállítva, ha több folyamatok megoszthatja az igény szerinti HDInsight-fürt példányának. | Igen      |
-| clusterType                  | A HDInsight-fürtöt létrehozni típusa. Megengedett értékek: "hadoop" és "külső". Ha nincs megadva, az alapértelmezett érték: hadoop. | Nem       |
+| clusterType                  | A HDInsight-fürtöt létrehozni típusa. Megengedett értékek: "hadoop" és "külső". Ha nincs megadva, az alapértelmezett érték: hadoop. Engedélyezve van a vállalati biztonsági csomag jelenleg nem támogatott | Nem       |
 | verzió:                      | A HDInsight-fürt verziószáma. Ha nincs megadva, az aktuális HDInsight meghatározott alapértelmezett verzióját használja. | Nem       |
 | hostSubscriptionId           | A HDInsight-fürt létrehozásához használt Azure-előfizetése Azonosítóját. Ha nincs megadva, akkor használja az Azure bejelentkezési környezet előfizetés-azonosítója. | Nem       |
 | clusterNamePrefix           | Az előtag HDI-fürt nevét, egy Timestamp típusú automatikusan hozzá lesznek fűzve a fürt nevének végén| Nem       |
@@ -123,6 +123,10 @@ A következő JSON igény kapcsolódó HDInsight Linux-alapú szolgáltatás hat
 
 > [!IMPORTANT]
 > HDInsight Hadoop fürt több verziója, amely telepíthető támogatja. Minden egyes verzió choice hoz létre, egy adott verziójához a Hortonworks Data Platform (HDP) telepítési és összetevők belüli, hogy a terjesztési. A HDInsight támogatott verziók listáját tartja a legújabb Hadoop ökoszisztémájának összetevőit és javításokat frissítése során. Győződjön meg arról, hogy a legfrissebb információk mindig hivatkozik [támogatott HDInsight-verzió és az operációs rendszer típusa](../hdinsight/hdinsight-component-versioning.md#supported-hdinsight-versions) annak érdekében, hogy a HDInsight támogatott verzióját használja. 
+>
+> 
+> [!IMPORTANT]
+> Csatolt services nem támogatja a HBase, interaktív lekérdezés (Hive LLAP), a Storm és vállalati biztonságos (tartományhoz) jelenleg a HDInsight fürtökhöz. 
 >
 > 
 
@@ -295,6 +299,10 @@ Létrehozhat saját HDInsight-fürt regisztrálni a Data Factory kapcsolt Azure 
 > [!IMPORTANT]
 > HDInsight Hadoop fürt több verziója, amely telepíthető támogatja. Minden egyes verzió choice hoz létre, egy adott verziójához a Hortonworks Data Platform (HDP) telepítési és összetevők belüli, hogy a terjesztési. A HDInsight támogatott verziók listáját tartja a legújabb Hadoop ökoszisztémájának összetevőit és javításokat frissítése során. Győződjön meg arról, hogy a legfrissebb információk mindig hivatkozik [támogatott HDInsight-verzió és az operációs rendszer típusa](../hdinsight/hdinsight-component-versioning.md#supported-hdinsight-versions) annak érdekében, hogy a HDInsight támogatott verzióját használja. 
 >
+> [!IMPORTANT]
+> Csatolt services nem támogatja a HBase, interaktív lekérdezés (Hive LLAP), a Storm és vállalati biztonságos (tartományhoz) jelenleg a HDInsight fürtökhöz. 
+>
+> 
 
 ## <a name="azure-batch-linked-service"></a>Azure Batch társított szolgáltatás
 

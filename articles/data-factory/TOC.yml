@@ -1,4 +1,4 @@
-- name: A Data Factory V2 dokumentációja
+- name: Data Factory – dokumentáció
   href: index.yml
 - name: Váltás az 1. verzió dokumentációjára
   href: v1/data-factory-introduction.md
@@ -6,7 +6,7 @@
   items:
     - name: A Data Factory bemutatása
       href: introduction.md
-    - name: Az 1-es és a 2-es verzió összehasonlítása
+    - name: Az aktuális verzió összehasonlítása az 1.-vel
       href: compare-versions.md
 - name: Gyors útmutatók
   expanded: true
@@ -138,6 +138,8 @@
           href: connector-azure-blob-storage.md
         - name: Azure Cosmos DB
           href: connector-azure-cosmos-db.md
+        - name: Azure Data Lake Storage
+          href: connector-azure-data-lake-storage.md
         - name: Azure Data Lake Store
           href: connector-azure-data-lake-store.md
         - name: Azure Database for MySQL
@@ -275,6 +277,8 @@
         - name: Adatok másolása eszköz
           href: copy-data-tool.md
           items: null
+        - name: A Data Lake Storage betöltése
+          href: load-azure-data-lake-storage-gen2.md
         - name: Az SQL Data Warehouse betöltése
           href: load-azure-sql-data-warehouse.md
         - name: A Data Lake Store betöltése

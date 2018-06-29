@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 11/15/2017
 ms.author: sngun
-ms.openlocfilehash: cce1cfc4cf883fcecab0e339177bc70c18e7af0b
-ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
+ms.openlocfilehash: 9365fd70036c8b489efaea42bda9c670182c496c
+ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34798644"
+ms.lasthandoff: 06/28/2018
+ms.locfileid: "37082274"
 ---
 # <a name="perform-azure-cosmos-db-table-api-operations-with-azure-powershell"></a>Az Azure PowerShell Azure Cosmos DB tábla API műveletek végrehajtása 
 
@@ -45,7 +45,7 @@ Miután az Azure PowerShell telepítése vagy frissítése, telepítenie kell a 
 Install-Module AzureRmStorageTable
 ```
 
-Telepítse az Azure Cosmos DB szerelvények helyi PowerShell-parancsmagok használatához. Ehhez útmutatást lásd: [Cosmos DB táblák Azure RM tárolási táblák PowerShell-modul](https://blogs.technet.microsoft.com/paulomarques/2017/05/23/azure-rm-storage-tables-powershell-module-now-includes-support-for-cosmos-db-tables/).
+Telepítse az Azure Cosmos DB szerelvények helyi PowerShell-parancsmagok használatához. Ehhez útmutatást lásd: [Cosmos DB táblák Azure RM tárolási táblák PowerShell-modul](https://blogs.technet.microsoft.com/paulomarques/2017/01/17/working-with-azure-storage-tables-from-powershell/).
 
 A következő gyakorlatokban kipróbálására, egy Azure Cosmos-adatbázis adatbázis-fiók szükséges. Ha még nem rendelkezik egy, hozzon létre egy új Azure Cosmos DB fiók használatával a [Azure-portálon](https://portal.azure.com). Egy új adatbázis-fiók létrehozásához lásd [Azure Cosmos DB: adatbázis-fiók létrehozása](create-table-dotnet.md#create-a-database-account).
 
@@ -88,7 +88,7 @@ A PowerShell használata Azure Cosmos DB fiók lévő táblák nem szerepelhet, 
 
 ## <a name="delete-a-table"></a>Tábla törlése 
 
-PowerShell Azure Cosmos DB törlése táblák nem támogatja. Tábla törlése, keresse fel a [Azure-portálon](https://azure.portal.com), keresse meg a Azure Cosmos DB-fiókot használ, található, és törölni kívánja a táblázatot. 
+PowerShell Azure Cosmos DB törlése táblák nem támogatja. Tábla törlése, keresse fel a [Azure-portálon](https://portal.azure.com), keresse meg a Azure Cosmos DB-fiókot használ, található, és törölni kívánja a táblázatot. 
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 

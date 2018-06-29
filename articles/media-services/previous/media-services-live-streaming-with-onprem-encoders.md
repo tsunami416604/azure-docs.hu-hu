@@ -14,12 +14,12 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 04/12/2017
 ms.author: cenkd;juliako
-ms.openlocfilehash: b01e4498e63ab989b0b78246636cba50ed4f82d6
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: d08ac9f2cbdf98493b3132fa9dd3a3e973576451
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "33943212"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37098817"
 ---
 # <a name="live-streaming-with-on-premises-encoders-that-create-multi-bitrate-streams"></a>Élő Stream továbbítása helyszíni kódolókkal, amely többféle sávszélességű adatfolyamok létrehozása
 
@@ -146,7 +146,7 @@ Csatorna előnézeti végpont (előzetes verzió URL-cím), amelyekkel előzetes
 
 A csatorna létrehozásakor az előnézeti URL-CÍMÉT érheti el. Meg az URL-cím beszerzése a csatorna nem kell lennie a **futtató** állapotát. A csatorna indítása adatok bevitele után megtekintheti az adatfolyam.
 
-Jelenleg az előzetes adatfolyam továbbítható csak a töredezett MP4) (Smooth Streaming) formátumban, függetlenül a megadott bemeneti típus. Használhatja a [Smooth Streaming figyelő](http://smf.cloudapp.net/healthmonitor) player a smooth stream teszteléséhez. Egy player, amely az adatfolyam megtekintéséhez az Azure portálon is használható.
+Jelenleg az előzetes adatfolyam továbbítható csak a töredezett MP4) (Smooth Streaming) formátumban, függetlenül a megadott bemeneti típus. Használhatja a [Smooth Streaming figyelő](http://playready.directtaps.net/smoothstreaming/) player a smooth stream teszteléséhez. Egy player, amely az adatfolyam megtekintéséhez az Azure portálon is használható.
 
 #### <a name="allowed-ip-addresses"></a>Engedélyezett IP-címek
 Megadhatja, hogy az IP-címek, amelyek számára engedélyezett az előnézeti végpont való kapcsolódáshoz. Ha nincs megadva IP-cím, IP-címeket engedélyezett. Az alábbi engedélyezett IP-címet adhat meg:

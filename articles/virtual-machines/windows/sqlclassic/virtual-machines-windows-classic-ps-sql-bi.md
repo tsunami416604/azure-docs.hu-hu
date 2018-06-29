@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 05/30/2017
 ms.author: maghan
-ms.openlocfilehash: e9d43d46f1979e985a5da96fda608eec55ad7830
-ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
-ms.translationtype: HT
+ms.openlocfilehash: a41dcd5f2c93e5c1279e1c7511e10e6d72574b3b
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37031056"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37098746"
 ---
 # <a name="sql-server-business-intelligence-in-azure-virtual-machines"></a>Az SQL Server Business Intelligence használata Azure-beli virtuális gépeken
 > [!IMPORTANT] 
@@ -63,7 +63,7 @@ A Microsoft Azure virtuális gép számos olyan rendszerkép található, amely 
 
 Kiadásainak és az SQL Server által támogatott szolgáltatások további információkért tekintse át a következőket:
 
-* [SQL Server Editions](https://www.microsoft.com/server-cloud/products/sql-server-editions/#fbid=Zae0-E6r5oh)
+* [SQL Server Editions](https://www.microsoft.com/sql-server/sql-server-2017-editions)
 * [Az SQL Server 2016 kiadásai által támogatott szolgáltatások](https://msdn.microsoft.com/library/cc645993.aspx)
 
 ### <a name="bi-features-installed-on-the-sql-server-virtual-machine-gallery-images"></a>Üzleti INTELLIGENCIA szolgáltatásokat az SQL Server virtuálisgép-katalógusban lemezképeket telepítve

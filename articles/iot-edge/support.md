@@ -8,12 +8,12 @@ ms.date: 6/21/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: a6bf918428312c511505304bd23b68cd19e46471
-ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
+ms.openlocfilehash: 0a5cbabf8080efd1ae25ba151a1be339e8f5cad2
+ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37036189"
+ms.lasthandoff: 06/28/2018
+ms.locfileid: "37081754"
 ---
 # <a name="azure-iot-edge-support"></a>Az Azure IoT Edge-támogatás
 Nincsenek többféle módon, hogy az Azure IoT peremhálózati termék támogatása.
@@ -33,8 +33,8 @@ Az Azure IoT peremhálózati futtatható tárolók; a legtöbb operációs rends
 * a telepítőcsomagok biztosít
 
 Általánosan elérhető
-* Ubuntu 18.04
-* Ubuntu 16.04
+* Ubuntu Server 18.04
+* Ubuntu Server 16.04
 * A stretch Raspbian
 
 Nyilvános előzetes verzió
@@ -47,9 +47,9 @@ Nyilvános előzetes verzió
 * Microsoft végzett tesztelése a platformokon alkalmi vagy egy partner sikeresen a platformon futó Azure IoT peremhálózati tudja
 * A más platformok telepítőcsomagok működnek ezek a rendszerek
 
-Ubuntu Server 18.04
+Ubuntu 18.04
 
-Ubuntu Server 16.04
+Ubuntu 16.04
 
 Szél folyó 8
 

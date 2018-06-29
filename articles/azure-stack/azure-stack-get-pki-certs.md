@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 05/18/2018
 ms.author: mabrigg
 ms.reviewer: ppacent
-ms.openlocfilehash: cfac573bc9f1bdec3fd884f8090e11514f1e93b3
-ms.sourcegitcommit: 680964b75f7fff2f0517b7a0d43e01a9ee3da445
+ms.openlocfilehash: b5adc1bb5a5aae96f37cc312588aa71e57d8342e
+ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34604709"
+ms.lasthandoff: 06/28/2018
+ms.locfileid: "37083226"
 ---
 # <a name="azure-stack-certificates-signing-request-generation"></a>Az Azure verem tanúsítványok aláírási kérelem létrehozása
 
@@ -30,8 +30,6 @@ A Azure verem készültségi-ellenőrző eszközt (AzsReadinessChecker) a követ
 
  - **Standard tanúsítványkérelmek**  
     A következők szerint kérelem [PKI-tanúsítványok létrehozása az Azure verem üzembe helyezéséhez](azure-stack-get-pki-certs.md).
- - **Kérelemtípus**  
-    Megadja, függetlenül attól, a tanúsítvány-aláírási kérelem egyetlen kérelem, vagy több kérést.
  - **Platform,--szolgáltatás**  
     Opcionálisan a platform,--szolgáltatás (PaaS) nevek a megadott tanúsítványok kérése [Azure verem nyilvános kulcsokra épülő infrastruktúrát tanúsítványkövetelmények - választható PaaS tanúsítványokat](azure-stack-pki-certs.md#optional-paas-certificates).
 
@@ -98,22 +96,22 @@ Használja ezeket a lépéseket az Azure verem PKI-tanúsítványok ellenőrzés
     > [!note]  
     > `<regionName>.<externalFQDN>` alapját adja meg, amely minden külső DNS-nevek Azure verem létrejönnek, ebben a példában, a portál lenne `portal.east.azurestack.contoso.com`.  
 
-6. A tulajdonos alternatív neveket egyetlen tanúsítványkérelem létrehozása:
+6. Tanúsítvány-aláírási kérelem minden DNS-név létrehozásához:
+
+    ```PowerShell  
+    Start-AzsReadinessChecker -RegionName $regionName -FQDN $externalFQDN -subject $subjectHash -OutputRequestPath $OutputDirectory -IdentitySystem $IdentitySystem
+    ````
+
+    Tartalmazza a PaaS szolgáltatások adja meg a kapcsoló ```-IncludePaaS```
+
+7. Másik lehetőségként a fejlesztési és tesztelési célú környezetekben. Létrehozásához több alternatív tulajdonosnevek egyetlen tanúsítványkérelemben hozzáadása **- RequestType SingleCSR** paraméter és érték (**nem** éles környezetekhez ajánlott):
 
     ```PowerShell  
     Start-AzsReadinessChecker -RegionName $regionName -FQDN $externalFQDN -subject $subjectHash -RequestType SingleCSR -OutputRequestPath $OutputDirectory -IdentitySystem $IdentitySystem
     ````
 
     Tartalmazza a PaaS szolgáltatások adja meg a kapcsoló ```-IncludePaaS```
-
-7. Egyedi tanúsítvány-aláírási kérelem minden DNS-név létrehozásához:
-
-    ```PowerShell  
-    Start-AzsReadinessChecker -RegionName $regionName -FQDN $externalFQDN -subject $subjectHash -RequestType MultipleCSR -OutputRequestPath $OutputDirectory -IdentitySystem $IdentitySystem
-    ````
-
-    Tartalmazza a PaaS szolgáltatások adja meg a kapcsoló ```-IncludePaaS```
-
+    
 8. Tekintse át a kimenetet:
 
     ````PowerShell  

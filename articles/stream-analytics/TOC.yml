@@ -10,6 +10,8 @@
       href: stream-analytics-quick-create-portal.md
     - name: Feladat létrehozása – PowerShell
       href: stream-analytics-quick-create-powershell.md
+    - name: Feladat létrehozása – Visual Studio
+      href: stream-analytics-quick-create-vs.md
 - name: Oktatóanyagok
   items:
     - name: 1 – Feladat létrehozása/kezelése

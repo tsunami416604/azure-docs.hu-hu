@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/14/2018
 ms.author: sngun
-ms.openlocfilehash: ed69d4de56d23210cc9133d74ab81530f924b5ae
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: 769d530d85199e3f38890589e3719ba35f7cf5d6
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35261559"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37097971"
 ---
 # <a name="azure-cosmos-db-faq"></a>Az Azure Cosmos DB – gyakori kérdések
 ## <a name="azure-cosmos-db-fundamentals"></a>Az Azure Cosmos DB – alapok
@@ -70,7 +70,7 @@ Igen, regisztrálhat egy időben korlátozott fiók díjmentesen, elkötelezetts
 
 Ha most ismerkedik az Azure-ba, a regisztrálhat egy [ingyenes Azure-fiókot](https://azure.microsoft.com/free/), ami 30 nap és, és az összes Azure-szolgáltatás kipróbálására. Ha a Visual Studio-előfizetéssel rendelkezik, akkor jogosultak is a [ingyenes Azure-krediteket](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) bármely Azure-szolgáltatáshoz felhasználhat. 
 
-Használhatja a [Azure Cosmos DB emulátor](local-emulator.md) fejlesztéséhez és teszteléséhez az alkalmazás helyileg szabad, Azure-előfizetés létrehozása nélkül. Ha elégedett az alkalmazás az Azure Cosmos DB emulátorban alakulását, átválthat a felhőben Azure Cosmos DB fiókkal.
+Használhatja a [Azure Cosmos DB emulátor](local-emulator.md) fejlesztéséhez és teszteléséhez az alkalmazás helyileg szabad, Azure-előfizetés létrehozása nélkül. Amikor már elégedett az alkalmazás működésével az Azure Cosmos DB Emulatorban, átválthat az Azure Cosmos DB-fiók használatára a felhőben.
 
 ### <a name="how-can-i-get-additional-help-with-azure-cosmos-db"></a>Hogyan kaphatok további segítséget a Azure Cosmos DB?
 
@@ -80,7 +80,7 @@ Műszaki kérdés felvetéséhez, továbbá hogy egyik ezek két kérdést, és 
 
 Kérjen új funkciókat, hozzon létre egy új kérést a [Uservoice](https://feedback.azure.com/forums/263030-azure-cosmos-db).
 
-A fiókjához megoldani a problémát, hogy a fájl egy [támogatási kérelem](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest) az Azure portálon.
+Ha a fiókjával van probléma, nyújtson be [támogatási kérelmet](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest) az Azure Portalon.
 
 Egyéb kérdések küldheti el a csapatának [ askcosmosdb@microsoft.com ](mailto:askcosmosdb@microsoft.com); Ez azonban nem a technikai támogatási szolgálathoz alias. 
 
@@ -201,7 +201,7 @@ MongoDB gyakori hibakódokat mellett a MongoDB API a saját konkrét hibakódok 
 | Hiba               | Kód  | Leírás  | Megoldás  |
 |---------------------|-------|--------------|-----------|
 | TooManyRequests     | 16500 | A felhasznált kérelem egységek száma a gyűjtemény a kiépített kérelem-egység arány meghaladta, és már elindította. | Vegye figyelembe, hogy a hozzárendelt egy tároló vagy egy lemezkészlet tárolók újra az Azure portál vagy újrapróbálása átviteli méretezés. |
-| ExceededMemoryLimit | 16501 | A több-bérlős szolgáltatásként a művelet túllépte az ügyfél memória allokációs arányt. | Csökkentse a műveletet az szigorúbb feltételek hatókörét, vagy forduljon a támogatási szolgálathoz a [Azure-portálon](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade). <br><br>Példa:  *&nbsp; &nbsp; &nbsp; &nbsp;db.getCollection('users').aggregate ([<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{$match: {név: "ADAM"}}, <br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;{$sort: {kor: -1}}<br>&nbsp;&nbsp;&nbsp;&nbsp;])*) |
+| ExceededMemoryLimit | 16501 | A több-bérlős szolgáltatásként a művelet túllépte az ügyfél memória allokációs arányt. | Csökkentse a műveletet az szigorúbb feltételek hatókörét, vagy forduljon a támogatási szolgálathoz a [Azure-portálon](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade). <br><br>Példa:  *&nbsp; &nbsp; &nbsp; &nbsp;db.getCollection('users').aggregate ([<br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;{$match: {név: "ADAM"}}, <br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;{$sort: {kor: -1} }<br>&nbsp;&nbsp;&nbsp;&nbsp;])*) |
 
 ## <a name="develop-with-the-table-api"></a>A tábla API fejlesztése
 
@@ -280,9 +280,6 @@ Az Azure portál segítségével keresse meg az adatokat. A tábla API-kódban v
 Használhatja a [Azure Tártallózó](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer).
 
 Eszközök igénybe vehet egy kapcsolati karakterláncot a megadott formátumban rugalmassága korábban képes támogatni az új tábla API-t. Egy tábla eszközök listája a a [Azure Storage ügyféleszközök elől](../storage/common/storage-explorers.md) lap. 
-
-### <a name="do-powershell-or-azure-cli-work-with-the-table-api"></a>PowerShell vagy Azure CLI működnek tábla API-val?
-Támogatott [PowerShell](table-powershell.md). Azure parancssori felületi támogatása jelenleg nem áll rendelkezésre.
 
 ### <a name="is-the-concurrency-on-operations-controlled"></a>Az a feldolgozási műveletek ellenőrzött?
 Igen, egyidejű hozzáférések optimista ETag mechanizmus segítségével valósul meg. 
@@ -410,7 +407,7 @@ Nincs. Nincs meglévő Azure Table storage-ügyfeleknek az ár nem változik.
 ### <a name="how-is-the-price-calculated-for-the-table-api"></a>Hogyan kiszámítása a tábla API-hoz. az ár? 
 Az ár attól függ, hogy a lefoglalt TableThroughput. 
 
-### <a name="how-do-i-handle-any-throttling-on-the-tables-in-table-api-offering"></a>Hogyan kezelik, a sávszélesség-szabályozás a táblák tábla API ajánlatban? 
+### <a name="how-do-i-handle-any-rate-limiting-on-the-tables-in-table-api-offering"></a>Hogyan kezelik, bármely sebessége korlátozza a táblák tábla API ajánlatban? 
 Ha a kérelem meghaladja a kapacitását a létesített átviteli sebesség a mögöttes tároló vagy egy tárolók, hibaüzenetet kap, és az SDK újrapróbálkozik a hívás úgy, hogy az újrapróbálkozási házirendet alkalmazza.
 
 ### <a name="why-do-i-need-to-choose-a-throughput-apart-from-partitionkey-and-rowkey-to-take-advantage-of-the-table-api-offering-of-azure-cosmos-db"></a>Miért kell választania egy átviteli sebesség előnyeit az Azure Cosmos DB tábla API elérhető PartitionKey és RowKey?

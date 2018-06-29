@@ -11,15 +11,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
+ms.component: protection
 ms.date: 04/28/2017
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: 6e14d91eae367ef62d1ff2e4cb6ddeb47c9fbbea
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: 135c789dc6e41e07bb939ece679756c8c42de2d1
+ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35261015"
+ms.lasthandoff: 06/28/2018
+ms.locfileid: "37085283"
 ---
 # <a name="approvals"></a>Approvals
 
@@ -40,27 +41,27 @@ A private Preview verziójára a következő szituációkat ismerteti:
 
 **A kiemelt szerepkör rendszergazda (PRA), a következőket teheti:**
 
--   [Egyes szerepkörök jóváhagyás engedélyezése](#enable-approval-for-specific-roles)
+-   [egyes szerepkörök jóváhagyás engedélyezése](#enable-approval-for-specific-roles)
 
 -   [Adja meg a jóváhagyó felhasználók és/vagy a csoportok kérelmek jóváhagyása](#specify-approver-users-and/or-groups-to-approve-requests)
 
--   [Minden kiemelt szerepkört a kérelem és a jóváhagyási előzményeinek megtekintése](#view-request-and-approval-history-for-all-privileged-roles)
+-   [minden kiemelt szerepkört a kérelem és a jóváhagyási előzményeinek megtekintése](#view-request-and-approval-history-for-all-privileged-roles)
 
 **Egy kijelölt jóváhagyó, mint a következő műveletek végezhetők el:**
 
--   [Függőben lévő jóváhagyások (kérelmek) megtekintése](#view-pending-approvals-requests)
+-   [függőben lévő jóváhagyások (kérelmek) megtekintése](#view-pending-approvals-requests)
 
--   [Jóváhagyhatja vagy elutasíthatja az (egyetlen és tömeges) szerepkör jogosultságszint-emelési kérések](#approve-or-reject-requests-for-role-elevation-single-and/or-bulk)
+-   [jóváhagyhatja vagy elutasíthatja az (egyetlen és tömeges) szerepkör jogosultságszint-emelési kérések](#approve-or-reject-requests-for-role-elevation-single-and/or-bulk)
 
 -   [Adja meg a jóváhagyási elutasítási indokát](#provide-justification-for-my-approval/rejection) 
 
 **Jogosult szerepkör felhasználóként a következő műveletek végezhetők el:**
 
--   [A jóváhagyást igénylő szerepkört aktiválási kérelmeinek megadása](#request-activation-of-a-role-that-requires-approval)
+-   [a jóváhagyást igénylő szerepkört aktiválási kérelmeinek megadása](#request-activation-of-a-role-that-requires-approval)
 
--   [Aktiválja a kérelem állapotának megtekintése](#view-the-status-of-your-request-to-activate)
+-   [aktiválja a kérelem állapotának megtekintése](#view-the-status-of-your-request-to-activate)
 
--   [A feladat befejezése az Azure AD, ha az aktiválás jóváhagyva](#complete-your-task-in-azure-ad-if-activation-was-approved)
+-   [a feladat befejezése az Azure AD, ha az aktiválás jóváhagyva](#complete-your-task-in-azure-ad-if-activation-was-approved)
 
 ### <a name="navigation"></a>Navigálás
 

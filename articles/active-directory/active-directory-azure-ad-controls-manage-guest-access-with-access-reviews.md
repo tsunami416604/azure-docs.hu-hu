@@ -3,9 +3,9 @@ title: Vendég kezelésére, az Azure ad-vel hozzáférni értékelést |} Micro
 description: Vendégfelhasználók kezelése egy csoportba, vagy az alkalmazás Azure Active Directory hozzáférési értékelést rendelve
 services: active-directory
 documentationcenter: ''
-author: markwahl-msft
+author: rolyon
 manager: mtillman
-editor: ''
+editor: markwahl-msft
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -14,12 +14,13 @@ ms.topic: article
 ms.component: compliance-reports
 ms.date: 06/21/2018
 ms.author: rolyon
-ms.openlocfilehash: 8eb7e4bc79ee50982dae5751968eb732ef39e00d
-ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
+ms.reviewer: mwahl
+ms.openlocfilehash: d593a59c9e190eda73497aef09d4259d0947eb24
+ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37017780"
+ms.lasthandoff: 06/28/2018
+ms.locfileid: "37085106"
 ---
 # <a name="manage-guest-access-with-azure-ad-access-reviews"></a>Az Azure ad-val vendég-hozzáférés kezelése értékelést eléréséhez
 

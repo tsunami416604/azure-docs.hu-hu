@@ -9,15 +9,15 @@ ms.service: sql-database
 ms.custom: business continuity
 ms.topic: conceptual
 ms.workload: On Demand
-ms.date: 04/04/2018
+ms.date: 06/27/2018
 ms.author: sashan
 ms.reviewer: carlrab
-ms.openlocfilehash: 9149405e2778557a94815812fdf4966d38a3149c
-ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
+ms.openlocfilehash: 18c162e03030fc4277fa0a7b3e953bf780574a21
+ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/21/2018
-ms.locfileid: "36308455"
+ms.lasthandoff: 06/28/2018
+ms.locfileid: "37084960"
 ---
 # <a name="overview-of-business-continuity-with-azure-sql-database"></a>Az Azure SQL Database üzletmenet-folytonossági funkcióinak áttekintése
 
@@ -40,7 +40,7 @@ Az alábbi táblázat összehasonlítja a Beszúrása és a helyreállítási Id
 
 SQL-adatbázis automatikusan elvégzi az adatbázis teljes biztonsági mentés hetente kombinációja, a különbözeti adatbázis óránkénti, és a tranzakció jelentkezhetnek biztonsági mentések minden öt - tíz perc az üzleti adatvesztés elleni védelméhez. Használata esetén a [alapjául szolgáló vásárlási modell DTU-alapú](sql-database-service-tiers-dtu.md), majd a biztonsági mentése az a Standard és prémium szolgáltatáscsomagja és az adatbázisok alapszintű rétegben 7 nap-adatbázisok 35 napon vannak tárolva RA-GRS-tároló. Ha a szolgáltatásszint megőrzési időszaka nem felel meg az üzleti igényeinek, a megőrzési időszak növelése érdekében [váltson szolgáltatásszintet](sql-database-single-database-scale.md). Használata esetén a [vCore-alapú alapjául szolgáló vásárlási modell (előzetes verzió)](sql-database-service-tiers-vcore.md), a biztonsági mentések megőrzési konfigurálható mentése 35 nap az általános célú és a kritikus fontosságú üzleti rétegeihez. Az adatbázis teljes és különbségi biztonsági másolatai emellett replikálva vannak egy [párosított adatközpontba](../best-practices-availability-paired-regions.md) az adatközpont-leállás hatásaival szembeni védelem érdekében. További információkért lásd: [automatikus mentését](sql-database-automated-backups.md).
 
-Ha a maximális támogatott PITR megőrzési időtartam nem elegendő az alkalmazáshoz, a hosszú távú megőrzési (LTR) házirendet az adatbázis(ok) konfigurálásával bővítheti. További információkért lásd: [Hosszú távú megőrzés](sql-database-long-term-retention.md).
+Ha a maximális támogatott pont időponthoz kötött visszaállítás (PITR) megőrzési időtartam nem elegendő az alkalmazáshoz, kiterjesztheti a hosszú távú megőrzési (LTR) házirendet az adatbázis(ok) konfigurálásával. További információkért lásd: [automatikus biztonsági mentés](sql-database-automated-backups.md) és [hosszú távú biztonsági másolatok megőrzésének](sql-database-long-term-retention.md).
 
 Az adatbázis automatikus biztonsági másolataiból helyreállíthatja az adatbázist a különféle zavaró eseményeket követően, akár az adatközponton belül, akár egy másik adatközpontba. Az adatbázis automatikus biztonsági másolatai használatakor a becsült helyreállítási idő több tényezőtől függ, többek között attól, hogy hány adatbázis helyreállítása zajlik egyidejűleg a régióban, az adatbázis méretétől, a tranzakciós napló méretétől, és a hálózati sávszélességtől. A helyreállítási idő az általában 12 óránál kevesebb. Nagyon nagy méretű vagy aktív adatbázis helyreállítása hosszabb ideig is eltarthat. A helyreállítási idő kapcsolatos további tudnivalókért lásd: [adatbázis-helyreállítási idő](sql-database-recovery-using-backups.md#recovery-time). Ha egy másik adatrégióba végzi a helyreállítást, az esetleges adatvesztés legfeljebb 1 óra lehet az adatbázis óránkénti különbségi biztonsági másolatai georedundáns tárolásának köszönhetően.
 

@@ -9,12 +9,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: sngun
-ms.openlocfilehash: 4f548e180ca315013d5ca91118041cac2e622520
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: b161fad822804ed0b2a6c7ad5315eca45984b19d
+ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34611449"
+ms.lasthandoff: 06/28/2018
+ms.locfileid: "37081489"
 ---
 # <a name="how-to-distribute-data-globally-with-azure-cosmos-db"></a>Globális adatok Azure Cosmos DB terjesztése
 Azure a széles körű – folyamatosan bővülő, és egy globális erőforrásigényét tért 50 + földrajzi régiók között. A globális jelenlét, az Azure biztosít a fejlesztők differenciált képességeit egyik létre, telepíthetnek és könnyen globálisan elosztott alkalmazások kezelésére képes. 
@@ -92,7 +92,7 @@ Az automatikus és manuális feladatátvételi lehetőségeket jelenleg az adatb
 ### <a id="MultiHomingAPIs"></a>Az Azure Cosmos DB több homing
 Azure Cosmos-adatbázis lehetővé teszi egy adatbázist vagy interakciót *logikai* (régió-független) vagy *fizikai* (régióspecifikus) végpontok. Logikai végpontok használata biztosítja, hogy az alkalmazás átlátható módon lehet többhelyű feladatátvétel. Az utóbbi egy fizikai végpont olvasások átirányítja az alkalmazásba részletesebb felügyeletét biztosítja, és írja az adott régióban.
 
-Az írásvédett beállítások konfigurálásával kapcsolatos információkért a [SQL API](../cosmos-db/tutorial-global-distribution-sql-api.md), [Gremlin API](../cosmos-db/tutorial-global-distribution-graph.md), [tábla API](../cosmos-db/tutorial-global-distribution-table.md), és [MongoDB API](../cosmos-db/tutorial-global-distribution-mongodb.md) a Ezek a cikkek.
+Az írásvédett beállítások konfigurálásával kapcsolatos információkért a [SQL API](../cosmos-db/tutorial-global-distribution-sql-api.md), [tábla API](../cosmos-db/tutorial-global-distribution-table.md), és [MongoDB API](../cosmos-db/tutorial-global-distribution-mongodb.md) a cikkeiben.
 
 ### <a id="TransparentSchemaMigration"></a>Átlátható és konzisztens legyen az adatbázis-séma- és index áttelepítése 
 Azure Cosmos-adatbázis található teljesen [séma-független](http://www.vldb.org/pvldb/vol8/p1668-shukla.pdf). Az adatbázismotor egyedi kialakításának automatikusan lehetővé teszi, hogy Azure Cosmos adatbázis, és szinkron módon index adatfeldolgozást, akkor az adatok anélkül, hogy semmilyen sémát, illetve másodlagos indexek a felhasználótól. Ez lehetővé teszi, hogy az globálisan elosztott alkalmazás gyorsan többször aggódni az adatbázisban séma- és index áttelepítési vagy összehangolása a sémamódosítások több fázisban alkalmazás végrehajtása nélkül. Az Azure Cosmos DB biztosítja, hogy az, hogy Ön kifejezetten tett házirendek indexelő módosításait nem eredményez teljesítmény vagy a rendelkezésre állási teljesítménycsökkenést.  

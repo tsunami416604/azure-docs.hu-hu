@@ -9,14 +9,14 @@ ms.component: luis
 ms.topic: article
 ms.date: 06/11/2018
 ms.author: v-geberr
-ms.openlocfilehash: 20950ced66497fb0dc96365975b37f244f677ce3
-ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
-ms.translationtype: MT
+ms.openlocfilehash: 37d67bef7712012a95543041744706b240b16e2d
+ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36266379"
+ms.lasthandoff: 06/28/2018
+ms.locfileid: "37085497"
 ---
-# <a name="use-prebuilt-intents-and-entities-to-handle-common-intents-and-data"></a>Előre elkészített leképezések és entitások használata közös leképezések és adatok kezelése
+# <a name="tutorial-2-add-prebuilt-intents-and-entities"></a>Oktatóanyag: 2. Előre összeállított szándékok és entitások hozzáadása
 Előre elkészített leképezések és entitások hozzáadása az emberi erőforrások gyors üzembe helyezés alkalmazás leképezési előrejelzés és az adatok kinyerése gyors eléréséhez. 
 
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
@@ -28,16 +28,16 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 * LUIS lekérdezése, és előrejelzéses válaszideje
 
 ## <a name="before-you-begin"></a>Előkészületek
-Ha nem rendelkezik az emberi erőforrások alkalmazásból a [egyéni tartomány](luis-quickstart-intents-only.md) gyors üzembe helyezés, [importálása](create-new-app.md#import-new-app) a JSON-kódot az új alkalmazás a [LUIS] [ LUIS] webhely , a a [LUIS-minták](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/quickstarts/custom-domain-intent-only-HumanResources.json) Github-tárházban.
+Ha nem rendelkezik a [emberi erőforrások](luis-quickstart-intents-only.md) alkalmazást, az előző oktatóanyag [importálása](create-new-app.md#import-new-app) a JSON-kódot az új alkalmazás a [LUIS](luis-reference-regions.md#luis-website) webhely, az a [LUIS-minták ](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/quickstarts/custom-domain-intent-only-HumanResources.json) Github-tárházban.
 
-Ha meg szeretné tartani az eredeti HR-alkalmazást, a verzió klónozza a a [beállítások](luis-how-to-manage-versions.md#clone-a-version) lapon, és adjon neki nevet `prebuilts`. A Klónozás használata számára, hogy a különböző LUIS szolgáltatásai nem befolyásolja az eredeti verzió kiváló módja. 
+Ha meg szeretné tartani az eredeti Emberi erőforrások alkalmazást, klónozza a [Settings](luis-how-to-manage-versions.md#clone-a-version) (Beállítások) lapon a verziót, és adja neki a következő nevet: `prebuilts`. A klónozás nagyszerű mód, hogy kísérletezhessen a különböző LUIS-funkciókkal anélkül, hogy az az eredeti verzióra hatással lenne. 
 
 ## <a name="add-prebuilt-intents"></a>Előre elkészített leképezések hozzáadása
 LUIS nyújt segítséget az általános felhasználói céljaira számos előre elkészített leképezések.  
 
-1. Győződjön meg arról, hogy az alkalmazás megtalálható a **Build** LUIS szakasza. Ez a szakasz a választásával módosíthatja **Build** felső, jobb gombbal az egérrel a menüsoron. 
+1. Győződjön meg arról, hogy az alkalmazás megtalálható a **Build** LUIS szakasza. Ha erre a szakaszra szeretne lépni, válassza a jobb felső menüsávon a **Build** (Létrehozás) elemet. 
 
-    [ ![Képernyőfelvétel a LUIS app Build hightlighted felső, jobb oldali navigációs sávon a](./media/luis-tutorial-prebuilt-intents-and-entities/first-image.png)](./media/luis-tutorial-prebuilt-intents-and-entities/first-image.png#lightbox)
+    [ ![Képernyőfelvétel a LUIS-alkalmazásról a kiemelt Létrehozás elemmel a jobb felső navigációs sávon](./media/luis-tutorial-prebuilt-intents-and-entities/first-image.png)](./media/luis-tutorial-prebuilt-intents-and-entities/first-image.png#lightbox)
 
 2. Válassza ki **előre elkészített tartomány leképezés hozzáadása**. 
 
@@ -71,20 +71,20 @@ LUIS számos előre elkészített entitásokat biztosít a közös adatok kinyer
     ![Szám válassza ki az előre elkészített entitások párbeszédpanel képernyőképe](./media/luis-tutorial-prebuilt-intents-and-entities/select-prebuilt-entities.png)
 
 ## <a name="train-and-publish-the-app"></a>A vonat és az alkalmazás közzététele
-1. A jobb felső részén a LUIS webhelye, jelölje ki a **vonat** gombra. 
+1. A LUIS-webhely jobb felső részén kattintson a **Train** (Betanítás) gombra. 
 
     ![Vonat gomb](./media/luis-quickstart-intents-only/train-button.png)
 
-    Képzési befejeződött, amikor megjelenik a zöld állapotsor sikeres erősítse meg a webhely elején.
+    A betanítás akkor van kész, ha a webhely tetején megjelenik a sikerességet jelző zöld állapotsáv.
 
     ![Betanított állapotsor](./media/luis-quickstart-intents-only/trained.png)
 
-2. A felső, jobb oldalán a LUIS webhelyen, válassza ki a **közzététel** gombra kattintva jelenítse meg a közzététele. Az éles tárolóhelyre alapértelmezettként van beállítva. Válassza ki a **közzététel** által az éles tárhely választott gombra. A közzététel befejeződött, amikor megjelenik a zöld állapotsor sikeres erősítse meg a webhely elején.
+2. A felső, jobb oldalán a LUIS webhelyen, válassza ki a **közzététel** gombra kattintva jelenítse meg a közzététele. Az éles tárolóhelyre alapértelmezettként van beállítva. Válassza ki a **közzététel** által az éles tárhely választott gombra. A közzététel akkor van kész, ha a webhely tetején megjelenik a sikerességet jelző zöld állapotsáv.
 
     Nem kell létrehoznia egy LUIS kulcsot az Azure portálon közzététele előtt, vagy a végpont URL-cím tesztelése előtt. Minden LUIS app tartalomkészítéshez szabad alapszintű kulccsal rendelkezik. Biztosít korlátlan szerzői és egy [néhány végpont találatok](luis-boundaries.md#key-limits). 
 
 ## <a name="query-endpoint-with-an-utterance"></a>Egy utterance lekérdezés végpont
-Az a **közzététel** lapon jelölje be a **végpont** hivatkozás az oldal alján. Ez a művelet egy másik böngészőablakban megnyitja a címsorba a végpont URL-címet. Nyissa meg az URL-címet a cím végén, és adja meg `I want to cancel on March 3`. Az utolsó lekérdezési karakterlánc-paraméter `q`, a utterance **lekérdezés**. 
+A **Publish** (Közzététel) lapon kattintson a lap alján található **Endpoint** (Végpont) hivatkozásra. Ez a művelet megnyit egy másik böngészőablakot, amelynek címsorában a végpont URL-címe látható. Lépjen az URL-cím végéhez, és írja be a következőt: `I want to cancel on March 3`. Az utolsó lekérdezési karakterlánc-paraméter `q`, a utterance **lekérdezés**. 
 
 Az eredmény előre jelezni az Utilities.Cancel leképezés, és a 3. március dátumát és 3-as számú kibontott. 
 
@@ -167,8 +167,6 @@ Egyszerűen és gyorsan hozzá előre elkészített leképezések és entitások
 
 ## <a name="next-steps"></a>További lépések
 
-[További tudnivalók az entitások](luis-concept-entity-types.md). 
+> [!div class="nextstepaction"]
+> [A reguláris kifejezésnek entitás hozzáadása az alkalmazáshoz](luis-quickstart-intents-regex-entity.md)
 
-<!--References-->
-[LUIS]: https://docs.microsoft.com/azure/cognitive-services/luis/luis-reference-regions#luis-website
-[LUIS-regions]: https://docs.microsoft.com/azure/cognitive-services/luis/luis-reference-regions#publishing-regions

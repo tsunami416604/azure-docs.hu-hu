@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: richagi
-ms.openlocfilehash: 226400c6da5db589db6ce2f1887c3e96cf9e1f14
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: 2b006976aef59c55ccb51362e05ceb4275602fd1
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2018
-ms.locfileid: "33869869"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37096492"
 ---
 # <a name="frequently-asked-questions-about-azure-multi-factor-authentication"></a>Azure multi-factor Authentication kapcsolatos gyakori kérdések
 
@@ -131,7 +131,7 @@ Jogosulatlan hozzáférés elkerülése érdekében törölje a felhasználó al
 
 **K: Mit tegyek, ha a felhasználó nem jelentkezhet be böngészőn kívüli alkalmazásokat?**
 
-Ha a szervezet továbbra is használja a hagyományos, és [alkalmazásjelszók használatával engedélyezett](howto-mfa-mfasettings.md#app-passwords), akkor a felhasználók nem jelentkezhetnek be a régi ügyfelek, a felhasználónév és jelszó. Ehelyett szükségük [állítson be alkalmazásjelszót](./../../multi-factor-authentication/end-user/multi-factor-authentication-end-user-app-passwords.md). A felhasználók (Törlés) törölje a bejelentkezési adatait, indítsa újra az alkalmazást, és jelentkezzen be a felhasználónevét és *alkalmazásjelszót* helyett a rendszeres jelszavát.
+Ha a szervezet továbbra is használja a hagyományos, és [alkalmazásjelszók használatával engedélyezett](howto-mfa-mfasettings.md#app-passwords), akkor a felhasználók nem jelentkezhetnek be a régi ügyfelek, a felhasználónév és jelszó. Ehelyett szükségük [állítson be alkalmazásjelszót](end-user/current/multi-factor-authentication-end-user-app-passwords.md). A felhasználók (Törlés) törölje a bejelentkezési adatait, indítsa újra az alkalmazást, és jelentkezzen be a felhasználónevét és *alkalmazásjelszót* helyett a rendszeres jelszavát.
 
 Ha a szervezet nem rendelkezik a hagyományos, nem kell engedélyezné a felhasználóknak alkalmazásjelszavakat.
 

@@ -9,24 +9,22 @@ ms.component: content-moderator
 ms.topic: article
 ms.date: 01/30/2018
 ms.author: sajagtap
-ms.openlocfilehash: 5783a7a06d75a409969abad011de3bbd31dec292
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 6924807a64cec074d9688eaad158bb9bb638f6bb
+ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35347767"
+ms.lasthandoff: 06/28/2018
+ms.locfileid: "37085759"
 ---
 # <a name="text-moderation"></a>Szövegmoderálás
 
-Használja a tartalom moderátor szövegét gépet támogatású moderálás és [emberi hurok](Review-Tool-User-Guide/human-in-the-loop.md) szöveges tartalom mérsékelt képességeit.
+Használja a tartalom moderátor szövegét gépet támogatású moderálás és [emberi felülvizsgálati](Review-Tool-User-Guide/human-in-the-loop.md) szöveges tartalom mérsékelt képességeket.
 
-Vállalatok szolgáltatással a szöveg moderálás letiltása, jóváhagyásához, vagy tekintse át a tartalmat, a házirendek és a küszöbértékek alapján. A szöveg moderálás szolgáltatás révén a partnerek, az alkalmazottak és a fogyasztók készítése text tartalom igénylő környezetek emberi moderálás használható. Ezek közé tartozik a Csevegés helyiségekben, vitafórumok, chatbots, kereskedelmi katalógusok, dokumentumok és egyéb. 
-
-Az API-t megvizsgálja a bejövő szöveg (legfeljebb 1024 karakter) a profán kifejezéseket, osztályozza a lehetséges nemkívánatos szöveg (előzetes verzió), autocorrects szöveg, és észleli a potenciális személyes azonosításra alkalmas adatokat (PII). Azt is megfelelő feltételek egyéni listájával. Az automatikus javítás funkció segítségével dolgozza fel a szándékosan helyesírási. Tartalom feldolgozása után a szolgáltatás részletes választ ad. A válasz használatával hozzon létre egy emberi tekintse át a felülvizsgálati eszköz, vagy le azt, stb.
+Blokkolja, hagyja jóvá vagy tekintse át a tartalmat, a házirendek és a küszöbértékek alapján. Ezzel a környezetek emberi moderálás révén ahol partnerek, az alkalmazottak és a fogyasztóknak készítése text tartalom. Ezek közé tartozik a Csevegés helyiségekben, vitafórumok, chatbots, kereskedelmi katalógusok és dokumentumok. 
 
 A szolgáltatás válasza a következő információkat tartalmazza:
 
-- Profanitás: több nyelven profán kifejezéseket beépített listával kifejezés alapú megfelelő
+- Profanitás: beépített listájával, profán feltételek különböző nyelvű kifejezés alapú megfelelő
 - Besorolás: három kategóriába soroltuk gép támogatású besorolás
 - Személyes azonosításra alkalmas adatok (PII)
 - Szöveg automatikus javítását
@@ -52,12 +50,9 @@ Ha az API-t profán feltételeket észlel bármelyikét a [támogatott nyelveket
 
 ## <a name="classification"></a>Besorolás
 
-Tartalom moderátor a gép támogatású **szöveg besorolási funkció** támogatja **csak angol nyelven**, és segítséget nyújt a potenciálisan nem kívánt tartalom. A megjelölt tartalom megjelölése kifogásolhatóként környezettől függően előfordulhat, hogy tekinteni. Mellett az egyes kategóriák valószínűségét igényinek, a tartalom emberi áttekintése javasolhatja azt. A szolgáltatás egy trained model esetleges visszaélést, különbözeti vagy megkülönböztető nyelvi azonosítására használ. Ez magában foglalja a zsargon, rövidített szavakat, felülvizsgálati sértő és szándékosan hibásan szavakat. 
+Tartalom moderátor a gép támogatású **szöveg besorolási funkció** támogatja **csak angol nyelven**, és segítséget nyújt a potenciálisan nem kívánt tartalom. A megjelölt tartalom megjelölése kifogásolhatóként attól függően, hogy a környezet lehet értékelni. A különböző kategóriájú valószínűségét közvetíti, és javasolhatja emberi áttekintése. A szolgáltatás egy trained model esetleges visszaélést, különbözeti vagy megkülönböztető nyelvi azonosítására használ. Ez magában foglalja a zsargon, rövidített szavakat, felülvizsgálati sértő és szándékosan hibásan szavakat. 
 
 A következő kivonat a JSON kivonatban látható egy példa a kimenetre:
-
-> [!NOTE]
-> A gép támogatású "Osztályozás" szolgáltatás egyelőre.
 
     "Classification": {
         "ReviewRecommended": true,
@@ -74,9 +69,9 @@ A következő kivonat a JSON kivonatban látható egy példa a kimenetre:
 
 ### <a name="explanation"></a>Magyarázat
 
-- `Category1` a nyelv, amely ivarilag explicit vagy bizonyos esetekben felnőtt tekinthetők lehetséges jelenlétét jelöli.
-- `Category2` a nyelv, amely ivarilag kétértelmű vagy bizonyos esetekben érett tekinthetők lehetséges jelenlétét jelöli.
-- `Category3` a nyelv, amely bizonyos esetekben bántónak tekinthető lehetséges jelenlétét jelöli.
+- `Category1` nyelv, amely ivarilag explicit vagy bizonyos esetekben felnőtt tekinthetők lehetséges jelenléte hivatkozik.
+- `Category2` nyelv, amely ivarilag kétértelmű vagy bizonyos esetekben érett tekinthetők lehetséges jelenléte hivatkozik.
+- `Category3` nyelv, amely bizonyos esetekben bántónak tekinthető lehetséges jelenléte hivatkozik.
 - `Score` 0 és 1 közé esik. Minél nagyobb a pontszám, annál magasabb a modell becslése, hogy a kategória alkalmazhatók. Ez az előnézet manuálisan kódolt eredményekkel helyett statisztikai modell támaszkodik. Azt javasoljuk, hogy a saját tartalom határozza meg, hogyan legyen a különböző kategóriájú az igényeinek megfelelően tesztelték.
 - `ReviewRecommended` IGAZ vagy hamis függően a belső pontszám küszöbértékek. Az ügyfelek fel kell mérnie hogy ezt az értéket, vagy adja meg a tartalom házirendek alapján egyéni küszöbértékeket.
 
@@ -151,7 +146,7 @@ Ha automatikus javítási kér, a válasz tartalmazza a szöveg javított verzi�
 
 ## <a name="creating-and-managing-your-custom-lists-of-terms"></a>Létrehozását és kezelését a feltételek egyéni listája
 
-Amíg az alapértelmezett globális listáját működik a legtöbb esetben jól, érdemes lehet szemben, amelyek és az üzleti igényeinek megfelelő feltételek képernyőn. Érdemes lehet például kiszűrését a bármely versenyképes védjegyek, a felhasználók bejegyzéseket. A küszöbérték engedélyezett a szöveges tartalom eltérhetnek az alapértelmezett listájában.
+Amíg az alapértelmezett globális listáját működik a legtöbb esetben jól, érdemes lehet szemben, amelyek és az üzleti igényeinek megfelelő feltételek képernyőn. Érdemes lehet például kiszűrését a bármely versenyképes védjegyek, a felhasználók bejegyzéseket.
 
 > [!NOTE]
 > Nincs a jelenlegi maximális műveletszámot **5 kifejezés listája** minden listájával, hogy **legfeljebb 10 000 feltételek**.
@@ -171,4 +166,4 @@ A tartalom moderátor biztosít egy [kifejezés lista API](https://westus.dev.co
 
 ## <a name="next-steps"></a>További lépések
 
-Tesztelése a [szöveg moderálás API konzol](try-text-api.md) és a REST API-Kódminták használja. Emellett olvassa el a [szöveg moderálás .NET gyors üzembe helyezés](text-moderation-quickstart-dotnet.md) Ha ismeri a Visual Studio és a C#.
+Tesztelése a [szöveg moderálás API konzol](try-text-api.md) és a REST API-Kódminták használja. Emellett olvassa el a [szöveg moderálás .NET gyors üzembe helyezés](text-moderation-quickstart-dotnet.md) Ha jártas a Visual Studio és a C#.

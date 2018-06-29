@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 06/12/2018
 ms.author: johnkem
 ms.component: ''
-ms.openlocfilehash: 97eca81a8ddc2726bf5de0f4ad7ba0bdf1df1d05
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 78b3288cf4973efa2684252581000d0e4fc56cae
+ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36220084"
+ms.lasthandoff: 06/28/2018
+ms.locfileid: "37082998"
 ---
 # <a name="consume-monitoring-data-from-azure"></a>Figyelési adatokat az Azure-ból
 
@@ -28,7 +28,7 @@ A Azure platformon azt is összegyűjtésével figyelési adatokat az Azure-megf
 | Egyéni vagy alkalmazás metrikák | Mérőszámok | Az Application insights szolgáltatással tagolva bármely alkalmazás | <ul><li>**REST API:** [az Application Insights REST API-n](https://dev.applicationinsights.io/reference)</li></ul> |
 | Storage mérőszámainak | Mérőszámok | Azure Storage | <ul><li>**Tárolási tábla:** [tárolási analitika](https://docs.microsoft.com/rest/api/storageservices/storage-analytics)</li></ul> |
 | Számlázási adatokat | Mérőszámok | Az összes Azure-szolgáltatások | <ul><li>**REST API:** [az Azure erőforrás-használat és RateCard API-k](../billing/billing-usage-rate-card-overview.md)</li></ul> |
-| Tevékenységnapló | Események | Az összes Azure-szolgáltatások | <ul><li>**REST API:** [Azure figyelő események API](https://docs.microsoft.com/rest/api/monitor/events)</li><li>**Tárolási blob vagy event hub:** [napló profil](monitoring-overview-activity-logs.md#export-the-activity-log-with-a-log-profile)</li></ul> |
+| Tevékenységnapló | Események | Az összes Azure-szolgáltatások | <ul><li>**REST API:** [Azure figyelő események API](https://docs.microsoft.com/en-us/rest/api/monitor/eventcategories)</li><li>**Tárolási blob vagy event hub:** [napló profil](monitoring-overview-activity-logs.md#export-the-activity-log-with-a-log-profile)</li></ul> |
 | A figyelő az Azure diagnosztikai naplók | Események | [Itt listája](monitoring-diagnostic-logs-schema.md) | <ul><li>**Tárolási blob vagy event hub:** [diagnosztikai beállítások](monitoring-overview-of-diagnostic-logs.md#resource-diagnostic-settings)</li></ul> |
 | Számítási vendég operációs rendszer naplók (pl. Az IIS, az ETW, rendszerbejegyzések) | Események | [Windows](../virtual-machines-dotnet-diagnostics.md) és a Linux virtuális gépek (v2) [a felhőalapú szolgáltatások](../cloud-services/cloud-services-dotnet-diagnostics-trace-flow.md), [Fabric szolgáltatás](../service-fabric/service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally.md) | <ul><li>**A table Storage vagy a blob:** [Windows vagy Linux rendszerű Azure diagnostics](../cloud-services/cloud-services-dotnet-diagnostics-storage.md)</li><li>**Az Event hubs:** [Windows Azure diagnosztikai](../event-hubs/event-hubs-streaming-azure-diags-data.md)</li></ul> |
 | App Service naplóit | Események | App Services | <ul><li>**Fájl, táblázat vagy a blob storage:** [Web app diagnosztika](../app-service/web-sites-enable-diagnostic-log.md)</li></ul> |

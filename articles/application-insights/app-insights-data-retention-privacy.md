@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/07/2017
 ms.author: mbullwin
-ms.openlocfilehash: 0ee712b24478b52dfc5864e59e885e3b9dd6137b
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
-ms.translationtype: MT
+ms.openlocfilehash: 95e576eb5ce6834e67d997cde57426fd09db4e6a
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35294066"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37099796"
 ---
 # <a name="data-collection-retention-and-storage-in-application-insights"></a>Adatgyűjtés, megőrzés és tárolás az Application Insights szolgáltatásban
 
@@ -128,22 +128,9 @@ A kiszolgáló jelenleg nincs belül.
 #### <a name="is-the-data-encrypted-in-transit-from-my-application-to-application-insights-servers"></a>Az adatok titkosítva legyenek az Application Insights kiszolgálókra átvitel közben?
 Https Igen, szeretnék adatokat küldeni a a portál szinte minden SDK-k, beleértve a webkiszolgálók, eszközök és HTTPS weblapok a használjuk. Az egyetlen kivétel, egyszerű HTTP-weblapokhoz küldött adatokat. 
 
-## <a name="personally-identifiable-information"></a>Személyes azonosításra alkalmas adatok
-#### <a name="could-personally-identifiable-information-pii-be-sent-to-application-insights"></a>Az Application Insights részére küldött volt a személyes azonosításra alkalmas adatokat (PII)?
-Igen, akkor lehet. 
+## <a name="personal-data-stored-in-application-insights"></a>Az Application Insightsban tárolt személyes adatok
 
-Általános útmutatásként:
-
-* Legtöbb szabványos telemetriai adatokat (Ez azt jelenti, hogy programozás nélkül telemetria) nem tartalmaz explicit személyhez köthető adatokat. Azonban hogy előfordulhat, hogy lehet események gyűjteményéről megállapítás azonosíthatja az egyéni felhasználók számára.
-* Kivétel és nyomkövetési üzenetek tartalmazhatnak személyhez köthető adatokat
-* Egyéni telemetriai adatokat – ez azt jelenti, például az API-t vagy a naplózási nyomkövetés használó kód írást TrackEvent hívások - választja adatokat is tartalmazhat.
-
-Ez a dokumentum végén a táblázat a gyűjtött adatok részletes leírását tartalmazza.
-
-#### <a name="am-i-responsible-for-complying-with-laws-and-regulations-in-regard-to-pii"></a>Tudom felel törvény és szabályozás tekintetében személyhez köthető adatokat?
-Igen. Feladata a győződjön meg arról, hogy az adatgyűjtési és -felhasználási adatok megfelel törvény és szabályozás, valamint a Microsoft Online Services feltételeit.
-
-Az ügyfelek megfelelően kell tájékoztatnia az alkalmazás gyűjti az adatokat, és hogyan használja fel az adatokat.
+A [Application Insights személyes adatok cikk](app-insights-customer-data.md) Ez a témakör részletesen ismerteti.
 
 #### <a name="can-my-users-turn-off-application-insights"></a>A felhasználók kikapcsolható Application Insights?
 Közvetlenül nem. A Microsoft nem biztosítja egy kapcsoló, amely a felhasználók kapnak az Application Insights kikapcsolása.

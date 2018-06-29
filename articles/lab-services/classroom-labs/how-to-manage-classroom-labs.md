@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/17/2018
 ms.author: spelluru
-ms.openlocfilehash: 311e58f01fac6d7786992b3c11e4b1b7c02ca838
-ms.sourcegitcommit: ea5193f0729e85e2ddb11bb6d4516958510fd14c
+ms.openlocfilehash: f8cf5a46e1d1e3242fd46900b56f7d8cf15d3fc5
+ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/21/2018
-ms.locfileid: "36304520"
+ms.lasthandoff: 06/28/2018
+ms.locfileid: "37082523"
 ---
 # <a name="manage-classroom-labs-in-azure-lab-services"></a>Számítógéptermi labs Azure labor Services kezelése 
 Ez a cikk ismerteti, hogyan létrehozásához és egy osztályteremben, amikor konfigurálja, minden osztályteremben labs megtekintéséhez, vagy egy osztályteremben, amikor törölni.
@@ -86,8 +86,8 @@ Ha közzéteszi a sablont, Azure labor szolgáltatások hoz létre virtuális g�
 2. Jelölje ki, a **közzététel** gombra. Ez a folyamat eltarthat néhány alkalommal attól függően, hogy hány virtuális gépek létrehozása, amely megegyezik a laborkörnyezetbe felhasználók számát.
     
     > [!IMPORTANT]
-    > Amint a sablon nyilvánosan elérhetővé válik, a hozzáférhetősége nem módosítható privátra. 
-4. Váltás a **virtuális gépek** lapon, és ellenőrizze, hogy látható-e öt, a virtuális gépek **hozzá nem rendelt** állapotát. Virtuális gépeken nincsenek hozzárendelve a diákok még. 
+    > Miután közzétette a sablont, nem lehet közzé nem tett. 
+4. Váltás a **virtuális gépek** lapon, és ellenőrizze, hogy látható-e a virtuális gépek **hozzá nem rendelt** állapotát. Virtuális gépeken nincsenek hozzárendelve a diákok még. 
 
     ![Virtual machines (Virtuális gépek)](../media/tutorial-setup-classroom-lab/virtual-machines.png)
 5. Várjon, amíg a virtuális gépek jönnek létre. A kell **leállítva** állapotát. Indítsa el a virtuális gép student, csatlakoztassa a virtuális Gépet, a virtuális gép leállítása és törlése a virtuális gép ezen a lapon. Ezen a lapon elindíthatja azokat, vagy lehetővé teszik a diákok indítsa el a virtuális gépeket. 

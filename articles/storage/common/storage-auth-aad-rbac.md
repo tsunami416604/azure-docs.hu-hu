@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: article
 ms.date: 05/29/2018
 ms.author: tamram
-ms.openlocfilehash: cb77bd4418e105c877202f0f1725350380ea2308
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 241808e0a7bde1d2c53cd0af1de677275c169214
+ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34660878"
+ms.lasthandoff: 06/28/2018
+ms.locfileid: "37082230"
 ---
 # <a name="manage-access-rights-to-azure-storage-data-with-rbac-preview"></a>Az RBAC (előzetes verzió) Azure Storage-adatokhoz való hozzáférési jogosultságaik kezelését
 
@@ -61,7 +61,7 @@ A következő szakaszok bemutatják, hogyan szerepkör hatóköre a tárfiók me
 
 Minden-tárolók és a storage-fiókot az Azure-portálon várólistákból való hozzáférés biztosítása a beépített szerepkör hozzárendelése:
 
-1. Az a [Azure-portálon](https://azure.portal.com/), lépjen a tárfiókhoz.
+1. Az a [Azure-portálon](https://portal.azure.com), lépjen a tárfiókhoz.
 2. Válassza ki a tárfiókot, majd válasszon **hozzáférés-vezérlés (IAM)** hozzáférés-vezérlési beállításokkal a fiókhoz tartozó megjeleníthető. Kattintson a **Hozzáadás** gombra kattintva adja hozzá egy új szerepkört.
 
     ![Tároló hozzáférés-vezérlési beállításokkal ábrázoló képernyőfelvétel](media/storage-auth-aad-rbac/portal-access-control.png)
@@ -78,7 +78,7 @@ Minden-tárolók és a storage-fiókot az Azure-portálon várólistákból val�
 
 A tárolót, vagy annak a várólistára hatókörű beépített szerepkör hozzárendelése a lépések hasonlóak. Az itt bemutatott eljárás hozzárendel egy tárolót hatókörű szerepkört, de annak a várólistára hatókörű szerepkör ugyanazokat a lépéseket követheti: 
 
-1. Az a [Azure-portálon](https://azure.portal.com/), lépjen a tárfiókhoz, és megjeleníti a **áttekintése** a fiókhoz.
+1. Az a [Azure-portálon](https://portal.azure.com), lépjen a tárfiókhoz, és megjeleníti a **áttekintése** a fiókhoz.
 2. A Blob szolgáltatás, válassza a **Tallózás Blobok**. 
 3. Keresse meg a legyen szerepkör tároló, és megjelenítheti a tároló beállításait. 
 4. Válassza ki **hozzáférés-vezérlés (IAM)** a tároló hozzáférés-vezérlési beállítások megjelenítéséhez.

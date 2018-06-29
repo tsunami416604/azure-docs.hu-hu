@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/25/2017
 ms.author: govindk
-ms.openlocfilehash: 49a381efa0603889336f43e409698bbcef44f41f
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 5f6852de2c09e3de9375a2cb5d73f052ac68f039
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34615641"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37100572"
 ---
 # <a name="monitoring-and-debugging-with-metrics-in-azure-cosmos-db"></a>Figyelés és az Azure Cosmos DB a metrikák hibakeresés
 
@@ -33,7 +33,7 @@ Ez a cikk végigvezeti a gyakori használati esetek és hogyan Azure Cosmos DB m
 
 A kezdéshez keressen fel a [Azure-portálon](https://portal.azure.com) , és keresse meg a **metrikák** panelen. A panelen keresse meg a **kérések száma meghaladja a kapacitását / 1 perc** diagram. Ezen a diagramon látható egy perc által perc összes kérelem szegmentált által az állapotkód. További információ a HTTP-állapotkódok: [HTTP-állapotkódok Azure Cosmos DB](https://docs.microsoft.com/rest/api/cosmos-db/http-status-codes-for-cosmosdb).
 
-A leggyakoribb állapot hibakód 429 (sávszélesség-szabályozás), ami azt jelenti, hogy az Azure Cosmos Adatbázishoz kérelmek túllépte a létesített átviteli sebesség. Ez a leggyakrabban használt megoldás [növelheti a RUs](./set-throughput.md) az adott gyűjtemény.
+A leggyakoribb állapot hibakód 429 (korlátozása/szabályozás értékelje), ami azt jelenti, hogy az Azure Cosmos Adatbázishoz kérelmek túllépte a létesített átviteli sebesség. Ez a leggyakrabban használt megoldás [növelheti a RUs](./set-throughput.md) az adott gyűjtemény.
 
 ![Percenként kérelmek száma](media/use-metrics/metrics-12.png)
 

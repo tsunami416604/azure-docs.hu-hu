@@ -3,7 +3,7 @@ title: Az Azure Functions tesztelése |} Microsoft Docs
 description: Az Azure functions tesztelése Postman, a cURL és a Node.js segítségével.
 services: functions
 documentationcenter: na
-author: wesmc7777
+author: tdykstra
 manager: cfowler
 editor: ''
 tags: ''
@@ -15,14 +15,14 @@ ms.topic: article
 ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 02/02/2017
-ms.author: wesmc
+ms.author: tdykstra
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 41796a8cdde0756e5157ba276463a56b07679d04
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: b4f6bf89ec5c83a497666a8a410a156c5f9bb359
+ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23838953"
+ms.lasthandoff: 06/28/2018
+ms.locfileid: "37083256"
 ---
 # <a name="strategies-for-testing-your-code-in-azure-functions"></a>A kód az Azure Functions tesztelése kapcsolatos olyan stratégiák
 
@@ -37,7 +37,7 @@ Ebben a témakörben bemutatjuk a különböző módszereket funkciókkal, bele�
 A tesztelési módszerek használják az egy HTTP funkció, amely a bemeneti egy lekérdezési karakterlánc paramétert vagy a kérelem törzsében keresztül fogadja. Ez a függvény az első szakaszban hoz létre.
 
 ## <a name="create-a-function-for-testing"></a>Tesztelési függvény létrehozása
-Ez az oktatóanyag a legtöbb, a függvény létrehozása esetén érhető el HttpTrigger JavaScript-függvény sablon kis mértékben módosított verzióját használjuk. Ha a függvény létrehozásához segítségre van szüksége, tekintse meg a [oktatóanyag](functions-create-first-azure-function.md). Válassza ki a **HttpTrigger - JavaScript** sablon teszt funkció létrehozásakor a [Azure-portálon].
+Ez az oktatóanyag a legtöbb, a függvény létrehozása esetén érhető el HttpTrigger JavaScript-függvény sablon kis mértékben módosított verzióját használjuk. Ha a függvény létrehozásához segítségre van szüksége, tekintse meg a [oktatóanyag](functions-create-first-azure-function.md). Válassza ki a **HttpTrigger - JavaScript** sablon teszt funkció létrehozásakor a [Azure Portal].
 
 Az alapértelmezett függvény sablon alapjában echók vissza a nevét, a kérelem törzsében vagy lekérdezési karakterlánc-paraméter, a "hello world" függvény `name=<your name>`.  Azt is lehetővé teszi, hogy adja meg a nevet és egy címet a kérelem törzsében szereplő JSON-tartalomként a kód frissítése. Ezután a függvény echók ezek vissza az ügyfélnek, ha elérhető.   
 
@@ -186,10 +186,10 @@ A portál **naplók** ablakban kimenet az alábbihoz hasonló naplózott, a füg
 ### <a name="test-a-blob-trigger-by-using-storage-explorer"></a>Egy blob eseményindító tesztelése Tártallózó használatával
 Egy blob funkció segítségével tesztelheti [Azure Tártallózó](http://storageexplorer.com/).
 
-1. Az a [Azure-portálon] függvény alkalmazás, hozzon létre egy C#, F # vagy JavaScript blob eseményindító függvényt. A blob-tároló neve a figyelheti a elérési útjának beállítása. Példa:
+1. Az a [Azure Portal] függvény alkalmazás, hozzon létre egy C#, F # vagy JavaScript blob eseményindító függvényt. A blob-tároló neve a figyelheti a elérési útjának beállítása. Példa:
 
         files
-2. Kattintson a  **+**  gombra, válassza ki vagy hozzon létre a használni kívánt tárfiókot. Ezt követően kattintson a **Create** (Létrehozás) gombra.
+2. Kattintson a **+** gombra, válassza ki vagy hozzon létre a használni kívánt tárfiókot. Ezt követően kattintson a **Create** (Létrehozás) gombra.
 3. A következő szöveggel hozzon létre egy szövegfájlt, és mentse azt:
 
         A text file for blob trigger function testing.
@@ -244,19 +244,19 @@ További információt az Azure Functions kötések használatával, lásd: a [A
 Bemutatják, ezt a módszert használja, azt először létre kell hoznia egy várólista funkció, amely teszteléséhez nevű várólista szeretnénk `queue-newusers`. Ez a funkció be egy új felhasználó a Queue storage eldobott nevét és címét adatokat dolgozza fel.
 
 > [!NOTE]
-> Ha egy másik várólistához nevet használja, győződjön meg arról, hogy a használt név megfelel-e a [elnevezési üzenetsorok és metaadatok](https://msdn.microsoft.com/library/dd179349.aspx) szabályok. Ellenkező esetben hibaüzenetet kap.
+> Ha egy másik várólistához nevet használja, győződjön meg arról, hogy a használt név megfelel-e a [elnevezési üzenetsorok és metaadatok](https://msdn.microsoft.com/library/dd179349.aspx) szabályok. Ellenkező esetben a rendszer hibaüzenetet küld.
 >
 >
 
-1. Az a [Azure-portálon] függvény alkalmazás, kattintson a **új függvény** > **QueueTrigger - C#**.
+1. Az a [Azure Portal] függvény alkalmazás, kattintson a **új függvény** > **QueueTrigger - C#**.
 2. Adja meg a várólista nevét a várólista függvény által figyelt:
 
         queue-newusers
-3. Kattintson a  **+**  gombra, válassza ki vagy hozzon létre a használni kívánt tárfiókot. Ezt követően kattintson a **Create** (Létrehozás) gombra.
+3. Kattintson a **+** gombra, válassza ki vagy hozzon létre a használni kívánt tárfiókot. Ezt követően kattintson a **Create** (Létrehozás) gombra.
 4. Hagyja megnyitva, a portál böngészőablakot, figyelheti a naplóbejegyzéseket, az alapértelmezett várólista függvény sablon kódot.
 
 #### <a name="create-a-timer-trigger-to-drop-a-message-in-the-queue"></a>Hozzon létre egy időzítő indítófeltételt üzenetet a várólistában lévő elvetése érdekében
-1. Nyissa meg a [Azure-portálon] egy új böngészőablakban, és keresse meg a függvény alkalmazást.
+1. Nyissa meg a [Azure Portal] egy új böngészőablakban, és keresse meg a függvény alkalmazást.
 2. Kattintson a **új függvény** > **TimerTrigger - C#**. Adja meg a beállítása, hogy milyen gyakran az időzítő kód teszteli a várólista függvény cron-kifejezést. Ezt követően kattintson a **Create** (Létrehozás) gombra. Ha a vizsgálatot, 30 másodperces futtatásához, a következő használható [CRON-kifejezés](https://wikipedia.org/wiki/Cron#CRON_expression):
 
         */30 * * * * *
@@ -268,7 +268,7 @@ Bemutatják, ezt a módszert használja, azt először létre kell hoznia egy v�
 6. Adja meg a várólista nevét, ahol a hibaüzenet:
 
         queue-newusers
-7. Kattintson a  **+**  gombra kattintva válassza ki a korábban használt a várólista eseményindító tárfiókot. Ezután kattintson a **Save** (Mentés) gombra.
+7. Kattintson a **+** gombra kattintva válassza ki a korábban használt a várólista eseményindító tárfiókot. Ezután kattintson a **Save** (Mentés) gombra.
 8. Kattintson a **Develop** az időzítő eseményindító fülre.
 9. A következő kódot használhatja a C# időzítő függvény, mindaddig, amíg a várólista üzenet objektum néven korábban bemutatott használta. Ezután kattintson a **Save** (Mentés) gombra.
 
@@ -443,4 +443,4 @@ A várólista függvény böngészőablakban minden egyes üzenet feldolgozás a
 
 <!-- URLs. -->
 
-[Azure-portálon]: https://portal.azure.com
+[Azure Portal]: https://portal.azure.com

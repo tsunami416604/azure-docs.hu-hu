@@ -10,12 +10,12 @@ ms.date: 03/05/2018
 ms.topic: article
 ms.reviewer: klam, LADocs
 ms.suite: integration
-ms.openlocfilehash: e8d84944d44588602593c762c4f60c375e480343
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: d4e69d33e07f484b4ccc5343786865230368c7ca
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35298168"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37096376"
 ---
 # <a name="create-conditional-statements-that-control-workflow-actions-in-azure-logic-apps"></a>Az Azure Logic Apps munkafolyamat-műveleteket szabályzó feltételes utasítások létrehozása
 
@@ -50,32 +50,27 @@ Tegyük fel például, hogy túl sok e-mailt küld, amikor új elemek jelennek m
 
    1. A bal oldali panelen adja meg az adatok vagy az összehasonlítani kívánt mező.
 
-      Az a **dinamikus tartalom hozzáadása az** listában kiválaszthatja a Logic Apps alkalmazást mezők meglévő.
+      Gombra a bal oldali panelen belül a dinamikus tartalom listába jelenik meg, így a kimenetek az előző lépéseket a Logic Apps alkalmazást a. 
+      Ehhez a példához válassza ki az RSS-hírcsatorna összegzése.
+
+      ![A feltétel létrehozása](./media/logic-apps-control-flow-conditional-statement/edit-condition.png)
 
    2. A középső listában válassza ki a végrehajtandó műveletet. 
-   3. A megfelelő mezőben adja meg a feltételként egy érték vagy mező.
+   Ebben a példában válassza a "**tartalmaz**". 
 
-   Példa:
-
-   ![Alapszintű módban feltétel szerkesztése](./media/logic-apps-control-flow-conditional-statement/edit-condition-basic-mode.png)
+   3. A megfelelő mezőben adja meg a feltételként egy érték vagy mező. 
+   A jelen példában adja meg ezt a karakterláncot: **Microsoft**
 
    A teljes feltétel a következő:
 
-   ![Teljes feltétel](./media/logic-apps-control-flow-conditional-statement/edit-condition-basic-mode-2.png)
+   ![Teljes feltétel](./media/logic-apps-control-flow-conditional-statement/edit-condition-2.png)
+
+5. A **igaz értéke esetén** és **hamis**, adja hozzá a feltétel teljesülését vizsgálja alapján végrehajtásához szükséges lépéseket. Példa:
+
+   ![A feltétel a "Ha az érték true" és "Ha false" elérési út](./media/logic-apps-control-flow-conditional-statement/condition-yes-no-path.png)
 
    > [!TIP]
-   > Speciális feltétel létrehozása vagy kifejezések használata, válassza a **speciális módban szerkesztése**. Kifejezések által definiált is használhatja a [Munkafolyamatdefiníciós nyelve](../logic-apps/logic-apps-workflow-definition-language.md).
-   > 
-   > Példa:
-   >
-   > ![A kód feltétel szerkesztése](./media/logic-apps-control-flow-conditional-statement/edit-condition-advanced-mode.png)
-
-5. A **Ha Igen** és **IF nem**, vegye fel a feltétel teljesülését vizsgálja alapján végrehajtásához szükséges lépéseket. Példa:
-
-   ![Igen, és nincsenek elérési utak feltételei](./media/logic-apps-control-flow-conditional-statement/condition-yes-no-path.png)
-
-   > [!TIP]
-   > A meglévő műveletek áthúzhatja a **Ha Igen** és **IF nem** elérési utak.
+   > A meglévő műveletek áthúzhatja a **igaz értéke esetén** és **hamis** elérési utak.
 
 6. Mentse a logikai alkalmazást.
 
@@ -87,14 +82,21 @@ Most, hogy a létrehozott logikai alkalmazás egy feltételes utasítás haszná
 
 ``` json
 "actions": {
-  "myConditionName": {
+  "Condition": {
     "type": "If",
-    "expression": "@contains(triggerBody()?['summary'], 'Microsoft')",
     "actions": {
       "Send_an_email": {
-        "inputs": { },
+        "inputs": {},
         "runAfter": {}
-      }
+    },
+    "expression": {
+      "and": [ 
+        { 
+          "contains": [ 
+            "@triggerBody()?['summary']", "Microsoft"
+          ]
+        } 
+      ]
     },
     "runAfter": {}
   }

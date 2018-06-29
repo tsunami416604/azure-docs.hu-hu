@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 04/04/2018
 ms.author: johnkem
 ms.component: logs
-ms.openlocfilehash: 634cecb247686afd8c5c749d6e28b301d7e07c4f
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: d8966edb6061ed07f5aecb9682fca081ed589040
+ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35263507"
+ms.lasthandoff: 06/28/2018
+ms.locfileid: "37083974"
 ---
 # <a name="stream-azure-diagnostic-logs-to-log-analytics"></a>Adatfolyam-szolgáltatáshoz Azure diagnosztikai naplók
 
@@ -30,7 +30,7 @@ Az Azure Naplóelemzés egy olyan rugalmas napló keresési és az elemzések es
 
 ## <a name="enable-streaming-of-diagnostic-logs-to-log-analytics"></a>Diagnosztikai naplók szolgáltatáshoz adatfolyamként
 
-Adatfolyamként való küldése a diagnosztikai naplók programozott módon, a portálon, vagy használatával engedélyezheti a [Azure figyelő REST API-k](https://docs.microsoft.com/rest/api/monitor/servicediagnosticsettings). Mindkét módszer esetén létrehozhat egy diagnosztikai beállítás található, amely akkor adja meg a Naplóelemzési munkaterület és a napló kategóriák és a metrikák szeretne küldeni, hogy a munkaterületet. A diagnosztika **napló kategória** naplóban, amely egy erőforrás olyan a típusa.
+Adatfolyamként való küldése a diagnosztikai naplók programozott módon, a portálon, vagy használatával engedélyezheti a [Azure figyelő REST API-k](https://docs.microsoft.com/en-us/rest/api/monitor/diagnosticsettings). Mindkét módszer esetén létrehozhat egy diagnosztikai beállítás található, amely akkor adja meg a Naplóelemzési munkaterület és a napló kategóriák és a metrikák szeretne küldeni, hogy a munkaterületet. A diagnosztika **napló kategória** naplóban, amely egy erőforrás olyan a típusa.
 
 A Naplóelemzési munkaterület nem kell lennie a naplók kibocsátó mindaddig, amíg a beállítás konfigurálása felhasználó hozzáfér megfelelő RBAC mindkét előfizetéshez erőforrás ugyanahhoz az előfizetéshez.
 

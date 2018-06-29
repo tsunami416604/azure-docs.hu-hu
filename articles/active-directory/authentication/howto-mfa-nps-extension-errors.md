@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: richagi
-ms.openlocfilehash: aa140bceb5f7ad5e638f747fa8d88803c27f02a3
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: 74a660f7240b9ae6138c402dbbb418bbc665dc3c
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2018
-ms.locfileid: "33867665"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37098702"
 ---
 # <a name="resolve-error-messages-from-the-nps-extension-for-azure-multi-factor-authentication"></a>Hárítsa el a hálózati házirend-kiszolgáló bővítmény hibaüzeneteket az Azure multi-factor Authentication
 
@@ -52,14 +52,14 @@ Ha hibákba ütközik a hálózati házirend-kiszolgáló kiterjesztésű Azure 
 | Hibakód | Hibaüzenet | Hibaelhárítási lépések |
 | ---------- | ------------- | --------------------- |
 | **Hozzáférés megtagadva** | Hívó bérlő nem rendelkezik hozzáférési engedélyekkel a felhasználó hitelesítést | Ellenőrzése, hogy a bérlő tartománya és a egyszerű felhasználónév (UPN) azonos. Például győződjön meg arról, hogy user@contoso.com a Contoso bérlő hitelesítést próbál. Az egyszerű Felhasználónevet érvényes felhasználó jelenti. a bérlő az Azure-ban. |
-| **AuthenticationMethodNotConfigured** | A felhasználó nem konfigurálta a megadott hitelesítési módszert. | A felhasználó hozzáadása, és ellenőrizze a hitelesítési módszerek az utasításainak megfelelően [kezelheti a kétlépéses ellenőrzés beállításait](./../../multi-factor-authentication/end-user/multi-factor-authentication-end-user-manage-settings.md). |
+| **AuthenticationMethodNotConfigured** | A felhasználó nem konfigurálta a megadott hitelesítési módszert. | A felhasználó hozzáadása, és ellenőrizze a hitelesítési módszerek az utasításainak megfelelően [kezelheti a kétlépéses ellenőrzés beállításait](end-user/current/multi-factor-authentication-end-user-manage-settings.md). |
 | **AuthenticationMethodNotSupported** | Nem támogatott a megadott hitelesítési módszert. | Gyűjteni a naplókat, amely tartalmazza a hiba, és [forduljon a támogatási szolgálathoz](#contact-microsoft-support). Ha támogatási szolgálatához fordul, adja meg a felhasználónév és a másodlagos hitelesítési módszert a hibát kiváltó. |
-| **BecAccessDenied** | MSODS Bec hívása adott vissza a hozzáférés megtagadva, valószínűleg a nincs megadva a bérlő | A felhasználó megtalálható-e a helyszíni Active Directory, de nem van-e szinkronizálva az Azure AD által AD Connect. Vagy a felhasználó nincs megadva a bérlő számára. Adja hozzá a felhasználót az Azure AD, és azok hozzáadása a hitelesítési módszerek az utasításainak megfelelően [kezelheti a kétlépéses ellenőrzés beállításait](./../../multi-factor-authentication/end-user/multi-factor-authentication-end-user-manage-settings.md). |
+| **BecAccessDenied** | MSODS Bec hívása adott vissza a hozzáférés megtagadva, valószínűleg a nincs megadva a bérlő | A felhasználó megtalálható-e a helyszíni Active Directory, de nem van-e szinkronizálva az Azure AD által AD Connect. Vagy a felhasználó nincs megadva a bérlő számára. Adja hozzá a felhasználót az Azure AD, és azok hozzáadása a hitelesítési módszerek az utasításainak megfelelően [kezelheti a kétlépéses ellenőrzés beállításait](end-user/current/multi-factor-authentication-end-user-manage-settings.md). |
 | **InvalidFormat** vagy **StrongAuthenticationServiceInvalidParameter** | A telefonszám nem felismerhetetlen formátumú | Az ellenőrzési telefonszámok javítsa ki a felhasználó rendelkezik. |
 | **InvalidSession** | A megadott munkamenet érvénytelen, vagy esetleg elévült | A munkamenet több mint három percig tartott. Győződjön meg arról, hogy a felhasználó az ellenőrző kód megadása, vagy az alkalmazásban megjelenő értesítésre módot ad a hitelesítési kérelmet három percen belül válaszol. Ha ez nem segít a problémán, ellenőrizze, hogy vannak-e ügyfél NAS kiszolgáló, hálózati házirend-kiszolgáló és az Azure MFA-végpont között nincs hálózati késések fordulnak elő.  |
-| **NoDefaultAuthenticationMethodIsConfigured** | A felhasználó a nem alapértelmezett hitelesítési módszer konfigurálása | A felhasználó hozzáadása, és ellenőrizze a hitelesítési módszerek az utasításainak megfelelően [kezelheti a kétlépéses ellenőrzés beállításait](./../../multi-factor-authentication/end-user/multi-factor-authentication-end-user-manage-settings.md). Győződjön meg arról, hogy a felhasználó rendelkezik egy alapértelmezett hitelesítési módszer választása, és ez a módszer a fiókjuk konfigurálva. |
+| **NoDefaultAuthenticationMethodIsConfigured** | A felhasználó a nem alapértelmezett hitelesítési módszer konfigurálása | A felhasználó hozzáadása, és ellenőrizze a hitelesítési módszerek az utasításainak megfelelően [kezelheti a kétlépéses ellenőrzés beállításait](end-user/current/multi-factor-authentication-end-user-manage-settings.md). Győződjön meg arról, hogy a felhasználó rendelkezik egy alapértelmezett hitelesítési módszer választása, és ez a módszer a fiókjuk konfigurálva. |
 | **OathCodePinIncorrect** | Helytelen kódot és a megadott PIN-kód. | Ez a hiba nem várható a hálózati házirend-kiszolgáló bővítményben. Ha a felhasználó tapasztal, [forduljon a támogatási szolgálathoz](#contact-microsoft-support) hibaelhárítási segítséget. |
-| **ProofDataNotFound** | Ellenőrző adatok nem konfigurálta a megadott hitelesítési módszert. | A felhasználó, próbálkozzon egy másik ellenőrzési módszerrel, vagy adjon hozzá egy új ellenőrzési módszert az utasításainak megfelelően [kezelheti a kétlépéses ellenőrzés beállításait](./../../multi-factor-authentication/end-user/multi-factor-authentication-end-user-manage-settings.md). Ha a felhasználó továbbra is ezt a hibaüzenetet látja, hogy, hogy az ellenőrzési módszert megfelelően van-e beállítva megerősítését követően [forduljon a támogatási szolgálathoz](#contact-microsoft-support). |
+| **ProofDataNotFound** | Ellenőrző adatok nem konfigurálta a megadott hitelesítési módszert. | A felhasználó, próbálkozzon egy másik ellenőrzési módszerrel, vagy adjon hozzá egy új ellenőrzési módszert az utasításainak megfelelően [kezelheti a kétlépéses ellenőrzés beállításait](end-user/current/multi-factor-authentication-end-user-manage-settings.md). Ha a felhasználó továbbra is ezt a hibaüzenetet látja, hogy, hogy az ellenőrzési módszert megfelelően van-e beállítva megerősítését követően [forduljon a támogatási szolgálathoz](#contact-microsoft-support). |
 | **SMSAuthFailedWrongCodePinEntered** | Helytelen kódot és a megadott PIN-kód. (OneWaySMS) | Ez a hiba nem várható a hálózati házirend-kiszolgáló bővítményben. Ha a felhasználó tapasztal, [forduljon a támogatási szolgálathoz](#contact-microsoft-support) hibaelhárítási segítséget. |
 | **TenantIsBlocked** | Bérlői le van tiltva. | [Forduljon a támogatási szolgálathoz](#contact-microsoft-support) Directory azonosítójú Azure-portálon az Azure AD tulajdonságai lapon. |
 | **UserNotFound** | A megadott felhasználó nem található. | A bérlő most már az Azure AD aktívnak látható. Ellenőrizze, hogy az előfizetés aktív-e, és rendelkezik a szükséges először féltől származó alkalmazásokat. Győződjön meg arról is a tanúsítvány tulajdonosának a bérlő által várt módon, és a cert továbbra is érvényesek és az egyszerű szolgáltatás alatt regisztrált. |
@@ -98,7 +98,7 @@ Ha egy ezeket a hibákat észlel, azt javasoljuk, hogy Ön [forduljon a támogat
 
 Ha a felhasználók is [problémák adódtak a kétlépéses ellenőrzéshez használttal](./../../multi-factor-authentication/end-user/multi-factor-authentication-end-user-troubleshoot.md), őket: problémák önálló diagnosztizálása érdekében. 
 
-### <a name="contact-microsoft-support"></a>Forduljon a Microsoft támogatási szolgálatához.
+### <a name="contact-microsoft-support"></a>Kapcsolatfelvétel a Microsoft ügyfélszolgálatával
 
 Ha további segítségre van szüksége, forduljon a támogatási szakember keresztül [Azure multi-factor Authentication kiszolgáló támogatási](https://support.microsoft.com/oas/default.aspx?prid=14947). Lépjen kapcsolatba velünk, ha esetén lehet hasznos információt tartalmazhatnak a lehető problémával kapcsolatos. Megadhat olyan információkat tartalmaz az oldal, ahol a hiba, a konkrét hibakód megtekinthető látta az adott munkamenet-azonosító, a hiba látott, és hibakeresési naplókat, a felhasználó Azonosítóját.
 

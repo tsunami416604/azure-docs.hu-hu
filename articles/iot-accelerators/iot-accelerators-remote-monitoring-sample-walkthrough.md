@@ -1,6 +1,6 @@
 ---
-title: Távoli felügyeleti megoldás - Azure architektúra |} Microsoft Docs
-description: A távoli felügyeleti megoldásgyorsító architektúrájának részletes útmutatás.
+title: Távoli figyelés megoldás gyorsító áttekintés – Azure |} Microsoft Docs
+description: A távoli megfigyelési megoldásgyorsító áttekintése.
 author: dominicbetts
 manager: timlt
 ms.service: iot-accelerators
@@ -8,14 +8,14 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 11/10/2017
 ms.author: dobett
-ms.openlocfilehash: af7feb6c95a7de1d2211378c5eb71f09907221ff
-ms.sourcegitcommit: 4f9fa86166b50e86cf089f31d85e16155b60559f
+ms.openlocfilehash: a8b5d9e3917c854cb255a35d3bbc901bcce52c24
+ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34757433"
+ms.lasthandoff: 06/28/2018
+ms.locfileid: "37084527"
 ---
-# <a name="remote-monitoring-solution-accelerator-architecture"></a>Távoli figyelés megoldás gyorsító architektúrája
+# <a name="remote-monitoring-solution-accelerator-overview"></a>Távoli figyelés megoldás gyorsító – áttekintés
 
 A távoli megfigyelési [megoldásgyorsító](../iot-accelerators/iot-accelerators-what-are-solution-accelerators.md) egy végpont figyelési megoldást igényelnek több valósítja meg a távoli helyeken. A megoldás fontos Azure-szolgáltatások kombinációját kínálja az üzleti forgatókönyv általános megvalósítása érdekében. Használhatja a megoldás kiindulási pontként a saját végrehajtásához és [testreszabása](../iot-accelerators/iot-accelerators-remote-monitoring-customize.md) úgy, hogy a saját üzleti követelményeinek megfelelően.
 

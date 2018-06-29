@@ -50,7 +50,7 @@
       href: sql-database-design-first-database.md
     - name: 2 – Adatbázis tervezése a .NET használatával
       href: sql-database-design-first-database-csharp.md
-    - name: 3 – Migrálás SQL Server-adatbázisba DMS használatával
+    - name: 3 – Migrálás SQL Server-adatbázisba a DMA használatával
       href: sql-database-migrate-your-sql-server-database.md
     - name: 4 – Az SQL DB biztonságossá tétele
       href: sql-database-security-tutorial.md

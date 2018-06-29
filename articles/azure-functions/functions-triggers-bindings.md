@@ -15,12 +15,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 05/24/2018
 ms.author: tdykstra
-ms.openlocfilehash: 5e7e6608003b365d5516ca2e94a51c0710ad1125
-ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
-ms.translationtype: HT
+ms.openlocfilehash: 305f7a54e290b8628401c21f033f8be7017d4a91
+ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37061353"
+ms.lasthandoff: 06/28/2018
+ms.locfileid: "37083865"
 ---
 # <a name="azure-functions-triggers-and-bindings-concepts"></a>Az Azure Functions eseményindítók és kötések fogalmak
 
@@ -37,62 +37,6 @@ Eseményindítók és kötések lehetővé teszik, hogy kerülje hardcoding dolg
 Amikor funkciók fejlesztése az Azure portál használatával, az eseményindítók és kötések vannak konfigurálva a *function.json* fájlt. A portál egy felhasználói Felületet biztosít az ebben a konfigurációban, de tudja szerkeszteni a fájlt közvetlenül módosítása a **speciális szerkesztő**.
 
 Visual Studio használatával hozzon létre egy osztálytár funkciók fejlesztésekor konfigurálásához eseményindítók és kötések dekoráció módszerek és attribútumokkal rendelkező paraméterek.
-
-## <a name="supported-bindings"></a>Támogatott kötések
-
-[!INCLUDE [Full bindings table](../../includes/functions-bindings.md)]
-
-Információ arról, hogy mely kötések még csak előzetes verziójúak vagy üzemi használatra jóváhagyott: [támogatott nyelv](supported-languages.md).
-
-## <a name="register-binding-extensions"></a>Regisztrálja a kötési bővítmény
-
-Bizonyos fejlesztési környezetekben, hogy explicit módon *regisztrálása* használni kívánt egyik kötése. Kötési bővítmények NuGet-csomagok szerepelnek, és regisztrálhat egy kiterjesztést a csomag telepítése. A következő táblázat azt jelzi, hogy mikor és hogyan regisztrálja kötés bővítmények.
-
-|Fejlesztési környezet |Regisztráció<br/> a funkciók 1.x  |Regisztráció<br/> a funkciók 2.x  |
-|---------|---------|---------|
-|Azure Portal|Automatikus|[Automatikus kérdéshez](#azure-portal-development)|
-|Helyi az Azure Functions alapvető eszközökkel|Automatikus|[Alapvető eszközök parancssori felület parancsai használni](#local-development-azure-functions-core-tools)|
-|A Visual Studio 2017 használatával C# osztálytár|[NuGet-eszközök](#c-class-library-with-visual-studio-2017)|[NuGet-eszközök](#c-class-library-with-visual-studio-2017)|
-|Visual Studio Code használatával C# osztálytár|–|[A .NET Core CLI használata](#c-class-library-with-visual-studio-code)|
-
-A következő kötéstípusok kivételeket, amelyek nem igényelnek explicit regisztrálása, mert a rendszer automatikusan regisztrálja az összes verziója és környezetekben: HTTP időzítő és Azure Storage (BLOB, üzenetsorok és táblák). 
-
-### <a name="azure-portal-development"></a>Azure portál fejlesztési
-
-Hozzon létre egy függvényt vagy felvenni egy kötést, megkérdezi, ha az eseményindító vagy a kötési bővítmény regisztrációs igényel. Válaszolnia kell a figyelmeztetésre kattintva **telepítése** regisztrálni a bővítményt. Telepítés egy fogyasztás terv akár 10 percet vehet igénybe.
-
-Csak telepítenie kell minden egyes bővítmény egy adott funkció alkalmazást egyszer. 
-
-### <a name="local-development-azure-functions-core-tools"></a>Helyi fejlesztési Azure Functions Core eszközök
-
-[!INCLUDE [functions-core-tools-install-extension](../../includes/functions-core-tools-install-extension.md)]
-
-<a name="local-csharp"></a>
-### <a name="c-class-library-with-visual-studio-2017"></a>C# osztály függvénytár, amely a Visual Studio 2017
-
-A **Visual Studio 2017**, csomagokat a Csomagkezelő konzol használatával telepítheti a [Install-Package](https://docs.microsoft.com/nuget/tools/ps-ref-install-package) parancs, a következő példában látható módon:
-
-```powershell
-Install-Package Microsoft.Azure.WebJobs.ServiceBus --Version <target_version>
-```
-
-Egy adott kötéshez használandó a csomag nevét, hogy a kötéshez a áttekintésével foglalkozó cikkben találhatók. Egy vonatkozó példáért lásd: a [csomagok a Service Bus kötés áttekintésével foglalkozó cikkben szakasza](functions-bindings-service-bus.md#packages---functions-1x).
-
-Cserélje le `<target_version>` a példában a csomaghoz, az adott verzióval rendelkező például `3.0.0-beta5`. A következő egyes csomagot lapokon felsorolt érvényes verziók [NuGet.org](https://nuget.org). A Functions futtatókörnyezete megfelelő Főverziók a áttekintésével foglalkozó cikkben a kötéshez megadott 1.x vagy 2.x.
-
-### <a name="c-class-library-with-visual-studio-code"></a>C# osztálytár a Visual Studio Code
-
-A **Visual Studio Code**, a parancssor a csomagok telepítése is a [dotnet csomag hozzáadása](https://docs.microsoft.com/dotnet/core/tools/dotnet-add-package) a .NET Core CLI-t, a parancsot a következő példában látható módon:
-
-```terminal
-dotnet add package Microsoft.Azure.WebJobs.ServiceBus --version <target_version>
-```
-
-A .NET Core CLI csak az Azure Functions 2.x fejlesztési használható.
-
-Egy adott kötéshez használandó a csomag nevét, hogy a kötéshez a áttekintésével foglalkozó cikkben találhatók. Egy vonatkozó példáért lásd: a [csomagok a Service Bus kötés áttekintésével foglalkozó cikkben szakasza](functions-bindings-service-bus.md#packages---functions-1x).
-
-Cserélje le `<target_version>` a példában a csomaghoz, az adott verzióval rendelkező például `3.0.0-beta5`. A következő egyes csomagot lapokon felsorolt érvényes verziók [NuGet.org](https://nuget.org). A Functions futtatókörnyezete megfelelő Főverziók a áttekintésével foglalkozó cikkben a kötéshez megadott 1.x vagy 2.x.
 
 ## <a name="example-trigger-and-binding"></a>Példa eseményindító és kötés
 
@@ -202,6 +146,66 @@ Egy osztálytár, a következő eseményindítót és a kötési információ &m
      public string MobileNumber { get; set; }
  }
 ```
+
+## <a name="supported-bindings"></a>Támogatott kötések
+
+[!INCLUDE [Full bindings table](../../includes/functions-bindings.md)]
+
+Információ arról, hogy mely kötések még csak előzetes verziójúak vagy üzemi használatra jóváhagyott: [támogatott nyelv](supported-languages.md).
+
+## <a name="register-binding-extensions"></a>Regisztrálja a kötési bővítmény
+
+Bizonyos fejlesztési környezetekben, hogy explicit módon *regisztrálása* használni kívánt egyik kötése. Kötési bővítmények NuGet-csomagok szerepelnek, és regisztrálhat egy kiterjesztést a csomag telepítése. A következő táblázat azt jelzi, hogy mikor és hogyan regisztrálja kötés bővítmények.
+
+|Fejlesztési környezet |Regisztráció<br/> a funkciók 1.x  |Regisztráció<br/> a funkciók 2.x  |
+|---------|---------|---------|
+|Azure Portal|Automatikus|[Automatikus kérdéshez](#azure-portal-development)|
+|Helyi az Azure Functions alapvető eszközökkel|Automatikus|[Alapvető eszközök parancssori felület parancsai használni](#local-development-azure-functions-core-tools)|
+|A Visual Studio 2017 használatával C# osztálytár|[NuGet-eszközök](#c-class-library-with-visual-studio-2017)|[NuGet-eszközök](#c-class-library-with-visual-studio-2017)|
+|Visual Studio Code használatával C# osztálytár|–|[A .NET Core CLI használata](#c-class-library-with-visual-studio-code)|
+
+A következő kötéstípusok kivételeket, amelyek nem igényelnek explicit regisztrálása, mert a rendszer automatikusan regisztrálja az összes verziója és környezetekben: HTTP időzítő és Azure Storage (BLOB, üzenetsorok és táblák). 
+
+### <a name="azure-portal-development"></a>Azure portál fejlesztési
+
+Ez a szakasz csak azokra az funkciók 2.x. Kötési bővítmények nem rendelkezik explicit módon regisztráció a funkciók 1.x.
+
+Hozzon létre egy függvényt vagy felvenni egy kötést, megkérdezi, ha az eseményindító vagy a kötési bővítmény regisztrációs igényel. Válaszolnia kell a figyelmeztetésre kattintva **telepítése** regisztrálni a bővítményt. Telepítés egy fogyasztás terv akár 10 percet vehet igénybe.
+
+Csak telepítenie kell minden egyes bővítmény egy adott funkció alkalmazást egyszer. 
+
+### <a name="local-development-azure-functions-core-tools"></a>Helyi fejlesztési Azure Functions Core eszközök
+
+Ez a szakasz csak azokra az funkciók 2.x. Kötési bővítmények nem rendelkezik explicit módon regisztráció a funkciók 1.x.
+
+[!INCLUDE [functions-core-tools-install-extension](../../includes/functions-core-tools-install-extension.md)]
+
+<a name="local-csharp"></a>
+### <a name="c-class-library-with-visual-studio-2017"></a>C# osztály függvénytár, amely a Visual Studio 2017
+
+A **Visual Studio 2017**, csomagokat a Csomagkezelő konzol használatával telepítheti a [Install-Package](https://docs.microsoft.com/nuget/tools/ps-ref-install-package) parancs, a következő példában látható módon:
+
+```powershell
+Install-Package Microsoft.Azure.WebJobs.ServiceBus --Version <target_version>
+```
+
+Egy adott kötéshez használandó a csomag nevét, hogy a kötéshez a áttekintésével foglalkozó cikkben találhatók. Egy vonatkozó példáért lásd: a [csomagok a Service Bus kötés áttekintésével foglalkozó cikkben szakasza](functions-bindings-service-bus.md#packages---functions-1x).
+
+Cserélje le `<target_version>` a példában a csomaghoz, az adott verzióval rendelkező például `3.0.0-beta5`. A következő egyes csomagot lapokon felsorolt érvényes verziók [NuGet.org](https://nuget.org). A Functions futtatókörnyezete megfelelő Főverziók a áttekintésével foglalkozó cikkben a kötéshez megadott 1.x vagy 2.x.
+
+### <a name="c-class-library-with-visual-studio-code"></a>C# osztálytár a Visual Studio Code
+
+A **Visual Studio Code**, a parancssor a csomagok telepítése is a [dotnet csomag hozzáadása](https://docs.microsoft.com/dotnet/core/tools/dotnet-add-package) a .NET Core CLI-t, a parancsot a következő példában látható módon:
+
+```terminal
+dotnet add package Microsoft.Azure.WebJobs.ServiceBus --version <target_version>
+```
+
+A .NET Core CLI csak az Azure Functions 2.x fejlesztési használható.
+
+Egy adott kötéshez használandó a csomag nevét, hogy a kötéshez a áttekintésével foglalkozó cikkben találhatók. Egy vonatkozó példáért lásd: a [csomagok a Service Bus kötés áttekintésével foglalkozó cikkben szakasza](functions-bindings-service-bus.md#packages---functions-1x).
+
+Cserélje le `<target_version>` a példában a csomaghoz, az adott verzióval rendelkező például `3.0.0-beta5`. A következő egyes csomagot lapokon felsorolt érvényes verziók [NuGet.org](https://nuget.org). A Functions futtatókörnyezete megfelelő Főverziók a áttekintésével foglalkozó cikkben a kötéshez megadott 1.x vagy 2.x.
 
 ## <a name="binding-direction"></a>Kötési iránya
 

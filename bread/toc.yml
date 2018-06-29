@@ -271,7 +271,7 @@
     - name: Data Lake Analytics
       tocHref: /azure/data-lake-analytics/
       topicHref: /azure/data-lake-analytics/
-    - name: Data Lake Store
+    - name: 1. generációs Data Lake Storage
       tocHref: /azure/data-lake-store/
       topicHref: /azure/data-lake-store/
     - name: DevTest Lab
@@ -311,7 +311,7 @@
         - name: Vállalati biztonság
           tocHref: /azure/hdinsight/domain-joined
           topicHref: /azure/hdinsight/domain-joined/apache-domain-joined-introduction
-        - name: R Server
+        - name: ML-szolgáltatások
           tocHref: /azure/hdinsight/r-server
           topicHref: /azure/hdinsight/r-server-overview
         - name: Spark
@@ -518,6 +518,9 @@
         - name: Blobok
           tocHref: /azure/storage/blobs/
           topicHref: /azure/storage/blobs/storage-blobs-introduction
+        - name: 2. generációs Data Lake Storage
+          tocHref: /azure/storage/data-lake-storage-gen2/
+          topicHref: /azure/storage/data-lake-storage/introduction
         - name: Fájlok
           tocHref: /azure/storage/files/
           topicHref: /azure/storage/files/storage-files-introduction

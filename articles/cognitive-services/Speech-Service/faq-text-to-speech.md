@@ -9,146 +9,48 @@ ms.component: custom-speech
 ms.topic: article
 ms.date: 06/11/2018
 ms.author: panosper
-ms.openlocfilehash: 64e505889ef9472603471d67a961985c1290663a
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
-ms.translationtype: HT
+ms.openlocfilehash: 4a29435c0ace79fc3a5d3a5a42a0e91bdbc8da5e
+ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37045843"
+ms.lasthandoff: 06/28/2018
+ms.locfileid: "37082824"
 ---
-# <a name="custom-speech-service-frequently-asked-questions"></a>Egyéni beszéd szolgáltatás gyakran ismételt kérdések
+# <a name="text-to-speech-frequently-asked-questions"></a>Szöveg-beszéd átalakítás, gyakran ismételt kérdések
 
 Ha ez a GYIK a kérdésekre adott válaszok nem található, próbálja meg az egyéni beszéd Service Közösség kérése a [StackOverflow](https://stackoverflow.com/questions/tagged/project-oxford+or+microsoft-cognitive) és [UserVoice](https://cognitive.uservoice.com/)
 
 ## <a name="general"></a>Általános kérdések
 
-**Kérdés**: szöveg modellekhez alapterv és egyéni beszéd átalakítás közötti különbségek?
+**Kérdés**: Mi a különbség a normál és egyéni hang modellek között?
 
-**Válasz**: eredeti modellek rendelkezik betanítva a Microsoft tulajdonában lévő adatokat, és már található, telepítve van a felhőben. Egyéni modellek engedélyezése a felhasználó számára egy modell jobban megfelelően egy adott környezetben meghatározott zajszint vagy nyelvi alkalmazkodáshoz. Gyári padlók, autók, zajos utca igényelnének igazítani akusztikus modell, mivel például biológia, a fizikai, a radiológia, a termékek neveit és egyéni mozaikszavak meg adott témákat igényelnének nyelvi modell.
+**Válasz**: A szabványos hang modellek (más néven hang betűtípusok) rendelkezik a Microsoft tulajdonában lévő adatok betanítva, és a már telepített a felhőben. Egyedi Hangüzenetek modellek engedélyezése a felhasználó vagy egy átlagos modellt támogató, és vigye át a timbre és a kifejezés módon a beszélőre hang stílus megfelelően, vagy a betanítási adatok, a felhasználó által készített alapján egy új, teljes modell betanításához. Napjainkban egyre több ügyfél szeretné a botok az egy-az-a-típus, a vállalati arculattal ellátott hangot. A platform felépítése egyedi hangüzenetek, amely a megfelelő választás.
 
-**Kérdés**: Hogyan kezdjek hozzá, ha a modell használni kívánt?
+**Kérdés**: Hogyan kezdjek hozzá, ha egy szabványos hang modell használni kívánt?
 
-**Válasz**: először be kell szereznie egy [előfizetés kulcs](get-started.md). Ha a kívánt REST-hívások predeployed alapterv modellekkel, tekintse meg a [részletesen Itt](rest-apis.md). Ha szeretné használni a websocket elemek letöltése a [SDK](speech-sdk.md)
+**Válasz**: több mint 80 szabványos hang modellek több mint 45 nyelvű HTTP-kérelmek keresztül érhetők el. Először be kell szereznie egy [előfizetés kulcs](https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/get-started). Ahhoz, hogy az előre telepített hang modellekhez REST-hívások, tekintse át a [részletesen Itt](https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/rest-apis#text-to-speech).
 
-**Kérdés**: i. tegye mindig kell egy egyéni beszéd modell létrehozása?
+**Kérdés**: Ha a használni kívánt egy testre szabott Hangüzenetek modell, megegyezik az API-t a szabványos hangok?
 
-**Válasz**: nem, ha az alkalmazás általános napi nyelvi egyéni szóhasználatának és, hogy esetleg ritka majd nélkül nem kell egy modell testreszabásához. Ezen felül olyan környezetben, ahol kevéssé vagy egyáltalán ne háttérzaj van, akkor nem használható testre kell szabnia vagy alkalmazás esetén. A portál lehetővé teszi, hogy a felhasználók alapterv és egyéni modellek telepítéséhez, és pontossága tesztek futtatásához őket. Felhasználók Ez a szolgáltatás segítségével mérheti egy alapkonfiguráció vs pontosságát egy egyéni modell.
+**Válasz**: Ha az egyedi Hangüzenetek modell létrehozott és telepített, elérhetővé válik egy egyedi végpont a modell. Meg kell adnia a végpont a a HTTP-kérelmekre, a hang használatára képes legyen alkalmazni az alkalmazásokban. A szöveg-beszéd átalakítás szolgáltatás REST API-n keresztül elérhető ugyanezeket a funkciókat a egyéni végponthoz is érhető el. Lásd: hogyan [létrehozásáról és használatáról a egyéni végpont](https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/how-to-customize-voice-font#create-and-use-a-custom-endpoint).
 
-**Kérdés**: hogyan fogja tudni, ha az adatok vagy a modell feldolgozása befejeződött?
+**Kérdés**: van a betanítási adatok előkészítése egyedi Hangüzenetek modellek létrehozása a saját?
 
-**Válasz**: a modell vagy a tábla adatkészlet állapota jelenleg tudja csak szeretne.
-Amikor a feldolgozás befejeződik, az állapota lesz "Kész".
+**Válasz**: készítse elő a betanítási adatok saját magának kell. Beszéd adatok gyűjteménye, a testre szabott Hangüzenetek modellek létrehozásához szükséges. Ez a gyűjtemény a beszédfelismerés felvételek hangfájlok, és a vonatkozó mindegyik hangfájlt szövegfájlba áll. A digitális hang eredményét fokozottan támaszkodik a betanítási adatok minőségét. Egy jó beszédfelismerő eredményezett, fontos, hogy a felvétel kiváló minőségű állandó mikrofon csendes helyiségben történik. Egységes kötet beszéd sebessége, és beszéljen térközt, és a beszéd kifejező mannerisms még akkor is, konzisztencia nélkülözhetetlenek a kiváló digitális hangot felépítése. Erősen ajánlott, hogy kell-e a hangok tárolja, amely egy rögzítése studio.
+Jelenleg nem online rögzítése támogatásához és nem áll a rögzítés studio ajánlott. A formátum a követelményt, lásd: [felvételek és ki előkészítése](https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/how-to-customize-voice-font#prepare-recordings-and-transcripts)
+ 
+**Kérdés**:-parancsfájlok mit érdemes használni a beszéd adatoknak a egyedi Hangüzenetek betanításhoz? 
 
-**Kérdés**: hozható létre egynél több modell egyszerre?
+**Válasz**: jelenleg korlátozza a parancsfájlok Hangrögzítés. A saját parancsfájlok segítségével jegyezze fel a beszédfelismerés. Csak gondoskodjon elegendő fonetikus érvényességének a beszédfelismerés adatait. Egyedi Hangüzenetek betanításához elindíthatja beszéd adatokat, amelyek oka az lehet, 50 különböző mondat kis mennyiségű (körülbelül 3-5 perc beszéd). A több adatot ad meg, annál természetes lesz a hang. Egy teljes hang betűtípus betanítása, ha ad meg, hogy több mint 2000 mondat (körülbelül 3-4 órát beszéd) felvételek megkezdése. Ahhoz, hogy a jó minőségű teljes hang, szüksége lesz való felvételek több mint 6000 mondat (körülbelül 8-10 órát beszéd) előkészítése.  
+Készítse elő a parancsfájlok a rögzítés a további szolgáltatások nyújtunk. Ügyfél [hang egyéni ügyfél-támogatási](mailto:customvoice@microsoft.com?subject=Inquiries%20about%20scripts%20generation%20for%20Custom%20Voice%20creation) lekérdezésekhez.
 
-**Válasz**: nincs korlátozva, hogy hány modellek a gyűjteményben, de minden oldalon egyszerre csak egy hozhatók létre.
-Például egy nyelvi modell létrehozási folyamat nem indítható, ha jelenleg a nyelvi modell folyamat szakaszában.
-Is, azonban rendelkezik egy akusztikus modell és a nyelvi modell feldolgozása egy időben. 
+**Kérdés**: Mi történik, ha az alapértelmezett értéknél nagyobb feldolgozási kell, vagy hogy mit nyújt a portálon?
 
-**Kérdés**: I is tudjuk, hogy végzett a hibát. Hogyan szakítsa meg az adatok importálását, illetve a modell létrehozása folyamatban? 
-
-**Válasz**: jelenleg nem állítható vissza egy akusztikus vagy nyelvi kiigazítása folyamat.
-Az importálás után törölheti importált adatok
-
-**Kérdés**: a keresési & Diktálás modellek és a Conversational modellek közötti különbségek?
-
-**Válasz**: nincsenek két talál akusztikus & nyelvi modellek az egyéni beszéd szolgáltatásban választhat.
-keresési lekérdezések, vagy Diktálás # témakör. A Microsoft Conversational AM megfelelő conversational Style szóbeli beszéd ismer fel.
-Az ilyen típusú beszéd általában irányul másik személynek, többek között a telefonos ügyfélszolgálatok vagy értekezletek.
-
-**Kérdés**: frissíthetők a meglévő model (modell halmozott)?
-
-**Válasz**: meglévő modellek nem lehet frissíteni. Megkerülő megoldásként az új egyesíthető a régi adatkészletet, és readapt.
-
-A régi és új adatkészletek kapcsolóval együtt kell használni egy egyetlen .zip (ha akusztikus adatok) vagy egy .txt fájl nyelvi adatok esetén. Egyszer kiigazítása történik, az új frissített modell rendelkeznie kell deszerializálni telepített új végpont beszerzése
-
-**Kérdés**: Mi történik, ha az alapértelmezett értéknél nagyobb feldolgozási kell, vagy hogy mit nyújt a portálon. 
-
-**Válasz**: legfeljebb 20 egyidejű kérelmek lépésekben a modell. 
-
-Lépjen kapcsolatba velünk, ha nagyobb méretezéshez van szüksége.
+**Válasz**: legfeljebb 20 egyidejű kérelmek lépésekben a modell. Ügyfél [hang egyéni ügyfél-támogatási](mailto:customvoice@microsoft.com?subject=Inquiries%20about%20scripts%20generation%20for%20Custom%20Voice%20creation) nagyobb méretezés a lekérdezésekhez.
 
 **Kérdés**: is szeretnék a modell letöltése és Futtatás helyben?
 
 **Válasz**: modellek nem lehet letölti és helyben végrehajtott.
-
-**Kérdés**: a rendszer naplózza a kérelem?
-
-**Válasz**: megválaszthatja, hogy kikapcsolja a nyomkövetés, amikor nincsenek hang központi telepítés létrehozásakor vagy transcriptions bekerülnek a naplóba. Ellenkező esetben kérelmek általában jelentkezett be az Azure-ban biztonságos tárolására. Ha további adatvédelmi megfontolások, amelyek nem engedik az egyéni beszéd szolgáltatással a, forduljon a támogatási csatornáit egyikét.
-
-## <a name="importing-data"></a>Adatok importálása
-
-**Kérdés**: Mi az, hogy az adatkészlet méretének korlátot? Hogy miért? 
-
-**Válasz**: az aktuális adatkészlet határa 2 GB-ot, HTTP feltöltésének fájl mérete a korlátozás miatt. 
-
-**Kérdés**: is szeretnék a zip-saját szövegfájlok ahhoz, hogy nagyobb szöveges fájl feltöltése? 
-
-**Válasz**: nem, jelenleg csak a tömörítetlen szövegfájlok használata engedélyezett.
-
-**Kérdés**: A jelentés szerint a utterances sikertelen volt. Mi az a probléma?
-
-**Válasz**: nem sikerült feltölteni egy fájlban utterances 100 %-os nincs probléma.
-Ha az adatok akusztikus vagy nyelvi utterances többsége (például > 95 %-os) sikeresen importálva, az adatkészlet is használható. Ajánlott azonban, hogy megpróbálja megállapítani, hogy a utterances miért bukott, és hárítsa el a problémákat. Leggyakoribb problémák, például formázási hibákat, amelyek könnyen javítsa ki. 
-
-## <a name="creating-am"></a>DE létrehozása
-
-**Kérdés**: akusztikus adatok van szükségem?
-
-**Válasz**: javasoljuk akusztikus adatok egy óra 30 perc
-
-**Kérdés**: milyen adatokat kell gyűjteni?
-
-**Válasz**: adatokat gyűjthet, amelyek a forgatókönyvet közel van, és a lehető nagybetűhasználattal.
-Az adatgyűjtés meg kell felelnie a célalkalmazás és a felhasználók eszközt vagy eszközöket, környezetek és hangszórók típusú. Általában akkor kell amikből adatgyűjtést legszélesebb hangszórók lehető széles. 
-
-**Kérdés**: hogyan kell gyűjteni az? 
-
-**Válasz**: hozzon létre egy önálló adatok gyűjtemény alkalmazást, vagy bizonyos ki a forgalomban hangrögzítés programot.
-Az alkalmazás, amely a hangadatok naplózza, és használja, amely egy verziója is létrehozhat. 
-
-**Kérdés**: kell átírni kiigazítása adatok magam megírni? 
-
-**Válasz**: az adatok kért kell lennie. Saját kezűleg átvezeti, vagy használjon szakmai írjanak elő szolgáltatást. Közösségi ezek használatát szakmai transcribers, míg mások egyes használja.
-
-**Kérdés**: mennyi időt vesz igénybe, létrehozhat egy egyéni akusztikus modellt?
-
-**Válasz**: A feldolgozási ideje létrehozni egy egyéni akusztikus modell tárgya ugyanaz, mint a akusztikus adatkészlet hosszát.
-Igen, öt órás adatkészlet alapján létrehozott testreszabott akusztikus modell órát fog igénybe venni körülbelül öt folyamathoz. 
-
-## <a name="offline-testing"></a>Offline tesztelés
-
-**Kérdés**: végezheti meg, hogy egy egyéni nyelvi modell használatával saját egyéni akusztikus modell offline vizsgálat?
-
-**Válasz**: Igen, egyszerűen jelölje ki a egyéni nyelvi modellt a legördülő lista az offline vizsgálat beállításakor
-
-**Kérdés**: végezheti meg, hogy saját egyéni akusztikus modell segítségével egyéni nyelvi modell offline vizsgálat?
-
-**Válasz**: Igen, egyszerűen jelölje ki a egyéni akusztikus modellt a legördülő menü az offline vizsgálat beállítása során.
-
-**Kérdés**: Mi Word Hibaarány, és hogyan azt számított?
-
-**Válasz**: Word hibaarány a beszédfelismerés értékelési metrikát. A hibák összesített számát, beleértve a beszúrások, törléseket és helyettesítések hivatkozás írjanak elő szavak száma osztva számítanak.
-
-**Kérdés**: Hogyan állapítható meg az pontossága vizsgálati eredményeket, hogy helyes?
-
-**Válasz**: az eredmények megjelenítése a modell, és a testreszabott összehasonlítása.
-Meg kell célja, hogy a modell létrehozásához a testreszabási megfelelőbb járulhatnak
-
-**Kérdés**: hogyan tegye I mérje fel, a WER alap modell, ezért láthatom, ha hiba történt a fokozása? 
-
-**Válasz**: A kapcsolat nélküli vizsgálati eredmények megjelenítése az egyéni és javítása alapterv pontosságát pontosságát alapterv keresztül
-
-## <a name="creating-lm"></a>Az LM létrehozása
-
-**Kérdés**: mennyi szöveges adatot kell feltölteni?
-
-**Válasz**: attól függ, hogyan különböző szóhasználatának és az alkalmazásban használt kifejezések a kiindulási nyelvi modelleket. Minden új szó akkor célszerű listázzák használata a lehető legtöbb példákat. A közös az alkalmazásban használt kifejezések többek között a mondatok nyelvi adatok akkor is hasznos, azt jelzi, hogy a rendszer ezeket a feltételeket, valamint a figyelésére. Gyakori, hogy legalább egy 100 és általában több száz utterances a nyelvi adatkészlet vagy több olyan is. Is lekérdezések bizonyos típusú kellene lennie, mint a többi gyakori, ha beszúrásához közös lekérdezések több példánya a következő adatkészletben.
-
-**Kérdés**: I csak feltöltheti szavak listáját?
-
-**Válasz**: szavakat feltöltése fogja lekérni a Szójegyzék a szavakat azonban tanítja meg a rendszer a szavakat általában használata.
-Teljes vagy részleges utterances (mondat vagy felhasználók várhatóan mondja ki a műveleteket kifejezések) megadásával a nyelvi modell megtudhatja a szavakat, valamint, hogy használhatók. Az egyéni nyelvi modell helyes, nem csak az első, a rendszer új szavakat, hanem az alkalmazás ismert szavak valószínűségét hangolását. A rendszer, ismerje meg, jobban teljes utterances biztosító segítségével. 
 
 ## <a name="next-steps"></a>További lépések
 

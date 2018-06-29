@@ -10,12 +10,12 @@ ms.topic: article
 ms.date: 08/16/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: e16130dc41418b22f2dea4ceae5e0a90ed963161
-ms.sourcegitcommit: 828d8ef0ec47767d251355c2002ade13d1c162af
+ms.openlocfilehash: 11335079373b627bab923f63eda148b0a74307ea
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36938408"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37100521"
 ---
 # <a name="azure-ad-b2c-frequently-asked-questions-faq"></a>Az Azure AD B2C: Gyakori kérdések (GYIK) 
 Ezen a lapon az Azure Active Directory (Azure AD) B2C kapcsolatos gyakori kérdésekre ad választ. Tartsa biztonsági frissítések keresése.
@@ -97,9 +97,9 @@ Olvassa el ebben a cikkben [külső identitások](../active-directory/active-dir
 ### <a name="what-reporting-and-auditing-features-does-azure-ad-b2c-provide-are-they-the-same-as-in-azure-ad-premium"></a>Milyen jelentéskészítési és a naplózási szolgáltatások az Azure AD B2C nyújt? Vannak ugyanaz, mint a prémium szintű Azure AD?
 Az Azure AD B2C nem, nem támogatja ugyanazokat a jelentések szerint az Azure AD Premium. Vannak azonban sok commonalities:
 
-* **Bejelentkezési jelentések** csak érhetők el az Azure portálon (Azure Active Directory > tevékenység > bejelentkezések), és nem érhetők el a Graph API-n keresztül. Minden egyes bejelentkezés rekordja csökkentett adatokkal rendelkeznek.
-* **Naplózási jelentések** csak érhetők el az Azure portálon (Azure Active Directory > tevékenység > Naplók), és nem érhetők el a Graph API-n keresztül. A felügyeleti tevékenység, valamint alkalmazástevékenységhez tartalmaznak. 
-* **Használati jelentések** érhetők el csak a [használati Reporting API](active-directory-b2c-reference-usage-reporting-api.md) és nem érhetők el az Azure-portálon. Azon felhasználók számát, a bejelentkezések száma és a kötet MFA tartalmaznak. 
+* **Bejelentkezési jelentések** adjon meg egy rekord minden egyes bejelentkezés csökkentett adatokkal.
+* **Naplózási jelentések** közé tartoznak a felügyeleti tevékenység, valamint alkalmazás tevékenység. 
+* **Használati jelentések** azon felhasználók számát, a bejelentkezések száma, és a kötet a többtényezős hitelesítés. 
 
 ### <a name="can-i-localize-the-ui-of-pages-served-by-azure-ad-b2c-what-languages-are-supported"></a>A felhasználói felület az Azure AD B2C által kiszolgált lapok is localize? Milyen nyelveket támogatja?
 Igen!  További információ a [nyelvi testreszabási](active-directory-b2c-reference-language-customization.md), amely nyilvános előzetes verzió van.  Azt a fordítások 36 nyelvet a, és az igényeinek bármilyen karakterlánc lehet felülbírálni.

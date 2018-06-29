@@ -1,26 +1,28 @@
 ---
-title: Az Azure Data Lake Store dokumentációja – oktatóanyagok és API-referencia | Microsoft Docs
+title: Az 1. generációs Azure Data Lake Storage dokumentációja – oktatóanyagok és API-referencia | Microsoft Docs
 description: Ismerje meg, hogy hogyan hozhat létre, kezelhet, és érhet el egy nagykapacitású, Hadoop-kompatibilis Data Lake adattárat, amellyel bármilyen méretű, típusú és feldolgozási sebességű adatot elemezhet.
 services: data-lake-store
-author: czeumault
-manager: carolz
+author: twooley
+manager: twooley
 layout: LandingPage
 ms.assetid: ''
 ms.service: data-lake-store
-ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: landing-page
-ms.date: 01/23/2017
-ms.author: carolz
-ms.openlocfilehash: d738676a0a9b16c32646734168546992d8595912
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.topic: conceptual
+ms.date: 06/27/2018
+ms.author: twooley
+ms.openlocfilehash: ba17c59169d00a8333bb9eb1c7bb0c1a56aaba83
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37033441"
 ---
-# <a name="data-lake-store-documentation"></a>Data Lake Store – dokumentáció
+# <a name="azure-data-lake-storage-gen1-documentation"></a>Az 1. generációs Azure Data Lake Storage dokumentációja
 
-Ismerje meg, hogy hogyan használhatja a nagykapacitású, Hadoop-kompatibilis Data Lake Store adattárat, amellyel bármilyen méretű, típusú és feldolgozási sebességű adatot elemezhet. Az oktatóanyagok, API-referenciák és az egyéb dokumentáció bemutatják, hogyan hozhat létre, kezelhet, és érhet el egy Data Lake adattárat, amellyel üzemeltetési és magyarázó elemzéseket végezhet.
+Ismerje meg, hogy hogyan használhatja a nagy kapacitású, Hadoop-kompatibilis 1. generációs Data Lake Storage (korábban Azure Data Lake Store) adattárat, amellyel bármilyen méretű, típusú és feldolgozási sebességű adatot elemezhet. Az oktatóanyagok, API-referenciák és az egyéb dokumentáció bemutatják, hogyan hozhat létre, kezelhet, és érhet el egy Data Lake adattárat, amellyel üzemeltetési és magyarázó elemzéseket végezhet.
+
+Ha érdeklik a 2. generációs Data Lake Storage előzetes verziójának további részletei, tekintse meg a [termék ismertető oldalát](https://aka.ms/adlsgen2-product).
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -34,7 +36,7 @@ Ismerje meg, hogy hogyan használhatja a nagykapacitású, Hadoop-kompatibilis D
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Ismerje meg az Azure Data Lake Store szolgáltatást</h3>
+                        <h3>Tudnivalók az 1. generációs Data Lake Storage-ról</h3>
                     </div>
                 </div>
             </div>
@@ -52,7 +54,7 @@ Ismerje meg, hogy hogyan használhatja a nagykapacitású, Hadoop-kompatibilis D
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Azure Data Lake Store – videótár</h3>
+                        <h3>1. generációs Data Lake Storage – videótár</h3>
                     </div>
                 </div>
             </div>
@@ -70,7 +72,7 @@ Ismerje meg, hogy hogyan használhatja a nagykapacitású, Hadoop-kompatibilis D
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Az Azure Data Lake Store használatának első lépései az Azure Portal használatával</h3>
+                        <h3>Az 1. generációs Data Lake Storage használatának első lépései az Azure Portalon</h3>
                     </div>
                 </div>
             </div>
@@ -88,7 +90,7 @@ Ismerje meg, hogy hogyan használhatja a nagykapacitású, Hadoop-kompatibilis D
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Az Azure Data Lake Store használatának első lépései a PowerShell használatával</h3>
+                        <h3>Az 1. generációs Data Lake Storage használatának első lépései a PowerShell-lel</h3>
                     </div>
                 </div>
             </div>
@@ -106,7 +108,7 @@ Ismerje meg, hogy hogyan használhatja a nagykapacitású, Hadoop-kompatibilis D
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Az Azure Data Lake Store használatának első lépései az Azure parancssori felületének használatával</h3>
+                        <h3>Az 1. generációs Data Lake Storage használatának első lépései az Azure CLI-vel</h3>
                     </div>
                 </div>
             </div>
@@ -124,7 +126,7 @@ Ismerje meg, hogy hogyan használhatja a nagykapacitású, Hadoop-kompatibilis D
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Az Azure Data Lake Store használatának első lépései a .NET használatával</h3>
+                        <h3>Az 1. generációs Data Lake Storage használatának első lépései .NET-tel</h3>
                     </div>
                 </div>
             </div>
@@ -142,7 +144,7 @@ Ismerje meg, hogy hogyan használhatja a nagykapacitású, Hadoop-kompatibilis D
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Az Azure Data Lake Store használatának első lépései a Java használatával</h3>
+                        <h3>Az 1. generációs Data Lake Storage használatának első lépései a Javával</h3>
                     </div>
                 </div>
             </div>
@@ -160,7 +162,7 @@ Ismerje meg, hogy hogyan használhatja a nagykapacitású, Hadoop-kompatibilis D
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Az Azure Data Lake Store használatának első lépései a Node.js használatával</h3>
+                        <h3>Az 1. generációs Data Lake Storage használatának első lépései a Node.js-sel</h3>
                     </div>
                 </div>
             </div>

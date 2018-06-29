@@ -9,14 +9,14 @@ metadata:
   ms.service: iot-edge
   services: iot-edge
   ms.topic: landing-page
-  ms.date: 01/08/2018
+  ms.date: 06/21/2018
   ms.author: kgremban
-  ms.openlocfilehash: 6d46719a31e5ebd41276a1f6988180518fcbf9bb
-  ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+  ms.openlocfilehash: 4c2ffde78b2a29601722f4233c69c99b37f332d5
+  ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
   ms.translationtype: HT
   ms.contentlocale: hu-HU
-  ms.lasthandoff: 06/01/2018
-  ms.locfileid: "34631088"
+  ms.lasthandoff: 06/27/2018
+  ms.locfileid: "37028540"
 abstract:
   description: Az Azure IoT Edge egy eszközök internetes hálózata (IoT) típusú szolgáltatás, amely az IoT Hubra épül. Ez a szolgáltatás olyan ügyfelek számára ideális, akik eszközökön szeretnék elemezni az adatokat, vagyis „a peremhálózaton”, nem a felhőben. A számítási feladat egy részének a peremhálózatra helyezése révén az eszközök kevesebb időt töltenek a felhőbe történő üzenetküldéssel, és gyorsabban reagálhatnak az állapotváltozásokra.
 sections:
@@ -35,10 +35,6 @@ sections:
         src: https://docs.microsoft.com/media/logos/logo_linux-color.svg
       text: Linux
       href: /azure/iot-edge/quickstart-linux
-    - image:
-        src: https://docs.microsoft.com/media/logos/logo_macos.svg
-      text: Mac
-      href: /azure/iot-edge/quickstart-linux
 - title: Részletes útmutatók
   items:
   - type: paragraph
@@ -46,9 +42,10 @@ sections:
   - type: list
     style: ordered
     items:
-    - html: <a href="/azure/iot-edge/tutorial-simulate-device-windows">IoT Edge-eszköz szimulálása Windowsban</a>
-    - html: <a href="/azure/iot-edge/tutorial-simulate-device-Linux">IoT Edge-eszköz szimulálása Linux vagy MacOS rendszeren</a>
-    - html: <a href="/azure/iot-edge/tutorial-csharp-module">C# modul fejlesztése és üzembe helyezése</a>
-    - html: <a href="/azure/iot-edge/tutorial-deploy-stream-analytics">Az Azure Stream Analytics üzembe helyezése modulként</a>
-    - html: <a href="/azure/iot-edge/tutorial-deploy-machine-learning">Az Azure Machine Learning üzembe helyezése modulként</a>
-    - html: <a href="/azure/iot-edge/tutorial-deploy-function">Az Azure Functions üzembe helyezése modulként</a>
+    - html: <a href="/azure/iot-edge/tutorial-deploy-function">Üzenetek szűrése az Azure Functions segítségével</a>
+    - html: <a href="/azure/iot-edge/tutorial-deploy-stream-analytics">Átlagértékek keresése a modulként használt Azure Stream Analytics segítségével</a>
+    - html: <a href="/azure/iot-edge/tutorial-deploy-machine-learning">Adatok pontozása a modulként használt Azure Machine Learninggel</a>
+    - html: <a href="/azure/iot-edge/tutorial-csharp-module">Adatok szűrése egy C#-modullal</a>
+    - html: <a href="/azure/iot-edge/tutorial-python-module">Adatok szűrése egy Python-modullal</a>
+    - html: <a href="/azure/iot-edge/tutorial-node-module">Adatok szűrése egy Node.js-modullal</a>
+    - html: <a href="/azure/iot-edge/tutorial-store-data-sql-server">Adatok tárolása a peremhálózaton az SQL Serverrel</a>

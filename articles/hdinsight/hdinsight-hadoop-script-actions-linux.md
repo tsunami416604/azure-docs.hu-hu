@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/10/2018
 ms.author: larryfr
-ms.openlocfilehash: 9ca8be3066254ade37c858bd62f9ce6a2e2be902
-ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
+ms.openlocfilehash: 5f6609018f2582ebfc6e2ecbe48bde6a6f2d0f5d
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37018382"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37098260"
 ---
 # <a name="script-action-development-with-hdinsight"></a>Parancsfájl művelet fejlesztése a Hdinsighttal
 
@@ -284,7 +284,7 @@ Egy fürt testreszabásához használt parancsfájlok kell tárolni az alábbi h
 
 * A __nyilvánosan olvasható URI__. Például egy URL-címe a onedrive-on, Dropbox vagy más szolgáltatást tartalmazó fájl tárolt adatokat.
 
-* Egy __Azure Data Lake Store-fiók__ a HDInsight-fürthöz társított. Az Azure Data Lake Store és a HDInsight együttes használatával további információkért lásd: [HDInsight-fürtök létrehozása a Data Lake Store](../data-lake-store/data-lake-store-hdinsight-hadoop-use-portal.md).
+* Egy __Azure Data Lake Store-fiók__ a HDInsight-fürthöz társított. Az Azure Data Lake Store és a HDInsight együttes használatával további információkért lásd: [gyors üzembe helyezés: hdinsight fürtök beállítása](../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md).
 
     > [!NOTE]
     > A HDInsight a Data Lake Store elérésére használt egyszerű a parancsfájl olvasási hozzáféréssel kell rendelkeznie.

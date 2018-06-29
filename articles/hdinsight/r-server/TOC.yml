@@ -1,6 +1,6 @@
 - name: "Azure HDInsight\_– dokumentáció"
   href: /azure/hdinsight
-- name: R Server a HDInsightban
+- name: ML-szolgáltatások a HDInsighton
   items:
     - name: Áttekintés
       href: r-server-overview.md
@@ -9,7 +9,7 @@
       maintainContext: true
 - name: Bevezetés
   items:
-    - name: Első lépések az R Serverben
+    - name: Az ML-szolgáltatások ismertetése
       href: r-server-get-started.md
     - name: HDInsight-alkalmazások telepítése
       href: ../hdinsight-apps-install-applications.md
@@ -19,11 +19,11 @@
       maintainContext: true
 - name: Útmutató
   items:
-    - name: Az R Server használata
+    - name: Az ML-szolgáltatások használata
       items:
-        - name: R Server-fürt kezelése
+        - name: Az ML-szolgáltatások fürtjének kezelése
           href: r-server-hdinsight-manage.md
-        - name: R Server-fürt üzembe helyezése
+        - name: Az ML-szolgáltatások fürtjének üzembe helyezése
           href: r-server-operationalize.md
         - name: Tárolási lehetőségek
           href: r-server-storage.md

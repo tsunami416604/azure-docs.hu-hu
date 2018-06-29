@@ -14,25 +14,25 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/27/2018
 ms.author: aljo
-ms.openlocfilehash: 6783c2b3b431e99050bc6762c1855b22e0701686
-ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
-ms.translationtype: HT
+ms.openlocfilehash: 84f8827a58d7f3c5dcc32943d2ba891b02c1e1ab
+ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37062279"
+ms.lasthandoff: 06/28/2018
+ms.locfileid: "37083192"
 ---
-# <a name="description-of-the-different-upgrade-policies"></a>A különböző frissítési házirendek leírása
-
-- **Dinamikus** – a dinamikus konfiguráció módosításainak nem indítják el a Service Fabric folyamatokhoz vagy a szolgáltatás gazdafolyamat folyamat újraindítja. 
-- **Statikus** – statikus konfigurációjának módosításai, akkor a Service Fabric-csomópont felhasználásához a módosítás újraindítására. A csomópontok szolgáltatások újraindul.
-- **NotAllowed** – ezek a beállítások nem módosíthatók. Ezek a beállítások szükséges, hogy a fürt semmisíteni módosítása és egy új fürt létrehozása. 
-
 # <a name="customize-service-fabric-cluster-settings-and-fabric-upgrade-policy"></a>A Service Fabric-fürt beállításait és a háló házirend testreszabása
 Ez a dokumentum azt ismerteti, hogyan szabhatja testre a különböző hálóbeállításokat, és a háló frissítéséhez a Service Fabric-fürt házirendet. Testre szabhatja azokat keresztül a [Azure-portálon](https://portal.azure.com) vagy Azure Resource Manager-sablonnal.
 
 > [!NOTE]
 > Nem minden beállítások állnak rendelkezésre a portálon. Amennyiben a lenti beállítás nem érhető el a portálon testreszabása az Azure Resource Manager-sablonnal.
 > 
+
+## <a name="description-of-the-different-upgrade-policies"></a>A különböző frissítési házirendek leírása
+
+- **Dinamikus** – a dinamikus konfiguráció módosításainak nem indítják el a Service Fabric folyamatokhoz vagy a szolgáltatás gazdafolyamat folyamat újraindítja. 
+- **Statikus** – statikus konfigurációjának módosításai, akkor a Service Fabric-csomópont felhasználásához a módosítás újraindítására. A csomópontok szolgáltatások újraindul.
+- **NotAllowed** – ezek a beállítások nem módosíthatók. Ezek a beállítások szükséges, hogy a fürt semmisíteni módosítása és egy új fürt létrehozása. 
 
 ## <a name="customize-cluster-settings-using-resource-manager-templates"></a>Fürt a beállításokat a Resource Manager-sablonok testreszabása
 Az alábbi lépések bemutatják, hogyan lehet egy új beállítással *MaxDiskQuotaInMB* számára a *diagnosztika* szakasz.

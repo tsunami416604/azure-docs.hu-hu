@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/11/2018
 ms.author: danlep
 ms.custom: include file
-ms.openlocfilehash: 32a438d393077cfe4cb7f6ee62f3a01edfce0571
-ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
-ms.translationtype: HT
+ms.openlocfilehash: b8bbcf81f48e82417a0d51e29f7dd8ce76681fed
+ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "34152223"
+ms.lasthandoff: 06/28/2018
+ms.locfileid: "37095335"
 ---
 Szervezet már rendelkezik a nagyméretű számítógépes igényeinek. Az ilyen nagy számítási terhelések például a műszaki tervezés és elemzés, pénzügyi kockázat számítások, kép megjelenítési, összetett modellezési, Monte Carlo szimulációja és több. 
 
@@ -40,7 +40,7 @@ Az Azure felhőalapú segítségével hatékonyan alkalmazásokat és szolgálta
     * Futtassa az Azure-kompatibilis termékgondozó csoportja és a szimuláció megoldások beleértve szállítóktól származó [Altair](http://www.altair.com/), [átméretezése](https://www.rescale.com/azure/), és [ciklus számítástechnikai](https://cyclecomputing.com/) (most [csatlakoztatni a Microsoft](https://blogs.microsoft.com/blog/2017/08/15/microsoft-acquires-cycle-computing-accelerate-big-computing-cloud/)).
     * Használja a [Cray supercomputer](https://www.cray.com/solutions/supercomputing-as-a-service/cray-in-azure) Azure-ban üzemeltetett szolgáltatás.
 * **Piactér-megoldások**
-    * A skála használati [HPC-alkalmazásokhoz](#hpc-applications) és [megoldások](#marketplace-solutions) érhető el a [Azure piactér](https://azuremarketplace.microsoft.com/). 
+    * A skála használati [HPC-alkalmazásokhoz](#hpc-applications) és [megoldások](#marketplace-solutions) érhető el a [Azure piactér](https://azuremarketplace.microsoft.com/marketplace/). 
     
 
 
@@ -64,7 +64,7 @@ Látogasson el a [Azure piactér](https://azuremarketplace.microsoft.com/marketp
  
 ## <a name="hpc-applications"></a>HPC-alkalmazásokhoz
 
-Futtassa az egyéni vagy kereskedelmi HPC-alkalmazásokhoz az Azure-ban. Ebben a szakaszban néhány példa további virtuális gépek hatékony méretezést vagy magok számítási rendszer benchmarked. Látogasson el a [Azure piactér](https://marketplace.azure.com) megoldások kész a központi telepítése.
+Futtassa az egyéni vagy kereskedelmi HPC-alkalmazásokhoz az Azure-ban. Ebben a szakaszban néhány példa további virtuális gépek hatékony méretezést vagy magok számítási rendszer benchmarked. Látogasson el a [Azure piactér](https://azuremarketplace.microsoft.com/marketplace) megoldások kész a központi telepítése.
 
 > [!NOTE]
 > Ellenőrizze a licencelési vagy más korlátozásokat a felhőben futó összes kereskedelmi alkalmazás gyártójával. Nem minden szállító kínál használatalapú licencet. Lehet, hogy a megoldást a felhőben egy licenckiszolgálóra kell, vagy a helyszíni licenc kiszolgálóhoz kapcsolódni.

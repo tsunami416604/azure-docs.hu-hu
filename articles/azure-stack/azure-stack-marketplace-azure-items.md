@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 06/18/2018
 ms.author: brenduns
 ms.reviewer: jeffgo
-ms.openlocfilehash: 826daae9c5d9cf5cd169651ab8603cef938e6482
-ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
+ms.openlocfilehash: 48723a68fcad79ab7c4c670da78c95de3ea5868f
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37030036"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37100538"
 ---
 # <a name="azure-marketplace-items-available-for-azure-stack"></a>Azure verem használható az Azure piactéren elemek
 
@@ -204,7 +204,7 @@ A Microsoft Azure verem támogatja a következő Azure piactér virtuális gépe
 | ![Egyszerű gépek fórum](media/azure-stack-marketplace-azure-items/simplemachinesforum.png) | [Egyszerű gépek fórum](https://azuremarketplace.microsoft.com/marketplace/apps/bitnami.simplemachinesforum) | Egyszerű fórum a szoftver saját online Közösség létrehozásához. | Bitnami |
 | ![Spree](media/azure-stack-marketplace-azure-items/spree.png) | [Spree](https://azuremarketplace.microsoft.com/marketplace/apps/bitnami.spree) | Könnyen használható kereskedelmi platform. | Bitnami |
 | ![Subversion](media/azure-stack-marketplace-azure-items/subversion.png) | [Subversion](https://azuremarketplace.microsoft.com/marketplace/apps/bitnami.subversion) | Nyílt forráskódú verziókezelő rendszert. | Bitnami |
-| ![SugarCRM](media/azure-stack-marketplace-azure-items/sugarcrm.png) | [SugarCRM](https://azuremarketplace.microsoft.com/marketplace/apps/bitnami.sugarcrm) | Rugalmas ügyfél ügyfélkapcsolat-kezelési megoldás. | Bitnami |
+| ![SugarCRM](media/azure-stack-marketplace-azure-items/sugarcrm.png) | [SugarCRM](https://azuremarketplace.microsoft.com/marketplace/apps/aad.sugarcrm) | Rugalmas ügyfél ügyfélkapcsolat-kezelési megoldás. | Bitnami |
 | ![SuiteCRM](media/azure-stack-marketplace-azure-items/suitecrm.png) | [SuiteCRM](https://azuremarketplace.microsoft.com/marketplace/apps/bitnami.suitecrm) | Népszerű vállalati szintű CRM-alkalmazás. | Bitnami |
 | ![TestLink](media/azure-stack-marketplace-azure-items/testlink.png) | [TestLink](https://azuremarketplace.microsoft.com/marketplace/apps/bitnami.testlink) | Tesztelje a felügyeleti szoftver minőségi megbízhatósági megkönnyítése. | Bitnami |
 | ![Tiki Wiki CMS csoportos](media/azure-stack-marketplace-azure-items/tikiwikicmsgroupware.png) | [Tiki Wiki CMS csoportos](https://azuremarketplace.microsoft.com/marketplace/apps/bitnami.tikiwikicmsgroupware) | Teljes körű wiki platform. | Bitnami |
@@ -233,5 +233,5 @@ A Microsoft Azure verem támogatja a következő Azure piactér virtuális gépe
 | ![PT tűzfal](media/azure-stack-marketplace-azure-items/pt.png) | [PT tűzfal](https://azuremarketplace.microsoft.com/marketplace/apps/ptsecurity.ptaf) | PT tűzfal ismeretlen & ismert biztonsági rések észleli, és megakadályozza, hogy a támadások-webalkalmazásokban. <b>Töltse le mindkét PT Piactéri elemek.</b> | Pozitív technológiák |
 | ![Puppet Enterprise](media/azure-stack-marketplace-azure-items/puppet.png) | [Puppet Enterprise](https://azuremarketplace.microsoft.com/marketplace/apps/puppet.puppet-enterprise-2017-2) | Puppet vállalati segítségével automatizálhatja az Azure-verem infrastruktúra teljes életciklusát. <b>Töltse le mindkét Puppet Piactéri elemek.</b> | Puppet |
 | ![Gyors helyreállítás kérelem kitöltése](media/azure-stack-marketplace-azure-items/quest.png) | [Gyors helyreállítás Core kérelem kitöltése](https://azuremarketplace.microsoft.com/marketplace/apps/quest.rapid-recovery-core-vm) | Az adatvédelem speciális gyors helyreállítás a biztonsági mentés, a replikáció és a helyreállítás egy könnyen használható szoftveres megoldás a szolgáltatás. | Szoftver kérelem kitöltése |
-| ![SUSE Manager 3.0 Proxy (saját)](media/azure-stack-marketplace-azure-items/suse.png) | [SUSE Manager 3.0 Proxy (saját) ](https://azuremarketplace.microsoft.com/marketplace/apps/SUSE.SUSEManager30ProxyBringYourOwnSubscription) | Legjobb minőségű nyílt forráskódú infrastruktúra kezelését. | SUSE |
+| ![SUSE Manager 3.0 Proxy (saját)](media/azure-stack-marketplace-azure-items/suse.png) | [SUSE Manager 3.0 Proxy (saját) ](https://azuremarketplace.microsoft.com/marketplace/apps/SUSE.SUSE-Manager) | Legjobb minőségű nyílt forráskódú infrastruktúra kezelését. | SUSE |
 | ![ZeroDown szoftvereket eszköz](media/azure-stack-marketplace-azure-items/zerodown.png) | [ZeroDown szoftvereket eszköz ](https://azuremarketplace.microsoft.com/marketplace/apps/zerodown_software.zerodown-software-tool-7_1) | ZeroDown szoftver eszköz v7.1 - áttelepítése + magas rendelkezésre ÁLLÁSÚ. | ZeroDown szoftver |

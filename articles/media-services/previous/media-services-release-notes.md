@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 10/18/2017
 ms.author: juliako
-ms.openlocfilehash: e2512a2af05ee7101713886c3ae1b5c6c74dd3db
-ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
+ms.openlocfilehash: 1a874e31c05d287522810782f743d389c86dbe27
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37018538"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37098923"
 ---
 # <a name="azure-media-services-release-notes"></a>Az Azure Media Services kibocsátási megjegyzései
 Ezek a kibocsátási megjegyzések az Azure Media Services összesítse a módosításokat a korábbi kiadásokban és ismert problémákat.
@@ -366,7 +366,7 @@ A következő hibajavításokat tartalmaz az Azure Media Services csomagoló és
 
 ## <a id="may_changes_14"></a>Előfordulhat, hogy a 2014 kiadásban
 ### <a id="may_14_changes"></a>Általános Media Services frissítése
-Ezután már használhatja [dinamikus becsomagolás] adatfolyam HLS 3-as verziójú. Az adatfolyam HLS 3-as verzió, vegye fel a következő formátumban a lokátor elérési útját: * .ism/manifest(format=m3u8-aapl-v3). További információkért lásd: [ebben a blogban](http://blog-ndrouin.azurewebsites.net/hls-v3-new-old-thing/).
+Ezután már használhatja [dinamikus becsomagolás] adatfolyam HLS 3-as verziójú. Az adatfolyam HLS 3-as verzió, vegye fel a következő formátumban a lokátor elérési útját: * .ism/manifest(format=m3u8-aapl-v3). További információkért lásd: [ezen a fórumon](https://social.msdn.microsoft.com/Forums/en-US/13b8a776-9519-4145-b9ed-d2b632861fde/dynamic-packaging-to-hls-v3).
 
 A dinamikus csomagolás most is támogatja kézbesítéséhez Smooth Streaming PlayReady statikusan titkosított alapján PlayReady titkosított HLS (3-as verziójú és 4-es verzió). A PlayReady Smooth Streaming titkosításának információkért lásd: [Smooth Streaming védelme a Playreadyvel](http://msdn.microsoft.com/library/azure/dn189154.aspx).
 

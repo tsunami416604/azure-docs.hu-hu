@@ -36,6 +36,8 @@
 ### [Az Apache Flink használata a Kafkához készült Event Hubs ökoszisztémájával](event-hubs-kafka-flink-tutorial.md)
 ### [Az Akka Streams használata a Kafkához készült Event Hubs ökoszisztémájával](event-hubs-kafka-akka-streams-tutorial.md)
 ## Fejlesztés
+### [IP-kapcsolat szűrői](event-hubs-ip-filtering.md)
+### [Virtuális hálózati szolgáltatásvégpontok](event-hubs-service-endpoints.md)
 ### [Események küldése a .NET-keretrendszer használatával](event-hubs-dotnet-framework-getstarted-send.md)
 ### [Események fogadása a .NET-keretrendszer használatával](event-hubs-dotnet-framework-getstarted-receive-eph.md)
 ### [Elérhető API-k](event-hubs-api-overview.md)

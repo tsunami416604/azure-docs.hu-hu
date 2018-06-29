@@ -13,12 +13,12 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: craigg
-ms.openlocfilehash: 5ff397e8b13d56b3b034854c507f8bef05008812
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
-ms.translationtype: HT
+ms.openlocfilehash: 26b9271744d7be45c2a879fde3bb3fb5d6049a3b
+ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37054721"
+ms.lasthandoff: 06/28/2018
+ms.locfileid: "37083785"
 ---
 # <a name="run-an-ssis-package-with-the-execute-ssis-package-activity-in-azure-data-factory"></a>Futtassa a végrehajtás SSIS csomag tevékenység Azure Data Factory egy SSIS-csomagot
 Ez a cikk ismerteti, hogyan egy SSIS-csomag futtatása az Azure Data Factory-folyamat a tevékenység végrehajtása SSIS-csomag használatával. 
@@ -174,7 +174,7 @@ Vegye figyelembe a következő szempontokat:
     The specified Data Factory name 'ADFv2QuickStartDataFactory' is already in use. Data Factory names must be globally unique.
     ```
 * Data Factory-példányok létrehozásához a felhasználói fióknak, amellyel belép az Azure-ba, a **közreműködő** vagy **tulajdonos** szerepkörök tagjának, vagy az Azure-előfizetés **rendszergazdájának** kell lennie.
-* Jelenleg adat-előállító hozhat létre adat-előállítók csak az USA keleti régiója, kelet-US2, Nyugat-Európa, és Délkelet-Ázsia régiók. Az adat-előállítók által használt adattárak (Azure Storage, Azure SQL Database stb.) és számítási erőforrások (HDInsight stb.) más régiókban is lehetnek.
+* Amelyben adat-előállító érhető Azure-régiók listáját, válassza ki, amely megkeresheti az Önt érdeklő a következő oldalon, majd bontsa ki a régiók **Analytics** található **adat-előállító**: [ Régiónként rendelkezésre álló termékek](https://azure.microsoft.com/global-infrastructure/services/). Az adat-előállítók által használt adattárak (Azure Storage, Azure SQL Database stb.) és számítási erőforrások (HDInsight stb.) más régiókban is lehetnek.
 
 ### <a name="create-a-pipeline-with-an-ssis-activity"></a>Hozzon létre egy folyamatot egy SSIS-tevékenység 
 Ebben a lépésben egy SSIS tevékenységet hoz létre egy folyamatot. A tevékenység futtatása a SSIS-csomag. 

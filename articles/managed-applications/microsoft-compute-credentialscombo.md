@@ -11,23 +11,35 @@ ms.devlang: na
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/30/2018
+ms.date: 06/27/2018
 ms.author: tomfitz
-ms.openlocfilehash: 914e354265754a05476e96411d35e6cb04183213
-ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
+ms.openlocfilehash: 183075f7407b0a0ca6ea53871e239ab8c2d89490
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/17/2018
-ms.locfileid: "34261054"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37098620"
 ---
 # <a name="microsoftcomputecredentialscombo-ui-element"></a>Microsoft.Compute.CredentialsCombo felhasználói felületi elem
 A Windows és Linux jelszavak és a nyilvános SSH-kulcsok beépített érvényesítéssel vezérlők egy csoportja.
 
 ## <a name="ui-sample"></a>Felhasználói felület minta
-![Microsoft.Compute.CredentialsCombo](./media/managed-application-elements/microsoft.compute.credentialscombo.png)
+
+A Windows a felhasználók lásd:
+
+![Microsoft.Compute.CredentialsCombo Windows](./media/managed-application-elements/microsoft.compute.credentialscombo-windows.png)
+
+A kiválasztott jelszóval Linux felhasználók lásd:
+
+![Microsoft.Compute.CredentialsCombo Linux jelszó](./media/managed-application-elements/microsoft.compute.credentialscombo-linux-password.png)
+
+Az SSH nyilvános kulcsát a kijelölt Linux felhasználók lásd:
+
+![Microsoft.Compute.CredentialsCombo Linux kulcs](./media/managed-application-elements/microsoft.compute.credentialscombo-linux-key.png)
 
 ## <a name="schema"></a>Séma
-Ha `osPlatform` van **Windows**, majd a következő séma szolgál:
+A Windows a következő séma használata:
+
 ```json
 {
   "name": "element1",
@@ -52,7 +64,8 @@ Ha `osPlatform` van **Windows**, majd a következő séma szolgál:
 }
 ```
 
-Ha `osPlatform` van **Linux**, majd a következő séma szolgál:
+A **Linux**, a következő séma használata:
+
 ```json
 {
   "name": "element1",
@@ -84,13 +97,13 @@ Ha `osPlatform` van **Linux**, majd a következő séma szolgál:
 
 ## <a name="remarks"></a>Megjegyzések
 - `osPlatform` meg kell adni, és lehet **Windows** vagy **Linux**.
-- Ha `constraints.required` értéke **igaz**, majd a jelszó vagy SSH nyilvános kulcs szövegmezőkben sikeresen érvényesíthető értékeket szabad tartalmaznia. Az alapértelmezett érték **igaz**.
+- Ha `constraints.required` értéke **igaz**, majd a jelszó vagy SSH nyilvános kulcs szövegmezőkben sikeresen érvényesíthető értéknek kell lennie. Az alapértelmezett érték **igaz**.
 - Ha `options.hideConfirmation` értéke **igaz**, majd erősítse meg a jelszót a második szöveges jelölőnégyzet be van-e rejtve. Az alapértelmezett érték **hamis**.
 - Ha `options.hidePassword` értéke **igaz**, majd a jelszó-hitelesítés használatára van-e rejtve. Használat csak akkor, ha `osPlatform` van **Linux**. Az alapértelmezett érték **hamis**.
 - Az engedélyezett jelszavak további korlátait használatával valósítható a `customPasswordRegex` tulajdonság. A karakterlánc a `customValidationMessage` akkor látható, ha a jelszó egyéni érvényesítése sikertelen. Az alapértelmezett érték a tulajdonságot is **null**.
 
 ## <a name="sample-output"></a>Példa kimenet
-Ha `osPlatform` van **Windows**, vagy a felhasználó által megadott helyett nyilvános SSH-kulcs jelszót, majd a következő kimeneti várt:
+Ha `osPlatform` van **Windows**, vagy `osPlatform` van **Linux** és a felhasználó által megadott helyett nyilvános SSH-kulcs jelszót, a vezérlő a következő eredményt adja vissza:
 
 ```json
 {
@@ -99,7 +112,8 @@ Ha `osPlatform` van **Windows**, vagy a felhasználó által megadott helyett ny
 }
 ```
 
-Ha a felhasználó által megadott nyilvános SSH-kulcsot, a következő kimeneti várhatóan:
+Ha `osPlatform` van **Linux** és a felhasználó által megadott nyilvános SSH-kulcsot, a vezérlő a következő eredményt adja vissza:
+
 ```json
 {
   "authenticationType": "sshPublicKey",

@@ -11,20 +11,27 @@ ms.devlang: na
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/30/2018
+ms.date: 06/27/2018
 ms.author: tomfitz
-ms.openlocfilehash: d1b4974c78a5cdb7b4eb885797319b283be2d393
-ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
+ms.openlocfilehash: 9009d29e281ace179ad1dd2021c7cf35e3dc611a
+ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/17/2018
-ms.locfileid: "34260840"
+ms.lasthandoff: 06/28/2018
+ms.locfileid: "37084807"
 ---
 # <a name="microsoftcomputesizeselector-ui-element"></a>Microsoft.Compute.SizeSelector UI element
 Egy vagy több virtuálisgép-példányok méretét kiválasztására szolgáló vezérlő.
 
 ## <a name="ui-sample"></a>Felhasználói felület minta
+
+A felhasználó megkeresheti a választó, az elem definíciója alapértelmezett értékeivel.
+
 ![Microsoft.Compute.SizeSelector](./media/managed-application-elements/microsoft.compute.sizeselector.png)
+
+A vezérlőelem kijelölése után a felhasználó megkeresheti a rendelkezésre álló méretű kibontott nézetének.
+
+![Bővített Microsoft.Compute.SizeSelector](./media/managed-application-elements/microsoft.compute.sizeselector-expanded.png)
 
 ## <a name="schema"></a>Séma
 ```json
@@ -44,6 +51,9 @@ Egy vagy több virtuálisgép-példányok méretét kiválasztására szolgáló
     "numAvailabilityZonesRequired": 3,
     "zone": "3"
   },
+  "options": {
+    "hideDiskTypeFilter": false
+  },
   "osPlatform": "Windows",
   "imageReference": {
     "publisher": "MicrosoftWindowsServer",
@@ -56,14 +66,14 @@ Egy vagy több virtuálisgép-példányok méretét kiválasztására szolgáló
 ```
 
 ## <a name="remarks"></a>Megjegyzések
-- `recommendedSizes` tartalmaznia kell legalább egy méretét. Az első ajánlott mérete alapértelmezés szerint használt.
-- Ha az ajánlott méretet a kiválasztott helyen nem érhető el, a mérete automatikusan a rendszer kihagyja. Ehelyett a következő ajánlott méret szolgál.
-- Nincs megadva a tetszőleges méretű a `constraints.allowedSizes` rejtett, és nincs megadva a tetszőleges méretű `constraints.excludedSizes` látható.
-`constraints.allowedSizes` és `constraints.excludedSizes` mindkettő nem kötelező, de nem használható egyszerre. Az elérhető méretek listáját meghívásával lehet meghatározni [érhető el virtuális gépek méretét az előfizetéshez listában](/rest/api/compute/virtualmachines/virtualmachines-list-sizes-region).
+- `recommendedSizes` rendelkeznie kell legalább egy méretét. Az első ajánlott mérete alapértelmezés szerint használt. Elérhető méretek listáját a nem az ajánlott állapot szerint rendezve. A felhasználó választhat az adott oszlop ajánlott állapot szerint rendezheti.
+- A kijelölt helyre ajánlott méret nem érhető el, ha a mérete automatikusan a rendszer kihagyja. Ehelyett a következő ajánlott méret szolgál.
+- `constraints.allowedSizes` és `constraints.excludedSizes` mindkettő nem kötelező, de nem használható egyszerre. Az elérhető méretek listáját meghívásával lehet meghatározni [érhető el virtuális gépek méretét az előfizetéshez listában](/rest/api/compute/virtualmachines/virtualmachines-list-sizes-region). Nincs megadva a tetszőleges méretű a `constraints.allowedSizes` rejtett, és nincs megadva a tetszőleges méretű `constraints.excludedSizes` látható.
 - `osPlatform` meg kell adni, és lehet **Windows** vagy **Linux**. Határozza meg a virtuális gépek hardverköltségek szolgál.
 - `imageReference` Nincs megadva a belső lemezképek, de a megadott külső képek. A virtuális gépek szoftverek költségeit meghatározására szolgál.
 - `count` az elem a megfelelő szorzószáma beállítására használatos. Egy állandó érték, például támogatja **2**, vagy egy másik elem dinamikus értéket, például `[steps('step1').vmCount]`. Az alapértelmezett érték **1**.
 - A `numAvailabilityZonesRequired` 1, 2 vagy 3 lehet.
+- Alapértelmezés szerint `hideDiskTypeFilter` van **hamis**. A lemez szűrő lehetővé teszi, hogy a felhasználó számára a lemez legyen kijelölve, vagy csak SSD.
 
 ## <a name="sample-output"></a>Példa kimenet
 ```json

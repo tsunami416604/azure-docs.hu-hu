@@ -7,36 +7,41 @@ manager: wolmfa61
 ms.service: cognitive-services
 ms.technology: speech
 ms.topic: article
-ms.date: 06/27/2018
+ms.date: 06/28/2018
 ms.author: mahilleb
-ms.openlocfilehash: a201cc043f673e2285ea48950804d97b96f881ed
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
-ms.translationtype: HT
+ms.openlocfilehash: 1eb3768f5a5c5a27a45dde3f62f862f36fa3e8ac
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37054978"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37098498"
 ---
-# <a name="regions-and-endpoints-of-the-speech-service"></a>Régiók és a végpontok a beszédfelismerés szolgáltatás
+# <a name="regions-of-the-speech-service"></a>A beszédfelismerés szolgáltatás régiók
 
-> [!NOTE]
-> Terület-neveket az a [beszéd SDK](speech-sdk.md) felel meg az első része a tartománynak a végpontok az alábbi.
-> Tegyük fel például, `westus` adhatja meg az USA nyugati régiója régió a beszédfelismerés SDK-ban.
+A beszédfelismerés szolgáltatás különböző régiókban érhető el.
+Ha olyan előfizetést hoz létre egy rendelkezésre álló terület igényeitől függően választhatja ki.
 
-## <a name="speech-to-text"></a>Diktálás
+Ha az előfizetés használatára akkor fiókot használja a régiót, amelyet kivételezett.
 
-[!include[](includes/endpoints-speech-to-text.md)]
+## <a name="rest-api"></a>REST API
 
-## <a name="text-to-speech"></a>Szövegfelolvasás
+A REST API használatával, válassza ki a jobb oldali régióspecifikus végpontok.
+Lásd: [REST API-k](rest-apis.md) részleteiről.
 
-[!include[](includes/endpoints-text-to-speech.md)]
 
-## <a name="authentication"></a>Hitelesítés
 
-[!include[](includes/endpoints-token-service.md)]
+## <a name="speech-sdk"></a>Beszéd SDK
 
-Lásd: [Itt](rest-apis.md#authentication) részletek beszerzése, és a hitelesítési tokenek frissítésekor.
+Az a [beszéd SDK](speech-sdk.md), régiók megadott karakterlánc (például paramétereként [SpeechFactory.FromSubscription](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechfactory.fromsubscription) a beszédfelismerés SDK a C#).
 
-## <a name="language-understanding-speech-sdk-only"></a>(Csak a beszédfelismerés SDK) nyelvi ismertetése
+Az alábbi táblázat felsorolja az elérhető régiók beszédfelismerés és:
 
-A nyelvi ismertetése szolgáltatás a régiókat [Itt](/azure/cognitive-services/luis/luis-reference-regions).
-A beszédfelismerés SDK adjon meg e régiók első része a tartomány a végpont neve (például `westus`).
+Régió| A beszédfelismerés SDK régió paraméter értéke
+-|-
+USA nyugati régiója| `westus`
+Kelet-Ázsia| `eastasia`
+Észak-Európa| `northeurope`
+
+A leképezési nevéből felismert tartománynév használatával a beszédfelismerés SDK elérhető régiók jelennek meg a [nyelvi ismertetése régió oldalát](/azure/cognitive-services/luis/luis-reference-regions).
+Minden felsorolt közzétételi régió a megfelelő beszéd SDK régió paraméter határozza meg, a tartománynév, a végpont első részeként.
+Tegyük fel például, `westus` az USA nyugati régiója közzétételi régió megadásához.

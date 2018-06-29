@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: PowerShell
 ms.topic: get-started-article
-ms.date: 05/24/2018
+ms.date: 06/27/2018
 ms.author: mabrigg
 ms.reviewer: kivenkat
-ms.openlocfilehash: 714afa1da5d2c8c5695dfe33edd0257f69af149d
-ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
+ms.openlocfilehash: 8dd77dd3431f1be2b8edd8b51929c21b1d5bcd88
+ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36287704"
+ms.lasthandoff: 06/28/2018
+ms.locfileid: "37081350"
 ---
 # <a name="make-a-virtual-machine-image-available-in-azure-stack"></a>A virtuálisgép-lemezkép elérhetővé Azure verem
 
@@ -54,7 +54,7 @@ Lemezképek kell tudni blobtárolók URI azonosítójához használandó lehet h
 
    ![A nyilvános blob hozzáférés beállítása](./media/azure-stack-add-vm-image/image2.png)
 
-2. Jelentkezzen be Azure verem operátorként. A menüben válasszon ki **további szolgáltatások** > **erőforrás-szolgáltató**. Ezt követően válassza **számítási** > **Virtuálisgép-rendszerképek** > **Hozzáadás**.
+2. Jelentkezzen be Azure verem operátorként. A menüben válasszon ki **további szolgáltatások**. Ezt követően válassza **számítási** > **Virtuálisgép-rendszerképek** > **Hozzáadás**.
 
 3. A **Virtuálisgép-lemezkép hozzáadása**, írja be a közzétevő, az ajánlat, SKU és a virtuálisgép-lemezképek verziószámának. Ezek a szegmensek neve tekintse meg a Resource Manager-sablonok a Virtuálisgép-lemezképet. Ügyeljen arra, hogy válassza ki a **osType** értékének megfelelően. A **OS lemez Blob URI-JÁNAK**, adja meg a Blob URI, ahol a lemezkép feltöltése. Ezt követően válassza **létrehozása** a Virtuálisgép-lemezkép létrehozásának megkezdéséhez.
 

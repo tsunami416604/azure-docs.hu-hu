@@ -1,9 +1,9 @@
 ---
 title: Tekintse át a hozzáférés |} Microsoft Docs
 description: Tekintse át a hozzáférést az Azure Active Directoryval
-author: markwahl-msft
+author: rolyon
 manager: mtillman
-editor: ''
+editor: markwahl-msft
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -12,12 +12,13 @@ ms.topic: article
 ms.component: compliance-reports
 ms.date: 09/19/2017
 ms.author: rolyon
-ms.openlocfilehash: 779f462edee42272320dd828b084bbff7629904c
-ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
+ms.reviewer: mwahl
+ms.openlocfilehash: 32cdbf75025c1368ff3d5173307883179af184c7
+ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35233699"
+ms.lasthandoff: 06/28/2018
+ms.locfileid: "37085623"
 ---
 # <a name="review-your-access"></a>Tekintse át a hozzáférést
 

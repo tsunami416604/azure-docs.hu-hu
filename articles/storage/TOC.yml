@@ -8,6 +8,8 @@
       href: ./common/storage-decide-blobs-files-disks.md
 - name: Blobok
   href: ./blobs/storage-blobs-introduction.md
+- name: 2. generációs Data Lake Storage
+  href: ./data-lake-storage/introduction.md
 - name: Fájlok
   href: ./files/storage-files-introduction.md
 - name: Üzenetsorok

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/21/2018
 ms.author: nitinme
-ms.openlocfilehash: fa6f93231cba46e29206ec312fb82ad120ed45f6
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: c715ea3a3c4e113ec419919d240716517c28ffb8
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2018
-ms.locfileid: "31517624"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37099520"
 ---
 # <a name="use-hdinsight-spark-cluster-to-analyze-data-in-data-lake-store"></a>A Data Lake Store adatok elemzése a HDInsight Spark-fürt használatával
 
@@ -28,10 +28,10 @@ Ebben az oktatóanyagban Jupyter notebook érhető el a HDInsight Spark-fürtjei
 
 * Azure Data Lake Store-fiók. Kövesse [Az Azure Data Lake Store használatának első lépései az Azure Portal használatával](../../data-lake-store/data-lake-store-get-started-portal.md) című témakör utasításait.
 
-* Az Azure HDInsight Spark-fürt a Data Lake Store tárolóként Kövesse az utasításokat, [HDInsight-fürtök létrehozása az Azure-portál használatával a Data Lake Store](../../data-lake-store/data-lake-store-hdinsight-hadoop-use-portal.md).
+* Az Azure HDInsight Spark-fürt a Data Lake Store tárolóként Kövesse az utasításokat, [gyors üzembe helyezés: hdinsight fürtök beállítása](../../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md).
 
     
-## <a name="prepare-the-data"></a>Adatok előkészítése
+## <a name="prepare-the-data"></a>Az adatok előkészítése
 
 > [!NOTE]
 > Nem kell végrehajtania ezt a lépést, ha a Data Lake Store alapértelmezett tárolóként hozott létre a HDInsight-fürthöz. A Fürtlétrehozási folyamat néhány adatot hozzáadja a fürt létrehozásakor megadott Data Lake Store-fiókban. Váltson át a szakasz [használata a HDInsight Spark-fürt a Data Lake Store](#use-an-hdinsight-spark-cluster-with-data-lake-store).

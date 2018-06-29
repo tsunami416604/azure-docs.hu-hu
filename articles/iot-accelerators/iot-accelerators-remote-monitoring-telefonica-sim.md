@@ -8,12 +8,12 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 05/15/2018
 ms.topic: conceptual
-ms.openlocfilehash: ae8751f429cb4b11199bd8da9d8c2e08c0b98b35
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 8ba187fd82fa6a698905313bfda2802324a9034d
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34628283"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37097080"
 ---
 # <a name="integrate-sim-data-in-the-remote-monitoring-solution"></a>A távoli figyelésére szolgáló megoldás SIM adatok integrálása
 
@@ -33,9 +33,9 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 A további távoli figyelési funkció jelenleg előzetes verzió. A kapcsolati adatokat szinkronizálni az Azure távoli figyelésére szolgáló megoldás, kövesse az alábbi lépéseket:
 
-1. Töltse ki a kérelem [Telefónica tartozó hely](https://iot.Telefónica.com/contact), a beállításnak a **Azure távoli megfigyelési**, a kapcsolattartási adatokat is beleértve.
+1. Töltse ki a kérelem [Telefónica tartozó hely](https://iot.telefonica.com/contact), a beállításnak a **Azure távoli megfigyelési**, a kapcsolattartási adatokat is beleértve.
 2. Telefónica aktiválja a fiókját.
-3. Ha még nem Telefónica ügyfelet, és ez vagy más IoT kapcsolat felhő készen áll a szolgáltatások, látogasson el szeretné [Telefónica tartozó hely](https://iot.Telefónica.com/contact) válassza ki, **kapcsolat**.
+3. Ha még nem Telefónica ügyfelet, és ez vagy más IoT kapcsolat felhő készen áll a szolgáltatások, látogasson el szeretné [Telefónica tartozó hely](https://iot.telefonica.com/) válassza ki, **kapcsolat**.
 
 ### <a name="telefnica-sim-setup"></a>Telefónica SIM-telepítő
 Telefónica SIM & Azure a két eszköz azonosítója társítása Telefónica IoT SIM "alias" tulajdonság alapul. 

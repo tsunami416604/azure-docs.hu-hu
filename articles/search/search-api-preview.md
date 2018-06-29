@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: search
 ms.date: 05/17/2018
 ms.author: HeidiSteen
-ms.openlocfilehash: ce5771777762414a0229cf83425c2f3601cb979a
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
-ms.translationtype: MT
+ms.openlocfilehash: 2e000628ebec393147328125a04d5d6f55afd3c6
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34655233"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37100487"
 ---
 # <a name="azure-search-service-rest-api-version-2017-11-11-preview"></a>Az Azure Search szolgáltatás REST api-version 2017-11-11 – előzetes
 Ez a cikk ismerteti a `api-version=2017-11-11-Preview` Azure Search szolgáltatás REST API-t az ajánlat kísérleti funkciók nem még általánosan elérhető verziójának.
@@ -27,11 +27,11 @@ Ez a cikk ismerteti a `api-version=2017-11-11-Preview` Azure Search szolgáltat�
 
 ## <a name="new-in-2017-11-11-preview"></a>Új 2017-11-11-Preview
 
-[Kognitív keresési](cognitive-search-concept-intro.md), az Azure Search új dúsító képessége nem szöveges források és magánháztartás szöveg átalakítása azt a teljes szöveges kereshető tartalom az Azure Search rejtett információkat talál.
+[**Automatikus kitöltés** ](search-autocomplete-tutorial.md) csatlakozik, a meglévő [javaslatok API](https://docs.microsoft.com/rest/api/searchservice/suggestions) hozzáadni a kiegészítő begépelt keresősáv észlel. Automatikus kitöltés adja vissza jelölt lekérdezési kifejezések egy felhasználó választhat egy későbbi keresés lekérdezési karakterláncként kell beállítani. Javaslatok az tényleges dokumentumok részleges bemenetek válaszul adja vissza: találatok azonnali, és dinamikusan változik, a keresési kifejezés bemeneti és sajátlagossága figyelembe vétele növekedésének megfelelően.
 
-A következő reources rendszerben jelent meg, vagy a REST API minta módosítva. Minden más REST API-k ugyanazok a nyilvánosan elérhető hívás vagy előzetes verzió.
+[**Kognitív keresési**](cognitive-search-concept-intro.md), az Azure Search új dúsító képessége nem szöveges források és magánháztartás szöveg átalakítása azt a teljes szöveges kereshető tartalom az Azure Search rejtett információkat talál. A következő források vannak vagy a REST API Preview módosított. Minden más REST API-k ugyanazok a nyilvánosan elérhető hívás vagy előzetes verzió.
 
-+ [Hozzon létre Skillset (api-version = 2017-11-11 – előzetes verzió)](https://docs.microsoft.com/rest/api/searchservice/create-skillset)
++ [Skillset operations(api-version=2017-11-11-Preview)](https://docs.microsoft.com/rest/api/searchservice/skillset-operations)
 
 + [Hozzon létre indexelőt (api-version = 2017-11-11 – előzetes verzió)](https://docs.microsoft.com/rest/api/searchservice/create-indexer)
 

@@ -151,6 +151,7 @@
 ### [SSPR-testreszabás](authentication/concept-sspr-customization.md)
 ### [SSPR-adatkövetelmények](authentication/howto-sspr-authenticationdata.md)
 ### [SSPR-jelentéskészítés](authentication/howto-sspr-reporting.md)
+### [Intelligens zárolás](authentication/howto-password-smart-lockout.md)
 ### [A gyenge jelszavak megszüntetése](authentication/concept-password-ban-bad.md)
 ### [A tiltott jelszavak listájának konfigurálása](authentication/howto-password-ban-bad.md)
 ### [Helyszíni integráció](authentication/concept-password-ban-bad-on-premises.md)

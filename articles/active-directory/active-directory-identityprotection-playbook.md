@@ -2,7 +2,7 @@
 title: Az Azure Active Directory Identity Protection-forgatókönyv |} Microsoft Docs
 description: Ismerje meg, az Azure AD Identity Protection miként korlátozhatja, hogy a támadó kihasználni a sérült biztonságú identitás vagy az eszköz és identitás vagy egy eszköz, amely korábban gyanús vagy megsértik ismert biztonságossá tételéhez.
 services: active-directory
-keywords: az Azure active directory azonosító adatok védelmét, a cloud app discovery, alkalmazások, biztonság, kockázat, kockázati szint, biztonsági rés, biztonsági házirend kezelése
+keywords: az Azure active directory azonosító adatok védelmét, a cloud discovery, alkalmazások, biztonság, kockázat, kockázati szint, biztonsági rés, biztonsági házirend kezelése
 documentationcenter: ''
 author: MarkusVi
 manager: mtillman
@@ -13,15 +13,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/07/2018
+ms.date: 06/27/2018
 ms.author: markvi
 ms.reviewer: nigu
-ms.openlocfilehash: ff4a8bfb5a92f0969aef726893bebb6aacd4d942
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 566748d7d7a2ec89c69ab706700583a9db1f5246
+ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34714306"
+ms.lasthandoff: 06/28/2018
+ms.locfileid: "37083957"
 ---
 # <a name="azure-active-directory-identity-protection-playbook"></a>Az Azure Active Directory Identity Protection-forgatókönyv
 
@@ -104,7 +104,7 @@ A bejelentkezés megjelennek az Identity Protection-irányítópult 2 – 4 ór�
 Biztonsági rések egy hibás szereplő is kihasználható az Azure AD környezetben gyengeségei miatt. Jelenleg biztonsági rések 3 típusú illesztett az Azure AD Identity Protection használó egyéb szolgáltatásokat az Azure AD. A biztonsági rések jelenik meg az Identity Protection-Irányítópult automatikusan után ezek a funkciók be vannak állítva.
 
 * Az Azure AD [többtényezős hitelesítés](authentication/multi-factor-authentication.md)
-* Az Azure AD [Cloud App Discovery](manage-apps/cloud-app-discovery.md).
+* Az Azure AD [Cloud Discovery](/cloud-app-security/set-up-cloud-discovery).
 * Az Azure AD [Privileged Identity Management](active-directory-privileged-identity-management-configure.md). 
 
 

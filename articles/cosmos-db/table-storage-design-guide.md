@@ -10,25 +10,25 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/03/2017
 ms.author: sngun
-ms.openlocfilehash: 4f3cafd80c713697a8b8fdde56c021be1c5319fb
-ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
+ms.openlocfilehash: bb1c59fa7df9cf466ce1fd7f32f08d255fe656bd
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34824587"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37097063"
 ---
 # <a name="azure-storage-table-design-guide-designing-scalable-and-performant-tables"></a>Az Azure Storage táblázat kialakítási Útmutató: Méretezhető tervezésével és Performant táblák
 [!INCLUDE [storage-table-cosmos-db-tip-include](../../includes/storage-table-cosmos-db-tip-include.md)]
 
-A Tervező méretezhető és performant táblák, például a teljesítmény, méretezhetőség és költség tényező figyelembe kell vennie. Ha korábban létrehozott sémák a relációs adatbázisok, ezeket a szempontokat ismerős lehet, de amíg vannak bizonyos az az Azure Table storage modell és a relációs modellek közötti Hasonlóságok, is számos fontos különbségek vannak. Ezek a különbségek általában nagyon különböző kialakításokról, előfordulhat, hogy keresse meg a counter-intuitive vagy valaki ismeri a relációs adatbázisok nem megfelelő, de amelyek tegye célszerű jó például az Azure Table szolgáltatás egy NoSQL kulcs-érték tároló tervezésekor vezethet. A Tervező különbségek számos módon változik meg a tényt, hogy a Table szolgáltatás célja, hogy az entitások (relációs adatbázis-terminológia sorainak) vagy olyan adatkészletekhez, amelyek rendkívül nagy tranzakció kötetek támogatnia kell az adatok több milliárd tartalmazó felhőméretű alkalmazások támogatását: ezért figyelembe kell vennie eltérően, hogyan tárolja az adatait, és a Table szolgáltatás működésének megismerése. Egy jól kidolgozott NoSQL-adattár engedélyezheti a megoldás méretezése sokkal tovább (és alacsonyabb költségekkel) mint olyan megoldás, amely egy relációs adatbázist használ. Az útmutató az alábbi témakörök segítségével.  
+A Tervező méretezhető és performant táblák, például a teljesítmény, méretezhetőség és költség tényező figyelembe kell vennie. Ha korábban létrehozott sémák a relációs adatbázisok, ezeket a szempontokat ismerős lehet, de amíg vannak bizonyos az az Azure Table storage modell és a relációs modellek közötti Hasonlóságok, is számos fontos különbségek vannak. Ezek a különbségek általában a különböző kialakításokról, előfordulhat, hogy keresse meg a counter-intuitive vagy valaki ismeri a relációs adatbázisok nem megfelelő, de, célszerű jó például az Azure Table szolgáltatás egy NoSQL kulcs-érték tároló tervezésekor vezethet. A Tervező különbségek számos módon változik meg a tényt, hogy a Table szolgáltatás célja, hogy az entitások (relációs adatbázis-terminológia sorainak) vagy olyan adatkészletekhez, amelyek magas tranzakció támogatnia kell az adatok több milliárd tartalmazó felhőméretű alkalmazások támogatását kötetek: ezért figyelembe kell vennie eltérően, hogyan tárolja az adatait, és a Table szolgáltatás működésének megismerése. Egy jól kidolgozott NoSQL-adattár engedélyezheti a megoldás méretezése sokkal tovább (és alacsonyabb költségekkel) mint olyan megoldás, amely egy relációs adatbázist használ. Az útmutató az alábbi témakörök segítségével.  
 
 ## <a name="about-the-azure-table-service"></a>Az Azure Table szolgáltatással kapcsolatos
-Ez a szakasz azt mutatja be néhány fő funkciója a Table szolgáltatás szempontjából különösen teljesítményének és méretezhetőségének tervezése. Ha most ismerkedik az Azure Storage és a Table szolgáltatás, elolvashatja [Microsoft Azure Storage bemutatása](../storage/common/storage-introduction.md) és [Ismerkedés az Azure Table Storage használatának .NET](table-storage-how-to-use-dotnet.md) további része a cikk elolvasása előtt. Bár ez az útmutató célja azoknak a Table szolgáltatásban, ez magában foglalja a néhány semmiről nem kell az Azure üzenetsor és a Blob szolgáltatás, és hogyan használhatja őket a megoldás a Table szolgáltatás együtt.  
+Ez a szakasz azt mutatja be néhány fő funkciója a Table szolgáltatás szempontjából különösen teljesítményének és méretezhetőségének tervezése. Ha most ismerkedik az Azure Storage és a Table szolgáltatás, elolvashatja [Microsoft Azure Storage bemutatása](../storage/common/storage-introduction.md) és [Ismerkedés az Azure Table Storage használatának .NET](table-storage-how-to-use-dotnet.md) további része a cikk elolvasása előtt . Bár ez az útmutató célja azoknak a Table szolgáltatásban, ez magában foglalja a néhány semmiről nem kell az Azure üzenetsor és a Blob szolgáltatás, és hogyan használhatja őket a megoldás a Table szolgáltatás együtt.  
 
-Mi az a Table szolgáltatás? Előfordulhat, hogy a neve alapján várt, a Table szolgáltatás táblázatos formátumú adatok használ. A ismertetésében a tábla minden egyes sorára jelöli egy entitás, és az oszlopok tárolja, hogy az entitás tulajdonságait. Minden entitás egy kulcspárra van szüksége, egyedi azonosításához, és a Timestamp típusú oszlop, amely a Table szolgáltatás segítségével nyomon követheti az entitás legutóbbi frissítése (Ez automatikusan megtörténik, és adjon meg egy tetszőleges értéket nem lehet felülírni a Timestamp típusú manuálisan). A Table szolgáltatás az utolsó módosításának időbélyegző (LMT) egyidejű hozzáférések optimista kezelésére használ.  
+Mi az a Table szolgáltatás? Előfordulhat, hogy a neve alapján várt, a Table szolgáltatás táblázatos formátumú adatok használ. A ismertetésében a tábla minden egyes sorára jelöli egy entitás, és az oszlopok tárolja, hogy az entitás tulajdonságait. Minden entitás egy kulcspárra van szüksége, egyedi azonosításához, és a Timestamp típusú oszlop, amely a Table szolgáltatás segítségével nyomon követheti az entitás legutóbbi frissítése (a rendszer automatikusan hozzáadja a Timestamp típusú mezőt és az tetszőleges értéke nem lehet felülírni a Timestamp típusú manuálisan). A Table szolgáltatás az utolsó módosításának időbélyegző (LMT) egyidejű hozzáférések optimista kezelésére használ.  
 
 > [!NOTE]
-> A Table szolgáltatás REST API-műveleteket is vissza egy **ETag** érték, amely azt a last-modified időbélyeg (LMT) származik. Ebben a dokumentumban lesz a kifejezéseket használjuk ETag és LMT azonos értelemben mert ugyanazokat az alapul szolgáló adatokat hivatkoznak.  
+> A Table szolgáltatás REST API-műveleteket is vissza egy **ETag** érték, amely azt a last-modified időbélyeg (LMT) származik. Ebben a dokumentumban megfigyelheti a feltételeket, ETag és LMT azonos értelemben mert ugyanazokat az alapul szolgáló adatokat hivatkoznak.  
 > 
 > 
 
@@ -122,21 +122,21 @@ Az alábbi példában egy egyszerű Táblatervezés alkalmazott és részleg ent
 </table>
 
 
-Az eddigi Ez hasonlít nagyon a egy relációs adatbázisban a legfőbb különbségek a kötelező oszlopok, és ugyanabban a táblában több entitástípusok tárolásának képessége. Emellett egyes többek között a felhasználó által definiált tulajdonságok **Keresztnév** vagy **kora** adattípusú, például az egész szám vagy karakterlánc, csak, például egy relációs adatbázisban oszlop. Bár eltérően egy relációs adatbázisban, a Table szolgáltatás séma nélküli jellege azt jelenti, hogy a tulajdonság nem szükséges minden entitáshoz ugyanolyan adattípusúak. Összetett adattípusú egy adott tulajdonságra vannak tárolva, például a JSON- vagy XML-szerializált formátum kell használnia. A table szolgáltatás például a támogatott adattípusok, támogatott dátumtartományok, elnevezési szabályok és mérete megkötések kapcsolatos további információkért lásd: [ismertetése a Table szolgáltatás adatmodell](http://msdn.microsoft.com/library/azure/dd179338.aspx).
+Amennyiben ez a kialakítás hasonlít-e a egy relációs adatbázisban a legfőbb különbségek a kötelező oszlopok, és ugyanabban a táblában több entitástípusok tárolásának képessége. Emellett egyes többek között a felhasználó által definiált tulajdonságok **Keresztnév** vagy **kora** adattípusú, például az egész szám vagy karakterlánc, csak, például egy relációs adatbázisban oszlop. Bár eltérően egy relációs adatbázisban, a Table szolgáltatás séma nélküli jellege azt jelenti, hogy a tulajdonság nem szükséges minden entitáshoz ugyanolyan adattípusúak. Összetett adattípusú egy adott tulajdonságra vannak tárolva, például a JSON- vagy XML-szerializált formátum kell használnia. A table szolgáltatás például a támogatott adattípusok, támogatott dátumtartományok, elnevezési szabályok és mérete megkötések kapcsolatos további információkért lásd: [ismertetése a Table szolgáltatás adatmodell](http://msdn.microsoft.com/library/azure/dd179338.aspx).
 
-Mivel látni fogja, a választott **PartitionKey** és **RowKey** jó Táblatervezés alapvető. Minden entitás egy táblázatban tárolja rendelkeznie kell egy egyedi kombinációja **PartitionKey** és **RowKey**. Csakúgy, mint a kulcsokat egy relációs adatbázis tábláinak a **PartitionKey** és **RowKey** értékek egy fürtözött index, amely lehetővé teszi, hogy a gyors look-ups indexelt; azonban a Table szolgáltatás nem hoz létre az bármely másodlagos indexek, és így ezek a csak két az indexelt tulajdonságok (néhány későbbi mintázatokat megjelenítése hogyan oldható meg a nyilvánvaló korlátozás).  
+Mivel látni fogja, a választott **PartitionKey** és **RowKey** jó Táblatervezés alapvető. Minden entitás egy táblázatban tárolja rendelkeznie kell egy egyedi kombinációja **PartitionKey** és **RowKey**. Csakúgy, mint a kulcsokat egy relációs adatbázis tábláinak a **PartitionKey** és **RowKey** értékek egy fürtözött index, amely lehetővé teszi, hogy a gyors look-ups indexelt; azonban a Table szolgáltatás nem hoz létre bármelyik másodlagos indexek, így ezek a csak két az indexelt tulajdonságok (néhány későbbi mintázatokat megjelenítése hogyan oldható meg a nyilvánvaló korlátozás).  
 
 Egy tábla egy vagy több partíció épül fel, és látni fogja, a tervezési döntéseit számos lesz körül kiválasztása megfelelő **PartitionKey** és **RowKey** a megoldás optimalizálása érdekében. A megoldás csak egyetlen tábla összes, a partíciók szervezve entitásokat tartalmazó sikerült alkotják, de általában egy megoldás több táblák esetében. Táblázatok segítséget logikailag rendezheti az entitások, a hozzáférés-vezérlési listák segítségével adataihoz való hozzáférés kezeléséhez nyújt segítséget, és egyetlen tárolási művelettel teljes táblázat elvetné.  
 
 ### <a name="table-partitions"></a>Táblapartíciók
-A fiók neve, a tábla nevét és **PartitionKey** együtt azonosíthatja a partíción belül a társzolgáltatás, ahol a table szolgáltatás tárolja az entitás. Amellett, hogy az entitások címzési séma része, a partíciók az egyes tranzakciókra vonatkozóan hatókör meghatározása (lásd: [entitás csoport tranzakciók](#entity-group-transactions) alább), és hogyan méretezze át a table szolgáltatás alapját. További információk a partíciókon: [Azure Storage méretezhetőségi és teljesítménycéloknak](../storage/common/storage-scalability-targets.md).  
+A fiók neve, a táblázat nevét, és **PartitionKey** együtt azonosíthatja a partíción belül a társzolgáltatás, ahol a table szolgáltatás tárolja az entitás. Amellett, hogy az entitások címzési séma része, a partíciók az egyes tranzakciókra vonatkozóan hatókör meghatározása (lásd: [entitás csoport tranzakciók](#entity-group-transactions) alább), és hogyan méretezze át a table szolgáltatás alapját. A partíciókon további információkért lásd: [Azure Storage méretezhetőségi és teljesítménycéloknak](../storage/common/storage-scalability-targets.md).  
 
-A Table szolgáltatásban, az egyes csomópontok szolgáltatások egy vagy több befejezéseként partíciókat és a szolgáltatás méretezik dinamikus terheléselosztás partíciók csomópontjai között. Egy csomópont terhelésnek van kitéve, ha a table szolgáltatás is *vágási* a partíciók száma a tartományon, más csomópontok csomópont által kiszolgált; enyhül forgalmat, ha a szolgáltatás képes *egyesítési* csendes csomópontjáról partíció tartományok biztonsági alakzatot egyetlen csomópont.  
+A Table szolgáltatásban, az egyes csomópontok szolgáltatások egy vagy több befejezéseként partíciókat és a szolgáltatás méretezik dinamikus terheléselosztás partíciók csomópontjai között. Ha egy csomópont terhelésnek van kitéve, a table szolgáltatás is *felosztása* a partíciók száma a tartományon, más csomópontok csomópont által kiszolgált; enyhül forgalmat, ha a szolgáltatás képes-e *egyesítési* csendes csomópontjáról partíció tartományok kijelentkezéssel egyetlen csomópont.  
 
 További információ a belső részleteit a Table szolgáltatás, és ebben az esetben a szolgáltatás kezeli a partíciók, hogyan talál a [Microsoft Azure Storage: A magas rendelkezésre álló felhőalapú tárolási szolgáltatásba az erős konzisztencia](http://blogs.msdn.com/b/windowsazurestorage/archive/2011/11/20/windows-azure-storage-a-highly-available-cloud-storage-service-with-strong-consistency.aspx).  
 
 ### <a name="entity-group-transactions"></a>Entitás csoport tranzakciók
-A Table szolgáltatásban entitás csoport tranzakciók (EGTs) atomi frissítések végrehajtásához a több egység közötti csak beépített mechanizmus. EGTs is nevezzük *kötegelt tranzakciókat* bizonyos dokumentációkban. EGTs csak működhessenek entitások tárolt partícióra (ugyanazzal a partíciókulccsal egy adott táblában megosztás), így bármikor atomi tranzakciós viselkedését kell gondoskodnia kell arról, hogy ezeket az entitásokat tartalmazó partícióra vannak több egység közötti. Ez gyakran az több entitástípusok megőrzi a ugyanahhoz a táblához (és a partíció) található, és több tábla nem használ másik entitástípusok okát. Egyetlen EGT legfeljebb 100 entitást is működik.  Ha több egyidejű EGTs is fontos, hogy ezek EGTs működés nem lehetséges, amelyek közösek a EGTs között, mivel ellenkező esetben feldolgozása késleltethető entitások feldolgozásra.
+A Table szolgáltatásban entitás csoport tranzakciók (EGTs) atomi frissítések végrehajtásához a több egység közötti csak beépített mechanizmus. EGTs is nevezzük *kötegelt tranzakciókat* bizonyos dokumentációkban. EGTs csak működhessenek entitások tárolt partícióra (ugyanazzal a partíciókulccsal egy adott táblában megosztás), így bármikor atomi tranzakciós viselkedését kell gondoskodnia kell arról, hogy ezeket az entitásokat tartalmazó partícióra vannak több egység közötti. Ez gyakran az több entitástípusok megőrzi a ugyanahhoz a táblához (és a partíció) található, és több tábla nem használ másik entitástípusok okát. Egyetlen EGT legfeljebb 100 entitást is működik.  Több egyidejű EGTs feldolgozásra küldje el, akkor fontos, hogy ezek EGTs működés nem lehetséges, amelyek közösek a EGTs között, mivel ellenkező esetben feldolgozása késleltethető entitásokat.
 
 EGTs is vezethet, hogy kipróbálhassa a Tervező egy potenciális kompromisszum: több partíciót használata növeli a méretezhetőség, az alkalmazás Azure-csomópontokon keresztüli kérelmek terheléselosztási további lehetőségekkel rendelkezik, de ez korlátozhatja a lehetőségét, mert az alkalmazás atomi tranzakciók elvégzéséhez, és erős konzisztenciát biztosít az adatok karbantartása. Emellett nincsenek egyedi méretezhetőségi célok javasoljuk, hogy előfordulhat, hogy korlátozza az egyetlen csomópont számíthat tranzakciók átviteli szinten: az Azure storage-fiókok és a table szolgáltatás vonatkozó méretezhetőségi célok kapcsolatos további információkért lásd: [Az azure Storage méretezhetőségi és teljesítménycéloknak](../storage/common/storage-scalability-targets.md). A jelen útmutató későbbi szakaszok tárgyalják különböző kialakítási stratégiák, amelyek segítenek kompromisszumot alakítson ki például a kezelése, és hogyan érdemes ismertetik a partíciós kulcs, az ügyfélalkalmazás a meghatározott követelmények alapján kiválaszthatja.  
 
@@ -153,13 +153,13 @@ Az alábbi táblázat tartalmaz néhány érdemes figyelembe vennie, amikor terv
 | A méret a **RowKey** |A karakterlánc legfeljebb 1 KB méretű |
 | Egy entitás csoport tranzakció mérete |Egy tranzakció legfeljebb 100 entitást tartalmazhat, és a tartalom 4 MB-nál kevesebb kell lennie. Egy EGT csak frissíthető entitás egyszer. |
 
-További információkért lásd: [ismertetése a Table szolgáltatás adatmodell](http://msdn.microsoft.com/library/azure/dd179338.aspx).  
+További információt a [Table Service adatmodelljét ismertető](http://msdn.microsoft.com/library/azure/dd179338.aspx) témakörben talál.  
 
 ### <a name="cost-considerations"></a>Költség kapcsolatos szempontok
 A TABLE storage költségei viszonylag alacsonyak, de a Table szolgáltatás használó megoldások próbaidőszakában részeként tartalmaznia kell a kapacitás és a tranzakciók mennyisége költség becslése. Azonban számos forgatókönyvben denormalizált vagy ismétlődő adatok tárolására javítása érdekében a teljesítmény vagy a méretezhetőség miatt a megoldás nem egy érvényes megközelítés érvénybe. Az árazással kapcsolatos további információkért lásd: [Azure Storage szolgáltatás díjszabása](https://azure.microsoft.com/pricing/details/storage/).  
 
-## <a name="guidelines-for-table-design"></a>Táblatervezés vonatkozó irányelvek
-A listák összesítésének néhány a kulcs irányelveket kell figyelembe venni a táblák tervezése során, és ez az útmutató foglalkozni fog velük az összes későbbi részében részletesebben. Ezeket az irányelveket nagyon eltérnek a általában végrehajtania a relációs adatbázis tervezési irányelveket.  
+## <a name="guidelines-for-table-design"></a>Irányelvek táblatervezéshez
+A listák összesítésének néhány a kulcs irányelveket kell figyelembe venni a táblák tervezése során, és ez az útmutató foglalkozni fog velük az összes későbbi részében részletesebben. Ezeket az irányelveket eltérnek a általában végrehajtania a relációs adatbázis tervezési irányelveket.  
 
 A Table szolgáltatás megoldás kell tervezése *olvasási* hatékony:
 
@@ -179,7 +179,7 @@ A Table szolgáltatás megoldás kell tervezése *írási* hatékony:
 
 Ez az útmutató olvasás példák, amelyek a gyakorlatban az összes alapelvek jelenik meg.  
 
-## <a name="design-for-querying"></a>Tervezési lekérdezése
+## <a name="design-for-querying"></a>Tervezés lekérdezéshez
 TABLE szolgáltatási megoldások intenzív, írási intenzív vagy a két vegyesen olvashatók. Ez a szakasz a Table szolgáltatás az olvasási műveletek hatékonyan támogatásához tervezése során figyelembe kell vennie a következőket összpontosít. A Tervező, támogatja a hatékony olvassa el az operations általában is hatékony az írási műveletek. Van azonban az írási műveletek, a következő szakaszban tárgyalt tervezésekor figyelembe kell vennie további szempontok [adatmódosítás kialakítása](#design-for-data-modification).
 
 Ahhoz, hogy hatékonyan-adatok olvasása a Table szolgáltatás megoldás tervezése az jó kiindulási pont, kérje meg a "milyen lekérdezések alkalmazás kell végrehajtani a szükséges adatokat lekérdezni a Table szolgáltatás?"  
@@ -201,22 +201,22 @@ Az alábbi példák azt feltételezik, hogy a table szolgáltatás a következő
 
 | *Oszlop neve* | *Adattípus* |
 | --- | --- |
-| **PartitionKey** (részleg neve) |Karakterlánc |
-| **RowKey** (alkalmazott azonosítója) |Karakterlánc |
-| **Utónév** |Karakterlánc |
-| **Vezetéknév** |Karakterlánc |
-| **kora** |Egész szám |
-| **E-mail cím** |Karakterlánc |
+| **PartitionKey** (részleg neve) |Sztring |
+| **RowKey** (alkalmazott azonosítója) |Sztring |
+| **Utónév** |Sztring |
+| **Vezetéknév** |Sztring |
+| **Kora** |Egész szám |
+| **E-mail cím** |Sztring |
 
-A korábbi szakaszban [Azure Table szolgáltatás áttekintése](#overview) néhány szolgáltatását az Azure Table szolgáltatás, amely közvetlenül befolyásolják a lekérdezéshez tervezéséről foglalja össze. Ezek a Table szolgáltatás Lekérdezéstervezés vonatkozó általános irányelveket eredményez. Vegye figyelembe, hogy a Table szolgáltatásból REST API-t a további tudnivalókat lásd az alábbi példákban szereplő szűrőszintaxisának [lekérdezés entitások](http://msdn.microsoft.com/library/azure/dd179421.aspx).  
+A korábbi szakaszban [Azure Table szolgáltatás áttekintése](#overview) néhány szolgáltatását az Azure Table szolgáltatás, amely közvetlenül befolyásolják a lekérdezéshez tervezéséről foglalja össze. Ezek a Table szolgáltatás Lekérdezéstervezés vonatkozó általános irányelveket eredményez. A szűrő szintaxisa az alábbi példákban használt van a Table szolgáltatásból REST API-t, további információkért lásd: [lekérdezés entitások](http://msdn.microsoft.com/library/azure/dd179421.aspx).  
 
-* A ***pont lekérdezés*** a leghatékonyabb keresési használatára, és nagy mennyiségű keresések vagy a legkisebb mértékű késleltetést igénylő keresések használandó ajánlott. Ilyen lekérdezést az indexek segítségével egyedi entitás nagyon hatékonyan mindkét megadásával keresse meg a **PartitionKey** és **RowKey** értékeket. Például: $filter = (PartitionKey eq 'Értékesítés') és (RowKey eq '2')  
+* A ***pont lekérdezés*** a leghatékonyabb keresési használatára, és nagy mennyiségű keresések vagy a legkisebb mértékű késleltetést igénylő keresések használandó ajánlott. Ilyen lekérdezést az indexek segítségével egyedi entitás hatékonyan mindkét megadásával keresse meg a **PartitionKey** és **RowKey** értékeket. Például: $filter = (PartitionKey eq 'Értékesítés') és (RowKey eq '2')  
 * Második legjobb van egy ***értéktartomány lekérdezésének*** , amely használja a **PartitionKey** és a szűrők számos **RowKey** egynél több entitáskészlet visszaadandó értékek száma. A **PartitionKey** érték azonosít egy adott partícióra, és a **RowKey** értékek azonosítsa az adott partíció entitástartományának részhalmazát. Például: $filter = "Értékesítési és RowKey ge" PartitionKey eq és RowKey lt jelzést "  
 * Harmadik legjobb van egy ***partíció vizsgálata*** , amely használja a **PartitionKey** és olyan nem kulcs tulajdonsága, és hogy a szűrők térhetnek vissza egy entitást. A **PartitionKey** érték egy adott partícióra azonosítja, és a tulajdonság értékek válassza ki az adott partíció entitást egy részéhez. Például: $filter PartitionKey eq "Értékesítési" és a Vezetéknév eq 'Smith' =  
-* A ***tábla vizsgálata*** nem tartalmazza a **PartitionKey** és nem nagyon hatékony, mivel az összes pedig a hozzá tartozó entitások az a táblázat partíciókat keresi. A táblázatbeolvasás, függetlenül a szűrő használja-e hajtja végre a **RowKey**. Például: $filter Vezetéknév eq "János" =  
+* A ***tábla vizsgálata*** nem tartalmazza a **PartitionKey** és nem hatékony, mert az összes pedig a hozzá tartozó entitások az a táblázat partíciókat keresi. A táblázatbeolvasás, függetlenül a szűrő használja-e hajtja végre a **RowKey**. Például: $filter Vezetéknév eq "János" =  
 * Több entitás visszaadó lekérdezések Alapértelmezések rendezve **PartitionKey** és **RowKey** sorrendje. Az ügyfél entitást keresésére átrendezésével elkerüléséhez válassza ki a **RowKey** , amely meghatározza, hogy a leggyakrabban használt rendezési sorrend.  
 
-Vegye figyelembe, hogy használja az "**vagy**" alapján egy szűrő meghatározására **RowKey** értéket egy partíció vizsgálati eredményeket, majd egy értéktartomány lekérdezésének nem számít. Ezért kerülje el a lekérdezéseket, szűrők, mint amelyekkel: $filter = PartitionKey eq 'Értékesítés' és (RowKey eq "121" vagy "322" RowKey eq)  
+Használatával egy "**vagy**" alapján egy szűrő meghatározására **RowKey** értéket egy partíció vizsgálati eredményeket, majd egy értéktartomány lekérdezésének nem számít. Ezért kerülje el a lekérdezéseket, szűrők, mint amelyekkel: $filter = PartitionKey eq 'Értékesítés' és (RowKey eq "121" vagy "322" RowKey eq)  
 
 Az ügyféloldali kódot, amely hatékony-lekérdezéseket hajt végre a Storage ügyféloldali kódtár használatával című részben talál példákat:  
 
@@ -231,7 +231,7 @@ Az ügyféloldali kódot, amely hatékony-lekérdezéseket hajt végre a Storage
 ### <a name="choosing-an-appropriate-partitionkey"></a>Egy megfelelő PartitionKey kiválasztása
 A választott **PartitionKey** kell terheléselosztást kell EGTs (konzisztencia biztosításához) használatának engedélyezése a követelménnyel szemben az entitások szét több partíciót (méretezhető megoldás biztosításához).  
 
-Egy rendkívüli az entitások sikerült egyetlen partícióra vannak tárolva, de ez korlátozottá teheti méretezhetőségét a megoldás, és akadályozzák a table szolgáltatás terheléselosztásához kérelmek igényt. A rendkívüli egy entitás partíció található, amely magas szinten méretezhető lenne és amely lehetővé teszi a table szolgáltatás terheléselosztási kérésekre, de amelyek volna újrafelhasználásának megtiltása entitás csoport tranzakciók száma tárolhatja.  
+Egy rendkívüli az entitások sikerült egyetlen partícióra vannak tárolva, de ez korlátozottá teheti méretezhetőségét a megoldás, és akadályozzák a table szolgáltatás terheléselosztásához kérelmek igényt. A rendkívüli egy entitás partíció található, amely magas szinten méretezhető lenne, és amely lehetővé teszi a table szolgáltatás terheléselosztásához kérésekre, de, amely akkor újrafelhasználásának megtiltása entitás csoport tranzakciók száma tárolhatja.  
 
 Az ideális **PartitionKey** , amely lehetővé teszi, hogy használni lehessen a hatékony lekérdezések és annak biztosítása érdekében, a megoldás méretezhető elegendő partíciókkal rendelkezik, amelyek egyike. Általában találja, hogy az entitások lesz-e az entitások elosztja elegendő partíciók megfelelő tulajdonság.
 
@@ -260,8 +260,8 @@ Számos alkalmazás más-más sorrendben rendezett adatok használata követelm�
 * [Másodlagos helyek közötti partíció index mintát](#inter-partition-secondary-index-pattern) – minden külön táblázatban külön partíciók különböző RowKey értékek segítségével engedélyezi a gyors entitás több példányát tárolja, és hatékony keresést és a másodlagos rendezési sorrend rendelések különböző RowKey értékek használatával .
 * [Napló végéről mintát](#log-tail-pattern) -beolvasni a *n* partíció legutóbb hozzáadott entitások egy **RowKey** érték, amely fordított dátum és idő sorrendben rendezi.  
 
-## <a name="design-for-data-modification"></a>Adatmódosítás kialakítása
-Ez a szakasz a beszúrások, a frissítések optimalizálása kialakítási szempontjai összpontosít, és törli. Néhány esetben szüksége lesz a kompromisszum terveket, terveket, hasonlóan a relációs adatbázisok terveket (bár a Tervező kompromisszumot kezelésére szolgáló módszerek optimalizálás adatok módosítása ellen lekérdezése optimalizálása közötti kiértékelése különböző egy relációs adatbázisban). A szakasz [táblázat kialakítási minta](#table-design-patterns) néhány részletes kialakítási minta a Table szolgáltatás ismerteti, és kiemeli a néhányat ezek kompromisszumot. A gyakorlatban találja, hogy az entitás lekérdezése optimalizált sok tervek is alkalmas entitások módosítása.  
+## <a name="design-for-data-modification"></a>Tervezés adatmódosításhoz
+Ez a szakasz a beszúrások, a frissítések optimalizálása kialakítási szempontjai összpontosít, és törli. Néhány esetben szüksége lesz a kompromisszum terveket, terveket, hasonlóan a relációs adatbázisok terveket (bár a Tervező kompromisszumot kezelésére szolgáló módszerek optimalizálás adatok módosítása ellen lekérdezése optimalizálása közötti kiértékelése különböző egy relációs adatbázisban). A szakasz [táblázat kialakítási minta](#table-design-patterns) néhány részletes kialakítási minta a Table szolgáltatás ismerteti, és néhány olyan ezek kompromisszumot. A gyakorlatban találja, hogy az entitás lekérdezése optimalizált sok tervek is alkalmas entitások módosítása.  
 
 ### <a name="optimizing-the-performance-of-insert-update-and-delete-operations"></a>A teljesítmény optimalizálása a beszúrási, frissítési és törlési műveletek
 Frissíteni vagy törölni egy entitást, meg kell tudni használatával azonosíthassák a **PartitionKey** és **RowKey** értékeket. Ebben a tekintetben a választott **PartitionKey** és **RowKey** az entitások módosítása nyújtanak hasonló feltételek pont lekérdezések támogatja, mert a szervezetek, mint a azonosítani szeretné az Ön választása lehető leghatékonyabb módon. Nem használni kívánt nem elég hatékony partíció vagy tábla vizsgálat entitás található felderítéséhez a **PartitionKey** és **RowKey** értékek frissíteni vagy törölni kell.  
@@ -292,23 +292,23 @@ Sok esetben egy tervezési módosítások hatékony, de hatékony lekérdező er
 
 A szakasz a következő minták [táblázat kialakítási minta](#table-design-patterns) hatékony lekérdezések tervezése és kialakítása hatékony adatok módosítása a közötti kompromisszumot cím:  
 
-* [Összetett kulcs mintát](#compound-key-pattern) – használható összetett **RowKey** értékek kapcsolódó adatok egyetlen pont lekérdezéssel talált ügyfél engedélyezése.  
+* [Összetett kulcs mintát](#compound-key-pattern) -használható összetett **RowKey** kereshető ügyfél engedélyezése értékek kapcsolódó adatok egyetlen pont lekérdezéssel.  
 * [Napló végéről mintát](#log-tail-pattern) -beolvasni a *n* partíció legutóbb hozzáadott entitások egy **RowKey** érték, amely fordított dátum és idő sorrendben rendezi.  
 
 ## <a name="encrypting-table-data"></a>Tábla adatok titkosítása
 A .NET Azure Storage ügyféloldali kódtár támogatja a titkosítást a karakterlánc az Entitástulajdonságok szúrhatók be, és cserélje le a műveletek. A titkosított karakterláncok tárolja a szolgáltatás bináris tulajdonságként, és telepítésekké lesznek átalakítva vissza karakterláncok a visszafejtés után.    
 
-Táblák, a titkosítási házirenden kívül a felhasználók fiók kell adnia a titkosítani kell. Ezt megteheti megadásával vagy (az POCO entitások, amelyek a TableEntity) [EncryptProperty] attribútum vagy egy titkosítási feloldó lehetőségek. Egy titkosítási feloldó egy delegált veszi a partíciós kulcs, sorkulcsot és tulajdonság nevét, és logikai érték beolvasása, amely jelzi, hogy a tulajdonság titkosítani kell-e. Titkosítás során az ügyféloldali kódtár döntse el, hogy a tulajdonság titkosítani kell-e az átvitel közbeni írása során fogja használni ezt az információt. A delegált is körül hogyan tulajdonságok vannak titkosítva logika lehetőségét biztosítja. (Például, ha X, majd titkosítása A tulajdonság; ellenkező esetben a Tulajdonságok A és b titkosítása) Vegye figyelembe, hogy nincs szükség arra, hogy ezek az információk olvasása vagy entitás lekérdezése közben.
+Táblák, a titkosítási házirenden kívül a felhasználók fiók kell adnia a titkosítani kell. Ezt megteheti megadásával vagy (az POCO entitások, amelyek a TableEntity) [EncryptProperty] attribútum vagy egy titkosítási feloldó lehetőségek. Egy titkosítási feloldó egy delegált veszi a partíciós kulcs, sorkulcsot és tulajdonság nevét, és logikai érték beolvasása, amely jelzi, hogy a tulajdonság titkosítani kell-e. Titkosítás során az ügyféloldali kódtár döntse el, hogy a tulajdonság titkosítani kell-e az átvitel közbeni írása során fogja használni ezt az információt. A delegált is körül hogyan tulajdonságok vannak titkosítva logika lehetőségét biztosítja. (Például, ha X, majd titkosítása A tulajdonság; ellenkező esetben a Tulajdonságok A és b titkosítása) Nincs szükség arra, hogy ezek az információk olvasása vagy entitás lekérdezése közben.
 
-Vegye figyelembe, hogy a merge jelenleg nem támogatott. Mivel a Tulajdonságok részhalmazát, előfordulhat, hogy korábban használatával titkosított egy másik kulcsot, egyszerűen csak az új tulajdonságok egyesítése és a metaadatok frissítése adatok elvesztését eredményezi. Az egyesítés vagy megköveteli a már meglévő entitás olvasni a szolgáltatás további szolgáltatás-hívások, vagy tulajdonságonként egy új kulcsot használ, amelyek mindegyikét nem alkalmasak a teljesítményre vonatkozó megfontolásból.     
+Egyesítési jelenleg nem támogatott. Mivel a Tulajdonságok részhalmazát, előfordulhat, hogy korábban használatával titkosított egy másik kulcsot, egyszerűen csak az új tulajdonságok egyesítése és a metaadatok frissítése adatok elvesztését eredményezi. Az egyesítés vagy megköveteli a már meglévő entitás olvasni a szolgáltatás további szolgáltatás-hívások, vagy tulajdonságonként egy új kulcsot használ, amelyek mindegyikét nem alkalmasak a teljesítményre vonatkozó megfontolásból.     
 
 További információ a táblabeli adatok titkosítása: [ügyféloldali titkosítás és a Microsoft Azure tárolás az Azure Key Vault](../storage/common/storage-client-side-encryption.md).  
 
-## <a name="modelling-relationships"></a>Kapcsolatok modellezésére
-A Tervező összetett rendszerek kulcsfontosságú lépés létrehozási modelleket tartomány. Általában a modellezési folyamat segítségével azonosíthatja a entitásokat és a köztük lévő viszonyt is egyik módja az üzleti tartomány megértéséhez, valamint a tervezési, a rendszer tájékoztatja. Ez a szakasz összpontosít hogyan tudja lefordítani néhány a közös kapcsolattípusok tartomány modellek mintájára a Table szolgáltatás található. Egy logikai adatmodell-leképezés egy fizikai alapú NoSQL-adatmodellhez folyamat nagyon eltér a relációs tervezése során használt. Relációs adatbázisok terv általában azt feltételezi, hogy a normalizálási adatfeldolgozás minimalizálja a redundancia – és a deklaratív lekérdező képessége, hogy hogyan végrehajtásának az adatbázis működésének kivonatolja optimalizálva.  
+## <a name="modeling-relationships"></a>Kapcsolatok modellezése
+A Tervező összetett rendszerek kulcsfontosságú lépés létrehozási modelleket tartomány. Általában a modellezési folyamat segítségével azonosíthatja a entitásokat és a köztük lévő viszonyt is egyik módja az üzleti tartomány megértéséhez, valamint a tervezési, a rendszer tájékoztatja. Ez a szakasz összpontosít hogyan tudja lefordítani néhány a közös kapcsolattípusok tartomány modellek mintájára a Table szolgáltatás található. Egy logikai adatmodell-leképezés egy fizikai alapú NoSQL-adatmodellhez folyamata eltér a relációs tervezése során használt. Relációs adatbázisok terv általában azt feltételezi, hogy a normalizálási adatfeldolgozás minimalizálja a redundancia – és a deklaratív lekérdező képessége, hogy hogyan végrehajtásának az adatbázis működésének kivonatolja optimalizálva.  
 
 ### <a name="one-to-many-relationships"></a>Egy-a-többhöz kapcsolatok
-Egy-a-többhöz kapcsolatok üzleti tartomány objektumok közötti nagyon gyakran előfordulnak: például egy részleg rendelkezik sok alkalmazott. Többféleképpen is egy-a-többhöz kapcsolatok szolgáltatásban a tábla minden egyes az előnyei és hátrányai, amely fontos lehet az adott forgatókönyv megvalósításához.  
+Egy-a-többhöz kapcsolatok üzleti tartomány objektumok közötti gyakran előfordulnak: például egy részleg rendelkezik sok alkalmazott. Többféleképpen is egy-a-többhöz kapcsolatok szolgáltatásban a tábla minden egyes az előnyei és hátrányai, amely fontos lehet az adott forgatókönyv megvalósításához.  
 
 Vegye figyelembe a példa egy nagy több nemzeti vállalat osztályai és ahol minden részlege rendelkezik sok alkalmazott, és minden alkalmazott, egy adott részleg társított alkalmazott entitások tízezreit tartalmazó. Egy megoldás, külön részleg és az alkalmazott entitások, például a tároló:  
 
@@ -337,7 +337,7 @@ Az alábbi táblázat foglalja össze, és az egyes az alkalmazottak és a rész
 <td>
 <ul>
 <li>A részleg entitás egyetlen művelettel frissítheti.</li>
-<li>Egy EGT használatával biztosítja az egységességet, ha egy szervezeti egység módosítása követelmény amikor Ön frissítés/Beszúrás/törlés alkalmazott entitás. Például ha a részlegszintű alkalmazott száma minden részleg számára.</li>
+<li>Egy EGT használatával biztosítja az egységességet, ha egy szervezeti egység módosítása követelmény amikor Ön frissítés/Beszúrás/törlés alkalmazott entitás. Ha például a részlegszintű alkalmazott száma minden részleg számára megmaradjanak.</li>
 </ul>
 </td>
 <td>
@@ -349,7 +349,7 @@ Az alábbi táblázat foglalja össze, és az egyes az alkalmazottak és a rész
 </td>
 </tr>
 <tr>
-<td>Külön entitástípusok, a különböző partíciók vagy a táblák vagy a storage-fiókok</td>
+<td>Külön entitástípusok, a különböző partíciók, vagy a táblák vagy a storage-fiókok</td>
 <td>
 <ul>
 <li>A részleg entitás vagy az alkalmazott entitás egyetlen művelettel frissítheti.</li>
@@ -384,15 +384,15 @@ Hogyan választja ezeket a beállításokat, és mely előnyének és hátrány�
 ### <a name="one-to-one-relationships"></a>-Az-egyhez kapcsolat
 Tartomány modellek egy az egyhez típusú entitások közötti kapcsolatok is tartalmazhat. Kell megvalósítani a Table szolgáltatás egy az egyhez kapcsolat, a két kapcsolódó entitás csatolása, ha vissza mindkét kell is ki kell választania. Ez a hivatkozás lehet implicit, egy egyezmény értékek alapján, vagy explicit hivatkozás formájában elhelyezésével **PartitionKey** és **RowKey** értékek az entitásban, a kapcsolódó entitás. E tárolja a kapcsolódó entitásokból partícióra tárgyalását című [egy-a-többhöz kapcsolatok](#one-to-many-relationships).  
 
-Vegye figyelembe, hogy nincsenek-e is vezethet, hogy egy az egyhez kapcsolat megvalósíthatja a Table szolgáltatás megvalósítási szempontokat:  
+Nincsenek is vezethet, hogy egy az egyhez kapcsolat megvalósíthatja a Table szolgáltatás megvalósítási szempontokat:  
 
 * Nagy entitások kezelése (további információkért lásd: [nagy entitások mintát](#large-entities-pattern)).  
 * A végrehajtási hozzáférés-vezérlést (további információkért lásd: [megosztott hozzáférési aláírásokkal-hozzáférés szabályozásáról](#controlling-access-with-shared-access-signatures)).  
 
 ### <a name="join-in-the-client"></a>Az ügyfél csatlakozott
-Bár vannak lehetőségek kapcsolatok modellezésére a Table szolgáltatásban, érdemes nem elfelejti, hogy a két elsődleges oka a Table szolgáltatás használatára vonatkozó-e a méretezhetőséget és teljesítményt nyújt. Ha meg vannak modellezés több kapcsolatot, amelyek veszélyeztetik a teljesítmény és méretezhetőség a megoldás, kérdezze meg saját kezűleg esetén az adatok minden olyan kapcsolat létrehozásához rendszerbe tábla szükséges. Előfordulhat, hogy a tervezési és javítását célzó méretezhetőségét és teljesítményét a megoldás, ha az ügyfélalkalmazást, hajtsa végre a szükséges illesztések.  
+Bár vannak lehetőségek kapcsolatok modellezésére a Table szolgáltatásban, érdemes nem elfelejti, hogy a két elsődleges oka a Table szolgáltatás használatára vonatkozó-e a méretezhetőséget és teljesítményt nyújt. Ha úgy találja, akkor a több kapcsolatot, amelyek veszélyeztetik a teljesítmény és méretezhetőség a megoldás modellezési, kérdezze meg saját kezűleg esetén az adatok minden olyan kapcsolat rendszerbe tábla létrehozásához szükséges. Előfordulhat, hogy a tervezési és javítását célzó méretezhetőségét és teljesítményét a megoldás, ha az ügyfélalkalmazást, hajtsa végre a szükséges illesztések.  
 
-Például ha adatokat tartalmaznak, amelyek nem változik gyakran nagyon kis táblákhoz, majd után lekérdezhetik ezeket az adatokat többször is gyorsítótárazása azt az ügyfélen. Ennek elkerülése érdekében ismételt használatával ugyanazokat az adatokat beolvasni. A példákban azt kell venni, a jelen útmutató kis szervezet szervezeti egységek készletét valószínű, hogy rövid, és módosítsa a ritkán így egy jó jelölt az ügyfélalkalmazás tölthetik le egyszer adatok és a gyorsítótár, keresse meg a adatok.  
+Például ha kis-táblázatot, amely nem változik gyakran adatokat tartalmaznak, majd után lekérdezhetik ezeket az adatokat többször is gyorsítótárazása azt az ügyfélen. Ennek elkerülése érdekében ismételt használatával ugyanazokat az adatokat beolvasni. A példákban azt kell venni, a jelen útmutató kis szervezet szervezeti egységek készletét valószínű, hogy rövid, és módosítsa a ritkán egy jó jelölt adatokat ügyfélalkalmazás tölthetik le egyszer, és a keresési adatként gyorsítótár így.  
 
 ### <a name="inheritance-relationships"></a>Öröklődés kapcsolatok
 Ha az ügyfélalkalmazást használ, amely egy üzleti entitásokat képviselő öröklési kapcsolatban részét osztályok, egyszerűen a a Table szolgáltatásban entitásokból maradnak meg. Például lehetséges, hogy az ügyfél alkalmazásban megadott üzenetosztályának beolvasása a következő funkciócsoport ahol **személy** absztrakt osztály.
@@ -416,7 +416,7 @@ A minta térkép fent néhány minták (kék) és a jelen útmutatóban leírt e
 Több másolatot minden entitás használatával különböző tárolására **RowKey** értékeket (a partícióra) engedélyezése gyors és hatékony keresések és a másodlagos rendezési sorrend különböző **RowKey** értékeket. Példányok közötti frissítéseket is konzisztens EGT tartozó használatával.  
 
 #### <a name="context-and-problem"></a>Kontextus és probléma
-A Table szolgáltatás automatikusan elvégzi a segítségével a **PartitionKey** és **RowKey** értékeket. Ez lehetővé teszi, hogy hatékonyan végez ezeket az értékeket entitást lekérdezni egy ügyfélalkalmazást. Például a lent látható módon táblaszerkezet, ügyfélalkalmazás használatával pont lekérdezés egy adott alkalmazott bejegyzés lekérdezésére a részleg neve és az alkalmazott azonosítója (a **PartitionKey** és **RowKey** értékek). Egy ügyfél is kérje le az entitásokat alkalmazottazonosító belül minden részleg szerint rendezve.
+A Table szolgáltatás automatikusan elvégzi a segítségével a **PartitionKey** és **RowKey** értékeket. Ez lehetővé teszi, hogy hatékonyan végez ezeket az értékeket entitást lekérdezni egy ügyfélalkalmazást. Például a lent látható módon táblaszerkezet, ügyfélalkalmazás használatával pont lekérdezés egy adott alkalmazott bejegyzés lekérdezésére a részleg neve és az alkalmazott azonosítója (a **PartitionKey** és **RowKey**  értékek). Egy ügyfél is kérje le az entitásokat alkalmazottazonosító belül minden részleg szerint rendezve.
 
 ![][6]
 
@@ -437,7 +437,7 @@ Ha alkalmazott entitástartományának kérdezze le, megadhatja a alkalmazott az
 * Az alkalmazottak található a tartomány 000100 való 000199 használatban alkalmazott azonosítóval rendelkező az értékesítési osztályon: $filter = (PartitionKey eq 'Értékesítés') és (RowKey ge "empid_000100") és (RowKey le "empid_000199")  
 * Az alkalmazottak található az értékesítési osztályon kezdve "a" használja e-mail címmel rendelkező: $filter = (PartitionKey eq 'Értékesítés') és (RowKey ge "email_a") és (RowKey lt "email_b")  
   
-  Vegye figyelembe, hogy a Table szolgáltatásból REST API-t a további tudnivalókat lásd a fenti példákban használt szűrőszintaxisának [lekérdezés entitások](http://msdn.microsoft.com/library/azure/dd179421.aspx).  
+  Vegye figyelembe, hogy a fenti példákban használt szűrőszintaxisának van a Table szolgáltatásból REST API-t, további információkért lásd: [lekérdezés entitások](http://msdn.microsoft.com/library/azure/dd179421.aspx).  
 
 #### <a name="issues-and-considerations"></a>Problémák és megfontolandó szempontok
 A minta megvalósítása során az alábbi pontokat vegye figyelembe:  
@@ -447,7 +447,7 @@ A minta megvalósítása során az alábbi pontokat vegye figyelembe:
 * Beállíthatja, hogy az ismétlődő entitások egymással konzisztenssé i frissíteni az entitást két példányával EGTs használatával. Ez azt jelenti, hogy ugyanazon partíció egy entitás összes másolatát tárolja. További információkért tekintse meg a szakasz [entitás csoport tranzakciók használatával](#entity-group-transactions).  
 * A használt érték a **RowKey** minden egyes entitásnál egyedinek kell lennie. Érdemes lehet összetett kulcs értékeket.  
 * Kitöltési szerepel benne numerikus érték a **RowKey** (például a alkalmazottazonosító 000223), lehetővé teszi, hogy javítsa ki, rendezési és szűrési alapján felső és alsó határait.  
-* Nem feltétlenül kell ismétlődő az entitás tulajdonságait. Például ha a lekérdezések, hogy a Keresés az entitásokat, az e-mail cím a **RowKey** soha nem kell az alkalmazott életkora, ezeket az entitásokat eredményezhet. az alábbi szerkezettel:
+* Nem feltétlenül kell ismétlődő az entitás tulajdonságait. Például, ha a lekérdezések keres az entitások, az e-mail cím a **RowKey** soha nem kell az alkalmazott életkora, ezeket az entitásokat eredményezhet. az alábbi szerkezettel:
 
 ![][8]
 
@@ -465,16 +465,16 @@ Az alábbi minták és útmutatók szintén hasznosak lehetnek a minta megvalós
 * [Heterogén entitástípusok használata](#working-with-heterogeneous-entity-types)
 
 ### <a name="inter-partition-secondary-index-pattern"></a>Másodlagos helyek közötti partíció index minta
-Több másolatot minden entitás használatával különböző tárolására **RowKey** értékek a különböző partíciók, vagy a külön táblázatokat engedélyezése gyors és hatékony keresések és a másodlagos rendezési sorrend különböző **RowKey** értékeket.  
+Több másolatot minden entitás használatával különböző tárolására **RowKey** értékek a különböző partíciók, vagy a külön az engedélyezés gyors és hatékony keresések és a másodlagos rendezési sorrend különböző táblázatokat **RowKey**értékeket.  
 
 #### <a name="context-and-problem"></a>Kontextus és probléma
-A Table szolgáltatás automatikusan elvégzi a segítségével a **PartitionKey** és **RowKey** értékeket. Ez lehetővé teszi, hogy hatékonyan végez ezeket az értékeket entitást lekérdezni egy ügyfélalkalmazást. Például a lent látható módon táblaszerkezet, ügyfélalkalmazás használatával pont lekérdezés egy adott alkalmazott bejegyzés lekérdezésére a részleg neve és az alkalmazott azonosítója (a **PartitionKey** és **RowKey** értékek). Egy ügyfél is kérje le az entitásokat alkalmazottazonosító belül minden részleg szerint rendezve.  
+A Table szolgáltatás automatikusan elvégzi a segítségével a **PartitionKey** és **RowKey** értékeket. Ez lehetővé teszi, hogy hatékonyan végez ezeket az értékeket entitást lekérdezni egy ügyfélalkalmazást. Például a lent látható módon táblaszerkezet, ügyfélalkalmazás használatával pont lekérdezés egy adott alkalmazott bejegyzés lekérdezésére a részleg neve és az alkalmazott azonosítója (a **PartitionKey** és **RowKey**  értékek). Egy ügyfél is kérje le az entitásokat alkalmazottazonosító belül minden részleg szerint rendezve.  
 
 ![][9]
 
 Ha is érdemes lehet egy másik tulajdonság, például az e-mail cím alapján alkalmazott entitás megkeresni a kevésbé hatékony partíció ellenőrzések keres kell használnia. Ennek oka az, a table szolgáltatás nem adja meg a másodlagos kulcsot. Ezenkívül nincs lehetőség az alkalmazottakat, mint egy másik sorrendbe rendezve kéréséhez **RowKey** sorrendje.  
 
-Ezeket az entitásokat tranzakciókról nagyon nagy mennyiségű rendszer előrejelző, és szeretné, hogy a Table szolgáltatás szabályozása az ügyfél kockázatának minimalizálása érdekében.  
+Ezeket az entitásokat tranzakciókról nagy mennyiségű rendszer előrejelző, és szeretné, hogy a Table szolgáltatás sebessége korlátozza az ügyfél kockázatának minimalizálása érdekében.  
 
 #### <a name="solution"></a>Megoldás
 Másodlagos indexek hiánya megkerüléséhez tárolhat több másolatot minden példány használatával minden entitás különböző **PartitionKey** és **RowKey** értékeket. Ha egy entitás tárolja az alább látható struktúrákat, e-mail címét vagy az alkalmazott azonosítója alapján alkalmazott entitások hatékonyan kérheti le. Az előtag értékei a **PartitionKey**, "empid_" és "email_" engedélyezi, hogy melyik index lekérdezéshez használni kívánt azonosításához.  
@@ -491,7 +491,7 @@ Ha alkalmazott entitástartományának kérdezze le, megadhatja a alkalmazott az
 * Az alkalmazottak az értékesítési osztályon az alkalmazott ID tartományban található **000100** való **000199** alkalmazott azonosítója sorrendben használja rendezve: $filter = (PartitionKey eq ' empid_Sales") és (RowKey ge"000100") és (RowKey le "000199")  
 * Az alkalmazottak az értékesítési részleg kezdetű "a" e-mail cím sorrendben használja rendezett e-mail címmel rendelkező kereséséhez: $filter = (PartitionKey eq ' email_Sales") és (RowKey ge"a") és (RowKey lt"b")  
 
-Vegye figyelembe, hogy a Table szolgáltatásból REST API-t a további tudnivalókat lásd a fenti példákban használt szűrőszintaxisának [lekérdezés entitások](http://msdn.microsoft.com/library/azure/dd179421.aspx).  
+Vegye figyelembe, hogy a fenti példákban használt szűrőszintaxisának van a Table szolgáltatásból REST API-t, további információkért lásd: [lekérdezés entitások](http://msdn.microsoft.com/library/azure/dd179421.aspx).  
 
 #### <a name="issues-and-considerations"></a>Problémák és megfontolandó szempontok
 A minta megvalósítása során az alábbi pontokat vegye figyelembe:  
@@ -548,7 +548,7 @@ A tábla- és várólista szolgáltatásokból hibák átmeneti hibák, és az �
 #### <a name="issues-and-considerations"></a>Problémák és megfontolandó szempontok
 A minta megvalósítása során az alábbi pontokat vegye figyelembe:  
 
-* Ez a megoldás elkülönítési tranzakció nem ad meg. Például egy ügyfél olvasható a **aktuális** és **archív** táblák, ha a feldolgozói szerepkör lépések között **4** és **5**, és tekintse meg egy az adatok inkonzisztens nézetét. Vegye figyelembe, hogy az adatok konzisztens idővel.  
+* Ez a megoldás elkülönítési tranzakció nem ad meg. Például egy ügyfél olvasható a **aktuális** és **archív** táblák, ha a feldolgozói szerepkör lépések között **4** és **5**, és tekintse meg egy az adatok inkonzisztens nézetét. Az adatok végül konzisztens lesz.  
 * Lehet, hogy-e 4. és 5 idempotent végleges konzisztencia biztosításához.  
 * A megoldás több várólisták és feldolgozópéldányok szerepkör segítségével méretezhető.  
 
@@ -585,7 +585,7 @@ Vezetéknév keresési engedélyezze a fent látható entitás struktúrával, k
 
 <u>#1. lehetőség: Használja a blob storage</u>  
 
-Az első lehetőség létrehoz minden egyedi Vezetéknév, és minden egyes blob tárolóban blob listáját a **PartitionKey** (osztály) és **RowKey** adott Vezetéknév rendelkező alkalmazottak (alkalmazott azonosítója) értékeit. Adja hozzá, vagy egy alkalmazott törlésekor biztosítania kell, hogy idővel konzisztenssé váljanak a alkalmazott entitások a megfelelő blob tartalma.  
+Az első lehetőség létrehoz minden egyedi Vezetéknév, és minden egyes blob tárolóban blob listáját a **PartitionKey** (osztály) és **RowKey** adott Vezetéknév rendelkező alkalmazottak (alkalmazott azonosítója) értékeit. Adja hozzá, vagy egy alkalmazott törlésekor, ellenőrizze, hogy idővel konzisztenssé váljanak a alkalmazott entitások a megfelelő blob tartalma.  
 
 <u>#2. lehetőség:</u> ugyanazon partíció index entitások létrehozása  
 
@@ -599,7 +599,7 @@ Az alábbi lépéseket kell követnie, amikor a hozzáadni kívánt új alkalmaz
 
 1. Az index bejegyzés lekérdezésére egy **PartitionKey** "Értékesítési" értéket, és a **RowKey** érték "János." Mentse ezt az entitást a 2. lépésben használandó ETag címkét.  
 2. Hozzon létre egy entitás-csoport tranzakció (Ez azt jelenti, hogy a kötegelt művelet), amely az új alkalmazottak entitás beszúrása (**PartitionKey** "Értékesítési" érték és **RowKey** "000152" értéket), és frissíti az index entitás (**PartitionKey** "Értékesítési" értéket, és **RowKey** "János" érték) az új alkalmazottazonosító ad hozzá a EmployeeIDs mező listáján. Entitás csoport tranzakciókkal kapcsolatos további információkért lásd: [entitás csoport tranzakciók](#entity-group-transactions).  
-3. Ha az entitás csoport tranzakció (valaki más csak módosította az index entitás) egyidejű hozzáférések optimista hiba miatt nem sikerül, akkor szüksége az 1. lépés: újra újrakezdéshez.  
+3. Ha az entitás csoport tranzakció (valaki módosította az index entitás) egyidejű hozzáférések optimista hiba miatt nem sikerül, akkor szüksége az 1. lépés: újra újrakezdéshez.  
 
 Egy alkalmazott törlése, a második lehetőség használata hasonló megközelítése is használhatja. Egy alkalmazott Vezetéknév módosítása nem kicsit bonyolultabb, mert szüksége lesz egy entitás csoport tranzakció, amely három entitások frissíti hajtható végre: az alkalmazott, a régi vezetékneve index entitás, és a index entitás az új utolsó nevét. Minden entitás optimista konkurenciát alkalmazott frissítések végrehajtásához használhatja ETag értékek beolvasása érdekében módosítások végrehajtása előtt be kell olvasni.  
 
@@ -623,7 +623,7 @@ A harmadik beállítással biztosítja az egységességet, mert az index entitá
 A minta megvalósítása során az alábbi pontokat vegye figyelembe:  
 
 * Ehhez a megoldáshoz szükségesek egyező entitást lekérdezni legalább két lekérdezést: egyet az index entitásokat a listájának lekérdezése **RowKey** értékek, majd beolvasni a listában szereplő lekérdezések.  
-* Fényében, hogy az egyes entitásnak van a maximális méret 1 MB, #2 és a megoldás #3 lehetőség feltételezik, hogy bármely adott Vezetéknév alkalmazott azonosítóinak listáját soha nem 1 MB-nál nagyobb. Ha alkalmazott azonosítók listáját mérete 1 MB-nál nagyobbnak kell lennie, #1. lehetőség és az index adatokat a blob Storage tárolóban tárolja.  
+* Fényében, hogy egyes entitás mérete 1 MB, #2. lehetőség, lehetősége van a megoldásban a #3 feltételezik, hogy bármely adott Vezetéknév alkalmazott azonosítóinak listáját soha nem 1 MB-nál nagyobb. Ha alkalmazott azonosítók listáját mérete 1 MB-nál nagyobbnak kell lennie, #1. lehetőség és az index adatokat a blob Storage tárolóban tárolja.  
 * #2. beállítás (EGTs használ hozzáadása és az alkalmazottak törlése és módosítása az alkalmazott Vezetéknév kezeléséhez) ki kell értékelnie, ha a tranzakciók mennyisége fog megközelíti a méretezhetőségének korlátai egy adott partíció. Ha ez a helyzet, fontolja meg egy idővel konzisztenssé megoldás (#1. lehetőség vagy #3. lehetőség), amely várólisták használja a frissítés-kérelmeket kezelnek, és lehetővé teszi, hogy az index entitások az alkalmazott entitások külön partícióra.  
 * Ebben a megoldásban #2. lehetőség azt feltételezi, hogy szeretné-e kereshet meg egy részleg vezetéknév: például szeretné beolvasni az alkalmazottakat az értékesítési részleg János utolsó néven. Ha szeretné tudni nevű utolsó János a teljes szervezeten belül minden alkalmazott kereshet, #1. lehetőség vagy a #3. lehetőség használatával.
 * Megvalósíthat egy várólista-alapú megoldás, amely a végleges konzisztencia biztosítja (lásd a [idővel konzisztenssé tranzakciók mintát](#eventually-consistent-transactions-pattern) további részletekért).  
@@ -674,7 +674,7 @@ Az alábbi minták és útmutatók szintén hasznosak lehetnek a minta megvalós
 Használjon összetett **RowKey** értékek kapcsolódó adatok egyetlen pont lekérdezéssel talált ügyfél engedélyezése.  
 
 #### <a name="context-and-problem"></a>Kontextus és probléma
-Egy relációs adatbázisban hogy a rendszer teljesen illesztések lekérdezésekben használatához kapcsolódó adatok kódrészletek vissza az ügyfélnek egyetlen lekérdezést természetes. Például használhatja a alkalmazottazonosító megkeresheti a kapcsolódó entitásokból, melyek teljesítményét, és tekintse át az adatokat azt listáját.  
+Egy relációs adatbázisban akkor természetes lekérdezésekben illesztések használatához kapcsolódó adatok kódrészletek vissza az ügyfélnek egyetlen lekérdezést. Például használhatja a alkalmazottazonosító megkeresheti a kapcsolódó entitásokból, melyek teljesítményét, és tekintse át az adatokat azt listáját.  
 
 Tegyük fel, a Table szolgáltatás használatával az alábbi szerkezettel alkalmazott entitások tárolja:  
 
@@ -754,16 +754,16 @@ Az alábbi minták és útmutatók szintén hasznosak lehetnek a minta megvalós
 Az entitások nagy mennyiségű törlésének engedélyezése a entitásokhoz egyidejű törlésre tárolása saját külön táblázatban; a tábla törlésével törli az entitásokat.  
 
 #### <a name="context-and-problem"></a>Kontextus és probléma
-Számos alkalmazás törlése a régi adatokat, amely már nem elérhető egy ügyfélalkalmazást, vagy az alkalmazás rendelkezik archivált más adattárolóra. Általában azonosíthatja az ilyen adatokat a dátum: például, hogy egy követelmény, törlendő rekordok, amelyek több mint 60 napos bejelentkezési kérelmek.  
+Számos alkalmazás, amely már nem elérhető egy ügyfélalkalmazást, vagy az alkalmazás rendelkezik archivált más adattárolóra régi adatok törlése. Általában azonosíthatja az ilyen adatokat a dátum: például, hogy számára, ha törli a kérelmeket, amelyek több mint 60 napos minden bejelentkezés rekordjait.  
 
-Egy lehetséges tervezési, hogy a dátum és idő, a bejelentkezési kérelem a használja a **RowKey**:  
+Egy lehetséges tervezési, hogy a dátum és idő, a regisztráció használja a kérésben a **RowKey**:  
 
 ![][21]
 
-Ez a megközelítés partíció elérési pontokhoz való elkerülhető, mert az alkalmazás beszúrása, és minden felhasználóhoz külön partícióra bejelentkezési entitások törlésére. Azonban ez a megközelítés lehet költséges és időigényes Ha sok entitást mivel először végre kell hajtania a táblázatbeolvasás ahhoz, hogy törli a entitások azonosítása, és törölnie kell minden egyes régi entitás. Vegye figyelembe, hogy adatváltások számát csökkentheti a kiszolgálóra, törölje a régi entitások több törlési kérelmek kötegelés történő EGTs szükséges.  
+Ez a megközelítés partíció elérési pontokhoz való elkerülhető, mert az alkalmazás beszúrása, és jelentkezzen be minden felhasználóhoz külön partícióra entitások törlése. Azonban ez a megközelítés lehet költséges és időigényes Ha sok entitást mivel először végre kell hajtania a táblázatbeolvasás ahhoz, hogy törli a entitások azonosítása, és törölnie kell minden egyes régi entitás. A kiszolgálóhoz, törölje a régi entitások több törlési kérelmek kötegelés EGTs be kell csökkentése érdekében adatváltások számát.  
 
 #### <a name="solution"></a>Megoldás
-Egy külön táblázattal minden nap a bejelentkezési kísérletek. A fenti entitás tervező segítségével elkerülése csatlakozási pontokhoz entities beszúrt, és most már egyszerűen törlése egy tábla minden nap adott esetben régi entitások törlése (egyetlen tárhelyművelettel) keresése és több száz és egyéni több ezer törlése helyett bejelentkezési entitások minden nap.  
+Használjon külön táblázatot egyes napjaira vonatkozó bejelentkezési kísérlet után. A fenti entitás tervező segítségével elkerülése csatlakozási pontokhoz entities beszúrt, és most már egyszerűen törlése egy tábla minden nap adott esetben régi entitások törlése (egyetlen tárhelyművelettel) keresése és több száz és egyéni több ezer törlése helyett bejelentkezés entitások minden nap.  
 
 #### <a name="issues-and-considerations"></a>Problémák és megfontolandó szempontok
 A minta megvalósítása során az alábbi pontokat vegye figyelembe:  
@@ -771,7 +771,7 @@ A minta megvalósítása során az alábbi pontokat vegye figyelembe:
 * Támogatja a Tervező más módon, az alkalmazás fogja használni az adatok, például adott entitások kapcsolódik-e más adatok, vagy előállítása összesített adatát keresésekor?  
 * Nem a Tervező elkerülése interaktív területek új entitások beszúráskor?  
 * A késleltetés várható, ha azt szeretné, hogy a tábla néven törlése után újból. Érdemes mindig használjon egyedi tábla neve.  
-* Várt néhány szabályozás első használata alkalmával érdemes egy új tábla a Table szolgáltatás Tanulja meg a hozzáférési minták, és a partíciók elosztja a csomópontok között. Milyen gyakran kell létrehoznia az új táblákat vegye figyelembe.  
+* Várja meg, néhány sebessége korlátozza az első használata alkalmával érdemes egy új tábla a Table szolgáltatás Tanulja meg a hozzáférési minták, és a partíciók elosztja a csomópontok között. Milyen gyakran kell létrehoznia az új táblákat vegye figyelembe.  
 
 #### <a name="when-to-use-this-pattern"></a>Mikor érdemes ezt a mintát használni?
 Ezt a mintát használja, ha az entitásokat, törölnie kell az egyszerre nagy mennyiségű van.  
@@ -826,7 +826,7 @@ A Table szolgáltatás több entitás legfeljebb 252 tulajdonságot az egyetlen 
 
 ![][24]
 
-Ha olyan módosítást igénylő frissítése mindkét entitások, hogy továbbra is szinkronizálja egymással kell egy EGT is használhatja. Ellenkező esetben egy egyetlen egyesítési művelet használatával frissítse az üzenetek száma egy adott napjára. Az adatok beolvasása egyetlen alkalmazott be kell olvasni mindkét entitások, amely két hatékony kérelmekre is elvégezhető a **PartitionKey** és egy **RowKey** érték.  
+Ha olyan módosítást, amely mindkét entitások, hogy továbbra is szinkronizálja egymással frissíteni kell az kell, egy EGT is használhatja. Ellenkező esetben egy egyetlen egyesítési művelet használatával frissítse az üzenetek száma egy adott napjára. Az adatok beolvasása egyetlen alkalmazott be kell olvasni mindkét entitások, amely két hatékony kérelmekre is elvégezhető a **PartitionKey** és egy **RowKey** érték.  
 
 #### <a name="issues-and-considerations"></a>Problémák és megfontolandó szempontok
 A minta megvalósítása során az alábbi pontokat vegye figyelembe:  
@@ -892,7 +892,7 @@ A minta megvalósítása során az alábbi pontokat vegye figyelembe:
 * A tranzakciók várható mennyisége azt jelenti, hogy valószínűleg, az egyes partíciók a méretezhetőségi célok eléréséhez, és a tároló szolgáltatás által szabályozott kell?  
 
 #### <a name="when-to-use-this-pattern"></a>Mikor érdemes ezt a mintát használni?
-A víruskereső prepend hozzáfűzése minta elkerülése a tranzakciók mennyisége valószínű, hogy a társzolgáltatás általi szabályozás, amikor hozzáfér a gyakran használt adatok partíció eredményez.  
+Ne elleni prepend hozzáfűzése mintát, a tranzakciók mennyisége korlátozza a tároló szolgáltatás által, amikor hozzáfér a gyakran használt adatok partíció sebessége nagy valószínűséggel esetén.  
 
 #### <a name="related-patterns-and-guidance"></a>Kapcsolódó minták és útmutatók
 Az alábbi minták és útmutatók szintén hasznosak lehetnek a minta megvalósításakor:  
@@ -926,7 +926,7 @@ Tárolási analitika naplóüzenetek több blobok tagolt formátumban tárolja. 
 
 Tárolási analitika elnevezési szabályait, amely lehetővé teszi a blob található blobok (vagy blobok), amelyek tartalmazzák a naplófájlüzeneteket keresést, amelynek használja. Például a "queue/2014/07/31/1800/000001.log" nevű blob a queue szolgáltatás a kezdő pozíció: 31 2014. július 18:00 óra kapcsolódó naplóüzenetek tartalmazza. A "000001" azt jelzi, hogy ez az első naplófájlja erre az időszakra. Tárolási analitika az első és utolsó naplóüzenetek a blob metaadatai részeként fájlban tárolja az időbélyegeket is rögzíti. Az API a blob storage lehetővé teszi, hogy blobok keresse meg a tartománynév előtagján alapuló tároló: keresse meg a kezdődő 18:00 órára várólistára naplózási adatokat tartalmazó összes BLOB, használja az előtag "várólista/2014/07/31/1800."  
 
-Storage Analytics pufferek üzenetek naplózása belső majd rendszeres időközönként frissíti a megfelelő blob vagy hoz létre egy újat a legújabb naplóbejegyzéseket tranzakcióköteghez. Ez csökkenti azt végezze el a blob szolgáltatás írási műveletek számát.  
+Storage Analytics pufferek belső üzenetek naplózása majd rendszeres időközönként frissíti a megfelelő blob vagy hoz létre egy újat a legújabb naplóbejegyzéseket köteg. Ez csökkenti azt végezze el a blob szolgáltatás írási műveletek számát.  
 
 Egy hasonló megoldás webkiszolgálókból a saját alkalmazásban, meg kell fontolnia és megbízhatóság (írása minden naplóbejegyzés a blob storage módon történik, akkor) és méretezhetőség (pufferelés az alkalmazás és az írás a frissítések közötti kompromisszum kezelése azokat a blob-tároló kötegekben).  
 
@@ -1078,9 +1078,9 @@ foreach (var e in entities)
 Értesítés az **RowKey** érték érhető el annak ellenére, hogy azt meg beolvasandó tulajdonságként listája nem tartalmazott.  
 
 ### <a name="modifying-entities"></a>Entitások módosítása
-A Storage ügyféloldali kódtár lehetővé teszi a Beszúrás, törlésével és entitások frissítése a table szolgáltatásban tárolt entitásokat módosítását. EGTs segítségével több insert, update és delete műveletek segítségével csökkentheti a szükséges adatváltások számát kötegelt és a megoldás a teljesítmény javításához.  
+A Storage ügyféloldali kódtár lehetővé teszi a Beszúrás, törlésével és entitások frissítése a table szolgáltatásban tárolt entitásokat módosítását. EGTs segítségével több Beszúrások, frissítési és törlési műveletek segítségével csökkentheti a szükséges adatváltások számát kötegelt és a megoldás a teljesítmény javításához.  
 
-Fontos megjegyezni, hogy a kivételek, amikor a Storage ügyféloldali kódtár végrehajt egy EGT általában az index az entitás, ami miatt sikertelen a kötegelt tartalmazza. Ez akkor hasznos, ha EGTs kód hibakeresés alatt.  
+Kivételek, amikor a Storage ügyféloldali kódtár végrehajt egy EGT általában közé tartoznak az entitás, ami miatt sikertelen a kötegelt indexét. Ez akkor hasznos, ha EGTs kód hibakeresés alatt.  
 
 Azt is figyelembe kell venni, hogyan a kialakítás befolyásolja, miként kezeli az ügyfélalkalmazást a feldolgozási mód és a frissítési művelet.  
 
@@ -1187,7 +1187,7 @@ A Table szolgáltatás egy *séma nélküli* tábla tároló, amely azt jelenti,
 </tr>
 </table>
 
-Vegye figyelembe, hogy minden egyes szervezet továbbra is rendelkeznie kell **PartitionKey**, **RowKey**, és **időbélyeg** értékeket, de rendelkezhetnek bármely tulajdonságkészletbe. Ezenkívül nincs mit entitás típusát jelzi, kivéve, ha úgy dönt, hogy valahol az információk tárolására. Az entitástípus azonosítására szolgáló két lehetőség áll rendelkezésre:  
+Minden entitás továbbra is rendelkeznie kell **PartitionKey**, **RowKey**, és **időbélyeg** értékeket, de rendelkezhetnek bármely tulajdonságkészletbe. Ezenkívül nincs mit entitás típusát jelzi, kivéve, ha úgy dönt, hogy valahol az információk tárolására. Az entitástípus azonosítására szolgáló két lehetőség áll rendelkezésre:  
 
 * Az entitástípus illesztenie a **RowKey** (vagy esetleg a **PartitionKey**). Például **EMPLOYEE_000123** vagy **DEPARTMENT_SALES** , **RowKey** értékeket.  
 * Egy külön tulajdonsággal entitástípus jegyezze fel az alábbi táblázatban látható módon.  
@@ -1301,7 +1301,7 @@ Ez a szakasz többi néhány a Storage ügyféloldali kódtára a funkciója, am
 #### <a name="retrieving-heterogeneous-entity-types"></a>Heterogén entitástípusok beolvasása
 A Storage ügyféloldali kódtár használ, az entitástípusok több három beállításai lesz.  
 
-Ha tudja, hogy az entitás egy adott tárolt típusú **RowKey** és **PartitionKey** érték található, akkor megadhatja az entitás típusa, ha a bejegyzés lekérdezésére, ahogy az előző két példán típusú entitásokat beolvasása az **EmployeeEntity**: [a Storage ügyféloldali kódtár segítségével pont lekérdezése](#executing-a-point-query-using-the-storage-client-library) és [beolvasása a LINQ használatával több entitás](#retrieving-multiple-entities-using-linq).  
+Ha tudja, hogy az entitás egy adott tárolt típusú **RowKey** és **PartitionKey** értékeket, majd megadhatja a entitástípus, ha a bejegyzés lekérdezésére, ahogy az az előző két példa, amely kérje le az entitásokat típusú **EmployeeEntity**: [a Storage ügyféloldali kódtár segítségével pont lekérdezése](#executing-a-point-query-using-the-storage-client-library) és [beolvasása a LINQ használatával több entitás](#retrieving-multiple-entities-using-linq).  
 
 A második lehetőség a **DynamicTableEntity** típusú (egy tulajdonságcsomagot) helyett egy konkrét POCO entitástípus (ezt a lehetőséget is javíthatja a teljesítményt, mert nincs szükség szerializálása és deszerializálása .NET típusú entitás). A következő C#-kódban potenciálisan eltérő típusú entitásokat táblából, de mint minden entitásokat ad vissza **DynamicTableEntity** példányok. Ezután a **EntityType** tulajdonság minden entitás típusának meghatározására:  
 
@@ -1336,7 +1336,7 @@ if (e.Properties.TryGetValue("EntityType", out entityTypeProperty))
 }  
 ```
 
-Vegye figyelembe, hogy beolvasni más tulajdonságokat kell használnia a **TryGetValue** metódust a **tulajdonságok** tulajdonsága a **DynamicTableEntity** osztály.  
+Egyéb tulajdonságok lekéréséhez használja a **TryGetValue** metódust a **tulajdonságok** tulajdonsága a **DynamicTableEntity** osztály.  
 
 Egy harmadik lehetőség egy kombinálhatja a használatával a **DynamicTableEntity** típust és egy **EntityResolver** példány. Ez lehetővé teszi, hogy oldja fel ugyanabban a lekérdezésben többféle POCO. Ebben a példában a **EntityResolver** delegált használ a **EntityType** tulajdonság használatával tudja megkülönböztetni a két típusú entitás, amely a lekérdezés visszaadja. A **megoldásához** módszert használ a **feloldó** megoldásához delegált **DynamicTableEntity** a példányok **TableEntity** példányok.  
 
@@ -1410,7 +1410,7 @@ Közös hozzáférésű Jogosultságkód (SAS) jogkivonatok segítségével enge
 
 A Table szolgáltatás SAS-tokenje használatával kapcsolatban további információkért lásd: [használatával megosztott hozzáférési aláírásokkal (SAS)](../storage/common/storage-dotnet-shared-access-signature-part-1.md).  
 
-Azonban továbbra is kell létrehoznia, amely adja meg a table szolgáltatás entitást ügyfélalkalmazás SAS-tokenje: akkor tegye ezt egy olyan környezetben, a tárfiókok kulcsait biztonságos hozzáféréssel rendelkezik. Egy webes vagy feldolgozói szerepkör általában a rendszer az SAS-jogkivonatokat hoz létre, és letöltheti az ügyfélalkalmazások számára az entitások hozzáférést igénylő használják. Mivel nincs még egy terhelés létrehozásakor, és kézbesíti SAS-tokenje az ügyfelek számára, hogyan lehet a legjobban érdemes lehet csökkenteni a terhelést, különösen a nagy mennyiségű forgatókönyvek részt.  
+Azonban továbbra is kell létrehoznia, amely adja meg a table szolgáltatás entitást ügyfélalkalmazás SAS-tokenje: ehhez a olyan környezetben, amely a tárfiók kulcsait a biztonságos hozzáférést. Egy webes vagy feldolgozói szerepkör általában a rendszer az SAS-jogkivonatokat hoz létre, és letöltheti az ügyfélalkalmazások számára az entitások hozzáférést igénylő használják. Mivel nincs még egy terhelés létrehozásakor, és kézbesíti SAS-tokenje az ügyfelek számára, hogyan lehet a legjobban érdemes lehet csökkenteni a terhelést, különösen a nagy mennyiségű forgatókönyvek részt.  
 
 Úgy is, amely hozzáférést biztosít egy tábla az entitások egy részét a SAS-token létrehozásához. Alapértelmezés szerint egy SAS-jogkivonat teljes táblát hoz létre, de akkor is meg, hogy a SAS-jogkivonat való hozzáférés engedélyezése vagy számos **PartitionKey** értékeket, vagy számos **PartitionKey** és **RowKey** értékeket. Akkor célszerű használni, úgy, hogy minden felhasználó SAS-jogkivonat csak lehetővé teszi őket elérését a saját részére a table szolgáltatás egyes felhasználókat a rendszer az SAS-tokenje létrehozásához.  
 
@@ -1470,11 +1470,11 @@ private static async Task ManyEntitiesQueryAsync(CloudTable employeeTable, strin
 A aszinkron példában láthatja a szinkron verziójáról az alábbi módosításokat:  
 
 * A metódus-aláírás mostantól tartalmazza a **aszinkron** módosító és értéket ad vissza egy **feladat** példány.  
-* Hívása helyett a **ExecuteSegmented** metódusának segítéségével lekérheti az eredményeket, most metódus meghívja a **ExecuteSegmentedAsync** metódus, és használja a **await** módosító eredmények aszinkron beolvasásához.  
+* Hívása helyett a **ExecuteSegmented** metódusának segítéségével lekérheti az eredményeket, most metódus meghívja a **ExecuteSegmentedAsync** metódus, és használja a **await** módosító számára eredmények aszinkron beolvasásához.  
 
 Az ügyfélalkalmazás a metódus hívása többször (a különböző értékekkel a **részleg** paraméter), és minden egyes lekérdezés külön szálban futtatandó.  
 
-Vegye figyelembe, hogy van-e nem aszinkron verziója a **Execute** metódust a **TableQuery** osztálynál, mert a **IEnumerable** illesztőfelület nem támogatja a aszinkron enumerálása.  
+Nincs az aszinkron verzióban a **Execute** metódust a **TableQuery** osztálynál, mert a **IEnumerable** illesztőfelület nem támogatja az aszinkron enumerálása.  
 
 Helyezze, frissítése, és aszinkron módon entitások törlésére. Az alábbi C# példában egy egyszerű, a szinkron módszer szúrható be, illetve alkalmazott entitás cseréje:  
 
@@ -1507,10 +1507,10 @@ A aszinkron példában láthatja a szinkron verziójáról az alábbi módosít�
 
 Az ügyfélalkalmazás ehhez hasonló több aszinkron metódus meghívása, és minden metódushívás külön szálban futtatandó.  
 
-### <a name="credits"></a>Kreditek
+### <a name="credits"></a>Stáblisták
 Örömmel vesszük az Azure-csapat a hozzájárulásuk következő tagjai szeretnénk: Dominic Betts, Jason Hogg, Jean Ghanem, Jai Haridas, Jeff Irwin, Vamshidhar Kommineni, Vinay Shah Serdar Ozler, valamint a Microsoft DX Tom Hollander. 
 
-Azt is szeretne felülvizsgálati ciklus során a következő Microsoft MVP meg az értékes visszajelzés Köszönjük: Igor Papirov és Edward Bakker.
+Azt is szeretne felülvizsgálati ciklus során a következő Microsoft MVPs az értékes visszajelzés Köszönjük: Igor Papirov és Edward Bakker.
 
 [1]: ./media/storage-table-design-guide/storage-table-design-IMAGE01.png
 [2]: ./media/storage-table-design-guide/storage-table-design-IMAGE02.png

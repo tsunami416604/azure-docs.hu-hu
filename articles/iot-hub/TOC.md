@@ -20,6 +20,7 @@
 <!-- These will all be replaced by the new MVC tutorials as we write them -->
 ## [Útválasztási üzenetek](tutorial-routing.md)
 ## [Eszközök konfigurálása](tutorial-device-twins.md)
+## [Belső vezérlőprogramok frissítéseinek kezelése](tutorial-firmware-update.md)
 ## [Eszközkapcsolatok tesztelése](tutorial-connectivity.md)
 ## Üzenetküldés a felhőből az eszközökre
 ### [.NET](iot-hub-csharp-csharp-c2d.md)
@@ -111,6 +112,8 @@
 #### [Üzenetek küldése MQTT-kiszolgálóra az Eclipse Paho API-jaival](iot-hub-arduino-iot-devkit-az3166-mqtt-helloworld.md)
 #### [A mágneses érzékelő monitorozása és e-mail-értesítések küldése az Azure Functions segítségével](iot-hub-arduino-iot-devkit-az3166-door-monitor.md)
 
+## [Az eszközkonfiguráció ajánlott eljárásai](iot-hub-configuration-best-practices.md)
+
 # Útmutatók
 ## Felkészülés
 ### [Az IoT Hub és az Event Hubs összehasonlítása](iot-hub-compare-event-hubs.md)
@@ -169,6 +172,9 @@
 ### Ismerkedés az ikermodulokkal
 #### [Portal](iot-hub-portal-csharp-module-twin-getstarted.md)
 #### [.NET](iot-hub-csharp-csharp-module-twin-getstarted.md)
+#### [Python](iot-hub-python-python-module-twin-getstarted.md)
+#### [C](iot-hub-c-c-module-twin-getstarted.md)
+#### [Node](iot-hub-node-node-module-twin-getstarted.md)
 ### Közvetlen metódusok használata
 #### [Node.js](iot-hub-node-node-direct-methods.md)
 #### [.NET](iot-hub-csharp-csharp-direct-methods.md)
@@ -221,7 +227,9 @@
 ## [IoT Hub frissítése](iot-hub-upgrade.md)
 ## [Használati metrikák](iot-hub-metrics.md)
 ## [IP-szűrés konfigurálása](iot-hub-ip-filtering.md)
-## [Eszközök konfigurálása nagy mennyiségben](iot-hub-auto-device-config.md)
+## Eszközök konfigurálása nagy mennyiségben
+### [Az Azure Portal használata](iot-hub-auto-device-config.md)
+### [Az Azure parancssori felület használata](iot-hub-auto-device-config-cli.md)
 
 # Referencia
 ## [Kódminták](https://azure.microsoft.com/resources/samples/?service=iot-hub)

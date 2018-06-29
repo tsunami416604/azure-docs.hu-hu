@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/17/2017
 ms.author: cshoe
-ms.openlocfilehash: 93cd4b6c4264c5905746b85f9fa46ce31ebd9e9f
-ms.sourcegitcommit: 828d8ef0ec47767d251355c2002ade13d1c162af
+ms.openlocfilehash: b1945c68f0e320c834ae93a590f420403263a0fd
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36937669"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37098940"
 ---
 # <a name="run-a-cassandra-cluster-on-linux-in-azure-with-nodejs"></a>Az Azure-ban Node.js Linux Cassandra fürt futtatása
 
@@ -61,7 +61,7 @@ Vegye figyelembe, hogy a cikk írásának időpontjában Azure nem engedélyezi 
 
 **Fürt magok:** fontos, hogy válassza ki a legtöbb magas rendelkezésre állású csomópontok beállítása mag, mert az új csomópontok kommunikálnak kezdőérték csomópontok feltérképezi a fürt. Egyes rendelkezésre állási csoport egy csomópont kezdőérték csomópontként kijelölt kerülje a hibaérzékeny pontok kialakulását.
 
-**Replikációs tényező és Konzisztenciaszint:** Cassandra a beépített magas rendelkezésre állású és az adatok tartóssága jellemzőek a replikációs tényező (RF - példányszámot az egyes sorok, a fürtön tárolt), és a Konzisztenciaszint (replikák száma kell olvasása/írása az eredmény a hívó való visszatérés előtt). Replikációs tényező kulcstérértesítések használatával (hasonlóan egy relációs adatbázisban) létrehozása közben megadott, mivel a konzisztenciaszint van megadva a CRUD-lekérdezés elküldése során. Lásd a Cassandra dokumentációját a [konfigurálásával konzisztenciájának](http://www.datastax.com/documentation/cassandra/2.0/cassandra/dml/dml_config_consistency_c.html) konzisztencia részletek és a képlet kvórum számításhoz.
+**Replikációs tényező és Konzisztenciaszint:** Cassandra a beépített magas rendelkezésre állású és az adatok tartóssága jellemzőek a replikációs tényező (RF - példányszámot az egyes sorok, a fürtön tárolt), és a Konzisztenciaszint (replikák száma kell olvasása/írása az eredmény a hívó való visszatérés előtt). Replikációs tényező kulcstérértesítések használatával (hasonlóan egy relációs adatbázisban) létrehozása közben megadott, mivel a konzisztenciaszint van megadva a CRUD-lekérdezés elküldése során. Lásd a Cassandra dokumentációját a [konfigurálásával konzisztenciájának](https://docs.datastax.com/en/cassandra/3.0/cassandra/dml/dmlConfigConsistency.html) konzisztencia részletek és a képlet kvórum számításhoz.
 
 Cassandra kétféle adatok integritásának modellek – konzisztencia és a végleges konzisztencia; a replikációs tényező és Konzisztenciaszint együtt annak megállapítása, hogy az adatok konzisztens, amint egy írási művelet sikeres befejezésének vagy idővel konzisztenssé. Például adja meg a KVÓRUMA, a Konzisztenciaszint mindig biztosítja az adatok konzisztenciájának során minden konzisztencia szint alatt található (például egy) KVÓRUM eléréséhez szükség szerint írandó replikák száma eredményezi, hogy idővel konzisztenssé adatok.
 
@@ -75,8 +75,8 @@ Egyetlen régión Cassandra fürtkonfiguráció:
 | Replikációs tényező (RF) |3 |Adott sor replikák száma |
 | Konzisztenciaszint (írás) |QUORUM[(RF/2) +1) = 2] az eredmény a képlet lefelé kerekíti |Legfeljebb 2 replikával ír a hívónak; a válasz elküldése előtt 3. a replika idővel konzisztenssé módon írása. |
 | Konzisztenciaszint (olvasás) |KVÓRUM [(RF/2) + 1 = 2] kerekíti a képlet eredménye |2 replikával beolvassa a hívónak elküldése előtt. |
-| Replikációs stratégia |NetworkTopologyStrategy lásd [adatreplikáció](http://www.datastax.com/documentation/cassandra/2.0/cassandra/architecture/architectureDataDistributeReplication_c.html) Cassandra dokumentációjában talál további információt a |A telepítési topológia megértette és replikák csomóponton helyezi el, hogy minden replika az azonos állványra a nem végződhet |
-| Snitch |Lásd a GossipingPropertyFileSnitch [kapcsolók](http://www.datastax.com/documentation/cassandra/2.0/cassandra/architecture/architectureSnitchesAbout_c.html) Cassandra dokumentációjában talál további információt a |NetworkTopologyStrategy snitch egy fogalom megértéséhez a topológia használja. GossipingPropertyFileSnitch az egyes csomópontok leképezése a adatközpont és állvány nagyobb ellenőrzést biztosít. A fürt pletykákat használja fel ezeket az információkat terjesztése. Ez az jóval egyszerűbb, a dinamikus IP-beállítása PropertyFileSnitch viszonyítva |
+| Replikációs stratégia |NetworkTopologyStrategy lásd [adatreplikáció](https://docs.datastax.com/en/cassandra/3.0/cassandra/architecture/archDataDistributeAbout.html) Cassandra dokumentációjában talál további információt a |A telepítési topológia megértette és replikák csomóponton helyezi el, hogy minden replika az azonos állványra a nem végződhet |
+| Snitch |Lásd a GossipingPropertyFileSnitch [kapcsolók](https://docs.datastax.com/en/cassandra/3.0/cassandra/architecture/archSnitchesAbout.html) Cassandra dokumentációjában talál további információt a |NetworkTopologyStrategy snitch egy fogalom megértéséhez a topológia használja. GossipingPropertyFileSnitch az egyes csomópontok leképezése a adatközpont és állvány nagyobb ellenőrzést biztosít. A fürt pletykákat használja fel ezeket az információkat terjesztése. Ez az jóval egyszerűbb, a dinamikus IP-beállítása PropertyFileSnitch viszonyítva |
 
 **Cassandra fürt Azure szempontjai:** Microsoft Azure virtuális gépek funkció Azure Blob Storage tárolót használja a lemez megőrzéséhez; Az Azure Storage minden lemez a magas tartósság három replikák menti. Ez azt jelenti, hogy három replikák már tárolták a Cassandra táblába egyes adatsorokban. Ezért adatkonzisztencia van már hozott megvagyunk akkor is, ha a replikációs tényező (RF) 1. A fő replikációs tényező alatt 1 probléma, hogy az alkalmazás leállást észlel, akkor is, ha egy önálló Cassandra csomópont meghibásodik. Azonban ha egy csomópont le a Azure Fabric Controller által felismert problémákat (például a hardver, a szoftver rendszerhibák), azt látja el egy új csomópont, az azonos tárolási-meghajtókat használ helyette. Lecseréli a régi egy olyan új csomópont kiépítés néhány percet is igénybe vehet.  Tervezett karbantartás tevékenységek, például a vendég operációs rendszer módosításokat, hasonlóképpen Cassandra frissíti, és a alkalmazás Azure Fabric Controller hajtja végre a működés közbeni frissítés a csomópontok a fürtben.  Működés közbeni frissítés is is igénybe vehet néhány csomópont le egyszerre, és ezért a fürt rövid idejű leállást néhány partíciók problémákat tapasztalhat. Azonban az adatok nem vesznek el, a beépített Azure adattároló redundanciája, amely miatt.  
 
@@ -110,8 +110,8 @@ A rendszer, amelyet a magas konzisztencia egy LOCAL_QUORUM konzisztencia szint (
 | Replikációs tényező (RF) |3 |Adott sor replikák száma |
 | Konzisztenciaszint (írás) |LOCAL_QUORUM [(sum(RF)/2) +1) = 4] kerekíti a képlet eredménye |2 csomópontok íródik az első adatközpont szinkron módon történik; a kvórum szükséges további 2 csomópontok aszinkron módon írja be a 2. az Adatközpont. |
 | Konzisztenciaszint (olvasás) |LOCAL_QUORUM ((RF/2) + 1) a képlet eredménye lefelé kerekíti 2 = |Olvasási kérések teljesülnek a csak egy régió tartozik; 2 csomópontok olvasható az ügyfélnek a válasz elküldése előtt. |
-| Replikációs stratégia |NetworkTopologyStrategy lásd [adatreplikáció](http://www.datastax.com/documentation/cassandra/2.0/cassandra/architecture/architectureDataDistributeReplication_c.html) Cassandra dokumentációjában talál további információt a |A telepítési topológia megértette és replikák csomóponton helyezi el, hogy minden replika az azonos állványra a nem végződhet |
-| Snitch |Lásd a GossipingPropertyFileSnitch [Snitches](http://www.datastax.com/documentation/cassandra/2.0/cassandra/architecture/architectureSnitchesAbout_c.html) Cassandra dokumentációjában talál további információt a |NetworkTopologyStrategy snitch egy fogalom megértéséhez a topológia használja. GossipingPropertyFileSnitch az egyes csomópontok leképezése a adatközpont és állvány nagyobb ellenőrzést biztosít. A fürt pletykákat használja fel ezeket az információkat terjesztése. Ez az jóval egyszerűbb, a dinamikus IP-beállítása PropertyFileSnitch viszonyítva |
+| Replikációs stratégia |NetworkTopologyStrategy lásd [adatreplikáció](https://docs.datastax.com/en/cassandra/3.0/cassandra/architecture/archDataDistributeAbout.html) Cassandra dokumentációjában talál további információt a |A telepítési topológia megértette és replikák csomóponton helyezi el, hogy minden replika az azonos állványra a nem végződhet |
+| Snitch |Lásd a GossipingPropertyFileSnitch [Snitches](https://docs.datastax.com/en/cassandra/3.0/cassandra/architecture/archSnitchesAbout.html) Cassandra dokumentációjában talál további információt a |NetworkTopologyStrategy snitch egy fogalom megértéséhez a topológia használja. GossipingPropertyFileSnitch az egyes csomópontok leképezése a adatközpont és állvány nagyobb ellenőrzést biztosít. A fürt pletykákat használja fel ezeket az információkat terjesztése. Ez az jóval egyszerűbb, a dinamikus IP-beállítása PropertyFileSnitch viszonyítva |
 
 ## <a name="the-software-configuration"></a>A SZOFTVERKONFIGURÁCIÓJÁNAK ÖSSZEÁLLÍTÁSA
 Az alábbi szoftververziók a telepítés során használt:
@@ -321,7 +321,7 @@ Adja hozzá a következő alhálózatok:
 <table>
 <tr><th>Name (Név)</th><th>Kezdő IP-Címét</th><th>CIDR</th><th>Megjegyzések</th></tr>
 <tr><td>web</td><td>10.1.1.0</td><td>/24 (251)</td><td>A webfarm-alhálózatot</td></tr>
-<tr><td>adat</td><td>10.1.2.0</td><td>/24 (251)</td><td>Az adatbázis-csomópont-alhálózatot</td></tr>
+<tr><td>adatok</td><td>10.1.2.0</td><td>/24 (251)</td><td>Az adatbázis-csomópont-alhálózatot</td></tr>
 </table>
 
 Adatok és a webes alhálózatok hálózati biztonsági csoportokkal, ez a cikk a hatókörén kívül esik a körét, amelyek védhetők.  
@@ -330,14 +330,14 @@ Adatok és a webes alhálózatok hálózati biztonsági csoportokkal, ez a cikk 
 
 <table>
 <tr><th>Gépnév    </th><th>Alhálózat    </th><th>IP-cím    </th><th>Rendelkezésre állási csoport</th><th>DC/Rack</th><th>Kezdőérték?</th></tr>
-<tr><td>HK-c1-nyugati-us    </td><td>adat    </td><td>10.1.2.4    </td><td>hk-c-aset-1    </td><td>DC = WESTUS állvány = rack1 </td><td>Igen</td></tr>
-<tr><td>hk-c2-west-us    </td><td>adat    </td><td>10.1.2.5    </td><td>hk-c-aset-1    </td><td>DC = WESTUS állvány = rack1    </td><td>Nem </td></tr>
-<tr><td>HK-c3-nyugati-us    </td><td>adat    </td><td>10.1.2.6    </td><td>hk-c-aset-1    </td><td>DC = WESTUS állvány = rack2    </td><td>Igen</td></tr>
-<tr><td>hk-c4-west-us    </td><td>adat    </td><td>10.1.2.7    </td><td>hk-c-aset-1    </td><td>DC = WESTUS állvány = rack2    </td><td>Nem </td></tr>
-<tr><td>HK-c5-nyugati-us    </td><td>adat    </td><td>10.1.2.8    </td><td>hk-c-aset-2    </td><td>DC = WESTUS állvány = rack3    </td><td>Igen</td></tr>
-<tr><td>HK-c6-nyugati-us    </td><td>adat    </td><td>10.1.2.9    </td><td>hk-c-aset-2    </td><td>DC = WESTUS állvány = rack3    </td><td>Nem </td></tr>
-<tr><td>HK-c7-nyugati-us    </td><td>adat    </td><td>10.1.2.10    </td><td>hk-c-aset-2    </td><td>DC = WESTUS állvány = rack4    </td><td>Igen</td></tr>
-<tr><td>hk-c8-west-us    </td><td>adat    </td><td>10.1.2.11    </td><td>hk-c-aset-2    </td><td>DC = WESTUS állvány = rack4    </td><td>Nem </td></tr>
+<tr><td>HK-c1-nyugati-us    </td><td>adatok    </td><td>10.1.2.4    </td><td>hk-c-aset-1    </td><td>DC = WESTUS állvány = rack1 </td><td>Igen</td></tr>
+<tr><td>hk-c2-west-us    </td><td>adatok    </td><td>10.1.2.5    </td><td>hk-c-aset-1    </td><td>DC = WESTUS állvány = rack1    </td><td>Nem </td></tr>
+<tr><td>HK-c3-nyugati-us    </td><td>adatok    </td><td>10.1.2.6    </td><td>hk-c-aset-1    </td><td>DC = WESTUS állvány = rack2    </td><td>Igen</td></tr>
+<tr><td>hk-c4-west-us    </td><td>adatok    </td><td>10.1.2.7    </td><td>hk-c-aset-1    </td><td>DC = WESTUS állvány = rack2    </td><td>Nem </td></tr>
+<tr><td>HK-c5-nyugati-us    </td><td>adatok    </td><td>10.1.2.8    </td><td>hk-c-aset-2    </td><td>DC = WESTUS állvány = rack3    </td><td>Igen</td></tr>
+<tr><td>HK-c6-nyugati-us    </td><td>adatok    </td><td>10.1.2.9    </td><td>hk-c-aset-2    </td><td>DC = WESTUS állvány = rack3    </td><td>Nem </td></tr>
+<tr><td>HK-c7-nyugati-us    </td><td>adatok    </td><td>10.1.2.10    </td><td>hk-c-aset-2    </td><td>DC = WESTUS állvány = rack4    </td><td>Igen</td></tr>
+<tr><td>hk-c8-west-us    </td><td>adatok    </td><td>10.1.2.11    </td><td>hk-c-aset-2    </td><td>DC = WESTUS állvány = rack4    </td><td>Nem </td></tr>
 <tr><td>HK-F1-nyugati-us    </td><td>web    </td><td>10.1.1.4    </td><td>hk-w-aset-1    </td><td>                       </td><td>–</td></tr>
 <tr><td>HK-w2-nyugati-us    </td><td>web    </td><td>10.1.1.5    </td><td>hk-w-aset-1    </td><td>                       </td><td>–</td></tr>
 </table>
@@ -482,7 +482,7 @@ Adja hozzá a következő alhálózatok:
 <table>
 <tr><th>Name (Név)    </th><th>Kezdő IP-Címét    </th><th>CIDR    </th><th>Megjegyzések</th></tr>
 <tr><td>web    </td><td>10.2.1.0    </td><td>/24 (251)    </td><td>A webfarm-alhálózatot</td></tr>
-<tr><td>adat    </td><td>10.2.2.0    </td><td>/24 (251)    </td><td>Az adatbázis-csomópont-alhálózatot</td></tr>
+<tr><td>adatok    </td><td>10.2.2.0    </td><td>/24 (251)    </td><td>Az adatbázis-csomópont-alhálózatot</td></tr>
 </table>
 
 
@@ -527,13 +527,13 @@ Ubuntu lemezkép létrehozásához a következő ugyanazokat a lépéseket vagy 
 
 | Gépnév | Alhálózat | IP-cím | Rendelkezésre állási csoport | DC/Rack | Kezdőérték? |
 | --- | --- | --- | --- | --- | --- |
-| HK-c1-keleti-us |adat |10.2.2.4 |hk-c-aset-1 |DC = EASTUS állvány = rack1 |Igen |
-| hk-c2-east-us |adat |10.2.2.5 |hk-c-aset-1 |DC = EASTUS állvány = rack1 |Nem |
-| HK-c3-keleti-us |adat |10.2.2.6 |hk-c-aset-1 |DC = EASTUS állvány = rack2 |Igen |
-| HK-c5-keleti-us |adat |10.2.2.8 |hk-c-aset-2 |DC = EASTUS állvány = rack3 |Igen |
-| hk-c6-east-us |adat |10.2.2.9 |hk-c-aset-2 |DC = EASTUS állvány = rack3 |Nem |
-| hk-c7-east-us |adat |10.2.2.10 |hk-c-aset-2 |DC = EASTUS állvány = rack4 |Igen |
-| HK-c8-keleti-us |adat |10.2.2.11 |hk-c-aset-2 |DC = EASTUS állvány = rack4 |Nem |
+| HK-c1-keleti-us |adatok |10.2.2.4 |hk-c-aset-1 |DC = EASTUS állvány = rack1 |Igen |
+| hk-c2-east-us |adatok |10.2.2.5 |hk-c-aset-1 |DC = EASTUS állvány = rack1 |Nem |
+| HK-c3-keleti-us |adatok |10.2.2.6 |hk-c-aset-1 |DC = EASTUS állvány = rack2 |Igen |
+| HK-c5-keleti-us |adatok |10.2.2.8 |hk-c-aset-2 |DC = EASTUS állvány = rack3 |Igen |
+| hk-c6-east-us |adatok |10.2.2.9 |hk-c-aset-2 |DC = EASTUS állvány = rack3 |Nem |
+| hk-c7-east-us |adatok |10.2.2.10 |hk-c-aset-2 |DC = EASTUS állvány = rack4 |Igen |
+| HK-c8-keleti-us |adatok |10.2.2.11 |hk-c-aset-2 |DC = EASTUS állvány = rack4 |Nem |
 | HK-F1-keleti-us |web |10.2.1.4 |hk-w-aset-1 |– |– |
 | HK-w2-keleti-us |web |10.2.1.5 |hk-w-aset-1 |– |– |
 

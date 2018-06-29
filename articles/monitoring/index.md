@@ -1,6 +1,6 @@
 ---
-title: Az Azure felügyelete – Monitorozás | Microsoft Docs
-description: Az Azure számos együttműködő szolgáltatást és eszközt kínál, amelyek teljes körű felügyeletet biztosítanak nem csupán az Azure-ban, hanem a felhőben és a helyszínen futó alkalmazások felett is.  A cikk tájékoztató leírást nyújt a különböző felügyeleti területekről, valamint olyan Azure-eszközökre mutató hivatkozásokat biztosít, amelyekkel felügyelheti felhőalapú alkalmazásait és -erőforrásait.
+title: Az Azure felügyelete és az Operations Management Suite (OMS) | Microsoft Docs
+description: Az Azure-alkalmazások felügyeleti területeinek, valamin olyan Azure felügyeleti eszközökre mutató erőforrások hivatkozásainak áttekintése, amelyek korábban az Operations Management Suite (OMS) csomagban szerepeltek.
 documentationcenter: ''
 author: bwren
 manager: carmonm
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/09/2018
 ms.author: bwren
-ms.openlocfilehash: 36dd04be167d9e8e63ab38e4af80c5766ba55370
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 8598e3528aa0a9fb171853e5f6554346ace937ef
+ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31410294"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37059950"
 ---
 # <a name="azure-management---monitoring"></a>Az Azure felügyelete – Monitorozás
 

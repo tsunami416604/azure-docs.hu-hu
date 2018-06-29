@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: richagi
-ms.openlocfilehash: b809097e50a17178da12fdb424eba08dc8e0c4cb
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: 204910ff6e02eafd62eeb56bf82b77b91b3cb5ad
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2018
-ms.locfileid: "33866891"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37099609"
 ---
 # <a name="how-to-require-two-step-verification-for-a-user-or-group"></a>Egy felhasználó vagy csoport kétlépéses ellenőrzés megkövetelése
 
@@ -71,7 +71,7 @@ A lap, ahol megtekintheti és kezelheti a felhasználói állapotok eléréséhe
 
 5. Ellenőrizze a választást, a megjelenő előugró ablakban. 
 
-Miután engedélyezte a felhasználókat, e-mailben értesítést küldhet nekik. Mondja el neki, hogy azok felkéri, hogy regisztrálja a következő bejelentkezéskor. Is ha a szervezet a böngészőn kívüli alkalmazásokat, amelyek nem támogatják a modern hitelesítést használ, szükségük alkalmazásjelszók létrehozásához. Mutató hivatkozást is használható a [Azure MFA végfelhasználói útmutató](./../../multi-factor-authentication/end-user/multi-factor-authentication-end-user.md) felhasználóinál a kezdéshez.
+Miután engedélyezte a felhasználókat, e-mailben értesítést küldhet nekik. Mondja el neki, hogy azok felkéri, hogy regisztrálja a következő bejelentkezéskor. Is ha a szervezet a böngészőn kívüli alkalmazásokat, amelyek nem támogatják a modern hitelesítést használ, szükségük alkalmazásjelszók létrehozásához. Mutató hivatkozást is használható a [Azure MFA végfelhasználói útmutató](end-user/current/multi-factor-authentication-end-user.md) felhasználóinál a kezdéshez.
 
 ### <a name="use-powershell"></a>A PowerShell használata
 A felhasználói állapot módosítása használatával [Azure AD PowerShell](/powershell/azure/overview), módosítsa `$st.State`. Három lehetséges állapota van:

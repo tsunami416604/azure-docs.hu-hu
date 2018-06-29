@@ -10,12 +10,12 @@ ms.devlang: java
 ms.topic: conceptual
 ms.date: 03/27/2018
 ms.author: sngun
-ms.openlocfilehash: 867a48674fe2489629a887ff9626d8e10b41e653
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: e3ee75a07f19fef50d9aca61773bd7ea860f2ca4
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34613982"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37102278"
 ---
 > [!div class="op_single_selector"]
 > * [Aszinkron Java](performance-tips-async-java.md)
@@ -49,7 +49,7 @@ Ezért ha még kérése "Hogyan javítható az adatbázis teljesítménye?" Vegy
 
 3. **ConnectionPolicy hangolása**
 
-    Azure Cosmos-adatbázis kéri az aszinkron Java SDK használata esetén HTTPS/REST keresztül történik, és vannak kitéve, az alapértelmezett kapcsolatkészlet maximális mérete (1000). Ez az alapértelmezett érték a legtöbb esetben használjon ideális kell lennie. Azonban ha nagyon nagy méretű gyűjtemény sok partíciókkal van, beállíthatja a kapcsolatkészlet maximális mérete nagyobb számot (például, 1500) setMaxPoolSize használatával.
+    Azure Cosmos-adatbázis kéri az aszinkron Java SDK használata esetén HTTPS/REST keresztül történik, és vannak kitéve, az alapértelmezett kapcsolatkészlet maximális mérete (1000). Ez az alapértelmezett érték a legtöbb esetben használjon ideális kell lennie. Azonban abban az esetben, ha sok partíciókkal rendelkező kis méretű van, beállíthatja a kapcsolatkészlet maximális mérete nagyobb számot (például, 1500) setMaxPoolSize használatával.
 
 4. **A particionált gyűjtemények párhuzamos lekérdezések hangolása**
 
@@ -83,11 +83,11 @@ Ezért ha még kérése "Hogyan javítható az adatbázis teljesítménye?" Vegy
 
     Az oldalméret, a setMaxItemCount metódussal is megadhat.
     
-9. **Használja a megfelelő Feladatütemező (ne Eventloop IO Netty szálak ellophassák)**
+9. **Használja a megfelelő Feladatütemező (ne esemény hurok IO Netty szálak ellophassák)**
 
-    Az aszinkron Java SDK-t használ [netty](https://netty.io/) nem blokkoló IO számára. Az SDK-t használ IO netty eventloop szálak (annyi Processzormag használatát a számítógépen van) rögzített számú I/O műveletek végrehajtása. Az API által visszaadott megfigyelhető megfelelően kibocsát egy megosztott IO eventloop netty szálak eredménye. Ezért fontos, hogy nem blokkolja a megosztott IO eventloop netty szálak. CPU-intenzív munkát végző vagy blokkolja a műveletet a IO eventloop netty szálon holtpont miatt, vagy jelentősen csökkentheti a SDK átviteli sebességet.
+    Az aszinkron Java SDK-t használ [netty](https://netty.io/) nem blokkoló IO számára. Az SDK-t használ IO netty esemény hurok szálak (annyi Processzormag használatát a számítógépen van) rögzített számú I/O műveletek végrehajtása. Az API által visszaadott megfigyelhető bocsát ki a megosztott IO esemény hurok netty szálak egyik eredménye. Ezért fontos a megosztott IO esemény hurok netty szálak blokkolja. CPU-intenzív munkát végző vagy blokkolja a műveletet a IO esemény hurok netty szálon holtpont miatt, vagy jelentősen csökkentheti a SDK átviteli sebességet.
 
-    Például az alábbi kód eventloop IO netty szálban hajt végre a cpu-intenzív munkahelyi:
+    Például a következő kódot az esemény hurok IO netty szál a cpu-intenzív munkahelyi hajt végre:
 
     ```java
     Observable<ResourceResponse<Document>> createDocObs = asyncDocumentClient.createDocument(
@@ -103,7 +103,7 @@ Ezért ha még kérése "Hogyan javítható az adatbázis teljesítménye?" Vegy
       });
     ```
 
-    Ha a CPU-intenzív munkahelyi kerülendő stb eventloop IO netty szálon történt meg szeretné eredmény fogadását. Helyette megadhatja a saját ütemezőt, hogy adja meg a saját szálon futó munkáját.
+    Eredmény fogadását, ha szeretné a Processzorigényes kerülendő stb esemény hurok IO netty szál ennek eredménye működnek. Helyette megadhatja a saját ütemezőt, hogy adja meg a saját szálon futó munkáját.
 
     ```java
     import rx.schedulers;
@@ -126,13 +126,13 @@ Ezért ha még kérése "Hogyan javítható az adatbázis teljesítménye?" Vegy
 
     További információkért tekintse meg a [Github-oldalon](https://github.com/Azure/azure-cosmosdb-java) aszinkron Java SDK-ban.
 
-10. **Tiltsa le a naplózást netty meg** Netty könyvtár naplózási chatty, és ki kell kapcsolni (kikapcsolása napló a konfigurációban nem lehet elegendő) CPU további költségek elkerülése érdekében. Nincsenek hibakeresési mód, ha teljesen naplózás letiltása netty. Igen, ha a log4j segítségével távolítsa el a további CPU költségeit ``org.apache.log4j.Category.callAppenders()`` netty hozzá a következő sort a codebase:
+10. **Tiltsa le a naplózást netty meg** Netty könyvtár naplózási chatty, és ki kell kapcsolni (kikapcsolása jelentkezzen be a konfigurációt nem lehet elegendő) CPU további költségek elkerülése érdekében. Nincsenek hibakeresési mód, ha teljesen naplózás letiltása netty. Igen, ha a log4j segítségével távolítsa el a további CPU költségeit ``org.apache.log4j.Category.callAppenders()`` netty hozzá a következő sort a codebase:
 
     ```java
     org.apache.log4j.Logger.getLogger("io.netty").setLevel(org.apache.log4j.Level.OFF);
     ```
 
-11. **Az operációs rendszer megnyitott fájlok erőforrás korlátját** egyes Linux rendszerek (például Redhat) rendelkezik egy felső korlátot nyílt meg fájlokat, ezért kapcsolatok teljes száma. Futtassa a következő a jelenlegi korlátozások megtekintése:
+11. **Az operációs rendszer megnyitott fájlok erőforrás korlátját** egyes Linux rendszerek (például a Red Hat) rendelkezik egy felső korlátot nyílt meg fájlokat, ezért kapcsolatok teljes száma. Futtassa a következő a jelenlegi korlátozások megtekintése:
 
     ```bash
     ulimit -a
@@ -170,7 +170,7 @@ Ezért ha még kérése "Hogyan javítható az adatbázis teljesítménye?" Vegy
     </dependency>
     ```
 
-A más platformok (Redhat, Windows, Mac, stb.) tekintse meg ezeket az utasításokat https://netty.io/wiki/forked-tomcat-native.html
+A más platformok (Red Hat, Windows, Mac, stb.) tekintse meg ezeket az utasításokat https://netty.io/wiki/forked-tomcat-native.html
 
 ## <a name="indexing-policy"></a>Indexelési házirend
  
@@ -209,7 +209,7 @@ A más platformok (Redhat, Windows, Mac, stb.) tekintse meg ezeket az utasítás
     response.getRequestCharge();
     ```             
 
-    A kérelem kell fizetni vissza ezt a fejlécet a létesített átviteli sebesség részét. Például ha 2000 RU/mp kiépített, és ha az előző lekérdezés függvény 1000 1KB-dokumentumok, a költség, a művelet 1000. Ilyen belül egy második, a kiszolgáló eleget tegyen csak két ilyen kérelmeket előtt szabályozás későbbi kérelmeket. További információkért lásd: [egységek kérelem](request-units.md) és a [kérelem egység Számológép](https://www.documentdb.com/capacityplanner).
+    A kérelem kell fizetni vissza ezt a fejlécet a létesített átviteli sebesség részét. Például ha 2000 RU/mp kiépített, és ha az előző lekérdezés függvény 1000 1KB-dokumentumok, a költség, a művelet 1000. Ilyen belül egy második, a kiszolgáló eleget tegyen előtt sebessége korlátozza az új kérelmek csak két ilyen kérelmeket. További információkért lásd: [egységek kérelem](request-units.md) és a [kérelem egység Számológép](https://www.documentdb.com/capacityplanner).
 <a id="429"></a>
 2. **Kezeli a sebesség korlátozása/kérelmek aránya túl nagy**
 

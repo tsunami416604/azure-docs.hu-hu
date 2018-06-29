@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: richagi
-ms.openlocfilehash: 509df5274a5e44342390036511689fa8f8146807
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: bf25ae5703a632005dd73820fc05347f7b5e16a6
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2018
-ms.locfileid: "33869801"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37097495"
 ---
 # <a name="configure-azure-multi-factor-authentication-settings"></a>Azure multi-factor Authentication beállításainak konfigurálása
 
@@ -292,7 +292,7 @@ Alapértelmezés szerint a felhasználók nem hozhatják létre alkalmazásjelsz
 
 Felhasználók hozhatnak létre alkalmazásjelszókat a kezdeti regisztráció során. A felhasználó a regisztrációs folyamat végén alkalmazásjelszavak létrehozásának lehetősége van.
 
-Felhasználók emellett létrehozhatják alkalmazásjelszók regisztrálás után. Az alkalmazásjelszók módosíthatja a beállításokat az Azure-portálon vagy az Office 365 portálon keresztül. További információk és részletes lépéseket a felhasználók számára: [Mik az Azure multi-factor Authentication alkalmazásjelszókat?](./../../multi-factor-authentication/end-user/multi-factor-authentication-end-user-app-passwords.md)
+Felhasználók emellett létrehozhatják alkalmazásjelszók regisztrálás után. Az alkalmazásjelszók módosíthatja a beállításokat az Azure-portálon vagy az Office 365 portálon keresztül. További információk és részletes lépéseket a felhasználók számára: [Mik az Azure multi-factor Authentication alkalmazásjelszókat?](end-user/current/multi-factor-authentication-end-user-app-passwords.md)
 
 <a name="remember-multi-factor-authentication-for-devices-that-users-trust"></a>
 ## <a name="remember-multi-factor-authentication-for-trusted-devices"></a>Ne feledje a multi-factor Authentication megbízható eszközök
@@ -301,7 +301,7 @@ A _ne feledje a multi-factor Authentication_ az eszközök és a felhasználó �
 >[!IMPORTANT]
 >Ha egy fiók vagy eszköz biztonsága sérül, a multi-factor Authentication jelszóelőzmények megbízható eszközök hatással lehet a biztonsági. Ha egy vállalati fiók biztonságának sérülése esetén vagy egy megbízható eszköz elvesztésekor vagy ellopásakor, akkor [többtényezős hitelesítés visszaállítása az összes eszközön](howto-mfa-userdevicesettings.md#restore-mfa-on-all-remembered-devices-for-a-user).
 >
->A restore művelettel visszavonja az összes eszköz megbízható állapotát, és a felhasználó kétlépéses ellenőrzés visszakapcsolásához elvégzéséhez szükséges. Azt is beállíthatja, hogy a felhasználók a multi-factor Authentication visszaállítása a saját eszközök utasításait [kezelheti a kétlépéses ellenőrzés beállításait](./../../multi-factor-authentication/end-user/multi-factor-authentication-end-user-manage-settings.md#require-two-step-verification-again-on-a-device-youve-marked-as-trusted).
+>A restore művelettel visszavonja az összes eszköz megbízható állapotát, és a felhasználó kétlépéses ellenőrzés visszakapcsolásához elvégzéséhez szükséges. Azt is beállíthatja, hogy a felhasználók a multi-factor Authentication visszaállítása a saját eszközök utasításait [kezelheti a kétlépéses ellenőrzés beállításait](end-user/current/multi-factor-authentication-end-user-manage-settings.md#require-two-step-verification-again-on-a-device-youve-marked-as-trusted).
 >
 
 ### <a name="how-the-feature-works"></a>A szolgáltatás működése
@@ -341,7 +341,7 @@ A felhasználó megjegyzését multi-factor Authentication szolgáltatás enged�
 
 Választhat, hogy az ellenőrzési módszereket, amelyek segítségével a felhasználók számára elérhetők a _választható hitelesítési módszerek_ szolgáltatás. A következő táblázat a módszerek rövid áttekintést nyújt.
 
-Amikor a felhasználók beléptetik a fiókok az Azure multi-factor Authentication, azok az, hogy engedélyezte a lehetőségek közül választhat a kedvenc hitelesítési módszer. A felhasználói regisztrációs folyamat útmutatást [a kétlépéses ellenőrzéshez a fiók beállítása](../../multi-factor-authentication/end-user/multi-factor-authentication-end-user-first-time.md).
+Amikor a felhasználók beléptetik a fiókok az Azure multi-factor Authentication, azok az, hogy engedélyezte a lehetőségek közül választhat a kedvenc hitelesítési módszer. A felhasználói regisztrációs folyamat útmutatást [a kétlépéses ellenőrzéshez a fiók beállítása](end-user/current/multi-factor-authentication-end-user-first-time.md).
 
 | Módszer | Leírás |
 |:--- |:--- |

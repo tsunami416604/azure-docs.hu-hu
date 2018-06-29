@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 07/18/2017
+ms.date: 06/27/2018
 ms.component: hybrid
 ms.author: billmath
 ms.custom: seohack1
-ms.openlocfilehash: 68a7e71cf374f10b4c5ced3e64da36138b0d2e4d
-ms.sourcegitcommit: b7290b2cede85db346bb88fe3a5b3b316620808d
+ms.openlocfilehash: a641464e04421b90de15cd953bb8a0fbf9b687d3
+ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34800724"
+ms.lasthandoff: 06/28/2018
+ms.locfileid: "37084722"
 ---
 # <a name="determine-identity-requirements-for-your-hybrid-identity-solution"></a>A hibrid identitáskezelési megoldás az identitás-követelmények meghatározása
 A hibrid identitáskezelési megoldás tervezésének első lépése a követelmények, ez a megoldás kihasználva fog üzleti szervezet.  Hibrid identitás (támogatott minden más felhőalapú megoldás, adja meg a hitelesítés) támogató szerepkörként elindul, és adja meg az új és érdekes képességekkel, amelyek a felhasználók új munkaterhelések feloldásához kerül be.  A munkaterhelések vagy a szolgáltatások, a felhasználók elfogadják kívánt szabja meg, a hibrid identitáskezelési kialakításának követelményei.  Hibrid identitás kihasználhatják a helyszínen kell ezeket a szolgáltatásokat és munkaterhelések és a felhőben.  
@@ -58,7 +58,7 @@ Is kell figyelembe vennie a felhőszolgáltatások, amelyek a vállalati lehet. 
 * Ez az integráció jelenleg éles vagy a próbaüzem?
 
 > [!NOTE]
-> Ha nem rendelkezik egy pontos leképezése az alkalmazások és a felhőalapú szolgáltatások, használhatja a Cloud App Discovery eszközt. Ez az eszköz az informatikai részleg biztosíthat a szervezet üzleti és fogyasztói felhőalkalmazások láthatósága. Így minden eddiginél egyszerűbben tárhatók fel olyan IT-adatok a szervezetben, mint például a részletes használati minták és a felhőalkalmazásokhoz hozzáférő felhasználók. Az első lépésekért lásd: [a Cloud app discovery](manage-apps/cloud-app-discovery.md).
+> A cloud Discovery elemzi a forgalmi naplók szemben a Microsoft Cloud App Security felhőalkalmazások katalógusa a több mint 16 000 felhőalapú alkalmazások, amelyek szerint rangsorolunk és pontozunk több mint 70 kockázati tényezők alapján, adja meg a folyamatban lévő betekinthet a felhőalapú használhatja, FELTÁRÁSÁT, és a kockázati Árnyékmásolat be a szervezet informatikai kockázatot. Az első lépésekért lásd: [Cloud Discovery beállítása](/cloud-app-security/set-up-cloud-discovery).
 > 
 > 
 

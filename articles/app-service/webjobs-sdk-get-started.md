@@ -13,12 +13,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 04/27/2018
 ms.author: tdykstra
-ms.openlocfilehash: 5a3070582a32adeda45dff233782c3a971885c14
-ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
+ms.openlocfilehash: 6cdcfbf16f77525d6cee2085fdde9fdd630027e3
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37018455"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37096679"
 ---
 # <a name="get-started-with-the-azure-webjobs-sdk-for-event-driven-background-processing"></a>Ismerkedés az Azure WebJobs SDK eseményvezérelt háttérben történő feldolgozás
 
@@ -48,6 +48,9 @@ public static void Run(
 
 Az útmutatások meghatározzák a vonatkozó 3.x (az előzetes verzió) eltérő Megjegyzés a WebJobs SDK verzió 2.x projekt létrehozása. A fő módosítása 3.x által bevezetett a .NET Core helyett a .NET-keretrendszer használatát.
 
+> [!NOTE]
+> 3.x jelenleg előzetes verzióban érhető és fejlesztés alatt áll, és ez a cikk utasításait 3.x elavult. A legfrissebb információkért tekintse meg a GitHub-problémák a lap alján.
+
 ### <a name="azure-functions"></a>Azure Functions
 
 [Az Azure Functions](../azure-functions/functions-overview.md) a WebJobs SDK alapul, és egy olyan beállítás, ha már nincs szükség a WebJobs SDK közvetlenül használni. Az Azure Functions 1.x használja a WebJobs SDK 2.x. További információkért lásd: [Azure Functions és a WebJobs SDK összehasonlítása](../azure-functions/functions-compare-logic-apps-ms-flow-webjobs.md#compare-functions-and-webjobs).
@@ -68,7 +71,7 @@ Ez a cikk feltételezi, hogy rendelkezik [az Azure-fiók](https://azure.microsof
    Egy 3.x-projekt létrehozásához válassza **.NET Core > Konzolalkalmazás (.NET Core)**.
    
    > [!NOTE]
-   > 3.x még előzetes és fejlesztés alatt áll. Ez a cikk utasításait 3.x nem teljesek; a legfrissebb információkért tekintse meg a GitHub-problémák a lap alján.
+   > 3.x jelenleg előzetes verzióban érhető és fejlesztés alatt áll, és ez a cikk utasításait 3.x elavult. A legfrissebb információkért tekintse meg a GitHub-problémák a lap alján.
 
 3. Nevet a projektnek *WebJobsSDKSample*, majd válassza ki **OK**.
 

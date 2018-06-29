@@ -8,12 +8,12 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 01/15/2018
 ms.topic: conceptual
-ms.openlocfilehash: d8a528265acc3e0bee24da6c1b6130082815b9fd
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 33566bd31f320ccc21f32a256d96d89ee25198bb
+ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34628259"
+ms.lasthandoff: 06/28/2018
+ms.locfileid: "37088650"
 ---
 # <a name="create-a-new-simulated-device"></a>Új szimulált eszköz létrehozása
 
@@ -174,7 +174,7 @@ Az oktatóanyag használata Visual Studio megoldás, amely a megoldás Cosmos DB
     sudo grep STORAGEADAPTER_DOCUMENTDB /app/env-vars
     ```
 
-    Jegyezze fel a kapcsolati karakterlánc. Használja ezt az értéket az oktatóanyag későbbi részében.
+    Jegyezze fel a kapcsolati karakterlánc. Ezt az értéket az oktatóanyag későbbi részében még használni fogja.
 
 1. Keresse meg az IoT-központ kapcsolati karakterláncot, a következő parancsot a kapcsolódik a virtuális gép SSH-munkamenetet:
 
@@ -182,7 +182,7 @@ Az oktatóanyag használata Visual Studio megoldás, amely a megoldás Cosmos DB
     sudo grep IOTHUB_CONNSTRING /app/env-vars
     ```
 
-    Jegyezze fel a kapcsolati karakterlánc. Használja ezt az értéket az oktatóanyag későbbi részében.
+    Jegyezze fel a kapcsolati karakterlánc. Ezt az értéket az oktatóanyag későbbi részében még használni fogja.
 
 > [!NOTE]
 > Is található a kapcsolati karakterláncok az Azure portálon vagy a `az` parancsot.
@@ -191,15 +191,15 @@ Az oktatóanyag használata Visual Studio megoldás, amely a megoldás Cosmos DB
 
 Ha módosítja az szimuláció szolgáltatást, futtathatja úgy, hogy helyben tesztelheti a módosításokat. Mielőtt az eszköz szimuláció szolgáltatás helyileg futtatta, le kell állítania a következőképpen a virtuális gépen futó példány:
 
-1. Található a **TÁROLÓAZONOSÍTÓ:** , a **eszköz-szimuláció** szolgáltatás, a következő parancsot az SSH-munkamenetet, a virtuális gép csatlakozik:
+1. Található a **TÁROLÓAZONOSÍTÓ:** , a **eszköz-szimuláció-dotnet** szolgáltatás, a következő parancsot az SSH-munkamenetet, a virtuális gép csatlakozik:
 
     ```sh
     docker ps
     ```
 
-    Jegyezze fel a tároló Azonosítóját a **eszköz-szimuláció** szolgáltatás.
+    Jegyezze fel a tároló Azonosítóját a **eszköz-szimuláció-dotnet** szolgáltatás.
 
-1. Leállítja a **eszköz-szimuláció** tároló, a következő parancsot:
+1. Leállítja a **eszköz-szimuláció-dotnet** tároló, a következő parancsot:
 
     ```sh
     docker stop container-id-from-previous-step
@@ -248,12 +248,6 @@ Most már rendelkezik minden helyen, és készen áll a távoli figyelésére sz
 ## <a name="create-a-simulated-device-type"></a>Hozzon létre egy szimulált eszköz típusa
 
 A legegyszerűbben úgy, hogy az eszköz szimuláció szolgáltatásban hozzon létre egy új eszköz típusa, másolása és egy már meglevő típus módosítása. A következő lépések bemutatják, hogyan másolhatja a beépített **hűtő** hozzon létre egy új eszköz **villanykörte** eszköz:
-
-1. A Visual Studióban nyissa meg a **eszköz-simulation.sln** a helyi klónja a megoldásfájlt a **eszköz-szimuláció** tárház.
-
-1. A Megoldáskezelőben kattintson a jobb gombbal a **SimulationAgent** projektre, válassza a **tulajdonságok**, és válassza a **Debug**.
-
-1. Az a **környezeti változók** területen értékét a **számítógépek\_IOT HUBBAL\_CONNSTRING** változó az IoT-központ kapcsolati karakterláncot kell azt korábban említettük. Mentse a módosításokat.
 
 1. A Megoldáskezelőben kattintson a jobb gombbal a **WebService** projektre, válassza a **tulajdonságok**, és válassza a **Debug**.
 
@@ -385,18 +379,21 @@ A **parancsfájlok/villanykörte-01-state.js** fájl szimuláció viselkedését
 1. Szerkessze a **fő** funkció viselkedését végrehajtásához, ahogy az az alábbi kódrészletet:
 
     ```js
-    function main(context, previousState) {
+    function main(context, previousState, previousProperties) {
 
-      // Restore the global state before generating the new telemetry, so that
-      // the telemetry can apply changes using the previous function state.
-      restoreState(previousState);
+        // Restore the global device properties and the global state before
+        // generating the new telemetry, so that the telemetry can apply changes
+        // using the previous function state.
+        restoreSimulation(previousState, previousProperties);
 
-      state.temperature = vary(200, 5, 150, 250);
+        state.temperature = vary(200, 5, 150, 250);
 
-      // Make this flip every so often
-      state.status = flip(state.status);
+        // Make this flip every so often
+        state.status = flip(state.status);
 
-      return state;
+        updateState(state);
+
+        return state;
     }
     ```
 
@@ -545,11 +542,11 @@ A következő lépések azt feltételezik, hogy rendelkezik-e a tárház nevű *
 
     A hozzáadott parancsfájlok a **tesztelés** címkén belül, hogy a lemezképet.
 
-1. Az SSH használata a megoldás az Azure virtuális géphez való kapcsolódáshoz. Keresse meg a **App** mappa és szerkesztése a **docker-compose.yaml** fájlt:
+1. Az SSH használata a megoldás az Azure virtuális géphez való kapcsolódáshoz. Keresse meg a **App** mappa és szerkesztése a **docker-compose.yml** fájlt:
 
     ```sh
     cd /app
-    sudo nano docker-compose.yaml
+    sudo nano docker-compose.yml
     ```
 
 1. Az eszköz szimuláció szolgáltatást a docker-lemezkép a bejegyzés szerkesztése:
@@ -605,7 +602,7 @@ Ez a szakasz ismerteti, hogyan lehet módosítani egy meglévő szimulált eszk�
 
 A következő lépések bemutatják, hol találhatók a fájlok, amelyek meghatározzák a beépített **hűtő** eszköz:
 
-1. Ha még nem tette meg, a következő paranccsal klónozásához a **eszköz-szimuláció** GitHub-tárházban a helyi számítógépen:
+1. Ha még nem tette meg, a következő paranccsal klónozásához a **eszköz-szimuláció-dotnet** GitHub-tárházban a helyi számítógépen:
 
     ```cmd/sh
     git clone https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet.git
@@ -673,9 +670,9 @@ A következő lépések bemutatják a adjon hozzá egy új **belső hőmérsékl
 
 ### <a name="test-the-chiller-device-type"></a>Tesztelje a hűtő eszköz típusa
 
-A frissített tesztelése **hűtő** eszköztípus, előbb futtassa az egy helyi példányát a **eszköz-szimuláció** szolgáltatást, hogy az eszköz típusának tesztelése viselkedik a várt módon. Ha tesztelni, és helyileg a frissített eszköztípus indítja, építse újra a tárolót, és telepítse újra a **eszköz-szimuláció** szolgáltatás az Azure-bA.
+A frissített teszteléséhez **hűtő** eszköztípus, először futtassa a helyi másolat készítése a **eszköz-szimuláció-dotnet** szolgáltatást, hogy az eszköz típusának tesztelése viselkedik a várt módon. Ha tesztelni, és helyileg a frissített eszköztípus indítja, építse újra a tárolót, és telepítse újra a **eszköz-szimuláció-dotnet** szolgáltatás az Azure-bA.
 
-Amikor futtatja a **eszköz-szimuláció** szolgáltatás helyileg küld telemetriai adatokat a távoli figyelésére szolgáló megoldás. Az a **eszközök** lap, a frissített típusú példányok létesíthet.
+Amikor futtatja a **eszköz-szimuláció-dotnet** szolgáltatás helyileg küld telemetriai adatokat a távoli figyelésére szolgáló megoldás. Az a **eszközök** lap, a frissített típusú példányok létesíthet.
 
 Tesztelése és hibakeresése a módosítások helyileg, tekintse meg az előző szakaszban [helyileg a villanykörte eszköztípus tesztelése](#test-the-lightbulb-device-type-locally).
 

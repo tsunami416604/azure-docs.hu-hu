@@ -40,8 +40,20 @@
 ### SQL Database
 #### [Rendelkezésre állási zónák és SQL Database](../sql-database/sql-database-high-availability.md#availability-zones)
 
-### Tárolás
+### Storage
 #### [Zónaredundáns tárolás](../storage/common/storage-redundancy-zrs.md)
+
+### Event Hubs
+#### [Event Hubs georeplikációs vészhelyreállítás](../event-hubs/event-hubs-geo-dr.md#availability-zones-preview)
+
+### Service Bus
+#### [Service Bus georeplikációs vészhelyreállítás](../service-bus-messaging/service-bus-geo-dr.md#availability-zones-preview)
+
+### VPN Gateway
+#### [Zónaredundáns virtuális hálózati átjáró létrehozása](../vpn-gateway/create-zone-redundant-vnet-gateway.md)
+
+### ExpressRoute
+#### [Zónaredundáns virtuális hálózati átjáró létrehozása](../vpn-gateway/create-zone-redundant-vnet-gateway.md)
 
 # Vészhelyreállítás
 ## [Az Azure Site Recovery használata](https://docs.microsoft.com/azure/site-recovery/)

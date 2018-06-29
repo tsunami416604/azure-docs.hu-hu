@@ -3,7 +3,7 @@ title: Első lépések útmutató az Azure informatikai operátorok |} Microsoft
 description: Az első lépéseket ismertető útmutató Azure-operátorok számára
 services: ''
 documentationcenter: ''
-author: neilpeterson
+author: iainfoulds
 manager: timlt
 editor: tysonn
 tags: azure-resource-manager
@@ -14,13 +14,13 @@ ms.topic: ''
 ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 06/12/2017
-ms.author: nepeters
-ms.openlocfilehash: b63beffdd3b10071c6d18128e78a949374c171b2
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.author: iainfou
+ms.openlocfilehash: f79f727ed46f85866f59468be418ba8975c17bd8
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34361652"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37099493"
 ---
 # <a name="introduction-to-cloud-computing-and-microsoft-azure"></a>Bevezetés a felhőalapú informatika és a Microsoft Azure
 
@@ -61,7 +61,7 @@ SaaS egy központilag tárolt és kezelt szoftverek. Általában a több-bérlő
 
 A Microsoft Office 365 egy SaaS ajánlat jól szemlélteti. Előfizetői havi vagy éves előfizetés díjat kell fizetnie, és a Microsoft Exchange, Microsoft OneDrive és a többi szolgáltatásként a Microsoft Office suite. Előfizetők mindig letöltheti a legfrissebb verziót, és az Exchange-kiszolgálóhoz van kezelve. Office telepítéséről és frissítéséről évente, ez kevésbé költséges, és kevesebb beavatkozást igényel.
 
-#### <a name="paas-platform-as-a-service"></a>A PaaS: Platformok 
+#### <a name="paas-platform-as-a-service"></a>A PaaS: Platformok
 
 PaaS az olyan környezetben, amely a felhőalapú szolgáltatás szállítójával biztosít az alkalmazás telepítése. A szállító végzi az infrastruktúra felügyelete mindegyikét, alkalmazásfejlesztés összpontosíthat.
 
@@ -381,11 +381,11 @@ Az Azure storage-fiókok konfigurálható különböző szintű redundancia:
 
 -   **Írásvédett georedundáns tárolás** georedundáns tárolás és a másodlagos régióba adatainak olvasás. Ez a lehetőség kiválóan alkalmas a részleges katasztrófa utáni helyreállítás. Ha az elsődleges régióban problémáját, módosíthatja az alkalmazás csak olvasási hozzáféréssel rendelkeznek a párosított régióban.
 
-### <a name="use-cases"></a>Használati esetek 
+### <a name="use-cases"></a>Használati esetek
 
 Minden tárolási különféle használati eset rendelkezik.
 
-**Blob Storage** 
+**Blob Storage**
 
 A word *blob* rövidítése: *nagy bináris objektum*. Blobok olyan strukturálatlan fájlokban, például az alábbiakhoz a számítógépén tárolni. A Blob Storage képes tárolni bármilyen szöveget vagy bináris adatot, például dokumentumot, médiafájlt vagy egy alkalmazástelepítőt. A Blob Storage más néven objektumtárnak is hívható. Az Azure Blob storage az Azure virtuális gépek adatlemezek is tartalmazza.
 
@@ -445,7 +445,7 @@ Hasonlóképpen az Azure parancssori felület használatával az Azure Resource 
 
 ### <a name="access-and-security-for-azure-storage"></a>Az Azure Storage Access és
 
-Az Azure Storage számos lehetőséget kínál, ha az Azure-portálon, beleértve a virtuális gép létrehozása és a művelet során, és a Storage ügyfélkódtáraival érhető el. 
+Az Azure Storage számos lehetőséget kínál, ha az Azure-portálon, beleértve a virtuális gép létrehozása és a művelet során, és a Storage ügyfélkódtáraival érhető el.
 
 **Virtuális gépek lemezei**
 

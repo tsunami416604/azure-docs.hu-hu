@@ -190,6 +190,8 @@
           href: storage-https-custom-domain-cdn.md
         - name: Az Azure Blob Storage nem módosítható tárolás funkciója (előzetes verzió)
           href: storage-blob-immutable-storage.md
+        - name: Biztonságos TLS engedélyezése az Azure Storage-ügyfélnek
+          href: ../common/storage-security-tls.md
     - name: Figyelés és hibaelhárítás
       items:
         - name: Oktatóanyag a hibaelhárításhoz

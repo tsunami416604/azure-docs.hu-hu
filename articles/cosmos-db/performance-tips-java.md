@@ -10,12 +10,12 @@ ms.devlang: java
 ms.topic: conceptual
 ms.date: 01/02/2018
 ms.author: sngun
-ms.openlocfilehash: 2c0290ef160283f5aef8b1a4a5f67e69222aec0e
-ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
-ms.translationtype: HT
+ms.openlocfilehash: bf0bd715e47cc7145a76d5f8b5f2589f24b343a8
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37029356"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37100555"
 ---
 > [!div class="op_single_selector"]
 > * [Aszinkron Java](performance-tips-async-java.md)
@@ -148,9 +148,9 @@ Ezért ha még kérése "Hogyan javítható az adatbázis teljesítménye?" Vegy
     response.getRequestCharge();
     ```             
 
-    A kérelem kell fizetni vissza ezt a fejlécet a létesített átviteli sebesség részét. Például ha 2000 RU/mp kiépített, és ha az előző lekérdezés függvény 1000 1KB-dokumentumok, a költség, a művelet 1000. Ilyen belül egy második, a kiszolgáló eleget tegyen csak két ilyen kérelmeket előtt szabályozás későbbi kérelmeket. További információkért lásd: [egységek kérelem](request-units.md) és a [kérelem egység Számológép](https://www.documentdb.com/capacityplanner).
+    A kérelem kell fizetni vissza ezt a fejlécet a létesített átviteli sebesség részét. Például ha 2000 RU/mp kiépített, és ha az előző lekérdezés függvény 1000 1KB-dokumentumok, a költség, a művelet 1000. Ilyen belül egy második, a kiszolgáló eleget tegyen előtt sebessége korlátozza az új kérelmek csak két ilyen kérelmeket. További információkért lásd: [egységek kérelem](request-units.md) és a [kérelem egység Számológép](https://www.documentdb.com/capacityplanner).
 <a id="429"></a>
-2. **Kezeli a sebesség korlátozása/kérelmek aránya túl nagy**
+1. **Kezeli a sebesség korlátozása/kérelmek aránya túl nagy**
 
     Amikor az ügyfél meghaladja a fenntartott átviteli sebesség egy olyan fiók, nincs teljesítmény csökkenése nélkül működhet a kiszolgálón, és felül a fenntartott átviteli sebesség nincs használatban. A kiszolgáló megelőző jelleggel a RequestRateTooLarge (HTTP-állapotkód: 429) kérelem befejezése és térjen vissza a [x-ms-újrapróbálkozási-után-ms](https://docs.microsoft.com/rest/api/cosmos-db/common-cosmosdb-rest-response-headers) idő ezredmásodpercben, amely a felhasználó kell várnia, mielőtt megoldódhat jelző fejléc a kérelmet.
 

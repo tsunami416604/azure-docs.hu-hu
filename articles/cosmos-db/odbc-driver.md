@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/22/2018
 ms.author: sngun
-ms.openlocfilehash: 11e0a4e38739a775d977cf76b72d4dc92942a7b0
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: e93b241c79a50380f4ef1538dfbf7615232e6c49
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34725091"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37096509"
 ---
 # <a name="connect-to-azure-cosmos-db-using-bi-analytics-tools-with-the-odbc-driver"></a>Csatlakozás Azure Cosmos DB BI elemzőeszközök segítségével az ODBC-illesztőprogram
 
@@ -63,7 +63,7 @@ Most már megadható, hogy az ODBC-illesztőprogram az első lépései.
 4. Kattintson a **teszt** gombra kattintva ellenőrizze, hogy Azure Cosmos DB-fiókjához csatlakozhat. 
 5. Kattintson a **speciális beállítások** és állítsa be a következő értékeket:
     - **Lekérdezési konzisztencia**: válassza ki a [konzisztenciaszint](consistency-levels.md) a műveletekhez. Az alapértelmezett érték a munkamenet.
-    - **Az újrapróbálkozások számát**: Adja meg a próbálkozások egy műveletet, ha a kezdeti kérelem befejezése sikertelennek bizonyul szolgáltatás szabályozás miatt.
+    - **Az újrapróbálkozások számát**: Adja meg a próbálkozások egy műveletet, ha a kezdeti kérelem befejezése sikertelennek bizonyul szolgáltatás sebesség korlátozása miatt.
     - **Sémafájl**: több lehetőség itt rendelkeznek.
         - Alapértelmezés szerint ez a bejegyzés (üres), így az illesztőprogramot keres az első lap adatok megállapításához a séma egyes gyűjtemények minden gyűjtemények. Ez más néven gyűjtemény a hozzárendelése. Nélkül definiált sémafájl az illesztőprogram minden egyes illesztőprogram-munkamenet az ellenőrzés elvégzéséhez rendelkezik, és eredményezhet a DSN-NEVET használó alkalmazások a magasabb indítási idő. Azt javasoljuk, hogy mindig társít egy sémafájl a DSN-hez.
         - Ha már rendelkezik egy sémafájl (valószínűleg egy létrehozott a [séma szerkesztő](#schema-editor)), kattintson **Tallózás**, keresse meg a fájlt, kattintson a **mentése**, és kattintson a **OK**.
@@ -196,4 +196,4 @@ A következő hibaüzenet jelenik meg, ha a **állomás** és **hozzáférési k
 
 ## <a name="next-steps"></a>További lépések
 
-Azure Cosmos DB kapcsolatos további információkért lásd: [Üdvözli az Azure Cosmos DB](introduction.md).
+További információ az Azure Cosmos DB-ről: [Üdvözli az Azure Cosmos DB](introduction.md).

@@ -11,14 +11,14 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/29/2018
+ms.date: 06/27/2018
 ms.author: nitinme
-ms.openlocfilehash: bbf75a03fb771aa415a26e151614cecfaa14c485
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 333ff3ac3de053eae604ffeab600df7d35874f69
+ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34598878"
+ms.lasthandoff: 06/28/2018
+ms.locfileid: "37085232"
 ---
 # <a name="connect-to-azure-databricks-from-excel-python-or-r"></a>Csatlakozás Azure Databricks Excel, Python vagy R
 
@@ -99,6 +99,9 @@ Ez a szakasz azt olvasnak be adatokat Azure Databricks Microsoft Excel programba
 Miután az adatok az Excel-munkafüzetet, rajta analitikai műveleteket végezhet.
 
 ## <a name="connect-from-r"></a>Az R csatlakozás
+
+> [!NOTE]
+> Ebben a szakaszban egy Azure Databricks az asztalon futó R Studio ügyfél integrációjával kapcsolatos információkat biztosít. R Studio használatáról az Azure Databricks fürtön maga útmutatásért lásd: [R Studiót a Azure Databricks](https://docs.azuredatabricks.net/spark/latest/sparkr/rstudio.html).
 
 Ebben a szakaszban használhatja az R nyelv IDE referenciaadatok Azure Databricks érhető el. Mielőtt elkezdené, a következő, a számítógépen telepítve kell rendelkeznie.
 

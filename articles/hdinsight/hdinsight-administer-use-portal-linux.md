@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/18/2018
 ms.author: jgao
-ms.openlocfilehash: b672b777e9a60f2f3d978947c06290db48e6766c
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: bcfa7a6b9a2ebd60ec804fe8a61c26300f003a5e
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34627023"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37097784"
 ---
 # <a name="manage-hadoop-clusters-in-hdinsight-by-using-the-azure-portal"></a>Hdinsight Hadoop-fürtök kezelése az Azure-portál használatával
 
@@ -105,7 +105,7 @@ Ha a NoRegisteredProviderFound hiba vagy a MissingSubscriptionRegistration hiba,
     * **Figyelési**: a fürt az Azure Naplóelemzés figyelésére.
     * **Tulajdonságok**: a fürt tulajdonságainak megtekintése.
     * **Storage-fiókok**: a storage-fiókok és a kulcsok megtekintéséhez. A storage-fiókok vannak konfigurálva, a fürt létrehozása során.
-    * **Data Lake Store hozzáférés**: konfigurálja a hozzáférést a Data Lake tárolja.  Lásd: [HDInsight-fürtök létrehozása a Data Lake Store az Azure portál használatával](../data-lake-store/data-lake-store-hdinsight-hadoop-use-portal.md).
+    * **Data Lake Store hozzáférés**: konfigurálja a hozzáférést a Data Lake tárolja.  Lásd: [gyors üzembe helyezés: hdinsight fürtök beállítása](../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md).
     * **Erőforrás állapota**: lásd: [Azure-erőforrás állapotának áttekintése](../service-health/resource-health-overview.md).
     * **Új támogatási kérelem**: lehetővé teszi egy támogatási jegy létrehozása a Microsoft támogatási szolgálatához.
     
@@ -353,12 +353,12 @@ Az Azure portál használatával megkeresheti az alapértelmezett tároló tarta
 8. Kattintson az alapértelmezett tároló nevére.
 
 ## <a name="monitor-cluster-usage"></a>A figyelő fürt használata
-A **használati** szakasz a HDInsight-fürt panelről az elérhető és a HDInsight együttes használata az előfizetés magok száma, valamint az ehhez a fürthöz, és azok elosztását vezérli a fürtben levő csomópontok számára lefoglalt magok száma információkat jelenít meg. Lásd: [listája és megjelenítése fürtök](#list-and-show-clusters).
+A **használati** a HDInsight-fürt panelén szakasza az elérhető és a HDInsight együttes használata az előfizetés magok száma, valamint az ehhez a fürthöz, és elosztását vezérli a lefoglalt magok száma információit jeleníti meg. Ebben a fürtben levő csomópontok. Lásd: [listája és megjelenítése fürtök](#list-and-show-clusters).
 
 > [!IMPORTANT]
 > A HDInsight-fürt által nyújtott szolgáltatások figyeléséhez, az Ambari Web vagy az Ambari REST API-t kell használnia. További információ az Ambari használatával, lásd: [kezelése HDInsight-fürtök Ambari használatával](hdinsight-hadoop-manage-ambari.md)
 
-## <a name="connect-to-a-cluster"></a>Csatlakozzon a fürthöz
+## <a name="connect-to-a-cluster"></a>Csatlakozás fürthöz
 
 * [A Hive használata a HDInsightban](hadoop/apache-hadoop-use-hive-ambari-view.md)
 * [SSH használata a HDInsighttal](hdinsight-hadoop-linux-use-ssh-unix.md)

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/23/2018
 ms.author: larryfr
-ms.openlocfilehash: d382293ce815f24ad635b50c920d7988b664d79c
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: d030bdaf4c68a7e2ec9d11cdd8a2f55eccfbd67d
+ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32169608"
+ms.lasthandoff: 06/28/2018
+ms.locfileid: "37081167"
 ---
 # <a name="use-pig-with-hadoop-on-hdinsight"></a>A Pig használata a HDInsight Hadoop
 
@@ -55,7 +55,7 @@ A Pig Latin nyelvi ismertetik az adatfolyam nyers bemeneti, egy vagy több átal
 
 Pig Latin is támogatja a felhasználói függvény (UDF), így külső összetevők, amelyek megvalósítják az logika, amely a Pig Latin modell nehéz meghívni.
 
-A Pig Latin kapcsolatos további információkért lásd: [Pig Latin hivatkozás manuális 1](http://pig.apache.org/docs/r0.7.0/piglatin_ref1.html) és [Pig Latin hivatkozás manuális 2](http://pig.apache.org/docs/r0.7.0/piglatin_ref2.html).
+A Pig Latin kapcsolatos további információkért lásd: [Pig Latin hivatkozás manuális 1](http://archive.cloudera.com/cdh/3/pig/piglatin_ref1.html) és [Pig Latin hivatkozás manuális 2](http://archive.cloudera.com/cdh/3/pig/piglatin_ref2.html).
 
 Például egy felhasználó által megadott függvények használata a Pig lásd a következő dokumentumokat:
 
@@ -99,7 +99,7 @@ A Pig Latin feladatok futtatásával a HDInsight többféle módszerrel. A köve
 | **Ezzel** Ha azt szeretné... | ...an **interaktív** rendszerhéj | ...**kötegelt** feldolgozása | és mivel ez **fürt operációs rendszer** | ...from ez **ügyfél** |
 |:--- |:---:|:---:|:--- |:--- |
 | [SSH](apache-hadoop-use-pig-ssh.md) |✔ |✔ |Linux |Linux, Unix, Mac OS X vagy Windows |
-| [Curl](apache-hadoop-use-pig-curl.md) |&nbsp; |✔ |Linux- vagy Windows |Linux, Unix, Mac OS X vagy Windows |
+| [curl](apache-hadoop-use-pig-curl.md) |&nbsp; |✔ |Linux- vagy Windows |Linux, Unix, Mac OS X vagy Windows |
 | [.NET SDK a Hadoophoz](apache-hadoop-use-pig-dotnet-sdk.md) |&nbsp; |✔ |Linux- vagy Windows |(Egyelőre) Windows |
 | [A Windows PowerShell](apache-hadoop-use-pig-powershell.md) |&nbsp; |✔ |Linux- vagy Windows |Windows |
 

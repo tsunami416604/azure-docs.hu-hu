@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/15/2017
 ms.author: fboylu
-ms.openlocfilehash: 2916252c08c599d2e528595a8cdf2abca8ea89a3
-ms.sourcegitcommit: 828d8ef0ec47767d251355c2002ade13d1c162af
+ms.openlocfilehash: 3715dcceb4330f6eaab01f49aee9d4d19663b62e
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36938410"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37099661"
 ---
 # <a name="technical-guide-to-the-cortana-intelligence-solution-template-for-predictive-maintenance-in-aerospace-and-other-businesses"></a>A Cortana Intelligence megoldás sablont űrtechnikai és más vállalatok számára a prediktív karbantartási műszaki útmutatója
 
@@ -54,7 +54,7 @@ A következő szakaszok ismertetik a megoldás részeit.
 ### <a name="synthetic-data-source"></a>Szintetikus adatforrás
 Ehhez a sablonhoz használt adatforrás egy asztali alkalmazás letöltése és futtatása helyben a sikeres telepítést jönnek létre.
 
-Található útmutatást követve töltse le és telepítse az alkalmazást, jelölje ki az első csomópontot, a prediktív karbantartási Adatgenerátor megoldás sablon diagram. A Tulajdonságok sávon található utasításokat. Ez az alkalmazás-hírcsatornák a [Azure Event Hubs](#azure-event-hub) szolgáltatás mellett vagy ugyanazt a megoldás folyamatot a többi használt események. Ez az adatforrás eredete nyilvánosan elérhető adatait a [NASA adattárház](https://c3.nasa.gov/dashlink/resources/139/) használatával a [turbóventillátoros motor teljesítménycsökkenést szimuláció adatkészlet](http://ti.arc.nasa.gov/tech/dash/pcoe/prognostic-data-repository/#turbofan).
+Található útmutatást követve töltse le és telepítse az alkalmazást, jelölje ki az első csomópontot, a prediktív karbantartási Adatgenerátor megoldás sablon diagram. A Tulajdonságok sávon található utasításokat. Ez az alkalmazás-hírcsatornák a [Azure Event Hubs](#azure-event-hub) szolgáltatás mellett vagy ugyanazt a megoldás folyamatot a többi használt események. Ez az adatforrás eredete nyilvánosan elérhető adatait a [NASA adattárház](https://c3.nasa.gov/dashlink/resources/139/) használatával a [turbóventillátoros motor teljesítménycsökkenést szimuláció adatkészlet](http://ti.arc.nasa.gov/tech/dash/groups/pcoe/prognostic-data-repository/#turbofan).
 
 Az esemény generációs alkalmazás tölti fel az Azure Event Hubs csak, amíg a számítógép végrehajtása történik.  
 
@@ -82,7 +82,7 @@ Használjon [Power BI](https://powerbi.microsoft.com) egy irányítópultot, ame
 ## <a name="how-to-bring-in-your-own-data"></a>Útmutató saját adatok
 Ez a szakasz ismerteti, hogyan kell a saját adatait az Azure-ba, és milyen területeken módosítások szükségesek az adatok akkor vonja ebbe az architektúrába.
 
-Nem valószínű, hogy az adatkészlet által használt adatkészlet megegyezik-e a [turbóventillátoros motor teljesítménycsökkenést szimuláció adatkészlet](http://ti.arc.nasa.gov/tech/dash/pcoe/prognostic-data-repository/#turbofan) megoldás sablon használatos. Az adatok és a követelmények megértése alapvető fontosságúak a saját adatok sablon módosítása. 
+Nem valószínű, hogy az adatkészlet által használt adatkészlet megegyezik-e a [turbóventillátoros motor teljesítménycsökkenést szimuláció adatkészlet](http://ti.arc.nasa.gov/tech/dash/groups/pcoe/prognostic-data-repository/#turbofan) megoldás sablon használatos. Az adatok és a követelmények megértése alapvető fontosságúak a saját adatok sablon módosítása. 
 
 Az alábbi szakaszok ismertetik a szükséges módosítani, ha új adatkészlet megjelent a sablon részeit.
 

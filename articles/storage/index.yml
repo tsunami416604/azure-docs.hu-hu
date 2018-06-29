@@ -3,24 +3,24 @@ documentType: LandingData
 title: Azure Storage-dokumentáció
 metadata:
   title: Az Azure Storage dokumentációja – oktatóanyagok és API-referencia | Microsoft Docs
-  description: Az Azure Storage egy, a Microsoft által felügyelt felhőszolgáltatás, amely magas rendelkezésre állású, biztonságos, tartós, skálázható redundáns tárolást tesz lehetővé. Az Azure Storage a Blob Storage, File Storage és Queue Storage szolgáltatásokat tartalmazza.
+  description: Az Azure Storage egy, a Microsoft által felügyelt felhőszolgáltatás, amely magas rendelkezésre állású, biztonságos, tartós, skálázható redundáns tárolást tesz lehetővé. Az Azure Storage az Azure Blobs, a 2. generációs Azure Data Lake Storage, az Azure Files, az Azure Queues és az Azure Tables szolgáltatásokból áll.
   services: storage
   author: tamram
-  manager: jeconnoc
+  manager: twooley
   ms.service: storage
   ms.tgt_pltfrm: na
   ms.devlang: na
   ms.topic: landing-page
-  ms.date: 06/18/2018
+  ms.date: 06/27/2018
   ms.author: tamram
-  ms.openlocfilehash: 0e8c2b7048ff9e59612e13a87506bf1209036ca6
-  ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
+  ms.openlocfilehash: a2254967a9f7338e29105682ea6d496271bbbe75
+  ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
   ms.translationtype: HT
   ms.contentlocale: hu-HU
-  ms.lasthandoff: 06/19/2018
-  ms.locfileid: "36266671"
+  ms.lasthandoff: 06/27/2018
+  ms.locfileid: "37030291"
 abstract:
-  description: A Microsoft Azure Storage egy, a Microsoft által felügyelt felhőszolgáltatás, amely magas rendelkezésre állású, biztonságos, tartós, méretezhető és redundáns tárolást tesz lehetővé. Az Azure Storage a Blob Storage, File Storage és Queue Storage szolgáltatásokat tartalmazza.  Rövid útmutatóink és oktatóanyagaink segítségével megtudhatja, hogyan használhatja alkalmazásaiban az Azure Storage-ot.
+  description: Az Azure Storage egy, a Microsoft által felügyelt felhőszolgáltatás, amely magas rendelkezésre állású, biztonságos, tartós, skálázható redundáns tárolást tesz lehetővé. Az Azure Storage az Azure Blobs (objektumok), a 2. generációs Azure Data Lake Storage, az Azure Files, az Azure Queues és az Azure Tables szolgáltatásokból áll. Rövid útmutatóink és oktatóanyagaink segítségével megtudhatja, hogyan használhatja alkalmazásaiban az Azure Storage-ot.
 sections:
 - title: 5 perces gyors útmutatók
   items:
@@ -65,30 +65,25 @@ sections:
       - href: /azure/storage/blobs/storage-quickstart-blobs-java
       - href: /azure/storage/blobs/storage-quickstart-blobs-python
       - href: /azure/storage/blobs/storage-quickstart-blobs-nodejs
+    - title: 2. generációs Data Lake Storage
+      values:
+      - href: /azure/storage/data-lake-storage/quickstart-create-account#create-an-account-using-the-azure-portal
+      - href: /azure/storage/data-lake-storage/quickstart-create-account#create-an-account-using-powershell
+      - href: /azure/storage/data-lake-storage/quickstart-create-account#create-an-account-using-azure-cli
+      - href: 
+      - href: 
+      - href: 
+      - href: 
 - title: Részletes útmutatók
   items:
-  - type: paragraph
-    text: Megismerheti a felhőbeli rendszerkép-adatok feltöltése és feldolgozásának módját.
   - type: list
-    style: unordered
+    style: cards
+    className: cardsD
     items:
-    - html: <a href="/azure/storage/blobs/storage-upload-process-images">Felhőbeli rendszerkép-adatok feltöltése és lekérése</a>
-    - html: <a href="/azure/event-grid/resize-images-on-storage-blob-upload-event?toc=%2fazure%2fstorage%2fblobs%2ftoc.json">Az Azure Functions aktiválása a blobok feldolgozásához</a>
-    - html: <a href="/azure/storage/blobs/storage-secure-access-application">Az alkalmazásadatok védelme</a>
-    - html: <a href="/azure/storage/blobs/storage-monitor-troubleshoot-storage-application">Tárterület figyelése és hibaelhárítása</a>
-  - type: paragraph
-    text: Megtudhatja, hogyan tervezhet magas rendelkezésre állású alkalmazást az Azure Storage-ban.
-  - type: list
-    style: unordered
-    items:
-    - html: <a href="/azure/storage/blobs/storage-create-geo-redundant-storage">Az alkalmazásadatok magas rendelkezésre állásúvá tétele</a>
-    - html: <a href="/azure/storage/blobs/storage-simulate-failure-ragrs-account-app">Írásvédett redundáns tárolók elérése során fellépő hiba szimulálása</a>
-  - type: paragraph
-    text: Megismerheti, hogyan kereshet strukturálatlan adatokat az Azure Storage-ban.
-  - type: list
-    style: unordered
-    items:
-    - html: <a href="/azure/storage/blobs/storage-unstructured-search">Strukturálatlan adatok keresése felhőalapú tárolóban</a>
+    - title: Blobok
+      html: <p>Rendszerképadatok feltöltése és feldolgozása felhőben</p><ul><li><a href="/azure/storage/blobs/storage-upload-process-images">Felhőbeli rendszerkép-adatok feltöltése és lekérése</a></li><li><a href="/azure/event-grid/resize-images-on-storage-blob-upload-event?toc=%2fazure%2fstorage%2fblobs%2ftoc.json">Az Azure Functions aktiválása a blobok feldolgozásához</a></li><li><a href="/azure/storage/blobs/storage-secure-access-application">Az alkalmazásadatok védelme</a></li><li><a href="/azure/storage/blobs/storage-monitor-troubleshoot-storage-application">Tárterület figyelése és hibaelhárítása</a></li></ul><p>Magas rendelkezésre állású alkalmazás tervezése</p><ul><li><a href="/azure/storage/blobs/storage-create-geo-redundant-storage">Az alkalmazásadatok magas rendelkezésre állásúvá tétele</a></li><li><a href="/azure/storage/blobs/storage-simulate-failure-ragrs-account-app">Írásvédett redundáns tárolók elérése során fellépő hiba szimulálása</a></li></ul><p><a href="/azure/storage/blobs/storage-unstructured-search">Strukturálatlan adatok keresése az Azure Storage-ban</a></p>
+    - title: 2. generációs Data Lake Storage
+      html: <p><a href="/azure/storage/data-lake-storage/handle-data-using-databricks">Adatok kinyerése, átalakítása és betöltése az Azure Databricks használatával</a></p><p><a href="/azure/storage/data-lake-storage/using-databricks-spark">Hozzáférés a 2. generációs Azure Data Lake Storage adataihoz a Databricks és a Spark használatával</a></p><p><a href="/azure/storage/data-lake-storage/tutorial-extract-transform-load-hive">Adatok kinyerése, átalakítása és betöltése az Azure HDInsight-alapú Apache Hive használatával</a></p>
 - title: Példák
   items:
   - type: paragraph

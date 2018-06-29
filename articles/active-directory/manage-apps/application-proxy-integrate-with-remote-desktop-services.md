@@ -11,16 +11,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/11/2018
+ms.date: 06/27/2018
 ms.author: barbkess
 ms.custom: it-pro
 ms.reviewer: harshja
-ms.openlocfilehash: 5c6d6b9580b123dafb03af2acc885d2416ca2a56
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: 0a004ee6e5dbdd2ceb8546a4b7ce20b2b551fac9
+ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35292541"
+ms.lasthandoff: 06/28/2018
+ms.locfileid: "37084065"
 ---
 # <a name="publish-remote-desktop-with-azure-ad-application-proxy"></a>Az Azure AD alkalmazásproxy távoli asztal közzététele
 
@@ -45,6 +45,8 @@ Egy távoli asztali szolgáltatások telepítése esetén a távoli asztali webe
 
 ## <a name="requirements"></a>Követelmények
 
+- Egy ügyfél eltérő a távoli asztali webes ügyféllel, akkor használható, mert a webes ügyfél nem támogatja az alkalmazásproxy.
+
 - A távoli asztali webes és a távoli asztali átjáró végpontok ugyanazon a számítógépen, valamint egy közös legfelső szintű helyen kell lennie. Távoli asztali webes és a távoli asztali átjáró az alkalmazásproxy egyetlen alkalmazás táblaként vannak közzétéve, hogy egy egyszeri bejelentkezéses felhasználói élmény biztosítása a két alkalmazás között lehet.
 
 - Ön már rendelkezik [központilag telepített távoli asztali szolgáltatások](https://technet.microsoft.com/windows-server-docs/compute/remote-desktop-services/rds-in-azure), és [engedélyezve van az alkalmazásproxy](application-proxy-enable.md).
@@ -68,7 +70,7 @@ Miután beállította a távoli asztali szolgáltatások és a környezet az Azu
    - URL-cím fejlécek lefordítani: nincs
 2. Felhasználók hozzárendelése a távoli asztali közzétett alkalmazást. Ellenőrizze, hogy minden hozzáférhetnek a távoli asztali szolgáltatások, túl.
 3. Hagyja meg az egyszeri bejelentkezési módszer alkalmazására vonatkozó **az Azure AD az egyszeri bejelentkezés le van tiltva**. A felhasználó felkérést egyszer az Azure AD és a távoli asztali webes egyszer hitelesítéséhez, de rendelkezik egyszeri bejelentkezéshez a távoli asztali átjáró.
-4. Ugrás a **Azure Active Directory** > **App regisztrációk** > *az alkalmazás* > **beállítások**.
+4. Ugrás a **Azure Active Directory** > **App regisztrációk** > *az alkalmazás* > **Beállítások**.
 5. Válassza ki **tulajdonságok** , és frissítse a **kezdőlapot URL-cím** mező úgy, hogy a távoli asztali webes végpontjának mutasson (például a https://\<rdhost\>.com/RDWeb).
 
 ### <a name="direct-rds-traffic-to-application-proxy"></a>Alkalmazásproxy közvetlen RDS-forgalom

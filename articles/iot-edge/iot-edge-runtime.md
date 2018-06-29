@@ -8,12 +8,12 @@ ms.date: 06/05/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: b7418947c44c62883ef13c4be130458bb9f9ce6c
-ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
-ms.translationtype: HT
+ms.openlocfilehash: aa371ef2ebad01fba379675e8438f56dca9ce356
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37030379"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37096967"
 ---
 # <a name="understand-the-azure-iot-edge-runtime-and-its-architecture"></a>Az Azure IoT peremhálózati futásidejű és az architektúra
 
@@ -40,12 +40,12 @@ A peremhálózati ügynök és a peremhálózati hub egyaránt olyan modulok, cs
 A peremhálózati hub a két Azure IoT peremhálózati futásidejű alkotó modulok egyike. Jelentkezik, mintha az IoT-központ azonos protokollvégpontokat IoT-központ helyi proxyjaként működik. A konzisztencia azt jelenti, hogy az ügyfelek (e eszközök vagy modulok) az IoT-Edge futásidejű kapcsolódhat, hogy az IoT hubhoz. 
 
 >[!NOTE]
-> Nyilvános előzetes peremhálózati Hub MQTT használatával csatlakozó ügyfelek csak támogatja.
+>Biztonsági központ MQTT vagy AMQP használatával csatlakozó ügyfelek támogatja. Nem támogatja a HTTP Protokollt használó ügyfeleket. 
 
 A peremhálózati hub nincs helyben fut az IoT-központ teljes verzióját. Néhány dolgot IoT-központ csendes gazdakiszolgálója a peremhálózati központ. Például biztonsági központ továbbítja a hitelesítési kérelmeket az IoT hubhoz amikor egy eszköz először próbál csatlakozni. Az első kapcsolat létrejötte után biztonsági adatokat a helyi gyorsítótárba helyezi peremhálózati hubból. Az adott eszközről kapcsolataihoz engedélyezettek anélkül, hogy a felhő felé történő hitelesítésre. 
 
 >[!NOTE]
-> Nyilvános előzetes a futtatókörnyezet csatlakoztatva kell lennie minden alkalommal, amikor megpróbálja egy eszköz hitelesítéséhez.
+>A futtatókörnyezet minden alkalommal, amikor egy eszköz hitelesítéséhez megkísérli csatlakoztatva kell lennie.
 
 Az IoT-peremhálózati megoldás sávszélesség csökkentése érdekében használja, a peremhálózati hub optimalizálja hány tényleges kapcsolatok hozhatók létre a felhőbe. Biztonsági központ logikai kapcsolatok fogad az ügyfelektől, mint a modulok vagy levél eszközök, és a felhő egy egyetlen fizikai kapcsolat egyesíti őket. Ez a folyamat részletei a megoldás a többi átlátszóak. Ügyfelek gondolja, hogy saját kapcsolatukat a felhőbe rendelkeznek, annak ellenére, hogy azok összes küldési az azonos kapcsolaton keresztül. 
 

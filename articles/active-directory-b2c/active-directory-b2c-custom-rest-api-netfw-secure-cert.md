@@ -10,12 +10,12 @@ ms.topic: article
 ms.date: 09/25/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 004577ead56befce02771b82ace088706e8f0c3c
-ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
+ms.openlocfilehash: fc95974fb7db856d0a255d4a5d1d754649b71eca
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "34709206"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37098447"
 ---
 # <a name="secure-your-restful-service-by-using-client-certificates"></a>Biztonságos a RESTful szolgáltatás ügyfél-tanúsítványok használatával
 
@@ -38,21 +38,13 @@ Ez a cikk részletek hogyan:
 * Szerezzen be egy érvényes tanúsítványt (egy titkos kulcsot .pfx fájl).
 
 ## <a name="step-1-configure-a-web-app-for-client-certificate-authentication"></a>1. lépés: Az ügyféltanúsítvány-alapú hitelesítés webalkalmazás konfigurálása
-Beállítása **Azure App Service** ügyféltanúsítványok megköveteléséhez, állítsa be a webes alkalmazás `clientCertEnabled` beállítással hely *igaz*. Ezt a módosítást a REST API-t kell használnia. A beállítás a megoldást vezet be az Azure portálon keresztül érhető el. Állapítsa meg a beállítás a RESTful alkalmazás a **beállítások** menüben, a **Fejlesztőeszközök**, jelölje be **erőforrás-kezelő**.
+Beállítása **Azure App Service** ügyféltanúsítványok megköveteléséhez, állítsa be a webes alkalmazás `clientCertEnabled` beállítással hely *igaz*. Ezt a módosítást, az Azure portálon, nyissa meg a weblap alkalmazást. A bal oldali navigációs alatt **beállítások** válasszon **SSL-beállítások**. Az a **ügyféltanúsítványok** területen kapcsolja be a **bejövő ügyféltanúsítvány** lehetőséget.
 
 >[!NOTE]
 >Győződjön meg arról, hogy az Azure App Service-csomag Standard vagy nagyobb. További információkért lásd: [Azure App Service-csomagok részletes áttekintése](https://docs.microsoft.com/azure/app-service/azure-web-sites-web-hosting-plans-in-depth-overview).
 
-
-Használjon [Azure erőforrás-kezelővel (előzetes verzió)](https://resources.azure.com) beállítása a **clientCertEnabled** tulajdonságot *igaz*, a következő ábrán látható módon:
-
-![Az Azure erőforrás-kezelőben clientCertEnabled beállítása](media/aadb2c-ief-rest-api-netfw-secure-cert/rest-api-netfw-secure-client-cert-resource-explorer.png)
-
 >[!NOTE]
 >További információt a beállítás a **clientCertEnabled** tulajdonság, lásd: [TLS konfigurálása kölcsönös hitelesítést a web Apps](https://docs.microsoft.com/azure/app-service-web/app-service-web-configure-tls-mutual-auth).
-
->[!TIP]
->Azt is megteheti, hogy egyszerűbb létrehozható a REST API-hívás, használhatja a [ARMClient](https://github.com/projectkudu/ARMClient) eszköz.
 
 ## <a name="step-2-upload-your-certificate-to-azure-ad-b2c-policy-keys"></a>2. lépés: A tanúsítvány feltöltése az Azure AD B2C házirend kulcsok
 Miután beállította `clientCertEnabled` való *igaz*, a kommunikációt a RESTful API-val ügyféltanúsítványt igényel. Szerezze be, és töltse fel az ügyféltanúsítvány tárolása az Azure AD B2C-bérlő, tegye a következőket: 

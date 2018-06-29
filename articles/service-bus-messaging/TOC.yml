@@ -126,6 +126,10 @@
               href: service-bus-amqp-request-response.md
         - name: Speciális funkciók
           items:
+            - name: IP-kapcsolat szűrői
+              href: service-bus-ip-filtering.md
+            - name: Virtuális hálózati szolgáltatásvégpontok
+              href: service-bus-service-endpoints.md
             - name: Kézbesíthetetlen levelek sorai
               href: service-bus-dead-letter-queues.md
             - name: Üzenetek előzetes betöltése

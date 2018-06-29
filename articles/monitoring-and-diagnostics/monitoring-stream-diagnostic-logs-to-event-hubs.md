@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 06/20/2018
 ms.author: johnkem
 ms.component: ''
-ms.openlocfilehash: 806ebe80ad49f2f908bf46549bb4abc533a6d516
-ms.sourcegitcommit: 828d8ef0ec47767d251355c2002ade13d1c162af
+ms.openlocfilehash: c59b9982f5ba5a4fa52ab36df5ebb6995b2d45b0
+ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36936700"
+ms.lasthandoff: 06/28/2018
+ms.locfileid: "37085089"
 ---
 # <a name="stream-azure-diagnostic-logs-to-an-event-hub"></a>Az adatfolyam Azure diagnosztikai naplók az eseményközpontba
 **[Az Azure diagnosztikai naplók](monitoring-overview-of-diagnostic-logs.md)**  továbbítható közel valós idejű bármely alkalmazás a beépített "Exportálás az Event Hubs" beállítás használatával, a portálon, vagy a központi engedélyezési szabály eseményazonosító keresztül az Azure diagnosztikai beállítás engedélyezésével PowerShell-parancsmagok vagy Azure CLI 2.0.
@@ -41,7 +41,7 @@ Az alábbiakban néhány módszereket, akkor előfordulhat, hogy az adatfolyam-t
 
 ## <a name="enable-streaming-of-diagnostic-logs"></a>Adatfolyamként való küldése a diagnosztikai naplók engedélyezése
 
-Adatfolyamként való küldése a diagnosztikai naplók programozott módon, a portálon, vagy használatával engedélyezheti a [Azure figyelő REST API-k](https://docs.microsoft.com/rest/api/monitor/servicediagnosticsettings). Mindkét módszer esetén létrehozhat egy diagnosztikai beállítás található, amely akkor adja meg az Event Hubs-névteret és a napló kategóriák és a metrikák szeretne küldeni névtérhez. Az eseményközpontok engedélyezi napló kategóriákhoz tartozó névtér jön létre. A diagnosztika **napló kategória** a naplóban, amely egy erőforrás gyűjthet típusa.
+Adatfolyamként való küldése a diagnosztikai naplók programozott módon, a portálon, vagy használatával engedélyezheti a [Azure figyelő REST API-k](https://docs.microsoft.com/en-us/rest/api/monitor/diagnosticsettings). Mindkét módszer esetén létrehozhat egy diagnosztikai beállítás található, amely akkor adja meg az Event Hubs-névteret és a napló kategóriák és a metrikák szeretne küldeni névtérhez. Az eseményközpontok engedélyezi napló kategóriákhoz tartozó névtér jön létre. A diagnosztika **napló kategória** a naplóban, amely egy erőforrás gyűjthet típusa.
 
 > [!WARNING]
 > Engedélyezése, valamint a folyamatos átviteli a számítási erőforrások (például a virtuális gépek vagy a Service Fabric) diagnosztikai naplók [meg kell adni egy másik lépések](../event-hubs/event-hubs-streaming-azure-diags-data.md).

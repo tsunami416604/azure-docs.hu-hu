@@ -14,12 +14,12 @@ ms.devlang: Java
 ms.topic: article
 ms.date: 10/30/2014
 ms.author: vibhork;dominic.may@sendgrid.com;elmer.thomas@sendgrid.com
-ms.openlocfilehash: d80d7d9c54bad12a4d26d8623eeccdf9bc2a743a
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: fab76467025518bc455295da681d0b0127a9cbfe
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23873946"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37098729"
 ---
 # <a name="how-to-send-email-using-sendgrid-from-java-in-an-azure-deployment"></a>Hogyan e-mailek küldése a Java SendGrid Azure-telepítés
 A következő példa bemutatja, hogyan használhatja SendGrid e-mailek küldése az Azure-ban üzemeltetett weblapról. Az eredményül kapott alkalmazás fogja kérni a felhasználót a e-mail-értékeket, az az alábbi képernyőfelvételen látható módon.
@@ -28,7 +28,7 @@ A következő példa bemutatja, hogyan használhatja SendGrid e-mailek küldése
 
 Az eredményül kapott e-mailt az alábbi képernyőfelvételhez hasonlóan fog kinézni.
 
-![E-mailt][emailsent]
+![E-mail-üzenet][emailsent]
 
 A következő használatára az ebben a témakörben lévő lesz szüksége:
 
@@ -208,12 +208,12 @@ Az e-mailek küldéséhez, mellett emailform.jsp eredményt biztosít a felhaszn
 
 ![Mail eredmény küldése][emailresult]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 A compute emulator az alkalmazás telepítése és egy böngészőből emailform.jsp futtassa, adja meg az értékeket a képernyőn, kattintson a **az e-mailek küldése**, és olvassa el a sendemail.jsp eredményez.
 
 Ez a kód mutatjuk be, a Java SendGrid használata Azure lett megadva. Mielőtt telepítené az Azure éles környezetben, érdemes lehet további hibakezelés vagy egyéb szolgáltatások. Példa: 
 
-* Az Azure storage blobsba vagy SQL-adatbázis segítségével tárolja az e-mail-címeket és e-mailek, egy webes űrlap használata helyett. Az Azure storage-blobot, amely Java használatával kapcsolatos információkért lásd: [használata a Blob Storage szolgáltatást Java](https://azure.microsoft.com/develop/java/how-to-guides/blob-storage/). SQL-adatbázis a Java használatával kapcsolatos információkért lásd: [SQL-adatbázis használata a Java](https://azure.microsoft.com/develop/java/how-to-guides/using-sql-azure-in-java/).
+* Az Azure storage blobsba vagy SQL-adatbázis segítségével tárolja az e-mail-címeket és e-mailek, egy webes űrlap használata helyett. Az Azure storage-blobot, amely Java használatával kapcsolatos információkért lásd: [használata a Blob Storage szolgáltatást Java](https://azure.microsoft.com/develop/java/how-to-guides/blob-storage/). SQL-adatbázis a Java használatával kapcsolatos információkért lásd: [SQL-adatbázis használata a Java](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-connect-query-java).
 * Használhat `RoleEnvironment.getConfigurationSettings` lekérdezni a SendGrid-felhasználónevet és jelszót a telepítési konfigurációt, beolvasni ezeket az értékeket a webes űrlap használata helyett. További információ a `RoleEnvironment` osztály című [JSP az Azure-szolgáltatás futásidejű kódtár használatával](http://msdn.microsoft.com/library/windowsazure/hh690948) és az Azure szolgáltatás futásidejű csomag dokumentációját a <http://dl.windowsazure.com/javadoc>.
 * Java nyelven SendGrid használatával kapcsolatos további információkért lásd: [küldése az e-mailek Java a SendGrid](store-sendgrid-java-how-to-send-email.md).
 

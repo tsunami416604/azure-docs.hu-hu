@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 01/15/2018
+ms.date: 06/27/2018
 ms.author: barbkess
 ms.reviewer: asteen
-ms.openlocfilehash: 183c5f3196653ce9519c0742db7a67cd36c63fb9
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: c60d736798adbbcb47b94172768dc8b8e5c366fe
+ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35292837"
+ms.lasthandoff: 06/28/2018
+ms.locfileid: "37088641"
 ---
 # <a name="integrating-azure-active-directory-with-applications-getting-started-guide"></a>Azure Active Directory integrálása alkalmazások első lépések útmutató
 ## <a name="overview"></a>Áttekintés
@@ -61,8 +61,8 @@ Lehet, hogy nincs minden ezekre a kérdésekre adott válaszokat előre, de ez n
 * Azure-előfizetés és Azure Active Directory címtárhoz.  Ha még nem rendelkezik Azure-előfizetéssel, kipróbálhatja Azure ingyenes 30 napig. [Próbálja ki!](https://azure.microsoft.com/trial/get-started-active-directory/)
 
 ## <a name="application-integration-with-azure-ad"></a>Alkalmazások integrálása az Azure ad szolgáltatással
-### <a name="finding-unsanctioned-cloud-applications-with-cloud-app-discovery"></a>A Cloud App Discovery megállapítás nem engedélyezett a felhőalapú alkalmazásokhoz
-Fent említett, alkalmazásokat, amelyek még nem lett kezeli a szervezet eddig lehet.  A folyamat részeként jóvá nem hagyott alkalmazások kereséséhez. Lásd: [jóvá nem hagyott alkalmazások a Cloud App Discovery keresése](cloud-app-discovery.md).
+### <a name="finding-unsanctioned-cloud-applications-with-cloud-discovery"></a>A Cloud Discovery megállapítás nem engedélyezett a felhőalapú alkalmazásokhoz
+Fent említett, alkalmazásokat, amelyek még nem lett kezeli a szervezet eddig lehet.  A folyamat részeként jóvá nem hagyott alkalmazások kereséséhez. Lásd: [Cloud Discovery beállítása](/cloud-app-security/set-up-cloud-discovery.md).
 
 ### <a name="authentication-types"></a>Hitelesítési típusok
 Az alkalmazások előfordulhat, hogy különböző hitelesítési követelményekkel rendelkező. Az Azure AD aláíró tanúsítványok használható SAML 2.0, WS-Federation, vagy OpenID Connect protokollok, valamint jelszó egyszeri bejelentkezést használó alkalmazásokat. Alkalmazással kapcsolatos további információk az Azure AD hitelesítési típus: [tanúsítványok kezelése az összevont egyszeri bejelentkezés az Azure Active Directoryban](manage-certificates-for-federated-single-sign-on.md) és [jelszó alapján egyszeri bejelentkezési](what-is-single-sign-on.md).
@@ -73,9 +73,9 @@ A Microsoft Azure AD-alkalmazásproxy belül található alkalmazásokhoz a mag�
 ### <a name="integrating-applications-with-azure-ad"></a>Alkalmazások integrálása az Azure ad szolgáltatással
 A következő cikkekben ismertetik a különböző alkalmazások az Azure AD integrálása és néhány útmutatást nyújtanak.
 
-* [Active Directory használandó meghatározása](../active-directory-administer.md)
+* [Active Directory használandó meghatározása](../fundamentals/active-directory-administer.md)
 * [Alkalmazások használata az az Azure alkalmazáskatalógusában](what-is-single-sign-on.md)
-* [Integrálása SaaS-alkalmazások oktatóanyagok listáját](../active-directory-saas-tutorial-list.md)
+* [Integrálása SaaS-alkalmazások oktatóanyagok listáját](../saas-apps/tutorial-list.md)
 
 ## <a name="managing-access-to-applications"></a>Alkalmazás-hozzáférés kezelése
 A következő cikkek ismertetik, hogyan után az Azure AD-összekötők használata az Azure AD és az Azure AD integrált alkalmazások elérésére kezelheti.

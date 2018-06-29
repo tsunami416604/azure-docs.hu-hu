@@ -1,11 +1,11 @@
-# [A Data Lake Store dokumentációja](index.md)
+# [1. generációs Data Lake Storage dokumentációja](index.md)
 
 # Áttekintés
-## [Az Azure Data Lake Store áttekintése](data-lake-store-overview.md)
-## [Az Azure Data Lake Store és az Azure Storage összehasonlítása](data-lake-store-comparison-with-blob-storage.md)
-## [Azure Data Lake Store a big data-feldolgozáshoz](data-lake-store-data-scenarios.md)
-## [Az Azure Data Lake Store-ral működő nyílt forráskódú alkalmazások](data-lake-store-compatible-oss-other-applications.md)
-## [Data Lake Store használatának ajánlott eljárásai](data-lake-store-best-practices.md)
+## [Az 1. generációs Data Lake Storage áttekintése](data-lake-store-overview.md)
+## [1. generációs Data Lake Storage összehasonlítása az Azure Storage szolgáltatással](data-lake-store-comparison-with-blob-storage.md)
+## [Big Data-feldolgozás 1. generációs Data Lake Storage szolgáltatással](data-lake-store-data-scenarios.md)
+## [Az 1. generációs Azure Data Lake Storage szolgáltatással működő nyílt forráskódú alkalmazások](data-lake-store-compatible-oss-other-applications.md)
+## [Ajánlott eljárások az 1. generációs Data Lake Storage használatához](data-lake-store-best-practices.md)
 
 # Bevezetés
 ## [A Portal használata](data-lake-store-get-started-portal.md)
@@ -21,15 +21,15 @@
 ### [A DistCp használata](data-lake-store-copy-data-wasb-distcp.md)
 ### [A Sqoop használata](data-lake-store-data-transfer-sql-sqoop.md)
 ### [Adatok feltöltése offline forrásokból](data-lake-store-offline-bulk-data-upload.md)
-### [Az Azure Data Lake Store régiók közötti migrálása](data-lake-store-migration-cross-region.md)
+### [Data Lake Store migrálása régiók között](data-lake-store-migration-cross-region.md)
 
 ## Adatok védelme
 ### [Biztonsági áttekintés](data-lake-store-security-overview.md)
-### [Hozzáférés-vezérlés a Data Lake Store-ban](data-lake-store-access-control.md)
-### [Biztonságos adattárolás a Data Lake Store-ban](data-lake-store-secure-data.md)
+### [Hozzáférés-vezérlés az 1. generációs Data Lake Storage-ban](data-lake-store-access-control.md)
+### [Az adatok védelme az 1. generációs Data Lake Storage-ban](data-lake-store-secure-data.md)
 ### [Titkosítás](data-lake-store-encryption.md)
 
-## Hitelesítés a Data Lake Store-ral
+## Hitelesítés az 1. generációs Data Lake Storage szolgáltatással
 ### [Hitelesítési lehetőségek](data-lakes-store-authentication-using-azure-active-directory.md)
 ### [Végfelhasználói hitelesítés](data-lake-store-end-user-authenticate-using-active-directory.md)
 #### [A Java használata](data-lake-store-end-user-authenticate-java-sdk.md)
@@ -42,7 +42,7 @@
 #### [A REST API használata](data-lake-store-service-to-service-authenticate-rest-api.md)
 #### [A Python használata](data-lake-store-service-to-service-authenticate-python.md)
 
-## A Data Lake Store használata
+## Az 1. generációs Data Lake Storage használata
 ### Fiókkezelési műveletek
 #### [A .NET SDK használata](data-lake-store-get-started-net-sdk.md)
 #### [A REST API használata](data-lake-store-get-started-rest-api.md)
@@ -54,12 +54,12 @@
 #### [A Python használata](data-lake-store-data-operations-python.md)
 
 ## Teljesítmény
-### [Teljesítmény-finomhangolási útmutató az Azure Data Lake Store-hoz](data-lake-store-performance-tuning-guidance.md)
-### [Teljesítmény-finomhangolási útmutató az Azure Data Lake Store-ral használt PowerShellhez](data-lake-store-performance-tuning-powershell.md)
-### [Teljesítmény-finomhangolási útmutató a Spark on HDInsighthoz és az Azure Data Lake Store-hoz](data-lake-store-performance-tuning-spark.md)
-### [Teljesítmény-finomhangolási útmutató a Hive on HDInsighthoz és az Azure Data Lake Store-hoz](data-lake-store-performance-tuning-hive.md)
-### [Teljesítmény-finomhangolási útmutató a MapReduce on HDInsighthoz és az Azure Data Lake Store-hoz](data-lake-store-performance-tuning-mapreduce.md)
-### [Teljesítmény-finomhangolási útmutató a Storm on HDInsighthoz és az Azure Data Lake Store-hoz](data-lake-store-performance-tuning-storm.md)
+### [Teljesítmény-finomhangolási útmutató az 1. generációs Azure Data Lake Storage-hoz](data-lake-store-performance-tuning-guidance.md)
+### [Teljesítmény-finomhangolási útmutató a PowerShell és az 1. generációs Data Lake Storage használatához](data-lake-store-performance-tuning-powershell.md)
+### [Teljesítmény-finomhangolási útmutató a Spark on HDInsighthoz és az 1. generációs Azure Data Lake Storage-hoz](data-lake-store-performance-tuning-spark.md)
+### [Teljesítmény-finomhangolási útmutató a Hive on HDInsighthoz és az 1. generációs Azure Data Lake Storage-hoz](data-lake-store-performance-tuning-hive.md)
+### [Teljesítmény-finomhangolási útmutató a MapReduce on HDInsighthoz és az 1. generációs Azure Data Lake Storage-hoz](data-lake-store-performance-tuning-mapreduce.md)
+### [Teljesítmény-finomhangolási útmutató a Storm on HDInsighthoz és az 1. generációs Azure Data Lake Storage-hoz](data-lake-store-performance-tuning-storm.md)
 
 ## Integráció az Azure-szolgáltatásokkal
 ### HDInsighttal

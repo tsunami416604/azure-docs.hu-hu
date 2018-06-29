@@ -9,12 +9,12 @@ ms.custom: security
 ms.topic: conceptual
 ms.date: 06/24/2018
 ms.author: giladm
-ms.openlocfilehash: 0646667caab594556cc3c2043bc36905acef6e54
-ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
+ms.openlocfilehash: f187a5fe1541f5508e55443abe80fc295ee63c87
+ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36751043"
+ms.lasthandoff: 06/28/2018
+ms.locfileid: "37081455"
 ---
 # <a name="get-started-with-sql-database-auditing"></a>Ismerkedés az SQL-adatbázis naplózási szolgáltatásával
 Az Azure SQL database naplózási nyomon követi az adatbázis-események, mind az írás őket naplózási jelentkezzen be az Azure storage-fiók. A naplózás is:
@@ -62,20 +62,18 @@ A naplózási házirend meghatározása egy adott adatbázis vagy az alapértelm
 Az alábbi szakasz ismerteti az Azure portál használatával naplózási beállításait.
 
 1. Nyissa meg az [Azure Portal](https://portal.azure.com).
-2. Lépjen a **beállítások** naplózandó SQL adatbázis vagy SQL Server panelen. Az a **beállítások** panelen válassza **naplózási & Threat detection**.
+2. Navigáljon a **naplózási** az SQL-adatbázis-kiszolgáló ablaktáblán biztonsági fejléc alatt.
 
     <a id="auditing-screenshot"></a>![Navigációs ablaktábla][1]
 3. Ha a kiszolgáló naplózási házirend beállítása szeretne használni, válassza a **beállításainak megtekintéséhez** hivatkozás az adatbázis naplózási paneljén. Ezt követően megtekintheti vagy módosíthatja a kiszolgáló naplózási beállításainak. Kiszolgáló naplózási házirendek ezen a kiszolgálón az összes meglévő és az újonnan létrehozott adatbázisokra érvényesek.
 
     ![Navigációs ablaktábla][2]
-4. Ha inkább az adatbázis szintjén naplózásának blob engedélyezésére **naplózási**, jelölje be **ON**, és a **típus naplózás**, jelölje be **Blob**.
+4. Ha inkább az adatbázis szintje a naplózás engedélyezéséhez, váltson **naplózási** való **ON**.
 
-    Ha a kiszolgáló blobnaplózási funkció engedélyezve van, az adatbázis-konfigurálva naplózási és a kiszolgáló blob naplózási jelen.
+    Ha server naplózás engedélyezve van, az adatbázis-konfigurálva naplózási-mellé, a kiszolgáló naplózási jelen.
 
     ![Navigációs ablaktábla][3]
 5. Lehetőségre a **naplózási naplók tárolási** panelen válassza **tárolási részletek**. Válassza ki az Azure storage-fiók, ahol naplókat a rendszer menti, majd válassza ki a megőrzési időn. Törli a régi naplókat. Ezután kattintson az **OK** gombra.
-    >[!TIP]
-    >A legtöbbet hozhatja ki a naplózási jelentések sablonok, ugyanazt a tárfiókot használja az összes naplózott adatbázisok.
 
     <a id="storage-screenshot"></a>![Navigációs ablaktábla][4]
 6. Ha szeretné testre szabni a naplózott eseményeket, ehhez keresztül [PowerShell-parancsmagok](#subheading-7) vagy a [REST API](#subheading-9).
@@ -102,7 +100,8 @@ Többféleképpen segítségével blob naplófájlok megtekintése:
     Egy **rekordok naplózása** panel megnyitása, amelyen után képes lesz a naplók megtekintéséhez.
 
     - Gombra kattintva megtekintheti az adott dátumok **szűrő** tetején a **rekordok naplózása** panelen.
-    - Naplózási azt jelzi, hogy a kiszolgáló házirend vagy az adatbázis házirend naplózási hozott létre válthat.
+    - Auditálási rekordok által létrehozott válthat a *kiszolgáló naplózási házirend* és a *adatbázis naplózási házirend* által való átváltással **naplózási forrás**.
+    - Csak az SQL-injektálás kapcsolódó naplózási bejegyzések ellenőrzésével megtekintheti **megjelenítése csak a naplózási bejegyzések az SQL-utasítások** jelölőnégyzetet.
 
        ![Navigációs ablaktábla][8]
 
@@ -147,8 +146,8 @@ Georeplikált adatbázisok Ha az elsődleges adatbázis naplózásának engedél
 * Kiszolgálószintű (**ajánlott**): mindkét naplózás bekapcsolása a **elsődleges kiszolgáló** , valamint a **másodlagos kiszolgáló** – az elsődleges és másodlagos adatbázisok egyes naplózza függetlenül a megfelelő kiszolgálószintű házirend alapján.
 
 * Adatbázis-szintű: A másodlagos adatbázisok naplózásának adatbázis szintje csak az elsődleges adatbázis naplózási beállításainak lehet megadni.
-   * BLOB naplózását engedélyezni kell a *maga elsődleges adatbázis*, nem a kiszolgáló.
-   * Blob naplózás engedélyezése után az elsődleges adatbázist, akkor is válik elérhetővé, másodlagos adatbázison.
+   * Naplózás engedélyezni kell a *maga elsődleges adatbázis*, nem a kiszolgáló.
+   * Naplózás engedélyezése után az elsődleges adatbázist, akkor is válik elérhetővé, másodlagos adatbázison.
 
     >[!IMPORTANT]
     >Adatbázis-szintű naplózás esetén a másodlagos adatbázis-tárolási beállításai lesz azonos az elsődleges adatbázis, a kereszt-területi forgalmat, amely. Azt javasoljuk, hogy csak a kiszolgálószintű naplózást, és hagyja meg az adatbázis-szintű naplózás le van tiltva az összes olyan adatbázis.
@@ -204,7 +203,6 @@ Tekintse meg a parancsfájl például [konfigurálhatja a naplózás és a fenye
 * [Hozzon létre vagy frissítési kiszolgáló Blob naplózási házirend](https://docs.microsoft.com/en-us/rest/api/sql/server%20auditing%20settings/createorupdate)
 * [Adatbázis-Blob naplórendet beolvasása](https://docs.microsoft.com/en-us/rest/api/sql/database%20auditing%20settings/get)
 * [Kiszolgáló Blob naplórendet beolvasása](https://docs.microsoft.com/en-us/rest/api/sql/server%20auditing%20settings/get)
-* [Műveleti eredmény naplózás Server Blob beolvasása](https://msdn.microsoft.com/library/azure/mt771862.aspx)
 
 Kiterjesztett házirend hol záradék támogatása további szűréséhez:
 * [Adatbázis frissítése *kiterjesztett* Blob-naplózási házirend](https://docs.microsoft.com/en-us/rest/api/sql/database%20extended%20auditing%20settings/createorupdate)

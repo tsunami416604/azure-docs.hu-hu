@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/01/2018
 ms.author: larryfr
-ms.openlocfilehash: 856a94b0cf64a20fbe9267b76422c47d88d21f43
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
-ms.translationtype: HT
+ms.openlocfilehash: 500b6ef33bb70cd5138067d88303b7db9121e867
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/03/2018
-ms.locfileid: "32778903"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37102613"
 ---
 # <a name="customize-linux-based-hdinsight-clusters-using-script-actions"></a>A Parancsfájlműveletek Linux-alapú HDInsight-fürtök testreszabása
 
@@ -58,7 +58,7 @@ A parancsfájlművelet egy HDInsight-fürt csomópontjain futó Bash parancsfáj
 
 * A HDInsight-fürt által elérhető URI kell tárolni. A lehetséges tárolási helyek a következők:
 
-    * Egy **Azure Data Lake Store** fiókkal, amely a HDInsight-fürt által elérhető. Azure Data Lake Store és a HDInsight együttes használatáról további információért lásd: [HDInsight-fürtök létrehozása a Data Lake Store](../data-lake-store/data-lake-store-hdinsight-hadoop-use-portal.md).
+    * Egy **Azure Data Lake Store** fiókkal, amely a HDInsight-fürt által elérhető. Azure Data Lake Store és a HDInsight együttes használatáról további információért lásd: [gyors üzembe helyezés: hdinsight fürtök beállítása](../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md).
 
         A Data Lake Store-ban tárolt parancsfájl használata esetén az URI-formátum van `adl://DATALAKESTOREACCOUNTNAME.azuredatalakestore.net/path_to_file`.
 
@@ -173,9 +173,7 @@ Ez a szakasz a különböző módszereket, Parancsfájlműveletek létrehozása 
 
 ### <a name="use-a-script-action-during-cluster-creation-from-the-azure-portal"></a>Egy parancsfájlművelettel során fürt létrehozása az Azure-portálon
 
-1. Indítsa el a fürt létrehozása a részben ismertetett módon [Hadoop létrehozása a HDInsight-fürtök](hdinsight-hadoop-provision-linux-clusters.md). Állítsa le, ha eléri a __fürt összefoglaló__ szakasz.
-
-2. Az a __fürt összefoglaló__ szakaszban jelölje be a __szerkesztése__ hivatkozás a __speciális beállítások__.
+1. Indítsa el a fürt létrehozása a részben ismertetett módon [Hadoop létrehozása a HDInsight-fürtök](hdinsight-hadoop-provision-linux-clusters.md). Fürt létrehozása során meg fog megérkezni a egy __fürt összefoglaló__ lap. Az a __fürt összefoglaló__ lapon jelölje be a __szerkesztése__ hivatkozás a __speciális beállítások__.
 
     ![Speciális beállítások hivatkozása](./media/hdinsight-hadoop-customize-cluster-linux/advanced-settings-link.png)
 

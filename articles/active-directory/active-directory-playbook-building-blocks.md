@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/04/2017
 ms.author: dstefan
-ms.openlocfilehash: 056821bd26e9c6c110b23a048df4aa13bc4ab8fa
-ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
+ms.openlocfilehash: 36cbf9249664af1cd469d7e27c617a4810d0e74f
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36754558"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37098957"
 ---
 # <a name="azure-active-directory-proof-of-concept-playbook-building-blocks"></a>Az Azure Active Directory alkalmazástervezési a koncepció igazolása: építőelemek
 
@@ -428,7 +428,7 @@ Hozzávetőleges időt Complete: 10 perc
 ### <a name="considerations"></a>Megfontolandó szempontok
 
 1. Ez az explicit módon beállítása MFA egy felhasználó összes bejelentkezések építőelem koncepció lépéseit. Például a feltételes hozzáférés és Identity Protection egyéb eszközöket, amelyek több többtényezős Hitelesítést végezhetnek megcélzott forgatókönyvek. Ez lehet valami kell figyelembe venni, amikor Koncepció üzemi környezetben.
-2. Ez építőelem koncepció lépéseit explicit módon használ telefonhívásokat expedience a többtényezős hitelesítési módszerként. Áttérés POC üzemi környezetben, mert azt javasoljuk, alkalmazások, mint a [Microsoft Authenticator](../multi-factor-authentication/end-user/microsoft-authenticator-app-how-to.md) a második tényezőként amikor csak lehetséges.
+2. Ez építőelem koncepció lépéseit explicit módon használ telefonhívásokat expedience a többtényezős hitelesítési módszerként. Áttérés POC üzemi környezetben, mert azt javasoljuk, alkalmazások, mint a [Microsoft Authenticator](authentication/end-user/current/microsoft-authenticator-app-how-to.md) a második tényezőként amikor csak lehetséges.
 További: [VÁZLAT NIST különleges közlemény 800-63B](https://pages.nist.gov/800-63-3/sp800-63b.html)
 
 ## <a name="mfa-conditional-access-for-saas-applications"></a>Többtényezős hitelesítés feltételes hozzáférés a Szolgáltatottszoftver-alkalmazáshoz
@@ -553,7 +553,7 @@ Hozzávetőleges időt igényel: 20 perc
 | --- | --- |
 | Eszköz felhasználói tanúsítvánnyal kiépítve (Windows, iOS vagy Android) a vállalati nyilvános kulcsú infrastruktúra | [Felhasználói tanúsítványok telepítése](https://msdn.microsoft.com/library/cc770857.aspx) |
 | Az AD FS összevont Azure AD-tartomány | [Azure AD Connect és összevonás](./connect/active-directory-aadconnectfed-whatis.md)<br/>[Active Directory tanúsítványszolgáltatások áttekintése](https://technet.microsoft.com/library/hh831740.aspx)|
-| Az iOS-eszközök telepítve a Microsoft Authenticator alkalmazás | [Ismerkedés a Microsoft Authenticator alkalmazással](../multi-factor-authentication/end-user/microsoft-authenticator-app-how-to.md) |
+| Az iOS-eszközök telepítve a Microsoft Authenticator alkalmazás | [Ismerkedés a Microsoft Authenticator alkalmazással](authentication/end-user/current/microsoft-authenticator-app-how-to.md) |
 
 ### <a name="steps"></a>Lépések
 

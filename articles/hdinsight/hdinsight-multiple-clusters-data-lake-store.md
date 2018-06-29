@@ -14,17 +14,17 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/21/2018
 ms.author: nitinme
-ms.openlocfilehash: 48e5a8d270701c43276e1d248d8ea4dc748d15b2
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 1d073732b5dd9b9867813d9ffcfad5caa1131d81
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31404567"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37102243"
 ---
 # <a name="use-multiple-hdinsight-clusters-with-an-azure-data-lake-store-account"></a>Több HDInsight-fürt használata az Azure Data Lake Store-fiók
 
 HDInsight 3.5-ös verziója verziótól kezdődően hozhat létre HDInsight-fürtök az Azure Data Lake Store-fiók, az alapértelmezett fájlrendszer.
-Data Lake Store támogatja a korlátlan tárterület, így ideális, ha nem csak futtató nagy mennyiségű adat; de is üzemeltetéséhez több HDInsight-fürtök ennek a megosztásnak a egyetlen Data Lake Store-fiókból. A HDInsight-fürtök létrehozása a Data Lake Store a tárolóként útmutatásért lásd: [HDInsight-fürtök létrehozása a Data Lake Store](../data-lake-store/data-lake-store-hdinsight-hadoop-use-portal.md).
+Data Lake Store támogatja a korlátlan tárterület, így ideális, ha nem csak futtató nagy mennyiségű adat; de is üzemeltetéséhez több HDInsight-fürtök ennek a megosztásnak a egyetlen Data Lake Store-fiókból. A HDInsight-fürtök létrehozása a Data Lake Store a tárolóként útmutatásért lásd: [gyors üzembe helyezés: hdinsight fürtök beállítása](../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md).
 
 Ez a cikk ismerteti a Data Lake ajánlásokat rendszergazda tárolja egyetlen és megosztott Data Lake tárolásához fiók beállítása, amely több használható **aktív** a HDInsight-fürtök. Ezek a javaslatok alkalmazása több biztonságos, valamint a nem biztonságos Hadoop-fürtök megosztott Data Lake store-fiók a futtató.
 
@@ -41,9 +41,9 @@ Ahhoz, hogy a gyökérmappa-szerkezetében hatékonyan használhatják a HDInsig
 
 |Mappa  |Engedélyek  |Tulajdonos felhasználó  |Tulajdonoscsoport  | Nevesített felhasználó | Nevesített felhasználó engedélyek | Nevesített csoport | Elnevezett csoportját engedélyek |
 |---------|---------|---------|---------|---------|---------|---------|---------|
-|/ | rwxr-x--x  |adminisztrátor |adminisztrátor  |Szolgáltatásnév |--x  |FINGRP   |r-x         |
-|/Clusters | rwxr-x--x |adminisztrátor |adminisztrátor |Szolgáltatásnév |--x  |FINGRP |r-x         |
-|/ fürtök/pénzügyi | rwxr-x--t |adminisztrátor |FINGRP  |Szolgáltatásnév |rwx  |-  |-     |
+|/ | rwxr-x--x  |Rendszergazda |Rendszergazda  |Szolgáltatásnév |--x  |FINGRP   |r-x         |
+|/Clusters | rwxr-x--x |Rendszergazda |Rendszergazda |Szolgáltatásnév |--x  |FINGRP |r-x         |
+|/ fürtök/pénzügyi | rwxr-x--t |Rendszergazda |FINGRP  |Szolgáltatásnév |rwx  |-  |-     |
 
 A következő táblában:
 
@@ -51,7 +51,7 @@ A következő táblában:
 - **Szolgáltatás egyszerű** van a fiókhoz tartozó egyszerű Azure Active Directory (AAD) szolgáltatást.
 - **FINGRP** az aad-ben, amely a pénzügyi szervezet felhasználóinak tartalmazza létrehozott felhasználói csoport.
 
-További információ a egy AAD-alkalmazást, (amelyek is létrehoz egy egyszerű szolgáltatásnév) létrehozása [hozzon létre egy AAD-alkalmazást](../azure-resource-manager/resource-group-create-service-principal-portal.md#create-an-azure-active-directory-application). Felhasználói csoport létrehozása az aad-ben, lásd: [csoportkezelés az Azure Active Directory](../active-directory/active-directory-groups-create-azure-portal.md).
+További információ a egy AAD-alkalmazást, (amelyek is létrehoz egy egyszerű szolgáltatásnév) létrehozása [hozzon létre egy AAD-alkalmazást](../azure-resource-manager/resource-group-create-service-principal-portal.md#create-an-azure-active-directory-application). Felhasználói csoport létrehozása az aad-ben, lásd: [csoportkezelés az Azure Active Directory](../active-directory/fundamentals/active-directory-groups-create-azure-portal.md).
 
 Figyelembe kell venni néhány kulcs mutat.
 
@@ -92,11 +92,11 @@ Ezek a beállítások ismert, hogy egy adott HDInsight használati eset rögzít
 
 Ahogy az a YARN JIRA kapcsolódó korábbi, azaz nyilvános erőforrásokat, miközben a lokalizáló ellenőrzi, hogy a kért erőforrások valóban nyilvános rájuk vonatkozó engedélyek a távoli fájlrendszerben ellenőrzésével. Bármely, amelyek nem felelnek meg, hogy a feltétel LocalResource honosításhoz elutasítva. Az engedélyek ellenőrzése "egyéb" olvasási jogosultsággal a fájl tartalmazza. Ebben a forgatókönyvben nem működik, a-kész esetén a HDInsight-fürtök az Azure Data Lake, mivel az Azure Data Lake összes megtagadja "egyéb" mappa gyökérszinten.
 
-#### <a name="workaround"></a>Megkerülő megoldás
+#### <a name="workaround"></a>Áthidaló megoldás
 Set olvasási-végrehajtási engedélyeinek **mások** keresztül a hierarchiában, például **/**, **/fürtök** és   **/fürtök/pénzügyi** a fenti táblázatban látható módon.
 
 ## <a name="see-also"></a>Lásd még
 
-* [HDInsight-fürtök létrehozása a Data Lake Store tárolóként](../data-lake-store/data-lake-store-hdinsight-hadoop-use-portal.md)
+* [Gyors üzembe helyezés: Hdinsight fürtök beállítása](../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md)
 
 

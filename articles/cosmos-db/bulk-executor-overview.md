@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/07/2018
 ms.author: ramkris
-ms.openlocfilehash: 893888904b6afc583c3c20b94d08eb3255a98cad
-ms.sourcegitcommit: ea5193f0729e85e2ddb11bb6d4516958510fd14c
+ms.openlocfilehash: 7c490aa958cf9e78c260dd0fbcf7952b55d8d88c
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/21/2018
-ms.locfileid: "36304429"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37096175"
 ---
 # <a name="azure-cosmos-db-bulk-executor-library-overview"></a>Az Azure Cosmos DB tömeges végrehajtó kódtárának ismertetése
  
@@ -33,7 +33,7 @@ A tömeges végrehajtó könyvtár segít a kihasználja a nagy átviteli sebess
  
 * Ez jelentősen csökkenti az ügyféloldali számítási erőforrásokat, az átviteli sebesség lefoglalt tárolót telítsük szükséges. Egyetlen összefűzött alkalmazás írja az adatokat a tömeges importálási API éri el a 10 alkalommal nagyobb teljesítménye írja az adatok párhuzamos során az ügyfél mágneses erősítő gép CPU többszálas alkalmazás képest.  
 
-* Az kivonatolja számítógépnél fárasztó feladatainak írása az alkalmazáslogikát, hogy kezelni tudják a kérelem szabályozása, kérelem időtúllépése, és más átmeneti kivételek hatékonyan csatlakoztatását a szalagtárban kezelnek.  
+* Az kivonatolja számítógépnél fárasztó feladatainak írása alkalmazáslogika hatékony csatlakoztatását a szalagtárban kezelnek a kérelmet, kérelem időtúllépések és egyéb átmeneti kivételek korlátozása sebesség kezelésére.  
 
 * Alkalmazások tömeges műveletek alapján kibővíthet egy egyszerűsített mechanizmust biztosít. A egyetlen tömeges végrehajtó példánya egy Azure virtuális gépen is felhasználhatnak nagyobb, mint 500 KB-os RU/mp, és további példányokat hozzáadásával egyéni ügyfél virtuális gépek nagyobb átviteli sebesség érhető el.  
  
@@ -47,7 +47,7 @@ Importálandó, vagy frissítse a dokumentumok csoportos művelet akkor váltód
 
 ![Tömeges végrehajtó architektúrája](./media/bulk-executor-overview/bulk-executor-architecture.png)
 
-A tömeges végrehajtó könyvtár biztosítja, hogy a gyűjtemény számára kiosztott átviteli sebesség standardként használatára. Használja az [AIMD stílusú torlódás vezérlési mechanizmus](https://tools.ietf.org/html/rfc5681) az egyes Azure Cosmos DB partícióazonosító kulcs tartomány hatékonyan tudja kezelni a sávszélesség-szabályozás és időtúllépéseket okoz. 
+A tömeges végrehajtó könyvtár biztosítja, hogy a gyűjtemény számára kiosztott átviteli sebesség standardként használatára. Használja az [AIMD stílusú torlódás vezérlési mechanizmus](https://tools.ietf.org/html/rfc5681) minden Azure Cosmos DB partícióazonosító a legfontosabb tartomány hatékony kezelésére sebességkorlátozást és időtúllépéseket okoz. 
 
 ## <a name="next-steps"></a>További lépések 
   

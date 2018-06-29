@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: richagi
-ms.openlocfilehash: 8dd30f53dc37734e1c01b3712b5adb7d81a1489b
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: 363106421e75fa2e1b220d03a7d7cbed25447bcc
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2018
-ms.locfileid: "33865901"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37098396"
 ---
 # <a name="manage-user-settings-with-azure-multi-factor-authentication-in-the-cloud"></a>A felhőben Azure multi-factor Authentication felhasználói beállítások kezelése
 
@@ -58,7 +58,7 @@ Azure multi-factor Authentication konfigurálható szolgáltatása a rendelkezé
 
 Felhasználók is kikapcsolja a kétlépéses ellenőrzést, a konfigurálható számú nappal szabályos eszközeiken. Ha a fiók biztonsága sérül, vagy megbízható eszköz elvész, távolítsa el a megbízható állapotát, és szükséges a kétlépéses ellenőrzés visszakapcsolásához szeretné.
 
-A **visszaállítási többtényezős hitelesítés az összes korábban megjegyzett eszközön** beállítás azt jelenti, hogy a felhasználó ellenőrizte a kétlépéses ellenőrzés a következő bejelentkezéskor, függetlenül attól, hogy kiválasztott-e jelölje meg az eszköz megbízható legyen. 
+A **visszaállítási többtényezős hitelesítés az összes korábban megjegyzett eszközön** beállítás azt jelenti, hogy a felhasználó ellenőrizte a kétlépéses ellenőrzés a következő bejelentkezéskor, függetlenül attól, hogy kiválasztott-e az eszközt, jelölje megbízható. 
 
 ### <a name="how-to-restore-mfa-on-all-suspended-devices-for-a-user"></a>Az összes felfüggesztett eszközökön, hogy a felhasználó többtényezős hitelesítés visszaállítása
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
@@ -75,4 +75,4 @@ A **visszaállítási többtényezős hitelesítés az összes korábban megjegy
 
 - További információért arról, hogy hogyan [konfigurálása Azure multi-factor Authentication beállításait](howto-mfa-mfasettings.md)
 
-- Ha a felhasználók segítségre van szüksége, irányítsa őket felé a [felhasználói útmutatója a kétlépéses ellenőrzéshez](./../../multi-factor-authentication/end-user/multi-factor-authentication-end-user.md)
+- Ha a felhasználók segítségre van szüksége, irányítsa őket felé a [felhasználói útmutatója a kétlépéses ellenőrzéshez](end-user/current/multi-factor-authentication-end-user.md)

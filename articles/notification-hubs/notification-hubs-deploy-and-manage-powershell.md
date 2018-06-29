@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/14/2018
 ms.author: dimazaid
-ms.openlocfilehash: d2350d8021925278d6362c8227d408476a569319
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 2d70aff4cc569a194740fdab9373b7e11a1fcb15
+ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33776906"
+ms.lasthandoff: 06/28/2018
+ms.locfileid: "37084348"
 ---
 # <a name="deploy-and-manage-notification-hubs-using-powershell"></a>A Notification Hubs telepítése és kezelése a PowerShell-lel
 ## <a name="overview"></a>Áttekintés
@@ -34,7 +34,7 @@ Ha is szeretne létrehozni egy új service bus-névtér esetében a notification
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Azure-előfizetés. Azure előfizetés-alapú platform. Előfizetés beszerzésével kapcsolatos további információkért lásd: [megvásárlási lehetőségeinek], [ajánlatok], vagy [ingyenes].
+* Azure-előfizetés. Azure előfizetés-alapú platform. Előfizetés beszerzésével kapcsolatos további információkért lásd: [Vásárlási lehetőségek], [Tag ajánlatok], vagy [Ingyenes próbaverzió].
 * Az Azure PowerShell számítógép. Útmutatásért lásd: [telepítse és konfigurálja az Azure Powershellt].
 * A PowerShell-parancsfájlok, NuGet-csomagok és a .NET-keretrendszer általános ismertetése.
 
@@ -85,7 +85,7 @@ Write-Output "NamespaceManager object for the [$Namespace] namespace has been su
 
 
 ## <a name="provisioning-a-new-notification-hub"></a>Új értesítési központ kiépítése
-Új értesítési központ létrehozásához használja a [.NET API-t a Notification Hubs].
+Új értesítési központ létrehozásához használja a [.NET API-t a Notification hubs használatával].
 
 Ez a parancsfájl részében beállította négy helyi változók. 
 
@@ -154,11 +154,11 @@ Néhány előre elkészített parancsfájlok letölthetők is:
 
 * [Service Bus PowerShell parancsfájlok](https://code.msdn.microsoft.com/windowsazure/Service-Bus-PowerShell-a46b7059)
 
-[megvásárlási lehetőségeinek]: http://azure.microsoft.com/pricing/purchase-options/
-[ajánlatok]: http://azure.microsoft.com/pricing/member-offers/
-[ingyenes]: http://azure.microsoft.com/pricing/free-trial/
-[telepítse és konfigurálja az Azure Powershellt]: /powershell/azureps-cmdlets-docs
-[.NET API-t a Notification Hubs]: https://msdn.microsoft.com/library/azure/mt414893.aspx
+[Vásárlási lehetőségek]: http://azure.microsoft.com/pricing/purchase-options/
+[Tag ajánlatok]: http://azure.microsoft.com/pricing/member-offers/
+[Ingyenes próbaverzió]: http://azure.microsoft.com/pricing/free-trial/
+[Telepítse és konfigurálja az Azure PowerShellt]: /powershell/azureps-cmdlets-docs
+[.NET API-t a Notification hubs használatával]: https://docs.microsoft.com/en-us/dotnet/api/overview/azure/notification-hubs?view=azure-dotnet
 [Get-AzureSBNamespace]: https://msdn.microsoft.com/library/azure/dn495122.aspx
 [New-AzureSBNamespace]: https://msdn.microsoft.com/library/azure/dn495165.aspx
 [Get-AzureSBAuthorizationRule]: https://msdn.microsoft.com/library/azure/dn495113.aspx

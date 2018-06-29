@@ -17,12 +17,12 @@ ms.date: 12/14/2017
 ms.author: glenga
 ms.reviewer: sunayv
 ms.custom: ''
-ms.openlocfilehash: 02cd491be5336abe708cce0f6e268b38514d4e88
-ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
+ms.openlocfilehash: 3693b167f196b82c520703fa50ffabb27b555050
+ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35234954"
+ms.lasthandoff: 06/28/2018
+ms.locfileid: "37082665"
 ---
 # <a name="call-a-function-from-powerapps"></a>Függvény hívása a PowerAppsből
 A [PowerApps](https://powerapps.microsoft.com) platform készült üzleti szakértők nélkül hagyományos alkalmazáskód alkalmazásokat lehet készíteni. Professzionális fejlesztők számára az Azure Functions segítségével PowerApps, képességekkel bővíthetik a technikai részleteket a PowerApps app rendszerépítők védelme során.
@@ -46,7 +46,7 @@ Ebben a témakörben elsajátíthatja, hogyan:
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-+ Az aktív [PowerApps fiók](https://powerapps.microsoft.com/tutorials/signup-for-powerapps.md) a azonos bejelentkezési hitelesítő adatokat az Azure-fiókként. 
++ Az aktív [PowerApps fiók](https://docs.microsoft.com/en-us/powerapps/maker/signup-for-powerapps) a azonos bejelentkezési hitelesítő adatokat az Azure-fiókként. 
 + Az Excel és a [Excel mintafájl](https://procsi.blob.core.windows.net/docs/turbine-data.xlsx) az alkalmazás forrásként használni.
 + Az oktatóanyag befejezése [létrehozása a következő függvényt egy OpenAPI definíciója](functions-openapi-definition.md).
 

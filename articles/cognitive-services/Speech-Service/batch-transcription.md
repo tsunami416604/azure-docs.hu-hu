@@ -9,12 +9,12 @@ ms.technology: Speech to Text
 ms.topic: article
 ms.date: 04/26/2018
 ms.author: panosper
-ms.openlocfilehash: 01bbf4ca19b0fb702aa76d5149fb0e38389fe455
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
-ms.translationtype: HT
+ms.openlocfilehash: cf58f676be52aa16ce6de59c3566613c7ee9276d
+ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37054823"
+ms.lasthandoff: 06/28/2018
+ms.locfileid: "37084082"
 ---
 # <a name="batch-transcription"></a>Kötegelt írjanak elő
 
@@ -40,7 +40,7 @@ WAV |  Sztereó  |
 
 Sztereó hang adatfolyamok kötegelt írjanak elő felosztja a bal és jobb csatorna során írjanak elő. A két JSON-fájlok eredményeképpen egyes készített egy csatornán. / Utterance időbélyegeket a fejlesztő hozzon létre egy rendezett végső Beszélgetés szövegének engedélyezése. A következő JSON-mintát csatorna mutatja.
 
-    ```
+```json
        {
         "recordingsUrl": "https://mystorage.blob.core.windows.net/cris-e2e-datasets/TranscriptionsDataset/small_sentence.wav?st=2018-04-19T15:56:00Z&se=2040-04-21T15:56:00Z&sp=rl&sv=2017-04-17&sr=b&sig=DtvXbMYquDWQ2OkhAenGuyZI%2BYgaa3cyvdQoHKIBGdQ%3D",
         "resultsUrls": {
@@ -53,7 +53,7 @@ Sztereó hang adatfolyamok kötegelt írjanak elő felosztja a bal és jobb csat
         "status": "Succeeded",
         "locale": "en-US"
     },
-    ```
+```
 
 > [!NOTE]
 > A kötegelt API-írjanak elő az transcriptions, azok állapotát és a kapcsolódó eredmények igénylő REST-szolgáltatást használ. A .NET alapul, és nem rendelkezik külső függőségeit. A következő szakasz ismerteti, hogyan használja fel azokat.
@@ -77,7 +77,24 @@ Az egyesített beszéd szolgáltatás összes funkcióját, a felhasználói ig�
 
 ## <a name="sample-code"></a>Mintakód
 
-Az API felhasználásával viszonylag közvetlen van. Az alábbi példakód kell egy előfizetési és API-kulcs szabható testre.
+Az API felhasználásával viszonylag közvetlen van. Az alábbi példakód kell egy előfizetési és API-kulcs, ami viszont lehetővé teszi, hogy a fejlesztő szerezze be a tulajdonosi jogkivonattal, a következő kódrészletben látható kód kódú szabható testre:
+
+```cs
+    public static async Task<CrisClient> CreateApiV1ClientAsync(string username, string key, string hostName, int port)
+        {
+            var client = new HttpClient();
+            client.Timeout = TimeSpan.FromMinutes(25);
+            client.BaseAddress = new UriBuilder(Uri.UriSchemeHttps, hostName, port).Uri;
+
+            var tokenProviderPath = "/oauth/ctoken";
+            var clientToken = await CreateClientTokenAsync(client, hostName, port, tokenProviderPath, username, key).ConfigureAwait(false);
+            client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("bearer", clientToken.AccessToken);
+
+            return new CrisClient(client);
+        }
+```
+
+A token beszerzését követően a fejlesztőnek el kell végeznie eszközhozzáférés írjanak elő igénylő hangfájl mutató SAS Uri. A kód a többi egyszerűen telepítéseket állapotát, és eredményeit jeleníti meg.
 
 ```cs
    static async Task TranscribeAsync()
@@ -93,7 +110,7 @@ Az API felhasználásával viszonylag közvetlen van. Az alábbi példakód kell
             var newLocation = 
                 await client.PostTranscriptionAsync(
                     "<selected locale i.e. en-us>", // Locale 
-                    "<your subscripition key>", // Subscription Key
+                    "<your subscription key>", // Subscription Key
                     new Uri("<SAS URI to your file>")).ConfigureAwait(false);
 
             var transcription = await client.GetTranscriptionAsync(newLocation).ConfigureAwait(false);
@@ -146,7 +163,7 @@ Az aktuális mintakód adjon meg egyéni modellekkel. A szolgáltatás katódsug
 Ha egy nem kívánja használni az eredeti, egy meg kell felelnie a modellazonosítóját akusztikus és a nyelvi modellek esetén.
 
 > [!NOTE]
-> Alaptervhez írjanak elő a felhasználó nem rendelkezik a végpontok a baseline modellek deklarálnia. Ha a felhasználó egyéni modellek használni kívánja azt kell biztosítania a végpontok azonosítók, mint a [minta](https://github.com/PanosPeriorellis/Speech_Service-BatchTranscriptionAPI). Ha a felhasználó eredeti nyelvi modell egy akusztikus alapterv használni kívánja majd ő csak kell deklarálnia az egyéni modell végpont azonosítóját. Belső rendszerünkben mérje fel, a partner modell (lehet, akusztikus vagy nyelvi), és használja a írjanak elő kérelem fullfill.
+> Alaptervhez írjanak elő a felhasználó nem rendelkezik a végpontok a baseline modellek deklarálnia. Ha a felhasználó egyéni modellek használni kívánja azt kell biztosítania a végpontok azonosítók, mint a [minta](https://github.com/PanosPeriorellis/Speech_Service-BatchTranscriptionAPI). Ha a felhasználó eredeti nyelvi modell egy akusztikus alapterv használni kívánja majd ő csak kell deklarálnia az egyéni modell végpont azonosítóját. Belső rendszerünkben mérje fel, a partner modell (lehet, akusztikus vagy nyelvi), és használja a írjanak elő kérés teljesítése érdekében.
 
 ### <a name="supported-storage"></a>Támogatott tárolási
 

@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: richagi
-ms.openlocfilehash: fbca491e845ad96ecafc6afb5f40d46b99c047bf
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 19d602570337b101e4a5cf759fc56822313c631c
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "33932098"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37098005"
 ---
 # <a name="integrate-your-remote-desktop-gateway-infrastructure-using-the-network-policy-server-nps-extension-and-azure-ad"></a>A távoli asztali átjáró-infrastruktúra használata a hálózati házirend-kiszolgáló (NPS) bővítményt, és az Azure AD integrálása
 
@@ -34,7 +34,7 @@ A hálózati házirend- és hozzáférés-szolgáltatások (NPS) révén a szerv
 
 A szervezetek hálózati házirend-kiszolgáló is integrálható az Azure MFA növelje a biztonságot, és a magas szintű való megfelelőség. Ezzel biztosíthatja, hogy a felhasználók létrehozásához jelentkezzen be a távoli asztali átjáró a kétlépéses ellenőrzést. A felhasználók számára a hozzáférést meg kell adniuk a felhasználónév/jelszó kombináció, amely a felhasználó rendelkezik-e a vezérlőben információk mellett. Ezeket az információkat megbízható kell, és a rendszer egyszerűen nem lettek duplikálva, például a mobiltelefonszám, a vezetékes számát, a kérelem egy mobileszközön, és így tovább.
 
-A bővítmény rendelkezésre állását a hálózati házirend-kiszolgáló az Azure-ba, mielőtt az ügyfelek, akik az integrált hálózati házirend-kiszolgáló és az Azure MFA környezetek kétlépéses ellenőrzés végrehajtásához szükséges kellett konfigurálnia és karbantartania egy külön MFA kiszolgáló a helyszíni környezetben, ahogy [távoli asztali átjáró és az Azure multi-factor Authentication kiszolgáló RADIUS használata](howto-mfaserver-nps-rdg.md).
+A bővítmény rendelkezésre állását a hálózati házirend-kiszolgáló az Azure-ba, mielőtt az ügyfelek, akik az integrált hálózati házirend-kiszolgáló és az Azure MFA környezetek kétlépéses ellenőrzés végrehajtásához szükséges volt konfigurálnia és karbantartania egy külön MFA kiszolgáló a helyszíni környezetben, ahogy [ Távoli asztali átjáró és az Azure multi-factor Authentication kiszolgáló RADIUS használata](howto-mfaserver-nps-rdg.md).
 
 A bővítmény rendelkezésre állását a hálózati házirend-kiszolgáló az Azure lehetőséget nyújt a szervezetek biztonságos RADIUS-ügyfél-hitelesítés vagy egy helyszíni MFA-megoldását, vagy egy MFA felhőalapú megoldás telepítendő választás.
 
@@ -95,7 +95,7 @@ Kövesse a [Ismerkedés az Azure multi-factor Authentication a felhőben](howto-
 ### <a name="configure-accounts-for-two-step-verification"></a>A kétlépéses ellenőrzéshez fiókok beállítása
 Ha a fiók engedélyezve van az MFA szolgáltatásra, nem tud bejelentkezni szabályozzák a többtényezős hitelesítési szabályzat, amíg sikeresen konfigurálta a második hitelesítési tényezővel és segítségével kétlépéses hitelesítéssel hitelesített megbízható eszköz erőforrások.
 
-Kövesse a [mit Azure multi-factor Authentication jelent a számomra?](./../../multi-factor-authentication/end-user/multi-factor-authentication-end-user.md) megértéséhez, valamint megfelelően konfigurálni a felhasználói fiókjához a multi-factor Authentication az eszközök.
+Kövesse a [mit Azure multi-factor Authentication jelent a számomra?](end-user/current/multi-factor-authentication-end-user.md) megértéséhez, valamint megfelelően konfigurálni a felhasználói fiókjához a multi-factor Authentication az eszközök.
 
 ## <a name="install-and-configure-nps-extension"></a>Telepítse és konfigurálja a hálózati házirend-kiszolgáló bővítmény
 Ez a témakör az Azure MFA használata az ügyfél-hitelesítéshez a távoli asztali átjáró az RDS-infrastruktúra konfigurálására vonatkozó útmutatásokat.

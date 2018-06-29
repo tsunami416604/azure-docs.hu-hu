@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/21/2018
 ms.author: nitinme
-ms.openlocfilehash: 13f746697a7e694da79a6e376b45f95529049a44
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 5a6fa3f2bb6ab76bf323fe3ca829797878f5e774
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31401961"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37100504"
 ---
 # <a name="create-linux-based-clusters-in-hdinsight-using-the-azure-portal"></a>Linux-alapú fürtök létrehozása a Hdinsightban az Azure portál használatával
 [!INCLUDE [selector](../../includes/hdinsight-create-linux-cluster-selector.md)]
@@ -74,14 +74,14 @@ Az Azure-portálon a legtöbb fürt tulajdonságait mutatja. Azure Resource Mana
 
     * Kattintson a **Tovább** gombra.
 
-4. A **tárolási**, adja meg, hogy Azure Storage (WASB) vagy a Data Lake Store az alapértelmezett tárolóként. Tekintse meg az alábbi táblázatban további információt.
+4. A **tárolási**, adja meg, hogy Azure Storage (WASB) vagy a Data Lake tárolási az alapértelmezett tárolóként. Tekintse meg az alábbi táblázatban további információt.
 
     ![Új fürt létrehozása az Azure portálon](./media/hdinsight-hadoop-create-linux-cluster-portal/hdinsight-create-cluster-storage.png "új fürt létrehozása az Azure-portálon")
 
-    | Tárolás                                      | Leírás |
+    | Storage                                      | Leírás |
     |----------------------------------------------|-------------|
-    | **Az Azure Storage Blobs alapértelmezett tárolóként**   | <ul><li>A **elsődleges tárolótípus**, jelölje be **Azure Storage**. Ezt követően a **kijelöléséről**, dönthet úgy **a saját előfizetések** Ha szeretné-e adjon meg egy tárfiókot, amely része az Azure-előfizetéshez, és válassza ki a tárfiók. Ellenkező esetben kattintson a **hozzáférési kulcs** és adja meg a tárfiók kívül az Azure-előfizetéshez válassza ki a kívánt információkat.</li><li>A **alapértelmezett tároló**, nyissa meg a portál által javasolt alapértelmezett tároló névvel, vagy adjon meg egy saját választhat.</li><li>Ha a WASB alapértelmezett tárolóként használ, (opcionális) kattintson **további Tárfiókok** adhatja meg a fürt rendelje hozzá a további tárfiókok. A **Azure Storage kulcsok**, kattintson a **tárolási kulcs hozzáadása**, és megadhatja a storage-fiókok Azure-előfizetését, illetve más előfizetések (azáltal, hogy a fiók tárelérési kulcs).</li><li>WASB alapértelmezett tárolóként használ, ha (opcionális) kattintson **Data Lake Store hozzáférés** való további tárhely az Azure Data Lake Store beállításához. További információkért lásd: [HDInsight-fürtök létrehozása az Azure-portál használatával a Data Lake Store](../data-lake-store/data-lake-store-hdinsight-hadoop-use-portal.md).</li></ul> |
-    | **Azure Data Lake Store alapértelmezett tárolóként** | A **elsődleges tárolótípus**, jelölje be **Data Lake Store** majd tekintse át a cikk [HDInsight-fürtök létrehozása az Azure-portál használatával a Data Lake Store](../data-lake-store/data-lake-store-hdinsight-hadoop-use-portal.md) utasításokat. |
+    | **Az Azure Storage Blobs alapértelmezett tárolóként**   | <ul><li>A **elsődleges tárolótípus**, jelölje be **Azure Storage**. Ezt követően a **kijelöléséről**, dönthet úgy **a saját előfizetések** Ha szeretné-e adjon meg egy tárfiókot, amely része az Azure-előfizetéshez, és válassza ki a tárfiók. Ellenkező esetben kattintson a **hozzáférési kulcs** és adja meg a tárfiók kívül az Azure-előfizetéshez válassza ki a kívánt információkat.</li><li>A **alapértelmezett tároló**, nyissa meg a portál által javasolt alapértelmezett tároló névvel, vagy adjon meg egy saját választhat.</li><li>Ha a WASB alapértelmezett tárolóként használ, (opcionális) kattintson **további Tárfiókok** adhatja meg a fürt rendelje hozzá a további tárfiókok. A **Azure Storage kulcsok**, kattintson a **tárolási kulcs hozzáadása**, és megadhatja a storage-fiókok Azure-előfizetését, illetve más előfizetések (azáltal, hogy a fiók tárelérési kulcs).</li><li>Ha WASB alapértelmezett tárolóként használ, (opcionális) kattintson **Data Lake Store hozzáférés** adja meg az Azure Data Lake tárolási további tárhely az. További információkért lásd: [gyors üzembe helyezés: hdinsight fürtök beállítása](../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md).</li></ul> |
+    | **Az Azure Data Lake Storage alapértelmezett tárolóként** | A **elsődleges tárolótípus**, jelölje be **Azure Data Lake tárolási Gen1** vagy **Azure Data Lake tárolási Gen2 (előzetes verzió)** majd tekintse át a cikk [gyors üzembe helyezés : A HDInsight fürtök beállítása](../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md) utasításokat. |
     | **Külső metaadattárakat**                      | Szükség esetén a fürt társítva struktúra és az Oozie-metaadatok mentése SQL-adatbázis is megadhat. A **jelöljön ki egy SQL-adatbázist a Hive** jelöljön ki egy SQL-adatbázist, és a felhasználónév/jelszó adja meg az adatbázisban. Ismételje ezeket a lépéseket az Oozie-metaadatok.<br><br>Azt is számításba kell metastores az Azure SQL-adatbázis használata során. <ul><li>Az Azure SQL-adatbázis a metaadattárhoz használt engedélyezniük kell az és más Azure-szolgáltatásokkal, beleértve az Azure HDInsight. Az Azure SQL adatbázis irányítópultra, a jobb oldalon kattintson a kiszolgáló nevére. Ez az a kiszolgáló, amelyen fut az SQL-adatbázispéldány. Ha a nézetet, kattintson **konfigurálása**, és majd a **Azure Services**, kattintson a **Igen**, és kattintson a **mentése**.</li><li>Egy metaadattárhoz létrehozásakor ne használja az adatbázis nevét, amely tartalmazza a kötőjelek és kötőjeleket tartalmazhat, mivel ez is okozhatja, hogy a Fürtlétrehozási folyamat sikertelen lesz.</li></ul> |
 
     Kattintson a **Tovább** gombra. 
@@ -99,7 +99,7 @@ Az Azure-portálon a legtöbb fürt tulajdonságait mutatja. Azure Resource Mana
    > [!IMPORTANT]
    > Ha azt tervezi, több mint 32 munkavégző csomópont, vagy a fürt létrehozásakor, vagy a fürt létrehozása után skálázással majd ki kell választania egy átjárócsomóponttal mérete legalább 8 maggal és 14 GB RAM-MAL.
    > 
-   > A csomópont-méretek és a társuló költségeket további információkért lásd: [HDInsight árképzési](https://azure.microsoft.com/pricing/details/hdinsight/).
+   > További információ a csomópontméretekről és a velük járó költségekről: [A HDInsight díjszabása](https://azure.microsoft.com/pricing/details/hdinsight/).
    > 
    > 
    

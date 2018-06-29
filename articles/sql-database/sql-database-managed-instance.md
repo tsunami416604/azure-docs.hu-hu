@@ -10,12 +10,12 @@ ms.custom: DBs & servers
 ms.topic: conceptual
 ms.date: 04/10/2018
 ms.author: bonova
-ms.openlocfilehash: e606b38c626c1a4dd335c40926e89a7cf0cec17a
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
-ms.translationtype: HT
+ms.openlocfilehash: 1dec40871b8842cb5e41d48c759d1f4fa85d7b66
+ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37054653"
+ms.lasthandoff: 06/28/2018
+ms.locfileid: "37082505"
 ---
 # <a name="what-is-a-managed-instance-preview"></a>Mi az a felügyelt példánya (előzetes verzió)?
 
@@ -210,7 +210,7 @@ Felügyelt példány előnyöket nem mindig naprakészen-dátumig a felhőben, a
 - Felügyelt példány nem engedélyezi a teljes fizikai elérési útját adja meg, így az összes megfelelő forgatókönyv támogatott eltérően kell: RESTORE DB nem támogatja a WITH MOVE, hozzon létre DB nem engedélyezi a fizikai elérési útját, TÖMEGES Beszúrás működik a Azure BLOB, csak stb. 
 - Felügyelt példányát támogatja [az Azure AD-alapú hitelesítés](sql-database-aad-authentication.md) felhő alternatívájaként Windows-hitelesítést. 
 - Felügyelt példány automatikusan kezeli a XTP fájlcsoport és a fájlok a memórián belüli online Tranzakciófeldolgozási objektumokat tartalmazó adatbázisok
-- Felügyelt példányát támogatja az SQL Server Integration Services (SSIS) és a gazdagép SSIS-katalógus (SSISDB) tárolja SSIS-csomagok is, de a végrehajtás az olyan felügyelt Azure-SSIS integrációs futásidejű (IR) Azure Data Factory (ADF) című [létrehozása Azure-SSIS-IR az ADF](https://docs.microsoft.com/en-us/azure/data-factory/create-azure-ssis-integration-runtime).
+- Felügyelt példányát támogatja az SQL Server Integration Services (SSIS) és a gazdagép SSIS-katalógus (SSISDB) tárolja SSIS-csomagok is, de a végrehajtás az olyan felügyelt Azure-SSIS integrációs futásidejű (IR) Azure Data Factory (ADF) című [létrehozása Azure-SSIS-IR az ADF](https://docs.microsoft.com/en-us/azure/data-factory/create-azure-ssis-integration-runtime). Hasonlítsa össze az SQL-adatbázist és példányt felügyelt SSIS funkciókkal, lásd: [hasonlítsa össze az SQL-adatbázis és a felügyelt példány (előzetes verzió)](../data-factory/create-azure-ssis-integration-runtime.md#compare-sql-database-and-managed-instance-preview).
 
 ### <a name="managed-instance-administration-features"></a>Felügyelt példány felügyeleti funkciók  
 
