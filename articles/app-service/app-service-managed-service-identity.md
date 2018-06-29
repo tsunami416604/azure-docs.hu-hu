@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 06/25/2018
 ms.author: mahender
-ms.openlocfilehash: e6aa0d477f94cd5ab087beface65e3a28e5094f5
-ms.sourcegitcommit: 828d8ef0ec47767d251355c2002ade13d1c162af
+ms.openlocfilehash: 8305a447ac75cf4c72a332910c9c4c90c1d8eac6
+ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36936972"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37061437"
 ---
 # <a name="how-to-use-azure-managed-service-identity-in-app-service-and-azure-functions"></a>Azure által felügyelt Szolgáltatásidentitás App Service és az Azure Functions használatával
 
@@ -228,7 +228,7 @@ Content-Type: application/json
 ```
 
 ### <a name="code-examples"></a>Kódpéldák
-A kérelem végrehajtásához a C#:
+<a name="token-csharp"></a>A kérelem végrehajtásához a C#:
 ```csharp
 public static async Task<HttpResponseMessage> GetToken(string resource, string apiversion)  {
     HttpClient client = new HttpClient();
@@ -239,7 +239,7 @@ public static async Task<HttpResponseMessage> GetToken(string resource, string a
 > [!TIP]
 > .NET-nyelveket is használhatja [Microsoft.Azure.Services.AppAuthentication](#asal) helyett ez létrehozásával kérelem magát.
 
-A node.js:
+<a name="token-js"></a>A node.js:
 ```javascript
 const rp = require('request-promise');
 const getToken = function(resource, apiver, cb) {
@@ -254,7 +254,7 @@ const getToken = function(resource, apiver, cb) {
 }
 ```
 
-A PowerShell:
+<a name="token-powershell"></a>A PowerShell:
 ```powershell
 $apiVersion = "2017-09-01"
 $resourceURI = "https://<AAD-resource-URI-for-resource-to-obtain-token>"

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 05/11/2018
 ms.author: genli
-ms.openlocfilehash: 038a9be813367d130dd8bb02b24879d1e2e573b5
-ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
+ms.openlocfilehash: 2d7ee7050f430efea64d9988adf4f5a603128de2
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/11/2018
-ms.locfileid: "34072249"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37053449"
 ---
 # <a name="prepare-a-windows-vhd-or-vhdx-to-upload-to-azure"></a>Az Azure-bA feltöltendő Windows VHD vagy VHDX előkészítése
 A Windows virtuális gépek (VM) a helyszíni Microsoft Azure feltöltés előtt elő kell készítenie a virtuális merevlemez (VHD- vagy VHDX-). Azure csak 1. generációs virtuális gépek, amelyek a VHD formátumban és a rögzített méretű lemez támogatja. A VHD számára engedélyezett maximális mérete 1,023 GB. 1 virtuális gép a vhdx-fájl a fájlrendszerben VHD-t és a rögzített méretű dinamikusan bővülő lemezek generáció válthat. De nem módosíthatja a virtuális gép generációját. További információkért lásd: [érdemes létrehozni egy 1 vagy 2. generációs virtuális gép a Hyper-V](https://technet.microsoft.com/windows-server-docs/compute/hyper-v/plan/should-i-create-a-generation-1-or-2-virtual-machine-in-hyper-v).
@@ -367,7 +367,7 @@ Ha ehelyett szeretné csak egy virtuális gép létrehozása egy lemezről, ninc
 Speciális lemez a virtuális gépek létrehozásával kapcsolatos további információkért lásd:
 
 - [Virtuális gép létrehozása egy speciális lemezről](create-vm-specialized.md)
-- [Hozzon létre egy virtuális Gépet egy speciális VHD lemezről](https://azure.microsoft.com/resources/templates/201-vm-specialized-vhd/)
+- [Hozzon létre egy virtuális Gépet egy speciális VHD lemezről](https://review.docs.microsoft.com/en-us/azure/virtual-machines/windows/create-vm-specialized-portal?branch=master)
 
 Ha általános lemezkép létrehozásához szüksége futtatni a Sysprep programot. További információ a Sysprep: [hogyan használja a Sysprep: Bevezetés](http://technet.microsoft.com/library/bb457073.aspx). 
 
@@ -381,7 +381,7 @@ Nem minden szerepkör vagy a Windows-alapú számítógépen telepített alkalma
 1. Jelentkezzen be a Windows virtuális gép.
 2. Futtatás **parancssor** rendszergazdaként. 
 3. Módosítsa a könyvtárat: **%windir%\system32\sysprep**, majd futtassa a **sysprep.exe**.
-3. Az a **rendszer-előkészítő eszköz** párbeszédpanelen jelölje ki **adja meg a rendszer Out-of-Box élmény (OOBE)**, és győződjön meg arról, hogy a **Generalize** jelölőnégyzet be van jelölve.
+3. A **Rendszer-előkészítő eszköz** párbeszédpanelen válassza **A kezdőélmény indítása** lehetőséget, és győződjön meg róla, hogy be van-e jelölve az **Általánosítás** jelölőnégyzet.
 
     ![Rendszer-előkészítő eszköz](media/prepare-for-upload-vhd-image/syspre.png)
 4. A **leállítási beállítások**, jelölje be **leállítási**.

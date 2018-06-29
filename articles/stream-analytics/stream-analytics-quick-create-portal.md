@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.service: stream-analytics
 ms.custom: mvc
 manager: kfile
-ms.openlocfilehash: 1e7245afe36d348b1cbd955900e34876b8e34511
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 1059a401382820b4e5d3fd4b010d400bb6113926
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34651726"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37031430"
 ---
 # <a name="quickstart-create-a-stream-analytics-job-by-using-the-azure-portal"></a>Útmutató: Stream Analytics-feladat létrehozása az Azure Portal használatával
 
@@ -40,7 +40,7 @@ A Stream Analytics-feladat létrehozása előtt érdemes beállítani azokat az 
      "hmdt": 44
    }
    ```
-2. Jelentkezzen be az Azure portálra.  
+2. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).  
 
 3. Az Azure Portal bal felső sarkában válassza az **Erőforrás létrehozása** > **Storage** > **Tárfiók** lehetőséget. A Tárfiók feladatának paneljén a **Név** mezőbe írja be az asaquickstartstorage sztringet, a **Hely** mezőbe az USA 2. nyugati régiója sztringet, az **Erőforráscsoport** mezőbe pedig az asaquickstart-resourcegroup sztringet (a jobb teljesítmény érdekében a tárfiókot és a streamelt feladatot érdemes ugyanabban az erőforráscsoportban tárolni). A fennmaradó beállításokat alapértelmezett értéken hagyhatja.  
 
@@ -116,7 +116,7 @@ Ebben a szakaszban beállítjuk a blobtárolót a Stream Analytics-feladat bemen
    |---------|---------|---------|
    |Kimeneti alias |   BlobOutput   |   Adja meg a feladat kimenetének azonosító nevét. |
    |Előfizetés  |  \<Az Ön előfizetése\>  |  Válassza ki azt az Azure-előfizetést, amelyhez a létrehozott tárfiók tartozik. A tárfiók tartozhat ugyanahhoz az előfizetéshez, de akár egy másik előfizetéshez is. A példa azt feltételezi, hogy a tárfiók ugyanahhoz az előfizetéshez tartozik. |
-   |Tárfiók |  myasastorageaccount |   Válassza ki vagy adja meg a tárfiók nevét. Ha a tárfiókok ugyanahhoz az előfizetéshez tartoznak, a rendszer automatikusan észleli a nevüket.       |
+   |Tárfiók |  asaquickstartstorage |   Válassza ki vagy adja meg a tárfiók nevét. Ha a tárfiókok ugyanahhoz az előfizetéshez tartoznak, a rendszer automatikusan észleli a nevüket.       |
    |Tároló |   container1  |  Válassza ki a tárfiókjában létrehozott meglévő tárolót.   |
    |Elérésiút-minta |   output  |  Adjon meg egy nevet, amely a kimenet elérési útjaként szolgál a meglévő tárolóban.   |
 

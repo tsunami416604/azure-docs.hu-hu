@@ -14,20 +14,20 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 6a3401f620f7dfe8b42bad9ed1a3981325b2ce1e
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: f33ff3f588dac49e295a5aa96d71557d32407e46
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34620479"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37046986"
 ---
 # <a name="datasets-in-azure-data-factory"></a>Az Azure Data Factory adathalmazok
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [1. verzió – Általánosan elérhető](data-factory-create-datasets.md)
-> * [2. verzió – Előzetes verzió](../concepts-datasets-linked-services.md)
+> * [1-es verziójával](data-factory-create-datasets.md)
+> * [(Az aktuális verzió) 2-es verzió](../concepts-datasets-linked-services.md)
 
 > [!NOTE]
-> Ez a cikk a Data Factory általánosan elérhető 1. verziójára vonatkozik. Lásd a 2-es verziójának a Data Factory szolgáltatásnak, amely jelenleg előzetes verzióban érhető, használatakor [V2 adathalmazok](../concepts-datasets-linked-services.md).
+> Ez a cikk a Data Factory 1 verziójára vonatkozik. A Data Factory szolgáltatásnak aktuális verziójának használatakor lásd [V2 adathalmazok](../concepts-datasets-linked-services.md).
 
 Ez a cikk ismerteti, milyen adatkészletek, hogyan vannak definiálva JSON formátumú, és hogy ezek hogyan használhatók az Azure Data Factory folyamatok. Az adatkészlet JSON-definícióban az egyes szakaszokon (például struktúra, rendelkezésre állási és házirend) kapcsolatos adatokat biztosít. A cikk példákat is tartalmaz az a **eltolás**, **anchorDateTime**, és **stílus** tulajdonságok az adatkészlet JSON-definícióban.
 
@@ -197,7 +197,7 @@ Minden egyes oszlopának a struktúra tartalmaz a következő tulajdonságokkal:
 | --- | --- | --- |
 | név |Az oszlop neve. |Igen |
 | type |Az oszlop adattípusát.  |Nem |
-| Kulturális környezet |. A NET-alapú kulturális környezet lehet használni, ha a típus a .NET-típus: `Datetime` vagy `Datetimeoffset`. Az alapértelmezett érték `en-us`. |Nem |
+| kulturális környezet |. A NET-alapú kulturális környezet lehet használni, ha a típus a .NET-típus: `Datetime` vagy `Datetimeoffset`. Az alapértelmezett érték `en-us`. |Nem |
 | Formátumban |Formázó karakterlánc kell használni, ha a típus a .NET-típus: `Datetime` vagy `Datetimeoffset`. |Nem |
 
 A következő irányelvek segítségével meghatározhatja, hogy mikor struktúra információval, és milyen ahhoz, hogy szerepeljen a **struktúra** szakasz.
@@ -241,7 +241,7 @@ A következő táblázat ismerteti a rendelkezésre állással kapcsolatos szaka
 | frequency |Megadja a dataset szelet üzemi időegységét.<br/><br/><b>Támogatott gyakoriság</b>: perc, óra, nap, hét, hónap |Igen |NA |
 | interval |Megadja a gyakoriság egy szorzóval.<br/><br/>"X időköz" határozza meg, milyen gyakran a szelet jön létre. Például, ha a adatkészlet kell szeletelhetők óránként, beállíthatja <b>gyakoriság</b> való <b>óra</b>, és <b>időköz</b> való <b>1</b>.<br/><br/>Vegye figyelembe, hogy ha a megadott **gyakorisága** , **perc**, nem lehet kisebb, mint 15 kell beállítani az időközt. |Igen |NA |
 | stílus |Meghatározza, hogy a szelet akkor a rendszer a kezdő vagy intervallum végén.<ul><li>StartOfInterval</li><li>EndOfInterval</li></ul>Ha **gyakorisága** értéke **hónap**, és **stílus** értékre van állítva **EndOfInterval**, a szelet hónap utolsó napján jön létre. Ha **stílus** értéke **StartOfInterval**, a szelet hónap első napján jön létre.<br/><br/>Ha **gyakoriság** értéke **nap**, és **stílus** értéke **EndOfInterval**, a szelet jön létre az elmúlt órában a nap.<br/><br/>Ha **gyakorisága** értéke **óra**, és **stílus** értéke **EndOfInterval**, a szelet keletkezik az óra. Például a du. 1-2 PM időszak adatszelethez, a szelet hozzák 2 du. |Nem |EndOfInterval |
-| anchorDateTime |Az ütemező által használt adatkészlet szelet határok számítási időben abszolút helyzet határozza meg. <br/><br/>Vegye figyelembe, hogy ha a propoerty dátum részeit, amelyek részletesebben, mint a megadott gyakorisággal, a részletesebb részek figyelmen kívül lesznek hagyva. Például ha a **időköz** van **óránkénti** (gyakoriság: óra és időköz: 1), és a **anchorDateTime** tartalmaz **percet és másodpercet**, majd a percet és másodpercet részeit **anchorDateTime** figyelmen kívül lesznek hagyva. |Nem |01/01/0001 |
+| anchorDateTime |Az ütemező által használt adatkészlet szelet határok számítási időben abszolút helyzet határozza meg. <br/><br/>Vegye figyelembe, hogy ha a propoerty dátum részeit, amelyek részletesebben, mint a megadott gyakorisággal, a részletesebb részek figyelmen kívül lesznek hagyva. Például ha a **időköz** van **óránkénti** (gyakoriság: óra és időköz: 1), és a **anchorDateTime** tartalmaz **percet és másodpercet**, akkor a percet és másodpercet részeit **anchorDateTime** figyelmen kívül lesznek hagyva. |Nem |01/01/0001 |
 | offset |TimeSpan érték, amely a kezdő és a záró összes adatkészlet szeletek vette. <br/><br/>Ne feledje, ha mindkét **anchorDateTime** és **eltolás** van adva, a kombinált shift eredménye. |Nem |NA |
 
 ### <a name="offset-example"></a>az eltolási – példa
@@ -322,7 +322,7 @@ Kivéve, ha a Data Factory hozzák alatt álló adatkészlet, azt kell megjelöl
 | Name (Név) | Leírás | Szükséges | Alapértelmezett érték |
 | --- | --- | --- | --- |
 | dataDelay |A külső adatokat az adott szelet rendelkezésre állásának az ellenőrzését késleltetési idő. Például egy óránkénti ellenőrzést késleltetheti a beállítás használatával.<br/><br/>A beállítás csak a jelenlegi időpont vonatkozik.  Például ha 1:00 PM azonnal, és az értéke 10 perc, az érvényesítési kezdődik, 1:10 óra.<br/><br/>Vegye figyelembe, hogy ez a beállítás nincs hatással szeletek a múltban. A szeletek **szelet befejezésének** + **dataDelay** < **most** dolgoznak fel késedelem nélkül.<br/><br/>Időpontokban nagyobb, mint 23:59 óra kell használatával adhatók meg a `day.hours:minutes:seconds` formátumban. Például adja meg a 24 órát, ne használja 24:00:00. Ehelyett használjon 1.00:00:00. Ha 24:00:00 használja, akkor a rendszer 24 napos (24.00:00:00). 1 nap és 4 óra adja meg 1:04:00:00. |Nem |0 |
-| RetryInterval |A várakozási idő hiba és a következő kísérlet között. A beállítás jelenlegi idő vonatkozik. Ha az előző sikertelen, a következő kísérlet után van-e a **retryInterval** időszak. <br/><br/>Ha 1:00 PM most, az első lépések az első próbálkozás. Ha az első ellenőrzési ellenőrzés időtartam 1 perc és a művelet sikertelen volt, a következő újrapróbálkozási jelenleg 1:00 + 1 perc (időtartam) + 1 perces (újrapróbálkozási időköz) = 1:02 PM. <br/><br/>A múltban szeletek nincs késleltetés. Az újrapróbálkozási azonnal történik. |Nem |00:01:00 (1 perc) |
+| retryInterval |A várakozási idő hiba és a következő kísérlet között. A beállítás jelenlegi idő vonatkozik. Ha az előző sikertelen, a következő kísérlet után van-e a **retryInterval** időszak. <br/><br/>Ha 1:00 PM most, az első lépések az első próbálkozás. Ha az első ellenőrzési ellenőrzés időtartam 1 perc és a művelet sikertelen volt, a következő újrapróbálkozási jelenleg 1:00 + 1 perc (időtartam) + 1 perces (újrapróbálkozási időköz) = 1:02 PM. <br/><br/>A múltban szeletek nincs késleltetés. Az újrapróbálkozási azonnal történik. |Nem |00:01:00 (1 perc) |
 | retryTimeout |Az egyes újrapróbálkozások időkorlátját.<br/><br/>Ha ez a tulajdonság 10 percre van beállítva, az érvényesítési 10 percen belül kell végrehajtani. Ha az érvényesítés végrehajtásához 10 percnél hosszabb ideig tart, az ismételt próbálkozás túllépi az időkorlátot.<br/><br/>Ha az érvényesítés időkorlát összes kísérleteit, a szelet van megjelölve, **időtúllépésbe került**. |Nem |00:10:00 (10 perc) |
 | maximumRetry |A száma a rendelkezésre állási, a külső adatok kereséséhez. A megengedett maximális érték: 10. |Nem |3 |
 

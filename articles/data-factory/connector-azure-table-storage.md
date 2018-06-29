@@ -11,24 +11,21 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 02/07/2018
+ms.date: 06/14/2018
 ms.author: jingwang
-ms.openlocfilehash: 3f6add6691b0e1f43d70399493fa6bf8db8f3833
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 24954cfc128834313bf13a1917e67d5c1812cf66
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34617178"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37058921"
 ---
 # <a name="copy-data-to-and-from-azure-table-storage-by-using-azure-data-factory"></a>Adatok másolása és az Azure Table storage Azure Data Factory használatával
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [1. verzió – Általánosan elérhető](v1/data-factory-azure-table-connector.md)
-> * [2. verzió – Előzetes verzió](connector-azure-table-storage.md)
+> * [1-es verziójával](v1/data-factory-azure-table-connector.md)
+> * [Aktuális verzió](connector-azure-table-storage.md)
 
 Ez a cikk ismerteti a másolási tevékenység használata az Azure Data Factory és az Azure Table storage-adatok másolása. Buildekről nyújtanak a [másolási tevékenység áttekintése](copy-activity-overview.md) cikket, amely megadja a másolási tevékenység általános áttekintést.
-
-> [!NOTE]
-> Ez a cikk a Data Factory 2. verziójára vonatkozik, amely jelenleg előzetes verzióban érhető el. Ha a Data Factory, amely általában a rendelkezésre álló, 1 verzióját használja [tábla tárolási összekötőt a 1-es verziójú](v1/data-factory-azure-table-connector.md).
 
 ## <a name="supported-capabilities"></a>Támogatott képességei
 
@@ -81,8 +78,8 @@ A tárolás társított szolgáltatásának a közös hozzáférésű jogosults�
 
 A közös hozzáférésű jogosultságkód a tárfiókban lévő erőforrások delegált hozzáférést biztosít. Segítségével azt adja meg egy ügyfél korlátozott engedélyekkel a tárfiókban lévő objektumok egy meghatározott ideig, és meghatározott engedélyekkel vannak beállítva. A tárelérési kulcsok megosztásához nem rendelkezik. A közös hozzáférésű jogosultságkódot URI, amely a lekérdezési paraméterek magában foglalja a hitelesített hozzáférést a tároló egyik erőforrásához szükséges összes adatot. A közös hozzáférésű jogosultságkódot tárolási erőforrások eléréséhez az ügyfél csak a megfelelő konstruktort vagy metódust átadása az a közös hozzáférésű jogosultságkódot van szüksége. Megosztott hozzáférési aláírásokkal kapcsolatos további információkért lásd: [Shared access signatures: megérteni a megosztott hozzáférési aláírást modell](../storage/common/storage-dotnet-shared-access-signature-part-1.md).
 
-> [!IMPORTANT]
-> Adat-előállító mostantól támogatja a csak megosztott hozzáférési aláírásokkal, de nem a fiók megosztott hozzáférési aláírásokkal. További információ a kétféle típusú, és hogyan készítse őket: [közös hozzáférésű jogosultságkód típusú](../storage/common/storage-dotnet-shared-access-signature-part-1.md#types-of-shared-access-signatures). A közös hozzáférésű az Azure portálon vagy az Azure Tártallózó előállított aláírás URL-cím egy fiók közös hozzáférésű jogosultságkódot, amely nem támogatott.
+> [!NOTE]
+> Adat-előállító mostantól támogatja a megosztott hozzáférési aláírásokkal és a fiók megosztott hozzáférési aláírásokkal. További információ a kétféle típusú, és hogyan készítse őket: [közös hozzáférésű jogosultságkód típusú](../storage/common/storage-dotnet-shared-access-signature-part-1.md#types-of-shared-access-signatures). 
 
 > [!TIP]
 > A szolgáltatás közös hozzáférésű jogosultságkód a tárfiók létrehozásához a következő PowerShell-parancsokat hajthat végre. Cserélje le a helyőrzőket, és adja meg a szükséges engedéllyel.
@@ -204,7 +201,7 @@ Adatok másolása az Azure Table, állítsa be a fogadó típusa a másolási te
 | azureTablePartitionKeyName |Adja meg az oszlop, amelynek értékeket fogja használni, mint partíciókulcsok nevét. Ha nincs megadva, a partíciós kulcs "AzureTableDefaultPartitionKeyValue" lesz. |Nem |
 | azureTableRowKeyName |Adja meg az az oszlop, amelynek oszlop értékeit a sor kulcsaként vannak használatban. Ha nincs megadva, minden egyes sorára használjon a GUID Azonosítót. |Nem |
 | azureTableInsertType |Adatok beszúrása Azure Table mód. Ez a tulajdonság szabja meg, hogy rendelkeznek-e a meglévő sorokat a táblában az egyező partíció-és sorkulcsok cseréje vagy egyesített értékükre. <br/><br/>Két érték engedélyezett **egyesítési** (alapértelmezett) és **cserélje le**. <br/><br> Ez a beállítás a táblázatok szintjén nem vonatkozik a sor szintjén. Sem a lehetőség törli a sorokat a kimeneti táblához, amely nem szerepel a bemeneti. Című témakörben olvashat a lemezegyesítési és -csere beállítások működése, [entitás beszúrása vagy egyesítési](https://msdn.microsoft.com/library/azure/hh452241.aspx) és [beszúrása vagy entitás cseréje](https://msdn.microsoft.com/library/azure/hh452242.aspx). |Nem |
-| WriteBatchSize |Szúr be Azure Table adatokat, amikor writeBatchSize vagy writeBatchTimeout találati.<br/>Megengedett értékek: egész szám (sorok száma). |Nem (alapértelmezett érték 10 000) |
+| writeBatchSize |Szúr be Azure Table adatokat, amikor writeBatchSize vagy writeBatchTimeout találati.<br/>Megengedett értékek: egész szám (sorok száma). |Nem (alapértelmezett érték 10 000) |
 | writeBatchTimeout |Szúr be Azure Table adatokat, amikor writeBatchSize vagy writeBatchTimeout találati.<br/>Megengedett értékek: timespan. Például "00: 20:00" (20 perc). |Nem (alapértelmezett érték 90 másodperc, a tárolási ügyfél alapértelmezett időtúllépés) |
 
 **Példa**
@@ -271,13 +268,13 @@ Amikor áthelyezni és az Azure tábla, a következő [megfeleltetéseket határ
 | Az Azure Table-adattípus | Data Factory ideiglenes adattípus | Részletek |
 |:--- |:--- |:--- |
 | Edm.Binary |Byte] |Bájttömb legfeljebb 64 KB. |
-| Edm.Boolean |logikai érték |Logikai érték. |
+| Edm.Boolean |Logikai érték |Logikai érték. |
 | Edm.DateTime |DateTime |Egy 64 bites érték kifejezett, egyezményes világidő (UTC). A támogatott dátum és idő tartomány kezdete éjfél. január 1, i. 1601. (SZ) (UTC). A tartomány véget ér. December 31 9999. |
 | Edm.Double |double |Egy 64 bites lebegőpontos értéket. |
 | Edm.Guid |GUID |A 128 bites globálisan egyedi azonosítóját. |
 | Edm.Int32 |Int32 |Egy 32 bites egész számot. |
 | Edm.Int64 |Int64 |Egy 64 bites egész számot. |
-| Edm.String |Karakterlánc |Az UTF-16 kódolású érték. Karakterlánc-értékek legfeljebb 64 KB lehet. |
+| Edm.String |Sztring |Az UTF-16 kódolású érték. Karakterlánc-értékek legfeljebb 64 KB lehet. |
 
 ## <a name="next-steps"></a>További lépések
 Források és mosdók adat-előállítóban másolási tevékenység által támogatott adattárolókhoz listájáért lásd: [adattárolókhoz támogatott](copy-activity-overview.md#supported-data-stores-and-formats).

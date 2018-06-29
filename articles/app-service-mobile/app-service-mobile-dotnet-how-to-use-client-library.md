@@ -14,18 +14,18 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 01/04/2017
 ms.author: crdun
-ms.openlocfilehash: 10ce9058fca0ec56640e9bedabcc82683046fe9f
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: f0f28d4b6573e4e6fecf0e6dd84814d4fc66cd60
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34598453"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37050496"
 ---
 # <a name="how-to-use-the-managed-client-for-azure-mobile-apps"></a>A felügyelt ügyfelek használata az Azure Mobile Apps-alkalmazásokhoz
 [!INCLUDE [app-service-mobile-selector-client-library](../../includes/app-service-mobile-selector-client-library.md)]
 
 ## <a name="overview"></a>Áttekintés
-Ez az útmutató bemutatja, hogyan hajthat végre a felügyelt ügyféloldali kódtár használata Azure App Service Mobile Apps for Windows és a Xamarin-alkalmazásokba gyakori forgatókönyvek. Ha most ismerkedik a Mobile Apps, fontolja meg először befejezése a [Azure Mobile Apps gyors üzembe helyezés] [ 1] oktatóanyag. Ez az útmutató azt figyelmet az ügyféloldali felügyelt SDK-val. További információt a kiszolgálóoldali SDK-k a Mobile Apps, dokumentációjában a [.NET SDK-kiszolgáló] [ 2] vagy a [Node.js Server SDK][3].
+Ez az útmutató bemutatja, hogyan hajthat végre a felügyelt ügyféloldali kódtár használata Azure App Service Mobile Apps for Windows és a Xamarin-alkalmazásokba gyakori forgatókönyvek. Ha most ismerkedik a Mobile Apps, fontolja meg először befejezése a [Azure Mobile Apps gyors üzembe helyezés] [ 1] oktatóanyag. Ez az útmutató azt figyelmet az ügyféloldali felügyelt SDK-val. További információt a kiszolgálóoldali SDK-k a Mobile Apps, dokumentációjában a [.NET SDK-kiszolgáló] [ 2] vagy a [Node.js Server SDK] [ 3].
 
 ## <a name="reference-documentation"></a>Segédanyagok
 Az ügyfél SDK dokumentációját a következő helyen található: [Azure Mobile Apps .NET ügyfél hivatkozási][4].
@@ -36,7 +36,7 @@ A .NET platformon a következő platformokat támogatja:
 
 * Xamarin Android API 19 kiadását – 24 (KitKat nugát keresztül)
 * Xamarin iOS kiadását iOS 8.0-s és újabb verziók
-* Az univerzális Windows Platform
+* Univerzális Windows-platform
 * Windows Phone 8.1
 * Windows Phone 8.0 kivételével a Silverlight alkalmazások részére
 
@@ -520,7 +520,7 @@ Kapcsolat nélküli táblák egy helyi SQLite tároló a tároló adatokat haszn
    * **Windows 8.1 futásidejű:** telepítése [a Windows 8.1 SQLite][3].
    * **Windows Phone 8.1:** telepítése [a Windows Phone 8.1 SQLite][4].
    * **Az univerzális Windows Platform** telepítése [az univerzális Windows SQLite][5].
-3. (Nem kötelező). Windows-eszközökhöz, kattintson a **hivatkozások** > **hivatkozás hozzáadása...** , bontsa ki a **Windows** mappa > **bővítmények**, engedélyeznie kell a megfelelő **SQLite for Windows** SDK, valamint a **Visual C++ 2013 futásidejű Windows** SDK.
+3. (Nem kötelező). Windows-eszközökhöz, kattintson a **hivatkozások** > **hivatkozás hozzáadása...** , bontsa ki a **Windows** mappa > **bővítmények**, engedélyeznie kell a megfelelő **SQLite for Windows** SDK, valamint a **Windows visual C++ 2013 futásidejű** SDK.
     Az SQLite SDK nevek függően eltérőek az egyes Windows-platformra.
 
 Egy tábla hivatkozás létrehozása előtt elő kell készíteni a helyi tárolójába:
@@ -881,7 +881,7 @@ private async System.Threading.Tasks.Task Authenticate()
 
 Ha eltérő Facebook identitásszolgáltató használ, módosítsa [MobileServiceAuthenticationProvider] a szolgáltató értékre.
 
-Egy kiszolgáló folyamatában Azure App Service szolgáltatás az OAuth hitelesítési folyamatot megjelenítése a bejelentkezési lapon a kiválasztott szolgáltató.  Miután az identity provider értéket ad eredményül, Azure App Service létrehoz egy App Service hitelesítés jogkivonatot. A [LoginAsync] metódus értéket ad vissza egy [MobileServiceUser], amely biztosítja, hogy mind a [Felhasználói azonosítóját] a hitelesített felhasználó és a [MobileServiceAuthenticationToken], egy JSON webes jogkivonatot (JWT). Ez a token gyorsítótárazható, és újra felhasználható, amíg le nem jár. További információkért lásd: [a hitelesítési jogkivonat gyorsítótárazás](#caching).
+Egy kiszolgáló folyamatában Azure App Service szolgáltatás az OAuth hitelesítési folyamatot megjelenítése a bejelentkezési lapon a kiválasztott szolgáltató.  Miután az identity provider értéket ad eredményül, Azure App Service létrehoz egy App Service hitelesítés jogkivonatot. A [LoginAsync] metódus értéket ad vissza egy [MobileServiceUser], amely biztosítja, hogy mind a [Felhasználói azonosítóját] a hitelesített felhasználó és a [MobileServiceAuthenticationToken], mint egy JSON webes jogkivonatot (JWT). Ez a token gyorsítótárazható, és újra felhasználható, amíg le nem jár. További információkért lásd: [a hitelesítési jogkivonat gyorsítótárazás](#caching).
 
 ### <a name="caching"></a>A hitelesítési jogkivonat gyorsítótárazása
 Néhány esetben a bejelentkezési metódus hívása elkerülhető az első sikeres hitelesítést követően a hitelesítési jogkivonat-szolgáltatójáról való elhelyezésével.  Microsoft Store és UWP-alkalmazások használhatják [PasswordVault] a következőképpen gyorsítótárában, miután egy sikeres bejelentkezés, a jelenlegi hitelesítési jogkivonat:
@@ -1126,7 +1126,7 @@ public class MyHandler : DelegatingHandler
 [EnableQueryAttribute]: https://msdn.microsoft.com/library/system.web.http.odata.enablequeryattribute.aspx
 [Guid.NewGuid]: https://msdn.microsoft.com/library/system.guid.newguid(v=vs.110).aspx
 [ISupportIncrementalLoading]: http://msdn.microsoft.com/library/windows/apps/Hh701916.aspx
-[A Windows fejlesztői központ]: https://dev.windows.com/en-us/overview
+[A Windows fejlesztői központ]: https://dev.windows.com/overview
 [DelegatingHandler]: https://msdn.microsoft.com/library/system.net.http.delegatinghandler(v=vs.110).aspx
 [A Windows Live SDK]: https://msdn.microsoft.com/library/bb404787.aspx
 [PasswordVault]: http://msdn.microsoft.com/library/windows/apps/windows.security.credentials.passwordvault.aspx

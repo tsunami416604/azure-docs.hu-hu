@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 06/07/2018
 ms.author: ellacroi
-ms.openlocfilehash: 11a4fe4cd7b4b08b4468e08bba754518d27abb99
-ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
+ms.openlocfilehash: f39392518f89ac51afd9a18fe59bcef46840478d
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/21/2018
-ms.locfileid: "36309538"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37054174"
 ---
 # <a name="grow-your-business-with-appsource"></a>Cége AppSource  
 AppSource használja, ha található, próbálja meg, és üzleti szoftverek (SaaS) szolgáltatás üzleti felhasználók megszólítása, alkalmazások és szolgáltatások végrehajtása a meghajtó üzleti eredmények számítanak, és csökkentse idő érték.  
@@ -67,7 +67,7 @@ A alkalmazás-közzététel és ügyfél-központú igény szerint és a partner
 Az alábbi ellenőrzőlista marketing ajánlott eljárások és közzé kell tenni a AppSource ajánlatok létrehozásakor megfontolandó erőforrásokat tartalmazza:  
 *   **Vegye figyelembe a Microsoft Trademark & Brand irányelveket.**  
     Ha az alkalmazás elnevezésekor és a Microsoft védjegyeiről és a Microsoft-szoftverek, termékek és szolgáltatások, a neveket kövesse a Microsoft Trademark márka útmutatást, valamint termékspecifikus vonatkozó irányelveket.  
-    *   A Microsoft védjegyeiről és branding kapcsolatos további információkért látogasson el a Microsoft Trademark és a márka irányelvek lapon található [www.microsoft.com/legal/intellectualproperty/trademarks/usage/general.aspx](https://www.microsoft.com/legal/intellectualproperty/trademarks/usage/general.aspx).  
+    *   A Microsoft védjegyeiről és branding kapcsolatos további információkért látogasson el a Microsoft Trademark és a márka irányelvek lapon található [www.microsoft.com/legal/intellectualproperty/trademarks/usage/general.aspx](https://www.microsoft.com/en-us/legal/intellectualproperty/trademarks/usage/general.aspx).  
 *   **Ingyenes próbaverziós ajánlat, most tapasztal, get engedélyezze, vagy a meghajtó élményét, az alkalmazás tesztelése.**  
     Üzleti felhasználók szeretne először manuálisan tapasztalhat az alkalmazást.  
 *   **Hozzon létre egy erős értékajánlatához.**  
@@ -104,7 +104,7 @@ Az alábbi táblázatok egyes lépéseinek kitöltésével a ajánlat listaelem 
 
 | Az ajánlat beállítás | Ajánlott eljárások | 
 |:---------------------------------------- |:----------------------------------------------------- |
-| **Name (Név)** | **Az ajánlat elnevezése**<br />Olyan nevet adjon az alkalmazást egy fő döntési. Nevek juttatás alapú sokkal hatékonyabb, mint leíró neveket. Az alkalmazás neve lépjen kapcsolatba a core value-ügyfelek fogadására. Az alkalmazásnak, hogy a keresőmotorok találatai között előrébb is hozzájárulhat a keresési kulcsszavakat beleértve az alkalmazás-cím. Kövesse a Microsoft Trademark márka útmutatást, valamint megfelelő termékspecifikus irányelvek vonatkozásban a Microsoft védjegyeiről és a Microsoft, szoftverek, termékek és szolgáltatások.<ul> <li>A Microsoft védjegyeiről és branding kapcsolatos további információkért látogasson el a Microsoft Trademark és a márka irányelvek lapon található [www.microsoft.com/legal/intellectualproperty/trademarks/usage/general.aspx](https://www.microsoft.com/legal/intellectualproperty/trademarks/usage/general.aspx).</li> </ul> |
+| **Name (Név)** | **Az ajánlat elnevezése**<br />Olyan nevet adjon az alkalmazást egy fő döntési. Nevek juttatás alapú sokkal hatékonyabb, mint leíró neveket. Az alkalmazás neve lépjen kapcsolatba a core value-ügyfelek fogadására. Az alkalmazásnak, hogy a keresőmotorok találatai között előrébb is hozzájárulhat a keresési kulcsszavakat beleértve az alkalmazás-cím. Kövesse a Microsoft Trademark márka útmutatást, valamint megfelelő termékspecifikus irányelvek vonatkozásban a Microsoft védjegyeiről és a Microsoft, szoftverek, termékek és szolgáltatások.<ul> <li>A Microsoft védjegyeiről és branding kapcsolatos további információkért látogasson el a Microsoft Trademark és a márka irányelvek lapon található [www.microsoft.com/legal/intellectualproperty/trademarks/usage/general.aspx](https://www.microsoft.com/en-us/legal/intellectualproperty/trademarks/usage/general.aspx).</li> </ul> |
 
 **Storefront részletei - ajánlat részleteihez**  
 

@@ -10,12 +10,12 @@ ms.custom: DBs & servers
 ms.topic: conceptual
 ms.date: 04/10/2018
 ms.author: bonova
-ms.openlocfilehash: f07ce542c176f4038378d54497d7114109ac5bd3
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
-ms.translationtype: MT
+ms.openlocfilehash: e606b38c626c1a4dd335c40926e89a7cf0cec17a
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36215524"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37054653"
 ---
 # <a name="what-is-a-managed-instance-preview"></a>Mi az a felügyelt példánya (előzetes verzió)?
 
@@ -66,7 +66,7 @@ Az alábbi táblázat néhány tulajdonságok, Transact SQL keresztül érhető 
 |**Biztonsági és megfelelőségi** | **Felügyeleti**|
 |(Virtuális integráció, egyetlen-bérlő szolgáltatás, dedikált számítási és tárolási elkülönített környezet <br>Az átvitel során az adatok titkosítása <br>Az Azure AD-alapú hitelesítés, egyszeri bejelentkezéses támogatás <br>Megfelelőségi szabványoknak megfelelő azonos Azure SQL adatbázis <br>SQL auditing (SQL-naplózás) <br>Fenyegetések észlelése |Az Azure Resource Manager API a szolgáltatás üzembe helyezési és a méretezés automatizálásához <br>Az Azure portál funkció manuális szolgáltatáshoz kiépítés, és a méretezésről <br>Áttelepítési adatszolgáltatás 
 
-![Egyszeri bejelentkezés](./media/sql-database-managed-instance/sso.png) 
+![egyszeri bejelentkezés](./media/sql-database-managed-instance/sso.png) 
 
 ## <a name="vcore-based-purchasing-model-preview"></a>vCore-alapú alapjául szolgáló vásárlási modell (előzetes verzió)
 
@@ -210,7 +210,8 @@ Felügyelt példány előnyöket nem mindig naprakészen-dátumig a felhőben, a
 - Felügyelt példány nem engedélyezi a teljes fizikai elérési útját adja meg, így az összes megfelelő forgatókönyv támogatott eltérően kell: RESTORE DB nem támogatja a WITH MOVE, hozzon létre DB nem engedélyezi a fizikai elérési útját, TÖMEGES Beszúrás működik a Azure BLOB, csak stb. 
 - Felügyelt példányát támogatja [az Azure AD-alapú hitelesítés](sql-database-aad-authentication.md) felhő alternatívájaként Windows-hitelesítést. 
 - Felügyelt példány automatikusan kezeli a XTP fájlcsoport és a fájlok a memórián belüli online Tranzakciófeldolgozási objektumokat tartalmazó adatbázisok
- 
+- Felügyelt példányát támogatja az SQL Server Integration Services (SSIS) és a gazdagép SSIS-katalógus (SSISDB) tárolja SSIS-csomagok is, de a végrehajtás az olyan felügyelt Azure-SSIS integrációs futásidejű (IR) Azure Data Factory (ADF) című [létrehozása Azure-SSIS-IR az ADF](https://docs.microsoft.com/en-us/azure/data-factory/create-azure-ssis-integration-runtime).
+
 ### <a name="managed-instance-administration-features"></a>Felügyelt példány felügyeleti funkciók  
 
 A felügyelt példány lehetővé teszik a rendszergazdának a legtöbb vállalati lényegre összpontosíthat. Sok rendszergazda/DBA rendszertevékenységét nem szükségesek, vagy egyszerű. Például az operációs rendszer / RDBMS telepítési és javítását, dinamikus példány átméretezése és a konfiguráció, a biztonsági mentések, a adatbázis-replikáció (rendszeradatbázisok), a magas rendelkezésre állású konfiguráció és a állapotának és teljesítményének a figyelési adatok konfigurálása adatfolyamokat. 

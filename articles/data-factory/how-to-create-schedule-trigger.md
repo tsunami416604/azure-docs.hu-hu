@@ -13,20 +13,17 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/23/2018
 ms.author: shlo
-ms.openlocfilehash: 5df6633d40a3a361e551d1bea6caa2606a661a52
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: eee68481f4396f8a09241b664d4c3d7d4a4f6567
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34618922"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37054352"
 ---
 # <a name="create-a-trigger-that-runs-a-pipeline-on-a-schedule"></a>Hozzon létre egy eseményindítót, amelyek egy folyamat ütemezés szerint fut
 Ez a cikk tájékoztatást ad azokról az ütemezés eseményindító és létrehozása, indítsa el, és ütemezés eseményindító figyeléséhez szükséges lépésekről. Eseményindítók más típusú, lásd: [csővezeték-végrehajtási és eseményindítók](concepts-pipeline-execution-triggers.md).
 
 Ütemezés eseményindító létrehozása, ha megad egy ütemezés (kezdő dátum, ismétlődési, lejárati dátuma stb.) a eseményindító, és az adatcsatorna társítható. A folyamatok és az eseményindítók között több-a-többhöz kapcsolat áll fenn. Egyetlen folyamatot több eseményindító is indíthat. Egyetlen eseményindító elindíthat több folyamatot is.
-
-> [!NOTE]
-> Ez a cikk az Azure Data Factory 2. verziójára vonatkozik, amely jelenleg előzetes verzióban érhető el. Ha szeretne megtudni az Azure Data Factory 1-es verziójú, amely általánosan elérhető (GA), lásd: [Ismerkedés az Azure Data Factory 1-es verziójú](v1/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md).
 
 A következő szakaszokban különböző módon ütemezés eseményindító létrehozásához szükséges lépéseket. 
 
@@ -249,7 +246,7 @@ Az eseményindító figyelése fut, és a folyamat fut az Azure portálon, lásd
 Az Azure Resource Manager-sablon segítségével hozható létre eseményindító. Részletes útmutatásért lásd: [egy az Azure data factory létrehozása egy Resource Manager-sablon használatával](quickstart-create-data-factory-resource-manager-template.md).  
 
 ## <a name="pass-the-trigger-start-time-to-a-pipeline"></a>Az eseményindító kezdési ideje átadni egy folyamat
-Az Azure Data Factory 1-es verziójú támogatja olvasása vagy a rendszer változók segítségével particionált adatainak írása: **SliceStart**, **SliceEnd**, **WindowStart**, és **WindowEnd**. Az Azure Data Factory 2-es verzióját ez a viselkedés érhet el, hogy egy folyamat paraméterrel. A kezdési ideje és az eseményindítót az ütemezett időpont a feldolgozási sor paraméter értéke legyen. A következő példában az eseményindítót az ütemezett időpontban objektumnak átadott értékként a feldolgozási sor **scheduledRunTime** paraméter:
+Az Azure Data Factory 1-es verziójú támogatja olvasása vagy a rendszer változók segítségével particionált adatainak írása: **SliceStart**, **SliceEnd**, **WindowStart**, és **WindowEnd**. Az Azure Data Factory aktuális verziójában ez a viselkedés a feldolgozási sor paraméter segítségével érhet el. A kezdési ideje és az eseményindítót az ütemezett időpont a feldolgozási sor paraméter értéke legyen. A következő példában az eseményindítót az ütemezett időpontban objektumnak átadott értékként a feldolgozási sor **scheduledRunTime** paraméter:
 
 ```json
 "parameters": {
@@ -328,10 +325,10 @@ Az alábbi táblázat magas szintű áttekintést nyújt az eseményindítóval 
 
 | JSON-tulajdonság | Típus | Szükséges | Alapértelmezett érték | Érvényes értékek | Példa |
 |:--- |:--- |:--- |:--- |:--- |:--- |
-| **startTime** | Karakterlánc | Igen | None | ISO-8601 dátum-idők | `"startTime" : "2013-01-09T09:30:00-08:00"` |
+| **startTime** | Sztring | Igen | None | ISO-8601 dátum-idők | `"startTime" : "2013-01-09T09:30:00-08:00"` |
 | **recurrence** | Objektum | Igen | None | Recurrence objektum | `"recurrence" : { "frequency" : "monthly", "interval" : 1 }` |
 | **interval** | Szám | Nem | 1 | 1–1000 | `"interval":10` |
-| **endTime** | Karakterlánc | Igen | None | Egy jövőbeli időpontot jelölő dátum-idő érték. | `"endTime" : "2013-02-09T09:30:00-08:00"` |
+| **endTime** | Sztring | Igen | None | Egy jövőbeli időpontot jelölő dátum-idő érték. | `"endTime" : "2013-02-09T09:30:00-08:00"` |
 | **schedule** | Objektum | Nem | None | Schedule objektum | `"schedule" : { "minute" : [30], "hour" : [8,17] }` |
 
 ### <a name="starttime-property"></a>startTime tulajdonság

@@ -4,18 +4,18 @@ description: További tudnivalók az Azure IoT peremhálózati futásidejű, és
 author: kgremban
 manager: timlt
 ms.author: kgremban
-ms.date: 02/15/2018
+ms.date: 06/05/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 4c44713d6b58edd3a18b0d20992d31dec7377fa7
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
-ms.translationtype: MT
+ms.openlocfilehash: b7418947c44c62883ef13c4be130458bb9f9ce6c
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34632074"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37030379"
 ---
-# <a name="understand-the-azure-iot-edge-runtime-and-its-architecture---preview"></a>Az Azure IoT peremhálózati futásidejű és az architektúra – előzetes
+# <a name="understand-the-azure-iot-edge-runtime-and-its-architecture"></a>Az Azure IoT peremhálózati futásidejű és az architektúra
 
 Az IoT-Edge futásidejű programok, amelyek telepítve kell lennie ahhoz, hogy a tekinthető IoT peremhálózati eszköz egy eszközön gyűjteménye. IoT peremhálózati futásidejű összetevők együttesen, IoT peremeszközök a peremhálózaton futtatásához szükséges kódot fogadásához engedélyezze, és az eredmények kommunikációhoz. 
 
@@ -90,9 +90,9 @@ A peremhálózati ügynök végrehajtásának megkezdésére, futtassa az azure-
 
 A modulok szótárban egyes elemek modul vonatkozó információkat tartalmaz, és van az ügynök által használt biztonsági a modul életciklus vezérlése. Az ennél is érdekesebb megoldást tulajdonságai vannak: 
 
-* **Settings.Image** – a tároló lemezképet, a peremhálózati ügynök használja a modul elindításához. A peremhálózati ügynök tároló beállításjegyzék hitelesítő adatokkal kell konfigurálni, ha a kép jelszóval védett. A peremhálózati ügynök, használja a következő parancsot: `azure-iot-edge-runtime-ctl.py –configure`
+* **Settings.Image** – a tároló lemezképet, a peremhálózati ügynök használja a modul elindításához. A peremhálózati ügynök tároló beállításjegyzék hitelesítő adatokkal kell konfigurálni, ha a kép jelszóval védett. A peremhálózati ügynök konfigurálásához módosítsa a `config.yaml` fájlt. A Linux használja a következő parancsot: `sudo nano /etc/iotedge/config.yaml`
 * **settings.createOptions** – karakterlánc, amely közvetlenül átadódik a Docker démon a modul tároló indításakor. Ebben a tulajdonságban Docker beállítások hozzáadása lehetővé teszi a Speciális beállítások, például a továbbítási vagy kötetek csatlakoztatása egy modul tárolóba port.  
-* **állapot** – pedig a peremhálózati ügynök helyezi el a modul állapotát. Ez általában értéke *futtató* , a legtöbben szeretné a peremhálózati ügynök azonnal elindítani az eszközön lévő összes modul. Azonban kell megadni egy modul kell állítani, és várja meg, hogy egy modul elindításához a peremhálózati ügynök később bármikor kezdeti állapotában. A peremhálózati ügynök jelent modulokhoz állapotának vissza a jelentett tulajdonságaiban a felhőben. A kívánt tulajdonságot és a jelentett tulajdonság egy kijelző vagy átirányítóban eszköz. A támogatott állapotok az alábbiak:
+* **állapot** – pedig a peremhálózati ügynök helyezi el a modul állapotát. Ez általában értéke *futtató* , a legtöbben szeretné a peremhálózati ügynök azonnal elindítani az eszközön lévő összes modul. Azonban kell megadni egy modul kell állítani, és várja meg, hogy egy modul elindításához a peremhálózati ügynök később bármikor kezdeti állapotában. A peremhálózati ügynök jelent modulokhoz állapotának vissza a jelentett tulajdonságaiban a felhőben. A kívánt tulajdonság és a jelentett tulajdonság közötti különbség azt jelzi, hogy egy átirányítóban eszközt. A támogatott állapotok az alábbiak:
    * Letöltés folyamatban
    * Fut
    * Nem kifogástalan
@@ -114,7 +114,7 @@ Az IoT-Edge ügynök IoT-központ futásidejű választ küld. Lehetséges vála
 
 ### <a name="security"></a>Biztonság
 
-Az IoT-Edge ügynök kritikus szerepet játszik IoT peremhálózati eszköz biztonságát. Például hajtja végre műveletek, például egy modul kép ellenőrzése az újraindítás előtt. Ezek a funkciók általánosan rendelkezésre álló V2 funkciók lesz hozzáadva. 
+Az IoT-Edge ügynök kritikus szerepet játszik IoT peremhálózati eszköz biztonságát. Például hajtja végre műveletek, például egy modul kép ellenőrzése az újraindítás előtt. Ezek a funkciók általánosan rendelkezésre álló lesz hozzáadva. 
 
 <!-- For more information about the Azure IoT Edge security framework, see []. -->
 

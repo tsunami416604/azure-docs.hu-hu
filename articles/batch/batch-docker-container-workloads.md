@@ -10,12 +10,12 @@ ms.topic: article
 ms.workload: na
 ms.date: 06/04/2018
 ms.author: danlep
-ms.openlocfilehash: 4ee8425bb5c3830b029b766aad464df0ffb15f41
-ms.sourcegitcommit: b7290b2cede85db346bb88fe3a5b3b316620808d
+ms.openlocfilehash: 8ef9d5a8e5212f6715769eecf4fde92a6d0b9d44
+ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34801115"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37060517"
 ---
 # <a name="run-container-applications-on-azure-batch"></a>Azure Batch tároló alkalmazások futtatásához
 
@@ -229,7 +229,13 @@ Használja a `ContainerSettings` tulajdonság a feladat osztályok tárolót von
 
 Tároló-lemezképek, a feladatok futtatásakor a [felhő feladat](/dotnet/api/microsoft.azure.batch.cloudtask) és [manager feladat](/dotnet/api/microsoft.azure.batch.cloudjob.jobmanagertask) tároló igénylése. Azonban a [feladat indítása](/dotnet/api/microsoft.azure.batch.starttask), [feladat előkészítése tevékenységet](/dotnet/api/microsoft.azure.batch.cloudjob.jobpreparationtask), és [feladat kiadása tevékenység](/dotnet/api/microsoft.azure.batch.cloudjob.jobreleasetask) nem igényelnek tároló beállításokat (Ez azt jelenti, hogy futtathatók legyenek egy tároló környezeten belül vagy közvetlenül a csomópont).
 
-A tároló beállításait, az alábbi könyvtárak rekurzív konfigurálása során a `AZ_BATCH_NODE_ROOT_DIR` (az Azure Batch könyvtárak a csomóponton gyökér) vannak leképezve a tárolóba, minden tevékenység környezeti változók vannak leképezve a tároló és a feladat parancssori a tároló végrehajtása.
+Az Azure Batch tároló feladat parancssorának egy könyvtárat a tárolóban, nagyon hasonló a kötegelt állít be egy normál (nem-tárolófigyelő) tevékenység környezet hajtja végre:
+
+* Az alábbi könyvtárak rekurzív a `AZ_BATCH_NODE_ROOT_DIR` (az Azure Batch könyvtárak a csomóponton gyökér) vannak leképezve a tárolóba
+* Minden tevékenység környezeti változók van leképezve a tárolóba
+* Az alkalmazás munkakönyvtár értéke rendszeres feladatok, ugyanúgy, hogy használhassa a szolgáltatások, mint a alkalmazáscsomagok és erőforrás-fájlok
+
+Kötegelt változik, az alapértelmezett munkakönyvtár a tárolóban, mert a feladat fut-e a tipikus tároló belépési pont eltérő helyre (például `c:\` Windows tárolóba, alapértelmezés szerint vagy `/` Linux rendszeren). Győződjön meg arról, hogy a feladat parancssori vagy tároló belépési pont határoz meg abszolút elérési utat, ha már nincs konfigurálva ily módon.
 
 Az alábbi Python kódrészletben láthatja az Ubuntu tároló Docker Hub lekért futó alapvető parancssor. Futtatás tároló lehetőségek állnak rendelkezésére további argumentumokat a `docker create` parancsot, amely a feladat futtatása. Itt a `--rm` beállítással eltávolítja a tároló, a feladat befejezése után.
 
@@ -240,7 +246,7 @@ task_container_settings = batch.models.TaskContainerSettings(
     container_run_options='--rm')
 task = batch.models.TaskAddParameter(
     id=task_id,
-    command_line='echo hello',
+    command_line='/bin/echo hello',
     container_settings=task_container_settings
 )
 
@@ -251,7 +257,7 @@ Az alábbi C# példa bemutatja a felhő feladat alapvető tároló beállítása
 ```csharp
 // Simple container task command
 
-string cmdLine = "<my-command-line>";
+string cmdLine = "c:\myApp.exe";
 
 TaskContainerSettings cmdContainerSettings = new TaskContainerSettings (
     imageName: "tensorflow/tensorflow:latest-gpu",

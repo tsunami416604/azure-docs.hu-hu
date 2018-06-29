@@ -14,16 +14,16 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 32d1504571c16f4aa5ea07bab32820ba10b79d60
-ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
+ms.openlocfilehash: 191f8973e85186590a2ba840e473f8fff57a9d94
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 06/27/2018
-ms.locfileid: "37019464"
+ms.locfileid: "37053048"
 ---
 # <a name="azure-data-factory---json-scripting-reference"></a>Az Azure Data Factory - JSON-Parancsprogramokról
 > [!NOTE]
-> Ez a cikk a Data Factory általánosan elérhető 1. verziójára vonatkozik.
+> Ez a cikk a Data Factory 1 verziójára vonatkozik.
 
 
 A cikkben JSON-sémákat és példák meghatározásához az Azure Data Factory entitások (adatcsatorna, tevékenység, adatkészlet és társított szolgáltatás).  
