@@ -6,15 +6,15 @@ ms.service: automation
 ms.component: process-automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 03/16/2018
+ms.date: 06/29/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 94fbc1cf0232eaf48bb0be3c6edc0542142e4681
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 7958042ccb2f55e9b6021f7d804a0dcd090695c5
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34196049"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37109317"
 ---
 # <a name="azure-automation-runbook-types"></a>Azure Automation-runbook típusok
 Azure Automation szolgáltatásbeli számos különböző típusú, amely röviden ismerteti a runbookok támogatja a következő táblázatban.  Az alábbi szakaszokban minden típusát, melynek során vegye figyelembe az egyes esetekben a további információt.
@@ -44,7 +44,7 @@ Azure Automation szolgáltatásbeli számos különböző típusú, amely rövid
 * Nem tekinthetők meg és a PowerShell-kódot, amely a grafikus munkafolyamat által létrehozott közvetlen szerkesztése. Vegye figyelembe, hogy látható kód tevékenységeket hoz létre a kódot.
 
 ## <a name="powershell-runbooks"></a>A PowerShell-forgatókönyvek
-A PowerShell-forgatókönyvek a Windows PowerShell alapulnak.  Közvetlenül szerkesztheti a kódot a runbook a szövegszerkesztő segítségével az Azure portálon.  Is használhatja a kapcsolat nélküli szövegszerkesztőben és [a forgatókönyv importálása](http://msdn.microsoft.com/library/azure/dn643637.aspx) az Azure Automation.
+A PowerShell-forgatókönyvek a Windows PowerShell alapulnak.  Közvetlenül szerkesztheti a kódot a runbook a szövegszerkesztő segítségével az Azure portálon.  Is használhatja a kapcsolat nélküli szövegszerkesztőben és [a forgatókönyv importálása](automation-creating-importing-runbook.md) az Azure Automation.
 
 ### <a name="advantages"></a>Előnyei
 * PowerShell-kód nélkül a további összetett szolgáltatásokkal, PowerShell-munkafolyamat minden komplex logikai megvalósításához. 
@@ -65,7 +65,7 @@ Az alábbiakban a PowerShell-forgatókönyvek jelenlegi ismert problémái.
 * A PowerShell-forgatókönyv sikertelen lehet, ha nagyon nagy mennyiségű adatot írni a kimeneti adatfolyamba egyszerre megkísérli.   Általában oldható meg a probléma által szerint kiírta volna csak a nagyméretű objektumok az használatakor szükséges információkat.  Például helyett szerint kiírta volna hasonlót *Get-Process*, csak a kötelező mezőket a kimenetre küldheti *Get-Process |} Válassza ki a Folyamatnév, CPU*.
 
 ## <a name="powershell-workflow-runbooks"></a>PowerShell-munkafolyamati forgatókönyvek
-PowerShell-munkafolyamati forgatókönyvek alapján szöveg runbookok olyan [Windows PowerShell munkafolyamat](automation-powershell-workflow.md).  Közvetlenül szerkesztheti a kódot a runbook a szövegszerkesztő segítségével az Azure portálon.  Is használhatja a kapcsolat nélküli szövegszerkesztőben és [a forgatókönyv importálása](http://msdn.microsoft.com/library/azure/dn643637.aspx) az Azure Automation.
+PowerShell-munkafolyamati forgatókönyvek alapján szöveg runbookok olyan [Windows PowerShell munkafolyamat](automation-powershell-workflow.md).  Közvetlenül szerkesztheti a kódot a runbook a szövegszerkesztő segítségével az Azure portálon.  Is használhatja a kapcsolat nélküli szövegszerkesztőben és [a forgatókönyv importálása](automation-creating-importing-runbook.md) az Azure Automation.
 
 ### <a name="advantages"></a>Előnyei
 * PowerShell-munkafolyamati kód minden komplex logikai megvalósításához.
@@ -80,7 +80,7 @@ PowerShell-munkafolyamati forgatókönyvek alapján szöveg runbookok olyan [Win
 * A PowerShell-forgatókönyvek csak szerepelhetnek gyermek runbookként a Start-AzureAutomationRunbook parancsmaggal létrehoz egy új feladatot.
 
 ## <a name="python-runbooks"></a>Python-forgatókönyvek
-Python runbookok összeállításához Python 2.  Közvetlenül szerkesztheti a kódot a runbook a szövegszerkesztő segítségével az Azure portálon, vagy használhatja a kapcsolat nélküli szövegszerkesztőben és [a forgatókönyv importálása](http://msdn.microsoft.com/library/azure/dn643637.aspx) az Azure Automation.
+Python runbookok összeállításához Python 2.  Közvetlenül szerkesztheti a kódot a runbook a szövegszerkesztő segítségével az Azure portálon, vagy használhatja a kapcsolat nélküli szövegszerkesztőben és [a forgatókönyv importálása](automation-creating-importing-runbook.md) az Azure Automation.
 
 ### <a name="advantages"></a>Előnyei
 * A Python robusztus szabványos függvénytár használják.

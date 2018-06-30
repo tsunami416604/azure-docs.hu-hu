@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 04/25/2018
 ms.author: danis
-ms.openlocfilehash: eac64a5b456eb040bcb1ac01c3c86dfde0847e57
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 526021ca238be7bc934e639c34d3e49879279a6a
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "33942773"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37127652"
 ---
 # <a name="use-the-azure-custom-script-extension-version-1-with-linux-virtual-machines"></a>Az Azure egyéni parancsfájl kiterjesztése 1-es használata a Linux virtuális gépek
 Az egyéni parancsfájl bővítmény verzió 1 tölti le, és futtatja a parancsfájlokat, az Azure virtuális gépeken. A bővítmény akkor hasznos, a telepítés utáni konfigurációjának, a szoftver telepítése vagy a bármely egyéb konfigurációs /-felügyeleti feladatot. Azure Storage vagy más elérhető internetes helyről töltheti parancsfájlok, vagy megadhatja azokat a bővítmény futásidejű. 
@@ -34,7 +34,7 @@ Egyéni parancsfájl-kiterjesztés két Linux van:
 * 1 - Microsoft.OSTCExtensions.CustomScriptForLinux verzió
 * 2 - Microsoft.Azure.Extensions.CustomScript verzió
 
-Váltson a meglévő és új központi telepítésére az új verziót használja ([Microsoft.Azure.Extensions.CustomScript](\custom-script-linux.md)) helyett. Az új verzió szándék szerint Esőcsepp helyettesíti. Ezért az áttelepítés lehető legkönnyebben módosítása a nevét és verzióját, akkor nem kell módosítania a bővítmény konfigurációja.
+Váltson a meglévő és új központi telepítésére az új verziót használja ([Microsoft.Azure.Extensions.CustomScript](https://docs.microsoft.com/en-us/azure/virtual-machines/extensions/custom-script-linux)) helyett. Az új verzió szándék szerint Esőcsepp helyettesíti. Ezért az áttelepítés lehető legkönnyebben módosítása a nevét és verzióját, akkor nem kell módosítania a bővítmény konfigurációja.
 
  
 
@@ -119,14 +119,14 @@ Legyen bizalmas adatokat a rendszer ezeket az elemeket, és a bővítmények vé
 | Name (Név) | Érték / – példa | Adattípus | 
 | ---- | ---- | ---- |
 | apiVersion | 2015-06-15 | dátum |
-| publisher | Microsoft.OSTCExtensions | karakterlánc |
-| type | CustomScriptForLinux | karakterlánc |
+| publisher | Microsoft.OSTCExtensions | sztring |
+| type | CustomScriptForLinux | sztring |
 | typeHandlerVersion | 1.5 | int |
 | fileUris (például) | https://github.com/MyProject/Archive/MyPythonScript.py | tömb |
-| commandToExecute (például) | Python MyPythonScript.py < saját paraméter1 > | karakterlánc |
+| commandToExecute (például) | Python MyPythonScript.py < saját paraméter1 > | sztring |
 | enableInternalDNSCheck | true | logikai |
-| storageAccountName (például) | examplestorageacct | karakterlánc |
-| storageAccountKey (például) | TmJK/1N3AbAZ3q/+hOXoi/l73zOqsaxXDhqa9Y83/v5UpXQp2DQIBuv2Tifp60cE/OaHsJZmQZ7teQfczQj8hg== | karakterlánc |
+| storageAccountName (például) | examplestorageacct | sztring |
+| storageAccountKey (például) | TmJK/1N3AbAZ3q/+hOXoi/l73zOqsaxXDhqa9Y83/v5UpXQp2DQIBuv2Tifp60cE/OaHsJZmQZ7teQfczQj8hg== | sztring |
 
 ### <a name="property-value-details"></a>A tulajdonság értékének részletei
 * `fileUris`: (nem kötelező, karakterlánc-tömbben) a parancsfájl uri listája

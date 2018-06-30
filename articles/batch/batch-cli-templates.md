@@ -11,12 +11,12 @@ ms.topic: article
 ms.workload: big-compute
 ms.date: 12/18/2017
 ms.author: markscu
-ms.openlocfilehash: 565ceb179d8cf749842bb58ab25a8b3d946efa12
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 4dd9218b982860e62e04b46fb5d07e5553407599
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34608647"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37130852"
 ---
 # <a name="use-azure-batch-cli-templates-and-file-transfer-preview"></a>Az Azure Batch parancssori felületi sablonjainak és fájlátviteli funkciójának (előzetes verzió) használata
 
@@ -258,7 +258,7 @@ Készlet és a feladat sablonok fájlcsoportok másolási készlet csomópontok 
 
 Sablon és a fájl adatátviteli támogatása jelenleg hozzáadott csak az Azure parancssori felület. A cél, hogy a célközönséget, hogy a felhasználók számára, akik nem kívánnak által fejlesztett kód megadása a kötegelt API-k, például a kutatók informatikai felhasználók, és így tovább használhatja a kötegelt bontsa ki. Nélkül kódolási, az Azure Batch és a köteg által futtatandó alkalmazásokat ismeretét rendelkező felhasználók hozhatnak létre a készlet és a feladat létrehozásához. Sablon paraméterek a felhasználók kötegelt és az alkalmazások részletes ismerete nélkül használhatják a sablonok.
 
-A kötegelt bővítmény kipróbálhatja az Azure parancssori felület, és meg kell adnia a visszajelzést vagy a javaslatok, vagy a megjegyzések, ez a cikk vagy keresztül a [Azure Batch fórum](https://social.msdn.microsoft.com/forums/azure/home?forum=azurebatch).
+A kötegelt bővítmény kipróbálhatja az Azure parancssori felület, és meg kell adnia a visszajelzést vagy a javaslatok, vagy a megjegyzések, ez a cikk vagy keresztül a [kötegelt közösségi tárház](https://github.com/Azure/Batch).
 
 ## <a name="next-steps"></a>További lépések
 

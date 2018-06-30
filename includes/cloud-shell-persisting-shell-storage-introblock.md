@@ -19,7 +19,7 @@ Ha alapszintű beállításokat alkalmazza, és válassza ki az előfizetés csa
 A fájlmegosztás csatlakoztatja `clouddrive` a a `$Home` könyvtár. Ez egy egyszeri művelet, és a további munkamenetekhez automatikusan csatlakoztatja a fájlmegosztást. 
 
 > [!NOTE]
-> A biztonság érdekében minden felhasználó saját tárolási kell telepíteni.  Szerepköralapú hozzáférés-vezérlést (RBAC), a felhasználóknak hozzá kell férnie közreműködő vagy újabb.
+> A biztonság érdekében minden felhasználó saját tárfiókot kell telepíteni.  Szerepköralapú hozzáférés-vezérlést (RBAC), a felhasználók kell közreműködői hozzáférhet, vagy újabb, a tárolási fiók szint.
 
 A Bash, a fájlmegosztás is tartalmaz egy 5 GB-os lemezképnek, amely automatikusan jön létre, amelyek továbbra is fennáll az adatok a `$Home` könyvtár. 
 

@@ -16,16 +16,16 @@ ms.date: 04/02/2017
 ms.author: lizross
 ms.reviewer: librown
 ms.custom: end-user
-ms.openlocfilehash: 5df4af49a6c0251161d619c358ae68eaad3c3660
-ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
+ms.openlocfilehash: 2cb29d61de43bcd2fc6f9bfb3a94af309b1c3f55
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 06/29/2018
-ms.locfileid: "37102270"
+ms.locfileid: "37128479"
 ---
 # <a name="the-sign-in-experience-with-azure-multi-factor-authentication"></a>A bejelentkezés során tapasztal élmény Azure többtényezős hitelesítéssel
 > [!NOTE]
-> Ez a cikk célja egy szokásos bejelentkezési élmény bízná. Bejelentkezés, vagy a problémák elhárításában, lásd: [problémák adódtak a Azure multi-factor Authentication](../../../../multi-factor-authentication/end-user/multi-factor-authentication-end-user-troubleshoot.md).
+> Ez a cikk célja egy szokásos bejelentkezési élmény bízná. Bejelentkezés, vagy a problémák elhárításában, lásd: [problémák adódtak a Azure multi-factor Authentication](multi-factor-authentication-end-user-troubleshoot.md).
 
 ## <a name="what-will-your-sign-in-experience-be"></a>Mi lesz a bejelentkezés során tapasztal élmény?
 A bejelentkezés során tapasztal élmény eltér attól függően, hogy mi használatát választja a második tényezőként: telefonhívást, hitelesítési alkalmazást vagy szövegét. Válassza ki a leginkább illik az Ön tevékenységeit:
@@ -86,7 +86,7 @@ Néha nem rendelkezik a telefonszám vagy eszközt, akkor állíthatja be az el�
 
 ## <a name="next-steps"></a>További lépések
 
-Ha bejelentkezik a kétlépéses ellenőrzést, akkor további információért [problémák adódtak a Azure multi-factor Authentication](../../../../multi-factor-authentication/end-user/multi-factor-authentication-end-user-troubleshoot.md).
+Ha bejelentkezik a kétlépéses ellenőrzést, akkor további információért [problémák adódtak a Azure multi-factor Authentication](multi-factor-authentication-end-user-troubleshoot.md).
 
 Megtudhatja, hogyan [kezelése a kétlépéses ellenőrzés beállításait](../../../../multi-factor-authentication/end-user/multi-factor-authentication-end-user-manage-settings.md).
 

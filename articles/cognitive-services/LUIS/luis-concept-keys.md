@@ -9,12 +9,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 03/23/2018
 ms.author: v-geberr
-ms.openlocfilehash: 70bca3b181e02f42da50e827154193936544131a
-ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
+ms.openlocfilehash: d22b2ba332996d31b1db4ef4d095f0a4b443ba16
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36263818"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37109358"
 ---
 # <a name="keys-in-luis"></a>A LUIS kulcsok
 LUIS két kulcsokat használ: [szerzői](#programmatic-key) és [végpont](#endpoint-key). A szerzői műveletekhez kulcs, automatikusan létrejön a LUIS fiók létrehozásakor. Amikor készen áll a LUIS alkalmazás közzététele, meg kell [a végpont-kulcs létrehozása](luis-how-to-azure-subscription.md#create-luis-endpoint-key), [rendelje hozzá](Manage-keys.md#assign-endpoint-key) a LUIS alkalmazáshoz, és [a végpont lekérdezés együtt használja azt](#use-endpoint-key-in-query). 
@@ -22,7 +22,7 @@ LUIS két kulcsokat használ: [szerzői](#programmatic-key) és [végpont](#endp
 |Kulcs|Cél|
 |--|--|
 |[Szerzői kulcs](#programmatic-key)|Szerzői, kezelése közreműködők, a közzététel versioning|
-|[Végpontkulcs](#endpoint-key)| Lekérdezése|
+|[végpontkulcs](#endpoint-key)| Lekérdezése|
 
 Fontos, hogy LUIS alkalmazásokat hozhatnak létre [régiók](luis-reference-regions.md#publishing-regions) hol szeretné közzétenni, és lekérdezi a.
 
@@ -40,7 +40,7 @@ Ha azt szeretné, hogy **éles végpont lekérdezések**, hozzon létre egy Azur
 > [!CAUTION]
 > Kényelmi célokat szolgál, a minták számos billentyűvel a szerzői műveletek, mert néhány végpont-hívások biztosít a [kvóta](luis-boundaries.md#key-limits).  
 
-## <a name="endpoint-key"></a>Végpontkulcs
+## <a name="endpoint-key"></a>végpontkulcs
  Ha van szükség **éles végpont lekérdezések**, hozzon létre egy [LUIS kulcs](https://azure.microsoft.com/pricing/details/cognitive-services/language-understanding-intelligent-services/) az Azure portálon. Ne feledje, a kulcs létrehozásához használt név, amikor az alkalmazás hozzá a kulcsot...
 
 A LUIS előfizetési folyamat befejezésekor [vegye fel a kulcs](Manage-keys.md#assign-endpoint-key) az alkalmazás a **közzététel** lap. 
@@ -62,10 +62,10 @@ A LUIS végpont lekérdezés két stílusok fogad el, a végpont kulcs, de mindk
 ## <a name="api-usage-of-ocp-apim-subscription-key"></a>API-használati Ocp-Apim-előfizetés-kulcs
 A LUIS API-k használata a fejléc `Ocp-Apim-Subscription-Key`. A fejléc neve nem változik alapján mely kulcs és az API-készlet használ. A fejléc be a szerzői műveletekhez kulcsot szerzői API-k. Ha használ a végponthoz, a végpont key értékre állítani a fejlécet. 
 
-A végpont kulcs API-szerzésre vonatkozó információ nem adható át. Ha így tesz, a 401-es hiba – a hozzáférés megtagadva a miatt érvénytelen előfizetés kulcs kap. 
+A végpont kulcs API-szerzésre vonatkozó információ nem adható át. Ha így tesz, a 401-es hiba – a hozzáférés megtagadva a miatt érvénytelen végpontkulcs kap. 
 
 ## <a name="key-limits"></a>Korlátozza a kulcs
-Lásd: [korlátok kulcs](luis-boundaries.md#key-limits) és [Azure-régiók](luis-reference-regions.md). A szerzői műveletekhez fontos, szabad és használt szerzésre vonatkozó információ. A LUIS előfizetés kulcs van egy ingyenes szint, de kell hozták létre, és a az LUIS alkalmazáshoz társított a **közzététel** lap. A szerzői, de csak a végpont-lekérdezések nem használható.
+Lásd: [korlátok kulcs](luis-boundaries.md#key-limits) és [Azure-régiók](luis-reference-regions.md). A szerzői műveletekhez fontos, szabad és használt szerzésre vonatkozó információ. A LUIS végpontkulcs van egy ingyenes szint, de kell hozták létre, és a az LUIS alkalmazáshoz társított a **közzététel** lap. A szerzői, de csak a végpont-lekérdezések nem használható.
 
 Közzétételi régiók régiók szerzői eltérnek. Ellenőrizze, hogy a szerzői műveletek terület megfelelő kívánt közzétételi régió alkalmazást hoz létre.
 

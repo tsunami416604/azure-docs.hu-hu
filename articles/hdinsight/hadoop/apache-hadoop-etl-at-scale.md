@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/14/2017
 ms.author: ashishth
-ms.openlocfilehash: 2f34233a68bec506d9f69426d779aee8e493d759
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 9314b8ae8dceb29a9aee63ba3093ab191d4fdef3
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31402063"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37116132"
 ---
 # <a name="extract-transform-and-load-etl-at-scale"></a>Kinyerési, átalakítási és betöltési (ETL) léptékű
 
@@ -81,11 +81,11 @@ ADLS is Azure Event Hubs vagy alatt futó Apache Storm esemény adatfeldolgozás
 
 #### <a name="considerations-for-both-storage-options"></a>Mindkét tárolási lehetőségek szempontjai
 
-Feltöltése adatkészletek terabájt tartományba, hálózati késés nagyobb problémát okozhat, különösen akkor, ha az adatok egy helyi helyre származik.  Ilyen esetben használhatja az alábbi beállítások közül:
+Feltöltése adatkészletek terabájt tartományba, hálózati késés nagyobb problémát okozhat, különösen akkor, ha az adatokat a helyszíni helyről érkezik.  Ilyen esetben használhatja az alábbi beállítások közül:
 
-* Azure ExpressRoute: Azure ExpressRoute segítségével Azure adatközpontjaiban és a helyszíni infrastruktúra közötti magánhálózati kapcsolatok létrehozása. Ezek a kapcsolatok nagy mennyiségű adat átvitele egy megbízható beállítást adja meg. További információkért lásd: [Azure ExpressRoute dokumentációja](../../expressroute/expressroute-introduction.md).
+* Azure ExpressRoute: Azure ExpressRoute létrehozhatja saját kapcsolatot Azure adatközpontjaiban és a helyszíni infrastruktúra között. Ezek a kapcsolatok nagy mennyiségű adat átvitele egy megbízható beállítást adja meg. További információkért lásd: [Azure ExpressRoute dokumentációja](../../expressroute/expressroute-introduction.md).
 
-* "Offline" feltölteni az adatokat. Használhat [Azure Import/Export szolgáltatás](../../storage/common/storage-import-export-service.md) szállítási merevlemez-meghajtók az adatait az Azure adatközpontba. Az adatok először tölt fel az Azure Storage blobs szolgáltatásban. Ezután [Azure Data Factory](../../data-factory/v1/data-factory-azure-datalake-connector.md) vagy a [AdlCopy](../../data-lake-store/data-lake-store-copy-data-azure-storage-blob.md) adatok másolása az Azure Storage blobs Data Lake Store az eszközt.
+* "Offline" feltölteni az adatokat. Használhat [Azure Import/Export szolgáltatás](../../storage/common/storage-import-export-service.md) szállítási merevlemez-meghajtók az adatait az Azure adatközpontba. Az adatok először tölt fel az Azure Storage blobs szolgáltatásban. Ezután [Azure Data Factory](../../data-factory/connector-azure-data-lake-store.md) vagy a [AdlCopy](../../data-lake-store/data-lake-store-copy-data-azure-storage-blob.md) adatok másolása az Azure Storage blobs Data Lake Store az eszközt.
 
 ### <a name="azure-sql-data-warehouse"></a>Azure SQL Data Warehouse
 

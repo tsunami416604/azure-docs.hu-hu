@@ -11,15 +11,16 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 06/22/2018
 ms.author: bwren
-ms.openlocfilehash: 21b54f60286e25c410b9d51de8be122c450080d3
-ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
+ms.component: na
+ms.openlocfilehash: 0ad22562bd1f36bba7c0ab99fe504e82645033d3
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36752775"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37131410"
 ---
 # <a name="filters-in-log-analytics-views"></a>A Naplóelemzési nézetekben szűrők
 A **szűrő** a egy [Naplóelemzési megtekintése](log-analytics-view-designer.md) lehetővé teszi a felhasználóknak a nézetben szereplő adatok szűrését által egy adott tulajdonság értéke maga a nézet módosítása nélkül.  Így például csak egy adott számítógépről származó adatok a nézet szűréséhez a nézet felhasználók vagy számítógépek csoportja.  Létrehozhat több szűrő a felhasználók több tulajdonságra szűrés egyetlen nézetben.  Ez a cikk ismerteti, hogyan szűrőt, és vegyen fel egyet a egyéni nézetekben.

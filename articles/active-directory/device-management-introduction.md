@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 05/21/2018
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: 8bcc89f9ec7c73fd1f690e00e831fbd5b960eef9
-ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
+ms.openlocfilehash: 96de05eb8ebae85b73eaa012efdfb38ac074abf8
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34850008"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37110920"
 ---
 # <a name="introduction-to-device-management-in-azure-active-directory"></a>Kezelés az Azure Active Directoryban bemutatása
 
@@ -93,7 +93,7 @@ Az Azure AD csatlakoztatott eszközök végrehajtási tesz lehetővé a követke
 
 - **Hozzáférés korlátozása** alkalmazások csak olyan eszközökön, amelyek megfelelnek a megfelelőségi szabályzatnak.
 
-- **A helyi erőforrásokhoz való zavartalan hozzáférés** Ha az eszköz rendelkezik-e sor a láthatáron a helyi tartományvezérlőre. 
+- **A helyszíni erőforrásokhoz való zavartalan hozzáférés** Ha az eszköz rendelkezik-e sor a láthatáron a helyi tartományvezérlőre. 
 
 
 Az Azure AD join elsődlegesen a helyi Windows Server Active Directory infrastruktúrával nem rendelkező szervezeteknek, amíg biztosan használata forgatókönyvekben ahol:
@@ -119,7 +119,7 @@ Több mint egy évtizedben számos szervezet rendelkezik használni a tartomány
 
 - Jelentkezzen be az eszközét a következővel a Active Directory a felhasználók munkahelyi vagy iskolai fiókok. 
 
-Általában egy helyszíni tárhely szervezetek támaszkodnak imaging módszerek ellátja az eszközöket, és gyakran használják **System Center Configuration Manager (SCCM)** vagy **csoportházirend (GP)** kezelhetők.
+Általában egy helyszíni tárhely szervezetek támaszkodnak imaging módszerek ellátja az eszközöket, és gyakran használják **System Center Configuration Manager (SCCM)** vagy **csoportházirend (GP)** kezelése őket.
 
 Ha a környezetben egy helyszíni AD kockázatokat, és azt is szeretné az Azure Active Directory által biztosított képességek hasznos, hibrid csatlakozott az Azure AD-eszközöket is létrehozható. Ezek a nyomtatók is, a helyszíni Active Directory és az Azure Active Directory tartományhoz.
 

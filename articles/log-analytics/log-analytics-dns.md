@@ -3,7 +3,7 @@ title: Az Azure Naplóelemzés DNS elemzési megoldások |} Microsoft Docs
 description: Állítsa be, és Naplóelemzési a DNS elemzési megoldások segítségével gyűjtse össze a DNS-infrastruktúra a biztonsággal, a teljesítmény és a műveletek betekintést.
 services: log-analytics
 documentationcenter: ''
-author: MGoedtel
+author: mgoedtel
 manager: carmonm
 editor: ''
 ms.assetid: f44a40c4-820a-406e-8c40-70bd8dc67ae7
@@ -11,19 +11,20 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/20/2018
 ms.author: magoedte
-ms.openlocfilehash: 6a59cf8b9444fe7cb197501c51d10dae81acb027
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.component: na
+ms.openlocfilehash: a6f63fac85008425f473f431ae85d04f62eed667
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2018
-ms.locfileid: "30241945"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37127591"
 ---
 # <a name="gather-insights-about-your-dns-infrastructure-with-the-dns-analytics-preview-solution"></a>A DNS-infrastruktúra DNS Analytics Preview megoldással észrevételeket összegyűjtése
 
-![DNS Analytics symbol](./media/log-analytics-dns/dns-analytics-symbol.png)
+![DNS Analytics szimbólum](./media/log-analytics-dns/dns-analytics-symbol.png)
 
 Ez a cikk ismerteti, hogyan beállítását és az Azure Log Analytics az Azure DNS elemzési megoldások segítségével gyűjtse össze a DNS-infrastruktúra a biztonsággal, a teljesítmény és a műveletek betekintést.
 
@@ -41,7 +42,7 @@ A megoldás gyűjti, elemzi és a Windows DNS elemzési és a vizsgálati napló
 
 A következő táblázat a csatlakoztatott adatforrások, ez a megoldás által támogatott:
 
-| **Csatlakoztatott adatforrás** | **Támogatás** | **Leírás** |
+| **Csatlakoztatott forrás** | **Támogatás** | **Leírás** |
 | --- | --- | --- |
 | [Windows-ügynökök](log-analytics-windows-agent.md) | Igen | A megoldás DNS információt gyűjt a Windows-ügynökök. |
 | [Linux-ügynökök](log-analytics-linux-agents.md) | Nem | A megoldás nem DNS-információkat gyűjtsön a közvetlen Linux-ügynököt. |
@@ -138,7 +139,7 @@ Az információk alapján azonosíthatja a:
 
 4. Ellenőrizze, hogy a zóna konfigurálták biztonságos dinamikus frissítés vagy sem.
 
-    ![Dynamic DNS Registrations blade](./media/log-analytics-dns/dynamic-dns-reg-blade.png)
+    ![Dinamikus DNS-regisztráció panel](./media/log-analytics-dns/dynamic-dns-reg-blade.png)
 
 **Regisztrációs kérelem neve**. A felső csempe sikeres és sikertelen DNS dinamikus frissítési kérelmek trendvonal jeleníti meg. Az alsó csempe felsorolja a felső 10 ügyfelek sikertelen DNS-frissítési kéréseket a DNS-kiszolgálók, a hibák száma alapján rendezve üzenetet küld.
 
@@ -147,7 +148,7 @@ Az információk alapján azonosíthatja a:
 **Eszközillesztő elemzési lekérdezések minta**. A leggyakoribb keresési lekérdezések raw analytics adatlehívás közvetlenül listáját tartalmazza.
 
 
-![A lekérdezés](./media/log-analytics-dns/queries.png)
+![Mintalekérdezések](./media/log-analytics-dns/queries.png)
 
 Ezeket a lekérdezéseket kiindulási pontként használható a saját testreszabott jelentéskészítéshez lekérdezések létrehozásáról. A lekérdezések hivatkozásra kattintva a DNS Analytics napló keresése oldal, ahol eredmény jelenik meg:
 

@@ -10,17 +10,18 @@ tags: azure-resource-manager
 ms.assetid: ''
 ms.service: log-analytics
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/02/2018
 ms.author: ajaycode
-ms.openlocfilehash: 1e7e43dc2e7ed386f8f77fd1ab186d2ff34af405
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.component: na
+ms.openlocfilehash: 96eb26d6a4faf8c6907d23ebf21f2446722c913b
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32176999"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37127093"
 ---
 # <a name="pricing-changes-for-azure-network-performance-monitor"></a>Végrehajtott tarifacsomag-váltások Azure hálózati Teljesítményfigyelő
 
@@ -67,7 +68,7 @@ A figyelést a teljes hónap egy önálló alhálózati kapcsolat költségét, 
 A költség szempontjából (adatok feltöltése szolgáltatáshoz, feldolgozása és az indexelés) érhető el a [árképzést ismertető oldalra](https://azure.microsoft.com/pricing/details/log-analytics/) tartozó Naplóelemzési, az adatfeldolgozást szakaszban. A díj az adatok megőrzésének (Ez azt jelenti, hogy adatok őrződnek meg, az ügyfél a beállítást, az első hónap után) a is érhető el a [árképzést ismertető oldalra](https://azure.microsoft.com/pricing/details/log-analytics/), az adatmegőrzés szakaszában.
 
 
-## <a name="expressroute-monitor"></a>Az ExpressRoute-figyelő
+## <a name="expressroute-monitor"></a>ExpressRoute-figyelő
 
 **Mik azok a ExpressRoute-figyelő használati díjak?**
 
@@ -107,8 +108,8 @@ A nagyobb százalékos érték (az előző táblázatban): az ügyfelek általá
 **Mik azok a végpont-figyelő szolgáltatás használati díjak?**
 
 A végpont-figyelő szolgáltatás használati díjak arra az esetre vonatkoznak alapján:
-* kapcsolatok száma
-* adatok mennyisége
+* Kapcsolatok száma
+* Adatok mennyisége
 
 **Mi az a kapcsolatot?**
 

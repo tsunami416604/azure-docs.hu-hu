@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/22/2018
 ms.author: larryfr
-ms.openlocfilehash: 8b4584e9ccd17eba385f2068709f5bbaea6df20b
-ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
+ms.openlocfilehash: 53433e6a677a2576a11209075f397bb5f246b875
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37019956"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37129285"
 ---
 # <a name="deploy-and-manage-apache-storm-topologies-on-hdinsight"></a>Központi telepítése és kezelése a HDInsight alatt futó Apache Storm-topológiák
 
@@ -212,7 +212,7 @@ Az egy spout kiválasztása a **Spoutok** vagy **boltok** szakaszok megjeleníti
 
 A Storm felhasználói felülete a REST API-t épül, ezért hasonló felügyeleti és figyelési funkcióit, a REST API használatával végezheti el. A REST API-t hozhat létre egyéni eszközök felügyelheti és figyelheti a Storm-topológiák.
 
-További információkért lásd: [Storm UI REST API](http://storm.apache.org/releases/0.9.6/STORM-UI-REST-API.html). Az alábbi információk csak a HDInsight alatt futó Apache Storm a REST API használatával az elő.
+További információkért lásd: [Storm UI REST API](http://storm.apache.org/releases/current/STORM-UI-REST-API.html). Az alábbi információk csak a HDInsight alatt futó Apache Storm a REST API használatával az elő.
 
 > [!IMPORTANT]
 > A Storm REST API nincs nyilvánosan elérhető az interneten keresztül, és a HDInsight fürt átjárócsomópontjába az SSH-alagúton keresztül kell elérni. Létrehozásával és az SSH-alagút használatával további információkért lásd: [használata SSH Tunneling Ambari web UI, ResourceManager, JobHistory, NameNode, Oozie és egyéb web UI eléréséhez](../hdinsight-linux-ambari-ssh-tunnel.md).

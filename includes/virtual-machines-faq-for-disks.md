@@ -2,18 +2,18 @@
 title: fájl belefoglalása
 description: fájl belefoglalása
 services: virtual-machines
-author: rogara
+author: roygara
 ms.service: virtual-machines
 ms.topic: include
 ms.date: 06/03/2018
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 812f11a1ced3bac765441bf66f402abb4da4bc3f
-ms.sourcegitcommit: caebf2bb2fc6574aeee1b46d694a61f8b9243198
+ms.openlocfilehash: d05d6d4a8bfc4450de4881e704b0e9f7b7b4716d
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/12/2018
-ms.locfileid: "35414569"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37138143"
 ---
 # <a name="frequently-asked-questions-about-azure-iaas-vm-disks-and-managed-and-unmanaged-premium-disks"></a>Azure IaaS virtuális gép és a kezelt és kezeletlen premium lemezek kapcsolatos gyakori kérdések
 
@@ -102,7 +102,7 @@ A csak olvasható közös hozzáférésű jogosultságkód (SAS) URI a kezelt le
 Igen, mind a nem kezelt, mind a kezelt támogatottak. Javasoljuk, hogy új munkaterhelések esetén használja a felügyelt lemezeit, és az aktuális munkaterheléseket telepít át kezelt lemezek.
 
 
-**Ha megkezdtem 128 GB-os lemez létrehozása, és növelje a 130 GB-os méret, I megterheljük a következő lemez méretét (512 GB)?**
+**Ha megkezdtem 128 GB-os lemez létrehozása, és növelje a 130 GB-os méret, I megterheljük a következő lemez méretét (256 GB)?**
 
 Igen.
 
@@ -209,11 +209,11 @@ Nem.
 
 **Érhető Storage szolgáltatás titkosítási csak meghatározott régióiba?**
 
-Nem. Érhető el minden olyan régióban, ahol kezelt lemezek érhetőek el. Felügyelt lemezek minden nyilvános régiók és Németországban érhető el.
+Nem. Érhető el minden olyan régióban, ahol kezelt lemezek érhetőek el. Felügyelt lemezek minden nyilvános régiók és Németországban érhető el. Azt érhető el a kínai, azonban csak a Microsoft által felügyelt kulcsok, nem az ügyfél által felügyelt kulcsok.
 
 **Hogyan tudhatom meg titkosítottak, ha a felügyelt lemezes?**
 
-A felügyelt lemezes az Azure-portálon az Azure CLI és PowerShell létrehozásának ideje talál. Ha az időpont után 2017. június 9., a lemez titkosítva. 
+A felügyelt lemezes az Azure-portálon az Azure CLI és PowerShell létrehozásának ideje talál. Ha az időpont után 2017. június 9., a lemez titkosítva.
 
 **Hogyan titkosíthatja a meglévő lemezek 2017. június 10. előtt létrehozott?**
 

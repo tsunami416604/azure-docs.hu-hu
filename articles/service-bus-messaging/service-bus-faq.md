@@ -8,16 +8,16 @@ ms.service: service-bus-messaging
 ms.topic: article
 ms.date: 06/05/2018
 ms.author: sethm
-ms.openlocfilehash: df60862b6a835340534be4ed43a27267c33b64f5
-ms.sourcegitcommit: b7290b2cede85db346bb88fe3a5b3b316620808d
+ms.openlocfilehash: b3171ca264afdbdbddeb26eff8744ee67f336dfe
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34802265"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37109520"
 ---
 # <a name="service-bus-faq"></a>Service Bus – GYIK
 
-A cikkből néhány gyakori kérdés a Microsoft Azure Service Bus kapcsolatban. Is letöltheti a [Azure támogatja – gyakori kérdések](http://go.microsoft.com/fwlink/?LinkID=185083) általános Azure tarifa- és támogatási információkat.
+A cikkből néhány gyakori kérdés a Microsoft Azure Service Bus kapcsolatban. Is letöltheti a [Azure támogatja – gyakori kérdések](https://azure.microsoft.com/en-us/support/faq/) általános Azure tarifa- és támogatási információkat.
 
 ## <a name="general-questions-about-azure-service-bus"></a>Azure Service Bus kapcsolatos általános kérdésekre
 ### <a name="what-is-azure-service-bus"></a>Mi az Azure Service Bus?
@@ -48,7 +48,7 @@ Egy üzenetsor és a témakör következő tulajdonságai nem módosíthatók. M
 
 * Particionálás
 * Munkamenetek
-* Kettős észlelés
+* Duplikálás észlelése
 * Entitás Express
 
 ## <a name="pricing"></a>Díjszabás
@@ -56,7 +56,7 @@ Ez a szakasz néhány kapcsolatos gyakori kérdések a Service Bus struktúra á
 
 A [Service Bus árak és számlázás](service-bus-pricing-billing.md) a cikk ismerteti a Service Bus számlázási mérőszámok. A Service Bus beállítások árképzési vonatkozó információkat, lásd: [díjszabása Service Bus](https://azure.microsoft.com/pricing/details/service-bus/).
 
-Emellett letöltheti a [Azure támogatás – gyakori kérdések](http://go.microsoft.com/fwlink/?LinkID=185083) általános Azure-beli árakról. 
+Emellett letöltheti a [Azure támogatás – gyakori kérdések](https://azure.microsoft.com/en-us/support/faq/) általános Azure-beli árakról. 
 
 ### <a name="how-do-you-charge-for-service-bus"></a>Hogyan tegye díjat számítanak, Service Bus?
 A Service Bus árazással kapcsolatos részletes információkért lásd: [díjszabása Service Bus][Pricing overview]. Mellett az áttelepítés előtt feljegyzett árak van szó, a kimenő forgalom kívül az adatközpont, ahol az alkalmazás ki van építve a kapcsolódó adatátvitel.

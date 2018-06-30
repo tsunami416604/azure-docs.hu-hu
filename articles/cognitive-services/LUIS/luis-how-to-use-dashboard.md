@@ -9,12 +9,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 03/01/2018
 ms.author: v-geberr
-ms.openlocfilehash: 4e117aa734c551f76c3602f81e3e2ebc6aa9f337
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: c7ef38e2f2edaf795d3d76706afd4aa09b3b6959
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "35349803"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37110048"
 ---
 # <a name="application-dashboard"></a>Alkalmazás irányítópult
 Alkalmazás irányítópult lehetővé teszi, hogy az alkalmazás egyetlen pillantással figyelheti. A **irányítópult** jelenít meg, amikor egy alkalmazás nyissa meg az alkalmazás neve kattintva **saját alkalmazások** lapon válassza ki azt **irányítópult** az ablak tetején. 
@@ -69,7 +69,7 @@ A diagram megtekintése időszak kiválasztása:
 2. Válassza ki az adott időszakban a listából, és majd kattintson a Vissza gombra ![Vissza nyíl](./media/luis-how-to-use-dashboard/Dashboard-backArrow.png) a diagram megjelenítése.
 
 ### <a name="key-usage"></a>Kulcshasználat
-Az alkalmazás-előfizetési kulcsból felhasznált találatok száma. Előfizetés kulcsokkal kapcsolatos további információkért lásd: [LUIS kulcsokat](luis-concept-keys.md). 
+A végpont kulcsát a felhasznált találatok száma. Végpont kulcsokkal kapcsolatos további információkért lásd: [LUIS kulcsokat](luis-concept-keys.md). 
   
 ## <a name="intent-breakdown"></a>Leképezési lebontása
 A **leképezés lebontása** leképezések címkézett utterances vagy a végpont találatok részletes információkat jelenít meg. Az összegző diagram megjeleníti minden egyes leképezés relatív fontosságát az alkalmazásban. Ha az egérmutatóval rámutat szelet, megjelenik az leképezési nevét és azt jelenti, hogy az címkézett utterances/végpont találatok teljes száma. 

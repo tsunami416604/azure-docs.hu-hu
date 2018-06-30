@@ -10,15 +10,16 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 06/11/2018
 ms.author: bwren
-ms.openlocfilehash: 5719dc3719739fb561626e307ee295729752c1fa
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.component: na
+ms.openlocfilehash: e47e8cbd209ea34317ca9b176a2c4b0fef10a2b2
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35297753"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37133087"
 ---
 # <a name="oms-portal-moving-to-azure"></a>Az Azure-bA áthelyezése OMS-portálon
 Köszönjük az OMS-portálon. Azt a támogatási javasolt, és továbbra is a figyelés és a felügyeleti szolgáltatások erősen fektetnek. Egy visszajelzésekben ismételten kérték egyes ügyfelek felügyeletét és kezelését a helyszíni, mind az Azure munkaterhelések egységes felhasználói élmény szükség. Valószínűleg már tudja az Azure-portálon az összes Azure-szolgáltatásokhoz központi és gazdag felügyeleti élmény képességeit irányítópultok a rögzítéshez megállapítás erőforrás intelligens keresése, és az erőforrás-kezelés címkézés erőforrások, például a kínál. Összevonása akkor történjen meg, és egyszerűsíthető a kiszolgálófigyelési és -kezelési munkafolyamat, azt hozzáadásának indítása az OMS portál képességeket be az Azure portálon. Örömmel jelenthetjük be a most már az Azure-portálon részét képezik az OMS-portálon a szolgáltatások többsége már dolgozunk. Valójában a új szolgáltatások, például a Traffic Manager némelyike csak az Azure portálon elérhető. Nincsenek csak néhány hézagok fennmaradó, a legtöbb impactful öt megoldások, amelyek továbbra is a kell helyezni az Azure-portál folyamat alatt. Ha a rendszer nem használja ezeket a funkciókat, lesz mindent korábban végzett, az az OMS-portálon az Azure-portálon, és több megvalósításához. Ha még nem tette meg, javasoljuk, indítsa el az Azure portál használatával még ma! 
@@ -94,7 +95,7 @@ Támogatása [cross-erőforrás lekérdezések](log-analytics-cross-workspace-se
 
 
 ## <a name="azure-network-security-group-analytics"></a>Azure Network Security Group Analytics
-A [Azure hálózati biztonsági csoport elemzési megoldások](log-analytics-azure-networking-analytics.md#azure-network-security-group-analytics-solution-in-log-analytics) fogja írni a a legutóbb indított [forgalom Analytics](../network-watcher/traffic-analytics.md) amelyhez ez a felhasználó és az alkalmazás tevékenységek láthatósága felhőalapú hálózatokhoz. Forgalom Analytics segítségével a szervezet hálózati tevékenységet, a biztonságos alkalmazások és adatok naplózása, munkaterhelés teljesítményének optimalizálásához, és megfelelő maradnak. 
+A [Azure hálózati biztonsági csoport elemzési megoldások](log-analytics-azure-networking-analytics.md#azure-network-security-group-analytics-solution-in-log-analytics) fogja írni a a legutóbb indított [forgalom Analytics](https://azure.microsoft.com/en-in/blog/traffic-analytics-in-preview/) amelyhez ez a felhasználó és az alkalmazás tevékenységek láthatósága felhőalapú hálózatokhoz. Forgalom Analytics segítségével a szervezet hálózati tevékenységet, a biztonságos alkalmazások és adatok naplózása, munkaterhelés teljesítményének optimalizálásához, és megfelelő maradnak. 
 
 Ez a megoldás NSG Flow logs elemzi, és a következő betekintést nyújt.
 
@@ -105,7 +106,7 @@ Ez a megoldás NSG Flow logs elemzi, és a következő betekintést nyújt.
 - A biztonsági rosszindulatú forgalmat, nyissa meg az internethez, az alkalmazások és a virtuális gépek Internet-hozzáférés megkísérlése portok.
 - Kapacitáskihasználás, amely segít a problémák kiküszöbölése kiépítés és alacsony kihasználtságot eredményez.
 
-Továbbra is NSG logs szolgáltatáshoz, a meglévő mentett keresések, riasztások, irányítópultok továbbra is működni fog küldeni a diagnosztikai beállítások támaszkodnak. Az ügyfelek, akik már telepítették a megoldás is használható, további értesítésig. Kezdési. június 20 az NSG-megoldás a rendszer eltávolítja a piactérről és a Közösség keresztül elérhetővé tett egy [Azure gyors üzembe helyezés sablon](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Operationalinsights).
+Továbbra is NSG logs szolgáltatáshoz, a meglévő mentett keresések, riasztások, irányítópultok továbbra is működni fog küldeni a diagnosztikai beállítások támaszkodnak. Az ügyfelek, akik már telepítették a megoldás is használható, további értesítésig. . Június 20 a hálózati biztonsági csoport elemzési megoldások indítása a rendszer eltávolítja a piactérről és a Közösség keresztül elérhetővé tett egy [Azure gyors üzembe helyezés sablon](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Operationalinsights).
 
 ## <a name="next-steps"></a>További lépések
 - Lásd: [közös kérdések az Azure-portál a Log Analyticshez felhasználók OMS-portálon áttérést](log-analytics-oms-portal-faq.md) útmutatót az OMS-portálon áthelyezése az Azure-portálon.

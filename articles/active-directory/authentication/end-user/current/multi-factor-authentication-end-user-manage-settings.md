@@ -16,15 +16,15 @@ ms.topic: conceptual
 ms.date: 05/23/2017
 ms.author: lizross
 ms.custom: end-user
-ms.openlocfilehash: 25a51cf534afaabd6fd540d70152659fc2478e11
-ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
+ms.openlocfilehash: 81c2323dd65ee18d42a231306840eeb65bd09313
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 06/29/2018
-ms.locfileid: "37102607"
+ms.locfileid: "37127458"
 ---
 # <a name="manage-your-settings-for-two-step-verification"></a>A kétlépéses ellenőrzést beállításainak kezelése
-Ez a cikk a kétlépéses ellenőrzés vagy többtényezős hitelesítési beállításainak frissítése kapcsolatos kérdésekre. Ha a fiókkal történő bejelentkezés problémát tapasztal, tekintse meg a [problémák adódtak a kétlépéses ellenőrzéshez használttal](../../../../multi-factor-authentication/end-user/multi-factor-authentication-end-user-troubleshoot.md) hibaelhárítási segítséget.
+Ez a cikk a kétlépéses ellenőrzés vagy többtényezős hitelesítési beállításainak frissítése kapcsolatos kérdésekre. Ha a fiókkal történő bejelentkezés problémát tapasztal, tekintse meg a [problémák adódtak a kétlépéses ellenőrzéshez használttal](multi-factor-authentication-end-user-troubleshoot.md) hibaelhárítási segítséget.
 
 ## <a name="where-to-find-the-settings-page"></a>Hol található a beállítások lap
 Attól függően, hogy vállalata hogyan Azure multi-factor Authentication beállítása van néhány olyan helyen, ahol módosíthatók a beállítások például a telefonszámát.
@@ -55,7 +55,7 @@ Ha a hivatkozásra kattintva nem oldja meg, akkor is elérhető a **további biz
 Fontos konfigurálása egy másodlagos hitelesítéshez használni kívánt telefonszámot.  Mivel az elsődleges telefonszám és a mobilalkalmazás valószínűleg ugyanazt a telefonján, a másodlagos telefonszám nem visszaszerezni a fiókot, ha telefonja elveszett vagy ellopták lesz az egyetlen lehetőség.
 
 > [!NOTE]
-> Ha nem fér hozzá az elsődleges telefonszám, és nem a fiókjához első segítségre van szüksége, tekintse meg a [problémák adódtak a kétlépéses ellenőrzéshez használttal](../../../../multi-factor-authentication/end-user/multi-factor-authentication-end-user-troubleshoot.md) cikk további segítséget itt találhat.  
+> Ha nem fér hozzá az elsődleges telefonszám, és nem a fiókjához első segítségre van szüksége, tekintse meg a [problémák adódtak a kétlépéses ellenőrzéshez használttal](multi-factor-authentication-end-user-troubleshoot.md) cikk további segítséget itt találhat.  
 
 **Az elsődleges telefonszám módosítása:**  
 
@@ -80,5 +80,5 @@ A szervezet beállításoktól függően előfordulhat, hogy a jelölőnégyzet,
 Távolítsa el az alkalmazást az eszközről, vagy állítsa alaphelyzetbe az eszközt, ha nem távolítja el az aktiválást a háttérben. További információkért lásd: [Microsoft Authenticator](../../../../multi-factor-authentication/end-user/microsoft-authenticator-app-how-to.md).
 
 ## <a name="next-steps"></a>További lépések
-* Hibaelhárítási tippeket és súgó [problémák adódtak a kétlépéses ellenőrzéshez használttal](../../../../multi-factor-authentication/end-user/multi-factor-authentication-end-user-troubleshoot.md)
+* Hibaelhárítási tippeket és súgó [problémák adódtak a kétlépéses ellenőrzéshez használttal](multi-factor-authentication-end-user-troubleshoot.md)
 * Állítson be [alkalmazásjelszók](../../../../multi-factor-authentication/end-user/multi-factor-authentication-end-user-app-passwords.md) alkalmazások, amelyek nem támogatják a kétlépéses ellenőrzést.

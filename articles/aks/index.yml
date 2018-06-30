@@ -14,13 +14,14 @@ metadata:
   ms.topic: landing-page
   ms.date: 07-21-2017
   ms.author: carolz
-  ms.openlocfilehash: b67814bc2dd622758ade1fc76f1fade99f718bd6
-  ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+  ms.openlocfilehash: 081e54a6ed04fa74f96b327b2c9e9e63c9fc01cb
+  ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
   ms.translationtype: HT
   ms.contentlocale: hu-HU
-  ms.lasthandoff: 05/07/2018
+  ms.lasthandoff: 06/29/2018
+  ms.locfileid: "37132588"
 abstract:
-  description: Az Azure Kubernetes Service (AKS) felügyeli az üzemeltetett Kubernetes környezetet, lehetővé téve a tárolóalapú alkalmazások gyors és egyszerű üzembe helyezését és felügyeletét tárolóvezénylési szakértelem nélkül is. Ezenkívül a folyamatban lévő műveletek és karbantartás terhét is megszünteti az erőforrások igény szerinti kiépítésével, frissítésével és méretezésével anélkül, hogy offline állapotba kellene helyezni az alkalmazásait.<div class="IMPORTANT alert"><p>Fontos</p><p>Az Azure Kubernetes Service (AKS) jelenleg <strong>előzetes verzióban</strong> érhető el. Az előzetes verziók azzal a feltétellel érhetők el, hogy Ön beleegyezik a <a href="https://azure.microsoft.com/support/legal/preview-supplemental-terms/">kiegészítő használati feltételekbe</a>. A szolgáltatás néhány eleme megváltozhat a nyilvános rendelkezésre állás előtt.</p></div>
+  description: Az Azure Kubernetes Service (AKS) felügyeli az üzemeltetett Kubernetes környezetet, lehetővé téve a tárolóalapú alkalmazások gyors és egyszerű üzembe helyezését és felügyeletét tárolóvezénylési szakértelem nélkül is. Ezenkívül a folyamatban lévő műveletek és karbantartás terhét is megszünteti az erőforrások igény szerinti kiépítésével, frissítésével és méretezésével anélkül, hogy offline állapotba kellene helyezni az alkalmazásait.
 sections:
 - title: 5 perces gyors útmutatók
   items:
@@ -30,9 +31,13 @@ sections:
     style: icon48
     items:
     - image:
-        src: /azure/media/index/ContainerService.svg
-      text: AKS-fürt létrehozása
+        src: https://docs.microsoft.com/media/common/i_cligeneric.svg
+      text: Azure CLI
       href: /azure/aks/kubernetes-walkthrough
+    - image:
+        src: https://docs.microsoft.com/media/common/i_portal.svg
+      text: Azure Portal
+      href: /azure/aks/kubernetes-walkthrough-portal
 - title: Részletes útmutatók
   items:
   - type: paragraph
@@ -46,7 +51,6 @@ sections:
     - html: <a href="/azure/aks/tutorial-kubernetes-deploy-application">Tárolórendszerképek futtatása a Kubernetes-ben</a>
     - html: <a href="/azure/aks/tutorial-kubernetes-scale">Alkalmazás és Kubernetes-infrastruktúra skálázása</a>
     - html: <a href="/azure/aks/tutorial-kubernetes-app-update">A Kubernetes-ben futó alkalmazás frissítése</a>
-    - html: <a href="/azure/aks/tutorial-kubernetes-monitor">A Kubernetes monitorozása a Log Analytics használatával</a>
     - html: <a href="/azure/aks/tutorial-kubernetes-upgrade-cluster">AKS-fürt frissítése</a>
 - title: Referencia
   items:
@@ -56,5 +60,7 @@ sections:
     items:
     - title: Parancssor
       html: <p><a href="/cli/azure/aks">Azure CLI</a></p>
+    - title: Nyelvek
+      html: <p><a href="/dotnet/api/overview/azure/containerservice">.NET</a></p><p><a href="/python/api/overview/azure/containerservice">Python</a></p><p><a href="/java/api/overview/azure/containerservice">Java</a></p><p><a href="/javascript/api/overview/azure/container-service">Node.js</a></p>
     - title: REST
       html: <p><a href="/rest/api/aks">REST API</a></p>

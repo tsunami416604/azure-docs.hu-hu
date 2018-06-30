@@ -14,12 +14,12 @@ ms.workload: infrastructure
 ms.date: 06/27/2018
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 8927b2a32956f73e75ac7b157ebad6bf6596ea88
-ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
+ms.openlocfilehash: 656ba21abf06ad0f079e3ce425d3221724d195d4
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37063629"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37113578"
 ---
 # <a name="supported-scenarios-for-hana-large-instances"></a>Támogatott esetek nagy HANA-példányok
 Ez a dokumentum ismerteti a támogatott forgatókönyvek mellett az architektúra részleteiről a HANA nagy példányok (HLI) számára.
@@ -81,17 +81,17 @@ Szükség esetén további hálózati kártyák definiálhat a saját. Azonban a
 
 Az egységek két IP-címek hozzárendelve a terjesztési hasonlóan kell kinéznie:
 
-"A" Ethernet kell egy hozzárendelt IP-címet, amely a kiszolgáló IP-készlet címtartománya, a Microsoftnak küldött kívül esik. Az IP-cím alkalmazzák az operációs rendszer/etc/hosts kezelésével.
+- "A" Ethernet kell egy hozzárendelt IP-címet, amely a kiszolgáló IP-készlet címtartománya, a Microsoftnak küldött kívül esik. Az IP-cím alkalmazzák az operációs rendszer/etc/hosts kezelésével.
 
-"B" Ethernet egy hozzárendelt IP-címet az NFS-kommunikációhoz használt kell rendelkeznie. Ezért ezeknél a címeknél tegye **nem** kell annak érdekében, hogy a bérlő belül példányt forgalom etc/hosts kezelhetők.
+- "C" Ethernet egy hozzárendelt IP-címet az NFS-kommunikációhoz használt kell rendelkeznie. Ezért ezeknél a címeknél tegye **nem** kell annak érdekében, hogy a bérlő belül példányt forgalom etc/hosts kezelhetők.
 
 Két IP-címek hozzárendelve a panel-konfiguráció nem megfelelő HANA replikációs vagy HANA kibővített esetekben. Ha két IP-címtartományból csak, és meg szeretne ilyen konfiguráció alkalmazását, lépjen kapcsolatba az Azure szolgáltatásfelügyelet egy harmadik IP-cím beolvasása a harmadik SAP HANA VLAN van társítva. HANA nagy példány egységek három IP-címtartományból három hálózati portokra a következő használati szabályokat alkalmazza:
 
 - "A" Ethernet kell egy hozzárendelt IP-címet, amely a kiszolgáló IP-készlet címtartománya, a Microsoftnak küldött kívül esik. Ezért az IP-címet kell nem használható az/etc/hosts az operációs rendszer karbantartásához.
 
-- "B" Ethernet kell egy hozzárendelt IP-címet, amely az NFS-tárhelyre kommunikációra használja. Ezért az ilyen típusú cím nem fenn kell tartani a etc/hosts.
+- "B" Ethernet kizárólag használandó stb/gazdagépeken a különböző példányok közötti kommunikáció fenntartásához. Ezek a címek is használhatók lesznek az IP-cím HANA használ a csomópontok közötti konfigurációs kibővített HANA konfigurációk fenntartásához az IP-címeket.
 
-- "C" Ethernet kizárólag használandó stb/gazdagépeken a különböző példányok közötti kommunikáció fenntartásához. Ezek a címek is használhatók lesznek az IP-cím HANA használ a csomópontok közötti konfigurációs kibővített HANA konfigurációk fenntartásához az IP-címeket.
+- "C" Ethernet kell egy hozzárendelt IP-címet, amely az NFS-tárhelyre kommunikációra használja. Ezért az ilyen típusú cím nem fenn kell tartani a etc/hosts.
 
 - Ethernet "D" kizárólag használandó hozzáférési STONITH eszköz támasztja. Ez akkor szükséges, ha HANA rendszer replikációs (HSR) konfigurálása és automatikus feladatátvételt, az operációs rendszer alapján SBD eszközön megvalósítására.
 

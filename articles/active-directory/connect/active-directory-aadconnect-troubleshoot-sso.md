@@ -2,25 +2,22 @@
 title: 'Az Azure Active Directory Connect: Zökkenőmentes egyszeri bejelentkezés hibaelhárítása |} Microsoft Docs'
 description: Ez a témakör ismerteti az Azure Active Directory zökkenőmentes egyszeri bejelentkezést hibaelhárítása
 services: active-directory
-keywords: Mi az Azure AD Connect telepítés Active Directory szükséges összetevőket az Azure AD, SSO, egyszeri bejelentkezést.
-documentationcenter: ''
-author: swkrish
+author: billmath
+ms.reviewer: swkrish
 manager: mtillman
 ms.assetid: 9f994aca-6088-40f5-b2cc-c753a4f41da7
 ms.service: active-directory
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 03/12/2018
+ms.date: 06/28/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 205df47c36cb1d6925e232f06c0f1355c40ae973
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 4df60668f6b9aa0afb2203fa59788c47e2ffaefb
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34592228"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37110889"
 ---
 # <a name="troubleshoot-azure-active-directory-seamless-single-sign-on"></a>Hibaelhárítás az Azure Active Directory zökkenőmentes egyszeri bejelentkezést.
 
@@ -61,7 +58,7 @@ Keresse meg a **Azure Active Directory** > **bejelentkezések** a a [Azure Activ
 
 |Bejelentkezési hiba kódja|Bejelentkezési hiba okát is megadva|Megoldás:
 | --- | --- | ---
-| 81001 | A felhasználó Kerberos-jegye túl nagy. | Csökkentse a felhasználói csoport tagságát, és próbálkozzon újra.
+| 81001 | A felhasználó Kerberos-jegye túl nagy. | Csökkentse a felhasználó csoporttagságait, majd próbálkozzon újra.
 | 81002 | Nem sikerült érvényesíteni a felhasználó Kerberos-jegy. | Tekintse meg a [ellenőrzőlista hibaelhárítási](#troubleshooting-checklist).
 | 81003 | Nem sikerült érvényesíteni a felhasználó Kerberos-jegy. | Tekintse meg a [ellenőrzőlista hibaelhárítási](#troubleshooting-checklist).
 | 81004 | A Kerberos-hitelesítési kísérlet meghiúsult. | Tekintse meg a [ellenőrzőlista hibaelhárítási](#troubleshooting-checklist).
@@ -84,6 +81,7 @@ A következő ellenőrzőlista segítségével zökkenőmentes egyszeri Bejelent
 - Győződjön meg arról, hogy a felhasználó fiókjának van egy Active Directory erdőből, ahol zökkenőmentes SSO lett beállítva.
 - Győződjön meg arról, hogy az eszköz a vállalati hálózathoz csatlakozik.
 - Győződjön meg arról, hogy az eszköz az Active Directory és a tartományvezérlők idő szinkronizálva van, és megfelelően vannak-e egymáshoz képest öt percen belül.
+- Győződjön meg arról, hogy a `AZUREADSSOACCT` számítógépfiók jelen és engedélyezett minden zökkenőmentes SSO engedélyezni kívánt Active Directory-erdőben. 
 - Az eszközön a meglévő Kerberos-jegyek lista használatával a `klist` parancsot a parancssorból. Győződjön meg arról, hogy a kiadott jegyek a `AZUREADSSOACCT` számítógépfiók találhatók. A felhasználói Kerberos-jegyek érvényesek általában 10 óra. Lehetséges, hogy különböző beállítások az Active Directoryban.
 - Ha le van tiltva, és újra engedélyezik a tenant zökkenőmentes SSO, felhasználók nem kapnak az egyszeri bejelentkezést keretein belül a gyorsítótárazott Kerberos-jegyek lejárt.
 - Törli a meglévő Kerberos-jegyet az eszközről használatával a `klist purge` parancsot, majd próbálkozzon újra.

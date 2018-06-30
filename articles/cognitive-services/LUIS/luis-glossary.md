@@ -9,12 +9,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: v-geberr
-ms.openlocfilehash: 7cfcc5b907b28a877bea57ea869e17f01aae00cb
-ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
+ms.openlocfilehash: d1b83432e925e4f6fd439ac78acfde56ad31ba52
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36265387"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37128393"
 ---
 # <a name="glossary"></a>Szószedet
 
@@ -70,7 +70,7 @@ Ugyanaz, mint a [aktív verzió](#active-version)
 
 A LUIS a környezetben egy **tartomány** Tudásbázis területe. A tartomány csak a Tudásbázis alkalmazást területe az elő. Ez lehet például a utazás ügynök alkalmazás általános területét. Lehet, hogy egy utazás ügynök alkalmazást is vonatkozó információkat a vállalat például adott földrajzi helyeken, a nyelvet és a szolgáltatások azon területeit. 
 
-## <a name="endpoint"></a>végpont
+## <a name="endpoint"></a>Végpont
 
 A [LUIS végpont](https://aka.ms/luis-endpoint-apis) URL-címe, ahol LUIS lekérdezések után küldje el a [LUIS app](#luis-app) létrehozott és közzétett. A végponti URL-cím tartalmazza a területet a közzétett alkalmazást, valamint az alkalmazás azonosítóját. A végpont található a **[közzététel](publishapp.md)** az alkalmazást, az erőforrások és a kulcsok tábla, vagy a oldalán kérheti le a végpont URL-CÍMÉT a [alkalmazásadatok lekérése](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c37) API.
 
@@ -82,8 +82,8 @@ Példa a végpont néz ki:
 |--|--|
 |régió| [közzétett régió](luis-reference-regions.md#publishing-regions) |
 |appID | LUIS alkalmazás azonosítója |
-|Előfizetés-azonosító | Azure-portálon létrehozott LUIS előfizetés kulcsot |
-|A Q | Utterance |
+|előfizetés-azonosító | Azure-portálon létrehozott LUIS végpont (előfizetés) kulcsot |
+|A Q | utterance |
 |timezoneOffset| minutes|
 
 ## <a name="entity"></a>Entitás
@@ -110,7 +110,7 @@ A machine learning szolgáltatásban egy [szolgáltatás](luis-concept-feature.m
 
 Egy [leképezés](luis-concept-intent.md) egy feladat vagy a felhasználó szeretne végrehajtani a műveletet. Egy célra vagy egy felhasználói bevitelt, például a felhőszolgáltató közötti átviteléhez foglalás, egy számlázási fizető vagy egy hírek cikkben találja a kifejezett cél. A LUIS leképezési előrejelzését a teljes utterance alapul. Entitások, összehasonlítva, olyan utterance adatot.
 
-## <a name="labeling"></a>címkézés
+## <a name="labeling"></a>Címkézés
 
 Társítása egy szót vagy kifejezést egy kísérlet történt a címkézés [utterance](#utterance) rendelkező egy [entitás](#entity) (adattípus). 
 
@@ -175,7 +175,7 @@ Ugyanaz, mint a [programozott kulcs](#programmatic-key), nevezték át, a szerz�
 
 ## <a name="subscription-key"></a>Előfizetés kulcs
 
-Az Előfizetés kulcs a kulcs LUIS-szolgáltatáshoz társított [az Azure-ban létrehozott](luis-how-to-azure-subscription.md). Ez a kulcs nincs a [kulcs szerzői](#programmatic-key). Ha rendelkezik előfizetéssel kulccsal, azt a szerzői műveletekhez kulcs helyett végpont kérelmeket használandó. A jelenlegi előfizetés kulcs belül a végponti URL-cím alján látható [ **alkalmazás közzététele** lap](publishapp.md) a [LUIS](luis-reference-regions.md) webhelyet. Az érték **előfizetés-kulcs** név-érték pár. 
+Az Előfizetés-kulcs a **végpont** LUIS-szolgáltatáshoz társított kulcs [az Azure-ban létrehozott](luis-how-to-azure-subscription.md). Ez a kulcs nincs a [kulcs szerzői](#programmatic-key). Ha egy végpont-kulccsal, azt a szerzői műveletekhez kulcs helyett végpont kérelmeket használandó. Az aktuális végpontkulcs belül a végponti URL-cím alján látható [ **alkalmazás közzététele** lap](publishapp.md) a [LUIS](luis-reference-regions.md) webhelyet. Az érték **előfizetés-kulcs** név-érték pár. 
 
 ## <a name="test"></a>Teszt
 
@@ -202,7 +202,7 @@ A [kötegelt tesztelés][batch-testing], az adatok pontok olyan időpontokat jel
 
 A [kötegelt tesztelés][batch-testing], az adatok pontok olyan időpontokat jelölnek, amelyben az alkalmazás megfelelően előre jelezni létezik-e a cél/célentitás utterances.
 
-## <a name="utterance"></a>Utterance
+## <a name="utterance"></a>utterance
 
 Egy utterance például a "könyv 2 jegyek Budapest következő kedd" természetes nyelvű kifejezés. Példa utterances hozzáadódnak a célt. 
 

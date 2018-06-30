@@ -3,7 +3,7 @@ title: Naplófájl Analytics – gyakori kérdések |} Microsoft Docs
 description: Az Azure Naplóelemzés szolgáltatással kapcsolatos gyakran feltett kérdésekre adott válaszokat.
 services: log-analytics
 documentationcenter: ''
-author: MGoedtel
+author: mgoedtel
 manager: carmonm
 editor: ''
 ms.assetid: ad536ff7-2c60-4850-a46d-230bc9e1ab45
@@ -11,15 +11,16 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 06/19/2018
 ms.author: magoedte
-ms.openlocfilehash: 9d34c06461ea5f264f762494d93d76f1dc1bcb3e
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.component: na
+ms.openlocfilehash: eb1a60ff533e9e24f3dc80057129da47a2d9a726
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36221543"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37128530"
 ---
 # <a name="log-analytics-faq"></a>Log Analytics – gyakori kérdések
 A Microsoft FAQ a Microsoft Azure Naplóelemzés gyakran feltett kérdésekre listáját. Amennyiben a Naplóelemzési kapcsolatos további kérdése van, a [vitafóruma](https://social.msdn.microsoft.com/Forums/azure/home?forum=opinsights) és kérdéseit. Ha kérdése van gyakori, azt adja hozzá a cikkben, hogy gyorsan és könnyen megtalálhatók.
@@ -79,13 +80,13 @@ A: a leírt lépésekkel [hozzon létre egy új naplófájl riasztás](../monito
 
 Amikor leállítja az adatgyűjtést kapcsolatos riasztás létrehozása, ha a:
 
-- **Adja meg a riasztási feltétel** adja meg a Naplóelemzési munkaterület erőforrás céljaként.
-- **Riasztási feltételek** adja meg a következőket:
+- A **riasztási feltétel megadásával** határozza meg a célerőforrásként használt Log Analytics-munkaterületet.
+- A **Riasztási feltételek** résznél az alábbiakat adja meg:
    - **A jelzés neve** válasszon **egyéni napló keresés**.
    - A **Keresési lekérdezés** legyen a következő: `Heartbeat | summarize LastCall = max(TimeGenerated) by Computer | where LastCall < ago(15m)`
-   - **Riasztási logika** van **alapján** *eredmények száma* és **feltétel** van *nagyobb, mint* egy **küszöbérték**  a *0*
+   - A **Riasztási logika** **alapja** legyen az *eredmények száma*, a **Feltétel** pedig legyen *nagyobb mint* a következő **küszöbérték** : *0*
    - **Adott időszakban** a *30* perc és **riasztási gyakoriságot** minden *10* perc
-- **Adja meg a riasztás részleteinek** adja meg a következőket:
+- **Határozza meg a riasztás részleteit** az alábbiak megadásával:
    - **Név** való *adatgyűjtés leállítása*
    - A **Súlyosság** legyen *Figyelmeztetés*
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/04/2018
 ms.author: hrushib
-ms.openlocfilehash: 73b5356f63199c7530fe5eef0c4b4b7ee617ff5f
-ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
+ms.openlocfilehash: 9fbf3a6c965bb2f52b71fbac32b289555b922772
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35236120"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37113989"
 ---
 # <a name="periodic-backup-and-restore-in-azure-service-fabric-preview"></a>Rendszeres biztonsági mentése és visszaállítása az Azure Service Fabric (előzetes verzió)
 > [!div class="op_single_selector"]
@@ -50,7 +50,7 @@ A Service Fabric API-k érhetők el a következő funkciók rendszeres kapcsoló
 
 - Rendszeres biztonsági másolatot készíteni megbízható állapotalapú alkalmazások és szolgáltatások services és Reliable Actors-támogatással rendelkező töltse fel a biztonsági mentés (külső) tárolóhelyek ütemezni. Támogatott tárolóhelyek
     - Azure Storage
-    - A fájlmegosztás (helyi)
+    - A fájlmegosztás (helyszíni)
 - Biztonsági másolatok felsorolása
 - Ad hoc biztonsági mentés partíció
 - Visszaállítás egy korábbi biztonsági mentésből partíció

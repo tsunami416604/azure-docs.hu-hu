@@ -13,16 +13,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/27/2018
 ms.author: larryfr
-ms.openlocfilehash: 0c870b0c8de648ac65bec6857bf850c2913e7aeb
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 149f91f3091f08da2e54458d708a17da928c1972
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31412628"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37131735"
 ---
 # <a name="write-to-hdfs-from-apache-storm-on-hdinsight"></a>Írni HDFS az Apache Storm példatopológiái
 
-Megtudhatja, hogyan használja a Storm a HDFS-kompatibilis tárolót a HDInsight alatt futó Apache Storm által használt adatokat írni. HDInsight is használhat HDFS-kompatibilis tárolóként tárolásához Azure Storage és az Azure Data Lake. Storm lehetővé egy [HdfsBolt](http://storm.apache.org/releases/1.1.0/javadocs/org/apache/storm/hdfs/bolt/HdfsBolt.html) írja az adatokat HDFS-összetevő. Ez a dokumentum tájékoztatást nyújt a a HdfsBolt vagy a tároló típusa szerinti írásakor. 
+Megtudhatja, hogyan használja a Storm a HDFS-kompatibilis tárolót a HDInsight alatt futó Apache Storm által használt adatokat írni. HDInsight is használhat HDFS-kompatibilis tárolóként tárolásához Azure Storage és az Azure Data Lake. Storm lehetővé egy [HdfsBolt](http://storm.apache.org/releases/current/javadocs/org/apache/storm/hdfs/bolt/HdfsBolt.html) írja az adatokat HDFS-összetevő. Ez a dokumentum tájékoztatást nyújt a a HdfsBolt vagy a tároló típusa szerinti írásakor. 
 
 > [!IMPORTANT]
 > Ez a dokumentum használt példa topológiát HDInsight alatt futó Storm részét képező összetevők támaszkodik. Szükség lehet az Azure Data Lake Store más alatt futó Apache Storm-fürtök használata esetén működéséhez módosítása.
@@ -33,18 +33,18 @@ Ez a topológia tartalmazó projekt letölthető érhető el [ https://github.co
 
 Ez a projekt fordítása, a következő konfigurációs a fejlesztési környezet szüksége:
 
-* [Java JDK 1.8](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) vagy újabb verzióját. HDInsight 3.5-ös vagy újabb rendszer szükséges Java 8.
+* [Java JDK 1.8](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) vagy újabb verzió. A HDInsight 3.5 vagy magasabb verziójához Java 8 szükséges.
 
 * [Maven 3.x](https://maven.apache.org/download.cgi)
 
-Az alábbi környezeti változókat a fejlesztő munkaállomás Java és a JDK telepítésekor lehet beállítani. Azonban ellenőrizni kell, hogy léteznek, illetve a rendszer a megfelelő értékeket tartalmaz.
+Az alábbi környezeti változók állíthatók be a Java és a JDK fejlesztői munkaállomáson történő telepítésekor. Érdemes azonban ellenőriznie, hogy a fentiek léteznek-e, és a rendszer számára megfelelő értékeket tartalmaznak-e.
 
-* `JAVA_HOME` -a a JDK mappáját kell mutatnia.
-* `PATH` -a következő elérési utakat kell tartalmaznia:
+* `JAVA_HOME` – arra a könyvtárra mutasson, ahová a JDK telepítve lett.
+* `PATH` – a következő elérési utakat kell tartalmaznia:
   
-    * `JAVA_HOME` (vagy ezzel egyenértékű elérési).
-    * `JAVA_HOME\bin` (vagy ezzel egyenértékű elérési).
-    * A mappát, ahová a Maven telepítve van.
+    * `JAVA_HOME` (vagy ezzel egyenértékű elérési út).
+    * `JAVA_HOME\bin` (vagy ezzel egyenértékű elérési út).
+    * A Maven telepítési könyvtára.
 
 ## <a name="how-to-use-the-hdfsbolt-with-hdinsight"></a>A HdfsBolt használata a hdinsight eszközzel
 
@@ -58,14 +58,14 @@ A HdfsBolt használja az Ön által biztosított annak megértése, hogyan lehet
 
 Az alábbi táblázat példákat mutat be a fájl séma használatával különböző helyzetek kezelésére:
 
-| séma | Megjegyzések |
+| Séma | Megjegyzések |
 | ----- | ----- |
 | `wasb:///` | Az alapértelmezett tárfiók egy blob tároló, az Azure Storage-fiók |
 | `adl:///` | Az alapértelmezett tárfiók út egy könyvtár az Azure Data Lake Store. Fürt létrehozása során, amely a gyökérkönyvtár, ahol a fürt HDFS Data Lake Store ad meg a könyvtárban. Például a `/clusters/myclustername/` könyvtár. |
 | `wasb://CONTAINER@ACCOUNT.blob.core.windows.net/` | Egy nem alapértelmezett (további) Azure storage-fiók a fürthöz rendelt. |
 | `adl://STORENAME/` | A Data Lake Store a fürt által használt gyökere. Ez a séma lehetővé teszi, hogy a fürt fájlrendszer tartalmazó könyvtár kívül található adatok eléréséhez. |
 
-További információkért lásd: a [HdfsBolt](http://storm.apache.org/releases/1.1.0/javadocs/org/apache/storm/hdfs/bolt/HdfsBolt.html) hivatkozás az Apache.org webhelyen.
+További információkért lásd: a [HdfsBolt](http://storm.apache.org/releases/current/javadocs/org/apache/storm/hdfs/bolt/HdfsBolt.html) hivatkozás az Apache.org webhelyen.
 
 ### <a name="example-configuration"></a>Példa konfiguráció
 
@@ -164,7 +164,7 @@ Ezt a parancsfájlt a fürt használatáról információkért lásd: a [Parancs
     Amikor a rendszer kéri, adja meg az SSH-felhasználó a fürt létrehozásakor használt jelszót. Jelszó helyett használt nyilvános kulcsot, ha szeretne használni a `-i` paraméterrel adhatja meg a megfelelő titkos kulcs elérési útját.
    
    > [!NOTE]
-   > További információk az `scp` a hdinsight eszközzel, lásd: [az SSH a Hdinsighttal](../hdinsight-hadoop-linux-use-ssh-unix.md).
+   > Az `scp` HDInsighttal való használatával kapcsolatos további információkat [az SSH a HDInsighttal való használatáról szóló cikkben](../hdinsight-hadoop-linux-use-ssh-unix.md) találhat.
 
 2. Miután befejeződött a feltöltés, használja a következő való kapcsolódáshoz a HDInsight-fürthöz SSH használatával. Cserélje le **felhasználói** az a fürt létrehozásakor használt SSH-felhasználónév. Cserélje le a **CLUSTERNAME** elemet a fürt nevére.
    

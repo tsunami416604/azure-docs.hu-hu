@@ -3,23 +3,24 @@ title: Azure Naplóelemzés Analytics Virtuálisgép-bővítmény hibaelhárít�
 description: A jelenség okok és a napló Analytics Virtuálisgép-bővítménnyel a leggyakoribb problémák megoldási írják le a Windows és Linux Azure virtuális gépeken.
 services: log-analytics
 documentationcenter: ''
-author: MGoedtel
+author: mgoedtel
 manager: carmonm
 editor: tysonn
 ms.assetid: ''
 ms.service: log-analytics
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/08/2018
 ms.author: magoedte
-ms.openlocfilehash: d1e70d8f9fb929e3877c88fd4c1169a0c76ac2a6
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.component: na
+ms.openlocfilehash: 700d6b2c3bcd39aed38bf75556bcdcb59d1ab78b
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2018
-ms.locfileid: "29394986"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37128826"
 ---
 # <a name="troubleshooting-the-log-analytics-vm-extension"></a>Hibaelhárítás a napló Analytics Virtuálisgép-bővítmény
 Ez a cikk ismerteti a hibaelhárítást hibákat tapasztalhat a napló Analytics VM kiterjesztésű Windows és Linux rendszerű virtuális gépek Microsoft Azure-on futó, és elhárításának lehetséges megoldások javasolja.
@@ -27,7 +28,7 @@ Ez a cikk ismerteti a hibaelhárítást hibákat tapasztalhat a napló Analytics
 A bővítmény állapotának ellenőrzéséhez hajtsa végre az alábbi lépéseket az Azure portálról.
 
 1. Jelentkezzen be az [Azure Portalra](http://portal.azure.com).
-2. Az Azure portálon kattintson **minden szolgáltatás**. Írja be az erőforrások listájához, **virtuális gépek**. Ahogy elkezd gépelni, a lista a beírtak alapján szűri a lehetőségeket. Válassza ki **virtuális gépek**.
+2. Az Azure Portalon kattintson a **Minden szolgáltatás** lehetőségre. Írja be az erőforrások listájához, **virtuális gépek**. Ahogy elkezd gépelni, a lista a beírtak alapján szűri a lehetőségeket. Válassza ki **virtuális gépek**.
 3. A virtuális gépek listájában keresse meg és válassza ki azt.
 3. Kattintson a virtuális gép **bővítmények**.
 4. A listában ellenőrizze, hogy ha a Log Analyticshez bővítmény engedélyezve van-e.  Linux, az ügynök van megadva, **OMSAgentforLinux** pedig a Windows, az ügynök **MicrosoftMonitoringAgent**.

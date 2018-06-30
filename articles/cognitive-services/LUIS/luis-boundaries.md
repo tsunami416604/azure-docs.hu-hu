@@ -10,12 +10,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: v-geberr
-ms.openlocfilehash: 7f46e55e11c4eb68b515a743b0f51392ffc1269e
-ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
+ms.openlocfilehash: 52bda6a13422ce8f759c40bd454a6b15e92d7a5d
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36266804"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37110296"
 ---
 # <a name="luis-boundaries"></a>LUIS határok
 LUIS több határ területet tartalmaz. Az első a [modell határ](#model-boundaries), amely meghatározza, hogy leképezések, entitások és LUIS szolgáltatásai. A második terület [kvótakorlát](#key-limits) kulcs típusa alapján. A határok harmadik terület a [kombinációja billentyűzet](#keyboard-controls) a LUIS webhely vezérlése. A negyedik terület a [globális régió leképezése](luis-reference-regions.md) között a szerzői webhely LUIS és a LUIS [végpont](luis-glossary.md#endpoint) API-k. 
@@ -35,11 +35,11 @@ LUIS több határ területet tartalmaz. Az első a [modell határ](#model-bounda
 | [Minták](luis-concept-patterns.md)|500 minták alkalmazásonként.<br>Minta hossza legfeljebb 400 karakter lehet.<br>3 Pattern.any entitás / minta<br>Legfeljebb 2 beágyazott választható szövegek minta|
 | [Pattern.any](./luis-concept-entity-types.md)|100 alkalmazásonként, 3 pattern.any entitás / minta |
 | [Kifejezéslista][phrase-list]|10 kifejezés listák, 5000 elemek száma listája|
-| [Előre elkészített entitások](./Pre-builtEntities.md) | Nem korlátozott|
+| [Előre elkészített entitások](./Pre-builtEntities.md) | nem korlátozott|
 | [Reguláris kifejezés entitások](./luis-concept-entity-types.md)|20 entitások<br>500 karaktert max. egy entitás Reguláriskifejezés-mintának|
 | [Szerepkörök](luis-concept-roles.md)|300 szerepkörök alkalmazásonként. 10 szerepkörök entitásonként|
 | **[Egyszerű](./luis-concept-entity-types.md)| 100 entitást|
-| [Utterance][utterances] | 500 karakternél|
+| [utterance][utterances] | 500 karakternél|
 | [Utterances][utterances] | 15 000 alkalmazásonként|
 | [Verzió neve][luis-how-to-manage-versions] | 10 karakterek alfanumerikus és időszak korlátozva (.) |
 
@@ -56,17 +56,17 @@ A célt és az entitás neve a következő karakterek nem használhatók:
 |`}`|Jobb oldali kapcsos zárójelet|
 |`[`|Nyitó szögletes zárójel|
 |`]`|Szögletes zárójel|
-|`\`|fordított perjel|
+|`\`|Fordított perjel|
 
 ## <a name="key-limits"></a>Korlátozza a kulcs
-A szerzői műveletekhez kulcs különböző korlátozhatja a jelentéskészítő és -végpont rendelkezik. A LUIS szolgáltatás előfizetés kulcsa csak érvényes végpont lekérdezések.
+A szerzői műveletekhez kulcs különböző korlátozhatja a jelentéskészítő és -végpont rendelkezik. A LUIS szolgáltatási végpont kulcsa csak érvényes végpont lekérdezések.
 
 |Kulcs|Szerzői műveletek|Végpont|Cél|
 |--|--|--|--|
 |Szerzői/alapszintű|1 millió/hónap, 5/másodperc|1 hó/hónap, 5/másodperc|Az LUIS alkalmazás készítése|
 |[Előfizetés] [ pricing] - F0 - ingyenes szint |érvénytelen|10 év/hónap, 5/másodperc|A LUIS végpont lekérdezése|
 |[Előfizetés] [ pricing] - S0 – az alapszintű csomag|érvénytelen|50/másodperc|A LUIS végpont lekérdezése|
-|[Integráció a céggel kapcsolatos véleményeket elemzés](publishapp.md#enable-sentiment-analysis)|érvénytelen|Nem kell fizetni|Véleményeket információt, beleértve a kulcs kifejezés adatok kinyerése hozzáadása |
+|[Integráció a céggel kapcsolatos véleményeket elemzés](publishapp.md#enable-sentiment-analysis)|érvénytelen|nem kell fizetni|Véleményeket információt, beleértve a kulcs kifejezés adatok kinyerése hozzáadása |
 |Beszéd-integráció|érvénytelen|Végpont kérelmek $5.50 USD/1 év|Alakítsa át a szóbeli utterance szöveg utterance, LUIS eredményeket adjon.|
 
 ## <a name="keyboard-controls"></a>Billentyűzet vezérlők

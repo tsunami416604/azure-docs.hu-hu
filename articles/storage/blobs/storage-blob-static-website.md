@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: article
 ms.date: 06/26/18
 ms.author: mihauss
-ms.openlocfilehash: 7021a0499547818d702d14aecb9d8e451a820181
-ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
+ms.openlocfilehash: df1661b5fe7a2c0e37deef5259d6b5842ed6ee5e
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37025808"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37131609"
 ---
 # <a name="static-website-hosting-in-azure-storage-preview"></a>Statikus webhely üzemeltetéséhez az Azure Storage (előzetes verzió)
 Az Azure Storage most kínál statikus webhely (előzetes verzió) tároló, telepíthet költséghatékony, méretezhető modern webalkalmazások Azure engedélyezése. Statikus webhely, a weblap tartalmazza a statikus tartalom és a JavaScript vagy más ügyféloldali kódot. Ezzel szemben, dinamikus webhelyek függ a kiszolgálóoldali kódot, és segítségével működtethető [Azure Web Apps](/app-service/app-service-web-overview.md).
@@ -43,6 +43,9 @@ Indíthatja el a webalkalmazást az Azure Storage, konfigurálja a funkciót, az
 ![](media/storage-blob-static-website/storage-blob-static-website-portal-config.PNG)
 
 Töltse fel a webkiszolgáló eszközöket a "$web" tároló, amely a statikus webhely engedélyezése részeként jött létre. Ezt megteheti közvetlenül az Azure portálon is, vagy kihasználhatja az [Azure Tártallózó](https://azure.microsoft.com/features/storage-explorer/) teljes könyvtárstruktúrák feltöltéséhez. Ügyeljen arra, hogy egy konfigurált nevű index dokumentum tartalmazza. Ebben a példában a dokumentum neve: "index.html".
+
+> [!NOTE]
+> A dokumentum nevét kis-és nagybetűket, ezért a fájl nevéhez, a tárolási pontosan egyezniük kell.
 
 Végül nyissa meg a webes végponthoz tesztelje a webhelyet.
 

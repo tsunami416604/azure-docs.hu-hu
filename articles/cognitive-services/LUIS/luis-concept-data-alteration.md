@@ -9,12 +9,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 03/26/2018
 ms.author: v-geberr
-ms.openlocfilehash: 4fb1a5542bb56bd853984e66198ebfbd189451f8
-ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
+ms.openlocfilehash: ab9b9fe5c34c334fd65971f9040c8e43467aa242
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36266865"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37112150"
 ---
 # <a name="data-alterations"></a>Adatok változások
 LUIS segítségével kezelheti a utterance előtt vagy közben az előrejelzés módszereket biztosítja. 
@@ -31,7 +31,7 @@ A végponthoz két paraméterei helyesírás korrekciók működéséhez szüks�
 |Param|Érték|
 |--|--|
 |`spellCheck`|logikai|
-|`bing-spell-check-subscription-key`|[Bing helyesírás ellenőrizze API V7](https://azure.microsoft.com/services/cognitive-services/spell-check/) előfizetés kulcs|
+|`bing-spell-check-subscription-key`|[Bing helyesírás ellenőrizze API V7](https://azure.microsoft.com/services/cognitive-services/spell-check/) végpontkulcs|
 
 Ha [Bing helyesírás ellenőrizze API V7](https://azure.microsoft.com/services/cognitive-services/spell-check/) észleli a hibát, az eredeti utterance és a javított utterance a rendszer adja vissza előrejelzéseket együtt a végpont.
 

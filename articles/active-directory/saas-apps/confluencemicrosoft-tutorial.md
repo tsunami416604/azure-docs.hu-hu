@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/16/2018
 ms.author: jeedes
-ms.openlocfilehash: d8f3c0e4dec05b2ed968a3493a7cc560231e7331
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: b57522933647c9d1d5518740d41b624b199a020e
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36215691"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37110558"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-confluence-saml-sso-by-microsoft"></a>Oktatóanyag: Azure Active Directoryval integrált való összefolyás felett SAML SSO Microsoft
 
@@ -43,7 +43,7 @@ A Microsoft Azure Active Directory-fiókot használ Atlassian való összefolyá
 Való összefolyás felett SAML-alapú egyszeri Microsoft Azure AD-integrációs konfigurálásához a következőkre van szükség:
 
 - Az Azure AD szolgáltatásra
-- Való összefolyás felett kiszolgáló alkalmazás telepítve van egy 64 bites Windows server (a helyszínen vagy a felhő infrastruktúra-szolgáltatási infrastruktúra)
+- Való összefolyás felett kiszolgáló alkalmazás telepítve van egy 64 bites Windows server (helyszíni vagy a felhő infrastruktúra-szolgáltatási infrastruktúra)
 - A kiszolgálóhoz való összefolyás felett HTTPS-kompatibilis
 - Megjegyzés: a támogatott verziók való összefolyás felett beépülő modul szakasz alatt szerepel.
 - Való összefolyás felett kiszolgáló elérhető-e internetes különösen az Azure AD bejelentkezési lapot a hitelesítéshez, és képes a jogkivonat fogadására Azure ad-érdemes
@@ -222,11 +222,11 @@ Ez a szakasz célja a tesztfelhasználó létrehozása az Azure portálon Britta
  
 ### <a name="creating-a-confluence-saml-sso-by-microsoft-test-user"></a>Egy való összefolyás felett SAML SSO által Microsoft tesztfelhasználó létrehozása
 
-Ahhoz, hogy az Azure AD-felhasználók való összefolyás felett jelentkezzen be a helyi kiszolgálón, akkor ki kell építenie való összefolyás felett SAML SSO be Microsoft által. A Microsoft által való összefolyás felett a SAML SSO egy kézi tevékenység.
+Ahhoz, hogy az Azure AD-felhasználók jelentkezzen be a helyi kiszolgálóra való összefolyás felett, akkor ki kell építenie való összefolyás felett SAML SSO be Microsoft által. A Microsoft által való összefolyás felett a SAML SSO egy kézi tevékenység.
 
 **Felhasználói fiók létrehozásához hajtsa végre az alábbi lépéseket:**
 
-1. Jelentkezzen be a való összefolyás felett a kiszolgálón helyi rendszergazdaként.
+1. Jelentkezzen be rendszergazdaként a való összefolyás felett a helyi kiszolgálóra.
 
 2. Vigye a mutatót a ikonjára, majd kattintson a **felhasználókezelés**.
 

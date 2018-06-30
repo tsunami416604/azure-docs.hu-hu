@@ -3,7 +3,7 @@ title: Az Azure Naplóelemzés hubok figyelése |} Microsoft Docs
 description: A Surface Hub megoldást használni a Surface hub állapotának nyomon követése és megérteni, hogyan kívánják felhasználni.
 services: log-analytics
 documentationcenter: ''
-author: MGoedtel
+author: mgoedtel
 manager: carmonm
 editor: ''
 ms.assetid: 8b4e56bc-2d4f-4648-a236-16e9e732ebef
@@ -11,16 +11,16 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/16/2018
 ms.author: magoedte
-ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 525b3ced979834a956f91ef8c6f647b659ca21f1
-ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
+ms.component: na
+ms.openlocfilehash: dfbcdce293d6d47267892487d0760410665af94a
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2018
-ms.locfileid: "29179225"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37130770"
 ---
 # <a name="monitor-surface-hubs-with-log-analytics-to-track-their-health"></a>A Naplóelemzési nyomon követéséhez az állapotukat Surface hub figyelése
 
@@ -31,7 +31,7 @@ Ez a cikk ismerteti, hogyan használhatja a Surface Hub-megoldás a Log Analytic
 Minden egyes Surface Hub a Microsoft Monitoring Agent telepítve van. Annak az ügynököt, hogy küldhet adatokat a Surface Hub a Naplóelemzési keresztül. Naplófájlok a Surface hub és a olvasni, majd Naplóelemzési küldött. Problémák, például kiszolgálók nem kapcsolódik, a naptár nem szinkronizálja, vagy ha a fiók nem tud bejelentkezni, a Surface Hub irányítópult Naplóelemzési jelennek meg a Skype. Az adatok az irányítópult használatával azonosíthatja az eszközök nem fut, vagy amelyek egyéb problémákat, amelynek, és potenciálisan alkalmazása az észlelt probléma javítását.
 
 ## <a name="install-and-configure-the-solution"></a>Telepítse és konfigurálja a megoldást
-Az alábbi információk segítségével telepítse és konfigurálja a megoldást. A Naplóelemzési a Surface hub kezeléséhez, a következőkre lesz szüksége:
+A megoldás telepítésekor és konfigurálásakor vegye figyelembe az alábbi információkat. A Naplóelemzési a Surface hub kezeléséhez, a következőkre lesz szüksége:
 
 * A [Naplóelemzési előfizetés](https://azure.microsoft.com/pricing/details/log-analytics/) szintje, amely támogatja a figyelni kívánt eszközök számára. Napló Analytics díjszabásáról változó attól függően, hogy hány eszköz regisztrálva van, és mennyi adatot azt folyamatokat. Érdemes figyelembe venni a, a Surface Hub-bevezetés tervezése során.
 
@@ -69,7 +69,7 @@ Ha az Intune használatával nem a környezete kezeléséhez, manuálisan keresz
 3. Kattintson a **az eszköz**, és az alatt **figyelés**, kattintson a **OMS-beállítások konfigurálása**.
 4. Válassza ki **engedélyezze a megfigyelést**.
 5. Az OMS-beállításai párbeszédpanelen írja be a Naplóelemzési **munkaterület azonosítója** , és írja be a **Munkaterületkulcsot**.  
-   ![settings](./media/log-analytics-surface-hubs/settings.png)
+   ![Beállítások](./media/log-analytics-surface-hubs/settings.png)
 6. Kattintson a **OK** a konfigurálás befejezéséhez.
 
 Megerősítést felszólító-e a konfiguráció sikeresen alkalmazta a eszköz jelenik meg. Ha igen, megjelenik egy üzenet arról, hogy az ügynök sikeresen csatlakoztatva Naplóelemzési. Az eszköz ezután elindítja az adatok küldése a Naplóelemzési, ahol megtekintheti és a működésre.

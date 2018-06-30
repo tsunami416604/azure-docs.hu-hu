@@ -9,12 +9,12 @@ services: iot-edge
 ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: kgremban
-ms.openlocfilehash: cd517d7e652b38c7ecf28a17657936698416413a
-ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
+ms.openlocfilehash: 039ca304633eafa8211daffe1a4241b326eda6fb
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37036004"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37114101"
 ---
 # <a name="install-azure-iot-edge-runtime-on-windows-to-use-with-linux-containers"></a>Azure IoT peremhálózati futásidejű telepítse a Windows, Linux tárolók használata
 
@@ -87,15 +87,37 @@ Windows Registry Editor Version 5.00
 
 ## <a name="configure-the-azure-iot-edge-security-daemon"></a>Az Azure IoT peremhálózati biztonsági démon konfigurálása
 
-A démon a konfigurációs fájlban a következő konfigurálható `C:\ProgramData\iotedge\config.yaml` a peremhálózati eszköz konfigurálható <!--[automatically via Device Provisioning Service][lnk-dps] or--> manuálisan használatával egy [eszköz kapcsolati karakterlánc][lnk-dcs].
+A démon a konfigurációs fájlban a következő konfigurálható `C:\ProgramData\iotedge\config.yaml`.
 
-Kézi konfigurálás, adja meg az eszköz kapcsolati karakterlánc **kiépítés:** szakasza **config.yaml**
+A peremhálózati eszköz segítségével manuálisan konfigurálható egy [eszköz kapcsolati karakterlánc] [ lnk-dcs] vagy [eszköz kiépítése szolgáltatáshoz történő automatikus] [ lnk-dps].
 
-```yaml
-provisioning:
-  source: "manual"
-  device_connection_string: "<ADD DEVICE CONNECTION STRING HERE>"
-```
+* Kézi konfigurálás, állítsa vissza a **manuális** létesítés. Frissítse az értéket a **device_connection_string** saját IoT peremhálózati eszközön kapcsolati karakterlánccal.
+
+   ```yaml
+   provisioning:
+     source: "manual"
+     device_connection_string: "<ADD DEVICE CONNECTION STRING HERE>"
+  
+   # provisioning: 
+   #   source: "dps"
+   #   global_endpoint: "https://global.azure-devices-provisioning.net"
+   #   scope_id: "{scope_id}"
+   #   registration_id: "{registration_id}"
+   ```
+
+* Automatikus konfigurációs, állítsa vissza a **terjesztési pontok** létesítés. Módosítsa a **scope_id** és **registration_id** az IoT Hub terjesztési pontok-példányt és az IoT-peremhálózati eszköz TPM-mel értékeivel. 
+
+   ```yaml
+   # provisioning:
+   #   source: "manual"
+   #   device_connection_string: "<ADD DEVICE CONNECTION STRING HERE>"
+  
+   provisioning: 
+     source: "dps"
+     global_endpoint: "https://global.azure-devices-provisioning.net"
+     scope_id: "{scope_id}"
+     registration_id: "{registration_id}"
+   ```
 
 A nevét, a peremhálózati eszköz használatával `hostname` a PowerShell parancsot, és állítsa be a következő **állomásnév:** az a konfiguráció yam. Példa:
 
@@ -156,6 +178,9 @@ Start-Service iotedge
 
 ## <a name="verify-successful-installation"></a>Sikeres telepítésének ellenőrzése
 
+Ha követte a **kézi konfigurálás** az előző szakaszban található lépéseket, a peremhálózati IoT futásidejű kell lennie, sikeresen telepített és az eszközön futó. Ha követte a **automatikus konfiguráció** lépéseit, majd végre kell hajtania az alábbi lépéseket, hogy a futtatókörnyezet lehet az eszköz regisztrálása az IoT hub, az Ön nevében. A következő lépéseket lásd: [létrehozása és biztosítása a szimulált TPM peremhálózati eszköz a Windows](how-to-auto-provision-simulated-device-windows.md#create-a-tpm-environment-variable).
+
+
 Az IoT-Edge-szolgáltatás állapotát ellenőrizheti: 
 
 ```powershell
@@ -191,8 +216,8 @@ Ha problémába ütközik a peremhálózati futtatókörnyezetben telepítése, 
 
 <!-- Links -->
 [lnk-docker-config]: https://docs.docker.com/docker-for-windows/#switch-between-windows-and-linux-containers
-[lnk-dcs]: ../iot-hub/quickstart-send-telemetry-dotnet.md#register-a-device
-[lnk-dps]: how-to-simulate-dps-tpm.md
+[lnk-dcs]: how-to-register-device-portal.md
+[lnk-dps]: how-to-auto-provision-simulated-device-windows.md
 [lnk-oci]: https://www.opencontainers.org/
 [lnk-moby]: https://mobyproject.org/
 [lnk-trouble]: troubleshoot.md

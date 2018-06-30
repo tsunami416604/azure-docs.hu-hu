@@ -7,12 +7,12 @@ author: binderjoe
 ms.author: jbinder
 ms.date: 10/19/2017
 ms.topic: article
-ms.openlocfilehash: 667752d8830cdac5e2338fd3ed7904917123be94
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: 5d313bda6a1067e6d023f62fb26704f9aee5c7bf
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2017
-ms.locfileid: "26364470"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37114472"
 ---
 # <a name="terraform-with-azure"></a>Az Azure-ral Terraform
 
@@ -39,9 +39,9 @@ Terraform biztosít egy parancssori felület (CLI), amely lehetővé teszi a fel
 
 ## <a name="deploy-infrastructure-to-multiple-clouds"></a>Több felhők infrastruktúra telepítése
 
-Terraform esetén több felhős rendszerekben, amelyen üzembe van helyezve hasonló infrastruktúra Azure és a további szolgáltatók vagy a helyszíni adatközpontokkal népszerű eszköz választani. Ez lehetővé teszi a fejlesztők számára, hogy az azonos eszközök és a konfigurációs fájlok segítségével kezelheti az infrastruktúra több felhőalapú szolgáltatók.
+Terraform esetén több felhős rendszerekben, amelyen üzembe van helyezve hasonló infrastruktúra Azure és a további szolgáltatók vagy a helyszíni adatközpontját népszerű eszköz választani. Ez lehetővé teszi a fejlesztők számára, hogy az azonos eszközök és a konfigurációs fájlok segítségével kezelheti az infrastruktúra több felhőalapú szolgáltatók.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Most, hogy áttekintést Terraform és előnyeit, az alábbiakban javasolt lépéseket:
 

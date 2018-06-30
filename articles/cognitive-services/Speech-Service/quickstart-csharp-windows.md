@@ -10,12 +10,12 @@ ms.component: speech-service
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: wolfma
-ms.openlocfilehash: f0a2ec617c71f9e86610017d3b6fa961bbd14322
-ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
-ms.translationtype: HT
+ms.openlocfilehash: 14e5110385667d0f2135251eef53ff20ada08444
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/28/2018
-ms.locfileid: "37083086"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37111252"
 ---
 # <a name="quickstart-recognize-speech-using-the-cognitive-services-speech-c-sdk"></a>Gyors üzembe helyezés: Ismeri fel a beszédfelismerés kognitív szolgáltatások beszéd C# SDK használatával
 
@@ -63,7 +63,7 @@ Ebben a szakaszban ad hozzá egy új platform a konfigurációt, amely megfelel 
 
 ## <a name="add-the-sample-code"></a>A mintakód hozzáadása
 
-1. Az a `Program.cs` a Visual Studio-projekt törzsét cserélje a `Program` a következő osztályra. Ellenőrizze, hogy az előfizetés és a régió lecseréli egy, a szolgáltatás beszerezte.
+1. Az a `Program.cs` fájlt a Visual Studio-projekt, cserélje le a választörzs a `Program` a következő osztályra. Ellenőrizze, hogy az Előfizetés kulcs lecseréli a saját, és módosítsa a [régió](regions.md) , amely rendelkezik az előfizetéshez tartozó (például `westus` az ingyenes próba-előfizetésre vonatkozó).
 
     [!code-csharp[Quickstart Code](~/samples-cognitive-services-speech-sdk/Windows/quickstart-csharp/Program.cs#code)]
 

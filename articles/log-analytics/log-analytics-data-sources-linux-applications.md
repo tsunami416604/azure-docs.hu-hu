@@ -9,17 +9,18 @@ editor: tysonn
 ms.assetid: f1d5bde4-6b86-4b8e-b5c1-3ecbaba76198
 ms.service: log-analytics
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/04/2017
 ms.author: magoedte
-ms.openlocfilehash: bfb9b62a8965fa1f7daf62d814665ca23491cc04
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.component: na
+ms.openlocfilehash: 528274844908f9a1b2a604de42d8e84f4dc7d6f2
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32168282"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37127351"
 ---
 # <a name="collect-performance-counters-for-linux-applications-in-log-analytics"></a>Linux Log Analytics-alkalmazások a teljesítményszámlálók adatainak összegyűjtése 
 Ez a cikk részletesen konfigurálásához a [Linux OMS-ügynököt](https://github.com/Microsoft/OMS-Agent-for-Linux) adott alkalmazásokra vonatkozó teljesítményszámlálók adatainak összegyűjtése.  A cikk tartalmazza azokat a következők:  
@@ -82,7 +83,7 @@ Az alábbi táblázat részletesen szintaxis mycimprovauth használatához.
 | automatikus frissítés *false vagy true* | mycimprovauth autoupdate hamis | A készlet-e a hitelesítés fájl automatikusan frissíti a indítsa újra, vagy frissíteni. |
 | alapértelmezett *bind-cím felhasználónév-jelszó* | mycimprovauth alapértelmezett 127.0.0.1 legfelső szintű pwd | Azt állítja be az alapértelmezett példányt a MySQL OMI hitelesítési fájlt.<br>A jelszó mező egyszerű szövegként kell megadni – – a MySQL OMI hitelesítési fájlban jelszó Base 64 kódolású. |
 | Törlés *alapértelmezett vagy port_num* | mycimprovauth 3308 | A megadott példány törlése, vagy alapértelmezett, vagy portszámot. |
-| súgó | mycimprov Súgó | Parancsok használatához felsorolása. |
+| help | mycimprov Súgó | Parancsok használatához felsorolása. |
 | Nyomtatás | nyomtatási mycimprov | Kinyomtatása egy könnyen áttekinthető MySQL OMI hitelesítési fájlt. |
 | Frissítse a port_num *bind-cím felhasználónév-jelszó* | mycimprov frissítés 3307 127.0.0.1 legfelső szintű pwd | A megadott példány frissít, vagy hozzáadja a példány, ha nem létezik. |
 

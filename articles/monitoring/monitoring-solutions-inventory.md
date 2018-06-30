@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/09/2018
+ms.date: 06/26/2018
 ms.author: bwren
-ms.openlocfilehash: ab07a11883b3462c4b9d0f9adab6c55e4fe49d78
-ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
+ms.openlocfilehash: 887611f1293e276070df51ac06df51a994161ec1
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "34010251"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37112192"
 ---
 # <a name="data-collection-details-for-management-solutions-in-azure"></a>Az gyűjtemény adatait a felügyeleti megoldások Azure-ban
 Ez a cikk felsorolja a [megoldások](monitoring-solutions.md) a Microsoft által kínált mutató hivatkozásokat tartalmaz a részletes dokumentációt.  A metódus és a Log Analyticshez való használatra vonatkozó adatok gyűjtésének gyakorisága információkat is biztosít.  Ez a cikk a információt elérhető különböző megoldások azonosítására és a különböző felügyeleti megoldások adatok megismeréséhez és kapcsolat követelmények megértése érdekében használhatja. 
@@ -65,9 +65,6 @@ Az oszlopok magyarázata a következők:
 | [Hálózati teljesítményfigyelő](../log-analytics/log-analytics-network-performance-monitor.md) | Windows | &#8226; | &#8226; |  |  |  | TCP kézfogások 5 másodperces, adatokat küld át 3 percenként |
 | [Az Office 365 Analytics (előzetes verzió)](../operations-management-suite/oms-solution-office-365.md) |Windows | | | | | |az értesítés |
 | **Felügyeleti megoldás** | **Platform** | **A Microsoft figyelési ügynök** | **Operations Manager-ügynök** | **Azure Storage** | **Az Operations Manager szükséges?** | **Az Operations Manager ügynök adatait a felügyeleti csoport keresztül küldött** | **Gyűjtemény gyakorisága** |
-| [Biztonság és a naplózási](../operations-management-suite/oms-security-getting-started.md) (Syslog) | Linux | &#8226; | | |  |  | érkezésükkor |
-| [Biztonság és a naplózási](../operations-management-suite/oms-security-getting-started.md) (and Security event logs) |Windows |&#8226; |&#8226; |&#8226; |  |&#8226; | érkezésükkor |
-| [Biztonság és a naplózási](../operations-management-suite/oms-security-getting-started.md) (tűzfal-naplók) |Windows |&#8226; |&#8226; |  |  |  |érkezésükkor |
 | [Service Fabric Analytics (előzetes verzió)](../log-analytics/log-analytics-service-fabric.md) |Windows | | |&#8226; | | |5 perc |
 | [Szolgáltatástérkép](../operations-management-suite/operations-management-suite-service-map.md) | Windows és Linux | &#8226; | &#8226; |  |  |  | 15 másodperc |
 | [SQL-elemzés](../log-analytics/log-analytics-sql-assessment.md) |Windows |&#8226; |&#8226; | | |&#8226; |7 nap |

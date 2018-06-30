@@ -9,12 +9,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/07/2018
 ms.author: govindk
-ms.openlocfilehash: de52521824c146f63fb16e2690e2a24167ae2efe
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: e6b263c1eb9fe3b151f0a51b5da9a92b8ced4549
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "36333912"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37109742"
 ---
 # <a name="secure-access-to-an-azure-cosmos-db-account-by-using-azure-virtual-network-service-endpoint"></a>Biztonságos hozzáférés a Azure Cosmos DB fiókkal az Azure Virtual Network szolgáltatás végpontjának használatával
 
@@ -249,7 +249,7 @@ További NSG bővebben lásd: címkéket [virtuális hálózati szolgáltatás c
 
 Ez a két funkció kiegészíteni egymáshoz az Azure Cosmos DB eszközök-elszigetelés érdekében, és azokat biztonságos. IP használata tűzfal biztosítja, hogy statikus IP-címek is el Azure Cosmos DB fiók.  
 
-### <a name="can-an-on-premise-devices-ip-address-that-is-connected-through-azure-virtual-network-gatewayvpn-or-express-route-gateway-access-azure-cosmos-db-account"></a>Egy helyi eszköz IP-címet, amely az Azure Virtual Network gateway(VPN) vagy Express route-átjárón keresztül csatlakozik Azure Cosmos-adatbázis fiók hozzáférhet?  
+### <a name="can-an-on-premises-devices-ip-address-that-is-connected-through-azure-virtual-network-gatewayvpn-or-express-route-gateway-access-azure-cosmos-db-account"></a>Az Azure Virtual Network gateway(VPN) vagy Express route-átjárón keresztül csatlakozik egy helyszíni eszköz IP-cím Cosmos. Azure-adatbázis fiók hozzáférhet?  
 
 A helyszíni eszközök IP-cím vagy IP-címtartomány hozzá kell adni a statikus IP-címek listájához a Azure Cosmos DB fiók eléréséhez.  
 

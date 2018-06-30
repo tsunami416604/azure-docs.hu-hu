@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/15/2018
 ms.author: abnarain
-ms.openlocfilehash: 832e4672a15368768977feedade83707a26b9965
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: be2ac5427516bc29f87052667e4b44be52757f1e
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37048788"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37113153"
 ---
 # <a name="how-to-create-and-configure-self-hosted-integration-runtime"></a>Hozzon létre, és Self-hosted integrációs futásidejű konfigurálása
 Az integrációs futásidejű (IR) a számítási infrastruktúrától által használt Azure Data Factory adatok integrációs funkciók különböző hálózati környezetek között. Infravörös kapcsolatos részletekért lásd: [integrációs futásidejű áttekintése](concepts-integration-runtime.md).
@@ -101,7 +101,7 @@ Amikor az adatok a helyszínen és a felhő között, a tevékenység egy önál
 
 
 ## <a name="high-availability-and-scalability"></a>Magas rendelkezésre állás és méretezhetőség
-Egy Self-hosted integrációs futásidejű társítható több helyszíni gépeket. Ezek a gépek csomópontoknak nevezzük. Egy Self-hosted integrációs futásidejű társított legfeljebb négy csomópont lehet. Több csomópont (a telepített átjárót a helyszíni gépeket) rendelkező logikai átjáró előnyei a következők:
+Egy Self-hosted integrációs futásidejű társítható több a helyszíni gépeket. Ezek a gépek csomópontoknak nevezzük. Egy Self-hosted integrációs futásidejű társított legfeljebb négy csomópont lehet. Több csomópont (a telepített átjárót a helyszíni gépeket) rendelkező logikai átjáró előnyei a következők:
 1. Magas rendelkezésre állás Self-hosted integrációs futtatókörnyezet, hogy már nem a hibaérzékeny pontok kialakulását a Big Data típusú adatok megoldás vagy a felhőbeli adatok integráció az Azure Data Factoryvel, legfeljebb 4 csomópontokkal folytonosságának biztosítása érdekében.
 2. A helyszíni és a felhő közötti adatátvitel során teljesítményére és átviteli továbbfejlesztett adattárolókhoz. További információ [teljesítmény összehasonlítása](copy-activity-performance.md).
 

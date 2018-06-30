@@ -9,12 +9,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: v-geberr;
-ms.openlocfilehash: 28fde09fa9291fbcd64ce4542a008f48dd0018d1
-ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
+ms.openlocfilehash: 8d8620a1c53037be6f1a33083f41964655a04921
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36265252"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37112116"
 ---
 # <a name="data-extraction"></a>Adatok kinyerése
 LUIS lehetővé teszi az adatok lehívása egy felhasználó természetes nyelvű utterances. Az adatokat oly módon, hogy azt használhatja a program, alkalmazás vagy chatbot cselekedhetnek. ki kell olvasni.
@@ -26,7 +26,7 @@ LUIS biztosít a közzétett adatait [végpont](luis-glossary.md#endpoint). A **
 
 `https://westus.api.cognitive.microsoft.com/luis/v2.0/apps/<appID>?subscription-key=<subscription-key>&verbose=true&timezoneOffset=0&q=book 2 tickets to paris`
 
-A `appID` érhető el a **beállítások** oldalán a LUIS függvényalkalmazás és az URL-cím (után `/apps/`) LUIS alkalmazást szerkesztésekor. A `subscription-key` lekérdezése az alkalmazásban használt végpont kulcsa. Használhatja az ingyenes szerzői/alapszintű kulcs LUIS való ismerkedés során, fontos, hogy az Előfizetés kulcs váltson egy kulcsot, amely támogatja a [várható LUIS használati](luis-boundaries.md#key-limits). A `timezoneOffset` egység érték perc.
+A `appID` érhető el a **beállítások** oldalán a LUIS függvényalkalmazás és az URL-cím (után `/apps/`) LUIS alkalmazást szerkesztésekor. A `subscription-key` lekérdezése az alkalmazásban használt végpont kulcsa. Használhatja az ingyenes szerzői/alapszintű kulcs LUIS való ismerkedés során, fontos, hogy módosítsa a végpont kulcs egy kulcsot, amely támogatja a [várható LUIS használati](luis-boundaries.md#key-limits). A `timezoneOffset` egység érték perc.
 
 A **HTTPS válasz** tartalmazza az összes LUIS megállapíthatja, hogy a célt és egyéb entitások adatokat az aktuális közzétett modell a következők alapján az átmeneti vagy üzemi végpont. A végpont URL-címe megtalálható a [LUIS] [ LUIS] webhely **közzététel** lap. 
 
@@ -540,7 +540,7 @@ Pattern.any entitások használt sablon utterances, a változó hosszúságú en
 ```
 
 
-## <a name="sentiment-analysis"></a>Véleményelemzés
+## <a name="sentiment-analysis"></a>Hangulatelemzés
 Ha véleményeket elemzés van konfigurálva, a a LUIS json válasz tartalmazza véleményeket elemzés. További információ a céggel kapcsolatos véleményeket elemzés a [Szövegelemzések](https://docs.microsoft.com/azure/cognitive-services/text-analytics/) dokumentációját.
 
 ### <a name="sentiment-data"></a>Véleményeket adatok

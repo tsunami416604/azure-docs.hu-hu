@@ -9,12 +9,12 @@ ms.date: 04/12/2018
 ms.topic: article
 ms.service: active-directory
 ms.workload: identity
-ms.openlocfilehash: 7e2eb9bad8c95e61d5b750cacd0724fc2536f2c5
-ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
+ms.openlocfilehash: 01b76ea902ec92f8ab32bc00cff27b1b890ce9ff
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36294109"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37113102"
 ---
 # <a name="choose-the-right-authentication-method-for-your-azure-active-directory-hybrid-identity-solution"></a>Válassza ki a megfelelő hitelesítési módszert az Azure Active Directory hibrid identitáskezelési megoldás 
 
@@ -159,7 +159,7 @@ Az alábbi ábrák szerkezeti szükséges minden egyes hitelesítési módszer c
 |Szempont|Jelszókivonat-szinkronizálást + zökkenőmentes SSO|Áteresztő hitelesítés + zökkenőmentes SSO|Összevonás az AD FS rendszerrel|
 |:-----|:-----|:-----|:-----|
 |Amikor megtörténik a hitelesítési?|A felhőben|A biztonságos jelszó ellenőrzési adatcsere a helyszíni hitelesítési ügynök után a felhőben|Helyszíni követelmények|
-|Mik a helyi kiszolgáló követelményei a kiépítési rendszer túl: az Azure AD Connect?|None|Egy kiszolgáló minden további hitelesítési ügynök|Két vagy több AD FS-kiszolgáló<br><br>A szegélyhálózati/DMZ hálózatban két vagy több WAP-kiszolgálókkal|
+|Mik a helyszíni kiszolgáló követelményei a kiépítési rendszer túl: az Azure AD Connect?|None|Egy kiszolgáló minden további hitelesítési ügynök|Két vagy több AD FS-kiszolgáló<br><br>A szegélyhálózati/DMZ hálózatban két vagy több WAP-kiszolgálókkal|
 |Mik azok a helyszíni Internet követelményei és hálózati túl a kiépítési rendszer?|None|[Kimenő Internet-hozzáférés](https://docs.microsoft.com/en-us/azure/active-directory/connect/active-directory-aadconnect-pass-through-authentication-quick-start) a kiszolgálók futtató hitelesítési ügynökök|[A bejövő Internet-hozzáférés](https://docs.microsoft.com/en-us/windows-server/identity/ad-fs/overview/ad-fs-requirements) a WAP-kiszolgálókkal a szegélyhálózatban található<br><br>A bejövő hálózati hozzáférést AD FS-kiszolgáló a WAP-kiszolgálókkal a szegélyhálózatban található<br><br>A hálózati terheléselosztás|
 |Nem szükséges egy SSL-tanúsítvány?|Nem|Nem|Igen|
 |Van egy állapotfigyelési megoldás?|Nem szükséges|Ügynök állapota által biztosított [Azure Active Directory felügyeleti központban](https://docs.microsoft.com/en-us/azure/active-directory/connect/active-directory-aadconnect-troubleshoot-pass-through-authentication)|[Azure AD Connect Health](https://docs.microsoft.com/en-us/azure/active-directory/connect-health/active-directory-aadconnect-health-adfs)|

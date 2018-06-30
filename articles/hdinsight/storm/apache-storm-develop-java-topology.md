@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 02/20/2018
 ms.author: larryfr
 ms.custom: H1Hack27Feb2017,hdinsightactive,hdiseo17may2017
-ms.openlocfilehash: 5f2a6de9737569c75e0350e2aceec19b149d9549
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 105c10423a9688300ba74874769b162e29572185
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31418492"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37128605"
 ---
 # <a name="create-an-apache-storm-topology-in-java"></a>Hozzon létre egy Apache Storm-topológia a Java nyelven
 
@@ -41,7 +41,7 @@ A jelen dokumentumban leírt lépések elvégzése után a topológia telepíten
 
 ## <a name="configure-environment-variables"></a>Környezeti változók konfigurálása
 
-A következő környezeti változók Java és a JDK telepítésekor lehet beállítani. Azonban ellenőrizni kell, hogy léteznek, illetve a rendszer a megfelelő értékeket tartalmaz.
+A következő környezeti változók Java és a JDK telepítésekor lehet beállítani. Érdemes azonban ellenőriznie, hogy a fentiek léteznek-e, és a rendszer számára megfelelő értékeket tartalmaznak-e.
 
 * **JAVA_HOME** -érdemes mutasson a mappát, ahová a Java-futtatókörnyezet (JRE) telepítve van. Például egy Unix vagy Linux terjesztési nem rendelkezhet hasonló érték `/usr/lib/jvm/java-8-oracle`. A Windows rendszerben kellene hasonló érték `c:\Program Files (x86)\Java\jre1.8`
 
@@ -600,7 +600,7 @@ A YAM fájl határozza meg a topológia és az adatok az összetevők közötti 
 Fluxus további információkért lásd: [fluxus keretrendszer (https://storm.apache.org/releases/0.10.0/flux.html)](https://storm.apache.org/releases/0.10.0/flux.html).
 
 > [!WARNING]
-> Oka az, hogy egy [hiba (https://issues.apache.org/jira/browse/STORM-2055) ](https://issues.apache.org/jira/browse/STORM-2055) Storm 1.0.1-es, előfordulhat, hogy telepíteni szeretné a [Storm fejlesztőkörnyezet](https://storm.apache.org/releases/1.0.1/Setting-up-development-environment.html) fluxus topológiák helyi futtatásához.
+> Oka az, hogy egy [hiba (https://issues.apache.org/jira/browse/STORM-2055) ](https://issues.apache.org/jira/browse/STORM-2055) Storm 1.0.1-es, előfordulhat, hogy telepíteni szeretné a [Storm fejlesztőkörnyezet](http://storm.apache.org/releases/current/Setting-up-development-environment.html) fluxus topológiák helyi futtatásához.
 
 1. Helyezze át a `WordCountTopology.java` fájlt a projekt kívüli. Korábban ezt a fájlt a topológia definiálva, de a fluxus nem szükséges.
 
@@ -719,9 +719,9 @@ Fluxus további információkért lásd: [fluxus keretrendszer (https://storm.ap
     ```
 
     > [!WARNING]
-    > Ha a topológia a Storm 1.0.1-es bits használ, ez a parancs sikertelen lesz. Ez a hiba oka [ https://issues.apache.org/jira/browse/STORM-2055 ](https://issues.apache.org/jira/browse/STORM-2055). Ehelyett [Storm a fejlesztési környezet telepítése](http://storm.apache.org/releases/0.10.0/Setting-up-development-environment.html) és kövesse az alábbi lépéseket:
+    > Ha a topológia a Storm 1.0.1-es bits használ, ez a parancs sikertelen lesz. Ez a hiba oka [ https://issues.apache.org/jira/browse/STORM-2055 ](https://issues.apache.org/jira/browse/STORM-2055). Ehelyett [Storm a fejlesztési környezet telepítése](http://storm.apache.org/releases/current/Setting-up-development-environment.html) és kövesse az alábbi lépéseket:
     >
-    > Ha rendelkezik [Storm a fejlesztési környezetben telepített](http://storm.apache.org/releases/0.10.0/Setting-up-development-environment.html), ehelyett a következő parancsokat használhatja:
+    > Ha rendelkezik [Storm a fejlesztési környezetben telepített](http://storm.apache.org/releases/current/Setting-up-development-environment.html), ehelyett a következő parancsokat használhatja:
     >
     > ```bash
     > mvn compile package

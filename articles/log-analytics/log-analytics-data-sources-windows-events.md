@@ -9,17 +9,18 @@ editor: tysonn
 ms.assetid: ee52f564-995b-450f-a6ba-0d7b1dac3f32
 ms.service: log-analytics
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/11/2017
 ms.author: bwren
-ms.openlocfilehash: 7a7deb4d7a287b2e9613e6035a7ffd7bb6f14f9c
-ms.sourcegitcommit: f46cbcff710f590aebe437c6dd459452ddf0af09
+ms.component: na
+ms.openlocfilehash: 8183258ddde335b09293c72368ad3bf58a69334a
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/20/2017
-ms.locfileid: "26782030"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37129353"
 ---
 # <a name="windows-event-log-data-sources-in-log-analytics"></a>A Windows Eseménynapló adatforrások Naplóelemzési
 Windows-eseménynaplók olyan egyik leggyakoribb [adatforrások](log-analytics-data-sources.md) adatgyűjtéshez Windows ügynököt használ, mivel számos alkalmazás a Windows eseménynaplójába írhatja.  Események például a rendszer- és standard naplókból mellett adja meg a figyelni kívánt alkalmazások által létrehozott egyéni naplók összegyűjtésére.
@@ -29,7 +30,7 @@ Windows-eseménynaplók olyan egyik leggyakoribb [adatforrások](log-analytics-d
 ## <a name="configuring-windows-event-logs"></a>Konfigurálása Windows-eseményt naplóz
 Windows-eseménynaplók az konfigurálása a [Naplóelemzés beállításai adatok menüben](log-analytics-data-sources.md#configuring-data-sources).
 
-A Naplóelemzési csak a Windows Eseménynapló a beállításokban megadott eseményeket gyűjti.  Írja be a napló nevére, majd kattintson az Eseménynapló adhat hozzá  **+** .  Az egyes naplókon csak a kijelölt súlyosságokkal események összegyűjtése.  Ellenőrizze a gyűjteni kívánt adott napló fokozatok.  Nem adhat meg semmilyen további feltételt az események szűrése.
+A Naplóelemzési csak a Windows Eseménynapló a beállításokban megadott eseményeket gyűjti.  Írja be a napló nevére, majd kattintson az Eseménynapló adhat hozzá **+**.  Az egyes naplókon csak a kijelölt súlyosságokkal események összegyűjtése.  Ellenőrizze a gyűjteni kívánt adott napló fokozatok.  Nem adhat meg semmilyen további feltételt az események szűrése.
 
 Az Eseménynapló nevét írja be, Log Analyticshez közös eseménynaplók neve vonatkozó javaslatokat biztosít. Ha hozzá szeretne adni a napló nem jelenik meg a listában, továbbra is hozzáadhatja, írja be a naplófájl teljes neve. A naplófájl teljes neve található az Eseménynapló használatával. Az eseménynaplóban, nyissa meg a *tulajdonságok* a napló lapjáról, és másolja a karakterláncot, a *teljes nevét* mező.
 
@@ -68,9 +69,9 @@ Az alábbi táblázat példákat különböző Windows-esemény lehívása napl�
 | Lekérdezés | Leírás |
 |:---|:---|
 | Esemény |Minden Windows-eseményeket. |
-| Esemény &#124; Ha EventLevelName == "error" |Minden Windows-hiba az eseményeket. |
+| Esemény &#124; ahol EventLevelName == "error" |Minden Windows-hiba az eseményeket. |
 | Esemény &#124; forrás count() összefoglalója |Forrás száma a Windows-eseményeket. |
-| Esemény &#124; Ha EventLevelName == "error" &#124; forrás count() összefoglalója |Hiba események száma a Windows forrás. |
+| Esemény &#124; ahol EventLevelName == "error" &#124; forrás count() összefoglalója |Hiba események száma a Windows forrás. |
 
 
 ## <a name="next-steps"></a>További lépések

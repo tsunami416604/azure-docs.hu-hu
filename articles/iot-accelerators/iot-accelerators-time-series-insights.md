@@ -8,12 +8,12 @@ ms.date: 04/29/2018
 ms.topic: conceptual
 ms.service: iot-accelerators
 services: iot-accelerators
-ms.openlocfilehash: ed1a55c26ab1ef2aadb4906757205df0ca09d866
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 7a0a5d4f1fbba5d7bd2813e8b9c300a37853e06c
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34655130"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37111476"
 ---
 # <a name="visualize-remote-monitoring-data-with-time-series-insights"></a>Az idő adatsorozat insights szolgáltatással távoli figyelési adatok megjelenítése
 
@@ -55,7 +55,7 @@ Az Azure Time Series Insights egy teljes körűen felügyelt elemzési, tárolá
     | Beállítás | Érték |
     | ------- | ----- |
     | A környezeti neve | Az alábbi képernyőfelvételen a nevet használja, **contorosrmtsi**. Amikor végzett ezzel a lépéssel, válassza ki a saját egyedi nevét. |
-    | Előfizetés | A legördülő listán válassza ki az Azure-előfizetéshez. |
+    | Előfizetés | Válassza ki saját Azure-előfizetését a legördülő menüből. |
     | Erőforráscsoport | **Új**. A név használjuk **ContosoRM**. |
     | Hely | Használjuk **USA keleti régiója**. A környezet létrehozása a távoli figyelésére szolgáló megoldás ugyanabban a régióban. |
     | SKU |**S1** |
@@ -87,7 +87,7 @@ Hozzon létre egy új eseményforrás az IoT hub való kapcsolódáshoz. Győző
     | Eseményforrás neve | Az alábbi képernyőfelvételen a nevet használja, **contosorm-iot-központ**. Amikor végzett ezzel a lépéssel, használja a saját egyedi nevét. |
     | Forrás | **IoT Hub** |
     | Importálási beállítás | **Az elérhető előfizetések IoT Hubjának használata** |
-    | Előfizetési azonosító | A legördülő listán válassza ki az Azure-előfizetéshez. |
+    | Előfizetési azonosító | Válassza ki saját Azure-előfizetését a legördülő menüből. |
     | Az IOT-központ nevét | **contosorma57a6**. A távoli figyelésére szolgáló megoldás a az IoT hub nevét használja. |
     | Az IOT hub házirend neve | **iothubowner** használandó házirendet legyen egy tulajdonos házirendet. |
     | Az IOT hub házirend kulcs | A mező automatikusan feltöltődik értékkel. |
@@ -145,4 +145,4 @@ Az idő adatsorozat Insights explorer a webes alkalmazás, amely segít az adato
 
 ## <a name="next-steps"></a>További lépések
 
-Vizsgálatát, és az idő adatsorozat Insights Explorer adatait kapcsolatos további tudnivalókért lásd: [Azure idő adatsorozat Insights explorer](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-dashboard.png).
+Vizsgálatát, és az idő adatsorozat Insights Explorer adatait kapcsolatos további tudnivalókért lásd: [Azure idő adatsorozat Insights explorer](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-explorer).

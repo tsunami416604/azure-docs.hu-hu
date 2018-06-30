@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: article
 ms.date: 05/31/2018
 ms.author: wgries
-ms.openlocfilehash: 946311c42088d3a5840eb35387c8a552d3d5d70f
-ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
+ms.openlocfilehash: c1ca8146db8c5d67be53ba4e30d8ab0218aca104
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34735644"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37128758"
 ---
 # <a name="release-notes-for-the-azure-file-sync-agent-preview"></a>Az Azure File Sync ügynök (előzetes verzió) kibocsátási megjegyzései
 Az Azure File Sync lehetővé teszi a vállalat Azure Files szolgáltatásban tárolt fájlmegosztásainak központosítását anélkül, hogy fel kellene adnia a helyi fájlkiszolgálók rugalmasságát, teljesítményét és kompatibilitását. A Windows Server-telepítéseket az Azure-fájlmegosztás gyors gyorsítótáraivá alakítja át. A Windows Serveren elérhető bármely protokollt használhatja a fájlok helyi eléréséhez (pl.: SMB, NFS vagy FTPS). Annyi gyorsítótára lehet világszerte, amennyire csak szüksége van.
@@ -25,7 +25,8 @@ Az Azure File Sync ügynök alábbi verziói támogatottak:
 
 | Kiadási fázisú | Az ügynök verziószáma | Kiadási dátum | status |
 |----|----------------------|--------------|------------------|
-| Frissítse a 2. régiója | 3.0.12.0 | 2018. május 22. | Támogatott (ajánlott verzió) |
+| Kumulatív. június | 3.0.13.0 | 2018. június 29. | Támogatott (ajánlott verzió) |
+| Frissítse a 2. régiója | 3.0.12.0 | 2018. május 22. | Támogatott |
 | Kumulatív. áprilisi frissítés | 2.3.0.0 | 2018. május 8. | Támogatott |
 | Március kumulatív frissítés | 2.2.0.0 | 2018. március 12. | Támogatott |
 | Kumulatív frissítés. február | 2.1.0.0 | 2018. február 28. | Támogatott |
@@ -37,6 +38,12 @@ Az Azure File Sync ügynök alábbi verziói támogatottak:
 
 ### <a name="azure-file-sync-agent-update-policy"></a>Az Azure File Sync ügynökének frissítési szabályzata
 [!INCLUDE [storage-sync-files-agent-update-policy](../../../includes/storage-sync-files-agent-update-policy.md)]
+
+## <a name="agent-version-30130"></a>Ügynök verziója 3.0.13.0
+Az alábbi kibocsátási megjegyzések a 3.0.13.0 az Azure fájlszinkronizálás ügynök verziója, amely a 2018. június 29 vonatkoznak. Ezek a kibocsátási megjegyzésekben verziójához 3.0.12.0 felsorolt mellett azonban.
+
+Ebben a kiadásban a következő javítás tartalmazza:
+- Szinkronizálás nem sikerül, ha egy kiszolgáló egy meglévő szinkronizálási csoportba felvett Ha újraelemzési pontok szerepelnek a kiszolgálón végpont található a kiszolgálón.
 
 ## <a name="agent-version-30120"></a>Ügynök verziója 3.0.12.0
 Az alábbi kibocsátási megjegyzések a 3.0.12.0 az Azure fájl Sync-ügynök verziója (kiadott 2018. május 22.) vonatkoznak.

@@ -10,12 +10,12 @@ ms.custom: DBs & servers
 ms.topic: conceptual
 ms.date: 06/20/2018
 ms.author: carlrab
-ms.openlocfilehash: a212a595c02a048721f1a8753b437f74f2fc4973
-ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
+ms.openlocfilehash: 2fb5a7cbca4df0faa06864f580814f31cc2b609c
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/21/2018
-ms.locfileid: "36308954"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37114401"
 ---
 # <a name="choose-a-cloud-sql-server-option-azure-sql-paas-database-or-sql-server-on-azure-vms-iaas"></a>Felhőalapú SQL Server-verzió választása: Azure SQL Database (PaaS) adatbázis vagy az Azure virtuális gépeken futó SQL Server (IaaS)
 
@@ -124,7 +124,7 @@ Az **Azure virtuális gépeken futó SQL Server** esetében a Microsoft 99,95%-o
 
 **SQL-adatbázis felügyelt példány** jelentősen egyszerűbb a meglévő alkalmazások az Azure SQL Database, amely lehetővé teszi, hogy áttelepített adatbázis alkalmazások az Azure-ban a gyorsan piaci áttelepítését.
 
-**Azure virtuális gépeken futó SQL Server** tökéletes, ha a meglévő vagy új alkalmazásainak igényelnek nagy adatbázisok vagy nem éri el az SQL Server vagy windowsos/Linuxos összes szolgáltatásait, és el szeretné kerülni, hogy időt és költséget az beszerzése a helyi új hardver. Egyúttal remekül beválik, ha meg szeretné áttelepíteni meglévő helyszíni alkalmazásokat és adatbázisokat Azure-bA-az - azokban az esetekben, ahol Azure SQL adatbázis felügyelt példány nincs remekül beválik. Mivel így nincs szükség a prezentációs, alkalmazási és adatréteg módosítására, időt és pénzt takarít meg, amit nem kell meglévő termékeinek egy új architektúrára való áthelyezésére fordítania. Ehelyett termékeinek az Azure-ra történő áttelepítésére, illetve az Azure-platformon való működéshez esetleg szükséges teljesítményoptimalizálásra összpontosíthat. További információk: [Performance Best Practices for SQL Server on Azure Virtual Machines](../virtual-machines/windows/sql/virtual-machines-windows-sql-performance.md) (Teljesítményre vonatkozó ajánlott eljárások az Azure Virtual Machines szolgáltatásban futtatott SQL Server esetében).
+**Azure virtuális gépeken futó SQL Server** tökéletes, ha a meglévő vagy új alkalmazásainak igényelnek nagy adatbázisok vagy nem éri el az összes funkcióhoz a SQL Server vagy a Windows/Linux, és el szeretné kerülni az idő és az beszerzése az új kiadási helyszíni hardver. Egyúttal remekül beválik, ha meg szeretné áttelepíteni meglévő helyszíni alkalmazásokat és adatbázisokat Azure-bA-az - azokban az esetekben, ahol Azure SQL adatbázis felügyelt példány nincs remekül beválik. Mivel így nincs szükség a prezentációs, alkalmazási és adatréteg módosítására, időt és pénzt takarít meg, amit nem kell meglévő termékeinek egy új architektúrára való áthelyezésére fordítania. Ehelyett termékeinek az Azure-ra történő áttelepítésére, illetve az Azure-platformon való működéshez esetleg szükséges teljesítményoptimalizálásra összpontosíthat. További információk: [Performance Best Practices for SQL Server on Azure Virtual Machines](../virtual-machines/windows/sql/virtual-machines-windows-sql-performance.md) (Teljesítményre vonatkozó ajánlott eljárások az Azure Virtual Machines szolgáltatásban futtatott SQL Server esetében).
 
 ## <a name="summary"></a>Összegzés
 Ebben a cikkben bemutattuk az SQL Database-t és az Azure virtuális gépeken futó SQL Servert, és szót ejtettünk azokról az üzleti szempontokról, amelyek hatással lehetnek választására. Az alábbiakban a megfontolásra érdemes tényeket foglaljuk össze:

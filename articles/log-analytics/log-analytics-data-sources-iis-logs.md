@@ -1,24 +1,26 @@
 ---
-title: "Az Azure Naplóelemzés naplózza az IIS |} Microsoft Docs"
-description: "Internet Information Services (IIS) felhasználói tevékenység Naplóelemzési által gyűjtendő naplófájlokat tárolja.  A cikkből megtudhatja, hogyan lehet beállítani az IIS-naplók gyűjtésének és hoznak létre a Naplóelemzési munkaterület rekord részletei."
+title: Az Azure Naplóelemzés naplózza az IIS |} Microsoft Docs
+description: Internet Information Services (IIS) felhasználói tevékenység Naplóelemzési által gyűjtendő naplófájlokat tárolja.  A cikkből megtudhatja, hogyan lehet beállítani az IIS-naplók gyűjtésének és hoznak létre a Naplóelemzési munkaterület rekord részletei.
 services: log-analytics
-documentationcenter: 
+documentationcenter: ''
 author: bwren
-manager: jwhit
+manager: carmonm
 editor: tysonn
 ms.assetid: cec5ff0a-01f5-4262-b2e8-e3db7b7467d2
 ms.service: log-analytics
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 01/07/2018
+ms.date: 06/12/2018
 ms.author: bwren
-ms.openlocfilehash: b8ce4e6fe6e12aa3edb81abad1589924e3e121e4
-ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
+ms.comopnent: na
+ms.openlocfilehash: 65320e7d3cc97a3d53fd1a00fbbeab5559c02fce
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/09/2018
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37132954"
 ---
 # <a name="iis-logs-in-log-analytics"></a>A Naplóelemzési naplózza az IIS
 Internet Information Services (IIS) felhasználói tevékenység Naplóelemzési által gyűjtendő naplófájlokat tárolja.  
@@ -33,10 +35,10 @@ A Naplóelemzési nem naplógyűjtéshez NCSA vagy az IIS natív formátumban.
 
 A Naplóelemzési konfigurálása IIS-napló a [Naplóelemzés beállításai adatok menüben](log-analytics-data-sources.md#configuring-data-sources).  Nincs a konfiguráció nem szükséges másik kiválasztásával **gyűjtése W3C-formátum az IIS-naplófájljai**.
 
-Azt javasoljuk, hogy ha engedélyezi az IIS naplógyűjtést, konfigurálnia kell az IIS napló átfordulási beállítás az egyes kiszolgálókon.
 
 ## <a name="data-collection"></a>Adatgyűjtés
-A Naplóelemzési gyűjti össze az IIS-napló bejegyzései minden csatlakoztatott forrás körülbelül 15 percenként.  Az ügynök a helyére azt gyűjti össze az egyes eseménynapló rögzíti.  Ha az ügynök offline állapotba kerül, majd Naplóelemzési gyűjti események ahol utolsó abbamaradtak, akkor is, ha olyan eseményeket hozta létre, miközben az ügynök offline állapotban volt.
+Naplóelemzési minden jön létre minden alkalommal, amikor a napló be van zárva, és egy új ügynök gyűjti össze az IIS-napló bejegyzései. A gyakoriságát a **napló fájl helyettesítő ütemezés** az IIS-webhely alapértelmezés szerint naponta egyszer egyben beállítása. Például, ha a beállítások **óránkénti**, majd Naplóelemzési összegyűjti a napló minden órában.  Ha a beállítás értéke **napi**, majd Naplóelemzési összegyűjti a napló 24 óránként.
+
 
 ## <a name="iis-log-record-properties"></a>IIS-napló rekord tulajdonságai
 Naplórekordok az IIS típusa lehet **W3CIISLog** és az alábbi táblázatban a jellemzőkkel rendelkezik:
@@ -71,10 +73,10 @@ Az alábbi táblázat példákat különböző napló lekérdezések IIS naplór
 | Lekérdezés | Leírás |
 |:--- |:--- |
 | W3CIISLog |Az összes IIS-napló rögzíti. |
-| W3CIISLog &#124; Ha scStatus == 500 |Az összes IIS napló rekordot 500 visszaadott állapotát. |
+| W3CIISLog &#124; ahol scStatus == 500 |Az összes IIS napló rekordot 500 visszaadott állapotát. |
 | W3CIISLog &#124; count() összesíteni cIP |Száma az IIS naplóbejegyzéseket, ügyfél IP-cím alapján. |
-| W3CIISLog &#124; Ha csHost == "www.contoso.com" &#124; count() összesíteni csUriStem |Száma az IIS a naplóbejegyzéseket, URL-cím által a gazdagép a www.contoso.com. |
-| W3CIISLog &#124; Számítógép &#124; sum(csBytes) összefoglalója 500 000 összeget igénybe |Minden egyes IIS-számítógép által fogadott összes bájt. |
+| W3CIISLog &#124; ahol csHost == "www.contoso.com" &#124; count() összesíteni csUriStem |Száma az IIS a naplóbejegyzéseket, URL-cím által a gazdagép a www.contoso.com. |
+| W3CIISLog &#124; összesítse a számítógép által sum(csBytes) &#124; 500 000 összeget igénybe |Minden egyes IIS-számítógép által fogadott összes bájt. |
 
 ## <a name="next-steps"></a>További lépések
 * Naplóelemzési más gyűjtéséhez konfigurálja [adatforrások](log-analytics-data-sources.md) elemzés céljából.

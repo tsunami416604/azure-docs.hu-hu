@@ -16,12 +16,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 05/09/2017
 ms.author: mikeray
-ms.openlocfilehash: 40a8cd256164bb66e82c651e58d37b1afbb4a652
-ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
+ms.openlocfilehash: a3bba4e8fd83b160472a2dc6a9425192b4bbd301
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36287803"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37114609"
 ---
 # <a name="configure-always-on-availability-group-in-azure-vm-manually"></a>Konfigurálás mindig a rendelkezésre állási csoport az Azure virtuális gép manuálisan
 
@@ -86,7 +86,7 @@ Az Előfeltételek elvégzése után az első lépés a Windows Server feladatá
 
    ![Fürt tulajdonságai](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/42_IPProperties.png)
 
-3. Válassza ki **statikus IP-cím** , és adja meg egy címet automatikus privát IP-címzési (APIPA) címtartományából: 169.254.0.1 – 169.254.255.254 a cím szövegmezőben. Ez a példa bármely cím használhatja a tartományba. Például: `169.254.0.1`. Kattintson a **OK**.
+3. Válassza ki **statikus IP-cím** , és adja meg a virtuális gépeket ugyanazon az alhálózaton elérhető cím.
 
 4. Az a **fürt alapvető erőforrásai** szakaszt, kattintson a jobb gombbal a fürt nevét, és kattintson **online állapotba hozás**. Ezután Várjon, amíg az mindkét erőforrás online. A fürt hálózatnév-erőforrás online állapotba kerül, amikor új AD-számítógépfiók frissíti a tartományvezérlő kiszolgálóhoz. Az AD-fiókot használja a rendelkezésre állási csoport fürtözött szolgáltatás később futtatásához.
 
@@ -341,7 +341,7 @@ Ezen a ponton rendelkezik egy rendelkezésre állási csoporthoz az SQL Server k
 
 ## <a name="create-an-azure-load-balancer"></a>Azure-terheléselosztó létrehozása
 
-Azure virtuális gépeken futó SQL Server rendelkezésre állási csoport terheléselosztó szükséges. A terheléselosztó a rendelkezésre állási csoport figyelője az IP-címet tartalmazza. Ez a szakasz a terheléselosztó létrehozása az Azure portálon foglalja össze.
+Azure virtuális gépeken futó SQL Server rendelkezésre állási csoport terheléselosztó szükséges. A terheléselosztó IP-címét a következő rendelkezésre állási csoport figyelője és a Windows Server feladatátvételi fürtszolgáltatás tartalmazza. Ez a szakasz a terheléselosztó létrehozása az Azure portálon foglalja össze.
 
 1. Az Azure-portálon lépjen az erőforráscsoport, ahol az SQL-kiszolgálók, és kattintson a **+ Hozzáadás**.
 2. Keresse meg **terheléselosztó**. Válassza ki a Microsoft által kiadott terheléselosztó.
@@ -370,7 +370,7 @@ Azure virtuális gépeken futó SQL Server rendelkezésre állási csoport terhe
 
 A terheléselosztó konfigurálásához szüksége a háttérkészlet, a mintavétel létrehozása és a terheléselosztási szabályok beállítása. Ezek az Azure portálon teheti meg.
 
-### <a name="add-backend-pool"></a>Háttérkészlet hozzáadása
+### <a name="add-backend-pool-for-the-availability-group-listener"></a>Adja hozzá a háttérkészlet az elérhetőségi csoport figyelője
 
 1. Az Azure-portálon lépjen a következő rendelkezésre állási csoporthoz. Frissítse a nézetet, hogy az újonnan létrehozott terheléselosztó módosítania.
 
@@ -416,6 +416,46 @@ A terheléselosztó konfigurálásához szüksége a háttérkészlet, a mintav�
    | **Port** | A portot használja az elérhetőségi csoport figyelője | 1435 |
    | **Háttér-Port** | Ha a fix IP-Címek értéke a közvetlen kiszolgálói visszatérési nem használja ezt a mezőt | 1435 |
    | **Hálózatfigyelő** |A mintavétel a megadott név | SQLAlwaysOnEndPointProbe |
+   | **Munkamenet megőrzését** | Legördülő lista | **Egyik sem** |
+   | **Üresjárati időtúllépés** | Tartsa nyitva, a TCP-kapcsolat perc | 4 |
+   | **Lebegőpontos IP (közvetlen kiszolgálói válasz)** | |Engedélyezve |
+
+   > [!WARNING]
+   > A közvetlen kiszolgálói válasz érték létrehozása során. A név nem módosítható.
+
+1. Kattintson a **OK** a terheléselosztási szabályok beállítása.
+
+### <a name="add-the-front-end-ip-address-for-the-wsfc"></a>A WSFC az előtérbeli IP-cím hozzáadása
+
+A WSFC IP-címet kell szerepelnie a terheléselosztón. 
+
+1. A portál egy új előtér-IP-konfiguráció hozzáadása a WSFC. A fürt alapvető erőforrásai a WSFC a konfigurált IP-címét használja. Statikus IP-címét állítsa be. 
+
+1. Kattintson a terheléselosztóhoz, majd **állapot-mintavételi csomagjai**, és kattintson a **+ Hozzáadás**.
+
+1. Állítsa be a állapotmintáihoz az alábbiak szerint:
+
+   | Beállítás | Leírás | Példa
+   | --- | --- |---
+   | **Name (Név)** | Szöveg | WSFCEndPointProbe |
+   | **Protocol (Protokoll)** | Válassza ki a TCP | TCP |
+   | **Port** | Minden nem használt portot | 58888 |
+   | **Intervallum**  | Másodpercben mintavételi kísérletek közötti idő |5 |
+   | **Sérült küszöbérték** | Egymást követő sikertelen mintavételek bekövetkező akkor, ha a nem megfelelő virtuális gépek száma  | 2 |
+
+1. Kattintson a **OK** beállítása a állapotmintáihoz.
+
+1. A terheléselosztási szabályok beállítása. Kattintson a **terheléselosztási szabályok**, és kattintson a **+ Hozzáadás**.
+
+1. A terheléselosztási szabályok az alábbiak szerint állítsa be.
+   | Beállítás | Leírás | Példa
+   | --- | --- |---
+   | **Name (Név)** | Szöveg | WSFCPointListener |
+   | **Előtérbeli IP-cím** | Válasszon címet |A WSFC IP-cím konfigurálása során létrehozott címet használja. |
+   | **Protocol (Protokoll)** | Válassza ki a TCP |TCP |
+   | **Port** | A portot használja az elérhetőségi csoport figyelője | 58888 |
+   | **Háttér-Port** | Ha a fix IP-Címek értéke a közvetlen kiszolgálói visszatérési nem használja ezt a mezőt | 58888 |
+   | **Hálózatfigyelő** |A mintavétel a megadott név | WSFCEndPointProbe |
    | **Munkamenet megőrzését** | Legördülő lista | **Egyik sem** |
    | **Üresjárati időtúllépés** | Tartsa nyitva, a TCP-kapcsolat perc | 4 |
    | **Lebegőpontos IP (közvetlen kiszolgálói válasz)** | |Engedélyezve |

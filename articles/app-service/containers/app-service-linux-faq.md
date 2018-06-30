@@ -1,11 +1,11 @@
 ---
 title: Linux – gyakori kérdések az Azure App Service |} Microsoft Docs
 description: Az Azure App Service Linux – gyakori kérdések.
-keywords: az Azure app service, webalkalmazás, gyakran ismételt kérdések, linux, oss
+keywords: az Azure app service, webalkalmazás, gyakran ismételt kérdések, linux, oss, tárolók, több tároló, multicontainer webalkalmazás
 services: app-service
 documentationCenter: ''
-author: ahmedelnably
-manager: cfowler
+author: yili
+manager: apurvajo
 editor: ''
 ms.assetid: ''
 ms.service: app-service
@@ -13,14 +13,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/18/2018
-ms.author: msangapu
-ms.openlocfilehash: 5b3b3d3946b56ff53ad74c2ab93a646baa787d05
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.date: 06/26/2018
+ms.author: yili
+ms.openlocfilehash: a35f3d428674c3398497cd43465e0bd501f5c3fc
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36222977"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37131492"
 ---
 # <a name="azure-app-service-on-linux-faq"></a>Linux – gyakori kérdések az Azure App Service
 
@@ -144,6 +144,35 @@ Tudunk port automatikus észlelését. Azt is megadhatja az alkalmazás nevű be
 **Van HTTPS megvalósítását a saját egyéni tárolót?**
 
 Nem, a platform kezeli a HTTPS-lezárást a megosztott első végénél.
+
+## <a name="multi-container-with-docker-compose-and-kubernetes"></a>Több tárolót a Docker Compose és Kubernetes
+
+**Beállítása az Azure tároló beállításjegyzék (ACR) több tárolót használni?**
+
+Ahhoz, hogy ACR több tárolóval **összes tároló-lemezkép** kell ugyanazon a kiszolgálón ACR beállításjegyzék üzemeltetnie. Miután bekerültek beállításjegyzék ugyanarra a kiszolgálóra, szüksége lesz Alkalmazásbeállítások létrehozása, és ezután frissítse a Docker Compose vagy Kubernetes konfigurációs fájl ACR kép neve is.
+
+A következő Alkalmazásbeállítások létrehozása:
+
+- DOCKER_REGISTRY_SERVER_USERNAME
+- DOCKER_REGISTRY_SERVER_URL (teljes URL-CÍMÉT, például: https://<server-name>.azurecr.io)
+- DOCKER_REGISTRY_SERVER_PASSWORD (rendszergazdai hozzáférés engedélyezése a ACR beállításai)
+
+A konfigurációs fájlban az alábbi példához hasonló a ACR lemezkép hivatkozási:
+
+```yaml
+image: <server-name>.azurecr.io/<image-name>:<tag>
+```
+
+**Hogyan tudhatom, hogy mely tároló elérhető internet?**
+
+- Lehet, hogy csak egy tároló nyissa meg a hozzáféréshez
+- Csak a 80-as és a 8080-as portot az elérhető (kitett portok)
+
+Az alábbiakban a szabályok meghatározásához, hogy mely tároló érhető - elsőbbségi sorrendben:
+
+- Alkalmazás-beállítás `WEBSITES_WEB_CONTAINER_NAME` értéke a tároló neve
+- Az első tárolót, hogy a 80-as vagy a 8080-as portjának megadása
+- Ha a fentiek egyike sem teljesül, az első tároló, a fájlban meghatározott lesz elérhető (amely)
 
 ## <a name="pricing-and-sla"></a>Díjszabás és SLA
 

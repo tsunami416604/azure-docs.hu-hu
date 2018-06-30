@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 04/04/2018
 ms.author: sashan
 ms.reviewer: carlrab
-ms.openlocfilehash: 0ce22cae50e70ca7232e025d4009b23d62f6a198
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: f7125a18aa2496ebe8367443a67502a7a7dbac02
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34649227"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37128513"
 ---
 # <a name="manage-azure-sql-database-long-term-backup-retention"></a>Az Azure SQL Database hosszú távú biztonsági másolatok megőrzésének kezelése
 
@@ -38,7 +38,7 @@ Konfigurálhatja az SQL-adatbázis [automatikus biztonsági mentések megőrzés
 
 2. Az a **-szabályzatok konfigurálása** lapra, válassza ki az adatbázist, amelyeken beállítása vagy módosítása a hosszú távú biztonsági mentési adatmegőrzési kívánja.
 
-   ![Adatbázis kiválasztása](./media/sql-database-long-term-retention/ltr-configure-select-database.png)
+   ![Válassza ki az adatbázis](./media/sql-database-long-term-retention/ltr-configure-select-database.png)
 
 3. Az a **-szabályzatok konfigurálása** ablaktábla, válassza ki, ha heti, havi vagy éves biztonsági mentések megőrzési, és adja meg az egyes megőrzési időtartama. 
 
@@ -56,7 +56,7 @@ Tekintse meg a biztonsági mentések, amelyek egy adott adatbázis egy balról j
 
 2. Az a **elérhető biztonsági másolatok** lapra, válassza ki az adatbázist, amelynek meg szeretné tekinteni a rendelkezésre álló biztonsági mentéseket.
 
-   ![Adatbázis kiválasztása](./media/sql-database-long-term-retention/ltr-available-backups-select-database.png)
+   ![Válassza ki az adatbázis](./media/sql-database-long-term-retention/ltr-available-backups-select-database.png)
 
 3. Az a **elérhető biztonsági másolatok** ablaktáblában tekintse át az elérhető biztonsági másolatokat. 
 
@@ -83,8 +83,10 @@ Tekintse meg a biztonsági mentések, amelyek egy adott adatbázis egy balról j
 Az alábbi szakaszok bemutatják a PowerShell segítségével konfigurálhatja a hosszú távú biztonsági másolatok megőrzésének, és tekintse meg az Azure SQL-tároló és az Azure SQL-tároló egy biztonsági másolatból való visszaállítása biztonsági másolatok.
 
 > [!IMPORTANT]
-> Szeretné használni a legújabb AzureRM powershell balról jobbra V2 házirendek beállítása. A jelenlegi verzió: [AzureRM 4.5.0-preview](https://www.powershellgallery.com/packages/AzureRM.Sql/4.5.0-preview), ez az előzetes verzióval, ezért ez a parancs telepíti: `Install-Module -Name AzureRM.Sql -AllowPrerelease -Force`.
-> Az előzetes verziót telepítésével kapcsolatos útmutatásért lásd: [Get PowerShellGet modul](https://docs.microsoft.com/en-us/powershell/gallery/installing-psget). A AzureRM powershell előfordulhat, hogy 2018 kiadás néhány nap múlva hamarosan (kellene lennie 5/18/2018), a - AllowPrelease kapcsoló figyelmen kívül hagyja a végleges verziójának telepítésekor, amikor elérhetővé válik, és a következő paranccsal " `Install-Module -Name AzureRM.Sql -Force`.
+> A következő PowerShell-verzió támogatott balról jobbra V2 API:
+- [AzureRM.Sql-4.5.0](https://www.powershellgallery.com/packages/AzureRM.Sql/4.5.0) vagy újabb verzió
+- [AzureRM-6.1.0](https://www.powershellgallery.com/packages/AzureRM/6.1.0) vagy újabb verzió
+> 
 
 ### <a name="create-an-ltr-policy"></a>Balról jobbra házirend létrehozása
 
@@ -169,7 +171,7 @@ Restore-AzureRmSqlDatabase -FromLongTermRetentionBackup -ResourceId $ltrBackup.R
 ```
 
 > [!NOTE]
-> Itt csatlakozhat a visszaállított adatbázis SQL Server Management Studio használatával szükséges feladatok végrehajtásához, például egy bit, az adatok kinyerése a visszaállított adatbázis másolja a már meglévő adatbázist, vagy törölje a meglévő adatbázis, és nevezze át a meglévő adatbázis nevének a visszaállított adatbázis. Lásd: [időponthoz kötött visszaállításra](sql-database-recovery-using-backups.md#point-in-time-restore).
+> Itt csatlakozhat a visszaállított adatbázis SQL Server Management Studio használatával szükséges feladatok végrehajtásához, például egy bit, az adatok kinyerése a visszaállított adatbázis másolja a már meglévő adatbázist, vagy törölje a meglévő adatbázis, és nevezze át a visszaállított a meglévő adatbázis nevének adatbázist. Lásd: [időponthoz kötött visszaállításra](sql-database-recovery-using-backups.md#point-in-time-restore).
 
 ## <a name="next-steps"></a>További lépések
 

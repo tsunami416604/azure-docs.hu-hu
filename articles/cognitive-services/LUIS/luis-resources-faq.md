@@ -9,12 +9,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: v-geberr
-ms.openlocfilehash: fd63ffd312e3ac17a6376eb3c9bef8f1978e3935
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: f192c2f71208f3caf8a01a18a7023763f8de63c3
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "36333615"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37113136"
 ---
 # <a name="language-understanding-faq"></a>Nyelvi ismertetése – gyakori kérdések
 
@@ -65,9 +65,9 @@ LUIS [tokenizes](luis-glossary.md#token) a utterance alapján a [kulturális kö
 A rendszer függetlenül annak értéke a legmagasabb pontozási leképezést kell használni. Például 0,5 (kevesebb mint 50 %) alá pontszámot nem feltétlenül jelenti azt, hogy LUIS alacsony abban, hogy rendelkezik-e. További tanítási adatokat szolgáltató segít az a legvalószínűbb leképezés pontszám növelni.
 
 ### <a name="why-dont-i-see-my-endpoint-hits-in-my-apps-dashboard"></a>Miért nem látom, hogy a végpont a találatok saját alkalmazás irányítópult?
-Az alkalmazás irányítópult a teljes végpont a találatok rendszeresen frissülnek, de az Azure-portálon a LUIS előfizetés kulcshoz tartozó metrikákat gyakrabban frissülnek. 
+Az alkalmazás irányítópult a teljes végpont a találatok rendszeresen frissülnek, de az Azure-portálon a LUIS végpont kulcshoz tartozó metrikákat gyakrabban frissülnek. 
 
-Ha nem látja az irányítópulton a frissített végpont találatok, jelentkezzen be az Azure-portálon, és a LUIS előfizetés kulcshoz tartozó erőforrás található, és nyissa meg **metrikák** jelölje be a **az összes hívás** metrikát. Az Előfizetés kulcs egynél több LUIS alkalmazás használata esetén a metrika az Azure portálon, az azt használó összes LUIS alkalmazásokból hívások összesített számát jeleníti meg.
+Ha nem látja az irányítópulton a frissített végpont találatok, jelentkezzen be az Azure-portálon, és a LUIS végpont kulcshoz tartozó erőforrás található, és nyissa meg **metrikák** jelölje be a **az összes hívás** metrikát. A végpont kulcs egynél több LUIS alkalmazás használata esetén a metrika az Azure portálon összesített száma, az azt használó összes LUIS alkalmazásokból jeleníti meg.
 
 ### <a name="my-luis-app-was-working-yesterday-but-today-im-getting-403-errors-i-didnt-change-the-app-how-do-i-fix-it"></a>Saját LUIS alkalmazás tegnap dolgozott, de még ma kapok a 403-as hibákat. Az alkalmazás nem módosítható. Hogyan tegye megjavítani? 
 A következő a [utasításokat](#how-do-i-create-and-assign-a-luis-endpoint-key) a LUIS végpont kulcs létrehozása, és rendelje hozzá az alkalmazás a következő gyakori kérdések. Ezután a HTTP-kérelem módosítania kell a végponthoz való [az új végpont billentyűvel](luis-concept-keys.md#use-endpoint-key-in-query).
@@ -115,8 +115,9 @@ Az Azure a bérlő jelenti. az ügyfél vagy a szervezet, amely rendelkezik a sz
 
 ![Bérlő azonosítója az Azure-portálon](./media/luis-manage-keys/luis-assign-key-tenant-id.png)
 
-### <a name="why-are-there-more-subscription-keys-on-my-apps-publish-page-than-i-assigned-to-the-app"></a>Miért van több előfizetés kulcsok saját alkalmazás közzétételi lap, mint az alkalmazás rendelt? 
-Minden LUIS alkalmazás szerzői/alapszintű kulccsal rendelkezik. A GA időtartományban létrehozott LUIS előfizetés kulcsok jelennek meg a közzétételi lap attól függetlenül történik, ha az alkalmazás fel őket. Ezt az tettük GA áttelepítési megkönnyítése. Új LUIS előfizetés kulcs közzétételi lapon nem jelennek meg. 
+<a name="why-are-there-more-subscription-keys-on-my-apps-publish-page-than-i-assigned-to-the-app"></a>
+### <a name="why-are-there-more-endpoint-keys-on-my-apps-publish-page-than-i-assigned-to-the-app"></a>Miért van több végpont kulcsok saját alkalmazás közzétételi lap, mint az alkalmazás rendelt? 
+Minden LUIS alkalmazás szerzői/alapszintű kulccsal rendelkezik. A GA időtartományban létrehozott LUIS végpont kulcsok jelennek meg a közzétételi lap attól függetlenül történik, ha az alkalmazás fel őket. Ezt az tettük GA áttelepítési megkönnyítése. Új LUIS végpont kulcs közzétételi lapon nem jelennek meg. 
 
 ## <a name="app-management"></a>Alkalmazáskezelés
 
@@ -153,7 +154,7 @@ Ha a napló használ előrejelzési elemzésre, nem rögzíthető lemezkép a te
 ## <a name="app-notification"></a>Alkalmazásban megjelenő értesítésre
 
 ### <a name="why-did-i-get-an-email-saying-im-almost-out-of-quota"></a>Miért jelenik meg arról, hogy szinte nem vagyok kvóta e-mailt?
-A szerzői/alapszintű kulcs csak engedélyezett 1000 végpont lekérdezi egy hónap. Hozzon létre egy LUIS előfizetés kulcs (ingyenes és fizetős) és kulcs végpont lekérdezések létrehozásakor. Ha végpont lekérdezések bot vagy egy másik ügyfélalkalmazást, ott a LUIS végpontkulcs módosítani szeretné. 
+A szerzői/alapszintű kulcs csak engedélyezett 1000 végpont lekérdezi egy hónap. Hozzon létre egy LUIS végpontkulcs (ingyenes és fizetős) és kulcs végpont lekérdezések létrehozásakor. Ha végpont lekérdezések bot vagy egy másik ügyfélalkalmazást, ott a LUIS végpontkulcs módosítani szeretné. 
 
 ## <a name="integrating-luis"></a>LUIS integrálása
 
@@ -167,7 +168,7 @@ Ha egy LUIS sablont, és válasszon a **válasszon** gombra a sablon ablaktábl�
 
 ## <a name="luis-service"></a>LUIS szolgáltatás 
 
-### <a name="is-luis-available-on-premise-or-in-private-cloud"></a>LUIS elérhető helyszíni vagy magánfelhőben?
+### <a name="is-luis-available-on-premises-or-in-private-cloud"></a>Van LUIS érhető el a helyszínen vagy a magánfelhő-alapú?
 Nem. 
 
 ## <a name="changes-to-the-docs"></a>A dokumentumok módosításai
@@ -201,7 +202,7 @@ További szerzői [API útvonalak](https://github.com/Microsoft/LUIS-Samples/blo
 Videók: 
 * [Azure Friday: Build 2018: Kognitív szolgáltatások – nyelvi (LUIS)](https://channel9.msdn.com/Shows/Azure-Friday/At-Build-2018-Cognitive-Services-Language-LUIS/player)
 * [Build 2018 AI megjelenítése - nyelvi ismertetése szolgáltatás újdonságai](https://channel9.msdn.com/Shows/AI-Show/Whats-New-with-Language-Understanding-Service-LUIS/player)
-* [Munkamenet - Botot az eszközintelligencia, a beszédfelismerés képességek és a NLU 2018 ajánlott eljárások](https://channel9.msdn.com/events/Build/2018/BRK3208)
+* [Build 2018-bemutató – Mesterséges intelligencia, beszédképességek és NLU – ajánlott eljárások](https://channel9.msdn.com/events/Build/2018/BRK3208)
 * [Build 2018 - LUIS frissítések](https://channel9.msdn.com/events/Build/2018/THR3118/player)
 
 Projektek: 

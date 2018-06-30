@@ -3,7 +3,7 @@ title: Az Active Directory replikációs állapotát az Azure Naplóelemzés fig
 description: Az Active Directory replikációs állapotát megoldáscsomag rendszeresen figyeli az Active Directory-környezet minden replikációs hibák.
 services: log-analytics
 documentationcenter: ''
-author: MGoedtel
+author: mgoedtel
 manager: carmonm
 editor: ''
 ms.assetid: 1b988972-8e01-4f83-a7f4-87f62778f91d
@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/24/2018
 ms.author: magoedte
-ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 7707c4a1afdc42ef44a7b6f761ceb03b7e7da2f0
-ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
+ms.component: na
+ms.openlocfilehash: 0ccd457295584f871088bc20864ef103648f1654
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2018
-ms.locfileid: "29179334"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37128724"
 ---
 # <a name="monitor-active-directory-replication-status-with-log-analytics"></a>A Naplóelemzési Active Directory replikációs állapot figyelése
 
@@ -31,7 +31,7 @@ Az Active Directory az informatikai környezetben vállalati nyilvános kulcsokr
 Az AD-replikáció állapotát megoldáscsomag rendszeresen figyeli az Active Directory-környezet a replikációs hibákat.
 
 ## <a name="installing-and-configuring-the-solution"></a>Telepítése és a megoldás konfigurálása
-Az alábbi információk segítségével telepítse és konfigurálja a megoldást.
+A megoldás telepítésekor és konfigurálásakor vegye figyelembe az alábbi információkat.
 
 * Telepítenie kell ügynökök olyan tartományvezérlőn, amely a tartomány tagjaként kell kiértékelni. Vagy telepíthet ügynököket a kiszolgálókon és az ügynökök AD replikációs adatokat küldeni a Naplóelemzési konfigurálnia kell. Windows rendszerű számítógépek csatlakoztatása a Log Analyticshez ismertetése: [Log Analyticshez való csatlakozás Windows számítógépek](log-analytics-windows-agent.md). Ha a tartományvezérlő már tartozik egy meglévő System Center Operations Manager-környezet, amelyet szeretne csatlakozni a szolgáltatáshoz, lásd: [csatlakozás az Operations Manager szolgáltatáshoz](log-analytics-om-agents.md).
 * Az Active Directory replikációs állapotát megoldás hozzáadni a Naplóelemzési munkaterület ismertetett eljárással [hozzáadni a Naplóelemzési megoldások a megoldások gyűjteményből](log-analytics-add-solutions.md).  Nincs szükség további konfigurációra.

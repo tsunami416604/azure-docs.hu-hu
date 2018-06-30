@@ -11,12 +11,12 @@ ms.workload: azure
 ms.topic: conceptual
 ms.date: 8/24/2017
 ms.author: ghogen
-ms.openlocfilehash: c9828504ab40a1e62c107f218fda024be6330c23
-ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
+ms.openlocfilehash: dd867462ce3a1841aa4e2e8943f2c2619d168b08
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37061743"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37112320"
 ---
 # <a name="browse-and-manage-storage-resources-by-using-server-explorer"></a>Keresse meg és tárolási erőforrások kezelése a Server Explorer használatával
 
@@ -219,7 +219,7 @@ Testre szabhatja az entitásokat, amely egy táblázat jelenik meg, ha a lekérd
 1. Ha elkészült a lekérdezés létrehozása a párbeszédpanel bezárásához. A lekérdezés megjelenő szöveg képernyőn a WCF Data Services szűrő beviteli mezőben jelenik meg.
 1. A lekérdezés futtatásához jelölje ki a zöld háromszögnek ikonra.
 
-Entitás megjelenő adatok tábla Designer beírása esetén egy a WCF Data Services szűrési karakterláncot a szűrő szövegmezőbe közvetlenül is végezhet. Az ilyen típusú karakterlánc egy SQL WHERE záradék hasonló, de a kiszolgálón, a HTTP-kérelem érkezik. Szűrőkarakterláncokban összeállításához kapcsolatos információkért lásd: [Szűrőkarakterláncokban hozhat létre a tábla Designer](https://msdn.microsoft.com/library/azure/ff683669.aspx).
+Entitás megjelenő adatok tábla Designer beírása esetén egy a WCF Data Services szűrési karakterláncot a szűrő szövegmezőbe közvetlenül is végezhet. Az ilyen típusú karakterlánc egy SQL WHERE záradék hasonló, de a kiszolgálón, a HTTP-kérelem érkezik. Szűrőkarakterláncokban összeállításához kapcsolatos információkért lásd: [Constructing szűrőkarakterláncokban a tábla Designer](https://docs.microsoft.com/azure/vs-azure-tools-table-designer-construct-filter-strings).
 
 Az alábbi ábrán egy példa egy érvényes szűrési karakterláncot:
 

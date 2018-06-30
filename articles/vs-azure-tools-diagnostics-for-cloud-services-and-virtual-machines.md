@@ -12,14 +12,14 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: multiple
-ms.date: 11/11/2016
+ms.date: 06/28/2018
 ms.author: mikejo
-ms.openlocfilehash: 34c667b0a594682e4d099e7bff64bfdb336b850b
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.openlocfilehash: 2ff2a619dabd7dfabf89361172557efa4884ba12
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2018
-ms.locfileid: "30292540"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37110487"
 ---
 # <a name="set-up-diagnostics-for-azure-cloud-services-and-virtual-machines"></a>Azure Cloud Services és a virtuális gépek diagnosztika beállítása
 Egy Azure-felhőszolgáltatásban és a virtuális gép van szüksége, amikor a Visual Studio segítségével könnyebben beállítása az Azure diagnosztikai. Diagnosztika rendszeradatok és a virtuális gépek és a virtuálisgép-példánya, amely a felhőalapú szolgáltatás futtatásához a naplózási adatokat rögzíti. Diagnosztikai adatok átvitele történik meg a választott tárfiók. Diagnosztika további információ az Azure-naplózás: [az Azure App Service Web Apps diagnosztikai naplózás engedélyezése](app-service/web-sites-enable-diagnostic-log.md).
@@ -31,7 +31,7 @@ Azure Diagnostics beállításához használhatja az alábbi lehetőségek köz�
 * A diagnosztikai beállítások módosítása a **diagnosztikai konfigurációja** párbeszédpanel a Visual Studióban. A beállítások lesznek mentve (az Azure SDK 2.4 és korábbi verzióiban, a fájl neve diagnostics.wadcfg) diagnostics.wadcfgx nevű fájlban. Akkor is közvetlenül tudja módosítani a konfigurációs fájlt. Ha a felhasználó a fájl, a konfigurációs módosítások érvénybe telepít, a felhő legközelebb az Azure szolgáltatás, vagy a szolgáltatás futtatásához az emulátorban.
 * Használja a Cloud Explorer vagy a Visual Studio Server Explorer egy felhőalapú szolgáltatás vagy a virtuális gépen, amelyen fut a diagnosztikai beállítások módosításához.
 
-## <a name="azure-sdk-26-diagnostics-changes"></a>Azure SDK 2.6 diagnostics changes
+## <a name="azure-sdk-26-diagnostics-changes"></a>Az Azure SDK 2.6 diagnosztika változások
 A következő módosításokat az Azure SDK 2.6 és a későbbi projekteket a Visual Studio vonatkoznak:
 
 * A helyi emulátor mostantól támogatja a diagnosztika. Ez azt jelenti, hogy diagnosztikai adatok gyűjtésére, és győződjön meg arról, hogy az alkalmazás hozza létre a megfelelő nyomkövetések míg fejlesztése és tesztelése a Visual Studio. A kapcsolati karakterlánc `UseDevelopmentStorage=true` diagnosztikai adatok gyűjtésének bekapcsolása a futtatása során a felhőszolgáltatási projektet a Visual Studio az Azure storage emulator használatával. Minden diagnosztikai adatgyűjtés fejlesztési tárolási tárfiókban.
@@ -87,7 +87,11 @@ A Visual Studio a szerepkörök az Azure-ban való futtatásakor a szolgáltatá
    * Ha **az előfizetés**, válassza ki a használni kívánt Azure-előfizetést, és adjon meg egy fióknevet. Az Azure-előfizetések kezeléséhez, jelölje be **fiókok kezelése**.
    * Ha **manuálisan kell megadni a hitelesítő adatok**, adja meg a nevét, és a használni kívánt Azure-fiók kulcsát.
 5. Megtekintéséhez a **diagnosztikai konfigurációja** párbeszédpanelen jelölje ki **konfigurálása**. Kivéve az **általános** és **napló könyvtárak**, minden egyes diagnosztika adatforrás gyűjtheti jelöli. Az alapértelmezett **általános** lapon kínál a következő diagnosztikai adatgyűjtési beállítások: **csak a hibák**, **kapcsolatos összes információ**, és **egyéni terv**. Az alapértelmezett **csak a hibák** beállítás is, a lehető legkevesebb használja, mert az nem továbbítja figyelmeztetés vagy a nyomkövetési adatokat. A **kapcsolatos összes információ** beállítás a legtöbb információt továbbítja, minél hatékonyabb tárolást használ, és ezért a legköltségesebb beállítás.
-   
+
+   > [!NOTE]
+   > Minimális támogatott "Kvóta a MB. lemez" mérete 4GB. Azonban ha memóriaképek gyűjti, növelje Ez például 10 GB-os magasabb értékre.
+   >
+  
     ![Az Azure diagnosztikai és a konfiguráció engedélyezése](./media/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines/IC758144.png)
 6. Ehhez a példához válassza ki a **egyéni terv** beállítás, így testre szabhatja az összegyűjtött adatokat.
 7. Az a **lemezkvóta MB-ban** mezőben állíthatja be mekkora lemezterület diagnosztikai adatok tárfiókba lefoglalni. Módosíthatja, vagy fogadja el az alapértelmezett értéket.
@@ -217,7 +221,7 @@ Egy felhőalapú szolgáltatás, vagy a virtuális gép diagnosztikai adatok beg
     Cloud Explorer vagy a Server Explorer nyissa meg a tárfiókot, amely a központi telepítés van társítva.
 3. Nyissa meg a tábla megjelenítő a diagnosztika táblákat, és tekintse át az összegyűjtött adatokat. Az IIS-naplókba és egyéni naplókat nyissa meg a blob-tároló. Az alábbi táblázat a táblák vagy a blob tárolók, amely tartalmazza az adatokat a különböző naplófájlokat. Az adatokat, hogy a naplófájl, a táblamódosítási bejegyzéseket tartalmaz **EventTickCount**, **DeploymentId**, **szerepkör**, és **RoleInstance** , mely virtuális gépek és a szerepkör jön létre az adatok azonosítása és mikor. 
    
-   | Diagnosztikai adatok | Leírás | Tartózkodási hely |
+   | Diagnosztikai adatok | Leírás | Hely |
    | --- | --- | --- |
    | Alkalmazásnaplók |A kódot állít elő, módszerek meghívásával-naplók a **System.Diagnostics.Trace** osztály. |WADLogsTable |
    | Eseménynaplók |A Windows eseménynaplóiban keresse meg a virtuális gépek adatait. Windows ezek a naplók információkat tárol, de alkalmazásokhoz és szolgáltatásokhoz is a naplók hibákat, és naplózza az adatokat. |WADWindowsEventLogsTable |

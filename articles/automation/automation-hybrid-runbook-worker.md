@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 04/25/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: be79f0111cb569509cb05b24c99f86d4ca9534b0
-ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
+ms.openlocfilehash: 54b2cab2ad6b1a22d35fcf0755f257063573e58b
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37063859"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37128622"
 ---
 # <a name="automate-resources-in-your-datacenter-or-cloud-by-using-hybrid-runbook-worker"></a>A datacenter vagy a felhőben lévő erőforrások automatizálásának hibrid forgatókönyv-feldolgozók segítségével
 
@@ -95,7 +95,7 @@ Egy csoport eltávolításához először távolítsa el a hibrid forgatókönyv
 
 ### <a name="hybrid-worker-role"></a>Hibrid feldolgozói szerepkör
 
-A hibrid forgatókönyv-feldolgozó csatlakozni, és regisztrálhatja az Naplóelemzési a port számát és az URL-címeket ebben a szakaszban ismertetett elérésére kell legyen. A hozzáférés kívül van a [portok és a Microsoft Monitoring Agent szükséges URL-címek](../log-analytics/log-analytics-agent-windows.md) Log Analyticshez való csatlakozáshoz.
+A hibrid forgatókönyv-feldolgozó csatlakozni, és regisztrálhatja az Naplóelemzési a port számát és az URL-címeket ebben a szakaszban ismertetett elérésére kell legyen. A hozzáférés kívül van a [portok és a Microsoft Monitoring Agent szükséges URL-címek](../log-analytics/log-analytics-agent-windows.md) Log Analyticshez való csatlakozáshoz. 
 
 Ha az ügynök és a Naplóelemzés szolgáltatás közötti kommunikációhoz proxykiszolgálót használ, ellenőrizze, hogy a megfelelő erőforrásokon elérhető. Ha tűzfal használata az internetről való hozzáférésének korlátozásához, konfigurálnia kell a tűzfalat, hogy lehetővé teszik a hozzáférést.
 
@@ -105,6 +105,8 @@ A következő port és URL-címeket a hibrid forgatókönyv-feldolgozói szerepk
 * Globális URL-címe: *.azure-automation.net
 * USA – (kormányzati) Virginia globális URL-címe: *.azure-automation.us
 * Ügynök szolgáltatás: https://\<workspaceId\>.agentsvc.azure-automation.net
+
+Javasoljuk, hogy a felsorolt kivételeket definiálásakor címek használatához. Az IP-címeket is letöltheti a [Microsoft Azure Datacenter IP-címtartományok](https://www.microsoft.com/download/details.aspx?id=41653). Ez a fájl hetente frissítve van, és az aktuálisan telepített tartománya és az IP-címtartományok jövőbeli módosításait tartalmazza.
 
 Ha egy Automation-fiók, amely egy adott területre van definiálva, korlátozhatja, hogy regionális adatközpontok kommunikációt. A következő táblázat a DNS-rekord mindegyik régióhoz:
 

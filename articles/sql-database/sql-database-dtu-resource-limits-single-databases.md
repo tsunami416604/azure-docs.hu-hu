@@ -2,19 +2,19 @@
 title: Az Azure SQL Database DTU-alapú erőforrás korlátozza az önálló adatbázisok |} Microsoft Docs
 description: Ez a lap néhány gyakori DTU-alapú erőforrás korlátot, az önálló adatbázisok Azure SQL Database ismerteti.
 services: sql-database
-author: CarlRabeler
+author: sachinpMSFT
 manager: craigg
 ms.service: sql-database
 ms.custom: DBs & servers
 ms.topic: conceptual
-ms.date: 06/20/2018
+ms.date: 06/29/2018
 ms.author: carlrab
-ms.openlocfilehash: 5a7abb7d67de59ea326b5180cf94e3594cd06576
-ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
+ms.openlocfilehash: 2d6660e1064959f2d04424ae1c3e9bc668231c92
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36753387"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37131321"
 ---
 # <a name="resource-limits-for-single-databases-using-the-dtu-based-purchasing-model"></a>Erőforrás-korlátozások az önálló adatbázisok a DTU-alapú alapjául szolgáló vásárlási modell használatával 
 
@@ -72,7 +72,7 @@ Az önálló adatbázisok az alábbi táblázatokban minden szolgáltatás és t
 
 
 > [!IMPORTANT]
-> Több mint 1 TB-nyi tárhelyre prémium tarifacsomagra a jelenleg rendelkezésre áll a következő kivételével minden régióban: Egyesült Királyság északi régiója, nyugati középső Régiójában, UK South2, Kína keleti, USDoDCentral, Németország központi, USDoDEast, USA – (kormányzati) délnyugati, Velünk – (kormányzati) Dél központi, Németország szerepel, Kína Északi, az USA – (kormányzati) keleti. Más régiókban a Prémium szinthez tartozó tárterület maximuma 1 TB. Lásd: [P11–P15 – Aktuális korlátozások](#single-database-limitations-of-p11-and-p15-when-the-maximum-size-greater-than-1-tb).  
+> Több mint 1 TB-nyi tárhelyre prémium tarifacsomagra a jelenleg rendelkezésre áll a következő kivételével minden régióban: nyugati középső Régiójában, Kína keleti, USDoDCentral, Németország központi, USDoDEast, USA – (kormányzati) délnyugati, Németország szerepel, USGovIowa, Kína északi. Más régiókban a Prémium szinthez tartozó tárterület maximuma 1 TB. Lásd: [P11–P15 – Aktuális korlátozások](#single-database-limitations-of-p11-and-p15-when-the-maximum-size-greater-than-1-tb).  
 
 ## <a name="single-database-change-storage-size"></a>Önálló adatbázist: tároló méretének módosítása
 

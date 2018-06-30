@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/18/2017
 ms.author: billmath
-ms.openlocfilehash: 3e3cebd47a259c7c297d6df0eaf76a350111f2e3
-ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
+ms.openlocfilehash: 8907619b802d93cee4463a80155f38ce9030948f
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/22/2018
-ms.locfileid: "36319265"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37129671"
 ---
 # <a name="azure-ad-connect-health-version-release-history"></a>Azure AD Connect Health: Version History (Az Azure AD Connect Health verzióelőzményei)
 Az Azure Active Directory ügyfélszolgálata rendszeresen frissíti az Azure AD Connect Health új szolgáltatásait és funkcióit. Ez a cikk felsorolja a kiadott szolgáltatások és verziókat.
@@ -29,6 +29,13 @@ Az Azure Active Directory ügyfélszolgálata rendszeresen frissíti az Azure AD
 * Az Azure AD Connect Health for Sync - diagnosztizálásához és elhárításához duplikált attribútum szinkronizálási hibák a portálról 
 
 **Ügynök frissítése:** 
+*  Az Azure AD Connect Health-ügynök az AD DS (3.1.7.0 verzió)    
+   1. A .NET-keretrendszer KB kiadásainak figyelőügynök magas CPU probléma gyorsjavítás
+
+*   Az Azure AD Connect Health-ügynök az AD FS (3.1.7.0 verzió)  
+   1. A .NET-keretrendszer KB kiadásainak figyelőügynök magas CPU probléma gyorsjavítás  
+   2. Javításokat az AD FS kiszolgáló 2016 másodlagos kiszolgálón a vizsgálati eredmények
+   
 *   Az Azure AD Connect Health-ügynök az AD FS (3.1.2.0 verzió)  
    1. Ügynökfelügyeleti memória és a kapcsolódó riasztások nyelvű 3.0.244.0 gyorsjavítás
 

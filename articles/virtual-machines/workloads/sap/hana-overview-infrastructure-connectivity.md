@@ -14,12 +14,12 @@ ms.workload: infrastructure
 ms.date: 06/04/2018
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 4741cf306aed1c86be1bc4b54fb961383e2f70bd
-ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
+ms.openlocfilehash: 4c0f5d0c5ed3814495a68d7fd49d41cec521bbd7
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34763765"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37114558"
 ---
 # <a name="sap-hana-large-instances-infrastructure-and-connectivity-on-azure"></a>SAP HANA (nagy példányok) infrastruktúra és az Azure-kapcsolat 
 
@@ -120,7 +120,7 @@ Egy Azure virtuális hálózatot, amely kapcsolódik a HANA nagy példányok kap
 
 A Microsoft már vezette be néhány, az IP-címtartományok HANA nagy példányok korábbi szakaszokban központi telepítéséhez szükséges. Azonban néhány további IP-címtartományokat, amelyek fontosak. Ugorjunk keresztül néhány további részleteket. A következő IP-címek, amelyek nem mindegyik kell elküldeni a Microsoftnak kell meghatározni, a kezdeti telepítés kérelem elküldése előtt:
 
-- **Virtuális hálózat címtartomány:** , korábban már bevezetett, vagy az IP-cím range(s) rendelt (vagy a csomag hozzárendelése) számára az Azure virtuális hálózatok felé (VNet) környezethez való csatlakozását a SAP HANA nagy példány a címe terület paramétere. Javasoljuk, hogy a címtartomány paraméter értéke egy többsoros magában foglalja az Azure Virtuálisgép-alhálózat tranzakciónaplók és az Azure-átjáró-alhálózat tartományának a grafikus korábban ismertetett módon. Ezt a tartományt a helyi vagy a kiszolgáló IP-készletet vagy ER-P2P címtartományai nem lehetnek átfedők. Hogyan kérhet ez vagy ezek IP-cím tranzakciónaplók? A vállalati hálózat team vagy szolgáltatás szolgáltató egy vagy több IP cím tranzakciónaplók, vagy nem használják a hálózaton belüli kell biztosítania. Példa: Ha az Azure Virtuálisgép-alhálózatot (lásd fentebb) 10.0.1.0/24, és az Azure-átjáró alhálózatának (lásd alább) 10.0.2.0/28, majd az Azure VNet címteret javasoljuk, hogy lehet két sort; 10.0.1.0/24 és 10.0.2.0/28. Bár a címterület értékek összesíthetők, ajánlott a egyeztetése alhálózati tartományt a hálózaton belül nagyobb címterek a jövőben máshol nem használt IP-címtartományok véletlen használatának elkerülése érdekében. **A virtuális hálózat címtér az IP-címtartományt, amely Microsoft elküldésre kérése az első központi telepítése során szükséges**
+- **Virtuális hálózat címtartomány:** , korábban már bevezetett, vagy az IP-cím range(s) rendelt (vagy a csomag hozzárendelése) számára az Azure virtuális hálózatok felé (VNet) környezethez való csatlakozását a SAP HANA nagy példány a címe terület paramétere. Javasoljuk, hogy a címtartomány paraméter értéke egy többsoros magában foglalja az Azure Virtuálisgép-alhálózat tranzakciónaplók és az Azure-átjáró-alhálózat tartományának a grafikus korábban ismertetett módon. Ezt a tartományt a helyszíni vagy a kiszolgáló IP-készletet vagy ER-P2P címtartományai nem lehetnek átfedők. Hogyan kérhet ez vagy ezek IP-cím tranzakciónaplók? A vállalati hálózat team vagy szolgáltatás szolgáltató egy vagy több IP cím tranzakciónaplók, vagy nem használják a hálózaton belüli kell biztosítania. Példa: Ha az Azure Virtuálisgép-alhálózatot (lásd fentebb) 10.0.1.0/24, és az Azure-átjáró alhálózatának (lásd alább) 10.0.2.0/28, majd az Azure VNet címteret javasoljuk, hogy lehet két sort; 10.0.1.0/24 és 10.0.2.0/28. Bár a címterület értékek összesíthetők, ajánlott a egyeztetése alhálózati tartományt a hálózaton belül nagyobb címterek a jövőben máshol nem használt IP-címtartományok véletlen használatának elkerülése érdekében. **A virtuális hálózat címtér az IP-címtartományt, amely Microsoft elküldésre kérése az első központi telepítése során szükséges**
 
 - **Az Azure virtuális gép alhálózat IP-címtartomány:** az IP-címtartományt, korábban már bemutatott-hoz hozzárendelt egy (vagy terv hozzárendelni) az Azure virtuális hálózat, a SAP HANA nagy példány környezethez való csatlakozását az Azure virtuális hálózat alhálózati paramétere. Az IP-címtartomány IP-címek hozzárendelése az Azure virtuális gépeken használatos. Az IP-címek a tartományon kívül csatlakozhatnak a SAP HANA nagy példány kiszolgálókkal. Ha szükséges, a több Azure Virtuálisgép-alhálózatok is használható. A/24 CIDR-blokkja Microsoft által ajánlott minden Azure Virtuálisgép-alhálózathoz. Ez a címtartomány a Azure VNet címterületen belülre használt értékek egy részének kell lennie. Hogyan kérhet az IP-címtartomány? A vállalati hálózat team vagy szolgáltatás szolgáltató IP-címtartományt, amely jelenleg nincs használatban a hálózaton belüli kell biztosítania.
 
@@ -152,7 +152,7 @@ Az adatok elküldését a Microsoftnak összesítése lehetősége is van. Ebben
 Két kisebb tartományt, az Azure virtuális hálózat címtartománya a megadott helyett a fent látható, amely lefedi a 4096 IP-címek egy nagyobb tartományon van. A címterület ilyen nagy definíciójának elhagyja néhány ahelyett, hogy nagy adattartományokat vizsgálnak nem használt. Mivel a virtuális hálózat címterület érték(ek) végzi, a BGP útválasztási propagálás, a nem használt tartományok a helyszíni vagy más helyen a hálózat használati útválasztási hibákat is okozhat. Ezért javasoljuk szorosan összhangban a tényleges alhálózati cím használt lemezterület címterület tartani. Ha szükséges, a virtuális hálózaton, leállás nélkül mindig értékeket is hozzáadhat új címterület később.
  
 > [!IMPORTANT] 
-> Minden IP-cím tartomány a ER-P2P, kiszolgáló IP-készlet, Azure virtuális hálózat címterület kell **nem** átfedésben vannak egymással vagy bármely más tartomány használt valahol máshol a hálózat; egyes kell lennie, és a két grafikus korábbi megjelenítése nem lehet bármely más tartomány alhálózat. Ha a rendszer átfedéseket tartományok között történik, akkor az Azure virtuális hálózat nem az ExpressRoute-kapcsolatcsoport csatlakozhat.
+> Minden IP-cím tartomány a ER-P2P, kiszolgáló IP-készlet, Azure virtuális hálózat címterület kell **nem** átfedésben vannak egymással vagy bármely más tartomány használt valahol máshol a hálózat; egyes kell lennie, és a két grafikus korábbi megjelenítése nem lehet egy bármely más tartomány alhálózat. Ha a rendszer átfedéseket tartományok között történik, akkor az Azure virtuális hálózat nem az ExpressRoute-kapcsolatcsoport csatlakozhat.
 
 ### <a name="next-steps-after-address-ranges-have-been-defined"></a>Címtartomány definiált követő lépések
 Az IP-címtartományok meghatározása után a következő tevékenységek van szükség:
@@ -243,7 +243,7 @@ New-AzureRmVirtualNetworkGatewayConnection -Name $myConnectionName `
 -PeerId $PeerID -ConnectionType ExpressRoute -AuthorizationKey $AuthGUID
 ```
 
-Ha szeretné csatlakoztatni az átjárót az előfizetéshez társított több ExpressRoute-Kapcsolatcsoportok, esetleg csak egyszer hajtható végre ezt a lépést. Például valószínűleg fog csatlakozni az azonos VNet-átjáró, amely a virtuális hálózat csatlakozik a helyi hálózat ExpressRoute-kapcsolatcsoportot.
+Ha szeretné csatlakoztatni az átjárót az előfizetéshez társított több ExpressRoute-Kapcsolatcsoportok, esetleg csak egyszer hajtható végre ezt a lépést. Például valószínűleg fog csatlakozni az azonos VNet-átjáró, amely a virtuális hálózat csatlakozik a helyszíni hálózat ExpressRoute-kapcsolatcsoportot.
 
 ## <a name="adding-more-ip-addresses-or-subnets"></a>Több IP-cím vagy alhálózat hozzáadása
 
@@ -276,7 +276,7 @@ Miután az új kapcsolat jön létre, és az SAP HANA Azure szolgáltatásfelüg
 
 ## <a name="deleting-a-subnet"></a>Egy alhálózat törlése
 
-Távolítsa el a virtuális hálózat alhálózatot, az Azure portálon, a PowerShell vagy a CLI használható. Abban az esetben, ha az Azure VNet IP cím tartomány vagy az Azure VNet címterület volt egy összevont tartományt, nincs nem a Microsoft az Ön szolgáltatáshoz hajtsa végre. Azzal a különbséggel, hogy a virtuális hálózat továbbra is propagálása a BGP-útvonal címterület, amely tartalmazza a törölt alhálózat. Ha több IP-címtartományokat, amelyek a törölt alhálózat egy lett hozzárendelve a Azure VNet IP cím tartomány vagy az Azure VNet címterület meghatározott, törölje, amely a VNet cím elfogyott, és ezt követően tájékoztatja az Azure Service Management azokat a tartományokat, hogy az Azure (nagy példányok) SAP HANA kommunikálni eltávolítani az SAP HANA.
+Távolítsa el a virtuális hálózat alhálózatot, az Azure portálon, a PowerShell vagy a CLI használható. Abban az esetben, ha az Azure VNet IP cím tartomány vagy az Azure VNet címterület volt egy összevont tartományt, nincs nem a Microsoft az Ön szolgáltatáshoz hajtsa végre. Azzal a különbséggel, hogy a virtuális hálózat továbbra is propagálása a BGP-útvonal címterület, amely tartalmazza a törölt alhálózat. Ha több IP-címtartományokat, amelyek a törölt alhálózat egy lett hozzárendelve a Azure VNet IP cím tartomány vagy az Azure VNet címterület meghatározott, törölje, amely a virtuális hálózat cím elfogyott, és ezt követően tájékoztatja az Azure-kezelő a SAP HANA eltávolítja a tartományokat, hogy az Azure (nagy példányok) SAP HANA folytatott kommunikációhoz.
 
 Egy alhálózat törléséhez, lásd: [alhálózat törlése](../../../virtual-network/virtual-network-manage-subnet.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#delete-a-subnet) alhálózatok létrehozásáról további információt.
 

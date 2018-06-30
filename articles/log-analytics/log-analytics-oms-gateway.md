@@ -3,7 +3,7 @@ title: Csatlakoztassa a számítógépet az OMS-átjáró |} Microsoft Docs
 description: Az eszközök és az Operations Manager által felügyelt számítógépek kapcsolódnak az OMS-átjáró szeretnék adatokat küldeni az Azure Automation és Naplóelemzés szolgáltatás a, ha nem rendelkeznek Internet-hozzáféréssel.
 services: log-analytics
 documentationcenter: ''
-author: MGoedtel
+author: mgoedtel
 manager: carmonm
 editor: ''
 ms.assetid: ae9a1623-d2ba-41d3-bd97-36e65d3ca119
@@ -11,15 +11,16 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/16/2018
 ms.author: magoedte
-ms.openlocfilehash: b3055e6b22e3f391c0bc3f321cd8117d55a95cf5
-ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
+ms.component: na
+ms.openlocfilehash: ecbc88ebaaa93215f85b57becc8a643dc3e168a0
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/17/2018
-ms.locfileid: "34271649"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37129040"
 ---
 # <a name="connect-computers-without-internet-access-using-the-oms-gateway"></a>Csatlakoztassa a számítógépet az OMS-átjáró internetkapcsolat nélkül
 Ez a dokumentum ismerteti a kommunikáció konfigurálása az Azure Automation szolgáltatásban, és az OMS-átjáró, ha közvetlen Naplóelemzési csatlakoztatva, vagy az Operations Manager figyelt számítógépek nem rendelkeznek Internet-hozzáféréssel.  Az OMS-átjáró, amely, amely támogatja a HTTP-bújtatás a HTTP-csatlakozás parancs használatával továbbítsa HTTP-proxyt, adatokat gyűjteni, és elküldi a Azure Automation és Naplóelemzési részére azok nevében.  
@@ -33,7 +34,7 @@ Az OMS-átjáró támogatja:
 
 Ha az IT-biztonsági házirendeknek nem teszi lehetővé a számítógépek csatlakozni az internethez, a pénztári (POS) eszközök és a kiszolgálók támogató informatikai szolgáltatásai, például a hálózat, de az Azure Automation vagy Naplóelemzési kezelni és megfigyelni őket csatlakoztatni kell , és közvetlenül kommunikáljanak az OMS-átjáró konfigurációs és adatokat továbbítson a részére azok nevében konfigurálható.  Ha ezeket a számítógépeket az OMS-ügynököt a Naplóelemzési munkaterület közvetlenül kapcsolódni vannak beállítva, minden számítógép helyette kommunikálni az OMS-átjáró.  Az átjáró átviszi az adatokat a az ügynököket a szolgáltatás közvetlenül, nem elemzi az adatokat átvitel közben bármelyikét.
 
-Ha az Operations Manager felügyeleti csoport integrálva van a Naplóelemzési, a felügyeleti kiszolgálók beállítható úgy, hogy az OMS-átjárón, attól függően, hogy a megoldás engedélyezte az összegyűjtött adatok küldésére és fogadására a konfigurációs adatokat.  Operations Manager-ügynökök egyes adatok, például az Operations Manager riasztásokat, konfigurációelemzés, példánytér és kapacitás adatokat küldeni a felügyeleti kiszolgáló. Egyéb nagy mennyiségű adatok, például az IIS-napló, a teljesítmény és a biztonsági események közvetlenül az OMS-átjáró kerülnek.  Ha van telepítve, a nem megbízható rendszerek figyeléséhez DMZ vagy más elkülönített hálózat egy vagy több Operations Manager átjáró kiszolgálók, az OMS-átjáró nem tud kommunikálni.  Operations Manager átjáró kiszolgálók csak a felügyeleti kiszolgálóra is tud jelentéseket.  Az OMS-átjáróval kommunikálni az Operations Manager felügyeleti csoport van konfigurálva, ha a proxy konfigurációs adatokat a rendszer automatikusan továbbítja minden ügynök által felügyelt számítógép használatával gyűjt adatokat, a Naplóelemzési van konfigurálva, akkor is, ha az érték üres.    
+Ha az Operations Manager felügyeleti csoport integrálva van a Naplóelemzési, a felügyeleti kiszolgálók beállítható úgy, hogy az OMS-átjárón, attól függően, hogy a megoldás engedélyezte az összegyűjtött adatok küldésére és fogadására a konfigurációs adatokat.  Operations Manager-ügynökök egyes adatok, például az Operations Manager riasztásokat, konfigurációelemzés, példánytér és kapacitás adatokat küldeni a felügyeleti kiszolgáló. Egyéb nagy mennyiségű adatok, például az IIS-napló, a teljesítmény és a biztonsági események közvetlenül az OMS-átjáró kerülnek.  Ha van telepítve, a nem megbízható rendszerek figyeléséhez DMZ vagy más elkülönített hálózat egy vagy több Operations Manager átjáró kiszolgálók, az OMS-átjáró nem tud kommunikálni.  Operations Manager átjáró kiszolgálók csak a felügyeleti kiszolgálóra is tud jelentéseket.  Ha az Operations Manager felügyeleti csoport az OMS-átjáró folytatott kommunikációhoz van konfigurálva, a proxy konfigurációs információkat terjesztése automatikusan történik minden ügynök által felügyelt számítógép, amely konfigurálva van a Naplóelemzési, gyűjt adatokat akkor is, ha a érték üres.    
 
 Magas rendelkezésre állás biztosításához a közvetlenül csatlakoztatott vagy az átjárón keresztül Naplóelemzési kommunikációs műveletek felügyeleti csoportok, használhatja a hálózati terheléselosztás történő és a forgalom szét több átjárókiszolgáló.  Ha egy átjáró kiszolgáló leáll, a rendszer átirányítja a forgalmat egy másik csomópont érhető el.  
 
@@ -157,12 +158,12 @@ Az Operations Manager támogatásához az átjáró használatához rendelkeznie
 > Ha nem adja meg az átjáró értékét, üres értékek vannak leküldve összes ügynököt.
 > 
 
-Ha ez az első alkalommal a Naplóelemzési munkaterület regisztrál az Operations Manager felügyeleti csoportjának, a adja meg a proxykiszolgáló-konfigurációt a felügyeleti csoport nincs lehetőség az operatív konzolon érhető el.  A felügyeleti csoportot ki kell sikeresen regisztrálva a szolgáltatásban érhető el ez a beállítás előtt.  Frissítenie kell a rendszer proxykonfigurációt a Netsh a rendszer a fut, az operatív konzol a konfigurálására-integráció és az összes felügyeleti kiszolgáló a felügyeleti csoportban.  
+Ha ez az első alkalommal a Naplóelemzési munkaterület regisztrál az Operations Manager felügyeleti csoportjának, a adja meg a proxykiszolgáló-konfigurációt a felügyeleti csoport nincs lehetőség az operatív konzolon érhető el.  A felügyeleti csoportot sikeresen regisztrálni kell a szolgáltatásban ahhoz, hogy ez a lehetőség rendelkezésre álljon.  Az integráció és a felügyeleti csoportba tartozó minden felügyeleti kiszolgáló konfigurálásához Netsh használatával frissítenie kell a rendszerproxy-konfigurációt a rendszeren, amelyiken az Operatív konzolt futtatja.  
 
-1. Nyisson meg egy rendszergazda jogú parancssort.
+1. Nyisson meg egy emelt szintű parancssort.
    a. Ugrás a **Start** és típus **cmd**.
    b. Kattintson a jobb gombbal **parancssor** , és jelölje ki futtató rendszergazda **.
-2. Adja meg a következő parancsot, és nyomja le az **Enter**:
+2. Írja be a következő parancsot, majd nyomja le az **Enter** billentyűt:
 
     `netsh winhttp set proxy <proxy>:<port>`
 
@@ -182,7 +183,7 @@ Nagy vagy összetett környezetek előfordulhat, hogy csak kívánt kiszolgáló
 1. Nyissa meg az Operations Manager konzolt, és válassza ki a **szerzői műveletek** munkaterületen.  
 2. A szerzői műveletek területen válassza ki **szabályok** , és kattintson a **hatókör** az Operations Manager gombjára. Ha ez a gomb nem érhető el, ellenőrizze, hogy győződjön meg arról, hogy rendelkezik-e objektumot, nem pedig mappát jelölt ki a figyelés ablaktáblán. A **felügyeleti csomag objektumai** párbeszédpanel közös célzott osztályok, csoportok vagy objektumok listáját jeleníti meg. 
 3. Típus **Állapotfigyelő szolgáltatás** a a **keressen** mezőben, majd válassza ki azt a listából.  Kattintson az **OK** gombra.  
-4. Keresse meg a szabály **Advisor Proxy beállítás szabály** és az operatív konzol eszköztárán kattintson **felülbírálások** mutasson **bírálja felül a Rule\For osztály egy adott objektumához: Állapotfigyelő szolgáltatás** és egy adott objektumot válasszon a listából.  Szükség esetén az állapotfigyelő szolgáltatás objektumot alkalmazza a felülbírálást, és ezután alkalmazza a felülbírálást a csoporthoz tartozó kiszolgálók tartalmazó egyéni csoportot hozhat létre.
+4. Keresse meg a szabály **Advisor Proxy beállítás szabály** és az operatív konzol eszköztárán kattintson **felülbírálások** mutasson **bírálja felül a Rule\For osztály egy adott objektumához: Állapotfigyelő szolgáltatás**  és egy adott objektumot válasszon a listából.  Szükség esetén az állapotfigyelő szolgáltatás objektumot alkalmazza a felülbírálást, és ezután alkalmazza a felülbírálást a csoporthoz tartozó kiszolgálók tartalmazó egyéni csoportot hozhat létre.
 5. Az a **felülbírálás tulajdonságai** párbeszédpanelen jelölje be a a **felülbírálása** oszlop a következő gombra a **WebProxyAddress** paraméter.  Az a **felülbírálás értékét** mezőbe írja be az URL-CÍMÉT az OMS-átjáró kiszolgálón győződjön meg arról, hogy a kiindulási pont a `http://` előtag.  
 
     >[!NOTE]
@@ -285,7 +286,7 @@ Az alábbi táblázat a eseményazonosítók és az OMS-átjáró naplóesemény
 | 403 |Hálózati hiba történt. Például: nem lehet kapcsolódni a célkiszolgálón |
 | 100 |Általános információk |
 | 101 |Szolgáltatás elindult |
-| 102 |Szolgáltatás leállt |
+| 102 |A szolgáltatás leállt |
 | 103 |HTTP-Csatlakozás parancsot kapott az ügyféltől |
 | 104 |Nem egy HTTP-csatlakozás parancs |
 | 105 |Célkiszolgáló nem engedélyezett listában vagy a célport nem biztonságos portja (443) <br> <br> Győződjön meg arról, hogy az átjárókiszolgálón az MMA ügynök és az ügynökök kommunikál az átjáró csatlakozik a ugyanazt a Naplóelemzési munkaterület. |

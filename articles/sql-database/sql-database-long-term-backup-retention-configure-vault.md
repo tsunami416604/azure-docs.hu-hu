@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 05/08/2018
 ms.author: sashan
 ms.reviewer: carlrab
-ms.openlocfilehash: 9f2fd54a1ce3cf8900b04545a258a32f9aa3e31a
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: feefe68fbe6681ee4b450503606ac8c4f25d5a39
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34647187"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37130260"
 ---
 # <a name="configure-and-restore-from-azure-sql-database-long-term-backup-retention-using-azure-recovery-services-vault"></a>Konfigurálja, és állítsa vissza az Azure SQL Database hosszú távú biztonsági másolatok megőrzésének Azure Recovery Services-tároló használata
 
@@ -102,7 +102,7 @@ Konfigurálja az Azure Recovery Services-tárolónak a [automatikus biztonsági 
 
 Tekintse meg az adatbázis a biztonsági másolatok [hosszú távú biztonsági másolatok megőrzésének](sql-database-long-term-retention.md). 
 
-1. Az Azure-portálon, nyissa meg az Azure Recovery Services-tároló az adatbázis biztonsági mentés (lépjen **összes erőforrás** , és válassza ki azt a listából az előfizetéshez tartozó erőforrások) az adatbázis biztonsági másolatait a tároló által használt tárolókapacitást megtekintéséhez.
+1. Az Azure-portálon, nyissa meg az Azure Recovery Services-tároló az adatbázis biztonsági mentés (lépjen **összes erőforrás** , és válassza ki azt a listából az előfizetéshez tartozó erőforrások) megtekintéséhez használja az adatbázis biztonsági másolatait a tárolókapacitást a tároló.
 
    ![biztonsági másolatokat tartalmazó helyreállítási tár megtekintése](./media/sql-database-get-started-backup-recovery/view-recovery-services-vault-with-data.png)
 
@@ -264,7 +264,56 @@ $restoredDb
 
 
 > [!NOTE]
-> Itt csatlakozhat a visszaállított adatbázis SQL Server Management Studio használatával szükséges feladatok végrehajtásához, például egy bit, az adatok kinyerése a visszaállított adatbázis másolja a már meglévő adatbázist, vagy törölje a meglévő adatbázis, és nevezze át a meglévő adatbázis nevének a visszaállított adatbázis. Lásd: [időponthoz kötött visszaállításra](sql-database-recovery-using-backups.md#point-in-time-restore).
+> Itt csatlakozhat a visszaállított adatbázis SQL Server Management Studio használatával szükséges feladatok végrehajtásához, például egy bit, az adatok kinyerése a visszaállított adatbázis másolja a már meglévő adatbázist, vagy törölje a meglévő adatbázis, és nevezze át a visszaállított a meglévő adatbázis nevének adatbázist. Lásd: [időponthoz kötött visszaállításra](sql-database-recovery-using-backups.md#point-in-time-restore).
+
+## <a name="how-to-cleanup-backups-in-recovery-services-vault"></a>Recovery Services-tároló törlése a biztonsági másolatok hogyan
+
+2018. július 1-től a balról jobbra V1 API már elavult, és minden a meglévő biztonsági másolatok a helyreállítási szolgáltatás tárolók áttelepítette a balról jobbra a tároló SQL-adatbázis kezeli. Győződjön meg arról, hogy Ön már nem az eredeti biztonsági mentés van szó, hogy azok lettek távolítva a tárolók áttelepítés után. Azonban ha egy zárolás helyezve a tároló a biztonsági mentések marad van. A felesleges költségek elkerülése érdekében manuálisan eltávolíthatja a régi biztonsági másolatok a helyreállítási szolgáltatás tárolóból az alábbi parancsfájl használatával. 
+
+```PowerShell
+<#
+.EXAMPLE
+    .\Drop-LtrV1Backup.ps1 -SubscriptionId “{vault_sub_id}” -ResourceGroup “{vault_resource_group}” -VaultName “{vault_name}” 
+#>
+[CmdletBinding()]
+Param (
+    [Parameter(Mandatory = $true, HelpMessage="The vault subscription ID")]
+    $SubscriptionId,
+
+    [Parameter(Mandatory = $true, HelpMessage="The vault resource group name")]
+    $ResourceGroup,
+
+    [Parameter(Mandatory = $true, HelpMessage="The vault name")]
+    $VaultName
+)
+
+Login-AzureRmAccount
+
+Select-AzureRmSubscription -SubscriptionId $SubscriptionId
+
+$vaults = Get-AzureRmRecoveryServicesVault
+$vault = $vaults | where { $_.Name -eq $VaultName }
+
+Set-AzureRmRecoveryServicesVaultContext -Vault $vault
+
+$containers = Get-AzureRmRecoveryServicesBackupContainer -ContainerType AzureSQL
+
+ForEach ($container in $containers)
+{
+   $canDeleteContainer = $true  
+   $ItemCount = 0
+   Write-Host "Working on container" $container.Name
+   $items = Get-AzureRmRecoveryServicesBackupItem -container $container -WorkloadType AzureSQLDatabase
+   ForEach ($item in $items)
+   {
+          write-host "Deleting item" $item.name
+          Disable-AzureRmRecoveryServicesBackupProtection -RemoveRecoveryPoints -item $item -Force
+   }
+
+   Write-Host "Deleting container" $container.Name
+   Unregister-AzureRmRecoveryServicesBackupContainer -Container $container
+}
+```
 
 ## <a name="next-steps"></a>További lépések
 

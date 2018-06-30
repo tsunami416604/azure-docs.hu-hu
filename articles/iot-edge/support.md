@@ -8,17 +8,17 @@ ms.date: 6/21/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 0a5cbabf8080efd1ae25ba151a1be339e8f5cad2
-ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
-ms.translationtype: HT
+ms.openlocfilehash: 05a571c4491122ec5c7c35f6bccc4b8c332a4be2
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/28/2018
-ms.locfileid: "37081754"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37130709"
 ---
 # <a name="azure-iot-edge-support"></a>Az Azure IoT Edge-támogatás
 Nincsenek többféle módon, hogy az Azure IoT peremhálózati termék támogatása.
 
-**Hibát** – a legtöbb, amely a Azure IoT peremhálózati termék fejlesztését történik, az IoT-Edge nyílt forráskódú projektben. A hibák jelenthetők a [problémák lap](https://github.com/azure/iot-edge/issues) a projekt. Javítások gyorsan ne a projektből a termékfrissítéseket.
+**Hibát** – a legtöbb, amely a Azure IoT peremhálózati termék fejlesztését történik, az IoT-Edge nyílt forráskódú projektben. A hibák jelenthetők a [problémák lap](https://github.com/azure/iotedge/issues) a projekt. Javítások gyorsan ne a projektből a termékfrissítéseket.
 
 **A Microsoft ügyfél-támogatási csapatának** –, akik rendelkeznek a [támogatási csomag](https://azure.microsoft.com/support/plans/) is végezhetnek, amelyet a Microsoft ügyfél-támogatási csapatának közvetlenül a támogatási jegy létrehozásával a [Azure-portálon]( https://ms.portal.azure.com/signin/index/?feature.settingsportalinstance=mpac).
 

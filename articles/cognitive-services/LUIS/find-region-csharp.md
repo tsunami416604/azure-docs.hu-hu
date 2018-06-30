@@ -1,6 +1,6 @@
 ---
 title: A C# LUIS régióban található nyelvi ismertetése (LUIS) határok |} Microsoft Docs
-description: Programozott módon a keresés terület előfizetési kulcs és az alkalmazás közzététele LUIS azonosítója.
+description: Programozott módon keresés közzététele végpontkulcs és alkalmazás régió LUIS azonosítója.
 services: cognitive-services
 author: v-geberr
 manager: kamran.iqbal
@@ -9,12 +9,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 05/31/2018
 ms.author: v-geberr
-ms.openlocfilehash: c8d2024567255083aec470adfebff0d1706fd472
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: f0df14736e0ed47957999e3aa7c6a22b0b0c0a35
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/02/2018
-ms.locfileid: "35349916"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37110408"
 ---
 # <a name="region-can-be-determined-from-api-call"></a>A régióban lehet meghatározni az API-hívás 
 Ha az alkalmazás Azonosítóját és a LUIS előfizetés-azonosító LUIS, melyik régióban végpont lekérdezések használandó találja.
@@ -25,19 +25,19 @@ Ha az alkalmazás Azonosítóját és a LUIS előfizetés-azonosító LUIS, mely
 ## <a name="luis-endpoint-query-strategy"></a>LUIS végpont lekérdezés stratégia
 Minden egyes LUIS végpont lekérdezésre van szükség:
 
-* Egy előfizetés kulcs
+* Egy végpontkulcs
 * Az alkalmazás azonosítója
 * A régió
 
-Ha a LUIS végpont lekérdezés a megfelelő előfizetés kulcs és az alkalmazás Azonosítóját használja, de a megfelelő régióba, ez a válaszkód 401-es. A 401-es kérelem nem számít az előfizetési kvóta felé. A kérelem ikonná, és kérdezze le a megfelelő régióban található minden egyes stratégiát. A megfelelő terület a csak kérelmet, amely egy 2xx állapotkódot adja vissza. 
+Ha a LUIS végpont lekérdezés a megfelelő végpont kulcs és az alkalmazás Azonosítóját használja, de a megfelelő régióba, ez a válaszkód 401-es. A 401-es kérelem nem számít az előfizetési kvóta felé. A kérelem ikonná, és kérdezze le a megfelelő régióban található minden egyes stratégiát. A megfelelő terület a csak kérelmet, amely egy 2xx állapotkódot adja vissza. 
 
 |Válaszkód|Paraméterek|
 |--|--|
-|2xx|megfelelő előfizetés kulcs<br>Javítsa ki az alkalmazás azonosítója<br>megfelelő fogadó régió|
-|401|megfelelő előfizetés kulcs<br>Javítsa ki az alkalmazás azonosítója<br>_helytelen_ fogadó régió|
+|2xx|megfelelő végpontkulcs<br>Javítsa ki az alkalmazás azonosítója<br>megfelelő fogadó régió|
+|401|megfelelő végpontkulcs<br>Javítsa ki az alkalmazás azonosítója<br>_helytelen_ fogadó régió|
 
 ## <a name="c-class-code-to-find-region"></a>C#-kódban osztály régióban található
-A konzolalkalmazást a LUIS alkalmazás Azonosítóját és az Előfizetés kulcs, és a vele társított minden egyes beolvasása. Egy előfizetés kulcs létrehozása régiónként éppen, ezért csak egy régió kell visszaadnia.
+A Konzolalkalmazás időt vesz igénybe a LUIS alkalmazás Azonosítóját és a végpont-kulcsot, és a vele társított minden egyes beolvasása. Egy végpont kulcs létrehozása régiónként éppen, ezért csak egy régió kell visszaadnia.
 
 A .net könyvtár függőségek a következők:
 
@@ -51,7 +51,7 @@ Itt látható egy példa a Konzolalkalmazás fő metódus hívása az egyéni LU
 
 [!code-csharp[Call the LUIS class](~/samples-luis/documentation-samples/find-region/csharp/ConsoleAppLUISRegion/Program.cs?range=85-101 "Call the LUIS class")]
 
-Az alkalmazás futtatásakor a konzol mutatja az alkalmazás Azonosítóját és az Előfizetés kulcs régióját.
+Az alkalmazás futtatásakor a konzol a régió mutatja az alkalmazás azonosítóját.
 
 ![Konzolalkalmazás LUIS régió ábrázoló képernyőfelvétel](./media/find-region-csharp/console.png)
 

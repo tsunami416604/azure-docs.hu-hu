@@ -10,12 +10,12 @@ ms.technology: Speech
 ms.topic: article
 ms.date: 06/07/2018
 ms.author: wolfma
-ms.openlocfilehash: 0bcdc3c4357cb8985fad16c607957bffad4a2b8c
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: 4dea1209548fb3bb4f846cdf7eaf82751f938bea
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37049230"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37108844"
 ---
 # <a name="quickstart-for-c-and-windows"></a>A C++ és a Windows gyors üzembe helyezés
 
@@ -78,8 +78,8 @@ Cserélje le az alapértelmezett kezdő szintű kódot az alábbi kódra:
 [!code-cpp[Quickstart Code](~/samples-cognitive-services-speech-sdk/Windows/quickstart-cpp/CppHelloSpeech.cpp#code)]
 
 > [!IMPORTANT]
-> Cserélje le az Előfizetés kulcs egy beolvasott. <br>
-> A régió cserélje le a régiójától a [beszéd szolgáltatás REST API](https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/rest-apis), pl. "westus" cserélje.
+> Az Előfizetés kulcs cserélje le azt, amelyik kapott. <br>
+> Cserélje le a [régió](regions.md) az előfizetéshez tartozó találhatóval, például cserélje `westus` az ingyenes próba-előfizetést.
 
 ![Az Előfizetés kulcs hozzáadása](media/sdk/sub-key-recognize-speech-cpp.png)
 

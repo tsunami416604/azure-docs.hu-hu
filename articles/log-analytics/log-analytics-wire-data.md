@@ -3,7 +3,7 @@ title: Wire Data megoldás a Log Analyticsben | Microsoft Docs
 description: Az átviteli adatok összevont hálózati és teljesítményadatok olyan számítógépekről, amelyeken található valamilyen OMS-ügynök, például Operations Manager- vagy Windows-hoz csatlakoztatott ügynökök. A hálózati adatok és a naplóadatok összevonása segít az adatok összevetésében.
 services: log-analytics
 documentationcenter: ''
-author: MGoedtel
+author: mgoedtel
 manager: carmonm
 editor: ''
 ms.assetid: fc3d7127-0baa-4772-858a-5ba995d1519b
@@ -11,15 +11,16 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/09/2018
 ms.author: magoedte
-ms.openlocfilehash: c86d1274ed46ff725c9db3093a8852fbae7f67ff
-ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
+ms.component: na
+ms.openlocfilehash: f44f47129a1d989422d25b7f0c5c55c1d229c07e
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "34011441"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37129006"
 ---
 # <a name="wire-data-20-preview-solution-in-log-analytics"></a>Wire Data 2.0 (előzetes verzió) megoldás a Log Analyticsben
 
@@ -109,7 +110,7 @@ Az alábbi táblázat a függőségi ügynök által támogatott operációs ren
 #### <a name="red-hat-enterprise-linux-centos-linux-and-oracle-linux-with-rhel-kernel"></a>Red Hat Enterprise Linux, CentOS Linux és Oracle Linux (RHEL Kernellel)
 
 - Csak az alapértelmezett és az SMP Linux kernelű kiadások támogatottak.
-- A nem szabványos kernelű kiadások, például a PAE és a Xen nem támogatottak semmilyen Linux-disztribúció esetén. Például ha egy rendszer kiadási karakterlánca _2.6.16.21-0.8-xen_, az a rendszer nem támogatott.
+- A nem szabványos kernelű kiadások, például a PAE és a Xen nem támogatottak semmilyen Linux-disztribúció esetén. Például ha egy rendszer kiadási sztringje _2.6.16.21-0.8-xen_, az a rendszer nem támogatott.
 - Az egyéni kernelek, beleértve a standard kernelek újrafordításait, nem támogatottak.
 - A CentOSPlus kernel szintén nem támogatott.
 - Az Oracle Unbreakable Enterprise Kernellel (UEK) a cikk későbbi szakasza foglalkozik.

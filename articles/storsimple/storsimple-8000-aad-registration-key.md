@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/23/2018
 ms.author: alkohli
-ms.openlocfilehash: 37f44538d94ed78509bbcb09e726dc34a9e92e95
-ms.sourcegitcommit: 28178ca0364e498318e2630f51ba6158e4a09a89
+ms.openlocfilehash: e6e792c31f9856bcaf1d777e534dcac8d8be3dd3
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2018
-ms.locfileid: "28030946"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37113527"
 ---
 # <a name="use-the-new-authentication-for-your-storsimple"></a>A StorSimple az új hitelesítés használatára
 
@@ -60,9 +60,9 @@ Ha a StorSimple 8000 series eszközt használ, a következő táblázat segíts�
 
 | Ha az eszköz fut.| A következő művelet elvégzése                                    |
 |--------------------------|------------------------|--------------------|--------------------------------------------------------------|
-| 5-ös vagy újabb frissítés és az eszköz offline állapotban. <br> Látni egy riasztást, győződjön meg arról, hogy URL-címe nem szerepel az engedélyezési listán.| A tűzfalszabályok a hitelesítési URL-cím módosításához.<br> Lásd: [hitelesítési URL-címek](#url-changes-for-aad-authentication). |
+| 5-ös vagy újabb frissítés és az eszköz offline állapotban. <br> Látni egy riasztást, győződjön meg arról, hogy URL-címe nem szerepel az engedélyezési listán.|1. A tűzfalszabályok a hitelesítési URL-cím módosításához. Lásd: [hitelesítési URL-címek](#url-changes-for-aad-authentication).<br>2. [Az AAD-regisztrációs kulcs beolvasása a szolgáltatástól](#aad-based-registration-keys).<br>3. [A Windows PowerShell-felületet a StorSimple 8000 series eszköz csatlakozni](storsimple-8000-deployment-walkthrough-u2.md#use-putty-to-connect-to-the-device-serial-console).<br>4. Használjon `Redo-DeviceRegistration` parancsmag futtatásával regisztrálja az eszközt a Windows PowerShell segítségével. Adja meg az előző lépésben kapott kulcsot.|
 | 5-ös vagy újabb frissítés és az eszköz online.| Nincs szükség semmilyen műveletre.                                       |
-| 4-es vagy korábbi frissítési és az eszköz offline állapotban. | A tűzfalszabályok a hitelesítési URL-cím módosításához.<br>[Töltse le a frissítés 5 katalógus kiszolgálón keresztül](storsimple-8000-install-update-5.md#download-updates-for-your-device).<br>[5. frissítésétől alkalmazni a gyorsjavítások a módszerrel](storsimple-8000-install-update-5.md#install-update-5-as-a-hotfix). <br> [Az AAD-regisztrációs kulcs beolvasása a szolgáltatástól](#aad-based-registration-keys). <br> [A Windows PowerShell-felületet a StorSimple 8000 series eszköz csatlakozni](storsimple-8000-deployment-walkthrough-u2.md#use-putty-to-connect-to-the-device-serial-console). <br>Használjon `Redo-DeviceRegistration` parancsmag futtatásával regisztrálja az eszközt a Windows PowerShell segítségével. Adja meg az előző lépésben kapott kulcsot.|
+| 4-es vagy korábbi frissítési és az eszköz offline állapotban. |1. A tűzfalszabályok a hitelesítési URL-cím módosításához.<br>2. [Töltse le a frissítés 5 katalógus kiszolgálón keresztül](storsimple-8000-install-update-5.md#download-updates-for-your-device).<br>3. [5. frissítésétől alkalmazni a gyorsjavítások a módszerrel](storsimple-8000-install-update-5.md#install-update-5-as-a-hotfix).<br>4. [Az AAD-regisztrációs kulcs beolvasása a szolgáltatástól](#aad-based-registration-keys).<br>5. [A Windows PowerShell-felületet a StorSimple 8000 series eszköz csatlakozni](storsimple-8000-deployment-walkthrough-u2.md#use-putty-to-connect-to-the-device-serial-console). <br>6. Használjon `Redo-DeviceRegistration` parancsmag futtatásával regisztrálja az eszközt a Windows PowerShell segítségével. Adja meg az előző lépésben kapott kulcsot.|
 | 4-es vagy korábbi frissítési és az eszköz online állapotban. |A tűzfalszabályok a hitelesítési URL-cím módosításához.<br> 5. frissítésétől telepítse az Azure portálon keresztül.              |
 | Gyári beállításokra történő visszaállításának frissítési 5 előtt verzióra.      |A portál egy AAD-alapú regisztrációs kulcsot jeleníti meg, az eszköz régebbi szoftver futása közben. Kövesse a fenti forgatókönyvben Ha az eszköz fut Update 4-es vagy korábbi.              |
 

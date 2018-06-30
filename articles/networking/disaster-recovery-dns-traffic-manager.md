@@ -15,14 +15,14 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/08/2018
 ms.author: kumud
-ms.openlocfilehash: 6c46ada7fc95d5789512f8f7c7842852e6a86b69
-ms.sourcegitcommit: 50f82f7682447245bebb229494591eb822a62038
+ms.openlocfilehash: d608378f9b3ff3179f9e37ef13f88c65a645d018
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35249346"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37112986"
 ---
-# <a name="disaster-recovery-using-azure-dns-and-traffic-manager"></a>Azure DNS-ben és a Traffic Manager használata katasztrófa utáni helyreállítás
+# <a name="disaster-recovery-using-azure-dns-and-traffic-manager"></a>Vészhelyreállítás az Azure DNS-sel és a Traffic Managerrel
 
 Végezze el az alkalmazás funkciói súlyos adatvesztést a vész-helyreállítási összpontosít. Ahhoz, hogy válassza ki a vész-helyreállítási megoldást, üzleti és informatikai tulajdonosok először meg kell határoznia szolgáltatási szükséges során katasztrófa, például - nem érhető el, részben elérhető csökkentett vagy késleltetett rendelkezésre állását, vagy teljesen érhető el.
 A legtöbb vállalati ügyfelek választ egy alkalmazás vagy infrastruktúra szintű feladatátvételi szembeni hibatűrést több területi architektúrát. Az ügyfelek több megközelítés közül választhatja ki a kérelem kitöltése feladatátvételi és a redundáns architektúra keresztül magas rendelkezésre állás elérése érdekében. Íme néhány a népszerű megközelítések közül:
@@ -59,7 +59,7 @@ DNS egyike a leghatékonyabb mechanizmusokat átirányít hálózati forgalmat, 
 
 Fontos tudni, hogy a DNS-ben, és beszéljék meg a jelen cikkben szereplő megoldások széles körben használt néhány fogalommal:
 - **DNS-A rekord** – A rekordok mutatók, amelyek egy IPv4-cím a tartományban. 
-- **CNAME-vagy Canonical** -bejegyzéstípus szolgál, hogy egy másik DNS-rekord mutasson. CNAME a rekord, amely tartalmazza az IP-címet az IP-választ, de ahelyett, hogy a mutató nem válaszol. 
+- **CNAME-vagy Canonical** -bejegyzéstípus szolgál, hogy egy másik DNS-rekord mutasson. A rekord, amely tartalmazza az IP-cím az IP-címet, de ahelyett, hogy a mutató CNAME nem válaszol. 
 - **Útválasztás súlyozott** – egy weight a végpontok és közzétennie a forgalmat a társított súlyok alapján választhat. Az útválasztási módszer a négy forgalom útválasztási módszerek egyikével Traffic Manager belül érhető el. További információkért lásd: [útválasztási módszer súlyozott](../traffic-manager/traffic-manager-routing-methods.md#weighted).
 - **Prioritás útválasztás** – állapotellenőrzést végpontok prioritású virtuális gép útválasztási alapul. Alapértelmezés szerint az Azure Traffic manager az összes forgalom küldése a legmagasabb prioritású végpont, és egy hiba vagy katasztrófa esetén a Traffic Manager irányítja a forgalmat a másodlagos végponti. További információkért lásd: [prioritású virtuális gép útválasztási módszer](../traffic-manager/traffic-manager-routing-methods.md#priority).
 

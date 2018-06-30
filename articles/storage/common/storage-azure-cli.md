@@ -14,12 +14,12 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 06/02/2017
 ms.author: rogarana
-ms.openlocfilehash: 68e101ebec4a90d8c0f39eedeef33d252c720ed1
-ms.sourcegitcommit: c722760331294bc8532f8ddc01ed5aa8b9778dec
+ms.openlocfilehash: b7cb8b1ca2f377964f3613ad8e0549418cb2abec
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34737368"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37131871"
 ---
 # <a name="using-the-azure-cli-20-with-azure-storage"></a>Az Azure parancssori felület 2.0 használatával az Azure Storage
 
@@ -198,9 +198,20 @@ az storage account create \
   * `Standard_RAGRS`
   * `Standard_ZRS`
 
-
 ### <a name="set-default-azure-storage-account-environment-variables"></a>Környezeti változók értékét az alapértelmezett Azure storage-fiók
+
 Az Azure-előfizetéshez több tárfiókot is lehet. Válassza ki az egyiket minden ezt követő tárolási parancs, állítsa be ezen környezeti változókkal:
+
+Elsőként jelenítse meg a tárfiókkulcsokat az [az storage account keys list](/cli/azure/storage/account/keys#list) parancs segítségével:
+
+```azurecli-interactive
+az storage account keys list \
+    --account-name <account_name> \
+    --resource-group <resource_group> \
+    --output table
+```
+
+Most, hogy a kulcs, ezért a fiók neve meghatározhatja környezeti változóként:
 
 ```azurecli
 export AZURE_STORAGE_ACCOUNT=<account_name>
@@ -223,7 +234,6 @@ export AZURE_STORAGE_CONNECTION_STRING="<connection_string>"
 
 > [!NOTE]
 > Ez a cikk a következő szakaszok a összes példák feltételezik, hogy beállított a `AZURE_STORAGE_ACCOUNT` és `AZURE_STORAGE_ACCESS_KEY` környezeti változókat.
->
 
 ## <a name="create-and-manage-blobs"></a>Hozzon létre és blobok kezelése
 Az Azure Blob storage egy olyan szolgáltatás nagy mennyiségű strukturálatlan adatok, például szövegek vagy bináris adatok, hozzáfér a bárhol a világon HTTP vagy HTTPS PROTOKOLLON keresztül tárolásához. Ez a szakasz feltételezi, hogy Ön már ismeri a Azure Blob storage fogalmakat. Részletes információkért lásd: [az Azure Blob storage .NET használatának első lépései](../blobs/storage-dotnet-how-to-use-blobs.md) és [Blob szolgáltatással kapcsolatos fogalmak](/rest/api/storageservices/blob-service-concepts).
@@ -241,7 +251,7 @@ Beállíthatja három szintjének olvasási hozzáférés egy új tároló az op
 * `blob`: Blobok nyilvános olvasási hozzáférés.
 * `container`: A teljes tárolóhoz nyilvános olvasási és lista eléréséhez.
 
-További információkért lásd: [tárolók és blobok névtelen olvasási hozzáférés kezelése](../blobs/storage-manage-access-to-resources.md).
+További információkért lás a [tárolók és blobok névtelen olvasási hozzáférésének kezelésével](../blobs/storage-manage-access-to-resources.md) foglalkozó témakört.
 
 ### <a name="upload-a-blob-to-a-container"></a>Blob feltöltése tárolóba
 Az Azure Blob storage blokkméretet támogatja, hozzáfűzése, és a lapblobokat. Töltse fel blobok egy tárolóba használatával a `blob upload` parancs:

@@ -10,12 +10,12 @@ ms.workload: identity
 ms.date: 04/16/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 1b37e61763b34e320ffb4078600e08b1d32330a1
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 94d96af8db651a848ac092d1f8b85da4909427b7
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34709964"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37110115"
 ---
 # <a name="track-user-behavior-in-azure-ad-b2c-journeys-by-using-application-insights"></a>Az Azure AD B2C útvonal be a felhasználó viselkedésének nyomon az Application Insights használatával
 
@@ -111,7 +111,7 @@ Műszaki profilok az identitás élmény keretrendszer az Azure AD B2C funkciók
 | JourneyContextForInsights | A munkamenet megnyílik az Application Insights, és elküldi a korrelációs azonosító |
 | AzureInsights-SignInRequest | Létrehoz egy `SignIn` a jogcímeket, ha egy bejelentkezési kérelmet kapott esemény | 
 | AzureInsights-UserSignup | Létrehoz egy UserSignup eseményt, amikor a felhasználó elindítja az előfizetési beállítás a sign-Close-Up/sign-in út | 
-| AzureInsights-SignInComplete | a hitelesítés sikeres befejezését rögzíti, amikor el lett küldve egy jogkivonatot a függő entitás alkalmazás | 
+| AzureInsights-SignInComplete | A hitelesítés sikeres befejezését rögzíti, amikor el lett küldve egy jogkivonatot a függő entitás alkalmazás | 
 
 A profilok a bővítményfájl származó hozzáadása az alapszintű csomag ezen elemek hozzáadásával a `<ClaimsProviders>` csomópont.  A fájlnév általában: `yourtenant.onmicrosoft.com-B2C_1A_TrustFrameworkExtensions.xml`
 
@@ -280,13 +280,12 @@ Referenced using {OIDC:One of the property names below}
 
 | Jogcím | OpenIdConnect paraméter | Példa |
 | ----- | ----------------------- | --------|
-| parancssor | parancssor | – |
+| Kérése | parancssor | – |
 | LoginHint |  login_hint | – |
 | DomainHint | domain_hint | – |
 |  MaxAge | max_age | – |
 | clientId | client_id | – |
 | Felhasználónév | login_hint | – |
-| Jelszó | domain_hint | – |
 |  Erőforrás | erőforrás| – |
 | AuthenticationContextReferences | acr_values | – |
 
@@ -304,11 +303,11 @@ A paraméter neve OIDC vagy OAuth2 kérelmet részét képező egy jogcímet a f
 https://login.microsoftonline.com/sampletenant.onmicrosoft.com/oauth2/v2.0/authorize?p=B2C_1A_signup_signin&client_id=e1d2612f-c2bc-4599-8e7b-d874eaca1ae1&nonce=defaultNonce&redirect_uri=https%3A%2F%2Fjwt.ms&scope=openid&response_type=id_token&prompt=login&app_session=0a2b45c&loyalty_number=1234567
 
 ```
-A jogcímek hozzáadásával Ezután felvehet egy `Input Claim` elemben, amely az Application Insights esemény:
+A jogcímek hozzáadásával Ezután felvehet egy `Input Claim` elemben, amely az Application Insights esemény. Egy esemény tulajdonságokkal is bővül, keresztül {TULAJDONSÁGNÉV:} szintaxist, ahol a név tulajdonság lett hozzáadva az esemény. Példa:
 
 ```
-<InputClaim ClaimTypeReferenceId="app_session" PartnerClaimType="app_session" DefaultValue="{OAUTH-KV:app_session}" />
-<InputClaim ClaimTypeReferenceId="loyalty_number" PartnerClaimType="loyalty_number" DefaultValue="{OAUTH-KV:loyalty_number}" />
+<InputClaim ClaimTypeReferenceId="app_session" PartnerClaimType="{property:app_session}" DefaultValue="{OAUTH-KV:app_session}" />
+<InputClaim ClaimTypeReferenceId="loyalty_number" PartnerClaimType="{property:loyalty_number}" DefaultValue="{OAUTH-KV:loyalty_number}" />
 ```
 
 ### <a name="other-system-claims"></a>Egyéb rendszer jogcímek

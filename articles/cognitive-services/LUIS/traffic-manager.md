@@ -9,12 +9,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 06/07/2018
 ms.author: v-geberr
-ms.openlocfilehash: 513d4395b1d3e631855c2f6e132d54331b3ddf8d
-ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
+ms.openlocfilehash: 8c8228b13c972c65596f0389e2fdfde585f8a742
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36266345"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37110313"
 ---
 # <a name="use-microsoft-azure-traffic-manager-to-manage-endpoint-quota-across-keys"></a>Végpont kvóta közötti kulcsok kezelése a Microsoft Azure Traffic Manager segítségével
 Nyelvi ismertetése (LUIS) lehetővé teszi egy kulcs kvótán túl a végpont kérelem kvóta növeléséhez. Hozzon létre egy további kulcsok LUIS, és vegye fel őket a LUIS alkalmazáshoz az ebben az esetben a **közzététel** lapját a **erőforrások és a kulcsok** szakasz. 
@@ -48,13 +48,13 @@ New-AzureRmResourceGroup -Name luis-traffic-manager -Location "West US"
 
     ![Képernyőkép az LUIS portál két LUIS kulcsokkal közzététel az oldalon](./media/traffic-manager/luis-keys-in-luis.png)
 
-    A példa URL-címet a **végpont** lekérdezési paraméterként oszlop használja az előfizetés kulccsal GET kérés. A két új kulcsokkal végponti URL-címek másolása. A cikk későbbi részében a Traffic Manager-konfiguráció részeként használhatók.
+    A példa URL-címet a **végpont** oszlop használja egy GET kérelmet a végpont kulccsal egy lekérdezési paraméter. A két új kulcsokkal végponti URL-címek másolása. A cikk későbbi részében a Traffic Manager-konfiguráció részeként használhatók.
 
 ## <a name="manage-luis-endpoint-requests-across-keys-with-traffic-manager"></a>A Traffic Managerrel kulcsok között LUIS végpont vonatkozó kérések kezelése
 A TRAFFIC Manager létrehoz egy új DNS hozzáférési pont a végpontokat. Nem jár el átjáróként vagy proxyként megegyezik, azonban kizárólag a DNS-szinten. Ebben a példában a DNS-rekordokat nem változik. A DNS-szalagtár egyik a Traffic Managerrel megszerezni a helyes végpontját, hogy adott kérés kommunikációhoz használ. _Minden egyes_ kérelem szánt LUIS először határozza meg, melyik LUIS végpontot kell használni a Traffic Manager kérelem megadása szükséges. 
 
 ### <a name="polling-uses-luis-endpoint"></a>Lekérdezési használ LUIS végpont
-A TRAFFIC Manager kérdezze le a végpontokat rendszeres időközönként ellenőrizze, hogy a végpont nem továbbra is elérhető. A Traffic Manager URL-címet kell egy GET kérelemhez érhető el, és térjen vissza a 200 kérdezi le. A végpont URL-cím a **közzététel** lap ezt végzi. Mivel minden egyes előfizetés kulcs egy másik útvonalat, és a lekérdezési karakterlánc-paraméterrel rendelkezik, a minden előfizetés kulcsot kell egy másik lekérdezés elérési utat. Minden alkalommal, amikor lekérdezi a Traffic Manager, költség kvóta kérelmet. A lekérdezési karakterlánc paraméter **q** a LUIS végpont az LUIS küldött utterance. Ez a paraméter egy utterance küldése helyett segítségével hozzáadása Traffic Manager lekérdezési a LUIS végpont napló, a hibakeresési technika konfigurálva a Traffic Manager lekérése közben.
+A TRAFFIC Manager kérdezze le a végpontokat rendszeres időközönként ellenőrizze, hogy a végpont nem továbbra is elérhető. A Traffic Manager URL-címet kell egy GET kérelemhez érhető el, és térjen vissza a 200 kérdezi le. A végpont URL-cím a **közzététel** lap ezt végzi. Mivel minden egyes végpont kulcs egy másik útvonalat, és a lekérdezési karakterlánc-paraméterrel rendelkezik, a minden egyes végpont kulcsot kell egy másik lekérdezés elérési utat. Minden alkalommal, amikor lekérdezi a Traffic Manager, költség kvóta kérelmet. A lekérdezési karakterlánc paraméter **q** a LUIS végpont az LUIS küldött utterance. Ez a paraméter egy utterance küldése helyett segítségével hozzáadása Traffic Manager lekérdezési a LUIS végpont napló, a hibakeresési technika konfigurálva a Traffic Manager lekérése közben.
 
 Minden egyes LUIS végponthoz a saját elérési utat, mert a saját Traffic Manager-profil szükséges. Ahhoz, hogy a profilok kezeléséhez, hozzon létre egy [ _beágyazott_ Traffic Manager](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-nested-profiles) architektúra. Egy szülő-profilt a gyermekek profilok mutat, és a forgalom kezeléséhez.
 
@@ -64,11 +64,11 @@ Miután beállította a Traffic Manager, akkor ne felejtse el módosítani az ú
 Az alábbi szakaszok a két gyermek profilok, a keleti LUIS kulcs és az egyikben a nyugati LUIS kulcs létrehozása. Ezután egy szülő-profil létrehozása, és a két gyermek profilok hozzáadódnak a szülő profil. 
 
 ### <a name="create-the-east-us-traffic-manager-profile-with-powershell"></a>USA keleti régiója Traffic Manager-profilt létrehozása a PowerShell használatával
-USA keleti régiója Traffic Manager-profil több lépésből áll: profil létrehozása, adja hozzá a végpont és megadnia. Traffic Manager-profil sok végpont rendelkezhet, de minden egyes végpont rendelkezik ugyanazt az érvényesítési elérési utat. Mivel LUIS végpont URL-címéből az east és a west előfizetések különböző régióban és az Előfizetés kulcs miatt, minden LUIS végpont nem lehet a profil egy végpontot. 
+USA keleti régiója Traffic Manager-profil több lépésből áll: profil létrehozása, adja hozzá a végpont és megadnia. Traffic Manager-profil sok végpont rendelkezhet, de minden egyes végpont rendelkezik ugyanazt az érvényesítési elérési utat. Mivel LUIS végpont URL-címéből az east és a west előfizetések különböző területi és a végpont kulcs miatt, minden LUIS végpont nem lehet a profil egy végpontot. 
 
 1. A profil létrehozása **[New-AzureRmTrafficManagerProfile](https://docs.microsoft.com/powershell/module/azurerm.trafficmanager/new-azurermtrafficmanagerprofile?view=azurermps-6.2.0)** parancsmag
 
-    A következő parancsmag segítségével hozzon létre a profilt. Ügyeljen arra, hogy módosítsa a `appIdLuis` és `subscriptionKeyLuis`. A subscriptionKey van keleti Velünk LUIS kulcshoz. Ha az elérési út nem megfelelő, a LUIS app ID és az Előfizetés kulcs, beleértve a Traffic Manager lekérdezési-e állapota `degraded` mert forgalom kezelése nem lehet sikeresen kérni a LUIS végpont. Győződjön meg arról, hogy értékének `q` van `traffic-manager-east` hívjuk fel a LUIS végpont logs ezt az értéket.
+    A következő parancsmag segítségével hozzon létre a profilt. Ügyeljen arra, hogy módosítsa a `appIdLuis` és `subscriptionKeyLuis`. A subscriptionKey van keleti Velünk LUIS kulcshoz. Ha az elérési út nem megfelelő, a LUIS app ID és a végpont kulcsot, beleértve a Traffic Manager lekérdezési-e állapota `degraded` mert forgalom kezelése nem lehet sikeresen kérni a LUIS végpont. Győződjön meg arról, hogy értékének `q` van `traffic-manager-east` hívjuk fel a LUIS végpont logs ezt az értéket.
 
     ```PowerShell
     $eastprofile = New-AzureRmTrafficManagerProfile -Name luis-profile-eastus -ResourceGroupName luis-traffic-manager -TrafficRoutingMethod Performance -RelativeDnsName luis-dns-eastus -Ttl 30 -MonitorProtocol HTTPS -MonitorPort 443 -MonitorPath "/luis/v2.0/apps/<appID>?subscription-key=<subscriptionKey>&q=traffic-manager-east"
@@ -136,7 +136,7 @@ USA nyugati régiója Traffic Manager-profilt létrehozni, kövesse a lépéseke
 
 1. A profil létrehozása **[New-AzureRmTrafficManagerProfile](https://docs.microsoft.com/powershell/module/AzureRM.TrafficManager/New-AzureRmTrafficManagerProfile?view=azurermps-6.2.0)** parancsmag
 
-    A következő parancsmag segítségével hozzon létre a profilt. Ügyeljen arra, hogy módosítsa a `appIdLuis` és `subscriptionKeyLuis`. A subscriptionKey van keleti Velünk LUIS kulcshoz. Az elérési út nem megfelelő a LUIS app ID és az előfizetés kulcsot is beleértve, a Traffic Manager-lekérdezés akkor állapota `degraded` mert forgalom kezelése nem lehet sikeresen kérni a LUIS végpont. Győződjön meg arról, hogy értékének `q` van `traffic-manager-west` hívjuk fel a LUIS végpont logs ezt az értéket.
+    A következő parancsmag segítségével hozzon létre a profilt. Ügyeljen arra, hogy módosítsa a `appIdLuis` és `subscriptionKeyLuis`. A subscriptionKey van keleti Velünk LUIS kulcshoz. Az elérési út nem megfelelő a LUIS app ID és a végpont kulcsot is beleértve, a Traffic Manager-lekérdezés akkor állapota `degraded` mert forgalom kezelése nem lehet sikeresen kérni a LUIS végpont. Győződjön meg arról, hogy értékének `q` van `traffic-manager-west` hívjuk fel a LUIS végpont logs ezt az értéket.
 
     ```PowerShell
     $westprofile = New-AzureRmTrafficManagerProfile -Name luis-profile-westus -ResourceGroupName luis-traffic-manager -TrafficRoutingMethod Performance -RelativeDnsName luis-dns-westus -Ttl 30 -MonitorProtocol HTTPS -MonitorPort 443 -MonitorPath "/luis/v2.0/apps/<appIdLuis>?subscription-key=<subscriptionKeyLuis>&q=traffic-manager-west"
@@ -152,7 +152,7 @@ USA nyugati régiója Traffic Manager-profilt létrehozni, kövesse a lépéseke
     |-RelativeDnsName|Luis-dns-westus|Ez a szolgáltatás altartomány: luis-dns-westus.trafficmanager.net|
     |-Élettartam|30|Lekérdezési időköz, 30 másodperces|
     |-MonitorProtocol<BR>-MonitorPort|HTTPS<br>443|Port és LUIS protokollja HTTPS/443-as|
-    |-MonitorPath|`/luis/v2.0/apps/<appIdLuis>?subscription-key=<subscriptionKeyLuis>&q=traffic-manager-west`|Cserélje le <appId> és <subscriptionKey> saját értékekkel. Az Előfizetés kulcs nem egyezik a keleti előfizetés kulcs megjegyezhető|
+    |-MonitorPath|`/luis/v2.0/apps/<appIdLuis>?subscription-key=<subscriptionKeyLuis>&q=traffic-manager-west`|Cserélje le <appId> és <subscriptionKey> saját értékekkel. Ne feledje, a végpont kulcs nem egyezik a keleti végpontkulcs|
     
     A kérelem sikeres rendelkezik nincs válasz.
 
@@ -364,7 +364,7 @@ Végpontok közötti forgalom kezelésére, szüksége lehet beszúrni a Traffic
 
 
 ## <a name="clean-up"></a>A fölöslegessé vált elemek eltávolítása
-Távolítsa el a két LUIS előfizetés kulcsokat, a három Traffic Manager-profilokat és az erőforráscsoport, ezek az öt erőforrások találhatók. Ez az Azure-portálon történik. Törli a öt erőforrásokat, az erőforrások listájában. Ezután törölje az erőforráscsoportot. 
+Távolítsa el a két LUIS végpont kulcsokat, a három Traffic Manager-profilokat és az erőforráscsoport, ezek az öt erőforrások találhatók. Ez az Azure-portálon történik. Törli a öt erőforrásokat, az erőforrások listájában. Ezután törölje az erőforráscsoportot. 
 
 ## <a name="next-steps"></a>További lépések
 

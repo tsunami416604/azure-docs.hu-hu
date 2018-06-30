@@ -4,22 +4,23 @@ description: A Naplóelemzési számítógépcsoportok lehetővé teszik hatók�
 services: log-analytics
 documentationcenter: ''
 author: bwren
-manager: jwhit
+manager: carmonm
 editor: ''
 ms.assetid: a28b9e8a-6761-4ead-aa61-c8451ca90125
 ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/03/2018
 ms.author: bwren
-ms.openlocfilehash: c4a1edc8e4ff129a8b073f008e1d20bb20941ae1
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.component: na
+ms.openlocfilehash: 23ac75b4afb07c3f8d5f0d90755a5cf2087087e1
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33775264"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37130675"
 ---
 # <a name="computer-groups-in-log-analytics-log-searches"></a>A Naplóelemzési számítógépcsoportok jelentkezzen keresések
 
@@ -69,7 +70,7 @@ Konfigurálja az Active Directory biztonsági csoportok importálása Naplóelem
 
 Ha csoportok importálta, a menü észlelt csoporttagsággal rendelkező számítógépek számát és a csoportok importálása számát sorolja fel.  Akár a hivatkozások való visszatéréshez kattintson a **ComputerGroup** ezeket az adatokat rögzíti.
 
-### <a name="windows-server-update-service"></a>A Windows Server Update Service
+### <a name="windows-server-update-service"></a>Windows Server Update Service
 Konfigurálja a WSUS-csoporttagságok importálása Naplóelemzési, megvizsgálja a célcsoport-kezelési csoportba tartozik az OMS-ügynökkel rendelkező számítógépek.  Használata ügyféloldali célcsoport-kezelési, Log Analyticshez csatlakozik, és a WSUS részét számítógépek csoportok megcélzása rendelkezik Naplóelemzési importált csoport tagságát. Használata Kiszolgálóoldali célcsoport-kezelési, a OMS ügynököt kell telepíteni ahhoz, hogy a csoporttagsági információkat Naplóelemzési importálásra WSUS-kiszolgálón.  A csoporttagság folyamatosan frissítjük 4 óránként. 
 
 Konfigurálhatja a WSUS-csoportok importálása Naplóelemzési Naplóelemzési **speciális beállítások** az Azure portálon.  Válassza ki **számítógépcsoportok**, **WSUS**, majd **importálási WSUS-csoporttagságok**.  Nincs szükség további konfigurációra.
@@ -78,7 +79,7 @@ Konfigurálhatja a WSUS-csoportok importálása Naplóelemzési Naplóelemzési 
 
 Ha csoportok importálta, a menü észlelt csoporttagsággal rendelkező számítógépek számát és a csoportok importálása számát sorolja fel.  Akár a hivatkozások való visszatéréshez kattintson a **ComputerGroup** ezeket az adatokat rögzíti.
 
-### <a name="system-center-configuration-manager"></a>System Center Configuration Managerben
+### <a name="system-center-configuration-manager"></a>System Center Configuration Manager
 Naplóelemzési importálása a Configuration Manager gyűjteménytagságok konfigurálásakor gyűjtemény számítógépcsoport hoz létre.  A gyűjtemény tagsági információk naprakészen tartása a számítógépcsoportok nélkül 3 óránként. 
 
 A Configuration Manager a gyűjtemények importálásához előtt [csatlakoztatása a Configuration Manager szolgáltatáshoz](log-analytics-sccm.md).  Ezután úgy konfigurálhatja az importálás Naplóelemzési **speciális beállítások** az Azure portálon.  Válassza ki **számítógépcsoportok**, **SCCM**, majd **importálása a Configuration Manager gyűjteménytagságok**.  Nincs szükség további konfigurációra.

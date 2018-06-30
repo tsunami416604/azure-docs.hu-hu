@@ -11,15 +11,16 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/19/2018
 ms.author: nini
-ms.openlocfilehash: 879c89d21aece120888dded49ca1b2c55677635e
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.component: na
+ms.openlocfilehash: 282b610aeb75010108a63dafe037c09180a247a1
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/19/2018
-ms.locfileid: "31595055"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37131684"
 ---
 # <a name="assess-azure-service-fabric-applications-and-micro-services-with-powershell"></a>Azure Service Fabric-alkalmazások és a PowerShell-lel micro-szolgáltatások
 > [!div class="op_single_selector"]
@@ -300,7 +301,7 @@ $storageAccount = Select-StorageAccount
 
 Miután konfigurálta a Naplóelemzési munkaterület az Azure-táblákban a tárfiókban lévő olvasni, jelentkezzen be az Azure-portálon. Válassza ki a Naplóelemzési munkaterület **összes erőforrás**. A tárolási fiók naplófájljai csatlakoztatva a munkaterület száma jelenik meg. Válassza ki a **a tárolási fiók naplófájljai** csempére. Tekintse át a tárolási fiók naplófájljai győződjön meg arról, hogy a storage-fiók csatlakoztatva van-e a megfelelő munkaterületre listáját.
 
-![A tárolási fiók naplófájljai](./media/log-analytics-service-fabric/sf1.png)
+![Tárfióknaplók](./media/log-analytics-service-fabric/sf1.png)
 
 ## <a name="enable-the-service-fabric-solution"></a>A Service Fabric-megoldás engedélyezése
 A következő parancsfájl használatával adhatja hozzá a megoldás a Naplóelemzési munkaterületet. Futtassa a parancsfájlt a PowerShell használatával az Azure-előfizetéshez társított a Naplóelemzési munkaterület, amely engedélyezi a Service Fabric megoldás.

@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: richagi
-ms.openlocfilehash: 2b006976aef59c55ccb51362e05ceb4275602fd1
-ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
+ms.openlocfilehash: ea976f7ac80f0c485320713117c9ff2b484a287b
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 06/29/2018
-ms.locfileid: "37096492"
+ms.locfileid: "37128690"
 ---
 # <a name="frequently-asked-questions-about-azure-multi-factor-authentication"></a>Azure multi-factor Authentication kapcsolatos gyakori kérdések
 
@@ -118,7 +118,7 @@ Az Azure Active Directory kell adni a licenc-modell, mert a licencek kerülnek a
 
 A felhasználók remélhetőleg egynél több ellenőrzési módszer konfigurálva. Tanácsolja nekik, hogy próbáljanak újra bejelentkeznie, ezúttal azonban válasszanak egy másik ellenőrzési módszert a bejelentkezési oldalon.
 
-A felhasználók mutathat a [végfelhasználói hibaelhárítási útmutató](./../../multi-factor-authentication/end-user/multi-factor-authentication-end-user-troubleshoot.md).
+A felhasználók mutathat a [végfelhasználói hibaelhárítási útmutató](end-user/current/multi-factor-authentication-end-user-troubleshoot.md).
 
 
 **K: Mit tegyek, ha a felhasználók közül nem olvasható be fiókjukban?**

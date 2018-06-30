@@ -3,7 +3,7 @@ title: Adja hozzá az Azure Naplóelemzés megoldások |} Microsoft Docs
 description: Az Azure-ban megoldások programot, a képi megjelenítés és az adatokat, amelyek egy adott probléma terület körül átalakítani metrikák biztosítanak beszerzési szabályok gyűjteménye.
 services: log-analytics
 documentationcenter: ''
-author: MGoedtel
+author: mgoedtel
 manager: carmonm
 editor: ''
 ms.assetid: f029dd6d-58ae-42c5-ad27-e6cc92352b3b
@@ -11,16 +11,16 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/23/2018
 ms.author: magoedte
-ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: f6ec6dd46d28518baf6f105dd232a4b0e77a8c6f
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.component: na
+ms.openlocfilehash: 0cffdbcaa128dce52758e4b618b93dd763961361
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2018
-ms.locfileid: "29395462"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37131475"
 ---
 # <a name="add-azure-log-analytics-management-solutions-to-your-workspace"></a>A munkaterület Azure Log Analytics-kezelési megoldások hozzáadása
 
@@ -74,40 +74,40 @@ Az alábbi táblázatban minden megoldások érhetők el az Azure portál és a 
 
 | Felügyeleti megoldás                                                                       | Ajánlat                                                                     | Tarifacsomagok<sup>1</sup>                                                 | Megjegyzések |
 | ---                                                                                       | ---                                                                       | ---                                                                                                       | ---   |
-| [Activity Log Analytics](log-analytics-activity.md)                                                                   | <ul><li>Insight&nbsp;and&nbsp;Analytics</li><li>Log Analytics</li></ul>   | Ingyenes<br> Standard<br> Premium&nbsp;(OMS)<br> /&nbsp;GB&nbsp;(önálló)<br> /&nbsp;Csomópont&nbsp;(OMS)   | az adatok 90 nap érhetők el ingyenes<br>Adatok nem érvényesek a ingyenes szint kap |
-| [AD-elemzés](log-analytics-ad-assessment.md)                                           | <ul><li>Insight&nbsp;and&nbsp;Analytics</li><li>Log Analytics</li></ul>   | Ingyenes<br> Standard<br> Premium&nbsp;(OMS)<br> /&nbsp;GB&nbsp;(önálló)<br> /&nbsp;Csomópont&nbsp;(OMS)   | |
-| [AD-replikáció állapota](log-analytics-ad-replication-status.md)                           | <ul><li>Insight&nbsp;and&nbsp;Analytics</li><li>Log Analytics</li></ul>   | Ingyenes<br> Standard<br> Premium&nbsp;(OMS)<br> /&nbsp;GB&nbsp;(önálló)<br> /&nbsp;Csomópont&nbsp;(OMS)   | Nem adhatók hozzá az Azure portál/piactérről. |
-| [Az ügynök állapota](../operations-management-suite/oms-solution-agenthealth.md)                                                                                | <ul><li>Insight&nbsp;and&nbsp;Analytics</li><li>Log Analytics</li></ul>   | Ingyenes<br> Standard<br> Premium&nbsp;(OMS)<br> /&nbsp;GB&nbsp;(önálló)<br> /&nbsp;Csomópont&nbsp;(OMS)   | Adatok nem érvényesek a ingyenes szint kap<br> Nem adhatók hozzá az Azure portál/piactérről. |
-| [Riasztáskezelés](log-analytics-solution-alert-management.md)                            | <ul><li>Insight&nbsp;and&nbsp;Analytics</li><li>Log Analytics</li></ul>   | Ingyenes<br> Standard<br> Premium&nbsp;(OMS)<br> /&nbsp;GB&nbsp;(önálló)<br> /&nbsp;Csomópont&nbsp;(OMS)   | Nem adhatók hozzá az Azure portál/piactérről. |
-| [Application Insights-összekötő (előzetes verzió)](log-analytics-app-insights-connector.md)                                               | <ul><li>Insight&nbsp;and&nbsp;Analytics</li><li>Log Analytics</li></ul>   | Ingyenes<br> Standard<br> Premium&nbsp;(OMS)<br> /&nbsp;GB&nbsp;(önálló)<br> /&nbsp;Csomópont&nbsp;(OMS)   | |
+| [Activity Log Analytics](log-analytics-activity.md)                                                                   | <ul><li>Betekintést&nbsp;és&nbsp;elemzés</li><li>Log Analytics</li></ul>   | Ingyenes<br> Standard<br> Prémium szintű&nbsp;(OMS)<br> /&nbsp;GB&nbsp;(önálló)<br> /&nbsp;Csomópont&nbsp;(OMS)   | az adatok 90 nap érhetők el ingyenes<br>Adatok nem érvényesek a ingyenes szint kap |
+| [AD-elemzés](log-analytics-ad-assessment.md)                                           | <ul><li>Betekintést&nbsp;és&nbsp;elemzés</li><li>Log Analytics</li></ul>   | Ingyenes<br> Standard<br> Prémium szintű&nbsp;(OMS)<br> /&nbsp;GB&nbsp;(önálló)<br> /&nbsp;Csomópont&nbsp;(OMS)   | |
+| [AD-replikáció állapota](log-analytics-ad-replication-status.md)                           | <ul><li>Betekintést&nbsp;és&nbsp;elemzés</li><li>Log Analytics</li></ul>   | Ingyenes<br> Standard<br> Prémium szintű&nbsp;(OMS)<br> /&nbsp;GB&nbsp;(önálló)<br> /&nbsp;Csomópont&nbsp;(OMS)   | Nem adhatók hozzá az Azure portál/piactérről. |
+| [Az ügynök állapota](../operations-management-suite/oms-solution-agenthealth.md)                                                                                | <ul><li>Betekintést&nbsp;és&nbsp;elemzés</li><li>Log Analytics</li></ul>   | Ingyenes<br> Standard<br> Prémium szintű&nbsp;(OMS)<br> /&nbsp;GB&nbsp;(önálló)<br> /&nbsp;Csomópont&nbsp;(OMS)   | Adatok nem érvényesek a ingyenes szint kap<br> Nem adhatók hozzá az Azure portál/piactérről. |
+| [Riasztáskezelés](log-analytics-solution-alert-management.md)                            | <ul><li>Betekintést&nbsp;és&nbsp;elemzés</li><li>Log Analytics</li></ul>   | Ingyenes<br> Standard<br> Prémium szintű&nbsp;(OMS)<br> /&nbsp;GB&nbsp;(önálló)<br> /&nbsp;Csomópont&nbsp;(OMS)   | Nem adhatók hozzá az Azure portál/piactérről. |
+| [Application Insights-összekötő (előzetes verzió)](log-analytics-app-insights-connector.md)                                               | <ul><li>Betekintést&nbsp;és&nbsp;elemzés</li><li>Log Analytics</li></ul>   | Ingyenes<br> Standard<br> Prémium szintű&nbsp;(OMS)<br> /&nbsp;GB&nbsp;(önálló)<br> /&nbsp;Csomópont&nbsp;(OMS)   | |
 | [Automatizálási hibrid feldolgozók](../automation/automation-hybrid-runbook-worker.md)                                                                     | <ul><li>Automation and Control</li></ul>                                  | Ingyenes<br> /&nbsp;Csomópont&nbsp;(OMS)                                                                         | A Naplóelemzési munkaterület kíván rendelni az Automation-fiók szükséges |
-| [Az Azure alkalmazás átjáró elemzés](log-analytics-azure-networking-analytics.md)    | <ul><li>Insight&nbsp;and&nbsp;Analytics</li><li>Log Analytics</li></ul>   | Ingyenes<br> Standard<br> Premium&nbsp;(OMS)<br> /&nbsp;GB&nbsp;(önálló)<br> /&nbsp;Csomópont&nbsp;(OMS)   | |
-| [Azure hálózati biztonsági csoport elemzés](log-analytics-azure-networking-analytics.md)     | <ul><li>Insight&nbsp;and&nbsp;Analytics</li><li>Log Analytics</li></ul>   | Ingyenes<br> Standard<br> Premium&nbsp;(OMS)<br> /&nbsp;GB&nbsp;(önálló)<br> /&nbsp;Csomópont&nbsp;(OMS)   | |
-| [Az Azure SQL elemzés (előzetes verzió)](log-analytics-azure-sql.md)                                                       | <ul><li>Insight&nbsp;and&nbsp;Analytics</li><li>Log Analytics</li></ul>   | Ingyenes<br>/&nbsp;Csomópont&nbsp;(OMS)                                                                          | A Naplóelemzési munkaterület kíván rendelni az Automation-fiók szükséges|
-| [Azure Web Apps Analytics](log-analytics-azure-web-apps-analytics.md)     | <ul><li>Insight&nbsp;and&nbsp;Analytics</li><li>Log Analytics</li></ul>   | Ingyenes<br> Standard<br> Premium&nbsp;(OMS)<br> /&nbsp;GB&nbsp;(önálló)<br> /&nbsp;Csomópont&nbsp;(OMS)   | |
-|[Biztonsági mentés](../backup/backup-introduction-to-azure-backup.md)                                                                                 | <ul><li>Betekintések és elemzés</li></ul>                                   | Ingyenes<br> Standard<br> Premium&nbsp;(OMS)<br> /&nbsp;GB&nbsp;(önálló)<br> /&nbsp;Csomópont&nbsp;(OMS)                                                                       | Egy hagyományos biztonsági mentési tárolót igényel.<br> Nem adhatók hozzá az Azure portál/piactérről. |
-| [Kapacitást és teljesítményt (előzetes verzió)](log-analytics-capacity.md)                                                   | <ul><li>Insight&nbsp;and&nbsp;Analytics</li><li>Log Analytics</li></ul>   | Ingyenes<br> Standard<br> Premium&nbsp;(OMS)<br> /&nbsp;GB&nbsp;(önálló)<br> /&nbsp;Csomópont&nbsp;(OMS)   | |
+| [Az Azure alkalmazás átjáró elemzés](log-analytics-azure-networking-analytics.md)    | <ul><li>Betekintést&nbsp;és&nbsp;elemzés</li><li>Log Analytics</li></ul>   | Ingyenes<br> Standard<br> Prémium szintű&nbsp;(OMS)<br> /&nbsp;GB&nbsp;(önálló)<br> /&nbsp;Csomópont&nbsp;(OMS)   | |
+| [Azure hálózati biztonsági csoport elemzés](log-analytics-azure-networking-analytics.md)     | <ul><li>Betekintést&nbsp;és&nbsp;elemzés</li><li>Log Analytics</li></ul>   | Ingyenes<br> Standard<br> Prémium szintű&nbsp;(OMS)<br> /&nbsp;GB&nbsp;(önálló)<br> /&nbsp;Csomópont&nbsp;(OMS)   | |
+| [Az Azure SQL elemzés (előzetes verzió)](log-analytics-azure-sql.md)                                                       | <ul><li>Betekintést&nbsp;és&nbsp;elemzés</li><li>Log Analytics</li></ul>   | Ingyenes<br>/&nbsp;Csomópont&nbsp;(OMS)                                                                          | A Naplóelemzési munkaterület kíván rendelni az Automation-fiók szükséges|
+| [Azure Web Apps Analytics](log-analytics-azure-web-apps-analytics.md)     | <ul><li>Betekintést&nbsp;és&nbsp;elemzés</li><li>Log Analytics</li></ul>   | Ingyenes<br> Standard<br> Prémium szintű&nbsp;(OMS)<br> /&nbsp;GB&nbsp;(önálló)<br> /&nbsp;Csomópont&nbsp;(OMS)   | |
+|[Biztonsági mentés](../backup/backup-introduction-to-azure-backup.md)                                                                                 | <ul><li>Betekintések és elemzés</li></ul>                                   | Ingyenes<br> Standard<br> Prémium szintű&nbsp;(OMS)<br> /&nbsp;GB&nbsp;(önálló)<br> /&nbsp;Csomópont&nbsp;(OMS)                                                                       | Egy hagyományos biztonsági mentési tárolót igényel.<br> Nem adhatók hozzá az Azure portál/piactérről. |
+| [Kapacitást és teljesítményt (előzetes verzió)](log-analytics-capacity.md)                                                   | <ul><li>Betekintést&nbsp;és&nbsp;elemzés</li><li>Log Analytics</li></ul>   | Ingyenes<br> Standard<br> Prémium szintű&nbsp;(OMS)<br> /&nbsp;GB&nbsp;(önálló)<br> /&nbsp;Csomópont&nbsp;(OMS)   | |
 | [Változáskövetés](log-analytics-change-tracking.md)                                       | <ul><li>Automation and Control</li></ul>                                  | Ingyenes<br> /&nbsp;Csomópont&nbsp;(OMS)                                                                         | A Naplóelemzési munkaterület kíván rendelni az Automation-fiók szükséges |
-| [Tárolók](log-analytics-containers.md)                                                 | <ul><li>Insight&nbsp;and&nbsp;Analytics</li><li>Log Analytics</li></ul>   | Ingyenes<br> Standard<br> Premium&nbsp;(OMS)<br> /&nbsp;GB&nbsp;(önálló)<br> /&nbsp;Csomópont&nbsp;(OMS)   | |
-| [Informatikai szolgáltatásfelügyeleti összekötő](log-analytics-itsmc-overview.md)                                                | <ul><li>Insight&nbsp;and&nbsp;Analytics</li><li>Log Analytics</li></ul>   | Ingyenes<br> /&nbsp;Csomópont&nbsp;(OMS)     | |
-| HDInsight HBase figyelése <br>(Előzetes verzió)                                                  | <ul><li>Insight&nbsp;and&nbsp;Analytics</li><li>Log Analytics</li></ul>   | Ingyenes<br> Standard<br> Premium&nbsp;(OMS)<br> /&nbsp;GB&nbsp;(önálló)<br> /&nbsp;Csomópont&nbsp;(OMS)   | |
-| [Key Vault-elemzés](log-analytics-azure-key-vault.md)                   | <ul><li>Insight&nbsp;and&nbsp;Analytics</li><li>Log Analytics</li></ul>   | Ingyenes<br> Standard<br> Premium&nbsp;(OMS)<br> /&nbsp;GB&nbsp;(önálló)<br> /&nbsp;Csomópont&nbsp;(OMS)   | |
-| [Logic Apps B2B](../logic-apps/logic-apps-track-b2b-messages-omsportal.md)                    | <ul><li>Insight&nbsp;and&nbsp;Analytics</li><li>Log Analytics</li></ul>   | Ingyenes<br> Standard<br> Premium&nbsp;(OMS)<br> /&nbsp;GB&nbsp;(önálló)<br> /&nbsp;Csomópont&nbsp;(OMS)   | Nem adhatók hozzá az Azure portál/piactérről. |
+| [Containers](log-analytics-containers.md)                                                 | <ul><li>Betekintést&nbsp;és&nbsp;elemzés</li><li>Log Analytics</li></ul>   | Ingyenes<br> Standard<br> Prémium szintű&nbsp;(OMS)<br> /&nbsp;GB&nbsp;(önálló)<br> /&nbsp;Csomópont&nbsp;(OMS)   | |
+| [Informatikai szolgáltatásfelügyeleti összekötő](log-analytics-itsmc-overview.md)                                                | <ul><li>Betekintést&nbsp;és&nbsp;elemzés</li><li>Log Analytics</li></ul>   | Ingyenes<br> /&nbsp;Csomópont&nbsp;(OMS)     | |
+| HDInsight HBase figyelése <br>(Előzetes verzió)                                                  | <ul><li>Betekintést&nbsp;és&nbsp;elemzés</li><li>Log Analytics</li></ul>   | Ingyenes<br> Standard<br> Prémium szintű&nbsp;(OMS)<br> /&nbsp;GB&nbsp;(önálló)<br> /&nbsp;Csomópont&nbsp;(OMS)   | |
+| [Key Vault-elemzés](log-analytics-azure-key-vault.md)                   | <ul><li>Betekintést&nbsp;és&nbsp;elemzés</li><li>Log Analytics</li></ul>   | Ingyenes<br> Standard<br> Prémium szintű&nbsp;(OMS)<br> /&nbsp;GB&nbsp;(önálló)<br> /&nbsp;Csomópont&nbsp;(OMS)   | |
+| [Logic Apps B2B](../logic-apps/logic-apps-track-b2b-messages-omsportal.md)                    | <ul><li>Betekintést&nbsp;és&nbsp;elemzés</li><li>Log Analytics</li></ul>   | Ingyenes<br> Standard<br> Prémium szintű&nbsp;(OMS)<br> /&nbsp;GB&nbsp;(önálló)<br> /&nbsp;Csomópont&nbsp;(OMS)   | Nem adhatók hozzá az Azure portál/piactérről. |
 | [Kártevőfelmérés](log-analytics-malware.md)                                            | <ul><li>Biztonság és megfelelőség</li></ul>                                 | Ingyenes<br> Különálló<br>/&nbsp;Csomópont&nbsp;(OMS)                                                                           | Ha a biztonsági és megfelelőségi megoldások 2017. június 19 után vesz fel [számlázási csomópontonként van](https://azure.microsoft.com/pricing/details/security-compliance/), függetlenül attól, az IP-címek munkaterületen. Az első hatvan szabadon.  |
 | [Hálózati teljesítményfigyelő](log-analytics-network-performance-monitor.md) <br>  | <ul><li>Betekintések és elemzés</li></ul>                                   | Ingyenes<br> /&nbsp;Csomópont&nbsp;(OMS)                                                                         | |
-| [Az Office 365 Analytics (előzetes verzió)](../operations-management-suite/oms-solution-office-365.md)                                                       | <ul><li>Insight&nbsp;and&nbsp;Analytics</li><li>Log Analytics</li></ul>   | Ingyenes<br> Standard<br> Premium&nbsp;(OMS)<br> /&nbsp;GB&nbsp;(önálló)<br> /&nbsp;Csomópont&nbsp;(OMS)   | |
+| [Az Office 365 Analytics (előzetes verzió)](../operations-management-suite/oms-solution-office-365.md)                                                       | <ul><li>Betekintést&nbsp;és&nbsp;elemzés</li><li>Log Analytics</li></ul>   | Ingyenes<br> Standard<br> Prémium szintű&nbsp;(OMS)<br> /&nbsp;GB&nbsp;(önálló)<br> /&nbsp;Csomópont&nbsp;(OMS)   | |
 | [Biztonság és naplózás](../operations-management-suite/oms-security-getting-started.md)      | <ul><li>Biztonsági&nbsp;és&nbsp;megfelelőségi</li></ul>                       | Ingyenes<br> Különálló<br>/&nbsp;Csomópont&nbsp;(OMS)                                                                           | Ebben a megoldásban and security event logs gyűjtésére van szükség.<br>Ha a biztonsági és megfelelőségi megoldások 2017. június 19 után vesz fel [számlázási csomópontonként van](https://azure.microsoft.com/pricing/details/security-compliance/), függetlenül attól, az IP-címek munkaterületen. Az első hatvan szabadon. |
-| [Service Fabric Analytics (előzetes verzió)](log-analytics-service-fabric.md)                     | <ul><li>Insight&nbsp;and&nbsp;Analytics</li><li>Log Analytics</li></ul>   | Ingyenes<br> Standard<br> Premium&nbsp;(OMS)<br> /&nbsp;GB&nbsp;(önálló)<br> /&nbsp;Csomópont&nbsp;(OMS)   | |
+| [Service Fabric Analytics (előzetes verzió)](log-analytics-service-fabric.md)                     | <ul><li>Betekintést&nbsp;és&nbsp;elemzés</li><li>Log Analytics</li></ul>   | Ingyenes<br> Standard<br> Prémium szintű&nbsp;(OMS)<br> /&nbsp;GB&nbsp;(önálló)<br> /&nbsp;Csomópont&nbsp;(OMS)   | |
 | [Szolgáltatástérkép (előzetes verzió)](../operations-management-suite/operations-management-suite-service-map.md) | <ul><li>Betekintések és elemzés</li></ul>                      | Ingyenes<br> /&nbsp;Csomópont&nbsp;(OMS)                                                                         | USA keleti régiója, Nyugat-Európában, és a központi USA nyugati régiója    |
-| [Site Recovery](../site-recovery/site-recovery-overview.md)                                                                               | <ul><li>Betekintések és elemzés</li></ul>                                   | Ingyenes<br> Standard<br> Premium&nbsp;(OMS)<br> /&nbsp;GB&nbsp;(önálló)<br> /&nbsp;Csomópont&nbsp;(OMS)                                                                       | Klasszikus Site Recovery-tároló igényel.<br> Nem adhatók hozzá az Azure portál/piactérről. |
-| [SQL-elemzés](log-analytics-sql-assessment.md)                                         | <ul><li>Insight&nbsp;and&nbsp;Analytics</li><li>Log Analytics</li></ul>   | Ingyenes<br> Standard<br> Premium&nbsp;(OMS)<br> /&nbsp;GB&nbsp;(önálló)<br> /&nbsp;Csomópont&nbsp;(OMS)   | |
-| Virtuális gépek indítása és leállítása munkaidőn kívül<br>(Előzetes verzió)                                              | <ul><li>Insight&nbsp;and&nbsp;Analytics</li><li>Log Analytics</li></ul>   | Ingyenes<br> /&nbsp;Csomópont&nbsp;(OMS)                                                                         | A Naplóelemzési munkaterület kíván rendelni az Automation-fiók szükséges |
-| [SurfaceHub](log-analytics-surface-hubs.md)                                               | <ul><li>Insight&nbsp;and&nbsp;Analytics</li><li>Log Analytics</li></ul>   | Ingyenes<br> Standard<br> Premium&nbsp;(OMS)<br> /&nbsp;GB&nbsp;(önálló)<br> /&nbsp;Csomópont&nbsp;(OMS)   | Nem adhatók hozzá az Azure portál/piactérről. |
-| [A System Center Operations Manager Assessment (előzetes verzió)](log-analytics-scom-assessment.md)  | <ul><li>Betekintések és elemzés</li><li>Log Analytics</li></ul>        | Ingyenes<br> Standard<br> Premium&nbsp;(OMS)<br> /&nbsp;GB&nbsp;(önálló)<br> /&nbsp;Csomópont&nbsp;(OMS)   | |
+| [Site Recovery](../site-recovery/site-recovery-overview.md)                                                                               | <ul><li>Betekintések és elemzés</li></ul>                                   | Ingyenes<br> Standard<br> Prémium szintű&nbsp;(OMS)<br> /&nbsp;GB&nbsp;(önálló)<br> /&nbsp;Csomópont&nbsp;(OMS)                                                                       | Klasszikus Site Recovery-tároló igényel.<br> Nem adhatók hozzá az Azure portál/piactérről. |
+| [SQL-elemzés](log-analytics-sql-assessment.md)                                         | <ul><li>Betekintést&nbsp;és&nbsp;elemzés</li><li>Log Analytics</li></ul>   | Ingyenes<br> Standard<br> Prémium szintű&nbsp;(OMS)<br> /&nbsp;GB&nbsp;(önálló)<br> /&nbsp;Csomópont&nbsp;(OMS)   | |
+| Virtuális gépek indítása és leállítása munkaidőn kívül<br>(Előzetes verzió)                                              | <ul><li>Betekintést&nbsp;és&nbsp;elemzés</li><li>Log Analytics</li></ul>   | Ingyenes<br> /&nbsp;Csomópont&nbsp;(OMS)                                                                         | A Naplóelemzési munkaterület kíván rendelni az Automation-fiók szükséges |
+| [SurfaceHub](log-analytics-surface-hubs.md)                                               | <ul><li>Betekintést&nbsp;és&nbsp;elemzés</li><li>Log Analytics</li></ul>   | Ingyenes<br> Standard<br> Prémium szintű&nbsp;(OMS)<br> /&nbsp;GB&nbsp;(önálló)<br> /&nbsp;Csomópont&nbsp;(OMS)   | Nem adhatók hozzá az Azure portál/piactérről. |
+| [A System Center Operations Manager Assessment (előzetes verzió)](log-analytics-scom-assessment.md)  | <ul><li>Betekintések és elemzés</li><li>Log Analytics</li></ul>        | Ingyenes<br> Standard<br> Prémium szintű&nbsp;(OMS)<br> /&nbsp;GB&nbsp;(önálló)<br> /&nbsp;Csomópont&nbsp;(OMS)   | |
 | [Frissítéskezelés](../operations-management-suite/oms-solution-update-management.md)                                                                         | <ul><li>Automation and Control</li></ul>                                  | Ingyenes<br> /&nbsp;Csomópont&nbsp;(OMS)                                                                         | A Naplóelemzési munkaterület kíván rendelni az Automation-fiók szükséges |
-| [A frissítések megfelelőségének (előzetes verzió)](https://docs.microsoft.com/windows/deployment/update/update-compliance-get-started)                                                             | <ul><li>Insight&nbsp;and&nbsp;Analytics</li><li>Log Analytics</li></ul>   | Ingyenes<br> Standard<br> Premium&nbsp;(OMS)<br> /&nbsp;GB&nbsp;(önálló)<br> /&nbsp;Csomópont&nbsp;(OMS)   | Nem kell fizetni az adatok vagy a csomópontok<br>Adatok nem érvényesek a ingyenes szint kap.<br> Nem adhatók hozzá az Azure portál/piactérről. |
-| [Frissítési készültség](https://docs.microsoft.com/windows/deployment/upgrade/upgrade-readiness-get-started)                                                          | <ul><li>Insight&nbsp;and&nbsp;Analytics</li><li>Log Analytics</li></ul>   | Ingyenes<br> Standard<br> Premium&nbsp;(OMS)<br> /&nbsp;GB&nbsp;(önálló)<br> /&nbsp;Csomópont&nbsp;(OMS)   | Nem kell fizetni az adatok vagy a csomópontok<br>Adatok nem érvényesek a ingyenes szint kap.<br> Nem adhatók hozzá az Azure portál/piactérről. |
-| [VMware-figyelési (előzetes verzió)](log-analytics-vmware.md)                                | <ul><li>Insight&nbsp;and&nbsp;Analytics</li><li>Log Analytics</li></ul>   | Ingyenes<br> Standard<br> Premium&nbsp;(OMS)<br> /&nbsp;GB&nbsp;(önálló)<br> /&nbsp;Csomópont&nbsp;(OMS)   | |
+| [A frissítések megfelelőségének (előzetes verzió)](https://docs.microsoft.com/windows/deployment/update/update-compliance-get-started)                                                             | <ul><li>Betekintést&nbsp;és&nbsp;elemzés</li><li>Log Analytics</li></ul>   | Ingyenes<br> Standard<br> Prémium szintű&nbsp;(OMS)<br> /&nbsp;GB&nbsp;(önálló)<br> /&nbsp;Csomópont&nbsp;(OMS)   | Nem kell fizetni az adatok vagy a csomópontok<br>Adatok nem érvényesek a ingyenes szint kap.<br> Nem adhatók hozzá az Azure portál/piactérről. |
+| [Frissítési készültség](https://docs.microsoft.com/windows/deployment/upgrade/upgrade-readiness-get-started)                                                          | <ul><li>Betekintést&nbsp;és&nbsp;elemzés</li><li>Log Analytics</li></ul>   | Ingyenes<br> Standard<br> Prémium szintű&nbsp;(OMS)<br> /&nbsp;GB&nbsp;(önálló)<br> /&nbsp;Csomópont&nbsp;(OMS)   | Nem kell fizetni az adatok vagy a csomópontok<br>Adatok nem érvényesek a ingyenes szint kap.<br> Nem adhatók hozzá az Azure portál/piactérről. |
+| [VMware-figyelési (előzetes verzió)](log-analytics-vmware.md)                                | <ul><li>Betekintést&nbsp;és&nbsp;elemzés</li><li>Log Analytics</li></ul>   | Ingyenes<br> Standard<br> Prémium szintű&nbsp;(OMS)<br> /&nbsp;GB&nbsp;(önálló)<br> /&nbsp;Csomópont&nbsp;(OMS)   | |
 | [Átviteli adatokat 2.0 (előzetes verzió)](log-analytics-wire-data.md)                                                                 | <ul><li>Betekintések és elemzés</li></ul>                                   | Ingyenes<br> /&nbsp;Csomópont&nbsp;(OMS)                                                                         | USA keleti régiója, Nyugat-Európában, és a központi USA nyugati régiója |
 
 <sup>1</sup> a *szabványos* és *Premium (OMS)* árképzési szinteket csak érhetők el az ügyfelek, akik a Naplóelemzési munkaterület 2016 szeptemberétől 21 előtt létrehozott.
@@ -118,7 +118,7 @@ Közösségi biztosított megoldások érhetők el a [Azure sablon gyűjtemény]
 
 | Felügyeleti megoldás               | Ajánlat                                                                     | Árképzési szintek                         | Megjegyzések |
 | ---                               | ---                                                                       | ---                                   | ---   |
-| Az összes megadott közösségi megoldások  | <ul><li>Insight&nbsp;and&nbsp;Analytics</li><li>Log Analytics</li></ul>   | Ingyenes<br> /&nbsp;Csomópont&nbsp;(OMS)     |   A Naplóelemzési munkaterület kíván rendelni az Automation-fiók szükséges |
+| Az összes megadott közösségi megoldások  | <ul><li>Betekintést&nbsp;és&nbsp;elemzés</li><li>Log Analytics</li></ul>   | Ingyenes<br> /&nbsp;Csomópont&nbsp;(OMS)     |   A Naplóelemzési munkaterület kíván rendelni az Automation-fiók szükséges |
 
 
 
@@ -147,21 +147,21 @@ A napló Analytics Windows-ügynök és a System Center Operations Manager-ügyn
 | Riasztáskezelési (Zabbix) |Linux |&#8226; |  |  |  |  |1 perc |
 | Riasztáskezelési (Operations Manager) |Windows |  |&#8226; |  |&#8226; |&#8226; |3 perc |
 | Application Insights-összekötő (előzetes verzió) | Azure |   |   |   |   |   | az értesítés |
-| Az Azure alkalmazás átjáró elemzés | Azure |   |   |   |   |   | az értesítés |
-| Azure hálózati biztonsági csoport elemzés | Azure |   |   |   |   |   | az értesítés |
-| Az Azure SQL elemzés (előzetes verzió) |Windows |  |  |  |  |  | 10 perc |
+| Azure Application Gateway Analytics | Azure |   |   |   |   |   | az értesítés |
+| Azure Network Security Group Analytics | Azure |   |   |   |   |   | az értesítés |
+| Azure SQL Analytics (előzetes) |Windows |  |  |  |  |  | 10 perc |
 | Kapacitáskezelés |Windows |&#8226; |&#8226; |  |  |&#8226; |érkezésükkor |
-| Tárolók | Windows és Linux | &#8226; | &#8226; |   |   |   | 3 perc |
-| Kulcstároló elemzés |Windows |  |  |  |  |  |az értesítés |
+| Containers | Windows és Linux | &#8226; | &#8226; |   |   |   | 3 perc |
+| Key Vault-elemzés |Windows |  |  |  |  |  |az értesítés |
 | Hálózati teljesítményfigyelő | Windows | &#8226; | &#8226; |   |   |   | TCP kézfogások 5 másodperces, adatokat küld át 3 percenként |
-| Az Office 365 Analytics (előzetes verzió) |Windows |  |  |  |  |  |az értesítés |
-| Service Fabric Analytics |Windows |  |  |&#8226; |  |  |5 perc |
+| Office 365 Analytics (előzetes verzió) |Windows |  |  |  |  |  |az értesítés |
+| Service Fabric-elemzés |Windows |  |  |&#8226; |  |  |5 perc |
 | Szolgáltatástérkép | Windows és Linux | &#8226; | &#8226; |   |   |   | 15 másodperc |
 | SQL-felmérés |Windows |&#8226; |&#8226; |  |  |&#8226; |7 nap |
 | SurfaceHub |Windows |&#8226; |  |  |  |  |érkezésükkor |
 | A System Center Operations Manager Assessment (előzetes verzió) | Windows | &#8226; | &#8226; |   |   | &#8226; | hét napja |
-| Frissítési Analytics (előzetes verzió) | Windows | &#8226; |   |   |   |   | 2 nap |
-| VMware-figyelési (előzetes verzió) | Linux | &#8226; |   |   |   |   | 3 perc |
+| Upgrade Analytics (előzetes verzió) | Windows | &#8226; |   |   |   |   | 2 nap |
+| VMware Monitoring (előzetes verzió) | Linux | &#8226; |   |   |   |   | 3 perc |
 | Átviteli adatok |Windows (2012 R2 / 8.1-es vagy újabb) |&#8226; |&#8226; |  |  |  | 1 perc |
 
 
@@ -169,7 +169,7 @@ A napló Analytics Windows-ügynök és a System Center Operations Manager-ügyn
 
 | Felügyeleti megoldás | Platform | A Microsoft figyelési ügynök | Operations Manager-ügynök | Azure Storage tárterület | Az Operations Manager szükséges? | Az Operations Manager ügynök adatait a felügyeleti csoport keresztül küldött | A gyűjtés gyakorisága |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| Automatizálási hibrid feldolgozók | Windows | &#8226; | &#8226; |   |   |   | n/a |
+| Automation Hybrid Worker | Windows | &#8226; | &#8226; |   |   |   | n/a |
 | Változások követése |Windows |&#8226; |&#8226; |  |  |&#8226; |óránként |
 | Változások követése |Linux |&#8226; |  |  |  |  |óránként |
 | Frissítéskezelés | Windows |&#8226; |&#8226; |  |  |&#8226; |legalább 2 alkalommal nap és 15 perc után a frissítés telepítése |
@@ -178,7 +178,7 @@ A napló Analytics Windows-ügynök és a System Center Operations Manager-ügyn
 
 | Felügyeleti megoldás | Platform | A Microsoft figyelési ügynök | Operations Manager-ügynök | Azure Storage tárterület | Az Operations Manager szükséges? | Az Operations Manager ügynök adatait a felügyeleti csoport keresztül küldött | A gyűjtés gyakorisága |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| Kártevőirtó értékelése |Windows |&#8226; |&#8226; |  |  |&#8226; |óránként |
+| Kártevőirtók felmérése |Windows |&#8226; |&#8226; |  |  |&#8226; |óránként |
 | Biztonság és a naplózási<sup>1</sup> | Windows és Linux | részleges | részleges | részleges |   | részleges | különböző |
 
 <sup>1</sup> a biztonság és a naplózási megoldás naplóinak gyűjtése a Windows, az Operations Manager és a Linux-ügynökök. Lásd: [adatforrások](#data-sources) adatok gyűjtemény információt:
@@ -186,7 +186,7 @@ A napló Analytics Windows-ügynök és a System Center Operations Manager-ügyn
 - Rendszernapló
 - A Windows biztonsági eseménynaplói
 - A Windows tűzfal-naplók
-- Windows-Eseménynapló
+- Windows-eseménynaplók,
 
 
 
@@ -194,7 +194,7 @@ A napló Analytics Windows-ügynök és a System Center Operations Manager-ügyn
 
 | Felügyeleti megoldás | Platform | A Microsoft figyelési ügynök | Operations Manager-ügynök | Azure Storage tárterület | Az Operations Manager szükséges? | Az Operations Manager ügynök adatait a felügyeleti csoport keresztül küldött | A gyűjtés gyakorisága |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| Biztonsági mentés | Azure |   |   |   |   |   | n/a |
+| Backup | Azure |   |   |   |   |   | n/a |
 | Azure Site Recovery | Azure |   |   |   |   |   | n/a |
 
 
@@ -207,13 +207,13 @@ A napló Analytics Windows-ügynök és a System Center Operations Manager-ügyn
 | Az Azure diagnosztikai naplók |Windows |  |  |  |  |  |az értesítés |
 | Az Azure diagnosztikai metrikák |Windows |  |  |  |  |  |az értesítés |
 | ETW |Windows |  |  |&#8226; |  |  |5 perc |
-| IIS-napló |Windows |&#8226; |&#8226; |&#8226; |  |  |5 perc |
-| Teljesítményszámlálók |Windows |&#8226; |&#8226; |  |  |  |Ütemezés szerint, a 10 másodperces minimális |
-| Teljesítményszámlálók |Linux |&#8226; |  |  |  |  |Ütemezés szerint, a 10 másodperces minimális |
+| IIS-naplók |Windows |&#8226; |&#8226; |&#8226; |  |  |5 perc |
+| Teljesítményszámlálók |Windows |&#8226; |&#8226; |  |  |  |ütemezett, legalább 10 másodperc |
+| Teljesítményszámlálók |Linux |&#8226; |  |  |  |  |ütemezett, legalább 10 másodperc |
 | Rendszernapló |Linux |&#8226; |  |  |  |  |az Azure storage: 10 perc; az ügynök: érkezésükkor |
 | A Windows biztonsági eseménynaplói |Windows |&#8226; |&#8226; |&#8226; |  |  |az Azure storage: 10 perc; az ügynök: érkezésükkor |
 | A Windows tűzfal-naplók |Windows |&#8226; |&#8226; |  |  |  |érkezésükkor |
-| Windows-Eseménynapló |Windows |&#8226; |&#8226; |&#8226; |  |&#8226; |az Azure storage: 10 perc; az ügynök: érkezésükkor |
+| Windows-eseménynaplók, |Windows |&#8226; |&#8226; |&#8226; |  |&#8226; |az Azure storage: 10 perc; az ügynök: érkezésükkor |
 
 
 

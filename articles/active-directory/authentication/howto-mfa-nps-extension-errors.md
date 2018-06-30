@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: richagi
-ms.openlocfilehash: 74a660f7240b9ae6138c402dbbb418bbc665dc3c
-ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
+ms.openlocfilehash: 5f25213d8d1fbc95aa419c86ca5b780f345952ed
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 06/29/2018
-ms.locfileid: "37098702"
+ms.locfileid: "37130199"
 ---
 # <a name="resolve-error-messages-from-the-nps-extension-for-azure-multi-factor-authentication"></a>Hárítsa el a hálózati házirend-kiszolgáló bővítmény hibaüzeneteket az Azure multi-factor Authentication
 
@@ -96,7 +96,7 @@ Ha egy ezeket a hibákat észlel, azt javasoljuk, hogy Ön [forduljon a támogat
 
 ### <a name="troubleshoot-user-accounts"></a>Felhasználói fiókok hibáinak elhárítása
 
-Ha a felhasználók is [problémák adódtak a kétlépéses ellenőrzéshez használttal](./../../multi-factor-authentication/end-user/multi-factor-authentication-end-user-troubleshoot.md), őket: problémák önálló diagnosztizálása érdekében. 
+Ha a felhasználók is [problémák adódtak a kétlépéses ellenőrzéshez használttal](end-user/current/multi-factor-authentication-end-user-troubleshoot.md), őket: problémák önálló diagnosztizálása érdekében. 
 
 ### <a name="contact-microsoft-support"></a>Kapcsolatfelvétel a Microsoft ügyfélszolgálatával
 

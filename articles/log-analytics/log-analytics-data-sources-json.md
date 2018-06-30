@@ -9,17 +9,18 @@ editor: tysonn
 ms.assetid: f1d5bde4-6b86-4b8e-b5c1-3ecbaba76198
 ms.service: log-analytics
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/04/2017
 ms.author: magoedte
-ms.openlocfilehash: 800ee1269556e7c2d56fbbf2b497c10509b5c78c
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.component: na
+ms.openlocfilehash: d3c8807b7624e68ff55557922f97d51e24fc2c19
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23855221"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37131803"
 ---
 # <a name="collecting-custom-json-data-sources-with-the-oms-agent-for-linux-in-log-analytics"></a>Linux Log Analyticshez az egyéni OMS-ügynökkel rendelkező JSON-adatforrások gyűjtése
 Egyéni JSON-adatforrások az OMS-ügynök használatával Linux Log Analyticshez gyűjthetők össze.  Az egyéni adatforrások lehet egyszerű parancsfájlok JSON például visszaadó [curl](https://curl.haxx.se/) vagy az egyik [FluentD tartozó 300 + beépülő modulok](http://www.fluentd.org/plugins/all). Ez a cikk ismerteti az adatgyűjtés szükséges beállításokat.
@@ -62,7 +63,7 @@ A konfigurációs fájl hozzáadása az `/etc/opt/microsoft/omsagent/<workspace 
 `sudo chown omsagent:omiusers /etc/opt/microsoft/omsagent/conf/omsagent.d/exec-json.conf`
 
 ### <a name="configure-output-plugin"></a>Kimeneti beépülő modul konfigurálása 
-A következő kimeneti beépülő modul konfiguráció hozzáadása a fő konfigurációs `/etc/opt/microsoft/omsagent/<workspace id>/conf/omsagent.conf` vagy egy külön konfigurációs fájlban elhelyezni`/etc/opt/microsoft/omsagent/<workspace id>/conf/omsagent.d/`
+A következő kimeneti beépülő modul konfiguráció hozzáadása a fő konfigurációs `/etc/opt/microsoft/omsagent/<workspace id>/conf/omsagent.conf` vagy egy külön konfigurációs fájlban elhelyezni `/etc/opt/microsoft/omsagent/<workspace id>/conf/omsagent.d/`
 
 ```
 <match oms.api.**>
@@ -103,6 +104,6 @@ Beágyazott JSON-adatok források támogatottak, de az indexelt kijelentkezés m
 ```
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * További tudnivalók [keresések jelentkezzen](log-analytics-log-searches.md) az adatforrások és a megoldások gyűjtött adatok elemzésére. 
  

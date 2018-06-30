@@ -11,15 +11,16 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: powershell
-ms.topic: article
+ms.topic: conceptual
 ms.date: 11/21/2016
 ms.author: richrund
-ms.openlocfilehash: 6a3f91323a017533d2d012f1e81760396c17a643
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.component: na
+ms.openlocfilehash: 375ae9a82af4a1f8a86b529b597ed479388e66dc
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
-ms.locfileid: "30179089"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37129336"
 ---
 # <a name="manage-log-analytics-using-powershell"></a>A Log Analytics felügyelete PowerShell használatával
 Használhatja a [napló Analytics PowerShell-parancsmagok](https://msdn.microsoft.com/library/mt188224\(v=azure.300\).aspx) végzik el a különböző funkciókat a Naplóelemzési parancssori vagy parancsfájl részeként.  A PowerShell használatával végezheti el a feladatok közé:
@@ -192,7 +193,7 @@ Az ügynök nélküli figyelés az Azure-erőforrások, az erőforrások kell re
 
 | Erőforrás típusa | Logs | Mérőszámok |
 | --- | --- | --- |
-| Application Gateway átjárók    | Igen | Igen |
+| Application Gateway-átjárók    | Igen | Igen |
 | Automation-fiókok     | Igen | |
 | Batch-fiókok          | Igen | Igen |
 | A Data Lake analytics     | Igen | | 
@@ -209,7 +210,7 @@ Az ügynök nélküli figyelés az Azure-erőforrások, az erőforrások kell re
 | Service Bus-névtér   |     | Igen |
 | SQL (v12)               |     | Igen |
 | Webhelyek               |     | Igen |
-| Web Server farms        |     | Igen |
+| Kiszolgáló-webfarmok        |     | Igen |
 
 Az elérhető mérőszámok leírását, [támogatott Azure-figyelő metrikák](../monitoring-and-diagnostics/monitoring-supported-metrics.md).
 

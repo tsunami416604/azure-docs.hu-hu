@@ -3,7 +3,7 @@ title: A Azure Log Analytics Agent kezelése |} Microsoft Docs
 description: Ez a cikk ismerteti a különböző felügyeleti feladatok, amelyek végrehajtják általában az a Microsoft Monitoring Agent (MMA) egy gépen központilag telepített életciklusa folyamán.
 services: log-analytics
 documentationcenter: ''
-author: MGoedtel
+author: mgoedtel
 manager: carmonm
 editor: ''
 ms.assetid: ''
@@ -11,15 +11,16 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/30/2018
 ms.author: magoedte
-ms.openlocfilehash: 5ff4f79a607143683b37726f1c02a6057dc6b9b0
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.component: na
+ms.openlocfilehash: 908418dffaffc25be320bd0008edf03493aa4e55
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2018
-ms.locfileid: "30320084"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37128792"
 ---
 # <a name="managing-and-maintaining-the-log-analytics-agent-for-windows-and-linux"></a>Kezelését és karbantartását a Log Analyticshez ügynök Windows és Linux rendszerekhez
 
@@ -195,7 +196,7 @@ Hajtsa végre a következő lépésekkel állíthatja be az OMS ügynök a Windo
 7. Az a **elsődleges felügyeleti kiszolgáló** mezőbe írja be az elsődleges felügyeleti kiszolgáló számítógépneve.
 8. Az a **felügyeleti kiszolgáló portszáma** mezőbe írja be a TCP-portszámot.
 9. A **Ügynökműveleti fiók**, válassza a helyi rendszerfiókot vagy egy helyi tartományi fiók.
-10. Kattintson a **OK** bezárásához a **felügyeleti csoport hozzáadása** párbeszédpanel megnyitásához, majd kattintson **OK** bezárásához a **Microsoft Monitoring Agent tulajdonságai** párbeszédpanel megnyitásához.
+10. Kattintson a **OK** bezárásához a **felügyeleti csoport hozzáadása** párbeszédpanel megnyitásához, majd kattintson **OK** bezárásához a **Microsoft Monitoring Agent tulajdonságai** a párbeszédpanel.
 
 ### <a name="linux-agent"></a>Linux-ügynök
 Hajtsa végre a következő lépésekkel állíthatja be az OMS-ügynököt, hogy egy System Center Operations Manager felügyeleti csoport linuxos. 

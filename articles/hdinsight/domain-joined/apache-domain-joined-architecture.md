@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 05/30/2018
 ms.author: omidm
-ms.openlocfilehash: f4380f5d6ec379d5807f697294623a672bd270ae
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 8503534031dc5774e64c58edd3e158162a5a6aee
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34715241"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37110454"
 ---
 # <a name="plan-azure-domain-joined-hadoop-clusters-in-hdinsight"></a>Azure-tartományhoz csatlakoztatott Hadoop-fürtök tervezése a HDInsightban
 
@@ -50,7 +50,7 @@ Az alábbi képernyőfelvételen látható egy szervezeti Egységet létrehozni 
 A HDInsight jelenleg csak támogatja az AAD-DS a fő tartományvezérlőnek, hogy a fürt kommunikál a Kerberise a fürt. Azonban más összetett AD beállításokat is is előfordulhatnak, mindaddig, amíg az AAD-DS HDI-hozzáférés engedélyezéséhez vezet.
 
 - **[Az Azure Active Directory tartományi szolgáltatások (AAD-DS)](../../active-directory-domain-services/active-directory-ds-overview.md)**: Ez a szolgáltatás egy felügyelt tartomány, amely teljes mértékben kompatibilis a Windows Server Active Directory biztosítja. A Microsoft gondoskodik, javítását és a figyelés a tartomány egy magas Available(HA) beállítása. A fürtök telepítése anélkül, hogy a tartományvezérlők karbantartásához. Felhasználók, csoportok és jelszavak szinkronizálódnak a a Azure Active Directory(AAD) [egyirányú szinkronizálás aad AAD-DS], amely lehetővé teszi felhasználók és jelentkezzen be a fürt vállalati hitelesítő adatokkal. További információkért lásd: [hogyan konfigurálhatja a tartományhoz csatlakoztatott HDInsight-fürtök AAD-DS használatával](./apache-domain-joined-configure-using-azure-adds.md).
-- **A helyszíni AD vagy ad szolgáltatásokba, az infrastruktúra-szolgáltatási virtuális gépeken futó**: Ha telepítette a helyszíni AD vagy más összetett AD beállításokat a tartomány, szinkronizálhatja az aad-be használatával AD Connect majd engedélyezése az AAD-DS-t, hogy AD-bérlői megszakítása. Mivel Kerberos jelszókivonatait támaszkodik, szüksége lesz a [az AAD-DS Jelszókivonat-szinkronizálás engedélyezése](../../active-directory-domain-services/active-directory-ds-getting-started-password-sync.md). Ha összevonási használja az AD összevonási szolgáltatások (ADFS), opcionálisan beállíthatja Jelszókivonat-szinkronizálás biztonsági abban az esetben, ha az AD FS infrastruktúra sikertelen lesz. További információk: [Jelszókivonat-szinkronizálás és az AAD Connect-szinkronizálás engedélyezése](../../active-directory/connect/active-directory-aadconnectsync-implement-password-hash-synchronization.md). Helyszíni AD vagy AD az infrastruktúra-szolgáltatási virtuális gépeken futó önmagában, aad-ben és az AAD-DS nélkül használata nem támogatott konfiguráció HDI fürt tartományhoz való csatlakozásra.
+- **A helyszíni AD vagy ad szolgáltatásokba, az infrastruktúra-szolgáltatási virtuális gépeken futó**: Ha egy helyszíni AD-re vagy más összetett AD beállításokat a tartomány, szinkronizálhatja az aad-be használatával AD Connect majd engedélyezése az AAD-DS-t, hogy AD-bérlői megszakítása. Mivel Kerberos jelszókivonatait támaszkodik, szüksége lesz a [az AAD-DS Jelszókivonat-szinkronizálás engedélyezése](../../active-directory-domain-services/active-directory-ds-getting-started-password-sync.md). Ha összevonási használja az AD összevonási szolgáltatások (ADFS), opcionálisan beállíthatja Jelszókivonat-szinkronizálás biztonsági abban az esetben, ha az AD FS infrastruktúra sikertelen lesz. További információk: [Jelszókivonat-szinkronizálás és az AAD Connect-szinkronizálás engedélyezése](../../active-directory/connect/active-directory-aadconnectsync-implement-password-hash-synchronization.md). A helyszíni AD vagy AD az infrastruktúra-szolgáltatási virtuális gépeken futó önmagában, aad-ben és az AAD-DS nélkül használata nem támogatott konfiguráció HDI fürt tartományhoz való csatlakozásra.
 
 ## <a name="next-steps"></a>További lépések
 * [Konfigurálja a HDInsight-fürtök tartományhoz](apache-domain-joined-configure-using-azure-adds.md).

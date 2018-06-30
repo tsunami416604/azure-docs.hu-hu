@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/28/2017
 ms.author: apimpm
-ms.openlocfilehash: 5fbb4f8a15ee7ee8b6cecbe76391e2b2a7e4be1b
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: 1b6aea5152e9eb5152b400d74d834e31eb883458
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2018
-ms.locfileid: "31515349"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37110229"
 ---
 # <a name="api-management-access-restriction-policies"></a>Az API Management hozzáférés szoftverkorlátozó házirendek
 Ez a témakör egy hivatkozást a következő API-felügyeleti házirendek. Hozzáadása és házirendek konfigurálásával kapcsolatos tudnivalókat lásd: [házirendek az API Management](http://go.microsoft.com/fwlink/?LinkID=398186).  
@@ -40,7 +40,7 @@ Ez a témakör egy hivatkozást a következő API-felügyeleti házirendek. Hozz
 ### <a name="policy-statement"></a>Házirendutasítás  
   
 ```xml  
-<check-header name="header name" failed-check-httpcode="code" failed-check-error-message="message" ignore-case="True">  
+<check-header name="header name" failed-check-httpcode="code" failed-check-error-message="message" ignore-case="true">  
     <value>Value1</value>  
     <value>Value2</value>  
 </check-header>  
@@ -277,7 +277,7 @@ Ez a témakör egy hivatkozást a következő API-felügyeleti házirendek. Hozz
 |Name (Név)|Leírás|Szükséges|Alapértelmezett|  
 |----------|-----------------|--------------|-------------|  
 |név|Az API-t vagy a művelet, amelynek a kvóta vonatkozik neve.|Igen|–|  
-|Sávszélesség|A megadott időintervallumon engedélyezett kilobájt maximális száma a `renewal-period`.|Vagy `calls`, `bandwidth`, vagy együttesen kell megadni.|–|  
+|sávszélesség|A megadott időintervallumon engedélyezett kilobájt maximális száma a `renewal-period`.|Vagy `calls`, `bandwidth`, vagy együttesen kell megadni.|–|  
 |hívás|A megadott időintervallumon engedélyezett hívások maximális száma a `renewal-period`.|Vagy `calls`, `bandwidth`, vagy együttesen kell megadni.|–|  
 |megújítási időszak|Az adott időszakban másodpercben, amely után a kvóta visszaállítja.|Igen|–|  
   
@@ -335,7 +335,7 @@ Ez a témakör egy hivatkozást a következő API-felügyeleti házirendek. Hozz
   
 |Name (Név)|Leírás|Szükséges|Alapértelmezett|  
 |----------|-----------------|--------------|-------------|  
-|Sávszélesség|A megadott időintervallumon engedélyezett kilobájt maximális száma a `renewal-period`.|Vagy `calls`, `bandwidth`, vagy együttesen kell megadni.|–|  
+|sávszélesség|A megadott időintervallumon engedélyezett kilobájt maximális száma a `renewal-period`.|Vagy `calls`, `bandwidth`, vagy együttesen kell megadni.|–|  
 |hívás|A megadott időintervallumon engedélyezett hívások maximális száma a `renewal-period`.|Vagy `calls`, `bandwidth`, vagy együttesen kell megadni.|–|  
 |másik kulcs|A kvóta házirend használandó kulcs.|Igen|–|  
 |increment-condition|Adja meg, ha a kérelem kell számolni, felé a kvóta logikai kifejezés (`true`)|Nem|–|  
@@ -503,12 +503,12 @@ Ez a témakör egy hivatkozást a következő API-felügyeleti házirendek. Hozz
 |nem sikerült – érvényesítési-HTTP-kód|HTTP-állapotkód vissza, ha a jwt-t nem teljesíti az ellenőrző.|Nem|401|  
 |fejléc-neve|A HTTP-fejlécnek a tokent tároló neve.|Vagy `header-name` vagy `query-parameter-name` megadott; de nem mindkettőn keresztül kell lennie.|–|  
 |id|A `id` attribútuma a `key` elem lehetővé teszi a karakterláncot, amely elleni megfeleltetésének `kid` tudja meg a megfelelő kulcsot az aláírás-ellenőrzés használata (ha van ilyen) a jogkivonat jogcímek.|Nem|–|  
-|Egyezés|A `match` attribútuma a `claim` elem meghatározza, hogy a házirend minden jogcím értékét kell a jogkivonat az érvényesítés sikeres szerepel. Lehetséges értékek:<br /><br /> -                          `all` – a szabályzat minden jogcím értékét a jogkivonat az érvényesítés sikeres jelen kell lennie.<br /><br /> -                          `any` -legalább egy jogcím értékét a jogkivonat az érvényesítés sikeres jelen kell lennie.|Nem|összes|  
+|egyezés|A `match` attribútuma a `claim` elem meghatározza, hogy a házirend minden jogcím értékét kell a jogkivonat az érvényesítés sikeres szerepel. Lehetséges értékek:<br /><br /> -                          `all` – a szabályzat minden jogcím értékét a jogkivonat az érvényesítés sikeres jelen kell lennie.<br /><br /> -                          `any` -legalább egy jogcím értékét a jogkivonat az érvényesítés sikeres jelen kell lennie.|Nem|összes|  
 |lekérdezés-paremeter-neve|Neve az a következő lekérdezésparaméter a tokent tároló.|Vagy `header-name` vagy `query-paremeter-name` megadott; de nem mindkettőn keresztül kell lennie.|–|  
 |igényelnek-lejárati-idő|Logikai érték. Meghatározza, hogy szükséges-e egy lejárati jogcímet a tokenben.|Nem|true|
 |szükséges rendszer|A token neve sémáját, pl. "Tulajdonos". Az attribútum van beállítva, ha a házirend biztosítja, hogy a megadott séma szerepel az engedélyezési fejléc értéke.|Nem|–|
 |igényelnek-aláírt-tokenek|Logikai érték. Megadja, hogy egy jogkivonatot kell aláírni.|Nem|true|  
-|Elválasztó|Karakterlánc. Meghatározza az elválasztó (pl. ",") értékek beolvasása a többértékű jogcím használandó.|Nem|–| 
+|elválasztó|karakterlánc. Meghatározza az elválasztó (pl. ",") értékek beolvasása a többértékű jogcím használandó.|Nem|–| 
 |url|Azonosító konfigurációs végponti URL-cím megnyitása ahol nyitott azonosító konfigurációs metaadatok érhető el. A válasz meg kell felelnie a specifikációk, meghatározott URL-címen:`https://openid.net/specs/openid-connect-discovery-1_0.html#ProviderMetadata`.  Az Azure Active Directory használata a következő URL-cím: `https://login.microsoftonline.com/{tenant-name}/.well-known/openid-configuration` a directory-bérlő neve, pl. és `contoso.onmicrosoft.com`.|Igen|–|  
   
 ### <a name="usage"></a>Használat  

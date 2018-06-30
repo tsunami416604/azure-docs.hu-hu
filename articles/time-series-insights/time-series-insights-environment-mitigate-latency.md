@@ -11,12 +11,12 @@ ms.devlang: csharp
 ms.workload: big-data
 ms.topic: troubleshooting
 ms.date: 11/27/2017
-ms.openlocfilehash: bbd5e7d91e982a3dce320ea10a7fe8da435ff212
-ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
+ms.openlocfilehash: 35860838d03d61e1145d35fd2516c1688c3bb64f
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36293774"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37130580"
 ---
 # <a name="monitor-and-mitigate-throttling-to-reduce-latency-in-azure-time-series-insights"></a>Figyelheti és csökkenthető a sávszélesség-szabályozás Azure idő adatsorozat elemzések a késés csökkentése érdekében
 Ha a bejövő adatok mennyisége meghaladja a környezet konfigurációjának, tapasztalhatja várakozási ideje vagy Azure idő adatsorozat Insights szabályozását.
@@ -52,15 +52,15 @@ Ott a riasztások a következő metrikák használatával is konfigurálhatja:
 |**Érkező üzenetek fogadása**   | Minden Event Hubs vagy IoT-központok eseményforrások olvasható üzenetek száma.        |
 |**Érkező tárolt bájt**     | Teljes méret tárolt események és lekérdezhetők. A tulajdonság értéke csak a számított méretét.        |
 |**Érkező tárolt események**     |   A tárolt és lekérdezhetők egybesimított események száma.      |
-|**Érkező száma üzenet Időeltolódást**    |  A, amely az üzenet a várólistában levő a forrás és az idő érkező feldolgozásra közötti különbség.      |
-|**Érkező száma üzenetek száma késés**    |  Utolsó várólistán lévő üzenetek sorszáma különbségének a forrás-érkező a feldolgozás alatt álló üzenet partíció és a sorrend számát.      |
+|**A beérkezett üzenet Időeltolódást érkező**    |  Különbség idejét, hogy az üzenet a várólistában levő az esemény között eltelt másodpercek a forrás- és az idő érkező feldolgozásra.      |
+|**Érkező fogadott üzenetek száma késés**    |  Utolsó várólistán lévő üzenetek sorszáma különbségének a forrás-érkező a feldolgozás alatt álló üzenet partíció és a sorrend számát.      |
 
 
 ![Késés](media/environment-mitigate-latency/latency.png)
 
-Ha meg vannak szabályozva, látni fogja a értéket a *érkező száma üzenet Időeltolódást*, tájékoztat a tényleges óta az hány perces késésben ÁME az üzenet találatok az eseményforrás (kivéve a appx indexelési idején. 30 – 60 másodperc).  *Érkező száma üzenetek száma Lag* értéket, hogy lehetővé teszi annak meghatározására, hogy mögött, hogy hány üzenet lehet.  A legegyszerűbb gyorsan naprakész módja a megfelelő méretűre, amely lehetővé teszi a kapcsolatos a különbség a környezet kapacitás növelése érdekében.  
+Ha meg vannak szabályozva, látni fogja a értéket a *érkező fogadott üzenet Időeltolódást*, tájékoztat a tényleges óta az ÁME mögött hány másodpercet a üzenet találatok az eseményforrás (kivéve a appx indexelési idején. 30 – 60 másodperc).  *Fogadott üzenetek száma Lag érkező* értéket, hogy lehetővé teszi annak meghatározására, hogy mögött, hogy hány üzenet lehet.  A legegyszerűbb gyorsan naprakész módja a megfelelő méretűre, amely lehetővé teszi a kapcsolatos a különbség a környezet kapacitás növelése érdekében.  
 
-Ha egyetlen egység – S1 környezettel rendelkezik, és itt látható egy öt millió üzenetet lag, például sikerült hat egységeket az egy nap körül gyorsan naprakész a környezet méretének növelése.  Sikerült növelheti is tovább catch mentése gyorsabb.  Ez az általános elemként létesítésekor kezdetben környezethez, különösen akkor, amikor egy eseményforrás, amely már rendelkezik az események azt csatlakoztatja, vagy Ön tömeges előzményadatokat sok feltöltési.
+Ha egyetlen egység – S1 környezettel rendelkezik, és itt látható egy öt millió üzenetet lag, például sikerült hat egységeket az egy nap körül gyorsan naprakész a környezet méretének növelése.  Sikerült növelheti is tovább catch mentése gyorsabb.  Az utólagos időszak gyakran előfordul, létesítésekor kezdetben környezethez, különösen akkor, amikor egy eseményforrás, amely már rendelkezik az események azt csatlakoztatja, illetve ha Ön tömeges előzményadatokat sok feltöltési.
 
 Egy másik módszerrel is, hogy egy **érkező tárolt jelzések** riasztás > = némileg alatt a teljes környezet kapacitása 2 órán át a küszöbértéket.  Ez a riasztás azt segítenek megérteni, ha biztos folyamatosan kapacitással, amely megadja, hogy a késés nagy valószínűséggel  
 

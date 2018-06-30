@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/27/2017
 ms.author: wesmc
-ms.openlocfilehash: f78dd2a28575ad8e3fa30ac9c2bbd29c7d85a78f
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 6c308205c5adb05f4c7e1668c67adea414020ea2
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34640472"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37113272"
 ---
 # <a name="azure-redis-cache-faq"></a>Azure Redis Cache – Gyakori kérdések
 Azure Redis Cache a gyakori kérdéseket, a mintákat és ajánlott eljárások a válaszok megismerése.
@@ -392,7 +392,10 @@ Hogyan kell konfigurálnia a beállítást:
   > A konfigurációs elemben megadott érték egy *-core* beállítást. Például ha egy 4 processzormagos számítógép, és a minIOThreads beállítást kell lennie 200 futásidőben, használhatja `<processModel minIoThreads="50"/>`.
   >
 
-* Az ASP.NET kívül használja a [ThreadPool.SetMinThreads(…)](https://msdn.microsoft.com/library/system.threading.threadpool.setminthreads.aspx) API.
+* Kívül, az ASP.NET és az Azure Websitesra global.asax, használja a [ThreadPool.SetMinThreads (...)] (https://msdn.microsoft.com/library/system.threading.threadpool.setminthreads.aspx) API.
+
+  > [!NOTE]
+  > Ez az API által megadott érték globális beállítás, az egész AppDomain érintő. Ha rendelkezik egy 4 processzormagos számítógép, és állítsa minWorkerThreads és minIOThreads 50 CPU futási időben, használja a ThreadPool.SetMinThreads (200-as, 200-as).
 
 <a name="server-gc"></a>
 

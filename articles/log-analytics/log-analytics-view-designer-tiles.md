@@ -4,22 +4,23 @@ description: Naplóelemzési adatforrásnézet-tervezőből használatával egy�
 services: log-analytics
 documentationcenter: ''
 author: bwren
-manager: jwhit
+manager: carmonm
 editor: ''
 ms.assetid: 41787c8f-6c13-4520-b0d3-5d3d84fcf142
 ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/17/2018
 ms.author: bwren
-ms.openlocfilehash: f341cb9430c7750909c1fc1f50c15f0620e74366
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.component: na
+ms.openlocfilehash: fc5dc00a05486c1f781016df63877f40d21b0205
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2018
-ms.locfileid: "29947316"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37131270"
 ---
 # <a name="reference-guide-to-view-designer-tiles-in-log-analytics"></a>Az adatforrásnézet-tervezőből csempéket a Naplóelemzési használati útmutató
 Azure Naplóelemzés adatforrásnézet-tervezőből használatával egyéni nézeteket hozhat létre az Azure portálon, hogy az adatmegjelenítéseket a Naplóelemzési munkaterület különböző. Ez a cikk egy referencia-útmutató a csempéket, az egyéni nézetek elérhető beállításai.
@@ -32,7 +33,7 @@ Az adatforrásnézet-tervezőből kapcsolatos további információkért lásd:
 
 A rendelkezésre álló adatforrásnézet-tervezőből csempéket a következő táblázat ismerteti:  
 
-| Mozaik elrendezés | Leírás |
+| Csempe | Leírás |
 |:--- |:--- |
 | [Szám](#number-tile) |Egy lekérdezés által rekordok száma. |
 | [Két szám](#two-numbers-tile) |Két különböző lekérdezéseket rekordok számát. |
@@ -96,10 +97,10 @@ A **fánk** csempe egy számot, amely összefoglalja a napló lekérdezésben é
 | **Fánk** |**> Center** |
 | Szöveg |A szöveg, amely alatt a fánk értéket jelenik meg. |
 | Művelet |A művelet, amely a value tulajdonság egy értékként legyen megadva összefoglalásképpen hajtja végre.<ul><li>Sum: Adja meg a értéket az összes rekord tulajdonság értékét.</li><li>Százalékos aránya: A tulajdonság értékének összehasonlítva az összes rekord összegzett értékekkel rekordokból az összegzett értékek százalékos aránya</li></ul> |
-| Center művelet során használt eredményt értékek |Ha kijelöl egy vagy több érték hozzáadása a plusz jelre (+). A lekérdezés eredményeit rögzíti a megadott tulajdonságértéket korlátozódnak. Ha nincs érték ad hozzá, a lekérdezés szereplő összes rekordok. |
+| A fánkdiagram közepén megjelenített eredményértékek |Ha kijelöl egy vagy több érték hozzáadása a plusz jelre (+). A lekérdezés eredményeit rögzíti a megadott tulajdonságértéket korlátozódnak. Ha nincs érték ad hozzá, a lekérdezés szereplő összes rekordok. |
 | **Fánk** |**> További beállítások** |
 | Színek |Az egyes a három legfontosabb tulajdonságai megjelenő szín. Adja meg az adott tulajdonságértékek másodlagos színt, *szín leképezési speciális*. |
-| Speciális szín leképezése |Megjeleníti egy adott tulajdonságra értéket jelölő színét. Ha a megadott érték a három legfontosabb, a másodlagos színt helyett a szabványos szín jelenik meg. Ha a tulajdonság nem szerepel a három legfontosabb, a szín nem jelenik meg. |
+| Speciális színleképezés |Megjeleníti egy adott tulajdonságra értéket jelölő színét. Ha a megadott érték a három legfontosabb, a másodlagos színt helyett a szabványos szín jelenik meg. Ha a tulajdonság nem szerepel a három legfontosabb, a szín nem jelenik meg. |
 | **Speciális** |**> Adatfolyamot ellenőrzése** |
 | Engedélyezve |Kattintson erre a hivatkozásra, ha az adatfolyam ellenőrzési csempe engedélyezni kell. Ezt a módszert használja egy másik üzenetet biztosít, ha az adatok nem érhető el. Szokásos használja a megközelítés a üzenetet az ideiglenes időszakban, amikor a nézet van telepítve, és az adatok elérhetővé válik. |
 | Lekérdezés |A lekérdezés futtatása annak megállapításához, hogy adatok a nézet érhető el. Ha a lekérdezés eredménytelen, egy üzenet jelenik meg az érték a fő lekérdezés helyett. |
@@ -117,9 +118,9 @@ Ez a csempe vonaldiagramról szó, amely megjeleníti a napló lekérdezésből 
 | Leírás |A csempe neve alatt megjelenő szöveg. |
 | **Vonaldiagram** | |
 | Lekérdezés |A lekérdezés a vonaldiagram futtatott. Az első tulajdonság egy szöveges értéket, és a második tulajdonsága egy numerikus érték. Ez a lekérdezés szokásos használja a *mérték* , hogy összesítse a eredmények kulcsszó. Ha a lekérdezés használ a *időköz* kulcsszóval, az x tengely használja az adott időszakban. Ha a lekérdezés nem használta a *időköz* kulcsszót, az x tengely használ óránként történik. |
-| **Vonaldiagram** |**> Y-axis** |
-| A Logaritmikus skála használata |Válassza ki a tengely logaritmikus skála használata ezen a hivatkozáson. |
-| egység |Adja meg a lekérdezés által visszaadott értékek használt mértékegységet. Ezt az információt a diagram, amely jelzi, az értéktípusokat és opcionálisan az értékek alakításának feliratok megjelenítéséhez használatos. A **egységtípus** egység kategória határozza meg, és határozza meg a **aktuális egységtípus** elérhető értékek. Ha válasszon ki egy értéket **átalakítása** konvertálja a numerikus értéket, majd a **aktuális egység** típus a **átalakítása** típusa. |
+| **Vonaldiagram** |**> Y tengely** |
+| Logaritmikus skála használata |Válassza ki a tengely logaritmikus skála használata ezen a hivatkozáson. |
+| Egység |Adja meg a lekérdezés által visszaadott értékek használt mértékegységet. Ezt az információt a diagram, amely jelzi, az értéktípusokat és opcionálisan az értékek alakításának feliratok megjelenítéséhez használatos. A **egységtípus** egység kategória határozza meg, és határozza meg a **aktuális egységtípus** elérhető értékek. Ha válasszon ki egy értéket **átalakítása** konvertálja a numerikus értéket, majd a **aktuális egység** típus a **átalakítása** típusa. |
 | Egyéni felirat |A felirat melletti tengely megjelenő szöveg a *egység* típusa. Ha nincs címke van megadva, csak a *egység* típus jelenik meg. |
 | **Speciális** |**> Adatfolyamot ellenőrzése** |
 | Engedélyezve |Kattintson erre a hivatkozásra, ha az adatfolyam ellenőrzési csempe engedélyezni kell. Ezt a módszert használja egy másik üzenetet biztosít, ha az adatok nem érhető el. Szokásos használja a megközelítés a üzenetet az ideiglenes időszakban, amikor a nézet van telepítve, és az adatok elérhetővé válik. |
@@ -142,9 +143,9 @@ Ez a csempe diagram azt mutatja, hogy a naplóból több sorozat lekérdezési i
 | Kihívás cím | A képfelirat érték felett megjelenő szöveg. |
 | Az adatsorozat neve |A sorozat tulajdonság értéke, a kihívás érték használható. Adatsorozatok valósul meg, ha a lekérdezés összes rekordot szolgálnak. |
 | Művelet |A művelet, amely a value tulajdonság, a kihívás az érték összefoglalásképpen hajtja végre.<ul><li>Átlagos: Minden rekordokban levő értékek átlaga.</li><li>Számláló: A lekérdezés által visszaadott összes rekord száma.</li><li>Legutóbbi minta: az utolsó időköze, amely megtalálható a diagram értékét.</li><li>Maximális: A diagramban szereplő időszakok maximális értékét.</li><li>Minimum: Minimális értékének a diagramban szereplő időszakok.</li><li>Sum: Minden rekordokban levő értékek összegét.</li></ul> |
-| **Vonaldiagram** |**> Y-axis** |
-| A Logaritmikus skála használata |Válassza ki a tengely logaritmikus skála használata ezen a hivatkozáson. |
-| egység |A lekérdezés által visszaadott értékek a egységeket adjon meg. Az adatok megjelenítési adatfelirat, amelyek jelzik az értéktípusokat és opcionálisan az az értékeket átalakítani. A *egység* típusa határozza meg az egység a kategóriát, és határozza meg a rendelkezésre álló *aktuális egység* írja be az értékeket. Ha válasszon ki egy értéket *átalakítása*, számértékek konvertálja a *aktuális egység* típus a *átalakítása* típusa. |
+| **Vonaldiagram** |**> Y tengely** |
+| Logaritmikus skála használata |Válassza ki a tengely logaritmikus skála használata ezen a hivatkozáson. |
+| Egység |A lekérdezés által visszaadott értékek a egységeket adjon meg. Az adatok megjelenítési adatfelirat, amelyek jelzik az értéktípusokat és opcionálisan az az értékeket átalakítani. A *egység* típusa határozza meg az egység a kategóriát, és határozza meg a rendelkezésre álló *aktuális egység* írja be az értékeket. Ha válasszon ki egy értéket *átalakítása*, számértékek konvertálja a *aktuális egység* típus a *átalakítása* típusa. |
 | Egyéni felirat |A felirat melletti tengely megjelenő szöveg a *egység* típusa. Ha nincs címke van megadva, csak a *egység* típus jelenik meg. |
 | **Speciális** |**> Adatfolyamot ellenőrzése** |
 | Engedélyezve |Kattintson erre a hivatkozásra, ha az adatfolyam ellenőrzési csempe engedélyezni kell. Ezt a módszert használja egy másik üzenetet biztosít, ha az adatok nem érhető el. Szokásos használja a megközelítés a üzenetet az ideiglenes időszakban, amikor a nézet van telepítve, és az adatok elérhetővé válik. |
@@ -169,7 +170,7 @@ A **két ütemtervek** csempe oszlopdiagramok idővel két naplófájl lekérdez
 | **Második diagram** | |
 | Jelmagyarázat |A szöveg, a második adatsor kihívás jelenik meg. |
 | Szín |A második sorozat oszlopok használt szín. |
-| A diagram lekérdezés |A lekérdezés, amely a második adatsorozathoz. A diagram oszlopokat keresztül minden időközhöz rekordok számát jelöli. |
+| Diagramlekérdezés |A lekérdezés, amely a második adatsorozathoz. A diagram oszlopokat keresztül minden időközhöz rekordok számát jelöli. |
 | Művelet |A művelet, amely a value tulajdonság, a kihívás az érték összefoglalásképpen hajtja végre.<ul><li>Átlagos: Minden rekordokban levő értékek átlaga.</li><li>Számláló: A lekérdezés által visszaadott összes rekord száma.</li><li>Legutóbbi minta: az utolsó időköze, amely megtalálható a diagram értékét.</li><li>Maximális: A diagramban szereplő időszakok maximális értékét. |
 | **Speciális** |**> Adatfolyamot ellenőrzése** |
 | Engedélyezve |Kattintson erre a hivatkozásra, ha az adatfolyam ellenőrzési csempe engedélyezni kell. Ezt a módszert használja egy másik üzenetet biztosít, ha az adatok nem érhető el. Szokásos használja a megközelítés a üzenetet az ideiglenes időszakban, amikor a nézet van telepítve, és az adatok elérhetővé válik. |

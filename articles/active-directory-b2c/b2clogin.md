@@ -10,12 +10,12 @@ ms.topic: article
 ms.date: 04/29/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: c41c02acaeffa170d55f3c59f34a4b1ecae1c523
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: c4b3122984cdcb324f7b86e44a62e111d6ca0a29
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34712453"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37131592"
 ---
 # <a name="using-b2clogincom"></a>A b2clogin.com használata
 
@@ -24,8 +24,8 @@ ms.locfileid: "34712453"
 >
 
 Most már rendelkezik a lehetőséget az Azure AD B2C-bA `<YourTenantName>.b2clogin.com` helyett `login.microsoftonline.com`.  Ennek a számos előnye van:
-* Az azonos cookie-k fejlécek méretkorlátját lesz többé nem osztja, a más Microsoft-termékekkel
-* Eltávolíthatja a Microsoft mutató összes hivatkozást az URL-címben (lecserélheti `<YourTenantName>.onmicrosoft.com` a bérlő azonosítójú)
+* Többé nem osztja a más Microsoft-termékekkel a azonos cookie-k fejlécek méretkorlátját.
+* Eltávolíthatja a Microsoft mutató összes hivatkozást az URL-címben (lecserélheti `<YourTenantName>.onmicrosoft.com` a bérlő azonosítójú). Például: `https://<tenantname>.b2clogin.com/tfp/<tenantname>/<policyname>/v2.0/.well-known/openid-configuration`.
 
  B2clogin.com előnyeit, be kell állítani néhány a következőket:
 

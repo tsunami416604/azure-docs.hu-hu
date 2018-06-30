@@ -11,14 +11,14 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 04/07/2017
+ms.date: 06/29/2018
 ms.author: mbullwin
-ms.openlocfilehash: 95e576eb5ce6834e67d997cde57426fd09db4e6a
-ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
-ms.translationtype: HT
+ms.openlocfilehash: 897671ef592ac691402a4e452f7a0baa04aa228a
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 06/29/2018
-ms.locfileid: "37099796"
+ms.locfileid: "37129057"
 ---
 # <a name="data-collection-retention-and-storage-in-application-insights"></a>Adatgyűjtés, megőrzés és tárolás az Application Insights szolgáltatásban
 
@@ -126,19 +126,57 @@ A kiszolgáló jelenleg nincs belül.
 Összes adata titkosításra kerül az adatközpontok közötti átvitel során.
 
 #### <a name="is-the-data-encrypted-in-transit-from-my-application-to-application-insights-servers"></a>Az adatok titkosítva legyenek az Application Insights kiszolgálókra átvitel közben?
-Https Igen, szeretnék adatokat küldeni a a portál szinte minden SDK-k, beleértve a webkiszolgálók, eszközök és HTTPS weblapok a használjuk. Az egyetlen kivétel, egyszerű HTTP-weblapokhoz küldött adatokat. 
+Https Igen, szeretnék adatokat küldeni a a portál szinte minden SDK-k, beleértve a webkiszolgálók, eszközök és HTTPS weblapok a használjuk. Az egyetlen kivétel, egyszerű HTTP-weblapokhoz küldött adatokat.
+
+## <a name="how-do-i-send-data-to-application-insights-using-tls-12"></a>Hogyan küldhetek adatok az Application Insights segítségével a TLS 1.2?
+
+A biztonsági adatok az átvitel során, az Application Insights végpontokhoz biztosítását, azt javasoljuk az ügyfelek számára az alkalmazás használatához legalább konfigurálása Transport Layer Security (TLS) 1.2-es. TLS/Secure Sockets Layer (SSL) régebbi verziójú található érinti, és jelenleg továbbra is működnek, a visszamenőleges kompatibilitás engedélyezése, amíg azok **nem ajánlott**, és az iparág gyorsan változó kénytelen volt megszakítani ezt támogatása a régebbi ezeket a protokollokat. 
+
+A [PCI biztonsági szabványok Tanács](https://www.pcisecuritystandards.org/) be van állítva egy [2018. június 30 határidő](https://www.pcisecuritystandards.org/pdfs/PCI_SSC_Migrating_from_SSL_and_Early_TLS_Resource_Guide.pdf) letiltása a TLS/SSL és a frissítés több biztonságos protokollokra régebbi verzióit. Amennyiben az Azure már nem az örökölt támogatja, ha az alkalmazás ügyfelek nem protokollt használó kommunikációra legalább a TLS 1.2, akkor nem tudná szeretnék adatokat küldeni a Application insights szolgáltatással. A módszer akkor tesztelésére és érvényesítésére az alkalmazás TLS-támogatás az operációs rendszer platform, valamint a nyelvi/keretrendszer, az alkalmazás függ.
+
+Explicit módon beállítás csak akkor használja a TLS 1.2, ha az alkalmazás feltétlenül szükséges, mivel a platform biztonsági funkciói, amely lehetővé teszi az automatikus észlelése és előnyeit, így elkerülhetők a újabb biztonságosabb protokollok meghibásodásához vezethet nem ajánlott például a TLS 1.3 érhető el. Azt javasoljuk, hogy az alkalmazás-szabályzat hardcoding adott TLS/SSL-verziók kereséséhez alapos naplózási végrehajtása.
+
+### <a name="platformlanguage-specific-guidance"></a>Platform/nyelvi konkrét útmutatást
+
+|Platform/nyelv | Támogatás | További információ |
+| --- | --- | --- |
+| Azure App Services  | Támogatott konfigurációra lehet szükség. | Támogatás a április 2018 jelentették. Olvassa el a közleményben [konfigurációs részletek](https://blogs.msdn.microsoft.com/appserviceteam/2018/04/17/app-service-and-functions-hosted-apps-can-now-update-tls-versions/).  |
+| Az Azure-függvény alkalmazások | Támogatott konfigurációra lehet szükség. | Támogatás a április 2018 jelentették. Olvassa el a közleményben [konfigurációs részletek](https://blogs.msdn.microsoft.com/appserviceteam/2018/04/17/app-service-and-functions-hosted-apps-can-now-update-tls-versions/). |
+|.NET | Változó támogatott, a konfiguráció verziója. | További részletes konfigurációs adatainak .NET 4.7 és a korábbi verzióknál [ezeket az utasításokat](https://docs.microsoft.com/en-us/dotnet/framework/network-programming/tls#support-for-tls-12).  |
+|Állapotfigyelője | Támogatott, konfigurálás szükséges | Állapotfigyelő támaszkodik [operációs rendszer konfigurációja](https://docs.microsoft.com/en-us/windows-server/security/tls/tls-registry-settings) + [.NET konfigurációs](https://docs.microsoft.com/en-us/dotnet/framework/network-programming/tls#support-for-tls-12) TLS 1.2 támogatásához.
+|Node.js |  V10.5.0, a támogatott konfigurációra lehet szükség. | Használja a [Node.js a TLS/SSL dokumentációs](https://nodejs.org/api/tls.html) bármely alkalmazás adott konfigurációhoz. |
+|Java | Támogatott, a TLS 1.2 JDK támogatása hozzá lett adva a [JDK 6 frissítés 121](http://www.oracle.com/technetwork/java/javase/overview-156328.html#R160_121) és [JDK 7](http://www.oracle.com/technetwork/java/javase/7u131-relnotes-3338543.html). | Használja a JDK 8 [TLS 1.2 alapértelmezés szerint](https://blogs.oracle.com/java-platform-group/jdk-8-will-use-tls-12-as-default).  |
+|Linux | Általában a Linux terjesztéseket támaszkodnak [OpenSSL](https://www.openssl.org) TLS 1.2 támogatásához.  | Ellenőrizze a [OpenSSL változásnaplója](https://www.openssl.org/news/changelog.html) megerősítéséhez a OpenSSL-verziót támogatja.|
+| A Windows 8.0-10 | Támogatott, és alapértelmezés szerint engedélyezett. | Annak ellenőrzéséhez, hogy továbbra is használja a [alapértelmezett beállítások](https://docs.microsoft.com/en-us/windows-server/security/tls/tls-registry-settings).  |
+| Windows Server 2012-2016 | Támogatott, és alapértelmezés szerint engedélyezett. | Annak ellenőrzéséhez, hogy továbbra is használja a [alapértelmezett beállításai](https://docs.microsoft.com/en-us/windows-server/security/tls/tls-registry-settings) |
+| Windows 7 SP1 és Windows Server 2008 R2 SP1 | Támogatott, de alapértelmezés szerint nem engedélyezett. | Tekintse meg a [Transport Layer Security (TLS) beállításjegyzék-beállítások](https://docs.microsoft.com/en-us/windows-server/security/tls/tls-registry-settings) engedélyezésével kapcsolatos részletek lap.  |
+| Windows Server 2008 SP2 | Támogatja a TLS 1.2-es frissítést igényel. | Lásd: [támogatásához a TLS 1.2-es frissítés](https://support.microsoft.com/help/4019276/update-to-add-support-for-tls-1-1-and-tls-1-2-in-windows-server-2008-s) a Windows Server 2008 SP2. |
+|Windows Vista | Nem támogatott. | –
+
+### <a name="check-what-version-of-openssl-your-linux-distribution-is-running"></a>A Linux-disztribúció milyen OpenSSL-verzióval futásának ellenőrzése
+
+Ellenőrizze, hogy milyen OpenSSL-verzióval telepítette, nyissa meg a terminált, és futtassa:
+
+```terminal
+openssl version -a
+```
+
+### <a name="run-a-test-tls-12-transaction-on-linux"></a>Futtassa a tesztet a TLS 1.2 tranzakció Linux rendszeren
+
+Egy alapszintű előzetes ellenőrizze, hogy ha a Linux rendszer kommunikálhatnak-e a TLS 1.2 keresztül futtatásához. Nyissa meg a terminál és:
+
+```terminal
+openssl s_client -connect bing.com:443 -tls1_2
+```
 
 ## <a name="personal-data-stored-in-application-insights"></a>Az Application Insightsban tárolt személyes adatok
 
-A [Application Insights személyes adatok cikk](app-insights-customer-data.md) Ez a témakör részletesen ismerteti.
+A [Application Insights személyes adatok cikk](app-insights-customer-data.md) részletes probléma ismerteti.
 
 #### <a name="can-my-users-turn-off-application-insights"></a>A felhasználók kikapcsolható Application Insights?
 Közvetlenül nem. A Microsoft nem biztosítja egy kapcsoló, amely a felhasználók kapnak az Application Insights kikapcsolása.
 
 A funkció azonban az alkalmazás is létrehozható. Minden az SDK-k többek között a egy API-t, hogy kikapcsolja a telemetriai adatok gyűjtése. 
-
-#### <a name="my-application-is-unintentionally-collecting-sensitive-information-can-application-insights-scrub-this-data-so-it-isnt-retained"></a>Saját alkalmazás véletlenül bizalmas információkat gyűjt. Is az Application Insights megtisztítás ezeket az adatokat, akkor nem marad?
-Az Application Insights szűrése vagy nem törli az adatokat. Az adatok kezelésében az megfelelően kell, és elkerülheti az ilyen adatok küldése az Application Insights.
 
 ## <a name="data-sent-by-application-insights"></a>Az Application Insights által küldött adatokat
 Az SDK-k platformok változhat, és több összetevőből is telepítheti. (Hivatkoznak [Application Insights – áttekintés][start].) Minden egyes összetevő különböző adatokat küld.

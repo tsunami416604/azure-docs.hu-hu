@@ -9,17 +9,18 @@ editor: tysonn
 ms.assetid: f1d5bde4-6b86-4b8e-b5c1-3ecbaba76198
 ms.service: log-analytics
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/13/2018
 ms.author: magoedte
-ms.openlocfilehash: a34a4be75488aca46fe232331e4bac3e0ac414b0
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.component: na
+ms.openlocfilehash: 240e56e3e482b81d6336f7d6d2a1f5688953ecd8
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34637769"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37131551"
 ---
 # <a name="collect-alerts-from-nagios-and-zabbix-in-log-analytics-from-oms-agent-for-linux"></a>Nagios és az OMS-ügynököt a Naplóelemzési Zabbix riasztások gyűjtése Linux 
 [Nagios](https://www.nagios.org/) és [Zabbix](http://www.zabbix.com/) nyílt forráskódú figyelési eszközök. Begyűjtheti riasztások ezeket az eszközöket a Log Analyticshez való elemezheti őket, valamint hogy [más forrásokból származó riasztások](log-analytics-alerts.md).  Ez a cikk ismerteti a riasztások gyűjteni ezek a rendszerek Linux OMS-ügynök konfigurálása.
@@ -105,7 +106,7 @@ Riasztási Zabbix által gyűjtött rekordok rendelkezik egy **típus** a **rias
 | Típus |*Riasztás* |
 | SourceSystem |*Zabbix* |
 | AlertName | A riasztás nevét. |
-| AlertPriority | A riasztás súlyossága.<br><br>nem minősített<br>Információ<br>Figyelmeztetés<br>átlag<br>Magas<br>vészhelyreállítás  |
+| AlertPriority | A riasztás súlyossága.<br><br>nem minősített<br>Információ<br>Figyelmeztetés<br>átlag<br>magas<br>vészhelyreállítás  |
 | AlertState | A riasztás állapota.<br><br>0 - állapotba kerüljön.<br>1 - állapota ismeretlen.  |
 | AlertTypeNumber | Meghatározza, hogy riasztást hozhat létre a probléma több esemény.<br><br>0 - állapotba kerüljön.<br>1 - állapota ismeretlen.    |
 | Megjegyzések | A riasztásra vonatkozóan további megjegyzéseket. |

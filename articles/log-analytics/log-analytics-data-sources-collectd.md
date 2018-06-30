@@ -9,17 +9,18 @@ editor: tysonn
 ms.assetid: f1d5bde4-6b86-4b8e-b5c1-3ecbaba76198
 ms.service: log-analytics
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/02/2017
 ms.author: magoedte
-ms.openlocfilehash: a63b15ca5126b45451f0694c9ee75d7b67b1ceaf
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.component: na
+ms.openlocfilehash: 59b6f8b82d0f714d4526147b42f68e14bf0aa2bd
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23855207"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37127696"
 ---
 # <a name="collect-data-from-collectd-on-linux-agents-in-log-analytics"></a>Gyűjti az adatokat a CollectD Naplóelemzési Linux-ügynökök
 [CollectD](https://collectd.org/) van egy nyílt forráskódú Linux-démon rendszeresen teljesítménymutatók az összegyűjtő alkalmazások és a rendszer a szintre vonatkozó információ. Példa alkalmazások közé tartoznak a Java virtuális gép (JVM), a MySQL-kiszolgáló és a Nginx. Ez a cikk tájékoztatást nyújt teljesítményadatok összegyűjtése a Naplóelemzési CollectD.
@@ -111,8 +112,8 @@ CollectD által gyűjtött egy ismerős modell infrastruktúra mérőszámokat m
 
 | CollectD metrika mező | Log Analytics mező |
 |:--|:--|
-| állomás | Computer |
-| Beépülő modul | None |
+| gazdagép | Computer |
+| beépülő modul | None |
 | plugin_instance | Példány neve<br>Ha **plugin_instance** van *null* majd példánynév = "*_Total*" |
 | type | ObjectName |
 | type_instance | CounterName<br>Ha **type_instance** van *null* majd CounterName =**üres** |
@@ -120,7 +121,7 @@ CollectD által gyűjtött egy ismerős modell infrastruktúra mérőszámokat m
 | dstypes | None |
 | [érték] | Ellenértéknek |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * További tudnivalók [keresések jelentkezzen](log-analytics-log-searches.md) az adatforrások és a megoldások gyűjtött adatok elemzésére. 
 * Használjon [egyéni mezők](log-analytics-custom-fields.md) syslog rekordokban levő adatok elemzése az egyes mezőkbe.
 

@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 03/09/2018
 ms.author: raynew
-ms.openlocfilehash: d58dfd482b66d90748f0ca661e56fa281c14598a
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: 2610a331ef8ef17b319da99eb89288b59532be9f
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2018
-ms.locfileid: "29876010"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37111498"
 ---
 # <a name="fail-over-and-fail-back-physical-servers-replicated-to-azure"></a>A feladatátvétel, és vissza fizikai kiszolgálók Azure-felhőbe replikált sikertelen
 
@@ -114,7 +114,7 @@ A következőképpen futtassa a feladatátvételt:
 
 ## <a name="reprotect-on-premises-machines-to-azure"></a>Helyszíni gépek ismételt védelme az Azure-ban
 
-Az adatoknak most a helyszíni helyen kell lenniük, de nincsenek az Azure-ba replikálva. A következőképpen indíthatja el ismét a replikációt az Azure-ba:
+Adatok kell vissza a helyszíni webhelyen, de nem replikál az Azure-bA. A következőképpen indíthatja el ismét a replikációt az Azure-ba:
 
 1. A tárolóban > **Beállítások** >**Replikált elemek**, válassza ki azokat a virtuális gépeket, amelyekhez feladatátvételt végzett, és kattintson az **Ismételt védelem** lehetőségre.
 2. Válassza ki azt a folyamatkiszolgálót, amellyel a replikált adatokat az Azure-ba küldi, majd kattintson az **OK** gombra.

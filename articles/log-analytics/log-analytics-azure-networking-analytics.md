@@ -11,15 +11,16 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 03/20/2018
+ms.topic: conceptual
+ms.date: 06/21/2018
 ms.author: richrund
-ms.openlocfilehash: 12172e81ed6b4d79ee200ee1ca79803ad58d6d19
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.component: na
+ms.openlocfilehash: 8a92bf7b031899ee75fbf2bb2fdfd7dced3bc1ad
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2018
-ms.locfileid: "30263530"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37127892"
 ---
 # <a name="azure-networking-monitoring-solutions-in-log-analytics"></a>Figyelési megoldásoknak a Naplóelemzési Azure hálózatkezelés
 
@@ -30,16 +31,16 @@ Naplóelemzési a hálózatok figyeléséhez a következő megoldásokat nyújtj
  * Az Azure alkalmazás-átjáró naplói
  * Az Azure Application Gateway metrikák
 * Figyelheti és naplózási megoldások hálózati tevékenységet a felhő hálózaton
-* [Traffic Analytics](https://docs.microsoft.com/azure/networking/network-monitoring-overview#traffic-analytics) 
-* Azure hálózati biztonsági csoport elemzés
+* [Forgalom elemzés](https://docs.microsoft.com/azure/networking/network-monitoring-overview#traffic-analytics) 
+* Azure Network Security Group Analytics
 
 ## <a name="network-performance-monitor-npm"></a>Hálózati teljesítmény figyelése (NPM)
 
 A [hálózati Teljesítményfigyelő](https://docs.microsoft.com/azure/networking/network-monitoring-overview) felügyeleti megoldás egy olyan hálózati felügyeleti megoldás, amely az állapot, a rendelkezésre állás és a hálózatok reachability figyeli.  Közötti kapcsolat figyelésére szolgál:
 
-* Nyilvános felhő és a helyszíni
-* Adatközpontok és a felhasználó helye (fiókirodákban)
-* Egy többrétegű alkalmazást a különböző rétegeket tartalmazó alhálózat.
+* nyilvános felhő és a helyszíni
+* adatközpontok és a felhasználó helye (fiókirodákban)
+* egy többrétegű alkalmazást a különböző rétegeket tartalmazó alhálózat.
 
 További információkért lásd: [hálózati Teljesítményfigyelő](https://docs.microsoft.com/azure/networking/network-monitoring-overview).
 
@@ -77,7 +78,8 @@ A következő naplók kapcsolódnak Alkalmazásátjárót támogatja:
 * ApplicationGatewayPerformanceLog
 * ApplicationGatewayFirewallLog
 
-A következő mérőszámokat Alkalmazásátjárót támogatja:
+A következő mérőszámokat Alkalmazásátjárót támogatottak: újra
+
 
 * 5 perc átviteli sebesség
 
@@ -140,6 +142,12 @@ A naplófájl-keresési lapok egyikén tekintheti eredmények idő, illetve rés
 ## <a name="azure-network-security-group-analytics-solution-in-log-analytics"></a>A Naplóelemzési Azure hálózati biztonsági csoport elemzési megoldások
 
 ![Azure hálózati biztonsági csoport Analytics szimbólum](./media/log-analytics-azure-networking/azure-analytics-symbol.png)
+
+> [!NOTE]
+> A hálózati biztonsági csoport elemzési megoldások áll közösségi támogatás át, mivel funkciókat felváltotta [forgalom Analytics](../network-watcher/traffic-analytics.md).
+> - A megoldás jelenleg elérhető [Azure gyors üzembe helyezési sablonokat](https://azure.microsoft.com/resources/templates/oms-azurensg-solution/) és hamarosan már nem lesz elérhető az Azure piactéren.
+> - A meglévő ügyfelek, akik már hozzáadta a megoldás a munkaterület továbbra is módosítás nélkül működik.
+> - A Microsoft továbbra is támogatja a küldő NSG diagnosztikai naplókat a diagnosztikai beállítások használatával munkaterületet.
 
 Hálózati biztonsági csoportok támogatja a következő naplók kapcsolódnak:
 
@@ -213,8 +221,8 @@ A frissített megoldások használata:
 
     | ahelyett, hogy: | Használata: |
     | --- | --- |
-    | NetworkApplicationgateways &#124; ahol OperationName == "ApplicationGatewayAccess" | AzureDiagnostics &#124; where ResourceType="APPLICATIONGATEWAYS" and OperationName=="ApplicationGatewayAccess" |
-    | NetworkApplicationgateways &#124; where OperationName=="ApplicationGatewayPerformance" | AzureDiagnostics &#124; where ResourceType=="APPLICATIONGATEWAYS" and OperationName=ApplicationGatewayPerformance |
+    | NetworkApplicationgateways &#124; ahol OperationName == "ApplicationGatewayAccess" | AzureDiagnostics &#124; ahol ResourceType "APPLICATIONGATEWAYS" és az OperationName = == "ApplicationGatewayAccess" |
+    | NetworkApplicationgateways &#124; ahol OperationName == "ApplicationGatewayPerformance" | AzureDiagnostics &#124; ahol ResourceType == "APPLICATIONGATEWAYS" és az OperationName = ApplicationGatewayPerformance |
     | NetworkSecuritygroups | AzureDiagnostics &#124; ahol ResourceType == "Biztonsági csoportok" |
 
    + Bármely mezőhöz, amely rendelkezik egy utótagja \_s, \_d, vagy \_nevét, a g kisbetű módosítsa az első karakter

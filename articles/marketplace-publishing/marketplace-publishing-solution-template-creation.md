@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/27/2016
 ms.author: mbaldwin
-ms.openlocfilehash: 83e69701aa5e8c11354e7551d66f3fdd18289000
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 147b0b9b4a3fe789544457d17fed3d29badbe12c
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2018
-ms.locfileid: "29937308"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37113952"
 ---
 # <a name="guide-to-create-a-solution-template-for-azure-marketplace"></a>Az útmutató megoldást sablon létrehozása az Azure piactéren
 1. lépésben befejezése után [fióklétrehozás és a regisztrációs][link-acct-creation], azt interaktív, egy Azure-kompatibilis megoldás sablon létrehozásakor [műszaki Előfeltételek létrehozásához egy megoldás sablon](marketplace-publishing-solution-template-creation-prerequisites.md). Most végigvezetjük, a megoldás sablonok létrehozásának több virtuális gépek a lépéseket a [közzétételi Portáljára] [ link-pubportal] az Azure piactérről.
@@ -60,7 +60,7 @@ Most, hogy a megoldás sablon létrehozása és a zip-fájl feltöltése, kérj�
 Is érdekelheti a kapcsolódó cikkekben:
 
 * Virtuálisgép-rendszerképek: [kapcsolatos virtuálisgép-lemezképeket az Azure-ban](https://msdn.microsoft.com/library/azure/dn790290.aspx)
-* Virtuálisgép-bővítmények: [Virtuálisgép-ügynök és Virtuálisgép-bővítmények áttekintése](https://msdn.microsoft.com/library/azure/dn832621.aspx) és [Azure Virtuálisgép-bővítmények és szolgáltatások](https://msdn.microsoft.com/library/azure/dn606311.aspx)
+* Virtuálisgép-bővítmények: [Virtuálisgép-ügynök és Virtuálisgép-bővítmények áttekintése](https://msdn.microsoft.com/library/azure/dn832621.aspx) és [Azure Virtuálisgép-bővítmények és szolgáltatások](https://docs.microsoft.com/azure/virtual-machines/extensions/features-windows)
 * Az Azure Resource Manager: [Azure Resource Manager sablonok készítése](../azure-resource-manager/resource-group-authoring-templates.md) és [egyszerű sablon példák](https://github.com/rjmax/ArmExamples)
 * A tárfiók azelőtt gyorsítja fel: [tárolási fiók szabályozás figyelése](http://blogs.msdn.com/b/mast/archive/2014/08/02/how-to-monitor-for-storage-account-throttling.aspx) és [prémium szintű storage](../virtual-machines/windows/premium-storage.md#scalability-and-performance-targets)
 

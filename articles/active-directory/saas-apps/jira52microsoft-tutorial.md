@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/25/2018
 ms.author: jeedes
-ms.openlocfilehash: 7ea727d5fb004ca224407a8b1c93a6f11448b5e7
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 5df8b3d91f52e4809ef43e3e376004e4274b4400
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36231355"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37112020"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-jira-saml-sso-by-microsoft-v52"></a>Oktatóanyag: Azure Active Directory-integráció JIRA SAML-alapú egyszeri által Microsoft (V5.2)
 
@@ -224,11 +224,11 @@ Ez a szakasz célja a tesztfelhasználó létrehozása az Azure portálon Britta
 
 ### <a name="create-a-jira-saml-sso-by-microsoft-v52-test-user"></a>Hozzon létre egy JIRA SAML SSO Microsoft (V5.2) teszt felhasználó
 
-Ahhoz, hogy az Azure AD-felhasználók jelentkezzen be a helyi kiszolgáló JIRA, akkor ki kell építenie az JIRA a helyi kiszolgálóra.
+Ahhoz, hogy az Azure AD-felhasználók JIRA helyszíni kiszolgálón jelentkezzen be, akkor ki kell építenie az JIRA a helyi kiszolgálóra.
 
 **Felhasználói fiók létrehozásához hajtsa végre az alábbi lépéseket:**
 
-1. Jelentkezzen be rendszergazdaként a JIRA helyi kiszolgálóra.
+1. Jelentkezzen be rendszergazdaként a JIRA helyszíni kiszolgálón.
 
 2. Vigye a mutatót a ikonjára, majd kattintson a **felhasználókezelés**.
 

@@ -3,7 +3,7 @@ title: A blob storage használata az Azure Naplóelemzés eseményeket az IIS é
 description: A Naplóelemzési olvashatja a naplók az Azure-szolgáltatásokat, hogy az írási diagnostics meg tudja a table storage vagy a blob-tároló írni az IIS-naplókba.
 services: log-analytics
 documentationcenter: ''
-author: MGoedtel
+author: mgoedtel
 manager: carmonm
 editor: ''
 ms.assetid: bf444752-ecc1-4306-9489-c29cb37d6045
@@ -11,16 +11,16 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/12/2017
 ms.author: magoedte
-ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 459ef90ca1d76bada6565bfefd7b4bd1086197d5
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.component: na
+ms.openlocfilehash: 8f923cc081ea652c8e32d4109225044c70c8767d
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23855445"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37128741"
 ---
 # <a name="use-azure-blob-storage-for-iis-and-azure-table-storage-for-events-with-log-analytics"></a>Az IIS és az Azure Naplóelemzés eseményeit a table storage Azure blob storage használata
 
@@ -45,7 +45,7 @@ A Naplóelemzési, ezek az Azure diagnosztikai naplók gyűjtésére a naplók k
 | Service Fabric működési események |Service Fabric-csomópontokon |WADServiceFabricSystemEventTable |
 | Service Fabric megbízható szereplő események |Service Fabric-csomópontokon |WADServiceFabricReliableActorEventTable |
 | Service Fabric megbízható eseményei |Service Fabric-csomópontokon |WADServiceFabricReliableServiceEventTable |
-| Windows-Eseménynapló |Service Fabric-csomópontokon <br> Virtuális gépek <br> Webes szerepkörök <br> Feldolgozói szerepkörök |WADWindowsEventLogsTable (Table-tároló) |
+| Windows-eseménynaplók |Service Fabric-csomópontokon <br> Virtuális gépek <br> Webes szerepkörök <br> Feldolgozói szerepkörök |WADWindowsEventLogsTable (Table-tároló) |
 | A Windows ETW-naplók |Service Fabric-csomópontokon <br> Virtuális gépek <br> Webes szerepkörök <br> Feldolgozói szerepkörök |WADETWEventTable (Table-tároló) |
 
 > [!NOTE]
@@ -61,12 +61,12 @@ A következő eljárással engedélyezheti a virtuális gépen a Microsoft Azure
 ### <a name="to-enable-azure-diagnostics-in-a-virtual-machine-with-the-azure-portal"></a>Ahhoz, hogy a virtuális gépen, és az Azure portál Azure diagnostics
 1. A Virtuálisgép-ügynök telepítése a virtuális gép létrehozásakor. Ha a virtuális gép már létezik, győződjön meg arról, hogy a Virtuálisgép-ügynök telepítve van.
 
-   * A virtuális gépet, jelölje be az Azure-portálon lépjen **opcionális konfigurációs**, majd **diagnosztika** és **állapota** a **a**.
+   * A virtuális gépet, jelölje be az Azure-portálon lépjen **opcionális konfigurációs**, majd **diagnosztika** és **állapota** a **a** .
 
      Létrehozása után a virtuális gép kiterjesztése az Azure Diagnostics telepítve és fut. A bővítmény felelős a diagnosztikai adatainak összegyűjtése.
 2. Engedélyezze a megfigyelést és a meglévő virtuális az eseménynaplózás konfigurálásához. Diagnosztika a virtuális gép szintjén engedélyezhető. Diagnosztika engedélyezése, majd válassza az eseménynaplózás, a következő lépésekkel:
 
-   1. Válassza ki a virtuális Gépet.
+   1. Válassza ki a virtuális gépet.
    2. Kattintson a **figyelési**.
    3. Kattintson a **diagnosztika**.
    4. Állítsa be a **állapot** való **ON**.
@@ -192,7 +192,7 @@ Tekintse át az alábbi parancsfájl-mintában, másolja, szükség szerint mód
 ```
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * [Gyűjteni a naplókat és az Azure-szolgáltatások metrikáját](log-analytics-azure-storage.md) támogatott Azure-szolgáltatásokhoz.
 * [Megoldások](log-analytics-add-solutions.md) betekintést az adatokba, így.
 * [Használja a keresési lekérdezések](log-analytics-log-searches.md) az adatok elemzésére.

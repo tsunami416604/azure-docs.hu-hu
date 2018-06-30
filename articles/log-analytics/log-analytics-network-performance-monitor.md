@@ -11,15 +11,16 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 02/20/2018
 ms.author: abshamsft
-ms.openlocfilehash: a3c81d63593bb7bf268c1026064e34c3a363ef86
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.component: na
+ms.openlocfilehash: d083783fb4c648cde5d8f4ab611990f65e48a16e
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/17/2018
-ms.locfileid: "34304657"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37129997"
 ---
 # <a name="network-performance-monitor-solution-in-azure"></a>Hálózati Teljesítményfigyelő megoldás az Azure-ban
 
@@ -205,7 +206,7 @@ Miután engedélyezte a hálózati Teljesítményfigyelő megoldás, a megoldás
 
  
 
-### <a name="drill-down-for-depth"></a>a mélység részletekbe menően tárhatják 
+### <a name="drill-down-for-depth"></a>A mélység részletekbe menően tárhatják 
 
 Kiválaszthatja, hogy a megoldás irányítópultja részletezést különböző mutató hivatkozások be bármely területekre érdeklő mélyebb le. Amikor megjelenik egy figyelmeztetés vagy egy nem megfelelő állapotú hálózati kapcsolat megjelenjen az irányítópulton, válassza ki például úgy, hogy további vizsgálat. A lap felsorolja az adott hálózati kapcsolathoz tartozó alhálózati kapcsolat. Megtekintheti az adatvesztés, a késés és a minden alhálózati kapcsolat állapotát. Gyorsan talál problémákat okoz, mely alhálózat-hivatkozást. Válassza ki **csomóponti kapcsolat megtekintése** a nem megfelelő állapotú alhálózati kapcsolat csomópont hivatkozások megtekintéséhez. Ezután tekintse meg az egyes csomópontok hivatkozásokat, és a nem megfelelő állapotú csomóponti kapcsolat található. 
 

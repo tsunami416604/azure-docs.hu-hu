@@ -3,7 +3,7 @@ title: Egyéni irányítópult létrehozása az Azure Naplóelemzés |} Microsof
 description: Az útmutató segítségével megismerheti, hogyan Naplóelemzési irányítópultok jelenítheti meg az összes a mentett napló keresések felkínálva egy egyetlen helyre gyűjti a környezet megtekintéséhez.
 services: log-analytics
 documentationcenter: ''
-author: MGoedtel
+author: mgoedtel
 manager: carmonm
 editor: ''
 ms.assetid: abb07f6c-b356-4f15-85f5-60e4415d0ba2
@@ -11,16 +11,16 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 08/08/2017
 ms.author: magoedte
-ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 7eaa74655b009e3154e2cc4f09d5599040ec4589
-ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
+ms.component: na
+ms.openlocfilehash: 7b17b23d30b15fe71dcf031ac67f0c54fc3cfe3e
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "34010771"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37129312"
 ---
 # <a name="create-a-custom-dashboard-for-use-in-log-analytics"></a>A Log Analyticshez való használatra egyéni irányítópult létrehozása
 
@@ -68,11 +68,11 @@ Saját irányítópult-nézethez egyszerűen kattintson **Testreszabás** adja m
 ### <a name="tile-visualizations"></a>Mozaik képi megjelenítések
 Nincsenek háromféle csempe képi megjelenítéseket készíthet, lehetőségek közül választhat:
 
-| diagram típusát | működés |
+| diagram típusát | Működés |
 | --- | --- |
 | ![Sáv diagrammá](./media/log-analytics-dashboards/oms-dashboards-bar-chart.png) |Megjeleníti a sávdiagram, vagy attól függően egy mezőt az eredmények listában ütemterv a mentett napló keresés eredményeit, ha a naplófájl-keresési eredményeket a mező szerint összesíti, vagy nem. |
 | ![metrika](./media/log-analytics-dashboards/oms-dashboards-metric.png) |Megjeleníti a teljes naplót keresési eredmény találatok egy számot a csempén. Metrika csempék lehetővé teszik a küszöbérték, amely a csempe jelölje ki, a küszöbérték elérésekor. |
-| ![sor](./media/log-analytics-dashboards/oms-dashboards-line.png) |A mentett napló keresési eredmény találatok értékekkel ütemterv halmazaként jelenik meg. |
+| ![Sor](./media/log-analytics-dashboards/oms-dashboards-line.png) |A mentett napló keresési eredmény találatok értékekkel ütemterv halmazaként jelenik meg. |
 
 ### <a name="threshold"></a>Küszöbérték
 Létrehozhat egy metrika a képi megjelenítés használata csempe a küszöbértéket. Válassza ki a küszöbérték a csempére létrehozásához. Válasszon, hogy, hogy a mozaik elrendezés esetén az érték felett vagy alatt a hálókapacitás megadott küszöbértékét, akkor az alábbi értékre állítani.

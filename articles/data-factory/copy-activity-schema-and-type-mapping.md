@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/22/2018
 ms.author: jingwang
-ms.openlocfilehash: 338df0e258f66b6639e59a4fe31b6cfb6c283dd3
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: 16275ddc4d4ad85bdac54244ceeec568603fdfef
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37045527"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37112099"
 ---
 # <a name="schema-mapping-in-copy-activity"></a>A másolási tevékenység séma-hozzárendelése
 Ez a cikk ismerteti, hogyan működik az Azure Data Factory másolási tevékenység során a séma-hozzárendelése és a forrásadatok adatok gyűjtésének adattípus-leképezés amikor hajtsa végre az adatok másolását.
@@ -52,7 +52,7 @@ Megadhat **columnMappings** a a **typeProperties** explicit oszlopleképezés eh
 
 #### <a name="explicit-column-mapping-example"></a>Explicit oszlop leképezése-példa
 
-Ez a példa a bemeneti táblájának struktúrája, és egy helyi SQL adatbázis egyik táblája mutat.
+Ez a példa a bemeneti táblájának struktúrája, és a helyszíni SQL-adatbázisban egy tábla mutat.
 
 ```json
 {

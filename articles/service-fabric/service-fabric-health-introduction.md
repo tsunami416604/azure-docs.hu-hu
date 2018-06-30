@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 2/28/2018
 ms.author: oanapl
-ms.openlocfilehash: ed1a307cb2a2613fc7701392cd7b408715f10910
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: fc0bb56e85c2a9cf7a458b0f6d97887d392ee65f
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34207298"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37114316"
 ---
 # <a name="introduction-to-service-fabric-health-monitoring"></a>A Service Fabric állapotmonitorozásának bemutatása
 Az Azure Service Fabric egy állapotmodell sokoldalú, rugalmasan és bővíthető állapotának kiértékelését és a jelentéskészítés biztosító vezet be. A modell lehetővé teszi, hogy a fürt és a benne a szolgáltatás állapotának közel valós idejű figyelését. Egyszerűen állapottal kapcsolatos adatok beszerzéséhez, és kijavíthatja az esetleges problémák ahhoz, hogy kaszkádolt és okozhat nagy kimaradások esetén. A tipikus modell szolgáltatások küldjön jelentést a helyi nézetek alapján, és, hogy arra, hogy általános információkat összesíti fürt szintű nézet.
@@ -117,7 +117,7 @@ A következő példa egy fürtjegyzékben fájlból. Az alkalmazás-típusú hoz
 A [az alkalmazás állapotházirendje](https://docs.microsoft.com/dotnet/api/system.fabric.health.applicationhealthpolicy) ismerteti, hogyan az alkalmazások és azok alárendelt események és a gyermek-állapotok összesítési kiértékelése történik. Az alkalmazásjegyzékben definiálható **ApplicationManifest.xml**, alkalmazáscsomagban. Ha nincsenek házirendek meg van adva, a Service Fabric feltételezi, hogy az entitás sérült állapotba, ha egy jelentés vagy egy alárendelt rendelkezik, a figyelmeztetés vagy hibaüzenet állapotát.
 A konfigurálható házirendek a következők:
 
-* [A ConsiderWarningAsError](https://docs.microsoft.com/dotnet/api/system.fabric.health.applicationhealthpolicy.considerwarningaserror.aspx). Meghatározza, hogy kezelni a figyelmeztetési állapot jelentenek hibaként állapot kiértékelésekor. Alapértelmezett: false.
+* [A ConsiderWarningAsError](https://docs.microsoft.com/dotnet/api/system.fabric.health.clusterhealthpolicy.considerwarningaserror). Meghatározza, hogy kezelni a figyelmeztetési állapot jelentenek hibaként állapot kiértékelésekor. Alapértelmezett: false.
 * [MaxPercentUnhealthyDeployedApplications](https://docs.microsoft.com/dotnet/api/system.fabric.health.applicationhealthpolicy.maxpercentunhealthydeployedapplications). A maximális megengedett százalékos értékét határozza meg, hogy a nem megfelelő lehet, mielőtt az alkalmazás tekinthető hiba a központilag telepített alkalmazások. Ez a százalékérték keresztül az alkalmazások jelenleg telepítve vannak a a fürtben lévő csomópontok száma nem megfelelő a telepített alkalmazások számát elosztjuk. A számítási csomópontok kis számú hiba tűrését kerekít. Alapértelmezett százalékos aránya: nulla.
 * [DefaultServiceTypeHealthPolicy](https://docs.microsoft.com/dotnet/api/system.fabric.health.applicationhealthpolicy.defaultservicetypehealthpolicy). Adja meg az alapértelmezett service type állapotházirend minden szolgáltatás esetében az alkalmazás alapértelmezett állapotházirend váltja fel.
 * [Servicetypehealthpolicymap paraméterek hiányzó értékei](https://docs.microsoft.com/dotnet/api/system.fabric.health.applicationhealthpolicy.servicetypehealthpolicymap). Szolgáltatás állapotházirendeket szolgáltatás típusonkénti térképére biztosít. Ezek a házirendek cserélje le az alapértelmezett szolgáltatás típus állapotházirendeket, ha az egyes megadott szolgáltatás. Például ha egy alkalmazás egy állapot nélküli átjáró szolgáltatás típusa, egy állapot-nyilvántartó motor szolgáltatás, beállíthatja a health azok tesztelési másképp. Szolgáltatástípus száma szabályzat megadása esetén is révén a részletesebben vezérelhető, a szolgáltatás állapotáról.
@@ -202,7 +202,7 @@ A [állapotjelentések](https://docs.microsoft.com/dotnet/api/system.fabric.heal
   
   * A fürt. Nincs.
   * Csomópont. Csomópont neve (karakterlánc).
-  * az alkalmazás. Alkalmazás neve (URI). Az alkalmazáspéldány telepítése a fürt nevét jelöli.
+  * Az alkalmazás. Alkalmazás neve (URI). Az alkalmazáspéldány telepítése a fürt nevét jelöli.
   * A szolgáltatás. Szolgáltatás neve (URI). A fürtben telepített service-példány nevét jelöli.
   * A partíció. Partíció azonosítója (GUID). A partíció egyedi azonosítóját jelöli.
   * A replika. Az állapotalapú szolgáltatási másodpéldány-azonosító, vagy az állapot nélküli szolgáltatáspéldány-Azonosítóval (INT64).

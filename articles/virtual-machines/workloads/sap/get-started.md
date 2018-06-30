@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 04/24/2018
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 7f0705f2fb14bc44a7738f38bc3ef53a6359dfb4
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 4b3024b451ddf08b6b7ab171238ae45edbafc58a
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34657771"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37110962"
 ---
 # <a name="using-azure-for-hosting-and-running-sap-workload-scenarios"></a>Az Azure üzemeltetési és SAP munkaterhelés forgatókönyvek fut
 [767598]:https://launchpad.support.sap.com/#/notes/767598
@@ -301,7 +301,7 @@ SAP NetWeaver forgatókönyvet az Azure különböző DBMS üzemeltet, mellett t
 
 Azure rendelkezik natív Azure virtuális gép ajánlatokat, amelyek legalább egyszer nőnek a CPU és memória-erőforrások fedik le a SAP munkaterhelés, amely kihasználja a SAP HANA-méretet. Ez a terület olvashat keresse meg a dokumentumok SAP HANA Azure virtuális gépeken szakaszban."
 
-SAP Hana Azure egyediségét olyan egyedi ajánlat, amely beállítja a Azure verseny mellett. Ahhoz, hogy további memória és CPU-erőforrást üzemeltetési SAP HANA érintő forgatókönyvek, az Azure kínál az ügyfél használati kibővített SAP dedikált céljából, legfeljebb 20 TB (60 TB kibővített) memória szükséges az S/4HANA vagy más SAP HANA-munkaterhelés SAP HANA-telepítést futtató operációs rendszer nélküli hardver. A egyedi Azure megoldás az Azure (nagy példányok) SAP HANA SAP HANA futtatnak az SAP alkalmazásréteg vagy munkaterhelés közel-vő réteg natív Azure virtuális gépeken futó operációs rendszer nélküli hardveres teszi lehetővé. Ez a megoldás több dokumentumok "SAP HANA Azure (nagy példány)." szakaszban ismertetett   
+SAP Hana Azure egyediségét olyan egyedi ajánlat, amely beállítja a Azure verseny mellett. Ahhoz, hogy további memória és a Processzor-erőforrást igényelnek SAP HANA, az Azure-ajánlatok érintő SAP forgatókönyvek az ügyfél használati dedikált céljából, legfeljebb 20 TB (60 TB kibővített) memória szükséges SAP HANA-telepítést futtató operációs rendszer nélküli hardver S/4HANA vagy más SAP HANA-munkaterhelés. A egyedi Azure megoldás az Azure (nagy példányok) SAP HANA SAP HANA futtatnak az SAP alkalmazásréteg vagy munkaterhelés közel-vő réteg natív Azure virtuális gépeken futó operációs rendszer nélküli hardveres teszi lehetővé. Ez a megoldás több dokumentumok "SAP HANA Azure (nagy példány)." szakaszban ismertetett   
 
 SAP munkaterhelés szolgáltatókörnyezetekben az Azure-ban is hozhat létre és Single-Sign-On Azure tevékenység Directory különböző SAP-összetevők és az SAP SaaS identitásintegráció követelményeinek, vagy PaaS kínál. Ilyen integrációs és Single-Sign-On Azure Active Directory (AAD) és az SAP entitások forgatókönyvek listája leírt és része "AAD SAP Identitásintegráció és Single-Sign-On."
 
@@ -444,7 +444,7 @@ Frissített: 2017. június.
 ### <a name="high-availability-configurations-of-sap-netweaver-in-azure-vms"></a>SAP NetWeaver az Azure virtuális gépeken, magas rendelkezésre állási konfigurációban
 Cím: Azure virtuális gépek magas rendelkezésre állás SAP NetWeaver
 
-Összefoglalás: Ebben a dokumentumban azt fedik le a magas rendelkezésre állású SAP rendszerek az Azure-ban az Azure Resource Manager telepítési modell segítségével központi telepítéséhez szükséges lépéseket. A Microsoft végigvezetik Önt a nagyobb feladatok. A dokumentum azt ismerteti hogyan egyetlen ponton-az-hibát jelentő összetevők például a fejlett üzleti alkalmazások fejlesztői (ABAP) SAP központi szolgáltatások (ASC) / SAP központi szolgáltatások (SCS) és az adatbázis-kezelő rendszerek (DBMS) és a redundáns összetevők, például SAP-alkalmazáskiszolgáló fog lehet védetté tenni, ha az Azure virtuális gépeken futtatja. A részletes példa egy telepítési és a konfiguráció egy magas rendelkezésre állású SAP rendszer a fürt Windows Server feladatátvételi fürtszolgáltatási és SUSE Linux Enterprise Server fürt keretrendszer az Azure-ban bemutatott, és ebben a dokumentumban leírt.
+Összefoglalás: Ebben a dokumentumban azt fedik le a magas rendelkezésre állású SAP rendszerek az Azure-ban az Azure Resource Manager telepítési modell segítségével központi telepítéséhez szükséges lépéseket. A Microsoft végigvezetik Önt a nagyobb feladatok. A dokumentum azt ismerteti hogyan egyetlen ponton-az-hibát jelentő összetevők például a fejlett üzleti alkalmazások fejlesztői (ABAP) SAP központi szolgáltatások (ASC) / SAP központi szolgáltatások (SCS) és az adatbázis-kezelő rendszerek (DBMS) és a redundáns összetevők, például SAP Alkalmazáskiszolgáló fog lehet védetté tenni, ha az Azure virtuális gépeken futtatja. A részletes példa egy telepítési és a konfiguráció egy magas rendelkezésre állású SAP rendszer a fürt Windows Server feladatátvételi fürtszolgáltatási és SUSE Linux Enterprise Server fürt keretrendszer az Azure-ban bemutatott, és ebben a dokumentumban leírt.
 
 Frissített: 2017. október.
 

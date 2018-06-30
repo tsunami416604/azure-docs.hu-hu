@@ -10,12 +10,12 @@ manager: jahogg
 ms.date: 06/27/2018
 ms.service: storage
 ms.component: data-lake-storage-gen2
-ms.openlocfilehash: 75edf6dc7382a8a2ece7c25edd09aeacfe1c5189
-ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
+ms.openlocfilehash: a6130d8440b16e5a72c939fc07f6bf32c0946418
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37060059"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37114292"
 ---
 # <a name="use-the-azure-data-lake-storage-gen2-uri"></a>Használja az Azure Data Lake tárolási Gen2 URI
 
@@ -25,15 +25,7 @@ A [Hadoop-fájlrendszer](http://www.aosabook.org/en/hdfs.html) illesztőprogramo
 
 A Data Lake tárolási Gen2 URI szintaxisa függ-e a tárfiók van beállítva Data Lake tárolási Gen2 alapértelmezett fájlrendszer rendelkezik.
 
-Ha a Data Lake tárolási Gen2 képes cím kívánja beállítása az alapértelmezett fájlrendszer számítógépfiók létrehozása közben, majd a rövid szintaxist URI-szintaxis van:
-
-<pre>/&lt;path&gt;<sup>1</sup>/&lt;file_name&gt;<sup>2</sup></pre>
-
-1. **Elérési út**: tagolt perjellel (`/`) a könyvtárstruktúra ábrázolását.
-
-2. **Fájlnév**: az egyes fájl nevét.
-
-Ha a Data Lake tárolási Gen2 képes a fiókot szeretné cím *nem* az alapértelmezett fájlrendszer, a URI-szintaxis a következő:
+Ha a Data Lake tárolási Gen2 képes a fiókot szeretné cím **nem** állítja be az alapértelmezett fájlrendszert fiók létrehozásakor, akkor a rövid szintaxist URI-Azonosítójának szintaxisa:
 
 <pre>abfs[s]<sup>1</sup>://&lt;file_system&gt;<sup>2</sup>@&lt;account_name&gt;<sup>3</sup>.dfs.core.widows.net/&lt;path&gt;<sup>4</sup>/&lt;file_name&gt;<sup>5</sup></pre>
 
@@ -46,6 +38,15 @@ Ha a Data Lake tárolási Gen2 képes a fiókot szeretné cím *nem* az alapért
 4. **Elérési utak**: tagolt perjellel (`/`) a könyvtárstruktúra ábrázolását.
 
 5. **Fájlnév**: az egyes fájl nevét. Ez a paraméter nem kötelező, ha éppen aktuális könyvtár.
+
+Azonban ha a cím kívánt fiók be van állítva az alapértelmezett fájlrendszer számítógépfiók létrehozása közben, akkor a rövid szintaxist URI-szintaxis értéke:
+
+<pre>/&lt;path&gt;<sup>1</sup>/&lt;file_name&gt;<sup>2</sup></pre>
+
+1. **Elérési út**: tagolt perjellel (`/`) a könyvtárstruktúra ábrázolását.
+
+2. **Fájlnév**: az egyes fájl nevét.
+
 
 ## <a name="next-steps"></a>További lépések
 

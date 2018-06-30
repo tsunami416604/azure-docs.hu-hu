@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 3/15/2018
 ms.author: johnkem
 ms.component: ''
-ms.openlocfilehash: c8f8dbc4aa32b550849ff14f3ad653311b9fab93
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: 5d5b2e78755d6800f61e3e4adb1769799d01dad2
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35265283"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37111523"
 ---
 # <a name="azure-monitor-partner-integrations"></a>Az Azure figyelő partner integrációja
 | Partnerek |  |  |
@@ -90,7 +90,7 @@ LogicMonitor® a kezdő Szolgáltatottszoftver-alapú, Teljesítményfigyelő pl
 Moogsoft AIOps felgyorsítják a nagy üzleti átalakítását.
 
 A Microsoft Azure Automation, vezérlő egy valós idejű azokat az alkalmazásokat és az Azure szolgáltatásba telepített mikroszolgáltatások állapotának nyújtanak és levezényelni a diagnosztikai és a gyorsabb szervizelési runbookok segítségével.
-Harmadik féltől származó eszközök adjon meg egy ablak azokat a helyi alkalmazások és az infrastruktúra-állapot.
+Harmadik féltől származó eszközök egy a helyszíni alkalmazásokhoz és az infrastruktúra-állapot nyújtanak.
 
 Moogsoft AIOps automatizálja az esemény szervizelési munkafolyamat meglévő folyamatok és szervezeti felépítés módosítása nélkül. 
 

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 04/24/2018
 ms.author: dobett
 ms.custom: include file
-ms.openlocfilehash: c1ba6cb5b01c86c64fd6134c592829050bbb226d
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.openlocfilehash: b3525f461d0662db5bf3677f7e981bbdbc663d50
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/17/2018
-ms.locfileid: "34307549"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37103643"
 ---
 # <a name="internet-of-things-security-from-the-ground-up"></a>Az eszközök internetes hálózatát biztonsági másolatot az alapoktól
 
@@ -33,7 +33,7 @@ A biztonsági, adatvédelmi, átláthatóság és megfelelőségi szempontok mia
 
 ## <a name="secure-infrastructure-from-the-ground-up"></a>Biztonságos infrastruktúra alapoktól
 
-A [Microsoft Cloud](https://www.microsoft.com/enterprise/microsoftcloud/default.aspx#fbid=WzBsRQi6aGk) infrastruktúra támogatja a több mint egymilliárd ügyfelek 127 országokban. A Microsoft évtizedekben-hosszú kapcsolatos vállalati szoftverek kialakításához és futtatásához a legnagyobb online szolgáltatások közül a világ rajzolási, a Microsoft Cloud tanácsokat fokozott biztonsági, adatvédelmi, megfelelőségi és fenyegetés nagyobb mértékű megoldás mint a legtöbb ügyfél saját maguk is el lehet érni.
+A [Microsoft Cloud](https://azure.microsoft.com) infrastruktúra támogatja a több mint egymilliárd ügyfelek 127 országokban. A Microsoft évtizedekben-hosszú kapcsolatos vállalati szoftverek kialakításához és futtatásához a legnagyobb online szolgáltatások közül a világ rajzolási, a Microsoft Cloud tanácsokat fokozott biztonsági, adatvédelmi, megfelelőségi és fenyegetés nagyobb mértékű megoldás mint a legtöbb ügyfél saját maguk is el lehet érni.
 
 A [biztonságos fejlesztési Életciklussal (SDL)](https://www.microsoft.com/sdl/) biztonsági követelményeket a teljes szoftver életciklus beágyazó kötelező vállalati szintű fejlesztési folyamat nyújt. Annak biztosítására, operatív tevékenységek kövesse az azonos szintű biztonsági eljárásokat, SDL szigorú biztonsági irányelvek jelenjen meg a Microsoft üzemeltetési biztonsági megbízhatósági (OSA) folyamat használja. Microsoft naplózási külső cégek folyamatos ellenőrzés, hogy a megfelelőségi teljesíti, és a Microsoft az átfogó biztonsági erőfeszítéseket képességekkel, beleértve a Microsoft digitális milyen egység, az erőforrások létrehozásával kapcsolatba lép a is működik Microsoft Security Response Center, és a Microsoft Malware Protection Center.
 

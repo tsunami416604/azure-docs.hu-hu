@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/23/2018
 ms.author: larryfr
-ms.openlocfilehash: 51307e1bdb31d902636787790d1c4f1248f3886b
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: bfb6515ba9b7f36e90783444fc474dc575b32f37
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34361920"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37113622"
 ---
-# <a name="connect-hdinsight-to-your-on-premise-network"></a>HDInsight csatlakozni a helyi hálózatra
+# <a name="connect-hdinsight-to-your-on-premises-network"></a>A HDInsight csatlakoztatása a helyszíni hálózathoz
 
 Útmutató a HDInsight hálózathoz való kapcsolódáshoz a helyszíni Azure virtuális hálózatok és a VPN-átjáró használatával. Ez a dokumentum a tervezési tudnivalókat tartalmaz:
 
@@ -122,7 +122,7 @@ Linux virtuális gép által használt létrehozásához a [kötési](https://ww
     > [!NOTE]
     > Nincsenek az sokféleképpen beszerzése a `ssh` segédprogram. A Linux, Unix és macOS Ez biztosítja az operációs rendszer részeként. Ha Windows használja, fontolja meg az alábbi lehetőségek közül:
     >
-    > * [Azure-felhőbe rendszerhéj](../cloud-shell/quickstart.md)
+    > * [Azure Cloud Shell](../cloud-shell/quickstart.md)
     > * [A Windows 10 Ubuntu bash](https://msdn.microsoft.com/commandline/wsl/about)
     > * [Git)https://git-scm.com/)](https://git-scm.com/)
     > * [OpenSSH)https://github.com/PowerShell/Win32-OpenSSH/wiki/Install-Win32-OpenSSH)](https://github.com/PowerShell/Win32-OpenSSH/wiki/Install-Win32-OpenSSH)

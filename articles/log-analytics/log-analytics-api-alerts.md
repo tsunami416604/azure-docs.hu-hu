@@ -4,23 +4,23 @@ description: A napló Analytics riasztási REST API-t kezelheti a riasztásokat 
 services: log-analytics
 documentationcenter: ''
 author: bwren
-manager: jwhit
+manager: carmonm
 editor: tysonn
 ms.assetid: 628ad256-7181-4a0d-9e68-4ed60c0f3f04
 ms.service: log-analytics
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/10/2018
 ms.author: bwren
-ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: e6987900ac2ef535fe31d4d1ecadb1a302a9c0be
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.component: na
+ms.openlocfilehash: 9097ca13bf4f65db4b0924044a9c0f075e3703af
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32178523"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37128894"
 ---
 # <a name="create-and-manage-alert-rules-in-log-analytics-with-rest-api"></a>Hozzon létre, és a REST API-val Naplóelemzési riasztási szabályok kezelése
 A napló Analytics riasztási REST API lehetővé teszi, hogy hozhat létre és kezelheti a riasztásokat az Operations Management Suite (OMS).  Ez a cikk ismerteti az API-t, és néhány példa a másik műveletet hajt végre.
@@ -37,7 +37,7 @@ A mentett kereséseket rendelkezhet egy vagy több ütemezés. Az ütemezés hat
 | Tulajdonság | Leírás |
 |:--- |:--- |
 | Időköz |Milyen gyakran fut a keresést. Percben értendő. |
-| queryTimeSpan |Az időtartam, amely a feltétel kiértékelése. Időköz nagyobbnak vagy azzal egyenlőnek kell lennie. Percben értendő. |
+| QueryTimeSpan |Az időtartam, amely a feltétel kiértékelése. Időköz nagyobbnak vagy azzal egyenlőnek kell lennie. Percben értendő. |
 | Verzió |A használt API-verzió.  Jelenleg ez beállítása mindig 1. |
 
 Vegye figyelembe például egy esemény lekérdezés Timespan érték 30 perc és 15 perces időközönként. Ebben az esetben a lekérdezés futna 15 percenként, és egy riasztás akkor váltódik ki, ha a feltétel igaz over feloldani továbbra is a 30 perces span.
@@ -137,7 +137,7 @@ A művelet azonosítójú a Delete metódus segítségével törölheti a művel
 | Section | Leírás | Használat |
 |:--- |:--- |:--- |
 | Küszöbérték |A művelet futtatásakor feltételeit.| Szükséges minden egyes riasztás előtt vagy után bővítve lettek az Azure-bA. |
-| Súlyosság |A riasztás kiváltásakor osztályozva címkéje.| Szükséges minden egyes riasztás előtt vagy után bővítve lettek az Azure-bA. |
+| Severity |A riasztás kiváltásakor osztályozva címkéje.| Szükséges minden egyes riasztás előtt vagy után bővítve lettek az Azure-bA. |
 | Műveletcsoportok |Azure ActionGroup, ahol a szükséges műveletek vannak megadva, az azonosítók például - e-mailek, SMSs, hanghívások, Webhookokkal, Automation-forgatókönyveket, ITSM összekötők, stb.| Szükséges, ha riasztások bővítve lettek az Azure-bA|
 | Műveletek testreszabása|A select műveletek ActionGroup a standard kimenet módosítása| Minden riasztás esetén nem kötelező használható után riasztások bővítve lettek az Azure-bA. |
 | EmailNotification |E-mail küldés több címzettnek. | Nem kötelező megadni, ha a riasztások bővítve lettek az Azure-bA|
@@ -154,7 +154,7 @@ Küszöbértékek az alábbi táblázatban a jellemzőkkel rendelkezik.
 
 | Tulajdonság | Leírás |
 |:--- |:--- |
-| Operátor |A küszöbérték összehasonlító operátort. <br> gt = nagyobb mint <br> lt = kisebb, mint |
+| Művelet |A küszöbérték összehasonlító operátort. <br> gt = nagyobb mint <br> lt = kisebb, mint |
 | Érték |Értéke a küszöbérték. |
 
 Vegye figyelembe például 15 perc, 30 perc Timespan és egy nagyobb, mint 10 küszöbértéket időközzel eseménylekérdezési. Ebben az esetben a lekérdezés futna 15 percenként, és a riasztás akkor váltódik ki, ha 10 keresztül a 30 perces span létrehozott események által visszaadott.
@@ -182,7 +182,7 @@ Használja a Put metódust egy meglévő azonosítójú művelet egy ütemezés 
     $thresholdJson = "{'etag': 'W/\"datetime'2016-02-25T20%3A54%3A20.1302566Z'\"','properties': { 'Name': 'My Threshold', 'Version':'1', 'Type':'Alert', 'Threshold': { 'Operator': 'gt', 'Value': 10 } }"
     armclient put /subscriptions/{Subscription ID}/resourceGroups/OI-Default-East-US/providers/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Search ID}/schedules/{Schedule ID}/actions/mythreshold?api-version=2015-03-20 $thresholdJson
 
-#### <a name="severity"></a>Súlyosság
+#### <a name="severity"></a>Severity
 Naplóelemzési lehetővé teszi a riasztások kategóriákba ahhoz, hogy egyszerűbb kezelés és osztályozás besorolását. A riasztás súlyosságát definiálva van: információs, figyelmeztetési és a kritikus. Ezek a normalizált súlyossági méretezésének Azure riasztásokat van leképezve:
 
 |Naplózási Analytics súlyossági szint  |Az Azure riasztások súlyossági szint  |

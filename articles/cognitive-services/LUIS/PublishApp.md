@@ -10,12 +10,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: v-geberr;
-ms.openlocfilehash: 12a63e65a739be08d436f8f1b53df566255b1fb1
-ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
+ms.openlocfilehash: ad5ef58536bb6cc7f2c754f2e5c4487a3ffe96f2
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/22/2018
-ms.locfileid: "36322057"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37112826"
 ---
 # <a name="publish-your-trained-app"></a>A betanított alkalmazás közzététele
 Befejezése után összeállításakor és tesztelésekor a LUIS alkalmazás közzététele. Az alkalmazás közzététele után a közzététel a lapon látható-e az összes kapcsolód HTTP [végpontok](luis-glossary.md#endpoint). Ezeket a végpontokat / [régió](luis-reference-regions.md) , valamint minden [kulcs](Manage-Keys.md), majd minden ügyfél, chatbot vagy háttér alkalmazásba integrált. 
@@ -48,7 +48,7 @@ Az a **külső-szolgáltatások beállításai**, a **beszéd előkészítési e
 Ez a szolgáltatás engedélyezése után az alkalmazás közzététele. A LUIS alkalmazás közzétételekor az app model érkezik a saját beszéd szolgáltatás rendszerlemez a beszédfelismerés szolgáltatás. A modell adatok **nem** kívül a saját szolgáltatás használt. 
 
 Beszéd elsődleges használatát befejezéséhez-ban történő használatáról a következő adatokat kell a [beszéd SDK](../speech-service/speech-sdk-reference.md):
-* Egy LUIS előfizetés kulcs.
+* Egy LUIS végpontkulcs.
 * A LUIS alkalmazás azonosítóját.
 * Egy végpont tartományban néven "Állomásnév" beszéd SDK, például a "westus.api.cognitive.microsoft.com," ahol az első altartomány az a régió, ahol az alkalmazás közzé van téve.
 
@@ -129,7 +129,7 @@ Ez a táblázat kényelmesen közzétételi konfigurációjához a URL-cím vég
 
 Az URL-cím útvonal össze a régiót, és az alkalmazás azonosítóját. Ha közzéteszi a más régiókban vagy más alkalmazásokkal, a végponti URL-cím a területi és app ID értékek módosításával lehet létrehozni. 
 
-* Válassza ki az éles tárhely és a **közzététel** gombra. Ha a közzététel sikeres, használja a megjelenített végponti URL-cím a LUIS alkalmazás eléréséhez. 
+* Válasza a Production (Termelés) helyet, és kattintson a **Publish** (Közzététel) gombra. Ha a közzététel sikeres, használja a megjelenített végponti URL-cím a LUIS alkalmazás eléréséhez. 
 
 ### <a name="optional-query-string-parameters"></a>Nem kötelező lekérdezési karakterlánc paraméterei
 A következő lekérdezési karakterlánc paraméter használható a végpont URL-címe:

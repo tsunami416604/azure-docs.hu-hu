@@ -13,15 +13,15 @@ ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 6/1/2018
+ms.date: 6/29/2018
 ms.author: markgal;anuragm
 ms.custom: ''
-ms.openlocfilehash: 4ae64fefb58840214104a4e1cb338ec404fac1a8
-ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
+ms.openlocfilehash: 89a1df607c220e5dc12bc6263955d6e445e529bd
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35235413"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37116129"
 ---
 # <a name="back-up-sql-server-database-in-azure"></a>Az Azure SQL Server-adatbázis biztonsági mentése
 
@@ -251,7 +251,7 @@ Ha a **adatbázisok felderítése** eszköz, az Azure Backup szolgáltatás a h�
 
 - telepíti a **AzureBackupWindowsWorkload** bővítményt a virtuális gépen. Az ügynök nélküli megoldás egy SQL-adatbázis biztonsági mentése, ez azt jelenti, hogy a virtuális gépen telepített kiterjesztésű nincs ügynök telepítve van az SQL-adatbázis.
 
-- a szolgáltatási fiókot hoz létre **NT Service\AzureWLBackupPluginSvc**, a virtuális gépen. Az összes biztonsági mentési és visszaállítási műveletek a szolgáltatás fiók használata. **NT Server\AzureWLBackupPluginSvc** SQL rendszergazdai engedélyekkel kell. Az összes SQL piactér virtuális gépek telepítve SqlIaaSExtension rendelkeznek, és AzureBackupWindowsWorkload SQLIaaSExtension segítségével automatikusan lekérni a szükséges engedélyekkel. Ha a virtuális gép nem rendelkezik telepített SqlIaaSExtension, a DB felderítése művelet sikertelen lesz, és a hibaüzenet jelenik meg, **UserErrorSQLNoSysAdminMembership**. A sysadmin (rendszergazda) engedéllyel a biztonsági mentéshez hozzáadásához kövesse az utasításokat a [nem Piactéri SQL virtuális gépek Azure biztonsági mentési Engedélybeállításának](backup-azure-sql-database.md#set-permissions-for-non--marketplace-sql-vms).
+- a szolgáltatási fiókot hoz létre **NT Service\AzureWLBackupPluginSvc**, a virtuális gépen. Az összes biztonsági mentési és visszaállítási műveletek a szolgáltatás fiók használata. **NT Service\AzureWLBackupPluginSvc** SQL rendszergazdai engedélyekkel kell. Az összes SQL piactér virtuális gépek telepítve SqlIaaSExtension rendelkeznek, és AzureBackupWindowsWorkload SQLIaaSExtension segítségével automatikusan lekérni a szükséges engedélyekkel. Ha a virtuális gép nem rendelkezik telepített SqlIaaSExtension, a DB felderítése művelet sikertelen lesz, és a hibaüzenet jelenik meg, **UserErrorSQLNoSysAdminMembership**. A sysadmin (rendszergazda) engedéllyel a biztonsági mentéshez hozzáadásához kövesse az utasításokat a [nem Piactéri SQL virtuális gépek Azure biztonsági mentési Engedélybeállításának](backup-azure-sql-database.md#set-permissions-for-non--marketplace-sql-vms).
 
     ![Válassza ki a virtuális gép és az adatbázis](./media/backup-azure-sql-database/registration-errors.png)
 
@@ -443,6 +443,10 @@ Egy adatbázis visszaállítása
 
 Ez az eljárás végigvezeti az adatok helyreállítása másik helyre. Ha azt szeretné, felülírja az adatbázis visszaállítása során, a szakasz Ugrás [visszaállítása és az adatbázis felülírása](backup-azure-sql-database.md#restore-and-overwrite-the-database). Ez az eljárás azt feltételezi, hogy a Recovery Services-tároló megnyitott, és a visszaállítás konfigurációs menü erővel. Ha nem, indítsa el a szakasz [SQL-adatbázis visszaállítása](backup-azure-sql-database.md#restore-a-sql-database).
 
+> [!NOTE]
+> Visszaállíthatja az adatbázist egy SQL Server ugyanazon Azure-régióban, és a célkiszolgálón kell lennie a Recovery Services-tároló a rendszerünkben. 
+>
+
 A **Server** legördülő menü csak az SQL Server a Recovery Services-tároló regisztrált jeleníti meg. Ha nincs a kiszolgálón, a **Server** listában, tekintse meg a [felderíteni az SQL server-adatbázisok](backup-azure-sql-database.md#discover-sql-server-databases) található a kiszolgálón. A felderítési adatbázist során bármely új kiszolgáló regisztrálva van a Recovery Services-tároló.
 
 1. Az a **visszaállítása konfigurációs** menüben:
@@ -607,10 +611,40 @@ Ez a szakasz tájékoztatást ad azokról a különböző Azure Backup felügyel
 * SQL-kiszolgáló regisztrációjának törlése
 
 ### <a name="monitor-jobs"></a>Feladatok figyelése
+Azure biztonsági mentés alatt álló egy vállalati osztály megoldást biztosít a speciális biztonsági riasztások és értesítések e fel (lásd az alábbi biztonsági mentési riasztások szakaszban). Ha továbbra is szeretné meghatározott feladatok figyelése a követelmény alapján a következő beállítások bármelyikét használhatja:
 
-Az Azure Backup minden biztonsági mentési műveletek SQL natív API-kat használ. A natív API-k használatával, az összes feladat adatait is lehívni a [SQL Fájljelző tábla](https://docs.microsoft.com/sql/relational-databases/system-tables/backupset-transact-sql?view=sql-server-2017) az msdb adatbázisban. Emellett Azure biztonsági mentés megjelenítése minden manuálisan indított, vagy ad hoc, feladatok, a biztonsági mentési feladatok portálon. A portál belefoglalása elérhető feladatok: az összes biztonsági mentési műveleteket, visszaállítási műveletek regisztrációs konfigurálása felderítése a Helyadatbázis-műveletekhez, és állítsa le a biztonsági mentési műveletek. Minden ütemezett feladatokat is figyelhetők az OMS szolgáltatáshoz. Naplóelemzési használatával feladatok zsúfoltságát eltávolítja, és részletes rugalmasságot biztosít a figyelése, vagy a Szűrés adott feladatok.
-
+#### <a name="using-azure-portal---recovery-services-vault-for-all-ad-hoc-operations"></a>Recovery Services-tároló Azure-portál használatával -> minden alkalmi műveleteihez
+Azure biztonsági mentése azt mutatja be, minden manuálisan elindítva, vagy ad hoc, a biztonsági mentési feladatok portálon feladatok. A portál belefoglalása elérhető feladatok: összes konfigurálni a biztonsági mentési műveleteket, manuálisan indított biztonsági mentési műveleteket, visszaállítási műveletek regisztrációs és Fedezze fel az adatbázis-műveletek és állítsa le a biztonsági mentési műveletek. 
 ![Speciális konfigurációs menü](./media/backup-azure-sql-database/jobs-list.png)
+
+> [!NOTE]
+> Az összes ütemezett biztonsági mentési feladatok többek között a teljes, különbségi és a napló biztonsági mentése nem jelenik meg a portálon, és SQL Server Management Studio segítségével, az alább ismertetett követhetők nyomon.
+>
+
+#### <a name="using-sql-server-management-studio-ssms-for-backup-jobs"></a>SQL Server Management Studio (SSMS) használatával a biztonsági mentési feladatok
+Az Azure Backup minden biztonsági mentési műveletek SQL natív API-kat használ. A natív API-k használatával, az összes feladat adatait is lehívni a [SQL Fájljelző tábla](https://docs.microsoft.com/sql/relational-databases/system-tables/backupset-transact-sql?view=sql-server-2017) az msdb adatbázisban. 
+
+Használhatja az alábbi lekérdezés "D1" nevű adott adatbázis biztonsági mentési feladataihoz lehívása példaként. Testre szabhatja a alatt több lekérdezés speciális figyelést.
+```
+select CAST (
+Case type
+                when 'D' 
+                                 then 'Full'
+                when  'I'
+                               then 'Differential' 
+                ELSE 'Log'
+                END         
+                AS varchar ) AS 'BackupType',
+database_name, 
+server_name,
+machine_name,
+backup_start_date,
+backup_finish_date,
+DATEDIFF(SECOND, backup_start_date, backup_finish_date) AS TimeTakenByBackupInSeconds,
+backup_size AS BackupSizeInBytes
+  from msdb.dbo.backupset where user_name = 'NT SERVICE\AzureWLBackupPluginSvc' AND database_name =  <DB1>  
+ 
+```
 
 ### <a name="backup-alerts"></a>Biztonsági mentési riasztás
 

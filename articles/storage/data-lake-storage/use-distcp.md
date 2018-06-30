@@ -12,21 +12,21 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 06/27/2018
 ms.author: seguler
-ms.openlocfilehash: 2a958ceb0b3a1db9d06d045a8161fa6cd3ef5aba
-ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
+ms.openlocfilehash: 073d81baca7e174872806301236f547329836c45
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37059926"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37113476"
 ---
 # <a name="use-distcp-to-copy-data-between-azure-storage-blobs-and-data-lake-storage-gen2-preview"></a>Azure Storage Blobs és a Data Lake tárolási Gen2 előzetes adatok másolása ból a Distcp használatával
 
-Ha egy HDInsight-fürt hozzáférés az Azure Data Lake tárolási Gen2 előzetes, segítségével például ból a Distcp Hadoop-ökoszisztémával eszközök adatok másolása **a** egy HDInsight fürt storage (WASB) be egy Data Lake tárolási Gen2 képes fiók. Ez a cikk nyújt útmutatást a ból a Distcp eszközzel.
+Ha egy HDInsight-fürt hozzáférés az Azure Data Lake tárolási Gen2 előzetes, használhatja például a Hadoop-ökoszisztémával eszközök [ból a Distcp](https://hadoop.apache.org/docs/stable/hadoop-distcp/DistCp.html) adatok másolása **a** egy HDInsight fürt storage (WASB) egy adatokká Lake tárolási Gen2 képes a fiókot. Ez a cikk nyújt útmutatást a ból a Distcp eszközzel.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 * **Azure-előfizetés**. Lásd: [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/pricing/free-trial/).
-* **Azure Data Lake Storage (előzetes verzió) szolgáltatás engedélyezve van az Azure Storage-fiók**. Hogyan hozhat létre ilyet, lásd: [TODO](quickstart-create-account.md)
+* **Azure Data Lake Storage (előzetes verzió) szolgáltatás engedélyezve van az Azure Storage-fiók**. Hogyan hozhat létre ilyet, lásd: [egy Azure Data Lake tárolási Gen2 előzetes storage-fiók létrehozása](quickstart-create-account.md)
 * **Az Azure HDInsight-fürt** hozzáférést egy Data Lake-tárfiókra. Lásd: [használata Azure Data Lake tárolási Gen2 Azure HDInsight-fürtök](use-hdi-cluster.md). Győződjön meg arról, hogy a fürt számára engedélyezi a távoli asztal.
 
 ## <a name="use-distcp-from-an-hdinsight-linux-cluster"></a>HDInsight Linux fürtök ból a Distcp használata
@@ -37,35 +37,35 @@ HDInsight-fürtök a ból a Distcp segédprogramot, amely segítségével külö
 
 2. Győződjön meg arról, hogy az Azure Storage Blobs (WASB) végezheti el. Futtassa az alábbi parancsot:
 
-        hdfs dfs –ls wasb://<container_name>@<storage_account_name>.blob.core.windows.net/
+        hdfs dfs –ls wasb://<CONTAINER_NAME>@<STORAGE_ACCOUNT_NAME>.blob.core.windows.net/
 
     A kimeneti biztosítania kell a tárolási blob tartalmának listáját.
 
 3. Ehhez hasonlóan ellenőrizze, hogy végezheti el a Data Lake-tárfiókra a fürtből. Futtassa az alábbi parancsot:
 
-        hdfs dfs -ls abfs://<filesystem_name>@<storage_account_name>.dfs.core.windows.net/
+        hdfs dfs -ls abfs://<FILE_SYSTEM_NAME>@<STORAGE_ACCOUNT_NAME>.dfs.core.windows.net/
 
     A kimeneti fájlokat vagy mappákat a Data Lake-tárfiókra listáját kell biztosítania.
 
 4. Ból a Distcp segítségével adatokat másolni WASB egy Data Lake-tárfiókra.
 
-        hadoop distcp wasb://<container_name>@<storage_account_name>.blob.core.windows.net/example/data/gutenberg abfs://<filesystem_name>@<storage_account_name>.dfs.core.windows.net/myfolder
+        hadoop distcp wasb://<CONTAINER_NAME>@<STORAGE_ACCOUNT_NAME>.blob.core.windows.net/example/data/gutenberg abfs://<FILE_SYSTEM_NAME>@<STORAGE_ACCOUNT_NAME>.dfs.core.windows.net/myfolder
 
     A parancs átmásolja a tartalmát a **/példa/data/gutenberg/** mappa a Blob storage **/myfolder** a a Data Lake-tárfiókra.
 
 5. Ehhez hasonlóan az ból a Distcp adatainak másolhatja Data Lake-tárfiókra a Blob Storage (WASB).
 
-        hadoop distcp abfs://<filesystem_name>@<storage_account_name>.dfs.core.windows.net/myfolder wasb://<container_name>@<storage_account_name>.blob.core.windows.net/example/data/gutenberg
+        hadoop distcp abfs://<FILE_SYSTEM_NAME>@<STORAGE_ACCOUNT_NAME>.dfs.core.windows.net/myfolder wasb://<CONTAINER_NAME>@<STORAGE_ACCOUNT_NAME>.blob.core.windows.net/example/data/gutenberg
 
     A parancs átmásolja a tartalmát **/myfolder** a Data Lake Store-fiók **/példa/data/gutenberg/** WASB mappájában.
 
 ## <a name="performance-considerations-while-using-distcp"></a>Teljesítménnyel kapcsolatos szempontok ból a DistCp használata során
 
-Mivel a legalacsonyabb granularitási ból a DistCp meg egyetlen fájl, a legfontosabb paraméter optimalizálása, szemben a Data Lake tárolási egyidejű példányok maximális száma. Egyidejű példányszám vezérli mappers számának beállítása (a perceké 'M ') paraméter a parancssorban. Ez a paraméter-adatok másolása használt mappers maximális számát. Alapértelmezett érték 20.
+Mivel a legalacsonyabb granularitási ból a DistCp meg egyetlen fájl, a legfontosabb paraméter optimalizálása, szemben a Data Lake tárolási egyidejű példányok maximális száma. Egyidejű példányszám vezérli mappers számának beállítása (**m**) paraméter a parancssorban. Ez a paraméter-adatok másolása használt mappers maximális számát. Alapértelmezett érték 20.
 
 **Példa**
 
-    hadoop distcp wasb://<container_name>@<storage_account_name>.blob.core.windows.net/example/data/gutenberg abfs://<filesystem_name>@<storage_account_name>.dfs.core.windows.net/myfolder -m 100
+    hadoop distcp wasb://<CONTAINER_NAME>@<STORAGE_ACCOUNT_NAME>.blob.core.windows.net/example/data/gutenberg abfs://<FILE_SYSTEM_NAME>@<STORAGE_ACCOUNT_NAME>.dfs.core.windows.net/myfolder -m 100
 
 ### <a name="how-do-i-determine-the-number-of-mappers-to-use"></a>Hogyan állapítható meg a használandó mappers száma?
 
@@ -81,11 +81,11 @@ Az alábbiakban olvashat némi útmutatást ezzel kapcsolatban.
 
 Tegyük fel, hogy a fürt rendelkezik egy 4 D14v2s csomópontok pedig 10 TB-nyi adat átvitele 10 különböző mappák kívánt. Mappánkénti változó mennyiségű adatot tartalmaz, és a fájlméret, minden egyes mappákban lévő eltérőek.
 
-* Összes YARN memória - az Ambari portal annak meghatározását, hogy-e a YARN memória 96 GB egy D14 csomópont. Igen négy csomópontos a fürt teljes YARN memória van: 
+* **Összes YARN memória**: az Ambari portal annak meghatározását, hogy-e a YARN memória 96 GB egy D14 csomópont. Igen négy csomópontos a fürt teljes YARN memória van: 
 
         YARN memory = 4 * 96GB = 384GB
 
-* Ennyi mappers - az Ambari portal annak meghatározását, hogy a YARN tároló mérete 3072 D14 fürtcsomópont esetén. Igen van mappers száma:
+* **Mappers száma**: az Ambari portal annak meghatározását, hogy a YARN tároló mérete 3072 D14 fürtcsomópont esetén. Igen van mappers száma:
 
         m = (4 nodes * 96GB) / 3072MB = 128 mappers
 

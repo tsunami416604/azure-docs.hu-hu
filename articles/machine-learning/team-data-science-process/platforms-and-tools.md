@@ -14,16 +14,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/04/2017
 ms.author: deguhath
-ms.openlocfilehash: 3d4d217fba55b8329937575042f0ac909aad09e9
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: f447378816f137517a3d542a27841d0cab351473
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34838476"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37112680"
 ---
 # <a name="platforms-and-tools-for-data-science-team-projects"></a>Platformok és az adatok tudományos csapatprojektek eszközök
 
-A Microsoft felhőalapú vagy a helyi platformok adatok és elemzési szolgáltatások és erőforrások teljes skáláját biztosít. Ahhoz, hogy a végrehajtási adatok tudományos projektben, hatékony és méretezhető telepíthető. Adatok tudományos projektek valósít meg olyan trackable csoportjai útmutatásért verzió vezérelt, és által biztosított együttműködési módot a [Team adatok tudományos folyamat](overview.md) (TDSP).  A személyzet szerepkörök és a kapcsolódó feladatok szabványosításával egy adatok tudományos csapat a folyamatban végrehajtott áttekintését lásd: [Team adatok tudományos folyamat szerepköröket és feladatokat](roles-tasks.md).
+A Microsoft biztosít felhő vagy a helyszíni platformok adatok és analitikák szolgáltatások és erőforrások teljes skáláját. Ahhoz, hogy a végrehajtási adatok tudományos projektben, hatékony és méretezhető telepíthető. Adatok tudományos projektek valósít meg olyan trackable csoportjai útmutatásért verzió vezérelt, és által biztosított együttműködési módot a [Team adatok tudományos folyamat](overview.md) (TDSP).  A személyzet szerepkörök és a kapcsolódó feladatok szabványosításával egy adatok tudományos csapat a folyamatban végrehajtott áttekintését lásd: [Team adatok tudományos folyamat szerepköröket és feladatokat](roles-tasks.md).
 
 Az elérhető adatok tudományos csoportok használatával a TDSP adatok és analitikák szolgáltatások a következők:
 

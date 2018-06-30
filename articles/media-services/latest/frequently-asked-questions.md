@@ -11,12 +11,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 05/29/2018
 ms.author: juliako
-ms.openlocfilehash: 7fe59763162ca53ea0256d5902aeece90525f214
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 098a34aba8e5ce23f64d4bb07e3b9622aa2adb8e
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34655197"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37110420"
 ---
 # <a name="azure-media-services-v3-preview-frequently-asked-questions"></a>Az Azure Media Services v3 (előzetes verzió) kapcsolatos gyakori kérdések
 
@@ -30,7 +30,7 @@ még nem. A támogatott SDK-k egyikét használhatja. Lásd: oktatóanyagok és 
 
 A Media Services team van kiküszöbölése RUs v3. Azonban a szükséges szolgáltatás feladata, nem teljes. Addig a felhasználóknak kell RUs beállításához használja az Azure-portálon vagy az AMS v2 API-k (a [media feldolgozási skálázás](../previous/media-services-scale-media-processing-overview.md). 
 
-S3 RUs szükség a **VideoAnalyzerPreset** és **AudioAnalyzerPreset** V3 készletek.
+Használata esetén **VideoAnalyzerPreset** és/vagy **AudioAnalyzerPreset**, a Media Services-fiók beállítása fenntartott egységek 10 S3 adathordozót.
 
 ## <a name="does-v3-asset-have-no-assetfile-concept"></a>Rendelkezik a V3 eszközök nem AssetFile koncepció?
 
@@ -56,7 +56,7 @@ További információkért lásd: [szűrési, rendezési, lapozás](assets-conce
 
 ## <a name="how-to-retrieve-an-entity-in-media-services-v3"></a>Hogyan lehet lekérni a Media Services v3 entitás?
 
-egyesített API felületen, amely felfedi beépített felügyeleti és a műveletek funkcióinak alapú v3 **Azure Resource Manager**. Összhangban **Azure Resource Manager**, mindig egyediek-erőforrás nevét. Ebből kifolyólag a erőforrásnevek összes egyedi azonosítót sztringet (például GUID) is használhatja. 
+egyesített API felületen, amely felfedi beépített felügyeleti és a műveletek funkcióinak alapú v3 **Azure Resource Manager**. Összhangban **Azure Resource Manager**, mindig egyediek-erőforrás nevét. Így bármilyen egyedi azonosító sztringet (pl. GUID-ok) használhat erőforrásnévként. 
 
 ## <a name="next-steps"></a>További lépések
 

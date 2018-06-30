@@ -15,16 +15,16 @@ ms.workload: big-compute
 ms.date: 08/02/2017
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 330350d6ac6838ea5b09763fe1f73fab1934710c
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 950e422b3076e5abd5db6dd0ac452fa1c2d500d0
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2018
-ms.locfileid: "30315048"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37129268"
 ---
 # <a name="create-queries-to-list-batch-resources-efficiently"></a>Létrehozhat olyan lekérdezéseket, a lista kötegelt erőforrásokhoz hatékonyan
 
-Itt megtudhatja, hogyan és számítási csomópont-lekérdezés feladatok, feladatok, a szolgáltatás által visszaadott adatokat csökkentésével az Azure Batch-alkalmazások teljesítményének növelése a [Batch .NET] [ api_net] könyvtárban.
+Itt megtudhatja, hogyan és számítási csomópont-lekérdezés feladatok, feladatok, a szolgáltatás által visszaadott adatokat csökkentésével az Azure Batch-alkalmazások teljesítményének növelése a [Batch .NET] [ api_net]könyvtár.
 
 Szinte minden kötegelt alkalmazásokat kell bizonyos típusú figyelési vagy más műveletet, amely a Batch szolgáltatás gyakran rendszeres időközönként hajthat végre. Például annak megállapításához, hogy vannak-e minden fennmaradó feladatokban aszinkron feladatot, ha előbb telepítik azokra adatokat a feladat minden tevékenység. Nem sikerült meghatározni az állapotát a csomópontok a készlet, kell beolvasni az adatokat a készlet minden egyes csomópontjára. Ez a cikk azt ismerteti, hogyan a leghatékonyabb módon az ilyen lekérdezések végrehajtásához.
 
@@ -68,7 +68,7 @@ Az ebben a példaforgatókönyvben a feladat több ezer esetén a második leké
 > 
 
 ## <a name="filter-select-and-expand"></a>Szűrés, válassza ki, és bontsa ki a
-A [Batch .NET] [ api_net] és [Batch REST] [ api_rest] API-k lehetővé teszi mindkét visszaadott egy listán szereplő elemek száma, valamint az egyes visszaküldött adatmennyiség csökkentése érdekében. Megadásával ehhez **szűrő**, **válasszon**, és **bontsa ki a karakterláncok** lista lekérdezések végrehajtása során.
+A [Batch .NET] [ api_net] és [Batch REST] [ api_rest] API-k lehetővé teszi a listáját, és a visszaadott elemek mindkét számának csökkentése érdekében, valamint az egyes visszaadott információ mennyisége. Megadásával ehhez **szűrő**, **válasszon**, és **bontsa ki a karakterláncok** lista lekérdezések végrehajtása során.
 
 ### <a name="filter"></a>Szűrés
 A szűrési karakterláncot egy kifejezés, amely csökkenti az eredmények számát. Például egy feladat csak a futó feladatok listában, és csak a feladatok futtatásához készen áll a számítási csomópontok sorolja fel.
@@ -92,7 +92,7 @@ A kibontott karakterlánc csökkenti a szükséges bizonyos adatok beszerzése A
 * Ez a példa bontsa ki a karakterláncot határozza meg, hogy a statisztikai adatok vissza kell-e az a lista minden eleme: `stats`.
 
 > [!NOTE]
-> A három lekérdezés-karakterlánc típusú térített (szűrés, válassza ki, és bontsa ki a), meg kell győződnie arról, hogy a tulajdonságnevek és esetben egyezik, mint a REST API elem. Például, ha a .NET használata [CloudTask](https://msdn.microsoft.com/library/azure/microsoft.azure.batch.cloudtask) osztály, meg kell adnia **állapot** helyett **állapot**, annak ellenére, hogy a .NET tulajdonság [CloudTask.State](https://msdn.microsoft.com/library/azure/microsoft.azure.batch.cloudtask.state). Tekintse meg az alábbi táblázatokban tulajdonságleképezései a .NET és REST API-k között.
+> A három lekérdezés-karakterlánc típusú térített (szűrés, válassza ki, és bontsa ki a), meg kell győződnie arról, hogy a tulajdonságnevek és esetben egyezik, mint a REST API elem. Például, ha a .NET használata [CloudTask](https://msdn.microsoft.com/library/azure/microsoft.azure.batch.cloudtask) osztály, meg kell adnia **állapot** helyett **állapot**, annak ellenére, hogy a .NET tulajdonság [ CloudTask.State](https://msdn.microsoft.com/library/azure/microsoft.azure.batch.cloudtask.state). Tekintse meg az alábbi táblázatokban tulajdonságleképezései a .NET és REST API-k között.
 > 
 > 
 
@@ -248,15 +248,12 @@ internal static ODATADetailLevel OnlyChangedAfter(DateTime time)
 ### <a name="parallel-node-tasks"></a>Párhuzamos csomópont feladatok
 [Azure Batch számítási erőforrás-használat csomópont egyidejű feladatok maximális](batch-parallel-node-tasks.md) egy másik cikkben kapcsolódó Batch-alkalmazások teljesítményének. Bizonyos típusú munkaterheléseket is kihasználhatja a párhuzamos tevékenységek feldolgozás alatt álló nagyobb – de--kevesebb számítási csomópontot. Tekintse meg a [példa](batch-parallel-node-tasks.md#example-scenario) a cikkben talál részletes információt ilyen esetben.
 
-### <a name="batch-forum"></a>Batch fórum
-A [Azure Batch fórum] [ forum] az MSDN webhelyen van remek kötegelt tárgyalja, és kérdése van a szolgáltatás. Központi a keresztül a hasznos "kapcsolódó" bejegyzések, és a kötegelt megoldások létrehozása során felmerülő kérdéseit.
 
 [api_net]: http://msdn.microsoft.com/library/azure/mt348682.aspx
 [api_net_listjobs]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.joboperations.listjobs.aspx
 [api_rest]: http://msdn.microsoft.com/library/azure/dn820158.aspx
 [batch_metrics]: https://github.com/Azure/azure-batch-samples/tree/master/CSharp/BatchMetrics
 [efficient_query_sample]: https://github.com/Azure/azure-batch-samples/tree/master/CSharp/ArticleProjects/EfficientListQueries
-[forum]: https://social.msdn.microsoft.com/forums/azure/en-US/home?forum=azurebatch
 [github_samples]: https://github.com/Azure/azure-batch-samples
 [odata]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.odatadetaillevel.aspx
 [odata_ctor]: https://msdn.microsoft.com/library/azure/dn866178.aspx

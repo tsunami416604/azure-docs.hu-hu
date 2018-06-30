@@ -14,12 +14,12 @@ ms.workload: infrastructure
 ms.date: 06/27/2018
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 178102990462235b9b39f2ed1ad0e43395118daf
-ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
+ms.openlocfilehash: ecef13f0ce97c7cec5a6583479911a08a99b0877
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37063934"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37110728"
 ---
 # <a name="how-to-install-and-configure-sap-hana-large-instances-on-azure"></a>Hogyan kell telepíteni, és az SAP HANA (nagy példányok) konfigurálása az Azure-on
 
@@ -301,7 +301,7 @@ Ez a szakasz bemutatja, hogyan SAP HANA telepítsen egy HANA nagy példány egys
 
 - A megadott Microsoft SAP HANA nagy példányt telepítése az összes adatot.
 - Az SAP HANA nagy példány a Microsofttól kapott.
-- Létrehozott egy Azure virtuális hálózatot, amely a helyi hálózathoz csatlakozik.
+- Létrehozott egy Azure virtuális hálózatot, amely a helyszíni hálózathoz csatlakozik.
 - A ExpressRotue áramkör, kapcsolat HANA nagy az azonos Azure VNet-példányokat.
 - Telepítette az Azure virtuális gép HANA nagy példányok jump dobozban használják.
 - Végzett meg arról, hogy lehet csatlakoztatni az Ugrás mezőbe a HANA nagy példány egységhez, és ez fordítva is igaz.

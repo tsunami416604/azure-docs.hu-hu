@@ -3,7 +3,7 @@ title: Adatforrások csatlakoztatása a Configuration Manager szolgáltatáshoz 
 description: Ez a cikk bemutatja a csatlakoztatása a Configuration Manager szolgáltatáshoz, és indítsa el az adatok elemzése lépéseket.
 services: log-analytics
 documentationcenter: ''
-author: MGoedtel
+author: mgoedtel
 manager: carmonm
 editor: ''
 ms.assetid: f2298bd7-18d7-4371-b24a-7f9f15f06d66
@@ -11,15 +11,16 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/22/2018
 ms.author: magoedte
-ms.openlocfilehash: 5ff0687fe99f0853e29e5f0d814a8555c367027c
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.component: na
+ms.openlocfilehash: 6bb59e4b63933500bc8571dca2422eec6c3456ee
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2018
-ms.locfileid: "30283996"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37129757"
 ---
 # <a name="connect-configuration-manager-to-log-analytics"></a>Adatforrások csatlakoztatása a Configuration Manager szolgáltatáshoz
 A System Center Configuration Manager környezet az Azure Naplóelemzés szolgáltatáshoz csatlakozhat szinkronizálási eszköz gyűjtemény adatait, és ezeket a gyűjteményeket, Naplóelemzés és az Azure Automation hivatkozik.  
@@ -48,7 +49,7 @@ A következő eljárásban számára biztosítson a *közreműködő* a Naplóel
 > Log Analytics a Configuration Manager engedélyeket kell megadnia. Ellenkező esetben hibaüzenetet kap, ha a konfigurációs varázsló a Configuration Manager alkalmazásban.
 >
 
-1. Az Azure portálon kattintson **minden szolgáltatás** bal felső sarokban található. Az erőforrások listájába írja be a **Log Analytics** kifejezést. Ahogy elkezd gépelni, a lista a beírtak alapján szűri a lehetőségeket. Válassza a **Log Analytics** elemet.<br><br> ![Azure Portal](media/log-analytics-quick-collect-azurevm/azure-portal-01.png)<br><br>  
+1. Az Azure Portal bal felső sarkában kattintson a **Minden szolgáltatás** lehetőségre. Az erőforrások listájába írja be a **Log Analytics** kifejezést. Ahogy elkezd gépelni, a lista a beírtak alapján szűri a lehetőségeket. Válassza a **Log Analytics** elemet.<br><br> ![Azure Portal](media/log-analytics-quick-collect-azurevm/azure-portal-01.png)<br><br>  
 2. A Naplóelemzési munkaterület, jelölje ki a módosítandó munkaterület.
 3. A bal oldali ablaktáblán válassza ki a **hozzáférés-vezérlés (IAM)**.
 4. A hozzáférés-vezérlést oldalon kattintson **Hozzáadás** és a **engedélyek hozzáadása** ablaktáblán jelenik meg.
@@ -94,7 +95,7 @@ Az OMS-kapcsolat hozzáadása a Configuration Manager és az ügynök telepíté
 
 Miután végrehajtotta a kezdeti konfigurációs eszközgyűjtemények importálása a hierarchiában, a gyűjtemény tagsági információk nélkül 3 óránként tagságát naprakészen tartása. Ha szeretné, tiltsa le ezt bármikor.
 
-1. Az Azure portálon kattintson **minden szolgáltatás** bal felső sarokban található. Az erőforrások listájába írja be a **Log Analytics** kifejezést. Ahogy elkezd gépelni, a lista a beírtak alapján szűri a lehetőségeket. Válassza a **Log Analytics** elemet.
+1. Az Azure Portal bal felső sarkában kattintson a **Minden szolgáltatás** lehetőségre. Az erőforrások listájába írja be a **Log Analytics** kifejezést. Ahogy elkezd gépelni, a lista a beírtak alapján szűri a lehetőségeket. Válassza a **Log Analytics** elemet.
 2. A Naplóelemzési munkaterület, jelölje ki a munkaterületen, a Configuration Manager regisztrálva van.  
 3. Válassza ki a **Speciális beállítások** elemet.<br><br> ![A Log Analytics speciális beállításai](media/log-analytics-quick-collect-azurevm/log-analytics-advanced-settings-01.png)<br><br>  
 4. Válassza ki **számítógépcsoportok** majd **SCCM**.  

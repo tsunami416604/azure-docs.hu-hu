@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 04/10/2018
 ms.author: xiwu
 ms.reviewer: douglasl
-ms.openlocfilehash: df7ca91d403374e8d320822f5fa384a866fac0ae
-ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
+ms.openlocfilehash: 7cb7ce0ea81cf99c2ee14a6f209864894563d237
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37025911"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37111779"
 ---
 # <a name="set-up-sql-data-sync"></a>SQL Adatszinkronizálás beállítása
 Ebben az oktatóanyagban elsajátíthatja, hogyan Azure SQL Data szinkronizálás beállítása az Azure SQL Database és az SQL Server-példányokat tartalmazó hibrid szinkronizálási csoportok létrehozásával. Az új szinkronizálási csoport teljes van konfigurálva, és a beállított ütemezés szerint szinkronizálja.
@@ -274,7 +274,7 @@ Ha azt szeretné, a helyi ügynök jelenleg meg egy másik számítógépen futn
 
 3. Az új ügynök kulcs küldhetnek az új ügynök felhasználói felület használatával.
 
-4. Várjon, amíg az ügyfélügynök letölti a helyi adatbázis, amely korábban regisztrálva volt listáját.
+4. Várjon, amíg az ügyfélügynök letölti a helyszíni adatbázisokat, amelyek korábban regisztrálva volt listáját.
 
 5. Adja meg az adatbázis hitelesítő adatai az összes olyan adatbázis, amely megjeleníti az nem érhető el. Ezeket az adatbázisokat az új számítógépre, amelyen az ügynök telepítve van a elérhetőnek kell lennie.
 

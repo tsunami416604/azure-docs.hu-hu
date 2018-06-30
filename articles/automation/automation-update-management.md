@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 06/28/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 3de93c06285f36353d91a66db975c0a579c1379c
-ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
+ms.openlocfilehash: e1bcae85c7078d817e30ec578ac12b2be13342c7
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 06/29/2018
-ms.locfileid: "37097444"
+ms.locfileid: "37129023"
 ---
 # <a name="update-management-solution-in-azure"></a>Frissítse a felügyeleti megoldás az Azure-ban
 
@@ -214,7 +214,7 @@ Egy új központi telepítés létrehozásához válassza **ütemezés központi
 |Operációs rendszer| Válassza ki **Linux** vagy **Windows**.|
 |Gépek frissítése |A mentett kereséseket, vagy válasszon **gép** elemet a legördülő listából válassza ki, majd válassza ki az egyes gépek. |
 |Frissítési besorolások|Válassza ki a szükséges összes frissítési besorolásokat. CentOS ezt nem támogatja a kezdő verzióról.|
-|Frissítések kizárása|Adja meg a frissítések kizárása. A Windows, adja meg a Tudásbázis következő cikkét nélkül a **KB** előtag. A Linux adja meg a csomag nevét vagy helyettesítő karaktert.  |
+|Kihagyandó frissítések|Adja meg a frissítések kizárása. A Windows, adja meg a Tudásbázis következő cikkét nélkül a **KB** előtag. A Linux adja meg a csomag nevét vagy helyettesítő karaktert.  |
 |Ütemezési beállítások|Válassza ki a kezdési idejét, és válassza **egyszer** vagy **ismétlődő** az ismétlődés.|| Karbantartási időszak |Állítsa be a frissítéseket percek számát. Az érték nem lehet kisebb, mint 30 perc és 6 óránál. |
 
 ## <a name="update-classifications"></a>Frissítési besorolások
@@ -253,13 +253,15 @@ Jelenleg nincs támogatott metódus módszer natív besorolás-adatok elérhető
 
 A következő címekre kifejezetten a kezeléséhez szükségesek. Ezeknél a címeknél kommunikációt a 443-as porton keresztül történik.
 
-|Az Azure nyilvános  |Azure Government  |
+|Azure Public  |Azure Government  |
 |---------|---------|
 |*.ods.opinsights.azure.com     |*. ods.opinsights.azure.us         |
 |*.oms.opinsights.azure.com     | *. oms.opinsights.azure.us        |
 |*.blob.core.windows.net|*. blob.core.usgovcloudapi.net|
 
 A hibrid forgatókönyv-feldolgozó által igényelt portokat kapcsolatos további információkért lásd: [hibrid feldolgozói szerepkör portok](automation-hybrid-runbook-worker.md#hybrid-worker-role).
+
+Javasoljuk, hogy a felsorolt kivételeket definiálásakor címek használatához. Az IP-címeket is letöltheti a [Microsoft Azure Datacenter IP-címtartományok](https://www.microsoft.com/download/details.aspx?id=41653). Ez a fájl hetente frissítve van, és az aktuálisan telepített tartománya és az IP-címtartományok jövőbeli módosításait tartalmazza.
 
 ## <a name="search-logs"></a>Keresési naplókat
 
@@ -268,7 +270,7 @@ Mellett a részletek a az Azure-portál által biztosított a naplók elleni ker
 Is megismerheti a lekérdezések és használhatja őket a különböző ügyfelek és több ellátogatva: [Naplóelemzési címsorának API dokumentációjában](
 https://dev.loganalytics.io/).
 
-### <a name="sample-queries"></a>A lekérdezés
+### <a name="sample-queries"></a>Mintalekérdezések
 
 A következő szakaszokban napló mintalekérdezések a frissítés azt jelzi, hogy ez a megoldás által gyűjtött:
 

@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 6/17/2018
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 272d98613e13c1bb76c75befd6bd5e0115c32610
-ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
-ms.translationtype: HT
+ms.openlocfilehash: ff9f107b8cd10cdab71ba13a1925403d2d144984
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 06/29/2018
-ms.locfileid: "37097240"
+ms.locfileid: "37128496"
 ---
 # <a name="integrate-azure-active-directory-with-aks---preview"></a>Az Azure Active Directory integrálása AKS – előzetes
 
@@ -59,19 +59,21 @@ Az első Azure AD-alkalmazás segítségével a felhasználók az Azure AD-csopo
 
 4. Térjen vissza az Azure AD-alkalmazást, jelölje be **beállítások** > **szükséges engedélyek** > **Hozzáadás**  >   **Válassza ki az API-k** > **Microsoft Graph** > **válasszon**.
 
-  A **ALKALMAZÁSENGEDÉLYEK** mellett jelölje **címtáradatok olvasása**.
+  ![Válassza ki a graph API-val](media/aad-integration/graph-api.png)
+
+5. A **ALKALMAZÁSENGEDÉLYEK** mellett jelölje **címtáradatok olvasása**.
 
   ![Alkalmazás graph engedélyek beállítása](media/aad-integration/read-directory.png)
 
-5. A **DELEGÁLT engedélyek**, mellett jelölje **jelentkezzen be a felhasználói profil olvasása és** és **címtáradatok olvasása**. Mentse a frissítéseket, egyszer történik.
+6. A **DELEGÁLT engedélyek**, mellett jelölje **jelentkezzen be a felhasználói profil olvasása és** és **címtáradatok olvasása**. Mentse a frissítéseket, egyszer történik.
 
   ![Alkalmazás graph engedélyek beállítása](media/aad-integration/delegated-permissions.png)
 
-6. Válassza ki **végzett** és **engedélyt adjon** a lépés befejezéséhez. Ez a lépés sikertelen lesz, ha a jelenlegi fiók nincs a bérlői rendszergazda segítségét.
+7. Válassza ki **végzett**, válassza a *Microsoft Graph* API-k, majd válassza ki a listáról **engedélyt adjon**. Ez a lépés sikertelen lesz, ha a jelenlegi fiók nincs a bérlői rendszergazda segítségét.
 
   ![Alkalmazás graph engedélyek beállítása](media/aad-integration/grant-permissions.png)
 
-7. Vissza az alkalmazásba, és tekintse meg a **Alkalmazásazonosító**. Az Azure AD-kompatibilis AKS fürt telepítésekor ezt az értéket a neve a `Server application ID`.
+8. Vissza az alkalmazásba, és tekintse meg a **Alkalmazásazonosító**. Az Azure AD-kompatibilis AKS fürt telepítésekor ezt az értéket a neve a `Server application ID`.
 
   ![Alkalmazásazonosító beszerzése](media/aad-integration/application-id.png)
 
@@ -195,6 +197,12 @@ aks-nodepool1-42032720-2   Ready     agent     1h        v1.9.6
 ```
 
 Művelet befejeződése után a rendszer gyorsítótárazza a hitelesítési jogkivonat. Csak reprompted bejelentkezni, amikor a jogkivonat lejárt vagy a Kubernetes konfigurációs fájl újból létrehozza.
+
+Ha engedélyezési hibaüzenet azért jelent meg, miután sikeresen jelentkezik be, ellenőrizze, hogy a felhasználó bejelentkezik, a vendég nem az az Azure AD (Ez a helyzet gyakran egy másik címtárhoz összevont bejelentkezés használata).
+```console
+error: You must be logged in to the server (Unauthorized)
+```
+
 
 ## <a name="next-steps"></a>További lépések
 

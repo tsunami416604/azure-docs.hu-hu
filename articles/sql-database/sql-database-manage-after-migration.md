@@ -12,12 +12,12 @@ ms.author: josack
 ms.suite: sql
 ms.prod_service: sql-database
 ms.component: migration
-ms.openlocfilehash: d97e0bf94b911936cacf04f7f26c172b9975c56f
-ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
+ms.openlocfilehash: ab6a66821905901515258842176ce24e485a54e3
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37061644"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37110612"
 ---
 # <a name="new-dba-in-the-cloud--managing-your-database-in-azure-sql-database"></a>A felhőben – az Azure SQL Database adatbázis új DBA
 
@@ -254,7 +254,7 @@ SQL-adatbázis bizonyos intelligens módszereket, amelyek lehetővé teszik, hog
 ### <a name="how-do-i-synchronize-data-between-sql-database-and-sql-server"></a>Hogyan szinkronizálni a SQL Database és SQL Server közötti?
 Ennek eléréséhez többféleképpen közül választhat: 
 - **[Adatszinkronizálás](sql-database-sync-data.md)**  – Ez a szolgáltatás segít a két irányban több helyszíni SQL Server-adatbázisok és SQL-adatbázis közötti adatszinkronizáláshoz. A helyszíni SQL Server-adatbázisok szinkronizálni, szüksége telepítése és konfigurálása a sync-ügynök a helyi számítógépen, és nyissa meg a kimenő TCP 1433-as port.
-- **[Tranzakciós replikáció](https://azure.microsoft.com/blog/transactional-replication-to-azure-sql-database-is-now-generally-available/)**  – tranzakciós replikáció szinkronizálhatja a helyszíni adatait az Azure SQL Adatbázishoz a helyi a közzétevő és az Azure SQL Database az előfizető alatt. Egyelőre csak a telepítés esetén támogatott. Hogyan telepíthetők át az adatokat a helyszíni Azure SQL minimális állásidővel további információkért lásd: [használata tranzakciós replikáció](sql-database-cloud-migrate.md#method-2-use-transactional-replication)
+- **[Tranzakciós replikáció](https://azure.microsoft.com/blog/transactional-replication-to-azure-sql-database-is-now-generally-available/)**  – tranzakciós replikáció is a szinkronizálás a helyszíni az Azure SQL Adatbázishoz a helyszíni a közzétevő és az Azure SQL Database az előfizető alatt. Egyelőre csak a telepítés esetén támogatott. Az adatok áttelepítése a helyszíni Azure SQL minimális állásidővel további információkért lásd: [használata tranzakciós replikáció](sql-database-cloud-migrate.md#method-2-use-transactional-replication)
 
 ## <a name="next-steps"></a>További lépések
 További tudnivalók [SQL-adatbázis](sql-database-technical-overview.md).

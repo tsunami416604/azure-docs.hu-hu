@@ -10,12 +10,12 @@ ms.technology: Speech
 ms.topic: article
 ms.date: 06/07/2018
 ms.author: wolfma
-ms.openlocfilehash: 38f7f038a803546adb83245519efc5de0c0d1599
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: 1c9c1e2d54ccb200ef009be3566f6da9ced01175
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37045010"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37111167"
 ---
 # <a name="sample-for-intent-recognition"></a>A leképezési felismerés minta
 
@@ -23,7 +23,7 @@ ms.locfileid: "37045010"
 > Ez a minta és mások letöltése útmutatásért lásd: [beszéd SDK-példák](samples.md).
 
 > [!NOTE]
-> Először szerezze be egy előfizetés kulcs. Más a kognitív beszéd SDK által támogatott szolgáltatásokkal, ellentétben a leképezés felismerés szolgáltatások adott előfizetés kulcs szükséges. [Itt](https://www.luis.ai) található a leképezési felismerés technológiával kapcsolatos további információk, valamint egy előfizetés kulcs beszerzésére vonatkozó információkat. Cserélje le a saját előfizetés kulcs, a szolgáltatás a területet, és a megfelelő helyen, a mintában a leképezési modell AppId.
+> Először szerezze be egy előfizetés kulcs. Más a kognitív beszéd SDK által támogatott szolgáltatásokkal, ellentétben a leképezés felismerés szolgáltatások adott előfizetés kulcs szükséges. [Itt](https://www.luis.ai) található a leképezési felismerés technológiával kapcsolatos további információk, valamint egy előfizetés kulcs beszerzésére vonatkozó információkat. Cserélje le a saját előfizetés kulcs a [előfizetése régiójában](regions.md), és az AppId a leképezési modell a mintában a megfelelő helyen.
 
 > [!NOTE]
 > Az összes, az alábbi minta a következő legfelső szintű nyilatkozatokat helyen kell lennie:

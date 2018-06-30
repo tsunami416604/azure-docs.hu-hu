@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/23/2018
+ms.date: 06/28/2018
 ms.author: alkohli
-ms.openlocfilehash: 8d033cc09de8e115324067d7bbdf052751730d63
-ms.sourcegitcommit: 28178ca0364e498318e2630f51ba6158e4a09a89
+ms.openlocfilehash: e33a3f843017ec24f3a79701fac9a62e15b4f9ba
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2018
-ms.locfileid: "28030953"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37109188"
 ---
 # <a name="use-the-new-authentication-for-your-storsimple"></a>A StorSimple az új hitelesítés használatára
 
@@ -59,9 +59,9 @@ A StorSimple virtuális tömb használata esetén a következő táblázat segí
 
 | Ha az eszköz fut.  | A következő művelet elvégzése                                    |
 |----------------------------|--------------------------------------------------------------|
-| Frissítés 1.0-s vagy újabb és offline állapotban. <br> Megjelenik egy figyelmeztetés, győződjön meg arról, hogy az URL-címe nem szerepel az engedélyezési listán.| A tűzfalszabályok a hitelesítési URL-cím módosításához. Lásd: [hitelesítési URL-címek](#url-changes-for-aad-authentication). |
+| Frissítés 1.0-s vagy újabb és offline állapotban. <br> Megjelenik egy figyelmeztetés, győződjön meg arról, hogy az URL-címe nem szerepel az engedélyezési listán.| 1. A tűzfalszabályok a hitelesítési URL-cím módosításához. Lásd: [hitelesítési URL-címek](#url-changes-for-aad-authentication). <br> 2. [Az AAD-regisztrációs kulcs beolvasása a szolgáltatástól](#aad-based-registration-keys). <br> 3. 1-5 lépések végrehajtásával [csatlakozás a Windows PowerShell felületen, a virtuális tömb](storsimple-virtual-array-deploy2-provision-hyperv.md#step-2-provision-a-virtual-array-in-hypervisor).<br> 4. Használjon `Invoke-HcsReRegister` parancsmag futtatásával regisztrálja az eszközt a Windows PowerShell segítségével. Adja meg az előző lépésben kapott kulcsot.|
 | 1.0-s vagy újabb frissítés és az eszköz online állapotban.| Nincs szükség semmilyen műveletre.                                       |
-| Frissítés 0,6 vagy korábbi és az eszköz offline állapotban. | [Töltse le az 1.0-s frissítési katalógus kiszolgálón keresztül](storsimple-virtual-array-install-update-1.md#download-the-update-or-the-hotfix).<br>[Frissítés 1.0 alkalmazza a helyi webes felhasználói felületen](storsimple-virtual-array-install-update-1.md#install-the-update-or-the-hotfix). <br> [Az AAD-regisztrációs kulcs beolvasása a szolgáltatástól](#aad-based-registration-keys). <br> 1-5 lépések végrehajtásával [csatlakozás a Windows PowerShell felületen, a virtuális tömb](storsimple-virtual-array-deploy2-provision-hyperv.md#step-2-provision-a-virtual-array-in-hypervisor).<br> Használjon `Invoke-HcsReRegister` parancsmag futtatásával regisztrálja az eszközt a Windows PowerShell segítségével. Adja meg az előző lépésben kapott kulcsot.|
+| Frissítés 0,6 vagy korábbi és az eszköz offline állapotban. | 1. [Töltse le az 1.0-s frissítési katalógus kiszolgálón keresztül](storsimple-virtual-array-install-update-1.md#download-the-update-or-the-hotfix).<br>2. [Frissítés 1.0 alkalmazza a helyi webes felhasználói felületen](storsimple-virtual-array-install-update-1.md#install-the-update-or-the-hotfix).<br>3. [Az AAD-regisztrációs kulcs beolvasása a szolgáltatástól](#aad-based-registration-keys). <br>4. 1-5 lépések végrehajtásával [csatlakozás a Windows PowerShell felületen, a virtuális tömb](storsimple-virtual-array-deploy2-provision-hyperv.md#step-2-provision-a-virtual-array-in-hypervisor).<br>5. Használjon `Invoke-HcsReRegister` parancsmag futtatásával regisztrálja az eszközt a Windows PowerShell segítségével. Adja meg az előző lépésben kapott kulcsot.|
 | Frissítés 0,6 vagy korábbi és az eszköz online állapotban | A tűzfalszabályok a hitelesítési URL-cím módosításához.<br> Frissítés 1.0 telepítse az Azure portálon keresztül. |
 
 ## <a name="aad-based-registration-keys"></a>Az AAD-alapú regisztrációs kulcsokat

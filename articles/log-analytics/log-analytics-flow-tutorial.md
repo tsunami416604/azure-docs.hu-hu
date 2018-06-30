@@ -3,21 +3,22 @@ title: A Microsoft Flow Azure Log Analytics-folyamatok automatizálása
 description: Ismerje meg, hogyan használhatja a Microsoft Flow gyorsan automatizálása ismételhető az Azure Log Analytics-összekötő használatával.
 services: log-analytics
 documentationcenter: ''
-author: CFreemanwa
+author: mgoedtel
 manager: carmonm
 ms.service: log-analytics
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
+ms.workload: infrastructure-services
+ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 09/29/2017
 ms.author: bwren
-ms.openlocfilehash: 9884b97aad8f022e6bc20b2a630ccdd07ebc64db
-ms.sourcegitcommit: 5735491874429ba19607f5f81cd4823e4d8c8206
+ms.component: na
+ms.openlocfilehash: 21cf7cf3d12902b02fcbf650a1623e78004d28b4
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2017
-ms.locfileid: "23889507"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37131700"
 ---
 # <a name="automate-log-analytics-processes-with-the-connector-for-microsoft-flow"></a>Összekötő Log Analytics-folyamatok automatizálása a Microsoft Flow
 [Microsoft Flow](https://ms.flow.microsoft.com) lehetővé teszi automatizált munkafolyamatok műveletek több száz segítségével különböző szolgáltatások létrehozásához. Egy művelet kimenetében használható bemenetként a másikra, hogy lehetővé teszi különböző szolgáltatások közötti integrációt.  Az Azure Log Analytics-összekötő Microsoft Flow engedélyezi, hogy a napló megkeresi a Naplóelemzési által beolvasott adatokat tartalmazó munkafolyamatok építhetők fel.
@@ -76,7 +77,7 @@ Ebben a cikkben az oktatóanyag bemutatja, hogyan hozzon létre egy folyamatot, 
 3. A folyamat befejezése után ellenőrizze a megadott címzett e-mail.  Kell egy a következőhöz hasonló szervezethez mail érkezett:<br><br>![Példa e-mailre](media/log-analytics-flow-tutorial/flow08.png)
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - További információ [Log Analytics-e jelentkezni a keresések](log-analytics-log-search-new.md).
 - További információ [Microsoft Flow](https://ms.flow.microsoft.com).

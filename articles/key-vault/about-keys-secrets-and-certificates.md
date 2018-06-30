@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/09/2018
 ms.author: alleonar
-ms.openlocfilehash: a6bd63598781a60c2dd717c07b96fcb498a67d30
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: dd1bb6117c0360e67783434c980c56b5f6ae7f9f
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34636606"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37110228"
 ---
 # <a name="about-keys-secrets-and-certificates"></a>Kulcsok, a titkos kulcsok és a tanúsítványok
 Az Azure Key Vault lehetővé teszi, hogy a felhasználók tárolhatják és a Microsoft Azure-környezeten belül titkosítási kulcsok használata. Key Vault több ellenőrzőkulcs-típusok és algoritmusokat támogatja, és lehetővé teszi, hogy értékes kulcsok használata hardveres biztonsági modulok (HSM). Emellett a Key Vault segítségével a felhasználók biztonságosan tárolni a titkos kulcsok. A titkokat korlátozott mérete octet objektumok nem adott szemantikájú. Key Vault is támogatja a tanúsítványok, amelyek kulcsok és titkos épül, és adja hozzá az automatikus megújítási szolgáltatást.
@@ -172,7 +172,7 @@ Az Azure Key Vault támogatja a következő műveletek olyan objektumokon, kulcs
 -   **Biztonsági mentés**: a kulcs, védett formátumban exportálja.  
 -   **Visszaállítás**: egy biztonsági másolatból kulcs importálására.  
 
-További információkért lásd: [műveletek kulcs](/rest/api/keyvault/key-operations.md)  
+További információkért lásd: [műveletek kulcs](/rest/api/keyvault/key-operations).  
 
 A kulcs létrehozása az Azure Key Vault, a következő titkosítási műveleteket hajthatja végre a kulcs használatával:  
 
@@ -281,7 +281,7 @@ A következő engedélyeket is használhatók, egy egyszerű neve alapján, egy 
 -   *Törlés*: a titkos kulcs törlése  
 -   *minden*: minden engedély  
 
-A titkos kulcsok munkáról bővebben lásd: [titkos műveletek](/rest/api/keyvault/secret-operations.md).  
+A titkos kulcsok munkáról bővebben lásd: [titkos műveletek](/rest/api/keyvault/secret-operations).  
 
 ###  <a name="BKMK_SecretTags"></a> Titkos címkék  
 Az alkalmazás-specifikus metaadatokat címkék formájában is megadhat. Az Azure Key Vault támogatja legfeljebb 15 címkéket, amelyek mindegyike egy 256 karakter hosszúságú nevet és 256 karakter hosszúságú értéket is rendelkezhetnek.  
@@ -376,7 +376,7 @@ A következő táblázat a Key Vault tanúsítvány létrehozása részeként l�
 |**X509 kulcshasználat jelzők**|**Key Vault kulcs ops**|**Alapértelmezett viselkedés**|
 |----------|--------|--------|
 |DataEncipherment|titkosít, visszafejtés| – |
-|DecipherOnly|Visszafejtés| –  |
+|DecipherOnly|visszafejtés| –  |
 |DigitalSignature|Ellenőrizze, aláírása| Key Vault alapértelmezett egy tanúsítvány létrehozáskor használati megadása nélkül | 
 |EncipherOnly|encrypt| – |
 |KeyCertSign|Ellenőrizze, aláírása|–|
@@ -443,9 +443,9 @@ Ha egy tanúsítvány-házirend beállítása automatikus megújítási, majd é
 
 ## <a name="additional-information-for-certificates"></a>További információ a tanúsítványok
 
-- [Tanúsítványok és házirendek](/rest/api/keyvault/certificates-and-policies.md)
-- [Tanúsítványkiállítók](/rest/api/keyvault/certificate-issuers.md)
-- [Tanúsítvány kapcsolattartók](/rest/api/keyvault/certificate-contacts.md)
+- [Tanúsítványok és házirendek](/rest/api/keyvault/certificates-and-policies)
+- [Tanúsítványkiállítók](/rest/api/keyvault/certificate-issuers)
+- [Tanúsítvány kapcsolattartók](/rest/api/keyvault/certificate-contacts)
 
 ## <a name="see-also"></a>Lásd még:
 

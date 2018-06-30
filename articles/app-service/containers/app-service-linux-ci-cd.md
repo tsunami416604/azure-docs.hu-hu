@@ -4,8 +4,8 @@ description: Hogyan állítható be az tárolókat Web App alkalmazásban egy Do
 keywords: az Azure app service, linux, docker, acr, oss
 services: app-service
 documentationcenter: ''
-author: ahmedelnably
-manager: cfowler
+author: msangapu
+manager: jeconnoc
 editor: ''
 ms.assetid: a47fb43a-bbbd-4751-bdc1-cd382eae49f8
 ms.service: app-service
@@ -13,14 +13,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/10/2017
-ms.author: aelnably;msangapu
-ms.openlocfilehash: ac35dbd041de50ab8aae1a0fb4c00fe3917a7297
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.date: 06/29/2018
+ms.author: msangapu
+ms.openlocfilehash: 0f2d4626308eed376b71f1b3df2f9e43f1b2a4f7
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
-ms.locfileid: "30168326"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37130965"
 ---
 # <a name="continuous-deployment-with-web-app-for-containers"></a>A webalkalmazás az tárolókat folyamatos üzembe helyezés
 
@@ -54,7 +54,8 @@ A webhook URL-cím beszerzése a [Azure CLI](https://docs.microsoft.com/cli/azur
 az webapp deployment container show-cd-url --name sname1 --resource-group rgname
 ```
 
-A webhook URL-cím van szüksége a következő végpontot: `https://<publishingusername>:<publishingpwd>@<sitename>.scm.azurewebsites.net/docker/hook`.
+Jegyezze fel a webhook URL-CÍMÉT. Szüksége lehet rájuk a következő szakaszban.
+`https://<publishingusername>:<publishingpwd>@<sitename>.scm.azurewebsites.net/docker/hook`.
 
 Ezt úgy szerezheti be a `publishingusername` és `publishingpwd` úgy, hogy letölti a webes alkalmazás közzététele a profil az Azure portál használatával.
 
@@ -62,34 +63,15 @@ Ezt úgy szerezheti be a `publishingusername` és `publishingpwd` úgy, hogy let
 
 ## <a name="add-a-webhook"></a>A webhook hozzáadása
 
-### <a name="azure-container-registry"></a>Azure Container Registry
+A webhook hozzáadásához kövesse a lépéseket, ezek az útmutatók a:
 
-1. A beállításjegyzék portál lapján válassza ki a **Webhookok**.
-2. Hozzon létre egy új webhook, jelölje be **Hozzáadás**. 
-3. Az a **webhook létrehozása** ablaktáblán nevezze el a webhook. A webhook URI adja meg az előző szakaszban beszerzett URL-CÍMÉT.
-
-Ellenőrizze, hogy a hatókör határozza meg, a tárház, amely tartalmazza a tároló lemezkép.
-
-![Képernyőkép a webhook](./media/app-service-webapp-service-linux-ci-cd/step3ACRWebhook-1.png)
-
-A lemezkép frissítésekor a webes alkalmazás automatikusan frissül az új lemezképet.
-
-### <a name="docker-hub"></a>Docker központ
-
-A Docker központ lapon jelölje be **Webhookok**, majd **A WEBHOOK létrehozása**.
-
-![Képernyőkép a webhook 1 hozzáadása](./media/app-service-webapp-service-linux-ci-cd/step3-1.png)
-
-A webhook URL-CÍMÉT adja meg a korábban beszerzett URL-CÍMÉT.
-
-![Képernyőkép a webhook 2 hozzáadása](./media/app-service-webapp-service-linux-ci-cd/step3-2.png)
-
-A lemezkép frissítésekor a webes alkalmazás automatikusan frissül az új lemezképet.
+- [Az Azure tároló beállításjegyzék](../../container-registry/container-registry-webhook.md) a webhook URL-cím használatával
+- [Webhook Docker központ](https://docs.docker.com/docker-hub/webhooks/)
 
 ## <a name="next-steps"></a>További lépések
 
 * [Bevezetés az Azure App Service Linux rendszeren](./app-service-linux-intro.md)
-* [Azure Container Registry](https://azure.microsoft.com/services/container-registry/)
+* [Azure-tárolót beállításjegyzék](https://azure.microsoft.com/services/container-registry/)
 * [.NET Core-webalkalmazás létrehozása Linuxon futó App Service-ben](quickstart-dotnetcore.md)
 * [Ruby-webalkalmazás létrehozása az App Service Linux rendszeren](quickstart-ruby.md)
 * [A Web App az tárolókat Docker/Ugrás webalkalmazás üzembe helyezése](quickstart-docker-go.md)

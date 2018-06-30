@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/09/2018
 ms.author: alleonar
-ms.openlocfilehash: 665365e06ef02698c10259628f6bf2442ab8d612
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: f1a1a2fa083dd1bf02132e08981d736a17a2c58f
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "36333513"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37109484"
 ---
 # <a name="get-started-with-key-vault-certificates"></a>Ismerkedés a Key Vault tanúsítványok
 A következő esetekben felvázolják a elsődleges Key Vault-tanúsítvány kezelő szolgáltatás, így a key vaultban lévő az első tanúsítvány létrehozásához szükséges további lépéseket is érvényesek.
@@ -121,5 +121,5 @@ Megjegyzés: Ez a folyamat-lépéseket 3.1, egy olyan alkalommal művelet.
   [5] – az alkalmazás befejezi az egy egyesülés következtében a X509 új tanúsítvány létrehozása a hitelesítésszolgáltató tanúsítványa.
 
 ## <a name="see-also"></a>Lásd még:
-- [Műveletek](/rest/api/keyvault/certificate-operations.md)
+- [Műveletek](/rest/api/keyvault/certificate-operations)
 - [A kulcsok, titkos kódok és tanúsítványok ismertetése](about-keys-secrets-and-certificates.md)

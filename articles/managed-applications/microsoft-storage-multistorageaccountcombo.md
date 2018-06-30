@@ -11,17 +11,17 @@ ms.devlang: na
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/12/2017
+ms.date: 06/28/2018
 ms.author: tomfitz
-ms.openlocfilehash: a4ec5a97f8655c0b5b53dea129d4648a05f6ef85
-ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
+ms.openlocfilehash: f5fa81d53e1728e8f566a2a39aed8311828b20c7
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/17/2018
-ms.locfileid: "34261156"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37108705"
 ---
 # <a name="microsoftstoragemultistorageaccountcombo-ui-element"></a>Microsoft.Storage.MultiStorageAccountCombo UI element
-Több tárfiókot, a közös előtaggal kezdődő neveket való létrehozásának vezérlők egy csoportja.
+Több storage-fiókok létrehozásához egy közös előtaggal kezdődő vezérlők egy csoportja.
 
 ## <a name="ui-sample"></a>Felhasználói felület minta
 ![Microsoft.Storage.MultiStorageAccountCombo](./media/managed-application-elements/microsoft.storage.multistorageaccountcombo.png)
@@ -53,14 +53,14 @@ Több tárfiókot, a közös előtaggal kezdődő neveket való létrehozásána
 ```
 
 ## <a name="remarks"></a>Megjegyzések
-- A következő `defaultValue.prefix` tárfiókneveket sorozatát létrehozásához legalább egy egész számokat van kibővítve. Például ha `defaultValue.prefix` van **foobar** és `count` van **2**, majd tárfiókok neve **foobar1** és **foobar2** jönnek létre. Létrehozott tárfiókok neve automatikusan érvényesíti egyedi-e.
-- A tárfiókok neve lexicographically alapján generált `count`. Például ha `count` 10, akkor a tárfiókok neve végződhet 2 számjegyből álló egész számok (01, 02, 03, stb.).
+- A következő `defaultValue.prefix` tárfiókneveket sorozatát létrehozásához legalább egy egész számokat van kibővítve. Például ha `defaultValue.prefix` van **sa** és `count` van **2**, majd tárfiókok neve **sa1** és **sa2** jönnek létre. Létrehozott tárfiókok neve automatikusan érvényesíti egyedi-e.
+- A tárfiókok neve lexicographically alapján generált `count`. Például ha `count` 10, akkor a tárfiókok neve kétjegyű egész számok (01, 02, 03) végződik.
 - Az alapértelmezett érték `defaultValue.prefix` van **null**, és a `defaultValue.type` van **Premium_LRS**.
-- Nincs megadva a bármilyen `constraints.allowedTypes` rejtett, és nincs megadva a bármilyen `constraints.excludedTypes` jelenik meg.
-`constraints.allowedTypes` és `constraints.excludedTypes` mindkettő nem kötelező, de nem használható egyszerre.
+- Nincs megadva a bármilyen `constraints.allowedTypes` rejtett, és nincs megadva a bármilyen `constraints.excludedTypes` jelenik meg. `constraints.allowedTypes` és `constraints.excludedTypes` mindkettő nem kötelező, de nem használható egyszerre.
 - Tárfiókok neve, generálása mellett `count` elemhez a megfelelő többszöröző beállítására szolgál. Egy állandó érték, például támogatja **2**, vagy egy másik elem dinamikus értéket, például `[steps('step1').storageAccountCount]`. Az alapértelmezett érték **1**.
 
 ## <a name="sample-output"></a>Példa kimenet
+
 ```json
 {
   "prefix": "sa",

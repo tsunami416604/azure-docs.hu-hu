@@ -88,5 +88,30 @@ A rendelkezésre állási csoport figyelőjének egy IP-cím és a hálózati ne
 
     b. Állítsa be a fürt paramétereket a PowerShell-parancsfájl futtatásával a fürtcsomópontok egyike.  
 
+Ismételje meg a fürt konfigurációjának a WSFC-fürt IP-cím beállítása a fenti lépéseket.
+
+1. Az IP-nevét a WSFC-fürt IP-cím beolvasása. A **Feladatátvevőfürt-kezelő** alatt **fürt alapvető erőforrásai**, keresse meg **kiszolgálónév**.
+
+1. Kattintson a jobb gombbal **IP-cím**, és válassza ki **tulajdonságok**.
+
+1. Másolás a **neve** az IP-cím. Lehet, hogy `Cluster IP Address`. 
+
+1. <a name="setwsfcparam"></a>A fürt paraméterek beállítása a PowerShellben.
+    
+    a. Másolja a következő PowerShell-parancsfájlt az SQL Server-példányok közül. A változók a környezet frissítése.     
+    
+    ```PowerShell
+    $ClusterNetworkName = "<MyClusterNetworkName>" # the cluster network name (Use Get-ClusterNetwork on Windows Server 2012 of higher to find the name)
+    $IPResourceName = "<ClusterIPResourceName>" # the IP Address resource name
+    $ILBIP = "<n.n.n.n>" # the IP Address of the Cluster IP resource. This is the static IP address for the load balancer you configured in the Azure portal.
+    [int]$ProbePort = <nnnnn>
+    
+    Import-Module FailoverClusters
+    
+    Get-ClusterResource $IPResourceName | Set-ClusterParameter -Multiple @{"Address"="$ILBIP";"ProbePort"=$ProbePort;"SubnetMask"="255.255.255.255";"Network"="$ClusterNetworkName";"EnableDhcp"=0}
+    ```
+
+    b. Állítsa be a fürt paramétereket a PowerShell-parancsfájl futtatásával a fürtcsomópontok egyike.  
+
     > [!NOTE]
     > Ha az SQL Server-példány külön régióban, kétszer a PowerShell parancsfájl futtatásához szükséges. Az első alkalommal használja a `$ILBIP` és `$ProbePort` első régióban. A második alkalommal használja a `$ILBIP` és `$ProbePort` második régióban. A fürthálózat nevének és a fürt IP-erőforrás neve megegyezik. 

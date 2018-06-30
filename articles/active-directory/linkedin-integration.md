@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.workload: identity
 ms.component: users-groups-roles
 ms.topic: article
-ms.date: 05/02/2018
+ms.date: 06/28/2018
 ms.author: curtand
 ms.reviewer: beengen
 ms.custom: it-pro
-ms.openlocfilehash: 3d73cae0975bea0332c2d266d2745773b373b7d8
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 4b3ff0b2481b42f516d28ac17f2616685730b7d5
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33762370"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37109586"
 ---
 # <a name="linkedin-account-connections-for-microsoft-apps-and-services"></a>LinkedIn fiók kapcsolatok a Microsoft-alkalmazások és szolgáltatások
 Ebből a cikkből megismerheti az Azure Active Directory (Azure AD) felügyeleti központban a bérlő LinkedIn fiók kapcsolatok kezelésére. 
@@ -53,7 +53,7 @@ LinkedIn fiók kapcsolatok funkció alapértelmezés szerint be van a teljes bé
 4. A **LinkedIn fiók kapcsolatok**:
   * Válassza ki **Igen** LinkedIn fiók kapcsolatok az összes felhasználó számára az Ön bérelt szolgáltatásának engedélyezése
   * Válassza ki **kijelölt** engedélyezése LinkedIn-fiókok csak a kiválasztott bérlő kapcsolatok felhasználóinak
-  * Válassza ki **nem** LinkedIn fiók kapcsolatok az összes felhasználó letiltása ![engedélyezése LinkedIn fiók kapcsolatok](./media/linkedin-integration/LinkedIn-integration.png)
+  * Válassza ki **nem** LinkedIn fiók kapcsolatok az összes felhasználó letiltása ![engedélyezése LinkedIn fiók kapcsolatok](./media/linkedin-integration/linkedin-integration.png)
 5. Mentse a beállításokat, amikor elkészült, kiválasztásával **mentése**.
 
 ### <a name="enable-or-disable-linkedin-account-connections-for-your-organizations-office-2016-apps-using-group-policy"></a>A csoportházirend segítségével a szervezet Office 2016 alkalmazások LinkedIn fiók kapcsolatok engedélyezése vagy letiltása
@@ -64,7 +64,7 @@ LinkedIn fiók kapcsolatok funkció alapértelmezés szerint be van a teljes bé
 4. Hozzon létre egy csoportházirend-objektum a következő beállítás: **felhasználói konfiguráció** > **felügyeleti sablonok** > **Microsoft Office 2016**  >  **Vegyes** > **megjelenítése LinkedIn-funkciók egy Office-alkalmazásban**.
 5. Válassza ki **engedélyezett** vagy **letiltott**.
   * Ha a házirend van **engedélyezve**, a **megjelenítése LinkedIn-funkciók egy Office-alkalmazásban** az Office 2016 beállítások párbeszédpanelen található beállítás engedélyezve van. Ez azt is jelenti, hogy a szervezeti felhasználók az Office-alkalmazásokban LinkedIn funkciók is használhatók.
-  * Ha a házirend van **le van tiltva**, a **megjelenítése LinkedIn-funkciók egy Office-alkalmazásban** talált az Office 2016 beállításai párbeszédpanelen állítsa be a letiltott állapotba, és a végfelhasználók a beállítás nem módosítható. A szervezeti felhasználók az Office 2016 alkalmazásaikat LinkedIn-funkciók nem használható. 
+  * Ha a házirend van **le van tiltva**, a **megjelenítése LinkedIn-funkciók egy Office-alkalmazásban** talált az Office 2016 beállításai párbeszédpanelen állítsa be a letiltott állapotba, és a végfelhasználók a beállítás nem módosítható. A szervezeti felhasználók az Office 2016 alkalmazásaikat LinkedIn-funkciók nem használható.
 
 Ez a csoportházirend csak a helyi számítógépen Office 2016 alkalmazások érvényes. Felhasználók láthatják az Office 365 teljes profil kártyák LinkedIn-szolgáltatásokat, még akkor is, ha az Office 2016 alkalmazásaikban elkezdődnek LinkedIn. 
 

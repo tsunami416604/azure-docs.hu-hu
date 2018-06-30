@@ -9,12 +9,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 12/13/2017
 ms.author: v-geberr
-ms.openlocfilehash: b792d090d037ef180258a1634d4bd063c0a71b9a
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: c7249cb8d8cff29f419412025c69e3b2b76b49d1
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35348163"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37110657"
 ---
 # <a name="cortana-prebuilt-app"></a>A Cortana előre elkészített alkalmazás
 
@@ -46,7 +46,7 @@ Az előre elkészített Cortana-alkalmazásokhoz, a következő végpontok haszn
 > A végpont URL-címeket is rendelkezésre állnak a [alkalmazások – első személyes Segéd alkalmazások](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c32) API.
 
 ## <a name="try-out-the-personal-assistant-app"></a>Próbálja ki a személyes Segéd alkalmazás
-A végpont hívására, az Előfizetés kulcs argumentum és a lekérdezési karakterlánc fűzheti a végpontnak. 
+A végpont meghívásához fűzheti a végpont kulcs argumentum és a lekérdezési karakterlánc a végpontnak. 
 
 Például ha a utterance értelmezése lesz "hozzon létre egy időpontot egyeztessen az team értekezlet", majd, hogy utterance hozzáfűzése a végponti URL-cím. 
 
@@ -54,7 +54,7 @@ Például ha a utterance értelmezése lesz "hozzon létre egy időpontot egyezt
 https://westus.api.cognitive.microsoft.com/luis/v2.0/apps/c413b2ef-382c-45bd-8ff0-f76d60e2a821?subscription-key={YOUR-SUBSCRIPTION-KEY}&q=create an appointment for team meeting
 ```
 
-Illessze be az URL-címet egy webböngészőben, és helyettesítse be az előfizetés kulcsa a `{YOUR-SUBSCRIPTION-KEY}` mező.
+Illessze be az URL-címet egy webböngészőben, és a végpont kulcsát helyettesítse a `{YOUR-SUBSCRIPTION-KEY}` mező.
 
 A böngészőben megtekintheti, hogy a Cortana előre elkészített alkalmazás azonosítja `builtin.intent.calendar.create_calendar_entry` , a célt és `builtin.calendar.title` entitástípus, és a utterance `create an appointment for team meeting`.
 

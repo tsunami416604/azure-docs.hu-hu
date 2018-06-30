@@ -14,62 +14,69 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/04/2018
 ms.author: anwestg
-ms.openlocfilehash: ae21a7cc5c38fefd40a2676e15308b027c6f95d5
-ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
+ms.openlocfilehash: 37d6ee2f047768f08ea7a113b7d97911d58a46e2
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34796733"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37110575"
 ---
 # <a name="before-you-get-started-with-app-service-on-azure-stack"></a>Az App Service Azure veremben megkezdése előtt
 
 *A következőkre vonatkozik: Azure verem integrált rendszerek és az Azure verem szoftverfejlesztői készlet*
 
-> [!IMPORTANT]
-> A 1804 frissítés alkalmazásához a integrált Azure verem rendszerre, vagy telepítheti a legújabb Azure verem szoftverfejlesztői készlet Azure App Service 1.2 telepítése előtt.
->
->
+Azure App Service Azure veremben telepítése előtt el kell végeznie az előfeltételként szükséges ebben a cikkben.
 
-Azure App Service Azure veremben telepítése előtt el kell végeznie az ebben a cikkben szereplő előfeltételek.
+> [!IMPORTANT]
+> A 1804 frissítés alkalmazásához a integrált Azure verem rendszerre, vagy telepítheti a legújabb Azure verem Development Kit (ASDK), Azure App Service 1.2-es központi telepítése előtt.
 
 ## <a name="download-the-installer-and-helper-scripts"></a>A telepítő és a segítő parancsfájlok letöltése
 
 1. Töltse le a [Azure verem üzembe helyezési segítő parancsfájlok az App Service](https://aka.ms/appsvconmashelpers).
 2. Töltse le a [Azure verem telepítő az App Service](https://aka.ms/appsvconmasinstaller).
-3. Csomagolja ki a fájlokat a segítő parancsfájlok .zip fájl. A következő fájlok, a gyökérmappa-szerkezetében jelennek meg:
+3. Csomagolja ki a fájlokat a segítő parancsfájlok .zip fájl. A következő fájlok és mappák ki kell olvasni:
+
    - Common.ps1
    - Create-AADIdentityApp.ps1
    - Create-ADFSIdentityApp.ps1
    - Create-AppServiceCerts.ps1
    - Get-AzureStackRootCert.ps1
    - Remove-AppService.ps1
-   - Modulok
+   - Modulok mappa
      - GraphAPI.psm1
 
 ## <a name="high-availability"></a>Magas rendelkezésre állás
 
-A 1802 kiadás Azure-készlet már támogatja a tartalék tartományok, mert az Azure App Service Azure veremben új telepítések tartalék tartományokban sor kerül, és biztosítja a hibatűrést.  Telepítéseit az Azure App Service Azure veremben, amelyen telepítve vannak-e a 1802 frissítés előtt, tekintse meg a [dokumentáció](azure-stack-app-service-fault-domain-update.md) egyensúlyba a központi telepítési módját.
+Az Azure verem 1802 frissítés tartalék tartomány támogatása. Új központi telepítéséhez, az Azure App Service Azure veremben tartalék tartományokban sor kerül, és biztosítja a hibatűrést.
 
-Ezen kívül az Azure App Service Azure veremben a magas rendelkezésre állás érdekében telepíteni a szükséges fájl server és SQL Server-példány egy magas rendelkezésre állású konfigurációban.
+Telepítéseit az Azure App Service Azure veremben, amely üzembe helyezése a 1802 frissítése előtt, tekintse meg a [tartalék tartományokban egy App Service erőforrás-szolgáltató egyensúlyba](azure-stack-app-service-fault-domain-update.md) cikk.
+
+Emellett telepíteni a szükséges fájlkiszolgáló és a magas rendelkezésre állású konfigurációban SQL Server-példányokat.
 
 ## <a name="get-certificates"></a>Tanúsítványok beszerzése
 
 ### <a name="azure-resource-manager-root-certificate-for-azure-stack"></a>Az Azure erőforrás-kezelő legfelső szintű tanúsítvány Azure verem
 
-Azurestack\CloudAdmin futtató gépen, a kiemelt végpont az Azure verem integrált rendszer vagy az Azure verem Development Kit állomás érhető el, amely PowerShell-munkamenetben futtassa a Get-AzureStackRootCert.ps1 parancsfájlt a mappát, amelyikbe kibontotta a segítő parancsfájlok. A parancsfájl egy legfelső szintű tanúsítványt, amelyet az App Service tanúsítványok létrehozásához a parancsfájl ugyanabban a mappában hoz létre.
+Nyisson meg egy emelt szintű PowerShell-munkamenetet egy olyan számítógépen, képes elérni az Azure verem integrált rendszer vagy az Azure verem Development Kit állomás kiemelt végpont.
+
+Futtassa a *Get-AzureStackRootCert.ps1* a mappát, amelyikbe kibontotta a segítő parancsfájlok parancsfájlt. A parancsfájl egy legfelső szintű tanúsítványt, amelyet az App Service tanúsítványok létrehozásához a parancsfájl ugyanabban a mappában hoz létre.
+
+A következő PowerShell-parancs futtatásakor összekapcsolta a kiemelt végpont és a hitelesítő adatainak megadása a AzureStack\CloudAdmin.
 
 ```PowerShell
     Get-AzureStackRootCert.ps1
 ```
+
+#### <a name="get-azurestackrootcertps1-script-parameters"></a>Get-AzureStackRootCert.ps1 parancsfájl-paraméterek
 
 | Paraméter | Kötelező vagy választható | Alapértelmezett érték | Leírás |
 | --- | --- | --- | --- |
 | PrivilegedEndpoint | Szükséges | AzS-ERCS01 | Kiemelt végpont |
 | CloudAdminCredential | Szükséges | AzureStack\CloudAdmin | Tartományi fiók hitelesítő adatait a Azure verem felhő rendszergazdák számára |
 
-### <a name="certificates-required-for-the-azure-stack-development-kit"></a>Az Azure verem szoftverfejlesztői készlet szükséges tanúsítványok
+### <a name="certificates-required-for-asdk-deployment-of-azure-app-service"></a>Az Azure App Service ASDK telepítéshez szükséges tanúsítványok
 
-Az első parancsfájl együttműködik az Azure-verem hitelesítésszolgáltató, amelyet az App Service négy tanúsítványok létrehozásához:
+A *létrehozás-AppServiceCerts.ps1* parancsfájl együttműködve biztosítja a négy tanúsítványokat, amelyet az App Service létrehozása az Azure-verem hitelesítésszolgáltató.
 
 | Fájlnév | Használat |
 | --- | --- |
@@ -78,29 +85,32 @@ Az első parancsfájl együttműködik az Azure-verem hitelesítésszolgáltató
 | ftp.appservice.local.azurestack.external.pfx | App Service publisher SSL-tanúsítvány |
 | sso.appservice.local.azurestack.external.pfx | App Service alkalmazás identitástanúsítvány |
 
-Futtassa a parancsfájlt a Azure verem szoftverfejlesztői készlet gazdagépen, és győződjön meg arról, hogy futtat, azurestack\CloudAdmin PowerShell:
+A tanúsítványok létrehozásához kövesse az alábbi lépéseket:
 
-1. A PowerShell-munkamenetben azurestack\AzureStackAdmin futtató futtassa a létrehozás-AppServiceCerts.ps1 parancsfájlt a mappát, amelyikbe kibontotta a segítő parancsfájlok. A parancsfájl négy tanúsítványokat hoz létre a parancsfájlt, amelyet az App Service tanúsítványok létrehozásához ugyanabban a mappában.
-2. Adjon meg egy jelszót a .pfx fájlt biztonságos, és jegyezze fel a azt. Meg kell adni azt az App Service a Azure verem installer.
+1. Az Azure verem szoftverfejlesztői készlet állomás a AzureStack\AzureStackAdmin fiókkal bejelentkezni.
+2. Nyisson meg egy rendszergazda jogú PowerShell-munkamenetben.
+3. Futtassa a *létrehozás-AppServiceCerts.ps1* a mappát, amelyikbe kibontotta a segítő parancsfájlok parancsfájlt. Ez a parancsfájl négy tanúsítványokat hoz létre a parancsfájlt, amelyet az App Service tanúsítványok létrehozásához ugyanabban a mappában.
+4. Adjon meg egy jelszót a .pfx fájlt biztonságos, és jegyezze fel a azt. Írja be a Azure verem installer az App Service összekapcsolta.
 
-#### <a name="create-appservicecertsps1-parameters"></a>Hozzon létre AppServiceCerts.ps1 paraméterek
-
-```PowerShell
-    Create-AppServiceCerts.ps1
-```
+#### <a name="create-appservicecertsps1-script-parameters"></a>Hozzon létre AppServiceCerts.ps1 parancsfájl-paraméterek
 
 | Paraméter | Kötelező vagy választható | Alapértelmezett érték | Leírás |
 | --- | --- | --- | --- |
 | pfxPassword | Szükséges | Null | Jelszó, amely segít megvédeni a tanúsítvány titkos kulcsa |
 | Tartománynév | Szükséges | local.azurestack.external | Az Azure verem régió és a tartományi utótag |
 
-### <a name="certificates-required-for-a-production-deployment-of-azure-app-service-on-azure-stack"></a>Az Azure App Service Azure veremben éles üzembe helyezéséhez szükséges tanúsítványok
+### <a name="certificates-required-for-azure-stack-production-deployment-of-azure-app-service"></a>Az Azure-verem éles környezet az Azure App Service szükséges tanúsítványok
 
-Az erőforrás-szolgáltató éles környezetben működteti, meg kell adni a következő négy tanúsítványok:
+Futtassa az erőforrás-szolgáltató éles környezetben, meg kell adnia az alábbi tanúsítványok:
+
+- Alapértelmezett tartományi tanúsítvány
+- API-tanúsítvány
+- Közzététel tanúsítvány
+- Identitás tanúsítványa
 
 #### <a name="default-domain-certificate"></a>Alapértelmezett tartományi tanúsítvány
 
-Az alapértelmezett tartományi tanúsítvány el van helyezve az előtér-szerepkört. Az Azure App Service helyettesítő vagy az alapértelmezett tartomány kérelmek felhasználói alkalmazás ezt a tanúsítványt használja. Ezzel a tanúsítvánnyal is forrás vezérlő műveletekhez (Kudu).
+Az alapértelmezett tartományi tanúsítvány el van helyezve az előtér-szerepkört. Az Azure App Service helyettesítő vagy az alapértelmezett tartomány kérelem felhasználói alkalmazások ezt a tanúsítványt használja. Ezzel a tanúsítvánnyal is forrás vezérlő műveletekhez (Kudu).
 
 A tanúsítvány .pfx formátumban kell lennie, és három-tulajdonos helyettesítő tanúsítványt kell lennie. Ez a követelmény lehetővé teszi, hogy egy tanúsítványt az alapértelmezett tartomány és a forrás-ellenőrzési műveletek SCM végpontja.
 
@@ -133,15 +143,15 @@ Lehetővé teszi a tanúsítványt az identitás-alkalmazáshoz:
 - Az Azure Active Directory (Azure AD) vagy Active Directory összevonási szolgáltatások (AD FS) directory, Azure verem és az App Service integráció a számítási erőforrás-szolgáltató támogatásához közötti integráció.
 - Egyszeri bejelentkezés forgatókönyvek speciális fejlesztői eszközök Azure App Service Azure veremben belül.
 
-Az identitás tanúsítványának tartalmaznia kell a tulajdonosa megegyezik a következő formátumban:
+Az identitás tanúsítványának a tulajdonosa megegyezik a következő formátumban kell tartalmaznia.
 
 | Formátum | Példa |
 | --- | --- |
 | sso.appservice.\<region\>.\<DomainName\>.\<extension\> | sso.appservice.redmond.azurestack.external |
 
-## <a name="virtual-network"></a>Virtual Network
+## <a name="virtual-network"></a>Virtuális hálózat
 
-Az Azure App Service Azure veremben lehetővé teszi az erőforrás-szolgáltató üzembe helyezés vagy meglévő virtuális hálózat vagy az App Service létrehoz egy, a telepítés részeként.  Meglévő virtuális hálózat használatával lehetővé teszi, hogy a fájl vagy az SQL server Azure veremben Azure App Service által igényelt csatlakozni belső IP-címek használatát.  A virtuális hálózati Azure veremben Azure App Service telepítése előtt a következő címtartományt és alhálózatokat kell konfigurálni:
+Az Azure App Service Azure veremben lehetővé teszi, hogy az erőforrás-szolgáltató telepíthet egy meglévő virtuális hálózatot, vagy lehetővé teszi, hogy a virtuális hálózat létrehozása a telepítés részeként. Meglévő virtuális hálózat használatával lehetővé teszi, hogy a fájl vagy az SQL server Azure veremben Azure App Service által igényelt csatlakozni belső IP-címek használatát. A virtuális hálózati Azure veremben Azure App Service telepítése előtt a következő címtartományt és alhálózatokat kell konfigurálni:
 
 Virtuális hálózati - /16
 
@@ -161,43 +171,51 @@ Csak Azure verem szoftverfejlesztői készlet központi telepítése esetén has
 
 >[!IMPORTANT]
 > Ha úgy dönt, hogy egy meglévő virtuális hálózatot az App Service telepítése a fájlkiszolgáló kell telepíteni. az App Service egy külön alhálózatba.
->
 
 ### <a name="provision-groups-and-accounts-in-active-directory"></a>Kiépítés csoportokat és fiókokat az Active Directoryban
 
 1. Hozza létre a következő Active Directory globális biztonsági csoportokat:
+
    - FileShareOwners
    - FileShareUsers
+
 2. Hozza létre a következő Active Directory-fiókokat szolgáltatásfióknak:
+
    - FileShareOwner
    - FileShareUser
 
-   Biztonság ajánlott eljárás, a felhasználók ezeket a fiókokat (és az összes webes szerepkör) legyen egymástól és erős felhasználóneveket és jelszavakat. Állítsa be a jelszavakat, a következő feltételeknek:
+   Biztonság ajánlott eljárás, a felhasználók ezeket a fiókokat (és az összes webes szerepkör) legyen egyedi és erős felhasználóneveket és jelszavakat. Állítsa be a jelszavakat, a következő feltételeknek:
+
    - Engedélyezése **jelszó sohasem jár le**.
    - Engedélyezése **felhasználó nem módosíthatja a jelszót**.
    - Tiltsa le a **kell változtatni a jelszót a következő bejelentkezéskor**.
+
 3. Adja hozzá a fiókokat a csoporttagságokat az alábbiak szerint:
+
    - Adja hozzá **FileShareOwner** számára a **FileShareOwners** csoport.
    - Adja hozzá **FileShareUser** számára a **FileShareUsers** csoport.
 
 ### <a name="provision-groups-and-accounts-in-a-workgroup"></a>Csoportok és fiókok munkacsoportban kiépítése
 
 >[!NOTE]
-> Amikor konfigurálja a fájlkiszolgáló, futtassa a következő parancsokat egy rendszergazdai parancssort. *Ne használjon PowerShell.*
+> Ha egy fájlkiszolgáló, futtassa az alábbi parancsokat a beállításakor egy **rendszergazdai jogú parancssort**. <br>***Ne használjon PowerShell.***
 
 Az Azure Resource Manager-sablon használatakor a felhasználóknak már létre vannak hozva.
 
 1. A következő parancsokat a FileShareOwner és FileShareUser fiókokat létrehozni. Cserélje le `<password>` saját értékekkel.
+
     ``` DOS
     net user FileShareOwner <password> /add /expires:never /passwordchg:no
     net user FileShareUser <password> /add /expires:never /passwordchg:no
     ```
 2. Állítsa be a jelszó soha nem lejár a következő WMIC-parancsok futtatásával:
+
     ``` DOS
     WMIC USERACCOUNT WHERE "Name='FileShareOwner'" SET PasswordExpires=FALSE
     WMIC USERACCOUNT WHERE "Name='FileShareUser'" SET PasswordExpires=FALSE
     ```
 3. A helyi csoportok FileShareUsers és FileShareOwners létrehozása, és adja hozzá a fiókokat az első lépésben őket:
+
     ``` DOS
     net localgroup FileShareUsers /add
     net localgroup FileShareUsers FileShareUser /add
@@ -318,7 +336,7 @@ Kövesse az alábbi lépéseket:
 10. Válassza ki **App regisztrációk**.
 11. Keresse meg az Alkalmazásazonosítót a 7. lépés részeként. Egy App Service alkalmazás szerepel.
 12. Válassza ki **alkalmazás** a listában.
-13. Kattintson a **beállítások**.
+13. Válassza ki **beállítások**.
 14. Válassza ki **szükséges engedélyek** > **engedélyeket** > **Igen**.
 
 ```PowerShell

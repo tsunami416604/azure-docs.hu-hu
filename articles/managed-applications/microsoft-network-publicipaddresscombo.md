@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/30/2018
+ms.date: 06/28/2018
 ms.author: tomfitz
-ms.openlocfilehash: bf0ef5be609fba14ab12e1e6f9f97bc63f032aae
-ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
+ms.openlocfilehash: d06a450595a53fdc65fba74791345abe3a1b3db4
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/17/2018
-ms.locfileid: "34260560"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37109569"
 ---
 # <a name="microsoftnetworkpublicipaddresscombo-ui-element"></a>Microsoft.Network.PublicIpAddressCombo UI element
 Egy új vagy meglévő nyilvános IP-cím kiválasztásához vezérlők egy csoportja.
@@ -63,21 +63,23 @@ Egy új vagy meglévő nyilvános IP-cím kiválasztásához vezérlők egy csop
 ```
 
 ## <a name="remarks"></a>Megjegyzések
-- Ha `constraints.required.domainNameLabel` értéke **igaz**, a felhasználónak a tartománynév-címke meg kell adnia egy új nyilvános IP-cím létrehozása során. Meglévő nyilvános IP-címek, egy címke nélküli nem lehet választani.
+- Ha `constraints.required.domainNameLabel` értéke **igaz**, a felhasználónak a tartománynév-címke meg kell adnia egy új nyilvános IP-cím létrehozása során. Meglévő nyilvános IP-címek a címke nem érhetők el a kiválasztható elemek nélkül.
 - Ha `options.hideNone` értéke **igaz**, majd jelölje be a beállítás **nincs** a nyilvános IP-cím van-e rejtve. Az alapértelmezett érték **hamis**.
 - Ha `options.hideDomainNameLabel` értéke **igaz**, akkor a tartománynév-címke a szövegmezőbe írja be van-e rejtve. Az alapértelmezett érték **hamis**.
-- Ha `options.hideExisting` értéke igaz, akkor a felhasználó nem választhat egy meglévő nyilvános IP-cím. Az alapértelmezett érték **hamis**.
+- Ha `options.hideExisting` értéke igaz, a felhasználó nem választhat egy meglévő nyilvános IP-cím. Az alapértelmezett érték **hamis**.
 - A `zone`, egyetlen nyilvános IP-cím a megadott zóna vagy zóna rugalmas nyilvános IP-címekhez érhetők el.
 
 ## <a name="sample-output"></a>Példa kimenet
-Ha a felhasználó kijelöli a nyilvános IP-cím, a következő kimeneti várt:
+Ha a felhasználó kijelöli a nyilvános IP-cím, a vezérlő a következő kimeneti adja vissza:
+
 ```json
 {
   "newOrExistingOrNone": "none"
 }
 ```
 
-Ha a felhasználó kiválaszt egy új vagy meglévő IP-címet, a következő kimeneti várt:
+A felhasználó kiválaszt egy új vagy meglévő IP-címet, ha a vezérlő a következő eredményt adja vissza:
+
 ```json
 {
   "name": "ip01",
@@ -87,6 +89,7 @@ Ha a felhasználó kiválaszt egy új vagy meglévő IP-címet, a következő ki
   "newOrExistingOrNone": "new"
 }
 ```
+
 - Ha `options.hideNone` megadott **igaz**, `newOrExistingOrNone` érték csak van **új** vagy **meglévő**.
 - Ha `options.hideDomainNameLabel` megadott **igaz**, `domainNameLabel` nincs deklarálva.
 

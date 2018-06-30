@@ -3,7 +3,7 @@ title: Adatokat gyűjteni a környezet az Azure Naplóelemzés |} Microsoft Docs
 description: Ez a témakör segítségével megtudhatja, hogyan adatok gyűjtéséhez és a helyszíni vagy más felhőalapú környezetben a Naplóelemzési található számítógépek figyeléséhez.
 services: log-analytics
 documentationcenter: ''
-author: MGoedtel
+author: mgoedtel
 manager: carmonm
 editor: ''
 ms.assetid: ''
@@ -11,15 +11,16 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 06/07/2018
 ms.author: magoedte
-ms.openlocfilehash: 5bf1e12c958fef0cb20eaad8cece8cadb380c196
-ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
+ms.component: na
+ms.openlocfilehash: a13c83fc0d35be1aec87cb5f2d2b19b0bf27f1bf
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35235940"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37132943"
 ---
 # <a name="collect-data-from-computers-in-your-environment-with-log-analytics"></a>Adatgyűjtés a Naplóelemzési a környezetében lévő számítógépek
 
@@ -96,7 +97,7 @@ A proxykiszolgáló a Linux-ügynök, a telepítés során megadott vagy [telep�
 Például:`https://user01:password@proxy01.contoso.com:30443`
 
 > [!NOTE]
-> Ha különleges karaktereket használhatja például a "@" a jelszó, a hibaüzenet proxy kapcsolat mert értéke helytelenül van elemezni.  A probléma megkerüléséhez az URL-cím, egy eszközzel, mint a jelszó kódolása [URLDecode](https://www.urldecoder.org/).  
+> Ha különleges karaktereket, mint "\@" a jelszó, a hibaüzenet proxy kapcsolat mert értéke helytelenül van elemezni.  A probléma megkerüléséhez az URL-cím, egy eszközzel, mint a jelszó kódolása [URLDecode](https://www.urldecoder.org/).  
 
 ## <a name="install-and-configure-agent"></a>Telepítse és konfigurálja az ügynök 
 A helyszíni számítógépek kapcsolódásához közvetlenül a Naplóelemzési valósítható meg a követelményeitől függően különböző módszerekkel. A következő táblázat ismerteti az egyes módszerek annak meghatározásához, amely a legjobban a szervezetében.

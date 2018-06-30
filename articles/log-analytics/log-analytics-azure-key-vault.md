@@ -11,15 +11,16 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 02/09/2017
 ms.author: richrund
-ms.openlocfilehash: 9c4b16ec11d1990de687014c5385314f0e0c602a
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.component: na
+ms.openlocfilehash: 47158d0c2b5a80ceae25b275836d45b63db50ff4
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2018
-ms.locfileid: "30238392"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37127042"
 ---
 # <a name="azure-key-vault-analytics-solution-in-log-analytics"></a>Log Analytics az Azure Key Vault Analytics megoldás
 
@@ -113,7 +114,7 @@ Az Azure Key Vault megoldás elemzi az azt jelzi, hogy rendelkezik olyan típus�
 | httpStatusCode_d |A kérelem által visszaadott HTTP-állapotkódot (például *200*) |
 | id_s |A kérelem egyedi azonosítója |
 | identity_claim_appid_g | Az alkalmazásazonosító GUID azonosítója |
-| OperationName |A művelet, ahogy neve [Azure Key Vault naplózása](../key-vault/key-vault-logging.md) |
+| operationName |A művelet, ahogy neve [Azure Key Vault naplózása](../key-vault/key-vault-logging.md) |
 | OperationVersion |Az ügyfél által kért REST API-verzió (például *2015-06-01*) |
 | requestUri_s |A kérelem URI-val |
 | Erőforrás |A kulcstároló neve |

@@ -10,12 +10,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 03/01/2018
 ms.author: v-geberr
-ms.openlocfilehash: 060baa6578f8a31234a1a667e2d591b92c39a06f
-ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
+ms.openlocfilehash: 45b6c2eda77668616a7e49ecd5ea2715af3cd3ce
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36264284"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37111586"
 ---
 # <a name="api-v2-migration-guide"></a>API v2 áttelepítési útmutató
 1-es verziójával [végpont](https://aka.ms/v1-endpoint-api-docs) és [szerzői](https://aka.ms/v1-authoring-api-docs) API-k elavulttá válik. Ez az útmutató segítségével megtudhatja, hogyan 2 verziójára való áttérést [végpont](https://aka.ms/luis-endpoint-apis) és [szerzői](https://aka.ms/luis-authoring-apis) API-k. 
@@ -104,14 +104,14 @@ v2 végpont sikerességi válasz:
 ```
 
 ## <a name="key-management-no-longer-in-api"></a>Kulcskezelés már nem API
-Az Előfizetés kulcs API-k elavultak, 410 GONE ad vissza.
+Az előfizetés végpontkulcs API-k elavultak, 410 GONE ad vissza.
 
 | verzió: | útvonal |
 |--|--|
 |1|/Luis/V1.0/prog/Subscriptions|
 |1|/ luis/v1.0/prog/subscriptions/{subscriptionKey}|
 
-Azure [előfizetés kulcsok](luis-how-to-azure-subscription.md) akkor jönnek létre, az Azure portálon. A kulcs LUIS alkalmazásokhoz rendelje hozzá a a **[közzététel](manage-keys.md)** lap. Nem kell tudni, hogy a tényleges kulcs értékét. LUIS az előfizetés nevét használja, a hozzárendelés létrehozásához. 
+Azure [végpont kulcsok](luis-how-to-azure-subscription.md) akkor jönnek létre, az Azure portálon. A kulcs LUIS alkalmazásokhoz rendelje hozzá a a **[közzététel](manage-keys.md)** lap. Nem kell tudni, hogy a tényleges kulcs értékét. LUIS az előfizetés nevét használja, a hozzárendelés létrehozásához. 
 
 ## <a name="new-versioning-route"></a>Új versioning útvonal
 A v2 modell most már szerepel egy [verzió](luis-how-to-manage-versions.md). Az érték 10 karakter az útvonal egy verzió neve. Az alapértelmezett verziója "0,1".

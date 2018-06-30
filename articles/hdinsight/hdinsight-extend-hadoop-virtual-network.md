@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 02/21/2018
 ms.author: larryfr
-ms.openlocfilehash: 9ad7a35864f8e8a1aa95f0b54174a792f069ba18
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 842746561b74860e674fbaa298c78bb0ac58bd68
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34700706"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37112133"
 ---
 # <a name="extend-azure-hdinsight-using-an-azure-virtual-network"></a>Azure virtuális hálózat használatával Azure HDInsight kiterjesztése
 
@@ -36,7 +36,7 @@ A HDInsight használata egy [Azure Virtual Network](../virtual-network/virtual-n
 > A jelen dokumentumban szereplő információk megértéséhez a TCP/IP-hálózat igényel. Ha nem ismeri a TCP/IP-hálózat, meg kell felkereshetők a rendszer éles hálózati környezetben módosítások végrehajtása előtt.
 
 > [!IMPORTANT]
-> Ha a részletes útmutatót a csatlakozó HDInsight a helyszíni hálózat az Azure virtuális hálózat használatával, lásd: a [a helyi hálózathoz való csatlakozás HDInsight](connect-on-premises-network.md) dokumentum.
+> Ha a részletes útmutatót a csatlakozó HDInsight a helyszíni hálózat az Azure virtuális hálózat használatával, lásd: a [a helyszíni hálózathoz való csatlakozás HDInsight](connect-on-premises-network.md) dokumentum.
 
 ## <a name="planning"></a>Tervezés
 

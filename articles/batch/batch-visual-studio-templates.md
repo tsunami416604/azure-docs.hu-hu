@@ -15,12 +15,12 @@ ms.workload: big-compute
 ms.date: 02/27/2017
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 5241c62e8b423b20477fc72c87303daf3d4ab43c
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 98a5af1c0b321b7f9acf2bfd936a16d22088babf
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2018
-ms.locfileid: "30316749"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37128860"
 ---
 # <a name="use-visual-studio-project-templates-to-jump-start-batch-solutions"></a>Visual Studio projektsablonjai segítségével jump-start kötegelt megoldások
 
@@ -439,10 +439,7 @@ Parameters.JSON, és ha úgy találta, a paraméterek szótár betölti azt. Tö
 ### <a name="persist-job-and-task-output-to-azure-storage"></a>Feladat- és kimeneti Azure Storage megőrzése
 Egy másik hasznos eszköz a kötegelt megoldás fejlesztési [Azure Batch fájl egyezmények][nuget_package]. A .NET osztálykönyvtár (jelenleg előzetes verzió) az Ön Batch .NET-alkalmazások segítségével könnyen tárolja, és Azure Storage érkező vagy oda irányuló feladat kimenetének beolvasása. [Azure Batch feladat- és kimeneti megőrzéséhez](batch-task-output.md) a szalagtár és a használati ismertetését tartalmazza.
 
-### <a name="batch-forum"></a>Batch fórum
-A [Azure Batch fórum] [ forum] az MSDN webhelyen van remek kötegelt tárgyalja, és kérdése van a szolgáltatás. Központi a keresztül a hasznos "kapcsolódó" bejegyzések, és a kötegelt megoldások létrehozása során felmerülő kérdéseit.
 
-[forum]: https://social.msdn.microsoft.com/forums/azure/en-US/home?forum=azurebatch
 [net_jobmanagertask]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.jobmanagertask.aspx
 [github_samples]: https://github.com/Azure/azure-batch-samples
 [nuget_package]: https://www.nuget.org/packages/Microsoft.Azure.Batch.Conventions.Files

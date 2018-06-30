@@ -3,7 +3,7 @@ title: Az alkalmazásadatok Azure Application Insights megtekintése |} Microsof
 description: Az Application Insights-összekötő megoldás segítségével teljesítménnyel kapcsolatos problémák diagnosztizálásához és megérteni a felhasználók mit az alkalmazással, ha a figyelt az Application insights szolgáltatással.
 services: log-analytics
 documentationcenter: ''
-author: MGoedtel
+author: mgoedtel
 manager: carmonm
 editor: ''
 ms.assetid: 49280cad-3526-43e1-a365-c6a3bf66db52
@@ -11,19 +11,23 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 07/18/2017
+ms.topic: conceptual
+ms.date: 06/29/2018
 ms.author: magoedte
-ms.openlocfilehash: 854ec70c897b6a561fdec056228f82ccec3ae16c
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.component: na
+ms.openlocfilehash: 2312b0ed51be7079da3e53b27c269adfb761044d
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
-ms.locfileid: "30186233"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37131626"
 ---
 # <a name="application-insights-connector-management-solution-preview"></a>Application Insights-összekötő felügyeleti megoldás (előzetes verzió)
 
 ![Application Insights szimbólum](./media/log-analytics-app-insights-connector/app-insights-connector-symbol.png)
+
+>[!NOTE]
+> Támogatása [cross-erőforrás lekérdezések](log-analytics-cross-workspace-search.md), az Application Insights-összekötő felügyeleti megoldást már nincs szükség, és elavulttá válik. Július-től kezdődően nem lesz új Application Insights-erőforrások csatolása a Naplóelemzési munkaterület. Meglévő hivatkozások és irányítópultok tovább fog működni, amíg November 2018. További információkért lásd: [OMS-portálon az Azure-bA áthelyezése](log-analytics-oms-portal-transition.md).
 
 Az alkalmazások Insights-összekötő a megoldással teljesítménnyel kapcsolatos problémák diagnosztizálásához és megérteni a felhasználók mit az alkalmazással, ha a számítógép megfigyelés alatt áll a [Application Insights](../application-insights/app-insights-overview.md). Az Application Insights fejlesztők látható azonos telemetriai nézeteinek Naplóelemzési érhetők el. Azonban ha Log Analytics integrálja az Application Insights-alkalmazásokat, látható-e az alkalmazások jobb lesz, azzal, hogy a művelet és az alkalmazások adatainak egy helyen. Az azonos nézetek rendelkező segítségével az alkalmazásfejlesztők együttműködni. A közös nézetek csökkentheti a idő észlelésére és az alkalmazás és a platform-problémák megoldása.
 
@@ -83,7 +87,7 @@ Kattintson a **Application Insights** csempére kattintva nyissa meg a **Applica
 
 ![Alkalmazás irányítópult](./media/log-analytics-app-insights-connector/app-insights-dash02.png)
 
-Az irányítópult tartalmaz a paneleken a táblázatban látható. Minden egyes panel adott panelhez feltételeknek, a megadott hatókör és időtartomány legfeljebb 10 elemeket sorolja fel. A napló keresési, amely visszaadja az összes rekord kattintva futtathatja **láthatja az összes** alján a panelről, vagy a panel fejléc kattint.
+Az irányítópult tartalmaz a paneleken a táblázatban látható. Minden panelen legfeljebb 10 olyan elem jelenik meg, amely megfelel a panel hatóköri és időtartományi kritériumainak. A napló keresési, amely visszaadja az összes rekord kattintva futtathatja **láthatja az összes** alján a panelről, vagy a panel fejléc kattint.
 
 [!INCLUDE [log-analytics-log-search-nextgeneration](../../includes/log-analytics-log-search-nextgeneration.md)]
 
@@ -137,7 +141,7 @@ Forgáspont, kattintson a három pontot (**...** ), amely minden sor végén jel
 >[!NOTE]
 >**Nyissa meg az Application Insightsban** nem érhető el az Azure portálon.
 
-![Nyissa meg az Application Insightsban](./media/log-analytics-app-insights-connector/open-in-app-insights.png)
+![Megnyitás az Application Insightsban](./media/log-analytics-app-insights-connector/open-in-app-insights.png)
 
 ### <a name="sample-corrected-data"></a>A minta-javítani adatok
 
@@ -153,7 +157,7 @@ A **mintát száma** mező található összes bejegyzést, és a bejegyzést k�
 
 Mintavételi hatással van a bejegyzéseket, amelyek állít elő, az alkalmazás csak a teljes száma. Javítsa ki a mintavételi vonatkozó Átjárómetrika mezők, például nem kell **RequestDuration** vagy **AvailabilityDuration** mivel ezek a mezők megjelenítése képviselt bejegyzések átlagos.
 
-## <a name="input-data"></a>A bemeneti adatok
+## <a name="input-data"></a>Bemeneti adatok
 
 A megoldás a következő telemetriai típusú adatokat fogad az Application Insights csatlakoztatott alkalmazásba:
 
@@ -175,7 +179,7 @@ Egy rekordot egy *típus* a *ApplicationInsights* jön létre az egyes bemeneti 
 | --- | --- |
 | Típus | ApplicationInsights |
 | ClientIP |   |
-| TimeGenerated | A rekord idő |
+| TimeGenerated | A rekord létrehozásának időpontja |
 | ApplicationId | Az Application Insights alkalmazás Instrumentation kulcs |
 | ApplicationName | Az Application Insights neve alkalmazás |
 | RoleInstance | Kiszolgáló állomás azonosítója |
@@ -189,10 +193,10 @@ Egy rekordot egy *típus* a *ApplicationInsights* jön létre az egyes bemeneti 
 | Érvénytelen a SamplingRate | A portál küldött SDK által generált telemetriai százalékát. Tartomány 0,0-100.0. |
 | SampledCount | 100/(SamplingRate). Például, 4 =&gt; 25 %-át |
 | IsAuthenticated | Igaz vagy hamis |
-| OperationID | Ugyanazt a műveletet azonosító sablonobjektumhoz kapcsolódó elemként láthatók a portálon rendelkező elemek. Általában a kérelem azonosítója |
+| OperationID azonosítójú | Ugyanazt a műveletet azonosító sablonobjektumhoz kapcsolódó elemként láthatók a portálon rendelkező elemek. Általában a kérelem azonosítója |
 | ParentOperationID | A szülő művelet azonosítója |
-| OperationName |   |
-| SessionId | A munkamenet, amelyen a kérelmet létrehozták egyedi azonosításához GUID |
+| operationName |   |
+| munkamenet-azonosító | A munkamenet, amelyen a kérelmet létrehozták egyedi azonosításához GUID |
 | SourceSystem | ApplicationInsights |
 
 ### <a name="availability-specific-fields"></a>Rendelkezésre állási-specifikus mezők
@@ -245,7 +249,7 @@ Egy rekordot egy *típus* a *ApplicationInsights* jön létre az egyes bemeneti 
 | TelemetryType | Kérés |
 | ResponseCode | Az ügyfélnek küldött HTTP-válasz |
 | RequestSuccess | Azt jelzi, sikeres vagy sikertelen volt. IGAZ vagy hamis értéket. |
-| RequestID | A kérelem egyedi azonosításához azonosítója |
+| Kérelemazonosító | A kérelem egyedi azonosításához azonosítója |
 | RequestName | GET/POST + alap URL-je |
 | RequestDuration | A kérelem időtartam másodpercben |
 | URL-cím | A kérelem nem többek között a gazdagépre URL-címe |

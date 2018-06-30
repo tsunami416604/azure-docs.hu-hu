@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 03/29/2018
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 2caf8e14407546d8a2ec7c9d18765dd10e575144
-ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
+ms.openlocfilehash: 8f273a5a2c47b25dc339fd63df127d141fe2f8e2
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 06/29/2018
-ms.locfileid: "37099341"
+ms.locfileid: "37130243"
 ---
 # <a name="use-draft-with-azure-kubernetes-service-aks"></a>Vázlat használata Azure Kubernetes szolgáltatásnál (AKS)
 
@@ -58,11 +58,11 @@ Vázlat helyileg a tároló lemezképet állít össze, és ezután vagy telepí
 
 ### <a name="create-trust-between-aks-cluster-and-acr"></a>AKS fürt és ACR közötti megbízhatósági kapcsolat létrehozása
 
-Egy AKS fürt és az ACR beállításjegyzék közötti megbízhatósági kapcsolatot létesíteni az Azure Active Directory szolgáltatás egyszerű használt AKS ACR tárház hatókörű hozzáadva a közreműködői szerepkör módosítása. Ehhez futtassa a következő parancsokat, cseréje _&lt;aks-rg-neve&gt;_ és _&lt;aks fürtnév&gt;_ erőforráscsoport és annak nevét a AKS fürt, és _&lt;acr-rg-név&gt;_ és _&lt;acr-tárház-neve&gt;_ az ACR erőforrás csoport és a tárház nevét a tárház kívánt megbízhatósági kapcsolat létrehozása.
+Egy AKS fürt és az ACR beállításjegyzék közötti megbízhatósági kapcsolatot létesíteni az Azure Active Directory szolgáltatás egyszerű használt AKS a ACR beállításjegyzék hatókörű hozzáadva a közreműködői szerepkör módosítása. Ehhez futtassa a következő parancsokat, cseréje _&lt;aks-rg-neve&gt;_ és _&lt;aks fürtnév&gt;_ erőforráscsoport és annak nevét a AKS fürt, és _&lt;acr-rg-név&gt;_ és _&lt;acr-beállításjegyzék-neve&gt;_ nevű erőforrás csoport és a beállításjegyzék, az ACR a beállításjegyzék kívánt megbízhatósági kapcsolat létrehozása.
 
 ```console
 export AKS_SP_ID=$(az aks show -g <aks-rg-name> -n <aks-cluster-name> --query "servicePrincipalProfile.clientId" -o tsv)
-export ACR_RESOURCE_ID=$(az acr show -g <acr-rg-name> -n <acr-repo-name> --query "id" -o tsv)
+export ACR_RESOURCE_ID=$(az acr show -g <acr-rg-name> -n <acr-registry-name> --query "id" -o tsv)
 az role assignment create --assignee $AKS_SP_ID --scope $ACR_RESOURCE_ID --role contributor
 ```
 

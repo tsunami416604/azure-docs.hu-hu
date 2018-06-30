@@ -9,17 +9,18 @@ editor: tysonn
 ms.assetid: f1d5bde4-6b86-4b8e-b5c1-3ecbaba76198
 ms.service: log-analytics
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/28/2017
 ms.author: magoedte;bwren
-ms.openlocfilehash: 011eaf1a4705f9078225b9b871f81b4333b05ee8
-ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
+ms.component: na
+ms.openlocfilehash: 1e7806e802f9b1dda16a9d5d477783663d03d416
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "34011094"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37131786"
 ---
 # <a name="syslog-data-sources-in-log-analytics"></a>A Naplóelemzési Syslog adatforrások
 A Syslog egy esemény naplózása protokoll, amely Linux közös.  Alkalmazások, amelyek a helyi számítógépen tárolt vagy a Syslog-gyűjtőhöz kézbesíteni üzenetet szeretne küldeni.  A Linux OMS-ügynök telepítve van, amikor konfigurálja az üzenetek továbbítására az ügynöknek a helyi Syslog démon.  Az ügynök ezután elküldi az üzenet Naplóelemzési, ahol az OMS-tárházban létrejön egy megfelelő bejegyzés.  
@@ -51,7 +52,7 @@ Ha a [OMS-ügynök telepítve van egy Linux-ügyfél](log-analytics-linux-agents
 >
 >
 
-#### <a name="rsyslog"></a>Rsyslog
+#### <a name="rsyslog"></a>rsyslog
 A konfigurációs fájl rsyslog itt található: **/etc/rsyslog.d/95-omsagent.conf**.  Alapértelmezett tartalmának alább látható.  Ez gyűjti az összes létesítményekben figyelmeztetés vagy magasabb szintű a helyi ügynök által küldött syslog-üzeneteket.
 
     kern.warning       @127.0.0.1:25224
@@ -192,8 +193,8 @@ Syslog-rekordok típusa lehet **Syslog** , és a tulajdonságok az alábbi tábl
 | Állomásnév |A rendszer az üzenetet küldő neve. |
 | SeverityLevel |Az esemény súlyosságának. |
 | SyslogMessage |Az üzenet szövegét. |
-| Folyamatazonosító |A folyamat által generált üzenet azonosítója. |
-| eventTime |Dátum és idő, az esemény lett létrehozva. |
+| ProcessID |A folyamat által generált üzenet azonosítója. |
+| EventTime |Dátum és idő, az esemény lett létrehozva. |
 
 ## <a name="log-queries-with-syslog-records"></a>Syslog-rekordot tartalmazó napló lekérdezések
 Az alábbi táblázat példákat különböző Syslog lehívása napló lekérdezések.

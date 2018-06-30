@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 04/25/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 32cc1a436521574917c8e52b2fa4e045d32a4f09
-ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
+ms.openlocfilehash: dcc77d9826d91c57dc15b1abed83c2b640e73906
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37062574"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37110701"
 ---
 # <a name="running-runbooks-on-a-hybrid-runbook-worker"></a>A hibrid forgatókönyv-feldolgozók a futó runbookot
 
@@ -77,7 +77,7 @@ A következő eljárás használatával adjon meg egy hibrid feldolgozócsoport 
 
 ### <a name="automation-run-as-account"></a>Automatizálási futtató fiók
 
-Az Azure-erőforrások telepítéséhez az automatizált felépítési folyamat részeként szüksége lehet a helyszíni rendszerek támogatásához egy feladat vagy a lépéseket a telepítési sorrendjét elérésére. Azure-ban a Futtatás mint fiók ellen-hitelesítés támogatásához telepítendő a Futtatás mint fiók tanúsítvány.
+Az Azure-erőforrások telepítéséhez az automatizált felépítési folyamat részeként szüksége lehet a helyszíni rendszerekben támogatásához egy feladat vagy a lépéseket a telepítési sorrendjét elérésére. Azure-ban a Futtatás mint fiók ellen-hitelesítés támogatásához telepítendő a Futtatás mint fiók tanúsítvány.
 
 A következő PowerShell-forgatókönyv *Export-RunAsCertificateToHybridWorker*, exportálja a Futtatás mint tanúsítvány az Azure Automation-fiók és tölti le, és importálja azokat a helyi számítógép tanúsítványtárolójába a hibrid munkavégző ugyanazzal a fiókkal csatlakozik. Ha a lépés befejeződött, ellenőrzi a dolgozó sikeresen hitelesítheti a Futtatás mint fiók használatával.
 

@@ -127,8 +127,6 @@
           href: stream-analytics-job-diagram-with-metrics.md
         - name: Diagnosztikai naplók
           href: stream-analytics-job-diagnostic-logs.md
-        - name: Erőforrás állapotának ellenőrzése
-          href: stream-analytics-resource-health.md
         - name: SELECT INTO utasítás
           href: stream-analytics-select-into.md
         - name: Event Hub-érzékelők

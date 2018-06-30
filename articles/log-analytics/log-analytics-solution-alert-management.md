@@ -4,22 +4,23 @@ description: A riasztások kezelésében a Naplóelemzési megoldással elemzés
 services: log-analytics
 documentationcenter: ''
 author: bwren
-manager: jwhit
+manager: carmonm
 editor: tysonn
 ms.assetid: fe5d534e-0418-4e2f-9073-8025e13271a8
-ms.service: operations-management-suite
+ms.service: log-analytics
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/19/2018
 ms.author: bwren
-ms.openlocfilehash: 0d9028b821e4c488186143311c81bfa6d17908ff
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.component: na
+ms.openlocfilehash: eb61a48e8c479db4742d65187b202655f29b032d
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
-ms.locfileid: "30181197"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37131047"
 ---
 # <a name="alert-management-solution-in-azure-log-analytics"></a>Az Azure Naplóelemzés riasztási felügyeleti megoldás
 
@@ -40,7 +41,7 @@ A Riasztáskezelési megoldás hozzáadni a Naplóelemzési munkaterület ismert
 ## <a name="management-packs"></a>Felügyeleti csomagok
 Ha a System Center Operations Manager felügyeleti csoport csatlakoztatva van a Naplóelemzési munkaterület, majd a következő felügyeleti csomagjai vannak telepítve a System Center Operations Manager ebben a megoldásban hozzáadásakor.  Nincs, konfigurációs vagy a szükséges felügyeleti csomagok karbantartási.  
 
-* Microsoft System Center Advisor Alert Management (Microsoft.IntelligencePacks.AlertManagement)
+* A Microsoft System Center Advisor Riasztáskezelési (Microsoft.IntelligencePacks.AlertManagement)
 
 A megoldási felügyeleti csomagok frissítéseivel kapcsolatban lásd: [Az Operations Manager csatlakoztatása a Log Analyticshez](log-analytics-om-agents.md).
 
@@ -68,9 +69,9 @@ Kattintson a **Riasztáskezelési** csempére kattintva nyissa meg a **Riasztás
 
 | Oszlop | Leírás |
 |:--- |:--- |
-| A kritikus riasztások |Minden riasztás kiegészített egy kritikus riasztás neve szerint csoportosítva.  Kattintson a riasztás nevét. a riasztás összes rekordot ad vissza napló keresés futtatásához. |
+| Kritikus riasztások |Minden riasztás kiegészített egy kritikus riasztás neve szerint csoportosítva.  Kattintson a riasztás nevét. a riasztás összes rekordot ad vissza napló keresés futtatásához. |
 | Figyelmeztető riasztások |Minden riasztás kiegészített egy figyelmeztető riasztás neve szerint csoportosítva.  Kattintson a riasztás nevét. a riasztás összes rekordot ad vissza napló keresés futtatásához. |
-| SCOM aktív riasztások |Az összes riasztás összegyűjtése az Operations Manager bármely állapotú eltérő *lezárva* a riasztást kiváltó forrás szerint csoportosítva. |
+| Aktív SCOM-riasztások |Az összes riasztás összegyűjtése az Operations Manager bármely állapotú eltérő *lezárva* a riasztást kiváltó forrás szerint csoportosítva. |
 | Az összes aktív riasztás |Minden riasztás kiegészített bármely riasztás neve szerint csoportosítva. Csak tartalmazza az Operations Manager riasztásait bármely állapotú eltérő *lezárva*. |
 
 Görgessen jobbra, ha az irányítópulton jeleníti meg több közös lekérdezések végrehajtásához kattintson egy [naplófájl-keresési](log-analytics-log-searches.md) riasztási adatok.
@@ -85,7 +86,7 @@ A megoldás riasztások importálása a System Center Operations Manager, és mi
 
 | Tulajdonság | Leírás |
 |:--- |:--- |
-| Típus |*Alert* |
+| Típus |*Riasztás* |
 | SourceSystem |*OpsManager* |
 | AlertContext |Az adatelem XML-formátumú generálása a riasztást kiváltó részleteit. |
 | AlertDescription |A riasztás részletes leírása. |
@@ -116,8 +117,8 @@ A következő táblázat a megoldás által gyűjtött riasztási rekordok minta
 | Riasztási &#124; ahol SourceSystem == "OpsManager" és a AlertState! = "Lezárva" és a TimeRaised > ago(24h) &#124; összesíteni a Count = count() SourceDisplayName által |Az elmúlt 24 órában kiadott aktív riasztásokkal rendelkező források |
 | Riasztási &#124; ahol SourceSystem "OpsManager" és a AlertSeverity == "error" és a TimeRaised == > ago(24h) és AlertState! = "Lezárva" |Az elmúlt 24 órában, amelyek még mindig aktív kritikus riasztások |
 | Riasztási &#124; ahol SourceSystem "OpsManager" és a TimeRaised == > ago(24h) és AlertState == "Lezárva" |Az elmúlt 24 órában, amely a már lezárt riasztások |
-| Riasztási &#124; ahol SourceSystem "OpsManager" és a TimeRaised == > ago(1d) &#124; összesíteni a Count = count() AlertSeverity által |Során súlyosságuk szerint csoportosítva az elmúlt 1 napban kiadott riasztások |
-| Riasztási &#124; ahol SourceSystem "OpsManager" és a TimeRaised == > ago(1d) &#124; RepeatCount desc rendezés |Riasztások ismétléseik száma szerint rendezve az elmúlt 1 napban |
+| Riasztási &#124; ahol SourceSystem "OpsManager" és a TimeRaised == > ago(1d) &#124; összesíteni a Count = count() AlertSeverity által |Az elmúlt 1 napban kiadott riasztások súlyosságuk szerint csoportosítva |
+| Riasztási &#124; ahol SourceSystem "OpsManager" és a TimeRaised == > ago(1d) &#124; RepeatCount desc rendezés |Az elmúlt 1 napban kiadott riasztások ismétléseik száma szerint rendezve |
 
 
 

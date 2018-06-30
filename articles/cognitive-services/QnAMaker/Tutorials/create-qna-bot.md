@@ -8,18 +8,18 @@ ms.component: QnAMaker
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: saneppal
-ms.openlocfilehash: f2721dfa9a0922ee4a5af1eb66fd4506feb94d28
-ms.sourcegitcommit: 680964b75f7fff2f0517b7a0d43e01a9ee3da445
+ms.openlocfilehash: fc430bf3aa7cad279d7a93bb6892aa19abee3378
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "35349898"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37109269"
 ---
 # <a name="create-a-qna-bot-with-azure-bot-service"></a>Hozzon létre egy kérdés-válasz Botot Azure Botot szolgáltatással
 Ez az oktatóanyag végigvezeti Azure Botot szolgáltatással kérdések és válaszok bot felépítése az Azure portálon.
 
 ## <a name="prerequisite"></a>Előfeltétel
-Mielőtt, kövesse a [hozzon létre egy Tudásbázis]() Maker kérdések és válaszok szolgáltatás létrehozása a kérdések és válaszok.
+Mielőtt, kövesse a [hozzon létre egy Tudásbázis](../How-To/create-knowledge-base.md) Maker kérdések és válaszok szolgáltatás létrehozása a kérdések és válaszok.
 
 A botot válaszol a Tudásbázis létrehozott, a QnAMakerDialog keresztül érkező kérdéseket.
 

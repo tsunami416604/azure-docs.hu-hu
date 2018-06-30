@@ -10,12 +10,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 02/21/2018
 ms.author: v-geberr
-ms.openlocfilehash: 09c9d4da835b7b30fd132770f9d13b33fa80a3f5
-ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
+ms.openlocfilehash: e97dc184266bc9518ee5f909891bd97f7c71804b
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36268329"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37113053"
 ---
 # <a name="build-a-luis-app-programmatically-using-nodejs"></a>Hozza létre a programozott módon, Node.js LUIS alkalmazását
 
@@ -111,7 +111,7 @@ Telepítse a Node.js-függőségek NPM a Terminálszolgáltatások/parancssorban
 ````
 
 ### <a name="change-configuration-settings"></a>Konfigurációs beállítások módosítása
-Az alkalmazás használatához meg kell módosítsa az értékeket a index.js fájlban saját előfizetés kulcsot, és adjon meg egy nevet az alkalmazásnak. Állítsa be az alkalmazás kulturális környezet vagy a verziószám módosíthatja is.
+Az alkalmazás használatához meg kell módosítsa az értékeket a index.js fájlban saját végpont kulcsot, és adjon meg egy nevet az alkalmazásnak. Állítsa be az alkalmazás kulturális környezet vagy a verziószám módosíthatja is.
 
 Nyissa meg a index.js fájlt, és módosítsa a fájl elején ezeket az értékeket.
 
@@ -176,10 +176,10 @@ A parancsfájl után is jelentkezik be a [LUIS] [ LUIS] , és megtekintheti a LU
 ## <a name="additional-resources"></a>További források
 
 Ez a minta az alkalmazás a következő LUIS API-kat használ:
-- [Alkalmazás létrehozása](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c36)
-- [Leképezések hozzáadása](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c0c)
-- [Entitás hozzáadása](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c0e) 
-- [Utterances hozzáadása](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c09) 
+- [alkalmazás létrehozása](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c36)
+- [leképezések hozzáadása](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c0c)
+- [entitás hozzáadása](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c0e) 
+- [utterances hozzáadása](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c09) 
 
 [LUIS]: https://docs.microsoft.com/azure/cognitive-services/luis/luis-reference-regions
 

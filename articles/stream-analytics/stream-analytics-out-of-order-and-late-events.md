@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 04/20/2017
-ms.openlocfilehash: e407a95d3ac858ea7180a75f9fbfc399860ad378
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: f0ee486d9ff4c05269da23866edad281aa627889
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2018
-ms.locfileid: "30912015"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37113894"
 ---
 # <a name="azure-stream-analytics-event-order-considerations"></a>Az Azure Stream Analytics esemény rendelés kapcsolatos szempontok
 
@@ -22,7 +22,7 @@ ms.locfileid: "30912015"
 
 A historikus adatfolyam események minden esemény hozzá van rendelve az időbélyegző. Az Azure Stream Analytics időbélyegzőt minden esemény érkezési idő vagy alkalmazás idő segítségével rendeli. A **System.Timestamp** oszlopnak van rendelve az esemény időbélyege. 
 
-Érkezésének ideje hozzá van rendelve a bemeneti forrásnál, ha az esemény eléri a forrás. Érkezésének ideje használatával végezheti el a **EventEnqueuedTime** tulajdonsága event hub bemeneti és a használatával a [BlobProperties.LastModified](https://docs.microsoft.com/dotnet/api/microsoft.windowsazure.storage.blob.blobproperties.lastmodified?view=azurestorage-8.1.3) blob bemeneti tulajdonság. 
+Érkezésének ideje hozzá van rendelve a bemeneti forrásnál, ha az esemény eléri a forrás. Érkezésének ideje használatával végezheti el a **EventEnqueuedUtcTime** tulajdonság az Event Hubs bemenetek, **IoTHub.EnqueuedTime** tulajdonság az IoT-központot, és ezáltal a [BlobProperties.LastModified ](https://docs.microsoft.com/dotnet/api/microsoft.windowsazure.storage.blob.blobproperties.lastmodified?view=azurestorage-8.1.3) blob bemeneti tulajdonság. 
 
 Alkalmazási hozzá van rendelve, ha az esemény jön létre, és a tartalom egy részét. Alkalmazás ideje eseményeket feldolgozását, használja a **időbélyeg által** a select lekérdezés záradékot. Ha a **által időbélyeg** záradék hiányzik, érkezésének ideje eseményeket dolgoznak fel. 
 
@@ -111,7 +111,7 @@ A lekérdezés nem rendelkezik egy **PartitionID partíció** záradék, és leg
 
 Konfigurációs megegyezik a 2. példa. Azonban az egyik partíciója adatok késleltetheti a kimenet egy további késő érkezés tűrési által.
 
-## <a name="handling-event-producers-with-differing-timelines"></a>Eltérő ütemtervet tartalmazó esemény gyártók kezelése
+## <a name="handling-event-producers-with-differing-timelines-with-substreams"></a>A "részadatfolyamok" eltérő ütemtervet tartalmazó esemény gyártók kezelése
 Egyetlen bemeneti esemény adatfolyam gyakran több esemény-gyártók, például az egyes eszközökről származó eseményeket tartalmazza. Ezek az események sorrendje a korábban tárgyalt okok miatt előfordulhat, hogy érkeznek. A következő használati helyzetekben bár lehet, hogy a rendellenességeket esemény gyártók között nagy, egyetlen termelő eseményeiben rendellenességeket kis (vagy még nem létezik).
 
 Az Azure Stream Analytics soron események kezelésére vonatkozó általános mechanizmust biztosít. Ilyen mechanizmusokat eredményez a feldolgozási késedelmeket (való várakozás közben a rendszer eléréséhez straggling események), eldobott vagy módosul az események, vagy mindkettőt.
