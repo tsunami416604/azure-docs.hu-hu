@@ -269,6 +269,8 @@
               href: azure-stack-app-service-release-notes-update-one.md
             - name: App Service az Azure-verem update 2 kibocsátási megjegyzései
               href: azure-stack-app-service-release-notes-update-two.md
+        - name: Ethereum telepítése
+          href: azure-stack-ethereum.md
         - name: A Marketplace feltöltése
           items:
             - name: Piactér áttekintése

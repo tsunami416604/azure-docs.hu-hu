@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 05/10/2018
+ms.date: 06/28/2018
 ms.author: mabrigg
-ms.openlocfilehash: 3950c9dfc5ff5f7ea1d170da086b4f97048ed81c
-ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
+ms.openlocfilehash: 05278ee4b0dc1f2c22f40bfcff4f9d7342017c0f
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/11/2018
-ms.locfileid: "34069033"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37108756"
 ---
 # <a name="create-a-virtual-machine-and-install-a-certificate-retrieved-from-an-azure-stack-key-vault"></a>Hozzon létre egy virtuális gépet, és egy Azure verem kulcstároló lekért tanúsítvány telepítése
 
@@ -27,7 +27,7 @@ ms.locfileid: "34069033"
 
 Megtudhatja, hogyan hozzon létre egy Azure verem virtuális gépet (VM) a kulcstartót telepített tanúsítvánnyal.
 
-## <a name="overview"></a>Áttekintés (klasszikus)
+## <a name="overview"></a>Áttekintés
 
 Tanúsítványok helyzetekben, például az Active Directory hitelesítő, vagy a webes forgalom titkosításának szolgálnak. Tanúsítványok titkos kulcsainak egy Azure verem kulcstároló, biztonságosan tárolni. Az Azure verem Key Vault használatának előnyei a következők:
 
@@ -43,8 +43,8 @@ Az alábbi lépéseket a szükséges leküldéses tanúsítvány települ a virt
 2. Frissítse a azuredeploy.parameters.json fájlt.
 3. A sablon üzembe helyezése
 
->[!NOTE]
->Ezeket a lépéseket az Azure verem szoftverfejlesztői készlet, vagy egy külső ügyfél is használhatja, ha a VPN-en keresztül kapcsolódik.
+> [!NOTE]
+> Ezeket a lépéseket az Azure verem szoftverfejlesztői készlet, vagy egy külső ügyfél is használhatja, ha a VPN-en keresztül kapcsolódik.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -56,8 +56,8 @@ Az alábbi lépéseket a szükséges leküldéses tanúsítvány települ a virt
 
 A következő parancsfájl létrehoz egy tanúsítványt a .pfx formátumú, hoz létre egy kulcstartót és tárolja a tanúsítványt a key vault egy titkos kulcsként.
 
->[!IMPORTANT]
->Kell használnia a `-EnabledForDeployment` paramétere a kulcs tartalék létrehozásakor. Ez a paraméter biztosítja, hogy a key vault Azure Resource Manager-sablonok alapján lehet hivatkozni.
+> [!IMPORTANT]
+> Kell használnia a `-EnabledForDeployment` paraméter a kulcstartó létrehozásakor. Ez a paraméter biztosítja, hogy a key vault Azure Resource Manager-sablonok alapján lehet hivatkozni.
 
 ```powershell
 
