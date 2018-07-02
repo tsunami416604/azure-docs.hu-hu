@@ -1,11 +1,11 @@
 - name: Számítógépes látástechnológiai dokumentáció
   href: index.yml
 - name: Áttekintés
+  expanded: true
   items:
     - name: Mi a Computer Vision?
       href: Home.md
-- name: Gyors útmutatók
-  expanded: true
+- name: API – rövid útmutatók
   items:
     - name: Összegzés
       href: QuickStarts/quickstart-summary.md
@@ -97,6 +97,16 @@
           href: QuickStarts/ruby-thumb.md
         - name: Nyomtatott szöveg kinyerése
           href: QuickStarts/ruby-print-text.md
+- name: SDK – rövid útmutatók
+  items:
+    - name: 'C#'
+      items:
+        - name: Rendszerkép elemzése
+          href: quickstarts-sdk/csharp-analyze-sdk.md
+        - name: Miniatűr létrehozása
+          href: quickstarts-sdk/csharp-thumb-sdk.md
+        - name: Kézzel írt szöveg kinyerése
+          href: quickstarts-sdk/csharp-hand-text-sdk.md
 - name: Útmutatók
   items:
     - name: Első Computer Vision-alkalmazások

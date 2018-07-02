@@ -23,6 +23,8 @@
       href: monitoring-data-sources.md
     - name: Azure Monitor
       href: monitoring-overview-azure-monitor.md
+    - name: Ügynökök
+      href: ../monitoring/monitoring-overview-azure-agents.md
     - name: Mérőszámok
       href: monitoring-overview-metrics.md
     - name: Automatikus méretezés

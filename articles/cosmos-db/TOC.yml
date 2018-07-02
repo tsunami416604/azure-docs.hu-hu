@@ -118,8 +118,6 @@ items:
                         href: sql-api-java-get-started.md
                       - name: Node.js
                         href: sql-api-nodejs-get-started.md
-                      - name: C++
-                        href: sql-api-cpp-get-started.md
                   - name: Webalkalmazás készítése
                     items:
                       - name: .NET
@@ -144,10 +142,6 @@ items:
                     href: local-emulator.md
                   - name: Tanúsítványok exportálása
                     href: local-emulator-export-ssl-certificates.md
-              - name: 6 – Integrálás a függvényekkel
-                items:
-                  - name: HTTP eseményindító
-                    href: tutorial-functions-http-trigger.md
           - name: Példák
             items:
               - name: Azure CLI
@@ -350,26 +344,14 @@ items:
                 href: gremlin-support.md
           - name: Oktatóanyagok
             items:
-              - name: 1 – Létrehozás
-                href: tutorial-develop-graph-dotnet.md
-              - name: 2 – Lekérdezés
+              - name: 1 – Lekérdezés
                 href: tutorial-query-graph.md
-              - name: 3 – Globális elosztás
-                href: tutorial-global-distribution-graph.md
           - name: Útmutatók
             items:
               - name: Graph-particionálás
                 href: graph-partitioning.md
               - name: Kezelés a Storage Explorer használatával
                 href: storage-explorer.md
-              - name: Integrálás
-                items:
-                  - name: Csatlakozás a Spark GraphX-hez
-                    href: spark-connector-graph.md
-          - name: Referencia
-            items:
-              - name: .NET
-                href: graph-sdk-dotnet.md
           - name: További források
             items:
               - name: Kezelés a Storage Explorer használatával

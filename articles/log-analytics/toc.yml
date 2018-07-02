@@ -39,6 +39,8 @@
       href: log-analytics-data-security.md
     - name: Hozzáférés kezelése
       href: log-analytics-manage-access.md
+    - name: Ügynökök áttekintése
+      href: ../monitoring/monitoring-overview-azure-agents.md
     - name: Hibrid környezek figyelése
       href: log-analytics-concept-hybrid.md
     - name: Funkciók a szolgáltatók számára

@@ -17,18 +17,6 @@
       href: quickstart-cpp-linux.md
     - name: A Beszédeszközök SDK használatának első lépései
       href: speech-devices-sdk-qsg.md
-- name: Testreszabás
-  items:
-    - name: Beszédmodellek testreszabása
-      href: how-to-customize-speech-models.md
-    - name: Hangtípusok testreszabása
-      href: how-to-customize-voice-font.md
-    - name: Átiratok előkészítése
-      href: prepare-transcription.md
-    - name: Egyéni audiostreamek használata
-      href: how-to-use-audio-input-streams.md
-    - name: Eszközébresztő kifejezés testreszabása (eszközoldali SDK)
-      href: speech-devices-sdk-create-kws.md
 - name: Útmutatók
   items:
     - name: Beszéd felismerése
@@ -39,8 +27,22 @@
       href: how-to-translate-speech.md
     - name: Beszédeszközök SDK letöltése
       href: get-speech-devices-sdk.md
-    - name: Kötegelt átírás (telefonos ügyfélszolgálatok)
+    - name: Kötegelt átírás
       href: batch-transcription.md
+- name: Testreszabás
+  items:
+    - name: Akusztikai modellek testreszabása
+      href: how-to-customize-acoustic-models.md
+    - name: Nyelvi modellek testreszabása
+      href: how-to-customize-language-model.md
+    - name: Hangtípusok testreszabása (robot márkafüggő hangja)
+      href: how-to-customize-voice-font.md
+    - name: Átiratok előkészítése
+      href: prepare-transcription.md
+    - name: Egyéni audiostreamek használata
+      href: how-to-use-audio-input-streams.md
+    - name: Eszközébresztő kifejezés testreszabása (eszközoldali SDK)
+      href: speech-devices-sdk-create-kws.md
 - name: Példák
   items:
     - name: Minták letöltése

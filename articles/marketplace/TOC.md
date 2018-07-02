@@ -7,6 +7,7 @@
 #### [Vállalatfejlesztés az AppSource segítségével](./grow-your-business-with-appsource.md)  
 ##### [Saját kezdőlap létrehozása](./build-your-landing-page.md)  
 ##### [Érdeklődők megosztásának bekapcsolása](./enable-lead-sharing.md)  
+##### [Előnyben részesített megoldások](./preferred-solutions.md)
 ##### [A GTM-előnyök a piactéren](./gtm-benefits.md)  
 ##### [Üzleti gyarapodás a Microsofttal](./promote-your-business-with-microsoft.md)  
 #### [Vállalatfejlesztés az Azure Marketplace segítségével](./grow-your-business-with-azure-marketplace.md)  

@@ -1,0 +1,151 @@
+- name: Event Hubs – dokumentáció
+  href: ./index.yml
+- name: Áttekintés
+  items:
+    - name: Mi az Event Hubs?
+      href: event-hubs-about.md
+    - name: Üzenetküldő szolgáltatások összehasonlítása
+      href: ../event-grid/compare-messaging-services.md
+      maintainContext: true
+- name: Gyors útmutatók
+  expanded: true
+  items:
+    - name: Eseménystreamek feldolgozása – Portál
+      href: event-hubs-quickstart-portal.md
+    - name: Eseménystreamek feldolgozása – Azure CLI
+      href: event-hubs-quickstart-cli.md
+    - name: Eseménystreamek feldolgozása – Azure PowerShell
+      href: event-hubs-quickstart-powershell.md
+- name: Oktatóanyagok
+  items:
+    - name: Event Hubs-adatstreamek anomáliáinak vizualizációja
+      href: event-hubs-tutorial-visualize-anomalies.md
+- name: Példák
+  href: event-hubs-samples.md
+- name: Alapelvek
+  items:
+    - name: Event Processor Host-áttekintés
+      href: event-hubs-event-processor-host.md
+    - name: Programozási útmutató
+      href: event-hubs-programming-guide.md
+    - name: Integrálás az Event Griddel
+      href: ../event-grid/event-grid-event-hubs-integration.md
+      maintainContext: true
+    - name: Event Hubs-szolgáltatások
+      href: event-hubs-features.md
+    - name: Felügyeltszolgáltatás-identitás (előzetes verzió)
+      href: event-hubs-managed-service-identity.md
+    - name: Szerepköralapú hozzáférés-vezérlés (előzetes verzió)
+      href: event-hubs-role-based-access-control.md
+    - name: Georeplikációs vészhelyreállítás és georeplikáció
+      href: event-hubs-geo-dr.md
+    - name: Dedikált Event Hubs
+      href: event-hubs-dedicated-overview.md
+    - name: A hitelesítési és biztonsági modell áttekintése
+      href: event-hubs-authentication-and-security-model-overview.md
+    - name: Rendelkezésre állás és konzisztencia
+      href: event-hubs-availability-and-consistency.md
+    - name: Átviteli egységek automatikus skálázása
+      href: event-hubs-auto-inflate.md
+    - name: Diagnosztikai naplók
+      href: event-hubs-diagnostic-logs.md
+    - name: AMQP 1.0 protokoll – útmutató
+      href: ../service-bus-messaging/service-bus-amqp-protocol-guide.md
+      maintainContext: true
+- name: Útmutatók
+  items:
+    - name: Eseményközpont létrehozása
+      href: event-hubs-create.md
+    - name: Események küldése a .NET-keretrendszer használatával
+      href: event-hubs-dotnet-framework-getstarted-send.md
+    - name: Események fogadása a .NET-keretrendszer használatával
+      href: event-hubs-dotnet-framework-getstarted-receive-eph.md
+    - name: Elérhető API-k
+      href: event-hubs-api-overview.md
+      items:
+        - name: .NET Standard
+          href: event-hubs-dotnet-standard-api-overview.md
+        - name: .NET-keretrendszer
+          href: event-hubs-dotnet-framework-api-overview.md
+    - name: Események küldése
+      items:
+        - name: .NET Standard
+          href: event-hubs-dotnet-standard-getstarted-send.md
+        - name: Java
+          href: event-hubs-java-get-started-send.md
+        - name: 'C#'
+          href: event-hubs-c-getstarted-send.md
+    - name: Események fogadása
+      items:
+        - name: .NET Standard
+          href: event-hubs-dotnet-standard-getstarted-receive-eph.md
+        - name: Java
+          href: event-hubs-java-get-started-receive-eph.md
+        - name: Apache Storm
+          href: event-hubs-storm-getstarted-receive.md
+    - name: Események rögzítése
+      items:
+        - name: Az Event Hubs Capture engedélyezése az Azure Portalon
+          href: event-hubs-capture-enable-through-portal.md
+        - name: Az Event Hubs Capture engedélyezése Resource Manager-sablonnal
+          href: event-hubs-resource-manager-namespace-event-hub-enable-capture.md
+    - name: Kezelés
+      items:
+        - name: Event Hubs-eseményközpontok monitorozása az Azure Monitoring segítségével
+          href: event-hubs-metrics-azure-monitor.md
+        - name: Event Hubs felügyeleti könyvtárak
+          href: event-hubs-management-libraries.md
+        - name: Rögzítés
+          items:
+            - name: Event Hubs Capture
+              href: event-hubs-capture-overview.md
+            - name: Event Hubs-adatok rögzítése Python használatával
+              href: event-hubs-capture-python.md
+        - name: Azure Diagnostics-adatok streamelése az Event Hubs használatával
+          href: event-hubs-streaming-azure-diags-data.md
+        - name: Eseményközpontok létrehozása és üzembe helyezése Resource Manager-sablonnal
+          href: event-hubs-resource-manager-namespace-event-hub.md
+- name: Referencia
+  items:
+    - name: Java
+      items:
+        - name: com.microsoft.azure.eventhubs
+          href: /java/api/com.microsoft.azure.eventhubs
+        - name: com.microsoft.azure.eventprocessorhost
+          href: /java/api/com.microsoft.azure.eventprocessorhost
+    - name: .NET
+      items:
+        - name: Microsoft.Azure.EventHubs
+          href: /dotnet/api/microsoft.azure.eventhubs
+        - name: Microsoft.Azure.EventHubs.Processor
+          href: /dotnet/api/microsoft.azure.eventhubs.processor
+        - name: Microsoft.ServiceBus.Messaging
+          href: /dotnet/api/microsoft.servicebus.messaging
+        - name: Microsoft.ServiceBus.Messaging.EventProcessorHost
+          href: /dotnet/api/microsoft.servicebus.messaging.eventprocessorhost
+        - name: Microsoft.Azure.Management.EventHub
+          href: /dotnet/api/microsoft.azure.management.eventhub
+    - name: REST
+      href: /rest/api/eventhub
+    - name: Kivételek
+      href: event-hubs-messaging-exceptions.md
+    - name: Kvóták
+      href: event-hubs-quotas.md
+- name: További források
+  items:
+    - name: GYIK
+      href: event-hubs-faq.md
+    - name: Azure-ütemterv
+      href: 'https://azure.microsoft.com/roadmap/?category=internet-of-things'
+    - name: Képzési terv
+      href: 'https://azure.microsoft.com/documentation/learning-paths/event-hubs/'
+    - name: Díjszabás
+      href: 'https://azure.microsoft.com/pricing/details/event-hubs/'
+    - name: Díjkalkulátor
+      href: 'https://azure.microsoft.com/pricing/calculator/'
+    - name: Szolgáltatási hírek
+      href: 'https://azure.microsoft.com/updates/?product=event-hubs'
+    - name: Stack Overflow
+      href: 'http://stackoverflow.com/questions/tagged/azure-eventhub'
+    - name: Videók
+      href: 'https://azure.microsoft.com/documentation/videos/index/?services=event-hubs'

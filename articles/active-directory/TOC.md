@@ -186,12 +186,6 @@
 ### [Bevezetés](manage-apps/plan-an-application-integration.md)
 ### [SaaS-alkalmazások integrációjának oktatóanyagai](saas-apps/tutorial-list.md)
 
-
-### [Felhőalkalmazások felderítése](manage-apps/cloud-app-discovery.md)
-#### [Pillanatkép-jelentések létrehozása](manage-apps/cloud-app-discovery-create-snapshot-reports.md)
-#### [Folyamatos jelentéskészítés konfigurálása](https://docs.microsoft.com/cloud-app-security/discovery-docker)
-#### [Egyéni naplóelemző használata](https://docs.microsoft.com/cloud-app-security/custom-log-parser)
-
 ### [Felhasználók átadása és az átadás megszüntetése SaaS-alkalmazásokban](active-directory-saas-app-provisioning.md) 
 #### [Alkalmazások integrációjának oktatóanyagai](saas-apps/tutorial-list.md) 
 #### [Automatikus üzembe helyezés SCIM-kompatibilis alkalmazásokhoz](manage-apps/use-scim-to-provision-users-and-groups.md) 

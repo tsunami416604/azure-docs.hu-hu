@@ -14,12 +14,12 @@ metadata:
   ms.topic: landing-page
   ms.date: 01/23/2017
   ms.author: carolz
-  ms.openlocfilehash: e79c80d894ec798df28f9d447097b2d8070baf61
-  ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
+  ms.openlocfilehash: 1a4c6399f0c67df70781142db7c09a4d04d37991
+  ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
   ms.translationtype: HT
   ms.contentlocale: hu-HU
-  ms.lasthandoff: 01/12/2018
-  ms.locfileid: "27785457"
+  ms.lasthandoff: 06/28/2018
+  ms.locfileid: "37080911"
 abstract:
   description: Az Azure Web Apps segítségével egy tetszőleges programozási nyelven hozhat létre és üzemeltethet webalkalmazásokat infrastruktúrakezelés nélkül. Automatikus méretezést és magas rendelkezésre állást kínál, támogatja a Windows és a Linux rendszert is, valamint lehetővé teszi az automatikus telepítéseket a GitHub, Visual Studio Team Services vagy bármely egyéb Git-adattárból. Ismerje meg, hogyan használhatja az Azure Web Apps szolgáltatást a gyors útmutatóink, oktatóanyagaink és példáink segítségével.
   aside:
@@ -64,14 +64,42 @@ sections:
       text: HTML
       href: https://docs.microsoft.com/azure/app-service/app-service-web-get-started-html
   - type: paragraph
-    text: 'Megtudhatja, hogyan végezhet folyamatos üzembe helyezést:'
+    text: 'Megtudhatja, hogyan helyezheti üzembe a kódot:'
   - type: list
     style: icon48
     items:
     - image:
+        src: media/index/zip.svg
+      text: ZIP/WAR
+      href: app-service-deploy-zip.md
+    - image:
+        src: media/index/ftp.svg
+      text: FTP
+      href: app-service-deploy-ftp.md
+    - image:
+        src: media/index/git-icon.svg
+      text: Helyi Git
+      href: app-service-deploy-local-git.md
+    - image:
         src: https://docs.microsoft.com/azure/media/index/logo_vs-team-services.svg
       text: VSTS
       href: https://docs.microsoft.com/vsts/build-release/apps/cd/azure/aspnet-core-to-azure-webapp?toc=/vsts/deploy-azure/toc.json&bc=/vsts/deploy-azure/breadcrumb/toc.json
+    - image:
+        src: media/index/github-octicons.svg
+      text: GitHub
+      href: app-service-continuous-deployment.md
+    - image:
+        src: media/index/bitbucket.svg
+      text: Bitbucket
+      href: app-service-continuous-deployment.md
+    - image:
+        src: media/index/dropbox.svg
+      text: DropBox-szinkronizálás
+      href: app-service-deploy-content-sync.md
+    - image:
+        src: media/index/onedrive.svg
+      text: OneDrive-szinkronizálás
+      href: app-service-deploy-content-sync.md
 - title: Részletes útmutatók
   items:
   - type: paragraph
@@ -109,7 +137,7 @@ sections:
     items:
     - html: <a href="/powershell/azureps-cmdlets-docs">Azure PowerShell</a>
     - html: <a href="/cli/azure/appservice">Azure CLI</a>
-- title: Hivatkozás
+- title: Referencia
   items:
   - type: list
     style: cards

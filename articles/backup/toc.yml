@@ -61,13 +61,13 @@
           href: backup-mabs-protection-matrix.md
         - name: Telepítés vagy frissítés
           items:
-            - name: Az Azure Backup Server számítási feladatainak előkészítése az Azure Portalon
+            - name: Azure Backup Server telepítése
               href: backup-azure-microsoft-azure-backup.md
-            - name: Tárterület hozzáadása az Azure Backup Serverhez
+            - name: Tároló hozzáadása
               href: backup-mabs-add-storage.md
-            - name: Az Azure Backup Server frissítése a 2-es verzióra
+            - name: Frissítés a 2-es verzióra
               href: backup-mabs-upgrade-to-v2.md
-            - name: Az Azure Backup Server felügyelet nélküli telepítése
+            - name: Felügyelet nélküli telepítés
               href: backup-mabs-unattended-install.md
         - name: Számítási feladatok védelme
           items:

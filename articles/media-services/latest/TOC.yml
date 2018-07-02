@@ -35,6 +35,10 @@
   items:
     - name: Objektumok
       href: assets-concept.md
+    - name: Tartalomvédelem
+      items:
+        - name: Áttekintés
+          href: content-protection-overview.md
     - name: Encoding
       items:
         - name: Áttekintés
@@ -69,6 +73,10 @@
           href: job-input-from-http-how-to.md
         - name: Egy helyi fájlból – .NET
           href: job-input-from-local-file-how-to.md
+    - name: Tartalom védelme
+      items:
+        - name: AES-128-cal – .NET
+          href: protect-with-aes128.md
 - name: Referencia
   items:
     - name: OpenAPI-specifikáció (Swagger)
@@ -87,6 +95,12 @@
       href: 'https://docs.microsoft.com/en-us/javascript/api/azure-arm-mediaservices/index?view=azure-node-latest'
     - name: Eseménysémák
       href: media-services-event-schemas.md
+    - name: DRM-licencsémák
+      items:
+        - name: PlayReady-licencsablon
+          href: playready-license-template-overview.md
+        - name: Widevine-licencsablon
+          href: widevine-license-template-overview.md
 - name: További források
   items:
     - name: Azure-ütemterv

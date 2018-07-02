@@ -1,7 +1,9 @@
-- name: Mi a QnA Maker?
-  href: Overview/overview.md
+- name: A QnA Maker dokumentációja
+  href: index.yml
 - name: Áttekintés
   items:
+    - name: Mi a QnA Maker?
+      href: Overview/overview.md
     - name: Támogatott nyelvek
       href: Overview/languages-supported.md
 - name: Gyors útmutatók

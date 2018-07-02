@@ -113,6 +113,9 @@
           href: how-to-manage-dps-with-cli.md
         - name: Regisztrációs szolgáltatási API-k hozzáférésének vezérlése
           href: how-to-control-access.md
+    - name: IoT Edge-eszköz regisztrációja
+      href: ../iot-edge/how-to-auto-provision-simulated-device-windows.md
+      maintainContext: true
     - name: Igazolási mechanizmusok használata SDK-val
       href: use-hsm-with-sdk.md
     - name: Fejlesztés SDK-eszközökkel

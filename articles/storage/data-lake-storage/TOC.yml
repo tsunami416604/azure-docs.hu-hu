@@ -50,8 +50,12 @@
           href: use-distcp.md
         - name: Adatok másolása a 2. generációs Data Lake Storage-ba az Azure Data Factory használatával
           href: ../../data-factory/load-azure-data-lake-storage-gen2.md
-    - name: Csatlakozás az Azure DataBrickshez
+    - name: Csatlakozás az Azure Databrickshez
       href: 'https://docs.azuredatabricks.net/spark/latest/data-sources/azure/azure-datalake-gen2.html'
+- name: Referencia
+  items:
+    - name: REST
+      href: 'https://docs.microsoft.com/rest/api/storageservices/data-lake-storage-gen2'
 - name: További források
   items:
     - name: Azure-ütemterv

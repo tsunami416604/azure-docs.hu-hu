@@ -138,9 +138,11 @@
         - name: Függvények tesztelése
           href: functions-test-a-function.md
         - name: Helyi fejlesztés és hibakeresés
-          href: functions-run-local.md
+          href: functions-develop-local.md
         - name: A Visual Studio fejlesztése
           href: functions-develop-vs.md
+        - name: A Core Tools fejlesztése
+          href: functions-run-local.md
         - name: Kapcsolatok kezelése
           href: manage-connections.md
         - name: Hibakezelés

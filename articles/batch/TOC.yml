@@ -178,8 +178,8 @@
   items:
     - name: Azure-ütemterv
       href: 'https://azure.microsoft.com/roadmap/'
-    - name: A Batch fóruma
-      href: 'https://social.msdn.microsoft.com/Forums/en-us/home?forum=azurebatch'
+    - name: Batch-közösség
+      href: 'https://github.com/Azure/Batch'
     - name: Batch Shipyard
       href: 'https://github.com/Azure/batch-shipyard'
     - name: Blog

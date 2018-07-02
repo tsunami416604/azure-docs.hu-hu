@@ -25,16 +25,11 @@
   items:
     - name: A szerepkör-definíciók ismertetése
       href: role-definitions.md
-    - name: Beépített szerepkörök
-      href: built-in-roles.md
-    - name: Erőforrás-szolgáltatói műveletek
-      href: resource-provider-operations.md
     - name: Privileged Identity Management (PIM) RBAC-hez
       href: pim-azure-resource.md
     - name: Feltételes hozzáférés az Azure felügyeleti szolgáltatásaihoz
       href: conditional-access-azure-management.md
 - name: Útmutatók
-  expanded: true
   items:
     - name: Hozzáférés kezelése
       items:
@@ -63,3 +58,17 @@
       href: role-assignments-external-users.md
     - name: Hibaelhárítás
       href: troubleshooting.md
+- name: Referencia
+  items:
+    - name: Beépített szerepkörök
+      href: built-in-roles.md
+    - name: Erőforrás-szolgáltatói műveletek
+      href: resource-provider-operations.md
+    - name: RBAC-korlátozások
+      href: '../azure-subscription-service-limits.md#role-based-access-control-limits'
+    - name: Azure PowerShell
+      href: /powershell/module/azurerm.resources
+    - name: Azure CLI
+      href: /cli/azure/role?view=azure-cli-latest
+    - name: REST API
+      href: /rest/api/authorization/
