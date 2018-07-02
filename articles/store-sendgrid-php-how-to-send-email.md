@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 10/30/2014
 ms.author: elmer.thomas@sendgrid.com; erika.berkland@sendgrid.com; vibhork; matt.bernier@sendgrid.com
 ms.openlocfilehash: 523b986f66a2e48685e9707903194856f0dcf4a2
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 06/29/2018
 ms.locfileid: "23874030"
 ---
 # <a name="how-to-use-the-sendgrid-email-service-from-php"></a>Php-ből a SendGrid E-mail szolgáltatás használata
@@ -35,7 +35,7 @@ SendGrid van egy [felhőalapú szolgáltatás] biztosít megbízható [tranzakci
 * Ügyfél-lekérdezések továbbítása
 * E-mail értesítések az alkalmazásról
 
-További információkért lásd: [https://sendgrid.com][https://sendgrid.com].
+További információkért lásd: [ https://sendgrid.com ] [ https://sendgrid.com].
 
 ## <a name="create-a-sendgrid-account"></a>A SendGrid-fiók létrehozása
 [!INCLUDE [sendgrid-sign-up](../includes/sendgrid-sign-up.md)]
@@ -47,7 +47,7 @@ Nincsenek különleges SendGrid használatát egy Azure PHP-alkalmazás szüksé
 Elküldheti e-mailek SMTP vagy a SendGrid által biztosított webes API használatával.
 
 ### <a name="smtp-api"></a>SMTP API
-A SendGrid SMTP API használatával e-mailt küldeni, használja a *Swift levelezőprogrammal*, egy összetevő-alapú kódtár a PHP-alkalmazások az e-mailek küldésekor. Letöltheti a *Swift levelezőprogrammal* kódtárat [http://swiftmailer.org/download] [ http://swiftmailer.org/download] v5.3.0 (használata [szerkesztő] Swift telepítése Levelezőprogrammal). A könyvtárhoz e-mailek küldéséhez magában foglalja a példányok a <span class="auto-style2">Swift\_SmtpTransport</span>, <span class="auto-style2">Swift\_levelezőprogrammal</span>, és <span class="auto-style2">Swift\_üzenet </span> osztályok, a megfelelő tulajdonságokat, és hívja a <span class="auto-style2">Swift\_Mailer::send</span> metódust.
+A SendGrid SMTP API használatával e-mailt küldeni, használja a *Swift levelezőprogrammal*, egy összetevő-alapú kódtár a PHP-alkalmazások az e-mailek küldésekor. Letöltheti a *Swift levelezőprogrammal* kódtárat [ http://swiftmailer.org/download ] [ http://swiftmailer.org/download] v5.3.0 (használata [Composer] Swift levelezőprogrammal telepítése). A könyvtárhoz e-mailek küldéséhez magában foglalja a példányok a <span class="auto-style2">Swift\_SmtpTransport</span>, <span class="auto-style2">Swift\_levelezőprogrammal</span>, és <span class="auto-style2">Swift\_üzenet </span> osztályok, a megfelelő tulajdonságokat, és hívja a <span class="auto-style2">Swift\_Mailer::send</span> metódust.
 
     <?php
      include_once "vendor/autoload.php";
@@ -281,7 +281,7 @@ SendGrid "szűrők" révén további e-mail-funkciókat biztosítja. Ezek a beá
 
 Szűrők üzenet szűrők tulajdonságának használatával alkalmazhatók. Minden egyes szűrő szűrő-specifikus beállításokat tartalmazó kivonat szerint van megadva. Az alábbi példa lehetővé teszi, hogy a lábléc szűrőt, és határozza meg, hogy a rendszer hozzáfűzi az e-mailt szöveges üzenetet.
 Ehhez a példához használjuk [sendgrid-php könyvtár].
-Használjon [szerkesztő] telepíteni szalagtár:
+Használjon [Composer] telepíteni szalagtár:
 
     php composer.phar require sendgrid/sendgrid 2.1.1
 
@@ -380,12 +380,12 @@ Példa:
 
      print_r($response);
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Most, hogy megismerte a SendGrid E-mail szolgáltatás alapjait, az alábbi hivatkozásokból további.
 
 * SendGrid dokumentáció: <https://sendgrid.com/docs>
-* SendGrid PHP könyvtár: <https://github.com/sendgrid/sendgrid-php>
-* SendGrid különleges ajánlat Azure ügyfeleknek: <https://sendgrid.com/windowsazure.html>
+* SendGrid PHP-könyvtár: <https://github.com/sendgrid/sendgrid-php>
+* SendGrid a különleges ajánlat Azure ügyfelek esetén: <https://sendgrid.com/windowsazure.html>
 
 További információ: a [PHP fejlesztői központ](/develop/php/).
 
@@ -398,4 +398,4 @@ További információ: a [PHP fejlesztői központ](/develop/php/).
 [felhőalapú szolgáltatás]: https://sendgrid.com/email-solutions
 [tranzakciós e-mailben kézbesítésre]: https://sendgrid.com/transactional-email
 [sendgrid-php könyvtár]: https://github.com/sendgrid/sendgrid-php/tree/v2.1.1
-[szerkesztő]: https://getcomposer.org/download/
+[Composer]: https://getcomposer.org/download/
