@@ -380,6 +380,7 @@
 ### [Helyszíni identitások integrálása az Azure AD Connecttel](./connect/active-directory-aadconnect.md)
 
 ## Erőforrások hozzáférésének delegálása
+### [Rendszergazdai szerepkör tagjainak megtekintése](directory-manage-roles-portal.md)
 ### [Rendszergazdai szerepkörök](active-directory-assign-admin-roles-azure-portal.md)
 #### [Rendszergazdai szerepkör hozzárendelése felhasználóhoz](fundamentals/active-directory-users-assign-role-azure-portal.md)
 #### [A tagok és vendégfelhasználók engedélyeinek összehasonlítása](fundamentals/users-default-permissions.md)

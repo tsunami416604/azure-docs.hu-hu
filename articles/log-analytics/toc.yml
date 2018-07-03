@@ -169,94 +169,104 @@
           href: log-analytics-agent-linux-support.md
     - name: Megoldások használata
       items:
-        - name: Megoldások áttekintése
-          href: log-analytics-add-solutions.md
+        - name: Megoldások telepítése
+          href: ../monitoring/monitoring-solutions.md?toc=%2fazure%2flog-analytics%2ftoc.json
+        - name: Megoldásleltár
+          href: ../monitoring/monitoring-solutions-inventory.md?toc=%2fazure%2flog-analytics%2ftoc.json
         - name: Célmegoldások
           href: ../monitoring/monitoring-solution-targeting.md?toc=%2fazure%2flog-analytics%2ftoc.json
-        - name: Azure-tevékenységnaplók
+        - name: Megoldási útmutatók
           items:
-            - name: Elemzés
-              href: log-analytics-activity.md
-            - name: Gyűjtés több előfizetésben
-              href: log-analytics-activity-logs-subscriptions.md
-        - name: AD Assessment
-          href: log-analytics-ad-assessment.md
-        - name: AD Replication Status
-          href: log-analytics-ad-replication-status.md
-        - name: Az ügynök állapota
-          href: ../operations-management-suite/oms-solution-agenthealth.md?toc=%2fazure%2flog-analytics%2ftoc.json
-        - name: Riasztáskezelés
-          href: log-analytics-solution-alert-management.md
-        - name: Application Insights Connector
-          href: log-analytics-app-insights-connector.md
-        - name: Azure SQL Analytics
-          href: log-analytics-azure-sql.md
-        - name: Azure Web Apps Analytics
-          href: log-analytics-azure-web-apps-analytics.md
-        - name: Kapacitás és teljesítmény
-          href: log-analytics-capacity.md
-        - name: Változások követése
-          href: log-analytics-change-tracking.md
-        - name: Containers
-          href: log-analytics-containers.md
-        - name: DNS-elemzés
-          href: log-analytics-dns.md
-        - name: Informatikai szolgáltatásfelügyeleti összekötő
-          href: log-analytics-itsmc-overview.md
-          items:
-            - name: Informatikai szolgáltatásfelügyeleti kapcsolatok
-              href: log-analytics-itsmc-connections.md
-        - name: Key Vault
-          href: log-analytics-azure-key-vault.md
-        - name: Logic Apps B2B-üzenetek
-          items:
-            - name: Logic Apps B2B-üzeneteken alapuló megoldás
-              href: ../logic-apps/logic-apps-track-b2b-messages-omsportal.md?toc=%2fazure%2flog-analytics%2ftoc.json
-            - name: Logic Apps B2B egyéni követési séma
-              href: ../logic-apps/logic-apps-track-integration-account-custom-tracking-schema.md?toc=%2fazure%2flog-analytics%2ftoc.json
-        - name: Hálózatelemzés
-          href: log-analytics-azure-networking-analytics.md
-        - name: Hálózati teljesítményfigyelő
-          items:
-            - name: Megoldás áttekintése
-              href: log-analytics-network-performance-monitor.md
-            - name: Teljesítménymonitorozás
-              href: log-analytics-network-performance-monitor-performance-monitor.md
-            - name: Szolgáltatásvégpont
-              href: log-analytics-network-performance-monitor-service-endpoint.md
-            - name: ExpressRoute
-              href: log-analytics-network-performance-monitor-expressroute.md
-            - name: Díjszabás
-              href: log-analytics-network-performance-monitor-pricing-faq.md
-        - name: Office 365
-          href: ../operations-management-suite/oms-solution-office-365.md?toc=%2fazure%2flog-analytics%2ftoc.json
-        - name: SCOM állapotának ellenőrzése
-          href: log-analytics-scom-assessment.md
-        - name: Biztonsági naplózás
-          href: ../security-center/security-center-intro.md
-        - name: Service Fabric és Azure PowerShell
-          href: log-analytics-service-fabric.md
-          items:
-            - name: Service Fabric és Azure Resource Manager
-              href: log-analytics-service-fabric-azure-resource-manager.md
-        - name: Szolgáltatástérkép
-          href: ../monitoring/monitoring-service-map.md?toc=%2fazure%2flog-analytics%2ftoc.json
-        - name: SQL állapotának ellenőrzése
-          href: log-analytics-sql-assessment.md
-        - name: Surface Hub
-          href: log-analytics-surface-hubs.md
-        - name: Frissítéskezelés
-          href: ../operations-management-suite/oms-solution-update-management.md?toc=%2fazure%2flog-analytics%2ftoc.json
-        - name: VMware
-          href: log-analytics-vmware.md
-        - name: Windows Analytics
-          items:
-            - name: A frissítések megfelelősége
-              href: 'https://technet.microsoft.com/itpro/windows/manage/update-compliance-get-started'
-            - name: Frissítési készültség
-              href: 'https://technet.microsoft.com/itpro/windows/deploy/upgrade-readiness-get-started'
-        - name: Átviteli adatok
-          href: log-analytics-wire-data.md
+            - name: Azure-tevékenységnaplók
+              items:
+                - name: Elemzés
+                  href: log-analytics-activity.md
+                - name: Gyűjtés több előfizetésben
+                  href: log-analytics-activity-logs-subscriptions.md
+            - name: AD Assessment
+              href: log-analytics-ad-assessment.md
+            - name: AD Replication Status
+              href: log-analytics-ad-replication-status.md
+            - name: Az ügynök állapota
+              href: ../monitoring/monitoring-solution-agenthealth.md?toc=%2fazure%2flog-analytics%2ftoc.json
+            - name: Riasztáskezelés
+              href: log-analytics-solution-alert-management.md
+            - name: Application Insights Connector
+              href: log-analytics-app-insights-connector.md
+            - name: Azure SQL Analytics
+              href: log-analytics-azure-sql.md
+            - name: Azure Web Apps Analytics
+              href: log-analytics-azure-web-apps-analytics.md
+            - name: Kapacitás és teljesítmény
+              href: log-analytics-capacity.md
+            - name: Változások követése
+              href: log-analytics-change-tracking.md
+            - name: Containers
+              href: log-analytics-containers.md
+            - name: DNS-elemzés
+              href: log-analytics-dns.md
+            - name: Informatikai szolgáltatásfelügyeleti összekötő
+              href: log-analytics-itsmc-overview.md
+              items:
+                - name: Informatikai szolgáltatásfelügyeleti kapcsolatok
+                  href: log-analytics-itsmc-connections.md
+            - name: Key Vault
+              href: log-analytics-azure-key-vault.md
+            - name: Logic Apps B2B-üzenetek
+              items:
+                - name: Logic Apps B2B-üzeneteken alapuló megoldás
+                  href: ../logic-apps/logic-apps-track-b2b-messages-omsportal.md?toc=%2fazure%2flog-analytics%2ftoc.json
+                - name: Logic Apps B2B egyéni követési séma
+                  href: ../logic-apps/logic-apps-track-integration-account-custom-tracking-schema.md?toc=%2fazure%2flog-analytics%2ftoc.json
+            - name: Hálózatelemzés
+              href: log-analytics-azure-networking-analytics.md
+            - name: Hálózati teljesítményfigyelő
+              items:
+                - name: Megoldás áttekintése
+                  href: log-analytics-network-performance-monitor.md
+                - name: Teljesítménymonitorozás
+                  href: log-analytics-network-performance-monitor-performance-monitor.md
+                - name: Szolgáltatásvégpont
+                  href: log-analytics-network-performance-monitor-service-endpoint.md
+                - name: ExpressRoute
+                  href: log-analytics-network-performance-monitor-expressroute.md
+                - name: Díjszabás
+                  href: log-analytics-network-performance-monitor-pricing-faq.md
+            - name: Office 365
+              href: ../monitoring/monitoring-solution-office-365.md?toc=%2fazure%2flog-analytics%2ftoc.json
+            - name: SCOM állapotának ellenőrzése
+              href: log-analytics-scom-assessment.md
+            - name: Biztonsági naplózás
+              href: ../security-center/security-center-intro.md
+            - name: Service Fabric és Azure PowerShell
+              href: log-analytics-service-fabric.md
+              items:
+                - name: Service Fabric és Azure Resource Manager
+                  href: log-analytics-service-fabric-azure-resource-manager.md
+            - name: Szolgáltatástérkép
+              items:
+                - name: Használat
+                  href: ../monitoring/monitoring-service-map.md?toc=%2fazure%2flog-analytics%2ftoc.json
+                - name: Konfigurálás
+                  href: ../monitoring/monitoring-service-map-configure.md?toc=%2fazure%2flog-analytics%2ftoc.json
+                - name: Integrálás az Operations Managerrel
+                  href: ../monitoring/monitoring-service-map-scom.md?toc=%2fazure%2flog-analytics%2ftoc.json
+            - name: SQL állapotának ellenőrzése
+              href: log-analytics-sql-assessment.md
+            - name: Surface Hub
+              href: log-analytics-surface-hubs.md
+            - name: Frissítéskezelés
+              href: ../automation/automation-update-management.md?toc=%2fazure%2flog-analytics%2ftoc.json
+            - name: VMware
+              href: log-analytics-vmware.md
+            - name: Windows Analytics
+              items:
+                - name: A frissítések megfelelősége
+                  href: 'https://technet.microsoft.com/itpro/windows/manage/update-compliance-get-started'
+                - name: Frissítési készültség
+                  href: 'https://technet.microsoft.com/itpro/windows/deploy/upgrade-readiness-get-started'
+            - name: Átviteli adatok
+              href: log-analytics-wire-data.md
     - name: Fejlesztés
       items:
         - name: PowerShell-parancsmagok

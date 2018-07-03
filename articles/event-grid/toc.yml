@@ -89,6 +89,12 @@
       href: /powershell/module/azurerm.eventgrid
     - name: REST
       href: /rest/api/eventgrid
+    - name: Sablonerőforrások
+      items:
+        - name: Esemény-előfizetések
+          href: /azure/templates/microsoft.eventgrid/eventsubscriptions
+        - name: Témakörök
+          href: /azure/templates/microsoft.eventgrid/topics
     - name: SDK-k
       href: sdk-overview.md
     - name: Előfizetési séma

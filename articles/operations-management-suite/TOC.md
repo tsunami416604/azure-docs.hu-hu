@@ -1,6 +1,5 @@
 # Áttekintés
-## [Az Operations Management Suite ismertetése](operations-management-suite-overview.md)
-## [OMS-architektúra](operations-management-suite-architecture.md)
+## [Ügynökkel végzett monitorozás](../monitoring/index.md)
 
 # Bevezetés
 ## [Log Analytics](../log-analytics/log-analytics-get-started.md)
@@ -13,8 +12,6 @@
 
 ## Elemzés
 ### [Log Analytics](../log-analytics/log-analytics-overview.md?toc=%2fazure%2foperations-management-suite%2ftoc.json)
-### [Felügyeleti termékek összehasonlítása](operations-management-suite-monitoring-product-comparison.md)
-### [Riasztások kezelése](operations-management-suite-monitoring-alerts.md)
 ## Automatizálás
 ### [Az Azure Automation áttekintése](../automation/automation-intro.md?toc=%2fazure%2foperations-management-suite%2ftoc.json)
 
@@ -68,12 +65,7 @@
 ### [Ajánlott eljárások](../monitoring/monitoring-solutions-best-practices.md)
 
 ## Felügyeleti forgatókönyvek
-### [Elemzési adatok gyűjtése a runbookból](operations-management-suite-runbook-datacollect.md)
-
-## [Integrálás az OMS-sel](operations-management-suite-integration.md)
-
-# Referencia
-## [SDK](operations-management-suite-sdk.md)
+### [Elemzési adatok gyűjtése a runbookból](../monitoring/monitoring-runbook-datacollect.md?toc=%2fazure%2foperations-management-suite%2ftoc.json)
 
 # További források
 ## [Azure-ütemterv](https://azure.microsoft.com/roadmap/)

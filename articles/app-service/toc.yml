@@ -278,3 +278,11 @@
               href: app-service-web-open-source-technologies-faq.md
             - name: Konfigurálással és felügyelettel kapcsolatos gyakori kérdések
               href: app-service-web-configuration-and-management-faq.md
+    - name: IP-cím módosítása
+      items:
+        - name: Bejövő IP-cím
+          href: ip-address-change-inbound.md
+        - name: Kimenő IP-cím
+          href: ip-address-change-outbound.md
+        - name: SSL-cím
+          href: ip-address-change-ssl.md

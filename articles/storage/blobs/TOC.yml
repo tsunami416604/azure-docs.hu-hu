@@ -363,10 +363,10 @@
           href: 'https://docs.microsoft.com/dotnet/api/overview/azure/storage/management'
     - name: Java
       items:
-        - name: 'Blobok, üzenetsorok, táblák és fájlok'
-          href: 'https://docs.microsoft.com/java/api/overview/azure/storage/client'
-        - name: Resource Manager
-          href: 'https://docs.microsoft.com/java/api/overview/azure/storage/management'
+        - name: 'Blobok, üzenetsorok, táblák és fájlok (7-es verzió)'
+          href: 'https://docs.microsoft.com/java/api/storage/client?view=azure-java-stable'
+        - name: Blob SDK (10-es verzió)
+          href: 'https://docs.microsoft.com/java/api/storage/client?view=azure-java-preview'
     - name: Node.js
       href: 'https://docs.microsoft.com/javascript/api/overview/azure/storage'
     - name: Ruby

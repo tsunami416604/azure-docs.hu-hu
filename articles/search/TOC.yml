@@ -145,7 +145,7 @@
           href: search-faceted-navigation.md
         - name: Relevanciahangolás
           href: 'https://docs.microsoft.com/rest/api/searchservice/add-scoring-profiles-to-a-search-index'
-        - name: Szinonimák (előzetes verzió)
+        - name: Szinonimák
           href: search-synonyms.md
     - name: Adatok indexelése
       items:
