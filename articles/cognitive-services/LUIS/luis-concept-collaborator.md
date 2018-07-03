@@ -1,6 +1,6 @@
 ---
-title: LUIS app együttműködés - Azure megértése |} Microsoft Docs
-description: Egy tulajdonoshoz és választható közreműködők LUIS alkalmazásokhoz.
+title: Megismerheti a LUIS alkalmazás együttműködés – Azure |} A Microsoft Docs
+description: A LUIS-alkalmazások egyetlen tulajdonosnak és a választható közreműködők van szükség.
 services: cognitive-services
 author: v-geberr
 manager: kamran.iqbal
@@ -9,57 +9,59 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: v-geberr
-ms.openlocfilehash: 51b3958f83cd110ace27f6ee42571c05843f5aa2
-ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
+ms.openlocfilehash: 93fda0b49f5f4893f80ee60f16ef16bc35edc5ee
+ms.sourcegitcommit: 4597964eba08b7e0584d2b275cc33a370c25e027
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36265065"
+ms.lasthandoff: 07/02/2018
+ms.locfileid: "37341272"
 ---
 # <a name="collaborating"></a>Együttműködés
 
-LUIS biztosít együttműködést másokkal ahhoz, hogy az alkalmazások engedélyezéséhez.
+A LUIS biztosít az együttműködést, hogy a csoport, hozzon létre egy alkalmazást.
 
-## <a name="luis-account"></a>LUIS fiók
-Egy LUIS fiókkal társítva egyetlen [Microsoft Live](https://login.live.com/) fiók. Minden LUIS fiókhoz megadott van egy ingyenes [kulcs szerzői](luis-concept-keys.md#authoring-key) való használatra az LUIS alkalmazások készítése a fiókjának van hozzáférési joga. 
+## <a name="luis-account"></a>A LUIS-fiók
+A LUIS-fiókhoz társítva egyetlen [Microsoft Live](https://login.live.com/) fiókot. Minden egyes LUIS fiókot kap egy ingyenes [kulcs létrehozási](luis-concept-keys.md#authoring-key) való használatra a LUIS-alkalmazások készítése a fiók hozzáféréssel rendelkezik. 
 
-Előfordulhat, hogy egy LUIS fiók sok LUIS alkalmazás.
+A LUIS-fiók számos LUIS alkalmazás lehet.
 
-## <a name="luis-app-owner"></a>LUIS alkalmazás tulajdonosa
-A fiókot, amely létrehoz egy alkalmazást a tulajdonosa. Minden alkalmazás rendelkezik egy tulajdonoshoz. A tulajdonos szerepel app  **[beállítások](luis-how-to-collaborate.md)**. Azt a fiókot, amelyet az alkalmazás törlése. Ez akkor is a fiókot, amely e-mailt kap, a végpont kvóta elérésekor 75 %-a havi korlátot. 
+Lásd: [Azure Active Directory-bérlő felhasználói](luis-how-to-account-settings.md#azure-active-directory-tenant-user) további információ az Active Directory felhasználói fiókokat. 
+
+## <a name="luis-app-owner"></a>A LUIS alkalmazás tulajdonosa
+A fiók, amely létrehoz egy alkalmazást a tulajdonosa. Minden alkalmazás rendelkezik egy egyetlen tulajdonosa. A tulajdonos szerepel az alkalmazás  **[beállítások](luis-how-to-collaborate.md)**. Ez az a fiók, amely az alkalmazás törlése. Ez akkor is a fiókot, amely e-mailt kap, ha a végpont kvóta eléri 75 %-a havi korlátot. 
 
 ## <a name="transfer-ownership"></a>Tulajdonjogok átadása
-LUIS tulajdonjogának, nem biztosít, azonban bármely közreműködő exportálhatja az alkalmazást, és majd importálja azt az alkalmazás létrehozása. Vegye figyelembe az új alkalmazás rendelkezik egy másik azonosítót. Az új app kell képezni, közzétett, és a használt új végpont.
+A LUIS tulajdon-átruházás, nem biztosít, azonban bármely közreműködő alkalmazást, és ezután importálja azt az alkalmazás létrehozása. Vegye figyelembe, hogy az új alkalmazás rendelkezik egy másik alkalmazás. Az alkalmazás új betanított, közzé kell, és a használt új végpont.
 
-## <a name="luis-app-collaborators"></a>LUIS app közreműködők
-Az alkalmazás tulajdonosa közreműködők is hozzáadhat egy alkalmazást. A tulajdonosa hozzá kell a közreműködő e-mail címet az alkalmazás  **[beállítások](luis-how-to-collaborate.md)**. A közreműködő az alkalmazás teljes hozzáféréssel rendelkezik. A közreműködő törölheti az alkalmazást, ha az alkalmazás a közreműködő fiók törlődik, de marad, a tulajdonos fiók. 
+## <a name="luis-app-collaborators"></a>A LUIS alkalmazás közreműködők
+Az alkalmazások tulajdonosai közreműködők is hozzáadhat egy alkalmazást. Adja hozzá a közreműködő e-mail címet az alkalmazás tulajdonosa kell  **[beállítások](luis-how-to-collaborate.md)**. A közreműködő, az alkalmazás teljes hozzáféréssel rendelkezik. A közreműködő törölheti az alkalmazást, ha az alkalmazás a közreműködőt fiókot eltávolítják, de a tulajdonos fiókja marad. 
 
-Ha azt szeretné, több alkalmazás megosztása közreműködők, a közreműködő e-mail hozzá kell minden alkalmazást. 
+Ha szeretné megosztani több alkalmazás közreműködőkkel együtt, a minden alkalmazás kell hozzá a közreműködő e-mail. 
 
 ## <a name="managing-multiple-authors"></a>Több szerző kezelése
-A [LUIS] [ LUIS] webhely jelenleg nem kínál tranzakció szintű szerzői. Engedélyezheti a szerzők alap verziójából származó független verzióin működik. Két különböző módszereket a következő szakaszok ismertetik.
+A [LUIS] [ LUIS] webhely jelenleg nem biztosít tranzakciószintű szerzői. Engedélyezheti a szerzők a kiindulási verzióról független verzióin működik. Az alábbiakban két különböző módszereket ismerteti.
 
-### <a name="manage-multiple-versions-inside-the-same-app"></a>Több verzió belül ugyanaz az alkalmazás kezelése
-Kezdje az [Klónozás](luis-how-to-manage-versions.md#clone-a-version), az Alapverzió, minden egyes Szerző. 
+### <a name="manage-multiple-versions-inside-the-same-app"></a>Alkalmazáson belül több verziók kezelése
+Első lépésként [Klónozás](luis-how-to-manage-versions.md#clone-a-version), a kiindulási verzióról, mindegyik szerző számára. 
 
-Minden egyes Szerző módosítást hajt végre az alkalmazás a saját verzióját. Ha elégedett a modellel minden Szerző, JSON fájlokba exportálását az új verziókat.  
+Mindegyik Szerző módosítást hajt végre az alkalmazás a saját verzióját. Ha mindegyik Szerző elégedett a modellel, JSON-fájlok exportálása az új verziókat.  
 
-Exportált alkalmazások olyan JSON-formátumú fájlokat, amelyek a módosítások hasonlíthatók össze. A fájlokat, hogy az új verzió egy JSON-fájl össze. Módosítsa a **versionId** tulajdonság az új, egyesített verzió jelölésére JSON-ban. Verzió importálnia kell az eredeti alkalmazást. 
+Exportált alkalmazások olyan JSON-formátumú fájlokat, amelyek a módosítások hasonlítható. A fájlokat, és hozzon létre egy egyetlen JSON-fájlt az új verzió össze. Módosítsa a **versionId** tulajdonság a JSON az új, egyesített verzió jelölésére. Importálja azt a verziót az eredeti alkalmazásba. 
 
-Ez a módszer lehetővé teszi egy aktív verzió van, egy szakaszban verziót, és egy közzétett verziót. Összehasonlíthatja az eredményeket a interaktív tesztelési panelen a három verziók között.
+Ez a módszer lehetővé teszi, hogy egy aktív verzióját, egy szakasz és egy közzétett verziója. Összehasonlíthatja az eredményeket az interaktív vizsgálati panelen a három verziója között.
 
-### <a name="manage-multiple-versions-as-apps"></a>Több verzió mint alkalmazások kezelése
-[Exportálás](luis-how-to-manage-versions.md#export-version) Alapverzió. Minden egyes Szerző importálja a verzióra. A személy, amellyel az alkalmazás különféle verzió tulajdonosa. Miután befejezte a verzió módosítása az alkalmazás exportálása. 
+### <a name="manage-multiple-versions-as-apps"></a>Alkalmazások több verziók kezelése
+[Exportálás](luis-how-to-manage-versions.md#export-version) Alapverzió. Mindegyik Szerző importálja a verziót. A személy, amely az alkalmazás importál a verzió tulajdonosa. Amikor végzett a verzió módosítása az alkalmazás exportálása. 
 
-Exportált alkalmazások olyan JSON-formátumú fájlokat, amelyek a módosítások az alap exportálás hasonlíthatók össze. A fájlokat, hogy az új verzió egy JSON-fájl össze. Módosítsa a **versionId** tulajdonság az új, egyesített verzió jelölésére JSON-ban. Verzió importálnia kell az eredeti alkalmazást.
+Exportált alkalmazások olyan JSON-formátumú fájlokat, amelyek a módosítások az alap exportálás összehasonlíthatók. A fájlokat, és hozzon létre egy egyetlen JSON-fájlt az új verzió össze. Módosítsa a **versionId** tulajdonság a JSON az új, egyesített verzió jelölésére. Importálja azt a verziót az eredeti alkalmazásba.
 
 ## <a name="next-steps"></a>További lépések
 
-Megértéséhez [versioning](luis-concept-version.md) fogalmakat. 
+Megismerheti [versioning](luis-concept-version.md) fogalmakat. 
 
-Lásd: [Alkalmazásbeállítások](luis-how-to-collaborate.md) megtudhatja, hogyan kezelheti az alkalmazás LUIS közreműködők.
+Lásd: [Alkalmazásbeállítások](luis-how-to-collaborate.md) megtudhatja, hogyan kezelheti a LUIS-alkalmazás a közreműködők.
 
-Lásd: [adja hozzá a e-mail hozzáférés listához](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/58fcccdd5aca2f08a4104342) a szerzői API-khoz.
+Lásd: [hozzáadása e-mail-hozzáférési listához](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/58fcccdd5aca2f08a4104342) a jelentéskészítési API-kkal.
 
 [luis-reference-prebuilt-domains]: https://docs.microsoft.com/azure/cognitive-services/luis/luis-reference-prebuilt-domains
 [LUIS]: https://docs.microsoft.com/azure/cognitive-services/luis/luis-reference-regions#luis-website

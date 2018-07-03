@@ -1,26 +1,26 @@
 ---
-title: Az Azure-adatbázis PostgreSQL korlátozásai
-description: Ez a cikk ismerteti az Azure adatbázis korlátozásai PostgreSQL, például a kapcsolat és a tárolási motor beállításai.
+title: Azure Database for postgresql-hez korlátozásai
+description: Ez a cikk ismerteti a korlátozások az Azure Database for postgresql-hez, például kapcsolat és a tárolási motort lehetőségek számát.
 services: postgresql
-author: kamathsun
-ms.author: sukamat
+author: rachel-msft
+ms.author: raagyema
 manager: kfile
 editor: jasonwhowell
 ms.service: postgresql
 ms.topic: article
-ms.date: 06/04/2018
-ms.openlocfilehash: 5cd829236d8d8a58e68f7bf766790aa3f0cb656e
-ms.sourcegitcommit: 4f9fa86166b50e86cf089f31d85e16155b60559f
+ms.date: 06/30/2018
+ms.openlocfilehash: dc1f8581df5dc7c5728094577298ba078cc2c527
+ms.sourcegitcommit: 4597964eba08b7e0584d2b275cc33a370c25e027
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34757416"
+ms.lasthandoff: 07/02/2018
+ms.locfileid: "37342951"
 ---
-# <a name="limitations-in-azure-database-for-postgresql"></a>Az Azure-adatbázis PostgreSQL korlátozásai
-A következő szakaszok ismertetik a kapacitás és az adatbázis szolgáltatásban működik korlátok.
+# <a name="limitations-in-azure-database-for-postgresql"></a>Azure Database for postgresql-hez korlátozásai
+A következő szakaszok ismertetik a kapacitás és a működési korlátai az adatbázis-szolgáltatás.
 
-## <a name="maximum-connections"></a>A kapcsolatok maximális száma
-Tarifacsomag és vCores-kapcsolatok maximális száma a következők: 
+## <a name="maximum-connections"></a>Kapcsolatok maximális száma
+Tarifacsomag és virtuális magok száma kapcsolatok maximális száma a következők: 
 
 |**Tarifacsomag**| **vCore(s)**| **Kapcsolatok maximális száma** |
 |---|---|---|
@@ -36,27 +36,30 @@ Tarifacsomag és vCores-kapcsolatok maximális száma a következők:
 |Memóriára optimalizált| 8| 480|
 |Memóriára optimalizált| 16| 950|
 
-Kapcsolatok száma meghaladja a korlátot, ha a következő hibaüzenet jelenhet meg:
-> Súlyos hiba: sajnos már túl sok ügyfél
+Amikor kapcsolatokat meghaladják a korlátot, a következő hiba jelenhet meg:
+> VÉGZETES: sajnos már túl sok ügyfél
 
-Az Azure rendszer figyelése az Azure-adatbázishoz PostgreSQL-kiszolgáló öt kapcsolatot igényel. 
+Az Azure rendszer öt kapcsolatok figyelése az Azure Database for PostgreSQL-kiszolgáló szükséges. 
 
 ## <a name="functional-limitations"></a>Működési korlátai
 ### <a name="scale-operations"></a>A skálázási műveletek
-1.  Dinamikus méretezés a kiszolgálók közötti tarifacsomagok jelenleg nem támogatott. Ez azt jelenti, hogy váltás alapvető, általános célú vagy Memóriaoptimalizált rétegek között.
-2.  Kiszolgáló tároló méretének csökkentése jelenleg nem támogatott.
+- Dinamikus méretezés, és onnan az alapszintű tarifacsomagban is kapható jelenleg nem támogatott.
+- Kiszolgáló-tároló méretének csökkentése jelenleg nem támogatott.
 
 ### <a name="server-version-upgrades"></a>Kiszolgáló verziófrissítések
-- Fő adatbázis motor verziók közötti automatikus áttelepítési jelenleg nem támogatott.
+- Fő database engine verziói között az automatikus migrálási jelenleg nem támogatott.
 
 ### <a name="subscription-management"></a>Előfizetés-kezelés
-- Dinamikusan előfizetésekhez és erőforráscsoportokhoz között a kiszolgálók áthelyezése jelenleg nem támogatott.
+- Dinamikusan mozgatása kiszolgálók között, előfizetések és -erőforráscsoportok jelenleg nem támogatott.
 
-### <a name="point-in-time-restore-pitr"></a>Pont-a--visszaállítás egy korábbi időpontra (PITR)
-1.  A PITR funkció használata esetén az új kiszolgáló ugyanazokat a konfigurációkat, mint a kiszolgáló alapul hozza létre.
-2.  A Törölt kiszolgáló visszaállítása nem támogatott.
+### <a name="vnet-service-endpoints"></a>Virtuális hálózati Szolgáltatásvégpontok
+- Virtuális hálózati Szolgáltatásvégpontok támogatása csak az általános célú és memóriahasználatra optimalizált kiszolgálók esetében érhető el.
+
+### <a name="point-in-time-restore-pitr"></a>Pont-az-időponthoz kötött visszaállítás (PITR)
+- A PITR a funkció használatakor az ugyanezzel a konfigurációval, mint a kiszolgáló-alapú, az új kiszolgáló jön létre.
+- Törölt kiszolgáló visszaállítása nem támogatott.
 
 ## <a name="next-steps"></a>További lépések
-- Megértéséhez [egyes tarifacsomagok elérhető](concepts-pricing-tiers.md)
-- További tudnivalók [támogatott PostgreSQL-adatbázis verziója](concepts-supported-versions.md)
-- Felülvizsgálati [készítsen biztonsági másolatot, és a kiszolgáló Azure-adatbázis visszaállítása az Azure portál használatával PostgreSQL](howto-restore-server-portal.md)
+- Megismerheti [érhető el az egyes tarifacsomagja](concepts-pricing-tiers.md)
+- Ismerje meg [támogatott PostgreSQL-adatbázis verziója](concepts-supported-versions.md)
+- Felülvizsgálat [biztonsági mentése és visszaállítása egy kiszolgálót az Azure Database for postgresql-hez az Azure portal használatával](howto-restore-server-portal.md)

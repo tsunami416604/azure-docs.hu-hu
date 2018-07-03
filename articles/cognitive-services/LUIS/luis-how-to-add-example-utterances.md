@@ -1,7 +1,7 @@
 ---
-title: Adja hozzá például utterances LUIS alkalmazások |} Microsoft Docs
+title: Példa beszédmódok hozzáadása a LUIS-alkalmazások |} A Microsoft Docs
 titleSuffix: Azure
-description: Megtudhatja, hogyan utterances hozzáadása a nyelvi ismertetése (LUIS) alkalmazások.
+description: Ismerje meg, a Language Understanding (LUIS) alkalmazások hozzáadása a kimondott szöveg.
 services: cognitive-services
 author: v-geberr
 manager: kaiqb
@@ -10,175 +10,175 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: v-geberr
-ms.openlocfilehash: 74a4b77bd9823e5462eecd438cf4c1d863e79892
-ms.sourcegitcommit: ea5193f0729e85e2ddb11bb6d4516958510fd14c
+ms.openlocfilehash: 80ccedc7299836cae689edd8a277a7c6d23befa7
+ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/21/2018
-ms.locfileid: "36300638"
+ms.lasthandoff: 07/02/2018
+ms.locfileid: "37345056"
 ---
-# <a name="add-example-utterances-and-label-with-entities"></a>Példa utterances és entitások címke hozzáadása
+# <a name="add-example-utterances-and-label-with-entities"></a>Példa kimondott szöveg és az entitások címke hozzáadása
 
-Példa utterances Példák szöveg felhasználói kérdés vagy parancsok. Mutatja meg a nyelvi ismertetése (LUIS), meg kell adni [példa utterances](luis-concept-utterance.md) való egy [leképezés](luis-concept-intent.md).
+Példa utterances Példák szöveges felhasználói kérdések vagy parancsok. Language Understanding (LUIS) elemre, hozzá kell [példa utterances](luis-concept-utterance.md) , egy [szándékot](luis-concept-intent.md).
 
-Általában egy példa utterance hozzáadása megjelölésű először, és entitásokat és a felirat utterances hozzon létre a leképezési oldalon. Ha entitások először ahelyett, hogy eredményezne, lásd: [új entitásokat](luis-how-to-add-entities.md).
+Általában ad hozzá egy példa utterance (kifejezés) megjelölésű először, és a entitásokat és a felirat utterances hozzon létre a szándék oldalon. Ha az entitások nem vznikla először, tekintse meg [entitások hozzáadása](luis-how-to-add-entities.md).
 
-## <a name="add-an-utterance"></a>Egy utterance hozzáadása
-Egy leképezési lapon adja meg a megfelelő példa utterance adatraktáraktól a felhasználók számára, például a `book 2 adult business tickets to Paris tomorrow on Air France` a szövegmezőben alatti leképezési nevét, és nyomja le az ENTER billentyűt. 
+## <a name="add-an-utterance"></a>Adja hozzá az utterance (kifejezés)
+Egy leképezési lapon adja meg egy megfelelő példa utterance (kifejezés) adatraktáraktól a felhasználók számára, mint például `book 2 adult business tickets to Paris tomorrow on Air France` alatti leképezési nevét, és nyomja le az ENTER billentyűt a szövegmezőben. 
  
 >[!NOTE]
->LUIS összes utterances csupa kisbetűssé alakítja.
+>A LUIS összes utterances kisbetűvé alakítja.
 
-![Képernyőfelvétel a leképezések részleteit megjelenítő oldalon, a kiemelt utterance](./media/luis-how-to-add-example-utterances/add-new-utterance-to-intent.png) 
+![Képernyőkép a leképezések Részletek lapján az utterance (kifejezés) kiemelésével](./media/luis-how-to-add-example-utterances/add-new-utterance-to-intent.png) 
 
-Az aktuális szándékot utterances telefonokhoz utterances kerülnek. 
+Beszédmódok kerülnek a kimondott szöveg listája a jelenlegi leképezés. 
 
 ## <a name="ignoring-words-and-punctuation"></a>Szavak és írásjelek figyelmen kívül hagyása
-Figyelmen kívül hagyja a szavakat vagy a példa utterance írásjelek, használja a [mintát](luis-concept-patterns.md#pattern-syntax) rendelkező a _figyelmen kívül hagyása_ szintaxist. 
+Ha azt szeretné, figyelmen kívül hagyja a szó vagy az a példában utterance (kifejezés) absztrakt, egy [minta](luis-concept-patterns.md#pattern-syntax) az a _figyelmen kívül hagyása_ szintaxist. 
 
 ## <a name="add-simple-entity-label"></a>Egyszerű entitás címke hozzáadása
-A következő eljárással hozzon létre, és egyéni entitások belül a leképezési lapon a következő utterance címkézését:
+A következő eljárással hozzon létre, és egyéni entitásokat a következő utterance (kifejezés) a szándék oldalon belüli címkét:
 
 ```
 book me 2 adult business tickets to Paris tomorrow on Air France
 ```
 
-1. Válassza ki az egyszerű egységként megjelölésére utterance "Sz".
+1. Válassza ki az utterance (kifejezés), a felirat szövegét egy egyszerű entitásként "Vezeték nélkül Franciaország".
 
     > [!NOTE]
-    > Címkézze, entitásokat szavak kiválasztása:
-    > * Egyetlen szó egyszerűen válassza ki azt. 
-    > * Állítja be a két vagy több szó jelölje ki a elején, majd a készlet végén.
+    > Címkézze entitásokként szavak kiválasztásakor:
+    > * Egyetlen szó csak adja meg azt. 
+    > * Két vagy több szóból készletének válassza ki a elején és végén található a készletet.
 
-2. Az entitás legördülő mezőben, amely akkor jelenik meg válasszon egy meglévő entitást, vagy adja hozzá egy új entitást. Új entitás hozzáadása, a szövegmezőbe írja be a nevét, majd válassza ki **új entitás létrehozása**. 
+2. Az entitás legördülő mezőben, amely akkor jelenik meg válasszon egy meglévő entitásra, vagy adjon hozzá egy új entitást. Új entitások hozzáadásához írja be annak nevét a szövegmezőbe, és válassza **új entitás létrehozása**. 
  
-    ![Képernyőfelvétel a leképezések részleteit megjelenítő oldalon, a beállítás a kijelölt címkézés egyszerű entitás](./media/luis-how-to-add-example-utterances/create-airline-simple-entity.png)
+    ![Képernyőkép a leképezések Részletek lap, az egyszerű entitás címkézés opció kiemelésével](./media/luis-how-to-add-example-utterances/create-airline-simple-entity.png)
 
-3. Az a **milyen típusú entitás kíván létrehozni?** előugró párbeszédpanelen ellenőrizze az entitás nevét, és egyszerű entitástípus, majd válassza ki és **végzett**.
+3. Az a **milyen típusú entitást szeretne létrehozni?** előugró párbeszédpanelen ellenőrizze az entitás nevét, és válassza ki az egyszerű entitás típusát, és válassza **kész**.
 
-    ![Megerősítő párbeszédpanel képe](./media/luis-how-to-add-example-utterances/create-simple-airline-entity.png)
+    ![Megerősítési párbeszédpanel képe](./media/luis-how-to-add-example-utterances/create-simple-airline-entity.png)
 
-    Lásd: [adatok kinyerése](luis-concept-data-extraction.md#simple-entity-data) tudhat meg többet az egyszerű entitás kibontása a végpont JSON választ. Az egyszerű entitás próbálja [gyors üzembe helyezés](luis-quickstart-primary-and-secondary-data.md) további egy egyszerű entitás használatáról.
+    Lásd: [Adatkinyerés](luis-concept-data-extraction.md#simple-entity-data) tudhat meg többet az egyszerű entitás kinyerését a végpont JSON lekérdezési válasz. Próbálja ki az egyszerű entitás [rövid](luis-quickstart-primary-and-secondary-data.md) tudhat meg többet az egyszerű entitás használatával.
 
 
-## <a name="add-list-entity-and-label"></a>Lista entitás és címke hozzáadása
-Lista entitások rögzített, lezárt csoportját képviselik (pontos egyezés megegyezik) kapcsolódó szavak a rendszerben. 
+## <a name="add-list-entity-and-label"></a>Lista entitás- és címke hozzáadása
+Lista entitások rögzített, lezárt csoportját képviselik (pontos egyezés megegyezik) kapcsolódó szavakat a rendszerben. 
 
-Egy italok lista entitás két normalizált értékeket veheti fel: vízjelek és soda pop. Minden egyes normalizált nevet már rendelkezik. A vízjel, a szinonimák használata H20, a gáz, egyszerű. A soda pop szinonimák gyümölcsöt, cola, gyömbér használata. Nem rendelkezik, ha hoz létre, hogy az entitás összes értékét. Hozzáadhat további már rendelkező felhasználó utterances áttekintése után.
+Egy ital lista entitás két normalizált érték szerepelhet: víz és soda a jelenléti pontra irányíthatja. Minden egyes normalizált név szinonimák rendelkezik. A vízzel, a szinonimák használata H20, gáz, az egyszerű. Soda csatlakozási pontot a szinonimák használata a gyümölcs, cola, gyömbér. Nem kell tudnia értékek az entitás létrehozásakor. Hozzáadhat további valós felhasználói utterances a szinonimák áttekintése után.
 
-|Normalizált nevet|Szinonimák|
+|Normalizált neve|Szinonimák|
 |--|--|
-|Víz|H20, a gáz, simán|
-|Soda pop|Gyümölcsöt, cola, gyömbér|
+|Víz|H20, gáz, átalánydíjjal|
+|Soda pop|Gyümölcs, cola, gyömbér|
 
-A leképezési oldalról új lista entitás létrehozásakor során két dolog, amelyek nem maguktól értetődőek. Először hoz létre egy új listáját adja hozzá az első listaelemhez. Másodszor az első listaelemhez nevű szót vagy kifejezést a utterance választotta. Ezeket az entitás oldalról később módosíthatja, amíg lehet gyorsabb egy utterance, amelynek a neve, a listaelem kívánt kiválasztásához.
+A leképezési oldaláról lista új entitások létrehozásakor végez két dolgokat, amelyek nem maguktól értetődőek. Először létrehoz egy új lista az első listaelemhez hozzáadásával. Másodszor az első listaelemhez nevű szó vagy kifejezés, szerezte be az utterance (kifejezés). Ezeket később az entitás lapon módosíthatja, bár lehet gyorsabb jelölje be az utterance (kifejezés) feliratú, amelyeket szeretne a listaelem nevét.
 
-Például akkor, ha listájának létrehozásához ital és típusú kiválasztva a word `h2o` létrehozása az entitás utterance, az a lista egy elem, amelynek a neve lett h20 lenne. Ha több nevet, válasszon egy utterance, amely több általános nevet használja. 
+Például akkor, ha szeretne, hozzon létre egy típusú, és ital választott szó `h2o` az utterance (kifejezés) létrehozni az entitást, az a lista egy elem, amelynek a neve lett h20 lenne. Ha egy több általános nevet, válassza az utterance (kifejezés), amelyek általánosabb érvényűvé nevet használja. 
 
-1. A utterance, válassza ki a word, az első elem a listában, majd a szövegmezőben adja meg a lista nevét, majd válassza ki **új entitás létrehozása**.   
+1. A word, az első elem a listában válassza az utterance (kifejezés), majd be a szövegmezőbe írja be a lista neve, majd válassza ki **új entitás létrehozása**.   
 
-    ![Képernyőfelvétel a leképezések részleteit megjelenítő oldalra, hozzon létre új entitáshoz kiemelve](./media/luis-how-to-add-example-utterances/create-drink-list-entity.png)
+    ![Képernyőkép a leképezések részletek oldala, amelyen kiemelve új entitás létrehozása](./media/luis-how-to-add-example-utterances/create-drink-list-entity.png)
 
-2. Az a **milyen típusú entitás kíván létrehozni?** párbeszédpanel mezőben adja meg a listaelem szinonimák. A vízjel listaelem ital, vegye fel az `h20`, `perrier`, és `waters`, és válassza ki **végzett**. Figyelje meg, hogy a "vizek" jelenik-e, mivel a lista szinonimák egyeztetve lesznek a token szinten. Az angol kulturális környezet, az, hogy szintje a word szinten úgy "vizek" volna nem egyeztetni kell "vízjel" kivéve, ha a listában volt. 
+2. Az a **milyen típusú entitást szeretne létrehozni?** párbeszédpanelen adjon hozzá a listaelem szinonimák. A vízjelek cikkhez ital listában, adja hozzá a `h20`, `perrier`, és `waters`, és válassza ki **kész**. Figyelje meg, hogy a "víz" kerül-e, mivel a lista szinonimák megfeleltetődnek a token szintjén. Az angol kulturális környezetben, hogy a szint a word szintjén van így "vizeken" lenne sem feleltethető "water", ha a listában volt. 
 
-    ![Képernyőkép a milyen típusú entitást szeretne létrehozása párbeszédpanel](./media/luis-how-to-add-example-utterances/drink-list-ddl.png)
+    ![Képernyőkép a milyen típusú entitás tegye meg szeretné létrehozása párbeszédpanel](./media/luis-how-to-add-example-utterances/drink-list-ddl.png)
 
-    Ebben a listában italok csak egy ital típussal, vízjel rendelkezik. Hozzáadhat további ital típusok más utterances címkézését, vagy az entitás szerkesztésével a **entitások** a bal oldali navigációs. [Szerkesztés](luis-how-to-add-entities.md#add-list-entities) az entitásokat tartalmazó megfelelő szinonimák további elemek megadásáról lehetőséget biztosít vagy [importálása](luis-how-to-add-entities.md#import-list-entity-values) listáját. 
+    Ezen a listán szereplő ital csak egy ital típusa, víz rendelkezik. Más utterances címkézéssel, vagy az a entitás szerkesztésével hozzáadhat több ital típust a **entitások** a bal oldali navigációs menüben. [Szerkesztési](luis-how-to-add-entities.md#add-list-entities) az entitásokat a további elemek a megfelelő szinonimák beírását lehetőséget kínál fel vagy [importálása](luis-how-to-add-entities.md#import-list-entity-values) listáját. 
 
-    Lásd: [adatok kinyerése](luis-concept-data-extraction.md#list-entity-data) tudhat meg többet a végpont JSON lekérdezésválaszt lista entitások kibontása. Próbálja meg a [gyors üzembe helyezés](luis-quickstart-intent-and-list-entity.md) további információt a lista entitás használata.
+    Lásd: [Adatkinyerés](luis-concept-data-extraction.md#list-entity-data) tudhat meg többet a végpontról JSON lekérdezési válasz lista entitások kinyeréséhez. Próbálja ki a [rövid](luis-quickstart-intent-and-list-entity.md) egy lista entitás használatával kapcsolatos további.
 
-## <a name="add-synonyms-to-the-list-entity"></a>A lista entitás szinonimák hozzáadása 
-A lista entitáshoz szinonimát hozzáadni a utterance kiválasztja a szó vagy kifejezés. Ha rendelkezik olyan entitás listában, és szeretne adni, amelyet `agua` , vízjel szinonimát, kövesse a lépéseket:
+## <a name="add-synonyms-to-the-list-entity"></a>Szinonimák felvétele a lista entitáshoz 
+A lista entitás kiválasztásával a szót vagy kifejezést az utterance (kifejezés) szinonima hozzá. Ha olyan entitás listában, és hozzá szeretné adni, amelyet `agua` víz szinonimájaként, kövesse a lépéseket:
 
-A utterance, válassza ki a azonos szót, például a `aqua` a vízjel, majd válassza ki a lista entitás nevét a legördülő listában, mint **ital**, majd válassza **szinonimát állítja**, majd válassza ki a listában elem legyen azonos a, például **vízjel**.
+Az utterance (kifejezés), válassza a azonos szót, például `aqua` vízzel, majd válassza ki a lista entitás nevét a legördülő listából válassza ki, például **ital**, majd **szinonimát állítja**, majd válassza ki a listát elem azonos, a, mint például **víz**.
 
-![Képernyőfelvétel a leképezések részleteit megjelenítő oldalon, a hozzon létre egy új szinonimát kiemelve](./media/luis-how-to-add-example-utterances/set-agua-as-synonym.png)
+![Képernyőkép a leképezések részletek oldala, amelyen hozzon létre egy új szinonimát kiemelésével](./media/luis-how-to-add-example-utterances/set-agua-as-synonym.png)
 
-## <a name="create-new-item-for-list-entity"></a>Lista entitás új elem létrehozása
-Meglévő lista entitás új elem létrehozása a utterance kiválasztja a szót vagy kifejezést. Ha rendelkezik olyan listában, és szeretne adni, amelyet `tea` új elemként, kövesse a lépéseket:
+## <a name="create-new-item-for-list-entity"></a>Új elem a lista entitás létrehozása
+Hozzon létre egy új elem egy meglévő lista entitás kiválasztásával a szót vagy kifejezést az utterance (kifejezés). Ha a listában, és hozzá szeretné adni ital `tea` új elemként, kövesse a lépéseket:
 
-A utterance, válassza ki a word, az új listaelem, például a `tea`, majd válassza ki a lista entitás neve, mint a legördülő listából válassza ki, **ital**, majd jelölje be **hozzon létre egy új szinonimát**. 
+Az utterance (kifejezés), válassza az új listaelem a word például `tea`, majd válassza ki a lista entitás nevét a legördülő listában, például **ital**, majd **hozzon létre egy új szinonimát**. 
 
-![Képernyőfelvétel az új listaelem hozzáadása](./media/luis-how-to-add-example-utterances/list-entity-create-new-item.png)
+![Képernyőkép az új listaelem hozzáadása](./media/luis-how-to-add-example-utterances/list-entity-create-new-item.png)
 
-A word kék most már ki van jelölve. Ha az egérmutatót a word, egy címke megjeleníti az elem neve, például tea.
+A szó kék most kiemelve. Ha a kurzort a word, a címke a lista elem nevét, például tea tartalmazó jeleníti meg.
 
-![Új lista elem címke képernyőképe](./media/luis-how-to-add-example-utterances/list-entity-item-name-tag.png)
+![Új lista-elem címke képernyőképe](./media/luis-how-to-add-example-utterances/list-entity-item-name-tag.png)
 
-## <a name="wrap-entities-in-composite-label"></a>Entitások burkolása összetett címke
-Összetett entitások készített **entitások**. Nem hozható létre egy összetett entitást a leképezési lapról. Az összetett entitás létrehozása után akkor entitások található a leképezési oldalon egy utterance futtathatja. 
+## <a name="wrap-entities-in-composite-label"></a>Zabalit do entitások összetett felirat
+Entitások összetett lekérdezés alapján hoztak létre **entitások**. Nem hozható létre egy összetett entitást a szándék oldaláról. Az összetett entitás létrehozása után, wrap funkciót az entitásokat az utterance (kifejezés), a szándék oldalon. 
 
-Feltéve, hogy a utterance `book 2 tickets from Seattle to Cairo`, egy összetett utterance adhat vissza entitás információkat a jegyek (2), a forrás (Budapest) és a cél száma (Kairó) helyek egy egyetlen szülőhöz entitásban. 
+Az utterance (kifejezés), feltéve, hogy `book 2 tickets from Seattle to Cairo`, egy összetett utterance (kifejezés) adhat vissza az Entitásadatok jegyek (2), a (Budapesten) forrás és cél száma (Cairo) helyek egyetlen szülőhöz entitásokban. 
 
-Kövesse az alábbi [lépéseket](luis-how-to-add-entities.md#add-prebuilt-entity) hozzáadása a **szám** előre elkészített entitás. Az entitás létrehozása után a `2` a utterance a kék, címkézett entitás jelző. Előre elkészített entitások által LUIS tartalma. Nem adja hozzá, vagy távolítsa el az előre elkészített entitás címke egyetlen utterance. Csak adja hozzá, vagy távolítsa el az előre elkészített címkék hozzáadásával vagy eltávolításával az előre elkészített entitás az alkalmazásból.
+Kövesse az alábbi [lépéseket](luis-how-to-add-entities.md#add-prebuilt-entity) hozzáadása a **szám** előre összeállított entitások. Az entitás létrehozását követően a `2` az utterance (kifejezés) a rendszer kék, jelezve, hogy ez egy címkével rendelkező entitást. Előre összeállított entitások LUIS vannak ellátva. Nem adhat hozzá, és távolítsa el az előre összeállított entitások címkét egy egyetlen utterance (kifejezés). Csak adja hozzá, vagy távolítsa el az előre összeállított címkék hozzáadásával vagy eltávolításával az előre összeállított entitások az alkalmazásból.
 
-Kövesse az alábbi [lépéseket](#add-hierarchical-entity-and-label) létrehozásához egy **hely** a hierarchikus. A forrás és cél helye a a példa utterance címkézését. 
+Kövesse az alábbi [lépéseket](#add-hierarchical-entity-and-label) hozhat létre egy **hely** hierarchikus entitás. A forrás és cél helyeken, és a példa utterance (kifejezés) címkét. 
 
-Mielőtt egy összetett entitást a burkolása az entitásokat, győződjön meg arról az összes alárendelt entitások vannak kiemelve kék, ami azt jelenti, az a utterance címkével.
+Az entitások összetett entitásokban, burkolása, előtt győződjön meg arról, a gyermekentitások ki vannak emelve az összes kék színnel, ami azt jelenti, az az utterance (kifejezés) címkével.
 
-1. Az egyes entitásokat burkolása az összetett, jelölje ki az összetett entitás utterance az első címkézett entitás. A példa utterance `book 2 tickets from Seattle to Cairo`, az első entitás az a szám 2. A legördülő lista Ekkor megjelenik a választási lehetőségek a kijelölés.
+1. Burkolása az egyes entitások összetett be, válassza ki az első címkézett entitás az utterance (kifejezés), az összetett entitás. A példa utterance (kifejezés), a `book 2 tickets from Seattle to Cairo`, az első entitás az a szám 2. Egy legördülő lista megjelenik ez a beállítás az egyik lehetőséget.
 
-    ![Képernyőkép a kijelölt szám és a kijelölt legördülő beállítások](./media/luis-how-to-add-example-utterances/wrap-1.png)
+    ![Képernyőfelvétel a kiválasztott száma és a legördülő lehetőségeket vannak kiemelve](./media/luis-how-to-add-example-utterances/wrap-1.png)
 
 2. Válassza ki **összetett entitást burkolása** a legördülő listából. 
 
-    ![Képernyőkép a összetett entitást alkalmazásburkoló sortörés következik a kiemelt összetett entitást a legördülő lista beállításai](./media/luis-how-to-add-example-utterances/wrap-2.png)
+    ![Képernyőkép a alkalmazásburkoló összetett entitást az újraindulás összetett entitásban kiemelt legördülő lehetőségei](./media/luis-how-to-add-example-utterances/wrap-2.png)
 
-3. Válassza ki az utolsó szó, az összetett entitás. Ez a példa utterance válassza ki a "Location::Destination" (képviselő Kairó). A zöld sor most az összes szó közé tartoznak a következők nem entitás szavakat, az a utterance, amelyek az összetett.
+3. Válassza ki az összetett entitás az utolsó szót. Az ebben a példában az utterance válassza a "Location::Destination" (Cairo képviselő). A zöld sor van most alatt a szavakat, beleértve nem entitás szavak, az utterance (kifejezés), amelyek az összetett.
 
-    ![BookFlight leképezés képernyőkép lapon, a kijelölt szám](./media/luis-how-to-add-example-utterances/wrap-composite.png)
+    ![BookFlight szándékot képernyőkép oldala, amelyen kiemelve száma](./media/luis-how-to-add-example-utterances/wrap-composite.png)
 
-4. A legördülő listából válassza ki az összetett entitás nevét. Az ebben a példában ez **TicketOrder**.
+4. A legördülő listából válassza ki az összetett entitás nevét. Ebben a példában ez **TicketOrder**.
 
-    ![A legördülő listából válassza ki a kijelölt összetett entitást nevű összetett entitást tartalmazó szavak alkalmazásburkoló képernyőképe](./media/luis-how-to-add-example-utterances/wrap-4.png)
+    ![Képernyőkép a alkalmazásburkoló szavak összetett entitással, a legördülő listából válassza ki a kiemelt összetett entitás neve](./media/luis-how-to-add-example-utterances/wrap-4.png)
 
-    Ha megfelelően burkolása az entitásokat, egy zöld sor a teljes kifejezés alatt áll.
+    Az entitások megfelelően be zöld vonal esetén a teljes kifejezés alapján.
 
-    ![A kijelölt összetett entitással utterance képernyőképe](./media/luis-how-to-add-example-utterances/wrap-5.png)
+    ![Képernyőkép az utterance (kifejezés), az összetett entitás kiemelésével](./media/luis-how-to-add-example-utterances/wrap-5.png)
 
-    Lásd: [adatok kinyerése](luis-concept-data-extraction.md#composite-entity-data) tudhat meg többet az összetett entitást kibontása a végpont JSON választ. Az összetett entitást próbálja [oktatóanyag](luis-tutorial-composite-entity.md) egy összetett entitást használatáról további.
+    Lásd: [Adatkinyerés](luis-concept-data-extraction.md#composite-entity-data) tudhat meg többet az összetett entitás kinyerését a végpont JSON lekérdezési válasz. Próbálja ki az összetett entitás [oktatóanyag](luis-tutorial-composite-entity.md) egy összetett entitást használatával kapcsolatos további.
 
 ## <a name="add-hierarchical-entity-and-label"></a>A hierarchikus és címke hozzáadása
-A hierarchikus egy összefüggéseikben való megismert és elméletben kapcsolódó entitás-kategóriát. A következő példában az entitás eredeti és a célhely tartalmazza. 
+Egy hierarchikus entitás, de megismert és elméletben kapcsolódó entitások egy kategóriát. A következő példában az entitás tartalmazza a forrás-és célhelynek. 
 
-Az a utterance `Book 2 tickets from Seattle to Cairo`, Seattle a származási helye pedig Kairó célhelyét. Minden hely összefüggéseikben való különböző, ismerni a word és az a utterance word kiválasztott.
+Az utterance (kifejezés) a `Book 2 tickets from Seattle to Cairo`, Seattle a feladás helyét pedig Cairo a célhelyen. Minden egyes helye kontextusban különböző és megismert szórendjét és a word választott az utterance (kifejezés).
 
-1. Az a leképezési oldalon, a utterance, válassza ki a "Seattle", majd adja meg az entitás neve "helyre, és válassza **új entitás létrehozása**.
+1. Az utterance (kifejezés), a szándék oldalon válassza ki a "Seattle", majd adja meg az entitás neve "helyre, és válassza ki **új entitás létrehozása**.
 
-    ![Képernyőfelvétel a létrehozása hierarchikus entitás címkézés párbeszédpanel](./media/luis-how-to-add-example-utterances/create-hier-ent-1.png)
+    ![Képernyőkép az létrehozása hierarchikus entitás címkézés párbeszédpanel](./media/luis-how-to-add-example-utterances/create-hier-ent-1.png)
 
-2. Az előugró párbeszédpanelen válassza ki a hierarchikus **entitástípus**, majd adja hozzá `Origin` és `Destination` gyermekek, és válassza ki, **végzett**.
+2. A megjelenő párbeszédpanelen, válassza a hierarchikus **entitástípus**, majd adja hozzá `Origin` és `Destination` gyermekei, és válassza ki, **kész**.
 
-    ![Képernyőfelvétel a leképezések részleteit megjelenítő oldalon kiemelve ToLocation entitással](./media/luis-how-to-add-example-utterances/create-location-hierarchical-entity.png)
+    ![Képernyőkép a leképezések részletei oldala, amelyen kiemelve ToLocation entitás](./media/luis-how-to-add-example-utterances/create-location-hierarchical-entity.png)
 
-3. A utterance a word és a hierarchikus szülőentitás lett címkézve. A word hozzárendelése egy gyermekentitáson kell. Térjen vissza a utterance a leképezési oldalon. Válassza ki a word, majd a legördülő listából válassza ki a létrehozott entitás nevét, és hajtsa végre a menüből válassza ki a megfelelő gyermekentitáson jobb.
+3. A word, az utterance (kifejezés) a következő címkét kapta a szülő hierarchikus entitással. A word hozzárendelése egy gyermek entitásnak kell. Térjen vissza az utterance (kifejezés) a szándék oldalon. Válassza ki a word-, majd a legördülő listából válassza ki a létrehozott entitás nevét, és hajtsa végre a menüben válassza ki a megfelelő gyermek entitásnak jobb.
 
-    ![Képernyőfelvétel a leképezések részleteit megjelenítő oldalon kiemelve ToLocation entitással](./media/luis-how-to-add-example-utterances/label-tolocation.png)
+    ![Képernyőkép a leképezések részletei oldala, amelyen kiemelve ToLocation entitás](./media/luis-how-to-add-example-utterances/label-tolocation.png)
 
     >[!CAUTION]
-    >Gyermek entitás nevének egyedinek kell lennie a egyetlen meghatározott alkalmazás összes entitásának között. Két különböző hierarchikus entitások nem tartalmazhat gyermek entitások ugyanazzal a névvel. 
+    >Gyermek entitásnévnek egyedinek kell lennie minden entitás egyetlen alkalmazásban. Két különböző hierarchikus entitások nem tartalmazhat gyermekentitások ugyanazzal a névvel. 
 
-    Lásd: [adatok kinyerése](luis-concept-data-extraction.md#hierarchical-entity-data) tudhat meg többet a hierarchikus entitás kibontása a végpont JSON választ. A hierarchikus entitás próbálja [gyors üzembe helyezés](luis-quickstart-intent-and-hier-entity.md) további hierarchikus entitás használatáról.
+    Lásd: [Adatkinyerés](luis-concept-data-extraction.md#hierarchical-entity-data) tudhat meg többet a végpont JSON lekérdezési válasz a hierarchikus entitás kinyerését. Próbálja ki a hierarchikus entitás [rövid](luis-quickstart-intent-and-hier-entity.md) hierarchikus entitás használatával kapcsolatos további.
 
 
-## <a name="remove-entity-labels-from-utterances"></a>Utterances entitás címkék eltávolítása
-A leképezési oldalon egy utterance gép megtanulta entitás címkék eltávolíthat. Ha az entitás nincs gép megtanulta, akkor nem lehet eltávolítani egy utterance. Ha nem gép megtanulta entitás eltávolítása a utterance van szüksége, a teljes alkalmazás törölni egy entitást szeretné. 
+## <a name="remove-entity-labels-from-utterances"></a>Beszédmódok entitás címkék eltávolítása
+Gép megismert entitások címkék eltávolíthatók az utterance (kifejezés), a szándék oldalon. Ha a gép megismerte az entitás nem áll, akkor nem lehet eltávolítani az utterance (kifejezés). Ha egy nem gép megismert entitások eltávolítása az utterance (kifejezés) van szüksége, kell törölni az entitást a teljes alkalmazásban. 
 
-Egy entitás gép megtanulta címke eltávolítása egy utterance, jelölje ki az entitást a utterance. Válassza ki **címke eltávolítása** a entitás legördülő mezőben, amely akkor jelenik meg.
+Egy entitás gép megtanult címke eltávolítása az utterance (kifejezés), válassza ki az entitást az utterance (kifejezés). Válassza ki **címke eltávolítása** az entitás legördülő mezőben, amely akkor jelenik meg.
 
-![Képernyőfelvétel a leképezések részleteit megjelenítő oldalon kiemelve eltávolítása címkével](./media/luis-how-to-add-example-utterances/remove-label.png) 
+![Képernyőkép a leképezések Részletek lap, távolítsa el a kiemelt címkével ellátott](./media/luis-how-to-add-example-utterances/remove-label.png) 
 
-## <a name="add-prebuilt-entity-label"></a>Előre elkészített entitás címke hozzáadása
-Ha az előre elkészített entitásokat ad hozzá az LUIS alkalmazást, nem kell ezeket az entitásokat a címke utterances. Előre elkészített entitásokat és hogyan adja hozzá kapcsolatos további információkért lásd: [új entitásokat](luis-how-to-add-entities.md#add-prebuilt-entity).
+## <a name="add-prebuilt-entity-label"></a>Előre összeállított entitások címke hozzáadása
+Ha az előre összeállított entitások ad hozzá a LUIS-alkalmazás, nem kell címke utterances az entitásokhoz. Adja hozzá őket, illetve előre összeállított entitások kapcsolatos további tudnivalókért lásd: [entitások hozzáadása](luis-how-to-add-entities.md#add-prebuilt-entity).
 
 ## <a name="add-regular-expression-entity-label"></a>Reguláris kifejezés entitás címke hozzáadása
-A reguláris kifejezés entitások való felvételekor a LUIS alkalmazást, nem kell az ezeket az entitásokat címke utterances. Reguláris kifejezés entitásokat és hogyan adja hozzá kapcsolatos további információkért lásd: [új entitásokat](luis-how-to-add-entities.md#add-regular-expression-entities).
+Ha a reguláris kifejezés entitásokat ad hozzá a LUIS-alkalmazás, nem kell címke utterances az entitásokhoz. Reguláris kifejezés entitásokat, és hogyan adja hozzá őket kapcsolatos további információkért lásd: [entitások hozzáadása](luis-how-to-add-entities.md#add-regular-expression-entities).
 
-## <a name="create-a-pattern-from-an-utterance"></a>A minta egy utterance létrehozása
-Lásd: [Hozzáadás mintát a leképezés vagy entitás oldalon meglévő utterance](luis-how-to-model-intent-pattern.md#add-pattern-from-existing-utterance-on-intent-or-entity-page).
+## <a name="create-a-pattern-from-an-utterance"></a>Hozzon létre egy minta az utterance (kifejezés)
+Lásd: [Hozzáadás minta a leképezés vagy entitás oldalon meglévő utterance (kifejezés)](luis-how-to-model-intent-pattern.md#add-pattern-from-existing-utterance-on-intent-or-entity-page).
 
 ## <a name="add-patternany-entity-label"></a>Pattern.any entitás címke hozzáadása
-Pattern.any entitások való felvételekor a LUIS alkalmazást, akkor nem címke utterances ezeket az entitásokat a. Csak azok a minták érvényes. Pattern.any entitásokat és hogyan adja hozzá kapcsolatos további információkért lásd: [új entitásokat](luis-how-to-add-entities.md#add-patternany-entities).
+Pattern.any entitásokat ad hozzá a LUIS-alkalmazás, ha meg nem címkét az entitásokhoz kimondott szöveg. Csak azok a minták érvényes. Adja hozzá őket, illetve pattern.any entitások kapcsolatos további tudnivalókért lásd: [entitások hozzáadása](luis-how-to-add-entities.md#add-patternany-entities).
 
 <!--
 Fix this - moved to luis-how-to-add-intents.md - how ?
@@ -193,9 +193,9 @@ Fix this - moved to luis-how-to-add-intents.md - how ?
 ## Reassign utterances
 
 -->
-## <a name="train-your-app-after-changing-model-with-utterances"></a>Az alkalmazás betanítása utterances modell módosítása után
-Adja hozzá, szerkeszthet és eltávolíthat utterances, miután [betanítása](luis-how-to-train.md) és [közzététele](PublishApp.md) az alkalmazás a módosításokat az végpont lekérdezések. 
+## <a name="train-your-app-after-changing-model-with-utterances"></a>Beszédmódok modell módosítása után az alkalmazás betanítása
+Miután hozzáadása, szerkesztése vagy eltávolítása a kimondott szöveg, [betanításához](luis-how-to-train.md) és [közzététele](luis-how-to-publish-app.md) a végpont lekérdezéseket érintő módosítások az alkalmazás. 
 
 ## <a name="next-steps"></a>További lépések
 
-A leképezések az utterances címkézés után mostantól létrehozhat egy [összetett entitást](luis-how-to-add-entities.md).
+Beszédmódok a szándék fog vonatkozni a címkézés, után most már létrehozhat egy [összetett entitást](luis-how-to-add-entities.md).

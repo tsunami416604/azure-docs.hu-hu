@@ -1,6 +1,6 @@
 ---
-title: MySQL az Azure-adatbázis korlátozásai
-description: Ez a cikk ismerteti a MySQL, például a kapcsolat és a tárolási motor lehetőségei az Azure Database korlátozásai.
+title: Azure Database for MySQL-hez korlátozásai
+description: Ez a cikk ismerteti a korlátozások az Azure Database for MySQL-hez, például kapcsolat és a tárolási motort lehetőségek számát.
 services: mysql
 author: ajlam
 ms.author: andrela
@@ -8,19 +8,19 @@ manager: kfile
 editor: jasonwhowell
 ms.service: mysql
 ms.topic: article
-ms.date: 06/21/2018
-ms.openlocfilehash: 2fc224445f89a0b0b4afdc0ef1d0eb1b25b45f36
-ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
+ms.date: 06/30/2018
+ms.openlocfilehash: 1fd5905b8ea3f87fe6cfc2a830b73b8120a717dd
+ms.sourcegitcommit: 4597964eba08b7e0584d2b275cc33a370c25e027
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/21/2018
-ms.locfileid: "36309924"
+ms.lasthandoff: 07/02/2018
+ms.locfileid: "37341477"
 ---
-# <a name="limitations-in-azure-database-for-mysql"></a>MySQL az Azure-adatbázis korlátozásai
-A következő szakaszok ismertetik a kapacitás, tárolási motor támogatja, jogosultság, adatok adatkezelési utasítás támogatásának, és az adatbázis szolgáltatásban működik korlátok. Lásd még: [általános korlátozások](https://dev.mysql.com/doc/mysql-reslimits-excerpt/5.6/en/limits.html) a MySQL adatbázis-kezelő alkalmazandó.
+# <a name="limitations-in-azure-database-for-mysql"></a>Azure Database for MySQL-hez korlátozásai
+A következő szakaszok ismertetik a kapacitást, motor támogatása, jogosultság támogatja, adatok adatkezelési utasítást, és az adatbázis-szolgáltatás működési korlátai. További tájékoztatás [általános korlátozások](https://dev.mysql.com/doc/mysql-reslimits-excerpt/5.6/en/limits.html) a MySQL-adatbázismotor alkalmazható.
 
-## <a name="maximum-connections"></a>A kapcsolatok maximális száma
-Tarifacsomag és vCores-kapcsolatok maximális száma a következők: 
+## <a name="maximum-connections"></a>Kapcsolatok maximális száma
+Tarifacsomag és virtuális magok száma kapcsolatok maximális száma a következők: 
 
 |**Tarifacsomag**|**vCore(s)**| **Kapcsolatok maximális száma**|
 |---|---|---|
@@ -36,10 +36,10 @@ Tarifacsomag és vCores-kapcsolatok maximális száma a következők:
 |Memóriára optimalizált| 8| 2500|
 |Memóriára optimalizált| 16| 5000|
 
-Kapcsolatok száma meghaladja a korlátot, ha a következő hibaüzenet jelenhet meg:
-> 1040 (08004). hiba: Túl sok a kapcsolat
+Amikor kapcsolatokat meghaladják a korlátot, a következő hiba jelenhet meg:
+> 1040 (08004). hiba: Túl sok kapcsolat
 
-## <a name="storage-engine-support"></a>Storage engine támogatása
+## <a name="storage-engine-support"></a>Storage engine-támogatás
 
 ### <a name="supported"></a>Támogatott
 - [InnoDB](https://dev.mysql.com/doc/refman/5.7/en/innodb-introduction.html)
@@ -48,19 +48,19 @@ Kapcsolatok száma meghaladja a korlátot, ha a következő hibaüzenet jelenhet
 ### <a name="unsupported"></a>Nem támogatott
 - [MyISAM](https://dev.mysql.com/doc/refman/5.7/en/myisam-storage-engine.html)
 - [BLACKHOLE](https://dev.mysql.com/doc/refman/5.7/en/blackhole-storage-engine.html)
-- [ARCHÍV](https://dev.mysql.com/doc/refman/5.7/en/archive-storage-engine.html)
+- [ARCHÍVUM](https://dev.mysql.com/doc/refman/5.7/en/archive-storage-engine.html)
 - [ÖSSZEVONT](https://dev.mysql.com/doc/refman/5.7/en/federated-storage-engine.html)
 
 ## <a name="privilege-support"></a>Jogosultság-támogatás
 
 ### <a name="unsupported"></a>Nem támogatott
-- DBA szerepkör: több kiszolgáló paraméterek és beállítások is véletlenül rontják a kiszolgáló teljesítményét vagy az adatbázis-kezelő ACID tulajdonságainak semlegesítsék. A szolgáltatás integritásra és a termék szinten SLA fenntartása érdekében ez a szolgáltatás nem fedi fel a DBA szerepkör. Az alapértelmezett felhasználói fiók, amely egy új adatbázis-példány létrehozásakor összeállított, lehetővé teszi a felhasználónak DDL és DML utasítást a legtöbb felügyelt adatbázispéldány. 
-- SUPER jogosultság: hasonlóképpen [SUPER jogosultság](https://dev.mysql.com/doc/refman/5.7/en/privileges-provided.html#priv_super) is korlátozódik.
+- Adatbázis-szerepkör: számos kiszolgálói paraméterek és beállítások véletlenül rontják a kiszolgáló teljesítményét vagy amelyet tagadni kell a Célrendszerben ACID tulajdonságait. Emiatt a szolgáltatás integritás és SLA-t, a termék szintjén fenntartására, ezt a szolgáltatást nem biztosít az adatbázis-szerepkör. Az alapértelmezett felhasználói fiók, amely jön létre egy új adatbázis-példány létrehozásakor, lehetővé teszi, hogy a felhasználó hajtani a legtöbb DDL és DML utasítást, a felügyelt adatbázis példányában. 
+- FELÜGYELŐI jogosultságok: hasonlóképpen [FELÜGYELŐI jogosultságok](https://dev.mysql.com/doc/refman/5.7/en/privileges-provided.html#priv_super) is korlátozva.
 
 ## <a name="data-manipulation-statement-support"></a>Adatok adatkezelési utasítás támogatása
 
 ### <a name="supported"></a>Támogatott
-- `LOAD DATA INFILE` támogatott, de a `[LOCAL]` paraméter kell megadva, és átirányítja egy UNC elérési utat (Azure storage csatlakoztatott SMB-n keresztül).
+- `LOAD DATA INFILE` támogatott, de a `[LOCAL]` paramétert kell a megadott és átirányítva, UNC elérési út (az Azure storage csatlakoztatása az SMB-n keresztül).
 
 ### <a name="unsupported"></a>Nem támogatott
 - `SELECT ... INTO OUTFILE`
@@ -68,22 +68,25 @@ Kapcsolatok száma meghaladja a korlátot, ha a következő hibaüzenet jelenhet
 ## <a name="functional-limitations"></a>Működési korlátai
 
 ### <a name="scale-operations"></a>A skálázási műveletek
-- Dinamikus méretezés és onnan az alapvető tarifacsomagok jelenleg nem támogatott.
-- Kiszolgáló tároló méretének csökkentése nem támogatott.
+- Dinamikus méretezés, és onnan az alapszintű tarifacsomagban is kapható jelenleg nem támogatott.
+- Kiszolgáló-tároló méretének csökkentése nem támogatott.
 
 ### <a name="server-version-upgrades"></a>Kiszolgáló verziófrissítések
-- Fő adatbázis motor verziók közötti automatikus áttelepítési jelenleg nem támogatott.
+- Fő database engine verziói között az automatikus migrálási jelenleg nem támogatott.
 
 ### <a name="point-in-time-restore"></a>Időponthoz kötött visszaállítás
-- A PITR funkció használata esetén az új kiszolgáló ugyanazokat a konfigurációkat, mint a kiszolgáló alapul hozza létre.
-- A Törölt kiszolgáló visszaállítása nem támogatott.
+- A PITR a funkció használatakor az ugyanezzel a konfigurációval, mint a kiszolgáló-alapú, az új kiszolgáló jön létre.
+- Törölt kiszolgáló visszaállítása nem támogatott.
+
+### <a name="vnet-service-endpoints"></a>Virtuális hálózati Szolgáltatásvégpontok
+- Virtuális hálózati Szolgáltatásvégpontok támogatása csak az általános célú és memóriahasználatra optimalizált kiszolgálók esetében érhető el.
 
 ### <a name="subscription-management"></a>Előfizetés-kezelés
-- Dinamikusan áthelyezése előfizetés és az erőforráscsoport előre létrehozott kiszolgálók jelenleg nem támogatott.
+- Dinamikusan előfizetést és erőforráscsoportot az előre létrehozott kiszolgálók áthelyezése jelenleg nem támogatott.
 
-## <a name="current-known-issues"></a>Jelenlegi ismert problémái
-- Kapcsolat létrejötte után a MySQL server-példány helytelen verzióját jeleníti meg. A megfelelő kiszolgálói példány motor verziója, amelyet a `select version();` parancsot.
+## <a name="current-known-issues"></a>Jelenlegi ismert problémák
+- MySQL server-példány a megfelelő verziója a kapcsolat létrejötte után jeleníti meg. A megfelelő kiszolgáló példány motor verziója, amelyet a `select version();` parancsot.
 
 ## <a name="next-steps"></a>További lépések
 - [Az egyes szolgáltatásszinteken elérhető](concepts-pricing-tiers.md)
-- [MySQL-adatbázis támogatott verziói](concepts-supported-versions.md)
+- [MySQL-adatbázis támogatott verziók](concepts-supported-versions.md)

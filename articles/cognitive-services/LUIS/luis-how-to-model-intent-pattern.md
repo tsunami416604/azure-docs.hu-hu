@@ -1,7 +1,7 @@
 ---
-title: Adja hozzá a minta sablonok LUIS alkalmazásokban |} Microsoft Docs
+title: A minta-sablonok hozzáadása a LUIS-alkalmazások |} A Microsoft Docs
 titleSuffix: Azure
-description: Ismerje meg a minta sablonok hozzáadása a nyelvi ismertetése (LUIS) alkalmazások, az előrejelzési pontosság növeléséhez.
+description: Ismerje meg, a minta-sablonok hozzáadása a Language Understanding (LUIS) alkalmazások növelve előrejelzés pontosságát.
 services: cognitive-services
 author: v-geberr
 manager: kaiqb
@@ -10,131 +10,131 @@ ms.technology: luis
 ms.topic: article
 ms.date: 06/08/2018
 ms.author: v-geberr;
-ms.openlocfilehash: 68c0ea1fd3f2e60e0adec631f33c8bd09a3d9960
-ms.sourcegitcommit: 50f82f7682447245bebb229494591eb822a62038
+ms.openlocfilehash: 9dd23fd5f8a0024f127b71160899d10042037a66
+ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35350062"
+ms.lasthandoff: 07/02/2018
+ms.locfileid: "37346008"
 ---
 # <a name="how-to-add-patterns-to-improve-prediction-accuracy"></a>Az előrejelzési pontosság növeléséhez minták hozzáadása
-Miután egy LUIS app végpont utterances kap, a [koncepció](luis-concept-patterns.md) mintázatok, amely tartalmaz a word és az word választott mintát utterances az előrejelzési pontosság növeléséhez. Használjon mintákra [entitások](luis-concept-entity-types.md) és szerepük az adott minta szintaxis használatával adatok kinyerése érdekében. 
+LUIS-alkalmazásokon végpont utterances kap, miután a [fogalom](luis-concept-patterns.md) minták növelve előrejelzés pontosságát, hogy egy mintát szórendjét és a word választási lehetőség felfedéséhez megcímkézzen számára. Használati mintáit [entitások](luis-concept-entity-types.md) és azok szerepköreivel adott minta szintaxis segítségével adatokat szeretne kinyerni. 
 
-## <a name="add-template-utterance-to-create-pattern"></a>Adja hozzá a sablon utterance minta létrehozása
-1. Nyissa meg az alkalmazás nevét a kiválasztásával **saját alkalmazások** lapon, majd válassza ki **minták** a bal oldali panelen a **alkalmazás teljesítményének javítása**.
+## <a name="add-template-utterance-to-create-pattern"></a>Adja hozzá a minta létrehozása sablon utterance (kifejezés)
+1. Nyissa meg az alkalmazás nevére kattintva a **saját alkalmazások** oldalra, és kattintson **minták** a bal oldali panelen, a **megnövelheti az alkalmazások teljesítményét**.
 
-    ![Képernyőkép a minták listájának](./media/luis-how-to-model-intent-pattern/patterns-1.png)
+    ![Minták listájának képernyőképe](./media/luis-how-to-model-intent-pattern/patterns-1.png)
 
 2. Válassza ki a megfelelő leképezést a minta. 
 
-    ![Válassza ki a leképezést](./media/luis-how-to-model-intent-pattern/patterns-2.png)
+    ![Leképezés kiválasztása](./media/luis-how-to-model-intent-pattern/patterns-2.png)
 
-3. A sablon szövegmezőjének írja be a sablon utterance, és válassza ki az ENTER billentyűt. Az entitás nevének megadása, használja a megfelelő mintát entitás szintaxist. Az entitás szintaxist a Begin `{`. Entitások megjeleníti listája. Válassza ki a megfelelő entitást, és válassza le az ENTER billentyűt. 
+3. A sablon szövegmezőbe írja be a sablon utterance (kifejezés), és nyomja le az Enter. Szeretné az entitás nevét adja meg, ha a helyes mintát entitás szintaxist használja. Az entitás-szintaxis és megkezdéséhez `{`. Entitások jeleníti meg listája. Válassza ki a megfelelő entitást, és válassza le az ENTER billentyűt. 
 
     ![Képernyőkép a minta entitás](./media/luis-how-to-model-intent-pattern/patterns-3.png)
 
-    Az entitás a szerepkör magában foglalja, azt jelezheti a szerepkör egyetlen kettősponttal `:`, miután az entitás nevével, például a `{Location:Origin}`. Az entitások szerepkörök listája listáját jeleníti meg. Válassza ki a szerepkört, és válassza le az ENTER billentyűt. 
+    Ha az entitás tartalmaz egy szerepkörhöz, jelezze a szerepkör egyetlen kettősponttal, `:`, miután az entitás nevével, például `{Location:Origin}`. A szerepkörök az entitások listájának listáját jeleníti meg. Válassza ki a szerepkört, és válassza le az ENTER billentyűt. 
 
     ![Képernyőkép a szerepkörrel rendelkező entitás](./media/luis-how-to-model-intent-pattern/patterns-4.png)
 
-    Miután kiválasztotta a megfelelő entitás, a minta megadott, és válassza le az ENTER billentyűt. Ha befejezte az belépés kombinációját, [betanítása](luis-how-to-train.md) az alkalmazást.
+    Miután kiválasztotta a megfelelő entitás, befejezéséhez írja be a mintát, és válassza le az ENTER billentyűt. Amikor elkészült a belépés minták [betanításához](luis-how-to-train.md) az alkalmazást.
 
-    ![Képernyőkép a megadott mintának mindkét típusú entitásokat](./media/luis-how-to-model-intent-pattern/patterns-5.png)
+    ![Képernyőkép a megadott mintának, és mindkét típusú entitást](./media/luis-how-to-model-intent-pattern/patterns-5.png)
 
-## <a name="search-patterns"></a>Keresési minták
-Keresés lehetővé teszi megadott szöveget tartalmazó minták kereséséhez.  
+## <a name="search-patterns"></a>Minták keresése
+A keresés lehetővé teszi a megadott szöveget tartalmazó mintákat találni.  
 
-1. Válassza ki a Nagyítót ábrázoló ikonra.
+1. Válassza a Nagyító ikont.
 
-    ![Képernyőfelvétel a minták lapon a keresési eszköz ikonja kiemelve](./media/luis-how-to-model-intent-pattern/search-icon.png)
+    ![Képernyőkép a minták lap a search eszköz ikonja kiemelve](./media/luis-how-to-model-intent-pattern/search-icon.png)
 
-    A minták listájának jobb felső sarokban, a keresőmezőbe írja be a keresett szöveg, és válassza ki az ENTER billentyűt. A minták listájának megjelenítéséhez csak a például a keresési szöveget minták frissül.
+    Írja be a keresett szöveget a keresőmezőbe, a jobb felső sarokban található mintákat listáját, és nyomja le az Enter. A minták listájának megjelenítéséhez csak azokat a mintákat, többek között a keresési szöveget frissül.
 
-    ![Képernyőfelvétel a minták lapon a keresési szöveget a keresőmezőbe a kijelölt](./media/luis-how-to-model-intent-pattern/search-text.png)
+    ![Képernyőkép a minták lapon a keresési szöveget a keresőmezőbe kiemelésével](./media/luis-how-to-model-intent-pattern/search-text.png)
 
-    Szakítsa meg a keresést, és állítsa vissza a teljes listát annak a, törölje a megadott keresési szöveg.
+    A Keresés megszakítása és a visszaállítás a mintákat teljes listáját, törölje a beírt keresési szöveget.
 
 <!-- TBD: should I be able to click on the magnifying glass again to close the search box? It doesn't reset the list. -->
 
-## <a name="edit-a-pattern"></a>A szabály módosítása
-1. A minta szerkesztéséhez válassza ki, hogy a minta a sor jobb oldali végén a három pont (…) ikonra, majd jelölje ki **szerkesztése**. 
+## <a name="edit-a-pattern"></a>Egy szabály módosítása
+1. A minta szerkesztéséhez válassza a három pontra (...) ikont, hogy a minta vonal a jobb végén, majd válassza ki **szerkesztése**. 
 
-    ![Minta sor menüpontja szerkesztése képernyőképe](./media/luis-how-to-model-intent-pattern/patterns-three-dots.png) 
+    ![Minta sorban menüpont szerkesztése képernyőképe](./media/luis-how-to-model-intent-pattern/patterns-three-dots.png) 
 
-2. A mezőben adja meg a módosításokat. Amikor elkészült, válassza ki adja meg. Ha befejezte az szerkesztési kombinációját, [betanítása](luis-how-to-train.md) az alkalmazást.
+2. A szövegmezőben adja meg a módosításokat. Amikor elkészült, válassza ki adja meg. Amikor elkészült a szerkesztési minták [betanításához](luis-how-to-train.md) az alkalmazást.
 
-    ![Képernyőkép a minta szerkesztése](./media/luis-how-to-model-intent-pattern/edit-pattern.png)
+    ![Képernyőkép a minta szerkesztéséhez](./media/luis-how-to-model-intent-pattern/edit-pattern.png)
 
-## <a name="reassign-individual-pattern-to-different-intent"></a>Egyes minta más célra való ismételt hozzárendelése
+## <a name="reassign-individual-pattern-to-different-intent"></a>Egyes minta különböző beszédszándék újbóli hozzárendelése
 
-Más célra egyetlen mintát hozzárendelni a minta szöveg jobb a leképezési listában válassza ki és más célra.
+Szeretné hozzárendelni egy másik beszédszándék egyetlen mintát, a mintának a szöveg jobb a szándék legördülő listából válassza ki, és válassza ki egy másik leképezést.
 
-![Képernyőkép a más célra egyes minta újbóli hozzárendelése](./media/luis-how-to-model-intent-pattern/reassign-individual-pattern.png)
+![Képernyőkép a különböző beszédszándék egyes minta újbóli hozzárendelése](./media/luis-how-to-model-intent-pattern/reassign-individual-pattern.png)
 
-## <a name="reassign-several-patterns-to-different-intent"></a>Több minták más célra való ismételt hozzárendelése
+## <a name="reassign-several-patterns-to-different-intent"></a>Több, különböző beszédszándék minták újbóli hozzárendelése
 
-Több minták más célra való hozzárendelésének, jelölje be a jelölőnégyzetet minden egyes minta a bal oldali vagy felső jelölőnégyzet bejelölésével. A **ismételt hozzárendelése leképezés** lehetőséget választja, megnyílik az eszköztáron. Válassza ki a megfelelő leképezésének a minták. 
+Egy másik beszédszándék több mintákat szeretné hozzárendelni, jelölje be a jelölőnégyzetet minden minta balra, vagy jelölje be a felső. A **újbóli hozzárendelése a leképezés** lehetőség jelenít meg, az eszköztáron. Válassza ki a megfelelő leképezést a mintákat. 
 
-![Több minták más célra való újbóli képernyőképe](./media/luis-how-to-model-intent-pattern/reassign-many-patterns.png)
+![Képernyőkép a különböző beszédszándék több minták újbóli hozzárendelése](./media/luis-how-to-model-intent-pattern/reassign-many-patterns.png)
 
-## <a name="delete-a-single-pattern"></a>Egyetlen szabály törlése
+## <a name="delete-a-single-pattern"></a>Egyetlen mintát törlése
 
-1. A minta törléséhez válassza ki, hogy a minta a sor jobb oldali végén a három pont (…) ikonra, majd jelölje ki **törlése**. 
+1. Töröl egy mintát, a minta vonal a jobb végén a három pontra (...) ikonra, majd jelölje ki **törlése**. 
 
-    ![Utterance törlése képernyőképe](./media/luis-how-to-model-intent-pattern/patterns-three-dots-ddl.png)
+    ![Törlés képernyőfelvétel utterance (kifejezés)](./media/luis-how-to-model-intent-pattern/patterns-three-dots-ddl.png)
 
-2. Válassza ki **Ok** gombra a törlés jóváhagyásához.
+2. Válassza ki **Ok** a törlés megerősítéséhez.
 
-    ![Jóváhagyás törlése képernyőképe](./media/luis-how-to-model-intent-pattern/confirm-delete.png)
+    ![Törlés képernyőfelvétel megerősítése](./media/luis-how-to-model-intent-pattern/confirm-delete.png)
 
 ## <a name="delete-several-patterns"></a>Több minták törlése
 
-1. Több minták törléséhez jelölje be a jelölőnégyzetet minden egyes minta a bal oldali vagy felső jelölőnégyzet bejelölésével. A **minták (s) törlése** lehetőséget választja, megnyílik az eszköztáron. Válassza ki **minták (s) törlése**.  
+1. Több minták törléséhez jelölje be a jelölőnégyzetet minden minta balra, vagy jelölje be a felső. A **törlése (s). mintázatok** lehetőség jelenít meg, az eszköztáron. Válassza ki **törlése (s). mintázatok**.  
 
-    ![Képernyőkép a több minták törlése](./media/luis-how-to-model-intent-pattern/delete-many-patterns.png)
+    ![Több minták törlésének képernyőképe](./media/luis-how-to-model-intent-pattern/delete-many-patterns.png)
 
-2. A **minták törlése** megerősítése párbeszédpanel jelenik meg. Válassza ki **Ok** törlésének befejezéséhez.
+2. A **minták törlése** megerősítő párbeszédpanel jelenik meg. Válassza ki **Ok** a Törlés gombra.
 
-    ![Képernyőkép a több minták törlése](./media/luis-how-to-model-intent-pattern/delete-many-patterns-confirmation.png)
+    ![Több minták törlésének képernyőképe](./media/luis-how-to-model-intent-pattern/delete-many-patterns-confirmation.png)
 
-## <a name="filter-pattern-list-by-entity"></a>Az entitás minta listájának szűrése
+## <a name="filter-pattern-list-by-entity"></a>Entitás minta listájának szűrése
 
-Egy adott entitás minták listájának szűréséhez válassza **entitás szűrők** az eszköztár fölött a minták. 
+Egy adott entitás minták a lista szűréséhez válassza **entitás szűrők** fent a minták az eszköztáron. 
 
 ![Képernyőkép a minták entitás szerinti szűrés](./media/luis-how-to-model-intent-pattern/filter-entities-1.png)
 
-A szűrő alkalmazása az eszköztár alatt megjelenik az entitás nevét. 
+Miután a szűrő alkalmazása, az entitás nevét az eszköztár alatt jelenik meg. 
 
-## <a name="filter-pattern-list-by-intent"></a>Minta szűrőlista szándékosan
+## <a name="filter-pattern-list-by-intent"></a>A minta szűrőlista szándékosan
 
-Egy adott szándékosan minták listájának szűréséhez válassza **leképezés szűrők** az eszköztár fölött a minták. 
+Minták listája szűrhet egy adott szándékot, válassza ki a **szándékot szűri** az eszköztár fölött a minták. 
 
 ![Képernyőkép a minták leképezés szerinti szűrés](./media/luis-how-to-model-intent-pattern/filter-intents-1.png)
 
-A szűrő alkalmazása a leképezési nevét az eszköztár alatt jelenik meg. 
+A szűrő alkalmazásakor a leképezés neve jelenik meg az eszköztáron. 
 
-## <a name="remove-entity-or-intent-filter"></a>Távolítsa el az entitás vagy leképezési szűrő
-A minta listában vannak, amikor az entitás vagy a leképezési neve jelenik meg az eszköztár alatt. A szűrő eltávolításához jelölje ki a nevét.
+## <a name="remove-entity-or-intent-filter"></a>Entitás vagy szándék szűrő eltávolítása
+Ha a minta a szűrt lista, az eszköztáron az entitás vagy a leképezés neve jelenik meg. A szűrő eltávolításához válassza ki a nevét.
 
-![Az entitás szűrt minták képernyőképe](./media/luis-how-to-model-intent-pattern/filter-entities-2.png)
+![Képernyőkép a szűrt minták entitás](./media/luis-how-to-model-intent-pattern/filter-entities-2.png)
 
-A szűrő törlődik, és minden mintát jelenít meg. 
+A szűrő törlődik, és minden minták megjelenítése. 
 
-## <a name="add-pattern-from-existing-utterance-on-intent-or-entity-page"></a>Minta hozzáadása a meglévő utterance leképezés vagy entitás az oldalon
-A minta egy meglévő utterance akár hozhat létre a **leképezés** vagy **entitás** lap. Minden utterances bármely leképezés vagy entitás lapján jelennek meg listáját a jobb oldali oszlopban hozzá lehet férni utterance szintű beállításokat, mint a **szerkesztése**, **törlése**, és **Mintázat,Hozzáadás**.
+## <a name="add-pattern-from-existing-utterance-on-intent-or-entity-page"></a>Adja hozzá a minta a leképezés vagy entitás oldalon meglévő utterance (kifejezés)
+Egy meglévő utterance (kifejezés) sem hozhat létre egy minta a **szándékot** vagy **entitás** lap. Minden utterances bármely leképezés vagy entitás lapján jelennek meg listáját a jobb oldali oszlopban, mint például a utterance (kifejezés) szintű beállításokat való hozzáférés biztosítása a **szerkesztése**, **törlése**, és **mintakénthozzáadása**.
 
-1. A kijelölt sorban található a utterance, a három pont (…) jobb oldalán a utterance válassza ki és **mintázat, Hozzáadás**.
+1. A kijelölt sor az utterance (kifejezés), válassza a három pontra (...) az utterance (kifejezés) jobbra, és válassza ki **mintaként Hozzáadás**.
 
-    [![](./media/luis-how-to-model-intent-pattern/add-pattern-from-utterance.png "Képernyőkép a beállítások menü kiemelve Hozzáadás mintával utterances tábla")](./media/luis-how-to-model-intent-pattern/add-pattern-from-utterance.png)
+    [![](./media/luis-how-to-model-intent-pattern/add-pattern-from-utterance.png "Képernyőkép a beállítások menü kiemelt Hozzáadás minta utterances-tábla")](./media/luis-how-to-model-intent-pattern/add-pattern-from-utterance.png)
 
-2. A minta a következők szerint módosítsa a [szintaxis szabályok](luis-concept-patterns.md#pattern-syntax). Ha a kiválasztott utterance az entitások megjelölése, a entitásokból a helyes szintaxis a mintát már szerepelnek.
+2. A minta szerint módosíthatja a [szintaxis szabályainak](luis-concept-patterns.md#pattern-syntax). Ha bejelölte az utterance (kifejezés) feliratú entitásokkal, ezeket az entitásokat is még a mintában a helyes szintaxis.
 
-    ![Az entitás szűrt minták képernyőképe](./media/luis-how-to-model-intent-pattern/confirm-patterns-modal.png)
+    ![Képernyőkép a szűrt minták entitás](./media/luis-how-to-model-intent-pattern/confirm-patterns-modal.png)
 
-## <a name="train-your-app-after-changing-model-with-patterns"></a>Az alkalmazás train model mintákat módosítása után
-Miután hozzáadása, szerkesztése, törlése vagy ismételt hozzárendelése egy olyan mintát, [betanítása](luis-how-to-train.md) és [közzététele](PublishApp.md) az alkalmazás a módosításokat az végpont lekérdezések. 
+## <a name="train-your-app-after-changing-model-with-patterns"></a>Minták modell módosítása után az alkalmazás betanítása
+Miután hozzáadása, szerkesztése, törlése vagy újbóli hozzárendelése egy olyan mintát, [betanításához](luis-how-to-train.md) és [közzététele](luis-how-to-publish-app.md) a végpont lekérdezéseket érintő módosítások alkalmazásához. 
 
 ## <a name="next-steps"></a>További lépések
 
-* Megtudhatja, hogyan [mintát build](luis-tutorial-pattern.md) egy pattern.any és szerepköröket.
-* Megtudhatja, hogyan [betanítása](luis-how-to-train.md) az alkalmazást.
+* Ismerje meg, hogyan [hozhat létre egy minta](luis-tutorial-pattern.md) egy pattern.any és szerepköröket.
+* Ismerje meg, hogyan [betanításához](luis-how-to-train.md) az alkalmazást.

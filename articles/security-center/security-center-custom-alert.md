@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/19/2018
+ms.date: 06/29/2018
 ms.author: terrylan
-ms.openlocfilehash: f950b6fef575e9dc2d637c17ba40b6f504d1f227
-ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
+ms.openlocfilehash: 326b07a18b07f15850e0283ad51a05b42c1ef0ab
+ms.sourcegitcommit: 4597964eba08b7e0584d2b275cc33a370c25e027
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36284777"
+ms.lasthandoff: 07/02/2018
+ms.locfileid: "37341313"
 ---
 # <a name="custom-alert-rules-in-azure-security-center-preview"></a>Egyéni riasztási szabályok az Azure Security Centerben (előzetes verzió)
 Ebből a dokumentumból megismerheti az Azure Security Center egyéni riasztási szabályainak létrehozásához szükséges lépéseket.
@@ -31,7 +31,7 @@ A Security Center előre definiált [biztonsági riasztások](https://docs.micro
 A Security Center egyéni riasztási szabályaival új biztonsági riasztásokat definiálhat a környezetből már begyűjtött adatok alapján. Létrehozhat lekérdezéseket, amelyek eredményeit használhatja az egyéni szabály kritériumaiként, és amint ezek teljesülnek, a rendszer végrehajtja a szabályt. Az egyéni lekérdezések létrehozásához használhatja a számítógépek biztonsági eseményeit, a partnerek biztonsági megoldásainak naplóit vagy az API-kon keresztül feldolgozott adatokat.
 
 > [!NOTE]
-> A munkaterületen a egyéni riasztás tárolásához kiválasztott kell írási engedélye.
+> Egyéni riasztások nem támogatottak a Security Center [vizsgálati funkciójáról](security-center-investigation.md).
 >
 >
 
@@ -52,7 +52,14 @@ Egyéni riasztási szabály létrehozásához nyissa meg a **Security Center** i
 5.  A **Leírás** mezőben adjon meg egy rövid leírást, amely ismerteti a szabály célját.
 6.  A **Súlyosság** mezőben igény szerint válassza ki a súlyossági szintet (Magas, Közepes, Alacsony).
 7.  Az **Előfizetés** mezőben válassza ki az előfizetést, amelyre a szabály vonatkozik.
-8.  Válassza ki az ezzel a szabállyal a figyelni kívánt munkaterület a **munkaterület** mezőben, majd a a **keresési lekérdezés** mezőben, az eredmények használni kívánt lekérdezést. A munkaterületen a egyéni riasztás tárolásához kiválasztott kell írási engedélye. A lekérdezés eredménye aktiválja a riasztást. Figyelje meg, hogy ha egy érvényes lekérdezést ír be, megjelenik a zöld pipa a mező jobb sarkában:
+8.  Válassza ki a munkaterületet, amely a szabállyal figyelni szeretné a **munkaterület** mező, majd a a **keresési lekérdezés** mező, a lekérdezést, amely az eredmények lekéréséhez használni kívánt.
+
+    > [!NOTE]
+    > A munkaterületen, az egyéni riasztási tárolni kívánt írási engedély szükséges.
+    >
+    >
+
+    A lekérdezés eredménye aktiválja a riasztást. Figyelje meg, hogy ha egy érvényes lekérdezést ír be, megjelenik a zöld pipa a mező jobb sarkában:
 
     ![Lekérdezés](./media/security-center-custom-alert/security-center-custom-alert-fig3.png)
 

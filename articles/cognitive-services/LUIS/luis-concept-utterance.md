@@ -1,6 +1,6 @@
 ---
-title: Utterances LUIS alkalmazásokban az Azure-ban |} Microsoft Docs
-description: Adja hozzá a utterances nyelvi ismertetése intelligens szolgáltatás (LUIS) alkalmazásokban.
+title: A LUIS-alkalmazások az Azure-ban utterances |} A Microsoft Docs
+description: Beszédmódok hozzáadása a Language Understanding Intelligent Service (LUIS) alkalmazások.
 services: cognitive-services
 author: v-geberr
 manager: kaiqb
@@ -9,68 +9,68 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 02/13/2018
 ms.author: v-geberr
-ms.openlocfilehash: 66a23876eebe177c767b20f60f86891c35da3385
-ms.sourcegitcommit: ea5193f0729e85e2ddb11bb6d4516958510fd14c
+ms.openlocfilehash: 9b8556a30169561488a7b46f93af87b31e049e7a
+ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/21/2018
-ms.locfileid: "36301862"
+ms.lasthandoff: 07/02/2018
+ms.locfileid: "37345508"
 ---
-# <a name="utterances-in-luis"></a>A LUIS utterances
+# <a name="utterances-in-luis"></a>A LUIS kimondott szöveg
 
-**Utterances** vannak a bemeneti adatok a felhasználót, hogy a kell értelmezni. Kibontani leképezések és entitások őket LUIS betanításához fontos számos különböző bemeneteit minden leképezés rögzítése. Számítógép által ismert eszközintelligencia LUIS biztosító aktív tanulási, vagy a folyamat az új utterances betanítása folyamatos elengedhetetlen.
+**Beszédmódok** vannak a bemeneti adatok a felhasználó az alkalmazás által igényelt értelmezése. LUIS kinyerésére szándékok és entitások őket betanításához fontos számos különböző adatbevitelek esetében minden egyes szándékot rögzítése. Aktív tanulás, vagy a folyamat az új utterances betanításához folyamatos elengedhetetlen a gép megtanult intelligencia, amely a LUIS biztosít.
 
-Kifejezések, amelyek úgy gondolja, hogy a felhasználóknak meg kell gyűjteni. Vegye fel, amelyek ugyanazt jelenti, de össze utterances másképp word hosszára, valamint a word elhelyezési. 
+Kifejezések, amelyek úgy gondolja, hogy a felhasználók be fogja gyűjteni. Vegye fel ugyanazt jelenti, de tevődnek utterances eltérően word hossza és a word elhelyezési. 
 
 ## <a name="how-to-choose-varied-utterances"></a>Változatos utterances kiválasztása
-Amikor először megkezdésében által [példa utterances hozzáadása] [ add-example-utterances] a LUIS modell itt van néhány alapelvek szem előtt tartani.
+Amikor Ön először első lépésként [példa beszédmódok hozzáadása] [ add-example-utterances] figyelembe kell venni néhány alapelvet, a LUIS-modell, Íme.
 
-### <a name="utterances-arent-always-well-formed"></a>Utterances nem mindig alakú
-Lehet, hogy néhány mondatot, például az "Könyv me Párizsi jegy", illetve egy kódrészletet néhány mondatot, például a "Foglalási" vagy "Párizsi repülési."  Felhasználók gyakran vétett helyesen adta-e. Az alkalmazás megtervezésekor vegye figyelembe a függetlenül attól, hogy helyesírását felhasználói bevitel LUIS való továbbítás előtt. A [Bing helyesírás ellenőrizze API] [ BingSpellCheck] LUIS integrálható. Társíthatja az LUIS alkalmazást egy külső kulcs a Bing helyesírás ellenőrizze az API-hoz való közzétételekor. Ha nem írja be a jelölőnégyzetet felhasználói utterances, a gépelési és helyesírási hibák tartalmazó utterances kell még betanítani a LUIS.
+### <a name="utterances-arent-always-well-formed"></a>Beszédmódok mindig nem megfelelő
+Elképzelhető, hogy egy mondatot, például "Book me egy jegyet Párizs", vagy egy kódrészletet egy mondatot, például a "Foglalás" vagy "Párizs repülési."  Felhasználók gyakran ellenőrizze a helyesírási hibákat. Az alkalmazás megtervezésekor vegye figyelembe a-e, helyesírás-ellenőrzésének felhasználói bevitel LUIS való továbbítás előtt. A [Bing Spell Check API] [ BingSpellCheck] az intelligens hangfelismerési szolgáltatással integrálható. Társíthatja a LUIS-alkalmazás egy külső kulcs a Bing Spell Check API számára való közzétételekor. Ha Ön nem helyesírás-ellenőrzés felhasználói kimondott szöveg, a LUIS kell vonat a a kimondott szöveg, amely tartalmazza a gépelési és helyesírási hibák.
 
 ### <a name="use-the-representative-language-of-the-user"></a>A felhasználó nyelvi használata
-Utterances kiválasztásakor vegye figyelembe, hogy mit gondol gyakori kifejezés vagy kifejezés, nem feltétlenül a tipikus felhasználó számára az ügyfélalkalmazást. Előfordulhat, hogy nem rendelkeznek tartományi felhasználói élmény. Ezért legyen óvatos, szót vagy kifejezést, hogy a felhasználó csak volna fel ha voltak szakértőnek használatakor.
+Beszédmódok kiválasztásakor vegye figyelembe, hogy mit gondol gyakori kifejezés vagy kifejezés, lehetséges, hogy nem a tipikus felhasználónak az ügyfélalkalmazás. Előfordulhat, hogy nem rendelkeznek tartományi felhasználói élményt. Ezért legyen óvatos, szavakat vagy kifejezéseket, hogy a felhasználó csak megemlíteni ha voltak szakértői használatakor.
 
-### <a name="choose-varied-terminology-as-well-as-phrasing"></a>Válassza ki a változatos terminológia, valamint a mondatot a
-Akkor is, ha azon törekvéseit, hogy hozzon létre változatos mondat minták tételéhez fog továbbra is ugyanezt az egyes szóhasználatának találja.
+### <a name="choose-varied-terminology-as-well-as-phrasing"></a>Válassza ki a változatos terminológia, valamint a megfogalmazása drasztikusnak
+Akkor is, ha változatos mondat minták létrehozása erőfeszítést van szüksége, fog továbbra is ugyanezt az egyes szókincsből eredőket találja.
 
-Hajtsa végre az alábbi példa utterances:
+Hajtsa végre az alábbi példa kimondott szöveg:
 ```
 how do I get a computer?
 Where do I get a computer?
 I want to get a computer, how do I go about it?
 When can I have a computer? 
 ```
-Itt core kifejezés "számítógép", nem változott. Asztali számítógép, a hordozható számítógép, a munkaállomás vagy a gép még akkor is csak akkor parancsot. LUIS intelligens módon kikövetkezteti a környezetből szinonimák, de képzési utterances létrehozásakor még jobban eltérő őket.
+Itt, a core kifejezés a "számítógép", nem változott. Asztali számítógép, hordozható számítógép, munkaállomás vagy akár csak gépen sikerült mondják. A LUIS intelligensen kikövetkezteti a szinonimák környezetből, de képzéshez utterances létrehozásakor még jobb eltérő őket.
 
 ## <a name="example-utterances-in-each-intent"></a>Példa utterances az egyes leképezés
-Minden egyes leképezés példa utterances, legalább 10 – 15 rendelkeznie kell. Ha még nem rendelkező bármely példa utterances megjelölésű, csak akkor képes LUIS betanításához. Ha az egyik vagy nagyon kevés példa utterances megjelölésű, LUIS fog nem előre pontosan a célt. 
+Minden egyes szándékot példa utterances, legalább 10-15 rendelkeznie kell. Ha megjelölésű példa megszólalásokat nem rendelkező, nem lesz képes LUIS betanításához. Ha az egy vagy néhány példa utterances megjelölésű, LUIS fog nem előre pontosan a célt. 
 
-## <a name="add-small-groups-of-10-15-utterances-for-each-authoring-iteration"></a>A szerzői műveletekhez törzsének 10 – 15 utterances kis csoportok hozzáadása
-A modell minden egyes ismétlés esetén ne adjon hozzá egy nagy mennyiségű utterances. Adja hozzá a utterances több tíz mennyiségét. [Vonat](luis-how-to-train.md), [közzététele](publishapp.md), és [tesztelése](interactive-test.md) újra.  
+## <a name="add-small-groups-of-10-15-utterances-for-each-authoring-iteration"></a>Az Authoring Tool törzsének 10 – 15 utterances kis csoportok hozzáadása
+A modell minden egyes ismétléskor ne adjon hozzá egy nagy mennyiségű kimondott szöveg. Beszédmódok hozzáadása több tíz mennyiségét. [Train](luis-how-to-train.md), [közzététele](luis-how-to-publish-app.md), és [tesztelése](interactive-test.md) újra.  
 
-LUIS épít, gondosan kijelölt utterances hatékony modellek. Túl sok utterances hozzáadása oka nem értékes zavart okozna.  
+A LUIS, gondosan ki van jelölve, hogy megcímkézzen hatékony modelleket hoz létre. Túl sok beszédmódok hozzáadása nincs értékes keveredési, mert.  
 
-Érdemes néhány utterances, majd kezdje [tekintse át a végpont utterances](label-suggested-utterances.md) megfelelő leképezési előrejelzés és egyéb entitások kiolvasásához.
+Néhány utterances, majd indítása jobb [tekintse át a végpont utterances](label-suggested-utterances.md) megfelelő szándék előrejelzése és egyéb entitások kivonási.
 
 ## <a name="ignoring-words-and-punctuation"></a>Szavak és írásjelek figyelmen kívül hagyása
-Figyelmen kívül hagyja a szavakat vagy a példa utterance írásjelek, használja a [mintát](luis-concept-patterns.md#pattern-syntax) rendelkező a _figyelmen kívül hagyása_ szintaxist. 
+Ha azt szeretné, figyelmen kívül hagyja a szó vagy az a példában utterance (kifejezés) absztrakt, egy [minta](luis-concept-patterns.md#pattern-syntax) az a _figyelmen kívül hagyása_ szintaxist. 
 
-## <a name="training-utterances"></a>Képzési utterances
-Képzési nem determinisztikus: utterance előrejelzését némileg eltérőek lehetnek verziója vagy az alkalmazások között.
+## <a name="training-utterances"></a>Képzési kimondott szöveg
+Képzési nem determinisztikus: az utterance (kifejezés) előrejelzési némileg eltérőek lehetnek verziók és az alkalmazások között.
 
-## <a name="testing-utterances"></a>Tesztelési utterances 
+## <a name="testing-utterances"></a>Tesztelési kimondott szöveg 
 
-A fejlesztők valós forgalommal LUIS alkalmazását tesztelés utterances küld a végpont kell kezdődnie. A leképezések és rendelkező entitások teljesítményének javítását szolgálják ezek utterances [tekintse át a utterances](label-suggested-utterances.md). A LUIS webhely ablaktábla tesztelése az elküldött tesztek keresztül a végpont nem kap, és ezért nem járulnak hozzá aktív tanulási. 
+A fejlesztők el kell indulnia a LUIS alkalmazás valódi forgalom tesztelés utterances a végpontra küldésével. Ezek a kimondott szöveg a szándékok és entitások teljesítményének javítását szolgálják [tekintse át a kimondott szöveg](label-suggested-utterances.md). A LUIS-webhely panel tesztelése az elküldött tesztek nem kap a végponton keresztül, és ezért nem jelentenek aktív tanulás. 
 
-## <a name="review-utterances"></a>Tekintse át a utterances
-Miután a modell betanított, a közzétett és a fogadó [végpont](luis-glossary.md#endpoint) lekérdezések, [tekintse át a utterances](label-suggested-utterances.md) LUIS által javasolt. LUIS választja ki, amelyek a leképezés vagy az entitást az alacsony pontszámait végpont utterances. 
+## <a name="review-utterances"></a>Tekintse át a kimondott szöveg
+Miután a modellt, betanított, a közzétett és a fogadó [végpont](luis-glossary.md#endpoint) lekérdezéseket, [tekintse át a kimondott szöveg](label-suggested-utterances.md) LUIS által javasolt. A LUIS választja ki a végpont kimondott szöveg, amely rendelkezik a leképezés vagy egy entitás alacsony értékeket. 
 
 ## <a name="best-practices"></a>Ajánlott eljárások
-Felülvizsgálati [ajánlott eljárások](luis-concept-best-practices.md) további.
+Felülvizsgálat [ajánlott eljárások](luis-concept-best-practices.md) további.
 
 ## <a name="next-steps"></a>További lépések
-Lásd: [adja hozzá például utterances] [ add-example-utterances] egy LUIS alkalmazás felhasználói utterances megértéséhez betanítása olvashat.
+Lásd: [példa beszédmódok hozzáadása] [ add-example-utterances] a LUIS-alkalmazások felhasználói utterances megértéséhez képzési információkat.
 
 [add-example-utterances]: https://docs.microsoft.com/azure/cognitive-services/luis/luis-how-to-add-example-utterances
 [BingSpellCheck]: https://docs.microsoft.com/azure/cognitive-services/bing-spell-check/proof-text

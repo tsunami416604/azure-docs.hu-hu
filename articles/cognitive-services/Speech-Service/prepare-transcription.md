@@ -1,108 +1,105 @@
 ---
-title: Beszédfelismerés szolgáltatás írjanak elő irányelveiről |} Microsoft Docs
-description: Útmutató szöveg akusztikus testreszabása és nyelvi modellek és hang betűtípusok előkészítése a beszédfelismerés szolgáltatás.
+title: Beszéd képzéshez beszédátírási irányelvek |} A Microsoft Docs
+description: Ismerje meg, hogyan készítse elő a szöveg testreszabása akusztikai és nyelvi modelleket és hangtípust a beszédfelismerési szolgáltatás.
 titleSuffix: Microsoft Cognitive Services
 services: cognitive-services
-author: v-jerkin
+author: PanosPeriorellis
 manager: noellelacharite
 ms.service: cognitive-services
 ms.component: speech-service
 ms.topic: article
-ms.date: 05/07/2018
-ms.author: v-jerkin
-ms.openlocfilehash: 93ab7c81a773f692b2b970bb1901d82b7aceb5a2
-ms.sourcegitcommit: b7290b2cede85db346bb88fe3a5b3b316620808d
+ms.date: 07/01/2018
+ms.author: panosper
+ms.openlocfilehash: acca6f4cd2f4e7b452f5a70457d3d034e4d4aa7e
+ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "35349959"
+ms.lasthandoff: 07/02/2018
+ms.locfileid: "37345185"
 ---
-# <a name="transcription-guidelines-for-using-speech-service"></a>A Beszédfelismerés szolgáltatással írjanak elő irányelvek
+# <a name="transcription-guidelines-for-using-speech-service"></a>A Speech szolgáltatással beszédátírási irányelvek
 
-Testreszabásához **szöveg beszédfelismerés** vagy **szöveg-beszéd átalakítás**, mellett beszéd szöveget kell megadnia. A szöveg soronként egy egyetlen utterance felel meg. A szöveg egy *Beszélgetés szövegének*, és egy meghatározott formátumban kell létrehozni.
+Testreszabásához **Speech to Text** vagy **szöveg-beszéd átalakítás**, meg kell adnia a szöveg és beszéd. A szövegben minden sor egy egyetlen utterance (kifejezés) felel meg. A szöveg pontosan egyeznie kell a beszéd, a lehető. A szöveg egy *átirat*, és a egy meghatározott formátumban kell létrehoznia.
 
-A beszédfelismerés szolgáltatás néhány normalizations, annak érdekében, hogy a szöveg konzisztens hajtja végre. Más normalizálási feladatok képzési elküldve a szöveg előtt kell elvégezni. 
+A beszédfelismerési szolgáltatás Normalizálja a bemeneti szöveg konzisztens. 
 
-A cikk mindkét normalizations típusú. Az irányelvek különböző nyelvekhez némileg eltérőek lehetnek.
+Ez a cikk normalizations mindkét típusát ismerteti. Az irányelvek különböző nyelveken némileg eltérőek lehetnek.
 
 ## <a name="us-english-en-us"></a>Amerikai angol (en-US)
 
-Szöveg a szolgáltatásba való feltöltés kell lehet adatokat írni az egyszerű szöveges használata csak az ASCII karakterkészlet. A fájl minden egyes sorának tartalmaznia kell egy egyetlen utterance szövegét.
+Szöveges adatok kell írni, soronként egy utterance (kifejezés) egyszerű szöveges formátumban, csak az ASCII karakterkészlet használatával.
 
-Fontos, hogy kerülje el a kiterjesztett (Latin-1) vagy a Unicode írásjeleket. Ezeket a karaktereket is, hogy tartalmazza az adatokat egy szövegszerkesztő program vagy adatai lekaparást előkészítésekor. Cserélje le ezeket a karaktereket megfelelő ASCII helyettesítések szempontjából. Példa:
+Kerülje a kiterjesztett (Latin-1) vagy Unicode írásjeleket használatát. Ezek a karakterek szerepelhetnek véletlenül az adatokat egy szövegszerkesztő program vagy automatizované získávání dat weblapokról származó adatok előkészítésekor. Cserélje le a megfelelő ASCII helyettesítések ezeket a karaktereket. Példa:
 
-| Karakterek elkerülésére | Helyettesítés |
+| Karakterek elkerülése érdekében | Helyettesítés |
 |----- | ----- |
-| "Hello world" (megnyitására és bezárására a dupla idézőjelek között) | "Hello world" (idézőjelek) |
-| János napja (jobb oldali szimpla idézőjel) | János napja (aposztróf) |
-| jó volt – nem volt nagyszerű! (em dash) | jó--volt nem, mert nagyszerű! (kötőjel) |
+| "Hello world" (Nyissa meg, és zárja be az idézőjelekkel együtt) | "Hello world" (dupla idézőjel) |
+| János napja (jobb szimpla idézőjel) | János napja (aposztrófot) |
+| jó volt – nem, nagyszerű volt! (em dash) | jó--volt nem, mert nagyszerű! (kötőjel) |
 
-### <a name="text-normalization-performed-by-the-service"></a>A szolgáltatás által végzett szöveg normalizálási
+### <a name="text-normalization-rules-for-english"></a>Szöveg normalizálási szabályok az angol nyelvű tájékoztatáshoz
 
-A beszédfelismerés szolgáltatás végzi a következő szöveg normalizálási szöveg ki.
+A beszédfelismerési szolgáltatás hajtja végre az alábbi normalizálási szabályok.
 
-*   Alsó-kis-és az összes szöveg
-*   A word-belső aposztrófot kivételével minden írásjelet eltávolítása
-*   A szóbeli űrlaphoz, többek között a dollár összegek számok bővítése
+*   Alsó – kis-és a teljes szöveg
+*   A word-belső aposztrófot kivételével az összes írásjelek eltávolítása
+*   Használja a beszélt űrlaphoz, például összegeket számok bővítése
 
-Néhány példa
+Íme néhány példa
 
 | Eredeti szöveg | Normalizálási után |
 |----- | ----- |
-| Starbucks kávé | starbucks kávé |
-| "Szent vonatkozó!" említett Batman. | Szent vonatkozó említett batman |
-| "Mi?" említett Batman sidekick, multiplexelés. | milyen említett batman sidekick multiplexelés |
-| Nyissa meg a get - em! | Nyissa meg get em |
-| Double-jointed vagyok | i kettős vagyok szimuláló |
-| 104-es fő utca. | egy bizony négy fő utca. |
-| Állítson be 102.7 | Állítson be egy bizony két pont hét |
-| A pi készül 3.14 | a pi körülbelül három pont egy négy |
-| $3.14 költséggel | három tizennégy költséggel |
+| "Szent vonatkozó!" említett Batman. | Szent vonatkozó mondta batman |
+| "Mi?" említett Batman sidekick, a terheléselosztást. | milyen említett batman sidekick multiplexelés |
+| Nyissa meg a get - em! | Nyissa meg a get-em |
+| Double-jointed vagyok | Kettős jointed vagyok |
+| 104 utca utca. | egy hoppá négy utca utca. |
+| A 102.7 hangolása | Állítson be egy hoppá két hét |
+| A pi készül 3,14 | a pi körülbelül három pont egy négy |
+| $3,14 költségei | három tizennégy költségei |
 
-### <a name="text-normalization-you-must-perform"></a>Végre kell hajtania szöveg normalizálási
+Az alábbi normalizálási alkalmazni a szöveg szövegekben.
 
-A szöveg ki a következő normalizálási vonatkozik.
-
-*   Kell írható rövidítések szóbeli űrlap tükrözik a szavakat a
-*   Nem szabványos numerikus karakterláncokat (például néhány dátum vagy számlázási űrlapok) kell megírni szavakat
-*   Vegyes alfanumerikus karaktereket és nem alfabetikus karaktereket szavak kell kért, mert hangsúlyozottan
-*   Rövidítéseket hagyása szavakat, hangsúlyozottan hagyja. Például sugárdiagram, lézernyomtatókra, RAM, NATO és Mr.
-*   Külön betű szóközökkel elválasztott meghajtóbetűjellel rendelkező hangsúlyozottan rövidítések írni. Ha például IBM, a CPU, a FBI, a Feladatdiagnosztika, a NaN. 
+*   Rövidítések szavak kell megírni
+*   Nem szabványos numerikus karakterláncokat (például bizonyos dátum vagy számlázási űrlapok) kell írni a szavakat
+*   Szavak vegyes alfanumerikus karakterek vagy nem alfabetikus karaktereket kell megjelenített érzéseket, mivel ejtsd
+*   Rövidítések ejtsd: szavakat változatlanul hagyja. Ha például a mérlegeli, lézer, RAM, NATO.
+*   Az írási ejtsd: külön betűket, szóközzel elválasztva meghajtóbetűjellel rendelkező rövidítéseket. Például, IBM, Processzor, az FBI, TBD, NaN. 
 
 Néhány példa:
 
 | Eredeti szöveg | Normalizálási után |
 |----- | ----- |
-| 14 Üzenetnek 3. Dr. | 14 northeast harmadik meghajtó |
-| Dr. Strangelove | Orvosi Strangelove |
-| 007 James kötés | James kötés duplán bizony hét |
-| Ke$ magas rendelkezésre állású | Kesha |
-| Milyen hosszú legyen a 2 darab 4 | Milyen hosszú legyen a két négy |
-| Az értekezlet kerül az 1-3 pm | Az értekezlet kerül egy három délután |
-| a vér típus O + | A vér típus pozitív O: |
-| Vízjel H20 | Vízjel H 2 O |
-| Van Halen által OU812 lejátszása | O-U 8 1-2 szerint Van Halen lejátszása |
+| 14 új 3. vészhelyreállítás. | tizennégy északkelet harmadik meghajtó |
+| Dr. Bruce szalagcím | Orvos Bruce szalagcím |
+| James Bond, 007 | James Bond, duplán hoppá hét |
+| Ke$ magas rendelkezésre állás | Kesha |
+| Mennyi ideig tart a 2 x 4 | Mennyi ideig tart a két négy |
+| Az értekezlet kerül az 1-3 pm | Az értekezlet kerül egy és három pm |
+| saját vér típus O + | Saját vér típus pozitív O |
+| víz H20 | víz H 2 O |
+| által Van Halen OU812 lejátszása | O U 8 1-2 szerint Van Halen lejátszása |
 | UTF-8 az Anyagjegyzék | U T F 8 az Anyagjegyzék |
 
 ## <a name="chinese-zh-cn"></a>Kínai (zh-CN)
 
-Az egyéni beszéd szolgáltatás feltöltött szöveg adatok bájtsorrend jelölő UTF-8 kódolást kell használniuk. A fájl minden egyes sorának tartalmaznia kell egy egyetlen utterance szövegét.
+A Custom Speech Service feltöltött szöveges adatok bájtsorrendjelző jelölő az UTF-8 kódolást kell használniuk. A fájl minden sorában egy utterance (kifejezés) kell írni.
 
-Fontos, hogy kerülje el a teljes szélességű írásjeleket. Ezeket a karaktereket is, hogy tartalmazza az adatokat egy szövegszerkesztő program vagy adatai lekaparást előkészítésekor. Cserélje le azokat megfelelő teljes szélességű helyettesítések szempontjából. Példa:
+Kerülje a teljes szélességű írásjelek karakterek használatát. Ezek a karakterek szerepelhetnek véletlenül az adatokat egy szövegszerkesztő program vagy automatizované získávání dat weblapokról származó adatok előkészítésekor. Cserélje le azokat megfelelő teljes szélességű helyettesítések. Példa:
 
-| Karakterek elkerülésére | Helyettesítés |
+| Karakterek elkerülése érdekében | Helyettesítés |
 |----- | ----- |
-| "你好" (Megnyitás és Bezárás dupla idézőjelek között) | "你好" (dupla idézőjelek között) |
+| "你好" (Megnyitás és Bezárás idézőjelekkel együtt) | "你好" (az idézőjelekkel együtt) |
 | 需要什么帮助? (kérdőjel) | 需要什么帮助? |
 
-### <a name="text-normalization-performed-by-the-service"></a>A szolgáltatás által végzett szöveg normalizálási
+### <a name="text-normalization-rules-for-chinese"></a>Kínai szöveg normalizálási szabályok
 
-A beszédfelismerés szolgáltatás végzi a következő szöveg normalizálási szöveg ki.
+A beszédfelismerési szolgáltatás hajtja végre az alábbi normalizálási szabályok.
 
-*   Minden írásjelet eltávolítása
-*   A szóbeli űrlap bővülő számok
+*   Az összes írásjelek eltávolítása
+*   Használja a beszélt űrlap növekvő számok
 *   Kétbájtos karaktereket konvertálása félig karaktereket
-*   Felső – kis-és az összes angol szavak
+*   Felső – kis-és az összes angol szavakat
 
 Néhány példa:
 
@@ -116,12 +113,10 @@ Néhány példa:
 | 下午5:00的航班 | 下午 五点 的 航班 |
 | 我今年21岁 | 我 今年 二十 一 岁 |
 
-### <a name="text-normalization-you-must-perform"></a>Végre kell hajtania szöveg normalizálási
+Mielőtt importálná azokat a alkalmazni a szöveget az alábbi normalizálási.
 
-A szöveg importálás előtt a következő normalizálási vonatkozik.
-
-*   Kell írható rövidítések szóbeli űrlap tükrözik a szavakat a
-*   Ez a szolgáltatás nem fedi le minden numerikus mennyiséget. További megbízható szóbeli formában numerikus karakterláncok kiírni.
+*   Rövidítések szavak (mint a kimondott képernyő) kell megírni
+*   Használja a beszélt formában numerikus karakterláncok kiírni.
 
 Néhány példa:
 
@@ -130,56 +125,50 @@ Néhány példa:
 | 我今年21 | 我今年二十一 |
 | 3号楼504 | 三号 楼 五 零 四 |
 
-## <a name="other-languages"></a>Egyéb nyelvek
+## <a name="other-languages"></a>Más nyelveken
 
-Szöveges adatok fel van töltve a **szöveg beszédfelismerés** szolgáltatás bájtsorrend jelölő UTF-8 kódolást kell használnia. A fájl minden egyes sorának tartalmaznia kell egy egyetlen utterance szövegét.
+Szöveges adatot feltölteni a **Speech to Text** szolgáltatást kell használnia a bájtsorrendjelző jelölő UTF-8 kódolást. A fájl minden sorában egy utterance (kifejezés) kell írni.
 
 > [!NOTE]
-> Ezekben a példákban német. Azonban a szabályok érvényesek, amelyek nem angol vagy kínai összes nyelvet.
+> Ezek a példák a német. Azonban ezeket az irányelveket, amelyek nem angol vagy kínai összes nyelv vonatkoznak.
 
-### <a name="text-normalization-performed-by-the-service"></a>A szolgáltatás által végzett szöveg normalizálási
+### <a name="text-normalization-rules-for-german"></a>Szöveg normalizálási szabályok német
 
-A beszédfelismerés szolgáltatás végzi a következő szöveg normalizálási szöveg ki.
+A beszédfelismerési szolgáltatás hajtja végre az alábbi normalizálási szabályok.
 
-*   Alsó-kis-és az összes szöveg
-*   Például különböző típusú ajánlatok minden írásjelet eltávolítása ("teszt", a "test", a "teszt" vagy a "teszt" ok)
-*   Eldobja az összes sort tartalmazó speciális karakterek a készletből ^ ˘ l ¤ y ¦ § © ª ¬® ° ± ² µ × y Ø¬¬
-*   Word űrlaphoz, beleértve a dollár vagy euró összegek számok bővítése
-*   Umlautokat csak egy, a o elfogadás u; mások "th" váltja fel, vagy elveti a rendszer
+*   Alsó – kis-és a teljes szöveg
+*   Az összes írásjelek, beleértve a különböző típusú ajánlatok eltávolítása ("teszt", "teszt", "teszt" vagy "teszt" olyan ok)
+*   A set-˘ a különleges karakterek tartalmazó sorok elvetése ¤ y ¦ § © ª ¬® ° ± ² µ x y Ø¬¬
+*   Számok szóformaként, többek között a dollár vagy euró összegek bővítése
+*   Umlautokat csak egy, a o elfogadás u. mások "th" váltja fel, és elveti
 
-Néhány példa
+Íme néhány példa
 
 | Eredeti szöveg | Normalizálási után |
 |----- | ----- |
-| Frankfurter Ring | Frankfurter ring |
-| "Hallo, Mama!" sagt die Tochter. | hallo mama sagt die tochter |
+| Frankfurter kör | Frankfurter kör |
 | ¡Eine Frage! | eine frage |
 | WIR, haben | WIR haben |
-| Das macht $10 | das macht zehn dollár |
 
-### <a name="text-normalization-you-must-perform"></a>Végre kell hajtania szöveg normalizálási
+Mielőtt importálná azokat a alkalmazni a szöveget az alábbi normalizálási.
 
-A szöveg importálás előtt a következő normalizálási vonatkozik.
-
-*   Decimális pont lehet ",", és nem".": 2,3-nem 2.3 %
-*   Idő elválasztó óra és perc között kell lennie ":", és nem".": 12:00 Uhr
-*   Rövidítések "ca.", "bzw." nem cserélhető. Azt javasoljuk, hogy a teljes formátumot használja.
-*   A rendszer eltávolítja az öt fő matematikai operátorok: +, -, \*, /. Javasoljuk, hogy a literális forma felülírás: plusz és mínusz kárte, geteilt.
-*   Ugyanez vonatkozik az összehasonlító operátor (=, <>,) - gleich, kleiner als, grösser als
-*   Használja a törtek, 3 vagy 4, például a word-formátumban (például "drei viertel" ¾ helyett)
-*   A "szimbólum cserélje le a word"Euro"képernyő
+*   Tizedesjel legyen ","és nem"."
+*   Idő elválasztó óra és perc között kell lennie ":"és nem".": 12:00 Uhr
+*   Rövidítéseket, például a "ca". nem cserélhető le. Azt javasoljuk, hogy a teljes képernyőn.
+*   Az öt fő matematikai operátorokat el lesznek távolítva: +, -, \*, /. Azt javasoljuk, és cserélje le őket a szövegkonstans forma: plusz fiókközpont, geteilt csökkentve.
+*   Ugyanez vonatkozik az összehasonlítási operátor (=, <>,) – gleich, kleiner als, grösser als
+*   Használja a percenkénti egységeinek törtrészeként 3/4-es, mint a word formátumban (például "drei viertel" ¾ helyett)
+*   Cserélje le a szóformaként "Euró" a "szimbólumot
 
 Néhány példa:
 
-| Eredeti szöveg | Felhasználó normalizálási után | Rendszer normalizálási után
+| Eredeti szöveg | A felhasználó normalizálási után | Rendszer normalizálási után
 |--------  | ----- | -------- |
-| Es ist 12.23Uhr | Es ist 12:23Uhr | es ist zwölf uhr drei és zwanzig uhr |
-| {12.45} | {12,45} | zwölf komma vier fünf |
-| 3 < 5 | 3 kleiner als 5 | drei kleiner als vier |
-| 2 + 3 – 4 | 2 és 3 mínusz 4 | zwei és mínusz vier drei|
-| Das macht 12 " | Das macht 12 Euros | das macht zwölf euros |
+| Es Izraeli normál idő szerint 12.23Uhr | Es Izraeli normál idő szerint 12:23Uhr | es Izraeli normál idő szerint zwölf uhr drei és zwanzig uhr |
+| {12.45} | {12,45} | zwölf komma vier fünf ||
+| 2 és 3-4 | 2 és 3-4 mínusz | zwei plusz -mínusz vier drei|
 
 ## <a name="next-steps"></a>További lépések
 
-- [Beszéd próbaverziós előfizetés beszerzése](https://azure.microsoft.com/try/cognitive-services/)
-- [A C# beszéd felismerésére](quickstart-csharp-windows.md)
+- [A beszédfelismerés próbaverziós előfizetés beszerzése](https://azure.microsoft.com/try/cognitive-services/)
+- [A beszédfelismerést a C#-ban](quickstart-csharp-windows.md)

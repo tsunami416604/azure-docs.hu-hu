@@ -1,6 +1,6 @@
 ---
-title: Önálló üzemeltetett integrációs futásidejű létrehozása az Azure Data Factory |} Microsoft Docs
-description: Ismerje meg, hogy önálló üzemeltetett integrációs futásidejű létrehozása az Azure Data Factory, amely lehetővé teszi az adat-előállítók való hozzáférést egy magánhálózaton.
+title: Saját üzemeltetésű integrációs modul létrehozása az Azure Data Factoryban |} A Microsoft Docs
+description: Ismerje meg a saját üzemeltetésű integrációs modul létrehozása az Azure Data Factoryról, amely lehetővé teszi az adat-előállítók egy magánhálózaton lévő adattárak eléréséhez.
 services: data-factory
 documentationcenter: ''
 author: nabhishek
@@ -12,198 +12,199 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/15/2018
 ms.author: abnarain
-ms.openlocfilehash: be2ac5427516bc29f87052667e4b44be52757f1e
-ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
+ms.openlocfilehash: afd061b026e30378f5e645d11b84b44b7a516143
+ms.sourcegitcommit: 4597964eba08b7e0584d2b275cc33a370c25e027
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37113153"
+ms.lasthandoff: 07/02/2018
+ms.locfileid: "37341579"
 ---
-# <a name="how-to-create-and-configure-self-hosted-integration-runtime"></a>Hozzon létre, és Self-hosted integrációs futásidejű konfigurálása
-Az integrációs futásidejű (IR) a számítási infrastruktúrától által használt Azure Data Factory adatok integrációs funkciók különböző hálózati környezetek között. Infravörös kapcsolatos részletekért lásd: [integrációs futásidejű áttekintése](concepts-integration-runtime.md).
+# <a name="how-to-create-and-configure-self-hosted-integration-runtime"></a>Hogyan hozhat létre, és a helyi integrációs modul konfigurálása
+Az Integration Runtime (IR) a különböző hálózati környezetekben adatintegrációs képességeket biztosít az Azure Data Factory által használt számítási infrastruktúra áll. Integrációs modul kapcsolatos részletekért lásd: [Integration Runtime áttekintése](concepts-integration-runtime.md).
 
-Egy önálló üzemeltetett integrációs futásidejű rendszere között egy felhőbeli adatát másolási tevékenység futtatására képes, tárolók és a magánhálózati és átalakítás tevékenységeket célozzon terjesztéséhez adattárat számítási erőforrásokat egy helyszíni vagy Azure virtuális hálózat. Önálló üzemeltetett integrációs futásidejű szükségleteinek telepíthető egy a helyi számítógépen vagy egy virtuális gépet egy magánhálózaton belül.  
+Egy saját üzemeltetésű integrációs modul képes a másolási tevékenységek futtatása a felhőbeli adatok között a tárolók és a egy adattárban magánhálózat és az átalakítási tevékenységek elleni zahájeno a számítási erőforrások a helyszíni vagy Azure virtuális hálózaton. Saját üzemeltetésű integrációs modul igények telepíthető egy helyszíni gépre vagy magánhálózaton belüli virtuális gépek.  
 
-Ez a dokumentum bemutatja, hogyan hozhat létre, és Self-hosted infravörös konfigurálása
+Ez a dokumentum bemutatja, hogyan hozzon létre és konfigurálhatja a helyi IR.
 
-## <a name="high-level-steps-to-install-self-hosted-ir"></a>Magas szintű lépéseket kell IR önálló központi telepítése
-1.  Hozzon létre egy önálló üzemeltetett integrációs futásidejű. Íme egy PowerShell-példa:
+## <a name="high-level-steps-to-install-self-hosted-ir"></a>Telepítse a saját üzemeltetésű integrációs modul magas szintű lépései
+1.  Hozzon létre egy saját üzemeltetésű integrációs modult. Itt látható egy PowerShell-példa:
 
     ```powershell
     Set-AzureRmDataFactoryV2IntegrationRuntime -ResourceGroupName $resouceGroupName -DataFactoryName $dataFactoryName -Name $selfHostedIntegrationRuntimeName -Type SelfHosted -Description "selfhosted IR description"
     ```
-2.  Töltse le és telepítse önállóan üzemel integrációs futásidejű (a helyi számítógép).
-3.  Hitelesítési kulcs lekérését és önálló üzemeltetett integrációs futásidejű regisztrálja a kulcsot. Íme egy PowerShell-példa:
+2.  Töltse le és telepítse a saját üzemeltetésű integration runtime (helyi gépen).
+3.  Kérje le a hitelesítési kulcsot, és saját üzemeltetésű integrációs modult regisztrálhassa a a kulcsot. Itt látható egy PowerShell-példa:
 
     ```powershell
     Get-AzureRmDataFactoryV2IntegrationRuntimeKey -ResourceGroupName $resouceGroupName -DataFactoryName $dataFactoryName -Name $selfHostedIntegrationRuntime.  
     ```
 
-## <a name="command-flow-and-data-flow"></a>Parancs folyamata és adatfolyama
-Amikor az adatok a helyszínen és a felhő között, a tevékenység egy önálló üzemeltetett integrációs futásidejű használ az adatok átvitele a helyszíni adatforrás felhő-és fordítva.
+## <a name="command-flow-and-data-flow"></a>Parancsot a folyamat és az adatfolyam
+Amikor a helyszíni és a felhő között helyezi át az adatokat, a tevékenység használja egy saját üzemeltetésű integrációs modult helyszíni adatforrásból az adatok átvitelét a felhőbe, és fordítva.
 
-Íme egy magas szintű adatfolyama példányához, az önálló üzemeltetett IR lépéseket összefoglalása:
+Íme egy magas szintű adatfolyamot másolatát a saját üzemeltetésű integrációs modul lépések összefoglalása:
 
 ![Áttekintés](media\create-self-hosted-integration-runtime\high-level-overview.png)
 
-1. Adatok fejlesztő létrehoz egy önálló üzemeltetett integrációs futásidejű egy PowerShell-parancsmag használatával az Azure data factory belül. Az Azure-portál jelenleg nem támogatja ezt a szolgáltatást.
-2. Adatok fejlesztői megadását követően az önálló üzemeltetett integrációs futásidejű példány, amelyet csatlakozni az adattároló használnia kell a helyszíni adatokat tároló csatolt szolgáltatás létrehozása. A társított szolgáltatás beállítása részeként adatok fejlesztő a hitelesítőadat-kezelő alkalmazások (jelenleg nem támogatott) hitelesítési típusok és a hitelesítő adatok beállításához. A hitelesítő alkalmazás párbeszédpanel kommunikál az adattár kapcsolat és a hitelesítő adatok mentését önálló üzemeltetett integrációs futásidejű teszteléséhez.
-4.  Önálló üzemeltetett integrációs futásidejű csomópont a hitelesítő adatok használata a Windows Data Protection alkalmazás alkalmazásprogramozási felületet (DPAPI) titkosítja, és helyileg menti. Ha a magas rendelkezésre állás több csomópont, a hitelesítő adatok további szinkronizálódnak más csomópontjai között. Minden csomópont titkosítja azokat a DPAPI-t használ, és helyileg tárolja. Hitelesítő adatok szinkronizálása az adatok fejlesztője számára átlátható, és önálló üzemeltetett infravörös kezeli    
-5.  Az önálló üzemeltetett integrációs futásidejű ütemezés & a felügyeleti feladatok keresztül kommunikál a Data Factory szolgáltatásnak **vezérlőcsatorna** , amely használja, a megosztott Azure service bus-üzenetsorba. Ha egy tevékenység feladat kell futtatni, adat-előállító várólisták a kérelmet, és semmilyen hitelesítő információt, (Ha a hitelesítő adatok már nem tárolják az önálló üzemeltetett integrációs Runtime). A feldolgozás után a várólista lekérdezési önálló üzemeltetett integrációs futásidejű másolattól.
-6.  Önálló üzemeltetett integrációs futásidejű másolja ki egy a helyszíni adatokat, a felhőalapú tárolást, vagy fordítva a másolási tevékenység során az adatok adatcsatorna beállításaitól függően. Ebben a lépésben az önálló üzemeltetett integrációs futásidejű közvetlenül kommunikál a felhőalapú tárolási szolgáltatások például az Azure Blob Storage egy biztonságos csatornán (HTTPS).
+1. Adatok fejlesztői hoz létre egy saját üzemeltetésű integrációs modul egy Azure data factory egy PowerShell-parancsmaggal belül. Az Azure portal jelenleg nem támogatja ezt a szolgáltatást.
+2. Adatok fejlesztői egy helyszíni adattár társított szolgáltatás megadja a saját üzemeltetésű integrációsmodul-példány, amelyet szeretne csatlakozni az adattárak használnia kell hoz létre. A társított szolgáltatás beállításának részeként az adatok fejlesztői hitelesítőadat-kezelő alkalmazást használja (jelenleg nem támogatott) hitelesítési típusok és a hitelesítő adatok beállításához. A Credential manager párbeszédpanel kommunikál az adattár kapcsolati és hitelesítő adatok mentését a saját üzemeltetésű integrációs modul teszteléséhez.
+4.  Saját üzemeltetésű integration runtime csomópontja a hitelesítő adatok használata a Windows Data Protection alkalmazás alkalmazásprogramozási felületet (DPAPI) titkosítja, és helyben menti. Ha több csomóponton vannak beállítva, a magas rendelkezésre állás, a hitelesítő adatok további szinkronizálódnak, más csomópontok között. Minden egyes csomópont titkosítja a DPAPI-t, és helyileg tárolja azokat. Adatok szinkronizálása a data-fejlesztési átlátható és kezeli a saját üzemeltetésű    
+5.  A saját üzemeltetésű integrációs modul az ütemezés és a felügyeleti feladatok keresztül kommunikál a Data Factory szolgáltatás **vezérlőcsatorna** , amely egy megosztott az Azure service bus-üzenetsorba használ. Amikor egy tevékenység feladatot kell futtatni, a Data Factory semmilyen hitelesítő információt együtt a kérelem várólistára helyezi (Ha a hitelesítő adatok már nem kerülnek be a saját üzemeltetésű integrációs modul). Saját üzemeltetésű integrációs modul elindít a feladat az üzenetsorba lekérdezés után.
+6.  Saját üzemeltetésű integrációs modul adatokat másol egy helyszíni adattár, a felhőalapú tárolást, vagy fordítva az adatok folyamatban, a másolási tevékenység konfigurációjától függően. Az ebben a lépésben a saját üzemeltetésű integrációs modul közvetlenül kommunikál a felhőalapú tárolási szolgáltatások az Azure Blob Storage például egy biztonságos csatornán (HTTPS).
 
-## <a name="considerations-for-using-self-hosted-ir"></a>Önálló üzemeltetett IR használatának szempontjai
+## <a name="considerations-for-using-self-hosted-ir"></a>Saját üzemeltetésű integrációs modul használatának szempontjai
 
-- Egy egyetlen önálló üzemeltetett integrációs futásidejű használható több helyszíni adatforráshoz. Azonban egy **egyetlen önálló üzemeltetett integrációs futásidejű kötődik csak egy Azure data factory** és nem lehet megosztani az egy másik data factoryvel.
-- Akkor is **önálló üzemeltetett integrációs futásidejű csak egy példánya** egy gépen telepítve. Tegyük fel, amely a helyszíni adatforrások eléréséhez szükséges két adat-előállítók rendelkezik, a két helyszíni számítógépeken önálló üzemeltetett integrációs futásidejű telepíteni szeretné. Más szóval egy önálló üzemeltetett integrációs futásidejű egy adott adat-előállító kötődik
-- A **önálló üzemeltetett integrációs futásidejű nem kell ugyanazon a számítógépen, az adatforrással**. Azonban rendelkező önállóan üzemel integrációs futásidejű közelebb az adatforráshoz való lerövidíti a önálló üzemeltetett integráció a futási időben az adatforráshoz való kapcsolódáshoz. Azt javasoljuk, hogy telepítse az önálló üzemeltetett integrációs futásidejű olyan gépen, amely eltér a gazdagép a helyszíni adatforráshoz. Ha az önálló üzemeltetett integrációs futásidejű és az adatforrás a különböző gépeken vannak, az önálló üzemeltetett integrációs futásidejű nem "versenyeznek" az adatforrás erőforrásokhoz.
-- Akkor is **több önálló üzemeltetett integrációs futtatókörnyezetek csatlakozik egy helyszíni adatforrás különböző gépeken**. Például előfordulhat, hogy adat-előállítók két kiszolgáló két önálló üzemeltetett integrációs futásidejű, de mindkét az adat-előállítók regisztrálva van a helyszíni ugyanazon az adatforráson.
-- Ha már van telepítve a számítógépen szolgál átjáró egy **Power BI** forgatókönyvben telepítse egy **külön önálló üzemeltetett integrációs futásidejű az Azure Data Factory** egy másik számítógépen.
-- Önálló üzemeltetett integrációs futásidejű-t támogató Adatintegráció Azure virtuális hálózaton belül kell használni.
-- Az adatforrás tekinti egy helyszíni adatforrás (tűzfal mögött van) is használatos **ExpressRoute**. Az önálló üzemeltetett integrációs futásidejű használja a szolgáltatás és az adatforrás közötti kapcsolat létrehozásához.
-- Az önálló üzemeltetett integrációs futásidejű kell használnia, akkor is, ha az adattár a felhőben lévő egy **Azure IaaS virtuális gépként**.
-- Feladatok sikertelenek lehetnek a Self-hosted integrációs futásidejű engedélyezve van a mely FIPS előírásainak megfelelő Windows-kiszolgálóra telepíthető. A probléma megoldása érdekében tiltsa le a FIPS előírásainak megfelelő titkosítási a kiszolgálón. A FIPS előírásainak megfelelő titkosítási letiltásához módosítsa a következő beállításazonosítót 1 (engedélyezve) 0 (letiltva): `HKLM\System\CurrentControlSet\Control\Lsa\FIPSAlgorithmPolicy\Enabled`.
+- Saját üzemeltetésű integrációs több helyszíni adatforrás is használható. Azonban egy **csak egy Azure data Factory egy saját üzemeltetésű integrációs modul kötődik** és a egy másik data factory nem osztható.
+- Rendelkezhet **csak egy példányát a saját üzemeltetésű integrációs modul** egyetlen gépen telepítve van. Tegyük fel, a helyszíni adatforrások elérését igénylő két adat-előállítók rendelkezik, saját üzemeltetésű integrációs modul telepítése a két helyszíni számítógépeken kell. Más szóval vannak kötve egy saját üzemeltetésű integrációs modult egy adott adat-előállítót
+- A **saját üzemeltetésű integrációs modul nem kell ugyanarra a gépre adatforrásként**. Azonban kellene saját üzemeltetésű integrációs modult az adatforrás közelebb csökkenti az idő a saját üzemeltetésű integrációs modul kapcsolódni az adatforráshoz. Javasoljuk, hogy telepítse a saját üzemeltetésű integrációs modul olyan számítógépen, amelyen eltér a gazdagép a helyszíni adatforrás. Ha a saját üzemeltetésű integrációs modul és az adatforrás különböző gépeken vannak, a saját üzemeltetésű integrációs modul nem versengenek adatforrás erőforrás esetén.
+- Rendelkezhet **több saját üzemeltetésű integrációs modulok ugyanazon a helyszíni adatforráshoz csatlakozik, különböző gépeken**. Például előfordulhat, hogy adat-előállítók két kiszolgáló két saját üzemeltetésű integrációs modult, de ugyanazon a helyszíni adatforrás regisztrálva van a mindkét az adat-előállítók.
+- Ha már rendelkezik egy átjáró telepítve a számítógépre a(z) egy **Power BI** forgatókönyvben telepítse egy **külön saját üzemeltetésű integrációs modul az Azure Data Factoryhoz** egy másik gépen.
+- Saját üzemeltetésű integrációs modul Azure virtuális hálózaton belüli Adatintegráció támogatásához kell használni.
+- Forrásként való kezelése az adatforrás egy a helyszíni adatok (azaz a tűzfal mögött található) is használhatja **ExpressRoute**. A saját üzemeltetésű integrációs modul használatával a szolgáltatás és az adatforrás közötti kapcsolatot.
+- A saját üzemeltetésű integrációs modult kell használnia, akkor is, ha az adattárban a felhőben található egy **Azure IaaS virtuális gép**.
+- Feladatok sikertelenek lehetnek a helyi Integration Runtime telepítve van egy olyan Windows Serveren, amely a FIPS előírásainak megfelelő titkosítás engedélyezve van. A probléma megkerüléséhez, tiltsa le a FIPS-kompatibilis titkosítás a kiszolgálón. FIPS-kompatibilis titkosítás letiltásához módosítsa a következő beállításazonosítót (engedélyezve) 0 (letiltva) 1-től: `HKLM\System\CurrentControlSet\Control\Lsa\FIPSAlgorithmPolicy\Enabled`.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- A támogatott **operációs rendszer** azok verziók, Windows 7 SP1, Windows 8.1, Windows 10, Windows Server 2008 R2 SP1, Windows Server 2012, Windows Server 2012 R2, Windows Server 2016. Az önálló üzemeltetett integrációs runtime telepítését egy **tartományvezérlő nem támogatott**.
-- **.NET-keretrendszer 4.6.1 vagy újabb** szükséges. Ha önálló üzemeltetett integrációs futásidejű telepíti a Windows 7 gépen, telepítse a .NET-keretrendszer 4.6.1 vagy újabb. Lásd: [.NET-keretrendszer rendszerkövetelmények](/dotnet/framework/get-started/system-requirements) részleteiről.
-- Az ajánlott **konfigurációs** az önálló üzemeltetett integrációs futásidejű gép legalább 2 GHz, 4 mag, 8 GB RAM és 80 GB-os lemezre.
-- Ha szeretné a gazdaszámítógépet, az önálló üzemeltetett integrációs futásidejű nem válaszol a kérelmek. Ezért konfigurálni egy megfelelő energiaséma azon a számítógépen az önálló üzemeltetett integrációs futásidejű telepítése előtt. Ha a számítógép hibernált állapotba van konfigurálva, az önálló üzemeltetett integrációs futásidejű telepítési megadását kéri az üzenetet.
-- A gépen telepítése és konfigurálása sikeresen megtörtént az önálló üzemeltetett integrációs futásidejű rendszergazdának kell lennie.
-- Az adott gyakoriságát a másolási tevékenység fut fordulhat elő, mert az az erőforrás-használat (Processzor, memória) a számítógépen is csúcs és üresjárati idő azonos mintát követi. Erőforrás-használat is függ, erősen áthelyezett adatok mennyiségét. Ha több másolási feladat van folyamatban, megjelenik az Erőforrás kihasználtsága csúcsidőben feljebb.
+- A támogatott **operációs rendszer** verziók a következők Windows 7 Service Pack 1, Windows 8.1, Windows 10, Windows Server 2008 R2 SP1, Windows Server 2012, Windows Server 2012 R2, Windows Server 2016-ban. A saját üzemeltetésű integrációs modul telepítése egy **tartományvezérlő nem támogatott**.
+- **.NET-keretrendszer 4.6.1-es verzióját vagy újabb** megadása kötelező. Ha saját üzemeltetésű integrációs modult egy Windows 7 gépre telepíti, telepítse a .NET-keretrendszer 4.6.1-es verzióját vagy újabb. Lásd: [.NET-keretrendszer követelményei a System](/dotnet/framework/get-started/system-requirements) részleteiről.
+- Az ajánlott **konfigurációs** a saját üzemeltetésű integrációs modul gép legalább 2 GHz-es, 4 mag, 8 GB RAM és 80 GB-os lemezt.
+- Ha szeretné a gazdagépen, a saját üzemeltetésű integrációs modul nem válaszol kérelmek. Ezért egy megfelelő energiasémát beállítani a számítógépen a saját üzemeltetésű integrációs modul telepítése előtt. Ha a számítógép hibernált állapotba van konfigurálva, a saját üzemeltetésű integrációs modul telepítése kéri egy üzenetet.
+- A gépen telepítheti és konfigurálhatja a saját üzemeltetésű integrációs modul sikeresen rendszergazdának kell lennie.
+- Másolási tevékenység-végrehajtás egy adott gyakoriságát fordulhat elő, mert az erőforrás-használat (CPU, memória) a gépen is ugyanazt a mintát követi, csúcs-és üresjárati. Erőforrás-használat is nagyban függ az áthelyezett adatok mennyisége. Amikor több másolási feladat van folyamatban, erőforrás-használat csúcsidőben feljebb görgetünk láthatja.
 
 ## <a name="installation-best-practices"></a>Gyakorlati tanácsok a telepítéshez
-Önálló üzemeltetett integrációs futásidejű telepítheti az MSI telepítő csomag letöltése a [Microsoft Download Center](https://www.microsoft.com/download/details.aspx?id=39717). Lásd: [helyezze át az adatokat a helyszíni és a felhő között cikk](tutorial-hybrid-copy-powershell.md) részletes útmutatásait.
+Saját üzemeltetésű integrációs modult telepítheti az MSI-telepítő csomag letöltése az [Microsoft Download Center](https://www.microsoft.com/download/details.aspx?id=39717). Lásd: [adatok áthelyezése a helyszíni és a felhő között a cikk](tutorial-hybrid-copy-powershell.md) részletes útmutatásait.
 
-- Energiaséma konfigurálásához a gazdagépen az önálló üzemeltetett integrációs futásidejű, hogy a gép hibernálásra nem. A gazdaszámítógépen szeretnénk, ha az önálló üzemeltetett integrációs futásidejű offline bekapcsolása.
-- Készítsen biztonsági másolatot az önálló üzemeltetett integrációs futásidejű rendszeresen társított hitelesítő adatok.
+- A gazdagépen a saját üzemeltetésű integrációs modul energiasémát beállítani, hogy a gép hibernálásra nem. A gazdagép frissítéséből szeretnénk, ha kikapcsolja a a saját üzemeltetésű integrációs modul offline állapotban van.
+- Készítsen biztonsági másolatot a saját üzemeltetésű integrációs modul rendszeresen társított hitelesítő adatok.
 
-## <a name="install-and-register-self-hosted-ir-from-download-center"></a>Telepítése és regisztrálása Self-hosted infravörös letöltőközpontból
+## <a name="install-and-register-self-hosted-ir-from-download-center"></a>Telepítés és a helyi integrációs modul regisztrálása a letöltőközpontból
 
-1. Navigáljon a [Microsoft integrációs futásidejű letöltési oldala](https://www.microsoft.com/download/details.aspx?id=39717).
-2. Kattintson a **letöltése**, válassza ki a megfelelő verzióját (**32 bites** vs. **64 bites**), és kattintson a **következő**.
-3. Futtassa a **MSI** közvetlenül, vagy mentse azt a merevlemezt és a Futtatás.
-4. Az a **üdvözlő** lapon jelölje be a **nyelvi** kattintson **tovább**.
-5. **Fogadja el** a végfelhasználói licencszerződést, majd kattintson **következő**.
-6. Válassza ki **mappa** az önálló üzemeltetett integrációs futásidejű telepítéséhez, és kattintson a **következő**.
-7. Az a **készen állnak a telepítésre** kattintson **telepítése**.
+1. Navigáljon a [letöltési oldala a Microsoft Integration Runtime](https://www.microsoft.com/download/details.aspx?id=39717).
+2. Kattintson a **letöltése**, válassza ki a megfelelő verziót (**32 bites** vs. **64 bites**), és kattintson a **tovább**.
+3. Futtassa a **MSI** közvetlenül, vagy mentse a merevlemezen, és futtassa.
+4. Az a **üdvözlő** lapon válassza ki a **nyelvi** kattintson **tovább**.
+5. **Fogadja el** a végfelhasználói licencszerződést, majd kattintson **tovább**.
+6. Válassza ki **mappa** a saját üzemeltetésű integrációs modul telepítése, és kattintson a **tovább**.
+7. Az a **készen áll a telepítésre** kattintson **telepítése**.
 8. Kattintson a **Befejezés** telepítésének befejezéséhez.
-9. Az Azure PowerShell hitelesítési kulcs lekérése. PowerShell-példa a hitelesítési kulcs beolvasása:
+9. Az Azure PowerShell-lel hitelesítési kulcs beszerzése. PowerShell-példa hitelesítési kulcs beolvasása céljából:
 
     ```powershell
     Get-AzureRmDataFactoryV2IntegrationRuntimeKey -ResourceGroupName $resouceGroupName -DataFactoryName $dataFactoryName -Name $selfHostedIntegrationRuntime
     ```
-11. Az a **regisztrálni integrációs futásidejű (önállóan üzemel)** oldal a Microsoft integrációs futásidejű Configuration Manager a számítógépen fut, tegye a következőket:
-    1. Beillesztés a **hitelesítési kulcs** a szöveg területen.
-    2. Ha úgy gondolja, a **megjelenítése hitelesítési kulcs** a fő szöveg.
+11. Az a **integrációs modul regisztrálása (saját üzemeltetésű)** oldal a Microsoft Integration Runtime konfigurációkezelőjének a gépen futó, tegye a következőket:
+    1. Illessze be a **hitelesítési kulcs** szöveg területén.
+    2. Másik lehetőségként kattinthat **megjelenítése a hitelesítési kulcs** , tekintse meg a kulcs szövegét.
     3. Kattintson a **regisztrálása**.
 
 
 ## <a name="high-availability-and-scalability"></a>Magas rendelkezésre állás és méretezhetőség
-Egy Self-hosted integrációs futásidejű társítható több a helyszíni gépeket. Ezek a gépek csomópontoknak nevezzük. Egy Self-hosted integrációs futásidejű társított legfeljebb négy csomópont lehet. Több csomópont (a telepített átjárót a helyszíni gépeket) rendelkező logikai átjáró előnyei a következők:
-1. Magas rendelkezésre állás Self-hosted integrációs futtatókörnyezet, hogy már nem a hibaérzékeny pontok kialakulását a Big Data típusú adatok megoldás vagy a felhőbeli adatok integráció az Azure Data Factoryvel, legfeljebb 4 csomópontokkal folytonosságának biztosítása érdekében.
-2. A helyszíni és a felhő közötti adatátvitel során teljesítményére és átviteli továbbfejlesztett adattárolókhoz. További információ [teljesítmény összehasonlítása](copy-activity-performance.md).
+Egy helyi Integration Runtime több helyszíni gépekhez társíthatók. Ezek a gépek csomópontok nevezzük. Egy helyi Integration Runtime társított legfeljebb négy csomóponttal rendelkezhet. Több csomópont (a telepített átjáró a helyszíni gépek) rendelkező logikai átjáró előnyei a következők:
+1. Helyi integrációs modul úgy, hogy már nem az egypontos meghibásodás Big Data megoldást vagy felhőalapú Adatintegráció az Azure Data Factoryt, akár 4 csomóponttal rendelkező folytonosság biztosítása a magasabb rendelkezésre állás.
+2. Javult a teljesítmény és az átviteli sebesség a helyszíni és felhő közötti adatátvitel során adattárakban. További információ [teljesítmény összehasonlítások](copy-activity-performance.md).
 
-A Self-hosted integrációs futásidejű szoftverek egyszerűen telepítésével több csomópont is társíthat a [letöltőközpontból](https://www.microsoft.com/download/details.aspx?id=39717) és a hitelesítési kulcsokat nyert egyikével regisztrálásával Új AzureRmDataFactoryV2IntegrationRuntimeKey parancsmag leírtak szerint a [oktatóanyag](tutorial-hybrid-copy-powershell.md)
-
-> [!NOTE]
-> Nem kell új Self-hosted integrációs futásidejű az egyes csomópontok közötti társítás létrehozásával. Az önálló üzemeltetett integrációs futásidejű telepítheti egy másik számítógépen, és regisztrálja a azonos hitelesítési kulcs használatával. 
+Több csomópont egyszerűen csak a helyi Integration Runtime szoftver telepítésével társíthatja a [letöltőközpontból](https://www.microsoft.com/download/details.aspx?id=39717) , és regisztrálja azt a hitelesítési kulcsok származó egyikével Új AzureRmDataFactoryV2IntegrationRuntimeKey parancsmag leírtak a [oktatóanyag](tutorial-hybrid-copy-powershell.md)
 
 > [!NOTE]
-> Egy másik csomópont hozzáadása előtt **magas rendelkezésre állás és méretezhetőség**, győződjön meg arról **"Távelérés-intranethez"** lehetőség **engedélyezett** az 1. csomóponton (Microsoft Integrációs futásidejű Configuration Manager -> Beállítások -> Távoli intranetes hozzáférés). 
+> Nem kell minden egyes csomópont társíthatunk új helyi integrációs modul létrehozása. A saját üzemeltetésű integrációs modul telepítése egy másik gépen, és ugyanazon hitelesítési kulccsal regisztrálja. 
 
-### <a name="tlsssl-certificate-requirements"></a>A TLS/SSL-tanúsítványokkal szemben támasztott követelmények
-Az alábbiakban a futásidejű csomópontok integrációs közötti kommunikáció tehető biztonságossá használt TLS/SSL-tanúsítványra vonatkozó követelményekről:
+> [!NOTE]
+> Egy másik csomópont hozzáadása előtt **magas rendelkezésre állás és méretezhetőség**, ellenőrizze, hogy **"Az intranetes távoli hozzáférés"** beállítás **engedélyezve** az 1. csomóponton (Microsoft Integration Runtime konfigurációkezelőjének -> Beállítások -> távoli hozzáférést az intranet). 
+
+### <a name="tlsssl-certificate-requirements"></a>A TLS/SSL-tanúsítvány követelményei
+Az alábbiakban az integrációsmodul-csomópontot integrációs közötti kommunikáció tehető biztonságossá használt TLS/SSL-tanúsítvány követelményei:
 
 - A tanúsítványnak kell lennie egy nyilvánosan megbízható X509 v3 tanúsítvány. Azt javasoljuk, hogy a nyilvános (külső) hitelesítésszolgáltató (CA) által kiállított tanúsítványokat használ.
-- Minden integrációs futásidejű csomópont ezt a tanúsítványt megbízhatónak kell lennie.
-- Helyettesítő tanúsítványokat támogatottak. Ha a tartománynév **node1.domain.contoso.com**, használhat ***. domain.contoso.com** , a tanúsítvány tulajdonosának nevével.
-- SAN-tanúsítványok használata nem ajánlott, mert a tulajdonos alternatív neve csak az utolsó elem használja, az összes többit figyelmen kívül aktuális korlátai miatt. Például a SAN tanúsítványa, amelynek SAN vannak **node1.domain.contoso.com** és **node2.domain.contoso.com**, amelynek FQDN-je gépen csak használható ezzel a tanúsítvánnyal **node2.domain.contoso.com**.
-- Támogatja az SSL-tanúsítványok Windows Server 2012 R2 által támogatott bármely kulcs mérete.
-- Tanúsítvány használatával CNG kulcsok használata nem támogatott. Doesrted DoesDoes nem támogatja a CNG-kulccsal használó tanúsítványokat.
+- Minden egyes az integration runtime csomópontja meg kell bíznia a tanúsítványt.
+- A rendszer támogatja a helyettesítő tanúsítványokat. Ha a tartománynév **node1.domain.contoso.com**, használhatja ***. domain.contoso.com** a tanúsítvány tulajdonos neve.
+- A SAN-tanúsítványok használata nem ajánlott, mert a tulajdonos alternatív neveket csak az utolsó elem fogja használni, és minden más figyelmen kívül jelenlegi korlátozás miatt. Például van egy SAN-tanúsítvány, amelynek SAN vannak **node1.domain.contoso.com** és **node2.domain.contoso.com**, ezzel a tanúsítvánnyal csak használhatja a gépet, amelynek FQDN-je **node2.domain.contoso.com**.
+- Támogatja az SSL-tanúsítványokra vonatkozó Windows Server 2012 R2 által támogatott bármely kulcsának mérete.
+- Tanúsítvány használata a CNG kulcsok nem támogatottak. Doesrted DoesDoes támogatja a CNG-kulccsal használó tanúsítványok.
 
-## <a name="system-tray-icons-notifications"></a>Rendszer tálcaikonok / értesítések
-Ha kurzor átvitele a rendszer tálcai ikon/értesítési üzenetet, az önálló üzemeltetett integrációs futásidejű állapotának adatait találja.
+## <a name="system-tray-icons-notifications"></a>Rendszer ikony hlavního panelu és értesítések
+Ha a rendszer tálcai ikon/értesítési üzenet fölé viszi a kurzort, megtalálhatja a saját üzemeltetésű integrációs modul állapotának részleteit.
 
-![Rendszer tálca értesítések](media\create-self-hosted-integration-runtime\system-tray-notifications.png)
+![Rendszerértesítésekhez. tálca](media\create-self-hosted-integration-runtime\system-tray-notifications.png)
 
-## <a name="ports-and-firewall"></a>Portok és a tűzfalon
-Nincsenek két tűzfal figyelembe kell vennie: **vállalati tűzfal** a szervezet központi útválasztó futó és **Windows tűzfal** konfigurálva démon a helyi számítógépen, ahol a önálló üzemeltetett integrációs futásidejű telepítve van.
+## <a name="ports-and-firewall"></a>Portok és tűzfal
+Nincsenek két tűzfal figyelembe kell vennie: **vállalati tűzfal** fut a szervezet a központi útválasztón és **Windows tűzfal** konfigurálva egy démon a helyi számítógépen, ahol a saját üzemeltetésű integrációs modul telepítve van.
 
 ![Tűzfal](media\create-self-hosted-integration-runtime\firewall.png)
 
-A **vállalati tűzfal** szint kell konfigurálnia a következő tartományokkal és a kimenő portok:
+A **vállalati tűzfal** szint kell konfigurálnia a következő tartományok és a kimenő portokat:
 
 Tartománynevek | Portok | Leírás
 ------------ | ----- | ------------
-*.servicebus.windows.net | 443, 80 | Az adatátviteli szolgáltatás háttér-kommunikációhoz használt
-*.core.windows.net | 443 | Használt előkészített másolása Azure Blob használatával (Ha be van állítva)
-*.frontend.clouddatahub.net | 443 | Az adatátviteli szolgáltatás háttér-kommunikációhoz használt
+*.servicebus.windows.net | 443, 80 | Adatátviteli szolgáltatás háttérrendszer való kommunikációhoz használatos
+*.core.windows.net | 443 | Használja a szakaszos másolás az Azure Blob használatával (Ha be van állítva)
+*.frontend.clouddatahub.net | 443 | Adatátviteli szolgáltatás háttérrendszer való kommunikációhoz használatos
+download.microsoft.com | 443 | A frissítések letöltéséhez használt
 
-A **Windows tűzfal** szintet (számítógép), a kimenő portok általában engedélyezve vannak. Ha nem, a tartományok és ennek megfelelően a önállóan üzemel portok konfigurálhatók integrációs futásidejű gép.
+A **Windows tűzfal** szintet (számítógép), ezeket a kimenő portokat általában engedélyezve vannak. Ha nem, konfigurálhatja a tartományok és a portok, ennek megfelelően a saját üzemeltetésű integrációs modult tartalmazó számítógépen.
 
 > [!NOTE]
-> A forrás alapján / felül, előfordulhat, hogy az engedélyezési lista további tartományokkal és a kimenő portok a vállalati és a Windows tűzfalon.
+> Az adatforrás alapján / fogadóként, előfordulhat, hogy az engedélyezési lista további tartományokkal és a kimenő portok tartalmaz a vállalati Windows/tűzfal.
 >
-> Az egyes felhőalapú adatbázisok (például: Azure SQL-adatbázis, az Azure Data Lake, stb.), szükség lehet önálló központi integrációs futásidejű gépet a tűzfal konfigurációját az engedélyezett IP-címére.
+> Az egyes felhőalapú adatbázisok (például: Azure SQL Database, az Azure Data Lake, stb.), szükség lehet a tűzfal-konfigurációt a saját üzemeltetésű integrációs modult tartalmazó számítógépen engedélyezett IP-címét.
 
-### <a name="copy-data-from-a-source-to-a-sink"></a>A fogadó forrásból származó adatok másolása
-Győződjön meg arról, hogy a tűzfalszabályok megfelelően engedélyezve vannak a vállalati tűzfalon, a Windows tűzfal az önálló üzemeltetett integrációs futásidejű gépen, és az adatok tárolásához magát. Ezek a szabályok lehetővé teszi, hogy az önálló üzemeltetett integrációs futásidejű mindkét adatforráshoz kapcsolódnak, és sikeresen gyűjtése. Minden egyes adattároló, amely részt vesz a másolási művelet szabályok engedélyezése.
+### <a name="copy-data-from-a-source-to-a-sink"></a>Adatok másolása a forrásból a fogadóba másolt
+Győződjön meg arról, hogy a tűzfalszabályok megfelelően engedélyezve vannak a vállalati tűzfalon, a saját üzemeltetésű integrációs modult tartalmazó számítógépen, a Windows tűzfal és az adattároló magát. Ezek a szabályok lehetővé teszi, hogy a saját üzemeltetésű integrációs modul csatlakozni mindkét forrás és fogadó sikeresen. Egyes adattároló, amely részt vesz a másolási művelet szabályok engedélyezése.
 
-Például, hogy másolását egy **a helyszíni adatok tárolására az Azure SQL Database fogadó vagy egy Azure SQL Data Warehouse fogadó**, hajtsa végre a következő lépéseket:
+Például, hogy a Másolás egy **a helyszíni adatok tárolásához, egy Azure SQL Database fogadó vagy egy Azure SQL Data Warehouse fogadó**, tegye a következőket:
 
-- Kimenő forgalom engedélyezése **TCP** kommunikációs port **1433** a Windows tűzfal és a vállalati tűzfalon.
-- A tűzfal beállításainak Azure SQL-kiszolgáló hozzáadása a saját üzemeltetett integrációs futásidejű gép IP-címét az engedélyezett IP-címek listájához.
+- Engedélyezi a kimenő **TCP** kommunikációs port **1433-as** Windows tűzfal és a vállalati tűzfalon.
+- A saját üzemeltetésű integrációs modul gép IP-cím hozzáadása az engedélyezett IP-címek listája az Azure SQL server tűzfal beállításainak konfigurálása.
 
 > [!NOTE]
-> Ha a tűzfal nem engedélyezi a 1433-as kimenő port, önálló üzemeltetett integrációs futásidejű nem férhetnek hozzá Azure SQL közvetlenül. Ebben az esetben használhatja [előkészített másolási](copy-activity-performance.md) az SQL Azure Database-/ SQL Azure DW. Ebben a forgatókönyvben csak az adatátvitelt jelölik a lenne szükséges HTTPS (443-as port).
+> Ha a tűzfal nem engedélyezi a 1433-as kimenő porton, saját üzemeltetésű integrációs modul nem érhető el az Azure SQL közvetlenül. Ebben az esetben használhatja [szakaszos Másolás](copy-activity-performance.md) az SQL Azure Database és SQL Azure DW. Ebben a forgatókönyvben csak a adatáthelyezéskor lenne szükség HTTPS (443-as porton).
 
 
-## <a name="proxy-server-considerations"></a>Proxy server szempontjai
-Ha a vállalati hálózati környezet az internet eléréséhez proxykiszolgáló használ, konfigurálja a megfelelő proxybeállításokat használandó önálló üzemeltetett integrációs futásidejű. A proxy állíthatja be a kezdeti regisztráció fázis során.
+## <a name="proxy-server-considerations"></a>Proxy server kapcsolatos szempontok
+Ha a vállalati hálózati környezet az egy proxykiszolgálón keresztül csatlakozik az internetre, konfigurálja a megfelelő proxykiszolgáló-beállításokat kívánja használni a saját üzemeltetésű integrációs modult. A proxy állíthatja be a kezdeti regisztrációs fázis során.
 
 ![Adja meg a proxy](media\create-self-hosted-integration-runtime\specify-proxy.png)
 
-Önálló üzemeltetett integrációs futásidejű a proxykiszolgálót segítségével csatlakozik a felhőszolgáltatáshoz. Kattintson a Módosítás hivatkozásra a kezdeti beállítás során. A proxy beállítása párbeszédpanel megjelenik.
+Saját üzemeltetésű integrációs modul csatlakozni a felhőszolgáltatáshoz a proxykiszolgálót használ. Kattintson a Módosítás hivatkozásra a kezdeti beállítás során. Láthatja, hogy a proxy beállítása párbeszédpanel.
 
-![Set proxy](media\create-self-hosted-integration-runtime\set-http-proxy.png)
+![Proxy beállítása](media\create-self-hosted-integration-runtime\set-http-proxy.png)
 
 Három konfigurációs lehetőség áll rendelkezésre:
 
-- **Ne használjon proxyt**: önálló üzemeltetett integrációs futásidejű nem kifejezetten bármelyik proxyt használhatják felhőszolgáltatások való kapcsolódáshoz.
-- **Használja a rendszer proxy**: önállóan üzemel integrációs futásidejű használ, hogy a proxy diahost.exe.config és diawp.exe.config van konfigurálva. Ha nincs olyan proxy diahost.exe.config és diawp.exe.config van konfigurálva, önálló üzemeltetett integrációs futásidejű csatlakozik a felhőalapú szolgáltatás közvetlenül a proxy áthaladás nélkül.
-- **Egyéni proxyt használ**: beállítás használata önálló üzemeltetett integrációs futásidejű diahost.exe.config és diawp.exe.config konfigurációk használata helyett a HTTP-proxy konfigurálása. Cím és Port is szükséges. Felhasználónév és jelszó megadása nem kötelező, attól függően, hogy a proxy hitelesítési beállítást. Minden beállítás Windows DPAPI-t az önálló üzemeltetett integrációs Runtime titkosítva, és helyileg tárolja a számítógépen.
+- **Proxy használatának mellőzése**: saját üzemeltetésű integrációs modul nem explicit módon használja bármely proxy cloud serviceshez való csatlakozáshoz.
+- **Rendszerproxy használata**: saját üzemeltetésű integrációs modult használja diahost.exe.config és diawp.exe.config beállítás, amely a proxy van konfigurálva. Nincs proxy van konfigurálva a diahost.exe.config és diawp.exe.config, saját üzemeltetésű integrációs modul kapcsolódik közvetlenül a proxy áthaladás nélkül felhőszolgáltatáshoz.
+- **Egyéni proxy használatát**: beállítás diahost.exe.config és diawp.exe.config konfigurációk használata helyett a saját üzemeltetésű integrációs modul használata a HTTP-proxy konfigurálása. Cím és Port is szükséges. Felhasználónév és jelszó megadása nem kötelező, attól függően, a proxy hitelesítési beállítást. Minden beállítás a saját üzemeltetésű integrációs modul a Windows DPAPI titkosítva, és a gép helyben tárolja.
 
-A frissített proxy beállítások mentését követően automatikusan újraindul az integrációs futásidejű gazdaszolgáltatás.
+Az integration runtime gazdaszolgáltatása automatikusan újraindul, miután mentette a frissített proxybeállításokat.
 
-Miután önálló üzemeltetett integrációs futásidejű sikeresen regisztrálva van, ha azt szeretné, megtekintéséhez, vagy frissíteni a proxykiszolgáló beállításait, használja az integrációs futásidejű Configuration Manager.
+Miután a saját üzemeltetésű integrációs modul sikeresen regisztrálva lett, ha szeretné megtekintheti vagy frissítheti a webproxy beállításai, használja az Integration Runtime konfigurációkezelőjének.
 
-1.  Indítsa el **Microsoft integrációs futásidejű a Configuration Manager**.
+1.  Indítsa el a **Microsoft Integration Runtime konfigurációkezelőjének**.
 2.  Váltson a **Settings** (Beállítások) lapra.
-3.  Kattintson a **módosítás** hivatkozásra **HTTP-Proxy** elindíthatja a szakasz a **HTTP-Proxy beállítása** párbeszédpanel.
-4.  Miután rákattintott a **következő** gomb, megjelenik egy figyelmeztető párbeszédpanel, mentse a proxybeállítást, és indítsa újra az integrációs futásidejű Gazdaszolgáltatást az engedélyt kér.
+3.  Kattintson a **módosítása** hivatkozásra **HTTP-Proxy** indítsa el a szakasz a **állítsa be a HTTP-Proxy** párbeszédpanel.
+4.  Miután rákattintott a **tovább** gombra, megjelenik egy figyelmeztető párbeszédpanel, mentse a proxybeállításokat, és indítsa újra az Integration Runtime gazdaszolgáltatása engedélyt kér.
 
-Megtekintheti és HTTP-proxy frissítse a Configuration Manager eszközzel.
+Megtekintheti, és a HTTP-proxy frissítése a Configuration Manager eszközzel.
 
 ![Nézet proxy](media\create-self-hosted-integration-runtime\view-proxy.png)
 
 > [!NOTE]
-> Ha korábban beállított proxykiszolgálót NTLM-hitelesítéssel, integrációs futásidejű Host szolgáltatás fut a tartományi fiókkal. Ha módosítja a jelszót később a tartományi fiók, ne felejtse el frissíteni a szolgáltatás konfigurációs beállításait, és ennek megfelelően indítsa újra. Ez a követelmény miatt javasoljuk, hogy dedikált tartományi fiókot, amely nem szükséges a jelszó gyakran frissíteni a proxykiszolgáló eléréséhez használt.
+> Az NTLM-hitelesítés proxykiszolgálót állít be, ha az Integration runtime gazdaszolgáltatása fut a tartományi fiók alatt. Ha módosítja a később a tartományi fiók jelszavát, ne felejtse el frissíteni a szolgáltatás konfigurációs beállításait, és ennek megfelelően indítsa újra. Ez a követelmény miatt javasoljuk, hogy a proxykiszolgálóhoz, hogy a jelszó frissítése gyakran nem igényel dedikált tartományi fiókot használhatja.
 
 ### <a name="configure-proxy-server-settings"></a>Proxykiszolgáló-beállításainak konfigurálása
 
-Ha **system proxy használata** önálló üzemeltetett integrációs futásidejű használja a HTTP-proxy beállítása, a proxybeállítást diahost.exe.config és diawp.exe.config. Ha nincs olyan proxy diahost.exe.config és diawp.exe.config van beállítva, önálló üzemeltetett integrációs futásidejű csatlakozik a felhőalapú szolgáltatás közvetlenül a proxy áthaladás nélkül. Az alábbi eljárás ismerteti a diahost.exe.config fájl frissítése.
+Ha **rendszerproxy használata** saját üzemeltetésű integrációs modult használja a HTTP-proxy beállítása, a proxybeállítást diahost.exe.config és diawp.exe.config. Ha nincs proxy diahost.exe.config és diawp.exe.config van megadva, saját üzemeltetésű integrációs modul felhőszolgáltatásához csatlakozva közvetlenül a proxy áthaladás nélkül. Az alábbi eljárás ismerteti a diahost.exe.config fájl frissítése.
 
-1. A Fájlkezelőben másolat egy biztonságos C:\Program Files\Microsoft integrációs Runtime\3.0\Shared\diahost.exe.config biztonsági mentése az eredeti fájlt.
-2. Indítsa el a Notepad.exe rendszergazdaként fut, és nyissa meg a szöveges fájl "C:\Program Files\Microsoft integrációs Runtime\3.0\Shared\diahost.exe.config. Az alapértelmezett címke található a System.NET névtérbeli az alábbi kódban látható módon:
+1. A Fájlkezelőben győződjön meg a C:\Program Files\Microsoft integrációs Runtime\3.0\Shared\diahost.exe.config biztonsági mentése az eredeti fájlt egy biztonságos példányát.
+2. Indítsa el a Notepad.exe rendszergazdaként futtatja, és nyissa meg a szöveges fájl "C:\Program Files\Microsoft integrációs Runtime\3.0\Shared\diahost.exe.config. Az alapértelmezett címke a system.net található, az alábbi kódban látható módon:
 
     ```xml
     <system.net>
         <defaultProxy useDefaultCredentials="true" />
     </system.net>
     ```
-    Proxy kiszolgálóadatok majd adhat hozzá, az alábbi példában látható módon:
+    Ezután hozzáadhatja a proxykiszolgáló adatai az alábbi példában látható módon:
 
     ```xml
     <system.net>
@@ -213,46 +214,46 @@ Ha **system proxy használata** önálló üzemeltetett integrációs futásidej
     </system.net>
     ```
 
-    További tulajdonságokat adhatja meg a szükséges beállításokat, például a scriptLocation engedélyezettek a proxy címkén belül. Lásd: [proxy (hálózati beállítások) elem](https://msdn.microsoft.com/library/sa91de1e.aspx) szintaxis.
+    További tulajdonságok, adja meg a szükséges beállításokat, például a scriptLocation engedélyezettek a proxy címkén belül. Lásd: [elem (hálózati beállítások) proxy](https://msdn.microsoft.com/library/sa91de1e.aspx) szintaxis.
 
     ```xml
     <proxy autoDetect="true|false|unspecified" bypassonlocal="true|false|unspecified" proxyaddress="uriString" scriptLocation="uriString" usesystemdefault="true|false|unspecified "/>
     ```
-3. Mentse a konfigurációs fájlt az eredeti helyre, majd indítsa újra a Self-hosted integrációs futásidejű állomás szolgáltatást, amely átveszi a módosításokat. A szolgáltatás újraindításához: használja a Vezérlőpultról, vagy a szolgáltatások kisalkalmazását a **integrációs futásidejű Configuration Manager** > kattintson a **szolgáltatás leállítása** gombra, majd kattintson a **indítása Szolgáltatás**. A szolgáltatás nem indul el, akkor valószínű, hogy egy érvénytelen XML-címke szintaxissal szerkesztették alkalmazás konfigurációs fájljába hozzá lett adva.
+3. A konfigurációs fájlt az eredeti helyre mentse, majd indítsa újra a helyi Integration Runtime gazdagép szolgáltatást, amely szerzi be a módosításokat. A szolgáltatás újraindításához: használja a Vezérlőpult, vagy a szolgáltatások kisalkalmazás a **Integration Runtime konfigurációkezelőjének** > kattintson a **szolgáltatás leállítása** gombra, majd kattintson a **indítása Szolgáltatás**. Ha a szolgáltatás nem indul el, valószínű, hogy hozzáadta-e egy XML-címke helytelen szintaxis szerkesztettek alkalmazás konfigurációs fájlba.
 
 > [!IMPORTANT]
 > Ne felejtse el frissíteni a diahost.exe.config és diawp.exe.config is.
 
-A pontok mellett szükség ügyeljen arra, hogy a Microsoft Azure a vállalat engedélyezett. Érvényes Microsoft Azure IP-címek listájának tölthető le: a [Microsoft Download Center](https://www.microsoft.com/download/details.aspx?id=41653).
+Ezeken a pontokon kívül is szüksége, hogy a Microsoft Azure, amely a vállalat engedélyezési lista. Érvényes Microsoft Azure IP-címek listájának letölthető a [Microsoft Download Center](https://www.microsoft.com/download/details.aspx?id=41653).
 
-### <a name="possible-symptoms-for-firewall-and-proxy-server-related-issues"></a>A tűzfal és proxy-kiszolgálóval kapcsolatos problémák lehetséges jelenségek
-Ha hibákba ütközik a következő hasonló, valószínű a tűzfalhoz vagy proxyhoz kiszolgáló, amely megakadályozza önálló üzemeltetett integrációs futásidejű csatlakozzon a Data Factory hitelesítse magát a helytelen konfiguráció miatt. Tekintse meg a tűzfalat, hogy az előző szakaszban, és a proxykiszolgáló megfelelően vannak konfigurálva.
+### <a name="possible-symptoms-for-firewall-and-proxy-server-related-issues"></a>Tűzfal és proxy-kiszolgálóval kapcsolatos problémák lehetséges tünetek
+Ha a következő hasonló hibákat észlel, akkor valószínű, a tűzfal vagy proxy kiszolgálóra, amely letiltja a csatlakozzanak a Data Factory saját üzemeltetésű integrációs modul önmaga hitelesítéséhez a helytelen konfiguráció miatt. Tekintse át a tűzfalat, hogy az előző szakaszban, és a proxykiszolgáló megfelelően legyenek konfigurálva.
 
-1.  Amikor megpróbálja regisztrálni az önálló üzemeltetett integrációs futásidejű, a következő hibaüzenetet kapja: "nem sikerült regisztrálni a integrációs futásidejű csomópont! Győződjön meg arról, hogy a hitelesítési kulcs érvényes-e, és az integrációs szolgáltatások állomás fut ezen a számítógépen. "
-2.  Integrációs futásidejű Configuration Manager megnyitásakor látni állapotának "**Disconnected**"vagy"**csatlakozás**". Amikor megtekintik a Windows eseménynaplóiban keresse meg, a "Eseménynapló" > "Alkalmazások és szolgáltatások Logs" > "A Microsoft integrációs futásidejű" hibaüzenetek jelennek meg például a következő hibával:
+1.  Ha a saját üzemeltetésű integrációs modult regisztrálni próbál, a következő hibaüzenetet kapja: "nem sikerült regisztrálni az Integration Runtime ezen csomópontja! Győződjön meg arról, hogy a hitelesítési kulcs érvényes, és az integrációs szolgáltatási gazdaszolgáltatása fut ezen a gépen. "
+2.  Integration Runtime konfigurációkezelőjének megnyitásakor látni állapotjelentése "**leválasztott**"vagy"**csatlakozás**". Ha Windows-eseménynaplók, a "Eseménynapló" > "Alkalmazások és szolgáltatások Logs" > "Microsoft Integration Runtime" hibaüzenetek jelennek meg például a következő hiba:
 
     ```
     Unable to connect to the remote server
     A component of Integration Runtime has become unresponsive and restarts automatically. Component name: Integration Runtime (Self-hosted).
     ```
 
-### <a name="enable-remote-access-from-intranet"></a>Engedélyezze a távelérést intranetről  
-Abban az esetben ha **PowerShell** vagy **hitelesítőadat-kezelő alkalmazás** egy másik számítógépről (hálózati) a hitelesítő adatok titkosításához eltérő, ahol az önálló üzemeltetett integrációs futásidejű telepítve van, majd szüksége lesz a **"Távelérési az intranetes"** beállítást engedélyezni kell. Ha futtatja a **PowerShell** vagy **hitelesítőadat-kezelő alkalmazás** , ahol az önálló üzemeltetett integrációs futásidejű telepítve van, majd ugyanazon hitelesítő adatok titkosításához **"távelérés az Intranet "** nem lehet engedélyezni.
+### <a name="enable-remote-access-from-intranet"></a>Az intranetes távoli hozzáférés engedélyezése  
+Abban az esetben ha **PowerShell** vagy **hitelesítőadat-kezelő alkalmazás** eltérő, ahol a saját üzemeltetésű integrációs modul telepítve van, majd (a hálózatban) egy másik gépről hitelesítő adatok titkosításához lenne szüksége a **"Távoli hozzáférés intranetről"** beállítást engedélyezni kell. Ha futtatja a **PowerShell** vagy **hitelesítőadat-kezelő alkalmazás** ugyanarra a gépre, ahol a saját üzemeltetésű integrációs modul telepítve van, majd a hitelesítő adatok titkosításához **"távoli hozzáférés az intranetes "** nincs engedélyezve.
 
-Távelérési az intranetes kell **engedélyezett** egy másik csomópont hozzáadása előtt **magas rendelkezésre állás és méretezhetőség**.  
+Távoli hozzáférés intranetről kell **engedélyezve** egy másik csomópont hozzáadása előtt **magas rendelkezésre állás és méretezhetőség**.  
 
-Önálló üzemeltetett integrációs futásidejű a telepítés során (v 3.3.xxxx.x és újabb verziók esetében), alapértelmezés szerint az önálló üzemeltetett integrációs futásidejű telepítési letiltja a **"Távelérési az intranetes"** az önálló üzemeltetett integrációs futásidejű gépen.
+Saját üzemeltetésű integrációs modul a telepítés során (v 3.3.xxxx.x és újabb verziók esetében), alapértelmezés szerint a saját üzemeltetésű integrációs modul telepítése letiltja a **"Távoli hozzáférés intranetről"** a saját üzemeltetésű integrációs modul gépen.
 
-Ha egy külső tűzfalat használ, manuálisan megnyithatja a 8060 (vagy a felhasználó konfigurált port). Ha futtatja a tűzfallal kapcsolatos probléma önálló üzemeltetett integrációs futásidejű telepítés közben, próbálja meg a következő paranccsal telepítheti az önálló üzemeltetett integrációs futásidejű a tűzfal konfigurálása.
+Ha egy külső tűzfalat használ, manuálisan megnyithatja a 8060 (vagy a felhasználó konfigurált port). Ha tűzfal probléma saját üzemeltetésű integrációs modul telepítése során, próbálja meg a saját üzemeltetésű integrációs modul telepítése nélkül a tűzfal konfigurálásáról a következő parancs használatával.
 
 ```
 msiexec /q /i IntegrationRuntime.msi NOFIREWALL=1
 ```
 > [!NOTE]
-> **Hitelesítőadat-kezelő alkalmazás** még nem érhető el a ADFv2 hitelesítő adatok titkosításához. Ez a támogatás később adjuk hozzá.  
+> **Hitelesítőadat-kezelő alkalmazás** még nem áll rendelkezésre a ADFv2 hitelesítő adatok titkosításához. Később fogja hozzáadni a támogatás.  
 
-Ha nem kíván az nyissa meg a portot 8060 az önálló üzemeltetett integrációs futásidejű gépen használatától eltérő szolgáltatások használata a ** hitelesítő adatok beállítása a ** adatok adattárolóhoz használandó hitelesítő adatok konfigurálandó alkalmazáshoz. Például használhatja új-AzureRmDataFactoryV2LinkedServiceEncryptCredential PowerShell-parancsmagot. Tekintse meg, hogyan tárolja az adatokat a hitelesítő adatait a hitelesítő adatok beállítása és biztonsági szakaszban állítható be.
+Ha nem kíván az nyissa meg a-8060 a saját üzemeltetésű integrációs modul gépen eltérő használatával mechanizmusok használata a ** hitelesítő adatok beállítása ** alkalmazást tároló hitelesítő adatainak konfigurálása. Például használhatja a New-AzureRmDataFactoryV2LinkedServiceEncryptCredential PowerShell-parancsmagot. Tekintse meg, hogyan tárolhatja az adatokat a hitelesítő adatok a hitelesítő adatok beállítása és biztonsági szakaszban beállíthatja.
 
 
 ## <a name="next-steps"></a>További lépések
-Tekintse meg az alábbi részletes útmutatás: [oktatóanyag: másolás a helyszíni adatok felhőbe](tutorial-hybrid-copy-powershell.md).
+A következő oktatóanyaggal, a részletes útmutatást lásd: [oktatóanyag: másolási a helyszíni adatok felhőbe](tutorial-hybrid-copy-powershell.md).

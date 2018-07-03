@@ -1,6 +1,6 @@
 ---
-title: Singletons a tartós funkciók elvégzésére – Azure
-description: Hogyan singletons használható az Azure Functions a tartós Functons bővítményben.
+title: Durable Functions – Azure singletons
+description: Hogyan singletons tartós Functons kiterjesztése az Azure Functions szolgáltatáshoz.
 services: functions
 author: cgillum
 manager: cfowler
@@ -14,20 +14,20 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 09/29/2017
 ms.author: azfuncdf
-ms.openlocfilehash: ea8b5db946d6b35ea4583d9170ec36e5f95e16cd
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: 71c0cebf676d29308fe9f4942350ae96d3bedcf6
+ms.sourcegitcommit: 4597964eba08b7e0584d2b275cc33a370c25e027
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/17/2018
-ms.locfileid: "29972551"
+ms.lasthandoff: 07/02/2018
+ms.locfileid: "37340831"
 ---
-# <a name="singleton-orchestrators-in-durable-functions-azure-functions"></a>Egypéldányos orchestrators tartós funkciókkal (az Azure Functions)
+# <a name="singleton-orchestrators-in-durable-functions-azure-functions"></a>Egyszeres vezénylők a tartós függvények (az Azure Functions)
 
-A feladatok a háttérben vagy szereplő stílusú álló üzenettípusok összehangolását, gyakran kell győződjön meg arról, hogy csak egy példánya egy adott orchestrator egyszerre futtatja. Ezt megteheti [tartós funkciók](durable-functions-overview.md) egy adott hozzárendelésével példány azonosítója az orchestrator való létrehozásakor.
+A háttérben futó feladatok vagy az aktor stílusú vezénylések, hogy milyen gyakran kell győződjön meg arról, hogy csak egy példánya egy adott vezénylőt egy időpontban lefut. Ezt megteheti [Durable Functions](durable-functions-overview.md) rendel egy adott példány azonosítója egy orchestrator létrehozásakor.
 
-## <a name="singleton-example"></a>Egypéldányos – példa
+## <a name="singleton-example"></a>Egyedülálló – példa
 
-Az alábbi C# példa bemutatja egy HTTP-eseményindító függvény által létrehozott egy egypéldányos háttérben történő feldolgozás vezénylési. A kód biztosítja, hogy csak egy példány létezik a megadott példány azonosítóját.
+Az alábbi C#-példa egy HTTP-eseményindító függvény, amely létrehoz egy egypéldányos háttérben futó feladatok vezénylésével jeleníti meg. A kód biztosítja, hogy csak egy példány létezik a megadott példány azonosítóját.
 
 ```cs
 [FunctionName("HttpStartSingle")]
@@ -58,11 +58,14 @@ public static async Task<HttpResponseMessage> RunSingle(
 }
 ```
 
-Alapértelmezés szerint példány azonosítói véletlenszerűen létrehozott GUID. Azonban ebben az esetben a Példányazonosítót az URL-címről átadott útvonal adatai. A kód hívások [GetStatusAsync](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_GetStatusAsync_) ellenőrizze, hogy a megadott Azonosítóval rendelkező példány már fut-e. Ha nem, példány létrehozásakor, hogy az azonosítóval.
+Alapértelmezés szerint példány azonosítói véletlenszerűen létrehozott GUID. Azonban ebben az esetben a példány azonosítója az URL-címből átadott útvonal adatai. A kód meghívja [GetStatusAsync](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_GetStatusAsync_) ellenőrizze, hogy a megadott Azonosítóval rendelkező példány már fut-e. Ha nem, akkor egy példány jön létre, hogy az azonosítóval.
 
-Az orchestrator függvény végrehajtása részleteit ténylegesen nem számít. Ez lehet egy rendszeres orchestrator függvényt, amely indulásakor és befejezésekor, vagy egy végtelen futtató lehet (Ez azt jelenti, hogy egy [Eternal Vezénylési](durable-functions-eternal-orchestrations.md)). A legfontosabb az, hogy van-e legalább egyszer csak egy példány fut egyszerre.
+> [!NOTE]
+> Ez a példa egy lehetséges versenyhelyzet szerepel. Ha két példánya **HttpStartSingle** hajtható végre párhuzamosan, az eredmény két különböző létrehozható az egyedülálló, gyakorlatilag felülírja a másik egy példányát. A követelményeitől függően ez lehet a nem kívánt mellékhatásokkal. Ezért fontos győződjön meg arról, hogy nincsenek két kérelmek egyidejűleg futtathatja az eseményindító függvény.
+
+Az orchestrator-függvény a gyakorlati kivitelezés részleteinek ténylegesen nem számít. Lehet, hogy az orchestrator szokásos függvény, amely indulásakor és befejezésekor, vagy lehet egy örökre futtató (azaz egy [külső Vezénylési](durable-functions-eternal-orchestrations.md)). A fontos pontot, hogy minden eddiginél csak egy példány egy időben futnak.
 
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Ismerje meg, hogyan hívhatja meg alárendelt álló üzenettípusok összehangolását](durable-functions-sub-orchestrations.md)
+> [Ismerje meg, hogyan hívhat meg alárendelt vezénylések](durable-functions-sub-orchestrations.md)

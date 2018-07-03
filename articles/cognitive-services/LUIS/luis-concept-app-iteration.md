@@ -1,6 +1,6 @@
 ---
-title: LUIS iteratív alkalmazás megismeréséhez tervezési - Azure |} Microsoft Docs
-description: LUIS alkalmazásokhoz szükséges tervezési ismétlési képzése LUIS lekérni a legjobb adatok kinyerése érdekében.
+title: Megismerheti a LUIS-alkalmazásokon iteratív megtervezése – Azure |} A Microsoft Docs
+description: A LUIS-alkalmazások tervezési ismétlések beolvasni a legjobb adatkinyerés LUIS betanításához szükséges.
 services: cognitive-services
 author: v-geberr
 manager: kamran.iqbal
@@ -9,47 +9,47 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 02/12/2018
 ms.author: v-geberr
-ms.openlocfilehash: b7f8dd46dc8289322726934f330761b0f1ab94bd
-ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
+ms.openlocfilehash: b1736630317d9cbcf2e7380df29bfa8c383b681d
+ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36265937"
+ms.lasthandoff: 07/02/2018
+ms.locfileid: "37346773"
 ---
-# <a name="authoring-cycle"></a>Szerzői ciklus
-LUIS megtanulja a legjobb az ismétlődő ciklusának modellmódosításokkal, utterance példák, közzétételét és adatgyűjtés végpont lekérdezésből. 
+# <a name="authoring-cycle"></a>Tartalomkészítési ciklus
+LUIS legjobb megtanulja az iteratív ciklusának adatmodell változásainak, utterance (kifejezés) példákat, közzététel és adatok összegyűjtése a végpont lekérdezések. 
 
-![Szerzői ciklus](./media/luis-concept-app-iteration/iteration.png)
+![Tartalomkészítési ciklus](./media/luis-concept-app-iteration/iteration.png)
 
-## <a name="building-a-luis-model"></a>Egy LUIS modell létrehozása
-A modell célja, hogy megtudja, mi a felhasználó által kért (a szándék vagy leképezés) és a kérdés részeinek részletesen (entitás), amely a meghatározásához, hogy az fogadja a hívást. 
+## <a name="building-a-luis-model"></a>A LUIS-modell létrehozása
+A modell célja döntse el, mi a felhasználó kéri (a blokkolni vagy leképezés) és a kérdés mely részeit adja meg az adatokat (entitások), amely segít meghatározni, hogy a válasz. 
 
-A modell kell lennie az alkalmazástartomány jellemző szavak meghatározásához és, hogy van megfelelő, valamint az olyan tipikus word rendezési kifejezéseket. 
+A modell kell lennie az app-tartomány adott szavak, hogy megállapítsuk, és, hogy van megfelelő, valamint a tipikus word rendezés kifejezések. 
 
-A modell leképezés, entitásokat tartalmaz. 
+A modell szándékkal, entitásokat is tartalmaz. 
 
 ## <a name="add-training-examples"></a>Példák hozzáadása
-LUIS a leképezések az példa utterances kell. A példák word kiválasztása és a word sorrendben kell tudni határoznia azt, milyen célt a utterance vállalatán elég változata szükséges. Minden egyes példa utterance kell entitások címkézve szükséges adatokat. 
+A LUIS példa utterances a szándék fog vonatkozni a kell. A példák kell elegendő változata, a word választási lehetőség és a szórendjét meg tudja határozni, melyik a cél az utterance (kifejezés) tervezték. Valamennyi példa utterance (kifejezés) rendelkeznie kell címkével ellátott entitásokként szükséges adatokat. 
 
-Figyelmen kívül hagyásához, amelyek a utterance való hozzárendelésével nem kapcsolódnak az alkalmazástartomány utterances LUIS utasította a **nincs** leképezés. Bármely szavak vagy kifejezések nem szükséges egy utterance kihúzott nem kell neve. Nincs címke szót vagy kifejezést figyelmen kívül van. 
+A LUIS figyelmen kívül hagyja, hogy nem vonatkoznak az alkalmazás tartományhoz az utterance (kifejezés) való hozzárendelésével megcímkézzen utasította a **nincs** szándékot. Minden olyan szavak vagy kifejezések nem kell az utterance (kifejezés) kihúzott nem kell lesz. Nincs címke szót vagy kifejezést figyelmen kívül van. 
 <!--
 ## Not just yet
 Do not add features such as a [phrase list](luis-concept-feature.md) feature in your first cycle. Phrase lists are phrases that would be specific to your app's subject area.  
 -->
-## <a name="train-and-publish-the-app"></a>A vonat és az alkalmazás közzététele
-Minden szándéka is megegyezik, 10 – 15 különböző utterances szerepel a szükséges entitásokkal feliratú, akkor LUIS betanítása, majd a közzétételére az beszerzése a végpontokat. Ügyeljen arra, hogy az alkalmazás létrehozása és az alkalmazás közzétételéhez, így a érhető el a [végpont régiók](luis-reference-regions.md) van szüksége. 
+## <a name="train-and-publish-the-app"></a>Betanítása és az alkalmazás közzététele
+Miután 10 – 15 különböző utterances az egyes szándékkal, a szükséges entitásokkal címkével ellátott, LUIS betanítását, majd beolvasni a végpontok közzététele. Ügyeljen arra, hogy az alkalmazás létrehozása, és tegye közzé az alkalmazást, hogy elérhető legyen a [végpont régiók](luis-reference-regions.md) van szüksége. 
 
 ## <a name="https-endpoint-testing"></a>HTTPS-végpont tesztelése
-A HTTPS-végpont szerepel az LUIS alkalmazását tesztelheti a **[közzététel](publishapp.md)** lap. A végpont a tesztelés lehetővé teszi, hogy a LUIS bármely utterances felülvizsgálati alacsony-megbízhatósággal kiválasztásához.  
+A HTTPS-végpont található, a LUIS-alkalmazás teszteléséhez a **[közzététel](luis-how-to-publish-app.md)** lapot. A végpont a tesztelés lehetővé teszi, hogy a LUIS felülvizsgálatra alacsony – magabiztosan megszólalásokat kiválasztása.  
 
 ## <a name="recycle"></a>Lomtár
-Amikor elkészült, a szerzői ciklusára, elkezdheti újra. Első lépésként LUIS alacsony megbízhatósággal jelölésű végpont utterances áttekintése. Ezek a célt és a entitás utterances ellenőrzése. Miután utterances tekintse át, a felülvizsgálati lista üresnek kell lennie.  
+Amikor elkészült, a szerzői műveletek a ciklust, elkezdheti újra. Indítsa el a LUIS megjelölve alacsony magabiztosan végpont utterances áttekintése. Ellenőrizze ezeket mind a szándék entitás kimondott szöveg. Miután utterances tekintse át, a felülvizsgálat lista üresnek kell lennie.  
 
-## <a name="batch-testing"></a>Kötegelt tesztelése
-Kötegelt vizsgálat nem láthatják, például hogy hány utterances LUIS alapján kell kiértékelni. A példák LUIS új kell lennie, és megfelelően feliratú leképezés és azt szeretné, hogy LUIS található entitások. A vizsgálati eredmények jelzik, hogy mennyire LUIS utterances adott csoportján hajtaná végre. 
+## <a name="batch-testing"></a>Kötegelt tesztelés
+A Batch vizsgálat nem láthatják az hány példa utterances LUIS szerint kell kiértékelni. A példák a LUIS új kell lennie, és megfelelően feliratú szándékot, és azt szeretné, hogy a LUIS található entitások. A teszteredmények azt jelzik, LUIS végre arról, hogy az adott készletét kimondott szöveg. 
 
 ## <a name="next-steps"></a>További lépések
 
-Fogalmak megismerése [együttműködés](luis-concept-collaborator.md).
+Tudnivalók a fogalmak [együttműködési](luis-concept-collaborator.md).
 
 [luis-reference-prebuilt-domains]: https://docs.microsoft.com/azure/cognitive-services/luis/luis-reference-prebuilt-domains

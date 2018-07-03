@@ -1,6 +1,6 @@
 ---
-title: Hálózati biztonsági fogalmak és a követelmények az Azure-ban |} Microsoft Docs
-description: Ez a cikk alapfogalmak hálózati biztonsági követelmények és információk kapcsolatos alapvető magyarázatokat biztosít Mi az Azure minden ezeknek a területeknek kínál.
+title: A hálózati biztonsággal kapcsolatos fogalmait és a követelmények az Azure-ban |} A Microsoft Docs
+description: A cikk ismerteti a hálózati biztonsági alapfogalmakat és a követelmények és információk alapszintű magyarázatokat a Mi az Azure a következő területeken nyújt.
 services: security
 documentationcenter: na
 author: TomShinder
@@ -12,275 +12,333 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/21/2017
+ms.date: 07/02/2018
 ms.author: terrylan
-ms.openlocfilehash: fbd589aedb955ee4bd61dc0ec754d8713a98179a
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 7533f9db25da8e69d3fcfa76a61a06af2f1bc78c
+ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34365627"
+ms.lasthandoff: 07/02/2018
+ms.locfileid: "37345957"
 ---
-# <a name="azure-network-security-overview"></a>Az Azure biztonsági áttekintése
-Azure tartalmaz egy robusztus hálózati infrastruktúra, az alkalmazás és szolgáltatás hálózati kapcsolati követelményeinek támogatására. Helyszíni között, az Azure-ban lévő erőforrások közötti hálózati kapcsolatot, és Azure üzemeltetett erőforrásokhoz, és hogy, és az internetről és az Azure.
+# <a name="azure-network-security-overview"></a>Azure-hálózat biztonsági áttekintése
 
-Ez a cikk célja annak magyarázata, hogy mi az Azure hálózati biztonság területén kínál. Hálózati biztonsági Alapfogalmak és követelményeiről egyszerű magyarázata mellett olvashat:
+Az Azure támogatja az alkalmazás és szolgáltatás hálózati kapcsolati követelményeinek robusztus hálózati infrastruktúrát tartalmaz. Hálózati kapcsolat a helyszíni között az Azure-ban található erőforrások között lehetőség, és az Azure-ban üzemeltetett erőforrásokhoz, és hogy, és az internetről és az Azure.
 
-* Az Azure hálózatkezelés
+Ez a cikk ismerteti az Azure által kínált hálózati biztonság területén opciók egy része. További információ:
+
+* Az Azure-hálózatok
 * Hálózati hozzáférés-vezérlés
-* Biztonságos távoli hozzáférés és a létesítmények közötti kapcsolat
+* Biztonságos távoli hozzáférést és a létesítmények közötti kapcsolat
 * Rendelkezésre állás
 * Névfeloldás
 * Szegélyhálózat (DMZ) hálózati architektúra
-* Figyelés és a fenyegetések észlelése
+* Figyelés és a fenyegetésészlelés
+* Azure DDoS Protection
 
-## <a name="azure-networking"></a>Az Azure hálózatkezelés
-Virtuális gépek hálózati kapcsolattal kell. Ez a követelmény kielégítése érdekében az Azure-nak virtuális gépek Azure-beli virtuális hálózathoz kell csatlakoztatni. A virtuális hálózat egy logikai szerkezet, a fizikai Azure hálózati háló platformra épül. Minden logikai virtuális hálózati el különítve a többi virtuális hálózatok. Ezzel biztosíthatja, hogy a hálózati forgalmat a központi telepítés nincs más Azure-ügyfél számára elérhető.
+## <a name="azure-networking"></a>Az Azure-hálózatok
+
+Azure-beli virtuális hálózathoz csatlakoztatni kívánt virtuális gépek van szüksége. Egy virtuális hálózat egy logikai szerkezet, a fizikai az Azure hálózati háló épülnek. Minden virtuális hálózat el különítve a többi virtuális hálózattól. Ezzel biztosíthatja, hogy a központi telepítések a hálózati forgalom nem érhető el más Azure-ügyfeleknek.
 
 További információ:
 
-* [Virtual network áttekintése](../virtual-network/virtual-networks-overview.md)
-
+* [A Virtual network áttekintése](../virtual-network/virtual-networks-overview.md)
 
 ## <a name="network-access-control"></a>Hálózati hozzáférés-vezérlés
-Hálózati hozzáférés-vezérlés a folyamat, korlátozza a kapcsolat és az egyes eszközök és alhálózatokat a virtuális hálózaton belül. A hálózati hozzáférés-vezérlés célja korlátozza a hozzáférést a virtuális gépek és szolgáltatások jóváhagyott felhasználók és eszközök számára. Hozzáférés-szabályozási döntések engedélyezéséhez vagy letiltásához a virtuális gépet vagy szolgáltatást érkező vagy oda irányuló kapcsolatok alapulnak.
 
-Azure számos különböző típusú hálózati hozzáférés-vezérlést, például a támogatja:
+Hálózati hozzáférés-vezérlés a törvény korlátozására és az egyes eszközök és a egy virtuális hálózat alhálózatainak kapcsolat. A hálózati hozzáférés-vezérlés célja, hogy korlátozza a hozzáférést a virtuális gépek és szolgáltatások jóváhagyott felhasználók és eszközök számára. Hozzáférés-vezérlés döntéseket hozhat, engedélyezik vagy megtagadják a kapcsolatokat, és a virtuális gép vagy szolgáltatás alapulnak.
 
-* Hálózati réteg vezérlő
-* Útvonal-vezérlés és a kényszerített bújtatás
-* Virtuális hálózati biztonsági készülékek
+Az Azure számos különböző típusú hálózati hozzáférés-vezérlés, mint például támogatja:
 
-### <a name="network-layer-control"></a>Hálózati réteg vezérlő
-Minden biztonságos telepítéséhez szükséges hálózati hozzáférés-vezérlés bizonyos mértékét. Hálózati hozzáférés-vezérlés célja a szükséges rendszereken virtuálisgép-kommunikációt. Más kommunikációs kísérlet le vannak tiltva.
+* Hálózati réteg szabályozása
+* Irányíthatja a vezérlő és a kényszerített bújtatás
+* Virtuális hálózati biztonsági berendezéseket
 
-Ha módosítania kell az alapvető hálózati szintű hozzáférés-vezérlés (az IP-cím és a TCP vagy UDP protokoll alapján), a hálózati biztonsági csoportokkal (NSG-k) is használhatja. Az NSG-t a basic, az állapotalapú alkalmazások és szolgáltatások, a tűzfal csomagot, és lehetővé teszi a alapján egy [5 rekordos](https://www.techopedia.com/definition/28190/5-tuple). Az NSG-k alkalmazás réteg ellenőrző nem ad meg, vagy hitelesített hozzáférés-vezérlést.
+### <a name="network-layer-control"></a>Hálózati réteg szabályozása
+
+Minden biztonságos telepítéséhez van szükség egy adott mérték hálózati hozzáférés-vezérlést. A hálózati hozzáférés-vezérlés célja, hogy korlátozni a virtuális gép kommunikációt a szükséges rendszereken. Más kommunikációs kísérlet le vannak tiltva.
+
+#### <a name="network-security-rules-nsgs"></a>Hálózati biztonsági szabályok (NSG-k)
+
+Ha alapszintű hálózati szintű hozzáférés-vezérlés (IP-cím és a TCP vagy UDP protokoll alapján), a hálózati biztonsági csoportok (NSG-k) is használhatja. Az NSG-t egy alapszintű, az állapotalapú, a tűzfal csomagot, és lehetővé teszi a hozzáférés alapján szabályozhatja a [5 rekordos](https://www.techopedia.com/definition/28190/5-tuple). Az NSG-k felügyelet egyszerűsítését és konfigurációs hibák esélyének csökkentése funkciókat tartalmazza:
+
+* **Kibővített biztonsági szabályok** NSG-szabály definíciójának egyszerűbb és hozhat létre komplex szabályokat, ahelyett, hogy az azonos eredmények elérése érdekében több egyszerű szabály létrehozásához.
+* **Szolgáltatáscímkéket** Microsoft jönnek létre egy csoportot az IP-címek képviselő címkék. Ezek frissítési dinamikusan IP-címtartományokat, amelyek megfelelnek a belefoglalási a címke meghatározó feltételeket tartalmazza. Például ha azt szeretné, hozzon létre egy szabályt, amely az összes Azure storage, a keleti régióban érvényes használható Storage.EastUS
+* **Az alkalmazásbiztonsági csoportok** erőforrások üzembe helyezése az alkalmazáscsoport és az erőforrásokhoz való hozzáférésének ezen alkalmazás ezeket a csoportokat használó szabályok létrehozásával. Például ha az "Webservers" csoporthoz telepített webservers létrehozhat egy szabályt, amely lehetővé teszi a 443-as forgalom az internetről az összes rendszeren a "Webservers" alkalmazáscsoporthoz egy NSG vonatkozik.
+
+Az NSG-k application layer ellenőrző nem ad meg, vagy a hitelesített hozzáférés-vezérlést.
 
 További információ:
 
 * [Hálózati biztonsági csoportok](../virtual-network/security-overview.md)
 
-### <a name="route-control-and-forced-tunneling"></a>Útvonal-vezérlés és a kényszerített bújtatás
-A virtuális hálózatokon lévő útválasztási viselkedés képes fontos. Ha útválasztási helytelenül van konfigurálva, alkalmazások és szolgáltatások a virtuális gépen futó kapcsolódását nem hitelesített eszközöket, beleértve a birtokolt és a potenciális támadók által működtetett rendszereket.
+#### <a name="asc-just-in-time-vm-access"></a>Az ASC csak a time VM access
 
-Az Azure hálózatkezelés támogatja a hálózati forgalmat a virtuális hálózatokat az útválasztási viselkedés testreszabása. Ez lehetővé teszi, hogy módosítsa az alapértelmezett útválasztási táblabejegyzéseket a virtuális hálózat. Útválasztási viselkedés irányítását segítségével győződjön meg arról, hogy egy adott eszköz vagy eszközcsoportra származó összes forgalmat be- vagy a virtuális hálózaton keresztül egy konkrét helyre.
+[Az Azure security center](../security-center/security-center-just-in-time.md) kezelheti az NSG-ket a virtuális gépek és a virtuális Géphez való hozzáférés zárolása amíg egy felhasználó a megfelelő szerepköralapú hozzáférés-vezérléssel [RBAC](../role-based-access-control/overview.md) engedélyek hozzáférést kér. Amikor a felhasználó sikeresen hitelesített ASC teszi az NSG-ket kijelölt portok való hozzáférés engedélyezése a kérdéses módosításait. Ha az idő lejár az NSG-t állítja vissza az előző állapot védett.
 
-Például lehetséges, hogy a virtuális hálózati biztonsági készülékek a virtuális hálózaton. Győződjön meg arról, hogy minden forgalmat a virtuális hálózat végighalad az adott virtuális biztonsági készülék szeretné. Ehhez konfigurálásával [felhasználó által megadott útvonalak](../virtual-network/virtual-networks-udr-overview.md) (udr-EK) az Azure-ban.
+#### <a name="service-endpoints"></a>Szolgáltatásvégpontok
 
-[A kényszerített bújtatás](https://www.petri.com/azure-forced-tunneling) egy mechanizmus segítségével győződjön meg arról, hogy a szolgáltatások használata nem engedélyezett a kezdeményezzen kapcsolatot az internethez csatlakozó eszközökről. Vegye figyelembe, hogy ez eltér a bejövő kapcsolatok fogadását, és ezután válaszol rájuk. Az internetes gazdagépek a kérelmek megválaszolásához szükséges előtér-webkiszolgálók, és így internet-forrása forgalom engedélyezve van, a webes kiszolgálókhoz történő bejövő és a webkiszolgálók el válaszol.
+A Szolgáltatásvégpontok használatával is szabályozhatja a forgalom a alkalmazni. Támogatott szolgáltatások folytatott kommunikáció egy közvetlen kapcsolaton keresztül korlátozhatja csak a virtuális hálózatok. A megadott Azure-szolgáltatás a virtuális hálózat forgalmát a Microsoft Azure gerinchálózatán marad.  
 
-Hogy nem szeretné az előtér-webkiszolgáló kezdeményezéséhez egy kimenő kérelem. Az ilyen kérelmeket biztonsági kockázatot jelenthet, mert ezek a kapcsolatok is kártevőket tölthetnek le. Akkor is, ha szeretné, hogy ezek a kimenő kérelmek az internethez kezdeményezéséhez előtér-kiszolgálók, előfordulhat, hogy kényszeríteni kívánja őket a helyszíni webes proxykat végrehajtania. Ez lehetővé teszi, hogy előnyeit szűrés és naplózás URL-CÍMÉT.
+További információ:
 
-Ehelyett volna használni kívánt kényszerített bújtatás Ennek megakadályozására. Ha engedélyezi a kényszerített bújtatást, az internetre létesített összes kapcsolat kényszerítve vannak-e a helyszíni átjárón keresztül. Beállíthatja, hogy kényszerített bújtatást udr-EK kihasználásával.
+* [Szolgáltatásvégpontok](../virtual-network/virtual-network-service-endpoints-overview.md#securing-azure-services-to-virtual-networks)
+
+### <a name="route-control-and-forced-tunneling"></a>Irányíthatja a vezérlő és a kényszerített bújtatás
+
+Arra, hogy a virtuális hálózatokon útválasztási viselkedés vezérléséhez. Útválasztás helytelenül van konfigurálva, alkalmazások és szolgáltatások a virtuális gépen üzemeltetett előfordulhat, hogy csatlakozni jogosulatlan eszközöket, beleértve a tulajdonában lévő és az esetleges támadók által működtetett rendszerekkel is.
+
+Az Azure-hálózatok támogatja a hálózati forgalmat a virtuális hálózatok az útválasztási viselkedés testre szabhatók. Ez lehetővé teszi, hogy módosítja az alapértelmezett útválasztási Színtáblázat bejegyzései a virtuális hálózaton. Útválasztási viselkedés irányítását segítségével győződjön meg arról, hogy egy adott eszköz vagy eszközcsoport érkező minden be- vagy a virtuális hálózaton keresztül egy adott helyen.
+
+Egy virtuális hálózat biztonsági eszközének Előfordulhat például, a virtuális hálózaton. Győződjön meg arról, hogy az összes forgalmat a virtuális hálózat végighalad a virtuális biztonsági berendezés szeretné. Ezt megteheti konfigurálásával is [felhasználó által megadott útvonalak](../virtual-network/virtual-networks-udr-overview.md) (udr-EK) az Azure-ban.
+
+[Kényszerített bújtatás](https://www.petri.com/azure-forced-tunneling) olyan mechanizmus segítségével győződjön meg arról, hogy a szolgáltatások nem engedélyezett az internethez csatlakozó eszközökről való kapcsolatot kezdeményez. Vegye figyelembe, hogy ez eltér a bejövő kapcsolatok fogadását, és ezután válaszol rájuk. Előtér-webkiszolgálók kell válaszolni a kérelmekre internet gazdagépekről, és így internetes forráskódú forgalom engedélyezve van, a következő webes kiszolgálókhoz bejövő és reagálni a webkiszolgálók engedélyezettek.
+
+Egy kimenő kérelem kezdeményezéséhez előtér-webkiszolgálóra, hogy nem szeretné nem. Ilyen kérelmeket reprezentálhatja biztonsági kockázatot jelent, mivel ezek a kapcsolatok kártevő szoftverek letöltésére is használható. Akkor is, ha szeretné, hogy előtér-kiszolgálók kezdeményezheti a kimenő kérelmeket az interneten, érdemes haladhat végig a helyileg üzemeltetett webes proxykat őket. Ez lehetővé teszi, hogy az URL-címe, szűrés és a naplózási előnyeit.
+
+Ehelyett érdemes használni a kényszerített bújtatás elkerüléséhez. Ha engedélyezi a kényszerített bújtatás, az internet felé irányuló összes kapcsolatot a helyszíni átjárón keresztül kényszerítve. Konfigurálhatja a kényszerített bújtatás udr-EK kihasználásával.
 
 További információ:
 
 * [Mik azok a felhasználó által megadott útvonalak és IP-továbbítás](../virtual-network/virtual-networks-udr-overview.md)
 
-### <a name="virtual-network-security-appliances"></a>Virtuális hálózati biztonsági készülékek
-Amíg az NSG-k, a udr-EK és a kényszerített bújtatás biztosít, akkor a szintű biztonságot, a hálózati és a szállítási réteg a [OSI-modell](https://en.wikipedia.org/wiki/OSI_model), érdemes lehet engedélyezni a magasabb, mint a hálózati szintű biztonságot.
+### <a name="virtual-network-security-appliances"></a>Virtuális hálózati biztonsági berendezéseket
 
-Például a biztonsági követelmények állhatnak:
+Amíg az NSG-k, az udr-EK és a kényszerített bújtatás biztosítanak a hálózat és az átviteli rétegeket, a biztonsági szintet a [OSI-modell](https://en.wikipedia.org/wiki/OSI_model), érdemes lehet magasabb, mint a hálózati szintű biztonság engedélyezéséhez.
 
-* Hitelesítési és engedélyezési az alkalmazásokhoz való hozzáférés engedélyezése előtt
-* -Behatolásérzékelési és a behatolás-válasz
-* Alkalmazás réteg vizsgálatát a magas szintű protokollok
+Ha például a biztonsági követelmények a következők lehetnek:
+
+* Hitelesítés és engedélyezés az alkalmazáshoz való hozzáférés engedélyezése előtt
+* Behatolásérzékelés és a behatolás-válasz
+* Alkalmazás-réteg vizsgálata magas szintű protokollok
 * URL-CÍMEK szűrése
-* Hálózati szintű víruskereső és kártevőirtó
-* Botot elleni védelem
+* Hálózati szintű a víruskereső és kártevőirtó
+* Anti-bot védelme
 * Alkalmazás-hozzáférés-vezérlés
-* További DDoS-védelem (fent nyújtja az Azure-hálót, maga DDoS-védelem)
+* További DDoS elleni védelem (fent a DDoS protection az Azure-hálót, saját maga által biztosított)
 
-Továbbfejlesztett hálózati biztonsági funkció az Azure partneri megoldás használatával végezheti el. Megtalálhatja a legfrissebb Azure partner hálózati biztonsági megoldások látogasson el a [Azure piactér](https://azure.microsoft.com/marketplace/), és a keresést a "biztonság" és "hálózati biztonság."
+Következő nagyobb hálózati biztonsági funkciók érhetők el az egy Azure-partneri megoldás használatával. Annak a legújabb Azure-partneri hálózati biztonsági megoldások meglátogatják a [Azure Marketplace-en](https://azure.microsoft.com/marketplace/), és keressen a "security" és "hálózati biztonság."
 
-## <a name="secure-remote-access-and-cross-premises-connectivity"></a>Biztonságos távoli hozzáférés és a létesítmények közötti kapcsolat
-A telepítő, konfigurálási és kezelése az Azure-erőforrások igényeinek távolról kell elvégezni. Ezenkívül előfordulhat, hogy számára telepíteni kívánja [hibrid informatikai](http://social.technet.microsoft.com/wiki/contents/articles/18120.hybrid-cloud-infrastructure-design-considerations.aspx) összetevők a helyszíni megoldások és az Azure nyilvános felhőjében található. Ezek a forgatókönyvek biztonságos távoli hozzáférést igényelnek.
+## <a name="secure-remote-access-and-cross-premises-connectivity"></a>Biztonságos távoli hozzáférést és a létesítmények közötti kapcsolat
 
-Az Azure hálózatkezelés a következő biztonságos távoli hozzáférés-forgatókönyveket teszi lehetővé:
+A telepítő, konfigurációs és felügyeleti feladatot távolról kell elvégezni az Azure-erőforrások igényeihez. Emellett érdemes telepíteni [hibrid informatikai](http://social.technet.microsoft.com/wiki/contents/articles/18120.hybrid-cloud-infrastructure-design-considerations.aspx) a megoldásokat, amelyek összetevőit a helyszínen és az Azure nyilvános felhő. Ezek a forgatókönyvek biztonságos távoli hozzáférést igényelnek.
 
-* Egyéni munkaállomások csatlakozni a virtuális hálózat
-* A helyszíni hálózat kapcsolódjon VPN-nel rendelkező virtuális hálózathoz
-* A helyszíni hálózat csatlakozni egy dedikált WAN-kapcsolaton egy virtuális hálózat
-* Virtuális hálózatok csatlakozni egymáshoz
+Az Azure-hálózatok a következő biztonságos távoli hozzáférést forgatókönyveket támogatja:
 
-### <a name="connect-individual-workstations-to-a-virtual-network"></a>Egyéni munkaállomások csatlakozni a virtuális hálózat
-Előfordulhat, hogy engedélyezni szeretné az egyes fejlesztők és a műveleti személyzet kezelheti a virtuális gépek és szolgáltatások az Azure-ban. Például tegyük fel, hozzá kell férnie egy virtuális gép olyan virtuális hálózaton. De a biztonsági házirend nem engedélyezi az egyes virtuális gépekhez való RDP és az SSH távelérési. Ebben az esetben egy pont – hely VPN-kapcsolatot is használhatja.
+* Egyéni munkaállomások csatlakoztatása egy virtuális hálózathoz
+* A helyszíni hálózat csatlakoztatása egy virtuális hálózat VPN-nel
+* A helyszíni hálózat csatlakoztatása egy virtuális hálózatot és a egy dedikált WAN-kapcsolaton
+* Egymáshoz virtuális hálózatok összekapcsolása
 
-A pont-pont VPN-kapcsolat használ a [az SSTP VPN](https://technet.microsoft.com/library/cc731352.aspx) protokoll ahhoz, hogy állítsa be a magán- és biztonságos kapcsolatot a felhasználó és a virtuális hálózat között. Ha a VPN-kapcsolat létrejött, a felhasználó is RDP és az SSH a VPN-kapcsolaton keresztül a virtuális gépek a virtuális hálózaton történő. (A parancs feltételezi, hogy a felhasználó képes hitelesíteni, és engedélyezve van.)
+### <a name="connect-individual-workstations-to-a-virtual-network"></a>Egyéni munkaállomások csatlakoztatása egy virtuális hálózathoz
 
-További információ:
+Előfordulhat, hogy szeretné engedélyezni az egyéni fejlesztők számára és a műveleti személyzet kezelheti a virtuális gépek és szolgáltatások az Azure-ban. Például tegyük fel, hozzá kell férnie a virtuális hálózat egy virtuális gépet. De a biztonsági házirend nem engedélyezi az egyes virtuális gépekhez RDP vagy SSH távoli hozzáférést. Ebben az esetben egy pont – hely VPN-kapcsolat is használhatja.
 
-* [PowerShell virtuális hálózat egy pont – hely kapcsolat beállítása](../vpn-gateway/vpn-gateway-howto-point-to-site-rm-ps.md)
-
-### <a name="connect-your-on-premises-network-to-a-virtual-network-with-a-vpn"></a>A helyszíni hálózat kapcsolódjon VPN-nel rendelkező virtuális hálózathoz
-Érdemes a teljes vállalati hálózaton, vagy részeit, egy virtuális hálózathoz való kapcsolódáshoz. Ez az a hibrid informatikai gyakori forgatókönyvek, ahol szervezetek [kiterjesztése a helyszíni adatközpontját az Azure](https://gallery.technet.microsoft.com/Datacenter-extension-687b1d84). Sok esetben a szervezetek gazdagép Azure-ban, és részei a helyi szolgáltatás részei. Például előfordulhat, hogy ehhez a megoldás előtér-webkiszolgálók tartalmazza az Azure-ban és a háttér-adatbázisok a helyszínen. Az ilyen típusú "létesítmények közötti" azt is ellenőrizze található Azure felügyeleti erőforrások több biztonságos, és engedélyezze a forgatókönyvek az Azure Active Directory-tartományvezérlők kiterjesztése például.
-
-Egyirányú elvégzéséhez azt használja a [telephelyek közötti VPN](https://www.techopedia.com/definition/30747/site-to-site-vpn). A telephelyek közötti VPN és a pont-pont típusú VPN közötti különbség, hogy az utóbbi egyetlen eszközt egy virtuális hálózathoz csatlakozik. A telephelyek közötti VPN a teljes hálózatokhoz (például a helyszíni hálózat) egy virtuális hálózathoz csatlakozik. Pont-pont VPN egy virtuális hálózathoz a rendkívül biztonságos IPsec-bújtatásos mód VPN protokollt használja.
+A pont – hely VPN-kapcsolatot használ a [az SSTP VPN](https://technet.microsoft.com/library/cc731352.aspx) protokollt ahhoz, hogy egy védett és biztonságos kapcsolatot a felhasználó és a virtuális hálózat között. A VPN-kapcsolat létrejött, amikor a felhasználó is RDP vagy SSH a VPN-kapcsolaton keresztül, a virtuális hálózaton lévő bármelyik virtuális gépet. (A parancs feltételezi, hogy a felhasználói hitelesítést, és engedélyezett.)
 
 További információ:
 
-* [Erőforrás-kezelő VNet létrehozása az Azure portál használatával pont-pont VPN-kapcsolattal](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md)
+* [PowerShell-lel virtuális hálózathoz pont – hely kapcsolat konfigurálása](../vpn-gateway/vpn-gateway-howto-point-to-site-rm-ps.md)
+
+### <a name="connect-your-on-premises-network-to-a-virtual-network-with-a-vpn"></a>A helyszíni hálózat csatlakoztatása egy virtuális hálózat VPN-nel
+
+Érdemes lehet, hogy a teljes vállalati hálózaton, vagy egyes részeiből, csatlakoztatása virtuális hálózathoz. Ez a hibrid informatikai gyakori forgatókönyvek, ahol szervezetek [kiterjesztése a helyszíni adatközpontját az Azure-bA](https://gallery.technet.microsoft.com/Datacenter-extension-687b1d84). Sok esetben szervezetek üzemeltethet az Azure és helyszíni részek szolgáltatás részei. Például előfordulhat, hogy ehhez a egy megoldás magában foglalja a előtér-webkiszolgálók, az Azure-ban, és a háttér-helyszíni adatbázisok. Ilyen típusú "" kapcsolatokat is győződjön meg arról, felügyeleti található Azure-erőforrások biztonságának, és felhasználási helyzetek kiterjesztése az Active Directory-tartományvezérlőket az Azure-bA.
+
+Egyik módszer elvégzéséhez ezt, hogy használjon egy [site-to-site VPN](https://www.techopedia.com/definition/30747/site-to-site-vpn). A site-to-site VPN és a egy pont – hely VPN közötti különbség, hogy az utóbbi kapcsolódik egy adott eszköz a virtuális hálózathoz. Site-to-site VPN (például a helyszíni hálózat) teljes hálózathoz csatlakozik egy virtuális hálózatot. Virtuális hálózat és egy helyek közötti VPN-eket a rendkívül biztonságos IPsec-alagút módú VPN protokollt használja.
+
+További információ:
+
+* [Resource Manager virtuális hálózat létrehozása helyek közötti VPN-kapcsolattal az Azure portal használatával](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md)
 * [A VPN Gateway tervezése és kialakítása](../vpn-gateway/vpn-gateway-plan-design.md)
 
-### <a name="connect-your-on-premises-network-to-a-virtual-network-with-a-dedicated-wan-link"></a>A helyszíni hálózat csatlakozni egy dedikált WAN-kapcsolaton egy virtuális hálózat
-Pont-pont és a pont-pont VPN-kapcsolatok érvényben engedélyezése közötti kapcsolatot nyújthassanak. Azonban egyes szervezetek vegye figyelembe, hogy a következő hátrányokkal:
+### <a name="connect-your-on-premises-network-to-a-virtual-network-with-a-dedicated-wan-link"></a>A helyszíni hálózat csatlakoztatása egy virtuális hálózatot és a egy dedikált WAN-kapcsolaton
 
-* VPN-kapcsolatok az interneten keresztül helyezze át az adatokat. Ez azt mutatja, hogy ezek a kapcsolatok adminisztrációjával kapcsolatos adatmozgatás nyilvános hálózaton keresztül lehetséges biztonsági problémáját. Ezenkívül megbízhatósági és rendelkezésre állás a hálózati kapcsolatok használata esetén nem biztosítható.
-* Virtuális hálózatok VPN-kapcsolatok az egyes alkalmazások és a céljából, amint azok maximális kimenő körülbelül 200 Mbps sebességnél sávszélesség esetleg nincs.
+Pont – hely és helyek közötti VPN-kapcsolatok létesítmények közötti kapcsolatok engedélyezéséhez érvényesek. Azonban egyes szervezetek vegye figyelembe, hogy a következő hátrányokkal:
 
-A szervezeteknek, amelyek általában a létesítmények közötti kapcsolatok van szükség a legmagasabb szintű biztonság és elérhetőség dedikált WAN-kapcsolatok használatával kapcsolódni a távoli helyeken. Azure lehetővé teszi egy dedikált WAN-kapcsolaton, melyekkel a helyszíni hálózat egy virtuális hálózathoz való kapcsolódáshoz használja. Az Azure ExpressRoute lehetővé teszi, hogy ez.
+* VPN-kapcsolatok az interneten keresztül helyezze át az adatokat. Ez elérhetővé teszi ezeket a kapcsolatokat, az érintett adatok áthelyezése egy nyilvános hálózaton keresztül a potenciális biztonsági problémákat. Ezenkívül megbízhatóságot és rendelkezésre állást, a hálózati kapcsolatok használata esetén nem garantálható.
+* Virtuális hálózatok VPN-kapcsolatok nem feltétlenül a sávszélesség az egyes alkalmazások és céljából, amint azok körülbelül 200 Mbps sebességnél, max.
 
-További információ:
-
-* [ExpressRoute műszaki áttekintés](../expressroute/expressroute-introduction.md)
-
-### <a name="connect-virtual-networks-to-each-other"></a>Virtuális hálózatok csatlakozni egymáshoz
-A központi telepítések sok virtuális hálózatok használatát is. Különböző oka miért erre akkor lehet szükség. Egyszerűbbé teheti a kezelését érdemes, vagy a biztonság fokozása érdekében érdemes lehet. Különböző virtuális hálózatokon lévő erőforrások helyezésének kifejlesztésének, függetlenül előfordulhat, ha azt szeretné, hogy minden csatlakozni egymással a hálózaton lévő erőforrások alkalommal.
-
-Egy elem egy virtuális hálózat csatlakozni egy másik virtuális hálózati szolgáltatások "ismétlési vissza" szolgáltatások az interneten keresztül. A kapcsolat elindítja egy virtuális hálózaton, az interneten keresztül halad, és majd ismét elérhető lesz a cél virtuális hálózathoz. Ez a beállítás a biztonsági problémák rejlő bármely internetes kommunikáció a kapcsolatot mutatja.
-
-Jobb megoldás lehet létrehozni, amely összeköti a két virtuális hálózat közötti pont-pont VPN-en. Ezt a módszert használja, azonos [IPsec-bújtatásos mód](https://technet.microsoft.com/library/cc786385.aspx) protokoll a fent említett létesítmények közötti pont-pont VPN-kapcsolatot.
-
-Ez a megközelítés előnye, hogy a VPN-kapcsolat létrejött-e az Azure-hálózat-hálón, ne csatlakozzanak az interneten keresztül. Ez lehetővé teszi egy további biztonsági, pont-pont az interneten keresztül csatlakozó virtuális magánhálózatok képest réteget.
+A szervezetek, általában szükség van a legmagasabb szintű biztonság és elérhetőség a létesítmények közötti kapcsolatok dedikált WAN-kapcsolatok használatával távoli helyekhez való csatlakozáshoz. Az Azure lehetővé teszi egy dedikált WAN-kapcsolaton, amellyel a helyszíni hálózat csatlakoztatása egy virtuális hálózatot használja. Az Azure ExpressRoute lehetővé teszi ezt.
 
 További információ:
 
-* [Egy VNet – VNet-kapcsolat beállítása az Azure Resource Manager és a PowerShell használatával](../vpn-gateway/vpn-gateway-vnet-vnet-rm-ps.md)
+* [Az ExpressRoute technikai áttekintése](../expressroute/expressroute-introduction.md)
+
+### <a name="connect-virtual-networks-to-each-other"></a>Egymáshoz virtuális hálózatok összekapcsolása
+
+A központi telepítések számos virtuális hálózatot használandó lehetőség. Vannak, előfordulhat, hogy miért ez különböző okok miatt. Érdemes lehet leegyszerűsítheti a felügyeletet, vagy érdemes nagyobb biztonság. A különböző virtuális hálózatokon lévő erőforrások üzembe motiváció, függetlenül is azt szeretné, minden való csatlakozáshoz egymással a hálózaton lévő erőforrások.
+
+Az egyik lehetőség van a szolgáltatásokhoz való csatlakozáshoz szolgáltatások egy másik virtuális hálózattal, "hurkolás vissza" egy virtuális hálózaton az interneten keresztül. A kapcsolat elindítja egy virtuális hálózaton, az interneten keresztül halad, és ezután visszatér a cél virtuális hálózat. Ez a beállítás a biztonsági problémák rejlő minden olyan internetes kommunikációs kapcsolat tesz elérhetővé.
+
+Jobb megoldás lehet, amely összeköti a két virtuális hálózat között helyek közötti VPN létrehozása. Ezt a módszert használja, azonos [IPSec-alagút módú](https://technet.microsoft.com/library/cc786385.aspx) a létesítmények közötti site-to-site VPN-kapcsolat a fent említett-protokoll.
+
+Ez a megközelítés előnye, hogy a VPN-kapcsolat létrejött-e az Azure hálózati háló, ne csatlakozzanak az interneten keresztül. Ez, egy további biztonsági réteget nyújt, helyek közötti VPN-eket az interneten keresztül csatlakozó képest.
+
+További információ:
+
+* [A virtuális hálózatok közötti kapcsolat konfigurálása Azure Resource Manager és a PowerShell használatával](../vpn-gateway/vpn-gateway-vnet-vnet-rm-ps.md)
+
+Egy másik módja a virtuális hálózatok [virtuális hálózatok közötti társviszony](../virtual-network/virtual-network-peering-overview.md). Ez a funkció lehetővé teszi két Azure-hálózatok csatlakoztatása, így közötti kommunikáció lehetőségét a Microsoft gerincinfrastruktúráján keresztül történik, anélkül, hogy soha ne legyenek az interneten keresztül. Virtuális hálózatok közötti társviszony vagy is lehet kapcsolódni az azonos régión belüli két virtuális hálózat két virtuális hálózat Azure-régiók között. Az NSG-k különböző alhálózatokhoz vagy rendszerek közötti kapcsolat korlátozására használható.
 
 ## <a name="availability"></a>Rendelkezésre állás
-Rendelkezésre állás bármilyen biztonsági program nyilvános kulcsokra épülő. Ha a felhasználók és rendszerek nem férnek hozzá Mi a hálózaton keresztüli eléréséhez szükséges, a szolgáltatás is tekinthető sérült. Azure rendelkezik hálózatkezelési technológiákat, amelyek támogatják a magas rendelkezésre állású következő mechanizmusok alapján:
 
-* HTTP-alapú terheléselosztás
+Rendelkezésre állás bármilyen biztonsági program egyik fő összetevője. Ha a felhasználók és rendszerek nem sikerül elérnie mit eléréséhez szükséges a hálózaton keresztül, a szolgáltatás lehessen venni sérült a biztonsága. Azure hálózatkezelési technológiákat, amelyek támogatják az alábbi magas rendelkezésre állású mechanizmusok rendelkezik:
+
+* HTTP-alapú terheléselosztási
 * Hálózati szintű terheléselosztás
-* Globális terheléselosztás
+* Terhelés globális kiegyenlítéséhez
 
-Terheléselosztás, akkor egy eszköz úgy tervezték, hogy egyaránt terjeszteni a több eszközök közötti kapcsolatokat. A terheléselosztást céljai a következők:
+Load balancing szolgáltatás egyenlő arányban terjeszteni a kapcsolatokat, többek között a több eszközre tervezett mechanizmus. A terheléselosztás céljai a következők:
 
-* Magasabb rendelkezésre állását. Ha az egyenleg kapcsolatok több eszközön, egy vagy több olyan eszközt a elérhetetlenné válhat a szolgáltatás veszélyeztetése nélkül. A fennmaradó online eszközökön futó szolgáltatások továbbra is a tartalmat a szolgáltatásból.
-* A teljesítmény növelése. Ha az egyenleg kapcsolatok több eszközön, egyetlen eszközt nincs minden feldolgozás kezelésére. Ehelyett a feldolgozás és a memória iránti igények kielégítése érdekében, de a tartalom megoszlik több eszközön.
+* Elérhetőség növeléséhez. Egyenleg kapcsolatok betölteni a több eszközre, amikor egy vagy több olyan eszközt is elérhetetlenné válik a szolgáltatás veszélyeztetése nélkül. A fennmaradó online eszközökön futó szolgáltatások továbbra is a szolgáltatás a tartalmat szolgálnak ki.
+* Teljesítmény növelése érdekében. Egyenleg kapcsolatok betölteni a több eszközre, amikor egy adott eszköz nincs minden feldolgozás kezelésére. Ehelyett a feldolgozás és a memória a növekvő igények szerint, de a tartalom van elosztva több eszközön.
 
-### <a name="http-based-load-balancing"></a>HTTP-alapú terheléselosztás
-A szervezeteknek, amelyek gyakran futtassa web-alapú szolgáltatások felügyelni kívánt egy HTTP-alapú elosztott terhelésű webes szolgáltatások elé. Ez segít a megfelelő szint teljesítménye és magas rendelkezésre állás biztosítása. Hagyományos, a hálózati terheléselosztók függ a hálózat és az átviteli rétegbeli protokollokkal. HTTP-alapú terheléselosztók, másrészt döntéseket a HTTP protokoll jellemzői alapján.
+### <a name="http-based-load-balancing"></a>HTTP-alapú terheléselosztási
 
-Az Azure Application Gateway HTTP-alapú terheléselosztást biztosít a web-alapú szolgáltatásokhoz. Alkalmazásátjáró támogatja:
+Szervezetek számára, amelyek gyakran webes szolgáltatások futtatásához rendelkeznie egy HTTP-alapú terheléselosztó tartománynévcímkéje webes szolgáltatások igényel. Ez segít a megfelelő szintű teljesítményt és magas rendelkezésre állás biztosítása érdekében. A hagyományos, hálózati terheléselosztók hálózati és az átviteli réteg protokollok támaszkodnak. HTTP-alapú terheléselosztók, másrészről, döntéseket hozhat a HTTP-protokoll jellemzői alapján.
 
-* A munkamenet cookie-alapú kapcsolatot. Ez a funkció gondoskodik arról, hogy a kiszolgálóhoz, hogy a terheléselosztó mögött fennálló kapcsolatok marad az ügyfél és kiszolgáló közötti változatlanok maradnak. Ez biztosítja, hogy a tranzakciók stabilitását.
-* SSL-kiszervezés. Amikor egy ügyfél kapcsolódik a terheléselosztót, hogy munkamenet titkosítva van-e a HTTPS (SSL) protokoll használatával. Azonban ahhoz, hogy a teljesítmény növelése érdekében használhatja a (titkosítatlanul) HTTP protokollal csatlakozni a terheléselosztó és a terheléselosztó mögött a webkiszolgáló között. Ezt nevezzük "SSL kiszervezési", mert a webkiszolgálók, a terheléselosztó mögött a processzor van szükség a titkosítás nem tapasztalnak. A webkiszolgálók is ezért szolgáltatáskérések gyorsabban.
-* URL-alapú tartalom útválasztást. Ez a funkció lehetővé teszi a döntések kapcsolatos Ha a célként megadott URL-címe alapján előre kapcsolatok a terheléselosztóhoz. Ez a mint megoldások, amelyek IP-címek alapján terheléselosztási döntések betöltése sokkal nagyobb rugalmasságot biztosít.
+Az Azure Application Gateway HTTP-alapú terheléselosztást biztosít a webes szolgáltatásokhoz. Az Application Gateway támogatja:
+
+* Cookie-alapú munkamenet-affinitás. Ez a funkció gondoskodik arról, hogy a terheléselosztó mögött a kiszolgálóhoz létesített kapcsolatok változatlan marad, az ügyfél és kiszolgáló közötti marad. Ez biztosítja, hogy a tranzakció stabilitását.
+* SSL-alapú kiszervezés. Amikor egy ügyfél kapcsolódik a terheléselosztóval való, hogy munkamenet a HTTPS (SSL) protokoll használatával titkosítja. Azonban annak érdekében, hogy a teljesítmény növelése érdekében használhatja (titkosítatlanul) HTTP protokollal csatlakozni a terheléselosztó és a terheléselosztó mögött a webkiszolgáló között. Ezt nevezik "SSL-alapú kiszervezést,", mert a webkiszolgálók, a terheléselosztó mögött a processzor terhelését a titkosítással kapcsolatos nem működik. A webkiszolgálók is ezért szolgáltatáskérések időnél gyorsabban van szüksége.
+* URL-alapú tartalom-útválasztás. Ez a funkció megfontoltabb döntéseket hozhat, ha a továbbítási kapcsolatok a célként megadott URL-cím alapján, hogy a terheléselosztó lehetővé teszi. Ez a megoldást kínál, amellyel betölteni a IP-címeken alapuló terheléselosztás döntésekhez, mint sokkal nagyobb rugalmasságot nyújt.
 
 További információ:
 
-* [Átjáró – áttekintés](../application-gateway/application-gateway-introduction.md)
+* [Application Gateway áttekintése](../application-gateway/application-gateway-introduction.md)
 
 ### <a name="network-level-load-balancing"></a>Hálózati szintű terheléselosztás
-HTTP-alapú terheléselosztást, ellentétben a hálózati szintű terheléselosztás döntéseket IP-cím és port (TCP és UDP) számok alapján.
-A előnyöket hálózati szintű terheléselosztás az Azure-ban Azure terheléselosztó használatával. Terheléselosztó néhány főbb jellemzői a következők:
 
-* IP-cím és port számok alapján szint a terheléselosztás.
-* Bármely alkalmazás layer protokoll támogatása.
-* Felhőalapú szolgáltatások szerepkörpéldányokat és egyenlegének betöltése az Azure virtuális gépekhez.
-* Internet felé néző (külső terheléselosztás) és a nem internetes is használható (belső terheléselosztás) alkalmazások és a virtuális gépek.
-* Az Endpoint figyelését, amely azt határozza meg, ha a terheléselosztó mögött szolgáltatások váltak nem érhető el.
+HTTP-alapú terheléselosztási, szakembereket hálózati szintű terheléselosztás döntéseket IP-címet és portot (TCP vagy UDP) számok alapján.
+A hálózati szintű terheléselosztás az Azure-ban az Azure Load Balancer használatával előnyeit is kaphat. Load Balancer néhány főbb jellemzői a következők:
+
+* IP-címet és portot számok alapján hálózati szintű terheléselosztást.
+* Bármely Alkalmazásrétegbeli protokoll támogatása.
+* Az Azure-beli virtuális gépek elosztja a terhelést, és a felhőszolgáltatások szerepkörpéldányok.
+* Internetre irányuló (külső terheléselosztás), mind a kiszolgáló nem internetes is használható (belső terheléselosztás) alkalmazások és a virtuális gépeket.
+* Végponti monitorozását, amely azt határozza meg, ha a terheléselosztó mögötti szolgáltatások váltak nem érhető el.
 
 További információ:
 
-* [Internetre irányuló terheléselosztót között több virtuális gépeket vagy szolgáltatásokat](../load-balancer/load-balancer-internet-overview.md)
-* [Belső terheléselosztó áttekintése](../load-balancer/load-balancer-internal-overview.md)
+* [Internetkapcsolattal rendelkező terheléselosztó több virtuális gép vagy szolgáltatás között](../load-balancer/load-balancer-internet-overview.md)
+* [Belső load balancer áttekintése](../load-balancer/load-balancer-internal-overview.md)
 
-### <a name="global-load-balancing"></a>Globális terheléselosztás
-Egyes szervezetek szeretné lehetséges, hogy a legmagasabb szintű elérhetőség. Egyik e cél eléréséhez módja alkalmazások üzemeltetését globálisan elosztott adatközpontokban. Egy alkalmazás világszerte található adatközpontokban üzemel esetén lehetséges egy teljes geopolitikai régió elérhetetlenné válik, és továbbra is fennáll az alkalmazás, és fut.
+### <a name="global-load-balancing"></a>Terhelés globális kiegyenlítéséhez
 
-A terheléselosztás stratégia is partíciónként akár jobb teljesítményt nyújt. Megadhatja, hogy a szolgáltatás számára az adatközpontban, az eszközre, amelyet a kérés legközelebb esik kérelmeket.
+Egyes szervezetek szeretnék a legmagasabb szintű rendelkezésre állást lehetséges. Egyik módja a cél eléréséhez az alkalmazások üzemeltetését a globálisan elosztott adatközpontokban. Egy alkalmazás a világ számos részén található adatközpontokban üzemeltetett, esetén lehetséges egy teljes geopolitikai régió elérhetetlenné válik, és továbbra is az alkalmazás és futnak.
 
-Az Azure ettől kezdve az Azure Traffic Manager globális terheléselosztást előnyeit.
+Ez a terheléselosztó stratégia költségmegtakarítással járhat az teljesítmény előnyeit. A szolgáltatás számára az adatközpontot, amelyben azt az eszközt, hogy a kérés küldője kérelmek irányíthatók.
+
+Az Azure-ban a terhelés globális kiegyenlítéséhez az Azure Traffic Manager előnyeit is kaphat.
 
 További információ:
 
 * [A Traffic Manager ismertetése](../traffic-manager/traffic-manager-overview.md)
 
-
 ## <a name="name-resolution"></a>Névfeloldás
-Névfeloldás, akkor minden szolgáltatás Azure működteti a kritikus függvény. Biztonsági szempontból sérült biztonság esetén a név feloldása függvény a helyek egy támadó helyhez kérelmeinek átirányítása egy támadó vezethet. Biztonságos névfeloldás feltétele a felhőben üzemeltetett szolgáltatások.
 
-Végre kell hajtania névfeloldás két típusa van:
+Névfeloldás, akkor egy kritikus fontosságú függvény üzemeltetése az Azure-szolgáltatásokhoz. Biztonsági szempontból a a név feloldása függvény biztonságának sérüléséhez vezethet a támadó helyre a helyekről kérések átirányítása a támadó. Biztonságos névfeloldás az összes üzemeltetett felhőalapú szolgáltatás működik.
 
-* Belső névfeloldást. A szolgáltatások a virtuális hálózatok, a helyszíni hálózatokhoz vagy mindkettőt használja. A belső névfeloldáshoz használt nevek nem érhetők el az interneten keresztül. Optimális biztonsági fontos, hogy a belső név feloldása séma nem érhető el a külső felhasználók számára.
-* Külső névfeloldás. Ez szolgál, személyek és az eszközök a helyszíni hálózatokhoz és a virtuális hálózatok kívül. Ezek a jelenik-e az internethez, és segítségével a kapcsolatot a felhő alapú szolgáltatások neveit.
+Teljesítendő névfeloldás két típusa van:
 
-A belső névfeloldást két lehetőség közül választhat:
+* Belső névfeloldást. Ez a virtuális hálózatok, a helyszíni hálózat vagy mindkettő szolgáltatások használják. Belső névfeloldást használt nevek nem érhetők el az interneten keresztül. Az optimális biztonság biztosítása érdekében fontos, hogy a belső név feloldása séma nem érhető el a külső felhasználók számára.
+* Külső név feloldása. Ezt használja a helyszíni hálózatok és virtuális hálózatok kívüli személyekkel és eszközökkel. Ezek azok a nevek, látható az internethez, és a felhőalapú szolgáltatásokhoz való kapcsolat irányíthatók.
 
-* A virtuális hálózat DNS-kiszolgáló. Amikor létrehoz egy új virtuális hálózat, a DNS-kiszolgáló létrejön. A DNS-kiszolgáló képes névfeloldásra a gépet a virtuális hálózat található. A DNS-kiszolgáló nem konfigurálható, az Azure-hálót manager kezeli, és ezért segítségével biztosíthatja az a név feloldása megoldás.
-* Kapcsolja a saját DNS-kiszolgáló. Lehetősége van a saját kiválasztása a virtuális hálózat DNS-kiszolgáló helyezésének. A DNS-kiszolgáló lehet egy Active Directory integrált DNS-kiszolgáló vagy egy dedikált DNS-kiszolgáló megoldást, amely az Azure piactérről szerezhető be egy Azure partner által biztosított.
+Belső névfeloldást két lehetősége van:
+
+* Virtuális hálózat DNS-kiszolgáló. Amikor létrehoz egy új virtuális hálózatot, egy DNS-kiszolgáló jön létre az Ön számára. A DNS-kiszolgáló fel tudja oldani az adott virtuális hálózaton található gépek nevei. A DNS-kiszolgáló nem konfigurálható, az Azure fabric manager kezeli, és ezért hozzájárulhat a név feloldása megoldás.
+* A saját DNS-kiszolgáló használata. Lehetősége van a DNS-kiszolgáló a saját kiválasztása a virtuális hálózaton üzembe. A DNS-kiszolgáló lehet egy Active Directory integrált DNS-kiszolgáló vagy egy dedikált DNS server megoldásának része, amelyet egy Azure-partner, amely az Azure piactérről szerezhető be.
 
 További információ:
 
-* [Virtual network áttekintése](../virtual-network/virtual-networks-overview.md)
-* [A virtuális hálózat által használt DNS-kiszolgálók kezelése](../virtual-network/manage-virtual-network.md#change-dns-servers)
+* [A Virtual network áttekintése](../virtual-network/virtual-networks-overview.md)
+* [Virtuális hálózat által használt DNS-kiszolgálók kezelése](../virtual-network/manage-virtual-network.md#change-dns-servers)
 
-A külső névfeloldáshoz két lehetőség közül választhat:
+Külső névfeloldás két lehetősége van:
 
-* A saját külső DNS kiszolgáló a helyi gazdagép.
-* A saját külső DNS-kiszolgáló üzemeltetésére szolgáltató.
+* A saját külső DNS kiszolgáló helyszíni gazdagépekre.
+* A saját külső DNS-kiszolgáló üzemeltetése egy szolgáltatónál.
 
-Sok nagy méretű szervezeteknek saját DNS kiszolgálók helyszíni üzemeltetésére. Ez akkor végezhető el, mert a hálózati szakértelmét és a globális jelenlét ehhez.
+Számos nagyméretű szervezet saját DNS kiszolgálók a helyszíni gazdagépekre. Ehhez a hálózati szakértelemmel és a globális jelenlét ehhez mert.
 
-A legtöbb esetben érdemes szolgáltató a DNS-név feloldása szolgáltatások futtatásához. Ezek a szolgáltatók rendelkezik, a hálózati szakértelmét és a globális jelenlét a névfeloldási szolgáltatásokat nagyon magas rendelkezésre állásának biztosításához. Rendelkezésre állási alapvető fontosságú a DNS-szolgáltatásokra, mert ha meghibásodik a névfeloldási szolgáltatást, nem fogja tudni elérni az internetes szolgáltatások.
+A legtöbb esetben érdemes futtatni a DNS-névfeloldási szolgáltatást egy szolgáltatónál. Ezek a szolgáltatók rendelkezik a hálózati szakértelemmel és a globális jelenlét a névfeloldási szolgáltatást nagyon magas rendelkezésre állásának biztosításához. Rendelkezésre állási elengedhetetlen a DNS-szolgáltatások esetében, mert ha meghibásodik a névfeloldási szolgáltatást, senki nem tudja elérni az internetkapcsolattal rendelkező szolgáltatások.
 
-Azure biztosít, a magas rendelkezésre állású és performant külső DNS-megoldást az Azure DNS formájában. A külső név feloldása megoldás kihasználja a világ Azure DNS-infrastruktúra. Lehetővé teszi a tartomány ugyanazon hitelesítő adatokkal, API-k, eszközök segítségével, és az egyéb Azure-szolgáltatások, számlázási, az Azure-ban. Az Azure részeként a platform épített erős biztonsági ellenőrzéseket is örököl.
+Az Azure biztosít egy magas rendelkezésre állású, nagy teljesítményű külső DNS-megoldás az Azure DNS formájában. Ez a külső megoldás a megoldás a világszerte az Azure DNS-infrastruktúra kihasználja. Ez lehetővé teszi, hogy üzemeltessen saját tartományt az Azure-ban, azonos hitelesítő adatokkal, API-kkal, eszközökkel és az egyéb Azure-szolgáltatások számlázási információkkal. Az Azure részeként a platform erős biztonsági ellenőrzéseket is örökli.
 
 További információ:
 
 * [Az Azure DNS áttekintése](../dns/dns-overview.md)
+* [Az Azure DNS saját zónáival kapcsolatos](../dns/private-dns-overview.md) konfigurálhatja az Azure-erőforrásokhoz a privát DNS-nevek helyett az automatikusan hozzárendelt nevét, adjon hozzá egy egyéni DNS-megoldás nélkül.
 
-## <a name="perimeter-network-architecture"></a>Külső hálózati architektúra
-Sok nagy méretű szervezeteknek szegélyhálózat használjon szegmentálja a hálózatokon, és az internethez és a szolgáltatások közötti puffer-zóna létrehozása. A hálózaton, a peremhálózati része egy alacsony biztonsági szintű zónában minősül, és nem kiemelten értékesnek kerülnek, az adott hálózati szegmensben. Látni fogja, általában egy adott hálózati csatoló a külső hálózati szegmensen rendelkező hálózati biztonsági eszközöket. Egy másik hálózati adapter csatlakozik-e a hálózathoz, virtuális gépek és szolgáltatások, amelyek az internetről bejövő kapcsolatok fogadására.
+## <a name="perimeter-network-architecture"></a>Szegélyhálózat-alapú hálózati architektúra
 
-Számos különböző módon a szegélyhálózat kialakítani. A döntést és központi telepítése a szegélyhálózaton, majd szegélyhálózati milyen típusú hálózati használata, ha úgy dönt, hogy használja, attól függ, hogy a hálózati biztonsági követelményeinek.
+Számos nagyméretű szervezet szegmentálása azok hálózatok peremhálózatokon használja, és az internet és szolgáltatásaik között puffer-zóna létrehozása. A hálózati peremhálózati részének számít egy alacsony biztonsági szintű zónában, és nem nagy értékű eszközök kerülnek, a hálózati szegmenst. Általában látni fog egy hálózati adaptert a szegélyhálózat-alapú hálózati szegmensen rendelkező hálózati biztonsági eszközöket. Egy másik hálózati adapter csatlakoztatva van egy hálózathoz, amelyen a virtuális gépek és szolgáltatások, amelyek fogadják az internetről bejövő kapcsolatokat.
+
+Számos különböző módon a szegélyhálózat is tervezhet. A döntést, üzembe helyezéséhez a szegélyhálózaton, majd peremhálózati milyen típusú hálózati használhat, ha úgy dönt, hogy használja, attól függ, hogy a hálózati biztonsági követelmények teljesítéséhez.
 
 További információ:
 
-* [A Microsoft Felhőszolgáltatásai és a hálózati biztonság](../best-practices-network-security.md)
+* [A Microsoft Cloud Services és a hálózati biztonság](../best-practices-network-security.md)
 
+## <a name="monitoring-and-threat-detection"></a>Figyelés és a fenyegetésészlelés
 
-## <a name="monitoring-and-threat-detection"></a>Figyelés és a fenyegetések észlelése
-
-Azure segítséget nyújt a korai észlelése, figyelés, a kulcsfontosságú terület képességeket biztosít, és a hálózati forgalom gyűjtése és ellenőrzése.
+Azure segíti a korai észlelését, figyelés, a kulcs területen képességeket biztosít, és a hálózati forgalom gyűjtése és ellenőrzése.
 
 ### <a name="azure-network-watcher"></a>Azure Network Watcher
-Az Azure hálózati figyelőt segíthet elhárításában, és teljesen új biztonsági problémákat azonosítása eszközöket biztosít.
 
-[Biztonsági csoport megtekintése ](../network-watcher/network-watcher-security-group-view-overview.md) elősegíti a virtuális gépek naplózási és biztonsági megfelelőségét. E szolgáltatás használatával hajtsa végre a programozott eseményeket, a baseline házirendek, a virtuális gépek mindegyikének hatékony szabályokra a szervezet által meghatározott összehasonlítása. Ez segít azonosítani a konfigurációs eltéréseket.
+Az Azure Network Watcher segíthet a hiba elhárításához és a egy teljesen új eszközök, amelyek segítik a biztonsági problémák azonosítása biztosít.
 
-[Csomagrögzítéssel](../network-watcher/network-watcher-packet-capture-overview.md) lehetővé teszi a hálózati forgalmat a virtuális gép rögzítése. Hálózati statisztikákat gyűjt, és elhárítása alkalmazás, amely lehet hasznos információt a hálózati behatolások vizsgálata során. Ez a szolgáltatás együtt az Azure Functions segítségével indítsa el a hálózati rögzítést adott Azure riasztás.
+[Biztonsági csoport nézet](../network-watcher/network-watcher-security-group-view-overview.md) segít a naplózási és biztonsági megfelelőségi a virtuális gépek. Ez a funkció segítségével végezze el a programozott eseményeket, a baseline szabályzatokat az egyes virtuális gépek hatékony szabályokat a szervezet által meghatározott összehasonlítása. Ez segíthet azonosítani a konfigurációs eltéréseket.
 
-A hálózati figyelőt és teszteléséhez egyes szolgáltatásai a tesztkörnyezetek indítása további információkért lásd: [figyelési áttekintés Azure hálózati figyelőt](../network-watcher/network-watcher-monitoring-overview.md).
+[A csomagrögzítés](../network-watcher/network-watcher-packet-capture-overview.md) lehetővé teszi, hogy a hálózati forgalmat a virtuális gép rögzítése. Hálózati statisztikákat gyűjthet, és hibaelhárítás alkalmazás, amely lehet a hálózati behatolásokat vizsgálata során hasznos információt. Ez a funkció együtt az Azure Functions használatával hálózati adott Azure-riasztásokra adott válaszként indítandók.
+
+További információ a Network Watcher és tesztelése a funkciók némelyike a gyakorlatot elindítása: [Figyelés áttekintése az Azure network watcher](../network-watcher/network-watcher-monitoring-overview.md).
 
 >[!NOTE]
-A rendelkezésre állás és a szolgáltatás állapotát a legfrissebb értesítések, tekintse meg a [Azure frissítések lap](https://azure.microsoft.com/updates/?product=network-watcher).
+A legfrissebb értesítésekért rendelkezésre állás és a szolgáltatás állapotát, ellenőrizze a [Azure frissítéseit tartalmazó lapon](https://azure.microsoft.com/updates/?product=network-watcher).
 
 ### <a name="azure-security-center"></a>Azure Security Center
-Az Azure Security Center segít a megakadályozása, észlelésében és kezelésében fenyegetések, és biztosítja, hogy lássák, és szabályozhatják, az Azure-erőforrások biztonságának nőtt. Biztosít integrált biztonsági monitorozást és az Azure-előfizetésekkel, megkönnyíti a nehezen észlelhető fenyegetések azonosítását szabályzatkezelést, és számos biztonsági megoldással együttműködik.
 
-A Security Center segítséget nyújt a optimalizálása és hálózati biztonsági által figyelni:
+Az Azure Security Center segít megelőzését, észlelését és háríthatja el a fenyegetéseket, és biztosít, nagyobb betekintést, és szabályozhatja, az Azure-erőforrások biztonságát. Az Azure-előfizetések integrált biztonsági monitorozást és felügyeletet biztosít, megkönnyíti a nehezen észlelhető fenyegetések azonosítását szabályzatkezelést, és együttműködik a biztonsági megoldások nagy készletét.
+
+A Security Center segítségével optimalizálásához, figyeléséhez, a hálózati biztonság:
 
 * Hálózati biztonsági javaslatok biztosítása.
-* A hálózati biztonsági konfiguráció állapotának figyelése.
-* Fenyegetések, mind a végpont és a hálózati szintű küld figyelmeztetést a hálózati alapján.
+* A hálózati biztonsági konfiguráció állapotát figyeli.
+* Értesíti Önt hálózati alapú fenyegetések, mind a végpont és a hálózati szinten.
 
 További információ:
 
 * [Az Azure Security Center bemutatása](../security-center/security-center-intro.md)
 
-
 ### <a name="logging"></a>Naplózás
-Hálózati szintű naplózási, akkor egy olyan hálózati biztonsági forgatókönyv kulcs függvény. Az Azure bejelentkezhet NSG-ket a hálózati szint naplózási adatok eléréséhez használt információkat. Az NSG-naplózást is, olvasható be a következőről:
 
-* [Tevékenységi naplóit](../monitoring-and-diagnostics/monitoring-overview-activity-logs.md). Ezek a naplók segítségével megtekintheti az Azure-előfizetések küldve minden műveletnél. Ezek a naplók alapértelmezés szerint engedélyezve vannak, és használhatja az Azure-portálon. Ezek volt korábbi nevén naplózási és a műveleti naplókat.
-* Eseménynaplók. Ezek a naplók milyen NSG-szabályok alkalmazott ismertetik.
-* A számláló naplókat. Ezek a naplók lehetővé teszik, hogy tudja, hogy hányszor minden NSG-szabály alkalmazása a forgalom engedélyezése vagy megtagadása.
+Naplózási hálózati szintjén minden olyan hálózati biztonsági forgatókönyv a fő függvény. Az Azure-ban bejelentkezhet az NSG-ket hálózati szintű naplózási adatok beszerzése kapott adatok alapján. NSG-naplózást, információkat a következőket kínálja:
 
-Is [Microsoft Power BI](https://powerbi.microsoft.com/what-is-power-bi/), hatékony képi megjelenítés eszköz megtekintése, és ezek a naplók elemzése.
+* [A Tevékenységnaplók](../monitoring-and-diagnostics/monitoring-overview-activity-logs.md). Ezek a naplók segítségével megtekintheti az Azure-előfizetést, elküldött összes műveletet. Ezek a naplók alapértelmezés szerint engedélyezve vannak, és az Azure Portalon is használható. Akkor is korábbi nevén naplózási vagy a műveleti naplókban.
+* Az eseménynaplókat. Ezek a naplók milyen NSG-szabályok alkalmazott adatainak megadása.
+* A számláló naplókat. Ezek a naplók lehetővé teszik, hogy az egyes NSG-szabály lett alkalmazva megtagadhatja vagy engedélyezheti a forgalom hány alkalommal.
+
+Is [Microsoft Power BI](https://powerbi.microsoft.com/what-is-power-bi/), egy hatékony adatvizualizációs eszköz, megtekintése és a naplók elemzéséhez.
+További információ:
+
+* [Naplóelemzés hálózati biztonsági csoportok (NSG-k)](../virtual-network/virtual-network-nsg-manage-log.md)
+
+
+## <a name="azure-ddos-protection"></a>Azure DDoS Protection
+
+Az elosztott szolgáltatásmegtagadási (DDoS-) támadásokat néhány a legnagyobb rendelkezésre állással és biztonsággal kapcsolatos aggályokat rendelkező ügyfelek számára a saját alkalmazásait a felhőbe áthelyezni. A DDoS-támadások próbál lefoglalhat egy alkalmazás-erőforrások, így az alkalmazás nem érhető el a jogosult felhasználók számára. DDoS-támadások célozhatják bármely, amely az interneten keresztül nyilvánosan elérhető végponton.
+A Microsoft biztosítja a DDoS protection néven **alapszintű** az Azure Platform részeként. Ez díjmentesen érhető el, és mindig tartalmazza a figyelési és valós idejű csökkenti a közös hálózati szintű támadásoktól. Mellett a védelmet, a DDoS protection részét képező **alapszintű** engedélyezheti a **Standard** lehetőséget. A DDoS Protection Standard funkciók:
+
+* **Natív platformintegráció:** natív módon integrált Azure-bA. Az Azure Portalon keresztül konfigurációit is beleértve. A DDoS Protection Standard tisztában van azzal erőforrásait és erőforrás-konfigurációhoz.
+* **Kulcsrakész védelem:** egyszerűsített konfiguráció azonnal védelmet biztosít egy virtuális hálózaton lévő összes erőforrást, amint a DDoS Protection Standard van engedélyezve. Nincs beavatkozás vagy a felhasználó megadása nem kötelező. A DDoS Protection Standard azonnal és automatikusan csökkenti a támadási után a rendszer azt észlelte.
+* **Mindig forgalomfigyelést:** az alkalmazás forgalmi mintázatait figyelt 24 óránként, naponta, a hét, DDoS-támadások kijelzőjét keres. Kockázatcsökkentési alkalmazásvédelmi szabályzatok túllépése esetén történik.
+* **Adaptív hangolás:** intelligens adatforgalom-profilkészítés képes megtanulni az alkalmazás forgalmának idővel, és kiválasztja, és frissíti a profilt, amely a szolgáltatás a legmegfelelőbb. A profil módosítja, a forgalom változik az idő múlásával. 3. rétegbeli 7. rétegbeli Protection: teljes verem DDoS elleni védelem, biztosít egy webalkalmazási tűzfallal rendelkező használatakor.
+* **Széles körű kockázatcsökkentési méretezési:** 60 feletti különböző támadási típusok enyhíthető, globális kapacitással, a legnagyobb ismert DDoS-támadásokkal szembeni védelem érdekében.
+* **Metrikák támadási:** minden támadástól Summarized metrikák érhetők el Azure monitoron keresztül.
+* **A támadás riasztási:** riasztások konfigurálhatók a kezdő és a egy támadás leállítása és a támadás időtartama alatt a beépített támadási mérőszámok segítségével. Riasztások integrálható a működési szoftver a Microsoft Azure Log Analytics, Splunk, Azure Storage, e-mailek és az Azure Portalon.
+* **A Cost garancia:** adatátviteli és az alkalmazás horizontális felskálázás szolgáltatásokhoz biztosított kreditek a dokumentált DDoS-támadások.
 
 További információ:
 
-* [Naplóelemzési a hálózati biztonsági csoportokkal (NSG-k)](../virtual-network/virtual-network-nsg-manage-log.md)
+* [A DDOS protection áttekintése](../virtual-network/ddos-protection-overview.md)

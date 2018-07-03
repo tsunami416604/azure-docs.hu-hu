@@ -1,6 +1,6 @@
 ---
-title: Az Azure piactér és AppSource előnyben részesített megoldás
-description: A piactéren, és hogyan van kiválasztva előnyben részesített megoldás áttekintése
+title: Az Azure Marketplace és AppSource javasolt megoldásokat
+description: A Marketplace-en, és hogyan kiválasztott előnyben részesített megoldások áttekintése
 services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
 documentationcenter: ''
 author: ellacroi
@@ -14,15 +14,15 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 06/27/2018
 ms.author: ellacroi
-ms.openlocfilehash: 727c1e5095f875151c6d6e94ec013fa4dba6c1ba
-ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
+ms.openlocfilehash: cee313f2f648de987fde8c769435264048a12eff
+ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37116121"
+ms.lasthandoff: 07/02/2018
+ms.locfileid: "37344029"
 ---
-#<a name="preferred-solutions-in-azure-marketplace-and-appsource"></a>Az Azure piactér és AppSource előnyben részesített megoldás
+# <a name="preferred-solutions-in-azure-marketplace-and-appsource"></a>Előnyben részesített megoldások az Azure Marketplace és appsource-ban
 
-A Microsoft ajánlott megoldás a felhőalapú alkalmazások a minőség, a teljesítmény és a cím ügyfelek igényeinek megfelelően adott területen iparági függőleges vagy megoldás képes a kiválasztott. Microsoft iparág és értékesítési szakértők csapata megoldások kiválasztja azokat a Microsoft Partner Network [arany tagsági](https://partner.microsoft.com/en-us/membership/core-benefits) partnerek. Ezek a megoldások jogosultak a felhő piactér kirakatokkal a kiemeli. Az ügyfelek megkeresi az iparág ajánlott megoldások kiemelt AppSource iparági oldalain, amíg munkaterhelés előnyben részesített megoldások Azure piactér bekerülhet számos. 
+A Microsoft előnyben részesített megoldás, a minőség, a teljesítmény és a cím ügyféligények iparági függőleges vagy megoldás Megyek lehetővé teszi a kiválasztott felhőalapú alkalmazások. A Microsoft iparági és értékesítési szakértőkből álló csapat megoldások kiválasztja a Microsoft Partner Network [arany csoporttagság](https://partner.microsoft.com/en-us/membership/core-benefits) partnerek. Ezek a megoldások jogosultak a felhőbeli piactér kirakattípus a keresőmotorját. Ügyfelek megtalálja az előnyben részesített iparági megoldások kiemelt AppSource iparági oldalain, míg a számítási feladatok előnyben részesített megoldás lehet, hogy kiemelt Azure Marketplace-en számos. 
 
-Microsoft együttműködhetnek ezek a szolgáltatók a közös értékesítés és marketing kapcsolattartás során. Microsoft kapcsolatba lép a megoldásszolgáltatók közül egy vagy több megoldásuk kijelölt előnyben részesített badging. 
+A Microsoft e szolgáltatók együttműködhetnek a marketing és értékesítés marketingmódszerek közös. A Microsoft kapcsolatba lép a szolgáltatást nyújtó vállalkozásoknak, ha egy vagy több megoldásaikat az előnyben részesített badging lett kiválasztva. 

@@ -1,9 +1,9 @@
 ---
-title: Figyelés és az Azure Cosmos DB a metrikák hibakeresés |} Microsoft Docs
-description: Az Azure Cosmos Adatbázisba mérőszámok segítségével gyakori problémák hibakeresését, és figyelheti az adatbázis.
+title: Figyeléséről és hibakereséséről mérőszámok az Azure Cosmos DB |} A Microsoft Docs
+description: Az Azure Cosmos DB metrikák használatával kapcsolatos gyakori problémák megoldásában, és figyelheti az adatbázis.
 keywords: metrics
 services: cosmos-db
-author: gnot
+author: kanshiG
 manager: kfile
 editor: ''
 ms.service: cosmos-db
@@ -11,65 +11,65 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/25/2017
 ms.author: govindk
-ms.openlocfilehash: 5f6852de2c09e3de9375a2cb5d73f052ac68f039
-ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
+ms.openlocfilehash: 9b9f72812b1a1f0e30379c32e10d316fcbf71d3b
+ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37100572"
+ms.lasthandoff: 07/02/2018
+ms.locfileid: "37345589"
 ---
-# <a name="monitoring-and-debugging-with-metrics-in-azure-cosmos-db"></a>Figyelés és az Azure Cosmos DB a metrikák hibakeresés
+# <a name="monitoring-and-debugging-with-metrics-in-azure-cosmos-db"></a>Figyelés és az Azure Cosmos DB metrikákkal hibakeresés
 
-Azure Cosmos DB átviteli, a tárolás, a konzisztencia, a rendelkezésre állási és a késleltetés metrikákat biztosít. A [Azure-portálon](https://portal.azure.com) összesített nézete a metrikák; részletesebb metrika, mind az ügyfél SDK és a [diagnosztikai naplók](./logging.md) érhetők el.
+Az Azure Cosmos DB mérőszámait átviteli sebesség, a storage, a konzisztencia, a rendelkezésre állás és a késés. A [az Azure portal](https://portal.azure.com) összesített nézete metrikák; a részletes metrikákért, mind az ügyfél SDK-t és a [diagnosztikai naplók](./logging.md) érhetők el.
 
-Az új mérőszámok áttekintést kaphat, és ismerje meg a keresési működés közbeni partíciók az adatbázisban, tekintse meg a következő Azure péntek videót:
+Az új mérőszámok áttekintése, és ismerje meg a keresés forró partíciók az adatbázisban, a következő videó az Azure Friday:
 
 > [!VIDEO https://channel9.msdn.com/Shows/Azure-Friday/Azure-Cosmos-DB-Get-the-Most-Out-of-Provisioned-Throughput/player]
 > 
 
-Ez a cikk végigvezeti a gyakori használati esetek és hogyan Azure Cosmos DB mérőszámok segítségével elemezheti és a problémák hibakeresését. Metrikák 5 percenként összegyűjtött, és hét napig megőrződnek.
+Ez a cikk végigvezeti a gyakori használati esetek és hogyan az Azure Cosmos DB-metrikák elemzéséhez, és ezeket a problémákat hibakeresés használható. Metrikák legyenek gyűjtve 5 percenként, és hét napig megőrződnek.
 
-## <a name="understanding-how-many-requests-are-succeeding-or-causing-errors"></a>Az ismertetése, hogy hány kérésnek sikeresen lezajlottak vagy okozó hibák
+## <a name="understanding-how-many-requests-are-succeeding-or-causing-errors"></a>Hány kérésnek sikeres, vagy hibát okozó ismertetése
 
-A kezdéshez keressen fel a [Azure-portálon](https://portal.azure.com) , és keresse meg a **metrikák** panelen. A panelen keresse meg a **kérések száma meghaladja a kapacitását / 1 perc** diagram. Ezen a diagramon látható egy perc által perc összes kérelem szegmentált által az állapotkód. További információ a HTTP-állapotkódok: [HTTP-állapotkódok Azure Cosmos DB](https://docs.microsoft.com/rest/api/cosmos-db/http-status-codes-for-cosmosdb).
+A kezdéshez lépjen a [az Azure portal](https://portal.azure.com) , és keresse meg a **metrikák** panelen. A panelen keresse meg a **kérelmek száma túllépte a kapacitást 1 percenként** diagram. Ez a diagram egy perces által percenként összes kérelmet az állapotkódot alapján szegmentált jeleníti meg. HTTP-állapotkódok kapcsolatos további információkért lásd: [HTTP-állapotkódok az Azure Cosmos DB](https://docs.microsoft.com/rest/api/cosmos-db/http-status-codes-for-cosmosdb).
 
-A leggyakoribb állapot hibakód 429 (korlátozása/szabályozás értékelje), ami azt jelenti, hogy az Azure Cosmos Adatbázishoz kérelmek túllépte a létesített átviteli sebesség. Ez a leggyakrabban használt megoldás [növelheti a RUs](./set-throughput.md) az adott gyűjtemény.
+A leggyakoribb állapot hibakód 429-es (korlátozza/szabályozási értékelje), ami azt jelenti, hogy az Azure Cosmos DB-kérelmek meghaladják a kiosztott átviteli sebesség. Ez a leggyakoribb megoldás az, hogy [vertikális felskálázás a RUs](./set-throughput.md) az adott gyűjtemény számára.
 
-![Percenként kérelmek száma](media/use-metrics/metrics-12.png)
+![Percenkénti kérések száma](media/use-metrics/metrics-12.png)
 
-## <a name="determining-the-throughput-distribution-across-partitions"></a>Az átviteli sebesség terjesztési közötti partíciók meghatározása
+## <a name="determining-the-throughput-distribution-across-partitions"></a>Partíciók között az átviteli sebesség terjesztési meghatározása
 
-A partíciós kulcsok jó számosságuk rendelkező elengedhetetlen méretezhető alkalmazásokat. Annak megállapításához, a partíciók bontásban particionált gyűjtemény átviteli terjesztése, navigáljon a **metrikák panel** a a [Azure-portálon](https://portal.azure.com). Az a **átviteli** lapon, a tárolási lebontása látható a **RU/mp összes fizikai partíció által felhasznált maximális** diagram. A következő ábra a kihasználtságot partíció bal igazolt adatok gyenge terjesztési mutatja be. 
+A partíciókulcsok egy jó számossága kellene elengedhetetlen bármilyen méretezhető alkalmazást. Annak megállapításához, partíciók bontásban particionált gyűjtemény átviteli elosztását, keresse meg a **metrikák paneljén** a a [az Azure portal](https://portal.azure.com). Az a **átviteli** lapon jelenik meg a storage táblázat összefoglalja a **maximálisan felhasznált RU/s egyes fizikai partíciók által** diagram. A következő ábrán az adatok a bal szélső magokon partíció igazolt gyenge terjesztési példáját mutatja be. 
 
-![Az egypartíciós jelent a nagy mennyiségű használati du. 3:05:](media/use-metrics/metrics-17.png)
+![Egypartíciós jelennek meg (nagy erőforrásigényű) használati du. 3:05:](media/use-metrics/metrics-17.png)
 
-Az egyenetlen átviteli terjesztési okozhat *működés közbeni* partíciók, amely szabályozottan halmozott kérelmeket eredményezhet, és úgy lehet szükség. Az Azure Cosmos Adatbázisba partícionálásra vonatkozó további információkért lásd: [partíció és a skála Azure Cosmos DB](./partition-data.md).
+Az egyenetlen átviteli terjesztési okozhat *gyakori elérésű* partíció, amely szabályozott kérelmeinek eredményezhet, és újraparticionálása lehet szükség. Az Azure Cosmos DB particionálási kapcsolatos további információkért lásd: [particionálási és horizontális az Azure Cosmos DB](./partition-data.md).
 
-## <a name="determining-the-storage-distribution-across-partitions"></a>A tároló terjesztési közötti partíciók meghatározása
+## <a name="determining-the-storage-distribution-across-partitions"></a>A tároló terjesztési meghatározása a partíciók között
 
-A partíció jó számosságuk rendelkező elengedhetetlen méretezhető alkalmazásokat. Annak megállapításához, a partíciók bontásban particionált gyűjtemény átviteli terjesztése, keressen fel a metrikák paneljén a [Azure-portálon](https://portal.azure.com). Az átviteli sebesség lapon tárolási bontásban tartalmazza a Max RU/mp használni minden fizikai partíció diagram jelenik meg. A következő ábra mutatja be az adatok a kihasználtságot partíció bal igazolt gyenge terjesztési. 
+A partíció egy jó számossága kellene elengedhetetlen bármilyen méretezhető alkalmazást. Annak megállapításához, partíciók bontásban particionált gyűjtemény átviteli eloszlása, a metrikák paneljén lépjen az [az Azure portal](https://portal.azure.com). Az átviteli sebesség lapon tárolási táblázat összefoglalja a által maximálisan felhasznált RU/s minden egyes fizikai partíciók diagramon látható. A következő ábra mutatja be a bal szélső magokon partíció igazolt adatok gyenge eloszlása. 
 
-![Gyenge adatok terjesztési – példa](media/use-metrics/metrics-07.png)
+![Gyenge adatelosztás – példa](media/use-metrics/metrics-07.png)
 
-Gyökérok is mely partíciós kulcs van döntés eloszlását a diagram a partíción kattintva. 
+Gyökérok is melyik partíciókulcs a partíció a diagram kattintva van eltorzítják a terjesztési. 
 
-![Partíciós kulcs van döntés a terjesztési](media/use-metrics/metrics-05.png)
+![Partíciós kulccsal van eltorzítják a terjesztés](media/use-metrics/metrics-05.png)
 
-Miután mely partíciókulcs azonosítása a terjesztési okoz a döntés, előfordulhat, hogy particionálni a gyűjtemény több elosztott partíciós kulccsal. Az Azure Cosmos Adatbázisba partícionálásra vonatkozó további információkért lásd: [partíció és a skála Azure Cosmos DB](./partition-data.md).
+Melyik partíciós kulcs azonosítja a terjesztési okoz a döntés, előfordulhat, hogy után a gyűjtemény újraparticionálni több elosztott partíciós kulccsal. Az Azure Cosmos DB particionálási kapcsolatos további információkért lásd: [particionálási és horizontális az Azure Cosmos DB](./partition-data.md).
 
-## <a name="comparing-data-size-against-index-size"></a>Adatok mérete alapján index mérete összehasonlítása
+## <a name="comparing-data-size-against-index-size"></a>Index mérete alapján adatméret összehasonlítása
 
-Az Azure Cosmos Adatbázisba a teljes felhasznált tárterület az adatok mérete és az Index mérete. Az index mérete általában egy azon részét, az adatok mérete. A metrikák paneljén található a [Azure-portálon](https://portal.azure.com), a tárolás lapon bontásban tartalmazza az adatokat és az index alapján tárhelyhasználatot bővíthető. Kép (lehet, hogy) azt is megteheti, az SDK-ból található keresztül olvassa el a gyűjtemény aktuális tárolási felhasználásának mértéke.
+Az Azure Cosmos DB a teljes felhasznált tárterület mérete az adatok mérete és a Index mérete együttes használata. Az index mérete általában egy töredékét, az adatok mérete. A metrikák paneljén, az a [az Azure portal](https://portal.azure.com), a tárolás lapon bemutatja az adatok és index alapján tárhelyhasználat áttekintését. Kép (esetleg) azt is megteheti, SDK, annak keresztül egy gyűjteményt, olvassa el a jelenlegi tárolási használata.
 ```csharp
 // Measure the document size usage (which includes the index size)  
 ResourceResponse<DocumentCollection> collectionInfo = await client.ReadDocumentCollectionAsync(UriFactory.CreateDocumentCollectionUri("db", "coll")); 
  Console.WriteLine("Document size quota: {0}, usage: {1}", collectionInfo.DocumentQuota, collectionInfo.DocumentUsage);
 ``` 
-Ha azt szeretné, index lemezterületet takarítson meg, beállíthatja a [házirend indexelő](./indexing-policies.md).
+Ha index megtakarítása érdekében szeretné, módosíthatja a [indexelési szabályzat](./indexing-policies.md).
 
-## <a name="debugging-why-queries-are-running-slow"></a>Ezért lekérdezések lassú futnak hibakeresés
+## <a name="debugging-why-queries-are-running-slow"></a>Hibakeresés miért lekérdezések lassan futnak
 
-Az SQL API SDK-k Azure Cosmos DB lekérdezés végrehajtási statisztika biztosít. 
+Azure Cosmos DB SQL API SDK-k, lekérdezés-végrehajtási statisztikák biztosít. 
 
 ```csharp
 IDocumentQuery<dynamic> query = client.CreateDocumentQuery(
@@ -88,11 +88,11 @@ FeedResponse<dynamic> result = await query.ExecuteNextAsync();
 IReadOnlyDictionary<string, QueryMetrics> metrics = result.QueryMetrics;
 ```
 
-*QueryMetrics* részleteit mennyi ideig a lekérdezés minden összetevő-tartott a végrehajtása. A leggyakrabban használt alapvető ok hosszú futtatásához lekérdezések vizsgálatok (a lekérdezés nem tudta használni a indexek), amely lehet oldott fel egy jobb szűrési feltételt.
+*QueryMetrics* részletesen végrehajtása mennyi ideig egyes összetevői a lekérdezés által tartott. A leggyakoribb kiváltó sokáig futó lekérdezések vizsgálatok (a lekérdezés nem tudta használhatja az indexeket), amely feloldható egy jobb szűrő feltétellel.
 
 ## <a name="next-steps"></a>További lépések
 
-Most, hogy megismerte figyelése és az Azure-portálon a metrikák hibakeresési a hibákat, érdemes lehet tudhat meg többet a következő cikkekben olvasásával adatbázis teljesítményének növelése:
+Most, hogy bemutattuk, hogyan figyelheti és hibakeresési problémák a metrikák az Azure Portal használatával, érdemes tudhat meg többet az adatbázis-teljesítmény javítása a következő cikkek elolvasásával:
 
-* [Teljesítmény és méretezhetőség, az Azure Cosmos DB tesztelése](performance-testing.md)
-* [Teljesítmény tippek az Azure Cosmos DB rendszerhez](performance-tips.md)
+* [Teljesítmény- és mérettesztelés az Azure Cosmos DB tesztelése](performance-testing.md)
+* [Az Azure Cosmos DB a teljesítménnyel kapcsolatos tippek](performance-tips.md)

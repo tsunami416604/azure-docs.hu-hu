@@ -1,6 +1,6 @@
 ---
-title: HPC Pack OpenFOAM futó Linux virtuális gépek |} Microsoft Docs
-description: Az Azure a Microsoft HPC Pack fürt központi telepítése, és egy OpenFOAM feladat futtatása több Linux számítási csomóponton az RDMA-hálózaton.
+title: Az OpenFOAM futtatása a HPC Pack segítségével Linuxos virtuális gépeken |} A Microsoft Docs
+description: Az Azure-ban a Microsoft HPC Pack-fürt üzembe helyezése és a egy OpenFOAM feladat futtatásához a több Linuxos számítási csomópontokon az RDMA-hálózaton.
 services: virtual-machines-linux
 documentationcenter: ''
 author: dlepow
@@ -15,46 +15,46 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: big-compute
 ms.date: 07/22/2016
 ms.author: danlep
-ms.openlocfilehash: f43790d3495e1c09730e90b5077ec840731a7d83
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 73ad78fc73a7605f8feaf114ebdfac5023cc91b6
+ms.sourcegitcommit: 4597964eba08b7e0584d2b275cc33a370c25e027
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/05/2018
-ms.locfileid: "30841911"
+ms.lasthandoff: 07/02/2018
+ms.locfileid: "37342425"
 ---
 # <a name="run-openfoam-with-microsoft-hpc-pack-on-a-linux-rdma-cluster-in-azure"></a>Az OpenFoam futtatása a Microsoft HPC Packkal Azure-beli linuxos RDMA-fürtön
-Ez a cikk az Azure virtuális gépeken OpenFoam futtatásához egy módszert mutat. Itt, a Microsoft HPC Pack-fürt Linux számítási csomópontok az Azure és a Futtatás telepít egy [OpenFoam](http://openfoam.com/) Intel MPI feladatot. Az RDMA-kompatibilis Azure virtuális gépeken használhatja a számítási csomópontok, hogy a számítási csomópontok Azure RDMA hálózati kommunikációra. Más OpenFoam Azure rendszerben való futtatásra a választható lehetőségek teljesen konfigurált kereskedelmi képek elérhető a piactéren, például a UberCloud tartozó [OpenFoam 2.3 a CentOS 6](https://azure.microsoft.com/marketplace/partners/ubercloud/openfoam-v2dot3-centos-v6/), és futtatja a [Azure Batch](https://blogs.technet.microsoft.com/windowshpc/2016/07/20/introducing-mpi-support-for-linux-on-azure-batch/). 
+Ez a cikk bemutatja, hogy egyik módja az OpenFoam futtatása az Azure-beli virtuális gépeken. Itt, a Microsoft HPC Pack-fürt Linuxos számítási csomópontok az Azure-ra és a Futtatás telepít egy [OpenFoam](http://openfoam.com/) Intel MPI-feladatok. Használhatja RDMA-kompatibilis Azure virtuális gépek a számítási csomópontok, így a számítási csomópontok Azure RDMA hálózati kommunikációra. Egyéb lehetőségek az OpenFoam futtatása az Azure-ban rendelkezésre álló teljes konfigurációjú kereskedelmi képeket is tartalmaznak a Marketplace-en, például az UberCloud a [OpenFoam 2.3 CentOS 6-os](https://azuremarketplace.microsoft.com/marketplace/apps/cfd-direct.cfd-direct-from-the-cloud), és a kiszolgálón való futtatásával [Azure Batch](https://blogs.technet.microsoft.com/windowshpc/2016/07/20/introducing-mpi-support-for-linux-on-azure-batch/). 
 
 [!INCLUDE [learn-about-deployment-models](../../../../includes/learn-about-deployment-models-both-include.md)]
 
-(A nyissa meg a mező művelet és adatkezelési) OpenFOAM egy nyílt forráskódú számítási folyadékból dynamics (CFD) csomagot, amely széles körben használt mérnöki és tudományos, kereskedelmi és a academic szervezetekben. Ez magában foglalja az eszközök meshing, nevezetesen snappyHexMesh, egy parallelized mesher összetett CAD-geometriája, és előtti és utáni feldolgozásra. Szinte minden folyamatok párhuzamosan, így a felhasználók teljes körű kihasználása érdekében a számítógép a rendelkezésükre futnak.  
+Az OpenFOAM (a mező nyissa meg a műveletet és adatmanipulációs) egy nyílt forráskódú numerikus áramlástani (CFD) szoftvercsomagot, mérnöki és tudományos számításokban kereskedelmi és oktatási szervezetek a széles körben használt. Nástroje Pro meshing, nevezetesen snappyHexMesh, egy párhuzamos működésű mesher összetett CAD geometriája, és előzetes és utólagos feldolgozási tartalmazza. Szinte az összes folyamat futhat párhuzamosan – felhasználók teljes mértékben kihasználhatja a számítógép a rendelkezésükre.  
 
-A Microsoft HPC Pack felügyeleti teendők központjaként HPC és párhuzamos alkalmazások, beleértve a MPI alkalmazásokat, a fürtökön a Microsoft Azure virtuális gépek futtatásához szolgáltatásokat biztosítja. HPC Pack támogatja a virtuális gépeken telepített HPC Pack-fürtben lévő Linux alkalmazások csomópontjain futó Linux HPC is. Lásd: [Ismerkedés az Azure-ban HPC Pack-fürtben lévő Linux számítási csomópontok](hpcpack-cluster.md) használata Linux bemutatása a számítási csomópontok HPC Pack.
+A Microsoft HPC Pack biztosítja a funkciók futtathat nagy méretű HPC és a párhuzamos alkalmazások, például MPI-alkalmazások, Microsoft Azure virtuális gépek fürtjein. HPC Pack támogatja a Linux-alapú alkalmazásokat számítási csomópont virtuális gépek üzembe helyezett HPC Pack-fürtökben futó Linux-alapú HPC is. Lásd: [Linuxos számítási csomópontok HPC Pack-fürtökben, az Azure-ban – első lépések](hpcpack-cluster.md) a bevezetést nyújtanak a Linux számítási csomópontok HPC packkel.
 
 > [!NOTE]
-> Ez a cikk bemutatja, hogyan HPC Pack a Linux MPI munkaterhelések futtatásához. Azt feltételezi, hogy rendelkezik-e bizonyos fokú ismeretét, Linux rendszer felügyeleti és a Linux fürtökön MPI munkaterheket futtatnak. Ha MPI és különbözik az ebben a cikkben szereplő OpenFOAM-verziót használ, lehetséges, hogy módosítani az egyes telepítési és konfigurációs lépéseket. 
+> Ez a cikk a Linux MPI számítási feladatok futtatása HPC packkel mutatja be. Azt feltételezi, hogy néhány ismerete Linux rendszer-felügyeleti és MPI számítási feladatok futtatása Linux-fürtökön. Ha MPI és OpenFOAM ebben a cikkben látható a különböző verzióit használja, előfordulhat, módosíthatja az egyes telepítési és konfigurációs lépéseket. 
 > 
 > 
 
 ## <a name="prerequisites"></a>Előfeltételek
-* **HPC Pack fürt RDMA-kompatibilisek-e a Linux és a számítási csomópontok** - fürt üzembe helyezése HPC Pack méretű A8, A9, H16r, vagy H16rm Linux számítási csomópontok használatával egy [Azure Resource Manager sablon](https://azure.microsoft.com/marketplace/partners/microsofthpc/newclusterlinuxcn/) vagy egy [Azure PowerShell parancsfájl](hpcpack-cluster-powershell-script.md). Lásd: [Ismerkedés az Azure-ban HPC Pack-fürtben lévő Linux számítási csomópontok](hpcpack-cluster.md) az Előfeltételek és az egyik beállítási mód lépéseit. Ha a PowerShell parancsfájl központi telepítés lehetőséget választja, lásd: a minta konfigurációs fájlt a mintafájlok, ez a cikk végén. Használja ezt a konfigurációt a fürt üzembe helyezése Azure-alapú HPC Pack mérete A8 Windows Server 2012 R2 átjárócsomópont és a számítási csomópontok 2 mérete A8 SUSE Linux Enterprise Server 12. Az előfizetés és a szolgáltatás nevének megfelelő értékeit helyettesítse. 
+* **HPC Pack-fürthöz az RDMA-kompatibilis Linuxos számítási csomópontok** – méretű A8, A9, H16r, HPC Pack-fürt üzembe helyezése vagy H16rm Linux számítási csomópontok segítségével egy [Azure Resource Manager-sablon](https://azure.microsoft.com/marketplace/partners/microsofthpc/newclusterlinuxcn/) vagy egy [Azure PowerShell-parancsprogram](hpcpack-cluster-powershell-script.md). Lásd: [Linuxos számítási csomópontok HPC Pack-fürtökben, az Azure-ban – első lépések](hpcpack-cluster.md) az Előfeltételek és a lépések bármelyik beállítást is választja. Ha a PowerShell parancsfájl központi telepítési lehetőséget választja, tekintse meg a minta konfigurációs fájlt a mintafájlok, ez a cikk végén található. Ez a konfiguráció használatával helyezhet üzembe egy Azure-alapú HPC Pack-fürt mérete a8-as Windows Server 2012 R2 átjárócsomópont és a számítási csomópontok 2 mérete a8-as SUSE Linux Enterprise Server 12. Az előfizetés és a szolgáltatás nevének megfelelő értékekkel helyettesítse. 
   
   **További tudnivaló**
   
-  * Linux RDMA hálózati Előfeltételek az Azure-ban, lásd: [nagy teljesítményű számítási Virtuálisgép-méretek](../../windows/sizes-hpc.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
-  * A Powershell parancsfájl központi telepítési beállítás használatakor telepítse az RDMA hálózati kapcsolat használata egy felhőalapú szolgáltatás belül az összes Linux számítási csomópontokat.
-  * Miután a Linux-csomópontok üzembe, csatlakozzon az SSH további felügyeleti feladatok végrehajtásához. Az SSH-kapcsolat adatai található az egyes Linux virtuális gépek Azure-portálon.  
-* **Intel MPI** - OpenFOAM SLES 12 HPC számítási csomópontok az Azure, a futtatásához telepítenie kell az Intel MPI könyvtár 5 futásidejű a [Intel.com hely](https://software.intel.com/en-us/intel-mpi-library/). (Intel MPI 5 előre telepítve van a CentOS-alapú HPC képek.)  Egy későbbi lépésben szükség esetén telepítse az Intel MPI a Linux számítási csomóponton. Ebben a lépésben előkészítése Intel regisztrálása után, hivatkozásra a megerősítési e-mailben a kapcsolódó weblapra. Ezután másolja az Intel MPI megfelelő verzióját a .tgz fájl letöltési hivatkozását. Ez a cikk Intel MPI verzió 5.0.3.048 alapul.
-* **OpenFOAM forrás csomag** -a Linux, a OpenFOAM forrás Pack szoftver töltse le a [OpenFOAM Foundation webhely](http://openfoam.org/download/2-3-1-source/). Ez a cikk a forrás csomag verziója letölthető 2.3.1 OpenFOAM-2.3.1.tgz van alapján. Kövesse az utasításokat, ezzel csomagolja ki és OpenFOAM lefordítani a Linux számítási csomóponton a cikk későbbi részében.
-* **EnSight** (nem kötelező) – a OpenFOAM szimuláció, töltse le és telepítse az eredmények megtekintéséhez a [EnSight](https://www.ceisoftware.com/download/) képi megjelenítés és elemzések program. Licencelési és letöltési információkat a EnSight helyen vannak.
+  * Az Azure-beli Linuxos RDMA hálózati Előfeltételek, lásd: [nagy teljesítményű számítási Virtuálisgép-méretek](../../windows/sizes-hpc.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+  * Ha a Powershell parancsfájl központi telepítési beállítást használja, üzembe helyezése az RDMA hálózati kapcsolat használata egy felhőszolgáltatáson belül az összes Linux számítási csomópontok.
+  * A Linux-csomópontok üzembe helyezése után csatlakozzon az ssh-KAPCSOLATOT minden további felügyeleti feladatokat hajthat végre. Az SSH-kapcsolat adatai található minden egyes Linux virtuális gép az Azure Portalon.  
+* **Az Intel MPI** – az OpenFOAM futtatása az Azure-ban, SLES 12 HPC számítási csomópontokon az Intel MPI könyvtár 5 futásidejű telepítenie kell a [Intel.com hely](https://software.intel.com/en-us/intel-mpi-library/). (Az Intel MPI 5 előre telepítve van a CentOS-alapú HPC-lemezképekre.)  Egy későbbi lépésben szükség esetén telepítse az Intel MPI a Linuxos számítási csomópontokon. Ebben a lépésben előkészítheti az Intel regisztrálása után, kövesse a visszaigazoló e-mailben szereplő hivatkozást kapcsolódó weblapon. Ezután másolja a letöltési hivatkozást az Intel MPI-t a megfelelő verzióját .tgz fájlt. Ez a cikk az Intel MPI verzió 5.0.3.048 alapul.
+* **Az OpenFOAM forrás csomag** – az OpenFOAM forrás csomag szoftver letöltése a Linuxhoz készült a [OpenFOAM Foundation hely](http://openfoam.org/download/2-3-1-source/). Ez a cikk az OpenFOAM-2.3.1.tgz mint forrás csomag verziója letölthető 2.3.1 alapul. Kövesse a cikk későbbi részében kicsomagolása és fordítsa le az OpenFOAM a Linuxos számítási csomópontokon.
+* **EnSight** (nem kötelező) – az OpenFOAM szimuláció, letöltése és telepítése, az eredmények megtekintéséhez a [EnSight](https://www.ceisoftware.com/download/) megjelenítési és elemzési program. Licencelés és letöltése a EnSight helyen vannak.
 
-## <a name="set-up-mutual-trust-between-compute-nodes"></a>Kölcsönös, a számítási csomópontok közötti megbízhatósági kapcsolat beállítása
-Megbízhatósági kapcsolat áll fenn a csomópontok egy kereszt-csomópont feladat futó Linux több csomópont szükséges (által **rsh** vagy **ssh**). Ha a Microsoft HPC Pack IaaS telepítési parancsfájl a HPC Pack fürt létrehozásához, a parancsfájl automatikusan beállítja a rendszergazdai fiókhoz megadott állandó kölcsönös megbízhatósági. A nem rendszergazda felhasználók számára hoz létre a fürt a tartományban a csomópontok közötti ideiglenes kölcsönös megbízhatósági beállítani, ha egy feladat őket rendelt kell, és szüntesse meg a kapcsolat, a feladat befejezése után. Megbízhatósági kapcsolat létrehozása az egyes felhasználók, adja meg a fürthöz, a megbízhatósági kapcsolathoz használó HPC Pack egy RSA kulcspár.
+## <a name="set-up-mutual-trust-between-compute-nodes"></a>Számítási csomópontok közötti kölcsönös bizalmi kapcsolat beállítása
+Csomópontok közötti feladat futtatása a Linux több csomóponton van szükség a csomópontok megbíznak egymásban (által **rsh** vagy **ssh**). A HPC Pack-fürt létrehozásakor a Microsoft HPC Pack IaaS telepítési szkripttel a parancsfájl automatikusan beállítja a megadott rendszergazdai fiók végleges kölcsönös megbízhatósági. A nem rendszergazdai felhasználók számára hoz létre a fürt a tartományban kell beállítania ideiglenes kölcsönös megbízhatósági mozgatja a csomópontok, amikor egy feladat lefoglalt őket, és szüntesse meg a kapcsolat, a feladat befejezése után. Az egyes felhasználók megbízhatósági kapcsolatot hoz létre, adja meg a fürthöz, a bizalmi kapcsolat használó HPC Pack-RSA-kulcspárt.
 
-### <a name="generate-an-rsa-key-pair"></a>Egy RSA kulcspár létrehozása
-Könnyen kulcspárlétrehozás egy RSA, egy nyilvános kulcs és a titkos kulcsot tartalmazó által a Linux operációs rendszert futtató **ssh-keygen** parancsot.
+### <a name="generate-an-rsa-key-pair"></a>Egy RSA-kulcspár létrehozása
+Egyszerűen hozzon létre egy RSA-kulcspárral, amely tartalmaz egy nyilvános kulcs és a egy titkos kulcsot a Linux rendszerű **az ssh-keygen** parancsot.
 
-1. Jelentkezzen be a Linux-számítógép.
+1. Jelentkezzen be egy Linux rendszerű számítógépre.
 2. Futtassa az alábbi parancsot:
    
    ```
@@ -62,19 +62,19 @@ Könnyen kulcspárlétrehozás egy RSA, egy nyilvános kulcs és a titkos kulcso
    ```
    
    > [!NOTE]
-   > Nyomja le az **Enter** az alapértelmezett beállításokkal, a parancs befejeződéséig. Ne adjon meg egy jelszót. Amikor a rendszer kéri a jelszót, csak Entert **Enter**.
+   > Nyomja meg **Enter** , amíg befejeződik a parancs az alapértelmezett beállításokat használja. Ne adjon meg egy jelszót. Amikor a rendszer kéri a jelszót, csak nyomja meg az **Enter**.
    > 
    > 
    
-   ![Egy RSA kulcspár létrehozása][keygen]
-3. Módosítsa a könyvtárat a ~/.ssh könyvtárba. A titkos kulcs id_rsa és a nyilvános kulcsot a id_rsa.pub tárolódik.
+   ![Egy RSA-kulcspár létrehozása][keygen]
+3. Módosítsa a könyvtárat a ~/.ssh címtárban. A titkos kulcs id_rsa és a nyilvános kulcsot a id_rsa.pub tárolja.
    
    ![Nyilvános és titkos kulcsai][keys]
 
-### <a name="add-the-key-pair-to-the-hpc-pack-cluster"></a>Adja hozzá a kulcspárt a HPC Pack fürthöz
-1. A távoli asztali kapcsolat az átjárócsomópont a HPC Pack rendszergazdai fiókkal (a rendszergazdai fiók beállítása az üzembe helyezési parancsfájl futtatása).
-2. Szabványos Windows Server-eljárások segítségével hozzon létre egy tartományfelhasználói fiókot a fürt Active Directory-tartományban. Az Active Directory – felhasználók és számítógépek eszközt például használatát az átjárócsomópont. Ebben a cikkben szereplő példák azt feltételezik, hogy hpclab\hpcuser nevű tartományi felhasználót kell létrehozni.
-3. Hozzon létre egy C:\cred.xml nevű fájlt, és az RSA-kulcs adatait átmásolja azt. A mintafájl cred.xml van ez a cikk végén.
+### <a name="add-the-key-pair-to-the-hpc-pack-cluster"></a>A kulcspárt hozzáadása a HPC Pack-fürthöz
+1. A távoli asztali kapcsolat az átjárócsomóponthoz, a HPC Pack-rendszergazdai fiókkal (a rendszergazdai fiók beállítása az üzembe helyezési parancsfájl futtatásakor).
+2. Standard Windows Server-eljárások használatával egy tartományi felhasználói fiók létrehozása a fürt Active Directory-tartományban. Például használja az Active Directory – felhasználók és számítógépek eszközt a központi csomóponton. Ebben a cikkben szereplő példák feltételezik, hogy hpclab\hpcuser nevű tartományi felhasználót hoz létre.
+3. Hozzon létre egy C:\cred.xml nevű fájlt, és az RSA-kulcs adatokat másolja a fájlba. Mintafájl cred.xml van ez a cikk végén található.
    
    ```
    <ExtendedData>
@@ -82,24 +82,24 @@ Könnyen kulcspárlétrehozás egy RSA, egy nyilvános kulcs és a titkos kulcso
      <PublicKey>Copy the contents of public key here</PublicKey>
    </ExtendedData>
    ```
-4. Nyisson meg egy parancssort, és írja be a következő parancsot a hpclab\hpcuser fiók a hitelesítő adatok beállításához. Használja a **extendeddata** paraméter felelt meg a C:\cred.xml fájl hozott létre a fő adatok nevét.
+4. Nyisson meg egy parancssort, és adja meg a következő parancsban a hpclab\hpcuser fiók hitelesítő adatait. Használja a **extendeddata** C:\cred.xml fájl hozott létre a fő adatok paramétert.
    
    ```
    hpccred setcreds /extendeddata:c:\cred.xml /user:hpclab\hpcuser /password:<UserPassword>
    ```
    
-   Ez a parancs sikeresen kimeneti nélkül befejeződött. Miután beállította a hitelesítő adatok a feladatok futtatásához szükséges felhasználói fiókok, a cred.xml fájlt tárolja biztonságos helyen, vagy törölje azt.
-5. Ha az RSA kulcspár a Linux-csomópontok egyikén jön létre, ne felejtse el azok használatának befejezése után törölje. Ha HPC Pack talál egy meglévő id_rsa vagy id_rsa.pub fájl, akkor nem kölcsönös megbízhatóság kialakításához.
+   Ez a parancs sikeresen kimeneti nélkül befejeződött. Miután beállította a felhasználói fiókok feladatok futtatásához szükséges hitelesítő adatait, a cred.xml fájlt tárolja biztonságos helyen, vagy törölheti is.
+5. Ha az RSA-kulcspárt a Linux-csomópontok egyik jön létre, ne felejtse el törölni a kulcsok őket használatának befejezése után. Ha a HPC Pack talál egy meglévő id_rsa vagy id_rsa.pub fájl, azt nem kölcsönös megbízhatóság kialakításához.
 
 > [!IMPORTANT]
-> Nem ajánlott a Linux feladat futtatásával a fürt rendszergazdai megosztott fürtön, mivel a Linux-csomópontokon a legfelső szintű fiók alatt fut egy feladatot, a rendszergazda által küldött. A feladat a nem rendszergazda felhasználók által benyújtott azonban Linux helyi felhasználói fiók alatt fut, a neve megegyezik a feladat felhasználó. Ebben az esetben HPC Pack állít be a Linux-felhasználó kölcsönös megbízhatósági a a feladathoz kiosztott csomópontjai között. A feladat futtatása előtt manuálisan a Linux-csomópontokon a Linux felhasználói állíthat be, vagy a HPC Pack a felhasználó automatikusan létrehozza a feladat elküldésekor. HPC Pack a felhasználó hoz létre, ha HPC Pack törli őket a feladat befejezése után. A biztonsági kockázatok csökkentése a HPC Pack törli a kulcsokat a feladat befejeződése után.
+> Nem ajánlott Linux feladat futtatása egy fürt rendszergazdaként megosztott fürtben, mert a rendszergazda által beküldött feladatok futtatása root fiókjának a Linux-csomópontok. Nem rendszergazdai felhasználók által beküldött feladatok azonban egy Linux helyi felhasználói fiók alatt fut, a neve megegyezik a feladat felhasználó. Ebben az esetben a HPC Pack állít be a Linux-felhasználó kölcsönös megbízhatósági a feladathoz lefoglalt csomópontok között. Beállíthatja a Linuxos felhasználó manuálisan a Linux-csomópontokon a feladat futtatása előtt, vagy a HPC Pack a felhasználó automatikusan létrehozza a feladat elküldésekor. Ha a HPC Pack hoz létre a felhasználó, HPC Pack törli a feladat befejezése után. Biztonsági kockázatok csökkentése érdekében a HPC Pack törli a kulcsokat a feladat befejezése után.
 > 
 > 
 
 ## <a name="set-up-a-file-share-for-linux-nodes"></a>Linux-csomópontok fájlmegosztás beállítása
-Most már készen egy szabványos SMB-megosztáson az átjárócsomópont az egyik mappájába. Ahhoz, hogy a Linux-csomópontok közös elérési úttal rendelkező alkalmazás fájlok eléréséhez, csatlakoztassa a Linux-csomópontokon a megosztott mappához. Ha azt szeretné, használhatja a beállítást, például egy Azure fájlok fájlmegosztás - számos forgatókönyv - vagy az NFS-megosztások ajánlott egy másik fájlmegosztás. A fájlmegosztási információk és részletes lépéseit lásd: [Ismerkedés az Azure-ban HPC Pack fürtben lévő Linux számítási csomópontok](hpcpack-cluster.md).
+Most állítsa be a szabványos SMB-megosztáshoz a fő csomópontot az egyik mappájába. Ahhoz, hogy a Linux-csomópontok gyakori elérési úttal rendelkező alkalmazás fájlok eléréséhez, a Linux-csomópontok csatlakoztatása a megosztott mappához. Ha azt szeretné, használhatja a beállítást, például az Azure Files-megosztás – számos forgatókönyv - vagy az NFS-megosztások ajánlott egy másik fájlmegosztás. A fájlmegosztási információk és részletes lépéseket lásd: [Linux számítási csomópontok az Azure-beli HPC Pack-fürt használatának első lépései](hpcpack-cluster.md).
 
-1. Hozzon létre egy mappát az átjárócsomóponthoz, és úgy, hogy olvasási/írási engedélyekkel mindenki számára ossza meg. Például, megosztás, az átjárócsomópont C:\OpenFOAM \\ \\SUSE12RDMA-HN\OpenFOAM. Itt *SUSE12RDMA-HN* az átjárócsomópont állomás neve.
+1. Hozzon létre egy mappát a fő csomópontot, és ossza meg az mindenki számára olvasási/írási jogosultsággal beállításával. Például megoszthatja az átjárócsomóponthoz, mint a C:\OpenFOAM \\ \\SUSE12RDMA-HN\OpenFOAM. Itt *SUSE12RDMA-HN* az átjárócsomóponthoz állomás neve.
 2. Nyisson meg egy Windows PowerShell-ablakot, és futtassa a következő parancsokat:
    
    ```
@@ -108,27 +108,27 @@ Most már készen egy szabványos SMB-megosztáson az átjárócsomópont az egy
    clusrun /nodegroup:LinuxNodes mount -t cifs //SUSE12RDMA-HN/OpenFOAM /openfoam -o vers=2.1`,username=<username>`,password='<password>'`,dir_mode=0777`,file_mode=0777
    ```
 
-Az első parancs létrehoz egy /openfoam a LinuxNodes csoport minden csomópontján nevű mappát. A második parancs a megosztott mappa //SUSE12RDMA-HN/OpenFOAM csatlakoztatja a dir_mode a Linux-csomópont, és file_mode bitet 777. A *felhasználónév* és *jelszó* parancsban kell lennie az átjárócsomópont a felhasználó hitelesítő adatait.
+Az első parancs a LinuxNodes csoport minden csomópontján /openfoam nevű mappát hoz létre. A második parancs csatlakoztatja a megosztott mappa //SUSE12RDMA-HN/OpenFOAM dir_mode a Linux-csomópontokon, és file_mode bits 777 beállítása. A *felhasználónév* és *jelszó* parancsban kell lennie a fő csomópontot a felhasználó hitelesítő adatait.
 
 > [!NOTE]
-> A "\`" szimbólumra a második parancs a értéke egy escape szimbólum PowerShell. "\`," a "," (vessző karakter) azt jelenti, hogy a parancs része.
+> A "\`" szimbólumot a második parancs a PowerShell-escape szimbólum. "\`," azt jelenti, hogy a "," (vessző karakter) a parancs része.
 > 
 > 
 
 ## <a name="install-mpi-and-openfoam"></a>MPI és OpenFOAM telepítése
-OpenFOAM MPI feladatként futtatja az RDMA hálózati, szüksége az Intel MPI könyvtárakkal OpenFOAM összeállításához. 
+Az OpenFOAM futtatása az MPI-feladatok, az RDMA hálózati, fordítsa le az OpenFOAM az Intel MPI-kódtárakat kell. 
 
-Először futtassa több **clusrun** parancsok futtatásával telepítse Intel MPI függvénytárak (Ha még nincs telepítve) és a Linux csomópontján OpenFOAM. A telepítési fájlokat, a Linux-csomópontok közötti megosztásához korábban konfigurált átjárócsomópont megosztás használatára.
+Először futtassa több **clusrun** parancsokat az Intel MPI-kódtárak telepítése (Ha még nem telepítette), és a Linux-csomópontokat az OpenFOAM. A telepítési fájlokat, a Linux-csomópontok között megosztani előzőleg konfigurált átjárócsomópont megosztás használatára.
 
 > [!IMPORTANT]
-> Ezeket a telepítési és fordítása lépések példái. Meg kell néhány a Linux rendszer felügyeleti annak érdekében, hogy a függő compilers – és szalagtárak megfelelően van telepítve. Előfordulhat, hogy módosítania bizonyos környezeti változókat és más beállításait az Intel MPI és OpenFOAM verzióit. További információkért lásd: [Intel MPI Library for Linux – telepítési útmutató](http://registrationcenter-download.intel.com/akdlm/irc_nas/1718/INSTALL.html?lang=en&fileExt=.html) és [OpenFOAM forrás csomag telepítése](http://openfoam.org/download/2-3-1-source/) alkalmaz környezetében.
+> Ezeket a telepítési és fordítása lépések példái. Győződjön meg arról, hogy a függő fordítóprogramot és tárak megfelelően vannak telepítve a Linux rendszer-felügyeleti néhány ismerete van szüksége. Szüksége lehet a környezeti változókat vagy más beállításokat, az Intel MPI-t és az OpenFOAM verzióit. További információkért lásd: [Intel MPI Library for Linux telepítővarázslót](http://registrationcenter-download.intel.com/akdlm/irc_nas/1718/INSTALL.html?lang=en&fileExt=.html) és [OpenFOAM forrás csomag telepítése](http://openfoam.org/download/2-3-1-source/) környezete számára.
 > 
 > 
 
-### <a name="install-intel-mpi"></a>Intel MPI telepítése
-Mentse a letöltött telepítési csomag az Intel MPI (ebben a példában l_mpi_p_5.0.3.048.tgz) C:\OpenFoam a head csomóponton, hogy a Linux-csomópontok /openfoam hozzáfér ehhez a fájlt. Ezután futtassa **clusrun** Intel MPI könyvtár telepítése Linux-csomópontjaihoz.
+### <a name="install-intel-mpi"></a>Az Intel MPI telepítése
+Mentse a letöltött telepítési csomag az Intel MPI (ebben a példában l_mpi_p_5.0.3.048.tgz) C:\OpenFoam a központi csomóponton, hogy a Linux-csomópontok a /openfoam keresztül elérhető ezt a fájlt. Ezután futtassa **clusrun** Intel MPI erőforrástár telepítése a Linux-csomópontokat.
 
-1. A következő parancsok másolja a csomagot, és bontsa ki a /opt/intel minden egyes csomóponton.
+1. A következő parancsok másolja a csomagot, és csomagolja a /opt/intel minden egyes csomóponton.
    
    ```
    clusrun /nodegroup:LinuxNodes mkdir -p /opt/intel
@@ -137,37 +137,37 @@ Mentse a letöltött telepítési csomag az Intel MPI (ebben a példában l_mpi_
    
    clusrun /nodegroup:LinuxNodes tar -xzf /opt/intel/l_mpi_p_5.0.3.048.tgz -C /opt/intel/
    ```
-2. Intel MPI könyvtár csendes telepítéséhez használja a silent.cfg fájl. A mintafájlok, ez a cikk végén található példa. A megosztott mappa /openfoam helyezze a fájlt. A silent.cfg fájllal kapcsolatos részletekért lásd: [Intel MPI Library for Linux – telepítési útmutató - csendes telepítést](http://registrationcenter-download.intel.com/akdlm/irc_nas/1718/INSTALL.html?lang=en&fileExt=.html#silentinstall).
+2. Az Intel MPI könyvtár csendes telepítéséhez használjon silent.cfg fájlt. Ez a cikk végén található minta fájljaiban találhat egy példát. A megosztott mappa /openfoam helyezze a fájlt. A silent.cfg fájllal kapcsolatos részletekért lásd: [Intel MPI Library for Linux telepítővarázslót - beavatkozás nélküli telepítés](http://registrationcenter-download.intel.com/akdlm/irc_nas/1718/INSTALL.html?lang=en&fileExt=.html#silentinstall).
    
    > [!TIP]
-   > Győződjön meg arról, hogy Ön a silent.cfg fájl szövegfájl, amelynek Linux sorvégeket (csak LF, nem a CR LF). Ez a lépés biztosítja, hogy ez megfelelően a Linux-csomóponton.
+   > Győződjön meg arról, hogy a Linux rendszerű szöveges fájlból silent.cfg fájl mentésekor sorvégeket (csak LF, nem a CR Soremelés). Ez a lépés biztosítja, hogy megfelelően az fut a Linux-csomópontokat.
    > 
    > 
-3. Intel MPI könyvtár telepítése csendes módban.
+3. Az Intel MPI erőforrástár telepítése csendes módban.
    
    ```
    clusrun /nodegroup:LinuxNodes bash /opt/intel/l_mpi_p_5.0.3.048/install.sh --silent /openfoam/silent.cfg
    ```
 
 ### <a name="configure-mpi"></a>MPI konfigurálása
-A vizsgálat, a következő sorokat kell hozzá minden egyes Linux csomópont /etc/security/limits.conf:
+Tesztelési, a következő sorokat kell hozzáadni a /etc/security/limits.conf a Linux-csomópontok egyes:
 
     clusrun /nodegroup:LinuxNodes echo "*               hard    memlock         unlimited" `>`> /etc/security/limits.conf
     clusrun /nodegroup:LinuxNodes echo "*               soft    memlock         unlimited" `>`> /etc/security/limits.conf
 
 
-Indítsa újra a Linux-csomópontot, a limits.conf fájl frissítése után. Például használja a következő **clusrun** parancs:
+Indítsa újra a Linux-csomópontokat, a limits.conf fájl frissítése után. Ha például használja a következő **clusrun** parancsot:
 
 ```
 clusrun /nodegroup:LinuxNodes systemctl reboot
 ```
 
-Az újraindítás után győződjön meg arról, hogy a megosztott mappa, /openfoam csatlakoztatva van.
+Az újraindítás után győződjön meg arról, hogy a megosztott mappa /openfoam, csatlakoztatva van-e.
 
-### <a name="compile-and-install-openfoam"></a>Fordítsa le és OpenFOAM telepítése
-Mentse a letöltött telepítési csomagot a OpenFOAM forrás csomagnak (OpenFOAM 2.3.1.tgz ebben a példában) C:\OpenFoam a az átjárócsomóponthoz, hogy a Linux-csomópontok /openfoam hozzáfér ehhez a fájlt. Ezután futtassa **clusrun** parancsokat minden csomóponton a Linux OpenFOAM összeállításához.
+### <a name="compile-and-install-openfoam"></a>Fordítsa le és telepítse az OpenFOAM
+Mentse a letöltött telepítési csomag OpenFOAM forrás csomagnak (OpenFOAM 2.3.1.tgz ebben a példában) a C:\OpenFoam a központi csomóponton, hogy a Linux-csomópontok a /openfoam keresztül elérhető ez a fájl. Ezután futtassa **clusrun** OpenFOAM fordítása a Linux-csomópontok a parancsokat.
 
-1. Hozzon létre egy mappát /opt/OpenFOAM minden egyes Linux csomóponton, forrás másolja ezt a mappát, és bontsa ki, hogy.
+1. Hozzon létre egy mappát /opt/OpenFOAM minden egyes Linux-csomóponton, a forrás-csomagot másolja ezt a mappát, és csomagolja ki, hogy.
    
    ```
    clusrun /nodegroup:LinuxNodes mkdir -p /opt/OpenFOAM
@@ -176,8 +176,8 @@ Mentse a letöltött telepítési csomagot a OpenFOAM forrás csomagnak (OpenFOA
    
    clusrun /nodegroup:LinuxNodes tar -xzf /opt/OpenFOAM/OpenFOAM-2.3.1.tgz -C /opt/OpenFOAM/
    ```
-2. Az Intel MPI könyvtárhoz, először állítsa be néhány környezetiblokk-változót Intel MPI és OpenFOAM OpenFOAM összeállításához. Nevű settings.sh bash parancsfájl segítségével a változókat. A mintafájlok, ez a cikk végén található példa. Helyezze a fájlt (a Linux sorvégződések mentett) a megosztott mappa /openfoam. Ez a fájl is a MPI és OpenFOAM futtatókörnyezetek később egy OpenFOAM feladat futtatásához használt beállításait tartalmazza.
-3. Telepítse a függő csomagok OpenFOAM összeállításához. Attól függően, hogy a Linux-disztribúció előfordulhat, hogy először vegyen fel egy tárházat. Futtatás **clusrun** a következőhöz hasonló parancsot:
+2. Fordítsa le és az Intel MPI OpenFOAM, először állítsa be néhány környezeti változókat az Intel MPI-t és az OpenFOAM is. Settings.sh nevű bash parancsfájl használatával állítsa be a változókat. Ez a cikk végén található minta fájljaiban találhat egy példát. Ezt a fájlt (a Linux sorvégződések mentett) jelölje be a megosztott mappa /openfoam. Ez a fájl is tartalmazza, amellyel később egy OpenFOAM feladat futtatásához MPI és OpenFOAM modulok.
+3. Az OpenFOAM összeállításához függő csomagok telepítéséhez. A Linux-disztribúciótól függően előfordulhat, hogy először hozzá kell egy tárház. Futtatás **clusrun** az alábbihoz hasonló parancsokat:
    
     ```
     clusrun /nodegroup:LinuxNodes zypper ar http://download.opensuse.org/distribution/13.2/repo/oss/suse/ opensuse
@@ -185,51 +185,51 @@ Mentse a letöltött telepítési csomagot a OpenFOAM forrás csomagnak (OpenFOA
     clusrun /nodegroup:LinuxNodes zypper -n --gpg-auto-import-keys install --repo opensuse --force-resolution -t pattern devel_C_C++
     ```
    
-    Ha szükséges, minden egyes Linux csomópontra SSH annak ellenőrzéséhez, hogy futnak megfelelően parancsok futtatásához.
-4. A következő parancsot OpenFOAM összeállításához. Az összeállítási folyamat végrehajtásához némi időt vesz igénybe, és naplózási adatok normál a kimenetbe nagy mennyiségű állít elő, ezért a **/ időosztásos** lehetőséget a kimeneti időosztásos megjelenítéséhez.
+    Ha szükséges, minden egyes Linux csomópont ssh-KAPCSOLATOT annak ellenőrzéséhez, hogy azok megfelelően fusson a parancsok futtatásához.
+4. Futtassa a következő parancsot az OpenFOAM összeállításához. A fordítási folyamat eltarthat egy ideig, és a normál a kimenetbe naplóadatok nagy mennyiségű állít elő, ezért a **/ közbeékeléses** megjelenítéséhez a kimenetben közbeékeléses lehetőséget.
    
    ```
    clusrun /nodegroup:LinuxNodes /interleaved source /openfoam/settings.sh `&`& /opt/OpenFOAM/OpenFOAM-2.3.1/Allwmake
    ```
    
    > [!NOTE]
-   > A "\`" szimbólum a parancsban értéke egy escape szimbólum PowerShell. "\`&" azt jelenti, hogy a "&" parancs része.
+   > A "\`" szimbólumot a parancsot a PowerShell-escape szimbólum. "\`&" azt jelenti, hogy a "&" a parancs része.
    > 
    > 
 
-## <a name="prepare-to-run-an-openfoam-job"></a>Egy OpenFOAM feladat futtatásához előkészítése
-Most Felkészülés egy hívása sloshingTank3D, amely a OpenFoam minta egyike, két Linux csomópont MPI feladat futtatásához. 
+## <a name="prepare-to-run-an-openfoam-job"></a>Az OpenFOAM feladat futtatásához előkészítése
+Most már készüljön fel egy nevű sloshingTank3D, amely egy OpenFoam mintát, a két Linux-csomópontok MPI-feladat futtatásához. 
 
-### <a name="set-up-the-runtime-environment"></a>A futásidejű környezet beállítása
-Beállítása a futásidejű környezetek MPI és OpenFOAM a Linux-csomóponton, futtassa a következő parancsot egy Windows PowerShell-ablakban a head csomóponton. (Ez a parancs érvénytelen a SUSE Linux csak.)
+### <a name="set-up-the-runtime-environment"></a>A futtatókörnyezet beállítása
+Állítsa be a futtatókörnyezetet MPI és OpenFOAM, a Linux-csomópontokat, futtassa a következő parancsot egy Windows PowerShell-ablakban a fő csomópont. (Ez a parancs érvénytelen, a SUSE Linux csak.)
 
 ```
 clusrun /nodegroup:LinuxNodes cp /openfoam/settings.sh /etc/profile.d/
 ```
 
-### <a name="prepare-sample-data"></a>Mintaadatok előkészítése
-Fájlmegosztás között a Linux-csomópontok (mint /openfoam csatlakoztatott) korábban konfigurált átjárócsomópont megosztás használatára.
+### <a name="prepare-sample-data"></a>Mintaadatok létrehozása
+Fájlmegosztás között a Linux-csomópontok (/openfoam meghajtóként csatlakoztatott) korábban konfigurált átjárócsomópont megosztás használatára.
 
-1. A számítási csomópontok SSH a Linux egyikére.
-2. A következő parancsot a OpenFOAM futtatási környezetet, ha még nem tette meg ezt.
+1. SSH a Linux számítási csomópontok.
+2. A következő parancsot az OpenFOAM futásidejű környezetet, ha Ön még nem tette meg.
    
    ```
    $ source /openfoam/settings.sh
    ```
-3. Másolja a sloshingTank3D minta a megosztott mappa, és keresse meg a fájlt.
+3. A sloshingTank3D minta másolása a megosztott mappához, és keresse meg a fájlt.
    
    ```
    $ cp -r $FOAM_TUTORIALS/multiphase/interDyMFoam/ras/sloshingTank3D /openfoam/
    
    $ cd /openfoam/sloshingTank3D
    ```
-4. Ez a minta alapértelmezett paraméterértékeivel használatakor is igénybe vehet több tíz perc alatt szeretné futtatni, ezért érdemes néhány abba, hogy gyorsabbá paraméterek módosításához. Egy egyszerű rendszer idő lépés változók deltaT és a rendszer/controlDict fájlban writeInterval módosíthatja. Ez a fájl tartalmazza az idő és adatok írásakor vagy olvasásakor megoldás ellenőrzésére vonatkozó összes bemeneti adatot. Például megváltoztathatja 0,5 a 0,05 deltaT értékének és a 0,05 writeInterval 0,5 értékét.
+4. Alapértelmezett paramétereihez tartozó Ez a minta használata esetén tíz percig szeretné futtatni, így előfordulhat, hogy szeretné, hogy gyorsabban futnak bizonyos paramétereit is eltarthat. Egy egyszerű lehetőséget, hogy az idő lépés változók deltaT és a rendszer/controlDict fájlban writeInterval módosítása. Ez a fájl tartalmazza az idő és az adatok írásakor vagy olvasásakor megoldás ellenőrzésére vonatkozó összes bemeneti adatot. Például sikerült módosítani a 0,05 deltaT 0,5 értékét és a 0,05 writeInterval 0,5 értékét.
    
-   ![Lépés változók módosítása][step_variables]
-5. A rendszer/decomposeParDict fájlban adja meg a változót a kívánt értékeket. Ebben a példában két Linux csomópont minden használ 8 magos, úgy állítsa be a numberOfSubdomains 16 és a hierarchicalCoeffs n (1 1 16), ami azt jelenti, 16 folyamatokkal párhuzamosan futnak a OpenFOAM. További információkért lásd: [OpenFOAM felhasználói útmutatója: 3.4 futó alkalmazások párhuzamosan](http://cfd.direct/openfoam/user-guide/running-applications-parallel/#x12-820003.4).
+   ![Módosítsa a változókat. lépés][step_variables]
+5. Adja meg a kívánt a változók értékeit a rendszer/decomposeParDict fájlban. Ebben a példában két Linux-csomópontok egyes 8 maggal rendelkező, ezért numberOfSubdomains 16 és hierarchicalCoeffs, n (1 1 16), ami azt jelenti, az OpenFOAM futtatása 16 folyamatokkal párhuzamosan. További információkért lásd: [OpenFOAM felhasználói útmutatója: 3.4 futó alkalmazások párhuzamosan](http://cfd.direct/openfoam/user-guide/running-applications-parallel/#x12-820003.4).
    
-   ![Folyamatok felbontani][decompose]
-6. A következő parancsokat a mintaadatok létrehozása a sloshingTank3D könyvtárból.
+   ![Folyamatok bontható fel][decompose]
+6. Futtassa az alábbi parancsokat a mintaadatok létrehozása a sloshingTank3D könyvtárból.
    
    ```
    $ . $WM_PROJECT_DIR/bin/tools/RunFunctions
@@ -242,15 +242,15 @@ Fájlmegosztás között a Linux-csomópontok (mint /openfoam csatlakoztatott) k
    
    $ runApplication setFields  
    ```
-7. A head csomóponton meg kell jelennie a mintaadatfájlok C:\OpenFoam\sloshingTank3D másolódnak. (A megosztott mappát a átjárócsomópontjához C:\OpenFoam érték).)
+7. A központi csomóponton megtekintheti a mintaadatfájlok C:\OpenFoam\sloshingTank3D másolódnak. (C:\OpenFoam a központi csomóponton a megosztott mappához.)
    
    ![Az átjárócsomópont adatfájlokat][data_files]
 
-### <a name="host-file-for-mpirun"></a>Állomás fájlt mpirun
-Ebben a lépésben létrehozott állomás-fájlokat (számítási csomópontok listáját) amely a **mpirun** parancsot használja.
+### <a name="host-file-for-mpirun"></a>Mpirun gazdagép-példafájlja
+Ebben a lépésben, hozzon létre egy gazdagép fájlt (a számítási csomópontok listája) amely a **mpirun** parancsot használja.
 
 1. A Linux-csomópontok egyikét hozzon létre egy fájlt hostfile alatt /openfoam, ezért ezt a fájlt az összes Linux csomóponton /openfoam/hostfile címen érhető el.
-2. A Linux csomópontnevek írni az ezt a fájlt. Ebben a példában a fájl tartalmazza a következő szerepel:
+2. A Linux-csomópont nevét írja, ezt a fájlt. Ebben a példában a fájl tartalmazza a következő nevekkel:
    
    ```       
    SUSE12RDMA-LN1
@@ -258,59 +258,59 @@ Ebben a lépésben létrehozott állomás-fájlokat (számítási csomópontok l
    ```
    
    > [!TIP]
-   > Ez a fájl C:\OpenFoam\hostfile, a központi csomóponton is létrehozhat. Ha ezt a lehetőséget választja, a Linux és szövegfájlként menteni sorvégeket (csak LF, nem a CR LF). Ez biztosítja, hogy fusson megfelelően a Linux-csomóponton.
+   > Ez a fájl C:\OpenFoam\hostfile, a központi csomóponton is létrehozhat. Ha ezt a lehetőséget választja, mentse a fájt Linux szövegfájl sorvégeket (csak LF, nem a CR Soremelés). Ez biztosítja, hogy megfelelően az fut a Linux-csomópontokat.
    > 
    > 
    
-   **Bash parancsfájlok burkoló**
+   **Bash parancsfájl burkoló**
    
-   Sok Linux-csomópont van, és azt szeretné, hogy a feladat futásának csak az egyes, esetén nem érdemes egy rögzített gazdagépet fájl, mert nem tudja, melyik csomópontok rendszer rendeli hozzá a feladatot. Ebben az esetben írni a bash parancsfájlok burkolót **mpirun** automatikusan a gazdagép-fájl létrehozásához. Egy példa bash parancsfájl burkoló nevű hpcimpirun.sh Ez a cikk végén található, és mentse /openfoam/hpcimpirun.sh. Ebben a példaként megadott parancsfájlt a következőket teszi:
+   Ha számos Linux-csomóponttal rendelkezik, és azt szeretné, hogy a feladat csak az egyes futtatni, azt, nem célszerű használni egy rögzített gazdagépet a fájlt, mert a feladathoz lefoglalt csomópontok nem tudja. Ebben az esetben írhat egy bash parancsfájl burkoló **mpirun** automatikusan létrehozhatja a gazdagép fájlt. Egy példa bash parancsfájl burkoló nevű hpcimpirun.sh Ez a cikk végén található, és mentse /openfoam/hpcimpirun.sh. Ez a példa a szkript a következőket teszi:
    
-   1. Beállítja a környezeti változók a **mpirun**, és néhány hozzáadása parancs paraméterei a MPI feladat futtatásához az RDMA a hálózaton keresztül. Ebben az esetben azt állítja be a következő változókat:
+   1. Beállítja a környezeti változókat **mpirun**, és néhány hozzáadása parancs paraméterei a MPI-feladat futtatása az rdma-t a hálózaton keresztül. Ebben az esetben azt állítja be az alábbi változókat:
       
       * I_MPI_FABRICS=shm:dapl
       * I_MPI_DAPL_PROVIDER=ofa-v2-ib0
-      * I_MPI_DYNAMIC_CONNECTION=0
-   2. Létrehoz egy gazdagép megfelelően a környezeti változó $CCP_NODES_CORES, amely szerint a HPC átjárócsomópont van beállítva, a feladat aktiválásakor.
+      * I_MPI_DYNAMIC_CONNECTION = 0
+   2. Létrehoz egy gazdagép megfelelően a környezeti változó $CCP_NODES_CORES, amely a HPC fő csomópontja úgy van beállítva, ha a feladat aktiválódik.
       
-      $CCP_NODES_CORES formátuma ezt a mintát követi:
+      $CCP_NODES_CORES formátumát ezt a mintát követi:
       
       ```
       <Number of nodes> <Name of node1> <Cores of node1> <Name of node2> <Cores of node2>...`
       ```
       
-      Ha
+      ahol
       
-      * `<Number of nodes>` – a feladat számára lefoglalt csomópontok száma.  
-      * `<Name of node_n_...>` – a feladat rendelt minden csomópont neve.
-      * `<Cores of node_n_...>` -a csomóponton a feladat számára lefoglalt magok száma.
+      * `<Number of nodes>` – Ez a feladat számára lefoglalt csomópontok számát.  
+      * `<Name of node_n_...>` – Ez a feladat számára lefoglalt minden egyes csomópont nevét.
+      * `<Cores of node_n_...>` – a csomóponton a feladat számára lefoglalt magok számát.
       
-      Például ha a feladat futtatásához két csomópont van szüksége, $CCP_NODES_CORES hasonlít
+      Például ha a feladat futtatásához két csomópont van szüksége, $CCP_NODES_CORES hasonlít a
       
       ```
       2 SUSE12RDMA-LN1 8 SUSE12RDMA-LN2 8
       ```
-   3. Hívások a **mpirun** parancsot, és hozzáfűzi a két paraméter a parancssorban.
+   3. Hívások a **mpirun** parancsot, és hozzáfűzi a két paramétert a parancssorból.
       
       * `--hostfile <hostfilepath>: <hostfilepath>` -a parancsfájl létrehozza a gazdagép-fájl elérési útja
-      * `-np ${CCP_NUMCPUS}: ${CCP_NUMCPUS}` -olyan környezeti változó beállítása a HPC Pack központi csomópont, amely tárolja az összes, a feladat számára lefoglalt magok száma. Ebben az esetben adja meg a folyamatok száma **mpirun**.
+      * `-np ${CCP_NUMCPUS}: ${CCP_NUMCPUS}` -a HPC Pack fő csomópontot, amely tárolja a teljes, a feladat számára lefoglalt magok száma által meghatározott környezeti változóban. Ebben az esetben adja meg a folyamatok számát **mpirun**.
 
-## <a name="submit-an-openfoam-job"></a>Egy OpenFOAM feladat elküldése
-Most elküldheti a HPC Cluster Manager feladat. A parancsfájl hpcimpirun.sh át a parancsokat a projekt feladatokat kell.
+## <a name="submit-an-openfoam-job"></a>Az OpenFOAM feladat elküldése
+Most már küldhet egy feladatot a HPC Cluster Manager. A feldolgozás feladatokat adja át a parancsfájl hpcimpirun.sh parancssorok kell.
 
 1. A fürt átjárócsomópontjához csatlakozik, és indítsa el a HPC Cluster Manager.
-2. **Az erőforrás-kezelés**, akkor győződjön meg arról, hogy a Linux számítási csomópontok a **Online** állapotát. Ha nem, válassza ki azokat, és kattintson a **online állapotba hozás**.
+2. **Az erőforrás-kezelés**, győződjön meg arról, hogy a Linuxos számítási csomópontok szerepelnek a **Online** állapota. Ha nem, válassza ki azokat, és kattintson a **online állapotba hozás**.
 3. A **feladatkezelés**, kattintson a **új feladat**.
-4. Írjon be egy feladat nevét, például *sloshingTank3D*.
+4. Adja meg például a feladat nevét *sloshingTank3D*.
    
    ![Feladat részletei][job_details]
-5. A **feladat-erőforrások**, válassza ki az erőforrás "Csomópont" típusú, és legalább a 2 értékűre állított. Ez a konfiguráció futó Linux két csomópont, amelyek mindegyikének nyolc processzormaggal ebben a példában a feladat.
+5. A **feladat-erőforrások**, válassza ki a "Csomópont" erőforrás típusát, és a minimális értéke 2. Ez a konfiguráció a feladatot futtat Linux két csomópontot tartalmaz, ebben a példában nyolc processzormaggal, amelyek mindegyike rendelkezik.
    
    ![Feladat-erőforrások][job_resources]
-6. Kattintson a **feladatok szerkesztése** a bal oldali navigációs, majd **Hozzáadás** feladat hozzáadása a feladatot. Négy feladatok hozzá a feladatot a következő parancssorok és beállítások.
+6. Kattintson a **szerkesztése feladatok** a bal oldali navigációs, és kattintson a **Hozzáadás** feladat hozzáadása a feladathoz. Négy tevékenységek hozzáadása a feladathoz a következő parancssorok és a beállítások.
    
    > [!NOTE]
-   > Futó `source /openfoam/settings.sh` beállítja a OpenFOAM és MPI futtatási környezet, ezért a következő feladatokat mindegyikének meghívja a OpenFOAM parancs előtt.
+   > Futó `source /openfoam/settings.sh` állítja be az OpenFOAM és MPI futtatókörnyezetet, így az összes alábbi feladatot meghívja az OpenFOAM parancs előtt.
    > 
    > 
    
@@ -320,20 +320,20 @@ Most elküldheti a HPC Cluster Manager feladat. A parancsfájl hpcimpirun.sh át
      * **Parancssor** - `source /openfoam/settings.sh && decomposePar -force > /openfoam/decomposePar${CCP_JOBID}.log`
      * **Munkakönyvtár** -/ openfoam/sloshingTank3D
      
-     Lásd az alábbi ábrát. Hasonló módon konfigurálhatja a hátralévő műveletekkel.
+     Az alábbi ábra illusztrálja. Hasonlóképp konfigurálhatja a hátralévő műveletekkel.
      
      ![1. feladat részletei][task_details1]
-   * **2. feladat**. Futtatás **interDyMFoam** párhuzamosan a minta kiszámításához.
+   * **2. feladat**. Futtatás **interDyMFoam** a mintául szolgáló számítási párhuzamosan.
      
      * A feladat két csomópont hozzárendelése
      * **Parancssor** - `source /openfoam/settings.sh && /openfoam/hpcimpirun.sh interDyMFoam -parallel > /openfoam/interDyMFoam${CCP_JOBID}.log`
      * **Munkakönyvtár** -/ openfoam/sloshingTank3D
-   * **3. feladat**. Futtatás **reconstructPar** idő könyvtárak minden processor_N_ könyvtárból készleteinek egyesíthet egyetlen.
+   * **3. feladat**. Futtatás **reconstructPar** a készletek minden processor_N_ directory címtárat idő egyesíthet egyetlen.
      
      * A feladat egy csomópont hozzárendelése
      * **Parancssor** - `source /openfoam/settings.sh && reconstructPar > /openfoam/reconstructPar${CCP_JOBID}.log`
      * **Munkakönyvtár** -/ openfoam/sloshingTank3D
-   * **4. feladat**. Futtatás **foamToEnsight** OpenFOAM eredménye konvertálható párhuzamosan EnSight fájlok formázása, és helyezze el a EnSight fájlok egy kis könyvtárban Ensight nevű könyvtár.
+   * **4. feladat**. Futtatás **foamToEnsight** konvertálni az OpenFOAM eredmény párhuzamosan EnSight fájlok formázhatja és a EnSight fájlokat helyezze Ensight nevű megkülönbözteti a kis a címtárban.
      
      * A feladat két csomópont hozzárendelése
      * **Parancssor** - `source /openfoam/settings.sh && /openfoam/hpcimpirun.sh foamToEnsight -parallel > /openfoam/foamToEnsight${CCP_JOBID}.log`
@@ -341,51 +341,51 @@ Most elküldheti a HPC Cluster Manager feladat. A parancsfájl hpcimpirun.sh át
 7. Adja hozzá ezeket a feladatokat, növekvő sorrendben feladat függőségek.
    
    ![Tevékenységfüggőségek][task_dependencies]
-8. Kattintson a **Submit** a feladat futtatásához.
+8. Kattintson a **küldés** Ez a feladat futtatásához.
    
-   Alapértelmezés szerint a HPC Pack elküldi a feladatot, a jelenlegi bejelentkezett felhasználói fiókkal. Miután rákattintott **Submit**, megjelenhet egy párbeszédpanel, ahol megadhatja a felhasználónevet és jelszót.
+   Alapértelmezés szerint a HPC Pack elküldi a feladatot, az aktuális bejelentkezett felhasználói fiókkal. Miután rákattintott **küldés**, megjelenhet egy párbeszédpanel, ahol megadhatja a felhasználónevet és jelszót.
    
    ![Feladat hitelesítő adatai][creds]
    
-   Bizonyos körülmények között a HPC Pack emlékszik a felhasználói adatok előtt adjon meg, és nem jeleníti meg ezen a párbeszédpanelen. HPC Pack jelenjen meg többé ez a következő parancsot a parancssorba írja be, és ezután a feladat elküldéséhez.
+   Bizonyos körülmények között a HPC Pack megjegyzi a bemenő előtt, és ezen a párbeszédpanelen nem jelenik meg a felhasználói adatokat. HPC Pack jelenjen meg. Adja meg a következő parancsot a parancssorba, és majd a feladat elküldéséhez.
    
    ```
    hpccred delcreds
    ```
-9. A feladat több tíz perc alatt az a paraméterek, a minta beállítása alapján több órát vesz igénybe. Hőtérkép a Linux csomópontokon futó feladat látható. 
+9. A feladat szerint a paraméterek meg van a minta több órát a tíz percet vesz igénybe. Az intenzitástérkép láthatja a feladat futtatásakor Linux. 
    
    ![Hőtérkép][heat_map]
    
-   Minden egyes csomóponton nyolc folyamatok indulnak el.
+   Minden egyes csomóponton nyolc folyamatok el lesz indítva.
    
-   ![Linux-folyamat][linux_processes]
-10. A feladat befejezése után található a feladat eredményeinek C:\OpenFoam\sloshingTank3D, és a naplófájlok a C:\OpenFoam mappát.
+   ![Linux-folyamatok][linux_processes]
+10. A feladat befejeztével a feladat eredményeinek található C:\OpenFoam\sloshingTank3D, és a naplófájlok, C:\OpenFoam mappát.
 
 ## <a name="view-results-in-ensight"></a>EnSight az eredmények megtekintése
-Ezenkívül szükség [EnSight](https://www.ceisoftware.com/) megtekintheti és elemezheti a OpenFOAM feladat eredményeinek számára. További információt a képi megjelenítés és EnSight animációt megjelenik ez [videó útmutató](http://www.ceisoftware.com/wp-content/uploads/screencasts/vof_visualization/vof_visualization.html).
+Lehetősége van [EnSight](https://www.ceisoftware.com/) vizualizálását és elemzését az OpenFOAM feladat eredményét. Vizualizáció, és elvégezheti az animációk renderelését EnSight kapcsolatos további információkért lásd: Ez [Videós útmutató](http://www.ceisoftware.com/wp-content/uploads/screencasts/vof_visualization/vof_visualization.html).
 
-1. Miután telepítette az átjárócsomópont EnSight, indítsa el.
-2. Open C:\OpenFoam\sloshingTank3D\EnSight\sloshingTank3D.case.
+1. Miután telepítette a fő csomópontot EnSight, indítsa el.
+2. Nyissa meg a C:\OpenFoam\sloshingTank3D\EnSight\sloshingTank3D.case.
    
-   Megjelenik egy tartály a megjelenítőben.
+   Megjelenik a megjelenítőben tartály.
    
    ![A EnSight tartály][tank]
 3. Hozzon létre egy **Isosurface** a **internalMesh**, majd válassza a változó **alpha_water**.
    
    ![Hozzon létre egy isosurface][isosurface]
-4. Színét **Isosurface_part** az előző lépésben létrehozott. Például állítsa vízjel kék.
+4. Színét **Isosurface_part** az előző lépésben létrehozott. Például állítsa be azt a vízjelek kék.
    
-   ![Isosurface szín módosítása][isosurface_color]
-5. Hozzon létre egy **Iso-kötet** a **falvastagságát** kiválasztásával **falvastagságát** a a **részek** panelen, majd kattintson a **Isosurfaces** gomb az eszköztáron.
-6. A párbeszédpanelen válassza ki a **típus** , **Isovolume** és állítsa be a minimális **Isovolume tartomány** 0,5. A isovolume létrehozásához kattintson a **létrehozása a kijelölt alkotórészek**.
-7. Színét **Iso_volume_part** az előző lépésben létrehozott. Például állítsa a részletes vízjel kék.
-8. Színét **falvastagságát**. Például állítsa átlátszó üres.
-9. Most kattintson **lejátszása** a szimuláció az eredmények megtekintéséhez.
+   ![Szerkesztés isosurface színe][isosurface_color]
+5. Hozzon létre egy **Iso-kötet** a **falak** kiválasztásával **falak** a a **részek** panelen, majd kattintson a **Isosurfaces** gomb az eszköztáron.
+6. A párbeszédpanelen válassza ki a **típus** , **Isovolume** és állítsa be, a minimális **Isovolume tartomány** 0,5. A isovolume létrehozásához kattintson a **létrehozás a kiválasztott kijelzőkkel**.
+7. Színét **Iso_volume_part** az előző lépésben létrehozott. Például állítsa be, a mély víz kék.
+8. Színét **falak**. Például állítsa be, átlátható fehérre.
+9. Most kattintson **lejátszása** szeretné megtekinteni a szimuláció eredményeit.
    
     ![Tartály eredménye][tank_result]
 
-## <a name="sample-files"></a>Mintafájlok
-### <a name="sample-xml-configuration-file-for-cluster-deployment-by-powershell-script"></a>A minta XML konfigurációs fájl fürttelepítés PowerShell-parancsprogram
+## <a name="sample-files"></a>Mintafájl
+### <a name="sample-xml-configuration-file-for-cluster-deployment-by-powershell-script"></a>Minta konfigurációs XML-fájl esetén a fürt PowerShell-parancsfájl által
  ```
 <?xml version="1.0" encoding="utf-8" ?>
 <IaaSClusterConfig>
@@ -512,7 +512,7 @@ ENVIRONMENT_LD_SO_CONF=no
 
 ```
 
-### <a name="sample-settingssh-script"></a>Sample settings.sh script
+### <a name="sample-settingssh-script"></a>A példaszkript settings.sh
 ```
 #!/bin/bash
 
@@ -530,7 +530,7 @@ export WM_MPLIB=INTELMPI
 ```
 
 
-### <a name="sample-hpcimpirunsh-script"></a>Mintaparancsfájl hpcimpirun.sh
+### <a name="sample-hpcimpirunsh-script"></a>A példaszkript hpcimpirun.sh
 ```
 #!/bin/bash
 

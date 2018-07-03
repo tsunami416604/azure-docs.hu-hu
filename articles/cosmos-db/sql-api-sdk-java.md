@@ -1,6 +1,6 @@
 ---
-title: 'Azure Cosmos DB: SQL Java API-t, az SDK és erőforrások |} Microsoft Docs'
-description: Tudnivalók az SQL Java API-t és SDK, beleértve a kiadási dátum, használatból való kivonást dátumok és az Azure Cosmos DB SQL Java SDK verziói között végrehajtott módosításokat.
+title: 'Az Azure Cosmos DB: SQL Java API, SDK és -erőforrások |} A Microsoft Docs'
+description: Mindent megtudhat a SQL Java API-t és az SDK kiadási dátum, kivezetési dátum és az Azure Cosmos DB SQL Java SDK minden verziója közötti végzett módosításokat.
 services: cosmos-db
 author: rnagpal
 manager: kfile
@@ -9,20 +9,20 @@ ms.service: cosmos-db
 ms.component: cosmosdb-sql
 ms.devlang: java
 ms.topic: reference
-ms.date: 05/16/2018
-ms.author: khdang
+ms.date: 06/29/2018
+ms.author: rnagpal
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 352fa562a09d343d4a01b94343a60e3f6610c73f
-ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
+ms.openlocfilehash: d7d00d6236b601d145be03e6086bec2d72faafcd
+ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37097165"
+ms.lasthandoff: 07/02/2018
+ms.locfileid: "37344937"
 ---
-# <a name="azure-cosmos-db-java-sdk-for-sql-api-release-notes-and-resources"></a>SQL API-t Azure Cosmos DB Java SDK: kibocsátási megjegyzések és erőforrások
+# <a name="azure-cosmos-db-java-sdk-for-sql-api-release-notes-and-resources"></a>Az SQL API-t az Azure Cosmos DB Java SDK: kibocsátási megjegyzések és erőforrások
 > [!div class="op_single_selector"]
 > * [.NET](sql-api-sdk-dotnet.md)
-> * [.NET-módosítás adatcsatorna](sql-api-sdk-dotnet-changefeed.md)
+> * [.NET-módosítási hírcsatorna](sql-api-sdk-dotnet-changefeed.md)
 > * [.NET Core](sql-api-sdk-dotnet-core.md)
 > * [Node.js](sql-api-sdk-node.md)
 > * [Aszinkron Java](sql-api-sdk-async-java.md)
@@ -31,211 +31,219 @@ ms.locfileid: "37097165"
 > * [REST](https://docs.microsoft.com/rest/api/cosmos-db/)
 > * [REST erőforrás-szolgáltató](https://docs.microsoft.com/rest/api/cosmos-db-resource-provider/)
 > * [SQL](https://msdn.microsoft.com/library/azure/dn782250.aspx)
-> * [BulkExecutor - .NET](sql-api-sdk-bulk-executor-dot-net.md)
-> * [BulkExecutor - Java](sql-api-sdk-bulk-executor-java.md)
+> * [BulkExecutor – .NET](sql-api-sdk-bulk-executor-dot-net.md)
+> * [BulkExecutor – Java](sql-api-sdk-bulk-executor-java.md)
 
-Az SQL API Java SDK támogatja a szinkron műveleteket. Az aszinkron támogatást, használja a [SQL API aszinkron Java SDK](sql-api-sdk-async-java.md). 
+Az SQL API-t a Java SDK támogatja a szinkron műveletek. Aszinkron támogatást, használja a [SQL API aszinkron Java SDK](sql-api-sdk-async-java.md). 
 
 <table>
 
 <tr><td>**SDK letöltése**</td><td>[Maven 3](http://search.maven.org/#search%7Cgav%7C1%7Cg%3A%22com.microsoft.azure%22%20AND%20a%3A%22azure-documentdb%22)</td></tr>
 
-<tr><td>**API-JÁNAK dokumentációja**</td><td>[Java API-referenciadokumentáció](/java/api/com.microsoft.azure.documentdb)</td></tr>
+<tr><td>**API-dokumentáció**</td><td>[Java API dokumentációja](/java/api/com.microsoft.azure.documentdb)</td></tr>
 
-<tr><td>**Hozzájárul az SDK**</td><td>[GitHubon](https://github.com/Azure/azure-documentdb-java/)</td></tr>
+<tr><td>**Hozzájárul az SDK-t**</td><td>[GitHubon](https://github.com/Azure/azure-documentdb-java/)</td></tr>
 
-<tr><td>**Első lépések**</td><td>[Ismerkedés a Java SDK-val](sql-api-java-get-started.md)</td></tr>
+<tr><td>**Első lépések**</td><td>[A Java SDK használatának első lépései](sql-api-java-get-started.md)</td></tr>
 
-<tr><td>**Webes alkalmazás oktatóanyag**</td><td>[Webalkalmazás fejlesztése a Azure Cosmos DB](sql-api-java-application.md)</td></tr>
+<tr><td>**Alapú webappokról szóló oktatóanyagunkat**</td><td>[Webalkalmazás-fejlesztés az Azure Cosmos DB használatával](sql-api-java-application.md)</td></tr>
 
-<tr><td>**Minimális támogatott futásidejű**</td><td>[JDK 7](http://www.oracle.com/technetwork/java/javase/downloads/jdk7-downloads-1880260.html)</td></tr>
+<tr><td>**Minimális támogatott futtatókörnyezet**</td><td>[JDK 7](http://www.oracle.com/technetwork/java/javase/downloads/jdk7-downloads-1880260.html)</td></tr>
 </table></br>
 
 ## <a name="release-notes"></a>Kibocsátási megjegyzések
 
+### <a name="a-name11621162"></a><a name="1.16.2"/>1.16.2
+* Támogatás hozzáadva streamelési feladatátvétele.
+* Egyéni metaadatainak támogatása.
+* Továbbfejlesztett munkamenet logikai kezelése.
+* Kijavítva a hiba, a partíció kulcstartományhoz gyorsítótárban.
+* Közvetlen üzemmódban NPE hibája kijavítva.
+
 ### <a name="a-name11611161"></a><a name="1.16.1"/>1.16.1
-* Egyedi Index támogatása.
-* Támogatása az adatcsatorna-beállítások folytatási jogkivonat mérete korlátozza.
-* Egy hiba kijavítva a Json-szerializálás (időbélyeg).
-* A hiba kijavítva a Json-szerializálás (enum).
-* Frissítve az 2.9.5 com.fasterxml.jackson.core:jackson databind függ.
+* Támogatás hozzáadva a Unique Index.
+* Támogatás hozzáadva a hírcsatorna-beállítások folytatási jogkivonat mérete korlátozza.
+* Kijavítva a hiba, a Json-szerializálás (időbélyeg).
+* Kijavítva a hiba, a Json-szerializálás (enum).
+* Függőség com.fasterxml.jackson.core:jackson databind 2.9.5 frissítve.
 
 ### <a name="a-name11601160"></a><a name="1.16.0"/>1.16.0
 * Továbbfejlesztett kapcsolatkészlet közvetlen mód.
-* Az orderby közötti partíciólekérdezés előzetes betöltési fokozása javult.
-* Továbbfejlesztett UUID létrehozása.
+* Javult az orderby közötti partíciólekérdezés előzetes betöltési javítása.
+* Továbbfejlesztett UUID generációja.
 * Továbbfejlesztett munkamenet-konzisztencia logikát.
-* Multipolygon támogatása.
-* Partíciós kulcs tartomány statisztika gyűjtemény támogatása.
-* Programhiba rögzített több területi támogatására.
+* Támogatás hozzáadva a multipolygon.
+* Támogatás hozzáadva a partíciós kulcs tartomány statisztika a gyűjteményhez.
+* Kijavítva a hiba, a több régió támogatása.
 
 ### <a name="a-name11501150"></a><a name="1.15.0"/>1.15.0
-* A Json-szerializálást javítja a teljesítményt.
-* Az SDK-verzió Azure Cosmos DB emulátorának elérhetősége a legújabb verziója szükséges a letölthető https://aka.ms/cosmosdb-emulator.
+* A Json-szerializálást teljesítményét.
+* Az SDK-verziója letölthető Azure Cosmos DB Emulatort elérhető legújabb verziója szükséges https://aka.ms/cosmosdb-emulator.
 
 ### <a name="a-name11401140"></a><a name="1.14.0"/>1.14.0
-* A Microsoft ismerősök tárak belső módosításokat.
+* A Microsoft barátok kódtárak belső módosítása.
 
 ### <a name="a-name11301130"></a><a name="1.13.0"/>1.13.0
-* Megtörtént egy probléma javítása olvasási egypartíciós kulcstartományokkal.
-* Megtörtént egy probléma javítása a ResourceID elemzése, amely hatással van adatbázis rövid névvel.
-* Rögzített egy probléma OK partíciós kulcs kódolja.
+* Kijavítva az olvasó egypartíciós kulcstartományokkal.
+* Javítva lett egy probléma ResourceID rövid névvel rendelkező adatbázis-elemzés, amely hatással van.
+* Kijavítva egy probléma oka a partíciós kulcsok kódolása.
 
 ### <a name="a-name11201120"></a><a name="1.12.0"/>1.12.0
-* A kérelem feldolgozása során partíció elágazást kritikus hibajavítások.
-* Az erős és BoundedStaleness konzisztenciaszintek rögzített kapcsolatos problémát.
+* A kérelem feldolgozása során partíció elágazást fontos hibajavításokat tartalmaz.
+* Kijavítva az erős és BoundedStaleness konzisztenciaszintek.
 
 ### <a name="a-name11101110"></a><a name="1.11.0"/>1.11.0
-* Egy új konzisztenciaszint támogatása ConsistentPrefix nevezik.
-* Rögzített munkamenetmód gyűjtemény olvasási hiba.
+* Egy új konzisztenciaszint támogatása az új ConsistentPrefix nevezik.
+* Kijavítva a hiba, munkamenetmód a gyűjtemény olvasási.
 
 ### <a name="a-name11001100"></a><a name="1.10.0"/>1.10.0
-* Particionált gyűjtemény, mint az engedélyezett támogatása 2500 RU/mp, alacsony, a méretezés lépésekben 100 RU/mp.
-* Rögzített, a hiba a natív szerelvény, ami azt eredményezheti NullRef kivétel néhány lekérdezést.
+* Particionált gyűjteménybe, mint az engedélyezett támogatása mint 2500 RU/s alacsony, és 100 RU/s-os léptékben méretezhető.
+* Kijavítva a hiba, amely hatására NullRef kivétel néhány lekérdezést a natív szerelvényben.
 
 ### <a name="a-name196196"></a><a name="1.9.6"/>1.9.6
-* Programhiba rögzített, a lekérdezési motor konfigurációját, amelyek kivételek lekérdezések okozhatnak átjáró módban.
-* A munkamenet-tárolóban, amelyek közvetlenül a webhelycsoport létrehozása után a kéréseket "Tulajdonosa erőforrás nem található" kivétel okozhatnak néhány hibák rögzített.
+* Kijavítva a hiba, a lekérdezési motor konfigurációjában, amelyek átjáró módban lekérdezést kivételek okozhatnak.
+* Rögzített néhány hibákat okozhat a dokumentumgyűjtemény létrehozása után azonnal kérelmek "Tulajdonosa erőforrás nem található" kivétel munkamenet-tárolóban.
 
 ### <a name="a-name195195"></a><a name="1.9.5"/>1.9.5
-* Összesítési lekérdezéseket (COUNT, MIN, MAX, SUM és átlagos) támogatása. Lásd: [összesítési támogatási](sql-api-sql-query.md#Aggregates).
-* Adatcsatorna módosítás támogatása.
-* Gyűjtemény kvótaadatok keresztül RequestOptions.setPopulateQuotaInfo támogatása.
+* Összesítés lekérdezések (száma, MIN, MAX, SUM és átlagos) támogatása. Lásd: [összesítési támogatási](sql-api-sql-query.md#Aggregates).
+* A módosítási hírcsatorna támogatása.
+* Támogatás hozzáadva a gyűjtemény kvótákra vonatkozó információk RequestOptions.setPopulateQuotaInfo keresztül.
 * Tárolt eljárás parancsfájl naplózást RequestOptions.setScriptLoggingEnabled támogatása.
-* Rögzített programhiba, ahol DirectHttps módban lekérdezés lefagyhat, amikor adatátviteli hiba észlelése.
-* Programhiba rögzített munkamenet-konzisztencia módban.
-* Egy hiba miatt előfordulhat, hogy NullReferenceException a HttpContext Ha nagy a kérések aránya rögzített.
-* Javítja a teljesítményt a DirectHttps mód.
+* Kijavítva a hiba, ahol lehetséges, hogy lefagy lekérdezés DirectHttps módban, amikor szabályozási hibák.
+* Kijavítva a hiba, a munkamenet-konzisztencia módját.
+* Kijavítva a hiba, amely NullReferenceException bizonyos okozhat a HttpContext, ha a kérések aránya túl magas.
+* Továbbfejlesztett teljesítmény DirectHttps mód.
 
 ### <a name="a-name194194"></a><a name="1.9.4"/>1.9.4
-* A hozzáadott egyszerű példány-alapú proxyk ügyféltámogatás ConnectionPolicy.setProxy() API-t.
-* A hozzáadott DocumentClient.close() API megfelelően leállítási DocumentClient példányra.
-* Javítja a lekérdezési teljesítmény közvetlen kapcsolatot módban való származtatás a lekérdezésterv a natív szerelvény helyett az átjárót.
-* Állítsa be a FAIL_ON_UNKNOWN_PROPERTIES = false, így a felhasználóknak nem kell a pojo-vá JsonIgnoreProperties ad meg.
-* Átkerült naplózási SLF4J használatára.
+* A hozzáadott egyszerű ügyfél példány-alapú proxy-támogatás ConnectionPolicy.setProxy() API-val.
+* A hozzáadott DocumentClient.close() API-t megfelelően leállítási DocumentClient-példányt.
+* Továbbfejlesztett lekérdezési teljesítmény közvetlen kapcsolódás módban a lekérdezésterv származó a natív szerelvény helyett az átjáró által.
+* Állítsa be a FAIL_ON_UNKNOWN_PROPERTIES = false, hogy a felhasználók nem határozhat meg JsonIgnoreProperties azok pojo-vá.
+* A naplózás újratervezhetők SLF4J használatára.
 * Rögzített, néhány más hibák konzisztencia-olvasó.
 
 ### <a name="a-name193193"></a><a name="1.9.3"/>1.9.3
-* A kapcsolat kezelése közvetlen kapcsolatot módban kapcsolat kiszivárgásának elkerülésére programhiba rögzített.
-* Rögzített programhiba a legfelső szintű lekérdezésben, ahol NullReferenece kivétel generálhat.
-* Javítja a teljesítményt a belső gyorsítótárat hálózati hívás számának csökkentésével.
-* A hozzáadott állapotkód, tevékenységazonosító és a kérelem URI-azonosítója a DocumentClientException hibaelhárítást.
+* Kijavítva a hiba, a kapcsolat-kezelés közvetlen kapcsolódás módban kapcsolat adatszivárgás megelőzése érdekében.
+* Kijavítva a hiba a felső lekérdezésben, ahol NullReferenece kivétel generálhat.
+* Továbbfejlesztett teljesítmény a belső gyorsítótárak esetében a hálózati hívások számának csökkentésével.
+* Új ügyfélállapotok kódjai, ActivityID és a kérelem URI-t DocumentClientException hibaelhárítást.
 
 ### <a name="a-name192192"></a><a name="1.9.2"/>1.9.2
-* Megtörtént egy probléma javítása a kapcsolat kezelése stabilitását.
+* A kapcsolat kezelése a stabilitást javítva lett egy probléma.
 
 ### <a name="a-name191191"></a><a name="1.9.1"/>1.9.1
-* BoundedStaleness konzisztenciaszint támogatása.
-* Közvetlen kapcsolat CRUD műveleteihez particionált gyűjtemények támogatása.
-* SQL adatbázis lekérdezése hiba kijavítva.
-* Programhiba rögzített, a munkamenet-gyorsítótár, ahol munkamenet-azonosító is lehet helytelenül van beállítva.
+* Támogatás hozzáadva a BoundedStaleness konzisztencia szintjét.
+* CRUD-műveletek esetében a particionált gyűjtemények közvetlen kapcsolódás támogatása.
+* Kijavítva a hiba, az SQL-adatbázis lekérdezéséhez.
+* Kijavítva a hiba, ahol munkamenet jogkivonata nem megfelelően beállítható munkamenet-gyorsítótárában.
 
 ### <a name="a-name190190"></a><a name="1.9.0"/>1.9.0
-* Támogatja a párhuzamos lekérdezések partíció közötti.
-* FELSŐ/ORDER BY lekérdezések a particionált gyűjtemények támogatása.
-* Az erős konzisztencia támogatása.
-* Alapú kérések közvetlen kapcsolat használatakor támogatása.
-* Ellenőrizze az összes kérelem újrapróbálkozások között konzisztens marad ActivityId rögzített.
-* Rögzített egy azonos nevű gyűjtemény újbóli létrehozása során a munkamenet-gyorsítótár kapcsolatos hiba.
-* A hozzáadott sokszög és LineString adattípusok indexelő házirend geokerítések térbeli lekérdezéseket a gyűjtemény meg.
-* Java Doc Java 1.8 rögzített problémákat.
+* Támogatás hozzáadva a párhuzamos lekérdezések partíció közötti.
+* Támogatás hozzáadva a particionált gyűjtemények felső/ORDER BY lekérdezések.
+* Erős konzisztencia támogatása.
+* Támogatás hozzáadva a neve alapján kérelmek közvetlen kapcsolat használata esetén.
+* Kijavítva, hogy az összes kérelem újrapróbálkozások között következetes maradjon ActivityId.
+* Kijavítva a hiba, a munkamenet-gyorsítótár során újra létre kellene hoznia egy gyűjtemény ugyanazzal a névvel kapcsolatos.
+* A hozzáadott sokszög és LineString adattípusok közben adja meg a gyűjtemény indexelési szabályzat a geokerítés-térinformatikai lekérdezéseket.
+* Java Doc Java 1.8-as rögzített problémái.
 
 ### <a name="a-name181181"></a><a name="1.8.1"/>1.8.1
-* Az egypartíciós gyűjtemények gyorsítótárba, és nem kulcs kérelmek partícióazonosító extra fetch PartitionKeyDefinitionMap programhiba rögzített.
-* A hiba nem próbálja meg, amikor egy helytelen partíciókulcs-értékkel van megadva a rögzített.
+* Kijavítva a hiba, a gyorsítótár egypartíciós gyűjteményeket, és nem kulcs kérelmek particionálása extra fetch PartitionKeyDefinitionMap.
+* Kijavítva a hiba, akkor egy érvénytelen partíciós kulcsérték nem újra.
 
 ### <a name="a-name180180"></a><a name="1.8.0"/>1.8.0
-* Több területi adatbázis fiókok támogatása.
-* A beállítások az újrapróbálkozások maximális és a várakozási idő maximális újrapróbálkozási testreszabásához szabályozottan halmozott kérelmek automatikus újrapróbálkozási támogatása.  Lásd: RetryOptions és ConnectionPolicy.getRetryOptions().
-* Elavult IPartitionResolver egyéni particionálási kód alapján. A particionált gyűjtemények használata magasabb tárolási és átviteli sebességet.
+* Többrégiós adatbázisfiókhoz támogatása.
+* A szabályozott kérelmeinek száma szabhatja testre a maximális újrapróbálkozási kísérletek és a várakozási idő maximális újrapróbálkozási beállításokkal automatikus újrapróbálkozási támogatása.  RetryOptions és ConnectionPolicy.getRetryOptions() témakörben talál.
+* Elavult IPartitionResolver alapú particionálási egyéni kódot. A particionált gyűjtemények használata magasabb tárolási és átviteli sebességet.
 
 ### <a name="a-name171171"></a><a name="1.7.1"/>1.7.1
-* A hozzáadott újrapróbálkozási házirend támogatása sebességkorlátozást.  
+* A hozzáadott újrapróbálkozási házirend támogatása a sebességkorlátozás.  
 
 ### <a name="a-name170170"></a><a name="1.7.0"/>1.7.0
-* A hozzáadott idő live (TTL)-támogatás a dokumentumok.
+* Dokumentumok élő (TTL) támogatási hozzáadott ideje.
 
 ### <a name="a-name160160"></a><a name="1.6.0"/>1.6.0
-* Megvalósított [particionált gyűjtemények](partition-data.md) és [felhasználói teljesítményszintet](performance-levels.md).
+* Megvalósított [particionált gyűjtemények](partition-data.md) és [felhasználó által definiált teljesítményszintek](performance-levels.md).
 
 ### <a name="a-name151151"></a><a name="1.5.1"/>1.5.1
-* Programhiba rögzített HashPartitionResolver kivonatértékeket little endian Csomagjától konzisztens kell létrehozni.
+* Kijavítva a hiba a HashPartitionResolver kivonatértékeket más SDK-k konzisztens bájtsorrendű létrehozni.
 
 ### <a name="a-name150150"></a><a name="1.5.0"/>1.5.0
-* Kivonatoló & tartomány hozzáadása partícióazonosító feloldókat, elősegítve ezzel a horizontális alkalmazások között több partíciót.
+* Tartomány & ujjlenyomat hozzáadása, amelyek segítik a horizontális skálázás alkalmazásokat, hogy több partíción feloldók particionálásához.
 
 ### <a name="a-name140140"></a><a name="1.4.0"/>1.4.0
-* Upsert megvalósításához. Új upsertXXX módszerek Upsert szolgáltatás támogatása érdekében adott hozzá.
-* Azonosító-alapú útválasztás megvalósítása. Nincs nyilvános API-módosítás, belső összes módosítását.
+* Upsert megvalósításához. Új upsertXXX módszerek Upsert funkció támogatása érdekében adott hozzá.
+* Azonosító-alapú útválasztás megvalósítása. Nincs nyilvános API-módosítás, belső összes módosítást.
 
 ### <a name="a-name130130"></a><a name="1.3.0"/>1.3.0
-* Kiadás verziószáma átveendő Csomagjától összehangolás kihagyva
+* Ahhoz, hogy a verziószám más SDK-k ciklustól kihagyva kiadás
 
 ### <a name="a-name120120"></a><a name="1.2.0"/>1.2.0
-* Támogatja a földrajzi Index
-* Ellenőrzi az összes erőforrás id tulajdonság. Erőforrások azonosító nem tartalmazhat?, /, #, \, karaktereket vagy záró szóközt.
-* Új fejléc "index átalakítása folyamatban" hozzáadása ResourceResponse.
+* Támogatja a térinformatikai Index
+* Ellenőrzi az összes erőforrás id tulajdonsága. Az erőforrások azonosítóit nem tartalmazhat?, /, #, \, karaktereket vagy záró szóközzel.
+* ResourceResponse ad hozzá új fejléc "index átalakítási folyamat".
 
 ### <a name="a-name110110"></a><a name="1.1.0"/>1.1.0
-* V2 indexelési házirendet alkalmazza
+* Indexelési házirend V2 valósít meg
 
 ### <a name="a-name100100"></a><a name="1.0.0"/>1.0.0
 * GA SDK
 
-## <a name="release-and-retirement-dates"></a>Kiadás és a használatból való kivonást dátuma
-Microsoft legalább értesítést küldenek **12 hónapon keresztül** SDK eltávolítása érdekében vagy újabb támogatott verzióra való áttérés előtt.
+## <a name="release-and-retirement-dates"></a>Kiadás és kivezetési dátuma
+A Microsoft legalább értesítést küldenek **12 hónapig** kivonása egy SDK-t kiegyenlítse az a és újabb támogatott verzióra váltás előtt.
 
-Új szolgáltatásait és funkcióit és optimalizálás csak hozzá az aktuális SDK, így javasoljuk, hogy mindig a legújabb SDK verzióra frissít legkorábban lehető.
+Új szolgáltatások és funkciók és optimalizálási lehetőségek csak hozzá az aktuális SDK-hoz, ezért javasoljuk, hogy mindig a legújabb SDK verzióra frissít leghamarabb lehető.
 
-A Cosmos DB kivont SDK használatával fog kell elutasította a szolgáltatás.
+Cosmos DB-hez a kivont SDK használatával bármilyen kérelmet a rendszer elutasítja a szolgáltatás által.
 
 > [!WARNING]
-> Összes verziója az SQL Java SDK-es vagy korábbi **1.0.0** volt használatból **2016. február 29-én**.
+> Összes verzióját az SQL SDK a Javához készült verzió előtt **1.0.0-s** án visszavontuk **2016. február 29-én**.
 > 
 > 
 
 <br/>
 
-| Verzió | Kiadás dátuma | Kivezetési dátum |
+| Verzió | Kiadás dátuma | Visszavonás dátuma |
 | --- | --- | --- |
+| [1.16.2](#1.16.2) |2018. június 29. |--- |
 | [1.16.1](#1.16.1) |2018. május 16. |--- |
 | [1.16.0](#1.16.0) |2018. március 15. |--- |
 | [1.15.0](#1.15.0) |2017. november 14. |--- |
-| [1.14.0](#1.14.0) |2017. Oct 28. |--- |
-| [1.13.0](#1.13.0) |2017. augusztus 25. |--- |
+| [1.14.0](#1.14.0) |2017. október 28. |--- |
+| [1.13.0](#1.13.0) |2017. augusztus 25-én |--- |
 | [1.12.0](#1.12.0) |2017. július 11. |--- |
 | [1.11.0](#1.11.0) |2017. május 10. |--- |
 | [1.10.0](#1.10.0) |2017. március 11. |--- |
 | [1.9.6](#1.9.6) |2017. február 21. |--- |
 | [1.9.5](#1.9.5) |2017. január 31-ig. |--- |
-| [1.9.4](#1.9.4) |2016. november 24. |--- |
+| [1.9.4](#1.9.4) |2016. november 24-én |--- |
 | [1.9.3](#1.9.3) |2016. október 30. |--- |
 | [1.9.2](#1.9.2) |2016. október 28. |--- |
 | [1.9.1](#1.9.1) |2016. október 26. |--- |
 | [1.9.0](#1.9.0) |2016. október 03. |--- |
 | [1.8.1](#1.8.1) |2016. június 30. |--- |
-| [1.8.0](#1.8.0) |2016. június 14. |--- |
+| [1.8.0](#1.8.0) |2016. június 14-én |--- |
 | [1.7.1](#1.7.1) |2016. április 30. |--- |
-| [1.7.0](#1.7.0) |2016. április 27. |--- |
-| [1.6.0](#1.6.0) |2016. március 29. |--- |
-| [1.5.1](#1.5.1) |2015. december 31. |--- |
+| [1.7.0](#1.7.0) |2016. április 27-én |--- |
+| [1.6.0](#1.6.0) |2016. március 29-én |--- |
+| [1.5.1](#1.5.1) |2015. december 31-ig. |--- |
 | [1.5.0](#1.5.0) |2015. december 04. |--- |
-| [1.4.0](#1.4.0) |2015. október 05. |--- |
-| [1.3.0](#1.3.0) |2015. október 05. |--- |
-| [1.2.0](#1.2.0) |2015. augusztus 05. |--- |
+| [1.4.0](#1.4.0) |2015. október 05 |--- |
+| [1.3.0](#1.3.0) |2015. október 05 |--- |
+| [1.2.0](#1.2.0) |2015. augusztus 05 |--- |
 | [1.1.0](#1.1.0) |2015. július 09. |--- |
 | [1.0.1](#1.0.1) |2015. május 12. |--- |
 | [1.0.0](#1.0.0) |2015. április 07. |--- |
-| 0.9.5-prelease |2015. gyel 09. |2016. február 29. |
-| 0.9.4-prelease |2015. február 17. |2016. február 29. |
-| 0.9.3-prelease |2015. január 13. |2016. február 29. |
-| 0.9.2-prelease |2014. decemberi 19 |2016. február 29. |
-| 0.9.1-prelease |2014. decemberi 19 |2016. február 29. |
-| 0.9.0-prelease |2014. december 10. |2016. február 29. |
+| 0.9.5-prelease |2015. március 09. |2016. február 29-én |
+| 0.9.4-prelease |2015. február 17. |2016. február 29-én |
+| 0.9.3-prelease |2015. január 13. |2016. február 29-én |
+| 0.9.2-prelease |2014. december 19-én |2016. február 29-én |
+| 0.9.1-prelease |2014. december 19-én |2016. február 29-én |
+| 0.9.0-prelease |2014. december 10. |2016. február 29-én |
 
 ## <a name="faq"></a>GYIK
 [!INCLUDE [cosmos-db-sdk-faq](../../includes/cosmos-db-sdk-faq.md)]
 
 ## <a name="see-also"></a>Lásd még
-A Cosmos DB kapcsolatos további információkért lásd: [Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) szolgáltatás lapján.
+Cosmos DB kapcsolatos további információkért lásd: [a Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) szolgáltatás lapján.
 

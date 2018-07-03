@@ -1,6 +1,6 @@
 ---
-title: Kiszolgálók Azure veremben üzemeltető SQL |} Microsoft Docs
-description: Hogyan adhat az SQL-példány az SQL-Adapter erőforrás-szolgáltató használatával történő üzembe helyezéséhez.
+title: Az SQL futtató kiszolgálókat az Azure Stackben |} A Microsoft Docs
+description: Hogyan adja hozzá az SQL Server-példányok üzembe helyezés az SQL-Adapter erőforrás-szolgáltatón keresztül.
 services: azure-stack
 documentationCenter: ''
 author: jeffgilb
@@ -11,141 +11,137 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/29/2018
+ms.date: 07/02/2018
 ms.author: jeffgilb
-ms.openlocfilehash: 74d888ffe28e5428b47bfc73122518c22d0f0918
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.reviewer: jeffgo
+ms.openlocfilehash: e8dd425bbb5839b1c2f5ad4e217c61dc50b38ce1
+ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37128707"
+ms.lasthandoff: 07/02/2018
+ms.locfileid: "37346824"
 ---
-# <a name="add-hosting-servers-for-the-sql-resource-provider"></a>Az SQL erőforrás-szolgáltató az üzemeltetési kiszolgáló hozzáadása
+# <a name="add-hosting-servers-for-the-sql-resource-provider"></a>Az erőforrás-szolgáltató SQL üzemeltetési kiszolgáló hozzáadása
 
-Tárolhatja a virtuális gépen (VM) SQL-példány [Azure verem](azure-stack-poc.md), vagy a virtuális gép Azure verem környezetét, amennyiben az erőforrás-szolgáltató SQL csatlakozhat a példány kívül.
+Az egy virtuális gépet (VM) egy SQL-példányt is üzemeltethet [Azure Stack](azure-stack-poc.md), vagy egy virtuális Gépen az Azure Stack környezettel, amennyiben az erőforrás-szolgáltató SQL csatlakozhat a példány kívül.
 
 ## <a name="overview"></a>Áttekintés
 
-Egy SQL-kiszolgálót futtató hozzáadása előtt tekintse át a következő kötelező és általános.
+Mielőtt hozzáadja egy SQL server szoftvert futtatja, tekintse át a következő kötelező és az általános.
 
-**Kötelező követelmények**
+### <a name="mandatory-requirements"></a>Kötelező követelmények
 
-* Engedélyezze az SQL Server-példány SQL-hitelesítést. Mivel az SQL-erőforrás-szolgáltató VM nem tartományhoz csatlakoztatott, hogy csak kapcsolódni tud egy SQL-hitelesítéssel üzemeltető kiszolgálót.
-* Konfigurálja az IP-címet az SQL Server-példányok nyilvános. Az erőforrás-szolgáltató és a felhasználók számára, például webalkalmazások, felhasználói hálózati kommunikációra, ezért az SQL-példány a hálózati kapcsolatra szükség.
+* Az SQL Server-példány az SQL-hitelesítés engedélyezéséhez. Az SQL-erőforrás-szolgáltató virtuális gép nem csatlakozik tartományhoz, mert azt csak csatlakozhat egy SQL-hitelesítéssel üzemeltető kiszolgálót.
+* Konfigurálja az IP-címek az SQL Server-példányok megegyeznek a nyilvános Azure Stackkel való telepítésekor. Az erőforrás-szolgáltató, és a felhasználók számára, például a Web Apps, felhasználói hálózati kommunikációra, így nem szükséges a kapcsolat SQL-példányhoz a hálózaton.
 
-**Általános követelmények**
+### <a name="general-requirements"></a>Általános követelmények
 
-* Az erőforrás-szolgáltató és a felhasználó munkaterhelés jelölt ki az SQL-példány számára. Bármely más felhasználók által használt SQL-példány nem használható. Ez a korlátozás vonatkozik alkalmazásszolgáltatások is.
-* Egy fiókot a megfelelő jogosultsággal rendelkező konfigurálása az erőforrás-szolgáltató.
-* Ön az SQL Server-példányok és gazdagépeik kezeléséért.  Például az erőforrás-szolgáltató nem alkalmazza a frissítéseket, kezeli a biztonsági mentések vagy kezeli a hitelesítő adatok elforgatási.
+* Használja az SQL-példány dedikált a erőforrás-szolgáltató és a felhasználó munkaterhelések által. Bármely más felhasználói által használt SQL-példány nem használhat. Ez a korlátozás is vonatkozik, az App Servicesbe való.
+* A megfelelő jogosultsággal rendelkező fiók konfigurálása az erőforrás-szolgáltató (lásd alább).
+* Ön az SQL Server-példányok és gazdagépeik kezeléséért.  Például az erőforrás-szolgáltató nem alkalmazza a frissítéseket, kezelni a biztonsági mentések vagy kezelni hitelesítőadat-elforgatás.
 
-### <a name="sql-server-virtual-machine-images"></a>SQL Server virtuálisgép-rendszerképek
+### <a name="sql-server-virtual-machine-images"></a>Az SQL Server virtuálisgép-lemezképek
 
-SQL IaaS virtuálisgép-rendszerképek a piactér-kezelési funkción keresztül érhetők el. Ezeket a lemezképeket ugyanazok, mint az SQL virtuális gépen elérhető az Azure-ban.
+Az SQL IaaS virtuálisgép-lemezképet a Marketplace-en felügyeleti szolgáltatáson keresztül érhetők el. Ezek a lemezképek ugyanazok, mint az SQL virtuális gépek az Azure-ban elérhető.
 
-Győződjön meg arról, hogy mindig a legújabb verziójának letöltése a **SQL IaaS bővítmény** egy SQL virtuális gép egy Piactéri elemet központi telepítése előtt. A IaaS bővítményt, és megfelelő portál fejlesztést tartalmaz további funkciókat, például az automatikus javítás és biztonsági mentését. A bővítmény kapcsolatos további információkért lásd: [Azure virtuális gépeken a SQL Server Agent kiterjesztésű felügyeleti feladatok automatizálására](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-server-agent-extension).
+Győződjön meg arról, hogy mindig a legújabb verzióját töltse le a **SQL IaaS-bővítményt** Piactéri elem használatával SQL virtuális gép üzembe helyezése előtt. Az IaaS-bővítményt és a megfelelő portál fejlesztések például az automatikus javítás további alkalmazásszolgáltatások biztosítása érdekében, és készítsen biztonsági másolatot. Ez a bővítmény kapcsolatos további információkért lásd: [Azure virtuális gépeken az SQL Server Agent bővítmény a felügyeleti feladatok automatizálása](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-server-agent-extension).
 
-Egyéb módon telepítéséhez SQL virtuális gépeken, beleértve a sablonokat a [Azure verem gyorsindítási galéria](https://github.com/Azure/AzureStack-QuickStart-Templates).
+SQL virtuális gépek, beleértve a sablonok üzembe helyezésének egyéb lehetőség van a [Azure Stack gyorsindítási galéria](https://github.com/Azure/AzureStack-QuickStart-Templates).
 
 > [!NOTE]
-> Egy több csomópontos Azure veremben telepített bármely üzemeltetési kiszolgáló felhasználói előfizetés kell létrehozni. Az alapértelmezett szolgáltató előfizetésből nem hozhatók létre. Azok a felhasználói portál vagy egy megfelelő bejelentkezési azonosító egy PowerShell-munkamenetet kell létrehozni. Minden üzemeltetési kiszolgáló számlázható virtuális gép, és a megfelelő SQL-licenccel kell rendelkeznie. A szolgáltatás-rendszergazda _is_ lehet, hogy az előfizetés tulajdonosa.
+> Bármely üzemeltetési kiszolgáló telepíthető a több csomópontos Azure Stack felhasználói előfizetés, és nem az alapértelmezett szolgáltatója előfizetést kell létrehozni. Azok a felhasználói portál vagy egy megfelelő bejelentkezési egy PowerShell-munkamenetet kell létrehoznia. Minden üzemeltetési kiszolgáló számlázható virtuális gépek és a megfelelő SQL-licenccel kell rendelkeznie. A szolgáltatás-rendszergazda _is_ lehet, hogy az előfizetés tulajdonosa.
 
 ### <a name="required-privileges"></a>Szükséges jogosultságok
 
-Létrehozhat egy rendszergazda felhasználó alacsonyabb jogosultsággal, mint egy SQL SysAdmin (rendszergazda). A felhasználói engedélyek csak kell a következő műveletek:
+Egy SQL SysAdmin (rendszergazda), mint az alacsonyabb szintű jogosultságokkal rendelkező rendszergazda felhasználó is létrehozhat. A felhasználó csak engedélyre van szüksége a következő műveletek:
 
-* Adatbázis: Hozzon létre, Alter, amelyben a Containment (a mindig bekapcsolva csak), dobja el, a biztonsági mentés
-* Rendelkezésre állási csoporthoz: Alter, a csatlakoztatáshoz hozzáadása adatbázis
-* Bejelentkezési identitás: Hozzon létre, válassza ki, Alter, dobja el, visszavonása
-* SELECT műveletek: \[fő\].\[ sys\].\[ availability_group_listeners\] (AlwaysOn) sys.availability_replicas (AlwaysOn), a sys.databases, \[fő\].\[ sys\].\[ dm_os_sys_memory\], SERVERPROPERTY, \[fő\].\[ sys\].\[ availability_groups\] (AlwaysOn) sys.master_files
+* Adatbázis: Hozzon létre, Alter, amelyben a Containment (az Always On csak), dobja el, a biztonsági mentés
+* Rendelkezésre állási csoporthoz: Alter, csatlakozzon, adatbázis hozzáadása/eltávolítása
+* Bejelentkezés: Hozzon létre, válassza ki, Alter, dobja el, visszavonása
+* SELECT műveletek: \[fő\].\[ sys\].\[ availability_group_listeners\] (AlwaysOn), a sys.availability_replicas (AlwaysOn), a sys.databases, \[fő\].\[ sys\].\[ dm_os_sys_memory\], SERVERPROPERTY, \[fő\].\[ sys\].\[ availability_groups\] (AlwaysOn), sys.master_files
 
-## <a name="provide-capacity-by-connecting-to-a-standalone-hosting-sql-server"></a>Adja meg az SQL Server kiszolgálót futtató önálló csatlakozás kapacitás
+### <a name="additional-security-information"></a>További biztonsági információkat
 
-Használhatja az önálló (nem-magas rendelkezésre ÁLLÁSÚ) bármely SQL Server 2014 vagy SQL Server 2016 kiadása SQL-kiszolgálók. Győződjön meg arról, hogy egy rendszergazdai jogosultságokkal rendelkező fiók hitelesítő adatait.
+Az alábbi adatokat a további biztonsági útmutatást nyújt:
 
-Egy önálló üzemeltető kiszolgálót, amely már be van állítva hozzáadásához kövesse az alábbi lépéseket:
+* Az összes Azure Stack-tároló a BitLocker titkosítja, így tetszőleges SQL-példányra, az Azure Stacken titkosított blobot a tárhelyet fogja használni.
+* Az erőforrás-szolgáltató az SQL teljes mértékben támogatja a TLS 1.2. Győződjön meg arról, hogy bármely SQL Server, az SQL-RP-mel felügyelt konfigurálva van a TLS 1.2 _csak_ és a függő Entitás, amely alapértelmezés szerint. A TLS 1.2-es, az SQL Server támogatása az összes támogatott verzióit lásd: [a TLS 1.2 támogatása a Microsoft SQL Server](https://support.microsoft.com/en-us/help/3135244/tls-1-2-support-for-microsoft-sql-server).
+* Használja az SQL Server Configuration Manager beállítása a **ForceEncryption** mindig lehetőséget annak biztosítása érdekében az SQL server felé minden kommunikáció titkosított. Lásd: [, konfigurálja a kiszolgálót, hogy a titkosított kapcsolatokat](https://docs.microsoft.com/en-us/sql/database-engine/configure-windows/enable-encrypted-connections-to-the-database-engine?view=sql-server-2017#ConfigureServerConnections).
+* Győződjön meg róla, minden ügyfélalkalmazás is titkosított kapcsolaton keresztül kommunikál.
+* Az SQL Server-példányok által használt tanúsítványok megbízhatósági kapcsolata konfigurálva van az RP-ből.
 
-1. Jelentkezzen be a Azure verem operátor portálra szolgáltatás-rendszergazdaként.
+## <a name="provide-capacity-by-connecting-to-a-standalone-hosting-sql-server"></a>Adja meg a kapacitás csatlakozik egy különálló SQL server szoftvert futtatja
 
-2. Válassza ki **Tallózás** &gt; **felügyeleti erőforrások** &gt; **üzemeltető kiszolgálók SQL**.
+Használhatja az önálló (nem – magas rendelkezésre ÁLLÁS) bármely SQL Server 2014 vagy SQL Server 2016-os kiadása SQL-kiszolgálók. Győződjön meg arról, hogy egy rendszergazdai jogosultságokkal rendelkező fiók hitelesítő adatait.
+
+Adjon hozzá egy önálló üzemeltető kiszolgálót, amely már be van állítva, kövesse az alábbi lépéseket:
+
+1. Jelentkezzen be az Azure Stack operátori portál szolgáltatás-rendszergazdaként.
+
+2. Válassza ki **Tallózás** &gt; **felügyeleti erőforrások** &gt; **kiszolgálókat üzemeltető SQL**.
 
    ![Az SQL futtató kiszolgálók](./media/azure-stack-sql-rp-deploy/sqlhostingservers.png)
 
-   A **SQL üzemeltető kiszolgálók**, erőforrás-szolgáltató SQL csatlakozhat az SQL Server példányai, amelyek az erőforrás-szolgáltató háttér szolgál.
+   A **SQL üzemeltető kiszolgálók**, az erőforrás-szolgáltató SQL csatlakozhat az SQL Server azon példányai, amely az erőforrás-szolgáltató háttérrendszer szolgál.
 
    ![SQL-csatoló irányítópult](./media/azure-stack-sql-rp-deploy/sqladapterdashboard.png)
 
 3. A **üzemeltető SQL-kiszolgáló hozzáadása**, adja meg a kapcsolat adatait az SQL Server-példányhoz.
 
-   ![Egy SQL-kiszolgálót futtató hozzáadása](./media/azure-stack-sql-rp-deploy/sqlrp-newhostingserver.png)
+   ![Adjon hozzá egy SQL Server szoftvert futtatja](./media/azure-stack-sql-rp-deploy/sqlrp-newhostingserver.png)
 
-    Szükség esetén adja meg a példány nevét, és adjon meg egy portszámot, ha a példány nincs hozzárendelve az alapértelmezett port a 1433-as.
+    Szükség esetén adja meg a példány nevét, és adjon meg egy portszámot, ha a példány nincs hozzárendelve az alapértelmezett 1433-as portot.
 
    > [!NOTE]
-   > Mindaddig, amíg az SQL-példány elérhetők, a felhasználó és rendszergazda Azure Resource Manager, az erőforrás-szolgáltató ellenőrzése alatt lehet tenni. Az SQL-példány __kell__ kizárólag az erőforrás-szolgáltató kiosztani.
+   > Mindaddig, amíg az SQL-példány sorrendvezérlése előtt a felhasználó és az Azure Resource Manager rendszergazda, akkor az erőforrás-szolgáltató ellenőrzése alatt helyezhető. Az SQL-példány __kell__ kizárólag az erőforrás-szolgáltató kiosztását.
 
-4. Kiszolgálók hozzáadása, rendeljen hozzájuk egy meglévő SKU, vagy hozzon létre egy új Termékváltozat. A **üzemeltető kiszolgáló hozzáadása**, jelölje be **termékváltozatok**.
+4. Kiszolgálók hozzáadása, hozzárendelheti őket egy meglévő Termékváltozat, vagy hozzon létre egy új Termékváltozatban. A **üzemeltető kiszolgáló hozzáadása a**válassza **termékváltozatok**.
 
-   * Egy meglévő SKU használni, válasszon egy elérhető SKU, és válassza **létrehozása**.
-   * A Termékváltozat létrehozásához válassza **+ hozzon létre új SKU**. A **létrehozása SKU**, adja meg a szükséges adatokat, és válassza **OK**.
+   * Egy meglévő Termékváltozat használatához válassza ki a Termékváltozat érhető el, majd **létrehozás**.
+   * A Termékváltozat létrehozásához válassza **+ létrehozni az új Termékváltozatot**. A **Termékváltozat létrehozása**, és adja meg a szükséges információkat, majd válassza ki **OK**.
 
      > [!IMPORTANT]
-     > Különleges karaktereket, szóközöket és időszakok, beleértve a nem támogatott **neve** mező. Az alábbi képernyőfelvételen a példák segítségével adja meg az értékeket a **termékcsalád**, **réteg**, és **Edition** mezőket.
+     > Különleges karaktereket, szóközöket és időszakok, többek között nem támogatottak a **neve** mező. Az alábbi képernyőfelvétel-készítés példák segítségével adja meg az értékeket a **termékcsalád**, **szint**, és **Edition** mezőket.
 
-     ![Hozzon létre egy Termékváltozat](./media/azure-stack-sql-rp-deploy/sqlrp-newsku.png)
+     ![A Termékváltozat létrehozása](./media/azure-stack-sql-rp-deploy/sqlrp-newsku.png)
 
-      SKU órát is igénybe vehet egy megjeleníteni a portálon. Felhasználók nem hozható létre a Termékváltozat teljesen létrehozásáig.
+## <a name="provide-high-availability-using-sql-always-on-availability-groups"></a>Magas rendelkezésre állás SQL Always On rendelkezésre állási csoportok használatával
 
-### <a name="sku-notes"></a>Termékváltozat megjegyzések
+SQL Always On példányok konfigurálásához további lépéseket igényel, és megköveteli a három virtuális gép (vagy fizikai gépek.) Ez a cikk azt feltételezi, hogy már rendelkezik egy Always On rendelkezésre állási csoportjainak alapos ismerete. További információkért tekintse át a következő cikkeket:
 
-SKU segítségével szolgáltatásajánlatok megkülönböztetéséhez. Lehet például egy SQL vállalati példányt, amely a következő jellemzőkkel rendelkezik:
-  
-* nagy kapacitású
-* nagy teljesítményű
-* Magas rendelkezésre állás
-
-Azokat a csoportokat, egy nagy teljesítményű adatbázis szükséges való hozzáférés korlátozása a fenti példában egy SKU hozhat létre.
-
->[!TIP]
->Használjon, amely tükrözi SKU nevet, például a kapacitást és teljesítményt az SKU-kiszolgálóinak képességeit ismerteti. A név segítenek a hozzájuk tartozó adatbázisok telepítse a megfelelő SKU elősegítésére szolgál.
-
-Ajánlott eljárásként az üzemeltetési kiszolgáló, a termékváltozatban kell rendelkeznie a azonos erőforrás és teljesítménybeli jellemzőit.
-
-## <a name="provide-high-availability-using-sql-always-on-availability-groups"></a>SQL Always On rendelkezésre állási csoportok használatával magas rendelkezésre állás biztosításához
-
-SQL Always On példányok konfigurálásához további lépéseket igényel, és megköveteli a három virtuális gépek (vagy fizikai gépek.) Ez a cikk feltételezi, hogy már rendelkezik egy Always On rendelkezésre állási csoportok alapos ismerete. További információkért tekintse át a következő cikkeket:
-
-* [SQL Server Always On rendelkezésre állási csoportok az Azure virtuális gépeken bemutatása](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-availability-group-overview)
+* [SQL Server Always On rendelkezésre állási csoportok az Azure-beli virtuális gépek bemutatása](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-availability-group-overview)
 * [Always On rendelkezésre állási csoportok (SQL Server)](https://docs.microsoft.com/en-us/sql/database-engine/availability-groups/windows/always-on-availability-groups-sql-server?view=sql-server-2017)
 
 > [!NOTE]
-> Az SQL adapter erőforrás-szolgáltató _csak_ támogatja az SQL 2016 SP1 Enterprise, vagy később példányának mindig bekapcsolva. Az adapter konfigurációs új SQL-szolgáltatások például az automatikus összehangolása szükséges.
+> Erőforrás-szolgáltató SQL adapter _csak_ támogatja az SQL 2016 SP1 Enterprise, vagy később-példány AlwaysOn rendelkezésre állási csoportok számára. Az adapter konfigurációs van szükség, például az automatikus összehangolása új SQL-szolgáltatások.
 
 ### <a name="automatic-seeding"></a>Automatikus összehangolása
-Engedélyeznie kell az [automatikus összehangolása](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/automatically-initialize-always-on-availability-group) minden egyes példányaihoz tartozó SQL Server rendelkezésre állási csoporton.
 
-Automatikus összehangolása összes példánya engedélyezéséhez módosítsa, majd futtassa a következő SQL-parancsot az összes olyan példány:
+Engedélyeznie kell a [automatikus összehangolása](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/automatically-initialize-always-on-availability-group) az egyes rendelkezésre állási csoport, az SQL Server mindegyik példányán.
 
-  ```
+Ahhoz, hogy minden példány automatikus összehangolása, szerkesztése, és futtassa a következő SQL-parancsot minden példány esetében:
+
+  ```sql
   ALTER AVAILABILITY GROUP [<availability_group_name>]
       MODIFY REPLICA ON 'InstanceName'
       WITH (SEEDING_MODE = AUTOMATIC)
   GO
   ```
 
-A másodlagos példányokra szerkesztheti, és futtassa a következő SQL-parancsot az összes olyan példány:
+Másodlagos-példányokon szerkesztése, és futtassa a következő SQL-parancsot minden példány esetében:
 
-  ```
+  ```sql
   ALTER AVAILABILITY GROUP [<availability_group_name>] GRANT CREATE ANY DATABASE
   GO
   ```
 
-### <a name="configure-contained-database-authentication"></a>Konfigurálja a tartalmazott adatbázis hitelesítése
-Mielőtt felvenne egy tartalmazott adatbázisban egy rendelkezésre állási csoporthoz, győződjön meg arról, hogy a tartalmazott adatbázis hitelesítése beállítás értéke 1 minden server-példányon, amelyen a rendelkezésre állási csoport rendelkezésre állási másodpéldány. További információkért lásd: [tartalmazott adatbázis hitelesítése kiszolgálói konfigurációs beállítás megadása](https://docs.microsoft.com/sql/database-engine/configure-windows/contained-database-authentication-server-configuration-option?view=sql-server-2017).
+### <a name="configure-contained-database-authentication"></a>Tartalmazott adatbázis-hitelesítés konfigurálása
 
-Ezek a parancsok segítségével a tartalmazott adatbázis hitelesítési kiszolgáló beállítás az összes olyan példány:
+Mielőtt hozzáadná egy tartalmazott adatbázis egy rendelkezésre állási csoport, győződjön meg arról, hogy a tartalmazott adatbázis hitelesítése kiszolgálói beállítás értéke 1 a minden a rendelkezésre állási csoport egy rendelkezésre állási másodpéldányt futtató kiszolgálópéldány. További információkért lásd: [tartalmazott adatbázis hitelesítése kiszolgálói konfigurációs beállítás](https://docs.microsoft.com/sql/database-engine/configure-windows/contained-database-authentication-server-configuration-option?view=sql-server-2017).
 
-  ```
+Ezeket a parancsokat használja a tartalmazott adatbázis hitelesítési kiszolgáló beállítást, minden példány esetében:
+
+  ```sql
   EXEC sp_configure 'contained database authentication', 1
   GO
   RECONFIGURE
@@ -154,28 +150,43 @@ Ezek a parancsok segítségével a tartalmazott adatbázis hitelesítési kiszol
 
 ### <a name="to-add-sql-always-on-hosting-servers"></a>SQL Always On üzemeltető kiszolgálók hozzáadása
 
-1. A szolgáltatás-rendszergazdaként jelentkezzen be a verem felügyeleti portálján
+1. A szolgáltatás-rendszergazdaként jelentkezzen be az Azure Stack felügyeleti portálján
 
-2. Válassza ki **Tallózás** &gt; **felügyeleti erőforrások** &gt; **üzemeltető kiszolgálók SQL** &gt; **+ Hozzáadás**.
+2. Válassza ki **Tallózás** &gt; **felügyeleti erőforrások** &gt; **kiszolgálókat üzemeltető SQL** &gt; **+ Hozzáadás**.
 
-   A **SQL üzemeltető kiszolgálók**, az SQL Server erőforrás-szolgáltató csatlakozhat az SQL Server tényleges példányait, átadott háttér az erőforrás-szolgáltató neve.
+   A **SQL üzemeltető kiszolgálók**, az SQL Server erőforrás-szolgáltató csatlakozhat tényleges példányait, amelyeket az SQL Server, az erőforrás-szolgáltató háttérrendszer szolgálhat.
 
-3. Töltse ki az űrlapot a kapcsolódási adatait. az SQL Server-példányhoz. Győződjön meg arról, hogy használja-e a teljes Tartománynevét a címe mindig figyelő (opcionális port számát.) Adja meg a konfigurált rendszergazdai jogosultságokkal rendelkező fiók adatait.
+3. Adja meg az SQL Server-példány kapcsolati adatait tartalmazó képernyő. Győződjön meg arról, hogy használja-e a teljes tartománynév a címe mindig figyelő (opcionális port számát.) Adja meg az adatokat, a konfigurált rendszergazdai jogosultságokkal rendelkező fiók.
 
-4. Always On rendelkezésre állási csoportnak jelölőnégyzet SQL Always On rendelkezésre állási csoportnak példányok támogatásának engedélyezéséhez.
+4. Az Always On rendelkezésre állási csoport jelölőnégyzetet az SQL Always On rendelkezésre állási csoport példányok támogatásának engedélyezése.
 
-   ![Mindig engedélyezése](./media/azure-stack-sql-rp-deploy/AlwaysOn.PNG)
+   ![A mindig engedélyezése](./media/azure-stack-sql-rp-deploy/AlwaysOn.PNG)
 
-5. Adja hozzá az SQL Always On példány egy másikra.
+5. Az SQL Always On példány hozzá egy Termékváltozatot.
 
    > [!IMPORTANT]
-   > Önálló kiszolgálók nem keverhetők az Always On osztályt a azonos Termékváltozat. Kísérlet történt kombinálhatók típusok hozzáadása az első üzemeltetési kiszolgáló eredmények a hiba után.
+   > Az Always On instances ugyanazon Termékváltozat nem használhatók vegyesen önálló kiszolgálón. Kísérlet történt vegyesen típusok hozzáadása az első üzemeltetési kiszolgáló eredmények hiba után.
+
+## <a name="sku-notes"></a>Termékváltozat-megjegyzések
+
+SKU-k segítségével szolgáltatásajánlatok megkülönböztetéséhez. Rendelkezhet például egy SQL Enterprise-példányt, amely a következő jellemzőkkel rendelkezik:
+  
+* nagy kapacitású
+* nagy teljesítményű
+* magas rendelkezésre állás
+
+SKU-k az adott felhasználók vagy csoportok ebben a kiadásban nem lehet hozzárendelni.
+
+ SKU-k órát is igénybe vehet egy lesznek láthatók a portálon. Felhasználók nem hozható létre adatbázis, amíg a Termékváltozat létrehozása befejeződött.
+
+>[!TIP]
+>Használja a Termékváltozat neve, amely tükrözi a kiszolgálók, a termékváltozat, például a kapacitás és teljesítmény funkcióit írja le. A név, amely a felhasználókat a megfelelő termékváltozatra adatbázisaikat üzembe ábrázolt funkcionál.
+
+Ajánlott eljárásként a üzemeltetési kiszolgáló, a Termékváltozat az azonos erőforrás és teljesítménybeli jellemzőit kell rendelkeznie.
 
 ## <a name="make-the-sql-databases-available-to-users"></a>Az SQL-adatbázisok elérhetővé tétele a felhasználók számára
 
-Tervek és SQL-adatbázisok a felhasználók számára elérhetővé ajánlatok létrehozása. Adja hozzá a **Microsoft.SqlAdapter** szolgáltatás pedig a tervet, és adja hozzá az alapértelmezett kvótát, vagy létrehozhat egy új kvótát.
-
-![Tervek és adatbázisokat tartalmazza ajánlatok létrehozása](./media/azure-stack-sql-rp-deploy/sqlrp-newplan.png)
+Hozzon létre a csomagok és ajánlatok az SQL Database-adatbázisok elérhetővé tétele a felhasználók számára. Adja hozzá a **Microsoft.SqlAdapter** a terv szolgáltatást, és a egy új kvóta létrehozása.
 
 ## <a name="next-steps"></a>További lépések
 

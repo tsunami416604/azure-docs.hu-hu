@@ -1,6 +1,6 @@
 ---
-title: Hitelesítés, regisztráció, jelszó alaphelyzetbe állítása, az Azure Active Directory B2C |} Microsoft Docs
-description: Hogyan hozhat létre, a sign-Close-Up/sign-a webalkalmazás, a profil szerkesztése és a jelszó alaphelyzetbe állítása az Azure Active Directory B2C használatával.
+title: Hitelesítés, előfizetési, jelszó-visszaállítás, az Azure Active Directory B2C |} A Microsoft Docs
+description: Hogyan hozhat létre egy webalkalmazást, amely rendelkezik regisztrálási-regisztrálási vagy bejelentkezési profil szerkesztése és a jelszó alaphelyzetbe állítása, Azure Active Directory B2C használatával.
 services: active-directory-b2c
 author: davidmu1
 manager: mtillman
@@ -10,54 +10,56 @@ ms.topic: article
 ms.date: 03/17/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: ec106b46097f9a35b9e41e08de4c18339f1b28f0
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 090e85df2f4315e6a31d5f9da38483f7ec00be22
+ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34710406"
+ms.lasthandoff: 07/02/2018
+ms.locfileid: "37345005"
 ---
-# <a name="create-an-aspnet-web-app-with-azure-active-directory-b2c-sign-up-sign-in-profile-edit-and-password-reset"></a>Egy ASP.NET-webalkalmazás létrehozása az Azure Active Directory B2C regisztráció, bejelentkezés, profil szerkesztése és a jelszó alaphelyzetbe állítása
+# <a name="create-an-aspnet-web-app-with-azure-active-directory-b2c-sign-up-sign-in-profile-edit-and-password-reset"></a>ASP.NET-webalkalmazás létrehozása az Azure Active Directory B2C regisztrációs, bejelentkezési,-profilszerkesztést és jelszó alaphelyzetbe állítása
 
 Ez az oktatóanyag a következőket mutatja be:
 
 > [!div class="checklist"]
-> * Az Azure AD B2C szervezetiidentitás-szolgáltatások hozzáadása a webalkalmazáshoz
+> * Azure AD B2C identitáskezelési funkciókat hozzáadása a webalkalmazáshoz
 > * A webes alkalmazás regisztrálása az Azure AD B2C-címtárban
-> * Egy felhasználó sign-Close-Up/sign-in, a profil szerkesztése és a jelszó-visszaállítási házirend a webalkalmazás létrehozása
+> * Hozzon létre egy regisztrálási-regisztrálási vagy bejelentkezési felhasználói, -profilszerkesztést és a webalkalmazás a jelszó-visszaállítási házirend
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- A B2C-bérlő csatlakoztatni kell egy Azure-fiókra. Létrehozhat egy ingyenes Azure-fiók [Itt](https://azure.microsoft.com/).
-- Szüksége [Microsoft Visual Studio](https://www.visualstudio.com/) vagy megtekintéséhez és módosításához a mintakódot hasonló programok.
+- A B2C-bérlő kapcsolódnia kell egy Azure-fiókra. Létrehozhat egy ingyenes Azure-fiókkal [Itt](https://azure.microsoft.com/).
+- Szükséges [Microsoft Visual Studio](https://www.visualstudio.com/) vagy más hasonló program megtekintése és módosítása a mintakódot.
 
-## <a name="create-an-azure-ad-b2c-directory"></a>Azure AD B2C címtár létrehozása
+## <a name="create-an-azure-ad-b2c-tenant"></a>Azure AD B2C bérlő létrehozása
 
-Ahhoz, hogy használni tudja az Azure AD B2C-t, előbb létre kell hoznia egy címtárat vagy bérlőt. A könyvtár egy olyan tároló, a felhasználók, alkalmazások, csoportok és több. Ha egy már nem rendelkezik, ez az útmutató a folytatás előtt hozzon létre egy B2C-címtárat.
+Használatához Azure AD B2C-vel, létre kell hoznia egy bérlőt. A bérlő egy olyan tároló, a minden felhasználó, alkalmazások, csoportok és így tovább. Ha Ön nem rendelkezik ilyennel, hozzon létre egy B2C-bérlő ebben az útmutatóban a folytatás előtt.
 
 [!INCLUDE [active-directory-b2c-create-tenant](../../includes/active-directory-b2c-create-tenant.md)]
 
 > [!NOTE]
 > 
-> Az Azure-előfizetéshez a B2C-bérlő csatlakoztatni kell. Kiválasztása után **létrehozása**, jelölje be a **kapcsolat egy meglévő Azure AD B2C bérlő számára az Azure-előfizetésem** lehetőséget, majd a a **Azure AD B2C bérlő** legördülő listán, válassza ki a a bérlői szeretne hozzárendelni.
+> Az Azure-előfizetéshez az Azure AD B2C-bérlő csatlakozni kell. Kiválasztása után **létrehozás**, jelölje be a **hivatkozásra egy meglévő Azure AD B2C-bérlőt szeretne aktiválni az Azure-előfizetésem** lehetőséget, majd a **Azure AD B2C-bérlő** legördülő menüben válassza a a bérlő társítani szeretné.
 
-## <a name="create-and-register-an-application"></a>Hozzon létre, és egy alkalmazás regisztrálása
+## <a name="create-and-register-an-application"></a>Hozzon létre, és a egy alkalmazás regisztrálása
 
-Ezt követően kell létrehozni és regisztrálni az alkalmazást a B2C-címtárban. Ez az Azure AD B2C-vel történő alkalmazása biztonságos kommunikációhoz szükséges információkat biztosít. 
+Ezután meg kell létrehozása és az alkalmazás regisztrálása az Azure AD B2C-bérlőben. Ez biztosítja, hogy adatokat, amelyek az Azure AD B2C-vel való az alkalmazás biztonságos kommunikációhoz. 
+
+Válassza az Azure Portal bal felső sarkában található **Minden szolgáltatás** lehetőséget, majd keresse meg és válassza ki az **Azure AD B2C**-t. Érdemes most a korábban létrehozott bérlő használatával.
 
 [!INCLUDE [active-directory-b2c-register-web-api](../../includes/active-directory-b2c-register-web-api.md)]
 
-Amikor elkészült, hogy az API-k és a natív alkalmazás az alkalmazás beállításaiban.
+Amikor elkészült, egy API-t és a egy natív alkalmazást kap az alkalmazás beállításaiban.
 
-## <a name="create-policies-on-your-b2c-tenant"></a>A B2C-bérlő a házirendek létrehozása
+## <a name="create-policies-on-your-b2c-tenant"></a>Szabályzatok a B2C bérlő létrehozása
 
-Az Azure AD B2C-ben a felhasználói élményeket [szabályzatok](active-directory-b2c-reference-policies.md) határozzák meg. Ebben a kódmintában három identitásélményt tartalmaz: **előfizetési & bejelentkezési**, **profil szerkesztése**, és **jelszó-változtatási**.  Mindkettőhöz létre kell hoznia egy szabályzatot a [szabályzatok áttekintésével foglalkozó cikkben](active-directory-b2c-reference-policies.md) leírtak szerint. -Házirendet ne feledje, válassza ki a megjelenítendő név attribútum vagy jogcímet, és másolja le a későbbi használatra a házirend nevét.
+Az Azure AD B2C-ben a felhasználói élményeket [szabályzatok](active-directory-b2c-reference-policies.md) határozzák meg. Ez a kódminta három identitásélményt tartalmaz: **regisztrációs és bejelentkezési**, **profil szerkesztése**, és **új jelszó kérésére vonatkozó**.  Mindkettőhöz létre kell hoznia egy szabályzatot a [szabályzatok áttekintésével foglalkozó cikkben](active-directory-b2c-reference-policies.md) leírtak szerint. Az egyes szabályzatoknál mindenképpen jelölje ki a megjelenítendő név attribútum vagy a jogcím, és másolja le a házirend nevét későbbi használatra.
 
-### <a name="add-your-identity-providers"></a>Az identitás-szolgáltatóktól hozzáadása
+### <a name="add-your-identity-providers"></a>Az identitásszolgáltató hozzáadása
 
-Válassza ki a beállítások **identitás-szolgáltatóktól** , és válassza a felhasználónév előfizetési vagy e-mailt létrehozni.
+Válassza a beállítások **Identitásszolgáltatók** , és válassza a regisztráció felhasználónév vagy a regisztráció E-mail-címmel.
 
-### <a name="create-a-sign-up-and-sign-in-policy"></a>Regisztráció és bejelentkezés házirend létrehozása
+### <a name="create-a-sign-up-and-sign-in-policy"></a>Regisztrációs és bejelentkezési szabályzat létrehozása
 
 [!INCLUDE [active-directory-b2c-create-sign-in-sign-up-policy](../../includes/active-directory-b2c-create-sign-in-sign-up-policy.md)]
 
@@ -69,7 +71,7 @@ Válassza ki a beállítások **identitás-szolgáltatóktól** , és válassza 
 
 [!INCLUDE [active-directory-b2c-create-password-reset-policy](../../includes/active-directory-b2c-create-password-reset-policy.md)]
 
-A házirendek létrehozása után készen áll az alkalmazás elkészítésére.
+Miután létrehozta a szabályzatokat, készen áll az alkalmazás elkészítésére.
 
 ## <a name="download-the-sample-code"></a>A mintakód letöltése
 
@@ -79,11 +81,11 @@ Az oktatóanyag kódjának kezelése a [GitHubon](https://github.com/Azure-Sampl
 git clone https://github.com/Azure-Samples/active-directory-b2c-dotnet-webapp-and-webapi.git
 ```
 
-Miután letöltötte a mintakódot, nyissa meg a Visual Studio .sln fájlt a kezdéshez. A megoldásfájl két projektet tartalmaz: `TaskWebApp` és `TaskService`. `TaskWebApp` a rendszer az MVC webalkalmazás, amely a felhasználó kommunikál. A `TaskService` az alkalmazás webes API háttérszolgáltatása, amely tárolja a felhasználók feladatlistáit. Ez a cikk csak a `TaskWebApp` alkalmazást ismerteti. Megtudhatja, hogyan hozhat létre `TaskService` Azure AD B2C segítségével, lásd: [a .NET webes api-oktatóanyag](active-directory-b2c-devquickstarts-api-dotnet.md).
+Miután letöltötte a mintakódot, nyissa meg a Visual Studio .sln fájlt a kezdéshez. A megoldásfájl két projektet tartalmaz: `TaskWebApp` és `TaskService`. `TaskWebApp` a rendszer az MVC-webalkalmazás, amellyel a felhasználó kommunikál. A `TaskService` az alkalmazás webes API háttérszolgáltatása, amely tárolja a felhasználók feladatlistáit. Ez a cikk csak a `TaskWebApp` alkalmazást ismerteti. Megtudhatja, hogyan hozhat létre `TaskService` Azure AD B2C-t használja, lásd: [a .NET webes api-oktatóanyag](active-directory-b2c-devquickstarts-api-dotnet.md).
 
-## <a name="update-code-to-use-your-tenant-and-policies"></a>A bérlői és a házirendek kód frissítése
+## <a name="update-code-to-use-your-tenant-and-policies"></a>A bérlő és a szabályzatok használata a kód frissítése
 
-A minta úgy van konfigurálva, hogy a bemutató bérlőnk házirendjeit és ügyfél-azonosítóját használja. Csatlakoztassa a saját bérlőt, nyissa meg a szükséges `web.config` a a `TaskWebApp` projektre, és cserélje le a következő értékeket:
+A minta úgy van konfigurálva, hogy a bemutató bérlőnk házirendjeit és ügyfél-azonosítóját használja. Szeretne csatlakozni, a saját bérlőn, meg kell nyitnia `web.config` a a `TaskWebApp` projektre, és cserélje le a következő értékeket:
 
 * Az `ida:Tenant` helyett szerepeljen a bérlő neve
 * Az `ida:ClientId` helyett szerepeljen a webapp alkalmazásazonosítója
@@ -93,35 +95,35 @@ A minta úgy van konfigurálva, hogy a bemutató bérlőnk házirendjeit és üg
 * Az `ida:ResetPasswordPolicyId` helyett szerepeljen a „Jelszó alaphelyzetbe állítása” házirend neve
 
 ## <a name="launch-the-app"></a>Indítsa el az alkalmazást
-A Visual studióban, indítsa el az alkalmazást. A feladatlista lapon keresse meg és jegyezze fel, az URL-címe: https://login.microsoftonline.com/ *YourTenantName*/oauth2/v2.0/authorize?p=*YourSignUpPolicyName*& client_id =*YourclientID*.....
+A Visual studióban nyissa meg az alkalmazást. Lépjen a feladatlista lapra, és figyelje meg az URL-cím: https://login.microsoftonline.com/ *YourTenantName*/oauth2/v2.0/authorize?p=*YourSignUpPolicyName*& client_id =*YourclientID*.....
 
-Iratkozzon fel az alkalmazást az e-mail cím vagy a felhasználó neve. Jelentkezzen ki, majd jelentkezzen be újra, és szerkesztheti a profilját, vagy a jelszó alaphelyzetbe állítása. Kijelentkezés és bejelentkezés másik felhasználóként. 
+Jelentkezzen az alkalmazás az e-mail-cím vagy a felhasználó neve. Jelentkezzen ki, majd jelentkezzen be újra a profil szerkesztése vagy alaphelyzetbe állíthatja a jelszót. Jelentkezzen ki, és jelentkezzen be másik felhasználóként. 
 
-## <a name="add-social-idps"></a>Közösségi IDPs hozzáadása
+## <a name="add-social-idps"></a>Közösségi identitásszolgáltató hozzáadása
 
-Jelenleg az alkalmazás támogatja a csak a regisztráció és bejelentkezés felhasználói **helyi fiókok**; fiókok a B2C-címtárban tárolja, amely a felhasználónév és jelszó használata. Az Azure AD B2C segítségével támogathatja más **identitás-szolgáltatóktól** (IDPs) bármely, a kód módosítása nélkül.
+Jelenleg az alkalmazás támogatja a csak a regisztráció és bejelentkezés felhasználói **helyi fiókok**; a B2C-címtárban tárolt fiókok, egy felhasználónevet és jelszót használja. Azure AD B2C használatával hozzáadhat más támogatási **Identitásszolgáltatók** (IDP) bármely, a kód módosítása nélkül.
 
-Közösségi IDPs hozzáadása az alkalmazáshoz, először ezek a cikkek részletes utasításait követve. Minden egyes IDP, amelyeket támogatni kíván meg kell, hogy a rendszer az alkalmazás regisztrálása és szerezzen be egy ügyfél-azonosítót.
+A közösségi identitásszolgáltató hozzáadása az alkalmazáshoz, először a részletes utasításait végrehajtva ezek a cikkek. Minden egyes Identitásszolgáltatót szeretne biztosítani meg kell regisztrálni egy alkalmazást, hogy a rendszer, és szerezzen be egy ügyfél-azonosítót.
 
-* [Az IDP Facebook beállítása](active-directory-b2c-setup-fb-app.md)
-* [Az IDP Google beállítása](active-directory-b2c-setup-goog-app.md)
-* [Az IDP Amazon beállítása](active-directory-b2c-setup-amzn-app.md)
-* [Az IDP LinkedIn beállítása](active-directory-b2c-setup-li-app.md)
+* [Facebook-Identitásszolgáltató beállítása](active-directory-b2c-setup-fb-app.md)
+* [Google-Identitásszolgáltató beállítása](active-directory-b2c-setup-goog-app.md)
+* [Amazon-Identitásszolgáltató beállítása](active-directory-b2c-setup-amzn-app.md)
+* [LinkedIn-Identitásszolgáltató beállítása](active-directory-b2c-setup-li-app.md)
 
-Miután hozzáadta az identitás-szolgáltatóktól B2C-címtárban, módosítsa a három szabályzat tartalmazza az új IDPs mindegyikének leírtak szerint a [házirendek áttekintésével foglalkozó cikkben](active-directory-b2c-reference-policies.md). A házirend mentése után futtassa újra az alkalmazást.  A bejelentkezési hozzáadott új IDPs kell megjelennie, és minden a személyazonosság-előfizetési beállítások észlel.
+Miután az identitás-szolgáltatóktól ad B2C-címtárban, szerkessze tartalmazza az új identitásszolgáltató használatát, a három szabályzat minden egyes leírtak szerint a [házirendek áttekintésével foglalkozó cikkben](active-directory-b2c-reference-policies.md). Miután mentette a szabályzatokat, futtassa újra az alkalmazást.  Az új identitásszolgáltató bejelentkezési hozzáadott kell megjelennie, és minden, az identitás-előfizetési beállítások élményhez.
 
-A házirendek kísérletezhet, és figyelje meg a mintaalkalmazás hatással. Vegye fel vagy távolítsa el a IDPs, kezelheti az alkalmazás jogcímét, vagy módosítsa a regisztrációs attribútumokat. Kísérletet, amíg meg nem látja hogyan házirendeket, a hitelesítési kérelmek és OWIN alkalmazássá.
+Kísérletezhet a szabályzatokat, és vizsgálja meg a mintaalkalmazást kifejtett hatást. Adja hozzá, vagy távolítsa el az identitásszolgáltató használatát, alkalmazás jogcímét, vagy módosítsa a regisztrációs attribútumokat. Kísérletet, amíg nem láthatja, hogy milyen szabályzatok, a hitelesítési kérések és OWIN alkalmazássá.
 
-## <a name="sample-code-walkthrough"></a>A minta kód forgatókönyv
-Az alábbi szakaszok bemutatják, hogyan példakód alkalmazás van konfigurálva. Akkor lehet, hogy ezzel útmutatóként a jövőbeli fejlesztés.
+## <a name="sample-code-walkthrough"></a>Kód mintaútmutató
+A következő szakaszok bemutatják, hogyan van konfigurálva a mintakódot. Használhat ez segítségképp jövőbeli alkalmazás fejlesztése.
 
-### <a name="add-authentication-support"></a>Vegye fel a hitelesítéshez
+### <a name="add-authentication-support"></a>Hitelesítési támogatás hozzáadása
 
-Most már konfigurálhatja az alkalmazás az Azure AD B2C használatához. Az alkalmazást úgy, hogy az OpenID Connect hitelesítési kérelmeket küld az Azure AD B2C kommunikál. A kérelmek előírják a felhasználói élmény, a házirend hajtható végre szeretné az alkalmazást. A Microsoft OWIN könyvtár segítségével ezeket a kérelmeket küldeni, házirendek hajtható végre, kezelheti a felhasználói munkamenetek és még sok más.
+Most konfigurálhatja az alkalmazás Azure AD B2C segítségével. Az alkalmazás az Azure AD B2C-vel kommunikál, OpenID Connect hitelesítési kérések küldésével. A kérések végrehajtásához adja meg a szabályzatot szeretné az alkalmazás felhasználói élményét szabályozzák. A Microsoft OWIN könyvtár segítségével ezeket a kérelmeket küldeni, hajtsa végre a házirendek, a felhasználói munkamenetek kezelhet stb.
 
 #### <a name="install-owin"></a>Az OWIN telepítése
 
-Első lépésként hozzá az OWIN köztes NuGet-csomagok a projekthez a Visual Studio Csomagkezelő konzol használatával.
+Első lépésként adja hozzá az OWIN közbenső NuGet-csomagok a projekt a Visual Studio Csomagkezelői konzol használatával.
 
 ```Console
 PM> Install-Package Microsoft.Owin.Security.OpenIdConnect
@@ -149,11 +151,11 @@ public partial class Startup
 }
 ```
 
-#### <a name="configure-the-authentication-middleware"></a>A hitelesítési köztes konfigurálása
+#### <a name="configure-the-authentication-middleware"></a>A közbenső hitelesítési szoftver konfigurálása
 
-Nyissa meg a fájlt `App_Start\Startup.Auth.cs` és megvalósítását a `ConfigureAuth(...)` metódust. Megadja a paraméterek `OpenIdConnectAuthenticationOptions` kommunikálni az Azure AD B2C-koordináták az alkalmazások kiszolgálására. Ha nem adja meg a paraméterek, az alapértelmezett értéket fogja használni. Például, hogy ne adja meg a `ResponseType` minta, ezért a alapértelmezett érték `code id_token` minden kimenő kérelem Azure AD B2C használni fogják.
+Nyissa meg a fájlt `App_Start\Startup.Auth.cs` és megvalósítása a `ConfigureAuth(...)` metódust. A paraméterek meg `OpenIdConnectAuthenticationOptions` állnak az Azure AD B2C-vel folytatott kommunikációhoz az alkalmazás koordinátáit. Ha nem ad meg bizonyos paraméterek, az alapértelmezett értéket fogja használni. Például, hogy ne adjon meg a `ResponseType` a mintában tehát az alapértelmezett érték `code id_token` az egyes kimenő kérelmekre az Azure AD B2C-vel használni fogják.
 
-Szükség cookie-hitelesítés beállítása. Az OpenID Connect köztes cookie-kat használ a felhasználói munkameneteket, többek között.
+Is kell a cookie-hitelesítés beállítása. Az OpenID Connect közbenső szoftvert használ cookie-kat a felhasználói munkameneteket, többek között.
 
 ```CSharp
 // App_Start\Startup.Auth.cs
@@ -203,20 +205,20 @@ public partial class Startup
 }
 ```
 
-A `OpenIdConnectAuthenticationOptions` újabb meghatároztuk visszahívási funkciók az OpenID Connect köztes által kapott az adott értesítésekhez. Ezek közül a viselkedésmódok meghatározása egy `OpenIdConnectAuthenticationNotifications` objektumra, és tárolja azokat a `Notifications` változó. A minta a három különböző visszahívások attól függően, hogy az esemény azt meg.
+A `OpenIdConnectAuthenticationOptions` újabb meghatározzuk egy készletét az adott értesítésekhez, az OpenID Connect közbenső szoftver által kapott visszahívási függvényekben. Ezen viselkedés meghatározása egy `OpenIdConnectAuthenticationNotifications` objektumra, és eltárolni a `Notifications` változó. A mintánkban meghatározzuk az esemény függően három különböző visszahívásokat.
 
-### <a name="using-different-policies"></a>Eltérő házirendek használatával
+### <a name="using-different-policies"></a>Különböző szabályzatok használatával
 
-A `RedirectToIdentityProvider` értesítési aktiválódik, amikor egy kérelem Azure AD B2C. A visszahívási függvény `OnRedirectToIdentityProvider`, rendszer ellenőrzi a kimenő hívásban, ha azt szeretné, hogy egy másik házirend. Ahhoz, hogy ne a jelszó alaphelyzetbe állítása, vagy szerkesztheti a profilját, például a jelszó-visszaállítási házirend az alapértelmezett "Regisztráció vagy bejelentkezés" házirend helyett használja a megfelelő házirendet kell.
+A `RedirectToIdentityProvider` értesítés aktiválódik, amikor kérelem érkezik, az Azure AD B2C-t. A visszahívási függvény `OnRedirectToIdentityProvider`, ellenőrizzük a kimenő hívásban szeretnénk egy másik szabályzat használja. Annak érdekében, hogy ne a jelszó alaphelyzetbe állítása, és a egy profil szerkesztése, például a jelszó-visszaállítási házirend az alapértelmezett "Regisztrálási vagy bejelentkezési" házirend helyett használja a megfelelő házirendet kell.
 
-A mintában, amikor a felhasználó szeretné a jelszó alaphelyzetbe állítása, vagy szerkesztheti a profilját, azt a házirend hozzáadása azt előnyben részesítik a OWIN környezetben való használatát. Amely a következő módon hajtható végre:
+A mintánkban amikor a felhasználó alaphelyzetbe állíthatja a jelszót, vagy módosítsa a profilt kíván hozzáadunk a szabályzatot, hogy inkább az OWIN-környezetben való használata. Amely a következő módon teheti meg:
 
 ```CSharp
     // Let the middleware know you are trying to use the edit profile policy
     HttpContext.GetOwinContext().Set("Policy", EditProfilePolicyId);
 ```
 
-A visszahívási függvény is létrehozható és `OnRedirectToIdentityProvider` a következő tevékenységek végrehajtásával:
+A visszahívási függvény valósíthat meg, és `OnRedirectToIdentityProvider` az alábbiak szerint:
 
 ```CSharp
 /*
@@ -240,11 +242,11 @@ private Task OnRedirectToIdentityProvider(RedirectToIdentityProviderNotification
 
 ### <a name="handling-authorization-codes"></a>Hitelesítési kódok kezelése
 
-A `AuthorizationCodeReceived` értesítési lesz kiváltva, ha az engedélyezési kód érkezik. Az OpenID Connect köztes nem támogatja a hozzáférési jogkivonatok cserélő kódokat. Manuálisan továbbíthatja a jogkivonat a visszahívási függvény a kódját. További információkért tekintse meg a [dokumentáció](active-directory-b2c-devquickstarts-web-api-dotnet.md) , amely ismerteti, hogyan.
+A `AuthorizationCodeReceived` értesítés akkor aktiválódik, ha a hozzáférési kód érkezik. Az OpenID Connect közbenső szoftver nem támogatja a cserélő kódokat a hozzáférési tokenekhez. A kód meg a tokent egy visszahívási függvény a cserél manuálisan is. További információkért tekintse meg a [dokumentáció](active-directory-b2c-devquickstarts-web-api-dotnet.md) , amely bemutatja, hogyan.
 
 ### <a name="handling-errors"></a>Hibák kezelése
 
-A `AuthenticationFailed` értesítési lesz kiváltva, ha a hitelesítés sikertelen. A visszahívási metódus képes kezelni a hibákat, igény szerint. Azonban hozzá kell adnia egy ellenőrizze a hiba kódja `AADB2C90118`. A "Regisztráció vagy bejelentkezés" házirend végrehajtása közben a felhasználó rendelkezik-e választhat egy **elfelejtette a jelszavát?** hivatkozásra. Ebben az esetben az Azure AD B2C elküldi az alkalmazás adott hiba mely azt jelzi, hogy az alkalmazás egy kérelmet, használja helyette: a jelszó-visszaállítási házirend győződjön.
+A `AuthenticationFailed` értesítés akkor aktiválódik, ha a hitelesítés sikertelen. A visszahívási metódus képes kezelni a hibákat, igény szerint. Azonban hozzá kell adnia egy hibakód keresése `AADB2C90118`. A "Regisztrálási vagy bejelentkezési" szabályzatot a végrehajtása során a felhasználó rendelkezik-e ki egy **elfelejtette a jelszavát?** hivatkozásra. Ebben az esetben az Azure AD B2C-t küld az alkalmazás adott hiba kód jelzi, hogy az alkalmazás egy kérelmet, a jelszó-visszaállítási házirend használata esetén inkább győződjön meg.
 
 ```CSharp
 /*
@@ -276,9 +278,9 @@ private Task OnAuthenticationFailed(AuthenticationFailedNotification<OpenIdConne
 
 ### <a name="send-authentication-requests-to-azure-ad"></a>Az Azure AD hitelesítési kérések küldése
 
-Az alkalmazás megfelelően konfigurálva van az Azure AD B2C az OpenID Connect hitelesítési protokoll használatával kommunikálnak. OWIN kezeli a hitelesítési üzenetek létrehozásával, az ellenőrzése az Azure AD B2C származó jogkivonatokat és a felhasználói munkamenet megtartásával részleteit. Most már minden felhasználói folyamat kezdeményezéséhez.
+Az alkalmazás most már megfelelően van konfigurálva, az Azure AD B2C az OpenID Connect hitelesítési protokoll használatával kommunikálnak. OWIN kezeli az Azure AD B2C érkező jogkivonatok érvényességének elvégezte a hitelesítési üzenetek, valamint a felhasználói munkamenetek fenntartását. Most már minden egyes felhasználói folyamat elindítására.
 
-Amikor a felhasználó megadja **Sign up/bejelentkezési**, **profilszerkesztés**, vagy **jelszó-átállítási** web app alkalmazásban a társított művelet indították el a `Controllers\AccountController.cs`:
+Amikor egy felhasználó kijelöl **Sign up/bejelentkezés**, **profil szerkesztése**, vagy **jelszó alaphelyzetbe állítása** a web app alkalmazásban a társított művelet meghívása a `Controllers\AccountController.cs`:
 
 ```CSharp
 // Controllers\AccountController.cs
@@ -335,7 +337,7 @@ public void ResetPassword()
 }
 ```
 
-OWIN segítségével jelentkezzen ki a felhasználó az alkalmazásból. A `Controllers\AccountController.cs` vezetünk be:
+OWIN használhatja ki a felhasználót az alkalmazásból is. A `Controllers\AccountController.cs` van:
 
 ```CSharp
 // Controllers\AccountController.cs
@@ -355,7 +357,7 @@ public void SignOut()
 }
 ```
 
-Explicit módon hívja meg a házirend, akkor is használhatnak a `[Authorize]` a tartományvezérlőket-címke, amely végrehajtja a házirend, ha a felhasználó nem jelentkezett be. Nyissa meg `Controllers\HomeController.cs` , és adja hozzá a `[Authorize]` címkén belül, hogy a jogcímek vezérlő.  Az utolsó házirend állították be, mikor OWIN választja ki a `[Authorize]` címke talált.
+Explicit módon meghívása egy szabályzatot, túl használhatja egy `[Authorize]` címke, a vezérlők, amely végrehajtja a házirend, ha a felhasználó nem jelentkezett be. Nyissa meg `Controllers\HomeController.cs` , és adja hozzá a `[Authorize]` a jogcímek vezérlő címkét.  Az utolsó szabályzat konfigurálva mikor OWIN kiválasztja a `[Authorize]` címke elérte.
 
 ```CSharp
 // Controllers\HomeController.cs
@@ -367,11 +369,11 @@ public ActionResult Claims()
   ...
 ```
 
-### <a name="display-user-information"></a>Felhasználói adatok megjelenítése
+### <a name="display-user-information"></a>Felhasználói információ megjelenítése
 
-Amikor a felhasználók hitelesítésére OpenID Connect használatával, ha az Azure AD B2C azonosítója jogkivonatot ad vissza, amely tartalmazza az alkalmazás **jogcímek**. Ezek a helyességi feltételek a felhasználóról. Az alkalmazás személyre szabása jogcímek használata.
+Amikor a felhasználók az OpenID Connect hitelesítést, Azure AD B2C visszaadja-e, amely tartalmazza az alkalmazás-azonosító jogkivonat **jogcímek**. Ezek a helyességi feltételek a felhasználóról. Jogcímek segítségével személyre szabhatja az alkalmazást.
 
-Nyissa meg az `Controllers\HomeController.cs` fájlt. Felhasználói jogcímeket, a vezérlők keresztül érheti el a `ClaimsPrincipal.Current` rendszerbiztonsági objektumot.
+Nyissa meg az `Controllers\HomeController.cs` fájlt. Felhasználói jogcímek keresztül elérhető a tartományvezérlőkön keresztül a `ClaimsPrincipal.Current` rendszerbiztonsági objektumot.
 
 ```CSharp
 // Controllers\HomeController.cs
@@ -385,4 +387,4 @@ public ActionResult Claims()
 }
 ```
 
-Bármilyen jogcímet, amely az alkalmazás fogad ugyanúgy érheti el.  Az alkalmazás kap minden jogcím listája érhető el, a a **jogcímek** lap.
+Bármilyen jogcímet, amely az alkalmazás fogad a ugyanúgy érheti el.  Az alkalmazás megkapja az összes a jogcímek listája a rendelkezésére áll a **jogcímek** lapot.

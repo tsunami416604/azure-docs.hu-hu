@@ -1,6 +1,6 @@
 ---
-title: Használja a mintaként használható adathalmazt a Machine Learning Studióban |} Microsoft Docs
-description: A Machine Learning Studio szereplő mintákat a adatkészletekből leírását. A kísérletek ezek mintaként használható adathalmazt is használhatja.
+title: A mintaadatkészletek használata a Machine Learning Studióban |} A Microsoft Docs
+description: A Machine Learning Studióban szereplő minta modellek használt adatkészletekhez leírása. A kísérletek ezek mintaadatkészletek is használhat.
 services: machine-learning
 documentationcenter: ''
 author: heatherbshapiro
@@ -15,22 +15,22 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/19/2018
-ms.openlocfilehash: 87d0eac427f2d3904278dbe8211a3fae3da891ed
-ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
+ms.openlocfilehash: acdc2ca6f0746f4495f6b3747b7fc303574f712c
+ms.sourcegitcommit: 4597964eba08b7e0584d2b275cc33a370c25e027
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/28/2018
-ms.locfileid: "37085055"
+ms.lasthandoff: 07/02/2018
+ms.locfileid: "37342548"
 ---
 # <a name="use-the-sample-datasets-in-azure-machine-learning-studio"></a>Az Azure Machine Learning Studió mintaadatkészleteinek használata
 [top]: #machine-learning-sample-datasets
 
-Amikor az Azure Machine Learning hoz létre egy új munkaterületet, alapértelmezés szerint számos mintaként használható adathalmazt és kísérletek jelennek meg. Számos mintaként használható adathalmazt ezeket a mintákat a használják a [Azure Eszközintelligencia-katalógus](http://gallery.cortanaintelligence.com/). Mások, különböző típusú adatok gépi tanulás általában szerepel példaként szerepelnek.
+Amikor létrehoz egy új munkaterületet az Azure Machine Learning, a számos mintaadatkészletek és kísérletek alapértelmezés szerint szerepelnek. A mintául szolgáló modell által használt ezek mintaadatkészletek számos a [Azure AI-katalógusban](http://gallery.cortanaintelligence.com/). Mások, általában használt gépi tanulási adatokat különböző típusú példaként szerepelnek.
 
-Ezek az adatkészletek között az Azure Blob storage érhető el. Ezen adatkészletek esetében a következő táblázat egy közvetlen hivatkozást. Használatával a kísérletek ezek az adatkészletek is használhatja a [és adatokat importálhat] [ import-data] modul.
+Ezek az adatkészletek néhány elérhető az Azure Blob storage-ban. Ezen adatkészletek esetében a következő táblázat a közvetlen hivatkozást tartalmaz. Használatával a kísérletek az ezeket az adatkészleteket is használhatja a [adatok importálása] [ import-data] modul.
 
-A többi ezek mintaként használható adathalmazt érhetők el a munkaterület **mentett adatkészletek**. Ez a modulpalettán bal oldalán a kísérletvászonra a Machine Learning Studióban találja meg.
-Használhatja bármelyik ezek az adatkészletek saját kísérletben húzza a kísérletvászonra.
+A munkaterület alatt érhető el a többi ezek mintaadatkészletek **mentett adatkészletek**. Ez a kísérlet vászon, a Machine Learning Studióban a bal oldalon a modulpaletta találhatja.
+Is használhatja ezeket az adatkészleteket bármelyikét a saját kísérletben húzza a kísérletvászonra.
 
 
 [!INCLUDE [machine-learning-free-trial](../../../includes/machine-learning-free-trial.md)]
@@ -43,304 +43,304 @@ Használhatja bármelyik ezek az adatkészletek saját kísérletben húzza a k�
 </tr>
 
 <tr>
-  <td>Felnőtt nyilvántartásba bevétel bináris osztályozási adatkészlet</td>
+  <td>Felnőtt népszámlálási jövedelem bináris osztályozási adatkészlet</td>
   <td>
-Egy részét a 1994 nyilvántartásba adatbázist, működő felnőttek > 100 módosított bevétel indexű 16-os életkorát.
+> 100 módosított jövedelem indexű 16 idősebb működő felnőttek használatával 1994 népszámlálási adatbázis egy részét.
 <p></p>
-<b>Használat:</b> demográfiai használatával megjósolható, hogy egy személy szerez évente több mint 50 K személyek besorolását.
+<b>Használat:</b> demográfiai használatával előre, hogy egy személy bevétele évente több mint 50 ezer személyek besorolását.
 <p></p>
-<b>Kapcsolódó kutatási:</b> Kohavi, R., Becker, b, (1996). UCI gépi tanulási a tárház <a href="http://archive.ics.uci.edu/ml"> http://archive.ics.uci.edu/ml </a>. Irvine, CA: Egyetemi a kaliforniai, a iskolai az adatokat és a számítástechnikai </td>
+<b>Kapcsolódó Research:</b> Kohavi, r, Becker, b, (1996). UCI Machine Learning-tárház <a href="http://archive.ics.uci.edu/ml"> http://archive.ics.uci.edu/ml </a>. Irvine, CA: University of California, a School, adatokat és a számítógép-tudományi </td>
 </tr>
 
 <tr>
-  <td>Repülőtéri kódok adatkészlet</td>
+  <td>Repülőtér kódok adatkészlet</td>
   <td>
-USA repülőtéri kódokat.
+Egyesült Államok repülőtér kódokat.
 <p></p>
-Ez az adatkészlet egyes USA repülőtéri biztosítása a repülőtéri azonosítóját és nevét, és a hely várost és egy sort tartalmaz.
+Ez az adatkészlet minden Egyesült államokbeli repülőtér, a repülőtéren Azonosítóját és nevét, és a hely város és állam megadása egy sort tartalmaz.
   </td>
 </tr>
 
 <tr>
   <td>Autó price data (Raw)</td>
   <td>
-Ellenőrizze és, beleértve az ár modellhez tartozó szolgáltatások, mint a hengerszám és MPG, valamint egy biztosítási kockázati pontszám száma által autók kapcsolatos információk.
+Győződjön meg arról, és az árat, beleértve a modell a szolgáltatások, például hengerszám és MPG, valamint egy biztosítási kockázati pontszám száma szerint tulajdonságkészletét kapcsolatos információk.
 <p></p>
-A kockázati pontszám kezdetben tartozik automatikus ár. Majd ellátó matematikusok symboling, hogy ez a folyamat a tényleges veszélyességét módosul. + 3 érték azt jelzi, hogy az automatikus kockázatos, és a -3, hogy az informatikai érték valószínűleg biztonságos.
+A kockázati pontszám először kapcsolódik automatikus ár. Ezután módosul, a tényleges kockázat a biztosítási matematikusok, symboling a folyamatot. + 3 érték azt jelzi, hogy az automatikus kockázatos, és a -3 értéket, hogy biztonságos-e valószínűleg.
 <p></p>
-<b>Használat:</b> előre jelezni a kockázati pontszám funkcióihoz regressziós vagy multivariate besorolásával. 
+<b>Használat:</b> a kockázati pontszám funkciók, vagy a többváltozós regresszió besorolás alapján képes előre jelezni. 
 <p></p>
-<b>Kapcsolódó kutatási:</b> Schlimmer, J.C. (1987). UCI gépi tanulási a tárház <a href="http://archive.ics.uci.edu/ml"> http://archive.ics.uci.edu/ml </a>. Irvine, CA: Egyetemi a kaliforniai, a iskolai az adatokat és a számítástechnikai </td>
+<b>Kapcsolódó Research:</b> Schlimmer, J.C. (1987). UCI Machine Learning-tárház <a href="http://archive.ics.uci.edu/ml"> http://archive.ics.uci.edu/ml </a>. Irvine, CA: University of California, a School, adatokat és a számítógép-tudományi </td>
 </tr>
 
 <tr>
-  <td>Annak bérleti UCI adatkészlet</td>
+  <td>Kerékpár UCI Kerékpárkölcsönzési adatkészlet</td>
   <td>
-A dataset UCI kerékpárt bérleti beruházási Bikeshare vállalati Washingtoni kerékpárt bérleti hálózat által származó valós adatok alapján.
+UCI uci Kerékpárkölcsönzési adatkészletet, amely azon alapul, amely fenntartja a Washington, D.C. uci kerékpárkölcsönzési hálózat tőke Bikeshare vállalat valós adatait.
 <p></p>
-Az adatkészlet egyes órában 17,379 sorok összesen 2011 és 2012, naponta egy sorból áll. Óránkénti kerékpárt bérlését tartományán: 1 – 977.
+Az adatkészlet 17,379 sorok összesen 2011 és 2012, naponta, óránként egy sorral rendelkezik. Kerékpárkölcsönzés óránként tartományán az 1-től 977.
 
   </td>
 </tr>
 
 <tr>
-  <td>Bill Gates RGB kép</td>
+  <td>Bill Gates RGB-lemezkép</td>
   <td>
-Nyilvánosan elérhető képfájl CSV adatok konvertálva.
+Nyilvánosan elérhető képfájl alakítani a CSV-adatból.
 <p></p>
-A kép kódja megtalálható a <strong>szín a K-közép fürtszolgáltatása mennyiségmeghatározási</strong> modell információs lapját.
+Az a kód alakítása. a kép a <strong>szín a K-közép-fürtözés használatával mennyiségmeghatározási</strong> modell részletei lapot.
   </td>
 </tr>
 
 <tr>
-  <td>Vér adományozás adatok</td>
+  <td>Vér összeg egyeztetéséről adatok</td>
   <td>
-A VÉRTRANSZFÚZIÓS Service Center a Hsin-csú város, Tajvan vér donor adatbázisából az adatok egy részét.
+A vérátömlesztésben Service Center, Hsin-Chu város, Tajvan vér donor adatbázisából az adatok egy részét.
 <p></p>
-Donor adatok tartalmazzák a hónap utolsó adományozás óta), és gyakoriság, vagy véradás, utolsó adományozás óta eltelt idő teljes száma, és elajándékozni vér mennyiségét.
+Donor szerepel a hónap utolsó összeg egyeztetéséről óta), és a gyakoriság, vagy termékadományainak, utolsó összeg egyeztetéséről óta eltelt idő teljes száma, és szóló vér mennyiségét.
 <p></p>
-<b>Használat:</b> becsülhető besorolás keresztül, hogy a donor elajándékozni vér március 2007, ahol 1, és a célként megadott időszak, 0 ország nem ország célja. 
+<b>Használat:</b> előre besorolási keresztül, akár a donor szóló vér március 2007, ahol 1, 0 és a célként megadott időszak során ország nem ország célja. 
 <p></p>
-<b>Kapcsolódó kutatási:</b> Yeh, úgy, (2008). UCI gépi tanulási a tárház <a href="http://archive.ics.uci.edu/ml"> http://archive.ics.uci.edu/ml </a>. Irvine, CA: Egyetemi a kaliforniai, a iskolai az adatokat és a számítástechnikai
+<b>Kapcsolódó Research:</b> Yeh, úgy, (2008). UCI Machine Learning-tárház <a href="http://archive.ics.uci.edu/ml"> http://archive.ics.uci.edu/ml </a>. Irvine, CA: University of California, a School, adatokat és a számítógép-tudományi
 <p></p>
-Yeh, I-Cheng, Yang, képeznie-Jang, és tudomásul véve, Tao Ming, "Tudásbázis felderítés RFM-modellben Bernoulli feladatütemezési,"szakértői rendszereket 2008, az alkalmazásokkal <a href="http://dx.doi.org/10.1016/j.eswa.2008.07.018">http://dx.doi.org/10.1016/j.eswa.2008.07.018</a>
+Yeh, e-Cheng, Yang, King-Jang, és sítése, címke-PN-Roaming, "Knowledge discovery az RFM-modellben Bernoulli feladatütemezési,"szakértői rendszereket 2008, az alkalmazásokkal <a href="http://dx.doi.org/10.1016/j.eswa.2008.07.018">http://dx.doi.org/10.1016/j.eswa.2008.07.018</a>
   </td>
 </tr>
 
 <tr>
-  <td>Mell kapcsolatos adatok</td>
+  <td>Mell adatok</td>
   <td>
-A machine learning szakirodalomban gyakran megjelenő Oncology Intézet által biztosított három kapcsolatos kapcsolatos adatkészletek egyikét. Diagnosztikai információ laboratóriumi elemzési szolgáltatás, körülbelül 300 darab egyesíti.
+A machine learning elsajátításához gyakran megjelenő Oncology Institute által biztosított három rák kapcsolódó adatkészletek egyikét. Egyesíti a körülbelül 300 darab laboratóriumi elemzési funkciók diagnosztikai adatokat.
 <p></p>
-<b>Használat:</b> kapcsolatos típusú besorolását, 9-es attribútumok alapján, amelyeket lineáris és kategorikus. 
+<b>Használat:</b> besorolása a rák típusát, 9 attribútumok alapján, amelyek némelyike lineáris és kategorikus. 
 <p></p>
-<b>Kapcsolódó kutatási:</b> Wohlberg, W.H., utca, W.N. & Mangasarian, O.L. (1995). UCI gépi tanulási a tárház <a href="http://archive.ics.uci.edu/ml"> http://archive.ics.uci.edu/ml </a>. Irvine, CA: Egyetemi a kaliforniai, a iskolai az adatokat és a számítástechnikai </td>
+<b>Kapcsolódó Research:</b> Wohlberg, W.H., utca, W.N. & Mangasarian, O.L. (1995). UCI Machine Learning-tárház <a href="http://archive.ics.uci.edu/ml"> http://archive.ics.uci.edu/ml </a>. Irvine, CA: University of California, a School, adatokat és a számítógép-tudományi </td>
 </tr>
 
 <tr>
-  <td>Mell kapcsolatos szolgáltatások <td>
-A dataset 102K gyanús területek (jelöltek) röntgen-lemezképek, információkat tartalmaz, minden egyes leírt 117 funkcióihoz. A szolgáltatások saját fejlesztésű, és azok jelentését nem látható a dataset creators (Siemens egészségügy) által. 
+  <td>Mell rák funkciók <td>
+Az adatkészlet 102K gyanús régiók (jelöltek) röntgen-lemezképek információkat tartalmaz, az egyes 117 funkcióihoz ismertetjük. A szolgáltatások saját fejlesztésű, és azok jelentését ne derüljön adatkészlet létrehozói (a Siemens Healthcare) által. 
   </td>
 </tr>
 
 <tr>
-  <td>Mell kapcsolatos információ</td>
+  <td>Mell rák adatai</td>
   <td>
-A dataset röntgen lemezkép minden gyanús területre további információkat tartalmaz. Minden egyes példa információkat nyújt (például címke, beteg Azonosítóját, a teljes képhez képest javítás koordinátáit) mell kapcsolatos funkciók adatkészlet megfelelő sorok számát. Minden egyes türelmet számos példát. Egy kapcsolatos rendelkező betegeknél néhány példa pozitív és negatív között. Betegek, akik nem rendelkeznek egy kapcsolatos, az összes többek között negatív. A dataset adatkészletben 102K példák. A dataset optimalizálva, 0,6 % pontok pozitív, a többi negatív. A dataset lett rendelkezésére Siemens egészségügy.
+Az adatkészlet röntgenfelvétel kép minden egyes gyanús régió további információkat tartalmaz. Valamennyi példa információkat (például címke, betegek koordináták képest a teljes képet javítás-azonosító) kapcsolatos mell rák funkciók adatkészlet a megfelelő sor számára. Egyes betegek számos példát. A betegek, akik rendelkeznek a rák néhány példa pozitív és negatív néhány. A betegek, akik nem rendelkeznek a rák minden példa lehet negatív. Az adatkészlet 102K példákat tartalmaz. Az adatkészlet torzítatlan, a pontokat a 0.6-os aránya pozitívak, a többi negatív. Az adatkészlet a Siemens Healthcare által elérhető történt.
   </td>
 </tr>
 
 <tr>
-  <td>Megosztott CRM Appetency címkék</td>
+  <td>A megosztott CRM szolgáltatóváltást címkék</td>
   <td>
-A KDD Cup 2009 felhasználói kapcsolat előrejelzés kihívás címkéi (<a href="http://www.sigkdd.org/site/2009/files/orange_small_train_appetency.labels">orange_small_train_appetency.labels</a>).
+A évi Versenysorozatából Cup 2009 ügyfél kapcsolat előrejelzési kihívás címkéit (<a href="http://www.sigkdd.org/site/2009/files/orange_small_train_appetency.labels">orange_small_train_appetency.labels</a>).
   </td>
 </tr>
 
 <tr>
-  <td>Megosztott CRM-forgalom címkék</td>
+  <td>A megosztott CRM Lemorzsolódási címkék</td>
   <td>
-A KDD Cup 2009 felhasználói kapcsolat előrejelzés kihívás címkéi (<a href="http://www.sigkdd.org/site/2009/files/orange_small_train_churn.labels">orange_small_train_churn.labels</a>).
+A évi Versenysorozatából Cup 2009 ügyfél kapcsolat előrejelzési kihívás címkéit (<a href="http://www.sigkdd.org/site/2009/files/orange_small_train_churn.labels">orange_small_train_churn.labels</a>).
   </td>
 </tr>
 
 <tr>
-  <td>Megosztott CRM-adatkészlet</td>
+  <td>A megosztott CRM-adatkészlet</td>
   <td>
-Ezeket az adatokat a KDD Cup 2009 felhasználói kapcsolat előrejelzés kihívás származik (<a href="http://www.sigkdd.org/kdd-cup-2009-customer-relationship-prediction - orange_small_train.data.zip">orange_small_train.data.zip</a>).
+Az adatok származási évi Versenysorozatából Cup 2009 ügyfél kapcsolat előrejelzési challenge (<a href="http://www.sigkdd.org/site/2009/files/orange_small_train.data.zip">orange_small_train.data.zip</a>).
 <p></p>
-A dataset 50K ügyfelek narancssárga francia Telecom vállalattól tartalmazza. Minden egyes ügyfélnek van 230 anonimizált funkciók, amelyek 190 numerikus és 40 kategorikus. A szolgáltatások akkor nagyon ritka.
+Az adatkészlet-ügyfelek a francia telekommunikációs cég narancssárga 50 ezer tartalmazza. Minden ügyfél rendelkezik, amelyek 190 numerikus 230 anonimizált funkciók és 40 kategorikus. A szolgáltatások nagyon ritka.
   </td>
 </tr>
 
 <tr>
-  <td>Megosztott CRM Upselling címkék</td>
+  <td>A megosztott CRM Upselling címkék</td>
   <td>
-A KDD Cup 2009 felhasználói kapcsolat előrejelzés kihívás címkéi (<a href="http://www.sigkdd.org/site/2009/files/orange_large_train_upselling.labels">orange_large_train_upselling.labels</a>).
+A évi Versenysorozatából Cup 2009 ügyfél kapcsolat előrejelzési kihívás címkéit (<a href="http://www.sigkdd.org/site/2009/files/orange_large_train_upselling.labels">orange_large_train_upselling.labels</a>).
   </td>
 </tr>
 
 <tr>
-  <td>Energiahatékonyság regressziós adatok</td>
+  <td>Regresszió energiahatékonyság adatok</td>
   <td>
-Szimulált energia profilok, 12 különböző épület alakzatok alapján gyűjteménye. Az épületek megkülönböztetett forgalomosztályból nyolc funkcióihoz. Ez magában foglalja, üveg terület, az üveg terület terjesztési és tájolását.
+Szimulált energia-profilok alapján 12 épület különböző alakzatok gyűjteménye. Az épületek nyolc funkcióihoz különbözteti meg. Ide tartoznak a terület, a üveg terület terjesztési és a tájolás üveg.
 <p></p>
-<b>Használat:</b> használnak regressziós vagy besorolási minősítés alapján rendelkezésre álló két valós értékelni válaszok energiahatékonyság előre jelezni. Több osztály besorolási van a válasz változó kerekítése a legközelebbi egész kerek. 
+<b>Használat:</b> előrejelzése alapján két valós értékű válaszok egyik minősítés energiahatékonyság regressziós vagy a besorolási használja. A többcsoportos besoroláshoz a válasz változó pedig a legközelebbi egész round van. 
 <p></p>
-<b>Kapcsolódó kutatási:</b> Xifara, A. & Tsanas, azonosítójához. (2012). UCI gépi tanulási a tárház <a href="http://archive.ics.uci.edu/ml"> http://archive.ics.uci.edu/ml </a>. Irvine, CA: Egyetemi a kaliforniai, a iskolai az adatokat és a számítástechnikai </td>
+<b>Kapcsolódó Research:</b> Xifara, A. & Tsanas, területen. (2012). UCI Machine Learning-tárház <a href="http://archive.ics.uci.edu/ml"> http://archive.ics.uci.edu/ml </a>. Irvine, CA: University of California, a School, adatokat és a számítógép-tudományi </td>
 </tr>
 
 <tr>
-  <td>Felé továbbított adatok késlelteti</td>
+  <td>Repülési késlelteti az adatok</td>
   <td>
-Utas repülési időben teljesítményadatokat venni az Egyesült Államok TranStats adatok gyűjteménye Részleg a szállítására (<a href="http://www.transtats.bts.gov/DL_SelectFields.asp?Table_ID=236&DB_Short_Name=On-Time">időben</a>).
+Utas repülési időben teljesítményadatok származik az USA TranStats adatok gyűjteménye Minisztériumának (<a href="http://www.transtats.bts.gov/DL_SelectFields.asp?Table_ID=236&DB_Short_Name=On-Time">időben</a>).
 <p></p>
-A dataset az adott időszakban 2013. április-október ismerteti. Azure Machine Learning Studio feltöltését, mielőtt a dataset feldolgozott az alábbiak szerint:
+Az adatkészlet az adott időszakban 2013. április október ismerteti. Mielőtt feltöltené az Azure Machine Learning Studióban, az adatkészlet a következőképpen dolgozta:
 <ul>
-  <li>Az adatkészletet, amelyek csak a 70 legforgalmasabb repülőtéren a szárazföldi USA a lett szűrve</li>
-  <li>Több mint 15 perces késleltetett volt címkézett visszavont járatok</li>
-  <li>Elterelt járatok szűrhető volt.</li>
-  <li>A következő oszlopok kiválasztott: év, hónap, DayofMonth, DayOfWeek, vivőjel, OriginAirportID, DestAirportID, CRSDepTime, DepDelay, DepDel15, CRSArrTime, ArrDelay, ArrDel15, megszakítva</li>
+  <li>Az adatkészlet az Egyesült Államok szárazföldi területén csak 70 legforgalmasabb repülőterek terjed ki lett szűrve</li>
+  <li>Megszakított repülőjáratok legális, legfeljebb 15 perccel késleltetve vannak</li>
+  <li>Forgalomelterelés repülőjáratok ki lett szűrve</li>
+  <li>A következő oszlopok kijelölve: év, hónap, DayofMonth, DayOfWeek, szolgáltatója, OriginAirportID, DestAirportID, CRSDepTime, DepDelay, DepDel15, CRSArrTime, ArrDelay, ArrDel15, megszakított</li>
 </ul>
 </td>
 </tr>
 
 <tr>
-  <td>Repülési időben teljesítmény (Raw)</td>
+  <td>A repülési időben teljesítmény (Raw)</td>
   <td>
-Repülőgép repülési érkezők és a 2011. októberi az Amerikai Egyesült Államokból eltérést rögzíti.
+Repülőgép repülési beérkező kérelmek és az Egyesült Államokon a 2011. október távozás rekordjait.
 <p></p>
-<b>Használat:</b> repülési késések előre jelezni. 
+<b>Használat:</b> előre jelezni a járatok késésének. 
 <p></p>
-<b>Kapcsolódó kutatási:</b> a szállítására részleg USA <a href="http://www.transtats.bts.gov/DL_SelectFields.asp?Table_ID=236&DB_Short_Name=On-Time"> http://www.transtats.bts.gov/DL_SelectFields.asp?Table_ID=236&DB_Short_Name=On-Time </a>.
+<b>Kapcsolódó Research:</b> az Egyesült Államok közlekedési részleg <a href="http://www.transtats.bts.gov/DL_SelectFields.asp?Table_ID=236&DB_Short_Name=On-Time"> http://www.transtats.bts.gov/DL_SelectFields.asp?Table_ID=236&DB_Short_Name=On-Time </a>.
   </td>
 </tr>
 
 <tr>
   <td>Erdőtüzek adatai</td>
   <td>
-Időjárás adatokat tartalmaz, például a hőmérséklet és a páratartalom indexek és szél sebessége. Északkelet-Portugáliában előfordult erdőtüzek rekordjának együtt területe az adatok forrása.
+Időjárási adatokat tartalmaz, például hőmérséklettel és páratartalommal kapcsolatos indexeket és a szél sebessége. Az adatok egy adott területre északkelet Portugália erdőtüzek rekordjait együtt származik.
 <p></p>
-<b>Használat:</b> Ez az regressziós nehéz feladat, ahol a célja, hogy előre jelezni erdőtüzek kiírt területén. 
+<b>Használat:</b> Ez a regressziós nehéz feladat, ahol a cél az, hogy előrejelzése erdőtüzek kiírt területéhez. 
 <p></p>
-<b>Kapcsolódó kutatási:</b> Cortez, p, & Morais, azonosítójához. (2008). UCI gépi tanulási a tárház <a href="http://archive.ics.uci.edu/ml"> http://archive.ics.uci.edu/ml </a>. Irvine, CA: Egyetemi a kaliforniai, a iskolai az adatokat és a számítástechnikai
+<b>Kapcsolódó Research:</b> Cortez, o., & Morais, területen. (2008). UCI Machine Learning-tárház <a href="http://archive.ics.uci.edu/ml"> http://archive.ics.uci.edu/ml </a>. Irvine, CA: University of California, a School, adatokat és a számítógép-tudományi
 <p></p>
-[Cortez és Morais, 2007] P Cortez és A. Morais. A Data Mining megközelítése időjárási adatokkal előrejelzése erdőtüzek. A J. Neves, M. f Santos és J. Machado Eds., mesterséges Eszközintelligencia, a 13 EPIA 2007 - mesterséges intelligens, December, Guimarães, Portugália, oldal 512-523, 2007 portugál konferencia eljárás új trendeket. APPIA, ISBN-13 978-989-95618-0-9. Megtekinthető a következő helyen: <a href="http://www.dsi.uminho.pt/~pcortez/fires.pdf"> http://www.dsi.uminho.pt/~pcortez/fires.pdf </a>.
+[Cortez és Morais, 2007] O. Cortez és A. Morais. Egy Data Mining megközelítése az időjárási adatok felhasználásával előre jelezni erdőtüzek. A J. Neves, M. f Santos és J. Machado EDS, a mesterséges intelligencia, a 13. EPIA 2007 - portugál konferencia, a mesterséges intelligencia, a decemberi, Guimarães, Portugália, oldal 512-523, 2007 eljárás új trendeket. APPIA, ISBN-13 978-989-95618-0-9. Elérhető: <a href="http://www.dsi.uminho.pt/~pcortez/fires.pdf"> http://www.dsi.uminho.pt/~pcortez/fires.pdf </a>.
   </td>
 </tr>
 
 <tr>
   <td>Német hitelkártya UCI adatkészlet</td>
   <td>
-A UCI Statlog (német hitelkártya) dataset (<a href="http://archive.ics.uci.edu/ml/datasets/Statlog+(German+Credit+Data)">Statlog + német + jóváírás + adatok</a>), a german.data fájllal.
+A UCI Statlog (német hitelkártya) dataset (<a href="http://archive.ics.uci.edu/ml/datasets/Statlog+(German+Credit+Data)">Statlog + német + + adatokból</a>), a german.data fájllal.
 <p></p>
-A dataset személyek, attribútumok, mint magas vagy alacsony hitelkockázatok szerint osztályozza. Minden egyes példa egy személy jelöli. Nem találhatók 20 funkciókat, mind a numerikus, és a kategorikus, és egy bináris címke (a jóváírási kockázati érték). Hitelkockázati kockázat bejegyzések rendelkezik címke = 2, alacsony követel kockázat tételek rendelkezik címke = 1. Egy alacsony kockázat példa annyira misclassifying költségének értéke 1, mivel a magas kockázatú példa legalacsonyabb misclassifying költségét 5.
+Az adatkészlet személyek, attribútumok, kis vagy nagy hitelkockázatok által leírt osztályozza. Minden példánál a személyt jelöli. Nincsenek 20 szolgáltatásait, numerikus és a kategorikus, és a egy bináris címkét (a jóváírási kockázati érték). Kredit magas kockázati bejegyzések címkével rendelkezik = 2, alacsony kredit kockázati bejegyzések címkével rendelkezik = 1. Egy alacsony kockázat példa annyira misclassifying költségének értéke 1, mivel egy alacsony, magas kockázatú példa misclassifying költsége az 5.
   </td>
 </tr>
 
 <tr>
-  <td>IMDB Movie címek</td>
+  <td>IMDB film címe</td>
   <td>
-A dataset filmek, a Twitter Twitter-üzeneteket volt minősített információt tartalmaz: IMDB movie azonosító, a movie nevét, a genre és a gyártási év. A dataset 17K filmek szerepelnek. A dataset jelent a dokumentum "használatát. Dooms, T. De Pessemier és L. Martens-féle. MovieTweetings: Dataset minősítés film begyűjti a Twitteren. Workshop közösségi és emberi számítási ajánló rendszerek esetén: RecSys 2013 CrowdRec."
+Az adatkészlet is minősített, a Twitter-tweetek filmek információt tartalmaz: IMDB film-azonosító, a film, a műfaj és a gyártási év. Az adatkészlet 17K filmek találhatók. A tanulmány "S. a jelent meg az adatkészlet Dooms, T. De Pessemier és L. Martens-féle. MovieTweetings: adatkészlet minősítés film gyűjteni a Twitteren. Workshop közösségi és emberi számítási ajánló rendszerek esetén: RecSys 2013 CrowdRec."
   </td>
 </tr>
 
 <tr>
-  <td>A két Iris osztály adatokat</td>
+  <td>Két Iris-osztályt adatok</td>
   <td>
-Lehet, hogy ez az a legjobb ismert adatbázis a minta felismerés szakirodalomban találhatók. A dataset nem viszonylag nagy, 50 példák minden szirom mérések három iris fajtáinak tartalmazó.
+Talán ez az a legjobb ismert adatbázis található, a minta felismerés elsajátításához. Az adatkészlet viszonylag kicsi, 50 példák egyes szirom mérések három iris fajtáinak tartalmazó.
 <p></p>
-<b>Használat:</b> előre jelezni a mérések iris típusát.  
+<b>Használat:</b> Írisz típusának a mérések.  
 <p></p>
-<b>Kapcsolódó kutatási:</b> Fisher, R.A. (1988). UCI gépi tanulási a tárház <a href="http://archive.ics.uci.edu/ml"> http://archive.ics.uci.edu/ml </a>. Irvine, CA: Egyetemi a kaliforniai, a iskolai az adatokat és a számítástechnikai </td>
+<b>Kapcsolódó Research:</b> Fisher, R.A. (1988). UCI Machine Learning-tárház <a href="http://archive.ics.uci.edu/ml"> http://archive.ics.uci.edu/ml </a>. Irvine, CA: University of California, a School, adatokat és a számítógép-tudományi </td>
 </tr>
 
 <tr>
-  <td>Film Twitter-üzenetek</td>
+  <td>Film Tweetek</td>
   <td>
-A dataset jelent Movie Tweetings DataSet. A dataset adatkészletben filmek, jól strukturált Twitter-üzeneteket a Twitteren kinyert 170K minősítését. Minden példány jelöli egy tweetet, és egy rekord: felhasználói azonosító IMDB movie azonosító, minősítés, timestamp, számának Kedvencek tweetet, és a retweets a tweetet a száma. A dataset lett által elérhetővé tett A. említett, S. Dooms a, b Loni és D. Tikk ajánló rendszerek Challenge 2014.
+Az adatkészlet jelent a film Tweetings adatkészlet. Az adatkészlet 170K minősítések filmekhez, a Twitteren jól strukturált tweetek kinyert rendelkezik. Minden példány egy tweetet jelöl, és egy rekord: felhasználói azonosító IMDB film-azonosító, minősítés, timestamp, számának kedvenceihez, így a tweet, valamint a tweet retweets számát. Az adatkészlet intéztek elérhető A. mondta, %s Dooms a, b Loni és D. Tikk ajánló rendszerek Challenge 2014.
   </td>
 </tr>
 
 <tr>
-  <td>Különböző autók fogyasztási adatai</td>
+  <td>Különböző autók adatai</td>
   <td>
-Ez az adatkészlet a StatLib Library Carnegie Mellon egyetemi az adatkészlet kis mértékben módosított verzióját. A dataset a kézikönyvben 1983 American statisztikai társítás lett megadva.
+Ez az adatkészlet egy kis mértékben módosított verzióját az adatkészletet a StatLib Library Carnegie Mellon Egyetem. Az adatkészlet a kézikönyvben 1983 amerikai statisztikai társítás lett megadva.
 <p></p>
-Az adatok a miles / gallonra különböző autók üzemanyag-fogyasztás sorolja fel. Azt is tartoznak hengerszám, motor elmozdulását, lóerő, teljes súlya és gyorsítás száma.
+Az adatok különböző autók fogyasztási az üzemanyag fogyasztás sorolja fel. Például a hengerszám, motor elmozdulást, lóerő, teljes súlya és gyorsítás számát információkat is tartalmaz.
 <p></p>
-<b>Használat:</b> üzemanyag-fogyasztási három többértékű diszkrét attribútumok és öt folytonos attribútumok alapján előre jelezni. 
+<b>Használat:</b> üzemanyag-fogyasztási többértékű diszkrét attribútumok három és öt folyamatos attribútumok alapján előre jelezni. 
 <p></p>
-<b>Kapcsolódó kutatási:</b> StatLib, Carnegie Mellon egyetemi, (1993). UCI gépi tanulási a tárház <a href="http://archive.ics.uci.edu/ml"> http://archive.ics.uci.edu/ml </a>. Irvine, CA: Egyetemi a kaliforniai, a iskolai az adatokat és a számítástechnikai </td>
+<b>Kapcsolódó Research:</b> StatLib, Carnegie Mellon University (1993). UCI Machine Learning-tárház <a href="http://archive.ics.uci.edu/ml"> http://archive.ics.uci.edu/ml </a>. Irvine, CA: University of California, a School, adatokat és a számítógép-tudományi </td>
 </tr>
 
 <tr>
-  <td>Pima indiai termelőktől cukorbetegség bináris osztályozási adatkészlet</td>
+  <td>Pima indiai termelőktől küzdő bináris osztályozási adatkészlet</td>
   <td>
-A cukorbetegség National Institute és emésztőtraktus és vese betegségek adatbázis adatok egy részét. A dataset gyakorolt nőivarú Pima indiai örökségének fókusz lett szűrve. Az adatok például glükóz és inulin szintek, valamint lifestyle tényezők orvosi adatokat tartalmazza.
+A küzdő National Institute és emésztőtraktus és vese betegségek adatbázis származó adatok egy részét. Az adatkészlet Pima indiai örökségének női betegek fókusz lett szűrve. Egészségügyi adatok, például glükóz és inulin szintek, valamint lifestyle tényezők szerepel.
 <p></p>
-<b>Használat:</b> előre jelezni, hogy rendelkezik-e a tulajdonos cukorbetegség (bináris osztályozás). 
+<b>Használat:</b> előre jelezni, hogy rendelkezik-e a tulajdonos küzdő (bináris osztályozás). 
 <p></p>
-<b>Kapcsolódó kutatási:</b> Sigillito, V. (1990). UCI gépi tanulási a tárház <a href="http://archive.ics.uci.edu/ml"> http://archive.ics.uci.edu/ml"</a>. Irvine, CA: Egyetemi a kaliforniai, a iskolai az adatokat és a számítástechnikai </td>
+<b>Kapcsolódó Research:</b> Sigillito, V. (1990). UCI Machine Learning-tárház <a href="http://archive.ics.uci.edu/ml"> http://archive.ics.uci.edu/ml"</a>. Irvine, CA: University of California, a School, adatokat és a számítógép-tudományi </td>
 </tr>
 
 <tr>
-  <td>Éttermi ügyféladatok</td>
+  <td>Éttermek vásárlói adatok</td>
   <td>
-Ügyfelek, beleértve a demográfiai és beállítások metaadatainak készlete.
+Azokról az ügyfelekről, többek között demográfiai adatok és beállítások metaadatainak gyűjteménye.
 <p></p>
-<b>Használat:</b> ehhez az adatkészlethez, képzése, és tesztelje a ajánló rendszert a többi két éttermi adathalmazt együtt használja. 
+<b>Használat:</b> együtt a másik két éttermi adatkészletet, ez az adatkészlet használatával taníthat vagy tesztelhet egy ajánló rendszer. 
 <p></p>
-<b>Kapcsolódó kutatási:</b> Bache, K. és Lichman, M. (2013). UCI gépi tanulási a tárház <a href="http://archive.ics.uci.edu/ml"> http://archive.ics.uci.edu/ml </a>. Irvine, CA: Egyetemi a kaliforniai, iskolai az adatokat és számítástechnikai.
+<b>Kapcsolódó Research:</b> Bache, K. és Lichman, M. (2013). UCI Machine Learning-tárház <a href="http://archive.ics.uci.edu/ml"> http://archive.ics.uci.edu/ml </a>. Irvine, CA: University of California, iskolai információs és számítógép-tudományi.
   </td>
 </tr>
 
 <tr>
-  <td>Éttermi szolgáltatás adatok</td>
+  <td>Éttermek a szolgáltatás adatokat</td>
   <td>
-A metaadatok éttermekben és a hozzájuk tartozó funkciók áttekintése, például étele típusa, a étkezési stílus és a hely készlete.
+Éttermek és a hozzájuk tartozó funkciók, például az élelmiszer-típus, étkeztetés stílus és a hely metaadatait készlete.
 <p></p>
-<b>Használat:</b> ehhez az adatkészlethez, képzése, és tesztelje a ajánló rendszert a többi két éttermi adathalmazt együtt használja. 
+<b>Használat:</b> együtt a másik két éttermi adatkészletet, ez az adatkészlet használatával taníthat vagy tesztelhet egy ajánló rendszer. 
 <p></p>
-<b>Kapcsolódó kutatási:</b> Bache, K. és Lichman, M. (2013). UCI gépi tanulási a tárház <a href="http://archive.ics.uci.edu/ml"> http://archive.ics.uci.edu/ml </a>. Irvine, CA: Egyetemi a kaliforniai, iskolai az adatokat és számítástechnikai.
+<b>Kapcsolódó Research:</b> Bache, K. és Lichman, M. (2013). UCI Machine Learning-tárház <a href="http://archive.ics.uci.edu/ml"> http://archive.ics.uci.edu/ml </a>. Irvine, CA: University of California, iskolai információs és számítógép-tudományi.
   </td>
 </tr>
 
 <tr>
-  <td>Éttermi minősítése</td>
+  <td>Éttermek minősítések</td>
   <td>
-Adott felhasználók éttermekben méretű 0 2 minősítések tartalmazza.
+Minősítések által adott felhasználók éttermek a méretezési csoport 0 2 tartalmazza.
 <p></p>
-<b>Használat:</b> ehhez az adatkészlethez, képzése, és tesztelje a ajánló rendszert a többi két éttermi adathalmazt együtt használja. 
+<b>Használat:</b> együtt a másik két éttermi adatkészletet, ez az adatkészlet használatával taníthat vagy tesztelhet egy ajánló rendszer. 
 <p></p>
-<b>Kapcsolódó kutatási:</b> Bache, K. és Lichman, M. (2013). UCI gépi tanulási a tárház <a href="http://archive.ics.uci.edu/ml"> http://archive.ics.uci.edu/ml </a>. Irvine, CA: Egyetemi a kaliforniai, iskolai az adatokat és számítástechnikai.
+<b>Kapcsolódó Research:</b> Bache, K. és Lichman, M. (2013). UCI Machine Learning-tárház <a href="http://archive.ics.uci.edu/ml"> http://archive.ics.uci.edu/ml </a>. Irvine, CA: University of California, iskolai információs és számítógép-tudományi.
   </td>
 </tr>
 
 <tr>
-  <td>Készült Annealing több osztály adatkészlet</td>
+  <td>Acélszürke Annealing többcsoportos adatkészlet</td>
   <td>
-Ez az adatkészlet kísérletek primerek acélból származó rekordokat tartalmazza. (Width, vastagsága, típusa (gyújtótekercs, lap stb.) a létrejövő készült típusok a fizikai attribútumokat tartalmaz.
+Ez az adatkészlet kísérletek primerek acélból rekordjait tartalmazza. (Szélesség, vastagsága, típusa (tekercse, lap stb.) a létrejövő acélszürke típusok a fizikai attribútumokat tartalmaz.
 <p></p>
-<b>Használat:</b> bármely két numerikus osztályattribútumokhoz; keménység vagy erőssége előre jelezni. Előfordulhat, hogy is elemez korrelációk attribútumok között.
+<b>Használat:</b> előrejelzése bármely két numerikus osztályattribútumokhoz; keménység vagy erősségét. Előfordulhat, hogy is elemezheti az attribútumok közötti összefüggéseket.
 <p></p>
-Készült besorolási hajtsa végre egy szabvány, SAE és más szervezetekkel. Egy adott "osztály" (Ez az osztály változó) keres, és szeretné tudni, hogy a szükséges értékeket. 
+Acélszürke osztályzatainak kövesse a szabvány, SAE és más szervezetek által definiált. Egy adott "osztály" (Ez az osztály változó) keres, és szeretné tudni, hogy a szükséges értékeket. 
 <p></p>
-<b>Kapcsolódó kutatási:</b> Sterling, d & Buntine, w (NA). UCI gépi tanulási a tárház <a href="http://archive.ics.uci.edu/ml"> http://archive.ics.uci.edu/ml </a>. Irvine, CA: Egyetemi a kaliforniai, a iskolai az adatokat és a számítástechnikai
+<b>Kapcsolódó Research:</b> Sterling, d & Buntine, l. (NA). UCI Machine Learning-tárház <a href="http://archive.ics.uci.edu/ml"> http://archive.ics.uci.edu/ml </a>. Irvine, CA: University of California, a School, adatokat és a számítógép-tudományi
 <p></p>
-Acélminőségek hasznos útmutatóját itt található: <a href="http://www.outokumpu.com/SiteCollectionDocuments/Outokumpu-steel-grades-properties-global-standards.pdf">http://www.outokumpu.com/SiteCollectionDocuments/Outokumpu-steel-grades-properties-global-standards.pdf</a>
+Acélminőségek hasznos útmutató itt található: <a href="http://www.outokumpu.com/SiteCollectionDocuments/Outokumpu-steel-grades-properties-global-standards.pdf">http://www.outokumpu.com/SiteCollectionDocuments/Outokumpu-steel-grades-properties-global-standards.pdf</a>
   </td>
 </tr>
 
 <tr>
   <td>Teleszkóppal adatok</td>
   <td>
-Magas energia gamma alkotóelem rekord felszakadásáig háttérzaj, mindkettő szimulált Monte Carlo eljárással együtt.
+Magas energia gamma particle rekordját tevékenységcsúcsok is egy Monte Carlo folyamattal szimulált háttérzaj együtt.
 <p></p>
-A szimuláció szándékával lett ground alapú légköri Cherenkov gamma teleszkópok pontosságának javítása érdekében. Ez történik, statisztikai módszerek segítségével különböztetheti meg a kívánt jel (Cherenkov sugárzási zuhanyozók) és a háttérzaj (hadronic zuhanyozók cosmic sugarak a felső környezetben által kezdeményezett).
+A szimuláció szándéka volt az alapoktól-alapú légköri Cherenkov gamma teleszkópok pontosságának javítása. Ez történik, statisztikai módszerek használatával különbözteti meg a kívánt jel (Cherenkov sugárzási zuhanyozók) és a háttérzaj (hadronic zuhanyozók cosmic sugarak felső légköri által kezdeményezett).
 <p></p>
-A korábban már Előfeldolgozott egy nyújtott alakú fürt létrehozása a hosszan a tengely nincs objektumorientált a kamera center felé. A három pont (gyakran nevezik Hillas paraméterek) jellemzői megkülönböztetés használható kép paraméterek közé tartoznak.
+Az adatok Előfeldolgozott lett a hosszú-nyújtott alakú fürt létrehozása a tengely felé a kamera center összpontosul. A három pontra (más néven Hillas paraméterek) jellemzőit megkülönböztetés használható kép paraméterek közé tartoznak.
 <p></p>
 <b>Használat:</b> előre jelezni, hogy mulatni képe jelöl jel vagy a háttérben zaj.
 <p></p>
-<b>Megjegyzések:</b> egyszerű besorolás pontossága értéke nem értelmezhető, ezeket az adatokat, egy háttér esemény zárolásának, jel egy jel esemény háttereként zárolásának óta. Különböző osztályozó összehasonlítása a ROC diagramhoz kell használni. A valószínűsége annak, egy háttér esemény fogadására jel egyet a következő küszöbértékek alá kell lennie: 0,01, 0,02, 0,05, 0,1 vagy 0,2.
+<b>Megjegyzések:</b> egyszerű besorolás pontossága nem értelmezhető adatok, egy háttér-esemény besorolása, mert jel rosszabb, mint az Írisz egy jel esemény háttereként óta. Különböző deklarációkkal összehasonlításáért a ROC graph kell használni. A valószínűsége annak, egy háttér-eseményt fogad, jel egyet az alábbi küszöbértékek alá kell lenniük: 0,01, 0,02, 0,05, 0,1 vagy 0.2-es.
 <p></p>
-Vegye figyelembe azt is, hogy kellőképpen-e a háttérben események (hadronic zuhanyozók h) száma. Valós mérések a h vagy zaj osztály jelenti. a legtöbb esemény. 
+Továbbá vegye figyelembe, hogy alábecsülte van-e a háttérben futó események (hadronic zuhanyozók h) száma. A h vagy zaj osztály valós mérések események többsége jelenti. 
 <p></p>
-<b>Kapcsolódó kutatási:</b> Bock, R.K. (1995). UCI gépi tanulási a tárház <a href="http://archive.ics.uci.edu/ml"> http://archive.ics.uci.edu/ml </a>. Irvine, CA: Egyetemi a kaliforniai, iskolai vonatkozó információk </td>
+<b>Kapcsolódó Research:</b> Bock, R.K. (1995). UCI Machine Learning-tárház <a href="http://archive.ics.uci.edu/ml"> http://archive.ics.uci.edu/ml </a>. Irvine, CA: University of California, iskolai vonatkozó információk </td>
 </tr>
 
 <tr>
   <td>Időjárás-adatkészlet</td>
   <td>
-Óránkénti szárazföldi időjárási észrevételt NOAA (<a href="http://cdo.ncdc.noaa.gov/qclcd_ascii/, merged data from 201304 to 201310">201304 201310 adatainak egyesített</a>).
+A NOAA óránkénti szárazföldi időjárási megfigyelések (<a href="http://cdo.ncdc.noaa.gov/qclcd_ascii/, merged data from 201304 to 201310">201310 201304 adatainak egyesített</a>).
 <p></p>
-A időjárási adatok repülőtéri időjárási esetében, az adott időszakban 2013. április-október kiterjedő észrevételeket ismerteti. Azure Machine Learning Studio feltöltését, mielőtt a dataset feldolgozott az alábbiak szerint:
+Az időjárási adatok repülőtér időjárási állomásokon, az adott időszakban 2013. április október vonatkozó kérés érkezett megfigyelések ismerteti. Mielőtt feltöltené az Azure Machine Learning Studióban, az adatkészlet a következőképpen dolgozta:
 <ul>
-  <li>Időjárás állomás azonosítók megfelelő repülőtéri azonosítók hozzá lettek rendelve</li>
-  <li>Nincs társítva a 70 legforgalmasabb repülőtéren időjárási állomások szűrhető volt.</li>
-  <li>A dátum oszlop külön év, hónap és nap oszlopok lett felosztása</li>
-  <li>A következő oszlopok kiválasztott: AirportID, év, hónap, nap, idő, időzóna, SkyCondition, látható, WeatherType, DryBulbFarenheit, DryBulbCelsius, WetBulbFarenheit, WetBulbCelsius, DewPointFarenheit, DewPointCelsius RelativeHumidity, Szélsebesség, WindDirection, ValueForWindCharacter, StationPressure, PressureTendency, PressureChange, SeaLevelPressure, RecordType, HourlyPrecip, magasságmérő</li>
+  <li>Időjárásjelző azonosítók megfelelő repülőtér azonosítók hozzá lettek rendelve</li>
+  <li>Időjárás-állomások 70 legforgalmasabb repülőterek hozzá nem rendelt kiszűrte az</li>
+  <li>A dátum oszlop külön év, hónap és nap oszlopok lett felosztva.</li>
+  <li>A következő oszlopok kijelölve: AirportID, év, hónap, nap, Time, időzóna, SkyCondition, láthatóság, WeatherType, DryBulbFarenheit, DryBulbCelsius, WetBulbFarenheit, WetBulbCelsius, DewPointFarenheit, DewPointCelsius, RelativeHumidity, Szélsebesség, WindDirection, ValueForWindCharacter, StationPressure, PressureTendency, PressureChange, SeaLevelPressure, RecordType, HourlyPrecip, magasságmérő</li>
 </ul>
   </td>
 </tr>
@@ -348,15 +348,15 @@ A időjárási adatok repülőtéri időjárási esetében, az adott időszakban
 <tr>
   <td>Wikipedia SP 500 adatkészlet</td>
   <td>
-Adatok Wikipedia származik (<a href="http://www.wikipedia.org/">http://www.wikipedia.org/</a>) cikkeket S & P 500 vállalatok, tárolt XML-adatok alapján.
+Adatok Wikipedia származik (<a href="http://www.wikipedia.org/">http://www.wikipedia.org/</a>) S & P 500-as vállalatok, XML-adatok tárolva cikkek alapján.
 <p></p>
-Azure Machine Learning Studio feltöltését, mielőtt a dataset feldolgozott az alábbiak szerint:
+Mielőtt feltöltené az Azure Machine Learning Studióban, az adatkészlet a következőképpen dolgozta:
 <ul>
-  <li>Bontsa ki a szöveges tartalom minden adott vállalat esetében</li>
-  <li>Wiki formázás eltávolítása</li>
-  <li>Távolítsa el a nem alfanumerikus karaktereket</li>
-  <li>A kisbetűssé alakítandó az összes szöveg</li>
-  <li>Ismert vállalati kategóriák lettek hozzáadva.</li>
+  <li>Minden egyes adott vállalat szöveges tartalom kibontása</li>
+  <li>Odebrat formátování wiki</li>
+  <li>Nem alfanumerikus karakterek eltávolítása</li>
+  <li>A teljes szöveg átalakítása kisbetűvé</li>
+  <li>Ismert vállalati kategóriák lettek hozzáadva</li>
 </ul>
 <p></p>
 Vegye figyelembe, hogy bizonyos vállalatok egy cikk nem található, így a rekordok száma 500-nál kisebb.
@@ -366,46 +366,46 @@ Vegye figyelembe, hogy bizonyos vállalatok egy cikk nem található, így a rek
 <tr>
   <td><a href="https://azuremlsampleexperiments.blob.core.windows.net/datasets/direct_marketing.csv">direct_marketing.csv</a></td>
   <td>
-A dataset ügyféladatok és egy közvetlen levelezési kapcsolatos a válasz kapcsolatos tartalmazza. Minden egyes sorára ügyfél jelöli. A dataset kapcsolatos felhasználói demográfiai és viselkedése túli kilenc szolgáltatásokat tartalmaz, és három címkézését, oszlopok (fel, az átalakítás és töltött).  Látogasson el a bináris oszlop, amely jelzi, hogy az ügyfél ellátogat a marketingkampányt után. Átalakítás azt jelzi, hogy az ügyfél vásárolt. Töltött telt összege.  A dataset lett rendelkezésére Kevin Hillstrom a MineThatData E-Mail elemzés és a Data Mining kérésekor.
+Az adatkészlet tartalmaz, a válasz egy közvetlen levelezési kampányra vonatkozó jelzések és a vásárlói adatokat. Minden egyes sor az ügyfelet jelöli. Az adatkészlet tartalmaz kilenc szolgáltatások felhasználói demográfiai és múltbeli viselkedés, és harmadik felirat oszlopok (és csak látogasson el az átalakítás).  Látogasson el egy bináris oszlop, amely azt jelzi, hogy egy ügyfél ellátogat a marketingkampány után. Átalakítás azt jelzi, hogy egy ügyfél vásárolt. Költségek az összeg, hogy a rendszer.  Az adatkészlet volt rendelkezésére Kevin Hillstrom MineThatData E-Mail Analytics és Data Mining Challenge számára.
   </td>
 </tr>
 
 <tr>
   <td><a href="https://azuremlsampleexperiments.blob.core.windows.net/datasets/lyrl2004_tokens_test.csv">lyrl2004_tokens_test.csv</a></td>
   <td>
-Tesztelési példák RCV1-V2 Reuters hírek adatkészlet tulajdonságai. A dataset adatkészletben 781K hírcikkeket azonosítók együtt (a DataSet adatkészlet első oszlop). Minden cikk tokenekre bontott stopworded, és kocsány. A dataset David által történt érhető el. D. Lewis.
+Tesztelési példák RCV1-V2 Reuters hírek adatkészlet tulajdonságai. Az adatkészlet 781K híreket, valamint a hozzájuk tartozó azonosítóik rendelkezik (az adatkészlet az első oszlop). Minden egyes cikk tokenekre bontott stopworded, és kocsány. Az adatkészlet David által elérhető történt. D. Lewis.
   </td>
 </tr>
 
 <tr>
   <td><a href="https://azuremlsampleexperiments.blob.core.windows.net/datasets/lyrl2004_tokens_train.csv">lyrl2004_tokens_train.csv</a></td>
   <td>
-Példák RCV1-V2 Reuters hírek adatkészlet tulajdonságai. A dataset adatkészletben 23K hírcikkeket azonosítók együtt (a DataSet adatkészlet első oszlop). Minden cikk tokenekre bontott stopworded, és kocsány. A dataset David által történt érhető el. D. Lewis.
+Példák az RCV1-V2 Reuters hírek adatkészlet tulajdonságai. Az adatkészlet 23K híreket, valamint a hozzájuk tartozó azonosítóik rendelkezik (az adatkészlet az első oszlop). Minden egyes cikk tokenekre bontott stopworded, és kocsány. Az adatkészlet David által elérhető történt. D. Lewis.
   </td>
 </tr>
 
 <tr>
   <td><a href="https://azuremlsampleexperiments.blob.core.windows.net/datasets/network_intrusion_detection.csv">network_intrusion_detection.csv</a><br></td>
   <td>
-A KDD Cup 1999 Tudásbázis felderítési és adatbányászat adatkészlet eszközök verseny (<a href="http://kdd.ics.uci.edu/databases/kddcup99/kddcup99.html">kddcup99.html</a>).
+Adatkészlet a az évi Versenysorozatából Cup 1999 Knowledge Discovery and Data szintű adatbányászatra eszközök verseny (<a href="http://kdd.ics.uci.edu/databases/kddcup99/kddcup99.html">kddcup99.html</a>).
 <p></p>
-A dataset letöltötte és az Azure Blob storage szolgáltatásban tárolt (<a href="https://azuremlsampleexperiments.blob.core.windows.net/datasets/network_intrusion_detection.csv">network_intrusion_detection.csv</a>) és a képzési és a teszteléshez adatkészletek is tartalmaz. A képzési dataset adatkészletben körülbelül, 126K sorok és 43 oszlopok, beleértve a feliratok. Három oszlopot a címke része, és 40 oszlopok álló numerikus és a karakterlánc kategorikus funkciók érhetők el a modell betanítása. A vizsgálati adatok körülbelül 22.5K tesztelése példák mint a betanítási adatok azonos 43 oszlopokkal rendelkezik.
+Az adatkészlet letöltötte és az Azure Blob storage szolgáltatásban tárolt (<a href="https://azuremlsampleexperiments.blob.core.windows.net/datasets/network_intrusion_detection.csv">network_intrusion_detection.csv</a>) és a tanítási és egy tesztelési is tartalmaz. A betanítási adatkészletet rendelkezik körülbelül 126K sorok és 43 oszlopok, beleértve a címkéket. Három oszlopot a címke adatai részét képezik, és 40 oszlopok, szám és karakterlánc kategorikus funkcióját, amely a modell betanításához érhetők el. A Tesztadatok körülbelül 22,5 K tesztelése a példákat, mint a betanítási adatok 43 ugyanazokat az oszlopokat tartalmaz.
   </td>
 </tr>
 
 <tr>
   <td><a href="https://azuremlsampleexperiments.blob.core.windows.net/datasets/rcv1-v2.topics.qrels.csv">rcv1-v2.topics.qrels.csv</a></td>
   <td>
-A témakör a hozzárendeléseinek RCV1-V2 Reuters hírek adatkészlet írt hírcikkeket. Egy hírek cikk több témakört is hozzárendelhető. Minden egyes sorára formátuma "&lt;témakör&gt; &lt;dokumentumazonosítója&gt; 1". A dataset 2.6-os M témakör hozzárendeléseket tartalmazza. A dataset David által történt érhető el. D. Lewis.
+Témakör-hozzárendelések RCV1-V2 Reuters hírek adatkészlet újságcikkek keresése. Hír több témakört is hozzárendelhető. Minden egyes sor formátuma "&lt;témakör neve&gt; &lt;dokumentumazonosító&gt; 1". Az adatkészlet 2,6 millió témakör hozzárendeléseket tartalmaz. Az adatkészlet David által elérhető történt. D. Lewis.
   </td>
 </tr>
 
 <tr>
   <td><a href="https://azuremlsampleexperiments.blob.core.windows.net/datasets/student_performance.txt">student_performance.txt</a></td>
   <td>
-Ezeket az adatokat a KDD Cup 2010 Student teljesítmény értékelési kihívás származik (<a href="http://www.kdd.org/kdd-cup/view/kdd-cup-2010-student-performance-evaluation">student teljesítmény értékelési</a>). A használt adatok a Algebra_2008_2009 gyakorlókészlethez (Stamper, J., Niculescu-Mizil, A., Ritter, S. Gordon, G.J. & Koedinger, k. r. (2010). Algebra I 2008-2009. KDD Cup 2010 oktatási Data Mining ellenőrző kérdés adatkészlet. A Keresés <a href="http://pslcdatashop.web.cmu.edu/KDDCup/downloads.jsp">downloads.jsp</a>.
+Az adatok származási a évi Versenysorozatából Cup 2010 tanulói teljesítmény kiértékelése kihívás (<a href="http://www.kdd.org/kdd-cup/view/kdd-cup-2010-student-performance-evaluation">tanulói teljesítmény kiértékelése</a>). A használt adatokat a Algebra_2008_2009 gyakorlókészlethez (Stamper, J., Niculescu-Mizil, A., Ritter, s, Gordon, G.J. & Koedinger, k. r. (2010). Algebra I 2008 – 2009. Kérdés adatkészlethez az évi Versenysorozatából Cup 2010 oktatási Data Mining kérdés. Keresse meg a <a href="http://pslcdatashop.web.cmu.edu/KDDCup/downloads.jsp">downloads.jsp</a>.
 <p></p>
-A dataset letöltötte és az Azure Blob storage szolgáltatásban tárolt (<a href="https://azuremlsampleexperiments.blob.core.windows.net/datasets/student_performance.txt">student_performance.txt</a>) és a rendszer-oktatás student naplófájlokat tartalmazza. A megadott szolgáltatások közé tartozik a probléma azonosítója és a rövid leírását, student azonosítója, Timestamp típusú és hány kísérletet a student előtt a probléma megoldásához a megfelelő módon. Az eredeti dataset adatkészletben 8.9M rekordok; Ez az adatkészlet lett az első 100K sorokra lefelé-mintát. A dataset adatkészletben különböző típusú 23 tabulátorral tagolt oszlopok: numerikus, kategorikus, és a Timestamp típusú.
+Az adatkészlet letöltötte és az Azure Blob storage szolgáltatásban tárolt (<a href="https://azuremlsampleexperiments.blob.core.windows.net/datasets/student_performance.txt">student_performance.txt</a>) és a egy diák oktatási a rendszer a naplófájlokat tartalmazza. A megadott szolgáltatásai a probléma azonosítója, és a rövid leírását, ő, időbélyegző és hány kísérletek a tanulói, a probléma megoldásához a megfelelő módon előtt. Az eredeti adathalmazból rendelkezik 8.9M rekordok; Ez az adatkészlet lett, le mintavételezés az első 100 ezer olyan sorokat. Az adatkészlet már 23 tabulátorokkal tagolt oszlopokban a különféle fenyegetési típusokat: numerikus, kategorikus, és az időbélyegző.
   </td>
 </tr>
 

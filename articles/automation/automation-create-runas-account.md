@@ -9,17 +9,17 @@ ms.author: gwallace
 ms.date: 03/15/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: c9180b3f6bf6b151909ab681d0f33bc6b3583ce0
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 3f6f2768e13e85edb8a314359fef0b0312a8e84d
+ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34714663"
+ms.lasthandoff: 07/02/2018
+ms.locfileid: "37344894"
 ---
 # <a name="update-your-automation-account-authentication-with-run-as-accounts"></a>Automation-fiók hitelesítésének frissítése futtató fiókokkal 
 Az Azure Portalról vagy a PowerShell-lel frissítheti meglévő Automation-fiókját. Erre a következő esetekben lehet szükség:
 
-* Létrehozott egy Automation-fiókot, de futtató fiókot nem.
+* Automation-fiók létrehozása, de ne hozzon létre a futtató fiókot.
 * Már használ egy, a Resource Manager-erőforrások felügyeletére szolgáló Automation-fiókot, de szeretné frissíteni, hogy runbookos hitelesítést lehetővé tevő futtató fiókot is tartalmazzon.
 * Már használ egy, a klasszikus erőforrások felügyeletére szolgáló Automation-fiókot, de szeretné azt frissíteni, és klasszikus futtató fiókként használni, hogy megtakarítsa az új fiók létrehozásához és a runbookok és objektumok áthelyezéséhez szükséges időt.   
 
@@ -52,7 +52,7 @@ A szkript végrehajtásához feltétlenül szükséges *SubscriptionID*, *Resour
 ### <a name="required-permissions-to-update-your-automation-account"></a>Az Automation-fiók frissítéséhez szükséges engedélyek
 Automation-fiók frissítéséhez az alábbi, a jelen témakör végrehajtásához szükséges jogosultságokkal és engedélyekkel kell rendelkeznie.   
  
-* Az AD-felhasználói fiókot hozzá kell adni egy szerepkörhöz Microsoft.Automation erőforrások közreműködő szerepkörrel egyenértékű engedélyekkel a cikkben leírt módon történő [szerepköralapú hozzáférés-vezérlés az Azure Automationben](automation-role-based-access-control.md#contributor).  
+* Az AD-felhasználói fiókot hozzá kell adni a Microsoft.Automation-erőforrások közreműködői szerepkörével egyenértékű engedélyekkel rendelkezik egy olyan szerepkörhöz című cikkben ismertetett módon [szerepköralapú hozzáférés-vezérlés az Azure Automationben](automation-role-based-access-control.md#contributor).  
 * Az Azure AD-bérlő nem rendszergazda jogosultságú felhasználói abban az esetben végezhetik el az [AD-alkalmazások regisztrálását](../azure-resource-manager/resource-group-create-service-principal-portal.md#check-azure-subscription-permissions), ha az Azure AD-bérlő **Felhasználói beállítások** oldalán található **A felhasználók regisztrálhatnak alkalmazásokat** beállítás **Igen** értékre van állítva. Ha az Alkalmazásregisztrációk beállítás értéke **Nem**, ezt a műveletet csak az Azure AD globális rendszergazdái hajthatják végre.
 
 Ha nem tagja az előfizetéshez tartozó Active Directory-példánynak, mielőtt hozzáadják Önt az előfizetés globális rendszergazdai vagy társadminisztrátori szerepköréhez, vendégként lesz hozzáadva az Active Directoryhoz. Ebben az esetben „Nincs engedélye létrehozni…” figyelmeztető üzenetet kap az **Automation-fiók hozzáadása** panelen. A globális rendszergazdai vagy társadminisztrátori szerepkörhöz hozzáadott felhasználók először eltávolíthatók az előfizetéshez tartozó Active Directory-példányból, majd újra hozzáadhatók, így teljes jogú felhasználók lehetnek az Active Directoryban. Ez a helyzet úgy ellenőrizhető, ha az Azure Portal **Azure Active Directory** panelén a **Felhasználók és csoportok** és a **Minden felhasználó** elemre kattint, majd a konkrét felhasználó kiválasztása után a **Profil** elemet választja. A felhasználók profilja alatti **Felhasználó típusa** attribútum értéke ne legyen **Guest** (vendég).
@@ -272,19 +272,19 @@ Ez a PowerShell-szkript a következő konfigurációk támogatását tartalmazza
 
 A szkript sikeres futtatása után jegyezze fel a következőket:
 * Ha önaláírt nyilvános tanúsítvánnyal (.cer fájl) ellátott klasszikus futtató fiókot hoz létre, a szkript létrehozza és menti a tanúsítványt a számítógépen a PowerShell-munkamenet végrehajtásához használt *%USERPROFILE%\AppData\Local\Temp* felhasználói profilhoz tartozó ideiglenes mappába.
-* Ha egy (.cer formátumú) vállalati tanúsítvánnyal rendelkező klasszikus futtató fiókot hozott létre, használja ezt a tanúsítványt. Kövesse az utasításokat [felügyeleti API tanúsítvány feltöltése az Azure-portálon](../azure-api-management-certs.md), és ezután ellenőrizze az azonosító adatok beállítását, a klasszikus üzembe helyezési erőforrások használatával a [példakód hitelesítéséhez az Azure klasszikus üzembe helyezési erőforrásokkal](automation-verify-runas-authentication.md#classic-run-as-authentication). 
+* Ha egy (.cer formátumú) vállalati tanúsítvánnyal rendelkező klasszikus futtató fiókot hozott létre, használja ezt a tanúsítványt. Kövesse az utasításokat [felügyeleti API-tanúsítványok feltöltése az Azure Portalra](../azure-api-management-certs.md), és ezután ellenőrizze a hitelesítő adatok konfigurációját a klasszikus üzembe helyezési erőforrásokkal. Ehhez használja a [való hitelesítésre szolgáló mintakódot a klasszikus Azure üzemi erőforrásokkal](automation-verify-runas-authentication.md#classic-run-as-authentication). 
 * Ha *nem* klasszikus futtató fiókot hozott létre, állítsa be a hitelesítést a Resource Manager-erőforrásokkal, valamint ellenőrizze a hitelesítő adatok konfigurációját. Ehhez használja a [Service Management-erőforrásokkal való hitelesítéshez használt mintakódot.](automation-verify-runas-authentication.md#automation-run-as-authentication)
 
 ## <a name="limiting-run-as-account-permissions"></a>Futtató fiók vonatkozó engedélyek korlátozása
 
-Az automatizálás az Azure Automationben erőforrásokon célzó szabályozásához alapértelmezés szerint a futtató fiók közreműködői jogokkal az előfizetés kapnak. Ha szeretné korlátozni a RunAs szolgáltatás egyszerű Teendők, távolítsa el a fiókot a közreműködő szerepkört az előfizetés, és közreműködőként hozzáadása az erőforráscsoportok szeretne megadni.
+Szabályozhatja, hogy az automation-erőforrásokon, az Azure Automationben célzó, a Futtatás mint fiók alapértelmezés szerint az előfizetés közreműködői jogokat kapnak. Mi a Futtatás mint szolgáltatásnév mindent korlátozni kell, ha távolítsa el a fiókot a közreműködő szerepkört az előfizetés, és közreműködője hozzáadása az erőforráscsoportok szeretne megadni.
 
-Válassza ki az Azure-portálon **előfizetések** , és válassza ki az előfizetést, az Automation-fiók. Válassza ki **hozzáférés-vezérlés (IAM)** és az Automation-fiókhoz az egyszerű szolgáltatás keresése (hasonlítson \<AutomationAccountName\>_unique azonosítója). Válassza ki azt a fiókot, és kattintson a **eltávolítása** távolítsa el az előfizetésből.
+Az Azure Portalon válassza ki a **előfizetések** , és válassza ki az előfizetést, az Automation-fiók. Válassza ki **hozzáférés-vezérlés (IAM)** , és keresse meg az Automation-fiókhoz tartozó egyszerű szolgáltatásról (tűnik \<AutomationAccountName\>_unique azonosítója). Válassza ki a fiókot, és kattintson a **eltávolítása** eltávolítja az előfizetésből.
 
-![Előfizetés a közreműködők](media/automation-create-runas-account/automation-account-remove-subscription.png)
+![Előfizetés közreműködő](media/automation-create-runas-account/automation-account-remove-subscription.png)
 
-Az egyszerű szolgáltatás hozzáadása egy erőforráscsoport, válassza ki az erőforráscsoportot az Azure portál, és válassza **hozzáférés-vezérlés (IAM)**. Válassza ki **Hozzáadás**, ekkor megnyílik a **engedélyek hozzáadása** lap. A **szerepkör**, jelölje be **közreműködő**. Az a **válasszon** szöveg mezőbe írja be a szolgáltatás egyszerű a Futtatás mint fiók nevében, és válassza ki azt a listából. Kattintson a **Mentés** gombra a módosítások mentéséhez. Ehhez a erőforrások csoportokat szeretne adni az Azure Automation futtató szolgáltatás egyszerű hozzáférést.
+Az egyszerű szolgáltatás hozzáadása egy erőforráscsoportot, válassza ki az erőforráscsoportot az Azure Portalon, és válassza a **hozzáférés-vezérlés (IAM)**. Válassza ki **Hozzáadás**, ekkor megnyílik a **engedélyek hozzáadása** lapot. A **szerepkör**válassza **közreműködői**. Az a **kiválasztása** szöveg mezőbe írja be az egyszerű szolgáltatás a Futtatás mint fiók nevét, majd válassza ki a listából. Kattintson a **Mentés** gombra a módosítások mentéséhez. Ehhez az Azure Automation futtató szolgáltatásnév hozzáférhessen a hozzárendelni kívánt erőforrások csoportjai számára.
 
 ## <a name="next-steps"></a>További lépések
-* Szolgáltatásnevekről kapcsolatos további információkért lásd: [alkalmazás és szolgáltatás egyszerű objektumok](../active-directory/active-directory-application-objects.md).
-* Tanúsítványok és az Azure-szolgáltatásokkal kapcsolatos további információkért lásd: [tanúsítványok áttekintése Azure-szolgáltatásokhoz](../cloud-services/cloud-services-certs-create.md).
+* Szolgáltatásnevekkel kapcsolatos további információkért lásd: [alkalmazásobjektumok és egyszerű szolgáltatási objektumok](../active-directory/active-directory-application-objects.md).
+* Tanúsítványokkal és az Azure-szolgáltatásokkal kapcsolatos további információkért lásd: [tanúsítványok áttekintése az Azure Cloud Services](../cloud-services/cloud-services-certs-create.md).

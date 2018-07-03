@@ -1,6 +1,6 @@
 ---
-title: Hamarosan nyelvi ismertetése (LUIS) az Azure-ban |} Microsoft Docs
-description: Megtudhatja, hogyan nyelvi ismertetése (LUIS) segítségével állítsa a gépi tanulási az alkalmazások teljesítménye.
+title: Hamarosan Language Understanding (LUIS) az Azure-ban |} A Microsoft Docs
+description: Ismerje meg, hogyan ruházhatja fel alkalmazásait gépi a Language Understanding (LUIS) használatával.
 services: cognitive-services
 author: v-geberr
 manager: kaiqb
@@ -9,37 +9,37 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 06/22/2017
 ms.author: v-geberr
-ms.openlocfilehash: bbd0a532e54f9b221739c8ae9ff097fe44fdc4df
-ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
+ms.openlocfilehash: da8ea6dead6b22d97e7338b2aa57a892be475417
+ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36751595"
+ms.lasthandoff: 07/02/2018
+ms.locfileid: "37344831"
 ---
-# <a name="what-is-language-understanding-luis"></a>Mi az a nyelvi ismertetése (LUIS)?
-Nyelvi ismertetése (LUIS) egy felhőalapú szolgáltatás, amely egyéni gépi tanulásra vonatkozik egy felhasználói conversational, természetes nyelvű szövege előrejelzése általános jelentését, és ki a megfelelő, részletes információkat. 
+# <a name="what-is-language-understanding-luis"></a>Mit jelent a Language Understanding (LUIS)?
+Language Understanding (LUIS) egy felhőalapú szolgáltatás, amely egyéni gépi tanulási vonatkozik a felhasználó természetes nyelvi, természetes nyelvi szöveg teljes jelentése találnia, és ki a megfelelő, részletes információkat. 
 
-Egy ügyfél-alkalmazást LUIS lehet bármely conversational alkalmazás, amely kommunikál a felhasználók természetes nyelven a tevékenységek végrehajtásához. Ügyfélalkalmazások például a közösségi média alkalmazások chatbots és asztali alkalmazások engedélyezését.  
+A LUIS ügyféloldali alkalmazás bármilyen természetes nyelvi alkalmazások lehetnek, amely kommunikál egy felhasználóval természetes nyelven egy adott feladat végrehajtásához. Ügyfélalkalmazások közé közösségimédia-alkalmazások, látás és asztali alkalmazások engedélyezését.  
 
-![Információ LUIS etetési 3 alkalmazások fogalmi képe](./media/luis-overview/luis-entry-point.png)
+![Információ a LUIS számból 3 alkalmazások fogalmi képe](./media/luis-overview/luis-entry-point.png)
 
-## <a name="what-is-a-luis-app"></a>Mi az, hogy egy LUIS alkalmazást?
-Egy LUIS alakítson ki az tartományspecifikus természetes nyelvű modell tartalmaz. Indítsa el a LUIS alkalmazást egy előre elkészített tartomány modellel, összeállítása a saját vagy egyesítés egy előre elkészített tartomány adatot a saját egyéni információ.
+## <a name="what-is-a-luis-app"></a>Mit jelent a LUIS-alkalmazások?
+LUIS-alkalmazások tervezésekor a tartomány-specifikus természetes nyelvi modell tartalmazza. A LUIS-alkalmazás elindításához az előre összeállított szakterületi modell, létrehozhatja saját vagy egy előre elkészített tartomány darab kombinálhatja a saját egyéni.
 
-[Előre elkészített tartomány modellek](luis-how-to-use-prebuilt-domains.md) összes adatot tartalmaznak, és indíthatja gyorsan LUIS nagyszerű módját.
+[Előre összeállított tartománymodellek](luis-how-to-use-prebuilt-domains.md) közé tartozik a összes megtalálhatja az Ön számára és a LUIS használatának gyors megkezdéséhez nagyszerű lehetőséget.
 
-A LUIS is tartalmaz integrációs beállítások [közreműködők](luis-concept-collaborator.md), és [verziók](luis-concept-version.md).
+A LUIS-alkalmazás is tartalmaz az integrációs beállításokat, [közreműködők](luis-concept-collaborator.md), és [verziók](luis-concept-version.md).
 
-## <a name="using-a-luis-app"></a>LUIS alkalmazással
-<a name="Accessing-LUIS"></a> Miután közzétette az LUIS alkalmazást, az ügyfélalkalmazás utterances elküldi a LUIS [végpont API] [ endpoint-apis] és az előrejelzés eredmények JSON-választ kap.
+## <a name="using-a-luis-app"></a>A LUIS-alkalmazás használatával
+<a name="Accessing-LUIS"></a> A LUIS-alkalmazás közzététele után az ügyfélalkalmazás utterances küld a LUIS [végponti API] [ endpoint-apis] és fogadja az előrejelzés eredményét, JSON-válaszok.
 
-Az alábbi diagram szemlélteti, először az ügyfél chatbot felhasználó szöveget küld a mi személy szeretne rendelni a HTTP-kérelem a LUIS saját szavakat. LUIS második, a megjegyzett modell vonatkozik a felhasználói bevitel értelmezhető természetes nyelv, és a JavaScript Object Notation (JSON) formátumú választ ad vissza. Az ügyfél chatbot harmadik, a JSON-választ használ a felhasználói kérelmek teljesítése érdekében kapcsolódott. 
+Az alábbi ábrán az ügyfél csevegőrobot elküldi az ember szándékának megértésére a saját szavaival, LUIS HTTP-kérést a felhasználó szöveget. Második LUIS, a felhasználói bevitel érthető legyen természetes nyelv a megismert modell vonatkozik, és egy JavaScript Object Notation (JSON) formátumú választ ad vissza. Az ügyfél csevegőrobot harmadik, a JSON-válasz használ a felhasználói kérések teljesítését. 
 
-![Fogalmi képeket a LUIS Chatbot használata](./media/luis-overview/luis-overview-process-2.png)
+![A LUIS-Csevegőrobot használata fogalmi képeken](./media/luis-overview/luis-overview-process-2.png)
 
 ### <a name="example-of-json-endpoint-response"></a>JSON-végpont válasz – példa
 
-A JSON végpont választ, legalább a lekérdezés utterance és szándéka pontozási felső tartalmaz. 
+A JSON végpont választ, legalább a lekérdezés utterance (kifejezés), valamint a leképezés pontozási felső tartalmazza. 
 
 ```JSON
 {
@@ -62,57 +62,57 @@ A JSON végpont választ, legalább a lekérdezés utterance és szándéka pont
 
 <a name="Key-LUIS-concepts"></a>
 <a name="what-is-a-luis-model"></a>
-## <a name="what-is-a-natural-language-model"></a>Mi az a természetes nyelvű modell?
-A modellek listáját általános felhasználói céljaira nevű kezdődik _leképezések_, például "Könyv repülési" vagy "Forduljon támogatási szolgálat." Megadja a felhasználó Példaszöveg nevű _példa utterances_ a leképezések az. Ezután jelölje meg jelentős szavakat vagy kifejezéseket a utterance hívása a _entitások_.
+## <a name="what-is-a-natural-language-model"></a>Mi az természetes nyelvi modell?
+A modell egy általános felhasználói céljaira, úgynevezett listája kezdődik _leképezések_, például "Címjegyzék repülési" vagy "Forduljon támogatási szolgálat." Azt adja meg a felhasználó látható példaszöveget, nevű _példa utterances_ a szándék fog vonatkozni a. Megjelölheti a jelentős szavak vagy kifejezések az utterance (kifejezés), nevű _entitások_.
 
 
-A modell az alábbiak tartalmazza:
+A modell tartalmazza:
 
 * **[leképezések](#intents)**: felhasználói céljaira (tervezett művelet vagy eredmény) kategóriái
-* **[entitások](#entities)**: adatok utterances száma, e-mailek vagy neve például adott típusú
-* **[Példa utterances](#example-utterances)**: a felhasználó adja meg az ügyfélalkalmazásban mintaszöveggel
+* **[entitások](#entities)**: adott típusú adatok például a számot, e-mail vagy név kimondott szöveg
+* **[Példa utterances](#example-utterances)**: a felhasználó beírja az ügyfélalkalmazásban mintaszöveggel
 
 ### <a name="intents"></a>Leképezések 
-Egy [leképezés](luis-how-to-add-intents.md), rövid a _szándékát_célú vagy a cél a kifejezett egy felhasználó utterance, például a felhőszolgáltató közötti átviteléhez foglalás, egy számlázási fizető vagy a hírek cikkében találja. Minden egyes művelethez megjelölésű hoz létre. Egy LUIS utazás app határozhatnak meg megjelölésű nevű "BookFlight." Az ügyfélalkalmazás használható leképezés pontozási felső elindítani egy műveletet. Például "BookFlight" leképezés LUIS küld vissza, ha az ügyfélalkalmazást elindíthatja az API-hívás a Foglalás vezérlősík jegy egy külső szolgáltatáshoz.
+Egy [szándékot](luis-how-to-add-intents.md), rövid a _blokkolni_, a cél, vagy ki, a cél a felhasználó utterance (kifejezés), például a Foglalás repülőjegyet, és a egy számlázási vagy hír keresése. Minden egyes művelethez megjelölésű hoz létre. A LUIS utazási alkalmazás adhat meg megjelölésű nevű, "BookFlight." Az ügyfélalkalmazás szándékot pontozási felső használhatja egy műveletet aktiválásához. Például "BookFlight" szándékot küld vissza, LUIS, ha az ügyfélalkalmazás válthatja ki egy API-hívások egy külső szolgáltatás lefoglalási adatsík jegyet.
 
 ### <a name="entities"></a>Entitások
-Egy [entitás](luis-how-to-add-entities.md) fontos a felhasználó kérelmére a utterance belül található részletes adatait jelöli. Például a "Könyv Párizsi jegy" utterance egyetlen jegy van szükség, és "Párizsi" egy helyre. Két olyan entitásra "jegyet" egy "Párizsi", amely jelzi, a cél és egyetlen jegyet találhatók. 
+Egy [entitás](luis-how-to-add-entities.md) az utterance (kifejezés), amely a felhasználó kérésére fontos található részletes adatait jelöli. Például az "Egy a jegy Párizsba könyv" utterance egy hibajegy van szükség, és a "Párizs" az a hely. A két entitás "egy a jegy" jelző egy hibajegy és a cél jelző "Párizs" találhatók. 
 
-Miután LUIS a található a felhasználó utterance az entitásokat ad vissza, az ügyfélalkalmazás használható entitások listájának paraméterek elindítani egy műveletet. Például entitások, például a utazás cél, dátum és légitársaság foglalási a felhőszolgáltató közötti átviteléhez szükséges.
+A LUIS a található az a felhasználó utterance (kifejezés) entitásokat ad vissza, miután az ügyfélalkalmazás segítségével az entitások listájában paraméterekként műveletek aktiválására. Például entitások, például az úti cél, dátum és légitársaság foglalási repülőjegyet igényel.
 
-LUIS többféleképpen is azonosíthatja és entitások kategorizálását.
+A LUIS azonosíthatja és entitások kategorizálása több módszert is biztosít.
 
-* **Előre elkészített entitások** LUIS rendelkezik leképezések, utterances, többek között számos előre elkészített tartomány modellek és [előre elkészített entitások](pre-builtentities.md). Az előre elkészített entitásokat is használhatja a leképezések és az előre elkészített modell utterances használata nélkül. Az előre elkészített entitások idő takarítható meg.
+* **Előre összeállított entitások** LUIS rendelkezik szándék fog vonatkozni, utterances, beleértve számos előre elkészített tartománymodellek és [előre összeállított entitások](luis-prebuilt-entities.md). A leképezések és a kimondott szöveg az előre létrehozott modell használata nélkül is használhatja az előre összeállított entitások. Az előre összeállított entitások időt takarít meg.
 
-* **Egyéni entitások** LUIS számos lehetőséget biztosít a saját egyéni azonosításához [entitások](luis-concept-entity-types.md) entitások gép megtanulta, adott vagy -konstans entitásokat és számítógép-megtanulta, és a szöveges.
+* **Az egyéni entitások** LUIS számos lehetőséget biztosít a saját egyéni azonosításához [entitások](luis-concept-entity-types.md) többek között a gép megismert entitások, az adott vagy -konstans entitások és a gép megtanult és szövegkonstans.
 
-### <a name="example-utterances"></a>Példa utterances
-Példa [utterance](luis-how-to-add-example-utterances.md) szöveges bevitel a felhasználótól, amelyet az ügyfélalkalmazás ismertetése. Lehet, hogy néhány mondatot, például az "A jegy könyv Párizsba", illetve egy kódrészletet néhány mondatot, például a "Foglalási" vagy "Párizsi repülési." Utterances mindig nem megfelelően formázott, és az egy adott célt számos utterance változata is lehet. 10-20 példa utterances Helyezzen minden leképezés, és jelölje minden utterance szerepelnek.
+### <a name="example-utterances"></a>Példák kimondott szövegekre
+Példa [utterance (kifejezés)](luis-how-to-add-example-utterances.md) van a felhasználót, hogy az ügyfélalkalmazás meg kell ismernie a szövegbevitel. Elképzelhető, hogy egy mondatot, például "Book egy jegyet, Párizs", vagy egy kódrészletet egy mondatot, például a "Foglalás" vagy "Párizs repülési." Beszédmódok nem mindig helytelen formátumú, és számos utterance (kifejezés) változata létezik egy adott szándékot is lehet. Minden egyes beszédszándék 10 és 20 példa beszédmódok hozzáadása, és jelölje meg minden utterance (kifejezés) entitásokat.
 
-|Példa felhasználói utterance|Kísérlet történt|Entitások|
+|Példa felhasználói utterance (kifejezés)|Leképezés|Entitások|
 |-----------|-----------|-----------|
-|"És a felhőszolgáltató közötti átviteléhez foglalható le __Budapest__?"|BookFlight|Seattle|
-|"Ha does tárolt __nyissa meg a__?"|StoreHoursAndLocation|megnyitás|
-|"A értekezletet __1 pm__ rendelkező __Bob__ a terjesztési"|ScheduleMeeting|Bob du. 1|
+|"A repülőjegyet repülőjáratra __Seattle__?"|BookFlight|Seattle|
+|"Ha does a store __nyissa meg a__?"|StoreHoursAndLocation|megnyitás|
+|"Értekezletet, __1 du__ a __Bob__ terjesztés"|ScheduleMeeting|1 du, Bob|
 
-## <a name="improve-prediction-accuracy"></a>Előrejelzési pontosság növeléséhez
-A LUIS alkalmazás közzé van téve, és megkapja a tényleges felhasználói utterances, után LUIS az előrejelzési pontosság növeléséhez számos módszert kínál a: [aktív tanulási](#active-learning) a végpont utterances [listák kifejezés](#phrase-lists) tartomány Word-felvételt és [minták](#patterns) szükséges utterances számának csökkentése érdekében.
+## <a name="improve-prediction-accuracy"></a>Előrejelzés pontosságának javítása
+A LUIS-alkalmazás közzé van téve, és a valós felhasználói utterances kap, miután a LUIS növelve előrejelzés pontosságát több módszert is biztosít: [aktív tanulás](#active-learning) a végpont utterances, [listák kifejezés](#phrase-lists) tartomány a felvételt a Word és [minták](#patterns) szükséges utterances számának csökkentése érdekében.
 
 ### <a name="active-learning"></a>Aktív tanulás
-Az a [aktív tanulási](label-suggested-utterances.md) folyamat LUIS lehetővé teszi a valós utterances LUIS alkalmazást támogató kapta meg a végpont felülvizsgálandó utterances kiválasztásával. Fogadja el, vagy javítsa ki a végpont előrejelzés teljesített kapcsolat-újraépítési és ismételt. LUIS Tanulja meg gyorsan iteratív ezt a folyamatot, a minimális mérete az idő és erőfeszítés véve. 
+Az a [aktív tanulás](label-suggested-utterances.md) folyamat, LUIS lehetővé teszi, hogy a LUIS-alkalmazás a való életből vett utterances alkalmazkodnak a végponton felülvizsgálandó kapott utterances kiválasztásával. Fogadja el, vagy javítsa ki a végpont-előrejelzés, teljesített kapcsolat-újraépítési és újra közzétettük. A LUIS megtanulja gyorsan a iteratív folyamattal minimális mennyisége az idő és erőfeszítés véve. 
 
-### <a name="phrase-lists"></a>Kifejezés listája 
-LUIS biztosít [listák kifejezések](luis-concept-feature.md) úgy adhatja meg, fontos szavakat vagy kifejezéseket a modell-tartományban. LUIS a listák segítségével adja hozzá a további többszörösére szavak és kifejezések, amelyek akkor ellenkező esetben nem található a modellben.
+### <a name="phrase-lists"></a>Kifejezéslisták 
+A LUIS biztosít [listák kifejezések](luis-concept-feature.md) úgy adhatja meg, fontos szavakat vagy kifejezéseket modell tartományához. A LUIS ezek a listák segítségével további többszörösére hozzá ezekhez a szavak és kifejezések, amelyek lenne egyébként nem található a modellben.
 
 ### <a name="patterns"></a>Minták 
-Minták lehetővé teszik egy leképezés utterance gyűjteményét közös egyszerűsítése [sablonok](luis-concept-patterns.md) word választott és word sorrendje. Ez lehetővé teszi további gyorsabb által kevesebb példa utterances kellene a leképezések az LUIS. Minták egy hibrid rendszer reguláris kifejezések és a gép megtanulta kifejezések. 
+Minták lehetővé teszik egy leképezés utterance (kifejezés) gyűjteményét közös egyszerűsítése [sablonok](luis-concept-patterns.md) word választási lehetőség és szórendjét. Ez lehetővé teszi a LUIS további gyorsabb kevesebb példa utterances kellene a a szándék szerint. Minták reguláris kifejezések és a gép megtanult kifejezések hibrid rendszerek. 
 
 <a name="using-luis"></a>
 
-## <a name="authoring-and-accessing-luis"></a>Jelentéskészítő és -LUIS elérése
-Hozza létre a LUIS alkalmazását a LUIS webhelyről vagy a programozott módon a [szerzői](https://aka.ms/luis-authoring-apis) API-k, vagy használja mindkét attól függően, hogy a szerzői műveletekhez szükséges. A közzétett LUIS alkalmazás eléréséhez a lekérdezés [végpont](https://aka.ms/luis-endpoint-apis). 
+## <a name="authoring-and-accessing-luis"></a>Szerzői műveletek, és a LUIS elérése
+A LUIS webhelyről vagy programozott módon a LUIS alkalmazás létrehozása a [szerzői](https://aka.ms/luis-authoring-apis) API-k, vagy használja mindkét attól függően, a szerzői műveletekhez részben szükség. A lekérdezés által a közzétett LUIS-alkalmazás elérésére [végpont](https://aka.ms/luis-endpoint-apis). 
 
-LUIS világszerte, attól függően, hogy a szerzői műveletek terület három webhelyek biztosít. A szerzői műveletek terület meghatározza, hogy az Azure-régió, ahol az LUIS alkalmazás közzététele.
+A LUIS három websites, a szerzői műveletekhez részben régiójától függően a világ különböző pontjain biztosít. Az Authoring Tool régió határozza meg, ahol közzéteheti a LUIS-alkalmazás Azure-régióban.
 <!--
 |Authoring region|Publishing region(s)|
 |--|--|
@@ -123,17 +123,17 @@ LUIS világszerte, attól függően, hogy a szerzői műveletek terület három 
 
 Ismerje meg, [további](luis-reference-regions.md) szerzői, és régiók közzététele.
 
-## <a name="what-technologies-work-with-luis"></a>Milyen technikai megoldásokat LUIS használható?
-Több Microsoft-technológiák LUIS használata:
+## <a name="what-technologies-work-with-luis"></a>Mi a technológiák együttműködnek az intelligens hangfelismerési szolgáltatással?
+Számos Microsoft-technológiák használata, az intelligens hangfelismerési szolgáltatással:
 
-* [Bing helyesírás ellenőrizze API](../bing-spell-check/proof-text.md) szöveg javítása előtt előrejelzés biztosít. 
-* [Botot keretrendszer] [ bot-framework] lehetővé teszi, hogy egy chatbot, hogy egy felhasználó a szöveges bevitel forduljon. Válassza ki [3.x](https://github.com/Microsoft/BotBuilder) vagy [4.x](https://github.com/Microsoft/botbuilder-dotnet) SDK teljes botot élmény.
-* [Kérdések és válaszok készítő] [ qnamaker] lehetővé teszi, hogy számos különböző típusú szöveg egy kérdés és válasz Tudásbázis egységgé kombinálják.
-* [Beszéd](../Speech/home.md) szóbeli nyelvi kérelmek szöveggé alakítja. Ha szöveg konvertálva, LUIS kérelmeket dolgozza fel. Lásd: [beszéd SDK](https://aka.ms/csspeech) további információt.
-* [Szövegelemzések](../text-analytics/overview.md) véleményeket elemzést, a kulcs kifejezés adatok kinyerése biztosít.
+* [A Bing Spell Check API](../bing-spell-check/proof-text.md) szöveg javítása előtt előrejelzési biztosít. 
+* [Bot Framework] [ bot-framework] lehetővé teszi, hogy egy csevegőrobotot szeretne beszélni a szövegbevitel felhasználók. Válassza ki [3.x](https://github.com/Microsoft/BotBuilder) vagy [4.x](https://github.com/Microsoft/botbuilder-dotnet) SDK teljes bot biztosítása érdekében.
+* [A QnA Maker] [ qnamaker] lehetővé teszi, hogy a szöveg egy kérdést és választ Tudásbázis egyesítendő számos különböző típusú.
+* [Beszéd](../Speech/home.md) kérelmek használja a beszélt nyelv szöveggé. Ha szöveges konvertálva, LUIS dolgozza fel a kérelmeket. Lásd: [beszéd SDK](https://aka.ms/csspeech) további információt.
+* [Szövegelemzés](../text-analytics/overview.md) vélemények elemzése és adatok kulcskifejezések biztosít.
 
 ## <a name="next-steps"></a>További lépések
-Hozzon létre egy új LUIS alkalmazást egy [előre elkészített](luis-get-started-create-app.md) vagy [egyéni](luis-quickstart-intents-only.md) tartomány.
+Az új LUIS-alkalmazás létrehozása egy [előre összeállított](luis-get-started-create-app.md) vagy [egyéni](luis-quickstart-intents-only.md) tartományhoz.
 
 <!-- Reference-style links -->
 [bot-framework]: https://docs.microsoft.com/bot-framework/

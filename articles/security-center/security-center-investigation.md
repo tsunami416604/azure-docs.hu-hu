@@ -3,36 +3,41 @@ title: Incidensek és riasztások vizsgálata az Azure Security Centerben | Micr
 description: Ez a dokumentum segítséget nyújt a biztonsági incidensek és riasztások vizsgálatához az Azure Security Center vizsgálati funkciójának használatával.
 services: security-center
 documentationcenter: na
-author: terrylan
+author: TerryLanfear
 manager: mbaldwin
 editor: ''
 ms.assetid: a8e894a9-8781-4749-ae8f-8c8e01658566
 ms.service: security-center
 ms.devlang: na
-ms.topic: hero-article
+ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/18/2017
-ms.author: yurid
-ms.openlocfilehash: bab7b64a1635639991d639fb838b7118e234aa5b
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
-ms.translationtype: HT
+ms.date: 06/29/2018
+ms.author: terrylan
+ms.openlocfilehash: 010c641c247552a8994c9d1c945cd585148fadf9
+ms.sourcegitcommit: 4597964eba08b7e0584d2b275cc33a370c25e027
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/03/2018
-ms.locfileid: "32776482"
+ms.lasthandoff: 07/02/2018
+ms.locfileid: "37340790"
 ---
 # <a name="investigate-incidents-and-alerts-in-azure-security-center-preview"></a>Incidensek és riasztások vizsgálata az Azure Security Centerben (előzetes verzió)
 Ez a dokumentum segítséget nyújt a biztonsági incidensek és riasztások vizsgálatához az Azure Security Center vizsgálati funkciójának használatával.
 
 ## <a name="what-is-investigation-in-security-center"></a>Mit jelent a vizsgálat a Security Centerben?
 A Security Center Vizsgálat szolgáltatásával osztályozhatja a potenciális [biztonsági incidenseket](https://docs.microsoft.com/azure/security-center/security-center-incident), feltérképezheti a hatókörüket, és azonosíthatja a kiváltó okokat.
- 
+
 A szolgáltatás célja, hogy megkönnyítse a vizsgálati eljárást a vizsgált incidensben érintett összes entitás ([biztonsági riasztások](https://docs.microsoft.com/azure/security-center/security-center-alerts-type), felhasználók, számítógépek és incidensek) összekapcsolásával.  A Security Center ezt azáltal éri el, hogy összegyűjti és egymáshoz viszonyítja az összes érintett entitásra vonatkozó adatokat, és ezeket a kölcsönviszonyokat megjeleníti egy élő gráfon, amelynek segítéségével eligazodhat az egyes objektumok között, és megjelenítheti a vonatkozó információkat.
+
+> [!NOTE]
+> [Egyéni riasztások](security-center-custom-alert.md) a Security Center vizsgálati funkciójáról nem támogatottak.
+>
+>
 
 
 ## <a name="how-investigation-works"></a>A vizsgálat működése
 A vizsgálat alapját a vizsgálati irányítópult középső területén megjelenő gráf adja. A gráfon mindig valamely adott entitás van a középpontban, és az ahhoz viszonyítva jeleníti meg a kapcsolódó entitásokat. Az entitások lehetnek biztonsági riasztások, felhasználók, számítógépek vagy incidensek.
- 
+
 ![Térkép](./media/security-center-investigation/security-center-investigation-fig1.png)
 
 A felhasználó az entitások között úgy navigálhat, ha rájuk kattint a gráfon. A gráf automatikusan a kiválasztott entitásra és annak kapcsolt entitásaira fókuszál. A már nem releváns entitások eltávolíthatók a gráfról.
@@ -43,7 +48,7 @@ Ahogy a felhasználó a különböző entitások között lépked, a vizsgálati
 ![Útvonal](./media/security-center-investigation/security-center-investigation-fig2.png)
 
 ### <a name="general-information"></a>Általános információk
-A gráfon látható entitásokról a füleken további információk jelennek meg. Az **Információ** lap az entitással kapcsolatos, különböző adatforrásokból származó általános információkat tartalmaz. 
+A gráfon látható entitásokról a füleken további információk jelennek meg. Az **Információ** lap az entitással kapcsolatos, különböző adatforrásokból származó általános információkat tartalmaz.
 
 ![Általános információk](./media/security-center-investigation/security-center-investigation-fig3.png)
 
@@ -71,7 +76,7 @@ A **Feltárás** lapon a vizsgáló az entitáshoz kapcsolódó különféle hib
 
 ### <a name="timeline"></a>Idővonal
 
-A gráfon és a különféle füleken megjelenő adatok zöme egy adott időszakra vonatkozik. Az időszak az időszakválasztón állítható be a gráf bal oldalán. Különféle módszerek állnak a vizsgáló rendelkezésére az időszak kiválasztásához. 
+A gráfon és a különféle füleken megjelenő adatok zöme egy adott időszakra vonatkozik. Az időszak az időszakválasztón állítható be a gráf bal oldalán. Különféle módszerek állnak a vizsgáló rendelkezésére az időszak kiválasztásához.
 
 ![Idővonal](./media/security-center-investigation/security-center-investigation-fig7.png)
 
@@ -103,7 +108,7 @@ A vizsgálatok biztonsági incidensből vagy riasztásból indíthatók, attól 
 
     ![Vizsgálat irányítópult](./media/security-center-investigation/security-center-investigation-fig9.png)
 
-Innen feltárhatja az adott incidensben érintett entitásokat, és felderítheti a velük kapcsolatos további adatokat. 
+Innen feltárhatja az adott incidensben érintett entitásokat, és felderítheti a velük kapcsolatos további adatokat.
 
 ## <a name="see-also"></a>Lásd még
 Ebben a dokumentumban megismerkedhetett a Security Center vizsgálati funkcióinak használatával. A Security Centerrel kapcsolatos további információkért olvassa el a következőket:
@@ -111,7 +116,6 @@ Ebben a dokumentumban megismerkedhetett a Security Center vizsgálati funkcióin
 * [Biztonsági riasztások kezelése és válaszadás a riasztásokra az Azure Security Centerben](https://docs.microsoft.com/azure/security-center/security-center-managing-and-responding-alerts). A Security Center-riasztások kezelését és a biztonsági eseményekre való válaszadást ismertető útmutató.
 * [Biztonsági állapotfigyelés az Azure Security Centerben](security-center-monitoring.md). Az Azure-erőforrások állapotának figyelését ismertető útmutató.
 * [Az Azure Security Center biztonsági riasztásainak megismerése](https://docs.microsoft.com/azure/security-center/security-center-alerts-type). A különböző típusú biztonsági riasztásokat ismertető útmutató.
-* [Azure Security Center – Hibaelhárítási útmutató](https://docs.microsoft.com/azure/security-center/security-center-troubleshooting-guide). A Security Center gyakori problémáinak elhárítását ismereti. 
+* [Azure Security Center – Hibaelhárítási útmutató](https://docs.microsoft.com/azure/security-center/security-center-troubleshooting-guide). A Security Center gyakori problémáinak elhárítását ismereti.
 * [Azure Security Center – gyakori kérdések](security-center-faq.md) Gyakori kérdések a szolgáltatás használatával kapcsolatban.
 * [Azure Security blog](http://blogs.msdn.com/b/azuresecurity/) Blogbejegyzések az Azure biztonsági és megfelelőségi funkcióiról.
-
