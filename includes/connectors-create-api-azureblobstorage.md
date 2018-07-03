@@ -1,28 +1,35 @@
-### <a name="prerequisites"></a>Előfeltételek
-* Az Azure-fiók; létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free)
-* Egy [Azure Blob Storage-fiók](../articles/storage/common/storage-create-storage-account.md) például a tárfiók nevét és a hozzáférési kulcsot. Ezt az információt, a storage-fiókot az Azure-portálon tulajdonságainak szerepel. Tudjon meg többet az [Azure Storage](../articles/storage/common/storage-introduction.md).
+---
+title: fájl belefoglalása
+description: fájl belefoglalása
+services: logic-apps
+author: ecfan
+ms.service: logic-apps
+ms.topic: include
+ms.date: 05/21/2018
+ms.author: estfan
+ms.custom: include file
+ms.openlocfilehash: 6e95d456c5eb981a29400057cfd58faa419060fc
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.translationtype: MT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 07/02/2018
+ms.locfileid: "34677916"
+---
+1. Amikor a kapcsolati adatokat kér, adja meg ezeket az adatokat:
 
-A logikai alkalmazást az Azure Blob Storage-fiók használatához csatlakozni az Azure Blob Storage-fiók. Ehhez egyszerűen a logikai alkalmazásban, az Azure portálon.  
+   *Szükséges*
 
-Csatlakozás az Azure Blob Storage-fiók, az alábbi lépéseket követve:  
+   | Tulajdonság | Érték | Leírás | 
+   |----------|-------|-------------| 
+   | Kapcsolat neve | <*kapcsolat neve*> | A neve, a kapcsolat létrehozása | 
+   | Tárfiók | <*Storage-fiók*> | A listáról válassza ki a tárfiókját. | 
+   ||| 
 
-1. Logikai alkalmazás létrehozása. A Logic Apps-tervezőben adja hozzá egy eseményindító, és adja hozzá az műveletet. Válassza ki **megjelenítése Microsoft felügyelt API-k** a legördülő listában, majd írja be a "blob" be a keresőmezőbe. A műveletek közül választhat:  
-   
-    ![Az Azure Blob Storage kapcsolat létrehozását lépést](./media/connectors-create-api-azureblobstorage/azureblobstorage-1.png)  
-2. Ha még nem korábban hozott létre az Azure storage fennálló kapcsolatokat, kéri a kapcsolat adatai:   
-   
-    ![Az Azure Blob Storage kapcsolat létrehozását lépést](./media/connectors-create-api-azureblobstorage/connection-details.png)  
-3. Adja meg a tárolási fiók adatait. Tulajdonságok csillaggal szükség.
-   
-   | Tulajdonság | Részletek |
-   | --- | --- |
-   | Kapcsolat neve * |Adjon meg egy tetszőleges nevet a kapcsolat. |
-   | Az Azure Storage-fiók neve * |Adja meg a tárfiók nevét. A tároló tulajdonságainak az Azure-portálon jelenik meg a tárfiók nevét. |
-   | Azure Storage-fiók hozzáférési kulcs * |Adja meg a tárfiók kulcsára. A tárelérési kulcsokat a tároló tulajdonságainak az Azure portálon jelennek meg. |
-   
-    Ezek a hitelesítő adatok segítségével engedélyezi a Logic Apps alkalmazást, és hozzáférhet az adatokhoz. 
-4. Kattintson a **Létrehozás** gombra.
-5. Figyelje meg, a kapcsolat létrejött. Most folytassa a Logic Apps alkalmazást más lépéseket: 
-   
-    ![Az Azure Blob Storage kapcsolat létrehozását lépést](./media/connectors-create-api-azureblobstorage/azureblobstorage-3.png)  
+   Példa:
+
+   ![Kapcsolat létrehozása](./media/connectors-create-api-azureblobstorage/create-storage-account-connection.png)  
+
+2. Ha elkészült, kattintson a **Létrehozás** gombra.
+
+3. Miután létrehozta a kapcsolatot, folytassa [eseményindító hozzáadása](#add-trigger) vagy [művelet hozzáadása](#add-action).
 

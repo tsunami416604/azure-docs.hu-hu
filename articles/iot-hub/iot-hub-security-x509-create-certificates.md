@@ -1,42 +1,38 @@
 ---
-title: X.509 tanúsítvány létrehozása a PowerShell segítségével |} Microsoft Docs
-description: PowerShell segítségével helyileg X.509-tanúsítvány létrehozása és engedélyezése az X.509-alapú biztonsági az az Azure IoT hub szimulált környezetben.
-services: iot-hub
-documentationcenter: ''
+title: X.509-tanúsítványok létrehozása a PowerShell használatával |} A Microsoft Docs
+description: Hogyan használható a PowerShell helyi X.509-tanúsítványok létrehozása és engedélyezése az X.509-alapú biztonsági az Azure IoT hub szimulált környezetben.
 author: dsk-2015
 manager: timlt
-editor: ''
 ms.service: iot-hub
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
+services: iot-hub
+ms.topic: conceptual
 ms.date: 05/01/2018
 ms.author: dkshir
-ms.openlocfilehash: 656799c76a87870a19018849dbeffea3b12a356e
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: d0063ff79a0bda88fffb486f03286f6784ece7fa
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 07/02/2018
+ms.locfileid: "34637599"
 ---
-# <a name="powershell-scripts-to-manage-ca-signed-x509-certificates"></a>PowerShell-parancsfájlokkal kezelheti a hitelesítésszolgáltató által aláírt X.509-tanúsítványokat
+# <a name="powershell-scripts-to-manage-ca-signed-x509-certificates"></a>A hitelesítésszolgáltató által aláírt X.509 tanúsítványok kezelése a PowerShell-parancsprogramok
 
-Az IoT Hub X.509-alapú biztonsági ahhoz szükséges egy [X.509-tanúsítvány láncában](https://en.wikipedia.org/wiki/X.509#Certificate_chains_and_cross-certification), mely tartalmazza a legfelső szintű tanúsítvány, valamint a bármely beállítást a levéltanúsítvány köztes tanúsítványok. Ez *hogyan* az útmutató bemutatja, hogyan minta PowerShell-parancsfájlokat használó [OpenSSL](https://www.openssl.org/) létrehozására és aláírására X.509-tanúsítványokat. Azt javasoljuk, hogy ez az útmutató használata csak, kísérletezhet, mivel e lépések során gyártási folyamat a valós életben történik. Ezek a tanúsítványok segítségével biztonsági szimulálja az Azure IoT hub használatával a *X.509-tanúsítvány hitelesítése*. A jelen útmutató lépéseit tanúsítványok helyileg létrehozása a Windows-számítógépre. 
+Az IoT hub az X.509-alapú biztonsági a kezdéshez szükséges egy [X.509-tanúsítványláncot](https://en.wikipedia.org/wiki/X.509#Certificate_chains_and_cross-certification), amely tartalmazza a legfelső szintű tanúsítvány, valamint a másnapi levéltanúsítványt köztes tanúsítványokra. Ez *hogyan* az útmutató lépésről lépésre PowerShell-példaszkriptekre használó [OpenSSL](https://www.openssl.org/) létrehozására és aláírására X.509-tanúsítványokat. Azt javasoljuk, hogy ez az útmutató az Kísérletezési csak, mivel e lépések során a gyártási folyamat a való világból történik. Ezek a tanúsítványok segítségével biztonsági szimulálása a az Azure IoT hub használatával a *X.509 tanúsítvány alapú hitelesítést*. A jelen útmutató lépéseit tanúsítványok helyileg létrehozása a Windows-gépen. 
 
 ## <a name="prerequisites"></a>Előfeltételek
-Ez az oktatóanyag feltételezi, hogy, hogy rendelkezik érvényes módon kapott az OpenSSL bináris fájljait. Vagy esetleg
-    - Töltse le a OpenSSL-forráskódot, és összeállítása a bináris fájlokat a számítógépre, vagy 
-    - Töltse le és telepítse a [külső OpenSSL bináris](https://wiki.openssl.org/index.php/Binaries), például a [ebben a projektben a SourceForge](https://sourceforge.net/projects/openssl/).
+Ez az oktatóanyag feltételezi, hogy az OpenSSL bináris vásárolt. A következő lehetőségekkel vagy
+    - Töltse le a OpenSSL forráskód és a bináris fájlok felépítéséhez a gépen, vagy 
+    - Töltse le és telepítse a [külső OpenSSL bináris](https://wiki.openssl.org/index.php/Binaries), például a [a projektet a SourceForge](https://sourceforge.net/projects/openssl/).
 
 <a id="createcerts"></a>
 
-## <a name="create-x509-certificates"></a>X.509 tanúsítvány létrehozása
-A következő lépések bemutatják az X.509 legfelső szintű tanúsítványok helyi létrehozása egy példát. 
+## <a name="create-x509-certificates"></a>X.509-tanúsítványok létrehozása
+A következő lépések bemutatják, hogyan hozhat létre az X.509 legfelső szintű tanúsítványok helyileg egy példát. 
 
 1. Nyisson meg egy PowerShell-ablakot, egy *rendszergazda*.  
-   **Megjegyzés:** meg kell nyitnia a PowerShell magát, nem PowerShell ISE, Visual Studio Code vagy más eszközök, amelyek az alapul szolgáló PowerShell-konzolban burkolása.  Nem-konzol használata alapján PowerShell eredményez `openssl` függő alábbi parancsokat.
+   **Megjegyzés:** kell megnyitnia a PowerShell magát, nem PowerShell ISE-ben, a Visual Studio Code vagy egyéb eszközöket, amelyek az alapul szolgáló PowerShell-konzolt burkolása.  Nem-konzol használata alapján PowerShell eredményez `openssl` függő alábbi parancsokat.
 
-2. Nyissa meg a munkakönyvtárat. Futtassa a következő a globális változókat. 
+2. Lépjen a munkakönyvtárba. Futtassa a következő szkriptet a globális változók beállítása. 
     ```PowerShell
     $openSSLBinSource = "<full_path_to_the_binaries>\OpenSSL\bin"
     $errorActionPreference    = "stop"
@@ -58,7 +54,7 @@ A következő lépések bemutatják az X.509 legfelső szintű tanúsítványok 
     # Whether to use ECC or RSA.
     $useEcc                     = $true
     ```
-3. Futtassa a következő parancsfájlt, amely az OpenSSL bináris fájljait másolja a munkakönyvtárat, és beállítja a környezeti változók:
+3. Futtassa a következő parancsfájlt, amely átmásolja az OpenSSL bináris fájljainak a munkakönyvtár és a környezeti változókat:
 
     ```PowerShell
     function Initialize-CAOpenSSL()
@@ -80,7 +76,7 @@ A következő lépések bemutatják az X.509 legfelső szintű tanúsítványok 
     }
     Initialize-CAOpenSSL
     ```
-4. Ezután futtassa az alábbi parancsfájlt, amely megkeresi az e tanúsítvány által a megadott *tulajdonosnévvel* már telepítve van, és hogy OpenSSL megfelelően van konfigurálva a számítógépen:
+4. Ezután futtassa az alábbi parancsfájlt, amely szerint a megadott e tanúsítványt keres *tulajdonosnévvel* már telepítve van, és hogy OpenSSL megfelelően van konfigurálva a gépen:
     ```PowerShell
     function Get-CACertBySubjectName([string]$subjectName)
     {
@@ -115,13 +111,13 @@ A következő lépések bemutatják az X.509 legfelső szintű tanúsítványok 
     }
     Test-CAPrerequisites
     ```
-    Ha minden megfelelően konfigurálva, megjelenik "Sikeres" üzenet. 
+    Ha minden megfelelően konfigurálva, az "Sikeres" üzenet. 
 
 <a id="createcertchain"></a>
 
-## <a name="create-x509-certificate-chain"></a>X.509 tanúsítvány lánc létrehozása
-Hozzon létre például egy tanúsítványlánc egy legfelső szintű hitelesítésszolgáltató, "CN = Azure IoT legfelső szintű hitelesítésszolgáltató", hogy ezt a mintát használja, a következő PowerShell-parancsfájl futtatásával. Ezt a parancsfájlt is frissíti a Windows operációs rendszer tanúsítványtárolójába, valamint hoz létre fájlokat a munkakönyvtárat. 
-    1. Az alábbi parancsfájlt hoz létre egy PowerShell működnek, hozzon létre egy önaláírt tanúsítványt, egy adott *tulajdonosnévvel* és hatóság aláírása. 
+## <a name="create-x509-certificate-chain"></a>X.509-tanúsítványláncot létrehozása
+Tanúsítványláncolat kialakításához legfelső szintű hitelesítésszolgáltató, például "CN = az Azure IoT legfelső szintű hitelesítésszolgáltató", hogy ezt a mintát használja, a következő PowerShell-parancsfájl futtatásával. Ez a szkript is frissíti a Windows operációs rendszer tanúsítványtárolójában, hoz létre, valamint a munkakönyvtárban fájlokat. 
+    1. A következő szkriptet hoz létre egy PowerShell függvény létrehozása önaláírt tanúsítvány, egy adott *tulajdonos neve* és a szolgáltató aláírást. 
     ```PowerShell
     function New-CASelfsignedCertificate([string]$commonName, [object]$signingCert, [bool]$isASigner=$true)
     {
@@ -157,7 +153,7 @@ Hozzon létre például egy tanúsítványlánc egy legfelső szintű hitelesít
         write (New-SelfSignedCertificate @selfSignedArgs)
     }
     ``` 
-    2. A következő PowerShell-függvény létrehozása köztes X.509-tanúsítványokat használ az előző függvény, valamint az OpenSSL bináris fájljait. 
+    2. A következő PowerShell-függvény használatával a fenti funkciót, valamint az OpenSSL bináris köztes X.509-tanúsítványokat hoz létre. 
     ```PowerShell
     function New-CAIntermediateCert([string]$commonName, [Microsoft.CertificateServices.Commands.Certificate]$signingCert, [string]$pemFileName)
     {
@@ -174,7 +170,7 @@ Hozzon létre például egy tanúsítványlánc egy legfelső szintű hitelesít
         write $newCert
     }  
     ```
-    3. A következő PowerShell-függvény létrehozása az X.509-tanúsítvány láncában. Olvasási [láncok tanúsítvány](https://en.wikipedia.org/wiki/X.509#Certificate_chains_and_cross-certification) további információt.
+    3. A következő PowerShell-függvényt az X.509-tanúsítványláncot hoz létre. Olvasási [Certificate chains](https://en.wikipedia.org/wiki/X.509#Certificate_chains_and_cross-certification) további információt.
     ```PowerShell
     function New-CACertChain()
     {
@@ -192,17 +188,17 @@ Hozzon létre például egy tanúsítványlánc egy legfelső szintű hitelesít
         Write-Host "Success"
     }    
     ```
-    Ez a parancsfájl létrehoz egy nevű fájlt *RootCA.cer* a a munkakönyvtárat. 
-    4. Végül, használja a fenti PowerShell funkciók X.509 tanúsítványlánc létrehozásához futtassa a parancsot `New-CACertChain` a PowerShell-ablakban. 
+    Ez a szkript létrehoz egy fájlt *RootCA.cer* a munkakönyvtárban. 
+    4. Végül a fenti PowerShell függvények létrehozása az X.509-tanúsítványláncot, a parancs futtatásával `New-CACertChain` a PowerShell-ablakban. 
 
 
 <a id="signverificationcode"></a>
 
-## <a name="proof-of-possession-of-your-x509-ca-certificate"></a>Az X.509 Hitelesítésszolgáltatói tanúsítvány birtokában igazolása
+## <a name="proof-of-possession-of-your-x509-ca-certificate"></a>Az x.509-es Hitelesítésszolgáltatói tanúsítvány birtokában igazolása
 
-Ez a parancsfájl elvégzi a *igazolása a birtokában* az X.509 tanúsítvány folyamata. 
+Ez a szkript hajtja végre a *a koncepció-ekre* folyamata az X.509-tanúsítvány. 
 
-A PowerShell-ablakban az asztalon futtassa a következő kódot:
+A PowerShell-ablakot az asztalon futtassa a következő kódot:
    
    ```PowerShell
    function New-CAVerificationCert([string]$requestedSubjectName)
@@ -225,16 +221,16 @@ A PowerShell-ablakban az asztalon futtassa a következő kódot:
    New-CAVerificationCert "<your verification code>"
    ```
 
-Ez a kód tanúsítványt hoz létre a megadott tulajdonosnévvel, nevű fájlba a hitelesítésszolgáltató által aláírt *VerifyCert4.cer* a a munkakönyvtárat. A tanúsítványfájl lemezeit az IoT hub, hogy rendelkezik-e a CA aláírási engedélye (Ez azt jelenti, hogy a titkos kulcs) segítségével.
+Ez a kód létrehoz egy tanúsítványt a megadott tulajdonosnévvel nevű, nevű fájlként a hitelesítésszolgáltató által aláírt *VerifyCert4.cer* a munkakönyvtárban. A tanúsítványfájl segítségével ellenőrizze az IoT hubbal, hogy a CA aláírási engedélye (azaz a titkos kulcsot).
 
 
 <a id="createx509device"></a>
 
-## <a name="create-leaf-x509-certificate-for-your-device"></a>Az eszköz levél X.509 tanúsítvány létrehozása
+## <a name="create-leaf-x509-certificate-for-your-device"></a>Az eszköz levél X.509-tanúsítvány létrehozása
 
-Ez a szakasz bemutatja egy PowerShell-parancsfájlt, amely létrehoz egy eszköz levéltanúsítvány és a megfelelő tanúsítványlánc használható. 
+Ez a szakasz bemutatja, egy PowerShell-parancsprogram, amely létrehoz egy levéltanúsítványának eszköz és a megfelelő tanúsítványlánc is használhatja. 
 
-A PowerShell-ablakban a helyi számítógépen futtassa a következő parancsfájl egy hitelesítésszolgáltató által aláírt X.509 tanúsítvány, az eszköz létrehozásához:
+A PowerShell-ablakban a helyi gépén futtassa az eszközt egy hitelesítésszolgáltató által aláírt X.509-tanúsítvány létrehozásához a következő parancsfájlt:
 
    ```PowerShell
    function New-CADevice([string]$deviceName, [string]$signingCertSubject=$_rootCertSubject)
@@ -276,14 +272,14 @@ A PowerShell-ablakban a helyi számítógépen futtassa a következő parancsfá
    }
    ```
 
-Ezután futtassa `New-CADevice "<yourTestDevice>"` a PowerShell-ablakban, a rövid név, amely az eszköz létrehozásához használt használatával. Amikor a CA titkos kulcsok jelszavát kéri, adja meg "123". Ezzel létrehoz egy  _<yourTestDevice>.pfx_ fájlt a munkakönyvtárat.
+Ezután futtassa `New-CADevice "<yourTestDevice>"` a PowerShell-ablakban használatával hozott létre az eszköz valódi név. Amikor a hitelesítésszolgáltató titkos kulcs jelszavának megadását kéri, adja meg "123". Ez létrehoz egy  _<yourTestDevice>.pfx_ fájlt a munkakönyvtárban.
 
-## <a name="clean-up-certificates"></a>Tanúsítványok tisztítása
+## <a name="clean-up-certificates"></a>Tanúsítványok törlése
 
-A start címsorában vagy **beállítások** app keresse meg és válassza ki **számítógép-tanúsítványok kezelése**. Távolítsa el a által kiállított összes tanúsítványban ** Azure IoT hitelesítésszolgáltató TestOnly x. Ezek a tanúsítványok léteznie kell a következő három helyen: 
+A kezdő sávon vagy **beállítások** alkalmazás keresse meg és válassza ki **számítógép-tanúsítványok kezelése**. Által kiállított tanúsítványok eltávolítása ** Azure IoT hitelesítésszolgáltató TestOnly x. Ezek a tanúsítványok léteznie kell a következő három helyen: 
 
 * Tanúsítványok – helyi számítógép > személyes > tanúsítványok
 * Tanúsítványok – helyi számítógép > megbízható legfelső szintű hitelesítésszolgáltatók > tanúsítványok
 * Tanúsítványok – helyi számítógép > köztes hitelesítésszolgáltatók > tanúsítványok
 
-   ![Távolítsa el az Azure IoT hitelesítésszolgáltató TestOnly](./media/iot-hub-security-x509-create-certificates/cleanup.png)
+   ![Az Azure IoT TestOnly Hitelesítésszolgáltatói tanúsítványok eltávolítása](./media/iot-hub-security-x509-create-certificates/cleanup.png)
