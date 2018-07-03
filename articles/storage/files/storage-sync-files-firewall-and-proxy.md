@@ -1,6 +1,6 @@
 ---
-title: Azure fájl szinkronizálása a helyszíni tűzfal és proxy beállításainak |} Microsoft Docs
-description: Azure fájl szinkronizálása a helyszíni hálózati konfigurációja
+title: Az Azure File Sync helyszíni tűzfal és proxy beállításai |} A Microsoft Docs
+description: Az Azure File Sync helyszíni hálózati konfigurációja
 services: storage
 documentationcenter: ''
 author: fauhse
@@ -14,23 +14,23 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/26/2018
 ms.author: fauhse
-ms.openlocfilehash: 5014c8204b6b6da539a41aaa3308d8787fb517a7
-ms.sourcegitcommit: c722760331294bc8532f8ddc01ed5aa8b9778dec
+ms.openlocfilehash: 7d86082abb6412072af44a6b2d794bcf536fa18d
+ms.sourcegitcommit: 4597964eba08b7e0584d2b275cc33a370c25e027
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34738530"
+ms.lasthandoff: 07/02/2018
+ms.locfileid: "37342726"
 ---
 # <a name="azure-file-sync-proxy-and-firewall-settings"></a>Az Azure File Sync proxy- és tűzfalbeállításai
-Azure fájl szinkronizálása a helyszíni kiszolgálók csatlakozik Azure fájlok többhelyes szinkronizálás és a felhőalapú szolgáltatások rétegezéséhez engedélyezése. Egy helyszíni kiszolgálón, kapcsolódnia kell az internethez. Rendszergazda döntse el, hogy a legjobb útvonalat az Azure felhőszolgáltatások elérni kívánt kiszolgáló van szüksége.
+Az Azure File Sync kapcsolódik a helyszíni kiszolgálók az Azure Files többhelyes szinkronizálás és a felhőbeli rétegezés szolgáltatások engedélyezése. Ezért egy helyszíni kiszolgálón kapcsolódnia kell az internethez. Egy rendszergazdának kell döntenie, hogy a legjobb útvonalat a közvetítőn keresztül az Azure cloud services-kiszolgáló.
 
-Ez a cikk különleges követelményeket előíró lehetőség legyen elérhető a sikeresen és biztonságosan csatlakoztassa a kiszolgálót Azure fájlszinkronizálás betekintést nyújt.
+Ez a cikk konkrét követelmények, valamint lehetőség legyen elérhető a sikeres és biztonságos módon csatlakoztatni a kiszolgáló Azure File Sync betekintést biztosít.
 
 > [!Important]
-> Azure fájl szinkronizálása még támogatja tűzfalak és a virtuális hálózatok a tárfiókhoz. 
+> Az Azure File Sync még nem támogatja tűzfalak és virtuális hálózatok tárfiókok esetében. 
 
 ## <a name="overview"></a>Áttekintés
-Azure fájlszinkronizálás úgy működik, mint az orchestration szolgáltatás a Windows Server, az Azure fájlmegosztások és több más Azure-szolgáltatásokkal szinkronizálni az adatokat, lásd: a szinkronizálási csoport között. Az Azure-fájl szinkronizálás megfelelően működjön szüksége lesz a következő Azure szolgáltatásokkal kommunikálni a kiszolgálók konfigurálása:
+Az Azure File Sync-tárolószervező szolgáltatást, a Windows Server, az Azure-fájlmegosztást és számos egyéb Azure-szolgáltatások szinkronizálja az adatokat, a szinkronizálási csoport leírtak szerint között funkcionál. Az Azure File Sync megfelelően működjön a kiszolgálók közötti kommunikációt az alábbi Azure-szolgáltatások konfigurálásához lesz szüksége:
 
 - Azure Storage
 - Azure File Sync
@@ -38,42 +38,50 @@ Azure fájlszinkronizálás úgy működik, mint az orchestration szolgáltatás
 - Hitelesítési szolgáltatások
 
 > [!Note]  
-> Az Azure fájlszinkronizálás ügynök a Windows Server indít el a felhőalapú szolgáltatások, így csak a kimenő forgalom tűzfal szempontból fontolja meg kellene minden kérelemhez. <br /> Nincs Azure-szolgáltatások az Azure fájlszinkronizálás ügynök kapcsolatot kezdeményez.
+> Az Azure File Sync ügynök Windows Server összes kérelem a felhőszolgáltatásokhoz, ami csak kell figyelembe venni a kimenő forgalmat a tűzfal szempontjából kellene indítja el. <br /> Nem Azure-szolgáltatás az Azure File Sync ügynök kapcsolatot kezdeményez.
 
 
 ## <a name="ports"></a>Portok
-Azure fájlszinkronizálás helyezi át a fájladatok és metaadatok kizárólag HTTPS-en keresztül, és 443-as portot kell megnyitni kimenő igényel.
-Ennek eredményeképpen az összes forgalom titkosítva van.
+Az Azure File Sync helyezi át a fájlok adatai és metaadatai kizárólag HTTPS protokollon keresztül, és megköveteli a 443-as porton a kimenő kell megnyitni.
+Ennek eredményeképpen az összes forgalom titkosítva lesz.
 
-## <a name="networks-and-special-connections-to-azure"></a>Hálózatok és az Azure-bA speciális kapcsolatok
-Az Azure fájlszinkronizálás ügynök követelményei nem vonatkozó speciális csatornákat, például [ExpressRoute](../../expressroute/expressroute-introduction.md), az Azure-bA stb.
+## <a name="networks-and-special-connections-to-azure"></a>Hálózatok és a speciális kapcsolatok az Azure-bA
+Az Azure File Sync ügynök nem tartoznak követelmények vonatkozó speciális csatornákat, például [ExpressRoute](../../expressroute/expressroute-introduction.md), stb. az Azure-bA.
 
-Az Azure fájlszinkronizálás keresztül a rendelkezésre álló eszközöket, amelyek lehetővé teszik az Azure automatikusan különböző hálózati jellemzőit, például a sávszélességgel, a késés történő, valamint a pontosabb beállításra felügyeleti vezérlő ajánlat reach fog működni. Nem minden funkció jelenleg érhető el. Ha szeretné konfigurálni az adott viselkedést, ossza meg velünk keresztül [Azure fájlok UserVoice](https://feedback.azure.com/forums/217298-storage?category_id=180670).
+Az Azure File Sync minden rendelkezésre álló eszközöket, amelyek lehetővé teszik az Azure-ba, automatikusan gyakorlatainak, például a sávszélesség, késés különböző hálózati jellemzők, valamint a felügyeleti vezérlés a finomhangolásra ajánlat reach keresztül fog működni. Nem minden funkciója jelenleg érhető el. Ha azt szeretné, hogy adott viselkedést, ossza meg velünk keresztül [Azure Files UserVoice](https://feedback.azure.com/forums/217298-storage?category_id=180670).
 
 ## <a name="proxy"></a>Proxy
-Azure fájlszinkronizálás jelenleg érvényes proxybeállításokat. A proxybeállítást nem átlátszó Azure fájlszinkronizálás ügynökkel, mert a teljes kiszolgáló továbbítódik a proxyn keresztül.
+Az Azure File Sync támogatja az alkalmazásspecifikus és gépre kiterjedő proxy beállításai.
 
-Alkalmazás-specifikus proxybeállítások jelenleg fejlesztés alatt, és egy későbbi kiadásban az Azure fájlszinkronizálás ügynök támogatott. Ez lehetővé teszi a kifejezetten az Azure fájlszinkronizálás forgalom esetén a proxy konfigurációját.
+Gépre kiterjedő proxy beállításai az Azure File Sync ügynök átlátható, mert a teljes kiszolgáló adatforgalmat a proxyn keresztül.
+
+Alkalmazás-specifikus proxy-beállítások lehetővé teszik a kifejezetten az Azure File Sync-forgalmat a proxy konfigurációját. Alkalmazás-specifikus proxybeállításokat a ügynökverzió 3.0.12.0 vagy újabb és az ügynök telepítése közben, vagy a Set-StorageSyncProxyConfiguration PowerShell-parancsmag használatával konfigurálható.
+
+Alkalmazás-specifikus Proxybeállítások konfigurálása a PowerShell-parancsokat:
+```PowerShell
+Import-Module "C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.ServerCmdlets.dll"
+Set-StorageSyncProxyConfiguration -Address <url> -Port <port number> -ProxyCredential <credentials>
+```
 
 ## <a name="firewall"></a>Tűzfal
-Ahogyan az előző szakaszban, kimenő megnyitása port 443 kell lennie. A datacenter, a fiókiroda vagy a régió házirendek alapján, további korlátozása adott tartományokra porton keresztüli forgalmat esetleg szükséges, vagy szükséges.
+Az egyik előző szakaszban említett port 443-as kell lennie kimenő megnyitásához. Az adatközpontban, a fiókiroda vagy a régiót a házirendek alapján, további korlátozása adott tartományokra porton keresztüli forgalmat kívánt vagy szükséges.
 
-A következő táblázat ismerteti a szükséges kommunikációs tartományokban:
+A következő táblázat ismerteti a szükséges tartományok kommunikációhoz:
 
 | Szolgáltatás | Tartomány | Használat |
 |---------|----------------|------------------------------|
-| **Azure Resource Manager** | https://management.azure.com | Bármely felhasználó hívás (például a PowerShell) végighalad a/az URL-cím, beleértve a kezdeti kiszolgáló regisztrációs hívás. |
-| **Azure Active Directory** | https://login.windows.net | Az Azure Resource Manager hívások hitelesített felhasználónak kell kezdeményeznie. Sikeres, a felhasználók hitelesítéséhez az URL-cím szolgál ki. |
-| **Azure Active Directory** | https://graph.windows.net/ | Azure fájlszinkronizálás történő telepítésének részeként az előfizetés Azure Active Directoryban egy egyszerű jön létre. Az URL-cím, amely használható. Az egyszerű delegálása jogosultsága ahhoz, hogy a fájl szinkronizálási Azure szolgáltatás minimális számú szolgál. A felhasználó Azure fájlszinkronizálás a kezdeti telepítés végrehajtása egy hitelesített előfizetés tulajdonosának jogosultságokkal rendelkező felhasználónak kell lennie. |
-| **Azure Storage** | &ast;.core.windows.net | Amikor a rendszer letölti a fájlt, majd a kiszolgáló hajtja adott adatmozgás hatékonyabban közvetlenül az Azure-tárfiókban fájlmegosztáshoz való. A kiszolgáló rendelkezik egy SAS-kulcsot, amely csak a megcélzott fájl megosztás eléréséhez. |
-| **Azure File Sync** | &ast;.one.microsoft.com | Kezdeti kiszolgáló regisztrálása után a kiszolgáló egy Azure fájlszinkronizálás szolgáltatáspéldány regionális URL-címet kap az adott régióban. A kiszolgáló az URL-cím használatával közvetlenül és hatékonyan tudja kommunikálni a példány, a szinkronizálási kezelése. |
+| **Azure Resource Manager** | https://management.azure.com | Bármely felhasználó hívás (mint például a PowerShell) az URL-címet, beleértve a kezdeti server regisztrációs hívás/keresztül halad. |
+| **Azure Active Directory** | https://login.windows.net | Az Azure Resource Manager-hívás egy hitelesített felhasználó általi kell elvégezni. Sikeres, a felhasználók hitelesítéséhez az URL-cím szolgál ki. |
+| **Azure Active Directory** | https://graph.windows.net/ | Az Azure File Sync üzembe helyezésének részeként egy egyszerű szolgáltatást az előfizetéshez tartozó Azure Active Directoryban jön létre. Az URL-címet, amely használható. Ez egyszerű delegálása az Azure File Sync szolgáltatás jogokat minimális számú szolgál. A felhasználó az Azure File Sync kezdeti telepítés végrehajtása egy hitelesített felhasználó az előfizetés-tulajdonosi jogosultságokkal kell lennie. |
+| **Azure Storage** | &ast;.core.windows.net | Amikor a rendszer letölti a fájlt, majd a kiszolgáló hajt végre adott adatáthelyezés hatékonyabban Ha közvetlenül az Azure-fájlmegosztást a Storage-fiókban folytatott kommunikációra. A kiszolgáló rendelkezik egy SAS-kulcs, amely csak lehetővé teszi a célzott fájl megosztás eléréséhez. |
+| **Azure File Sync** | &ast;.one.microsoft.com | Kezdeti kiszolgálót a regisztrációt követően a kiszolgáló egy regionális az Azure File Sync szolgáltatás példány URL-címet kap az adott régióban. A kiszolgáló URL-címe segítségével hatékonyan és közvetlenül kommunikálni a példány, ahogy szinkronizál kezelése. |
 
 > [!Important]
-> Amikor átengedi a forgalmat a &ast;. one.microsoft.com, nem csak a szinkronizálási szolgáltatás felé irányuló forgalom lehetőség a kiszolgálóról. Nincsenek elérhető altartományok alatt számos további Microsoft-szolgáltatás.
+> Ha engedélyezi a forgalmat &ast;. one.microsoft.com, nem csak a szinkronizálási szolgáltatás forgalmát lehetőség a kiszolgálóról. Nincsenek altartományok alatt elérhető számos további Microsoft-szolgáltatások.
 
-Ha &ast;. one.microsoft.com túl széleskörű, csak explicit regionális az Azure fájlok szinkronizáló szolgáltatás példányainak tételével korlátozhatja a kiszolgálói kommunikációhoz. Mely-példányokat, kiválaszthatja a tároló szinkronizálási szolgáltatás, amelyhez telepítését és a kiszolgáló regisztrálva régiója függ. Ez a régió, engedélyeznie kell a kiszolgálóhoz. Hamarosan nem lesznek további URL-címek engedélyezése az új üzleti folytonosságot biztosító szolgáltatásokat. 
+Ha &ast;. one.microsoft.com túl széleskörű, a kiszolgálói kommunikációhoz azáltal, hogy csak explicit regionális példányok az Azure Files Sync szolgáltatás korlátozhatja. Válassza ki, melyik példány attól függ, hogy a régióban a Storage Sync Service, amelyhez telepítését és a kiszolgáló regisztrálva. Ez a régió, a kiszolgáló engedélyeznie kell. Hamarosan lesz ahhoz, hogy új üzletmenet-folytonossági funkciókat több URL-címeket. 
 
-| Régió | Az Azure fájlszinkronizálás regionális végponti URL-cím |
+| Régió | Az Azure File Sync regionális végpont URL-címe |
 |--------|---------------------------------------|
 | Kelet-Ausztrália | https://kailani-aue.one.microsoft.com |
 | Közép-Kanada | https://kailani-cac.one.microsoft.com |
@@ -84,13 +92,13 @@ Ha &ast;. one.microsoft.com túl széleskörű, csak explicit regionális az Azu
 | USA nyugati régiója | https://kailani.one.microsoft.com |
 
 > [!Important]
-> Részletes tűzfalszabály határozza meg, ha ez a dokumentum gyakran ellenőrizze, és a tűzfal beállításait a listaelemek elavult vagy hiányos URL-cím miatt folyamatossága érdekében a tűzfalszabályainak frissítése.
+> Ezek részletes tűzfalszabályok határozza meg, ha ez a dokumentum gyakran ellenőrizni, és a tűzfalszabályok, mert hiányos vagy elavult URL-cím listaelemek a tűzfal beállításait a szolgáltatáskiesések elkerülése érdekében frissítse.
 
-## <a name="summary-and-risk-limitation"></a>Összegzés és kockázatkezelési korlátozása
-A listák a jelen dokumentum korábbi Azure fájl szinkronizálási szolgáltatás jelenleg kommunikál az URL-címeket tartalmaz. Tűzfalak ezeket a tartományokat, valamint a válaszok tőlük kimenő forgalmát engedélyező képesnek kell lennie. Microsoft nagy hangsúlyt fektet tartsa a lista frissítése.
+## <a name="summary-and-risk-limitation"></a>Összegzés és kockázati korlátozás
+A listák a jelen dokumentum korábbi tartalmazza az URL-címeket az Azure File Sync jelenleg kommunikál. Tűzfalak ezeket a tartományokat, valamint a válaszok tőlük kimenő forgalmat engedélyező képesnek kell lennie. A Microsoft nagy hangsúlyt fektet a, hogy ez a lista frissítése.
 
-Tartomány korlátozása tűzfalszabályok beállítása lehet egy mérték biztonság növelése érdekében. A tűzfal-konfigurációk használata esetén egy kell vegye figyelembe, hogy URL-címek fel és idővel megváltozott. Ezért legyen körültekintő mértéket ellenőrizze a jelen dokumentum a táblák egy változáskezelési folyamatot egy Azure fájlszinkronizálás ügynök verzióról a másikra a legújabb ügynököt próbatelepítés részeként. Így biztosítható, hogy a tűzfal beállításai tartományokba irányuló forgalom a legújabb ügynököt engedélyezése szükséges.
+Tartomány korlátozása tűzfalszabályok beállítása, lehet, hogy egy mértéket a biztonság növelése érdekében. A tűzfal-konfigurációk használata esetén az egyik kell vegye figyelembe, hogy URL-címek hozzáadása, változnak idővel. Ezért körültekintő mérték ellenőrzése ebben a dokumentumban a táblák egy változáskezelési folyamatot egy Azure File Sync ügynök verzióról a másikra a legújabb ügynököt egy tesztelési üzembe helyezés részeként. Így biztosítható, hogy a tűzfal van-e konfigurálva a legújabb ügynök tartományok forgalom engedélyezésére van szükség.
 
 ## <a name="next-steps"></a>További lépések
-- [Egy Azure fájlszinkronizálás központi telepítésének tervezése](storage-sync-files-planning.md)
-- [Azure fájlszinkronizálás (előzetes verzió) telepítése](storage-sync-files-deployment-guide.md)
+- [Az Azure File Sync üzembe helyezésének megtervezése](storage-sync-files-planning.md)
+- [Az Azure File Sync (előzetes verzió) üzembe helyezése](storage-sync-files-deployment-guide.md)

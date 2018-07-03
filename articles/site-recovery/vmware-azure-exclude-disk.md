@@ -1,21 +1,21 @@
 ---
-title: Lemezek kizárni a védelem Azure Site Recovery segítségével |} Microsoft Docs
+title: Lemezek kizárása a védelem az Azure Site Recoveryvel |} A Microsoft Docs
 description: Ez a cikk azt ismerteti, miért és hogyan zárhat ki virtuálisgép-lemezeket a VMware–Azure replikációkból.
 author: nsoneji
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 06/20/2018
+ms.date: 07/01/2018
 ms.author: nisoneji
-ms.openlocfilehash: 59c8d38d94604a9950693d6bb73b6263f9cdb23b
-ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
+ms.openlocfilehash: 6a0b8891e25a764ecd0430696e155b2bd8e06e13
+ms.sourcegitcommit: 4597964eba08b7e0584d2b275cc33a370c25e027
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36285090"
+ms.lasthandoff: 07/02/2018
+ms.locfileid: "37342606"
 ---
 # <a name="exclude-disks-from-replication-for-vmware-to-azure-scenario"></a>Lemezek kizárása a VMware–Azure replikációs forgatókönyvből
 
-Ez a cikk ismerteti a lemez kihagyása, ha VMware virtuális gépek replikálása Azure-bA. A kizárás segítségével optimalizálható a felhasznált replikációs sávszélesség, valamint optimalizálhatók a lemezek által felhasznált céloldali erőforrások. Ha a Hyper-V lemezek kizárása információra van szüksége, olvassa el [Ez a cikk](hyper-v-exclude-disk.md)
+Ez a cikk azt ismerteti, hogyan zárhat ki lemezeket, amikor a VMware virtuális gépek replikálása Azure-bA. A kizárás segítségével optimalizálható a felhasznált replikációs sávszélesség, valamint optimalizálhatók a lemezek által felhasznált céloldali erőforrások. Ha a lemezek kizárása a Hyper-V információ van szüksége, olvassa el [Ez a cikk](hyper-v-exclude-disk.md)
 
 
 ## <a name="prerequisites"></a>Előfeltételek
@@ -50,7 +50,7 @@ Ha az Azure Site Recovery portálról szeretne virtuális gépet védelemmel ell
 
 >[!NOTE]
 >
-> * Csak olyan lemezeket zárhat ki, amelyeken már telepítve van a mobilitási szolgáltatás. A mobilitási szolgáltatást manuálisan kell telepítenie, mivel a szolgáltatás csak a replikáció engedélyezése után, a leküldéses mechanizmus használatával lesz telepítve.
+> * Csak a virtuális gépeket, amelyek már telepítve van a mobilitási szolgáltatás lemezeket zárhat ki. A Mobilitási szolgáltatást manuálisan kell telepítenie, mivel a szolgáltatás csak a replikáció engedélyezése után, a leküldéses mechanizmus használatával lesz telepítve.
 > * Csak az alaplemezek zárhatók ki a replikációból. Nem zárhatja ki az operációsrendszer-lemezeket és a dinamikus lemezeket.
 > * A replikáció engedélyezése után már nem lehet ahhoz lemezeket hozzáadni, vagy lemezeket eltávolítani belőle. Lemez hozzáadásához vagy eltávolításához le kell tiltania, majd újra engedélyeznie kell a gép védelmét.
 > * Ha kizár egy olyan lemezt, amely valamely alkalmazás működéséhez szükséges, az Azure-ba történő feladatátvétel esetén manuálisan létre kell majd hozni a lemezt az Azure-ban, hogy a replikált alkalmazás futtatható legyen. Másik megoldásként integrálhatja az Azure Automationt egy helyreállítási tervbe a lemez a gép feladatátvétele során való létrehozásához.

@@ -1,6 +1,6 @@
 ---
-title: Az oktatóanyag kifejezés lista használatával LUIS előrejelzéseket - Azure javítása érdekében |} Microsoft Docs
-description: Ebben az oktatóanyagban adhat a LUIS kifejezés listáját, és a teljesítménynövekedés a pontszám.
+title: Oktatóanyag kifejezés lista használatával javítása a LUIS-előrejelzés – Azure |} A Microsoft Docs
+description: Ebben az oktatóanyagban egy kifejezést lista hozzáadása a LUIS-alkalmazásokon, és az eredmény a teljesítménynövekedés.
 services: cognitive-services
 author: v-geberr
 manager: kamran.iqbal
@@ -9,48 +9,48 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 05/07/2017
 ms.author: v-geberr
-ms.openlocfilehash: feb8acb674fd2dc62b62c26da6a6b42515f30242
-ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
+ms.openlocfilehash: 9f12d9e8c9ee2038e7841cd05bb438421a5a8984
+ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36265971"
+ms.lasthandoff: 07/02/2018
+ms.locfileid: "37345345"
 ---
-# <a name="tutorial-add-phrase-list-to-improve-predictions"></a>Oktatóanyag: Hozzáadása kifejezéslista előrejelzéseket javítása érdekében
-Ebben az oktatóanyagban leképezési eredmények pontosságának javítása és entitásokat szavak, amely jelentéssel bír (szinonimák) rendelkezik egy cserélhető hozzáadásával azonosítása [kifejezés lista szolgáltatás](./luis-concept-feature.md).
+# <a name="tutorial-add-phrase-list-to-improve-predictions"></a>Oktatóanyag: A kifejezés lista előrejelzéseket javítása hozzáadása
+Ebben az oktatóanyagban szándék pontszámok pontosságának javítása, és a szavak jelentése megegyezik (szinonimák) rendelkező hozzáadásával egy cserélhető entitások azonosítása [kifejezés lista szolgáltatás](./luis-concept-feature.md).
 
 > [!div class="checklist"]
 * Új alkalmazás importálása  
-* Ismert utterance lekérdezés végpont 
-* Végpont lekérdezése _ismeretlen_ utterance
-* Adja hozzá a kifejezéslista ismeretlen utterance pontszám javítása érdekében
-* Ellenőrizze a entitás található kifejezéslista használatakor
+* Lekérdezés koncového bodu ismert utterance (kifejezés) 
+* Lekérdezés koncového bodu _ismeretlen_ utterance (kifejezés)
+* Kifejezéslista javítása ismeretlen utterance (kifejezés) pontszám hozzáadása
+* Ellenőrizze az entitás található kifejezéslista használatakor
 
-Ez a cikk van szüksége egy szabad [LUIS] [ LUIS] fiók ahhoz, hogy a LUIS alkalmazás létrehozásához.
+Ehhez a cikkhez egy ingyenes [LUIS][LUIS]-fiókra van szüksége a LUIS-alkalmazás létrehozásához.
 
 ## <a name="import-a-new-app"></a>Új alkalmazás importálása
-1. Töltse le a [példa LUIS app] [ LuisSampleApp] , amely a jelen oktatóanyag célja. A következő lépésben még szüksége lesz rájuk. 
+1. Töltse le a [példa LUIS-alkalmazásokon] [ LuisSampleApp] , amely a jelen oktatóanyag célja. Ez a következő lépésben fogja használni. 
 
-2. A [hozzon létre egy alkalmazást](Create-new-app.md#import-new-app), importálja a fájlt a letöltött a [LUIS] [ LUIS] webhely új alkalmazásként. Az alkalmazás nevére az "A kifejezéslista oktatóanyaga." Leképezések, entitások és utterances rendelkezik. 
+2. Leírtak szerint [hozzon létre egy alkalmazást](Create-new-app.md#import-new-app), importálni a letöltött fájlt a [LUIS] [ LUIS] webhely egy új alkalmazásként. Az alkalmazás neve az "A kifejezés lista oktatóanyaga." Rendelkezik szándék fog vonatkozni, az entitások és a kimondott szöveg. 
 
-3. [Vonat](luis-how-to-train.md) az alkalmazást. Be van tanítva, amíg nem [párbeszédes formában történő teszteléséhez](interactive-test.md#interactive-testing) legyen a [LUIS] [ LUIS] webhelyet. 
+3. [Train](luis-how-to-train.md) az alkalmazást. Mindaddig, amíg be van tanítva, nem [interaktív vizsgálati](interactive-test.md#interactive-testing) azt a [LUIS] [ LUIS] webhelyén. 
 
-4. A a [közzététel](PublishApp.md) lapon jelölje be a **Include minden előre jelezni leképezési pontszámok** jelölőnégyzetet. Ha a jelölőnégyzet be van jelölve, adja vissza az összes leképezések. Ha a jelölőnégyzet nincs bejelölve, a felső célt adja vissza. 
+4. Az a [közzététel](luis-how-to-publish-app.md) lapon válassza ki a **minden beágyazott előre jelzett szándék pontszámok** jelölőnégyzetet. Ha a jelölőnégyzet be van jelölve, a rendszer az összes leképezések adja vissza. Ha a jelölőnégyzet nincs bejelölve, a felső célt adja vissza. 
 
-5. [Közzététel](PublishApp.md) az alkalmazást. Az alkalmazás közzététele lehetővé teszi a HTTPS-végpont segítségével tesztelheti. 
+5. [Közzététel](luis-how-to-publish-app.md) az alkalmazást. Közzététele az alkalmazás lehetővé teszi, hogy kipróbáljuk a HTTPS-végpont használatával. 
 
-## <a name="test-a-trained-utterance"></a>Betanított utterance tesztelése
-Használja a közzétett végpontot, hogy már ismeri az alkalmazás egy utterance lekérdezni. LUIS már ismeri a utterance, mert a pontszám magas és észleli az entitás.
+## <a name="test-a-trained-utterance"></a>Tesztelje a betanított utterance (kifejezés)
+A közzétett végpont használatával lekérdezheti az utterance (kifejezés), hogy már ismeri az alkalmazást. A LUIS már tudja, hogy az utterance (kifejezés), mert a pontszám, magas, és az entitás észlel.
 
-1. Az a [nyelvi ismertetése (LUIS)] [ LUIS] webhely, az a **közzététel** az új alkalmazás lapján válassza ki a végpont URL-címet a **erőforrások és a kulcsok**szakasz. 
+1. Az a [Language Understanding (LUIS)] [ LUIS] webhelyén, a a **közzététel** az új alkalmazások lapon, válassza ki a végpont URL-cím a **erőforrások és a kulcsok**szakaszban. 
 
     ![A végponti URL-cím közzététele](./media/luis-tutorial-interchangeable-phrase-list/luis-publish-url.png)
 
-2. A böngészőben az URL-cím végén hozzáadása után a következő lekérdezés a `q=`.
+2. A böngészőben, az URL-cím végén található hozzáadása után a következő lekérdezést a `q=`.
 
     `I want a computer replacement`
 
-    A végpont válaszol, a következő JSON:
+    A végpont válaszol a következő JSON-ra:
     
     ```JSON
     {
@@ -93,25 +93,25 @@ Használja a közzétett végpontot, hogy már ismeri az alkalmazás egy utteran
     }
     ```
 
-    A leképezési pontszám 0.973 és az entitás észlelési pontszám 0.846 nincsenek magas, mert az alkalmazás a utterance rendelkező lett képezni. A leképezési oldal LUIS alkalmazásban van a utterance **GetHardware**. Szöveg, amelyet a utterance `computer`, van-e címkézve a **hardver** entitás. 
+    A leképezési pontszámát 0.973 és az entitás észlelési pontszámát 0.846 nincsenek magas, mert az alkalmazás lett képzett az utterance (kifejezés). A LUIS alkalmazás szándék oldalán van az utterance (kifejezés) **GetHardware**. Az utterance (kifejezés) szöveg, `computer`, van-e címkével a **hardver** entitás. 
     
     |status|Word| Leképezési pontszám | Entitás pontszám |
     |--|--|--|--|
-    |Betanítása| szeretné, hogy | 0.973 | 0.846 |
+    |Betanított| szeretné | 0.973 | 0.846 |
     
     
-## <a name="test-an-untrained-utterance"></a>Egy kellő utterance tesztelése
-A böngészőben egy utterance, amely az alkalmazás már nem ismeri a azonos közzétett végpontot a lekérdezés használata:
+## <a name="test-an-untrained-utterance"></a>Egy kellő utterance (kifejezés) tesztelése
+A böngészőben az utterance (kifejezés), amely az alkalmazás már nem tudja lekérdezni a közzétett egyazon végpont használata:
 
 `I require a computer replacement`
 
-A utterance használja az előző utterance szinonimát:
+Az utterance (kifejezés) használ, az előző utterance (kifejezés) szinonima:
 
 | Betanított word | Kellő szinonimát |
 |--|--|
-| szeretné, hogy | Megkövetelése |
+| szeretné | megkövetelése |
 
-A rendszer a végpont választ:
+A végpont válasz a következő:
 
 ```JSON
 {
@@ -148,59 +148,59 @@ A rendszer a végpont választ:
 
 | status | Word | Leképezési pontszám | Entitás pontszám |
 |--|--|--|--|
-| Betanítása| szeretné, hogy | 0.973 | 0.846 |
-| Kellő| Megkövetelése | 0.840 | - |
+| Betanított| szeretné | 0.973 | 0.846 |
+| Kellő| megkövetelése | 0.840 | - |
 
-A kellő utterance leképezési pontszám LUIS tudja, hogy a mondatok megegyezik nyelvtanilag oka alacsonyabb, mint a címkézett utterance. De LUIS nem ismeri, a utterances rendelkezik-e a jelentéssel bír. A kifejezéslista nélkül is, a **hardver** entitás nem található.
+A kellő utterance (kifejezés) szándék pontszám, alacsonyabb, mint a címkézett utterance (kifejezés), mert a LUIS, tudni fogja, hogy a mondat megegyezik nyelvtanilag. De a LUIS nem ismert, hogy megcímkézzen szavak jelentése megegyezik. A kifejezéslista nélkül is, a **hardver** entitás nem található.
 
-Amely LUIS kell tanítása *szeretné* és *szükséges* az alkalmazástartományban ugyanazt jelenti, mert egy word rendelkezhet egynél több jelentése. 
+LUIS, amely kell tanít *szeretné* és *megkövetelése* az alkalmazástartományban ugyanazt jelenti, mivel egy szót egynél több jelentése. 
 
-## <a name="improve-the-score-of-untrained-utterance-with-phrase-list"></a>A kifejezéslista kellő utterance pontszám javítása 
-1. Adja hozzá egy [kifejezéslista](luis-how-to-add-features.md) nevű funkció **szeretné** értékét `want`, majd válassza ki **Enter**.
+## <a name="improve-the-score-of-untrained-utterance-with-phrase-list"></a>A pontszám a kifejezéslista kellő utterance (kifejezés) javítása 
+1. Adjon hozzá egy [kifejezéslista](luis-how-to-add-features.md) nevű funkció **szeretné** értékét `want`, majd válassza ki **Enter**.
 
     > [!TIP]
-    > Minden szó vagy kifejezés után válassza ki a **Enter** kulcs. A szó vagy kifejezés hozzáadódik a **listaértékek kifejezés** mezőben, miközben a kurzor marad a a **érték** mezőbe. Ezzel a szolgáltatással gyorsan sok értékeket adhat meg.
+    > Minden egyes szó vagy kifejezés után válassza ki a **Enter** kulcsot. Szó vagy kifejezés adnak hozzá a **listaértékek kifejezés** mezőbe, amíg a kurzor marad a **érték** mezőbe. Ezzel a funkcióval gyorsan számos értékeket adhat meg.
 
-2. Válassza ki a szöveget, LUIS azt javasolja, hogy ha **javasoljuk**. 
+2. A szavak, amelyek a LUIS javasolja megtekintéséhez jelölje ki **javasoljuk**. 
 
     ![Javasolt értékek](./media/luis-tutorial-interchangeable-phrase-list/recommend.png)
 
-3. Adja hozzá a szavakat. Ha `require` van nem a javasolt listában, adja hozzá a szükséges értéknek. 
+3. Adja hozzá az összes szó. Ha `require` van a javasolt listán nem szereplő adja hozzá a szükséges érték. 
 
-4. Mivel ezeknek a szavaknak szinonimák, tartsa a *cserélhető* beállításával, és válassza ki **mentése**.
+4. Mivel ezeknek a szavaknak szinonimák, tartsa a *felcserélhetők* beállítást, és válassza ki **mentése**.
 
-    ![Kifejezés lista értékeire](./media/luis-tutorial-interchangeable-phrase-list/phrase-list-values.png)
+    ![Listabeli értékek kifejezés](./media/luis-tutorial-interchangeable-phrase-list/phrase-list-values.png)
 
-5. Válassza ki a felső navigációs sáv **betanítása** betanítása az alkalmazást, de nem közzéteendő. Most már rendelkezik két modell. A két modell értékek összehasonlításával.
+5. A felső navigációs sávon válassza **betanításához** betanításához az alkalmazást, de nem közzéteendő. Most már két modell. A két modell szereplő értékek összehasonlításával.
 
 ## <a name="compare-the-phrase-list-model-to-the-published-model"></a>A kifejezés lista modellt a közzétett modell összehasonlítása
-Az alkalmazásban a közzétett modell nem betanítása a szinonimák a. Csak a jelenleg szerkesztett modellt szinonimák kifejezés listáját tartalmazza. A modellek összehasonlítása, használja a [interaktív tesztelés](interactive-test.md#interactive-testing). 
+Ebben az alkalmazásban a közzétett modell nem képzett az a szinonimák. Csak a jelenleg szerkesztett modellt a szinonimák kifejezés listáját tartalmazza. A modell összehasonlítására, használja a [interaktív vizsgálati](interactive-test.md#interactive-testing). 
 
-1. Nyissa meg a **teszt** ablaktáblán, és írja be a következő utterance:
+1. Nyissa meg a **teszt** ablaktáblán, és adja meg a következő utterance (kifejezés):
 
     `I require a computer replacement`
 
-2. A hálózatfelügyeleti panel megnyitásához, válassza ki a **vizsgálat**. 
+2. A hálózatvizsgáló panel megnyitásához válassza **vizsgálat**. 
 
-    ![Válassza ki vizsgálata](./media/luis-tutorial-interchangeable-phrase-list/inspect-button.png)
+    ![Válassza ki a vizsgálata](./media/luis-tutorial-interchangeable-phrase-list/inspect-button.png)
 
-3. Válassza ki az új kifejezés lista modellre a közzétett modell összehasonlítására, **hasonlítsa össze a közzétett**.
+3. Válassza ki az új kifejezés lista modell a közzétett modell összehasonlítására, **hasonlítsa össze a közzétett**.
 
     ![Vizsgálja meg és a jelenlegi közzétett](./media/luis-tutorial-interchangeable-phrase-list/inspect.png)
 
-Miután hozzáadta a kifejezéslista, a utterance nagyobb pontosságát, és a **hardver** entitás található. 
+Miután hozzáadta a kifejezéslista, a nagyobb pontosságát az utterance (kifejezés) és a **hardver** megtalálható entitás. 
 
 |status | Kifejezéslista| Leképezési pontszám | Entitás pontszám |
 |--|--|--|--|
 | Közzétéve | - | 0.84 | - |
-| A jelenleg szerkesztett |✔| 0.92 | Hardver entitás azonosított |
+| A jelenleg szerkesztett |✔| 0.92 | Azonosított hardver entitás |
 
 > [!TIP]
-> * A [interaktív tesztelés](interactive-test.md#interactive-testing), összehasonlíthatja a közzétett modell bármely képzett közzététele után végzett módosításokat. 
-> * A [végpont tesztelés](PublishApp.md#test-your-published-endpoint-in-a-browser), megtekintheti a tényleges LUIS válasz JSON. 
+> * Használatával [interaktív vizsgálati](interactive-test.md#interactive-testing), összehasonlíthatja a közzétett modell betanított módosításokat végzett, a közzététel után. 
+> * Használatával [végpont tesztelése](luis-how-to-publish-app.md#test-your-published-endpoint-in-a-browser), LUIS válasz JSON is megtekintheti. 
 
-## <a name="get-the-entity-score-with-the-endpoint-test"></a>Az entitás pontszám lekérdezni a végpont teszt
-Az entitás pontszám megtekintéséhez [közzététele a modell](PublishApp.md) és lekérdezni a végpont. 
+## <a name="get-the-entity-score-with-the-endpoint-test"></a>Az entitás pontszám lekérése a megadott végpont
+Az entitás pontszám megtekintéséhez [közzétesszük a modellt](luis-how-to-publish-app.md) és lekérdezni a végpont. 
 
 `I require a computer replacement`
 
@@ -245,7 +245,7 @@ Az entitás pontszám megtekintéséhez [közzététele a modell](PublishApp.md)
 }
 ```
 
-A **hardver** entitás jeleníti meg a kifejezés listájával 0.595 pontszámot. A kifejezéslista létezett, mielőtt az entitás nem található. 
+A **hardver** entitás egy kifejezést listáját tartalmazó 0.595 pontszámát jeleníti meg. A kifejezéslista előtt az entitás nem található. 
 
 |status | Kifejezéslista| Leképezési pontszám | Entitás pontszám |
 |--|--|--|--|
@@ -254,12 +254,12 @@ A **hardver** entitás jeleníti meg a kifejezés listájával 0.595 pontszámot
 
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
-Ha már nincs szükség, a LUIS alkalmazás törlése. Ehhez az szükséges, válassza a három pont menü (...) az alkalmazás nevétől jobbra alkalmazáslistájában, jelölje be **törlése**. Az előugró párbeszédpanelen **Delete app?**, jelölje be **Ok**.
+Ha már nincs rá szükség, törölje a LUIS-alkalmazást. Ehhez válassza az alkalmazáslistában az alkalmazás neve mellett jobbra található három pontot (...), majd a **Delete** (Törlés) lehetőséget. A **Delete app?** (Törli az alkalmazást?) előugró párbeszédpanelen válassza az **OK** lehetőséget.
 
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Végpont lekérdezéssel utterance előrejelzés beolvasása](luis-get-started-cs-get-intent.md)
+> [Végpont lekérdezés utterance (kifejezés)-előrejelzés beolvasása](luis-get-started-cs-get-intent.md)
 
 [LUIS]: https://docs.microsoft.com/azure/cognitive-services/luis/luis-reference-regions
 [LuisFeatures]: https://docs.microsoft.com/azure/cognitive-services/luis/luis-concept-feature

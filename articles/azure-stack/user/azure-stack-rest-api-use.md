@@ -1,44 +1,44 @@
 ---
-title: Az Azure API verem használható |} Microsoft Docs
-description: Ismerje meg, hogyan lehet lekérni a hitelesítés az Azure verem API-kérések végrehajtásához Azure-ból.
+title: Az Azure Stack API használata |} A Microsoft Docs
+description: Ismerje meg, hogyan kérheti le a hitelesítést, hogy API-kéréseket az Azure Stack Azure-ból.
 services: azure-stack
 documentationcenter: ''
-author: mattbriggs
+author: cblackuk
 manager: femila
 ms.service: azure-stack
 ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/14/2018
+ms.date: 07/02/2018
 ms.author: mabrigg
 ms.reviewer: thoroet
-ms.openlocfilehash: e8a9489a3f487a45303bac45f805381b41427b4b
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 3b89564bf17a9884640b51faa1c3966dce93f89a
+ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34359111"
+ms.lasthandoff: 07/02/2018
+ms.locfileid: "37346790"
 ---
 <!--  cblackuk and charliejllewellyn. This is a community contribution by cblackuk-->
 
-# <a name="use-the-azure-stack-api"></a>Az Azure verem API használata
+# <a name="use-the-azure-stack-api"></a>Az Azure Stack API használata
 
-*A következőkre vonatkozik: Azure verem integrált rendszerek és az Azure verem szoftverfejlesztői készlet*
+*A következőkre vonatkozik: Azure Stackkel integrált rendszerek és az Azure Stack fejlesztői készlete*
 
-Az Azure verem alkalmazásprogramozási felületet (API) segítségével automatizálhatja a műveletek, például a Piactéri elemek syndicating.
+Az alkalmazásprogramozási felület (API) segítségével automatizálja a műveleteket, mint egy virtuális gép hozzáadása az Azure Stack-felhőben.
 
-Az API megköveteli, hogy a Microsoft Azure bejelentkezési végpont hitelesítése az ügyfél. A végpont egy jogkivonatot használja az Azure-verem API-nak küldött kérelmek fejlécében adja vissza. A Microsoft Azure által használt Oauth 2.0-s.
+Az API megköveteli az ügyfél a Microsoft Azure bejelentkezési végpont hitelesítéséhez. A végpont használata minden egyes az Azure Stack API-nak küldött kérés fejlécében jogkivonatot ad vissza. A Microsoft Azure az Oauth 2.0 használja.
 
-Ez a cikk ismerteti, amelyek például a **cURL** segédprogram Azure verem kérelmek létrehozásához. Az alkalmazásra, a cURL, az adatok átvitele a könyvtárnak a parancssori eszköz. Ezek a példák ismerteti a folyamatot, amely az Azure-verem API eléréséhez jogkivonat beolvasása. A legtöbb programozási nyelveket adja meg az Oauth 2.0 szalagtárak, amelyeknek robusztus token felügyeleti és leíró feladatok ilyen a jogkivonat frissítését.
+Ez a cikk példákat, amelyek használják a **cURL** segédprogram az Azure Stack-kérelmek létrehozására. A kérelmet a cURL, egy olyan parancssori eszköz tartozik egy kódtár, az adatok átviteléhez. Ezekben a példákban végig egy tokent az Azure Stack API eléréséhez lekérését jelenti. Szinte bármelyik programozási nyelvével adja meg az Oauth 2.0-könyvtárak, amelyeknek robusztus token felügyeleti és leíró feladatok ilyen a jogkivonat frissítését.
 
-Tekintse át az Azure verem REST API használatával egy általános REST-ügyféllel, mint például a teljes folyamat **cURL**, segít megérteni az alapul szolgáló kér, és bemutatja, mi várható válasz payloadban fogadására.
+Tekintse át az Azure Stack – REST API használatával olyan általános REST ügyfelekkel, mint például a teljes folyamatán **cURL**, segítenek megérteni a mögöttes kéréseket, és bemutatja, hogy mire számíthat egy válasz hasznos adatok fogadására.
 
-Ez a cikk nem megismerkedhet a jogkivonatokat, például az interaktív bejelentkezési beolvasása, vagy hozzon létre dedikált Alkalmazásazonosítók elérhető lehetőségekről. Ezek a témakörök kapcsolatos információért lásd: [Azure REST API-referencia](https://docs.microsoft.com/rest/api/).
+Ez a cikk nem érhető el a jogkivonatokat, például az interaktív bejelentkezési beolvasása, vagy dedikált Alkalmazásazonosítók létrehozásának minden lehetőségek közül válogathat. Ezek a témakörök kapcsolatos információk lekéréséhez lásd: [Azure REST API-referencia](https://docs.microsoft.com/rest/api/).
 
-## <a name="get-a-token-from-azure"></a>A jogkivonat beszerzése az Azure-ból
+## <a name="get-a-token-from-azure"></a>Az Azure-ból egy token beszerzése
 
-Hozzon létre egy kérelemtörzset formázva a tartalomtípus x-www-form-urlencoded egy hozzáférési jogkivonat beszerzése. A kérés a Azure REST-hitelesítés és bejelentkezés végpontra utáni.
+Hozzon létre egy kérelem törzse formázva a tartalomtípus x-www-form-urlencoded hozzáférési jogkivonat beszerzése. Az Azure REST hitelesítési és bejelentkezési végpont kérelem KÜLDÉSE.
 
 ### <a name="uri"></a>URI
 
@@ -46,13 +46,13 @@ Hozzon létre egy kérelemtörzset formázva a tartalomtípus x-www-form-urlenco
 POST https://login.microsoftonline.com/{tenant id}/oauth2/token
 ```
 
-**A bérlői azonosító** vagy:
+**Bérlőazonosító** kisebb, mint:
 
- - A bérlő tartománya, mint `fabrikam.onmicrosoft.com`
- - A bérlő azonosítója, mint `8eaed023-2b34-4da1-9baa-8bc8c9d6a491`
- - Alapértelmezett érték a bérlő független kulcsok: `common`
+ - A bérlő tartománya, mint például `fabrikam.onmicrosoft.com`
+ - A bérlő AZONOSÍTÓJÁT, például `8eaed023-2b34-4da1-9baa-8bc8c9d6a491`
+ - Független bérlői kulcsok alapértelmezett értéke: `common`
 
-### <a name="post-body"></a>POST törzse
+### <a name="post-body"></a>Bejegyzés törzse
 
 ```bash  
 grant_type=password
@@ -63,23 +63,23 @@ grant_type=password
 &scope=openid
 ```
 
-Értékek:
+Minden egyes érték:
 
  - **grant_type**  
-    Hitelesítési séma használatával fogja típusa. Ebben a példában a értéke `password`
+    A hitelesítési séma használatával fogja típusát. Ebben a példában a értéke `password`
 
  - **resource**  
-    Az erőforrás fér hozzá a jogkivonatot. Az Azure-verem felügyeleti metaadat-végpontjához lekérdezésével erőforrás is található. Tekintse meg a **célközönség** szakasz
+    Az erőforráshoz fér hozzá a jogkivonat. Az erőforrás megtalálhatja az Azure Stack felügyeleti metaadatok végpontja lekérdezésével. Tekintse meg a **célközönséggel** szakasz
 
- - **Az Azure verem felügyeleti végpont**  
+ - **Az Azure Stack-felügyeleti végpont**  
     ```
     https://management.{region}.{Azure Stack domain}/metadata/endpoints?api-version=2015-01-01
     ```
 
   > [!NOTE]  
-  > Ha a rendszergazda megpróbál hozzáférni a bérlői API-hoz majd meg kell győződnie arról tenant végpont, például használatára: `https://adminmanagement.{region}.{Azure Stack domain}/metadata/endpoints?api-version=2015-01-011`  
+  > Ha Ön rendszergazda megpróbál hozzáférni a bérlői API-hoz majd ellenőrizze, a bérlő a végpontot, például használja: `https://adminmanagement.{region}.{Azure Stack domain}/metadata/endpoints?api-version=2015-01-011`  
 
-  Például az az Azure verem szoftverfejlesztői készlet végpontjaként:
+  Ha például az az Azure Stack Development Kit végpontként:
 
     ```bash
     curl 'https://management.local.azurestack.external/metadata/endpoints?api-version=2015-01-01'
@@ -107,16 +107,16 @@ grant_type=password
 
   **client_id**
 
-  Ez az érték alapértelmezés szerint szoftveresen kötött:
+  Ez az érték nem változtatható az alapértelmezett érték:
 
   ```
   1950a258-227b-4e31-a9cf-717495945fc2
   ```
 
-  Alternatív lehetőségek állnak rendelkezésre az adott forgatókönyveket:
+  Másik lehetőség is elérhető, bizonyos forgatókönyvek esetén:
 
   
-  | Alkalmazás | ApplicationID |
+  | Alkalmazás | Alkalmazásazonosító |
   | --------------------------------------- |:-------------------------------------------------------------:|
   | LegacyPowerShell | 0a7bdc5c-7b57-40be-9939-d4c5fc7cd417 |
   | PowerShell | 1950a258-227b-4e31-a9cf-717495945fc2 |
@@ -124,17 +124,17 @@ grant_type=password
   | VisualStudio | 872cd9fa-d31f-45e0-9eab-6e460a02d1f1 |
   | AzureCLI | 04b07795-8ddb-461a-bbee-02f9e1bf7b46 |
 
-  **Felhasználónév**
+  **felhasználónév**
 
-  Ha például az Azure verem AAD-fiókba:
+  Ha például az Azure Stack AAD-fiók:
 
   ```
   azurestackadmin@fabrikam.onmicrosoft.com
   ```
 
-  **Jelszó**
+  **jelszó**
 
-  A verem AAD Azure rendszergazdai jelszavát.
+  Az Azure Stack AAD-rendszergazdai jelszót.
 
 ### <a name="example"></a>Példa
 
@@ -167,7 +167,7 @@ Válasz:
 
 ## <a name="api-queries"></a>API-lekérdezések
 
-Ha a hozzáférési jogkivonat beszerzéséhez kell célútvonallal fejléc az egyes az API-kérelmek. A fejléc létrehozásához szükséges ahhoz, hogy ehhez **engedélyezési** értékű: `Bearer <access token>`. Példa:
+A hozzáférési jogkivonatot kap, miután hozzá kell azt fejlécnek egyes az API-kérelmek. Ehhez hozzon létre egy fejlécet kell **engedélyezési** értékkel: `Bearer <access token>`. Példa:
 
 A kérelem:
 
@@ -187,20 +187,20 @@ state : Enabled
 subscriptionPolicies : @{locationPlacementId=AzureStack}
 ```
 
-### <a name="url-structure-and-query-syntax"></a>URL-struktúra és a lekérdezés szintaxisa
+### <a name="url-structure-and-query-syntax"></a>URL-cím szerkezete és lekérdezési szintaxis
 
-Általános kérés URI, áll: {URI-séma} :// {URI-állomás} / {erőforrás-elérési út}? {lekérdezés-karakterlánc}
+Általános kérés URI-t, áll: {URI-scheme} :// {URI-gazdagép} / {erőforrás-elérési út}? {lekérdezés-karakterlánc}
 
-- **URI-séma**:  
-Az URI azt jelzi, hogy a kérelem küldéséhez használt protokoll. Például `http` vagy `https`.
-- **URI-állomás**:  
-Az állomás tartománynév vagy IP-cím, amelyen a többi végpont található, mint például a kiszolgáló `graph.microsoft.com` vagy `adminmanagement.local.azurestack.external`.
+- **Schéma identifikátoru URI**:  
+Az URI-t a kérelem elküldéséhez használt protokollt jelzi. Ha például `http` vagy `https`.
+- **URI-gazdagép**:  
+Az állomás tartománynév vagy IP-címet, ahol a REST-szolgáltatásvégpontot futtató, mint például a kiszolgáló `graph.microsoft.com` vagy `adminmanagement.local.azurestack.external`.
 - **Erőforrás elérési útja**:  
-Az elérési utat határozza meg, az erőforrás vagy az erőforrás-gyűjteményt, amely több szegmens meghatározásának erőforrások kiválasztása a szolgáltatás által használt is. Például: `beta/applications/00003f25-7e1f-4278-9488-efc7bac53c4a/owners` lekérdezni a lista az alkalmazások gyűjteményen belül egy adott alkalmazás tulajdonosok használható.
+Az elérési utat adja meg, az erőforrás vagy erőforrás-gyűjtemény, amely ezeket az erőforrásokat a választott meghatározásakor a szolgáltatás által használt több szegmenst. Például: `beta/applications/00003f25-7e1f-4278-9488-efc7bac53c4a/owners` lekérdezéslistában egy adott alkalmazás tulajdonosok az alkalmazások gyűjteményen belül használható.
 - **Lekérdezési karakterlánc**:  
-A karakterlánc további egyszerű paraméterek, például az API verziója vagy az erőforrás-kiválasztási feltételek biztosít.
+A karakterlánc a további egyszerű paramétereket, például az API verziót vagy az erőforrások kiválasztási feltételek biztosít.
 
-## <a name="azure-stack-request-uri-construct"></a>Az Azure verem kérelem URI-szerkezet
+## <a name="azure-stack-request-uri-construct"></a>Az Azure Stack kérés URI-szerkezet
 
 ```
 {URI-scheme} :// {URI-host} / {subscription id} / {resource group} / {provider} / {resource-path} ? {OPTIONAL: filter-expression} {MANDATORY: api-version}
@@ -212,7 +212,7 @@ A karakterlánc további egyszerű paraméterek, például az API verziója vagy
 https://adminmanagement.local.azurestack.external/{subscription id}/resourcegroups/{resource group}/providers/{provider}/{resource-path}?{api-version}
 ```
 
-### <a name="query-uri-example"></a>Lekérdezés URI – példa
+### <a name="query-uri-example"></a>Lekérdezési URI-példa
 
 ```
 https://adminmanagement.local.azurestack.external/subscriptions/800c4168-3eb1-406b-a4ca-919fe7ee42e8/resourcegroups/system.local/providers/microsoft.infrastructureinsights.admin/regionhealths/local/Alerts?$filter=(Properties/State eq 'Active') and (Properties/Severity eq 'Critical')&$orderby=Properties/CreatedTimestamp desc&api-version=2016-05-01"
@@ -220,4 +220,4 @@ https://adminmanagement.local.azurestack.external/subscriptions/800c4168-3eb1-40
 
 ## <a name="next-steps"></a>További lépések
 
-Az Azure RESTful végpontok használatával kapcsolatos további információkért lásd: [Azure REST API-referencia](https://docs.microsoft.com/rest/api/).
+Az Azure RESTful végpontokon használatával kapcsolatos további információkért lásd: [Azure REST API-referencia](https://docs.microsoft.com/rest/api/).

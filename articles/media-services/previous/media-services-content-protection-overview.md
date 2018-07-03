@@ -1,6 +1,6 @@
 ---
-title: Védve a tartalmat az Azure Media Services |} Microsoft Docs
-description: Ez a cikk áttekintést a Media Services tartalomvédelem.
+title: A tartalmat az Azure Media Services |} A Microsoft Docs
+description: Ez a cikk a Media Services content protection áttekintést.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -12,91 +12,89 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/29/2017
+ms.date: 07/01/2018
 ms.author: juliako
-ms.openlocfilehash: 13447fd9193374d80ed5c2e6af8543f11b95e709
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 63cf7633a2280682b3a3da7e8939e71e83ee8f3b
+ms.sourcegitcommit: 4597964eba08b7e0584d2b275cc33a370c25e027
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33788738"
+ms.lasthandoff: 07/02/2018
+ms.locfileid: "37342111"
 ---
-# <a name="content-protection-overview"></a>A védett tartalom áttekintése
- Azure Media Services segítségével biztonságos az adathordozó a tárhely, feldolgozás és kézbesítési keresztül elhagyja óta. A Media Services, az élő és igény tartalom Advanced Encryption Standard (AES-128) vagy a három fő digitális tartalomvédelmi (DRM) felügyeleti rendszerek dinamikusan titkosított biztosíthat: Microsoft PlayReady, Google Widevine és Apple FairPlay. A Media Services is biztosít egy szolgáltatás, amelynek segítségével a AES-kulcsok és DRM hitelesített ügyfelek (PlayReady, Widevine és FairPlay) licenceket. 
+# <a name="content-protection-overview"></a>A Content protection áttekintése
+ Az Azure Media Services segítségével az az idő, akkor hagyja, hogy a számítógép tárolási, feldolgozási és kézbesítési a médiatartalmak védelmét. A Media Services élő és igény szerinti tartalmait az Advanced Encryption Standard (AES-128) vagy a három fő digitális jogkezelési (technológia DRM) felügyeleti rendszerek dinamikusan titkosított juttathat el: a Microsoft PlayReady, a Google Widevine és az Apple fairplay által. Media Services is biztosít a modult az AES-kulcsok és a DRM (PlayReady, Widevine és FairPlay) licenceket az arra jogosult ügyfelek. 
 
-Az alábbi ábrán a Media Services tartalomvédelem-munkafolyamat: 
+Az alábbi ábrán a Media Services content protection munkafolyamat: 
 
 ![Védelem biztosítása a PlayReadyvel](./media/media-services-content-protection-overview/media-services-content-protection-with-multi-drm.png)
 
-Ez a cikk azt ismerteti, fogalmak és terminológiát ismertetése a védett tartalom Media Services kapcsolódik. A cikk ismertetik a tartalmak védelméhez hivatkozásokat is tartalmaz. 
+Ez a cikk ismerteti az alapelvek és fogalmak ismertetése a Media Services content protection kapcsolódik. A cikk a cikkek, amelyek ismertetik a tartalmak védelméhez mutató hivatkozásokat is tartalmaz. 
 
 ## <a name="dynamic-encryption"></a>Dinamikus titkosítás
- A Media Services segítségével a tartalom titkosított dinamikusan AES-kulcs törlése vagy DRM-titkosítást a PlayReady, Widevine vagy FairPlay. Jelenleg a HTTP-Live Streaming (HLS), MPEG DASH vagy Smooth Streaming formátumban titkosíthatók. Progresszív letöltés titkosítás nem támogatott. Minden titkosítási módszer a következő adatfolyam-továbbítási protokollok támogatja:
+ A Media Services segítségével dinamikusan az AES-kulcsok vagy titkosított DRM-titkosítást a PlayReady, Widevine vagy FairPlay használatával a tartalmat. Jelenleg hogy titkosítsa a HTTP Live Streaming (HLS), MPEG DASH és Smooth Streaming formátumban. A progresszív letöltés titkosítás nem támogatott. Minden egyes titkosítási módszer a következő streamelési protokollokat támogatja:
 
-- AES: MPEG-DASH, Smooth Streaming vagy HLS
-- PlayReady: MPEG-DASH, Smooth Streaming vagy HLS
-- Widevine: MPEG-DASH
+- AES: MPEG-DASH, Smooth Streaming és HLS
+- PlayReady: MPEG-DASH, Smooth Streaming és HLS
+- Widevine: MPEG-dash PROTOKOLLHOZ
 - FairPlay: HLS
 
-Az objektum titkosítására, meg kell rendelje hozzá egy titkosítási tartalomkulcsot az eszköz és a kulcs az engedélyezési házirend is konfigurálhatja. Tartalomkulcs megadva, vagy a Media Services által automatikusan generált.
+Az objektum titkosítására, meg kell rendel hozzá egy titkosítási tartalomkulcsot az objektumot, és is konfigurálhatja a kulcs az engedélyezési házirend. Tartalomkulcs megadott vagy a Media Services által automatikusan generált is.
 
-Azt is konfigurálnia kell az adategység továbbítási házirendjét. Ha azt szeretné, hogy adatfolyamként küldje el a tárolási titkosított eszköz, ellenőrizze, hogy hogyan kívánja kézbesíti úgy konfigurálja az adategység továbbítási házirendjét.
+Azt is konfigurálnia kell az adategység továbbítási házirendjét. Ha azt szeretné, a storage-titkosítású eszköz streamelésére, ügyeljen arra, hogy adja meg, hogyan konfigurálja az adategység továbbítási házirendjét küldéséhez.
 
-Adatfolyam egy player kér, amikor Media Services a megadott kulcs segítségével dinamikusan titkosítani az AES tiszta kulcsot vagy DRM-titkosítás segítségével. Az adatfolyam visszafejtés, a Windows Media player kér a kulcs Media Services kulcs kézbesítési szolgáltatás. Döntse el, hogy a felhasználó jogosult-e a kulcs eléréséhez, hogy a szolgáltatás értékeli az engedélyezési házirendeket, amelyek a kulcshoz megadott.
+Adatfolyam-lejátszó kér, amikor a Media Services a megadott kulcs használatával dinamikusan titkosítani a titkosítatlan AES vagy a DRM-titkosítás segítségével. A stream visszafejteni, az a Windows Media player a kulcs kér a Media Services kulcstovábbítást. Annak eldöntéséhez, hogy-e a felhasználó jogosult-e a kulcs lekérése, a szolgáltatás kiértékeli az engedélyezési házirendeket, amelyek a kulcshoz megadott.
 
-## <a name="aes-128-clear-key-vs-drm"></a>AES-128 egyértelműen kulcs vs. DRM
-Az ügyfelek gyakran wonder, hogy azok használja-e az AES titkosítási vagy DRM rendszert. Az elsődleges különbség a két rendszer között, hogy az AES titkosítási a tartalomkulcs átkerülnek az ügyfél egy nem titkosított formátumban ("a clear"). Ennek eredményeképpen a tartalom titkosításához használt kulcs tekintheti meg a hálózati nyomkövetés egyszerű szöveges az ügyfélen. AES-128 egyértelműen kulcstitkosítási alkalmas használata esetekben, amikor a jelentésmegjelenítő egy megbízható entitás (például titkosított vállalati videók legyen az alkalmazottak által megtekinthető a vállalaton belül terjesztett).
+## <a name="aes-128-clear-key-vs-drm"></a>AES-128-kulcsok vs. DRM
+Ügyfeleink gyakran wonder, hogy használják inkább a AES-titkosítás vagy a DRM-rendszer. Az a két rendszer közötti elsődleges különbség az, hogy az AES-titkosítás a tartalomkulcs küldött a rendszer az ügyfél ("az a titkosítatlan") nem titkosított formátumban. Ennek eredményeképpen a tartalom titkosításához használt kulcs lehet megtekinteni a hálózati nyomkövetés egyszerű szöveges az ügyfélen. AES-128-kulcsok titkosítási ideális használati esetekben, amikor a jelentésmegjelenítő egy megbízható entitás (például titkosított vállalati videók megtekintését a az alkalmazottak által a vállalaton belül terjesztett).
 
-PlayReady Widevine és FairPlay AES-128 titkosítást képest magasabb szintű összes biztosítása törölje a titkosítás. A tartalomkulcs átkerülnek a titkosított formátumban. Emellett visszafejtési az operációs rendszer szintjén, ott, ahol egy rosszindulatú felhasználó támadható meg a biztonságos környezetben kell kezelni. DRM használati esetek, ahol az használatával nem lehet egy megbízható entitás, és szüksége van a legmagasabb szintű biztonság ajánlott.
+PlayReady, Widevine és FairPlay összes titkosítási képest magasabb szintű adja meg az AES-128 titkosítatlan kulcsokat titkosítás. A tartalomkulcs továbbított titkosított formában. Ezenkívül a visszafejtési az operációs rendszer szintjén, ahol nehezebb a támadásokkal szemben egy rosszindulatú felhasználó biztonságos környezetben történik. DRM ajánlott használati esetek, ahol a megjelenítő lehetséges, hogy nem egy megbízható entitás, és Ön a legmagasabb szintű biztonságot követelhetnek meg.
 
 ## <a name="storage-encryption"></a>Storage-titkosítás
-Tárolás titkosítása segítségével titkosíthatja a tiszta tartalom helyileg AES 256 bites titkosítás használata. Majd feltöltheti az Azure Storage, hol tárolják titkosítása. Storage-titkosítással védett adategységek automatikusan titkosítás és egy titkosított fájlrendszerbe kódolás előtt helyezve. Az eszközök olyan opcionális újra titkosítani, egy új kimeneti eszközként feltöltés előtt. A tárolás titkosítása elsődleges használati eset az, amikor biztonságossá tételéhez a kiváló minőségű bemeneti médiafájljait erős titkosítással aktívan a lemezen.
+Storage-titkosítás segítségével titkosítja a tiszta tartalom helyileg 256 bites AES-titkosítás segítségével. Ezután feltöltheti azt az Azure Storage, hol tárolják titkosítása. Storage-titkosítással védett adategységek automatikus titkosítás és kódolás előtt egy titkosított fájlrendszerbe kerülnek. Az eszközök olyan igény szerint újra titkosítani; az új kimeneti adategységként való feltöltés előtt. Az elsődleges használati eset, a tárolás titkosítása akkor, ha biztonságos, kiváló minőségű bemeneti médiafájlok az erős titkosítás inaktív állapotban a lemezen.
 
-Egy tároló által titkosított eszköz képes biztosítani, konfigurálnia kell az adategység továbbítási házirendjét, hogy a Media Services tudja, hogyan kívánja a tartalom. Mielőtt az eszköz továbbítható, a streamelési kiszolgáló visszafejti, és a tartalom az adatfolyamokat, a megadott továbbítási házirendjét (például AES, általános titkosítás vagy titkosítás nélkül) használatával.
+A storage-titkosítású eszköz biztosításához, konfigurálnia kell az adategység továbbítási házirendjét, hogy a Media Services tudja, hogyan szeretné a tartalmat. Az eszközintelligencia továbbítható, mielőtt a streamelési kiszolgáló visszafejti, és streameli a tartalmat a megadott objektumtovábbítási szabályzat (például AES, common Encryption titkosítás vagy titkosítás nélkül) használatával.
 
 ## <a name="types-of-encryption"></a>Titkosítási típusok
-PlayReady és Widevine használatára közös titkosítás (AES Parancsra mód). FairPlay CBC módban AES titkosítást használja. AES-128 egyértelműen kulcstitkosítási boríték titkosítást használja.
+PlayReady és Widevine használatára az általános titkosítás (AES Parancsra mód). FairPlay AES-CBC-mód titkosítást használja. AES-128-kulcsok titkosítási boríték-titkosítást használja.
 
 ## <a name="licenses-and-keys-delivery-service"></a>Licencek és a kulcsok kézbesítési szolgáltatás
-A Media Services (PlayReady, Widevine, FairPlay) DRM-licencek és AES-kulcsok kézbesítéséhez hitelesített ügyfelek kulcs kézbesítési szolgáltatást nyújt. Használhat [az Azure-portálon](media-services-portal-protect-content.md), a REST API-t, vagy a Media Services SDK for .NET a licencekkel és a kulcsok hitelesítési és engedélyezési házirend-beállításokkal.
+A Media Services DRM (PlayReady, Widevine, FairPlay) licencek és az AES-kulcsok kézbesítéséhez a hitelesített ügyfelek kulcskézbesítési szolgáltatást biztosít. Használhat [az Azure Portalon](media-services-portal-protect-content.md), a REST API vagy .NET-keretrendszerhez készült Media Services SDK konfigurálhat a licencekkel és a kulcsok a hitelesítési és engedélyezési házirendeket.
 
-## <a name="control-content-access"></a>Tartalom elérés
-Azt is szabályozhatja, hogy ki férhet hozzá a tartalmat úgy konfigurálja a tartalomkulcs-hitelesítési szabályzatot. A tartalomkulcs-hitelesítési házirend nyitott vagy token korlátozás támogatja.
+## <a name="control-content-access"></a>Tartalom-hozzáférés vezérlése
+Szabályozhatja, hogy ki férhet hozzá a tartalmat a tartalomkulcs-hitelesítési szabályzat konfigurálásával. A tartalomkulcs-hitelesítési szabályzat ezek lehetnek nyitott vagy jogkivonat korlátozás támogatja.
 
 ### <a name="open-authorization"></a>Megnyitás engedélyezése
-Egy nyitott engedélyezési házirend a tartalomkulcs esetén a rendszer küld minden olyan ügyfél (korlátozás).
+Egy megnyitott engedélyezési házirend a tartalomkulcs küldött bármely ügyfél (nincs korlátozás).
 
 ### <a name="token-authorization"></a>Engedélyezési jogkivonat
-Jogkivonat-korlátozott engedélyezési házirendnek a tartalomkulcs érkezik csak egy ügyfél, amely a kulcs/licenc kérelem jeleníti meg egy érvényes JSON webes jogkivonat (JWT) vagy egyszerű webes jogkivonat (SWT). Ez a token biztonságijogkivonat-szolgáltatás (STS) kell kiállítania. Az Azure Active Directoryt az STS-ként, vagy egy egyéni STS telepítése. Az STS be kell állítani a megadott kulcs és a probléma JOGCÍMEKKEL, amely a token korlátozás konfigurációjában megadott aláírt jogkivonat létrehozásához. A Media Services kulcs kézbesítési szolgáltatás a kért kulcs/licencfeltételeket az ügyfélnek ad vissza, ha a jogkivonat érvényes, és a jogkivonatában lévő jogcímeket pontosan megegyeznek a kulcs/licencfeltételeket konfigurálva.
+A jogkivonattal korlátozott engedélyezési házirend a tartalomkulcs küldendő csak egy ügyfél, amely egy érvényes JSON webes jogkivonat (JWT) vagy simple web Tokens (SWT) jeleníti meg a kulcs kérésben. Ez a token biztonsági jogkivonatokkal kapcsolatos szolgáltatás (STS) kell kiállítaniuk. Használja az Azure Active Directory, az STS szolgáltatással, vagy egy egyéni STS üzembe helyezése. Az STS-re kell állítani a megadott kulcs és a probléma jogcímek jogkivonat korlátozás konfigurációjában megadott aláírt jogkivonat létrehozásához. A Media Services kulcstovábbítást adja vissza a kért kulcs licenc az ügyfélnek, ha a jogkivonat érvényes, és a jogkivonat jogcímeiben megfelelnek a kulcs/licenc.
 
-A token korlátozott házirendjének konfigurálásakor adjon meg, hogy az elsődleges hitelesítési kulcs, a kibocsátó és a célközönség paramétereket. Az elsődleges hitelesítési kulcs, amely a token aláírt kulcsot tartalmazza. A nem a biztonságos biztonságijogkivonat-szolgáltatás, amely kibocsátja a jogkivonatot. A célközönséget, más néven a hatókör, ismerteti a jogkivonat a leképezést, vagy az erőforrás a token engedélyezi a hozzáférést. A Media Services kulcs kézbesítési szolgáltatás ellenőrzi, hogy ezek az értékek a token egyeznek-e a sablonban szereplő értékeket.
+A tokennel korlátozott szabályzatokhoz konfigurálásakor adjon meg, hogy az elsődleges ellenőrzőkulcs, a kibocsátó és a célközönség paramétereket. Az elsődleges ellenőrzőkulcs tartalmazza a kulcsot, a jogkivonat írták-e. A kibocsátó a biztonságos jogkivonat-szolgáltatás, amely a jogkivonatot. A célközönség, más néven a hatókör, ismerteti a token szándéka, vagy az erőforrás a token engedélyezi a hozzáférést. A Media Services kulcstovábbítást ellenőrzi, hogy ezeket az értékeket a jogkivonat egyezik a sablonban szereplő értékeket.
 
 ## <a name="streaming-urls"></a>Streamelési URL-ek
-Az objektum egynél több DRM lett titkosítva, használjon egy titkosítási címke a streamelési URL-cím: (formátum = "m3u8-aapl" titkosítási = "xxx").
+Az eszköz titkosítva van az egynél több DRM, használjon egy titkosítási címke a streamelési URL-cím: (formátum = "m3u8-aapl" titkosítási = "xxx").
 
-A következők érvényesek:
+A következő szempontokat kell figyelembe venni:
 
 * Legfeljebb egy titkosítási típus adható meg.
-* Titkosítási típus nem kell az URL-cím adható meg, ha csak egy titkosítási alkalmazta az eszközhöz.
-* Titkosítási típus-és nagybetűket.
-* A következő titkosítási típusok adhatók meg:
+* Titkosítási típus nem kell az URL-cím adható meg, ha csak az eszköz egy titkosítási lett alkalmazva.
+* Titkosítási típus megkülönbözteti a kis-és nagybetű nincs megkülönböztetve.
+* A következő titkosítási típusok adható meg:
   * **cenc**: A PlayReady vagy Widevine (common encryption)
-  * **cbcs-aapl**: A FairPlay (AES CBC titkosítást)
-  * **CBC**: az AES envelope titkosítás
+  * **cbcs-aapl**: A FairPlay (AES-CBC titkosítás)
+  * **CBC**: az AES boríték-titkosítást
 
 ## <a name="next-steps"></a>További lépések
-Az alábbi cikkek segítséget nyújtanak a védett tartalom az első lépései a következő lépések ismertetik:
+Az alábbi cikkek segítséget nyújtanak a content protection használatának első lépései a következő lépések ismertetik:
 
-* [A tárolás titkosítása védelme](media-services-rest-storage-encryption.md)
-* [Az AES titkosítási védelme](media-services-protect-with-aes128.md)
-* [PlayReady és/vagy Widevine védelme](media-services-protect-with-playready-widevine.md)
+* [A storage encryption védelme](media-services-rest-storage-encryption.md)
+* [Az AES-titkosítással védeni](media-services-protect-with-aes128.md)
+* [Védelem PlayReady és/vagy Widevine](media-services-protect-with-playready-widevine.md)
 * [FairPlay védelme](media-services-protect-hls-with-FairPlay.md)
 
 ## <a name="related-links"></a>Kapcsolódó hivatkozások
 
-* [Az Azure Media Services PlayReady licenc kézbesítési árképzési ismertetése](http://mingfeiy.com/playready-pricing-explained-in-azure-media-services)
-* [Az Azure Media Services-AES titkosított adatfolyam hibakeresése](http://mingfeiy.com/debug-aes-encrypted-stream-azure-media-services)
-* [JWT jogkivonat hitelesítési](http://www.gtrifonov.com/2015/01/03/jwt-token-authentication-in-azure-media-services-and-dynamic-encryption/)
-* [Azure Media Services OWIN MVC-alapú alkalmazások integrálása az Azure Active Directoryban, és korlátozhatja a kulcs továbbítási JWT jogcímei alapján](http://www.gtrifonov.com/2015/01/24/mvc-owin-azure-media-services-ad-integration/)
+* [JWT jogkivonat-hitelesítés](http://www.gtrifonov.com/2015/01/03/jwt-token-authentication-in-azure-media-services-and-dynamic-encryption/)
+* [Az Azure Media Services OWIN MVC-alapú alkalmazások integrálása az Azure Active Directory és a JWT jogcímszolgáltatói alapján kulcs tartalomkézbesítési korlátozása](http://www.gtrifonov.com/2015/01/24/mvc-owin-azure-media-services-ad-integration/)
 
 [content-protection]: ./media/media-services-content-protection-overview/media-services-content-protection.png

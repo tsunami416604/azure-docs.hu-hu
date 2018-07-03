@@ -1,6 +1,6 @@
 ---
-title: Azure-végpont előfizetés kezelése |} Microsoft Docs
-description: Ebben a cikkben a LUIS fiókját adja meg a végpont a következő fizetési terv korlátlan forgalmat mért végpont kulcsot létrehozni.
+title: Azure-végpont előfizetés kezelése |} A Microsoft Docs
+description: Ebben a cikkben a LUIS-fiókját, hogy adja meg a végponthoz a következő fizetési terv korlátlan adatforgalom mért végponthoz kulcsot hoz létre.
 services: cognitive-services
 author: v-geberr
 manager: Kaiqb
@@ -9,78 +9,78 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 03/21/2018
 ms.author: v-geberr
-ms.openlocfilehash: 3526871f126ac975f323fe84b14883b361b684ae
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: dbcbdb0f806241c015e6fbc160465390bead7c37
+ms.sourcegitcommit: 4597964eba08b7e0584d2b275cc33a370c25e027
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "35349795"
+ms.lasthandoff: 07/02/2018
+ms.locfileid: "37340773"
 ---
-# <a name="manage-azure-endpoint-subscription-keys"></a>Azure-végpont előfizetés kulcsok kezelése
+# <a name="manage-azure-endpoint-subscription-keys"></a>Azure-végpont előfizetési kulcsok kezelése
 
-A teszteléshez és prototípus csak a szabad (F0) csomagot használja. Éles rendszerek esetén használja a [fizetett](https://aka.ms/luis-price-tier) réteg. 
+Teszteléshez és prototípus csak az ingyenes (F0) csomagot használja. Éles rendszerek esetén használhatja a [fizetős](https://aka.ms/luis-price-tier) szint. 
 
 > [!NOTE]
-> Ne használja a [kulcs szerzői](luis-concept-keys.md#authoring-key) végpont lekérdezések éles környezetben.
+> Ne használja a [kulcs létrehozási](luis-concept-keys.md#authoring-key) végpont lekérdezések éles környezetben.
 
 <a name="create-luis-service"></a>
-## <a name="create-luis-endpoint-key"></a>LUIS végpont-kulcs létrehozása
+## <a name="create-luis-endpoint-key"></a>A LUIS végponti kulcs létrehozása
 
-1. Jelentkezzen be  **[Microsoft Azure](https://ms.portal.azure.com/)** 
-2. Kattintson a zöld **+** jelentkezzen be a felső bal oldali panelen, és keressen a "LUIS" a piactéren, majd kattintson a **nyelvi ismertetése** , és kövesse a **környezetet**  LUIS előfizetés-fiók létrehozásához. 
+1. Jelentkezzen be a  **[Microsoft Azure](https://ms.portal.azure.com/)** 
+2. Kattintson a zöld **+** jelentkezzen be a bal oldali panel felső, és keressen a "LUIS" a Marketplace-en, majd kattintson a **Language Understanding** , és kövesse a **élmény**  LUIS előfizetés fiók létrehozásához. 
 
     ![Azure Search](./media/luis-azure-subscription/azure-search.png) 
 
-3. Konfigurálja az előfizetés beállításokkal fiók nevét, például árképzési rétegek stb. 
+3. Konfigurálja az előfizetés fiók nevét, például beállításokkal árképzési szint stb. 
 
     ![Az Azure API kiválasztása](./media/luis-azure-subscription/azure-api-choice.png) 
 
-4. Miután létrehozta a LUIS szolgáltatást, megtekintheti a hívóbetűk hozott létre **erőforrás-kezelés -> kulcsok**.  
+4. Miután létrehozta az intelligens HANGFELISMERÉSI szolgáltatás, megtekintheti a létrehozott hozzáférési kulcsok **erőforrás-kezelés -> kulcsok**.  
 
     ![Az Azure-kulcsok](./media/luis-azure-subscription/azure-keys.png)
 
     > [!Note] 
-    > * Jelentkezzen be a régió [LUIS](luis-reference-regions.md) webhely és [adja hozzá az új LUIS végpontkulcs](Manage-Keys.md#assign-endpoint-key). 
-    > * Jegyezze meg a nevet kell ahhoz, hogy válassza ki azt a régió létrehozása az Azure szolgáltatás [LUIS](luis-reference-regions.md) közzéteszi a lapot.  
+    > * Jelentkezzen be az Ön régiójában [LUIS](luis-reference-regions.md) webhely és [adja meg az új LUIS végponthoz kulcsot](luis-how-to-manage-keys.md#assign-endpoint-key). 
+    > * Meg kell jegyeznie a név az Azure szolgáltatás hozott létre annak érdekében, hogy válassza ki azt a régióban lévő [LUIS](luis-reference-regions.md) közzéteszi a lapot.  
 
-## <a name="change-luis-pricing-tier"></a>Változás LUIS tarifacsomag kiválasztása
+## <a name="change-luis-pricing-tier"></a>Módosítsa a LUIS-tarifacsomag
 
-1.  A [Azure](https://portal.azure.com), LUIS előfizetése található. Kattintson a LUIS előfizetésre.
-    ![Az LUIS előfizetés keresése](./media/luis-usage-tiers/find.png)
-2.  Kattintson a **tarifacsomag** láthatók az elérhető árképzési szinteket. 
-    ![Tarifacsomagok megtekintése](./media/luis-usage-tiers/subscription.png)
-3.  Kattintson a tarifacsomagot, majd **válasszon** menteni a módosítást. 
+1.  A [Azure](https://portal.azure.com), keresse meg a LUIS-előfizetés. Kattintson a LUIS-előfizetésre.
+    ![Keresse meg a LUIS-előfizetés](./media/luis-usage-tiers/find.png)
+2.  Kattintson a **tarifacsomag** az elérhető tarifacsomagok láthatók. 
+    ![Árképzési szintek megtekintése](./media/luis-usage-tiers/subscription.png)
+3.  Kattintson a tarifacsomag, és kattintson a **kiválasztása** menteni a módosítást. 
     ![A LUIS fizetési szint módosítása](./media/luis-usage-tiers/plans.png)
-4.  Ha befejeződött a tarifacsomag módosítása, egy előugró ablak ellenőrzi az új árképzési szint. 
-    ![Ellenőrizze a LUIS fizetési réteg](./media/luis-usage-tiers/updated.png)
-5. Ne felejtse el [rendelje hozzá a végpont kulcs](manage-keys.md#assign-endpoint-key) a a **közzététel** lapon, és annak összes végpont lekérdezés használata. 
+4.  Ha a díjszabás módosítása befejeződött, egy előugró ablak ellenőrzi az új tarifacsomag. 
+    ![A LUIS támogatási csomag ellenőrzése](./media/luis-usage-tiers/updated.png)
+5. Ne felejtse el [rendelje hozzá a végpont kulcs](luis-how-to-manage-keys.md#assign-endpoint-key) a a **közzététel** lapon, és használhatja az összes endpoint lekérdezés. 
 
-## <a name="exceed-pricing-tier-usage"></a>Haladhatja meg az árképzési szint kihasználtsága
-Minden egyes réteg meghatározott arányban lehetővé teszi a végpont kérelmek LUIS fiókjába. Ha kérelmek száma nagyobb, mint a megengedett aránya a díjköteles fiók / perc vagy havonta, kérelmek kapnak egy HTTP-hiba a "429: túl sok kérelmet."
+## <a name="exceed-pricing-tier-usage"></a>Díjszabási szint használatához lehet
+Minden egyes csomaggal meghatározott arányban végpont kéréseket a LUIS-fiókjába. Ha a kérelmek száma nagyobb, mint a megengedett sebesség a díjköteles fiók percenként vagy havonta, a kérelmek, HTTP hibaüzenetet kap "429-es: túl sok kérelem."
 
-Minden egyes réteg lehetővé teszi a havi adódnak össze kérelmek. Ha a kérelmek teljes száma a magasabb, mint az engedélyezett sebességét, a kérelmeket a HTTP hibaüzenetet kap "403: tiltott".  
+Minden egyes csomaggal halmozódnak kérés havonta. Ha az összes kérelmet magasabb, mint az engedélyezett sebességét, a kérelmek, HTTP hibaüzenetet kap "403-as: tiltott".  
 
-## <a name="viewing-summary-usage"></a>Összegző használati megtekintése
-Az Azure-ban LUIS használati információk is megtekinthetők. A **áttekintése** lap többek között a hívások és hibák legutóbbi összegző információit jeleníti meg. Ha elvégezte a LUIS végpont kérelmet, majd azonnal tekintse meg a **– áttekintés oldalra**, akár öt percet megjeleníti őket a használatának engedélyezése.
+## <a name="viewing-summary-usage"></a>Összefoglaló használat megtekintése
+A LUIS-használati adatokat megtekintheti az Azure-ban. A **áttekintése** lapon többek között a hívások és hibák legutóbbi összegző információit jeleníti meg. Ha Ön kérést egy LUIS végpontot, majd azonnal tekintse meg a **áttekintőlapján**, akár öt perc alatt jelenik meg a használat engedélyezése.
 
-![Összegző használati megtekintése](./media/luis-usage-tiers/overview.png)
+![Összefoglaló használat megtekintése](./media/luis-usage-tiers/overview.png)
 
 ## <a name="customizing-usage-charts"></a>Használati diagramok testreszabása
-Metrikák révén részletes képet kaphat az adatokat.
+Metrikák az adatok részletesebb betekintést biztosít.
 
-![Alapértelmezett metrikák](./media/luis-usage-tiers/metrics-default.png)
+![Alapértelmezett mérőszámok](./media/luis-usage-tiers/metrics-default.png)
 
-A metrikák diagramok konfigurálása időszakot és a típust. 
+Konfigurálhatja a mérőszámdiagramok időszak és a metrika típusa. 
 
 ![Egyéni metrikák](./media/luis-usage-tiers/metrics-custom.png)
 
-## <a name="total-transactions-threshold-alert"></a>Teljes tranzakciók küszöbértékének riasztási
-Ha szeretné tudni, hogy amikor elérte az egy bizonyos tranzakció küszöböt, például 10 000 tranzakciók, létrehozhat egy riasztást. 
+## <a name="total-transactions-threshold-alert"></a>Összes tranzakciós küszöbértékének riasztási
+Ha szeretné tudni, hogy ha egy bizonyos tranzakció küszöbértéket, például 10 000 tranzakció, elérte a riasztás is létrehozhat. 
 
 ![Alapértelmezett riasztások](./media/luis-usage-tiers/alert-default.png)
 
-A metrika értesítés hozzáadása a **összes hívás** metrika egy adott időszakra vonatkozóan. Adja hozzá, amelyek megkapják a riasztás összes személy e-mail címét. Adja hozzá a webhookok kell kapnia a riasztás összes rendszerek számára. A riasztás aktiválása is futtathatja egy logikai alkalmazást. 
+Metrikariasztás hozzáadása a **összes hívás** metrika egy bizonyos ideig. Adja hozzá, amelyek megkapják a riasztás minden személyek e-mail címét. Adja hozzá a webhookok az összes rendszer, amelyre a riasztást kapni. A riasztás akkor aktiválódik, ha egy logikai alkalmazást is futtathatja. 
 
 ## <a name="next-steps"></a>További lépések
 
-Ismerje meg, hogyan használható [verziók](luis-how-to-manage-versions.md) a LUIS alkalmazás kezelése.
+Ismerje meg, hogyan használható [verziók](luis-how-to-manage-versions.md) a LUIS-alkalmazás kezeléséhez.

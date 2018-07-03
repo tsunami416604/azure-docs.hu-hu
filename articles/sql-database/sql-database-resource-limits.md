@@ -1,76 +1,77 @@
 ---
-title: Az Azure SQL Database erőforrás korlátozza áttekintése |} Microsoft Docs
-description: Ez a lap néhány gyakori DTU-alapú erőforrás korlátot, az önálló adatbázisok Azure SQL Database ismerteti.
+title: Az Azure SQL Database erőforrás korlátozza – áttekintés |} A Microsoft Docs
+description: Ezen a lapon azt ismerteti, hogy néhány gyakori DTU-alapú erőforráskorlátok az Azure SQL Database önálló adatbázisok számára.
 services: sql-database
 author: CarlRabeler
 manager: craigg
 ms.service: sql-database
 ms.custom: DBs & servers
 ms.topic: conceptual
-ms.date: 06/20/2018
+ms.date: 07/02/2018
 ms.author: carlrab
-ms.openlocfilehash: 6806b0c5b5e5ac5e1189f628786f0c8f9b223395
-ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
+ms.openlocfilehash: 403490f47ac171d4a302d2b68af65375bbdc26cd
+ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36750951"
+ms.lasthandoff: 07/02/2018
+ms.locfileid: "37345719"
 ---
-# <a name="overview-azure-sql-database-resource-limits"></a>Áttekintés az Azure SQL Database erőforrás korlátok 
+# <a name="overview-azure-sql-database-resource-limits"></a>Azure SQL Database erőforrás-korlátozások áttekintése 
 
-Ez a cikk ismerteti az Azure SQL Database erőforrás áttekintést korlátozza, és mi történik, ha az erőforrás e elérte vagy meghaladta vonatkozóan nyújt információkat.
+Ez a cikk az Azure SQL Database erőforrás-áttekintés korlátozza, és mi történik, ha ezek erőforráskorlátok találati vagy túllépte a vonatkozó információkat biztosít.
 
-## <a name="what-is-the-maximum-number-of-servers-and-databases"></a>Mi az, hogy a kiszolgálók és adatbázisok maximális számát?
+## <a name="what-is-the-maximum-number-of-servers-and-databases"></a>Mi az a kiszolgálók és adatbázisok maximális száma?
 
 | Maximum | Érték |
 | :--- | :--- |
-| Adatbázis kiszolgálónként | 5000 |
-| Bármely régióban előfizetésenként kiszolgálók alapértelmezett száma | 20 |
-| Bármely régióban előfizetésenként kiszolgálók maximális száma | 200 |
+| Adatbázisok kiszolgálónként | 5000 |
+| Kiszolgálók száma előfizetésenként bármelyik régióban alapértelmezett száma | 20 |
+| Kiszolgálók száma előfizetésenként bármelyik régióban maximális száma | 200 |
+| Dtu-k vagy eDTU-kvóta kiszolgálónként | 54,000 |
 |||
 
 > [!NOTE]
-> Az alapértelmezett értéknél több kiszolgáló kvótáját megszerzéséhez új támogatási kérelem a "Kvóta" probléma típusú az előfizetéshez tartozó Azure-portálon küldheti el.
+> További /eDTU DTU-kvótába, vagy további kiszolgálókat, mint az alapértelmezett érték beszerzéséhez egy új támogatási kérelmet az Azure Portalon, a probléma típusa "Kvóta" az előfizetés beküldhető. A dtu-k / eDTU kvóta- és adatbázis-korlát kiszolgálónként kiszolgálónként rugalmas készletek száma korlátozza. 
 
 > [!IMPORTANT]
-> Mivel az adatbázisok számának megközelíti a felső határ az egyes kiszolgáló, a következő akkor fordulhat elő:
-> - Növekvő késés futó lekérdezések a master adatbázisban.  Ez magában foglalja az erőforrás-kihasználtságának statisztikája sys.resource_stats például nézetek.
-> - Növelje a késés felügyeleti műveleteket, majd portál nézőpontok, például az adatbázisok a kiszolgálón számbavétele megjelenítése.
+> Adatbázisok száma megközelíti a korlátot, egy kiszolgálón, mert a következő fordulhat elő:
+> - Növelje a várakozási ideje a lekérdezések futtatása a master adatbázison.  Ez magában foglalja az erőforrás-kihasználtsági statisztikáinak például sys.resource_stats nézetét.
+> - A felügyeleti műveletek késése növelése, és a renderelési enumerálni a kiszolgálón lévő adatbázisokat érintő portál modelladatok között.
 
-## <a name="what-happens-when-database-resource-limits-are-reached"></a>Mi történik az adatbázis erőforrás korlátok elérésekor?
+## <a name="what-happens-when-database-resource-limits-are-reached"></a>Mi történik az adatbázis erőforrás-korlátok elérésekor?
 
-### <a name="compute-dtus-and-edtus--vcores"></a>Számítási (Dtu és edtu-k / vCores)
+### <a name="compute-dtus-and-edtus--vcores"></a>COMPUTE (dtu-król és edtu-k / virtuális mag)
 
-(Dtu és edtu-k vagy vCores mérve) adatbázis számítási mértéke túlságosan megnő, ha a késés növekedése lekérdezni, és még akkor is, időtúllépés is. Ilyen körülmények lekérdezések előfordulhat, hogy az a szolgáltatás nem helyezi várólistára, és biztosított erőforrások erőforrás-ként történő végrehajtásnak felszabadul.
-Magas számítási kihasználtsági észlelt, amikor megoldás lehetőségek a következők:
+(Dtu-k és edtu-k vagy virtuális magok szerint mért) adatbázis számítási mértéke túlságosan megnő, a késés növekedése lekérdezése és még akkor is, időtúllépés is. Ezen feltételek mellett a lekérdezések előfordulhat, hogy a szolgáltatás várólistára kerül, és biztosítják az erőforrások erőforrásként végrehajtás ingyenes válnak.
+Amikor magas számítási kihasználtságát, kockázatcsökkentési lehetőségek a következők:
 
-- Az adatbázis vagy a rugalmas készlet több számítási erőforrással az adatbázis számára teljesítményszintjének növelését. Lásd: [önálló adatbázist erőforrás méretezése](sql-database-single-database-scale.md) és [válik a rugalmas készlet erőforrások](sql-database-elastic-pool-scale.md).
-- Minden egyes lekérdezés az erőforrás-használat csökkentésére lekérdezések optimalizálása. További információkért lásd: [lekérdezés hangolása/Hinting](sql-database-performance-guidance.md#query-tuning-and-hinting).
+- Az adatbázis vagy a rugalmas készlet további számítási erőforrásokat biztosít az adatbázis teljesítményszintjének növelését. Lásd: [egyetlen adatbázis-erőforrások skálázása](sql-database-single-database-scale.md) és [méretezhető rugalmas adatbáziskészlet erőforrásainak](sql-database-elastic-pool-scale.md).
+- Az erőforrás-használatot, az egyes lekérdezések csökkentése érdekében a lekérdezések optimalizálását. További információkért lásd: [lekérdezés hangolása/Hinting](sql-database-performance-guidance.md#query-tuning-and-hinting).
 
 ### <a name="storage"></a>Storage
 
-Felhasznált lemezterület adatbázis mérete eléri a maximális méretkorlátot, adatbázis beszúrása és frissítések, amelyek az adatok méretének növelése sikertelen és elküld az ügyfélgépeknek egy [hibaüzenet](sql-database-develop-error-messages.md). Adatbázis-választja ki, és törli továbbra is sikeres.
+Ha használt adatbázis-terület eléri a maximális méretkorlátot, adatbázis szúr be és frissítéseket, amelyek az adatok méretének növelése sikertelen, és azok az ügyfelek kapnak egy [hibaüzenet](sql-database-develop-error-messages.md). Adatbázis-KIVÁLASZTJA és TÖRLÉSEK továbbra is sikeres legyen.
 
-Amikor magas lemezterület-kihasználás, amikor megoldás lehetőségek a következők:
+Amikor magas lemezterület-kihasználás, kockázatcsökkentési lehetőségek a következők:
 
-- Az adatbázis vagy a rugalmas maximális méretének növelését tárolókészlet, vagy vegyen fel további tárolókat. Lásd: [önálló adatbázist erőforrás méretezése](sql-database-single-database-scale.md) és [válik a rugalmas készlet erőforrások](sql-database-elastic-pool-scale.md).
-- Ha az adatbázis rugalmas készlethez, majd azt is megteheti az adatbázis helyezheti át a készlet kívül, hogy annak tárolóhelyét nem megosztott a többi adatbázissal.
+- Az adatbázisához vagy rugalmas maximális méretének növelését tárolókészlet, vagy vegyen fel további tárolókat. Lásd: [egyetlen adatbázis-erőforrások skálázása](sql-database-single-database-scale.md) és [méretezhető rugalmas adatbáziskészlet erőforrásainak](sql-database-elastic-pool-scale.md).
+- Ha az adatbázis egy rugalmas készletben, majd azt is megteheti az adatbázis áthelyezhetők a készlet kívül, hogy a tárolóhely nincsenek megosztva, más adatbázisok.
 
-### <a name="sessions-and-workers-requests"></a>Munkamenetek és alkalmazottak (kérelmek) 
+### <a name="sessions-and-workers-requests"></a>A munkamenetek és feldolgozók (kérelmek) 
 
-A munkamenetek és alkalmazottak maximális száma a szolgáltatási szint és a teljesítmény szint (Dtu és edtu-k) határozzák meg. Új kérelmek azért lettek elutasítva, amikor munkamenet vagy munkavégző korlát elérésekor, és az ügyfelek hibaüzenetet kap. Során rendelkezésre álló kapcsolatok száma az alkalmazás által szabályozható, a száma párhuzamos munkavállalók gyakran nehezebben becsléséhez, és szabályozhatja. Ez különösen igaz csúcsterhelési időszakokat amikor adatbázis erőforrás gyűjtésének elérésekor és miatt hosszabb futó lekérdezések munkavállalók egymásra, során. 
+A munkamenetek és a feldolgozók maximális száma határozza meg a szolgáltatási szint és a teljesítmény szint (dtu-król és edtu-k). Új kérelmek azért lettek elutasítva munkamenet vagy feldolgozói korlát elérésekor, és az ügyfelek hibaüzenetet kaphat. Bár a rendelkezésre álló kapcsolatok számát az alkalmazás által szabályozható, egyidejű feldolgozók száma nehezebb, gyakran becslése és ellenőrzését. Ez különösen igaz csúcsidőszakokban terhelés amikor adatbázis erőforráskorlátok eléri és feldolgozók egymásra hosszabb ideig futó lekérdezések miatt. 
 
-Munkamenet vagy munkavégző magas kihasználtsága észlelt, amikor megoldás lehetőségek a következők:
-- Az adatbázis vagy a rugalmas készlet szolgáltatási szint vagy a teljesítmény szint növelését. Lásd: [önálló adatbázist erőforrás méretezése](sql-database-single-database-scale.md) és [válik a rugalmas készlet erőforrások](sql-database-elastic-pool-scale.md).
-- Optimalizálás lekérdezések minden egyes lekérdezés az erőforrás-használat csökkentésére, ha nagyobb munkavégző kihasználtsági oka miatt a versengés a számítási erőforrásokat. További információkért lásd: [lekérdezés hangolása/Hinting](sql-database-performance-guidance.md#query-tuning-and-hinting).
+Amikor magas munkamenet vagy feldolgozói kihasználtság, kockázatcsökkentési lehetőségek a következők:
+- Növelése a szolgáltatási szint teljesítményi szintjének vagy az adatbázisához vagy rugalmas készletéhez. Lásd: [egyetlen adatbázis-erőforrások skálázása](sql-database-single-database-scale.md) és [méretezhető rugalmas adatbáziskészlet erőforrásainak](sql-database-elastic-pool-scale.md).
+- A számítási erőforrások optimalizálása minden egyes lekérdezés az erőforrás-használat csökkentésére, ha a megnövekedett feldolgozó kihasználtsági oka miatt a versengés a lekérdezéseket. További információkért lásd: [lekérdezés hangolása/Hinting](sql-database-performance-guidance.md#query-tuning-and-hinting).
 
-Munkamenet vagy munkavégző magas kihasználtsága észlelt, amikor megoldás lehetőségek a következők:
-- A szolgáltatási szint vagy a teljesítmény szint az adatbázis növelését. Lásd: [önálló adatbázist erőforrás méretezése](sql-database-single-database-scale.md) és [válik a rugalmas készlet erőforrások](sql-database-elastic-pool-scale.md).
-- Optimalizálás lekérdezések minden egyes lekérdezés az erőforrás-használat csökkentésére, ha nagyobb munkavégző kihasználtsági oka miatt a versengés a számítási erőforrásokat. További információkért lásd: [lekérdezés hangolása/Hinting](sql-database-performance-guidance.md#query-tuning-and-hinting).
+Amikor magas munkamenet vagy feldolgozói kihasználtság, kockázatcsökkentési lehetőségek a következők:
+- Növelése a szolgáltatási szint teljesítményi szintjének vagy az adatbázis. Lásd: [egyetlen adatbázis-erőforrások skálázása](sql-database-single-database-scale.md) és [méretezhető rugalmas adatbáziskészlet erőforrásainak](sql-database-elastic-pool-scale.md).
+- A számítási erőforrások optimalizálása minden egyes lekérdezés az erőforrás-használat csökkentésére, ha a megnövekedett feldolgozó kihasználtsági oka miatt a versengés a lekérdezéseket. További információkért lásd: [lekérdezés hangolása/Hinting](sql-database-performance-guidance.md#query-tuning-and-hinting).
 
 ## <a name="next-steps"></a>További lépések
 
-- Lásd: [SQL-adatbázis – gyakori kérdések](sql-database-faq.md) gyakran feltett kérdésekre adott válaszokat.
-- Általános Azure korlátozását kapcsolatos információkért lásd: [Azure-előfizetés és szolgáltatási korlátok, kvóták és megkötések](../azure-subscription-service-limits.md).
-- További információ a Dtu és edtu-k: [Dtu és edtu-k](sql-database-service-tiers.md#what-are-database-transaction-units-dtus).
-- A tempdb méretkorlátait kapcsolatos információkért lásd: https://docs.microsoft.com/sql/relational-databases/databases/tempdb-database#tempdb-database-in-sql-database.
+- Lásd: [SQL Database: gyakori kérdések](sql-database-faq.md) kapcsolatos gyakori kérdésekre adott válaszokat.
+- Azure – általános korlátozások kapcsolatos információkért lásd: [Azure-előfizetés és a szolgáltatások korlátozásai, kvótái és megkötései](../azure-subscription-service-limits.md).
+- További információ a dtu-król és edtu-k: [dtu-król és edtu-k](sql-database-service-tiers.md#what-are-database-transaction-units-dtus).
+- A tempdb méretbeli korlátokat kapcsolatos információkért lásd: https://docs.microsoft.com/sql/relational-databases/databases/tempdb-database#tempdb-database-in-sql-database.

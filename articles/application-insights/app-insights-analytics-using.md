@@ -1,6 +1,6 @@
 ---
-title: Elemzés - a hatékony keresési eszköz az Azure Application Insights segítségével |} Microsoft Docs
-description: 'Az elemzés, az Application Insights a hatékony diagnosztikai keresési eszköz használatával. '
+title: Analytics - a hatékony keresési eszköz az Azure Application Insights használatával |} A Microsoft Docs
+description: 'Az elemzés, a hatékony diagnosztikai keresés eszköz az Application Insights használatával. '
 services: application-insights
 documentationcenter: ''
 author: mrbullwinkle
@@ -11,179 +11,179 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 03/14/2017
+ms.date: 07/02/2018
 ms.reviewer: danha
 ms.author: mbullwin
-ms.openlocfilehash: 7f8f49cf88bda8e485d2365281c13680ef796196
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: aa86e2f3b1fb147ab167c948475a5207693143c2
+ms.sourcegitcommit: 4597964eba08b7e0584d2b275cc33a370c25e027
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35295519"
+ms.lasthandoff: 07/02/2018
+ms.locfileid: "37341562"
 ---
-# <a name="using-analytics-in-application-insights"></a>Az Application Insightsban Analytics használatával
-[Elemzés](app-insights-analytics.md) a hatékony keresési funkciója [Application Insights](app-insights-overview.md). Ezeken a lapokon a Log Analytics lekérdezési nyelv ismertetik.
+# <a name="using-analytics-in-application-insights"></a>Az Application Insights Analytics használatával
+[Analytics](app-insights-analytics.md) az hatékony keresési szolgáltatása [Application Insights](app-insights-overview.md). Ezeket az oldalakat a Log Analytics lekérdezési nyelv leírása.
 
-* **[A bevezető videó](https://applicationanalytics-media.azureedge.net/home_page_video.mp4)**.
-* **[Tesztelése szimulált adataink Analytics meghajtóján](https://analytics.applicationinsights.io/demo)**  Ha az alkalmazás nem adatok küldése az Application Insights még.
+* **[Tekintse meg a bevezető videót](https://applicationanalytics-media.azureedge.net/home_page_video.mp4)**.
+* **[Próbálja ki az Analytics szimulált adatokon](https://analytics.applicationinsights.io/demo)**  az alkalmazás nem adatot küldenek, az Application Insightsba még.
 
-## <a name="open-analytics"></a>Nyissa meg elemzés
-A az alkalmazás otthoni erőforrás az Application Insightsban kattintson az elemzés.
+## <a name="open-analytics"></a>Nyissa meg Analytics
+Az alkalmazás otthoni erőforrásból az Application insights szolgáltatásban kattintson az Analytics.
 
-![Nyissa meg portal.azure.com, nyissa meg az Application Insights-erőforrást, majd kattintson a elemzés.](./media/app-insights-analytics-using/001.png)
+![Portal.Azure.com címen nyissa meg, nyissa meg az Application Insights-erőforrást, és kattintson az Analytics.](./media/app-insights-analytics-using/001.png)
 
-A beágyazott oktatóanyag lehetővé teszi az elérhető lehetőségekkel ötleteket.
+A beágyazott oktatóanyag néhány ötletet arról, mi mindent biztosít.
 
-Van egy [itt átfogóbb bemutatása](app-insights-analytics-tour.md).
+Van egy [itt szélesebb körű bemutatót](app-insights-analytics-tour.md).
 
 ## <a name="query-your-telemetry"></a>A telemetriai adatok lekérdezése
-### <a name="write-a-query"></a>Lekérdezés írása
+### <a name="write-a-query"></a>A lekérdezés írása
 ![Séma megjelenítése](./media/app-insights-analytics-using/150.png)
 
-A bal oldalon felsorolt táblákat nevei kezdődnie (vagy a [tartomány](https://docs.loganalytics.io/docs/Language-Reference/Tabular-operators/range-operator) vagy [Unió](https://docs.loganalytics.io/docs/Language-Reference/Tabular-operators/union-operator) operátorok). Használjon `|` a folyamatokat létrehozni [operátorok](https://docs.loganalytics.io/docs/Learn/References/Useful-operators). 
+A bal oldalon felsorolt táblákat nevei kezdődik (vagy a [tartomány](https://docs.loganalytics.io/docs/Language-Reference/Tabular-operators/range-operator) vagy [union](https://docs.loganalytics.io/docs/Language-Reference/Tabular-operators/union-operator) operátorok). Használat `|` hozhat létre egy folyamatot, [operátorok](https://docs.loganalytics.io/docs/Learn/References/Useful-operators). 
 
-IntelliSense kéri az operátorok és a kifejezés elemek közül választhat. Kattintson a ikonra (vagy nyomja meg a CTRL + szóköz) hosszabb leírást és a példákat egyes elemeinek a használatára.
+Az IntelliSense kéri az operátorok és a kifejezés elemeket, amelyeket használhat. Információs ikonra (vagy nyomja le a CTRL + szóköz) hosszabb leírását és példákat egyes elemeit használhatja.
 
-Tekintse meg a [Analytics nyelvi bemutató](app-insights-analytics-tour.md) és [nyelvi referencia](app-insights-analytics-reference.md).
+Tekintse meg a [Analytics nyelvet bemutató](app-insights-analytics-tour.md) és [nyelvi referencia](app-insights-analytics-reference.md).
 
-### <a name="run-a-query"></a>A lekérdezés futtatása
+### <a name="run-a-query"></a>Lekérdezés futtatása
 ![A lekérdezés futtatása](./media/app-insights-analytics-using/130.png)
 
-1. Egyetlen sortörést használható egy lekérdezésben.
-2. A kurzor belül, vagy a futtatni kívánt lekérdezés végén elhelyezése.
-3. Ellenőrizze a lekérdezés az időtartományt. (Módosíthatja, vagy bírálja felül az által, beleértve a saját [ `where...timestamp...` ](https://docs.loganalytics.io/docs/Learn/Tutorials/Date-and-time-operations) záradék a lekérdezés.)
-3. A lekérdezés futtatásához az Ugrás gombra.
-4. A lekérdezés nem üres sorok be. Beállíthatja, hogy több elkülönített lekérdezések egy lekérdezés lap üres vonallal elválasztva őket. Csak a lekérdezés, amely rendelkezik a kurzor fut.
+1. A lekérdezés egyetlen sortörést is használhatja.
+2. Helyezze a kurzort, belül vagy a futtatni kívánt lekérdezés végén.
+3. Ellenőrizze az időtartományt a lekérdezés. (Módosíthatja azt, vagy felülbírálását, többek között a saját által [ `where...timestamp...` ](https://docs.loganalytics.io/docs/Learn/Tutorials/Date-and-time-operations) záradék szerepel a lekérdezésben.)
+3. Kattintson a lekérdezés futtatásához nyissa meg.
+4. Nem üres sorok helyezze el a lekérdezést. Egy lekérdezés lapon több elkülönített lekérdezés is megőrizheti az üres sorok elválasztva őket. Csak a lekérdezést, amely rendelkezik a kurzor futtatja.
 
 ### <a name="save-a-query"></a>Lekérdezés mentése
-![A lekérdezés mentése](./media/app-insights-analytics-using/140.png)
+![Lekérdezés mentése](./media/app-insights-analytics-using/140.png)
 
-1. Az aktuális lekérdezés fájl mentéséhez.
-2. Nyissa meg a korábban mentett lekérdezés fájlt.
+1. Mentse a jelenlegi lekérdezés fájlt.
+2. Nyisson meg egy korábban mentett lekérdezés fájlt.
 3. Hozzon létre egy új lekérdezés fájlt.
 
 ## <a name="see-the-details"></a>Részletek
-Bontsa ki az összes sort az eredmények között, a tulajdonságok teljes listájának megtekintéséhez. Ennél jobban is kibonthatja, bármely tulajdonsága strukturált érték – például, egyéni dimenziók vagy a veremben egy kivételt listázása.
+Bontsa ki az eredményeket a hozzá tartozó tulajdonságok teljes listáját lásd: az összes sort. Bármilyen tulajdonság, amely strukturált érték – például, az egyéni vagy a kivételt az ajánlati verem további bővítheti.
 
 ![Bontsa ki a sor](./media/app-insights-analytics-using/070.png)
 
 ## <a name="arrange-the-results"></a>Az eredmények rendezése
-Rendezési, szűréséhez, megjelenítheti és az a lekérdezés által visszaadott eredmények csoportban.
+Rendezheti, szűrheti, oldalakra bontása és csoport az a lekérdezés által visszaadott eredményeket.
 
 > [!NOTE]
-> Rendezés, a csoportosítás és a szűrés a böngészőben ne futtassa újból a lekérdezést. Ezek csak az eredményeket a legutóbbi lekérdezés által visszaadott eredményobjektumokban tárolt átrendezését. 
+> Rendezési, csoportosítást és szűrőt a böngészőben nem futtassa újból a lekérdezést. Ezek csak a legutóbbi lekérdezés által visszaadott eredmények átrendezését. 
 > 
-> Ezen feladatok végrehajtásával a kiszolgálón, mielőtt a rendszer visszairányítja az eredményeket, a lekérdezés írása a [rendezési](https://docs.loganalytics.io/docs/Language-Reference/Tabular-operators/sort-operator), [összefoglalója](https://docs.loganalytics.io/docs/Language-Reference/Tabular-operators/summarize-operator) és [ahol](https://docs.loganalytics.io/docs/Language-Reference/Tabular-operators/where-operator) operátorok.
+> A műveletek végrehajtásához a kiszolgálón, mielőtt a rendszer visszairányítja az eredményeket, a lekérdezés írása a [rendezési](https://docs.loganalytics.io/docs/Language-Reference/Tabular-operators/sort-operator), [összefoglalója](https://docs.loganalytics.io/docs/Language-Reference/Tabular-operators/summarize-operator) és [ahol](https://docs.loganalytics.io/docs/Language-Reference/Tabular-operators/where-operator) operátorok.
 > 
 > 
 
-Válasszon az annak megtekintéséhez, húzza az oszlopfejlécek átrendezés, húzza a határok automatikus oszlopok.
+Válassza ki az oszlopok megtekintheti, húzza az oszlopfejlécre, és átrendezheti őket, és azok szegélyek húzásával méretezheti át az oszlopokat.
 
 ![Oszlopok rendezése](./media/app-insights-analytics-using/030.png)
 
-### <a name="sort-and-filter-items"></a>Rendezésére és szűrésére elemek
-Egy oszlop vezetője kattintva rendezheti az eredményeket. Kattintson ismét a más módon rendezheti, majd kattintson a harmadik pedig visszatérhet az eredeti rendezést a lekérdezés által visszaadott idő.
+### <a name="sort-and-filter-items"></a>Elemek rendszerezése és szűrése
+Az oszlopok fejlécére kattintva rendezheti az eredményeket. Kattintson ismét a más módon rendezheti, majd kattintson a harmadik visszatér az eredeti sorrendjét a lekérdezés eredményeként kapott időt.
 
-A szűrő ikon segítségével szűkítse a keresést.
+A szűrő ikon használatával szűkíthető.
 
-![Rendezésére és szűrésére oszlopok](./media/app-insights-analytics-using/040.png)
+![Oszlopok rendezése és szűrése](./media/app-insights-analytics-using/040.png)
 
-### <a name="group-items"></a>Csoport elemek
-Több oszlop szerinti rendezéshez, csoportosítás használata. Először engedélyeznie, és húzza oszlopfejlécek a táblázat felett térbe kerülnek.
+### <a name="group-items"></a>Elemek csoportosítása
+Több oszlop szerinti rendezéshez, a csoportosítás használatához. Először engedélyezni, és húzza a terén a tábla feletti oszlopfejléceket.
 
 ![Csoport](./media/app-insights-analytics-using/060.png)
 
-### <a name="missing-some-results"></a>Hiányzik az egyes eredmények?
+### <a name="missing-some-results"></a>Hiányoznak egyes eredményeket?
 
-Ha úgy gondolja, hogy nem minden, a várt eredményt is lát, van néhány lehetséges ok.
+Ha úgy véli, hogy nem látja a várt az összes eredmény, van néhány lehetséges okai.
 
-* **Tartomány időszűrője**. Alapértelmezés szerint az elmúlt 24 órában származó eredmények csak akkor jelenik meg. Az automatikus szűrő, amely korlátozza az eredmények, amelyek a forrástáblákból lekérése tartományon van. 
+* **Tartomány Időszűrő**. Alapértelmezés szerint az elmúlt 24 órában eredményei csak akkor jelenik meg. Egy automatikus szűrő, amely korlátozza az eredmények, amelyek a forrás-táblák lekérése a tartományban van. 
 
-    Azonban módosíthatja az időtartományt a legördülő menü használatával szűrő.
+    Azonban módosíthatja az időtartományt szűrjön rá a legördülő menüből.
 
-    A beállítás felülbírálható az automatikus tartomány beleértve a saját vagy [ `where  ... timestamp ...` záradék](https://docs.loganalytics.io/docs/Language-Reference/Tabular-operators/where-operator) be a lekérdezést. Példa:
+    Az automatikus tartomány felülírhatja többek között a saját vagy [ `where  ... timestamp ...` záradék](https://docs.loganalytics.io/docs/Language-Reference/Tabular-operators/where-operator) be a lekérdezést. Példa:
 
     `requests | where timestamp > ago('2d')`
 
-* **Eredmények korlát**. A portál által visszaadott eredmények körülbelül 10 KB-os sorok korlátozva van. Figyelmeztetést jeleníti meg, ha meghaladja a lépjen. Ha ez előfordul, a tábla az eredmények rendezéséhez nem mindig, minden a tényleges első vagy utolsó eredmények megjelenítése. 
+* **Eredmények korlát**. Az eredmények a portál által visszaadott sorain körülbelül 10 k korlátozva van. Figyelmeztetés látható, ha haladnak át a korlátot. Ha ez történik, a táblázatban az eredmények rendezése nem mindig jelennek meg, az összes tényleges első vagy utolsó eredmény. 
 
-    Tanácsos elérte-e a korlát elkerülése érdekében. Az idő a tartomány szűrővel, vagy használjon operátorok például:
+    Hasznos lehet, hogy elkerülje a korlátot. Az Időszűrő címtartományt használja, vagy operátorok:
 
-  * [TOP 100 alapján időbélyeg](https://docs.loganalytics.io/docs/Language-Reference/Tabular-operators/top-operator) 
+  * [az első 100-tárhelyek időbélyegző szerint](https://docs.loganalytics.io/docs/Language-Reference/Tabular-operators/top-operator) 
   * [100 igénybe](https://docs.loganalytics.io/docs/Language-Reference/Tabular-operators/take-operator)
-  * [Összefoglalója ](https://docs.loganalytics.io/docs/Language-Reference/Tabular-operators/summarize-operator) 
-  * [Ha időbélyeg > ago(3d)](https://docs.loganalytics.io/docs/Language-Reference/Tabular-operators/where-operator)
+  * [Összegzés ](https://docs.loganalytics.io/docs/Language-Reference/Tabular-operators/summarize-operator) 
+  * [ahol időbélyeg > ago(3d)](https://docs.loganalytics.io/docs/Language-Reference/Tabular-operators/where-operator)
 
-(Több mint 10 KB-os sor szeretné? Érdemes lehet [a folyamatos exportálás](app-insights-export-telemetry.md) helyette. Elemzés készült elemzés, nem pedig nyers adatok lekérése során.)
+(Több mint 10 k sorokat szeretne? Fontolja meg [folyamatos exportálás](app-insights-export-telemetry.md) helyette. Analytics készült elemzés, nem pedig nyers adatok beolvasása során.)
 
 ## <a name="diagrams"></a>Diagramok
-Válassza ki a kívánt diagram típusát:
+Válassza ki a diagram szeretné típusát:
 
-![Válassza ki a diagram típusát](./media/app-insights-analytics-using/230.png)
+![A diagram típusának kiválasztása](./media/app-insights-analytics-using/230.png)
 
-Ha rendelkezik a megfelelő típusú több oszlopot, kiválaszthatja az x és y-tengelyek és dimenziókat osztani az eredményeket tartalmazó oszlop.
+Ha több oszlopot a jobb oldali típusú, kiválaszthatja az x és y tengellyel és dimenziók felosztása által az eredményeket tartalmazó oszlop.
 
-Alapértelmezés szerint eredmények kezdetben táblázatként jelenik meg, és manuálisan jelölje ki a diagramot. De használhatja a [irányelv leképezési](https://docs.loganalytics.io/docs/Language-Reference/Tabular-operators/render-operator) egy lekérdezést a diagram kiválasztásához végén.
+Alapértelmezés szerint eredmény kezdetben látható táblaként, és manuálisan válassza ki a diagramon. Is használhatja, de a [irányelv render](https://docs.loganalytics.io/docs/Language-Reference/Tabular-operators/render-operator) válassza ki a diagram lekérdezés végén.
 
-### <a name="analytics-diagnostics"></a>Elemzés diagnosztika
-
-
-Egy timechart a hirtelen csúcs vagy lépése az adatokat, ha megjelenik a kijelölt pont a sor. Ez azt jelzi, hogy elemzés diagnosztika észlelt a hirtelen módosítás kiszűrhetők tulajdonságok kombinációja. Kattintson a további információkhoz juthat a szűrőre, illetve a jelenik meg a szűrt verzió pontra. Ez lehet, hogy könnyebben azonosíthassa a módosítás okáról. 
-
-[További információ az elemzés diagnosztika](app-insights-analytics-diagnostics.md)
+### <a name="analytics-diagnostics"></a>Analytics-diagnosztika
 
 
-![Elemzés diagnosztika](./media/app-insights-analytics-using/analytics-diagnostics.png)
+A idődiagramját van egy hirtelen megugrás vagy a lépés az adatok jelenhet meg, egy kijelölt pont a sor. Ez azt jelzi, hogy Analytics diagnosztikai azonosította szűrje ki a hirtelen módosítás tulajdonságok kombinációja. Kattintson a pont, a szűrő a részletekért és szűrt verzió megtekintéséhez. Ez segíthet azonosítani, hogy mi okozta, hogy a módosítás. 
+
+[További információ az Analytics-diagnosztika](app-insights-analytics-diagnostics.md)
+
+
+![Analytics-diagnosztika](./media/app-insights-analytics-using/analytics-diagnostics.png)
 
 ## <a name="pin-to-dashboard"></a>Rögzítés az irányítópulton
-A diagram vagy a tábla egyik rögzíthető a [irányítópultok megosztott](app-insights-dashboards.md) -kattintson a PIN-kódot. 
+Kitűzheti a diagram vagy a táblát egy a [megosztott irányítópultokat](app-insights-dashboards.md) – egyszerűen kattintson a PIN-kódot. 
 
 ![Kattintson a PIN-kód](./media/app-insights-analytics-using/pin-01.png)
 
-Ez azt jelenti, hogy elhelyezett együtt segítenek a teljesítmény vagy a webszolgáltatások használatát az irányítópultot, megadható a más metrikákkal együtt túl összetett elemzést. 
+Ez azt jelenti, hogy helyezett együtt egy irányítópulton megfigyelheti a teljesítmény vagy a webszolgáltatások használatát, megadhatja a más metrikákkal együtt meglehetősen összetett elemzésére. 
 
-Rögzítheti az irányítópulton, tábla-e azt négy vagy kevesebb oszlopot. Csak az első hét sorok jelennek meg.
+Egy táblát az irányítópultra, rögzítheti, így ha négy vagy kevesebb oszlopot. Csak a felső hét sorok jelennek meg.
 
 ### <a name="dashboard-refresh"></a>Irányítópult frissítése
-A diagram az irányítópulton rögzítette által futtatja újból a lekérdezést körülbelül óránként automatikusan frissül. A frissítés gombra is kattinthat.
+A diagram az irányítópulton rögzített futtatásával újból a lekérdezést körülbelül óránként automatikusan frissülnek. A frissítés gombra is kattinthat.
 
 ### <a name="automatic-simplifications"></a>Automatikus egyszerűbb
 
-Bizonyos egyszerűbb diagram is vonatkozik, amikor irányítópulton rögzítheti.
+Bizonyos egyszerűbb lépnek érvénybe a diagram rögzítése az irányítópultra.
 
-**Idő korlátozás:** lekérdezések korlátozódnak automatikusan az elmúlt 14 napban. A hatás megegyezik, ha a lekérdezésben `where timestamp > ago(14d)`.
+**Korlátozás ideje:** lekérdezések korlátozódnak automatikusan az elmúlt 30 napban. A hatás megegyezik, ha a lekérdezésben `where timestamp > ago(30d)`.
 
-**Count korlátozás bin:** nagy mennyiségű diszkrét bins (általában a sávdiagram) rendelkező diagram megjelenítése, ha a kisebb ki van töltve bins automatikusan vannak csoportosítva pedig egyetlen "egyéb" bin. Ha például a lekérdezés:
+**Bin száma korlátozás:** diszkrét bins (általában egy sávdiagram) sok rendelkező diagram megjelenítése, ha a kevésbé feltöltött bins automatikusan csoportosítva vannak benne egyetlen "egyéb" bin. Ha például a lekérdezés:
 
     requests | summarize count_search = count() by client_CountryOrRegion
 
-így néz Analytics:
+az elemzések a következőhöz hasonló:
 
-![A diagramon az hosszú utóhívás](./media/app-insights-analytics-using/pin-07.png)
+![Hosszú tollal mutató részletes diagram](./media/app-insights-analytics-using/pin-07.png)
 
-de ha irányítópulton rögzítheti, így néz:
+de irányítópulthoz rögzít, amikor nézhet ki:
 
-![A diagramon az korlátozott bins](./media/app-insights-analytics-using/pin-08.png)
+![A korlátozott bins mutató részletes diagram](./media/app-insights-analytics-using/pin-08.png)
 
 ## <a name="export-to-excel"></a>Exportálás Excelbe
-A lekérdezés futtatása után letölthet egy CSV-fájlt. Kattintson a **exportálása Excel**.
+A lekérdezés futtatása után letölthet egy .csv-fájlba. Kattintson a **exportálni, az Excel**.
 
 ## <a name="export-to-power-bi"></a>Power BI-exportálás
-A kurzor elhelyezése egy lekérdezésben, és válassza a **exportálásához a Power BI**.
+Helyezze a kurzort egy lekérdezést, és válassza a **exportálása a Power BI**.
 
-![A Power bi-bA Analytics exportálása](./media/app-insights-analytics-using/240.png)
+![Analytics exportálhat a Power bi-bA](./media/app-insights-analytics-using/240.png)
 
-A lekérdezés futtatása a Power bi-ban. Beállíthatja úgy, hogy az ütemezés szerint frissítse.
+A lekérdezés futtatása a Power bi-ban. Beállíthatja, hogy az ütemezés szerint frissítse.
 
-A Power BI irányítópultjai összefogására olyan adatokat különböző forrásokból hozhat létre.
+A Power BI-jal, amelyek egyesítik a adatokat a különféle forrásokból származó irányítópultokat hozhat létre.
 
-[További információ a Power bi-ban való exportáláshoz](app-insights-export-power-bi.md)
+[További tudnivalók a Power bi-ban való exportálás](app-insights-export-power-bi.md)
 
 ## <a name="deep-link"></a>Áruházra mutató mélyhivatkozás
 
-Szerezzen be egy hivatkozást a **exportálás megosztás hivatkozás** , amely egy másik felhasználó is küldhet. Ha a felhasználó rendelkezik [hozzáférés az erőforráscsoportba](app-insights-resources-roles-access-control.md), a lekérdezés megnyílik az elemzés felhasználói felületén.
+Szerezzen be egy hivatkozást a **, exportálási és megosztási hivatkozás** , melyet elküldhet egy másik felhasználónak. Ha a felhasználó rendelkezik [hozzáférés az erőforráscsoporthoz](app-insights-resources-roles-access-control.md), a lekérdezés a Analytics felhasználói felület nyílik meg.
 
-(A hivatkozás a lekérdezés szövegének után jelenik meg "? q =", gzip tömörített és base-64 kódolású. Kód létrehozásához adja meg a felhasználóknak mélyhivatkozással lehet írni. Azonban az ajánlott módszer kódból Analytics futtatásához segítségével el a [REST API](https://dev.applicationinsights.io/).)
+(A lekérdezés szövege megjelenik a hivatkozással után "? a q =", tömörítése a gzip és base-64 kódolású. Felhasználók számára biztosított mélyhivatkozások létrehozása kód is írható. Azonban az ajánlott módszer a kódból elemzések futtatására van használatával a [REST API-val](https://dev.applicationinsights.io/).)
 
 
 ## <a name="automation"></a>Automation
@@ -194,33 +194,33 @@ Használja a [Data Access REST API](https://dev.applicationinsights.io/) elemzé
 curl "https://api.applicationinsights.io/beta/apps/DEMO_APP/query?query=requests%7C%20where%20timestamp%20%3E%3D%20ago(24h)%7C%20count" -H "x-api-key: DEMO_KEY"
 ```
 
-Ellentétben a Analytics felhasználói felületén a REST API nem automatikusan hozzáadják a Timestamp típusú korlátozás a lekérdezések. Ne felejtse el, adja hozzá a saját where záradék, hatalmas válaszok megakadályozása érdekében.
+Ellentétben a Analytics felhasználói felületén a REST API nem adja hozzá automatikusan bármely időbélyeg korlátozás a lekérdezések. Ne felejtse el hozzáadni a saját where záradék, első hatalmas válaszok elkerülése érdekében.
 
 
 
 ## <a name="import-data"></a>Adatok importálása
 
-Adatokat importálhat egy CSV-fájl. A rendszer egy tipikus használati csatlakozhat a a telemetriai adatokból táblákkal statikus adatok. 
+Adatokat importálhat egy CSV-fájl. Egy tipikus használati a rendszer importálja a statikus adatok, amelyek csatlakozhat a telemetriai adatokból származó táblákkal. 
 
-Hitelesített felhasználók a telemetriai adatokat egy aliast vagy rejtjelezett azonosító által azonosítható, ha például sikerült egy táblázat, amely leképezhető aliasok valódi nevét importálni. A – kéréstelemetria illesztés elvégzésével felhasználók azonosíthatja az Analytics-jelentések a valódi névvel.
+A hitelesített felhasználók a telemetria egy aliast vagy rejtjelezett azonosító alapján azonosítja, ha például sikerült valódi nevét, az aliasokat leképező tábla importálása. A kérelmek telemetriai adatai illesztés elvégzésével felhasználók azonosíthatja az Analytics-jelentések a valódi névvel.
 
-### <a name="define-your-data-schema"></a>Adja meg a Adatséma
+### <a name="define-your-data-schema"></a>Adja meg a sémát
 
-1. Kattintson a **beállítások** (a bal felső), majd **adatforrások**. 
-2. Adjon hozzá egy adatforrást, a következő utasításokat. A rendszer felkéri adja meg az adatokat, amelyek tartalmaznia kell legalább 10 sorok mintáját. Javítsa a sémát.
+1. Kattintson a **beállítások** (a bal felső sarokban), majd **adatforrások**. 
+2. Adjon hozzá egy adatforráshoz, a biztonsági utasítások. A rendszer felkéri az adatokat, ami tartalmaznia kell legalább 10 sort egy mintát adja meg. Majd javítsa ki a sémát.
 
-Ez határozza meg az adatforrás, amelyet a későbbiekben is használhat egyes táblák importálásához.
+Ez meghatározza az adatforrás, amely ezután használhatja az egyes táblák importálása.
 
-### <a name="import-a-table"></a>A tábla importálása
+### <a name="import-a-table"></a>Tábla importálása
 
 1. Nyissa meg az adatforrása definíciója a listából.
-2. Kattintson a "Feltöltés lehetőségre", és kövesse az utasításokat a táblázat feltöltéséhez. Ebbe beletartozik a REST API hívása, és így könnyen automatizálásához. 
+2. Kattintson a "Feltöltés" elemre, és kövesse az utasításokat a táblázat feltöltéséhez. Ebbe beletartozik egy REST API-hívást, és így egyszerűen automatizálható. 
 
-A tábla már elemzési lekérdezések használható. Megjelenik az elemzés 
+A tábla már elérhető az elemzési lekérdezések. Analytics meg fog jelenni 
 
 ### <a name="use-the-table"></a>A táblázat
 
-Tegyük fel, az adatforrása definíciója nevezik `usermap`, és arról, hogy rendelkezik-e két mező `realName` és `user_AuthenticatedId`. A `requests` is táblához nevű mező `user_AuthenticatedId`, így egyszerűen csatlakoztassa azokat:
+Most tegyük fel, az adatforrása definíciója neve `usermap`, és arról, hogy vannak-e két mezőt `realName` és `user_AuthenticatedId`. A `requests` tábla szintén tartalmaz egy mezőnév `user_AuthenticatedId`, így egyszerűen össze őket:
 
 ```AIQL
 
@@ -230,9 +230,9 @@ Tegyük fel, az adatforrása definíciója nevezik `usermap`, és arról, hogy r
 ```
 Az eredményül kapott tábla kérelmek rendelkezik egy olyan további oszlop `realName`.
 
-### <a name="import-from-logstash"></a>Importálás a LogStash
+### <a name="import-from-logstash"></a>Importálás a Logstashből
 
-Ha [LogStash](https://www.elastic.co/guide/en/logstash/current/getting-started-with-logstash.html), Analytics segítségével lekérdezni a naplókat. Használja a [beépülő modul, amely adatok csővezeték elemzés be](https://github.com/Microsoft/logstash-output-application-insights). 
+Ha [LogStash](https://www.elastic.co/guide/en/logstash/current/getting-started-with-logstash.html), Analytics használatával lekérdezheti a naplókat. Használja a [beépülő modul, amely átadja az adatokat analyticsbe](https://github.com/Microsoft/logstash-output-application-insights). 
 
 ## <a name="video"></a>Videó
 

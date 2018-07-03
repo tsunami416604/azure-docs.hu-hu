@@ -1,7 +1,7 @@
 ---
-title: Nyelvi ismertetése (LUIS) régiók |} Microsoft Docs
+title: Language Understanding (LUIS) régiók |} A Microsoft Docs
 titleSuffix: Azure
-description: Ez a cikk a LUIS webhely, az Azure-előfizetések és a globális régiókban LUIS régiók listáját tartalmazza.
+description: Ez a cikk a LUIS-régiók, a LUIS webhely, az Azure-előfizetések és a régiók listáját tartalmazza.
 services: cognitive-services
 author: v-geberr
 manager: kamran.iqbal
@@ -10,19 +10,19 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 03/19/2018
 ms.author: v-geberr
-ms.openlocfilehash: 86a20770178707f72cf2991ca08b6b98eaeaf0cf
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: d81fbc03689788066fb9275523a5e96647117c58
+ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36237115"
+ms.lasthandoff: 07/02/2018
+ms.locfileid: "37346452"
 ---
-# <a name="regions-and-keys"></a>Régiók és kulcsok
+# <a name="regions-and-keys"></a>Régiók és a kulcsok
 
-A régió, ahol a LUIS alkalmazás közzététele a régió vagy az Azure-portálon az Azure LUIS végpontkulcs létrehozásakor megadott felel meg. Ha Ön [alkalmazások közzététele](./PublishApp.md), LUIS automatikusan létrehozza a kulcshoz tartozó régió egy végponti URL-címe. Egy LUIS alkalmazás közzététele egynél több régióban, régiónként legalább egy kulcs szükséges. 
+A régió, amelyben a LUIS-alkalmazás közzététele a régiónak vagy az Azure Portalon egy Azure LUIS végponti kulcs létrehozásakor megadott felel meg. Ha Ön [alkalmazások közzététele](./luis-how-to-publish-app.md), LUIS automatikusan előállítja a kulcsot az ahhoz tartozó régiót-végpont URL-címe. A LUIS alkalmazás közzététele több régióban, régiónként legalább egy kulcs szükséges. 
 
-## <a name="luis-website"></a>LUIS webhely
-Nincsenek három LUIS webhelyek, régió alapján. Szerzői kell, és ugyanabban a régióban közzététele. 
+## <a name="luis-website"></a>A LUIS-webhely
+Nincsenek három LUIS webhelyek, régió alapján. Hozhat létre és közzététele ugyanabban a régióban kell. 
 
 |LUIS|Régió|
 |--|--|
@@ -33,11 +33,11 @@ Nincsenek három LUIS webhelyek, régió alapján. Szerzői kell, és ugyanabban
 
 ## <a name="publishing-regions"></a>Közzétételi régiók
 
-A létrehozott LUIS alkalmazások https://www.luis.ai kivételével minden végpontok teheti közzé a [Európai](#publishing-to-europe) és [ausztrál](#publishing-to-australia) régiók. 
+A létrehozott LUIS-alkalmazások https://www.luis.ai kivételével az összes végpontok teheti közzé a [Európai](#publishing-to-europe) és [ausztrál](#publishing-to-australia) régióban. 
 
-A szerzői műveletek terület-alkalmazás csak a megfelelő tehetők közzé régió közzététele. Ha az alkalmazás jelenleg nem megfelelő a szerzői műveletekhez régióban, az alkalmazás exportálása, és importálja a fájlt a közzétételi régió megfelelő szerzői műveletek terület. 
+A szerzői műveletek terület app csak közzétehető egy megfelelő régió közzététele. Ha az alkalmazás jelenleg a megfelelő szerzői régióban, alkalmazást, és importálja azt a megfelelő szerzői régió a közzétételi régiója. 
 
- Globális régió | Szerzői műveletek terület | Közzététel & régió lekérdezése   |   LUIS webhely | Végpont URL-formátum   |
+ Globális régió | Szerzői műveletek terület | Közzétételi & régió lekérdezése   |   A LUIS-webhely | Végpont URL-formátum   |
 |-----|------|------|------|------|
 | Ázsia | USA nyugati régiója| Kelet-Ázsia     | [www.Luis.ai][www.luis.ai] |  https://eastasia.api.cognitive.microsoft.com/luis/v2.0/apps/YOUR-APP-ID?subscription-key=YOUR-SUBSCRIPTION-KEY   |
 | Ázsia | USA nyugati régiója| Délkelet-Ázsia     | [www.Luis.ai][www.luis.ai] |   https://southeastasia.api.cognitive.microsoft.com/luis/v2.0/apps/YOUR-APP-ID?subscription-key=YOUR-SUBSCRIPTION-KEY   |
@@ -54,16 +54,16 @@ A szerzői műveletek terület-alkalmazás csak a megfelelő tehetők közzé r�
 
 ## <a name="publishing-to-europe"></a>Közzététel az Európa
 
-Az Európai régiók közzétételéhez hoz létre LUIS alkalmazások https://eu.luis.ai csak. Ha úgy próbálja közzétenni bárhol más kulccsal Európa régióban, LUIS figyelmeztető üzenetet jeleníti meg. Ehelyett használjon https://eu.luis.ai. Létrehozás dátuma: LUIS alkalmazások [ https://eu.luis.ai ] [ eu.luis.ai] nem automatikusan át más régiókban. Exportálja és importálja a LUIS app ahhoz, hogy telepítse át.
+Tesz közzé, az Európai régiókban, létre kell hozni a LUIS Apps alkalmazások https://eu.luis.ai csak. Ha közzé bárhol ellenkező esetben az Európai régióban a kulcs használatával kísérli meg, LUIS figyelmeztető üzenetet jeleníti meg. Ehelyett használjon https://eu.luis.ai. Hozza létre a LUIS-alkalmazások [ https://eu.luis.ai ] [ eu.luis.ai] nem automatikusan át más régiókban. Exportálja és importálja a LUIS-alkalmazásokon ahhoz, hogy telepítse át.
 
 ## <a name="publishing-to-australia"></a>Közzététel az Ausztrália
 
-Az ausztrál régiók közzétételéhez hoz létre LUIS alkalmazások https://au.luis.ai csak. Ha úgy próbálja közzétenni bárhol általi használata a kulcs az ausztrál régióban, LUIS figyelmeztető üzenetet jeleníti meg. Ehelyett használjon https://au.luis.ai. Létrehozás dátuma: LUIS alkalmazások [ https://au.luis.ai ] [ au.luis.ai] nem automatikusan át más régiókban. Exportálja és importálja a LUIS app ahhoz, hogy telepítse át.
+Az ausztráliai régiókban való közzétételéhez, LUIS alkalmazások létrehozása, https://au.luis.ai csak. Ha közzé bárhol ellenkező esetben az ausztráliai régióban a kulcs használatával kísérli meg, LUIS figyelmeztető üzenetet jeleníti meg. Ehelyett használjon https://au.luis.ai. Hozza létre a LUIS-alkalmazások [ https://au.luis.ai ] [ au.luis.ai] nem automatikusan át más régiókban. Exportálja és importálja a LUIS-alkalmazásokon ahhoz, hogy telepítse át.
 
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Előre elkészített szervezetek-referencia](./luis-reference-prebuilt-entities.md)
+> [Előre összeállított entitások referenciája](./luis-reference-prebuilt-entities.md)
 
  [www.luis.ai]: https://www.luis.ai
  [au.luis.ai]: https://au.luis.ai

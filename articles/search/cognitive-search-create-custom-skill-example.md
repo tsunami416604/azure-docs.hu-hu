@@ -1,72 +1,79 @@
 ---
-title: 'Példa: Hozzon létre egy egyéni szakértelem kognitív keresési folyamat (Azure Search) |} Microsoft Docs'
-description: Azt mutatja be, a feldolgozási sor az Azure Search indexelő kognitív keresés leképezve egyéni szakértelem szöveg állomásneveket, az API használatával.
+title: 'Példa: Egyéni műveleteket létrehozása a kognitív keresés folyamatban (az Azure Search) |} A Microsoft Docs'
+description: Azt mutatja be, a szöveg lefordítása API-val az egyéni ismeretek egy folyamatot az Azure Search szolgáltatásban az indexelés kognitív keresés leképezve.
 manager: pablocas
 author: luiscabrer
+services: search
 ms.service: search
 ms.devlang: NA
 ms.topic: conceptual
-ms.date: 05/01/2018
+ms.date: 06/29/2018
 ms.author: luisca
-ms.openlocfilehash: 056cff192b25068fa2e895fd46d143a834b7af0b
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: dd9bb4cb2622651c2d1979166ad838b3b337d583
+ms.sourcegitcommit: 4597964eba08b7e0584d2b275cc33a370c25e027
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34641084"
+ms.lasthandoff: 07/02/2018
+ms.locfileid: "37342932"
 ---
-# <a name="example-create-a-custom-skill-using-the-text-translate-api"></a>Példa: Hozzon létre egy egyéni szakértelem, a szöveg állomásneveket, az API-val
+# <a name="example-create-a-custom-skill-using-the-text-translate-api"></a>Példa: Hozzon létre egy egyéni ismeretek a szöveg lefordítása API-val
 
-Ebben a példában az útmutató egy webes API egyéni szakértelem, amely elfogadja a szöveg bármilyen nyelven, és az eszköz az angol létrehozásához. A példa egy [Azure-függvény](https://azure.microsoft.com/services/functions/) burkolása a [fordítása szöveg API](https://azure.microsoft.com/services/cognitive-services/translator-text-api/) , hogy megvalósítja az egyéni szakértelem illesztőfelületet.
+Ebben a példában megtudhatja, hogyan hozhat létre egy webes API-t egyéni ismeretek, amely elfogadja a szöveg bármilyen nyelven, és lefordítja azt angolra. A példában egy [Azure-függvény](https://azure.microsoft.com/services/functions/) burkolása a [fordítása Text API](https://azure.microsoft.com/services/cognitive-services/translator-text-api/) úgy, hogy az egyéni ismeretek felületet valósítja meg.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-+ További információ a [egyéni szakértelem felület](cognitive-search-custom-skill-interface.md) a következő cikket: Ha nem ismeri a bemeneti/kimeneti felületet, amely egy egyéni szakértelem meg kell valósítania.
++ Olvassa el [egyéni ismeretek felület](cognitive-search-custom-skill-interface.md) című cikket, ha nem ismeri a bemeneti és kimeneti felület, amely egy egyéni függetlenül kell megvalósítania.
 
-+ [Iratkozzon fel a fordító szöveg API](../cognitive-services/translator/translator-text-how-to-signup.md), és felhasználhatják az API-kulcs beszerzése.
++ [Iratkozzon fel a Translator Text API](../cognitive-services/translator/translator-text-how-to-signup.md), és felhasználni, API-kulcs beszerzése.
 
-+ Telepítés [Visual Studio 2017 verzió 15.5](https://www.visualstudio.com/vs/) vagy újabb, beleértve az Azure fejlesztési munkaterhelés.
++ Telepítés [Visual Studio 2017 15.5 verzió](https://www.visualstudio.com/vs/) vagy újabb, mint például az Azure-fejlesztési számítási feladatot.
 
 ## <a name="create-an-azure-function"></a>Azure-függvény létrehozása
 
-Bár ebben a példában egy Azure-függvény egy webes API-t használ, nincs szükség.  Mindaddig, amíg megfelel a [kognitív szakértelem követelményei csatoló](cognitive-search-custom-skill-interface.md), a módszert választja, nincs jelentősége. Az Azure Functions, azonban könnyen hozzon létre egy egyéni szakértelem.
+Bár ebben a példában egy Azure-függvényt használ a webes API-k üzemeltetéséhez, ennek kitöltése nem kötelező.  Mindaddig, amíg megfelel a [cognitive szakértelem követelményei csatoló](cognitive-search-custom-skill-interface.md), a módszert választja, nincs jelentősége. Az Azure Functions, azonban könnyen hozzon létre egy egyéni ismeretek.
 
 ### <a name="create-a-function-app"></a>Függvényalkalmazás létrehozása
 
-1. A Visual Studio válassza **új** > **projekt** a Fájl menüből.
+1. A Visual Studióban válassza ki a **új** > **projekt** a Fájl menüből.
 
-1. Válassza ki az új projekt párbeszédpanel **telepített**, bontsa ki a **Visual C#** > **felhő**, jelölje be **Azure Functions**, adjon meg egy A projekt neve, és válassza ki **OK**. A függvényalkalmazás nevének egy C#-névtérként is érvényesnek kell lennie, ezért ne használjon aláhúzásjeleket, kötőjeleket vagy más nem alfanumerikus karaktereket.
+1. Új projekt párbeszédpanelen válassza ki a **telepített**, bontsa ki a **Visual C#** > **felhőalapú**, jelölje be **Azure Functions**, adjon meg egy A projekt nevét, és válassza ki **OK**. A függvényalkalmazás nevének egy C#-névtérként is érvényesnek kell lennie, ezért ne használjon aláhúzásjeleket, kötőjeleket vagy más nem alfanumerikus karaktereket.
 
-1. Jelölje ki a kell **HTTP-eseményindítóval**
+1. Válassza ki a kívánt **HTTP-eseményindító**
 
-1. A Storage-fiókot, előfordulhat, hogy válassza **nincs**, mert nincs szükség minden tárterület ennél a függvénynél.
+1. A Storage-fiókot választ, kiválaszthat **None**, minden tároló nem szükséges ezt a funkciót.
 
-1. Válassza ki **OK** a függvény létrehozásához a projekt és HTTP indított függvény.
+1. Válassza ki **OK** a függvény létrehozásához projekt és a HTTP által aktivált függvény.
 
-### <a name="modify-the-code-to-call-the-translate-cognitive-service"></a>A hívó fordítása kognitív kód módosítása
+### <a name="modify-the-code-to-call-the-translate-cognitive-service"></a>A kód fordítása a Cognitive Services meghívásához módosítása
 
 A Visual Studio létrehoz egy projektet, benne egy olyan osztállyal, amely tartalmazza a kiválasztott függvénytípus sablonkódját. A metódus *FunctionName* attribútuma adja meg a függvény nevét. A *HttpTrigger* attribútum adja meg, hogy a függvényt egy HTTP-kérelem aktiválja.
 
-Most, cserélje le a fájl tartalma mindegyikét *Function1.cs* az alábbi kódra:
+Most cserélje le az összes, a fájl tartalmának *Function1.cs* a következő kóddal:
 
 ```csharp
+using System;
+using System.Net.Http;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 using System.IO;
+using System.Text;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Azure.WebJobs;
 using Microsoft.Azure.WebJobs.Extensions.Http;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Azure.WebJobs.Host;
 using Newtonsoft.Json;
-using System.Net.Http;
-using System.Collections.Generic;
-using System.Threading.Tasks;
-using System.Text;
 
 namespace TranslateFunction
 {
     // This function will simply translate messages sent to it.
     public static class Function1
     {
+        static string path = "https://api.cognitive.microsofttranslator.com/translate?api-version=3.0";
+
+        // NOTE: Replace this example key with a valid subscription key.
+        static string key = "<enter your api key here>";
+
         #region classes used to serialize the response
         private class WebApiResponseError
         {
@@ -92,21 +99,16 @@ namespace TranslateFunction
         }
         #endregion
 
-
-        /// <summary>
-        /// Note that this function can translate up to 1000 characters. If you expect to need to translate more characters, use 
-        /// the paginator skill before calling this custom enricher
-        /// </summary>
         [FunctionName("Translate")]
         public static IActionResult Run(
-            [HttpTrigger(AuthorizationLevel.Function, "post", Route = null)]HttpRequest req, 
+            [HttpTrigger(AuthorizationLevel.Function, "post", Route = null)]HttpRequest req,
             TraceWriter log)
         {
             log.Info("C# HTTP trigger function processed a request.");
 
             string recordId = null;
             string originalText = null;
-            string originalLanguage = null;
+            string toLanguage = null;
             string translatedText = null;
 
             string requestBody = new StreamReader(req.Body).ReadToEnd();
@@ -125,24 +127,15 @@ namespace TranslateFunction
 
             recordId = data?.values?.First?.recordId?.Value as string;
             originalText = data?.values?.First?.data?.text?.Value as string;
-            originalLanguage = data?.values?.First?.data?.language?.Value as string;
+            toLanguage = data?.values?.First?.data?.language?.Value as string;
 
             if (recordId == null)
             {
                 return new BadRequestObjectResult("recordId cannot be null");
             }
 
-            // Only translate records that actually need to be translated. 
-            if (!originalLanguage.Contains("en"))
-            {
-                translatedText = TranslateText(originalText, "en-us").Result;
-            }
-            else
-            {
-                // text is already in English.
-                translatedText = originalText;
-            }
-
+            translatedText = TranslateText(originalText, toLanguage).Result;
+        
             // Put together response.
             WebApiResponseRecord responseRecord = new WebApiResponseRecord();
             responseRecord.data = new Dictionary<string, object>();
@@ -153,59 +146,53 @@ namespace TranslateFunction
             response.values = new List<WebApiResponseRecord>();
             response.values.Add(responseRecord);
 
-            return (ActionResult)new OkObjectResult(response); 
+            return (ActionResult)new OkObjectResult(response);
         }
+
 
         /// <summary>
         /// Use Cognitive Service to translate text from one language to antoher.
         /// </summary>
-        /// <param name="myText">The text to translate</param>
-        /// <param name="destinationLanguage">The language you want to translate to.</param>
+        /// <param name="originalText">The text to translate.</param>
+        /// <param name="toLanguage">The language you want to translate to.</param>
         /// <returns>Asynchronous task that returns the translated text. </returns>
-        async static Task<string> TranslateText(string myText, string destinationLanguage)
+        async static Task<string> TranslateText(string originalText, string toLanguage)
         {
-            string host = "https://api.microsofttranslator.com";
-            string path = "/V2/Http.svc/Translate";
+            System.Object[] body = new System.Object[] { new { Text = originalText } };
+            var requestBody = JsonConvert.SerializeObject(body);
 
-            // NOTE: Replace this example key with a valid subscription key.
-            string key = "064d8095730d4a99b49f4bcf16ac67f8";
+            var uri = $"{path}&to={toLanguage}";
 
-            HttpClient client = new HttpClient();
-            client.DefaultRequestHeaders.Add("Ocp-Apim-Subscription-Key", key);
+            string result = "";
 
-            List<KeyValuePair<string, string>> list = new List<KeyValuePair<string, string>>() {
-                new KeyValuePair<string, string>(myText, "en-us")
-            };
-
-            StringBuilder totalResult = new StringBuilder();
-
-            foreach (KeyValuePair<string, string> i in list)
+            using (var client = new HttpClient())
+            using (var request = new HttpRequestMessage())
             {
-                string uri = host + path + "?to=" + i.Value + "&text=" + System.Net.WebUtility.UrlEncode(i.Key);
+                request.Method = HttpMethod.Post;
+                request.RequestUri = new Uri(uri);
+                request.Content = new StringContent(requestBody, Encoding.UTF8, "application/json");
+                request.Headers.Add("Ocp-Apim-Subscription-Key", key);
 
-                HttpResponseMessage response = await client.GetAsync(uri);
+                var response = await client.SendAsync(request);
+                var responseBody = await response.Content.ReadAsStringAsync();
 
-                string result = await response.Content.ReadAsStringAsync();
+                dynamic data = JsonConvert.DeserializeObject(responseBody);
+                result = data?.First?.translations?.First?.text?.Value as string;
 
-                // Parse the response XML
-                System.Xml.XmlDocument xmlResponse = new System.Xml.XmlDocument();
-                xmlResponse.LoadXml(result);
-                totalResult.Append(xmlResponse.InnerText); 
             }
-
-            return totalResult.ToString();
+            return result;
         }
     }
 }
 ```
 
-Ügyeljen arra, hogy adja meg a saját *kulcs* értéket a *TranslateText* metódus portáltól, amikor regisztrál az a szöveg fordítása API kulcs alapján.
+Ügyeljen arra, hogy adja meg a saját *kulcs* értékét a *TranslateText* metódus a fordítás API való regisztráláskor kapott kulcs alapján.
 
-Ebben a példában egy egyszerű enricher, amely csak akkor működik a több rekordot egyszerre. Ez a tény válik fontos később, a kötegméret a skillset beállításakor.
+Ebben a példában egy egyszerű enricher, amely egyszerre csak egy rekordot a működik. Ez a tény akkor válik fontossá, később, a kötegméret készségeitől beállításakor.
 
-## <a name="test-the-function-from-visual-studio"></a>A Visual Studio eszközből a függvény tesztelése
+## <a name="test-the-function-from-visual-studio"></a>A Visual Studióból a függvény tesztelése
 
-Nyomja le az **F5** a program és a vizsgálati függvény viselkedéseket futtatásához. Postman vagy a Fiddler segítségével adja ki az alábbihoz hasonló hívása:
+Nyomja meg **F5** program és tesztelési függvény viselkedések futtatásához. Ebben az esetben az alábbi függvény segítségével egy angol, spanyol nyelven használható szövegfordításra. Postman vagy a Fiddler segítségével ki egy hívást, mint például az alábbi képen látható:
 
 ```http
 POST https://localhost:7071/api/Translate
@@ -219,14 +206,14 @@ POST https://localhost:7071/api/Translate
             "data":
             {
                "text":  "Este es un contrato en Inglés",
-               "language": "es"
+               "language": "en"
             }
         }
    ]
 }
 ```
 ### <a name="response"></a>Válasz
-A következőhöz hasonló választ kell megjelennie:
+Az alábbi példához hasonló választ kell megjelennie:
 
 ```json
 {
@@ -247,20 +234,20 @@ A következőhöz hasonló választ kell megjelennie:
 
 Ha elégedett a függvény működése, közzéteheti azt.
 
-1. A **Megoldáskezelőben** kattintson a jobb gombbal a projektre, és válassza a **Publish** (Közzététel) lehetőséget. Válasszon **új** > **közzététele**.
+1. A **Megoldáskezelőben** kattintson a jobb gombbal a projektre, és válassza a **Publish** (Közzététel) lehetőséget. Válasszon **létrehozása új** > **közzététele**.
 
-1. Ha a Visual Studio már Azure-fiókja még nem kapcsolódik, válassza ki a **fiók hozzáadása...**
+1. Ha a Visual Studio még nem csatlakoztatta az Azure-fiókjába, válassza ki a **-fiók hozzáadása...**
 
-1. Kövesse a képernyőn megjelenő kéri. Az Azure-fiók, az erőforráscsoport, a üzemeltetési terv és a használni kívánt tárfiókot meg kell adnia. Ha még nem rendelkezik ezek létrehozhat egy új erőforráscsoportot, egy új üzemeltetési terv és a storage-fiók. Ha elkészült, válassza ki a **létrehozása**
+1. Kövesse a képernyőn megjelenő utasításokat. A rendszer felkéri az Azure-fiók, az erőforráscsoport, a szolgáltatási csomag és a használni kívánt tárfiókot adjon meg. Ha még nincs ilyen létrehozhat egy új erőforráscsoportot, egy új szolgáltatási csomagot és egy tárfiókot. Amikor végzett, válassza ki a **létrehozása**
 
-1. A telepítés befejezése után jegyezze fel a webhely URL-címe. A cím, a függvény alkalmazás az Azure-ban. 
+1. Az üzembe helyezés befejezése után jegyezze fel a webhely URL-címe. Az Azure-ban a függvényalkalmazás címe. 
 
-1. Az a [Azure-portálon](https://portal.azure.com), keresse meg az erőforráscsoportot, és keresse meg a közzétett fordítása függvény. Az a **kezelése** szakaszban megtekintheti az állomások kulcsait. Válassza ki a **másolási** ikonjára a *alapértelmezett* állomás kulcsát.  
+1. Az a [az Azure portal](https://portal.azure.com), keresse meg az erőforráscsoportot, és keresse meg a közzétett fordítása függvény. Alatt a **kezelés** szakaszban Gazdakulcsok kell megjelennie. Válassza ki a **másolási** ikonjára a *alapértelmezett* állomás kulcsát.  
 
 
 ## <a name="test-the-function-in-azure"></a>A függvény tesztelése az Azure-ban
 
-Most, hogy az alapértelmezett gazdagép kulcs, a függvény tesztelése az alábbiak szerint:
+Most, hogy az alapértelmezett gazdagép kulcs, a függvény tesztelése a következőképpen:
 
 ```http
 POST https://translatecogsrch.azurewebsites.net/api/Translate?code=[enter default host key here]
@@ -274,17 +261,17 @@ POST https://translatecogsrch.azurewebsites.net/api/Translate?code=[enter defaul
             "data":
             {
                "text":  "Este es un contrato en Inglés",
-               "language": "es"
+               "language": "en"
             }
         }
    ]
 }
 ```
 
-Ez a kell létrehoz egy hasonló eredményt korábban látott a funkció a helyi környezetben futtatásakor.
+Ebben a korábban látott a helyi környezetben a függvény futtatásakor egy hasonló eredményt kell hozhatók létre.
 
 ## <a name="connect-to-your-pipeline"></a>A folyamat kapcsolódni
-Most, hogy egy új egyéni szakértelem, hozzáadhatja a skillset. Az alábbi példa bemutatja, hogyan szakértelem hívja. Mivel a szakértelem kötegek nem tud kezelni, vegye fel a Köteg maximális mérete csak utasítás ```1``` küldendő dokumentumok egyenként.
+Most, hogy egy új egyéni ismeretek, adhat hozzá, a képességek alkalmazási lehetőségét. Az alábbi példa bemutatja, hogyan hívhat meg a szakértelem. Szakértelem nem kezeli az kötegekben, mivel a maximális kötegméretet kell csak egy utasítás hozzáadása ```1``` küldése dokumentumok egyenként.
 
 ```json
 {
@@ -303,7 +290,7 @@ Most, hogy egy új egyéni szakértelem, hozzáadhatja a skillset. Az alábbi p�
           },
           {
             "name": "language",
-            "source": "/document/languageCode"
+            "source": "/document/destinationLanguage"
           }
         ],
         "outputs": [
@@ -318,9 +305,9 @@ Most, hogy egy új egyéni szakértelem, hozzáadhatja a skillset. Az alábbi p�
 ```
 
 ## <a name="next-steps"></a>További lépések
-Gratulálunk! Az első egyéni enricher hozott létre. Most követésével ugyanilyen mintájú hozzá a saját egyéni funkciót. 
+Gratulálunk! Az első egyéni enricher hozott létre. Most ugyanezt a mintát adhat hozzá a saját egyéni funkciókat is követheti. 
 
-+ [Egyéni szakértelem hozzáadása egy kognitív keresési folyamat](cognitive-search-custom-skill-interface.md)
-+ [Egy skillset definiálása](cognitive-search-defining-skillset.md)
-+ [Hozzon létre Skillset (REST)](https://docs.microsoft.com/rest/api/searchservice/create-skillset)
-+ [Hogyan bővített mezők](cognitive-search-output-field-mapping.md)
++ [Egy egyéni ismeretek hozzáadása a cognitive search folyamat](cognitive-search-custom-skill-interface.md)
++ [Hogyan képességcsoport megadása](cognitive-search-defining-skillset.md)
++ [Képességcsoport (REST) létrehozása](https://docs.microsoft.com/rest/api/searchservice/create-skillset)
++ [Hogyan hidaljuk mezők leképezése](cognitive-search-output-field-mapping.md)

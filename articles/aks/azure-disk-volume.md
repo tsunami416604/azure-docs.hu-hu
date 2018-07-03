@@ -1,6 +1,6 @@
 ---
-title: Azure-lemezeket használata AKS
-description: Azure-lemezeket használata AKS
+title: Azure-lemezek használata az aks-sel
+description: Azure-lemezek használata az aks-sel
 services: container-service
 author: iainfoulds
 manager: jeconnoc
@@ -9,22 +9,22 @@ ms.topic: article
 ms.date: 05/21/2018
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: cfad5ebd1212df03cee86b71340d8a73c2594f57
-ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
+ms.openlocfilehash: 8aea56017d38b57d36f5f1d42e2d4e9ed1d809e5
+ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37096093"
+ms.lasthandoff: 07/02/2018
+ms.locfileid: "37346093"
 ---
-# <a name="volumes-with-azure-disks"></a>Az Azure-lemezeket kötetek
+# <a name="volumes-with-azure-disks"></a>Az Azure-lemezek kötetek
 
-Tároló-alapú alkalmazások gyakran kell elérni, és egy külső adatmennyiség adatok megőrzéséhez. Azure-lemezeket a külső adattár használható. Ez a cikk adatokat Azure lemezzel Azure Kubernetes szolgáltatás (AKS)-fürtben lévő Kubernetes kötetként.
+Tárolóalapú alkalmazások gyakran kell eléréséhez, és a egy külső adatmennyiség adatok megőrzése. Azure-lemezek a külső adatok tárolását is használható. Ez a cikk részletesen bemutatja, hogyan egy Azure-lemez az Azure Kubernetes Service (AKS)-fürtben Kubernetes kötetként.
 
-Kubernetes köteteken további információkért lásd: [Kubernetes kötetek][kubernetes-volumes].
+A Kubernetes-köteteken további információkért lásd: [Kubernetes kötetek][kubernetes-volumes].
 
-## <a name="create-an-azure-disk"></a>Az Azure lemez létrehozása
+## <a name="create-an-azure-disk"></a>Hozzon létre egy Azure-lemez
 
-Egy Azure által kezelt lemezre Kubernetes kötet csatlakoztatása, mielőtt a lemez már léteznie kell a AKS **csomópont** erőforráscsoportot. Az erőforráscsoport neve az beszerzése a [az erőforrás megjelenítése] [ az-resource-show] parancsot.
+Az Azure által felügyelt lemezt, egy Kubernetes-kötet csatlakoztatása, mielőtt a lemez szerepelniük kell az AKS **csomópont** erőforráscsoportot. Az erőforráscsoport nevét az első a [az resource show] [ az-resource-show] parancsot.
 
 ```azurecli-interactive
 $ az resource show --resource-group myResourceGroup --name myAKSCluster --resource-type Microsoft.ContainerService/managedClusters --query properties.nodeResourceGroup -o tsv
@@ -32,9 +32,9 @@ $ az resource show --resource-group myResourceGroup --name myAKSCluster --resour
 MC_myResourceGroup_myAKSCluster_eastus
 ```
 
-Használja a [az lemez létrehozása] [ az-disk-create] parancsot lemezt az Azure létrehozásához.
+Használja a [az lemez létrehozása] [ az-disk-create] parancsot az Azure-lemez létrehozásához.
 
-Frissítés `--resource-group` az előző lépésben összegyűjtött az erőforráscsoport nevét és `--name` az Ön által választott névre.
+Frissítés `--resource-group` az előző lépésben gyűjtött az erőforráscsoport nevére és `--name` egy Ön által választott nevére.
 
 ```azurecli-interactive
 az disk create \
@@ -44,17 +44,19 @@ az disk create \
   --query id --output tsv
 ```
 
-A lemez létrehozása, a következőhöz hasonló kimenetnek kell megjelennie. Ez az érték használatos, ha a lemez csatlakoztatása Lemezazonosító.
+A lemez létrehozása után az alábbihoz hasonló kimenetnek kell megjelennie. Ez az érték a lemez Azonosítóját, amely használatos, amikor csatlakoztatni a lemezt.
 
 ```console
 /subscriptions/<subscriptionID>/resourceGroups/MC_myAKSCluster_myAKSCluster_eastus/providers/Microsoft.Compute/disks/myAKSDisk
 ```
+> [!NOTE]
+> Azure managed disksbe számlázása Termékváltozat által egy adott méretet. Ezen SKU-k és közé eső 32GiB S4 vagy P4 szintű lemezek 4TiB S50-es vagy P50 lemez. Továbbá, az átviteli sebesség és IOPS-teljesítmény egy prémium szintű felügyelt lemez a Termékváltozat és a példány mérete az AKS-fürt csomópontjainak függ. Lásd: [díjszabás és a felügyelt lemezek teljesítményének][managed-disk-pricing-performance].
 
-## <a name="mount-disk-as-volume"></a>Csatlakoztassa a lemezt kötetként
+## <a name="mount-disk-as-volume"></a>Lemez csatolása kötetként
 
-A kötet konfigurálása a tároló spec csatlakoztassa azokat a pod lemezt az Azure.
+Csatlakoztassa az Azure-lemez be a pod a kötetet a tároló specifikációja konfigurálásával.
 
-Hozzon létre egy új fájlt `azure-disk-pod.yaml` a következő tartalommal. Frissítés `diskName` nevű az újonnan létrehozott lemezt, és `diskURI` lemez azonosítóval. Emellett tekintse meg a `mountPath`, ez az az elérési utat, amelyen a lemezt az Azure a fogyasztanak csatlakoztatva van.
+Hozzon létre egy új fájlt `azure-disk-pod.yaml` a következő tartalommal. Frissítés `diskName` az újonnan létrehozott lemez nevét és `diskURI` lemez azonosítóval. Továbbá jegyezze fel a `mountPath`, azaz az elérési utat, amelyen az Azure-lemez található a pod csatlakoztatva van.
 
 ```yaml
 apiVersion: v1
@@ -76,24 +78,25 @@ spec:
           diskURI: /subscriptions/<subscriptionID>/resourceGroups/MC_myAKSCluster_myAKSCluster_eastus/providers/Microsoft.Compute/disks/myAKSDisk
 ```
 
-Használjon kubectl fogyasztanak létrehozásához.
+A kubectl használatával hozzon létre a pod.
 
 ```azurecli-interactive
 kubectl apply -f azure-disk-pod.yaml
 ```
 
-Egy Azure-csatlakoztatni lemezzel most már rendelkezik egy futó pod a `/mnt/azure`.
+Egy Azure-lemez csatlakoztatásának helye a most már rendelkezik egy futó pod a `/mnt/azure`.
 
 ## <a name="next-steps"></a>További lépések
 
-További tudnivalók az Azure-lemezeket Kubernetes kötetek.
+További tudnivalók a Kubernetes-kötetek Azure-lemezek használatával.
 
 > [!div class="nextstepaction"]
-> [Azure-lemezeket Kubernetes beépülő modul][kubernetes-disks]
+> [Kubernetes-beépülő modul Azure-lemezek][kubernetes-disks]
 
 <!-- LINKS - external -->
 [kubernetes-disks]: https://github.com/kubernetes/examples/blob/master/staging/volumes/azure_disk/README.md
 [kubernetes-volumes]: https://kubernetes.io/docs/concepts/storage/volumes/
+[managed-disk-pricing-performance]: https://azure.microsoft.com/pricing/details/managed-disks/
 
 <!-- LINKS - internal -->
 [az-disk-list]: /cli/azure/disk#az_disk_list

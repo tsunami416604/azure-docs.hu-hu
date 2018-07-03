@@ -1,6 +1,6 @@
 ---
-title: Windows Azure IoT peremhálózati telepítése Linux tárolókhoz |} Microsoft Docs
-description: Az Azure IoT peremhálózati telepítési utasításokat Windows Linux tárolókhoz
+title: Az Azure IoT Edge telepítése Windows és Linux-tárolók |} A Microsoft Docs
+description: Az Azure IoT Edge telepítési utasításokat a Windows és Linux-tárolók
 author: kgremban
 manager: timlt
 ms.reviewer: veyalla
@@ -9,41 +9,41 @@ services: iot-edge
 ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: kgremban
-ms.openlocfilehash: 039ca304633eafa8211daffe1a4241b326eda6fb
-ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
+ms.openlocfilehash: a5b7845522769393826057c4bc92bda56e557258
+ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37114101"
+ms.lasthandoff: 07/02/2018
+ms.locfileid: "37346147"
 ---
-# <a name="install-azure-iot-edge-runtime-on-windows-to-use-with-linux-containers"></a>Azure IoT peremhálózati futásidejű telepítse a Windows, Linux tárolók használata
+# <a name="install-azure-iot-edge-runtime-on-windows-to-use-with-linux-containers"></a>Az Azure IoT Edge-futtatókörnyezet telepíthető Windows, Linux-tárolók használata
 
-Az Azure IoT peremhálózati futásidejű minden IoT peremhálózati eszközön van telepítve. Azt a három részből áll. A **IoT peremhálózati biztonsági démon** biztosít, és kezeli a peremhálózati eszköz a biztonsági követelményeket. A démon a minden rendszerindításkor, elindul, és az eszközt az IoT-Edge ügynök elindításával betöltéséhez. A **IoT peremhálózati ügynök** elősegíti a központi telepítés és a peremhálózati eszköz, beleértve a peremhálózati IoT hub modulok ellenőrzésére. Az **IoT Edge-központ** az IoT Edge-eszközön lévő modulok, valamint az eszköz és az IoT Hub közötti kommunikációt kezeli.
+Az Azure IoT Edge-futtatókörnyezet minden IoT Edge-eszközön van telepítve. Három összetevőt tartalmaz. A **IoT Edge biztonsági démon** biztosít, és fenntartja az Edge-eszközön a biztonsági követelményeknek. A démon a naplózásra kerül minden rendszerindításkor elindul, és csatlakoztatja az eszközt az IoT Edge-ügynök elindításával. A **IoT Edge-ügynök** elősegíti a központi telepítési és figyelési modulja a peremhálózati eszközön, beleértve az IoT Edge hubot. Az **IoT Edge-központ** az IoT Edge-eszközön lévő modulok, valamint az eszköz és az IoT Hub közötti kommunikációt kezeli.
 
-Ez a cikk felsorolja azokat a lépéseket, a Windows-x64 (Intel vagy AMD) telepítése az Azure IoT peremhálózati futásidejű rendszer. A Windows támogatási jelenleg előzetes verzió.
+Ez a cikk felsorolja a lépéseket az Azure IoT Edge-futtatókörnyezet telepítéséhez a Windows x64 (Intel vagy AMD) a rendszer. Windows támogatási jelenleg előzetes verzióban érhető el.
 
 >[!NOTE]
-Linux-tárolók használata a Windows rendszerekben a beállítás nem támogatott vagy ajánlott éles Azure IoT szegély. Azonban használat fejlesztési és tesztelési célokra.
+Linux-tárolók használata a Windows rendszerekben a javasolt vagy támogatott éles konfiguráció nem az Azure IoT Edge-hez. Azonban ez használható fejlesztési és tesztelési célra.
 
-## <a name="supported-windows-versions"></a>A Windows támogatott verziói
-Az Azure IoT peremhálózati lehet használt fejlesztési és tesztelési Windows, a következő verzióiban Linux tárolók használata esetén:
+## <a name="supported-windows-versions"></a>Támogatott Windows-verziók
+Az Azure IoT Edge lehet használt fejlesztési és tesztelési következő verzióiban Windows, Linux-tárolók használata esetén:
   * Windows 10-es vagy újabb asztali operációs rendszert.
-  * Windows Server 2016 vagy új kiszolgálói operációs rendszerek.
+  * A Windows Server 2016-ra, vagy új kiszolgálói operációs rendszerek.
 
-## <a name="install-the-container-runtime"></a>A tároló futásidejű telepítése 
+## <a name="install-the-container-runtime"></a>A tároló-modul telepítése 
 
-Az Azure IoT peremhálózati támaszkodik egy [OCI-kompatibilis] [ lnk-oci] tároló futásidejű (pl. Docker). 
+Az Azure IoT Edge támaszkodik egy [OCI-kompatibilis] [ lnk-oci] container modul (pl. Docker). 
 
-Használhat [Docker for Windows] [ lnk-docker-for-windows] a fejlesztéshez és teszteléshez. Győződjön meg arról, Docker for Windows [Linux-tárolók használatára konfigurálva][lnk-docker-config]
+Használhat [Docker for Windows] [ lnk-docker-for-windows] fejlesztési és tesztelési célra. Győződjön meg, hogy a Docker for Windows [Linux-tárolók használatára konfigurálva][lnk-docker-config]
 
-## <a name="install-the-azure-iot-edge-security-daemon"></a>Az Azure IoT peremhálózati biztonsági démon telepítése
+## <a name="install-the-azure-iot-edge-security-daemon"></a>Az Azure IoT Edge biztonsági démon telepítése
 
 >[!NOTE]
->Az Azure IoT peremhálózati szoftvercsomagok (a címtárban licenc) a csomagban található licencfeltételek vonatkoznak. Olvassa el a licencfeltételeket, a csomag használata előtt. A telepítés és a csomag használat számít ezek a feltételek elfogadását. Ha Ön nem fogadja el a licencfeltételeket, ne használja a csomag.
+>Az Azure IoT Edge szoftvercsomagok feltételei vonatkoznak rá a licencet (a címtárban licenccel) a csomagokban található. Kérjük, olvassa el a licencfeltételeket, a csomag használata előtt. Az üzembe helyezése és használata a csomag jelent a feltételek elfogadása. Ha nem fogadja el a licencfeltételeket, ne használja a csomag.
 
-### <a name="download-the-edge-daemon-package-and-install"></a>A peremhálózati démon csomag letöltése és telepítése
+### <a name="download-the-edge-daemon-package-and-install"></a>Az Edge-démon csomag letöltése és telepítése
 
-Egy rendszergazda PowerShell-ablakban hajtható végre a következő parancsokat:
+Egy rendszergazda PowerShell-ablakban hajtsa végre a következő parancsokat:
 
 ```powershell
 Invoke-WebRequest https://aka.ms/iotedged-windows-latest -o .\iotedged-windows.zip
@@ -74,7 +74,7 @@ A szolgáltatás által használt portok számára tűzfalkivételek hozzáadás
 New-NetFirewallRule -DisplayName "iotedged allow inbound 15580,15581" -Direction Inbound -Action Allow -Protocol TCP -LocalPort 15580-15581 -Program "C:\programdata\iotedge\iotedged.exe" -InterfaceType Any
 ```
 
-Hozzon létre egy **iotedge.reg** fájlt a következő tartalmat, és importálja a Windows beállításjegyzékében dupla kattintással, vagy használja a `reg import iotedge.reg` parancs:
+Hozzon létre egy **iotedge.reg** fájlt az alábbi tartalommal, és a Windows beállításjegyzék importálása a dupla kattintással vagy használatával a `reg import iotedge.reg` parancsot:
 
 ```
 Windows Registry Editor Version 5.00
@@ -85,13 +85,13 @@ Windows Registry Editor Version 5.00
 "TypesSupported"=dword:00000007
 ```
 
-## <a name="configure-the-azure-iot-edge-security-daemon"></a>Az Azure IoT peremhálózati biztonsági démon konfigurálása
+## <a name="configure-the-azure-iot-edge-security-daemon"></a>Az Azure IoT Edge biztonsági démon konfigurálása
 
 A démon a konfigurációs fájlban a következő konfigurálható `C:\ProgramData\iotedge\config.yaml`.
 
-A peremhálózati eszköz segítségével manuálisan konfigurálható egy [eszköz kapcsolati karakterlánc] [ lnk-dcs] vagy [eszköz kiépítése szolgáltatáshoz történő automatikus] [ lnk-dps].
+A peremhálózati eszköz segítségével manuálisan konfigurálható a [eszköz kapcsolati karakterláncának] [ lnk-dcs] vagy [automatikusan a Device Provisioning Service használatával] [ lnk-dps].
 
-* Kézi konfigurálás, állítsa vissza a **manuális** létesítés. Frissítse az értéket a **device_connection_string** saját IoT peremhálózati eszközön kapcsolati karakterlánccal.
+* A kézi konfigurálás, állítsa vissza a **manuális** üzembe helyezési mód. Frissítse az értéket a **device_connection_string** a kapcsolati karakterlánccal az IoT Edge-eszközről.
 
    ```yaml
    provisioning:
@@ -105,7 +105,7 @@ A peremhálózati eszköz segítségével manuálisan konfigurálható egy [eszk
    #   registration_id: "{registration_id}"
    ```
 
-* Automatikus konfigurációs, állítsa vissza a **terjesztési pontok** létesítés. Módosítsa a **scope_id** és **registration_id** az IoT Hub terjesztési pontok-példányt és az IoT-peremhálózati eszköz TPM-mel értékeivel. 
+* Az automatikus konfiguráláshoz, állítsa vissza a **dps** üzembe helyezési mód. Frissítse a **scope_id** és **registration_id** az IoT Hub-DPS példány és az IoT Edge-eszköz TPM Modullal rendelkező értékeivel. 
 
    ```yaml
    # provisioning:
@@ -119,7 +119,7 @@ A peremhálózati eszköz segítségével manuálisan konfigurálható egy [eszk
      registration_id: "{registration_id}"
    ```
 
-A nevét, a peremhálózati eszköz használatával `hostname` a PowerShell parancsot, és állítsa be a következő **állomásnév:** az a konfiguráció yam. Példa:
+Edge-eszköz használatával nevét `hostname` parancsot a PowerShellben, és állítsa be az értéket **állomásnév:** található a konfigurációs yaml. Példa:
 
 ```yaml
   ###############################################################################
@@ -134,33 +134,35 @@ A nevét, a peremhálózati eszköz használatával `hostname` a PowerShell para
   hostname: "edgedevice-1"
 ```
 
-Ezt követően kell az IP-cím és port: **workload_uri** és **management_uri** a a **csatlakozás:** a konfigurációs szakasza.
+Ezután adja meg az IP-cím és port: **workload_uri** és **management_uri** a a **csatlakoztatása:** és **figyelni:** szakaszai a konfiguráció.
 
-Adja meg az IP-címhez `ipconfig` a PowerShell-ablakban válassza ki az IP-címét a **vEthernet (DockerNAT)**"csatoló (az IP-cím a rendszerben lehet különböző) az alábbi példában látható módon:
+Adja meg az IP-cím lekéréséhez `ipconfig` a PowerShell-ablakban. IP-címének másolása az **vEthernet (DockerNAT)**"csatoló (az ip-címet a rendszer eltérő lehet) az alábbi példában látható módon:
 
 ![DockerNat][img-docker-nat]
 
+Frissítés a **workload_uri** és **management_uri** a a **csatlakoztatása:** szakaszában a konfigurációs fájlban. Cserélje le **\<GATEWAY_ADDRESS\>** másolt IP-címmel. 
+
 ```yaml
 connect:
-  management_uri: "http://10.0.75.1:15580"
-  workload_uri: "http://10.0.75.1:15581"
+  management_uri: "http://<GATEWAY_ADDRESS>:15580"
+  workload_uri: "http://<GATEWAY_ADDRESS>:15581"
 ```
 
-Adja meg az azonos címeket a **figyelni:** a konfigurációs szakasza. Példa:
+Adja meg ugyanazt a címet, az a **figyelni:** szakaszában a konfigurációt, az átjáró-címet az IP-cím használatával.
 
 ```yaml
 listen:
-  management_uri: "http://10.0.75.1:15580"
-  workload_uri: "http://10.0.75.1:15581"
+  management_uri: "http://<GATEWAY_ADDRESS>:15580"
+  workload_uri: "http://<GATEWAY_ADDRESS>:15581"
 ```
 
-A PowerShell-ablakban, hozzon létre egy környezeti változó **IOTEDGE_HOST** rendelkező a **management_uri** címét, például:
+A PowerShell ablakában hozzon létre egy környezeti változó **IOTEDGE_HOST** együtt a **management_uri** címet.
 
 ```powershell
-[Environment]::SetEnvironmentVariable("IOTEDGE_HOST", "http://10.0.75.1:15580")
+[Environment]::SetEnvironmentVariable("IOTEDGE_HOST", "http://<GATEWAY_ADDRESS>:15580")
 ```
 
-Végül győződjön meg arról a **hálózati:** beállítás alatt **moby_runtime:** uncommented, és állítsa be **azure iot-él**
+Végül ellenőrizze a **hálózati:** menüpont **moby_runtime:** uncommented, és állítsa **azure-iot-edge**
 
 ```yaml
 moby_runtime:
@@ -176,18 +178,18 @@ sleep 5
 Start-Service iotedge
 ```
 
-## <a name="verify-successful-installation"></a>Sikeres telepítésének ellenőrzése
+## <a name="verify-successful-installation"></a>A sikeres telepítésének ellenőrzése
 
-Ha követte a **kézi konfigurálás** az előző szakaszban található lépéseket, a peremhálózati IoT futásidejű kell lennie, sikeresen telepített és az eszközön futó. Ha követte a **automatikus konfiguráció** lépéseit, majd végre kell hajtania az alábbi lépéseket, hogy a futtatókörnyezet lehet az eszköz regisztrálása az IoT hub, az Ön nevében. A következő lépéseket lásd: [létrehozása és biztosítása a szimulált TPM peremhálózati eszköz a Windows](how-to-auto-provision-simulated-device-windows.md#create-a-tpm-environment-variable).
+Ha használta a **manuális konfigurációs** az előző szakasz lépéseit, az IoT Edge-futtatókörnyezet kell lennie, sikeresen üzembe helyezi és futtatja az eszközön. Ha használta a **automatikus konfiguráció** lépéseit, majd hajtsa végre az alábbi lépéseket, hogy a futtatókörnyezet regisztrálhatja az eszközt az IoT hubbal, az Ön nevében. Lásd az alábbi lépésekkel [létrehozásával és kiépítésével egy szimulált TPM-eszköz peremhálózati eszköz, a Windows](how-to-auto-provision-simulated-device-windows.md#create-a-tpm-environment-variable).
 
 
-Az IoT-Edge-szolgáltatás állapotát ellenőrizheti: 
+Az IoT Edge-szolgáltatás állapotát ellenőrizheti: 
 
 ```powershell
 Get-Service iotedge
 ```
 
-Ellenőrizze a szolgáltatás eseménynaplóit az utolsó 5 perccel használatával:
+Vizsgálja meg a szolgáltatás naplók az elmúlt 5 percben használatával:
 
 ```powershell
 
@@ -200,7 +202,7 @@ Get-WinEvent -ea SilentlyContinue `
   sort-object @{Expression="TimeCreated";Descending=$false}
 ```
 
-És futtató rendelkező modulok listáját:
+És futó rendelkező modulok listája:
 
 ```powershell
 iotedge list
@@ -208,7 +210,7 @@ iotedge list
 
 ## <a name="next-steps"></a>További lépések
 
-Ha problémába ütközik a peremhálózati futtatókörnyezetben telepítése, kivételt a [hibaelhárítási] [ lnk-trouble] lap.
+Ha az Edge-futtatókörnyezet telepítése megfelelően, a kivétel a problémák merülnek fel a [hibaelhárítási] [ lnk-trouble] lap.
 
 
 <!-- Images -->

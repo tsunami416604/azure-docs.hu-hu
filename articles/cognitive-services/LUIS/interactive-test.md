@@ -1,6 +1,6 @@
 ---
-title: Betanítása és a alkalmazás tesztelése a LUIS - Azure |} Microsoft Docs
-description: Nyelvi ismertetése (LUIS) segítségével az alkalmazás számára, pontosítsa és a nyelvi megértése folyamatosan működik.
+title: Taníthat vagy tesztelhet a LUIS-alkalmazás – Azure |} A Microsoft Docs
+description: Folyamatosan dolgozunk azon, pontosítsa és javítható a beszédfelismerés annak az alkalmazás a Language Understanding (LUIS) használatával.
 services: cognitive-services
 author: v-geberr
 manager: kaiqb
@@ -9,108 +9,108 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: v-geberr
-ms.openlocfilehash: fb4c3bb117d1ea60c9cc28d2b193ee3c01f6c945
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: f47068df9da4187ee8720cf526b2d6c3b89e68e2
+ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36221631"
+ms.lasthandoff: 07/02/2018
+ms.locfileid: "37345525"
 ---
-# <a name="test-your-luis-app"></a>A LUIS alkalmazás tesztelése
+# <a name="test-your-luis-app"></a>A LUIS-alkalmazás tesztelése
 <a name="train-your-app"></a>
-[Képzési](luis-how-to-train.md) és [tesztelés](luis-concept-test.md) egy alkalmazás áll iteratív folyamat. Után az LUIS alkalmazás képzési és tesztelte minta utterances megjelenítéséhez, ha a leképezések és entitások megfelelően a rendszer felismeri. Ha még nem, a LUIS app, tanítási és tesztelési végezze újra frissítéseket. 
+[Képzési](luis-how-to-train.md) és [tesztelés](luis-concept-test.md) az alkalmazás az iteratív folyamat. A LUIS-alkalmazás képzésekről, után tesztelje azt az minta utterances annak ellenőrzéséhez, hogy a szándékok és entitások helyesen ismeri. Ha nem, a LUIS-alkalmazásokon, tanítási és tesztelési ellenőrizze újra frissítéseket. 
 
 <!-- anchors for H2 name changes -->
 <a name="test-your-app"></a>
 <a name="access-the-test-page"></a>
 <a name="interactive-testing"></a>
-## <a name="test-an-utterance"></a>Egy utterance tesztelése
+## <a name="test-an-utterance"></a>Tesztelje az utterance (kifejezés)
 
-1. Az alkalmazás eléréséhez választva módosíthatja a nevet a **saját alkalmazások** lap. 
+1. Az alkalmazás eléréséhez annak nevét választva a **saját alkalmazások** lapot. 
 
-2. Hozzáférés a **teszt** menüpontban húzással állíthatja be a kibővített panelen, jelölje be **teszt** a az alkalmazás felső panelje.
+2. Hozzáférés a **teszt** dia kibővített panelen kattintson **teszt** az alkalmazás tetején található.
 
-    ![Tanítási és tesztelési App lapon](./media/luis-how-to-interactive-test/test.png)
+    ![Tanítási és tesztelési lap](./media/luis-how-to-interactive-test/test.png)
 
-3. A mezőben adja meg egy utterance, és válassza ki a billentyűt. Adhatja meg kívánt utterances számos teszt a **tesztelése**, de egyszerre csak egy utterance.
+3. Írja be az utterance (kifejezés) a szövegmezőbe, és nyomja le az Enter. Számos teszt a kimondott szöveg, amelyet szeretne beírhatja a **tesztelése**, de egyszerre csak egy utterance (kifejezés).
 
-4. A utterance, a felső leképezés és pontszám hozzáadódnak a szövegmező alatt utterances listája.
+4. A szövegmező alatt utterances listáját az utterance (kifejezés), a felső szándékot és pontszám kerülnek.
 
-    ![A nem megfelelő leképezés interaktív tesztelés azonosítja.](./media/luis-how-to-interactive-test/test-weather-1.png)
+    ![Interaktív vizsgálati azonosítja a nem megfelelő leképezés](./media/luis-how-to-interactive-test/test-weather-1.png)
 
-## <a name="clear-test-panel"></a>Egyszerű vizsgálati panel
-Törli az összes megadott teszt utterances és a vizsgálati konzolról eredményeit, válassza ki a **kezdje újra a folyamatot** a bal felső sarkában a **teszt panel**. 
+## <a name="clear-test-panel"></a>Egyértelmű teszt panel
+Törölje a megadott teszt kimondott szöveg és a test-konzolról eredményeit, válassza ki a **újrakezdés** bal felső sarkában a **teszt panel**. 
 
-## <a name="close-test-panel"></a>Bezárás teszt panel
-Bezárja a **teszt** panelen, jelölje be a **teszt** újra gombra.
+## <a name="close-test-panel"></a>Zárja be a teszt panel
+Gombra kattintva zárja be a **teszt** panelen kattintson a **teszt** újra gombra.
 
 ## <a name="inspect-score"></a>Vizsgálja meg a pontszám
-A vizsgálati eredmények a részleteket nézze meg a **vizsgálat** panel. 
+A teszteredmények részletek nézze meg a **vizsgálat** panel. 
  
-1. Az a **teszt** menüpontban húzással állíthatja be a kibővített panel megnyitása, jelölje be **vizsgálat** az összehasonlítani kívánt egy utterance. 
+1. Az a **teszt** dia kibővített panel meg van nyitva, válassza ki **vizsgálat** az utterance (kifejezés) kívánja. 
 
     ![Vizsgálja meg a gomb](./media/luis-how-to-interactive-test/inspect.png)
 
-2. A **ellenőrző** panel jelenik meg. A panel leképezés, valamint a azonosított entitások pontozási felső tartalmazza. A panel a kijelölt utterance eredményének megjelenítése.
+2. A **ellenőrzési** panel jelenik meg. A panel felső pontozási szándékot, valamint a azonosított entitások tartalmazza. A panelen a kiválasztott utterance (kifejezés) eredménye látható.
 
     ![Vizsgálja meg a gomb](./media/luis-how-to-interactive-test/inspect-panel.png)
 
 ## <a name="correct-top-scoring-intent"></a>Leképezés pontozási megfelelő felső
 
-1. Ha leképezés pontozási felső helytelen, válassza ki a **szerkesztése** gombra.
+1. Ha szándékot pontozási felső helytelen, válassza ki a **szerkesztése** gombra.
 
-2.  A legördülő listában válassza ki a megfelelő leképezésének a utterance.
+2.  A legördülő listában válassza ki a megfelelő leképezésének az utterance (kifejezés).
 
-    ![Válassza ki a megfelelő cél](./media/luis-how-to-interactive-test/intent-select.png)
+    ![Válassza ki a megfelelő leképezés](./media/luis-how-to-interactive-test/intent-select.png)
 
-## <a name="view-sentiment-results"></a>Véleményeket eredmények megtekintése
+## <a name="view-sentiment-results"></a>Vélemények eredmények megtekintése
 
-Ha **véleményeket elemzés** konfigurálva van a **[közzététel](publishapp.md#enable-sentiment-analysis)** lap, a vizsgálati eredmények tartalmazzák a céggel kapcsolatos véleményeket a utterance található. 
+Ha **hangulatelemzés** konfigurálva van a **[közzététel](luis-how-to-publish-app.md#enable-sentiment-analysis)** oldal, a vizsgálati eredmények belefoglalása az utterance (kifejezés) található a róluk szóló véleményeket. 
 
-![Teszt ablaktábla véleményeket elemzés képe](./media/luis-how-to-interactive-test/sentiment.png)
+![Hangulatelemzés a teszt panel képe](./media/luis-how-to-interactive-test/sentiment.png)
 
-## <a name="correct-matched-patterns-intent"></a>Javítsa ki a megfelelő mintát leképezés
-Ha használ [minták](luis-concept-patterns.md) és a utterance egyező mintát, de a nem megfelelő leképezés lett előre jelezni, válassza ki a **szerkesztése** által a minta hivatkozásra, majd válassza ki a megfelelő leképezést.
+## <a name="correct-matched-patterns-intent"></a>Javítsa ki az egyeztetett minta célja
+Ha használ [minták](luis-concept-patterns.md) és az utterance (kifejezés) egyező mintát, de a nem megfelelő leképezés volt előre jelzett, jelölje be a **szerkesztése** a minta szerint, majd válassza ki a megfelelő leképezést.
 
 ## <a name="compare-with-published-version"></a>Hasonlítsa össze a közzétett verzióra
-Az aktív verzió az alkalmazás a közzétett tesztelheti [végpont](luis-glossary.md#endpoint) verziója. Az a **vizsgálat** panelen, jelölje be **hasonlítsa össze a közzétett**. Bármely közzétett modellre tesztelése az Azure-előfizetés kvótájának egyenleg vonni. 
+Tesztelheti az alkalmazást a közzétett aktív verziója [végpont](luis-glossary.md#endpoint) verzió. Az a **vizsgálat** panelen kattintson **hasonlítsa össze a közzétett**. Bármely a közzétett modell tesztelése az Azure-előfizetés kvótája egyenleg vonni. 
 
 ![Hasonlítsa össze a közzétett](./media/luis-how-to-interactive-test/inspect-panel-compare.png)
 
-## <a name="view-endpoint-json-in-test-panel"></a>A teszt panelen végpont JSON megtekintése
-A végpont JSON adott vissza az összehasonlításhoz kiválasztásával megtekintheti a **megjelenítése JSON nézet**.
+## <a name="view-endpoint-json-in-test-panel"></a>Teszt panel végpont JSON megtekintése
+A végpont JSON adja vissza az összehasonlításhoz kiválasztásával megtekintheti a **megjelenítése JSON-nézet**.
 
 ![Közzétett JSON-válasz](./media/luis-how-to-interactive-test/inspect-panel-compare-json.png)
 
 <!--Service name is 'Bing Spell Check v7 API' in the portal-->
-## <a name="additional-settings-in-test-panel"></a>A teszt panelen további beállítások
+## <a name="additional-settings-in-test-panel"></a>Teszt panel további beállítások
 
-### <a name="luis-endpoint"></a>LUIS végpont
-Ha több LUIS végpontok, használja a **további beállításokat** hivatkozás a teszteléshez használt közzétett módosítása a teszteléshez használt végpont ablaktáblán. Ha nem biztos abban, hogy mely végpontot kell használni, jelölje be az alapértelmezett **Starter_Key**. 
+### <a name="luis-endpoint"></a>A LUIS-végpont
+Ha több LUIS-végpontokat, használja a **további beállításokat** a teszt hivatkozása közzétételének panelen módosíthatja a teszteléshez használt végpont. Ha nem biztos abban, hogy melyik végponthoz használatára, válassza ki az alapértelmezett **Starter_Key**. 
 
-![További beállítások hivatkozás a kijelölt panelen tesztelése](./media/luis-how-to-interactive-test/interactive-with-spell-check-service-key.png)
+![Teszt panel a további beállításokat hivatkozás kiemelésével](./media/luis-how-to-interactive-test/interactive-with-spell-check-service-key.png)
 
 
-### <a name="view-bing-spell-check-corrections-in-test-panel"></a>Bing helyesírás-ellenőrző javításokat teszt panelen megtekintése
-A helyesírás javításokat megtekintéséhez követelmények: 
+### <a name="view-bing-spell-check-corrections-in-test-panel"></a>A Bing Spell Check javításokat megtekintése a teszt panel
+Megtekintheti a helyesírási javításokkal vonatkozó követelmények: 
 
 * Közzétett alkalmazás
-* Bing helyesírás-ellenőrzés [szolgáltatás kulcs](https://azure.microsoft.com/try/cognitive-services/?api=spellcheck-api). A szolgáltatás kulcs nem tárolja, és minden böngésző-munkamenet alaphelyzetbe kell állítani. 
+* A Bing Spell Check [Szolgáltatáskulcs](https://azure.microsoft.com/try/cognitive-services/?api=spellcheck-api). A kulcs nem tárolja, és minden böngésző-munkamenet alaphelyzetbe kell állítani. 
 
-Tartalmazza az alábbi eljárással a [Bing helyesírás-ellenőrzés v7](https://azure.microsoft.com/services/cognitive-services/spell-check/) szolgáltatás a teszteredmények ablaktáblán. 
+Tartalmazza az alábbi eljárással a [Bing helyesírás-ellenőrzés 7-es](https://azure.microsoft.com/services/cognitive-services/spell-check/) szolgáltatást a teszteredmények ablaktáblán. 
 
-1. Az a **teszt** panelen adjon meg egy utterance. Amikor a utterance várhatóan, válassza ki a **[vizsgálat](#inspect-score)** megadott utterance alatt. 
+1. Az a **teszt** panelen írja be az utterance (kifejezés). Amikor az utterance (kifejezés) előrejelzésének megtekintéséhez válassza ki a **[vizsgálat](#inspect-score)** alá az utterance (kifejezés) adott meg. 
 
-2. Ha a **vizsgálat** panel nyílik, jelölje be  **[közzétett összehasonlításra](#compare-with-published-version)**. 
+2. Ha a **vizsgálat** panel megnyílik, válassza ki  **[közzétett összehasonlítandó](#compare-with-published-version)**. 
 
-3. Ha a **közzétett** panel nyílik, jelölje be  **[további beállításokat](#additional-settings-in-test-panel)**.
+3. Ha a **közzétett** panel megnyílik, válassza ki  **[további beállítás](#additional-settings-in-test-panel)**.
 
-4. Az előugró párbeszédpanelen adja meg a **Bing helyesírás-ellenőrzés** szolgáltatásának kulcsát. 
-    ![Bing helyesírás-ellenőrzés szolgáltatási kulcs megadása](./media/luis-how-to-interactive-test/interactive-with-spell-check-service-key.png)
+4. Az előugró párbeszédpanelen adja meg a **a Bing Spell Check** Szolgáltatáskulcs. 
+    ![Adja meg a Bing Spell Check-kulcsot](./media/luis-how-to-interactive-test/interactive-with-spell-check-service-key.png)
 
-5. Adjon meg egy lekérdezést egy helytelen helyesírás, mint a `book flite to seattle` , és válassza ki, írja be. A helytelen helyesen adta-e szó `flite` váltja fel a lekérdezésben LUIS küldött és az eredményül kapott JSON jeleníti meg mindkét az eredeti lekérdezés, mint `query`, és a javított helyesen adta-e a lekérdezés, mint `alteredQuery`.
+5. Adjon meg egy lekérdezést, és a egy helytelen helyesírás-ellenőrzés például `book flite to seattle` , és válassza ki, adja meg. A szó helyesírási `flite` váltja fel a lekérdezésben, LUIS küldött és az eredményül kapott JSON állapota is az eredeti lekérdezés `query`, és a javított helyesírás-ellenőrzés a lekérdezésben, `alteredQuery`.
 
-    ![Helyesírás-ellenőrző JSON javítani](./media/luis-how-to-interactive-test/interactive-with-spell-check-results.png)
+    ![Kijavított helyesírás-ellenőrzés JSON](./media/luis-how-to-interactive-test/interactive-with-spell-check-results.png)
 
 <a name="json-file-with-no-duplicates"></a>
 <a name="import-a-dataset-file-for-batch-testing"></a>
@@ -122,12 +122,12 @@ Tartalmazza az alábbi eljárással a [Bing helyesírás-ellenőrzés v7](https:
 <a name="view single-point utterance data"></a>
 <a name="relabel-utterances-and-retrain"></a>
 <a name="false-test-results"></a>
-## <a name="batch-testing"></a>Kötegelt tesztelése
-Tekintse meg a kötegelt tesztelése [fogalmak](luis-concept-batch-test.md) és további [hogyan](luis-how-to-batch-test.md) tesztelése utterances egy tranzakcióköteghez.
+## <a name="batch-testing"></a>Kötegelt tesztelés
+Tekintse meg a batch-tesztelés [fogalmak](luis-concept-batch-test.md) , és ismerje meg [hogyan](luis-how-to-batch-test.md) utterances kötegelt teszteléséhez.
 
 ## <a name="next-steps"></a>További lépések
 
-Ha tesztelési azt jelzi, hogy az LUIS alkalmazás nem ismeri fel a megfelelő leképezések és entitások, használhat LUIS alkalmazás pontosságának javítása a címkézés további utterances vagy szolgáltatások hozzáadására. 
+Ha a tesztelés azt jelzi, hogy a LUIS-alkalmazás nem ismeri fel a megfelelő szándékokat és entitásokat, további utterances címkézés vagy szolgáltatások hozzáadására a LUIS-alkalmazás pontosságának növelése érdekében használhatja. 
 
-* [Javasolt utterances LUIS rendelkező címke](Label-Suggested-Utterances.md) 
-* [A szolgáltatások használata a LUIS alkalmazás teljesítmény javítása érdekében](luis-how-to-add-features.md) 
+* [Az intelligens hangfelismerési szolgáltatással javasolt utterances felirat](Label-Suggested-Utterances.md) 
+* [A LUIS-alkalmazás a teljesítmény javítása szolgáltatások használata](luis-how-to-add-features.md) 

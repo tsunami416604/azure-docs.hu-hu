@@ -1,19 +1,22 @@
-A következő táblázat felsorolja a IoT Hub eszköz kiépítése szolgáltatáshoz erőforrások vonatkozó korlátozások:
+A következő táblázat felsorolja a korlátokat, amely a alkalmazni az IoT Hub Device Provisioning Service-erőforrások:
 
 | Erőforrás | Korlát |
 | --- | --- |
-| Maximális eszköz kiépítése szolgáltatásokért Azure-előfizetés | 10 |
-| Regisztráció maximális száma | 10,000 |
-| A regisztrációk maximális száma | 10,000 |
-| Beléptetési csoportok maximális számát | 100 |
-| A CA-k maximális száma | 10 |
+| Azure-előfizetésenként legfeljebb Device Provisioning Service | 10 |
+| Regisztrációk maximális száma | 500,000 |
+| A regisztrációk maximális száma | 500,000 |
+| Regisztrációs csoportok maximális száma | 100 |
+| Hitelesítésszolgáltatók maximális száma | 25 |
 
 > [!NOTE]
-> Felveheti a kapcsolatot [Microsoft Support](https://azure.microsoft.com/support/options/) az előfizetésében szereplő példányok számának növeléséhez.
+> Felveheti a kapcsolatot [Support](https://azure.microsoft.com/support/options/) az előfizetésében a példányok számának növeléséhez.
 
-Az eszköz kiépítése szolgáltatáshoz azelőtt gyorsítja fel kérelmeket, a következő kvóták túllépése esetén:
+> [!NOTE]
+> Felveheti a kapcsolatot [Support](https://azure.microsoft.com/support/options/) növelni a beléptetések és az eszközkiépítési szolgáltatás a regisztrációk számát.
 
-| Szabályozás | Szolgáltatás értékét |
+A Device Provisioning Service szabályozza a kéréseket, amikor az alábbi kvóták átlépése:
+
+| Szabályozás | Szolgáltatás érték |
 | --- | --- |
 | Műveletek | 100/perc |
-| Eszköz-regisztráció | 100/perc |
+| Eszközregisztrációk | 100/perc |

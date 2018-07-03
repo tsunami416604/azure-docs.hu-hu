@@ -1,6 +1,6 @@
 ---
-title: Egy Windows Azure-ban a PowerShell-parancsfájlok futtatása
-description: Ez a témakör ismerteti egy parancs futtatása Azure Windows virtuális gépeken PowerShell-parancsfájlok futtatása
+title: PowerShell-parancsfájlok futtatásához egy Windows-beli virtuális gépen az Azure-ban
+description: Ez a témakör ismerteti a PowerShell-parancsfájlok futtatása paranccsal, egy Windows Azure virtuális gépen belüli futtatásáról
 services: automation
 ms.service: automation
 author: georgewallace
@@ -8,82 +8,81 @@ ms.author: gwallace
 ms.date: 06/06/2018
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: ddbac24020110e32792286a1ac64070316cfb081
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: ad0366d333266af0b16a7acaaa4519f20a951a80
+ms.sourcegitcommit: 4597964eba08b7e0584d2b275cc33a370c25e027
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "36332714"
+ms.lasthandoff: 07/02/2018
+ms.locfileid: "37342708"
 ---
-# <a name="run-powershell-scripts-in-your-windows-vm-with-run-command"></a>PowerShell-parancsfájlok futtathatók a Windows virtuális gép a parancs futtatása
+# <a name="run-powershell-scripts-in-your-windows-vm-with-run-command"></a>PowerShell-szkriptek futtatása a Windows virtuális gép futtatása paranccsal
 
-Futtassa a parancsot használja egy Windows Azure VM rendszerhéj PowerShell parancsfájlok futtatásához a Virtuálisgép-ügynök. Ezek a parancsfájlok vagy általános számítógép-felügyelet használható, és gyorsan diagnosztizálhatja és virtuális gép hozzáférés és a hálózati problémák megoldásához és a virtuális gép egy jó állapotra is használható.
+Futtassa a parancsot használja a Virtuálisgép-ügynök Windows Azure virtuális Gépeken belül rendszerhéj PowerShell-parancsfájlok futtatásához. Ezek a parancsfájlok vagy általános számítógép-felügyelet is használható, és segítségével gyorsan diagnosztizálhatja és a virtuális gép hozzáférés és a hálózati problémák elhárítására és a egy jó állapotba a virtuális gép lekérése.
 
 ## <a name="benefits"></a>Előnyök
 
-A virtuális gépek eléréséhez használható több lehetőség áll rendelkezésre. A parancs futtatása távolról használata az ügynököt a virtuális gépek parancsfájlok is futtathatók. Futtatási parancs is használható az Azure portálon keresztül [REST API](/rest/api/compute/virtual%20machines%20run%20commands/runcommand), [Azure CLI](/cli/azure/vm/run-command?view=azure-cli-latest#az-vm-run-command-invoke), vagy [PowerShell](/powershell/module/azurerm.compute/invoke-azurermvmruncommand).
+A virtuális gépek eléréséhez használható több lehetőség közül. A futtatási parancs futtathatók a parancsprogramok segítségével távolról a Virtuálisgép-ügynököt a virtuális gépeken. A futtatási parancs is használható az Azure Portalon keresztül [REST API-val](/rest/api/compute/virtual%20machines%20run%20commands/runcommand), [Azure CLI-vel](/cli/azure/vm/run-command?view=azure-cli-latest#az-vm-run-command-invoke), vagy [PowerShell](/powershell/module/azurerm.compute/invoke-azurermvmruncommand).
 
-Ez a lehetőség akkor hasznos, ha szeretné, hogy a virtuális gépekről parancsfájl futtatása, és egyik hibaelhárítása, és javíthatja az RDP nem rendelkező virtuális gép egyetlen módja vagy SSH-port helytelen hálózati vagy a rendszergazda felhasználó miatt nyissa meg az összes forgatókönyv konfiguráció.
+Ez a funkció akkor hasznos, minden olyan esetben, ha szeretne futtatni egy parancsfájlt a virtual machines szolgáltatáson belül, és a egy egyetlen módja hibaelhárítása és orvoslása egy virtuális gépet, amely nem rendelkezik az RDP vagy SSH-port megnyitásához miatt nem megfelelő hálózati vagy a rendszergazda felhasználó konfiguráció.
 
 ## <a name="restrictions"></a>Korlátozások
 
-A következő korlátozások vonatkoznak a parancs futtatása használatakor:
+A következő korlátozások vonatkoznak, ha futtatása paranccsal:
 
-* Kimeneti bájtra korlátozva utolsó 4096
-* Parancsfájl futtatása a minimális ideje pedig körülbelül 20 másodperc
+* Kimeneti korlátozódik utolsó 4096 bájtos
+* A minimális ideje a parancsfájl futtatása után körülbelül 20 másodperc
 * A Windows rendszert futtató parancsfájlok
-* Egyszerre csak egy parancsprogram futtathatnak.
-* Nem lehet megszakítani a parancsfájl futtatását
-* A maximális egy parancsfájlt ideje 90 perc, azt követően a rendszer túllépi az időkorlátot
-
-**PermissionsConfig-OrchestratorUsersGroup***GroupName***-OrchestratorUser***UserName***\-remote** 
+* Egyszerre csak egy parancsfájl futhat.
+* Nem vethető el a parancsprogram futtatásához
+* A maximális idő egy parancsfájlt az 90 perc után, amelyben az időkorlátja
+* A virtuális gépről kimenő kapcsolat szükséges a parancsfájl eredményét adja vissza.
 
 ## <a name="run-a-command"></a>Parancs futtatása
 
-Keresse meg a virtuális gép [Azure](https://portal.azure.com) válassza **paranccsal** alatt **műveletek**. A virtuális Gépen futtatandó elérhető parancsok listája jelenik meg.
+Keresse meg a virtuális gép [Azure](https://portal.azure.com) válassza **futtatása paranccsal** alatt **műveletek**. Megjelennek az elérhető parancsok futtatásához a virtuális gép listáját.
 
-![A parancs futtatásához](./media/run-command/run-command-list.png)
+![Futtassa a parancsot listája](./media/run-command/run-command-list.png)
 
-Válassza ki a futtatni kívánt parancs. A parancsok némelyike rendelkezhet opcionális vagy kötelező bemeneti paraméter. Ezeknek a parancsoknak a paraméterek ahhoz, hogy adja meg a bemeneti szöveg mezői jelenjenek meg. Minden egyes parancsnál megtekintheti a kibontásával futtatott parancsfájl **parancsfájl megtekintése**. **RunPowerShellScript** eltér a más parancsok, lehetővé teszi a saját egyéni parancsfájl.
+Válassza ki a futtatni kívánt parancs. Parancsai közül néhányat, előfordulhat, nem kötelező vagy szükséges bemeneti paramétereket. Ezek a parancsok a paramétereket, hogy adja meg a bemeneti szöveges mezők jelennek meg. Megtekintheti a parancsfájl által bővítése futtató minden egyes parancsnál **parancsfájl megjelenítése**. **RunPowerShellScript** eltér a többi parancs, mert Ön a saját egyéni parancsfájl biztosít.
 
 > [!NOTE]
 > A beépített parancsok, amelyek nem szerkeszthető.
 
-Ha a parancsot választja, kattintson **futtatása** a parancsfájl futtatásához. A parancsfájl futtatása, és amikor végzett, és adja vissza a kimeneti ki a hibákat a kimeneti ablakban. Az alábbi képernyőfelvételen látható egy példa a kimenetre futtatását a **RDPSettings** parancsot.
+Ha ki van választva a parancsot, kattintson **futtatása** a parancsfájl futtatásához. A szkript fut, és amikor elkészült, adja vissza a kimenet és az esetleges hibákat a kimeneti ablakban. A következő képernyőképen látható egy példa kimenet futtatását a **RDPSettings** parancsot.
 
-![Parancsfájl kimeneti parancs futtatása](./media/run-command/run-command-script-output.png)
+![Futtassa a parancsot parancsprogram kimenete](./media/run-command/run-command-script-output.png)
 
 ## <a name="commands"></a>Parancsok
 
-Az alábbi táblázatban a rendelkezésre álló parancsok listájához, a Windows virtuális gépek esetén. A **RunPowerShellScript** parancs használható a kívánt egyéni parancsfájl futtatásához.
+Ez a táblázat Windows virtuális gépek esetében elérhető parancsok listáját jeleníti meg. A **RunPowerShellScript** parancs bármilyen kívánt egyéni szkript futtatásához használható.
 
 |**Name (Név)**|**Leírás**|
 |---|---|
 |**RunPowerShellScript**|Egy PowerShell-parancsprogram végrehajtása|
 |**EnableRemotePS**|Konfigurálja a számítógépet, hogy engedélyezze a távoli PowerShell.|
 |**EnableAdminAccount**|Ha a helyi rendszergazdai fiók le van tiltva, és ha igen lehetővé teszi, hogy ellenőrzi.|
-|**IPConfig**| Részletes információk megjelenítése az IP-cím, alhálózati maszk és alapértelmezett átjáró mindegyik adapterhez kötött TCP/IP.|
-|**RDPSettings**|Ellenőrzi a beállításjegyzék-beállítások és a tartományi házirend-beállításokat. Házirend műveletek javasol, ha a számítógép egy tartomány része, vagy módosítja a beállításokat az alapértelmezett értékekre.|
-|**ResetAccountPassword**| Alaphelyzetbe állítja a beépített Rendszergazda fiók jelszavát.|
-|**ResetRDPCert**|Eltávolítja az RDP-figyelőjének társítva SSL-tanúsítványt, és visszaállítja az RDP listerner biztonsági alapértelmezett. Használja ezt a parancsfájlt, ha problémák merülnek fel a tanúsítvány látható.|
-|**SetRDPPort**|Beállítja az alapértelmezett vagy felhasználó megadott portszám a távoli asztali kapcsolatok. Lehetővé teszi, hogy a port hozzáférése bejövő tűzfalszabályt.|
+|**IP-konfiguráció**| Részletes információk megjelenítése az IP-cím, alhálózati maszk és az alapértelmezett átjáró mindegyik adapterhez kötve a TCP/IP.|
+|**RDPSettings**|Beállításjegyzék-beállítások és házirend beállításainak ellenőrzi. Házirend műveleteket javasol, ha a gép része egy tartománynak, vagy módosítja a beállításokat az alapértelmezett értékekre.|
+|**ResetAccountPassword**| Alaphelyzetbe állítja a beépített rendszergazdai fiók jelszava.|
+|**ResetRDPCert**|Eltávolítja az RDP-figyelő kötött SSL-tanúsítványt, és az RDP-listerner biztonsági visszaállítja az alapértelmezett. Akkor használja ezt a parancsfájlt, ha bármilyen problémát észlel, a tanúsítvány.|
+|**SetRDPPort**|Beállítja az alapértelmezett vagy felhasználó megadott portszám távoli asztali kapcsolatok. Lehetővé teszi, hogy a port hozzáférése bejövő tűzfalszabályt.|
 
 ## <a name="powershell"></a>PowerShell
 
-Az alábbiakban egy példa segítségével a [Invoke-AzureRmVMRunCommand](/powershell/module/azurerm.compute/invoke-azurermvmruncommand) parancsmag PowerShell parancsfájl futtatása egy Azure virtuális gépen.
+Az alábbiakban egy példa a használatával a [Invoke-AzureRmVMRunCommand](/powershell/module/azurerm.compute/invoke-azurermvmruncommand) parancsmag-beli virtuális gépen egy PowerShell-szkript futtatásához.
 
 ```azurepowershell-interactive
 Invoke-AzureRmVMRunCommand -ResourceGroupName '<myResourceGroup>' -Name '<myVMName>' -CommandId 'RunPowerShellScript' -ScriptPath '<pathToScript>' -Parameter @{"arg1" = "var1";"arg2" = "var2"}
 ```
 
-## <a name="limiting-access-to-run-command"></a>Parancs futtatása való hozzáférés korlátozása
+## <a name="limiting-access-to-run-command"></a>Futtatása paranccsal való hozzáférés korlátozása
 
-Futtassa a parancsokat listázása, vagy a parancs részletes adatait megjelenítő igényli a `Microsoft.Compute/locations/runCommands/read` engedéllyel, amely a beépített [olvasó](../../role-based-access-control/built-in-roles.md#reader) szerepkör és az annál magasabb rendelkezik.
+A futtatási parancsok listázása és a egy parancs részleteit megjelenítő szükséges a `Microsoft.Compute/locations/runCommands/read` engedéllyel, amely a beépített [olvasó](../../role-based-access-control/built-in-roles.md#reader) szerepkört, és magasabb.
 
-A parancs futtatásához szükség van a `Microsoft.Compute/virtualMachines/runCommand/action` engedéllyel, amely a [közreműködő](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor) szerepkör és az annál magasabb rendelkezik.
+A parancs futtatásához szükség van a `Microsoft.Compute/virtualMachines/runCommand/action` engedéllyel, amely a [közreműködői](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor) szerepkör, és magasabb.
 
-Egyikét használhatja a [beépített](../../role-based-access-control/built-in-roles.md) szerepköröket, vagy hozzon létre egy [egyéni](../../role-based-access-control/custom-roles.md) szerepkört használja a parancs futtatása.
+Használhatja az egyik a [beépített](../../role-based-access-control/built-in-roles.md) szerepkörök, vagy hozzon létre egy [egyéni](../../role-based-access-control/custom-roles.md) szerepkör-parancs futtatása.
 
 ## <a name="next-steps"></a>További lépések
 
-Megtekintéséhez [a Windows virtuális gép található parancsfájlok futtatásának](run-scripts-in-vm.md) tájékozódhat az egyéb módjai parancsprogramok és parancsok a virtuális gép távoli futtatása.
+Látható, [szkriptek futtatása a Windows virtuális gép](run-scripts-in-vm.md) parancsprogramok és parancsok a virtuális Géphez a távoli futtatásához egyéb módjaival kapcsolatos.

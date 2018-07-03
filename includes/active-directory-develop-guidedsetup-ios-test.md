@@ -1,28 +1,28 @@
-## <a name="test-querying-the-microsoft-graph-api-from-your-ios-application"></a>Lekérdezi a Microsoft Graph API az iOS-alkalmazás tesztelése
+## <a name="test-querying-the-microsoft-graph-api-from-your-ios-application"></a>Tesztelje az iOS-alkalmazásból, a Microsoft Graph API lekérdezése
 
-A kód-szimulátorban történő elindításához nyomja le az **parancs** + **R**.
+A kód-szimulátorban történő futtatásához nyomja le a **parancs** + **R**.
 
 ![Az alkalmazás-szimulátorban történő tesztelése](media/active-directory-develop-guidedsetup-ios-test/iostestscreenshot.png)
 
-Ha elkészült, teszteléséhez, válassza ki a **Microsoft Graph API hívása**. Amikor a rendszer kéri, írja be a felhasználónevét és jelszavát.
+Amikor elkészült, teszteléséhez, válassza ki a **Microsoft Graph API meghívása**. Amikor a rendszer kéri, adja meg a felhasználónevét és jelszavát.
 
-### <a name="provide-consent-for-application-access"></a>Alkalmazás-hozzáférés hozzájárulás megadása
-Jelentkezzen be az alkalmazás első futtatásakor kéri a hozzájárulását Itt engedélyezheti az alkalmazásnak a profilja eléréséhez és a bejelentkezés:
+### <a name="provide-consent-for-application-access"></a>Alkalmazás-hozzáférési hozzájárulás megadása
+Első alkalommal jelentkezik be az alkalmazás kéri, hogy Ön hozzájárul ahhoz, hogy az alkalmazás eléréséhez a profil és a bejelentkezéshez adja meg:
 
 ![Adja meg az Ön hozzájárul az alkalmazás-hozzáférés](media/active-directory-develop-guidedsetup-ios-test/iosconsentscreen.png)
 
-### <a name="view-application-results"></a>Alkalmazás-eredmények megtekintése
-Miután bejelentkezik, a felhasználói profil adatait a a Microsoft Graph API-hívás által visszaadott láthatja a **naplózás** szakasz. 
+### <a name="view-application-results"></a>Kérelem eredményének megtekintése
+Miután bejelentkezett, megjelenik a profilok adatainak a a Microsoft Graph API-hívás által visszaadott a **naplózás** szakaszban. 
 
 <!--start-collapse-->
-### <a name="more-information-about-scopes-and-delegated-permissions"></a>További információ a hatókörök és delegált jogosultságokkal sikeresen telepítették
+### <a name="more-information-about-scopes-and-delegated-permissions"></a>További információ a hatókörök és delegált engedélyek
 
-A Microsoft Graph API megköveteli a **user.read** hatókörrel, hogy a felhasználói profil olvasása. Ebben a hatókörben alapértelmezés szerint minden egyes alkalmazás, amely a regisztrációs portál regisztrálva van a rendszer automatikusan. Más Microsoft Graph API-k, valamint a egyéni API-k, a háttér-kiszolgáló további hatókörökkel lehet szükség. A Microsoft Graph API megköveteli a **Calendars.Read** hatókörrel, hogy a felhasználók naptáraiban lévő listából.
+A Microsoft Graph API megköveteli a **user.read** hatókörrel, hogy a felhasználói profil olvasása. Minden alkalmazás, amely regisztrálva van az alkalmazásregisztrációs portálon alapértelmezés szerint automatikusan megjelenik az ebben a hatókörben. Egyéb Microsoft Graph API-k, valamint a egyéni API-k, a háttér-kiszolgáló további hatókörökkel lehet szükség. A Microsoft Graph API megköveteli a **Calendars.Read** hatókörrel, hogy a felhasználók naptáraiban listázása.
 
-A felhasználók naptáraiban a környezetben, az alkalmazások eléréséhez vegye fel a **Calendars.Read** jogosultságot a az alkalmazás regisztrációs adatait. Adja hozzá a **Calendars.Read** a hatókör a **acquireTokenSilent** hívható meg. 
+A felhasználók naptáraiban keretén belül egy alkalmazás eléréséhez, adja hozzá a **Calendars.Read** delegált engedéllyel az alkalmazás regisztrációs adatok. Adja hozzá a **Calendars.Read** a hatókört a **acquireTokenSilent** hívja. 
 
 >[!NOTE]
->A felhasználó kérheti további hozzájárulásokat azoktól a hatókörök számának növelésével.
+>A felhasználó további címtárbérlőhöz hatókörök számának növelésével kérheti.
 
 <!--end-collapse-->
 
