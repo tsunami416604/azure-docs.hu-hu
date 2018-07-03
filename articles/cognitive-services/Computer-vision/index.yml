@@ -14,12 +14,12 @@ metadata:
   ms.topic: landing-page
   ms.date: 06/22/2018
   ms.author: nolachar
-  ms.openlocfilehash: 72adfaf478596e5f3153cee6eee9d70f1c02c31f
-  ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
+  ms.openlocfilehash: 7a68ff1e0cc80c99ec94cfe6f0480408afa92431
+  ms.sourcegitcommit: 4597964eba08b7e0584d2b275cc33a370c25e027
   ms.translationtype: HT
   ms.contentlocale: hu-HU
-  ms.lasthandoff: 06/25/2018
-  ms.locfileid: "36751962"
+  ms.lasthandoff: 07/02/2018
+  ms.locfileid: "37340712"
 abstract:
   description: A felhőalapú Computer Vision API a fejlesztők számára hozzáférést biztosít speciális képfeldolgozó és információt visszaadó algoritmusokhoz. Egy kép feltöltésével vagy egy kép URL-címének megadásával a Microsoft Computer Vision algoritmusai különböző módokon elemzik a vizuális tartalmat bemenetek és a felhasználó választásai alapján. A rövid útmutatók, oktatóanyagok és példák segítségével megismerkedhet a vizuális tartalomelemzés különböző módjaival.
 sections:
@@ -33,11 +33,7 @@ sections:
     - image:
         src: media/index/logo_Csharp.svg
       text: C&#35;
-      href: QuickStarts/CSharp-analyze
-    - image:
-        src: media/index/logo_go.svg
-      text: Indítás
-      href: QuickStarts/go-analyze
+      href: quickstarts-sdk/csharp-analyze-sdk
     - image:
         src: media/index/logo_java.svg
       text: Java
@@ -50,6 +46,10 @@ sections:
         src: media/index/logo_python.svg
       text: Python
       href: QuickStarts/python-analyze
+    - image:
+        src: media/index/logo_go.svg
+      text: Indítás
+      href: QuickStarts/go-analyze
 - title: Referencia
   items:
   - type: list
@@ -59,4 +59,4 @@ sections:
     - title: API-k
       html: <p><a href="https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44">Computer Vision API 2.0-s verzió</a></p> <p><a href="https://westus.dev.cognitive.microsoft.com/docs/services/56f91f2d778daf23d8ec6739">Computer Vision API 1.0-s verzió</a></p>
     - title: SDK-k
-      html: <p><a href="https://github.com/Azure/azure-sdk-for-go/tree/master/services/cognitiveservices/v1.0/computervision">Go</a></p> <p><a href="https://docs.microsoft.com/javascript/api/overview/azure/cognitive-services?view=azure-node-latest#vision-modules">Node.js</a></p> <p><a href="https://docs.microsoft.com/python/api/overview/azure/cognitive-services?view=azure-python#vision-modules">Python</a></p> <p><a href="https://github.com/Microsoft/Cognitive-vision-windows">Windows</a></p> <p><a href="https://github.com/Microsoft/Cognitive-vision-android">Android</a></p> <p><a href="https://github.com/DanilaVladi/Microsoft-Cognitive-Services-Swift-SDK">Swift</a></p>
+      html: <p><a href="https://github.com/Microsoft/Cognitive-vision-windows">Windows</a></p> <p><a href="https://docs.microsoft.com/javascript/api/overview/azure/cognitive-services?view=azure-node-latest#vision-modules">Node.js</a></p> <p><a href="https://docs.microsoft.com/python/api/overview/azure/cognitive-services?view=azure-python#vision-modules">Python</a></p> <p><a href="https://github.com/Azure/azure-sdk-for-go/tree/master/services/cognitiveservices/v1.0/computervision">Go</a></p> <p><a href="https://github.com/Microsoft/Cognitive-vision-android">Android</a></p> <p><a href="https://github.com/DanilaVladi/Microsoft-Cognitive-Services-Swift-SDK">Swift</a></p>

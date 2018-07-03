@@ -41,18 +41,16 @@
       href: 'https://go.microsoft.com/fwlink/?linkid=865446'
     - name: Egyéni vizuális előrejelzési API
       href: 'https://go.microsoft.com/fwlink/?linkid=865445'
-    - name: Korlátok és kvóták
-      href: limits-and-quotas.md
     - name: Szószedet
       href: glossary-of-terms.md
     - name: SDK-k
       items:
-        - name: Indítás
-          href: 'https://github.com/Azure/azure-sdk-for-go/tree/master/services/cognitiveservices'
-        - name: Python
-          href: 'https://docs.microsoft.com/python/api/overview/azure/cognitive-services?view=azure-python#vision-modules'
         - name: Windows
           href: 'http://github.com/Microsoft/Cognitive-CustomVision-Windows'
+        - name: Python
+          href: 'https://docs.microsoft.com/python/api/overview/azure/cognitive-services?view=azure-python#vision-modules'
+        - name: Indítás
+          href: 'https://github.com/Azure/azure-sdk-for-go/tree/master/services/cognitiveservices'
 - name: További források
   items:
     - name: Példák
@@ -67,3 +65,7 @@
       href: 'https://stackoverflow.com/questions/tagged/microsoft-cognitive'
     - name: Azure-ütemterv
       href: 'https://azure.microsoft.com/roadmap/?category=ai-machine-learning'
+    - name: Régiónkénti rendelkezésre állás
+      href: 'https://azure.microsoft.com/global-infrastructure/services/'
+    - name: Korlátok és kvóták
+      href: limits-and-quotas.md

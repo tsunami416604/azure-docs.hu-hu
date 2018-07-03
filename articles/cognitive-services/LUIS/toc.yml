@@ -192,11 +192,11 @@
         - name: Pontosság javítása kötegelt teszteléssel
           href: luis-tutorial-batch-testing.md
     - name: Az alkalmazás közzététele
-      href: PublishApp.md
+      href: luis-how-to-publish-app.md
     - name: Előre összeállított modellek használata
       items:
         - name: Előre összeállított entitások használata
-          href: Pre-builtEntities.md
+          href: luis-prebuilt-entities.md
         - name: Előre összeállított tartományok használata
           href: luis-how-to-use-prebuilt-domains.md
         - name: Az előre összeállított Cortana-alkalmazás használata
@@ -208,7 +208,7 @@
         - name: Kulcsok létrehozása
           href: luis-how-to-azure-subscription.md
         - name: Kulcsok hozzáadása a LUIS szolgáltatásban
-          href: Manage-Keys.md
+          href: luis-how-to-manage-keys.md
         - name: Végponthasználat megtekintése a PowerShell-lel
           href: luis-how-to-manage-from-cloud-shell.md
         - name: Verziók kezelése
@@ -283,6 +283,10 @@
           href: 'https://github.com/Microsoft/Cognitive-LUIS-Android'
         - name: Node.js
           href: 'https://github.com/Microsoft/Cognitive-LUIS-Node.js'
+        - name: Indítás
+          href: 'https://aka.ms/luis-sdk-go'
+        - name: Java
+          href: 'https://aka.ms/luis-java-sdk'
         - name: Python
           href: 'https://github.com/Microsoft/Cognitive-LUIS-Python'
         - name: .NET-végpont

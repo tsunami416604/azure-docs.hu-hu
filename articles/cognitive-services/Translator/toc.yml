@@ -21,6 +21,20 @@
           href: quickstart-csharp-languages.md
         - name: Mondathosszok lekérése a szövegből
           href: quickstart-csharp-sentences.md
+    - name: Indítás
+      items:
+        - name: Szöveg lefordítása
+          href: quickstart-go-translate.md
+        - name: Szövegátalakítási szkript
+          href: quickstart-go-transliterate.md
+        - name: Szöveg nyelvének azonosítása
+          href: quickstart-go-detect.md
+        - name: Alternatív fordítások lekérése
+          href: quickstart-go-dictionary.md
+        - name: Támogatott nyelvek lekérése
+          href: quickstart-go-languages.md
+        - name: Mondathosszok lekérése a szövegből
+          href: quickstart-go-sentences.md
     - name: Java
       items:
         - name: Szöveg lefordítása
