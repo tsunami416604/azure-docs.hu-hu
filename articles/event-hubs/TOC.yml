@@ -60,6 +60,20 @@
       href: event-hubs-dotnet-framework-getstarted-send.md
     - name: Események fogadása a .NET-keretrendszer használatával
       href: event-hubs-dotnet-framework-getstarted-receive-eph.md
+    - name: A Kafkához készült Event Hubs
+      items:
+        - name: A Kafkához készült Event Hubs ökoszisztémájának áttekintése
+          href: event-hubs-for-kafka-ecosystem-overview.md
+        - name: Kafka-kompatibilis eseményközpontok létrehozása
+          href: event-hubs-create-kafka-enabled.md
+        - name: Streamelés a Kafkához készült Event Hubs ökoszisztémájában
+          href: event-hubs-quickstart-kafka-enabled-event-hubs.md
+        - name: A Kafka MirrorMaker és az Event Hubs – oktatóanyag
+          href: event-hubs-kafka-mirror-maker-tutorial.md
+        - name: Az Apache Flink és az Event Hubs – oktatóanyag
+          href: event-hubs-kafka-flink-tutorial.md
+        - name: Az Akka Streams és az Event Hubs – oktatóanyag
+          href: event-hubs-kafka-akka-streams-tutorial.md
     - name: Elérhető API-k
       href: event-hubs-api-overview.md
       items:

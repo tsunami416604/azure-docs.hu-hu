@@ -1,17 +1,14 @@
 # Áttekintés
-## [Biztonságos emelt szintű hozzáférés](active-directory-securing-privileged-access.md)
 ## [Mi az Azure AD PIM?](../active-directory-privileged-identity-management-configure.md?toc=%2fazure%2factive-directory%2fprivileged-identity-management%2ftoc.json)
+## [Biztonságos emelt szintű hozzáférés](../admin-roles-best-practices.md?toc=%2fazure%2factive-directory%2fprivileged-identity-management%2ftoc.json)
 ## [Címtárszerepkörök a PIM-ben](../active-directory-privileged-identity-management-roles.md?toc=%2fazure%2factive-directory%2fprivileged-identity-management%2ftoc.json)
 ## [PIM Azure-erőforrásokhoz](azure-pim-resource-rbac.md)
 ## [A PIM jóváhagyási munkafolyamata](azure-ad-pim-approval-workflow.md)
-## [Szerepkörök](../active-directory-privileged-identity-management-roles.md?toc=%2fazure%2factive-directory%2fprivileged-identity-management%2ftoc.json)
-
-
 
 # Bevezetés
 ## [Előfizetési követelmények](subscription-requirements.md)
 ## [Bevezetés az Azure Portal használatába](../active-directory-privileged-identity-management-getting-started.md?toc=%2fazure%2factive-directory%2fprivileged-identity-management%2ftoc.json)
-## [A biztonsági varázsló](../active-directory-privileged-identity-management-security-wizard.md?toc=%2fazure%2factive-directory%2fprivileged-identity-management%2ftoc.json)
+## [Adatvédelmi varázsló](../active-directory-privileged-identity-management-security-wizard.md?toc=%2fazure%2factive-directory%2fprivileged-identity-management%2ftoc.json)
 ## [A PIM-hez való hozzáférés megadása](../active-directory-privileged-identity-management-how-to-give-access-to-pim.md?toc=%2fazure%2factive-directory%2fprivileged-identity-management%2ftoc.json)
 ## [Előfizetés-kezelés engedélyezése](pim-resource-roles-enable-subscription-management.md)
 ## [Erőforrások felfedezése](pim-resource-roles-discover-resources.md)
@@ -46,16 +43,8 @@
 ### [Hozzáférési felülvizsgálat befejezése](pim-resource-roles-complete-access-review.md)
 
 # Gyakori kérdések
-## A PIM használata címtárszerepkörökkel
 ## A PIM használata erőforrás-szerepkörökkel
 ### [Hozzárendelés-típusok](pim-resource-roles-eligible-visibility.md)
 
 # Referencia
 ## [Kódminták](https://azure.microsoft.com/resources/samples/?service=active-directory)
-
-# Kapcsolódó témakörök
-## [Azure Active Directory](/azure/active-directory/)
-## [Szerepköralapú hozzáférés-vezérlés](../../role-based-access-control/overview.md)
-# További források
-## [Azure-ütemterv](https://azure.microsoft.com/roadmap/?category=security-identity)
-## [Díjkalkulátor](https://azure.microsoft.com/pricing/calculator/)

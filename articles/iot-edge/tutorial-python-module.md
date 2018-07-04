@@ -1,23 +1,24 @@
 ---
-title: Az Azure IoT Edge Python-modulja | Microsoft Docs
-description: IoT Edge-modul létrehozása Python-kóddal, majd üzembe helyezése egy peremhálózati eszközön
+title: Azure IoT Edge Python – oktatóanyag | Microsoft Docs
+description: Az oktatóanyag bemutatja, hogyan hozhat létre IoT Edge-modult Python-kóddal, és hogyan helyezheti üzembe peremhálózati eszközökön.
+services: iot-edge
 author: shizn
-manager: ''
+manager: timlt
 ms.author: xshi
-ms.date: 03/18/2018
+ms.date: 06/26/2018
 ms.topic: tutorial
 ms.service: iot-edge
-services: iot-edge
-ms.openlocfilehash: 88d772306cb9e67216b380aa885284ebedc77b5f
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.custom: mvc
+ms.openlocfilehash: 884237a851461fe3d7a48708d221909804760ceb
+ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34632108"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37063122"
 ---
-# <a name="develop-and-deploy-a-python-iot-edge-module-to-your-simulated-device---preview"></a>Python-alapú IoT Edge-modul fejlesztése és üzembe helyezése szimulált eszközön – előzetes verzió
+# <a name="tutorial-develop-and-deploy-a-python-iot-edge-module-to-your-simulated-device"></a>Oktatóanyag: Python-alapú IoT Edge-modul fejlesztése és üzembe helyezése szimulált eszközön
 
-Az IoT Edge-modulokkal olyan kódot helyezhet üzembe, amely közvetlenül az IoT Edge-eszközökön implementálja az üzleti logikát. Ez az oktatóanyag végigvezeti az érzékelőktől kapott adatokat szűrő IoT Edge-modul létrehozásának és üzembe helyezésének lépésein. Az Azure IoT Edge üzembe helyezése szimulált eszközön [Windows][lnk-tutorial1-win] vagy [Linux][lnk-tutorial1-lin] rendszeren című oktatóanyagban létrehozott szimulált IoT Edge-eszközt fogja használni. Eben az oktatóanyagban az alábbiakkal fog megismerkedni:    
+Az IoT Edge-modulokkal olyan kódot helyezhet üzembe, amely közvetlenül az IoT Edge-eszközökön implementálja az üzleti logikát. Ez az oktatóanyag végigvezeti az érzékelőktől kapott adatokat szűrő IoT Edge-modul létrehozásának és üzembe helyezésének lépésein. Az Azure IoT Edge üzembe helyezése szimulált eszközön [Windows][lnk-quickstart-win] vagy [Linux][lnk-quickstart-lin] rendszeren című rövid útmutatóban létrehozott szimulált IoT Edge-eszközt fogja használni. Eben az oktatóanyagban az alábbiakkal fog megismerkedni:    
 
 > [!div class="checklist"]
 > * IoT Edge Python-modul létrehozása a Visual Studio Code-dal
@@ -28,15 +29,14 @@ Az IoT Edge-modulokkal olyan kódot helyezhet üzembe, amely közvetlenül az Io
 
 Az ebben az oktatóanyagban létrehozott IoT Edge-modul szűri az eszköze által létrehozott hőmérsékletadatokat. Csak akkor küld felfelé irányuló üzeneteket, amikor a hőmérséklet egy megadott küszöbérték felett van. Ez a fajta peremhálózati elemzés a felhőbe küldött és ott tárolt adatok mennyiségének csökkentésére használható. 
 
-> [!IMPORTANT]
-> Jelenleg a Python-modul csak amd64 Linux-tárolókon futtatható, Windows- vagy ARM-alapú tárolókon nem. 
+Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free) a virtuális gép létrehozásának megkezdése előtt.
+
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* A rövid útmutatóban vagy az első oktatóanyagban létrehozott Azure IoT Edge-eszköz.
-* Az IoT Edge-eszköz elsődleges kulcsának kapcsolati sztringje.  
+* A [Linux](quickstart-linux.md) vagy [Windows-eszközök](quickstart.md) rövid útmutatójában létrehozott Azure IoT Edge-eszköz.
 * [Visual Studio Code](https://code.visualstudio.com/). 
-* [Azure IoT Edge-bővítmény a Visual Studio Code-hoz](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-edge). 
+* [Azure IoT Edge-bővítmény a Visual Studio Code-hoz](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-edge) 
 * [Python-bővítmény a Visual Studio Code-hoz](https://marketplace.visualstudio.com/items?itemName=ms-python.python). 
 * [Docker](https://docs.docker.com/engine/installation/) ugyanazon a számítógépen, amelyre telepítve van a Visual Studio Code. A Community Edition (CE) kiadás elegendő ehhez az oktatóanyaghoz. 
 * [Python](https://www.python.org/downloads/).
@@ -56,36 +56,61 @@ Ehhez az oktatóanyaghoz bármilyen Docker-kompatibilis beállításjegyzéket h
 
 ## <a name="create-an-iot-edge-module-project"></a>IoT Edge-modulprojekt létrehozása
 A következő lépések azt mutatják be, hogyan hozhat létre egy IoT Edge Python-modult a Visual Studio Code és az Azure IoT Edge bővítmény használatával.
+
+### <a name="create-a-new-solution"></a>Új megoldás létrehozása
+
+A **cookiecutter** Python-csomag használatával létrehozhat egy Python-megoldássablont, amelyre majd építkezhet. 
+
 1. A Visual Studio Code-ban válassza a **View** > **Integrated Terminal** (Nézet, Integrált terminál) elemet a VS Code integrált terminál megnyitásához.
-2. Az integrált terminálban írja be a következő parancsot a **cookiecutter** telepítéséhez (vagy frissítéséhez) (javasoljuk, hogy ezt virtuális környezetben vagy felhasználói telepítésként hajtsa végre, az alábbiak szerint):
+
+2. Az integrált terminálban írja be a következő parancsot a **cookiecutter** telepítéséhez (vagy frissítéséhez), amellyel létrehozhatja az Edge-megoldássablont a VS Code-ban:
 
     ```cmd/sh
     pip install --upgrade --user cookiecutter
     ```
 
-3. Hozzon létre egy projektet az új modulhoz. A következő parancs létrehozza a **FilterModule** nevű projektmappát a tárolóadattárral együtt. Ha Azure-beli tárolóregisztrációs adatbázist használ, az `image_repository` paraméternek `<your container registry name>.azurecr.io/filtermodule` formátumúnak kell lennie. Írja be a következő parancsot az aktuális munkakönyvtárba:
+3. A VS Code parancskatalógusának megnyitásához válassza a **View (Nézet)** > **Command Palette (Parancskatalógus)** elemet. 
 
-    ```cmd/sh
-    cookiecutter --no-input https://github.com/Azure/cookiecutter-azure-iot-edge-module module_name=FilterModule image_repository=<your container registry address>/filtermodule
-    ```
+4. A parancskatalógusban írja be és futtassa az **Azure: Sign in** (Azure: bejelentkezés) parancsot, és az utasításokat követve jelentkezzen be Azure-fiókjába. Ha már be van jelentkezve, ezt a lépést kihagyhatja.
+
+5. A parancskatalógusban írja be és futtassa az **Azure IoT Edge: New IoT Edge solution** (Azure IoT Edge: új IoT Edge-megoldás) parancsot. A parancskatalógusban adja meg az alábbi információkat a megoldás létrehozásához: 
+
+   1. Válassza ki azt a mappát, ahol a megoldást létre szeretné hozni. 
+   2. Adja meg a megoldás nevét, vagy fogadja el az alapértelmezett **EdgeSolution** nevet.
+   3. A modul sablonjaként válassza a **Python-modult**. 
+   4. A modulnak adja a **PythonModule** nevet. 
+   5. Adja meg az előző szakaszban létrehozott Azure Container Registryt az első modul rendszerképadattáraként. Cserélje le a **localhost:5000** értéket a bejelentkezési kiszolgáló kimásolt értékére. A sztring végül a következőképp néz ki: **\<regisztrációs adatbázis neve\>.azurecr.io/pythonmodule**.
  
-4. Válassza a **File** > **Open Folder** (Fájl, Mappa megnyitása) elemet.
-5. Lépjen a **FilterModule** mappához, és kattintson a **Select Folder** (Mappa kiválasztása) elemre a projekt VS Code-ban való megnyitásához.
-6. A VS Code Explorerben kattintson a **main.py** elemre, hogy megnyissa.
-7. A **FilterModule** névtér tetején importálja a `json` könyvtárat:
+A VS Code-ablak betölti az IoT Edge-megoldás munkaterületét. Ez egy **modules** mappát, egy üzembehelyezési jegyzéksablonfájlt és egy **.env** fájlt tartalmaz. 
+
+### <a name="add-your-registry-credentials"></a>A regisztrációs adatbázis hitelesítő adatainak hozzáadása
+
+A környezeti fájl tárolja a tárolóadattár hitelesítő adatait, és megosztja azokat az IoT-Edge futtatókörnyezettel. A futtatókörnyezetnek szüksége van ezekre a hitelesítő adatokra a privát rendszerképek letöltéséhez az IoT Edge-eszközre. 
+
+1. A VS Code Explorerben nyissa meg a **.env** fájlt. 
+2. Adja meg az Azure Container Registryből kimásolt **felhasználónevet** és **jelszót** a megfelelő mezőkben. 
+3. Mentse el ezt a fájlt. 
+
+### <a name="update-the-module-with-custom-code"></a>A modul módosítása egyéni kóddal
+
+Mindegyik sablon tartalmaz egy mintakódot is, amely fogadja a **tempSensor** modul szimulált érzékelőadatait, és továbbítja azokat az IoT Hub felé. Ebben a szakaszban adjuk hozzá a kódot, amely a pythonModule kiterjesztésével elemzi az üzeneteket azok elküldése előtt. 
+
+1. A VS Code Explorerben nyissa meg a **modules** > **PythonModule** > **main.py** modult.
+
+2. A **main.py** tetején importálja a `json` könyvtárat:
 
     ```python
     import json
     ```
 
-8. Globális számlálóként adja meg a `TEMPERATURE_THRESHOLD`, `RECEIVE_CALLBACKS` és `TWIN_CALLBACKS` elemet. A hőmérsékleti határérték azt az értéket állítja be, amelyet a mért hőmérsékletnek túl kell lépnie ahhoz, hogy a rendszer elküldje az adatokat az IoT Hubnak.
+3. Globális számlálóként adja meg a `TEMPERATURE_THRESHOLD` és a `TWIN_CALLBACKS` változót. A hőmérsékleti határérték azt az értéket állítja be, amelyet a mért géphőmérsékletnek túl kell lépnie ahhoz, hogy a rendszer elküldje az adatokat az IoT Hubnak.
 
     ```python
     TEMPERATURE_THRESHOLD = 25
-    TWIN_CALLBACKS = RECEIVE_CALLBACKS = 0
+    TWIN_CALLBACKS = 0
     ```
 
-9. Frissítse a `receive_message_callback` függvényt az alábbi tartalommal.
+4. Cserélje le a `receive_message_callback` függvényt az alábbi kódra:
 
     ```python
     # receive_message_callback is invoked when an incoming message arrives on the specified 
@@ -97,129 +122,136 @@ A következő lépések azt mutatják be, hogyan hozhat létre egy IoT Edge Pyth
         message_buffer = message.get_bytearray()
         size = len(message_buffer)
         message_text = message_buffer[:size].decode('utf-8')
-        print("    Data: <<<{}>>> & Size={:d}".format(message_text, size))
+        print ( "    Data: <<<%s>>> & Size=%d" % (message_text, size) )
         map_properties = message.properties()
         key_value_pair = map_properties.get_internals()
-        print("    Properties: {}".format(key_value_pair))
+        print ( "    Properties: %s" % key_value_pair )
         RECEIVE_CALLBACKS += 1
-        print("    Total calls received: {:d}".format(RECEIVE_CALLBACKS))
+        print ( "    Total calls received: %d" % RECEIVE_CALLBACKS )
         data = json.loads(message_text)
         if "machine" in data and "temperature" in data["machine"] and data["machine"]["temperature"] > TEMPERATURE_THRESHOLD:
             map_properties.add("MessageType", "Alert")
-            print("Machine temperature {} exceeds threshold {}".format(data["machine"]["temperature"], TEMPERATURE_THRESHOLD))
+            print("Machine temperature %s exceeds threshold %s" % (data["machine"]["temperature"], TEMPERATURE_THRESHOLD))
         hubManager.forward_event_to_output("output1", message, 0)
         return IoTHubMessageDispositionResult.ACCEPTED
     ```
 
-10. Adjon hozzá egy új `device_twin_callback` függvényt. A rendszer ezt a függvényt akkor hívja meg, amikor a kívánt tulajdonságok frissülnek.
+5. Adja hozzá a `module_twin_callback` nevű új függvényt. A rendszer ezt a függvényt akkor hívja meg, amikor a kívánt tulajdonságok frissülnek.
 
     ```python
-    # device_twin_callback is invoked when twin's desired properties are updated.
-    def device_twin_callback(update_state, payload, user_context):
+    # module_twin_callback is invoked when twin's desired properties are updated.
+    def module_twin_callback(update_state, payload, user_context):
         global TWIN_CALLBACKS
         global TEMPERATURE_THRESHOLD
-        print("\nTwin callback called with:\nupdateStatus = {}\npayload = {}\ncontext = {}".format(update_state, payload, user_context))
+        print ( "\nTwin callback called with:\nupdateStatus = %s\npayload = %s\ncontext = %s" % (update_state, payload, user_context) )
         data = json.loads(payload)
         if "desired" in data and "TemperatureThreshold" in data["desired"]:
             TEMPERATURE_THRESHOLD = data["desired"]["TemperatureThreshold"]
         if "TemperatureThreshold" in data:
             TEMPERATURE_THRESHOLD = data["TemperatureThreshold"]
         TWIN_CALLBACKS += 1
-        print("Total calls confirmed: {:d}\n".format(TWIN_CALLBACKS))
+        print ( "Total calls confirmed: %d\n" % TWIN_CALLBACKS )
     ```
 
-11. Adjon hozzá egy új sort a `HubManager` osztályban az `__init__` metódushoz a hozzáadott `device_twin_callback` függvény inicializálásához.
+6. Adjon hozzá egy új sort a `HubManager` osztályban az `__init__` metódushoz a hozzáadott `module_twin_callback` függvény inicializálásához.
 
     ```python
     # sets the callback when a twin's desired properties are updated.
-    self.client.set_device_twin_callback(device_twin_callback, self)
+    self.client.set_module_twin_callback(module_twin_callback, self)
     ```
 
+7. Mentse el ezt a fájlt.
 
-12. Mentse el ezt a fájlt.
+## <a name="build-your-iot-edge-solution"></a>Az IoT Edge-megoldás összeállítása
 
-## <a name="create-a-docker-image-and-publish-it-to-your-registry"></a>Docker-rendszerkép létrehozása és közzététele a beállításjegyzékben
+Az előző szakaszban létrehozott egy IoT Edge-megoldást, és hozzáadott egy kódot a PythonModule modulhoz, amely kiszűri az olyan üzeneteket, ahol a jelentett géphőmérséklet az elfogadható küszöbérték alatt van. Most létre kell hoznia a megoldást tárolórendszerképként, és le kell küldenie a tárolóregisztrációs adatbázisba. 
 
-1. A VS Code integrált termináljában az alábbi paranccsal jelentkezzen be a Dockerbe: 
+1. A Visual Studio Code integrált termináljában az alábbi paranccsal jelentkezzen be a Dockerbe, ahonnan a modul rendszerképét leküldheti az Azure Container Registrybe: 
      
    ```csh/sh
-   docker login -u <username> -p <password> <Login server>
+   docker login -u <ACR username> -p <ACR password> <ACR login server>
    ```
-        
-   Használja azt a felhasználónevet, jelszót és bejelentkezési kiszolgálót, amelyet az Azure-beli tárolóregisztrációs adatbázisból másolt ki annak létrehozásakor.
+   Használja az első szakaszban az Azure Container Registryből kimásolt felhasználónevet, jelszót és bejelentkezési kiszolgálót. Vagy kérje le őket ismét az Azure Portalon a tárolóregisztrációs adatbázis **Hozzáférési kulcsok** szakaszában.
 
-2. A VS Code Explorerben kattintson a jobb gombbal a **module.json** fájlra, és kattintson az **IoT Edge-modul Docker-rendszerképének összeállítása és leküldése** elemre. A VS Code-ablak tetején lévő előugró legördülő listában válassza ki a tárolóplatformot, például Linux-alapú tároló esetén az **amd64** lehetőséget. A VS Code ezután tárolókba helyezi a `main.py` elemet és a szükséges függőségeket, majd leküldi őket az Ön által megadott tárolóregisztrációs adatbázisba. A rendszerkép felépítése első alkalommal több percig is eltarthat.
+2. A VS Code Explorerben az IoT Edge-megoldás munkaterületén nyissa meg a **deployment.template.json** fájlt. 
 
-3. A VS Code integrált termináljában hozzáférhet a teljes tárolórendszerképhez címkével együtt. Az összeállítás és a leküldés meghatározásáról a `module.json` fájlban talál további információt.
+   Az `$edgeAgent` a fájlból tudja meg, hogy két modult kell üzembe helyeznie: az eszközadatokat szimuláló **tempSensor**, valamint a **PythonModule** modult. A `PythonModule.image` értéke a rendszerkép Linux amd64-es verziójára lett beállítva. További információt az üzembehelyezési jegyzékekről az [IoT Edge-modulok használatát, konfigurálását és újrahasznosítását](module-composition.md) ismertető cikkben olvashat.
 
-## <a name="add-registry-credentials-to-edge-runtime"></a>Beállításjegyzékhez tartozó hitelesítő adatok hozzáadása az Edge-futtatókörnyezethez
-Adja hozzá az Edge-futtatókörnyezethez a beállításjegyzék hitelesítő adatait azon a számítógépen, amelyen az Edge-eszközt futtatja. Ezek a hitelesítő adatok hozzáférést nyújtanak a futtatókörnyezetnek a tároló lekéréséhez. 
+   A fájl a regisztrációs adatbázis hitelesítő adatait is tartalmazza. A sablonfájlban a felhasználóneve és a jelszava helyén helyőrzők állnak. Az üzembehelyezési jegyzék létrehozásakor a rendszer a mezőket automatikusan kitölti a **.env** fájlban megadott értékekkel. 
 
-- Windowson futtassa az alábbi parancsot:
-    
-    ```cmd/sh
-    iotedgectl login --address <your container registry address> --username <username> --password <password> 
-    ```
-
-- Linuxon futtassa az alábbi parancsot:
-    
-    ```cmd/sh
-    sudo iotedgectl login --address <your container registry address> --username <username> --password <password> 
-    ```
-
-## <a name="run-the-solution"></a>A megoldás futtatása
-
-1. Az [Azure Portalon](https://portal.azure.com) keresse meg az IoT hubot.
-2. Lépjen az **IoT Edge (előzetes verzió)** részhez, és válassza ki az IoT Edge-eszközt.
-3. Válassza a **Modulok beállítása** lehetőséget. 
-2. Ellenőrizze, hogy a rendszer automatikusan feltölti-e adatokkal a **tempSensor** modult. Ha nem, akkor az alábbi lépéseket követve adhatja meg az adatokat:
-    1. Válassza az **IoT Edge-modul hozzáadása** lehetőséget.
-    2. A **Név** mezőbe írja a következőt: `tempSensor`.
-    3. A **Rendszerkép URI** mezőbe írja be a következőt: `microsoft/azureiotedge-simulated-temperature-sensor:1.0-preview`.
-    4. Hagyja változatlanul a többi beállítást, és kattintson a **Mentés** gombra.
-9. Adja hozzá az előző szakaszokban létrehozott **filterModule** modult. 
-    1. Válassza az **IoT Edge-modul hozzáadása** lehetőséget.
-    2. A **Név** mezőbe írja a következőt: `filterModule`.
-    3. A **Rendszerkép URI** mezőbe írja be a rendszerkép címét, például a következőt: `<your container registry address>/filtermodule:0.0.1-amd64`. A rendszerkép teljes címe az előző szakaszban található.
-    4. Jelölje be az **Engedélyezés** jelölőnégyzetet, hogy szerkeszthesse a modul ikerdokumentumát. 
-    5. Cserélje le a modul ikerdokumentumához tartozó szövegmezőben lévő JSON-t a következő JSON-ra: 
-
-        ```json
-        {
-           "properties.desired":{
-              "TemperatureThreshold":25
-           }
-        }
-        ```
- 
-    6. Kattintson a **Mentés** gombra.
-10. Kattintson a **Tovább** gombra.
-11. Az **Útvonalak megadása** lépésben másolja az alábbi JSON-t a szövegmezőbe. A modulok minden üzenetet az Edge-futtatókörnyezetben tesznek közzé. A futtatókörnyezetben lévő deklaratív szabályok határozzák meg az üzenetek célját. Ebben az oktatóanyagban két útvonalra lesz szüksége. Az első útvonal a hőmérséklet-érzékelőből a szűrőmodulba szállítja az üzeneteket az input1 végponton keresztül, amelyet a **FilterMessages** kezelővel konfigurált. A második útvonal a szűrőmodulból az IoT Hubra szállítja az üzeneteket. Ebben az útvonalban az `upstream` egy speciális cél, amely alapján az Edge Hub az IoT Hubnak küldi az üzeneteket. 
-
+3. Adja hozzá a PythonModule modul ikerdokumentumát az üzembehelyezési jegyzékhez. Szúrja be a következő JSON-tartalmat a `moduleContent` szakasz alján, az `$edgeHub` modul ikerdokumentuma után: 
     ```json
-    {
-       "routes":{
-          "sensorToFilter":"FROM /messages/modules/tempSensor/outputs/temperatureOutput INTO BrokeredEndpoint(\"/modules/filterModule/inputs/input1\")",
-          "filterToIoTHub":"FROM /messages/modules/filterModule/outputs/output1 INTO $upstream"
-       }
-    }
+        "PythonModule": {
+            "properties.desired":{
+                "TemperatureThreshold":25
+            }
+        }
     ```
 
-4. Kattintson a **Tovább** gombra.
-5. A **Sablon áttekintése** lépésben kattintson a **Küldés** elemre. 
-6. Térjen vissza az IoT Edge-eszköz részleteit tartalmazó oldalra, és kattintson a **Frissítés** elemre. Látható, hogy az új **filtermodule** fut a **tempSensor** modullal és az **IoT Edge-futtatókörnyezettel** együtt. 
+4. Mentse el ezt a fájlt.
+
+5. A VS Code Explorerben kattintson a jobb gombbal a **deployment.template.json** fájlra, és válassza a **Build IoT Edge solution** (IoT Edge-megoldás összeállítása) lehetőséget. 
+
+Amikor a megoldás összeállítására utasítja a Visual Studio Code-ot, az elsőként lekéri az adatokat az üzembehelyezési sablonból, és létrehoz egy `deployment.json` fájlt egy új **config** mappában. Ezután futtatja a következő két parancsot az integrált terminálon: `docker build` és `docker push`. A két parancs felépíti a kódot, tárolóba helyezi a Python-kódot, majd leküldi azt a megoldás inicializálásakor megadott tárolóregisztrációs adatbázisba. 
+
+A tárolórendszerkép teljes címét a címkével a VS Code integrált termináljában futó `docker build` parancsban tekintheti meg. A rendszerkép címe a `module.json` fájlban lévő információk alapján áll össze az **\<adattár\>:\<verzió\>-\<platform\>** formátumban. Ebben az oktatóanyagban a következőképpen kell kinéznie: **registryname.azurecr.io/pythonmodule:0.0.1-amd64**.
+
+## <a name="deploy-and-run-the-solution"></a>A megoldás üzembe helyezése és futtatása
+
+A Python-modult az Azure Portal segítségével helyezheti üzembe az IoT Edge-eszközökön a rövid útmutatókban bemutatott módon, de a modulokat a Visual Studio Code használatával is üzembe helyezheti és monitorozhatja. A következő szakaszokban az előfeltételek között felsorolt, VS Code-hoz készült Azure IoT Edge-bővítményt használjuk. Telepítse most, ha korábban nem tette meg. 
+
+1. A **View (Nézet)** > **Command Palette (Parancskatalógus)** elem kiválasztásával nyissa meg a VS Code parancskatalógusát.
+
+2. Keresse meg, majd futtassa az **Azure: Sign in** (Azure: bejelentkezés) parancsot. Az utasításokat követve jelentkezzen be Azure-fiókjába. 
+
+3. A parancskatalógusban keresse meg és futtassa az **Azure IoT Hub: Select IoT Hub** (Azure IoT Hub: IoT Hub kiválasztása) parancsot. 
+
+4. Keresse meg az IoT Hubot tartalmazó előfizetést, majd válassza ki az IoT Hubot, amelyhez hozzá kíván férni.
+
+5. A VS Code Explorerben bontsa ki az **Azure IoT Hub Devices** (Azure IoT Hub-eszközök) szakaszt. 
+
+6. Kattintson a jobb gombbal az IoT Edge-eszköze nevére, majd válassza a **Create Deployment for IoT Edge device** (Üzembe helyezés létrehozása IoT Edge-eszközhöz) parancsot. 
+
+7. Lépjen a PythonModule modult tartalmazó megoldásmappához. Nyissa meg a **config** mappát, és válassza ki a **deployment.json** fájlt. Kattintson a **Select Edge Deployment Manifest** (Edge üzembehelyezési jegyzék kiválasztása) elemre.
+
+8. Frissítse az **Azure IoT Hub Devices** (Azure IoT Hub-eszközök) szakaszt. Látható, hogy az új **PythonModule** fut a **TempSensor** modul, valamint az **$edgeAgent** és az **$edgeHub** mellett. 
 
 ## <a name="view-generated-data"></a>A létrejött adatok megtekintése
 
-Az IoT Edge-eszközről az IoT hubra küldött, az eszközről a felhőbe irányuló üzenetek monitorozása:
-1. Az Azure IoT-eszközkészlet bővítmény konfigurálása kapcsolati sztringgel az IoT hubhoz: 
-    1. Nyissa meg a VS Code Explorert a **View** > **Explorer** (Nézet, Explorer) elem kiválasztásával. 
-    3. Az Explorerben kattintson az **IOT HUB DEVICES** (IoT Hub-eszközök), majd a **...** elemre. Kattintson a **Set IoT Hub Connection String** (IoT Hub kapcsolati sztring beállítása) elemre, és a felugró ablakban adja meg annak az IoT-központnak a kapcsolati sztringjét, amelyhez az IoT Edge-eszköz csatlakozik. 
+1. Az IoT Hubra érkező adatok monitorozásához kattintson a **...** elemre, majd válassza a **Start Monitoring D2C Messages** (D2C üzenetek monitorozásának megkezdése) lehetőséget.
+2. Egy adott eszköz D2C üzeneteinek monitorozásához kattintson a listában a jobb gombbal az eszközre, és válassza ki a **Start Monitoring D2C Messages** (D2C üzenetek monitorozásának megkezdése) lehetőséget.
+3. Az adatok monitorozásának leállításához futtassa a parancskatalógusban az **Azure IoT Hub: Stop monitoring D2C message** (Azure IoT Hub: D2C üzenetek monitorozásának leállítása) parancsot. 
+4. A modul ikerdokumentumának megtekintéséhez vagy frissítéséhez kattintson a listában a jobb gombbal a modulra, és válassza ki az **Edit module twin** (Modul ikerdokumentumának szerkesztése) lehetőséget. A modul ikerdokumentumának frissítéséhez mentse az ikerdokumentum JSON-fájlját, és kattintson a jobb gombbal a szerkesztési területre, majd válassza az **Update Module Twin** (Modul ikerdokumentumának frissítése) lehetőséget.
+5. A Docker-naplók megtekintéséhez telepítheti a [Docker](https://marketplace.visualstudio.com/items?itemName=PeterJausovec.vscode-docker) for VS Code (Docker a VS Code-hoz) eszközt, és megkeresheti helyileg a futó modulokat a Docker Explorerben. A helyi menüben kattintson a **Show Logs** (Naplók megjelenítése) lehetőségre az integrált terminálban való megtekintéshez. 
 
-        A kapcsolati sztring kereséséhez kattintson az IoT-központ csempéjére az Azure Portalon, majd kattintson a **Megosztott elérési szabályzatok** elemre. A **Megosztott elérési szabályzatok** területen kattintson az **iothubowner** szabályzatra, és másolja ki az **iothubowner** ablakban látható IoT Hub kapcsolati sztringet.   
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása 
 
-1. Az IoT-központra érkező adatok monitorozásához válassza a **Nézet** > **Parancskatalógus** elemet, és keressen rá az **IoT: D2C üzenet monitorozásának megkezdése** menüparancsra. 
-2. Az adatok monitorozásának leállításához használja az **IoT: D2C üzenet monitorozásának leállítása** menüparancsot. 
+<!--[!INCLUDE [iot-edge-quickstarts-clean-up-resources](../../includes/iot-edge-quickstarts-clean-up-resources.md)] -->
+
+Ha azt tervezi, hogy a következő ajánlott cikkel folytatja, megtarthatja és újból felhasználhatja a már létrehozott erőforrásokat és konfigurációkat.
+
+Ellenkező esetben a díjak elkerülése érdekében törölheti a jelen cikkben létrehozott helyi konfigurációkat és Azure-erőforrásokat. 
+
+> [!IMPORTANT]
+> Az Azure-erőforrások és -erőforráscsoportok törlése nem vonható vissza. A törlést követően az erőforráscsoport és a benne foglalt erőforrások véglegesen törölve lesznek. Figyeljen arra, hogy ne töröljön véletlenül erőforráscsoportot vagy erőforrásokat. Ha az IoT Hubot egy meglévő, megtartani kívánt erőforrásokat tartalmazó erőforráscsoportban hozta létre, az erőforráscsoport törlése helyett törölheti csak magát az IoT Hub-erőforrást.
+>
+
+Ha csak az IoT Hubot szeretné törölni, hajtsa végre az alábbi parancsot a saját hubja és a saját erőforráscsoportja nevével:
+
+```azurecli-interactive
+az iot hub delete --name MyIoTHub --resource-group TestResources
+```
+
+
+A teljes erőforráscsoport név alapján való törléséhez:
+
+1. Jelentkezzen be az [Azure portálra](https://portal.azure.com), és kattintson az **Erőforráscsoportok** elemre.
+
+2. A **Szűrés név alapján...** mezőbe írja be az IoT Hubot tartalmazó erőforráscsoport nevét. 
+
+3. Az eredménylistában kattintson az erőforráscsoporttól jobbra lévő **…** ikonra, majd kattintson az **Erőforráscsoport törlése** elemre.
+
+4. A rendszer az erőforráscsoport törlésének megerősítését fogja kérni. A megerősítéshez írja be újra az erőforráscsoport nevét, majd kattintson a **Törlés** elemre. A rendszer néhány pillanaton belül törli az erőforráscsoportot és a benne foglalt erőforrásokat.
 
 ## <a name="next-steps"></a>További lépések
 
@@ -231,8 +263,8 @@ Ebben az oktatóanyagban olyan kódot tartalmazó IoT Edge-modult hozott létre,
 
 
 <!-- Links -->
-[lnk-tutorial1-win]: tutorial-simulate-device-windows.md
-[lnk-tutorial1-lin]: tutorial-simulate-device-linux.md
+[lnk-quickstart-win]: quickstart.md
+[lnk-quickstart-lin]: quickstart-linux.md
 
 <!-- Images -->
 [1]: ./media/tutorial-csharp-module/programcs.png

@@ -1,10 +1,10 @@
 ---
 title: ASP.NET-alkalmazás létrehozása az Azure-ban SQL Database használatával | Microsoft Docs
-description: Megismerheti, hogyan tehet szert egy olyan, az Azure-ban működő ASP.NET-alkalmazásra, amely csatlakozik egy SQL Database-adatbázishoz.
+description: Ismerje meg egy SQL Server-adatbázist használó C# ASP.NET-alkalmazás Azure-ban való üzembe helyezését.
 services: app-service\web
-documentationcenter: nodejs
+documentationcenter: ''
 author: cephalin
-manager: erikre
+manager: cfowler
 editor: ''
 ms.assetid: 03c584f1-a93c-4e3d-ac1b-c82b50c75d3e
 ms.service: app-service-web
@@ -12,15 +12,15 @@ ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: csharp
 ms.topic: tutorial
-ms.date: 06/09/2017
+ms.date: 06/25/2018
 ms.author: cephalin
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 4fd1381594c77d8bba92027fee06c08376ee903b
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: b08033c53185e6229e6fa368a3456749e19eb1f0
+ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2018
-ms.locfileid: "31789248"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37021323"
 ---
 # <a name="tutorial-build-an-aspnet-app-in-azure-with-sql-database"></a>Oktatóanyag: ASP.NET-alkalmazás létrehozása az Azure-ban SQL Database használatával
 
@@ -44,21 +44,17 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 Az oktatóanyag elvégzéséhez:
 
-* Telepítse a [Visual Studio 2017](https://www.visualstudio.com/downloads/) szoftvert a következő számítási feladatokkal:
-  - **ASP.NET és webfejlesztés**
-  - **Azure-fejlesztés**
-
-  ![ASP.NET és webfejlesztés és Azure-fejlesztés (Web és felhőszolgáltatások alatt)](media/app-service-web-tutorial-dotnet-sqldatabase/workloads.png)
+<a href="https://www.visualstudio.com/downloads/" target="_blank">Visual Studio 2017</a> telepítése **ASP.NET és webfejlesztési** számítási feladattal.
 
 Ha már telepítette a Visual Studiót, adja hozzá a számítási feladatokat a Visual Studióban a **Tools** (Eszközök)  >  **Get Tools and Features** (Eszközök és funkciók beszerzése) elemre kattintva.
 
 ## <a name="download-the-sample"></a>A minta letöltése
 
-[Töltse le a mintaprojektet](https://github.com/Azure-Samples/dotnet-sqldb-tutorial/archive/master.zip).
+<a name="-download-the-sample-projecthttpsgithubcomazure-samplesdotnet-sqldb-tutorialarchivemasterzip"></a>-[Töltse le a mintaprojektet](https://github.com/Azure-Samples/dotnet-sqldb-tutorial/archive/master.zip).
+-
+Bontsa ki az -Extract paranccsal a *dotnet-sqldb-tutorial-master.zip* fájlt.
 
-Bontsa ki (csomagolja ki) a *dotnet-sqldb-tutorial-master.zip* fájlt.
-
-A mintaprojekt az [Entity Framework Core](/aspnet/mvc/overview/getting-started/getting-started-with-ef-using-mvc/creating-an-entity-framework-data-model-for-an-asp-net-mvc-application) szolgáltatást használó, alapszintű [ASP.NET MVC](https://www.asp.net/mvc) CRUD (létrehoz-olvas-frissít-töröl) alkalmazást tartalmaz.
+A mintaprojekt az [Entity Framework Code First](/aspnet/mvc/overview/getting-started/getting-started-with-ef-using-mvc/creating-an-entity-framework-data-model-for-an-asp-net-mvc-application) szolgáltatást használó, alapszintű [ASP.NET MVC](https://www.asp.net/mvc) CRUD (létrehoz-olvas-frissít-töröl) alkalmazást tartalmaz.
 
 ### <a name="run-the-app"></a>Az alkalmazás futtatása
 
@@ -70,7 +66,7 @@ Az alkalmazás hibakeresés nélküli futtatásához nyomja le a `Ctrl+F5` bille
 
 Tesztelje az **Edit** (Szerkesztés), a **Details** (Részletek) és a **Delete** (Törlés) hivatkozást.
 
-Az alkalmazás adatbázis-környezetet használ az adatbázishoz való kapcsolódáshoz. Ebben a példában az adatbázis-környezet a `MyDbConnection` nevű kapcsolati karakterláncot használja. A kapcsolati karakterlánc a *Web.config* fájlban adható meg, és a *Models/MyDatabaseContext.cs* fájl hivatkozik rá. A kapcsolati karakterlánc nevét az oktatóanyag későbbi részében is használni fogjuk az Azure-webalkalmazásnak egy Azure SQL Database-adatbázishoz való csatlakoztatásához. 
+Az alkalmazás adatbázis-környezetet használ az adatbázishoz való kapcsolódáshoz. Ebben a példában az adatbázis-környezet a `MyDbConnection` nevű kapcsolati sztringet használja. A kapcsolati sztring a *Web.config* fájlban adható meg, és a *Models/MyDatabaseContext.cs* fájl hivatkozik rá. A kapcsolati sztring nevét az oktatóanyag későbbi részében is használni fogjuk az Azure-webalkalmazásnak egy Azure SQL Database-adatbázishoz való csatlakoztatásához. 
 
 ## <a name="publish-to-azure-with-sql-database"></a>Közzététel az Azure-ban az SQL Database használatával
 
@@ -86,20 +82,20 @@ A közzététel megnyitja a **Create App Service** (App Service létrehozása) p
 
 ### <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
 
-A **Create App Service** (App Service létrehozása) párbeszédpanelen kattintson az **Add an account** (Fiók hozzáadása) gombra, majd jelentkezzen be az Azure-előfizetésébe. Ha már be van jelentkezve egy Microsoft-fiókba, győződjön meg arról, hogy abban a fiókban található az előfizetése. Ha nem abban a Microsoft-fiókban van az Azure-előfizetése, amelyikbe be van jelentkezve, kattintással adja hozzá a helyes fiókot.
+A **Create App Service** (App Service létrehozása) párbeszédpanelen kattintson az **Add an account** (Fiók hozzáadása) gombra, majd jelentkezzen be az Azure-előfizetésébe. Ha már be van jelentkezve egy Microsoft-fiókba, győződjön meg arról, hogy abban a fiókban található az előfizetése. Ha nem abban a Microsoft-fiókban van az Azure-előfizetése, amelyikbe be van jelentkezve, kattintással adja hozzá a helyes fiókot. 
+
+> [!NOTE]
+> Ha már be van jelentkezve, akkor még ne válassza a **Create** (Létrehozás) lehetőséget.
+>
+>
    
 ![Bejelentkezés az Azure-ba](./media/app-service-web-tutorial-dotnet-sqldatabase/sign-in-azure.png)
-
-Ha már bejelentkezett, ezen a panelen már létre is hozhatja az összes, az Azure-webapphoz szükséges erőforrást.
 
 ### <a name="configure-the-web-app-name"></a>A webalkalmazás nevének konfigurálása
 
 Megtarthatja a webalkalmazás létrehozott nevét, vagy módosíthatja egy másik egyedi névre (érvényes karakterek: `a-z`, `0-9` és `-`). A webalkalmazás neve az alkalmazás alapértelmezett URL-címének a részeként használatos (`<app_name>.azurewebsites.net`, amelyben az `<app_name>` a webalkalmazás neve). A webalkalmazás nevének egyedinek kell lennie az Azure összes alkalmazása tekintetében. 
 
 ![A Create App Service (App Service létrehozása) párbeszédpanel](media/app-service-web-tutorial-dotnet-sqldatabase/wan.png)
-
-> [!NOTE]
-> Ne kattintson a **Create** (Létrehozás) gombra. Először egy SQL-adatbázist kell beállítania egy későbbi lépésben.
 
 ### <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
 
@@ -131,13 +127,9 @@ A **Configure App Service Plan** (App Service-csomag konfigurálása) párbeszé
 
 Adatbázis létrehozása előtt szüksége van egy [Azure SQL Database logikai kiszolgálóra](../sql-database/sql-database-features.md). A logikai kiszolgálók adatbázisok egy csoportját tartalmazzák, amelyeket a rendszer egy csoportként kezel.
 
-Válassza az **Explore additional Azure services** (További Azure-szolgáltatások megismerése) elemet.
+Kattintson az **SQL-adatbázis létrehozása** elemre.
 
-![A webapp nevének konfigurálása](media/app-service-web-tutorial-dotnet-sqldatabase/web-app-name.png)
-
-A **Services** (Szolgáltatások) lapon kattintson az **SQL Database** melletti **+** ikonra. 
-
-![A Services (Szolgáltatások) lapon kattintson az SQL Database melletti + ikonra.](media/app-service-web-tutorial-dotnet-sqldatabase/sql.png)
+![SQL-adatbázis létrehozása](media/app-service-web-tutorial-dotnet-sqldatabase/web-app-name.png)
 
 A **Configure SQL Database** (SQL Database konfigurálása) párbeszédpanelen kattintson az **SQL Server** melletti **New** (Új) elemre. 
 
@@ -148,7 +140,7 @@ Adjon meg egy rendszergazdai felhasználónevet és jelszót. A jelszó „össz
 Jegyezze meg ezt a felhasználónevet és jelszót. Később szüksége lesz rájuk a logikaikiszolgáló-példány kezeléséhez.
 
 > [!IMPORTANT]
-> Bár a kapcsolati karakterláncokban lévő jelszava maszkolva van (a Visual Studióban és az App Service szolgáltatásban is), a tény, hogy valamilyen rendszer tárolja, növeli az alkalmazás támadható felületét. Az App Service megszüntetheti ezt a kockázatot [felügyelt szolgáltatásidentitások](app-service-managed-service-identity.md) használatával, feleslegessé téve a titkos kódokat az alkalmazáskonfigurációban. További információ: [Következő lépések](#next-steps).
+> Bár a kapcsolati sztringekban lévő jelszava maszkolva van (a Visual Studióban és az App Service szolgáltatásban is), a tény, hogy valamilyen rendszer tárolja, növeli az alkalmazás támadható felületét. Az App Service megszüntetheti ezt a kockázatot [felügyelt szolgáltatásidentitások](app-service-managed-service-identity.md) használatával, feleslegessé téve a titkos kódokat az alkalmazáskonfigurációban. További információ: [Következő lépések](#next-steps).
 
 ![SQL Server-példány létrehozása](media/app-service-web-tutorial-dotnet-sqldatabase/configure-sql-database-server.png)
 
@@ -159,12 +151,12 @@ Kattintson az **OK** gombra. Ne zárja még be a **Configure SQL Database** (SQL
 A **Configure SQL Database** (SQL Database konfigurálása) párbeszédpanelen: 
 
 * Tartsa meg a **Database Name** (Adatbázisnév) alapértelmezés szerint létrehozott értékét.
-* A **Connection String Name** (Kapcsolati karakterlánc neve) mezőben írja be a *MyDbConnection* nevet. Ennek a névnek meg kell egyeznie a *Models/MyDatabaseContext.cs* fájlban hivatkozott kapcsolati karakterlánccal.
+* A **Connection String Name** (Kapcsolati sztring neve) mezőben írja be a *MyDbConnection* nevet. Ennek a névnek meg kell egyeznie a *Models/MyDatabaseContext.cs* fájlban hivatkozott kapcsolati sztringgel.
 * Kattintson az **OK** gombra.
 
 ![SQL Database konfigurálása](media/app-service-web-tutorial-dotnet-sqldatabase/configure-sql-database.png)
 
-A **Create App Service** (App Service létrehozása) párbeszédpanel jeleníti meg a létrehozott erőforrásokat. Kattintson a **Create** (Létrehozás) gombra. 
+A **Create App Service** (App Service létrehozása) párbeszédpanel jeleníti meg a konfigurált erőforrásokat. Kattintson a **Create** (Létrehozás) gombra. 
 
 ![a létrehozott erőforrások](media/app-service-web-tutorial-dotnet-sqldatabase/app_svc_plan_done.png)
 
@@ -314,13 +306,13 @@ Most, hogy a kódmódosítás működik, az adatbázis-migrálást is beleértve
 
 Fentiekhez hasonlóan kattintson jobb gombbal a projektre, majd válassza a **Publish** (Közzététel) lehetőséget.
 
-Kattintson a **Settings** (Beállítások) elemre a közzétételi varázsló megnyitásához.
+A **Configure** (Konfigurálás) elemre kattintva nyissa meg a közzétételi beállításokat.
 
 ![Közzétételi beállítások megnyitása](./media/app-service-web-tutorial-dotnet-sqldatabase/publish-settings.png)
 
 A varázslóban kattintson a **Next** (Tovább) gombra.
 
-Ellenőrizze, hogy az SQL Database-adatbázis kapcsolati karakterlánca látható a **MyDatabaseContext (MyDbConnection)** alatt. Előfordulhat, hogy kell kiválasztania a **myToDoAppDb** adatbázist a legördülő listából. 
+Ellenőrizze, hogy az SQL Database-adatbázis kapcsolati sztringje látható a **MyDatabaseContext (MyDbConnection)** alatt. Előfordulhat, hogy kell kiválasztania a **myToDoAppDb** adatbázist a legördülő listából. 
 
 Válassza az **Execute Code First Migrations (runs on application start)** (Code First migrálások végrehajtása (alkalmazásindításakor fut)) elemet, majd kattintson a **Save** (Mentés) gombra.
 

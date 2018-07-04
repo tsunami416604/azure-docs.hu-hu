@@ -11,25 +11,22 @@ ms.workload: data-services
 ms.topic: hero-article
 ms.date: 06/20/2018
 ms.author: jingwang
-ms.openlocfilehash: 23d4afffbe108d439dd53d95ed81f7d9fc4246ef
-ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
+ms.openlocfilehash: 4df392ec7e100ef0efcbb3876079710a6b9ca4fb
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36284574"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37048026"
 ---
 # <a name="use-the-copy-data-tool-to-copy-data"></a>Adatok másolása az Adatok másolása eszközzel 
 > [!div class="op_single_selector" title1="Select the version of Data Factory service that you are using:"]
-> * [1. verzió – Általánosan elérhető](v1/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
-> * [2. verzió – Előzetes verzió](quickstart-create-data-factory-copy-data-tool.md)
+> * [1-es verzió](v1/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
+> * [Aktuális verzió](quickstart-create-data-factory-copy-data-tool.md)
 
 Ebben a rövid útmutatóban egy adat-előállítót hoz létre az Azure Portal használatával. Ezután az Adatok másolása eszközzel létrehoz egy folyamatot, amely adatokat másol egy Azure Blob Storage-beli mappából egy másik mappába. 
 
 > [!NOTE]
 > Ha még csak ismerkedik az Azure Data Factory szolgáltatással, a gyors útmutató elvégzése előtt tekintse meg a következő cikket: [Bevezetés az Azure Data Factory használatába](data-factory-introduction.md). 
->
-> Ez a cikk a Data Factory 2. verziójára vonatkozik, amely jelenleg előzetes verzióban érhető el. Ha a szolgáltatás általánosan elérhető 1. verzióját használja, olvassa el a [Data Factory 1. verzió használatának első lépéseit](v1/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md).
-
 
 [!INCLUDE [data-factory-quickstart-prerequisites](../../includes/data-factory-quickstart-prerequisites.md)] 
 
@@ -52,7 +49,7 @@ Ebben a rövid útmutatóban egy adat-előállítót hoz létre az Azure Portal 
    - Kattintson az **Új létrehozása** elemre, és adja meg az erőforráscsoport nevét.   
          
    Az erőforráscsoportokkal kapcsolatos információkért tekintse meg a [Using resource groups to manage your Azure resources](../azure-resource-manager/resource-group-overview.md) (Erőforráscsoportok használata az Azure-erőforrások kezeléséhez) című cikket.  
-4. **Verzió:** válassza a **V2 (előzetes verzió)** értéket.
+4. A **Verzió** résznél válassza a **V2** értéket.
 5. **Hely:** válassza ki az adat-előállító helyét. 
 
    Csak a támogatott helyek jelennek meg a listában. A Data Factory által használt adattárak (Azure Storage, Azure SQL Database stb.) és számítási erőforrások (Azure HDInsight stb.) más helyeken/régiókban is lehetnek.
@@ -85,7 +82,7 @@ Ebben a rövid útmutatóban egy adat-előállítót hoz létre az Azure Portal 
 
     ![A Blob Storage kiválasztása a katalógusból](./media/quickstart-create-data-factory-copy-data-tool/select-blob-source.png)
 
-    c. Az **Azure Blob Storage-fiók megadása** lapon válassza ki tárfiókját a **Storage-fiók neve** listából, és kattintson a **Tovább** gombra. 
+    c. Az **Azure Blob Storage-fiók megadása** lapon válassza ki tárfiókját a **Tárfiók neve** listából, és kattintson a **Befejezés** gombra. 
 
    ![Az Azure Blob Storage-fiók konfigurálása](./media/quickstart-create-data-factory-copy-data-tool/configure-blob-storage.png)
 

@@ -13,24 +13,21 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 06/20/2018
 ms.author: shlo
-ms.openlocfilehash: 8fda0eaa3c92fd750a84db345a91590163c20446
-ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
+ms.openlocfilehash: ceff54b15ef70c9654142566bb1d54b6a7990833
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36293479"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37048638"
 ---
 # <a name="pipeline-execution-and-triggers-in-azure-data-factory"></a>Folyamat-végrehajtás és eseményindítók az Azure Data Factoryban
 > [!div class="op_single_selector" title1="Select the version of the Data Factory service that you're using:"]
-> * [1. verzió – Általánosan elérhető](v1/data-factory-scheduling-and-execution.md)
-> * [2. verzió – Előzetes verzió](concepts-pipeline-execution-triggers.md)
+> * [1-es verzió](v1/data-factory-scheduling-and-execution.md)
+> * [Aktuális verzió](concepts-pipeline-execution-triggers.md)
 
-A _folyamatfuttatás_ egy folyamat-végrehajtás egy példányát határozza meg az Azure Data Factory 2. verziójában. Tegyük fel például, hogy rendelkezik egy délelőtt 8:00-kor, 9:00-kor és 10:00-kor végbemenő folyamattal. Ebben az esetben három külön folyamatfuttatás lesz. Minden folyamathoz tartozik egy egyedi folyamatfuttatási azonosító. A futtatási azonosító az adott folyamatfuttatást egyedien meghatározó GUID. 
+A _folyamatfuttatás_ egy folyamat-végrehajtás egy példányát határozza meg az Azure Data Factoryben. Tegyük fel például, hogy rendelkezik egy délelőtt 8:00-kor, 9:00-kor és 10:00-kor végbemenő folyamattal. Ebben az esetben három külön folyamatfuttatás lesz. Minden folyamathoz tartozik egy egyedi folyamatfuttatási azonosító. A futtatási azonosító az adott folyamatfuttatást egyedien meghatározó GUID. 
 
 A folyamatfuttatások példányosítása jellemzően az argumentumoknak a folyamatban meghatározott paraméterekhez történő továbbításával történik. A folyamatok manuálisan vagy egy _eseményindító_ használatával hajthatók végre. A cikk részletesen ismerteti a folyamatok végrehajtásának mindkét módját.
-
-> [!NOTE]
-> Ez a cikk az Azure Data Factory 2. verziójára vonatkozik, amely jelenleg előzetes verzióban érhető el. Ha az Azure Data Factory általánosan elérhető 1. verzióját használja, lásd: [Ütemezés és végrehajtás a Data Factory 1. verziójában](v1/data-factory-scheduling-and-execution.md).
 
 ## <a name="manual-execution-on-demand"></a>Manuális végrehajtás (igény szerint)
 Egy folyamat manuális végrehajtását _igény szerinti_ végrehajtásnak nevezik.
@@ -136,7 +133,7 @@ Teljes minta: [Rövid útmutató: Adat-előállító létrehozása a .NET SDK ha
 > A .NET SDK-t Data Factory-folyamatok meghívásához használhatja, többek között az Azure Functionsből vagy egy saját webszolgáltatásból stb.
 
 <h2 id="triggers">Eseményindító végrehajtása</h2>
-A folyamatok futtatása triggerek használatával is elvégezhető. Az eseményindítók olyan feldolgozási egységek, amelyek meghatározzák, hogy mikor kezdődjön egy folyamat végrehajtása. A Data Factory jelenleg a triggerek két típusát támogatja:
+A folyamatok futtatása triggerek használatával is elvégezhető. Az eseményindítók olyan feldolgozási egységek, amelyek meghatározzák, hogy mikor kezdődjön egy folyamat végrehajtása. A Data Factory jelenleg a triggerek három típusát támogatja:
 
 - Ütemezési eseményindító: a folyamatokat időpont alapú ütemezés szerint meghívó eseményindító.
 

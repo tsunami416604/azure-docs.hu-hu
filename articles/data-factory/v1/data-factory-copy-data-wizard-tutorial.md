@@ -14,12 +14,12 @@ ms.topic: get-started-article
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 8407249ed56059f278f8e4f84a4466ab286a0c24
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: c0823fa839df98fa81f42bfbb3f7cd2bec6d7c1a
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
-ms.locfileid: "30178089"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37054490"
 ---
 # <a name="tutorial-create-a-pipeline-with-copy-activity-using-data-factory-copy-wizard"></a>Oktatóanyag: Másolási tevékenységgel rendelkező folyamat létrehozása a Data Factory Másolás varázslója használatával
 > [!div class="op_single_selector"]
@@ -33,7 +33,7 @@ ms.locfileid: "30178089"
 > * [.NET API](data-factory-copy-activity-tutorial-using-dotnet-api.md)
 
 > [!NOTE]
-> Ez a cikk a Data Factory általánosan elérhető 1. verziójára vonatkozik. Ha a Data Factory szolgáltatás előzetes verzióban elérhető 2. verzióját használja, tekintse meg [a másolási tevékenység oktatóanyagát a 2. verzió dokumentációjában](../quickstart-create-data-factory-dot-net.md). 
+> Ez a cikk a Data Factory 1-es verziójára vonatkozik. Ha a Data Factory szolgáltatás aktuális verzióját használja, tekintse meg a [másolási tevékenység oktatóanyagát](../quickstart-create-data-factory-dot-net.md). 
 
 
 Ez az oktatóanyag megmutatja, hogyan másolhat adatokat egy Azure Blob Storage-tárból egy Azure SQL-adatbázisba a **Másolás varázsló** segítségével. 
@@ -75,7 +75,7 @@ Ebben a lépésben az Azure Portal használatával létrehozza az **ADFTutorialD
    ![Data factory kezdőlap](./media/data-factory-copy-data-wizard-tutorial/getstarted-data-factory-home-page.png)
 
 ## <a name="launch-copy-wizard"></a>A Másolás varázsló indítása
-1. A Data Factory panelen kattintson az **Adatok másolása (ELŐZETES VERZIÓ)** elemre a **Copy Wizard** (Másolás varázsló) elindításához. 
+1. A Data Factory panelen kattintson a **Copy data** (Adatok másolása) elemre a **Másolás varázsló** elindításához. 
    
    > [!NOTE]
    > Ha a böngésző az Authorizing... (Hitelesítés...) lépésnél megakad, távolítsa el a jelölést a **Block third-party cookies and site data** (Harmadik féltől származó cookie-k és webhelyadatok tiltása) jelölőnégyzetből a böngésző beállításai között, vagy hagyja engedélyezve a beállítást, és hozzon létre kivételt a **login.microsoftonline.com** webhelyhez, majd kísérelje meg ismét a varázsló elindítását.

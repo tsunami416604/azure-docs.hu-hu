@@ -5,7 +5,6 @@
 ### Áruházak  
 #### [Az AppSource és az Azure Marketplace összehasonlítása](./comparing-appsource-azure-marketplace.md)  
 #### [Vállalatfejlesztés az AppSource segítségével](./grow-your-business-with-appsource.md) 
-#### [Előnyben részesített megoldások](./preferred-solutions.md)
 ##### [Saját kezdőlap létrehozása](./build-your-landing-page.md)  
 ##### [Érdeklődők megosztásának bekapcsolása](./enable-lead-sharing.md)  
 ##### [A GTM-előnyök a piactéren](./gtm-benefits.md)  
@@ -19,17 +18,17 @@
 ### Közzététel a piactér áruházaiban  
 #### [A megoldás-termékoldal típusának meghatározása](./determine-your-listing-type.md)  
 #### [Közzétevővé válás a piactér áruházaiban](./become-publisher.md)  
-#### [Az egyes termékoldal-típusok követelményei](./listing-type-requirements.md)  
+#### [Az egyes termékoldal-típusok követelményei](./listing-type-requirements.md) 
+#### [Előnyben részesített megoldások](./preferred-solutions.md) 
 
 ### Közzétételi ellenőrzőlisták  
 #### [Közzétételi ellenőrzőlista az AppSource-hoz](./publishing-checklist-appsource.md)  
 #### [Közzétételi ellenőrzőlista az Azure Marketplace-hez](./publishing-checklist-azure-marketplace.md)  
 
 ### Támogatás  
-#### [AppSource-támogatás](./support-appsource.md)  
-#### [Azure Marketplace-támogatás](./support-azure-marketplace.md)  
+#### [Azure Marketplace- és AppSource-támogatás](./support-azure-marketplace.md)  
 
-### Útmutatók  
+### Közzétételi útmutatók  
 #### [Azure Marketplace tanácsadási szolgáltatás](consulting-services.md)  
 #### [Azure Marketplace SaaS alkalmazás – műszaki közzétételi útmutató](marketplace-saas-applications-technical-publishing-guide.md) 
 

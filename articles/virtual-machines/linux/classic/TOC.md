@@ -4,10 +4,10 @@
 ## [GYIK](faq-classic.md)
 
 # Első lépések
-## [Linux rendszerű virtuális gép létrehozása az Azure Portalról](createportal-classic.md)
+## [Linux rendszerű virtuális gép létrehozása](createportal-classic.md)
 
 # Útmutató
-## Számítás
+## Compute
 ### [Egyéni virtuális gép létrehozása](create-custom-classic.md)
 ### [Virtuális gép rögzítése](capture-image-classic.md)
 ### [Távoli asztal használata Linux rendszerű virtuális géppel](remote-desktop-classic.md)

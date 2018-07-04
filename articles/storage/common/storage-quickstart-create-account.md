@@ -9,12 +9,12 @@ ms.service: storage
 ms.topic: quickstart
 ms.date: 01/19/2018
 ms.author: tamram
-ms.openlocfilehash: 1dffceb629df5d0197bfc8ac66120df3912d70b1
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 7f6357c5b0be12c18797e82b73bd05af42888aa0
+ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/19/2018
-ms.locfileid: "31603776"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36752333"
 ---
 # <a name="create-a-storage-account"></a>Create a storage account
 
@@ -165,7 +165,7 @@ Kövesse az alábbi lépéseket egy általános célú v2-tárfiók létrehozás
 1. Az Azure Portalon nyissa ki bal oldalon a szolgáltatásmenüt, és válassza a **Minden szolgáltatás** lehetőséget. Ezután görgessen le a **Storage** szakaszig, és válassza a **Storage-fiókok** lehetőséget. A megjelenő **Storage-fiókok** ablakban válassza a **Hozzáadás** lehetőséget.
 2. Adja meg a tárfiók nevét.
 3. Állítsa be a **Fiók típusa** mezőben a **StorageV2 (általános célú v2)** értéket.
-4. A **Replikáció** mezőben hagyja meg a **Helyileg redundáns tárolás (LRS)** értéket. Ezenkívül a következő lehetőségek közül választhat: **Zónaredundáns tárolás (ZRS előzetes verzió)**, **Georedundáns tárolás (GRS)** vagy **Írásvédett georedundáns tárolás (RA-GRS)**.
+4. A **Replikáció** mezőben hagyja meg a **Helyileg redundáns tárolás (LRS)** értéket. Ezenkívül a következő lehetőségek közül választhat: **Zónaredundáns tárolás (ZRS) (előzetes verzió)**, **Georedundáns tárolás (GRS)** vagy **Írásvédett georedundáns tárolás (RA-GRS)**.
 5. Ne módosítsa a következő mezők alapértelmezett értékeit: **Üzemi modell**, **Teljesítmény**, **Biztonságos átvitelre van szükség**.
 6. Válassza ki azt az előfizetést, amelyikben létre kívánja hozni a tárfiókot.
 7. Az **Erőforráscsoport** szakaszban válassza a **Meglévő használata** lehetőséget, majd válassza ki az előző szakaszban létrehozott erőforráscsoportot.
@@ -186,7 +186,7 @@ New-AzureRmStorageAccount -ResourceGroupName $resourceGroup `
   -Kind StorageV2 
 ```
 
-Egy zónaredundáns tárolást (ZRS előzetes verzió), georedundáns tárolást (GRS) vagy írásvédett georedundáns tárolást (RA-GRS) használó általános célú v2-tárfiók létrehozásához illessze be a kívánt értéket az alábbi táblázatból az **SkuName** paraméternél. 
+Egy zónaredundáns tárolást (ZRS) (előzetes verzió), georedundáns tárolást (GRS) vagy írásvédett georedundáns tárolást (RA-GRS) használó általános célú v2-tárfiók létrehozásához illessze be a kívánt értéket az alábbi táblázatból az **SkuName** paraméternél. 
 
 |Replikációs beállítás  |SkuName paraméter  |
 |---------|---------|
@@ -219,13 +219,7 @@ Egy zónaredundáns tárolást (ZRS előzetes verzió), georedundáns tárolást
 
 ---
 
-> [!NOTE]
-> A [Zónaredundáns tárolás](https://azure.microsoft.com/blog/announcing-public-preview-of-azure-zone-redundant-storage/preview/) jelenleg előzetes verzióban van, és csak a következő helyeken érhető el:
->    - USA keleti régiója 2
->    - USA középső régiója
->    - Közép-Franciaország (Ez a régió jelenleg előzetes verzióban érhető el. Hozzáférés kéréséhez lásd [a Microsoft Azure előzetes verziójának franciaországi rendelkezésreállási zónáit bejelentő bejegyzést](https://azure.microsoft.com/blog/microsoft-azure-preview-with-azure-availability-zones-now-open-in-france).)
-    
-További információt a replikáció különböző elérhető típusairól a [tárreplikációs beállításokat](storage-redundancy.md) ismertető szakaszban talál.
+Az elérhető replikációs beállításokkal kapcsolatban további információt a [Storage replikálási lehetőségeit](storage-redundancy.md) ismertető szakaszban talál.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 

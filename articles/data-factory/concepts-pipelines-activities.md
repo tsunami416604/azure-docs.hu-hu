@@ -11,29 +11,24 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 05/16/2018
+ms.date: 06/12/2018
 ms.author: shlo
-ms.openlocfilehash: 564ed357a838e5e0c3e6db869eefafb7925e155b
-ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
+ms.openlocfilehash: 001fefef900a0dd468f8deb8d705c308d8149f71
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/17/2018
-ms.locfileid: "34261500"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37055179"
 ---
-# <a name="pipelines-and-activities-in-azure-data-factory"></a>Az Azure Data Factory folyamatai és tevékenységei 
+# <a name="pipelines-and-activities-in-azure-data-factory"></a>Az Azure Data Factory folyamatai és tevékenységei
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [1. verzió – Általánosan elérhető](v1/data-factory-create-pipelines.md)
-> * [2. verzió – Előzetes verzió](concepts-pipelines-activities.md)
+> * [1-es verzió](v1/data-factory-create-pipelines.md)
+> * [Aktuális verzió](concepts-pipelines-activities.md)
 
 Ennek a cikknek a segítségével megismerheti az Azure Data Factory folyamatait és tevékenységeit, és megtudhatja, hogyan hozhat létre velük teljes körű, adatvezérelt munkafolyamatokat saját adatáthelyezési és -feldolgozási forgatókönyveihez.
 
-> [!NOTE]
-> Ez a cikk a Data Factory 2. verziójára vonatkozik, amely jelenleg előzetes verzióban érhető el. Ha a Data Factory szolgáltatás általánosan elérhető 1. verzióját használja, lásd: [A Data Factory 1. verziójának folyamatai](v1/data-factory-create-pipelines.md).
-> 
-> Ez a cikk feltételezi, hogy már áttekintette [Az Azure Data Factory bemutatását](introduction.md) és a [Gyors üzembe helyezési útmutatót](quickstart-create-data-factory-powershell.md).
-
 ## <a name="overview"></a>Áttekintés
-A data factory egy vagy több folyamattal rendelkezhet. A folyamatok olyan tevékenységek logikus csoportosításai, amelyek együttesen vesznek részt egy feladat végrehajtásában. Például a folyamat tartalmazhat egy olyan tevékenységkészletet, amely naplóadatokat fogad és töröl, majd egy Spark-feladatot futtat egy HDInsight-fürtön a naplóadatok elemzéséhez. A folyamatok használatának az az előnye, hogy így a tevékenységek egy készletben kezelhetők, nem pedig külön-külön. Például maga a folyamat helyezhető üzembe és ütemezhető, nem a tevékenységek egymástól függetlenül.  
+A data factory egy vagy több folyamattal rendelkezhet. A folyamatok olyan tevékenységek logikus csoportosításai, amelyek együttesen vesznek részt egy feladat végrehajtásában. Például a folyamat tartalmazhat egy olyan tevékenységkészletet, amely naplóadatokat fogad és töröl, majd egy Spark-feladatot futtat egy HDInsight-fürtön a naplóadatok elemzéséhez. A folyamatok használatának az az előnye, hogy így a tevékenységek egy készletben kezelhetők, nem pedig külön-külön. Például maga a folyamat helyezhető üzembe és ütemezhető, nem a tevékenységek egymástól függetlenül.
 
 A folyamat tevékenységei meghatározzák az adatokon végrehajtandó műveleteket. A másolási tevékenység használatával például egy helyszíni SQL Serverből egy Azure Blob Storage-tárolóba másolhatja az adatokat. Ezt követően egy Hive-tevékenység segítségével futtasson egy Hive-szkriptet egy Azure HDInsight fürtön, amely a Blob Storage-ből származó adatokat feldolgozza vagy átalakítja a kimeneti adatok előállításához. Végül egy második másolási tevékenység használatával másolja át a kimeneti adatokat egy olyan Azure SQL Data Warehouse-ba, amelyre üzletiintelligencia-alapú (BI-) jelentéskészítési megoldások épülnek.
 
@@ -64,7 +59,7 @@ Adatátalakítási tevékenység | Számítási környezet
 [Tárolt eljárás](transform-data-using-stored-procedure.md) | Azure SQL, Azure SQL Data Warehouse vagy SQL Server
 [U-SQL](transform-data-using-data-lake-analytics.md) | Azure Data Lake Analytics
 
-További információkért tekintse meg az [adatátalakítási tevékenységekről](transform-data.md) szóló cikket. 
+További információkért tekintse meg az [adatátalakítási tevékenységekről](transform-data.md) szóló cikket.
 
 ## <a name="control-activities"></a>Vezérlési tevékenységek
 A támogatott átvitelvezérlési tevékenységek a következők:
@@ -73,20 +68,20 @@ Vezérlési tevékenység | Leírás
 ---------------- | -----------
 [Folyamat végrehajtása tevékenység](control-flow-execute-pipeline-activity.md) | A folyamat végrehajtása tevékenység lehetővé teszi egy Data Factory-folyamat számára egy másik folyamat meghívását.
 [ForEach tevékenység](control-flow-for-each-activity.md) | A ForEach tevékenység ismétlődő átvitelvezérlést határoz meg a folyamatban. Ez a tevékenység egy gyűjtemény megismétlésére, valamint egy megadott ciklustevékenység végrehajtására szolgál. E tevékenység ciklusos megvalósítása hasonló a Foreach ciklusos szerkezetéhez a programozási nyelvek esetében.
-[Webes tevékenység](control-flow-web-activity.md) | A webes tevékenység segítségével meghívható egy egyéni REST-végpont egy Data Factory-folyamatból. Az adatkészleteket és a társított szolgáltatásokat továbbíthatja a tevékenység számára felhasználásra vagy elérés céljára. 
-[Keresési tevékenység](control-flow-lookup-activity.md) | A Keresési tevékenység segítségével bármely külső forrásból kiolvashat vagy megkereshet egy rekordot, táblanevet vagy értéket. Erre a kimenetre a későbbi tevékenységek is hivatkozhatnak. 
-[Metaadatok beolvasása tevékenység](control-flow-get-metadata-activity.md) | A metaadatok beolvasása tevékenység segítségével az Azure Data Factory bármely metaadatát lekérheti. 
+[Webes tevékenység](control-flow-web-activity.md) | A webes tevékenység segítségével meghívható egy egyéni REST-végpont egy Data Factory-folyamatból. Az adatkészleteket és a társított szolgáltatásokat továbbíthatja a tevékenység számára felhasználásra vagy elérés céljára.
+[Keresési tevékenység](control-flow-lookup-activity.md) | A Keresési tevékenység segítségével bármely külső forrásból kiolvashat vagy megkereshet egy rekordot, táblanevet vagy értéket. Erre a kimenetre a későbbi tevékenységek is hivatkozhatnak.
+[Metaadatok beolvasása tevékenység](control-flow-get-metadata-activity.md) | A metaadatok beolvasása tevékenység segítségével az Azure Data Factory bármely metaadatát lekérheti.
 [Until tevékenység](control-flow-until-activity.md) | A Do-Until ciklus megvalósítása hasonló a programozási nyelvek Do-Until ciklusos szerkezetéhez. Egy tevékenységkészletet futtat le ciklusosan addig, amíg a tevékenységhez rendelt feltétel igaz értéket nem ad vissza. Megadhat egy időtúllépési értéket az Until tevékenységhez a Data Factoryban.
 [If Condition tevékenység](control-flow-if-condition-activity.md) | Az If Condition tevékenység igaz vagy hamis értéket visszaadó feltételek alapján történő elágaztatásra használható. Az If Condition tevékenység ugyanazokat a funkciókat biztosítja, mint a programnyelvek if utasítása. Egy tevékenységkészletet futtat le, ha a feltétel `true` értéket ad vissza, és egy másik tevékenységkészletet, ha a feltétel `false` értéket ad vissza.
-[Wait tevékenység](control-flow-wait-activity.md) | Ha Wait tevékenységet használ egy folyamatban, akkor a folyamat kivárja a megadott időtartamot, és csak az után folytatja a további tevékenységek futtatását. 
+[Wait tevékenység](control-flow-wait-activity.md) | Ha Wait tevékenységet használ egy folyamatban, akkor a folyamat kivárja a megadott időtartamot, és csak az után folytatja a további tevékenységek futtatását.
 
 ## <a name="pipeline-json"></a>A folyamat JSON-fájlja
-Egy folyamat JSON-formátumban való meghatározása a következő módon történik: 
+Egy folyamat JSON-formátumban való meghatározása a következő módon történik:
 
 ```json
 {
     "name": "PipelineName",
-    "properties": 
+    "properties":
     {
         "description": "pipeline description",
         "activities":
@@ -100,8 +95,8 @@ Egy folyamat JSON-formátumban való meghatározása a következő módon tört�
 
 Címke | Leírás | Típus | Kötelező
 --- | ----------- | ---- | --------
-név | A folyamat neve. Adjon meg egy, a folyamat által végrehajtandó műveletet jelölő nevet. <br/><ul><li>A karakterek maximális száma: 140</li><li>Betűvel, számmal vagy aláhúzásjellel (_) kell kezdődnie</li><li>•   A következő karakterek nem engedélyezettek: „.”, „+”, „?”, „/”, „<”, „>”, „*”, „%”, „&”, „:”, „\”</li></ul> | Karakterlánc | Igen
-leírás | Adjon meg egy, az adott folyamat alkalmazását leíró szöveget. | Karakterlánc | Nem
+név | A folyamat neve. Adjon meg egy, a folyamat által végrehajtandó műveletet jelölő nevet. <br/><ul><li>A karakterek maximális száma: 140</li><li>Betűvel, számmal vagy aláhúzásjellel (_) kell kezdődnie</li><li>•   A következő karakterek nem engedélyezettek: „.”, „+”, „?”, „/”, „<”, „>”, „*”, „%”, „&”, „:”, „\”</li></ul> | Sztring | Igen
+leírás | Adjon meg egy, az adott folyamat alkalmazását leíró szöveget. | Sztring | Nem
 tevékenységek | A **tevékenységek** szakaszon belül egy vagy több tevékenység is meghatározható. A tevékenységek JSON-elemeiről részletes információkat a [Tevékenység JSON-fájlja](#activity-json) szakaszban talál. | Tömb | Igen
 paraméterek | Az adott folyamat **paraméterek** szakaszában egy vagy több paraméter adható meg, így a folyamat rugalmasan újrafelhasználható. | Lista | Nem
 
@@ -114,7 +109,7 @@ A végrehajtási tevékenységek közé az [adatáthelyezési](#data-movement-ac
 ```json
 {
     "name": "Execution Activity Name",
-    "description": "description", 
+    "description": "description",
     "type": "<ActivityType>",
     "typeProperties":
     {
@@ -142,7 +137,7 @@ szabályzat | Olyan szabályzatok, amelyek az adott tevékenység futásidejű v
 dependsOn | Ez a tulajdonság a tevékenységfüggőségek, valamint az egymást követő tevékenységek függőségeinek meghatározására szolgál. További információért lásd: [Tevékenységfüggőség](#activity-dependency) | Nem
 
 ### <a name="activity-policy"></a>Tevékenységszabályzat
-A szabályzatok az adott tevékenység futásidejű viselkedését befolyásolják, beállíthatósági lehetőségeket biztosítva. A tevékenységszabályzatok kizárólag végrehajtási tevékenységek esetében állnak rendelkezésre. 
+A szabályzatok az adott tevékenység futásidejű viselkedését befolyásolják, beállíthatósági lehetőségeket biztosítva. A tevékenységszabályzatok kizárólag végrehajtási tevékenységek esetében állnak rendelkezésre.
 
 ### <a name="activity-policy-json-definition"></a>Tevékenységszabályzat JSON-definíciója
 
@@ -160,7 +155,8 @@ A szabályzatok az adott tevékenység futásidejű viselkedését befolyásolj�
          "policy": {
             "timeout": "00:10:00",
             "retry": 1,
-            "retryIntervalInSeconds": 60
+            "retryIntervalInSeconds": 60,
+            "secureOutput": true
          }
         }
       ],
@@ -175,6 +171,7 @@ JSON-név | Leírás | Megengedett értékek | Kötelező
 timeout | Megadja a futtatni kívánt tevékenység időtúllépését. | Időtartomány | Nem. Az alapértelmezett időtúllépés 7 nap.
 retry | Újrapróbálkozási kísérletek maximális száma | Egész szám | Nem. Az alapértelmezett érték: 0
 retryIntervalInSeconds | Az újrapróbálkozási kísérletek közötti késleltetés, másodpercben | Egész szám | Nem. Az alapértelmezett érték: 20 másodperc
+secureOutput | Ha az értéke igaz, a tevékenység kimenete biztonságosnak minősül, és a rendszer nem naplózza a monitorozáshoz. | Logikai | Nem. Az alapértelmezett érték a false (hamis).
 
 ### <a name="control-activity"></a>Vezérlési tevékenység
 A vezérlési tevékenységek az alábbi felső szintű struktúrával rendelkeznek:
@@ -182,7 +179,7 @@ A vezérlési tevékenységek az alábbi felső szintű struktúrával rendelkez
 ```json
 {
     "name": "Control Activity Name",
-    "description": "description", 
+    "description": "description",
     "type": "<ActivityType>",
     "typeProperties":
     {
@@ -195,14 +192,14 @@ A vezérlési tevékenységek az alábbi felső szintű struktúrával rendelkez
 
 Címke | Leírás | Kötelező
 --- | ----------- | --------
-név | A tevékenység neve. Adjon meg egy, a tevékenység által végrehajtandó műveletet jelölő nevet.<br/><ul><li>A karakterek maximális száma: 55</li><li>Betűvel, számmal vagy aláhúzásjellel (_) kell kezdődnie</li><li>A következő karakterek nem engedélyezettek: „.”, „+”, „?”, „/”, „<”, „>”, „ * ”, „%”, „&”, „:”, „\” | Igen</li><ul> 
+név | A tevékenység neve. Adjon meg egy, a tevékenység által végrehajtandó műveletet jelölő nevet.<br/><ul><li>A karakterek maximális száma: 55</li><li>Betűvel, számmal vagy aláhúzásjellel (_) kell kezdődnie</li><li>A következő karakterek nem engedélyezettek: „.”, „+”, „?”, „/”, „<”, „>”, „ * ”, „%”, „&”, „:”, „\” | Igen</li><ul>
 leírás | Az adott tevékenységet vagy annak alkalmazását leíró szöveg | Igen
 type | A tevékenység típusa. A különböző tevékenységtípusokkal kapcsolatban lásd az [adattovábbítási tevékenységeket](#data-movement-activities), az [adat-átalakítási tevékenységeket](#data-transformation-activities) és a [vezérlési tevékenységeket](#control-activities). | Igen
 typeProperties | A typeProperties szakasz tulajdonságai az egyes tevékenységtípusoktól függenek. Az adott tevékenység típustulajdonságainak megtekintéséhez kattintson az előző szakaszban szereplő tevékenységhivatkozásokra. | Nem
 dependsOn | Ez a tulajdonság a tevékenységfüggőség, valamint az egymást követő tevékenységek függőségeinek meghatározására szolgál. További információért lásd: [tevékenységfüggőség](#activity-dependency). | Nem
 
 ### <a name="activity-dependency"></a>Tevékenységfüggőség
-A tevékenységfüggőség azt határozza meg, hogy az egymást követő tevékenységek milyen függőségi viszonyban vannak a megelőző tevékenységekkel, meghatározva azt a feltételt, amelytől a következő feladat végrehajtása függ. Egy adott tevékenység egy vagy több korábbi, eltérő függőségi feltétellel rendelkező tevékenységtől is függhet. 
+A tevékenységfüggőség azt határozza meg, hogy az egymást követő tevékenységek milyen függőségi viszonyban vannak a megelőző tevékenységekkel, meghatározva azt a feltételt, amelytől a következő feladat végrehajtása függ. Egy adott tevékenység egy vagy több korábbi, eltérő függőségi feltétellel rendelkező tevékenységtől is függhet.
 
 A különböző függőségi feltételek a következők: Sikeres, Sikertelen, Kihagyva, Befejezve.
 
@@ -218,7 +215,7 @@ Ha például egy folyamat A tevékenység -> B tevékenység formában valósul 
 ```json
 {
     "name": "PipelineName",
-    "properties": 
+    "properties":
     {
         "description": "pipeline description",
         "activities": [
@@ -293,7 +290,7 @@ Az alábbi mintafolyamat **tevékenységek** szakaszában egyetlen **Másolás**
       }
     ]
   }
-} 
+}
 ```
 Vegye figyelembe a következő szempontokat:
 
@@ -350,17 +347,17 @@ Vegye figyelembe a következő szempontokat:
 
 A **typeProperties** szakasz eltérő az egyes átalakítási tevékenységek esetében. Ahhoz, hogy megismerkedhessen az egyes átalakítási tevékenységek által támogatott típustulajdonságokkal, kattintson az adott átalakítási tevékenységre az [Adatátalakítási tevékenységek](#data-transformation-activities) szakaszban.
 
-E folyamat létrehozásának teljes leírását lásd: [Oktatóanyag: adatátalakítás a Spark használatával](tutorial-transform-data-spark-powershell.md). 
+E folyamat létrehozásának teljes leírását lásd: [Oktatóanyag: adatátalakítás a Spark használatával](tutorial-transform-data-spark-powershell.md).
 
 ## <a name="multiple-activities-in-a-pipeline"></a>Több tevékenység egy adott folyamatban
-Az előző két mintában a folyamatok csak egyetlen tevékenységet tartalmaztak. Egy folyamathoz azonban több tevékenység is tartozhat. Ha az adott folyamatban több tevékenység is található, és az egymást követő tevékenységek nem függnek az azokat megelőző tevékenységektől, akkor ezek párhuzamosan is futtathatók. 
+Az előző két mintában a folyamatok csak egyetlen tevékenységet tartalmaztak. Egy folyamathoz azonban több tevékenység is tartozhat. Ha az adott folyamatban több tevékenység is található, és az egymást követő tevékenységek nem függnek az azokat megelőző tevékenységektől, akkor ezek párhuzamosan is futtathatók.
 
-A [tevékenységfüggőség](#activity-dependency) segítségével összefűzhet két tevékenységet. Ez a fajta függőség azt határozza meg, hogy az egymást követő tevékenységek milyen függőségi viszonyban vannak a megelőző tevékenységekkel, meghatározva azt a feltételt, amelytől a következő feladat végrehajtása függ. Egy adott tevékenység egy vagy több korábbi, eltérő függőségi feltétellel rendelkező tevékenységtől is függhet. 
+A [tevékenységfüggőség](#activity-dependency) segítségével összefűzhet két tevékenységet. Ez a fajta függőség azt határozza meg, hogy az egymást követő tevékenységek milyen függőségi viszonyban vannak a megelőző tevékenységekkel, meghatározva azt a feltételt, amelytől a következő feladat végrehajtása függ. Egy adott tevékenység egy vagy több korábbi, eltérő függőségi feltétellel rendelkező tevékenységtől is függhet.
 
 ## <a name="scheduling-pipelines"></a>Folyamatok ütemezése
-A folyamatok ütemezése eseményindítókkal történik. Az eseményindítóknak különböző típusai léteznek (ütemező eseményindító, amely a folyamatok indítását időpont alapján teszi ütemezhetővé, illetve manuális eseményindító, amely igény szerinti folyamatütemezést tesz lehetővé). Az eseményindítókról további információkat a [Folyamat futtatása és eseményindítók](concepts-pipeline-execution-triggers.md) cikkben talál. 
+A folyamatok ütemezése eseményindítókkal történik. Az eseményindítóknak különböző típusai léteznek (ütemező eseményindító, amely a folyamatok indítását időpont alapján teszi ütemezhetővé, illetve manuális eseményindító, amely igény szerinti folyamatütemezést tesz lehetővé). Az eseményindítókról további információkat a [Folyamat futtatása és eseményindítók](concepts-pipeline-execution-triggers.md) cikkben talál.
 
-Ahhoz, hogy az eseményindító kiváltsa egy folyamat indítását, az eseményindító meghatározásába bele kell foglalni az adott folyamat referenciáját. A folyamatok és az eseményindítók n-m kapcsolattal rendelkeznek. Egyetlen folyamatot több eseményindító is indíthat, és ugyanaz az eseményindító indíthat több folyamatot is. Ha az eseményindító meghatározása megtörtént, el kell indítania azt, hogy az képes legyen az adott folyamat indítására. Az eseményindítókról további információkat a [Folyamat futtatása és eseményindítók](concepts-pipeline-execution-triggers.md) cikkben talál. 
+Ahhoz, hogy az eseményindító kiváltsa egy folyamat indítását, az eseményindító meghatározásába bele kell foglalni az adott folyamat referenciáját. A folyamatok és az eseményindítók n-m kapcsolattal rendelkeznek. Egyetlen folyamatot több eseményindító is indíthat, és ugyanaz az eseményindító indíthat több folyamatot is. Ha az eseményindító meghatározása megtörtént, el kell indítania azt, hogy az képes legyen az adott folyamat indítására. Az eseményindítókról további információkat a [Folyamat futtatása és eseményindítók](concepts-pipeline-execution-triggers.md) cikkben talál.
 
 Tegyük fel, hogy például van egy „A eseményindító” nevű ütemező eseményindítónk, és azzal kívánjuk indítani a „MyCopyPipeline” nevű folyamatot. Az eseményindító meghatározása az alábbi példában látható módon történik:
 
@@ -391,7 +388,7 @@ Tegyük fel, hogy például van egy „A eseményindító” nevű ütemező ese
 
 
 ## <a name="next-steps"></a>További lépések
-A folyamatok tevékenységekkel együtt történő létrehozásáról részletes útmutatást a következő oktatóanyagokban talál: 
+A folyamatok tevékenységekkel együtt történő létrehozásáról részletes útmutatást a következő oktatóanyagokban talál:
 
 - [Másolási tevékenységgel rendelkező folyamat létrehozása](quickstart-create-data-factory-powershell.md)
 - [Adatátalakítási tevékenységgel rendelkező folyamat létrehozása](tutorial-transform-data-spark-powershell.md)

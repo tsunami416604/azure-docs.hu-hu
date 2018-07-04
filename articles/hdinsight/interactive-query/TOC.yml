@@ -369,6 +369,10 @@
     - name: Kibocsátási megjegyzések
       href: ../hdinsight-release-notes.md
       maintainContext: true
+      items:
+        - name: Archivált kibocsátási megjegyzések
+          href: ../hdinsight-release-notes-archive.md
+          maintainContext: true
     - name: Azure-ütemterv
       href: 'https://azure.microsoft.com/roadmap/?category=intelligence-analytics'
     - name: Segítség kérése a fórumokon

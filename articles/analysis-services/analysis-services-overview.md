@@ -5,15 +5,15 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: overview
-ms.date: 06/05/2018
+ms.date: 06/21/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 52695ba495b088d30a5ee039d3e24eb274957bff
-ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
+ms.openlocfilehash: 07768dbc8beb7a851d442e9e0c3e7538bf12b766
+ms.sourcegitcommit: 828d8ef0ec47767d251355c2002ade13d1c162af
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35234556"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36937937"
 ---
 # <a name="what-is-azure-analysis-services"></a>Mi az Azure Analysis Services?
 
@@ -31,7 +31,7 @@ Percek alatt [létrehozhat egy kiszolgálót](analysis-services-create-server.md
 
 **Videó:** Tekintse meg [Az üzembe helyezés automatizálása](https://channel9.msdn.com/series/Azure-Analysis-Services/AzureAnalysisServicesAutomation) videót arról, hogyan használhatja az Azure Automationt a kiszolgálók létrehozásának felgyorsítására.
 
-Az Azure Analysis Services számos Azure-szolgáltatással integrálható, így kifinomult elemzési megoldásokat hozhat létre. Az [Azure Active Directoryval](../active-directory/active-directory-whatis.md) való integráció biztonságos, szerepköralapú hozzáférést biztosít a kritikus fontosságú adatokhoz. [Azure Data Factory-folyamatokba](../data-factory/introduction.md) integrálható egy olyan tevékenység bevonásával, amely adatokat tölt be a modellbe. Az [Azure Automation](../automation/automation-intro.md) és az [Azure Functions](../azure-functions/functions-overview.md) egyéni kódot használó modellek egyszerűbb vezénylésére használható. 
+Az Azure Analysis Services számos Azure-szolgáltatással integrálható, így kifinomult elemzési megoldásokat hozhat létre. Az [Azure Active Directoryval](../active-directory/fundamentals/active-directory-whatis.md) való integráció biztonságos, szerepköralapú hozzáférést biztosít a kritikus fontosságú adatokhoz. [Azure Data Factory-folyamatokba](../data-factory/introduction.md) integrálható egy olyan tevékenység bevonásával, amely adatokat tölt be a modellbe. Az [Azure Automation](../automation/automation-intro.md) és az [Azure Functions](../azure-functions/functions-overview.md) egyéni kódot használó modellek egyszerűbb vezénylésére használható. 
 
 ## <a name="the-right-tier-when-you-need-it"></a>A megfelelő szint – igény szerint
 
@@ -72,39 +72,41 @@ Ez a szint olyan létfontosságú, éles környezetben használt alkalmazásokho
 
 ## <a name="availability-by-region"></a>Rendelkezésre állás régiónként
 
-Az Azure Analysis Services a világ összes régiójában támogatott. Ha a modelljeit több régióban található redundáns kiszolgálókon helyezi üzembe, biztosíthatja a [magas rendelkezésre állást](analysis-services-bcdr.md). A támogatott szintek és lekérdezésreplikák a választott régiótól függően változnak. 
+Az Azure Analysis Services a világ összes régiójában támogatott. A támogatott csomagok és lekérdezésreplikák a választott régiótól függően változnak. A csomagok és lekérdezésreplikák elérhetősége az egyes régiókban jellemző igények és az elérhető erőforrások függvényében változhat. 
 
 ### <a name="americas"></a>Amerika
 
-|Régió  | Támogatott szintek | Lekérdezésreplikák |
+|Régió  | Támogatott csomagok | Lekérdezésreplikák (csak standard csomagok esetén) |
 |---------|---------|:---------:|
 |Dél-Brazília     |    B1, B2, S0, S1, S2, S4, D1     |     1    |
 |Közép-Kanada    |     B1, B2, S0, S1, S2, S4, D1    |     1    |
 |USA keleti régiója     |     B1, B2, S0, S1, S2, S4, D1    |    1     |
-|USA 2. keleti régiója     |     B1, B2, S0, S1, S2, S4, S8, S9, D1     |    7     |
+|USA 2. keleti régiója     |     B1, B2, S0, S1, S2, S4, S8\*, S9\*, D1     |    7     |
 |USA északi középső régiója     |     B1, B2, S0, S1, S2, S4, D1     |    1     |
-|USA középső régiója     |    B1, B2, S0, S1, S2, S4, D1     |    3     |
+|USA középső régiója     |    B1, B2, S0, S1, S2, S4, D1     |    1     |
 |USA déli középső régiója     |    B1, B2, S0, S1, S2, S4, D1     |    1     |
-|USA nyugati középső régiója   |     B1, B2, S0, S1, S2, S4, D1    |    7     |
-|USA nyugati régiója     |    B1, B2, S0, S1, S2, S4, S8, S9, D1     |    7     |
-|USA 2. nyugati régiója    |    B1, B2, S0, S1, S2, S4, S8, S9, D1     |    1     |
+|USA nyugati középső régiója   |     B1, B2, S0, S1, S2, S4, D1    |    3     |
+|USA nyugati régiója     |    B1, B2, S0, S1, S2, S4, S8\*, S9\*, D1     |    7     |
+|USA 2. nyugati régiója    |    B1, B2, S0, S1, S2, S4, S8\*, S9\*, D1     |    3     |
 
 ### <a name="europe"></a>Európa
 
-|Régió  | Támogatott szintek | Lekérdezésreplikák |
+|Régió  | Támogatott csomagok | Lekérdezésreplikák (csak standard csomagok esetén) |
 |---------|---------|:---------:|
-|Észak-Európa     |    B1, B2, S0, S1, S2, S4, D1      |    1     |
+|Észak-Európa     |    B1, B2, S0, S1, S2, S4, D1      |    7     |
 |Az Egyesült Királyság déli régiója   |    B1, B2, S0, S1, S2, S4, D1      |     1    |
-|Nyugat-Európa     |    B1, B2, S0, S1, S2, S4, S8, S9, D1      |    7     |
+|Nyugat-Európa     |    B1, B2, S0, S1, S2, S4, S8\*, S9\*, D1      |    7     |
 
 ### <a name="asia-pacific"></a>Ázsia és a Csendes-óceáni térség 
 
-|Régió  | Támogatott szintek | Lekérdezésreplikák |
+|Régió  | Támogatott csomagok | Lekérdezésreplikák (csak standard csomagok esetén) |
 |---------|---------|:---------:|
 |Délkelet-Ausztrália     | B1, B2, S0, S1, S2, S4, D1       |    1     |
 |Kelet-Japán  |   B1, B2, S0, S1, S2, S4, D1       |    1     |
-|Délkelet-Ázsia     |     B1, B2, S0, S1, S2, S4, S8, S9, D1     |   3      |
+|Délkelet-Ázsia     |     B1, B2, S0, S1, S2, S4, S8\*, S9\*, D1     |   1      |
 |Nyugat-India     |    B1, B2, S0, S1, S2, S4, D1     |    1     |
+
+\* A Standard szint S8 és S9 csomagjai egy lekérdezésreplikát támogatnak.
 
 ## <a name="scale-to-your-needs"></a>Igényei szerint méretezhető
 
@@ -116,7 +118,7 @@ Fel- vagy leskálázhatja, illetve szüneteltetheti a kiszolgálóját. Ehhez ha
 
 Kibővített erőforrások esetében az ügyféllekérdezések több *lekérdezésreplikára* vannak kiosztva az adott lekérdezési készletben. A lekérdezésreplikák a táblázatos modellek szinkronizált másolataival rendelkeznek. A lekérdezésekből származó számítási feladatok felosztásával csökkenthető a válaszidő az erőforrás-igényesebb feladatok esetén. A modellfeldolgozási műveletek elkülöníthetők a lekérdezési készletből, ezáltal biztosítható, hogy a feldolgozási műveletek ne legyenek negatív hatással az ügyféllekérdezésekre. 
 
-A létrehozott lekérdezési készlet legfeljebb hét további lekérdezésreplikát tartalmazhat (a kiszolgálóval együtt összesen nyolcat). A lekérdezési készletben elhelyezhető lekérdezésreplikák száma a kiválasztott régiótól függ. A lekérdezésreplikák nem helyezhetők el a kiszolgáló régióján kívül. A lekérdezésreplikák díjszabása megegyezik a kiszolgálóéval.
+A létrehozott lekérdezési készlet legfeljebb hét további lekérdezésreplikát tartalmazhat (a kiszolgálóval együtt összesen nyolcat). A lekérdezési készletben elhelyezhető lekérdezésreplikák száma a kiválasztott csomagtól és régiótól függ. A lekérdezésreplikák nem helyezhetők el a kiszolgáló régióján kívül. A lekérdezésreplikák díjszabása megegyezik a kiszolgálóéval.
 
 A szint módosításához hasonlóan a lekérdezésreplikák is igény szerint bővíthetők. A bővítést a portálon vagy REST API-k használatával konfigurálhatja. További tudnivalókért lásd az [Azure Analysis Services kibővítését](analysis-services-scale-out.md) ismertető témakört.
 
@@ -148,7 +150,7 @@ Az Azure Analysis Services tűzfala minden olyan ügyfélkapcsolatot blokkol, am
 
 ### <a name="authentication"></a>Hitelesítés
 
-A felhasználóhitelesítést az [Azure Active Directory (AAD)](../active-directory/active-directory-whatis.md) kezeli. A bejelentkezéshez a felhasználók céges fiókidentitást használnak, amely szerepköralapú hozzáféréssel rendelkezik az adatbázishoz. A felhasználói identitásoknak a kiszolgálót tartalmazó előfizetés alapértelmezett Azure Active Directoryja tagjainak kell lenniük. További információ: [Hitelesítés és felhasználói engedélyek](analysis-services-manage-users.md).
+A felhasználóhitelesítést az [Azure Active Directory (AAD)](../active-directory/fundamentals/active-directory-whatis.md) kezeli. A bejelentkezéshez a felhasználók céges fiókidentitást használnak, amely szerepköralapú hozzáféréssel rendelkezik az adatbázishoz. A felhasználói identitásoknak a kiszolgálót tartalmazó előfizetés alapértelmezett Azure Active Directoryja tagjainak kell lenniük. További információ: [Hitelesítés és felhasználói engedélyek](analysis-services-manage-users.md).
 
 ### <a name="data-security"></a>Adatbiztonság
 

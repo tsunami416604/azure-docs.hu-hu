@@ -1,6 +1,6 @@
 ---
-title: Az R Server használatának első lépései a HDInsightban – Azure| Microsoft Docs
-description: Megtudhatja, hogyan hozhat létre R Servert tartalmazó Apache Sparkot a HDInsight-fürtön, majd hogyan küldhet el R-szkriptet a fürtön.
+title: Az ML-szolgáltatások használatának első lépései a HDInsightban – Azure | Microsoft Docs
+description: Megtudhatja, hogyan hozhat létre ML-szolgáltatásokat tartalmazó Apache Sparkot a HDInsight-fürtön, és hogyan küldhet R-szkripteket a fürtön.
 services: hdinsight
 documentationcenter: ''
 author: nitinme
@@ -13,19 +13,18 @@ ms.devlang: R
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: data-services
-ms.date: 03/23/2018
+ms.date: 06/27/2018
 ms.author: nitinme
-ms.openlocfilehash: d6910ab257312626ca25126721410edeed6cdeae
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: efc7ada12f722b0447712594de496e933bde3d36
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31411481"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37053432"
 ---
-# <a name="get-started-with-r-server-cluster-on-azure-hdinsight"></a>Az Azure HDInsighton futó R Server-fürt használatának első lépései
+# <a name="get-started-with-ml-services-on-azure-hdinsight"></a>Az ML-szolgáltatások használatának első lépései az Azure HDInsightban
 
-Az Azure HDInsight olyan R Server beállítással rendelkezik, amely a HDInsight-fürtbe integrálható. Ez lehetővé teszi, hogy az R-szkriptek a Spark és a MapReduce eszközökkel elosztott számításokat futtathassanak. Ebből a cikkből megtudhatja, hogyan hozható létre egy R Server-kiszolgálót egy HDInsight-fürtön. Ezután megismerheti, hogyan futtathat egy R-szkriptet, amely a Spark elosztott R számításokhoz való használatát mutatja be.
-
+Az Azure HDInsight segítségével létrehozhat egy fürtöt az ML-szolgáltatások számára. Ez lehetővé teszi, hogy az R-szkriptek a Spark és a MapReduce eszközökkel elosztott számításokat futtathassanak. A cikkben foglaltakat követve elsajátíthatja az ML-szolgáltatási fürtök létrehozását a HDInsightban, valamint az olyan R-szkriptek futtatását, amelyek a Spark elosztott R-számításokhoz való használatát mutatják be.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -53,13 +52,13 @@ Az Azure HDInsight olyan R Server beállítással rendelkezik, amely a HDInsight
 
 4. Válassza ki a **Fürt típusát**, majd állítsa be a következő értékeket a **Fürtkonfiguráció** szakaszban:
 
-    * **Fürt típusa**: R Server
+    * **Fürt típusa**: ML-szolgáltatások
 
     * **Operációs rendszer**: Linux
 
-    * **Verzió**: R Server 9.1 (HDI 3.6). Az R Server elérhető verzióinak kibocsátási megjegyzései a [docs.microsoft.com](https://docs.microsoft.com/machine-learning-server/whats-new-in-r-server#r-server-91) webhelyen érhetők el.
+    * **Verzió**: ML Server 9.3 (HDI 3.6). Az ML Server 9.3 kibocsátási megjegyzései a [docs.microsoft.com](https://docs.microsoft.com/machine-learning-server/whats-new-in-machine-learning-server) webhelyen érhetők el.
 
-    * **R Studio community edition for R Server**: ez a böngésző alapú IDE alapértelmezés szerint telepítve van az élcsomópontra. Ha nem szeretné, hogy telepítve legyen, törölje a jelölőnégyzet jelölését. Ha úgy dönt, hogy telepíti, a fürt portálalkalmazás-paneljén találja az RStudio Server bejelentkezésének elérésére szolgáló URL-címet, miután a fürt létrejött.
+    * **R Studio community edition for ML Server**: ez a böngészőalapú IDE alapértelmezés szerint telepítve van a határcsomópontra. Ha nem szeretné, hogy telepítve legyen, törölje a jelölőnégyzet jelölését. Ha úgy dönt, hogy telepíti, a fürt portálalkalmazás-paneljén találja az RStudio Server bejelentkezésének elérésére szolgáló URL-címet, miután a fürt létrejött.
 
         ![Fürt alapvető adatai](./media/r-server-get-started/clustertypeconfig.png)
 
@@ -81,11 +80,11 @@ Az Azure HDInsight olyan R Server beállítással rendelkezik, amely a HDInsight
 
 Ha úgy döntött, hogy telepíti az RStudio Server Community Edition kiadást a HDInsight-fürt részeként, akkor az RStudio bejelentkezési oldalát az alábbi két módon érheti el:
 
-* **1. lehetőség** – Látogasson el a következő URL-címre (ahol a **CLUSTERNAME** a létrehozott R Server-fürt neve):
+* **1. lehetőség** – Látogasson el a következő URL-címre (ahol a **CLUSTERNAME** a létrehozott ML-szolgáltatási fürt neve):
 
         https://CLUSTERNAME.azurehdinsight.net/rstudio/
 
-* **2. lehetőség** – Nyissa meg az R Server-fürtöt az Azure Portalon, és a **Gyorshivatkozások** területen kattintson az **R Server-irányítópultok** elemre.
+* **2. lehetőség** – Nyissa meg az ML-szolgáltatási fürtöt az Azure Portalon, és a **Gyorshivatkozások** területen kattintson az **ML-szolgáltatás irányítópultjai** elemre.
 
      ![A tárfiók HDInsight-beállításainak konfigurálása](./media/r-server-get-started/dashboard-quick-links.png)
 
@@ -175,9 +174,9 @@ Feladat küldéséhez használjon ScaleR-függvényeket. Íme egy példa a felad
 <a name="connect-to-edge-node"></a>
 ## <a name="connect-to-the-cluster-edge-node"></a>Csatlakozás a fürt határcsomópontjához
 
-Ebben a szakaszban azt ismertetjük, hogyan csatlakozhat az R Server HDInsight-fürt határcsomópontjához az SSH segítségével. Az SSH használatával kapcsolatos ismeretekért lásd: [SSH használata a HDInsighttal](../hdinsight-hadoop-linux-use-ssh-unix.md).
+Ebben a szakaszban azt ismertetjük, hogyan csatlakozhat az ML-szolgáltatási HDInsight-fürt határcsomópontjához az SSH segítségével. Az SSH használatával kapcsolatos ismeretekért lásd: [SSH használata a HDInsighttal](../hdinsight-hadoop-linux-use-ssh-unix.md).
 
-Az R Server-fürt határcsomópontjához a következő SSH-paranccsal csatlakozhat:
+Az ML-szolgáltatási fürt határcsomópontjához a következő SSH-paranccsal csatlakozhat:
 
    `ssh USERNAME@CLUSTERNAME-ed-ssh.azurehdinsight.net`
 
@@ -194,15 +193,15 @@ Ha csatlakoztatva van, a következőhöz hasonló adatkérés érkezik:
     sshuser@ed00-myrclu:~$
 
 <a name="use-r-console"></a>
-## <a name="use-the-r-server-console"></a>Az R Server-konzol használata
+## <a name="use-the-r-console"></a>Az R-konzol használata
 
 1. Az SSH-munkamenetből a következő paranccsal indíthatja el az R-konzolt:  
 
         R
 
-2. A kimenetben egyéb információk mellett az R Server verziója is megjelenik.
+2. A kimenetben egyéb információk mellett az ML Server verziója is megjelenik.
     
-3. A `>` adatkérésben beírhatja az R-kódot. A HDInsighton futó R Server olyan csomagokat tartalmaz, amelyekkel könnyedén használhatja a Hadoopot és futtathat elosztott számításokat. A HDInsight-fürt alapértelmezett fájlrendszerének gyökerét például a következő paranccsal tekintheti meg:
+3. A `>` adatkérésben beírhatja az R-kódot. A HDInsighton futó ML-szolgáltatások olyan csomagokat tartalmaznak, amelyekkel könnyedén használhatja a Hadoopot, és elosztott számításokat futtathat. A HDInsight-fürt alapértelmezett fájlrendszerének gyökerét például a következő paranccsal tekintheti meg:
 
         rxHadoopListFiles("/")
 
@@ -216,11 +215,11 @@ Ha csatlakoztatva van, a következőhöz hasonló adatkérés érkezik:
 
 ## <a name="automated-cluster-creation"></a>Fürt automatikus létrehozása
 
-Azure Resource Manager-sablonok, az SDK és a PowerShell használatával automatizálható a HDInsight R Server-fürtök létrehozása.
+Az SDK és a PowerShell használatával automatizálható a HDInsight ML-szolgáltatási fürtök létrehozása.
 
-* Az R Server-fürt Azure Resource Management-sablonnal végzett létrehozásáról az [R Server HDInsight-fürt üzembe helyezésének leírásában](https://azure.microsoft.com/resources/templates/101-hdinsight-rserver/) talál további információt.
-* Az R Server-fürt .NET SDK-val történő létrehozásáról a [Linux-alapú fürtök HDInsightban, a .NET SDK-val történő létrehozását](../hdinsight-hadoop-create-linux-clusters-dotnet-sdk.md) ismertető témakör tartalmaz további részleteket.
-* Az R Server PowerShell-lel történő létrehozásával kapcsolatban tekintse meg a [HDInsight-fürtök Azure PowerShell-lel történő létrehozását](../hdinsight-hadoop-create-linux-clusters-azure-powershell.md) ismertető cikket.
+<!---* To create an ML Server cluster using an Azure Resource Management template, see [Deploy an R Server for HDInsight cluster](https://azure.microsoft.com/resources/templates/101-hdinsight-rserver/).--->
+* Az ML-szolgáltatási fürt .NET SDK-val történő létrehozásáról a [Linux-alapú fürtök HDInsightban, a .NET SDK-val történő létrehozását](../hdinsight-hadoop-create-linux-clusters-dotnet-sdk.md) ismertető témakör tartalmaz további részleteket.
+* Az ML-szolgáltatási fürt PowerShell-lel történő létrehozásával kapcsolatban tekintse meg a [HDInsight-fürtök Azure PowerShell-lel történő létrehozását](../hdinsight-hadoop-create-linux-clusters-azure-powershell.md) ismertető cikket.
 
 ## <a name="delete-the-cluster"></a>A fürt törlése
 
@@ -232,10 +231,10 @@ Ha problémába ütközik a HDInsight-fürtök létrehozása során, tekintse me
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben a cikkben megtanulta, hogyan lehet R Server-fürtöt létrehozni az Azure HDInsightban, és megismerkedett az R-konzol SSH-munkamenetből történő használatának alapjaival. A következő cikkek az R Server HDInsighton történő kezelésének és használatának egyéb módjait ismertetik:
+Ebben a cikkben megtanulta, hogyan lehet ML-szolgáltatási fürtöt létrehozni az Azure HDInsightban, és megismerkedett az R-konzol SSH-munkamenetből történő használatának alapjaival. A következő cikkek az ML-szolgáltatások HDInsighton történő kezelésének és használatának egyéb módjait ismertetik:
 
 * [Feladatok beküldése az R Tools for Visual Studio használatával](r-server-submit-jobs-r-tools-vs.md)
-* [R Server-fürt kezelése a HDInsighton](r-server-hdinsight-manage.md)
-* [R Server-fürt üzembe helyezése a HDInsighton](r-server-operationalize.md)
-* [Számítási környezeti beállítások a HDInsighton belüli R Server-fürt esetében](r-server-compute-contexts.md)
-* [Azure Storage-lehetőségek a HDInsighton belüli R Server-fürthöz](r-server-storage.md)
+* [Az ML-szolgáltatások fürtjének kezelése a HDInsighton](r-server-hdinsight-manage.md)
+* [Az ML-szolgáltatások fürtjének üzembe helyezése a HDInsighton](r-server-operationalize.md)
+* [Számítási környezeti beállítások az ML-szolgáltatások HDInsighton belüli fürtjében](r-server-compute-contexts.md)
+* [Azure Storage-lehetőségek az ML-szolgáltatások HDInsighton belüli fürtjéhez](r-server-storage.md)

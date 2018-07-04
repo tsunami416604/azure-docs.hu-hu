@@ -136,7 +136,7 @@
 - name: Útmutatók
   items:
     - name: Az alkalmazás megtervezése
-      href: Plan-your-app.md
+      href: luis-how-plan-your-app.md
     - name: Új alkalmazás indítása
       href: Create-new-app.md
     - name: Modellépítés
@@ -200,7 +200,7 @@
         - name: Előre összeállított tartományok használata
           href: luis-how-to-use-prebuilt-domains.md
         - name: Az előre összeállított Cortana-alkalmazás használata
-          href: Cortana-Prebuilt-App.md
+          href: luis-how-to-cortana-prebuilt-app.md
     - name: A LUIS-alkalmazás felügyelete
       items:
         - name: Az irányítópult használata
@@ -309,6 +309,8 @@
       href: 'https://azure.microsoft.com/services/cognitive-services/spell-check/'
     - name: Szövegelemzés
       href: 'https://azure.microsoft.com/services/cognitive-services/text-analytics/'
+    - name: Recognizers-Text
+      href: 'https://github.com/Microsoft/Recognizers-Text'
 - name: További források
   items:
     - name: Azure-ütemterv

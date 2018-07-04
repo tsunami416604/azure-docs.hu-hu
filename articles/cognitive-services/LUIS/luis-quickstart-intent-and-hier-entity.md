@@ -7,14 +7,14 @@ manager: kaiqb
 ms.service: cognitive-services
 ms.component: luis
 ms.topic: tutorial
-ms.date: 03/27/2018
+ms.date: 06/22/2018
 ms.author: v-geberr
-ms.openlocfilehash: 2547407126943161ba604fa2f5e80b9186cae57e
-ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
+ms.openlocfilehash: 5fb93ebbd2da02df0c2cdf0d19ed282aeafe9473
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36266498"
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36335560"
 ---
 # <a name="tutorial-create-app-that-uses-hierarchical-entity"></a>Oktatóanyag: Hierarchikus entitást használó alkalmazás létrehozása
 Ebben az oktatóanyagban létrehozunk egy alkalmazást, amely bemutatja, hogyan lehet kapcsolódó adatrészleteket keresni kontextus alapján. 
@@ -22,140 +22,111 @@ Ebben az oktatóanyagban létrehozunk egy alkalmazást, amely bemutatja, hogyan 
 <!-- green checkmark -->
 > [!div class="checklist"]
 > * Hierarchikus entitások és környezetfüggő tanult gyermekek megismerése 
-> * Új LUIS-alkalmazás létrehozása egy utazási tartományhoz Bookflight szándékkal
-> * _None_ szándék és például szolgáló kimondott szövegek hozzáadása
+> * A LUIS-alkalmazás használata az emberi erőforrások (HR) tartományban 
 > * Forrással és célgyermekkel rendelkező helyhierarchikus entitás hozzáadása
 > * Alkalmazás betanítása és közzététele
 > * Alkalmazás végpontjának lekérdezése a LUIS által visszaadott JSON-válasz, többek között a hierarchikus gyermekek megtekintéséhez 
 
 Ehhez a cikkhez egy ingyenes [LUIS][LUIS]-fiókra van szüksége a LUIS-alkalmazás létrehozásához.
 
+## <a name="before-you-begin"></a>Előkészületek
+Ha még nincs meg az Emberi erőforrások alkalmazása a [lista entitások](luis-quickstart-intent-and-list-entity.md) oktatóanyagából, [importálja](create-new-app.md#import-new-app) a JSON-t egy új alkalmazásba a [LUIS](luis-reference-regions.md#luis-website) webhelyén. Az importálandó alkalmazás a [LUIS-minták](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/quickstarts/custom-domain-list-HumanResources.json) GitHub-adattárban található.
+
+Ha meg szeretné tartani az eredeti Emberi erőforrások alkalmazást, klónozza a [Settings](luis-how-to-manage-versions.md#clone-a-version) (Beállítások) lapon a verziót, és adja neki a következő nevet: `hier`. A klónozás nagyszerű mód, hogy kísérletezhessen a különböző LUIS-funkciókkal anélkül, hogy az az eredeti verzióra hatással lenne. 
+
 ## <a name="purpose-of-the-app-with-this-entity"></a>Az ezzel az entitással rendelkező alkalmazás célja
-Ez az alkalmazás határozza meg, hogy a felhasználó szeretne-e repülőjegyet foglalni. A hierarchikus entitás segítségével határozza meg a helyeket, azaz az indulási és az érkezési várost a felhasználó által megadott szövegben. 
+Ez az alkalmazás meghatározza, hova lesz áthelyezve egy alkalmazott az indulási helyről (épület és iroda) az érkezési helyre (épület és iroda). A hierarchikus entitás segítségével határozza meg a kimondott szövegben található helyeket. 
 
 Ez a hierarchikus entitás jó választás az ilyen típusú adatok esetén, mivel a két adatrészlet:
 
-* Hely, általában városnévvel vagy repülőtérkóddal kifejezve.
-* Általában egyedi nyelvtani szerkezetek segítségével határozza meg, melyik az indulási és melyik az érkezési hely. Ezek a szerkezetek lehetnek: ~ba/be/ra/re, érkezés, ~ból/ből/ról/ről, indulás.
+* Kapcsolódik egymáshoz a kimondott szövegkörnyezetben.
+* Adott szavakat használ az egyes helyek jelzéséhez. Ilyen szavak például: innen/oda, elhagyja/felé tart, távolodik/közeledik.
 * Mindkét hely általában egyazon kimondott szövegrészletben található. 
 
 A **hierarchikus** entitás célja kapcsolódó adatok keresése kontextus alapján a kimondott szövegben. Vegyük például a következő kimondott szöveget:
 
 ```JSON
-1 ticket from Seattle to Cairo`
+mv Jill Jones from a-2349 to b-1298
 ```
-
-A kimondott szövegben két hely van megadva. Az egyik az indulási (Budapest), a másik az érkezési (Kairó) város. Mindkét város szükséges a repülőjegy-foglaláshoz. Bár ezek egyszerű entitások használatával is megtalálhatók, kapcsolódnak egymáshoz és gyakran szerepelnek egyazon kimondott szövegben. Ezért érdemes a kettőt egy hierarchikus entitás, a **„Hely”** entitás gyermekeiként összerendelni. 
-
-Mivel ezek gép által tanult entitások, az alkalmazáshoz meg kell adni példaszövegeket, amelyekben az indulási és az érkezési városok fel vannak címkézve. Ez megtanítja a LUIS-nak, hogy az entitások hol találhatók a kimondott szövegben, milyen hosszúak, és milyen szavak találhatók körülöttük. 
-
-## <a name="app-intents"></a>Az alkalmazás szándékai
-A szándékok a felhasználói kívánságok kategóriái. Ez az alkalmazás két szándékkal rendelkezik: BookFlight és None. A [None](luis-concept-intent.md#none-intent-is-fallback-for-app) szándékkal jelezhető minden olyan kívánság, amely az alkalmazás körén kívül esik.  
-
-## <a name="hierarchical-entity-is-contextually-learned"></a>A hierarchikus entitás tanulása környezetfüggő módon történik 
-Az entitás célja, hogy megtalálja és kategorizálja a kimondott szöveg egyes részeit. A [hierarchikus](luis-concept-entity-types.md) entitások az alkalmazási környezeten alapuló szülő–gyermek entitások. A valós személyek a következők használata alapján képesek azonosítani az indulási és érkezési városokat a kimondott szövegekben: `to` és `from`. Ez egy példa a környezetfüggő használatra.  
-
-Az utazási alkalmazásunk esetében a LUIS kinyeri az indulási és érkezési városokat, hogy azok alapján létre lehessen hozni és kitölteni egy szabványos foglalást. A LUIS lehetővé teszi, hogy a kimondott szöveg változatokat, rövidítéseket és szlenget tartalmazzon. 
-
-Egyszerű példák felhasználók által kimondott szövegekre:
-
-```
-Book a flight to London for next Monday
-2 tickets from Dallas to Dublin this weekend
-Researve a seat from New York to Paris on the first of April
-```
-
-A kimondott szövegek rövidített vagy szlenges verziói:
-
-```
-LHR tomorrow
-SEA to NYC next Monday
-LA to MCO spring break
-```
+A kimondott szövegben két hely van megadva: `a-2349` és `b-1298`. Tegyük fel, hogy a betű megfelel egy épület nevének, a szám pedig az irodát jelzi az épületen belül. Ezért érdemes a kettőt egy hierarchikus entitás, a `Locations` entitás gyermekeiként összerendelni, mert mindkét információt a kimondott szövegből kell kinyerni, és a két információ kapcsolódik egymáshoz. 
  
-A hierarchikus entitás összerendeli az indulási és érkezési helyeket. Ha egy hierarchikus entitásnak csak az egyik gyermeke (az indulás vagy az érkezés) van jelen, az alkalmazás akkor is kinyeri. Egy vagy néhány gyermek kinyeréséhez nem szükséges az összes gyermeket megtalálni. 
+Ha egy hierarchikus entitásnak csak az egyik gyermeke (az indulás vagy az érkezés) van jelen, az alkalmazás akkor is kinyeri. Egy vagy néhány gyermek kinyeréséhez nem szükséges az összes gyermeket megtalálni. 
 
-## <a name="what-luis-does"></a>A LUIS által elvégzett feladat
-A LUIS akkor van készen, ha azonosította, [kinyerte](luis-concept-data-extraction.md#list-entity-data), és a [végpontról](https://aka.ms/luis-endpoint-apis) JSON-formátumban visszaadta a kimondott szöveg szándékát és entitásait. A hívó alkalmazás vagy a csevegőrobot fogadja a JSON-választ és teljesíti a kérést a kialakításának megfelelő módon. 
+## <a name="remove-prebuilt-number-entity-from-app"></a>Előre összeállított szám entitás eltávolítása az alkalmazásból
+A teljes kimondott szöveg megjelenítéséhez és a hierarchikus gyermek megjelöléséhez ideiglenesen távolítsa el az előre összeállított szám entitást.
 
-## <a name="create-a-new-app"></a>Új alkalmazás létrehozása
-1. Jelentkezzen be a [LUIS][LUIS] webhelyére. Győződjön meg arról, hogy abban a [régióban][LUIS-regions] jelentkezik be, ahol közzé szeretné tenni a LUIS-végpontokat.
+1. Győződjön meg arról, hogy az Emberi erőforrások alkalmazás a LUIS **Build** (Létrehozás) szakaszában van. Ha erre a szakaszra szeretne lépni, válassza a jobb felső menüsávon a **Build** (Létrehozás) elemet. 
 
-2. A [LUIS][LUIS] webhelyén válassza a **Create new app** (Új alkalmazás létrehozása) lehetőséget.  
+    [ ![Képernyőfelvétel a LUIS-alkalmazásról a kiemelt Létrehozás elemmel a jobb felső navigációs sávon](./media/luis-quickstart-intent-and-hier-entity/hr-first-image.png)](./media/luis-quickstart-intent-and-hier-entity/hr-first-image.png#lightbox)
 
-    [![](media/luis-quickstart-intent-and-hier-entity/app-list.png "Alkalmazáslistát tartalmazó oldal képernyőképe")](media/luis-quickstart-intent-and-hier-entity/app-list.png#lightbox)
+2. Válassza az **Entities** (Entitások) elemet a bal oldali menüben.
 
-3. Az előugró párbeszédpanelen írja be a következő nevet: `MyTravelApp`. 
+    [ ![Képernyőkép a LUIS-alkalmazásról a kiemelt Szándékok gombbal a bal menüben](./media/luis-quickstart-intent-and-hier-entity/hr-select-entities-button.png)](./media/luis-quickstart-intent-and-hier-entity/hr-select-entities-button.png#lightbox)
 
-    [![](media/luis-quickstart-intent-and-hier-entity/create-new-app.png "A Create new app (Új alkalmazás létrehozása) felugró párbeszédpanel képernyőképe")](media/luis-quickstart-intent-and-hier-entity/create-new-app.png#lightbox)
 
-4. Amikor a folyamat befejeződött, az alkalmazás megjeleníti az **Intents** (Szándékok) lapot és rajta a **None** szándékot. 
+3. Kattintson a listában lévő szám entitás jobb oldalán található három pontra (...). Válassza a **Törlés** elemet. 
 
-    [![](media/luis-quickstart-intent-and-hier-entity/intents-page-none-only.png "A szándékok listájának képernyőképe, csak a None szándékkal")](media/luis-quickstart-intent-and-hier-entity/intents-page-none-only.png#lightbox)
+    [ ![A LUIS-alkalmazás entitások listaoldalának képernyőképe, a törlés gomb kiemelve az előre összeállított szám entitásnál](./media/luis-quickstart-intent-and-hier-entity/hr-delete-number-prebuilt.png)](./media/luis-quickstart-intent-and-hier-entity/hr-delete-number-prebuilt.png#lightbox)
 
-## <a name="create-a-new-intent"></a>Új szándék létrehozása
 
-1. Az **Intents** (Szándékok) lapon válassza a **Create new intent** (Új szándék létrehozása) lehetőséget. 
+## <a name="add-utterances-to-findform-intent"></a>Kimondott szövegek hozzáadása a FindForm szándékhoz
 
-    [![](media/luis-quickstart-intent-and-hier-entity/create-new-intent-button.png "A szándékok listájának képernyőképe az új szándék létrehozására szolgáló gomb kiemelésével")](media/luis-quickstart-intent-and-hier-entity/create-new-intent-button.png#lightbox)
+1. A bal oldali menüben válassza az **Intents** (Szándékok) lehetőséget.
 
-2. Adja meg az új szándék nevét: `BookFlight`. Ezt a szándékot kell kiválasztani, ha a felhasználó repülőjegyet szeretne foglalni.
+    [ ![Képernyőfelvétel a LUIS-alkalmazásról a kiemelt Szándékok elemmel a bal menüben](./media/luis-quickstart-intent-and-hier-entity/hr-select-intents-button.png)](./media/luis-quickstart-intent-and-hier-entity/hr-select-intents-button.png#lightbox)
 
-    A szándék létrehozásával azt az elsődleges információkategóriát is létrehozza, amelyet azonosítani szeretne. A kategória elnevezése lehetővé teszi, hogy a LUIS lekérdezési eredményeit használó egyéb alkalmazások is használják ezt a kategórianevet a megfelelő válasz megkereséséhez vagy a megfelelő művelet végrehajtásához. A LUIS nem válaszol ezekre a kérdésekre, csak azonosítja a természetes nyelvezeten kért információ típusát. 
+2. A szándékok listájából válassza ki a **MoveEmployee** elemet.
 
-    [![](media/luis-quickstart-intent-and-hier-entity/create-new-intent.png "A Create new intent (Új szándék létrehozása) felugró párbeszédpanel képernyőképe")](media/luis-quickstart-intent-and-hier-entity/create-new-intent.png#lightbox)
+    [ ![Képernyőfelvétel a LUIS-alkalmazásról a kiemelt MoveEmployee szándékkal a bal menüben](./media/luis-quickstart-intent-and-hier-entity/hr-intents-list-moveemployee.png)](./media/luis-quickstart-intent-and-hier-entity/hr-intents-list-moveemployee.png#lightbox)
 
-3. Az `BookFlight` szándékhoz számos olyan kimondott szöveget is hozzáadhat, amelyet a felhasználók várhatóan használni fognak, például:
+3. Vegye fel az alábbi kimondott szövegpéldákat:
 
-    | Példák kimondott szövegekre|
+    |Példák kimondott szövegekre|
     |--|
-    |Szeretnék 2 jegyet foglalni jövő hétfőre Budapestről Kairóba|
-    |Szeretnék egy jegyet Londonba holnapra|
-    |Lefoglalnék 4 jegyet Párizsból Londonba április 1-re|
+    |John W. Smith áthelyezése **ide**: a-2345|
+    |Jill Jones átirányítása **ide**: b-3499|
+    |x23456 áthelyezésének megszervezése **innen**: hh-2345, **ide**: e-0234|
+    |Papírmunka megkezdése a következő beállításához: x12345 **elhagyja** a következőt: a-3459, és az f-34567 **felé tart**|
+    |425-555-0000 áthelyezése: **távolodik** a következőtől: g-2323, és **közeledik** hh-2345 felé|
 
-    [![](media/luis-quickstart-intent-and-hier-entity/enter-utterances-on-intent.png "A kimondott szöveg megadásának képernyőképe a BookFlight Szándék oldalán")](media/luis-quickstart-intent-and-hier-entity/enter-utterances-on-intent.png#lightbox)
+    A [lista entitás](luis-quickstart-intent-and-list-entity.md) oktatóanyagban egy alkalmazott kijelölhető név, e-mail-cím, telefonmellék, mobiltelefonszám, vagy USA-beli szövetségi társadalombiztosítási szám alapján. Ezeket az alkalmazotti számokat a kimondott szövegekben használja a rendszer. Az előző kimondott szövegpélda különböző módokat tartalmaz az indulási és érkezési hely jelzésére, amelyek félkövér betűvel vannak kiemelve. Néhány kimondott szöveg szándékosan csak érkezési hellyel rendelkezik. Ez segít megérteni a LUIS-nak, hogyan helyezkednek el ezek a helyek a kimondott szövegben, amikor az indulási hely nincs megadva.
 
-## <a name="add-utterances-to-none-intent"></a>Kimondott szövegek hozzáadása a None szándékhoz
+    [![Képernyőkép a LUIS-ról, új kimondott szövegek a MoveEmployee szándékban](./media/luis-quickstart-intent-and-hier-entity/hr-enter-utterances.png)](./media/luis-quickstart-intent-and-hier-entity/hr-enter-utterances.png#lightbox)
+     
 
-A LUIS-alkalmazásnak jelenleg nincsenek kimondott szövegei a **None** szándékhoz. Meg kell adni olyan kimondott szövegeket, amelyekre nem szeretné, hogy az alkalmazás válaszoljon, így a **None** szándékban is lenniük kell kimondott szövegeknek. Ne hagyja üresen a szándékot. 
+## <a name="create-a-location-entity"></a>Hely entitás létrehozása
+A LUIS-nak meg kell értenie, hogy a hely pontosan mit jelent. Ez a kimondott szövegben található indulási és érkezési hely címkézésével lehetséges. Ha a kimondott szöveget jogkivonat (nyers) nézetben szeretné megtekinteni, válassza az **Entities View** (Entitások nézet) címkével ellátott, a kimondott szövegek fölötti sávban található kapcsolót. Miután átkapcsolta a kapcsolót, a vezérlő **Tokens View** (Jogkivonatok nézet) címkével lesz ellátva.
 
-1. A bal oldali panelen válassza az **Intents** (Szándékok) lehetőséget. 
+1. A(z) `Displace 425-555-0000 away from g-2323 toward hh-2345` kimondott szövegben válassza ki a következő szót: `g-2323`. Megjelenik egy legördülő menü egy szövegmezővel a tetején. Adja meg az entitás nevét (`Locations`) a szövegmezőben, majd a legördülő menüben válassza a **Create new entity** (Új entitás létrehozása) lehetőséget. 
 
-    [![](media/luis-quickstart-intent-and-hier-entity/select-intents-from-bookflight-intent.png "A BookFlight Szándék oldalának képernyőképe a kiemelt Intents (Szándékok) gombbal")](media/luis-quickstart-intent-and-hier-entity/select-intents-from-bookflight-intent.png#lightbox)
+    [![](media/luis-quickstart-intent-and-hier-entity/hr-create-new-entity-1.png "Képernyőkép: Új entitás létrehozása a szándék lapon")](media/luis-quickstart-intent-and-hier-entity/hr-create-new-entity-1.png#lightbox)
 
-2. Válassza ki a **None** szándékot. Adjon meg három olyan kimondott szöveget, amelyet a felhasználó megadhat, de az alkalmazás nem fog foglalkozni velük:
+2. Az előugró ablakban válassza a **Hierarchikus** entitástípust, gyermekentitásokként a következőkkel: `Origin` és `Destination`. Válassza a **Done** (Kész) lehetőséget.
 
-    | Példák kimondott szövegekre|
-    |--|
-    |Mégse|
-    |Viszlát|
-    |Mi történik?|
+    ![](media/luis-quickstart-intent-and-hier-entity/hr-create-new-entity-2.png "Képernyőkép: Entitás létrehozása felugró párbeszédpanel új Hely entitáshoz")
 
-## <a name="when-the-utterance-is-predicted-for-the-none-intent"></a>Amikor a kimondott szövegből a None szándékra lehet következtetni
-Ha a LUIS-t hívó alkalmazásban, például egy csevegőrobotban, a LUIS a **None** szándékot adja vissza egy kimondott szöveghez, a robot meg tudja kérdezni, hogy a felhasználó be szeretné-e fejezni a beszélgetést. A robot további iránymutatásokat is adhat a beszélgetés folytatásához, ha a felhasználó azt szeretné. 
+3. A `g-2323` címkéje `Locations`, mivel a LUIS nem tudja, hogy a kifejezés a kiindulási vagy az érkezési hely-e, vagy egyik sem. Válassza ki a `g-2323`, majd a **Locations** (Helyek) elemet, azután pedig a jobb oldali menüben a `Origin` lehetőséget.
 
-Az entitások a **None** szándék esetében is működnek. Ha a **None** a legmagasabb pontszámú szándék, de egy kinyert entitás a csevegőrobot számára értelmezhető, a csevegőrobot folytathatja a kommunikációt egy, az ügyfél szándékát feltáró kérdéssel. 
+    [![](media/luis-quickstart-intent-and-hier-entity/hr-label-entity.png "Az entitáscímkézés előugró párbeszédpanel képernyőképe, a hely entitásgyermek módosításához")](media/luis-quickstart-intent-and-hier-entity/hr-label-entity.png#lightbox)
 
-## <a name="create-a-location-entity-from-the-intent-page"></a>Hely entitás létrehozása a Szándék oldalon
-Most, hogy a két szándéknak vannak kimondott szövegei, a LUIS-nak meg kell értenie, hogy a hely pontosan mit takar. Lépjen vissza a `BookFlight` szándékra, és címkézze (jelölje) meg a városnevet egy kimondott szövegben a következő lépések alapján:
+5. Címkézze meg az egyéb helyeket a többi kimondott szövegben: a kimondott szövegben válassza ki az épületet és az irodát, majd válassza ki a Locations (Helyek) elemet, majd a jobb oldali menüben válassza az `Origin` vagy `Destination` lehetőséget. Ha minden hely fel lett címkézve, a **Tokens View** (Jogkivonatok nézet) kimondott szövegei egy mintára kezdenek hasonlítani. 
 
-1. Térjen vissza az `BookFlight` szándékhoz a bal oldali navigációs menü **Intents** (Szándékok) menüpontjának kiválasztásával.
+    [![](media/luis-quickstart-intent-and-hier-entity/hr-entities-labeled.png "Képernyőkép: Helyek entitás felcímkézve a kimondott szövegekben")](media/luis-quickstart-intent-and-hier-entity/hr-entities-labeled.png#lightbox)
 
-2. A szándékok listájáról válassza ki a következőt: `BookFlight`.
+## <a name="add-prebuilt-number-entity-to-app"></a>Előre összeállított szám entitás hozzáadása az alkalmazáshoz
+Adja hozzá ismét az előre összeállított szám entitást az alkalmazáshoz.
 
-3. A(z) `Book 2 flights from Seattle to Cairo next Monday` kimondott szövegben válassza ki a következő szót: `Seattle`. Az új entitás létrehozásához megjelenik egy legördülő menü, szövegmezővel a tetején. Adja meg az entitás nevét (`Location`) a szövegmezőben, majd a legördülő menüben válassza a **Create new entity** (Új entitás létrehozása) lehetőséget. 
+1. Válassza az **Entities** (Entitások) elemet a bal oldali navigációs menüben.
 
-    [![](media/luis-quickstart-intent-and-hier-entity/label-seattle-in-utterance.png "A BookFlight Szándék oldalának képernyőképe: új entitás létrehozása a kijelölt szöveg alapján")](media/luis-quickstart-intent-and-hier-entity/label-seattle-in-utterance.png#lightbox)
+    [ ![Képernyőkép: az Entitások gomb kiemelve a bal oldali navigációs menüben](./media/luis-quickstart-intent-and-hier-entity/hr-select-entity-button-from-intent-page.png)](./media/luis-quickstart-intent-and-hier-entity/hr-select-entity-button-from-intent-page.png#lightbox)
 
-4. Az előugró ablakban válassza a **Hierarchikus** entitástípust, gyermekentitásokként a következőkkel: `Origin` és `Destination`. Válassza a **Done** (Kész) lehetőséget.
+2. Válassza a **Manage prebuilt entities** (Előre összeállított entitások kezelése) gombot.
 
-    [![](media/luis-quickstart-intent-and-hier-entity/hier-entity-ddl.png "Képernyőkép: Entitás létrehozása felugró párbeszédpanel új Hely entitáshoz")](media/luis-quickstart-intent-and-hier-entity/hier-entity-ddl.png#lightbox)
+    [ ![Entitások lista képernyőképe, Előre összeállított entitások gomb kiemelve](./media/luis-quickstart-intent-and-hier-entity/hr-manage-prebuilt-button.png)](./media/luis-quickstart-intent-and-hier-entity/hr-manage-prebuilt-button.png#lightbox)
 
-    A `Seattle` címkéje `Location`, mivel a LUIS nem tudja, hogy a kifejezés a kiindulási vagy az érkezési hely-e, vagy egyik sem. Válassza ki a `Seattle`, majd a Hely elemet, azután pedig a jobb oldali menüben a `Origin` lehetőséget.
+3. Az előre összeállított entitások listájából válassza a **number** (szám) entitást, majd kattintson a **Done** (Kész) gombra.
 
-5. Most, hogy létrehozta az entitást és felcímkézett egy kimondott szöveget, címkézze fel a többi várost is – ehhez válassza ki a város nevét, majd a Hely elemet, azután pedig a jobb oldali menüben a `Origin` vagy `Destination` lehetőséget.
-
-    [![](media/luis-quickstart-intent-and-hier-entity/label-destination-in-utterance.png "A BookFlight entitás képernyőképe: a kimondott szöveg kijelölve az entitás kiválasztásához")](media/luis-quickstart-intent-and-hier-entity/label-destination-in-utterance.png#lightbox)
+    ![Képernyőkép: számválasztó az előre összeállított entitások párbeszédpanelen](./media/luis-quickstart-intent-and-hier-entity/hr-add-number-back-ddl.png)
 
 ## <a name="train-the-luis-app"></a>A LUIS-alkalmazás betanítása
 Amíg nincs betanítva, a LUIS nem ismeri fel a szándékok és entitások (a modell) módosításait. 
@@ -173,8 +144,6 @@ Ahhoz, hogy LUIS-előrejelzéseket kaphasson egy csevegőrobotban vagy más alka
 
 1. A LUIS-webhely jobb felső részén válassza a **Publish** (Közzététel) lehetőséget. 
 
-    [![](media/luis-quickstart-intent-and-hier-entity/publish.png "A BookFlight Szándék oldalának képernyőképe a kiemelt Publish (Közzététel) gombbal")](media/luis-quickstart-intent-and-hier-entity/publish.png#lightbox)
-
 2. Válasza a Production (Termelés) helyet, és kattintson a **Publish** (Közzététel) gombra.
 
     [![](media/luis-quickstart-intent-and-hier-entity/publish-to-production.png "A Publish (Közzététel) lap képernyőképe a kiemelt Publish to production slot (Közzététel éles termelési helyre) elemmel")](media/luis-quickstart-intent-and-hier-entity/publish-to-production.png#lightbox)
@@ -186,41 +155,114 @@ Ahhoz, hogy LUIS-előrejelzéseket kaphasson egy csevegőrobotban vagy más alka
 
     [![](media/luis-quickstart-intent-and-hier-entity/publish-select-endpoint.png "A Publish (Közzététel) lap képernyőképe a kiemelt végponti URL-címmel")](media/luis-quickstart-intent-and-hier-entity/publish-select-endpoint.png#lightbox)
 
-2. Lépjen az URL-cím végéhez, és írja be a következőt: `1 ticket to Portland on Friday`. Az utolsó lekérdezésisztring-paraméter `q`, a kimondott szöveg pedig a **q**uery. A kimondott szöveg nem egyezik meg egyik címkézett kimondott szöveggel sem, ezért tesztnek megfelelő, és a következő szándékot kell visszaadnia a kinyert hierarchikus entitással: `BookFlight`.
+2. Lépjen az URL-cím végéhez a címsorban, és írja be a következőt: `Please relocation jill-jones@mycompany.com from x-2345 to g-23456`. Az utolsó lekérdezésisztring-paraméter `q`, a kimondott szöveg pedig a **query**. A kimondott szöveg nem egyezik meg egyik címkézett kimondott szöveggel sem, ezért tesztnek megfelelő, és a következő szándékot kell visszaadnia a kinyert hierarchikus entitással: `MoveEmployee`.
 
-```
+```JSON
 {
-  "query": "1 ticket to Portland on Friday",
+  "query": "Please relocation jill-jones@mycompany.com from x-2345 to g-23456",
   "topScoringIntent": {
-    "intent": "BookFlight",
-    "score": 0.9998226
+    "intent": "MoveEmployee",
+    "score": 0.9966052
   },
   "intents": [
     {
-      "intent": "BookFlight",
-      "score": 0.9998226
+      "intent": "MoveEmployee",
+      "score": 0.9966052
+    },
+    {
+      "intent": "Utilities.Stop",
+      "score": 0.0325253047
+    },
+    {
+      "intent": "FindForm",
+      "score": 0.006137873
+    },
+    {
+      "intent": "GetJobInformation",
+      "score": 0.00462633232
+    },
+    {
+      "intent": "Utilities.StartOver",
+      "score": 0.00415637763
+    },
+    {
+      "intent": "ApplyForJob",
+      "score": 0.00382325822
+    },
+    {
+      "intent": "Utilities.Help",
+      "score": 0.00249120337
     },
     {
       "intent": "None",
-      "score": 0.221926212
+      "score": 0.00130756292
+    },
+    {
+      "intent": "Utilities.Cancel",
+      "score": 0.00119622645
+    },
+    {
+      "intent": "Utilities.Confirm",
+      "score": 1.26910036E-05
     }
   ],
   "entities": [
     {
-      "entity": "portland",
-      "type": "Location::Destination",
-      "startIndex": 12,
-      "endIndex": 19,
-      "score": 0.564448953
+      "entity": "jill - jones @ mycompany . com",
+      "type": "Employee",
+      "startIndex": 18,
+      "endIndex": 41,
+      "resolution": {
+        "values": [
+          "Employee-45612"
+        ]
+      }
+    },
+    {
+      "entity": "x - 2345",
+      "type": "Locations::Origin",
+      "startIndex": 48,
+      "endIndex": 53,
+      "score": 0.8520272
+    },
+    {
+      "entity": "g - 23456",
+      "type": "Locations::Destination",
+      "startIndex": 58,
+      "endIndex": 64,
+      "score": 0.974032
+    },
+    {
+      "entity": "-2345",
+      "type": "builtin.number",
+      "startIndex": 49,
+      "endIndex": 53,
+      "resolution": {
+        "value": "-2345"
+      }
+    },
+    {
+      "entity": "-23456",
+      "type": "builtin.number",
+      "startIndex": 59,
+      "endIndex": 64,
+      "resolution": {
+        "value": "-23456"
+      }
     }
   ]
 }
 ```
 
-## <a name="what-has-this-luis-app-accomplished"></a>Milyen műveleteket végzett el a LUIS-alkalmazás?
-Az alkalmazás mindössze két szándékkal és egy hierarchikus entitással azonosított egy természetes nyelvi lekérdezési szándékot, és visszaadta a kinyert adatokat. 
+## <a name="could-you-have-used-a-regular-expression-for-each-location"></a>Használhat reguláris kifejezést minden helyhez?
+Igen, hozza létre a reguláris kifejezést indulási és érkezési szerepkörökkel, és használja egy mintában.
 
-A csevegőrobot már elég információval rendelkezik az elsődleges művelet (`BookFlight`) és a kimondott szövegben szereplő helyadatok meghatározásához. 
+Az ebben a példában lévő helyek, például az `a-1234`, egy adott formátumot követnek: egy vagy két betű, kötőjellel elválasztva, ezután egy 4 vagy 5 számból álló sorozat. Ez az adat leírható reguláris kifejezés entitásként az egyes helyekhez kapcsolódó szerepkörrel. A szerepkörök elérhetők a mintákhoz. Ezen kimondott szövegek alapján létrehozhat mintákat, majd létrehozhat egy reguláris kifejezést a helyformátumhoz, és hozzáadhatja a mintákhoz. <!-- Go to this tutorial to see how that is done -->
+
+## <a name="what-has-this-luis-app-accomplished"></a>Milyen műveleteket végzett el a LUIS-alkalmazás?
+Az alkalmazás mindössze néhány szándékkal és egy hierarchikus entitással azonosított egy természetes nyelvi lekérdezési szándékot, és visszaadta a kinyert adatokat. 
+
+A csevegőrobot már elég információval rendelkezik az elsődleges művelet (`MoveEmployee`) és a kimondott szövegben szereplő helyadatok meghatározásához. 
 
 ## <a name="where-is-this-luis-data-used"></a>Hol vannak használatban ezek a LUIS-adatok? 
 A LUIS végzett ezzel a kéréssel. A hívó alkalmazás, például egy csevegőrobot, felhasználhatja a topScoringIntent eredményt és az entitás adatait a következő lépés végrehajtásához. A LUIS nem végzi el ezt a programozható munkát a csevegőrobotnak vagy a hívó alkalmazásnak. A LUIS csak azt határozza meg, hogy mi a felhasználó szándéka. 
@@ -231,11 +273,6 @@ Ha már nincs rá szükség, törölje a LUIS-alkalmazást. Ehhez válassza az a
 ## <a name="next-steps"></a>További lépések
 > [!div class="nextstepaction"] 
 > [Ismerkedés a listaentitások hozzáadásának módjával](luis-quickstart-intent-and-list-entity.md) 
-
-**Number** (szám) [előre összeállított entitás](luis-how-to-add-entities.md#add-prebuilt-entity) megadása a szám kinyeréséhez. 
-
-A dátuminformációk kinyeréséhez adja hozzá a **datetimeV2** [előre összeállított entitást](luis-how-to-add-entities.md#add-prebuilt-entity).
-
 
 <!--References-->
 [LUIS]: https://docs.microsoft.com/azure/cognitive-services/luis/luis-reference-regions#luis-website

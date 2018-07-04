@@ -14,20 +14,20 @@ ms.topic: get-started-article
 ms.date: 01/22/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 6747dc6ef482fecba7e9fb4fae5748de377051eb
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 1b0838bb3d4fa1f47d906294ce42c318d1f4a0cd
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
-ms.locfileid: "30179599"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37049797"
 ---
 # <a name="introduction-to-azure-data-factory"></a>Az Azure Data Factory bemutatása 
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [1. verzió – Általánosan elérhető](data-factory-introduction.md)
-> * [2. verzió – Előzetes verzió](../introduction.md)
+> * [1-es verzió](data-factory-introduction.md)
+> * [2-es verzió (aktuális verzió)](../introduction.md)
 
 > [!NOTE]
-> Ez a cikk az Azure Data Factory általánosan elérhető 1. verziójára vonatkozik. Ha a Data Factory szolgáltatás előzetes verzióban elérhető 2. verzióját használja, lásd: [A Data Factory 2. verziójának bemutatása](../introduction.md).
+> Ez a cikk az Azure Data Factory 1-es verziójára vonatkozik. Ha a Data Factory szolgáltatás aktuális verzióját használja, tekintse meg a [Data Factory 2-es verziójának ismertetését](../introduction.md).
 
 
 ## <a name="what-is-azure-data-factory"></a>Mi az az Azure Data Factory?
@@ -108,9 +108,9 @@ Minden tevékenység nulla vagy több adatkészletet fogad bemenetként, és egy
 Az Azure Blob-adatkészlet például meghatározza a blobtárolót és azt az Azure Blob Storage-mappát, amelyből a folyamat beolvassa az adatokat. Az Azure SQL Table adatkészlet megadhatja, hogy a tevékenység melyik táblára írja a kimeneti adatokat. 
 
 ### <a name="linked-services"></a>Társított szolgáltatások
-A társított szolgáltatások nagyon hasonlóak a kapcsolati karakterláncokhoz, amelyek meghatározzák azokat a kapcsolati információkat, amelyeket a Data Factory a külső erőforrásokhoz történő csatlakozáshoz igényel. Tulajdonképpen a társított szolgáltatás határozza meg az adatforrással való kapcsolatot, míg az adatkészlet jelöli az adatok struktúráját. 
+A társított szolgáltatások nagyon hasonlóak a kapcsolati sztringekhoz, amelyek meghatározzák azokat a kapcsolati információkat, amelyeket a Data Factory a külső erőforrásokhoz történő csatlakozáshoz igényel. Tulajdonképpen a társított szolgáltatás határozza meg az adatforrással való kapcsolatot, míg az adatkészlet jelöli az adatok struktúráját. 
 
-Az Azure Storage társított szolgáltatása például kapcsolati karakterláncot szolgáltat az Azure Storage-fiókhoz való csatlakozáshoz. Az Azure Blob-adatkészlet meghatározza a blobtárolót és az adatokat tartalmazó mappát.   
+Az Azure Storage társított szolgáltatása például kapcsolati sztringet szolgáltat az Azure Storage-fiókhoz való csatlakozáshoz. Az Azure Blob-adatkészlet meghatározza a blobtárolót és az adatokat tartalmazó mappát.   
 
 A társított szolgáltatásokat két okból használjuk a Data Factoryban:
 

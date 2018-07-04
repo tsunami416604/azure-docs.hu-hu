@@ -2,15 +2,17 @@
 
 # Áttekintés
 ## [Mi az a Resource Manager?](resource-group-overview.md)
-## [Erőforrás-szolgáltatók és típusaik](resource-manager-supported-services.md)
 ## [A Resource Manager-alapú és a klasszikus üzemi modell](resource-manager-deployment-model.md)
-## [Előfizetés-irányítás](/azure/architecture/cloud-adoption-guide/subscription-governance)
-## [Erőforrások rendszerezése felügyeleti csoportokkal](management-groups-overview.md)
 
 # Bevezetés
 ## [Sablon létrehozása és üzembe helyezése](resource-manager-create-first-template.md)
 ## [VS Code-bővítmény sablonokhoz](resource-manager-vscode-extension.md)
 ## [A Visual Studio és a Resource Manager](vs-azure-tools-resource-groups-deployment-projects-create-deploy.md)
+
+# Alapelvek
+## [Erőforrás-szolgáltatók és típusaik](resource-manager-supported-services.md)
+## [Felügyeleti csoportok](management-groups-overview.md)
+## [Előfizetés-irányítás](/azure/architecture/cloud-adoption-guide/subscription-governance?toc=%2fazure%2fazure-resource-manager%2ftoc.json)
 
 # Útmutató
 ## Sablonok létrehozása

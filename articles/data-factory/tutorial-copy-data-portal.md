@@ -11,21 +11,20 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 01/09/2018
+ms.date: 06/21/2018
 ms.author: jingwang
-ms.openlocfilehash: 34c78a114c1d106c400a94941aa113153383e206
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 47fc3b44719caf430edf026bf776c4e85764ad08
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37048437"
 ---
 # <a name="copy-data-from-azure-blob-storage-to-a-sql-database-by-using-azure-data-factory"></a>Adatok másolása az Azure Blob Storage-ból egy SQL Database-be az Azure Data Factory segítségével
 Ebben az oktatóanyagban az Azure Data Factory felhasználói felületének használatával hoz létre egy adat-előállítót. Az adat-előállító folyamata adatokat másol az Azure Blob Storage-ból egy SQL Database-be. Az oktatóanyagban szereplő konfigurációs minta fájlalapú adattárból relációs adattárba való másolásra vonatkozik. A forrásként és fogadóként támogatott adattárak listája a [támogatott adattárakat tartalmazó](copy-activity-overview.md#supported-data-stores-and-formats) táblázatban található.
 
 > [!NOTE]
 > - Ha még csak ismerkedik a Data Factory használatával, olvassa el [az Azure Data Factory használatának első lépéseit](introduction.md) ismertető cikket.
->
-> - Ez a cikk a Data Factory 2. verziójára vonatkozik, amely jelenleg előzetes verzióban érhető el. Ha a Data Factory általánosan elérhető 1. verzióját használja, tekintse meg a [Data Factory 1. verzió használatának első lépéseit](v1/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md).
 
 Az oktatóanyagban az alábbi lépéseket fogja végrehajtani:
 
@@ -103,7 +102,7 @@ Ebben a lépésben létrehoz egy adat-előállítót, és elindítja a Data Fact
     b. Kattintson az **Új létrehozása** elemre, és adja meg az erőforráscsoport nevét. 
          
     Az erőforráscsoportokkal kapcsolatos információkért tekintse meg az [Erőforráscsoportok használata az Azure-erőforrások kezeléséhez](../azure-resource-manager/resource-group-overview.md) ismertető cikket. 
-6. A **Verzió** alatt válassza a **V2 (előzetes verzió)** értéket.
+6. A **Verzió** résznél válassza a **V2** értéket.
 7. A **Hely** területen válassza ki az adat-előállító helyét. A legördülő listán csak a támogatott helyek jelennek meg. Az adat-előállítók által használt adattárak (például az Azure Storage és az SQL Database) és számítási erőforrások (például az Azure HDInsight) más régiókban is lehetnek.
 8. Válassza a **Rögzítés az irányítópulton** lehetőséget. 
 9. Kattintson a **Létrehozás** gombra. 
@@ -127,74 +126,67 @@ Ebben az oktatóanyagban először létrehozzuk a folyamatot. Ezután társítot
 1. Az **Első lépések** lapon válassza a **Folyamat létrehozása** lehetőséget. 
 
    ![Folyamat létrehozása](./media/tutorial-copy-data-portal/create-pipeline-tile.png)
-2. A folyamat **Tulajdonságok** ablakában a **Név** alatt adja a **CopyPipeline** nevet a folyamatnak.
+2. A folyamat **Általános** lapján, a **Név** részben adja a **CopyPipeline** nevet a folyamatnak.
 
-    ![Folyamat neve](./media/tutorial-copy-data-portal/pipeline-name.png)
-3. A **Tevékenységek** eszközkészletben bontsa ki az **Adatfolyam** kategóriát, majd húzza a **másolási** tevékenységet az eszközkészletből a folyamat tervezőfelületére. 
+3. A **Tevékenységek** eszközkészletben bontsa ki az **Adatfolyam** kategóriát, majd húzza a **másolási** tevékenységet az eszközkészletből a folyamat tervezőfelületére. Adja meg a **CopyFromBlobToSql** értéket a **Név** mezőben.
 
     ![Másolási tevékenység](./media/tutorial-copy-data-portal/drag-drop-copy-activity.png)
-4. A **Tulajdonságok** ablak **Általános** lapján adja a **CopyFromBlobToSql** nevet a tevékenységnek.
 
-    ![Tevékenység neve](./media/tutorial-copy-data-portal/activity-name.png)
-5. Váltson a **Forrás** lapra. Forrásadatkészlet létrehozásához válassza az **+ Új** elemet. 
+### <a name="configure-source"></a>Forrás konfigurálása
 
-    ![Forrás lap](./media/tutorial-copy-data-portal/new-source-dataset-button.png)
-6. Az **Új adatkészlet** lapon válassza az **Azure Blob Storage** lehetőséget, majd válassza a **Befejezés** gombot. A forrásadatok egy Blob Storage-ban vannak, tehát forrásadatkészletként az **Azure Blob Storage**-ot válassza. 
+1. Váltson a **Forrás** lapra. Forrásadatkészlet létrehozásához válassza az **+ Új** elemet. 
 
-    ![Tároló kiválasztása](./media/tutorial-copy-data-portal/select-azure-storage.png)
-7. Megnyílik egy új, **AzureBlob1** nevű lap az alkalmazásban.
+2. Az **Új adatkészlet** lapon válassza az **Azure Blob Storage** lehetőséget, majd válassza a **Befejezés** gombot. A forrásadatok egy Blob Storage-ban vannak, tehát forrásadatkészletként az **Azure Blob Storage**-ot válassza. 
 
-    ![AzureBlob1 lap ](./media/tutorial-copy-data-portal/new-tab-azure-blob1.png)        
-8. Az **Általános** lap **Tulajdonságok** ablakának alján a **Név** alatt írja be a **SourceBlobDataset** nevet.
+    ![Tároló kiválasztása](./media/tutorial-copy-data-portal/select-azure-blob-dataset.png)
+
+3. Egy új lap nyílik meg a blob adatkészlethez. A **Tulajdonságok** ablak alján, az **Általános** lapon a **Név** mezőben adja meg a **SourceBlobDataset** nevet.
 
     ![Adatkészlet neve](./media/tutorial-copy-data-portal/dataset-name.png)
-9. A **Tulajdonságok** ablakban váltson a **Kapcsolat** lapra. A **Társított szolgáltatások** szövegbeviteli mező mellett válassza az **+ Új** lehetőséget. 
 
-    Egy társított szolgáltatás egy adattárat vagy számítási erőforrást kapcsol az adat-előállítóhoz. Ebben az esetben létrehoz egy Storage-beli társított szolgáltatást, amely a tárfiókot társítja az adat-előállítóhoz. A társított szolgáltatás azon kapcsolatadatokkal rendelkezik, amelyeket a Data Factory használ futtatáskor a Blob Storage-hoz való kapcsolódáshoz. Az adatkészlet megadja a forrásadatokat tartalmazó tárolót, mappát és fájlt (ez utóbbi nem kötelező). 
+4. A **Tulajdonságok** ablakban váltson a **Kapcsolat** lapra. A **Társított szolgáltatások** szövegbeviteli mező mellett válassza az **+ Új** lehetőséget. 
 
     ![Új társított szolgáltatás gomb](./media/tutorial-copy-data-portal/source-dataset-new-linked-service-button.png)
-10. Az **Új társított szolgáltatás** ablakban végezze el az alábbi lépéseket: 
 
-    a. A **Név** mezőbe írja be az **AzureStorageLinkedService** nevet. 
-
-    b. A **Tárfiók neve** alatt válassza ki a tárfiókja nevét.
-
-    c. A tárfiók kapcsolatának teszteléséhez válassza a **Kapcsolat tesztelése** elemet.
-
-    d. A társított szolgáltatás mentéséhez kattintson a **Mentés** gombra.
+5. Az **Új társított szolgáltatás** ablakban adja meg névként az **AzureStorageLinkedService** kifejezést, válassza ki tárfiókját a **Tárfiók neve** listából, és kattintson a **Mentés** gombra a társított szolgáltatás üzembe helyezéséhez.
 
     ![Új társított szolgáltatás](./media/tutorial-copy-data-portal/new-azure-storage-linked-service.png)
-11. A **Fájl elérési útja** mellett válassza a **Tallózás** lehetőséget.
+
+6. A társított szolgáltatás létrehozása után a rendszer visszalépteti az adatkészlet beállításaihoz. A **Fájl elérési útja** mellett válassza a **Tallózás** lehetőséget.
 
     ![Tallózás gomb a fájl elérési útjához](./media/tutorial-copy-data-portal/file-browse-button.png)
-12. Lépjen az **adftutorial/input** mappára, válassza ki az **emp.txt** fájlt, és válassza a **Befejezés** lehetőséget. Alternatív megoldásként kattinthat duplán is az **emp.txt** fájlra. 
+
+7. Lépjen az **adftutorial/input** mappára, válassza ki az **emp.txt** fájlt, és válassza a **Befejezés** lehetőséget. 
 
     ![Bemeneti fájl kiválasztása](./media/tutorial-copy-data-portal/select-input-file.png)
-13. Győződjön meg arról, hogy a **Fájlformátum** beállítása **Szöveges formátum**, és az **Oszlophatároló** beállítása **Vessző (`,`)**. Ha a forrásfájl különböző sor- és oszlophatárolókat használ, választhatja a **Szövegformátum észlelése** lehetőséget a **Fájlformátum** mezőben. Az Adatok másolása eszköz automatikusan észleli a fájlformátumot és a határolókat. Ezeket az értékeket a későbbiekben még felülbírálhatja. A lapon lévő adatok előnézetének megtekintéséhez válassza az **Adatok előnézete** elemet.
+
+8. Győződjön meg arról, hogy a **Fájlformátum** beállítása **Szöveges formátum**, és az **Oszlophatároló** beállítása **Vessző (`,`)**. Ha a forrásfájl különböző sor- és oszlophatárolókat használ, választhatja a **Szövegformátum észlelése** lehetőséget a **Fájlformátum** mezőben. Az Adatok másolása eszköz automatikusan észleli a fájlformátumot és a határolókat. Ezeket az értékeket a későbbiekben még felülbírálhatja. A lapon lévő adatok előnézetének megtekintéséhez válassza az **Adatok előnézete** elemet.
 
     ![Szövegformátum észlelése](./media/tutorial-copy-data-portal/detect-text-format.png)
-14. Lépjen a **Séma** lapra a **Tulajdonságok** ablakban, és válassza a **Séma importálása** lehetőséget. Figyelje meg, hogy az alkalmazás két oszlopot észlelt a forrásfájlban. Azért importálja ide a sémát, hogy leképezhesse a forrásadattár oszlopait a fogadóadattárban. Ha nincs szüksége oszlopok leképezésére, ezt a lépést kihagyhatja. A jelen oktatóanyag keretében importálja a sémát.
+
+9. Lépjen a **Séma** lapra a **Tulajdonságok** ablakban, és válassza a **Séma importálása** lehetőséget. Figyelje meg, hogy az alkalmazás két oszlopot észlelt a forrásfájlban. Azért importálja ide a sémát, hogy leképezhesse a forrásadattár oszlopait a fogadóadattárban. Ha nincs szüksége oszlopok leképezésére, ezt a lépést kihagyhatja. A jelen oktatóanyag keretében importálja a sémát.
 
     ![Forrás sémájának észlelése](./media/tutorial-copy-data-portal/detect-source-schema.png)  
-15. Most lépjen a folyamatot tartalmazó lapra, vagy válassza ki a folyamatot a bal oldalon.
 
-    ![Folyamat lap](./media/tutorial-copy-data-portal/pipeline-tab.png)
-16. Győződjön meg arról, hogy a **SourceBlobDataset** lehetőség van kiválasztva a **Tulajdonságok** ablak **Forrásadatkészlet** mezőjében. A lapon lévő adatok előnézetének megtekintéséhez válassza az **Adatok előnézete** elemet. 
+10. Lépjen vissza a folyamat **Forrás** lapjára, és ellenőrizze, hogy a **SourceBlobDataset** ki van-e választva. A lapon lévő adatok előnézetének megtekintéséhez válassza az **Adatok előnézete** elemet. 
     
     ![Forrásadatkészlet](./media/tutorial-copy-data-portal/source-dataset-selected.png)
-17. Váltson a **Fogadó** lapra, és válassza az **+ Új** elemet egy fogadó-adatkészlet létrehozásához. 
+
+### <a name="configure-sink"></a>Fogadó konfigurálása
+
+1. Váltson a **Fogadó** lapra, és válassza az **+ Új** elemet egy fogadó-adatkészlet létrehozásához. 
 
     ![Fogadó-adatkészlet](./media/tutorial-copy-data-portal/new-sink-dataset-button.png)
-18. Az **Új adatkészlet** lapon válassza az **Azure SQL Database** lehetőséget, majd válassza a **Befejezés** gombot. Ebben az oktatóanyagban adatokat másol egy SQL Database-be. 
+2. Az **Új adatkészlet** ablakban lévő keresőmezőbe írja az „SQL” kifejezést az összekötők szűréséhez, válassza az **Azure SQL Database** lehetőséget, majd válassza a **Befejezés** gombot. Ebben az oktatóanyagban adatokat másol egy SQL Database-be. 
 
-    ![SQL Database kiválasztása](./media/tutorial-copy-data-portal/select-azure-sql-database.png)
-19. Az **Általános** lap **Tulajdonságok** ablakában a **Név** alatt írja be az **OutputSqlDataset** nevet. 
+    ![SQL Database kiválasztása](./media/tutorial-copy-data-portal/select-azure-sql-dataset.png)
+3. Az **Általános** lap **Tulajdonságok** ablakában a **Név** alatt írja be az **OutputSqlDataset** nevet. 
     
     ![Kimeneti adatkészlet neve](./media/tutorial-copy-data-portal/output-dataset-name.png)
-20. Lépjen a **Kapcsolat** lapra, és a **Társított szolgáltatás** mellett válassza az **+ Új** lehetőséget. Az adatkészleteket mindig társítani kell egy társított szolgáltatáshoz. A társított szolgáltatás rendelkezik azzal a kapcsolati karakterlánccal, amely használatával a Data Factory a futtatás során kapcsolódik az SQL Database-hez. Az adatkészlet meghatározza azt a tárolót, mappát és fájlt (az utóbbi nem kötelező), ahova a rendszer az adatokat másolja. 
+4. Lépjen a **Kapcsolat** lapra, és a **Társított szolgáltatás** mellett válassza az **+ Új** lehetőséget. Az adatkészleteket mindig társítani kell egy társított szolgáltatáshoz. A társított szolgáltatás rendelkezik azzal a kapcsolati sztringgel, amely használatával a Data Factory a futtatás során kapcsolódik az SQL Database-hez. Az adatkészlet meghatározza azt a tárolót, mappát és fájlt (az utóbbi nem kötelező), ahova a rendszer az adatokat másolja. 
     
     ![Társított szolgáltatások](./media/tutorial-copy-data-portal/new-azure-sql-database-linked-service-button.png)       
-21. Az **Új társított szolgáltatás** ablakban végezze el az alábbi lépéseket: 
+5. Az **Új társított szolgáltatás** ablakban végezze el az alábbi lépéseket: 
 
     a. A **Név** mezőbe írja az **AzureSqlDatabaseLinkedService** nevet.
 
@@ -212,160 +204,46 @@ Ebben az oktatóanyagban először létrehozzuk a folyamatot. Ezután társítot
     
     ![Új társított szolgáltatás mentése](./media/tutorial-copy-data-portal/new-azure-sql-linked-service-window.png)
 
-22. A **Tábla** területen válassza a **[dbo].[emp]** elemet. 
+6. A **Tábla** területen válassza a **[dbo].[emp]** elemet. 
 
     ![Tábla](./media/tutorial-copy-data-portal/select-emp-table.png)
-23. Lépjen a **Séma** lapra, és válassza a **Séma importálása** lehetőséget. 
+7. Lépjen a **Séma** lapra, és válassza a **Séma importálása** lehetőséget. 
 
     ![Séma importálása lehetőség kiválasztása](./media/tutorial-copy-data-portal/import-destination-schema.png)
-24. Válassza ki az **Azonosító** oszlopot, majd válassza a **Törlés** lehetőséget. Az **Azonosító** oszlop egy identitásoszlop az SQL-adatbázisban, ezért a másolási tevékenységnek semmit nem kell ebbe az oszlopba beszúrnia.
+8. Válassza ki az **Azonosító** oszlopot, majd válassza a **Törlés** lehetőséget. Az **Azonosító** oszlop egy identitásoszlop az SQL-adatbázisban, ezért a másolási tevékenységnek semmit nem kell ebbe az oszlopba beszúrnia.
 
     ![Azonosító oszlop törlése](./media/tutorial-copy-data-portal/delete-id-column.png)
-25. Lépjen a folyamatot tartalmazó lapra, és győződjön meg arról, hogy a **Fogadóadattár** mezőben az **OutputSqlDataset** érték van kiválasztva.
+9. Lépjen a folyamatot tartalmazó lapra, és győződjön meg arról, hogy a **Fogadóadattár** mezőben az **OutputSqlDataset** érték van kiválasztva.
 
     ![Folyamat lap](./media/tutorial-copy-data-portal/pipeline-tab-2.png)        
-26. Lépjen a **Leképezés** lapra a **Tulajdonságok** ablak alján, és válassza a **Sémák importálása** elemet. Figyelje meg, hogy a forrásfájl első és második oszlopa az SQL-adatbázis **FirstName** és **LastName** mezőjében képeződik le.
 
-    ![Sémák leképezése](./media/tutorial-copy-data-portal/map-schemas.png)
-27. A folyamat érvényesítéséhez kattintson az **Érvényesítés** elemre. Az érvényesítési ablak bezárásához a jobb felső sarokban válassza a jobbra mutató nyilat.
+### <a name="confugure-mapping"></a>Leképezés konfigurálása
 
-    ![Folyamatérvényesítési kimenet](./media/tutorial-copy-data-portal/pipeline-validation-output.png)   
-28. A jobb felső sarokban válassza a **Kód** elemet. Itt a folyamat futtatásához kapcsolódó JSON-kód látható. 
+Lépjen a **Leképezés** lapra a **Tulajdonságok** ablak alján, és válassza a **Sémák importálása** elemet. Figyelje meg, hogy a forrásfájl első és második oszlopa az SQL-adatbázis **FirstName** és **LastName** mezőjében képeződik le.
 
-    ![Kód gomb](./media/tutorial-copy-data-portal/code-button.png)
-29. Egy, a következő részlethez hasonló JSON-kód jelenik meg: 
+![Sémák leképezése](./media/tutorial-copy-data-portal/map-schemas.png)
 
-    ```json
-    {
-        "name": "CopyPipeline",
-        "properties": {
-            "activities": [
-                {
-                    "name": "CopyFromBlobToSql",
-                    "type": "Copy",
-                    "dependsOn": [],
-                    "policy": {
-                        "timeout": "7.00:00:00",
-                        "retry": 0,
-                        "retryIntervalInSeconds": 20
-                    },
-                    "typeProperties": {
-                        "source": {
-                            "type": "BlobSource",
-                            "recursive": true
-                        },
-                        "sink": {
-                            "type": "SqlSink",
-                            "writeBatchSize": 10000
-                        },
-                        "enableStaging": false,
-                        "parallelCopies": 0,
-                        "cloudDataMovementUnits": 0,
-                        "translator": {
-                            "type": "TabularTranslator",
-                            "columnMappings": "Prop_0: FirstName, Prop_1: LastName"
-                        }
-                    },
-                    "inputs": [
-                        {
-                            "referenceName": "SourceBlobDataset",
-                            "type": "DatasetReference",
-                            "parameters": {}
-                        }
-                    ],
-                    "outputs": [
-                        {
-                            "referenceName": "OutputSqlDataset",
-                            "type": "DatasetReference",
-                            "parameters": {}
-                        }
-                    ]
-                }
-            ]
-        }
-    }
-    ```
+## <a name="validate-the-pipeline"></a>A folyamat érvényesítése
+A folyamat érvényesítéséhez válassza az **Érvényesítés** elemet az eszköztáron.
+ 
+A folyamathoz társított JSON-kódot a jobb felső sarokban lévő **Kód** gombra kattintva tekintheti meg.
 
-## <a name="test-run-the-pipeline"></a>A folyamat próbafuttatása
-Elvégezheti a folyamat próbafuttatását, mielőtt összetevőket (társított szolgáltatások, adatkészletek és folyamat) tenne közzé az adat-előállítóban vagy a saját Visual Studio Team Services Git-adattárában. 
+## <a name="debug-and-publish-the-pipeline"></a>A folyamat hibakeresése és közzététele
+Elvégezheti a folyamat hibakeresését, mielőtt összetevőket (társított szolgáltatások, adatkészletek és folyamat) tenne közzé a Data Factoryben vagy a saját Visual Studio Team Services Git-adattárában. 
 
-1. A folyamat próbafuttatásához válassza az eszköztár **Tesztfuttatás** elemét. A folyamat futtatási állapotát az ablak alján található **Kimenet** lapon tekintheti meg. 
+1. A folyamat hibakereséséhez válassza a **Hibakeresés** elemet az eszköztáron. A folyamat futtatási állapotát az ablak alján található **Kimenet** lapon tekintheti meg. 
 
-    ![Folyamat tesztelése](./media/tutorial-copy-data-portal/test-run-output.png)
-2. Ellenőrizze, hogy a forrásfájl adatai bekerültek-e a cél SQL-adatbázisba. 
-
-    ![SQL-kimenet ellenőrzése](./media/tutorial-copy-data-portal/verify-sql-output.png)
-3. A bal oldali panelen válassza az **Összes közzététele** lehetőséget. Ez a művelet közzéteszi a létrehozott entitásokat (társított szolgáltatások, adatkészletek és folyamatok) a Data Factoryban.
+2. Ha a folyamat sikeresen fut, válassza az **Összes közzététele** lehetőséget a felső eszköztárból. Ez a művelet közzéteszi a létrehozott entitásokat (adatkészleteket és folyamatokat) a Data Factoryben.
 
     ![Közzététel](./media/tutorial-copy-data-portal/publish-button.png)
-4. Várjon, amíg megjelenik a **Sikeres közzététel** üzenet. Az értesítési üzenetek megtekintéséhez válassza a bal oldali oldalsáv **Értesítések megjelenítése** lapját. Az értesítések ablakának bezárásához válassza a **Bezárás** lehetőséget.
 
-    ![Értesítések megjelenítése](./media/tutorial-copy-data-portal/show-notifications.png)
-
-## <a name="configure-code-repository"></a>A kódtár konfigurálása
-Az adat-előállító összetevőkhöz társított kódot közzéteheti egy Visual Studio Team Services-kódtárban. Ebben a lépésben a kódtárat fogja létrehozni.  További információkat a VSTS-integrációval történő vizuális tartalomkészítésről a [VSTS Git-integrációval történő tartalomkészítést](author-visually.md#author-with-vsts-git-integration) ismertető cikkben olvashat.
-
-Ha nem szeretné használni a Visual Studio Team Services-kódtárat, ezt a lépést kihagyhatja. Folytathatja a Data Factoryban történő közzétételt, ahogyan azt az előző lépésben tette. 
-
-1. A bal felső sarokban válassza a **Data Factory** elemet, vagy használja a mellette lévő lefelé mutató nyilat, és válassza a **Kódtár konfigurálása** lehetőséget. 
-
-    ![A kódtár konfigurálása](./media/tutorial-copy-data-portal/configure-code-repository-button.png)
-2. Az **Adattár beállításai** oldalon hajtsa végre az alábbi lépéseket:
-
-    a. Az **Adattár típusa** alatt válassza ki a **Visual Studio Team Services Git** lehetőséget.
-
-    b. A **Visual Studio Team Services-fiók** alatt válassza ki a Visual Studio Team Services-fiókját.
-
-    c. A **Projekt neve** alatt válasszon egy projektet a Visual Studio Team Services-fiókjából.
-
-    d. A **Git-adattár neve** alatt adja a **Tutorial2** nevet az adat-előállítóhoz társítani kívánt Git-adattárnak.
-
-    e. Győződjön meg arról, hogy a **Létező Data Factory-erőforrások importálása az adattárba** jelölőnégyzet be van jelölve.
-
-    f. A beállítások mentéséhez válassza a **Mentés** lehetőséget. 
-
-    ![Adattár beállításai](./media/tutorial-copy-data-portal/repository-settings.png)
-3. Győződjön meg arról, hogy a **VSTS GIT** van kiválasztva adattárként.
-
-    ![A VSTS GIT kiválasztása](./media/tutorial-copy-data-portal/vsts-git-selected.png)
-4. A böngésző egy másik lapján lépjen a **Tutorial2** adattárba. Két ág jelenik meg: az **adf_publish** és a **master**.
-
-    ![A master és adf_publish ág](./media/tutorial-copy-data-portal/initial-branches-vsts-git.png)
-5. Győződjön meg arról, hogy a Data Factory-entitások JSON-fájljai a **master** ágban vannak.
-
-    ![A master ágban található fájlok](./media/tutorial-copy-data-portal/master-branch-files.png)
-6. Győződjön meg arról, hogy a JSON-fájlok még nem szerepelnek az **adf_publish** ágban. 
-
-    ![Az adf_publish ágban található fájlok](./media/tutorial-copy-data-portal/adf-publish-files.png)
-7. A **Leírás** mezőben, adjon meg egy leírást a folyamatról, és válassza az eszköztár **Mentés** elemét. 
-
-    ![Folyamat leírása](./media/tutorial-copy-data-portal/pipeline-description.png)
-8. Most meg kell jelennie egy, a saját felhasználónevével ellátott ágnak a **Tutorial2** adattárban. Az elvégzett módosítás a saját ágában jelenik meg, nem a master ágban. Entitások csak a master ágból tehetők közzé.
-
-    ![Saját ág](./media/tutorial-copy-data-portal/your-branch.png)
-9. A módosítások master ággal való szinkronizálásához vigye az egeret a **Szinkronizálás** gomb fölé (ne válassza még ki), jelölje be a **Módosítások érvényesítése** jelölőnégyzetet, majd válassza a **Szinkronizálás** elemet. 
-
-    ![Módosítások érvényesítése és szinkronizálása](./media/tutorial-copy-data-portal/commit-and-sync.png)
-10. A **Módosítások szinkronizálása** ablakban tegye a következőket: 
-
-    a. Ellenőrizze, hogy a **CopyPipeline** elem megjelenik-e a frissített **Folyamatok** listában.
-
-    b. Győződjön meg arról, hogy a **Módosítások közzététele a szinkronizálás után** beállítás be van jelölve. Ha törli a jelölőnégyzet jelölését, akkor a rendszer csak szinkronizálja a saját ágban végzett módosításokat a master ággal. Nem teszi őket közzé a Data Factoryban. Később a **Közzététel** gomb használatával teheti közzé őket. Ha bejelöli ezt a jelölőnégyzetet, a rendszer szinkronizálja a módosításokat a master ággal, majd közzéteszi azokat a Data Factoryban.
-
-    c. Válassza a **Szinkronizálás** elemet. 
-
-    ![A módosítások szinkronizálása](./media/tutorial-copy-data-portal/sync-your-changes.png)
-11. Most már a **Tutorial2** adattár **adf_publish** ágában is láthatók fájlok. A Data Factory-megoldás Azure Resource Manager-sablonja szintén ebben az ágban található. 
-
-    ![Az adf_publish ágban található fájllista](./media/tutorial-copy-data-portal/adf-publish-files-after-publish.png)
-
+4. Várjon, amíg megjelenik a **Sikeres közzététel** üzenet. Az értesítési üzenetek megtekintéséhez kattintson az **Értesítések megjelenítése** elemre (csengő gomb) a jobb felső sarokban. 
 
 ## <a name="trigger-the-pipeline-manually"></a>A folyamat manuális aktiválása
 Ebben a lépésben manuálisan fogja aktiválni az előző lépésben közzétett folyamatot. 
 
 1. Kattintson az **Aktiválás** gombra az eszköztáron, majd válassza az **Aktiválás most** lehetőséget. A **Folyamatfuttatás** lapon válassza a **Befejezés** elemet.  
 
-    ![Folyamat indítása](./media/tutorial-copy-data-portal/trigger-now-menu.png)
 2. Lépjen a bal oldali **Figyelés** lapra. Itt láthat egy manuális eseményindító által aktivált folyamatfuttatást. A **Műveletek** oszlopban található hivatkozások használatával megtekintheti a tevékenységek részleteit, és újra futtathatja a folyamatot.
 
     ![Folyamatfuttatások monitorozása](./media/tutorial-copy-data-portal/monitor-pipeline.png)
@@ -377,12 +255,10 @@ Ebben a lépésben manuálisan fogja aktiválni az előző lépésben közzétet
 ## <a name="trigger-the-pipeline-on-a-schedule"></a>A folyamat aktiválása ütemezés szerint
 Ebben az ütemezésben egy ütemezési eseményindítót fog létrehozni a folyamathoz. Az eseményindító a meghatározott ütemezés (például óránként vagy naponta) szerint futtatja a folyamatot. Ebben a példában úgy fogja beállítani az eseményindítót, hogy a megadott záró dátumidőig percenként futtassa a folyamatot. 
 
-1. Lépjen a bal oldalon található **Szerkesztés** lapra. 
+1. Lépjen a bal oldali Monitorozás lap feletti **Létrehozás** lapra. 
 
-    ![Szerkesztés lap](./media/tutorial-copy-data-portal/edit-tab.png)
-2. Válassza az **Eseményindító**, majd az **Új/szerkesztés** elemet. Ha a folyamat nem aktív, lépjen rá. 
+2. Lépjen a folyamathoz, kattintson az eszköztáron az **Aktiválás**, majd az **Új/Szerkesztés** lehetőségre. 
 
-    ![Eseményindító lehetőség](./media/tutorial-copy-data-portal/trigger-new-edit-menu.png)
 3. Az **Eseményindítók hozzáadása** ablakban válassza az **Eseményindító kiválasztása**, majd pedig az **+ Új** elemet. 
 
     ![Új gomb](./media/tutorial-copy-data-portal/add-trigger-new-button.png)
@@ -413,9 +289,9 @@ Ebben az ütemezésben egy ütemezési eseményindítót fog létrehozni a folya
 5. Az **Eseményindító futtatási paraméterei** oldalon tekintse át a figyelmeztető üzenetet, majd válassza a **Befejezés** elemet. A jelen példában található folyamat nem használ paramétereket. 
 
     ![Eseményindító futtatásának paraméterei](./media/tutorial-copy-data-portal/trigger-pipeline-parameters.png)
-6. Válassza a **Szinkronizálás** elemet a saját ágban végzett módosítások master ággal való szinkronizálásához. Alapértelmezés szerint a **Módosítások közzététele a szinkronizálás után** beállítás be van jelölve. Ha bejelöli a **Szinkronizálás** beállítást, a program a frissített entitásokat is közzéteszi a Data Factoryban a master ágról. Az eseményindító nem aktiválódik, amíg a közzététel sikeresen be nem fejeződik.
 
-    ![A módosítások szinkronizálása](./media/tutorial-copy-data-portal/sync-your-changes-with-trigger.png) 
+6. Kattintson az **Összes közzététele** gombra a módosítás közzétételéhez. 
+
 7. Lépjen a bal oldali **Figyelés** lapra az aktivált folyamatfuttatások megtekintéséhez. 
 
     ![Aktivált folyamatfuttatások](./media/tutorial-copy-data-portal/triggered-pipeline-runs.png)    

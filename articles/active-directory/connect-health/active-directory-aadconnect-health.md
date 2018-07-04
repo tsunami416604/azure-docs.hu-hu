@@ -1,8 +1,8 @@
 ---
-title: "A helyszíni identitás-infrastruktúra megfigyelése a felhőben."
-description: "Leírását és esetleges használatának okát lásd az Azure AD Connect Health vonatkozó lapján."
+title: A helyszíni identitás-infrastruktúra megfigyelése a felhőben.
+description: Leírását és esetleges használatának okát lásd az Azure AD Connect Health vonatkozó lapján.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: karavar
 manager: mtillman
 editor: curtand
@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 07/18/2017
 ms.author: billmath
-ms.openlocfilehash: f8082b632e9fef4aa5d46deb35e415f2b1c55dda
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: aef9a923932b3794e32275bacd2f880d0b8b7b73
+ms.sourcegitcommit: 828d8ef0ec47767d251355c2002ade13d1c162af
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36939605"
 ---
 # <a name="monitor-your-on-premises-identity-infrastructure-and-synchronization-services-in-the-cloud"></a>A helyszíni identitás-infrastruktúra és a szinkronizálási szolgáltatások megfigyelése a felhőben
 Az Azure Active Directory (Azure AD) Connect Health segít megfigyelni a helyszíni identitás-infrastruktúrát és a szinkronizálási szolgáltatásokat, és további betekintést nyújt a működésükbe. Megbízható Office 365- és Microsoft Online Services-kapcsolat fenntartását teszi lehetővé olyan fontos identitás-összetevők megfigyelésével, mint például az Active Directory összevonási szolgáltatások (AD FS) kiszolgálói, az Azure AD Connect-kiszolgálók (más néven a szinkronizálási motor) vagy az Active Directory-tartományvezérlők stb. Ezen összetevők legfontosabb adatpontjait is könnyen hozzáférhetővé teszi, így lekérdezhetővé válnak a használatra és egyéb lényeges jellemzőkre vonatkozó adatok, hogy megalapozott döntéseket hozhasson.
@@ -33,13 +34,14 @@ Az Azure AD Connect Health funkcióinak bővülésével a portál egy identitás
 A helyszíni címtárak és az Azure AD integrálása révén a felhasználók munkája hatékonyabbá válik, mivel a felhőalapú és a helyszíni erőforrások eléréséhez közös identitás áll a rendelkezésükre. Ez az integráció azonban szükségessé teszi a környezet megfelelő állapotának biztosítását, hogy a felhasználók bármilyen eszközről megbízhatóan hozzáférhessenek a helyszíni és a felhőalapú erőforrásokhoz is. Az Azure AD Connect Health segít megfigyelni az Office 365 és más Azure AD-alkalmazások eléréséhez használt helyszíni identitás-infrastruktúrát, és további betekintést nyújt annak működésébe. Használata éppolyan egyszerű, mintha egy-egy ügynököt telepítene a helyszíni identitás-kiszolgálókra.
 
 ## <a name="azure-ad-connect-health-for-ad-fsactive-directory-aadconnect-health-adfsmd"></a>[Azure AD Connect Health for AD FS](active-directory-aadconnect-health-adfs.md)
-Az AD FS-hez készült Azure AD Connect Health a Windows Server 2008 R2, a Windows Server 2012 és a Windows Server 2012 R2 rendszeren támogatja az AD FS 2.0-s verzióját. Ezen kívül támogatja az AD FS proxy- vagy webalkalmazás-proxykiszolgálók figyelését is, amelyek az extranetes hozzáféréshez biztosítanak hitelesítési támogatást. Az állapotügynök egyszerű és alacsony költséggel végrehajtható telepítésével elérhetővé válnak az Azure AD Connect Health for AD FS alábbi képességei:
+Az AD FS-hez készült Azure AD Connect Health a Windows Server 2008 R2, a Windows Server 2012, a Windows Server 2012 R2 és a Windows Server 2016 rendszeren támogatja az AD FS 2.0-s verzióját. Ezen kívül támogatja az AD FS proxy- vagy webalkalmazás-proxykiszolgálók figyelését is, amelyek az extranetes hozzáféréshez biztosítanak hitelesítési támogatást. Az állapotügynök egyszerű és alacsony költséggel végrehajtható telepítésével elérhetővé válnak az Azure AD Connect Health for AD FS alábbi képességei:
 
 * Riasztásokkal kiegészített megfigyelés az AD FS és az AD FS-proxykiszolgálók nem megfelelő állapotának észleléséhez;
 * kritikus riasztásokhoz kapcsolódó e-mail értesítések;
 * Teljesítményadat-tendenciák, amelyek hasznosak az AD FS kapacitástervezéséhez;
 * Az AD FS használatának különböző területekre (például appokra, felhasználókra vagy hálózati helyekre) kiterjedő elemzései, amelyekkel felmérhetők az AD FS használatának módjai;
 * AD FS-jelentések, például a rossz felhasználónév/jelszó párossal legtöbbet próbálkozó 50 felhasználó, az utolsó IP-címükkel együtt
+* Kockázatos IP jelentés meghiúsult AD FS-bejelentkezésekhez
   
 Itt olvashat többet [az Azure AD Connect Health használatáról az AD FS szolgáltatással](active-directory-aadconnect-health-adfs.md)
 
@@ -47,7 +49,6 @@ Az alábbi videó az Azure AD Connect Health for AD FS működéséről nyújt �
 
 > [!VIDEO https://channel9.msdn.com/Series/Azure-Active-Directory-Videos-Demos/Azure-AD-Connect-Health--Monitor-you-identity-bridge/player]
 >
-
 >
 
 ## <a name="azure-ad-connect-health-for-syncactive-directory-aadconnect-health-syncmd"></a>[Azure AD Connect Health szinkronizálási szolgáltatás](active-directory-aadconnect-health-sync.md)
@@ -86,9 +87,9 @@ Az alábbi videó az Azure AD Connect Health for AD DS működéséről nyújt �
 ## <a name="get-started-with-azure-ad-connect-health"></a>Az Azure AD Connect Health használatának első lépései
 Az Azure AD Connect Health használatának elkezdéséhez hajtsa végre a következő lépéseket:
 
-1. [Szerezze be a Prémium szintű Azure AD-t](../active-directory-get-started-premium.md) vagy [indítson egy próbaverziót](https://azure.microsoft.com/trial/get-started-active-directory/).
+1. [Szerezze be a Prémium szintű Azure AD-t](../fundamentals/active-directory-get-started-premium.md) vagy [indítson egy próbaverziót](https://azure.microsoft.com/trial/get-started-active-directory/).
 2. [Töltse le és telepítse az Azure AD Connect Health-ügynököket](#download-and-install-azure-ad-connect-health-agent) az identitás-kiszolgálókra.
-3. Az Azure AD Connect Health irányítópultját a következő címen tekintheti meg: [https://aka.ms/aadconnecthealth](https://aka.ms/aadconnecthealth)
+3. Az Azure AD Connect Health irányítópultját a következő címen tekintheti meg: [https://aka.ms/aadconnecthealth](https://aka.ms/aadconnecthealth).
 
 > [!NOTE]
 > Ne feledje, hogy mielőtt bármilyen adatot megtekinthetne az Azure AD Connect Health irányítópultján, telepítenie kell az Azure AD Connect Health-ügynököket a célkiszolgálókon.
@@ -107,21 +108,21 @@ Az Azure AD Connect Health használatának elkezdéséhez hajtsa végre a követ
     * [Tekintse meg a telepítési utasításokat](active-directory-aadconnect-health-agent-install.md#installing-the-azure-ad-connect-health-agent-for-ad-ds).
 
 ## <a name="azure-ad-connect-health-portal"></a>Az Azure AD Connect Health portál
-Az Azure AD Connect Health portálon riasztásokat, teljesítményfigyelési adatokat és használatelemzési információkat tekinthet meg. Az Azure AD Connect Health fő panelje a https://aka.ms/aadconnecthealth címen található. A panelek az ablakoknak megfelelő funkciót töltenek be. A fő panelen a **Gyors üzembe helyezés**, az Azure AD Connect Health szolgáltatásai és további konfigurációs lehetőségek láthatók. Tekintse meg az alábbi képernyőfelvételt, valamint az azt követő rövid magyarázatot. Az ügynökök üzembe helyezése után az állapotfigyelő szolgáltatás automatikusan azonosítja az Azure AD Connect Health által monitorozott szolgáltatásokat.
+Az Azure AD Connect Health portálon riasztásokat, teljesítményfigyelési adatokat és használatelemzési információkat tekinthet meg. Az Azure AD Connect Health fő panelje a https://aka.ms/aadconnecthealth URL-címen található. A panelek az ablakoknak megfelelő funkciót töltenek be. A fő panelen a **Gyors üzembe helyezés**, az Azure AD Connect Health szolgáltatásai és további konfigurációs lehetőségek láthatók. Tekintse meg az alábbi képernyőfelvételt, valamint az azt követő rövid magyarázatot. Az ügynökök üzembe helyezése után az állapotfigyelő szolgáltatás automatikusan azonosítja az Azure AD Connect Health által monitorozott szolgáltatásokat.
 
 > [!NOTE]
 > A licencelési információkért lásd: [Azure AD Connect Health – gyakori kérdések](active-directory-aadconnect-health-faq.md) vagy [Az Azure AD díjszabási oldala](https://aka.ms/aadpricing).
     
-![Az Azure AD Connect Health portál](./media/active-directory-aadconnect-health/portal4.png)
+![Az Azure AD Connect Health portál](./media/active-directory-aadconnect-health/portalsidebar.png)
 
 * **Quick Start** (Gyors üzembe helyezés): Ha ezt a beállítást választja, megnyílik a **gyors üzembe helyezés** panelje. A **Get Tools** (Eszközök beszerzése) lehetőség kiválasztásával letöltheti az Azure AD Connect Health-ügynököt. Emellett hozzáférhet a dokumentációkhoz, és visszajelzést is küldhet.
+* **Azure Active Directory Connect (Sync)** ((Szinkronizálási) Azure Active Directory Connect): Ez a lehetőség az Azure AD Connect Health által aktuálisan monitorozott Azure AD Connect-kiszolgálókat mutatja. A **Szinkronizálási hibák** bejegyzés az első bevezetett szinkronizálási szolgáltatása alapszintű szinkronizálási hibáit jeleníti meg kategóriák szerint. Ha kiválasztja a **Szinkronizálási szolgáltatások** bejegyzést, a megnyíló panel az Azure AD Connect-kiszolgálókra vonatkozó információkat tartalmazza. További információ ezekről a képességekről: [Az Azure AD Connect Health szinkronizálási szolgáltatás használata az AD FS szolgáltatással](active-directory-aadconnect-health-sync.md).
 * **Active Directory Federation Services** (Active Directory összevonási szolgáltatások): Ez a lehetőség az Azure AD Connect Health által aktuálisan monitorozott összes AD FS-szolgáltatást mutatja. Ha kiválaszt egy példányt, a megnyíló panel az adott szolgáltatáspéldányra vonatkozó információkat tartalmazza. Az információk között tulajdonságokat, riasztásokat, megfigyelési adatokat, használatelemzést és egy áttekintést talál. További információ ezekről a képességekről: [Az Azure AD Connect Health használata az AD FS szolgáltatással](active-directory-aadconnect-health-adfs.md).
-* **Azure Active Directory Connect (Sync)** ((Szinkronizálási) Azure Active Directory Connect): Ez a lehetőség az Azure AD Connect Health által aktuálisan monitorozott Azure AD Connect-kiszolgálókat mutatja. Ha kiválaszt egy bejegyzést, a megnyíló panel az Azure AD Connect-kiszolgálókra vonatkozó információkat tartalmazza. További információ ezekről a képességekről: [Az Azure AD Connect Health szinkronizálási szolgáltatás használata az AD FS szolgáltatással](active-directory-aadconnect-health-sync.md).
 * **Active Directory Domain Services** (Active Directory tartományi szolgáltatások): Ez a lehetőség az Azure AD Connect Health által aktuálisan figyelt összes AD DS-erdőt mutatja. Ha kiválaszt egy erdőt, a megnyíló panel az adott erdőre vonatkozó információkat tartalmazza. Ezek az adatok a következők áttekintését teszik lehetővé: lényeges információk, tartományvezérlő irányítópult, replikáció állapota irányítópult, riasztások és figyelés. További információ ezekről a képességekről: [Az Azure AD Connect Health használata az AD DS szolgáltatással](active-directory-aadconnect-health-adds.md).
 * **Configure** (Konfigurálás): Ez a szakasz az alábbi funkciók be- vagy kikapcsolására szolgáló lehetőségeket tartalmaz:
 
-  - Az automatikus frissítés engedélyezésével az Azure AD Connect Health-ügynöknek mindig a legfrissebb verziója érhető el. Az Azure AD Connect Health-ügynök automatikusan frissül a legfrissebb verzióra, amint az megjelenik. Ez e beállítás alapértelmezés szerint engedélyezve van.
-  - Engedélyezheti a Microsoft számára az Azure AD-címtár állapotadataihoz való hozzáférést hibaelhárítási céllal. Ha a beállítás engedélyezve van, a Microsoft ugyanazokat az adatokat láthatja, amelyeket Ön. Ez az információ a hibaelhárítás és a problémakezelés során jelenthet segítséget. A beállítás alapértelmezés szerint le van tiltva.
+  - A **Beállítások** bejegyzésben megtalálhatók az ügynökei alapszintű konfigurációi is. Az Automatikus frissítés beállítással az Azure AD Connect Health-ügynöknek mindig a legfrissebb verziója érhető el. Az Azure AD Connect Health-ügynök automatikusan frissül a legfrissebb verzióra, amint az megjelenik. Ez e beállítás alapértelmezés szerint engedélyezve van. Engedélyezheti a Microsoft számára az Azure AD-címtár állapotadataihoz való hozzáférést hibaelhárítási céllal. Ha a beállítás engedélyezve van, a Microsoft ugyanazokat az adatokat láthatja, amelyeket Ön. Ez az információ a hibaelhárítás és a problémakezelés során jelenthet segítséget. A beállítás alapértelmezés szerint le van tiltva.
+* A **Szerepköralapú hozzáférés-vezérlés (IAM)** szakasz ismerteti a Connect Health adatokhoz való hozzáférés felügyeletét szerepkör alapban. 
 
 ## <a name="related-links"></a>Kapcsolódó hivatkozások
 * [Az Azure AD Connect Health-ügynök telepítése](active-directory-aadconnect-health-agent-install.md)

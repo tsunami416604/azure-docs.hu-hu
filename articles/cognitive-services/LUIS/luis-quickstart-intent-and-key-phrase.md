@@ -7,28 +7,32 @@ manager: kaiqb
 ms.service: cognitive-services
 ms.component: luis
 ms.topic: tutorial
-ms.date: 05/07/2018
+ms.date: 06/27/2018
 ms.author: v-geberr
-ms.openlocfilehash: 12c306b5199da5862302c28d1690b81c6e1edb0e
-ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
+ms.openlocfilehash: 9acdfdde667d37bac5b96e4497b3e86d2cdeccb8
+ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36264615"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37063408"
 ---
-# <a name="tutorial-create-app-that-returns-keyphrases-entity-data-found-in-utterances"></a>Oktatóanyag: Kimondott szövegekben található keyPhrases entitás adatait visszaadó alkalmazás létrehozása
-Ebben az oktatóanyagban létrehozunk egy alkalmazást, amely bemutatja, hogyan nyerhetők ki kulcstémák a kimondott szövegekből.
+# <a name="tutorial-learn-how-to-return-data-from-keyphrase-entity"></a>Oktatóanyag: Ismerje meg, hogyan adhatók vissza adatok a keyPhrase-entitásból 
+Ebben az oktatóanyagban egy alkalmazást használhat, amely bemutatja, hogyan nyerhetők ki kulcstémák a kimondott szövegekből.
 
 <!-- green checkmark -->
 > [!div class="checklist"]
 > * Ismerkedés a keyPhrase entitásokkal 
-> * Új LUIS-alkalmazás létrehozása az emberi erőforrások tartományához
-> * _None_ szándék és például szolgáló kimondott szövegek hozzáadása
+> * A LUIS-alkalmazás használata az emberi erőforrások (HR) tartományban 
 > * Egy keyPhrase entitás hozzáadása a kimondott szöveg tartalmának kinyeréséhez
 > * Alkalmazás betanítása és közzététele
-> * Alkalmazás végpontjának lekérdezése a LUIS által visszaadott JSON-válasz megtekintéséhez
+> * Alkalmazás végpontjának lekérdezése a LUIS által visszaadott JSON-válasz megtekintéséhez, beleértve a kulcskifejezéseket is
 
-Ebben a cikkben használhatja az ingyenes [LUIS][LUIS]-fiókot a LUIS-alkalmazás létrehozásához.
+Ebben a cikkben használhatja az ingyenes [LUIS](luis-reference-regions.md#publishing-regions)-fiókot a LUIS-alkalmazás létrehozásához.
+
+## <a name="before-you-begin"></a>Előkészületek
+Ha még nincs meg az Emberi erőforrások alkalmazása az [egyszerű entitás](luis-quickstart-primary-and-secondary-data.md) oktatóanyagából, [importálja](create-new-app.md#import-new-app) a JSON-t egy új alkalmazásba a [LUIS](luis-reference-regions.md#luis-website) webhelyén. Az importálandó alkalmazás a [LUIS-minták](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/quickstarts/custom-domain-simple-HumanResources.json) GitHub-adattárban található.
+
+Ha meg szeretné tartani az eredeti Emberi erőforrások alkalmazást, klónozza a [Settings](luis-how-to-manage-versions.md#clone-a-version) (Beállítások) lapon a verziót, és adja neki a következő nevet: `keyphrase`. A klónozás nagyszerű mód, hogy kísérletezhessen a különböző LUIS-funkciókkal anélkül, hogy az az eredeti verzióra hatással lenne. 
 
 ## <a name="keyphrase-entity-extraction"></a>A keyPhrase entitás kinyerése
 A kulcstémát az előre összeállított entitás, a **keyPhrase** biztosítja. Ez az entitás a kimondott szöveg kulcstémáját adja vissza.
@@ -40,65 +44,54 @@ Az alábbi kimondott szövegek például szolgáló kulcskifejezései:
 |Lesz jövőre olyan egészségbiztosítási csomag, amelynek alacsonyabb lesz az önrésze?|„alacsonyabb önrész”<br>„új egészségbiztosítási csomag”<br>„jövőre”|
 |A nagyobb önrészű egészségbiztosítási csomag kiterjed a látáskorrekciós vizsgálatokra?|„nagyobb önrészű egészségbiztosítási csomag”<br>„látáskorrekciós vizsgálat”|
 
-A csevegőrobot figyelembe veszi ezeket az értékeket, illetve minden további kinyerhető entitást, amikor eldönti, hogy mi legyen a beszélgetés következő lépése.
-
-## <a name="download-sample-app"></a>A mintaalkalmazás letöltése
-Töltse le a [Human Resources](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/quickstarts/HumanResources.json) alkalmazást, és mentse egy *.json kiterjesztésű fájlba. Ez a mintaalkalmazás felismeri az alkalmazotti juttatások, a szervezeti diagramok és a fizikai eszközök szempontjából releváns kimondott szövegeket.
-
-## <a name="create-a-new-app"></a>Új alkalmazás létrehozása
-1. Jelentkezzen be a [LUIS][LUIS] webhelyére. Győződjön meg arról, hogy abban a [régióban][LUIS-regions] jelentkezik be, ahol közzé szeretné tenni a LUIS-végpontokat.
-
-2. A [LUIS][LUIS] webhelyén válassza ki az **Import new app** (Új alkalmazás importálása) lehetőséget az előző szakaszban letöltött Human Resources alkalmazás importálásához. 
-
-    [![](media/luis-quickstart-intent-and-key-phrase/app-list.png "Alkalmazáslistát tartalmazó oldal képernyőképe")](media/luis-quickstart-intent-and-key-phrase/app-list.png#lightbox)
-
-3. Az **Import new app** (Új alkalmazás importálása) párbeszédablakban nevezze el az alkalmazást: `Human Resources with Key Phrase entity`. 
-
-    ![A Create new app (Új alkalmazás létrehozása) párbeszédpanel képe](./media/luis-quickstart-intent-and-key-phrase/import-new-app-inline.png)
-
-    Az alkalmazás létrehozását követően a LUIS megjeleníti a szándékok listáját.
-
-    [![](media/luis-quickstart-intent-and-key-phrase/intents-list.png "Szándéklistát tartalmazó oldal képernyőképe")](media/luis-quickstart-intent-and-key-phrase/intents-list.png#lightbox)
+Az ügyfélalkalmazás használhatja ezeket az értékeket csakúgy, mint más kinyert entitásokat a beszélgetés következő lépésének megállapításához.
 
 ## <a name="add-keyphrase-entity"></a>keyPhrase entitás hozzáadása 
 A kimondott szöveg témájának kinyeréséhez adja hozzá az előre összeállított keyPhrase entitást.
 
-1. Válassza az **Entities** (Entitások) elemet a bal oldali menüben.
+1. Győződjön meg arról, hogy az Emberi erőforrások alkalmazás a LUIS **Build** (Létrehozás) szakaszában van. Ha erre a szakaszra szeretne lépni, válassza a jobb felső menüsávon a **Build** (Létrehozás) elemet. 
 
-    [ ![Az összeállítási szakasz bal oldali navigációs panelének képernyőképe kiemelt entitásokkal](./media/luis-quickstart-intent-and-key-phrase/select-entities.png)](./media/luis-quickstart-intent-and-key-phrase/select-entities.png#lightbox)
+    [ ![Képernyőfelvétel a LUIS-alkalmazásról a kiemelt Létrehozás elemmel a jobb felső navigációs sávon](./media/luis-quickstart-intent-and-key-phrase/hr-first-image.png)](./media/luis-quickstart-intent-and-key-phrase/hr-first-image.png#lightbox)
 
-2. Válassza a **Manage prebuilt entities** (Előre összeállított entitások kezelése) lehetőséget.
+2. Válassza az **Entities** (Entitások) elemet a bal oldali menüben.
 
-    [ ![Az entitáslistát tartalmazó előugró párbeszédpanel képernyőképe](./media/luis-quickstart-intent-and-key-phrase/manage-prebuilt-entities.png)](./media/luis-quickstart-intent-and-key-phrase/manage-prebuilt-entities.png#lightbox)
+    [ ![Az összeállítási szakasz bal oldali navigációs panelének képernyőképe kiemelt entitásokkal](./media/luis-quickstart-intent-and-key-phrase/hr-select-entities-button.png)](./media/luis-quickstart-intent-and-key-phrase/hr-select-entities-button.png#lightbox)
 
-3. Az előugró párbeszédpanelen válassza ki a **keyPhrase** elemet, majd a **Done** (Kész) lehetőséget. 
+3. Válassza a **Manage prebuilt entities** (Előre összeállított entitások kezelése) lehetőséget.
 
-    [ ![Az entitáslistát tartalmazó előugró párbeszédpanel képernyőképe](./media/luis-quickstart-intent-and-key-phrase/add-or-remove-prebuilt-entities.png)](./media/luis-quickstart-intent-and-key-phrase/add-or-remove-prebuilt-entities.png#lightbox)
+    [ ![Az entitáslistát tartalmazó előugró párbeszédpanel képernyőképe](./media/luis-quickstart-intent-and-key-phrase/hr-manage-prebuilt-entities.png)](./media/luis-quickstart-intent-and-key-phrase/hr-manage-prebuilt-entities.png#lightbox)
+
+4. Az előugró párbeszédpanelen válassza ki a **keyPhrase** elemet, majd a **Done** (Kész) lehetőséget. 
+
+    [ ![Az entitáslistát tartalmazó előugró párbeszédpanel képernyőképe](./media/luis-quickstart-intent-and-key-phrase/hr-add-or-remove-prebuilt-entities.png)](./media/luis-quickstart-intent-and-key-phrase/hr-add-or-remove-prebuilt-entities.png#lightbox)
 
     <!-- TBD: asking Carol
     You won't see these entities labeled in utterances on the intents pages. 
     -->
+5. A bal oldali menüben válassza az **Intents** (Szándékok) lehetőséget, majd a **Utilities.Confirm** szándékot. A keyPhrase-entitás számos kimondott szövegben meg van címkézve. 
+
+    [ ![Képernyőkép a Utilities.Confirm szándékról, a keyPhrases megcímkézve a kimondott szövegben](./media/luis-quickstart-intent-and-key-phrase/hr-keyphrase-labeled.png)](./media/luis-quickstart-intent-and-key-phrase/hr-keyphrase-labeled.png#lightbox)
 
 ## <a name="train-the-luis-app"></a>A LUIS-alkalmazás betanítása
-Amíg nincs betanítva, a LUIS nem ismeri fel a modell módosításait. 
+Az alkalmazás új `keyphrase` verzióját be kell tanítani.  
 
 1. A LUIS-webhely jobb felső részén kattintson a **Train** (Betanítás) gombra.
 
-    ![A kiemelt Train (Betanítás) gomb képernyőképe](./media/luis-quickstart-intent-and-key-phrase/train-button-expanded.png)
+    ![Az alkalmazás betanítása](./media/luis-quickstart-intent-and-key-phrase/train-button.png)
 
 2. A betanítás akkor van kész, ha a webhely tetején megjelenik a sikerességet jelző zöld állapotsáv.
 
-    ![Sikeres betanítást jelző értesítési sáv képernyőképe ](./media/luis-quickstart-intent-and-key-phrase/trained-inline.png)
+    ![A betanítás sikeres volt](./media/luis-quickstart-intent-and-key-phrase/trained.png)
 
 ## <a name="publish-app-to-endpoint"></a>Alkalmazás közzététele a végponton
 
 1. A jobb felső navigációs menüben válassza a **Publish** (Közzététel) lehetőséget.
 
-    ![Az entitások lapjának képernyőképe a megnyitott közzétételi gombbal ](./media/luis-quickstart-intent-and-key-phrase/publish-expanded.png)
+    [![](media/luis-quickstart-intent-and-key-phrase/hr-publish-button-top-nav.png "A Publish (Közzététel) lap képernyőképe a kiemelt Publish to production slot (Közzététel éles termelési helyre) elemmel")](media/luis-quickstart-intent-and-key-phrase/hr-publish-button-top-nav.png#lightbox)
 
 2. Válasza a Production (Termelés) helyet, és kattintson a **Publish** (Közzététel) gombra.
 
-    [![](media/luis-quickstart-intent-and-key-phrase/publish-to-production-inline.png "A Publish (Közzététel) lap képernyőképe a kiemelt Publish to production slot (Közzététel éles termelési helyre) elemmel")](media/luis-quickstart-intent-and-key-phrase/publish-to-production-expanded.png#lightbox)
+    [![](media/luis-quickstart-intent-and-key-phrase/hr-publish-to-production-expanded.png "A Publish (Közzététel) lap képernyőképe a kiemelt Publish to production slot (Közzététel éles termelési helyre) elemmel")](media/luis-quickstart-intent-and-key-phrase/hr-publish-to-production-expanded.png#lightbox)
 
 3. A közzététel akkor van kész, ha a webhely tetején megjelenik a sikerességet jelző zöld állapotsáv.
 
@@ -106,39 +99,98 @@ Amíg nincs betanítva, a LUIS nem ismeri fel a modell módosításait.
 
 1. A **Publish** (Közzététel) lapon kattintson a lap alján található **Endpoint** (Végpont) hivatkozásra. Ez a művelet megnyit egy másik böngészőablakot, amelynek címsorában a végpont URL-címe látható. 
 
-    ![A Publish (Közzététel) lap képernyőképe a kiemelt végponti URL-címmel](media/luis-quickstart-intent-and-key-phrase/endpoint-url-inline.png )
+    ![A Publish (Közzététel) lap képernyőképe a kiemelt végponti URL-címmel](media/luis-quickstart-intent-and-key-phrase/hr-endpoint-url-inline.png )
 
-2. Lépjen az URL-cím végéhez, és írja be a következőt: `Is there a new medical plan with a lower deductible offered next year?`. Az utolsó lekérdezésisztring-paraméter `q`, a kimondott szöveg pedig a **query**. 
+2. Lépjen az URL-cím végéhez, és írja be a következőt: `does form hrf-123456 cover the new dental benefits and medical plan`. Az utolsó lekérdezésisztring-paraméter `q`, a kimondott szöveg pedig a **query**. 
 
 ```
 {
-  "query": "Is there a new medical plan with a lower deductible offered next year?",
+  "query": "does form hrf-123456 cover the new dental benefits and medical plan",
   "topScoringIntent": {
     "intent": "FindForm",
-    "score": 0.216838628
+    "score": 0.9300641
   },
+  "intents": [
+    {
+      "intent": "FindForm",
+      "score": 0.9300641
+    },
+    {
+      "intent": "ApplyForJob",
+      "score": 0.0359598845
+    },
+    {
+      "intent": "GetJobInformation",
+      "score": 0.0141798034
+    },
+    {
+      "intent": "MoveEmployee",
+      "score": 0.0112197418
+    },
+    {
+      "intent": "Utilities.StartOver",
+      "score": 0.00507669244
+    },
+    {
+      "intent": "None",
+      "score": 0.00238501839
+    },
+    {
+      "intent": "Utilities.Help",
+      "score": 0.00202810857
+    },
+    {
+      "intent": "Utilities.Stop",
+      "score": 0.00102957746
+    },
+    {
+      "intent": "Utilities.Cancel",
+      "score": 0.0008688423
+    },
+    {
+      "intent": "Utilities.Confirm",
+      "score": 3.557994E-05
+    }
+  ],
   "entities": [
     {
-      "entity": "lower deductible",
-      "type": "builtin.keyPhrase",
-      "startIndex": 35,
-      "endIndex": 50
+      "entity": "hrf-123456",
+      "type": "HRF-number",git 
+      "startIndex": 10,
+      "endIndex": 19
     },
     {
-      "entity": "new medical plan",
+      "entity": "new dental benefits",
       "type": "builtin.keyPhrase",
-      "startIndex": 11,
-      "endIndex": 26
+      "startIndex": 31,
+      "endIndex": 49
     },
     {
-      "entity": "year",
+      "entity": "medical plan",
       "type": "builtin.keyPhrase",
-      "startIndex": 65,
-      "endIndex": 68
+      "startIndex": 55,
+      "endIndex": 66
+    },
+    {
+      "entity": "hrf",
+      "type": "builtin.keyPhrase",
+      "startIndex": 10,
+      "endIndex": 12
+    },
+    {
+      "entity": "-123456",
+      "type": "builtin.number",
+      "startIndex": 13,
+      "endIndex": 19,
+      "resolution": {
+        "value": "-123456"
+      }
     }
   ]
 }
 ```
+
+Az űrlap keresése közben a felhasználó több információt adott meg, mint amennyi az űrlap megtalálásához szükséges. A további információkat **builtin.keyPhrase** elemként adja vissza a rendszer. Az ügyfélalkalmazás használhatja ezeket a további információkat egy következő kérdéshez, például „Szeretne egy emberierőforrások-képviselővel beszélni az új fogászati juttatásokról?”, vagy egy több lehetőséget tartalmazó menüt adhat meg, amely például tartalmazza a következőt: „További információk az új fogászati juttatásokról vagy orvosi tervről”.
 
 ## <a name="what-has-this-luis-app-accomplished"></a>Milyen műveleteket végzett el a LUIS-alkalmazás?
 A keyPhrase entitás észlelésére képes alkalmazás azonosított egy természetes nyelvi lekérdezési szándékot, és visszaadta a kinyert adatokat, közöttük a fő témát is. 
@@ -156,6 +208,3 @@ Ha már nincs rá szükség, törölje a LUIS-alkalmazást. Ehhez válassza az a
 > [!div class="nextstepaction"]
 > [Hangulatot és szándék-előrejelzést visszaadó alkalmazás létrehozása](luis-quickstart-intent-and-sentiment-analysis.md)
 
-<!--References-->
-[LUIS]: https://docs.microsoft.com/azure/cognitive-services/luis/luis-reference-regions#luis-website
-[LUIS-regions]: https://docs.microsoft.com/azure/cognitive-services/luis/luis-reference-regions#publishing-regions

@@ -22,6 +22,12 @@
       href: features-windows.md
 - name: Útmutatók
   items:
+    - name: Azure Disk Encryption
+      items:
+        - name: Linux
+          href: azure-disk-enc-linux.md
+        - name: Windows
+          href: azure-disk-enc-windows.md
     - name: Egyéni szkript
       items:
         - name: Linux – 2-es verzió
@@ -32,15 +38,44 @@
           href: custom-script-windows.md
         - name: Azure-szolgáltatásfelügyelet (klasszikus)
           href: custom-script-classic.md
-    - name: Virtuális gépekhez való hozzáférés
-      href: vmaccess.md
+    - name: Diagnosztika
+      items:
+        - name: Linux
+          href: vmsnapshot-linux.md
+        - name: Windows
+          href: vmsnapshot-windows.md
+    - name: Network Watcher-ügynök
+      items:
+        - name: Linux
+          href: network-watcher-linux.md
+        - name: Windows
+          href: network-watcher-windows.md
+    - name: NVIDIA GPU-illesztők
+      items:
+        - name: Linux
+          href: hpccompute-gpu-linux.md
+        - name: Windows
+          href: hpccompute-gpu-windows.md
     - name: Operations Management Suite
       items:
         - name: Linux
           href: oms-linux.md
         - name: Windows
           href: oms-windows.md
-    - name: Diagnosztika
+    - name: PowerShell DSC
+      href: dsc-overview.md
+      items:
+        - name: DSC és Windows
+          href: dsc-windows.md
+        - name: DSC és Linux
+          href: dsc-linux.md
+        - name: Hitelesítő adatok kezelése
+          href: dsc-credentials.md
+        - name: Sablonok használata
+          href: dsc-template.md
+    - name: Virtuális gépekhez való hozzáférés
+      href: vmaccess.md
+    - name: Virtuálisgép-diagnosztika
       items:
         - name: Linux
           href: diagnostics-linux.md
@@ -48,29 +83,6 @@
           href: diagnostics-windows.md
         - name: Sablonok használata
           href: diagnostics-template.md
-    - name: Network Watcher-ügynök
-      items:
-        - name: Linux
-          href: network-watcher-linux.md
-        - name: Windows
-          href: network-watcher-windows.md
-    - name: PowerShell DSC
-      href: dsc-overview.md
-      items:
-        - name: DSC és Windows
-          href: dsc-windows.md
-        - name: Hitelesítő adatok kezelése
-          href: dsc-credentials.md
-        - name: Sablonok használata
-          href: dsc-template.md
-    - name: IaaS kártevőirtó Windowshoz
-      href: iaas-antimalware-windows.md
-    - name: Virtuális gép pillanatképe
-      items:
-        - name: Linux
-          href: vmsnapshot-linux.md
-        - name: Windows
-          href: vmsnapshot-windows.md
     - name: Külső felektől származó bővítmények
       items:
         - name: Stackify Retrace

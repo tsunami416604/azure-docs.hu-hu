@@ -1,5 +1,5 @@
 ---
-title: Azure IoT Central-alkalmazás üzembe helyezése | Microsoft Docs
+title: Azure IoT Central-alkalmazás létrehozása | Microsoft Docs
 description: Új Azure IoT Central-alkalmazást hozhat létre a hűtött eladóautomaták kezeléséhez. Megtekintheti a szimulált eszközökről létrehozott telemetriaadatokat.
 author: tbhagwat3
 ms.author: tanmayb
@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: peterpr
-ms.openlocfilehash: 9a9b9e66995a2945ef95056f2fcbcd59814d08ff
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 51c6753b1e4f2b08e93214abfcd7e18cb2e66613
+ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34630493"
+ms.lasthandoff: 06/22/2018
+ms.locfileid: "36318313"
 ---
 # <a name="create-an-azure-iot-central-application"></a>Azure IoT Central-alkalmazás létrehozása
 

@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 05/17/2018
 ms.author: spelluru
-ms.openlocfilehash: a96ba4aec7c23c040921a647cc4986aaf53fb30c
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 39683c89db57dbeefd190a51415c783d012785e0
+ms.sourcegitcommit: ea5193f0729e85e2ddb11bb6d4516958510fd14c
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34651408"
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36303775"
 ---
 # <a name="tutorial-set-up-a-classroom-lab"></a>Oktatóanyag: Osztályterem-tesztkörnyezet beállítása 
 Ebben az oktatóanyagban megtanulhatja, hogyan állíthat be egy diákok által használható virtuális gépekkel rendelkező osztályterem-tesztkörnyezetet.  
@@ -31,10 +31,15 @@ Az oktatóanyag során a következő lépéseket hajtja végre:
 > * Az osztályterem-tesztkörnyezet konfigurálása
 > * Regisztrációs hivatkozás küldése a diákoknak
 
+## <a name="prerequisites"></a>Előfeltételek
+A **Tesztkörnyezet-létrehozó** szerepkörrel kell rendelkeznie a tesztkörnyezetfiókban ahhoz, hogy létrehozhasson egy osztályterem-tesztkörnyezetet. A tesztkörnyezet tulajdonosa az alábbi cikkben leírt lépésekkel adható hozzá a Tesztkörnyezet-létrehozó szerepkörhöz: [Felhasználó hozzáadása a Tesztkörnyezet-létrehozó szerepkörhöz](tutorial-setup-lab-account.md#add-a-user-to-the-lab-creator-role).
+
+
 ## <a name="create-a-classroom-lab"></a>Osztályterem-tesztkörnyezet létrehozása
 
 1. Lépjen az [Azure Lab Services weboldalára](https://labs.azure.com).
-2. Az **Új tesztkörnyezet** ablakban tegye a következőket: 
+2. Válassza a **Bejelentkezés** lehetőséget, és adja meg a hitelesítő adatait. 
+3. Az **Új tesztkörnyezet** ablakban tegye a következőket: 
     1. Adja meg az osztályterem-tesztkörnyezet **nevét**. 
     2. Válassza ki az osztályteremben használni kívánt virtuális gép **méretét**.
     3. Válassza ki a virtuális gép létrehozásához használandó **rendszerképet**.
@@ -42,9 +47,9 @@ Az oktatóanyag során a következő lépéseket hajtja végre:
     7. Kattintson a **Mentés** gombra.
 
         ![Osztályterem-tesztkörnyezet létrehozása](../media/tutorial-setup-classroom-lab/new-lab-window.png)
-1. A rendszer megjeleníti a tesztkörnyezet **kezdőlapját**. 
+1. A rendszer megjeleníti a tesztkörnyezet **irányítópultját**. 
     
-    ![Az osztályterem-tesztkörnyezet kezdőlapja](../media/tutorial-setup-classroom-lab/classroom-lab-home-page.png)
+    ![Az osztályterem-tesztkörnyezet irányítópultja](../media/tutorial-setup-classroom-lab/classroom-lab-home-page.png)
 
 ## <a name="configure-usage-policy"></a>Használati szabályzat konfigurálása
 
@@ -54,8 +59,9 @@ Az oktatóanyag során a következő lépéseket hajtja végre:
 
     ![Használati szabályzat](../media/tutorial-setup-classroom-lab/usage-policy-settings.png)
 
+
 ## <a name="set-up-the-template"></a>Sablon beállítása 
-A tesztkörnyezet sablonja egy alapszintű virtuálisgép-rendszerkép, amelyből az összes felhasználó virtuális gépe létrejön. Úgy állítsa be a virtuálisgép-sablont, hogy az pontosan aszerint legyen konfigurálva, amit a tesztkörnyezet felhasználóinak biztosítani kíván. A sablonhoz megadhat egy nevet és egy leírást, amely a tesztkörnyezet felhasználói számára jelenik meg. Beállíthatja a sablon láthatóságát, hogy a tesztkörnyezet felhasználói számára elérhető példányokat hozzon létre a virtuálisgép-sablonról. 
+A tesztkörnyezet sablonja egy alapszintű virtuálisgép-rendszerkép, amelyből az összes felhasználó virtuális gépe létrejön. Úgy állítsa be a virtuálisgép-sablont, hogy az pontosan aszerint legyen konfigurálva, amit a tesztkörnyezet felhasználóinak biztosítani kíván. A sablonhoz megadhat egy nevet és egy leírást, amely a tesztkörnyezet felhasználói számára jelenik meg. A sablon nyilvános közzétételével a tesztkörnyezet felhasználói számára elérhető példányokat hozhat létre a virtuálisgép-sablonról. 
 
 ### <a name="set-title-and-description"></a>Cím és leírás beállítása
 1. A **Sablon** szakaszban válassza a sablonhoz tartozó **Szerkesztés** (ceruza ikon) elemet. 
@@ -65,24 +71,50 @@ A tesztkörnyezet sablonja egy alapszintű virtuálisgép-rendszerkép, amelybő
 
     ![Az osztályterem-tesztkörnyezet leírása](../media/tutorial-setup-classroom-lab/lab-description.png)
 
-### <a name="make-instances-of-the-template-public"></a>A sablon példányainak nyilvánossá tétele
-Amint **nyilvános** értékre állította a sablon láthatóságát, az Azure Lab Services létrehozza a virtuális gépeket a tesztkörnyezetben a sablon használatával. A folyamat során létrehozott virtuális gépek száma megegyezik a tesztkörnyezet felhasználóinak maximális számával, amelyet a tesztkörnyezet használati szabályzatában állíthat be. A virtuális gépek konfigurációja megegyezik a sablonéval. 
+### <a name="set-up-the-template-vm"></a>Virtuálisgép-sablon beállítása
+ A virtuálisgép-sablonhoz csatlakozva telepítse a szükséges szoftvereket, mielőtt elérhetővé tenné a sablont a diákok számára. 
 
-1. A **Sablon** szakaszban válassza a **Láthatóság** lehetőséget. 
-2. A **Rendelkezésre állás** oldalon válassza a **Nyilvános** lehetőséget.
+1. Várja meg, amíg elkészül a virtuálisgép-sablon. Ha elkészült, elérhetővé válik a **Start** gomb. A virtuális gép elindításához kattintson a **Start** gombra.
+
+    ![A virtuálisgép-sablon elindítása](../media/tutorial-setup-classroom-lab/start-template-vm.png)
+1. A virtuális géphez való csatlakozáshoz kattintson a **Csatlakozás** gombra, majd kövesse az utasításokat. 
+
+    ![Csatlakozás a virtuálisgép-sablonhoz](../media/tutorial-setup-classroom-lab/connect-template-vm.png)
+1. Telepítse a diákok számára a tesztkörnyezet használatához szükséges szoftvereket (például Visual Studio, Azure Storage Explorer stb). 
+2. Szakítsa meg a kapcsolatot a virtuálisgép-sablonnal (zárja be a távoli asztali munkamenetet). 
+3. **Állítsa le** a virtuálisgép-sablont a **Leállítás** kiválasztásával. 
+
+    ![A virtuálisgép-sablon leállítása](../media/tutorial-setup-classroom-lab/stop-template-vm.png)
+
+### <a name="publish-the-template"></a>A sablon közzététele 
+Amikor közzétesz egy sablont, az Azure Lab Services létrehozza a virtuális gépeket a tesztkörnyezetben a sablon használatával. A folyamat során létrehozott virtuális gépek száma megegyezik a tesztkörnyezet felhasználóinak maximális számával, amelyet a tesztkörnyezet használati szabályzatában állíthat be. A virtuális gépek konfigurációja megegyezik a sablonéval. 
+
+1. A **Sablon** szakaszban válassza a **Közzététel** lehetőséget. 
+
+    ![A virtuálisgép-sablon közzététele](../media/tutorial-setup-classroom-lab/public-access.png)
+1. A **Közzététel** ablakban válassza a **Közzétett** lehetőséget. 
+2. Most kattintson a **Közzététel** gombra. Ez a folyamat eltarthat egy ideig a létrehozandó virtuális gépek számától függően, amely a tesztkörnyezet felhasználóinak maximális számával egyezik meg.
     
     > [!IMPORTANT]
     > Amint a sablon nyilvánosan elérhetővé válik, a hozzáférhetősége nem módosítható privátra. 
-3. Kattintson a **Mentés** gombra.
+4. Váltson a **Virtuális gépek** lapra, és ellenőrizze, hogy öt **Nem hozzárendelt** állapotú virtuális gép látható-e ott. Ezek a virtuális gépek még nincsenek diákokhoz rendelve. 
 
-    ![Rendelkezésre állás](../media/tutorial-setup-classroom-lab/public-access.png)
+    ![Virtual machines (Virtuális gépek)](../media/tutorial-setup-classroom-lab/virtual-machines.png)
+5. Várja meg, amíg befejeződik a virtuális gépek létrehozása. **Leállított** állapotban kell lenniük. Ezen a lapon indíthatja el a virtuális gépeket, csatlakozhat hozzájuk, leállíthatja, valamint törölheti őket. A virtuális gépeket elindíthatja ezen a lapon, vagy engedheti, hogy a diákjai indítsák el őket. 
+
+    ![Leállított állapotban levő virtuális gépek](../media/tutorial-setup-classroom-lab/virtual-machines-stopped.png)
 
 ## <a name="send-registration-link-to-students"></a>Regisztrációs hivatkozás küldése a diákoknak
 
-1. Válassza a **Felhasználói regisztráció** csempét.
-2. A **Felhasználói regisztráció** párbeszédablakban kattintson a **Másolás** gombra. A rendszer a vágólapra másolja a hivatkozást. Illessze be egy e-mail-szerkesztőbe, majd küldje el e-mailben a diákoknak. 
+1. Váltson az **Irányítópult** nézetre. 
+2. Válassza a **Felhasználói regisztráció** csempét.
+
+    ![A diákok regisztrációs hivatkozása](../media/tutorial-setup-classroom-lab/dashboard-user-registration-link.png)
+1. A **Felhasználói regisztráció** párbeszédablakban kattintson a **Másolás** gombra. A rendszer a vágólapra másolja a hivatkozást. Illessze be egy e-mail-szerkesztőbe, majd küldje el e-mailben a diákoknak. 
 
     ![A diákok regisztrációs hivatkozása](../media/tutorial-setup-classroom-lab/registration-link.png)
+2. A **Felhasználói regisztráció** párbeszédablakban kattintson a **Bezárás** gombra. 
+
 
 ## <a name="next-steps"></a>További lépések
 Ebben az oktatóanyagban létrehozott egy osztályterem-tesztkörnyezetet, és konfigurálta azt. Ha meg szeretné tudni, hogyan férhetnek hozzá a diákok a tesztkörnyezet virtuális gépeihez a regisztrációs hivatkozással, folytassa a következő oktatóanyaggal:

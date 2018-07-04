@@ -14,12 +14,12 @@ ms.topic: overview
 ms.date: 03/26/2018
 ms.author: wesmc
 ms.custom: mvc
-ms.openlocfilehash: 8f477282e49104e9b034e11656ff50c2a67545f7
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 5efb0087c8e1ea55051d8eb7b209059b3abd5c5c
+ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32195872"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37062759"
 ---
 # <a name="what-is-azure-redis-cache"></a>Mi az Azure Redis Cache
 
@@ -77,6 +77,7 @@ A [Redis Cache díjszabását](https://azure.microsoft.com/pricing/details/cache
 
 * [ASP.NET-webalkalmazás – Rövid útmutató](cache-web-app-howto.md) Egy Azure Redis Cache-t használó egyszerű ASP.NET-webalkalmazás létrehozása.
 * [.NET – Rövid útmutató](cache-dotnet-how-to-use-azure-redis-cache.md) Egy Azure Redis Cache-t használó .NET-alkalmazás létrehozása.
+* [.NET Core – Rövid útmutató](cache-dotnet-core-quickstart.md) Egy Azure Redis Cache-t használó .NET Core-alkalmazás létrehozása.
 * [Node.js – Rövid útmutató](cache-nodejs-get-started.md) Egy Azure Redis Cache-t használó egyszerű Node.js-alkalmazás létrehozása.
 * [Java – Rövid útmutató](cache-java-get-started.md) Egy Azure Redis Cache-t használó egyszerű Java-alkalmazás létrehozása.
 * [Python – Rövid útmutató](cache-python-get-started.md) Egy Azure Redis Cache-t használó Python-alkalmazás létrehozása.

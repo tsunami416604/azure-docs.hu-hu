@@ -3,7 +3,7 @@ title: Több tábla növekményes másolása az Azure Data Factory használatáv
 description: Az oktatóanyag során egy Azure Data Factory-folyamatot hoz létre, amely egy helyszíni SQL Server több táblájának módosított adatait másolja növekményesen egy Azure SQL Database-be.
 services: data-factory
 documentationcenter: ''
-author: linda33wj
+author: dearandyxu
 manager: craigg
 ms.reviewer: douglasl
 ms.service: data-factory
@@ -12,12 +12,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
 ms.date: 01/20/2018
-ms.author: jingwang
-ms.openlocfilehash: 399e132f0a28ffc6b60e3d757afff5aae60f7674
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.author: yexu
+ms.openlocfilehash: c35d267acfd1778e80605cdfe9eec0edbb18a281
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37052844"
 ---
 # <a name="incrementally-load-data-from-multiple-tables-in-sql-server-to-an-azure-sql-database"></a>Adatok növekményes betöltése az SQL Server több táblájából egy Azure SQL-adatbázisba
 Az oktatóanyag során egy Azure-beli adat-előállítót hoz létre egy olyan folyamattal, amely változásadatokat tölt be egy helyszíni SQL Server több táblájából egy Azure SQL Database-be.    
@@ -36,9 +37,6 @@ Az oktatóanyagban az alábbi lépéseket fogja végrehajtani:
 > * Adatok hozzáadása vagy frissítése a forrástáblákban.
 > * A folyamat újrafuttatása és monitorozása.
 > * A végső eredmények áttekintése.
-
-> [!NOTE]
-> Ez a cikk az Azure Data Factory 2. verziójára vonatkozik, amely jelenleg előzetes verzióban érhető el. Ha a Data Factory szolgáltatás általánosan elérhető 1. verzióját használja, lásd a [Data Factory 1. verziójának dokumentációját](v1/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md).
 
 ## <a name="overview"></a>Áttekintés
 Az alábbiak a megoldás kialakításának leglényegesebb lépései: 
@@ -236,7 +234,7 @@ END
       
      ![Új adat-előállító lap](./media/tutorial-incremental-copy-multiple-tables-portal/new-azure-data-factory.png)
  
-   Az Azure data factory nevének **globálisan egyedinek** kell lennie. Ha a következő hibaüzenetet kapja, módosítsa az adat-előállító nevét (például sajátneveADFMultiIncCopyTutorialDF értékre), majd próbálkozzon újra a létrehozással. A Data Factory-összetevők részleteit a [Data Factory elnevezési szabályait](naming-rules.md) ismertető cikkben találja.
+   Az Azure data factory nevének **globálisan egyedinek** kell lennie. Ha a következő hibaüzenetet kapja, módosítsa az adat-előállító nevét (például sajátneveADFMultiIncCopyTutorialDF értékre), majd próbálkozzon újra a létrehozással. A Data Factory-összetevők elnevezésére vonatkozó részleteket a [Data Factory elnevezési szabályait](naming-rules.md) ismertető cikkben találja.
   
        `Data factory name ADFMultiIncCopyTutorialDF is not available`
 3. Válassza ki azt az **Azure-előfizetést**, amelyben az adat-előállítót létre szeretné hozni. 
@@ -369,16 +367,25 @@ Ebben a lépésben olyan adatkészleteket hoz létre, amelyek az adatforrást, a
 3. A webböngészőben megjelenik egy új lap, amely az adatkészlet konfigurálására szolgál. Az adatkészlet fanézetben is megjelenik. A Properties (Tulajdonságok) ablak **General** (Általános) lapjának alján a **SinkDataset** értéket adja meg a **Name** (Név) mezőben.
 
    ![Fogadó adatkészlet – általános](./media/tutorial-incremental-copy-multiple-tables-portal/sink-dataset-general.png)
-4. Váltson a **Connection** (Kapcsolat) lapra a Tulajdonságok ablakban, majd a **Linked service** (Társított szolgáltatás) mezőben válassza az **AzureSqlLinkedService** elemet. 
-
-   ![Fogadó adatkészlet – kapcsolat](./media/tutorial-incremental-copy-multiple-tables-portal/sink-dataset-connection.png)
-5. Váltson a **Parameters** (Paraméterek) lapra a tulajdonságok ablakában, és hajtsa végre a következő lépéseket: 
+4. Váltson a **Parameters** (Paraméterek) lapra a tulajdonságok ablakában, és hajtsa végre a következő lépéseket: 
 
     1. Kattintson a **New** (Új) elemre a **Create/update parameters** (Paraméterek létrehozása/frissítése) szakaszban. 
-    2. Adja meg a **SinkTableName** **nevet** és a **String** (Karakterlánc) **típust**. Ez az adatkészlet a **SinkTableName** paramétert használja. A SinkTableName paramétert a folyamat állítja be dinamikusan, futásidőben. A folyamat ForEach tevékenysége végighalad a táblanevek listáján, és minden egyes ismétléskor átadja a táblanevet ennek az adatkészletnek.
-    3. A **Parameterizable properties** (Paraméterezhető tulajdonságok) szakaszban a **tableName** tulajdonságnál adja meg a `@{dataset().SinkTableName}` értéket. A **SinkTableName** paraméternek adott értékkel indítja az adatkészlet **tableName** tulajdonságát. 
-
+    2. Adja meg a **SinkTableName****nevet** és a **String** (Sztring) **típust**. Ez az adatkészlet a **SinkTableName** paramétert használja. A SinkTableName paramétert a folyamat állítja be dinamikusan, futásidőben. A folyamat ForEach tevékenysége végighalad a táblanevek listáján, és minden egyes ismétléskor átadja a táblanevet ennek az adatkészletnek.
+   
        ![Fogadó adatkészlet – tulajdonságok](./media/tutorial-incremental-copy-multiple-tables-portal/sink-dataset-parameters.png)
+5. Váltson a **Connection** (Kapcsolat) lapra a Tulajdonságok ablakban, majd a **Linked service** (Társított szolgáltatás) mezőben válassza az **AzureSqlLinkedService** elemet. A **Table** (Tábla) tulajdonsághoz kattintson az **Add dynamic content** (Dinamikus tartalom hozzáadása) lehetőségre. 
+
+   ![Fogadó adatkészlet – kapcsolat](./media/tutorial-incremental-copy-multiple-tables-portal/sink-dataset-connection.png)
+    
+    
+6. Válassza a **SinkTableName** elemet a **Parameters** (Paraméterek) szakaszban
+   
+   ![Fogadó adatkészlet – kapcsolat](./media/tutorial-incremental-copy-multiple-tables-portal/sink-dataset-connection-dynamicContent.png)
+
+   
+ 7. Miután a **Finish** (Befejezés) gombra kattint, a **@dataset().SinkTableName** táblanévként fog megjelenni.
+   
+   ![Fogadó adatkészlet – kapcsolat](./media/tutorial-incremental-copy-multiple-tables-portal/sink-dataset-connection-completion.png)
 
 ### <a name="create-a-dataset-for-a-watermark"></a>Adatkészlet létrehozása a küszöbhöz
 Ebben a lépésben egy adatkészletet hozunk létre a felső küszöbértékek tárolására. 
@@ -505,7 +512,7 @@ A folyamat táblanevek listáját használja paraméterként. A ForEach tevéken
         | Name (Név) | Típus | Érték | 
         | ---- | ---- | ----- |
         | LastModifiedtime | DateTime | `@{activity('LookupNewWaterMarkActivity').output.firstRow.NewWatermarkvalue}` |
-        | TableName | Karakterlánc | `@{activity('LookupOldWaterMarkActivity').output.firstRow.TableName}` |
+        | TableName | Sztring | `@{activity('LookupOldWaterMarkActivity').output.firstRow.TableName}` |
     
         ![Tárolt eljárási tevékenység – tárolt eljárás beállításai](./media/tutorial-incremental-copy-multiple-tables-portal/sproc-activity-sproc-settings.png)
 20. A bal oldali panelen kattintson a **Publish** (Közzététel) elemre. Ez a művelet közzéteszi a Data Factory szolgáltatásban a létrehozott entitásokat. 
@@ -644,7 +651,7 @@ VALUES
     ]
     ```
 
-## <a name="monitor-the-pipeline"></a>A folyamat figyelése
+## <a name="monitor-the-pipeline-again"></a>A folyamat ismételt monitorozása
 
 1. Váltson a bal oldali **Monitorozás** lapra. Láthatja a **manuális eseményindítás** által elindított folyamatfuttatást. A lista frissítéséhez kattintson a **Frissítés** gombra. Az **Actions** (Műveletek) oszlop hivatkozásaival megtekintheti a folyamat futásához társított tevékenységfuttatásokat, illetve újra futtathatja a folyamatot. 
 

@@ -83,8 +83,8 @@
 ## [Csoportok és tagok kezelése](fundamentals/active-directory-manage-groups.md)
 ### Csoportok kezelése
 #### [Azure Portal](fundamentals/active-directory-groups-create-azure-portal.md)
-#### [Azure AD PowerShell for Graph (v2)](active-directory-accessmanagement-groups-settings-v2-cmdlets.md)
-#### [Azure AD PowerShell MSOnline](active-directory-accessmanagement-groups-settings-cmdlets.md)
+#### [Azure AD PowerShell for Graph (v2)](users-groups-roles/groups-settings-v2-cmdlets.md)
+#### [Azure AD PowerShell MSOnline](users-groups-roles/groups-settings-cmdlets.md)
 ### [Csoporttagok kezelése](fundamentals/active-directory-groups-members-azure-portal.md)
 ### [Csoporttulajdonosok kezelése](fundamentals/active-directory-accessmanagement-managing-group-owners.md)
 ### [Csoporttagság kezelése](fundamentals/active-directory-groups-membership-azure-portal.md)
@@ -99,13 +99,13 @@
 ### [Office 365-csoportok lejáratának beállítása](active-directory-groups-lifecycle-azure-portal.md)
 ### [A csoportokra vonatkozó elnevezési szabályzat kényszerítése](groups-naming-policy.md)
 ### [Az összes csoport megtekintése](fundamentals/active-directory-groups-view-azure-portal.md)
-### [Csoportszintű hozzáférés biztosítása az SaaS-alkalmazásokhoz](active-directory-accessmanagement-group-saasapps.md)
+### [Csoportszintű hozzáférés biztosítása az SaaS-alkalmazásokhoz](users-groups-roles/groups-saasapps.md)
 ### [Törölt Office 365-csoport visszaállítása](fundamentals/active-directory-groups-restore-azure-portal.md)
 ### [Csoportbeállítások kezelése](fundamentals/active-directory-groups-settings-azure-portal.md) 
 ### Speciális szabályok létrehozása
 #### [Azure Portal](active-directory-groups-dynamic-membership-azure-portal.md)
-### [Önkiszolgáló csoportok beállítása](active-directory-accessmanagement-self-service-group-management.md)
-### [Hibaelhárítás](active-directory-accessmanagement-troubleshooting.md)
+### [Önkiszolgáló csoportok beállítása](users-groups-roles/groups-self-service-management.md)
+### [Hibaelhárítás](users-groups-roles/groups-troubleshooting.md)
 
 ## [Jelentések kezelése](active-directory-reporting-azure-portal.md)
 ### [Bejelentkezési tevékenység](active-directory-reporting-activity-sign-ins.md)
@@ -363,7 +363,7 @@
 ### [Azure AD Connect](./connect/active-directory-aadconnect.md)
 ### Egyéni tartománynevek
 #### [Gyors útmutató](fundamentals/add-custom-domain.md)
-#### [Egyéni tartománynevek hozzáadása](active-directory-domains-manage-azure-portal.md)
+#### [Egyéni tartománynevek hozzáadása](users-groups-roles/domains-manage.md)
 ### [A címtár felügyelete](fundamentals/active-directory-administer.md)
 ### [Könyvtár törlése](directory-delete-howto.md)
 ### [Több címtár](active-directory-licensing-directory-independence.md)
@@ -381,12 +381,12 @@
 
 ## Erőforrások hozzáférésének delegálása
 ### [Rendszergazdai szerepkör tagjainak megtekintése](directory-manage-roles-portal.md)
-### [Rendszergazdai szerepkörök](active-directory-assign-admin-roles-azure-portal.md)
+### [Rendszergazdai szerepkörök](users-groups-roles/directory-assign-admin-roles.md)
 #### [Rendszergazdai szerepkör hozzárendelése felhasználóhoz](fundamentals/active-directory-users-assign-role-azure-portal.md)
 #### [A tagok és vendégfelhasználók engedélyeinek összehasonlítása](fundamentals/users-default-permissions.md)
 ### [Rendszergazdai szerepkörök biztonságának megerősítése](admin-roles-best-practices.md)  
-#### [Vészhelyzeti hozzáférésére szolgáló rendszergazdai fiókok létrehozása](active-directory-admin-manage-emergency-access-accounts.md)
-### [Felügyeleti egységek](active-directory-administrative-units-management.md)
+#### [Vészhelyzeti hozzáférésére szolgáló rendszergazdai fiókok létrehozása](users-groups-roles/directory-emergency-access.md)
+### [Felügyeleti egységek](users-groups-roles/directory-administrative-units.md)
 ### [A jogkivonatok élettartamának beállítása](active-directory-configurable-token-lifetimes.md)
 
 ## Hozzáférési felülvizsgálatok
@@ -406,6 +406,7 @@
 #### Gyors útmutatók
 ##### [Felhőalkalmazásonkénti MFA konfigurálása](active-directory-conditional-access-app-based-mfa.md)
 ##### [A használati feltételek elfogadásának kötelezővé tétele](active-directory-conditional-access-tou.md)
+##### [Hozzáférés letiltása munkameneti kockázat észlelésekor](active-directory-conditional-access-app-sign-in-risk.md)
 #### Oktatóanyagok
 ##### [Klasszikus MFA-szabályzat migrálása](active-directory-conditional-access-migration-mfa.md)
 #### Alapelvek

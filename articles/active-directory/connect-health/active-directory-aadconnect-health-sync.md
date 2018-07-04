@@ -14,17 +14,17 @@ ms.topic: get-started-article
 ms.date: 07/18/2017
 ms.author: billmath
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: cff8be88e23d57545a9926df366289c6ba264886
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: a3801573f3ffe3a0941f3941cf33e516f4f1b614
+ms.sourcegitcommit: 0408c7d1b6dd7ffd376a2241936167cc95cfe10f
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2018
-ms.locfileid: "30229948"
+ms.lasthandoff: 06/26/2018
+ms.locfileid: "36961638"
 ---
 # <a name="monitor-azure-ad-connect-sync-with-azure-ad-connect-health"></a>Az Azure AD Connect-szinkronizálás megfigyelése az Azure AD Connect Health szolgáltatással
 Az alábbi dokumentáció az Azure AD Connect (szinkronizálási) szolgáltatás Azure AD Connect Health szolgáltatással végzett megfigyelésére vonatkozik.  Az AD FS az Azure AD Connect Health használatával történő megfigyelésére vonatkozó információkat lásd: [Az Azure AD Connect Health használata az AD FS szolgáltatással](active-directory-aadconnect-health-adfs.md). Az Active Directory tartományi szolgáltatások az Azure AD Connect Health használatával történő megfigyelésével kapcsolatos információkat pedig a [Using Azure AD Connect Health with AD DS](active-directory-aadconnect-health-adds.md) (Az Azure AD Connect Health használata az AD DS szolgáltatással) című témakörben találja.
 
-![Azure AD Connect Health szinkronizálási szolgáltatás](./media/active-directory-aadconnect-health-sync/sync-blade.png)
+![Azure AD Connect Health szinkronizálási szolgáltatás](./media/active-directory-aadconnect-health-sync/syncsnapshot.png)
 
 ## <a name="alerts-for-azure-ad-connect-health-for-sync"></a>Az Azure AD Connect Health szinkronizálási szolgáltatás riasztásai
 Az Azure AD Connect Health szinkronizálási szolgáltatás riasztásai szakaszban az aktív riasztások listáját láthatja. Minden egyes riasztás tartalmazza a fontos információkat, a megoldás lépéseit, valamint a kapcsolódó dokumentációra mutató hivatkozásokat. Egy aktív vagy egy megoldott riasztás kiválasztása esetén egy új panel további információkat, a riasztás megoldását segítő lépéseket és további dokumentációkra mutató hivatkozásokat jelenít meg. A már megoldott riasztások esetében az előzményadatokat is megtekintheti.
@@ -98,15 +98,18 @@ Az egyes kategóriák részletes nézetével megjeleníthető azoknak az objektu
 ### <a name="error-details"></a>A hiba adatai
 Az alábbi adatok az egyes hibák részletes nézetében érhetőek el
 
+* Kiemelt ütköző attribútum
 * Az érintett *AD-objektum* azonosítói
 * Az érintett *Azure AD-objektum* azonosítói (ha létezik)
 * Hiba leírása és az elhárítás módja
-* Kapcsolódó cikkek
 
-![Szinkronizálási hibajelentés – részletes nézet](./media/active-directory-aadconnect-health-sync/errorreport04.png)
+![Szinkronizálási hibajelentés – részletes nézet](./media/active-directory-aadconnect-health-sync/duplicateAttributeSyncError.png)
 
 ### <a name="download-the-error-report-as-csv"></a>Hibajelentés letöltése CSV-fájlként
 Az Exportálás gomb kiválasztásával letölthet egy CSV-fájlt, amely tartalmazza az összes hiba részleteit.
+
+### <a name="diagnose-and-remediate-sync-errors"></a>Szinkronizálási hibák diagnosztizálása és javítása 
+Bizonyos duplikált attribútumok felhasználói forráshorgony-frissítést is érintő szinkronizálási hibái esetén a hibákat javíthatja közvetlenül a portálról. További információ a [duplikált attribútumok szinkronizálási hibáinak diagnosztizálásáról és javításáról](active-directory-aadconnect-health-diagnose-sync-errors.md)
 
 ## <a name="related-links"></a>Kapcsolódó hivatkozások
 * [Szinkronizálási hibák elhárítása](../connect/active-directory-aadconnect-troubleshoot-sync-errors.md)

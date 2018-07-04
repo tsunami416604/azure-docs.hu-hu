@@ -1,6 +1,6 @@
 ---
-title: Engedélyek az Azure AD-ben | Microsoft Docs
-description: Megismerheti az Azure Active Directoryban lévő hatóköröket és engedélyeket és azok használatának módját
+title: Engedélyek az Azure Active Directoryban | Microsoft Docs
+description: Megismerheti az Azure Active Directoryban lévő engedélyeket és azok használatának módját.
 services: active-directory
 documentationcenter: ''
 author: CelesteDG
@@ -13,21 +13,23 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: hero-article
-ms.date: 04/20/2017
+ms.date: 06/25/2018
 ms.author: celested
-ms.reviewer: justhu
+ms.reviewer: jesakowi, justhu
 ms.custom: aaddev
-ms.openlocfilehash: 749253d6a082bcdc2b80c5984f20c4b8c4039ad0
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.openlocfilehash: 786757293e2ad2c47f80745f6bdd9bb5a65add80
+ms.sourcegitcommit: 828d8ef0ec47767d251355c2002ade13d1c162af
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/14/2018
-ms.locfileid: "34156891"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36936955"
 ---
-# <a name="permissions-in-azure-ad"></a>Engedélyek az Azure AD-ben
-Az Azure Active Directory (Azure AD) jelentősen igénybe veszi az OAuth és az OpenID Connect (OIDC) folyamatok engedélyeit is. Amikor az alkalmazás hozzáférési jogkivonatot szerez az Azure AD-tól, olyan jogcímeket foglal bele, amelyek leírják az alkalmazás által adott erőforrással kapcsolatban használt engedélyeket (más néven hatóköröket). Ez megkönnyíti az engedélyezést az erőforrás számára, mert csak ellenőriznie kell, hogy a jogkivonat tartalmazza-e a hívott API megfelelő engedélyét. 
+# <a name="permissions-in-azure-active-directory"></a>Engedélyek az Azure Active Directoryban
+
+Az Azure Active Directory (Azure AD) jelentősen igénybe veszi az OAuth és az OpenID Connect (OIDC) folyamatok engedélyeit is. Amikor az alkalmazás hozzáférési jogkivonatot szerez az Azure AD-tól, a hozzáférési jogkivonat olyan jogcímeket foglal magába, amelyek leírják az alkalmazás által adott erőforrással kapcsolatban használt engedélyeket. A hatókörként is ismert engedélyek megkönnyítik az engedélyezést az erőforrás számára, mert csak ellenőriznie kell, hogy a jogkivonat tartalmazza-e a hívott API-hoz megfelelő engedélyeket. 
 
 ## <a name="types-of-permissions"></a>Engedélytípusok
+
 Az Azure AD kétféle engedélyt határoz meg: 
 * **Delegált engedélyek** – Olyan alkalmazások használják, amelyeken bejelentkezett felhasználó szerepel. Ezekben az alkalmazásokban a felhasználó vagy egy rendszergazda elfogadja az alkalmazás által kért engedélyeket, és az alkalmazáshoz engedély van delegálva, amely szerint az alkalmazás a bejelentkezett felhasználóként viselkedik, amikor API-t hív. Az API-tól függően előfordulhat, hogy a felhasználó nem tudja közvetlenül elfogadni az API-t, és ehelyett [egy rendszergazdának kell „rendszergazdai hozzájárulást” adnia.](/azure/active-directory/develop/active-directory-devhowto-multi-tenant-overview#understanding-user-and-admin-consent)
 * **Alkalmazásengedélyek** – Olyan alkalmazások használják, amelyek bejelentkezett felhasználó nélkül futnak, például háttérszolgáltatásokként vagy démonokként futó alkalmazások. Az alkalmazásengedélyeket csak [rendszergazda fogadhatja el](/azure/active-directory/develop/active-directory-v2-scopes#requesting-consent-for-an-entire-tenant), mert általában széles körűek, és a felhasználói határok között engedélyezik az adatok hozzáférését, vagy olyan adatok hozzáférését engedélyezik, amelyeket egyébként a rendszergazdák korlátoznának. 
@@ -55,14 +57,14 @@ Az Azure AD-ben az engedélyek rendelkeznek néhány tulajdonsággal, amelyek se
 
 | Tulajdonság neve | Leírás | Példa | 
 | --- | --- | --- |
-| ID (Azonosító) | Ez az engedélyt egyedi módon azonosító GUID-érték. | 570282fd-fa5c-430d-a7fd-fc8dc98a9dca | 
-| IsEnabled | Jelzi, hogy ez a hatókör használható-e. | true | 
-| Típus | Jelzi, hogy ez az engedély a felhasználó vagy a rendszergazda jóváhagyását igényli-e. | Felhasználó | 
-| AdminConsentDescription | Ez a rendszergazdai jóváhagyás használata esetén a rendszergazdák számára megjelenő leírás | Lehetővé teszi, hogy az alkalmazás elolvassa a felhasználók postafiókjában lévő e-maileket. | 
-| AdminConsentDisplayName | Ez a rendszergazdai jóváhagyás használata esetén a rendszergazdák számára megjelenő rövid név. | Felhasználók levelezésének olvasása | 
-| UserConsentDescription | Ez a felhasználói jóváhagyás használata esetén a felhasználók számára megjelenő leírás. |  Lehetővé teszi, hogy az alkalmazás elolvassa a postafiókjában lévő e-maileket. | 
-| UserConsentDisplayName | Ez a felhasználói jóváhagyás használata esetén a felhasználók számára megjelenő rövid név. | Levelezés olvasása | 
-| Érték | Ez az OAuth 2.0 engedélyezési folyamatok során az engedély azonosítására használt karakterlánc. Ez az alkalmazásazonosító URI-karakterláncával is kombinálható a teljes engedélynév kialakítása érdekében. | `Mail.Read` | 
+| `ID` | Ez az engedélyt egyedi módon azonosító GUID-érték. | 570282fd-fa5c-430d-a7fd-fc8dc98a9dca | 
+| `IsEnabled` | Jelzi, hogy ez az engedély használható-e. | true | 
+| `Type` | Jelzi, hogy ez az engedély a felhasználó vagy a rendszergazda jóváhagyását igényli-e. | Felhasználó | 
+| `AdminConsentDescription` | Ez a rendszergazdai jóváhagyás használata esetén a rendszergazdák számára megjelenő leírás. | Lehetővé teszi, hogy az alkalmazás elolvassa a felhasználók postafiókjában lévő e-maileket. | 
+| `AdminConsentDisplayName` | Ez a rendszergazdai jóváhagyás használata esetén a rendszergazdák számára megjelenő rövid név. | Felhasználók levelezésének olvasása | 
+| `UserConsentDescription` | Ez a felhasználói jóváhagyás használata esetén a felhasználók számára megjelenő leírás. |  Lehetővé teszi, hogy az alkalmazás elolvassa a postafiókjában lévő e-maileket. | 
+| `UserConsentDisplayName` | A felhasználói jóváhagyás használata esetén a felhasználók számára megjelenő rövid név. | Levelezés olvasása | 
+| `Value` | Az OAuth 2.0 engedélyezési folyamatok során az engedély azonosítására használt sztring. `Value` az alkalmazásazonosító URI-sztringjével is kombinálható a teljes engedélynév kialakítása érdekében. | `Mail.Read` | 
 
 ## <a name="types-of-consent"></a>Jóváhagyástípusok
 Az Azure AD-ben lévő alkalmazások a jóváhagyásokra támaszkodnak a szükséges erőforrások vagy API-k elérése érdekében. Különböző típusú jóváhagyások léteznek, amelyeket az alkalmazásnak esetleg ismernie kell a sikeres működés érdekében. Az engedélyek meghatározásakor azt is tudnia kell, hogyan fognak hozzáférni a felhasználók az alkalmazáshoz vagy az API-hoz.
@@ -70,31 +72,38 @@ Az Azure AD-ben lévő alkalmazások a jóváhagyásokra támaszkodnak a szüks�
 * **Statikus felhasználói jóváhagyás** – Automatikusan történik az [OAuth 2.0 engedélyezési folyamat](/azure/active-directory/develop/active-directory-protocols-oauth-code.md#request-an-authorization-code) során, amikor megadja az erőforrást, amellyel az alkalmazás kommunikálni szeretne. Statikus felhasználói jóváhagyás használata esetén az alkalmazáshoz már korábban meg kellett adni az összes szükséges engedélyt az Azure Portalon, az alkalmazás konfigurációjában. Ha a felhasználó (vagy helyzettől függően a rendszergazda) nem adta a jóváhagyását ehhez az alkalmazáshoz, akkor az Azure AD megkéri a felhasználót, hogy most egyezzen bele. 
 
     További információ az API-k statikus készletének hozzáférését kérő Azure AD-alkalmazások regisztrálásáról.
-* **Dinamikus felhasználói jóváhagyás** – Ez a v2 Azure AD alkalmazásmodell egyik funkciója. Ebben az esetben az alkalmazás a [v2-alkalmazások OAuth 2.0 engedélyezési folyamatához](/azure/active-directory/develop/active-directory-v2-scopes#requesting-individual-user-consent) szükséges hatóköröket kér. Ha a felhasználó még nem hagyta jóvá, a rendszer most kéri erre. [További információ a dinamikus jóváhagyásról](/azure/active-directory/develop/active-directory-v2-compare#incremental-and-dynamic-consent).
+* **Dinamikus felhasználói jóváhagyás** – Ez a v2 Azure AD alkalmazásmodell egyik funkciója. Ebben az esetben az alkalmazás a [v2-alkalmazások OAuth 2.0 engedélyezési folyamatához](/azure/active-directory/develop/active-directory-v2-scopes#requesting-individual-user-consent) szükséges engedélyeket kér. Ha a felhasználó még nem hagyta jóvá, a rendszer most kéri erre. [További információ a dinamikus jóváhagyásról](/azure/active-directory/develop/active-directory-v2-compare#incremental-and-dynamic-consent).
 
     > [!NOTE]
-    > A dinamikus jóváhagyás kényelmes lehet, de nagy kihívást jelent a rendszergazdai jóváhagyást igénylő engedélyek számára, mert a rendszergazdai jóváhagyás használatakor ezek az engedélyek ismeretlenek a jóváhagyáskor. Ha rendszergazdai jogosultsággal rendelkező hatóköröket igényel, az alkalmazásnak regisztrálnia kell azokat az Azure Portalon.
+    > A dinamikus jóváhagyás kényelmes lehet, de nagy kihívást jelent a rendszergazdai jóváhagyást igénylő engedélyek számára, mert a rendszergazdai jóváhagyás használatakor ezek az engedélyek ismeretlenek a jóváhagyáskor. Ha rendszergazdai jogosultsággal rendelkező engedélyeket igényel, az alkalmazásnak regisztrálnia kell azokat az Azure Portalon.
   
-* **Rendszergazdai jóváhagyás** – Akkor szükséges, amikor az alkalmazásnak hozzáférésre van szüksége bizonyos magas szintű jogosultságokkal rendelkező engedélyekhez. Ez biztosítja, hogy a rendszergazdák további vezérlőkkel rendelkezzenek, mielőtt engedélyeznék, hogy az alkalmazások vagy felhasználók magas jogosultságú adatokat érjenek el a cégben. [További információ a rendszergazdai jóváhagyás megadásáról](/azure/active-directory/develop/active-directory-v2-scopes#using-the-admin-consent-endpoint).
+* **Rendszergazdai jóváhagyás** – Akkor szükséges, amikor az alkalmazásnak hozzáférésre van szüksége bizonyos magas szintű jogosultságokkal rendelkező engedélyekhez. A rendszergazdai jóváhagyás biztosítja, hogy a rendszergazdák további vezérlőkkel rendelkezzenek, mielőtt engedélyeznék, hogy az alkalmazások vagy felhasználók magas jogosultságú adatokat érjenek el a cégben. [További információ a rendszergazdai jóváhagyás megadásáról](/azure/active-directory/develop/active-directory-v2-scopes#using-the-admin-consent-endpoint).
 
 ## <a name="best-practices"></a>Ajánlott eljárások
 
-### <a name="resource-best-practices"></a>Ajánlott eljárások az erőforrások használatához
-Az API-kat elérhetővé tévő erőforrásoknak az általuk védett adatokra vagy műveletekre rendkívül jellemző engedélyeket kell meghatározniuk. Ezzel biztosíthatja, hogy az ügyfelek ne számukra felesleges adatok hozzáférésére szóló engedélyeket kapjanak, és hogy a felhasználók jól ismerjék, milyen adatok hozzáférését hagyják jóvá.
-
-Az erőforrásoknak külön kell meghatározniuk a `Read` és a `ReadWrite` engedélyeket. 
-
-Az erőforrásoknak `Admin` engedélyekként kell jelölniük az összes olyan engedélyt, amelyek felhasználói határokon keresztül engedélyezik az adatok hozzáférését. 
-
-Az erőforrásoknak a következő elnevezési mintát kell követniük: `Subject.Permission[.Modifier]`, ahol a `Subject` az elérhető adatok típusának felel meg, a `Permission` a felhasználók által az adatokon végezhető műveletnek, és a nem kötelező `Modifier` leírja egy másik engedély specializációit. Például: 
-* Mail.Read – Lehetővé teszi, hogy a felhasználók elolvassák a leveleket. 
-* Mail.ReadWrite – Lehetővé teszi, hogy a felhasználók elolvassák a leveleket és leveleket írjanak.
-* Mail.ReadWrite.All – Lehetővé teszi, hogy egy rendszergazda vagy felhasználó elérje a cégben lévő összes levelet.
-
 ### <a name="client-best-practices"></a>Ajánlott eljárások az ügyfélhez
-Csak az alkalmazás számára szükséges hatókörökhöz kérjen engedélyt. A túl sok engedéllyel rendelkező alkalmazások biztonságának sérülése esetén nagy a felhasználói adatok felfedésének kockázata.
 
-Az ügyfelek nem igényelhetnek alkalmazásengedélyeket és delegált engedélyeket ugyanattól az alkalmazástól. Ez a jogosultságok növelését eredményezheti, és lehetővé teheti, hogy egy felhasználó olyan adatokhoz férjen hozzá, amelyekhez a saját engedélyei nem nyújtanak hozzáférést. 
+- Csak olyan engedélyeket kérjen, amelyekre szüksége van az alkalmazásának. A túl sok engedéllyel rendelkező alkalmazások biztonságának sérülése esetén nagy a felhasználói adatok felfedésének kockázata.
+- Az alkalmazása által támogatott forgatókönyv alapján választhat a delegált engedélyek és az alkalmazásengedélyek között. 
+    - Ha a hívást egy felhasználó nevében végzi el, mindig delegált engedélyeket használjon.
+    - Csak akkor használjon alkalmazásengedélyeket, ha az alkalmazás nem interaktív, és nem végez hívásokat egy konkrét felhasználó nevében. Az alkalmazásengedélyek kiemelt jogosultságokkal rendelkeznek, alkalmazásuk csak akkor ajánlott, ha feltétlenül szükséges.
+- Ha v2.0-végponton alapuló alkalmazást használ, mindig úgy állítsa be a statikus engedélyeket (amelyek az alkalmazásregisztrációban vannak megadva), hogy azok legyenek a futásidőben kért dinamikus engedélyek (amelyek a kódban vannak megadva, és lekérdezési paraméterként lesznek továbbküldve az engedélyezési kérelemben) kibővítései, hogy az olyan forgatókönyvek, mint a rendszergazdai jóváhagyás, megfelelően működhessenek.
+
+### <a name="resourceapi-best-practices"></a>Erőforrás/API – ajánlott eljárások
+
+- Az API-kat elérhetővé tévő erőforrásoknak az általuk védett adatokra vagy műveletekre jellemző engedélyeket kell meghatározniuk. Az ajánlott eljárás követésével biztosítható, hogy az ügyfelek ne számukra felesleges adatok hozzáférésére szóló engedélyeket kapjanak, és hogy a felhasználók jól ismerjék, milyen adatok hozzáférését hagyják jóvá.
+- Az erőforrásoknak külön kell meghatározniuk a `Read` és a `ReadWrite` engedélyeket.
+- Az erőforrásoknak `Admin` engedélyekként kell jelölniük az összes olyan engedélyt, amelyek felhasználói határokon keresztül engedélyezik az adatok hozzáférését.
+- Az erőforrásoknak követniük kell a `Subject.Permission[.Modifier]` elnevezési mintát, ahol:
+    - a `Subject` az elérhető adatok típusát jelöli,
+    - a `Permission` a felhasználók által az adatokon végezhető műveletet jelöli, 
+    - a nem kötelező `Modifier` pedig egy másik engedély specializációit írja le. 
+    
+    Például: 
+    * Mail.Read – Lehetővé teszi, hogy a felhasználók elolvassák a leveleket.
+    * Mail.ReadWrite – Lehetővé teszi, hogy a felhasználók elolvassák a leveleket és leveleket írjanak.
+    * Mail.ReadWrite.All – Lehetővé teszi, hogy egy rendszergazda vagy felhasználó elérje a cégben lévő összes levelet.
+
 
 
 

@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 06/08/2018
 ms.author: dekapur
 ms.custom: mvc
-ms.openlocfilehash: 035deabd04b8b838e0009f2cae96b0761733897f
-ms.sourcegitcommit: 50f82f7682447245bebb229494591eb822a62038
+ms.openlocfilehash: f839b05a1d97ce78601697469c982839358d6b06
+ms.sourcegitcommit: ea5193f0729e85e2ddb11bb6d4516958510fd14c
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35248241"
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36300856"
 ---
 # <a name="tutorial-monitor-windows-containers-on-service-fabric-using-log-analytics"></a>Oktatóanyag: A Service Fabricen található Windows-tárolók monitorozása a Log Analytics használatával
 
@@ -31,7 +31,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 > [!div class="checklist"]
 > * Log Analytics konfigurálása a Service Fabric-fürthöz
 > * Log Analytics-munkaterület használata a tárolók és csomópontok naplóinak megtekintéséhez és lekérdezéséhez
-> * Az OMS-ügynök konfigurálása tároló- és csomópontmetrikák felvételéhez
+> * A Log Analytics-ügynök konfigurálása tároló- és csomópontmetrikák felvételéhez
 
 ## <a name="prerequisites"></a>Előfeltételek
 Az oktatóanyag elkezdése előtt:
@@ -81,7 +81,7 @@ Hajtsa végre a következő módosításokat a *template.json* fájlban:
     "omsSolution": "ServiceFabric"
     ```
 
-3. Adja hozzá az OMS Microsoft Monitoring Agentet virtuálisgép-bővítményként. Virtuálisgép-méretezési csoportok erőforrásainak keresése: *resources* > *"apiVersion": "[variables('vmssApiVersion')]"*. A *properties* > *virtualMachineProfile* > *extensionProfile* > *extensions* szakaszban adja hozzá a következő bővítményleírást a *ServiceFabricNode* bővítmény alatt: 
+3. Adja hozzá a Microsoft Monitoring Agentet virtuálisgép-bővítményként. Virtuálisgép-méretezési csoportok erőforrásainak keresése: *resources* > *"apiVersion": "[variables('vmssApiVersion')]"*. A *properties* > *virtualMachineProfile* > *extensionProfile* > *extensions* szakaszban adja hozzá a következő bővítményleírást a *ServiceFabricNode* bővítmény alatt: 
     
     ```json
     {
@@ -181,7 +181,7 @@ Hajtsa végre a következő módosításokat a *template.json* fájlban:
     },
     ```
 
-Hivatkozási célból [itt](https://github.com/ChackDan/Service-Fabric/blob/master/ARM%20Templates/Tutorial/azuredeploy.json) található egy (az oktatóanyag első részében használt) mintasablon, amely tartalmazza ezeket a módosításokat. Ezek a módosítások egy Log Analytics-munkaterületet adnak hozzá az erőforráscsoporthoz. A munkaterület úgy lesz konfigurálva, hogy felvegye a Service Fabric-platform eseményeit azon tárolótáblákból, amelyek a [Windows Azure Diagnostics](service-fabric-diagnostics-event-aggregation-wad.md)-ügynökkel lettek konfigurálva. Az OMS-ügynök (Microsoft Monitoring Agent) szintén hozzá lett adva a fürt minden csomópontjához virtuálisgép-bővítményként – ez azt jelenti, hogy a fürt méretezése közben az ügynököt minden számítógépen automatikusan konfigurálja és ugyanahhoz a munkaterülethez csatolja a rendszer.
+Hivatkozási célból [itt](https://github.com/ChackDan/Service-Fabric/blob/master/ARM%20Templates/Tutorial/azuredeploy.json) található egy (az oktatóanyag első részében használt) mintasablon, amely tartalmazza ezeket a módosításokat. Ezek a módosítások egy Log Analytics-munkaterületet adnak hozzá az erőforráscsoporthoz. A munkaterület úgy lesz konfigurálva, hogy felvegye a Service Fabric-platform eseményeit azon tárolótáblákból, amelyek a [Windows Azure Diagnostics](service-fabric-diagnostics-event-aggregation-wad.md)-ügynökkel lettek konfigurálva. A Log Analytics-ügynök (Microsoft Monitoring Agent) szintén hozzá lett adva a fürt minden csomópontjához virtuálisgép-bővítményként – ez azt jelenti, hogy a fürt méretezése közben az ügynököt minden számítógépen automatikusan konfigurálja és ugyanahhoz a munkaterülethez csatolja a rendszer.
 
 Helyezze üzembe a sablont az új módosításokkal az aktuális fürt frissítéséhez. Miután a művelet befejeződött, a Log Analytics-erőforrásoknak megjelennek az erőforráscsoportban. Amint a fürt kész, helyezze rajta üzembe a tárolóba helyezett alkalmazást. A következő lépésben a tárolók monitorozását állítjuk be.
 
@@ -191,7 +191,7 @@ A tárolómegoldások beállításához a munkaterületen keresse meg a *Tárol�
 
 ![Tárolómegoldások hozzáadása](./media/service-fabric-tutorial-monitoring-wincontainers/containers-solution.png)
 
-Ha a rendszer kéri a *Log Analytics-munkaterületet*, válassza ki az erőforráscsoportban létrehozott munkaterületet, majd kattintson a **Létrehozás** parancsra. Ezzel hozzáad egy *tárolómonitorozási megoldást* a munkaterülethez, ami miatt a sablon által üzembe helyezett OMS-ügynök automatikusan elkezdi Docker-naplók és -statisztikák gyűjtését. 
+Ha a rendszer kéri a *Log Analytics-munkaterületet*, válassza ki az erőforráscsoportban létrehozott munkaterületet, majd kattintson a **Létrehozás** parancsra. Ezzel hozzáad egy *tárolómonitorozási megoldást* a munkaterülethez, ami miatt a sablon által üzembe helyezett Log Analytics-ügynök automatikusan elkezdi Docker-naplók és -statisztikák gyűjtését. 
 
 Lépjen vissza az *erőforráscsoporthoz*, ahol meg kell jelennie az újonnan hozzáadott monitorozási megoldásnak. Ha a megoldásra kattint, a kezdőlapon meg kell jelennie, hogy hány tárolórendszerképet futtat. 
 
@@ -211,11 +211,11 @@ Ha az ablaktáblák közül bármelyikre rákattint, A rendszer átirányítja a
 
 ![Tároló lekérdezése](./media/service-fabric-tutorial-monitoring-wincontainers/query-sample.png)
 
-## <a name="configure-oms-agent-to-pick-up-performance-counters"></a>Az OMS-ügynök konfigurálása teljesítményszámlálók felvételéhez
+## <a name="configure-log-analytics-agent-to-pick-up-performance-counters"></a>A Log Analytics-ügynök konfigurálása teljesítményszámlálók felvételéhez
 
-Az OMS-ügynök használatának egy másik előnye, hogy anélkül módosíthatók az OMS felhasználói élményén keresztül a felvenni kívánt teljesítményszámlálók, hogy konfigurálni kellene az Azure Diagnostics-ügynököt, és minden alkalommal Resource Manager-sablonalapú frissítést kellene elvégeznie. Ehhez a tárolómonitorozási (vagy Service Fabric-) megoldás kezdőlapján kattintson az **OMS-munkaterület** lehetőségre.
+A Log Analytics-ügynök használatának egy másik előnye, hogy anélkül módosíthatók a Log Analytics felhasználói élményén keresztül a felvenni kívánt teljesítményszámlálók, hogy konfigurálni kellene az Azure Diagnostics-ügynököt, és minden alkalommal Resource Manager-sablonalapú frissítést kellene elvégeznie. Ehhez a tárolómonitorozási (vagy Service Fabric-) megoldás kezdőlapján kattintson az **OMS-munkaterület** lehetőségre.
 
-Ekkor megnyílik a munkaterület, ahol megtekintheti a megoldásokat, létrehozhat egyéni irányítópultokat, és konfigurálhatja az OMS-ügynököt. 
+Ekkor megnyílik a Log Analytics-munkaterület, ahol megtekintheti a megoldásokat, létrehozhat egyéni irányítópultokat, és konfigurálhatja a Log Analytics-ügynököt. 
 * Kattintson a **Speciális beállítások** elemre a Speciális beállítások menü megnyitásához.
 * Kattintson a **Csatlakoztatott források** > **Windows-kiszolgálók** elemre annak ellenőrzéséhez, hogy *5 Windows rendszerű számítógép van-e csatlakoztatva*.
 * Kattintson az **Adatok** > **Windows-teljesítményszámlálók** elemre a teljesítményszámlálók kereséséhez és új teljesítményszámlálók hozzáadásához. Itt megjelenik a Log Analytics gyűjthető teljesítményszámlálókra vonatkozó javaslatainak listája, valamint az egyéb számlálók keresésének lehetősége. Ellenőrizze, hogy **Processzor(_Total)\% A processzor kihasználtsága** és a **Memória(*)\Rendelkezésre álló memória (megabájt)** számlálók össze vannak-e gyűjtve.

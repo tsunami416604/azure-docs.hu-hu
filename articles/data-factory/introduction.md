@@ -13,17 +13,17 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 01/11/2018
 ms.author: shlo
-ms.openlocfilehash: 89f5391cfbfd85f9f0715a8c7d288cc3981cc618
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: ae0247df0bbde07e755bd910bca08b8703969cec
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2018
-ms.locfileid: "30237005"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37047275"
 ---
 # <a name="introduction-to-azure-data-factory"></a>Az Azure Data Factory bemutatása 
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [1. verzió – Általánosan elérhető](v1/data-factory-introduction.md)
-> * [2. verzió – Előzetes verzió](introduction.md)
+> * [1-es verzió](v1/data-factory-introduction.md)
+> * [Aktuális verzió](introduction.md)
 
 A big data világában a nyers, rendezetlen adatok tárolása leggyakrabban relációs, nem relációs vagy egyéb tárolórendszerekben történik. A nyers adatok önmagukban azonban nem biztosítanak megfelelő környezetet, sem értelmezhető elemzési lehetőségeket az elemzők, adatelemzők vagy üzleti döntéshozók számára. 
 
@@ -40,9 +40,6 @@ Az Azure Data Factory az a platform, amely az ilyen adatforgatókönyvek esetéb
 továbbá a kimeneti adatok közzétehetők olyan adattárakban, mint az Azure SQL Data Warehouse, ahonnan az üzleti intelligenciára épülő (BI-) alkalmazások felhasználhatják őket. Végső soron az Azure Data Factory segítségével a nyers adatokat használható adattárakba rendezhetjük, így jobb üzleti döntéseket hozhatunk.
 
 ![A Data Factory felső szintű nézete](media/introduction/big-picture.png)
-
-> [!NOTE]
-> Ez a cikk a Data Factory 2. verziójára vonatkozik, amely jelenleg előzetes verzióban érhető el. Ha a Data Factory szolgáltatás általánosan elérhető 1. verzióját használja, lásd: [Bevezetés a Data Factory 1. verziójának használatába](v1/data-factory-introduction.md).
 
 ## <a name="how-does-it-work"></a>Hogyan működik?
 Az egyes folyamatok (adatvezérelt munkafolyamatok) az Azure Data Factoryben általában a következő négy lépést hajtják végre:
@@ -83,7 +80,7 @@ Egy folyamatban a tevékenységek a feldolgozási lépéseket jelentik. A másol
 Az adatkészletek adatstruktúrákat jelölnek az adattárakon belül, amelyek egyszerűen rámutatnak vagy meghivatkozzák az adatokat, amelyeket a tevékenységekben be- vagy kimenetként használni szeretne. 
 
 ### <a name="linked-services"></a>Társított szolgáltatások
-A társított szolgáltatások nagyon hasonlóak a kapcsolati karakterláncokhoz, amelyek meghatározzák azokat a kapcsolati információkat, amelyeket a Data Factory a külső erőforrásokhoz történő csatlakozáshoz igényel. Tulajdonképpen a társított szolgáltatás határozza meg az adatforrással való kapcsolatot, míg az adatkészlet jelöli az adatok struktúráját. Az Azure Storage társított szolgáltatása például kapcsolati karakterláncot szolgáltat az Azure Storage-fiókhoz való csatlakozáshoz. Az Azure Blob-adatkészlet pedig meghatározza a blobtárolót és az adatokat tartalmazó mappát.
+A társított szolgáltatások nagyon hasonlóak a kapcsolati sztringekhoz, amelyek meghatározzák azokat a kapcsolati információkat, amelyeket a Data Factory a külső erőforrásokhoz történő csatlakozáshoz igényel. Tulajdonképpen a társított szolgáltatás határozza meg az adatforrással való kapcsolatot, míg az adatkészlet jelöli az adatok struktúráját. Az Azure Storage társított szolgáltatása például kapcsolati sztringet szolgáltat az Azure Storage-fiókhoz való csatlakozáshoz. Az Azure Blob-adatkészlet pedig meghatározza a blobtárolót és az adatokat tartalmazó mappát.
 
 A társított szolgáltatásokat két célból használjuk a Data Factoryban:
 
@@ -92,7 +89,7 @@ A társított szolgáltatásokat két célból használjuk a Data Factoryban:
 - Olyan **számítási erőforrás** jelölésére, amelyen végrehajtható a tevékenység. A HDInsightHive-tevékenység végrehajtása például egy HDInsight Hadoop-fürtön történik. Az átalakítási tevékenységek és a támogatott számítási környezetek listáját lásd az [adatok átalakítása](transform-data.md) cikkben.
 
 ### <a name="triggers"></a>Eseményindítók
-Az eseményindítók olyan feldolgozási egységek, amelyek meghatározzák, hogy mikor kezdődjön egy folyamat végrehajtása. A különböző típusú eseményekhez eltérő típusú eseményindítók tartoznak. Az előzetes verzióban a Data Factory az időpont-alapú ütemező eseményindítót támogatja. 
+Az eseményindítók olyan feldolgozási egységek, amelyek meghatározzák, hogy mikor kezdődjön egy folyamat végrehajtása. A különböző típusú eseményekhez eltérő típusú eseményindítók tartoznak.
 
 ### <a name="pipeline-runs"></a>Folyamatfuttatások
 A folyamatfuttatások a folyamat-végrehajtás egy-egy példányát jelentik. A folyamatfuttatások példányosítása jellemzően az argumentumoknak a folyamatokban meghatározott paraméterekhez történő továbbításával történik. Az argumentumok továbbítása történhet manuálisan vagy az eseményindító meghatározásán keresztül is.
@@ -124,8 +121,8 @@ Bár a Data Factory csak az USA keleti régiójában, az USA 2. keleti régiój�
 
 Tegyük fel például, hogy számítási környezetei, mint például az Azure HDInsight-fürt és az Azure Machine Learning a nyugat-európai régión kívül futnak. Létrehozhat egy Azure Data Factory-példányt az USA keleti vagy 2. keleti régiójában, és felhasználhatja a Nyugat-Európában lévő számítási környezetein futtatott feladatok ütemezéséhez. A Data Factory néhány ezredmásodperc alatt aktiválja a feladatot a számítási környezetben, a feladatnak a számítási környezetben való futtatásához szükséges idő viszont nem változik.
 
-## <a name="compare-with-version-2"></a>Összehasonlítás a 2-es verzióval
-A Data Factory szolgáltatás 1-es és a 2-es verziója közti különbségek listája: [Összehasonlítás az 1-es verzióval](compare-versions.md). 
+## <a name="compare-with-version-1"></a>Összehasonlítás az 1-es verzióval
+A Data Factory szolgáltatás 1-es verziója és aktuális verziója közötti különbségek listájáért lásd: [Összehasonlítás az 1-es verzióval](compare-versions.md). 
 
 ## <a name="next-steps"></a>További lépések
 Bevezetés a Data Factory-folyamatok létrehozásába az alábbi eszközök/SDK-k valamelyikével: 

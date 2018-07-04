@@ -9,12 +9,12 @@ ms.topic: overview
 ms.date: 06/13/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 4b2294d7816a92dccb14caaadc09a2797edeafe6
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: fdff52a1fa34fa2033db19690d20a1c2f417e646
+ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36237437"
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36307791"
 ---
 # <a name="azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS)
 
@@ -104,7 +104,7 @@ Az Azure Kubernetes Service (AKS) CNCF-tanúsítvánnyal rendelkezik, mivel megf
 
 ## <a name="regulatory-compliance"></a>Előírásoknak való megfelelés
 
-Az Azure Kubernetes Service (AKS) az SOC és az ISO/HIPPA/HITRUST szabványoknak is megfelel.
+Az Azure Kubernetes Service (AKS) az SOC és az ISO/HIPAA/HITRUST szabványoknak is megfelel.
 
 ## <a name="next-steps"></a>További lépések
 

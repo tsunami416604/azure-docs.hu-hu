@@ -10,12 +10,12 @@ ms.author: ghogen
 ms.date: 05/11/2018
 ms.topic: include
 manager: douge
-ms.openlocfilehash: 41418cb908f2bf149a3d0087728652b44cd6b19e
-ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
+ms.openlocfilehash: 2a6118bd23c6e8319ad4fa26a266948a4dad1b9f
+ms.sourcegitcommit: 828d8ef0ec47767d251355c2002ade13d1c162af
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34825531"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36939156"
 ---
 Eddig úgy futtatta alkalmazása kódját, mintha csak Ön dolgozna fejlesztőként az alkalmazáson. Ebben a szakaszban megismerheti, hogyan teszi zökkenőmentessé az Azure Dev Spaces a csapatban végzett fejlesztést:
 * Lehetővé teszi, hogy egy fejlesztőcsapat ugyanabban a környezetben dolgozhasson. Ez lehet egy megosztott Dev Spaces-tér, vagy igény szerint több különálló Dev Spaces-tér.
@@ -56,13 +56,15 @@ webfrontend  default  webfrontend-0.1.0  80/TCP  1m ago     http://webfrontend-c
 
 A Tér oszlop azt mutatja, hogy a szolgáltatások a `default` nevű térben futnak. Bárki, aki megnyitja a nyilvános URL-címet, és felkeresi a webalkalmazást, meghívja az Ön által korábban megírt kódútvonalat, amely mindkét szolgáltatást futtatja. Tegyük fel, hogy folytatni szeretné a `mywebapi` fejlesztését. Hogyan módosíthatja a kódokat, és tesztelheti őket úgy, hogy nem akadályozza a fejlesztői környezetet használó többi fejlesztőt? Ehhez be kell állítania a saját terét.
 
-### <a name="create-a-space"></a>Tér létrehozása
+### <a name="create-a-dev-space"></a>Dev Spaces-tér létrehozása
 Ha a `mywebapi` saját verzióját nem a `default` térben szeretné futtatni, létrehozhat egy saját teret a következő paranccsal:
 
 ``` 
-azds space create --name scott
+azds space select --name scott
 ```
+
+Amikor a rendszer kéri, válassza a `default` elemet a **szülő Dev Spaces-térként**. Ez azt jelenti, hogy az új tér, a `default/scott`, a `default` térből lesz származtatva. Hamarosan kiderül, hogyan segít ez a tesztelésben. 
 
 A fenti példában a saját nevemet használtam az új térhez, így a munkatársaim is könnyen be tudják azonosítani, hogy ebben a térben dolgozom, de bárhogyan elnevezheti, és rugalmasan kezelheti a név jelentését (lehet például „sprint4” vagy „demo”).
 
-Futtassa az `azds space list` parancsot a fejlesztői környezetben lévő terek listájának megtekintéséhez. A jelenleg kiválasztott tér mellett egy csillag (*) jelenik meg. Az Ön esetében a rendszer automatikusan kiválasztotta a „scott” nevű teret, amikor létrejött. Az `azds space select` paranccsal bármikor kiválaszthat egy másik teret.
+Futtassa az `azds space list` parancsot a fejlesztői környezetben lévő terek listájának megtekintéséhez. A jelenleg kiválasztott tér mellett egy csillag (*) jelenik meg. Az Ön esetében a rendszer automatikusan kiválasztotta az alapértelmezett/scott nevű teret, amikor létrejött. Az `azds space select` paranccsal bármikor kiválaszthat egy másik teret.

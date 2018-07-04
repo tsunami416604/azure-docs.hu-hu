@@ -1,5 +1,5 @@
 ---
-title: Többtárolós (előzetes verzió) alkalmazás létrehozása az Azure Web App for Containers szolgáltatással
+title: Többtárolós (előzetes verziójú) alkalmazás létrehozása a Web App for Containersben
 description: Megtudhatja, hogyan használhat több tárolót az Azure-ban Docker Compose és Kubernetes konfigurációs fájlokkal, egy WordPress- és MySQL-alkalmazással.
 keywords: azure app service, webalkalmazás, linux, docker, összeállítás, többtárolós, tároló, kubernetes
 services: app-service
@@ -15,14 +15,14 @@ ms.topic: tutorial
 ms.date: 05/02/2018
 ms.author: msangapu
 ms.custom: mvc
-ms.openlocfilehash: 61158af0bc978665c3d914c8de3376b8f5d5c69f
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 43a3fa271a1958c99bd3dd597c73de2d77bb1bfd
+ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34651381"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36751914"
 ---
-# <a name="tutorial-create-a-multi-container-preview-app-in-web-app-for-containers"></a>Oktatóanyag: Többtárolós (előzetes verzió) alkalmazás létrehozása a Web App for Containersben
+# <a name="tutorial-create-a-multicontainer-preview-app-in-web-app-for-containers"></a>Oktatóanyag: Többtárolós (előzetes verziójú) alkalmazás létrehozása a Web App for Containersben
 
 A [Web App for Containers](app-service-linux-intro.md) segítségével rugalmasan használhatók a Docker-rendszerképek. Ezen oktatóanyagból megtudhatja, hogyan hozhat létre egy többtárolós alkalmazást a WordPress és a MySQL használatával.
 
@@ -172,7 +172,7 @@ A webalkalmazás létrehozása után az Azure CLI az alábbi példához hasonló
 
 Keresse meg az üzembe helyezett alkalmazást a következő helyen: `http://<app_name>.azurewebsites.net`. Az alkalmazás betöltése eltarthat néhány percig. Ha hibaüzenet jelenik meg, várjon néhány percet, majd frissítse a böngészőt. Ha problémába ütközik, és hibakeresést szeretne végezni, tekintse át a[tárolónaplókat](#find-docker-container-logs).
 
-![Minta többtárolós alkalmazás a Web Apps for Containersben][1]
+![Minta többtárolós alkalmazás a Web App for Containers szolgáltatásban][1]
 
 **Gratulálunk!** Létrehozott egy többtárolós alkalmazást a Web App for Containersben. A következő lépésben konfigurálja az alkalmazást az Azure Database for MySQL használatára. Egyelőre még ne telepítse a WordPresst.
 
@@ -332,11 +332,11 @@ A webalkalmazás újrakonfigurálása után az Azure CLI az alábbi példához h
 
 Keresse meg az üzembe helyezett alkalmazást a következő helyen: `http://<app_name>.azurewebsites.net`. Az alkalmazás mostantól az Azure Database for MySQL-t használja.
 
-![Minta többtárolós alkalmazás a Web Apps for Containersben][1]
+![Minta többtárolós alkalmazás a Web App for Containers szolgáltatásban][1]
 
 ## <a name="add-persistent-storage"></a>Állandó tároló hozzáadása
 
-A többtárolós alkalmazás mostantól a Web App for Containersben fut. Azonban ha most telepíti a WordPresst, majd később újraindítja az alkalmazást, azzal fog szembesülni, hogy a WordPress-telepítés eltűnt. Ennek az az oka, hogy a Docker Compose konfigurációja jelenleg egy, a tárolón belüli tárhelyre mutat. A tárolóba telepített fájlok nem maradnak meg az alkalmazás újraindítását követően. Ebben a szakaszban egy állandó tárolót adhat hozzá a WordPress-tárolóhoz.
+A többtárolós alkalmazás mostantól fut a Web App for Containersben. Azonban ha most telepíti a WordPresst, majd később újraindítja az alkalmazást, azzal fog szembesülni, hogy a WordPress-telepítés eltűnt. Ennek az az oka, hogy a Docker Compose konfigurációja jelenleg egy, a tárolón belüli tárhelyre mutat. A tárolóba telepített fájlok nem maradnak meg az alkalmazás újraindítását követően. Ebben a szakaszban egy állandó tárolót adhat hozzá a WordPress-tárolóhoz.
 
 ### <a name="configure-environment-variables"></a>Környezeti változók konfigurálása
 
@@ -511,7 +511,7 @@ A WordPress csatlakozik a Redis-kiszolgálóhoz. A kapcsolat **állapota** ugyan
 
 Ez a szakasz azt ismerteti, hogyan helyezhető üzembe több tároló egy Kubernetes-konfiguráció használatával. Ehhez először el kell végeznie a korábbi lépéseket egy [erőforráscsoport](#create-a-resource-group) és egy [App Service-csomag](#create-an-azure-app-service-plan) létrehozásához. Mivel a legtöbb lépés nagyon hasonlít a Compose szakasz lépéseihez, a két útmutató egy kombinált konfigurációs fájlt használ.
 
-### <a name="supported-kubernetes-options-for-multi-container"></a>Supported Kubernetes options for multi-container
+### <a name="supported-kubernetes-options-for-multicontainer"></a>Támogatott Kubernetes-beállítások többtárolós konfigurációhoz
 
 * args
 * command
@@ -627,7 +627,7 @@ Az alkalmazásbeállítás létrehozása után az Azure CLI az alábbi példáho
 
 ### <a name="add-persistent-storage"></a>Állandó tároló hozzáadása
 
-A többtárolós alkalmazás mostantól a Web App for Containersben fut. Az adatok az újraindításkor automatikusan törlődnek, mivel a fájlok nem állandóak. Ebben a szakaszban egy állandó tárolót adhat hozzá a WordPress-tárolóhoz.
+A többtárolós alkalmazás mostantól fut a Web App for Containersben. Az adatok az újraindításkor automatikusan törlődnek, mivel a fájlok nem állandóak. Ebben a szakaszban egy állandó tárolót adhat hozzá a WordPress-tárolóhoz.
 
 ### <a name="configure-environment-variables"></a>Környezeti változók konfigurálása
 
@@ -649,7 +649,7 @@ Az alkalmazásbeállítás létrehozása után az Azure CLI az alábbi példáho
 ]
 ```
 
-### <a name="create-a-multi-container-app-kubernetes"></a>Többtárolós alkalmazás létrehozása (Kubernetes)
+### <a name="create-a-multicontainer-app-kubernetes"></a>Többtárolós alkalmazás (Kubernetes) létrehozása
 
 A helyi parancssori terminálon hozzon létre egy többtárolós [webalkalmazást](app-service-linux-intro.md) a `myResourceGroup` erőforráscsoportban és a `myAppServicePlan` App Service-csomagban az [az webapp create](/cli/azure/webapp?view=azure-cli-latest#az_webapp_create) paranccsal. Ne felejtse el kicserélni az _\<app_name>_ nevet egy egyedi alkalmazásnévre.
 
@@ -679,7 +679,7 @@ Keresse meg az üzembe helyezett alkalmazást a következő helyen: `http://<app
 
 Az alkalmazás mostantól több tárolót futtat a Web App for Containersben.
 
-![Minta többtárolós alkalmazás a Web Apps for Containersben][1]
+![Minta többtárolós alkalmazás a Web App for Containers szolgáltatásban][1]
 
 **Gratulálunk!** Létrehozott egy többtárolós alkalmazást a Web App for Containersben.
 

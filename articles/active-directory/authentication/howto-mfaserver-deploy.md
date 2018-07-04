@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: richagi
-ms.openlocfilehash: bd1b0f21162978496750886d32e7166c3a90922d
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: 130e9956702515574da47dc872b03598ca19ff29
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2018
-ms.locfileid: "33868296"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37031684"
 ---
 # <a name="getting-started-with-the-azure-multi-factor-authentication-server"></a>Azure Multi-Factor Authentication-kiszolgáló – első lépések
 
@@ -103,8 +103,8 @@ Most, hogy letöltötte a kiszolgálót, telepítse és konfigurálja azt. Győz
 
 1. Kattintson duplán a végrehajtható fájlra.
 2. A Telepítési mappa kijelölése képernyőn győződjön meg arról, hogy megfelelő mappát választott ki, és kattintson a **Tovább** gombra.
-3. A telepítés befejezése után kattintson a **Befejezés** gombra.  Ekkor elindul a konfigurációs varázsló.
-4. A konfigurációs varázsló üdvözlőképernyőjén jelölje be **A hitelesítéskonfiguráló varázsló használatának kihagyása** jelölőnégyzetet, és kattintson a **Tovább** gombra.  Bezáródik a varázsló, és elindul a kiszolgáló.
+3. A telepítés befejezése után kattintson a **Befejezés** gombra. Ekkor elindul a konfigurációs varázsló.
+4. A konfigurációs varázsló üdvözlőképernyőjén jelölje be **A hitelesítéskonfiguráló varázsló használatának kihagyása** jelölőnégyzetet, és kattintson a **Tovább** gombra. Bezáródik a varázsló, és elindul a kiszolgáló.
 
    ![Felhő](./media/howto-mfaserver-deploy/skip2.png)
 
@@ -116,7 +116,7 @@ A bevezetés megkönnyítése érdekében engedélyezze, hogy az MFA-kiszolgál�
 
 Az elküldött e-mail tartalmát az határozza meg, hogyan konfigurálja a felhasználókat a kétlépéses ellenőrzéshez. Ha például tud telefonszámokat importálni a vállalat címtárából, az e-mailnek tartalmaznia kell az alapértelmezett telefonszámokat, így a felhasználók tudni fogják, hogy mire számítsanak. Ha nem importál telefonszámokat, vagy ha a felhasználói a mobilalkalmazást fogják használni, olyan e-mailt küldjön a felhasználóknak, amely a fiók regisztrációjának befejezésére kéri őket. Az e-mail tartalmazzon egy hivatkozást az Azure Multi-Factor Authentication felhasználói portáljára.
 
-Az e-mail tartalma a felhasználóhoz beállított ellenőrzési módszertől is függ (telefonhívás, SMS vagy mobilalkalmazás).  Ha például a felhasználónak PIN-kódot kell használnia a hitelesítéskor, az e-mail tartalmazza a kezdeti PIN-kódot.  A felhasználóknak általában az első ellenőrzéskor módosítaniuk kell a PIN-kódot.
+Az e-mail tartalma a felhasználóhoz beállított ellenőrzési módszertől is függ (telefonhívás, SMS vagy mobilalkalmazás). Ha például a felhasználónak PIN-kódot kell használnia a hitelesítéskor, az e-mail tartalmazza a kezdeti PIN-kódot. A felhasználóknak általában az első ellenőrzéskor módosítaniuk kell a PIN-kódot.
 
 ### <a name="configure-email-and-email-templates"></a>E-mailek és e-mail-sablonok konfigurálása
 
@@ -136,8 +136,8 @@ A kiszolgáló telepítése után a felhasználók hozzáadása következik. Lé
 
 1. Az Azure MFA-kiszolgálón a bal oldalon válassza a **Felhasználók** elemet.
 2. Alul válassza az **Importálás Active Directoryból** lehetőséget.
-3. Most kereshet egyes felhasználókat vagy kereshet az AD címtárban felhasználókat tartalmazó szervezeti egységeket.  Ebben az esetben meg kell adni a felhasználók szervezeti egységét.
-4. Jelölje ki az összes felhasználót a jobb oldalon, és kattintson az **Importálás** gombra.  Megjelenik egy előugró ablak, amely a művelet sikerességéről értesít.  Zárja be az importálási ablakot.
+3. Most kereshet egyes felhasználókat vagy kereshet az AD címtárban felhasználókat tartalmazó szervezeti egységeket. Ebben az esetben meg kell adni a felhasználók szervezeti egységét.
+4. Jelölje ki az összes felhasználót a jobb oldalon, és kattintson az **Importálás** gombra. Megjelenik egy előugró ablak, amely a művelet sikerességéről értesít. Zárja be az importálási ablakot.
 
    ![MFA-kiszolgáló – Felhasználók importálása](./media/howto-mfaserver-deploy/import2.png)
 
@@ -181,6 +181,10 @@ Ha visszaállításra lenne szükség, a következő lépésekkel hajthatja vég
 5. Indítsa el a **MultiFactorAuth** szolgáltatást.
 
 Az új kiszolgáló ezzel használatra kész az eredeti biztonsági másolatban található konfigurációval és felhasználói adatokkal.
+
+## <a name="managing-the-tlsssl-protocols-and-cipher-suites"></a>A TLS/SSL-protokollok és titkosítócsomagok kezelése
+
+Miután az MFA Server 8.x vagy újabb változatára frissített, érdemes eltávolítani minden régebbi vagy gyengébb titkosítócsomagot, hacsak vállalata nem követeli meg azok használatát. A tennivalókat az [AD FS által használt SSL/TLS-protokollok és titkosítócsomagok kezelését](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/manage-ssl-protocols-in-ad-fs) ismertető rész tartalmazza.
 
 ## <a name="next-steps"></a>További lépések
 
