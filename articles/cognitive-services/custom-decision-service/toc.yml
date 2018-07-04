@@ -31,6 +31,8 @@
       href: custom-decision-service-log-downloader-reference.md
 - name: További források
   items:
+    - name: Régiónkénti rendelkezésre állás
+      href: 'https://azure.microsoft.com/en-us/global-infrastructure/services/'
     - name: Díjszabás (ingyenes)
       href: 'https://azure.microsoft.com/en-us/pricing/details/cognitive-services/custom-decision-service/'
     - name: UserVoice

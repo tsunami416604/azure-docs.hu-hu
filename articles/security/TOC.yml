@@ -215,6 +215,16 @@
           href: ./blueprints/pci-dss-requirement-11-testing.md
         - name: 12. követelmény – szabályzat
           href: ./blueprints/pci-dss-requirement-12-policy.md
+    - name: Az Egyesült Királyság Nemzeti Egészségügyi Szolgálata
+      items:
+        - name: Adatelemzés
+          href: ./blueprints/uknhs-analytics-overview.md
+        - name: Adattárház
+          href: ./blueprints/uknhs-datawarehouse-overview.md
+        - name: IaaS-webalkalmazás
+          href: ./blueprints/uknhs-iaaswa-overview.md
+        - name: PaaS webalkalmazás
+          href: ./blueprints/uknhs-paaswa-overview.md
     - name: UK-OFFICIAL
       href: ./blueprints/uk-official-three-tier-applications-overview.md
       items:

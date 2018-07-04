@@ -157,15 +157,17 @@
           href: return-n-best-translations.md
 - name: További források
   items:
-    - name: GYIK
-      href: 'https://www.microsoft.com/translator/faq.aspx'
-    - name: Díjszabás
-      href: 'https://azure.microsoft.com/pricing/details/cognitive-services/translator-text-api/'
-    - name: UserVoice
-      href: 'https://cognitive.uservoice.com/forums/558796-translator'
-    - name: Stack Overflow
-      href: 'https://stackoverflow.com/questions/tagged/microsoft-translator'
-    - name: Tudásbázis
-      href: 'https://cognitive.uservoice.com/knowledgebase/topics/132647-translator'
     - name: Kódminták a GitHubon
       href: 'https://aka.ms/TranslatorGitHub'
+    - name: GYIK
+      href: 'https://www.microsoft.com/translator/faq.aspx'
+    - name: Tudásbázis
+      href: 'https://cognitive.uservoice.com/knowledgebase/topics/132647-translator'
+    - name: Díjszabás
+      href: 'https://azure.microsoft.com/pricing/details/cognitive-services/translator-text-api/'
+    - name: Régiónkénti rendelkezésre állás
+      href: 'https://azure.microsoft.com/global-infrastructure/services/'
+    - name: Stack Overflow
+      href: 'https://stackoverflow.com/questions/tagged/microsoft-translator'
+    - name: UserVoice
+      href: 'https://cognitive.uservoice.com/forums/558796-translator'

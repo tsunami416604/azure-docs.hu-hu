@@ -118,6 +118,8 @@
       href: glossary.md
 - name: További források
   items:
+    - name: Régiónkénti rendelkezésre állás
+      href: 'https://azure.microsoft.com/en-us/global-infrastructure/services/'
     - name: Azure-ütemterv
       href: 'https://azure.microsoft.com/roadmap/'
     - name: Díjszabás
