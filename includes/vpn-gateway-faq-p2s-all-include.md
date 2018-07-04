@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/04/2018
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: f18e94b6f788609dc5a0466e9d8ffa0c02056b1e
-ms.sourcegitcommit: 5821eef990c26fa045e4beacce39f6b02b83156b
+ms.openlocfilehash: 199998f193f375137d499913e9ce966f85ed863c
+ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/15/2018
-ms.locfileid: "35678055"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36753795"
 ---
 ### <a name="supportedclientos"></a>Milyen ügyfél operációs rendszereket használhatok pont–hely kapcsolatokhoz?
 
@@ -93,7 +93,7 @@ Ha SSTP-t és IKEv2-t is konfigurál vegyes (Windows és Mac eszközökből áll
 
 ### <a name="other-than-windows-and-mac-which-other-platforms-does-azure-support-for-p2s-vpn"></a>A Windows- és Mac-eszközökön kívül mely platformokhoz támogatja még az Azure a P2S VPN-t?
 
-Az Azure kizárólag Windows- és Mac-eszközökhöz támogatja a P2S VPN-t.
+Az Azure a Windows-, Mac- és Linux-eszközökhöz támogatja a P2S VPN-t.
 
 ### <a name="i-already-have-an-azure-vpn-gateway-deployed-can-i-enable-radius-andor-ikev2-vpn-on-it"></a>Már rendelkezem üzembe helyezett Azure VPN-átjáróval. Engedélyezhetem rajta a RADIUS-t és/vagy az IKEv2 VPN-t?
 
