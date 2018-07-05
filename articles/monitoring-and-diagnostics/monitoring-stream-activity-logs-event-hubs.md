@@ -1,6 +1,6 @@
 ---
-title: Az Event hubs Azure tevékenységnapló adatfolyam
-description: Útmutató az Azure tevékenységnapló Event hubs adatfolyamként történő küldéséhez.
+title: Az Event hubs Azure tevékenységnapló Stream
+description: Útmutató az Azure tevékenységnapló streamelése az Event hubs szolgáltatás.
 author: johnkemnetz
 services: azure-monitor
 ms.service: azure-monitor
@@ -8,65 +8,65 @@ ms.topic: conceptual
 ms.date: 03/02/2018
 ms.author: johnkem
 ms.component: activitylog
-ms.openlocfilehash: 1f1a131d4e0cf900d04acc9730b04e1375f396a6
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: 45352c1cf4aca9043c23bbe12e94ba770a38c01b
+ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35264299"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37436705"
 ---
-# <a name="stream-the-azure-activity-log-to-event-hubs"></a>Az Event hubs Azure tevékenységnapló adatfolyam
-Megtekintheti a [Azure tevékenységnapló](monitoring-overview-activity-logs.md) közel valós idejű bármely alkalmazás egyike:
+# <a name="stream-the-azure-activity-log-to-event-hubs"></a>Az Event hubs Azure tevékenységnapló Stream
+Streamelheti a [Azure-tevékenységnapló](monitoring-overview-activity-logs.md) közel valós időben által bármely alkalmazás:
 
 * A beépített használatával **exportálása** lehetőséget a portálon
-* Engedélyezi az Azure Service Bus szabály azonosítója az Azure PowerShell-parancsmagok segítségével napló-profilban vagy az Azure parancssori felület
+* Az Azure Service Bus szabály azonosítója az Azure PowerShell-parancsmagok használatával log-profilban vagy az Azure CLI-vel
 
 ## <a name="what-you-can-do-with-the-activity-log-and-event-hubs"></a>Mit tehet a tevékenységnapló és az Event Hubs
-Kétféleképpen lehet, hogy az adatfolyam-továbbítási funkció használata a műveletnapló:
+Az alábbiakban két módon használható a tevékenységnaplóban a streamelési funkciót:
 
-* **Külső naplózása és telemetriai rendszerek adatfolyamot**: adott idő alatt, az Azure Event Hubs streaming lesz a mechanizmust, amely a tevékenységnapló átadhatja a külső siem-ektől, valamint naplófájl-elemzési megoldásokat.
-* **Egy egyéni telemetriai adatokat, illetve a naplózási platform**: Ha már rendelkezik egy egyedi telemetriai platform vagy egy felépítése továbbléphetnek, a magas szinten méretezhető közzétételi-feliratkozási jellege Event Hubs lehetővé teszi, hogy a műveletnapló rugalmasan betöltési. További információkért lásd: [Dan Rosanova videó az Event Hubs egy globális méretű telemetriai platform használatával kapcsolatos](https://azure.microsoft.com/documentation/videos/build-2015-designing-and-sizing-a-global-scale-telemetry-platform-on-azure-event-Hubs/).
+* **Külső naplózás és a telemetriai rendszer Stream**: idővel az Azure Event Hubs streamelési a mechanizmus, amellyel a Tevékenységnaplót kanálu be külső siem-EK és a log analytics-megoldások válnak.
+* **Hozhat létre egy egyéni telemetriát és a naplózás platform**: Ha már rendelkezik egy személyre szabott telemetriai platform vagy szem előtt tartva létrehozására, rugalmasan skálázható közzétételi és előfizetési jellege az Event Hubs lehetővé teszi, hogy rugalmasan a tevékenységnaplóban. További információkért lásd: [Dan Rosanova videó, globális méretű telemetriai platform az Event Hubs használatával kapcsolatban](https://azure.microsoft.com/documentation/videos/build-2015-designing-and-sizing-a-global-scale-telemetry-platform-on-azure-event-Hubs/).
 
-## <a name="enable-streaming-of-the-activity-log"></a>A műveletnapló adatfolyamként
-A műveletnapló streaming vagy programozott módon, vagy a portálon keresztül is engedélyezheti. Mindkét módszer esetén, válasszon ki egy Event Hubs-névteret és a megosztott elérési házirendet a névtérhez. Az első új tevékenységnapló esemény bekövetkezésekor eseményközpontban insights-logs-operationallogs nevét, hogy a névtér jön létre. 
+## <a name="enable-streaming-of-the-activity-log"></a>A tevékenységnapló streamelésének engedélyezéséhez
+A tevékenységnapló streamelési programozás útján vagy a portálon keresztül is engedélyezheti. Mindkét esetben kiválasztjuk az Event Hubs-névtér és a egy megosztott elérési házirendet a névtér számára. Insights-logs-operationallogs nevet az eseményközpont a névtéren jön létre az első új tevékenységnapló-esemény bekövetkezésekor. 
 
-Ha egy Event Hubs névtér nem rendelkezik, először hozzon létre egyet. Ha korábban folyamatos átviteli tevékenységnapló események ehhez az Event Hubs a névtérhez, a korábban létrehozott eseményközpont fogja használni. 
+Ha nem rendelkezik az Event Hubs-névtér, akkor először hozzon létre egyet. Ha korábban streamelt Event Hubs-névtér tevékenységnapló eseményeket, a korábban létrehozott event hubs fogja használni. 
 
-A megosztott elérési házirend határozza meg az adatfolyam-továbbítási mechanizmus jogosultságai. Jelenleg az Event Hubs streaming van szükség **kezelése**, **küldése**, és **figyelésére** engedélyek. Hozzon létre, vagy módosítsa a megosztott elérési házirendeket az Event Hubs-névtér az Azure portál a **konfigurálása** fülre az Event Hubs-névtérhez. 
+A megosztott elérési házirend határozza meg az engedélyeket, a streamelési mechanizmussal rendelkezik. Még ma, és az Event Hubs streamelési igényel **kezelés**, **küldése**, és **figyelésére** engedélyeket. Létrehozhat vagy megosztott elérési házirendeket az Event Hubs-névtér alatt az Azure Portalon módosíthatja a **konfigurálása** lapon találja az Event Hubs-névtér. 
 
-A műveletnapló napló profil tartalmazza a streaming frissítéséhez változtatás felhasználó a ListKey engedéllyel kell rendelkeznie, hogy az Event Hubs engedélyezési szabályt. Az Event Hubs névtér nem kell az előfizetést, a rendszer kibocsátó naplók, mert ugyanahhoz az előfizetéshez kell, amíg a beállítás konfigurálása felhasználó hozzáfér megfelelő RBAC mindkét előfizetéshez.
+A tevékenységnapló naplóprofil tartalmazza a folyamatos átviteli frissíti, a felhasználó, aki a módosítás a ListKey engedéllyel kell rendelkeznie az Event Hubs engedélyezési szabályokat. Az Event Hubs-névtér nem rendelkezik az előfizetést, amelyhez a naplókat, a kibocsátó az azonos előfizetésben kell mindaddig, amíg a beállítást konfiguráló felhasználónak megfelelő RBAC-hozzáféréssel, mindkét előfizetéshez tartozik.
 
-### <a name="via-the-azure-portal"></a>Az Azure-portálon
-1. Keresse meg a **tevékenységnapló** a szakasz a **minden szolgáltatás** keresési a portál bal oldalán.
+### <a name="via-the-azure-portal"></a>Az Azure Portalon
+1. Keresse meg a **tevékenységnapló** használatával a szakasz a **minden szolgáltatás** keresés a portál bal oldalán.
    
-   ![Tevékenységnapló kiválasztása a portálon szolgáltatások listája](./media/monitoring-stream-activity-logs-event-hubs/activity.png)
+   ![Tevékenységnapló a listából a szolgáltatások a portálon](./media/monitoring-stream-activity-logs-event-hubs/activity.png)
 2. Válassza ki a **exportálása** gombra a napló elején.
    
    ![Exportálás gomb a portálon](./media/monitoring-stream-activity-logs-event-hubs/export.png)
 
-   Vegye figyelembe, hogy a szűrő beállításait meg kellett alkalmaz az előző nézetben tekinti meg a műveletnapló befolyásolni a exportálási beállításait. Most már csak a szűrés, lásd a tevékenységnapló a portálon keresztül böngészése közben.
-3. Válassza ki a területen megjelenő **minden egyes**. Ne válassza az adott régióban.
+   Ne feledje, hogy a szűrő beállításait az előző nézetben a tevékenységnapló megtekintése során alkalmazott nincs hatással az exportálási beállításait. Most már csak a szűrést, amit lát a tevékenységnaplóban a portálon való böngészés során.
+3. A megjelenő szakaszban válassza ki a **minden régióban**. Ne válassza az adott régióban.
    
    ![A szakasz exportálása](./media/monitoring-stream-activity-logs-event-hubs/export-audit.png)
 
    > [!WARNING]  
-   > Ha bármi más, mint **minden egyes**, lesz, amelyeken a legfontosabb eseményeket fogadni várt. A műveletnapló egy globális (nem regionális) naplófájl, így a legtöbb esemény nincs társítva egy régiót. 
+   > Ha bármi más, **minden régióban**, fog kihagyná kaphat legfontosabb eseményeket. A tevékenységnapló egy globális (nem régióhoz kötött) naplófájl, így a legtöbb kapcsolódóan nem történik meg a hozzájuk társított régió. 
    >
 
-4. Válassza ki **mentése** ezek a beállítások mentéséhez. A beállítások azonnal érvényesek az előfizetéséhez.
-5. Ha több előfizetéssel rendelkezik, ismételje meg ezt a műveletet, és minden adat küldése a az azonos eseményközpontba.
+4. Válassza ki **mentése** ezek a beállítások mentéséhez. A beállítások azonnal érvényesek az előfizetéshez.
+5. Ha több előfizetéssel rendelkezik, ismételje meg ezt a műveletet, és minden adat küldése az azonos eseményközpontba.
 
 ### <a name="via-powershell-cmdlets"></a>PowerShell-parancsmagok használatával
-Ha a napló-profilja már létezik, először távolítsa el a meglévő napló-profilt, és hozzon létre egy új naplófájl-profilt.
+Ha egy napló-profilja már létezik, akkor először távolítsa el a meglévő log-profilt, és hozzon létre egy új naplóprofil.
 
-1. Használjon `Get-AzureRmLogProfile` azonosítását, ha a napló-profil létezik.  Ha egy napló profil nem létezik, keresse meg a *neve* tulajdonság.
-2. Használjon `Remove-AzureRmLogProfile` értéke a napló-profil a *neve* tulajdonság.
+1. Használat `Get-AzureRmLogProfile` azonosítását, ha egy napló-profil létezik.  Ha egy napló profil létezik, keresse meg a *neve* tulajdonság.
+2. Használat `Remove-AzureRmLogProfile` , távolítsa el a napló profilt származó értékkel a *neve* tulajdonság.
 
     ```powershell
     # For example, if the log profile name is 'default'
     Remove-AzureRmLogProfile -Name "default"
     ```
-3. Használjon `Add-AzureRmLogProfile` egy új naplófájl-profil létrehozása:
+3. Használat `Add-AzureRmLogProfile` egy új naplófájl-profil létrehozása:
 
    ```powershell
    # Settings needed for the new log profile
@@ -78,27 +78,27 @@ Ha a napló-profilja már létezik, először távolítsa el a meglévő napló-
    $eventHubNamespace = "<event hub namespace>"
 
    # Build the service bus rule Id from the settings above
-   $serviceBusRuleId = "/subscriptions/$subscriptionId/resourceGroups/$resourceGroupName/providers/Microsoft.EventHub/namespaces/$eventHubNamespaceName/authorizationrules/RootManageSharedAccessKey"
+   $serviceBusRuleId = "/subscriptions/$subscriptionId/resourceGroups/$resourceGroupName/providers/Microsoft.EventHub/namespaces/$eventHubNamespace/authorizationrules/RootManageSharedAccessKey"
 
    Add-AzureRmLogProfile -Name $logProfileName -Location $locations -ServiceBusRuleId $serviceBusRuleId
    ```
 
-### <a name="via-azure-cli"></a>Az Azure parancssori felület használatával
-Ha a napló-profilja már létezik, először távolítsa el a meglévő napló-profilt, és hozzon létre egy új naplófájl-profilt.
+### <a name="via-azure-cli"></a>Az Azure CLI-n keresztül
+Ha egy napló-profilja már létezik, akkor először távolítsa el a meglévő log-profilt, és hozzon létre egy új naplóprofil.
 
-1. Használjon `az monitor log-profiles list` azonosítását, ha a napló-profil létezik.
-2. Használjon `az monitor log-profiles delete --name "<log profile name>` értéke a napló-profil a *neve* tulajdonság.
-3. Használjon `az monitor log-profiles create` egy új naplófájl-profil létrehozása:
+1. Használat `az monitor log-profiles list` azonosítását, ha egy napló-profil létezik.
+2. Használat `az monitor log-profiles delete --name "<log profile name>` , távolítsa el a napló profilt származó értékkel a *neve* tulajdonság.
+3. Használat `az monitor log-profiles create` egy új naplófájl-profil létrehozása:
 
    ```azurecli-interactive
    az monitor log-profiles create --name "default" --location null --locations "global" "eastus" "westus" --categories "Delete" "Write" "Action"  --enabled false --days 0 --service-bus-rule-id "/subscriptions/<YOUR SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP NAME>/providers/Microsoft.EventHub/namespaces/<EVENT HUB NAME SPACE>/authorizationrules/RootManageSharedAccessKey"
    ```
 
-## <a name="consume-the-log-data-from-event-hubs"></a>A naplózási adatokat az Event Hubs
-A műveletnapló sémáját érhető el [előfizetés figyelése az Azure tevékenységnapló](monitoring-overview-activity-logs.md). Minden esemény van nevezett JSON-blobok tömbje *rekordok*.
+## <a name="consume-the-log-data-from-event-hubs"></a>Az Event Hubsból a naplóadatokat dolgozhat fel
+A tevékenységnapló sémája érhető el a [figyelése az Azure-tevékenységnapló előfizetés](monitoring-overview-activity-logs.md). Minden esemény van egy JSON-blobok nevű tömbben *rekordok*.
 
 ## <a name="next-steps"></a>További lépések
-* [A műveletnapló tárfiókba archiválása](monitoring-archive-activity-log.md)
-* [Olvassa el az Azure tevékenységnapló áttekintése](monitoring-overview-activity-logs.md)
-* [Tevékenységnapló esemény alapján riasztás beállítása](insights-auditlog-to-webhook-email.md)
+* [A tárfiókhoz a tevékenységnapló archiválása](monitoring-archive-activity-log.md)
+* [Olvassa el az Azure-tevékenységnapló áttekintése](monitoring-overview-activity-logs.md)
+* [Egy tevékenységnapló eseményéhez alapuló riasztás beállítása](insights-auditlog-to-webhook-email.md)
 

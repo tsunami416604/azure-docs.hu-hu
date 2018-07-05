@@ -1,80 +1,80 @@
 ---
-title: Hogyan kell elindítani egy áttekintése |} Microsoft Docs
-description: Megtudhatja, hogyan hozzon létre egy áttekintése a kiemelt jogosultságú identitások az Azure Privileged Identity Management alkalmazással.
+title: Hozzáférési felülvizsgálat indítása |} A Microsoft Docs
+description: Ismerje meg, hogy az emelt szintű identitások hozzáférési felülvizsgálat létrehozása az Azure Privileged Identity Management alkalmazással.
 services: active-directory
 documentationcenter: ''
 author: rolyon
 manager: mtillman
 editor: ''
 ms.service: active-directory
-ms.topic: article
+ms.topic: conceptual
 ms.workload: identity
 ms.component: protection
 ms.date: 06/21/2018
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: a4ef91f7055db8f202e3a4e48375427c85964781
-ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
+ms.openlocfilehash: 28a998647dacdf57390638b8ce1629a76077b450
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37020947"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37446894"
 ---
-# <a name="how-to-start-an-access-review-in-azure-ad-privileged-identity-management"></a>Az Azure AD Privileged Identity Management egy hozzáférési felülvizsgálat indítása
-Szerepkör-hozzárendelések "elavult" válnak, amikor a felhasználók privilegizált hozzáférést, amelyek többé nem kell. Ezek elavult szerepkör-hozzárendelések, a kiemelt szerepkörű a kockázatának csökkentése érdekében vagy globális rendszergazdái rendszeresen készítsen kérje meg a rendszergazdák számára, hogy tekintse át a szerepköröket, amelyek a felhasználók kapott hozzáférési értékelést. Ez a dokumentum egy hozzáférés-ellenőrzés indítása az Azure AD Privileged Identity Management (PIM) a lépéseket ismerteti.
+# <a name="how-to-start-an-access-review-in-azure-ad-privileged-identity-management"></a>Az Azure AD Privileged Identity Management hozzáférési felülvizsgálat indítása
+Szerepkör-hozzárendelések "elavult" válnak, amikor a felhasználók a privilegizált hozzáférés, amelyekre már nincs szükségük. A régi szerepkör-hozzárendelések, a kiemelt szerepkörű a kockázatának csökkentése érdekében vagy globális rendszergazdái rendszeresen készítsen tehet fel és rendszergazdák számára, tekintse át a szerepkörök rendelkező felhasználók a hozzáférési felülvizsgálatok. Ez a dokumentum ismerteti a lépéseket a hozzáférési felülvizsgálat indítása az Azure AD Privileged Identity Management (PIM).
 
 ## <a name="start-an-access-review"></a>Hozzáférési felülvizsgálat indítása
 > [!NOTE]
-> Ha a PIM alkalmazást az irányítópulton nem adott meg az Azure portálon, olvassa el a [Ismerkedés az Azure Privileged Identity Management szolgáltatással](active-directory-privileged-identity-management-getting-started.md)
+> Ha még nem adott hozzá az irányítópulthoz a PIM alkalmazást az Azure Portalon, tekintse meg a lépéseket a [Ismerkedés az Azure Privileged Identity Management](active-directory-privileged-identity-management-getting-started.md)
 > 
 > 
 
-A PIM-alkalmazás fő lapján, a három módja van egy hozzáférés-ellenőrzés indítása:
+A PIM-alkalmazás fő lapján, a három módja van hozzáférési felülvizsgálat indítása:
 
-* **Hozzáférési értékelést** > **hozzáadása**
+* **Hozzáférési felülvizsgálatokkal** > **hozzáadása**
 * **Szerepkörök** > **felülvizsgálati** gomb
-* Válassza ki a megfelelő szerepkört a szerepkörök listából vizsgálni > **felülvizsgálati** gomb
+* Válassza ki a megfelelő szerepkört a szerepkörök listából programtulajdonos > **felülvizsgálati** gomb
 
-Elemre a **tekintse át** gombra, a **egy hozzáférés-ellenőrzés indítása** panel jelenik meg. A panel fog a felülvizsgálati állítson be egy nevet és a határidő, válassza ki a szerepkört, és döntse el, akik végrehajtják a felülvizsgálati.
+Amikor rákattint a a **áttekintése** gombra, a **hozzáférési felülvizsgálat indítása** panel jelenik meg. Ezen panel fog konfigurálása a felülvizsgálat neve és időbeli korlát, tekintse át, majd döntse el, akik végrehajtják a felülvizsgálat munkakör kiválasztása.
 
-![Indítsa el az áttekintése – képernyőkép][1]
+![Hozzáférési felülvizsgálat indítása – képernyőkép][1]
 
-### <a name="configure-the-review"></a>A felülvizsgálati konfigurálása
-Hozzon létre egy áttekintése, szüksége egy kezdő és záró dátumát, és adjon neki nevet.
+### <a name="configure-the-review"></a>A felülvizsgálat konfigurálása
+Hozzáférési felülvizsgálat létrehozása, meg kell neki, és állítsa be a kezdő és záró dátumát.
 
 ![Konfigurálja a felülvizsgálati – képernyőkép][2]
 
-Ellenőrizze a elég hosszú a felhasználók számára meg ennek befejeződését, tekintse át a hosszát. Ha befejezte a záró dátum előtt, mindig leállíthatja a felülvizsgálati korai.
+Győződjön meg arról, túl hosszú ahhoz, a felhasználók számára, végezze el a felülvizsgálatot hosszát. Ha befejezte a záró dátum előtt, mindig állítsa le a felülvizsgálat korai.
 
-### <a name="choose-a-role-to-review"></a>Válassza ki a szerepkört áttekintése
-Minden egyes felülvizsgálati csak egy szerepkör összpontosít. Kivéve, ha a áttekintése indította el egy adott szerepkör panel, szüksége lesz egy szerepkör most elemre.
+### <a name="choose-a-role-to-review"></a>Tekintse át a munkakör kiválasztása
+Kritika csak egy szerepkör összpontosít. Kivéve, ha egy adott szerepkör panelen kezdi a hozzáférési felülvizsgálatot, kell most válasszon egy szerepkört.
 
-1. Navigáljon a **tekintse át a szerepköri tagság**
+1. Navigáljon a **szerepkörtagság felülvizsgálata**
    
-    ![Tekintse át a szerepköri tagság – képernyőkép][3]
-2. Válassza ki egy szerepkört a listából.
+    ![Tekintse át a szerepkör tagságát – képernyőkép][3]
+2. A listából válasszon egy szerepkört.
 
-### <a name="decide-who-will-perform-the-review"></a>Döntse el, akik végrehajtják a felülvizsgálati
-Ellenőrzés végrehajtása esetén három lehetőség áll rendelkezésre. A felülvizsgálati rendelhet más végezze, akkor megteheti ezt, vagy beállíthatja, hogy a minden felhasználó, tekintse át a saját hozzáférésüket.
+### <a name="decide-who-will-perform-the-review"></a>Döntse el, akik végrehajtják a felülvizsgálat
+Felülvizsgálat végrehajtásához három lehetőség áll rendelkezésre. Valaki más végrehajtásához rendelhet a felülvizsgálatot, akkor Ön is megteheti, vagy minden felhasználó, tekintse át a saját hozzáférését is használhat.
 
 1. Navigáljon a **felülvizsgálók kiválasztása**
    
     ![Válassza ki a felülvizsgálók – képernyőkép][4]
 2. A lehetőségek közül választhat:
    
-   * **Válassza ki a felülvizsgáló**: használja ezt a beállítást, ha nem biztos benne, aki hozzá kell férnie. Ezzel a beállítással a felülvizsgálati hozzárendelése egy erőforrás tulajdonosa vagy a csoport kezelőjének befejezéséhez.
-   * **A nekem**: hasznos, ha meg kívánja tekinteni, hogyan hozzáférést ellenőrzi, hogy a munkahelyi, vagy meg szeretné tekinteni a személyeket, akik nem nevében.
-   * **Tagok áttekintése maguk**: használja ezt a beállítást szeretné, hogy a felhasználók, tekintse át a saját szerepkör-hozzárendelések.
+   * **Válassza ki a felülvizsgáló**: használja ezt a beállítást, ha nem ismeri ki hozzá kell férnie. Ezzel a beállítással a felülvizsgálat hozzárendelheti egy erőforrás tulajdonosa vagy a csoport kezelőjének végrehajtásához.
+   * **Me**: hasznos, ha meg kívánja tekinteni, hogyan a hozzáférési felülvizsgálatok munka, vagy meg szeretné tekinteni azokat, akik nem nevében.
+   * **A tagok tekintse át, egymás**: használja ezt a beállítást szeretné, hogy a felhasználók, ellenőrizze a saját szerepkör-hozzárendeléseket.
 
-### <a name="start-the-review"></a>Az ellenőrzés indítása
-Végül lehetősége van a szükséges, hogy a felhasználók ha azok elfogadják a hozzáférését meg okot. Ha szeretné adjon meg egy leírást, a nézze át, és válassza ki **Start**.
+### <a name="start-the-review"></a>A felülvizsgálat indítása
+Végül lehetősége van, hogy felhasználók adhatja meg, ha azok a hozzáférés jóváhagyása szükséges. Igény szerint adjon meg egy leírást, a felülvizsgálat, és válassza ki **Start**.
 
-Győződjön meg arról, hogy engedélyezi a felhasználóknak, hogy egy entitás áttekintése, és a megjelenítésükhöz [egy hozzáférési felülvizsgálat végrehajtása](active-directory-privileged-identity-management-how-to-perform-security-review.md).
+Győződjön meg arról, hogy engedélyezi a felhasználóknak, hogy Várakozás azokat a hozzáférési felülvizsgálat, és nekik [hozzáférési felülvizsgálat végrehajtása](active-directory-privileged-identity-management-how-to-perform-security-review.md).
 
-## <a name="manage-the-access-review"></a>Kezelheti a áttekintése
-Nyomon követheti a folyamatban, a felülvizsgálók végezze el az Azure AD PIM irányítópultján, az access értékelést szakaszban az ellenőrzéseket. Nincs hozzáférési jogosultsága módosulnak, amíg a címtár [a felülvizsgálati befejezése](active-directory-privileged-identity-management-how-to-complete-review.md).
+## <a name="manage-the-access-review"></a>A hozzáférési felülvizsgálat kezelése
+Nyomon követheti a folyamat állapotát, a felülvizsgálatot, végezze el az Azure AD PIM-irányítópulton, a hozzáférési felülvizsgálatok szakaszban ellenőrzéseket. Nincs hozzáférési jogosultsága módosulnak, amíg a könyvtárban [a felülvizsgálatot követően](active-directory-privileged-identity-management-how-to-complete-review.md).
 
-Amíg a felülvizsgálati időszak alatt, emlékeztesse a felhasználók a felülvizsgálat befejezéséhez, vagy állítsa le a korai szakaszából hozzáférés értékelést áttekintése.
+Amíg viszonyt keresztül, emlékeztesse a felhasználókat, végezze el a felülvizsgálatot, vagy állítsa le a hozzáférési felülvizsgálatok szakasz a korai a felülvizsgálatot.
 
 <!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
 ## <a name="pim-table-of-contents"></a>A PIM tartalomjegyzék

@@ -1,65 +1,65 @@
 ---
-title: Hogyan lehet hozzáadni vagy eltávolítani egy felhasználói szerepkört |} Microsoft Docs
-description: Útmutató a szerepkörök hozzáadása a kiemelt jogosultságú identitások az Azure Active Directory Privileged Identity Management alkalmazással.
+title: Hogyan lehet egy felhasználói szerepkör hozzáadása vagy eltávolítása |} A Microsoft Docs
+description: Megtudhatja, hogyan adhat hozzá a szerepkört az Azure Active Directory Privileged Identity Management alkalmazással emelt jogosultsági szintű identitásait.
 services: active-directory
 documentationcenter: ''
 author: rolyon
 manager: mtillman
 editor: ''
 ms.service: active-directory
-ms.topic: article
+ms.topic: conceptual
 ms.workload: identity
 ms.component: protection
 ms.date: 01/03/2018
 ms.author: rolyon
-ms.openlocfilehash: 856fdc69bd5ce582ca772c01f8af615fbc455887
-ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
+ms.openlocfilehash: 438a2fcd511fe62fa1dc7ba603c3770d5bcb56a4
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35233220"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37446843"
 ---
 # <a name="azure-ad-privileged-identity-management-how-to-add-or-remove-a-user-role"></a>Azure AD Privileged Identity Management: Felhasználói szerepkör hozzáadása vagy eltávolítása
-Az Azure Active Directory (AD), egy globális rendszergazda (vagy vállalati rendszergazda) frissítheti felhasználók amelyek **véglegesen** rendelt szerepkörök az Azure ad-ben. Ez történik, például a PowerShell-parancsmagokkal `Add-MsolRoleMember` és `Remove-MsolRoleMember`. Vagy az Azure-portálon az használhatják a [rendszergazdai szerepkörök hozzárendelése az Azure Active Directory](active-directory-assign-admin-roles.md).
+Az Azure Active Directory (AD), a globális rendszergazda (vagy a vállalati rendszergazda) frissítheti, amelyek felhasználók **véglegesen** szerepkörökhöz rendelt Azure AD-ben. Ez történik például a PowerShell-parancsmagokkal `Add-MsolRoleMember` és `Remove-MsolRoleMember`. Vagy használhatják az Azure Portalon leírtak szerint [rendszergazdai szerepkörök hozzárendelése az Azure Active Directory](active-directory-assign-admin-roles.md).
 
-Az Azure AD Privileged Identity Management alkalmazás lehetővé teszi, hogy a kiemelt szerepkörű rendszergazda állandó szerepkör-hozzárendelések, valamint hogy. Emellett a kiemelt szerepkörű rendszergazda felhasználók tehet **jogosult** szabása rendszergazdai szerepkörökhöz. Jogosult rendszergazda is aktiválja a szerepkört, amikor szükség, majd rájuk vonatkozó engedélyek lejárnak, ha kész van.
+Az Azure AD Privileged Identity Management alkalmazás lehetővé teszi, hogy a végleges szerepkör-hozzárendeléseket, valamint a kiemelt szerepkörű rendszergazdák. Ezenkívül a kiemelt szerepkörű rendszergazdák felhasználókat tehet **jogosult** rendszergazdai szerepkörökhöz. Jogosult rendszergazda aktiválhatja a szerepkört, amikor szükségük van rá, majd rájuk vonatkozó engedélyek lejárnak, amint kész is van.
 
-## <a name="manage-roles-with-pim-in-the-azure-portal"></a>Az Azure-portálon a PIM szerepkörök kezelése
-A szervezet rendelhet felhasználók különböző rendszergazdai szerepkörök az Azure AD, az Office 365 és más Microsoft szolgáltatásokat és alkalmazásokat.  További részleteket a következő szerepkörök található [szerepkörök az Azure AD PIM](active-directory-privileged-identity-management-roles.md).
+## <a name="manage-roles-with-pim-in-the-azure-portal"></a>Kezelheti a szerepköröket a PIM az Azure Portalon
+A szervezeten belül felhasználók hozzárendelheti a különböző rendszergazdai szerepkörökkel az Azure AD-ben az Office 365 és más Microsoft szolgáltatásokat és alkalmazásokat.  Az elérhető szerepkörök további részleteket tekinthet meg [szerepkörök az Azure AD PIM](active-directory-privileged-identity-management-roles.md).
 
-A felhasználó hozzáadása vagy eltávolítása a Privileged Identity Management használatával szerepkör, a PIM irányítópult elindítani. Válassza a **rendszergazdai szerepkörök a felhasználók** gombra, vagy válasszon egy adott szerepkör (például a globális rendszergazda) a szerepkörök táblából.
-
-> [!NOTE]
-> Amennyiben a PIM még nem engedélyezte az Azure portálon, [Ismerkedés az Azure AD PIM](active-directory-privileged-identity-management-getting-started.md) részleteiről.
-
-Ha azt szeretné, a másik felhasználó hozzáférésének PIM magát, a szerepkörök, amelyek a PIM a felhasználónak rendelkeznie kell részelemcímkék ismertetését további [a PIM hozzáférésének hogyan](active-directory-privileged-identity-management-how-to-give-access-to-pim.md).
-
-## <a name="add-a-user-to-a-role"></a>Adja hozzá a felhasználó egy szerepkörhöz
-1. Az a [Azure-portálon](https://portal.azure.com/), jelölje be a **Azure AD Privileged Identity Management** csempére az irányítópulton.
-2. Válassza ki **kiemelt szerepköröket kezelése**.
-3. Az a **szerepkör összegzés** table, válassza ki a kezelni kívánt szerepkört.
-4. A szerepkör paneljén válassza **Hozzáadás**.
-5. Kattintson a **válasszon ki egy felhasználót** és keresse meg a felhasználót a **válasszon ki egy felhasználót** panelen.  
-6. A keresési eredmények listájáról válassza ki a felhasználót, és kattintson a **végzett**.
-7. Kattintson a **OK** a mentéshez. A kiválasztott felhasználó megjelenik a listában a megfelelő a szerepkörhöz.
+Adjon hozzá vagy távolíthat el felhasználót egy szerepkörre a Privileged Identity Management használatával a, a PIM irányítópult megjelenítéséhez. Ezután kattintson a **rendszergazdák** gombra, vagy egy adott szerepkörrel (például a globális rendszergazdai) kiválasztása a szerepkörök táblából.
 
 > [!NOTE]
-> Új felhasználói szerepkör a szerepkör alapértelmezés szerint csak jogosultak. Ha azt szeretné, hogy a szerepkör véglegessé, kattintson a felhasználónévre a listában. A felhasználói adatok egy új panelen megjelennek. Válassza ki **ellenőrizze perm** a felhasználói adatokat menüben.  
-> Ha a felhasználó nem tudja regisztrálni Azure multi-factor Authentication (MFA), vagy egy Microsoft-fiókot használ (általában @outlook.com), meg kell győződnie állandó a szerepkört. Regisztrálnia az MFA szolgáltatásra az aktiválás során meg kell adnia a megfelelő rendszergazdák.
+> Ha a PIM még még nem engedélyezte az Azure Portalon, lépjen a [Ismerkedés az Azure AD PIM](active-directory-privileged-identity-management-getting-started.md) részleteiről.
 
-Most, hogy a felhasználó nem jogosult a szerepkörhöz, tájékoztathatja a felhasználókat, hogy akkor is aktiválhatja az utasításainak megfelelően [aktiválása vagy deaktiválása](active-directory-privileged-identity-management-how-to-activate-role.md).
+Ha szeretne egy másik felhasználói hozzáférésének PIM magát, a szerepköröket a PIM a felhasználónak szüksége van, amely olyan további [hozzáférés biztosítása a PIM számára](active-directory-privileged-identity-management-how-to-give-access-to-pim.md).
 
-## <a name="remove-a-user-from-a-role"></a>Felhasználó eltávolítása egy szerepkör
-Távolítsa el a felhasználók a megfelelő szerepkör-hozzárendelések, de győződjön meg arról, hogy mindig van legalább egy felhasználót, aki egy állandó globális rendszergazdai.
+## <a name="add-a-user-to-a-role"></a>A felhasználó hozzáadása szerepkörhöz
+1. Az a [az Azure portal](https://portal.azure.com/), jelölje be a **Azure AD Privileged Identity Management** csempét az irányítópulton.
+2. Válassza ki **kiemelt szerepkörök kezelése**.
+3. Az a **szerepkör összefoglalása** táblában, válassza ki a kezelni kívánt szerepkört.
+4. A szerepkör panelen válassza ki a **Hozzáadás**.
+5. Kattintson a **válassza ki a felhasználók** , és keresse meg a felhasználó a **válassza ki a felhasználók** panelen.  
+6. A keresési eredmények listájáról válassza ki a felhasználót, és kattintson a **kész**.
+7. Kattintson a **OK** a mentéshez. A kiválasztott felhasználó megjelenik a listában a jogosultságot a szerepkörre.
 
-Kövesse az alábbi lépéseket egy adott felhasználó eltávolítása egy szerepkört:
+> [!NOTE]
+> Új felhasználói szerepkör a szerepkör alapértelmezés szerint csak jogosultak. Ha azt szeretné, hogy a szerepkör állandó, kattintson a felhasználónévre a listában. A felhasználói adatok egy új panel jelenik meg. Válassza ki **márka perm** a felhasználói adatokat menüben.  
+> Ha a felhasználó nem tudja regisztrálni az Azure multi-factor Authentication (MFA), vagy a Microsoft-fiókkal (általában @outlook.com), végre kell hajtania az összes szerepkörökhöz állandó. Jogosult rendszergazdák rendszer megkéri, hogy a multi-factor Authentication az aktiválás során regisztrálja.
 
-1. Válasszon ki egy szerepkört az Azure AD PIM irányítópult vagy kattintson a a szerepkört a szerepkör listában keresse meg a **rendszergazdai szerepkörök a felhasználók** gombra.
-2. Kattintson a felhasználót a felhasználói listáról.
-3. Kattintson a **eltávolítása**. Üzenet kéri megerősítését.
-4. Kattintson a **Igen** eltávolítja a szerepkört a felhasználó.
+Most, hogy a felhasználó nem jogosult a szerepkörhöz, tudassa vele, hogy azokat, az aktiválást található utasítások szerint [aktiválása vagy a szerepkör inaktiválása](active-directory-privileged-identity-management-how-to-activate-role.md).
 
-Ha nem biztos abban, hogy mely felhasználók továbbra is szükséges a szerepkör-hozzárendeléseket, akkor is [a szerepkör egy hozzáférés-ellenőrzés indítása](active-directory-privileged-identity-management-how-to-start-security-review.md).
+## <a name="remove-a-user-from-a-role"></a>Felhasználó eltávolítása a szerepkörből
+Jogosult szerepkör-hozzárendelések távolítsa el a felhasználókat, de győződjön meg arról, hogy mindig van legalább egy felhasználót, aki egy állandó globális rendszergazda.
+
+Kövesse az alábbi lépéseket egy adott felhasználó eltávolítása a szerepkörből:
+
+1. Keresse meg a szerepkört a szerepkör-lista egy szerepkörhöz az Azure AD PIM irányítópult kiválasztásával, vagy kattintson a a **rendszergazdák** gombra.
+2. Kattintson a felhasználó a felhasználói listájában.
+3. Kattintson a **eltávolítása**. Egy üzenet rákérdez, hogy erősítse meg.
+4. Kattintson a **Igen** eltávolítja a szerepkört a felhasználó elől.
+
+Ha nem biztos abban, hogy mely felhasználók továbbra is szükséges a szerepkör-hozzárendeléseket, akkor is [a szerepkörhöz tartozó hozzáférési felülvizsgálat indítása](active-directory-privileged-identity-management-how-to-start-security-review.md).
 
 ## <a name="next-steps"></a>További lépések
 [!INCLUDE [active-directory-privileged-identity-management-toc](../../includes/active-directory-privileged-identity-management-toc.md)]

@@ -1,6 +1,6 @@
 ---
-title: Felhasználói adatok kérelem szolgáltatások
-description: Felhasználói adatok kérelem szolgáltatásainak összefoglalása
+title: Vásárlói adatok funkciók
+description: Vásárlói adatok funkciók összefoglalása
 author: dominicbetts
 ms.author: dobett
 manager: timlt
@@ -8,46 +8,46 @@ ms.date: 05/16/2018
 ms.topic: conceptual
 ms.service: iot-hub
 services: iot-hub
-ms.openlocfilehash: 73da48d449a7cc5cdca598c8aef176952909ed85
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: c0197b8f0cceab575aa5e830d094ddd2fb6b6b01
+ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34634923"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37436295"
 ---
-# <a name="summary-of-customer-data-request-features"></a>Felhasználói adatok kérelem szolgáltatásainak összefoglalása
+# <a name="summary-of-customer-data-request-features"></a>Vásárlói adatok funkciók összefoglalása
 
-Az Azure IoT Hub REST API-alapú felhőszolgáltatás vállalati ügyfelek is, amely lehetővé teszi az eszközök millióira és egy particionált Azure szolgáltatás közötti biztonságos, kétirányú kommunikáció.
+Az Azure IoT Hub REST API-alapú felhőszolgáltatás vállalati ügyfelek célzott, amely lehetővé teszi több millió eszköz és a egy particionált Azure-szolgáltatás közötti biztonságos, kétirányú kommunikációra.
 
 [!INCLUDE [gdpr-intro-sentence](../../includes/gdpr-intro-sentence.md)]
 
-Egyes eszközök a bérlői rendszergazda rendeli hozzá a eszközazonosító (Eszközazonosító). Eszköz alapul a hozzárendelt eszközazonosító. A Microsoft kezeli az adatokat, és nem fér hozzá, amely lehetővé tenné, hogy a felhasználó korrelációs azonosító adatok.
+Egyes eszközök egy Bérlői rendszergazda által kiosztott egy eszközazonosítót (Eszközazonosító). Eszközadatok alapul a hozzárendelt eszközazonosítót. A Microsoft tart fenn semmilyen adatot, és nem fér hozzá, amelyek lehetővé teszik, hogy a felhasználó megfelelési Eszközazonosító adatokhoz.
 
-Az eszközök felügyelete az Azure IoT Hub közül sok nem személyes eszközök, például az office termosztát vagy a gyári robot. Az ügyfelek is, azonban vegye figyelembe a személyes azonosításra alkalmas lehet néhány eszközt, és saját belátása szerint a saját eszköz vagy a készlet nyomon követése a módszereket, amelyek egyéni eszközök összekötését fenntarthatja. Azure IoT Hub kezeli, és tárolja a személyes adatok, mintha eszközök kapcsolódó összes adat.
+Számos az Azure IoT Hub által felügyelt eszközök, amelyek nem személyes eszközök, például az office thermostat vagy a gyári robot. Az ügyfelek is, azonban figyelembe kell venni néhány eszközt személyes azonosításra alkalmas lehet, és saját belátása szerint a saját eszköz vagy a leltár nyomon követése módszerek elősegítsék eszközök egyéni felhasználók számára fenntarthatják. Az Azure IoT Hub kezeli, és, mintha a személyes adatok eszközökhöz társított minden adatot tárol.
 
-A bérlői rendszergazdák használatával vagy az Azure-portálon, vagy a szolgáltatás REST API-k adatokat kérelmeinek teljesítéséhez exportálással vagy egy eszköz. társított adatok törlése
+A bérlői rendszergazdák segítségével az Azure Portalon vagy a szolgáltatás REST API-k információk kérések teljesítését által exportálása, vagy törölje a társított eszköz-azonosítóval.
 
-Az útválasztási szolgáltatás a Azure IoT-központ szolgáltatás más szolgáltatások eszközre küldött üzenetek továbbítására használatakor, majd kérelmek kell elvégezni a bérlői rendszergazda útválasztási végpontok ahhoz, hogy az adott eszköz teljes kérelem végrehajtása. További részletek minden egyes végpont hivatkozás dokumentációjában talál. További információ a támogatott végpontok: [referencia - IoT-központok végpontjai](iot-hub-devguide-endpoints.md).
+Ha a útválasztási szolgáltatását, az Azure IoT Hub szolgáltatás használatával más szolgáltatások eszköz üzenetek továbbítására, majd kérelmek kell elvégezni útválasztási végpontok a bérlői rendszergazda által egy adott eszközhöz egy teljes kérelem végrehajtásához. Minden végpont dokumentációja további részletekért lásd:. További információ a támogatott végpontok: [referencia – IoT Hub-végpontok](iot-hub-devguide-endpoints.md).
 
-Ha az Azure Event rács integrációs szolgáltatás számára az Azure IoT-központ szolgáltatás használja, majd kérelmek kell elvégezni a bérlői rendszergazda által mindegyik előfizető ezek az események. További információkért lásd: [reagálni az IoT-központ események esemény rács használatával](iot-hub-event-grid.md).
+Ha az Azure IoT Hub szolgáltatás az Azure Event Grid integráció funkcióját használja, majd kérelmek kell elvégezni a bérlői rendszergazda által ezek az események minden előfizető. További információkért lásd: [reagálhat rájuk az IoT Hub Event Grid használatával](iot-hub-event-grid.md).
 
-Az Azure-figyelő integrációs szolgáltatás számára az Azure IoT-központ szolgáltatás diagnosztikai naplók létrehozására használhatja, ha majd kérelmek kell végrehajtani a bérlői rendszergazda a tárolt naplók ellen. További információkért lásd: [Azure IoT Hub állapotának figyelésére](iot-hub-monitor-resource-health.md).
+Ha az Azure Monitor integrációja az Azure IoT Hub szolgáltatás használatával a diagnosztikai naplók létrehozása, majd kérelmek kell elvégezni ellen a tárolt naplókat a bérlői rendszergazda által. További információkért lásd: [Azure IoT Hub állapotának figyelésére](iot-hub-monitor-resource-health.md).
 
-## <a name="deleting-customer-data"></a>Felhasználói adatok törlése
+## <a name="deleting-customer-data"></a>Vásárlói adatok törlése
 
-A bérlői rendszergazdák törli az adatokat az adott eszközhöz hozzárendelt eszköz törlése használhatja az Azure-portálon az IoT-Eszközök panel az Azure IoT Hub-bővítmény.
+A bérlői rendszergazdák törli egy eszköz, amely törli az adott eszközhöz társított adatokat használhatja az Azure Portalon az Azure IoT Hub-bővítmény az IoT-Eszközök panelen.
 
-Akkor is REST API-k használatával eszközök delete művelet végrehajtásához. További információkért lásd: [eszköz Api - eszköz törlése](https://docs.microsoft.com/rest/api/iothub/deviceapi/deletedevice).
+Akkor is REST API-kat használó eszközök esetében a törlési műveletek végrehajtásához. További információkért lásd: [szolgáltatás - eszköz törlése](https://docs.microsoft.com/rest/api/iothub/service/deletedevice).
 
-## <a name="exporting-customer-data"></a>Felhasználói adatok exportálása
+## <a name="exporting-customer-data"></a>Vásárlói adatok exportálása
 
-A bérlői rendszergazdák másolási használják, és illessze be az IoT-Eszközök panel az Azure IoT Hub-bővítmény, az Azure portálon az eszközök adatainak exportálása belül.
+A bérlői rendszergazdák is használni a másolási, és illessze be az IoT-Eszközök panel az Azure IoT Hub-bővítmény, az eszközök adatainak exportálása az Azure Portalon belül.
 
-Akkor is REST API-k használatával exportálási műveleteinek elvégzéséhez. További információkért lásd: [eszköz Api - eszköz beolvasása](https://docs.microsoft.com/rest/api/iothub/deviceapi/getdevice).
+Akkor is REST API-kat használó eszközök esetében exportálási műveletek végrehajtásához. További információkért lásd: [Service – Get eszköz](https://docs.microsoft.com/rest/api/iothub/service/getdevice).
 
 > [!NOTE]
-> A Microsoft vállalati szolgáltatást használ, a Microsoft néhány információt, a rendszer naplókat néven hoz létre. Bizonyos Azure IoT Hub rendszer által létrehozott naplók nem elérhetők, és a bérlői rendszergazdák által exportálható. Ezek a naplók a szolgáltatás és az egyes eszközökkel kapcsolatos diagnosztikai adatok végzett tényleges műveletek alkotják.
+> A Microsoft enterprise szolgáltatást használ, a Microsoft néhány információt, a rendszer által létrehozott naplók néven hoz létre. Egyes Azure IoT Hub a rendszer által létrehozott naplókban nincsenek elérhető vagy nem exportálható a bérlői rendszergazdák. Ezek a naplók a műveletek előzményrekordjait a szolgáltatás és az egyes eszközökkel kapcsolatos diagnosztikai adatok képezik.
 
 ## <a name="links-to-additional-documentation"></a>További dokumentációkra mutató hivatkozások
 
-Azure IoT Hub eszköz API-k teljes dokumentációját itt található: [ https://docs.microsoft.com/rest/api/iothub/deviceapi ](https://docs.microsoft.com/rest/api/iothub/deviceapi).
+Az Azure IoT Hub szolgáltatás API-k teljes dokumentációt a következő helyen található [ https://docs.microsoft.com/rest/api/iothub/service ](https://docs.microsoft.com/rest/api/iothub/service).

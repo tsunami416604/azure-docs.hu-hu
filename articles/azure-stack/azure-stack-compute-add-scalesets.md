@@ -1,86 +1,62 @@
 ---
-title: Ellenőrizze virtulálisgép-skálázási készletekben Azure verem használható |} Microsoft Docs
-description: Ismerje meg, hogy a felhő üzemeltetője adhat hozzá virtuálisgép-méretezési verem Azure piactérről
+title: Virtual Machine Scale Sets elérhetővé az Azure Stackben |} A Microsoft Docs
+description: Ismerje meg, hogyan a felhő üzemeltetője adhat hozzá virtuálisgép-méretezési csoportok az Azure Stack piactéren
 services: azure-stack
 author: brenduns
 manager: femila
 editor: ''
 ms.service: azure-stack
 ms.topic: article
-ms.date: 05/08/2018
+ms.date: 06/05/2018
 ms.author: brenduns
 ms.reviewer: kivenkat
-ms.openlocfilehash: 12425ab53ca16bb985a0a8658b5058998565b01a
-ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
+ms.openlocfilehash: ddde2e6bad8a373df405ac05e78a5dbccd0257fc
+ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/12/2018
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "34800640"
 ---
-# <a name="make-virtual-machine-scale-sets-available-in-azure-stack"></a>Azure-készletben elérhetővé virtuálisgép-méretezési csoportok
+# <a name="make-virtual-machine-scale-sets-available-in-azure-stack"></a>Virtual Machine Scale Sets elérhetővé az Azure Stackben
 
-*A következőkre vonatkozik: Azure verem integrált rendszerek és az Azure verem szoftverfejlesztői készlet*
+*A következőkre vonatkozik: Azure Stackkel integrált rendszerek és az Azure Stack fejlesztői készlete*
 
-Virtuálisgép-méretezési csoportok az Azure-verem számítási erőforrás. Üzembe helyezését, és az azonos virtuális gépek kezelésére használhatja őket. Az összes virtuális gép-e konfigurálva a, méretezési készlet nem szükséges előre létesítési virtuális gépek. Megkönnyíti a nagy méretű szolgáltatások nagy számítási, a big Data típusú adatok és a tárolóalapú munkafolyamatok célzó.
+A Virtual machine scale sets az Azure Stack számítási erőforrás. Üzembe helyezéséhez és az azonos virtuális gépek kezelésére használhatja őket. Az összes virtuális gép konfigurálva, a méretezési csoportok nem szükséges előzetesen kiépített virtuális gépek. Sokkal jobban is egyszerűsödik a nagy számítási igényű, big data és tárolóalapú számítási feladatokra nagyméretű szolgáltatások kiépítése.
 
-Ez a cikk végigvezeti a folyamat méretezési csoportok elérhetővé a verem Azure piactéren. Ez az eljárás befejezése után a felhasználók hozzáadhatnak virtuálisgép-méretezési állítja az előfizetések.
+Ez a cikk végigvezeti a méretezési csoportok az Azure Stack piactéren elérhetővé. Az eljárás befejezése után a felhasználók adhat hozzá, azok az előfizetések virtuálisgép-méretezési csoport állítja be.
 
-Virtuálisgép-méretezési csoportok Azure veremben olyanok, mint az Azure virtuálisgép-méretezési készlet. További információkért tekintse meg a következő videók:
+Virtuális gép méretezési csoportok az Azure Stacken hasonlóak a virtuális gép méretezési csoportok az Azure-ban. További információkért tekintse meg a következő videót:
 * [Mark Russinovich talks Azure Scale Sets](https://channel9.msdn.com/Blogs/Regular-IT-Guy/Mark-Russinovich-Talks-Azure-Scale-Sets/) (Mark Russinovich ismerteti az Azure-alapú méretezési csoportokat)
 * [Virtual Machine Scale Sets with Guy Bowerman](https://channel9.msdn.com/Shows/Cloud+Cover/Episode-191-Virtual-Machine-Scale-Sets-with-Guy-Bowerman) (A virtuálisgép-méretezési csoportokról Guy Bowerman mesél)
 
-Azure-veremben virtuálisgép-méretezési készlet nem támogatja az automatikus skálázása. A méretezési készletben, a verem Azure portál, a Resource Manager-sablonok vagy a PowerShell használatával adhat hozzá további példányokat.
+Az Azure Stacken virtuálisgép-méretezési csoportok automatikus skálázása nem támogatott. További példányokat adhat hozzá egy méretezési csoportot a Resource Manager-sablonok, a parancssori felület vagy a PowerShell használatával.
 
 ## <a name="prerequisites"></a>Előfeltételek
-* **PowerShell és az eszközök**
 
-   Azure verem konfigurált PowerShell és a telepítése és az Azure-verem eszközök. Lásd: [, amelyekből megismerheti a PowerShell használatával a Azure verem](azure-stack-powershell-configure-quickstart.md).
+- **Marketplace-en szindikálás**  
+    Globális Azure Marketplace-en tartalomtípus-gyűjtési engedélyezése az Azure Stack regisztrálja. Kövesse a [regisztrálása az Azure Stack az Azure-ral](azure-stack-registration.md).
+- **Operációs rendszer lemezképének**  
+    Ha még nem adott hozzá az operációs rendszer lemezképét az Azure Stack piactéren, [Azure Stack piactéren elem felvétele az Azure-ból](asdk/asdk-marketplace-item.md).
 
-   Az Azure-verem eszközök telepítése után ellenőrizze, hogy a következő PowerShell-modul importálása (relatív elérési útja a. a AzureStack főkiszolgálós eszközök \ComputeAdmin mappájára):
-  ````PowerShell
-        Import-Module .\AzureStack.ComputeAdmin.psm1
-  ````
+## <a name="add-the-virtual-machine-scale-set"></a>A virtuális gép méretezési csoport hozzáadása
 
-* **Operációsrendszer-lemezkép**
+1. Nyissa meg az Azure Stack piactéren, és csatlakozzon az Azure-bA. Válassza ki **Marketplace felügyeleti**> **+ Hozzáadás az Azure-ból**.
 
-   Ha még nem adott hozzá az operációs rendszer lemezképét az Azure-verem piactéren, lásd: [a Windows Server 2016 Virtuálisgép-lemezkép hozzáadása a verem Azure piactér](azure-stack-add-default-image.md).
+    ![Marketplace-en kezelése](media/azure-stack-compute-add-scalesets/image01.png)
 
-   A Linux-támogatás, Ubuntu Server 16.04 töltse le, majd vegye fel azt használatával ```Add-AzsPlatformImage``` a következő paraméterekkel: ```-publisher "Canonical" -offer "UbuntuServer" -sku "16.04-LTS"```.
+2. Adja hozzá, és töltse le a Virtual Machine Scale Set Piactéri elemet.
 
+    ![Virtuálisgép-méretezési csoport](media/azure-stack-compute-add-scalesets/image02.png)
 
-## <a name="add-the-virtual-machine-scale-set"></a>A virtuálisgép-méretezési csoport hozzáadása
+## <a name="update-images-in-a-virtual-machine-scale-set"></a>Egy virtuálisgép-méretezési csoportban található rendszerképek frissítése
 
-A következő PowerShell parancsfájlt a rendszerkörnyezetnek szerkesztése, és futtassa a virtuálisgép-méretezési beállítása az Azure-verem piactér hozzáadása. 
+Miután létrehozott egy virtuálisgép-méretezési csoportot, a felhasználók frissíthetik rendszerképeket a méretezési csoport anélkül, hogy a méretezési csoportot, hogy újra létre kell hozni. A lemezképek frissítésének folyamata attól függ, hogy a következő esetekben:
 
-``$User`` az a fiók a felügyeleti portál kapcsolódni. Például: serviceadmin@contoso.onmicrosoft.com.
+1. Virtuálisgép-méretezési csoport üzembe helyezési sablon beállítása **adja meg a legújabb** a *verzió*:  
 
-````PowerShell  
-$Arm = "https://adminmanagement.local.azurestack.external"
-$Location = "local"
+   Ha a *verzió* van beállítva, **legújabb** a a *imageReference* méretezési csoport sablonjának szakaszában állítsa be, vertikális felskálázása műveleteket a méretezési készlet használatát a legújabb elérhető verzió a kép a méretezési csoport példányai beállítása. Vertikális felskálázási befejezése után törölheti a régebbi virtuális gép méretezési csoportok példányai.  (A tartozó értékeket *közzétevő*, *ajánlat*, és *termékváltozat* változatlanok maradnak). 
 
-Add-AzureRMEnvironment -Name AzureStackAdmin -ArmEndpoint $Arm
-
-$Password = ConvertTo-SecureString -AsPlainText -Force "<your Azure Stack administrator password>"
-
-$User = "<your Azure Stack service administrator user name>"
-
-$Creds =  New-Object System.Management.Automation.PSCredential $User, $Password
-
-$AzsEnv = Get-AzureRmEnvironment AzureStackAdmin
-$AzsEnvContext = Add-AzureRmAccount -Environment $AzsEnv -Credential $Creds
-
-Select-AzureRmSubscription -SubscriptionName "Default Provider Subscription"
-
-Add-AzsVMSSGalleryItem -Location $Location
-````
-
-## <a name="update-images-in-a-virtual-machine-scale-set"></a>A virtuálisgép-méretezési csoportban lévő lemezképek frissítéséhez 
-A virtuálisgép-méretezési csoport létrehozása után a felhasználók frissítheti a méretezési készletben nélkül a méretezési készletben, hogy újból létre kell hozni a lemezképeket. A lemezképek folyamata attól függ, hogy a következő esetekben:
-
-1. Virtuálisgép-méretezési csoport központi telepítési sablont **határozza meg a legújabb** a *verzió*:  
-
-   Ha a *verzió* be van állítva az **legújabb** a a *imageReference* a sablon egy bővített szakasz beállításához műveleteket végez a méretezési készlet használata növelheti az elérhető legújabb verzióra a kép a bővített példányok megadása Egy felskálázott befejezése után törölheti a régebbi virtuálisgép-méretezési készletek példánya.  (A értékeinek *publisher*, *kínálnak*, és *sku* változatlanok maradnak). 
-
-   Az alábbiakban egy példa megadó *legújabb*:  
+   Az alábbiakban adja meg például a *legújabb*:  
 
     ```Json  
     "imageReference": {
@@ -91,32 +67,32 @@ A virtuálisgép-méretezési csoport létrehozása után a felhasználók friss
         }
     ```
 
-   Felskálázott használhatja új lemezképet, akkor le kell töltenie az új lemezkép:  
+   Ahhoz, vertikális felskálázási egy új rendszerképet, le kell töltenie, hogy új lemezképet:  
 
-   - A piactéren kép verziója újabb, mint a lemezképet a méretezési csoportban lévő esetén: az új lemezképet, amely a felváltja a régebbi kép letöltése. Után váltja fel a lemezképet, a felhasználó vertikális felskálázás lépne. 
+   - Ha a lemezképet a Marketplace-en-e egy újabb verziójú, mint a rendszerképet a méretezési csoportban lévő: Töltse le az új rendszerképet, amely felváltja a régi lemezképet. Miután váltja fel a képet, a felhasználó folytassa vertikális felskálázás. 
 
-   - Ha a lemezképet a piactér verziója ugyanaz, mint a lemezképet a méretezési csoportban lévő: törli a lemezképet, amelyet a méretezési csoportban lévő használ, és töltse le az új lemezképet. Az a kép eltávolítása az eredeti és az új lemezkép letöltése közötti időszakban nem vertikális felskálázás. 
+   - Ha a lemezképet a Marketplace-en verziószáma megegyezik a rendszerképet a méretezési csoportban lévő: törölnie kell a rendszerképet a méretezési csoportban lévő használatban lévő, és töltse le az új lemezképet. Az eredeti rendszerkép eltávolítása és az új kép letöltése közötti időszakban nem skálázhatja. 
       
-     A folyamat be nem szükséges resyndicate lemezképeket, amelyek segítségével a ritka fájlformátum, bevezetett 1803 verziójával. 
+     Ez a folyamat megadása kötelező resyndicate, amellyel használja a ritka fájlformátum, 1803-verzióval jelent meg. 
  
 
-2. Virtuálisgép-méretezési csoport központi telepítési sablont **nem adja meg a legújabb** a *verzió* és Ehelyett adja meg egy verziószámot:  
+2. Virtuálisgép-méretezési csoport üzembe helyezési sablon beállítása **legújabb nem határoz meg** a *verzió* , és adja meg helyette egy verziószámot:  
 
-     Ha letöltötte a lemezkép egy újabb verziójával (amely megváltoztatja a rendelkezésre álló verzió), a méretezési készlet nem növelheti. Ez az elvárt működés, mivel a méretezési készlet sablonban megadott lemezkép verzió elérhetőnek kell lennie.  
+    Ha egy újabb verzióval (amely megváltoztatja a rendelkezésre álló verzió) egy rendszerképet tölt le, a méretezési csoportban nem vertikális felskálázás. Ez az elvárt, mert a rendszerkép verziószámát, a méretezési csoport sablonjában megadott elérhetőnek kell lennie.  
 
 További információkért lásd: [operációsrendszer-lemezek és lemezképek](.\user\azure-stack-compute-overview.md#operating-system-disks-and-images).  
 
 
-## <a name="remove-a-virtual-machine-scale-set"></a>A virtuálisgép-méretezési csoport törlése
+## <a name="remove-a-virtual-machine-scale-set"></a>Távolítsa el a virtuálisgép-méretezési csoportot
 
-Távolítsa el a virtuális gépek méretezési készlet gyűjteményelem, és futtassa a következő PowerShell-parancsot:
+Egy virtuális gép eltávolítása a gyűjteményelem készlet méretezése, futtassa a következő PowerShell-parancsot:
 
 ```PowerShell  
-    Remove-AzsVMSSGalleryItem
+    Remove-AzsGalleryItem
 ````
 
 > [!NOTE]
-> A gyűjteményelem azonnal nem lehet eltávolítani. Éjszakai kell többször is frissítenie a portál az elem látható a piactérről eltávolítása előtt.
+> A Katalóguselem nem lehet, hogy azonnal eltávolítja. Éjszakai, frissítenie kell a portál többször előtt az elem jelenik meg a Marketplace-ről eltávolítva.
 
 ## <a name="next-steps"></a>További lépések
-[Gyakori kérdések az Azure-verem](azure-stack-faq.md)
+[Gyakori kérdések az Azure Stackben](azure-stack-faq.md)

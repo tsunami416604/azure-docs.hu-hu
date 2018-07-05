@@ -1,6 +1,6 @@
 ---
 title: Az Azure tevékenységnapló archiválása
-description: Az Azure tevékenységnapló a hosszú távú megőrzési tárfiókokban archiválja.
+description: Hosszú távú adatmegőrzés storage-fiókban található az Azure-tevékenységnapló archiválása.
 author: johnkemnetz
 services: azure-monitor
 ms.service: azure-monitor
@@ -8,39 +8,39 @@ ms.topic: conceptual
 ms.date: 06/07/2018
 ms.author: johnkem
 ms.component: activitylog
-ms.openlocfilehash: 508b2f615819f20a717065d8fff25beff64957d5
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: 0f3f2347dd277cb155bf5edf3f8c30da34788b65
+ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35263429"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37437759"
 ---
 # <a name="archive-the-azure-activity-log"></a>Az Azure tevékenységnapló archiválása
-Ebben a cikkben megmutatjuk használatát az Azure portálon, a PowerShell-parancsmagokkal vagy a platformfüggetlen parancssori felület archiválására a [ **Azure tevékenységnapló** ](monitoring-overview-activity-logs.md) tárfiókokban. Ez a beállítás akkor hasznos, ha azt szeretné, hogy megőrzi a naplózási, statikus elemzési vagy biztonsági mentése (a teljes hozzáféréssel az adatmegőrzési) 90 napnál hosszabb tevékenységnapló. Ha csak szeretné megőrizni az események 90 napig, vagy kevesebb nem kell beállítása archiválási tárfiókba, mert tevékenységnapló események kerülnek be az Azure platformon 90 napig engedélyezése archiválás nélkül.
+Ebben a cikkben bemutatjuk a használatáról az Azure portal, PowerShell-parancsmagok vagy többplatformos parancssori felület archiválása a [ **Azure-tevékenységnapló** ](monitoring-overview-activity-logs.md) a storage-fiókban. Ez a beállítás akkor hasznos, ha szeretné megőrizni a naplózási, statikus elemzési és biztonsági mentés (, teljes körűen felügyelve az adatmegőrzési) 90 napnál hosszabb ideig Tevékenységnaplót. Ha csak szeretné megőrizni az események 90 napig, vagy kisebb, nem kell állítania archiválás tárfiókba, mivel a tevékenységnapló eseményei vannak az Azure platformon 90 napig őrizzük meg engedélyezése archiválás nélkül.
 
 ## <a name="prerequisites"></a>Előfeltételek
-Kezdés előtt kell [hozzon létre egy tárfiókot](../storage/common/storage-create-storage-account.md#create-a-storage-account) , amelyhez a tevékenységnapló archiválhatók. Erősen ajánlott, hogy nem használja a benne tárolt, így jobban szabályozhatja a hozzáférést a figyelési adatok, amelyeket más, nem figyelési adatokat tartalmazó meglévő tárfiókot. Azonban ha is archiválás diagnosztikai naplók és a metrikák egy tárfiókba, logikus összes figyelési adatot elhelyez egy központi helyen, hogy a tevékenységnapló tárfiók használatával. A storage-fiók használata egy általános célú tárfiókkal, nem a blob storage-fiók kell lennie. A tárfiók nem kell ugyanazt az előfizetést, mint az előfizetés naplók kibocsátó mindaddig, amíg a beállítás konfigurálása felhasználó hozzáfér megfelelő RBAC mindkét előfizetéshez lehet.
+Mielőtt elkezdené, kell [hozzon létre egy tárfiókot](../storage/common/storage-create-storage-account.md#create-a-storage-account) , amelyhez a Tevékenységnaplót archiválhatja. Kifejezetten ajánljuk, hogy nem használja egy meglévő tárfiókot, amely a benne tárolt, így jobban szabályozhatja a hozzáférést a figyelési adatok más, nem figyelési adatokat tartalmaz. Azonban ha is archiválása a diagnosztikai naplók és mérőszámok egy tárfiókba, célszerű a storage-fiókját a tevékenységnapló használatával az összes monitorozási adat ne egy központi helyen felhasználójának. A storage-fiók nem rendelkezik a mindaddig, amíg a beállítást konfiguráló felhasználónak mindkét előfizetéshez megfelelő RBAC-hozzáféréssel rendelkezik a naplókat kibocsátó előfizetésnek az azonos előfizetésben kell.
 
 > [!NOTE]
->  Jelenleg nem archiválhatja adatok tárolási funkciókat biztosító fiókot, amellyel mögött egy védett virtuális hálózatot.
+>  Jelenleg nem archiválhatja adatokat egy Storage-fiók, amely mögött egy biztonságos virtuális hálózaton.
 
-## <a name="log-profile"></a>Napló-profil
-Az alábbi módszerekkel történő tevékenységnapló archiválására, állítsa be a **napló profil** az előfizetéshez. A napló profil határozza meg az eseményeket, amelyek tárolt vagy a folyamatos átviteli és a kimenetek – tárolási fiók és/vagy az event hub. A storage-fiókban tárolt eseményeket az adatmegőrzési (a megőrizni kívánt napok száma) is meghatároz. Ha az adatmegőrzési nullára van beállítva, események határozatlan ideig tárolja. Ellenkező esetben ez állítható 1 és 2147483647 között bármilyen érték. Adatmegőrzési alkalmazott napi,, így napi (UTC) szerint naplókat, amelyik most már a megőrzési túl napjától végén házirend törlődni fog. Például ha egy nap adatmegőrzési, mai nap kezdetén a napló, a nap előtt tegnap törlése akkor történik meg. A törlési folyamat kezdődik éjfél UTC, de vegye figyelembe, hogy törli a tárfiókot az naplók akár 24 óráig is eltarthat. [Részletesebb naplófájl kapcsolatos profilok Itt](monitoring-overview-activity-logs.md#export-the-activity-log-with-a-log-profile). 
+## <a name="log-profile"></a>Naplóprofil
+Az alábbi módszerek bármelyikével a tevékenységnapló archiválása, állítsa be a **Naplóprofil** -előfizetéssel. A napló profil meghatározza az eseményeket, amelyek tárolja, vagy streamelt adatok és a kimeneti típusa – storage-fiók és/vagy event hub. A storage-fiókban tárolt események a megtartási házirend (Ha a napok száma) is meghatározza. Ha a megőrzési házirend értéke nulla, események határozatlan ideig tárolja. Ellenkező esetben ez állítható bármilyen érték 1 és 2147483647 között. Adatmegőrzési házirendek, az alkalmazott napi, hogy naponta (UTC), naplók, amely mostantól a megőrzési ideje meghaladja a nap végén a rendszer törli a szabályzatot. Például ha egy nap adatmegőrzési, ma a nap kezdetén az a napja előtt tegnap naplóinak törlődnének. A törlési folyamat kezdődik UTC szerint éjfélig, de vegye figyelembe, hogy a naplók a tárfiókból a törlendő akár 24 órát is igénybe vehet. [További log kapcsolatos profilok Itt](monitoring-overview-activity-logs.md#export-the-activity-log-with-a-log-profile). 
 
-## <a name="archive-the-activity-log-using-the-portal"></a>A tevékenység naplót, a portál használatával
-1. A portálon kattintson a **tevékenységnapló** a bal oldali navigációs hivatkozásra kattintva. Ha a tevékenység napló hivatkozás nem látható, kattintson a **minden szolgáltatás** először hivatkozásra.
+## <a name="archive-the-activity-log-using-the-portal"></a>A portál használatával a tevékenységnapló archiválása
+1. A portálon kattintson a **tevékenységnapló** a bal oldali navigációs menüben található hivatkozásra. Ha nem lát egy hivatkozást a tevékenységnapló, kattintson a **minden szolgáltatás** először hivatkozásra.
    
     ![Navigáljon a tevékenységnapló panel](media/monitoring-archive-activity-log/act-log-portal-navigate.png)
 2. Kattintson a panel tetején **exportálása**.
    
     ![Kattintson az Exportálás gomb](media/monitoring-archive-activity-log/act-log-portal-export-button.png)
-3. A megjelenő panelen, jelölje be a **tárfiókba exportálása** , és válasszon egy tárfiókot.
+3. A megjelenő panelen jelölje be a **exportálás tárfiókba** és a egy tárfiók kiválasztását.
    
-    ![A storage-fiók beállítása](media/monitoring-archive-activity-log/act-log-portal-export-blade.png)
-4. A vagy a csúszka definiálja, amelynek tevékenységnapló események kell tartani a tárfiókban lévő napok számát. Ha szeretné adatait őrzi meg a tárfiók határozatlan ideig, ez az érték nullára.
+    ![Storage-fiók beállítása](media/monitoring-archive-activity-log/act-log-portal-export-blade.png)
+4. (0 és 365 között), amelynek tevékenységnapló eseményei kell megőrizni a tárfiókban lévő napok számának vagy a csúszka használatával, adja meg. Ha szeretné, hogy inkább az adatait megőrzi a tárfiókban lévő határozatlan ideig, ezt az értéket nullára. Ha szeretné a több mint 365 napok számát adja meg, az alábbiakban PowerShell vagy parancssori felület módokat kell használnia.
 5. Kattintson a **Save** (Mentés) gombra.
 
-## <a name="archive-the-activity-log-via-powershell"></a>A műveletnapló PowerShell archiválása
+## <a name="archive-the-activity-log-via-powershell"></a>A PowerShell Tevékenységnaplót archiválhatja
 
    ```powershell
    # Settings needed for the new log profile
@@ -59,12 +59,12 @@ Az alábbi módszerekkel történő tevékenységnapló archiválására, állí
 
 | Tulajdonság | Szükséges | Leírás |
 | --- | --- | --- |
-| StorageAccountId |Igen |Erőforrás-azonosító a tárfiók tevékenységi naplóit mentésére. |
-| Helyek |Igen |Régiók, amelynek szeretné tevékenységnapló eseményeinek gyűjtése vesszővel tagolt listája. Az összes régiók listáját megtekintheti a előfizetés a `(Get-AzureRmLocation).Location`. |
-| retentionInDays |Nem |Az eseményeket meg kell őrizni, 1 és 2147483647 közötti napok számát. A nulla érték a naplók határozatlan ideig tárolja (végtelen). |
-| Kategóriák |Nem |Be kell esemény kategóriák vesszővel tagolt listája. Lehetséges értékek a következők: Olvasás, törlés és művelet.  Ha nem ad meg, majd az összes lehetséges értékek feltételezhetően |
+| StorageAccountId |Igen |Erőforrás-azonosító, amelyhez tevékenységeket tartalmazó naplók menteni a tárfiók. |
+| Helyek |Igen |Régiók, amelynek szeretné tevékenységnapló eseményeket gyűjtő vesszővel tagolt listája. Megtekintheti összes régiók listáját az előfizetéshez a `(Get-AzureRmLocation).Location`. |
+| RetentionInDays |Nem |Mely eseményeket meg kell őrizni, 1 és 2147483647 között eltelt napok száma. A nulla érték határozatlan ideig tárolja a naplók (végtelen). |
+| Kategóriák |Nem |Eseménykategóriák kell gyűjteni, vesszővel tagolt listája. Lehetséges értékek: írási, törlési és művelet.  Ha nincs megadva, majd az összes lehetséges az alapértelmezett paraméterértékek |
 
-## <a name="archive-the-activity-log-via-cli"></a>A tevékenység naplót parancssori felület használatával
+## <a name="archive-the-activity-log-via-cli"></a>CLI-n keresztül a tevékenységnapló archiválása
 
    ```azurecli-interactive
    az monitor log-profiles create --name "default" --location null --locations "global" "eastus" "westus" --categories "Delete" "Write" "Action"  --enabled false --days 0 --storage-account-id "/subscriptions/<YOUR SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP NAME>/providers/Microsoft.Storage/storageAccounts/<STORAGE ACCOUNT NAME>"
@@ -72,31 +72,31 @@ Az alábbi módszerekkel történő tevékenységnapló archiválására, állí
 
 | Tulajdonság | Szükséges | Leírás |
 | --- | --- | --- |
-| név |Igen |A napló profil neve. |
-| storage-account-id |Igen |Erőforrás-azonosító a tárfiók tevékenységi naplóit mentésére. |
-| Helyek |Igen |Régiók, amelynek szeretné tevékenységnapló eseményeinek gyűjtése szóközökkel elválasztott listáját. Az összes régiók listáját megtekintheti a előfizetés a `az account list-locations --query [].name`. |
-| nap |Igen |Az eseményeket meg kell őrizni, 1 és 2147483647 közötti napok számát. A nulla érték határozatlan ideig tárolja a naplók (végtelen).  Ha nulla, majd az engedélyezett paraméter kell állítható be igaz értékre. |
-|engedélyezve | Igen |IGAZ vagy hamis.  Engedélyezheti vagy tilthatja le a megőrzési házirend használatával.  Amennyiben az értéke igaz, a nap paraméter 0-nál nagyobb számnak kell lennie.
-| kategóriák |Igen |Be kell esemény kategóriákat szóközökkel elválasztott listáját. Lehetséges értékek a következők: Olvasás, törlés és művelet. |
+| név |Igen |A napló-profil neve. |
+| storage-account-id |Igen |Erőforrás-azonosító, amelyhez tevékenységeket tartalmazó naplók menteni a tárfiók. |
+| helyek |Igen |Régiók, amelynek szeretné tevékenységnapló eseményeket gyűjtő szóközzel elválasztott listáját. Megtekintheti összes régiók listáját az előfizetéshez a `az account list-locations --query [].name`. |
+| nap |Igen |Mely eseményeket meg kell őrizni, 1 és 2147483647 között eltelt napok száma. A nulla érték határozatlan ideig tárolja a naplók (végtelen).  Ha nulla, majd az engedélyezett paramétert meg kell igaz értékre. |
+|engedélyezve | Igen |IGAZ vagy hamis.  Engedélyezi vagy letiltja a megtartási házirend segítségével.  Igaz értéke esetén a nap paraméter 0-nál nagyobb számnak kell lennie.
+| kategóriák |Igen |Eseménykategóriák, érdemes gyűjtik szóközzel elválasztott listáját. Lehetséges értékek: írási, törlési és művelet. |
 
-## <a name="storage-schema-of-the-activity-log"></a>A műveletnapló tárolási séma
-Miután állított be archiválási, tárolót létrejön a tárfiók, amint tevékenységnapló esemény következik be. A tárolóban található blobok kövesse ugyanazt a formátumot minden tevékenységnapló és diagnosztikai naplókat. A blobok szerkezete van:
-
-> insights-operational-logs/name=default/resourceId=/SUBSCRIPTIONS/{előfizetés-azonosító}/y={négy számjegyű numerikus év}/m={két számjegyű numerikus hónap}/d={két számjegyű numerikus nap}/h={két számjegyű óra 24 órás formátumban}/m=00/PT1H.json
-> 
-> 
-
-A blob neve lehet, például:
-
-> insights-operational-logs/name=default/resourceId=/SUBSCRIPTIONS/s1id1234-5679-0123-4567-890123456789/y=2016/m=08/d=22/h=18/m=00/PT1H.json
-> 
-> 
-
-Minden egyes PT1H.json blob tartalmaz a blob URL-címben megadott órán belül előforduló eseményeket a JSON blob (pl. h = 12). Az aktuális órában az események az előfordulásukkor lesznek a PT1H.json fájlhoz fűzve. A perc értéket (m = 00) mindig 00, mivel tevékenységnapló események óránként egyes blobok van felosztva.
-
-PT1H.json fájlon belül mindegyik esemény tárolja a "rekordok" tömb, a következő formátumban:
+## <a name="storage-schema-of-the-activity-log"></a>A tevékenységnapló tároló sémája
+Állított be archiválási, miután egy storage-tároló létrejön a storage-fiókban, amint egy tevékenységnapló-esemény következik be. A tárolóban lévő blobok ugyanazt az elnevezési konvenciót tevékenységeket tartalmazó naplók és a diagnosztikai naplók, hajtsa végre az alábbiak szerint:
 
 ```
+insights-operational-logs/name=default/resourceId=/SUBSCRIPTIONS/{subscription ID}/y={four-digit numeric year}/m={two-digit numeric month}/d={two-digit numeric day}/h={two-digit 24-hour clock hour}/m=00/PT1H.json
+```
+
+Például a blobnév lehet:
+
+```
+insights-operational-logs/name=default/resourceId=/SUBSCRIPTIONS/s1id1234-5679-0123-4567-890123456789/y=2016/m=08/d=22/h=18/m=00/PT1H.json
+```
+
+Mindegyik PT1H.json blob tartalmazza a blob URL-CÍMBEN megadott egy órán belül bekövetkezett események JSON-blobját (például h = 12). Az aktuális órában az események az előfordulásukkor lesznek a PT1H.json fájlhoz fűzve. A perc értéke (m = 00) mindig 00, mert a tevékenységnapló eseményei óránként külön blobokba vannak osztva.
+
+A PT1H.json fájlt belül minden egyes esemény tárolja a "rekord" tömb, a következő formátumban:
+
+``` JSON
 {
     "records": [
         {
@@ -155,28 +155,28 @@ PT1H.json fájlon belül mindegyik esemény tárolja a "rekordok" tömb, a köve
 
 | Elem neve | Leírás |
 | --- | --- |
-| time |Az esemény az esemény megfelelő a kérés feldolgozása az Azure-szolgáltatás által kiváltott idejét jelző időbélyegző. |
+| time |Időbélyeg, ha az esemény jött létre az Azure-szolgáltatás a megfelelő esemény kérelem feldolgozása. |
 | resourceId |Erőforrás-azonosító az érintett erőforrás. |
 | operationName |A művelet neve. |
-| category |A művelet kategória eg. Írási, olvassa el, a műveletet. |
-| resultType |Az eredmény típusú eg. Sikeres, sikertelen, kezdő |
-| resultSignature |Az erőforrástípus függ. |
-| durationMs |A művelet ezredmásodpercben időtartama |
-| callerIpAddress |Felhasználó rendelkezik a művelet, a jogcím vagy a rendelkezésre állás alapján SPN jogcím IP-címe. |
-| correlationId |Általában egy GUID Azonosítót a karakterlánc formátuma. Az eseményeket, amelyek megosztása a correlationId ugyanazon uber művelet tartozik. |
-| identity |Az engedélyezési és a jogcímek leíró JSON-blob. |
-| Engedélyezési |Az esemény tulajdonságainak RBAC BLOB. Az "action", "szerepkör" és "hatókör" Tulajdonságok általában tartalmazza. |
-| szint |Az esemény szintje. A következő értékek egyikét: "Kritikus", "Error", "Figyelmeztetés", "Tájékoztató" és "Részletes" |
-| location |A hely történt (vagy globális) régióban. |
-| properties |Állítsa be a `<Key, Value>` az esemény részleteit leíró párok (azaz szótárában). |
+| category |A művelet kategória működtek az adatbázisok. Írás, Olvasás, a műveletet. |
+| resultType |Az eredmény típusú működtek az adatbázisok. Sikeres, sikertelen, Start |
+| resultSignature |Az erőforrás típusától függ. |
+| durationMs |Ennyi ezredmásodpercig tart a művelet időtartama |
+| callerIpAddress |IP-cím a felhasználó hajtott végre a műveletet, egyszerű Felhasználónévi jogcím vagy egyszerű szolgáltatásnév jogcímet rendelkezésre állása alapján. |
+| correlationId |Általában egy GUID Azonosítót a karakterláncként. Ugyanaz a uber művelet eseményeket, amelyek megosztása a korrelációs azonosító tartozik. |
+| identity |Az engedélyezési és a jogcímek leíró JSON-blobját. |
+| Engedélyezési |Az esemény tulajdonságainak RBAC-blobját. Általában tartalmazza az "action", "szerepkör" és "hatókör" tulajdonság. |
+| szint |Az esemény szintjét. A következő értékek egyikét: "Kritikus", "Hiba", "Figyelmeztetés", "Tájékoztatási szintű" vagy "Részletes" |
+| location |Régió, a helyét történt (vagy globális). |
+| properties |Állítsa be a `<Key, Value>` párok (azaz szótár), az esemény részleteit leíró. |
 
 > [!NOTE]
-> A tulajdonságok és ezek a tulajdonságok használatát eltérőek lehetnek attól függően, hogy az erőforrás.
+> A tulajdonságokat, és azokat a tulajdonságokat a használat függvényében az erőforrás.
 > 
 > 
 
 ## <a name="next-steps"></a>További lépések
-* [Elemzés blobok letöltése](../storage/blobs/storage-quickstart-blobs-dotnet.md)
-* [Az Event hubs tevékenységnapló adatfolyam](monitoring-stream-activity-logs-event-hubs.md)
-* [További tudnivalók a műveletnapló](monitoring-overview-activity-logs.md)
+* [Tölthet le blobokat elemzéshez](../storage/blobs/storage-quickstart-blobs-dotnet.md)
+* [Stream és az Event Hubs a tevékenységnaplóban](monitoring-stream-activity-logs-event-hubs.md)
+* [További információ a tevékenységnaplóban](monitoring-overview-activity-logs.md)
 

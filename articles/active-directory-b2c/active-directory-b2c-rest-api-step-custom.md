@@ -1,60 +1,60 @@
 ---
-title: 'REST API-jogcímek cseréjét, az orchestration. lépés: az Azure Active Directory B2C |} Microsoft Docs'
-description: A témakör az Azure Active Directory B2C egyéni házirendek, amelyek egy API-t integrálja.
+title: REST API-jogcímek cseréje, egy vezénylési lépés az Azure Active Directory B2C |} A Microsoft Docs
+description: A témakör az Azure Active Directory B2C-vel egyéni szabályzatok, amelyek integrálhatók az API-k.
 services: active-directory-b2c
 author: davidmu1
 manager: mtillman
 ms.service: active-directory
 ms.workload: identity
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/24/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 0b8fff2e7a47ad84c146a02fb09b64931398b208
-ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
+ms.openlocfilehash: 74a84a72b76a8095db69c5d2cf1cf21c9cdad0a6
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "34710780"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37447982"
 ---
-# <a name="walkthrough-integrate-rest-api-claims-exchanges-in-your-azure-ad-b2c-user-journey-as-an-orchestration-step"></a>Forgatókönyv: Integrálása az Azure AD B2C felhasználói út a REST API jogcímek cseréjét egy vezénylési lépés
+# <a name="walkthrough-integrate-rest-api-claims-exchanges-in-your-azure-ad-b2c-user-journey-as-an-orchestration-step"></a>Forgatókönyv: Integrálása az Azure AD B2C felhasználói interakciósorozatban szereplő REST API-val jogcím cseréje egy vezénylési lépés
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Az identitás élmény keretrendszer (IEF) Azure Active Directory B2C alapjául szolgáló (az Azure AD B2C) lehetővé teszi, hogy a tevékenységet egy felhasználó út RESTful API-t integrálja a identitás fejlesztő.  
+Az identitás élmény keretrendszer (IEF) alapjául szolgáló Azure Active Directory B2C (Azure AD B2C-vel) lehetővé teszi, hogy az identitás fejlesztői integrálható a RESTful API-t a felhasználói út használata közben.  
 
-Ez az útmutató végén lesz létrehozása az Azure AD B2C felhasználói út, amely együttműködik a RESTful-szolgáltatásokat.
+Ez az útmutató végén lesz egy Azure AD B2C felhasználói interakciósorozat, együttműködő létrehozása a REST-alapú szolgáltatások.
 
-A IEF adatok jogcímekben adatokat küld és fogad vissza a jogcímeket. A REST API-exchange jogcímek:
+A IEF adatokat küld a jogcímeket, valamint adatokat fogad újra a jogcím. A REST API-val jogcímcsere:
 
-- Egy vezénylési lépés tervezhető.
-- Egy külső műveletet is elindíthatja. Például a külső adatbázis azt is naplózhat egy eseményt.
-- Olyan érték beolvasása, és majd tárolja a felhasználói adatbázis használható.
+- Megtervezhetők úgy, mint egy vezénylési lépés.
+- Egy külső műveletet is indíthat. Például a külső adatbázis azt is naplózhat egy eseményt.
+- Olyan érték beolvasása, és tárolja a felhasználói adatbázis használható.
 
-A kapott jogcímek később segítségével módosíthatja a végrehajtási folyamat.
+A kapott jogcímek később segítségével módosítsa a folyamat végrehajtása.
 
-A kapcsolati érvényesítési profil tervezhet. További információkért lásd: [forgatókönyv: integrálja a REST API-t cseréjét használják az Azure AD B2C felhasználói út a jogcímeket, a felhasználói bevitel ellenőrzése](active-directory-b2c-rest-api-validation-custom.md).
+A kapcsolati érvényesítési profil is tervezhet. További információkért lásd: [forgatókönyv: integrálása a REST API-t az Azure AD B2C felhasználói interakciósorozatban szereplő cseréje jogcímek a felhasználói bevitel auditáló](active-directory-b2c-rest-api-validation-custom.md).
 
-A például az is, hogy amikor egy felhasználó egy profil szerkesztése végez, szeretnénk:
+A forgatókönyv a következő, hogy a felhasználók a profilszerkesztés hajt végre, ha azt szeretné:
 
 1. Keresse meg a felhasználó egy külső rendszerben.
-2. A város, amelyen regisztrálva van-e az, hogy a felhasználó beolvasása.
-3. Térjen vissza az alkalmazás jogcímként ezt az attribútumot.
+2. A város, ahol regisztrálva van-e az adott felhasználó kaphat.
+3. Ezt az attribútumot térjen vissza az alkalmazás jogcímként.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Egy helyi fiókot sign-Close-Up/sign-in befejezéséhez, a konfigurált Azure AD B2C-bérlő [bevezetés](active-directory-b2c-get-started-custom.md).
-- REST API-végpont kommunikál. Ez az útmutató egy egyszerű Azure függvény app webhook használja példaként.
-- *Ajánlott*: végezze el a [REST API-jogcímek exchange forgatókönyv érvényesítési lépésként](active-directory-b2c-rest-api-validation-custom.md).
+- Az Azure AD B2C-bérlő egy helyi fiók regisztrálási-regisztrálási vagy bejelentkezési, végrehajtásához leírtak szerint konfigurálva [bevezetés](active-directory-b2c-get-started-custom.md).
+- REST API-végpont használatával kommunikálhat. Ez az útmutató egy egyszerű Azure-függvény alkalmazás webhook használja példaként.
+- *Ajánlott*: végezze el a [REST API-ellenőrzésként exchange forgatókönyv jogcímek](active-directory-b2c-rest-api-validation-custom.md).
 
-## <a name="step-1-prepare-the-rest-api-function"></a>1. lépés: Felkészülés a REST API-függvénye
+## <a name="step-1-prepare-the-rest-api-function"></a>1. lépés: Készítse elő a REST API-függvénye
 
 > [!NOTE]
-> Ez a cikk hatókörén kívül található a REST API-függvények telepítése. [Az Azure Functions](https://docs.microsoft.com/azure/azure-functions/functions-reference) biztosít egy kiváló eszközkészlet RESTful szolgáltatás létrehozásához a felhőben.
+> REST API-függvények, a telepítő nem ez a cikk foglalkozik. [Az Azure Functions](https://docs.microsoft.com/azure/azure-functions/functions-reference) biztosít egy kiváló eszközkészlet RESTful szolgáltatás létrehozásához a felhőben.
 
-Beállítjuk van egy Azure függvény, amely megkapja a jogcím nevű `email`, majd visszatér az a jogcím `city` hozzárendelt értékét `Redmond`. A minta Azure függvény megtalálható [GitHub](https://github.com/Azure-Samples/active-directory-b2c-advanced-policies/tree/master/AzureFunctionsSamples).
+Nem kell beállítani egy Azure-függvényt, amely megkapja a nevű jogcím `email`, majd visszaadja a jogcím `city` hozzárendelt értékét `Redmond`. A minta Azure-függvény megtalálható [GitHub](https://github.com/Azure-Samples/active-directory-b2c-advanced-policies/tree/master/AzureFunctionsSamples).
 
-A `userMessage` jogcímet, amely az Azure függvény nem kötelező ebben a környezetben, és a IEF figyelmen kívül hagyja azt. Potenciálisan akár is használhatja az alkalmazásnak átadott, és később a felhasználó számára megjelenő üzenet.
+A `userMessage` jogcímet, amelyet az Azure-függvény adja vissza. nem kötelező ebben a környezetben, és a IEF figyelmen kívül hagyja azt. Potenciálisan használhatja azt az alkalmazásnak átadott és jelenik meg a felhasználó újabb üzenetnek számít.
 
 ```csharp
 if (requestContentAsJObject.email == null)
@@ -77,14 +77,14 @@ return request.CreateResponse<ResponseContent>(
     "application/json");
 ```
 
-Egy Azure függvény alkalmazás megkönnyíti az első a függvény URL-cím, az adott függvény azonosítóval. Ebben az esetben a URL-je: https://wingtipb2cfuncs.azurewebsites.net/api/LookUpLoyaltyWebHook?code=MQuG7BIE3eXBaCZ/YCfY1SHabm55HEphpNLmh1OP3hdfHkvI2QwPrw==. Tesztelési használhatja.
+Azure-függvényalkalmazás megkönnyíti a függvény URL-címére, amely tartalmazza az azonosító az adott függvény. Ebben az esetben a URL-je: https://wingtipb2cfuncs.azurewebsites.net/api/LookUpLoyaltyWebHook?code=MQuG7BIE3eXBaCZ/YCfY1SHabm55HEphpNLmh1OP3hdfHkvI2QwPrw==. Használhatja a teszteléshez.
 
-## <a name="step-2-configure-the-restful-api-claims-exchange-as-a-technical-profile-in-your-trustframeworextensionsxml-file"></a>2. lépés: A RESTful API jogcímek az exchange konfigurálása a TrustFrameworExtensions.xml fájlban műszaki profil
+## <a name="step-2-configure-the-restful-api-claims-exchange-as-a-technical-profile-in-your-trustframeworextensionsxml-file"></a>2. lépés: Az RESTful API jogcímcsere konfigurálása TrustFrameworExtensions.xml fájlban technikai profil
 
-Műszaki profilt a RESTful szolgáltatás szükséges az exchange teljes konfigurációjának. Nyissa meg a TrustFrameworkExtensions.xml fájlt, és adja hozzá a következő XML-részletet belül a `<ClaimsProvider>` elemet.
+Egy technikai profil a RESTful szolgáltatás kívánt exchange teljes konfigurációját. Nyissa meg a TrustFrameworkExtensions.xml fájlt, és adja hozzá a következő XML-részletet belül a `<ClaimsProvider>` elemet.
 
 > [!NOTE]
-> A következő XML-kódban, RESTful szolgáltató `Version=1.0.0.0` protokoll leírását. Vegye figyelembe azt, a függvény, amely a külső szolgáltatással együtt fog működni. <!-- TODO: A full definition of the schema can be found...link to RESTful Provider schema definition>-->
+> A következő XML formátumú, RESTful szolgáltató `Version=1.0.0.0` protokoll leírását. Érdemes használni, mint a függvényt, amely a külső szolgáltatás használni fog. <!-- TODO: A full definition of the schema can be found...link to RESTful Provider schema definition>-->
 
 ```XML
 <ClaimsProvider>
@@ -110,13 +110,13 @@ Műszaki profilt a RESTful szolgáltatás szükséges az exchange teljes konfigu
 </ClaimsProvider>
 ```
 
-A `<InputClaims>` elem definiálja a jogcímeket, amely a REST-szolgáltatást a IEF a kapnak. Ebben a példában a jogcím tartalmát `givenName` a REST-szolgáltatást a jogcímként való küldésének `email`.  
+A `<InputClaims>` elem definiálja a jogcímeket, amely a REST-szolgáltatás, a IEF kapnak. Ebben a példában a jogcím tartalmát `givenName` küld a REST-szolgáltatás, mint a jogcím `email`.  
 
-A `<OutputClaims>` elem definiálja a IEF várható fog a többi szolgáltatás jogcímeket. Kapott jogcímek száma, függetlenül a IEF használja csak azonosított itt. Ebben a példában a jogcím érkezett `city` kell hozzárendelni egy IEF nevű jogcím `city`.
+A `<OutputClaims>` elem definiálja a jogcímeket a IEF rendszer várható a REST-szolgáltatást. A jogcímszolgáltatótól kapott száma, függetlenül a IEF fogja használni csak azok azonosított itt. Ebben a példában egy jogcímet kapott `city` lesz rendelve egy IEF nevű jogcím `city`.
 
-## <a name="step-3-add-the-new-claim-city-to-the-schema-of-your-trustframeworkextensionsxml-file"></a>3. lépés:, Adja hozzá az új jogcímet `city` a sémának a TrustFrameworkExtensions.xml fájl
+## <a name="step-3-add-the-new-claim-city-to-the-schema-of-your-trustframeworkextensionsxml-file"></a>3. lépés: Adja hozzá az új jogcímet `city` a sémának a TrustFrameworkExtensions.xml fájl
 
-A jogcímek `city` nincs még definiálva a sémában. Igen, hozzáadása a elemen belül `<BuildingBlocks>`. Ez az elem a TrustFrameworkExtensions.xml fájl elején található.
+Az igényt `city` még nem határozott bármilyen környezetben a sémában. Adjunk hozzá egy definíciót a elemen belül `<BuildingBlocks>`. Ez az elem a TrustFrameworkExtensions.xml fájl elején annak.
 
 ```XML
 <BuildingBlocks>
@@ -133,14 +133,14 @@ A jogcímek `city` nincs még definiálva a sémában. Igen, hozzáadása a elem
 </BuildingBlocks>
 ```
 
-## <a name="step-4-include-the-rest-service-claims-exchange-as-an-orchestration-step-in-your-profile-edit-user-journey-in-trustframeworkextensionsxml"></a>4. lépés: A profil szerkesztése felhasználói megtett út TrustFrameworkExtensions.xml lépést az orchestration közé a többi szolgáltatás jogcímek exchange
+## <a name="step-4-include-the-rest-service-claims-exchange-as-an-orchestration-step-in-your-profile-edit-user-journey-in-trustframeworkextensionsxml"></a>. 4. lépés: Egy vezénylési lépés a a profil szerkesztése felhasználói interakciósorozatban szereplő TrustFrameworkExtensions.xml közé a REST-szolgáltatás jogcímcsere
 
-Adjon hozzá egy lépést, amely a profil szerkesztése felhasználói út után a felhasználó hitelesítése (vezénylési lépésekből 1-4 a következő XML-kódban), és a felhasználó már rendelkezik a frissített profil adatait (5. lépés).
+Adjon hozzá egy lépéssel a profil szerkesztése felhasználói interakciósorozat, ha a felhasználó már hitelesített (vezénylési lépésekből 1 – 4 a következő XML formátumú), és a felhasználó már rendelkezik a frissített profil adatait (5. lépés).
 
 > [!NOTE]
-> Nincsenek a REST API-hívás helyének egy vezénylési lépés számos használhatók. Az orchestration lépésként használat egy frissítést adunk ki a külső rendszerek, a felhasználó sikeresen befejezte egy feladat, például az első regisztráció után, akár egy profil frissítéséhez megőrizheti az adatok szinkronizálása. Ebben az esetben szolgál a profil szerkesztése után az alkalmazás foglalt információk révén.
+> Nincsenek számos használati esetek, amikor egy vezénylési lépés használható a REST API-hívás. Egy vezénylési lépésként használat frissítés után a felhasználó sikeresen végrehajtotta egy feladat, például az első regisztráció külső rendszerre, vagy a profil frissítése, hogy az adatok szinkronizálását. Ebben az esetben szolgál, mivel megvédi a profil szerkesztése után az alkalmazásnak megadott információkat.
 
-Másolás a profil szerkesztése felhasználói út XML-kódot a TrustFrameworkBase.xml fájlból a TrustFrameworkExtensions.xml fájl belül a `<UserJourneys>` elemet. Végezze el a módosítást, a 6. lépés.
+Másolás a profil szerkesztése felhasználói interakciósorozat XML kódot a TrustFrameworkBase.xml fájlból a TrustFrameworkExtensions.xml fájllal belül a `<UserJourneys>` elemet. Végezze el a módosítást, a 6. lépés.
 
 ```XML
 <OrchestrationStep Order="6" Type="ClaimsExchange">
@@ -151,9 +151,9 @@ Másolás a profil szerkesztése felhasználói út XML-kódot a TrustFrameworkB
 ```
 
 > [!IMPORTANT]
-> Ha a sorrend nem egyezik meg a verziójával, győződjön meg arról, hogy lépése előtt helyezze be a kódját a `ClaimsExchange` típus `SendClaims`.
+> Ha a rendelés nem egyezik meg a verziót, győződjön meg arról, hogy Ön a kódot is beilleszthet a lépés előtt a `ClaimsExchange` típus `SendClaims`.
 
-A felhasználó útra végső XML kell kinéznie:
+A felhasználói út tartalomdefinícióinak végső XML kell kinéznie:
 
 ```XML
 <UserJourney Id="ProfileEdit">
@@ -211,11 +211,11 @@ A felhasználó útra végső XML kell kinéznie:
 </UserJourney>
 ```
 
-## <a name="step-5-add-the-claim-city-to-your-relying-party-policy-file-so-the-claim-is-sent-to-your-application"></a>5. lépés:, Vegye fel a jogcím `city` a függő entitás házirend fájl, a jogcím kap az alkalmazáshoz
+## <a name="step-5-add-the-claim-city-to-your-relying-party-policy-file-so-the-claim-is-sent-to-your-application"></a>5. lépés: Adja hozzá a jogcím `city` a függő házirend-fájlba a jogcímet küld az alkalmazás
 
 Szerkessze a ProfileEdit.xml függő entitásonkénti (RP) fájlt, és módosítsa a `<TechnicalProfile Id="PolicyProfile">` adja hozzá a következő elem: `<OutputClaim ClaimTypeReferenceId="city" />`.
 
-Miután az új jogcím, a műszaki profil néz ki:
+Miután az új jogcímet ad hozzá, a technikai profil néz ki:
 
 ```XML
 <DisplayName>PolicyProfile</DisplayName>
@@ -230,15 +230,15 @@ Miután az új jogcím, a műszaki profil néz ki:
 
 ## <a name="step-6-upload-your-changes-and-test"></a>6. lépés: Töltse fel a módosításokat, és tesztelése
 
-A házirend meglévő verzióinak felülírását.
+Írja felül a meglévő verziói a szabályzatot.
 
-1.  (Nem kötelező:) Mentse a meglévő verziót (Letöltés) a bővítmények fájl folytatás előtt. Kezdeti összetettségét alacsony megtartásához, javasoljuk, hogy nem töltsön a bővítmények fájl több verziója.
-2.  (Nem kötelező:) Nevezze át az új verziót a házirend-azonosító a házirend szerkesztése fájl módosításával `PolicyId="B2C_1A_TrustFrameworkProfileEdit"`.
-3.  A bővítmények-fájl feltöltése.
-4.  A házirend szerkesztése RP-fájl feltöltése.
-5.  Használjon **Futtatás most** tesztelése a házirendet. Tekintse át a jogkivonatot, amely a IEF visszaadja az alkalmazásnak.
+1.  (Nem kötelező:) Mentse a meglévő verziót (Letöltés) a bővítmények fájl folytatás előtt. A kezdeti összetettsége alacsony megtartani, azt javasoljuk, ne töltse fel a bővítmények fájl több verzióját.
+2.  (Nem kötelező:) Nevezze át az új verziójának a házirend-azonosító, a házirend szerkesztése fájl módosításával `PolicyId="B2C_1A_TrustFrameworkProfileEdit"`.
+3.  Töltse fel a bővítmények fájlt.
+4.  A szabályzat szerkesztése RP-fájl feltöltése.
+5.  Használat **Futtatás most** a szabályzat teszteléséhez. Tekintse át a jogkivonatot, amely a IEF adja vissza az alkalmazásba.
 
-Ha minden megfelelően van beállítva, a jogkivonat tartalmazza az új jogcímet `city`, a értékű `Redmond`.
+Ha minden helyesen van beállítva, a jogkivonat tartalmazza az új jogcímet `city`, a következő értékkel `Redmond`.
 
 ```JSON
 {
@@ -258,6 +258,6 @@ Ha minden megfelelően van beállítva, a jogkivonat tartalmazza az új jogcíme
 
 ## <a name="next-steps"></a>További lépések
 
-[A REST API-t használják a ellenőrzési lépés](active-directory-b2c-rest-api-validation-custom.md)
+[Ellenőrzésként egy REST API használata](active-directory-b2c-rest-api-validation-custom.md)
 
-[Módosítsa a profil szerkesztése további információkat kell gyűjteni a felhasználóktól](active-directory-b2c-create-custom-attributes-profile-edit-custom.md)
+[További információkat kell gyűjteni a felhasználók a profilszerkesztés módosítása](active-directory-b2c-create-custom-attributes-profile-edit-custom.md)

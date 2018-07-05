@@ -1,6 +1,6 @@
 ---
-title: Linux Azure N-sorozat illesztőprogram beállítása |} Microsoft Docs
-description: N sorozatú virtuális gépek Azure-ban futó Linux NVIDIA GPU illesztőprogramok beállítása
+title: Az Azure N-sorozat illesztőinek Linux |} A Microsoft Docs
+description: Hogyan állítható be NVIDIA GPU-illesztőprogramokat N-sorozatú virtuális gépek Azure-ban futó Linux
 services: virtual-machines-linux
 documentationcenter: ''
 author: dlepow
@@ -13,45 +13,47 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 05/29/2018
+ms.date: 06/19/2018
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 807af10c0655d9d1728a80a47d1f8f9c2a16fb84
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: c8f043fdcaa7554d73be6ac3928a37630baab845
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34654283"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37449934"
 ---
-# <a name="install-nvidia-gpu-drivers-on-n-series-vms-running-linux"></a>N-sorozat linuxos virtuális gépek NVIDIA GPU illesztőprogramok telepítéséhez
+# <a name="install-nvidia-gpu-drivers-on-n-series-vms-running-linux"></a>Az N sorozatú virtuális gépeken Linux rendszert futtató NVIDIA GPU-illesztők telepítése
 
-Linuxos Azure N sorozatú virtuális gépek GPU lehetőségeinek kihasználásához, NVIDIA video-illesztőprogramok kell telepíteni. Ez a cikk lépéseit illesztőprogram beállítása az N-sorozatú virtuális gép telepítése után. Telepítési információk illesztőprogram érhető el is [Windows virtuális gépek](../windows/n-series-driver-setup.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+Linux rendszerű Azure N-sorozatú virtuális gépek a GPU-funkcióinak kihasználásához, NVIDIA GPU-illesztőprogramokat kell telepíteni. A [NVIDIA GPU illesztőprogramjának bővítmény](../extensions/hpccompute-gpu-linux.md) telepíti a megfelelő NVIDIA CUDA vagy GRID illesztőprogramok-N-sorozatú virtuális gépen. Telepítse, vagy a bővítmény az Azure portal vagy az eszközök, például az Azure CLI vagy az Azure Resource Manager-sablonok használata kezelheti. Tekintse meg a [NVIDIA GPU illesztőprogramjának bővítmény dokumentáció](../extensions/hpccompute-gpu-linux.md) a támogatott disztribúcióiról, valamint a telepítés lépéseit.
 
-N sorozatú virtuális gép specifikációk, tárolási kapacitás, és a lemez adatai: [GPU Linux Virtuálisgép-méretek](sizes-gpu.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). 
+Ha manuálisan telepíti a GPU-illesztőprogramokat, a cikk ismerteti a telepítés és ellenőrzés lépésein, támogatott disztribúciók és illesztőprogramok. Telepítési információk manuális illesztőprogram érhető el is [Windows virtuális gépek](../windows/n-series-driver-setup.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+
+Az N sorozatú virtuális gépek adatait tartalmazza, tárolókapacitást és lemez adatai: [GPU Linux Virtuálisgép-méretek](sizes-gpu.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). 
 
 [!INCLUDE [virtual-machines-n-series-linux-support](../../../includes/virtual-machines-n-series-linux-support.md)]
 
-## <a name="install-cuda-drivers-on-n-series-vms"></a>N sorozatú virtuális gépeken CUDA illesztőprogramok telepítése
+## <a name="install-cuda-drivers-on-n-series-vms"></a>CUDA-illesztőprogramokat N-sorozatú virtuális gépek telepítése
 
-Az alábbiakban a NVIDIA CUDA eszközkészlet N sorozatú virtuális gépeken a CUDA illesztőprogramok telepítésének lépéseit. 
+Az alábbiakban a CUDA az NVIDIA CUDA-eszközkészlet az N sorozatú virtuális gépeken való telepítésének lépéseit. 
 
 
-C és C++ fejlesztők is telepíthet a teljes eszközkészlet GPU-gyorsított alkalmazásokat hozhatnak létre. További információkért lásd: a [CUDA a telepítési útmutató](http://docs.nvidia.com/cuda/cuda-installation-guide-linux/index.html).
+C és C++ fejlesztők is telepíthet a teljes eszközkészlet GPU-gyorsított alkalmazásokat hozhat létre. További információkért lásd: a [CUDA telepítési útmutató](http://docs.nvidia.com/cuda/cuda-installation-guide-linux/index.html).
 
-Minden virtuális gép az SSH-kapcsolat teremtsen CUDA illesztőprogramok telepítéséhez. Ellenőrizze, hogy a rendszer egy CUDA-kompatibilis grafikus processzort tartalmaz, futtassa a következő parancsot:
+CUDA illesztőprogramok telepíteni, győződjön meg arról, az SSH-kapcsolatot minden egyes virtuális géphez. Győződjön meg arról, hogy a rendszer a CUDA-kompatibilis GPU rendelkezik-e, futtassa a következő parancsot:
 
 ```bash
 lspci | grep -i NVIDIA
 ```
-(Egy NVIDIA Tesla K80 kártya megjelenítő) az alábbi példához hasonló kimenetet fog látni:
+(Ahol az NVIDIA Tesla K80-kártya) az alábbi példához hasonló kimenetet fog látni:
 
 ![lspci parancs kimenete](./media/n-series-driver-setup/lspci.png)
 
-Majd a terjesztéshez futtatási telepítési parancsokat.
+Ezután a disztribúció adott futtatási telepítési parancsokat.
 
 ### <a name="ubuntu-1604-lts"></a>Ubuntu 16.04 LTS
 
-1. Töltse le és telepítse a CUDA illesztőprogramokat.
+1. Töltse le és telepítse a CUDA-illesztőprogramokat.
   ```bash
   CUDA_REPO_PKG=cuda-repo-ubuntu1604_9.1.85-1_amd64.deb
 
@@ -69,19 +71,19 @@ Majd a terjesztéshez futtatási telepítési parancsokat.
 
   ```
 
-  A telepítés több percet is igénybe vehet.
+  A telepítés több percig is eltarthat.
 
-2. A teljes CUDA eszközkészlet telepíti, írja be:
+2. Szükség esetén telepíti a teljes CUDA-eszközkészlet, írja be:
 
   ```bash
   sudo apt-get install cuda
   ```
 
-3. A virtuális gép újraindul, és ellenőrizheti a telepítést.
+3. A virtuális gépet, és ellenőrizheti a telepítést.
 
-#### <a name="cuda-driver-updates"></a>Illesztőprogram-frissítést CUDA
+#### <a name="cuda-driver-updates"></a>CUDA-illesztőprogramok frissítései
 
-Azt javasoljuk, hogy rendszeres időközönként frissíti CUDA illesztőprogramok a telepítés utáni.
+Azt javasoljuk, hogy rendszeres időközönként frissíti CUDA illesztőprogramok telepítése után.
 
 ```bash
 sudo apt-get update
@@ -95,9 +97,9 @@ sudo apt-get install cuda-drivers
 sudo reboot
 ```
 
-### <a name="centos-or-red-hat-enterprise-linux-73-or-74"></a>CentOS vagy a Red Hat Enterprise Linux 7.3 vagy 7.4
+### <a name="centos-or-red-hat-enterprise-linux-73-or-74"></a>CentOS és Red Hat Enterprise Linux 7.4 vagy a 7.3
 
-1. A kernel frissítése.
+1. Frissítse a kernel.
 
   ```
   sudo yum install kernel kernel-tools kernel-headers kernel-devel
@@ -118,7 +120,7 @@ sudo reboot
   sudo reboot
   ```
  
-3. Csatlakozzon újra a virtuális Gépet, és folytathatja a telepítést a következő parancsokat:
+3. A virtuális Géphez csatlakozni, és folytathatja a telepítést a következő parancsokat:
 
   ```bash
   sudo rpm -Uvh https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
@@ -136,45 +138,45 @@ sudo reboot
   sudo yum install cuda-drivers
   ```
 
-  A telepítés több percet is igénybe vehet. 
+  A telepítés több percig is eltarthat. 
 
-4. A teljes CUDA eszközkészlet telepíti, írja be:
+4. Szükség esetén telepíti a teljes CUDA-eszközkészlet, írja be:
 
   ```bash
   sudo yum install cuda
   ```
 
-5. A virtuális gép újraindul, és ellenőrizheti a telepítést.
+5. A virtuális gépet, és ellenőrizheti a telepítést.
 
-### <a name="verify-driver-installation"></a>Illesztőprogram telepítésének ellenőrzése
+### <a name="verify-driver-installation"></a>Ellenőrizze az illesztőprogram telepítése
 
-Lekérdezni a GPU eszközállapotba SSH a virtuális gép, és futtassa a [nvidia-smi](https://developer.nvidia.com/nvidia-system-management-interface) parancssori segédprogram illesztőprogrammal telepítve. 
+Lekérdezni a GPU Eszközállapot SSH, a virtuális gép, és futtassa a [nvidia-smi](https://developer.nvidia.com/nvidia-system-management-interface) parancssori segédprogram az illesztőprogram telepítve. 
 
-Ha az illesztőprogram telepítve van, látni fogja a következőhöz hasonló kimenetet. Vegye figyelembe, hogy **GPU-Util** 0 % mutatja, kivéve, ha meg van nyitva egy GPU munkaterhelés a virtuális Gépen. A illesztőprogramjának verziószámát és a GPU részletek látható eltérő lehet.
+Ha az illesztőprogram telepítve van, látni fogja a következőhöz hasonló kimenetet. Vegye figyelembe, hogy **GPU-Util** jeleníti meg a 0 %-os, kivéve, ha a virtuális gép jelenleg fut a GPU számítási feladatok. Az illesztőprogram verziója és a GPU-részletek látható eltérő lehet.
 
 ![NVIDIA eszköz állapota](./media/n-series-driver-setup/smi.png)
 
 ## <a name="rdma-network-connectivity"></a>RDMA hálózati kapcsolat
 
-RDMA hálózati kapcsolat engedélyezhető az RDMA-kompatibilis N sorozatú virtuális gépeken, például NC24r telepített, az azonos rendelkezésre állási csoport vagy a Virtuálisgép-méretezési csoportban lévő egyetlen elhelyezési csoport. Az RDMA hálózati Message Passing Interface (MPI) forgalmat támogatja az Intel MPI futó alkalmazások 5.x-es vagy újabb verziója. Kövesse a további követelmények:
+RDMA hálózati kapcsolat RDMA-kompatibilis az N sorozatú virtuális gépek például NC24r helyezze üzembe, ugyanazon rendelkezésre állási csoportban vagy egy Virtuálisgép-méretezési csoport egyetlen elhelyezési csoport engedélyezhető. Az RDMA hálózati futtatott az Intel MPI-alkalmazások esetében támogatja a Message Passing Interface (MPI) forgalmat 5.x vagy újabb verziója. Kövesse a további követelmények:
 
 ### <a name="distributions"></a>Felosztások
 
-Az Azure piactéren, amely támogatja az RDMA-kapcsolatot az N-sorozatú virtuális gépeken futó lemezképet egy RDMA-kompatibilis N-sorozat VMs telepítése:
+RDMA-kompatibilis az N sorozatú virtuális gépeket a rendszerképeket az Azure Marketplace-en, amely támogatja az RDMA-kapcsolattal az N sorozatú virtuális gépek üzembe helyezése:
   
-* **Ubuntu 16.04 LTS** - RDMA illesztőprogramok konfigurálja a virtuális Gépre, és regisztrálhatja az Intel Intel MPI letöltése:
+* **Ubuntu 16.04 LTS** – RDMA-illesztőprogramok a virtuális gép konfigurálása és regisztrálása az Intel MPI letöltéséhez Intel:
 
   [!INCLUDE [virtual-machines-common-ubuntu-rdma](../../../includes/virtual-machines-common-ubuntu-rdma.md)]
 
-* **7.4 HPC centOS alapú** -RDMA-illesztőprogramok és Intel MPI 5.1 telepítve vannak a virtuális Gépet.
+* **7.4-es HPC centOS-alapú** -RDMA-illesztőprogramok és az Intel MPI 5.1 telepítve a virtuális gépen.
 
-## <a name="install-grid-drivers-on-nv-series-vms"></a>A portok HV-sorozatú virtuális gépeken rács illesztőprogramok telepítése
+## <a name="install-grid-drivers-on-nv-series-vms"></a>Az NV-sorozat virtuális gépei GRID illesztőprogramok telepítése
 
-Portok HV-sorozatú virtuális gépeken NVIDIA rács illesztőprogramok telepítéséhez az SSH-kapcsolat ellenőrizze az egyes virtuális, és kövesse a lépéseket a Linux terjesztéshez. 
+NV-sorozat virtuális gépei NVIDIA GRID illesztőprogramok telepítéséhez létesítsen SSH-kapcsolatot minden egyes virtuális géphez, és kövesse a lépéseket, a Linux-disztribúció. 
 
 ### <a name="ubuntu-1604-lts"></a>Ubuntu 16.04 LTS
 
-1. Futtassa a `lspci` parancsot. Ellenőrizze, hogy a NVIDIA M60 kártya vagy kártyák PCI eszközként látható.
+1. Futtassa a `lspci` parancsot. Győződjön meg arról, hogy az NVIDIA M60 kártya vagy kártyák láthatók, a PCI-eszközök.
 
 2. Telepítse a frissítéseket.
 
@@ -187,7 +189,7 @@ Portok HV-sorozatú virtuális gépeken NVIDIA rács illesztőprogramok telepít
 
   sudo apt-get install build-essential ubuntu-desktop -y
   ```
-3. Tiltsa le a Nouveau kernel illesztőprogramot, amely nem kompatibilis a NVIDIA illesztőprogram. (Csak NVIDIA illesztőprogramot használja a portok HV virtuális gépeken.) Ehhez az szükséges, egy fájlt létrehozni a `/etc/modprobe.d `nevű `nouveau.conf` a következő tartalommal:
+3. Tiltsa le a Nouveau kernel-illesztőprogram, ami nem kompatibilis az NVIDIA illesztőprogram. (Csak a NVIDIA illesztőprogram használata NV-beli virtuális gépeken.) Ehhez hozzon létre egy fájlt a `/etc/modprobe.d `nevű `nouveau.conf` a következő tartalommal:
 
   ```
   blacklist nouveau
@@ -196,13 +198,13 @@ Portok HV-sorozatú virtuális gépeken NVIDIA rács illesztőprogramok telepít
   ```
 
 
-4. A virtuális gép újraindul, és csatlakozzon újra. Kilépés X kiszolgáló:
+4. A virtuális gépet, és csatlakoztassa újra. Kilépés X-kiszolgáló:
 
   ```bash
   sudo systemctl stop lightdm.service
   ```
 
-5. Töltse le és telepítse a rács illesztőprogramját:
+5. Töltse le és telepítse a rács illesztőprogramot:
 
   ```bash
   wget -O NVIDIA-Linux-x86_64-grid.run https://go.microsoft.com/fwlink/?linkid=849941  
@@ -212,23 +214,23 @@ Portok HV-sorozatú virtuális gépeken NVIDIA rács illesztőprogramok telepít
   sudo ./NVIDIA-Linux-x86_64-grid.run
   ``` 
 
-6. Ha megkérdezi, hogy kívánja-e frissíteni a X-konfigurációs fájlt, jelölje be a nvidia-xconfig segédprogram futtatásához **Igen**.
+6. Amikor megkérdezi, hogy szeretné-e frissíteni a X-konfigurációs fájlt, jelölje be a nvidia-xconfig segédprogram futtatásához **Igen**.
 
-7. A telepítést követően /etc/nvidia/gridd.conf.template másolása egy új fájl gridd.conf a hely etc/nvidia /
+7. A telepítés befejezése után egy új fájl gridd.conf, helye/etc/nvidia/másolja /etc/nvidia/gridd.conf.template
 
   ```bash
   sudo cp /etc/nvidia/gridd.conf.template /etc/nvidia/gridd.conf
   ```
 
-8. Adja hozzá a következőt a `/etc/nvidia/gridd.conf`:
+8. Adja hozzá a következőt `/etc/nvidia/gridd.conf`:
  
   ```
   IgnoreSP=TRUE
   ```
-9. A virtuális gép újraindul, és ellenőrizheti a telepítést.
+9. A virtuális gépet, és ellenőrizheti a telepítést.
 
 
-### <a name="centos-or-red-hat-enterprise-linux"></a>CentOS vagy a Red Hat Enterprise Linux 
+### <a name="centos-or-red-hat-enterprise-linux"></a>CentOS és Red Hat Enterprise Linux 
 
 1. A kernel és DKMS frissítése.
  
@@ -242,7 +244,7 @@ Portok HV-sorozatú virtuális gépeken NVIDIA rács illesztőprogramok telepít
   sudo yum install dkms
   ```
 
-2. Tiltsa le a Nouveau kernel illesztőprogramot, amely nem kompatibilis a NVIDIA illesztőprogram. (Csak NVIDIA illesztőprogramot használja a portok HV virtuális gépeken.) Ehhez az szükséges, egy fájlt létrehozni a `/etc/modprobe.d `nevű `nouveau.conf` a következő tartalommal:
+2. Tiltsa le a Nouveau kernel-illesztőprogram, ami nem kompatibilis az NVIDIA illesztőprogram. (Csak a NVIDIA illesztőprogram használata NV-beli virtuális gépeken.) Ehhez hozzon létre egy fájlt a `/etc/modprobe.d `nevű `nouveau.conf` a következő tartalommal:
 
   ```
   blacklist nouveau
@@ -250,7 +252,7 @@ Portok HV-sorozatú virtuális gépeken NVIDIA rács illesztőprogramok telepít
   blacklist lbm-nouveau
   ```
  
-3. A virtuális gép újraindul, csatlakoztassa újra, és telepítse a legújabb [Linux integrációs szolgáltatást tartalmaz a Hyper-V és az Azure](https://www.microsoft.com/download/details.aspx?id=55106).
+3. A virtuális gépet, csatlakoztassa újra, és telepítse a legújabb [a Hyper-V és az Azure Linux Integration Services](https://www.microsoft.com/download/details.aspx?id=55106).
  
   ```bash
   wget https://aka.ms/lis
@@ -265,9 +267,9 @@ Portok HV-sorozatú virtuális gépeken NVIDIA rács illesztőprogramok telepít
 
   ```
  
-4. A virtuális gép, és futtassa újra a `lspci` parancsot. Ellenőrizze, hogy a NVIDIA M60 kártya vagy kártyák PCI eszközként látható.
+4. A virtuális gép, és futtassa újra csatlakozni a `lspci` parancsot. Győződjön meg arról, hogy az NVIDIA M60 kártya vagy kártyák láthatók, a PCI-eszközök.
  
-5. Töltse le és telepítse a rács illesztőprogramját:
+5. Töltse le és telepítse a rács illesztőprogramot:
 
   ```bash
   wget -O NVIDIA-Linux-x86_64-grid.run https://go.microsoft.com/fwlink/?linkid=849941  
@@ -276,33 +278,33 @@ Portok HV-sorozatú virtuális gépeken NVIDIA rács illesztőprogramok telepít
 
   sudo ./NVIDIA-Linux-x86_64-grid.run
   ``` 
-6. Ha megkérdezi, hogy kívánja-e frissíteni a X-konfigurációs fájlt, jelölje be a nvidia-xconfig segédprogram futtatásához **Igen**.
+6. Amikor megkérdezi, hogy szeretné-e frissíteni a X-konfigurációs fájlt, jelölje be a nvidia-xconfig segédprogram futtatásához **Igen**.
 
-7. A telepítést követően /etc/nvidia/gridd.conf.template másolása egy új fájl gridd.conf a hely etc/nvidia /
+7. A telepítés befejezése után egy új fájl gridd.conf, helye/etc/nvidia/másolja /etc/nvidia/gridd.conf.template
   
   ```bash
   sudo cp /etc/nvidia/gridd.conf.template /etc/nvidia/gridd.conf
   ```
   
-8. Adja hozzá a következőt a `/etc/nvidia/gridd.conf`:
+8. Adja hozzá a következőt `/etc/nvidia/gridd.conf`:
  
   ```
   IgnoreSP=TRUE
   ```
-9. A virtuális gép újraindul, és ellenőrizheti a telepítést.
+9. A virtuális gépet, és ellenőrizheti a telepítést.
 
-### <a name="verify-driver-installation"></a>Illesztőprogram telepítésének ellenőrzése
+### <a name="verify-driver-installation"></a>Ellenőrizze az illesztőprogram telepítése
 
 
-Lekérdezni a GPU eszközállapotba SSH a virtuális gép, és futtassa a [nvidia-smi](https://developer.nvidia.com/nvidia-system-management-interface) parancssori segédprogram illesztőprogrammal telepítve. 
+Lekérdezni a GPU Eszközállapot SSH, a virtuális gép, és futtassa a [nvidia-smi](https://developer.nvidia.com/nvidia-system-management-interface) parancssori segédprogram az illesztőprogram telepítve. 
 
-Ha az illesztőprogram telepítve van, látni fogja a következőhöz hasonló kimenetet. Vegye figyelembe, hogy **GPU-Util** 0 % mutatja, kivéve, ha meg van nyitva egy GPU munkaterhelés a virtuális Gépen. A illesztőprogramjának verziószámát és a GPU részletek látható eltérő lehet.
+Ha az illesztőprogram telepítve van, látni fogja a következőhöz hasonló kimenetet. Vegye figyelembe, hogy **GPU-Util** jeleníti meg a 0 %-os, kivéve, ha a virtuális gép jelenleg fut a GPU számítási feladatok. Az illesztőprogram verziója és a GPU-részletek látható eltérő lehet.
 
 ![NVIDIA eszköz állapota](./media/n-series-driver-setup/smi-nv.png)
  
 
 ### <a name="x11-server"></a>X11 kiszolgáló
-Ha egy X11 van szüksége egy Permanens virtuális gépre, a távoli kapcsolatok kiszolgáló [x11vnc](http://www.karlrunge.com/x11vnc/) használata ajánlott, mivel lehetővé teszi a hardveres gyorsítás képek. A M60 eszköz BusID kell kézzel felvenni a xconfig fájl (`etc/X11/xorg.conf` Ubuntu 16.04 LTS, a `/etc/X11/XF86config` CentOS 7.3 vagy a Red Hat Enterprise Server 7.3). Adja hozzá a `"Device"` szakasz a következőhöz hasonló:
+Ha egy X11 kell kiszolgáló távoli kapcsolatok NV virtuális géphez, [x11vnc](http://www.karlrunge.com/x11vnc/) ajánlott, mert lehetővé teszi a képek hardveres gyorsítás. Az eszköz M60 BusID manuálisan kell hozzáadni a X11 konfigurációs fájlt (általában `etc/X11/xorg.conf`). Adjon hozzá egy `"Device"` szakasz a következőhöz hasonló:
  
 ```
 Section "Device"
@@ -310,33 +312,40 @@ Section "Device"
     Driver         "nvidia"
     VendorName     "NVIDIA Corporation"
     BoardName      "Tesla M60"
-    BusID          "your-BusID:0:0:0"
+    BusID          "PCI:0@your-BusID:0:0"
 EndSection
 ```
  
-Emellett frissítse a `"Screen"` szakasz az eszköz használatához.
+Emellett frissítse az `"Screen"` szakaszban az eszköz használatára.
  
-A tizedesvesszőtől BusID található futtatásával
+A tizedes tört BusID található futtatásával
 
 ```bash
-echo $((16#`/usr/bin/nvidia-smi --query-gpu=pci.bus_id --format=csv | tail -1 | cut -d ':' -f 1`))
+nvidia-xconfig --query-gpu-info | awk '/PCI BusID/{print $4}'
 ```
  
-A BusID módosíthatja, ha egy virtuális gép lekérdezi teljesítményigény vagy újraindítása után. Emiatt érdemes lehet frissíteni a X11 a BusID parancsfájl létrehozása, ha egy virtuális gép újraindítása után. Hozzon létre például egy nevű parancsprogram `busidupdate.sh` (vagy egy másik nevet úgy dönt,) a következő tartalommal:
+A BusID is módosítani, ha a virtuális gép beolvasása újra kiosztja, vagy újraindítása. Ezért érdemes lehet frissíteni a BusID a X11 a parancsfájl létrehozása, ha egy virtuális gép újraindul. Hozzon létre például egy nevű szkriptet `busidupdate.sh` (vagy egy másik, a választott név) tartalma az alábbihoz hasonló:
 
 ```bash 
 #!/bin/bash
-BUSID=$((16#`/usr/bin/nvidia-smi --query-gpu=pci.bus_id --format=csv | tail -1 | cut -d ':' -f 1`))
+XCONFIG="/etc/X11/xorg.conf"
+OLDBUSID=`awk '/BusID/{gsub(/"/, "", $2); print $2}' ${XCONFIG}`
+NEWBUSID=`nvidia-xconfig --query-gpu-info | awk '/PCI BusID/{print $4}'`
 
-if grep -Fxq "${BUSID}" /etc/X11/XF86Config; then     echo "BUSID is matching"; else   echo "BUSID changed to ${BUSID}" && sed -i '/BusID/c\    BusID          \"PCI:0@'${BUSID}':0:0:0\"' /etc/X11/XF86Config; fi
+if [[ "${OLDBUSID}" == "${NEWBUSID}" ]] ; then
+        echo "NVIDIA BUSID not changed - nothing to do"
+else
+        echo "NVIDIA BUSID changed from \"${OLDBUSID}\" to \"${NEWBUSID}\": Updating ${XCONFIG}" 
+        sed -e 's|BusID.*|BusID          '\"${NEWBUSID}\"'|' -i ${XCONFIG}
+fi
 ```
 
-Ezután hozzon létre egy bejegyzést a frissítési parancsfájlt a `/etc/rc.d/rc3.d` , a parancsfájl hívja meg, a legfelső szintű rendszerindító szerepel.
+Ezután hozzon létre egy bejegyzés a frissítési parancsfájlt a `/etc/rc.d/rc3.d` , a szkript meghívása rendszerindító a legfelső szintű.
 
 ## <a name="troubleshooting"></a>Hibaelhárítás
 
-* Adatmegőrzési mód használatával állíthatja be `nvidia-smi` , a parancs kimenetében esetén gyorsabb lekérdezés kártyák kell. Adatmegőrzési üzemmód beállítása, hajtsa végre a `nvidia-smi -pm 1`. Vegye figyelembe, hogy a virtuális gép újraindul, ha a üzemmódját eltűnik. Lehet mindig parancsprogramot futtatni a üzemmódját indításkor végrehajtásához.
+* Beállíthatja, hogy adatmegőrzési mód használatával `nvidia-smi` , a parancs végrehajtása gyorsabb, amikor a lekérdezés kártyák kell. Adatmegőrzési módja beállításához hajtsa végre a `nvidia-smi -pm 1`. Vegye figyelembe, hogy ha a virtuális gép újraindul, a üzemmódját ami újbóli próbálkozással megszűnik. A üzemmódját indításkor végrehajtásához parancsfájllal mindig is végrehajthatja.
 
 ## <a name="next-steps"></a>További lépések
 
-* A Linux virtuális gép lemezképének a telepített NVIDIA illesztőprogramokkal, lásd: [generalize és a Linux virtuális gép rögzítése](capture-image.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+* Tekintse meg a telepített NVIDIA illesztőprogram egy Linux rendszerű Virtuálisgép-lemezkép rögzítéséhez [generalize és a egy Linuxos virtuális gép rögzítése](capture-image.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).

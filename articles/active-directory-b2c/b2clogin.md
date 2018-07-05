@@ -1,33 +1,33 @@
 ---
-title: B2clogin.com használatával |} Microsoft Docs
-description: További tudnivalók login.microsoftonline.com b2clogin.com helyett.
+title: A b2clogin.com használata |} A Microsoft Docs
+description: Ismerje meg a b2clogin.com használata helyett login.microsoftonline.com.
 services: active-directory-b2c
 author: davidmu1
 manager: mtillman
 ms.service: active-directory
 ms.workload: identity
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/29/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: c4b3122984cdcb324f7b86e44a62e111d6ca0a29
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.openlocfilehash: 1d42d9a97244eeff501b9d02b0f143d6ef0c91b2
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37131592"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37440630"
 ---
 # <a name="using-b2clogincom"></a>A b2clogin.com használata
 
 >[!IMPORTANT]
->Ez a szolgáltatás csak a nyilvános előzetes verzió 
+>Ez a funkció csak a nyilvános előzetes verzió 
 >
 
-Most már rendelkezik a lehetőséget az Azure AD B2C-bA `<YourTenantName>.b2clogin.com` helyett `login.microsoftonline.com`.  Ennek a számos előnye van:
-* Többé nem osztja a más Microsoft-termékekkel a azonos cookie-k fejlécek méretkorlátját.
-* Eltávolíthatja a Microsoft mutató összes hivatkozást az URL-címben (lecserélheti `<YourTenantName>.onmicrosoft.com` a bérlő azonosítójú). Például: `https://<tenantname>.b2clogin.com/tfp/<tenantname>/<policyname>/v2.0/.well-known/openid-configuration`.
+Mostantól lehetősége az Azure AD B2C szolgáltatással rendelkező `<YourTenantName>.b2clogin.com` használata helyett `login.microsoftonline.com`.  Ez számos előnye van:
+* Már nem oszthat a cookie-k azonos fejlécek méretkorlátját a más Microsoft-termékekkel.
+* Minden hivatkozás, amelyben a Microsoft eltávolíthatja az URL-címben (lecserélheti `<YourTenantName>.onmicrosoft.com` az a bérlő Azonosítóját). Például: `https://<tenantname>.b2clogin.com/tfp/<tenantname>/<policyname>/v2.0/.well-known/openid-configuration`.
 
- B2clogin.com előnyeit, be kell állítani néhány a következőket:
+ Annak érdekében, hogy kihasználhassa a b2clogin.com-on, megadhatja a következőket kell:
 
-1. Az a **futtatása most végpont** győződjön meg arról, hogy azok be `<YourTenantName>.b2clogin.com` helyett `login.microsoftonline.com`.
-2. Ha MSAL használ, be kell `validateauthority=false`.  Ennek oka, hogy a jogkivonat-kibocsátó válik`<YourTenantName>.b2clogin.com`.
+1. Az a **Futtatás most végponton** győződjön meg arról, hogy használ `<YourTenantName>.b2clogin.com` használata helyett `login.microsoftonline.com`.
+2. Az MSAL használatakor be kell `validateauthority=false`.  Ennek oka, hogy a jogkivonat kibocsátója válik`<YourTenantName>.b2clogin.com`.

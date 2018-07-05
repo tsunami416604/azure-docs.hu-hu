@@ -1,6 +1,6 @@
 ---
-title: Az Azure IoT Hub lekérdezési nyelv megismerése |} Microsoft Docs
-description: Fejlesztői útmutató – az SQL-szerű IoT Hub leírása lekérdezési eszköz/modul twins és feladatok kapcsolatos információkat kérdezi le az IoT hub nyelv.
+title: Az Azure IoT Hub lekérdezési nyelv ismertetése |} A Microsoft Docs
+description: Fejlesztői útmutató – a leírását az SQL-szerű IoT Hub lekérdezési nyelvet, az IoT hub eszköz/ikermodulokkal és feladatok kapcsolatos információk olvashatók be.
 author: fsautomata
 manager: ''
 ms.service: iot-hub
@@ -8,25 +8,25 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 02/26/2018
 ms.author: elioda
-ms.openlocfilehash: 663277bfe347f42fa7ee241f5acddf4a3dca9268
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 321d70a04e3c524e578a01e8531d63733d088c3f
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34633512"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37444184"
 ---
-# <a name="iot-hub-query-language-for-device-and-module-twins-jobs-and-message-routing"></a>Az IoT-központ lekérdezési nyelv eszköz és a modul twins, a feladatok és az üzenet-útválasztás
+# <a name="iot-hub-query-language-for-device-and-module-twins-jobs-and-message-routing"></a>IoT Hub lekérdezési nyelv az eszköz és a modul twins, feladatokkal és üzenet-útválasztása
 
-Az IoT-központ biztosít egy hatékony SQL-szerű nyelv való adatbeolvasás vonatkozó [eszköz twins] [ lnk-twins] és [feladatok][lnk-jobs], és [üzenet útválasztási][lnk-devguide-messaging-routes]. Ez a cikk mutatja be:
+IoT Hub által biztosított információk lekéréséhez hatékony SQL-szerű nyelv kapcsolatos [ikereszközök] [ lnk-twins] és [feladatok][lnk-jobs], és [üzenet-útválasztása][lnk-devguide-messaging-routes]. Ez a cikk bemutatja:
 
-* Az IoT-központ lekérdező nyelv, a fő szolgáltatásainak bemutatása és
+* Az IoT Hub lekérdezési nyelv, a fő funkciókat bemutató és
 * A nyelv részletes leírása.
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-partial.md)]
 
-## <a name="device-and-module-twin-queries"></a>Eszköz- és modul iker lekérdezések
-[Eszköz twins] [ lnk-twins] és modul twins tetszőleges JSON-objektumok címkék és a tulajdonságok is tartalmazhat. Az IoT-központ segítségével lekérdezés eszköz twins és modul twins JSON-dokumentumként egyetlen tartalmazó összes iker információt.
-Tegyük fel például, hogy az IoT hub eszköz twins rendelkezik-e az alábbi szerkezettel (modul iker lenne hasonló, csak az olyan további moduleId):
+## <a name="device-and-module-twin-queries"></a>Eszköz- és modul ikereszköz-lekérdezések
+[Ikereszközök] [ lnk-twins] és ikermodulokkal tetszőleges JSON-objektumok címkék és tulajdonságok is tartalmazhat. Az IoT Hub lehetővé teszi lekérdezések ikereszközök és ikermodulokkal JSON-dokumentumként egyetlen összes ikereszköz-adatokat tartalmazó.
+Tegyük fel például, hogy az IoT hub device twins az alábbi struktúrával rendelkeznek (ikermodul lenne ehhez hasonló csak, egy további moduleId):
 
 ```json
 {
@@ -78,26 +78,26 @@ Tegyük fel például, hogy az IoT hub eszköz twins rendelkezik-e az alábbi sz
 }
 ```
 
-### <a name="device-twin-queries"></a>Eszköz iker lekérdezések
+### <a name="device-twin-queries"></a>Ikereszköz-lekérdezések
 
-Az IoT-központ nevű dokumentum gyűjteményként elérhetővé teszi az eszköz twins **eszközök**.
-Ezért az alábbi lekérdezés lekéri az eszköz twins teljes készletét:
+Az IoT Hub az ikereszközök mutatja egy dokumentum egy dokumentumgyűjteményben nevű **eszközök**.
+Ezért az alábbi lekérdezés lekéri az ikereszközök teljes készletét:
 
 ```sql
 SELECT * FROM devices
 ```
 
 > [!NOTE]
-> [Azure IoT SDK-k] [ lnk-hub-sdks] támogatja a nagyméretű eredmények lapozást.
+> [Az Azure IoT SDK-k] [ lnk-hub-sdks] támogatja a nagy eredményben való lapozást.
 
-Az IoT-központ lehetővé teszi tetszőleges feltételek szűrésének eszköz twins. Például fogadásához eszköz where twins a **location.region** címke értéke **USA** használja a következő lekérdezést:
+Az IoT Hub lehetővé teszi tetszőleges feltételekkel szűrés ikereszközök lekéréséhez. A például az eszköz fogadni párok helyét a **location.region** címke értéke **USA** használja a következő lekérdezést:
 
 ```sql
 SELECT * FROM devices
 WHERE tags.location.region = 'US'
 ```
 
-Logikai operátorok és aritmetikai összehasonlítások is támogatott. Például lekérdezni az eszközt kisebb, mint percenként telemetriai adatokat küldhet az Egyesült Államok és a konfigurált twins használja a következő lekérdezést:
+Logikai operátorok és aritmetikai összehasonlítások is támogatott. Például lekérdezni az eszközt twins az Egyesült Államokban találhatók, és konfigurálta a telemetriai adatok küldése a kisebb, mint minden percben használja a következő lekérdezést:
 
 ```sql
 SELECT * FROM devices
@@ -105,23 +105,23 @@ WHERE tags.location.region = 'US'
     AND properties.reported.telemetryConfig.sendFrequencyInSecs >= 60
 ```
 
-A könnyebb is lehetőség az állandókat használja a **IN** és **nA** (nem szereplő) operátor. Például beolvasása Wi-Fi, sem a vezetékes kapcsolati eszköz twins használja a következő lekérdezést:
+Könnyebb áttekinthetőség érdekében lehetőség arra is tömb állandókat a használatára a **IN** és **nA** (nem a) operátorok. Például lekéréséhez, amelyek a Wi-Fi-vagy vezetékes kapcsolati ikereszközök használja a következő lekérdezést:
 
 ```sql
 SELECT * FROM devices
 WHERE properties.reported.connectivity IN ['wired', 'wifi']
 ```
 
-Legtöbbször az összes eszköz twins, amelyek tartalmaznak egy adott tulajdonságra azonosításához. Az IoT-Központ támogatja a függvény `is_defined()` erre a célra. Például a lekérése eszköz twins, amelyek meghatározzák a `connectivity` tulajdonságot használja a következő lekérdezést:
+Gyakran szükség egy adott tulajdonságot tartalmazó összes ikereszközök azonosításához. IoT Hub által támogatott, a függvény `is_defined()` erre a célra. Lekérése ikereszközök, amelyek meghatározzák, például a `connectivity` tulajdonságot használja a következő lekérdezést:
 
 ```SQL
 SELECT * FROM devices
 WHERE is_defined(properties.reported.connectivity)
 ```
 
-Tekintse meg a [WHERE záradék] [ lnk-query-where] a szűrési képességek a teljes referencia szakasza.
+Tekintse meg a [WHERE záradék] [ lnk-query-where] a szűrési képességek a teljes vonatkozó szakaszában.
 
-Csoportosítás és az aggregációhoz is támogatottak. Minden telemetriai található eszközök száma, a konfiguráció állapota használja a következő lekérdezést:
+Csoportosítás és összesítés is támogatottak. Például eszközök számát is minden egyes telemetriai adatokat a konfigurációs állapot használja a következő lekérdezést:
 
 ```sql
 SELECT properties.reported.telemetryConfig.status AS status,
@@ -130,7 +130,7 @@ FROM devices
 GROUP BY properties.reported.telemetryConfig.status
 ```
 
-Ez a csoportosítás lekérdezés eredményeként meghaladná a következőhöz hasonló:
+Ez a csoportosítás a lekérdezés eredménye termékazonosítóhoz az alábbi példához hasonló:
 
 ```json
 [
@@ -151,34 +151,34 @@ Ez a csoportosítás lekérdezés eredményeként meghaladná a következőhöz 
 
 Ebben a példában három eszközöket jelentett sikeres konfigurációhoz, két továbbra is a konfiguráció alkalmazását, és egy hibát jelzett.
 
-A leképezési lekérdezésekre a fejlesztők olyan érdeklő tulajdonságait adja vissza. Például az összes tevékenység legutóbbi beolvasása le eszközök használata a következő lekérdezést:
+A leképezési lekérdezésekre lehetővé teszik a fejlesztők számára, hogy csak a érdeklő tulajdonságokat adja vissza. Például beolvasni az összes legutóbbi tevékenység leválasztott eszközöket használja a következő lekérdezést:
 
 ```sql
 SELECT LastActivityTime FROM devices WHERE status = 'enabled'
 ```
 
-### <a name="module-twin-queries"></a>A két moduljánál a lekérdezés
+### <a name="module-twin-queries"></a>A modul ikereszköz-lekérdezések
 
-A modul twins lekérdezése hasonló eszköz twins a lekérdezéshez, de egy másik gyűjtemény/névteret használ, azaz "az eszközök" helyett kérdezhetők le
+A lekérdezés: ikereszközök lekérdezése az ikermodulokkal hasonlít, de egy másik gyűjtemény/névteret, azaz "az eszközök" helyett használatával lekérdezheti, ha
 
 ```sql
 SELECT * FROM devices.modules
 ```
 
-Nem lehetővé, hogy az eszközök és devices.modules gyűjtemények között. A lekérdezés modul twins az eszközön, akkor tegye címkék alapján. A lekérdezés által visszaadott összes modul twins, minden eszközön, a vizsgálati állapotú:
+Hogy az eszközök és devices.modules gyűjtemények közötti illesztési nem teszik lehetővé. Ha szeretne lekérdezés ikermodulokkal eszközök között, ezt megteheti címkék alapján. Ez a lekérdezés összes eszközön vizsgálati állapotú összes ikermodulokkal adja vissza:
 
 ```sql
-Select * from devices.modules where reported.properties.status = 'scanning'
+Select * from devices.modules where properties.reported.status = 'scanning'
 ```
 
-Ez a lekérdezés visszaállítja az összes modul twins vizsgálati állapotú, de csak az eszközök megadott részhalmazát.
+Ez a lekérdezés összes ikermodulokkal vizsgálati állapotú, de csak a megadott eszközök részhalmaza adja vissza.
 
 ```sql
-Select * from devices.modules where reported.properties.status = 'scanning' and deviceId IN ('device1', 'device2')  
+Select * from devices.modules where properties.reported.status = 'scanning' and deviceId IN ('device1', 'device2')  
 ```
 
-### <a name="c-example"></a>C# – példa
-A lekérdezési funkciókat tesz elérhetővé a [C# szolgáltatás SDK] [ lnk-hub-sdks] a a **RegistryManager** osztály.
+### <a name="c-example"></a>C#-példa
+A lekérdezési funkciókat tesz elérhetővé a [C# Szolgáltatásoldali SDK-val] [ lnk-hub-sdks] a a **RegistryManager** osztály.
 Íme egy példa egy egyszerű lekérdezést:
 
 ```csharp
@@ -193,12 +193,12 @@ while (query.HasMoreResults)
 }
 ```
 
-A **lekérdezés** objektum létrejön az oldalméretet (legfeljebb 100). Ezután több oldalra melyeket hívja a **GetNextAsTwinAsync** módszerek több alkalommal.
+A **lekérdezés** egy oldal méretét (legfeljebb 100) az objektum létrejön. Több oldal blobnevet meghívásával, majd a **GetNextAsTwinAsync** módszerek több alkalommal.
 
-A lekérdezés vezérlőnek több **következő** értékek, attól függően, hogy a lekérdezés által igényelt deszerializálása beállítás. Például iker vagy feladat eszközobjektumok, vagy az egyszerű JSON leképezések használatakor.
+A lekérdezési objektummal mutatja meg több **tovább** értékek, a lekérdezés által igényelt deszerializálás függően. Például eszköz ikereszköz vagy a feladat objektumot, vagy egyszerű JSON leképezések használata esetén.
 
-### <a name="nodejs-example"></a>NODE.js – példa
-A lekérdezési funkciókat tesz elérhetővé a [Azure IoT szolgáltatás SDK for Node.js] [ lnk-hub-sdks] a a **beállításjegyzék** objektum.
+### <a name="nodejs-example"></a>NODE.js-példa
+A lekérdezési funkciókat tesz elérhetővé a [node.js-hez készült Azure IoT szolgáltatás SDK] [ lnk-hub-sdks] a a **beállításjegyzék** objektum.
 Íme egy példa egy egyszerű lekérdezést:
 
 ```nodejs
@@ -220,20 +220,20 @@ var onResults = function(err, results) {
 query.nextAsTwin(onResults);
 ```
 
-A **lekérdezés** objektum létrejön az oldalméretet (legfeljebb 100). Ezután több oldalra melyeket hívja a **nextAsTwin** metódus több alkalommal.
+A **lekérdezés** egy oldal méretét (legfeljebb 100) az objektum létrejön. Több oldal blobnevet meghívásával, majd a **nextAsTwin** metódus több alkalommal.
 
-A lekérdezés vezérlőnek több **következő** értékek, attól függően, hogy a lekérdezés által igényelt deszerializálása beállítás. Például iker vagy feladat eszközobjektumok, vagy az egyszerű JSON leképezések használatakor.
+A lekérdezési objektummal mutatja meg több **tovább** értékek, a lekérdezés által igényelt deszerializálás függően. Például eszköz ikereszköz vagy a feladat objektumot, vagy egyszerű JSON leképezések használata esetén.
 
 ### <a name="limitations"></a>Korlátozások
 
 > [!IMPORTANT]
-> Lekérdezés eredményei eszköz twins lehet néhány perc múlva késedelem vonatkozóan a legutóbbi értékét. Ha egyéni eszköz twins-azonosító szerint kérdez le, lekérése eszköz iker API-t használó. Ez az API mindig a legfrissebb értéket tartalmaz, és magasabb szabályozás korlátok rendelkezik.
+> Lekérdezési eredmények ikereszközök lehet néhány perc alatt késleltetés garanciát a legújabb értékeket. Lekérdezés azonosítója alapján egyedi ikereszközök, ha a lekérési eszköz ikereszköz API-val. Az API-t mindig a legújabb értékeket tartalmaz, és rendelkezik a magasabb szabályozási korlátait.
 
-Jelenleg összehasonlítások csak között támogatott primitív típusok (nincs objektumok), például `... WHERE properties.desired.config = properties.reported.config` csak támogatott, ha ezek a tulajdonságok egyszerű értékűek.
+Jelenleg összehasonlítások támogatottak csak egyszerű típusok (nincs objektum) között például `... WHERE properties.desired.config = properties.reported.config` akkor támogatott, csak akkor, ha azokat a tulajdonságokat a primitív értékek találhatók.
 
-## <a name="get-started-with-jobs-queries"></a>Ismerkedés a feladatok lekérdezések
+## <a name="get-started-with-jobs-queries"></a>Feladatok lekérdezések használatának első lépései
 
-[Feladatok] [ lnk-jobs] lehetőséget nyújtanak olyan meg az eszközök-műveletek végrehajtásához. Minden eszköz iker tartalmazza, amely egy nevű gyűjtemény részét képezi a feladatok **feladatok**.
+[Feladatok] [ lnk-jobs] teszik lehetővé az eszközök csoportokon műveletek végrehajtásához. Minden egyes ikereszköz tartalmazza, amely egy nevű gyűjtemény részét képezi a feladatok **feladatok**.
 Logikailag,
 
 ```json
@@ -265,23 +265,23 @@ Logikailag,
 }
 ```
 
-Ez a gyűjtemény jelenleg lekérdezhető mint **devices.jobs** az IoT-központ a lekérdezési nyelv.
+Ez a gyűjtemény jelenleg információkat **devices.jobs** az IoT hub lekérdezési nyelv.
 
 > [!IMPORTANT]
-> A feladatok tulajdonság jelenleg, soha nem vissza, ha az eszköz twins lekérdezése. Ez azt jelenti, hogy a "ESZKÖZÖKRŐL" tartalmazó lekérdezések. A feladatok tulajdonság csak közvetlenül a lekérdezések használatával érhető el `FROM devices.jobs`.
+> Jelenleg a feladatok tulajdonság soha nem adja vissza ikereszközök lekérdezésekor. Azaz "ESZKÖZÖKRŐL" tartalmazó lekérdezések. A feladatok tulajdonság csak közvetlenül a lekérdezések használatával érhetők el `FROM devices.jobs`.
 >
 >
 
-Például ahhoz, hogy az összes feladat (elmúlt és ütemezett), amely egyetlen eszközt érintik, használhatja a következő lekérdezést:
+Például minden feladat (elmúlt és ütemezett) egy adott eszköz érintő lekéréséhez használhatja a következő lekérdezést:
 
 ```sql
 SELECT * FROM devices.jobs
 WHERE devices.jobs.deviceId = 'myDeviceId'
 ```
 
-Vegye figyelembe, hogy ez a lekérdezés biztosítja az eszközspecifikus állapota (és valószínűleg a közvetlen módszer válasz) minden visszaadott feladat.
-Akkor is az összes objektum tulajdonság tetszőleges logikai feltételeknek szűrése a **devices.jobs** gyűjtemény.
-Például az összes befejezett eszköz két frissítési feladat 2016 szeptemberétől után egy adott eszköz számára készült lekéréséhez használja a következő lekérdezést:
+Vegye figyelembe, hogyan nyújt ez a lekérdezés az eszközspecifikus állapota (és esetleg a közvetlen metódusra adott válasz) minden feladatot adott vissza.
+Az összes objektum tulajdonságai tetszőleges logikai feltételekkel szűrése lehetőség arra is a **devices.jobs** gyűjtemény.
+Az összes befejezett iker frissítése eszközfeladatok egy adott eszközhöz létrehozott követően, 2016. szeptember lekéréséhez például használja a következő lekérdezést:
 
 ```sql
 SELECT * FROM devices.jobs
@@ -291,7 +291,7 @@ WHERE devices.jobs.deviceId = 'myDeviceId'
     AND devices.jobs.createdTimeUtc > '2016-09-01'
 ```
 
-Egyetlen feladat eszközönkénti eredményeit is kérheti le.
+Egy feladat eszközönkénti eredményeit is lekérhet.
 
 ```sql
 SELECT * FROM devices.jobs
@@ -299,21 +299,21 @@ WHERE devices.jobs.jobId = 'myJobId'
 ```
 
 ### <a name="limitations"></a>Korlátozások
-A jelenleg, lekérdezi **devices.jobs** nem támogatják:
+Jelenleg a lekérdezések **devices.jobs** nem támogatják:
 
 * Leképezések, ezért csak `SELECT *` lehetséges.
-* Tekintse meg a feladat tulajdonságait (lásd az előző szakaszban) mellett az eszköz két feltételnek.
-* Összesítéseket, például a száma, avg, a csoportosítás alapját végrehajtása.
+* Tekintse meg az ikereszközön (lásd az előző szakaszban) feladat tulajdonságai mellett feltételeknek.
+* Összesítések, például a száma, avg, csoportosítás hajt végre.
 
-## <a name="device-to-cloud-message-routes-query-expressions"></a>Eszköz-felhő üzenet útvonalak lekérdezési kifejezések
+## <a name="device-to-cloud-message-routes-query-expressions"></a>Eszközről-a-felhőbe üzenetútvonalai lekérdezési kifejezések
 
-Használatával [eszközről a felhőbe útvonalak][lnk-devguide-messaging-routes], IoT-központ átirányítani az eszközről a felhőbe üzenetek különböző végpontok is beállíthat. Terjesztéséhez értékelni az egyes üzeneteket kifejezések alapján.
+Használatával [eszközről a felhőbe útvonalak][lnk-devguide-messaging-routes], konfigurálhatja úgy az IoT Hub tart elküldeni a különböző végpontok eszköz – felhő üzeneteket. Zahájeno szemben az egyes üzenetek értékelt kifejezések alapján történik.
 
-Az útvonal [feltétel] [ lnk-query-expressions] ugyanazt az IoT-központ a lekérdezés nyelvet használja, mint a feltételek iker és feladat lekérdezésekben. Útvonal feltételek értékelésének üzenetfejlécek és törzse. Az útválasztási lekérdezési kifejezésben járhatnak csak üzenetfejlécek, csak az üzenettörzs, vagy mindkettőt. Az IoT-központ azt feltételezi, hogy egy adott séma fejlécek és az üzenet törzse útválasztásához üzeneteket. A következő szakaszok ismertetik a megfelelő irányításához az IoT-központ szükséges.
+Az útvonal [feltétel] [ lnk-query-expressions] az ugyanazon az IoT Hub lekérdezési nyelv használja, mint az ikereszköz és a feladat lekérdezések feltételek. A fejlécek és törzs útvonal feltételek értékeli ki. Az útválasztási lekérdezési kifejezés csak üzenetfejlécekben is csak az üzenettörzs vagy mindkettőt. Az IoT Hub feltételezi, hogy egy adott séma a fejlécek és az üzenettörzs üzenetek irányítása érdekében. A következő szakaszok ismertetik, hogy mire szükség, az IoT Hub megfelelően továbbítani.
 
 ### <a name="routing-on-message-headers"></a>Fejlécek az Útválasztás
 
-Az IoT-központ azt feltételezi, hogy a következő JSON-ábrázolását üzenetfejlécek üzenet útválasztás:
+Az IoT Hub a következő JSON-reprezentációja az üzenet-útválasztása üzenetfejlécekben feltételezi:
 
 ```json
 {
@@ -335,17 +335,17 @@ Az IoT-központ azt feltételezi, hogy a következő JSON-ábrázolását üzene
 }
 ```
 
-Üzenet Rendszertulajdonságok fűzve előtagként a `'$'` szimbólum.
-Felhasználói tulajdonságok a nevükkel mindig érhetők el. Ha egy felhasználó tulajdonság neve egyezik a rendszer tulajdonsággal (például `$contentType`), a felhasználó tulajdonság a rendszer lekéri a `$contentType` kifejezés.
-A rendszer tulajdonság használatával zárójeleket mindig elérhető `{}`: például a kifejezés használható `{$contentType}` eléréséhez a rendszer tulajdonság `contentType`. Zárójeles tulajdonságnevek mindig a megfelelő rendszer tulajdonság beolvasása.
+Üzenet Rendszertulajdonságok van fűzve előtagként a `'$'` szimbólum.
+Felhasználói tulajdonságok, amelyek neve mindig érhetők el. Ha egy felhasználó tulajdonságnév időpontjával rendszer tulajdonsággal rendelkező (például `$contentType`), a felhasználó tulajdonság kérhető le a `$contentType` kifejezés.
+Mindig elérheti a zárójelek használatával rendszertulajdonság `{}`: például használhatja a kifejezés `{$contentType}` eléréséhez a rendszer tulajdonság `contentType`. A tulajdonságnevek zárójeles mindig kérik le a rendszer tulajdonsága.
 
 Ne feledje, hogy tulajdonságnevek megkülönböztetik a kis-és nagybetűket.
 
 > [!NOTE]
-> Minden üzenet tulajdonságai olyan karakterláncok. Rendszer tulajdonságai, lásd: a [– útmutató fejlesztőknek][lnk-devguide-messaging-format], jelenleg nem használható lekérdezésekben.
+> Összes üzenet tulajdonság olyan karakterláncok. Rendszertulajdonságok leírtak szerint a [fejlesztői útmutató][lnk-devguide-messaging-format], jelenleg nem használható lekérdezésekben.
 >
 
-Ha például egy `messageType` tulajdonság, érdemes egy végpontot, és egy másik végpont az összes riasztás irányíthatja az összes telemetriai adat. Írhat a telemetriai adatok továbbításához a következő kifejezést:
+Ha például egy `messageType` tulajdonságot használja, érdemes lehet az összes telemetriai átirányítása egy végpontot, és a egy másik végpontra minden riasztás. Írhat irányíthatja a telemetriát a következő kifejezést:
 
 ```sql
 messageType = 'telemetry'
@@ -357,19 +357,19 @@ messageType = 'telemetry'
 messageType = 'alert'
 ```
 
-Logikai kifejezésen, és a funkciók is támogatottak. Ez a funkció lehetővé teszi, hogy alapján megkülönböztetheti a súlyossági szintet, például:
+A logikai kifejezéseket és funkciók is támogatottak. Ez a funkció lehetővé teszi, hogy megkülönböztethetők egymástól a súlyossági szintet, például:
 
 ```sql
 messageType = 'alerts' AND as_number(severity) <= 2
 ```
 
-Tekintse meg a [kifejezés és feltételek] [ lnk-query-expressions] támogatott operátorok és funkciók teljes listája szakaszában.
+Tekintse meg a [kifejezés és kikötések] [ lnk-query-expressions] támogatott operátorok és funkciók teljes listáját szakaszában.
 
-### <a name="routing-on-message-bodies"></a>Az üzenet törzse Útválasztás
+### <a name="routing-on-message-bodies"></a>Az üzenet törzse az Útválasztás
 
-Az IoT-központ csak irányíthatja a üzenettörzs alapján tartalmát, ha az üzenet törzse nem megfelelően formázott JSON-kódolású UTF-8, UTF-16 vagy UTF-32. Állítsa be a üzenet tartalomtípusa `application/json`. Állítsa be a tartalom kódolási az üzenetfejlécben a támogatott UTF-kódolások egyikét. Ha a fejlécek egyikét nincs megadva, IoT-központ nem kísérli meg a lekérdezési kifejezés használata esetén a szervezet az üzeneten való kiértékelése. Ha az üzenet nem egy JSON-üzenetet, vagy ha az üzenet nem adja meg a tartalom típusa és a tartalmának kódolását, továbbra is használhatja üzenet-útválasztás a fejlécek alapján üzenet.
+Az IoT Hub csak irányíthatja üzenettörzs alapján tartalmát, ha az üzenet törzse nem megfelelően formázott JSON-kódolású UTF-8, UTF-16 vagy UTF-32. Üzenet a tartalomtípus beállítása `application/json`. Állítsa be a tartalmat, a támogatott UTF kódolást az üzenetfejlécekben egyik kódolást. Ha a fejlécek vagy nincs megadva, az IoT Hub nem kísérli meg bármely szemben az üzenet törzsében is érintő lekérdezési kifejezés kiértékelése. Ha nem az üzenet egy JSON-üzenetet, vagy ha az üzenet nem határoz meg a tartalom típusa és a tartalomkódolás, továbbra is használhatja az üzenetirányítással, továbbítsa az üzenetet a fejlécek alapján.
 
-A következő példa bemutatja, hogyan hozzon létre egy üzenetet egy megfelelően formázott és kódolt JSON-törzsére:
+Az alábbi példa bemutatja, hogyan hozhat létre egy üzenetet egy megfelelően formázott és kódolt JSON-törzse:
 
 ```csharp
 string messageBody = @"{ 
@@ -416,7 +416,7 @@ using (var message = new Message(messageBytes))
 }
 ```
 
-Használhat `$body` az üzenet a lekérdezési kifejezésben. Használhatja egyszerű törzs hivatkozást, törzs tömb referencia vagy több szervezet hivatkozást a lekérdezési kifejezésben. A lekérdezési kifejezésben kombinálhatja üzenet fejlécének hivatkozással törzs hivatkozást is. Például a következők minden érvényes lekérdezési kifejezések:
+Használhat `$body` továbbítsa az üzenetet, a lekérdezési kifejezésben. Használhatja egy egyszerű törzs hivatkozást, törzs tömb hivatkozás vagy több szervezet hivatkozást a lekérdezési kifejezésben. A lekérdezési kifejezés kombinálhatja a szervezet odkazu s parametrem üzenet fejléc hivatkozást is. Ha például a következők az összes érvényes lekérdezési kifejezések:
 
 ```sql
 $body.Weather.HistoricalData[0].Month = 'Feb'
@@ -425,8 +425,8 @@ length($body.Weather.Location.State) = 2
 $body.Weather.Temperature = 50 AND Status = 'Active'
 ```
 
-## <a name="basics-of-an-iot-hub-query"></a>Az IoT-központ lekérdezést alapjai
-Minden egyes IoT-központ lekérdezés áll válassza ki, opcionális WHERE záradék és a GROUP BY záradékban. A JSON-dokumentumok, például az eszköz twins gyűjteménye minden egyes lekérdezés futtatható. A FROM záradék azt jelzi, a dokumentum gyűjteményt, amelyben többször is meg kell (**eszközök** vagy **devices.jobs**). Ezt követően a WHERE záradékban a szűrő alkalmazása. Az összesítéseket, ez a lépés vannak csoportosítva meghatározott a GROUP BY záradékban. Az egyes csoportok sor jön létre a SELECT záradékban megadottak szerint.
+## <a name="basics-of-an-iot-hub-query"></a>Az IoT Hub lekérdezési alapjai
+Minden IoT Hub lekérdezési válassza ki és záradékok esetén nem kötelező hol és a GROUP BY záradékot tartalmaz. Minden lekérdezés fut, a JSON-dokumentumok, például az ikereszközök gyűjteménye. A FROM záradék azt jelzi, hogy a dokumentum egy dokumentumgyűjteményben, meg kell iterálni (**eszközök** vagy **devices.jobs**). Ezt követően a WHERE záradékban a szűrő alkalmazása. Az összesítéseket, az eredményeket az ebben a lépésben csoportosítva vannak benne a GROUP BY záradékban megadott. Minden csoport jön létre egy sort a SELECT záradékban megadott.
 
 ```sql
 SELECT <select_list>
@@ -436,18 +436,18 @@ FROM <from_specification>
 ```
 
 ## <a name="from-clause"></a>FROM záradékban
-A **< from_specification > a** záradék csak két értéket veheti fel: **ESZKÖZÖKRŐL** a lekérdezés eszköz twins, vagy **devices.jobs a** lekérdezés feladat eszközönkénti részletek.
+A **< from_specification > a** záradék feltételezheti, hogy csak két értéket: **ESZKÖZÖKRŐL** a lekérdezés ikereszközök, vagy **devices.jobs a** lekérdezés feladat eszközönkénti részletek.
 
-## <a name="where-clause"></a>A WHERE záradék
-A **ahol < filter_condition >** záradék használata nem kötelező. Meghatározza, hogy a JSON-dokumentumok FROM gyűjtemény egy vagy több feltételt meg kell felelnie a eredményének része. Bármely JSON-dokumentum ki kell értékelnie, hogy a megadott feltételeknek, az eredmény szerepeltetni a "true".
+## <a name="where-clause"></a>WHERE záradék
+A **ahol < filter_condition >** záradék használata nem kötelező. Azt is meghatározza, hogy a JSON-dokumentumok a KIINDULÓ gyűjtemény egy vagy több feltételt meg kell felelniük az eredmény része. Bármely JSON-dokumentumok a megadott feltételeknek, a "true", az eredmény szerepeltetni kell kiértékelni.
 
-Az engedélyezett feltételek részében leírt [kifejezések és a kikötések][lnk-query-expressions].
+Az engedélyezett feltételek a részben ismertetett [kifejezések és feltételekkel][lnk-query-expressions].
 
-## <a name="select-clause"></a>SELECT záradékban
-A **VÁLASSZA < select_list >** kötelező, és határozza meg, milyen értékeket olvassa be a lekérdezést. Azt adja meg az új JSON-objektumok létrehozásához használt JSON értékeket.
-A FROM gyűjtemény szűrt (és nem kötelezően csoportosított) részhalmazát minden egyes elemhez a leképezés fázis állít elő egy új JSON-objektum. Ez az objektum összeállított a SELECT záradékban megadott értékekkel.
+## <a name="select-clause"></a>SELECT záradék
+A **VÁLASSZA < select_list >** megadása kötelező, és adja meg, milyen értékeket a rendszer lekéri a lekérdezést. Azt adja meg az új JSON-objektumok létrehozásához használt JSON-értékeit.
+A szűrt (és igény szerint csoportosítva) részhalmazát alkotják, a KIINDULÓ gyűjtemény összes eleme a leképezés fázis egy új JSON-objektumot állít elő. Ez az objektum a SELECT záradékban megadott értékek úgy van felépítve.
 
-Az alábbiakban látható a SELECT záradékban nyelvtani:
+Következő a nyelvtani, a SELECT záradék:
 
 ```
 SELECT [TOP <max number>] <projection list>
@@ -469,14 +469,14 @@ SELECT [TOP <max number>] <projection list>
     | max(<projection_element>)
 ```
 
-**Attribute_name** a JSON-dokumentum FROM gyűjtemény egyik tulajdonságnak sem hivatkozik. Néhány példa a SELECT záradékban található a [Ismerkedés az eszköz iker lekérdezések] [ lnk-query-getstarted] szakasz.
+**Attribute_name** a JSON-dokumentum a KIINDULÓ gyűjtemény tulajdonságra sem hivatkozik. Néhány példa a SELECT záradékban található a [ikereszköz-lekérdezések használatának első lépései] [ lnk-query-getstarted] szakaszban.
 
-Jelenleg kijelölt záradékot eltérő **válasszon*** csak az eszköz twins összesített lekérdezései támogat.
+Jelenleg kijelölt záradékok eltérő **kiválasztása*** csak az ikereszközök összesített lekérdezéseket támogat.
 
-## <a name="group-by-clause"></a>GROUP BY záradékban
-A **GROUP BY < group_specification >** záradék egy opcionális lépés, amely végrehajtja a megadott, a WHERE záradékban, és a leképezés a jelölje ki azt a megadott szűrő után. Dokumentumok egy attribútum alapján csoportosítja azt. Ezek a csoportok a SELECT záradékban megadott összesített értékek generálásához használt.
+## <a name="group-by-clause"></a>GROUP BY záradék
+A **GROUP BY < group_specification >** (nem kötelező), amely végrehajtja a után a szűrő megadva a WHERE záradékban, és mielőtt a leképezésben megadott SELECT záradékban. Azt a dokumentumok egy attribútum alapján csoportosítja. A csoportok használatban vannak a SELECT záradékban megadott összesített értékeket létrehozásához.
 
-A GROUP BY lekérdezést példa, hogy:
+Például egy lekérdezés GROUP BY használatával a következő:
 
 ```sql
 SELECT properties.reported.telemetryConfig.status AS status,
@@ -485,7 +485,7 @@ FROM devices
 GROUP BY properties.reported.telemetryConfig.status
 ```
 
-A formális GROUP BY szintaxisa a következő:
+A formális GROUP BY szintaxisa:
 
 ```
 GROUP BY <group_by_element>
@@ -494,19 +494,19 @@ GROUP BY <group_by_element>
     | < group_by_element > '.' attribute_name
 ```
 
-**Attribute_name** a JSON-dokumentum FROM gyűjtemény egyik tulajdonságnak sem hivatkozik.
+**Attribute_name** a JSON-dokumentum a KIINDULÓ gyűjtemény tulajdonságra sem hivatkozik.
 
-Jelenleg a GROUP BY záradék csak támogatott eszköz twins lekérdezésekor.
+A GROUP BY záradék jelenleg csak támogatott ikereszközök lekérdezésekor.
 
-## <a name="expressions-and-conditions"></a>Kifejezések és a feltételek
+## <a name="expressions-and-conditions"></a>Kifejezések és feltételekkel
 Magas szinten egy *kifejezés*:
 
-* Kifejezés (például a logikai érték, számot, karakterlánc, a tömb vagy objektum) egy JSON-típus egy példánya.
-* Határozza meg a JSON-dokumentum eszköz és a beépített operátorok és függvények használata állandók származó adatok kezelésére.
+* A JSON típusú (például a logikai érték, szám, karakterlánc, tömb vagy objektum) kifejezés.
+* Határozza meg az eszköz JSON-dokumentumok és a beépített operátorok és -függvények használatával állandók érkező adatok kezelését.
 
-*Feltételek* kifejezések, amelyek kiértékelik logikai értékként. Bármely eltér a logikai állandó **igaz** minősül **hamis**. Ez a szabály tartalmazza **null**, **nem definiált**, bármely objektum vagy tömb példányához, bármilyen karakterlánc és a logikai **hamis**.
+*Feltételek* kifejezések, amelyek egy logikai érték. Minden olyan logikai érték eltér állandó **igaz** minősül **hamis**. Ez a szabály tartalmazza **null**, **nem definiált**, tetszőleges objektum vagy tömb példányra, bármilyen karakterlánc és a logikai **hamis**.
 
-A kifejezés szintaxisa a következő:
+A kifejezések szintaxisa a következő:
 
 ```
 <expression> ::=
@@ -534,19 +534,19 @@ A kifejezés szintaxisa a következő:
 <array_constant> ::= '[' <constant> [, <constant>]+ ']'
 ```
 
-Ha szeretné megtudni, milyen jelenti a kifejezések szintaxisban minden szimbólum, tekintse meg a következő táblázatban:
+Szeretné megtudni, mi minden szimbólum a kifejezések szintaxisát a rövidítése, tekintse meg a következő táblázatban:
 
 | Szimbólum | Meghatározás |
 | --- | --- |
-| attribute_name | A JSON-dokumentum található bármely tulajdonságát a **FROM** gyűjtemény. |
-| binary_operator | A bináris operátor szerepel a [operátorok](#operators) szakasz. |
-| function_name| Bármely függvény szerepel a [funkciók](#functions) szakasz. |
-| decimal_literal |Egy lebegőpontos decimális jelöléssel kifejezve. |
-| hexadecimal_literal |Egy szám, a karakterlánc a "0 x" hexadecimális számjegyeket tartalmazó karakterlánc követ kifejezve. |
-| string_literal |A szövegkonstansok olyan Unicode karakterláncok sorozatát nulla vagy több Unicode-karaktereket vagy escape-karaktersorozatokat. A szövegkonstansok parancsfájlblokkjában találhatók szimpla idézőjelben vagy dupla idézőjelek között. Kilépés engedélyezett: `\'`, `\"`, `\\`, `\uXXXX` az Unicode karaktereket 4 hexadecimális számjegy határozzák meg. |
+| attribute_name | A JSON-dokumentum, a tulajdonságokat a **FROM** gyűjtemény. |
+| binary_operator | Bármilyen bináris operátor szerepel a [operátorok](#operators) szakaszban. |
+| function_name| Minden függvény szerepel a [funkciók](#functions) szakaszban. |
+| decimal_literal |A lebegőpontos értékké decimális jelölés kifejezve. |
+| hexadecimal_literal |Egy szám hexadecimális számjegyből álló karakterlánc követ ' 0 x"karakterlánc kifejezve. |
+| string_literal |Karakterlánc-literálnak sorozata, nulla vagy több Unicode-karaktereket vagy escape-karaktersorozatokat által képviselt Unicode karakterláncokat is. Karakterlánc-literálnak aposztrófok és idézőjelek közé vannak. Kilépés engedélyezett: `\'`, `\"`, `\\`, `\uXXXX` a 4 hexadecimális számjegy által meghatározott Unicode-karaktereket. |
 
 ### <a name="operators"></a>Operátorok
-Az alábbi műveleteket támogatja:
+A következő operátor használata támogatott:
 
 | Család | Operátorok |
 | --- | --- |
@@ -555,55 +555,55 @@ Az alábbi műveleteket támogatja:
 | Összehasonlítás |=, !=, <, >, <=, >=, <> |
 
 ### <a name="functions"></a>Functions
-Twins és az egyetlen támogatott feladatok lekérdezésekor függvény van:
+Ha a lekérdezése az ikrekhez és a feladatok az egyetlen támogatott függvény lesz:
 
 | Függvény | Leírás |
 | -------- | ----------- |
-| IS_DEFINED(property) | Jelző, ha a tulajdonság van rendelve egy érték logikai érték beolvasása (beleértve a `null`). |
+| IS_DEFINED(property) | Ha a tulajdonság hozzá lett rendelve egy érték jelző logikai érték (beleértve a `null`). |
 
-Útvonalak feltételek mellett a következő matematikai-funkciók támogatottak:
+Az útvonalak feltételek a következő matematikai függvények támogatottak:
 
 | Függvény | Leírás |
 | -------- | ----------- |
 | ABS(x) | A megadott numerikus kifejezés (pozitív) abszolút értékét adja vissza. |
-| EXP(x) | Az exponenciális a megadott numerikus kifejezés értékét adja vissza (e ^ x). |
+| EXP(x) | Az exponenciális a megadott numerikus kifejezés értékét adja eredményül (e ^ x). |
 | Power(x,y) | A megadott kifejezés értékét adja vissza a megadott hatványra (x ^ y).|
-| Square(x) | Kiszámítja a megadott numerikus érték. |
+| Square(x) | A megadott számérték négyzetét adja vissza. |
 | CEILING(x) | A legkisebb egész értéket ad vissza, nagyobb vagy egyenlő a megadott numerikus kifejezés. |
-| FLOOR(x) | A legnagyobb egész számot ad vissza kisebb vagy egyenlő, mint a megadott numerikus kifejezés. |
-| SIGN(x) | A pozitív (+ 1), nulla (0) vagy a megadott numerikus kifejezés mínuszjel (-1) adja vissza.|
+| FLOOR(x) | Visszaadja a legnagyobb egész szám kisebb vagy egyenlő a megadott numerikus kifejezés. |
+| SIGN(x) | A pozitív (+ 1), a nulla (0) vagy a megadott numerikus kifejezés mínuszjel (-1) adja vissza.|
 | Sqrt(x) | A megadott numerikus érték négyzetgyökét adja vissza. |
 
-Útvonalak állapotától függően a következő típus ellenőrzése és adattípusokról funkciók támogatottak:
+Az útvonalak feltételek a következő típus ellenőrzése és a döntő függvény támogatottak:
 
 | Függvény | Leírás |
 | -------- | ----------- |
-| AS_NUMBER | A bemeneti karakterlánc alakít egy számot. `noop` Ha a bemeneti érték egy szám; `Undefined` Ha karakterlánc nem felel meg egy számot.|
-| IS_ARRAY | Azt jelzi, hogy ha a megadott kifejezés típusú tömb egy logikai értéket ad vissza. |
-| IS_BOOL | Azt jelzi, hogy ha a megadott kifejezés típusa olyan logikai érték logikai érték beolvasása. |
-| IS_DEFINED | Jelzi, ha a tulajdonság van rendelve egy érték logikai érték beolvasása. |
-| IS_NULL | Visszaad egy logikai értéket, amely azt jelzi, ha a megadott kifejezés típusa null. |
-| IS_NUMBER | Azt jelzi, hogy ha a típus a megadott kifejezés több olyan logikai értéket ad vissza. |
-| IS_OBJECT | Azt jelzi, hogy ha a megadott kifejezés típusa egy JSON-objektum egy logikai értéket ad vissza. |
-| IS_PRIMITIVE | Azt jelzi, hogy ha a megadott kifejezés típusa egy primitív egy logikai értéket ad vissza (string, Boolean, numerikus, vagy `null`). |
-| IS_STRING | Azt jelzi, hogy ha a megadott kifejezés típusa karakterlánc egy logikai értéket ad vissza. |
+| AS_NUMBER | A bemeneti karakterláncot számmá alakít. `noop` Ha a bemenet egy szám; `Undefined` Ha karakterlánc nem jelent meg egy számot.|
+| IS_ARRAY | Egy logikai érték, amely azt jelzi, ha a megadott kifejezés típusa egy tömböt ad vissza. |
+| IS_BOOL | Egy logikai érték, amely azt jelzi, ha a megadott kifejezés típusa egy logikai érték visszaadása. |
+| IS_DEFINED | Jelzi, ha a tulajdonság hozzá lett rendelve egy érték logikai érték beolvasása. |
+| IS_NULL | Adja vissza egy logikai érték, amely azt jelzi, ha a megadott kifejezés típusa null. |
+| IS_NUMBER | Egy logikai értéket, amely azt jelzi, ha a megadott kifejezés típusa egy számot ad vissza. |
+| IS_OBJECT | Egy logikai érték, amely azt jelzi, ha a megadott kifejezés típusa egy JSON-objektumot ad vissza. |
+| IS_PRIMITIVE | Visszaad egy logikai értéket, amely azt jelzi, ha a megadott kifejezés típusa egy primitívet (karakterlánc, szám, logikai vagy `null`). |
+| IS_STRING | Egy logikai érték, amely azt jelzi, ha a megadott kifejezés típusa egy karakterláncot ad vissza. |
 
-Útvonalak feltételek a következő karakterlánc-funkciók támogatottak:
+Az útvonalak feltételek a következő karakterlánc-függvények támogatottak:
 
 | Függvény | Leírás |
 | -------- | ----------- |
-| CONCAT (x, y,...) | Karakterlánc, amely legalább két karakterlánc-értékek hozzáfűzésével eredményét adja vissza. |
+| CONCAT (x, y,...) | Legalább két karakterlánc-értékek összetűzésének eredménye karakterláncként adja vissza. |
 | LENGTH(x) | A megadott karakterlánc-kifejezés karakterek számát adja vissza.|
-| Lower(x) | Egy karakterlánc-kifejezés után nagybetűt adatok kisbetűssé alakításával adja vissza. |
+| Lower(x) | Egy karakterlánc-kifejezés nagybetűt adatok átalakítása kisbetűvé után adja vissza. |
 | Upper(x) | Egy karakterlánc-kifejezés után kisbetűt adatok nagybetűssé alakításával adja vissza. |
-| SUBSTRING (karakterlánc, start [, hossz]) | A megadott karakter nulla pozíciótól kezdődően karakterlánc-kifejezés részét adja vissza, és továbbra is fennáll, a megadott időtartam, illetve a karakterlánc végén. |
-| (Karakterlánc, töredék) INDEX_OF | A második első előfordulásának kezdőpozícióját adja vissza karakterlánc-kifejezés az első megadott karakterlánc-kifejezés vagy -1, ha a karakterlánc nem található.|
-| STARTS_WITH (x, y) | Visszaadja egy logikai, amely jelzi, hogy az első karakterlánc-kifejezés kezdődik-e a második. |
-| ENDS_WITH (x, y) | Adja vissza egy logikai, amely jelzi, hogy az első karakterlánc-kifejezés a második végződik. |
-| CONTAINS(x,y) | Visszaadja egy logikai, amely jelzi, hogy az első karakterlánc-kifejezés tartalmazza a második. |
+| KARAKTERLÁNCRÉSZLET (karakterlánc, kezdő [, hossz]) | Már a megadott karakter számolt helyzetét megadja egy karakterlánc-kifejezés részét adja vissza, és továbbra is fennáll, a megadott időtartam, illetve a karakterlánc végén. |
+| (String, fragment) INDEX_OF | A második első előfordulásának kezdőpozícióját adja vissza karakterlánc-kifejezés található a megadott karakterlánc első kifejezés, vagy a -1, ha a karakterlánc nem található.|
+| STARTS_WITH (x, y) | Adja vissza egy logikai jelzi-e az első karakterlánc-kifejezés második kezdődik. |
+| ENDS_WITH (x, y) | Adja vissza egy logikai jelzi-e az első karakterlánc-kifejezés második végződik. |
+| CONTAINS(x,y) | Visszaadja egy logikai arról a második-e az első karakterlánc-kifejezést tartalmaz. |
 
 ## <a name="next-steps"></a>További lépések
-Megtudhatja, hogyan hajtsa végre a lekérdezéseket az alkalmazások a [Azure IoT SDK-k][lnk-hub-sdks].
+Ismerje meg, hogyan hajthat végre lekérdezéseket alkalmazásaiba [Azure IoT SDK-k][lnk-hub-sdks].
 
 [lnk-query-where]: iot-hub-devguide-query-language.md#where-clause
 [lnk-query-expressions]: iot-hub-devguide-query-language.md#expressions-and-conditions

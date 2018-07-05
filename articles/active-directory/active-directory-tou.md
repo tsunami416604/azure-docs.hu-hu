@@ -10,16 +10,16 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: conceptual
 ms.component: compliance-reports
-ms.date: 06/18/2018
+ms.date: 06/29/2018
 ms.author: rolyon
-ms.openlocfilehash: 2919ce1d7c57b7a92420ac11b61503caa1fdd3b0
-ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
-ms.translationtype: HT
+ms.openlocfilehash: f22190d81d8ffbb91e9573974d93d4b1ad35af18
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36267557"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37444344"
 ---
 # <a name="azure-active-directory-terms-of-use-feature"></a>Azure Active Directory – Használati feltételek funkció
 Az Azure AD Használati feltételek funkcióján keresztül a vállalatok egyszerűen láthatják el a végfelhasználókat a szükséges információkkal. Ez a bemutató gondoskodik arról, hogy a felhasználók megkapják a jogi vagy megfelelőségi követelményekre vonatkozó nyilatkozatokat. Ez a cikk az Azure AD Használati feltételek funkcióval kapcsolatos kezdeti lépéseket ismerteti.
@@ -48,7 +48,7 @@ Az Azure AD Használati feltételek funkció konfigurálásához a következők 
 
 ## <a name="terms-of-use-document"></a>A használati feltételek dokumentuma
 
-Az Azure AD Használati feltételek PDF formátumot használ a tartalmak megjelenítéséhez. A PDF-fájl bármilyen tartalmat jelenthet, akár meglévő szerződéseket is, így begyűjtheti a végfelhasználói megállapodásokat a felhasználók bejelentkezésekor. Ajánlott betűméret a PDF-ben: 24.
+Az Azure AD Használati feltételek PDF formátumot használ a tartalmak megjelenítéséhez. A PDF-fájl is bármilyen tartalmat jelenthet, mint a meglévő szerződés dokumentumokat, így begyűjtheti a végfelhasználói megállapodások során a felhasználói bejelentkezés. Ajánlott betűméret a PDF-ben: 24.
 
 ## <a name="add-terms-of-use"></a>Használati feltételek hozzáadása
 A használati feltételek dokumentum véglegesítése után a hozzáadáshoz kövesse a következő eljárást.
@@ -98,7 +98,7 @@ A használati feltételek panel megjeleníti a feltételeket elfogadó, illetve 
     ![Esemény naplózása](media/active-directory-tou/accepted-tou.png)
 
 ## <a name="view-audit-logs"></a>Auditnaplók megtekintése
-Az Azure AD Használati feltételek auditnaplókkal is rendelkezik, ha megtekintené a feltételekkel kapcsolatos további tevékenységeket is. Minden egyes felhasználói hozzájárulás létrehoz egy eseményt az auditnaplóban, amely 30 napon keresztül érhető el. Ezeket a naplókat megtekintheti a portálon, vagy letöltheti egy .csv fájlban.
+Az Azure AD Használati feltételek auditnaplókkal is rendelkezik, ha megtekintené a feltételekkel kapcsolatos további tevékenységeket is. Minden egyes felhasználói beleegyezés elindít egy eseményt az auditnaplókban tárolt 30 napig. Ezeket a naplókat megtekintheti a portálon, vagy letöltheti egy .csv fájlban.
 
 Az auditnaplók használatának megkezdéséhez kövesse az alábbi eljárást:
 
@@ -115,7 +115,7 @@ Az auditnaplók használatának megkezdéséhez kövesse az alábbi eljárást:
 1. A **Letöltés** elemre kattintva az információkat helyi felhasználás céljából egy .csv fájlba is mentheti.
 
 ## <a name="what-terms-of-use-looks-like-for-users"></a>A használati feltételek megjelenése a felhasználók számára
-A használati feltételek létrehozása és kényszerítése után az érintett felhasználók az alábbi képernyőt látják a bejelentkezés során.
+A használati feltételeket tartalmazó fájl létrehozása és kényszerítése, ha felhasználók, akik érintett bejelentkezés során a következő képernyő jelenik meg.
 
 ![Esemény naplózása](media/active-directory-tou/user-tou.png)
 
@@ -126,7 +126,7 @@ Az alábbi képernyő bemutatja a használati feltételek megjelenését a mobil
 ### <a name="how-users-can-review-their-terms-of-use"></a>A használati feltételek áttekintése a felhasználók által
 A felhasználók az alábbi eljárással tekinthetik át az általuk elfogadott használati feltételeket.
 
-1. Jelentkezzen be a következőbe: [https://myapps.microsoft.com](https://myapps.microsoft.com).
+1. Jelentkezzen be a [ https://myapps.microsoft.com ](https://myapps.microsoft.com).
 
 1. A jobb felső sarokban kattintson a nevére, és válassza a **Profil** lehetőséget a legördülő menüből.
 
@@ -157,7 +157,7 @@ A korábbi használati feltételeket az alábbi eljárással törölheti.
 Alapértelmezés szerint a törölt felhasználók 30 napig még törölt állapotban megmaradnak az Azure AD-ban, amely idő alatt szükség esetén egy rendszergazda visszaállíthatja őket.  A felhasználók 30 nap után véglegesen törlődnek.  Ezenkívül egy globális rendszergazda az Azure Active Directory portálon explicit módon [véglegesen törölhet egy közelmúltban törölt felhasználót](fundamentals/active-directory-users-restore.md) az időszak lejárta előtt.  Egy felhasználó végleges törlése után a felhasználó későbbi adatai el lesznek távolítva az aktív használati feltételekből.  A törölt felhasználókkal kapcsolatos naplózási információk az auditnaplóban maradnak.
 
 ## <a name="policy-changes"></a>A szabályzatok változásai
-A feltételes hozzáférési szabályzatok azonnal hatályba lépnek. Ebben az esetben a rendszergazdai felületen „szomorú felhők” vagy „Azure AD-tokenekkel kapcsolatos problémák” jelennek meg. A rendszergazdának újra be kell jelentkeznie, hogy megfelelhessen az új szabályzatnak.
+A feltételes hozzáférési szabályzatok azonnal hatályba lépnek. Ha ez történik, a rendszergazda "Szomorú felhők" vagy "A tokenekkel kapcsolatos problémák az Azure AD" indul el. A rendszergazda kell jelentkezzen ki, és jelentkezzen be újra annak érdekében, hogy megfelelhessen az új szabályzatnak.
 
 >[!IMPORTANT]
 > Az érintett felhasználóknak újra be kell jelentkezniük, hogy megfelelhessenek az új szabályzatnak, ha:
@@ -167,10 +167,10 @@ A feltételes hozzáférési szabályzatok azonnal hatályba lépnek. Ebben az e
 ## <a name="frequently-asked-questions"></a>Gyakori kérdések
 
 **K: Hogyan ellenőrizhetem, hogy egy felhasználó elfogadta-e a használati feltételeket (és ha igen, mikor)?**</br>
-V: Csak kattintson a használati feltételek mellett az azokat elfogadó felhasználókat jelző számra.  További információkért tekintse meg [A használati feltételeket elfogadó és elutasító felhasználók megtekintése](#view-who-has-accepted-and-declined) című részt.  Ezenkívül ha a felhasználó elfogadja a használati feltételeket, az bekerül az auditnaplóba. Az Azure AD-naplókban keresést is végezhet a kívánt találatok megjelenítéséhez.  
+V: a használati panel a feltételeket, kattintson a számra **elfogadva**. Is megtekintése vagy keressen az elfogadás tevékenység a naplók. További információkért lásd: [nézet, aki rendelkezik elfogadó és elutasító](#view-who-has-accepted-and-declined) és [naplók megtekintése](#view-audit-logs).
 
-**K: Ha megváltoznak a használati feltételek, azokat a felhasználóknak újra el kell fogadniuk?**</br>
-V: Igen, a rendszergazda módosíthatja a használati feltételeket, amelyeket aztán mindenkinek újból el kell fogadnia.
+**K: Ha megváltoznak a használati feltételeket, azt igényel a felhasználóknak újra el kell fogadniuk?**</br>
+V: Igen, rendszergazda módosíthatja a használati feltételeket, és ez megköveteli a felhasználóktól az új feltételeket hatókörébe.
 
 **K: A használati feltételek több nyelv használatát is támogatják?**</br>
 V: Igen.  A rendszergazdák jelenleg 18 különböző nyelven konfigurálhatják a használati feltételeket. 
@@ -179,13 +179,16 @@ V: Igen.  A rendszergazdák jelenleg 18 különböző nyelven konfigurálhatják
 V: A használati feltételek a bejelentkezéskor lépnek életbe.
 
 **K: Mely alkalmazásokhoz használhatom a használati feltételeket?**</br>
-V: Feltételes hozzáférési szabályzatot a modern hitelesítést használó vállalati alkalmazásokhoz hozhat létre.  Bővebb információ: [vállalati alkalmazások](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-view-azure-portal).
+V: Feltételes hozzáférési szabályzatot a modern hitelesítést használó vállalati alkalmazásokhoz hozhat létre.  Bővebb információ: [vállalati alkalmazások](./manage-apps/view-applications-portal.md).
 
 **K: Több használati feltételt is hozzáadhatok egy adott felhasználóhoz vagy alkalmazáshoz?**</br>
 V: Igen, ha több feltételes hozzáférési szabályzatot is létrehoz az adott csoportokhoz vagy alkalmazásokhoz. Ha egy felhasználó több használati feltétel hatókörébe is beletartozik, külön-külön kell elfogadnia őket.
  
 **K: Mi történik akkor, ha egy felhasználó nem fogadja el a használati feltételeket?**</br>
-V: Ebben az esetben a felhasználón nem kaphat hozzáférést az alkalmazáshoz. A hozzáféréshez a felhasználónak újra be kell jelentkeznie, és el kell fogadnia a használati feltételeket.
+V: Ebben az esetben a felhasználón nem kaphat hozzáférést az alkalmazáshoz. Jelentkezzen be újra, és fogadja el a feltételeket ahhoz, hogy a hozzáférést a felhasználónak kell.
+ 
+**K: van unaccept a korábban elfogadott használati feltételeket?**</br>
+V: is [felülvizsgálati korábban elfogadott használati feltételeket tartalmazó fájl](#how-users-can-review-their-terms-of-use), de jelenleg nincs unaccept lehetővé.
  
 **K: Mennyi ideig tárolódnak az információk?**</br>
 V: A rendszer addig őrzi meg a felhasználók számát, illetve az elfogadó/elutasító felhasználók adatait, amíg a használati feltételek léteznek. Az auditnaplók 30 napon keresztül érhetők el.

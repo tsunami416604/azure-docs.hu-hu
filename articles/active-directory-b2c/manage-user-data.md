@@ -1,64 +1,64 @@
 ---
-title: Felhasználói adatokat az Azure Active Directory B2C |} Microsoft Docs
-description: Megtudhatja, hogyan törölhető vagy felhasználói adatok az Azure AD B2C exportálása.
+title: Felhasználói adatokat az Azure Active Directory B2C |} A Microsoft Docs
+description: Ismerje meg, hogyan törölheti, vagy az Azure AD B2C felhasználói adatok exportálása.
 services: active-directory-b2c
 author: davidmu1
 manager: mtillman
 ms.service: active-directory
 ms.workload: identity
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/06/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: dacff48be3fbf16fc719f5a0395937b1f5acc979
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 202ee9da94fc93e7301c29b62dc61ad443685807
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34712538"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37450151"
 ---
-# <a name="manage-user-data-in-azure-ad-b2c"></a>Felhasználói adatokat az Azure AD B2C
+# <a name="manage-user-data-in-azure-active-directory-b2c"></a>Az Azure Active Directory B2C felhasználói adatok kezelése
 
- Ez a cikk ismerteti hogyan kezelheti a felhasználói adatokat az Azure Active Directory (AD) B2C használatával művelet, amelyet a [Azure Active Directory Graph API](https://msdn.microsoft.com/en-us/library/azure/ad/graph/api/api-catalog). Felhasználói adatok kezelése lehetővé teszi a naplók adatok exportálása vagy törli az adatokat.
+ Ez a cikk ismerteti, hogyan kezelheti a felhasználói adatokat az Azure Active Directory (Azure AD) B2C által biztosított műveletek segítségével a [Azure Active Directory Graph API](https://msdn.microsoft.com/en-us/library/azure/ad/graph/api/api-catalog). Felhasználói adatok kezelésére is tartalmaz, törlése vagy exportálása az auditnaplók.
 
 [!INCLUDE [gdpr-intro-sentence.md](../../includes/gdpr-intro-sentence.md)]
 
 ## <a name="delete-user-data"></a>Felhasználói adatok törlése
 
-Felhasználói adatokat az Azure AD B2C-címtár és a vizsgálati naplók tárolja. Minden felhasználó naplózási adatok 30 nap az adatmegőrzés az Azure AD B2C megmarad. Ha a felhasználói adatokat törölni, hogy 30 napon belül kívánja, használhatja a [felhasználó törlése](https://msdn.microsoft.com/library/azure/ad/graph/api/users-operations#DeleteUser) műveletet. A törlési művelet szükség az Azure AD B2C-bérlő minden egyes adatokat tároló lehet. 
+Felhasználói adatok tárolása az Azure AD B2C-címtár és a naplók. Az összes felhasználói naplózási adatok az Azure AD B2C-t 30 napig őrződnek meg. Ha szeretne felhasználói adatok törlése a 30 napos időtartamon belül, akkor használhatja a [felhasználót törölni](https://msdn.microsoft.com/library/azure/ad/graph/api/users-operations#DeleteUser) műveletet. Egy törlési művelet szükség az Azure AD B2C-bérlők mindegyike adatokat tároló lehet. 
 
-Minden felhasználó az Azure AD B2C hozzá van rendelve egy objektumot. Az Objektumazonosító biztosít ahhoz, hogy törli a felhasználói adatokat az Azure AD B2C egyértelműen azonosítót.  Az architektúra Objektumazonosító függően egy hasznos korrelációs azonosító keresztül más szolgáltatásokon, például pénzügyi, marketing, és a felhasználói kapcsolat felügyeleti adatbázisok.  
+Az Azure AD B2C-ben minden felhasználó hozzá van rendelve egy objektumot. Az Objektumazonosító biztosít, hogy törli a felhasználói adatokat az Azure AD B2C-egyértelmű azonosítója. Az architektúra függően Objektumazonosítóját egy hasznos korrelációs azonosítót lehet más szolgáltatások, például a pénzügyi, marketing, és az ügyfél kapcsolat felügyeleti adatbázisok. 
 
-A legpontosabb objektum lekérése a felhasználó módja szerezheti be, az Azure AD B2C hitelesítési út részeként.  Az adatok egy érvényes kérelem érkezett a felhasználó más módszerekkel, offline művelet, ha egy ügyfélszolgálati támogatás szerinti keresés például ügynök, akkor lehet szükség keresse meg azt a felhasználót, és jegyezze fel a társított objektum azonosítóját. 
+A legpontosabb felhasználó Objektumazonosítójának lekérése módja beszerzése az Azure AD B2C-hitelesítési út részeként. Ha kérést kap, egy érvényes adatok a felhasználó más módszerekkel, egy offline folyamattal, egy olyan ügyfélszolgálati támogatás szerinti keresés például az ügynök, szükség lehet keresse meg a felhasználót, és jegyezze fel a társított objektum azonosítóját. 
 
-A következő példa bemutatja egy lehetséges adatfolyam törlése:
+Az alábbi példa bemutatja egy lehetséges Adattörlés folyamatot:
 
-1. A felhasználó jelentkezik be és kijelöli **az adatok törlése**.
-2. Az alkalmazás kínálja fel az adatok egy felügyeleti szakaszban az alkalmazás törléséhez.
-3. Az alkalmazás arra kényszeríti az Azure AD B2C-hitelesítéshez. Az Azure AD B2C jogkivonatot biztosít az alkalmazásnak a felhasználó objektum azonosítója. 
-4. A token érkezik, az alkalmazás és az objektum Azonosítót használja az Azure AD Graph API hívása felhasználói adatok törlése. Az Azure AD Graph API törli a felhasználói adatokat, és egy állapotkódot 200 OK adja vissza.
-5. Az alkalmazás használatával az Objektumazonosító vagy egyéb szükség szerint koordinálja egyéb szervezeti rendszerekben felhasználói adatok törlését.
-6. Az alkalmazás megerősíti, hogy az adatok törlését, és a felhasználó következő lépéseit.
+1. A felhasználó bejelentkezik, és kiválasztja **adatok törlése**.
+2. Az alkalmazás felajánlja az alkalmazás-felügyeleti szakaszokon belül az adatok törléséhez.
+3. Az alkalmazás arra kényszeríti az Azure AD B2C-vel való hitelesítéshez. Az Azure AD B2C jogkivonat biztosít az alkalmazásnak a felhasználó Objektumazonosítóját. 
+4. A jogkivonat érkezett az alkalmazás és az objektum azonosítója segítségével törölje a felhasználói adatokat az Azure AD Graph API-hívás használatával. Az Azure AD Graph API törli a felhasználói adatokat, és OK 200-as állapotkódot ad vissza.
+5. Az alkalmazás az Objektumazonosítót és egyéb azonosítókhoz kötött használatával szükség szerint más szervezeti rendszerekben hangolja össze a felhasználói adatok törlése.
+6. Az alkalmazás megerősíti, hogy az adatok törlését, és biztosítja a következő lépések a felhasználó számára.
 
-## <a name="export-customer-data"></a>Felhasználói adatok exportálása
+## <a name="export-customer-data"></a>Vásárlói adatok exportálása
 
-A felhasználói adatok exportálása az Azure AD B2C folyamat hasonlít a törlési folyamat.
+A vásárlói adatok exportálása az Azure AD B2C-ből a folyamat hasonlít a törlési folyamat.
 
 Az Azure AD B2C felhasználói adatok korlátozva:
 
-- **Az Azure Active Directoryban tárolt adatok** -is lehet adatokat beolvasni az Azure AD B2C-hitelesítés felhasználói út Objektumazonosító vagy bármely bejelentkezési nevével, például e-mail vagy felhasználónév a.  
-- **Felhasználó által megadott naplózási események jelentés** -adatok indexelése az objektum azonosítójával.
+- **Az Azure Active Directoryban tárolt adatok**: Objektumazonosítóját vagy tetszőleges bejelentkezési nevet, például e-mail-cím vagy felhasználónév használatával kérheti le az Azure AD B2C-hitelesítés felhasználói interakciósorozatban szereplő adatokat. 
+- **Felhasználó-specifikus naplózási események jelentés**: adatok indexelésére használhatja, az az objektum azonosítója.
 
-A következő példa egy exportálási adatfolyama, az alkalmazás által végzett leírt lépéseket is végrehajtható egy háttér folyamat vagy egy felhasználó egy rendszergazdai szerepkörrel rendelkező könyvtárban:
+A következő példában egy exportálási adatfolyama leírt lépéseket, az alkalmazás által végzett is végezhet el egy háttérbeli folyamatok vagy a címtárban rendszergazdai szerepkörrel rendelkező felhasználó:
 
-1. A felhasználó bejelentkezik az alkalmazást. Az Azure AD B2C-hitelesítés és többtényezős hitelesítési az érvényesíti, szükség esetén.
-2. Az alkalmazás a felhasználói hitelesítő adatok használatával felhasználói attribútumok beolvasása az Azure AD Graph API művelet hívására. Az Azure AD Graph API-t adja meg az attribútum adatait JSON formátumban. Attól függően, hogy a séma azonosító token tartalma előfordulhat, hogy úgy, hogy a felhasználó személyes adatait tartalmazza.
-3. Az alkalmazás végfelhasználói naplózási tevékenység kéri le. Az Azure AD Graph API biztosít az alkalmazás az eseményadatok.
-4. az alkalmazás összesíti az adatokat, és lehetővé teszi a felhasználó számára.
+1. A felhasználó bejelentkezik az alkalmazásba. Az Azure AD B2C az Azure multi-factor Authentication hitelesítés kikényszeríti, ha szükséges.
+2. Az alkalmazás használ a felhasználói hitelesítő adatokat lekérni a felhasználói attribútumok az Azure AD Graph API-művelet meghívásához. Az Azure AD Graph API-t biztosít a attribútum adatok JSON formátumban. A séma függően beállíthatja azonosító jogkivonat tartalma a felhasználó személyes adatait tartalmazza.
+3. Az alkalmazás lekéri a felhasználó naplózási tevékenység. Az Azure AD Graph API-t biztosít az alkalmazásnak az eseményadatokat.
+4. Az alkalmazás összesíti az adatokat, és elérhetővé teszi a felhasználó.
 
 ## <a name="next-steps"></a>További lépések
 
-- Megtudhatja, hogyan kezelheti, hogy a felhasználók miként férhetnek hozzá az alkalmazás [felügyelheti a felhasználók hozzáférését](manage-user-access.md)
+- Ismerje meg, hogyan kezelheti a felhasználók hogyan érhetik el az alkalmazást, lásd: [felhasználói hozzáférés felügyelete](manage-user-access.md).
 
 
 

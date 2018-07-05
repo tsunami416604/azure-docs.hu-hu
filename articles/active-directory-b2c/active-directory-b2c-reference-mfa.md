@@ -1,57 +1,57 @@
 ---
-title: Többtényezős hitelesítés az Azure Active Directory B2C |} Microsoft Docs
-description: Többtényezős hitelesítés engedélyezése az Azure Active Directory B2C által védett felhasználók felé néző alkalmazásokban módjáról.
+title: Multi-factor Authentication szolgáltatás Azure Active Directory B2C |} A Microsoft Docs
+description: Hogyan többtényezős hitelesítés engedélyezése az Azure Active Directory B2C által védett felhasználók felé néző alkalmazásokban.
 services: active-directory-b2c
 author: davidmu1
 manager: mtillman
 ms.service: active-directory
 ms.workload: identity
-ms.topic: article
+ms.topic: conceptual
 ms.date: 12/06/2016
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 85592275c13719fec0f40eb76a9bce48890a59d2
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 3d18e1b2e45aba4e83989e29c533cfc7bf5033fc
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34710192"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37442708"
 ---
 # <a name="azure-active-directory-b2c-enable-multi-factor-authentication-in-your-consumer-facing-applications"></a>Az Azure Active Directory B2C: Többtényezős hitelesítés engedélyezése a felhasználók felé néző alkalmazásokban
-Az Azure Active Directory (Azure AD) B2C integrálható közvetlenül [Azure multi-factor Authentication](../active-directory/authentication/multi-factor-authentication.md) , hogy adhat hozzá egy második biztonsági szintként, regisztrációs és a bejelentkezési élmény a felhasználók felé néző alkalmazásokban. És ehhez egyetlen kódsort írása nélkül. Jelenleg támogatott telefonhívási és az SMS-ellenőrzéseket. Ha már létrehozott regisztráció és bejelentkezés házirendek, a multi-factor Authentication továbbra is engedélyezheti.
+Az Azure Active Directory (Azure AD) B2C közvetlenül integrálódik az [Azure multi-factor Authentication](../active-directory/authentication/multi-factor-authentication.md) , hogy a felhasználók felé néző alkalmazásokban való regisztrációs és bejelentkezési élményt egy második biztonsági réteggel is hozzáadhat. És ezt megteheti egy egyetlen sor kód megírása nélkül is. Jelenleg tesztenként telefonhívási és SMS-ellenőrzéseket. Ha már létrehozott regisztrációs és bejelentkezési szabályzatok, a multi-factor Authentication szolgáltatás továbbra is engedélyezheti.
 
 > [!NOTE]
-> Többtényezős hitelesítés is engedélyezhető, nem csak a meglévő házirendek szerkesztésével regisztráció és bejelentkezés házirendek létrehozásakor.
+> Multi-factor Authentication hitelesítés is engedélyezhető, nem csak a meglévő házirendek szerkesztésével regisztrációs és bejelentkezési szabályzatok létrehozásakor.
 > 
 > 
 
-Ez a szolgáltatás segít alkalmazásokat kezeléséhez a következő lehetőségeket:
+Ez a szolgáltatás segít az alkalmazások kezelésére a következőkhöz hasonló forgatókönyveket:
 
-* Egy alkalmazás eléréséhez a többtényezős hitelesítés nem feltétlenül szükséges, de van szüksége egy másikat elérésére. A fogyasztó például egy alkalmazásba automatikus biztosítási közösségi vagy helyi fiókkal jelentkezhet, de előtt ellenőriznie kell a telefonszám az otthoni biztosítási alkalmazás elérésének regisztrált ugyanabban a könyvtárban.
-* A multi-factor Authentication általában csatlakozni egy alkalmazáshoz nem feltétlenül szükséges, de van szüksége az érzékeny részek belül hozzáférjen. A fogyasztó például egy banki alkalmazás egy közösségi vagy helyi fiók, és ellenőrizze számlaegyenlegeit jelentkezhetnek be, de egy átviteli áthelyezés előtt ellenőriznie kell a telefonszámot.
+* Hozzáférni egy alkalmazáshoz a multi-factor Authentication hitelesítés nem feltétlenül szükséges, de van szüksége, hogy egy másik eléréséhez. A fogyasztó például közösségi vagy helyi fiókkal automatikus biztosítási alkalmazás be tud jelentkezni, de a telefonszám ellenőriznie kell, mielőtt az otthoni biztosítási alkalmazás elérésének ugyanabban a címtárban regisztrált.
+* Az általános hozzáférni egy alkalmazáshoz a multi-factor Authentication hitelesítés nem feltétlenül szükséges, de van szüksége, hogy a benne lévő bizalmas részeket eléréséhez. A fogyasztó például egy közösségi vagy helyi fiók, és ellenőrizze fiókja egyenlege a banki alkalmazás jelentkezhetnek be, de a wire átvitel megkísérlése előtt ellenőriznie kell a telefonszámot.
 
-## <a name="modify-your-sign-up-policy-to-enable-multi-factor-authentication"></a>Módosítsa a regisztrációs szabályzatban többtényezős hitelesítés engedélyezése
-1. [Kövesse az alábbi lépéseket az Azure portálon a B2C funkciók panelje navigáljon](active-directory-b2c-app-registration.md#navigate-to-b2c-settings).
+## <a name="modify-your-sign-up-policy-to-enable-multi-factor-authentication"></a>A multi-factor Authentication szolgáltatás engedélyezése a regisztrálási szabályzat módosítása
+1. [A B2C funkciók panelje az Azure Portalon lépjen a következő lépésekkel](active-directory-b2c-app-registration.md#navigate-to-b2c-settings).
 2. Kattintson a **Regisztrálási szabályzatok** lehetőségre.
 3. Kattintson a regisztrációs szabályzatban (például "B2C_1_SiUp") való megnyitásához.
-4. Kattintson a **a multi-factor authentication** kapcsolja be a **állapot** való **ON**. Kattintson az **OK** gombra.
+4. Kattintson a **multi-factor authentication** , és kapcsolja be a **állapot** való **ON**. Kattintson az **OK** gombra.
 5. Kattintson a **mentése** a panel tetején.
 
-A házirend a "Futtatás most" szolgáltatás használatával ellenőrizze a felhasználói élmény. Ellenőrizze az alábbiakat:
+A házirend a "Futtatás most" funkció használatával ellenőrizze a felhasználói élményt. Ellenőrizze az alábbiakat:
 
-Egy felhasználói fiókot a címtárban végrehajtásakor létrejön, még a multi-factor Authentication lépés előtt. A lépés során a felhasználó saját telefonszámot adja meg, és győződjön meg arról, hogy kapcsolatba. Ha az ellenőrzés sikeres, a telefonszám a felhasználói fiók későbbi használatra van csatolva. Akkor is, ha a fogyasztó megszakítja, vagy elutasítja azokat a, általa is megkéri, hogy egy telefonszámot ellenőrizze újra a következő bejelentkezés során (a többtényezős hitelesítés engedélyezve).
+Egy felhasználói fiókot a címtárban létrejön a többtényezős hitelesítés lépés bekövetkezte előtt. A lépés során adja meg a saját telefonszámát, majd ellenőrzi, hogy a fogyasztó kell adnia. Ha az ellenőrzés sikeres, a telefonszámot a felhasználói fiók későbbi használatra van csatolva. Akkor is, ha a fogyasztó megszakítja, vagy csökken, ő is megkéri, hogy egy telefonszám ellenőrzése során újra a következő bejelentkezéskor (a többtényezős hitelesítés engedélyezve van).
 
-## <a name="modify-your-sign-in-policy-to-enable-multi-factor-authentication"></a>Módosítsa a bejelentkezési házirend többtényezős hitelesítés engedélyezése
-1. [Kövesse az alábbi lépéseket az Azure portálon a B2C funkciók panelje navigáljon](active-directory-b2c-app-registration.md#navigate-to-b2c-settings).
-2. Kattintson a **bejelentkezési házirendek**.
-3. Kattintson a bejelentkezési házirend (például "B2C_1_SiIn") való megnyitásához. Kattintson a **szerkesztése** a panel tetején.
-4. Kattintson a **a multi-factor authentication** kapcsolja be a **állapot** való **ON**. Kattintson az **OK** gombra.
+## <a name="modify-your-sign-in-policy-to-enable-multi-factor-authentication"></a>A multi-factor Authentication szolgáltatás engedélyezése a bejelentkezési szabályzat módosítása
+1. [A B2C funkciók panelje az Azure Portalon lépjen a következő lépésekkel](active-directory-b2c-app-registration.md#navigate-to-b2c-settings).
+2. Kattintson a **bejelentkezési szabályzatok**.
+3. Kattintson a bejelentkezési szabályzat (például "B2C_1_SiIn") való megnyitásához. Kattintson a **szerkesztése** a panel tetején.
+4. Kattintson a **multi-factor authentication** , és kapcsolja be a **állapot** való **ON**. Kattintson az **OK** gombra.
 5. Kattintson a **mentése** a panel tetején.
 
-A házirend a "Futtatás most" szolgáltatás használatával ellenőrizze a felhasználói élmény. Ellenőrizze az alábbiakat:
+A házirend a "Futtatás most" funkció használatával ellenőrizze a felhasználói élményt. Ellenőrizze az alábbiakat:
 
-Ha a fogyasztó (fiók használatával jelentkezik be egy közösségi vagy helyi), ha ellenőrzött telefonszám csatolva van a felhasználói fiók, ő kapcsolatba kell azt. A telefonszámmal nem kapcsolódik, ha a fogyasztó biztosít, és győződjön meg arról, hogy kapcsolatba. A sikeres ellenőrzést a telefonszám a felhasználói fiók későbbi használatra van csatolva.
+Ha a fogyasztó használatával jelentkezik be (egy közösségi vagy helyi fiók), egy ellenőrzött telefonszámot a felhasználói fiók van csatlakoztatva, ő ekkor ellenőrzi, hogy az. A telefonszámmal nem van csatolva, ha a fogyasztó felkéri, hogy segíthessünk, majd ellenőrzi, hogy. Sikeres ellenőrzés a telefonszámot a felhasználói fiók későbbi használatra van csatolva.
 
-## <a name="multi-factor-authentication-on-other-policies"></a>Egyéb házirendek többtényezős hitelesítést
-Regisztráció és bejelentkezés házirendek a fenti leírtak is lehet engedélyezni a multi-factor authentication a bejelentkezési vagy bejelentkezési házirendek és a jelszó alaphelyzetbe állítása a házirendeket. Házirendek Profilszerkesztési hamarosan elérhető lesz.
+## <a name="multi-factor-authentication-on-other-policies"></a>Egyéb házirendek a multi-factor Authentication
+Regisztrációs és bejelentkezési szabályzatok fenti leírtak a multi-factor authentication szolgáltatás engedélyezése a regisztrációs lehetőség arra is, vagy bejelentkezési szabályzatok és a jelszó alaphelyzetbe állítása a szabályzatokat. Profilszerkesztési szabályzatok hamarosan elérhető lesz.
 

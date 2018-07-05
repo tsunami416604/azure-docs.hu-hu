@@ -1,61 +1,61 @@
 ---
-title: A helyszíni adatátjáró |} Microsoft Docs
-description: Egy helyszíni átjárót szükség, ha az Azure-ban az Analysis Services-kiszolgálóhoz csatlakoznak a helyszíni adatforrások.
+title: A helyszíni adatátjáró |} A Microsoft Docs
+description: Egy helyszíni átjáró szükség, ha az Analysis Services-kiszolgálóhoz az Azure-ban a helyszíni adatforrásokhoz csatlakoznak.
 author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 04/24/2018
+ms.date: 07/03/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 60a04d492798da8292e2c9d4107e21e9039f7d40
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 8ba46223f0d0a4db7615bc94fe8a1bbfa18e57f8
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34596855"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37442338"
 ---
-# <a name="connecting-to-on-premises-data-sources-with-azure-on-premises-data-gateway"></a>Csatlakozás az adatforrásokhoz helyszíni Azure a helyszíni adatok átjáróval
-Az a helyszíni átjáró működik hídként, a helyszíni adatforrások és a felhőben az Azure Analysis Services-kiszolgálók közötti biztonságos adatátvitel biztosítása. Mellett több Azure Analysis Services-kiszolgáló ugyanabban a régióban dolgozik, az átjáró legújabb verzióját is működik az Azure Logic Apps, a Power bi-ban, a kiemelt alkalmazások és a Microsoft Flow. Csak egyetlen átjáró ugyanabban a régióban több szolgáltatáshoz is társíthat. 
+# <a name="connecting-to-on-premises-data-sources-with-azure-on-premises-data-gateway"></a>Csatlakozás helyszíni adatforrásokhoz Azure helyszíni adatátjáróval
+A helyszíni adatátjáró hídként működnek, és a helyszíni adatforrások és a felhőben az Azure Analysis Services-kiszolgálók közötti biztonságos adatátvitelt biztosítanak. Mellett használata több Azure Analysis Services-kiszolgáló ugyanabban a régióban, az átjáró legújabb verzióját is használható az Azure Logic Apps, a Power bi-ban, a Power Apps és a Microsoft Flow. Egyetlen átjáró ugyanabban a régióban több szolgáltatást is társíthat. 
 
-Az átjáró telepítése az első alkalommal első az egy négyrészes folyamat:
+A telepítő az átjáró első először az egy négyrészes folyamat:
 
-- **Töltse le és futtassa a telepítőt** – Ez a lépés telepíti egy átjáró szolgáltatás a szervezet egyik számítógépén. Is jelentkezzen be egy olyan fiókkal az Azure a [bérlő](https://msdn.microsoft.com/library/azure/jj573650.aspx#BKMK_WhatIsAnAzureADTenant) az Azure AD. Az Azure B2B (vendég) fiókok nem támogatottak.
+- **Töltse le és futtassa a telepítőt** – Ez a lépés telepíti egy átjárószolgáltatás a szervezet egyik számítógépén. Is jelentkezik be egy olyan fiókkal, az Azure-bA a [bérlő](https://msdn.microsoft.com/library/azure/jj573650.aspx#BKMK_WhatIsAnAzureADTenant) Azure ad-ben. Az Azure B2B (vendég) fiókok nem támogatottak.
 
-- **Regisztrálnia kell az átjárót** – ebben a lépésben adjon nevet és helyreállítási az átjáró kulcsát, és válasszon ki egy régiót, az átjáró regisztrálása az átjáró Felhőszolgáltatáshoz. Az átjáró erőforrás bármely régióban lehet regisztrálni, de javasoljuk, hogy az Analysis Services-kiszolgáló ugyanabban a régióban legyen. 
+- **Az átjáró regisztrálásához** – ebben a lépésben megad egy nevet és a helyreállítási kulcsra az átjáró, és válassza ki a régiót, regisztrálja az átjárót az átjáró Felhőszolgáltatása. Az átjáró-erőforrás regisztrálni lehet bármelyik régióban, de javasoljuk, hogy azt az Analysis Services-kiszolgáló ugyanabban a régióban kell. 
 
-- **Hozzon létre egy átjáró erőforrást az Azure-ban** -ebben a lépésben az Azure-előfizetése létrehozhat egy átjáró-erőforráshoz.
+- **Átjáró erőforrás létrehozása az Azure-ban** – ebben a lépésben az Azure-előfizetésében létrehozott egy átjáró-erőforrást.
 
-- **Csatlakoztassa a kiszolgálókat az átjáró erőforrás** -előfizetése van egy átjáró-erőforráshoz, amennyiben a kiszolgálók csatlakoztatása megkezdheti. Kapcsolódás több kiszolgáló és az egyéb erőforrások azt.
+- **Csatlakoztassa a kiszolgálókat az átjáró-erőforrás** – Ha egy átjáró-erőforrást az előfizetésében, elkezdheti, a kiszolgálók csatlakozik. Több kiszolgáló- és egyéb erőforrások csatlakozhatnak hozzá.
 
-Rögtön használatba, lásd: [telepítse és konfigurálja a helyszíni adatátjáró](analysis-services-gateway-install.md).
+Azonnal használatba, lásd: [telepítése és konfigurálása a helyszíni adatátjáró](analysis-services-gateway-install.md).
 
-## <a name="how-it-works"> </a>Hogyan működik?
-A szervezet egy számítógépre telepítse az átjáró fut a Windows, **helyszíni adatátjáró**. A helyi szolgáltatás az átjáró Felhőszolgáltatáshoz Azure Service Buson keresztül van regisztrálva. Ezután hozzon létre egy átjáró-erőforráshoz átjáró Felhőszolgáltatáshoz Azure-előfizetése. Az Azure Analysis Services-kiszolgáló majd csatlakoznak az átjáró-erőforráshoz. Ha a kiszolgálón lévő modellek az adatokhoz történő kapcsolódáshoz a helyszíni adatforrások lekérdezések és feldolgozásra vonatkozó, a lekérdezés és az adatok áramlását az átjáró-erőforráshoz, Azure Service Bus, a helyi helyszíni átjáró szolgáltatás és az adatforrások halad át. 
+## <a name="how-it-works"> </a>Működési elv
+Windows-szolgáltatás fut az átjárón a szervezet telepít egy számítógépen **a helyszíni adatátjáró**. A helyi szolgáltatás regisztrálva van az átjáró Felhőszolgáltatása Azure Service Buson keresztül. Ezután hozzon létre egy átjáró-erőforrás Gateway Felhőszolgáltatás esetében az Azure-előfizetés. Az Azure Analysis Services-kiszolgáló majd csatlakozik az átjáró-erőforrás. Modellek a kiszolgálón kell lekérdezéseket és feldolgozási források a helyszíni adatok eléréséhez, ha egy lekérdezést és az adatfolyam is járja, az átjáró-erőforrást, az Azure Service Bus, a helyszíni adatátjáró szolgáltatás és az adatforrásokat. 
 
 ![Működés](./media/analysis-services-gateway/aas-gateway-how-it-works.png)
 
-Lekérdezések és adatfolyam:
+Lekérdezések és az adatfolyam:
 
-1. A lekérdezés a felhőalapú szolgáltatás, a titkosított hitelesítő adatokkal a helyszíni adatforrás hozta létre. A várólista feldolgozása az átjáró majd érkezik.
-2. Az átjáró felhőszolgáltatáshoz elemzi a lekérdezést, és leküldéses értesítések a kérést a [Azure Service Bus](https://azure.microsoft.com/documentation/services/service-bus/).
-3. Az a helyszíni átjáró kérdezze le az Azure Service Bus, a függőben lévő kérelmek.
-4. Az átjáró a lekérdezés lekérdezi, visszafejti a hitelesítő adatokat, és ezeket a hitelesítő adatokat az adatforrások kapcsolódik.
-5. Az átjáró a lekérdezést küld az adatforrás-végrehajtásra.
-6. Az eredményeket az adatforrásból kerülnek vissza az átjáró, majd a felhőszolgáltatás és a kiszolgáló.
+1. Létrejön egy lekérdezés által a felhőszolgáltatáshoz a helyszíni adatforrás titkosított hitelesítő adatokkal. Ezután zajlik az átjáróhoz tartozó üzenetsorba.
+2. Az átjáró felhőszolgáltatása elemzi a lekérdezést, majd leküldi a kérelmet a [Azure Service Bus](https://azure.microsoft.com/documentation/services/service-bus/).
+3. A helyszíni adatátjáró lekérdezi az Azure Service Bus, a függőben lévő kérelmek.
+4. Az átjáró megkapja a lekérdezést, visszafejti a hitelesítő adatokat, és ezekkel az adatokkal az adatforrásokhoz csatlakozik.
+5. Az átjáró elküldi a lekérdezést az adatforráshoz a végrehajtáshoz.
+6. Az eredmények az adatforrásból kerülnek vissza a az átjárót, majd az alakzatot a felhőszolgáltatás és a kiszolgáló.
 
-## <a name="windows-service-account"> </a>Windows-szolgáltatás fiókja
-Az a helyszíni átjáró használatára van konfigurálva *NT SERVICE\PBIEgwService* a Windows szolgáltatás bejelentkezési hitelesítő adatok. Alapértelmezés szerint rendelkezik bejelentkezési jobb szolgáltatásként; a gépet, telepíti az átjárót a környezetében. Ezeket a hitelesítő adatokat, de nem ugyanazt a fiókot a helyszíni adatforrások eléréséhez használt az Azure-fiókjával.  
+## <a name="windows-service-account"> </a>Windows-szolgáltatásfiók
+A helyszíni adatátjáró használatára van konfigurálva *NT SERVICE\PBIEgwService* a Windows-szolgáltatás bejelentkezési hitelesítő adataihoz. Alapértelmezés szerint akkor jogosult-e a bejelentkezés szolgáltatásként; a gép, amely telepíti az átjárót a környezetében. Ez a hitelesítő adat nem ugyanazt a fiókot a helyszíni adatforrásokhoz való kapcsolódáshoz használt vagy az Azure-fiókjával.  
 
-Ha problémák lépnek fel a proxykiszolgáló hitelesítést miatt, előfordulhat, hogy módosítani szeretné a Windows-fiók egy tartományi felhasználó vagy a felügyelt szolgáltatásfiók.
+Ha problémák merülnek fel a proxykiszolgálón miatt a hitelesítés, előfordulhat, hogy módosítani szeretné a Windows-szolgáltatásfiókot egy tartományi felhasználóra vagy felügyelt szolgáltatásfiókra.
 
 ## <a name="ports"> </a>Portok
-Az átjáró Azure Service Bus egy kimenő kapcsolatot hoz létre. A kimenő portokon kommunikál: TCP 443-as (alapértelmezett), 5671, 5672, 9350 – 9354-es.  Az átjáró nincs szükség a bejövő portra.
+Az átjáró egy kimenő kapcsolatot, az Azure Service Bus hoz létre. Kimenő portokon kommunikál: TCP 443 (alapméretezett), 5671, 5672, 9350 – 9354.  Az átjáró nem igényel bejövő portokat.
 
-Javasoljuk, hogy a tűzfal az adatterület az IP-címek engedélyezési listája. Letöltheti a [Microsoft Azure Datacenter IP-lista](https://www.microsoft.com/download/details.aspx?id=41653). A lista a heti frissül.
+Javasoljuk, hogy a tűzfal az adatrégió IP-címei engedélyezési listáján. Letöltheti a [a Microsoft Azure Datacenter IP-címlistáját](https://www.microsoft.com/download/details.aspx?id=41653). Ez a lista hetente frissül.
 
 > [!NOTE]
-> Az IP-címek szerepel-e az Azure Datacenter IP CIDR-formátumban vannak. További tudnivalókért lásd: [Classless Inter-Domain Routing](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing).
+> Az Azure Datacenter IP-listán szereplő IP-címek vannak a CIDR-jelölésrendszerben. További tudnivalókért lásd: [Classless Inter-Domain Routing](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing).
 >
 >
 
@@ -67,16 +67,16 @@ Az alábbiakban a teljes tartománynevek az átjáró által használt.
 | *.powerbi.com |443 |HTTPS |
 | *.analysis.windows.net |443 |HTTPS |
 | *.login.windows.net |443 |HTTPS |
-| *.servicebus.windows.net |5671-5672 |Speciális üzenetsor-kezelési protokoll (AMQP) |
-| *.servicebus.windows.net |443, 9350-9354 |A Service Bus Relay (a 443-as kér a hozzáférés-vezérlés jogkivonat beszerzése) TCP-n keresztül figyelői |
+| *.servicebus.windows.net |5671-5672 |Advanced Message Queueing Protocol (AMQP) |
+| *.servicebus.windows.net |443, 9350-9354 |A Service Bus Relay (a 443-as igényel a hozzáférés-vezérlési token beszerzéséhez) TCP-n keresztül figyelők |
 | *.frontend.clouddatahub.net |443 |HTTPS |
 | *.core.windows.net |443 |HTTPS |
 | login.microsoftonline.com |443 |HTTPS |
-| *.msftncsi.com |443 |Használja az internet kapcsolat tesztelése, ha az átjáró a Power BI szolgáltatás nem érhető el. |
+| *.msftncsi.com |443 |Az internetkapcsolat tesztelésére, ha az átjáró nem érhető el a Power BI szolgáltatás által használt. |
 | *.microsoftonline-p.com |443 |Konfigurációjától függően a hitelesítéshez használt. |
 
-### <a name="force-https"></a>Az Azure Service Bus HTTPS-kommunikációt kényszerítése
-Beállíthatja, hogy az közvetlen TCP; helyett HTTPS használatával kommunikálnak Azure Service Bus-átjáró azonban ez úgy is jelentősen csökkenti a teljesítményt. Módosíthatja a *Microsoft.PowerBI.DataMovement.Pipeline.GatewayCore.dll.config* megváltoztatja az értéket a fájl `AutoDetect` való `Https`. Ez a fájl általában *C:\Program Files\On helyszíni adatátjáró*.
+### <a name="force-https"></a>Az Azure Service busszal HTTPS-kommunikáció kényszerítése
+Kényszerítheti az átjárót, közvetlen TCP helyett HTTPS-en keresztül az Azure Service Bus folytatott kommunikációhoz azonban ez így is nagymértékben csökkenti a teljesítményt. Módosíthatja a *Microsoft.PowerBI.DataMovement.Pipeline.GatewayCore.dll.config* fájl értékét `AutoDetect` való `Https`. Ez a fájl általában *C:\Program Files\On-premises data gateway*.
 
 ```
 <setting name="ServiceBusSystemConnectivityModeString" serializeAs="String">
@@ -84,88 +84,88 @@ Beállíthatja, hogy az közvetlen TCP; helyett HTTPS használatával kommuniká
 </setting>
 ```
 
-## <a name="tenant-level-administration"></a>Bérlői szintű felügyelet 
+## <a name="tenant-level-administration"></a>Bérlőszintű felügyelet 
 
-Jelenleg nincs egyetlen helyen, ahol a bérlői rendszergazdák kezelhetik az átjárók, a többi felhasználó telepítette és konfigurálta.  Ha Ön a bérlői rendszergazdák, ajánlott elfogadtatni a felhasználókkal venni rendszergazdaként minden átjáró telepítésekor a szervezetében. Ez lehetővé teszi, hogy az átjáró beállításai oldal vagy a szervezeten belüli összes átjáró kezelése [PowerShell-parancsok](https://docs.microsoft.com/power-bi/service-gateway-high-availability-clusters#powershell-support-for-gateway-clusters). 
+Jelenleg nincs olyan hely, ahol a bérlői rendszergazdák kezelhetik az átjárók, amelyek más felhasználók telepítve és konfigurálva.  Ha Ön Bérlői rendszergazda, javasolt, kérje meg a felhasználókat a szervezetben, hogy vegye fel Önt rendszergazdaként minden átjáró telepítése. Ez lehetővé teszi, hogy az átjáró beállításai panelen vagy keresztül a szervezet összes átjáróját kezelheti [PowerShell-parancsok](https://docs.microsoft.com/power-bi/service-gateway-high-availability-clusters#powershell-support-for-gateway-clusters). 
 
 
 ## <a name="faq"></a>Gyakori kérdések
 
 ### <a name="general"></a>Általános kérdések
 
-**A Q**: van egy átjáró adatforrások, például az Azure SQL-adatbázis a felhőben? <br/>
-**A**: nem. Az átjáró az csak a helyszíni adatforrások való kapcsolódáshoz szükséges.
+**Q**: van szükségem egy átjárót az adatforrásokat a felhőben, például az Azure SQL Database? <br/>
+**A**: nem. Az átjáró az csak a helyszíni adatforrásokhoz való kapcsolódáshoz szükséges.
 
-**A Q**: az adatforrással azonos gépen kell telepíteni az átjárót rendelkezik? <br/>
-**A**: nem. Az átjáró éppen kell képes kapcsolódni a kiszolgálóhoz, általában a hálózaton.
+**Q**: adatforrásként ugyanarra a gépre kell telepíteni az átjárót rendelkezik? <br/>
+**A**: nem. Az átjáró csak kell csatlakozni a kiszolgálóhoz, általában az ugyanazon a hálózaton lévő képességét.
 
 <a name="why-azure-work-school-account"></a>
 
-**A Q**: Miért szükséges a munkahelyi vagy iskolai fiókkal való bejelentkezéshez használt? <br/>
-**A**: csak használhat egy szervezeti munkahelyi vagy iskolai fiókkal az helyszíni átjáró telepítésekor. És, hogy fióknak kell lennie a ugyanannak a bérlőnek, mint az előfizetés, konfigurálja az átjáró-erőforráshoz. A bejelentkezési fiók egy Azure Active Directory (Azure AD) által felügyelt bérlői tárolja. Általában az Azure AD-fiókot egyszerű felhasználónév (UPN) felel meg az e-mail cím.
+**Q**: Miért kell egy munkahelyi vagy iskolai fiókkal való bejelentkezéshez használandó? <br/>
+**A**: csak használhatja egy szervezeti munkahelyi vagy iskolai fiókot a helyszíni adatátjáró telepítése során. És, hogy fióknak kell lennie az előfizetés ugyanabban a bérlőben, konfigurál az átjáró erőforrás. A bejelentkezési fiók tárolva van egy Azure Active Directory (Azure AD) által felügyelt bérlői. Általában az Azure AD-fiókot egyszerű felhasználónév (UPN) megegyezik az e-mail-cím.
 
-**A Q**: a hitelesítő adataimat tároló? <br/>
-**A**: adatforráshoz megadott hitelesítő adatok titkosítva, és az átjáró felhőszolgáltatásban tárolt. A hitelesítő adatokat a helyszíni adatok átjáróra lesznek visszafejtve.
+**Q**: hitelesítő adatok tárolására? <br/>
+**A**: A megadott hitelesítő adatainak az adatforrások vannak titkosítva, és az átjáró Felhőszolgáltatása tárolja. A hitelesítő adatokat, a helyszíni adatátjáró lesznek visszafejtve.
 
-**A Q**: vannak-e hálózati sávszélesség vonatkozó követelmények? <br/>
-**A**: ajánlott a hálózati kapcsolat megfelelő teljesítményt. Minden környezet más, és a küldött adatok mennyisége hatással van az eredményeket. A helyszíni és az Azure adatközpontjaiban közötti átviteli szintű segíthet az ExpressRoute segítségével.
-A külső eszköz Azure sebesség teszt alkalmazás segítségével fel tudja mérni a teljesítményt.
+**Q**: vannak a hálózati sávszélességgel kapcsolatos követelmények? <br/>
+**A**: ajánlott a hálózati kapcsolat magas átviteli sebességű rendelkezik. Minden környezet más, és küldött adatok mennyisége hatással van az eredményeket. Az ExpressRoute használata segíti a helyszíni és az Azure-adatközpontok között teljesítmény szintjének biztosítása érdekében.
+Használhatja a harmadik féltől Azure Speed Test app sebességteszt az átviteli sebességet.
 
-**A Q**: Mi az a várakozási lekérdezések futtatását adatforráshoz az átjáró? Mi az a legjobb architektúra? <br/>
-**A**: hálózati késés csökkentésére, telepítse az átjáró lehető az adatforrás a lehető legjobban hasonlítson. Az átjáró telepíthető a konkrét adatforrásokhoz, ha a közelségi kapcsolat minimalizálja a várakozási bevezetett. Túl vegye figyelembe az adatközpontokban. Például ha a szolgáltatás használja, az USA nyugati régiója adatközpontban, és egy Azure virtuális Gépen található SQL-kiszolgálóval rendelkezik, az Azure virtuális gép kell lennie az USA nyugati régiója túl. A közelségi kapcsolat minimálisra csökkenti a késést, és ezzel elkerülheti a kimenő forgalom díjak, az Azure virtuális gépen.
+**Q**: Mi az a lekérdezések futtatásának késése az adatforrás és az átjáró? Mi az a legjobb architektúra? <br/>
+**A**: A hálózati késés csökkentéséhez telepítse az adatforráshoz minél közelebb az átjárót. Ha az átjárót a tényleges adatforrásra is telepíthető, a közelségi minimalizálja a késést. Érdemes lehet túl az adatközpontokban. Például ha a szolgáltatás az USA nyugati adatközpontjában használ, és már van egy Azure-beli virtuális gépen futó SQL Server, az Azure virtuális Gépen kell lennie az USA nyugati adatközpontjába túl. A közelségi minimalizálja a hálózati késést, és ezzel elkerülheti a kimenő forgalom költségeit, az Azure virtuális gépen.
 
-**A Q**: hogyan eredmények küldött vissza a felhőben? <br/>
-**A**: eredmények az Azure Service Bus keresztül zajlik.
+**Q**: hogyan lesznek visszaküldve az eredmények a felhőbe? <br/>
+**A**: az Azure Service Buson keresztül visszaküldve az eredmények.
 
-**A Q**: vannak-e a bejövő kapcsolatokat az átjáróra a felhőből? <br/>
-**A**: nem. Az átjáró Azure Service Bus kimenő kapcsolatokat használja.
+**Q**: vannak bemenő kapcsolatok az átjáróba a felhőben? <br/>
+**A**: nem. Az átjáró kimenő kapcsolatokat használ az Azure Service Bus.
 
-**A Q**: Mi történik, ha az általam letiltottak kimenő kapcsolatokat? Mit kell megnyitni? <br/>
-**A**: a portok és a gazdagépekhez, amelyek az átjárót használja.
+**Q**: Mi történik, ha letiltom a kimenő kapcsolatokat? Hogyan készüljek megnyitásához? <br/>
+**A**: tekintse meg a portot és az átjáró által használt gazdagépek.
 
-**A Q**: a tényleges Windows-szolgáltatás úgynevezett?<br/>
-**A**: A szolgáltatások, az átjárót a helyszíni átjáró szolgáltatás neve.
+**Q**: Mi a tényleges Windows-szolgáltatás neve?<br/>
+**A**: A szolgáltatások, az átjáró neve helyszíni adatátjáró szolgáltatás.
 
-**A Q**: Azure Active Directory-fiókkal az átjáró Windows-szolgáltatás futtatható? <br/>
-**A**: nem. A Windows-szolgáltatás egy érvényes Windows-fiókkal kell rendelkeznie. Alapértelmezés szerint a szolgáltatás fut a szolgáltatás SID NT SERVICE\PBIEgwService.
+**Q**: futtatható az átjáró Windows-szolgáltatás az Azure Active Directory-fiókkal? <br/>
+**A**: nem. A Windows-szolgáltatás egy érvényes Windows-fiókkal kell rendelkeznie. Alapértelmezés szerint a szolgáltatás fut a szolgáltatás biztonsági NT SERVICE\PBIEgwService.
 
-**A Q**: hogyan felvásárlási átjáró? <br/>
-**A**: az átjáró felvásárlási (telepítő/módosítás futtatja a Vezérlőpult > programok), az Azure-ban az átjáró erőforrás tulajdonosa és a helyreállítási kulcsot kell. Erőforrás-tulajdonosok átjáró esetében a hozzáférés-vezérlés konfigurálhatók.
+**Q**: hogyan lehet átvétel az átjáró? <br/>
+**A**: előfizetést az átjáró (telepítés/módosítás futtatja a Vezérlőpult > programok), kell lennie az Azure-ban az átjáró erőforrás tulajdonosa, és a helyreállítási kulcsot. Erőforrás-tulajdonosok átjáró is konfigurálható, a hozzáférés-vezérlés.
 
-### <a name="high-availability"></a>Magas rendelkezésre állás és a katasztrófa utáni helyreállítás
+### <a name="high-availability"></a>Magas rendelkezésre állás és vészhelyreállítás helyreállítási
 
-**A Q**: milyen beállítások érhetők el a vész-helyreállítási? <br/>
-**A**: a helyreállítási kulcs használatával állítsa vissza, vagy helyezze át az átjárót. Az átjáró telepítésekor adja meg a helyreállítási kulcsot.
+**Q**: milyen lehetőségek érhetők el a vészhelyreállításhoz? <br/>
+**A**: a helyreállítási kulcs használatával egy átjáró visszaállítását vagy áthelyezését. Az átjáró telepítésekor adja meg a helyreállítási kulcsot.
 
-**A Q**: Mi az az előnye, hogy a helyreállítási kulcs? <br/>
-**A**: A helyreállítási kulcs biztosítja az áttelepítéshez, vagy az átjáró beállításainak katasztrófa utáni helyreállításhoz.
+**Q**: Mi az az előnye, hogy a helyreállítási kulcs? <br/>
+**A**: A helyreállítási kulcs biztosítja az áttelepítéshez vagy helyreállíthatja átjárója beállításait egy vészhelyzetet követően.
 
 ## <a name="troubleshooting"> </a>Hibaelhárítás
 
-**A Q**: Miért nem látom az átjáró a példányai közül az Azure-ban az átjáró erőforrás létrehozása közben? <br/>
-**A**: két lehetséges oka lehet. Első az erőforrás már létre van hozva a jelenlegi vagy valamilyen más előfizetés átjáró. Elkerülése érdekében ezt a lehetőséget, az a típusú erőforrások számbavétele **helyszíni Data Gateways** a portálról. Ügyeljen arra, hogy az előfizetések válassza, ha az erőforrások számbavétele. Az erőforrás létrehozása után az átjáró nem szerepelnek a listán az átjáró erőforrás létrehozása portál élmény átjáró példánya. A második lehetőség, hogy a felhasználó, aki telepítette az átjárót az Azure AD identitása eltér a felhasználó bejelentkezve az Azure-portálon. Oldja meg, jelentkezzen be a portálon ugyanazzal a fiókkal, a felhasználó, aki telepítette az átjárót.
+**Q**: Miért nem látom az átjárópéldányok listájának és a saját átjáró az átjáró-erőforrás létrehozásakor az Azure-ban? <br/>
+**A**: két lehetséges oka. Először is az átjáró az aktuális vagy valamilyen más előfizetésben már létrehozott egy erőforrást. Ezt a lehetőséget, hogy a típusú erőforrások számbavétele **a helyszíni Adatátjárók** a portálról. Mindenképp válassza ki az összes előfizetés összes erőforrását számbavétele során. Az erőforrás létrehozása után az átjáró nem jelenik meg az átjáró-erőforrás létrehozása portáljának felületén az átjárópéldányok listájának. A második lehetőség az, hogy az átjáró telepítve van a felhasználó Azure AD-identitásnak eltér a felhasználó bejelentkezett az Azure Portalra. Oldja meg, jelentkezzen be az átjáró telepítve van a felhasználó ugyanazt a fiókot a portálra.
 
-**A Q**: Hogyan tekinthető meg mi lekérdezések folyamatban van a helyszíni adatforrás küldött? <br/>
-**A**: engedélyezheti a lekérdezés nyomon követése, beleértve a küldött lekérdezések. Ne felejtse el módosítani a lekérdezés vissza az eredeti értéket, miután befejezte a hibakeresési nyomkövetés. A lekérdezés nyomon követése engedélyezve van a Kilépés hoz létre a nagyobb naplókat.
+**Q**: hogyan látható, milyen lekérdezéseket folyamatban van a helyszíni adatforrás küldött? <br/>
+**A**: engedélyezheti a lekérdezések nyomon követését, amely tartalmazza a lekérdezéseket küldött el. Ne felejtse el módosítani a lekérdezés nyomkövetés vissza az eredeti értékre, a hibaelhárítás végrehajtása után. Hagyja a lekérdezések nyomon követését bekapcsolva hoz létre a nagyobb naplókat.
 
-Is megtekintheti, hogy az adatforrás rendelkezik a nyomkövetési lekérdezések eszközök. Például használhatja bővített eseményektől vagy SQL Profiler az SQL Server és az Analysis Services.
+Tekintse meg az adatforrást a lekérdezések nyomon követésére rendelkező eszközöket is. Például használhatja Extended Eventset vagy az SQL Profiler az SQL Server és az Analysis Services.
 
-**A Q**: hol találhatók az átjáró naplói? <br/>
+**Q**: hol találhatók az átjárónaplók? <br/>
 **A**: tekintse meg a naplófájlokat a cikk későbbi részében.
 
-### <a name="update"></a>Frissítse a legújabb verzióra
+### <a name="update"></a>A legújabb verzióra frissíteni
 
-Számos problémájának is surface, ha az átjáró verziója elavult. Jó általános gyakorlat győződjön meg arról, hogy a legújabb verzióját használja-e. Ha az átjáró nem frissültek, havonta vagy hosszabb ideig, akkor előfordulhat, hogy javasoljuk, hogy az átjáró legújabb verzióját telepítse, és ha Reprodukálja a hibát.
+Számos probléma akkor merülhet fel, ha az átjáró verziója elavult válik. Általános gyakorlat győződjön meg arról, hogy a legújabb verzióját használja. Ha az átjáró egy hónapig vagy hosszabb ideig nem frissítette, előfordulhat, hogy fontolja meg az átjáró legújabb verziójának telepítését, és tekintse meg, ha Reprodukálja a problémát.
 
-### <a name="error-failed-to-add-user-to-group--2147463168-pbiegwservice-performance-log-users"></a>Hiba: Nem sikerült hozzáadni a felhasználót a csoporthoz. (Felhasználói-2147463168 PBIEgwService teljesítmény)
+### <a name="error-failed-to-add-user-to-group--2147463168-pbiegwservice-performance-log-users"></a>Hiba: Nem sikerült felvenni a felhasználót a csoporthoz. (-2147463168 PBIEgwService Teljesítménynapló felhasználói)
 
-Ez a hiba kaphat, ha az átjáró telepítésekor a tartományvezérlőn, amely nem támogatott. Győződjön meg arról, hogy telepít-e az átjáró gépen, amely nem tartományvezérlő.
+Előfordulhat, hogy megjelenik a hibaüzenet, ha az átjáró telepítésekor a tartományvezérlőn, amely nem támogatott. Győződjön meg arról, hogy telepít-e az átjárót olyan gépre, amely nem tartományvezérlő.
 
 ## <a name="logs"></a>Naplók
 
-Naplófájlok egy fontos erőforrás hibaelhárítása során.
+Naplófájlok fontos tényezőként hibaelhárítása során.
 
-#### <a name="enterprise-gateway-service-logs"></a>Vállalati átjáró service naplóit
+#### <a name="enterprise-gateway-service-logs"></a>Vállalati átjárószolgáltatás naplói
 
 `C:\Users\PBIEgwService\AppData\Local\Microsoft\On-premises data gateway\<yyyyymmdd>.<Number>.log`
 
@@ -182,12 +182,12 @@ Az adatkezelési átjáró, a PowerBIGateway naplókat alatt található **alkal
 
 
 ## <a name="telemetry"></a>Telemetria
-Telemetriai adatainak figyelés és hibaelhárítás céljából is használható. Alapértelmezés szerint
+Telemetria használható figyeléséhez és hibaelhárításához. Alapértelmezés szerint
 
 **Telemetria bekapcsolása**
 
-1.  Ellenőrizze a helyszíni adatok átjáró ügyfél könyvtárat a számítógépen. Általában **%systemdrive%\Program Files\On helyszíni adatátjáró**. Nyissa meg a szolgáltatások konzolt, és ellenőrizze az elérési utat a végrehajtható fájl: A tulajdonság a helyszíni adatok átjáró szolgáltatás.
-2.  Az ügyfél könyvtárból Microsoft.PowerBI.DataMovement.Pipeline.GatewayCore.dll.config fájlban. Módosítsa a SendTelemetry beállítást igaz értékre.
+1.  Ellenőrizze a On-premises data gateway ügyfélkönyvtár azon a számítógépen. Jellemzően a **%systemdrive%\Program Files\On-premises data gateway**. Vagy nyissa meg a szolgáltatások konzolt, és ellenőrizze az elérési utat a végrehajtható fájl: a helyszíni adatátjáró szolgáltatás tulajdonsága.
+2.  Az ügyfél címtárból Microsoft.PowerBI.DataMovement.Pipeline.GatewayCore.dll.config fájl. Módosítsa a SendTelemetry beállítást igaz értékre.
         
     ```
         <setting name="SendTelemetry" serializeAs="String">
@@ -195,7 +195,7 @@ Telemetriai adatainak figyelés és hibaelhárítás céljából is használhat�
         </setting>
     ```
 
-3.  A módosítások mentéséhez, és indítsa újra a Windows-szolgáltatás: A helyszíni átjáró szolgáltatás.
+3.  A módosítások mentéséhez és a Windows-szolgáltatást: A helyszíni adatátjáró szolgáltatás.
 
 
 
@@ -203,4 +203,4 @@ Telemetriai adatainak figyelés és hibaelhárítás céljából is használhat�
 ## <a name="next-steps"></a>További lépések
 * [Telepítse és konfigurálja a helyszíni adatátjáró](analysis-services-gateway-install.md).   
 * [Analysis Services kezelése](analysis-services-manage.md)
-* [Adatok beolvasása az Azure Analysis Services](analysis-services-connect.md)
+* [Adatok lekérése az Azure Analysis Services](analysis-services-connect.md)

@@ -1,6 +1,6 @@
 ---
-title: 'Az Azure AD Connect: Támogatott topológiák |} Microsoft Docs'
-description: Ez a témakör a támogatott és nem támogatott topológiák részletezi az Azure AD Connect
+title: 'Az Azure AD Connect: Támogatott topológiák |} A Microsoft Docs'
+description: Ez a témakör részletesen támogatott és nem támogatott topológiák az Azure AD Connect
 services: active-directory
 documentationcenter: ''
 author: billmath
@@ -15,182 +15,182 @@ ms.topic: article
 ms.date: 02/27/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 4ea45bef5e50c41d07ddfeb5fcd6dba4d7247c61
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 6a0f18a47bb50144d0a4d428617e0dc5c7509196
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34593761"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37442246"
 ---
 # <a name="topologies-for-azure-ad-connect"></a>Azure AD Connect-topológiák
-Ez a cikk ismerteti a különböző helyszíni és az Azure AD Connect szinkronizálási szolgáltatás, a kulcs integrációs megoldást használó Azure Active Directory (Azure AD) topológiákat. Ez a cikk egyaránt támogatott, és nem támogatott konfigurációkat tartalmazza.
+Ez a cikk ismerteti a különböző helyszíni és Azure Active Directory (Azure AD) topológiákat, amelyek az Azure AD Connect-szinkronizálást használ, a főbb integrációs megoldása. Ez a cikk is támogatott, és nem támogatott konfigurációkat tartalmaz.
 
-A jelmagyarázatban képeket a cikkben a következő:
+Íme a képeket a cikkben a jelmagyarázatban:
 
 | Leírás | Szimbólum |
 | --- | --- |
 | A helyszíni Active Directory-erdő |![A helyszíni Active Directory-erdő](./media/active-directory-aadconnect-topologies/LegendAD1.png) |
-| A helyszíni Active Directory szűrt importálás |![Szűrt importálás Active Directory](./media/active-directory-aadconnect-topologies/LegendAD2.png) |
-| Az Azure AD Connect sync-kiszolgáló |![Az Azure AD Connect sync-kiszolgáló](./media/active-directory-aadconnect-topologies/LegendSync1.png) |
-| Az Azure AD Connect szinkronizálási kiszolgálót "átmeneti módban" |![Az Azure AD Connect szinkronizálási kiszolgálót "átmeneti módban"](./media/active-directory-aadconnect-topologies/LegendSync2.png) |
+| A helyszíni Active Directory szűrt importálás |![Szűrt importálás az Active Directory](./media/active-directory-aadconnect-topologies/LegendAD2.png) |
+| Az Azure AD Connect szinkronizálási kiszolgáló |![Az Azure AD Connect szinkronizálási kiszolgáló](./media/active-directory-aadconnect-topologies/LegendSync1.png) |
+| "Átmeneti módban" az Azure AD Connect szinkronizálási kiszolgáló |!["Átmeneti módban" az Azure AD Connect szinkronizálási kiszolgáló](./media/active-directory-aadconnect-topologies/LegendSync2.png) |
 | A Forefront Identity Manager (FIM) 2010 vagy a Microsoft Identity Manager (MIM) 2016 GALSync |![A FIM 2010 vagy a MIM 2016 GALSync](./media/active-directory-aadconnect-topologies/LegendSync3.png) |
-| Az Azure AD Connect szinkronizálási kiszolgálót, részletes |![Az Azure AD Connect szinkronizálási kiszolgálót, részletes](./media/active-directory-aadconnect-topologies/LegendSync4.png) |
+| Az Azure AD Connect szinkronizálási kiszolgáló, részletes |![Az Azure AD Connect szinkronizálási kiszolgáló, részletes](./media/active-directory-aadconnect-topologies/LegendSync4.png) |
 | Azure AD |![Azure Active Directory](./media/active-directory-aadconnect-topologies/LegendAAD.png) |
-| A forgatókönyv nem támogatott |![A forgatókönyv nem támogatott](./media/active-directory-aadconnect-topologies/LegendUnsupported.png) |
+| Nem támogatott forgatókönyv |![Nem támogatott forgatókönyv](./media/active-directory-aadconnect-topologies/LegendUnsupported.png) |
 
 
 > [!IMPORTANT]
-> A Microsoft nem támogatja a módosítása, vagy a konfiguráció vagy hivatalosan ismertetett műveletek kívül az Azure AD Connect szinkronizálási működő. E konfiguráció vagy a műveletek bármelyike okozhatja az Azure AD Connect szinkronizálási szolgáltatás inkonzisztens vagy nem támogatott állapotban. A Microsoft ezért nem tud műszaki támogatást biztosítani az ilyen környezetekhez.
+> A Microsoft nem támogatja a konfigurációkat és a műveleteket, amelyeket műveleteken az Azure AD Connect szinkronizálásának módosítását vagy a. Ezek a konfigurációk vagy műveletek bármelyike okozhat az Azure AD Connect szinkronizálása inkonzisztens vagy nem támogatott állapotban. A Microsoft ezért nem tud műszaki támogatást biztosítani az ilyen környezetekhez.
 
 
 ## <a name="single-forest-single-azure-ad-tenant"></a>Egyetlen erdő, egyetlen Azure AD-bérlő
-![Egyetlen erdő esetén, és egyetlen bérlő topológia](./media/active-directory-aadconnect-topologies/SingleForestSingleDirectory.png)
+![Egyetlen erdő és a egy egybérlős topológia](./media/active-directory-aadconnect-topologies/SingleForestSingleDirectory.png)
 
-A leggyakrabban használt topológia egyetlen helyszíni erdő, egy vagy több tartományt, és az egy egyetlen Azure AD bérlői. Az Azure AD-alapú hitelesítés Jelszókivonat-szinkronizálást használatos. Az Azure AD Connect a gyorstelepítés csak ez a topológia támogatja.
+A leggyakrabban használt topológia akkor egyetlen helyszíni erdő, egy vagy több tartomány és a egy egyetlen Azure AD-bérlőben. Az Azure AD-hitelesítés a Jelszókivonat-szinkronizálás szolgál. Az Azure AD Connect gyorstelepítés csak ez a topológia támogatja.
 
-### <a name="single-forest-multiple-sync-servers-to-one-azure-ad-tenant"></a>Egyetlen erdő, több szinkronizálási kiszolgálót egy Azure AD-bérlő számára
-![Egyetlen erdő esetén nem támogatott, a szűrt topológia](./media/active-directory-aadconnect-topologies/SingleForestFilteredUnsupported.png)
+### <a name="single-forest-multiple-sync-servers-to-one-azure-ad-tenant"></a>Egyetlen erdő, több szinkronizálási kiszolgálót egy Azure AD-bérlővel
+![Egyetlen erdő nem támogatott, szűrt topológia](./media/active-directory-aadconnect-topologies/SingleForestFilteredUnsupported.png)
 
-Ha több az Azure AD Connect szinkronizálási kiszolgálót is csatlakozik ugyanahhoz az Azure AD-bérlő nem támogatott, kivéve a [kiszolgáló átmeneti](#staging-server). Ez akkor is, ha ezek a kiszolgálók úgy vannak konfigurálva, egymást kölcsönösen kizáró objektumkészleteket szinkronizálása nem támogatott. Akkor lehet, hogy tekintette ebben a topológiában Ha egy kiszolgálóról az erdőben lévő összes tartományban nem éri el, vagy ha osszák szét a több kiszolgálót szeretne.
+Kellene több Azure AD Connect szinkronizálási kiszolgálót az Azure AD-bérlőhöz kapcsolódó nem támogatott, kivéve a egy [átmeneti kiszolgáló](#staging-server). Ez akkor is, ha ezek a kiszolgálók úgy vannak konfigurálva, kísérletezzen kölcsönösen kizárják egymást az objektumok szinkronizálásához nem támogatott. Előfordulhat, hogy kell figyelembe venni ehhez a topológiához Ha ugyanazon a kiszolgálón az erdő összes tartománya nem éri el, vagy ha kívánja terjeszteni a terhelés több kiszolgáló között.
 
 ## <a name="multiple-forests-single-azure-ad-tenant"></a>Több erdő, egyetlen Azure AD-bérlő
-![Több erdő és a egybérlős topológia](./media/active-directory-aadconnect-topologies/MultiForestSingleDirectory.png)
+![Több erdő és a egy egybérlős topológia](./media/active-directory-aadconnect-topologies/MultiForestSingleDirectory.png)
 
-Számos szervezet környezetekben a helyszíni Active Directory több erdővel rendelkezik. Nincsenek egynél több a helyszíni Active Directory-erdő rendelkező különböző okait. Jellemző példák tervek fiók erőforráserdővel és egy összeolvadást vagy felvásárlást eredményét.
+Számos vállalat rendelkezik olyan több helyszíni Active Directory-erdővel rendelkező környezetben. Különböző oka, hogy több mint egy helyszíni Active Directory-erdőben. Tipikus példák a fiók erőforráserdővel és a egy összeolvadást vagy felvásárlást eredményét tervek.
 
-Ha rendelkezik több erdő, az összes erdőben egyetlen elérhetőnek kell lennie az Azure AD Connect szinkronizálási kiszolgálót. Nem rendelkezik a kiszolgáló csatlakoztatása egy tartományhoz. Ahhoz, hogy az összes erdőben, ha a kiszolgáló elhelyezheti a szegélyhálózaton (más néven DMZ, demilitarizált zóna és demilitarizált).
+Ha több erdő, minden olyan erdőben van egyetlen elérhetőnek kell lennie az Azure AD Connect szinkronizálási kiszolgáló. Nem kell a kiszolgáló csatlakoztatása egy tartományhoz. Ahhoz, hogy minden olyan erdőben, ha a kiszolgáló a szegélyhálózaton (más néven DMZ-t, vagy demilitarizált zónában és demilitarizált) helyezheti.
 
-Az Azure AD Connect telepítővarázsló vonják össze a felhasználók számára jelennek meg több erdő több lehetőséget kínál. A célja, hogy a felhasználó Azure AD-ben csak egyszer jelenik meg. Nincsenek néhány gyakori topológiák konfigurálható a telepítési varázsló egyéni telepítési útvonalán. Az a **felhasználók egyedi azonosítása** lapon, válassza ki a megfelelő beállítást, amely a topológia jelöli. Az összevonás konfigurálta csak a felhasználók számára. Duplikált csoportok nem kell összevonni az alapértelmezett konfigurációval.
+Az Azure AD Connect telepítővarázsló egyesíthetők a felhasználók, akik több erdő megjelenjen többféle lehetőséget kínál. A célja, hogy egy felhasználó Azure AD-ben egyszer szerepelnek. Van néhány gyakori topológiák az egyéni telepítési elérési út a telepítési varázslóban konfigurálható. Az a **felhasználók egyedi azonosítása** lapon, válassza ki a megfelelő beállítást, amely a topológia jelöli. Az összevonás csak a felhasználók számára konfigurált. Ismétlődő csoportok nem kell összevonni alapértelmezés szerint.
 
-Közös topológiák ismerteti a szakaszok kapcsolatos [topológiák külön](#multiple-forests-separate-topologies), [háló teljes](#multiple-forests-full-mesh-with-optional-galsync), és [a fiók-erőforrás topológia](#multiple-forests-account-resource-forest).
+Közös topológiákat tárgyalja a szakaszok kapcsolatos [külön topológiák](#multiple-forests-separate-topologies), [teljes rácsot alkotó](#multiple-forests-full-mesh-with-optional-galsync), és [a fiók-erőforrás topológia](#multiple-forests-account-resource-forest).
 
-Az alapértelmezett konfiguráció a Azure AD Connect szinkronizálási szolgáltatás azt feltételezi, hogy:
+Feltételezi, hogy az alapértelmezett konfiguráció az Azure AD Connect szinkronizálása:
 
-* Minden felhasználó csak egy engedélyezett fiókkal rendelkezik, és az erdőben, ahol ennek a fióknak-e a felhasználó hitelesítésére szolgál. Ez feltételezi, a Jelszókivonat-szinkronizálás, az átmenő hitelesítés és az összevonási. UserPrincipalName és sourceAnchor/immutableID határozza meg az erdő.
-* Minden felhasználónak csak egy postaláda van.
-* Az erdő, amelyen a postaládát, a felhasználó rendelkezik a legjobb adatok minőségének látható a az Exchange globális cím lista (GAL) attribútumok. Ha a felhasználó nem postaláda, bármely erdőben ezeket az attribútumértékeket közre használható.
-* Ha rendelkezhetnek hivatkozott postafiókkal, akkor is fiók a bejelentkezéshez használt egy másik erdőben.
+* Minden felhasználó csak egy engedélyezett fiókkal rendelkezik, és az erdőben, ahol ennek a fióknak-e a felhasználó hitelesítésére szolgál. Ez feltételezi, a jelszókivonatok szinkronizálása, átmenő hitelesítést és összevonási. Ez az erdő származnak a UserPrincipalName és sourceAnchor/immutableid azonosítója.
+* Minden felhasználó csak egy postaláda rendelkezik.
+* Az erdő, amely a postaládát egy felhasználó futtatja a legjobb adatminőség attribútumok látható a az Exchange globális cím lista (GAL) rendelkezik. Ha a felhasználó nem postaláda, bármely erdőben való közreműködésre ezeket az attribútumértékeket használható.
+* Rendelkezhetnek hivatkozott postafiókkal, ha nincs egy fiók a bejelentkezéshez használt eltérő erdőben.
 
-Ha a környezet nem egyezik meg az ilyen Előfeltevések, a következő dolgokat okozhat:
+Ha a környezet nem egyezik meg az ilyen Előfeltevések, a következő dolog történik:
 
-* Ha egynél több aktív fiók vagy egynél több postaládát, a szinkronizálási motor választja ki az egyik, és figyelmen kívül hagyja, a másik.
-* Nincs más aktív fiókkal hivatkozott postafiókkal ne exportálja az Azure ad Szolgáltatásba. A felhasználói fiók nem szerepel minden csoport tagjaként. A DirSync hivatkozott postafiókkal mindig a normál postaláda jelzi. Ez a változás a szándékosan egy másik működés jobban a több erdőből forgatókönyvek támogatása céljából.
+* Ha egynél több aktív fiók vagy postaláda egynél több, a szinkronizálási motor választja ki egyet, és figyelmen kívül hagyja a többi.
+* Nincs más aktív fiókkal hivatkozott postafiókkal nem exportálja az Azure ad-hez. A felhasználói fiók nem szerepel minden olyan csoport tagjaként. A DirSync hivatkozott postafiókkal mindig a normál postaláda jelzi. Ez a változás szándékosan egy másik működés, amelyek hatékonyabban támogatják a több erdővel rendelkező forgatókönyvek.
 
-További részletek találhatók [az alapértelmezett konfiguráció ismertetése](active-directory-aadconnectsync-understanding-default-configuration.md).
+További információk a [az alapértelmezett konfiguráció ismertetése](active-directory-aadconnectsync-understanding-default-configuration.md).
 
-### <a name="multiple-forests-multiple-sync-servers-to-one-azure-ad-tenant"></a>Több erdő, több szinkronizálási kiszolgálót egy Azure AD-bérlő számára
-![Több erdő és a több szinkronizálási kiszolgálót nem támogatott topológia](./media/active-directory-aadconnect-topologies/MultiForestMultiSyncUnsupported.png)
+### <a name="multiple-forests-multiple-sync-servers-to-one-azure-ad-tenant"></a>Több erdő, több szinkronizálási kiszolgálót egy Azure AD-bérlővel
+![Több erdő, és több szinkronizálási kiszolgálót nem támogatott topológiát](./media/active-directory-aadconnect-topologies/MultiForestMultiSyncUnsupported.png)
 
-Egynél több, az Azure AD Connect szinkronizálási kiszolgálóhoz csatlakoztatott egyetlen Azure AD-bérlő nem támogatott. A kivétel: használatát egy [kiszolgáló átmeneti](#staging-server).
+Egynél több Azure AD Connect szinkronizálási kiszolgáló csatlakozik egy Azure AD-bérlő nem támogatott. Kivételt jelentenek ez alól használatát egy [átmeneti kiszolgáló](#staging-server).
 
 ### <a name="multiple-forests-separate-topologies"></a>Több erdő, külön topológiák
-![A felhasználók csak egyszer képviselő címtárak beállítás](./media/active-directory-aadconnect-topologies/MultiForestUsersOnce.png)
+![A felhasználók csak egyszer jelölő címtárak összességében lehetőség](./media/active-directory-aadconnect-topologies/MultiForestUsersOnce.png)
 
-![Több erdővel és külön topológiák ábrázolása](./media/active-directory-aadconnect-topologies/MultiForestSeperateTopologies.png)
+![Több erdő, és külön topológiák ábrázolása](./media/active-directory-aadconnect-topologies/MultiForestSeperateTopologies.png)
 
-Ebben a környezetben az összes helyi erdőben külön entitásokként kezelik. Felhasználó nem szerepel a más erdőkben. Minden olyan erdőben, a saját Exchange-szervezet rendelkezik, és nem GALSync az erdők között van. Ez a topológia lehet a helyzet egy összeolvadást vagy felvásárlást követően, vagy olyan szervezetekben, ahol minden részleg egymástól függetlenül működik. Erdők ugyanazon a szervezeten belül, az Azure ad-ben, és egy egységes globális Címlista együtt jelennek meg. A fenti kép minden erdőben az egyes objektumok képviselt egyszer a metaverzumban és a cél az Azure AD bérlő összesíteni.
+Ebben a környezetben helyszíni erdőket külön entitásokként kell kezelni. Nincs felhasználó nem található bármely másik erdőben. Minden olyan erdőben, a saját Exchange-szervezet rendelkezik, és nincs GALSync az erdők között van. Ez a topológia fúzió vagy felvásárlás után, vagy egy szervezet a helyzet lehet, ahol mindegyik üzleti egység egymástól függetlenül működik. Erdők ugyanazon a szervezeten belül, az Azure ad-ben és az egyesített GAL jelennek meg. Az előző képen látható minden erdőben lévő minden egyes objektum tartozik a metaverzumba egyszer jelölt és összevonva jelenik meg a céloldali Azure AD-bérlő.
 
-### <a name="multiple-forests-match-users"></a>Több erdő: felhasználók kereséséhez
-Ezek a forgatókönyvek közös, amely terjesztési és biztonsági csoportok felhasználók, partnerek és idegen rendszerbiztonsági (FSP) vegyesen tartalmazhatnak. A más erdőkben biztonsági csoportban lévő tagok képviselő FSP Active Directory tartományi szolgáltatások (AD DS) használnak. Minden FSP, megtörténik a valódi objektum az az Azure ad-ben.
+### <a name="multiple-forests-match-users"></a>Több erdő: felhasználó
+Ezek a forgatókönyvek a gyakori, hogy terjesztési és biztonsági csoportok felhasználókat, névjegyeket és idegen rendszerbiztonsági tagok (FSP) vegyesen tartalmazhatnak. FSP használják az Active Directory Domain Servicesben (AD DS), amelyek tagjai a más erdőkben egyetlen biztonsági csoportba. Az Azure ad-ben minden FSP hozzárendelve a tényleges objektum.
 
-### <a name="multiple-forests-full-mesh-with-optional-galsync"></a>Több erdő: opcionális GALSync ellátott teljes
-![Az egyező, amikor a felhasználók identitásai több címtárban is léteznek a levél attribútum használatára vonatkozó beállítás](./media/active-directory-aadconnect-topologies/MultiForestUsersMail.png)
+### <a name="multiple-forests-full-mesh-with-optional-galsync"></a>Több erdő: nem kötelező GALSync a háló teljes
+![Az egyező, ha a felhasználói identitások több címtárat is léteznek a levél attribútum használatára vonatkozó beállítást](./media/active-directory-aadconnect-topologies/MultiForestUsersMail.png)
 
-![Teljes rácsot alkotó topológia több erdő](./media/active-directory-aadconnect-topologies/MultiForestFullMesh.png)
+![Teljes rácsot alkotó topológia több erdőhöz](./media/active-directory-aadconnect-topologies/MultiForestFullMesh.png)
 
-A teljes rácsot alkotó topológia lehetővé teszi, hogy erdőkben található felhasználókat és erőforrásokat. Gyakran nincsenek kétirányú bizalmi kapcsolattal az erdők között.
+Egy teljes rácsot alkotó topológia lehetővé teszi, hogy bármely erdőben található felhasználók és erőforrások. Általában nincsenek kétirányú megbízhatósági kapcsolattal az erdők között.
 
-Ha Exchange megtalálható-e egynél több erdő, valószínűleg (opcionális) egy helyszíni GALSync megoldás. Minden felhasználó van majd kapcsolattartóként az összes többi erdője. FIM 2010 vagy a MIM 2016 segítségével gyakran használják a GALSync. Az Azure AD Connect helyszíni GALSync nem használható.
+Ha Exchange egynél több erdőben található, előfordulhat, (opcionálisan) egy helyszíni GALSync megoldás. Minden felhasználó van majd kapcsolattartóként az összes többi erdője. FIM 2010 vagy a MIM 2016 GALSync gyakran biztosítják. Az Azure AD Connect a helyszíni GALSync nem használható.
 
-Ebben a forgatókönyvben identitásobjektumok kapcsolódnak-e a levél attribútum használatával. Egy postaládát egy erdő rendelkező felhasználó csatlakozik, a többi erdőben lévő ügyfelekkel.
+Ebben a forgatókönyvben a levél attribútum keresztül csatlakoztatott identitásobjektumok. Egy postaládát egy erdő rendelkező felhasználóként csatlakozik, a többi erdőben lévő ügyfelekkel.
 
-### <a name="multiple-forests-account-resource-forest"></a>Több erdő: fiók erőforráserdőben
-![Amikor identitásai több címtárban is léteznek egyeztetéséhez a ObjectSID és msExchMasterAccountSID attribútum használatára vonatkozó beállítás](./media/active-directory-aadconnect-topologies/MultiForestUsersObjectSID.png)
+### <a name="multiple-forests-account-resource-forest"></a>Több erdő: fiók-Erőforráserdő
+![Ha több címtárat is léteznek identitások egyeztetéséhez az ObjectSID és msExchMasterAccountSID attribútumok használata beállítást](./media/active-directory-aadconnect-topologies/MultiForestUsersObjectSID.png)
 
-![Fiók-erőforrás szolgának több erdő](./media/active-directory-aadconnect-topologies/MultiForestAccountResource.png)
+![Fiók-erőforrás szolgának több erdőhöz](./media/active-directory-aadconnect-topologies/MultiForestAccountResource.png)
 
-Egy fiók-erőforrás szolgának, fel kell egy vagy több *fiók* erdőkbe tartozó aktív felhasználói fiókok. Akkor is rendelkezik, egy vagy több *erőforrás* erdők letiltott fiókok.
+Egy fiók-erőforrás szolgának, fel kell egy vagy több *fiók* erdőkbe tartozó aktív felhasználói fiókok. Azt is, hogy egy vagy több *erőforrás* , letiltott fiókokat tartalmazó erdők.
 
-Ebben a forgatókönyvben egy (vagy több) erőforrás-erdő megbízhatónak tekinti minden fiókerdőben. Erőforráserdő jellemzően az Exchange és a Lync kiterjesztett Active Directory-sémát rendelkezik. Exchange és a Lync-szolgáltatások más megosztott szolgáltatások, valamint az erdőben találhatók. Felhasználók letiltott felhasználói fiók rendelkezik az erdőben, és a postaládát a fiókerdő kapcsolódik.
+Ebben a forgatókönyvben egy (vagy több) Erőforráserdő összes fiókerdővel megbízik. Az erőforráserdőben általában rendelkezik egy kiterjesztett Active Directory-sémát az Exchange és a Lync. Az Exchange és a Lync-szolgáltatások más közös szolgáltatásokat, valamint az erdőben találhatók. Felhasználók letiltott felhasználói fiók rendelkezik az erdőben, és a postaládát a fiókerdő van csatolva.
 
-## <a name="office-365-and-topology-considerations"></a>Az Office 365 és topológiai szempontok
-Néhány Office 365 számítási feladattal bizonyos korlátozások a támogatott topológiák rendelkezik:
+## <a name="office-365-and-topology-considerations"></a>Az Office 365 és a topológiai szempontok
+Egyes Office 365 számítási feladatokhoz van bizonyos korlátozások a támogatott topológiák:
 
 | Számítási feladat | Korlátozások |
 | --------- | --------- |
-| Exchange Online | További információ a támogatott Exchange online hibrid topológiák: [hibrid telepítések esetén több Active Directory-erdő](https://technet.microsoft.com/library/jj873754.aspx). |
-| Skype Vállalati verzió | Több helyszíni erdővel használata esetén csak a fiók-erőforrás szolgának használata támogatott. További információkért lásd: [környezeti követelményei a Skype vállalati Server 2015](https://technet.microsoft.com/library/dn933910.aspx). |
+| Exchange Online | Támogatja az Exchange Online hibrid topológiák kapcsolatos további információkért lásd: [hibrid telepítések esetén több Active Directory-erdők](https://technet.microsoft.com/library/jj873754.aspx). |
+| Skype Vállalati verzió | Ha több helyszíni erdővel használ, csak a fiók-erőforrás szolgának használata támogatott. További információkért lásd: [környezeti követelmények a Skype for Business Server 2015](https://technet.microsoft.com/library/dn933910.aspx). |
 
-Ha nagyobb cég áll, akkor érdemes használni a [Office 365 PreferredDataLocation](active-directory-aadconnectsync-feature-preferreddatalocation.md) szolgáltatás. Ez lehetővé teszi, hogy adja meg, melyik adatközpontban régióban, a felhasználó erőforrások találhatók.
+Ha Ön által felügyelt nagyobb szervezettel, akkor érdemes használni a [Office 365 PreferredDataLocation](active-directory-aadconnectsync-feature-preferreddatalocation.md) funkció. Lehetővé teszi, hogy meghatározza, mely adatközpont-régiót, a felhasználói erőforrások találhatók.
 
 ## <a name="staging-server"></a>Átmeneti kiszolgáló
-![Átmeneti kiszolgálói topológia](./media/active-directory-aadconnect-topologies/MultiForestStaging.png)
+![Átmeneti kiszolgáló topológiában](./media/active-directory-aadconnect-topologies/MultiForestStaging.png)
 
-A második kiszolgáló telepítése az Azure AD Connect támogatja *átmeneti módban*. Ebben a módban egy kiszolgáló olvassa be az adatokat az összes csatlakoztatott könyvtárak, de nem írható minden csatlakoztatott könyvtárak. A normál szinkronizálási ciklust használ, és ezért rendelkezik a identitásadatok frissített másolatát.
+A második kiszolgáló telepítése az Azure AD Connect támogatja *átmeneti módban*. Ebben a módban egy kiszolgáló adatokat olvas be minden csatlakoztatott címtár, de nem írja minden csatlakoztatott címtárhoz. A normál szinkronizálási ciklust használja, és ezért a frissített másolatát a azonosító adatok is.
 
-Egy olyan vészhelyzet esetén, ahol az elsődleges kiszolgáló meghibásodik, a feladatokat átveheti a fejlesztői kiszolgálóhoz. Ehhez az Azure AD Connect varázsló. A második kiszolgáló is található egy ugyanabban az adatközpontban, mert infrastruktúrával nem az elsődleges kiszolgáló van osztva. A konfigurációs változásokat, a második kiszolgáló az elsődleges kiszolgálón végzett manuálisan át kell másolnia.
+A katasztrófa, ahol az elsődleges kiszolgáló meghibásodik, a is átadja a feladatokat az átmeneti kiszolgálót. Ehhez az Azure AD Connect varázslójában. Ez a második kiszolgáló egy másik adatközpontban lévő helyezhetők, mert nincs infrastruktúrára van megosztva az elsődleges kiszolgáló. Manuálisan másolja a második kiszolgáló az elsődleges kiszolgálón végrehajtott konfigurációs változásokat.
 
-Egy átmeneti kiszolgálón segítségével tesztelheti egy új egyéni konfigurációt, és milyen hatása, hogy az adatokról. Módosításokat, és módosítsa a konfigurációt. Ha már elégedett az új konfigurációt, az átmeneti kiszolgáló legyen az aktív kiszolgáló, és állítsa be a régi aktív kiszolgáló átmeneti módra.
+Egy átmeneti kiszolgálón segítségével tesztelheti egy új egyéni konfigurációs és arról, hogy rendelkezik az adatokon. A módosítások megtekintheti és módosíthatja a konfigurációt. Ha elégedett az új konfigurációt, győződjön meg az átmeneti kiszolgálón az aktív kiszolgáló, és állítsa be a régi aktív kiszolgáló átmeneti módra.
 
-Ez a módszer segítségével is az aktív szinkronizálási kiszolgálót le kell cserélni. Készítse elő az új kiszolgálón, és állítsa be az átmeneti környezetű üzemmód. Ellenőrizze, hogy jó állapotban, tiltsa le a átmeneti módban (aktiválás), és állítsa le a jelenleg aktív kiszolgálóhoz.
+Ez a módszer használatával az aktív szinkronizálási kiszolgálót cserélje le. Készítse elő az új kiszolgálón, és állítsa be az átmeneti környezetű üzemmód. Győződjön meg arról, hogy jó állapotban átmeneti módban (aktiválás), tiltsa le, és állítsa le a jelenleg aktív kiszolgálót.
 
-Lehetséges, hogy csak egy átmeneti kiszolgálón helyzet rendelkezik több biztonsági mentése különböző adatközpontokban.
+Lehetőség van egynél több átmeneti kiszolgálón, ha rendelkezik több biztonsági mentése különböző adatközpontokban szeretne.
 
 ## <a name="multiple-azure-ad-tenants"></a>Több Azure AD-bérlő
-Javasoljuk, egyetlen bérlő szervezet Azure AD-ben.
-Előtt is több Azure AD-bérlőt használni kívánja, tekintse meg a cikk [az adminisztrációs egységek felügyelete az Azure AD](../active-directory-administrative-units-management.md). Gyakori forgatókönyvek, ahol ugyanúgy használhatók egy egybérlős magában foglalja.
+Azt javasoljuk, hogy egyetlen új bérlő kellene a szervezet Azure AD-ben.
+Mielőtt több Azure AD-bérlőt használni kívánja, tekintse meg a cikket [adminisztrációs egységek felügyelete az Azure ad-ben](../users-groups-roles/directory-administrative-units.md). Ez fedezi a gyakori forgatókönyvek, ahol egyetlen bérlő használhat.
 
-![Több erdő és a több bérlő topológia](./media/active-directory-aadconnect-topologies/MultiForestMultiDirectory.png)
+![Több erdő, és több bérlő topológiája](./media/active-directory-aadconnect-topologies/MultiForestMultiDirectory.png)
 
-Az Azure AD Connect szinkronizálási kiszolgálót és az Azure AD-bérlő közötti 1:1 kapcsolat van. Minden Azure AD-bérlő van szüksége egy Azure AD Connect szinkronizálási kiszolgáló telepítés. Az Azure AD-bérlő példányban vannak elszigetelt úgy lett kialakítva. Ez azt jelenti, hogy az egy bérlő felhasználók nem látják a többi bérlő felhasználók számára. Ha azt szeretné, hogy ez az elkülönítés, ez a beállítás támogatott. Ellenkező esetben az egyetlen kell használni az Azure AD bérlő modell.
+1:1 kapcsolatot egy Azure AD Connect szinkronizálási kiszolgáló és az Azure AD-bérlő között van. Minden egyes Azure AD-bérlővel kell egy Azure AD Connect szinkronizálási kiszolgáló telepítés. Az Azure AD bérlőhöz példányok elvárt legyenek különítve. Azt jelenti egy bérlő felhasználói nem látja a többi bérlő felhasználói. Ha azt szeretné, hogy ez a fajta elkülönítés, ez a konfiguráció támogatott. Ellenkező esetben használjon az egyetlen Azure AD-bérlő modell.
 
 ### <a name="each-object-only-once-in-an-azure-ad-tenant"></a>Az egyes objektumok csak egyszer az Azure AD-bérlő
-![Egyetlen erdő esetén szűrt topológia](./media/active-directory-aadconnect-topologies/SingleForestFiltered.png)
+![Egyetlen erdő szűrt topológia](./media/active-directory-aadconnect-topologies/SingleForestFiltered.png)
 
-Ebben a topológiában egy Azure AD Connect szinkronizálási kiszolgáló csatlakozik-e minden Azure AD-bérlő. Az Azure AD Connect szinkronizálási kiszolgálók be kell állítani a szűréshez, hogy mindegyik rendelkezik-e az való működésre objektumok egymást kölcsönösen kizáró csoportja. Például hatókörét megadhatja az egyes tartományokhoz vagy szervezeti egység minden kiszolgálón.
+Ebben a topológiában egy Azure AD Connect szinkronizálási kiszolgáló minden egyes Azure AD-bérlőhöz van kapcsolva. Az Azure AD Connect szinkronizálási kiszolgálót kell konfigurálni a szűréshez, ezért a művelethez használandó objektumok egymást kölcsönösen kizáró csoportja. Az egyes tartományokhoz vagy szervezeti egység minden kiszolgáló például gazdagépcsoportjaira.
 
-A DNS-tartomány regisztrálni lehet egyetlen Azure AD-bérlő. Az UPN-EK a felhasználók a helyszíni Active Directory-példányban is használnia kell a különálló névtereket. Például a fenti kép három különálló UPN-utótagot regisztrált a helyszíni Active Directory-példányban: contoso.com, fabrikam.com és wingtiptoys.com. Az egyes a helyszíni Active Directory tartományi felhasználók használja egy másik névtérből.
+A DNS-tartomány regisztrálni lehet egyetlen Azure AD-bérlővel. Az UPN-EK, a felhasználók a helyszíni Active Directory-példányban is használnia kell a különálló névtereket. Ha például az előző képen látható, három különálló UPN-utótagot regisztrált a helyszíni Active Directory-példányban: contoso.com, fabrikam.com és wingtiptoys.com. Minden egyes a helyszíni Active Directory-tartományban lévő felhasználók egy másik névtér használatára.
 
 >[!NOTE]
->Globális cím lista szinkronizálási (GalSync) nem automatikusan történik, ebben a topológiában, és további egyéni MIM végrehajtása minden egyes bérlő legyen egy teljes globális cím lista (GAL) az Exchange Online és Skype vállalati online teszi szükségessé.
+>Globális cím lista szinkronizálás (GalSync) nem automatikusan történik, ebben a topológiában, és megköveteli egy további egyéni MIM megvalósításának egyes bérlők ne legyen a teljes globális cím lista (GAL) az Exchange Online és Skype vállalati online.
 
 
-Ez a topológia rendelkezik-e a következő egyéb korlátozások a támogatott forgatókönyveket:
+Ez a topológia rendelkezik a következő egyéb korlátozások támogatott forgatókönyvek:
 
 * Az Azure AD-bérlőt csak az egyik engedélyezheti az Exchange hibrid a helyszíni Active Directory-példánnyal.
-* Windows 10-eszközöket csak egy Azure AD-bérlővel társítható.
-* Egyszeri bejelentkezés (SSO) beállítás megadása jelszó kivonatát szinkronizálás és az áteresztő hitelesítés csak egy Azure AD-bérlő használható.
+* Windows 10-eszközök csak egy Azure AD-bérlővel társítható.
+* Egyszeri bejelentkezés (SSO) esetén alkalmazott beállítás jelszó Jelszókivonat-szinkronizálás és átmenő hitelesítés csak egy Azure AD-bérlővel is használható.
 
-Objektumok egymást kölcsönösen kizáró számú követelmény is vonatkozik visszaírásához. Néhány visszaíró szolgáltatását nem támogatottak a topológia, mert azok feltételezik, hogy egyetlen helyszíni konfigurációt. Ezek a funkciók a következők:
+A jelszóvisszaíró objektumok egymást kölcsönösen kizáró csoportja vonatkozó követelmény is vonatkozik. Mivel egyetlen helyszíni konfigurációt azt feltételezik néhány visszaíró szolgáltatását nem támogatottak ebben a topológiában. Ezek a funkciók a következők:
 
-* Csoport visszaírási alapértelmezett konfigurációval.
-* Eszközök visszaírásához.
+* A jelszóvisszaíró csoport alapértelmezett konfigurációval.
+* Eszközvisszaírás.
 
-### <a name="each-object-multiple-times-in-an-azure-ad-tenant"></a>Az egyes objektumok többször az Azure AD-bérlő
-![Egyetlen erdő esetén, és több bérlő nem támogatott topológia](./media/active-directory-aadconnect-topologies/SingleForestMultiDirectoryUnsupported.png) ![Egyetlen erdő esetén, és több összekötő nem támogatott topológia](./media/active-directory-aadconnect-topologies/SingleForestMultiConnectorsUnsupported.png)
+### <a name="each-object-multiple-times-in-an-azure-ad-tenant"></a>Minden objektum többször is feldolgozza az Azure AD-bérlő
+![Egyetlen erdő, és több bérlő nem támogatott topológiát](./media/active-directory-aadconnect-topologies/SingleForestMultiDirectoryUnsupported.png) ![Egyetlen erdő, és több összekötő nem támogatott topológiát](./media/active-directory-aadconnect-topologies/SingleForestMultiConnectorsUnsupported.png)
 
 Ezek a feladatok nem támogatottak:
 
-* A ugyanazon felhasználó számára több Azure AD-bérlő szinkronizálni.
-* Olyan konfigurációs módosítást, hogy a felhasználók számára egy Azure AD-bérlő frissítésként jelenik meg egy másik Azure AD-bérlő partnerek ellenőrizze.
-* Azure AD Connect szinkronizálási való csatlakozáshoz a több Azure AD-bérlő módosítása.
+* Több Azure AD-bérlő számára ugyanaz a felhasználó szinkronizálása.
+* Győződjön meg arról, konfigurációjának módosításával, hogy egy Azure AD-bérlő felhasználóinak névjegyeit, állítsa be egy másik Azure AD-bérlő jelennek meg.
+* Az Azure AD Connect szinkronizálási szeretne csatlakozni a több Azure AD-bérlő módosítása
 
-### <a name="galsync-by-using-writeback"></a>A visszaírási GALSync
-![Több erdő és a több-címtárak esetén az Azure ad-val előtérbe GALSync nem támogatott topológia](./media/active-directory-aadconnect-topologies/MultiForestMultiDirectoryGALSync1Unsupported.png) ![Több erdő, és több könyvtárak, GALSync előtérbe nem támogatott topológiát a helyszíni Active Directory](./media/active-directory-aadconnect-topologies/MultiForestMultiDirectoryGALSync2Unsupported.png)
+### <a name="galsync-by-using-writeback"></a>A jelszóvisszaíró használatával GALSync
+![Több erdő, és több címtár, az Azure ad-ben összpontosító GALSync nem támogatott topológiát](./media/active-directory-aadconnect-topologies/MultiForestMultiDirectoryGALSync1Unsupported.png) ![Több erdő, és több címtár, a GALSync koncepciójának nem támogatott topológiát a helyszíni Active Directory](./media/active-directory-aadconnect-topologies/MultiForestMultiDirectoryGALSync2Unsupported.png)
 
-Az Azure AD-bérlő munkakönyvtárral úgy lett kialakítva. Ezek a feladatok nem támogatottak:
+Az Azure AD-bérlők elvárt legyenek különítve. Ezek a feladatok nem támogatottak:
 
-* Az Azure AD Connect szinkronizálási adatokat olvasni egy másik Azure AD-bérlő konfigurációjának módosítása
-* Felhasználók exportálása partnereket, hogy egy másik a helyszíni Active Directory-példányban, az Azure AD Connect szinkronizálási szolgáltatás használatával.
+* Az Azure AD Connect szinkronizálási adatokat olvasni az egy másik Azure AD-bérlő konfigurációjának módosítása
+* Felhasználók exportálása névjegyként egy másik helyszíni Active Directory-példánynak az Azure AD Connect-szinkronizálás használatával.
 
 ### <a name="galsync-with-on-premises-sync-server"></a>A helyszíni szinkronizálási kiszolgálóval GALSync
-![Több erdő és a több könyvtárak topológiában GALSync](./media/active-directory-aadconnect-topologies/MultiForestMultiDirectoryGALSync.png)
+![Több erdő, és több címtár topológiában GALSync](./media/active-directory-aadconnect-topologies/MultiForestMultiDirectoryGALSync.png)
 
-FIM 2010 vagy a MIM 2016 helyszíni segítségével (keresztül GALSync) felhasználók szinkronizálása az Exchange két szervezet között. A felhasználók az egyik szervezet külső felhasználók/contacts a másik szervezet jelennek meg. Ezek különböző a helyszíni Active Directory példányok majd szinkronizálhatja a saját Azure AD-bérlő.
+FIM 2010 vagy a MIM 2016 helyszíni segítségével (keresztül GALSync) felhasználók szinkronizálása az Exchange két szervezet között. A felhasználók az egyik szervezet külső felhasználók/ügyfelek a másik szervezet jelennek meg. A különféle helyszíni Active Directory-példányok majd szinkronizálhatók a saját Azure AD-bérlőt.
 
 ## <a name="next-steps"></a>További lépések
-Forgatókönyvek esetén az Azure AD Connect telepítésével kapcsolatban lásd: [az Azure AD Connect egyéni telepítési](active-directory-aadconnect-get-started-custom.md).
+Ebben az esetben az Azure AD Connect telepítésével kapcsolatban lásd: [az Azure AD Connect egyéni telepítési](active-directory-aadconnect-get-started-custom.md).
 
-További információ a [az Azure AD Connect szinkronizálási szolgáltatás](active-directory-aadconnectsync-whatis.md) konfigurációs.
+Tudjon meg többet a [Azure AD Connect szinkronizálási](active-directory-aadconnectsync-whatis.md) konfigurációja.
 
-További információ [a helyszíni identitások integrálása az Azure Active Directoryval](active-directory-aadconnect.md).
+Tudjon meg többet [a helyszíni identitások integrálása az Azure Active Directory](active-directory-aadconnect.md).

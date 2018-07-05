@@ -1,6 +1,6 @@
 ---
-title: Hozzáférés-ellenőrzés végrehajtása az Azure-erőforrások Privileged Identity Management használatával |} Microsoft Docs
-description: Ismerteti, hogyan egy hozzáférés-ellenőrzés indítása a Privileged Identity Management az Azure-erőforrások
+title: A Privileged Identity Management végre az Azure-erőforrások hozzáférési felülvizsgálatok |} A Microsoft Docs
+description: Ismerteti a hozzáférési felülvizsgálat indítása a Privileged Identity Management az Azure-erőforrások
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -9,65 +9,65 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.component: protection
 ms.date: 04/02/2018
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: b5c2f13386a996a6c7895bd4755b6cf609a5df72
-ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
+ms.openlocfilehash: f963e63aa92e15205f20ecb3e502065b8dd2c58c
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35233254"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37443069"
 ---
-# <a name="perform-access-reviews-in-azure-resources-by-using-privileged-identity-management"></a>Hozzáférés-ellenőrzés végrehajtása az Azure-erőforrások Privileged Identity Management használatával
-Szerepkör-hozzárendelések "elavult" válnak, amikor a felhasználók privilegizált hozzáférést, amelyek többé nem kell. Ezek elavult szerepkör-hozzárendelések társított a kockázatok csökkentése érdekében kiemelt szerepkörű rendszergazda rendszeresen ellenőrizzék szerepkörök. Ez a dokumentum a Privileged Identity Management (PIM) egy hozzáférés-ellenőrzés indítása az Azure-erőforrások lépéseket ismerteti.
+# <a name="perform-access-reviews-in-azure-resources-by-using-privileged-identity-management"></a>Hajtsa végre a hozzáférési felülvizsgálatok az Azure-erőforrások a Privileged Identity Management használatával
+Szerepkör-hozzárendelések "elavult" válnak, amikor a felhasználók a privilegizált hozzáférés, amelyekre már nincs szükségük. A régi szerepkör-hozzárendelések társított kockázatának csökkentése érdekében, a kiemelt szerepkörű rendszergazdák szerepkörök rendszeresen tekintse át. Ez a dokumentum ismerteti a lépéseket az Azure-erőforrások a Privileged Identity Management (PIM) hozzáférési felülvizsgálat indítása.
 
-A PIM-alkalmazás fő lapján Ugrás:
+A PIM-alkalmazás fő lapján lépjen a:
 
-* **Hozzáférési értékelést** > **hozzáadása**
+* **Hozzáférési felülvizsgálatokkal** > **hozzáadása**
 
-![Hozzáférés értékelést hozzáadása](media/azure-pim-resource-rbac/rbac-access-review-home.png)
+![Adja hozzá a hozzáférési felülvizsgálatok](media/azure-pim-resource-rbac/rbac-access-review-home.png)
 
-Ha bejelöli a **Hozzáadás** gombra, a **hozzon létre egy áttekintése** panel jelenik meg. A panel a felülvizsgálati állítson be egy nevet és a határidő, tekintse át, és válassza ki a felülvizsgálati tesz szerepkör kiválasztása.
+Amikor kiválasztja a **Hozzáadás** gombra, a **hozzáférési felülvizsgálat létrehozása** panel jelenik meg. Ezen a panelen a felülvizsgálat konfigurálása neve és időbeli korlát, tekintse át, és válassza ki a felülvizsgálat tesz a munkakör kiválasztása.
 
 ![Hozzáférési felülvizsgálat létrehozása](media/azure-pim-resource-rbac/rbac-create-access-review.png)
 
-### <a name="configure-the-review"></a>A felülvizsgálati konfigurálása
-Hozzon létre egy áttekintése, először adjon neki nevet, és utána állítsa be a kezdő és záró dátumát.
+### <a name="configure-the-review"></a>A felülvizsgálat konfigurálása
+Hozzáférési felülvizsgálat létrehozása, először neki, és állítsa a kezdő és záró dátumát.
 
 ![Konfigurálja a felülvizsgálati – képernyőkép](media/azure-pim-resource-rbac/rbac-access-review-setting-1.png)
 
-Ellenőrizze a elég hosszú a felhasználók számára meg ennek befejeződését, tekintse át a hosszát. A lejárati dátuma előtt fejeződik be, ha azok mindig leállíthatja a felülvizsgálati korai.
+Győződjön meg arról, túl hosszú ahhoz, a felhasználók számára, végezze el a felülvizsgálatot hosszát. A záró dátumnál korábbinak fejeződik be, ha azok mindig leállíthatja a felülvizsgálat korai.
 
-### <a name="choose-a-role-to-review"></a>Válassza ki a szerepkört áttekintése
-Minden egyes felülvizsgálati csak egy szerepkör összpontosít. Kivéve, ha a áttekintése indította el egy adott szerepkör panel, kell választani. most már a szerepkör.
+### <a name="choose-a-role-to-review"></a>Tekintse át a munkakör kiválasztása
+Kritika csak egy szerepkör összpontosít. Kivéve, ha egy adott szerepkör panelen kezdi a hozzáférési felülvizsgálatot, munkakör kiválasztása most kell.
 
-1. Ugrás a **tekintse át a szerepköri tagság**
+1. Lépjen a **szerepkörtagság felülvizsgálata**
    
-    ![Tekintse át a szerepköri tagság – képernyőkép](media/azure-pim-resource-rbac/rbac-access-review-setting-2.png)
-2. Válassza ki egy szerepkört a listából.
+    ![Tekintse át a szerepkör tagságát – képernyőkép](media/azure-pim-resource-rbac/rbac-access-review-setting-2.png)
+2. A listából válasszon egy szerepkört.
 
-### <a name="decide-who-will-perform-the-review"></a>Döntse el, akik végrehajtják a felülvizsgálati
-Ellenőrzés végrehajtása esetén három lehetőség áll rendelkezésre. A felülvizsgálati rendelhet más végezze, azt megteheti ezt vagy minden felhasználó saját hozzáférés tekintse át.
+### <a name="decide-who-will-perform-the-review"></a>Döntse el, akik végrehajtják a felülvizsgálat
+Felülvizsgálat végrehajtásához három lehetőség áll rendelkezésre. Valaki más végrehajtásához rendelhet a felülvizsgálatot, akkor Ön is megteheti, vagy minden felhasználó a saját hozzáférését tekintheti át.
 
 1. A lehetőségek közül választhat:
    
-   * **A kijelölt felhasználók**: használja ezt a beállítást, ha nem biztos benne, aki hozzá kell férnie. Ezzel a beállítással a felülvizsgálati hozzárendelése egy erőforrás tulajdonosa vagy a csoport kezelőjének befejezéséhez.
-   * **Hozzárendelt (önálló)**: használja ezt a beállítást szeretné, hogy a felhasználók, tekintse át a saját szerepkör-hozzárendelések.
+   * **A kijelölt felhasználók**: használja ezt a beállítást, ha nem ismeri ki hozzá kell férnie. Ezzel a beállítással a felülvizsgálat hozzárendelheti egy erőforrás tulajdonosa vagy a csoport kezelőjének végrehajtásához.
+   * **Hozzárendelt (self)**: használja ezt a beállítást szeretné, hogy a felhasználók, ellenőrizze a saját szerepkör-hozzárendeléseket.
    
-2. Ugrás a **ki felülvizsgálót**.
+2. Lépjen a **felülvizsgálók kiválasztása**.
    
     ![Válassza ki a felülvizsgálók – képernyőkép](media/azure-pim-resource-rbac/rbac-access-review-setting-3.png)
 
-### <a name="start-the-review"></a>Az ellenőrzés indítása
-Végezetül megkövetelheti, hogy a felhasználók jóváhagyása a hozzáférés okát biztosítson. Ha szeretné adja meg a felülvizsgálati leírását. Válassza ki **Start**.
+### <a name="start-the-review"></a>A felülvizsgálat indítása
+Végül megkövetelheti, hogy a felhasználók biztosítani hagyja jóvá a hozzáférés okát. Igény szerint adjon meg egy leírást, a felülvizsgálat. Válassza ki **Start**.
 
-Győződjön meg arról, hogy engedélyezi a felhasználóknak, hogy egy entitás áttekintése, és a megjelenítésükhöz [egy hozzáférési felülvizsgálat végrehajtása](pim-resource-roles-perform-access-review.md).
+Győződjön meg arról, hogy engedélyezi a felhasználóknak, hogy Várakozás azokat a hozzáférési felülvizsgálat, és nekik [hozzáférési felülvizsgálat végrehajtása](pim-resource-roles-perform-access-review.md).
 
-## <a name="manage-the-access-review"></a>Kezelheti a áttekintése
-A PIM Azure-erőforrások irányítópulton nyomon követheti a folyamatban, a többi felhasználó végezze el az ellenőrzéseket. Nincs hozzáférési jogosultsága, módosulnak, amíg a címtár [befejezése után a felülvizsgálati](pim-resource-roles-complete-access-review.md).
+## <a name="manage-the-access-review"></a>A hozzáférési felülvizsgálat kezelése
+A PIM az Azure-erőforrások irányítópultot követheti a folyamat állapotát, a felülvizsgálatot, végezze el az ellenőrzéseket. Nincs hozzáférési jogosultsága változnak, amíg a könyvtárban [a felülvizsgálat befejeződött](pim-resource-roles-complete-access-review.md).
 
-Amíg a felülvizsgálati időszak alatt, emlékeztesse a felhasználók a felülvizsgálat befejezéséhez, vagy állítsa le a korai szakaszából hozzáférés értékelést áttekintése.
+Amíg viszonyt keresztül, emlékeztesse a felhasználókat, végezze el a felülvizsgálatot, vagy állítsa le a hozzáférési felülvizsgálatok szakasz a korai a felülvizsgálatot.
 

@@ -1,32 +1,32 @@
 ---
-title: Az Azure Active Directory B2C egyéni házirendek nyelvi testreszabási |} Microsoft Docs
-description: Ismerje meg, hogyan használható az egyéni házirendeket több nyelvhez tartalom localize.
+title: Nyelvi testreszabás az Azure Active Directory B2C-vel egyéni szabályzatok |} A Microsoft Docs
+description: Ismerje meg, hogyan használhatja az egyéni házirendek több nyelv tartalom honosítása.
 services: active-directory-b2c
 author: davidmu1
 manager: mtillman
 ms.service: active-directory
 ms.workload: identity
-ms.topic: article
+ms.topic: conceptual
 ms.date: 11/13/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: c8deabd4d0a4126365b014875624525d5b1f3063
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 6269ac65e5db20521346d5312bcbadd0905c36e2
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34711756"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37440564"
 ---
-# <a name="language-customization-in-custom-policies"></a>Az egyéni házirendek nyelvi testreszabása
+# <a name="language-customization-in-custom-policies"></a>Az egyéni szabályzat nyelvi testreszabás
 
 > [!NOTE]
-> A funkció jelenleg nyilvános előzetes verziójához.
+> Ez a funkció jelenleg nyilvános előzetes verzióban.
 > 
 
-Az egyéni házirendek nyelvi testreszabási működik, mint beépített házirendek.  Tekintse meg a beépített [dokumentáció](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-reference-language-customization) , amely leírja, hogyan egy nyelvet a paraméterek és a böngésző beállításai alapján kell kiválasztani a viselkedését.
+Az egyéni házirendek nyelvi testreszabás ugyanúgy működik mint beépített szabályzatokat.  Tekintse meg a beépített [dokumentáció](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-reference-language-customization) , amely bemutatja, hogyan egy kiválasztott a paramétereket és a böngésző beállításai alapján a működését.
 
 ## <a name="enable-supported-languages"></a>Engedélyezze a támogatott nyelvek
-Ha nincs megadva a felhasználói felület – területi beállításokat, és a felhasználó kéri az egyiken, támogatott nyelvek jelennek meg a felhasználó számára.  
+Ha nincs megadva a felhasználói felület – területi beállításokat, és ezeken a nyelveken egyik kéri a felhasználó böngészőjében, támogatott nyelvek jelennek meg a felhasználó számára.  
 
 Támogatott nyelvek meghatározott `<BuildingBlocks>` a következő formátumban:
 
@@ -41,19 +41,19 @@ Támogatott nyelvek meghatározott `<BuildingBlocks>` a következő formátumban
 </BuildingBlocks>
 ```
 
-Alapértelmezett nyelv és a támogatott nyelveket működik ugyanúgy, mint a beépített házirendek.
+Alapértelmezett nyelv és támogatott nyelveket viselkedése ugyanúgy, mint a beépített szabályzatokat.
 
 ## <a name="enable-custom-language-strings"></a>Egyéni nyelvi karakterláncok engedélyezése
 
 Egyéni nyelvi karakterláncok létrehozása két lépésből áll:
-1. Szerkessze a `<ContentDefinition>` adjon meg a kívánt nyelvhez erőforrás-Azonosítót a lap
-2. Hozzon létre a `<LocalizedResources>` a megfelelő azonosítók a `<BuildingBlocks>`
+1. Szerkessze a `<ContentDefinition>` a lap, adja meg a kívánt nyelvhez egy erőforrás-azonosító
+2. Hozzon létre a `<LocalizedResources>` a megfelelő azonosítóval a `<BuildingBlocks>`
 
-Ne feledje, hogy helyezhet el egy `<ContentDefinition>` és `<BuildingBlock>` a kiterjesztés vagy a függő házirend-fájl attól függően, hogy a módosítások a öröklő házirendek találhatók, vagy nem is.
+Vegye figyelembe, hogy elhelyezhet egy `<ContentDefinition>` és `<BuildingBlock>` a kiterjesztés vagy a függő házirend fájl attól függően, hogy a módosítások kell lennie az öröklés szabályzatok, vagy nem is.
 
-### <a name="edit-the-contentdefinition-for-the-page"></a>A lap ContentDefinition szerkesztése
+### <a name="edit-the-contentdefinition-for-the-page"></a>Az oldal a ContentDefinition szerkesztése
 
-Az összes lapon localize, kívánt adhat meg a `<ContentDefinition>` milyen nyelvi erőforrásokat, amelyet meg kíván keresni az egyes nyelvi kódot.
+Minden laphoz szeretné megkeresni, megadhatja a `<ContentDefinition>` milyen nyelvű erőforrások keresse ki az egyes nyelvi kódot.
 
 ```XML
 <ContentDefinition Id="api.signuporsignin">
@@ -64,12 +64,12 @@ Az összes lapon localize, kívánt adhat meg a `<ContentDefinition>` milyen nye
 </ContentDefinition>
 ```
 
-Ez a példa francia (fr) és az angol (en) egyéni karakterláncok kerülnek az egyesített előfizetési vagy a bejelentkezési oldalon.  A `LocalizedResourcesReferenceId` minden `LocalizedResourcesReference` ugyanaz, mint a területi beállítás, de bármilyen karakterlánc azonosítóként használata  Minden egyes nyelvet és a lap kombináció, létre kell hoznia egy megfelelő `<LocalizedResources>` az alábbiak.
+Ebben a példában francia (fr) és az angol (en) egyéni karakterláncok hozzáadódnak az egyesített regisztrálási vagy bejelentkezési oldal.  A `LocalizedResourcesReferenceId` minden `LocalizedResourcesReference` ugyanaz, mint a területi beállítás, de használhat bármilyen karakterlánc-azonosító néven  Minden egyes nyelvi és oldal kombinációjával, létre kell hoznia egy megfelelő `<LocalizedResources>` az alábbiak.
 
 
 ### <a name="create-the-localizedresources"></a>A LocalizedResources létrehozása
 
-A felülbírálások találhatók a `<BuildingBlocks>` , és nincs olyan `<LocalizedResources>` minden oldalon és a nyelvi megadott a `<ContentDefinition>` az összes lapon.  Minden felülbírálás van megadva egy `<LocalizedString>` például a következő mintát:
+A felülbírálások tárolják a `<BuildingBlocks>` , és nincs egy `<LocalizedResources>` minden oldalon és a nyelvi megadott a `<ContentDefinition>` minden egyes laphoz.  Minden egyes felülbírálás a következőként van megadva egy `<LocalizedString>` például a következő mintát:
 
 ```XML
 <BuildingBlocks>
@@ -88,8 +88,8 @@ A felülbírálások találhatók a `<BuildingBlocks>` , és nincs olyan `<Local
 </BuildingBlocks>
 ```
 
-Az oldalon karakterlánc elem négy típusa van:
+A lap karakterlánc elemeinek négy típusa van:
 
-**ClaimsProvider** -címkéket az identitás-szolgáltatóktól (Facebook, Google, az Azure AD stb.) **ClaimType** -címkék a attribútumok és a kapcsolódó súgószöveg, vagy érvényesítési hibákat mezőben **UxElement** - egyéb karakterlánc, amely alapértelmezés szerint például gombok, hivatkozásokat vagy szöveges vannak-ealapelemeinek**ErrorMessage** -űrlapon ellenőrzési hibaüzenetek
+**ClaimsProvider** -címkék Identitásszolgáltatók (Facebook, Google, az Azure AD stb.) **Takar** -címkék a-attribútumok és a kapcsolódó súgószöveg, vagy érvényesítési hibák mezőben **UxElement** - egyéb karakterlánc-elemek az oldalon, hogy vannak-e, például gombok, hivatkozásokat vagy szöveges alapértelmezésszerint**ErrorMessage** -űrlapon ellenőrzési hibaüzenetek
 
-Győződjön meg arról, hogy a `StringId`s felel meg a lap ezeket a felülbírálásokat egyéb házirend érvényesítésének feltöltéskor letiltotta a használatát.  
+Ügyeljen arra, hogy a `StringId`s felel meg az oldal, használja ezeket a felülbírálásokat egyéb házirend érvényesítése feltöltéskor által le van tiltva.  

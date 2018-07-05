@@ -5,12 +5,12 @@ author: rajani-janaki-ram
 ms.topic: conceptual
 ms.date: 07/01/2018
 ms.author: rajani-janaki-ram
-ms.openlocfilehash: 05ae90767c6f0347c43e6476001eb84df61b9df5
-ms.sourcegitcommit: 4597964eba08b7e0584d2b275cc33a370c25e027
+ms.openlocfilehash: f5f92b0dc064a992b93447f785db6c717f81e47b
+ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37342497"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37436643"
 ---
 # <a name="delete-a-site-recovery-vault"></a>Site Recovery-tároló törlése
 
@@ -48,7 +48,7 @@ A tároló törléséhez kövesse a javasolt lépéseket a forgatókönyvhöz.
 
 2. Szüntesse meg az & minden replikációs szabályzat törléséhez keresse meg a tároló -> **Site Recovery-infrastruktúra** -> **Hyper-V helyek** -> **replikációs házirendek**
 
-3. Hyper-V kiszolgálók mutató hivatkozások törlése a lépéseket követve [regisztrációjának törlése a Hyper-V-gazdagép](/site-recovery-manage-registration-and-protection.md#unregister-a-hyper-v-host-in-a-hyper-v-site).
+3. Hyper-V kiszolgálók mutató hivatkozások törlése a lépéseket követve [regisztrációjának törlése a Hyper-V-gazdagép](site-recovery-manage-registration-and-protection.md#unregister-a-hyper-v-host-in-a-hyper-v-site).
 
 4. A Hyper-V hely törlése.
 

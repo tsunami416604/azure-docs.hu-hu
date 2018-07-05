@@ -1,28 +1,28 @@
 ---
-title: Egy Android-alkalmazás használatával az Azure Active Directory B2C tokenbeolvasás |} Microsoft Docs
-description: Ez a cikk bemutatja, hogyan, amely Azure Active Directory B2C AppAuth használ a felhasználói identitások kezelésére, és hitelesíti a felhasználókat, Android-alkalmazás létrehozásához.
+title: Android-alkalmazás használatával az Azure Active Directory B2C egy token beszerzése |} A Microsoft Docs
+description: Ebből a cikkből megtudhatja, hogyan hozhat létre Android-alkalmazás, amely az Azure Active Directory B2C az AppAuth használatával felhasználói identitásokat kezelhet és hitelesítheti a felhasználókat.
 services: active-directory-b2c
 author: davidmu1
 manager: mtillman
 ms.service: active-directory
 ms.workload: identity
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/06/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 7c0a72e03eaa8d12c26b1bbbf6a05b4d94e72358
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 86ef621eccc7e6ba999318348f940a6a3931274e
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34709906"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37442406"
 ---
-# <a name="azure-ad-b2c-sign-in-using-an-android-application"></a>Az Azure AD B2C: Bejelentkezés Android alkalmazás segítségével
+# <a name="azure-ad-b2c-sign-in-using-an-android-application"></a>Az Azure AD B2C: Bejelentkezés egy Android-alkalmazás használatával
 
-A Microsoft identitásplatformja nyílt szabványokat, többek között OAuth2-t és OpenID Connectet használ. Ezeknek a szabványoknak lehetővé teszi, hogy kihasználja az Azure Active Directory B2C-vel integrálni kívánt függvénytárat. Használatához nyújtanak segítséget más szalagtárak, a jelen szoftverhez hasonló a forgatókönyv segítségével bemutatják, hogyan lehet kapcsolódni a Microsoft identity platform 3. fél szalagtárak konfigurálása. A legtöbb tárak, amelyek megvalósítják az [a RFC6749 OAuth2 spec](https://tools.ietf.org/html/rfc6749) csatlakozni tud-e a Microsoft Identity platform.
+A Microsoft identitásplatformja nyílt szabványokat, többek között OAuth2-t és OpenID Connectet használ. Ezeknek a szabványoknak való integrálása az Azure Active Directory B2C szeretné bármilyen típusú kódtárat teszi lehetővé. Segítséget a könyvtárak használatához, az alábbihoz hasonló bemutató segítségével bemutatják, hogyan lehet csatlakozni a Microsoft identity platform 3. fél szalagtárak konfigurálása. Használó legtöbb kódtár [RFC6749 OAuth2 specifikációt](https://tools.ietf.org/html/rfc6749) csatlakozhat a Microsoft Identity platform.
 
 > [!WARNING]
-> A Microsoft nem biztosít azoknak a 3. fél szalagtárak, és nem végrehajtva a tárak áttekintése. Ez a minta, amely tesztelték AppAuth nevű alapszintű forgatókönyvekben kompatibilisek-e az Azure AD B2C 3. fél szalagtárat használ. A könyvtár nyílt forráskódú projekt problémákat és funkciókra vonatkozó kérések legyenek irányítva. Ellenőrizze a [Ez a cikk](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-libraries) további információt.  
+> A Microsoft nem biztosít javításokat a 3. fél tárak, és nem tett át ezeket a kódtárakat. Ez a minta egy 3. fél kódtár, hogy tesztelték az AppAuth nevű alapszintű forgatókönyvekben kompatibilitás érdekében az Azure AD B2C-vel használ. Problémák és a funkciókérések legyen átirányítva a tár nyílt forráskódú projekt. Lásd: [Ez a cikk](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-libraries) további információt.  
 >
 >
 
@@ -34,17 +34,17 @@ Az Azure AD B2C használatához létre kell hoznia egy címtárat vagy bérlőt.
 
 ## <a name="create-an-application"></a>Alkalmazás létrehozása
 
-A következő lépésben hozzon létre egy alkalmazást a B2C-címtárban. Ez biztosítja az alkalmazással történő biztonságos kommunikációhoz szükséges információkat az Azure AD számára. A mobilalkalmazások létrehozásához hajtsa végre az [ezeket az utasításokat](active-directory-b2c-app-registration.md). Ügyeljen arra, hogy:
+A következő lépésben hozzon létre egy alkalmazást a B2C-címtárban. Ez biztosítja az alkalmazással történő biztonságos kommunikációhoz szükséges információkat az Azure AD számára. Mobilalkalmazás létrehozása, hajtsa végre a [ezek az utasítások](active-directory-b2c-app-registration.md). Ügyeljen arra, hogy:
 
-* Tartalmaznak egy **Native Client** az alkalmazásban.
-* Másolja az alkalmazáshoz rendelt **alkalmazásazonosítót**. Ezt később lesz szüksége.
-* Állítson be egy natív ügyfél **átirányítási URI-** (pl. com.onmicrosoft.fabrikamb2c.exampleapp://oauth/redirect). Később erre is szüksége lesz.
+* Például egy **natív ügyfél** az alkalmazásban.
+* Másolja az alkalmazáshoz rendelt **alkalmazásazonosítót**. Ez később lesz szüksége.
+* Állítsa be egy natív ügyfél **átirányítási URI-t** (pl. com.onmicrosoft.fabrikamb2c.exampleapp://oauth/redirect). Később erre is szüksége lesz.
 
 ## <a name="create-your-policies"></a>Szabályzatok létrehozása
 
-Az Azure AD B2C-ben a felhasználói élményeket [szabályzatok](active-directory-b2c-reference-policies.md) határozzák meg. Az alkalmazás tartalmaz egy identitás-élmény: egy kombinált bejelentkezési és regisztrációs. Szeretné létrehozni ezt a házirendet, lásd: a [házirendek áttekintésével foglalkozó cikkben](active-directory-b2c-reference-policies.md#create-a-sign-up-policy). A szabályzat létrehozásakor ügyeljen arra, hogy:
+Az Azure AD B2C-ben a felhasználói élményeket [szabályzatok](active-directory-b2c-reference-policies.md) határozzák meg. Ez az alkalmazás egyetlen identitással kapcsolatos tartalmaz: egy kombinált bejelentkezési és a regisztrációhoz. Szeretne létrehozni a szabályzat leírtak szerint a [házirendek áttekintésével foglalkozó cikkben](active-directory-b2c-reference-policies.md#create-a-sign-up-policy). A szabályzat létrehozásakor ügyeljen arra, hogy:
 
-* Válassza ki a **megjelenített név** a szabályzatot az előfizetési attribútumaként.
+* Válassza ki a **megjelenítendő név** a házirend-előfizetési attribútumaként.
 * Az összes szabályzatban válassza ki a **Megjelenített név** és az **Objektumazonosító** alkalmazási jogcímet. Kiválaszthat egyéb jogcímeket is.
 * Az egyes házirendek létrehozása után másolja a házirend **nevét**. A névnek a következő előtaggal kell rendelkeznie: `b2c_1_`.  A szabályzat nevére később még szüksége lesz.
 
@@ -54,30 +54,30 @@ A szabályzat létrehozását követően készen áll az alkalmazás elkészít�
 
 ## <a name="download-the-sample-code"></a>A mintakód letöltése
 
-Egy Azure AD B2C AppAuth használó minta adtunk [a Githubon](https://github.com/Azure-Samples/active-directory-android-native-appauth-b2c). Töltse le a kódot, és futtassa. Gyorsan utasításait követve a saját Azure AD B2C konfigurációs használatával saját alkalmazással Ismerkedés a [README.md](https://github.com/Azure-Samples/active-directory-android-native-appauth-b2c/blob/master/README.md).
+Biztosítunk egy mintát, amely az AppAuth használja az Azure AD B2C-vel [a Githubon](https://github.com/Azure-Samples/active-directory-android-native-appauth-b2c). Töltse le a kódot, és futtathatja. Gyorsan megkezdheti a saját Azure AD B2C konfiguráció használatával a következő témakör utasításait követve saját alkalmazással az [README.md](https://github.com/Azure-Samples/active-directory-android-native-appauth-b2c/blob/master/README.md).
 
-A minta rendszer által biztosított mintafájl módosítását [AppAuth](https://openid.github.io/AppAuth-Android/). Látogasson el a AppAuth és funkcióival kapcsolatos további oldalára.
+A minta a minta által biztosított módosítás [az AppAuth](https://openid.github.io/AppAuth-Android/). Tekintse meg a lap további információ az AppAuth és annak szolgáltatásait.
 
-## <a name="modifying-your-app-to-use-azure-ad-b2c-with-appauth"></a>Az alkalmazás az Azure AD B2C használata AppAuth módosítása
+## <a name="modifying-your-app-to-use-azure-ad-b2c-with-appauth"></a>Az alkalmazás Azure AD B2C használata az AppAuth módosítása
 
 > [!NOTE]
-> AppAuth támogatja az Android API 16 (Jellybean) vagy újabb verzió. Azt javasoljuk, API 23 vagy újabb verzió.
+> Az AppAuth támogatja az Android API 16 (Jellybean) vagy újabb verzió. Javasoljuk, hogy használja az API 23 vagy újabb verzió.
 >
 
 ### <a name="configuration"></a>Konfiguráció
 
-Az Azure AD B2C kommunikáció vagy a felderítés URI, vagy az engedélyezési végpont és a token-végpont URI-azonosítók megadásával konfigurálható. Mindkét esetben szüksége lesz a következő információkat:
+Kommunikációs konfigurálhatja az Azure AD B2C-vel, vagy adja meg a felderítés URI-t vagy az engedélyezési végpont és a jogkivonat-végpont URI-k meghatározásával. Mindkét esetben szüksége lesz a következő információkat:
 
-* Bérlő azonosítója (pl. contoso.onmicrosoft.com)
-* Házirend neve (pl. B2C\_1\_SignUpIn)
+* Bérlő azonosítója (Példa: contoso.onmicrosoft.com)
+* A házirend nevét (pl. B2C\_1\_SignUpIn)
 
-Ha automatikus észleléséhez, az engedélyezés és a token-végpont URI-azonosítók választja, akkor adatok beolvasása a felderítés URI. A felderítés URI generálhatók azáltal, hogy a bérlő\_azonosítója és a házirend\_az alábbi URL-címben:
+Ha automatikus észleléséhez, az engedélyezési és jogkivonat-végpont URI-k, szüksége lesz az adatok beolvasása a felderítésből URI. A felderítést, és cserélje le a bérlő URI-t hozhat létre\_Azonosítóját és a szabályzat\_az alábbi URL-cím neve:
 
 ```java
 String mDiscoveryURI = "https://login.microsoftonline.com/<Tenant_ID>/v2.0/.well-known/openid-configuration?p=<Policy_Name>";
 ```
 
-Ezután az engedélyezési és a token-végpont URI-k megszerzésére és AuthorizationServiceConfiguration objektumot létrehozni a következő futtatásával:
+Ezután az engedélyezési és jogkivonat-végpont URI-k megszerzésére és AuthorizationServiceConfiguration objektum létrehozása a következő futtatásával:
 
 ```java
 final Uri issuerUri = Uri.parse(mDiscoveryURI);
@@ -98,7 +98,7 @@ AuthorizationServiceConfiguration.fetchFromIssuer(
   });
 ```
 
-Felderítési helyett a az engedélyezési és a token-végpont URI-k, azt is megadhatja azokat explicit módon történő lecserélésével a bérlő\_azonosítója és a házirend\_neve az URL-címet az alábbi:
+Felderítési juthat hozzá az engedélyezési és jogkivonat-végpont URI-k helyett azt is beállíthatja azokat explicit módon a bérlő lecserélésével\_Azonosítóját és a szabályzat\_neve az URL-címet az alábbi:
 
 ```java
 String mAuthEndpoint = "https://login.microsoftonline.com/<Tenant_ID>/oauth2/v2.0/authorize?p=<Policy_Name>";
@@ -115,14 +115,14 @@ AuthorizationServiceConfiguration config =
 // perform the auth request...
 ```
 
-### <a name="authorizing"></a>Engedélyezése
+### <a name="authorizing"></a>Engedélyező
 
-Konfigurálja, vagy egy engedélyezési szolgáltatás konfigurációjának beolvasása után egy engedélyezési-kérelem lehet létrehozni. A kérelem létrehozásához szüksége lesz a következő információkat:
+Miután konfigurálása, vagy egy engedélyezési szolgáltatás konfigurációjának lekérése, egy engedélyezési kérést lehet létrehozni. A kérelem létrehozásához szüksége lesz a következő információkat:
 
 * Ügyfél-azonosító (pl. 00000000-0000-0000-0000-000000000000)
-* Átirányítási URI egy egyéni séma (pl. com.onmicrosoft.fabrikamb2c.exampleapp://oauthredirect)
+* Átirányítási URI-t egy egyéni sémával (pl. com.onmicrosoft.fabrikamb2c.exampleapp://oauthredirect)
 
-Mindkét elemeket kell mentett Ha Ön volt [regisztrálja az alkalmazást](#create-an-application).
+Mindkettőt kell a rendszer mentette, amikor [regisztrálja az alkalmazást](#create-an-application).
 
 ```java
 AuthorizationRequest req = new AuthorizationRequest.Builder(
@@ -133,7 +133,7 @@ AuthorizationRequest req = new AuthorizationRequest.Builder(
     .build();
 ```
 
-Tekintse meg a [AppAuth útmutató](https://openid.github.io/AppAuth-Android/) való fejezze be a folyamatot. Ha egy működő alkalmazást gyorsan megismerkedhet van szüksége, tekintse meg [a minta](https://github.com/Azure-Samples/active-directory-android-native-appauth-b2c). Kövesse a [README.md](https://github.com/Azure-Samples/active-directory-android-native-appauth-b2c/blob/master/README.md) a saját Azure AD B2C konfigurációs megadását.
+Tekintse meg a [az AppAuth útmutató](https://openid.github.io/AppAuth-Android/) való fejezze be a folyamatot. Ha a használatának gyors megkezdése egy működő alkalmazást van szüksége, tekintse meg az [ebben a mintában](https://github.com/Azure-Samples/active-directory-android-native-appauth-b2c). Kövesse a [README.md](https://github.com/Azure-Samples/active-directory-android-native-appauth-b2c/blob/master/README.md) , adja meg a saját Azure AD B2C konfiguráció.
 
-Azt mindig nyitva a visszajelzések és tanácsok! Ha bármilyen nehézségbe ütközik a cikket, vagy az ehhez a tartalomhoz javítására állnak, azt fogadjuk visszajelzéseit az oldal alján. A szolgáltatás kéréseket, hozzáadhatja őket a [UserVoice](https://feedback.azure.com/forums/169401-azure-active-directory/category/160596-b2c).
+Mindig tudjuk nyissa meg a vélemények és tanácsok! Ha ez a cikk a kérdése van, vagy javaslatai ezt a tartalmat, örömmel visszajelzését a lap alján. A szolgáltatással kapcsolatos kéréseit, hozzáadhatja őket a [UserVoice](https://feedback.azure.com/forums/169401-azure-active-directory/category/160596-b2c).
 

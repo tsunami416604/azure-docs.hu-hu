@@ -6,16 +6,16 @@ author: davidmu1
 manager: mtillman
 ms.service: active-directory
 ms.workload: identity
-ms.topic: article
+ms.topic: conceptual
 ms.date: 6/13/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: dad35f26496306558a6e0105db86321c497a8306
-ms.sourcegitcommit: 4597964eba08b7e0584d2b275cc33a370c25e027
+ms.openlocfilehash: d44ea5afca15519fee1bc8a4ebd6c2ba1f36d760
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37342933"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37448628"
 ---
 # <a name="provide-sign-up-and-sign-in-to-consumers-with-twitter-accounts-using-azure-ad-b2c"></a>Regisztráció és bejelentkezés a fogyasztók számára biztosítanak a Twitter-fiókokkal, az Azure AD B2C használatával
 
@@ -26,7 +26,7 @@ Twitter használata Identitásszolgáltatóként az Azure Active Directory (Azur
 1. Nyissa meg a [Twitter-alkalmazások](https://apps.twitter.com/) , és jelentkezzen be a hitelesítő adataival.
 2. Kattintson a **új alkalmazás létrehozása**.
 3. A képernyőn adjon meg egy értéket a **neve**, **leírás**, és **webhely**.
-4. Az a **visszahívási URL-Címének**, adja meg `https://login.microsoftonline.com/te/{tenant}/{policyId}/oauth1/authresp`. Cserélje le **{tenant}** a bérlő nevét (például: contosob2c.onmicrosoft.com) és {policyId} a házirend-azonosítójú (például b2c_1_policy).  A visszahívási URL-címet kell lennie az összes kisbetűt. Minden szabályzat, amely a Twitter-bejelentkezés használatára egy visszahívási URL-címet hozzá kell adnia. Győződjön meg arról, hogy használja `b2clogin.com` helyett ` login.microsoftonline.com` Ha az alkalmazás használ.
+4. Az a **visszahívási URL-Címének**, adja meg `https://login.microsoftonline.com/te/{tenant}/{policyId}/oauth1/authresp`. Cserélje le **{tenant}** a bérlő nevét (például: contosob2c.onmicrosoft.com) és **{policyId}** a házirend-azonosítójú (például b2c_1_policy).  **A visszahívási URL-címet kell lennie az összes kisbetűt.** Minden szabályzat, amely a Twitter-bejelentkezés használatára egy visszahívási URL-címet hozzá kell adnia. Győződjön meg arról, hogy használja `b2clogin.com` helyett ` login.microsoftonline.com` Ha az alkalmazás használ.
 5. A jelölőnégyzet bejelölésével vállalja, hogy a **fejlesztői szerződés** kattintson **Twitter-alkalmazás létrehozása**.
 6. Az alkalmazás létrehozása után válassza ki a listából, válassza ki a **beállítások** fülre, majd **beállításainak frissítése**.
 7. Válassza ki a **kulcsok és hozzáférési tokenek** fülre.

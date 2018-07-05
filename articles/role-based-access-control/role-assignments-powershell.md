@@ -1,6 +1,6 @@
 ---
-title: Az RBAC és az Azure PowerShell-hozzáférés kezelése |} Microsoft Docs
-description: Megtudhatja, hogyan kezelheti a hozzáférést a felhasználók, csoportok és alkalmazások, a szerepköralapú hozzáférés-vezérlést (RBAC) és az Azure PowerShell használatával. Ez magában foglalja a listázási hozzáférés, engedélyezheti a hozzáférést, és megszünteti a hozzáférést.
+title: Rbac-RÓL és az Azure PowerShell-hozzáférés kezelése |} A Microsoft Docs
+description: Ismerje meg, hogyan kezelheti a felhasználók, csoportok és alkalmazások, a szerepköralapú hozzáférés-vezérlés (RBAC) és az Azure PowerShell használatával hozzáférését. Ez magában foglalja a listázási hozzáférés, hozzáférést biztosít, és távolítsa el a hozzáférést.
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -8,35 +8,35 @@ manager: mtillman
 ms.assetid: 9e225dba-9044-4b13-b573-2f30d77925a9
 ms.service: role-based-access-control
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 06/20/2018
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 1b75443f442affea2f1010605bb9aa330043336a
-ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
+ms.openlocfilehash: dcc324f3b6c5153b294719ff8939aed8a3e82b1c
+ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/22/2018
-ms.locfileid: "36319583"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37436833"
 ---
-# <a name="manage-access-using-rbac-and-azure-powershell"></a>Az RBAC és az Azure PowerShell-hozzáférés kezelése
+# <a name="manage-access-using-rbac-and-azure-powershell"></a>Rbac-RÓL és az Azure PowerShell-hozzáférés kezelése
 
-[Szerepköralapú hozzáférés-vezérlést (RBAC)](overview.md) kezelése az Azure-ban az erőforrásokhoz való hozzáférés módja. Ez a cikk ismerteti, hogyan kezelheti a hozzáférést a felhasználók, csoportok és alkalmazások RBAC és az Azure PowerShell használatával.
+A [szerepköralapú hozzáférés-vezérlés (RBAC)](overview.md) az erőforrásokhoz való hozzáférés kezelésének a módja az Azure-ban. Ez a cikk bemutatja, hogyan kezelheti a felhasználók, csoportok és alkalmazások RBAC és az Azure PowerShell használatával hozzáférését.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Hozzáférés kezelése kell a következők egyikét:
+Hozzáférés kezelése lesz szüksége a következők egyikét:
 
-* [Azure-felhőbe rendszerhéj PowerShell](/azure/cloud-shell/overview)
+* [PowerShell az Azure Cloud Shellben](/azure/cloud-shell/overview)
 * [Azure PowerShell](/powershell/azure/install-azurerm-ps)
 
-## <a name="list-roles"></a>Lista szerepkörök
+## <a name="list-roles"></a>Szerepkörök felsorolása
 
-### <a name="list-all-available-roles"></a>Elérhető szerepkörök felsorolása
+### <a name="list-all-available-roles"></a>Elérhető szerepkörök listája
 
-A lista RBAC szerepkörökhöz kiosztására használható, és a műveletek, amelyhez azokat hozzáférést, a vizsgálandó használó [Get-AzureRmRoleDefinition](/powershell/module/azurerm.resources/get-azurermroledefinition).
+A lista RBAC-szerepkörök, amelyek hozzárendelés érhetők el, és vizsgálja meg a műveleteket, amelyre ezek hozzáférést biztosítani, használja a [Get-AzureRmRoleDefinition](/powershell/module/azurerm.resources/get-azurermroledefinition).
 
 ```azurepowershell
 Get-AzureRmRoleDefinition | FT Name, Description
@@ -56,9 +56,9 @@ Automation Operator                               Automation Operators are able 
 ...
 ```
 
-### <a name="list-a-specific-role"></a>Egy adott szerepkör felsorolása
+### <a name="list-a-specific-role"></a>Egy adott szerepkör listája
 
-Kilistázhatja az egy adott szerepkör [Get-AzureRmRoleDefinition](/powershell/module/azurerm.resources/get-azurermroledefinition).
+Egy adott szerepkör listájában, használja a [Get-AzureRmRoleDefinition](/powershell/module/azurerm.resources/get-azurermroledefinition).
 
 ```azurepowershell
 Get-AzureRmRoleDefinition <role name>
@@ -77,9 +77,9 @@ NotActions       : {Microsoft.Authorization/*/Delete, Microsoft.Authorization/*/
 AssignableScopes : {/}
 ```
 
-### <a name="list-a-specific-role-in-json-format"></a>Egy adott szerepkör JSON formátumban felsorolása
+### <a name="list-a-specific-role-in-json-format"></a>Egy adott szerepkör JSON formátumban listázása
 
-Kilistázhatja az egy adott szerepkör JSON formátumban [Get-AzureRmRoleDefinition](/powershell/module/azurerm.resources/get-azurermroledefinition).
+Egy adott szerepkör JSON formátumban listájában, használja a [Get-AzureRmRoleDefinition](/powershell/module/azurerm.resources/get-azurermroledefinition).
 
 ```azurepowershell
 Get-AzureRmRoleDefinition <role name> | ConvertTo-Json
@@ -107,9 +107,9 @@ PS C:\> Get-AzureRmRoleDefinition "Contributor" | ConvertTo-Json
 }
 ```
 
-### <a name="list-actions-of-a-role"></a>Egy szerepkör lista műveletek
+### <a name="list-actions-of-a-role"></a>A szerepkörök listája műveletek
 
-Kilistázhatja az adott szerepkörhöz műveletek [Get-AzureRmRoleDefinition](/powershell/module/azurerm.resources/get-azurermroledefinition).
+Egy adott szerepkör esetében a műveletek listájában, használja a [Get-AzureRmRoleDefinition](/powershell/module/azurerm.resources/get-azurermroledefinition).
 
 ```azurepowershell
 Get-AzureRmRoleDefinition <role name> | FL Actions, NotActions
@@ -142,13 +142,13 @@ Microsoft.Network/loadBalancers/backendAddressPools/join/action
 ...
 ```
 
-## <a name="list-access"></a>A hozzáférési lista
+## <a name="list-access"></a>Hozzáférések felsorolása
 
-Az RBAC lista eléréséhez felsorolja a szerepkör-hozzárendeléseket.
+Az RBAC lista hozzáférés listázása a szerepkör-hozzárendeléseket.
 
-### <a name="list-role-assignments-at-a-specific-scope"></a>Szerepkör-hozzárendelések listáját egy adott hatókörhöz
+### <a name="list-role-assignments-at-a-specific-scope"></a>Egy adott hatókörnél szerepkör-hozzárendelések listát
 
-A megadott előfizetés, erőforráscsoporthoz vagy erőforrás szerepkör-hozzárendelések tekintheti meg. Például az összes aktív hozzárendelése egy erőforráscsoport, használja a [Get-AzureRmRoleAssignment](/powershell/module/azurerm.resources/get-azurermroleassignment).
+A szerepkör-hozzárendeléseit a megadott előfizetés, erőforráscsoport vagy erőforrás megjelenik. Ha például az összes az aktív hozzárendelések erőforráscsoport megtekintéséhez használja [Get-AzureRmRoleAssignment](/powershell/module/azurerm.resources/get-azurermroleassignment).
 
 ```azurepowershell
 Get-AzureRmRoleAssignment -ResourceGroupName <resource group name>
@@ -170,9 +170,9 @@ RoleDefinitionName : Virtual Machine Contributor
 Scope              : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/pharma-sales-projectforecast
 ```
 
-### <a name="list-role-assignments-for-a-user"></a>Szerepkör-hozzárendelések listáját egy felhasználó számára
+### <a name="list-role-assignments-for-a-user"></a>Felhasználó szerepkör-hozzárendeléseinek felsorolása
 
-Kilistázhatja az adott felhasználóhoz rendelt összes szerepkör [Get-AzureRmRoleAssignment](/powershell/module/azurerm.resources/get-azurermroleassignment).
+Az adott felhasználóhoz rendelt szerepkörök listájában, használja a [Get-AzureRmRoleAssignment](/powershell/module/azurerm.resources/get-azurermroleassignment).
 
 ```azurepowershell
 Get-AzureRmRoleAssignment -SignInName <user email>
@@ -186,7 +186,7 @@ RoleDefinitionName : BizTalk Contributor
 Scope              : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/pharma-sales-projectforecast
 ```
 
-Kilistázhatja az adott felhasználóhoz rendelt összes szerepkör és a szerepköröket, amelyek a csoportok, amelyhez a felhasználó tartozik [Get-AzureRmRoleAssignment](/powershell/module/azurerm.resources/get-azurermroleassignment).
+Használja az adott felhasználóhoz rendelt szerepkörök és a, amelyhez a felhasználó tartozik a csoportokhoz rendelt szerepkörök listáját, [Get-AzureRmRoleAssignment](/powershell/module/azurerm.resources/get-azurermroleassignment).
 
 ```azurepowershell
 Get-AzureRmRoleAssignment -SignInName <user email> -ExpandPrincipalGroups
@@ -196,9 +196,9 @@ Get-AzureRmRoleAssignment -SignInName <user email> -ExpandPrincipalGroups
 Get-AzureRmRoleAssignment -SignInName isabella@example.com -ExpandPrincipalGroups | FL DisplayName, RoleDefinitionName, Scope
 ```
 
-### <a name="list-role-assignments-for-classic-service-administrator-and-co-administrators"></a>Szerepkör-hozzárendelések listáját klasszikus szolgáltatás-rendszergazda és társrendszergazdák
+### <a name="list-role-assignments-for-classic-service-administrator-and-co-administrators"></a>Szerepkör-hozzárendelések lista klasszikus szolgáltatás-rendszergazda és társrendszergazdák
 
-A szerepkör-hozzárendelések a hagyományos előfizetés rendszergazdai és társrendszergazdák listában használja [Get-AzureRmRoleAssignment](/powershell/module/azurerm.resources/get-azurermroleassignment).
+Szerepkör-hozzárendeléseit a klasszikus előfizetés-adminisztrátor és a társadminisztrátorok felsorolásához használja [Get-AzureRmRoleAssignment](/powershell/module/azurerm.resources/get-azurermroleassignment).
 
 ```azurepowershell
 Get-AzureRmRoleAssignment -IncludeClassicAdministrators
@@ -206,29 +206,29 @@ Get-AzureRmRoleAssignment -IncludeClassicAdministrators
 
 ## <a name="grant-access"></a>Hozzáférés biztosítása
 
-Az RBAC hozzáférést, létrehoz egy szerepkör-hozzárendelés.
+Az RBAC-ben a hozzáférés biztosítása egy szerepkör-hozzárendelés létrehozásával történik.
 
 ### <a name="search-for-object-ids"></a>Objektumazonosítók keresése
 
-A szerepkör hozzárendeléséhez kell azonosítani az objektum (felhasználó, csoport vagy alkalmazás) és a hatókör.
+Szerepkör hozzárendelése, azonosítania kell az objektum (felhasználó, csoport vagy alkalmazás) és a hatókör.
 
-Ha az előfizetés-azonosító nem tudja, megtalálja a a **előfizetések** panel az Azure-portálon, vagy használhat [Get-AzureRmSubscription](/powershell/module/azurerm.profile/get-azurermsubscription).
+Ha nem tudja, az előfizetés-azonosító, Észreveheti, hogy az a **előfizetések** panel az Azure Portalon, vagy Ön használhatja [Get-AzureRmSubscription](/powershell/module/azurerm.profile/get-azurermsubscription).
 
-Az objektum azonosítója az Azure AD-csoport, amelyet [Get-AzureRmADGroup](/powershell/module/azurerm.resources/get-azurermadgroup):
+Az Azure AD-csoport Objektumazonosítójának lekéréséhez használja [Get-AzureRmADGroup](/powershell/module/azurerm.resources/get-azurermadgroup):
 
 ```azurepowershell
 Get-AzureRmADGroup -SearchString <group name in quotes>
 ```
 
-Az objektum azonosítója az Azure AD szolgáltatás egyszerű vagy az alkalmazás használatához [Get-AzureRmADServicePrincipal](/powershell/module/azurerm.resources/get-azurermadserviceprincipal).
+Egy Azure AD egyszerű szolgáltatás vagy alkalmazás Objektumazonosítójának lekéréséhez használja [Get-AzureRmADServicePrincipal](/powershell/module/azurerm.resources/get-azurermadserviceprincipal).
 
 ```azurepowershell
 Get-AzureRmADServicePrincipal -SearchString <service name in quotes>
 ```
 
-### <a name="create-a-role-assignment-for-an-application-at-a-subscription-scope"></a>Az alkalmazás szerepkör-hozzárendelés létrehozása egy előfizetési hatókört
+### <a name="create-a-role-assignment-for-an-application-at-a-subscription-scope"></a>Alkalmazás szerepkör-hozzárendelés létrehozása egy előfizetési hatókörben
 
-Az előfizetés hatókörből alkalmazáshoz való hozzáférés biztosításához használja [New-AzureRmRoleAssignment](/powershell/module/azurerm.resources/new-azurermroleassignment).
+Az előfizetések szintjén alkalmazásokhoz való hozzáférés biztosításához használja [New-AzureRmRoleAssignment](/powershell/module/azurerm.resources/new-azurermroleassignment).
 
 ```azurepowershell
 New-AzureRmRoleAssignment -ObjectId <application id> -RoleDefinitionName <role name> -Scope <subscription id>
@@ -248,9 +248,9 @@ ObjectType         : ServicePrincipal
 CanDelegate        : False
 ```
 
-### <a name="create-a-role-assignment-for-a-user-at-a-resource-group-scope"></a>A felhasználó szerepkör-hozzárendelés létrehozása erőforrás hatóköre
+### <a name="create-a-role-assignment-for-a-user-at-a-resource-group-scope"></a>Egy erőforrás-csoport hatókörben egy felhasználó szerepkör-hozzárendelés létrehozása
 
-Hozzáférés biztosítása a felhasználók a erőforrás hatókörét, használjon [New-AzureRmRoleAssignment](/powershell/module/azurerm.resources/new-azurermroleassignment).
+Egy felhasználó erőforrás-csoportot a csoporthatókörben, a hozzáférési jogot, használja a [New-AzureRmRoleAssignment](/powershell/module/azurerm.resources/new-azurermroleassignment).
 
 ```azurepowershell
 New-AzureRmRoleAssignment -SignInName <email of user> -RoleDefinitionName <role name in quotes> -ResourceGroupName <resource group name>
@@ -272,9 +272,9 @@ ObjectType         : User
 CanDelegate        : False
 ```
 
-### <a name="create-a-role-assignment-for-a-group-at-a-resource-scope"></a>Egy szerepkör-hozzárendelés létrehozása az erőforrás-tartományban
+### <a name="create-a-role-assignment-for-a-group-at-a-resource-scope"></a>Szerepkör-hozzárendelés egy csoport létrehozása egy resource hatókörben
 
-Hozzáférés biztosítása a erőforrás hatókörben egy csoportot, használjon [New-AzureRmRoleAssignment](/powershell/module/azurerm.resources/new-azurermroleassignment).
+Hozzáférés biztosítása a resource hatókörben egy csoporthoz, használja a [New-AzureRmRoleAssignment](/powershell/module/azurerm.resources/new-azurermroleassignment).
 
 ```azurepowershell
 New-AzureRmRoleAssignment -ObjectId <object id> -RoleDefinitionName <role name in quotes> -ResourceName <resource name> -ResourceType <resource type> -ParentResource <parent resource> -ResourceGroupName <resource group name>
@@ -305,7 +305,7 @@ CanDelegate        : False
 
 ## <a name="remove-access"></a>Hozzáférés eltávolítása
 
-Az RBAC, elérését, eltávolított szerepkör-hozzárendelés használatával [Remove-AzureRmRoleAssignment](/powershell/module/azurerm.resources/remove-azurermroleassignment).
+RBAC, a hozzáférést, akkor egy szerepkör-hozzárendelés eltávolítása használatával [Remove-AzureRmRoleAssignment](/powershell/module/azurerm.resources/remove-azurermroleassignment).
 
 ```azurepowershell
 Remove-AzureRmRoleAssignment -ObjectId <object id> -RoleDefinitionName <role name> -Scope <scope such as subscription id>
@@ -317,6 +317,6 @@ PS C:\> Remove-AzureRmRoleAssignment -SignInName alain@example.com -RoleDefiniti
 
 ## <a name="next-steps"></a>További lépések
 
-- [Oktatóanyag: Hozzáférést biztosíthat a csoport RBAC és Azure PowerShell használatával](tutorial-role-assignments-group-powershell.md)
-- [Oktatóanyag: Hozzon létre egy egyéni biztonsági szerepkört Azure PowerShell használatával](tutorial-custom-role-powershell.md)
+- [Oktatóanyag: Hozzáférést biztosít egy csoport RBAC és az Azure PowerShell használatával](tutorial-role-assignments-group-powershell.md)
+- [Oktatóanyag: Azure PowerShell-lel egyéni szerepkör létrehozása](tutorial-custom-role-powershell.md)
 - [Az Azure PowerShell-erőforrások kezelése](../azure-resource-manager/powershell-azure-resource-manager.md)

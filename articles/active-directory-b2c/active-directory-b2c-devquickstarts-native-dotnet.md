@@ -1,24 +1,24 @@
 ---
-title: Hitelesítési, regisztrációról, az Azure Active Directory B2C profil szerkesztése |} Microsoft Docs
-description: Hogyan hozhat létre, amely tartalmazza a bejelentkezéshez, regisztráció, a Windows asztali alkalmazások és profilok kezelése az Azure Active Directory B2C használatával.
+title: Hitelesítés, előfizetési, az Azure Active Directory B2C-profil szerkesztése |} A Microsoft Docs
+description: Hogyan hozhat létre egy Windows asztali alkalmazás, amely tartalmazza a bejelentkezési, regisztrációs, és profilok kezelése Azure Active Directory B2C használatával.
 services: active-directory-b2c
 author: davidmu1
 manager: mtillman
 ms.service: active-directory
 ms.workload: identity
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/07/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 980d554d96796a673db13bb369337d90088e8a75
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: bd504beabbb126db2cd90ac010dbc2757e571185
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34711060"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37441899"
 ---
-# <a name="azure-ad-b2c-build-a-windows-desktop-app"></a>Az Azure AD B2C: A Windows asztali alkalmazás elkészítésére.
-Azure Active Directory (Azure AD) B2C használatával az asztali alkalmazást a néhány néhány lépés elvégzésével hatékony önkiszolgáló identitáskezelési funkciókat adhat hozzá. Ez a cikk bemutatja, hogyan hozzon létre egy .NET Windows megjelenítési alaprendszer (WPF) "Feladatlista" alkalmazást, amely tartalmazza a felhasználói regisztráció, bejelentkezés és profilok kezelése. Az alkalmazás támogatni fogja előfizetési, és jelentkezzen be egy felhasználónevet vagy e-mailek használatával. Azt is támogatni fogja előfizetési, és jelentkezzen be például a Facebookhoz és a Google közösségi fiókokkal.
+# <a name="azure-ad-b2c-build-a-windows-desktop-app"></a>Az Azure AD B2C: A Windows asztali alkalmazás készítése
+Az Azure Active Directory (Azure AD) B2C segítségével néhány egyszerű lépéssel az asztali alkalmazás hatékony önkiszolgáló identitáskezelési funkciókat adhat hozzá. Ebből a cikkből megtudhatja, hogyan hozhat létre egy .NET Windows megjelenítési Alaprendszeri (WPF) "Feladatlista" alkalmazást, amely tartalmazza a felhasználói regisztrációt, bejelentkezést és profilkezelést. Az alkalmazás támogatni fogja a regisztrációs és bejelentkezési felhasználónév vagy e-mail használatával. Ez például a Facebook és a Google közösségi fiókok használatával is magában foglalja regisztráció és bejelentkezés támogatása.
 
 ## <a name="get-an-azure-ad-b2c-directory"></a>Az Azure AD B2C-címtár beszerzése
 Az Azure AD B2C használatához létre kell hoznia egy címtárat vagy bérlőt.  A címtárban tárolhatja az összes felhasználót, alkalmazást, csoportot és sok minden mást. Ha még nem tette meg, [hozzon létre most egy B2C-címtárat](active-directory-b2c-get-started.md), mielőtt továbblépne ebben az útmutatóban.
@@ -26,12 +26,12 @@ Az Azure AD B2C használatához létre kell hoznia egy címtárat vagy bérlőt.
 ## <a name="create-an-application"></a>Alkalmazás létrehozása
 A következő lépésben hozzon létre egy alkalmazást a B2C-címtárban. Ez biztosítja az alkalmazással történő biztonságos kommunikációhoz szükséges információkat az Azure AD számára. Az alkalmazást a következő [utasítások](active-directory-b2c-app-registration.md) alapján hozza létre.  Ügyeljen arra, hogy:
 
-* Tartalmaznak egy **natív ügyfél** az alkalmazásban.
+* Például egy **natív ügyfél** az alkalmazásban.
 * Másolás a **átirányítási URI** `urn:ietf:wg:oauth:2.0:oob`. Ez a kódminta alapértelmezett URL-címe.
 * Másolja az alkalmazáshoz rendelt **alkalmazásazonosítót**. Erre később még szüksége lesz.
 
 ## <a name="create-your-policies"></a>Szabályzatok létrehozása
-Az Azure AD B2C-ben a felhasználói élményeket [szabályzatok](active-directory-b2c-reference-policies.md) határozzák meg. Ebben a kódmintában három identitásélményt tartalmaz: regisztráció, bejelentkezés és profilszerkesztés. Szeretné az egyes, ebben a szabályzatban leírtak szerint a [házirendek áttekintésével foglalkozó cikkben](active-directory-b2c-reference-policies.md#create-a-sign-up-policy). A három szabályzat létrehozásakor ügyeljen arra, hogy:
+Az Azure AD B2C-ben a felhasználói élményeket [szabályzatok](active-directory-b2c-reference-policies.md) határozzák meg. Ez a kódminta három identitásélményt tartalmaz: regisztráció, bejelentkezés és profilszerkesztés. Kell hoznia egy szabályzatot az egyes típusok leírtak szerint a [házirendek áttekintésével foglalkozó cikkben](active-directory-b2c-reference-policies.md#create-a-sign-up-policy). A három szabályzat létrehozásakor ügyeljen arra, hogy:
 
 * Az identitásszolgáltatók paneljén válassza a **User ID sign-up** (Regisztrálás felhasználói azonosítóval) vagy az **Email sign-up** (Regisztrálás e-mail címmel) lehetőséget.
 * A regisztrációs házirendben válassza ki a **megjelenítendő nevet** és az egyéb regisztrációs attribútumokat.
@@ -51,22 +51,22 @@ git clone --branch skeleton https://github.com/AzureADQuickStarts/B2C-NativeClie
 
 A kész alkalmazás [.zip fájlként](https://github.com/AzureADQuickStarts/B2C-NativeClient-DotNet/archive/complete.zip) vagy `complete` az adott adattár ágában is elérhető.
 
-Miután letöltötte a mintakódot, nyissa meg a Visual Studio .sln fájlt a kezdéshez. A `TaskClient` projekt a WPF asztali alkalmazás, amely a felhasználó kommunikál. Ez az oktatóanyag céljából egy háttér-feladat webes API-t, minden felhasználói feladatlistát tároló, Azure-ban üzemeltetett meghívja.  Nem kell a webes API-k létrehozására, már meg futnak.
+Miután letöltötte a mintakódot, nyissa meg a Visual Studio .sln fájlt a kezdéshez. A `TaskClient` projekt a WPF asztali alkalmazás, amellyel a felhasználó kommunikál. Ez az oktatóanyag az alkalmazásában háttérbeli feladat webes API-k, az Azure-ban, amely tárolja a felhasználók feladatlistáit üzemeltetett hív meg.  Nem kell a webes API készítése, már eleve is működjön az Ön számára.
 
-Ha szeretné megtudni, hogyan webes API-k biztonságosan hitelesíti a kérelmeket az Azure AD B2C segítségével, tekintse meg a [webes API-k első lépések a cikk](active-directory-b2c-devquickstarts-api-dotnet.md).
+Ha szeretné megtudni, hogyan webes API-k biztonságos hitelesíti a kérelmeket az Azure AD B2C-vel, tekintse meg a [webes API első lépéseket ismertető cikk](active-directory-b2c-devquickstarts-api-dotnet.md).
 
-## <a name="execute-policies"></a>Házirendek végrehajtása
-Az alkalmazás kommunikál az Azure AD B2C adja meg a HTTP-kérelem részeként végrehajtani kívánt szabályzatot hitelesítési-üzenetek küldésével. Az asztali alkalmazások .NET az előzetes Microsoft hitelesítési könyvtár (MSAL) segítségével OAuth 2.0 hitelesítési üzeneteket küldeni, a házirendek hajtható végre, és webes API-k hívása jogkivonatokhoz.
+## <a name="execute-policies"></a>Hajtsa végre a szabályzatok
+Az alkalmazás az Azure AD B2C-vel kommunikál, adja meg a szabályzatot, hajtsa végre a HTTP-kérelem részeként szeretne hitelesítési üzenetek küldésével. .NET asztali alkalmazások esetén használhatja az OAuth 2.0 hitelesítési üzenetek küldéséhez, hajtsa végre a szabályzatok a előzetes verzióját a Microsoft-hitelesítési tár (MSAL), és webes API-k hívása tokenekhez.
 
-### <a name="install-msal"></a>MSAL telepítése
-Adja hozzá a MSAL a `TaskClient` projektet a Visual Studio Csomagkezelő konzol használatával.
+### <a name="install-msal"></a>Az MSAL telepítése
+Adja hozzá a MSAL az `TaskClient` projekt a Visual Studio Csomagkezelői konzol használatával.
 
 ```
 PM> Install-Package Microsoft.Identity.Client -IncludePrerelease
 ```
 
 ### <a name="enter-your-b2c-details"></a>Adja meg a B2C-re vonatkozó információkat
-Nyissa meg a fájlt `Globals.cs` , és cserélje le a tulajdonság értékek mindegyike saját. Ez az osztály a teljes használható `TaskClient` való hivatkozás általánosan használt értékeit.
+Nyissa meg a fájlt `Globals.cs` , és cserélje le a tulajdonságértékek mindegyike saját. Ez az osztály használja `TaskClient` gyakran használt hivatkozás értékre.
 
 ```csharp
 public static class Globals
@@ -87,7 +87,7 @@ public static class Globals
 [!INCLUDE [active-directory-b2c-devquickstarts-tenant-name](../../includes/active-directory-b2c-devquickstarts-tenant-name.md)]
 
 ### <a name="create-the-publicclientapplication"></a>A PublicClientApplication létrehozása
-Az elsődleges osztály az MSAL `PublicClientApplication`. Ez az osztály az alkalmazás az Azure AD B2C rendszerben jelenti. Ha az alkalmazás initalizes példányt létrehozni `PublicClientApplication` a `MainWindow.xaml.cs`. Ez az ablak teljes is használható.
+Az elsődleges osztály az MSAL `PublicClientApplication`. Ez az osztály az alkalmazás az Azure AD B2C-vel rendszerben jelenti. Ha az alkalmazás initalizes hozzon létre egy példányt `PublicClientApplication` a `MainWindow.xaml.cs`. Ez az időszak során is használható.
 
 ```csharp
 protected async override void OnInitialized(EventArgs e)
@@ -104,8 +104,8 @@ protected async override void OnInitialized(EventArgs e)
     ...
 ```
 
-### <a name="initiate-a-sign-up-flow"></a>A regisztrációs folyamat kezdeményezéséhez
-A felhasználó jelentkezik be alkalmazásának kiválasztásával, ha el szeretné indítani a regisztrációs folyamat, amely a regisztrációs szabályzatban létrehozott használja. MSAL használatával egyszerűen meghívja a `pca.AcquireTokenAsync(...)`. A paraméterek átadása akkor `AcquireTokenAsync(...)` határozza meg, melyik jogkivonatot kap, a hitelesítési kérelmet, és több használandó házirendet.
+### <a name="initiate-a-sign-up-flow"></a>Egy regisztrációs folyamatának elindításához
+Egy felhasználó jóváhagyja jelentkezik be, ha el szeretné indítani a regisztrációs szabályzatban létrehozott használó regisztrációs folyamatot. Az MSAL használatával, csak hívja `pca.AcquireTokenAsync(...)`. Az átadott paraméterek `AcquireTokenAsync(...)` határozza meg, melyik jogkivonatot kap, a házirend a hitelesítési kérelmet, és további használt.
 
 ```csharp
 private async void SignUp(object sender, RoutedEventArgs e)
@@ -155,8 +155,8 @@ private async void SignUp(object sender, RoutedEventArgs e)
 }
 ```
 
-### <a name="initiate-a-sign-in-flow"></a>A bejelentkezési folyamat kezdeményezéséhez
-A bejelentkezési folyamat is kezdeményezhető azonos módon, hogy a regisztrációs folyamat elindítása. Amikor egy felhasználó bejelentkezik, a hívást azonos MSAL, hogy a bejelentkezési házirend használatával most:
+### <a name="initiate-a-sign-in-flow"></a>A bejelentkezési folyamatának elindításához
+A bejelentkezési folyamatának elindításához ugyanolyan módon, hogy a regisztrációs folyamat elindításához. Amikor egy felhasználó bejelentkezik, a hívást ugyanazt az MSAL, ezúttal a bejelentkezési szabályzat használatával:
 
 ```csharp
 private async void SignIn(object sender = null, RoutedEventArgs args = null)
@@ -170,8 +170,8 @@ private async void SignIn(object sender = null, RoutedEventArgs args = null)
         ...
 ```
 
-### <a name="initiate-an-edit-profile-flow"></a>Egy profil szerkesztése folyamat kezdeményezéséhez
-Ebben az esetben azonos módon egy profil szerkesztése házirend hajthat végre:
+### <a name="initiate-an-edit-profile-flow"></a>Egy profil szerkesztése folyamatának elindításához
+Egy profil szerkesztése házirend újra, az azonos módon hajthat végre:
 
 ```csharp
 private async void EditProfile(object sender, RoutedEventArgs e)
@@ -184,10 +184,10 @@ private async void EditProfile(object sender, RoutedEventArgs e)
                     Globals.editProfilePolicy);
 ```
 
-A fenti esetek mindegyikét olyan, MSAL vagy ad vissza egy jogkivonatot a `AuthenticationResult` vagy kivételt jelez. Minden alkalommal, amikor a jogkivonat beszerzése MSAL, használhatja a `AuthenticationResult.User` objektumot frissíti a felhasználói adatokat az alkalmazásban, például a felhasználói felületen. Adal-t is gyorsítótáraz lexikális eleme az alkalmazás egyéb elemeinek a használatát.
+A fenti esetek mindegyikét MSAL vagy egy tokent ad vissza a `AuthenticationResult` vagy kivételt jelez. Minden alkalommal, amikor egy token lekérése az MSAL, használhatja a `AuthenticationResult.User` objektumot frissíti a felhasználói adatokat az alkalmazásban, például a felhasználói felületen. Adal-t is gyorsítótárazza a jogkivonat az alkalmazás egyéb részei a használatra.
 
-### <a name="check-for-tokens-on-app-start"></a>Ellenőrizze a jogkivonatok az alkalmazás indítása
-MSAL segítségével is nyomon követheti, a felhasználói bejelentkezési állapotot.  Az alkalmazáshoz, az azt szeretnénk, a felhasználó a bejelentkezés után is zárja be az alkalmazást, és nyissa meg újra.  Vissza belül a `OnInitialized` bírálja felül, MSAL által használható `AcquireTokenSilent` az ellenőrzési módszert gyorsítótárazott jogkivonatokat:
+### <a name="check-for-tokens-on-app-start"></a>Alkalmazás indítása a jogkivonatok keresése
+Az MSAL segítségével nyomon követheti, a felhasználó bejelentkezési állapotát.  Ebben az alkalmazásban szeretnénk, a felhasználó számára is, zárja be az alkalmazást, és nyissa meg újra után is bejelentkezve maradjon.  Vissza belül a `OnInitialized` bírálja felül, használható az MSAL a `AcquireTokenSilent` az ellenőrzési módszert gyorsítótárazott token:
 
 ```csharp
 AuthenticationResult result = null;
@@ -225,8 +225,8 @@ catch (MsalException ex)
 }
 ```
 
-## <a name="call-the-task-api"></a>A feladat API hívása
-MSAL most segítségével hajtható végre a házirendek és a jogkivonatok megkapásához.  A feladat API hívása ezeket a jogkivonatokat egy használni kívánt, újra használhatja MSAL tartozó `AcquireTokenSilent` az ellenőrzési módszert gyorsítótárazott jogkivonatokat:
+## <a name="call-the-task-api"></a>A feladat-API meghívása
+Hajtsa végre a házirendek és a jogkivonatok megkapásához MSAL most már használt.  Ha a feladat-API meghívásához ezek a jogkivonatok egy használni kívánt, újra használhatja MSAL a `AcquireTokenSilent` az ellenőrzési módszert gyorsítótárazott token:
 
 ```csharp
 private async void GetTodoList()
@@ -271,7 +271,7 @@ private async void GetTodoList()
     ...
 ```
 
-Amikor hívása `AcquireTokenSilentAsync(...)` sikeres és egy jogkivonat található a gyorsítótárban, adhat hozzá a jogkivonatot a `Authorization` a HTTP-kérelem fejlécében. A feladat webes API-t fogja használni ezt a fejlécet hitelesíteni a kérelmet a felhasználók feladatlistáit olvasható:
+Ha a hívást `AcquireTokenSilentAsync(...)` sikeres és a egy token található a gyorsítótárban, adhat hozzá a jogkivonatot a `Authorization` a HTTP-kérés fejlécébe. A feladat webes API a fejléc használatával hitelesíteni a kérelmet, olvassa el a felhasználók feladatlistáit:
 
 ```csharp
     ...
@@ -283,8 +283,8 @@ Amikor hívása `AcquireTokenSilentAsync(...)` sikeres és egy jogkivonat talál
     ...
 ```
 
-## <a name="sign-the-user-out"></a>A felhasználó kijelentkezik
-Végezetül segítségével MSAL és az alkalmazás a felhasználói munkamenet befejezése, ha a felhasználó **Kijelentkezés**.  MSAL használatakor mindez törlésének hatására az összes, a jogkivonatok token a gyorsítótárból:
+## <a name="sign-the-user-out"></a>A felhasználó kijelentkeztetése
+Végül választva a felhasználó az alkalmazás a felhasználói munkamenet befejezéséhez használhatja az MSAL **Kijelentkezés**.  Ha az MSAL használatával törlésével az összes a tokeneket a token a gyorsítótárból mindez:
 
 ```csharp
 private void SignOut(object sender, RoutedEventArgs e)
@@ -306,22 +306,22 @@ private void SignOut(object sender, RoutedEventArgs e)
 ```
 
 ## <a name="run-the-sample-app"></a>Mintaalkalmazás futtatása
-Végezetül hozza létre, és a minta futtatásához.  Jelentkezzen az alkalmazás egy e-mail cím vagy a felhasználó nevét. Jelentkezzen ki, és jelentkezzen be ismét ugyanahhoz a felhasználóhoz. A felhasználói profil szerkesztése. Jelentkezzen ki, és jelentkezzen egy másik felhasználó.
+Végül hozhat létre, és futtassa a mintát.  Jelentkezzen az alkalmazás egy e-mail címet vagy felhasználói nevet. Jelentkezzen ki, és jelentkezzen be ismét ugyanazt a felhasználót. Annak a felhasználónak a profil szerkesztése. Jelentkezzen ki, és jelentkezzen egy másik felhasználó.
 
-## <a name="add-social-idps"></a>Közösségi IDPs hozzáadása
-Jelenleg az alkalmazás támogatja-e a csak felhasználói regisztráció és bejelentkezés használó **helyi fiókok**. Ezek a fiókok a B2C-címtárban tárolja, amely a felhasználónév és jelszó használata. Az Azure AD B2C segítségével támogathatja az egyéb identitás-szolgáltatóktól (IDPs) bármely, a kód módosítása nélkül.
+## <a name="add-social-idps"></a>Közösségi identitásszolgáltató hozzáadása
+Jelenleg az alkalmazás támogatja-e a csak a felhasználói regisztráció és bejelentkezés használó **helyi fiókok**. Ezek a fiókok a B2C-címtárban tárolt, amely a felhasználónév és jelszó használata. Azure AD B2C használatával bármely, a kód módosítása nélkül adhat hozzá más identitásszolgáltató (IDP) támogatása.
 
-Közösségi IDPs hozzáadása az alkalmazáshoz, először ezek a cikkek részletes utasításait követve. Minden egyes IDP, amelyeket támogatni kíván meg kell, hogy a rendszer az alkalmazás regisztrálása és szerezzen be egy ügyfél-azonosítót.
+A közösségi identitásszolgáltató hozzáadása az alkalmazáshoz, először a részletes utasításait végrehajtva ezek a cikkek. Minden egyes Identitásszolgáltatót szeretne biztosítani meg kell regisztrálni egy alkalmazást, hogy a rendszer, és szerezzen be egy ügyfél-azonosítót.
 
-* [Az IDP Facebook beállítása](active-directory-b2c-setup-fb-app.md)
-* [Az IDP Google beállítása](active-directory-b2c-setup-goog-app.md)
-* [Az IDP Amazon beállítása](active-directory-b2c-setup-amzn-app.md)
-* [Az IDP LinkedIn beállítása](active-directory-b2c-setup-li-app.md)
+* [Facebook-Identitásszolgáltató beállítása](active-directory-b2c-setup-fb-app.md)
+* [Google-Identitásszolgáltató beállítása](active-directory-b2c-setup-goog-app.md)
+* [Amazon-Identitásszolgáltató beállítása](active-directory-b2c-setup-amzn-app.md)
+* [LinkedIn-Identitásszolgáltató beállítása](active-directory-b2c-setup-li-app.md)
 
-Miután hozzáadta az identitás-szolgáltatóktól B2C-címtárban, módosítania kell a három szabályzat tartalmazza az új IDPs mindegyikének leírtak szerint a [házirendek áttekintésével foglalkozó cikkben](active-directory-b2c-reference-policies.md). A házirend mentése után futtassa újra az alkalmazást. A bejelentkezési hozzáadott új IDPs kell megjelennie, és minden a személyazonosság-előfizetési beállítások észlel.
+Miután hozzáadta az identitás-szolgáltatóktól B2C-címtárban, kell szerkesztenie, tartalmazza az új identitásszolgáltató használatát, a három szabályzat minden egyes leírtak szerint a [házirendek áttekintésével foglalkozó cikkben](active-directory-b2c-reference-policies.md). Miután mentette a szabályzatokat, futtassa újra az alkalmazást. Az új identitásszolgáltató bejelentkezési hozzáadott kell megjelennie, és minden, az identitás-előfizetési beállítások élményhez.
 
-A házirendek kísérletezhet, és figyelje meg a mintaalkalmazás hatással. Vegye fel vagy távolítsa el a IDPs, kezelheti az alkalmazás jogcímét, vagy módosítsa a regisztrációs attribútumokat. Kísérletet, amíg meg nem látja hogyan házirendeket, a hitelesítési kérelmek és MSAL alkalmazássá.
+A szabályzatok kísérletezhet, és figyelje meg az eredményt a mintaalkalmazást a. Adja hozzá, vagy távolítsa el az identitásszolgáltató használatát, alkalmazás jogcímét, vagy módosítsa a regisztrációs attribútumokat. Kísérletet, amíg nem láthatja, hogy milyen szabályzatok, a hitelesítési kérések és a MSAL alkalmazássá.
 
-Az elkészült mintát referenciaként [egy .zip-fájlban is](https://github.com/AzureADQuickStarts/B2C-NativeClient-DotNet/archive/complete.zip). Ezenfelül a GitHubból is klónozhatja:
+Ha az elkészült mintát [.zip-fájlként biztosított](https://github.com/AzureADQuickStarts/B2C-NativeClient-DotNet/archive/complete.zip). Ezenfelül a GitHubból is klónozhatja:
 
 ```git clone --branch complete https://github.com/AzureADQuickStarts/B2C-NativeClient-DotNet.git```

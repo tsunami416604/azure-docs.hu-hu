@@ -1,113 +1,113 @@
 ---
-title: Adja hozzá az AD FS-t egyéni házirendekkel az Azure Active Directory B2C SAML-Identitásszolgáltatóként |} Microsoft Docs
-description: A SAML protokoll és az egyéni házirendek használata az AD FS 2016 beállításával kapcsolatos cikkben található útmutató
+title: AD FS hozzáadása egy SAML identitásszolgáltatótól az egyéni szabályzatok használatával az Azure Active Directory B2C |} A Microsoft Docs
+description: Egy AD FS 2016 SAML-protokoll és az egyéni szabályzatok beállításával kapcsolatos cikkben található útmutató
 services: active-directory-b2c
 author: davidmu1
 manager: mtillman
 ms.service: active-directory
 ms.workload: identity
-ms.topic: article
+ms.topic: conceptual
 ms.date: 08/04/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 06b70e48398fd720b6c87cc4575b7a7973f5bce5
-ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
+ms.openlocfilehash: a81baae553bbf9c58d42372e25e90cd7588f2952
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34709189"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37445075"
 ---
-# <a name="azure-active-directory-b2c-add-adfs-as-a-saml-identity-provider-using-custom-policies"></a>Az Azure Active Directory B2C: Adja hozzá az AD FS-t egyéni házirendekkel SAML-Identitásszolgáltatóként
+# <a name="azure-active-directory-b2c-add-adfs-as-a-saml-identity-provider-using-custom-policies"></a>Az Azure Active Directory B2C: AD FS hozzáadása egy SAML identitásszolgáltatótól az egyéni szabályzatok használatával
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Ez a cikk bemutatja, hogyan bejelentkezés az AD FS-fiókból keresztül a felhasználók engedélyezése [egyéni házirendek](active-directory-b2c-overview-custom.md).
+Ez a cikk bemutatja, hogyan bejelentkezés engedélyezése a felhasználók számára az AD FS-fiók használatával [egyéni szabályzatok](active-directory-b2c-overview-custom.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Hajtsa végre a a [Ismerkedés az egyéni házirendek](active-directory-b2c-get-started-custom.md) cikk.
+A lépések elvégzéséhez a [Ismerkedés az egyéni szabályzatok](active-directory-b2c-get-started-custom.md) cikk.
 
-Ezek a lépések az alábbiak:
+Ezeket a lépéseket tartalmazza:
 
 1.  Az AD FS megbízható függő entitás megbízhatóságának létrehozása.
-2.  Az AD FS megbízható függő entitás megbízhatóságának tanúsítvány felvétele az Azure AD B2C.
-3.  Jogcím-szolgáltató házirendhez való hozzáadása.
-4.  Az AD FS regisztrálása fiók jogcímek szolgáltatót, amelyet a felhasználó út.
-5.  A házirend feltöltése az Azure AD B2C bérlői és tesztelik azt.
+2.  Az AD FS megbízható függő entitás megbízhatóságának tanúsítvány hozzáadása az Azure AD B2C-t.
+3.  Jogcím-szolgáltató hozzáadása egy szabályzatot.
+4.  Fiók jogcím regisztrálása AD FS-szolgáltatót, hogy egy felhasználói interakciósorozat.
+5.  A szabályzat feltöltése egy Azure AD B2C-bérlőben, és a tesztelés közben.
 
 ## <a name="to-create-a-claims-aware-relying-party-trust"></a>A jogcímbarát függő entitás megbízhatóságának létrehozása
 
-Az Azure Active Directory (Azure AD) B2C identitás-szolgáltatóként az AD FS használatához meg kell egy AD FS megbízható függő entitás megbízhatóságának létrehozása, és adja meg azt a megfelelő paraméterekkel.
+AD FS használata Identitásszolgáltatóként az Azure Active Directory (Azure AD) B2C-ben, meg kell az AD FS megbízható függő entitás megbízhatóságának létrehozása, és adja meg azt a megfelelő paraméterekkel.
 
-Új függő entitás megbízhatóságának hozzáadása az AD FS kezelő beépülő modul használatával, és a beállítások manuális konfigurálásával, hajtsa végre az alábbi eljárás egy összevonási kiszolgálón.
+Adjon hozzá egy új függőentitás-megbízhatóságot az AD FS kezelő beépülő modul használatával, és manuálisan adja meg a beállításokat, hajtsa végre az alábbi eljárás egy összevonási kiszolgálón.
 
-Tagság a **rendszergazdák**, vagy ezzel egyenértékű a helyi számítógépen kell lennie a művelet végrehajtásához. Olvashat a megfelelő fiókok és csoporttagságok [alapértelmezett helyi és tartományi csoportok](http://go.microsoft.com/fwlink/?LinkId=83477)
+Tagság a **rendszergazdák**, vagy ezekkel egyenértékű a helyi számítógépen a művelet végrehajtásához szükséges minimális. Olvashat a megfelelő fiókok és csoporttagságok [helyi és tartományi alapértelmezett csoportok](http://go.microsoft.com/fwlink/?LinkId=83477)
 
-1.  A Kiszolgálókezelőben kattintson **eszközök**, majd válassza ki **az AD FS felügyeleti**.
+1.  A Kiszolgálókezelőben kattintson a **eszközök**, majd válassza ki **AD FS felügyeleti**.
 
 2.  Kattintson a **függő entitás megbízhatóságának hozzáadása**.
     ![Függő entitás megbízhatóságának hozzáadása](media/active-directory-b2c-custom-setup-adfs2016-idp/aadb2c-ief-setup-adfs2016-idp-rp-1.png)
 
-3.  Az a **üdvözlő** lapon, válassza ki **kompatibilis jogcím** kattintson **Start**.
-    ![Üdvözli a lapon választhatja ki jogcímeket kompatibilis](media/active-directory-b2c-custom-setup-adfs2016-idp/aadb2c-ief-setup-adfs2016-idp-rp-2.png)
-4.  Az a **adatforrás kiválasztása** kattintson **függő entitással kapcsolatos adatok manuális megadása**, és kattintson a **következő**.
-    ![Adja meg a függő entitással kapcsolatos adatok](media/active-directory-b2c-custom-setup-adfs2016-idp/aadb2c-ief-setup-adfs2016-idp-rp-3.png)
+3.  Az a **üdvözlő** lapon a **jogcímeket figyelembe** kattintson **Start**.
+    ![Az üdvözlőoldalon kattintson a jogcímeket figyelembe](media/active-directory-b2c-custom-setup-adfs2016-idp/aadb2c-ief-setup-adfs2016-idp-rp-2.png)
+4.  Az a **adatforrás kiválasztása** kattintson **függő entitással kapcsolatos adatok manuális megadása**, és kattintson a **tovább**.
+    ![Függő entitással kapcsolatos adatok megadása](media/active-directory-b2c-custom-setup-adfs2016-idp/aadb2c-ief-setup-adfs2016-idp-rp-3.png)
 
-5.  Az a **megjelenített név meghatározása** írja be egy nevet a **megjelenített név**a **megjegyzések** írja be a függő entitás megbízhatóságának leírását, és kattintson **következő**.
-    ![Adja meg a megjelenítendő nevek és megjegyzések](media/active-directory-b2c-custom-setup-adfs2016-idp/aadb2c-ief-setup-adfs2016-idp-rp-4.png)
-6.  Választható. Ha rendelkezik egy választható jogkivonat-titkosítási tanúsítványt, majd a **tanúsítvány konfigurálása** lapján kattintson **Tallózás** keresse meg a tanúsítványfájlt, majd **következő**.
+5.  Az a **megjelenítendő név megadása** írja be egy nevet a **megjelenítendő név**alatt **megjegyzések** adjon meg egy leírást a függő entitás megbízhatóságaként, majd kattintson **tovább** .
+    ![Adja meg a megjelenítendő név és megjegyzések](media/active-directory-b2c-custom-setup-adfs2016-idp/aadb2c-ief-setup-adfs2016-idp-rp-4.png)
+6.  Választható. Ha egy nem kötelező token titkosítási tanúsítványt, majd a a **tanúsítvány konfigurálása** kattintson **Tallózás** keresse meg a tanúsítványfájlt, és kattintson a **tovább**.
     ![Tanúsítvány konfigurálása](media/active-directory-b2c-custom-setup-adfs2016-idp/aadb2c-ief-setup-adfs2016-idp-rp-5.png)
-7.  Az a **URL konfigurálása** lapon jelölje be a **a SAML 2.0 WebSSO-protokoll támogatásának engedélyezése** jelölőnégyzetet. A **függő entitás SAML 2.0 SSO szolgáltatás URL-címe**, írja be a függő entitás megbízhatóságának a Security Assertion Markup Language (SAML) szolgáltatás végpont URL-CÍMÉT, és kattintson a **következő**.  Az a **függő entitás SAML 2.0 SSO szolgáltatás URL-címe**, illessze be a `https://login.microsoftonline.com/te/{tenant}.onmicrosoft.com/{policy}`. {Tenant} cserélje le a bérlő neve (például contosob2c.onmicrosoft.com), és a {házirend} cserélje le a bővítményeket házirend nevét (például B2C_1A_TrustFrameworkExtensions).
+7.  Az a **URL-cím konfigurálása** lapon válassza ki a **a SAML 2.0 WebSSO-protokoll támogatásának engedélyezése** jelölőnégyzetet. A **függő entitás SAML 2.0 SSO szolgáltatás URL-címe**, írja be a függő entitás megbízhatóságához a Security Assertion Markup Language (SAML) szolgáltatás végpont URL-címe, és kattintson **tovább**.  Az a **függő entitás SAML 2.0 SSO szolgáltatás URL-címe**, illessze be a `https://login.microsoftonline.com/te/{tenant}.onmicrosoft.com/{policy}`. {Tenant} helyére a bérlő neve (például: contosob2c.onmicrosoft.com), és cserélje le a {házirend} a bővítmények a házirend nevét (például B2C_1A_TrustFrameworkExtensions).
     > [!IMPORTANT]
-    >A házirend nevére, amelyet a signup_or_signin házirend örököl, ebben az esetben: `B2C_1A_TrustFrameworkExtensions`.
+    >A szabályzat nevét, amely signup_or_signin szabályzatot örökli, ebben az esetben ez: `B2C_1A_TrustFrameworkExtensions`.
     >Az URL-cím lehet például: https://login.microsoftonline.com/te/ **contosob2c**.onmicrosoft.com/**B2C_1A_TrustFrameworkBase**.
 
-    ![Függő entitás SAML 2.0 SSO URL-címe](media/active-directory-b2c-custom-setup-adfs2016-idp/aadb2c-ief-setup-adfs2016-idp-rp-6.png)
-8. Az a **azonosítók konfigurálása** lapon adja meg az előző lépésben leírt, azonos URL-CÍMÉT, és kattintson **Hozzáadás** vegye fel őket a listára, majd **következő**.
-    ![Függő entitások megbízhatósági azonosítóinak](media/active-directory-b2c-custom-setup-adfs2016-idp/aadb2c-ief-setup-adfs2016-idp-rp-7.png)
-9.  Az a **hozzáférés-vezérlési szabályzat kiválasztása** jelöljön ki egy házirendet, majd **következő**.
+    ![Függő entitás SAML 2.0 egyszeri bejelentkezési szolgáltatás URL-címe](media/active-directory-b2c-custom-setup-adfs2016-idp/aadb2c-ief-setup-adfs2016-idp-rp-6.png)
+8. Az a **azonosítók konfigurálása** lapon adja meg az ugyanazon URL-címet az előző lépésben leírt, kattintson a **Hozzáadás** vegye fel a listára, és kattintson a **tovább**.
+    ![Függő entitás megbízhatósági azonosítók](media/active-directory-b2c-custom-setup-adfs2016-idp/aadb2c-ief-setup-adfs2016-idp-rp-7.png)
+9.  Az a **válassza a hozzáférés-vezérlési házirend** válasszon ki egy szabályzatot, és kattintson a **tovább**.
     ![Válassza ki a hozzáférés-vezérlési házirend](media/active-directory-b2c-custom-setup-adfs2016-idp/aadb2c-ief-setup-adfs2016-idp-rp-8.png)
-10.  Az a **készen áll a megbízhatóság hozzáadására** lapon tekintse át a beállításokat, és kattintson a **következő** menteni a függő entitás megbízhatóságának adatait.
+10.  Az a **készen áll a megbízhatóság hozzáadására** lapon tekintse át a beállításokat, és kattintson a **tovább** , mentse a függő entitás megbízhatóságának adatait.
     ![Mentse a függő entitás megbízhatósági adatok](media/active-directory-b2c-custom-setup-adfs2016-idp/aadb2c-ief-setup-adfs2016-idp-rp-9.png)
-11.  Az a **Befejezés** kattintson **Bezárás**, ez a művelet automatikusan megjeleníti a **Jogcímszabályok szerkesztése** párbeszédpanel.
+11.  A a **Befejezés** kattintson **Bezárás**, ez a művelet automatikusan megjeleníti a **Jogcímszabályok szerkesztése** párbeszédpanel bezárásához.
     ![Jogcímszabályok szerkesztése](media/active-directory-b2c-custom-setup-adfs2016-idp/aadb2c-ief-setup-adfs2016-idp-rp-10.png)
 12. Kattintson a **szabály hozzáadása**.  
       ![Új szabály hozzáadása](media/active-directory-b2c-custom-setup-adfs2016-idp/aadb2c-ief-setup-adfs2016-idp-claims-1.png)
-13.  A **Jogcímszabály-sablon**, jelölje be **LDAP attribútumok küldése jogcímekként**.
+13.  A **Jogcímszabály-sablon**válassza **LDAP attribútumok küldése jogcímekként**.
     ![Válassza ki az LDAP attribútumok küldése jogcímszabályként sablon](media/active-directory-b2c-custom-setup-adfs2016-idp/aadb2c-ief-setup-adfs2016-idp-claims-2.png)
-14.  Adjon meg **Jogcímszabály nevének**. Az a **attribútumtár** válasszon **válassza ki az Active Directory** a következő jogcímeket adhatnak hozzá, majd kattintson az **Befejezés** és **OK**.
+14.  Adja meg **Jogcímszabály neve**. Az a **attribútumtár** kiválasztása **válassza ki az Active Directory** adja hozzá a következő jogcímeket, majd kattintson a **Befejezés** és **OK**.
     ![A szabály tulajdonságainak beállítása](media/active-directory-b2c-custom-setup-adfs2016-idp/aadb2c-ief-setup-adfs2016-idp-claims-3.png)
-15.  A Kiszolgálókezelő ablakában válassza **függő entitás Megbízhatóságai** , majd válassza a függő entitás létrehozott megbízható, és kattintson a **tulajdonságok**.
+15.  A Kiszolgálókezelőben válasza **függő entitás Megbízhatóságai** , majd válassza ki a függő entitás megbízhatósági hozott létre, és kattintson **tulajdonságok**.
     ![Függő entitás tulajdonságok szerkesztése](media/active-directory-b2c-custom-setup-adfs2016-idp/aadb2c-ief-setup-adfs2016-idp-sig-1.png)
-16.  A függő entitás megbízhatósági (B2C bemutató) tulajdonságai ablakban kattintson egy **aláírás** fülre, és kattintson **Hozzáadás**.  
+16.  A függő entitás megbízhatósági (B2C bemutató) tulajdonságai ablakban kattintson egy **aláírás** fülre, és **Hozzáadás**.  
     ![Set-aláírás](media/active-directory-b2c-custom-setup-adfs2016-idp/aadb2c-ief-setup-adfs2016-idp-sig-2.png)
-17.  Adja hozzá az aláírási tanúsítvány (.cert fájlt, titkos kulcs nélkül).  
+17.  Adja hozzá az aláírási tanúsítványt (.cert fájlt, titkos kulcs nélkül).  
     ![Az aláírási tanúsítvány hozzáadása](media/active-directory-b2c-custom-setup-adfs2016-idp/aadb2c-ief-setup-adfs2016-idp-sig-3.png)
 18.  A függő entitás megbízhatósági (B2C bemutató) tulajdonságai ablakban kattintson a **speciális** lapon, és módosítsa a **biztonságos kivonatoló algoritmus** való **SHA-1**, kattintson a **Ok**.  
     ![Állítsa be a biztonságos kivonatoló algoritmus az SHA-1](media/active-directory-b2c-custom-setup-adfs2016-idp/aadb2c-ief-setup-adfs2016-idp-sig-4.png)
 
-## <a name="add-the-adfs-account-application-key-to-azure-ad-b2c"></a>Az AD FS fiókkulcs alkalmazás hozzáadása az Azure AD B2C
-Összevonás az AD FS-fiókok egy ügyfélkulcsot szükség van az AD FS fiók nevében az alkalmazás az Azure AD B2C megbízhatóságának. Az Azure AD B2C-bérlő tárolja az AD FS-tanúsítványt kell. 
+## <a name="add-the-adfs-account-application-key-to-azure-ad-b2c"></a>Adja hozzá az AD FS fiókkulcs alkalmazás Azure AD B2C-vel
+Összevonás az AD FS-fiókok ADFS fiók nevében az alkalmazás Azure AD B2C-vel megbízhatóságának ügyfélkódot igényel. Az AD FS-tanúsítvány tárolása az Azure AD B2C-bérlő van szüksége. 
 
-1.  Nyissa meg az Azure AD B2C-bérlő, és válassza ki **B2C beállítások** > **identitás élmény keretrendszer**
-2.  Válassza ki **házirend kulcsok** érhető el a bérlői kulcsok megtekintéséhez.
+1.  Nyissa meg az Azure AD B2C-bérlő, és válassza ki **B2C-beállítások** > **identitás-kezelőfelületi keretrendszer**
+2.  Válassza ki **Szabályzatbejegyzések** elérhető a bérlői kulcsok megtekintéséhez.
 3.  Kattintson a **+ Hozzáadás**.
 4.  A **beállítások**, használjon **feltöltése**.
 5.  A **neve**, használjon `ADFSSamlCert`.  
-    Az előtag `B2C_1A_` előfordulhat, hogy automatikusan hozzáadja.
-6.  A fájl feltöltése ** válassza ki a .pfx-fájl titkos kulccsal. Megjegyzés: ezt a tanúsítványt (a titkos kulccsal) meg kell egyeznie egy kiállított és az AD FS függő entitáshoz használt.
-![Töltse fel a házirend-kulcs](media/active-directory-b2c-custom-setup-adfs2016-idp/aadb2c-ief-setup-adfs2016-idp-cert.png)
+    Az előtag `B2C_1A_` automatikusan hozzáadhatók.
+6.  A fájl feltöltése a ** válassza ki a tanúsítvány .pfx fájlját és a titkos kulcs. Megjegyzés: ezt a tanúsítványt (a titkos kulccsal) egyeznie kell, amely a kibocsátott, és használja az AD FS függő entitáshoz.
+![Töltse fel a házirendjének kulcsa](media/active-directory-b2c-custom-setup-adfs2016-idp/aadb2c-ief-setup-adfs2016-idp-cert.png)
 7.  Kattintson a **Create** (Létrehozás) gombra
-8.  Győződjön meg arról, hogy létrehozta a kulcs `B2C_1A_ADFSSamlCert`.
+8.  Győződjön meg arról, hogy a kulcs létrehozott `B2C_1A_ADFSSamlCert`.
 
-## <a name="add-a-claims-provider-in-your-extension-policy"></a>A jogcím-szolgáltató hozzáadása a bővítmény házirend
-Ha azt szeretné, hogy a felhasználók az AD FS-fiókkal bejelentkezni, meg kell egy jogcímszolgáltatótól, az AD FS fiók megadása. Ez azt jelenti meg kell adnia egy végpontot, amely az Azure AD B2C-vel kommunikál. A végpont a jogcímek, az Azure AD B2C által használt győződjön meg arról, hogy egy adott felhasználó engedélyezést biztosít.
+## <a name="add-a-claims-provider-in-your-extension-policy"></a>A bővítmény a házirend a jogcímeket szolgáltató hozzáadása
+Ha azt szeretné, hogy a felhasználók jelentkezhetnek be az ADFS-fiók használatával, definiálhatja ADFS-fiók egy jogcímszolgáltatótól szeretne. Más szóval meg kell adnia egy végpontot, amely az Azure AD B2C-vel kommunikál. A végpont ellenőrzése, hogy egy adott felhasználó rendelkezik hitelesítése Azure AD B2C által használt jogcímeket biztosít.
 
-Az AD FS meghatározni, a Jogcímszolgáltatók hozzáadásával `<ClaimsProvider>` csomópont a bővítmény a házirend-fájlban:
+AD FS meghatározni egy jogcímszolgáltatótól, hozzáadásával `<ClaimsProvider>` csomópont a bővítmény a házirend fájlban:
 
-1. Nyissa meg a házirend bővítményfájl (TrustFrameworkExtensions.xml) a munkakönyvtárat. Ha egy XML-szerkesztőt kell [próbálja meg a Visual Studio Code](https://code.visualstudio.com/download), egy egyszerű platformfüggetlen-szerkesztőben.
-2. Keresés a `<ClaimsProviders>` szakasz
-3. A következő XML-részletet alatt adja hozzá a `ClaimsProviders` elem és a név felülírandó `identityProvider` a DNS-beli (tetszőleges érték, amely jelzi a tartomány), és mentse a fájlt. 
+1. Nyissa meg a bővítmény a házirend fájlt (TrustFrameworkExtensions.xml) a munkakönyvtár. Ha egy XML-szerkesztőt kell [próbálja meg a Visual Studio Code](https://code.visualstudio.com/download), egy könnyen használható, többplatformos szerkesztő.
+2. Keresse meg a `<ClaimsProviders>` szakasz
+3. Adja hozzá a következő XML-részletet a `ClaimsProviders` elemet, és cserélje le `identityProvider` a DNS-kiszolgálót (tetszőleges érték, amely azt jelzi, hogy a tartomány), és mentse a fájlt. 
 
 ```xml
 <ClaimsProvider>
@@ -148,80 +148,80 @@ Az AD FS meghatározni, a Jogcímszolgáltatók hozzáadásával `<ClaimsProvide
 </ClaimsProvider>
 ```
 
-## <a name="register-the-adfs-account-claims-provider-to-sign-up-or-sign-in-user-journey"></a>Az AD FS fiók jogcímszolgáltató bejelentkezési regisztrálásához fel, vagy jelentkezzen be a felhasználó út
-Ezen a ponton az identitásszolgáltató beállítása.  Azonban nincs sem a sign-Close-Up/sign-in képernyők áll rendelkezésre. Az AD FS fiók identitásszolgáltató hozzáadása a felhasználói most `SignUpOrSignIn` felhasználói út. Tegye elérhetővé, azt hozzon létre egy meglévő sablon felhasználói út duplikált.  Majd hogy módosítsa, ez magában foglalja az AD FS identitásszolgáltató:
+## <a name="register-the-adfs-account-claims-provider-to-sign-up-or-sign-in-user-journey"></a>Az AD FS fiók jogcímszolgáltató bejelentkezési regisztrálásához fel, vagy jelentkezzen be a felhasználói interakciósorozat
+Ezen a ponton az identitásszolgáltató be lett állítva.  Azonban ez nem érhető összes regisztrálási-regisztrálási vagy bejelentkezési képernyőt. Most adja hozzá az AD FS-fiók identitásszolgáltató a felhasználónak kell `SignUpOrSignIn` felhasználói interakciósorozat. Elérhető legyen, létrehozunk egy meglévő sablon felhasználói interakciósorozat másolatát.  Ezután módosítjuk, így az AD FS identitásszolgáltató tartalmazza:
 
 >[!NOTE]
->Ha korábban kimásolt a `<UserJourneys>` elem házirend alap fájlból a bővítményfájl (TrustFrameworkExtensions.xml) kihagyhatja ezt a részt.
+>Ha korábban kimásolt a `<UserJourneys>` elem a szabályzat alapszintű fájlból a kiterjesztésű fájlt (TrustFrameworkExtensions.xml) ezt a szakaszt kihagyhatja.
 
-1.  Nyissa meg a házirend (például TrustFrameworkBase.xml) Alap fájlt.
-2.  Keresés a `<UserJourneys>` elem és a teljes tartalmának másolása a `<UserJourneys>` csomópont.
-3.  Nyissa meg a bővítmény (például TrustFrameworkExtensions.xml) fájlt, és keresse a `<UserJourneys>` elemet. Ha az elem nem létezik, vegyen fel egyet.
-4.  Illessze be a teljes tartalmát `<UserJournesy>` csomópont gyermekeként másolt a `<UserJourneys>` elemet.
+1.  Nyissa meg a szabályzat (például TrustFrameworkBase.xml) alapszintű fájlt.
+2.  Keresse meg a `<UserJourneys>` elemet, és másolja a teljes tartalmát `<UserJourneys>` csomópont.
+3.  Nyissa meg a kiterjesztésű fájlt (például TrustFrameworkExtensions.xml), és keresse meg a `<UserJourneys>` elemet. Ha az elem nem létezik, adjon hozzá egyet.
+4.  Illessze be a teljes tartalmát `<UserJournesy>` csomópont gyermekeként kimásolt a `<UserJourneys>` elemet.
 
 ### <a name="display-the-button"></a>A gomb megjelenítése
-A `<ClaimsProviderSelections>` elem definiálja a jogcímeket szolgáltató tanúsítványválasztási beállítások és a sorrendjük listáját.  `<ClaimsProviderSelection>` a elem egy identity provider gombra a sign-Close-Up/sign-in oldalán hasonló. Ha ad hozzá egy `<ClaimsProviderSelection>` elem az AD FS-fiókhoz, egy új gomb megjelenik, amikor egy felhasználó fájljai az oldalon. Ez az elem hozzáadása:
+A `<ClaimsProviderSelections>` elem definiálja a jogcímeket szolgáltató tanúsítványválasztási beállítások és a sorrendjük listáját.  `<ClaimsProviderSelection>` a elem egy identity provider gombjára egy regisztrálási-regisztrálási vagy bejelentkezési oldal hasonló. Ha hozzáad egy `<ClaimsProviderSelection>` elem ADFS-fiók, egy új gomb megjelenik-e, amikor egy felhasználó hajtanak végre az oldalon. Ez az elem hozzáadása:
 
-1.  Keresés a `<UserJourney>` tartalmazó csomópont `Id="SignUpOrSignIn"` a a felhasználók utazás másolt.
+1.  Keresse meg a `<UserJourney>` tartalmazó csomópont `Id="SignUpOrSignIn"` a másolt felhasználói interakciósorozat.
 2.  Keresse meg a `<OrchestrationStep>` tartalmazó csomópont `Order="1"`
-3.  Adja hozzá a következő XML-részletet a `<ClaimsProviderSelections>` csomópont:
+3.  Adja hozzá az alábbi kódrészletet XML `<ClaimsProviderSelections>` csomópont:
 
 ```xml
 <ClaimsProviderSelection TargetClaimsExchangeId="ContosoExchange" />
 ```
 ### <a name="link-the-button-to-an-action"></a>A gomb összekapcsolása egy műveletet
 
-Most, hogy a gomb helyen, hogy egy művelet kapcsolódnia kell. A művelet, ebben az esetben, akkor az Azure AD B2C fogadhatnak jogkivonatot AD FS-fiók kommunikálni. A gomb művelet mutató hivatkozás létrehozása az AD FS fiók jogcímeket szolgáltató létrehozhatja, ha a műszaki profil:
+Most, hogy egyetlen helyen, amelyekkel hozzákapcsolhatja egy műveletet kell. A művelet, ebben az esetben pedig az Azure AD B2C-vel való kommunikációhoz fogadhatnak jogkivonatot AD FS-fiókkal. A gomb összekapcsolása egy műveletet a technikai profil összekapcsolásának az ADFS-fiók jogcímszolgáltatótól:
 
-1.  Keresés a `<OrchestrationStep>` is tartalmazó `Order="2"` a a `<UserJourney>` csomópont.
-2.  Adja hozzá a következő XML-részletet a `<ClaimsExchanges>` csomópont:
+1.  Keresse meg a `<OrchestrationStep>` tartalmazó `Order="2"` a a `<UserJourney>` csomópont.
+2.  Adja hozzá az alábbi kódrészletet XML `<ClaimsExchanges>` csomópont:
 
 ```xml
 <ClaimsExchange Id="ContosoExchange" TechnicalProfileReferenceId="Contoso-SAML2" />
 ```
 
 > [!NOTE]
-> * Győződjön meg arról a `Id` ugyanazzal az értékkel, amely rendelkezik `TargetClaimsExchangeId` az előző szakaszban leírt.
-> * Győződjön meg arról `TechnicalProfileReferenceId` be van állítva a műszaki profil létrehozott korábbi (a Contoso-egy SAML2).
+> * Győződjön meg, hogy a `Id` , ugyanazzal az értékkel rendelkezik `TargetClaimsExchangeId` az előző szakaszban.
+> * Győződjön meg, hogy `TechnicalProfileReferenceId` van beállítva a technikai profil létrehozott korábbi (Contoso-egy SAML2).
 
-## <a name="upload-the-policy-to-your-tenant"></a>A házirend a bérlő feltöltése
-1.  A a [Azure-portálon](https://portal.azure.com), átváltani a [az Azure AD B2C-bérlő kontextusában](active-directory-b2c-navigate-to-b2c-context.md), és nyissa meg a **az Azure AD B2C** panelen.
-2.  Válassza ki **identitás élmény keretrendszer**.
-3.  Nyissa meg a **házirend** panelen.
-4.  Válassza ki **házirend feltöltése**.
-5.  Ellenőrizze **felülírja a házirendet, ha létezik** mezőbe.
-6.  **Töltse fel** TrustFrameworkExtensions.xml, és győződjön meg arról, hogy az érvényesítése nem hiúsul meg az
+## <a name="upload-the-policy-to-your-tenant"></a>A szabályzat feltöltése a bérlőhöz
+1.  Az a [az Azure portal](https://portal.azure.com), váltson át a [az Azure AD B2C-bérlője kontextusában](active-directory-b2c-navigate-to-b2c-context.md), és nyissa meg a **Azure AD B2C-vel** panelen.
+2.  Válassza ki **identitás-kezelőfelületi keretrendszer**.
+3.  Nyissa meg a **összes szabályzat** panelen.
+4.  Válassza ki **szabályzat feltöltése**.
+5.  Ellenőrizze **szabályzat felülírása, ha létezik** mezőbe.
+6.  **Töltse fel** TrustFrameworkExtensions.xml, és győződjön meg arról, hogy azt érvényesítése nem hiúsul meg a
 
-## <a name="test-the-custom-policy-by-using-run-now"></a>Tesztelje az egyéni házirend segítségével futtatása most
-1.  Nyissa meg **az Azure AD B2C beállítások** , és navigáljon **identitás élmény keretrendszer**.
-2.  Nyissa meg **B2C_1A_signup_signin**, a függő entitásonkénti (RP) egyéni házirend feltöltött. Válassza ki **futtatása most**.
-3.  Az AD FS-fiókkal jelentkezhet kell lennie.
+## <a name="test-the-custom-policy-by-using-run-now"></a>Az egyéni házirend tesztelése a Futtatás most
+1.  Nyissa meg **Azure AD B2C-beállítások** , majd **identitás-kezelőfelületi keretrendszer**.
+2.  Nyissa meg **B2C_1A_signup_signin**, a függő entitásonkénti (RP) egyéni-szabályzattal, a feltöltött. Válassza ki **Futtatás most**.
+3.  Jelentkezhet be az ADFS-fiók használatával kell lennie.
 
-## <a name="optional-register-the-adfs-account-claims-provider-to-profile-edit-user-journey"></a>[Választható] Az AD FS fiók jogcímszolgáltató profil szerkesztheti a felhasználói út regisztrálása
-Érdemes lehet az AD FS fiók identitásszolgáltató is hozzáadása a felhasználói `ProfileEdit` felhasználói út. Tegye elérhetővé, hogy ismételje meg az utolsó két lépést:
+## <a name="optional-register-the-adfs-account-claims-provider-to-profile-edit-user-journey"></a>[Opcionális] Az AD FS fiók jogcímszolgáltató Profilmódosítás felhasználói interakciósorozat regisztrálása
+Az AD FS-fiók identitásszolgáltató hozzáadása a felhasználói is érdemes `ProfileEdit` felhasználói interakciósorozat. Elérhető legyen, hogy az utolsó két lépést ismételje meg:
 
 ### <a name="display-the-button"></a>A gomb megjelenítése
-1.  Nyissa meg a bővítményfájl házirend (például TrustFrameworkExtensions.xml).
-2.  Keresés a `<UserJourney>` tartalmazó csomópont `Id="ProfileEdit"` a a felhasználók utazás másolt.
+1.  Nyissa meg a szabályzat (például TrustFrameworkExtensions.xml) a kiterjesztésű fájlt.
+2.  Keresse meg a `<UserJourney>` tartalmazó csomópont `Id="ProfileEdit"` a másolt felhasználói interakciósorozat.
 3.  Keresse meg a `<OrchestrationStep>` tartalmazó csomópont `Order="1"`
-4.  Adja hozzá a következő XML-részletet a `<ClaimsProviderSelections>` csomópont:
+4.  Adja hozzá az alábbi kódrészletet XML `<ClaimsProviderSelections>` csomópont:
 
 ```xml
 <ClaimsProviderSelection TargetClaimsExchangeId="ContosoExchange" />
 ```
 
 ### <a name="link-the-button-to-an-action"></a>A gomb összekapcsolása egy műveletet
-1.  Keresés a `<OrchestrationStep>` is tartalmazó `Order="2"` a a `<UserJourney>` csomópont.
-2.  Adja hozzá a következő XML-részletet a `<ClaimsExchanges>` csomópont:
+1.  Keresse meg a `<OrchestrationStep>` tartalmazó `Order="2"` a a `<UserJourney>` csomópont.
+2.  Adja hozzá az alábbi kódrészletet XML `<ClaimsExchanges>` csomópont:
 
 ```xml
 <ClaimsExchange Id="ContosoExchange" TechnicalProfileReferenceId="Contoso-SAML2" />
 ```
 
-### <a name="test-the-custom-profile-edit-policy-by-using-run-now"></a>Tesztelje az egyéni házirend profil-módosítása segítségével futtatása most
-1.  Nyissa meg **az Azure AD B2C beállítások** , és navigáljon **identitás élmény keretrendszer**.
-2.  Nyissa meg **B2C_1A_ProfileEdit**, a függő entitásonkénti (RP) egyéni házirend feltöltött. Válassza ki **futtatása most**.
-3.  Az AD FS-fiókkal jelentkezhet kell lennie.
+### <a name="test-the-custom-profile-edit-policy-by-using-run-now"></a>Az egyéni Profilmódosítás házirend tesztelése a Futtatás most
+1.  Nyissa meg **Azure AD B2C-beállítások** , majd **identitás-kezelőfelületi keretrendszer**.
+2.  Nyissa meg **B2C_1A_ProfileEdit**, a függő entitásonkénti (RP) egyéni-szabályzattal, a feltöltött. Válassza ki **Futtatás most**.
+3.  Jelentkezhet be az ADFS-fiók használatával kell lennie.
 
-## <a name="download-the-complete-policy-files"></a>A teljes házirend-fájlok letöltésére
-Választható lehetőség: Javasoljuk készít a saját egyéni házirend fájlok az első lépések egyéni házirendekkel befejezése után végezze el a forgatókönyvet. [Házirend mintafájlok csak referenciaként](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/scenarios/aadb2c-ief-setup-adfs2016-app)
+## <a name="download-the-complete-policy-files"></a>A teljes-fájlok letöltése
+Választható lehetőség: Javasoljuk, hogy a forgatókönyv a saját egyéni házirend végig fájlok elvégezte az első lépéseket az egyéni szabályzatok használatával létrehozhat. [A házirend mintafájlok csak referenciaként](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/scenarios/aadb2c-ief-setup-adfs2016-app)

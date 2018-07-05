@@ -1,6 +1,6 @@
 ---
-title: Az Azure Event Hubs diagnosztikai naplók |} Microsoft Docs
-description: Ismerje meg, hogyan állíthat be a diagnosztikai naplók az Azure event hubs számára.
+title: Az Azure Event Hubs – diagnosztikai naplók |} A Microsoft Docs
+description: Ismerje meg, hogyan állítható be a diagnosztikai naplók az event hubs az Azure-ban.
 keywords: ''
 documentationcenter: ''
 services: event-hubs
@@ -13,33 +13,33 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-services
-ms.date: 01/30/2018
+ms.date: 07/02/2018
 ms.author: sethm
-ms.openlocfilehash: 451fc42f573db2b60985912cfa63617e04f09e6c
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: fd7b85d18aeb1674ad7a5e67dd9ac65345c56887
+ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2018
-ms.locfileid: "28932715"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37435031"
 ---
-# <a name="event-hubs-diagnostic-logs"></a>Event Hubs diagnosztikai naplók
+# <a name="event-hubs-diagnostic-logs"></a>Event Hubs – diagnosztikai naplók
 
-Kétféle típusú naplók az Azure Event Hubs tekintheti meg:
+Az Azure Event hubs két típusú naplók tekintheti meg:
 
-* **[Tevékenységi naplóit](../monitoring-and-diagnostics/monitoring-overview-activity-logs.md)**: ezek a naplók rendelkezik egy olyan feladatra végrehajtott műveletek kapcsolatos információkat. A naplók mindig engedélyezve vannak.
-* **[Diagnosztikai naplók](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md)**: egy feladat gazdagabb nézetét mindent, ami történik a diagnosztikai naplók konfigurálható. Diagnosztika a feladat létrehozásakor, amíg a feladat törli, beleértve a frissítéseket és a feladat futása közben végrehajtott borítóján tevékenységeket naplózza.
+* **[A Tevékenységnaplók](../monitoring-and-diagnostics/monitoring-overview-activity-logs.md)**: ezek a naplók rendelkezik egy feladat végrehajtott műveletekkel kapcsolatos információk. A naplók mindig engedélyezve van.
+* **[Diagnosztikai naplók](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md)**: a feladat segítségével konfigurálhat a diagnosztikai naplók egy részletesebb nézet minden, a végbemenő. Diagnosztikai naplók cover tevékenységek a feladat jön létre, amíg a feladat törli, beleértve a frissítéseket és a tevékenységek a feladat futása közben előforduló kezdve.
 
 ## <a name="enable-diagnostic-logs"></a>Diagnosztikai naplók engedélyezése
 
-Alapértelmezés szerint le vannak tiltva a diagnosztikai naplók. Diagnosztikai naplók engedélyezése:
+Alapértelmezés szerint le vannak tiltva a diagnosztikai naplók. Diagnosztikai naplók engedélyezéséhez kövesse az alábbi lépéseket:
 
-1.  Az a [Azure-portálon](https://portal.azure.com)a **figyelés + felügyeleti**, kattintson a **diagnosztikai naplók**.
+1.  Az a [az Azure portal](https://portal.azure.com)alatt **Monitoring + Management**, kattintson a **diagnosztikai naplók**.
 
-    ![A diagnosztikai naplók ablaktábla navigáció](./media/event-hubs-diagnostic-logs/image1.png)
+    ![Panel Navigálás a diagnosztikai naplók](./media/event-hubs-diagnostic-logs/image1.png)
 
 2.  Kattintson a figyelni kívánt erőforrásra.
 
-3.  Kattintson a **a diagnosztika bekapcsolásához**.
+3.  Kattintson a **Diagnosztika bekapcsolása** elemre.
 
     ![Kapcsolja be a diagnosztikai naplók](./media/event-hubs-diagnostic-logs/image2.png)
 
@@ -47,45 +47,45 @@ Alapértelmezés szerint le vannak tiltva a diagnosztikai naplók. Diagnosztikai
 
     ![Diagnosztikai naplók állapotának módosítása](./media/event-hubs-diagnostic-logs/image3.png)
 
-5.  Az archív céljaként használni kívánt; meg például egy tárfiókot, az eseményközpontok vagy Azure Naplóelemzés.
+5.  Állítsa be a kívánt; archívum cél például egy storage-fiókot, egy eseményközpontba vagy az Azure Log Analytics.
 
 6.  Az új diagnosztikai beállítások mentéséhez.
 
-Új beállítások érvénybe körülbelül 10 perc. Ezt követően naplók jelennek meg a beállított archiválási célzott, a **diagnosztikai naplók** ablaktáblán.
+Új beállítások érvénybe léptetéséhez körülbelül 10 perc múlva. Ezt követően naplók jelennek meg a beállított archiválási célzott, a **diagnosztikai naplók** ablaktáblán.
 
-Diagnosztika konfigurálásával kapcsolatos további információkért lásd: a [áttekintés az Azure diagnosztikai naplók](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md).
+Konfiguruje se diagnostika kapcsolatos további információkért lásd: a [Azure diagnosztikai naplók áttekintése](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md).
 
 ## <a name="diagnostic-logs-categories"></a>Diagnosztikai naplók kategóriák
 
-Az Event Hubs két kategóriába tartozó diagnosztikai naplókhoz rögzíti:
+Az Event Hubs két kategóriába diagnosztikai naplóinak rögzíti:
 
-* **Naplók archiválása**: naplók az Event Hubs archívumot, pontosabban, a naplók archiválása hibák.
-* **Műveleti naplókat**: kapcsolatos tudnivalókért történik az Event Hubs műveletei során, a művelet írja be, beleértve event hub létrehozása, a használt erőforrások és a művelet állapotát.
+* **Naplói archiválása**: az Event Hubs archívum, kifejezetten kapcsolódó naplók, a naplók archiválása hibák.
+* **Műveleti naplók**: információ arról, hogy mi történik, az Event Hubs-műveletek során, a művelet írja be, például eseményközpont létrehozása, a használt erőforrások és a művelet állapotát.
 
 ## <a name="diagnostic-logs-schema"></a>Diagnosztikai naplók séma
 
-Minden naplók tárolása JavaScript Object Notation (JSON) formátumban történik. Mindegyik bejegyzés rendelkezik, amely a következő szakaszokban ismertetett formátumot használja a karakterlánc típusú.
+Az összes napló JavaScript Object Notation (JSON) formátumban vannak tárolva. Mindegyik bejegyzés rendelkezik a karakterlánc típusú, amely a következő szakaszokban ismertetett formátumot használja.
 
 ### <a name="archive-logs-schema"></a>Archív naplók séma
 
-Archív napló JSON karakterláncok a következő táblázatban felsorolt elemeket tartalmazza:
+Archív log JSON-sztringek az alábbi táblázatban felsorolt elemeket tartalmazza:
 
 Name (Név) | Leírás
 ------- | -------
-Feladatnév | Nem sikerült a feladat leírása.
-Tevékenységazonosító | Belső azonosító, nyomon követésére használható.
-trackingId | Belső azonosító, nyomon követésére használható.
-resourceId | Az Azure Resource Manager erőforrás-azonosító.
-eventHub | Az Event hubs teljes név (tartalmazza a névtér neve).
-partitionId | Event Hub partíció ír.
+Feladatnév | Leírás a sikertelen feladat.
+Tevékenységazonosító | Nyomon követésére használt belső azonosítója.
+trackingId | Nyomon követésére használt belső azonosítója.
+resourceId | Az Azure Resource Manager-erőforrás azonosítója.
+eventHub | Eseményközpont teljes neve (tartalmazza a névtér neve).
+partitionId | Event Hub-partícióról ír.
 archiveStep | ArchiveFlushWriter
-startTime | Hiba kezdési időpontja.
-hibák | Száma hiba történt.
+startTime | Hiba a kezdési idő.
+hiba | Hiba történt a hányszor.
 durationInSeconds | Hiba időtartama.
-üzenet | Hibaüzenet jelenik meg.
+message | Hibaüzenet jelenik meg.
 category | ArchiveLogs
 
-A következő kódot az archív napló JSON-karakterláncban példája:
+A következő kódot a példából láthatja az archív napló JSON-karakterlánc:
 
 ```json
 {
@@ -104,23 +104,23 @@ A következő kódot az archív napló JSON-karakterláncban példája:
 }
 ```
 
-### <a name="operational-logs-schema"></a>Műveleti naplókat séma
+### <a name="operational-logs-schema"></a>Műveleti naplók séma
 
-Műveleti napló JSON karakterláncok a következő táblázatban felsorolt elemeket tartalmazza:
+Műveleti napló JSON-sztringek az alábbi táblázatban felsorolt elemeket tartalmazza:
 
 Name (Név) | Leírás
 ------- | -------
-Tevékenységazonosító | Belső azonosító segítségével nyomon követhető a célra.
-EventName | Művelet neve.  
-resourceId | Az Azure Resource Manager erőforrás-azonosító.
-SubscriptionId | Előfizetés-azonosító.
-EventTimeString | Művelet ideje.
+Tevékenységazonosító | Belső azonosítója, célú nyomon követésére szolgál.
+EventName | Název operace.  
+resourceId | Az Azure Resource Manager-erőforrás azonosítója.
+SubscriptionId | Előfizetés-azonosítójára.
+EventTimeString | A művelet ideje.
 EventProperties | A művelet tulajdonságait.
 status | A művelet állapotát.
-Hívó | (Az Azure portál vagy a felügyeleti ügyfél) művelettel védőfalkezelőbe.
+Hívó | Hívó művelet (az Azure Portalon vagy a felügyeleti ügyfél).
 category | OperationalLogs
 
-A következő kód egy műveleti napló JSON-karakterláncban példája:
+A következő kódot egy műveleti napló JSON-karakterlánc példája:
 
 ```json
 Example:
@@ -138,6 +138,6 @@ Example:
 ```
 
 ## <a name="next-steps"></a>További lépések
-* [Az Event Hubs bemutatása](event-hubs-what-is-event-hubs.md)
+* [Bevezetés az Event hubs szolgáltatásba](event-hubs-what-is-event-hubs.md)
 * [Event Hubs API overview](event-hubs-api-overview.md) (Event Hubs API – áttekintés)
 * [Bevezetés az Event Hubs használatába](event-hubs-dotnet-standard-getstarted-send.md)

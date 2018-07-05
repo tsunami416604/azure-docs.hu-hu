@@ -1,4 +1,4 @@
 | Erőforrás | Alapértelmezett korlát | Felső korlát | Megjegyzés |
 | --- | --- | --- | --- |
-| Network Watcher | régiónként 1  | régiónként 1 | |
-| Csomag rögzítési munkamenetek |régiónként eltérő 10 | |a munkamenetek csak, nem mentett # rögzíti. |
+| Network Watcher | 1 és régiónként  | 1 és régiónként |  Network Watcher-erőforrást jön létre a szolgáltatáshoz való hozzáférés engedélyezéséhez. Csak 1 Network Watcher-erőforrást előfizetésenként és régiónként megadása kötelező |
+| Csomagrögzítési munkamenetet |10 régiónként | |kell-e száma csak, munkamenetek, nincsenek mentve |

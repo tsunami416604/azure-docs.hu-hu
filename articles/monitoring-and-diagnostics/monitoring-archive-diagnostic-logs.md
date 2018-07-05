@@ -1,6 +1,6 @@
 ---
-title: Az Azure diagnosztikai naplók archiválása
-description: Útmutató az Azure tárfiókokban hosszú távú megőrzési diagnosztikai naplók archiválása.
+title: Az Azure diagnosztikai naplóinak archiválása
+description: Ismerje meg, a hosszú távú adatmegőrzés storage-fiókban lévő Azure diagnosztikai naplóinak archiválása.
 author: johnkemnetz
 services: azure-monitor
 ms.service: azure-monitor
@@ -8,27 +8,27 @@ ms.topic: conceptual
 ms.date: 06/07/2018
 ms.author: johnkem
 ms.component: logs
-ms.openlocfilehash: d48828c8d2ec439f389fe4eddabb59599cc1680b
-ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
+ms.openlocfilehash: 99f150b2c62331a63e5bd4377f51fd11359628ab
+ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36752826"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37436028"
 ---
-# <a name="archive-azure-diagnostic-logs"></a>Az Azure diagnosztikai naplók archiválása
+# <a name="archive-azure-diagnostic-logs"></a>Az Azure diagnosztikai naplóinak archiválása
 
-Ebben a cikkben megmutatjuk használatát az Azure-portálon, a PowerShell-parancsmagok, a parancssori felület vagy a REST API-t kell archiválnia a [Azure diagnosztikai naplók](monitoring-overview-of-diagnostic-logs.md) tárfiókokban. Ez a beállítás akkor hasznos, ha azt szeretné, hogy megőrzi a diagnosztikai naplók és a naplózási, statikus elemzési és biztonsági mentés egy választható adatmegőrzési. A tárfiók nem ugyanahhoz az előfizetéshez naplók kibocsátó mindaddig, amíg a beállítás konfigurálása felhasználó hozzáfér megfelelő RBAC mindkét előfizetéshez erőforrásként kell kell.
+Ebben a cikkben bemutatjuk a használatáról az Azure portal, PowerShell-parancsmagok, CLI vagy REST API-val archiválása a [Azure diagnosztikai naplók](monitoring-overview-of-diagnostic-logs.md) a storage-fiókban. Ez a beállítás akkor hasznos, ha szeretné megőrizni a diagnosztikai naplók egy opcionális adatmegőrzési szabályzat naplózási, elemzési statikus vagy biztonsági mentés. A storage-fiók nem rendelkezik és a naplókat kibocsátó mindaddig, amíg a beállítást konfiguráló felhasználónak megfelelő hozzáférése RBAC mindkét előfizetéshez erőforrásnak ugyanabban az előfizetésben lennie.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Kezdés előtt kell [hozzon létre egy tárfiókot](../storage/storage-create-storage-account.md) , amelyhez úgy archiválhatók a diagnosztikai naplókat. Erősen ajánlott, hogy nem használja a benne tárolt, így jobban szabályozhatja a hozzáférést a figyelési adatok, amelyeket más, nem figyelési adatokat tartalmazó meglévő tárfiókot. Azonban ha is archiválása a tevékenységnapló és diagnosztikai metrikák egy tárfiókba, logikus összes figyelési adatot elhelyez egy központi helyen, valamint a diagnosztikai naplók tárolási fiók használatával. A storage-fiók használata egy általános célú tárfiókkal, nem a blob storage-fiók kell lennie.
+Mielőtt elkezdené, kell [hozzon létre egy tárfiókot](../storage/storage-create-storage-account.md) , amelyhez a diagnosztikai naplókat archiválhatja. Kifejezetten ajánljuk, hogy nem használja egy meglévő tárfiókot, amely a benne tárolt, így jobban szabályozhatja a hozzáférést a figyelési adatok más, nem figyelési adatokat tartalmaz. Azonban ha is archiválni a tevékenységnapló és a egy tárfiókot a diagnosztikai metrikák, célszerű felhasználójának, hogy az összes monitorozási adat egy központi helyen, hogy a tárfiókot a diagnosztikai naplók használata.
 
 > [!NOTE]
->  Jelenleg nem archiválhatja adatok tárolási funkciókat biztosító fiókot, amellyel mögött egy védett virtuális hálózatot.
+>  Jelenleg nem archiválhatja adatokat egy Storage-fiók, amely mögött egy biztonságos virtuális hálózaton.
 
 ## <a name="diagnostic-settings"></a>Diagnosztikai beállítások
 
-Az alábbi módszereket a diagnosztikai naplók archiválása, állítsa be a **diagnosztikai beállításának** egy adott erőforráshoz. Egy erőforrás diagnosztikai beállításának meghatározza a naplókat, valamint a metrika adatokat küldeni a célhelyre (storage-fiók, az Event Hubs névtér vagy Naplóelemzési). Az események minden egyes napló kategória és a storage-fiókban tárolt metrika értékét az adatmegőrzési (a megőrizni kívánt napok száma) is meghatároz. Ha egy megőrzési házirend nullára van beállítva, események naplózási kategóriát tárolja határozatlan ideig (azaz, végtelen). Adatmegőrzési ellenkező esetben lehet bármely 1 és 2147483647 között eltelt napok számát. [További diagnosztikai beállítások itt kapcsolatos](monitoring-overview-of-diagnostic-logs.md#resource-diagnostic-settings). Adatmegőrzési alkalmazott napi,, így napi (UTC) szerint naplókat, amelyik most már a megőrzési túl napjától végén házirend törlődni fog. Például ha egy nap adatmegőrzési, mai nap kezdetén a napló, a nap előtt tegnap törlése akkor történik meg. A törlési folyamat kezdődik éjfél UTC, de vegye figyelembe, hogy törli a tárfiókot az naplók akár 24 óráig is eltarthat. 
+Az alábbi módszerek bármelyikével a diagnosztikai naplók archiválása, beállíthat egy **diagnosztikai beállítás** egy adott erőforráshoz. Egy erőforrás diagnosztikai beállításának meghatározza a naplók és metrikaadatok küldeni a célhelyre (storage-fiók, az Event Hubs-névtér vagy a Log Analytics). Események az egyes naplókategória és a mérőszám, a storage-fiókban tárolt adatok az adatmegőrzési (Ha a napok száma) is meghatározza. Adatmegőrzési értéke nulla, a napló kategória események tárolása történik határozatlan idejű (azaz, végtelen). Adatmegőrzési más módon lehet minden olyan 1 és 2147483647 között eltelt napok számát. [További információ itt a diagnosztikai beállítások](monitoring-overview-of-diagnostic-logs.md#resource-diagnostic-settings). Adatmegőrzési házirendek, az alkalmazott napi, hogy naponta (UTC), naplók, amely mostantól a megőrzési ideje meghaladja a nap végén a rendszer törli a szabályzatot. Például ha egy nap adatmegőrzési, ma a nap kezdetén az a napja előtt tegnap naplóinak törlődnének. A törlési folyamat kezdődik UTC szerint éjfélig, de vegye figyelembe, hogy a naplók a tárfiókból a törlendő akár 24 órát is igénybe vehet. 
 
 > [!NOTE]
 > A többdimenziós metrikák diagnosztikai beállításokon keresztül történő küldése jelenleg nem támogatott. A dimenziókkal rendelkező metrikák egybesimított, egydimenziós metrikákként vannak exportálva, összesített dimenzióértékekkel.
@@ -37,31 +37,31 @@ Az alábbi módszereket a diagnosztikai naplók archiválása, állítsa be a **
 >
 >
 
-## <a name="archive-diagnostic-logs-using-the-portal"></a>Archív diagnosztikai naplókat a portálon
+## <a name="archive-diagnostic-logs-using-the-portal"></a>Archív diagnosztikai naplók a portál használatával
 
-1. A portál Azure figyelő keresse meg és kattintson a **diagnosztikai beállítások**
+1. A portálon lépjen az Azure Monitor, és kattintson a **diagnosztikai beállítások**
 
-    ![Figyelés szakaszban Azure-figyelő](media/monitoring-archive-diagnostic-logs/diagnostic-settings-blade.png)
+    ![Az Azure Monitor figyelési szakasza](media/monitoring-archive-diagnostic-logs/diagnostic-settings-blade.png)
 
-2. Opcionálisan erőforráscsoport és erőforrások típus szerint a lista szűréséhez, majd kattintson az erőforráson, amelynek szeretné beállítani a diagnosztikai.
+2. Igény szerint szűrje a listát, erőforráscsoport vagy erőforrás típusa, majd kattintson az a erőforrás, amelynek szeretné egy diagnosztikai beállítás.
 
-3. Ha a beállítások nem található az erőforrás a választott, kéri beállítás létrehozása. Kattintson a "Diagnosztika bekapcsolásához."
+3. Ha a beállítások nem létezik az erőforráson kiválasztott, kéri létre beállítást. Kattintson a "Engedélyezze a diagnosztikát."
 
-   ![Diagnosztikai beállítás - nincsenek meglévő beállítások hozzáadása](media/monitoring-archive-diagnostic-logs/diagnostic-settings-none.png)
+   ![Diagnosztikai beállítás - beállítások nélkül hozzáadása](media/monitoring-archive-diagnostic-logs/diagnostic-settings-none.png)
 
-   Ha az erőforrás-meglévő beállítások, látni fogja már ehhez az erőforráshoz konfigurált beállítások listája. A "Hozzáadás diagnosztikai beállításának."
+   Ha meglévő beállításokat az erőforráson, látni fogja a beállítások már konfigurálva van a ehhez az erőforráshoz. Kattintson a "Diagnosztikai beállítás hozzáadása."
 
    ![Diagnosztikai beállítás - meglévő beállítások hozzáadása](media/monitoring-archive-diagnostic-logs/diagnostic-settings-multiple.png)
 
-3. Adjon a beállítás a neve, és jelölje be a **Tárfiók exportálása**, majd válasszon egy tárfiókot. Beállíthatja a napokban ezek a naplók segítségével számos a **megőrzés (nap)** csúszkák. Egy nulla napos megőrzési határozatlan ideig tárolja a naplókat.
+3. Adja meg a beállítás a neve, és jelölje be a **exportálás Tárfiókba**, majd válassza ki a tárfiókot. Beállíthatja a megőrzi ezeket a naplókat a napok számát a **megőrzés (nap)** csúszkák. Egy nulla napnyi adatmegőrzéshez határozatlan ideig tárolja a naplókat.
 
    ![Diagnosztikai beállítás - meglévő beállítások hozzáadása](media/monitoring-archive-diagnostic-logs/diagnostic-settings-configure.png)
 
 4. Kattintson a **Save** (Mentés) gombra.
 
-Néhány másodpercen belül az új beállítás jelenik meg az ehhez az erőforráshoz beállítások listáját, és diagnosztikai naplók archivált, hogy a tárfiókot, amint létrejön az új esemény-adatokat.
+Néhány pillanat múlva az új beállítás jelenik meg az ehhez az erőforráshoz beállítások listáját, és a diagnosztikai naplók archivált tárfiók, amint új esemény adat keletkezik.
 
-## <a name="archive-diagnostic-logs-via-azure-powershell"></a>Diagnosztikai naplók archiválása Azure PowerShell használatával
+## <a name="archive-diagnostic-logs-via-azure-powershell"></a>Archív diagnosztikai naplók az Azure PowerShell-lel
 
 ```
 Set-AzureRmDiagnosticSetting -ResourceId /subscriptions/s1id1234-5679-0123-4567-890123456789/resourceGroups/testresourcegroup/providers/Microsoft.Network/networkSecurityGroups/testnsg -StorageAccountId /subscriptions/s1id1234-5679-0123-4567-890123456789/resourceGroups/myrg1/providers/Microsoft.Storage/storageAccounts/my_storage -Categories networksecuritygroupevent,networksecuritygrouprulecounter -Enabled $true -RetentionEnabled $true -RetentionInDays 90
@@ -69,14 +69,14 @@ Set-AzureRmDiagnosticSetting -ResourceId /subscriptions/s1id1234-5679-0123-4567-
 
 | Tulajdonság | Szükséges | Leírás |
 | --- | --- | --- |
-| ResourceId |Igen |Erőforrás-azonosító az erőforrás, amelyen be szeretné állítani a diagnosztikai beállítását. |
-| StorageAccountId |Nem |A diagnosztikai naplók mentésére tárfiók erőforrás-azonosító. |
-| Kategóriák |Nem |Ahhoz, hogy a napló kategóriák vesszővel tagolt listája. |
-| Engedélyezve |Igen |Logikai érték, amely jelzi, hogy diagnosztika engedélyezett vagy letiltott ezen az erőforráson. |
-| RetentionEnabled |Nem |Logikai érték, amely azt jelzi, hogy engedélyezve vannak-e adatmegőrzési ezen az erőforráson. |
-| RetentionInDays |Nem |Amely események kell megtartani 1 és 2147483647 közötti napok számát. A nulla érték határozatlan ideig tárolja a naplókat. |
+| ResourceId |Igen |Erőforrás-Azonosítóját, amelyen a diagnosztikai beállítás kívánt erőforrás. |
+| StorageAccountId |Nem |Erőforrás-Azonosítóját a Tárfiókot a diagnosztikai naplók mentéséhez. |
+| Kategóriák |Nem |Naplókategóriák engedélyezéséhez vesszővel tagolt listája. |
+| Engedélyezve |Igen |Logikai érték, amely azt jelzi, hogy diagnosztika engedélyezve van vagy le van tiltva az adott erőforráshoz. |
+| RetentionEnabled |Nem |Logikai érték, amely azt jelzi, hogy engedélyezve vannak-e adatmegőrzési az erőforráson. |
+| RetentionInDays |Nem |Ennyi nap, amelynek eseményeket a rendszer megőrizze-1 és 2147483647 között. A nulla érték határozatlan ideig tárolja a naplókat. |
 
-## <a name="archive-diagnostic-logs-via-the-azure-cli-20"></a>Archív diagnosztikai naplók az Azure CLI 2.0 keresztül
+## <a name="archive-diagnostic-logs-via-the-azure-cli-20"></a>Archív diagnosztikai naplók az Azure CLI 2.0-n keresztül
 
 ```azurecli
 az monitor diagnostic-settings create --name <diagnostic name> \
@@ -94,33 +94,33 @@ az monitor diagnostic-settings create --name <diagnostic name> \
     }]'
 ```
 
-Hozzáadhat további kategóriákra a diagnosztikai naplófájl szótárak ad hozzá a JSON-tömb, mint az átadott a `--logs` paraméter.
+Adhat hozzá további kategóriát a diagnosztikai napló szótárak ad hozzá a JSON-tömböt adhatók be a `--logs` paraméter.
 
-A `--resource-group` argumentum csak akkor kötelező, ha `--storage-account` nincs egy objektumot. Az archiválási Storage diagnosztikai naplók teljes dokumentációjáért lásd: a [CLI parancsdokumentációja](/cli/azure/monitor/diagnostic-settings#az-monitor-diagnostic-settings-create).
+A `--resource-group` argumentum csak akkor kötelező, ha `--storage-account` nem egy objektumot. Diagnosztikai naplók tárolási archiválási teljes dokumentációjáért lásd: a [CLI parancsdokumentációja](/cli/azure/monitor/diagnostic-settings#az-monitor-diagnostic-settings-create).
 
-## <a name="archive-diagnostic-logs-via-the-rest-api"></a>Diagnosztikai naplók archiválása a REST API-n keresztül
+## <a name="archive-diagnostic-logs-via-the-rest-api"></a>Archív diagnosztikai naplók a REST API-n keresztül
 
-[Lásd a jelen dokumentum](https://docs.microsoft.com/en-us/rest/api/monitor/diagnosticsettings) olvashat, hogyan állíthat be egy diagnosztikai beállítás a Azure REST API használatával.
+[Ez a dokumentum megtekintéséhez](https://docs.microsoft.com/en-us/rest/api/monitor/diagnosticsettings) olvashat, hogyan beállíthat egy diagnosztikai beállítás, az Azure Monitor REST API használatával.
 
-## <a name="schema-of-diagnostic-logs-in-the-storage-account"></a>A tárfiók a diagnosztikai naplók sémája
+## <a name="schema-of-diagnostic-logs-in-the-storage-account"></a>Diagnosztikai naplók a storage-fiókban lévő séma
 
-Miután állított be archiválási, tárolót jön létre a tárfiók, amint az esemény akkor következik be, a napló kategóriák engedélyezte. A tárolóban található blobok ugyanazt a formátumot kövesse a diagnosztikai naplók és a műveletnapló között. A blobok szerkezete van:
-
-> insights - logs-{napló kategória neve} / resourceId = / ELŐFIZETÉSEK / {előfizetés-azonosító} /RESOURCEGROUPS/ {erőforráscsoport neve} /PROVIDERS/ {erőforrás-szolgáltató neve} / {resource type} / {erőforrás neve} / y = {négyjegyű numerikus year} / m = {kétjegyű numerikus month} / d {kétjegyű számozott napja} = / h = {kétjegyű 24 órás hour}/m=00/PT1H.json
-
-Vagy egyszerűbb,
-
-> insights - logs-{napló kategória neve} / resourceId = / {erőforrás-azonosítót} / y = {négyjegyű numerikus year} / m = {kétjegyű numerikus month} / d {kétjegyű számozott napja} = / h = {kétjegyű 24 órás hour}/m=00/PT1H.json
-
-A blob neve lehet, például:
-
-> insights-logs-networksecuritygrouprulecounter/resourceId=/SUBSCRIPTIONS/s1id1234-5679-0123-4567-890123456789/RESOURCEGROUPS/TESTRESOURCEGROUP/PROVIDERS/MICROSOFT.NETWORK/NETWORKSECURITYGROUP/TESTNSG/y=2016/m=08/d=22/h=18/m=00/PT1H.json
-
-Mindegyik PT1H.json blob tartalmazza a blob URL-jében meghatározott órában (például h=12) bekövetkezett események JSON-blobját. Az aktuális órában az események az előfordulásukkor lesznek a PT1H.json fájlhoz fűzve. A perc értéket (m = 00) mindig 00, mivel diagnosztikai alkalmazásnapló-események az egyes blobok óránként van felosztva.
-
-PT1H.json fájlon belül mindegyik esemény tárolja a "rekordok" tömb, a következő formátumban:
+Beállítása archiválási, miután egy storage-tárolót a storage-fiókban jön létre, amint az esemény következik be, a napló kategóriák engedélyezte. A tárolóban lévő blobok ugyanazt az elnevezési konvenciót tevékenységeket tartalmazó naplók és a diagnosztikai naplók, hajtsa végre az alábbiak szerint:
 
 ```
+insights-logs-{log category name}/resourceId=/SUBSCRIPTIONS/{subscription ID}/RESOURCEGROUPS/{resource group name}/PROVIDERS/{resource provider name}/{resource type}/{resource name}/y={four-digit numeric year}/m={two-digit numeric month}/d={two-digit numeric day}/h={two-digit 24-hour clock hour}/m=00/PT1H.json
+```
+
+Például a blobnév lehet:
+
+```
+insights-logs-networksecuritygrouprulecounter/resourceId=/SUBSCRIPTIONS/s1id1234-5679-0123-4567-890123456789/RESOURCEGROUPS/TESTRESOURCEGROUP/PROVIDERS/MICROSOFT.NETWORK/NETWORKSECURITYGROUP/TESTNSG/y=2016/m=08/d=22/h=18/m=00/PT1H.json
+```
+
+Mindegyik PT1H.json blob tartalmazza a blob URL-jében meghatározott órában (például h=12) bekövetkezett események JSON-blobját. Az aktuális órában az események az előfordulásukkor lesznek a PT1H.json fájlhoz fűzve. A perc értéke (m = 00) mindig 00, mert a diagnosztikai naplóesemények óránként külön blobokba vannak osztva.
+
+A PT1H.json fájlt belül minden egyes esemény tárolja a "rekord" tömb, a következő formátumban:
+
+``` JSON
 {
     "records": [
         {
@@ -145,17 +145,17 @@ PT1H.json fájlon belül mindegyik esemény tárolja a "rekordok" tömb, a köve
 
 | Elem neve | Leírás |
 | --- | --- |
-| time |Az esemény az esemény megfelelő a kérés feldolgozása az Azure-szolgáltatás által kiváltott idejét jelző időbélyegző. |
+| time |Időbélyeg, ha az esemény jött létre az Azure-szolgáltatás a megfelelő esemény kérelem feldolgozása. |
 | resourceId |Erőforrás-azonosító az érintett erőforrás. |
 | operationName |A művelet neve. |
-| category |Az esemény napló kategóriáját. |
-| properties |Állítsa be a `<Key, Value>` az esemény részleteit leíró párok (azaz szótárában). |
+| category |Az esemény kategóriája napló. |
+| properties |Állítsa be a `<Key, Value>` párok (azaz szótár), az esemény részleteit leíró. |
 
 > [!NOTE]
-> A tulajdonságok és ezek a tulajdonságok használatát eltérőek lehetnek attól függően, hogy az erőforrás.
+> A tulajdonságokat, és azokat a tulajdonságokat a használat függvényében az erőforrás.
 
 ## <a name="next-steps"></a>További lépések
 
-* [Elemzés blobok letöltése](../storage/storage-dotnet-how-to-use-blobs.md)
-* [Az adatfolyam diagnosztikai naplók az Event Hubs névtérhez](monitoring-stream-diagnostic-logs-to-event-hubs.md)
-* [Tudjon meg többet a diagnosztikai naplók](monitoring-overview-of-diagnostic-logs.md)
+* [Tölthet le blobokat elemzéshez](../storage/storage-dotnet-how-to-use-blobs.md)
+* [Stream-diagnosztikai naplók az Event Hubs-névtér](monitoring-stream-diagnostic-logs-to-event-hubs.md)
+* [További információ a diagnosztikai naplók](monitoring-overview-of-diagnostic-logs.md)

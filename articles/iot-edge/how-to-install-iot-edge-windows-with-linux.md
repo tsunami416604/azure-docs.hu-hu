@@ -9,12 +9,12 @@ services: iot-edge
 ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: kgremban
-ms.openlocfilehash: a5b7845522769393826057c4bc92bda56e557258
-ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
+ms.openlocfilehash: 503dfc0c7606d44a1b9ab635aa0d479df61f3820
+ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37346147"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37435473"
 ---
 # <a name="install-azure-iot-edge-runtime-on-windows-to-use-with-linux-containers"></a>Az Azure IoT Edge-futtatókörnyezet telepíthető Windows, Linux-tárolók használata
 
@@ -160,6 +160,12 @@ A PowerShell ablakában hozzon létre egy környezeti változó **IOTEDGE_HOST**
 
 ```powershell
 [Environment]::SetEnvironmentVariable("IOTEDGE_HOST", "http://<GATEWAY_ADDRESS>:15580")
+```
+
+A környezeti változó megőrzése újraindítások között.
+
+```powershell
+SETX /M IOTEDGE_HOST "http://<GATEWAY_ADDRESS>:15580"
 ```
 
 Végül ellenőrizze a **hálózati:** menüpont **moby_runtime:** uncommented, és állítsa **azure-iot-edge**

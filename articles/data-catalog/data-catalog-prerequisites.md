@@ -1,51 +1,50 @@
 ---
-title: "Az Azure Data Catalog előfeltételei |} Microsoft Docs"
-description: "További tudnivalók az Azure Data Catalog használatába kell előfeltételek."
+title: Az Azure Data Catalog előfeltételei |} A Microsoft Docs
+description: További információ az Azure Data Catalog használatának megkezdéséhez szüksége előfeltételeiről.
 services: data-catalog
-documentationcenter: 
+documentationcenter: ''
 author: steelanddata
 manager: NA
-editor: 
-tags: 
+editor: ''
+tags: ''
 ms.assetid: ef497a54-dc4d-4820-b5bf-c361b64b964d
 ms.service: data-catalog
 ms.devlang: NA
 ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: data-catalog
 ms.date: 01/18/2018
 ms.author: maroche
-ms.openlocfilehash: a7effaaaeb23661b9be96dcddc2c140ab8c8b92b
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.openlocfilehash: d34d9e49c3ad405a86e42ada9c86615a12adaa62
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37450259"
 ---
 # <a name="azure-data-catalog-prerequisites"></a>Az Azure Data Catalog előfeltételei
 
-Néhány dolgot gondoskodunk Azure Data Catalog beállítása előtt kell. Ne aggódjon, a folyamat nem tart sokáig.
+Azure Data Catalog beállítása előtt néhány dolgot irányuló szüksége. Ne aggódjon, ez a folyamat nem vesz hosszú.
 
 ## <a name="azure-subscription"></a>Azure-előfizetés
-A Data Catalog beállítása, a tulajdonos vagy a társtulajdonos az Azure-előfizetéssel kell lennie.
+A Data Catalog beállításához az Azure-előfizetés tulajdonosa vagy társtulajdonosa kell lennie.
 
-Azure-előfizetések megkönnyítik felhőszolgáltatás erőforrások, például a Data Catalog elérésére. Előfizetések is segíthetnek, erőforrás-használat jelentett, számlázva és kifizette vezérlésére. Minden előfizetés van külön számlázási és a fizetési telepítő, így előfizetések és a csomagok, amelyek módosítják a részleg, a projekt, a regionális office és az stb. Egy előfizetés tartozik minden felhőalapú szolgáltatás, és kell rendelkeznie egy előfizetéshez, mielőtt a Data Catalog beállítása. További információkat a [fiókok, előfizetések és rendszergazdai szerepkörök kezeléséről](../active-directory/active-directory-assign-admin-roles-azure-portal.md) szóló cikkben talál.
+Azure-előfizetés segít rendszerezni a felhőszolgáltatás erőforrások, például a Data Catalog elérését. Előfizetések segít erőforrás-használat jelentett, a számlázás és a fizetős is. Az egyes előfizetésekhez külön számlázással és fizetéssel telepítő, van így is tartozhat, előfizetések és a terveket, amely régiónként eltérő részleg, projekt, területi képviseletenként stb. Egy előfizetéshez tartozik minden olyan felhőszolgáltatáshoz, és a egy előfizetéshez, mielőtt a Data Catalog beállításához rendelkeznie kell. További információkat a [fiókok, előfizetések és rendszergazdai szerepkörök kezeléséről](../active-directory/users-groups-roles/directory-assign-admin-roles.md) szóló cikkben talál.
 
 ## <a name="azure-active-directory"></a>Azure Active Directory
-A Data Catalog beállításához be kell jelentkeznie be egy Azure Active Directory (Azure AD) felhasználói fiókkal.
+A Data Catalog beállításához kell bejelentkeznie az Azure Active Directory (Azure AD) felhasználói fiókkal jelentkezik be.
 
-Az Azure AD egyszerű módot kínál vállalkozásának az identitás és a hozzáférés kezelésére, mind a felhőben, mind a helyszínen. Felhasználók is használhat egy egyetlen munkahelyi vagy iskolai fiókkal egyszeri bejelentkezés az összes felhő, és a helyszíni webalkalmazást. A Data Catalog használ az Azure AD-bejelentkezés hitelesítéséhez. További tudnivalókért lásd: [Mi az Azure Active Directory?](../active-directory/active-directory-whatis.md).
+Az Azure AD egyszerű módot kínál vállalkozásának az identitás és a hozzáférés kezelésére, mind a felhőben, mind a helyszínen. Felhasználók egyetlen munkahelyi vagy iskolai fiók egyetlen bejelentkezhet bármely felhőben és a helyileg üzemeltetett webes alkalmazás. A Data Catalog az Azure AD használatával hitelesíti a bejelentkező felhasználókat. További tudnivalókért lásd: [Mi az Azure Active Directory?](../active-directory/fundamentals/active-directory-whatis.md).
 
 > [!NOTE]
-> Használatával a [Azure-portálon](http://portal.azure.com/), jelentkezhet be személyes Microsoft-fiókkal vagy egy Azure Active Directory munkahelyi vagy iskolai fiók. Állíthatja be a Data Catalog használatával vagy az Azure-portálon vagy a [Data Catalog-portál](http://www.azuredatacatalog.com), Azure Active Directory-fiókkal, nem egy személyes fiókkal kell bejelentkeznie.
+> Használatával a [az Azure portal](http://portal.azure.com/), jelentkezhet be személyes Microsoft-fiókkal vagy egy Azure Active Directory munkahelyi vagy iskolai fiókjával. Az Azure portal használatával, az a Data Catalog beállításához, vagy a [Data Catalog-portál](http://www.azuredatacatalog.com), az Azure Active Directory-fiókkal, nem a személyes fiókjával kell bejelentkeznie.
 >
 >
 
-## <a name="active-directory-policy-configuration"></a>Az Active Directory-házirend konfigurálása
-Akkor léphetnek olyan helyzet, ahol bejelentkezhet a Data Catalog-portált, de ha megkísérli az jelentkezzen be az adatforrás-regisztráló eszköz, olyan hibaüzenetet, amely megakadályozza, hogy aláírási észlel. Ez a probléma a probléma akkor fordulhat elő, csak akkor, ha a vállalati hálózaton, vagy Ez akkor fordulhat elő, csak akkor, ha, amelyből csatlakozik a vállalati hálózaton kívülről.
+## <a name="active-directory-policy-configuration"></a>Az Active Directory-szabályzat konfigurálása
+Előfordulhat olyan helyzet állhat elő, ha tud bejelentkezni a Data Catalog-portál, de amikor megpróbál bejelentkezni az adatforrás-regisztráló eszköz, találkozik egy hibaüzenet, amely megakadályozza, hogy jelentkezik be. Ez a viselkedés a probléma akkor fordulhat elő, csak akkor lehetséges, ha Ön a vállalati hálózaton, vagy akkor fordulhat elő, csak akkor, ha a vállalati hálózaton kívülről érkező csatlakoztatja.
 
-Az adatforrás-regisztráló eszköz Active Directoryban a felhasználói fiók hitelesítő adatainak érvényesítéséhez használja a az űrlapos hitelesítés. Segítséget a bejelentkezés sikeres, az Active Directory-rendszergazda engedélyeznie kell az űrlapos hitelesítést a globális hitelesítési házirend.
+Az adatforrás-regisztráló eszköz űrlapos hitelesítés érvényesítése az Active Directorybeli felhasználói hitelesítő adatait használja. Segítséget a bejelentkezés sikeres, Active Directory-rendszergazda engedélyeznie kell a globális hitelesítési házirend az űrlapos hitelesítés.
 
-A globális hitelesítési házirend a hitelesítési módszerek engedélyezhető külön-külön az intranetes és extranetes kapcsolatok, az alábbi képernyőfelvételen látható módon. Bejelentkezési hiba is felléphet, ha a hálózati kapcsolat, amelyből nincs engedélyezve az űrlapos hitelesítés.
+A globális hitelesítési házirend hitelesítési módszerek engedélyezhető külön-külön az intranetes és extranetes kapcsolatokhoz, az alábbi képernyőképen látható módon. Bejelentkezési hiba is felléphet, ha nincs engedélyezve az űrlapos hitelesítés, amelyről csatlakozik a hálózathoz.
 
  ![Az Active Directory globális hitelesítési házirend](./media/data-catalog-prerequisites/global-auth-policy.png)
 

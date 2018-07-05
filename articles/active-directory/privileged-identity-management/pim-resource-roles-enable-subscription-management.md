@@ -1,81 +1,81 @@
 ---
-title: A privileged Identity Management az Azure-erőforrások - előfizetés-kezelés engedélyezése |} Microsoft Docs
-description: Ismerje meg, hogyan globális rendszergazdák kezelhetik a bérlői előfizetések.
+title: Előfizetés-kezelés engedélyezése az Azure-erőforrásokhoz – privileged Identity Management |} A Microsoft Docs
+description: Ismerje meg, hogy a globális rendszergazdák kezelhetik a bérlői előfizetések.
 services: active-directory
 documentationcenter: ''
 author: rolyon
 manager: mtillman
 ms.service: active-directory
 ms.devlang: na
-ms.topic: how-to
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.component: protection
 ms.date: 03/27/2018
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: 628ee70f7eb59673d4229441e3c4242e1ef8e0d3
-ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
+ms.openlocfilehash: 6aeb82ff1feb3521f3a09dc1b28186754568bb27
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35234272"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37442990"
 ---
 # <a name="enable-subscription-management-in-your-tenant"></a>A bérlő előfizetés-kezelés engedélyezése
 
-A címtár globális rendszergazdaként akkor előfordulhat, hogy nincs hozzáférése alapértelmezett összes előfizetéshez kapcsolódó erőforrásokat az Ön bérelt szolgáltatásának. Ez a cikk hozzáférést magát az Ön bérelt szolgáltatásának előfizetéseken lépéseit mutatja be. Egy ajánlott módszer a megfelelő biztonsági vezérlőket a szervezet szükségesek, miután a hozzáférés-re is tartalmazza.
+A címtár globális rendszergazdaként hogy előfordulhat, hogy nem fér alapértelmezett összes-előfizetések erőforrásaihoz való a bérlőben. Ez a cikk a saját maga hozzáférést biztosíthat a bérlőn belüli összes előfizetés lépéseit ismerteti. Azt is javasolt módszert biztosít a fennmaradó felelnek meg minden olyan biztonsági ellenőrzéseket, a szervezet megköveteli, miután megkapta a hozzáférést.
 
-## <a name="who-can-enable-management-of-subscriptions-in-my-directory"></a>Ki engedélyezheti a címtár-előfizetések kezelése?
+## <a name="who-can-enable-management-of-subscriptions-in-my-directory"></a>Ki engedélyezheti a címtáramban előfizetések kezelése?
 
-Minden felhasználó, a globális rendszergazda szerepkörrel kell az alábbi lépésekkel előfizetés-kezelés engedélyezéséhez. Miután engedélyezte az előfizetés-kezelés szolgáltatást, más globális rendszergazdákat, akik esetleg erőforrás adhat hozzá, valamint a hozzáférés. Található könyvtárat, amely lehetővé teszi a globális rendszergazdai szerepkör összes tagja számára.
+Minden felhasználó, a globális rendszergazda szerepkörrel kell az alábbi lépésekkel előfizetés-kezelés engedélyezéséhez. Miután engedélyezte a saját előfizetés-kezelési, adhat hozzá más globális rendszergazdákat, akiknek előfordulhat, hogy szükség van az erőforrás hozzáféréssel is. Nem tartozik Directoryban beállítás, amely lehetővé teszi a hozzáférést a globális rendszergazdai szerepkör összes tagja számára.
 
 ## <a name="sign-in-to-the-azure-portal"></a>Jelentkezzen be az Azure Portalra
 
-Jelentkezzen be az Azure portál egy olyan fiókkal, amely a globális rendszergazdai szerepkörrel jogosult vagy aktív tagja. A fiók nem jogosult globális rendszergazda, ha először aktiválnia kell a szerepkört a következő lépéssel lépés előtt.
+Jelentkezzen be az Azure Portalra egy olyan fiókkal, amely a globális rendszergazdai szerepkör jogosult vagy aktív tagja. Ha a fiók jogosult globális rendszergazda, először aktiválnia kell a szerepkör a következő lépés váltás előtt.
 
-## <a name="access-the-azure-active-directory-admin-center"></a>Hozzáférés az Azure Active Directory felügyeleti központban
+## <a name="access-the-azure-active-directory-admin-center"></a>Az Azure Active Directory felügyeleti központ elérése
 
-Most, hogy be van jelentkezve az Azure-portál globális rendszergazdaként, módosíthatja az Azure-előfizetések elérését lehetővé tevő beállítások. Keresse meg az Azure Active Directory (Azure AD) felügyeleti központot, és válassza ki **tulajdonságok**.
+Most, hogy az Azure Portalra globális rendszergazdaként jelentkezett be, szerkesztheti a beállításokat, amelyek az Azure-előfizetések hozzáférést biztosítanak. Keresse meg az Azure Active Directory (Azure AD) felügyeleti központban, és válassza ki **tulajdonságok**.
 
-![Képernyőfelvétel az Azure AD felügyeleti központba, a kijelölt tulajdonságok](media/azure-pim-resource-rbac/aad_properties.png)
+![Képernyőkép az Azure AD felügyeleti központban, kiemelve tulajdonságokkal](media/azure-pim-resource-rbac/aad_properties.png)
 
-A tulajdonságok közül a **globális rendszergazdák által kezelhető az Azure-előfizetések**, jelölje be **Igen**.
+A tulajdonságok listájában alatt **globális rendszergazdák által kezelhető az Azure-előfizetések**válassza **Igen**.
 
-![Képernyőfelvétel a tulajdonságlapot, Igen váltása](media/azure-pim-resource-rbac/aad_properties_save.png)
+![Képernyőfelvétel: a Tulajdonságok oldala, amelyen Igen be-vagy kikapcsolása](media/azure-pim-resource-rbac/aad_properties_save.png)
 
-Fiókja most már automatikusan hozzáadódik a felhasználói hozzáférés rendszergazdai szerepkör minden előfizetés erőforráshoz a bérlőben.
+Fiókja most már automatikusan hozzáadódik a felhasználói hozzáférés rendszergazdájának szerepköre a bérlő minden előfizetés erőforráshoz.
 
-## <a name="browse-to-azure-ad-pim"></a>Keresse meg az Azure AD PIM
+## <a name="browse-to-azure-ad-pim"></a>Tallózással keresse meg az Azure AD PIM-ben
 
- Itt nyissa meg az Azure AD Privileged Identity Management (PIM). A **kezelése**, jelölje be **Azure-erőforrások**.
+ Itt lépjen az Azure AD Privileged Identity Management (PIM). A **kezelés**válassza **Azure-erőforrások**.
 
-![Képernyőfelvétel a PIM, a kijelölt Azure-erőforrások](media/azure-pim-resource-rbac/aadpim_manage_azure_resources.png)
+![Képernyőkép a PIM, az Azure-erőforrások vannak kiemelve](media/azure-pim-resource-rbac/aadpim_manage_azure_resources.png)
 
-## <a name="manage-and-discover-resources"></a>Kezelése és hálózati erőforrások felderítéséhez
+## <a name="manage-and-discover-resources"></a>Kezelheti és erőforrások észlelése
 
-Ha a szervezet már használja a Azure AD PIM védelme érdekében a rendszergazdák az Azure ad-ben, az előfizetések listáját láthatja, a panel betöltésekor.
+Ha a szervezet védelme érdekében a rendszergazdák Azure AD-ben már az Azure AD PIM-ben, az előfizetések listáját láthatja a panel betöltődése.
 
-![Képernyőfelvétel a PIM, a panel látható előfizetések listája](media/azure-pim-resource-rbac/aadpim_manage_azure_resource_some_there.png)
+![Képernyőkép a PIM, a panelen látható az előfizetések listája](media/azure-pim-resource-rbac/aadpim_manage_azure_resource_some_there.png)
 
 > [!NOTE]
-> Ha nem jelenik meg minden olyan erőforrásnál, ellenőrizze, hogy:
+> Ha nem látja, akkor olyan erőforrások, ellenőrizze, hogy:
 >- A globális rendszergazdai szerepköre nem járt le. 
 >- A szervezet Azure-előfizetéssel rendelkezik.
 
-![Képernyőfelvétel a PIM, az üres erőforrások listája](media/azure-pim-resource-rbac/aadpim_rbac_empty_resource_list.png)
+![Képernyőkép a PIM, az üres erőforrások listája](media/azure-pim-resource-rbac/aadpim_rbac_empty_resource_list.png)
 
 ## <a name="configure-assignments"></a>Hozzárendelések konfigurálása
 
-Válasszon ki egy előfizetést a listából, és rendelje hozzá a saját kezűleg (vagy felhasználói csoport tagja a) az erőforrás jogosult tulajdonos. 
-[További információk szerepkörök hozzárendelése](pim-resource-roles-assign-roles.md).
+Válasszon ki egy előfizetést a listából, és rendelje hozzá a saját magát (vagy egy csoportot, akik tagjai), egy jogosult az erőforrás tulajdonosa. 
+[További információk a szerepkörök hozzárendelése](pim-resource-roles-assign-roles.md).
 
-Ismételje meg ezt a folyamatot az egyes erőforrások, mielőtt továbblép a következő lépéssel.
+Ismételje meg ezt a folyamatot az egyes erőforrások, mielőtt folytatná a következő lépéssel.
 
-## <a name="clean-up-standing-access"></a>Állandó hozzáférés tisztítása
+## <a name="clean-up-standing-access"></a>Állandó hozzáférés törlése
 
-Most, hogy a fontos előfizetések jogosult hozzárendeléseinek a szervezetében, törölheti is folyamatos hozzáférést directory tulajdonságai beállítás letiltásával.
+Most, hogy a szervezet rendelkezik az a fontos előfizetések jogosult hozzárendelésekkel, távolíthatja el állandó hozzáféréssel letiltja a beállítást a címtár tulajdonságait.
 
-![Képernyőfelvétel a tulajdonságlapot, nem váltása](media/azure-pim-resource-rbac/aad_properties_no.png)
+![Képernyőkép a Tulajdonságok oldala, amelyen nem be-vagy kikapcsolása](media/azure-pim-resource-rbac/aad_properties_no.png)
 
 ## <a name="next-steps"></a>További lépések
 

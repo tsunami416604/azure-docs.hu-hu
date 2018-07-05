@@ -1,52 +1,52 @@
 ---
-title: Azure Analysis Services feladatok automatizálása a szolgáltatásnevekről |} Microsoft Docs
+title: Azure Analysis Services feladatok automatizálása szolgáltatásnevekkel |} A Microsoft Docs
 author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 05/15/2018
+ms.date: 07/03/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 931a45fdbb04d15f3080ee0a2c0546ab6e924b59
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 76cadc453a696b8d19788525bfb69cf9cacd353d
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34595716"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37448237"
 ---
-# <a name="automation-with-service-principals"></a>Automatizálása a szolgáltatás rendszerbiztonsági tagok
+# <a name="automation-with-service-principals"></a>Automation-szolgáltatásnevek
 
-Szolgáltatásnevekről az Azure Active Directory-alkalmazás erőforrás hoz létre a bérlő felügyelet nélküli erőforrás és a szolgáltatási szint műveletek elvégzéséhez belül. Egy egyedi típusú fontosságúak *felhasználói identitás* alkalmazás azonosító és jelszó vagy tanúsítvány. Egy egyszerű szolgáltatás csak azokat a szerepköröket és engedélyeket, amelynek van hozzárendelve által meghatározott feladatok végrehajtásához szükséges engedélyekkel rendelkezik. 
+A szolgáltatásnevek olyan Azure Active Directory-alkalmazáserőforrások, amelyeket felügyelet nélküli erőforrás- vagy szolgáltatásszintű műveletek végrehajtásához hozhat létre a bérlőn belül. Még egy egyedi típusú *felhasználói identitás* és a egy alkalmazás-azonosító és jelszó vagy tanúsítvány. Egyszerű szolgáltatás csak azokat a szerepköröket és engedélyeket, amelynek van hozzárendelve által meghatározott feladatok végrehajtásához szükséges engedélyekkel rendelkezik. 
 
-Az Analysis Services szolgáltatás rendszerbiztonsági tagok szolgálnak az Azure Automation PowerShell felügyelet nélküli módban, egyedi ügyfél-alkalmazások és webalkalmazások gyakori feladatok automatizálásához. Például létesítési kiszolgálók modellek, az Adatfrissítés, méretezési kialakítása fel/le, és szüneteltet vagy összes automatizálható szolgáltatásnevekről használatával. Engedélyek szolgáltatásnevekről keresztül szerepköri tagság hasonlóan rendszeres Azure AD UPN-fiókok vannak hozzárendelve.
+Az Analysis Servicesben az egyszerű szolgáltatások gyakori feladatok automatizálásához használható szolgálnak az Azure Automation, PowerShell, a felügyelet nélküli módban, egyedi ügyfél-alkalmazások és webalkalmazások. Ha például kiépítési kiszolgálók, a modellek, az adatok frissítése, a méretezési csoport üzembe helyezése felfelé és lefelé, és szüneteltethet és folytathat minden automatizálható a szolgáltatásnevek használatával. Engedélyeit szerepköri tagság a normál Azure AD UPN-jét fiókok hasonlóan keresztül szolgáltatásnevek vannak hozzárendelve.
 
 ## <a name="create-service-principals"></a>Szolgáltatásnevek létrehozása
  
-Szolgáltatás rendszerbiztonsági tagoknak is létrehozható, az Azure portálon vagy a PowerShell használatával. További tudnivalókért lásd:
+Az egyszerű szolgáltatások az Azure Portalon vagy a PowerShell használatával hozható létre. További tudnivalókért lásd:
 
-[Hozzon létre egyszerű szolgáltatásnév - Azure-portálon](../azure-resource-manager/resource-group-create-service-principal-portal.md)   
+[Szolgáltatásnév létrehozása – Azure portal](../azure-resource-manager/resource-group-create-service-principal-portal.md)   
 [Szolgáltatásnév létrehozása – PowerShell](../azure-resource-manager/resource-group-authenticate-service-principal.md)
 
-## <a name="store-credential-and-certificate-assets-in-azure-automation"></a>Az Azure Automationben hitelesítő adat és a tanúsítvány eszközök tárolásához
+## <a name="store-credential-and-certificate-assets-in-azure-automation"></a>Hitelesítő adatok és a tanúsítvány Store az Azure Automationben
 
-Tanúsítványok és a szolgáltatás egyszerű hitelesítő adatait tárolhatja biztonságosan Azure Automation a runbook-műveleteivel. További tudnivalókért lásd:
+Egyszerű szolgáltatás hitelesítő adatai és a tanúsítványok tárolhatók biztonságosan az Azure Automationben a runbook-művelet. További tudnivalókért lásd:
 
-[Azure Automation szolgáltatásbeli hitelesítőadat eszközök](../automation/automation-credentials.md)   
-[Azure Automation szolgáltatásbeli tanúsítvány eszközök](../automation/automation-certificates.md)
+[Hitelesítő eszközök az Azure Automationben](../automation/automation-credentials.md)   
+[Tanúsítványeszközök az Azure Automationben](../automation/automation-certificates.md)
 
-## <a name="add-service-principals-to-server-admin-role"></a>Kiszolgáló-rendszergazdai szerepkör szolgáltatásnevekről hozzáadása
+## <a name="add-service-principals-to-server-admin-role"></a>Szolgáltatásnév hozzáadása kiszolgálói rendszergazdai szerepkörhöz
 
-Egy egyszerű szolgáltatásnév az Analysis Services kiszolgáló műveletek használata előtt hozzá kell adnia azt a kiszolgáló-Rendszergazdák szerepkör. További tudnivalókért lásd: [egyszerű szolgáltatás hozzáadása a kiszolgáló-rendszergazdai szerepkör](analysis-services-addservprinc-admins.md).
+Egy egyszerű szolgáltatást az Analysis Services kiszolgálói felügyeleti műveletek használata előtt hozzá kell adnia azt a kiszolgáló-rendszergazdák szerepkörhöz. További tudnivalókért lásd: [szolgáltatásnév hozzáadása kiszolgálói rendszergazdai szerepkörhöz](analysis-services-addservprinc-admins.md).
 
-## <a name="service-principals-in-connection-strings"></a>A kapcsolati karakterláncok szolgáltatásnevekről
+## <a name="service-principals-in-connection-strings"></a>Kapcsolati karakterláncok az egyszerű szolgáltatások
 
-Szolgáltatás egyszerű appID és a jelszó vagy a tanúsítvány használható kapcsolódási karakterláncokat sokkal ugyanaz, mint egy egyszerű Felhasználónévvel.
+Szolgáltatás egyszerű appID és jelszó vagy tanúsítvány használható kapcsolati karakterláncokat ugyanúgy zajlik, mint egy egyszerű felhasználónév.
 
 ### <a name="powershell"></a>PowerShell
 
-Az erőforrás műveletek az egyszerű szolgáltatás használata esetén a [AzureRM.AnalysisServices](https://www.powershellgallery.com/packages/AzureRM.AnalysisServices) modul, használjon `Login-AzureRmAccount` parancsmag. Kiszolgáló műveletek esetében egy egyszerű szolgáltatás használata esetén a [SQLServer](https://www.powershellgallery.com/packages/SqlServer) modul, használjon `Add-AzureAnalysisServicesAccount` parancsmag. 
+Egyszerű szolgáltatás használata esetén az erőforrás-felügyeleti műveletek a [AzureRM.AnalysisServices](https://www.powershellgallery.com/packages/AzureRM.AnalysisServices) használja, a modul `Login-AzureRmAccount` parancsmagot. Kiszolgálói műveletek az egyszerű szolgáltatás használatakor a [SQLServer](https://www.powershellgallery.com/packages/SqlServer) használja, a modul `Add-AzureAnalysisServicesAccount` parancsmagot. 
 
-A következő példában appID és a jelszót használt a modell adatbázis-frissítési művelet végrehajtása:
+A következő példában appID és a egy jelszót használt modell adatbázis-frissítési művelet végrehajtásához:
 
 ```PowerShell
 Param (
@@ -66,9 +66,9 @@ Invoke-ProcessTable -Server "asazure://westcentralus.asazure.windows.net/myserve
 
 ### <a name="amo-and-adomd"></a>AMO és ADOMD 
 
-Ügyfélalkalmazások és a web apps használatával történő csatlakozáskor [AMO és ADOMD ügyfélkódtáraival](analysis-services-data-providers.md) verziója 15.0.2 és magasabb telepíthető NuGet-csomagok támogatja szolgáltatásnevekről kapcsolati karakterláncok a következő szintaxis használatával: `app:AppID` és jelszó vagy `cert:thumbprint`. 
+Az ügyfélalkalmazások számára, és a web apps kapcsolódáskor [AMO és ADOMD-ügyfélkódtárak](analysis-services-data-providers.md) 15.0.2 és a magasabb telepíthető NuGet-csomagot támogatja az egyszerű szolgáltatások a következő szintaxis használatával a kapcsolati karakterláncokban lévő verzió: `app:AppID` és a jelszó vagy `cert:thumbprint`. 
 
-A következő példában `appID` és egy `password` modell adatbázis-frissítési művelet végrehajtásához használják:
+A következő példában `appID` és a egy `password` model adatbázis-frissítési művelet elvégzéséhez használt:
 
 ```C#
 string appId = "xxx";
@@ -83,5 +83,5 @@ db.Model.SaveChanges();
 ```
 
 ## <a name="next-steps"></a>További lépések
-[Jelentkezzen be az Azure PowerShell](https://docs.microsoft.com/powershell/azure/authenticate-azureps)   
-[Egy egyszerű szolgáltatás hozzáadása a kiszolgáló-rendszergazdai szerepkör](analysis-services-addservprinc-admins.md)   
+[Bejelentkezés az Azure PowerShell-lel](https://docs.microsoft.com/powershell/azure/authenticate-azureps)   
+[Szolgáltatásnév hozzáadása kiszolgálói rendszergazdai szerepkörhöz](analysis-services-addservprinc-admins.md)   

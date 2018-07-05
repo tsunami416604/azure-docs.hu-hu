@@ -1,113 +1,113 @@
 ---
-title: Token, munkamenet és egyszeri bejelentkezés konfigurálása az Azure Active Directory B2C |} Microsoft Docs
-description: Token, munkamenet és egyszeri bejelentkezés konfigurálása az Azure Active Directory B2C.
+title: Jogkivonat, munkamenet és egyszeri bejelentkezés beállításainak az Azure Active Directory B2C |} A Microsoft Docs
+description: Jogkivonat, munkamenet és egyszeri bejelentkezés beállításainak az Azure Active Directory B2C-t.
 services: active-directory-b2c
 author: davidmu1
 manager: mtillman
 ms.service: active-directory
 ms.workload: identity
-ms.topic: article
+ms.topic: conceptual
 ms.date: 08/16/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 0ee39f4b6f80d13cc0f71c77ae87b2a4ee74e390
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 35210a8e93b8437ea4d8c3b5f002c81c549d3afe
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34710634"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37444828"
 ---
-# <a name="azure-active-directory-b2c-token-session-and-single-sign-on-configuration"></a>Az Azure Active Directory B2C: Token, munkamenet és egyszeri bejelentkezés konfigurálása
+# <a name="azure-active-directory-b2c-token-session-and-single-sign-on-configuration"></a>Azure Active Directory B2C: Jogkivonat, munkamenet és egyszeri bejelentkezés konfigurálása
 
-Ez a funkció lehetővé teszi részletes vezérlés, a egy [házirend alapon](active-directory-b2c-reference-policies.md), a:
+Ez a funkció lehetővé teszi részletesebb szabályozás érdekében az egy [házirend alapon](active-directory-b2c-reference-policies.md), a:
 
-1. Azure Active Directory (Azure AD) B2C által kibocsátott biztonsági jogkivonatok élettartama.
-2. A webes alkalmazás munkamenetek kezeli az Azure AD B2C élettartamának.
-3. Fontos jogcím szerepel a biztonsági jogkivonatokat az Azure AD B2C által kibocsátott formátumban.
-4. Egyszeri bejelentkezés (SSO) viselkedés több alkalmazások és házirendek a B2C-bérlőben.
+1. A biztonsági jogkivonatokat az Azure Active Directory (Azure AD) B2C által kibocsátott élettartamának.
+2. Azure AD B2C által felügyelt webes alkalmazás munkamenetek élettartamát.
+3. A biztonsági jogkivonatokat az Azure AD B2C által kibocsátott jogcímek fontos formátumát.
+4. Egyszeri bejelentkezés (SSO) viselkedését több alkalmazást és a szabályzatok a B2C-bérlőben.
 
-Beépített házirendek használhatja ezt a szolgáltatást a Azure AD B2C-címtárban az alábbiak szerint:
+Beépített szabályzatokat használhatja ezt a szolgáltatást az Azure AD B2C-címtárát a következő:
 
-1. Az alábbi lépéseket követve [lépjen a B2C Funkciók menü](active-directory-b2c-app-registration.md#navigate-to-b2c-settings) az Azure portálon.
-2. Kattintson a **regisztráció vagy bejelentkezés házirendek**. * Megjegyzés: Használható ez a szolgáltatás bármely házirend típus nem csupán a ** regisztráció vagy bejelentkezés házirendek x.
-3. Egy házirend megnyitásához kattintson rá. Kattintson például a **B2C_1_SiUpIn**.
+1. Az alábbi lépéseket követve [lépjen a B2C Funkciók menü](active-directory-b2c-app-registration.md#navigate-to-b2c-settings) az Azure Portalon.
+2. Kattintson a **regisztrálási vagy bejelentkezési szabályzatok**. * Megjegyzés: Használhatja ezt a szolgáltatást minden olyan házirendtípus, nem csak a ** regisztrálási vagy bejelentkezési szabályzatok x.
+3. Nyissa meg a szabályzat ehhez kattintson rá. Kattintson például a **B2C_1_SiUpIn**.
 4. Kattintson a **szerkesztése** a menü tetején.
-5. Kattintson a **Token, a munkamenet és az egyszeri bejelentkezés config**.
-6. A kívánt módosításokat. További információk a rendelkezésre álló tulajdonságok az ezt követő szakaszok.
+5. Kattintson a **jogkivonatok, munkamenetek és egyszeri bejelentkezési konfiguráció**.
+6. A kívánt módosításokat. Ismerje meg az ezt követő szakaszokban elérhető tulajdonságok.
 7. Kattintson az **OK** gombra.
-8. Kattintson a **mentése** a menü felső részén található.
+8. Kattintson a **mentése** a menü felső részén.
 
-## <a name="token-lifetimes-configuration"></a>Token élettartama konfiguráció
+## <a name="token-lifetimes-configuration"></a>Jogkivonatok élettartamának konfigurálása
 
-Az Azure AD B2C támogatja a [OAuth 2.0 protokoll](active-directory-b2c-reference-protocols.md) védett erőforrások biztonságos hozzáférést tesz lehetővé. Ez a támogatás végrehajtásához az Azure AD B2C bocsát ki különböző [biztonsági jogkivonatokat](active-directory-b2c-reference-tokens.md). A biztonsági jogkivonatokat az Azure AD B2C által kibocsátott élettartamának kezeléséhez használható tulajdonságok a következők:
+Az Azure AD B2C támogatja a [OAuth 2.0 engedélyezési protokollt](active-directory-b2c-reference-protocols.md) védett erőforrásokhoz való biztonságos hozzáférés engedélyezéséhez. Ez a támogatás megvalósítása, az Azure AD B2C-t bocsát ki különböző [biztonsági jogkivonatokat](active-directory-b2c-reference-tokens.md). A tulajdonságok segítségével kezelheti az Azure AD B2C által kibocsátott biztonsági jogkivonat élettartama a következők:
 
-* **& Azonosító elérése token élettartama (perc)**: az OAuth 2.0 tulajdonosi jogkivonat élettartamát használt védett erőforrásokhoz való hozzáférést.
+* **Hozzáférési és azonosító jogkivonat élettartama (perc)**: a védett erőforrások eléréséhez használt OAuth 2.0 tulajdonosi jogkivonat élettartama.
   * Alapértelmezett = 60 perc.
-  * (A határokat is beleértve) minimális = 5 perc.
-  * (A határokat is beleértve) legfeljebb 1440 perc =.
-* **Frissítse a jogkivonatok élettartama (nap)**: az maximális időtartamot, ameddig egy frissítési jogkivonat segítségével szerezzen be egy új hozzáférés vagy az azonosító token (és szükség esetén egy új frissítési jogkivonat, ha az alkalmazás megadták a `offline_access` hatókör).
+  * Minimális (inkluzív) = 5 perc.
+  * (A szélsőértékek megengedettek) legfeljebb 1440 perc =.
+* **Frissítési jogkivonat élettartama (nap)**: az a maximális időtartam, ameddig egy új hozzáférési vagy azonosító jogkivonat beszerzésére egy frissítési jogkivonat használható (és szükség esetén egy új frissítési jogkivonat, ha az alkalmazás volt megadva a `offline_access` hatókör).
   * Alapértelmezett = 14 nap.
-  * (A határokat is beleértve) minimális = 1 nap.
-  * (A határokat is beleértve) maximális = 90 nap.
-* **Frissítse mozgó ablakban az élettartam (nap)**: Ebben az időszakban elteltével a felhasználónak újra hitelesíteni, függetlenül a legutóbbi érvényességi frissítse az alkalmazás által igényelt jogkivonat kényszeríti. Azt is csak adni, ha a kapcsoló értéke **Bounded**. Nagyobb vagy azzal egyenlőnek kell a **frissítési jogkivonat élettartamát (nap)** érték. Ha a kapcsoló értéke **Unbounded**, nem adhat meg egy adott értéket.
+  * Minimális (inkluzív) = 1 nap.
+  * (A szélsőértékek megengedettek) maximális = 90 nap.
+* **Frissítési jogkivonat csúszóablak-élettartama (nap)**: Ez az időtartam elteltével a felhasználónak újra hitelesíteni kell, attól függetlenül, az érvényességi időtartam legutóbbi frissítése az alkalmazás által beszerzett jogkivonattal kényszeríti. Ez csak biztosítható, hogy ha a kapcsoló beállítása **kötött**. Nagyobb vagy azzal egyenlőnek kell a **frissítési jogkivonat élettartama (nap)** értéket. Ha a kapcsoló beállítása **Unbounded**, nem adhat meg egy adott érték.
   * Alapértelmezett = 90 nap.
-  * (A határokat is beleértve) minimális = 1 nap.
-  * (A határokat is beleértve) legfeljebb 365 nap =.
+  * Minimális (inkluzív) = 1 nap.
+  * (A szélsőértékek megengedettek) legfeljebb 365 nap.
 
-Az alábbiak néhány engedélyezheti az ezekkel a tulajdonságokkal használati esethez:
+Használati esetek, hogy ezek a tulajdonságok használatával engedélyezheti néhány az alábbiak:
 
-* Amikor engedélyezi határozatlan ideig mobilalkalmazás bejelentkezve marad mindaddig, amíg nem folyamatosan aktív, az alkalmazás. Ehhez úgy, hogy a **frissítési jogkivonat mozgó ablak élettartamát (nap)** váltani **Unbounded** a bejelentkezési házirend.
-* Az iparági biztonsági és megfelelőségi követelményeknek megfelelő úgy, hogy a megfelelő hozzáférési jogkivonat élettartamát.
+* Engedélyezi, hogy egy felhasználó határozatlan ideig mobilalkalmazás bejelentkezve marad mindaddig, amíg ő a folyamatosan aktív, az alkalmazás a. Ezt megteheti úgy is a **frissítési jogkivonat csúszóablak-élettartama (nap)** váltson **Unbounded** a bejelentkezési házirend.
+* Az iparági biztonsági és megfelelőségi követelmények felel meg a megfelelő hozzáférési jogkivonatok élettartamának beállításával.
 
     > [!NOTE]
-    > Ezek a beállítások nem érhetők el, a jelszó-átállítási házirendek.
+    > Ezek a beállítások nem érhetők el, a jelszó-átállítási házirendeket.
     > 
     > 
 
 ## <a name="token-compatibility-settings"></a>Jogkivonat-kompatibilitási beállítások
 
-A Microsoft módosítja formázási az Azure AD B2C által kibocsátott biztonsági jogkivonatokba fontos jogcímeket. Ez végezhető el a szabványos protokoll támogatása javítása és a külső azonosító könyvtárak jobb együttműködés érdekében. Azonban ha el szeretné kerülni meglévő alkalmazások, létrehozott segítségével a felhasználók részt igény szerint a következő tulajdonságokat:
+Formázási módosításokat végeztünk el fontos biztonsági jogkivonatokat az Azure AD B2C által kibocsátott jogcímeket. Ez azért volt szükség, a standard szintű protokoll támogatása javítása és a jobb együttműködés külső identitás-kódtárakat. Azonban ha el szeretné kerülni a meglévő alkalmazások, létrehoztunk lehetővé teszi ügyfeleink számára vehetnek részt igény szerint a következő tulajdonságokkal:
 
-* **Jogcím kiállítója (iss)**: Ez az Azure AD B2C-bérlő a jogkivonatot kibocsátó azonosítja.
+* **Kibocsátói (iss) jogcím**: Ez azonosítja az Azure AD B2C-bérlő, amely kiállította a jogkivonatot.
   * `https://login.microsoftonline.com/{B2C tenant GUID}/v2.0/`: Ez az az alapértelmezett érték.
-  * `https://login.microsoftonline.com/tfp/{B2C tenant GUID}/{Policy ID}/v2.0/`: Ez az érték azonosítók egyaránt tartalmazza a B2C-bérlő és a házirendet, amelyet a token kérés. Ha az alkalmazás vagy a könyvtárban kell-e az Azure AD B2C meg kell felelnie a [OpenID Connect felderítési 1.0 spec](http://openid.net/specs/openid-connect-discovery-1_0.html), használja ezt az értéket.
-* **Tulajdonos (rész-) jogcím**: Ez azonosítja az entitást, azaz, a felhasználó, amelynek a token állításokat információkat.
-  * **ObjectID**: Ez az az alapértelmezett érték. Azt a felhasználót a címtárban történő Objektumazonosítója tölti fel a `sub` jogcím a tokenben.
-  * **Nem támogatott**: Ez csak a visszamenőleges kompatibilitás érdekében biztosítja, és azt javasoljuk, hogy vált **ObjectID** , amint lehet.
-* **Jogcím-házirend-azonosító képviselő**: Ez azonosítja a jogcímtípus, amelybe a rendszer a házirend-azonosító, amelyet a token kérés tölti fel.
+  * `https://login.microsoftonline.com/tfp/{B2C tenant GUID}/{Policy ID}/v2.0/`: Ez az érték a B2C-bérlő és a házirend jogkivonat a kérelemben használt azonosítókat tartalmazza. Ha az alkalmazás vagy könyvtár van szüksége az Azure AD B2C-vel meg kell felelnie az a [OpenID Connect-felderítési 1.0 specifikáció](http://openid.net/specs/openid-connect-discovery-1_0.html), használja ezt az értéket.
+* **Tárgy (sub) jogcím**: Ez azonosítja az entitást, azaz a felhasználó, amelynek a token használjon esetleg imperatív állításokat információkat.
+  * **ObjectID**: Ez az az alapértelmezett érték. A címtárban, a felhasználó Objektumazonosítóját feltölti a `sub` a jogkivonatban található jogcímek.
+  * **Nem támogatott**: Ez csak a visszamenőleges kompatibilitás érdekében biztosított. emellett javasoljuk, hogy váltson át a **ObjectID** , amint tudunk.
+* **Házirend Azonosítóját jelölő jogcím**: Ez azonosítja a jogcímtípus, amelybe a házirend-azonosító jogkivonat a kérelemben használt fel van töltve.
   * **tfp**: Ez az az alapértelmezett érték.
-  * **ACR**: Ez csak a visszamenőleges kompatibilitás érdekében biztosítja, és azt javasoljuk, hogy vált `tfp` , amint lehet.
+  * **ACR**: Ez csak a visszamenőleges kompatibilitás érdekében biztosított. emellett javasoljuk, hogy váltson át a `tfp` , amint tudunk.
 
 ## <a name="session-behavior"></a>Munkamenet-viselkedés
 
-Az Azure AD B2C támogatja a [OpenID Connect hitelesítési protokoll](active-directory-b2c-reference-oidc.md) engedélyezéséhez a biztonságos bejelentkezés a webes alkalmazásokhoz. A webes alkalmazás munkameneteket kezelhessen segítségével tulajdonságai a következők:
+Az Azure AD B2C támogatja a [OpenID Connect hitelesítési protokoll](active-directory-b2c-reference-oidc.md) biztonságos bejelentkezési webes alkalmazásokhoz való engedélyezéséhez szükséges. A webes alkalmazás munkamenetek kezelésére használható tulajdonságok a következők:
 
-* **A webalkalmazás munkamenet élettartama (perc)**: Azure AD B2C munkamenetcookie-t a sikeres hitelesítést követően a felhasználó böngészője tárolt élettartamát.
+* **Webalkalmazás munkamenet élettartama (perc)**: a felhasználó böngészőjében a sikeres hitelesítést követően tárolt Azure AD B2C munkameneti cookie élettartama.
   * Alapértelmezett = 1440 perc.
-  * (A határokat is beleértve) minimális = 15 perc.
-  * (A határokat is beleértve) legfeljebb 1440 perc =.
-* **Webes alkalmazás munkamenet időkorlátja**: Ha a kapcsoló értéke **abszolút**, a felhasználó által megadott idő elteltével újra hitelesíteni kényszeríti **webalkalmazás munkamenet élettartama (perc)** eltelt. Ha a kapcsoló értéke **működés közbeni** (az alapértelmezett beállítás), a felhasználó bejelentkezett marad mindaddig, amíg a felhasználó a webalkalmazásban folyamatosan aktív.
+  * Minimális (inkluzív) = 15 perc.
+  * (A szélsőértékek megengedettek) legfeljebb 1440 perc =.
+* **Webalkalmazás munkamenet-időkorlátja**: Ha ez a kapcsoló beállítása **abszolút**, a felhasználónak újra hitelesíteni kell a megadott időszak után kötelező **webalkalmazás munkamenet élettartama (perc)** telik. Ha ez a kapcsoló beállítása **működés közbeni** (az alapértelmezett beállítás), a felhasználó bejelentkezve marad mindaddig, amíg a felhasználó a webalkalmazásban folyamatosan aktív.
 
-Az alábbiak néhány engedélyezheti az ezekkel a tulajdonságokkal használati esethez:
+Használati esetek, hogy ezek a tulajdonságok használatával engedélyezheti néhány az alábbiak:
 
-* Az iparági biztonsági és megfelelőségi követelményeknek megfelelő úgy, hogy a megfelelő webes alkalmazás munkamenet élettartama.
-* Egy felhasználó és a magas biztonsági részét a webes alkalmazás közötti interakció során beállított idő elteltével ismételt hitelesítés kényszerítése. 
+* Megfelel az iparági biztonsági és megfelelőségi követelményeknek a megfelelő webes alkalmazás munkamenet beállításával élettartama.
+* Egy felhasználó és a magas biztonsági szintű részét a webes alkalmazás közötti interakció során beállított idő elteltével ismételt hitelesítés kényszerítése. 
 
     > [!NOTE]
-    > Ezek a beállítások nem érhetők el, a jelszó-átállítási házirendek.
+    > Ezek a beállítások nem érhetők el, a jelszó-átállítási házirendeket.
     > 
     > 
 
-## <a name="single-sign-on-sso-configuration"></a>Egyszeri bejelentkezés (SSO) konfigurálása
-Ha a B2C-bérlő több alkalmazásokat és házirendeket is van, felhasználói interakció mindegyik kezelheti használatával a **egyszeri bejelentkezés konfigurációs** tulajdonság. Beállíthatja a tulajdonság a következő beállítások egyikét:
+## <a name="single-sign-on-sso-configuration"></a>Egyszeri bejelentkezés (SSO) konfigurációja
+Ha több alkalmazás és a szabályzatok a B2C-bérlőben, felhasználói interakció érdekében kezelheti navigációt használ a **egyszeri bejelentkezési konfigurációjának** tulajdonság. A tulajdonsága a következő beállítások egyikére:
 
-* **Bérlői**: Ez az alapértelmezett beállítása. Ezzel a beállítással lehetővé teszi több alkalmazásokat és házirendeket a B2C bérlőre, az azonos felhasználói munkamenet megosztásához. Például után a felhasználó bejelentkezik egy alkalmazásba, Contoso vásárlás, általa is is zökkenőmentesen jelentkezzen be egy másik egy, a Contoso gyógyszerészet, esetén használja.
-* **Alkalmazás**: Ez lehetővé teszi, hogy a felhasználói munkamenet kizárólag az alkalmazáshoz, független a többi alkalmazás karbantartása. Például ha a felhasználót, hogy jelentkezzen be Contoso Gyógyszertári (ugyanazokat a hitelesítő adatokat), azt szeretné, akkor is, ha az őt van már be van jelentkezve Contoso vásárlás, egy másik alkalmazás ugyanazon B2C bérlői. 
-* **Házirend**: Ez lehetővé teszi, hogy kizárólag a házirend, az azt használó alkalmazások független a felhasználói munkamenet fenntartásához. Például ha a felhasználó már bejelentkezett, és a többszörös többtényezős hitelesítés (MFA) lépés befejezése, általa is kell való hozzáférése több alkalmazás részei magasabb biztonsági mindaddig, amíg a házirend társítva a munkamenethez nem jár le.
-* **Letiltott**: Ez arra kényszeríti a felhasználó minden végrehajtási házirend a teljes felhasználói út keresztül futtatásához. Például ez lehetővé teszi több felhasználó regisztrálnia kell az alkalmazást (egy megosztott asztali esetén), még akkor is, amikor egy felhasználó marad bejelentkezett a teljes időszak.
+* **Bérlő**: Ez az alapértelmezett beállítása. Ezzel a beállítással lehetővé teszi több alkalmazásokat és házirendeket az ugyanazon felhasználói munkamenet megosztani a B2C-bérlőben. Például ha egy felhasználó bejelentkezik, egy alkalmazásba, Contoso vásárlás, ő is zökkenőmentesen be tud jelentkezni egy másik egy, Contoso Gyógyszertári, elérésekor.
+* **Alkalmazás**: Ez lehetővé teszi, hogy kizárólag az alkalmazáshoz, független más alkalmazásokat a felhasználói munkamenet fenntartásához. Például a (azonos adatokkal), a Contoso Gyógyszertári bejelentkezni a felhasználó azt szeretné, akkor is, ha ő már aláírt Contoso vásárlás be, ha egy másik alkalmazás ugyanazon B2C-bérlőben. 
+* **A házirend**: Ez lehetővé teszi, hogy kizárólag a házirendet, az azt használó alkalmazások független a felhasználói munkamenet fenntartásához. Például ha a felhasználó már bejelentkezett, és egy többszörös többtényezős hitelesítés (MFA) lépés befejeződött, ő is hozzáférést kell biztosítani több alkalmazások magasabb biztonsági részeinek mindaddig, amíg a szabályzat kapcsolódik a munkamenet le nem jár.
+* **Letiltott**: Ez kényszeríti a teljes felhasználói interakciósorozat keresztül futtathatók a szabályzat minden végrehajtás a felhasználó. Például ez lehetővé teszi több felhasználó számára, hogy jelentkezzen be az alkalmazás (a megosztott asztali forgatókönyvek esetében), még akkor is, amikor egyetlen felhasználó marad az aláírt teljes ideje alatt.
 
     > [!NOTE]
-    > Ezek a beállítások nem érhetők el, a jelszó-átállítási házirendek.
+    > Ezek a beállítások nem érhetők el, a jelszó-átállítási házirendeket.
     > 
     > 
 

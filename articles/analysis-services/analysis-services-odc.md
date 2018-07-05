@@ -1,42 +1,42 @@
 ---
-title: Hozzon létre egy Azure Analysis Services-kiszolgálóhoz való kapcsolódáshoz .odc fájl |} Microsoft Docs
-description: Megtudhatja, hogyan hozzon létre egy Office Data Connection fájlt adatokat lekérni az Azure-ban egy Analysis Services-kiszolgálóhoz való csatlakozáshoz.
+title: Egy Azure Analysis Services-kiszolgálóhoz való csatlakozáshoz .odc fájl létrehozása |} A Microsoft Docs
+description: Ismerje meg, hogyan csatlakozhat, és le az adatokat az Azure Analysis Services-kiszolgáló Office Data Connection fájl létrehozása.
 author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 04/12/2018
+ms.date: 07/03/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 8f3b6ae8cf0017a1695b4a01a2ae606f7b64c6aa
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 06103357f365cf292188ac0399e20ac7602a8740
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34598810"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37445562"
 ---
-# <a name="create-an-office-data-connection-file"></a>Office Data Connection-fájl létrehozása
+# <a name="create-an-office-data-connection-file"></a>-Office Data Connection fájl létrehozása
 
-A cikkben szereplő információkat ismerteti, hogyan hozhat létre az Office Data Connection fájl Excel 2016 verziószáma 16.0.7369.2117 egy Azure Analysis Services-kiszolgálóhoz való kapcsolódáshoz és a korábbi verziók, vagy az Excel 2013. Egy frissített [MSOLAP.7 szolgáltató](analysis-services-data-providers.md) is szükség.
+Ebben a cikkben található információk azt ismerteti, hogyan hozhat létre egy Office Data Connection fájl verziószámának 16.0.7369.2117 Excel 2016-ból kapcsolódni az Azure Analysis Services-kiszolgáló és a korábbi verziók, vagy az Excel 2013-at. Frissített [MSOLAP.7 szolgáltató](analysis-services-data-providers.md) is szükség.
 
 
-1. Másolja az alábbi minta kapcsolat fájl, és illessze be a szövegszerkesztőben. 
+1. Az alábbi minta kapcsolatfájl másolhatja és beillesztheti egy szövegszerkesztőbe. 
 
 2. A `odc:ConnectionString`, módosítsa a következő tulajdonságokkal:
 
-    *   A `Data Source=asazure://<region>.asazure.windows.net/<servername>;` módosítása `<region>` a két régiónak az Analysis Services-kiszolgáló és `<servername>` a kiszolgáló nevét.
+    *   A `Data Source=asazure://<region>.asazure.windows.net/<servername>;` módosítása `<region>` az Analysis Services-kiszolgáló-régió és `<servername>` a kiszolgáló nevére.
 
-    *   A `Initial Catalog=<database>;` módosítása `<database>` az adatbázis nevét.
+    *   A `Initial Catalog=<database>;` módosítása `<database>` az adatbázis nevére.
 
 3. A `<odc:CommandText>Model</odc:CommandText>` módosítása `Model` a modell vagy perspektíva nevét. 
 
 4. Mentse a fájlt egy `.odc` a C:\Users bővítmény\\*felhasználónév*\Documents\My adatforrások mappát.
 
-5. Kattintson jobb gombbal a fájlra, és kattintson **Megnyitás az Excelben**. Vagy az Excel programban a a **adatok** menüszalag, kattintson a **meglévő kapcsolatok**, válassza ki a fájlt, és kattintson a **nyitott**.
+5. Kattintson jobb gombbal a fájlra, és kattintson **Megnyitás Excelben**. Vagy az Excel a a **adatok** menüszalagra, majd **meglévő kapcsolatok**, válassza ki a fájlt, és kattintson **nyílt**.
 
 
 
-**A minta kapcsolatfájl**
+**Mintafájl-kapcsolat**
 ```
 <html xmlns:o="urn:schemas-microsoft-com:office:office"
 xmlns="http://www.w3.org/TR/REC-html40">

@@ -1,29 +1,29 @@
 ---
-title: Bejelentkezés felvétele Node.js webalkalmazásokba az Azure Active Directory B2C |} Microsoft Docs
-description: Megtudhatja, hogyan hozhat létre, amely képes bejelentkeztetni a felhasználókat az Azure Active Directory B2C Node.js-webalkalmazás.
+title: Bejelentkezés hozzáadása egy Node.js-webalkalmazás létrehozása az Azure Active Directory B2C |} A Microsoft Docs
+description: Hogyan hozhat létre egy Node.js-webalkalmazás, amely képes bejelentkeztetni a felhasználókat az Azure Active Directory B2C.
 services: active-directory-b2c
 author: davidmu1
 manager: mtillman
 ms.service: active-directory
 ms.workload: identity
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/10/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: b9c589f8bf8189961f88a6ae1d66f1fd9e17e9bc
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: ee8dab24d53c7f3563d741ff74e49b0b87cda6da
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34711110"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37442499"
 ---
 # <a name="azure-ad-b2c-add-sign-in-to-a-nodejs-web-app"></a>Azure AD B2C: Bejelentkezés felvétele Node.js-webalkalmazásokba
 
 A **Passport** a Node.js-hez készült közbenső hitelesítési szoftver. A rugalmasan működő, moduláris Passport gyakorlatilag bármely Express- vagy Restify-alapú webalkalmazásba diszkréten telepíthető. A program számos különböző lehetőséget kínál a felhasználók hitelesítésére: felhasználónév/jelszó, Facebook- vagy Twitter-fiók és így tovább.
 
-Az Azure Active Directory (Azure AD), telepítenie kell a modult is hozzáadhatja az Azure AD `passport-azure-ad` beépülő modult.
+Az Azure Active Directory (Azure AD), is ez a modul telepítéséhez és vegye fel az Azure AD `passport-azure-ad` beépülő modult.
 
-Kell:
+Kell tennie:
 
 1. Alkalmazás regisztrálása az Azure AD használatával.
 2. Az alkalmazás beállítása a `passport-azure-ad` bővítmény használatára.

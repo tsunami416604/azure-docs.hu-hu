@@ -1,6 +1,6 @@
 ---
-title: 'Áttekintés: A Privileged Identity Management egy hozzáférési felülvizsgálat végrehajtása az Azure-erőforrások |} Microsoft Docs'
-description: Ez a dokumentum ismerteti, hogyan hajthat végre egy áttekintése a PIM, az Azure-erőforrások.
+title: 'Áttekintés: Privileged Identity Management hozzáférési felülvizsgálat végrehajtása az Azure-erőforrások |} A Microsoft Docs'
+description: Ez a dokumentum ismerteti, hogyan hajthat végre a hozzáférési felülvizsgálat a PIM az Azure-erőforrásokhoz.
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -10,34 +10,34 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.component: protection
 ms.date: 03/30/2018
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: b53ae66d927dfacd1048a6bd0fa9abdb6f2a7862
-ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
+ms.openlocfilehash: 9e9053c62f2ead3b6ae7d4ca3c6c38fd1063b8da
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36751152"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37441497"
 ---
-# <a name="use-a-resource-dashboard-to-perform-an-access-review"></a>Egy erőforrás Irányítópult segítségével hajtsa végre egy áttekintése
+# <a name="use-a-resource-dashboard-to-perform-an-access-review"></a>Egy erőforrás Irányítópult segítségével a hozzáférési felülvizsgálat végrehajtása
 
-Egy erőforrás-Irányítópult segítségével Privileged Identity Management (PIM) egy hozzáférési felülvizsgálat végrehajtása az Azure-erőforrások. A felügyelet nézet irányítópult három elsődleges összetevőből áll:
+Egy erőforrás Irányítópult segítségével a Privileged Identity Management (PIM) hozzáférési felülvizsgálat végrehajtása az Azure-erőforrásokhoz. Az adminisztrátori nézet irányítópult három elsődleges összetevőből áll:
 
-- Erőforrás szerepkör aktiválások grafikus ábrázolása.
-- A szerepkör-hozzárendelések terjesztési megjeleníthető hozzárendelés-típus két diagramot.
-- Egy új szerepkör-hozzárendelések vonatkozó adatok területen.
+- Szerepkör-aktiválások erőforrás grafikus ábrázolását.
+- Két diagram, amely a szerepkör-hozzárendelések terjesztési hozzárendelés-típus szerinti megjelenítéséhez.
+- Egy új szerepkör-hozzárendelések kérelmekre vonatkozó adatok területen.
 
-![Képernyőfelvétel: a felügyelet nézet irányítópult diagramjait és diagramokat](media/azure-pim-resource-rbac/rbac-overview-top.png)
+![Képernyőkép az adminisztrátori nézet irányítópult gráfokat és diagramokat](media/azure-pim-resource-rbac/rbac-overview-top.png)
 
-![Képernyőfelvétel: a felügyelet nézet irányítópult adatok listája](media/azure-pim-resource-rbac/role-settings.png)
+![Képernyőfelvétel a felügyelet nézet irányítópult adatok listája:](media/azure-pim-resource-rbac/role-settings.png)
 
-Az erőforrás szerepkör aktiválások grafikus ábrázolása hozzá van rendelve az elmúlt hét napban. Az adatok hatóköre a kiválasztott erőforrás a, és a leggyakrabban használt szerepkörök (tulajdonos, közreműködő, felhasználói hozzáférés adminisztrátora), valamint az összes szerepkör kombinált aktiválások jeleníti meg.
+A grafikus ábrázolását erőforrás szerepkör-aktiválások az elmúlt hét napban ismerteti. Ezeket az adatokat a kiválasztott erőforrás hatókörét, és megjeleníti a leggyakrabban használt szerepkörök (tulajdonos, közreműködő, felhasználói hozzáférés rendszergazdája), és az összes szerepköre kombinált aktiválások.
 
-Jobb oldalán a aktiválások grafikon két diagramok megjelenítéséhez szerepkör-hozzárendelések terjesztési hozzárendelés-típus, a felhasználókat és csoportokat egyaránt. Az érték a százalék (vagy fordítva), a diagram szelet kiválasztásával módosíthatja.
+Az aktiválások graph jobbra két diagram megjelenítéséhez a szerepkör-hozzárendelések terjesztési hozzárendelési típust, felhasználókat és csoportokat is. Az érték a százalék (vagy fordítva), a diagram szelet kiválasztásával módosíthatja.
 
-Alább a diagramok a felhasználókat és csoportokat az új szerepkör-hozzárendelések száma az elmúlt 30 napban, és a teljes hozzárendelések (csökkenő sorrendben) szerint rendezve szerepkörök listáját láthatja.
+Alább a diagramok és a felhasználóknak és csoportoknak az új szerepkör-hozzárendelések száma az elmúlt 30 napban, valamint a szerepkörök (csökkenő sorrendben) hozzárendelések száma szerint rendezett listáját láthatja.
 
 

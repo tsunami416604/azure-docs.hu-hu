@@ -1,21 +1,21 @@
 ---
-title: Az Azure Active Directory B2C egy ASP.NET webes API biztonságossá tétele |} Microsoft Docs
+title: Az Azure Active Directory B2C-vel egy ASP.NET webes API biztonságossá tétele |} A Microsoft Docs
 description: Hogyan lehet OAuth 2.0 hitelesítési hozzáférési jogkivonat általi védelemmel és az Azure Active Directory B2C alkalmazásával .NET-alapú webes API-t készíteni?
 services: active-directory-b2c
 author: davidmu1
 manager: mtillman
 ms.service: active-directory
 ms.workload: identity
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/14/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 8eb4045338476254fa9687a367d45b3646aeb9c1
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 2e93a8340699d1fcf68c53baa87990e799bc933d
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34712368"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37447583"
 ---
 # <a name="azure-active-directory-b2c-build-a-net-web-api"></a>Azure Active Directory B2C: .NET webes API készítése
 

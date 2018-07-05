@@ -6,16 +6,16 @@ author: davidmu1
 manager: mtillman
 ms.service: active-directory
 ms.workload: identity
-ms.topic: hero-article
+ms.topic: conceptual
 ms.date: 12/06/2016
 ms.author: davidmu1
 ms.component: B2C
-ms.openlocfilehash: 63bf3725eddd14d665e51427a65a339116ceb09b
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
-ms.translationtype: HT
+ms.openlocfilehash: d306d27f448ab9dd95e891b81f27b69e11f05495
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34710083"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37442066"
 ---
 # <a name="azure-active-directory-b2c-types-of-applications"></a>Azure Active Directory B2C: Alkalmazások típusai
 Az Azure Active Directory (Azure AD) B2C számos különböző modern alkalmazásarchitektúrához használható hitelesítést tartalmaz. Ezek mindegyike az iparági szabványnak számító [OAuth 2.0](active-directory-b2c-reference-protocols.md) vagy [OpenID Connect](active-directory-b2c-reference-protocols.md) protokollon alapul. Ebben a dokumentumban röviden leírjuk, hogy milyen típusú alkalmazásokat hozhat létre. Mindez független a programozási nyelvtől vagy a használt platformtól. A cikk segíthet az összetettebb feladatok megértésében, ezért érdemes elolvasni, mielőtt nekifog [az alkalmazások létrehozásának](active-directory-b2c-overview.md).
@@ -38,8 +38,7 @@ Az alkalmazások közötti interakció minden esetben hasonló felső szintű mi
 5. Az erőforrás-kiszolgáló ellenőrzi a biztonsági jogkivonatot, és megállapítja, hogy megadható-e hozzáférés.
 6. Az alkalmazás rendszeres időközönként frissíti a biztonsági jogkivonatot.
 
-<!-- TODO: Need a page for libraries to link to -->
-Ezek a lépések a létrehozandó alkalmazás típusától függően némileg eltérőek lehetnek.
+<!-- TODO: Need a page for libraries to link to --> Ezeket a lépéseket alkalmazás típusától függően némileg eltérőek lehetnek.
 
 ## <a name="web-apps"></a>Webalkalmazások
 A kiszolgálón futtatott és böngészőn keresztül elért webalkalmazások (ideértve a .NET- , a PHP-, a Java-, a Ruby-, a Python- és a Node.js-alapú alkalmazásokat) esetében az Azure AD B2C az összes felhasználói élmény esetében támogatja az [OpenID Connect](active-directory-b2c-reference-protocols.md) protokollt. Ide tartozik a bejelentkezés, a regisztráció és a profilkezelés is. Az OpenID Connect Azure AD B2C-implementációjában a webalkalmazás az Azure AD felé küldött hitelesítési kérések alapján indítja el a különböző felhasználói élményeket. A kérés eredménye egy `id_token`. Ez a biztonsági jogkivonat tartalmazza a felhasználó identitását. Ezenfelül jogcímek formájában információkat nyújt a felhasználóról is:

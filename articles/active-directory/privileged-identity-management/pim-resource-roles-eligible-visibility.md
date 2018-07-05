@@ -1,6 +1,6 @@
 ---
-title: Jogosult hozzárendelések és az Azure Privileged Identity Management a láthatósága |} Microsoft Docs
-description: Útmutatás szerint jogosult az erőforrás-szerepkörök tagjainak hozzárendeléséhez a PIM használatakor.
+title: Jogosult hozzárendelések és a Privileged Identity Management Azure-erőforrás láthatóságát |} A Microsoft Docs
+description: Ismerteti, hogyan lehet hozzárendelni a tagokat, jogosult az erőforrás-szerepkörökkel, a PIM használata esetén.
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -10,63 +10,63 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.component: protection
 ms.date: 04/02/2018
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: 205b4f3113f369279dbe18e75b5945a0498e7bbd
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: 8089591708676073bcef84ad13b3690b39bdc653
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35260379"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37448203"
 ---
 # <a name="eligible-assignments-and-resource-visibility-with-privileged-identity-management"></a>Jogosult hozzárendelések és a Privileged Identity Management láthatósága
 
-Privileged Identity Management (PIM) az Azure erőforrás-szerepkörök kritikus Azure-erőforrások rendelkező szervezeteknek magasabb szintű biztonságot nyújt. Erőforrás-rendszergazdák a PIM segítségével szerint jogosult az erőforrás-szerepkörök tagjainak hozzárendeléséhez. További információ a különböző hozzárendelési típusok és a hozzárendelés állapota az alábbi szakaszok az Azure erőforrás-szerepkörök. 
+Privileged Identity Management (PIM) az Azure-erőforrások szerepköreihez tartozó olyan szervezeteknek, amelyek kritikus fontosságú Azure-erőforrások fokozott biztonságot nyújt. Erőforrás-rendszergazdák használhatják a PIM jogosult az erőforrás-szerepkörökkel, tagok. További információ a különböző típusok és a hozzárendelés állapotai az alábbi szakaszok az Azure-erőforrások szerepköreihez tartozó. 
 
-## <a name="assignment-types"></a>Hozzárendelés típusa
+## <a name="assignment-types"></a>Hozzárendelés-típusok
 
-Az Azure-erőforrások PIM biztosít két különböző hozzárendelés-típus:
+A PIM használata Azure-erőforrások két különböző típusok biztosítja:
 
 - Jogosult
 - Aktív
 
-Jogosult hozzárendelések a felhasználót a szerepkörbe egy műveletet a szerepkör használatához szükséges. Műveletek közé tartozik a többtényezős hitelesítés-ellenőrzés sikeres, így üzleti indoklásának vagy jóváhagyást kér a kijelölt jóváhagyóknak.
+Jogosult hozzárendelés szükséges a szerepkör tagjai egy műveletet a szerepkör használatához. Műveletek egy multi-factor authentication szolgáltatás-ellenőrzés sikeres, egy üzleti indoklás megadása vagy jóváhagyás kérése a kijelölt jóváhagyókat között lehet.
 
-Aktív hozzárendelések nem feltétlenül szükséges a szerepkör használandó bármely művelet elvégzésére tag. Aktív hozzárendelt tagok mindig a szerepkörhöz hozzárendelt jogosultságával rendelkeznek.
+Aktív hozzárendelések nem igénylik a tagot a szerepkör használatához bármely művelet elvégzésére. A tagok hozzárendelve aktívként mindig a szerepkörhöz rendelt jogosultság.
 
 ## <a name="assignment-duration"></a>Hozzárendelés időtartama
 
-Erőforrás-rendszergazdák az egyes hozzárendelés két lehetőségek közül választhatnak, a szerepkör PIM beállításainak konfigurálása során. Ezek a beállítások lesznek az alapértelmezett maximális időtartam, ha tagja a PIM szerepkör van hozzárendelve. 
+Erőforrás-rendszergazdák minden hozzárendelés-típus két lehetőség közül választhat, azokat a PIM szerepkör beállításainak konfigurálásakor. Ezek a beállítások a alapértelmezett maximális időtartamot, amikor egy tag szerepkör van rendelve, a PIM a válnak. 
 
-A rendszergazda a hozzárendelés típusok közül választhat:
+A rendszergazda ezen hozzárendelés-típusok közül választhat:
 
 - Állandó jogosult hozzárendelés engedélyezése
 - Állandó aktív hozzárendelés engedélyezése
 
-Vagy a rendszergazda a hozzárendelés típusok közül választhat:
+Vagy a rendszergazda ezen hozzárendelés-típusok közül választhat:
 
-- Jogosult hozzárendelések után lejár
+- Jogosult hozzárendelés után lejár.
 - Az aktív hozzárendelések elévülnek a jelzett idő elteltével:
 
-Ha egy erőforrás-rendszergazda úgy dönt, **engedélyezése végleges jogosult hozzárendelés** vagy **engedélyezése végleges aktív hozzárendelést**, állandó rendelhet hozzá az összes rendszergazda, tag hozzárendeli az erőforrás tagságát.
+Ha egy erőforrás-rendszergazda úgy dönt, **állandó jogosult hozzárendelés engedélyezése** vagy **állandó aktív hozzárendelés engedélyezése**, tagok hozzárendelése az erőforrás végző összes rendszergazda állandó is hozzárendelhet. csoporttagságok.
 
-Ha egy erőforrás-rendszergazda úgy dönt, **jogosult hozzárendelések után lejár** vagy **aktív hozzárendelések után lejár**, az erőforrás-rendszergazda felügyeli a hozzárendelés élettartama azzal, hogy, hogy minden hozzárendelések rendelkeznek a megadott kezdő és záró dátumát.
+Ha egy erőforrás-rendszergazda úgy dönt, **jogosult hozzárendelésekkel után lejár** vagy **aktív hozzárendelések után lejár**, az erőforrás-rendszergazda szabályozza a hozzárendelés életciklus úgy, hogy az összes hozzárendelések rendelkeznek a megadott kezdő és záró dátumát.
 
 > [!NOTE] 
-> A megadott Záródátum rendelkező vonatkozó összes hozzárendelést is megújítani az erőforrás-rendszergazdák. Emellett tagok is kezdeményezhető a kérelmek önkiszolgáló [kiterjesztése vagy megújítása hozzárendelések](pim-resource-roles-renew-extend.md).
+> Erőforrás-rendszergazdák által meg lehet újítani a megadott befejezési dátummal rendelkező összes hozzárendelést. Emellett tagokat is kezdeményezhető a kérések az önkiszolgáló [meghosszabbítása vagy megújítása hozzárendelések](pim-resource-roles-renew-extend.md).
 
 
-## <a name="assignment-states"></a>Hozzárendelés állapota
+## <a name="assignment-states"></a>Hozzárendelés állapotok
 
-Az Azure-erőforrások PIM rendelkezik két különböző hozzárendelési megjelenő a **aktív szerepkör** lapra a **a szerepkörök**, **szerepkörök**, és **tagok**a PIM nézetei. Ezeket az állapotokat a következők:
+A PIM használata Azure-erőforrások két különböző hozzárendelés állapota megjelenő rendelkezik a **aktív szerepkörök** lapján a **saját szerepkörök**, **szerepkörök**, és **tagok**PIM nézetét. Ezek az állapotok a következők:
 
 - Kiosztva
 - Aktiválva
 
-A tagság szerepel-e megtekintésekor **aktív szerepkör**, használhatja az értéket a **állapot** oszlop megkülönböztetni a felhasználók, akik **hozzárendelt** aktívként és felhasználók, amelyek **aktív** egy jogosult hozzárendelés lesznek, és most aktív.
+Tagság szereplő megtekintésekor **aktív szerepkörök**, használhatja az értéket a **állapot** oszlop különbséget tenni a felhasználóknak, akik **hozzárendelt** aktívként és felhasználók, amelyek **aktiválva** egy jogosult hozzárendelés, és a rendszer most már aktív.
 
 ## <a name="next-steps"></a>További lépések
 

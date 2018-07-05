@@ -1,6 +1,6 @@
 ---
-title: "Node.js-ből a Queue storage használata |} Microsoft Docs"
-description: "Útmutató az Azure Queue szolgáltatás segítségével hozza létre, és törli az üzenetsorok, és helyezze, get, és törli az üzenetet. A minta Node.js nyelven írt."
+title: A Queue storage, a Node.js használatával |} A Microsoft Docs
+description: Ismerje meg, hogyan használhatja az Azure Queue szolgáltatás létrehozása és törlése, üzenetsorok, és helyezze, beolvasása, és törli az üzenetet. A minta Node.js-ben írt.
 services: storage
 documentationcenter: nodejs
 author: craigshoemaker
@@ -14,11 +14,12 @@ ms.devlang: nodejs
 ms.topic: article
 ms.date: 12/08/2016
 ms.author: cshoe
-ms.openlocfilehash: 2565f56324a070368c499a62ab54bb98830d8c20
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: c19ac5f45504e3c19b0b300dbc3ea157861d05ed
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2018
+ms.lasthandoff: 07/04/2018
+ms.locfileid: "34653025"
 ---
 # <a name="how-to-use-queue-storage-from-nodejs"></a>How to use Queue storage from Node.js (A Queue Storage használata Node.js-sel)
 [!INCLUDE [storage-selector-queue-include](../../../includes/storage-selector-queue-include.md)]
@@ -26,21 +27,21 @@ ms.lasthandoff: 03/12/2018
 [!INCLUDE [storage-check-out-samples-all](../../../includes/storage-check-out-samples-all.md)]
 
 ## <a name="overview"></a>Áttekintés
-Ez az útmutató bemutatja, hogyan hajthat végre a szolgáltatást a Microsoft Azure Queue szolgáltatást használó általános forgatókönyvhöz. A minták íródtak, a Node.js API használatával. Az ismertetett forgatókönyvek **beszúrása**, **megtekintésekor**, **első**, és **törlése** üzenetek várólistára, valamint **létrehozása és törlése várólisták**.
+Ez az útmutató bemutatja, hogyan hajthat végre a Microsoft Azure Queue szolgáltatást használó általános forgatókönyvhöz. A minták írták, a Node.js API-val. Az ismertetett forgatókönyvek között megtalálható **beszúrása**, **Bepillantás**, **első**, és **törlése** várólista-üzenetek, valamint  **létrehozása és törlése a várólisták**.
 
 [!INCLUDE [storage-queue-concepts-include](../../../includes/storage-queue-concepts-include.md)]
 
 [!INCLUDE [storage-create-account-include](../../../includes/storage-create-account-include.md)]
 
 ## <a name="create-a-nodejs-application"></a>Node.js-alkalmazás létrehozása
-Üres Node.js-alkalmazás létrehozása. A Node.js-alkalmazás létrehozása utasításokért lásd: [Node.js-webalkalmazás létrehozása az Azure App Service](../../app-service/app-service-web-get-started-nodejs.md), [létrehozása és központi telepítése egy Azure Cloud Service a Node.js-alkalmazás](../../cloud-services/cloud-services-nodejs-develop-deploy-app.md) a Windows PowerShell vagy [ A Visual Studio Code](https://code.visualstudio.com/docs/nodejs/nodejs-tutorial).
+Hozzon létre egy üres Node.js-alkalmazás. Node.js-alkalmazás létrehozása utasításokért lásd: [Node.js-webalkalmazás létrehozása az Azure App Service](../../app-service/app-service-web-get-started-nodejs.md), [létrehozása és üzembe helyezése az Azure Cloud Service egy Node.js-alkalmazás](../../cloud-services/cloud-services-nodejs-develop-deploy-app.md) vagyWindowsPowerShellhasználatával[ A Visual Studio Code](https://code.visualstudio.com/docs/nodejs/nodejs-tutorial).
 
-## <a name="configure-your-application-to-access-storage"></a>Állítsa be az alkalmazását tároló elérése érdekében
-Az Azure storage használatához szüksége az Azure Storage szolgáltatás SDK a Node.js, amely tartalmaz egy kényelmi szalagtár szerepel, amely a többi tárolási szolgáltatásokkal kommunikálni.
+## <a name="configure-your-application-to-access-storage"></a>Tárolás-alkalmazás konfigurálása
+Az Azure storage használatához szükség van az Azure Storage SDK nodejs-hez, amely kommunikálni a tárolási REST szolgáltatások kényelmi kódtárak tartalmazó.
 
-### <a name="use-node-package-manager-npm-to-obtain-the-package"></a>Csomópont Package Manager (NPM) használja a csomag beszerzése
-1. Használjon például egy parancssori felületet **PowerShell** (Windows), **Terminálszolgáltatások** (Mac) vagy **Bash** (Unix), lépjen abba a mappába, amelyben létrehozta a mintaalkalmazáshoz.
-2. Típus **npm telepítése azure-tároló** a parancsablakban. A parancs kimenetében a következőhöz hasonló.
+### <a name="use-node-package-manager-npm-to-obtain-the-package"></a>Használja a Node Package Manager (NPM) a csomag beszerzése
+1. Például használja a parancssori felület **PowerShell** (Windows), **terminálon** (Mac), vagy **Bash** (Unix), lépjen abba a mappába, amelyben létrehozta a mintaalkalmazáshoz.
+2. Írja be az **npm install azure-storage** kifejezést a parancsablakba. A parancs kimenete az alábbihoz fog hasonlítani.
  
     ```bash
     azure-storage@0.5.0 node_modules\azure-storage
@@ -55,28 +56,26 @@ Az Azure storage használatához szüksége az Azure Storage szolgáltatás SDK 
     +-- request@2.57.0 (caseless@0.10.0, aws-sign2@0.5.0, forever-agent@0.6.1, stringstream@0.0.4, oauth-sign@0.8.0, tunnel-agent@0.4.1, isstream@0.1.2, json-stringify-safe@5.0.1, bl@0.9.4, combined-stream@1.0.5, qs@3.1.0, mime-types@2.0.14, form-data@0.2.0, http-signature@0.11.0, tough-cookie@2.0.0, hawk@2.3.1, har-validator@1.8.0)
     ```
 
-3. Manuálisan futtatható a **ls** parancs futtatásával ellenőrizze, hogy egy **csomópont\_modulok** mappa hozták létre. A mappában megtalálja az **azure-tároló** csomagot, amely tartalmazza a könyvtárak kell érniük a tárhelyet.
+3. Manuálisan futtathatja a **ls** paranccsal ellenőrizheti, hogy egy **csomópont\_modulok** mappában jött létre. A mappában található az **azure-storage** csomag, amely a tárhely eléréséhez szükséges kódtárakat tartalmazza.
 
 ### <a name="import-the-package"></a>A csomag importálása
-A Jegyzettömbben vagy más szövegszerkesztőben, adja hozzá a következő végighaladva a **server.js** fájl tartalmát, ha szeretne használni a tárolási:
+A Jegyzettömb vagy egy másik szövegszerkesztőt, adja hozzá a következő felső a **server.js** fájlt az alkalmazás hol szeretne használni a storage:
 
 ```javascript
 var azure = require('azure-storage');
 ```
 
 ## <a name="setup-an-azure-storage-connection"></a>Az Azure Storage-kapcsolat beállítása
-Az azure-moduljának olvassák a környezeti változók AZURE\_tárolási\_FIÓKOT és az AZURE\_tárolási\_hozzáférés\_kulcs, vagy AZURE\_tárolási\_kapcsolat\_KARAKTERLÁNCOT az Azure storage-fiókhoz való kapcsolódáshoz szükséges adatokat. Ha ezek a környezeti változók nem, meg kell adnia a fiókadatokat, meghívásakor **createQueueService**.
-
-A környezeti változók beállítása példát a [Azure Portal](https://portal.azure.com) egy Azure-webhelyre, lásd: [az Azure Table szolgáltatás használata Node.js-webalkalmazás](../../cosmos-db/table-storage-cloud-service-nodejs.md).
+Az azure-modul fogja beolvasni a környezeti változókat az AZURE\_tárolási\_fiók és az AZURE\_tárolási\_hozzáférés\_kulcs, vagy az AZURE\_tárolási\_kapcsolat\_ KARAKTERLÁNC, az Azure storage-fiókjába való kapcsolódáshoz szükséges információkat. Ha nincsenek beállítva ezek a környezeti változók, meg kell adnia a fiókadatok hívásakor **createQueueService**.
 
 ## <a name="how-to-create-a-queue"></a>Útmutató: A várólista létrehozása
-Az alábbi kód létrehoz egy **QueueService** objektum, amely lehetővé teszi a várólisták használata.
+Az alábbi kód létrehoz egy **QueueService** objektum, amely lehetővé teszi, hogy az üzenetsorok.
 
 ```javascript
 var queueSvc = azure.createQueueService();
 ```
 
-Használja a **createQueueIfNotExists** metódus, amely a megadott várólista adja vissza, ha már létezik, vagy új várólista létrehozása a megadott névvel, ha még nem létezik.
+Használja a **createQueueIfNotExists** metódussal, amely a megadott várólista adja vissza, ha már létezik, vagy a megadott néven létrehoz egy új üzenetsort, ha azt nem létezik.
 
 ```javascript
 queueSvc.createQueueIfNotExists('myqueue', function(error, results, response){
@@ -86,32 +85,32 @@ queueSvc.createQueueIfNotExists('myqueue', function(error, results, response){
 });
 ```
 
-Ha a várólista létrejön, `result.created` értéke true. Ha a várólista létezik, `result.created` értéke "false".
+Ha az üzenetsor létrehozása `result.created` igaz. Ha a várólista létezik, `result.created` false (hamis).
 
 ### <a name="filters"></a>Szűrők
-Választható szűrési műveletek használatával végrehajtott műveletek alkalmazhatók **QueueService**. Műveletek szűrésének lehetnek naplózási, automatikus újrapróbálkozása, stb. A metódus aláírása megvalósító objektumok szűrők a következők:
+Választható szűrési műveletek használatával végrehajtott műveletek alkalmazhatók **QueueService**. Műveletek szűrésének is tartalmazhat, naplózás, automatikus újrapróbálkozása, stb. A szűrők olyan objektumok, amelyek metódusokat implementálnak az alábbi aláírással:
 
 ```javascript
 function handle (requestOptions, next)
 ```
 
-Ezután a előfeldolgozása kérelmet a beállítások, a metódus hívása a "Tovább" típusra a következő aláírással rendelkező visszahívás kell:
+Ezután az előfeldolgozási kérelem a beállítások, a metódus hívása a Next (Tovább) átadása egy visszahívást, a következő aláírással rendelkező van szüksége:
 
 ```javascript
 function (returnObject, finalCallback, next)
 ```
 
-A visszahívási, és a returnObject (válasza a kérés a kiszolgáló) feldolgozása után a visszahívás kell mellett meghívni, ha más szűrők feldolgozásának folytatásához létezik, vagy egyszerűen meghívása finalCallback ellenkező esetben a szolgáltatás hívásához fog.
+A visszahívási, és a returnObject (a válasz a kérelemből a kiszolgálóhoz) feldolgozása után a visszahívás vagy a következő meghívása, ha létezik más szűrők feldolgozása a folytatáshoz, vagy egyszerűen meghívása finalCallback ellenkező esetben a szolgáltatás be kell Meghívási.
 
-Két szűrőket, amelyek megvalósítják az újrapróbálkozási logika érhetők el az Azure SDK for Node.js, a **ExponentialRetryPolicyFilter** és **LinearRetryPolicyFilter**. A következő létrehoz egy **QueueService** objektum, amely használja a **ExponentialRetryPolicyFilter**:
+Az Azure SDK for Node.js tartalmaz két szűrőt (**ExponentialRetryPolicyFilter** és **LinearRetryPolicyFilter**), amelyek újrapróbálkozási logikát implementálnak. A következő létrehoz egy **QueueService** objektum, amely használja a **ExponentialRetryPolicyFilter**:
 
 ```javascript
 var retryOperations = new azure.ExponentialRetryPolicyFilter();
 var queueSvc = azure.createQueueService().withFilter(retryOperations);
 ```
 
-## <a name="how-to-insert-a-message-into-a-queue"></a>Útmutató: A várólista üzenet beszúrása
-Üzenet beszúrása egy üzenetsort, használja a **createMessage** módszert, hozzon létre egy új üzenetet, és vegye fel a várólistára.
+## <a name="how-to-insert-a-message-into-a-queue"></a>Útmutató: Üzenet beszúrása egy üzenetsorba
+Üzenet beszúrása egy üzenetsorba, használja a **createMessage** metódust hozzon létre egy új üzenetet, és adja hozzá az üzenetsorhoz.
 
 ```javascript
 queueSvc.createMessage('myqueue', "Hello world!", function(error, results, response){
@@ -121,8 +120,8 @@ queueSvc.createMessage('myqueue', "Hello world!", function(error, results, respo
 });
 ```
 
-## <a name="how-to-peek-at-the-next-message"></a>Útmutató: A következő üzenet megtekintése
-Is bepillanthat, hogy egy sor elején található üzenetbe anélkül, hogy eltávolítaná az üzenetsorból meghívásával a **peekMessages** metódust. Alapértelmezés szerint **peekMessages** betekintés egyetlen üzenetben.
+## <a name="how-to-peek-at-the-next-message"></a>Útmutató: A következő üzenet betekintés
+Anélkül, hogy eltávolítaná az üzenetsorból meghívásával is bepillanthat egy üzenetsorban található üzenet a **peekMessages** metódust. Alapértelmezés szerint **peekMessages** betekintés egy üzenet.
 
 ```javascript
 queueSvc.peekMessages('myqueue', function(error, results, response){
@@ -132,20 +131,20 @@ queueSvc.peekMessages('myqueue', function(error, results, response){
 });
 ```
 
-A `result` az üzenet tartalmazza.
+A `result` tartalmazza az üzenetet.
 
 > [!NOTE]
-> Használatával **peekMessages** Ha nincsenek a várólistán lévő üzenetek nem hibát adnak vissza, azonban nem adja vissza.
+> Használatával **peekMessages** Ha nincsenek üzenetek az üzenetsorban nem ad vissza hibát, azonban nincsenek üzenetek adja vissza.
 > 
 > 
 
-## <a name="how-to-dequeue-the-next-message"></a>Útmutató: A következő üzenet created
-Egy üzenet feldolgozása egy két lépésből álló folyamat:
+## <a name="how-to-dequeue-the-next-message"></a>Útmutató: A következő üzenet eltávolítása a sorból
+Egy üzenet feldolgozása két szakaszból álló folyamat során a rendszer:
 
-1. Az üzenet feldolgozásához.
+1. Az üzenet eltávolítása a sorból.
 2. Az üzenet törlése.
 
-Egy üzenet feldolgozásához, használja a **getMessages**. Így az üzenetek nem látható a várólistán, így más ügyfelek nem képes feldolgozni azokat. Az alkalmazás rendelkezik egy üzenet feldolgozása után hívja **deleteMessage** törli-e az üzenetsorból. A következő példa egy üzenetet kap, majd törli őket:
+Egy üzenet eltávolítása a sorból, használja a **getMessages**. Ez lehetővé teszi az üzenetek nem látható, az üzenetsorban, így más ügyfelek nem tud feldolgozni azokat. Miután az alkalmazás egy üzenetet dolgozott fel, hívja **deleteMessage** való törléséhez az üzenetsorból. Az alábbi példa beolvas egy üzenetet, majd törli őket:
 
 ```javascript
 queueSvc.getMessages('myqueue', function(error, results, response){
@@ -162,15 +161,15 @@ queueSvc.getMessages('myqueue', function(error, results, response){
 ```
 
 > [!NOTE]
-> Alapértelmezés szerint az üzenet csak rejtett 30 másodpercig, amely után is látható, más ügyfelek számára. A jelenlegitől eltérő értéket is megadhat `options.visibilityTimeout` rendelkező **getMessages**.
+> Alapértelmezés szerint az üzenet csak rejtett 30 másodpercig, amely után is látható, más ügyfelek számára. Egy másik értéket is megadhat a `options.visibilityTimeout` a **getMessages**.
 > 
 > [!NOTE]
-> Használatával **getMessages** Ha nincsenek a várólistán lévő üzenetek nem hibát adnak vissza, azonban nem adja vissza.
+> Használatával **getMessages** Ha nincsenek üzenetek az üzenetsorban nem ad vissza hibát, azonban nincsenek üzenetek adja vissza.
 > 
 > 
 
-## <a name="how-to-change-the-contents-of-a-queued-message"></a>Útmutató: Az aszinkron üzenet tartalmának módosítása
-Módosíthatja a tartalmát egy üzenet helyben a várólista használatával **updateMessage**. Az alábbi példa frissíti a szöveges üzenet:
+## <a name="how-to-change-the-contents-of-a-queued-message"></a>Útmutató: Az üzenetsorban található üzenet tartalmának módosítása
+Módosíthatja a tartalmát egy üzenet helyben, az üzenetsor használatával **updateMessage**. Az alábbi példa frissíti az üzenet szövege:
 
 ```javascript
 queueSvc.getMessages('myqueue', function(error, getResults, getResponse){
@@ -187,12 +186,12 @@ queueSvc.getMessages('myqueue', function(error, getResults, getResponse){
 ```
 
 ## <a name="how-to-additional-options-for-dequeuing-messages"></a>Útmutató: További beállítások üzenetmozgatót üzenetek
-Két módon szabhatja testre az üzenetek lekérését egy üzenetsorból:
+Testre szabhatja az üzenetek lekérését egy üzenetsorból két módja van:
 
-* `options.numOfMessages` -Beolvasása az üzenetkötegek (legfeljebb 32.)
-* `options.visibilityTimeout` – Állítsa be a hosszabb vagy rövidebb láthatatlansági időkorlátot.
+* `options.numOfMessages` -Lekéréséhez üzenetkötegek (legfeljebb 32.)
+* `options.visibilityTimeout` – Állítsa be a hosszabb vagy rövidebb láthatatlansági időtúllépés.
 
-Az alábbi példában a **getMessages** módszer segítségével 15 üzenetek egy hívásban. Ezután minden üzenetet használatával feldolgozza a hurok. Ez a metódus által visszaadott összes üzenet öt perc értékre állítja a láthatatlansági időkorlátot is.
+Az alábbi példában a **getMessages** metódus lekéréséhez 15 üzeneteket egyetlen hívásával. Ezután feldolgozza, hogy minden üzenet használatával egy for ciklusba. Ez a metódus által visszaadott összes üzenet öt percre az láthatatlansági időkorlátot is beállítja.
 
 ```javascript
 queueSvc.getMessages('myqueue', {numOfMessages: 15, visibilityTimeout: 5 * 60}, function(error, results, getResponse){
@@ -212,7 +211,7 @@ queueSvc.getMessages('myqueue', {numOfMessages: 15, visibilityTimeout: 5 * 60}, 
 ```
 
 ## <a name="how-to-get-the-queue-length"></a>Útmutató: Az üzenetsor hosszának lekérése
-A **getQueueMetadata** metaadatainak beolvasása, beleértve a várólistán üzenetek hozzávetőleges számát adja vissza.
+A **getQueueMetadata** az üzenetsorban, beleértve a várakozási sorban üzenetek hozzávetőleges száma metaadatait adja vissza.
 
 ```javascript
 queueSvc.getQueueMetadata('myqueue', function(error, results, response){
@@ -222,8 +221,8 @@ queueSvc.getQueueMetadata('myqueue', function(error, results, response){
 });
 ```
 
-## <a name="how-to-list-queues"></a>Útmutató: A lista várólisták
-Várólisták listájának lekéréséhez használja **listQueuesSegmented**. Egy adott előtag alapján szűrt listáját olvashatja, **listQueuesSegmentedWithPrefix**.
+## <a name="how-to-list-queues"></a>Útmutató: Lista üzenetsorok
+Üzenetsorok listájának lekéréséhez használja **listQueuesSegmented**. Egy adott előtag alapján szűrt listájának lekéréséhez használja **listQueuesSegmentedWithPrefix**.
 
 ```javascript
 queueSvc.listQueuesSegmented(null, function(error, results, response){
@@ -233,10 +232,10 @@ queueSvc.listQueuesSegmented(null, function(error, results, response){
 });
 ```
 
-Az összes várólistán nem adható vissza, ha `result.continuationToken` első paramétere használható **listQueuesSegmented** vagy a második paraméter **listQueuesSegmentedWithPrefix** további eredmények beolvasásához.
+Valamennyi üzenetsorok nem téríthetők vissza, ha `result.continuationToken` az első paraméterként használhatók **listQueuesSegmented** vagy a második paraméter **listQueuesSegmentedWithPrefix** további eredmények lekéréséhez.
 
-## <a name="how-to-delete-a-queue"></a>Útmutató: A várólista törlése
-Egy üzenetsor és a benne tárolt összes üzenet törléséhez hívja meg a **deleteQueue** a várólista-objektum metódust.
+## <a name="how-to-delete-a-queue"></a>Útmutató: Üzenetsor törlése
+Egy üzenetsor és a benne tárolt összes üzenet törléséhez hívja a **deleteQueue** metódust a várólista-objektum.
 
 ```javascript
 queueSvc.deleteQueue(queueName, function(error, response){
@@ -246,14 +245,14 @@ queueSvc.deleteQueue(queueName, function(error, response){
 });
 ```
 
-Törlés nélkül törli az összes üzenetet az üzenetsorból, használjon **clearMessages**.
+Törölje az összes üzenetet egy üzenetsorból annak törlése nélkül, használjon **clearMessages**.
 
-## <a name="how-to-work-with-shared-access-signatures"></a>Hogyan: közös hozzáférésű Jogosultságkód használata
-Megosztott hozzáférési aláírásokkal (SAS), amelyek egy biztonságos várólisták részletes hozzáférést biztosítanak a tárfiók neve vagy a kulcsok megadása nélkül. SAS korlátozott hozzáférést biztosít a várólisták, például egy mobil alkalmazás üzeneteket küldhet gyakran használják.
+## <a name="how-to-work-with-shared-access-signatures"></a>How to: közös hozzáférésű Jogosultságkódok használata
+A közös hozzáférésű Jogosultságkódok (SAS) egy biztonságos módon a várólisták részletes hozzáférés biztosítására a storage-fiók neve vagy a kulcsok megadása nélkül. SAS gyakran használják a várólisták, például engedélyezheti a mobilalkalmazás üzenetek elküldéséhez korlátozott hozzáférést biztosít.
 
-A megbízható alkalmazások, például egy felhőalapú szolgáltatás létrehoz egy SAS használatával a **generateSharedAccessSignature** , a **QueueService**, és a nem megbízható vagy félig megbízható alkalmazáshoz. Ha például egy mobilalkalmazást. A biztonsági Társítások létrejön egy házirendet, amely a kezdő és záró dátumát, amely alatt a SAS érvénytelen ismerteti, valamint a hozzáférési szintet a biztonsági Társítások jogosult kap.
+A megbízható alkalmazások, például egy felhőalapú szolgáltatás létrehoz egy SAS használatával a **generateSharedAccessSignature** , a **QueueService**, és a egy nem megbízható vagy félig megbízható alkalmazás. Ha például egy mobilalkalmazást. A rendszer egy szabályzat segítségével hozza létre az SAS-eket, amely meghatározza az SAS érvényességének kezdő és befejező dátumát, valamint az SAS tulajdonosának biztosított hozzáférési szintet.
 
-Az alábbi példa létrehoz egy új megosztott elérési házirendet, amely lehetővé teszi a biztonsági Társítások jogosult üzenetek hozzáadása a várólista, és 100 perc létrehozása után lejár.
+Az alábbi példa létrehoz egy új megosztott elérési házirendet, amely lehetővé teszi a üzeneteket ad hozzá a várólista SAS jogosult, és 100 perc, a létrehozás ideje után lejár.
 
 ```javascript
 var startDate = new Date();
@@ -273,9 +272,9 @@ var queueSAS = queueSvc.generateSharedAccessSignature('myqueue', sharedAccessPol
 var host = queueSvc.host;
 ```
 
-Vegye figyelembe, hogy az állomás információit meg kell adni is, mivel esetén megadása kötelező a biztonsági Társítások jogosult megpróbál hozzáférni a várólista.
+Vegye figyelembe, hogy a gazdagép adatait meg kell adni is, mivel esetén a biztonsági Társítások jogosult próbál meg hozzáférni az üzenetsor.
 
-Az ügyfélalkalmazás majd használja a biztonsági Társításait **QueueServiceWithSAS** szemben a várólista műveletek végrehajtásához. A következő példa a várólista csatlakozik, és létrehoz egy üzenetet.
+Az ügyfélalkalmazás ezután használja a SAS with **QueueServiceWithSAS** a várólista végzett műveletek végrehajtásához. Az alábbi példa az üzenetsorhoz kapcsolódik, és üzenetet hoz létre.
 
 ```javascript
 var sharedQueueService = azure.createQueueServiceWithSas(host, queueSAS);
@@ -286,12 +285,12 @@ sharedQueueService.createMessage('myqueue', 'Hello world from SAS!', function(er
 });
 ```
 
-A SAS létre lett hozva a hozzáférés hozzáadása, ha volt kísérlet olvasása, frissítése vagy törli az üzenetet, mert akkor kell hibát jelez.
+A SAS létre lett hozva a hozzáférés hozzáadása, ha történt kísérlet olvasni, frissíteni vagy törli az üzenetet, mert hiba kellene visszaadnia.
 
 ### <a name="access-control-lists"></a>Hozzáférés-vezérlési listák
-Egy hozzáférés-vezérlési lista (ACL) segítségével állítsa be a hozzáférési házirend tartozó SAS korlátozására. Ez akkor hasznos, ha a várólista hozzáférés, de különböző hozzáférési házirendek biztosít az egyes ügyfelek több ügyféllel engedélyez.
+Hozzáférés-vezérlési listát (Access Control List, ACL) is használhat az SAS hozzáférési szabályzatának beállítására. Ez akkor hasznos, ha szeretné lehetővé teszi több ügyfelek számára a várólista eléréséhez, de eltérő hozzáférési szabályzatokat biztosít minden ügyfél számára.
 
-Hozzáférés-vezérlési Listában hozzáférési házirendeket, tömbje segítségével minden házirendhez társított azonosítójú van megvalósítva. A következő példában két szabályzatokat; határoz meg. egy "felhasználó1" és "felhasználó2":
+A rendszer ACL-eket implementál egy hozzáférésiszabályzat-tömbbel, és minden szabályzathoz azonosító van társítva. Az alábbi példa meghatározza a két házirend; egy 'felhasználó1', "mind a Felhasználó2" egyet:
 
 ```javascript
 var sharedAccessPolicy = {
@@ -308,7 +307,7 @@ var sharedAccessPolicy = {
 };
 ```
 
-Az alábbi példa lekérdezi az aktuális hozzáférés-Vezérlési **Várólista_neve**, majd hozzáadja az új házirendek **setQueueAcl**. Ez a megközelítés lehetővé teszi, hogy:
+Az alábbi példa lekéri az aktuális ACL-JÉNEK **myqueue**, majd hozzáadja az új szabályzatok használatával **setQueueAcl**. Ez a megközelítés lehetővé teszi, hogy:
 
 ```javascript
 var extend = require('extend');
@@ -324,17 +323,17 @@ queueSvc.getQueueAcl('myqueue', function(error, result, response) {
 });
 ```
 
-Miután a hozzáférés-vezérlési lista van beállítva, majd a házirend-azonosító alapján SAS hozhatók létre. Az alábbi példa létrehoz egy új SAS-kód "felhasználó2":
+Után az ACL-t adja meg, majd létrehozhat egy SAS-szabályzat azonosítója alapján. Az alábbi példa egy új SAS-t hoz létre „user2” számára:
 
 ```javascript
 queueSAS = queueSvc.generateSharedAccessSignature('myqueue', { Id: 'user2' });
 ```
 
 ## <a name="next-steps"></a>További lépések
-Most, hogy megismerte a queue storage alapjait, az alábbi hivatkozásokból tájékozódhat az összetettebb tárolási feladatok elvégzéséről.
+Most, hogy megismerte a queue storage alapjait, az alábbi hivatkozásokból tájékozódhat az összetettebb tárolási feladatok.
 
 * Látogasson el a [Azure Storage csapat blogja][Azure Storage Team Blog].
-* Látogasson el a [Azure Storage szolgáltatás SDK csomópont] [ Azure Storage SDK for Node] GitHub tárházából.
+* Látogasson el a [Azure Storage SDK a Node] [ Azure Storage SDK for Node] tárházban a Githubon.
 
 
 

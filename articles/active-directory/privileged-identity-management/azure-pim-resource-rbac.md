@@ -1,6 +1,6 @@
 ---
-title: Az Azure PIM erőforrás RBAC áttekintése |} Microsoft Docs
-description: Az RBAC funkció áttekintést kaphat a PIM, beleértve a fontos Szakszavai és értesítések
+title: Az Azure PIM erőforrás RBAC – áttekintés |} A Microsoft Docs
+description: Az RBAC-funkció áttekintést kaphat a PIM, beleértve a terminológia és értesítések
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -9,192 +9,192 @@ editor: ''
 ms.assetid: ''
 ms.service: active-directory
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.component: protection
 ms.date: 03/30/2018
 ms.author: rolyon
-ms.openlocfilehash: f8eb574a98294b2858edd2ae36293c2857a50403
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: 7cf628495a79fe775528080ae6ec31df8e9a0f37
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35261032"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37447581"
 ---
-# <a name="pim-for-azure-resources"></a>Az Azure-erőforrások PIM
+# <a name="pim-for-azure-resources"></a>A PIM használata Azure-erőforrások
 
-Az Azure Active Directory Privileged Identity Management (PIM), kezelheti, felügyeletére és figyelésére elérhető Azure erőforrások a szervezeten belül. Ez magában foglalja, előfizetések, erőforrás-csoportok és még a virtuális gépek. Az Azure portálon, amely kihasználja az Azure szerepköralapú hozzáférés vezérlés (RBAC) bármilyen olyan erőforrás kihasználhatja az összes nagy biztonsági és életciklus-kezelési képességei Azure AD PIM nyújtotta előnyöket, és néhány nagyszerű új szolgáltatásokat tervezzük kerüljön Az Azure AD szerepkörök hamarosan. 
+Az Azure Active Directory Privileged Identity Management (PIM), kezelheti, szabályozhatja és figyelheti a Azure-erőforrások a szervezeten belül. Ez magában foglalja az előfizetések, erőforráscsoportok és még a virtuális gépeket. Az Azure Portalon, amely kihasználja az Azure szerepkör alapú hozzáférés-vezérlés (RBAC) bármely erőforrás kihasználhatja összes nagyszerű biztonsági és életciklus-kezelési képességei Azure AD PIM által biztosított lehetőségeket, és ahhoz, hogy tervezzük nagyszerű új funkciókkal Az Azure AD-szerepkörök hamarosan. 
 
-## <a name="pim-for-azure-resources-helps-resource-administrators"></a>Az Azure-erőforrások PIM erőforrás rendszergazdáit segíti a
+## <a name="pim-for-azure-resources-helps-resource-administrators"></a>Az Azure-erőforrások a PIM erőforrás rendszergazdáit segíti a
 
-- Tekintse meg, mely felhasználók és csoportok vannak hozzárendelve a felügyelt Azure-erőforrások szerepkörei
-- Igény szerinti, mint az előfizetések, erőforráscsoportok, erőforrások kezeléséhez "csak az időben" hozzáférés engedélyezése
-- Jár le automatikusan az új időhöz kötött hozzárendelés beállítások hozzárendelt felhasználók/csoportok erőforrások elérése
-- Gyors tevékenységek és a készenléti ütemezések ideiglenes erőforrás-hozzáférés hozzárendelése
-- Többtényezős hitelesítés kikényszerítéséhez az erőforrások eléréséhez a beépített és egyéni szerepkör 
-- Erőforrás-hozzáférési korrelált erőforrás tevékenységre vonatkozó jelentések lekérése során a felhasználó aktív munkamenetét
-- Riasztásokat kaphat, ha új felhasználók vagy csoportok vannak hozzárendelve az erőforrás-hozzáférés, illetve ha az általuk aktivált jogosult hozzárendelések
+- Tekintse meg, milyen felhasználókkal és csoportokkal hozzárendelt szerepkörök felügyelt Azure-erőforrások
+- Igény szerinti, például az előfizetések, erőforráscsoportok és egyéb erőforrások kezelése "csak az időben" hozzáférés engedélyezése
+- Hozzárendelt felhasználók/csoportok erőforrás-hozzáférés automatikusan az új időhöz kötött hozzárendelési beállítások elévülése
+- Gyors feladatok vagy a készenléti ütemezések ideiglenes erőforrás-hozzáférés hozzárendelése
+- Az erőforrások eléréséhez a beépített vagy egyéni szerepkörhöz a többtényezős hitelesítés kényszerítése 
+- Aktív felhasználói munkamenet során resource access korrelált erőforrás tevékenységre vonatkozó jelentések lekérése
+- Értesítéseket kaphat az új felhasználók vagy csoportok hozzárendelése esetén erőforrásokhoz való hozzáférést, és ha azok a jogosult hozzárendelések aktiválása
 
-Az Azure AD PIM a beépített Azure erőforrás-szerepköröket, valamint a egyéni (RBAC) szerepkörök, például (de nem kizárólagosan) képes kezelni:
+Az Azure AD PIM-ben a beépített Azure-erőforrásszerepkörök, valamint a egyéni (RBAC) szerepkört, beleértve többek között a (,) képes kezelni:
 
 - Tulajdonos
 - Felhasználói hozzáférés rendszergazdája
 - Közreműködő
 - Biztonsági rendszergazda
-- Biztonsági és egyéb
+- Biztonságkezelő és egyéb
 
 >[!NOTE]
-Felhasználók vagy a tulajdonos vagy a felhasználói hozzáférés adminisztrátora szerepkört, és, amelyek lehetővé teszik az előfizetés-kezelés az Azure AD globális rendszergazdák csoport tagjai az erőforrás-rendszergazdák. A rendszergazdák előfordulhat, hogy szerepköröket, szerepkör beállításainak konfigurálása, és tekintse át a PIM használó Azure-erőforrások hozzáférés. A lista megtekintése [beépített szerepkörök az Azure-erőforrások](../../role-based-access-control/built-in-roles.md).
+Felhasználók vagy a tulajdonos vagy a felhasználói hozzáférés rendszergazdája szerepkör, és előfizetés-kezelés engedélyezése az Azure AD globális rendszergazdák csoport tagjainak olyan erőforrás-rendszergazdák. Ezek a rendszergazdák előfordulhat, hogy szerepköröket, szerepkör-beállítások konfigurálása és a PIM használata az Azure-erőforrások hozzáférésének. A lista megtekintése [beépített szerepkörök az Azure-erőforrások](../../role-based-access-control/built-in-roles.md).
 
 ## <a name="tasks"></a>Feladatok
 
-A PIM szerepkörök aktiválása, függőben lévő aktiválások/kérelmek, függőben lévő jóváhagyások megtekintése kényelmes hozzáférést biztosít (az [az Azure Active directory szerepkörök](azure-ad-pim-approval-workflow.md)), és ellenőrzi, hogy a válasz a bal oldali navigációs menü feladatok részéből függőben.
+A PIM szerepkörök aktiválása, függőben lévő aktiválások/kérelmek, függőben lévő jóváhagyások megtekintése kényelmes hozzáférést biztosít (az [az Azure AD-címtárbeli szerepkörök](azure-ad-pim-approval-workflow.md)), és áttekinti a választ a tevékenységek szakaszban a bal oldali navigációs menü függőben van.
 
-Elérésekor a feladatok menü elemek bármelyikét a áttekintése belépési pontról, az eredményül kapott nézet tartalmazza az Azure Active directory szerepkörök, mind az Azure erőforrás-szerepkörök eredménye. 
+Fér hozzá a áttekintése belépési pont a feladatok menü elemeinek egyikét sem, ha az eredményül kapott nézetben tartalmazza az Azure AD-címtárbeli szerepkörök és az Azure-erőforrásszerepkörök eredményeit. 
 
 ![](media/azure-pim-resource-rbac/role-settings-details.png)
 
-A szerepkörök az Azure Active directory szerepkörök és az Azure erőforrás-szerepkörök aktív és a megfelelő szerepkör-hozzárendelések listáját tartalmazzák.
+Saját szerepkörök az Azure AD-címtárbeli szerepkörök és az Azure-erőforrásszerepkörök aktív és a jogosult szerepkör-hozzárendelések listáját tartalmazzák.
 
 ## <a name="activate-roles"></a>Szerepkörök aktiválása
 
-Szerepkörök aktiválása az Azure-erőforrások bevezet egy új felület, amely lehetővé teszi az aktiválási a jövőbeni dátum/idő ütemezése, és válasszon egy adott aktiválási időtartamot a legnagyobb (a rendszergazdák által konfigurált) belül jogosult szerepkör tagjai. További tudnivalók [itt az Azure AD-szerepkörök aktiválása](../active-directory-privileged-identity-management-how-to-activate-role.md).
+Szerepkörök aktiválása az Azure-erőforrások mutatja be egy új környezetet biztosít, amely lehetővé teszi, hogy a jogosult szerepkör tagjai az aktiválás a jövőbeli dátum/idő ütemezése, és válassza ki a maximális (a rendszergazdák által konfigurált) belül egy adott aktiválási időtartamát. Ismerje meg [itt az Azure AD-szerepkörök aktiválása](../active-directory-privileged-identity-management-how-to-activate-role.md).
 
 ![](media/azure-pim-resource-rbac/contributor.png)
 
-Az aktiválások menüből adjon meg a kívánt kezdő dátum és idő, a szerepkör aktiválásához. Opcionálisan csökkentése az aktiválás időtartama (mennyi ideig a szerepköre aktív), és ha szükséges; indoklásának beírásához Kattintson az aktiválás gombra.
+A aktiválások menüben adjon meg a kívánt kezdő dátum és idő, a szerepkör aktiválását. Szükség esetén csökkentse az aktiválási időtartamát (mennyi ideig a szerepkör aktív) és a egy szükség; indoklás megadása Kattintson az aktiválás gombra.
 
-A kezdő dátum és idő nem módosul, ha a szerepkör aktiválódik másodpercen belül. Egy szerepkör aszinkron aktiválás szalagcím üzenet a saját szerepkörök lapon jelenik meg. Kattintson a frissítés gombra kattintva törölheti ezt az üzenetet.
+Ha a kezdő dátum és idő nem módosítanak, a szerepkör másodpercen belül aktív lesz. Várólistára helyezett szerepkör aktiválási címsorában látható a saját szerepkörök lapon jelenik meg. A frissítés gombra kattintva törölje ezt az üzenetet.
 
 ![](media/azure-pim-resource-rbac/my-roles.png)
 
-Ha az aktiválás dátuma jövőbeli időpontra van ütemezve, a függőben lévő kérelem függőben lévő kérelmek fülre, a bal oldali navigációs menü megjelenik. Abban az esetben, ha a szerepkör aktiválása már nincs szükség, a felhasználó megszakítja a kérést a lap jobb oldalán a Mégse gombra kattintva.
+Az aktiválás egy jövőbeli dátumot időpontra van ütemezve, akkor a függőben lévő kérelem megjelenik a bal oldali navigációs menüben a függőben lévő kérelmek lapján. Abban az esetben, ha a szerepkör aktiválása már nem szükséges, a felhasználó lemondhatja, ha a kérés kattintson a Mégse gombra a lap jobb oldalán.
 
 ![](media/azure-pim-resource-rbac/pending-requests.png)
 
-## <a name="discover-and-manage-azure-resources"></a>Felderítése és felügyelete az Azure-erőforrások
+## <a name="discover-and-manage-azure-resources"></a>Fedezze fel, és az Azure-erőforrások kezelése
 
-Található, és szerepkörök kezelése az Azure-erőforrás, válassza ki az Azure-erőforrások a kezelés lapon, a bal oldali navigációs menü. A szűrők vagy használatával keresősáv az oldal tetején található erőforrás.
+Keresse meg és kezelheti a szerepköröket egy Azure-erőforrás, válassza ki az Azure-erőforrások a kezelés lapon, a bal oldali navigációs menüben. Használatával a szűrőket vagy a keresősávba, a lap tetején található egy erőforrás.
 
 ![](media/azure-pim-resource-rbac/azure-resources.png)
 
 ## <a name="resource-dashboards"></a>Erőforrás-irányítópultok
 
-A felügyelet nézet irányítópult négy elsődleges összetevőből áll. Grafikus ábrázolása erőforrás szerepkör aktiválások az elmúlt hét napban. Az adatok hatóköre a kiválasztott erőforrás a, és megjeleníti a leggyakrabban használt szerepkörök (tulajdonos, közreműködő, felhasználói hozzáférés adminisztrátora) és az összes szerepkör kombinált aktiválást.
+Az adminisztrátori nézet irányítópult négy elsődleges összetevőket tartalmazza. Grafikus ábrázolását erőforrás szerepkör-aktiválások az elmúlt hét napban. Az adatok hatókörét a kiválasztott erőforrás, és megjeleníti a leggyakoribb szerepkörök (tulajdonos, közreműködő, felhasználói hozzáférés rendszergazdája), és minden szerepkör kombinált aktiválások.
 
-Az a diagram jobb oldalán aktiválások van két diagramot, amely a szerepkör-hozzárendelések terjesztési hozzárendelés-típus, a felhasználókat és csoportokat egyaránt megjeleníthető. Válassza a diagram szelet módosítja százalékos (vagy fordítva) értékét.
+Jobb oldalán a aktiválások grafikon a két diagram, amelyek megjelenítik a szerepkör-hozzárendelések terjesztési által a hozzárendelési típust, felhasználókat és csoportokat egyaránt. A diagram szelet kiválasztása módosítja a százalék (vagy fordítva) értékét.
 
 ![](media/azure-pim-resource-rbac/admin-view.png)
 
-Alább a diagramok a felhasználókat és csoportokat az új szerepkör-hozzárendelések száma az elmúlt 30 napban (bal oldali) és a teljes hozzárendelések (csökkenő) szerint rendezve szerepkörök listáját láthatja.
+Alább a diagramok és a felhasználóknak és csoportoknak az új szerepkör-hozzárendelések száma az elmúlt 30 napban (balra), valamint a szerepkörök (csökkenő) hozzárendelések száma szerint rendezett listáját láthatja.
 
 ![](media/azure-pim-resource-rbac/role-settings.png)
 
 ## <a name="manage-role-assignments"></a>Szerepkör-hozzárendelések kezelése
 
-Rendszergazdák kezelhetik a szerepkör-hozzárendelések szerepkörök vagy a tagot a bal oldali navigációs való kiválasztással. Szerepkörök kiválasztásával lehetővé teszi, hogy a rendszergazdák számára, hogy a fájlkezelési feladatokat egy adott szerepkör hatóköre, amíg tagok megjeleníti az összes felhasználó- és szerepkör-hozzárendelések az erőforrás.
+Rendszergazdák kezelhetik a szerepkör-hozzárendelések válassza ki a bal oldali navigációs szerepkörök vagy a tagok. Szerepkör kiválasztása lehetővé teszi, hogy a rendszergazdák a felügyeleti feladatok egy adott szerepkör hatóköre közben tagok megjeleníti az összes felhasználó- és szerepkör-hozzárendelések az erőforrás.
 
 ![](media/azure-pim-resource-rbac/roles.png)
 
 ![](media/azure-pim-resource-rbac/members.png)
 
 >[!NOTE]
-Ha van függőben lévő aktiválási szerepkör, értesítésszalagról jelenik meg a lap tetején tagsági megtekintésekor.
+Ha egy függőben lévő aktiválási szerepkör, értesítésszalagról megjelenik az oldal tetején lévő tagság megtekintésekor.
 
 ## <a name="assign-roles"></a>Szerepkörök hozzárendelése
 
-Egy felhasználó vagy csoport hozzárendelése egy szerepkörhöz, válassza ki a szerepkört (Ha a szerepkörök megtekintése), vagy kattintson a Hozzáadás gombra az műveletsávon (Ha a tagok megtekintése).
+Egy felhasználót vagy csoportot egy szerepkörhöz rendeléséhez jelölje ki a szerepkört (Ha a szerepkörök megtekintése), vagy kattintson a Hozzáadás gombra a művelet sávon (Ha a tagok nézetben).
 
 ![](media/azure-pim-resource-rbac/members2.png)
 
 >[!NOTE]
-Egy felhasználó vagy csoport hozzáadása a tagok lapon, ha szüksége egy felhasználó vagy csoport kiválasztása előtt válasszon egy szerepkör hozzáadása menüjéből.
+Ha egy felhasználó vagy csoport hozzáadása a tagok lapon, a Hozzáadás menüben válasszon egy szerepkört, egy felhasználó vagy csoport kiválasztása előtt szüksége.
 
 ![](media/azure-pim-resource-rbac/select-role.png)
 
-Válasszon egy felhasználót vagy csoportot a könyvtárból.
+Válassza ki egy felhasználót vagy csoportot a címtárból.
 
 ![](media/azure-pim-resource-rbac/choose.png)
 
-Válassza ki a megfelelő hozzárendelési típusát a legördülő menüből. 
+Válassza ki a megfelelő hozzárendelési típust a legördülő menüből. 
 
-**Csak az idő-hozzárendelési:** azt a felhasználó vagy csoport tagjai támogatható, de nem állandó hozzáférést biztosít a szerepkör egy megadott ideig idő vagy korlátlan ideig (Ha be van állítva, a szerepkör beállításai). 
+**Csak az idő-hozzárendelési:** a felhasználó vagy csoport tagjai a szerepkör jogosult, de nem állandó hozzáféréssel rendelkező idő vagy határozatlan időre meghatározott ideig biztosít (Ha be van állítva, a szerepkör-beállítások). 
 
-**Közvetlen hozzárendelés:** nem követeli meg a felhasználó vagy csoport tagjai (más néven állandó hozzáférés) szerepkör-hozzárendelés aktiválásához. A Microsoft azt javasolja, hogy közvetlen hozzárendelés használatával elmozdul a telefonos vagy bizalmas tevékenységek, például a rövid távú használatra, ahol hozzáférés nem lesz szükség a feladat befejezésekor.
+**Közvetlen hozzárendelés:** nem követeli meg a felhasználó vagy csoport tagjai (más néven az állandó hozzáférés) szerepkör-hozzárendelés aktiválását. A Microsoft javasolja, hogy közvetlen hozzárendelés használatával például a készenléti műszakok vagy idő-és nagybetűket tevékenységeket, a rövid távú használatra, ahol hozzáférés nem lesz szükség a feladat befejezésekor.
 
 ![](media/azure-pim-resource-rbac/membership-settings.png)
 
-A hozzárendelés típusa legördülő lista alatt egy jelölőnégyzet teszi adja meg, ha a hozzárendelés állandó kell lennie (csak az idő hozzárendelés/véglegesen aktív aktiválásához közvetlen hozzárendelés véglegesen jogosult). Adjon meg egy adott hozzárendelés időtartama, törölje a jelölőnégyzet és módosítása, illetve befejező dátum-és.
+A hozzárendelés típusa legördülő lista alatt egy jelölőnégyzet lehetővé teszi megadhatja, ha a hozzárendelés állandó (véglegesen aktiválására jogosulttá csak az idő hozzárendelés/véglegesen aktív közvetlen hozzárendelés). Egy adott hozzárendelés-időtartam megadása, törölje a jelölőnégyzet és módosíthatja a kezdő és/vagy záró dátum és időpont mezőket.
 
 >[!NOTE]
-Lehet, hogy a jelölőnégyzet unmodifiable, ha egy másik rendszergazda adta meg a maximális hozzárendelés időtartama, az egyes hozzárendelés szerepkör beállításai.
+A jelölőnégyzet unmodifiable, ha egy másik rendszergazda adta meg a hozzárendelés maximális időtartam minden hozzárendelés-típus a szerepkör-beállítások az is lehet.
 
 ![](media/azure-pim-resource-rbac/calendar.png)
 
-## <a name="view-activation-and-azure-resource-activity"></a>Aktiválás és az Azure erőforrás-tevékenység megtekintése
+## <a name="view-activation-and-azure-resource-activity"></a>Aktiválás és az Azure Resource-tevékenységek megtekintése
 
-Abban az esetben, ha egy adott felhasználó elvégez a különböző erőforrások mely műveletek van szüksége, áttekintheti a megadott aktiválási időszak (a jogosult felhasználók) társított Azure-erőforrás tevékenység. Indítsa el a tagok megtekintése vagy egy adott szerepkör tagjainak listája a felhasználó megadásával. Az eredmény a dátum a felhasználó Azure-erőforrások műveleteket, és a legutóbbi szerepkör aktiválások, hogy ugyanazon időszakra grafikus nézetet jelenít meg.
+Abban az esetben, ha meg, milyen műveletet egy adott felhasználó hajtott végre a különböző erőforrások van szüksége, áttekintheti az Azure Resource tevékenység társított egy adott aktiválási időszak (a jogosult felhasználók). Első lépésként válassza ki a felhasználó, a tagok megtekintése vagy egy adott szerepkör tagjainak listája. Az eredmény az Azure-erőforrások dátum szerint a felhasználói műveleteket, és ugyanazt az időszakra, hogy a legutóbbi szerepkör-aktiválások grafikus nézetet jelenít meg.
 
 ![](media/azure-pim-resource-rbac/user-details.png)
 
-Egy adott szerepkör aktiválása kiválasztásával jelennek meg a szerepkör aktiválása részleteit és a megfelelő Azure-erőforrás tevékenység történt, hogy a felhasználó active.
+Egy adott szerepkör-aktiválás kiválasztása jelennek meg a szerepkör aktiválásának részletei, és a megfelelő Azure-erőforrás tevékenység, amely történt, miközben a felhasználó volt aktív.
 
 ![](media/azure-pim-resource-rbac/audits.png)
 
-## <a name="modify-existing-assignments"></a>Módosítsa a meglévő hozzárendelést
+## <a name="modify-existing-assignments"></a>Meglévő hozzárendelések módosítása
 
-A felhasználó vagy csoport részletes nézete a meglévő hozzárendelést módosításához válassza a beállítások módosítása az műveletsávon az oldal tetején. Módosítsa a hozzárendelés-típus csak az idő-hozzárendelés vagy rendelését.
+A felhasználó/csoport részletes nézete a meglévő hozzárendelések módosításához válassza az oldal tetején a művelet sávon a beállítások módosítása. A hozzárendelés típusának módosítása csak az idő-hozzárendelés vagy közvetlen hozzárendelés.
 
 ![](media/azure-pim-resource-rbac/change-settings.png)
 
-## <a name="review-who-has-access-in-a-subscription"></a>Tekintse át, aki hozzáféréssel rendelkezik az előfizetés
+## <a name="review-who-has-access-in-a-subscription"></a>Tekintse át, aki hozzáféréssel rendelkezik az előfizetéshez
 
-Tekintse át a szerepkör-hozzárendelések az előfizetéshez, a tagok lapon válassza a bal oldali navigációs sávon, vagy jelölje ki a szerepköröket, és válasszon egy adott szerepkör tagjai áttekintése. 
+Tekintse át a szerepkör-hozzárendeléseket az előfizetésében, a tagok lapon válassza a bal oldali navigációs vagy szerepkörök kiválasztása, és válasszon egy adott szerepkör tagjai áttekintéséhez. 
 
-Válassza ki az műveletsávon Hozzáadás hozzon létre egy új tekintse át a meglévő hozzáférési értékelést megnézni és tekintse át.
+Válassza ki a tekintse át a meglévő hozzáférési felülvizsgálatok megtekintéséhez, és válassza a Hozzáadás létrehoz egy új, a művelet sávon.
 
 ![](media/azure-pim-resource-rbac/owner.png)
 
-[További tudnivalók a hozzáférés-ellenőrzés](../active-directory-privileged-identity-management-how-to-perform-security-review.md)
+[További információ a hozzáférési felülvizsgálatok](../active-directory-privileged-identity-management-how-to-perform-security-review.md)
 
 >[!NOTE]
-Ellenőrzések csak támogatottak előfizetés erőforrástípusok most.
+Értékelések jelenleg csak támogatottak előfizetés erőforrástípusok.
 
-## <a name="configure-role-settings"></a>Felhasználóiszerep-beállítások konfigurálása
+## <a name="configure-role-settings"></a>Szerepkör-beállítások konfigurálása
 
-Szerepkör beállításainak konfigurálásakor adja meg az alapértelmezett beállításokat alkalmazza a PIM környezetben hozzárendeléseket. Adja meg, ezek az erőforrás, válassza a beállítások lapon a bal oldali navigációs, vagy a szerepkör-beállítások gombra az műveletsávon bármely szerepkör a jelenlegi beállítások megtekintéséhez.
+Szerepkör-beállítások konfigurálásával az alapértelmezett beállításokat alkalmazza a PIM környezetben társításának határozza meg. Ezek az erőforrás megadásához válassza ki a szerepkör-beállítások lapon a bal oldali navigációs menüben, vagy a szerepkör-beállítások gomb bármely szerepkör a jelenlegi beállítások megtekintéséhez a művelet sávon.
 
-Az műveletsávon a lap tetején kattintson a Szerkesztés lehetővé teszi az egyes beállítások módosítását.
+A művelet sávon a lap tetején kattintson a Szerkesztés lehetővé teszi, hogy minden beállítás módosításához.
 
 ![](media/azure-pim-resource-rbac/owner.png)
 
 ![](media/azure-pim-resource-rbac/owner02.png)
 
-Beállítások módosításait is be vannak jelentkezve a szerepkör-beállítások lapon, beleértve az utolsó frissítés dátuma idő és a rendszergazdának, hogy a beállításai módosultak.
+Beállítások módosításait a szerepkör-beállítások lapon, a legutóbbi frissítés dátuma és a rendszergazda módosította a beállításokat, beleértve a rendszer naplózza.
 
 ![](media/azure-pim-resource-rbac/role-settings-02.png)
 
 ## <a name="resource-audit"></a>Erőforrás naplózása
 
-Erőforrás naplózási lehetővé teszi az összes szerepkör tevékenység az erőforrás nézetét. Az előre definiált dátum vagy egyéni tartomány információkat szűrheti is.
-![](media/azure-pim-resource-rbac/last-day.png) Erőforrás naplózási is megtekintheti a felhasználói tevékenység részletei gyors hozzáférést biztosít. A nézetben minden "Szerepkör aktiválásához" műveletek az adott kérelmezőnek erőforrástevékenység mutató hivatkozásokat tartalmaz.
+Erőforrás naplózása megtekintheti az összes szerepkör-tevékenység az erőforrás. Szűrheti az adatokat egy előre definiált dátum- vagy egyéni tartomány használatával.
+![](media/azure-pim-resource-rbac/last-day.png) Erőforrás naplózása is megtekintheti a felhasználói tevékenység részletei gyors hozzáférést biztosít. A nézetben minden "A szerepkör aktiválása" műveletek az adott kérelmező erőforrástevékenység mutató hivatkozásokat.
 ![](media/azure-pim-resource-rbac/resource-audit.png)
 
 ## <a name="just-enough-administration"></a>Éppen elég felügyelettel
 
-A éppen elegendő (JEA) felügyeleti gyakorlati tanácsok a erőforrás szerepkör-hozzárendelések érték használata egyszerű, Azure-erőforrások PIM. Felhasználók és az Azure-előfizetésekhez vagy erőforrás-csoportok a csoport tagjai aktiválhatják a meglévő szerepkör-hozzárendelés csökkentett hatókörben. 
+A PIM Használatát az Azure-erőforrások egyszerű éppen elegendő administration (JEA) ajánlott eljárások használata az erőforrás szerepkör-hozzárendelések. Felhasználók és az Azure-előfizetések vagy erőforráscsoportok hozzárendelésekkel csoporttagok aktiválhatja a meglévő szerepkör-hozzárendelés egy csökkentett hatókörben. 
 
-A lapon, a kezeléséhez szükséges alárendelt erőforrás található.
+A keresés lapon keresse meg az alárendelt erőforrás kezeléséhez szükséges.
 
 ![](media/azure-pim-resource-rbac/azure-resources-02.png)
 
-Jelöljön ki a bal oldali navigációs menü a szerepkört, és válassza ki a megfelelő szerepkört aktiválja. Figyelje meg a hozzárendelés-típus örökölt, mert a szerepkör a lent látható módon az erőforráscsoportot, hanem az előfizetés kapott.
+Válassza ki a saját szerepkörök a bal oldali navigációs menüben, és válassza ki a megfelelő szerepkört aktiválja. Figyelje meg a hozzárendelés típusa örökölt, mivel a szerepkör hozzá volt rendelve az előfizetés, nem pedig az erőforráscsoport, a lent látható módon.
 
 ![](media/azure-pim-resource-rbac/my-roles-02.png)
 
 ## <a name="next-steps"></a>További lépések
 
-- [Beépített szerepkörök az Azure-erőforrások](../../role-based-access-control/built-in-roles.md)
-- További tudnivalók [itt az Azure AD-szerepkörök aktiválása](../active-directory-privileged-identity-management-how-to-activate-role.md)
-- [A PIM jóváhagyási munkafolyamatok](azure-ad-pim-approval-workflow.md)
+- [Az Azure-erőforrások beépített szerepkörök](../../role-based-access-control/built-in-roles.md)
+- Ismerje meg [itt az Azure AD-szerepkörök aktiválása](../active-directory-privileged-identity-management-how-to-activate-role.md)
+- [A PIM jóváhagyási munkafolyamatokat](azure-ad-pim-approval-workflow.md)

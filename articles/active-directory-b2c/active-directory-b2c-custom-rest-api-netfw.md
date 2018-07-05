@@ -1,92 +1,92 @@
 ---
-title: REST API jogcím cseréje az az Azure Active Directory B2C felhasználói út integrálása |} Microsoft Docs
-description: REST API jogcím cseréje a Azure AD B2C felhasználói használatában az integrálását, felhasználói bevitel ellenőrzése.
+title: REST API-val jogcím cseréje az Azure Active Directory B2C felhasználói interakciósorozatban szereplő integrálása |} A Microsoft Docs
+description: Integrálja a REST API-val jogcím cseréje az Azure AD B2C felhasználói interakciósorozatban szereplő, a felhasználói bevitel ellenőrzése.
 services: active-directory-b2c
 author: davidmu1
 manager: mtillman
 ms.service: active-directory
 ms.workload: identity
-ms.topic: article
+ms.topic: conceptual
 ms.date: 09/30/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: e17647016da0e877bd8f21357a4bd38121820f22
-ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
+ms.openlocfilehash: ab91fd9ffac48a7fafbfd6e518e863ee057c6b43
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "34709359"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37448009"
 ---
-# <a name="integrate-rest-api-claims-exchanges-in-your-azure-ad-b2c-user-journey-as-validation-of-user-input"></a>Az Azure AD B2C felhasználói út a REST API jogcímek cseréjét integrálása, felhasználói bevitel ellenőrzése
+# <a name="integrate-rest-api-claims-exchanges-in-your-azure-ad-b2c-user-journey-as-validation-of-user-input"></a>A felhasználói adatbevitel auditáló REST API-val jogcím cseréje az Azure AD B2C felhasználói interakciósorozatban szereplő integrálása
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-A identitás élmény keretrendszerrel, amelynek alapjául szolgáló Azure Active Directory B2C (az Azure AD B2C), integrálható egy RESTful API-nak felhasználói út. Ez a forgatókönyv megtudhatja, hogyan kommunikál az Azure AD B2C .NET-keretrendszer RESTful szolgáltatás (webes API-k).
+Az az identitás-kezelőfelületi keretrendszer, amely alapjául szolgál az Azure Active Directory B2C (Azure AD B2C) integrálható egy felhasználói interakciósorozat egy RESTful API-val. Ebben az útmutatóban megismerheti, hogyan kommunikál az Azure AD B2C-vel .NET-keretrendszer RESTful services (webes API-t).
 
 ## <a name="introduction"></a>Bevezetés
-Az Azure AD B2C segítségével adhat hozzá a saját üzleti logika felhasználói út saját RESTful szolgáltatás meghívásával. Az identitás élmény keretrendszer adatokat küld a RESTful szolgáltatás egy *bemeneti jogcímek* gyűjtemény és kap vissza adatokat a RESTful egy *kimeneti jogcímek* gyűjtemény. Az integráció RESTful szolgáltatás a következőket teheti:
+Saját RESTful szolgáltatás hívása az Azure AD B2C használatával saját üzleti logikája is hozzáadhat egy felhasználói interakciósorozat. Az identitás-kezelőfelületi keretrendszer a RESTful szolgáltatás adatokat küld egy *bemeneti jogcímek* gyűjtemény, valamint adatokat fogad visszaküldi a RESTful- *kimeneti jogcímek* gyűjtemény. RESTful szolgáltatás integrációnak köszönhetően a következőket teheti:
 
-* **Felhasználói bemeneti adatok érvényesítése**: Ez a művelet nem megfelelően formázott megakadályozza az Azure AD-be megőrzése. Ha a felhasználó az érték nem érvényes, a RESTful szolgáltatás olyan hibaüzenetet, amely arra utasítja a felhasználónak meg kell adnia egy bejegyzést ad vissza. Ellenőrizheti például, hogy az a felhasználó által megadott e-mail cím létezik a felhasználói adatbázisban.
-* **Felülírja a bemeneti jogcímek**: például, ha a felhasználó utónevét adja az összes kis-és kisbetűket, a név a formázhatók csak az első betűje nagybetű.
-* **Felhasználói adatok kiegészítése és vállalati-üzleti alkalmazások további integrálásával**: A RESTful szolgáltatás is kap a felhasználó e-mail címét, a felhasználói adatbázis lekérdezése, és térjen vissza a felhasználói hűség számát az Azure AD B2C. A visszatérési jogcímek a felhasználó Azure AD-fiókot, a következő kiértékelése tárolhatja *Vezénylési lépésekből*, vagy a hozzáférési jogkivonat szerepel.
-* **Futtassa az üzleti logika**: is leküldéses értesítések küldéséhez, vállalati adatbázisok frissítése, futtatja a felhasználói áttelepítési folyamat, kezeli az engedélyeket, naplózási adatbázisokat, és egyéb műveleteket hajthat végre.
+* **Felhasználó által bevitt adatok érvényesítéséhez**: Ez a művelet megakadályozza, hogy a hibás formátumú adatok megőrzése az Azure AD-be. Ha az érték a felhasználó nem érvényes, a RESTful szolgáltatás, amely felszólítja a felhasználót egy bejegyzést adjon meg a hibaüzenetet adja vissza. Ellenőrizheti például, hogy az a felhasználó által megadott e-mail-cím szerepel-e a felhasználó-adatbázisa alapján.
+* **Írja felül a bemeneti jogcímek között**: például a felhasználó utónevét kisbetűkből vagy a nagybetűs betűkkel ad, ha a név a formázhatók csak az első betűje nagybetű.
+* **Felhasználói adatokat feldúsítani a vállalati – üzletági alkalmazások további integrálásával**: A RESTful szolgáltatás is kap a felhasználó e-mail címét, az ügyfél adatbázisához lekérdezése és az Azure AD B2C-vel a felhasználói hűség szám visszaadása. A visszaadandó jogcímek a felhasználó Azure AD-fiókot, a következő kiértékelése tárolhatja *Vezénylési lépésekből*, vagy a hozzáférési jogkivonatot tartalmazza.
+* **Egyéni üzleti logika futtatása**:, is leküldéses értesítések küldése, vállalati adatbázisok frissítése, felhasználó migrálási folyamat futtatása, kezelheti az engedélyeiket, adatbázis naplózási és egyéb műveleteket hajthat végre.
 
-Az integráció a RESTful-szolgáltatásokat a kialakítani a következőképpen:
+Megtervezheti a REST-alapú szolgáltatásokkal való integrációt, a következő módon:
 
-* **Ellenőrzési műszaki profil**: a megadott műszaki profil az érvényesítési műszaki profilon belül történik a RESTful szolgáltatás hívása. Az ellenőrzési műszaki profil ellenőrzi a felhasználó által megadott előtt a felhasználó út továbblép. Az érvényesítési műszaki profillal a következőket teheti:
+* **Ellenőrzési technikai profil**: a RESTful szolgáltatás hívása az érvényesítési technikai profilban megadott technikai profil belül történik. Az ellenőrzési technikai profil ellenőrzi a felhasználó által megadott felhasználói interakciósorozat előrelépés előtt. Az ellenőrzési technikai profil segítségével:
    * A bemeneti jogcímek küldése.
-   * Ellenőrizze a bemeneti jogcímek, és az egyéni hibaüzenetek helyi kivételt.
+   * Ellenőrizze a bemeneti jogcímek között, és egyéni hibaüzenetek throw.
    * Vissza a kimeneti jogcímek küldése.
 
-* **Exchange-jogcímek**: Ez a kialakítás hasonló műszaki érvényességi profilt, de az orchestration lépés belül történik. Ez a definíció korlátozva:
+* **Az exchange-jogcímek**: Ez a kialakítás az érvényesítési technikai profil hasonló, de azt egy vezénylési lépés belül történik. Ez a definíció korlátozva:
    * A bemeneti jogcímek küldése.
    * Vissza a kimeneti jogcímek küldése.
 
-## <a name="restful-walkthrough"></a>RESTful forgatókönyv
-Ebben a bemutatóban a .NET-keretrendszer webes API-t, amely érvényesíti a felhasználó által megadott, és számos olyan felhasználói hűség fejlesztéséhez. Például az alkalmazás hozzáférési jogosultságot tud biztosítani *platinum előnyöket* hűség száma alapján.
+## <a name="restful-walkthrough"></a>REST-alapú forgatókönyv
+Ez az útmutató a .NET-keretrendszer webes API, a felhasználói bevitel érvényesíti, és számos olyan felhasználói hűség fejleszthet. Ha például az alkalmazás adhat hozzáférést *platinum előnyöket* hűségprogramok használatán keresztül száma alapján.
 
 Áttekintés:
-* A RESTful szolgáltatás (.NET-keretrendszer webes API-k) fejlesztéséhez.
-* A RESTful szolgáltatás használata a felhasználói út.
-* A bemeneti jogcímek küldése és olvashatja őket a kódban.
+* Fejlesztés a RESTful szolgáltatás (.NET-keretrendszer webes API-t).
+* A RESTful szolgáltatás használata a felhasználói interakciósorozatban szereplő.
+* A bemeneti jogcímek küldése és olvashatja őket a kód.
 * Ellenőrizze a felhasználó utónevét.
-* Küldött hűség számnak. 
-* Adja hozzá a hűség számát a egy JSON webes jogkivonat (JWT).
+* Küldjön vissza hűségprogramok használatán keresztül szám. 
+* Adja hozzá a hűségprogramok használatán keresztül számot, egy JSON webes jogkivonat (JWT).
 
 ## <a name="prerequisites"></a>Előfeltételek
-Hajtsa végre a a [Ismerkedés az egyéni házirendek](active-directory-b2c-get-started-custom.md) cikk.
+A lépések elvégzéséhez a [Ismerkedés az egyéni szabályzatok](active-directory-b2c-get-started-custom.md) cikk.
 
-## <a name="step-1-create-an-aspnet-web-api"></a>1. lépés: Egy ASP.NET web API létrehozása
+## <a name="step-1-create-an-aspnet-web-api"></a>1. lépés: Az ASP.NET webes API létrehozása
 
-1. A Visual Studio-projekt létrehozása kiválasztásával **fájl** > **új** > **projekt**.
+1. A Visual Studióban hozzon létre egy projektet kiválasztásával **fájl** > **új** > **projekt**.
 
-2. Az a **új projekt** ablakban válassza ki **Visual C#** > **webes** > **ASP.NET Web Application (.NET-keretrendszer)**.
+2. Az a **új projekt** ablakban válassza **Visual C#** > **webes** > **ASP.NET Web Application (.NET Framework)**.
 
 3. Az a **neve** mezőbe írja be az alkalmazás nevét (például *Contoso.AADB2C.API*), majd válassza ki **OK**.
 
     ![Új visual studio-projekt létrehozása](media/aadb2c-ief-rest-api-netfw/aadb2c-ief-rest-api-netfw-create-project.png)
 
-4. Az a **új ASP.NET-webalkalmazás** ablakban válassza ki a **Web API** vagy **Azure API app** sablont.
+4. Az a **új ASP.NET-webalkalmazás** ablakban válassza ki a **webes API** vagy **Azure API-alkalmazás** sablon.
 
     ![Webes API-sablon kiválasztása](media/aadb2c-ief-rest-api-netfw/aadb2c-ief-rest-api-netfw-select-web-api.png)
 
-5. Győződjön meg arról, hogy a hitelesítési értéke **nem hitelesítési**.
+5. Győződjön meg arról, hogy a hitelesítés értéke **nincs hitelesítés**.
 
 6. Válassza ki **OK** a projekt létrehozásához.
 
-## <a name="step-2-prepare-the-rest-api-endpoint"></a>2. lépés: Felkészülés a REST API-végpont
+## <a name="step-2-prepare-the-rest-api-endpoint"></a>2. lépés: Készítse elő a REST API-végpont
 
-### <a name="step-21-add-data-models"></a>2.1. lépés: Az adatmodell hozzáadása
-A minta a bemeneti jogcímek, és a kimeneti jogcímek a RESTful szolgáltatás adatokat. A kód beolvassa a bemeneti adatok deszerializálása során a bemeneti jogcímek modell JSON karakterláncnak egy C#-objektum (típus) által. Az ASP.NET web API automatikusan deserializes a kimeneti jogcímek modell vissza a JSON és a szerializált adatok majd ír a HTTP-válasz üzenet törzsét. 
+### <a name="step-21-add-data-models"></a>2.1. lépés: Az adatmodellek hozzáadása
+A modellek felel meg a bemeneti jogcímek között, és a kimeneti jogcím-adatok a REST-alapú service-ben. A kód beolvassa a bemeneti adatok deszerializálása során a bemeneti jogcímek között modell egy JSON-karakterlánc egy C#-objektumot (a modell) által. Az ASP.NET web API automatikusan deserializes a kimeneti jogcímek modell vissza a JSON és a szerializált adatok ezután ír a HTTP-válaszüzenet törzsében. 
 
-Hozzon létre egy modell a bemeneti jogcímek a következő módon:
+Hozzon létre egy modell a bemeneti jogcímek között az alábbiak szerint:
 
-1. Ha még nincs megnyitva Megoldáskezelőben, válassza ki **nézet** > **Megoldáskezelőben**. 
+1. Ha Megoldáskezelőben még nem nyitott, válassza ki a **nézet** > **Megoldáskezelőben**. 
 2. A Solution Explorer (Megoldáskezelő) ablakában kattintson a jobb gombbal a **Models** (Modellek) mappára, kattintson az **Add** (Hozzáadás) parancsra, majd kattintson a **Class** (Osztály) gombra.
 
     ![Modell hozzáadása](media/aadb2c-ief-rest-api-netfw/aadb2c-ief-rest-api-netfw-add-model.png)
 
-3. Az osztály neve `InputClaimsModel`, majd vegye fel a következő tulajdonságokat és a `InputClaimsModel` osztály:
+3. Az osztály neve `InputClaimsModel`, majd adja hozzá a következő tulajdonságokat a `InputClaimsModel` osztály:
 
     ```csharp
     namespace Contoso.AADB2C.API.Models
@@ -100,7 +100,7 @@ Hozzon létre egy modell a bemeneti jogcímek a következő módon:
     }
     ```
 
-4. Hozzon létre egy új modell `OutputClaimsModel`, majd vegye fel a következő tulajdonságokat és a `OutputClaimsModel` osztály:
+4. Hozzon létre egy új modell `OutputClaimsModel`, majd adja hozzá a következő tulajdonságokat a `OutputClaimsModel` osztály:
 
     ```csharp
     namespace Contoso.AADB2C.API.Models
@@ -112,7 +112,7 @@ Hozzon létre egy modell a bemeneti jogcímek a következő módon:
     }
     ```
 
-5. Hozzon létre egy további modell `B2CResponseContent`, melynek segítségével throw bemenet-ellenőrzési hibaüzenetek. Vegye fel a következő tulajdonságokat a `B2CResponseContent` osztály, adja meg a hiányzó hivatkozások, és mentse a fájlt:
+5. Hozzon létre egy további modell `B2CResponseContent`, amellyel throw bemenet-ellenőrzés hibaüzenetek. Adja hozzá a következő tulajdonságot a `B2CResponseContent` osztályban adja meg a hiányzó hivatkozásokat, és mentse a fájlt:
 
     ```csharp
     namespace Contoso.AADB2C.API.Models
@@ -134,23 +134,23 @@ Hozzon létre egy modell a bemeneti jogcímek a következő módon:
     ```
 
 ### <a name="step-22-add-a-controller"></a>2.2. lépés: A vezérlő hozzáadása
-A webes API-t egy _vezérlő_ olyan objektum, amely HTTP-kérelmeket kezeli. A vezérlő adja vissza a kimeneti jogcímek, vagy a Keresztnév megadása nem érvényes, ha egy ütköző HTTP-hibaüzenetet jelez.
+A webes API-hoz egy _vezérlő_ olyan objektum, amely HTTP-kéréseket. A vezérlő adja vissza a kimeneti jogcímek, vagy az első név nem érvényes, ha egy ütköző HTTP-hibaüzenetet jelez.
 
 1. A Solution Explorer (Megoldáskezelő) ablakában kattintson a jobb gombbal a **Controllers** (Vezérlők) mappára, kattintson az **Add** (Hozzáadás) parancsra, majd kattintson a **Controller** (Vezérlő) gombra.
 
-    ![Új tartományvezérlő](media/aadb2c-ief-rest-api-netfw/aadb2c-ief-rest-api-netfw-add-controller-1.png)
+    ![Új vezérlő felvétele](media/aadb2c-ief-rest-api-netfw/aadb2c-ief-rest-api-netfw-add-controller-1.png)
 
-2. Az a **hozzáadása Scaffold** ablakban válassza ki **webes API-vezérlő - üres**, majd válassza ki **Hozzáadás**.
+2. Az a **hozzáadása Scaffold** ablakban válassza **webes API-vezérlő - üres**, majd válassza ki **Hozzáadás**.
 
-    ![Válassza ki a Web API 2 vezérlő - üres](media/aadb2c-ief-rest-api-netfw/aadb2c-ief-rest-api-netfw-add-controller-2.png)
+    ![Válassza ki webes API 2 vezérlő – üres](media/aadb2c-ief-rest-api-netfw/aadb2c-ief-rest-api-netfw-add-controller-2.png)
 
-3. Az a **vezérlő hozzáadása** ablakban, a tartományvezérlő nevét **IdentityController**, majd válassza ki **Hozzáadás**.
+3. Az a **vezérlő hozzáadása** ablakban, a vezérlő neve **IdentityController**, majd válassza ki **Hozzáadás**.
 
-    ![Írja be a tartományvezérlő neve](media/aadb2c-ief-rest-api-netfw/aadb2c-ief-rest-api-netfw-add-controller-3.png)
+    ![Írja be a vezérlő neve](media/aadb2c-ief-rest-api-netfw/aadb2c-ief-rest-api-netfw-add-controller-3.png)
 
-    A állványok létrehoz egy nevű fájlt *IdentityController.cs* a a *tartományvezérlők* mappát.
+    A keret létrehozásához létrehoz egy fájlt *IdentityController.cs* a a *tartományvezérlők* mappát.
 
-4. Ha a *IdentityController.cs* fájl még nincs nyitva, kattintson rá duplán, és akkor cserélje le a fájlban lévő kódot az alábbira:
+4. Ha a *IdentityController.cs* fájlban még nem nyitott, és kattintson rá duplán, majd cserélje le a fájlban lévő kódot az alábbira:
 
     ```csharp
     using Contoso.AADB2C.API.Models;
@@ -204,30 +204,30 @@ A webes API-t egy _vezérlő_ olyan objektum, amely HTTP-kérelmeket kezeli. A v
     ```
 
 ## <a name="step-3-publish-the-project-to-azure"></a>3. lépés: A projekt közzététele az Azure-bA
-1. A Megoldáskezelőben kattintson a jobb gombbal a **Contoso.AADB2C.API** projektre, majd válassza ki **közzététel**.
+1. A Megoldáskezelőben kattintson a jobb gombbal a **Contoso.AADB2C.API** projektre, és válassza ki **közzététel**.
 
-    ![A Microsoft Azure App Service közzététele](media/aadb2c-ief-rest-api-netfw/aadb2c-ief-rest-api-netfw-publish-to-azure-1.png)
+    ![A Microsoft Azure App Service-ben való közzététele](media/aadb2c-ief-rest-api-netfw/aadb2c-ief-rest-api-netfw-publish-to-azure-1.png)
 
-2. Az a **közzététel** ablakban válassza ki **Microsoft Azure App Service**, majd válassza ki **közzététel**.
+2. Az a **közzététel** ablakban válassza **Microsoft Azure App Service**, majd válassza ki **közzététel**.
 
     ![Hozzon létre új Microsoft Azure App Service](media/aadb2c-ief-rest-api-netfw/aadb2c-ief-rest-api-netfw-publish-to-azure-2.png)
 
-    A **létrehozása az App Service** ablak nyílik meg. Az oktatóanyagban hoz létre minden a szükséges Azure-erőforrások futtatni az ASP.NET webalkalmazás az Azure-ban.
+    A **létrehozása App Service** ablak nyílik meg. Az összes szükséges Azure-erőforrást az ASP.NET-webalkalmazás futtatása az Azure-ban létrehoz.
 
     > [!NOTE]
-    >Közzététele kapcsolatos további információkért lásd: [egy ASP.NET-webalkalmazás létrehozása az Azure-ban](https://docs.microsoft.com/azure/app-service-web/app-service-web-get-started-dotnet#publish-to-azure).
+    >Hogyan tehet közzé kapcsolatos további információkért lásd: [ASP.NET-webalkalmazás létrehozása az Azure-ban](https://docs.microsoft.com/azure/app-service-web/app-service-web-get-started-dotnet#publish-to-azure).
 
-3. Az a **webalkalmazásnév** mezőbe írja be egy egyedi alkalmazásnévvel (érvényes karakterek: a – z, 0-9 és kötőjelet (-). A webalkalmazás URL-címe http://<app_name>.azurewebsites.NET, ahol *Alkalmazás_neve* a webes alkalmazás neve. Elfogadhatja az automatikusan létrehozott nevet is, amely már egyedi.
+3. Az a **webalkalmazás neve** mezőbe írja be egy egyedi névre (érvényes karakterek: a – z, 0 – 9 és kötőjelet (-). A webalkalmazás URL-je http://<app_name>.azurewebsites.NET, ahol *app_name* a webalkalmazás neve. Elfogadhatja az automatikusan létrehozott nevet is, amely már egyedi.
 
-    ![Adja meg az App Service tulajdonságokat](media/aadb2c-ief-rest-api-netfw/aadb2c-ief-rest-api-netfw-publish-to-azure-3.png)
+    ![Adja meg a tulajdonságokat App Service-ben](media/aadb2c-ief-rest-api-netfw/aadb2c-ief-rest-api-netfw-publish-to-azure-3.png)
 
-4. Azure-erőforrások létrehozása elindításához válassza ki a **létrehozása**.  
-    Az ASP.NET-webalkalmazás létrehozása után a varázsló közzéteszi azokat az Azure-ba, és ezután elindítja az alkalmazás az alapértelmezett böngésző.
+4. Azure-erőforrások létrehozását, jelölje **létrehozás**.  
+    Az ASP.NET-webalkalmazás létrehozása után a varázsló közzéteszi az Azure-ba, és elindítja az alkalmazást az alapértelmezett böngészőben.
 
-6. Másolja a webes alkalmazás URL-címet.
+6. Másolja a web app URL-címet.
 
-## <a name="step-4-add-the-new-loyaltynumber-claim-to-the-schema-of-your-trustframeworkextensionsxml-file"></a>4. lépés: Adja hozzá az új `loyaltyNumber` állítja, hogy a séma a TrustFrameworkExtensions.xml fájl
-A `loyaltyNumber` jogcím még nincs definiálva a sémában. Adjon meg definíciót belül a `<BuildingBlocks>` elem, amely elején található a *TrustFrameworkExtensions.xml* fájlt.
+## <a name="step-4-add-the-new-loyaltynumber-claim-to-the-schema-of-your-trustframeworkextensionsxml-file"></a>4. lépés: Adja hozzá az új `loyaltyNumber` jogcímet a TrustFrameworkExtensions.xml fájl sémája
+A `loyaltyNumber` jogcím még nem határozott meg a sémában. Adja hozzá belül definícióját a `<BuildingBlocks>` elemet, amely elején annak a *TrustFrameworkExtensions.xml* fájlt.
 
 ```xml
 <BuildingBlocks>
@@ -241,22 +241,22 @@ A `loyaltyNumber` jogcím még nincs definiálva a sémában. Adjon meg definíc
 </BuildingBlocks>
 ```
 
-## <a name="step-5-add-a-claims-provider"></a>5. lépés: A jogcím-szolgáltató hozzáadása 
-Minden jogcím-szolgáltató egy vagy több műszaki profilok, amelyek megadják a végpontok és a jogcímszolgáltató folytatott kommunikációhoz szükséges protokollok kell rendelkeznie. 
+## <a name="step-5-add-a-claims-provider"></a>5. lépés: A jogcímeket szolgáltató hozzáadása 
+Minden jogcím-szolgáltatói rendelkeznie kell egy vagy több technikai profilok, amelyek meghatározzák a végpontok és a jogcímszolgáltató folytatott kommunikációhoz szükséges protokollok. 
 
-A jogcím-szolgáltató különböző okokból rendelkezhet több műszaki profil. Például több műszaki profil előfordulhat, hogy lehet megadni, mert a jogcím-szolgáltató több protokollt is támogat, végpontok is rendelkezik különböző képességeket vagy kiadásokban megbízhatósági szintek számos jogcímeket is tartalmazhat. Bizalmas jogcím egy felhasználó út, de nem egy másik kibocsátási elfogadható lehet. 
+Jogcím-szolgáltatóktól rendelkezhet több technikai profil különböző okok miatt. Például több technikai profil definiálhatók a jogcímszolgáltató több protokollt is támogat, végpontok különböző képességekkel is rendelkeznek, vagy hogy kiadásokban is tartalmazhat, amely számos különböző biztonsági szintek jogcímeket. Egy felhasználói interakciósorozatban szereplő, de nem a másik bizalmas jogcímeket kiadni elfogadható lehet. 
 
-A következő XML-részletet két műszaki profil a jogcímeket szolgáltató csomópontokat tartalmazza:
+A következő XML-kódrészlet két technikai profil a jogcímeket szolgáltató csomópontot tartalmaz:
 
-* **TechnicalProfile Id = "REST-API-SignUp"**: határozza meg a RESTful szolgáltatás. 
-   * `Proprietary` leírt protokollt a RESTful-alapú szolgáltató. 
-   * `InputClaims` határozza meg a jogcímeket, amely a REST-szolgáltatást az Azure AD B2C kapnak. 
+* **TechnicalProfile Id = "REST-API-SignUp"**: határozza meg azt a REST-alapú szolgáltatást. 
+   * `Proprietary` ismertetjük a protokoll egy RESTful-alapú szolgáltató. 
+   * `InputClaims` határozza meg a jogcímeket küld az Azure AD B2C-ből a REST-szolgáltatást. 
 
-   Ebben a példában a tartalom a jogcím `givenName` küld a többi szolgáltatás `firstName`, a tartalom a jogcím `surname` küld a többi szolgáltatás `lastName`, és `email` esetben van. A `OutputClaims` elem definiálja a jogcímeket a rendszer beolvassa az RESTful szolgáltatás vissza az Azure AD B2C.
+   Ebben a példában a tartalom a jogcím `givenName` küld a REST-szolgáltatás, mint `firstName`, a tartalom a jogcím `surname` küld a REST-szolgáltatás, mint `lastName`, és `email` , küld. A `OutputClaims` elem definiálja a jogcímek lekért RESTful szolgáltatás vissza az Azure AD B2C-t.
 
-* **TechnicalProfile Id = "LocalAccountSignUpWithLogonEmail"**: technikai érvényesítési profil hozzáadása egy meglévő műszaki profilt (alap a házirendben meghatározott). Az előfizetési út során az érvényesítési műszaki profil hív meg az előző műszaki profil. Ha a RESTful szolgáltatás hibát jelez a HTTP 409 (ütközés hiba), a hibaüzenet jelenik meg a felhasználó számára. 
+* **TechnicalProfile Id = "LocalAccountSignUpWithLogonEmail"**: egy érvényesítési technikai profil ad hozzá egy meglévő technikai profilban (alap szabályzatban definiált). A regisztrációs folyamatok során az érvényesítési technikai profil a korábbi technikai profil hív meg. Ha a RESTful szolgáltatás hibát jelez a HTTP 409 (ütközés hiba), a hibaüzenet jelenik meg a felhasználó számára. 
 
-Keresse meg a `<ClaimsProviders>` csomópontot, majd adja hozzá a következő XML-részletet alatt a `<ClaimsProviders>` csomópont:
+Keresse meg a `<ClaimsProviders>` csomópontot, majd adja hozzá a következő XML-részletet a `<ClaimsProviders>` csomópont:
 
 ```xml
 <ClaimsProvider>
@@ -297,10 +297,10 @@ Keresse meg a `<ClaimsProviders>` csomópontot, majd adja hozzá a következő X
 </ClaimsProvider>
 ```
 
-## <a name="step-6-add-the-loyaltynumber-claim-to-your-relying-party-policy-file-so-the-claim-is-sent-to-your-application"></a>6. lépés: Adja hozzá a `loyaltyNumber` állítja, hogy a függő entitás házirendfájlt, a jogcím kap az alkalmazáshoz
-Szerkessze a *SignUpOrSignIn.xml* függő entitásonkénti (RP) fájlt, és módosítsa a TechnicalProfile Id = "PolicyProfile" elemet adja hozzá a következő: `<OutputClaim ClaimTypeReferenceId="loyaltyNumber" />`.
+## <a name="step-6-add-the-loyaltynumber-claim-to-your-relying-party-policy-file-so-the-claim-is-sent-to-your-application"></a>6. lépés: Adja hozzá a `loyaltyNumber` jogcím a függő entitás házirendfájlt, így az a jogcím megkap az alkalmazás
+Szerkessze a *SignUpOrSignIn.xml* függő entitásonkénti (RP) fájlt, és módosítsa a TechnicalProfile azonosító = "PolicyProfile" elemet, adja hozzá a következő: `<OutputClaim ClaimTypeReferenceId="loyaltyNumber" />`.
 
-Miután hozzáadta az új jogcím, a függő entitás kód néz ki:
+Miután az új jogcímet ad hozzá, a függő entitás kód a következőhöz hasonló:
 
 ```xml
 <RelyingParty>
@@ -323,39 +323,39 @@ Miután hozzáadta az új jogcím, a függő entitás kód néz ki:
 </TrustFrameworkPolicy>
 ```
 
-## <a name="step-7-upload-the-policy-to-your-tenant"></a>7. lépés: Töltse fel a házirend a bérlő
+## <a name="step-7-upload-the-policy-to-your-tenant"></a>7. lépés: A szabályzat feltöltése a bérlőhöz
 
-1. A a [Azure-portálon](https://portal.azure.com), váltson a [az Azure AD B2C-bérlő kontextusában](active-directory-b2c-navigate-to-b2c-context.md), majd nyissa meg **az Azure AD B2C**.
+1. Az a [az Azure portal](https://portal.azure.com), váltson át a [az Azure AD B2C-bérlője kontextusában](active-directory-b2c-navigate-to-b2c-context.md), majd nyissa meg **Azure AD B2C-vel**.
 
-2. Válassza ki **identitás élmény keretrendszer**.
+2. Válassza ki **identitás-kezelőfelületi keretrendszer**.
 
-3. Nyissa meg **házirend**. 
+3. Nyissa meg **összes szabályzat**. 
 
-4. Válassza ki **házirend feltöltése**.
+4. Válassza ki **szabályzat feltöltése**.
 
-5. Válassza ki a **felülírja a házirendet, ha létezik** jelölőnégyzetet.
+5. Válassza ki a **szabályzat felülírása, ha létezik** jelölőnégyzetet.
 
-6. Töltse fel a TrustFrameworkExtensions.xml fájlt, és győződjön meg arról, hogy ellenőrzése sikeres.
+6. Töltse fel a TrustFrameworkExtensions.xml fájlt, és győződjön meg arról, hogy érvényesítési továbbítja.
 
-7. Ismételje meg az előző lépést az SignUpOrSignIn.xml fájllal.
+7. Ismételje meg az előző lépés SignUpOrSignIn.xml-fájllal.
 
-## <a name="step-8-test-the-custom-policy-by-using-run-now"></a>8. lépés: Az egyéni házirend tesztelése Futtatás most használatával
-1. Válassza ki **az Azure AD B2C beállítások**, majd lépjen **identitás élmény keretrendszer**.
+## <a name="step-8-test-the-custom-policy-by-using-run-now"></a>8. lépés: Az egyéni házirend tesztelése a Futtatás most
+1. Válassza ki **Azure AD B2C-beállítások**, majd lépjen **identitás-kezelőfelületi keretrendszer**.
 
     > [!NOTE]
-    > **Futtassa most** legalább egy alkalmazás a tenant preregistered lehet szükséges. Megtudhatja, hogyan kell regisztrálni az alkalmazások, tekintse meg az Azure AD B2C [Ismerkedés](active-directory-b2c-get-started.md) cikk vagy a [regisztrációja](active-directory-b2c-app-registration.md) cikk.
+    > **Futtatás most** kell előzetesen regisztrálva, a bérlő legalább egy alkalmazás szükséges. Megtudhatja, hogyan regisztrálja az alkalmazást, tekintse meg az Azure AD B2C [Ismerkedés](active-directory-b2c-get-started.md) cikk vagy a [alkalmazásregisztráció](active-directory-b2c-app-registration.md) cikk.
 
-2. Nyissa meg **B2C_1A_signup_signin**, a függő entitásonkénti (RP) egyéni házirend feltöltött, és válassza **futtatása most**.
+2. Nyissa meg **B2C_1A_signup_signin**, a függő entitásonkénti (RP) egyéni-szabályzattal, feltöltött, és válassza ki **Futtatás most**.
 
     ![A B2C_1A_signup_signin ablak](media/aadb2c-ief-rest-api-netfw/aadb2c-ief-rest-api-netfw-run.png)
 
-3. A folyamat ellenőrzéséhez írja be a **teszt** a a **Utónév** mezőbe.  
-    Az Azure AD B2C hibaüzenet jelenik meg a az ablak tetején.
+3. Írja be a folyamat teszteléséhez **teszt** a a **Utónév** mezőbe.  
+    Az Azure AD B2C hibaüzenetet jelenít meg az ablak tetején.
 
     ![A házirend tesztelése](media/aadb2c-ief-rest-api-netfw/aadb2c-ief-rest-api-netfw-test.png)
 
 4.  Az a **Utónév** mezőbe írjon be egy nevet (nem a "Test").  
-    Az Azure AD B2C a felhasználó regisztrál, és ezután elküldi a loyaltyNumber az alkalmazáshoz. Megjegyzés: a szám a jwt-t.
+    Az Azure AD B2C a felhasználó regisztrál, és a egy loyaltyNumber és az alkalmazás továbbítja. Vegye figyelembe a JWT szereplő számot.
 
 ```
 {
@@ -378,10 +378,10 @@ Miután hozzáadta az új jogcím, a függő entitás kód néz ki:
 }
 ```
 
-## <a name="optional-download-the-complete-policy-files-and-code"></a>(Választható) A teljes házirend fájlok és a kód letöltése
-* Miután elvégezte a [Ismerkedés az egyéni házirendek](active-directory-b2c-get-started-custom.md) forgatókönyv, azt javasoljuk, hogy a saját egyéni házirend-fájlok használatával történő létrehozása adott esetben. Referenciaként a adtunk [házirendfájljait minta](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/scenarios/aadb2c-ief-rest-api-netfw).
-* Letöltheti a teljes kód látható a [minta Visual Studio megoldás referenciaként](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/scenarios/aadb2c-ief-rest-api-netfw/).
+## <a name="optional-download-the-complete-policy-files-and-code"></a>(Nem kötelező) A teljes házirend fájlok és a kód letöltése
+* Miután elvégezte a [egyéni szabályzatok – első lépések](active-directory-b2c-get-started-custom.md) forgatókönyv, azt javasoljuk, hogy a forgatókönyv a saját egyéni házirend-fájlok használatával hozhat létre. Referenciaként adtunk meg [házirendfájljait minta](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/scenarios/aadb2c-ief-rest-api-netfw).
+* Letöltheti a teljes kódját [mintát a Visual Studio-megoldás referenciaként](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/scenarios/aadb2c-ief-rest-api-netfw/).
     
 ## <a name="next-steps"></a>További lépések
-* [A RESTful API-t (felhasználónév és jelszó) egyszerű hitelesítést biztonságos](active-directory-b2c-custom-rest-api-netfw-secure-basic.md)
-* [A RESTful API-t ügyféltanúsítványok biztonságos](active-directory-b2c-custom-rest-api-netfw-secure-cert.md)
+* [Biztonságos a RESTful API-címhez alapszintű hitelesítéssel (felhasználónév és jelszó)](active-directory-b2c-custom-rest-api-netfw-secure-basic.md)
+* [Az ügyféltanúsítványokat a RESTful API biztonságossá tétele](active-directory-b2c-custom-rest-api-netfw-secure-cert.md)

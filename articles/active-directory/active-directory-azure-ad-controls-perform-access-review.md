@@ -1,6 +1,6 @@
 ---
-title: Tekintse át a hozzáférést az Azure AD használatával értékelést eléréséhez |} Microsoft Docs
-description: 'Útmutató: Azure Active Directory hozzáférési értékelést használatával tekintse át a hozzáférést.'
+title: Hozzáférés áttekintése az Azure AD hozzáférési felülvizsgálatokkal |} A Microsoft Docs
+description: Ismerje meg, hogyan hozzáférés az Azure Active Directory hozzáférési felülvizsgálatok áttekintése.
 services: active-directory
 author: rolyon
 manager: mtillman
@@ -9,43 +9,43 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.component: compliance-reports
 ms.date: 09/19/2017
 ms.author: rolyon
 ms.reviewer: mwahl
-ms.openlocfilehash: e6a109e499395e09be27770a510427038872da38
-ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
+ms.openlocfilehash: 52d832de10de93c5bd4b91df821f96845b3b21be
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/28/2018
-ms.locfileid: "37085123"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37446639"
 ---
-# <a name="review-access-with-azure-ad-access-reviews"></a>Tekintse át az Azure AD hozzáférési értékelést eléréséhez
+# <a name="review-access-with-azure-ad-access-reviews"></a>Tekintse át a hozzáférés az Azure AD hozzáférési felülvizsgálatokkal
 
-Azure Active Directory (Azure AD) egyszerűbbé teszi a vállalatok alkalmazások és a csoportok tagjai való hozzáférés kezelése az Azure AD és más Microsoft Online Services access nevezett szolgáltatással ellenőrzi. Lehet, hogy e-mailben kapott, amely rákérdez, hogy tekintse át a hozzáférést egy csoport vagy az alkalmazáshoz hozzáféréssel rendelkező felhasználók tagjai a Microsoft. 
+Az Azure Active Directory (Azure AD) egyszerűbbé teszi a vállalatok alkalmazások és a csoportok tagjai való hozzáférés kezelése az Azure AD és más Microsoft Online Services szolgáltatás hozzáférési felülvizsgálatok. Például egy e-mailben kapott, amely rákérdez, hogy tekintse át a hozzáférést egy csoporthoz vagy alkalmazáshoz való hozzáféréssel rendelkező felhasználók tagjai számára a Microsoft. 
 
-## <a name="open-an-access-review"></a>Nyisson meg egy áttekintése
+## <a name="open-an-access-review"></a>Nyissa meg a hozzáférési felülvizsgálat
 
-A függőben lévő hozzáférés értékelést, jelölje ki a kapcsolat az e-mailben. Ha még nem rendelkezik az e-mailt, az access értékelést keresheti meg az alábbiak szerint:
+A függőben lévő hozzáférési felülvizsgálatokat, jelölje ki a hivatkozást az e-mailben. Ha nem rendelkezik az e-mailt, keresse meg a hozzáférési felülvizsgálatok az alábbi lépéseket:
 
 1. Jelentkezzen be a [Azure AD hozzáférési panel](https://myapps.microsoft.com).
 
-2. Válassza ki a felhasználói szimbólum a lapon, amely megjeleníti a nevet és az alapértelmezett szervezet jobb felső sarkában. Ha egynél több szervezet szerepel a listán, válassza ki a szervezet által kért egy áttekintése.
+2. Válassza ki a felhasználó szimbólum a oldal, amely megjeleníti a szervezet nevét és az alapértelmezett a jobb felső sarkában. Ha egynél több szervezet szerepel a listán, válassza ki a szervezet, amely a hozzáférési felülvizsgálat kért.
 
-3. Ha egy csempére címkézve **értékelést eléréséhez** van a lapon, jelölje be a jobb oldalon. A csempe nem látható, ha nincsenek végrehajtani a szervezet nem hozzáférés értékelést, és jelenleg nincs szükség semmilyen műveletre.
+3. Ha egy csempe feliratú **hozzáférési felülvizsgálatokkal** van a lapon válassza a jobb oldalán. A csempe nem látható, ha nincsenek hozzáférési felülvizsgálatok végrehajtani az adott szervezet lesznek, és nem kell módosítania jelenleg.
 
-## <a name="fill-out-an-access-review"></a>Töltse ki az áttekintése
+## <a name="fill-out-an-access-review"></a>Töltse ki a hozzáférési felülvizsgálat
 
-Ha egy áttekintése válasszon a listából, megjelenik a felhasználók neveit, akik át kell tekinteni. Láthatja, hogy csak egy név – a saját – Ha a kérelem volt, hogy tekintse át a saját hozzáférés.
+Hozzáférési felülvizsgálat válassza ki a listából, amikor az adatgyűjtés kiterjed a felhasználók, akik át kell tekinteni. Láthatja, hogy csak egy név – a saját – Ha a kérés az volt, hogy a saját hozzáférés áttekintése.
 
-A listán szereplő minden egyes sorhoz kapcsolódóan is meghatározható jóváhagyja vagy elutasítja a felhasználó hozzáférése. Válassza ki a, és válassza ki, hogy jóváhagyásához vagy elutasításához. (Ha a felhasználó nem tudja, adhatja meg, hogy túl.)
+A lista minden egyes sorára eldöntheti, hogy jóváhagyja vagy elutasítja a felhasználói hozzáférés-e. Válassza ki a sort, és hagyja jóvá vagy utasítsa el. (Ha a felhasználó nem tudja, adhatja meg, hogy túl.)
 
-A felülvizsgáló képes lehet szükség, hogy az adnia jóváhagyása is folyamatos hozzáférést biztosíthasson vagy csoporttagság indokát.
+A bíráló szükség lehet, hogy hagyja jóvá a folyamatos hozzáférés vagy a csoporttagság indoklása adnia.
 
 ## <a name="next-steps"></a>További lépések
 
-A felhasználó hozzáférése tiltott azonnal nincs eltávolítva. A felülvizsgálati befejezésekor, vagy ha egy rendszergazda nem a felülvizsgálati el kell távolítani. Ha a válasz és hagyja jóvá a korábban letiltott felhasználó vagy egy korábban már jóváhagyott felhasználó hozzáférésének megtagadása jelölje ki a sort, a válasz, és válassza ki az új válasz. Ebben a lépésben végezhető el, amíg befejeződik a áttekintése.
+A felhasználó hozzáférése megtagadva nem törlődnek azonnal. A felülvizsgálat befejezésekor, vagy ha egy rendszergazda leállítja a felülvizsgálatot el kell távolítani. Ha szeretné módosítani a válasz, és hagyja jóvá a korábban letiltott felhasználó vagy egy korábban már jóváhagyott felhasználó hozzáférésének megtagadása, válassza ki a sort, alaphelyzetbe állítása a választ, és válassza ki az új válasz. Ebben a lépésben a hozzáférési felülvizsgálat befejezése teheti meg.
 
 
 

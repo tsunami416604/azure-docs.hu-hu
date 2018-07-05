@@ -1,48 +1,48 @@
 ---
-title: Az Azure Active Directory B2C bővítmények app |} Microsoft Docs
-description: A b2c-bővítmények-alkalmazás visszaállítása.
+title: Az Azure Active Directory B2C-ben bővítményalkalmazás |} A Microsoft Docs
+description: A b2c-kiterjesztések alkalmazását visszaállítása.
 services: active-directory-b2c
 author: davidmu1
 manager: mtillman
 ms.service: active-directory
 ms.workload: identity
-ms.topic: article
+ms.topic: conceptual
 ms.date: 9/06/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: ad908e7408c2d14a843af49bc091fea725bfba1d
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: ad3d459b1211d2777f57169f3ee896d2ab5618bc
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34712283"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37442824"
 ---
-# <a name="azure-ad-b2c-extensions-app"></a>Az Azure AD B2C: Bővítmények alkalmazás
+# <a name="azure-ad-b2c-extensions-app"></a>Az Azure AD B2C: Bővítményalkalmazás
 
-Az Azure AD B2C-címtárban jön létre, amikor egy alkalmazás nevű `b2c-extensions-app. Do not modify. Used by AADB2C for storing user data.` automatikusan létrejön az új könyvtárán belül. Az alkalmazáshoz, a továbbiakban a **b2c-bővítmények-alkalmazás**, látható *App regisztrációk*. Segítségével az Azure AD B2C szolgáltatás felhasználók és az egyéni attribútumok adatainak tárolására. Ha az alkalmazást törlik, az Azure AD B2C nem működik megfelelően, és az éles környezetben milyen hatással lesz.
+Az Azure AD B2C-címtár jön létre, amikor egy alkalmazás nevű `b2c-extensions-app. Do not modify. Used by AADB2C for storing user data.` belül az új címtár automatikusan létrejön. Ez az alkalmazás a továbbiakban a **b2c-kiterjesztések alkalmazását**, látható az *alkalmazásregisztrációk*. Azt az Azure AD B2C-szolgáltatás által tárolására szolgál felhasználók és az egyéni attribútumokat. Ha az alkalmazást törlik, Azure AD B2C-vel nem fognak megfelelően működni, és hatással lesz az éles környezetben.
 
 > [!IMPORTANT]
-> Ne törölje a b2c-bővítmények-alkalmazás, kivéve, ha azt tervezi, hogy a bérlő azonnal törli. Ha az alkalmazás több mint 30 napig törölt marad, felhasználói adatok végleg elvesznek.
+> Ne törölje a b2c-kiterjesztések alkalmazását, kivéve, ha azt tervezi, azonnal törli a bérlőn. Ha az alkalmazás több mint 30 napig törölt marad, felhasználói adatok végleg elvesznek.
 
-## <a name="verifying-that-the-extensions-app-is-present"></a>Ellenőrzi, hogy jelen-e a bővítmények alkalmazás
+## <a name="verifying-that-the-extensions-app-is-present"></a>Annak ellenőrzése, hogy jelen-e a bővítményalkalmazás
 
-Annak ellenőrzéséhez, hogy a b2c-bővítmények-alkalmazás jelen:
+Annak ellenőrzése, hogy jelen-e a b2c-kiterjesztések alkalmazását:
 
-1. Az Azure AD B2C-bérlő belül kattintson a **minden szolgáltatás** a bal oldali navigációs menü.
-1. Keresse meg, és nyissa meg a **App regisztrációk**.
-1. Keressen olyan alkalmazás, amelynek kezdődik **b2c-bővítmények-alkalmazás**
+1. Az Azure AD B2C-bérlő, belül kattintson az **minden szolgáltatás** a bal oldali navigációs menü.
+1. Keresse meg és nyissa meg a **alkalmazásregisztrációk**.
+1. Keresse meg, hogy a következővel kezdődik: **b2c-kiterjesztések alkalmazását**
 
 ## <a name="recover-the-extensions-app"></a>A bővítmények app helyreállítása
 
-Ha véletlenül törli a b2c-bővítmények-alkalmazás, végezze el a helyreállítást 30 napja van. Visszaállíthatja az alkalmazást, a Graph API-val:
+Ha véletlenül törölte a b2c-kiterjesztések alkalmazását, hogy 30 napig, amellyel a helyreállítást. Visszaállíthatja az alkalmazást a Graph API-val:
 
 1. Keresse meg a [ https://graphexplorer.azurewebsites.net/ ](https://graphexplorer.azurewebsites.net/).
-1. Jelentkezzen be a webhely, amelyet szeretne visszaállítani a törölt alkalmazást az Azure AD B2C könyvtár globális rendszergazdaként. A globális rendszergazdának rendelkeznie kell egy e-mail címet a következőhöz hasonló: `username@{yourTenant}.onmicrosoft.com`.
-1. Az URL egy HTTP GET ki `https://graph.windows.net/myorganization/deletedApplications` az api-version 1.6-os =. Ez a művelet felsorolja összes alkalmazást, amely az elmúlt 30 napban törölve lett.
-1. Alkalmazás található a listában, ahol a karaktersorozattal kezdődő "b2c-bővítmény-alkalmazás", és másolja a `objectid` tulajdonság értéke.
-1. Az URL HTTP POST ki `https://graph.windows.net/myorganization/deletedApplications/{OBJECTID}/restore`. Cserélje le a `{OBJECTID}` URL-CÍMÉT a részét a `objectid` az előző lépésben. 
+1. Jelentkezzen be globális rendszergazdaként az Azure AD B2C-címtár, amely szeretné visszaállítani a törölt alkalmazás esetében a hely. A globális rendszergazdának rendelkeznie kell egy e-mail-címet a következőhöz hasonló: `username@{yourTenant}.onmicrosoft.com`.
+1. Adja ki az URL-cím alapján egy HTTP GET `https://graph.windows.net/myorganization/deletedApplications` az api-version = 1.6-os. Ez a művelet listázza az összes alkalmazást, ami az elmúlt 30 napon belül törölve lett.
+1. Keresse meg az alkalmazást a listában, ahol "b2c-bővítmény-app" és a példány kezdődik-e a neve annak `objectid` tulajdonság értéke.
+1. Adja ki az URL-cím alapján egy HTTP POST `https://graph.windows.net/myorganization/deletedApplications/{OBJECTID}/restore`. Cserélje le a `{OBJECTID}` az URL-címrészt az `objectid` az előző lépésben. 
 
-Meg kell tudni [lásd: a visszaállított app](#verifying-that-the-extensions-app-is-present) az Azure portálon.
+Most meg kell tudni [tekintse meg a visszaállított app](#verifying-that-the-extensions-app-is-present) az Azure Portalon.
 
 > [!NOTE]
-> Az alkalmazás csak akkor állítható vissza, ha törölve lett az utolsó 30 napban. Ha több mint 30 napig lett, adat végleg elvesznek. Ha további segítségre van szüksége a fájl egy támogatási jegy.
+> Egy alkalmazás csak akkor állíthatók vissza, ha törölték az elmúlt 30 napban. Ha több mint 30 napig volt, adatok végleg elvesznek. További segítséget küldjön egy támogatási jegyet.

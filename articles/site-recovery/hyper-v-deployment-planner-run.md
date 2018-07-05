@@ -1,22 +1,22 @@
 ---
 title: Azure Site Recovery Deployment Planner Hyper-V és Azure közötti áthelyezéshez | Microsoft Docs
-description: Ez a cikk útmutatást ad a Site Recovery telepítési planner foro Hyper-V Azure replikációs szolgáltatására való futtatásának módját.
+description: Ez a cikk bemutatja, hogyan az Azure-bA a Site Recovery deployment planner foro Hyper-V futtatását.
 author: nsoneji
 manager: garavd
 ms.service: site-recovery
 ms.topic: article
 ms.date: 06/20/2018
 ms.author: nisoneji
-ms.openlocfilehash: 0293ace13dbcd30988ce571c60f2d7c6a338e779
-ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
+ms.openlocfilehash: 870b8d501db4a31bf7a822bd9c86965bdfa224e4
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36287490"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37447618"
 ---
 # <a name="run-azure-site-recovery-deployment-planner-for-hyper-v-to-azure"></a>Az Azure Site Recovery Deployment Planner futtatása a Hyper-V – Azure-hoz
 
-Futtathatja a Site Recovery telepítési planner parancssori eszköz (ASRDeploymentPlanner.exe) ezek négy módok valamelyikén: 
+Futtathatja a Site Recovery deployment planner parancssori eszköz (ASRDeploymentPlanner.exe) a négy mód bármelyikében: 
 -   [A virtuálisgép-lista lekérdezése](#get-vm-list-for-profiling-hyper-v-vms)
 -   [Profil](#profile-hyper-v-vms)
 -   [Jelentés létrehozása](#generate-report)
@@ -40,7 +40,7 @@ ASRDeploymentPlanner.exe -Operation GetVMList /?
 | -Felhasználó | A Hyper-V-kiszolgálóhoz vagy Hyper-V-fürthöz való csatlakozáshoz használt felhasználónév. A felhasználónak rendszergazdai hozzáféréssel kell rendelkeznie.|
 | -ServerListFile | Azon kiszolgálók listáját tartalmazó fájl, amelyek a profillal ellátni kívánt virtuális gépeket tartalmazzák. A fájl elérési útja lehet abszolút vagy relatív. A fájl minden sorának tartalmazza a következők egyikét:<ul><li>Hyper-V-gazdagép neve vagy IP-címe</li><li>Hyper-V-fürt neve vagy IP-címe</li></ul><br>**Például:** A ServerList.txt az alábbi kiszolgálókat tartalmazza:<ul><li>Host_1</li><li>10.8.59.27</li><li>Cluster_1</li><li>Host_2</li>|
 | -Directory|(Nem kötelező) Az univerzális elnevezési konvenciónak (UNC) megfelelő elérési út vagy azon helyi könyvtár elérési útja, ahol a művelet során létrehozott adatokat tárolni kívánja. Ha nincs név megadva, a rendszer az aktuális elérési úton található ProfiledData könyvtárat használja alapértelmezett könyvtárként.|
-|-OutputFile| (Választható) A fájl a listájával, virtuális gépek a Hyper-V kiszolgálók lehívásra kerül. Ha nincs megemlítve név, a részleteket a VMList.txt fájl tartalmazza.  A fájl használatával kezdje meg a profilkészítést, miután eltávolította azokat a virtuális gépeket, amelyekhez nem kíván profilt készíteni.|
+|-OutputFile| (Nem kötelező) A Hyper-V-kiszolgálókról lekért virtuális gépek listáját tartalmazó fájl mentése. Ha nincs megemlítve név, a részleteket a VMList.txt fájl tartalmazza.  A fájl használatával kezdje meg a profilkészítést, miután eltávolította azokat a virtuális gépeket, amelyekhez nem kíván profilt készíteni.|
 |-Password|(Nem kötelező) A Hyper-V-gazdagéphez való csatlakozáshoz használt jelszó. Ha nem adja meg paraméterként, a rendszer a parancs végrehajtásakor el fogja kérni.|
 
 ### <a name="getvmlist-discovery"></a>GetVMList-felderítés
@@ -56,7 +56,7 @@ Nyissa meg a kimeneti fájlt a Jegyzettömbben, és másolja egy másik fájlba 
 
 #### <a name="store-the-list-of-vms-in-a-file"></a>A virtuális gépek listájának tárolása egy fájlban
 ```
-ASRDeploymentPlanner.exe -Operation GetVMlist -ServerListFile “E:\Hyper-V_ProfiledData\ServerList.txt" -User Hyper-VUser1 -OutputFile "E:\Hyper-V_ProfiledData\VMListFile.txt"
+ASRDeploymentPlanner.exe -Operation GetVMlist -ServerListFile "E:\Hyper-V_ProfiledData\ServerList.txt" -User Hyper-VUser1 -OutputFile "E:\Hyper-V_ProfiledData\VMListFile.txt"
 ```
 
 #### <a name="store-the-list-of-vms-at-the-default-location--directory-path"></a>A virtuális gépek listájának tárolása az alapértelmezett helyen (-Directory elérési útja)
@@ -94,7 +94,7 @@ ASRDeploymentPlanner.exe -Operation StartProfiling /?
 |-Virtualization|A virtualizálás típusa (VMware vagy Hyper-V).|
 |-Directory|(Nem kötelező) Az UNC elérési út vagy azon helyi könyvtár elérési útja, ahol a profilkészítés során létrehozott adatokat tárolni kívánja. Ha nincs név megadva, a rendszer az aktuális elérési úton található ProfiledData könyvtárat használja alapértelmezett könyvtárként.|
 |-Password|(Nem kötelező) A Hyper-V-gazdagéphez való csatlakozáshoz használt jelszó. Ha nem adja meg paraméterként, a rendszer a parancs végrehajtásakor el fogja kérni.|
-|-StorageAccountName|(Nem kötelező) A helyszínről az Azure-ba történő adatreplikáció során elérhető átviteli sebesség azonosításához szükséges tárfiók neve. Az eszköz erre a tárfiókra tölti fel a tesztadatokat az átviteli sebesség kiszámításához. A tárfiók kell lennie az általános célú 1-es verzió (GPv1) típus.|
+|-StorageAccountName|(Nem kötelező) A helyszínről az Azure-ba történő adatreplikáció során elérhető átviteli sebesség azonosításához szükséges tárfiók neve. Az eszköz erre a tárfiókra tölti fel a tesztadatokat az átviteli sebesség kiszámításához. A tárfióknak Általános célú v1 (GPv1) típusúnak kell lennie.|
 |-StorageAccountKey|(Nem kötelező) A tárfiók eléréséhez használt kulcs. Nyissa meg az Azure Portalt, és válassza a **Tárfiókok** > *Tárfiók neve* > **Beállítások** > **Hozzáférési kulcsok** > **1. kulcs** (vagy klasszikus tárfiók esetén az Elsődleges elérési kulcs) elemet.|
 |-Környezet|(Nem kötelező) Az Azure-tárfiók célkörnyezete. A következő három érték egyike lehet: AzureCloud, AzureUSGovernment vagy AzureChinaCloud. Az alapértelmezett érték az AzureCloud. Akkor használja ezt a paramétert, ha célrégióként az Azure US Government vagy az Azure China van megadva.|
 
@@ -128,22 +128,22 @@ A profilkészítési parancs számos fájlt létrehoz a profilkészítési köny
 
 #### <a name="profile-vms-for-30-days-and-find-the-throughput-from-on-premises-to-azure"></a>Profilkészítés virtuális gépekről 30 napon keresztül, valamint a helyszín és az Azure közötti átviteli sebesség meghatározása
 ```
-ASRDeploymentPlanner.exe -Operation StartProfiling -virtualization Hyper-V -Directory “E:\Hyper-V_ProfiledData” -VMListFile “E:\Hyper-V_ProfiledData\ProfileVMList1.txt”  -NoOfDaysToProfile 30 -User Contoso\HyperVUser1 -StorageAccountName  asrspfarm1 -StorageAccountKey Eby8vdM02xNOcqFlqUwJPLlmEtlCDXJ1OUzFT50uSRZ6IFsuFq2UVErCz4I6tq/K1SZFPTOtr/KBHBeksoGMGw==
+ASRDeploymentPlanner.exe -Operation StartProfiling -virtualization Hyper-V -Directory "E:\Hyper-V_ProfiledData" -VMListFile "E:\Hyper-V_ProfiledData\ProfileVMList1.txt"  -NoOfDaysToProfile 30 -User Contoso\HyperVUser1 -StorageAccountName  asrspfarm1 -StorageAccountKey Eby8vdM02xNOcqFlqUwJPLlmEtlCDXJ1OUzFT50uSRZ6IFsuFq2UVErCz4I6tq/K1SZFPTOtr/KBHBeksoGMGw==
 ```
 
 #### <a name="profile-vms-for-15-days"></a>Profilkészítés virtuális gépekről 15 napon keresztül
 ```
-ASRDeploymentPlanner.exe -Operation StartProfiling -Virtualization Hyper-V -Directory “E:\Hyper-V_ProfiledData” -VMListFile “E:\vCenter1_ProfiledData\ProfileVMList1.txt”  -NoOfDaysToProfile  15  -User contoso\HypreVUser1
+ASRDeploymentPlanner.exe -Operation StartProfiling -Virtualization Hyper-V -Directory "E:\Hyper-V_ProfiledData" -VMListFile "E:\vCenter1_ProfiledData\ProfileVMList1.txt"  -NoOfDaysToProfile  15  -User contoso\HypreVUser1
 ```
 
 #### <a name="profile-vms-for-60-minutes-for-a-quick-test-of-the-tool"></a>Profilkészítés virtuális gépekről 60 perc alatt az eszköz gyors teszteléséhez
 ```
-ASRDeploymentPlanner.exe -Operation StartProfiling -Virtualization Hyper-V -Directory “E:\Hyper-V_ProfiledData” -VMListFile “E:\Hyper-V_ProfiledData\ProfileVMList1.txt”  -NoOfMinutesToProfile 60 -User Contoso\HyperVUser1
+ASRDeploymentPlanner.exe -Operation StartProfiling -Virtualization Hyper-V -Directory "E:\Hyper-V_ProfiledData" -VMListFile "E:\Hyper-V_ProfiledData\ProfileVMList1.txt"  -NoOfMinutesToProfile 60 -User Contoso\HyperVUser1
 ```
 
 #### <a name="profile-vms-for-2-hours-for-a-proof-of-concept"></a>Profilkészítés virtuális gépekről 2 óra alatt megvalósíthatósági vizsgálathoz
 ```
-ASRDeploymentPlanner.exe -Operation StartProfiling -Virtualization Hyper-V -Directory “E:\Hyper-V_ProfiledData” -VMListFile “E:\Hyper-V_ProfiledData\ProfileVMList1.txt”  -NoOfHoursToProfile 2 -User Contoso\HyperVUser1
+ASRDeploymentPlanner.exe -Operation StartProfiling -Virtualization Hyper-V -Directory "E:\Hyper-V_ProfiledData" -VMListFile "E:\Hyper-V_ProfiledData\ProfileVMList1.txt"  -NoOfHoursToProfile 2 -User Contoso\HyperVUser1
 ```
 
 ### <a name="considerations-for-profiling"></a>Profilkészítéssel kapcsolatos megfontolások
@@ -152,7 +152,7 @@ Ha a kiszolgáló, amelyen az eszköz fut, újraindul vagy összeomlik, vagy ha 
 
 Ha megadja a tárfióknevet és -kulcsot, az eszköz a profilkészítés utolsó lépéseként megméri az átviteli sebességet. Ha bezárja az eszközt, mielőtt a profilkészítés befejeződött volna, a rendszer nem számítja ki az átviteli sebességet. Az átviteli sebesség a jelentés létrehozása előtti lekérdezéséhez futtassa a GetThroughput műveletet a parancssori konzolból. Ellenkező esetben a létrehozott jelentés nem tartalmazza majd az átviteli sebességgel kapcsolatos információkat.
 
-Az Azure Site Recovery nem támogatja a virtuális gépek, amelyek az iSCSI és a csatlakoztatott lemezekkel rendelkeznek. Az eszköz nem észleli profil és a virtuális gépekhez csatlakozó iSCSI és a csatlakoztatott lemezek.
+Az Azure Site Recovery nem támogatja a virtuális gépek, amelyek az iSCSI- és csatlakoztatott lemezekkel rendelkeznek. Az eszköz nem tudja észlelni és profilt, amely a virtuális gépekhez csatolt iSCSI- és csatlakoztatott lemezek.
 
 ## <a name="generate-a-report"></a>Jelentés létrehozása
 Az eszköz egy makróbarát Microsoft Excel-fájlt (XLSM-fájlt) hoz létre a jelentés kimeneteként. Ez az üzembehelyezési javaslatokat foglalja össze. A jelentés neve DeploymentPlannerReport_*egyéni numerikus azonosító*.xlsm, és a megadott könyvtárban lesz elérhető.
@@ -192,39 +192,39 @@ Alapértelmezés szerint az eszköz a profilhoz van beállítva, és legfeljebb 
 ### <a name="examples"></a>Példák
 #### <a name="generate-a-report-with-default-values-when-the-profiled-data-is-on-the-local-drive"></a>Jelentés készítése az alapértelmezett értékekkel, ha a profilkészítés során létrehozott adatok a helyi meghajtón találhatóak
 ```
-ASRDeploymentPlanner.exe -Operation GenerateReport -virtualization Hyper-V -Directory “E:\Hyper-V_ProfiledData” -VMListFile “E:\Hyper-V_ProfiledData\ProfileVMList1.txt”
+ASRDeploymentPlanner.exe -Operation GenerateReport -virtualization Hyper-V -Directory "E:\Hyper-V_ProfiledData" -VMListFile "E:\Hyper-V_ProfiledData\ProfileVMList1.txt"
 ```
 
 #### <a name="generate-a-report-when-the-profiled-data-is-on-a-remote-server"></a>Jelentés készítése, ha a profilkészítés során létrehozott adatok távoli kiszolgálón találhatóak
 A felhasználónak olvasási/írási hozzáféréssel kell rendelkeznie a távoli könyvtárhoz.
 ```
-ASRDeploymentPlanner.exe -Operation GenerateReport -Virtualization Hyper-V -Directory “\\PS1-W2K12R2\Hyper-V_ProfiledData” -VMListFile “\\PS1-W2K12R2\vCenter1_ProfiledData\ProfileVMList1.txt”
+ASRDeploymentPlanner.exe -Operation GenerateReport -Virtualization Hyper-V -Directory "\\PS1-W2K12R2\Hyper-V_ProfiledData" -VMListFile "\\PS1-W2K12R2\vCenter1_ProfiledData\ProfileVMList1.txt"
 ```
 
 #### <a name="generate-a-report-with-a-specific-bandwidth-that-you-will-provision-for-the-replication"></a>Jelentés készítése a replikációhoz létrehozott adott sávszélességgel
 ```
-ASRDeploymentPlanner.exe -Operation GenerateReport -Virtualization Hyper-V -Directory “E:\Hyper-V_ProfiledData” -VMListFile “E:\Hyper-V_ProfiledData\ProfileVMList1.txt” -Bandwidth 100
+ASRDeploymentPlanner.exe -Operation GenerateReport -Virtualization Hyper-V -Directory "E:\Hyper-V_ProfiledData" -VMListFile "E:\Hyper-V_ProfiledData\ProfileVMList1.txt" -Bandwidth 100
 ```
 
 #### <a name="generate-a-report-with-a-5-percent-growth-factor-instead-of-the-default-30-percent"></a>Jelentés készítése 5%-os növekedési tényezővel az alapértelmezett 30% helyett 
 ```
-ASRDeploymentPlanner.exe -Operation GenerateReport -Virtualization Hyper-V -Directory “E:\Hyper-V_ProfiledData” -VMListFile “E:\Hyper-V_ProfiledData\ProfileVMList1.txt” -GrowthFactor 5
+ASRDeploymentPlanner.exe -Operation GenerateReport -Virtualization Hyper-V -Directory "E:\Hyper-V_ProfiledData" -VMListFile "E:\Hyper-V_ProfiledData\ProfileVMList1.txt" -GrowthFactor 5
 ```
 
 #### <a name="generate-a-report-with-a-subset-of-profiled-data"></a>Jelentés létrehozása a profilkészítés során használt adatok egy részéből
 Tegyük fel, hogy van 30 napnyi adata, amelyet a profilkészítés során hozott létre, de csak 20 napról szeretne jelentést készíteni.
 ```
-ASRDeploymentPlanner.exe -Operation GenerateReport -virtualization Hyper-V -Directory “E:\Hyper-V_ProfiledData” -VMListFile “E:\Hyper-V_ProfiledData\ProfileVMList1.txt” -StartDate  01-10-2017:12:30 -EndDate 01-19-2017:12:30
+ASRDeploymentPlanner.exe -Operation GenerateReport -virtualization Hyper-V -Directory "E:\Hyper-V_ProfiledData" -VMListFile "E:\Hyper-V_ProfiledData\ProfileVMList1.txt" -StartDate  01-10-2017:12:30 -EndDate 01-19-2017:12:30
 ```
 
 #### <a name="generate-a-report-for-a-5-minute-rpo"></a>Jelentés készítése 5 perces helyreállítási időkorláttal
 ```
-ASRDeploymentPlanner.exe -Operation GenerateReport -Virtualization Hyper-V -Directory “E:\Hyper-V_ProfiledData” -VMListFile “E:\Hyper-V_ProfiledData\ProfileVMList1.txt”  -DesiredRPO 5
+ASRDeploymentPlanner.exe -Operation GenerateReport -Virtualization Hyper-V -Directory "E:\Hyper-V_ProfiledData" -VMListFile "E:\Hyper-V_ProfiledData\ProfileVMList1.txt"  -DesiredRPO 5
 ```
 
 #### <a name="generate-a-report-for-the-south-india-azure-region-with-indian-rupee-and-a-specific-offer-id"></a>Jelentés létrehozása a Dél-India Azure-régióhoz indiai rúpia pénznemmel és adott ajánlatazonosítóval
 ```
-ASRDeploymentPlanner.exe -Operation GenerateReport -Virtualization Hyper-V -Directory “E:\Hyper-V_ProfiledData” -VMListFile “E:\Hyper-V_ProfiledData\ProfileVMList1.txt”  -SubscriptionID 4d19f16b-3e00-4b89-a2ba-8645edf42fe5 -OfferID MS-AZR-0148P -TargetRegion southindia -Currency INR
+ASRDeploymentPlanner.exe -Operation GenerateReport -Virtualization Hyper-V -Directory "E:\Hyper-V_ProfiledData" -VMListFile "E:\Hyper-V_ProfiledData\ProfileVMList1.txt"  -SubscriptionID 4d19f16b-3e00-4b89-a2ba-8645edf42fe5 -OfferID MS-AZR-0148P -TargetRegion southindia -Currency INR
 ```
 
 
@@ -276,14 +276,14 @@ ASRDeploymentPlanner.exe -Operation GetThroughput /?
 | -Művelet | Átviteli sebesség lekérdezése |
 |-Virtualization|A virtualizálás típusa (VMware vagy Hyper-V).|
 |-Directory|(Nem kötelező) A profilkészítés során létrehozott adatokat tároló mappa UNC vagy helyi elérési útja. Ezekre az adatokra szükség van a jelentés létrehozásához. Ha nincs név megadva, a rendszer az aktuális elérési úton található ProfiledData könyvtárat használja alapértelmezett könyvtárként.|
-| -StorageAccountName | A helyszínről az Azure-ba történő adatreplikáció során felhasznált sávszélesség meghatározásához szükséges tárfiók neve. Az eszköz erre a tárfiókra tölti fel a tesztadatokat a felhasznált sávszélesség megállapításához. A tárfiók kell lennie az általános célú 1-es verzió (GPv1) típus.|
+| -StorageAccountName | A helyszínről az Azure-ba történő adatreplikáció során felhasznált sávszélesség meghatározásához szükséges tárfiók neve. Az eszköz erre a tárfiókra tölti fel a tesztadatokat a felhasznált sávszélesség megállapításához. A tárfióknak Általános célú v1 (GPv1) típusúnak kell lennie.|
 | -StorageAccountKey | A tárfiók eléréséhez használt tárfiókkulcs. Nyissa meg az Azure Portalt, és válassza a **Tárfiókok** > *Tárfiók neve* > **Beállítások** > **Hozzáférési kulcsok** > **1. kulcs** elemet.|
 | -VMListFile | Azon virtuális gépek listáját tartalmazó fájl, amelyekről profilt szeretne készíteni a felhasznált sávszélesség kiszámításához. A fájl elérési útja lehet abszolút vagy relatív. A Hyper-V esetében ez a fájl a GetVMList művelet kimeneti fájlja. Ha az előkészületeket manuálisan végzi el, a fájl minden sorában egy kiszolgáló nevének vagy IP-címének kell szerepelnie, amelyet egy virtuális gép neve követ (soronként \ perjellel elválasztva). A fájlban megadott virtuálisgép-névnek meg kell egyeznie a Hyper-V-gazdagépen szereplő névvel.<br><br>**Például:** A VMList.txt az alábbi virtuális gépeket tartalmazza:<ul><li>Host_1\VM_A</li><li>10.8.59.27\VM_B</li><li>Host_2\VM_C</li><ul>|
 |-Környezet|(Nem kötelező) Az Azure-tárfiók célkörnyezete. A következő három érték egyike lehet: AzureCloud, AzureUSGovernment vagy AzureChinaCloud. Az alapértelmezett érték az AzureCloud. Akkor használja ezt a paramétert, ha Azure-célrégióként az Azure US Government vagy az Azure China van megadva.|
 
 ### <a name="example"></a>Példa
 ```
-ASRDeploymentPlanner.exe -Operation GetThroughput -Virtualization Hyper-V -Directory E:\Hyp-erV_ProfiledData -VMListFile E:\Hyper-V_ProfiledData\ProfileVMList1.txt  -StorageAccountName  asrspfarm1 -StorageAccountKey by8vdM02xNOcqFlqUwJPLlmEtlCDXJ1OUzFT50uSRZ6IFsuFq2UVErCz4I6tq/K1SZFPTOtr/KBHBeksoGMGw==
+ASRDeploymentPlanner.exe -Operation GetThroughput -Virtualization Hyper-V -Directory "E:\Hyper-V_ProfiledData" -VMListFile "E:\Hyper-V_ProfiledData\ProfileVMList1.txt"  -StorageAccountName  asrspfarm1 -StorageAccountKey by8vdM02xNOcqFlqUwJPLlmEtlCDXJ1OUzFT50uSRZ6IFsuFq2UVErCz4I6tq/K1SZFPTOtr/KBHBeksoGMGw==
 ```
 
 ### <a name="throughput-considerations"></a>Átviteli sebességgel kapcsolatos szempontok

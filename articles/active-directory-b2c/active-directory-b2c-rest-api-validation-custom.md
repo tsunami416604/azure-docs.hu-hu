@@ -1,52 +1,52 @@
 ---
-title: REST API cseréjét jogcímek, az Azure Active Directory B2C érvényesítési |} Microsoft Docs
-description: A témakör az Azure Active Directory B2C egyéni házirendekkel.
+title: REST API-jogcímek cseréje érvényesítése az Azure Active Directory B2C-t |} A Microsoft Docs
+description: A témakör az Azure Active Directory B2C-vel egyéni szabályzatok.
 services: active-directory-b2c
 author: davidmu1
 manager: mtillman
 ms.service: active-directory
 ms.workload: identity
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/24/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 2c8b676ffff0f95a0966bfe18ce171de888265b9
-ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
+ms.openlocfilehash: b4fda38834782be502e2581b7b3d1097000b07bb
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "34709172"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37440663"
 ---
-# <a name="walkthrough-integrate-rest-api-claims-exchanges-in-your-azure-ad-b2c-user-journey-as-validation-on-user-input"></a>Forgatókönyv: Integrálása az Azure AD B2C felhasználói út a REST API jogcímek cseréjét, a felhasználói bevitel ellenőrzése
+# <a name="walkthrough-integrate-rest-api-claims-exchanges-in-your-azure-ad-b2c-user-journey-as-validation-on-user-input"></a>Forgatókönyv: A felhasználói bevitel auditáló integrálása a REST API-val jogcím cseréje az Azure AD B2C felhasználói interakciósorozatban szereplő
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Az identitás élmény keretrendszer (IEF) Azure Active Directory B2C alapjául szolgáló (az Azure AD B2C) lehetővé teszi, hogy a tevékenységet egy felhasználó út RESTful API-t integrálja a identitás fejlesztő.  
+Az identitás élmény keretrendszer (IEF) alapjául szolgáló Azure Active Directory B2C (Azure AD B2C-vel) lehetővé teszi, hogy az identitás fejlesztői integrálható a RESTful API-t a felhasználói út használata közben.  
 
-Ez az útmutató végén lesz létrehozása az Azure AD B2C felhasználói út, amely együttműködik a RESTful-szolgáltatásokat.
+Ez az útmutató végén lesz egy Azure AD B2C felhasználói interakciósorozat, együttműködő létrehozása a REST-alapú szolgáltatások.
 
-A IEF adatok jogcímekben adatokat küld és fogad vissza a jogcímeket. A interakció API-val:
+A IEF adatokat küld a jogcímeket, valamint adatokat fogad újra a jogcím. A kapcsolati API-val:
 
-- A REST API-jogcímek exchange vagy egy érvényességi profilt, amely egy vezénylési lépés belül történik tervezhető.
-- Általában érvényesíti felhasználói beavatkozást. Az érték a felhasználó elutasítása esetén a felhasználó megpróbálja újra adjon meg egy érvényes értéket a számára, hogy egy hibaüzenetet adja vissza.
+- Megtervezhetők úgy, egy REST API-val jogcímcsere, vagy egy érvényesítési profilt, amely egy vezénylési lépés belül történik.
+- Felhasználói adatbevitel általában érvényesíti. Az érték a felhasználó elutasítása esetén a felhasználó újra próbálkozhat, adjon meg egy érvényes értéket arra, hogy hibaüzenetet ad vissza.
 
-Is kialakíthat egy vezénylési lépés a közötti. További információkért lásd: [forgatókönyv: integrálja a REST API-t cseréjét használják az Azure AD B2C felhasználói út egy vezénylési lépés a jogcímek](active-directory-b2c-rest-api-step-custom.md).
+Egy vezénylési lépés a közötti is tervezhet. További információkért lásd: [forgatókönyv: integrálása a REST API-val cserék az Azure AD B2C felhasználói interakciósorozat egy vezénylési lépés, a jogcímek](active-directory-b2c-rest-api-step-custom.md).
 
-Például az érvényességi profilt a profil szerkesztése felhasználói út az alapszintű csomag fájlban ProfileEdit.xml használjuk.
+Ha érvényesítési profil például az alapszintű csomag fájlban ProfileEdit.xml profil szerkesztése felhasználói interakciósorozat használjuk.
 
-Azt is ellenőrizze, hogy a profil szerkesztése a felhasználó által megadott név nem része egy kizárási listát.
+Ellenőrizzük, hogy a profil szerkesztése a felhasználó által megadott név nem része egy kizárási listát.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Egy helyi fiókot sign-Close-Up/sign-in befejezéséhez, a konfigurált Azure AD B2C-bérlő [bevezetés](active-directory-b2c-get-started-custom.md).
-- REST API-végpont kommunikál. A forgatókönyv azt létrehoztunk egy bemutató webhelyet nevű [WingTipGames](https://wingtipgamesb2c.azurewebsites.net/) egy REST API-szolgáltatással.
+- Az Azure AD B2C-bérlő egy helyi fiók regisztrálási-regisztrálási vagy bejelentkezési, végrehajtásához leírtak szerint konfigurálva [bevezetés](active-directory-b2c-get-started-custom.md).
+- REST API-végpont használatával kommunikálhat. Ebben a bemutatóban beállítottuk a bemutató webhely nevű [WingTipGames](https://wingtipgamesb2c.azurewebsites.net/) egy REST API-szolgáltatást.
 
-## <a name="step-1-prepare-the-rest-api-function"></a>1. lépés: Felkészülés a REST API-függvénye
+## <a name="step-1-prepare-the-rest-api-function"></a>1. lépés: Készítse elő a REST API-függvénye
 
 > [!NOTE]
-> Ez a cikk hatókörén kívül található a REST API-függvények telepítése. [Az Azure Functions](https://docs.microsoft.com/azure/azure-functions/functions-reference) biztosít egy kiváló eszközkészlet RESTful szolgáltatás létrehozásához a felhőben.
+> REST API-függvények, a telepítő nem ez a cikk foglalkozik. [Az Azure Functions](https://docs.microsoft.com/azure/azure-functions/functions-reference) biztosít egy kiváló eszközkészlet RESTful szolgáltatás létrehozásához a felhőben.
 
-Létrehoztunk egy Azure függvény, amely fogad egy jogcímet, akkor várja `playerTag`. A függvény ellenőrzi, hogy létezik-e ezt a kérelmet. Érheti el a teljes Azure funkciókódot [GitHub](https://github.com/Azure-Samples/active-directory-b2c-advanced-policies/tree/master/AzureFunctionsSamples).
+Létrehoztunk Önnek egy Azure-függvényt, amely fogad egy jogcímet, amely azt vár `playerTag`. A függvény azt ellenőrzi, ez a jogcím létezik-e. Hozzáférhet a teljes Azure-függvény kódja [GitHub](https://github.com/Azure-Samples/active-directory-b2c-advanced-policies/tree/master/AzureFunctionsSamples).
 
 ```csharp
 if (requestContentAsJObject.playerTag == null)
@@ -73,14 +73,14 @@ if (playerTag == "mcvinny" || playerTag == "msgates123" || playerTag == "revcott
 return request.CreateResponse(HttpStatusCode.OK);
 ```
 
-A IEF vár a `userMessage` jogcímet, amely az Azure függvényt ad vissza. A jogcím fog érzékelni karakterláncként a felhasználót, ha az érvényesítés meghiúsul, például amikor egy 409 ütközés állapot eredmény abban az esetben az előző példában.
+A IEF vár a `userMessage` jogcímet, amelyet az Azure-függvény adja vissza. Ez a jogcím megjelenik egy karakterláncként a felhasználónak, ha az érvényesítés sikertelen, például ha az előző példában 409 ütközés állapotot adott vissza.
 
-## <a name="step-2-configure-the-restful-api-claims-exchange-as-a-technical-profile-in-your-trustframeworkextensionsxml-file"></a>2. lépés: A RESTful API jogcímek az exchange konfigurálása a TrustFrameworkExtensions.xml fájlban műszaki profil
+## <a name="step-2-configure-the-restful-api-claims-exchange-as-a-technical-profile-in-your-trustframeworkextensionsxml-file"></a>2. lépés: Az RESTful API jogcímcsere konfigurálása TrustFrameworkExtensions.xml fájlban technikai profil
 
-Műszaki profilt a RESTful szolgáltatás szükséges az exchange teljes konfigurációjának. Nyissa meg a TrustFrameworkExtensions.xml fájlt, és adja hozzá a következő XML-részletet belül a `<ClaimsProviders>` elemet.
+Egy technikai profil a RESTful szolgáltatás kívánt exchange teljes konfigurációját. Nyissa meg a TrustFrameworkExtensions.xml fájlt, és adja hozzá a következő XML-részletet belül a `<ClaimsProviders>` elemet.
 
 > [!NOTE]
-> A következő XML-kódban, RESTful szolgáltató `Version=1.0.0.0` protokoll leírását. Vegye figyelembe azt, a függvény, amely a külső szolgáltatással együtt fog működni. <!-- TODO: A full definition of the schema can be found...link to RESTful Provider schema definition>-->
+> A következő XML formátumú, RESTful szolgáltató `Version=1.0.0.0` protokoll leírását. Érdemes használni, mint a függvényt, amely a külső szolgáltatás használni fog. <!-- TODO: A full definition of the schema can be found...link to RESTful Provider schema definition>-->
 
 ```xml
 <ClaimsProvider>
@@ -108,26 +108,26 @@ Műszaki profilt a RESTful szolgáltatás szükséges az exchange teljes konfigu
 </ClaimsProvider>
 ```
 
-A `InputClaims` elem definiálja a jogcímeket, amely a REST-szolgáltatást a IEF a kapnak. Ebben a példában a jogcím tartalmát `givenName` kapnak a többi szolgáltatás `playerTag`. Ebben a példában a IEF nem várt jogcímek vissza. Ehelyett a REST-szolgáltatást és a fogadott állapotkódok alapján tevékenységéért válaszára megvárja.
+A `InputClaims` elem definiálja a jogcímeket, amely a REST-szolgáltatás, a IEF kapnak. Ebben a példában a jogcím tartalmát `givenName` küld a REST szolgáltatás `playerTag`. Ebben a példában a IEF nem várt vissza jogcímeket. Ehelyett azt a válaszra vár a REST-szolgáltatás és a állapotkódok, amely alapján működik.
 
-## <a name="step-3-include-the-restful-service-claims-exchange-in-self-asserted-technical-profile-where-you-want-to-validate-the-user-input"></a>3. lépés: A RESTful szolgáltatás jogcímek exchange foglalandó önálló szükséges műszaki profil, ahol szeretné érvényesíteni a felhasználói bevitel
+## <a name="step-3-include-the-restful-service-claims-exchange-in-self-asserted-technical-profile-where-you-want-to-validate-the-user-input"></a>3. lépés: Közé tartozik a RESTful szolgáltatás jogcímcsere önellenőrzött technikai profilban, ahol szeretné a felhasználói bevitel ellenőrzése
 
-A leggyakoribb ellenőrzési lépés használata az egy felhasználói beavatkozást. Minden interakció, ahol a felhasználó kellene adnia valamit vannak *önálló magas műszaki profilok*. Ebben a példában az érvényesítési önkiszolgáló Asserted ProfileUpdate műszaki profilt felveszi azt. Ez a műszaki profilja, a függő entitásonkénti (RP) házirendfájl `Profile Edit` használja.
+Az ellenőrzési lépés leggyakoribb használatát egy felhasználói interakció szerepel. Összes műveletet, amikor a felhasználó várhatóan információk megadása a rendszer *önálló kiszolgáló által megerősített technikai profilok*. Ebben a példában hozzáadjuk az érvényesítés az önkiszolgáló Asserted ProfileUpdate műszaki profilba. Ez a műszaki profilja, amelyet a függő entitásonkénti (RP) házirendfájl `Profile Edit` használja.
 
-A jogcímek exchange hozzáadása a saját szükséges műszaki profil:
+Az önellenőrzött technikai profilban jogcímcsere hozzáadása:
 
-1. Nyissa meg a TrustFrameworkBase.xml fájlt, és keresse meg `<TechnicalProfile Id="SelfAsserted-ProfileUpdate">`.
-2. Ellenőrizze a műszaki profil konfigurációját. Figyelje meg, hogy az exchange-ben a felhasználó nevezünk kérni fogja annak a felhasználónak (a bemeneti jogcímek), de az önálló szükséges szolgáltatót (kimeneti jogcímek) ból várhatóan jogcímeket.
-3. Keresse meg `TechnicalProfileReferenceId="SelfAsserted-ProfileUpdate`, és figyelje meg, hogy ez a profil hívja meg, 4. az orchestration lépés `<UserJourney Id="ProfileEdit">`.
+1. Nyissa meg a TrustFrameworkBase.xml fájlt, és keressen rá a `<TechnicalProfile Id="SelfAsserted-ProfileUpdate">`.
+2. Tekintse át a konfigurációt, a technikai profil. Figyelje meg, hogy a felhasználó exchange számít, ha jogcímeket meg kell adnia annak a felhasználónak (a bemeneti jogcímek), és visszaküldi az önellenőrzött szolgáltató (kimeneti jogcímek) vár jogcímeket.
+3. Keresse meg `TechnicalProfileReferenceId="SelfAsserted-ProfileUpdate`, és figyelje meg, hogy ez a profil hívja meg, a vezénylési lépés 4 `<UserJourney Id="ProfileEdit">`.
 
 ## <a name="step-4-upload-and-test-the-profile-edit-rp-policy-file"></a>4. lépés: Töltse fel, és a profil szerkesztése RP házirend fájl tesztelése
 
 1. Töltse fel a TrustFrameworkExtensions.xml fájl új verzióját.
-2. Használjon **futtatása most** a profil szerkesztése RP házirendfájl teszteléséhez.
-3. Tesztelje az érvényesítési egyik meglévő nevét (például mcvinny) biztosításával a **Utónév** mező. Ha minden megfelelően van beállítva, kell kapnia egy üzenetet, amely értesíti a felhasználót, hogy a player címke már használatban van.
+2. Használat **Futtatás most** a profil szerkesztése RP házirendfájl teszteléséhez.
+3. Tesztelje az érvényesítés azáltal, hogy valamelyik meglévő nevét (például mcvinny) a **Utónév** mező. Ha minden helyesen van beállítva, meg kell kapnia egy üzenet, amely értesíti a felhasználót, hogy a lejátszó címke már használatban van.
 
 ## <a name="next-steps"></a>További lépések
 
-[Módosítsa a profil szerkesztése és felhasználói regisztráció gyűjtsön további információt a felhasználók](active-directory-b2c-create-custom-attributes-profile-edit-custom.md)
+[Módosítsa a profil szerkesztése és a felhasználó regisztrációját, hogy további információkat gyűjtsön a felhasználók számára](active-directory-b2c-create-custom-attributes-profile-edit-custom.md)
 
-[Forgatókönyv: Integrálása az Azure AD B2C felhasználói út a REST API jogcímek cseréjét egy vezénylési lépés](active-directory-b2c-rest-api-step-custom.md)
+[Forgatókönyv: Integrálása az Azure AD B2C felhasználói interakciósorozatban szereplő REST API-val jogcím cseréje egy vezénylési lépés](active-directory-b2c-rest-api-step-custom.md)

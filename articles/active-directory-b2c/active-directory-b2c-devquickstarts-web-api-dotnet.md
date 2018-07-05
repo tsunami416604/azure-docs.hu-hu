@@ -1,40 +1,40 @@
 ---
-title: Hívható meg egy védett ASP.NET webes API-t az Azure Active Directory B2C |} Microsoft Docs
-description: Hogyan kell a .NET-webalkalmazás létrehozása, és hívja meg a webes api Azure Active Directory B2C és az OAuth 2.0 hozzáférési jogkivonatok használatával.
+title: Hívja a védett ASP.NET webes API-t az Azure Active Directory B2C |} A Microsoft Docs
+description: Hogyan kell egy .NET-webalkalmazás létrehozása és a egy webes API-t az Azure Active Directory B2C-vel és az OAuth 2.0 hozzáférési jogkivonatok használatával.
 services: active-directory-b2c
 author: davidmu1
 manager: mtillman
 ms.service: active-directory
 ms.workload: identity
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/17/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 39603cf103a8ff2656c76843aeae36b17936d13a
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 0fd00672e53d0b0148b70b364df5959ced1e554a
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34712402"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37442457"
 ---
 # <a name="azure-ad-b2c-call-a-net-web-api-from-a-net-web-app"></a>Az Azure AD B2C: .NET webes API-hívás .NET-webalkalmazásból
 
-Az Azure AD B2C segítségével hatékony identitáskezelési funkciókat adhat hozzá a webalkalmazások és webes API-k. A cikkből megtudhatja, hogyan kérjen hozzáférési jogkivonatok és ellenőrizze a .NET "Feladatlista" webes alkalmazás a .NET webes API-t.
+Azure AD B2C használatával adhat hozzá hatékony identitáskezelési funkciókat a webalkalmazások és webes API-kat. Ez a cikk ismerteti, hogyan kérhetnek a hozzáférési jogkivonatok és a márka .NET "Feladatlista" webes alkalmazás a .NET webes API-t.
 
-Ez a cikk nem foglalkozik megvalósítható bejelentkezési, regisztrációs és profilkezelési Azure AD B2C. A cikk foglalkozik hívó Web API-kat a felhasználó már hitelesítése után. Ha még nem tette meg, a következőket:
+Ez a cikk nem tárgyalja a megvalósítása a bejelentkezési, regisztrációs és profilkezelési az Azure AD B2C-vel. A cikk foglalkozik hívó webes API-k után a felhasználó már hitelesítve van. Ha még nem tette, hogy az alábbi lépéseket kell tennie:
 
-* Első lépések egy [.NET-webalkalmazás](active-directory-b2c-devquickstarts-web-dotnet-susi.md)
-* Első lépések egy [.NET webes API-t](active-directory-b2c-devquickstarts-api-dotnet.md)
+* Ismerkedés a [.NET-webalkalmazás](active-directory-b2c-devquickstarts-web-dotnet-susi.md)
+* Ismerkedés a [.NET webes API-hoz](active-directory-b2c-devquickstarts-api-dotnet.md)
 
 ## <a name="prerequisite"></a>Előfeltétel
 
-Hozható létre olyan webes alkalmazás, amely behívja a webes API-t kell:
+Hozhat létre egy webalkalmazást, amely meghív egy webes api-t kell tennie:
 
-1. [Az Azure AD B2C bérlő létrehozása](active-directory-b2c-get-started.md).
-2. [Regisztrálja a webes api](active-directory-b2c-app-registration.md#register-a-web-api).
-3. [A webes alkalmazás regisztrálása](active-directory-b2c-app-registration.md#register-a-web-app).
+1. [Azure AD B2C-bérlő létrehozása](active-directory-b2c-get-started.md).
+2. [Regisztráljon egy webes api](active-directory-b2c-app-registration.md#register-a-web-api).
+3. [Webalkalmazás regisztrációja](active-directory-b2c-app-registration.md#register-a-web-app).
 4. [Házirendek beállítása](active-directory-b2c-reference-policies.md).
-5. [Engedélyeket kap a webes alkalmazás használja a web api](active-directory-b2c-access-tokens.md#publishing-permissions).
+5. [Engedélyeket a webes alkalmazás használatához a webes api](active-directory-b2c-access-tokens.md#publishing-permissions).
 
 > [!IMPORTANT]
 > Az ügyfélalkalmazásnak és a webes API-nak ugyanazt az Azure AD B2C könyvtárat kell használnia.
@@ -48,16 +48,16 @@ Az oktatóanyag kódjának kezelése a [GitHubon](https://github.com/Azure-Sampl
 git clone https://github.com/Azure-Samples/active-directory-b2c-dotnet-webapp-and-webapi.git
 ```
 
-Miután letöltötte a mintakódot, nyissa meg a Visual Studio .sln fájlt a kezdéshez. A megoldásfájl két projektet tartalmaz: `TaskWebApp` és `TaskService`. `TaskWebApp` a felhasználó kommunikál MVC webalkalmazás van. A `TaskService` az alkalmazás webes API háttérszolgáltatása, amely tárolja a felhasználók feladatlistáit. Ez a cikk nem tér ki az épület a `TaskWebApp` webes alkalmazás vagy a `TaskService` webes API-t. Megtudhatja, hogyan hozhat létre az Azure AD B2C segítségével .NET web app, tekintse meg a [.NET web app oktatóanyag](active-directory-b2c-devquickstarts-web-dotnet-susi.md). Megtudhatja, hogyan hozhat létre a .NET webes API-t az Azure AD B2C használatával biztonságossá téve, tekintse meg a [.NET webes API-k oktatóanyag](active-directory-b2c-devquickstarts-api-dotnet.md).
+Miután letöltötte a mintakódot, nyissa meg a Visual Studio .sln fájlt a kezdéshez. A megoldásfájl két projektet tartalmaz: `TaskWebApp` és `TaskService`. `TaskWebApp` van egy MVC-webalkalmazást, amely a felhasználó kommunikál. A `TaskService` az alkalmazás webes API háttérszolgáltatása, amely tárolja a felhasználók feladatlistáit. Ez a cikk nem tárgyalja a building a `TaskWebApp` webalkalmazás vagy a `TaskService` webes API-t. A .NET-webalkalmazás létrehozása az Azure AD B2C használatával kapcsolatban lásd: a [.NET-alapú webappokról szóló oktatóanyagunkat](active-directory-b2c-devquickstarts-web-dotnet-susi.md). Ismerje meg, hogyan hozhat létre a .NET webes API Azure AD B2C használatával biztonságossá téve, tekintse meg a [.NET webes API-k oktatóanyag](active-directory-b2c-devquickstarts-api-dotnet.md).
 
 ### <a name="update-the-azure-ad-b2c-configuration"></a>Az Azure AD B2C konfiguráció frissítése
 
-A minta úgy van konfigurálva, hogy a bemutató bérlőnk házirendjeit és ügyfél-azonosítóját használja. Ha azt szeretné, használhatja a saját bérlőt:
+A minta úgy van konfigurálva, hogy a bemutató bérlőnk házirendjeit és ügyfél-azonosítóját használja. Ha szeretné, hogy a saját bérlő használatához:
 
 1. Nyissa meg a `web.config` fájlt a `TaskService` projektben, és a következőképpen cserélje le az értékeket:
 
     * Az `ida:Tenant` helyett szerepeljen a bérlő neve
-    * `ida:ClientId` a webes api-alkalmazás azonosítójú
+    * `ida:ClientId` az a webes api-alkalmazás azonosítója
     * Az `ida:SignUpSignInPolicyId` helyett szerepeljen a „regisztrálási vagy bejelentkezési” házirend neve
 
 2. Nyissa meg a `web.config` fájlt a `TaskWebApp` projektben, és a következőképpen cserélje le az értékeket:
@@ -71,13 +71,13 @@ A minta úgy van konfigurálva, hogy a bemutató bérlőnk házirendjeit és üg
 
 
 
-## <a name="requesting-and-saving-an-access-token"></a>A kért és mentése egy hozzáférési jogkivonatot:
+## <a name="requesting-and-saving-an-access-token"></a>Kér, és a hozzáférési token mentése
 
-### <a name="specify-the-permissions"></a>Az engedélyek megadásához
+### <a name="specify-the-permissions"></a>Az engedélyek megadása
 
-Annak érdekében, hogy a webes API-hívás, szeretné hitelesíteni a felhasználót (a sign-Close-Up/bejelentkezési házirend használatával) és [olyan hozzáférési jogkivonatot kap](active-directory-b2c-access-tokens.md) az Azure AD B2C. Ahhoz, hogy olyan hozzáférési jogkivonatot kap, először meg kell azt szeretné, hogy a hozzáférési jogkivonat megadását az engedélyeket. Az engedélyek vannak megadva a `scope` paraméter, amikor a kérést a `/authorize` végpont. Ahhoz például, hogy egy hozzáférési jogkivonat App ID URI-azonosítója az erőforrás alkalmazás "olvasási" engedéllyel rendelkező `https://contoso.onmicrosoft.com/tasks`, a hatókör lenne `https://contoso.onmicrosoft.com/tasks/read`.
+A webes API-hívás indításához kell hitelesíteni a felhasználót (a regisztrálási-regisztrálási vagy bejelentkezési szabályzat használatával) és [egy hozzáférési jogkivonatot kap](active-directory-b2c-access-tokens.md) az Azure AD B2C-ből. Annak érdekében, hogy hozzáférési jogkivonatot kap, először adjon meg szeretné adni a hozzáférési jogkivonatot az engedélyeket. Az engedélyek vannak megadva a `scope` paraméter a kérelmet, győződjön meg arról, ha a `/authorize` végpont. Például a "olvasási" engedéllyel az erőforrás-alkalmazás, amely rendelkezik App ID URI-ját a hozzáférési jogkivonat beszerzése `https://contoso.onmicrosoft.com/tasks`, a hatókör lenne `https://contoso.onmicrosoft.com/tasks/read`.
 
-A hatókör a mintában szereplő, nyissa meg a fájlt `App_Start\Startup.Auth.cs` , és adja meg a `Scope` OpenIdConnectAuthenticationOptions változóját.
+Ebben a mintában a hatókört ad meg, nyissa meg a fájl `App_Start\Startup.Auth.cs` , és meghatározhatja a `Scope` OpenIdConnectAuthenticationOptions változóját.
 
 ```CSharp
 // App_Start\Startup.Auth.cs
@@ -94,9 +94,9 @@ A hatókör a mintában szereplő, nyissa meg a fájlt `App_Start\Startup.Auth.c
 }
 ```
 
-### <a name="exchange-the-authorization-code-for-an-access-token"></a>Exchange-hozzáférési tokent az engedélyezési kódot
+### <a name="exchange-the-authorization-code-for-an-access-token"></a>Az engedélyezési kódot, a hozzáférési jogkivonat
 
-Egy felhasználót a regisztráció és a bejelentkezési élmény befejezése után az alkalmazás kap egy engedélyezési kód az Azure AD B2C. Az OWIN OpenID Connect köztes fogja tárolni a kódot, de nem cserélnek azt a hozzáférési tokent. Használhatja a [MSAL könyvtár](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet) az exchange végrehajtásához. A mintában szereplő konfigurált a lekérdezésértesítési visszahívást az OpenID Connect köztes be, amikor egy engedélyezési kód érkezik. A visszahívási MSAL használjuk a jogkivonat kód csere, és menteni a jogkivonatot a gyorsítótárba.
+Egy felhasználó a regisztrálási vagy bejelentkezési élmény befejezése után az alkalmazás megkapja az engedélyezési kódot az Azure AD B2C-ből. Az OWIN OpenID Connect közbenső szoftvert fogja tárolni a kódot, de a rendszer nem exchange-, egy hozzáférési jogkivonatot. Használhatja a [MSAL könyvtár](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet) , hogy az exchange. A mintánkban konfiguráltuk a lekérdezésértesítési visszahívást, az OpenID Connect közbenső szoftvert, amikor egy engedélyezési kód érkezik. A visszahívás MSAL használjuk az exchange-jogkivonat a kódot, és mentse a token a gyorsítótárba.
 
 ```CSharp
 /*
@@ -121,11 +121,11 @@ private async Task OnAuthorizationCodeReceived(AuthorizationCodeReceivedNotifica
 
 ## <a name="calling-the-web-api"></a>A webes API meghívása
 
-Ez a szakasz ismerteti, amelyek használata során kapott jogkivonat sign-Close-Up/bejelentkezés az Azure AD B2C a webes API-k eléréséhez.
+Ez a szakasz bemutatja, hogyan használható a token során kapott való-ra vagy jelentkezzen be az Azure AD B2C a webes API-k eléréséhez.
 
-### <a name="retrieve-the-saved-token-in-the-controllers"></a>A mentett lexikális elem szerepel a vezérlők beolvasása
+### <a name="retrieve-the-saved-token-in-the-controllers"></a>A vezérlő a mentett jogkivonat lekérése
 
-A `TasksController` felelős kommunikál a webes API-t és HTTP-kérelmek küldéséhez az API használatával olvasását, létrehozását és törölheti a feladatokat. Az API-t az Azure AD B2C által védett, mert kell először kérjen le a jogkivonatot az előző lépésben mentett.
+A `TasksController` felelős kommunikál a webes API-t és a HTTP-kérések küldését az API-t, olvassa el, hozzon létre és törölheti a feladatokat. Az API-t az Azure AD B2C által védett, mert kell először kérjen le a jogkivonatot az előző lépésben mentette.
 
 ```CSharp
 // Controllers\TasksController.cs
@@ -150,9 +150,9 @@ private async void acquireToken(String[] scope)
 }
 ```
 
-### <a name="read-tasks-from-the-web-api"></a>Feladatok olvasni a webes API-k
+### <a name="read-tasks-from-the-web-api"></a>Olvassa el a feladatokat a webes API
 
-Ha megkapta a jogkivonatot, csatolhat azt a HTTP `GET` kérheti a `Authorization` biztonságosan hívására fejléc `TaskService`:
+Ha megkapta a jogkivonatot, csatlakoztathat, a HTTP `GET` kérheti a a `Authorization` biztonságos hívása fejléc `TaskService`:
 
 ```CSharp
 // Controllers\TasksController.cs
@@ -176,11 +176,11 @@ public async Task<ActionResult> Index()
 
 ```
 
-### <a name="create-and-delete-tasks-on-the-web-api"></a>Hozzon létre vagy töröljön a webes API-k feladatai
+### <a name="create-and-delete-tasks-on-the-web-api"></a>Hozzon létre vagy töröljön a webes API műveletek
 
-Ugyanezt a mintát követik küldésekor `POST` és `DELETE` kéréseket a webes API-hoz, MSAL segítségével kéri le a hozzáférési jogkivonatot a gyorsítótárból.
+Ugyanezt a mintát követi, amikor küld `POST` és `DELETE` kéréseket a webes API-t, az MSAL segítségével a hozzáférési jogkivonat lekérése a gyorsítótárból.
 
 ## <a name="run-the-sample-app"></a>Mintaalkalmazás futtatása
 
-Végezetül hozza létre, és mindkét az alkalmazások futtatása. Regisztráció és bejelentkezés, és hozzon létre feladatokat a bejelentkezett felhasználó. Kijelentkezés és bejelentkezés másik felhasználóként. Hozzon létre feladatokat ennek a felhasználónak. Figyelje meg, hogyan feladatok felhasználónként tárolja a API, mivel az API kinyeri a felhasználó identitását a jogkivonatból kap. Próbálja meg is játszik és a hatókörök. Távolítsa el a "write", és próbálja meg újból felvenni a feladatok engedéllyel. Ne feledje Kijelentkezés a hatókör minden módosításakor.
+Végül hozhat létre, és mindkét az alkalmazások futtatására. Regisztráljon, és jelentkezzen be, és hozzon létre feladatokat a bejelentkezett felhasználó. Jelentkezzen ki, és jelentkezzen be másik felhasználóként. Hozzon létre feladatokat ennek a felhasználónak. Figyelje meg, hogy hogyan feladatok felhasználónként tárolja az API, mert az API kinyeri a felhasználó identitását a jogkivonat kap. Lejátszás hatókörökkel is kipróbálhatja. Távolítsa el a "write", és ismételje meg a feladat hozzáadása szükséges engedély. Csak ellenőrizze, hogy jelentkezzen ki a hatókört minden módosításakor.
 

@@ -1,6 +1,6 @@
 ---
-title: Automatikus engedélyezés a Resource Manager-sablon használatával diagnosztikai beállítások
-description: Útmutató Resource Manager sablon használata, amely lehetővé teszi, hogy adatfolyamként küldje el az Event hubs diagnosztikai naplók, vagy olyan tárfiókban tárolja őket a diagnosztikai beállításokat szeretne létrehozni.
+title: Automatikusan a Resource Manager-sablonnal diagnosztikai beállítások engedélyezése
+description: Megtudhatja, hogyan hozhat létre a diagnosztikai beállítások, amely lehetővé teszi, hogy az Event hubs szolgáltatásba a diagnosztikai naplók streamelése vagy a storage-fiókban tárolja őket a Resource Manager-sablon használatával.
 author: johnkemnetz
 services: azure-monitor
 ms.service: azure-monitor
@@ -8,34 +8,34 @@ ms.topic: conceptual
 ms.date: 3/26/2018
 ms.author: johnkem
 ms.component: ''
-ms.openlocfilehash: 6c202afaca893609d41384ee8302b0c4c6c4a6f6
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: a69cefc3c9363c0e8378a90c44d6a466780402b1
+ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35263388"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37434487"
 ---
-# <a name="automatically-enable-diagnostic-settings-at-resource-creation-using-a-resource-manager-template"></a>Automatikus engedélyezés a Resource Manager-sablon használatával erőforrás létrehozásakor diagnosztikai beállítások
-Ebben a cikkben megmutatjuk, hogyan használható egy [Azure Resource Manager sablon](../azure-resource-manager/resource-group-authoring-templates.md) létrehozásakor erőforrás diagnosztikai beállításainak konfigurálására. Ez lehetővé teszi, hogy automatikusan elindítja a diagnosztikai naplók és a mérni kívánt Event Hubs tárfiókokban archiválás őket, vagy Naplóelemzési elküldi őket egy erőforrás létrehozásakor.
+# <a name="automatically-enable-diagnostic-settings-at-resource-creation-using-a-resource-manager-template"></a>Automatikusan az diagnosztikai beállítások engedélyezése Resource Manager-sablonnal erőforrás létrehozásakor
+Ebben a cikkben bemutatjuk, hogyan használhatja egy [Azure Resource Manager-sablon](../azure-resource-manager/resource-group-authoring-templates.md) diagnosztikai beállításainak konfigurálása az erőforrás létrehozásakor. Ez lehetővé teszi, hogy automatikusan elindul, a diagnosztikai naplók és mérőszámok az Event Hubs archiválási őket a Storage-fiókban, vagy elküldheti a Log Analytics szolgáltatásba, amikor egy erőforrást hoznak létre streamelési.
 
-A módszer a Resource Manager-sablon használatával diagnosztikai naplók engedélyezése az erőforrástípushoz függ.
+A metódus a Resource Manager-sablonnal diagnosztikai naplóinak engedélyezéséről az erőforrás típusától függ.
 
-* **Nem-számítási** erőforrások (például a hálózati biztonsági csoportok, a Logic Apps Automation) [cikkben leírt diagnosztikai beállítások](monitoring-overview-of-diagnostic-logs.md#resource-diagnostic-settings).
-* **Számítási** (ÜVEGVATTA/LAD-alapú) erőforrások használják a [ÜVEGVATTA/LAD konfigurációs fájl ebben a cikkben leírt](../vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines.md).
+* **Nem – számítási** erőforrások (például a hálózati biztonsági csoportok, a Logic Apps, Automation) [ebben a cikkben leírt diagnosztikai beállítások](monitoring-overview-of-diagnostic-logs.md#resource-diagnostic-settings).
+* **COMPUTE** (WAD/LAD-alapú) erőforrások használják a [WAD/LAD konfigurációs fájl ebben a cikkben leírt](../vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines.md).
 
-Ebben a cikkben azt konfigurálását ismertetik diagnosztika módszerek használatával.
+Ebben a cikkben azt ismertetjük, hogyan a diagnosztika mindkét módszer használatával való konfigurálásához.
 
-Az alapvető lépések a következők:
+Az alapvető lépéseken az alábbiak szerint:
 
-1. Hozzon létre egy sablont, amely leírja a erőforrás létrehozása és engedélyezése a diagnosztika JSON-fájlként.
-2. [A sablon bármely olyan telepítési módszerrel telepítéséhez](../azure-resource-manager/resource-group-template-deploy.md).
+1. Hozzon létre egy sablont, amely ismerteti, hogyan lehet létrehozni az erőforrást, és a diagnosztika JSON-fájlként.
+2. [Helyezze üzembe a sablont, minden olyan telepítési módszerrel](../azure-resource-manager/resource-group-template-deploy.md).
 
-Az alábbiakban egy példa a sablon JSON-fájl generálása nem számítási és számítási erőforrásokat kell felállításához.
+Az alábbiakban egy példát a sablon JSON-fájlt, létre kell hoznia a nem számítási és a számítási erőforrásokat ad.
 
-## <a name="non-compute-resource-template"></a>Nem-számítási erőforrás sablon
-Nem számítási erőforrásokat akkor két műveletet kell végrehajtania:
+## <a name="non-compute-resource-template"></a>Nem – számítási erőforrásokat sablon
+Nem számítási erőforrások szüksége lesz két műveletet kell végrehajtania:
 
-1. Paraméterek hozzáadása a paraméterek blob a tárfiók neve, az event hub engedélyezési szabály azonosítója, illetve a Naplóelemzési munkaterület azonosítója (tárfiókokban, adatfolyamként való küldése a Event Hubs-naplókat, és/vagy naplók küldése Naplóelemzési archiválási diagnosztikai naplók engedélyezése).
+1. Paraméterek hozzáadása a paraméterek blobot a tárfiók nevét, az event hub engedélyezési szabály azonosítója, illetve a Log Analytics-munkaterület Azonosítójára (archív diagnosztikai naplók egy tárfiókban, a folyamatos átviteli naplók az Event hubs szolgáltatásba, és/vagy naplók küldése a Log Analytics engedélyezése).
    
     ```json
     "settingName": {
@@ -69,13 +69,13 @@ Nem számítási erőforrásokat akkor két műveletet kell végrehajtania:
       }
     }
     ```
-2. Az erőforrás legyen diagnosztikai naplók engedélyezése erőforrások tömbben típusú erőforrás hozzáadása `[resource namespace]/providers/diagnosticSettings`.
+2. Az erőforrás, amelynek szeretné engedélyezni, diagnosztikai naplók erőforrások tömbjének típusú erőforrás hozzáadása `[resource namespace]/providers/diagnosticSettings`.
    
     ```json
     "resources": [
       {
         "type": "providers/diagnosticSettings",
-        "name": "Microsoft.Insights/[parameters('settingName')]",
+        "name": "[concat('Microsoft.Insights/', parameters('settingName'))]",
         "dependsOn": [
           "[/*resource Id for which Diagnostic Logs will be enabled>*/]"
         ],
@@ -111,9 +111,9 @@ Nem számítási erőforrásokat akkor két műveletet kell végrehajtania:
     ]
     ```
 
-A Tulajdonságok blob a diagnosztikai beállítások a következő [a jelen cikkben ismertetett formátum](https://docs.microsoft.com/rest/api/monitor/diagnosticsettings/createorupdate). Hozzáadás a `metrics` tulajdonság lehetővé teszi, hogy ezek azonos kimenetek, feltéve, hogy erőforrás metrikáit is küldhet [az erőforrás támogatja az Azure-figyelő metrikák](monitoring-supported-metrics.md).
+A Tulajdonságok blob a diagnosztikai beállítás a következő [ebben a cikkben ismertetett formátumban](https://docs.microsoft.com/rest/api/monitor/diagnosticsettings/createorupdate). Hozzáadás a `metrics` tulajdonság lehetővé teszi, hogy ezek azonos kimeneteket, feltéve, hogy erőforrás-metrikák is küldhet [az erőforrás támogatja-e az Azure Monitor-metrikák](monitoring-supported-metrics.md).
 
-Ez egy teljes példa, amely hoz létre egy logikai alkalmazást, és bekapcsolja a streaming az Eseményközpontokhoz és a tárolási tárfiókokban.
+Íme egy teljes példa, amely létrehoz egy logikai alkalmazást, és kapcsolja be a streamelés az Event Hubs és a storage-fiókban lévő tárolóhoz.
 
 ```json
 
@@ -205,7 +205,7 @@ Ez egy teljes példa, amely hoz létre egy logikai alkalmazást, és bekapcsolja
       "resources": [
         {
           "type": "providers/diagnosticSettings",
-          "name": "Microsoft.Insights/[parameters('settingName')]",
+          "name": "[concat('Microsoft.Insights/', parameters('settingName'))]",
           "dependsOn": [
             "[resourceId('Microsoft.Logic/workflows', parameters('logicAppName'))]"
           ],
@@ -246,21 +246,21 @@ Ez egy teljes példa, amely hoz létre egy logikai alkalmazást, és bekapcsolja
 
 ```
 
-## <a name="compute-resource-template"></a>Számítási erőforrás sablon
-Ahhoz, hogy a számítási erőforrás diagnosztikai, például egy virtuális gép vagy a Service Fabric-fürt, akkor kell:
+## <a name="compute-resource-template"></a>Számítási erőforrás-sablon
+Ahhoz, hogy a diagnosztikát a számítási erőforrás, például egy virtuális gép vagy a Service Fabric-fürtöt, meg kell:
 
-1. Az Azure Diagnostics-bővítmény hozzáadása a virtuális gép erőforrás-definícióban.
-2. Adja meg a tárolási fiók és/vagy az event hub paraméterként.
-3. Adja hozzá a WADCfg XML-fájl tartalmát a XMLCfg tulajdonság, a megfelelő escape-karaktersorozat összes XML-karakter.
+1. Az Azure Diagnostics bővítmény hozzáadása a virtuális gép erőforrás-definícióban.
+2. Adja meg a tárolási fiók és/vagy event hub paraméterként.
+3. Adja hozzá a WADCfg XML-fájl tartalmát a XMLCfg tulajdonságot használja, minden XML-karaktereket escape-karaktersorozat megfelelően.
 
 > [!WARNING]
-> Ezen utolsó lépésében megszerezni a helyes megkapni. [Ebben a cikkben találhat](../virtual-machines/extensions/diagnostics-template.md#diagnostics-configuration-variables) , amely felosztja a diagnosztika konfigurációs séma escape-karakterrel megjelölve, és megfelelő formátumú változók példát.
+> Ez a lépés utolsó kellhet megkapni. [Ebben a cikkben](../virtual-machines/extensions/diagnostics-template.md#diagnostics-configuration-variables) példaként, amely a diagnosztikai konfigurációs séma felosztja a változókat, amelyek az escape-karakterrel, és a formátuma helytelen.
 > 
 > 
 
-A teljes folyamat minták leírt [ebben a dokumentumban](../virtual-machines/windows/extensions-diagnostics-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+A teljes folyamatot, beleértve a mintákat, leírt [ebben a dokumentumban](../virtual-machines/windows/extensions-diagnostics-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 
 ## <a name="next-steps"></a>További lépések
-* [További tudnivalók az Azure diagnosztikai naplók](monitoring-overview-of-diagnostic-logs.md)
-* [Event hubs az Azure diagnosztikai naplók adatfolyam](monitoring-stream-diagnostic-logs-to-event-hubs.md)
+* [További információ az Azure diagnosztikai naplók](monitoring-overview-of-diagnostic-logs.md)
+* [Stream és az Event Hubs az Azure diagnosztikai naplók](monitoring-stream-diagnostic-logs-to-event-hubs.md)
 

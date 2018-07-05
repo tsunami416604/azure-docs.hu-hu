@@ -1,6 +1,6 @@
 ---
-title: Az Azure Windows Virtuálisgép-méretek – GPU |} Microsoft Docs
-description: A különböző GPU listák Windows virtuális gépek Azure-ban elérhető méretek optimalizált. Vcpu, adatlemezek és hálózati adapterek, valamint tárolási átviteli sebesség és a hálózati sávszélesség az a sorozat-méretek számát tartalmazza.
+title: Az Azure Windows VM-méretek – GPU |} A Microsoft Docs
+description: A különböző GPU listák az Azure-beli Windows virtuális gépekhez elérhető méretek optimalizálva. Tartalmazza a vcpu-k, az adatlemezeket és a hálózati adapterek, valamint tárolási átviteli sebesség és a hálózati sávszélesség-sorozat méretei száma.
 services: virtual-machines-windows
 documentationcenter: ''
 author: jonbeck7
@@ -13,35 +13,37 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 03/01/2018
+ms.date: 07/03/2018
 ms.author: jonbeck
-ms.openlocfilehash: 5cc8db11e61eba1c5a366ac9816a472e8b692360
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 5a6e2872d1c9bd0e13aae0e0abecdb011dd79fb9
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34654215"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37443300"
 ---
-# <a name="gpu-optimized-virtual-machine-sizes"></a>GPU optimalizált virtuálisgép-méretek
+# <a name="gpu-optimized-virtual-machine-sizes"></a>GPU-optimalizált virtuális gépek méretei
 
 [!INCLUDE [virtual-machines-common-sizes-gpu](../../../includes/virtual-machines-common-sizes-gpu.md)]
 
 [!INCLUDE [virtual-machines-common-sizes-table-defs](../../../includes/virtual-machines-common-sizes-table-defs.md)]
 
-[!INCLUDE [virtual-machines-n-series-windows-support](../../../includes/virtual-machines-n-series-windows-support.md)]
+## <a name="supported-operating-systems-and-drivers"></a>Támogatott operációs rendszerek és illesztőprogramok
 
-Illesztőprogram telepítése és ellenőrzési lépések, tekintse meg [N-series illesztőprogram telepítése Windows](n-series-driver-setup.md).
+Windows rendszerű Azure N-sorozatú virtuális gépek a GPU-funkciókkal kihasználásához NVIDIA GPU-illesztőprogramokat kell telepíteni. A [NVIDIA GPU illesztőprogramjának bővítmény](../extensions/hpccompute-gpu-windows.md) telepíti a megfelelő NVIDIA CUDA vagy GRID illesztőprogramok-N-sorozatú virtuális gépen. Telepítse, vagy a bővítmény az Azure portal vagy az eszközök, például az Azure PowerShell vagy az Azure Resource Manager-sablonok használata kezelheti. Tekintse meg a [NVIDIA GPU illesztőprogramjának bővítmény dokumentáció](../extensions/hpccompute-gpu-windows.md) támogatott operációs rendszerek és a telepítés lépéseit. Virtuálisgép-bővítményekkel kapcsolatos általános információkért lásd: [Azure virtuális gépi bővítmények és szolgáltatások](../extensions/overview.md).
+
+Ha manuális telepítése NVIDIA GPU-illesztőprogramokat, ismertető [GPU N-sorozat illesztőinek Windows](n-series-driver-setup.md) támogatott operációs rendszerek, az illesztőprogramok és a telepítés és ellenőrzés lépésein.
 
 [!INCLUDE [virtual-machines-n-series-considerations](../../../includes/virtual-machines-n-series-considerations.md)]
 
-## <a name="other-sizes"></a>Más méretek
+## <a name="other-sizes"></a>További méretek
 - [Általános célú](sizes-general.md)
 - [Számításra optimalizált](sizes-compute.md)
 - [Nagy teljesítményű számítás](sizes-hpc.md)
 - [Memóriaoptimalizált](sizes-memory.md)
 - [Tárolásra optimalizált](sizes-storage.md)
-- [Előző generációs](sizes-previous-gen.md)
+- [Előző generációs szoftvereknél jobban](sizes-previous-gen.md)
 
 ## <a name="next-steps"></a>További lépések
-További tudnivalók [Azure számítási egység (ACU)](acu.md) segíthetnek a számítási teljesítmény összehasonlítása Azure termékváltozatok mentén.
+Tudjon meg többet [Azure számítási egységek (ACU)](acu.md) Azure-termékváltozatok hasonlítsa össze a számítási teljesítményt nyújt segítséget.
 

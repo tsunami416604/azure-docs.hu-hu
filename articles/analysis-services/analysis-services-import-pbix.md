@@ -1,48 +1,48 @@
 ---
-title: A Power BI Desktop fájlt importálja az Azure Analysis Services |} Microsoft Docs
-description: Ismerteti, hogyan importálhatja a Power BI Desktop-fájl (pbix-fájlt) az Azure portál használatával.
+title: Egy Power BI Desktop-fájl importálása az Azure Analysis Services |} A Microsoft Docs
+description: Ismerteti, hogyan importálhatja a Power BI Desktop-fájl (pbix) Azure portal használatával.
 author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 05/22/2018
+ms.date: 07/03/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: aea6f3efcf3740527c43b75a30caadf6b2a8b623
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 3dd90fc862e64812c0ba17bef74818d18788f4b5
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34601071"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37440987"
 ---
 # <a name="import-a-power-bi-desktop-file"></a>A Power BI Desktop-fájl importálása
 
-Azure Analysis Services egy adatmodell a Power BI Desktop-fájl (pbix-fájlt) importálhatja. Modell metaadatait, a gyorsítótárazott adatokat és adatforrás-kapcsolatok importálása. Jelentések és a képi megjelenítések nincsenek importálva. Importálta az adatokat a Power BI Desktop modellek vannak a 1 400 kompatibilitási szinten.
+Azure Analysis Services adatmodellt a Power BI Desktop-fájl (pbix) importálhatja. Modell metaadatainak, a gyorsítótárazott adatok és az adatforrás-kapcsolatok importálása. Jelentések és Vizualizációk nem lesznek importálva. Importált adatok a Power BI Desktopból modellek az 1400-as kompatibilitási szinten.
 
 **Korlátozások**   
-- A pbix-modell csatlakozni tud-e **Azure SQL Database** és **Azure SQL Data Warehouse** adatforrások csak. 
-- A pbix-modell nem lehet élő vagy DirectQuery kapcsolatok. 
-- Importálás sikertelen lehet, ha a pbix-fájlt adatmodell Analysis Services nem támogatja a metaadatokat tartalmaz.
+- A pbix-modell csatlakozhat **Azure SQL Database** és **Azure SQL Data Warehouse** csak adatforrásokhoz. 
+- A pbix-modell nem lehet élő vagy DirectQuery-kapcsolatok. 
+- Ha a pbix-adatmodellt tartalmaz, az Analysis Services nem támogatja a metaadatok meghiúsulhat.
 
 ## <a name="to-import-from-pbix"></a>Pbix-fájlt importálása
 
-1. A Server **áttekintése** > **webes Tervező**, kattintson a **nyitott**.
+1. A kiszolgáló **áttekintése** > **webes Tervező**, kattintson a **nyílt**.
 
-    ![A modell létrehozása Azure-portálon](./media/analysis-services-create-model-portal/aas-create-portal-overview-wd.png)
+    ![Modell létrehozása az Azure Portalon](./media/analysis-services-create-model-portal/aas-create-portal-overview-wd.png)
 
 2. A **webes Tervező** > **modellek**, kattintson a **+ Hozzáadás**.
 
-    ![A modell létrehozása Azure-portálon](./media/analysis-services-create-model-portal/aas-create-portal-models.png)
+    ![Modell létrehozása az Azure Portalon](./media/analysis-services-create-model-portal/aas-create-portal-models.png)
 
-3. A **új modell**, írja be a modell neve, majd válassza ki a Power BI Desktop-fájlba.
+3. A **új modell**, írja be a modell neve, és válassza a Power BI Desktop-fájlt.
 
-    ![Azure-portálon az új modell párbeszédpanel](./media/analysis-services-import-pbix/aas-import-pbix-new-model.png)
+    ![Az Azure portal az új modell párbeszédpanel](./media/analysis-services-import-pbix/aas-import-pbix-new-model.png)
 
-4. A **importálási**, keresse meg és jelölje ki a fájlt.
+4. A **importálás**, keresse meg és válassza ki a fájlt.
 
-     ![Csatlakozás Azure-portálon párbeszédpanel](./media/analysis-services-import-pbix/aas-import-pbix-select-file.png)
+     ![Csatlakozás az Azure portal párbeszédpanel](./media/analysis-services-import-pbix/aas-import-pbix-select-file.png)
 
 ## <a name="see-also"></a>Lásd még
 
-[A modell létrehozása Azure-portálon](analysis-services-create-model-portal.md)   
-[Kapcsolódás Azure Analysis Services](analysis-services-connect.md)  
+[Modell létrehozása az Azure Portalon](analysis-services-create-model-portal.md)   
+[Csatlakozás az Azure Analysis Services](analysis-services-connect.md)  

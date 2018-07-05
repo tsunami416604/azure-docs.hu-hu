@@ -1,38 +1,38 @@
 ---
-title: Módosítsa a bejelentkezési be az egyéni házirendek és önkiszolgáló magas szolgáltató konfigurálása |} Microsoft Docs
-description: Egy általános bemutató hozzáadása regisztrálhat és konfigurálása a felhasználó által megadott jogcímek
+title: Módosítása jelentkezzen be az egyéni házirendek és a saját kiszolgáló által megerősített szolgáltató konfigurálása |} A Microsoft Docs
+description: Regisztráljon, és a felhasználó által megadott adatok konfigurálása jogcímek hozzáadását bemutató
 services: active-directory-b2c
 author: davidmu1
 manager: mtillman
 ms.service: active-directory
 ms.workload: identity
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/29/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 9d8f644e819ceb83f0b436789d6d8610ed01f6a6
-ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
+ms.openlocfilehash: 1a949007750ae9607ac31f02d23e39204b9f58e4
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "34710797"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37440501"
 ---
-# <a name="azure-active-directory-b2c-modify-sign-up-to-add-new-claims-and-configure-user-input"></a>Az Azure Active Directory B2C: A módosítás jelentkezzen be új jogcímeket adhatnak hozzá, és konfigurálja a felhasználói bevitel.
+# <a name="azure-active-directory-b2c-modify-sign-up-to-add-new-claims-and-configure-user-input"></a>Az Azure Active Directory B2C: Bejelentkezés módosítása be új jogcímeket adhatnak hozzá és felhasználó által megadott adatok konfigurálása.
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Ebben a cikkben egy új felhasználó által megadott bejegyzés (a jogcímek) fogja hozzáadni a bejelentkezési felhasználói használatában.  A bejegyzés konfigurálása, a legördülő menüből, és szükség esetén adja meg.
+Ez a cikk egy új felhasználó által megadott bejegyzés (jogcím) adnak hozzá a regisztráció felhasználói interakciósorozat.  A bejegyzés konfigurálása, a legördülő listából, és határozza meg, ha szükséges.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Hajtsa végre a cikk a [Ismerkedés az egyéni házirendek](active-directory-b2c-get-started-custom.md).  A regisztráció vagy bejelentkezés felhasználói utazás előfizetési egy új helyi fiók a folytatás előtt tesztelje.
+* A cikkben leírtak elvégzése [Ismerkedés az egyéni szabályzatok](active-directory-b2c-get-started-custom.md).  Tesztelje a folytatás előtt egy új helyi fiókot regisztrálni szeretne a regisztráció/bejelentkezés felhasználói interakciósorozat.
 
 
-A felhasználók kezdeti adatgyűjtés az előfizetési/signin keresztül érhető el.  További jogcímek később gyűjthetők profil szerkesztése felhasználói utak keresztül. Az Azure AD B2C gyűjtse össze az adatokat közvetlenül a felhasználó interaktív módon, bármikor identitás élmény keretében használja a `selfasserted provider`. Az alábbi lépéseket alkalmazni, bármikor ezt a szolgáltatót használja.
+A regisztráció/bejelentkezés keresztül érhető el a felhasználók kezdeti adatgyűjtést.  További jogcímek később gyűjthetők profil szerkesztése felhasználói utak keresztül. Bármikor az Azure AD B2C-vel információt gyűjt közvetlenül a felhasználó interaktív módon, az identitás-kezelőfelületi keretrendszer használ annak `selfasserted provider`. Az alábbi lépéseket bármikor ezt a szolgáltatót használja a alkalmazni.
 
 
-## <a name="define-the-claim-its-display-name-and-the-user-input-type"></a>A jogcímek, a megjelenített név és a felhasználó bemeneti típus megadása
-Lehetővé teszi, hogy azok városhoz kérnie a felhasználót.  A következő elem hozzáadása a `<ClaimsSchema>` a TrustFrameworkBase házirend fájlban:
+## <a name="define-the-claim-its-display-name-and-the-user-input-type"></a>A jogcím, a megjelenítendő nevét és a felhasználói adatbevitel típusa
+Lehetővé teszi, hogy a felhasználó kérése az városa.  Adja hozzá a következő elemet, a `<ClaimsSchema>` elem a TrustFrameworkBase házirend fájlban:
 
 ```xml
 <ClaimType Id="city">
@@ -42,11 +42,11 @@ Lehetővé teszi, hogy azok városhoz kérnie a felhasználót.  A következő e
   <UserInputType>TextBox</UserInputType>
 </ClaimType>
 ```
-Nincsenek további lehetőségek tehet itt testre szabhatja a jogcímek.  A teljes séma, tekintse meg a **identitás élmény keretrendszer a műszaki referencia-útmutató**.  Ez az útmutató az útmutató szakaszban a közeljövőben lesznek közzétéve.
+Nincsenek további választható lehetőségeket Itt szabhatja testre a jogcímet.  A teljes séma, tekintse meg a **identitás élmény keretrendszer műszaki referencia-útmutató**.  Ez az útmutató hamarosan közzé lesz téve a hivatkozási szakaszban.
 
-* `<DisplayName>` egy karakterlánc, amely meghatározza a felhasználók számára is elérhető *címke*
+* `<DisplayName>` egy karakterlánc, amely meghatározza a felhasználó által használt *felirat*
 
-* `<UserHelpText>` a rendszer kötelező felhasználó segítségével
+* `<UserHelpText>` segít a szükséges ismertetése
 
 * `<UserInputType>` a következő négy beállítás alatt van kiemelve:
     * `TextBox`
@@ -59,7 +59,7 @@ Nincsenek további lehetőségek tehet itt testre szabhatja a jogcímek.  A telj
 </ClaimType>
 ```
 
-    * `RadioSingleSelectduration` -Egyszeres kijelölésnél érvényesíti.
+    * `RadioSingleSelectduration` – Egyetlen kijelölésre érvénybe lépteti.
 ```xml
 <ClaimType Id="city">
   <DisplayName>city where you work</DisplayName>
@@ -73,9 +73,9 @@ Nincsenek további lehetőségek tehet itt testre szabhatja a jogcímek.  A telj
 </ClaimType>
 ```
 
-    * `DropdownSingleSelect` -Lehetővé teszi, hogy a kijelölés csak érvényes érték.
+    * `DropdownSingleSelect` – Csak az érvényes érték a kiválasztását teszi lehetővé.
 
-![Képernyőfelvétel a legördülő lista lehetőséget](./media/active-directory-b2c-configure-signup-self-asserted-custom/dropdown-menu-example.png)
+![Képernyőfelvétel a lehetőségéről](./media/active-directory-b2c-configure-signup-self-asserted-custom/dropdown-menu-example.png)
 
 
 ```xml
@@ -92,9 +92,9 @@ Nincsenek további lehetőségek tehet itt testre szabhatja a jogcímek.  A telj
 ```
 
 
-* `CheckboxMultiSelect` Lehetővé teszi a kijelölt egy vagy több értéket.
+* `CheckboxMultiSelect` Lehetővé teszi, hogy a kijelölt egy vagy több értéket.
 
-![Képernyőkép a multiselect beállítás](./media/active-directory-b2c-configure-signup-self-asserted-custom/multiselect-menu-example.png)
+![Képernyőkép a többszörös kiválasztási lehetőséget](./media/active-directory-b2c-configure-signup-self-asserted-custom/multiselect-menu-example.png)
 
 
 ```xml
@@ -110,9 +110,9 @@ Nincsenek további lehetőségek tehet itt testre szabhatja a jogcímek.  A telj
 </ClaimType>
 ```
 
-## <a name="add-the-claim-to-the-sign-upsign-in-user-journey"></a>Vegye fel a kérelmet a bejelentkezési felhasználói út felfelé vagy bejelentkezés
+## <a name="add-the-claim-to-the-sign-upsign-in-user-journey"></a>Adja hozzá a bejelentkezést a jogcím up/sign felhasználói interakciósorozatban szereplő
 
-1. Adja hozzá a jogcímek, az `<OutputClaim ClaimTypeReferenceId="city"/>` a TechnicalProfile való `LocalAccountSignUpWithLogonEmail` (a TrustFrameworkBase házirend fájlban található).  Vegye figyelembe a TechnicalProfile használja a SelfAssertedAttributeProvider.
+1. A jogcím, adjon hozzá egy `<OutputClaim ClaimTypeReferenceId="city"/>` , a TechnicalProfile `LocalAccountSignUpWithLogonEmail` (a TrustFrameworkBase házirend fájlban található).  Vegye figyelembe a TechnicalProfile a SelfAssertedAttributeProvider használja.
 
   ```xml
   <TechnicalProfile Id="LocalAccountSignUpWithLogonEmail">
@@ -149,7 +149,7 @@ Nincsenek további lehetőségek tehet itt testre szabhatja a jogcímek.  A telj
   </TechnicalProfile>
   ```
 
-2. Az AAD-UserWriteUsingLogonEmail, a jogcím hozzáadása egy `<PersistedClaim ClaimTypeReferenceId="city" />` az AAD-címtárában, a felhasználó összegyűjtése után a jogcím írni. Ezt a lépést kihagyhatja, ha nem szeretné megőrizni a későbbi használatra a könyvtárban a jogcímet.
+2. Az AAD-UserWriteUsingLogonEmail, mint a jogcím hozzáadása egy `<PersistedClaim ClaimTypeReferenceId="city" />` az AAD-címtárában, a felhasználó összegyűjtése után a jogcím írni. Ezt a lépést kihagyhatja, ha nem szeretné megőrizni a jogcím későbbi használatra a könyvtárban.
 
   ```xml
   <!-- Technical profiles for local accounts -->
@@ -185,7 +185,7 @@ Nincsenek további lehetőségek tehet itt testre szabhatja a jogcímek.  A telj
   </TechnicalProfile>
   ```
 
-3. Az olvasó a könyvtárból, amikor a felhasználó jelentkezik be a TechnicalProfile jogcím hozzáadása egy `<OutputClaim ClaimTypeReferenceId="city" />`
+3. Adja hozzá a TechnicalProfile, amely a könyvtárból olvassa be, amikor egy felhasználó bejelentkezik a jogcím- `<OutputClaim ClaimTypeReferenceId="city" />`
 
   ```xml
   <TechnicalProfile Id="AAD-UserReadUsingEmailAddress">
@@ -213,7 +213,7 @@ Nincsenek további lehetőségek tehet itt testre szabhatja a jogcímek.  A telj
   </TechnicalProfile>
   ```
 
-4. Adja hozzá a `<OutputClaim ClaimTypeReferenceId="city" />` SignUporSignIn.xml RP szabályzat fájl, ezért ezt a kérelmet küld az alkalmazás a jogkivonat a felhasználó sikeres út után.
+4. Adja hozzá a `<OutputClaim ClaimTypeReferenceId="city" />` SignUporSignIn.xml az RP-házirendhez fájlt, így a sikeres felhasználói út után az alkalmazás a jogkivonatban a jogcím megkap.
 
   ```xml
   <RelyingParty>
@@ -235,17 +235,17 @@ Nincsenek további lehetőségek tehet itt testre szabhatja a jogcímek.  A telj
   </RelyingParty>
   ```
 
-## <a name="test-the-custom-policy-using-run-now"></a>Az egyéni házirend használatával "Futtatás most" tesztelése
+## <a name="test-the-custom-policy-using-run-now"></a>Tesztelje a egyéni szabályzat "Futtatás most" segítségével
 
-1. Nyissa meg a **panel az Azure AD B2C** , és keresse meg **identitás élmény keretrendszer > egyéni házirendek**.
-2. Válassza ki az egyéni házirendet, feltöltött, majd kattintson a **futtatása most** gombra.
-3. Iratkozhat fel e-mail cím használatával kell lennie.
+1. Nyissa meg a **Azure AD B2C paneljén** , és keresse meg **identitás-kezelőfelületi keretrendszer > egyéni szabályzatok**.
+2. Válassza ki az egyéni házirend feltöltött, majd kattintson a **Futtatás most** gombra.
+3. Regisztráció e-mail-címmel kell lennie.
 
-A regisztráció képernyő tesztmódban ehhez hasonlóan kell kinéznie:
+A regisztrációs képernyő tesztmódban ehhez hasonlóan kell kinéznie:
 
-![Képernyőkép a módosított előfizetési lehetőség](./media/active-directory-b2c-configure-signup-self-asserted-custom/signup-with-city-claim-dropdown-example.png)
+![Képernyőkép a módosított regisztrációs lehetőség](./media/active-directory-b2c-configure-signup-self-asserted-custom/signup-with-city-claim-dropdown-example.png)
 
-  A jogkivonat az alkalmazás most már tartalmazza a `city` jogcím a lent látható módon
+  Most már tartalmazza a tokent, az alkalmazásnak a `city` jogcím, ahogy az alábbi
 ```json
 {
   "exp": 1493596822,
@@ -266,18 +266,18 @@ A regisztráció képernyő tesztmódban ehhez hasonlóan kell kinéznie:
 }
 ```
 
-## <a name="optional-remove-email-verification-from-signup-journey"></a>Választható lehetőség: Távolítsa el e-mail ellenőrzése az előfizetési út
+## <a name="optional-remove-email-verification-from-signup-journey"></a>Választható lehetőség: Távolítsa el e-mailes ellenőrzés az előfizetési utazás
 
-E-mail-ellenőrzés kihagyása a házirend Szerző beállíthatja úgy a eltávolítása `PartnerClaimType="Verified.Email"`. Az e-mail cím lesz szükség, de nincs ellenőrizve, kivéve, ha a "Kötelező" = true törlődik.  Alaposan fontolja meg, hogy ez a beállítás a használati esetek számára megfelelő!
+E-mail-ellenőrzés kihagyása, hogy a szabályzat Szerző lehet váltani, távolítsa el `PartnerClaimType="Verified.Email"`. Az e-mail-cím lesz szükség, de nem ellenőrzi, kivéve, ha a "Kötelező" = true törlődik.  Alaposan gondolja át, ha ez a beállítás akkor megfelelő, a használati esetek!
 
-Alapértelmezés szerint engedélyezve van a e-mailek ellenőrzése a `<TechnicalProfile Id="LocalAccountSignUpWithLogonEmail">` az alapszintű csomag TrustFrameworkBase házirend fájlban:
+Ellenőrzött e-mail alapértelmezés szerint engedélyezve van a `<TechnicalProfile Id="LocalAccountSignUpWithLogonEmail">` az alapszintű csomag TrustFrameworkBase házirend fájlban:
 ```xml
 <OutputClaim ClaimTypeReferenceId="email" PartnerClaimType="Verified.Email" Required="true" />
 ```
 
 ## <a name="next-steps"></a>További lépések
 
-Adja hozzá a közösségi fiók bejelentkezések során a viszonylatában új jogcímet a lenti TechnicalProfiles módosításával. Ezek használhatók társadalombiztosítási/összevont fiók bejelentkezések által írható és olvasható a felhasználói adatokat a alternativeSecurityId használja, mint a lokátor.
+Adja hozzá az új jogcímet a flow közösségi fiók bejelentkezések az alább felsorolt TechnicalProfiles módosításával. Ezek írása és olvasása a felhasználói adatokat a alternativeSecurityId használja, mint a lokátor fiók társadalombiztosítási/összevont bejelentkezéseket használják.
 ```xml
 <TechnicalProfile Id="AAD-UserWriteUsingAlternativeSecurityId">
 <TechnicalProfile Id="AAD-UserReadUsingAlternativeSecurityId">

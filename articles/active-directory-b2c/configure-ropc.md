@@ -1,47 +1,47 @@
 ---
-title: Az erőforrás tulajdonosa jelszó hitelesítő adatok folyamata konfigurálása az Azure Active Directory B2C |} Microsoft Docs
-description: Ismerje meg, hogy az erőforrás tulajdonosa jelszó hitelesítő adatok folyamata konfigurálása az Azure AD B2C.
+title: Az erőforrás tulajdonosának jelszavas hitelesítő adatainak folyamata konfigurálása az Azure Active Directory B2C |} A Microsoft Docs
+description: Ismerje meg, hogy az erőforrás tulajdonosának jelszavas hitelesítő adatainak folyamata konfigurálása az Azure AD B2C-ben.
 services: active-directory-b2c
 author: davidmu1
 manager: mtillman
 ms.service: active-directory
 ms.workload: identity
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/24/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 073af4a57d55eb8b2f3608482159b57c7b408f3b
-ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
+ms.openlocfilehash: 5d68f8fe28b7f029d19a0ed0c03e5324c32f29c0
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37102606"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37446809"
 ---
-# <a name="configure-the-resource-owner-password-credentials-flow-in-azure-ad-b2c"></a>Az erőforrás tulajdonosa jelszó hitelesítő adatok folyamata konfigurálása az Azure AD B2C
+# <a name="configure-the-resource-owner-password-credentials-flow-in-azure-ad-b2c"></a>Az erőforrás tulajdonosának jelszavas hitelesítő adatainak folyamata konfigurálása az Azure AD B2C-vel
 
-Az erőforrás tulajdonosa jelszó hitelesítő adatok (ROPC) folyamat egy OAuth szabványon alapuló hitelesítési folyamat, ahol az alkalmazás, más néven a függő entitás cseréje érvényes hitelesítő adatokat, például a felhasználói azonosítóját és jelszavát az azonosítója, hozzáférési jogkivonatot, és a frissítési jogkivonatot. 
+Az erőforrás tulajdonosának jelszavas hitelesítő adatainak (ROPC) folyamata egy OAuth standard hitelesítési folyamat, ahol az alkalmazás, más néven a függő entitás adatcseréihez használható érvényes hitelesítő adatokat, például a felhasználói azonosítót és jelszót egy azonosító jogkivonat, a hozzáférési jogkivonatot és a egy frissítési jogkivonatot. 
 
 > [!NOTE]
 > Ez a funkció előzetes verzióban érhető el.
 
-Az Azure Active Directory (Azure AD) B2C-ben a következő beállításokat támogatja:
+Az Azure Active Directory (Azure AD) B2C-vel a következő beállítások támogatottak:
 
-- **Natív ügyfél**: hitelesítés során felhasználói beavatkozást történik, amikor a kód lefut egy felhasználó ügyféloldali eszközön. Egy natív operációs rendszerén, például Android, futó vagy futtatása böngészőben, például a JavaScriptek mobilalkalmazás is lehet.
-- **Nyilvános ügyfél folyamatában**: csak felhasználói hitelesítő adatokat, az alkalmazások által összegyűjtött az API-hívásban. Az alkalmazás hitelesítő adatait a rendszer nem küldi.
-- **Új jogcímeket adhatnak hozzá**: az azonosító token tartalma módosítható új jogcímeket adhatnak hozzá. 
+- **Natív ügyfél**: felhasználói beavatkozás során a hitelesítés során történik, ha a felhasználó ügyféloldali eszközön fut kódja. Lehet, hogy az eszköz egy mobilalkalmazás, amely egy natív operációs rendszeren, például Android rendszeren fut, vagy a böngészőbe, például a JavaScript futtatása.
+- **Nyilvános client flow**: csak felhasználói hitelesítő adatokat, az alkalmazások által gyűjtött az API-hívással. Nem kap meg az alkalmazás a hitelesítő adatokat.
+- **Új jogcímeket adhatnak hozzá**: új jogcímeket adhatnak hozzá az azonosító jogkivonat tartalma módosítható. 
 
 A következő folyamatok nem támogatottak:
 
-- **Kiszolgáló-kiszolgáló**: védelem identitásrendszere kell egy megbízható IP-címet a interakció részeként a hívó (a natív ügyfél) során. A kiszolgálóoldali API-hívás csak a kiszolgáló IP-cím szolgál. Ha egy dinamikus hitelesítések sikertelenek a küszöbérték elérése esetén, védelmi identitásrendszere azonosíthat ismétlődő IP-címnek, a támadó.
-- **Bizalmas ügyfél folyamatában**: az alkalmazás ügyfél-azonosító érvényességét, de az alkalmazás titkos kulcs nincs érvényesítve.
+- **Kiszolgálók közötti**: az identity protection rendszer kell egy megbízható IP-címet a hívó (a natív ügyfél) a interakció részeként összegyűjtött. Kiszolgálóoldali API-hívással, csak a kiszolgáló IP-címet használja. Ha túllépi a sikertelen hitelesítések a dinamikus küszöbértéket, az identity protection rendszer azonosíthat egy ismétlődő IP-cím egy támadó.
+- **Bizalmas client flow**: az alkalmazás ügyfél-azonosító érvényességét, de az alkalmazás titkos nincs érvényesítve.
 
-##  <a name="create-a-resource-owner-policy"></a>Erőforrás tulajdonosa házirend létrehozása
+##  <a name="create-a-resource-owner-policy"></a>Erőforrás tulajdonosának szabályzat létrehozása
 
-1. Jelentkezzen be az Azure-portálon az Azure AD B2C-bérlő globális rendszergazdájaként.
-2. Váltson át az Azure AD B2C-bérlő, válassza ki a portál jobb felső sarkában a B2C-címtárban.
-3. A **házirendek**, jelölje be **erőforrás tulajdonosa házirendek**.
-4. Adjon meg egy nevet a házirend, például: *ROPC_Auth*, majd válassza ki **alkalmazási jogcímet**.
-5. Válassza ki az alkalmazás jogcímét, amelyekre szüksége van az alkalmazás, például a *megjelenített név*, *E-mail cím*, és *identitásszolgáltató*.
+1. Jelentkezzen be az Azure Portalon az Azure AD B2C-bérlő globális rendszergazdájaként.
+2. Váltson át az Azure AD B2C-bérlő, válassza ki a B2C-címtárat a portál jobb felső sarkában.
+3. A **házirendek**válassza **erőforrás-tulajdonosi szabályzatok**.
+4. Adjon meg egy nevet a házirend, például: *ROPC_Auth*, majd válassza ki **alkalmazásjogcímek**.
+5. Válassza ki az alkalmazását, például a szükséges alkalmazásjogcímek *megjelenítendő név*, *E-mail cím*, és *identitásszolgáltató*.
 6. Kattintson az **OK**, majd a **Létrehozás** gombra.
 
    Ekkor megjelenik egy végpontot, például az ebben a példában:
@@ -51,18 +51,18 @@ A következő folyamatok nem támogatottak:
 
 ## <a name="register-an-application"></a>Egy alkalmazás regisztrálása
 
-1. Válassza ki a B2C beállítások **alkalmazások**, majd válassza ki **Hozzáadás**.
-2. Írjon be egy nevet az alkalmazás, például *ROPC_Auth_app*.
+1. Válassza ki a B2C beállításaiban **alkalmazások**, majd válassza ki **Hozzáadás**.
+2. Adja meg egy nevet az alkalmazásnak, például *ROPC_Auth_app*.
 3. Válassza ki **nem** a **Web App/Web API**, majd válassza ki **Igen** a **natív ügyfél**.
-4. Minden más értéket hagyja, és válassza ki **létrehozása**.
+4. Az összes többi értéket hagyja, és válassza ki **létrehozás**.
 5. Válassza ki az új alkalmazást, és jegyezze fel az Alkalmazásazonosítót későbbi használatra.
 
 ## <a name="test-the-policy"></a>A házirend tesztelése
 
-A kedvenc API fejlesztési alkalmazás használja az API-hívás létrehozásához, és tekintse át a házirend debug válasz. Ehhez hasonló található információkat a következő táblázat a POST kérelem törzsében hívás össze:
-- Cserélje le  *\<yourtenant.onmicrosoft.com >* a B2C-bérlő nevét.
+A kedvenc API-fejlesztési alkalmazás használatával létrehozhat egy olyan API-hívás, és tekintse át a válasz lehet hibákat keresni a házirend. A POST-kérés törzse a következő táblázatban az információt az ilyen hívást össze:
+- Cserélje le  *\<yourtenant.onmicrosoft.com >* a B2C-bérlő nevével.
 - Cserélje le  *\<B2C_1A_ROPC_Auth >* az erőforrás tulajdonosa hitelesítő adatok jelszóházirend teljes nevét.
-- Cserélje le  *\<bef2222d56-552f-4a5b-b90a-1988a7d634c3 >* a regisztrációt a az alkalmazás azonosítójával.
+- Cserélje le  *\<bef2222d56-552f-4a5b-b90a-1988a7d634c3 >* való regisztrációját, az alkalmazás azonosítójával.
 
 `https://login.microsoftonline.com/<yourtenant.onmicrosoft.com>/<B2C_1A_ROPC_Auth>/oauth2/v2.0/token`
 
@@ -75,9 +75,9 @@ A kedvenc API fejlesztési alkalmazás használja az API-hívás létrehozásáh
 | client_id | \<bef2222d56-552f-4a5b-b90a-1988a7d634c3 > |
 | response_type | token id_token |
 
-*Client_id* az érték, amely korábban feljegyzett, az alkalmazás azonosítóját. *Offline_access* nem kötelező, ha szeretne kapni egy frissítési jogkivonat. 
+*Client_id* az érték, amely a korábban feljegyzett, az alkalmazás azonosítója. *Offline_access* nem kötelező, ha szeretne kapni a frissítési jogkivonatot. 
 
-A tényleges POST-kérelmet a következőképpen néznek:
+A tényleges POST-kérés a következőhöz hasonlóan néz ki:
 
 ```
 POST /yourtenant.onmicrosoft.com/B2C_1A_ROPC_Auth/oauth2/v2.0/token HTTP/1.1
@@ -88,7 +88,7 @@ username=leadiocl%40trashmail.ws&password=Passxword1&grant_type=password&scope=o
 ```
 
 
-A sikeres válasz offline hozzáférést a következőképpen néz ki:
+Offline hozzáférés a sikeres válasz az alábbi példához hasonlóan néz ki:
 
 ```
 { 
@@ -102,7 +102,7 @@ A sikeres válasz offline hozzáférést a következőképpen néz ki:
 
 ## <a name="redeem-a-refresh-token"></a>A frissítési jogkivonat beváltása
 
-A POST híváson hasonló itt található információkat a következő táblázat a kérelem törzsében össze:
+A POST híváson a kérelem törzse a következő táblázatban a információkat az itt látható egy hasonló össze:
 
 `https://login.microsoftonline.com/<yourtenant.onmicrosoft.com>/<B2C_1A_ROPC_Auth>/oauth2/v2.0/token`
 
@@ -114,13 +114,13 @@ A POST híváson hasonló itt található információkat a következő tábláz
 | erőforrás | \<bef2222d56-552f-4a5b-b90a-1988a7d634c3 > |
 | refresh_token | eyJraWQiOiJacW9pQlp2TW5pYVc2MUY0TnlfR3... |
 
-*Client_id* és *erőforrás* azonosítóként alkalmazás korábban feljegyzett értékek *Refresh_token* lexikális eleme, amely a korábban említett hitelesítési hívás kapott.
+*Client_id* és *erőforrás* az alkalmazás-azonosító néven a korábban feljegyzett értékekkel *Refresh_token* a jogkivonat, amely a korábban említett hitelesítési hívás kapott.
 
 ## <a name="implement-with-your-preferred-native-sdk-or-use-app-auth"></a>Az előnyben részesített natív SDK-val megvalósítását vagy alkalmazás-alapú hitelesítés használata
 
-Az Azure AD B2C-implementációjában OAuth 2.0 szabványoknak nyilvános ügyfél erőforrás tulajdonosa jelszó hitelesítő adatokat, és a legtöbb ügyfél SDK-k kompatibilisnek kell lennie. Általunk tesztelt folyamatot széles körben, AppAuth az iOS és Android rendszerhez AppAuth helyezésükön. A legfrissebb információkat lásd: [natív App SDK az OAuth 2.0 és az OpenID Connect megvalósítás modern ajánlott eljárások](https://appauth.io/).
+Az Azure AD B2C-implementációjában megfelel-e nyilvános ügyfél erőforrás tulajdonosának jelszavas hitelesítő adatai az OAuth 2.0-s előírásoknak, és a legtöbb ügyfél SDK-k kompatibilisnek kell lennie. Általunk tesztelt ezzel a folyamattal széles körben, éles környezetben, az iOS-hez az AppAuth és az Android az AppAuth. A legfrissebb információkért lásd: [natív App SDK az OAuth 2.0 és OpenID Connect modern ajánlott eljárások végrehajtására](https://appauth.io/).
 
-Töltse le a Githubról, az Azure AD B2C való használatra beállított működő minták [Android](https://aka.ms/aadb2cappauthropc) és [IOS](https://aka.ms/aadb2ciosappauthropc).
+Az Azure AD B2C-vel a Githubról, használatra konfigurált működő minta letöltéséhez [Android](https://aka.ms/aadb2cappauthropc) és [iOS-es](https://aka.ms/aadb2ciosappauthropc).
 
 
 

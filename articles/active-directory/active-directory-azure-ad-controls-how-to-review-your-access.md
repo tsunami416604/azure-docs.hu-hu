@@ -1,6 +1,6 @@
 ---
-title: Tekintse át a hozzáférés |} Microsoft Docs
-description: Tekintse át a hozzáférést az Azure Active Directoryval
+title: A hozzáférés felülvizsgálata |} A Microsoft Docs
+description: Az Azure Active Directoryval a hozzáférés felülvizsgálata
 author: rolyon
 manager: mtillman
 editor: markwahl-msft
@@ -8,41 +8,41 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.component: compliance-reports
 ms.date: 09/19/2017
 ms.author: rolyon
 ms.reviewer: mwahl
-ms.openlocfilehash: 32cdbf75025c1368ff3d5173307883179af184c7
-ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
+ms.openlocfilehash: 0ac43637adc91c22aaab78f04732a613c74706d9
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/28/2018
-ms.locfileid: "37085623"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37446127"
 ---
-# <a name="review-your-access"></a>Tekintse át a hozzáférést
+# <a name="review-your-access"></a>A hozzáférés felülvizsgálata
 
-Azure Active Directory (Azure AD) egyszerűbbé teszi a vállalatok alkalmazások és a csoportok tagjai való hozzáférés kezelése az Azure AD és más Microsoft Online Services access nevezett szolgáltatással ellenőrzi. Lehet, hogy e-mailben kapott, amely rákérdez, hogy tekintse át a hozzáférést egy csoport vagy az alkalmazáshoz hozzáféréssel rendelkező felhasználók tagjai a Microsoft. 
+Az Azure Active Directory (Azure AD) egyszerűbbé teszi a vállalatok alkalmazások és a csoportok tagjai való hozzáférés kezelése az Azure AD és más Microsoft Online Services szolgáltatás hozzáférési felülvizsgálatok. Például egy e-mailben kapott, amely rákérdez, hogy tekintse át a hozzáférést egy csoporthoz vagy alkalmazáshoz való hozzáféréssel rendelkező felhasználók tagjai számára a Microsoft. 
 
-## <a name="open-an-access-review"></a>Nyisson meg egy áttekintése
+## <a name="open-an-access-review"></a>Nyissa meg a hozzáférési felülvizsgálat
 
-A függőben lévő hozzáférés értékelést, jelölje ki a kapcsolat az e-mailben. Ha még nem rendelkezik az e-mailt, az access értékelést keresheti meg az alábbiak szerint:
+A függőben lévő hozzáférési felülvizsgálatokat, jelölje ki a hivatkozást az e-mailben. Ha nem rendelkezik az e-mailt, keresse meg a hozzáférési felülvizsgálatok az alábbi lépéseket:
 
 1. Jelentkezzen be a [Azure AD hozzáférési panel](https://myapps.microsoft.com).
 
-2. Válassza ki a felhasználói szimbólum a lapon, amely megjeleníti a nevet és az alapértelmezett szervezet jobb felső sarkában. Ha egynél több szervezet szerepel a listán, válassza ki a szervezet által kért egy áttekintése.
+2. Válassza ki a felhasználó szimbólum a oldal, amely megjeleníti a szervezet nevét és az alapértelmezett a jobb felső sarkában. Ha egynél több szervezet szerepel a listán, válassza ki a szervezet, amely a hozzáférési felülvizsgálat kért.
 
-3. Ha egy csempére címkézve **értékelést eléréséhez** van a lapon, jelölje be a jobb oldalon. A csempe nem látható, ha nincsenek végrehajtani a szervezet nem hozzáférés értékelést, és jelenleg nincs szükség semmilyen műveletre.
+3. Ha egy csempe feliratú **hozzáférési felülvizsgálatokkal** van a lapon válassza a jobb oldalán. A csempe nem látható, ha nincsenek hozzáférési felülvizsgálatok végrehajtani az adott szervezet lesznek, és nem kell módosítania jelenleg.
 
-## <a name="fill-out-an-access-review"></a>Töltse ki az áttekintése
+## <a name="fill-out-an-access-review"></a>Töltse ki a hozzáférési felülvizsgálat
 
-Amikor kiválaszt egy áttekintése a listából, megtekintheti a hozzáférést. Válassza ki a, és válassza ki, hogy jóváhagyja vagy elutasítja a szükségességét is folyamatos hozzáférést biztosíthasson.
+Hozzáférési felülvizsgálat válassza ki a listából, ha megjelenik a hozzáférést. Válassza ki a sort, és döntse el, hogy hagyja jóvá vagy utasítsa a szüksége folyamatos hozzáférésre.
 
-A felülvizsgáló képes lehet szükség, hogy megadnia egy indoklását jóváhagyása is folyamatos hozzáférést biztosíthasson.
+A felülvizsgáló szükség lehet, hogy Önnek kell letöltenie a további hozzáférés jóváhagyását javasolta indoklását.
 
 ## <a name="next-steps"></a>További lépések
 
-Hozzáférése megtagadva azonnal nincs eltávolítva. Ha szeretné módosítani a válasz és jóváhagyása, a válasz és válassza ki az új válasz. Ebben a lépésben végezhető el, amíg befejeződik a áttekintése.
+Megtagadott hozzáférés nem törlődnek azonnal. Ha azt szeretné, módosítsa a válasz és hagyja jóvá, alaphelyzetbe állítása a választ, és válassza ki az új válasz. Ebben a lépésben a hozzáférési felülvizsgálat befejezése teheti meg.
 
 
 

@@ -5,17 +5,17 @@ services: azure-stack
 keywords: ''
 author: PatAltimore
 ms.author: patricka
-ms.date: 6/28/2018
+ms.date: 07/03/2018
 ms.topic: article
 ms.service: azure-stack
 ms.reviewer: coborn
 manager: femila
-ms.openlocfilehash: fb870cbfbc233725752b3d97fc0ad048a7c14040
-ms.sourcegitcommit: 4597964eba08b7e0584d2b275cc33a370c25e027
+ms.openlocfilehash: 0e03b524834f528ddb7555a344fbebe720b4d9ff
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37341732"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37446973"
 ---
 # <a name="azure-stack-ethereum-blockchain-solution-templates"></a>Az Azure Stack Ethereum blockchain megoldássablonok
 
@@ -69,7 +69,7 @@ A consortium vezető sablon az első tagtól erőforrás-igényű konfigurálja 
     ADMINUSERNAME | Minden üzembe helyezett virtuális gép rendszergazdai felhasználóneve | 1 – 64 karakter | gethadmin
     ADMINPASSWORD (hitelesítési típus = jelszó)| Az egyes üzembe helyezett virtuális gépek a rendszergazdai fiók jelszava. A jelszónak tartalmaznia kell a 3, a következő követelményeknek: 1 nagybetűt, 1 kisbetűt, 1 szám és 1 különleges karakter. <br />Minden virtuális gép kezdetben van ugyanazt a jelszót, üzembe helyezés után módosíthatja a jelszót.|12 – 72 karakter|
     ADMINSSHKEY (hitelesítési típus = sshPublicKey) | A secure shell-kulcsot a távoli bejelentkezéshez használt. | |
-    GENESISBLOCK | Egyéni képződés blokk jelölő JSON-karakterlánc. | |
+    GENESISBLOCK | Egyéni képződés blokk jelölő JSON-karakterlánc.  Ez a paraméter értékének megadása nem kötelező. | |
     ETHEREUMACCOUNTPSSWD | A rendszergazdai jelszót, Ethereum-fiókhoz használt. | |
     ETHEREUMACCOUNTPASSPHRASE | Az Ethereum-fiókjához társított titkos kulcs létrehozásához használt jelszót. | |
     ETHEREUMNETWORKID | A consortium network azonosítója. | 5 és 999,999,999 között bármilyen érték | 72

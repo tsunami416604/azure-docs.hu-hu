@@ -1,6 +1,6 @@
 ---
-title: A Service Bus árak és számlázás |} Microsoft Docs
-description: A Service Bus struktúra árképzési áttekintése.
+title: A Service Bus árak és számlázás |} A Microsoft Docs
+description: A Service Bus díjszabásáról struktúra áttekintése.
 services: service-bus-messaging
 documentationcenter: na
 author: sethmanheim
@@ -14,57 +14,60 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/21/2017
 ms.author: sethm
-ms.openlocfilehash: 8ccb44b5009588c28bc79bb45e1a7640ead6c817
-ms.sourcegitcommit: 6f33adc568931edf91bfa96abbccf3719aa32041
+ms.openlocfilehash: 4faf37394b8e4f6c4e463acb11aea898a29fef80
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/22/2017
-ms.locfileid: "27159786"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37448407"
 ---
 # <a name="service-bus-pricing-and-billing"></a>A Service Bus árak és számlázás
 
-Az Azure Service Bus tartományregisztráció a Standard és [prémium](service-bus-premium-messaging.md) rétegek. Kiválaszthatja, hogy a szolgáltatási rétegben, az egyes Service Bus-szolgáltatásnévtér az Ön által létrehozott és a kiválasztása az adott névtérben létrehozott összes entitások közötti alkalmaz.
+Az Azure Service Bus Standard csomagban érhető el, és [prémium](service-bus-premium-messaging.md) szinten. Kiválaszthatja, hogy minden egyes szolgáltatás Service Bus-névtér, Ön által létrehozott szolgáltatásrétegébe, és a kiválasztott csomag érvényes névtéren belül létrehozott összes entitás között.
 
 > [!NOTE]
-> A Service Bus aktuális árazással kapcsolatos részletes információkért lásd: a [Azure Service Bus árképzést ismertető oldalra](https://azure.microsoft.com/pricing/details/service-bus/), és a [Service Bus gyakran ismételt kérdések](service-bus-faq.md#pricing).
+> Aktuális Service Bus díjszabásáról kapcsolatos részletes információkért lásd: a [Azure Service Bus díjszabását ismertető lapon](https://azure.microsoft.com/pricing/details/service-bus/), és a [Service Bus – gyakori kérdések](service-bus-faq.md#pricing).
 >
 >
 
-A Service Bus üzenetsorok és témakörök/előfizetések a következő 2 mérőszámok használ:
+A Service Bus-üzenetsorok és üzenettémák, előfizetések a következő 2 mérőszámok használ:
 
-1. **Üzenetküldési műveletek**: API-hívásokat indítani várólista vagy témakört/előfizetést végpontok definiálva. A mérési üzeneteket küldhetnek vagy fogadhatnak, üzenetsorok és témakörök/előfizetések számlázható használatát elsődleges egységei váltja fel.
-2. **Kapcsolatok közvetítőalapú**: definiált várólisták, témakörök és előfizetések ellen, egy adott egyórás mintavételi időszakban nyílt állandó kapcsolatok maximális száma. A mérési csak a normál rétegben, amely további kapcsolatokat megnyithatja (korábban kapcsolatok volt legfeljebb 100 / várólista-üzenettémakör-előfizetésre) névleges kapcsolati díjköteles.
+1. **Üzenetkezelési műveletek**: üzenetsor vagy üzenettémák/előfizetések végpontjai API-hívásokként vannak definiálva. Ez az érték üzeneteket küldött vagy fogadott,-üzenetsorok és üzenettémák, előfizetések számlázható Usage elsődleges egységét váltja fel.
+2. **Felügyelt kapcsolat**: definiált egy adott egy órás mintavételi időszakban üzenetsorok, témakörök vagy előfizetések nyílt állandó kapcsolatok maximális száma. Ez az érték csak a Standard szintű, amelyben további kapcsolatok megnyithatja vonatkozik (korábban a kapcsolatok-ra volt korlátozva üzenetsor vagy üzenettéma/előfizetés / 100) kapcsolatonként névleges díj ellenében.
 
-A **szabványos** réteg vezet be, hogy az üzenetsorok és témakörök/előfizetések, ami azt eredményezi, hogy kötet-alapú kedvezményeket 80 %-a legmagasabb szintű használati végrehajtott műveletek-es díjszabása. Standard csomagra alap díj havonta, amely lehetővé teszi további költségek nélkül havonta legfeljebb 12,5 millió műveletek 10 $ is van.
+A **Standard** szint vezet be, az üzenetsorok és témakörök/előfizetések, a legmagasabb szintű használati akár 80 %-os kötet-alapú kedvezmények eredményez a végrehajtott műveletek adatmennyiségen díjszabása. Emellett van egy Standard szintű alapdíj 10 USD havonta, amely lehetővé teszi, hogy 12,5 millió művelet / hó további költségek nélkül.
 
-A **prémium** réteg el vannak különítve erőforrás a Processzor- és a rétegben, hogy minden ügyfél számítási feladata elkülönítve. Ennek az erőforrás-tárolónak a neve *üzenetkezelési egység*. Legalább egy üzenetkezelési egység van lefoglalva minden prémium névtérhez. Az egyes Service Bus prémium névterekhez 1, 2 vagy 4 üzenetkezelési egység vásárolható. Egyetlen számítási feladat vagy entitás több üzenetkezelési egységre is kiterjedhet, az üzenetkezelési egységek száma pedig tetszés szerint módosítható, bár a számlázás 24 órás vagy napi díjszabás szerint történik. Az eredmény a Service Bus-alapú megoldás kiszámítható és ismételhető teljesítménye. Nem csak kiszámíthatóbb és nagyobb rendelkezésre állású a teljesítmény, de gyorsabb is.
+A **prémium** szintű erőforrás-elkülönítést, a Processzor és a memóriarétegben biztosít, így minden ügyfél számítási feladata elkülönítve fut. Ennek az erőforrás-tárolónak a neve *üzenetkezelési egység*. Legalább egy üzenetkezelési egység van lefoglalva minden prémium névtérhez. Az egyes Service Bus prémium névterekhez 1, 2 vagy 4 üzenetkezelési egység vásárolható. Egyetlen számítási feladat vagy entitás több üzenetkezelési egységre is kiterjedhet, az üzenetkezelési egységek száma pedig tetszés szerint módosítható, bár a számlázás 24 órás vagy napi díjszabás szerint történik. Az eredmény a Service Bus-alapú megoldás kiszámítható és ismételhető teljesítménye. Nem csak kiszámíthatóbb és nagyobb rendelkezésre állású a teljesítmény, de gyorsabb is.
 
-Vegye figyelembe, hogy a Standard csomag alap kell fizetni havi Azure előfizetésenként csak egyszer díjfizetéssel. Ez azt jelenti, hogy egyetlen Standard szint Service Bus-névtér létrehozása után létrehozhat annyi további Standard névterek ahányat csak szeretne, hogy azonos Azure-előfizetésre, az alap további költségek nélkül.
+> [!NOTE]
+> Üzenettémák és előfizetések érhetők el csak a Standard vagy prémium szintű díjcsomagok árából; az alapszintű csomag csak a várólisták támogatja.
 
-A [Service Bus árképzési](https://azure.microsoft.com/pricing/details/service-bus/) táblázat összefoglalja a funkcionális eltérések a Standard és Premium réteg között.
+A Standard szintű alapdíjat Azure-előfizetésenként havonta egyszer csak díjszabásának. Ez azt jelenti, hogy miután létrehozott egy Standard szint a Service Bus-névteret, hozhat létre tetszőleges számú további standard szintű névteret alapdíjat nélkül szeretné, hogy ugyanazon Azure-előfizetéshez.
+
+A [Service Bus díjszabásáról](https://azure.microsoft.com/pricing/details/service-bus/) tábla a Standard és Premium szintű működési különbségeit foglalja össze.
 
 ## <a name="messaging-operations"></a>Üzenetküldési műveletek
 
-Üzenetsorok és témakörök/előfizetések óraalapú "művelet" nem egy üzenet. Egy művelet bármely API-hívás felé irányuló várólista vagy témakört/előfizetést szolgáltatásvégpont hivatkozik. Ide tartoznak a kezeléssel, a küldéssel/fogadással és a munkamenet-állapottal kapcsolatos műveletek is.
+Üzenetsorok és üzenettémák, előfizetések számlázása "művelet" nem egy üzenet. Egy művelet bármely API-hívás egy üzenetsor vagy üzenettéma/előfizetés végpontot társzolgáltatásokhoz hivatkozik. Ide tartoznak a kezeléssel, a küldéssel/fogadással és a munkamenet-állapottal kapcsolatos műveletek is.
 
 | Művelettípus | Leírás |
 | --- | --- |
-| Kezelés |Hozzon létre, Olvasás, frissítés, Törlés (CRUD) üzenetsorok és témakörök/előfizetések ellen. |
-| Üzenetküldés |Üzenetek küldése és fogadása az üzenetsorok és témakörök/előfizetések. |
-| Munkamenet állapota |Futtasson, vagy a munkamenet-állapot beállítása a várólista vagy témakört/előfizetést. |
+| Kezelés |Hozzon létre, olvasási, frissítési, törlési (CRUD) üzenetsorok vagy üzenettémák/előfizetések. |
+| Üzenetkezelés |Üzenetek küldése és fogadása az üzenetsorok vagy üzenettémák/előfizetések. |
+| Munkamenet állapota |Készítsen, vagy állítsa be a munkamenet-állapot üzenetsor vagy üzenettéma/előfizetés. |
 
-Költség további információkért lásd: a felsorolt árak a [Service Bus árképzési](https://azure.microsoft.com/pricing/details/service-bus/) lap.
+Költség részletekért lásd: a felsorolt díjak a [Service Bus díjszabásáról](https://azure.microsoft.com/pricing/details/service-bus/) lapot.
 
 ## <a name="brokered-connections"></a>Felügyelt kapcsolatok
 
-*Kapcsolatok közvetítőalapú* használati szokásokról, például az "tartósan csatlakoztatott" feladók/fogadók elleni várólisták, témakörök és előfizetések nagy számú befogadásához. Tartósan csatlakoztatott feladók/fogadók, amelyekkel AMQP vagy a HTTP használata egy nem nulla fogadási időtúllépés (például HTTP hosszú lekérdezési). HTTP küldő és egy közvetlen időkorlát közvetített nem hoznak létre.
+*Felügyelt kapcsolat* "tartósan csatlakoztatott" küldők és fogadók üzenetsorok, témakörök vagy előfizetések nagy számú érintő használati minták befogadásához. Állandó csatlakoztatott küldők és fogadók, azokat, amelyek egy nem nulla értékű AMQP vagy HTTP használatával csatlakoznak kap időkorlátja (például HTTP hosszú lekérdezések). HTTP küldők és fogadók egy azonnali időtúllépéssel nem hoznak létre a felügyelt kapcsolatok.
 
-Kapcsolat kvóták és egyéb szolgáltatásra vonatkozó korlátozások: a [Service Bus kvóták](service-bus-quotas.md) cikk. Közvetített kapcsolatos további információkért tekintse meg a [gyakran ismételt kérdések](#faq) szakasz a cikk későbbi részében.
+Kapcsolat kvótákkal és egyéb szolgáltatási korlátai: a [Service Bus-kvóták](service-bus-quotas.md) cikk. A felügyelt kapcsolatok kapcsolatos további információkért lásd: a [– gyakori kérdések](#faq) Ez a cikk későbbi szakaszában talál.
 
-Standard csomagra eltávolítja a névtér közvetített kapcsolathoz megadott korlátot, és összesített közvetített kapcsolat használati adatokra az Azure-előfizetés között. További információkért lásd: a [kapcsolatok Közvetítőalapú](https://azure.microsoft.com/pricing/details/service-bus/) tábla.
+A Standard szintű megszűnik az a névtér kapcsolatonként korlátozás, és a az Azure-előfizetés között kapcsolatonként összesített használati számát. További információkért lásd: a [felügyelt kapcsolat](https://azure.microsoft.com/pricing/details/service-bus/) tábla.
 
 > [!NOTE]
-> 1000 közvetített kapcsolatok, és a standard szintű üzenetkezelési réteg (keresztül az alap ingyenesen elérhető), és minden üzenetsorok, témakörök és előfizetések belül a társított Azure-előfizetés között megosztható legyen.
+> 1000 felügyelt kapcsolatot foglal magában a Standard szintű üzenetküldés (keresztül az alapszintű díjat), és keresztül valamennyi üzenetsorok, témakörök és előfizetések társított Azure-előfizetésen belül megoszthatók.
 >
 >
 
@@ -81,27 +84,27 @@ Prémium szinten a felügyelt kapcsolatokért nem számítunk fel díjat.
 
 ## <a name="faq"></a>GYIK
 
-### <a name="what-are-brokered-connections-and-how-do-i-get-charged-for-them"></a>Mik azok a közvetítőalapú kapcsolatok, és hogyan tegye I get felszámított őket?
+### <a name="what-are-brokered-connections-and-how-do-i-get-charged-for-them"></a>Mik a felügyelt kapcsolat, és hogyan fizetnem a számukra?
 
 Felügyelt kapcsolat a következők egyike lehet:
 
-1. Egy AMQP kapcsolat egy ügyfél és egy Service Bus-üzenetsorba, illetve témakört/előfizetést.
+1. Az AMQP-kapcsolaton egy ügyfél egy Service Bus-üzenetsor vagy üzenettéma/előfizetés.
 2. Egy HTTP-hívás üzenetet fogad egy Service Bus-üzenettémától vagy -várólistától, amelynek fogadási időkorlátja nagyobb, mint nulla.
 
-A Service Bus költségekkel, amelyek mérete meghaladja a keretbe (a normál rétegben, mint 1000) egyidejű közvetített kapcsolatok maximális száma. A maximális szám mérése óránként történik, majd havi 744 órával elosztva elkészül az elszámolás, amely a havi számlázási időszak alatt halmozódik. A szolgáltatásban foglalt mennyiség (1000 felügyelt kapcsolat havonta) a számlázási időszak végén kerül felszámításra az óránként megállapított maximális kapcsolatok összege alapján.
+A Service Bus díjszabást a szolgáltatásban foglalt mennyiséget (Standard szinten 1000) túllépő, egyidejű felügyelt kapcsolatok maximális száma határozza meg. A maximális szám mérése óránként történik, majd havi 744 órával elosztva elkészül az elszámolás, amely a havi számlázási időszak alatt halmozódik. A szolgáltatásban foglalt mennyiség (1000 felügyelt kapcsolat havonta) a számlázási időszak végén kerül felszámításra az óránként megállapított maximális kapcsolatok összege alapján.
 
 Példa:
 
-1. Minden 10 000 egyetlen AMQP-kapcsolaton keresztül kapcsolódik, és parancsok kapott egy Service Bus-témakörbe. Az eszközök telemetriai események küldése az Eseményközpontba. Ha minden eszköz 12 óra naponta, a következő kapcsolat díjak vonatkoznak-e (mellett egyéb Service Bus témakör díjak): 10 000 kapcsolatok * 12 óra * 31 nap / 744 = 5000 közvetítőalapú kapcsolatok. Után 1000 közvetített kapcsolatok havi támogatás akkor felszámított os 0,03 $ $120 összesen a(z) közvetítőalapú kapcsolatonként 4000 közvetített kapcsolatok.
-2. 10 000 üzenetek fogadása egy Service Bus-üzenetsorba, nem nulla időtúllépés megadása HTTP-n keresztül. Ha minden eszköz csatlakozni 12 óra minden nap, jelenik meg a következő kapcsolat költségek (mellett egyéb Service Bus díjak): 10 000 HTTP-fogadási kapcsolatok * 12 órát * 31 napra / 744 óra = 5000 közvetítőalapú kapcsolatok.
+1. Minden 10 000 eszköz egyetlen AMQP-kapcsolaton keresztül kapcsolódik, és parancsokat fogad egy Service Bus-témakörbe. Az eszközök telemetrikus eseményeket küld egy eseményközpontnak. Ha az összes eszköz 12 órán keresztül minden nap, a következő csatlakozási díjakkal alkalmazni (más Service Bus témakör vonatkozó díjakon felül): 10 000 kapcsolódás * 12 óra * 31 nap / 744 = 5000 felügyelt kapcsolat. Havi kedvezmény az 1000 felügyelt kapcsolatot számlázunk 4000 felügyelt kapcsolatot, a 0,03 $ $120 összesen, felügyelt kapcsolatonként aránya.
+2. 10 000 készülék fogad egy Service Bus-üzenetsorba, HTTP-n keresztül nem nulla értékű időkorlát megadása mellett üzeneteket. Ha az összes eszköz 12 órán keresztül minden nap, látni fogja a következő csatlakozási díjakkal (bármely más Service Bus-díjon felül): 10 000 HTTP-fogadási kapcsolódás * 12 óra naponta * 31 nap / 744 óra = 5000 felügyelt kapcsolat.
 
 ### <a name="do-brokered-connection-charges-apply-to-queues-and-topicssubscriptions"></a>A felügyelt kapcsolatok díjai a várólistákra és az üzenettémákra/előfizetésekre is vonatkoznak?
 
-Igen. Az események HTTP-n keresztül történő küldése – a küldő rendszerek és eszközök számától függetlenül – díjmentes. Események fogadása http használatával nagyobb, mint nulla, más néven a "hosszú lekérdezési," időtúllépés állít elő, közvetített kapcsolat díjakat. Az AMQP-kapcsolatok küldésre és fogadásra használt kapcsolatok esetén is felügyelt kapcsolati díjat generálnak. Az első 1000 közvetített kapcsolatok Azure-előfizetés az összes szabványos névtér között megtalálhatók (túl az alap kell fizetni) külön díjfizetés nélkül. Mivel e támogatás elég sok szolgáltatások közötti üzenetküldő forgatókönyvekhez, közvetített kapcsolat díjak általában csak lesz megfelelő, ha azt tervezi, AMQP vagy HTTP hosszú lekérdezési használata nagy mennyiségű ügyfelet; például eléréséhez a hatékonyabb esemény streaming vagy kétirányú kommunikáció engedélyezése az sok eszköz vagy alkalmazás-példányokat.
+Igen. Az események HTTP-n keresztül történő küldése – a küldő rendszerek és eszközök számától függetlenül – díjmentes. Más néven "hosszú lekérdezések" nullánál nagyobb időkorláttal használatával HTTP-fogadott események hoz létre a felügyelt kapcsolati díjat. Az AMQP-kapcsolatok küldésre és fogadásra használt kapcsolatok esetén is felügyelt kapcsolati díjat generálnak. Az Azure-előfizetés az összes Standard névtérben létrehozott első 1000 felügyelt kapcsolat (az alapdíjon) külön díjfizetés nélkül is. Mivel ezek a kedvezmények vonatkoznak a legtöbb szolgáltatások közötti üzenetküldési forgatókönyvre, felügyelt kapcsolati díjat általában csak akkor válnak megfelelő, ha azt tervezi, hogy a nagy mennyiségű ügyfelet; AMQP vagy HTTP hosszú lekérdezéseket használni Ha például hatékonyabb elérése vagy sok eszköz vagy alkalmazáspéldány kétirányú kommunikációt engedélyezze.
 
 ## <a name="next-steps"></a>További lépések
 
-* A Service Bus árazással kapcsolatos részleteket lásd: a [árképzést ismertető oldalra a Service Bus](https://azure.microsoft.com/pricing/details/service-bus/).
-* Tekintse meg a [Service Bus gyakran ismételt kérdések](service-bus-faq.md#pricing) az egyes közös – gyakori kérdések a Service bus árak és számlázás kapcsolatban.
+* További információ a Service Bus díjszabásáról teljes körű információkért lásd: a [díjszabását ismertető lapon a Service Bus](https://azure.microsoft.com/pricing/details/service-bus/).
+* Tekintse meg a [Service Bus – gyakori kérdések](service-bus-faq.md#pricing) az egyes Service bus díjszabással és a számlázással kapcsolatos gyakori kérdéseket.
 
 [Azure portal]: https://portal.azure.com

@@ -1,66 +1,66 @@
 ---
-title: Felderítése és felügyelete az Azure-erőforrások Privileged Identity Management használatával |} Microsoft Docs
-description: Azure-erőforrások védelmét PIM ismerteti.
+title: Fedezze fel, és Azure-erőforrások kezelése a Privileged Identity Management használatával |} A Microsoft Docs
+description: Ismerteti, hogyan lehet Azure-erőforrások védelme a PIM használatával.
 services: active-directory
 documentationcenter: ''
 author: rolyon
 manager: mtillman
 ms.service: active-directory
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.component: protection
 ms.date: 03/30/2018
 ms.author: rolyon
-ms.openlocfilehash: 563c7f24ec4045b46d5bdcf0dc267dbdda2d5a5e
-ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
+ms.openlocfilehash: aca218a33d148e9f53f405f9cda98a701a7443cc
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35234471"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37442525"
 ---
-# <a name="discover-and-manage-azure-resources-by-using-privileged-identity-management"></a>Felderítése és felügyelete az Azure-erőforrások Privileged Identity Management használatával
+# <a name="discover-and-manage-azure-resources-by-using-privileged-identity-management"></a>Fedezze fel, és Azure-erőforrások kezelése a Privileged Identity Management használatával
 
-Megtudhatja, hogyan felderítése és felügyelete az Azure-erőforrások, az Azure Active Directory (Azure AD) Privileged Identity Management (PIM) használatakor. Ez az információ akkor lehet hasznos, a szervezeteknek, amelyek már a PIM használatával védi a rendszergazda-erőforrásokhoz, és előfizetésnél tulajdonos, aki szeretné éles erőforrások biztonságossá tételére.
+Ismerje meg, hogyan derítheti fel és kezelheti az Azure-erőforrásokat az Azure Active Directoryban (Azure AD) Privileged Identity Management (PIM) használatakor. Ez az információ akkor lehet hasznos, szervezetek, amelyek már használják a PIM védelme érdekében a rendszergazda erőforrásokat, és előfizetés-tulajdonosokat, akik a biztonságos éles erőforrásait.
 
-Amikor először állítsa be a PIM az Azure-erőforrások, kell felderíteni, és válassza ki azokat az erőforrásokat a PIM védelméhez. A PIM kezelhető erőforrások száma nincs korlátozva van. Azt javasoljuk azonban a legfontosabb (éles) erőforrások kezdve.
+Amikor először állítsa be a PIM az Azure-erőforrásokhoz, kell felderíteni, és válassza ki a PIM használatával védeni kívánt erőforrások. A PIM felügyelt erőforrások száma nincs korlátozva van. Azonban javasoljuk, hogy a kritikus fontosságú (éles) erőforrásokkal.
 
 > [!NOTE]
-> Csak akkor jelölje ki az előfizetéshez kapcsolódó erőforrásokat PIM segítségével történő kezeléséhez. Ha Ön kezeli a PIM előfizetésre, az előfizetés alsóbb szintű erőforrásai is kezelheti.
+> Csak keresése és kiválasztása az előfizetési erőforrások kezelése a PIM használatával. Ha Ön kezeli a PIM az előfizetéshez, az előfizetés gyermekerőforrásait is kezelheti.
 
 ## <a name="discover-resources"></a>Erőforrások észlelése
 
-Az Azure-portálon lépjen a **Privileged Identity Management** ablaktáblán. A bal oldali menüben az a **kezelése** szakaszban jelölje be **Azure-erőforrások**.
+Az Azure Portalon nyissa meg a **Privileged Identity Management** ablaktáblán. A bal oldali menüben lévő a **kezelés** szakaszban jelölje be **Azure-erőforrások**.
 
-![A "Privileged Identity Management - Azure-erőforrások" ablak](media/azure-pim-resource-rbac/aadpim_manage_azure_resources.png)
+![A "Privileged Identity Management – Azure-erőforrások" panel](media/azure-pim-resource-rbac/aadpim_manage_azure_resources.png)
 
-Ha ez az első alkalommal használja a PIM az Azure-erőforrások, először futtassa a felderítést található erőforrások kezeléséhez. Az a **erőforrások felderítéséhez** ablaktáblán válassza előbb a **erőforrások felderítéséhez** gombra kattintva indítsa el a feltárási folyamata.
+Ha az első alkalommal a PIM használata az Azure-erőforrásokhoz, először futtassa a felderítést található erőforrások kezeléséhez. Az a **derítsen fel erőforrásokat** panelen válassza a **derítsen fel erőforrásokat** gombra kattintva indítsa el a felderítési élményt.
 
-![A "Erőforrások felderítéséhez" ablak](media/azure-pim-resource-rbac/aadpim_first_run_discovery.png)
+![A "Derítsen fel erőforrásokat" panel](media/azure-pim-resource-rbac/aadpim_first_run_discovery.png)
 
-Ha a szervezet egy másik erőforrás vagy a könyvtár rendszergazda már kezeli egy Azure-erőforrás PIM használatával, vagy ha az erőforrás jogosult szerepkör-hozzárendelés, a lista nézet megjeleníti az üzenet **erőforrásokat derítse fel, vagy aktiválni egy a folytatáshoz jogosult szerepkör-hozzárendelés**. 
+Ha a szervezet egy másik erőforrás vagy directory rendszergazda van már egy Azure-erőforrás történő kezelésével a PIM, vagy ha egy erőforráshoz egy jogosult szerepkör-hozzárendelés, a lista nézet jeleníti meg az üzenet **aktiválja az erőforrások felderítését vagy egy jogosult szerepkör-hozzárendelés folytatja**. 
 
-![A "Erőforrások felderítéséhez" gombra a "Privileged Identity Manager - Azure-erőforrások" ablak](media/azure-pim-resource-rbac/aadpim_discover_eligible_not_active.png)
+![A "Derítsen fel erőforrásokat" gombra a a "Privileged Identity Manager – Azure-erőforrások" panel](media/azure-pim-resource-rbac/aadpim_discover_eligible_not_active.png)
 
-Ha bejelöli a **erőforrások felderítéséhez** gombra, a felső menüben vagy közepén a ablaktáblán megjelenik-e az előfizetések, amelyek segítségével kezelheti listája. Kiemelt előfizetések PIM által már védett.
+Amikor kiválasztja a **derítsen fel erőforrásokat** gombra kattint, a felső menüben, vagy a panelen közepén, amelyek segítségével kezelheti az előfizetések listája jelenik meg. A PIM által már védett előfizetéseket, amelyek ki vannak emelve.
 
 > [!NOTE]
-> A megakadályozására, hogy egy másik erőforrás rendszergazda PIM beállítások előfizetés beállítása felügyelt, az előfizetés nem felügyelt nem lehet.
+> Megakadályozására, hogy egy másik erőforrás-rendszergazda, miközben a PIM-beállítások egy előfizetés beállítása után felügyelt, az előfizetés nem lehet a nem felügyelt.
 
-![Az "Azure-erőforrások - felderítési" ablak](media/azure-pim-resource-rbac/aadpim_discovery_some_selected.png)
+![Az "Azure erőforrás - felderítés" panel](media/azure-pim-resource-rbac/aadpim_discovery_some_selected.png)
 
-Az a **erőforrás** oszlop, vigye az egérmutatót a PIM védeni kívánt előfizetést. Ezután jelölje be a nevétől balra található erőforrás számára. Egyszerre több előfizetéssel is ki.
+Az a **erőforrás** oszlop, vigye az egérmutatót a PIM használatával védeni kívánt előfizetést. Ezután jelölje be a jelölőnégyzetet, bal oldalán található az erőforrás neve. Egyszerre több előfizetést is választhat.
 
-![Az "Azure-erőforrások - felderítési" lévő erőforrások listája ablaktábla](media/azure-pim-resource-rbac/aadpim_discovery_all_selected.png)
+![Az erőforrások listájához a az "Azure erőforrás - felderítés" panel](media/azure-pim-resource-rbac/aadpim_discovery_all_selected.png)
 
-A bevezetési folyamatának elindításához a felső menüben válassza a **erőforrás kezelése**.
+Elindítja a bevezetési folyamatot, a felső menüben válassza a **Erőforráskezelés**.
 
-![A "Erőforrás kezelése" gombra az "Azure-erőforrások - felderítési" a panelen](media/azure-pim-resource-rbac/aadpim_discovery_click_manage.png)
+![Az "Erőforrás kezelése" gombra a "Azure-erőforrások – észlelés" panel](media/azure-pim-resource-rbac/aadpim_discovery_click_manage.png)
 
-A kijelölt erőforrások most PIM kezeli. Zárja be a felderítés képernyő jobb felső sarokban válassza **X**. Megkezdéséhez kezelése PIM-beállítások és hozzárendelése tagjait, a menü felső részén a **Privileged Identity Management - Azure-erőforrások** ablaktáblán válassza előbb a **frissítése** gombra.
+A kijelölt erőforrások most már a PIM kezeli. Zárja be a felderítés képernyő jobb felső sarokban válassza **X**. A PIM-beállítások kezelését, és a hozzárendelése a tagok, a menü felső részén a **Privileged Identity Management – Azure-erőforrások** panelen válassza a **frissítése** gombra.
 
-![A "Frissítés" gombra a felső menüben, a "Privileged Identity Management - Azure-erőforrások" ablak](media/azure-pim-resource-rbac/aadpim_discovery_resources_refresh.png)
+![A "Frissítés" gombot a felső menüben, a "Privileged Identity Management – Azure-erőforrások" panel](media/azure-pim-resource-rbac/aadpim_discovery_resources_refresh.png)
 
 ## <a name="next-steps"></a>További lépések
 

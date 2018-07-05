@@ -14,12 +14,12 @@ ms.date: 07/02/2018
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
-ms.openlocfilehash: e8aaf828d366db0f008e842ba1b0f76907aa8791
-ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
+ms.openlocfilehash: 39f7d69482845af48b1dce8c2e51f4acf77bf4fb
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37346971"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37448060"
 ---
 # <a name="view-all-members-of-an-administrator-role-in-azure-active-directory"></a>Az Azure Active Directory-Rendszergazdák szerepkör tagjai az összes megtekintése
 
@@ -45,5 +45,5 @@ A szerepkör tagjainak megtekintése közben, válassza ki a **leírás** a szer
 ## <a name="next-steps"></a>További lépések
 
 * Nyugodtan megoszthatja velünk a [az Azure AD felügyeleti szerepkörök fórum](https://feedback.azure.com/forums/169401-azure-active-directory?category_id=166032).
-* Szerepkörök és a rendszergazda szerepkör-hozzárendelés kapcsolatos további információkért lásd: [rendelhet hozzá rendszergazdai szerepköröket](active-directory-assign-admin-roles-azure-portal.md).
+* Szerepkörök és a rendszergazda szerepkör-hozzárendelés kapcsolatos további információkért lásd: [rendelhet hozzá rendszergazdai szerepköröket](users-groups-roles/directory-assign-admin-roles.md).
 * Az alapértelmezett felhasználói engedélyek, tekintse meg a [Vendég és tag alapértelmezett felhasználói engedélyek összehasonlítása](./fundamentals/users-default-permissions.md).

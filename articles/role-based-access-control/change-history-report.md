@@ -1,6 +1,6 @@
 ---
-title: Tevékenység naplók RBAC változásainak megtekintéséhez az Azure-ban |} Microsoft Docs
-description: Szerepköralapú hozzáférés-vezérlést (RBAC) változások az elmúlt 90 napban tevékenység naplók megtekintése.
+title: Az RBAC-módosítások Tevékenységnaplók megtekintése az Azure-ban |} A Microsoft Docs
+description: A Tevékenységnaplók megtekintése a szerepköralapú hozzáférés-vezérlés (RBAC) módosításokat az elmúlt 90 nap.
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -8,27 +8,27 @@ manager: mtillman
 ms.assetid: 2bc68595-145e-4de3-8b71-3a21890d13d9
 ms.service: role-based-access-control
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 05/23/2018
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: c82c24c6d652a65f5ba851de66a1f2fe595a46a5
-ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
+ms.openlocfilehash: 10e0df78d75763dfcf8636983c9f9092b78b9c3b
+ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36293387"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37437649"
 ---
-# <a name="view-activity-logs-for-rbac-changes"></a>Az RBAC módosítások tevékenység naplók megtekintése
+# <a name="view-activity-logs-for-rbac-changes"></a>Az RBAC-módosítások Tevékenységnaplók megtekintése
 
-Néha kell szerepköralapú hozzáférés-vezérlést (RBAC) módosításokat, például a naplózás vagy hibaelhárítási célból. Valaki módosítást hajt végre szerepkör-hozzárendelések vagy szerepkör-definíciók belül előfizetése, amikor a módosítások naplózásra [Azure tevékenységnapló](../monitoring-and-diagnostics/monitoring-overview-activity-logs.md). A tevékenység naplójában az RBAC-változások az elmúlt 90 napra vonatkozó tekintheti meg.
+Néha szüksége információ a szerepköralapú hozzáférés-vezérlés (RBAC) módosításokat, mint például a naplózás és hibaelhárítás céljából. A módosítások valaki módosít szerepkör-hozzárendeléseket vagy szerepkör-definíciók belül az előfizetések bármikor első bejelentkezve [Azure-tevékenységnapló](../monitoring-and-diagnostics/monitoring-overview-activity-logs.md). Megtekintheti a vizsgálati naplók az elmúlt 90 napra vonatkozó összes RBAC-módosítások megtekintéséhez.
 
-## <a name="operations-that-are-logged"></a>Műveletek, amelyeket a rendszer
+## <a name="operations-that-are-logged"></a>Naplózott műveletek
 
-Az alábbiakban az RBAC-kapcsolatos műveletek, amelyeket a rendszer műveletnaplóban:
+Az alábbiakban az RBAC kapcsolatos műveletek a tevékenységnaplóban naplózott:
 
 - Szerepkör-hozzárendelés létrehozása
 - Szerepkör-hozzárendelés törlése
@@ -37,11 +37,11 @@ Az alábbiakban az RBAC-kapcsolatos műveletek, amelyeket a rendszer műveletnap
 
 ## <a name="azure-portal"></a>Azure Portal
 
-A kezdéshez legkönnyebben a tevékenységi naplóit, és az Azure portál megtekintése. Az alábbi képernyőfelvételen egy szerepkör-hozzárendelés és szerepkör-definíció műveletek megjelenítendő szűrt tevékenységnapló példáját mutatja be. A naplók letöltése CSV-fájlként hivatkozást is tartalmaz.
+Első lépésként a legegyszerűbb módja, hogy az Azure Portalon a Tevékenységnaplók megtekintése. A következő képernyőképen látható egy példa egy tevékenységnapló szűrt szerepkör-hozzárendelés és szerepkör-definíció műveletek megjelenítéséhez. A naplók letöltése CSV-fájlként hivatkozást is tartalmaz.
 
-![Tevékenység naplókat a portálon – képernyőkép](./media/change-history-report/activity-log-portal.png)
+![A Tevékenységnaplók a portállal – képernyőkép](./media/change-history-report/activity-log-portal.png)
 
-A műveletnapló a portálon több szűrőt tartalmaz. Az RBAC-kapcsolódó szűrők a következők:
+A tevékenységnaplóban a portálon számos szűrőket tartalmaz. Az RBAC-kapcsolódó szűrők a következők:
 
 |Szűrés  |Érték  |
 |---------|---------|
@@ -49,25 +49,25 @@ A műveletnapló a portálon több szűrőt tartalmaz. Az RBAC-kapcsolódó szű
 |Művelet     | <ul><li>Szerepkör-hozzárendelés létrehozása</li> <li>Szerepkör-hozzárendelés törlése</li> <li>Egyéni szerepkör-definíció létrehozása vagy módosítása</li> <li>Egyéni szerepkör-definíció törlése</li></ul>      |
 
 
-Tevékenységi naplóit kapcsolatos további információkért lásd: [események megtekintéséhez műveletnaplóban](/azure/azure-resource-manager/resource-group-audit?toc=%2fazure%2fmonitoring-and-diagnostics%2ftoc.json).
+A Tevékenységnaplók kapcsolatos további információkért lásd: [események megtekintése a tevékenységnaplóban](/azure/azure-resource-manager/resource-group-audit?toc=%2fazure%2fmonitoring-and-diagnostics%2ftoc.json).
 
 ## <a name="azure-powershell"></a>Azure PowerShell
 
-Az Azure PowerShell tevékenységi naplóit megtekintéséhez használja a [Get-AzureRmLog](/powershell/module/azurerm.insights/get-azurermlog) parancsot.
+Az Azure PowerShell-lel tevékenységeket tartalmazó naplók megtekintéséhez használja a [Get-AzureRmLog](/powershell/module/azurerm.insights/get-azurermlog) parancsot.
 
-Felsorolja az összes szerepkör hozzárendelésének módosításai az előfizetést az elmúlt hét napban:
+Ez a parancs felsorolja az összes szerepkör hozzárendelés változásait egy előfizetést az elmúlt hét nap:
 
 ```azurepowershell
 Get-AzureRmLog -StartTime (Get-Date).AddDays(-7) | Where-Object {$_.Authorization.Action -like 'Microsoft.Authorization/roleAssignments/*'}
 ```
 
-Felsorolja az összes szerepkör definíciómódosítások erőforráscsoportban számára az elmúlt hét napban:
+Ez a parancs egy erőforráscsoportba tartozó összes szerepkör definíciómódosítások felsorolja az elmúlt hét nap:
 
 ```azurepowershell
 Get-AzureRmLog -ResourceGroupName pharma-sales-projectforecast -StartTime (Get-Date).AddDays(-7) | Where-Object {$_.Authorization.Action -like 'Microsoft.Authorization/roleDefinitions/*'}
 ```
 
-Ez a parancs felsorolja az összes szerepkör-hozzárendelés és az elmúlt hét napban előfizetést szerepkör definition változásairól, és egy listán megjeleníti az eredményeket:
+Ez a parancs felsorolja az összes szerepkör-hozzárendelés és a egy előfizetést az elmúlt hét nap szerepkör definíciójának változásai, és megjeleníti az eredményeket egy listában:
 
 ```azurepowershell
 Get-AzureRmLog -StartTime (Get-Date).AddDays(-7) | Where-Object {$_.Authorization.Action -like 'Microsoft.Authorization/role*'} | Format-List Caller,EventTimestamp,{$_.Authorization.Action},Properties
@@ -92,15 +92,15 @@ Properties              :
 
 ## <a name="azure-cli"></a>Azure CLI
 
-Az Azure parancssori felülettel tevékenységi naplóit megtekintéséhez használja a [az figyelő tevékenységnapló lista](/cli/azure/monitor/activity-log#az-monitor-activity-log-list) parancsot.
+Az Azure CLI-vel tevékenységeket tartalmazó naplók megtekintéséhez használja a [az monitor tevékenységnapló lista](/cli/azure/monitor/activity-log#az-monitor-activity-log-list) parancsot.
 
-Ez a parancs felsorolja a műveletnaplóban erőforráscsoportban a kezdési időpont óta:
+Ez a parancs felsorolja a tevékenységnaplókat, az erőforráscsoport, a kezdési időpont óta:
 
 ```azurecli
 az monitor activity-log list --resource-group pharma-sales-projectforecast --start-time 2018-04-20T00:00:00Z
 ```
 
-Ez a parancs felsorolja a tevékenységi naplóit az erőforrás-engedélyezési szolgáltató a kezdési időpont óta:
+Ez a parancs felsorolja a vizsgálati naplók az engedélyezési erőforrás-szolgáltató a kezdési időpont óta:
 
 ```azurecli
 az monitor activity-log list --resource-provider "Microsoft.Authorization" --start-time 2018-04-20T00:00:00Z
@@ -108,26 +108,26 @@ az monitor activity-log list --resource-provider "Microsoft.Authorization" --sta
 
 ## <a name="azure-log-analytics"></a>Azure Log Analytics
 
-[Az Azure Naplóelemzés](../log-analytics/log-analytics-overview.md) egy másik eszköz összegyűjti és elemzi az összes Azure-erőforrások változásainak RBAC segítségével. Naplóelemzési használata a következő előnyökkel jár:
+[Az Azure Log Analytics](../log-analytics/log-analytics-overview.md) egy másik eszköz használatával gyűjti össze és elemzi az RBAC-módosítások az összes Azure-erőforrásokhoz. A log Analytics az alábbi előnyökkel jár:
 
-- Írási összetett lekérdezések és logika
-- Integrálható a riasztásokat, a Power bi-ban és a más eszközök
-- Hosszabb megőrzési ideig adatok mentése
-- A többi naplófájlt, például a biztonsági, a virtuális gép és az egyéni kereszthivatkozás
+- Összetett lekérdezéseket és logika írása
+- Riasztások, a Power BI és egyéb eszközök integrálása
+- Hosszabb megőrzési idők az adatok mentése
+- Egyéb naplóival, például a biztonság, a virtuális gép és az egyéni kereszthivatkozás
 
-Első lépésként alapvető lépései a következők:
+Íme az alapvető lépéseken, a kezdéshez:
 
-1. [A Naplóelemzési munkaterület létrehozása](../log-analytics/log-analytics-quick-create-workspace.md).
+1. [Hozzon létre egy Log Analytics-munkaterület](../log-analytics/log-analytics-quick-create-workspace.md).
 
-1. [A tevékenység Naplóelemzési megoldás konfigurálása](../log-analytics/log-analytics-activity.md#configuration) munkaterület.
+1. [Az Activity Log Analytics megoldás konfigurálása](../log-analytics/log-analytics-activity.md#configuration) a munkaterületen.
 
-1. [A tevékenység naplók megtekintéséhez](../log-analytics/log-analytics-activity.md#using-the-solution). Keresse meg a tevékenység napló Analytics – áttekintés oldalra gyorsan: kattintson a **Naplóelemzési** lehetőséget.
+1. [A Tevékenységnaplók megtekintése](../log-analytics/log-analytics-activity.md#using-the-solution). A Tevékenységnaplók elemzésének áttekintése lapon keresse meg gyorsan, hogy a **Log Analytics** lehetőséget.
 
-   ![Log Analytics kapcsoló portálon](./media/change-history-report/azure-log-analytics-option.png)
+   ![A portál a log Analytics beállítás](./media/change-history-report/azure-log-analytics-option.png)
 
-1. Szükség esetén a [naplófájl-keresési](../log-analytics/log-analytics-log-search.md) lap vagy az [Advanced Analytics portál](https://docs.loganalytics.io/docs/Learn) lekérdezése, és a naplók megtekintéséhez. E két beállítás kapcsolatos további információkért lásd: [napló keresése oldal, vagy a Advanced Analytics portál](../log-analytics/log-analytics-log-search-portals.md).
+1. Lehetősége van a [naplóbeli keresés](../log-analytics/log-analytics-log-search.md) lap vagy az [bővített analitika portál](https://docs.loganalytics.io/docs/Learn) lekérdezése és a naplók megtekintéséhez. E két beállítás kapcsolatos további információkért lásd: [naplók keresése oldalát, vagy a bővített analitika portál](../log-analytics/log-analytics-log-search-portals.md).
 
-Íme egy lekérdezést, amely a célként megadott erőforrás-szolgáltató szerint vannak rendszerezve új szerepkör-hozzárendelések adja vissza:
+Íme egy lekérdezést, amely az új szerepkör-hozzárendelések célként megadott erőforrás-szolgáltató szerint rendezve adja vissza:
 
 ```
 AzureActivity
@@ -136,7 +136,7 @@ AzureActivity
 | summarize count(), makeset(Caller) by TargetResourceAuthProvider
 ```
 
-Íme egy diagram szerepkör hozzárendelési módosítások visszaadó:
+A következő szerepkör-hozzárendelések módosításainak egy diagram visszaadó:
 
 ```
 AzureActivity
@@ -145,8 +145,8 @@ AzureActivity
 | render timechart
 ```
 
-![Tevékenység naplók használata a Advanced Analytics portál – képernyőkép](./media/change-history-report/azure-log-analytics.png)
+![A Tevékenységnaplók segítségével a bővített analitika portál – képernyőkép](./media/change-history-report/azure-log-analytics.png)
 
 ## <a name="next-steps"></a>További lépések
 * [Események megtekintése a tevékenységnaplóban](/azure/azure-resource-manager/resource-group-audit?toc=%2fazure%2fmonitoring-and-diagnostics%2ftoc.json)
-* [Az Azure tevékenységnapló figyelő előfizetés tevékenység](/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs)
+* [Az Azure-tevékenységnapló-előfizetési tevékenység figyelése](/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs)

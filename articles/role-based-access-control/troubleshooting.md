@@ -1,6 +1,6 @@
 ---
-title: Hibaelhárítás az Azure RBAC |} Microsoft Docs
-description: Azure szerepköralapú hozzáférés-vezérlés (RBAC) elhárítása.
+title: Hibaelhárítás az Azure-beli RBAC |} A Microsoft Docs
+description: Azure szerepköralapú hozzáférés-vezérlés (RBAC) kapcsolatos hibaelhárítás.
 services: azure-portal
 documentationcenter: na
 author: rolyon
@@ -10,94 +10,94 @@ ms.service: role-based-access-control
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/19/2018
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: seohack1
-ms.openlocfilehash: 557d3330ef155181c050a18b14d31b65ba1f2dcf
-ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
+ms.openlocfilehash: 186bcf26639f5cff2dcbf1e805913ac7edab7df4
+ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36295397"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37437366"
 ---
-# <a name="troubleshooting-rbac-in-azure"></a>Az Azure RBAC hibaelhárítása
+# <a name="troubleshooting-rbac-in-azure"></a>Az Azure-beli RBAC hibaelhárítása
 
-Ebben a cikkben megválaszolunk szerepköralapú hozzáférés-vezérlést (RBAC) kapcsolatos gyakori kérdéseket megállapításához, hogy mi történik, ha használja a szerepkörök az Azure portál és a részleg-hozzáférési problémák megoldása. Ezek a szerepkörök az összes erőforrástípus terjed ki:
+Ez a cikk szerepköralapú hozzáférés-vezérlést (RBAC), kapcsolatos általános kérdéseket válaszol meg, hogy tudja, mire számítson, ha használja a szerepkörök az Azure portal és a hozzáférési problémák elhárítása. Ezek a szerepkörök minden erőforrástípus terjed ki:
 
 * Tulajdonos  
 * Közreműködő  
 * Olvasó  
 
-Tulajdonos és közreműködő szerepkörrel rendelkező személyek mindkét megoldást vezet a teljes hozzáféréssel rendelkeznek, de a közreműködői nem tud hozzáférést más felhasználóknak vagy csoportoknak. Részek lesznek még ennél is érdekesebb megoldást az olvasó szerepkört, hogy az adott azt fogja szánjon némi időt. Információ a engedélyezi a hozzáférést, seee [RBAC és az Azure-portálon-hozzáférés kezelése](role-assignments-portal.md).
+A felügyeleti feladatok tulajdonosai és a közreműködők is teljes hozzáférése, de közreműködői nem tud hozzáférést adni más felhasználóknak vagy csoportoknak. Dolgok beolvasása egy kicsit több érdekes, az Olvasó szerepkörhöz, hogy az, ahol azt fogjuk szánjon némi időt. További információ hozzáférést biztosítani, seee [rbac-RÓL és az Azure portal-hozzáférés kezelése](role-assignments-portal.md).
 
 ## <a name="app-service"></a>App Service
-### <a name="write-access-capabilities"></a>Írási képességek
-Ha megadta a felhasználói csak olvasható hozzáférést egyetlen webalkalmazáshoz, néhány funkció le vannak tiltva, hogy nem várt. A következő felügyeleti képességeket szükséges **írási** egy webalkalmazást (tulajdonos vagy közreműködő) által elérhető, és nem érhetők el a olyan írásvédett forgatókönyv.
+### <a name="write-access-capabilities"></a>Írási hozzáférés képességek
+Egyetlen webalkalmazásban; a felhasználó csak olvasható hozzáférést ad, ha néhány funkció le van tiltva, hogy nem várt. A következő felügyeleti képességeket igényelnek **írási** nem érhetők el az összes csak olvasható forgatókönyv és a egy web app (tulajdonos vagy közreműködő) hozzáférést.
 
-* Parancsok (például a start, stop, stb.)
-* Általános konfiguráció, a skálázási beállításokat, a biztonsági mentés beállításait és a figyelési beállítások például beállítások módosítása
-* Közzétételi hitelesítő adatokat és más titkos adatokat, például az alkalmazásbeállítások és kapcsolati karakterláncok használata
+* Parancsok (például Indítás, Leállítás, stb.)
+* Beállítások módosítása, például általános konfigurációs, a skálázási beállítás, a biztonsági mentési beállítások és a figyelési beállítások
+* Közzétételi hitelesítő adatok és egyéb titkos adatait, például az alkalmazásbeállítások és a kapcsolati karakterláncok elérése
 * Folyamatos átviteli naplók
-* Diagnosztikai naplók konfiguráció
+* Diagnosztikai naplók konfigurálása
 * Konzol (parancssor)
 * Aktív és a legutóbbi központi telepítéseket (helyi git folyamatos üzembe helyezés)
 * Becsült költés
 * Webtesztek
-* Virtuális hálózat (csak egy olvasó, ha egy virtuális hálózat már be lett állítva egy írási hozzáféréssel rendelkező felhasználó számára látható).
+* Virtuális hálózat (egy olvasó, ha egy virtuális hálózat már be lett állítva egy írási hozzáféréssel rendelkező felhasználónak csak látható).
 
-Ha sem tudja már használni ezen csempék, kérje a rendszergazdától, közreműködő eléréséhez a webalkalmazás szeretné.
+Ha ezek a csempék nem sikerül elérnie, kérje meg a rendszergazdát a közreműködői hozzáférés szükséges a webes alkalmazás szeretné.
 
 ### <a name="dealing-with-related-resources"></a>Kapcsolódó erőforrások kezelése
-Webalkalmazások vannak bonyolítja néhány különböző erőforrások együttműködés jelenlétét. Íme néhány webhelyekkel tipikus erőforráscsoport:
+Web apps néhány más erőforrások, amelyek kölcsönhatások jelen vannak bonyolult. Íme néhány webhelyek egy tipikus erőforráscsoportot:
 
-![Webes alkalmazás erőforráscsoport](./media/troubleshooting/website-resource-model.png)
+![Webes alkalmazás erőforráscsoportjának](./media/troubleshooting/website-resource-model.png)
 
-Ennek eredményeképpen ha biztosít valaki csak a web app, nagy részét a funkciói a webhely paneljén az Azure-portálon való hozzáférés le van tiltva.
+Emiatt, ha biztosít valaki csak a web app, az funkciók a webhely paneljén, az Azure Portalon való hozzáférés le van tiltva.
 
-Ezek az elemek szükség **írási** a hozzáférést a **App Service-csomag** , amely megfelel a webhely:  
+Ezeket az elemeket szükség **írási** való hozzáférést a **App Service-csomag** , amely megfelel a webhelyét:  
 
-* A webes alkalmazás megtekintése a tarifacsomag (ingyenes vagy normál)  
-* Skála configuration (a példányok, a virtuális gép méretét, az automatikus skálázási beállítások száma)  
-* Kvóták (tároló, a sávszélesség, a CPU)  
+* A webes alkalmazás a tarifacsomag (ingyenes vagy Standard)  
+* Méretezés konfigurálása (példányok, a virtuális gép méretét, az automatikus méretezési beállítások száma)  
+* Kvóták (storage, a sávszélesség, a Processzor)  
 
-Ezek az elemek szükség **írási** a teljes hozzáférés **erőforráscsoport** , amely tartalmazza a webhely:  
+Ezeket az elemeket szükség **írási** a teljes hozzáférés **erőforráscsoport** , amely tartalmazza a webhely:  
 
-* SSL-tanúsítványokat és a kötések (SSL-tanúsítványok megoszthatók ugyanabban az erőforráscsoportban a helyek és a földrajzi helyhez között)  
+* SSL-tanúsítványok és -kötések (SSL-tanúsítványok megoszthatók között helyek ugyanabban az erőforráscsoportban és földrajzi hely)  
 * Riasztási szabályok  
-* automatikus skálázási beállításokat  
+* Az automatikus méretezési beállítások  
 * Application Insights-összetevők  
 * Webtesztek  
 
 ## <a name="azure-functions"></a>Azure Functions
-Néhány funkciójának [Azure Functions](../azure-functions/functions-overview.md) írási hozzáférés szükséges. Például ha egy felhasználó az Olvasó szerepkör van hozzárendelve, nem fogják a Funkciók, a függvény alkalmazások megtekintheti. A portál megjeleníti **(nincs hozzáférése)**.
+Az egyes funkciói [Azure Functions](../azure-functions/functions-overview.md) írási jogosultság szükséges. Például ha egy felhasználó az Olvasó szerepkör van hozzárendelve, nem tudja megtekinteni a függvényalkalmazás-függvényei. A portál megjeleníti **(nincs hozzáférés)**.
 
-![Működnek az alkalmazások nem lehet hozzáférni](./media/troubleshooting/functionapps-noaccess.png)
+![Alkalmazások függvény nincs hozzáférés](./media/troubleshooting/functionapps-noaccess.png)
 
-Egy olvasó kattinthat a **Platform funkciói** fülre, majd **összes beállítás** az egyes beállítások megtekintéséhez a függvény app (webalkalmazás hasonlóan) kapcsolódik, de nem módosíthatják a beállítások.
+Kattintson egy olvasót a **platformfunkciók** fülre, majd **minden beállítás** bizonyos beállítások megtekintéséhez (a webalkalmazás hasonlóan) függvényalkalmazás kapcsolódó, de nem módosíthatják a beállítások.
 
 ## <a name="virtual-machine"></a>Virtuális gép
-Sokkal hasonlóan a web apps, a virtuális gépek paneljét bizonyos funkcióinak írási hozzáférés szükséges a virtuális gépet, vagy további erőforrások az erőforráscsoportban.
+Sokkal például a web apps, a virtuális gép paneljén egyes funkcióinak írási jogosultság szükséges a virtuális gépet, vagy más az erőforráscsoportban lévő erőforrásokat.
 
-Virtuális gépek tartomány nevét, virtuális hálózatok, storage-fiókok és a riasztási szabályok kapcsolódnak.
+Virtuális gépek kapcsolódó tartomány nevét, virtuális hálózatok, storage-fiókok és riasztási szabályok.
 
-Ezek az elemek szükség **írási** a hozzáférést a **virtuális gép**:
+Ezeket az elemeket szükség **írási** való hozzáférést a **virtuális gép**:
 
 * Végpontok  
 * IP-címek  
 * Lemezek  
 * Bővítmények  
 
-Szükséges **írási** is a hozzáférést a **virtuális gép**, és a **erőforráscsoport** (valamint a tartomány nevét), hogy az informatikai van:  
+Ilyen esetekben **írási** elérését a **virtuális gép**, és a **erőforráscsoport** (valamint a tartomány nevét), hogy az informatikai van:  
 
 * Rendelkezésre állási csoport  
 * Elosztott terhelésű készlethez  
 * Riasztási szabályok  
 
-Ha sem tudja már használni ezen csempék, kérje meg a rendszergazdát az erőforráscsoport közreműködői elérésére.
+Ha ezek a csempék nem sikerül elérnie, kérje meg a rendszergazdát a közreműködői hozzáférés az erőforráscsoporthoz.
 
 ## <a name="next-steps"></a>További lépések
-* [Az RBAC és az Azure-portálon-hozzáférés kezelése](role-assignments-portal.md)
-* [Az RBAC módosítások tevékenység naplók megtekintése](change-history-report.md)
+* [Rbac-RÓL és az Azure portal-hozzáférés kezelése](role-assignments-portal.md)
+* [Az RBAC-módosítások Tevékenységnaplók megtekintése](change-history-report.md)
 

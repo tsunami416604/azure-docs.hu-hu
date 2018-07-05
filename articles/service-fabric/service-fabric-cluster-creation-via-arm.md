@@ -1,6 +1,6 @@
 ---
-title: Az Azure Service Fabric-fürt létrehozása sablonból |} Microsoft Docs
-description: A cikkből megtudhatja, hogyan állíthat be egy biztonságos, az Azure Service Fabric-fürt Azure Active Directory (Azure AD), Azure Resource Manager és az Azure Key Vault használatával az ügyfél-hitelesítéshez.
+title: Azure Service Fabric-fürt létrehozása sablonból |} A Microsoft Docs
+description: Ez a cikk ismerteti, hogyan állítható be a biztonságos Service Fabric-fürtön az Azure-ban Azure Resource Manager, az Azure Key Vault és az Azure Active Directory (Azure AD) használatával az ügyfél-hitelesítéshez.
 services: service-fabric
 documentationcenter: .net
 author: aljo-microsoft
@@ -14,87 +14,87 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 12/07/2017
 ms.author: aljo
-ms.openlocfilehash: d9ed4134cfb8047d5d6839979cd89ba37ff0c3f8
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: e963b0f816d30411aa7d1e8c172ca0c2e5ddf0f1
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34701352"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37444361"
 ---
-# <a name="create-a-service-fabric-cluster-by-using-azure-resource-manager"></a>A Service Fabric-fürt létrehozása az Azure Resource Manager használatával 
+# <a name="create-a-service-fabric-cluster-by-using-azure-resource-manager"></a>Service Fabric-fürt létrehozása Azure Resource Manager használatával 
 > [!div class="op_single_selector"]
 > * [Azure Resource Manager](service-fabric-cluster-creation-via-arm.md)
 > * [Azure Portal](service-fabric-cluster-creation-via-portal.md)
 >
 >
 
-Ez az útmutató lépésről lépésre bemutatja, hogyan állítja be a biztonságos Azure Service Fabric-fürt az Azure-ban Azure Resource Manager használatával. A Microsoft tudomásul, hogy a cikk hosszú. Mindazonáltal kivéve, ha már alaposan tisztában a tartalommal, ügyeljen arra, hogy alaposan kövesse az alábbi lépéseket.
+Ez az útmutató lépésről lépésre végigvezeti az Azure-ban egy biztonságos Azure Service Fabric-fürt beállítása az Azure Resource Managerrel. Hogy tudomásul veszi, hogy a cikk e hosszú. Mindazonáltal kivéve, ha Ön már jól ismerik a tartalmat, ügyeljen arra, gondosan kövesse az alábbi lépéseket.
 
 Az útmutató a következő eljárásokat ismerteti:
 
-* Kulcs fogalmat kell figyelembe vennie a Service Fabric-fürt üzembe helyezése előtt.
-* Fürt létrehozása az Azure Service Fabric erőforrás-kezelő modulok használatával.
-* Azure Active Directory (Azure AD) beállítása a felhasználók felügyeleti műveleteket végez a fürt hitelesítéséhez.
-* A fürt egyéni Azure Resource Manager sablont készít, és telepíti azokat.
+* Kulcs fogalmakat, amelyek a Service Fabric-fürt üzembe helyezése előtt érdemes figyelembe vennie.
+* Fürt létrehozása az Azure-ban a Service Fabric Resource Manager-modulokat.
+* Az Azure Active Directory (Azure AD) beállítása a fürt felügyeleti műveleteket felhasználók hitelesítéséhez.
+* A fürthöz tartozó egyéni Azure Resource Manager-sablon készítése és üzembe helyezni.
 
-## <a name="key-concepts-to-be-aware-of"></a>Vegye figyelembe a fontos fogalmakat
-Az Azure Service Fabric arra, hogy egy x509 használatát tanúsítvány védelméhez a fürt és a végpontok. A Service Fabric tanúsítványokat használ a hitelesítéshez és titkosításhoz a fürtök és a rajtuk található alkalmazások különféle részeinek védelmére. A fürt telepítése, frissítése és törlése, alkalmazások, szolgáltatások és hogy milyen adatokat tartalmaznak, beleértve a felügyeleti műveleteihez hozzáférési/végző ügyfél használható tanúsítványok vagy az Azure Active Directory hitelesítő adatai. Az Azure Active Directory használata erősen ajánlott, mert ez az egyetlen lehetőség meg kell akadályozni az ügyfelek számára a tanúsítványok megosztását.  További információ a tanúsítványok használatának módját a Service Fabric: [Service Fabric-fürt biztonsági forgatókönyvek][service-fabric-cluster-security].
+## <a name="key-concepts-to-be-aware-of"></a>Vegye figyelembe a fő fogalmak
+Az Azure-ban, a Service Fabric építjük, amelyek használatát egy x509 tanúsítvány a fürt és a végpontok védelmét. A Service Fabric tanúsítványokat használ a hitelesítéshez és titkosításhoz a fürtök és a rajtuk található alkalmazások különféle részeinek védelmére. Hozzáférés/végrehajtása műveletek a fürtöt, telepítése, frissítése és törlése, alkalmazások, szolgáltatások és az adatokat tartalmaznak, az ügyfél használhatja, tanúsítványok vagy Azure Active Directory hitelesítő adatokat. Azure Active Directory használata erősen ajánlott, mivel az az egyetlen módszer, hogy az ügyfelek tanúsítványokat megosztását.  További információ a tanúsítványok használata a Service Fabric: [Service Fabric-fürtök biztonsági forgatókönyveit][service-fabric-cluster-security].
 
-Service Fabric fürt védelmét, és adja meg az alkalmazás szolgáltatásai a biztonsági X.509-tanúsítványokat használ. Használhat [Key Vault] [ key-vault-get-started] az Azure Service Fabric-fürtök tanúsítványainak kezelése. 
+Service Fabric-fürt biztonságossá tétele és adja meg az alkalmazás biztonsági funkciók X.509-tanúsítványokat használ. Használhat [Key Vault] [ key-vault-get-started] kattintva kezelheti az Azure Service Fabric-fürtök tanúsítványait. 
 
 
 ### <a name="cluster-and-server-certificate-required"></a>Fürt és a kiszolgálói tanúsítványt (kötelező)
-Ezeket a tanúsítványokat (egy elsődleges és opcionálisan egy másodlagos) biztosításához a fürt és a jogosulatlan hozzáférés elkerülése érdekében azt szükségesek. Fürt biztonsági két módon tartalmazza:
+Fürt biztonságossá tétele és a jogosulatlan hozzáférés elkerülése érdekében, hogy ezeket a tanúsítványokat (egy elsődleges és opcionálisan egy másodlagos) szükségesek. Fürtbiztonság kétféle módon biztosít:
 
-* **Fürt hitelesítési:** hitelesíti a fürt összevonási csomópontok kommunikációt. Csak olyan csomópontot, amely bizonyítja, ezzel a tanúsítvánnyal az identitásukat csatlakozhat a fürthöz.
-* **Kiszolgálóhitelesítés:** hitelesíti a felügyeleti ügyfél, a fürt felügyeleti végpontokat, így a felügyeleti ügyfél tudja azt a valódi fürt és a nem a "man a középső" van szó. Ez a tanúsítvány is biztosít az SSL protokoll a HTTPS-szolgáltatásfelügyeleti API és a Service Fabric Explorer HTTPS-KAPCSOLATON keresztül.
+* **Fürt hitelesítési:** hitelesíti a fürt összevonási csomópontok közötti kommunikációt. Csak a is igazolnia az identitását, ezt a tanúsítványt a csomópontok csatlakozhassanak a fürthöz.
+* **Kiszolgálói hitelesítés:** hitelesíti a fürtkezelési végpontoknak egy kezelési ügyfél, így az ügyfél felismeri, hogy ez a valódi fürtön, és nem a "közbeékelődéses" beszél. Ezt a tanúsítványt is biztosít az SSL protokoll a HTTPS-felügyeleti API-hoz és a Service Fabric Explorert a HTTPS-kapcsolaton keresztül.
 
-Ezeket a célokat szolgál, hogy a tanúsítvány a következő követelményeknek kell megfelelniük:
+A tanúsítvány következő célokat, az alábbi követelményeknek kell megfelelnie:
 
-* A tanúsítványnak tartalmaznia kell egy titkos kulccsal. Ezek a tanúsítványok általában rendelkeznek bővítmények .pfx vagy .pem  
-* A kulcscseréhez használt, amely exportálható személyes információcsere (.pfx) fájlba a tanúsítványt kell létrehozni.
-* A **tanúsítvány tulajdonosának nevét meg kell egyeznie a tartományt, amelyikhez a Service Fabric-fürt eléréséhez használt**. A megfelelő szükség az SSL protokoll a fürt HTTPS felügyeleti végpont és a Service Fabric Explorerben talál. Az SSL-tanúsítványt egy hitelesítésszolgáltatótól (CA) származó nem szerezze be a *. cloudapp.azure.com tartomány. Egyéni tartománynevet kell beszereznie a fürt számára. Amikor tanúsítványt igényel egy hitelesítésszolgáltatótól, a tanúsítvány tulajdonosnevének meg kell felelnie a fürthöz használt egyéni tartománynévnek.
+* A tanúsítványnak tartalmaznia kell egy titkos kulcsot. Ezek a tanúsítványok általában rendelkeznek bővítmények .pfx vagy .pem  
+* A tanúsítvány a kulcscsere, amely egy személyes információcsere (.pfx) fájl exportálható kell létrehozni.
+* A **tanúsítvány tulajdonosnevének egyeznie kell a tartományhoz, amelyben a Service Fabric-fürt eléréséhez használt**. Erre a megfeleltetésre azért szükség az SSL protokoll biztosítja a fürt HTTPS-felügyeleti végpont és a Service Fabric Explorer. Az SSL-tanúsítványt egy hitelesítésszolgáltatótól (CA) nem szerezheti be a *. cloudapp.Azure.com formát követi tartományhoz. Egyéni tartománynevet kell beszereznie a fürt számára. Amikor tanúsítványt igényel egy hitelesítésszolgáltatótól, a tanúsítvány tulajdonosnevének meg kell felelnie a fürthöz használt egyéni tartománynévnek.
 
-### <a name="set-up-azure-active-directory-for-client-authentication-optional-but-recommended"></a>Azure Active Directory beállítása az ügyfél-hitelesítéshez (nem kötelező, de ajánlott)
+### <a name="set-up-azure-active-directory-for-client-authentication-optional-but-recommended"></a>Az Azure Active Directory beállítása az ügyfél-hitelesítéshez (nem kötelező, de ajánlott)
 
-Az Azure AD lehetővé teszi, hogy a szervezetek (más néven bérlői) alkalmazásokhoz való felhasználói hozzáférések kezelése. Alkalmazások oszthatók rendelkező webalapú bejelentkezési felhasználói felület és az egy natív ügyfél révén azokat. Ebben a cikkben azt feltételezzük, hogy már létrehozta a bérlő. Ha nem, olvassa el [Azure Active Directory-bérlő beszerzése][active-directory-howto-tenant].
+Azure ad-ben alkalmazásokhoz való felhasználói hozzáférés kezelése lehetővé teszi a szervezetek (más néven bérlők). Alkalmazások vannak osztva a webalapú bejelentkezési felhasználói felület és a egy natív ügyfél felhasználói élményét. Ez a cikk feltételezzük, hogy már létrehozott egy bérlőt. Ha nem rendelkezik, először olvassa el [Azure Active Directory-bérlő beszerzése][active-directory-howto-tenant].
 
-A Service Fabric-fürt a felügyeleti funkciót, beleértve a webalapú több belépési pontot nyújt [Service Fabric Explorer] [ service-fabric-visualizing-your-cluster] és [Visual Studio][service-fabric-manage-application-in-visual-studio]. Ennek eredményeképpen hoz létre, két Azure AD-alkalmazások történő hozzáférés szabályozása érdekében a fürt, egy webes alkalmazás és egy natív alkalmazás.
+Service Fabric-fürt kínál a különböző belépési pontok annak felügyeleti funkciójához, beleértve a webalapú [Service Fabric Explorer] [ service-fabric-visualizing-your-cluster] és [Visual Studio] [ service-fabric-manage-application-in-visual-studio]. Ennek eredményeképpen hozzon létre két Azure AD-alkalmazások a fürthöz való hozzáférés szabályozásához, egy webalkalmazás és a egy natív alkalmazást.
 
-További információ arról, a dokumentum későbbi szakaszában beállítása.
+További információ arról, a dokumentum későbbi szakaszában beállításához.
 
-### <a name="application-certificates-optional"></a>Alkalmazás-tanúsítványok (nem kötelező)
-Tetszőleges számú további tanúsítványokat is telepíthető egy fürt biztonsági okokból. Az fürt létrehozása előtt fontolja meg az alkalmazás biztonsági kell telepíteni a csomópontokat, például a tanúsítványt igénylő forgatókönyvek:
+### <a name="application-certificates-optional"></a>Tanúsítványok (nem kötelező)
+Tetszőleges számú további tanúsítványok telepíthető alkalmazás biztonsági okokból egy fürtön. Mielőtt létrehozná a fürtöt, vegye figyelembe a kell telepíteni a csomópontokon, például a tanúsítványt igénylő alkalmazásbiztonsági forgatókönyveket:
 
-* Titkosítás és visszafejtés az alkalmazáskonfigurációs értékeket.
-* Replikáció során az adatok csomópontok közötti titkosítása.
+* Titkosítás és visszafejtés alkalmazáskonfigurációs értékeket.
+* Az adatok titkosítása az csomópont közötti replikálás során.
 
-A biztonságos fürtök létrehozására fogalma azonos, hogy azok a Linux vagy a Windows-fürtök. 
+A fürtök biztonságos az elképzelés az, azonos, hogy azok Linux vagy Windows-fürtök. 
 
-### <a name="client-authentication-certificates-optional"></a>Ügyfél-hitelesítési tanúsítványok (nem kötelező)
-A további tanúsítványok tetszőleges rendszergazda vagy felhasználó ügyfélműveleteknél adható meg. Alapértelmezés szerint a fürt tanúsítvány rendszergazda ügyfél jogosultságokkal rendelkezik. További ügyfél-tanúsítványok bármelyikének ne telepítse a fürthöz, ugyanúgy kell megadni: a fürt konfigurációjába megengedett, azonban az ügyfélgépek csatlakozzon a fürthöz, és végezze el minden olyan felügyeleti telepíteni kell műveletek.
+### <a name="client-authentication-certificates-optional"></a>(Nem kötelező) az ügyfél-hitelesítési tanúsítványok
+Tetszőleges számú további tanúsítványok rendszergazdai vagy a felhasználói műveletek adható meg. Alapértelmezés szerint a fürt tanúsítványt a felügyeleti ügyfél jogosultságokkal rendelkezik. További ügyfél-tanúsítványok nem telepíthető a fürtbe, ugyanúgy kell megadni, a fürt konfigurációját a megengedett, azonban szükségük van a számítógépeken az ügyfél csatlakozik a fürthöz, és végezze el minden olyan felügyeleti műveletek.
 
 
 ## <a name="prerequisites"></a>Előfeltételek 
-A biztonságos fürtök létrehozására fogalma azonos, hogy azok a Linux vagy a Windows-fürtök. Ez az útmutató használatát is érintjük az Azure PowerShell vagy Azure CLI új fürtök létrehozása. Az előfeltételeket vagy:
+A fürtök biztonságos az elképzelés az, azonos, hogy azok Linux vagy Windows-fürtök. Ez az útmutató ismerteti az Azure PowerShell vagy az Azure CLI új fürtök létrehozásához. Az Előfeltételek a következők egyikét:
 
--  [Az Azure PowerShell 4.1-et vagy újabb verzió] [ azure-powershell] vagy [Azure CLI 2.0-s vagy újabb verzió][azure-CLI].
--  Részletek található a Service Fabric modulok ide - [AzureRM.ServiceFabric](https://docs.microsoft.com/powershell/module/azurerm.servicefabric) és [az ú CLI modul](https://docs.microsoft.com/cli/azure/sf?view=azure-cli-latest)
+-  [Az Azure PowerShell 4.1 és újabb] [ azure-powershell] vagy [az Azure CLI 2.0-s és újabb][azure-CLI].
+-  találhat további információkat az ide - a Service Fabric-modulok [AzureRM.ServiceFabric](https://docs.microsoft.com/powershell/module/azurerm.servicefabric) és [az SF CLI modul](https://docs.microsoft.com/cli/azure/sf?view=azure-cli-latest)
 
 
-## <a name="use-service-fabric-rm-module-to-deploy-a-cluster"></a>Fürt központi telepítése a Service Fabric erőforrás-kezelő modul használatával
+## <a name="use-service-fabric-rm-module-to-deploy-a-cluster"></a>Fürt üzembe helyezése Service Fabric erőforrás-kezelő modul használatával
 
-Ebben a dokumentumban használjuk a Service Fabric RM powershell, és központi telepítése egy fürt, a PowerShell vagy a CLI modul parancsot a CLI modul lehetővé teszi a forgatókönyvek. Ossza meg velünk halad át a hozzájuk. Mentse a forgatókönyvet, hogy úgy érzi, hogy ajánlott megfelel az igényeinek. 
+Ebben a dokumentumban használjuk a Service Fabric-RM powershell és CLI modul üzembe helyezése egy fürtön, a PowerShell vagy a parancssori modul lehetővé teszi, hogy számos módja létezik. Ossza meg velünk mennek keresztül a azok. Válasszon a forgatókönyvet, hogy úgy gondolja, hogy ajánlott megfelel az igényeinek. 
 
 - Új fürt létrehozása 
-    - önaláírt tanúsítvány rendszer segítségével jön létre.
-    - a tanúsítvány használatával már Ön a tulajdonosa
+    - önaláírt tanúsítvány használatával a rendszer jön létre.
+    - egy tanúsítvány használatával saját
 
-Fürt alapértelmezett sablont vagy a sablont, amely már rendelkezik
+Fürt alapértelmezett sablon vagy egy sablont, amely már rendelkezik
 
-### <a name="create-new-cluster----using-a-system-generated-self-signed-certificate"></a>Új fürtre – a rendszer létrehozott önaláírt tanúsítvány létrehozása
+### <a name="create-new-cluster----using-a-system-generated-self-signed-certificate"></a>Új fürt létrehozása – a rendszer a létrehozott önaláírt tanúsítvány használatával
 
-A következő paranccsal hozhat létre fürtöt, ha azt szeretné, hogy a rendszer létrehoz egy önaláírt tanúsítványt, és használja a fürt védelmét. Ez a parancs tanúsítványt állít be egy elsődleges fürt a fürt biztonsági és felügyeleti hozzáférés beállítása, hogy a tanúsítvány használatával felügyeleti műveletek elvégzéséhez használt.
+A következő paranccsal hozhat létre fürtöt, ha azt szeretné, hogy a rendszer létrehoz egy önaláírt tanúsítványt, és a fürt védelme. Ez a parancs állít be egy elsődleges fürttanúsítvány fürtbiztonsági célra és a rendszergazdai hozzáférés beállításához használt tanúsítvánnyal, hogy felügyeleti műveleteket.
 
 ### <a name="login-to-azure"></a>bejelentkezés az Azure-bA
 
@@ -107,14 +107,18 @@ Set-AzureRmContext -SubscriptionId <guid>
 azure login
 az account set --subscription $subscriptionId
 ```
-#### <a name="use-the-default-5-node-1-node-type-template-that-ships-in-the-module-to-set-up-the-cluster"></a>Az alapértelmezett 5 csomópont 1 csomópont típus sablon használata a fürt beállítása a modul részét képező
+#### <a name="use-the-default-5-node-1-node-type-template-that-ships-in-the-module-to-set-up-the-cluster"></a>Az alapértelmezett 5 1. csomóponton csomópont típusa sablon használata a fürt beállítása a modul részét képező
 
-Az alábbi parancs segítségével gyorsan, hozzon létre egy fürtöt minimális paraméterek megadásával
+A következő paranccsal létrehozhat egy fürtöt, adjon meg a minimális paramétereket
 
-A használt sablon megtalálható a [Azure Service Fabric-sablon minták: windows sablon](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/5-VM-Windows-1-NodeTypes-Secure-NSG) és [Ubuntu sablon](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/5-VM-Ubuntu-1-NodeTypes-Secure)
+A használt sablon érhető el a [Azure Service Fabric-sablonminták: windows-sablon](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/5-VM-Windows-1-NodeTypes-Secure-NSG) és [Ubuntu-sablon](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/5-VM-Ubuntu-1-NodeTypes-Secure)
 
-Az alábbi működik a Windows és Linux-fürtök létrehozására vonatkozó parancsokat, egyszerűen adja meg az operációs rendszer, ennek megfelelően. A PowerShell vagy parancssori felület parancsait is kimeneti a tanúsítványt a megadott CertificateOutputFolder; Győződjön meg arról, hogy tanúsítványmappa hozott létre. A parancs felsorolásszerűen más paramétereket, valamint például a virtuális gép Termékváltozat.
+Az alábbi működik Windows és Linux-fürtök létrehozására vonatkozó parancsokat, egyszerűen adja meg az operációs rendszer ennek megfelelően. A PowerShell és CLI-parancsok is kimeneti a tanúsítványt a megadott CertificateOutputFolder; azonban győződjön meg arról, hogy tanúsítványmappa már létrehozott. A parancs a más paramétereket, valamint a VM-Termékváltozatok például vesz igénybe.
 
+> [!NOTE]
+> Az alábbi Powershell paranccsal csak működik az Azure Resource Manager PowerShell-lel verzió > 6.1-es verzióját. Az Azure Resource Manager PowerShell-verzió aktuális verziójának ellenőrzéséhez futtassa a következő PowerShell-parancsot: "Get-Module AzureRM". Az Azure Resource Manager PowerShell-verzió frissítése erre a hivatkozásra. https://docs.microsoft.com/en-us/powershell/azure/install-azurerm-ps?view=azurermps-6.3.0
+>
+>
 ```PowerShell
 $resourceGroupLocation="westus"
 $resourceGroupName="mycluster"
@@ -149,11 +153,11 @@ az sf cluster create --resource-group $resourceGroupName --location $resourceGro
     --vm-password $vmpassword --vm-user-name $vmuser
 ```
 
-#### <a name="use-the-custom-template-that-you-already-have"></a>Az egyéni sablon használata, amely már rendelkezik 
+#### <a name="use-the-custom-template-that-you-already-have"></a>Használja az egyéni sablont, amely már rendelkezik 
 
-Ha egy egyéni sablont az igényeinek szerzői van szüksége, javasoljuk, hogy az egyik elérhető sablont megkezdése a [Azure Service Fabric-sablon minták](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master). Kövesse az útmutatást és magyarázataik a [a fürt-sablon testre szabása] [ customize-your-cluster-template] az alábbi szakasz.
+Ha hozzon létre egy egyéni sablont, hogy illeszkedjen az igényeihez van szüksége, azt javasoljuk, hogy az egyik elérhető sablont megkezdése a [Azure Service Fabric-sablonminták](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master). Kövesse az útmutatást és magyarázatok az [fürtsablonhoz testreszabása] [ customize-your-cluster-template] szakaszt.
 
-Ha már rendelkezik egy egyéni sablont, majd győződjön meg arról, hogy ellenőrizze, hogy a három tanúsítvány kapcsolatos paramétereket a sablonban és a paraméterfájl elnevezése a következő és értékek a következők null értékű.
+Ha már rendelkezik egy egyéni sablont, majd győződjön meg arról, hogy ellenőrizze, hogy a három tanúsítvány kapcsolatos paramétereket a sablon és a alkalmazásparaméter-fájlt a következő nevesített és értékek a következők null értékű.
 
 ```Json
    "certificateThumbprint": {
@@ -181,7 +185,7 @@ $templateFilePath="c:\mytemplates\mytemplate.json"
 New-AzureRmServiceFabricCluster -ResourceGroupName $resourceGroupName -CertificateOutputFolder $certOutputFolder -CertificatePassword $certpassword -CertificateSubjectName $CertSubjectName -TemplateFile $templateFilePath -ParameterFile $parameterFilePath 
 ```
 
-Ez az egyenértékű parancssori felület parancsot ugyanerre. Módosítsa az értékeket a declare utasítást a megfelelő értékeket. Parancssori felülete támogatja az összes többi paraméter, amely támogatja a fenti PowerShell-parancsot.
+Íme az előbbiek az egyenértékű CLI-paranccsal. Módosítsa az értékeket a declare utasítást a megfelelő értékekre. Parancssori felület támogatja a többi paramétert, amely támogatja a fenti PowerShell-parancsot.
 
 ```CLI
 declare certPassword=""
@@ -199,15 +203,15 @@ az sf cluster create --resource-group $resourceGroupName --location $resourceGro
 ```
 
 
-### <a name="create-new-cluster---using-the-certificate-you-bought-from-a-ca-or-you-already-have"></a>Új fürt létrehozása,-használ a tanúsítványt egy hitelesítésszolgáltatótól vásárolta, vagy már rendelkezik
+### <a name="create-new-cluster---using-the-certificate-you-bought-from-a-ca-or-you-already-have"></a>Új fürt létrehozása – a megadott tanúsítvány segítségével a Hitelesítésszolgáltatótól vásárolta, vagy már rendelkezik
 
-A következő paranccsal hozhat létre fürtöt, ha a fürt védelméhez használni kívánt tanúsítványt.
+A következő paranccsal hozhat létre fürtöt, ha a fürt védelmére használni kívánt tanúsítványt.
 
-Ha ez egy hitelesítésszolgáltató által aláírt tanúsítvány, amely kat, más célra, majd javasoljuk, hogy kimondottan a key vaultban adjon meg egy eltérő erőforráscsoportban található. Azt javasoljuk, hogy a key vault kerüljenek-e a saját erőforráscsoportot. Ez a művelet lehetővé teszi a számítási és tárolási erőforrás csoportokhoz, beleértve az erőforráscsoport, amely tartalmazza a Service Fabric-fürt, a kulcsok és titkos kulcsok elvesztése eltávolítását. **Az erőforráscsoport, amely tartalmazza a kulcstartót _ugyanabban a régióban kell lennie_ a fürt által használt.**
+Ha ez egy hitelesítésszolgáltató által aláírt tanúsítvány, amely, megszűnik más célra, majd javasoljuk, hogy kimondottan a key vault adjon meg egy egyedi erőforráscsoport. Azt javasoljuk, hogy a key vault mindössze a saját erőforráscsoport. Ez a művelet lehetővé teszi a számítási és tárolási erőforráscsoport eltávolítására, beleértve az erőforráscsoport, amely a Service Fabric-fürt tartalmazza a kulcsok és titkok elvesztése nélkül. **Az erőforráscsoport, amely tartalmazza a kulcstartó _ugyanabban a régióban kell lennie_ a fürt által használt.**
 
 
-#### <a name="use-the-default-5-node-1-node-type-template-that-ships-in-the-module"></a>Az alapértelmezett 5 csomópont 1 csomópont típus sablon használata a modul részét képező
-A használt sablon megtalálható a [Azure-minták: Windows sablon](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/5-VM-Windows-1-NodeTypes-Secure-NSG) és [Ubuntu sablon](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/5-VM-Ubuntu-1-NodeTypes-Secure)
+#### <a name="use-the-default-5-node-1-node-type-template-that-ships-in-the-module"></a>Az alapértelmezett 5 1. csomóponton csomópont típusa sablon használata a modul részét képező
+A használt sablon megtalálható a [Azure-minták: Windows sablon](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/5-VM-Windows-1-NodeTypes-Secure-NSG) és [Ubuntu-sablon](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/5-VM-Ubuntu-1-NodeTypes-Secure)
 
 ```PowerShell
 $resourceGroupLocation="westus"
@@ -240,10 +244,10 @@ az sf cluster create --resource-group $resourceGroupName --location $resourceGro
     --vm-password $vmPassword --vm-user-name $vmUser
 ```
 
-#### <a name="use-the-custom-template-that-you-have"></a>Az egyéni sablon használata, amely rendelkezik 
-Ha egy egyéni sablont az igényeinek szerzői van szüksége, javasoljuk, hogy az egyik elérhető sablont megkezdése a [Azure Service Fabric-sablon minták](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master). Kövesse az útmutatást és magyarázataik a [a fürt-sablon testre szabása] [ customize-your-cluster-template] az alábbi szakasz.
+#### <a name="use-the-custom-template-that-you-have"></a>Használja az egyéni sablont, amely rendelkezik 
+Ha hozzon létre egy egyéni sablont, hogy illeszkedjen az igényeihez van szüksége, azt javasoljuk, hogy az egyik elérhető sablont megkezdése a [Azure Service Fabric-sablonminták](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master). Kövesse az útmutatást és magyarázatok az [fürtsablonhoz testreszabása] [ customize-your-cluster-template] szakaszt.
 
-Ha már rendelkezik egy egyéni sablont, majd győződjön meg arról, hogy ellenőrizze, hogy a három tanúsítvány kapcsolatos paramétereket a sablonban és a paraméterfájl elnevezése a következő és értékek a következők null értékű.
+Ha már rendelkezik egy egyéni sablont, majd győződjön meg arról, hogy ellenőrizze, hogy a három tanúsítvány kapcsolatos paramétereket a sablon és a alkalmazásparaméter-fájlt a következő nevesített és értékek a következők null értékű.
 
 ```Json
    "certificateThumbprint": {
@@ -272,7 +276,7 @@ $certificateFile="C:\MyCertificates\chackonewcertificate3.pem"
 New-AzureRmServiceFabricCluster -ResourceGroupName $resourceGroupName -Location $resourceGroupLocation -TemplateFile $templateFilePath -ParameterFile $parameterFilePath -KeyVaultResouceGroupName $vaultResourceGroupName -KeyVaultName $vaultName -CertificateFile $certificateFile -CertificatePassword $certPassword
 ```
 
-Ez az egyenértékű parancssori felület parancsot ugyanerre. Módosítsa az értékeket a declare utasítást a megfelelő értékeket.
+Íme az előbbiek az egyenértékű CLI-paranccsal. Módosítsa az értékeket a declare utasítást a megfelelő értékekre.
 
 ```CLI
 declare certPassword="Password!1"
@@ -289,9 +293,9 @@ az sf cluster create --resource-group $resourceGroupName --location $resourceGro
     --template-file $templateFilePath --parameter-file $parametersFilePath 
 ```
 
-#### <a name="use-a-pointer-to-the-secret-you-already-have-uploaded-into-the-key-vault"></a>A titkos kulcs már feltöltött a key vault mutató hivatkozások használata
+#### <a name="use-a-pointer-to-the-secret-you-already-have-uploaded-into-the-key-vault"></a>A már feltöltött be a key vault titkos mutató használata
 
-Egy meglévő kulcstároló használatára akkor _engedélyezni kell a központi telepítési_ tanúsítványok beszerzése és telepíti a fürtcsomópontokon a számítási erőforrás-szolgáltató engedélyezéséhez:
+Egy meglévő key vault használata akkor _engedélyezni kell a központi telepítési_ , hogy a számítási erőforrás-szolgáltató tanúsítványok lekérése, és telepítse a fürtcsomópontok számára:
 
 ```PowerShell
 Set-AzureRmKeyVaultAccessPolicy -VaultName 'ContosoKeyVault' -EnabledForDeployment
@@ -302,7 +306,7 @@ $secretID="https://test1.vault.azure.net:443/secrets/testcertificate4/55ec7c4dc6
 
 New-AzureRmServiceFabricCluster -ResourceGroupName $resourceGroupName -SecretIdentifier $secretId -TemplateFile $templateFilePath -ParameterFile $parameterFilePath 
 ```
-Ez az egyenértékű parancssori felület parancsot ugyanerre. Módosítsa az értékeket a declare utasítást a megfelelő értékeket.
+Íme az előbbiek az egyenértékű CLI-paranccsal. Módosítsa az értékeket a declare utasítást a megfelelő értékekre.
 
 ```CLI
 declare $resourceGroupName = "testRG"
@@ -317,19 +321,19 @@ az sf cluster create --resource-group $resourceGroupName --location $resourceGro
 
 <a id="add-AAD-for-client"></a>
 
-## <a name="set-up-azure-active-directory-for-client-authentication"></a>Az ügyfél-hitelesítéshez az Azure Active Directory beállítása
+## <a name="set-up-azure-active-directory-for-client-authentication"></a>Az Azure Active Directory beállítása az ügyfél-hitelesítéshez
 
-Az Azure AD lehetővé teszi, hogy a szervezetek (más néven bérlői) alkalmazásokhoz való felhasználói hozzáférések kezelése. Alkalmazások oszthatók rendelkező webalapú bejelentkezési felhasználói felület és az egy natív ügyfél révén azokat. Ebben a cikkben azt feltételezzük, hogy már létrehozta a bérlő. Ha nem, olvassa el [Azure Active Directory-bérlő beszerzése][active-directory-howto-tenant].
+Azure ad-ben alkalmazásokhoz való felhasználói hozzáférés kezelése lehetővé teszi a szervezetek (más néven bérlők). Alkalmazások vannak osztva a webalapú bejelentkezési felhasználói felület és a egy natív ügyfél felhasználói élményét. Ez a cikk feltételezzük, hogy már létrehozott egy bérlőt. Ha nem rendelkezik, először olvassa el [Azure Active Directory-bérlő beszerzése][active-directory-howto-tenant].
 
-A Service Fabric-fürt a felügyeleti funkciót, beleértve a webalapú több belépési pontot nyújt [Service Fabric Explorer] [ service-fabric-visualizing-your-cluster] és [Visual Studio][service-fabric-manage-application-in-visual-studio]. Ennek eredményeképpen hoz létre, két Azure AD-alkalmazások történő hozzáférés szabályozása érdekében a fürt, egy webes alkalmazás és egy natív alkalmazás.
+Service Fabric-fürt kínál a különböző belépési pontok annak felügyeleti funkciójához, beleértve a webalapú [Service Fabric Explorer] [ service-fabric-visualizing-your-cluster] és [Visual Studio] [ service-fabric-manage-application-in-visual-studio]. Ennek eredményeképpen hozzon létre két Azure AD-alkalmazások a fürthöz való hozzáférés szabályozásához, egy webalkalmazás és a egy natív alkalmazást.
 
-Egyes szerepet játszó konfigurálása az Azure AD-ben a Service Fabric-fürt lépések leegyszerűsítése létrehoztunk Windows PowerShell-parancsfájlokkal.
+Egyes lépéseit az Azure AD konfigurálása a Service Fabric-fürt leegyszerűsítése hoztunk létre egy Windows PowerShell-parancsprogramok halmaza.
 
 > [!NOTE]
-> A fürt létrehozása előtt el kell végeznie az alábbi lépéseket. A parancsfájlok a fürt nevét és a végpontok várható, mivel az értékeket kell megtervezni, és nem az, hogy már létrehozta értékeket.
+> A következő lépéseket kell elvégeznie, a fürt létrehozása előtt. A parancsfájlok várhatóan a fürt nevét és a végpontok, mert az értékeket meg kell tervezni, és nem az, hogy már létrehozott értékeket.
 
 1. [Töltse le a parancsfájlok] [ sf-aad-ps-script-download] a számítógépre.
-2. Kattintson a jobb gombbal a zip-fájl, jelölje be **tulajdonságok**, jelölje be a **Unblock** jelölőnégyzetet, majd kattintson a **alkalmaz**.
+2. Kattintson a jobb gombbal a zip-fájlt, jelölje be **tulajdonságok**, jelölje be a **feloldása** jelölőnégyzetet, majd kattintson a **alkalmaz**.
 3. Csomagolja ki a tömörített fájlt.
 4. Futtatás `SetupApplications.ps1`, és adja meg a TenantId ClusterName és WebApplicationReplyUrl paraméterekként. Példa:
 
@@ -337,20 +341,20 @@ Egyes szerepet játszó konfigurálása az Azure AD-ben a Service Fabric-fürt l
 .\SetupApplications.ps1 -TenantId '690ec069-8200-4068-9d01-5aaf188e557a' -ClusterName 'mycluster' -WebApplicationReplyUrl 'https://mycluster.westus.cloudapp.azure.com:19080/Explorer/index.html'
 ```
 
-A TenantId találhatja meg a következő PowerShell-parancs végrehajtása `Get-AzureSubscription`. A TenantId minden előfizetés a következő parancs végrehajtásakor jeleníti meg.
+A Bérlőazonosító találhatja meg a PowerShell-parancs végrehajtása `Get-AzureSubscription`. Ez a parancs végrehajtása a TenantId minden előfizetés jeleníti meg.
 
-Az Azure AD-alkalmazások, a parancsfájl által létrehozott előtag ClusterName szolgál. Nem a tényleges fürtnév pontosan egyeznie kell. Célja, hogy csak az, hogy egyszerűbb legyen az Azure AD-összetevők leképezi a Service Fabric-fürt, amely akkor van használatban.
+Az Azure AD-alkalmazások, a parancsfájl által létrehozott előtag ClusterName szolgál. Ez nem pontosan egyeznie kell a tényleges fürt neve. Célja, hogy csak az, hogy egyszerűbb legyen az Azure AD-összetevők leképezése, amelyet éppen használ a Service Fabric-fürthöz.
 
-WebApplicationReplyUrl az alapértelmezett végpont az Azure AD a felhasználóknak ad vissza, miután a bejelentkezés befejezéséhez. Ez a végpont állítja be a fürtöt, amely alapértelmezés szerint a Service Fabric Explorer végpontja:
+WebApplicationReplyUrl az alapértelmezett végpont, amely az Azure AD a felhasználóknak ad vissza, miután a bejelentkezés befejezéséhez. Állítsa be ezt a végpontot a Service Fabric Explorert a fürtben, amely alapértelmezés szerint az átemelt:
 
 https://&lt;cluster_domain&gt;:19080/Explorer
 
-Jelentkezzen be az Azure AD-bérlő rendszergazdai jogosultsággal rendelkező fiók kéri. Miután bejelentkezik, a parancsfájl hoz létre, a web- és natív alkalmazások a Service Fabric-fürt képviseli. Ha megnézi a bérlős alkalmazásokhoz a [Azure-portálon][azure-portal], két új bejegyzést kell megjelennie:
+Jelentkezzen be az Azure AD-bérlői rendszergazdai jogosultságokkal rendelkező fiók kéri. Miután bejelentkezett, a parancsfájl a webes és natív alkalmazások, amelyek a Service Fabric-fürtöt hoz létre. Ha megtekinti a bérlő alkalmazások a [az Azure portal][azure-portal], két új bejegyzést kell megjelennie:
 
    * *ClusterName*\_fürt
    * *ClusterName*\_ügyfél
 
-A parancsfájl a JSON-ban az Azure Resource Manager sablonhoz szükséges a fürt létrehozásakor a következő szakaszban, ezért érdemes megnyitva, a PowerShell-ablakot jelenít meg.
+A parancsfájl a JSON az Azure Resource Manager-sablon által igényelt, a fürt létrehozásakor a következő szakaszban, így célszerű, hogy ne zárja be a PowerShell-ablakot jelenít meg.
 
 ```json
 "azureActiveDirectory": {
@@ -363,18 +367,18 @@ A parancsfájl a JSON-ban az Azure Resource Manager sablonhoz szükséges a für
 <a id="customize-arm-template" ></a>
 
 ## <a name="create-a-service-fabric-cluster-resource-manager-template"></a>A Service Fabric-fürt resource manager-sablon létrehozása
-Ebben a szakaszban van egyéni kívánó felhasználóknak a Service Fabric-fürt resource manager-sablon létrehozásához. Miután egy sablon, továbbra is lépjen vissza és telepítse a PowerShell vagy a CLI modulok segítségével. 
+Ez a szakasz a felhasználók, akik egyéni hozhat létre egy Service Fabric-fürt resource manager-sablon van. Ha már rendelkezik egy sablont, továbbra is lépjen vissza és a PowerShell vagy parancssori felület modulok használata az üzembe helyezéshez. 
 
-A minta Resource Manager-sablonok találhatók a [Azure-minták a Githubon](https://github.com/Azure-Samples/service-fabric-cluster-templates). Ezek a sablonok kiindulási pontként használható a fürt sablon.
+Mintául szolgáló Resource Manager-sablonok érhetők el a [Azure-minták a Githubon](https://github.com/Azure-Samples/service-fabric-cluster-templates). Ezek a sablonok fürtsablonhoz kiindulási pontként használható.
 
 ### <a name="create-the-resource-manager-template"></a>A Resource Manager-sablon létrehozása
-Ez az útmutató használja a [biztonságos 5-csomópontot tartalmazó fürtben] [ service-fabric-secure-cluster-5-node-1-nodetype] példa sablon és a sablon paramétereit. Töltse le `azuredeploy.json` és `azuredeploy.parameters.json` a számítógépre, és nyissa meg a fájlt a kedvenc szövegszerkesztőjével.
+Ez az útmutató használja a [biztonságos fürt 5 csomópontos] [ service-fabric-secure-cluster-5-node-1-nodetype] példasablonja és a sablon paramétereit. Töltse le `azuredeploy.json` és `azuredeploy.parameters.json` a számítógépre, és nyissa meg mindkét fájlt a kedvenc szövegszerkesztőjével.
 
 ### <a name="add-certificates"></a>Tanúsítványok hozzáadása
-Adja hozzá a tanúsítványok fürt resource manager-sablon a kulcstároló, amely tartalmazza a tanúsítvány kulcsait Vezérlőpultjának. Adja hozzá ezeket a kulcstároló paraméterek és értékek a Resource Manager sablon paraméterfájl (azuredeploy.parameters.json). 
+Adja hozzá a tanúsítványok a fürt resource manager-sablon, amely tartalmazza a tanúsítvány kulcsait a key vaulttal való hivatkozással. Adja hozzá ezeket a kulcstartó paramétereket és értékeket egy Resource Manager-sablon paraméterfájljának (azuredeploy.parameters.json). 
 
-#### <a name="add-all-certificates-to-the-virtual-machine-scale-set-osprofile"></a>Minden tanúsítvány felvétele a virtuális gép méretezési készlet osProfile
-A skála erőforrás (Microsoft.Compute/virtualMachineScaleSets) osProfile szakaszában telepítve van-e a fürt minden tanúsítványt kell konfigurálni. Ez a művelet arra utasítja az erőforrás-szolgáltató a tanúsítvány telepítése a virtuális gépeken. Ehhez a telepítéshez a a fürt tanúsítvány és az alkalmazások használni kívánt alkalmazás biztonsági tanúsítványokat is tartalmaz:
+#### <a name="add-all-certificates-to-the-virtual-machine-scale-set-osprofile"></a>A virtual machine scale set osProfile minden tanúsítvány felvétele
+A méretezési csoport erőforrás (Microsoft.Compute/virtualMachineScaleSets) osProfile szakaszában telepítve van a fürt minden tanúsítványt kell konfigurálni. Ez a művelet arra utasítja az erőforrás-szolgáltató a tanúsítvány telepítése a virtuális gépeken. A telepítés a fürttanúsítvány és az alkalmazásokhoz használni kívánt alkalmazás biztonsági tanúsítványokat is tartalmazza:
 
 ```json
 {
@@ -409,9 +413,9 @@ A skála erőforrás (Microsoft.Compute/virtualMachineScaleSets) osProfile szaka
 ```
 
 #### <a name="configure-the-service-fabric-cluster-certificate"></a>A Service Fabric-fürt tanúsítvány konfigurálása
-A fürt hitelesítési tanúsítványt meg kell adni mind a Service Fabric fürt erőforrás (Microsoft.ServiceFabric/clusters), és a Service Fabric-bővítményt a virtuálisgép-méretezési beállítja azt a virtuálisgép-méretezési készlet erőforrás. Ezzel az elrendezéssel lehetővé teszi, hogy a fürt hitelesítési és felügyeleti végpontok kiszolgáló hitelesítésének konfigurálását a Service Fabric erőforrás-szolgáltató.
+Mind a Service Fabric fürterőforrás (Microsoft.ServiceFabric/clusters) a fürt hitelesítési tanúsítványt kell konfigurálni, és beállítja a virtuálisgép-méretezési csoport esetében a Service Fabric-bővítménnyel a virtuálisgép-méretezési készlet erőforrás. Ezzel az elrendezéssel fokozott lehetővé teszi, hogy a Service Fabric erőforrás-szolgáltató számára, konfigurálja a fürt és kiszolgálóhitelesítéssel felügyeleti végpontok használata.
 
-##### <a name="add-the-certificate-information-the-virtual-machine-scale-set-resource"></a>Vegye fel a tanúsítvány adatait a virtuálisgép-méretezési erőforrás beállítása:
+##### <a name="add-the-certificate-information-the-virtual-machine-scale-set-resource"></a>A tanúsítvány adatait a virtuálisgép-méretezési készletet erőforrás hozzáadni:
 ```json
 {
   "apiVersion": "[variables('vmssApiVersion')]",
@@ -443,7 +447,7 @@ A fürt hitelesítési tanúsítványt meg kell adni mind a Service Fabric fürt
 }
 ```
 
-##### <a name="add-the-certificate-information-to-the-service-fabric-cluster-resource"></a>A tanúsítvány-információk hozzáadása a Service Fabric-fürt erőforrás:
+##### <a name="add-the-certificate-information-to-the-service-fabric-cluster-resource"></a>A Tanúsítványadatok hozzáadása a Service Fabric-fürt erőforrás:
 ```json
 {
   "apiVersion": "2018-02-01",
@@ -468,9 +472,9 @@ A fürt hitelesítési tanúsítványt meg kell adni mind a Service Fabric fürt
 }
 ```
 
-### <a name="add-azure-ad-configuration-to-use-azure-ad-for-client-access"></a>Az Azure Active Directory beállítása az Azure AD használatára az ügyfél hozzáférésének hozzáadása
+### <a name="add-azure-ad-configuration-to-use-azure-ad-for-client-access"></a>Azure AD használata az ügyfél hozzáférésének az Azure AD-konfiguráció hozzáadása
 
-A kulcstároló, amely tartalmazza a tanúsítvány kulcsait Vezérlőpultjának hozzáadhat egy fürt Resource Manager-sablon az Azure Active Directory beállítása. Adja hozzá azokat az Azure AD-paraméterek és értékek a Resource Manager sablon paraméterfájl (azuredeploy.parameters.json).
+A fürt Resource Manager-sablon az Azure AD-konfiguráció hozzáadása, amely tartalmazza a tanúsítvány kulcsait a key vaulttal való hivatkozással. Adja hozzá ezeket az Azure AD-paramétereket és értékeket egy Resource Manager-sablon paraméterfájljának (azuredeploy.parameters.json).
 
 ```json
 {
@@ -499,13 +503,13 @@ A kulcstároló, amely tartalmazza a tanúsítvány kulcsait Vezérlőpultjának
 }
 ```
 
-### <a name="populate-the-parameter-file-with-the-values"></a>A paraméterfájl értékekkel való feltöltéséhez
-Végezetül a kimeneti értékeit a kulcstartót és az Azure AD PowerShell-parancsok használata a paraméterfájlban feltöltéséhez.
+### <a name="populate-the-parameter-file-with-the-values"></a>Töltse fel értékekkel alkalmazásparaméter-fájlt
+Végül a kimeneti értékeket a key vault és az Azure AD PowerShell-parancsok használatával töltse fel a paramétereket tartalmazó fájlt.
 
-Ha tervezi az Azure service fabric RM PowerShell-modulok, akkor nincs szüksége a fürt Tanúsítványadatok feltöltése. Ha azt szeretné, hogy a rendszer hoz létre az önkiszolgáló aláírt fürt biztonsági tanúsítvány, csak válaszadás null. 
+Ha azt tervezi, használja az Azure service fabric RM PowerShell-modulok, majd nem kell a fürt Tanúsítványadatok feltöltése. Ha azt szeretné, hogy a rendszer hoz létre a saját aláírt fürt biztonsági tanúsítvány, csak null-ként tartja őket. 
 
 > [!NOTE]
-> Az erőforrás-kezelő modulok átvételéhez, és ezek üres paraméterértékek feltöltése a paraméterek sokkal nevének egyeznie az alábbi
+> Az erőforrás-kezelő modulok folytattuk a munkát, és ezek a üres paraméterértékek feltöltéséhez a paraméterek nevei sokkal meg az alábbi névvel
 
 ```json
 "clusterCertificateThumbprint": {
@@ -522,9 +526,9 @@ Ha tervezi az Azure service fabric RM PowerShell-modulok, akkor nincs szüksége
 },
 ```
 
-Ha az alkalmazás Tanúsítványos használ, vagy egy meglévő fürthöz, amely a kulcstartót feltöltött használja, ezt az információt, és feltöltheti szüksége.
+Ha alkalmazás tanúsítványokat használ, vagy egy meglévő fürthöz, a key vaulthoz feltöltött használja, meg kell ezt az információt, és feltöltheti.
 
-Az RM-modulok nem rendelkezik a képességét az Azure AD a konfigurációt, ezért ha le szeretné használni az Azure AD az ügyfél hozzáférésének, meg kell feltöltéséről.
+Az erőforrás-kezelő modulok nem tudnak létrehozni az Azure ad-ben a konfigurációt, ezért ha azt tervezi, az Azure AD használata az ügyfél hozzáférésének, meg kell adnia azt.
 
 ```json
 {
@@ -565,122 +569,122 @@ Az RM-modulok nem rendelkezik a képességét az Azure AD a konfigurációt, ez�
 ```
 
 ### <a name="test-your-template"></a>A sablon tesztelése  
-A következő PowerShell-parancs segítségével tesztelje a Resource Manager-sablon paraméter-fájllal:
+A következő PowerShell-parancs használatával a Resource Manager-sablon tesztelés alkalmazásparaméter-fájlt:
 
 ```PowerShell
 Test-AzureRmResourceGroupDeployment -ResourceGroupName "myresourcegroup" -TemplateFile .\azuredeploy.json -TemplateParameterFile .\azuredeploy.parameters.json
 ```
 
-Ha problémákat tapasztal, és mégis fontos kontextusinformációkat üzeneteket, majd használja "-Debug" lehetőség.
+Abban az esetben problémákat, és rejtélyes üzeneteket, majd a "-Debug" beállítás.
 
 ```PowerShell
 Test-AzureRmResourceGroupDeployment -ResourceGroupName "myresourcegroup" -TemplateFile .\azuredeploy.json -TemplateParameterFile .\azuredeploy.parameters.json -Debug
 ```
 
-Az alábbi ábrán látható, ahol a kulcstartót és az Azure Active Directory beállítása felelnek meg a Resource Manager-sablon.
+A következő diagram azt ábrázolja, ahol a key vault és az Azure AD konfigurálása elférnek a Resource Manager-sablon.
 
-![Erőforrás-kezelő kapcsolatfüggőségi térképének megjelenítéséhez][cluster-security-arm-dependency-map]
-
-
-## <a name="encrypting-the-disks-attached-to-your-windows-cluster-nodevirtual-machine-instances"></a>A lemez titkosítása csatolva a windows-csomópont vagy virtuális gép példányok
-
-A csomópontok csatlakoztatott lemezek (az operációs rendszer meghajtó és más felügyelt lemezek) titkosítási, azt az Azure Disk Encryption használja ki. Az Azure Disk Encryption egy új képesség, amely segít [titkosítása a Windows virtuális gépek lemezeit](service-fabric-enable-azure-disk-encryption-windows.md). Az Azure Disk Encryption használja. Ez az iparági szabvány [BitLocker](https://technet.microsoft.com/library/cc732774.aspx) az operációs rendszer kötetének kötettitkosítást biztosít Windows-szolgáltatás. A megoldás integrálva van [Azure Key Vault](https://azure.microsoft.com/documentation/services/key-vault/) segítségével szabályozhatja, és a lemez-titkosítási kulcsok és titkos kulcsainak kulcstároló-előfizetése kezeléséhez. A megoldás biztosítja azt is, hogy a virtuális gép lemezeinek lévő összes adat titkosítva legyenek-e az Azure tárolás közben. 
-
-## <a name="encrypting-the-disks-attached-to-your-linux-cluster-nodevirtual-machine-instances"></a>A Linux csomópont vagy virtuális gép példányok csatlakoztatott lemezek titkosítása
-
-A csomópontok csatlakoztatott lemezek (adatmeghajtó és más felügyelt lemezek) titkosítási, azt az Azure Disk Encryption használja ki. Az Azure Disk Encryption egy új képesség, amely segít [titkosítása a Linux virtuális gépek lemezeit](service-fabric-enable-azure-disk-encryption-linux.md). Az Azure Disk Encryption használja. Ez az iparági szabvány [DM-Crypt](https://en.wikipedia.org/wiki/Dm-crypt) funkció a Linux az adatlemezek kötettitkosítást biztosít. A megoldás integrálva van [Azure Key Vault](https://azure.microsoft.com/documentation/services/key-vault/) segítségével szabályozhatja, és a lemez-titkosítási kulcsok és titkos kulcsainak kulcstároló-előfizetése kezeléséhez. A megoldás biztosítja azt is, hogy a virtuális gép lemezeinek lévő összes adat titkosítva legyenek-e az Azure tárolás közben. 
+![Erőforrás-kezelő függőségi térkép][cluster-security-arm-dependency-map]
 
 
-## <a name="create-the-cluster-using-azure-resource-template"></a>Az Azure erőforrás-sablonnal a fürt létrehozása 
+## <a name="encrypting-the-disks-attached-to-your-windows-cluster-nodevirtual-machine-instances"></a>A Windows csatolt a lemezek titkosítása csomópont/virtuális gép példányok
 
-Most már telepítheti fürtben, a dokumentum korábbi szakaszában ismertetett lépésekkel, vagy ha az értékek a feltöltött paraméter fájlt, majd most már készen a fürt létrehozása használatával [Azure-erőforrás sablon-üzembehelyezés] [ resource-group-template-deploy] közvetlenül.
+Titkosításához a csomópontok csatolt lemezek (operációs rendszer meghajtóját és más felügyelt lemezek), hogy az Azure Disk Encryption használhatja. Az Azure Disk Encryption egy olyan új képesség, amely segít [Windows virtuálisgép-lemezek titkosítása](service-fabric-enable-azure-disk-encryption-windows.md). Az Azure Disk Encryption kihasználja az iparági szabvány [BitLocker](https://technet.microsoft.com/library/cc732774.aspx) funkció a Windows operációs rendszer kötetének kötettitkosítást biztosít. A megoldás integrált [Azure Key Vault](https://azure.microsoft.com/documentation/services/key-vault/) segítségével vezérelheti és felügyelheti a lemeztitkosítási kulcsokat és titkos kulcsokat a key vault-előfizetés. A megoldás emellett biztosítja, hogy a virtuálisgép-lemezeken lévő összes adatot is titkosítása az Azure storage-ban. 
+
+## <a name="encrypting-the-disks-attached-to-your-linux-cluster-nodevirtual-machine-instances"></a>A Linux rendszerű fürt csomópont/virtuális gép példányok csatlakoztatott lemezek titkosítása
+
+Titkosításához a csomópontok csatolt lemezek (adatmeghajtó és más felügyelt lemezek), hogy az Azure Disk Encryption használhatja. Az Azure Disk Encryption egy olyan új képesség, amely segít [a Linux rendszerű virtuális gépek lemezeinek titkosításához](service-fabric-enable-azure-disk-encryption-linux.md). Az Azure Disk Encryption kihasználja az iparági szabvány [DM-Crypt](https://en.wikipedia.org/wiki/Dm-crypt) az adatlemezek kötettitkosítását biztosít Linux funkcióját. A megoldás integrált [Azure Key Vault](https://azure.microsoft.com/documentation/services/key-vault/) segítségével vezérelheti és felügyelheti a lemeztitkosítási kulcsokat és titkos kulcsokat a key vault-előfizetés. A megoldás emellett biztosítja, hogy a virtuálisgép-lemezeken lévő összes adatot is titkosítása az Azure storage-ban. 
+
+
+## <a name="create-the-cluster-using-azure-resource-template"></a>A fürthöz az Azure resource-sablon létrehozása 
+
+Most már telepítheti fürtben, a dokumentum korábbi szakaszában ismertetett lépések segítségével, vagy ha a paraméterfájlban kitölti az értékeket, majd, most már készen áll a fürt létrehozása a [Azure-erőforrás sablonalapú telepítés] [ resource-group-template-deploy] közvetlenül.
 
 ```PowerShell
 New-AzureRmResourceGroupDeployment -ResourceGroupName "myresourcegroup" -TemplateFile .\azuredeploy.json -TemplateParameterFile .\azuredeploy.parameters.json
 ```
 
-Ha problémákat tapasztal, és mégis fontos kontextusinformációkat üzeneteket, majd használja "-Debug" lehetőség.
+Abban az esetben problémákat, és rejtélyes üzeneteket, majd a "-Debug" beállítás.
 
 
 <a name="assign-roles"></a>
 
-## <a name="assign-users-to-roles"></a>Felhasználók hozzárendelése szerepkörökhöz
-Miután létrehozta a fürt képviselő alkalmazások, a felhasználók a szerepkörökhöz rendeljen hozzá a Service Fabric által támogatott: olvasási és a rendszergazda segítségét. A szerepkörök használatával rendelhet a [Azure-portálon][azure-portal].
+## <a name="assign-users-to-roles"></a>Felhasználók szerepkörökhöz rendelése
+Az alkalmazások, amelyek a fürt létrehozása után a felhasználók hozzárendelése a Service Fabric által támogatott szerepkörök: csak olvasható és a rendszergazdával. A szerepkörök használatával rendelhet a [az Azure portal][azure-portal].
 
-1. Az Azure-portálon válassza ki a bérlő jobb felső sarokban.
+1. Az Azure Portalon válassza ki a bérlő, a jobb felső sarokban.
 
     ![Válassza ki a bérlő gomb][select-tenant-button]
-2. Válassza ki **Azure Active Directory** a bal oldali lapon, és a vállalati alkalmazások"select".
-3. Válassza ki a "Minden alkalmazások", keresése és válassza a webes alkalmazás, melynek neve például `myTestCluster_Cluster`.
+2. Válassza ki **Azure Active Directory** a bal oldali lapon, és a "nagyvállalati alkalmazások" válassza.
+3. Válassza ki az "Összes alkalmazás", majd keresse meg és válassza ki a webalkalmazás, melynek neve például `myTestCluster_Cluster`.
 4. Kattintson a **felhasználók és csoportok** fülre.
 
     ![Felhasználók és csoportok lapon][users-and-groups-tab]
-5. Kattintson a **felhasználó hozzáadása** gombra kattint, az új oldalon, a felhasználó és a szerepkör hozzárendelése, majd válassza ki a **válasszon** gombra az oldal alján.
+5. Kattintson a **felhasználó hozzáadása** az új oldalon gombra, válassza ki a felhasználó és a szerepkör hozzárendelése, és kattintson a **kiválasztása** gombra a lap alján.
 
-    ![Felhasználók hozzárendelése szerepkörök lap][assign-users-to-roles-page]
-6. Kattintson a **hozzárendelése** gombra az oldal alján.
+    ![Felhasználók hozzárendelése szerepkörök oldal][assign-users-to-roles-page]
+6. Kattintson a **hozzárendelése** gombra a lap alján.
 
-    ![Adja hozzá a hozzárendelés megerősítése][assign-users-to-roles-confirm]
+    ![Adja hozzá a megerősítési hozzárendelés][assign-users-to-roles-confirm]
 
 > [!NOTE]
-> További információ a szerepkörök a Service Fabric: [szerepköralapú hozzáférés-vezérlés a Service Fabric ügyfelek](service-fabric-cluster-security-roles.md).
+> További információ a Service Fabric-szerepkörök: [szerepköralapú hozzáférés-vezérlés a Service Fabric-ügyfelek](service-fabric-cluster-security-roles.md).
 >
 >
 
 
-## <a name="troubleshooting-help-in-setting-up-azure-active-directory"></a>Hibaelhárítás súgója az Azure Active Directory beállítása
-Az Azure AD beállításával és használatával, kihívást jelenthet, az alábbiakban néhány mutatók a teendők, az a probléma hibakeresését.
+## <a name="troubleshooting-help-in-setting-up-azure-active-directory"></a>Elhárításában nyújtanak segítséget az Azure Active Directory beállítása
+Az Azure AD beállításához, és használja azt kihívást jelenthet, így az alábbiakban további információt a mi mindent a hibaelhárításhoz.
 
-### <a name="service-fabric-explorer-prompts-you-to-select-a-certificate"></a>Service Fabric Explorer kéri, hogy válasszon ki egy tanúsítványt
+### <a name="service-fabric-explorer-prompts-you-to-select-a-certificate"></a>A Service Fabric Explorer kéri, hogy válasszon ki egy tanúsítványt
 #### <a name="problem"></a>Probléma
-Bejelentkezés után sikeresen az Azure AD a Service Fabric Explorerben, a böngésző adja vissza a kezdőlapra, de az üzenet figyelmeztet a tanúsítvány kiválasztásához.
+Bejelentkezés után sikeresen az Azure AD a Service Fabric Explorerben, a böngésző adja vissza a kezdőlapra, de egy üzenetben kéri, hogy válasszon ki egy tanúsítványt.
 
-![Tanúsítvány párbeszédpanel SFX][sfx-select-certificate-dialog]
+![SFX tanúsítvány párbeszédpanel][sfx-select-certificate-dialog]
 
 #### <a name="reason"></a>Ok
-A felhasználó nincs hozzárendelve az Azure AD-fürt alkalmazás szerepet. Így az Azure AD-alapú hitelesítés nem sikerül, a Service Fabric-fürt. Service Fabric Explorer tanúsítványhitelesítés áll vissza.
+A felhasználó nincs hozzárendelve egy szerepkörhöz az az Azure AD-fürt alkalmazást. Így az Azure AD-hitelesítés sikertelen lesz, Service Fabric-fürtön. A Service Fabric Explorer tanúsítványhitelesítés áll vissza.
 
 #### <a name="solution"></a>Megoldás
-Kövesse az utasításokat az Azure AD beállítása, és a felhasználói szerepköröket. Is, azt javasoljuk, hogy kapcsolja be "Az alkalmazás eléréséhez szükséges felhasználói hozzárendelés" mint `SetupApplications.ps1` does.
+Kövesse az utasításokat az Azure AD beállításához, és rendelje hozzá a felhasználói szerepköröket. Ezenkívül azt javasoljuk, hogy kapcsolja be "Az alkalmazás eléréséhez szükséges felhasználói kiosztása" `SetupApplications.ps1` does.
 
-### <a name="connection-with-powershell-fails-with-an-error-the-specified-credentials-are-invalid"></a>PowerShell-kapcsolatot egy hibaüzenettel meghiúsul: "a megadott hitelesítő adatok nem érvényesek"
+### <a name="connection-with-powershell-fails-with-an-error-the-specified-credentials-are-invalid"></a>A PowerShell-lel létesített kapcsolat megszakad egy hiba miatt: "a megadott hitelesítő adatok érvénytelenek"
 #### <a name="problem"></a>Probléma
-Csatlakozzon a fürthöz "AzureActiveDirectory" biztonsági módban, a bejelentkezés után sikeresen az Azure AD PowerShell segítségével történik, ha a kapcsolódás sikertelen, hiba történt: "a megadott hitelesítő adatok érvénytelenek."
+Bejelentkezés után sikeresen az Azure AD "AzureActiveDirectory" biztonsági üzemmódban használatával csatlakozhat a fürthöz PowerShell használatával történik, ha a kapcsolat egy hibaüzenettel meghiúsul: "a megadott hitelesítő adatok érvénytelenek."
 
 #### <a name="solution"></a>Megoldás
 Ez a megoldás megegyezik az előző egy.
 
-### <a name="service-fabric-explorer-returns-a-failure-when-you-sign-in-aadsts50011"></a>Service Fabric Explorer hibát ad vissza, amikor bejelentkezik: "AADSTS50011"
+### <a name="service-fabric-explorer-returns-a-failure-when-you-sign-in-aadsts50011"></a>A Service Fabric Explorer hibát ad vissza, ha bejelentkezik: "AADSTS50011"
 #### <a name="problem"></a>Probléma
-A Service Fabric Explorerben Azure ad bejelentkezés megkísérlésekor a lap adja vissza a hiba: "AADSTS50011: A válaszcímet &lt;URL-cím&gt; nem egyezik meg az alkalmazáshoz beállított válasz-címeket: &lt;guid&gt;."
+Próbáljon meg bejelentkezni az Azure AD a Service Fabric Explorerben, ha az oldal adja vissza a hiba: "AADSTS50011: A válaszcímet &lt;URL-cím&gt; nem egyezik meg a az alkalmazáshoz konfigurált válaszcímekkel: &lt;guid&gt;."
 
-![A válaszcím SFX nem egyezik.][sfx-reply-address-not-match]
+![SFX a válaszcím nem egyezik.][sfx-reply-address-not-match]
 
 #### <a name="reason"></a>Ok
-A fürt (webalkalmazás) Service Fabric Explorer jelölő kísérletet tesz az Azure AD hitelesítése, és a kérés részeként biztosítja a átirányítási visszatérési URL-CÍMÉT. Az URL-címe nem szerepel az Azure AD-alkalmazás, de **válasz URL-CÍMEN** listája.
+A fürt (web) alkalmazás, amely a Service Fabric Explorer próbál meg Azure AD-val, és a kérés részeként az átirányítási visszatérési URL-címet biztosít. Az URL-cím nem szerepel az Azure AD-alkalmazás, de **válasz URL-cím** listája.
 
 #### <a name="solution"></a>Megoldás
-Válassza ki az "App regisztrációk" AAD lapon, válassza ki a fürt alkalmazást, majd a **válasz URL-címek** gombra. A "Válasz URL-címek" lapon Service Fabric Explorer URL-cím hozzáadása a listához, vagy cserélje le a listában található elemek egyikét. Ha végzett, mentse a módosítást.
+Válassza ki az "Alkalmazásregisztrációk" AAD lapot, válassza ki a fürt alkalmazást, és válassza a **válasz URL-címek** gombra. A "Válasz URL-címek" lapon a Service Fabric Explorer URL-cím hozzáadása a listához, vagy cserélje le a listán szereplő elemek közül. Ha ezzel végzett, mentse a módosítást.
 
 ![Webes alkalmazás válasz URL-címe][web-application-reply-url]
 
-### <a name="connect-the-cluster-by-using-azure-ad-authentication-via-powershell"></a>A fürt csatlakoztatása az Azure AD hitelesítési PowerShell használatával
-Csatlakozás a Service Fabric-fürt, használja az alábbi PowerShell-példa:
+### <a name="connect-the-cluster-by-using-azure-ad-authentication-via-powershell"></a>Csatlakozás a fürthöz PowerShell-lel az Azure AD-hitelesítés használatával
+A Service Fabric-fürthöz csatlakozhat, használja az alábbi PowerShell-példa:
 
 ```PowerShell
 Connect-ServiceFabricCluster -ConnectionEndpoint <endpoint> -KeepAliveIntervalInSec 10 -AzureActiveDirectory -ServerCertThumbprint <thumbprint>
 ```
 
-A Connect-ServiceFabricCluster parancsmaggal kapcsolatban további tudnivalókért lásd: [Connect-ServiceFabricCluster](https://msdn.microsoft.com/library/mt125938.aspx).
+A Connect-ServiceFabricCluster parancsmaggal kapcsolatos további információkért lásd: [Connect-ServiceFabricCluster](https://msdn.microsoft.com/library/mt125938.aspx).
 
-### <a name="can-i-reuse-the-same-azure-ad-tenant-in-multiple-clusters"></a>Felhasználhatja a több fürt azonos Azure AD-bérlő?
-Igen. De ne felejtse el a Service Fabric Explorer URL-cím hozzáadása a fürt (webalkalmazás) alkalmazást. Service Fabric Explorer nem működik.
+### <a name="can-i-reuse-the-same-azure-ad-tenant-in-multiple-clusters"></a>Felhasználhatja az Azure AD-bérlőhöz több fürtön?
+Igen. De ne felejtse el a Service Fabric Explorer URL-cím hozzáadása a fürt (web) alkalmazáshoz. A Service Fabric Explorer nem működik.
 
-### <a name="why-do-i-still-need-a-server-certificate-while-azure-ad-is-enabled"></a>Miért továbbra is szükséges egy kiszolgálói tanúsítványt az Azure AD be van kapcsolva?
-FabricClient és FabricGateway a kölcsönös hitelesítést végezni. Az Azure AD-hitelesítés során az Azure AD-integrációs biztosít egy ügyfél-azonosító a kiszolgálóra, és a kiszolgálói tanúsítvány a kiszolgáló identitásának ellenőrzésére szolgál. A Service Fabric-tanúsítványokkal kapcsolatos további információkért lásd: [X.509-tanúsítványokat és a Service Fabric][x509-certificates-and-service-fabric].
+### <a name="why-do-i-still-need-a-server-certificate-while-azure-ad-is-enabled"></a>Miért is meg kell egy kiszolgálói tanúsítványt engedélyezve van az Azure ad-ben?
+FabricClient és FabricGateway hajtsa végre a kölcsönös hitelesítés. Az Azure AD-hitelesítés során az Azure AD-integrációs biztosít egy ügyfél identitást a kiszolgálónak, és a tanúsítvány a kiszolgáló identitásának ellenőrzésére szolgál. A Service Fabric-tanúsítványokkal kapcsolatos további információkért lásd: [X.509-tanúsítványokat és a Service Fabric][x509-certificates-and-service-fabric].
 
 ## <a name="next-steps"></a>További lépések
-Ezen a ponton rendelkezik olyan Azure Active Directory-felügyeleti hitelesítés biztonságos fürttel. Ezt követően [csatlakozzon a fürthöz](service-fabric-connect-to-secure-cluster.md) és megtudhatja, hogyan [alkalmazás titkos kulcsok kezelése](service-fabric-application-secret-management.md).
+Ezen a ponton rendelkezik egy biztonságos fürt az Azure Active Directory biztosító felügyeleti hitelesítést. Ezután [csatlakozni a fürthöz](service-fabric-connect-to-secure-cluster.md) , és ismerje meg, hogyan [titkos alkalmazáskulcsok kezelése](service-fabric-application-secret-management.md).
 
 
 <!-- Links -->

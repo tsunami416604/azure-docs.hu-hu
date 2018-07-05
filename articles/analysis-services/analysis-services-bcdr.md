@@ -1,37 +1,37 @@
 ---
-title: Az Azure Analysis Services magas rendelkezésre állású |} Microsoft Docs
-description: Modulhoz Azure Analysis Services magas rendelkezésre állású.
+title: Az Azure Analysis Services magas rendelkezésre állású |} A Microsoft Docs
+description: Azure Analysis Services magas rendelkezésre állást biztosítva.
 author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 04/12/2018
+ms.date: 07/03/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: db8f8b9b5af1583662418f774b2eb141bea53ffa
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 42e270f26a4576014d3a08a0ab3c59808c65fc56
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34596736"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37445466"
 ---
 # <a name="analysis-services-high-availability"></a>Analysis Services magas rendelkezésre állás
-Ez a cikk ismerteti, biztosítva ezzel az Azure Analysis Services-kiszolgálók magas rendelkezésre állású. 
+Ez a cikk ismerteti az Azure Analysis Services-kiszolgálók magas rendelkezésre állást biztosítva. 
 
 
-## <a name="assuring-high-availability-during-a-service-disruption"></a>A szolgáltatás szüneteltetése során magas rendelkezésre állású modulhoz
-Ritka, amíg az Azure-adatközpont kimaradás is rendelkezhetnek. Ha kimaradás lép, a business szüneteltetése, előfordulhat, hogy az utolsó néhány percet, vagy előfordulhat, hogy az óra utolsó okoz. Magas rendelkezésre állású kiszolgáló redundanciával leggyakrabban érhető el. Az Azure Analysis Services redundancia érhet el, további, másodlagos kiszolgálók létrehozása egy vagy több régióban. Ahhoz, hogy biztosítsa az adatok és metaadatok az adott kiszolgálókon, redundáns kiszolgálók létrehozása a szinkronizálás régióban a kiszolgálóval, amely offline állapotba került, akkor is:
+## <a name="assuring-high-availability-during-a-service-disruption"></a>Magas rendelkezésre állást biztosítva a szolgáltatáskimaradás közben
+Bár ritka, valamely Azure adatközpontnak a kimaradás is rendelkezhet. Szolgáltatáskimaradás esetén előfordulhat, hogy az elmúlt pár percet, vagy előfordulhat, hogy az elmúlt óra üzletmenet okoz. Magas rendelkezésre állású kiszolgáló redundanciával leggyakrabban érhető el. Az Azure Analysis Services további, másodlagos kiszolgálók egy vagy több régióban való létrehozásával érheti el a redundancia. Ahhoz, hogy biztosítsa az adatok és metaadatok ezeken a kiszolgálókon, redundáns kiszolgálók létrehozása szinkronizálva olyan régióban a kiszolgálóval, amely offline állapotba került, is:
 
-* Központilag telepíteni modellek redundáns más régiókban. Ennél a módszernél adatainak feldolgozása az elsődleges kiszolgáló és a redundáns kiszolgálók a párhuzamos, biztosítva ezzel az összes kiszolgáló a szinkronizálás.
+* Modellek üzembe helyezése más régióban található redundáns kiszolgálókon. Ennél a módszernél az elsődleges kiszolgáló és a redundáns kiszolgálókon lévő párhuzamos feldolgozási adatok, biztosítva ezzel az összes kiszolgálón szinkronizálva.
 
-* [Biztonsági mentés](analysis-services-backup.md) az elsődleges kiszolgáló és a redundáns kiszolgálókon visszaállítási-adatbázisok. Például automatizálhatja az Azure storage ütemezett biztonsági mentések, és állítsa vissza a más régiókban található egyéb redundáns kiszolgálók. 
+* [Biztonsági mentés](analysis-services-backup.md) adatbázisok az elsődleges kiszolgáló és a visszaállítás található redundáns kiszolgálókon. Például automatizálható az Azure storage-éjszakai biztonsági mentése, és más redundáns kiszolgálókon más régiókban való visszaállításához. 
 
-Mindkét esetben ha az elsődleges kiszolgáló nem tervezett kimaradás, módosítania kell a jelentéskészítési ügyfelek csatlakozni a kiszolgálóhoz különböző területi adatközpontban kapcsolati karakterláncokat. Ez a változás érdemes figyelembe venni a végső esetben végezze el, és csak akkor, ha egy katasztrofális regionális adatközpont-meghibásodás után következik be. Valószínűbb egy adatközpont-meghibásodás után az elsődleges kiszolgálót futtató szeretné újra hálózatra tud kapcsolódni sikerült kapcsolatok használatát az összes ügyfél frissítése előtt. 
+Mindkét esetben ha az elsődleges kiszolgáló szolgáltatáskimaradás következik be, módosítania kell a kapcsolati karakterláncokat a hibajelentő ügyfeleknek egy másik regionális adatközpontban lévő a kiszolgálóhoz való csatlakozáshoz. Ez a változás végső megoldásként kell tekinteni, és csak akkor, ha egy katasztrofális regionális adatközpontjának leállása esetén történik. Több valószínű egy adatközpont-leállás esetén az elsődleges kiszolgálót üzemeltető szeretné ismét online elérhető lesz sikerült kapcsolatok az összes ügyfél frissítése előtt. 
 
-Ne kelljen kimutatási ügyfeleken kapcsolati karakterláncok módosítása, létrehozhat egy kiszolgáló [alias](analysis-services-server-alias.md) az elsődleges kiszolgáló. Ha az elsődleges kiszolgáló leáll, módosíthatja az aliast, hogy egy másik régióban redundáns kiszolgálóra mutasson. Automatizálhatja alias a kiszolgáló nevét az elsődleges kiszolgálón egy végpont az állapot-ellenőrzéssel kódolása. Ha az állapot-ellenőrzése sikertelen, az azonos végpont egy másik régióban redundáns kiszolgálóra lehet konfigurálni. 
+Ne kelljen módosítani a hibajelentő ügyfeleknek kapcsolati karakterláncok, hozzon létre egy kiszolgálót [alias](analysis-services-server-alias.md) az elsődleges kiszolgáló. Ha az elsődleges kiszolgáló leáll, módosíthatja az alias egy másik régióban található redundáns kiszolgálóra mutasson. Automatizálhatja alias a kiszolgálónév kódolási egy végpont állapotának ellenőrzése az elsődleges kiszolgálón. Az állapot-ellenőrzés nem sikerül, ha egyazon végpont irányíthatók, egy másik régióban található redundáns kiszolgálóhoz. 
 
 ## <a name="related-information"></a>Kapcsolódó információk
-[Biztonsági mentés és helyreállítás](analysis-services-backup.md)   
-[Az Azure Analysis Services kezelése](analysis-services-manage.md)   
-[Másodlagos kiszolgálók nevei](analysis-services-server-alias.md) 
+[Biztonsági mentés és visszaállítás](analysis-services-backup.md)   
+[Azure Analysis Services kezelése](analysis-services-manage.md)   
+[Alias kiszolgálók nevei](analysis-services-server-alias.md) 
 

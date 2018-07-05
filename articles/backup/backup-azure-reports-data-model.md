@@ -1,194 +1,194 @@
 ---
-title: Az Azure Backup adatmodell
-description: Ez a cikk a Power bi-ban az modell adatait az Azure Backup jelentések beszél.
+title: Adatmodell az Azure Backup
+description: Ez a cikk ismerteti a Power BI adatok modell részletei az Azure Backup-jelentésekhez.
 services: backup
-author: JPallavi
-manager: vijayts
+author: adiganmsft
+manager: shivamg
 ms.service: backup
 ms.topic: conceptual
 ms.date: 06/26/2017
-ms.author: pajosh
+ms.author: adigan
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a17e011452f9b87c1201cea12f394a9cdd18e54b
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 6b1531e23d0e5fd34eff59868055ccd855b423e4
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34606222"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37444303"
 ---
 # <a name="data-model-for-azure-backup-reports"></a>Adatmodell az Azure Backup-jelentésekhez
-Ez a cikk ismerteti az Azure Backup-jelentések készítéséhez használt Power BI-adatmodell. Az adatmodell használ, meglévő jelentéseket a megfelelő mezőket alapján szűrheti, és több tábla és a modell mező fontosabb, létrehozhatja a saját jelentéseit. 
+Ez a cikk ismerteti a Power BI adatmodell az Azure Backup-jelentések készítéséhez. A data modellel meglévő jelentések kapcsolódó mezők alapján szűrheti, és további táblákat és mezőket a modellben is fontosabb, létrehozhatja saját jelentéseit. 
 
-## <a name="creating-new-reports-in-power-bi"></a>Új jelentések létrehozását a Power bi-ban
-A Power BI használatával, amely is testreszabási funkciókat is biztosítanak [az adatmodell használatával jelentéseket készíthet](https://powerbi.microsoft.com/documentation/powerbi-service-create-a-new-report/).
+## <a name="creating-new-reports-in-power-bi"></a>Új jelentések létrehozásához a Power bi-ban
+A Power BI használatával, amelyet testreszabási funkcióival biztosít [jelentések készítését az adatmodell](https://powerbi.microsoft.com/documentation/powerbi-service-create-a-new-report/).
 
-## <a name="using-azure-backup-data-model"></a>Azure biztonsági mentési adatok modell segítségével
-Az adatmodell részeként a következő mezők használatával jelentéseket készíthet, és a meglévő jelentések testreszabása.
+## <a name="using-azure-backup-data-model"></a>Az Azure Backup data modellel
+Az adatmodell részeként a következő mezőket segítségével jelentéseket hozhat létre, és a meglévő jelentések testreszabása.
 
 ### <a name="alert"></a>Riasztás
-Ez a táblázat alapvető mezők és az aggregációhoz biztosítanak riasztási kapcsolódó mezőket.
+Ez a táblázat alapszintű mezők és az aggregációhoz különböző riasztási kapcsolódó mezők fölé.
 
 | Mező | Adattípus | Leírás |
 | --- | --- | --- |
-| #AlertsCreatedInPeriod |Egész szám |Kiválasztott időszak létrehozott riasztások számát |
-| % ActiveAlertsCreatedInPeriod |Százalék |Aktív riasztások a kiválasztott időszak aránya |
-| % CriticalAlertsCreatedInPeriod |Százalék |A kijelölt időszakra vonatkozó kritikus riasztás százalékos aránya |
-| AlertOccurenceDate |Dátum |Riasztás létrehozásának dátuma |
-| AlertSeverity |Szöveg |Például: kritikus riasztás súlyossága |
-| AlertStatus |Szöveg |A riasztás például aktív állapota |
+| #AlertsCreatedInPeriod |Egész szám |A kijelölt időszakban létrehozott riasztások számát |
+| A(z) % ActiveAlertsCreatedInPeriod |Százalék |Aktív riasztások a kiválasztott időszakban százaléka |
+| A(z) % CriticalAlertsCreatedInPeriod |Százalék |Kritikus riasztások a kiválasztott időszakban százaléka |
+| AlertOccurenceDate |Dátum |A riasztás létrehozásának dátuma |
+| AlertSeverity |Szöveg |A példában a kritikus riasztás súlyossága |
+| AlertStatus |Szöveg |A riasztás, ha például aktív állapot |
 | AlertType |Szöveg |A generált riasztások, például a biztonsági mentés típusa |
 | AlertUniqueId |Szöveg |A generált riasztások egyedi azonosítója |
-| AsOnDateTime |Dátum/idő |A kijelölt sor a legutóbbi frissítési időpont |
-| AvgResolutionTimeInMinsForAlertsCreatedInPeriod |Egész szám |Átlagos ideje (percben) a kijelölt időszakra vonatkozóan a riasztás feloldásához |
-| EntityState |Szöveg |Aktív, a törölt például riasztási objektum aktuális állapota |
+| AsOnDateTime |Dátum/idő |A kijelölt sor a legutóbbi frissítésének ideje |
+| AvgResolutionTimeInMinsForAlertsCreatedInPeriod |Tizedes tört szám |Átlagos idő (percben) a kijelölt időszakra vonatkozó riasztás feloldása |
+| EntityState |Szöveg |A riasztás például aktív, a törölt objektum aktuális állapotát |
 
-### <a name="backup-item"></a>Biztonsági mentési elem
-Ez a táblázat különböző biztonsági mentési elem kapcsolatos mezők alapvető mezők és az aggregációhoz biztosítanak.
+### <a name="backup-item"></a>Biztonsági másolati elem
+Ez a táblázat alapszintű mezők és az aggregációhoz különböző biztonsági mentési elem kapcsolódó mezők fölé.
 
 | Mező | Adattípus | Leírás |
 | --- | --- | --- |
-| #BackupItems |Egész szám |Biztonsági mentési elemek száma. |
-| #UnprotectedBackupItems |Egész szám |A védelem leállt, vagy biztonsági mentések, de a biztonsági mentések nem indult el a beállított biztonsági mentési elemek száma.|
-| AsOnDateTime |Dátum/idő |A kijelölt sor a legutóbbi frissítési időpont |
-| BackupItemFriendlyName |Szöveg |Biztonsági mentési elem rövid neve |
+| #BackupItems |Egész szám |Biztonsági másolati elemek száma |
+| #UnprotectedBackupItems |Egész szám |Biztonsági másolati elemek száma a védelem leállítása, vagy biztonsági másolatok azonban még nem indult el biztonsági mentések konfigurálása|
+| AsOnDateTime |Dátum/idő |A kijelölt sor a legutóbbi frissítésének ideje |
+| BackupItemFriendlyName |Szöveg |Biztonságimásolat-elem rövid neve |
 | BackupItemId |Szöveg |Biztonsági mentési elem azonosítója |
-| BackupItemName |Szöveg |Biztonsági mentési elem neve |
-| BackupItemType |Szöveg |Biztonsági mentési elem például VM FileFolder típusa |
-| EntityState |Szöveg |A biztonsági mentési elem objektum aktív, a törölt például aktuális állapota |
-| LastBackupDateTime |Dátum/idő |Utolsó biztonsági mentés idején a kijelölt elem biztonsági mentése |
-| LastBackupState |Szöveg |A kijelölt elem biztonsági mentése sikeres, sikertelen például utolsó biztonsági mentés állapota |
-| LastSuccessfulBackupDateTime |Dátum/idő |Utolsó sikeres biztonsági másolat készítésének idején a kijelölt elem biztonsági mentése |
-| ProtectionState |Szöveg |Védett, ProtectionStopped például a biztonsági mentési elem aktuális védelmi állapot |
+| BackupItemName |Szöveg |Biztonsági másolati elem nevét |
+| BackupItemType |Szöveg |Biztonsági másolati elemek például a virtuális gép, fájlmappa típusa |
+| EntityState |Szöveg |Például aktív, a törölt biztonsági másolati elem objektum jelenlegi állapota |
+| LastBackupDateTime |Dátum/idő |Kiválasztott biztonsági mentési elem legutóbbi biztonsági mentés időpontja |
+| LastBackupState |Szöveg |Kiválasztott biztonsági másolati elem, például sikeres, sikertelen volt a legutóbbi biztonsági mentés állapota |
+| LastSuccessfulBackupDateTime |Dátum/idő |Utolsó sikeres biztonsági mentés idején a kiválasztott biztonsági mentési elem |
+| ProtectionState |Szöveg |A biztonsági másolati elem, például védett, ProtectionStopped aktuális védelmi állapotát |
 
 ### <a name="calendar"></a>Naptár
-Ez a táblázat ismerteti a naptár kapcsolatos mezők.
+Ez a táblázat részletesen naptár kapcsolatos mezőket.
 
 | Mező | Adattípus | Leírás |
 | --- | --- | --- |
-| Dátum |Dátum |Az adatok szűrése kiválasztott dátum |
-| DateKey |Szöveg |Minden dátum elem egyedi kulcsa |
-| DayDiff |Egész szám |Például a nap-szűrési adatok különbség, 0 azt jelzi, az aktuális napra vonatkozó adatokat, -1 érték azt jelzi, előző egy nap adatait, 0 és a -1 jelzik adatok jelenlegi és korábbi nap  |
-| Hónap |Szöveg |Hónap a kijelölt adatok szűréséhez év, hónap első napján kezdődik, és 31 napos vége |
-| MonthDate | Dátum |A dátum a hónap, amikor a hónap ér véget, a kiválasztott adatok szűrése |
-| MonthDiff |Egész szám |Például a szűrési adatok hónap különbség, 0 jelzi az aktuális hónap adatait, -1 érték azt jelzi, az előző hónap adatok, 0 és a -1 jelzik adatok jelenlegi és előző hónap |
-| Hét |Szöveg |A hét kijelölt adatok, szűrési hét kezdőnapja vasárnap és szombat vége |
-| WeekDate |Dátum |Dátum a hét, amikor a hét ér véget, a kiválasztott adatok szűrése |
-| WeekDiff |Egész szám |Például a szűrési adatok hét különbség, 0 azt jelzi, aktuális hét adatok, -1 érték azt jelzi, előző hét adatok, 0 és a -1 jelzik adatok aktuális és az előző hét |
-| Év |Szöveg |Kijelölt adatok szűréséhez naptári év |
-| YearDate |Dátum |A dátum az év, amikor év ér véget, a kiválasztott adatok szűrése |
+| Dátum |Dátum |Adatok szűrése a kiválasztott dátum |
+| DateKey |Szöveg |Minden egyes dátum elemhez tartozó egyedi kulcs |
+| DayDiff |Tizedes tört szám |Például a nap-szűrési adatok különbség, 0 azt jelzi, hogy az aktuális napra vonatkozó adatokat, -1 azt jelzi, hogy előző egy nap adatainak, 0 és a -1 jelzi adatok az aktuális és korábbi napra  |
+| Hónap |Szöveg |Havi az adatok szűrése a kiválasztott év, hónap első napján kezdődik, és 31 nappal ér véget |
+| MonthDate | Dátum |Dátum a hónap, ha a hónap befejeződik, a kiválasztott adatok szűrése |
+| MonthDiff |Tizedes tört szám |Például havi szűrési különbség, a 0 azt jelzi, hogy aktuális havi adatokat, a -1 azt jelzi, hogy az előző hónap adatok, a 0 és a -1 jelzi adat jelenlegi és előző hónapban |
+| Hét |Szöveg |Kínál az adatok, kijelölve hét hét vasárnap és szombat-ig |
+| WeekDate |Dátum |Dátum, amikor hét ér véget, a hét kijelölt adatok szűrése |
+| WeekDiff |Tizedes tört szám |Például a hét szűrési adatok különbség, 0 azt jelzi, hogy aktuális hét adatok, előző hét adatokat jelöl, -1, 0 és a -1 jelzi adatok az aktuális és az előző hét |
+| Év |Szöveg |Adatok szűrése a kiválasztott naptári év |
+| YearDate |Dátum |Dátum az év, amikor év ér véget, a kiválasztott adatok szűrése |
 
 ### <a name="job"></a>Feladat
-Ez a táblázat alapvető mezők és az aggregációhoz biztosítanak feladathoz kapcsolódó mezőket.
+Ez a táblázat alapszintű mezők és az aggregációhoz feladatokkal kapcsolatos különböző mezők fölé.
 
 | Mező | Adattípus | Leírás |
 | --- | --- | --- |
 | #JobsCreatedInPeriod |Egész szám |A kijelölt időszakban létrehozott feladatok száma |
-| % FailuresForJobsCreatedInPeriod |Százalék |Százalék a kijelölt időszakban a teljes feladat-hibák |
-| 80thPercentileDataTransferredInMBForBackupJobsCreatedInPeriod |Egész szám |MB az átvitt adatok 80 PERCENTILIS **biztonsági mentési** a kijelölt időszakban létrehozott feladatok |
-| AsOnDateTime |Dátum/idő |A kijelölt sor a legutóbbi frissítési időpont |
-| AvgBackupDurationInMinsForJobsCreatedInPeriod |Egész szám |Átlagos idő (percben) a **befejezett biztonsági mentés** kijelölt időszakban létrehozott feladatok |
-| AvgRestoreDurationInMinsForJobsCreatedInPeriod |Egész szám |Átlagos idő (percben) a **visszaállítás befejeződött** kijelölt időszakban létrehozott feladatok |
-| BackupStorageDestination |Szöveg |Biztonsági másolatok tárolásának például felhő, lemez és  |
-| EntityState |Szöveg |A feladat objektum aktív, a törölt például aktuális állapota |
-| JobFailureCode |Szöveg |Hiba a kód karakterlánc miatt, amelyet feladat hiba történt |
-| JobOperation |Szöveg |A művelet, amelynek feladat futtatásakor például biztonsági mentése, visszaállítása, Backup konfigurálása |
+| A(z) % FailuresForJobsCreatedInPeriod |Százalék |Százalék a kiválasztott időszakban a teljes feladat-hibák |
+| 80thPercentileDataTransferredInMBForBackupJobsCreatedInPeriod |Tizedes tört szám |MB-ban, az átvitt adatok 80 %-os érték **biztonsági mentési** a kiválasztott időszakban létrehozott feladatok |
+| AsOnDateTime |Dátum/idő |A kijelölt sor a legutóbbi frissítésének ideje |
+| AvgBackupDurationInMinsForJobsCreatedInPeriod |Tizedes tört szám |Átlagos időtartam percben **befejezett backup** a kiválasztott időszakban létrehozott feladatok |
+| AvgRestoreDurationInMinsForJobsCreatedInPeriod |Tizedes tört szám |Átlagos időtartam percben **visszaállítás befejeződött** a kiválasztott időszakban létrehozott feladatok |
+| BackupStorageDestination |Szöveg |A biztonsági mentési tár, például a felhőben, a lemez rendeltetési  |
+| EntityState |Szöveg |Feladat például aktív, a törölt objektum jelenlegi állapota |
+| JobFailureCode |Szöveg |Sikertelen hibakód karakterláncát miatt, amely feladat hiba történt |
+| JobOperation |Szöveg |A művelet, amelynek feladat futtatása például biztonsági mentés, visszaállítás, a Backup konfigurálása |
 | JobStartDate |Dátum |Feladat elindításának dátuma |
-| JobStartTime |Time |Amikor a feladat elindítása fut |
-| Feladat állapota |Szöveg |Például, befejezett, sikertelen végzett feladat állapota |
-| JobUniqueId |Szöveg |A feladat azonosításához egyedi azonosítója |
+| JobStartTime |Time |Ha a feladat elindításának |
+| Feladat állapota |Szöveg |A befejezett feladat például befejezve, sikertelen állapota |
+| JobUniqueId |Szöveg |A feladat azonosításához használatos egyedi azonosító |
 
 ### <a name="policy"></a>Szabályzat
-Ez a táblázat alapvető mezők és az aggregációhoz biztosítanak-házirendekkel kapcsolatos mezőket.
+Ez a táblázat alapszintű mezők és az aggregációhoz különböző házirendekhez kapcsolódó mezők fölé.
 
 | Mező | Adattípus | Leírás |
 | --- | --- | --- |
-| #Policies |Egész szám |A rendszer a meglévő biztonsági mentési házirendek száma |
-| #PoliciesInUse |Egész szám |A biztonsági mentések beállítása jelenleg használt házirendek száma |
-| AsOnDateTime |Dátum/idő |A kijelölt sor a legutóbbi frissítési időpont |
+| #Policies |Egész szám |A rendszer a biztonsági mentési szabályzatok száma |
+| #PoliciesInUse |Egész szám |A biztonsági mentések konfigurálása jelenleg használt szabályzatok maximális számát |
+| AsOnDateTime |Dátum/idő |A kijelölt sor a legutóbbi frissítésének ideje |
 | BackupDaysOfTheWeek |Szöveg |Ha biztonsági mentések ütemezett napjai |
-| BackupFrequency |Szöveg |A gyakoriság, amellyel biztonsági mentések futnak, például, naponta, hetente |
+| BackupFrequency |Szöveg |Amellyel biztonsági mentések futnak, például, napi, heti gyakoriság |
 | BackupTimes |Szöveg |Dátum és idő, amikor a biztonsági mentés van ütemezve |
-| DailyRetentionDuration |Egész szám |Teljes megőrzés időtartama napokban megadva beállított biztonsági mentés |
-| DailyRetentionTimes |Szöveg |Dátum és idő, amikor napi megőrzési konfigurálása |
-| EntityState |Szöveg |Aktív, a törölt például a csoportházirend-objektum aktuális állapota |
-| MonthlyRetentionDaysOfTheMonth |Szöveg |A hónap havi megőrzési a kijelölt dátumok |
-| MonthlyRetentionDaysOfTheWeek |Szöveg |Havi megőrzési napokat a hét kijelölt |
-| MonthlyRetentionDuration |Egész szám |A konfigurált biztonsági mentésekhez hónapban teljes megőrzési időtartama |
-| MonthlyRetentionFormat |Szöveg |Írja be a havi megőrzési konfiguráció például naponta meghatározásával, hetente alapján hét nap |
-| MonthlyRetentionTimes |Szöveg |Dátum és idő, amikor a havi megőrzési van konfigurálva |
-| MonthlyRetentionWeeksOfTheMonth |Szöveg |Adott hónap havi megőrzési esetén például konfigurált First, Last stb. |
-| Házirendnév |Szöveg |A megadott házirend neve |
-| PolicyUniqueId |Szöveg |A házirend-egyedi azonosítója |
-| RetentionType |Szöveg |Írja be a megőrzési házirend például, naponta, hetente, havonta, éves ütemezéshez |
-| WeeklyRetentionDaysOfTheWeek |Szöveg |Heti megőrzési napokat a hét kijelölt |
-| WeeklyRetentionDuration |Egész szám |A konfigurált biztonsági mentésekhez hét teljes heti megőrzési időtartama |
+| DailyRetentionDuration |Egész szám |Teljes megőrzés időtartama napokban megadva a konfigurált biztonsági mentés |
+| DailyRetentionTimes |Szöveg |Dátum és idő, amikor napi megőrzés konfigurálása |
+| EntityState |Szöveg |Ha például aktív, a törölt csoportházirend-objektum aktuális állapotát |
+| MonthlyRetentionDaysOfTheMonth |Szöveg |A havi megőrzési kiválasztott hónap dátumok |
+| MonthlyRetentionDaysOfTheWeek |Szöveg |Havi megőrzési kijelölve a hét napjai |
+| MonthlyRetentionDuration |Tizedes tört szám |Hónap konfigurált biztonsági mentés a teljes megőrzési időtartama |
+| MonthlyRetentionFormat |Szöveg |Írja be a havi adatmegőrzési-konfiguráció például naponta napi szintű, hetente a heti szintű |
+| MonthlyRetentionTimes |Szöveg |Dátum és idő, ha a havi megőrzési van konfigurálva |
+| MonthlyRetentionWeeksOfTheMonth |Szöveg |Havi megőrzési esetén a hónap, hét konfigurált például First, Last stb. |
+| PolicyName |Szöveg |A megadott házirend neve |
+| PolicyUniqueId |Szöveg |Azonosíthatja a szabályzat egyedi azonosítója |
+| RetentionType |Szöveg |Írja be a megőrzési házirend például, naponta, hetente, havonta, évente |
+| WeeklyRetentionDaysOfTheWeek |Szöveg |Heti megőrzési kijelölve a hét napjai |
+| WeeklyRetentionDuration |Tizedes tört szám |Teljes hetes, a konfigurált biztonsági mentés heti megőrzési időtartama |
 | WeeklyRetentionTimes |Szöveg |Dátum és idő, ha a heti megőrzési van konfigurálva |
-| YearlyRetentionDaysOfTheMonth |Szöveg |A hónap éves megőrzési a kijelölt dátumok |
-| YearlyRetentionDaysOfTheWeek |Szöveg |Éves megőrzési napokat a hét kijelölt |
-| YearlyRetentionDuration |Egész szám |A konfigurált biztonsági mentésekhez évben teljes megőrzési időtartama |
-| YearlyRetentionFormat |Szöveg |Írja be az éves megőrzési konfiguráció például naponta meghatározásával, hetente alapján hét nap |
-| YearlyRetentionMonthsOfTheYear |Szöveg |Az év hónapja kiválasztott éves megőrzési |
+| YearlyRetentionDaysOfTheMonth |Szöveg |A hónap, éves megőrzési kijelölt dátumok |
+| YearlyRetentionDaysOfTheWeek |Szöveg |Az éves megőrzési kijelölve a hét napjait |
+| YearlyRetentionDuration |Tizedes tört szám |Teljes megőrzési időtartam a konfigurált biztonsági mentés éves |
+| YearlyRetentionFormat |Szöveg |Írja be az éves adatmegőrzési-konfiguráció például naponta alapú, hetente alapú hét nap |
+| YearlyRetentionMonthsOfTheYear |Szöveg |Az év hónapjai éves megőrzési kiválasztva |
 | YearlyRetentionTimes |Szöveg |Dátum és idő, amikor éves megőrzési van konfigurálva |
-| YearlyRetentionWeeksOfTheMonth |Szöveg |Hét a hónapon belül éves megőrzési esetén például konfigurált First, Last stb. |
+| YearlyRetentionWeeksOfTheMonth |Szöveg |A hónap, éves megőrzési esetén hét konfigurált például First, Last stb. |
 
 ### <a name="protected-server"></a>Védett kiszolgáló
-Ez a táblázat különböző védett kiszolgálóval kapcsolatos mezők alapvető mezők és az aggregációhoz biztosítanak.
+Ez a táblázat alapszintű mezők és az aggregációhoz-kiszolgálóval kapcsolatos különféle védett mezők fölé.
 
 | Mező | Adattípus | Leírás |
 | --- | --- | --- |
 | #ProtectedServers |Egész szám |Védett kiszolgálók száma |
-| AsOnDateTime |Dátum/idő |A kijelölt sor a legutóbbi frissítési időpont |
-| AzureBackupAgentOSType |Szöveg |Az Azure Backup szolgáltatás ügynöke operációsrendszer-típus |
-| AzureBackupAgentOSVersion |Szöveg |Az Azure Backup szolgáltatás ügynöke az operációs rendszer verziója |
-| AzureBackupAgentUpdateDate |Szöveg |Ügynök Backup szolgáltatás ügynökének frissítésének dátuma |
-| AzureBackupAgentVersion |Szöveg |Biztonsági másolat verzióját ügynök verziószáma |
-| BackupManagementType |Szöveg |A biztonsági mentés például IaaSVM FileFolder szolgáltató típusa |
-| EntityState |Szöveg |Aktív, a törölt például a védett kiszolgáló objektum aktuális állapota |
+| AsOnDateTime |Dátum/idő |A kijelölt sor a legutóbbi frissítésének ideje |
+| AzureBackupAgentOSType |Szöveg |Az Azure Backup-ügynök operációs rendszerének típusa |
+| AzureBackupAgentOSVersion |Szöveg |Az Azure Backup szolgáltatás ügynökének operációsrendszer-verziója |
+| AzureBackupAgentUpdateDate |Szöveg |Az ügynök Backup-ügynök frissítésének dátuma |
+| AzureBackupAgentVersion |Szöveg |Biztonsági másolat verzióját az ügynök verziószáma |
+| A backupmanagementtype típusra vonatkozó |Szöveg |A biztonsági mentés például IaaSVM fájlmappa szolgáltató típusa |
+| EntityState |Szöveg |Aktív, a törölt például a védett kiszolgáló objektum aktuális állapotát |
 | ProtectedServerFriendlyName |Szöveg |Védett kiszolgáló rövid neve |
 | ProtectedServerName |Szöveg |Védett kiszolgáló neve |
-| ProtectedServerType |Szöveg |A védett kiszolgáló típusa biztonsági mentése például IaaSVMContainer |
-| ProtectedServerName |Szöveg |Mely biztonsági mentési elemet a védett kiszolgáló neve tartozik |
-| RegisteredContainerId |Szöveg |A biztonsági mentéshez regisztrált tároló azonosító |
+| ProtectedServerType |Szöveg |Például IaaSVMContainer készíteni a védett kiszolgáló típusa |
+| ProtectedServerName |Szöveg |Védett kiszolgáló melyik biztonsági másolati elem nevét tartozik |
+| RegisteredContainerId |Szöveg |Regisztrálva a biztonsági mentési tároló azonosítója |
 
 ### <a name="storage"></a>Storage
-Ez a táblázat alapvető mezők és az aggregációhoz biztosítanak tárolással kapcsolatos mezőket.
+Ez a táblázat alapszintű mezők és az aggregációhoz különböző storage szolgáltatással kapcsolatos mezők fölé.
 
 | Mező | Adattípus | Leírás |
 | --- | --- | --- |
-| #ProtectedInstances |Egész szám |A kijelölt időszak előtér tárolási számlázási, számított alapján legújabb értékének kiszámítására használt védett példányok száma |
-| AsOnDateTime |Dátum/idő |A kijelölt sor a legutóbbi frissítési időpont |
-| CloudStorageInMB |Egész szám |A kijelölt időszak legújabb érték alapján felhő biztonsági mentések, számított használt biztonsági mentési tároló |
-| EntityState |Szöveg |Aktív, a törölt például az objektum aktuális állapota |
+| #ProtectedInstances |Tizedes tört szám |Az adott előtérbeli tár számlázási, számított alapján legújabb érték kiszámításához használt védett példányok száma |
+| AsOnDateTime |Dátum/idő |A kijelölt sor a legutóbbi frissítésének ideje |
+| CloudStorageInMB |Tizedes tört szám |A kijelölt legújabb érték alapján számított biztonsági mentések által használt felhőalapú biztonsági mentési tár |
+| EntityState |Szöveg |Ha például aktív, a törölt objektum jelenlegi állapota |
 | LastUpdatedDate |Dátum |Ha a kijelölt sor utolsó módosításának dátuma |
 
 ### <a name="time"></a>Time
-Ez a táblázat idővel kapcsolatos mezők ismerteti.
+Ez a tábla mezők idővel kapcsolatos információt nyújt.
 
 | Mező | Adattípus | Leírás |
 | --- | --- | --- |
-| Óra |Time |Például 1:00:00 PM óra |
-| HourNumber |Egész szám |A nap például 13,00 óra száma |
-| Perc |Egész szám |Az óra perc |
-| PeriodOfTheDay |Szöveg |Period időszelet például a 12-3 de nap |
-| Time |Time |Például 12:00:01 de időpontja |
-| TimeKey |Szöveg |Azt az időt jelentik a kulcs értéke |
+| Óra |Time |A nap, például 1:00:00 PM |
+| HourNumber |Tizedes tört szám |A nap például 13,00 óra száma |
+| Perc |Tizedes tört szám |Az óra azon perce |
+| PeriodOfTheDay |Szöveg |Időszak idősávja a nap, például a 12. és 3 óra |
+| Time |Time |A következő napon: például 12:00:01-kor |
+| TimeKey |Szöveg |Az időt jelentik, a kulcs értéke |
 
 ### <a name="vault"></a>Tároló
-Ez a táblázat különböző tárolóval kapcsolatos mezők alapvető mezők és az aggregációhoz biztosítanak.
+Ez a táblázat alapszintű mezők és az aggregációhoz különböző tároló kapcsolódó mezők fölé.
 
 | Mező | Adattípus | Leírás |
 | --- | --- | --- |
 | #Vaults |Egész szám |Tárolók száma |
-| AsOnDateTime |Dátum/idő |A kijelölt sor a legutóbbi frissítési időpont |
-| AzureDataCenter |Szöveg |Az Adatközpont, ahol a tárolóban |
-| EntityState |Szöveg |Aktív, a törölt például a tároló objektum aktuális állapota |
-| StorageReplicationType |Szöveg |A tároló például GeoRedundant tárolóreplikálást típusa |
+| AsOnDateTime |Dátum/idő |A kijelölt sor a legutóbbi frissítésének ideje |
+| AzureDataCenter |Szöveg |Adatközpont, ahol a tároló megtalálható |
+| EntityState |Szöveg |Például aktív, a törölt tároló objektum jelenlegi állapota |
+| StorageReplicationType |Szöveg |A tároló például GeoRedundant tárolóreplikáció típusa |
 | SubscriptionId |Szöveg |Az ügyfél-jelentések létrehozása a kijelölt előfizetés-azonosító |
 | VaultName |Szöveg |A tároló neve |
 | VaultTags |Szöveg |A tárolóhoz társított címkék |
 
 ## <a name="next-steps"></a>További lépések
-Után tekintse át az adatokat az adatmodellbe az Azure Backup-jelentések készítéséhez, létrehozásával és jelentések megtekintése a Power BI kapcsolatos további részletekért tekintse meg a következő cikkekben talál.
+Után tekintse át az adatmodell az Azure Backup-jelentések létrehozása, létrehozásával és -jelentések megtekintése a Power bi-ban kapcsolatos további részletekért tekintse meg a következő cikkekben talál.
 
 * [Jelentések létrehozása a Power bi-ban](https://powerbi.microsoft.com/documentation/powerbi-service-create-a-new-report/)
-* [Szűrés a jelentéseket a Power bi-ban](https://powerbi.microsoft.com/documentation/powerbi-service-about-filters-and-highlighting-in-reports/)
+* [A Power BI-jelentések szűrése](https://powerbi.microsoft.com/documentation/powerbi-service-about-filters-and-highlighting-in-reports/)

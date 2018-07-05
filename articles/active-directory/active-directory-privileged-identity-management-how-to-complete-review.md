@@ -1,56 +1,56 @@
 ---
-title: Hogyan lehet elvégezni egy áttekintése |} Microsoft Docs
-description: Miután az Azure AD Privileged Identity Management indította egy áttekintése, megtudhatja, hogyan befejeződését, és az eredmények megtekintése
+title: Hozzáférési felülvizsgálat befejezése |} A Microsoft Docs
+description: Hozzáférési felülvizsgálatok az Azure AD Privileged Identity Management kezdi, miután megtudhatja, hogyan végezze el, és az eredmények megtekintése
 services: active-directory
 documentationcenter: ''
 author: rolyon
 manager: mtillman
 editor: ''
 ms.service: active-directory
-ms.topic: article
+ms.topic: conceptual
 ms.workload: identity
 ms.component: protection
 ms.date: 06/06/2017
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: b026a1fce61cfbf6469c8ef8140813906beba5f7
-ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
+ms.openlocfilehash: a3de94aa11b9326a9eadfb3385db83724f427ff2
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35234323"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37447234"
 ---
-# <a name="how-to-complete-an-access-review-in-azure-ad-privileged-identity-management"></a>Hogyan lehet elvégezni egy az Azure AD Privileged Identity Management áttekintése
-Kiemelt szerepkörű rendszergazda egyszer emelt szintű hozzáférés is tekintheti a [biztonsági felülvizsgálat elindult](active-directory-privileged-identity-management-how-to-start-security-review.md). Az Azure AD Privileged Identity Management (PIM) automatikusan elküld egy e-mailt arra kéri a felhasználót a hozzáférésüket áttekintéséhez. Ha a felhasználó nem kapott e-mailt, elküldheti azokat az utasításokat [egy biztonsági felülvizsgálat végrehajtása](active-directory-privileged-identity-management-how-to-perform-security-review.md).
+# <a name="how-to-complete-an-access-review-in-azure-ad-privileged-identity-management"></a>Az Azure AD Privileged Identity Management hozzáférési felülvizsgálat befejezése
+A kiemelt szerepkörű rendszergazdák után tekintse át a privileged access egy [biztonsági felülvizsgálat megkezdése](active-directory-privileged-identity-management-how-to-start-security-review.md). Az Azure AD Privileged Identity Management (PIM) automatikusan arra kéri a felhasználót, tekintse át a hozzáférése az e-mailt küld. Ha a felhasználó nem kapott e-mailt, küldhet nekik az utasításokat [biztonsági felülvizsgálat végrehajtása](active-directory-privileged-identity-management-how-to-perform-security-review.md).
 
-Után a biztonsági felülvizsgálat időszak alatt, vagy a felhasználók végzett, az önálló tekintse át, kövesse a cikkben a felülvizsgálati kezelésére, és az eredmények megtekintéséhez.
+Miután biztonsági viszonyt keresztül, vagy minden felhasználó befejezte a saját tekintse át, kövesse ebben a cikkben az eredmények megtekintéséhez és kezeléséhez a felülvizsgálatot.
 
 ## <a name="manage-security-reviews"></a>Biztonsági felülvizsgálat kezelése
-1. Lépjen a [Azure-portálon](https://portal.azure.com/) válassza ki a **Azure AD Privileged Identity Management** alkalmazás az irányítópulton.
-2. Válassza ki a **értékelést hozzáférési** szakasza az irányítópulton.
-3. Válassza ki a kezelni kívánt áttekintése.
+1. Nyissa meg a [az Azure portal](https://portal.azure.com/) , és válassza ki a **Azure AD Privileged Identity Management** alkalmazás a az irányítópulthoz.
+2. Válassza ki a **hozzáférési felülvizsgálatokkal** szakasz az irányítópult.
+3. Válassza ki a hozzáférési felülvizsgálatot, amelyet kezelni szeretne.
 
-A hozzáférés felülvizsgálati részletei panel lehetőség áll rendelkezésre egy szám felülvizsgálat kezeléséhez.
+A hozzáférési felülvizsgálat részletei panelen módon egy szám felülvizsgálat kezeléséhez.
 
-![PIM hozzáférés felülvizsgálati gombok – képernyőkép][1]
+![PIM hozzáférési felülvizsgálati gombok – képernyőkép][1]
 
 ### <a name="remind"></a>Emlékeztetés
-Ha egy áttekintése be van állítva, így a felhasználók maguk, tekintse át a **emlékeztetése** gomb értesítést küld. 
+Ha a hozzáférési felülvizsgálat be van állítva, így a felhasználók maguk, tekintse át a **emlékeztetése** gomb értesítést küld. 
 
 ### <a name="stop"></a>Leállítás
-Hozzáférés az összes értékelést rendelkezik befejező dátumát, de használhatja a **leállítása** gomb korai befejezéséhez. A felhasználók még nem ellenőrzött időpontig, ha azok nem fogja tudni a felülvizsgálati befejezése után. Nem indítható újra áttekintése után a rendszer leállt.
+Minden hozzáférési felülvizsgálatok a befejező dátum rendelkezik, de használhatja a **leállítása** gomb korai befejezéséhez. Ha a felhasználók még nem lett felülvizsgálva ez idő szerint, nem tudják, a felülvizsgálat befejezése után. Felülvizsgálat nem indítható újra, miután van állítva.
 
 ### <a name="apply"></a>Alkalmaz
-A rendszer egy áttekintése után, mert elérte a záró dátum, vagy manuálisan, megszakította a **alkalmaz** gomb valósítja meg a felülvizsgálati eredményeit. A felhasználói hozzáférés megtagadva a felülvizsgálat alatt, ha ez a lépés, amely a szerepkör-hozzárendelés, azzal eltávolítja az.  
+Hozzáférési felülvizsgálat befejezése után, mert elérte a záró dátum, vagy leállt, manuálisan, vagy a **alkalmaz** gomb a felülvizsgálat eredményének valósítja meg. Ha a felhasználó megtagadja a felülvizsgálati, akkor a lépés, amely eltávolítja a szerepkör-hozzárendelés.  
 
 ### <a name="export"></a>Exportálás
-Ha a biztonsági ellenőrzés eredményének manuálisan alkalmazni kívánt, exportálhatja a felülvizsgálati. A **exportálása** gomb indul el egy CSV-fájl letöltése. Az eredményeket az Excel vagy más programok, nyissa meg a CSV-fájlok is kezelheti.
+Ha azt szeretné, a biztonsági felülvizsgálat eredményeinek manuális alkalmazásához, exportálhatja a felülvizsgálatot. A **exportálása** gomb indul el egy CSV-fájl letöltése. Az eredményeket Excelben vagy más programok, nyissa meg a CSV-fájlok is kezelheti.
 
 ### <a name="delete"></a>Törlés
-Ha nem a felülvizsgálati további iránt érdeklődik, törölje azt. A **törlése** gomb a felülvizsgálati eltávolítja a PIM alkalmazást.
+Ha nem érdekli a felülvizsgálat minden további, törölje azt. A **törlése** gomb a felülvizsgálat távolít el a PIM alkalmazást.
 
 > [!IMPORTANT]
-> Akkor lesz nem megjelenik egy figyelmeztetés, még törlése előtt, ezért arról, hogy szeretné-e felülvizsgálat törlése. 
+> Meg fog nem megjelenik egy figyelmeztetés, akkor fordul elő, törlés előtt, ezért arról, hogy szeretné-e a felülvizsgálat törlése. 
 
 ## <a name="next-steps"></a>További lépések
 [!INCLUDE [active-directory-privileged-identity-management-toc](../../includes/active-directory-privileged-identity-management-toc.md)]

@@ -12,30 +12,30 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/01/2018
+ms.date: 07/02/2018
 ms.author: sethm
-ms.openlocfilehash: 8fd70380dbb88f379789e1a4730934dcd38cac5a
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 4f74b0f90795362d3e509fdbd33e5f358227f147
+ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2018
-ms.locfileid: "29393218"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37436871"
 ---
 # <a name="receive-events-from-azure-event-hubs-using-the-net-framework"></a>Események fogadása az Azure Event Hubsból a .NET-keretrendszer használatával
 
-## <a name="introduction"></a>Introduction (Bevezetés)
+## <a name="introduction"></a>Bevezetés
 
-Az Event Hubs szolgáltatás a csatlakoztatott eszközökről és alkalmazásokból származó nagy mennyiségű eseményadatot dolgoz fel (telemetria). Miután összegyűjtötte az adatokat az Event Hubsban, az adatok egy tárolási fürt használatával tárolhatja, vagy átalakíthatja egy valós idejű elemzési szolgáltató segítségével. Ez az átfogó eseménygyűjtési és -feldolgozási képesség kulcsfontosságú alkotóeleme a modern alkalmazásarchitektúráknak, beleértve az eszközök internetes hálózatát (IoT).
+Az Azure Event Hubs olyan eseményadatok (telemetria) csatlakoztatott eszközökről és alkalmazásokból érkező nagy mennyiségű feldolgozó szolgáltatás. Miután összegyűjtötte az adatokat az Event Hubsban, az adatok egy tárolási fürt használatával tárolhatja, vagy átalakíthatja egy valós idejű elemzési szolgáltató segítségével. Ez az átfogó eseménygyűjtési és -feldolgozási képesség kulcsfontosságú alkotóeleme a modern alkalmazásarchitektúráknak, beleértve az eszközök internetes hálózatát (IoT).
 
-Ez az oktatóanyag ismerteti, hogyan írható olyan .NET-keretrendszerbeli konzolalkalmazás, amely egy eseményközpontból fogad üzeneteket az **[Event Processor Host][EventProcessorHost]** használatával. Az események a .NET-keretrendszerrel való küldéséről lásd a [Események küldése az Azure Event Hubsba a .NET-keretrendszer használatával](event-hubs-dotnet-framework-getstarted-send.md) című cikket, vagy kattintson a megfelelő küldőnyelvre a bal oldalon található tartalomjegyzékben.
+Ez az oktatóanyag ismerteti, hogyan írható olyan .NET-keretrendszerbeli konzolalkalmazás, amely egy eseményközpontból fogad üzeneteket az **[Event Processor Host][Event Processor Host]** használatával. Az események a .NET-keretrendszerrel való küldéséről lásd a [Események küldése az Azure Event Hubsba a .NET-keretrendszer használatával](event-hubs-dotnet-framework-getstarted-send.md) című cikket, vagy kattintson a megfelelő küldőnyelvre a bal oldalon található tartalomjegyzékben.
 
-Az [Event Processor Host][EventProcessorHost] egy .NET-osztály, amely leegyszerűsíti az események fogadását az Event Hubsból, mivel kezeli az állandó ellenőrzőpontokat és a párhuzamos fogadásokat az adott Event Hubs -eseményközpontokból. Az [Event Processor Host][Event Processor Host] használatával több fogadó között oszthatja el az eseményeket, még akkor is, ha ezek különböző csomópontokon üzemelnek. Ez a példa bemutatja, hogyan használható az [Event Processor Host][EventProcessorHost] egyetlen fogadóhoz. A [horizontálisan felskálázott eseményfeldolgozási][Scale out Event Processing with Event Hubs] minta megmutatja, hogyan használható az [Event Processor Host][EventProcessorHost] több fogadóval.
+Az [Event Processor Host][EventProcessorHost] egy .NET-osztály, amely leegyszerűsíti az események fogadását az Event Hubsból, mivel kezeli az állandó ellenőrzőpontokat és a párhuzamos fogadásokat az adott Event Hubs -eseményközpontokból. Az Event Processor Host használatával, akkor is feloszthatja az eseményeket több fogadóra, még akkor is, ha ezek különböző csomópontokon üzemelnek. Ez a példa bemutatja, hogyan használható az Event Processor Host egyetlen fogadóhoz. A [horizontálisan felskálázott Eseményfeldolgozási] [ Scale out Event Processing with Event Hubs] minta bemutatja, hogyan használhatja az Event Processor Host több fogadóval.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 Az oktatóanyag teljesítéséhez a következő előfeltételekre lesz szüksége:
 
-* [Microsoft Visual Studio 2015 vagy újabb](http://visualstudio.com). A jelen oktatóanyag képernyőképei a Visual Studio 2017-et használják.
+* [A Microsoft Visual Studio 2017-es vagy újabb](http://visualstudio.com).
 * Aktív Azure-fiók. Ha még nincs fiókja, néhány perc alatt létrehozhat egy ingyenes fiókot. További információkért lásd: [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/free/).
 
 ## <a name="create-an-event-hubs-namespace-and-an-event-hub"></a>Event Hubs-névtér és eseményközpont létrehozása
@@ -46,15 +46,19 @@ Első lépésként az [Azure Portalon](https://portal.azure.com) hozzon létre e
 
 Az [Event Processor Host][EventProcessorHost] használatához egy [Azure Storage-fiók][Azure Storage account] szükséges:
 
-1. Jelentkezzen be a [Azure-portálon][Azure portal], és kattintson a **hozzon létre egy erőforrást** , a képernyő bal felső.
+1. Jelentkezzen be a [az Azure portal][Azure portal], és kattintson a **erőforrás létrehozása** , a képernyő bal felső.
+
 2. Kattintson a **Tárolás**, majd a **Tárfiók** elemre.
    
     ![](./media/event-hubs-dotnet-framework-getstarted-receive-eph/create-storage1.png)
-3. Az a **storage-fiók létrehozása** ablak, írja be a tárfiók nevét. Válassza ki azt az Azure-előfizetést, erőforráscsoportot és helyet, amellyel az erőforrást létre kívánja hozni. Ezt követően kattintson a **Create** (Létrehozás) gombra.
+
+3. Az a **storage-fiók létrehozása** panelen írja be a tárfiók nevét. Válassza ki azt az Azure-előfizetést, erőforráscsoportot és helyet, amellyel az erőforrást létre kívánja hozni. Ezt követően kattintson a **Create** (Létrehozás) gombra.
    
     ![](./media/event-hubs-dotnet-framework-getstarted-receive-eph/create-storage2.png)
+
 4. A tárfiókok listáján kattintson az újonnan létrehozott tárfiókra.
-5. A tárolási fiók panelen kattintson **hívóbetűk**. Másolja ki a **key1** értékét – erre később lesz szükség az oktatóprogramban.
+
+5. Storage-fiók panelen kattintson **hozzáférési kulcsok**. Másolja ki a **key1** értékét – erre később lesz szükség az oktatóprogramban.
    
     ![](./media/event-hubs-dotnet-framework-getstarted-receive-eph/create-storage3.png)
 
@@ -130,7 +134,7 @@ Az [Event Processor Host][EventProcessorHost] használatához egy [Azure Storage
   using Microsoft.ServiceBus.Messaging;
   ```
     
-  Ezután cserélje le a `Main` metódust a `Program` osztályban a következő kódra, behelyettesítve az eseményközpont nevét, a korábban mentett névtérszintű kapcsolati karakterláncot, valamint a tárfiókot és a kulcsot, amelyeket a korábbi szakaszokban lemásolt. 
+  Ezután cserélje le a `Main` metódust a `Program` osztályban a következő kódra, behelyettesítve az eseményközpont nevét, a korábban mentett névtérszintű kapcsolati sztringet, valamint a tárfiókot és a kulcsot, amelyeket a korábbi szakaszokban lemásolt. 
     
   ```csharp
   static void Main(string[] args)
@@ -168,7 +172,7 @@ Gratulálunk! Sikeresen fogadott üzeneteket egy eseményközpontból az Event P
 
 Létrehozott egy működő alkalmazást, amely létrehoz egy Event Hubot, valamint adatokat fogad és küld. További információkért kövesse az alábbi hivatkozásokat:
 
-* [Event Processor Host][Event Processor Host]
+* [Event Processor Host – áttekintés][Event Processor Host]
 * [Event Hubs – áttekintés][Event Hubs overview]
 * [Event Hubs – gyakori kérdések](event-hubs-faq.md)
 
@@ -179,10 +183,10 @@ Létrehozott egy működő alkalmazást, amely létrehoz egy Event Hubot, valami
 [22]: ./media/event-hubs-csharp-ephcs-getstarted/run-csharp-ephcs2.png
 
 <!-- Links -->
-[EventProcessorHost]: https://www.nuget.org/packages/Microsoft.Azure.ServiceBus.EventProcessorHost
-[Event Hubs overview]: event-hubs-what-is-event-hubs.md
+[EventProcessorHost]: /dotnet/api/microsoft.servicebus.messaging.eventprocessorhost
+[Event Hubs overview]: event-hubs-about.md
 [Scale out Event Processing with Event Hubs]: https://code.msdn.microsoft.com/Service-Bus-Event-Hub-45f43fc3
 [Event Hubs Programming Guide]: event-hubs-programming-guide.md
 [Azure Storage account]:../storage/common/storage-create-storage-account.md
-[Event Processor Host]: /dotnet/api/microsoft.servicebus.messaging.eventprocessorhost
+[Event Processor Host]: event-hubs-event-processor-host.md
 [Azure portal]: https://portal.azure.com

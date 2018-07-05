@@ -1,49 +1,49 @@
 ---
-title: Kapcsolódás Azure Analysis Services Excel |} Microsoft Docs
-description: Útmutató az Azure Analysis Services-kiszolgálóhoz kapcsolódni az Excel használatával.
+title: Csatlakozhat az Azure Analysis Services az Excelben |} A Microsoft Docs
+description: Ismerje meg, hogyan csatlakozhat az Azure Analysis Services-kiszolgáló az Excel használatával.
 author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 05/16/2018
+ms.date: 07/03/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 6585648cbb461f52a22bc6ea239c0899caa2c2e7
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 807496584acb3f93fccd3495de005792b769b37f
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34597263"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37442998"
 ---
 # <a name="connect-with-excel"></a>Csatlakozás az Excellel
 
-Miután elkészítette a kiszolgáló, és telepített egy táblázatos modell, ügyfelek csatlakozni, és kezdje az adatok. 
+Miután létrehozott egy kiszolgálót, és üzembe helyezett egy táblázatos modellhez, az ügyfelek csatlakozhat és megkezdje az adatok. 
 
 ## <a name="before-you-begin"></a>Előkészületek
-A fiókkal jelentkezik be kell tartoznia a modell adatbázis-szerepkör legalább olvasási engedéllyel. További információ: [Hitelesítés és felhasználói engedélyek](analysis-services-manage-users.md). 
+A bejelentkezés a következővel fiók egy modellt az adatbázis-szerepkörhöz kell tartoznia, legalább olvasási engedéllyel. További információ: [Hitelesítés és felhasználói engedélyek](analysis-services-manage-users.md). 
 
-## <a name="connect-in-excel"></a>Csatlakozás az Excel programban
+## <a name="connect-in-excel"></a>Az Excel csatlakoztatása
 
-Adatok beolvasása használata az Excel 2016 az Excel programban a kiszolgálóhoz való kapcsolódás esetén támogatott. Nem támogatott a Kapcsolódás a Power Pivot tábla importálása varázsló használatával. 
+Kapcsolódás az Excel-kiszolgálóhoz az Excel 2016 adatok lekérése használatával támogatott. Tábla importálása varázsló segítségével a Power Pivotban kapcsolódó nem támogatott. 
 
-**Az Excel 2016 kapcsolódni**
+**Csatlakozás az Excel 2016-ban**
 
-1. Az Excel 2016-ot, a **adatok** menüszalag, kattintson a **külső adatok beolvasása** > **egyéb forrásokból származó** > **Analysis Services** .
+1. Az Excel 2016-ban a **adatok** menüszalagra, majd **külső adatok beolvasása** > **egyéb forrásokból származó** > **Analysis Services** .
 
-2. Az Adatkapcsolat varázsló a **kiszolgálónév**, adja meg a kiszolgáló nevét, többek között a protokollt és URI-t. Például asazure://westcentralus.asazure.windows.net/advworks. Ezt követően a **bejelentkezési adatok**, jelölje be **használja a következő felhasználónév és jelszó**, és írja be a szervezeti felhasználók nevét, például nancy@adventureworks.com, és a jelszót.
+2. Az Adatkapcsolat varázsló a **kiszolgálónév**, adja meg a kiszolgáló nevét, többek között a protokoll és URI-t. Ha például asazure://westcentralus.asazure.windows.net/advworks. Ezt követően a **bejelentkezési adatok**válassza **használja a következő felhasználónév és jelszó**, majd írja be a szervezeti felhasználó nevét, például nancy@adventureworks.com, és a jelszót.
 
     > [!IMPORTANT]
-    > Bejelentkezés Microsoft-Account, Live ID, Yahoo, Gmail, stb., vagy jelentkezzen be a multi-factor Authentication hitelesítés szükséges, ha a jelszó mezőt hagyja üresen. Kéri a jelszót után kattintson a Tovább gombra. 
+    > Ha bejelentkezett egy Microsoft-Account, Live ID, Yahoo, Gmail, stb., vagy jelentkezzen be a multi-factor authentication nélkül, a jelszó mezőt üresen. Tovább gombra kattintás után a jelszó megerősítését. 
 
-    ![Az Excel bejelentkezéstől csatlakozás](./media/analysis-services-connect-excel/aas-connect-excel-logon.png)
+    ![Kapcsolódás az Excel-bejelentkezés](./media/analysis-services-connect-excel/aas-connect-excel-logon.png)
 
-3. A **adatbázis és tábla kijelölése**, az adatbázis és a modell vagy perspektíva, és kattintson a **Befejezés**.
+3. A **adatbázis és tábla kijelölése**, válassza ki az adatbázis és a modell vagy perspektíva, és kattintson **Befejezés**.
    
-    ![Kapcsolódás Excel válassza modellből](./media/analysis-services-connect-excel/aas-connect-excel-select.png)
+    ![Válassza ki az Excel-modellből csatlakoztatása](./media/analysis-services-connect-excel/aas-connect-excel-select.png)
 
 
 ## <a name="see-also"></a>Lásd még
-[Ügyfél-függvénytárak](analysis-services-data-providers.md)   
-[A kiszolgáló kezelése](analysis-services-manage.md)     
+[Ügyfélkódtárak](analysis-services-data-providers.md)   
+[Kiszolgáló kezelése](analysis-services-manage.md)     
 
 

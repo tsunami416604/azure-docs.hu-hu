@@ -1,39 +1,39 @@
 ---
-title: Az egyéni házirendek az Azure Active Directory B2C jelszó erőssége |} Microsoft Docs
-description: Hogyan konfigurálhat egyéni házirend bonyolult jelszót.
+title: Jelszó erőssége az egyéni házirendek az Azure Active Directory B2C |} A Microsoft Docs
+description: Hogyan kell konfigurálni a bonyolultsági feltételeknek, a jelszót az egyéni házirend.
 services: active-directory-b2c
 author: davidmu1
 manager: mtillman
 ms.service: active-directory
 ms.workload: identity
-ms.topic: article
+ms.topic: conceptual
 ms.date: 08/16/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 6ad205167477715713b58fe06a771c3e683f5c04
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: ed0001d8d88a2604e3128a4d5f7a365aeb7b00b1
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34712164"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37440791"
 ---
-# <a name="configure-password-complexity-in-custom-policies"></a>Állítsa be a jelszó erősségét az egyéni házirendek
+# <a name="configure-password-complexity-in-custom-policies"></a>Jelszó bonyolultsága egyéni szabályzatok konfigurálása
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Ez a cikk egy speciális leírása a jelszó erősségét működésével, és engedélyezve van az Azure AD B2C egyéni házirendekkel.
+Ez a cikk egy speciális leírása, hogyan működik a jelszó bonyolultságát, és engedélyezve van az Azure AD B2C-vel egyéni szabályzatok használatával.
 
-## <a name="azure-ad-b2c-configure-complexity-requirements-for-passwords"></a>Az Azure AD B2C: Bonyolult jelszót konfigurálása
+## <a name="azure-ad-b2c-configure-complexity-requirements-for-passwords"></a>Az Azure AD B2C: Konfigurálja a bonyolultsági feltételeknek, a jelszót
 
-Az Azure Active Directory B2C (az Azure AD B2C) támogatja a bonyolultsági feltételeknek, egy fiók létrehozásakor a felhasználó által megadott jelszavak módosítása.  Alapértelmezés szerint az Azure AD B2C használja **erős** jelszavakat.  Az Azure AD B2C beállítások szabályozzák, hogy az ügyfelek használhatják a összetettségét is támogatja.  Ez a cikk beszél konfigurálása a jelszó erősségét a egyéni házirendekkel.  Az is lehetséges a [állítsa be a jelszó erősségét a beépített házirendek](active-directory-b2c-reference-password-complexity.md).
+Az Azure Active Directory B2C (Azure AD B2C-vel) támogatja a bonyolultsági feltételeknek-fiók létrehozása során a felhasználó által megadott jelszavak módosítása.  Alapértelmezés szerint az Azure AD B2C-t használja **erős** jelszavakat.  Az Azure AD B2C-t is támogatja a konfigurációs beállítások vezérléséhez, amellyel az ügyfelek jelszavak bonyolultságát.  Ez a cikk ismerteti az egyéni házirendek jelszóösszetettség konfigurálása.  Akkor is lehet használni [állítsa a jelszó erősségét a beépített szabályzatok](active-directory-b2c-reference-password-complexity.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Egy helyi fiókot sign-Close-Up/sign-in befejezéséhez, a konfigurált Azure AD B2C-bérlő [bevezetés](active-directory-b2c-get-started-custom.md).
+Az Azure AD B2C-bérlő egy helyi fiók regisztrálási-regisztrálási vagy bejelentkezési, végrehajtásához leírtak szerint konfigurálva [bevezetés](active-directory-b2c-get-started-custom.md).
 
-## <a name="how-to-configure-password-complexity-in-custom-policy"></a>Jelszó erőssége egyéni házirend konfigurálása
+## <a name="how-to-configure-password-complexity-in-custom-policy"></a>Jelszó bonyolultsága konfigurálása egyéni házirendek
 
-Állítsa be a jelszó erősségét egyéni házirendek, az egyéni házirend struktúrájának tartalmaznia kell egy `ClaimsSchema`, `Predicates`, és `InputValidations` elemének `BuildingBlocks`.
+Jelszó bonyolultsága egyéni házirendek konfigurálásához tartalmaznia kell az egyéni házirend általános szerkezete a `ClaimsSchema`, `Predicates`, és `InputValidations` elem belül `BuildingBlocks`.
 
 ```XML
   <BuildingBlocks>
@@ -45,13 +45,13 @@ Egy helyi fiókot sign-Close-Up/sign-in befejezéséhez, a konfigurált Azure AD
 
 Ezek az elemek célja a következőképpen:
 
-- Minden egyes `Predicate` elem definiálja, amely igaz vagy hamis értéket ad vissza alapvető karakterlánc érvényességének ellenőrzése.
-- A `InputValidations` elemnek legalább egy `InputValidation` elemek.  Minden egyes `InputValidation` sorozatának használatával összeállított `Predicate` elemek. Ez az elem lehetővé teszi logikai összesítések (hasonló `and` és `or`).
-- A `ClaimsSchema` határozza meg, milyen jogcímek érvényesítésre kerül.  Majd definiálja, amely `InputValidation` szabály, hogy a jogcím ellenőrzésére szolgál.
+- Minden egyes `Predicate` elem definiálja, amely igaz vagy hamis értéket ad vissza alapszintű karakterlánc érvényességének ellenőrzése.
+- A `InputValidations` elemnek legalább egy `InputValidation` elemeket.  Minden egyes `InputValidation` sorozatának használatával összeállított `Predicate` elemeket. Ez az elem lehetővé teszi, hogy hajtsa végre a logikai összesítések (hasonló `and` és `or`).
+- A `ClaimsSchema` határozza meg, melyik jogcím van kell kiértékelni.  Majd definiálja, amely `InputValidation` szabály az igény ellenőrzésére szolgál.
 
 ### <a name="defining-a-predicate-element"></a>A predikátum elem meghatározása
 
-Predikátumok kétféle módszer van: IsLengthRange vagy MatchesRegex. Tekintsük át, mindegyik egy példát.  Először azt kell MatchesRegex, amely egy reguláris kifejezésnek a feltétel teljesüléséhez példát.  Ebben a példában a megfelelő számokat tartalmazó karakterlánc.
+Predikátumok kétféle módszer van: IsLengthRange vagy MatchesRegex. Tekintsük át az egyes példaként.  Először van MatchesRegex, amelyet egy adott reguláris kifejezésnek egyeznie egy példát.  Ebben a példában megfelelő számokat tartalmazó karakterlánc.
 
 ```XML
       <Predicate Id="PIN" Method="MatchesRegex" HelpText="The password must be a pin.">
@@ -61,7 +61,7 @@ Predikátumok kétféle módszer van: IsLengthRange vagy MatchesRegex. Tekintsü
       </Predicate>
 ```
 
-Következő tekintsük át, IsLengthRange példát.  Ez a módszer egy minimális és maximális hossza vesz igénybe.
+Tovább vizsgáljuk meg IsLengthRange példát.  Ez a módszer egy minimális és maximális karakterlánchossz vesz igénybe.
 
 ```XML
       <Predicate Id="Length" Method="IsLengthRange" HelpText="The password must be between 8 and 16 characters.">
@@ -72,11 +72,11 @@ Következő tekintsük át, IsLengthRange példát.  Ez a módszer egy minimáli
       </Predicate>
 ```
 
-Használja a `HelpText` attribútumot a végfelhasználók számára megjelenik egy hibaüzenet, ha az ellenőrzés sikertelen.  Ez a karakterlánc honosítható használatával a [nyelvi testreszabási szolgáltatás](active-directory-b2c-reference-language-customization.md).
+Használja a `HelpText` attribútum biztosít a végfelhasználók számára egy hibaüzenet, ha az ellenőrzés sikertelen.  Ez a karakterlánc honosítható használatával a [nyelvi testreszabási funkcióról](active-directory-b2c-reference-language-customization.md).
 
-### <a name="defining-an-inputvalidation-element"></a>Egy InputValidation elem meghatározása
+### <a name="defining-an-inputvalidation-element"></a>InputValidation elem meghatározása
 
-Egy `InputValidation` összessége `PredicateReferences`. Minden egyes `PredicateReferences` kell teljesülnie ahhoz, hogy a `InputValidation` sikeres.  Azonban belül a `PredicateReferences` attribútum nevű elem használatát `MatchAtLeast` adja meg, hogy hány `PredicateReference` ellenőrzések igaz értéket kell visszaadjon.  Szükség esetén adja meg a `HelpText` definiált bírálja felül a hibaüzenet a következő attribútumot az `Predicate` általa hivatkozott elemeket.
+Egy `InputValidation` összessége `PredicateReferences`. Minden egyes `PredicateReferences` ahhoz, hogy igaznak kell lennie a `InputValidation` sikeres.  Azonban belül a `PredicateReferences` attribútum nevű elem használata `MatchAtLeast` adja meg, hogy hány `PredicateReference` ellenőrzések igaz értéket ad vissza kell.  Szükség esetén adja meg egy `HelpText` meghatározott attribútum felülbírálhatja a hibaüzenet a `Predicate` általa hivatkozott elemeket.
 
 ```XML
       <InputValidation Id="PasswordValidation">
@@ -94,7 +94,7 @@ Egy `InputValidation` összessége `PredicateReferences`. Minden egyes `Predicat
 
 ### <a name="defining-a-claimsschema-element"></a>Egy ClaimsSchema elem meghatározása
 
-A jogcímtípusok `newPassword` és `reenterPassword` minősülnek különleges, ezért nem módosítható a neve.  A felhasználói felület ellenőrzi a felhasználó helytelenül reentered ezek alapján számítógépfiók létrehozása közben a jelszavát `ClaimType` elemek.  Azonos található `ClaimType` elemek, tekintse meg az alapszintű csomag TrustFrameworkBase.xml.  Újdonságok ebben a példában a rendszer, hogy a Microsoft ezeket az elemeket meghatározásához mérvadóak egy `InputValidationReference`. A `ID` az új elem attribútuma mutat a `InputValidation` elem, amely meghatározott.
+A jogcímtípusok `newPassword` és `reenterPassword` számítanak speciális, így ne módosítsa a nevét.  A felhasználói felület érvényesíti a felhasználó megfelelően ezek alapján fiók létrehozása során a jelszó reentered `ClaimType` elemeket.  Található azonos `ClaimType` elemeket, tekintse meg a TrustFrameworkBase.xml az alapszintű csomagban.  Azt határozza meg ezeknek az elemeknek mérvadóak újdonságok ebben a példában a rendszer egy `InputValidationReference`. A `ID` attribútum ezen új elem arra mutat-e a `InputValidation` elemben meghatározott.
 
 ```XML
     <ClaimsSchema>
@@ -109,17 +109,17 @@ A jogcímtípusok `newPassword` és `reenterPassword` minősülnek különleges,
 
 ### <a name="putting-it-all-together"></a>A teljes kép
 
-A példa bemutatja, hogyan minden a illeszkednek egymáshoz az egyes működő házirend létrehozásához.  Ez a példa használata:
+Ez a példa bemutatja, hogyan minden a helyére illeszkednek egymáshoz az űrlap egy működő házirend.  Ebben a példában használata:
 
-1. Az előfeltétel utasításait [bevezetés](active-directory-b2c-get-started-custom.md) letöltéséhez, konfigurálása, és töltse fel TrustFrameworkBase.xml és TrustFrameworkExtensions.xml
-1. Hozzon létre egy SignUporSignIn.xml fájlt, például tartalom ebben a szakaszban.
+1. Kövesse az előfeltételt a [bevezetés](active-directory-b2c-get-started-custom.md) letöltéséhez, konfigurálása, és töltse fel a TrustFrameworkBase.xml és TrustFrameworkExtensions.xml
+1. Hozzon létre egy SignUporSignIn.xml fájlt a példa tartalom ebben a szakaszban.
 1. Frissítse a SignUporSignIn.xml cseréje `yourtenant` együtt az Azure AD B2C bérlő neve.
-1. Töltse fel a SignUporSignIn.xml házirendfájl utolsó.
+1. Utolsó töltse fel a SignUporSignIn.xml házirendfájl.
 
-Ez a példa egy PIN-kód jelszavak ellenőrzése és egy erős jelszót tartalmazza:
+Ebben a példában egy PIN-kód jelszavak érvényesítése és a egy erős jelszót a tartalmazza:
 
-- Keressen `PINpassword`. Ez `InputValidation` elem érvényesíti a PIN-kód hossza.  Nem használható időpontjában, mert az nem hivatkozik a `InputValidationReference` elemének `ClaimType`. 
-- Keressen `PasswordValidation`. Ez `InputValidation` elem érvényesíti a jelszó 8 – 16 karakterből, és tartalmaz számokat, kis- és nagybetűk, 4, 3 vagy szimbólum.  A hivatkozott `ClaimType`.  Ezért ez a szabály a házirend van érvényben.
+- Keressen `PINpassword`. Ez `InputValidation` elem érvényesíti a PIN-kód hossza.  Nincs használatban a időpontban, mert nem hivatkozik rá a `InputValidationReference` elem belül `ClaimType`. 
+- Keressen `PasswordValidation`. Ez `InputValidation` elem érvényesíti a jelszó 8 – 16 karakterből, és tartalmazza a szám, nagybetű, kisbetű, 4, 3 vagy szimbólumokat.  Hivatkozik rá `ClaimType`.  Ezért ez a szabály van a házirend érvényben.
 
 ```XML
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>

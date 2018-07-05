@@ -1,6 +1,6 @@
 ---
-title: Az Azure AD fiókok megosztása |} Microsoft Docs
-description: Ismerteti, hogyan Azure Active Directory lehetővé teszi, hogy a szervezetek biztonságosan megosztani a fiókok a helyszíni alkalmazások és a fogyasztói felhőszolgáltatások.
+title: Az Azure AD-vel fiókok megosztása |} A Microsoft Docs
+description: Ismerteti, hogyan Azure Active Directory lehetővé teszi a szervezetek biztonságosan megoszthassák a fiókok a helyszíni alkalmazások és fogyasztói felhőalapú szolgáltatásai.
 services: active-directory
 documentationcenter: ''
 author: curtand
@@ -14,64 +14,64 @@ ms.date: 11/13/2017
 ms.author: curtand
 ms.reviewer: jeffsta
 ms.custom: it-pro
-ms.openlocfilehash: 7a58fca716389f35db7312948674e86b3104fe62
-ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
+ms.openlocfilehash: c8d7f1f5b793fcb684e9896bb93213a23d489860
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/21/2018
-ms.locfileid: "36307996"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37448543"
 ---
-# <a name="sharing-accounts-with-azure-ad"></a>Fiókok megosztása az Azure ad szolgáltatással
+# <a name="sharing-accounts-with-azure-ad"></a>Az Azure AD-fiókok megosztása
 ## <a name="overview"></a>Áttekintés
-Néha szervezetek egyetlen felhasználónév és jelszó a szüksége több ember, amely két esetben általában akkor fordul elő:
+Néha a szervezetnek kell több személy, amely két esetben általában akkor fordul elő egyetlen felhasználónév és jelszó használata:
 
-* Történő hozzáféréskor alkalmazásokat, amelyek minden felhasználóhoz egyedi bejelentkezés és jelszó kérése, hogy a helyszíni alkalmazások vagy a felhasználó a felhőalapú szolgáltatások (például vállalati közösségi fiókok).
-* Többfelhasználós környezet létrehozásakor. Lehetséges, hogy egy egyetlen, helyi fiók emelt szintű jogosultságokkal, és központi telepítése, a felügyeleti és a helyreállítási tevékenységeket szolgál. Például a helyi "globális rendszergazda" fiók számára az Office 365 vagy a rendszergazdafiók a Salesforce-ban.
+* Minden felhasználó egy egyedi bejelentkezési és a jelszót igénylő alkalmazások elérésekor e a helyszíni alkalmazások vagy a felhasználó a cloud services (például vállalati közösségimédia-fiókokat).
+* Többfelhasználós környezet létrehozásakor. Előfordulhat, hogy egy egyetlen, helyi fiók emelt szintű jogosultságokkal rendelkező és központi telepítéséhez, a felügyelet és a helyreállítási tevékenységeket szolgál. Például a helyi "globális rendszergazda" fiók az Office 365 vagy a rendszergazdai fiók, a Salesforce-ban.
 
-Hagyományosan ezek a fiókok osztanak meg a hitelesítő adatokat (felhasználónév és jelszó) terjesztése a megfelelő személyeknek, vagy tárolja őket egy megosztott hely, ahol több megbízható ügynök hozzájuk férhetnek.
+Hagyományosan ezeket a fiókokat osztanak meg a hitelesítő adatok (felhasználónév és jelszó) terjesztése, a megfelelő személyekhez vagy tárolja őket egy megosztott hely, ahol több megbízható ügynök hozzájuk férhetnek.
 
-A hagyományos megosztási modellnek több hátrányai:
+A hagyományos megosztási modellje több hátrányai:
 
-* Új alkalmazásokhoz való hozzáférés engedélyezése kell terjeszteni a hitelesítő adatokat mindenki számára, amelyek engedéllyel kell rendelkeznie.
-* Minden megosztott alkalmazás a saját egyedi készletének megosztott hitelesítő adatokat igénylő felhasználók menthetik a hitelesítő adatok több példányban lehet szükség. Ha a felhasználók sok hitelesítő adatok megjegyzése, a kockázat növeli a kockázatos gyakorlatát használhatja. (például írás a jelszavak le).
-* Nem sikerült megállapítani, ki férhet hozzá az alkalmazás.
-* Nem sikerült megállapítani a kik *elért* kérelmet.
-* Ha el szeretné távolítani a hozzáférést egy alkalmazáshoz, ki kell frissítenie kell a hitelesítő adatokat és terjesztenie a Mindenki hozzá kell férnie az alkalmazást.
+* Új alkalmazás-hozzáférés engedélyezése között oszthatja el a szükséges hitelesítő adatokat mindenki számára hozzáférés szükséges.
+* Minden megosztott alkalmazásban szükség lehet megosztott hitelesítő adatokat igénylő több hitelesítőadat-készletek, ne feledje, hogy a felhasználók a saját egyedi készletét. Ha a felhasználók számos hitelesítő adatok megjegyzése, a kockázat növeli a kockázatos gyakorlatát használhatja. (például jelszavak le írása).
+* Nem lehet megállapítani, ki férhet hozzá az alkalmazáshoz.
+* Nem állapítható meg, kik *elért* egy alkalmazást.
+* Ha el kívánja távolítani a hozzáférést egy alkalmazáshoz, frissítse a hitelesítő adatokat, és mindenki számára, amelyek hozzáférést igénylő terjesztenie rendelkezik.
 
 ## <a name="azure-active-directory-account-sharing"></a>Az Azure Active Directory fiók megosztása
-Az Azure AD egy új megközelítését ismerteti megosztott fiókok használatát, amely kiküszöböli a hátrányai is.
+Az Azure AD új módszert biztosít a megosztott fiókok használatát, amely megszünteti a hátrányai.
 
-Az Azure AD-rendszergazda konfigurálja az adott alkalmazáshoz megfelelő egy felhasználó hozzáférhessen a hozzáférési panelen, majd válassza az egyszeri bejelentkezés legjobb típusú alkalmazásokat. Egy adott típusú *jelszó-alapú egyszeri bejelentkezést*, lehetővé teszi, hogy az Azure AD egy "broker" típusú összekötőként az alkalmazáshoz a bejelentkezési folyamat során.
+Az Azure AD-rendszergazda konfigurálja az adott alkalmazáshoz megfelelő felhasználó érheti el a hozzáférési panelen, majd válassza az egyszeri bejelentkezés legjobb típusú alkalmazásokat. Ezek a típusok egyikével *jelszavas egyszeri bejelentkezéses*, lehetővé teszi, hogy az Azure AD működjön, a "broker" típusú, amelyet az alkalmazás bejelentkezési folyamata során.
 
-Felhasználói bejelentkezés egyszer a szervezeti fiókjukkal. Ez a fiók megegyezik egy rendszeresen használják az asztalon vagy e-mailek elérésére. Ugyanakkor felderítése és hozzáférési csak ezeket az alkalmazásokat, amelyek vannak rendelve. A megosztott-fiókokkal ebben a listában, az alkalmazások tartalmazhatnak tetszőleges számú megosztott hitelesítési adatok. Ne feledje, vagy írja le a különböző fiókokról, lehetséges, hogy használja a végfelhasználó nem szükséges.
+Felhasználói bejelentkezés szervezeti fiókkal egyszer. Ez a fiók megegyezik egy rendszeresen használnak az asztalon vagy e-mailek eléréséhez. Felderíti, és csak a hozzárendelt alkalmazások eléréséhez. A megosztott fiókok esetében az alkalmazások listájának tartalmazhat tetszőleges számú megosztott hitelesítő adatokat. Ne felejtse el, vagy írja fel a különböző fiókokról, lehet, hogy használja a végfelhasználónak nem szükséges.
 
-Megosztott fiókok csak nem növeli a felügyeletet, valamint javítja a használhatóság, akkor is a megfelelő biztonság érdekében. A hitelesítő adatok használatát a felhasználók a megosztott jelszó nem látható, de ahelyett, hogy kérjen engedélyt azokhoz, a jelszó használatát egy hitelesítési vezénylését folyamat részeként. További egyes jelszó SSO alkalmazások az Azure AD-be rendszeresen váltása (frissítés) jelszavak használata lehetőséget ad. A rendszer használja nagy, összetett jelszót, amely növeli a fiók biztonságát. A rendszergazda könnyen megadni vagy visszavonni a hozzáférést egy alkalmazást, tudni fogja, kik férhetnek hozzá a fiókot, és ki fért hozzá azt a múltban.
+Közös fiókok nem csak növelni a felügyeletet és a modulok használhatóságának fejlesztésében, is növelheti a biztonságot. A hitelesítő adatok engedélyekkel rendelkező felhasználók nem jelenik meg a megosztott jelszót, de inkább beolvasása egy előkészített hitelesítési folyamat részeként a jelszót használni kívánt engedélyeket. További egyes jelszó SSO-alkalmazások lehetővé teszi az, hogy rendszeres időközönként (frissítés) helyettesítő jelszavak az Azure AD használatával. A rendszer nagy, összetett jelszavakat használja, ami növeli a fiók biztonságát. A rendszergazda könnyen engedélyezheti vagy visszavonhatja a hozzáférést egy alkalmazást, tudja, ki férhet hozzá a fiókot, és ki fért hozzá, az elmúlt.
 
-Az Azure AD a nagyvállalati mobilitási csomag (EMS), prémium vagy alapszintű kiadásra esetén támogatja a megosztott fiókokat licenccel rendelkező felhasználók, minden típusú jelszó egyszeri bejelentkezés alkalmazások között. Bármely több ezer előre integrált alkalmazások, az alkalmazás katalógusában fiókok megoszthatja, és hozzáadhatja a saját jelszó hitelesítése alkalmazás [egyéni SSO alkalmazások](manage-apps/configure-single-sign-on-portal.md).
+Az Azure AD támogatja közös fiókok minden olyan nagyvállalati mobilitási csomag (EMS), a prémium szintű vagy alapszintű licenccel rendelkező felhasználók, a különböző típusú jelszó egyszeri bejelentkezéses alkalmazások. Megoszthat bármely több ezer előre integrált alkalmazások az alkalmazás katalógusában, fiókok, és hozzáadhatja a saját jelszó-hitelesítés alkalmazását [egyéni SSO-alkalmazások](manage-apps/configure-single-sign-on-portal.md).
 
-Az Azure AD-funkciókat, amelyek lehetővé teszik a fiók megosztása a következők:
+Fiók megosztásának engedélyezése az Azure AD-funkciók a következők:
 
-* [Jelszó egyszeri bejelentkezést.](manage-apps/what-is-single-sign-on.md#password-based-single-sign-on)
-* Jelszó egyszeri bejelentkezés ügynök
-* [Csoport-hozzárendelés](active-directory-accessmanagement-self-service-group-management.md)
+* [Jelszavas egyszeri bejelentkezés](manage-apps/what-is-single-sign-on.md#password-based-single-sign-on)
+* Jelszó egyszeri bejelentkezéses ügynök
+* [Csoport-hozzárendelés](users-groups-roles/groups-self-service-management.md)
 * Egyéni jelszó alkalmazások
-* [Alkalmazás használati irányítópult/jelentések](active-directory-passwords-get-insights.md)
-* Végfelhasználói hozzáférés portálok
-* [Alkalmazás proxy](manage-apps/application-proxy.md)
-* [Active Directory Marketplace-ről](https://azure.microsoft.com/marketplace/active-directory/all/)
+* [Alkalmazás használati irányítópult és jelentések](active-directory-passwords-get-insights.md)
+* Végfelhasználói hozzáférés portállal
+* [Alkalmazásproxy](manage-apps/application-proxy.md)
+* [Az Active Directory Marketplace-ről](https://azure.microsoft.com/marketplace/active-directory/all/)
 
 ## <a name="sharing-an-account"></a>Egy fiók megosztása
-Az Azure AD használatával megoszthatja a fiók, meg kell:
+Az Azure AD-fiók használata, kell tennie:
 
 * Alkalmazás hozzáadása [alkalmazásgyűjtemény](https://azure.microsoft.com/marketplace/active-directory/) vagy [egyéni alkalmazás](https://cloudblogs.microsoft.com/enterprisemobility/2015/06/17/bring-your-own-app-with-azure-ad-self-service-saml-configuration-now-in-preview/)
-* A jelszó egyszeri bejelentkezés (SSO) az alkalmazás beállítása
-* Használjon [biztonságicsoport-alapú hozzárendelés](active-directory-accessmanagement-group-saasapps.md) , és jelölje be a megosztott hitelesítő adatok megadása
-* Választható lehetőség: az egyes alkalmazások, például a Facebook, a Twitter és a LinkedIn, engedélyezheti a kívánt beállítást [az Azure AD automatikus jelszó során](https://cloudblogs.microsoft.com/enterprisemobility/2015/02/20/azure-ad-automated-password-roll-over-for-facebook-twitter-and-linkedin-now-in-preview/)
+* A jelszó egyszeri bejelentkezéses (SSO) az alkalmazás konfigurálása
+* Használat [Csoportalapú](users-groups-roles/groups-saasapps.md) és választja, adja meg egy megosztott hitelesítő adatok
+* Választható lehetőség: az egyes alkalmazások, például Facebook, Twitter vagy LinkedIn, engedélyezheti a kívánt beállítást [az Azure AD automatikus jelszó vihetők át](https://cloudblogs.microsoft.com/enterprisemobility/2015/02/20/azure-ad-automated-password-roll-over-for-facebook-twitter-and-linkedin-now-in-preview/)
 
-Végezhet is megosztott fiókja biztonságát erősítik a multi-factor Authentication (MFA) (További információ [biztonságossá tétele az alkalmazások az Azure ad-val](authentication/concept-mfa-whichversion.md)) és delegálhatja, hogy kik férhetnek hozzá a használóalkalmazásokkezelése[ Az Azure AD-önkiszolgáló](active-directory-accessmanagement-self-service-group-management.md) felügyeleti csoportban.
+Is teheti a megosztott fiókkal biztonságosabb a multi-factor Authentication (MFA) (További információ [az Azure AD-alkalmazások védelme](authentication/concept-mfa-whichversion.md)), és képes kezelni, ki férhet hozzá az alkalmazás használatával delegálhat[ Az Azure AD önkiszolgáló](users-groups-roles/groups-self-service-management.md) felügyeleti csoportban.
 
 ## <a name="related-articles"></a>Kapcsolódó cikkek
 * [Az Azure Active Directory segítségével végzett alkalmazásfelügyeletre vonatkozó cikkek jegyzéke](active-directory-apps-index.md)
 * [Feltételes hozzáféréssel rendelkező alkalmazások védelme](active-directory-conditional-access-azure-portal.md)
-* [Önkiszolgáló csoportkezelési felügyeleti/SSAA](active-directory-accessmanagement-self-service-group-management.md)
+* [Önkiszolgáló csoport felügyeleti/SSAA](users-groups-roles/groups-self-service-management.md)
 

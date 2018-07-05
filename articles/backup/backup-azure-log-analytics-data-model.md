@@ -1,284 +1,284 @@
 ---
 title: Log Analytics-adatmodell az Azure Backuphoz
-description: Ez a cikk beszél Naplóelemzési az modell adatait az Azure biztonságimásolat-adatok.
+description: Ez a cikk ismerteti a Log Analytics data modell részletei az Azure biztonsági mentési adatok.
 services: backup
-author: JPallavi
-manager: vijayts
+author: adiganmsft
+manager: shivamg
 ms.service: backup
 ms.topic: conceptual
 ms.date: 07/24/2017
-ms.author: pajosh
+ms.author: adigan
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 5a2ba1d523e7a6364420302eee095f24fd08eadb
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 32ce9cb456e302647e2e09db6ed549cd4795fed7
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34605773"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37448390"
 ---
-# <a name="log-analytics-data-model-for-azure-backup-data"></a>Napló Analytics adatmodell Azure biztonságimásolat-adatok
-Ez a cikk ismerteti a tárházat a jelentésadatok szolgáltatáshoz használt adatmodell. A adatok modell segítségével hozhat létre egyéni lekérdezéseket, irányítópultok, és a Naplóelemzési felhasználható az. 
+# <a name="log-analytics-data-model-for-azure-backup-data"></a>Log Analytics-adatmodell az Azure biztonsági mentési adatok
+A Log Analytics data model használatával jelentéseket készíthet. Az adatmodellel egyéni lekérdezéseket és irányítópultokat hozhat létre, vagy testre szabhatja az Azure biztonsági mentési adatok, tetszés.
 
-## <a name="using-azure-backup-data-model"></a>Azure biztonsági mentési adatok modell segítségével
-Az adatmodell részeként a következő mezők hozhat létre a látványelemek, egyéni lekérdezések és irányítópult a követelményeknek.
+## <a name="using-azure-backup-data-model"></a>Az Azure Backup data modellel
+Használhatja az adatmodellt részeként a következő mezőket igény szerint Vizualizációk, az egyéni lekérdezések és az irányítópult létrehozásához.
 
 ### <a name="alert"></a>Riasztás
-Ez a táblázat ismerteti a riasztási kapcsolódó mezők.
+Ez a táblázat részletesen riasztási kapcsolódó mezőket.
 
 | Mező | Adattípus | Leírás |
 | --- | --- | --- |
 | AlertUniqueId_s |Szöveg |A generált riasztások egyedi azonosítója |
-| AlertType_s |Szöveg |A generált riasztások, például biztonsági mentés típusa |
-| AlertStatus_s |Szöveg |A riasztásra, például aktív állapota |
-| AlertOccurenceDateTime_s |Dátum/idő |Dátum és a riasztás létrehozásának időpontja |
-| AlertSeverity_s |Szöveg |A riasztás súlyossága, például kritikus |
-| EventName_s |Szöveg |Ez a mező képviseli az esemény nevét, a rendszer mindig AzureBackupCentralReport |
-| BackupItemUniqueId_s |Szöveg |A biztonsági mentési, amelyhez ez a riasztás tartozik elem egyedi azonosítója |
-| SchemaVersion_s |Szöveg |Ebben a mezőben a séma jelenlegi verziója azt jelzi, hogy az **1-es verzió** |
+| AlertType_s |Szöveg |Riasztás, ha például biztonsági mentés típusa |
+| AlertStatus_s |Szöveg |A riasztás állapotának, például aktív |
+| AlertOccurenceDateTime_s |Dátum/idő |Dátum és idő, a riasztás létrehozásakor |
+| AlertSeverity_s |Szöveg |A riasztás súlyosságát, például kritikus |
+| EventName_s |Szöveg |Az esemény neve. Mindig AzureBackupCentralReport |
+| BackupItemUniqueId_s |Szöveg |A riasztáshoz tartozó biztonsági mentési elem egyedi azonosítója |
+| SchemaVersion_s |Szöveg |A séma, például jelenlegi verziója **V1** |
 | State_s |Szöveg |A riasztási, például az aktív, a törölt objektum jelenlegi állapota |
-| BackupManagementType_s |Szöveg |A biztonsági mentés, például IaaSVM FileFolder, amelyhez ez a riasztás tartozik végrehajtásához szolgáltató típusa |
-| OperationName |Szöveg |Ez a mező képviseli az aktuális művelet - a riasztás neve |
-| Kategória |Szöveg |Ez a mező képviseli kategória Naplóelemzési leküldve diagnosztikai adatok, a AzureBackupReport |
-| Erőforrás |Szöveg |Ez az erőforrás, amelynek gyűjtenek adatokat, azt mutatja, hogy Recovery Services-tároló neve |
-| ProtectedServerUniqueId_s |Szöveg |A védett az egyedi azonosítója, amelyhez ez a riasztás tartozik |
-| VaultUniqueId_s |Szöveg |A védett az egyedi azonosítója, amelyhez ez a riasztás tartozik |
+| BackupManagementType_s |Szöveg |Szolgáltató típusa végrehajtásához, amelyhez ez a riasztás tartozik, a biztonsági mentés, például IaaSVM fájlmappa |
+| OperationName |Szöveg |Az aktuális művelet, például a riasztás neve |
+| Kategória |Szöveg |Diagnosztikai adatok a Log Analytics szolgáltatásba leküldött kategóriáját. Mindig AzureBackupReport |
+| Erőforrás |Szöveg |Ez az erőforrás, amelynek adatokat gyűjteni, azt mutatja, hogy a helyreállítási tár neve |
+| ProtectedServerUniqueId_s |Szöveg |A védett kiszolgálón, a riasztáshoz tartozó egyedi azonosítója |
+| VaultUniqueId_s |Szöveg |A védett tárolóhoz a riasztáshoz tartozó egyedi azonosítója |
 | SourceSystem |Szöveg |A forrásrendszerben az aktuális adatok – Azure |
-| ResourceId |Szöveg |Ez a mező jelöli erőforrás-azonosító, amelynek gyűjtenek adatokat, azt illusztrálja a Recovery Services-tároló erőforrás-azonosító |
-| SubscriptionId |Szöveg |Ez a mező képviseli az erőforrás (RS tároló), amelynek gyűjtenek adatokat előfizetés-azonosító |
-| ResourceGroup |Szöveg |Ez a mező képviseli az erőforrás (RS tároló), amelynek gyűjtenek adatokat erőforráscsoport |
-| ResourceProvider |Szöveg |Ez a mező képviseli az erőforrás-szolgáltató, amelynek folyik adatgyűjtés - Microsoft.RecoveryServices |
-| ResourceType |Szöveg |Ez a mező képviseli az erőforrást, amelyre folyik adatgyűjtés - tárolók típusú |
+| ResourceId |Szöveg |Arról, hogy mely adatok gyűjtése az erőforrás egyedi azonosítója. Ha például egy Recovery Services vault erőforrás-azonosító |
+| SubscriptionId |Szöveg |Az erőforrás (például az előfizetés-azonosító Recovery Services-tároló), amelynek az adatgyűjtés történik |
+| ResourceGroup |Szöveg |Az erőforrás (például erőforráscsoport Recovery Services-tároló), amelynek az adatgyűjtés történik |
+| ResourceProvider |Szöveg |Erőforrás-szolgáltató, amelynek az adatgyűjtés történik. Ha például a Microsoft.recoveryservices szolgáltatónál |
+| ResourceType |Szöveg |Erőforrás típusa, amelynek az adatgyűjtés történik. Ha például a tárolók |
 
 ### <a name="backupitem"></a>BackupItem
-Ez a táblázat ismerteti a biztonsági mentési elem kapcsolatos mezők.
+Ez a táblázat részletesen a biztonsági mentési elem kapcsolatos mezőket.
 
 | Mező | Adattípus | Leírás |
 | --- | --- | --- |
-| EventName_s |Szöveg |Ez a mező képviseli az esemény nevét, a rendszer mindig AzureBackupCentralReport |  
+| EventName_s |Szöveg |Az esemény neve. Mindig AzureBackupCentralReport |  
 | BackupItemUniqueId_s |Szöveg |A biztonsági mentési elem egyedi azonosítója |
 | BackupItemId_s |Szöveg |Biztonsági mentési elem azonosítója |
-| BackupItemName_s |Szöveg |Biztonsági mentési elem neve |
-| BackupItemFriendlyName_s |Szöveg |Biztonsági mentési elem rövid neve |
-| BackupItemType_s |Szöveg |Biztonsági mentési elem, például a virtuális gép, FileFolder típusa |
-| ProtectedServerName_s |Szöveg |Tartozik, mely biztonsági mentési elemet a védett kiszolgáló neve |
-| ProtectionState_s |Szöveg |A biztonsági mentési elem, például a védett, a ProtectionStopped aktuális védelmi állapot |
-| SchemaVersion_s |Szöveg |Ebben a mezőben a séma jelenlegi verziója azt jelzi, hogy az **1-es verzió** |
-| State_s |Szöveg |A biztonsági mentési elem objektum, például az aktív, a törölt aktuális állapotát |
-| BackupManagementType_s |Szöveg |A biztonsági mentés, például IaaSVM FileFolder, amelyre a biztonsági mentési cikkhez tartozó végrehajtásához szolgáltató típusa |
-| OperationName |Szöveg |Ez a mező képviseli az aktuális művelet - BackupItem neve |
-| Kategória |Szöveg |Ez a mező képviseli kategória Naplóelemzési leküldve diagnosztikai adatok, a AzureBackupReport |
-| Erőforrás |Szöveg |Ez az erőforrás, amelynek gyűjtenek adatokat, azt mutatja, hogy Recovery Services-tároló neve |
+| BackupItemName_s |Szöveg |Biztonsági másolati elem nevét |
+| BackupItemFriendlyName_s |Szöveg |Biztonságimásolat-elem rövid neve |
+| BackupItemType_s |Szöveg |Biztonsági mentési elem, például a virtuális gép, fájlmappa típusa |
+| ProtectedServerName_s |Szöveg |Védett kiszolgáló melyik biztonsági másolati elem nevét tartozik |
+| ProtectionState_s |Szöveg |A biztonsági másolati elem, például a védett, ProtectionStopped aktuális védelmi állapotát |
+| SchemaVersion_s |Szöveg |Ha például a séma verziója **V1** |
+| State_s |Szöveg |A biztonsági másolati elem objektum, például az aktív, a törölt állapota |
+| BackupManagementType_s |Szöveg |Szolgáltató típusát, amelyre a biztonsági mentési cikkhez tartozó biztonsági mentési, például IaaSVM fájlmappa végrehajtásához |
+| OperationName |Szöveg |A művelet, például BackupItem neve |
+| Kategória |Szöveg |Diagnosztikai adatok a Log Analytics szolgáltatásba leküldött kategóriáját. Mindig AzureBackupReport |
+| Erőforrás |Szöveg |Összegyűjtött adatok erőforrás, például a helyreállítási tár neve |
 | SourceSystem |Szöveg |A forrásrendszerben az aktuális adatok – Azure |
-| ResourceId |Szöveg |Ez a mező jelöli erőforrás-azonosító, amelynek gyűjtenek adatokat, azt illusztrálja a Recovery Services-tároló erőforrás-azonosító |
-| SubscriptionId |Szöveg |Ez a mező képviseli az erőforrás (RS tároló), amelynek gyűjtenek adatokat előfizetés-azonosító |
-| ResourceGroup |Szöveg |Ez a mező képviseli az erőforrás (RS tároló), amelynek gyűjtenek adatokat erőforráscsoport |
-| ResourceProvider |Szöveg |Ez a mező képviseli az erőforrás-szolgáltató, amelynek folyik adatgyűjtés - Microsoft.RecoveryServices |
-| ResourceType |Szöveg |Ez a mező képviseli az erőforrást, amelyre folyik adatgyűjtés - tárolók típusú |
+| ResourceId |Szöveg |Erőforrás-azonosító a begyűjtött adatok, például Recovery Services-tároló az erőforrás-azonosító |
+| SubscriptionId |Szöveg |Az erőforrás előfizetés-azonosító (az ex. Recovery Services-tároló) gyűjtött adatok |
+| ResourceGroup |Szöveg |Az erőforrás erőforráscsoportot (az ex. Recovery Services-tároló) gyűjtött adatok |
+| ResourceProvider |Szöveg |Erőforrás-szolgáltató adatokat gyűjtenek, például a Microsoft.recoveryservices szolgáltatónál |
+| ResourceType |Szöveg |Az erőforrás számára gyűjtött adatok típusától, írja be például, tárolók |
 
 ### <a name="backupitemassociation"></a>BackupItemAssociation
-A táblázat ismerteti a különböző entitásokkal biztonsági mentési elem társításokat.
+Ez a táblázat a különböző entitások biztonsági másolati elem társítások részletesen ismerteti.
 
 | Mező | Adattípus | Leírás |
 | --- | --- | --- |
 | EventName_s |Szöveg |Ez a mező képviseli az esemény nevét, a rendszer mindig AzureBackupCentralReport |  
-| BackupItemUniqueId_s |Szöveg |A biztonsági mentési elem egyedi azonosítója |
-| SchemaVersion_s |Szöveg |Ebben a mezőben a séma jelenlegi verziója azt jelzi, hogy az **1-es verzió** |
-| State_s |Szöveg |A biztonsági mentési elem társítás objektum, például az aktív, a törölt aktuális állapotát |
-| BackupManagementType_s |Szöveg |A biztonsági mentés, például IaaSVM FileFolder, amelyre a biztonsági mentési cikkhez tartozó végrehajtásához szolgáltató típusa |
-| OperationName |Szöveg |Ez a mező képviseli az aktuális művelet - BackupItemAssociation neve |
-| Kategória |Szöveg |Ez a mező képviseli kategória Naplóelemzési leküldve diagnosztikai adatok, a AzureBackupReport |
-| Erőforrás |Szöveg |Ez az erőforrás, amelynek gyűjtenek adatokat, azt mutatja, hogy Recovery Services-tároló neve |
-| PolicyUniqueId_g |Szöveg |A házirend, mely biztonsági mentési elem társítva-egyedi azonosítója |
-| ProtectedServerUniqueId_s |Szöveg |A védett kiszolgáló, amelyhez a biztonsági mentési cikkhez tartozó egyedi azonosító |
-| VaultUniqueId_s |Szöveg |A tároló, amelyre a biztonsági mentési cikkhez tartozó egyedi azonosító |
+| BackupItemUniqueId_s |Szöveg |A biztonsági másolati elem egyedi azonosítója |
+| SchemaVersion_s |Szöveg |Ebben a mezőben azt jelzi, hogy a jelenlegi verzióját, a sémát, hogy az **V1** |
+| State_s |Szöveg |A biztonsági másolati elem társítás objektum, például az aktív, a törölt aktuális állapotát |
+| BackupManagementType_s |Szöveg |Ennek során a biztonsági mentési feladat, például IaaSVM, fájlmappa kiszolgáló a szolgáltató típusát |
+| OperationName |Szöveg |Ez a mező képviseli az aktuális művelet – BackupItemAssociation neve |
+| Kategória |Szöveg |Ez a mező képviseli a diagnosztikai adatok a Log Analytics szolgáltatásba leküldött kategória, AzureBackupReport |
+| Erőforrás |Szöveg |Ez az erőforrás, amelynek adatokat gyűjteni, azt mutatja, hogy a helyreállítási tár neve |
+| PolicyUniqueId_g |Szöveg |A szabályzathoz társított a biztonságimásolat-elem egyedi azonosítója |
+| ProtectedServerUniqueId_s |Szöveg |A védett kiszolgálón, a biztonsági mentési elemhez társított egyedi azonosítója |
+| VaultUniqueId_s |Szöveg |A tárolóban, amely tartalmazza a biztonsági másolati elem egyedi azonosítója |
 | SourceSystem |Szöveg |A forrásrendszerben az aktuális adatok – Azure |
-| ResourceId |Szöveg |Ez a mező jelöli erőforrás-azonosító, amelynek gyűjtenek adatokat, azt illusztrálja a Recovery Services-tároló erőforrás-azonosító |
-| SubscriptionId |Szöveg |Ez a mező képviseli az erőforrás (RS tároló), amelynek gyűjtenek adatokat előfizetés-azonosító |
-| ResourceGroup |Szöveg |Ez a mező képviseli az erőforrás (RS tároló), amelynek gyűjtenek adatokat erőforráscsoport |
-| ResourceProvider |Szöveg |Ez a mező képviseli az erőforrás-szolgáltató, amelynek folyik adatgyűjtés - Microsoft.RecoveryServices |
-| ResourceType |Szöveg |Ez a mező képviseli az erőforrást, amelyre folyik adatgyűjtés - tárolók típusú |
+| ResourceId |Szöveg |A begyűjtött adatok erőforrás-azonosítója. Ha például a helyreállítási tár az erőforrás-azonosító |
+| SubscriptionId |Szöveg |Az erőforrás előfizetés-azonosító (az ex. Recovery Services-tároló), amelynek összegyűjtött adatok |
+| ResourceGroup |Szöveg |Az erőforrás erőforráscsoportot (az ex. Recovery Services-tároló), amelynek összegyűjtött adatok |
+| ResourceProvider |Szöveg |Erőforrás-szolgáltató adatokat gyűjtenek, például a Microsoft.recoveryservices szolgáltatónál |
+| ResourceType |Szöveg |Az erőforrástípust a adatokat gyűjtenek, például a tárolók |
 
 ### <a name="job"></a>Feladat
-Ez a táblázat ismerteti a feladathoz kapcsolódó mezőket.
+Ez a táblázat részletesen a feladathoz kapcsolódó mezőket.
 
 | Mező | Adattípus | Leírás |
 | --- | --- | --- |
-| EventName_s |Szöveg |Ez a mező képviseli az esemény nevét, a rendszer mindig AzureBackupCentralReport |
-| BackupItemUniqueId_s |Szöveg |A biztonsági mentési, amelyhez ez a feladat tartozik elem egyedi azonosítója |
-| SchemaVersion_s |Szöveg |Ebben a mezőben a séma jelenlegi verziója azt jelzi, hogy az **1-es verzió** |
-| State_s |Szöveg |A feladat objektum, például az aktív, a törölt aktuális állapotát |
-| BackupManagementType_s |Szöveg |A biztonsági mentés, például IaaSVM FileFolder, amelyhez ez a feladat tartozik végrehajtásához szolgáltató típusa |
-| OperationName |Szöveg |Ez a mező képviseli az aktuális művelet - name feladat |
-| Kategória |Szöveg |Ez a mező képviseli kategória Naplóelemzési leküldve diagnosztikai adatok, a AzureBackupReport |
-| Erőforrás |Szöveg |Ez az erőforrás, amelynek gyűjtenek adatokat, azt mutatja, hogy Recovery Services-tároló neve |
-| ProtectedServerUniqueId_s |Szöveg |A védett az egyedi azonosítója, amelyhez ez a feladat tartozik |
-| VaultUniqueId_s |Szöveg |A védett az egyedi azonosítója, amelyhez ez a feladat tartozik |
-| JobOperation_s |Szöveg |A művelet, amelynek feladat futtatásakor például biztonsági mentése, visszaállítása, Backup konfigurálása |
-| JobStatus_s |Szöveg |A befejezett feladatának állapotát, például befejezve, sikertelen |
-| JobFailureCode_s |Szöveg |Hiba a kód karakterlánc miatt, amelyet feladat hiba történt |
+| EventName_s |Szöveg |Az esemény neve. Mindig AzureBackupCentralReport |
+| BackupItemUniqueId_s |Szöveg |A biztonsági mentési elem egyedi azonosítója |
+| SchemaVersion_s |Szöveg |Ha például a séma verziója **V1** |
+| State_s |Szöveg |A feladatobjektumot, például az aktív, a törölt aktuális állapotát |
+| BackupManagementType_s |Szöveg |Ennek során a biztonsági mentési feladat, például IaaSVM, fájlmappa kiszolgáló a szolgáltató típusát |
+| OperationName |Szöveg |Ez a mező annak neve, az aktuális művelet - feladat |
+| Kategória |Szöveg |Ez a mező képviseli a diagnosztikai adatok a Log Analytics szolgáltatásba leküldött kategória, AzureBackupReport |
+| Erőforrás |Szöveg |Ez az erőforrás, amelynek adatokat gyűjteni, azt mutatja, hogy a helyreállítási tár neve |
+| ProtectedServerUniqueId_s |Szöveg |A védett kiszolgáló egyedi azonosítója a feladathoz hozzárendelt |
+| VaultUniqueId_s |Szöveg |A védett tároló egyedi azonosítója |
+| JobOperation_s |Szöveg |A művelet, amelynek feladat futtatása például biztonsági mentés, visszaállítás, a Backup konfigurálása |
+| JobStatus_s |Szöveg |A befejezett feladat, például befejezve, sikertelen állapota |
+| JobFailureCode_s |Szöveg |Sikertelen hibakód karakterláncát miatt, amely feladat hiba történt |
 | JobStartDateTime_s |Dátum/idő |Dátum és idő elindított futó feladat |
-| BackupStorageDestination_s |Szöveg |Biztonsági másolatok tárolásának, például felhő, lemez és  |
-| JobDurationInSecs_s | Szám |Feladatok teljes időtartama másodpercben |
+| BackupStorageDestination_s |Szöveg |A biztonsági mentési tár, például felhőben lemez rendeltetési  |
+| JobDurationInSecs_s | Szám |Feladatok teljes időtartama (másodpercben) |
 | DataTransferredInMB_s | Szám |A feladat MB-ban átvitt adatok|
-| JobUniqueId_g |Szöveg |A feladat azonosításához egyedi azonosítója |
+| JobUniqueId_g |Szöveg |A feladat azonosításához használatos egyedi azonosító |
 | SourceSystem |Szöveg |A forrásrendszerben az aktuális adatok – Azure |
-| ResourceId |Szöveg |Ez a mező jelöli erőforrás-azonosító, amelynek gyűjtenek adatokat, azt illusztrálja a Recovery Services-tároló erőforrás-azonosító |
-| SubscriptionId |Szöveg |Ez a mező képviseli az erőforrás (RS tároló), amelynek gyűjtenek adatokat előfizetés-azonosító |
-| ResourceGroup |Szöveg |Ez a mező képviseli az erőforrás (RS tároló), amelynek gyűjtenek adatokat erőforráscsoport |
-| ResourceProvider |Szöveg |Ez a mező képviseli az erőforrás-szolgáltató, amelynek folyik adatgyűjtés - Microsoft.RecoveryServices |
-| ResourceType |Szöveg |Ez a mező képviseli az erőforrást, amelyre folyik adatgyűjtés - tárolók típusú |
+| ResourceId |Szöveg |A begyűjtött adatok erőforrás-azonosítója. Ha például a helyreállítási tár az erőforrás-azonosító|
+| SubscriptionId |Szöveg |Az erőforrás (például az előfizetés-azonosító Recovery Services-tároló), amelynek az adatgyűjtés történik |
+| ResourceGroup |Szöveg |Az erőforrás (például erőforráscsoport Recovery Services-tároló), amelynek az adatgyűjtés történik |
+| ResourceProvider |Szöveg |Erőforrás-szolgáltató, amelynek az adatgyűjtés történik. Ha például a Microsoft.recoveryservices szolgáltatónál |
+| ResourceType |Szöveg |Erőforrás típusa, amelynek az adatgyűjtés történik. Ha például a tárolók |
 
 ### <a name="policy"></a>Szabályzat
-Ez a táblázat-házirendekkel kapcsolatos mezők ismerteti.
+Ez a táblázat részletesen házirendekhez kapcsolódó mezőket.
 
 | Mező | Adattípus | Leírás |
 | --- | --- | --- |
 | EventName_s |Szöveg |Ez a mező képviseli az esemény nevét, a rendszer mindig AzureBackupCentralReport |
-| SchemaVersion_s |Szöveg |Ebben a mezőben a séma jelenlegi verziója azt jelzi, hogy az **1-es verzió** |
-| State_s |Szöveg |A csoportházirend-objektum, például az aktív, a törölt aktuális állapota |
-| BackupManagementType_s |Szöveg |A biztonsági mentés, például IaaSVM FileFolder, amelyhez ez a házirend tartozik végrehajtásához szolgáltató típusa |
+| SchemaVersion_s |Szöveg |Ebben a mezőben azt jelzi, hogy a jelenlegi verzióját, a sémát, hogy az **V1** |
+| State_s |Szöveg |A csoportházirend-objektum, például az aktív, a törölt aktuális állapotát |
+| BackupManagementType_s |Szöveg |Ennek során a biztonsági mentési feladat, például IaaSVM, fájlmappa kiszolgáló a szolgáltató típusát |
 | OperationName |Szöveg |Ez a mező képviseli az aktuális művelet - házirend neve |
-| Kategória |Szöveg |Ez a mező képviseli kategória Naplóelemzési leküldve diagnosztikai adatok, a AzureBackupReport |
-| Erőforrás |Szöveg |Ez az erőforrás, amelynek gyűjtenek adatokat, azt mutatja, hogy Recovery Services-tároló neve |
-| PolicyUniqueId_g |Szöveg |A házirend-egyedi azonosítója |
+| Kategória |Szöveg |Ez a mező képviseli a diagnosztikai adatok a Log Analytics szolgáltatásba leküldött kategória, AzureBackupReport |
+| Erőforrás |Szöveg |Ez az erőforrás, amelynek adatokat gyűjteni, azt mutatja, hogy a helyreállítási tár neve |
+| PolicyUniqueId_g |Szöveg |Azonosíthatja a szabályzat egyedi azonosítója |
 | PolicyName_s |Szöveg |A megadott házirend neve |
-| BackupFrequency_s |Szöveg |A gyakoriság, amellyel biztonsági mentések futnak, például, naponta, hetente |
+| BackupFrequency_s |Szöveg |Amellyel biztonsági mentések futnak, például, napi, heti gyakoriság |
 | BackupTimes_s |Szöveg |Dátum és idő, amikor a biztonsági mentés van ütemezve |
 | BackupDaysOfTheWeek_s |Szöveg |Ha biztonsági mentések ütemezett napjai |
-| RetentionDuration_s |Egész szám |Konfigurált biztonsági mentések megőrzési időtartama |
-| DailyRetentionDuration_s |Egész szám |Teljes megőrzés időtartama napokban megadva beállított biztonsági mentés |
-| DailyRetentionTimes_s |Szöveg |Dátum és idő, amikor napi megőrzési konfigurálása |
-| WeeklyRetentionDuration_s |Egész szám |A konfigurált biztonsági mentésekhez hét teljes heti megőrzési időtartama |
+| RetentionDuration_s |Egész szám |A konfigurált biztonsági mentés megőrzési időtartama |
+| DailyRetentionDuration_s |Egész szám |Teljes megőrzés időtartama napokban megadva a konfigurált biztonsági mentés |
+| DailyRetentionTimes_s |Szöveg |Dátum és idő, amikor napi megőrzés konfigurálása |
+| WeeklyRetentionDuration_s |Tizedes tört szám |Teljes hetes, a konfigurált biztonsági mentés heti megőrzési időtartama |
 | WeeklyRetentionTimes_s |Szöveg |Dátum és idő, ha a heti megőrzési van konfigurálva |
-| WeeklyRetentionDaysOfTheWeek_s |Szöveg |Heti megőrzési napokat a hét kijelölt |
-| MonthlyRetentionDuration_s |Egész szám |A konfigurált biztonsági mentésekhez hónapban teljes megőrzési időtartama |
-| MonthlyRetentionTimes_s |Szöveg |Dátum és idő, amikor a havi megőrzési van konfigurálva |
-| MonthlyRetentionFormat_s |Szöveg |Havi megőrzési, például meghatározásával, hetente alapján hét nap napi konfigurációjának típusa |
-| MonthlyRetentionDaysOfTheWeek_s |Szöveg |Havi megőrzési napokat a hét kijelölt |
-| MonthlyRetentionWeeksOfTheMonth_s |Szöveg |Hét a hónapon belül, ha havi megőrzési van konfigurálva, például First, Last stb. |
-| YearlyRetentionDuration_s |Egész szám |A konfigurált biztonsági mentésekhez évben teljes megőrzési időtartama |
+| WeeklyRetentionDaysOfTheWeek_s |Szöveg |Heti megőrzési kijelölve a hét napjai |
+| MonthlyRetentionDuration_s |Tizedes tört szám |Hónap konfigurált biztonsági mentés a teljes megőrzési időtartama |
+| MonthlyRetentionTimes_s |Szöveg |Dátum és idő, ha a havi megőrzési van konfigurálva |
+| MonthlyRetentionFormat_s |Szöveg |A havi megőrzési, például a napi szintű, hetente alapú hét naponta konfigurációtípust |
+| MonthlyRetentionDaysOfTheWeek_s |Szöveg |Havi megőrzési kijelölve a hét napjai |
+| MonthlyRetentionWeeksOfTheMonth_s |Szöveg |Hét, a hónap, ha a havi megőrzési van konfigurálva, például First, Last stb. |
+| YearlyRetentionDuration_s |Tizedes tört szám |Teljes megőrzési időtartam a konfigurált biztonsági mentés éves |
 | YearlyRetentionTimes_s |Szöveg |Dátum és idő, amikor éves megőrzési van konfigurálva |
-| YearlyRetentionMonthsOfTheYear_s |Szöveg |Az év hónapja kiválasztott éves megőrzési |
-| YearlyRetentionFormat_s |Szöveg |A konfigurációban az éves megőrzési, például napi meghatározásával, hetente alapján hét nap |
-| YearlyRetentionDaysOfTheMonth_s |Szöveg |A hónap éves megőrzési a kijelölt dátumok |
+| YearlyRetentionMonthsOfTheYear_s |Szöveg |Az év hónapjai éves megőrzési kiválasztva |
+| YearlyRetentionFormat_s |Szöveg |Az éves megőrzési, például a napi szintű, hetente alapú hét naponta konfigurációtípust |
+| YearlyRetentionDaysOfTheMonth_s |Szöveg |A hónap, éves megőrzési kijelölt dátumok |
 | SourceSystem |Szöveg |A forrásrendszerben az aktuális adatok – Azure |
-| ResourceId |Szöveg |Ez a mező jelöli erőforrás-azonosító, amelynek gyűjtenek adatokat, azt illusztrálja a Recovery Services-tároló erőforrás-azonosító |
-| SubscriptionId |Szöveg |Ez a mező képviseli az erőforrás (RS tároló), amelynek gyűjtenek adatokat előfizetés-azonosító |
-| ResourceGroup |Szöveg |Ez a mező képviseli az erőforrás (RS tároló), amelynek gyűjtenek adatokat erőforráscsoport |
-| ResourceProvider |Szöveg |Ez a mező képviseli az erőforrás-szolgáltató, amelynek folyik adatgyűjtés - Microsoft.RecoveryServices |
-| ResourceType |Szöveg |Ez a mező képviseli az erőforrást, amelyre folyik adatgyűjtés - tárolók típusú |
+| ResourceId |Szöveg |A begyűjtött adatok erőforrás-azonosítója. Ha például a helyreállítási tár az erőforrás-azonosító |
+| SubscriptionId |Szöveg |Az erőforrás (például az előfizetés-azonosító Recovery Services-tároló), amelynek az adatgyűjtés történik |
+| ResourceGroup |Szöveg |Az erőforrás (például erőforráscsoport Recovery Services-tároló), amelynek az adatgyűjtés történik |
+| ResourceProvider |Szöveg |Erőforrás-szolgáltató, amelynek az adatgyűjtés történik. Ha például a Microsoft.recoveryservices szolgáltatónál |
+| ResourceType |Szöveg |Erőforrás típusa, amelynek az adatgyűjtés történik. Ha például a tárolók |
 
 ### <a name="policyassociation"></a>PolicyAssociation
-Ez a táblázat ismerteti a különböző entitásokkal házirendtársításait részleteit.
+Ez a táblázat a különböző entitások szabályzattársításait részletesen ismerteti.
 
 | Mező | Adattípus | Leírás |
 | --- | --- | --- |
 | EventName_s |Szöveg |Ez a mező képviseli az esemény nevét, a rendszer mindig AzureBackupCentralReport |
-| SchemaVersion_s |Szöveg |Ebben a mezőben a séma jelenlegi verziója azt jelzi, hogy az **1-es verzió** |
-| State_s |Szöveg |A csoportházirend-objektum, például az aktív, a törölt aktuális állapota |
-| BackupManagementType_s |Szöveg |A biztonsági mentés például IaaSVM, amelybe ez a házirend tartozik FileFolder szolgáltató típusa |
-| OperationName |Szöveg |Ez a mező képviseli az aktuális művelet - PolicyAssociation neve |
-| Kategória |Szöveg |Ez a mező képviseli kategória Naplóelemzési leküldve diagnosztikai adatok, a AzureBackupReport |
-| Erőforrás |Szöveg |Ez az erőforrás, amelynek gyűjtenek adatokat, azt mutatja, hogy Recovery Services-tároló neve |
-| PolicyUniqueId_g |Szöveg |A házirend-egyedi azonosítója |
-| VaultUniqueId_s |Szöveg |A tárolóhoz, amelybe ez a házirend tartozik egyedi azonosítója |
+| SchemaVersion_s |Szöveg |Ebben a mezőben azt jelzi, hogy a jelenlegi verzióját, a sémát, hogy az **V1** |
+| State_s |Szöveg |A csoportházirend-objektum, például az aktív, a törölt aktuális állapotát |
+| BackupManagementType_s |Szöveg |Ennek során a biztonsági mentési feladat, például IaaSVM, fájlmappa kiszolgáló a szolgáltató típusát |
+| OperationName |Szöveg |Ez a mező képviseli az aktuális művelet – PolicyAssociation neve |
+| Kategória |Szöveg |Ez a mező képviseli a diagnosztikai adatok a Log Analytics szolgáltatásba leküldött kategória, AzureBackupReport |
+| Erőforrás |Szöveg |Ez az erőforrás, amelynek adatokat gyűjteni, azt mutatja, hogy a helyreállítási tár neve |
+| PolicyUniqueId_g |Szöveg |Azonosíthatja a szabályzat egyedi azonosítója |
+| VaultUniqueId_s |Szöveg |A tárolóban, amelyhez ez a szabályzat tartozik, az egyedi azonosítója |
 | SourceSystem |Szöveg |A forrásrendszerben az aktuális adatok – Azure |
-| ResourceId |Szöveg |Ez a mező jelöli erőforrás-azonosító, amelynek gyűjtenek adatokat, azt illusztrálja a Recovery Services-tároló erőforrás-azonosító |
-| SubscriptionId |Szöveg |Ez a mező képviseli az erőforrás (RS tároló), amelynek gyűjtenek adatokat előfizetés-azonosító |
-| ResourceGroup |Szöveg |Ez a mező képviseli az erőforrás (RS tároló), amelynek gyűjtenek adatokat erőforráscsoport |
-| ResourceProvider |Szöveg |Ez a mező képviseli az erőforrás-szolgáltató, amelynek folyik adatgyűjtés - Microsoft.RecoveryServices |
-| ResourceType |Szöveg |Ez a mező képviseli az erőforrást, amelyre folyik adatgyűjtés - tárolók típusú |
+| ResourceId |Szöveg |A begyűjtött adatok erőforrás-azonosítója. Ha például a helyreállítási tár az erőforrás-azonosító |
+| SubscriptionId |Szöveg |Az erőforrás (például az előfizetés-azonosító Recovery Services-tároló), amelynek az adatgyűjtés történik |
+| ResourceGroup |Szöveg |Az erőforrás (például erőforráscsoport Recovery Services-tároló), amelynek az adatgyűjtés történik |
+| ResourceProvider |Szöveg |Erőforrás-szolgáltató, amelynek az adatgyűjtés történik. Ha például a Microsoft.recoveryservices szolgáltatónál |
+| ResourceType |Szöveg |Erőforrás típusa, amelynek az adatgyűjtés történik. Ha például a tárolók |
 
 ### <a name="protectedserver"></a>ProtectedServer
-Ez a táblázat ismerteti a védett kiszolgálóval kapcsolatos mezők.
+Ez a táblázat részletesen a védett kiszolgáló kapcsolatos mezőket.
 
 | Mező | Adattípus | Leírás |
 | --- | --- | --- |
 | EventName_s |Szöveg |Ez a mező képviseli az esemény nevét, a rendszer mindig AzureBackupCentralReport |
 | ProtectedServerName_s |Szöveg |Védett kiszolgáló neve |
-| SchemaVersion_s |Szöveg |Ebben a mezőben a séma jelenlegi verziója azt jelzi, hogy az **1-es verzió** |
-| State_s |Szöveg |A védett kiszolgáló objektum, például az aktív, a törölt aktuális állapota |
-| BackupManagementType_s |Szöveg |A biztonsági mentés például IaaSVM, amelybe a védett kiszolgáló tartozik FileFolder szolgáltató típusa |
+| SchemaVersion_s |Szöveg |Ebben a mezőben azt jelzi, hogy a jelenlegi verzióját, a sémát, hogy az **V1** |
+| State_s |Szöveg |A védett kiszolgáló objektum, például az aktív, a törölt aktuális állapotát |
+| BackupManagementType_s |Szöveg |Ennek során a biztonsági mentési feladat, például IaaSVM, fájlmappa kiszolgáló a szolgáltató típusát |
 | OperationName |Szöveg |Ez a mező képviseli az aktuális művelet - ProtectedServer neve |
-| Kategória |Szöveg |Ez a mező képviseli kategória Naplóelemzési leküldve diagnosztikai adatok, a AzureBackupReport |
-| Erőforrás |Szöveg |Ez az erőforrás, amelynek gyűjtenek adatokat, azt mutatja, hogy Recovery Services-tároló neve |
+| Kategória |Szöveg |Ez a mező képviseli a diagnosztikai adatok a Log Analytics szolgáltatásba leküldött kategória, AzureBackupReport |
+| Erőforrás |Szöveg |Ez az erőforrás, amelynek adatokat gyűjteni, azt mutatja, hogy a helyreállítási tár neve |
 | ProtectedServerUniqueId_s |Szöveg |A védett kiszolgáló egyedi azonosítója |
-| RegisteredContainerId_s |Szöveg |A biztonsági mentéshez regisztrált tároló azonosító |
-| ProtectedServerType_s |Szöveg |Például Windows mentésbe a védett kiszolgáló típusa |
+| RegisteredContainerId_s |Szöveg |Regisztrálva a biztonsági mentési tároló azonosítója |
+| ProtectedServerType_s |Szöveg |Védett kiszolgálók, például Windows típusa |
 | ProtectedServerFriendlyName_s |Szöveg |Védett kiszolgáló rövid neve |
-| AzureBackupAgentVersion_s |Szöveg |Biztonsági másolat verzióját ügynök verziószáma |
+| AzureBackupAgentVersion_s |Szöveg |Biztonsági másolat verzióját az ügynök verziószáma |
 | SourceSystem |Szöveg |A forrásrendszerben az aktuális adatok – Azure |
-| ResourceId |Szöveg |Ez a mező jelöli erőforrás-azonosító, amelynek gyűjtenek adatokat, azt illusztrálja a Recovery Services-tároló erőforrás-azonosító |
-| SubscriptionId |Szöveg |Ez a mező képviseli az erőforrás (RS tároló), amelynek gyűjtenek adatokat előfizetés-azonosító |
-| ResourceGroup |Szöveg |Ez a mező képviseli az erőforrás (RS tároló), amelynek gyűjtenek adatokat erőforráscsoport |
-| ResourceProvider |Szöveg |Ez a mező képviseli az erőforrás-szolgáltató, amelynek folyik adatgyűjtés - Microsoft.RecoveryServices |
-| ResourceType |Szöveg |Ez a mező képviseli az erőforrást, amelyre folyik adatgyűjtés - tárolók típusú |
+| ResourceId |Szöveg |A begyűjtött adatok erőforrás-azonosítója. Ha például a helyreállítási tár az erőforrás-azonosító |
+| SubscriptionId |Szöveg |Az erőforrás (például az előfizetés-azonosító Recovery Services-tároló), amelynek az adatgyűjtés történik |
+| ResourceGroup |Szöveg |Az erőforrás (például erőforráscsoport Recovery Services-tároló), amelynek az adatgyűjtés történik |
+| ResourceProvider |Szöveg |Erőforrás-szolgáltató, amelynek az adatgyűjtés történik. Ha például a Microsoft.recoveryservices szolgáltatónál |
+| ResourceType |Szöveg |Erőforrás típusa, amelynek az adatgyűjtés történik. Ha például a tárolók |
 
 ### <a name="protectedserverassociation"></a>ProtectedServerAssociation
-A táblázat tartalmazza a védett kiszolgáló társítások más entitásokkal adatait.
+Ez a táblázat a védett kiszolgáló társítások más entitásokkal részletesen ismerteti.
 
 | Mező | Adattípus | Leírás |
 | --- | --- | --- |
 | EventName_s |Szöveg |Ez a mező képviseli az esemény nevét, a rendszer mindig AzureBackupCentralReport |
-| SchemaVersion_s |Szöveg |Ebben a mezőben a séma jelenlegi verziója azt jelzi, hogy az **1-es verzió** |
+| SchemaVersion_s |Szöveg |Ebben a mezőben azt jelzi, hogy a jelenlegi verzióját, a sémát, hogy az **V1** |
 | State_s |Szöveg |A védett kiszolgáló társítás objektum, például az aktív, a törölt aktuális állapotát |
-| BackupManagementType_s |Szöveg |A biztonsági mentés, például IaaSVM FileFolder, amelyhez a védett kiszolgáló tartozik végrehajtásához szolgáltató típusa |
-| OperationName |Szöveg |Ez a mező képviseli az aktuális művelet - ProtectedServerAssociation neve |
-| Kategória |Szöveg |Ez a mező képviseli kategória Naplóelemzési leküldve diagnosztikai adatok, a AzureBackupReport |
-| Erőforrás |Szöveg |Ez az erőforrás, amelynek gyűjtenek adatokat, azt mutatja, hogy Recovery Services-tároló neve |
+| BackupManagementType_s |Szöveg |Ennek során a biztonsági mentési feladat, például IaaSVM, fájlmappa kiszolgáló a szolgáltató típusát |
+| OperationName |Szöveg |Ez a mező képviseli az aktuális művelet – ProtectedServerAssociation neve |
+| Kategória |Szöveg |Ez a mező képviseli a diagnosztikai adatok a Log Analytics szolgáltatásba leküldött kategória, AzureBackupReport |
+| Erőforrás |Szöveg |Ez az erőforrás, amelynek adatokat gyűjteni, azt mutatja, hogy a helyreállítási tár neve |
 | ProtectedServerUniqueId_s |Szöveg |A védett kiszolgáló egyedi azonosítója |
-| VaultUniqueId_s |Szöveg |A tárolóhoz, amelybe a védett kiszolgáló tartozik egyedi azonosítója |
+| VaultUniqueId_s |Szöveg |A tárolóban, amelyhez a védett kiszolgáló tartozik egyedi azonosítója |
 | SourceSystem |Szöveg |A forrásrendszerben az aktuális adatok – Azure |
-| ResourceId |Szöveg |Ez a mező jelöli erőforrás-azonosító, amelynek gyűjtenek adatokat, azt illusztrálja a Recovery Services-tároló erőforrás-azonosító |
-| SubscriptionId |Szöveg |Ez a mező képviseli az erőforrás (RS tároló), amelynek gyűjtenek adatokat előfizetés-azonosító |
-| ResourceGroup |Szöveg |Ez a mező képviseli az erőforrás (RS tároló), amelynek gyűjtenek adatokat erőforráscsoport |
-| ResourceProvider |Szöveg |Ez a mező képviseli az erőforrás-szolgáltató, amelynek folyik adatgyűjtés - Microsoft.RecoveryServices |
-| ResourceType |Szöveg |Ez a mező képviseli az erőforrást, amelyre folyik adatgyűjtés - tárolók típusú |
+| ResourceId |Szöveg |A begyűjtött adatok erőforrás-azonosítója. Ha például a helyreállítási tár az erőforrás-azonosító |
+| SubscriptionId |Szöveg |Az erőforrás (például az előfizetés-azonosító Recovery Services-tároló), amelynek az adatgyűjtés történik |
+| ResourceGroup |Szöveg |Az erőforrás (például erőforráscsoport Recovery Services-tároló), amelynek az adatgyűjtés történik |
+| ResourceProvider |Szöveg |Erőforrás-szolgáltató, amelynek az adatgyűjtés történik. Ha például a Microsoft.recoveryservices szolgáltatónál |
+| ResourceType |Szöveg |Erőforrás típusa, amelynek az adatgyűjtés történik. Ha például a tárolók |
 
 ### <a name="storage"></a>Storage
-Ez a táblázat ismerteti a tárolással kapcsolatos mezők.
+A table storage szolgáltatással kapcsolatos mezők részletesen ismerteti.
 
 | Mező | Adattípus | Leírás |
 | --- | --- | --- |
-| CloudStorageInBytes_s |Egész szám |Biztonsági mentések, számított által használt biztonsági mentési felhőtárhelyére legújabb érték alapján. |
-| ProtectedInstances_s |Egész szám |Előtérbeli tárolási számlázási, számított alapján legújabb értékének kiszámítására használt védett példányok száma |
+| CloudStorageInBytes_s |Tizedes tört szám |Felhőalapú biztonsági mentési tár biztonsági mentések, számított által használt legújabb érték alapján |
+| ProtectedInstances_s |Tizedes tört szám |Előtérbeli tár számlázási, számított alapján legújabb érték kiszámításához használt védett példányok száma |
 | EventName_s |Szöveg |Ez a mező képviseli az esemény nevét, a rendszer mindig AzureBackupCentralReport |
-| SchemaVersion_s |Szöveg |Ebben a mezőben a séma jelenlegi verziója azt jelzi, hogy az **1-es verzió** |
-| State_s |Szöveg |A tárolási objektum, például az aktív, a törölt aktuális állapota |
-| BackupManagementType_s |Szöveg |A biztonsági mentés, például IaaSVM FileFolder, amelyhez ez a tároló tartozik végrehajtásához szolgáltató típusa |
-| OperationName |Szöveg |Ez a mező képviseli az aktuális művelet - tároló neve |
-| Kategória |Szöveg |Ez a mező képviseli kategória Naplóelemzési leküldve diagnosztikai adatok, a AzureBackupReport |
-| Erőforrás |Szöveg |Ez az erőforrás, amelynek gyűjtenek adatokat, azt mutatja, hogy Recovery Services-tároló neve |
-| ProtectedServerUniqueId_s |Szöveg |A védett kiszolgáló, amelyhez tároló kiszámítása egyedi azonosítója |
-| VaultUniqueId_s |Szöveg |Egyedi azonosító tárolási tároló kiszámítása |
+| SchemaVersion_s |Szöveg |Ebben a mezőben azt jelzi, hogy a jelenlegi verzióját, a sémát, hogy az **V1** |
+| State_s |Szöveg |A tárolási objektum, például az aktív, a törölt aktuális állapotát |
+| BackupManagementType_s |Szöveg |Ennek során a biztonsági mentési feladat, például IaaSVM, fájlmappa kiszolgáló a szolgáltató típusát |
+| OperationName |Szöveg |Ez a mező képviseli az aktuális művelet – a tároló neve |
+| Kategória |Szöveg |Ez a mező képviseli a diagnosztikai adatok a Log Analytics szolgáltatásba leküldött kategória, AzureBackupReport |
+| Erőforrás |Szöveg |Ez az erőforrás, amelynek adatokat gyűjteni, azt mutatja, hogy a helyreállítási tár neve |
+| ProtectedServerUniqueId_s |Szöveg |A védett kiszolgálón, amelyhez tárolási számította egyedi azonosítója |
+| VaultUniqueId_s |Szöveg |Egyedi azonosítója a Storage-tároló kiszámítása |
 | SourceSystem |Szöveg |A forrásrendszerben az aktuális adatok – Azure |
-| ResourceId |Szöveg |Ez a mező jelöli erőforrás-azonosító, amelynek gyűjtenek adatokat, azt illusztrálja a Recovery Services-tároló erőforrás-azonosító |
-| SubscriptionId |Szöveg |Ez a mező képviseli az erőforrás (RS tároló), amelynek gyűjtenek adatokat előfizetés-azonosító |
-| ResourceGroup |Szöveg |Ez a mező képviseli az erőforrás (RS tároló), amelynek gyűjtenek adatokat erőforráscsoport |
-| ResourceProvider |Szöveg |Ez a mező képviseli az erőforrás-szolgáltató, amelynek folyik adatgyűjtés - Microsoft.RecoveryServices |
-| ResourceType |Szöveg |Ez a mező representse írja be a tárolók, amelynek folyik adatgyűjtés - erőforrás |
+| ResourceId |Szöveg |A begyűjtött adatok erőforrás-azonosítója. Ha például a helyreállítási tár az erőforrás-azonosító |
+| SubscriptionId |Szöveg |Az erőforrás (például az előfizetés-azonosító Recovery Services-tároló), amelynek az adatgyűjtés történik |
+| ResourceGroup |Szöveg |Az erőforrás (például erőforráscsoport Recovery Services-tároló), amelynek az adatgyűjtés történik |
+| ResourceProvider |Szöveg |Erőforrás-szolgáltató, amelynek az adatgyűjtés történik. Ha például a Microsoft.recoveryservices szolgáltatónál |
+| ResourceType |Szöveg |Erőforrás típusa, amelynek az adatgyűjtés történik. Ha például a tárolók |
 
 ### <a name="vault"></a>Tároló
-Ez a táblázat ismerteti a tárolóval kapcsolatos mezők.
+Ez a táblázat részletesen tároló kapcsolatos mezőket.
 
 | Mező | Adattípus | Leírás |
 | --- | --- | --- |
 | EventName_s |Szöveg |Ez a mező képviseli az esemény nevét, a rendszer mindig AzureBackupCentralReport |
-| SchemaVersion_s |Szöveg |Ebben a mezőben a séma jelenlegi verziója azt jelzi, hogy az **1-es verzió** |
-| State_s |Szöveg |A tároló objektum, például az aktív, a törölt aktuális állapotát |
-| OperationName |Szöveg |Ez a mező képviseli az aktuális művelet - tároló neve |
-| Kategória |Szöveg |Ez a mező képviseli kategória Naplóelemzési leküldve diagnosztikai adatok, a AzureBackupReport |
-| Erőforrás |Szöveg |Ez az erőforrás, amelynek gyűjtenek adatokat, azt mutatja, hogy Recovery Services-tároló neve |
+| SchemaVersion_s |Szöveg |Ebben a mezőben azt jelzi, hogy a jelenlegi verzióját, a sémát, hogy az **V1** |
+| State_s |Szöveg |A tár objektum, például az aktív, a törölt aktuális állapotát |
+| OperationName |Szöveg |Ez a mező képviseli az aktuális művelet - tár neve |
+| Kategória |Szöveg |Ez a mező képviseli a diagnosztikai adatok a Log Analytics szolgáltatásba leküldött kategória, AzureBackupReport |
+| Erőforrás |Szöveg |Ez az erőforrás, amelynek adatokat gyűjteni, azt mutatja, hogy a helyreállítási tár neve |
 | VaultUniqueId_s |Szöveg |A tároló egyedi azonosítója |
 | VaultName_s |Szöveg |A tároló neve |
-| AzureDataCenter_s |Szöveg |Az Adatközpont, ahol a tárolóban |
-| StorageReplicationType_s |Szöveg |A tároló, például GeoRedundant tárolóreplikálást típusa |
+| AzureDataCenter_s |Szöveg |Adatközpont, ahol a tároló megtalálható |
+| StorageReplicationType_s |Szöveg |A tárolóhoz, például GeoRedundant tárolóreplikáció típusa |
 | SourceSystem |Szöveg |A forrásrendszerben az aktuális adatok – Azure |
-| ResourceId |Szöveg |Ez a mező jelöli erőforrás-azonosító, amelynek gyűjtenek adatokat, azt illusztrálja a Recovery Services-tároló erőforrás-azonosító |
-| SubscriptionId |Szöveg |Ez a mező képviseli az erőforrás (RS tároló), amelynek gyűjtenek adatokat előfizetés-azonosító |
-| ResourceGroup |Szöveg |Ez a mező képviseli az erőforrás (RS tároló), amelynek gyűjtenek adatokat erőforráscsoport |
-| ResourceProvider |Szöveg |Ez a mező képviseli az erőforrás-szolgáltató, amelynek folyik adatgyűjtés - Microsoft.RecoveryServices |
-| ResourceType |Szöveg |Ez a mező képviseli az erőforrást, amelyre folyik adatgyűjtés - tárolók típusú |
+| ResourceId |Szöveg |A begyűjtött adatok erőforrás-azonosítója. Ha például a helyreállítási tár az erőforrás-azonosító |
+| SubscriptionId |Szöveg |Az erőforrás (például az előfizetés-azonosító Recovery Services-tároló), amelynek az adatgyűjtés történik |
+| ResourceGroup |Szöveg |Az erőforrás (például erőforráscsoport Recovery Services-tároló), amelynek az adatgyűjtés történik |
+| ResourceProvider |Szöveg |Erőforrás-szolgáltató, amelynek az adatgyűjtés történik. Ha például a Microsoft.recoveryservices szolgáltatónál |
+| ResourceType |Szöveg |Erőforrás típusa, amelynek az adatgyűjtés történik. Ha például a tárolók |
 
 ## <a name="next-steps"></a>További lépések
-Tekintse át az adatokat az adatmodellbe az Azure Backup-jelentések készítéséhez, után megkezdheti [irányítópult létrehozása](../log-analytics/log-analytics-dashboards.md) a Naplóelemzési.
+Megkezdése után tekintse át az adatmodell az Azure Backup-jelentések létrehozása, [irányítópult létrehozása](../log-analytics/log-analytics-dashboards.md) a Log Analyticsben.

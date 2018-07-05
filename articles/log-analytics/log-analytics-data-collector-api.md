@@ -1,6 +1,6 @@
 ---
-title: Elemzés API HTTP adatgyűjtő naplózása |} Microsoft Docs
-description: A napló Analytics HTTP Data Collector API segítségével POST JSON-adatokat hozzáadni a Naplóelemzési tárház minden ügyfélről, amely a REST API meghívása. Ez a cikk ismerteti, hogyan lehet az API-val, és példák közzétegyék az adataikat a különböző programnyelveken rendelkezik.
+title: Log Analytics HTTP adatgyűjtő API |} A Microsoft Docs
+description: A Log Analytics HTTP-adatgyűjtő API segítségével POST JSON-adatok hozzáadása a Log Analytics-adattárban a bármely ügyfélnek, amely az REST API-t. Ez a cikk azt ismerteti, hogyan használható az API, és rendelkezik az adatok közzététele a különböző programozási nyelvekhez példái.
 services: log-analytics
 documentationcenter: ''
 author: bwren
@@ -12,34 +12,34 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 06/14/2018
+ms.date: 07/03/2018
 ms.author: bwren
 ms.component: na
-ms.openlocfilehash: 1125cdb5b1cc6829345c71537582816d020edc53
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.openlocfilehash: a2aab89bcd550cc2b1dcc4f980f09b5c1e0e9464
+ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37132927"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37436379"
 ---
-# <a name="send-data-to-log-analytics-with-the-http-data-collector-api-public-preview"></a>Adatokat küldeni a Log Analyticshez a HTTP adatait gyűjtője API-t (nyilvános előzetes verzió)
-Ez a cikk bemutatja, hogyan használja a HTTP adatok adatgyűjtő API REST API-ügyfél Naplóelemzési adatküldéshez.  Bemutatja, hogyan lehet a parancsfájl vagy az alkalmazás által összegyűjtött adatok formázása, adja hozzá a kérelem és a kérésre Naplóelemzési engedélyezve van.  A példák PowerShell, a C# és Python.
+# <a name="send-data-to-log-analytics-with-the-http-data-collector-api-public-preview"></a>Adatokat küldeni a Log Analytics és a HTTP-adatgyűjtő API (nyilvános előzetes verzió)
+Ez a cikk bemutatja, hogyan adatokat küldeni a Log Analytics REST API-ügyfél-nak a HTTP-adatgyűjtő API használatával.  Ismerteti, hogyan formázza a parancsfájl vagy az alkalmazások által gyűjtött adatokat, foglalja bele egy kérelmet, és rendelkezik a Log Analytics által engedélyezett kérelmet.  A példák a PowerShell, a C# és Python.
 
 > [!NOTE]
-> A napló Analytics HTTP Data Collector API nyilvános előzetes verziójában van.
+> A Log Analytics HTTP-adatgyűjtő API jelenleg nyilvános előzetes verzióban.
 
 ## <a name="concepts"></a>Alapelvek
-A HTTP-adatokat gyűjtő API segítségével bármely ügyfélnek, amely a REST API meghívása Naplóelemzési adatküldéshez.  Ez lehet egy runbook az Azure Automationben, hogy a gyűjtő felügyeleti adatokat Azure vagy egy másik felhőben, vagy azt egy másik felügyeleti rendszer összefogása és elemezhetik a Naplóelemzési használó lehet.
+A HTTP-adatgyűjtő API segítségével adatokat küldeni a Log Analytics minden ügyfélről, amely segítségével meghívhatja a REST API-t.  Ez lehet egy runbook az Azure Automationben, hogy a gyűjtő felügyeleti adatait az Azure vagy egy másik felhőt, vagy lehet egy másik felügyeleti rendszer, amely a konszolidálhatja és elemezheti a Log Analytics segítségével.
 
-A Naplóelemzési tárházban található összes adat egy rekord, egy adott rekordtípus tárolja.  Az adatok több bejegyzést a JSON-ban, a HTTP-adatokat gyűjtő API küldendő formázása.  Elküldeni az adatokat, ha egy egyéni rekord jön létre az egyes rekordokhoz, a kérelem hasznos a tárházban.
-
-
-![HTTP adatgyűjtő áttekintése](media/log-analytics-data-collector-api/overview.png)
+A Log Analytics-adattárban lévő összes adatot egy rekord, egy adott rekord típusa van tárolva.  Küldhet a HTTP-adatgyűjtő API több rekord JSON-fájlban, az adatok formázása.  Elküldi az adatokat, amikor egy adott rekord jön létre minden egyes rekord, a kérelem hasznos adatainak a tárházban.
 
 
+![A HTTP adatgyűjtő áttekintése](media/log-analytics-data-collector-api/overview.png)
 
-## <a name="create-a-request"></a>Kérelem létrehozása
-A HTTP-adatokat gyűjtő API használatához hozzon létre egy POST kérést, amely tartalmazza az adatokat küldeni a JavaScript Object Notation (JSON).  A következő három táblázatokban az attribútumok, amelyek szükségesek az egyes kérelmek. Azt írja le a cikk későbbi részében részletesebben összes attribútumot.
+
+
+## <a name="create-a-request"></a>Kérés létrehozása
+A HTTP-adatgyűjtő API használatához hozzon létre egy POST-kérelmet, amely tartalmazza az adatok küldése a JavaScript Object Notation (JSON).  A következő három táblázatok sorolják fel az attribútumok, amelyek szükségesek az egyes kérések. A cikk későbbi részében részletesebben minden attribútum ismertetünk.
 
 ### <a name="request-uri"></a>Kérés URI-ja
 | Attribútum | Tulajdonság |
@@ -48,23 +48,23 @@ A HTTP-adatokat gyűjtő API használatához hozzon létre egy POST kérést, am
 | URI |https://\<CustomerId\>.ods.opinsights.azure.com/api/logs?api-version=2016-04-01 |
 | Tartalom típusa |application/json |
 
-### <a name="request-uri-parameters"></a>A kérelem URI-paraméterei
+### <a name="request-uri-parameters"></a>A kérés URI paraméterei
 | Paraméter | Leírás |
 |:--- |:--- |
-| CustomerID |A Naplóelemzési munkaterület egyedi azonosítója. |
+| CustomerID |A Log Analytics-munkaterület egyedi azonosítója. |
 | Erőforrás |Az API-erőforrás neve: / api/logs. |
-| API-verzió |A kérelem használandó API verziója. Ez jelenleg 2016-04-01. |
+| API-verzió |A kérelem használata API-verzió. Jelenleg ez a 2016-04-01 el. |
 
 ### <a name="request-headers"></a>Kérelemfejlécek
 | Fejléc | Leírás |
 |:--- |:--- |
-| Engedélyezés |Az engedélyezési aláírás. A cikk későbbi részében olvashat létrehozása egy HMAC-SHA256-fejlécben. |
-| Napló-típusa |Adja meg az adatok küldése folyamatban rekord típusát. A napló típusa jelenleg csak alfanumerikus karaktereket tartalmazhat. Nem támogatja írhatók vagy speciális karaktereket. A méretkorlát a paraméter nem 100 karakternél. |
-| x-ms-dátuma |A kérelem feldolgozása, RFC 1123 formátumban dátuma. |
-| time-generated-field |Az adatok, amely tartalmazza az elem a Timestamp típusú mező neve. Ha a megadott mező, akkor annak tartalmát használt **TimeGenerated**. Ha ez a mező nincs megadva, az alapértelmezett **TimeGenerated** a alkalom, hogy az üzenet van okozhatnak. A mező tartalmának érdemes követnie az ISO 8601 formátum éééé-hh-SSz. |
+| Engedélyezés |Az engedélyezési aláírást. A cikk későbbi részében olvashat egy HMAC-SHA256-fejlécben létrehozása. |
+| Napló-típusa |Adja meg a rekord típusa adatok küldése folyamatban van. A napló típusa jelenleg csak alfanumerikus karaktereket tartalmazhat. Nem támogatja a numerics vagy speciális karaktert. A méretkorlát a paraméter nem 100 karakternél. |
+| x-ms-dátuma |A dátum, a kérelem feldolgozott RFC 1123 formátumban. |
+| time-generated-field |Az adatok, amely tartalmazza az időbélyeget, az elem egy mező nevét. Ha megad egy mezőt, akkor a tartalmát használt **TimeGenerated**. Ha ez a mező nincs megadva, alapértelmezett **TimeGenerated** az az idő, az üzenet betöltött. A mező tartalma követnie kell az ISO 8601 formátum éééé-hh-DDThh:mm:ssZ. |
 
 ## <a name="authorization"></a>Engedélyezés
-A napló Analytics HTTP adatokat gyűjtő API kérésének tartalmaznia kell egy engedélyezési fejléc. A kérés hitelesítéséhez, be kell jelentkeznie a kérelmet az elsődleges vagy másodlagos kulcsát a munkaterületen, a kérést. Így továbbítsa az adott aláírás a kérelem részeként.   
+A Log Analytics HTTP-adatgyűjtő API minden kérelem engedélyeztetési fejléc tartalmaznia kell. Hitelesíteni a kérelmet, be kell jelentkeznie a kérelmet az elsődleges vagy másodlagos kulcsát a munkaterületet, amely a kérés küldője. Ezt követően adja át az aláírást a kérés részeként.   
 
 Az engedélyezési fejléc formátuma a következő:
 
@@ -72,9 +72,9 @@ Az engedélyezési fejléc formátuma a következő:
 Authorization: SharedKey <WorkspaceID>:<Signature>
 ```
 
-*WorkspaceID* a Naplóelemzési munkaterület egyedi azonosítója. *Aláírás* van egy [kivonat-alapú üzenethitelesítési kód (HMAC)](https://msdn.microsoft.com/library/system.security.cryptography.hmacsha256.aspx) , a kérelem összeállított és majd számított használatával a [SHA-256 algoritmus](https://msdn.microsoft.com/library/system.security.cryptography.sha256.aspx). Majd hogy kódolása Base64 kódolással.
+*Munkaterület azonosítója* a Log Analytics-munkaterület egyedi azonosítója. *Aláírás* van egy [kivonat-alapú üzenethitelesítési kód (HMAC)](https://msdn.microsoft.com/library/system.security.cryptography.hmacsha256.aspx) , amelyet a kérés értékekből összeállított és majd a számított a [SHA256 algoritmust](https://msdn.microsoft.com/library/system.security.cryptography.sha256.aspx). Ezt követően kódol, Base64 kódolással.
 
-Ezt a formátumot használja kódolására a **SharedKey** aláírás-karakterlánc:
+Ezt a formátumot használja kódolása a **SharedKey** aláírás karakterlánc:
 
 ```
 StringToSign = VERB + "\n" +
@@ -90,16 +90,16 @@ StringToSign = VERB + "\n" +
 POST\n1024\napplication/json\nx-ms-date:Mon, 04 Apr 2016 08:00:00 GMT\n/api/logs
 ```
 
-Ha az aláírás karakterlánc, a HMAC-SHA-256 algoritmus használatával az UTF-8 kódolású karakterlánc kódolása, és majd a az eredmény Base64 kódolása. Ezt a formátumot használja:
+Ha az aláírás-karakterlánc, kódolja azokat a HMAC-SHA256 algoritmust az UTF-8 kódolású karakterlánc használatával, és majd kódolása Base64 az eredményt. Ezt a formátumot használja:
 
 ```
 Signature=Base64(HMAC-SHA256(UTF8(StringToSign)))
 ```
 
-A mintákat a következő szakaszokban lévő mintakód hozhat létre egy engedélyezési fejléc rendelkezik.
+A következő szakaszokban a mintákat hozhat létre az engedélyeztetési fejléc mintakód rendelkezik.
 
 ## <a name="request-body"></a>Kérelem törzse
-Az üzenet törzsét JSON kell lennie. A tulajdonság név-érték párok egy vagy több rekordot a következő formátumban kell tartalmaznia:
+Az üzenet törzse JSON formátumban kell lennie. A tulajdonság név-érték párok az egy vagy több rekord a következő formátumban kell tartalmaznia:
 
 ```
 [
@@ -112,7 +112,7 @@ Az üzenet törzsét JSON kell lennie. A tulajdonság név-érték párok egy va
 ]
 ```
 
-A köteg egyetlen kérelemmel együtt a több rekordot a következő formátum használatával. A rekordok az azonos rekord típusúnak kell lennie.
+Kötegelt együtt, egyetlen kérelem több rekord a következő formátum használatával. A rekordok az azonos típusú rekorddal kell lennie.
 
 ```
 [
@@ -131,14 +131,14 @@ A köteg egyetlen kérelemmel együtt a több rekordot a következő formátum h
 ]
 ```
 
-## <a name="record-type-and-properties"></a>Bejegyzéstípus és tulajdonságai
-Az egyéni típusát határozza meg, amikor a napló Analytics HTTP adatait gyűjtője API-n keresztül adatokat. Jelenleg, akkor nem lehet adatokat írni rekord típusú létező létrehozott más adattípusok és megoldásokat. A Naplóelemzési a bejövő adatokat olvas, és ezután hoz létre, amelyek megfelelnek a megadott értékek adatok típusú tulajdonságok.
+## <a name="record-type-and-properties"></a>Typ záznamu és tulajdonságok
+Amikor küld adatokat a Log Analytics HTTP-adatgyűjtő API keresztül megadhat egy egyéni rekord típusa. Jelenleg nem ír adatokat a meglévő erőforrásrekord-típusok létrehozott egyéb adattípusok és a megoldások által. Log Analytics beolvassa a bejövő adatokat, és létrehozza a tulajdonságokat, amelyek megfelelnek a megadott értékekben adattípusát.
 
-A napló Analytics API kéréseknek tartalmaznia kell egy **hibanapló-típus** a rekordtípus nevű fejléc. A utótag **_CL** automatikusan hozzáfűzi a neve meg egy egyéni napló, a más napló megkülönböztetésére. Például, ha beírja a nevét **MyNewRecordType**, Log Analyticshez azzal a típussal, létrehoz egy rekordot **MyNewRecordType_CL**. Ezzel biztosíthatja, hogy nincsenek-e a felhasználó által létrehozott típusnevek és a jelenlegi vagy jövőbeli Microsoft megoldások szállított közötti ütközések.
+A Log Analytics API minden kérésnek tartalmaznia kell egy **naplótípus** adattípus nevű fejléc. Az utótag **_CL** automatikusan a rendszer hozzáfűzi a nevét, adja meg, hogy megkülönböztesse a többi napló esetében, egy egyéni naplót. Például, ha a név megadása **MyNewRecordType**, a Log Analytics a típusú rekordot hoz létre **MyNewRecordType_CL**. Ezzel biztosíthatja, hogy nem lesznek ütközések a felhasználó által létrehozott típusnevek és mások által szállított aktuális vagy jövőbeli Microsoft-megoldások között.
 
-A tulajdonság adattípusát kikereséséhez Naplóelemzési hozzáadja egy utótagot a tulajdonságnév. Tulajdonság értéke null, ha a tulajdonság nem szerepel a rekordban. Ez a táblázat felsorolja a tulajdonságadat-típus és a megfelelő utótag:
+A tulajdonság adattípusát azonosításához, a Log Analytics hozzáadja egy utótagot a tulajdonság nevét. Ha egy tulajdonság null értéket tartalmaz, a tulajdonság nem szerepel az adott rekord. Ez a táblázat felsorolja a tulajdonságadat típusa és a megfelelő utótag:
 
-| Tulajdonságadat-típus | Utótag |
+| Tulajdonságadat típusa | Utótag |
 |:--- |:--- |
 | Sztring |z |
 | Logikai |_b |
@@ -146,76 +146,76 @@ A tulajdonság adattípusát kikereséséhez Naplóelemzési hozzáadja egy utó
 | Dátum és idő |_t |
 | GUID |_g |
 
-Az adattípus, amely Naplóelemzési alkalmaz minden egyes tulajdonság attól függ, az új bejegyzés bejegyzéstípus létezik-e.
+Az adattípus, amely a Log Analytics alkalmaz minden egyes tulajdonság attól függ, hogy typ záznamu az új rekord már létezik.
 
-* Ha a rekord típusa nem létezik, a Naplóelemzési hoz létre egy új. A Naplóelemzési a JSON-típusok kikövetkeztetése alapján határozza meg az új rekord minden egyes tulajdonság adattípusára.
-* Ha a rekord típusa létezik, a Naplóelemzési megkísérli hozzon létre egy új rekordot a meglévő tulajdonságok alapján. Ha az adattípust a egy tulajdonság az új rekordban nem felel meg, és a már meglévő típus nem konvertálható, vagy ha a rekord tartalmaz olyan tulajdonságon, amely nem létezik, Log Analyticshez hoz létre egy új tulajdonság, amely rendelkezik a megfelelő utótag.
+* Ha a rekord típusa nem létezik, a Log Analytics egy új hoz létre. A log Analytics segítségével, hogy a JSON típusú következtetésekhez határozza meg, az új rekord minden egyes tulajdonság adattípusát.
+* Ha a rekord típusa létezik, a Log Analytics próbál meglévő tulajdonságok alapján új rekord létrehozása. Ha adattípusa nem felel meg egy tulajdonságot az új rekordban, és a meglévő típus nem konvertálható, vagy ha a rekord tartalmaz olyan tulajdonságot, amely nem létezik, a Log Analytics hoz létre egy új tulajdonság, amely rendelkezik a megfelelő utótagot.
 
-Például a küldésének bejegyzés hozna létre egy olyan rekordot három tulajdonságokkal **number_d**, **boolean_b**, és **string_s**:
+Például a beküldés bejegyzés lenne hozzon létre egy rekordot három tulajdonságot **number_d**, **boolean_b**, és **string_s**:
 
-![A minta rekord 1](media/log-analytics-data-collector-api/record-01.png)
+![Minta rekord 1](media/log-analytics-data-collector-api/record-01.png)
 
-Ha ezután a következő bejegyzés formázott karakterláncok értékekkel, a tulajdonságok nem megváltozna. Ezek az értékek konvertálhatók meglévő adattípusok:
+Majd küldte el a következő bejegyzés formájában karakterláncok értékekkel, ha a tulajdonságok nem szeretné módosítani. Ezek az értékek konvertálhatók meglévő adattípusok:
 
 ![2. példa rekord](media/log-analytics-data-collector-api/record-02.png)
 
-De ha a következő küldésének majd végrehajtott Naplóelemzési rekordot kell létrehoznia az új tulajdonságok **boolean_d** és **string_d**. Ezeket az értékeket nem lehet konvertálni:
+De, ekkor történik a következő beküldése, ha a Log Analytics hozna létre az új tulajdonságok **boolean_d** és **string_d**. Ezeket az értékeket nem lehet konvertálni:
 
-![A minta rekord 3](media/log-analytics-data-collector-api/record-03.png)
+![Minta rekord 3](media/log-analytics-data-collector-api/record-03.png)
 
-A következő bejegyzést, majd a rekordtípus létrehozása előtt elküldve, ha Naplóelemzési három tulajdonságokkal hozna létre egy olyan rekordot **sikeresek**, **boolean_s**, és **string_s**. Ez a bejegyzés a kezdeti értékeit formázott karakterláncként:
+A következő bejegyzést, majd a rekord típusa létrehozása előtt elküldve, ha a Log Analytics lenne hozzon létre egy rekordot három tulajdonságot **sikeresek**, **boolean_s**, és **string_s**. Ebbe a bejegyzésbe a kezdeti értékekre vannak formázva, karakterlánc:
 
 ![4. példa rekord](media/log-analytics-data-collector-api/record-04.png)
 
-## <a name="data-limits"></a>Adatok korlátok
-Nincsenek bizonyos korlátozások a a Log Analytics-adatok gyűjtése API közzé adatok körül.
+## <a name="data-limits"></a>A Data korlátai
+Vannak bizonyos korlátozások az adatok elküldése az a Log Analytics-adatok gyűjtési API körül.
 
-* Legfeljebb 30 MB post napló Analytics adatokat gyűjtő API. Ez az egyetlen post méretkorlátot. Ha az adatok egyetlen utáni, amely 30 MB meghaladja, az adatok akár kisebb méretű adattömböket írnak és elküldheti azokat párhuzamosan kell.
-* Legfeljebb 32 KB-os korlát mezők értékét. Ha 32 KB-nál nagyobb értéket, az adatok csonkolva lesz.
-* Egy adott típusú mezőket ajánlott maximális száma érték az 50. Ez a használhatóság és keresési élményt szempontból gyakorlati korlátozni.  
+* Közzététel a Log Analytics Data Collector API legfeljebb 30 MB-ot. Ez az egyedi közzétételek méretkorlátot. Ha az adatokat egyetlen közzététele, amely meghaladja a 30 MB-ot, a kell felosztani az adatokat, akár kisebb méretű adattömböket írnak és küldhet nekik egy időben.
+* Legfeljebb 32 KB-os korlátot a mezőértékek. Ha a mező értéke 32 KB-nál nagyobb, az adatok csonkolva lesz.
+* Egy adott típusú mezők ajánlott maximális száma érték az 50. Ez a használhatóság és a keresési élmény szempontjából gyakorlati korlátozva.  
 
-## <a name="return-codes"></a>A visszatérési kódok
-200-as HTTP-állapotkód: azt jelenti, hogy a kérelem érkezett a feldolgozáshoz. Ez azt jelzi, hogy a művelet sikeresen befejeződött-e.
+## <a name="return-codes"></a>Visszatérési kódok
+A HTTP-állapotkód: 200, az azt jelenti, hogy a kérelem érkezett-e a feldolgozási. Ez azt jelzi, hogy a művelet sikeresen befejeződött-e.
 
-Ez a táblázat felsorolja a szolgáltatás esetleg vissza állapotkódokat teljes készletének:
+Ez a táblázat felsorolja, amely a szolgáltatás előfordulhat, hogy vissza állapotkódok teljes körét:
 
 | Kód | status | Hibakód | Leírás |
 |:--- |:--- |:--- |:--- |
-| 200 |OK | |A kérés sikeresen elfogadva. |
-| 400 |Hibás kérés |InactiveCustomer |A munkaterület be lett zárva. |
+| 200 |OK | |A kérelem sikeresen elfogadva. |
+| 400 |Hibás kérés |InactiveCustomer |A munkaterület le van zárva. |
 | 400 |Hibás kérés |InvalidApiVersion |A megadott API-verzió nem ismerte fel a szolgáltatás. |
 | 400 |Hibás kérés |InvalidCustomerId |A megadott munkaterület-azonosító érvénytelen. |
-| 400 |Hibás kérés |InvalidDataFormat |Érvénytelen JSON el lett küldve. Az adott válasz törzsének tartalmazhatnak a hiba megoldásával kapcsolatos további információk. |
-| 400 |Hibás kérés |InvalidLogType |A napló típusa megadott tartalmazott különleges karaktereket vagy írhatók. |
+| 400 |Hibás kérés |InvalidDataFormat |Érvénytelen JSON el lett küldve. A választörzs tartalmazhat további információkat a hiba megoldásával kapcsolatban. |
+| 400 |Hibás kérés |InvalidLogType |A napló típusa tartalmazott különleges karaktereket vagy numerics adott meg. |
 | 400 |Hibás kérés |MissingApiVersion |Az API-verzió nincs megadva. |
 | 400 |Hibás kérés |MissingContentType |A tartalom típusa nincs megadva. |
 | 400 |Hibás kérés |MissingLogType |A szükséges érték napló típusa nincs megadva. |
-| 400 |Hibás kérés |UnsupportedContentType |Nincs beállítva a tartalomtípus **az application/json**. |
-| 403 |Tiltott |InvalidAuthorization |A szolgáltatás nem tudta hitelesíteni a kérelmet. Győződjön meg arról, hogy a munkaterület azonosítója és a kapcsolat kulcs érvényesek. |
-| 404 |Nem található | | A megadott URL-cím érvénytelen, vagy a kérelem túl nagy. |
-| 429 |Túl sok kérelem | | A szolgáltatás problémát nagyszámú fiókja adatait. Próbálkozzon újra később a kérelmet. |
-| 500 |Belső kiszolgálóhiba |UnspecifiedError |Belső szolgáltatáshiba történt. Próbálja megismételni a kérelmet. |
-| 503 |Elérhetetlen szolgáltatás |ServiceUnavailable |A szolgáltatás jelenleg nem érhető el a kérelmek fogadására. Próbálja megismételni a kérést. |
+| 400 |Hibás kérés |UnsupportedContentType |A tartalomtípus nem állították be **application/json**. |
+| 403 |Tiltott |InvalidAuthorization |A szolgáltatás nem tudta hitelesíteni a kérelmet. A munkaterület Azonosítóját és a kapcsolat kulcsa érvényességének ellenőrzése. |
+| 404 |Nem található | | A megadott URL-cím helytelen, vagy a kérelem mérete túl nagy. |
+| 429 |Túl sok kérelem | | A szolgáltatás nagy mennyiségű adatait a fiókból, tapasztal. Próbálkozzon újra később a kérelmet. |
+| 500 |Belső kiszolgálóhiba |UnspecifiedError |Belső szolgáltatáshiba történt. Ismételje meg a kérelmet. |
+| 503 |Elérhetetlen szolgáltatás |ServiceUnavailable |A szolgáltatás jelenleg nem érhető el a kérelmek fogadására. Ismételje meg a kérelmet. |
 
 ## <a name="query-data"></a>Adatok lekérdezése
-A napló Analytics HTTP adatokat gyűjtő API rekordokat keres által küldött lekérdezési adatok **típus** , amely megegyezik a **LogType** , amely a megadott érték hozzáíródik **_CL**. Például, ha a használt **MyCustomLog**, majd az összes rekordot alakítanák vissza **típus = MyCustomLog_CL**.
+A Log Analytics HTTP-adatgyűjtő API, a rekordok keresése által küldött adatokat lekérdezni **típus** , amely megegyezik a **LogType** meghatározott, értékkel kiegészítve **_CL**. Például, ha a használt **MyCustomLog**, akkor adna vissza, akkor az összes rekordot **típus = MyCustomLog_CL**.
 
 >[!NOTE]
-> Ha a munkaterületet lett frissítve a [új Log Analytics lekérdezési nyelv](log-analytics-log-search-upgrade.md), majd a fenti lekérdezés megváltozna a következők.
+> Ha a munkaterülete frissítve lett a [Log Analytics új lekérdezési nyelvre](log-analytics-log-search-upgrade.md), akkor a fenti lekérdezés módosulnak az alábbiak.
 
 > `MyCustomLog_CL`
 
-## <a name="sample-requests"></a>A minta-kérelmek
-A következő szakaszokban lévő látni fogja, hogy hogyan szeretné elküldeni a napló Analytics HTTP Data Collector API segítségével különböző programnyelveken minták.
+## <a name="sample-requests"></a>Minta kérelmek
+A következő szakaszokban találja a mintákat, hogyan lehet elküldeni az adatokat a Log Analytics HTTP-adatgyűjtő API különböző programozási nyelv használatával.
 
-Minden egyes minta hajtsa végre ezeket a lépéseket, a változók beállítása hitelesítési fejlécéhez:
+Minden mintához tegye állíthatja be a változókat az engedélyezési fejléc a következő lépéseket:
 
-1. Az Azure portálon keresse meg a Naplóelemzési munkaterület.
-2. Válassza ki **speciális beállítások** , majd **csatlakoztatott adatforrások**.
-2. Jobb oldalán **munkaterület azonosítója**, válassza a Másolás ikonra, és illessze be az azonosító az értékeként a **ügyfél azonosítója** változó.
-3. Jobb oldalán **elsődleges kulcs**, válassza a Másolás ikonra, és illessze be az azonosító az értékeként a **megosztott kulcsos** változó.
+1. Az Azure Portalon keresse meg a Log Analytics-munkaterületre.
+2. Válassza ki **speciális beállítások** , majd **csatlakoztatott források**.
+2. Jobb oldalán **munkaterület-Azonosítót**, és a másolási ikonra, majd illessze be az azonosító értéket a **ügyfél-azonosító** változó.
+3. Jobb oldalán **elsődleges kulcs**, és a másolási ikonra, majd illessze be az azonosító értéket a **megosztott kulcsos** változó.
 
-Azt is megteheti módosíthatja a változók a napló típusa és a JSON-adatokat.
+Azt is megteheti módosíthatja a változókat a napló típusa és a JSON-adatokat.
 
 ### <a name="powershell-sample"></a>PowerShell-minta
 ```
@@ -279,7 +279,6 @@ Function Post-LogAnalyticsData($customerId, $sharedKey, $body, $logType)
         -sharedKey $sharedKey `
         -date $rfc1123date `
         -contentLength $contentLength `
-        -fileName $fileName `
         -method $method `
         -contentType $contentType `
         -resource $resource
@@ -387,7 +386,7 @@ namespace OIAPIExample
 
 ```
 
-### <a name="python-2-sample"></a>Python 2 minta
+### <a name="python-2-sample"></a>Python 2-minta
 ```
 import json
 import requests
@@ -471,4 +470,4 @@ post_data(customer_id, shared_key, body, log_type)
 ```
 
 ## <a name="next-steps"></a>További lépések
-- Használja a [napló Search API](log-analytics-log-search-api.md) adatok lekérése a Log Analytics-tárházat.
+- Használja a [Log Search API](log-analytics-log-search-api.md) adatokat lekérni a Log Analytics-adattárban.

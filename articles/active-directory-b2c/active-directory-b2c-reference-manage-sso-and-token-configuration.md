@@ -1,27 +1,27 @@
 ---
-title: Egyszeri bejelentkezés és egyéni házirendek az Azure Active Directory B2C token testreszabási kezelése |} Microsoft Docs
-description: Ismerje meg az egyszeri bejelentkezés és token testreszabási egyéni házirendek kezelése.
+title: Egyszeri bejelentkezés és jogkivonat testreszabása az Azure Active Directory B2C-vel egyéni szabályzatok kezeléséhez |} A Microsoft Docs
+description: Ismerje meg az egyszeri Bejelentkezést és a jogkivonat testreszabása a egyéni szabályzatait kezelése.
 services: active-directory-b2c
 author: davidmu1
 manager: mtillman
 ms.service: active-directory
 ms.workload: identity
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/02/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 43e392979c50d340a10575898edb25b119e1410b
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 811fb8b2de59c9d324ab4acb8b0f51b4cec80aee
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34712232"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37441797"
 ---
-# <a name="azure-active-directory-b2c-manage-sso-and-token-customization-with-custom-policies"></a>Az Azure Active Directory B2C: Egyszeri Bejelentkezéssel és token testreszabási egyéni házirendek kezelése
-Egyéni házirendek használatával teszi lehetővé a jogkivonatot, munkamenet és egyszeri bejelentkezés (SSO) konfigurációk ugyanarra a vezérlőre beépített házirendek segítségével.  Ismerje meg, mi minden beállítás, olvassa el a dokumentációt [Itt](#active-directory-b2c-token-session-sso).
+# <a name="azure-active-directory-b2c-manage-sso-and-token-customization-with-custom-policies"></a>Az Azure Active Directory B2C: Felügyelete egyszeri Bejelentkezéssel és egyéni házirendekkel jogkivonat testreszabása
+Egyéni szabályzatok használatával biztosít a jogkivonat, munkamenet és egyszeri bejelentkezést (SSO) konfigurációk azonos felett, a beépített szabályzatokon keresztül.  Megtudhatja, mi minden beállítás, a dokumentációt [Itt](#active-directory-b2c-token-session-sso).
 
-## <a name="token-lifetimes-and-claims-configuration"></a>Jogkivonat élettartamát és a jogcímek konfiguráció
-A jogkivonat élettartamát a beállítások módosításához meg kell adni egy `<ClaimsProviders>` befolyásolja a kívánt házirendet, a függő entitás fájlban.  A `<ClaimsProviders>` elem gyermeke a `<TrustFrameworkPolicy>`.  Belül akkor kell helyezni, amely befolyásolja a jogkivonat élettartamát.  Az XML-fájl ebben a példában néz ki:
+## <a name="token-lifetimes-and-claims-configuration"></a>Jogkivonat élettartama, és a jogcímek konfigurációja
+A jogkivonatok élettartamának a beállítások módosításához kell hozzáadnia egy `<ClaimsProviders>` elem befolyásolhatja a kívánt házirendet, a függő entitás fájlban.  A `<ClaimsProviders>` elem gyermeke a `<TrustFrameworkPolicy>`.  Belső kell helyezni, amely befolyásolja a jogkivonatok élettartamának.  Az XML-fájl az alábbihoz hasonlít:
 
 ```XML
 <ClaimsProviders>
@@ -43,41 +43,41 @@ A jogkivonat élettartamát a beállítások módosításához meg kell adni egy
 </ClaimsProviders>
 ```
 
-**Hozzáférési jogkivonat élettartamát** -értéket módosításával módosíthatja a hozzáférési jogkivonat élettartamát a `<Item>` kulccsal = "token_lifetime_secs" másodpercben.  A beépített alapértelmezett érték 3600 másodperc (60 perc).
+**Hozzáférési jogkivonatok élettartamának** -közötti értéket módosításával módosíthatja a hozzáférési jogkivonat élettartama a `<Item>` kulccsal = "token_lifetime_secs" másodpercek alatt.  A beépített alapértelmezett értéke 3600 másodperc (60 perc).
 
-**A jogkivonatok élettartama azonosító** -jogkivonat élettartamát az azonosító értéket módosításával módosítható a `<Item>` kulccsal = "id_token_lifetime_secs" másodpercben.  A beépített alapértelmezett érték 3600 másodperc (60 perc).
+**Azonosító jogkivonat élettartama** -közötti értéket módosításával módosíthatja az azonosító jogkivonat élettartama a `<Item>` kulccsal = "id_token_lifetime_secs" másodpercek alatt.  A beépített alapértelmezett értéke 3600 másodperc (60 perc).
 
-**Frissítse a jogkivonatok élettartama** -értéket módosításával módosíthatja a frissítési jogkivonat élettartamát a `<Item>` kulccsal = "refresh_token_lifetime_secs" másodpercben.  A beépített alapértelmezett érték 1209600 másodperc (14 nap).
+**Frissítési jogkivonat élettartama** -közötti értéket módosításával módosíthatja a frissítési jogkivonat élettartama a `<Item>` kulccsal = "refresh_token_lifetime_secs" másodpercek alatt.  A beépített alapértelmezett értéke 1209600 másodperc (14 nap).
 
-**Frissítési jogkivonat mozgó ablak élettartamát** – Ha meg szeretné a frissítési jogkivonat mozgó ablak élettartamának beállítása, módosítsa az értéket `<Item>` kulccsal = "rolling_refresh_token_lifetime_secs" másodpercben.  A beépített alapértelmezett érték 7776000 (90 nap).  Ha nem szeretné kényszeríteni a mozgó ablak élettartama, cserélje le a sort:
+**Frissítési jogkivonat csúszóablak-élettartama** – Ha szeretne egy csúszóablak-élettartama beállítása a frissítési jogkivonatot, módosítsa az értéket belül `<Item>` kulccsal = "rolling_refresh_token_lifetime_secs" másodpercek alatt.  A beépített alapértelmezett értéke 7776000 (90 nap).  Ha nem szeretné kényszeríteni a csúszóablak-élettartama, cserélje le a sort:
 ```XML
 <Item Key="allow_infinite_rolling_refresh_token">True</Item>
 ```
 
-**A jogcím kiállítójának (iss)** – Ha azt szeretné, hogy a kibocsátó (iss) jogcím módosításához módosítsa az értéket a `<Item>` kulccsal = "IssuanceClaimPattern".  A megfelelő értékek `AuthorityAndTenantGuid` és `AuthorityWithTfp`.
+**Kibocsátói (iss) jogcím** – Ha szeretné módosítani a kibocsátói (iss) jogcím, közötti értéket módosítsa a `<Item>` kulccsal = "IssuanceClaimPattern".  Az érvényes értékek a következők `AuthorityAndTenantGuid` és `AuthorityWithTfp`.
 
-**Beállítás jogcím házirend-azonosító képviselő** -az érték közül TFP (megbízhatósági keretrendszer házirend) és ACR (hitelesítési környezeti hivatkozás).  
-Javasoljuk, hogy ezt a TFP beállítást, ehhez ellenőrizze a `<Item>` és a kulcs = "AuthenticationContextReferenceClaimPattern" létezik, és az érték `None`.
-Az a `<OutputClaims>` cikkhez, ez az elem hozzáadása:
+**Beállítás a házirend Azonosítóját jelölő jogcím** -érték a lehetőségeket TFP (bizalmi keretrendszer házirend) és az ACR (hitelesítési környezeti hivatkozás).  
+Ehhez biztosítania kell, javasoljuk, hogy ezt a TFP beállítást a `<Item>` és a kulcs = "AuthenticationContextReferenceClaimPattern" létezik, és az érték `None`.
+Az a `<OutputClaims>` elemet, adja hozzá ezt az elemet:
 ```XML
 <OutputClaim ClaimTypeReferenceId="trustFrameworkPolicy" Required="true" DefaultValue="{policy}" />
 ```
-ACR, távolítsa el a `<Item>` kulccsal = "AuthenticationContextReferenceClaimPattern".
+Az ACR-hez, távolítsa el a `<Item>` kulccsal = "AuthenticationContextReferenceClaimPattern".
 
-**Tulajdonos (rész-) jogcím** – Ez a beállítás alapértelmezett értékre ObjectID, történik, ha azt szeretné, a kapcsolóhoz `Not Supported`, tegye a következőket:
+**Tárgy (sub) jogcím** – Ez a beállítás alapértelmezés szerint az objektumazonosító felett, ha szeretne váltani, ezt a `Not Supported`, tegye a következőket:
 
 Cserélje le ezt a sort 
 ```XML
 <OutputClaim ClaimTypeReferenceId="objectId" PartnerClaimType="sub" />
 ```
-Ehhez a sorhoz:
+az ezt a sort:
 ```XML
 <OutputClaim ClaimTypeReferenceId="sub" />
 ```
 
-## <a name="session-behavior-and-sso"></a>Munkamenet viselkedést és az egyszeri bejelentkezés
+## <a name="session-behavior-and-sso"></a>Munkamenet-viselkedés, és az egyszeri bejelentkezés
 
-A munkamenet viselkedést és egyszeri Bejelentkezéssel konfigurációk módosítása, meg kell adni egy `<UserJourneyBehaviors>` elemben található a `<RelyingParty>` elemet.  A `<UserJourneyBehaviors>` elem közvetlenül követnie kell a `<DefaultUserJourney>`.  Belső a `<UserJourneyBehavors>` elem kell kinéznie:
+Ha módosítani szeretné a munkamenet-viselkedés, és az egyszeri bejelentkezés konfigurációkkal, hozzá kell egy `<UserJourneyBehaviors>` elemben található a `<RelyingParty>` elemet.  A `<UserJourneyBehaviors>` elem azonnal kell követnie a `<DefaultUserJourney>`.  Belső a `<UserJourneyBehavors>` elem kell kinéznie:
 
 ```XML
 <UserJourneyBehaviors>
@@ -86,8 +86,8 @@ A munkamenet viselkedést és egyszeri Bejelentkezéssel konfigurációk módos�
    <SessionExpiryInSeconds>86400</SessionExpiryInSeconds>
 </UserJourneyBehaviors>
 ```
-**Az egyszeri bejelentkezés (SSO) beállítása** – az egyszeri bejelentkezés beállításainak módosításához, módosítania kell a értékének `<SingleSignOn>`.  A megfelelő értékek `Tenant`, `Application`, `Policy` és `Disabled`. 
+**Egyszeri bejelentkezés (SSO) beállítása** – egyszeri bejelentkezési konfigurációjának módosítása, értékét módosítani kell `<SingleSignOn>`.  Az érvényes értékek a következők `Tenant`, `Application`, `Policy` és `Disabled`. 
 
-**Webalkalmazás munkamenet élettartama (perc)** - módosíthatja a webalkalmazás munkamenetek élettartamát, értékét módosítani kell a `<SessionExpiryInSeconds>` elemet.  Az alapértelmezett beépített házirendek értéke 86400 másodperc (1440 perc).
+**Webalkalmazás munkamenet élettartama (perc)** – módosíthatja a webalkalmazás munkamenet élettartamára, értékét módosítani kell a `<SessionExpiryInSeconds>` elemet.  Beépített szabályzatok alapértelmezett érték 86 400 másodperc (1440 perc).
 
-**Webes alkalmazás munkamenet időtúllépésének** - módosítása a webes alkalmazás munkamenet időkorlátja módosítania kell a értékének `<SessionExpiryType>`.  A megfelelő értékek `Absolute` és `Rolling`.
+**Webes alkalmazás munkamenet időtúllépésének** – a webalkalmazás munkamenet-időkorlátja, módosítsa az értékét módosítani kell `<SessionExpiryType>`.  Az érvényes értékek a következők `Absolute` és `Rolling`.

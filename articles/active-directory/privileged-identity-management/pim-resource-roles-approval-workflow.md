@@ -1,106 +1,106 @@
 ---
-title: Jóváhagyási munkafolyamata az Azure erőforrás-szerepkörök a Privileged Identity Management |} Microsoft Docs
-description: Azure-erőforrások jóváhagyási munkafolyamat folyamatát mutatjuk be.
+title: A Privileged Identity Management Azure-erőforrásszerepkörök jóváhagyási munkafolyamata |} A Microsoft Docs
+description: Az Azure-erőforrásokhoz a jóváhagyási munkafolyamatot ismerteti.
 services: active-directory
 documentationcenter: ''
 author: rolyon
 manager: mtillman
 ms.service: active-directory
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.component: protection
 ms.date: 04/02/2018
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: de15a02e706ec7f7b4cff0af303ea30fc87b8f34
-ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
+ms.openlocfilehash: 42b0a8f94ff09b308a579b962bc99c4796c73c2e
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35233767"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37443035"
 ---
-# <a name="approval-workflow-for-azure-resource-roles-in-privileged-identity-management"></a>A Privileged Identity Management az Azure erőforrás-szerepkörök jóváhagyási munkafolyamata
+# <a name="approval-workflow-for-azure-resource-roles-in-privileged-identity-management"></a>A Privileged Identity Management Azure-erőforrásszerepkörök jóváhagyási munkafolyamata
 
-A jóváhagyási munkafolyamata Privileged Identity Management (PIM) az Azure erőforrás-szerepkörök a rendszergazdák további védelméhez, vagy fontos erőforrásokhoz való hozzáférés korlátozása. Ez azt jelenti, hogy a rendszergazdák is jóváhagyás megkövetelése, szerepkör-hozzárendelések aktiválásához. 
+Jóváhagyási munkafolyamat Privileged Identity Management (PIM) az Azure-erőforrások szerepköreihez tartozó a rendszergazdák további védelméhez, vagy kritikus erőforrásokhoz való hozzáférés korlátozása. A rendszergazdák, szerepkör-hozzárendelések az aktiváláshoz jóváhagyásra lehet szükség. 
 
-Egy erőforrás-hierarchia fogalma egyedi az Azure erőforrás-szerepkörökhöz. Ezt a hierarchiát lehetővé teszi, hogy az öröklési szerepkör-hozzárendelések egy erőforrás szülőobjektumtól lefelé az összes alárendelt erőforráshoz, a szülő-tárolóban. 
+Az erőforrás hierarchia elképzelés az, csak az Azure-erőforrások szerepköreihez. Ez a hierarchia lehetővé teszi, hogy az öröklési szülőtároló található összes gyermek-erőforrás a szülőobjektum erőforrás lefelé szerepkör-hozzárendelések. 
 
-Például: Bob, egy erőforrás rendszergazda PIM használ egy jogosult taggal Alice hozzárendelése a tulajdonosi szerepkört, a Contoso előfizetésben. Ehhez a hozzárendeléshez Alice esetén az összes erőforrás csoport tároló Contoso előfizetésen belül jogosult tulajdonosa. Alice egyben erőforrások (például virtuális gépek) jogosult tulajdonosa az előfizetés mindegyik erőforráscsoporton belül. 
+Például: Bob, egy erőforrás-rendszergazda, használja a PIM módon megadott tagja jogosult Alice hozzárendelése a Contoso az előfizetésben tulajdonosi szerepkör. Ezt a hozzárendelést Alice a Contoso-előfizetésen belüli összes erőforrás csoport tárolók jogosult tulajdonosa. Alice az is az összes erőforrás (például virtuális gépek) jogosult tulajdonosa az előfizetés mindegyik erőforráscsoporton belül. 
 
-Tegyük fel, a Contoso előfizetés három erőforráscsoportok szerepelnek: Fabrikam vizsgálatára, a Fabrikam fejlesztői és a Fabrikam termék. Egyetlen virtuális gépet tartalmaz minden ezeket az erőforráscsoportokat.
+Tegyük fel, a Contoso-előfizetés három erőforráscsoportok vannak: a Fabrikam tesztelés, a Fabrikam fejlesztői és a Fabrikam gyárt. Ezeket az erőforráscsoportokat mindegyike tartalmaz egy virtuális gépen.
 
-A PIM beállításai az egyes szerepkörökhöz egy erőforrást. Hozzárendelések, ellentétben ezek a beállítások nem örökli, és feltétlenül vonatkozik az erőforrás-szerepkör. [További információk a jogosult hozzárendelések és erőforrás-láthatósági](pim-resource-roles-eligible-visibility.md).
+A PIM beállításai az egyes szerepkörökhöz erőforrás. Hozzárendelések ellentétben ezek a beállítások nem öröklődnek, és feltétlenül vonatkozik az erőforrás-szerepkör. [További információ a jogosult hozzárendelések és láthatósága](pim-resource-roles-eligible-visibility.md).
 
-A példa folytatása: Bálint PIM használ az összes tagjához a tulajdonosi szerepkört, a Contoso előfizetés kérelem jóváhagyás aktiválni kell. A Fabrikam termék erőforráscsoportban erőforrások védelme érdekében Bob is jóváhagyásra van szüksége a tagjai ennek az erőforrásnak a tulajdonosi szerepkört. A tulajdonos szerepkörök Fabrikam tesztelési és a Fabrikam fejlesztői nem jóváhagyás megkövetelése, az aktiváláshoz.
+A példa folytatása: Bob PIM használ, amelyet aktiválnia kell a tulajdonosi szerepkör a Contoso előfizetési kérés jóváhagyási szereplő összes tag igényelnek. A Fabrikam éles erőforráscsoportban az erőforrások védelme érdekében Bob is jóváhagyásra van szüksége ennek az erőforrásnak a tulajdonos szerepkör tagjai. A Fabrikam tesztelési és a Fabrikam fejlesztői tulajdonos szerepkörök nem igényel jóváhagyási az aktiváláshoz.
 
-Ha Alice kér a tulajdonosi szerepkört, a Contoso előfizetés aktiválása, a jóváhagyó kell hagyja jóvá vagy visszautasítja a kérelmet, előtt ő válik aktívvá a szerepkörben. Ha Alice úgy dönt, hogy [saját aktiválási hatókör](pim-resource-roles-activate-your-roles.md#apply-just-enough-administration-practices) a Fabrikam termék erőforráscsoporttal, a jóváhagyó jóváhagyása vagy túl elutasítja a kérelmet, kell. De ha Alice úgy dönt, hogy az egyik vagy mindkét Fabrikam teszt- vagy Fabrikam fejlesztői-aktiválás hatókör, a jóváhagyási nincs szükség.
+Amikor Ágnes a Contoso előfizetés tulajdonosi szerepkörét aktiválását, a jóváhagyó musí schválit nebo elutasítja a saját kérelmet, mielőtt ő válik aktívvá a szerepkörben. Ha úgy dönt, hogy Ágnes [saját aktiválási hatókör](pim-resource-roles-activate-your-roles.md#apply-just-enough-administration-practices) a Fabrikam éles erőforráscsoporthoz a jóváhagyó jóváhagyása vagy elutasítása túl a ezt a kérelmet kell. De ha Alice úgy dönt, hogy saját aktiválási egyik vagy mindkét Fabrikam teszt vagy a Fabrikam fejlesztői hatókör, jóváhagyás, nem szükséges.
 
-A jóváhagyási munkafolyamata nem feltétlenül szükséges a szerepkör összes tagja. Fontolja meg egy olyan forgatókönyvet, ahol a szervezet bízza, több szerződés társult segítséget az Azure-előfizetés által futtatott alkalmazás fejlesztésének. Erőforrás-rendszergazdaként alkalmazottaknak jogosult hozzáféréssel rendelkeznek a jóváhagyás szükséges nélkül kíván, de a szerződés társult jóvá kell hagyatnia. Jóváhagyási munkafolyamata konfigurálása csak a szerződés társult, hozzon létre egy egyéni biztonsági szerepkört rendelt alkalmazottak szerepkörként ugyanazokkal az engedélyekkel. Adott egyéni szerepkör aktiválásához jóváhagyásra lehet szükség. [További tudnivalók az egyéni szerepkörök](pim-resource-roles-custom-role-policy.md).
+A jóváhagyási munkafolyamat nem feltétlenül szükséges a szerepkör összes tagja számára. Példaként vegyünk egy forgatókönyvet, ahol a szervezet több szerződés hozzárendeli egy Azure-előfizetésben futó alkalmazás fejlesztésének kiküszöbölni hires. Erőforrás-rendszergazdaként azt szeretné, hogy az alkalmazottak jogosult hozzáférése nélkül jóváhagyás szükséges, de a szerződés hozzárendeli engedélyt kell kérnie. Jóváhagyási munkafolyamatok konfigurálása csak a szerződés hozzárendeli, létrehozhat egy egyéni biztonsági szerepkört, az alkalmazottak rendelt szerepkör ugyanazokkal az engedélyekkel. Megkövetelheti, hogy egyéni szerepkör aktiválásához jóváhagyás. [További információ az egyéni szerepkörök](pim-resource-roles-custom-role-policy.md).
 
-A jóváhagyási munkafolyamat konfigurálását, és adja meg, akik jóváhagyása vagy megtagadja a hozzáférést kérelmek, az alábbi eljárásokkal.
+A jóváhagyási munkafolyamat konfigurálása, és adja meg, akik jóváhagyhatják vagy megtagadhatják a kérelmek, az alábbi eljárásokkal.
 
 ## <a name="require-approval-to-activate"></a>Az aktiváláshoz jóváhagyásra van szükség
 
-1. Keresse meg a PIM, hogy az Azure portálon, és válasszon ki egy erőforrástípust a listából.
+1. A PIM az Azure Portalon keresse meg, és válasszon ki egy erőforrást a listából.
 
-   ![A kiválasztott erőforrás "Azure-erőforrások" ablaktábla](media/azure-pim-resource-rbac/aadpim_manage_azure_resource_some_there.png)
+   ![A kiválasztott erőforrás "Azure-erőforrások" panel](media/azure-pim-resource-rbac/aadpim_manage_azure_resource_some_there.png)
 
-2. A bal oldali ablaktáblán válassza ki a **beállítások**.
+2. A bal oldali panelen válassza ki a **szerepkör-beállítások**.
 
-3. Keresse meg és jelölje ki a szerepkört, majd válassza ki **szerkesztése** beállításainak módosítására.
+3. Keresse meg, és válasszon egy szerepkört, majd válassza ki **szerkesztése** beállításainak módosítására.
 
-   ![A jelentésoperátori szerepnek a "Szerkesztés" gomb](media/azure-pim-resource-rbac/aadpim_rbac_role_settings_view_settings.png)
+   ![Az operátor szerepkör "Szerkesztés" gombra](media/azure-pim-resource-rbac/aadpim_rbac_role_settings_view_settings.png)
 
-4. Az a **aktiválási** szakaszban jelölje be a **jóváhagyás aktiválásához szükséges** jelölőnégyzetet.
+4. Az a **aktiválási** szakaszban jelölje be a **aktiválásához jóváhagyás szükséges** jelölőnégyzetet.
 
-   ![Felhasználóiszerep-beállítások "Aktiválás" szakasza](media/azure-pim-resource-rbac/aadpim_rbac_settings_require_approval_checkbox.png)
+   ![Szerepkör-beállítások "Aktiválás" szakaszában](media/azure-pim-resource-rbac/aadpim_rbac_settings_require_approval_checkbox.png)
 
 ## <a name="specify-approvers"></a>Adja meg a jóváhagyóknak
 
-Kattintson a **válassza ki a jóváhagyóknak** megnyitásához a **egy felhasználó vagy csoport kiválasztása** ablaktáblán.
+Kattintson a **jóváhagyók kiválasztása** megnyitásához a **egy felhasználó vagy csoport kiválasztása** ablaktáblán.
 
 >[!NOTE]
->Legalább egy felhasználónak vagy csoportnak a frissítése a beállítást kell választania. Nincsenek nem alapértelmezett jóváhagyóknak.
+>Jelöljön ki legalább egy felhasználó vagy csoport a beállításainak frissítéséhez. Nincsenek nem alapértelmezett jóváhagyónak.
 
-Erőforrás-rendszergazdák felhasználók és csoportok kombinációja adhat hozzá a jóváhagyóknak listáját. 
+Erőforrás-rendszergazdák felhasználók és csoportok tetszőleges kombinációját is hozzáadhat a listát. 
 
-!["A felhasználó vagy csoport kiválasztása" ablaktáblán a kiválasztott felhasználóhoz](media/azure-pim-resource-rbac/aadpim_rbac_role_settings_select_approvers.png)
+!["A felhasználó vagy csoport kiválasztása" panelen a kiválasztott felhasználóhoz](media/azure-pim-resource-rbac/aadpim_rbac_role_settings_select_approvers.png)
 
-## <a name="request-approval-to-activate"></a>Aktiválja a kérelem jóváhagyása
+## <a name="request-approval-to-activate"></a>Kérelem jóváhagyása aktiválása
 
-Jóváhagyást kérő rendelkezik nincs hatással az eljárást, amely tagja aktiválni kell követnie. [Tekintse át a szerepkört aktiváló lépéseket](pim-resource-roles-activate-your-roles.md).
+Engedély kérése nem befolyásolja az eljárást, amely a tag aktiválni kell követnie. [Tekintse át a szerepkört aktiváló lépéseit](pim-resource-roles-activate-your-roles.md).
 
-A kért aktiválás, amelyhez jóváhagyás szükséges szerepkör tagja, és a szerepkör már nincs szükség, ha a tag megszüntetheti a PIM kérelmüket.
+Ha tagja a kért jóváhagyást igénylő szerepkörök aktiválása és a szerepkör már nem szükséges, a tag megszakíthatja a kérelmet az PIM-ben.
 
-Megszakítja, keresse meg a PIM, és válassza ki **saját kérések**. Keresse meg a kérelmet, és válasszon **Mégse**.
+Megszakítja, keresse meg a PIM, és válassza a **saját kérések**. Keresse meg a kérelmet, és válasszon **Mégse**.
 
-!["Saját kérések" ablak](media/azure-pim-resource-rbac/aadpim_rbac_role_approval_request_pending.png)
+!["Saját kérések" panel](media/azure-pim-resource-rbac/aadpim_rbac_role_approval_request_pending.png)
 
-## <a name="approve-or-deny-a-request"></a>Hagyja jóvá vagy visszautasítja a kérelmet
+## <a name="approve-or-deny-a-request"></a>Hagyja jóvá vagy utasítsa a kérelem
 
-Hagyja jóvá vagy visszautasítja a kérelmet, a jóváhagyó lista tagjának kell lennie. 
+Jóváhagyja vagy elutasítja a kérelmet, a jóváhagyó lista tagjának kell lennie. 
 
-1. A PIM, válassza ki **kérelmek jóváhagyása** a bal oldali menüben a lapról, és keresse meg a kérelmet.
+1. A PIM, válassza ki **kérések jóváhagyása** a lapról, a bal oldali menüben, és keresse meg a kérelmet.
 
-   !["A kérelmek jóváhagyása" ablak](media/azure-pim-resource-rbac/aadpim_rbac_approve_requests_list.png)
+   !["A kérések jóváhagyása" panel](media/azure-pim-resource-rbac/aadpim_rbac_approve_requests_list.png)
 
-2. A kérelem, adja meg a döntést indoklását válassza ki és **jóváhagyás** vagy **Megtagadás**. A kérelem majd meg van oldva.
+2. Válassza ki a kérést, adja meg a döntést az indoklást, és válassza **jóváhagyás** vagy **Megtagadás**. A kérelem majd fog állni.
 
    ![Részletes információkat a kijelölt kérelem](media/azure-pim-resource-rbac/aadpim_rbac_approve_request_approved.png)
 
-## <a name="workflow-notifications"></a>Munkafolyamat-értesítést
+## <a name="workflow-notifications"></a>A munkafolyamat-értesítések
 
 Az alábbiakban néhány alapvető tudnivalók a munkafolyamat-értesítést:
 
-- A jóváhagyó lista összes tagja értesítést kap e-mailben egy szerepkörhöz vonatkozó kérés van függőben lévő a felülvizsgálati. Értesítő e-mailek közvetlen mutató hivatkozást a kérést, ahol a jóváhagyó jóváhagyása vagy elutasítása.
-- A lista, aki jóvá vagy letiltja az első tagtól kéréseket szünteti meg. 
-- Jóváhagyó válaszol a kérelemre, a jóváhagyó lista összes tagja művelet értesítést kap. 
-- Erőforrás-rendszergazdák értesítést kap egy jóváhagyott tag válik aktívvá a szerepkörben. 
+- A jóváhagyó lista tagjainak az összes értesítést kap e-mailben a felülvizsgálatot függőben van egy kérelem egy adott szerepkör esetében. E-mail értesítések közé tartoznak a kérést, ha a jóváhagyó jóváhagyhatják vagy megtagadhatják a közvetlen hivatkozást.
+- Kérelmek jóváhagyja vagy megtagadja a lista első tag által megoldott. 
+- Amikor egy jóváhagyó válaszolt a kérelemre, a jóváhagyó lista összes tagja, a művelet értesítést kap. 
+- Erőforrás-rendszergazdák értesítést kap egy jóváhagyott tagot a szerepkörük aktívvá válik. 
 
 >[!Note]
->Egy erőforrás-rendszergazda, aki úgy véli, hogy egy jóváhagyott tag nem lehet aktív aktív szerepkör-hozzárendelés eltávolítása a PIM. Bár az erőforrás-rendszergazdák nem értesítik függőben lévő kérelmek kivéve, ha a jóváhagyó lista tagjai, tekinthet meg és függőben lévő kérelmek az összes olyan felhasználó megszakítja a függőben levő kérelmekre PIM megtekintésével. 
+>Úgy véli, hogy egy jóváhagyott tag nem lehet aktív erőforrás rendszergazda eltávolíthatja a aktív szerepkör-hozzárendelés az PIM-ben. Bár az erőforrás-rendszergazdák nem kapnak értesítést a függőben lévő kérések kivéve, ha a jóváhagyó lista tagjainak, megtekintheti és visszavonása függőben lévő kéréseket az összes olyan felhasználó megtekinti a függőben lévő kéréseket az PIM-ben. 
 
 ## <a name="next-steps"></a>További lépések
 

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/02/2018
 ms.author: apimpm
-ms.openlocfilehash: 7342e0fe69cf3c82ec82bf1a864e7325449fff22
-ms.sourcegitcommit: 4597964eba08b7e0584d2b275cc33a370c25e027
+ms.openlocfilehash: 87381a27a59d6719f4bfff9ed367598932c1985c
+ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37342252"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37436403"
 ---
 # <a name="how-to-save-and-configure-your-api-management-service-configuration-using-git"></a>Mentse, és a Git használatával az API Management-szolgáltatás konfigurációjának beállítása
 
@@ -226,7 +226,7 @@ A `apis` mappa tartalmaz egy mappát az egyes API-t a szolgáltatás példánya,
 ### <a name="groups-folder"></a>csoportok mappa
 A `groups` mappa tartalmaz egy mappát a szolgáltatáspéldány meghatározott csoportokra.
 
-* `groups\<group name>\configuration.json` – Ez az a csoport konfigurációját. Ez az, hogy ugyanazokat az információkat, amelyek a rendszer visszaadna, ha hívása a [beolvasása egy adott csoport](https://msdn.microsoft.com/library/azure/dn776329.aspx#GetGroup) műveletet.
+* `groups\<group name>\configuration.json` – Ez az a csoport konfigurációját. Ez az, hogy ugyanazokat az információkat, amelyek a rendszer visszaadna, ha hívása a [beolvasása egy adott csoport](https://docs.microsoft.com/en-us/rest/api/apimanagement/group/get) műveletet.
 * `groups\<group name>\description.html` – Ez a csoport leírását, amely megfelel a `description` tulajdonságát a [entitás csoport](https://msdn.microsoft.com/library/azure/dn776329.aspx#EntityProperties).
 
 ### <a name="policies-folder"></a>házirend mappa
@@ -246,7 +246,7 @@ A `portalStyles` mappa tartalmazza a konfigurációs és stílus táblázatok a 
 ### <a name="products-folder"></a>termékek mappa
 A `products` mappa tartalmaz egy mappát az egyes termékek, a szolgáltatáspéldány meghatározott.
 
-* `products\<product name>\configuration.json` – Ez a termék a konfiguráció. Ez az, hogy ugyanazokat az információkat, amelyek a rendszer visszaadna, ha hívása a [beolvasása egy bizonyos termékben](https://msdn.microsoft.com/library/azure/dn776336.aspx#GetProduct) műveletet.
+* `products\<product name>\configuration.json` – Ez a termék a konfiguráció. Ez az, hogy ugyanazokat az információkat, amelyek a rendszer visszaadna, ha hívása a [beolvasása egy bizonyos termékben](https://docs.microsoft.com/en-us/rest/api/apimanagement/product/get) műveletet.
 * `products\<product name>\product.description.html` – Ez a termék leírását, amely megfelel a `description` tulajdonságát a [termék entitás](https://docs.microsoft.com/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-product-entity) a REST API-ban.
 
 ### <a name="templates"></a>sablonok

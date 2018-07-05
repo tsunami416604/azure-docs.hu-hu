@@ -1,68 +1,68 @@
 ---
-title: Használja az Azure Active Directory B2C átjáró kora |} Microsoft Docs
-description: Ismerje meg az alkalmazást kiskorúak azonosítása.
+title: Korhatáralapú hozzáférés Azure Active Directory B2C használatával |} A Microsoft Docs
+description: Ismerje meg az alkalmazás használatával kiskorúak azonosítása.
 services: active-directory-b2c
 author: davidmu1
 manager: mtillman
 ms.service: active-directory
 ms.workload: identity
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/29/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: bbf885fbcca22e42b2ec0ad7ff4e7a70aa5f5828
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 9d24e37642a41e4d60b33f42a60d7e56cb4b35b5
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34711970"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37446724"
 ---
-#<a name="using-age-gating-in-azure-ad-b2c"></a>Az Azure AD B2C átjáró kora használatával
+#<a name="using-age-gating-in-azure-ad-b2c"></a>Koralapú Azure AD B2C-ben
 
 >[!IMPORTANT]
->A funkció jelenleg private Preview verziójára.  Tekintse meg a [szolgáltatás blog](https://blogs.msdn.microsoft.com/azureadb2c/) részleteket, ez lesz a érhető el, vagy kérjen AADB2CFeedback@microsoft.com.  Ne használja ezt a termelési könyvtárak, ezeket az új funkciók használatához adatvesztést eredményezhet, és előfordulhat, hogy rendelkezik viselkedését, amíg megnyitjuk általánosan rendelkezésre álló váratlan változását.  
+>Ez a szolgáltatás private preview verzióban van.  Tekintse át a [szolgáltatási blogunkat](https://blogs.msdn.microsoft.com/azureadb2c/) részleteket, mivel ezt lesz elérhető, vagy forduljon AADB2CFeedback@microsoft.com.  Ne használja ezt a termelési könyvtárak, használja ezeket a funkciókat az adatvesztést eredményezhet, és előfordulhat, hogy váratlan módosítások mindaddig, amíg meg is vagyunk általánosan működésében.  
 >
 
-##<a name="age-gating"></a>Az átjáró kora
-Kor átjáró lehetővé teszi az alkalmazás kiskorúak azonosítása az Azure AD B2C segítségével.  Ha szeretné, a felhasználó nem jelentkezik be az alkalmazást, vagy hogy lépjen vissza, amely azonosítja a felhasználócsoport kor és beleegyezést állapotuk további JOGCÍMEKKEL rendelkező és az alkalmazáshoz.  
+##<a name="age-gating"></a>Korhatáralapú
+Korhatáralapú lehetővé teszi, hogy az Azure AD B2C segítségével azonosíthatók a kiskorúak az alkalmazásban.  Kiválaszthatja az alkalmazásba a felhasználó letiltása, vagy hogy térjen vissza az alkalmazást a további jogcím, amelyek azonosítják a felhasználó korcsoport és azok szülői beleegyezési állapotát.  
 
 >[!NOTE]
->Szülői jóváhagyása követi nyomon a felhasználói attribútum nevű `consentProvidedForMinor`.  Ez a tulajdonság, a Graph API-n keresztül frissítheti és való frissítése során fogja használni ezt a mezőt `legalAgeGroupClassification`.
+>Szülői beleegyezési követi nyomon egy felhasználó attribútum nevű `consentProvidedForMinor`.  Ez a tulajdonság a Graph API-n keresztül frissítheti és frissítésekor fog használni ezt a mezőt `legalAgeGroupClassification`.
 >
 
-##<a name="setting-up-your-directory-for-age-gating"></a>A könyvtár a kor átjáró beállítása
-Ahhoz, hogy egy felhasználó folyamatában átjáró kor, kell konfigurálni a címtárban, így további tulajdonságát. Ez a művelet végezhető el `Properties` a menü (amely csak akkor, ha Ön a private Preview verziójára része lesz).  
-1. Az Azure AD B2C-bővítményben, kattintson a a **tulajdonságok** a bérlője a bal oldali menüben.
-2. Az a **kora átjáró** területen kattintson a a **konfigurálása** gombra.
-3. Várjon, amíg a művelet elvégzéséhez, és a címtárban a kor átjáró hoznak létre.
+##<a name="setting-up-your-directory-for-age-gating"></a>A címtár korhatáralapú beállítása
+Felhasználói folyamat korhatáralapú hozzáférés használatához konfigurálja a címtárban, hogy a további tulajdonságok kell. Ez a művelet végezhető el `Properties` a menü (amely csak akkor aktív, ha a privát előzetes verzió része lesz).  
+1. Az Azure AD B2C-bővítményben, kattintson a a **tulajdonságok** a bal oldali menüben a bérlő számára.
+2. Alatt a **korhatáralapú** területén kattintson a a **konfigurálása** gombra.
+3. Várjon, amíg a művelet befejeződik, és a címtár korhatáralapú hoznak létre.
 
-##<a name="enabling-age-gating-in-your-user-flow"></a>A felhasználó folyamatában átjáró kora engedélyezése
-A címtár használandó kora átjáró beállítása után a az előzetes verzió felhasználói forgalomban használhatja ezt a szolgáltatást.  Ehhez a szolgáltatáshoz, melyek nem kompatibilis a meglévő típusú felhasználói adatfolyamok módosításokat.  Engedélyezi a következő lépések átjáró kor:
-1. Hozzon létre egy előzetes felhasználói folyamat.
-2. Miután létrejött, Ugrás **tulajdonságok** a menüben.
-3. Az a **kora átjáró** szakaszban, nyomja meg a váltógomb a funkció engedélyezéséhez.
-4. Ezután kiválaszthatja, hogyan szeretné kezelni olyan felhasználót, kiskorúak azonosítani.
+##<a name="enabling-age-gating-in-your-user-flow"></a>A felhasználói folyamat korhatáralapú hozzáférés engedélyezése
+A címtár használata a korhatáralapú beállítása után az előzetes verzió felhasználói folyamatokban ezután használhatja ezt a szolgáltatást.  A szolgáltatás használatához, hogy nem kompatibilis a felhasználói folyamatok meglévő típusú módosításokat.  Engedélyezi a korhatáralapú az alábbi lépéseket követve:
+1. Előzetes verzió felhasználói folyamat létrehozása.
+2. Miután létrejött, nyissa meg **tulajdonságok** menüjében.
+3. Az a **korhatáralapú** szakaszban, nyomja le a váltógombot a funkció engedélyezéséhez.
+4. Kiválaszthatja, hogyan szeretné kezelni a felhasználókat, amelyek kiskorúak azonosításához.
 
-##<a name="what-does-enabling-age-gating-do"></a>Mire engedélyezése kora átjáró?
-Kor átjáró engedélyezése után a felhasználó folyamatában az a felhasználó számára a módosításokat.  Regisztráció, a felhasználók most már a születési és a felhasználói attribútumok a felhasználói folyamat konfigurált együtt lakóhelye kell adnia.  Jelentkezzen be, a felhasználók, amelyek még nem korábban megadott születési dátum és a tartózkodási ország kér a rendszer ezt az információt a legközelebb bejelentkeznek az.  E két érték közül az Azure AD B2C alapján megállapítható, hogy a felhasználó egy kisebb lesz, és frissítse a `ageGroup` mezőben, az érték lehet `null`, `Undefined`, `Minor`, `Adult`, és `NotAdult`.  A `ageGroup` és `consentProvidedForMinor` mezők majd kiszámításához használt `legalAgeGroupClassification`. 
+##<a name="what-does-enabling-age-gating-do"></a>Mire korhatáralapú engedélyezése?
+Korhatáralapú engedélyezését követően a felhasználói folyamat a felhasználói élmény a módosításokat.  Regisztráció, a felhasználók most már meg kell adnia a születési idő és a lakóhelye együtt a felhasználói attribútumok a felhasználói folyamat konfigurálva.  Bejelentkezési akik korábban még nem megadott születési dátum és ország tartózkodási meg kell adnia az adatok legközelebb bejelentkeznek.  Ezt a két értéket, az Azure AD B2C alapján megállapítható, hogy a felhasználó egy kisebb lesz, és frissítse a `ageGroup` mező, az érték lehet `null`, `Undefined`, `Minor`, `Adult`, és `NotAdult`.  A `ageGroup` és `consentProvidedForMinor` mezők majd kiszámításához használt `legalAgeGroupClassification`. 
 
-##<a name="age-gating-options"></a>A korszűrő átjáró beállítások
-Választhat, az Azure AD B2C blokk kiskorúak szülői jóváhagyása nélkül vagy teszik lehetővé, és az alkalmazás döntéseket Mi a teendő velük a rendelkezésére.  
+##<a name="age-gating-options"></a>Korhatáralapú hozzáférés-beállítások
+Kiválaszthatja, hogy rendelkezik Azure AD B2C-vel blokk kiskorúak nélkül szülői beleegyezési vagy teszik lehetővé, és az alkalmazást, mi a teendő velük a döntéseket.  
 
-###<a name="allowing-minors-without-parental-consent"></a>Így kiskorúak szülői jóváhagyása nélkül
-Engedélyezése vagy jelentkezzen be, jelentkezzen be a felhasználói forgalom vagy mindkettő kiválaszthatja az alkalmazásba hozzájárulás nélkül kiskorúak engedélyezéséhez.  Kiskorúak szülői jóváhagyása nélkül, az engedélyezve van a bejelentkezéshez vagy iratkozzon fel, mint a normál és az Azure AD B2C kibocsát egy azonosító jogkivonat a `legalAgeGroupClassification` jogcímek.  Ezt az igényt dönthet úgy, hogy ezek a felhasználók jogosultak a élmény használatával, mint áthaladás beleegyezést gyűjtéséhez élményt (és frissítse a `consentProvidedForMinor` mező).
+###<a name="allowing-minors-without-parental-consent"></a>Kiskorú szülői beleegyezési nélkül engedélyezése
+Felhasználói folyamatok, amelyek lehetővé teszik vagy jelentkezzen be, jelentkezzen be, vagy mindkét lehet váltani, az alkalmazásba hozzájárulás nélkül kiskorúak.  Kiskorú szülői beleegyezési nélkül, a jogosult a bejelentkezéshez, vagy iratkozzon fel, ahogy a normál és az Azure AD B2C-azonosító jogkivonat a problémák a `legalAgeGroupClassification` jogcím.  Használatával kiválaszthatja, hogy a felhasználói élményt, ezek a felhasználók ezt az igényt, például áthaladna szülői beleegyezési gyűjtéséhez felületet (és frissítheti a `consentProvidedForMinor` mezőben).
 
-###<a name="blocking-minors-without-parental-consent"></a>Blokkoló kiskorúak szülői jóváhagyása nélkül
-Engedélyezése vagy jelentkezzen be, jelentkezzen be a felhasználói forgalom vagy mindkettő kiválaszthatja blokkolására kiskorúak alkalmazásból hozzájárulása nélkül.  Az Azure AD B2C letiltott felhasználók kezelésére két lehetőség áll rendelkezésre:
-* A JSON küldi vissza az alkalmazás - ezt a beállítást olyan választ küld az alkalmazásnak, hogy egy kisebb hozzáférése le van tiltva.
-* A felhasználó megjelenik egy lap tájékoztatja, hogy nem érhető el az alkalmazást egy hibalap - megjelenítése
+###<a name="blocking-minors-without-parental-consent"></a>Kiskorú szülői beleegyezési nélkül blokkolása
+Felhasználói folyamatok, amelyek lehetővé teszik vagy jelentkezzen be, jelentkezzen be vagy mindkettőt beállíthatja blokkolása kiskorúak alkalmazásból beleegyezése nélkül.  Az Azure AD B2C-ben a letiltott felhasználók kezelésére két lehetőség van:
+* A JSON küldése az alkalmazásnak – ezt a beállítást olyan választ küld az alkalmazásnak, hogy egy kisebb blokkolása.
+* A felhasználó megjelenik egy oldal, amely tájékoztatja őket, hogy nem tudják elérni az alkalmazást - hibalap megjelenítése
 
 ##<a name="known-issues"></a>Ismert problémák
-###<a name="format-for-the-response-when-a-minor-is-blocked"></a>A válasz egy kisebb blokkolásáról formátumban.
-A válasz jelenleg formátuma, egy következő frissítés kiiktatása ezt a hibát.
+###<a name="format-for-the-response-when-a-minor-is-blocked"></a>A válasz egy kisebb letiltásakor formátuma.
+A válasz jelenleg megfelelően szintaxisa nem, a hiba a következő frissítés kibocsátásokban megtörténik.
 
-###<a name="deleting-specific-attributes-that-were-added-during-setup-can-make-your-directory-unable-to-use-age-gating"></a>A telepítés során felvett adott attribútumok törlése teheti a címtárban nem használható kora átjáró.
-Kor átjáró beállításaiban, a directory-ban egy beállítást konfigurálta a `Properties`.  Ha törli vagy `legalCountry` vagy `dateOfBirth` keresztül diagramot, a címtár többé ne használhassa kora átjáró, és ezeket a tulajdonságokat nem lehet újból létre kell hozni.
+###<a name="deleting-specific-attributes-that-were-added-during-setup-can-make-your-directory-unable-to-use-age-gating"></a>Törlése a konkrét attribútumok, amelyek a telepítés során lettek hozzáadva a címtárban nem használható a korhatáralapú is felvehető.
+A korhatáralapú beállításai, a keresztül lehetőséget a könyvtárhoz konfigurált a `Properties`.  Ha törli vagy `legalCountry` vagy `dateOfBirth` keresztül grafikon, a címtárban nem használható korhatáralapú, és ezeket a tulajdonságokat nem lehet újból létre kell hozni.
 
-###<a name="list-of-countries-is-incomplete"></a>Azon országok listája nem fejeződött be
-Jelenleg legalCountry országok listája nem fejeződött be, a többi országok adjuk hozzá a következő frissítés.
+###<a name="list-of-countries-is-incomplete"></a>Országok listája nem fejeződött be
+Jelenleg a legalCountry országok listája nem teljes, a többi országok, egy következő frissítés adjuk hozzá.

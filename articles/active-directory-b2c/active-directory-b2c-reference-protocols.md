@@ -1,79 +1,79 @@
 ---
-title: Az Azure Active Directory B2C hitelesítési protokollok |} Microsoft Docs
-description: Megtudhatja, hogyan hozhat létre alkalmazásokat közvetlenül az Azure Active Directory B2C által támogatott protokollok használatával.
+title: Az Azure Active Directory B2C a hitelesítési protokollok |} A Microsoft Docs
+description: Hogyan hozhat létre alkalmazásokat közvetlenül az Azure Active Directory B2C által támogatott protokollok használatával.
 services: active-directory-b2c
 author: davidmu1
 manager: mtillman
 ms.service: active-directory
 ms.workload: identity
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/07/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 09b76cd2235663d76b9973ff722ec6a515c30285
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: e6f722afead39c8a0ba940d9e2cb54d1f197d143
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34709682"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37442280"
 ---
 # <a name="azure-ad-b2c-authentication-protocols"></a>Az Azure AD B2C: Hitelesítési protokollok
-Az Azure Active Directory B2C két iparági szabványos protokollok támogatása (az Azure AD B2C) biztosít az az alkalmazások szolgáltatásként identitás: OpenID Connectet és az OAuth 2.0-s. A szolgáltatás szabványoknak megfelelő, de ezeket a protokollokat bármely két implementációja rendelkezhet finom eltérések vannak. 
+Az Azure Active Directory B2C (Azure AD B2C-vel) identitást biztosít az alkalmazások szolgáltatás két, az iparági szabványos protokollok támogatása révén: OpenID Connectet és az OAuth 2.0. A szolgáltatás szabványoknak megfelelő, de bármilyen két implementációiban ezeket a protokollokat is finom eltérések vannak. 
 
-Ez az útmutató az információk akkor hasznos, ha közvetlenül küldésével és HTTP-kérelmek kezelése, nem pedig egy nyílt forráskódú könyvtár használatával írhatja a kódot. Azt javasoljuk, hogy olvassa el ezen a lapon az ahhoz, hogy mélyedjen el az adott protokollokat részleteit. De ha már ismeri az Azure AD B2C, nyissa meg rögtön [a protokoll hivatkozási útmutatók](#protocols).
+Ez az útmutató információkat akkor hasznos, ha a kód írása közvetlenül küldésével és HTTP-kérelmek kezelésére, nem pedig egy nyílt forráskódú kódtár használatával. Azt javasoljuk, hogy ezen a lapon olvassa el, mielőtt alaposabban elmerülne egyes adott protokoll részleteit. Ha már ismeri az Azure AD B2C-vel, megnyithatja közvetlenül, de [a protokoll referencia útmutatók](#protocols).
 
 <!-- TODO: Need link to libraries above -->
 
 ## <a name="the-basics"></a>Az alapok
-Minden Azure AD B2C alkalmazó alkalmazásban regisztrálva kell lennie a B2C-címtárban lévő a [Azure-portálon](https://portal.azure.com). Az alkalmazásregisztrációs művelet során a rendszer összegyűjt bizonyos adatokat, majd értékeket rendel az alkalmazáshoz:
+Az Azure AD B2C-t használó alkalmazásokat a B2C-címtárban szerepelnie kell a [az Azure portal](https://portal.azure.com). Az alkalmazásregisztrációs művelet során a rendszer összegyűjt bizonyos adatokat, majd értékeket rendel az alkalmazáshoz:
 
 * **Application ID** (Alkalmazásazonosító), amely egyedileg azonosítja az alkalmazást.
-* A **átirányítási URI-** vagy **csomag azonosítója** , amely közvetlen válaszokhoz az alkalmazáshoz használható.
-* Néhány más forgatókönyvekre jellemző értékeket. További információt a további [az alkalmazás regisztrálása](active-directory-b2c-app-registration.md).
+* A **átirányítási URI-t** vagy **csomag azonosítója** , amely közvetlen válaszokhoz az alkalmazáshoz használható.
+* Néhány más forgatókönyv-specifikus értékeket. További információkért tekintse meg [hogyan regisztrálhatja alkalmazását](active-directory-b2c-app-registration.md).
 
-Az alkalmazás regisztrálása után kommunikál Azure Active Directory (Azure AD) a végpontnak küldött kérésekkel:
+Miután regisztrálta az alkalmazást, akkor kommunikál az Azure Active Directory (Azure AD) a végponthoz való kérések küldésével:
 
 ```
 https://login.microsoftonline.com/{tenant}/oauth2/v2.0/authorize
 https://login.microsoftonline.com/{tenant}/oauth2/v2.0/token
 ```
 
-Szinte minden OAuth és az OpenID Connect adatfolyamok, a négy felek használnak az exchange:
+Szinte minden OAuth és OpenID Connect folyamatokban négy felek vesz részt, az exchange:
 
-![OAuth 2.0 szerepkörök](./media/active-directory-b2c-reference-protocols/protocols_roles.png)
+![Az OAuth 2.0-szerepkörök](./media/active-directory-b2c-reference-protocols/protocols_roles.png)
 
-* A **engedélyezési server** az Azure AD-végpont. Biztonságosan kezelési semmit a felhasználói adatok és való hozzáféréssel kapcsolatos. A folyamat a felek közötti megbízhatósági kapcsolatokat is kezeli. Ez felelős a felhasználói identitás ellenőrzése, megadásának és erőforrásokhoz való hozzáférés visszavonása és a jogkivonatok kiállítása. Akkor is az identitásszolgáltató.
+* A **az engedélyezési kiszolgáló** van az Azure AD-végpont. Ez biztonságos felhasználói és hozzáférési kapcsolódó egyik elemet sem kezeli. A megbízhatósági kapcsolatok egy flow-ban a felek között is kezeli. Ez felelős a felhasználó identitásának igazolására, biztosítása és erőforrásokhoz való hozzáférés visszavonása és a jogkivonatok kiállítása. Más néven az identitásszolgáltató.
 
-* A **erőforrás tulajdonosa** általában a végfelhasználó van. Azt a felet, birtokolja az adatokat, és azt, hogy a harmadik felek adott adatok vagy az erőforrás elérésére jogosult.
+* A **erőforrás tulajdonosa** van általában a végfelhasználó számára. Az entitás, amely az adatok tulajdonosa, és rendelkezik a teljesítmény, hogy a harmadik felek, adatok vagy az erőforrás eléréséhez.
 
-* A **OAuth ügyfél** az alkalmazás. Ez azonosítja az alkalmazás azonosítóját. Azt az általában a felet, a végfelhasználók interakciót. A hitelesítési kiszolgáló jogkivonatokat is kéri. Az erőforrás tulajdonosa engedélyt kell az ügyfél az erőforrás elérésére.
+* A **OAuth-ügyfél** használ az alkalmazás. Ez azonosítja az alkalmazás azonosítóját. Ez általában az, hogy a végfelhasználók együttműködő fél. Az engedélyezési kiszolgáló a tokeneket is kéri. Az erőforrás tulajdonosa engedélyt kell adni az ügyfél az erőforrás eléréséhez.
 
-* A **erőforrás-kiszolgáló** van, amelyben az erőforrás vagy adatok található. A hitelesítési kiszolgáló biztonságosan helyszerepkörre, és az OAuth-ügyfél megbízhatónak fogja tekinteni. Annak érdekében, hogy az erőforráshoz való hozzáférés is adható tulajdonosi jogkivonatot is használ.
+* A **erőforrás-kiszolgáló** van, ahol az erőforrásra vagy található. Az engedélyezési kiszolgáló biztonságos hitelesítéséhez és engedélyezéséhez az OAuth-ügyfél megbízik. Győződjön meg arról, hogy az erőforrásokhoz való hozzáférést is megadható a tulajdonosi jogkivonatot is használ.
 
 ## <a name="policies"></a>Házirendek
-Az Azure AD B2C-házirendek késései, a legfontosabb funkciókról a szolgáltatás olyan. Az Azure AD B2C a szabványos OAuth 2.0 és az OpenID Connect protokollok házirendek bevezetésével kiterjeszti. Ezek teszik lehetővé az Azure AD B2C sokkal több, mint az egyszerű hitelesítés és engedélyezés végrehajtásához. 
+Késései az Azure AD B2C-szabályzatok a szolgáltatás legfontosabb funkcióit. Az Azure AD B2C a szabványos OAuth 2.0 és OpenID Connect protokollok szabályzatok bevezetésével kiterjeszti. Ezek lehetővé teszik az Azure AD B2C-vel sokkal jobban, mint az egyszerű hitelesítés és engedélyezés. 
 
-Házirendek teljes leírása fogyasztói identitással kapcsolatos műveletet, beleértve a regisztráció, bejelentkezés, profil és szerkesztését. Házirendek meghatározása egy rendszergazda felhasználói felületén. A HTTP-hitelesítési kérelmek egy speciális lekérdezési paraméter segítségével végrehajthatók. 
+Házirendek teljes mértékben ismertetik a fogyasztói identitások jellemzőit, beleértve a regisztrációs, bejelentkezési, és profil szerkesztése. Házirendek egy rendszergazdai felhasználói felületen lehet definiálni. Ezek a HTTP-hitelesítési kéréseket egy speciális lekérdezési paraméter használatával hajthatók végre. 
 
-Házirendek olyan nem szabványos OAuth 2.0 és az OpenID Connect, szolgáltatásait, ezek megértéséhez időt kell végrehajtani. További információkért lásd: a [házirend referencia-útmutató az Azure AD B2C](active-directory-b2c-reference-policies.md).
+Házirendek amelyek nem szabványos OAuth 2.0 és OpenID Connect, szolgáltatásait, értelmezését időt kell tennie. További információkért lásd: a [Azure AD B2C-szabályzat referencia-útmutató](active-directory-b2c-reference-policies.md).
 
 ## <a name="tokens"></a>Tokenek
-OAuth 2.0 és az OpenID Connect Azure AD B2C végrehajtását teszi tulajdonosi jogkivonatok, beleértve a tulajdonosi jogkivonatok JSON webes jogkivonatok (JWTs) helyettesítik használatának lehetőségét. Egy tulajdonosi jogkivonatot egy egyszerűsített biztonsági jogkivonatot, amely védett erőforrásokhoz való hozzáférést a "tulajdonos".
+Az OAuth 2.0 és OpenID Connect Azure AD B2C-vel megvalósítását teszi erősen igénybe veszi a tulajdonosi jogkivonatokat, beleértve a tulajdonosi jogkivonatokat, amelyek JSON webes jogkivonatainak (JWTs) helyettesítik. A tulajdonosi jogkivonatot, amely hozzáférést biztosít a "tulajdonos" védett erőforrásokhoz való könnyű biztonsági jogkivonat.
 
-A tulajdonosi, amely a token is jelenthet félre. Az Azure AD először hitelesíteniük kell egy entitás előtt megkaphatja a tulajdonosi jogkivonattal. De ha a szükséges lépéseket a rendszer nem hajtja végre a lexikális elem szerepel az átvitel, illetve tárolás biztosításához, azt is hozzá és egy nem kívánt fél által használt.
+A tulajdonosi minden olyan entitás, amely a token is jelenthet. Azure ad-ben először hitelesítenie kell magát egy entitás előtt megkaphatja a tulajdonosi jogkivonattal. De ha a rendszer nem hajtja végre a szükséges lépéseket, biztonságos átvitelét és tárolását a jogkivonatot, azt is lehessen elfogni és egy nem kívánt entitás használja.
 
-Néhány biztonsági jogkivonatokat rendelkezik beépített mechanizmust, amely megakadályozhatja, hogy a nem hitelesített felek a őket, de tulajdonosi jogkivonatok nem rendelkezik a mechanizmus. Azok a biztonságos csatornákat, például egy a transport layer security (HTTPS) kell szállítani. 
+Néhány biztonsági jogkivonatokat, amelyek meggátolják, hogy a nem hitelesített felek használja őket a beépített mechanizmusok rendelkezik, de ez a mechanizmus nem rendelkezik tulajdonosi jogkivonatokat. Egy biztonságos csatornát, például a transport layer biztonsági (HTTPS) kell szállítani. 
 
-Ha egy tulajdonosi jogkivonatot kívül egy biztonságos csatornán kerül továbbításra, egy rosszindulatú entitás segítségével a-átjárójának támadás jogkivonat és annak segítségével védett erőforrásokhoz való jogosulatlan hozzáférést. Az azonos biztonsági elveket alkalmazza, ha a tulajdonosi jogkivonatok tárolt és gyorsítótárba helyezni későbbi használat. Mindig győződjön meg arról, hogy az alkalmazás továbbítja, és biztonságos módon tárolja a tulajdonosi jogkivonatokhoz.
+Tulajdonosi jogkivonattal továbbított kívül egy biztonságos csatornán, ha egy rosszindulatú fél használhatja a man-in-the-middle támadások beszerezni a jogkivonatot, és a védett erőforrások jogosulatlan elérésére. Biztonsági alapelveket alkalmazható, ha a tulajdonosi jogkivonatokat tárolt vagy későbbi használatra a gyorsítótárba. Mindig győződjön meg arról, hogy az alkalmazás továbbítja, és biztonságosan tárolja a tulajdonosi jogkivonatokat.
 
-További tulajdonosi jogkivonat biztonsági szempontjait, lásd: [RFC 6750 szakasz 5](http://tools.ietf.org/html/rfc6750).
+További tulajdonosi jogkivonat biztonsági szempontokért lásd: [RFC 6750 5. szakasz](http://tools.ietf.org/html/rfc6750).
 
-További információ a különböző típusú jogkivonatokat, amelyek az Azure AD B2C találhatók [az Azure AD-jogkivonatok referenciájából](active-directory-b2c-reference-tokens.md).
+A különböző típusú jogkivonatokat, amelyek az Azure AD B2C-vel kapcsolatos további információk érhetők el a [az Azure AD-jogkivonatok referenciájából](active-directory-b2c-reference-tokens.md).
 
 ## <a name="protocols"></a>Protokollok
-Amikor készen áll a tekintse át az egyes példa kérések, megkezdheti az alábbi oktatóanyagok egyike. Mindegyike megfelel egy adott hitelesítési forgatókönyv. Ha annak meghatározásakor, amelyben az Ön számára legmegfelelőbb segítségre van szüksége, tekintse meg [milyen típusú alkalmazásokat hozhat létre az Azure AD B2C segítségével](active-directory-b2c-apps.md).
+Amikor elkészült, tekintse át az egyes például kérések, elkezdheti a következő oktatóanyagok egyikével. Minden egyes felel meg egy adott hitelesítési forgatókönyv. Ha, amely meghatározza, hogy mely folyamat az Önnek való segítségre van szüksége, tekintse meg az [a típusú alkalmazásokat hozhat létre Azure AD B2C használatával](active-directory-b2c-apps.md).
 
-* [Mobil- és natív alkalmazások létrehozását OAuth 2.0 használatával](active-directory-b2c-reference-oauth-code.md)
-* [Webalkalmazások OpenID Connect használatával összeállítása](active-directory-b2c-reference-oidc.md)
-* [Egyoldalas alkalmazások használata az OAuth 2.0 típusú implicit engedélyezési folyamat](active-directory-b2c-reference-spa.md)
+* [OAuth 2.0-val a mobil- és natív alkalmazások készítését](active-directory-b2c-reference-oauth-code.md)
+* [OpenID Connect használatával hozhat létre webalkalmazásokat](active-directory-b2c-reference-oidc.md)
+* [Az OAuth 2.0 implicit folyamat használatával egyoldalas alkalmazások készítése](active-directory-b2c-reference-spa.md)
 

@@ -1,6 +1,6 @@
 ---
-title: Bevezetés az Azure AD reporting API használatába |} Microsoft Docs
-description: Ismerkedés az Azure Active Directory reporting API-val
+title: Az Azure AD reporting API használatának első lépései |} A Microsoft Docs
+description: Útmutató az Azure Active Directory reporting API használatába
 services: active-directory
 documentationcenter: ''
 author: priyamohanram
@@ -16,61 +16,68 @@ ms.component: compliance-reports
 ms.date: 05/07/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 842e4d8413544a303b656a8e4a05bdf58a7c8164
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 93532f4b0b2d527a4d5c79e2ee1b2810394b2f11
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36223841"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37442083"
 ---
-# <a name="get-started-with-the-azure-active-directory-reporting-api"></a>Bevezetés az Azure Active Directory reporting API használatába
+# <a name="get-started-with-the-azure-active-directory-reporting-api"></a>Az Azure Active Directory reporting API használatának első lépései
 
-Az Azure Active Directory biztosít számos különböző [jelentések](active-directory-reporting-azure-portal.md). Ezen jelentések adatai nagyon hasznosak lehetnek az alkalmazások számára, például a SIEM rendszerekhez, a naplózáshoz és az üzleti intelligencia eszközökhöz. 
+Az Azure Active Directory segítségével számos [jelentések](active-directory-reporting-azure-portal.md). Ezen jelentések adatai nagyon hasznosak lehetnek az alkalmazások számára, például a SIEM rendszerekhez, a naplózáshoz és az üzleti intelligencia eszközökhöz. 
 
-Az Azure AD reporting API használatával kaphatnak a programozott hozzáférést a REST-alapú API-készlet adatokat. Különböző programnyelvekkel és eszközökkel hívhatja ezeket az API-kat.
+Az Azure AD reporting API-t használ, a REST-alapú API-kon keresztül az adatok programozott hozzáférést kaphatnak. Különböző programnyelvekkel és eszközökkel hívhatja ezeket az API-kat.
 
-Ez a cikk nyújt a terv a jelentési adatokat, a kapcsolódó API-jával eléréséhez.
+Ez a cikk biztosít egy ütemtervet a kapcsolódó API-val a jelentési adatok eléréséhez.
 
 Ha problémákat tapasztal, tekintse meg [hogyan kérhet támogatást az Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-troubleshooting-support-howto).
 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-A reporting API-t, még akkor is, ha azt tervezi, az API-t egy parancsfájl segítségével fér hozzá a eléréséhez kell:
+A jelentéskészítő API eléréséhez, akkor is, ha azt tervezi, a parancsfájl használatával az API elérése, kell tennie:
 
-1. (Biztonsági olvasó, biztonsági rendszergazda globális felügyeleti) szerepkörök hozzárendelése
+1. (Biztonsági olvasó, biztonsági rendszergazdai, globális rendszergazdaként) szerepkörök hozzárendelése
 2. Egy alkalmazás regisztrálása
 3. Engedélyek megadása
 4. Konfigurációs beállítások összegyűjtése
 
 
  
-Részletes útmutatásért lásd: a [Előfeltételek az Azure Active Directory reporting API eléréséhez](active-directory-reporting-api-prerequisites-azure-portal.md).
+Részletes útmutatásért lásd: a [az Azure Active Directory reporting API elérésének előfeltételeit](active-directory-reporting-api-prerequisites-azure-portal.md).
 
+## <a name="apis-with-graph-explorer"></a>A Graph Explorer API-k
+
+Használhatja a [MSGraph explorer](https://developer.microsoft.com/en-us/graph/graph-explorer) ellenőrizze a bejelentkezést és naplózási adatok API-t. Ügyeljen arra, hogy jelentkezzen be a fiókjába mind a bejelentkezési gomb a Graph Explorer felhasználói felületén, és állítsa be **Tasks.ReadWrite** és **Directory.ReadAll** látható módon a bérlőhöz tartozó engedélyeket.   
+
+![Graph Explorer](./media/active-directory-reporting-api-getting-started-azure-portal/graph-explorer.png)
+
+![Felhasználói felület engedélyek módosítása](./media/active-directory-reporting-api-getting-started-azure-portal/modify-permissions.png)
 
 ## <a name="recommendation"></a>Ajánlás 
 
-Ha azt tervezi, felhasználói beavatkozás nélkül jelentési adatok beolvasása a, érdemes az Azure AD jelentéskészítési API és tanúsítványok segítségével.
+Ha azt tervezi, felhasználói beavatkozás nélkül jelentési adatok lekérésével, érdemes az Azure AD Reporting API és tanúsítványok használatával.
 
-Részletes útmutatásért lásd: [adatok és tanúsítványok segítségével történik az Azure AD jelentéskészítési API](active-directory-reporting-api-with-certificates.md).
+Részletes útmutatásért lásd: [adatok lekérése az Azure AD Reporting API és tanúsítványok használatával](active-directory-reporting-api-with-certificates.md).
 
 
 ## <a name="explore"></a>Tallózás
 
-A reporting API-k első benyomást beolvasása:
+Kérje le a jelentéskészítési API-k egy első benyomást:
    
-   - [A mintákat a ellenőrzési API használatával](active-directory-reporting-api-audit-samples.md) 
+   - [Az ellenőrzési API-példák használata](active-directory-reporting-api-audit-samples.md) 
  
-   - [A mintákat a bejelentkezési tevékenység jelentés API használatával](active-directory-reporting-api-sign-in-activity-samples.md)
+   - [A bejelentkezési tevékenységek jelentés API-példák használata](active-directory-reporting-api-sign-in-activity-samples.md)
 
 
 ## <a name="customize"></a>Testreszabás  
 
-A saját megoldás létrehozása: 
+Hozza létre a saját megoldását: 
    
-   - [A naplózási API-hivatkozás használata](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/directoryaudit) 
+   - [Használatával a naplózási API-referencia](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/directoryaudit) 
 
-   - [A bejelentkezési tevékenység jelentéshivatkozás API használatával](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/signin)
+   - [A bejelentkezési tevékenységek jelentéshivatkozás API használatával](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/signin)
 
 
 

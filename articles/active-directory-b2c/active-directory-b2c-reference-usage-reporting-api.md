@@ -1,38 +1,38 @@
 ---
-title: Használati jelentéskészítési API-mintákat és az Azure Active Directory B2C definíciók |} Microsoft Docs
-description: Az útmutató és mintákat az első Azure AD B2C bérlő jelentéseket, a felhasználók, hitelesítés és többtényezős hitelesítés.
+title: Használati jelentéskészítési API mintákat, és az Azure Active Directory B2C definíciók |} A Microsoft Docs
+description: Útmutató és a példák a jelentések az Azure AD B2C-bérlőben a felhasználók, hitelesítés és többtényezős hitelesítés.
 services: active-directory-b2c
 author: davidmu1
 manager: mtillman
 ms.service: active-directory
-ms.topic: article
+ms.topic: conceptual
 ms.workload: identity
 ms.date: 08/04/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: dc7f18e29367a3979a2650a87465366d9727cff6
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 544b0618f9135b684846c42bb7edeb37cf599883
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34711630"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37445534"
 ---
-# <a name="accessing-usage-reports-in-azure-ad-b2c-via-the-reporting-api"></a>Az Azure AD B2C a reporting API-n keresztül használati jelentések használata
+# <a name="accessing-usage-reports-in-azure-ad-b2c-via-the-reporting-api"></a>A jelentéskészítési API-n keresztül az Azure AD B2C-ben a használati jelentések elérése
 
-Az Azure Active Directory B2C (az Azure AD B2C) alapján a felhasználói bejelentkezés és az Azure multi-factor Authentication hitelesítést nyújt. Hitelesítését a végfelhasználók számára az alkalmazás termékcsalád identitás-szolgáltatóktól között. Amikor tudja, hogy a bérlő, a szolgáltatók regisztrálásához használt és hitelesítési események száma típusonként regisztrált felhasználók száma, a válasz hasonló kérdések:
-* Az identitásszolgáltató (például a Microsoft vagy LinkedIn fiókok) különböző típusú hány felhasználó regisztrált az elmúlt 10 napban?
-* Hány hitelesítések multi-factor Authentication használatának sikeresen befejeződött az utolsó hónapban?
-* Hány bejelentkezési-a-alapú hitelesítés befejeződtek ebben a hónapban? Napi? Alkalmazásonként?
-* Hogyan megbecsülhető a saját Azure AD B2C bérlő tevékenység várható havi költségét?
+Az Azure Active Directory B2C (Azure AD B2C-vel) alapján a felhasználó be- és Azure multi-factor Authentication hitelesítést nyújt. Hitelesítését a végfelhasználók számára az alkalmazás termékcsalád Identitásszolgáltatók között. Ha ismeri a típus szerint a bérlő, a szolgáltatók regisztrálása használják és hitelesítések számát a regisztrált felhasználók száma, a válasz hasonló kérdésekre:
+* A különböző típusú identitásszolgáltató (például egy Microsoft- vagy LinkedIn fiókkal), hogy hány felhasználó regisztrálta az elmúlt 10 napban?
+* Hány hitelesítések multi-factor Authentication szolgáltatás használatával sikeresen lefutott-e az elmúlt hónapban?
+* Hány sign-az-alapú hitelesítések hajtottuk végre ebben a hónapban? Naponta? Alkalmazásonkénti?
+* Hogyan tudja becsülni a saját Azure AD B2C-bérlő tevékenység várható havi költségét?
 
-Ez a cikk foglalkozik számlázási tevékenység, a felhasználók számát, számlázható bejelentkezési-a-alapú hitelesítés, és a multi-factor Authentication hitelesítések alapuló kötve a jelentésekre.
+Ez a cikk a számlázási tevékenységet, amely alapján a felhasználók, számlázható sign-az-alapú hitelesítések számát, és a multi-factor Authentication hitelesítések kötött jelentéseket összpontosít.
 
 
 ## <a name="prerequisites"></a>Előfeltételek
-Mielőtt hozzáfogna, végre kell hajtania a lépéseket [Előfeltételek az Azure AD reporting API-k elérésére](https://azure.microsoft.com/documentation/articles/active-directory-reporting-api-getting-started/). Hozzon létre egy alkalmazást, a titkos kulcs beszerzése és a hozzáférés engedélyezése az Azure AD B2C-bérlő jelentések jogosultsággal. *Parancsfájl bash* és *Python-parancsfájl* példákat itt is megadja. 
+Mielőtt elkezdené, a lépések elvégzéséhez szüksége [az Azure AD reporting API elérésének előfeltételeit](https://azure.microsoft.com/documentation/articles/active-directory-reporting-api-getting-started/). Hozzon létre egy alkalmazást, a hozzá tartozó titkos kulcs beszerzése és a hozzáférés biztosítása az Azure AD B2C-bérlő jelentések jogosultsággal. *Bash-szkript* és *Python-szkriptet* példákat itt is biztosítja. 
 
 ## <a name="powershell-script"></a>PowerShell-szkript
-Ez a parancsfájl használatával négy használati jelentések létrehozását mutatja be a `TimeStamp` paraméter és a `ApplicationId` szűrő.
+Ez a szkript használatával mutatja be a négy használati jelentés létrehozása a `TimeStamp` paraméter és a `ApplicationId` szűrő.
 
 ```powershell
 # This script will require the Web Application and permissions setup in Azure Active Directory
@@ -96,33 +96,33 @@ if ($oauth.access_token -ne $null) {
 ```
 
 
-## <a name="usage-report-definitions"></a>Használati jelentésdefiníciók
-* **tenantUserCount**: a bérlő típusú identitásszolgáltató naponta az elmúlt 30 napban lévő felhasználók száma. (Ha szükséges, egy `TimeStamp` szűrő biztosít felhasználószám megadott dátum az aktuális dátum). A jelentés tartalmazza:
-  * **TotalUserCount**: A minden felhasználói objektumok száma.
-  * **OtherUserCount**: Azure Active Directory-felhasználók (nem az Azure AD B2C felhasználók) száma.
-  * **LocalUserCount**: Azure AD B2C felhasználói fiókok létrehozott hitelesítő adatokkal rendelkező helyi, az Azure AD B2C-bérlő.
+## <a name="usage-report-definitions"></a>Használati jelentés definíciók
+* **tenantUserCount**: identitásszolgáltató naponta az elmúlt 30 napban típus szerint a bérlőben található felhasználók száma. (Ha szükséges, egy `TimeStamp` szűrő felhasználószám a megadott dátum az aktuális dátum biztosítja). A jelentés a következőket tartalmazza:
+  * **TotalUserCount**: az összes felhasználói objektumok száma.
+  * **OtherUserCount**: Azure Active Directory-felhasználók (nem Azure AD B2C-felhasználókat).
+  * **LocalUserCount**: az Azure AD B2C felhasználói fiókok száma létrehozott hitelesítő adatokkal rendelkező helyi, az Azure AD B2C-bérlőben.
 
-* **AlternateIdUserCount**: külső Identitásszolgáltatók regisztrálva az Azure AD B2C-felhasználók száma (például Facebook, a Microsoft-fiók vagy egy másik Azure Active Directory-bérlőt, más néven egy `OrgId`).
+* **AlternateIdUserCount**: külső Identitásszolgáltatók regisztrált Azure AD B2C felhasználók száma (például Facebook, a Microsoft-fiókkal vagy egy másik Azure Active Directory-bérlővel, más néven egy `OrgId`).
 
-* **b2cAuthenticationCountSummary**: napi száma az elmúlt 30 nap, napi és a hitelesítési folyamat típusú számlázható hitelesítések összefoglalását.
+* **b2cAuthenticationCountSummary**: a napi száma az elmúlt 30 nap, napi és a hitelesítési folyamat számlázható hitelesítések összefoglalása.
 
-* **b2cAuthenticationCount**: az egy időtartamon belül számát. Az alapértelmezett érték az elmúlt 30 napban.  (Nem kötelező: A kezdő és befejező `TimeStamp` paraméterek megadása egy adott időszakra vonatkozóan.) A parancs kimenete `StartTimeStamp` (ennél a bérlőnél tevékenység legkorábbi dátum) és `EndTimeStamp` (legújabb frissítés).
+* **b2cAuthenticationCount**: időn belül hitelesítések számát. Az alapértelmezett érték az elmúlt 30 napban.  (Nem kötelező: kezdete és vége `TimeStamp` paraméterek meghatározása egy adott időszakban.) A parancs kimenete `StartTimeStamp` (ezen a bérlőn tevékenység legkorábbi dátum) és `EndTimeStamp` (legújabb frissítés).
 
-* **b2cMfaRequestCountSummary**: összefoglaló a multi-factor Authentication hitelesítést, a nap és típusa (SMS vagy hangos) napi számát.
+* **b2cMfaRequestCountSummary**: Összegzés a multi-factor Authentication hitelesítést, nap, és a típusa (SMS vagy szóbeli) napi számát.
 
 
 ## <a name="limitations"></a>Korlátozások
-Felhasználói száma az adatok frissítése a 48 24 óránként. Hitelesítési események frissülnek naponta több alkalommal. Használatakor a `ApplicationId` szűrő, egy üres válasz okozhatja, hogy következő feltételek valamelyike esetén:
-  * Az alkalmazás-azonosítója nem létezik a bérlőben. Győződjön meg arról, hogy helyes-e.
-  * Az Alkalmazásazonosító létezik, de a jelentési időszak adatot nem található. Ellenőrizze a dátum/idő paramétereket.
+Felhasználók száma az adatok 24-48 óránként frissülnek. Hitelesítések frissülnek naponta több alkalommal. Használatakor a `ApplicationId` szűrőt, a jelentés üres választ lehet miatt a következő feltételek valamelyike:
+  * Az alkalmazás azonosítója nem létezik a bérlőben. Győződjön meg arról, hogy helyes-e.
+  * Az alkalmazás azonosítója létezik, de nincs adat a jelentési időszak nem található. Ellenőrizze a dátum/idő paramétereket.
 
 
 ## <a name="next-steps"></a>További lépések
-### <a name="monthly-bill-estimates-for-azure-ad"></a>Havi számlán az Azure AD becslése
-Együtt [a legfrissebb Azure AD B2C díjszabási elérhető](https://azure.microsoft.com/pricing/details/active-directory-b2c/), megbecsülheti napi, heti és havi Azure-használatát.  Becsült különösen fontos, ha azt tervezi, hogy a bérlő működését, ami hatással lehet a teljes költség szempontjából. Tekintse át a tényleges költségek a [Azure-előfizetéssel társított](active-directory-b2c-how-to-enable-billing.md).
+### <a name="monthly-bill-estimates-for-azure-ad"></a>Havi számla becslése az Azure ad-hez
+Kombinálva [a legújabb Azure AD B2C díjszabása elérhető](https://azure.microsoft.com/pricing/details/active-directory-b2c/), meg tudja becsülni a napi, heti és havi Azure-használat.  Becsült különösen akkor hasznos, ha a bérlő működését, ami hatással lehet a teljes költségeinek tervezése. A tényleges költségek áttekintheti a [Azure-előfizetéshez társított](active-directory-b2c-how-to-enable-billing.md).
 
-### <a name="options-for-other-output-formats"></a>Egyéb formátumokban beállításai
-A következő kód kimenetének küldése a JSON-NÁ, a név-érték listáját és az XML-példákat szemlélteti:
+### <a name="options-for-other-output-formats"></a>Más kimeneti formátum lehetőségeit
+A következő kód bemutatja a kimeneti küldésére JSON, az értéklista nevét és XML-példákat:
 ```powershell
 # to output to JSON use following line in the PowerShell sample
 $myReport.Content | Out-File -FilePath name-your-file.json -Force

@@ -1,6 +1,6 @@
 ---
-title: Automatikus méretezése az Azure Event Hubs átviteli egységek |} Microsoft Docs
-description: Automatikus megnöveli a névtér automatikus méretezése az átviteli egységek engedélyezése
+title: Automatikus vertikális felskálázás az Azure Event Hubs átviteli egységek |} A Microsoft Docs
+description: Automatikus feltöltés engedélyezése a névtér automatikusan növelheti az átviteli egységek.
 services: event-hubs
 documentationcenter: na
 author: sethmanheim
@@ -12,52 +12,52 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/23/2018
+ms.date: 07/02/2018
 ms.author: sethm
-ms.openlocfilehash: 20ee0e6cff2a07cbd62a79799eada5708c7a0f07
-ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
+ms.openlocfilehash: 46ed6acc14356221eaf24b03dfa37dc4c76efcbc
+ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2018
-ms.locfileid: "28018609"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37434640"
 ---
-# <a name="automatically-scale-up-azure-event-hubs-throughput-units"></a>Azure Event Hubs átviteli egységek automatikus méretezése
+# <a name="automatically-scale-up-azure-event-hubs-throughput-units"></a>Automatikus vertikális felskálázás az Azure Event Hubs átviteli egységek
 
-Az Azure Event Hubs egy kiválóan méretezhető adatfolyam platform. Így az Event Hubs használati gyakran nő, miután a szolgáltatás használatának megkezdéséhez. Ilyen használatához szükséges, az előre meghatározott átviteli egységek az Event Hubs skálázása, és nagyobb átviteli sebesség kezelésére növelését. A *automatikus megnöveli* az Event hubs szolgáltatás automatikusan méretezi használati igényeinek átviteli egységek számát. Átviteli egységek növelése megakadályozza, hogy a sávszélesség-szabályozás forgatókönyvek, amelyben:
+Az Azure Event Hubs egy kiválóan méretezhető adatstreamelési platform. Mint ilyen az Event Hubs használatának gyakran nő, miután a szolgáltatás használatát. Az ilyen használatához szükséges, növelje az előre meghatározott [átviteli egységek](event-hubs-features.md#throughput-units) az Event Hubs méretezhető, és a nagyobb átviteli sebességre kezelésére. A **automatikus feltöltésről** az Event hubs szolgáltatás automatikusan felskálázással növelje átviteli egységek számát, a használattal kapcsolatos igények alapján. Átviteli egységek növelése megakadályozza, hogy a szabályozási forgatókönyvek, ahol:
 
-* Adatok érkező díjszabás haladhatja meg a set-átviteli egységek.
-* Adatok kimenő kérelem díjszabás haladhatja meg a set-átviteli egységek.
+* Bejövő forgalom díjait meghaladják a beállított kapacitásegységek.
+* Adatok kimenő kérelemarányok haladhatja meg a set-átviteli egységek.
 
-## <a name="how-auto-inflate-works"></a>Automatikus megnöveli működése
+## <a name="how-auto-inflate-works"></a>Az automatikus feltöltési működése
 
-Event Hubs forgalom átviteli egységek vezérli. Egy átviteli egység lehetővé teszi, hogy 1 MB másodpercenkénti bemenő és kimenő forgalom kétszer adott mennyisége. Standard az event hubs 1 – 20 átviteli egység konfigurálható. Automatikus megnöveli lehetővé teszi a kisebb a minimálisan szükséges átviteli egységek használatával. A szolgáltatás majd alkalmazkodnak automatikusan van szükség, attól függően, hogy az adatforgalom növekedésének átviteli egységek maximális száma. Automatikus megnöveli a következő előnyökkel jár:
+Event Hubs forgalmat kezelnek [átviteli egységek](event-hubs-features.md#throughput-units). Egy átviteli egység 1 MB másodpercenként bejövő és kimenő forgalom kétszer adott mennyiségű lehetővé teszi. Standard szintű event hubs 1 – 20 átviteli egység is konfigurálhatók. Az automatikus feltöltési lehetővé teszi, hogy kezdjen kicsiben a minimálisan szükséges átviteli egységek választja. A szolgáltatás majd méretezhetőségének automatikusan van szükség, attól függően, az adatforgalom növekedésének kapacitásegységek maximális számát. Automatikus feltöltés az alábbi előnyöket nyújtja:
 
-- Egy hatékony méretezési mechanizmus kezdje kis lépésekkel, és növelhető növelheti.
-- Automatikus méretezése a megadott felső határérték nélkül szabályozási problémákat.
-- Több vezérlése skálázás, meghatározhatja, mikor és milyen mértékű skála.
+- Egy olyan hatékony méretezés mechanizmust kezdhetik, és a növekedés arányában méret.
+- Szabályozási problémák nélkül, automatikusan skálázhatja a megadott felső korlátot.
+- További szabályozhatóbbá méretezés, mert meghatározhatja, mikor, és mekkora a méretezési csoport.
 
-## <a name="enable-auto-inflate-on-a-namespace"></a>Engedélyezze az automatikus megnöveli a névtér
+## <a name="enable-auto-inflate-on-a-namespace"></a>Automatikus feltöltés engedélyezése egy névtérhez
 
-Engedélyezheti vagy tiltsa le az automatikus megnöveli az Event Hubs névtéren az a következő módszerek valamelyikével:
+Engedélyezheti vagy letilthatja az automatikus feltöltési az Event Hubs-névtér az alábbi módszerek egyikével:
 
-1. A [Azure-portálon](https://portal.azure.com).
-2. Az Azure Resource Manager-sablon.
+- A [az Azure portal](https://portal.azure.com).
+- Egy [Azure Resource Manager-sablon](https://github.com/Azure/azure-quickstart-templates/tree/master/201-eventhubs-create-namespace-and-enable-inflate).
 
-### <a name="enable-auto-inflate-through-the-portal"></a>Engedélyezze az automatikus megnöveli a portálon keresztül
+### <a name="enable-auto-inflate-through-the-portal"></a>Automatikus feltöltés engedélyezése a portálon keresztül
 
-Az automatikus megnöveli a szolgáltatás engedélyezéséhez az Event Hubs névtér létrehozása során:
+Event Hubs-névtér létrehozásakor engedélyezheti az automatikus feltöltési funkció:
  
 ![](./media/event-hubs-auto-inflate/event-hubs-auto-inflate1.png)
 
-A funkció engedélyezését kezdje kis lépésekkel az átviteli egységek, és a használati mutatói igények növekedése méret. Inflációs felső határa nem azonnal befolyásolja árképzési, óránként használt átviteli egységek száma függ.
+Ez a beállítás engedélyezve van, a kis kezdje az átviteli egységek és a méret a használat növelése igényei szerint. A felső határ az infláció nem azonnal befolyásolja díjszabás, az óránként felhasznált átviteli egységek számától függ.
 
-Automatikus-megnöveli használatával is engedélyezheti a **méretezési** lehetőséget a beállítások panelen a portálon:
+Az automatikus feltöltési használatával is engedélyezheti a **méretezési** lehetőséget a beállítások panel a portálon:
  
 ![](./media/event-hubs-auto-inflate/event-hubs-auto-inflate2.png)
 
-### <a name="enable-auto-inflate-using-an-azure-resource-manager-template"></a>Engedélyezze az automatikus-megnöveli Azure Resource Manager-sablonnal
+### <a name="enable-auto-inflate-using-an-azure-resource-manager-template"></a>Engedélyezze az automatikus feltöltésről egy Azure Resource Manager-sablon használatával
 
-Automatikus megnöveli az Azure Resource Manager sablon telepítése során engedélyezheti. Például a `isAutoInflateEnabled` tulajdonságot **igaz** és `maximumThroughputUnits` 10-re.
+Az automatikus feltöltési egy Azure Resource Manager-sablon telepítése során engedélyezheti. Például állítsa be a `isAutoInflateEnabled` tulajdonságot **igaz** és `maximumThroughputUnits` 10-re. Példa:
 
 ```json
 "resources": [
@@ -100,7 +100,7 @@ Automatikus megnöveli az Azure Resource Manager sablon telepítése során enge
     ]
 ```
 
-A teljes sablon, tekintse meg a [létrehozása az Event Hubs-névteret és engedélyezése megnöveli](https://github.com/Azure/azure-quickstart-templates/tree/master/201-eventhubs-create-namespace-and-enable-inflate) sablon a Githubon.
+A teljes sablont, tekintse meg a [létrehozása az Event Hubs-névtér és a feltöltés engedélyezése](https://github.com/Azure/azure-quickstart-templates/tree/master/201-eventhubs-create-namespace-and-enable-inflate) sablon a Githubon.
 
 ## <a name="next-steps"></a>További lépések
 

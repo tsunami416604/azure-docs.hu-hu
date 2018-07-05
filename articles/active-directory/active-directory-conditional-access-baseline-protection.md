@@ -1,8 +1,8 @@
 ---
-title: Egy alapkonfiguráció védelmi Mi az Azure Active Directory feltételes hozzáférés? – előzetes verzió |} Microsoft Docs
-description: Ismerje meg, hogyan védelem alapkonfigurációt biztosítja, hogy legalább az eredeti engedélyezve az Azure Active Directory környezetben biztonsági szintet.
+title: Mi egy alapvető védelmet az Azure Active Directory feltételes hozzáférés? – előzetes verzió |} A Microsoft Docs
+description: Ismerje meg, hogy alapvető védelmet biztosítja, hogy legalább engedélyezve van az Azure Active Directory-környezetet a biztonsági alapkonfiguráció szintjét.
 services: active-directory
-keywords: alkalmazások, a feltételes hozzáférés az Azure ad-vel, a biztonságos hozzáférés a vállalati erőforrásokhoz, a feltételes hozzáférési házirendekkel a feltételes hozzáférés
+keywords: feltételes hozzáférés az alkalmazásokhoz, az Azure AD feltételes hozzáférés, biztonságos hozzáférés a vállalati erőforrásokhoz, a feltételes hozzáférési szabályzatok
 documentationcenter: ''
 author: MarkusVi
 manager: mtillman
@@ -14,29 +14,29 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 06/21/2018
+ms.date: 07/02/2018
 ms.author: markvi
 ms.reviewer: nigu
-ms.openlocfilehash: 86b57a82573760ac73975e851b2bb4caf769845b
-ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
+ms.openlocfilehash: 1e7eb3a0098dc27b6f3c47d8d4848b2b9b5f7e61
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/21/2018
-ms.locfileid: "36308560"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37447540"
 ---
-# <a name="what-is-baseline-protection---preview"></a>Mi az az eredeti protection? – előzetes  
+# <a name="what-is-baseline-protection---preview"></a>Mi az alapvető védelmet? – előzetes verzió  
 
-Az utolsó évben identitás támadások 300 %-kal nőtt. A környezet védelméhez a egyre növekvő támadások, az Azure Active Directory (Azure AD) nevű alapterv védelmi új szolgáltatást vezet be. Védelem alapkonfigurációt egy olyan előre definiált [feltételes hozzáférési házirendek](active-directory-conditional-access-azure-portal.md). Ezek a házirendek célja, hogy legyen legalább az eredeti engedélyezett összes kiadásában az Azure AD biztonsági szintet. 
+Az elmúlt évben identitás-támadások 300 %-kal nőtt. A környezet védelmét biztosíthatja a folyamatosan növekvő konkurenciával kell támadások ellen, hogy az Azure Active Directory (Azure AD) alapvető védelmet nevű új szolgáltatást vezet be. Alapvető védelmet egy olyan előre definiált [feltételes hozzáférési szabályzatok](active-directory-conditional-access-azure-portal.md). Ezek a házirendek az a célja, hogy gondoskodjon arról, hogy legalább engedélyezve van az Azure AD minden kiadása a biztonsági alapkonfiguráció szintjét. 
 
-Ez a cikk alapterv védelme az Azure Active Directoryban áttekintést nyújt.
+Ez a cikk áttekintést az Azure Active Directory alapvető védelmet biztosít.
 
 
  
-## <a name="require-mfa-for-admins"></a>Többtényezős hitelesítés megkövetelése a rendszergazdák számára
+## <a name="require-mfa-for-admins"></a>Többtényezős hitelesítés a rendszergazdák számára
 
-Kiemelt jogosultságú fiókok hozzáféréssel rendelkező felhasználók a környezet korlátozás nélkül hozzáférnek. A teljesítmény, ezek a fiókok rendelkeznek-e, mert kezelje őket gondosan. Kiemelt jogosultságú fiókok védelmét egy általános módszer az, hogy elő Fiókellenőrzés erősebb formája, történő bejelentkezéshez használt. Az Azure Active Directoryban azzal, hogy a többtényezős hitelesítés (MFA) erősebb Fiókellenőrzés kaphat.  
+Kiemelt jogosultságú fiókok hozzáféréssel rendelkező felhasználó ugyanolyan korlátlan hozzáféréssel rendelkezik a környezetben. A teljesítmény, a fiókokra, mert kezelje őket gondosan. Egy közös módszerrel történő kiemelt jogosultságú fiókok védelméhez, hogy egy fiókhitelesítés erősebb formája kérése, amikor használhassák jelentkezhetnek be. Az Azure Active Directoryban azzal, hogy a többtényezős hitelesítés (MFA) egy erősebb fiókhitelesítés kaphat.  
 
-**A rendszergazdák számára a többtényezős hitelesítés kötelező** egy olyan alapterv házirend, többtényezős Hitelesítést követel meg a következő könyvtár szerepkörök: 
+**Többtényezős hitelesítés a rendszergazdák számára** egy alapvető házirendet, amely többtényezős Hitelesítést követel meg a következő címtárszerepkörökre van: 
 
 - Globális rendszergazda  
 
@@ -51,29 +51,29 @@ Kiemelt jogosultságú fiókok hozzáféréssel rendelkező felhasználók a kö
 
 ![Azure Active Directory](./media/active-directory-conditional-access-baseline-protection/01.png)
 
-Az alapvető házirendet tartalmaz, amelyek felhasználókat és csoportokat kizárására. Egy kizárni kívánt *[sürgős rendszergazdai fiókja](active-directory-admin-manage-emergency-access-accounts.md)* annak érdekében, nem záródik ki a bérlő.
+Ez a alapvető házirend biztosít arra, hogy felhasználók és csoportok kizárása. Előfordulhat, hogy szeretne zárni egy *[válságkezelési hozzáférés rendszergazdai fiók](users-groups-roles/directory-emergency-access.md)* , győződjön meg arról, hogy nem záródik ki a bérlő.
 
 
 ## <a name="enable-a-baseline-policy"></a>Egy alapkonfiguráció házirend engedélyezése 
 
-Alapkonfiguráció házirendek még csak előzetes verziójúak, amíg nincs aktiválva alapértelmezés szerint vannak. Egy házirend manuálisan engedélyezze, ha az aktiválás kell. Amint ez a szolgáltatás elérte a nyilvános elérhetőség utáni, a házirendek aktiválása alapértelmezés szerint is. A tervezett változtatásokra miért van továbbá, hogy aktiválják és inaktiválják a harmadik lehetőség egy házirend állapotának beállításához ok: **automatikus engedélyezés a jövőben házirend**. Ezzel a beállítással engedélyezi a Microsoft döntse el, ha egy házirendet aktiválja.      
+Alapkonfiguráció szabályzatok vannak előzetes verzióban érhető el, amíg nincs aktiválva alapértelmezés szerint vannak. A szabályzatot manuálisan engedélyezze, ha szeretné aktiválni kell. Amint ez a szolgáltatás elérte a általánosan elérhető, házirend-beállítások aktiválva alapértelmezés szerint. A tervezett viselkedést változás, miért van továbbá, hogy aktiválják vagy inaktiválják egy harmadik lehetőség egy szabályzat állapotának beállításához az OK: **szabályzat automatikus engedélyezés a jövőben**. A beállítás bejelölésével engedélyezi a Microsoft dönt egy házirendet aktiválja.      
 
 
-**Ahhoz, hogy egy alapvető házirendet:**  
+**Egy alapkonfiguráció-házirend engedélyezése:**  
 
-1. Jelentkezzen be a [Azure-portálon](https://portal.azure.com) globális rendszergazda, a rendszergazda vagy a feltételes hozzáférés rendszergazdaként.
+1. Jelentkezzen be a [az Azure portal](https://portal.azure.com) globális rendszergazdai, biztonsági rendszergazdai vagy feltételes hozzáférésű rendszergazda.
 
-2. Az a **Azure-portálon**, kattintson a bal oldali navigációs sávja **Azure Active Directory**.
+2. Az a **az Azure portal**, a bal oldali navigációs sávon kattintson **Azure Active Directory**.
 
     ![Azure Active Directory](./media/active-directory-conditional-access-baseline-protection/02.png)
 
-3. Az a **Azure Active Directory** lap a **kezelése** kattintson **feltételes hozzáférés**.
+3. Az a **Azure Active Directory** lap a **biztonsági** területén kattintson **feltételes hozzáférési**.
 
-    ![Feltételes hozzáférés](./media/active-directory-conditional-access-baseline-protection/03.png)
+    ![Feltételes hozzáférés](./media/active-directory-conditional-access-baseline-protection/05.png)
 
-4. A házirendek listájában, kattintson a kezdetű **alapvető házirendet:**. 
+4. A szabályzatok listájában kattintson egy szabályzatot, amely kezdődik **alapvető házirendet:**. 
 
-5. A házirend engedélyezéséhez kattintson **házirend azonnal használható**.
+5. A szabályzat engedélyezéséhez kattintson **a házirend azonnal használható**.
 
 6. Kattintson a **Save** (Mentés) gombra. 
  
@@ -84,19 +84,19 @@ Alapkonfiguráció házirendek még csak előzetes verziójúak, amíg nincs akt
 
 ## <a name="what-you-should-know"></a>Tudnivalók 
 
-Egyéni feltételes hozzáférési házirendek kezelése és a prémium szintű Azure AD-licencre van szükség, míg az Azure AD összes kiadásában alapterv házirendek érhetők el.     
+Egyéni feltételes hozzáférési szabályzatok kezelése egy prémium szintű Azure AD-licenc szükséges, miközben alapkonfiguráció házirendek az Azure AD összes kiadásokban érhető el.     
 
-A könyvtár szerepköröket, amelyek szerepelnek az alapvető házirendet a legtöbb jogosultsági szintű Azure AD szerepkör is. 
+A referenciakonfiguráció-házirendben telepítésben a címtárbeli szerepkörök a jogosultsági Azure AD-szerepkörök. 
 
-Ha a parancsfájlok a privilegizált használt fiókok, kell-e cserélni őket a [felügyelt szolgáltatás identitásának (MSI)](./managed-service-identity/overview.md) vagy [, tanúsítványok elsődleges szolgáltatás](../azure-resource-manager/resource-group-authenticate-service-principal.md). Ideiglenes megoldásként kizárhat meghatározott felhasználói fiókok a baseline házirendből. 
+Ha a parancsfájlok privilegizált használt fiókok, kell cserélni, azokat a [Felügyeltszolgáltatás-identitás (MSI)](./managed-service-identity/overview.md) vagy [tanúsítványokkal rendelkező egyszerű szolgáltatás](../azure-resource-manager/resource-group-authenticate-service-principal.md). Ideiglenes Áthidaló megoldásként a referenciakonfiguráció házirendből zárhat ki egyedi felhasználói fiókokhoz. 
 
-Alapkonfiguráció házirendek vonatkoznak régebbi hitelesítési adatfolyamok, például a POP-ra, IMAP, régebbi asztali Office-ügyfélen. 
+Alapkonfiguráció házirendek vonatkoznak az örökölt hitelesítési folyamatok például a POP, IMAP, régebbi Office asztali ügyfelet. 
 
 
 
 
 ## <a name="next-steps"></a>További lépések
 
-Ha meg szeretné ismerni a feltételes hozzáférési házirend konfigurálása tudnivalókat [Ismerkedés a feltételes hozzáférés az Azure Active Directoryban](active-directory-conditional-access-azure-portal-get-started.md).
+Ha azt szeretné tudni, hogyan lehet feltételes hozzáférési szabályzat konfigurálása, lásd: [feltételes hozzáférés az Azure Active Directory használatának első lépései](active-directory-conditional-access-azure-portal-get-started.md).
 
-Ha készen áll a környezet feltételes hozzáférési házirend-beállításokkal, tekintse meg a [ajánlott eljárások a feltételes hozzáférés az Azure Active Directoryban](active-directory-conditional-access-best-practices.md). 
+Ha készen áll a környezetre vonatkozó feltételes hozzáférési szabályzatok konfigurálására, tekintse meg a [ajánlott eljárások az Azure Active Directory feltételes hozzáférés](active-directory-conditional-access-best-practices.md). 

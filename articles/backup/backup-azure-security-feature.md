@@ -1,115 +1,115 @@
 ---
-title: Az Azure Backup hibrid biztonsági mentések védelme érdekében biztonsági funkciói
-description: 'Útmutató: Azure Backup szolgáltatás biztonsági szolgáltatások használatával biztonságosabbá teszi a biztonsági másolatok'
+title: Biztonsági szolgáltatások hibrid biztonsági mentésekhez, amely használja az Azure Backup védelme érdekében
+description: Biztonsági funkciók használata az Azure Backup biztonságosabb a biztonsági másolatok készítése
 services: backup
-author: JPallavi
+author: trinadhk
 manager: vijayts
 ms.service: backup
 ms.topic: conceptual
 ms.date: 06/08/2017
-ms.author: pajosh
-ms.openlocfilehash: 11483cd87600ef8b10c2c7492e2434b9ab97149e
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.author: trinadhk
+ms.openlocfilehash: 714c8fde28be63e5173f89f92d186445f0990214
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34606205"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37447380"
 ---
-# <a name="security-features-to-help-protect-hybrid-backups-that-use-azure-backup"></a>Az Azure Backup hibrid biztonsági mentések védelme érdekében biztonsági funkciói
--Maillel kapcsolatos biztonsági problémák, például a kártevő szoftver, a nevű és a behatolás, növekednek. Lehet, hogy a biztonsági problémák költséges, pénzt és adatokat. Az ilyen támadások elleni védelmet, a Azure biztonsági mentés most hibrid biztonsági mentések védelme érdekében biztonsági szolgáltatásokat biztosítja. Ez a cikk bemutatja, hogyan adhat engedélyezése és ezek a funkciók használata az Azure Recovery Services Agent ügynök és az Azure Backup Server használatával. Ezek a funkciók a következők:
+# <a name="security-features-to-help-protect-hybrid-backups-that-use-azure-backup"></a>Biztonsági szolgáltatások hibrid biztonsági mentésekhez, amely használja az Azure Backup védelme érdekében
+Növeli a biztonsági problémákat, például a kártevők, a zsarolóprogramok és a behatolás, kapcsolatos elvárásainak. Lehet, hogy a biztonsági kérdésekkel költséges, pénzt és a adatok tekintetében. Az ilyen támadások ellen védő, az Azure Backup mostantól biztosít biztonsági szolgáltatások hibrid biztonsági mentésekhez védelme érdekében. Ez a cikk bemutatja, hogyan engedélyezheti és használja ezeket a funkciókat az Azure Recovery Services agent és az Azure Backup Server használatával. Ezek a funkciók a következők:
 
-- **Megelőzési**. Egy további hitelesítési réteg kerül, amikor csak a kritikus például a jelszó módosítása a művelet. Ezen ellenőrzés, győződjön meg arról, hogy ezeket a műveleteket végzi el csak érvényes Azure hitelesítő adatokkal rendelkező felhasználók számára.
-- **Riasztási**. E-mailben értesítést küld az előfizetés-adminisztrátor, amikor csak a kritikus például törlés, biztonsági mentési adatok a művelet. Az e-mailt biztosítja, hogy a felhasználó értesítést kap gyorsan ilyen műveleteket.
-- **Helyreállítási**. Törölt biztonsági mentési adatok kiegészítő megőrzi a törlés 14 nap. Ez biztosítja az adatok helyreállíthatósága belül egy adott időszakban, így nincs adatvesztés nélküli, még akkor is, ha a támadás akkor fordul elő. Minimális helyreállítási pontok nagyobb számú is, amelyek védelmet biztosítanak a sérült adatok karbantartása.
-
-> [!NOTE]
-> Biztonsági funkciókat is engedélyeznie kell használata infrastruktúra (IaaS) szolgáltatás VM biztonsági mentéséhez. Ezeket a szolgáltatásokat még nem állnak rendelkezésre az infrastruktúra-szolgáltatási virtuális gép biztonsági mentése, így azokat nem semmilyen hatással lesz. Biztonsági funkciók csak a rendszer használata esetén engedélyezni kell: <br/>
->  * **Az Azure Backup szolgáltatás ügynökének**. Minimális ügynökverzió 2.0.9052. Miután engedélyezte a ezeket a funkciókat, frissítsen végrehajtott kulcsfontosságú műveleteket végrehajtani az ügynök verziója. <br/>
->  * **Az Azure Backup Server**. Azure Backup agent legalább 2.0.9052 Azure Backup Server 1. frissítés. <br/>
->  * **A System Center Data Protection Manager**. Azure Backup agent legalább 2.0.9052 a Data Protection Manager 2012 R2 UR12 vagy a Data Protection Manager 2016 UR2. <br/> 
-
+- **Megelőzési**. Egy további hitelesítési réteg jelenik meg, amikor például a jelszó módosítása egy kritikus fontosságú műveletet hajtja végre. Ellenőrzés, hogy győződjön meg arról, hogy ezeket a műveleteket végezhet el csak érvényes Azure hitelesítő adatokkal rendelkező felhasználók számára.
+- **Riasztási**. E-mail-értesítés érkezik az előfizetés rendszergazdája, amikor például a biztonsági mentési adatok törlése a kritikus fontosságú műveletet hajtja végre. Ez az e-mail biztosítja, hogy a felhasználó értesítést kap gyorsan az ilyen műveletekkel kapcsolatos.
+- **Helyreállítási**. Törölt biztonsági mentési adatokat a törlési napjától számított 14 napig őrizzük meg egy további. Ez biztosítja az adatok helyreállíthatóságának egy adott időtartamon belül, így nincs adatvesztés nélküli, még akkor is, ha a támadás akkor fordul elő. Emellett minimális helyreállítási pontok nagyobb számú sérült adatok ellen védő karbantartása.
 
 > [!NOTE]
-> Ezek a szolgáltatások csak Recovery Services-tároló érhetők el. Az újonnan létrehozott helyreállítási szolgáltatások tárolók ezek a szolgáltatások alapértelmezés szerint engedélyezve van. Meglévő Recovery Services-tárolók, a felhasználók engedélyezze ezeket a szolgáltatásokat a következő szakaszban leírt lépéseket. Miután a szolgáltatások engedélyezve vannak, azokat a Recovery Services agent számítógépekre vonatkozik, Azure Backup Server-példányokat, és a Data Protection Manager-kiszolgáló regisztrálva a tárolóban. A beállítás engedélyezése egyszeri művelet, és nem tiltható le ezeket a funkciókat Miután engedélyezte őket.
+> Biztonsági funkciók használata infrastruktúra-szolgáltatás (IaaS) virtuális gépek biztonsági mentését, nem szabad engedélyezni. Ezek a funkciók még nem érhető el az IaaS virtuális gépek biztonsági mentését, így lehetővé téve nem kell semmilyen hatással. Biztonsági szolgáltatások csak akkor, ha használ engedélyezni kell: <br/>
+>  * **Az Azure Backup ügynöke**. Legalább az ügynök 2.0.9052-es verzióját. Engedélyeznie kell ezeket a funkciókat, frissítenie kell az ügynök verzióra kritikus műveletek végrehajtásához. <br/>
+>  * **Az Azure Backup Server**. Minimális Azure Backup ügynök verziója 2.0.9052 az Azure Backup Server 1. frissítés. <br/>
+>  * **A System Center Data Protection Manager**. Minimális Azure Backup ügynök 2.0.9052-es verzióját a Data Protection Manager 2012 R2 UR12 vagy a Data Protection Manager 2016 ur2-t. <br/> 
+
+
+> [!NOTE]
+> Ezek a szolgáltatások csak a Recovery Services-tároló érhetők el. Minden újonnan létrehozott Recovery Services-tároló ezeket a funkciókat, alapértelmezés szerint engedélyezve van. Meglévő Recovery Services-tárolók a felhasználók a funkciók engedélyezéséhez az alábbi szakaszban ismertetett lépések segítségével. Miután a szolgáltatások engedélyezve vannak, vonatkoznak azokra a Recovery Services agent számítógépeit, az Azure Backup Server-példányokat, és a Data Protection Manager-kiszolgáló regisztrálva a tároló. A beállítás engedélyezése egy egyszeri művelet, és azokat engedélyezése után ezeket a funkciókat nem tiltható le.
 >
 
 ## <a name="enable-security-features"></a>Biztonsági szolgáltatások engedélyezése
-Recovery Services-tároló létrehozásakor, a biztonsági szolgáltatásokat is használhatja. Ha egy meglévő tárolóhoz dolgozik, biztonsági szolgáltatások engedélyezése a következő lépések végrehajtásával:
+Recovery Services-tároló létrehozásakor használhatja a biztonsági funkciók. Ha egy meglévő tároló dolgozik, a biztonsági funkciók engedélyezéséhez az alábbi lépéseket:
 
-1. Jelentkezzen be az Azure portál Azure hitelesítő adataival.
+1. Jelentkezzen be az Azure Portalra Azure hitelesítő adatait.
 2. Válassza ki **Tallózás**, és írja be **Recovery Services**.
 
-    ![Képernyőfelvétel az Azure portál tallózási lehetőséget](./media/backup-azure-security-feature/browse-to-rs-vaults.png) <br/>
+    ![Képernyőkép az Azure portál lehetőség](./media/backup-azure-security-feature/browse-to-rs-vaults.png) <br/>
 
-    A Recovery Services-tárolók listája megjelenik. Ebben a listában jelölje ki a tárolóban. Megnyílik a kiválasztott tároló irányítópultja.
-3. Elemek a listában a létrehozott alatt jelenik meg a tárolóban **beállítások**, kattintson a **tulajdonságok**.
+    A Recovery Services-tárolók listája megjelenik. Ebből a listából válasszon ki egy tárolót. Megnyílik a kiválasztott tároló irányítópultja.
+3. Elemek listájában, amely alatt megjelenik a tároló **beállítások**, kattintson a **tulajdonságok**.
 
-    ![Képernyőfelvétel a Recovery Services-tároló beállítások](./media/backup-azure-security-feature/vault-list-properties.png)
+    ![Képernyőkép – a Recovery Services tároló beállításai](./media/backup-azure-security-feature/vault-list-properties.png)
 4. A **biztonsági beállítások**, kattintson a **frissítés**.
 
-    ![Képernyőkép a Recovery Services-tároló tulajdonságok](./media/backup-azure-security-feature/security-settings-update.png)
+    ![Képernyőkép – a Recovery Services-tároló tulajdonságai](./media/backup-azure-security-feature/security-settings-update.png)
 
-    A frissítés a hivatkozás megnyitja a **biztonsági beállítások** panel, amelyen a szolgáltatások összegzését tartalmazza, és lehetővé teheti, hogy azokat.
-5. A legördülő listából **állított Azure multi-factor Authentication?**, kiválaszthat egy értéket annak ellenőrzéséhez, ha engedélyezte a [Azure multi-factor Authentication](../active-directory/authentication/multi-factor-authentication.md). Ha engedélyezve van, kell adnia egy másik eszközről (például egy mobiltelefon) hitelesítéséhez az Azure-portálon történő bejelentkezés során.
+    A frissítés hivatkozás megnyitja a **biztonsági beállítások** panel, amely a szolgáltatások összegzését tartalmazza, és lehetővé teszi engedélyezheti őket.
+5. A legördülő listából **konfigurálta az Azure multi-factor Authentication?**, válasszon ki egy értéket, győződjön meg arról, ha engedélyezte a [Azure multi-factor Authentication](../active-directory/authentication/multi-factor-authentication.md). Ha engedélyezve van, a rendszer megkéri másik eszközről (például mobiltelefon) történő hitelesítéséhez az Azure Portalra való bejelentkezés során.
 
-   A biztonsági mentés végrehajtott kulcsfontosságú műveleteket hajt végre, amikor meg kell adnia egy PIN-kód és az Azure portálon elérhető biztonsági. Azure multi-factor Authentication engedélyezése egy biztonsági réteget ad. Csak a feljogosított felhasználók érvényes Azure hitelesítő adatokkal, és egy második eszközről hitelesített, férhetnek hozzá az Azure-portálon.
-6. Biztonsági beállítások mentéséhez válasszon **engedélyezése** kattintson **mentése**. Kiválaszthatja **engedélyezése** csak után kiválaszthat egy értéket a **állított Azure multi-factor Authentication?** listáját az előző lépésben.
+   Biztonsági mentés kulcsfontosságú műveleteket hajt végre, ha akkor adja meg a biztonsági PIN-kód, az Azure Portalon elérhető. Azure multi-factor Authentication biztonsági réteget ad hozzá. Csak a feljogosított felhasználók érvényes Azure hitelesítő adataival, és hitelesítést hajtottak végre egy másik eszközön, az Azure Portalon érheti el.
+6. Biztonsági beállítások mentéséhez, majd válassza **engedélyezése** kattintson **mentése**. Választhat **engedélyezése** csak egy értéket kiválasztása után a **konfigurálta az Azure multi-factor Authentication?** lista az előző lépésben.
 
     ![Képernyőkép a biztonsági beállítások](./media/backup-azure-security-feature/enable-security-settings-dpm-update.png)
 
 ## <a name="recover-deleted-backup-data"></a>A törölt biztonsági mentési adatok helyreállítása
-Biztonsági mentés további 14 napig őrzi meg törölt biztonsági mentési adatokat, és nem törlődik azonnal, ha a **Stop biztonsági mentés, a biztonsági mentési adatok** művelet. Az adatok helyreállítását a 14 napos időszak alatt, a következő lépésekkel, attól függően, hogy mi használ:
+Biztonsági másolat egy további 14 napig őrzi meg a törölt biztonsági mentési adatokat, és nem törli azonnal, ha a **biztonsági mentési adatok törlésével a biztonsági mentés leállítása** műveletet hajtja végre. Ezek az adatok visszaállításához a 14 napos időszakban, a következő lépésekkel, attól függően, amit használ:
 
-A **Azure Recovery Services Agent ügynököt** felhasználók:
+A **Azure Recovery Services agent** felhasználók:
 
-1. Ha a számítógépen, ahol a biztonsági mentések folyamatban volt továbbra is elérhető, akkor [ugyanarra a számítógépre adatok helyreállítása](backup-azure-restore-windows-server.md#use-instant-restore-to-recover-data-to-the-same-machine) az Azure Recovery Services, a helyreállítás a régi helyreállítási pontokat.
-2. Ez a számítógép nem érhető el, ha [helyreállítása egy másik gépre](backup-azure-restore-windows-server.md#use-instant-restore-to-restore-data-to-an-alternate-machine) egy másik Azure Recovery Services-számítógép segítségével az adatok beolvasása.
+1. Ha a számítógépen, ahol is történik a biztonsági mentések továbbra is elérhető, akkor [helyreállíthatja azokat ugyanarra a gépre](backup-azure-restore-windows-server.md#use-instant-restore-to-recover-data-to-the-same-machine) az Azure Recovery Services, a régi helyreállítási pontokat.
+2. Ha a számítógép nem érhető el, használja a [helyreállítás egy másik számítógépre](backup-azure-restore-windows-server.md#use-instant-restore-to-restore-data-to-an-alternate-machine) egy másik Azure Recovery Services-számítógép segítségével az adatok.
 
-A **Azure Backup Server** felhasználók:
+A **az Azure Backup Server** felhasználók:
 
-1. Ha a kiszolgáló, ahol a biztonsági mentések folyamatban volt továbbra is elérhető, a törölt adatforrásokhoz védelmének újbóli beállítását, és használja a **adatok helyreállítása** szolgáltatást, hogy a régi helyreállítási pontok helyreállíthatók.
-2. Ez a kiszolgáló nem érhető el, ha [állíthat helyre adatokat egy másik Azure Backup Server](backup-azure-alternate-dpm-server.md) egy másik Azure Backup Server-példány használata az adatok eléréséhez.
+1. Ha a kiszolgáló, ahol is történik a biztonsági mentések továbbra is elérhető, a törölt adatforrások védelmének újbóli beállításához, és használja a **adatok helyreállítása** funkció, amellyel a régi helyreállítási pontokat.
+2. Ha a kiszolgáló nem érhető el, használja a [adatok helyreállítása egy másik Azure Backup Server](backup-azure-alternate-dpm-server.md) egy másik Azure Backup Server-példány használatával az adatok.
 
 A **Data Protection Manager** felhasználók:
 
-1. Ha a kiszolgáló, ahol a biztonsági mentések folyamatban volt továbbra is elérhető, a törölt adatforrásokhoz védelmének újbóli beállítását, és használja a **adatok helyreállítása** szolgáltatást, hogy a régi helyreállítási pontok helyreállíthatók.
-2. Ez a kiszolgáló nem érhető el, ha [külső DPM hozzáadása](backup-azure-alternate-dpm-server.md) egy másik Data Protection Manager-kiszolgáló segítségével az adatok beolvasása.
+1. Ha a kiszolgáló, ahol is történik a biztonsági mentések továbbra is elérhető, a törölt adatforrások védelmének újbóli beállításához, és használja a **adatok helyreállítása** funkció, amellyel a régi helyreállítási pontokat.
+2. Ha a kiszolgáló nem érhető el, használja a [külső DPM hozzáadása](backup-azure-alternate-dpm-server.md) az adatok egy másik Data Protection Manager-kiszolgáló használatára.
 
 ## <a name="prevent-attacks"></a>Támadások megelőzése érdekében
-Győződjön meg arról, hogy csak akkor érvényes, ha a felhasználók különböző műveleteket hajthat végre ellenőrzések bővült. Ezek közé tartozik egy további hitelesítési réteggel hozzáadása és karbantartása minimális megőrzési időtartamot helyreállítási célokra.
+Ellenőrzi, hogy csak akkor érvényes, ha a felhasználók különféle műveleteket hajthat végre lettek hozzáadva. Ezek közé tartozik egy további hitelesítési réteg hozzáadása és helyreállítási célból a minimális megőrzési karbantartása.
 
-### <a name="authentication-to-perform-critical-operations"></a>Hitelesítés kritikus műveletek végrehajtásához
-Hajt végre egy biztonsági PIN-kód megadását kéri egy további hitelesítési végrehajtott kulcsfontosságú műveleteket az réteggel való hozzáadásának részeként **védelem kikapcsolása az adatok** és **Módosítsa jelszavát** műveletek.
+### <a name="authentication-to-perform-critical-operations"></a>Hitelesítés kritikus műveletek végrehajtása
+Hajt végre egy biztonsági PIN-kód megadását kéri hozzáadása egy plusz hitelesítési réteggel, a kritikus műveletekre vonatkozó részeként **védelem leállítása az adatok törlésével** és **módosítása jelszót** műveletek.
 
-A PIN-kód fogadására:
+A PIN-kód fogadásához:
 
 1. Jelentkezzen be az Azure portálra.
 2. Keresse meg a **Recovery Services-tároló** > **beállítások** > **tulajdonságok**.
-3. A **biztonsági PIN-kód**, kattintson a **Generate**. Ekkor megnyílik egy panel, amely tartalmazza a PIN-kódot kell megadni az Azure Recovery Services agent felhasználói felületen.
-    A PIN-kód érvényes csak 5 percig, és automatikusan lekérdezi létrehozott az időszak elteltével.
+3. A **biztonsági PIN-kódot**, kattintson a **Generate**. Ekkor megnyílik egy panel, amely tartalmazza az Azure Recovery Services agent felhasználói felületén megadni a PIN-kódot.
+    A PIN-kód érvényes, csak öt perc alatt, és lekérdezi az időszak elteltével automatikusan létrehozott.
 
-### <a name="maintain-a-minimum-retention-range"></a>A minimális megőrzési tartomány karbantartása
-Győződjön meg arról, hogy számos mindig érvényes helyreállítási pont érhető el, hogy a következő ellenőrzések lettek hozzáadva:
+### <a name="maintain-a-minimum-retention-range"></a>A minimális adatmegőrzési tartomány karbantartása
+Győződjön meg róla, hogy nincsenek mindig egy érvényes helyreállítási pontok száma érhető el, a következő ellenőrzések érhetők el:
 
-- A napi megőrzési, legalább **hét** napnyi megőrzési el kell végezni.
-- A heti megőrzési, legalább **négy** hetes megőrzési el kell végezni.
-- A havi megőrzési, legalább **három** hónapos megőrzéssel el kell végezni.
-- Az éves megőrzési, legalább **egy** adatmegőrzési év el kell végezni.
+- A napi megőrzése beállításnál legalább **hét** napos adatmegőrzést kell elvégezni.
+- A heti megőrzése beállításnál legalább **négy** hetes megőrzési kell elvégezni.
+- A havi megőrzése beállításnál legalább **három** hónapos megőrzéssel kell elvégezni.
+- Az éves megőrzési, legalább **egy** éves megőrzési kell elvégezni.
 
-## <a name="notifications-for-critical-operations"></a>A kritikus műveletek értesítések
-Általában a kritikus műveletet hajtja végre, ha az előfizetés-adminisztrátor küldött működésével kapcsolatos részleteket az e-mailben értesítést. Az értesítések címzettjeit további e-mail konfigurálhatja az Azure portál használatával.
+## <a name="notifications-for-critical-operations"></a>A kritikus műveletekre vonatkozó értesítések
+Általában egy kritikus fontosságú műveletet hajtja végre, ha az előfizetés rendszergazdája zajlik a művelet részleteit tartalmazó e-mail értesítés. Ezek az értesítések e-mail további címzettjei konfigurálhatja az Azure portal használatával.
 
-A cikkben említett biztonsági funkciók célzott támadások elleni védelmi mechanizmust biztosít. Ennél is fontosabb a támadás akkor fordul elő, ha ezeket a szolgáltatásokat biztosítanak az adatok helyreállíthatók.
+A cikkben említett biztonsági funkciók adja meg a célzott támadások elleni védelmi mechanizmus. Ami még fontosabb a támadás akkor fordul elő, ha ezek a funkciók lehetővé teszik, az adatok helyreállításához.
 
 ## <a name="troubleshooting-errors"></a>Hibaelhárítás
 | Művelet | Hiba részletei | Megoldás: |
 | --- | --- | --- |
-| Házirend módosítása |A biztonsági mentési házirend nem módosítható. Hiba: Az aktuális művelet [0x29834] belső szolgáltatási hiba miatt sikertelen volt. Várjon egy kis ideig, majd ismételje meg a műveletet. Ha a probléma továbbra is fennáll, forduljon a Microsoft támogatási szolgálatához. |**OK:**<br/>Ez a hiba elérhető lesz, ha a biztonsági beállítások engedélyezve vannak, próbálja meg csökkenteni a megőrzési időtartam alatt a fent megadott minimális értékek, és nem támogatott verziójú (az első Megjegyzés: Ez a cikk a támogatott verziók vannak megadva). <br/>**Javasolt művelet:**<br/> Ebben az esetben állítsa be a megadott időszak minimális megőrzési (hét nap négy hétben-naponta, hetente, a havi vagy éves egy év három hétig) feletti megőrzési időszak házirend folytatásához kapcsolatos frissítések. Szükség esetén kedvelt módszer lehet frissíteni a biztonságimásolat-készítő ügynök, az Azure Backup Server és/vagy a DPM UR használja ki a biztonsági frissítéseket. |
-| Jelszó módosítása |Biztonsági megadott PIN-kód nem megfelelő. (AZONOSÍTÓ: 100130) Adja meg a megfelelő biztonsági PIN-kódot a művelet végrehajtásához. |**OK:**<br/> Ez a hiba előre érvénytelen vagy lejárt biztonsági PIN-kódot kell megadni (például a jelszó módosítása) kritikus művelet végrehajtása közben. <br/>**Javasolt művelet:**<br/> A művelet befejezéséhez adjon meg érvényes biztonsági PIN-kódot. Ahhoz, hogy a PIN-kódot, jelentkezzen be Azure-portálon, és navigáljon a Recovery Services-tároló > Beállítások > Tulajdonságok > biztonsági PIN-kód készítése. A PIN-kód segítségével módosíthatja a jelszót. |
-| Jelszó módosítása |Sikertelen volt a művelet. ID: 120002 |**OK:**<br/>Ez a hiba származik, amikor a biztonsági beállítások engedélyezve vannak, megpróbálja módosítani a jelszót, és nem támogatott verziójú (Ez a cikk első megjegyzés-ben megadott érvényes verzió).<br/>**Javasolt művelet:**<br/> A jelszó módosításához frissíteni kell biztonságimásolat-készítő ügynök minimális verziójára minimális 2.0.9052, az Azure Backup server minimális Update 1, és/vagy a DPM minimális DPM 2012 R2 UR12 vagy a DPM 2016 UR2 (Letöltés a lenti hivatkozásokra kattintva), majd írjon be érvényes biztonsági PIN-kódot. Ahhoz, hogy a PIN-kódot, jelentkezzen be Azure-portálon, és navigáljon a Recovery Services-tároló > Beállítások > Tulajdonságok > biztonsági PIN-kód készítése. A PIN-kód segítségével módosíthatja a jelszót. |
+| Szabályzat módosítása |Nem sikerült módosítani a biztonsági mentési szabályzat. Hiba: Az aktuális művelet belső szolgáltatáshiba [0x29834] miatt nem sikerült. Várjon egy kis ideig, majd ismételje meg a műveletet. Ha a probléma továbbra is fennáll, forduljon a Microsoft támogatási szolgálatához. |**OK:**<br/>Ez a hiba érhető el, ha biztonsági beállításai engedélyezve vannak, próbálja meg csökkenteni a megőrzési időtartam alatt a fent meghatározott minimális értékeket, és a verzió nem támogatott (az első jegyezze fel, hogy ez a cikk a támogatott verziók vannak megadva). <br/>**Javasolt művelet:**<br/> Ebben az esetben kell beállítania a megőrzési időszak fent a megadott időszak minimális megőrzési (négy hetes, naponta, hetente, havonta vagy egy év az éves ütemezéshez három héttel a hét nap) házirend folytatásához kapcsolatos frissítések. Szükség esetén legmegfelelőbb módszer lehet frissíteni a Backup szolgáltatás ügynöke, az Azure Backup Server és/vagy a DPM UR kihasználhatja a biztonsági frissítéseket. |
+| Jelszó módosítása |Biztonsági megadott PIN-kód helytelen. (AZONOSÍTÓ: 100130) Adja meg a helyes biztonsági PIN-kódot a művelet végrehajtásához. |**OK:**<br/> Ezt a hibát tartalmaz (ilyen például a jelszó módosítása) kritikus művelet végrehajtása közben érvénytelen vagy lejárt biztonsági PIN-kód megadásakor. <br/>**Javasolt művelet:**<br/> A művelet végrehajtásához meg kell adnia az érvényes biztonsági PIN-kódot. A PIN-kód lekéréséhez jelentkezzen be az Azure Portalra, és navigáljon a Recovery Services-tároló > Beállítások > Tulajdonságok > biztonsági PIN-kód készítése. A PIN-kód használatával módosítsa a jelszót. |
+| Jelszó módosítása |Sikertelen volt a művelet. ID: 120002 |**OK:**<br/>Ez a hiba érhető el, ha biztonsági beállításai engedélyezve vannak, megpróbálja módosítani a jelszót, és a verzió nem támogatott (Ez a cikk először jegyezze fel a megadott érvényes verzió).<br/>**Javasolt művelet:**<br/> Jelszó módosításához először frissítenie kell biztonságimásolat-készítő ügynök a minimális 2.0.9052-es minimális, minimális Update 1, az Azure Backup server és/vagy a DPM minimális a DPM 2012 R2 UR12 vagy a DPM 2016 UR2 (letöltési hivatkozásokat az alábbi), majd adjon meg érvényes biztonsági PIN-kódot. A PIN-kód lekéréséhez jelentkezzen be az Azure Portalra, és navigáljon a Recovery Services-tároló > Beállítások > Tulajdonságok > biztonsági PIN-kód készítése. A PIN-kód használatával módosítsa a jelszót. |
 
 ## <a name="next-steps"></a>További lépések
-* [Ismerkedés az Azure Recovery Services-tároló](backup-azure-vms-first-look-arm.md) a funkciók engedélyezéséhez.
-* [Töltse le a legújabb Azure Recovery Services Agent ügynököt](http://aka.ms/azurebackup_agent) Windows rendszerű számítógépek védelmét, és a biztonsági mentési adatok támadások elleni védelme érdekében.
-* [Töltse le a legújabb Azure Backup Server](https://aka.ms/latest_azurebackupserver) munkaterhelések védelmét, és a biztonsági mentési adatok támadások elleni védelme érdekében.
-* [Töltse le a System Center 2012 R2 Data Protection Manager UR12](https://support.microsoft.com/help/3209592/update-rollup-12-for-system-center-2012-r2-data-protection-manager) vagy [töltse le a System Center 2016 Data Protection Manager UR2](https://support.microsoft.com/help/3209593/update-rollup-2-for-system-center-2016-data-protection-manager) munkaterhelések védelmét, és a biztonsági mentési adatok támadások elleni védelme érdekében.
+* [Ismerkedés az Azure Recovery Services-tároló](backup-azure-vms-first-look-arm.md) ahhoz, hogy ezeket a funkciókat.
+* [Töltse le a legújabb Azure Recovery Services-ügynök](http://aka.ms/azurebackup_agent) Windows-számítógépek védelméhez és a biztonsági mentési adatok támadások elleni védelme érdekében.
+* [Töltse le a legújabb Azure Backup Server](https://aka.ms/latest_azurebackupserver) számítási feladatok védelmét, és a biztonsági mentési adatok támadások elleni védelme érdekében.
+* [Töltse le a System Center 2012 R2 Data Protection Manager UR12](https://support.microsoft.com/help/3209592/update-rollup-12-for-system-center-2012-r2-data-protection-manager) vagy [töltse le a System Center 2016 Data Protection Manager UR2](https://support.microsoft.com/help/3209593/update-rollup-2-for-system-center-2016-data-protection-manager) számítási feladatok védelmét, és a biztonsági mentési adatok támadások elleni védelme érdekében.

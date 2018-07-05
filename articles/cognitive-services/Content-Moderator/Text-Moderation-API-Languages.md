@@ -1,6 +1,6 @@
 ---
-title: Tartalom moderátor Azure által támogatott nyelvek |} Microsoft Docs
-description: Ez a tartalom moderátor által támogatott nyelvek listáját.
+title: Az Azure Content Moderator által támogatott nyelvek |} A Microsoft Docs
+description: Íme a Content Moderator által támogatott nyelvek listáját.
 services: cognitive-services
 author: sanjeev3
 manager: mikemcca
@@ -9,22 +9,22 @@ ms.component: content-moderator
 ms.topic: article
 ms.date: 03/21/2018
 ms.author: sajagtap
-ms.openlocfilehash: 0fb9f92e736e598662f66ae3d283ba02f715e3af
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 973e4efcbe9d0627ca261def2449a237819559ad
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35347763"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37441148"
 ---
-# <a name="text-moderation---supported-languages-by-feature"></a>Szöveg moderálás - szolgáltatás által támogatott nyelvek
+# <a name="text-moderation---supported-languages-by-feature"></a>Szövegmoderálás – a szolgáltatás által támogatott nyelvek
 
 > [!NOTE]
-> Az a **nyelvi** paraméter, rendelje hozzá `eng` , vagy hagyja üresen, hogy a gép támogatású **besorolás** választ (előzetes verziójú funkciók). **Ez a funkció csak angol támogatja**.
+> A a **nyelvi** paraméter hozzárendelése `eng` , vagy hagyja üresen, hogy a gépi támogatású **besorolási** válasz (előzetes verziójú funkció). **Ez a funkció támogatja csak angol nyelven**.
 >
-> A **Profanitás feltételek** észlelése, használja a [ISO 639-3 kód](http://www-01.sil.org/iso639-3/codes.asp) szerepel a támogatott nyelvekhez cikket, vagy hagyja üresen.
+> A **cenzúrázása feltételek** észlelése, használja a [ISO 639-3 kód](http://www-01.sil.org/iso639-3/codes.asp) ezen a támogatott nyelvek a cikket, vagy hagyja üresen.
 
 
-| Nyelvfelismerés | Profanitás   | OCR    | Automatikus javítási     |
+| Nyelvfelismerés | Káromkodás   | OCR    | Automatikus javítás     |
 | -------------------- |-------------|--------|---------------------|
 | Arab (Romanized)   | afrikaans   | arab   | arab
 | Balinese | albán | kínai (egyszerűsített)    | dán
@@ -33,77 +33,77 @@ ms.locfileid: "35347763"
 | Buhid | örmény | dán                     | finn
 | Carian | asszámi | holland                     | francia
 | kínai (egyszerűsített) | Azeri | Angol  | Görög (modern)
-| kínai (hagyományos) | Bangla - Banglades | finn  | olasz
-| Templom (Szláv) | Bangla - India | francia     | koreai
+| kínai (hagyományos) | Bangla – Banglades | finn  | olasz
+| Templom (Szláv) | Bangla – India | francia     | koreai
 | Kopt | baszk | német                      | norvég
-| Divehi | belorusz | Görög (modern)         | lengyel
-| fárszi | Bosnyák - cirill | magyar        | portugál
-| görög | Bosnyák - Latin | olasz             | román
-| Haiti (Creole) | [Nem GeoPol] Breton | japán  | orosz
-| héber | bolgár | koreai                        | szlovák
-| Hmong | katalán | norvég                        | spanyol
-| Kurdish (arab) | Központi Kurdish | lengyel        | török
-| Kurdish (latin betűs) | Cherokee | portugál
-| Lepcha | kínai (egyszerűsített) | román
-| Limbu | Kínai (hagyományos) - Hongkong (KKT) | orosz
-| Lu | Kínai (hagyományos) - Tajvan | Szerb cirill
-| Lycian | horvát | Szerb Latin
-| Lydian | cseh | szlovák
-| Mycenaean (görög) | dán | spanyol
-| Nko | dari | svéd
-| norvég (bokmal) | holland | török
-| norvég (nynorsk) | Angol 
-| Régi (Perzsa) | észt 
-| pasto | filippínó
-| pandzsábi | finn
-| Rejang | francia
-| Santali | galíciai
-| Sasak | grúz
-| Saurashtra | német
-| szerb (cirill betűs) | görög
-| szerb (latin betűs) | gudzsaráti
-| sinhala | hausza
-| szlovén | héber
-| Sylheti | hindi
-| szír | magyar
-| Tagbanwa | izlandi
-| Tai (Nua) | igbo
-| Tamashek | indonéz
-| Ugaritic | inuktitut
-| üzbég (cirill betűs) | ír
-| özbeg (latin betűs) | xhosza
-| Vai | zulu
-| ji | olasz
-| Zhuang, Chuang | japán
-| | kannada
-| | kazak
-| | khmer
-| | quiché
-| | kinyarvanda
-| | szuahéli
-| | kónkáni
-| | koreai
-| | kirgiz
-| | lao
-| | lett
-| | litván
-| | luxemburgi
-| | macedón
-| | maláj
-| | malajálam
+| cseh |  belorusz | Görög (modern)         | lengyel
+| Divehi | Bosnyák – cirill | magyar      | portugál
+| holland | Bosnyák – Latin | olasz             | román
+| Angol | (Creole) | Breton [nem GeoPol] | japán  | orosz
+| fárszi | bolgár | koreai                        | szlovák
+| francia | katalán | norvég                        | spanyol
+| német | Közép-ázsiai Kurd | lengyel        | török
+| görög | Cseroki | portugál
+| Haiti | kínai (egyszerűsített) | román
+| héber | Kínai (hagyományos) – Hongkong (KKT) | orosz
+| hindi | Kínai (hagyományos) – Tajvan | Szerb cirill
+| Hmong | horvát | Szerb Latin
+| magyar | cseh | szlovák
+| olasz | dán | spanyol
+| japán | dari | svéd
+| koreai | holland | török
+| Ázsiai Kurd (arab) | Angol
+| Ázsiai Kurd (latin betűs) | észt
+| Lepcha | filippínó
+| Limbu | finn
+| Lu | francia
+| Lycian | galíciai
+| Lydian | grúz
+| Mycenaean (görög) | német
+| Nko | görög
+| norvég (bokmal) | gudzsaráti
+| norvég (nynorsk) |  hausza
+| Régi (Perzsa) | héber
+| pasto | hindi
+| lengyel | magyar
+| Portugál | izlandi
+| pandzsábi | igbo
+| Rejang | indonéz
+| orosz | inuktitut
+| Santali | ír
+| Sasak | xhosza
+| Saurashtra | zulu
+| szerb (cirill betűs) | olasz
+| szerb (latin betűs) | japán
+| sinhala | kannada
+| szlovén | kazak
+| spanyol | khmer
+| svéd | quiché
+| Sylheti | kinyarvanda
+| szír | szuahéli
+| Tagbanwa | kónkáni
+| Tai (Nua) | koreai
+| Tamashek | kirgiz
+| török | lao
+| Ugaritic | lett
+| üzbég (cirill betűs) | litván
+| özbeg (latin betűs) | luxemburgi
+| Vai | macedón
+| ji | maláj
+| Zhuang, Chuang | malajálam
 | | máltai
 | | maori
 | | maráthi
 | | mongol
 | | nepáli
-| | Norvég (Bokmål)
+| | Norvég (bokmal)
 | | norvég (nynorsk)
 | | odia
 | | pasto
 | | perzsa
 | | lengyel
-| | Portugál - Brazília
-| | Portugál - Portugália
+| | Portugál – Brazília
+| | Portugál – Portugália
 | | Pulaar
 | | pandzsábi
 | | pandzsábi (Pakisztán)
@@ -135,7 +135,7 @@ ms.locfileid: "35347763"
 | | urdu
 | | ujgur
 | | üzbég
-| | Valencian
+| | Valenciai
 | | vietnami
 | | walesi
 | | wolof

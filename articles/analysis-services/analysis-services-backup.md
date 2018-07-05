@@ -1,47 +1,47 @@
 ---
-title: Az Azure Analysis Services-adatbázis biztonsági mentése és visszaállítása |} Microsoft Docs
-description: Ismerteti, hogyan biztonsági mentése és visszaállítása az Azure Analysis Services-adatbázis.
+title: Az Azure Analysis Services-adatbázis biztonsági mentése és visszaállítása |} A Microsoft Docs
+description: Ismerteti, hogyan lehet biztonsági mentése és visszaállítása egy Azure Analysis Services-adatbázisból.
 author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 04/12/2018
+ms.date: 07/03/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 07b2cebde40983955c5244ac2b7f0b759dcdbd14
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: a6e1b7c5661f919af34cb10807e83bfcb7f5e137
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34597297"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37446758"
 ---
 # <a name="backup-and-restore"></a>Biztonsági mentés és visszaállítás
 
-Az Azure Analysis Services táblázatos modell adatbázisainak biztonsági mentése sokkal ugyanúgy történik a helyszíni Analysis Services. Az elsődleges különbség az, ahol a biztonsági mentési fájljait tárolja. Biztonságimásolat-fájlokat menteni kell a tárolót egy [Azure storage-fiók](../storage/common/storage-create-storage-account.md). Használhatja a tárfiók és tároló már rendelkezik, vagy létrehozása a kiszolgáló tárolási beállításainak konfigurálásakor.
+Az Azure Analysis Services táblázatos modellű adatbázisainak biztonsági mentése sokkal ugyanaz, mint a helyszíni Analysis Services. Az elsődleges különbség a biztonságimásolat-fájlok tárolására. Biztonságimásolat-fájlokat menteni kell a tároló egy [Azure storage-fiók](../storage/common/storage-create-storage-account.md). Már rendelkezik egy tárfiókot és tárolót is használhatja, vagy létre tárolási beállítások a kiszolgáló konfigurálása során.
 
 > [!NOTE]
-> A storage-fiók létrehozása egy új számlázható szolgáltatás létrejöttét eredményezheti. További tudnivalókért lásd: [Azure Storage szolgáltatás díjszabása](https://azure.microsoft.com/pricing/details/storage/blobs/).
+> Tárfiók létrehozása egy új számlázható szolgáltatás létrejöttét eredményezheti. További tudnivalókért lásd: [Azure Storage szolgáltatás díjszabása](https://azure.microsoft.com/pricing/details/storage/blobs/).
 > 
 > 
 
-Biztonsági másolatok abf-fájl kiterjesztéssel együtt. A memóriában táblázatos modellek esetében a modell adatai és a metaadatok tárolja. DirectQuery táblázatos modellek esetében csak a modell metaadatait tárolja. Biztonsági mentések tömörített, és titkosíthatók, a kiválasztott lehetőségektől függően. 
+Biztonsági másolatok abf kiterjesztéssel együtt. A memóriában táblázatos modellek esetében is a modell adatait, és a metaadatok tárolódnak. DirectQuery táblázatos modellek esetében csak a modell metaadatait tárolja. Biztonsági másolatok is tömörítve és titkosítva kerüljenek, a beállításoktól függően. 
 
 
 
 ## <a name="configure-storage-settings"></a>A tárolási beállítások konfigurálása
-A biztonsági másolatot, előtt kell a kiszolgáló a tárolási beállítások konfigurálása.
+Biztonsági másolatot, mielőtt, konfigurálnia kell a kiszolgáló-tárolási beállításai.
 
 
 ### <a name="to-configure-storage-settings"></a>Tárolási beállítások konfigurálása
-1.  Az Azure portál > **beállítások**, kattintson a **biztonsági mentés**.
+1.  Az Azure portal > **beállítások**, kattintson a **Backup**.
 
-    ![Beállítások a biztonsági másolatok](./media/analysis-services-backup/aas-backup-backups.png)
+    ![Biztonsági mentés beállításai](./media/analysis-services-backup/aas-backup-backups.png)
 
 2.  Kattintson a **engedélyezve**, majd kattintson a **tárolási beállítások**.
 
     ![Bekapcsolás](./media/analysis-services-backup/aas-backup-enable.png)
 
-3. Válassza ki a tárfiók, vagy hozzon létre egy újat.
+3. Válassza ki a tárfiókot, vagy hozzon létre egy újat.
 
 4. Jelöljön ki egy tárolót, vagy hozzon létre egy újat.
 
@@ -49,62 +49,62 @@ A biztonsági másolatot, előtt kell a kiszolgáló a tárolási beállítások
 
 5. A biztonsági mentési beállítások mentéséhez.
 
-    ![Biztonsági mentési beállításainak mentése](./media/analysis-services-backup/aas-backup-save.png)
+    ![Biztonsági mentés beállításainak mentése](./media/analysis-services-backup/aas-backup-save.png)
 
 ## <a name="backup"></a>Backup
 
-### <a name="to-backup-by-using-ssms"></a>A biztonsági mentési szolgáltatáshoz az SSMS használatával
+### <a name="to-backup-by-using-ssms"></a>Biztonsági mentés SSMS használatával
 
-1. Az SSMS, kattintson a jobb gombbal egy adatbázis > **készítsen biztonsági másolatot**.
+1. Az ssms-ben, kattintson a jobb gombbal egy adatbázis > **biztonsági mentése**.
 
 2. A **adatbázis biztonsági másolata** > **biztonságimásolat-fájl**, kattintson a **Tallózás**.
 
 3. Az a **mentés fájlt** párbeszédpanelen ellenőrizze a mappa elérési útját, és írja be a biztonságimásolat-fájl nevét. 
 
-4. Az a **adatbázis biztonsági másolata** párbeszédpanelen válassza a beállítások.
+4. Az a **adatbázis biztonsági másolata** párbeszédpanel, válassza a beállítások.
 
-    **Engedélyezi a fájl felülírása** – ezzel a beállítással felülírja az azonos nevű biztonsági mentési fájljait. Ha ez a beállítás nincs bejelölve, a menteni kívánt fájl neve nem lehet ugyanazon a helyen már létezik egy fájl.
+    **Lehetővé teszi a fájl felülírása** – ezzel a lehetőséggel felülírja az azonos nevű biztonsági mentési fájljait. Ha ez a beállítás nincs bejelölve, a fájl mentésekor ugyanazzal a névvel nem lehet egy fájl, amely ugyanazon a helyen már létezik.
 
-    **Tömörítés alkalmazása** – válassza ezt a beállítást, a másolat tömörítéséhez. Tömörített biztonságimásolat-fájlok helymegtakarítás, de valamivel nagyobb processzorhasználatot igényel. 
+    **A tömörítés alkalmazása** – ezt a beállítást, a biztonsági másolat tömörítéséhez válassza. Tömörített biztonságimásolat-fájlok lemezterület takarítható meg, de valamivel nagyobb CPU-kihasználtság szükséges. 
 
-    **Biztonsági másolat titkosításához** – válassza ezt a beállítást, a biztonsági fájl titkosításához. Ez a beállítás a biztonságimásolat-fájlt biztonságos felhasználó által megadott jelszót igényel. A jelszó megakadályozza, hogy a biztonsági mentési adatok olvasása a visszaállítási művelet mint bármilyen más módon. Biztonsági mentések titkosításához válassza ki, ha a jelszót biztonságos helyen tárolja.
+    **Biztonsági másolat titkosításához** – ezt a beállítást a biztonságimásolat-fájl titkosításához. Ez a beállítás a biztonságimásolat-fájl védelmét felhasználó által megadott jelszó szükséges. A jelszó megakadályozza, hogy a biztonsági mentési adatok olvasása a visszaállítási művelet, mint bármilyen más módon. Ha a biztonsági mentések titkosításához választja, a jelszó tárolásához egy biztonságos helyre.
 
-5. Kattintson a **OK** létrehozása és mentése a biztonságimásolat-fájlt.
+5. Kattintson a **OK** hozhat létre, és mentse a biztonsági mentési fájlt.
 
 
 ### <a name="powershell"></a>PowerShell
-Használjon [Backup-ASDatabase](https://docs.microsoft.com/sql/analysis-services/powershell/backup-asdatabase-cmdlet) parancsmag.
+Használat [Backup-ASDatabase](https://docs.microsoft.com/sql/analysis-services/powershell/backup-asdatabase-cmdlet) parancsmagot.
 
 ## <a name="restore"></a>Visszaállítás
-Visszaállításakor, a biztonságimásolat-fájlt a kiszolgálóra történő konfigurálását tárfiókban kell lennie. Ha a biztonságimásolat-fájl áthelyezése a tárfiók a helyszíni helyről van szüksége, [Microsoft Azure Tártallózó](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer) vagy a [AzCopy](../storage/common/storage-use-azcopy.md) parancssori segédprogram. 
+Visszaállításakor, a biztonságimásolat-fájlt a kiszolgáló konfigurálása a tárfiókban kell lennie. Ha a biztonságimásolat-fájl áthelyezése a helyszíni helyről a tárfiók van szüksége, használja a [Microsoft Azure Storage Explorer](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer) vagy a [AzCopy](../storage/common/storage-use-azcopy.md) parancssori segédprogramot. 
 
 
 
 > [!NOTE]
-> Ha most állítja vissza egy helyi kiszolgálóról, akkor távolítsa el a tartományi felhasználók a modell szerepkörök, és adja hozzá újra az Azure Active Directory-felhasználók, szerepkörök.
+> Van egy helyi kiszolgálóról állítja vissza, ha kell a tartományi felhasználók eltávolítása a szerepkörök a modell és a szerepköröket, az Azure Active Directory-felhasználók hozzáadására.
 > 
 > 
 
-### <a name="to-restore-by-using-ssms"></a>Visszaállítása szolgáltatáshoz az SSMS használatával
+### <a name="to-restore-by-using-ssms"></a>Visszaállítása az SSMS használatával
 
-1. Az SSMS, kattintson a jobb gombbal egy adatbázis > **visszaállítása**.
+1. Az ssms-ben, kattintson a jobb gombbal egy adatbázis > **visszaállítása**.
 
 2. Az a **adatbázis biztonsági másolata** párbeszédpanelen, a **biztonságimásolat-fájl**, kattintson a **Tallózás**.
 
-3. Az a **található adatbázisfájlok** párbeszédpanelen jelölje ki a visszaállítani kívánt fájlt.
+3. Az a **keresse meg az adatbázisfájlok** párbeszédpanelen válassza ki a visszaállítani kívánt fájlt.
 
 4. A **vissza az adatbázist a**, válassza ki az adatbázist.
 
-5. Adja meg a beállításokat. Biztonsági beállítások egyeznie kell a biztonsági mentésekor használt biztonsági mentési beállítások.
+5. Adja meg a beállításokat. Biztonsági beállítások biztonsági mentésekor használt biztonsági mentési beállításainak egyeznie kell.
 
 
 ### <a name="powershell"></a>PowerShell
 
-Használjon [visszaállítási-ASDatabase](https://docs.microsoft.com/sql/analysis-services/powershell/restore-asdatabase-cmdlet) parancsmag.
+Használat [Restore-ASDatabase](https://docs.microsoft.com/sql/analysis-services/powershell/restore-asdatabase-cmdlet) parancsmagot.
 
 
 ## <a name="related-information"></a>Kapcsolódó információk
 
 [Az Azure storage-fiókok](../storage/common/storage-create-storage-account.md)  
 [Magas rendelkezésre állás](analysis-services-bcdr.md)     
-[Az Azure Analysis Services kezelése](analysis-services-manage.md)
+[Azure Analysis Services kezelése](analysis-services-manage.md)

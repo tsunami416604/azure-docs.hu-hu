@@ -1,38 +1,38 @@
 ---
-title: Az önkiszolgáló jelszó módosítása az Azure Active Directory B2C |} Microsoft Docs
-description: A témakör bemutatja, hogyan lehet beállítani a felhasználók az Azure Active Directory B2C az önkiszolgáló jelszó módosítása.
+title: Az önkiszolgáló jelszó módosítása az Azure Active Directory B2C |} A Microsoft Docs
+description: A témakör bemutatja, hogyan lehet beállítani az önkiszolgáló jelszómódosítás a felhasználók az Azure Active Directory B2C.
 services: active-directory-b2c
 author: davidmu1
 manager: mtillman
 ms.service: active-directory
 ms.workload: identity
-ms.topic: article
+ms.topic: conceptual
 ms.date: 09/05/2016
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 5474f469c6271a0c1348004664ead8b190de08c7
-ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
+ms.openlocfilehash: 028d10b5c005be2db7cfd9c5ca5210ab55f0592a
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "34709138"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37448135"
 ---
-# <a name="azure-active-directory-b2c-configure-password-change-in-custom-policies"></a>Az Azure Active Directory B2C: A jelszó módosítása konfigurálja az egyéni házirendek  
+# <a name="azure-active-directory-b2c-configure-password-change-in-custom-policies"></a>Az Azure Active Directory B2C: Egyéni szabályzatok konfigurálása a jelszó módosítása  
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-A jelszó módosítása szolgáltatással bejelentkezett felhasználók (helyi fiókok használatát) módosíthatják jelszavukat anélkül, hogy a hitelességét igazolásához által e-mailek ellenőrzése a [önkiszolgáló jelszó-átállítási folyamata.](active-directory-b2c-reference-sspr.md) Ha a munkamenet lejár, az ügyfél kap a időpontjára jelszót folyamata módosításához felhasználótól jelentkezzen be újra. 
+A jelszó módosítása szolgáltatással a bejelentkezett felhasználók (helyi fiókok használatával) jelszavuk módosításához leírtak szerint hitelességét igazolásához által e-mailes ellenőrzés nélkül a [önkiszolgáló jelszó-visszaállítási folyamatot.](active-directory-b2c-reference-sspr.md) Ha a munkamenet lejár, az ügyfél lekéri a ideje jelszó módosítása a flow, a felhasználó kéri, hogy jelentkezzen be újra. 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Egy helyi fiókot sign-Close-Up/sign-in befejezéséhez, a konfigurált Azure AD B2C-bérlő [bevezetés](active-directory-b2c-get-started-custom.md).
+Az Azure AD B2C-bérlő egy helyi fiók regisztrálási-regisztrálási vagy bejelentkezési, végrehajtásához leírtak szerint konfigurálva [bevezetés](active-directory-b2c-get-started-custom.md).
 
 ## <a name="how-to-configure-password-change-in-custom-policy"></a>Egyéni házirendek konfigurálása a jelszó módosítása
 
-Konfigurálása egyéni házirendet a jelszó módosítása a következő módosításokat a megbízhatósági keretrendszer bővítmények házirend 
+Egyéni házirendek jelszó módosítása, hogy a következő módosításokat a bizalmi keretrendszer bővítmények házirendjében 
 
-## <a name="define-a-claimtype-oldpassword"></a>Adja meg a következő ClaimType ismeretlen: "Régi_jelszó"
+## <a name="define-a-claimtype-oldpassword"></a>Egy "oldPassword" takar definiálása
 
-Az egyéni házirend struktúrájának tartalmaznia kell egy `ClaimsSchema`, és adja meg egy új `ClaimType` alábbi, "Régi_jelszó" 
+Az egyéni házirend általános szerkezete tartalmaznia kell egy `ClaimsSchema`és a egy új definiálása `ClaimType` , az alábbi, "oldPassword" 
 
 ```XML
   <BuildingBlocks>
@@ -49,18 +49,18 @@ Az egyéni házirend struktúrájának tartalmaznia kell egy `ClaimsSchema`, és
 
 Ezek az elemek célja a következőképpen:
 
-- A `ClaimsSchema` határozza meg, milyen jogcímek érvényesítésre kerül.  Ebben az esetben a "jelszó" érvényesíti. 
+- A `ClaimsSchema` határozza meg, melyik jogcím van kell kiértékelni.  Ebben az esetben a "régi jelszót' érvényesíti. 
 
-## <a name="add-a-password-change-claims-provider-with-its-supporting-elements"></a>A jelszó módosítása az támogató elemei a Jogcímszolgáltatók hozzáadása
+## <a name="add-a-password-change-claims-provider-with-its-supporting-elements"></a>Adjon hozzá egy jelszó módosítása az támogató elemei a jogcímszolgáltatótól
 
-Jelszó módosítása a jogcímeket szolgáltató lesz
+Jelszó módosítása a jogcímeket szolgáltató fog
 
-1. A régi jelszó alapján hitelesíteni a felhasználót
-2. És "új" egyezik 'új jelszót', ha ez az érték B2C adattárolóban tárolja, és ezért a jelszó sikeresen módosítva. 
+1. Hitelesíteni a felhasználót a régi jelszó
+2. És ha az "új jelszó" megfelel a "új jelszó megerősítése", ezt az értéket a B2C-adattár tárolja, és ezért a jelszó sikeresen módosítva. 
 
 ![kép](images/passwordchange.jpg)
 
-Adja hozzá a következő jogcímszolgáltató a bővítmények házirendhez. 
+Adja hozzá a következő jogcímszolgáltató a bővítmények szabályzatot. 
 
 ```XML
 <ClaimsProviders>
@@ -148,25 +148,25 @@ Adja hozzá a következő jogcímszolgáltató a bővítmények házirendhez.
 
 
 
-### <a name="add-the-application-ids-to-your-custom-policy"></a>Az alkalmazás azonosítók hozzá az egyéni házirend
+### <a name="add-the-application-ids-to-your-custom-policy"></a>Az alkalmazás-azonosítók hozzáadása az egyéni házirend
 
-Adja hozzá a Alkalmazásazonosítók a bővítmények fájlhoz (`TrustFrameworkExtensions.xml`):
+Vegye fel az alkalmazásazonosítót a bővítmények fájlba (`TrustFrameworkExtensions.xml`):
 
-1. A bővítmények fájlban (TrustFrameworkExtensions.xml), az elem található `<TechnicalProfile Id="login-NonInteractive">` és `<TechnicalProfile Id="login-NonInteractive-PasswordChange">`
+1. A bővítmények fájlt (TrustFrameworkExtensions.xml), keresse meg az elem `<TechnicalProfile Id="login-NonInteractive">` és `<TechnicalProfile Id="login-NonInteractive-PasswordChange">`
 
-2. Cserélje le az összes példányát `IdentityExperienceFrameworkAppId` az identitás élmény keretrendszer alkalmazás leírtak szerint az alkalmazás azonosítójával [bevezetés](active-directory-b2c-get-started-custom.md). Például:
+2. Cserélje le az összes példányát `IdentityExperienceFrameworkAppId` az identitás-kezelőfelületi keretrendszer alkalmazás leírtak szerint az alkalmazás azonosítójával [bevezetés](active-directory-b2c-get-started-custom.md). Például:
 
    ```
    <Item Key="client_id">8322dedc-cbf4-43bc-8bb6-141d16f0f489</Item>
    ```
 
-3. Cserélje le az összes példányát `ProxyIdentityExperienceFrameworkAppId` a Proxy identitás élmény keretrendszer alkalmazás leírtak szerint az alkalmazás azonosítójával [bevezetés](active-directory-b2c-get-started-custom.md).
+3. Cserélje le az összes példányát `ProxyIdentityExperienceFrameworkAppId` az identitás-kezelőfelületi keretrendszer Proxy alkalmazás leírtak szerint az alkalmazás azonosítójával [bevezetés](active-directory-b2c-get-started-custom.md).
 
-4. A bővítmények fájl mentéséhez.
+4. Mentse a bővítmények fájlt.
 
 
 
-## <a name="create-a-password-change-user-journey"></a>Hozzon létre felhasználói út jelszó módosítása
+## <a name="create-a-password-change-user-journey"></a>Hozzon létre egy jelszó módosítása felhasználói interakciósorozat
 
 ```XML
  <UserJourneys>
@@ -194,26 +194,26 @@ Adja hozzá a Alkalmazásazonosítók a bővítmények fájlhoz (`TrustFramework
   </UserJourneys>
 ```
 
-Befejezte a bővítmény fájl módosítása. Mentse, majd töltse fel ezt a fájlt. Győződjön meg arról, hogy az összes érvényesítések sikeres.
+Elkészült a kiterjesztésű fájl módosítása. Mentse, és töltse fel ezt a fájlt. Győződjön meg arról, hogy az összes ellenőrzés sikeres.
 
 
 
 ## <a name="create-a-relying-party-rp-file"></a>Hozzon létre egy függő entitásonkénti (RP) fájlt
 
-Következő lépésként frissítse a függő entitásonkénti (RP) fájl, amely kezdeményezi a létrehozott felhasználói út:
+Ezután frissítse a függő entitásonkénti (RP) fájl, amely az Ön által létrehozott felhasználói interakciósorozat kezdeményezi:
 
-1. Készítsen másolatot a ProfileEdit.xml a munkakönyvtárat. Nevezze át (például PasswordChange.xml).
-2. Nyissa meg az új fájlt, és frissítse a `PolicyId` az attribútum `<TrustFrameworkPolicy>` egyedi értékkel. Azt a nevet a házirend (például PasswordChange).
-3. Módosítsa a `ReferenceId` attribútumnak `<DefaultUserJourney>` kell egyeznie a `Id` az új felhasználói út (például PasswordChange) létrehozott.
-4. A módosítások mentéséhez, és majd feltölteni a fájlt.
-5. Az egyéni házirend feltöltött, tesztelje az Azure portálon, nyissa meg a házirend paneljét, és kattintson **futtatása most**.
-
-
+1. A munkakönyvtárban ProfileEdit.xml másolatának elkészítéséhez. Nevezze (például PasswordChange.xml).
+2. Nyissa meg az új fájlt, és frissítse a `PolicyId` az attribútum `<TrustFrameworkPolicy>` egyedi értékkel. Ez az a a szabályzat nevét (például PasswordChange).
+3. Módosítsa a `ReferenceId` attribútum `<DefaultUserJourney>` megfelelően a `Id` az új felhasználói út (például PasswordChange) létrehozott.
+4. Mentse a módosításokat, majd feltölti a fájlt.
+5. Ha tesztelni szeretné az egyéni házirend feltöltött, az Azure Portalon, nyissa meg a szabályzat paneljén, és kattintson **Futtatás most**.
 
 
-## <a name="link-to-password-change-sample-policy"></a>Jelszó módosítása minta szabályzatra hivatkozó
 
-A minta házirend található [Itt](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/scenarios/password-change). 
+
+## <a name="link-to-password-change-sample-policy"></a>Jelszó módosítása minta szabályzat csatolása
+
+A minta házirendet annak [Itt](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/scenarios/password-change). 
 
 
 

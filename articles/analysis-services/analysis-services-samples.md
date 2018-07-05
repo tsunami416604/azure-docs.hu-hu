@@ -1,43 +1,43 @@
 ---
-title: Az Azure Analysis Services-kódot, a projekt és az adatbázis-minták |} Microsoft Docs
-description: További tudnivalók a kódot, a projekt és az adatbázis-minták Azure Analysis Services.
+title: Az Azure Analysis Services-kódot, projektek és adatbázis-minták |} A Microsoft Docs
+description: További információk a kódot, projektek és adatbázis-minták az Azure Analysis Services.
 author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 04/12/2018
+ms.date: 07/03/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 54913fa7940ac83f5de87ad9f35d6dcee07d29d0
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 6456663a1114ec00f2a071458c54067da53b52a7
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34598429"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37443721"
 ---
 # <a name="azure-analysis-services-samples"></a>Azure Analysis Services-minták
-Az alábbi minta-erőforrások használatával alakítsa ki megismerése és tesztelése a környezetében az Analysis Services.
+Használja a következő minta források segítségével ismerje meg, és tesztelje a környezetnek az Analysis Services.
 
 ## <a name="code-samples"></a>Kódminták
-A [Analysis Services](https://github.com/Microsoft/Analysis-Services) GitHub tárházából nyílt forráskódú Kódminták és közösségi projektek tartalmaz. 
+A [Analysis Services](https://github.com/Microsoft/Analysis-Services) tárházban a Githubon Kódminták nyílt forráskódú és közösségi projektet tartalmaz. 
 
-## <a name="tabular-model-project-and-database-samples"></a>Táblázatos modell projekt és az adatbázis-minták
-[Adventure Works az Analysis Services](https://github.com/Microsoft/sql-server-samples/releases/tag/adventureworks-analysis-services) a Githubon a leggyakrabban használt táblázatos modell mintaprojektet van. A Visual STUDIO-projekt vagy befejeződött egy táblázatos modell mintaadatbázis töltheti le.
+## <a name="tabular-model-project-and-database-samples"></a>Táblázatos modell projekt- és adatbázis-minták
+[Adventure Works az Analysis Services](https://github.com/Microsoft/sql-server-samples/releases/tag/adventureworks-analysis-services) a Githubon van a leggyakrabban használt minta táblázatosmodell-projekt. VS-projektbe vagy elkészült mintát táblázatos modellű adatbázis töltheti le.
 
 
-## <a name="sample-databases-on-github"></a>A Githubon mintaadatbázisokat
-Ezek a Githubon minta az adatbázisok létrehozása és tesztelése a saját modellek használható. 
+## <a name="sample-databases-on-github"></a>Minta adatbázisok a Githubon
+A Githubon ezen minta adatbázisok létrehozása és tesztelése a saját modelljeit is használható. 
 
-[Adventure Works mintaadatbázisokat](https://github.com/Microsoft/sql-server-samples/releases/tag/adventureworks2014)
+[Adventure Works minta adatbázisok](https://github.com/Microsoft/sql-server-samples/releases/tag/adventureworks2014)
 
-[Wide World Importers mintaadatbázisokat](https://github.com/Microsoft/sql-server-samples/releases/tag/wide-world-importers-v1.0)
+[Wide World Importers minta adatbázisok](https://github.com/Microsoft/sql-server-samples/releases/tag/wide-world-importers-v1.0)
 
-## <a name="adventure-works-internet-sales-sample-model-in-azure-portal"></a>Az Adventure Works Internet értékesítési minta modell Azure-portálon
-Ha az Analysis Services-kiszolgáló Azure-portálon, gyorsan és egyszerűen létrehozhat egy minta modellt. A kiszolgáló – Áttekintés lap az Azure portálon kattintson **új modell**, majd a **válasszon adatforrást**, jelölje be **az adatokat**.
+## <a name="adventure-works-internet-sales-sample-model-in-azure-portal"></a>Adventure Works internetes értékesítési minta modell az Azure Portalon
+Ha egy Analysis Services-kiszolgálóhoz az Azure Portalon, gyorsan és könnyedén hozhat létre egy mintául szolgáló modell. A kiszolgáló Áttekintés lapján az Azure Portalon kattintson **új modell**, majd **válasszon adatforrást**válassza **mintaadatok**.
 
 
 
 ## <a name="next-steps"></a>További lépések
 
-[Az Adventure Works oktatóanyag](/tutorials/aas-adventure-works-tutorial.md)   
-[Helyszíni Azure adatátjáró](analysis-services-gateway.md)  
+[Az Adventure Works-oktatóanyag](tutorials/aas-adventure-works-tutorial.md)   
+[Az Azure a helyszíni adatátjáró](analysis-services-gateway.md)  

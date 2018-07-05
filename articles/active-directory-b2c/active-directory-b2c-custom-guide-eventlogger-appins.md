@@ -1,60 +1,60 @@
 ---
-title: Felhasználó viselkedésének nyomon eseményeket az Application Insights az Azure Active Directory B2C használatával |} Microsoft Docs
-description: Részletes útmutató az Azure AD B2C felhasználói utak az Application Insightsban eseménynaplók engedélyezése egyéni házirendek (előzetes verzió) használatával
+title: Események az Application Insights az Azure Active Directory B2C használatával a felhasználók viselkedésének nyomon követése |} A Microsoft Docs
+description: Lépésenkénti útmutató, amellyel az eseménynaplókat az Application insights szolgáltatásban az Azure AD B2C felhasználói utak engedélyezése egyéni házirendekkel (előzetes verzió) használatával
 services: active-directory-b2c
 author: davidmu1
 manager: mtillman
 ms.service: active-directory
-ms.topic: article
+ms.topic: conceptual
 ms.workload: identity
 ms.date: 04/16/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 94d96af8db651a848ac092d1f8b85da4909427b7
-ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
+ms.openlocfilehash: 300a8a15552fe1e8ec9d6b434a14a31b3d827f19
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37110115"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37445585"
 ---
-# <a name="track-user-behavior-in-azure-ad-b2c-journeys-by-using-application-insights"></a>Az Azure AD B2C útvonal be a felhasználó viselkedésének nyomon az Application Insights használatával
+# <a name="track-user-behavior-in-azure-ad-b2c-journeys-by-using-application-insights"></a>Application Insights segítségével nyomon követheti a felhasználói viselkedés az Azure AD B2C-vel Journey
 
-Az Azure Active Directory B2C Azure Application Insights jól működik (Azure AD B2C-vel). A felhasználó egyénileg létrehozott teljesített részletes és testre szabott eseménynaplók biztosítanak. Ez a cikk bemutatja, hogyan első lépésként, a következőket teheti:
+Az Azure Active Directory B2C az Azure Application Insights jól működik (Azure AD B2C-vel). Azok az egyénileg létrehozott felhasználói utak részletes és testre szabott eseménynaplók adja meg. Ez a cikk bemutatja, hogyan kezdheti el, így:
 
-* A felhasználói viselkedés megismerésében.
-* Végezzen hibaelhárítást a megfelelő saját házirendeket a fejlesztési és éles környezetben.
-* Mérték teljesítményét.
-* Az Application Insights értesítések létrehozása
+* Felhasználói viselkedéssel kapcsolatos információkhoz.
+* Hárítsa el a megfelelő saját házirendeket fejlesztési vagy éles környezetben.
+* Teljesítmény mérésére.
+* Értesítések létrehozása az Application Insights szolgáltatásból.
 
 > [!NOTE]
 > Ez a funkció előzetes verzióban érhető el.
 
 ## <a name="how-it-works"></a>Működés
 
-Az Azure AD B2C identitás élmény keretében mostantól tartalmazza a szolgáltató `Handler="Web.TPEngine.Providers.UserJourneyContextProvider, Web.TPEngine, Version=1.0.0.0`.  Esemény adatokat küld közvetlenül az Application Insights az Azure AD B2C megadott instrumentation kulcs használatával.
+Az identitás-kezelőfelületi keretrendszer Azure AD B2C-ben mostantól tartalmazza a szolgáltatót `Handler="Web.TPEngine.Providers.UserJourneyContextProvider, Web.TPEngine, Version=1.0.0.0`.  A kialakítási kulcsot a megadott Azure AD B2C használatával közvetlenül az Application Insights küld eseményadatokat.
 
-Műszaki profil ezt a szolgáltatót használ egy esemény B2C meghatározására.  A profil határozza meg az esemény, a jogcímeket lesznek rögzítve és a rendszerállapot-kulcs neve.  Az esemény közzétételéhez a műszaki profil kerül egy `orchestration step` vagy regisztrációja, mivel egy `validation technical profile` az egyéni felhasználói út.
+A technikai profil a szolgáltató használ egy esemény a B2C meghatározására.  A profil megadja az esemény lesz rögzítve a jogcímeket és a kialakítási kulcs neve.  Az esemény közzétételéhez majd hozzáadja a technikai profil egy `orchestration step` vagy mint egy `validation technical profile` egy egyéni felhasználói interakciósorozatban szereplő.
 
-Az Application Insights is egyesítése, ezáltal az események rögzítése a felhasználói munkamenet a korrelációs azonosító használatával. Az Application Insights elérhetővé teszi a esemény- és a másodpercen belül, és sok képi megjelenítés és exportálása analitikai eszközök mutatja be.
+Az Application Insights is használja őket egységes előtérrendszerként az eseményeket rögzítse a felhasználói munkamenet egy korrelációs azonosító használatával. Az Application Insights elérhetővé teszi a események és munkamenetek másodpercen belül, és megadja a sok vizualizációt, exportálása és analitikai eszközök.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Hajtsa végre a [Ismerkedés az egyéni házirendek](active-directory-b2c-get-started-custom.md). Ez a cikk feltételezi, hogy az egyéni házirend kezdő szintű csomagot használ. De az alapszintű csomag nem szükséges.
+Hajtsa végre a [Ismerkedés az egyéni szabályzatok](active-directory-b2c-get-started-custom.md). Ez a cikk azt feltételezi, hogy az egyéni házirend alapszintű csomagot használ. De az alapszintű csomag nincs szükség.
 
-## <a name="step-1-create-an-application-insights-resource-and-get-the-instrumentation-key"></a>1. lépés Az Application Insights-erőforrás létrehozása és a rendszerállapot-kulcs beszerzése
+## <a name="step-1-create-an-application-insights-resource-and-get-the-instrumentation-key"></a>1. lépés Hozzon létre egy Application Insights-erőforrást, és a kialakítási kulcs beszerzése
 
-Az Application Insights Azure AD B2C használata, amikor egyetlen követelménye, hogy hozzon létre egy erőforrást és egy instrumentation kulcs beszerzése. Az erőforrás létrehozása a [Azure-portálon.](https://portal.azure.com)
+Az Application Insights az Azure AD B2C-vel használ, egyetlen követelménye esetén hozzon létre egy erőforrást, és a egy kialakítási kulcs beszerzése. Az erőforrás létrehozása a [Azure Portalon.](https://portal.azure.com)
 
-1. Válassza ki az Azure portálon, az előfizetés-bérlő belül **+ hozzon létre egy erőforrást**. A bérlő nincs az Azure AD B2C-bérlő.  
-2. Keresse meg és jelölje ki **Application Insights**.  
-3. Hozzon létre egy erőforrást használó **ASP.NET-webalkalmazás** , **alkalmazástípus**, igény szerint az adott előfizetésen belül.
-4. Az Application Insights-erőforrás létrehozása után nyissa meg azt, és jegyezze fel a instrumentation kulcs.
+1. Válassza ki az Azure Portalon, az előfizetés bérlőn belül **+ erőforrás létrehozása**. Ezen a bérlőn nem áll az Azure AD B2C-bérlőben.  
+2. Keresse meg és válassza **Application Insights**.  
+3. Hozzon létre egy erőforrást, amely használja **ASP.NET-alkalmazás** , **alkalmazástípus**, a beállításokat az előfizetéshez.
+4. Miután létrehozta az Application Insights-erőforrást, nyissa meg és jegyezze fel a kialakítási kulcsot.
 
-![Application Insights – áttekintés és Instrumentation kulcs](./media/active-directory-b2c-custom-guide-eventlogger-appins/app-ins-key.png)
+![Az Application Insights áttekintése és a kialakítási kulcsot](./media/active-directory-b2c-custom-guide-eventlogger-appins/app-ins-key.png)
 
-## <a name="step-2-add-new-claimtype-definitions-to-your-trust-framework-extension-file"></a>2. lépés Új ClaimType definíciók hozzáadása a megbízható keretrendszer bővítményfájl
+## <a name="step-2-add-new-claimtype-definitions-to-your-trust-framework-extension-file"></a>2. lépés A bizalmi keretrendszer bővítményfájl hozzáadása új takar definíciók
 
-Nyissa meg a bővítményfájl alapszintű csomagból, és adja hozzá a következő elemek a `<BuildingBlocks>` csomópont. A fájlnév általában: `yourtenant.onmicrosoft.com-B2C_1A_TrustFrameworkExtensions.xml`
+Nyissa meg a bővítmény fájlt az alapszintű csomagból, és adja hozzá a következő elemeket a `<BuildingBlocks>` csomópont. A fájlnév formátuma általában `yourtenant.onmicrosoft.com-B2C_1A_TrustFrameworkExtensions.xml`
 
 ```xml
 <ClaimsSchema>
@@ -101,22 +101,22 @@ Nyissa meg a bővítményfájl alapszintű csomagból, és adja hozzá a követk
 </ClaimsSchema>
 ```
 
-## <a name="step-3-add-new-technical-profiles-that-use-the-application-insights-provider"></a>3. lépés Adja hozzá az új műszaki profilokat az Application Insights-szolgáltató
+## <a name="step-3-add-new-technical-profiles-that-use-the-application-insights-provider"></a>3. lépés Adja hozzá az Application Insights-szolgáltató használó új technikai profilok
 
-Műszaki profilok az identitás élmény keretrendszer az Azure AD B2C funkciók tekinthető meg. Ebben a példában egy munkamenet megnyitását és események közzétételéhez öt műszaki profil határozza meg:
+Az az identitás élmény keretrendszer az Azure AD B2C funkciók technikai profilok lehessen venni. Ebben a példában öt technikai profilok munkamenetet nyit meg, és az események közzététele határozza meg:
 
-| Műszaki profil | Tevékenység |
+| Technikai profil | Tevékenység |
 | ----------------- | -----|
-| AzureInsights-Common | Jönnek létre a közös paraméterek szereplő összes AzureInsights műszaki profil | 
-| JourneyContextForInsights | A munkamenet megnyílik az Application Insights, és elküldi a korrelációs azonosító |
-| AzureInsights-SignInRequest | Létrehoz egy `SignIn` a jogcímeket, ha egy bejelentkezési kérelmet kapott esemény | 
-| AzureInsights-UserSignup | Létrehoz egy UserSignup eseményt, amikor a felhasználó elindítja az előfizetési beállítás a sign-Close-Up/sign-in út | 
-| AzureInsights-SignInComplete | A hitelesítés sikeres befejezését rögzíti, amikor el lett küldve egy jogkivonatot a függő entitás alkalmazás | 
+| AzureInsights-Common | Létrehoz egy közös csoportot minden AzureInsights technikai profilban szereplő paraméterek | 
+| JourneyContextForInsights | A munkamenet megnyitása az Application Insights és a egy korrelációs Azonosítót küld |
+| AzureInsights-SignInRequest | Létrehoz egy `SignIn` jogcímeket, amikor egy bejelentkezési kérelmet kapott esemény | 
+| AzureInsights-UserSignup | Amikor a felhasználó elindítja a regisztrációs lehetőség a regisztrálási-regisztrálási vagy bejelentkezési út UserSignup eseményt hoz létre | 
+| AzureInsights-SignInComplete | A hitelesítés sikeres befejezése rögzíti, amikor a rendszer elküldte a jogkivonatot a függő gyártótól származó alkalmazás | 
 
-A profilok a bővítményfájl származó hozzáadása az alapszintű csomag ezen elemek hozzáadásával a `<ClaimsProviders>` csomópont.  A fájlnév általában: `yourtenant.onmicrosoft.com-B2C_1A_TrustFrameworkExtensions.xml`
+A profilok hozzáadása a bővítményfájl az alapszintű csomag hozzáadásával ezeknek az elemeknek a `<ClaimsProviders>` csomópont.  A fájlnév formátuma általában `yourtenant.onmicrosoft.com-B2C_1A_TrustFrameworkExtensions.xml`
 
 > [!IMPORTANT]
-> A rendszerállapot-kulcsot a módosítása a `ApplicationInsights-Common` műszaki profilt, amely az Application Insights-erőforrás GUID.
+> A kialakítási kulcsot az módosítása a `ApplicationInsights-Common` technikai profil az Application Insights-erőforrást biztosító GUID.
 
 ```xml
 <ClaimsProvider>
@@ -172,7 +172,7 @@ A profilok a bővítményfájl származó hozzáadása az alapszintű csomag eze
 </ClaimsProvider>
 ```
 
-## <a name="step-4-add-the-technical-profiles-for-application-insights-as-orchestration-steps-in-an-existing-user-journey"></a>4. lépés Adja hozzá a műszaki profilok az Application Insights, egy meglévő felhasználó út vezénylési szükséges lépések
+## <a name="step-4-add-the-technical-profiles-for-application-insights-as-orchestration-steps-in-an-existing-user-journey"></a>4. lépés A technikai profilok hozzáadása az Application Insights egy meglévő felhasználói interakciósorozatban szereplő lépéseket vezénylési
 
 Hívás `JournyeContextForInsights` , orchestration 1. lépés:
 
@@ -185,7 +185,7 @@ Hívás `JournyeContextForInsights` , orchestration 1. lépés:
 </OrchestrationStep>
 ```
 
-Hívás `Azure-Insights-SignInRequest` vezénylési, nyomon követheti, hogy a bejelentkezési-a/regisztrációs kérelmet kapott a 2. lépés:
+Hívás `Azure-Insights-SignInRequest` vezénylési, 2. lépés: nyomon követésére, hogy a bejelentkezési-a vagy a regisztráláshoz kérelmet kapott:
 
 ```xml
 <!-- Track that we have received a sign in request -->
@@ -196,7 +196,7 @@ Hívás `Azure-Insights-SignInRequest` vezénylési, nyomon követheti, hogy a b
 </OrchestrationStep>
 ```
 
-Azonnal *előtt* a `SendClaims` vezénylési. lépés:, adjon hozzá egy új lépést, amely behívja `Azure-Insights-UserSignup`. Ha a felhasználó a regisztráció gombra a sign-Close-Up/sign-in út adatbázistáblába.
+Azonnal *előtt* a `SendClaims` vezénylési lépés, adjon hozzá egy új lépés, amely meghívja ezt `Azure-Insights-UserSignup`. Ez akkor aktiválódik, ha a felhasználó kiválaszt egy regisztrálási-regisztrálási vagy bejelentkezési utazás a regisztráció gombra.
 
 ```xml
 <!-- Handles the user clicking the sign up link in the local account sign in page -->
@@ -217,7 +217,7 @@ Azonnal *előtt* a `SendClaims` vezénylési. lépés:, adjon hozzá egy új lé
   </ClaimsExchanges>
 ```
 
-Után azonnal a `SendClaims` vezénylési lépés, hívás `Azure-Insights-SignInComplete`. Ez a lépés sikeresen befejeződött az út tükrözi.
+Után azonnal a `SendClaims` vezénylési. lépés: a hívás `Azure-Insights-SignInComplete`. Ez a lépés sikeresen befejeződött az út tükrözi.
 
 ```xml
 <!-- Track that we have successfully sent a token -->
@@ -229,22 +229,22 @@ Után azonnal a `SendClaims` vezénylési lépés, hívás `Azure-Insights-SignI
 ```
 
 > [!IMPORTANT]
-> Miután az új vezénylési lépésekből, áthelyezni a lépéseket egymás után nélkül kihagyásával bármely egész számok 1-n
+> Miután hozzáadta az új vezénylési lépésekből, áthelyezni a lépések sorrendben anélkül, hogy a rendszer kihagyja bármely egész számok 1-től N. a
 
 
-## <a name="step-5-upload-your-modified-extensions-file-run-the-policy-and-view-events-in-application-insights"></a>5. lépés A módosított bővítmények-fájl feltöltése, futtassa a házirend, és tekintse meg az eseményeket az Application Insightsban
+## <a name="step-5-upload-your-modified-extensions-file-run-the-policy-and-view-events-in-application-insights"></a>5. lépés Töltse fel a módosított bővítmények fájlt, a szabályzat futtatása és események megtekintése az Application insights szolgáltatásban
 
-Mentse, majd töltse fel az új megbízhatósági keretrendszer kiterjesztésű fájlt. Ezután hívja a függő entitás házirend használatát vagy az alkalmazás `Run Now` az Azure AD B2C-felületen. (Másodpercben) az események érhetők el az Application Insights.
+Mentse, és töltse fel az új megbízhatósági keretrendszer kiterjesztésű fájlt. Ezután a függő entitás házirend hívása használatát vagy az alkalmazás `Run Now` az Azure AD B2C-felületen. (Másodpercben) az eseményeket az Application Insights érhető el.
 
-1. Nyissa meg a **Application Insights** az Azure Active Directory-bérlő erőforrás.
+1. Nyissa meg a **Application Insights** erőforrást az Azure Active Directory-bérlőben.
 2. Válassza ki **használati** > **események**.
-3. Állítsa be **során** való **elmúlt egy órában** és **által** való **3 perc**.  Előfordulhat, hogy kell kiválasztania **frissítése** eredmények megtekintése.
+3. Állítsa be **során** való **utolsó óra** és **által** való **3 perc**.  Előfordulhat, hogy ki kell választania **frissítése** eredmények megtekintéséhez.
 
 ![Application Insights használati-események Blase](./media/active-directory-b2c-custom-guide-eventlogger-appins/app-ins-graphic.png)
 
 ##  <a name="next-steps"></a>További lépések
 
-Jogcímtípusok és események hozzáadása a felhasználói használatában az igényeihez. Ez egy lista lehetséges jogcímek segítségével további jogcímek feloldókat
+Jogcímtípusok és események hozzáadása a felhasználói interakciósorozat saját igényei szerint. Egy lehetséges jogcímek segítségével további jogcímek feloldók listája
 
 ### <a name="culture-specific-claims"></a>Kulturális környezet-specifikus jogcímek
 
@@ -254,12 +254,12 @@ Referenced using: {Culture:One of the property names below}
 
 | Jogcím | Meghatározás | Példa |
 | ----- | -----------| --------|
-| LanguageName | A két betű nyelv ISO-kódját | hu |
-| RegionName | A két betű, az az ISO-kód | USA |
-| RFC5646 | A RFC5646 nyelvkód | hu-HU |
-| LCID   | Az LCID nyelvkód | 1038 |
+| LanguageName | A kétbetűs ISO-kódja, a nyelv | hu |
+| RegionName | A kétbetűs ISO-kódja a régió | USA |
+| RFC5646 | A RFC5646 nyelvi kód | hu-HU |
+| LCID   | A nyelvi kód LCID | 1038 |
 
-### <a name="policy-specific-claims"></a>Házirend-specifikus jogcímek
+### <a name="policy-specific-claims"></a>A házirend-specifikus jogcímek
 
 ```xml
 Referenced using {Policy:One of the property names below}
@@ -268,9 +268,9 @@ Referenced using {Policy:One of the property names below}
 | Jogcím | Meghatározás | Példa |
 | ----- | -----------| --------|
 | TrustFrameworkTenantId | A trustframework bérlő azonosítója | – |
-| RelyingPartyTenantId | A függő entitás bérlői azonosító | – |
-| PolicyId | A házirend a házirend-azonosítója | – |
-| TenantObjectId | A házirend a bérlő objektum azonosítója | – |
+| RelyingPartyTenantId | A bérlő azonosítóját, a függő entitás | – |
+| PolicyId | A házirend azonosítója | – |
+| TenantObjectId | A szabályzat objektum bérlőazonosítója | – |
 
 ### <a name="openid-connect-specific-claims"></a>OpenID Connect-specifikus jogcímek
 
@@ -280,39 +280,39 @@ Referenced using {OIDC:One of the property names below}
 
 | Jogcím | OpenIdConnect paraméter | Példa |
 | ----- | ----------------------- | --------|
-| Kérése | parancssor | – |
+| parancssor | parancssor | – |
 | LoginHint |  login_hint | – |
 | DomainHint | domain_hint | – |
 |  MaxAge | max_age | – |
-| clientId | client_id | – |
+| ClientId | client_id | – |
 | Felhasználónév | login_hint | – |
 |  Erőforrás | erőforrás| – |
 | AuthenticationContextReferences | acr_values | – |
 
-### <a name="non-protocol-parameters-included-with-oidc--oauth2-requests"></a>A nem protokollparaméterekhez részét képező OIDC & OAuth2 kérelmek
+### <a name="non-protocol-parameters-included-with-oidc--oauth2-requests"></a>OIDC & OAuth2 kérelmek mellékelt nem-protokoll-paraméterek
 
 ```xml
 Referenced using { OAUTH-KV:Querystring parameter name }
 ```
 
-A paraméter neve OIDC vagy OAuth2 kérelmet részét képező egy jogcímet a felhasználó út rendelhetők. Ezután rögzítheti az esemény. Például az alkalmazás a kérelem állhatnak-e a lekérdezési karakterlánc paraméterként nevű `app_session`, `loyalty_number` vagy `any_string`.
+A felhasználói interakciósorozatban szereplő jogcím bármely paraméternév egy OIDC vagy OAuth2-kérés részét is le lehet képezni. Ezután rögzítheti azt az eseményt. Például az alkalmazásból érkező kérelem tartalmazhat egy lekérdezési karakterlánc paramétereként nevű `app_session`, `loyalty_number` vagy `any_string`.
 
-Íme egy minta kérelem az alkalmazásból:
+Íme egy példa az alkalmazásból érkező kérelmet:
 
 ```
 https://login.microsoftonline.com/sampletenant.onmicrosoft.com/oauth2/v2.0/authorize?p=B2C_1A_signup_signin&client_id=e1d2612f-c2bc-4599-8e7b-d874eaca1ae1&nonce=defaultNonce&redirect_uri=https%3A%2F%2Fjwt.ms&scope=openid&response_type=id_token&prompt=login&app_session=0a2b45c&loyalty_number=1234567
 
 ```
-A jogcímek hozzáadásával Ezután felvehet egy `Input Claim` elemben, amely az Application Insights esemény. Egy esemény tulajdonságokkal is bővül, keresztül {TULAJDONSÁGNÉV:} szintaxist, ahol a név tulajdonság lett hozzáadva az esemény. Példa:
+Ezután hozzáadhatja a jogcímeket hozzáadja egy `Input Claim` elem az Application Insights eseményre. Az esemény tulajdonságainak kerülnek {TULAJDONSÁGNÉV:}-szintaxis használatával where NAME tulajdonság ad hozzá az esemény. Példa:
 
 ```
 <InputClaim ClaimTypeReferenceId="app_session" PartnerClaimType="{property:app_session}" DefaultValue="{OAUTH-KV:app_session}" />
 <InputClaim ClaimTypeReferenceId="loyalty_number" PartnerClaimType="{property:loyalty_number}" DefaultValue="{OAUTH-KV:loyalty_number}" />
 ```
 
-### <a name="other-system-claims"></a>Egyéb rendszer jogcímek
+### <a name="other-system-claims"></a>Egyéb system jogcímek
 
-Néhány rendszer jogcímek hozzá kell adnia a jogcímek tulajdonságcsomagjait számára érhetők el a eseményként is rögzíti. A műszaki profil `SimpleUJContext` előtt meg kell hívni az orchestration lépés vagy egy érvényesítési műszaki profil érhetők el ezeket a jogcímeket.
+Néhány rendszer jogcímeket hozzá kell adnia a jogcímek csomagban érhetők el a eseményként is rögzíti. A technikai profil `SimpleUJContext` előtt meg kell hívni egy vezénylési lépés vagy egy érvényesítési technikai profil érhetők el ezeket a jogcímeket.
 
 ```xml
 <ClaimsProvider>

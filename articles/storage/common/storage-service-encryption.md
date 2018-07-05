@@ -1,102 +1,107 @@
 ---
-title: Az inaktív adatok Azure Storage szolgáltatás titkosítási |} Microsoft Docs
-description: Azure Blob storage szolgáltatás oldalán titkosítani, ha az adatok tárolása az Azure Storage szolgáltatás titkosítási szolgáltatás segítségével, és visszafejteni az adatok beolvasása közben.
+title: Az Azure Storage Service Encryption for Data at Rest |} A Microsoft Docs
+description: Azure Blob storage Szolgáltatásoldali titkosítását, ha az adatok tárolása Azure Storage Service Encryption szolgáltatással, és visszafejteni az adatok lekérésekor.
 services: storage
 author: lakasa
 manager: jeconnoc
 ms.service: storage
 ms.topic: article
-ms.date: 03/14/2018
+ms.date: 06/12/2018
 ms.author: lakasa
-ms.openlocfilehash: 5e4df176104111f44ca95df2b2d5d1c81ed3a4e3
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: d469dfb5092f1269a6600ee8ee2f81778fd83b96
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37449926"
 ---
 # <a name="azure-storage-service-encryption-for-data-at-rest"></a>Az Azure Storage szolgáltatás inaktívadat-titkosítása
 
-Inaktív adatok Azure Storage szolgáltatás titkosítási védheti az adatokat, hogy megfeleljen a szervezeti biztonsági és megfelelőségi jár kötelezettségekkel. Ez a szolgáltatás Azure Storage automatikusan titkosítja az adatokat előtt az Azure Storage megőrzése, és az adatok beolvasása előtt visszafejti. A titkosítás és a többi, visszafejtéshez és a Storage szolgáltatás titkosítási kulcskezelés titkosítását kezelésének felhasználó számára nem látható. Minden Azure tárhelyen adattitkosítás keresztül 256 bites [AES titkosítási](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard), a legerősebb blokk egyik Rejtjelek érhető el.
+Inaktív adatok az Azure Storage Service Encryption segítségével a szervezeti biztonsági és megfelelőségi követelmények kielégítése érdekében az adatok védelme. Ezzel a funkcióval az Azure Storage automatikusan titkosítja az adatokat előtt átlátni, hogy az Azure Storage, és mindig visszafejti az adatokat lekérés előtt. A titkosítás és a rest, visszafejtési és kulcskezelési a Storage Service Encryption titkosítás kezelése a felhasználók számára átlátható. Azure Storage tárterületre írt összes adat titkosítva van segítségével 256 bites [AES-titkosítás](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard), egyik legerősebb Rejtjelek érhető el.
 
-Storage szolgáltatás titkosítási engedélyezve van az összes új és meglévő tárfiók, és nem tiltható le. Az adatok védett alapértelmezés szerint, mert nem kell módosítani a kód vagy a Storage szolgáltatás titkosítási előnyeit alkalmazások.
+A Storage Service Encryption engedélyezve van az összes meglévő és új storage-fiók, és nem tiltható le. Alapértelmezés szerint az adatok biztonságos, mert nem kell módosítani a kód vagy a Storage Service Encryption szolgáltatással is.
 
-A szolgáltatás automatikusan titkosítja az adatokat:
+A funkció automatikusan titkosítja az adatokat:
 
-- Mindkét teljesítmény rétegek (Standard és prémium).
-- Két üzembe helyezési modell (Azure Resource Manager és klasszikus).
-- Az összes az Azure Storage-szolgáltatások (a Blob storage, Queue storage, a Table storage és Azure-fájlok). 
+- Mindkét teljesítményszint (Standard és prémium).
+- Mindkét üzemi modellben (Azure Resource Manager és Klasszikus modell).
+- Az összes az Azure Storage-szolgáltatások (a Blob storage, Queue storage, Table storage és az Azure Files). 
 
-Storage szolgáltatás titkosítási Azure tárolási teljesítménye nincs hatással.
+A Storage Service Encryption nem befolyásolja az Azure Storage teljesítményét.
 
-A Storage szolgáltatás titkosítási is használhatja a Microsoft által felügyelt titkosítási kulcsokat, vagy használhatja a saját titkosítási kulccsal. A saját kulcsok használatával kapcsolatos további információkért lásd: [Storage szolgáltatás titkosítási kulcsokkal ügyfél által felügyelt Azure Key Vault a](storage-service-encryption-customer-managed-keys.md).
+A Storage Service Encryptionnel is használhatja a Microsoft által felügyelt titkosítási kulcsokat, vagy használhatja a saját titkosítási kulcsokat. A saját kulcsok használatával kapcsolatos további információkért lásd: [ügyfél által kezelt kulcsok használata az Azure Key Vaultban a Storage Service Encryption](storage-service-encryption-customer-managed-keys.md).
 
-## <a name="view-encryption-settings-in-the-azure-portal"></a>Titkosítási beállítások megjelenítése az Azure-portálon
+## <a name="view-encryption-settings-in-the-azure-portal"></a>Nézet titkosítási beállítások az Azure Portalon
 
-A Storage szolgáltatás titkosítási beállítások megtekintéséhez jelentkezzen be a [Azure-portálon](https://portal.azure.com) , és válasszon egy tárfiókot. Az a **beállítások** ablaktáblán válassza előbb a **titkosítási** beállítást.
+A Storage Service Encryption beállításainak megtekintéséhez jelentkezzen be a [az Azure portal](https://portal.azure.com) és a egy tárfiók kiválasztását. Az a **beállítások** panelen válassza a **titkosítási** beállítás.
 
-![A titkosítási beállításokkal portál képernyőfelvétel](./media/storage-service-encryption/image1.png)
+![Portál képernyőképe a titkosítási beállítás](./media/storage-service-encryption/image1.png)
 
-## <a name="faq-for-storage-service-encryption"></a>A Storage szolgáltatás titkosítási – gyakori kérdések
+## <a name="faq-for-storage-service-encryption"></a>A Storage Service Encryption szolgáltatással kapcsolatos gyakori kérdések
 
-**K: van egy hagyományos tárolási fiókot. Engedélyezhető a Storage szolgáltatás titkosítási?**
+**K: rendelkezem egy klasszikus tárfiókot. Rá lehet engedélyezni a Storage Service Encryption?**
 
-Az összes storage-fiók alapértelmezés szerint engedélyezve van a válasz: Storage szolgáltatás titkosítási (klasszikus és Resource Manager).
+V: a Storage Service Encryption engedélyezve van az összes storage-fiókok (klasszikus és Resource Manager).
 
-**K: hogyan is titkosítani a klasszikus tárfiókban lévő adatokat?**
+**K: hogyan használatával titkosítsa a klasszikus tárfiókot az adatokat?**
 
-A: titkosítással alapértelmezés szerint engedélyezve van az Azure Storage automatikusan titkosítja az új adatokat. 
+V: a titkosítás alapértelmezés szerint engedélyezve van az Azure Storage automatikusan titkosítja az új adatokat. 
 
-**K: van egy erőforrás-kezelő tárfiókot. Engedélyezhető a Storage szolgáltatás titkosítási?**
+**K: rendelkezem egy Resource Manager-tárfiókot. Rá lehet engedélyezni a Storage Service Encryption?**
 
-Válasz: az összes meglévő Resource Manager storage-fiók alapértelmezés szerint engedélyezve van a storage szolgáltatás titkosítási. Ez a Blob-tároló, a Table storage, Queue storage és Azure-fájlok esetén támogatott. 
+V: storage Service Encryption szolgáltatást minden meglévő Resource Manager-tárfiókok alapértelmezés szerint engedélyezve van. A Blob storage, Table storage, Queue storage és az Azure Files támogatják. 
 
-**K: hogyan titkosítják egy erőforrás-kezelő tárfiókban lévő adatokat?**
+**K: hogyan titkosítják az adatokat egy Resource Manager-storage-fiókban?**
 
-Az összes storage-fiókok – klasszikus alapértelmezés szerint engedélyezve van a válasz: Storage szolgáltatás titkosítási és erőforrás-kezelő, a storage-fiók létrehozása előtt engedélyezték a titkosítást a meglévő fájlok lesznek visszamenőleges titkosítási háttérfolyamatként beolvasása titkosítja.
+V: a Storage Service Encryption engedélyezve van az összes storage-fiókok – klasszikus és Resource Manager, a storage-fiók létrehozása előtt engedélyezték a titkosítást a meglévő fájljai fog visszamenőlegesen beolvasása egy titkosítási háttérfolyamat titkosítja.
 
-**K: létrehozhatók storage-fiókok a Storage szolgáltatás titkosítási engedélyezve van az Azure PowerShell és az Azure parancssori felület használatával?**
+**K: tárfiókokat is létre a Storage Service Encryptionnel engedélyezve van az Azure PowerShell és az Azure CLI használatával?**
 
-V: Storage szolgáltatás titkosítási alapértelmezés szerint engedélyezve van a tárfiók létrehozása idején (klasszikus és Resource Manager). Azure PowerShell és az Azure parancssori felület használatával ellenőrizheti a fiók tulajdonságait.
+V: a Storage Service Encryption alapértelmezés szerint engedélyezve van minden olyan storage-fiók létrehozása idején (klasszikus vagy Resource Manager). Azure PowerShell-lel és az Azure CLI használatával ellenőrizheti a fiók tulajdonságait.
 
-**K: hogyan sokkal költségeket a Azure Storage a Storage szolgáltatás titkosítási engedélyezésekor?**
+**K: hogyan sok egyéb mellett az Azure Storage szolgáltatás Ha engedélyezve van a Storage Service Encryption szolgáltatással?**
 
 V: nincs további költség nélkül.
 
 **K: használhatok saját titkosítási kulcsokat?**
 
-V: Igen, a saját titkosítási kulcsokat is használhatja. További információkért lásd: [Storage szolgáltatás titkosítási kulcsokkal ügyfél által felügyelt Azure Key Vault a](storage-service-encryption-customer-managed-keys.md).
+V: Igen, használhatja a saját titkosítási kulcsokat. További információkért lásd: [ügyfél által kezelt kulcsok használata az Azure Key Vaultban a Storage Service Encryption](storage-service-encryption-customer-managed-keys.md).
 
 **K: visszavonja a titkosítási kulcsokat a hozzáférést?**
 
-V: Igen, ha Ön [saját titkosítási kulcsok használata](storage-service-encryption-customer-managed-keys.md) az Azure Key Vault.
+V: Igen, ha Ön [saját titkosítási kulcsok használatához](storage-service-encryption-customer-managed-keys.md) az Azure Key Vaultban.
 
-**K: Storage szolgáltatás titkosítási alapértelmezés szerint engedélyezve van, a storage-fiók létrehozásakor?**
+**K: Storage Service Encryption alapértelmezés szerint engedélyezve van, egy storage-fiók létrehozásakor?**
 
-A: Igen Storage szolgáltatás titkosítási alapértelmezés szerint engedélyezve van az összes storage-fiókok és az összes Azure Storage szolgáltatás.
+V: Igen, a Storage Service Encryption engedélyezett összes storage-fiókok és az Azure Storage-szolgáltatásokhoz.
 
-**K: hogyan eltér a Azure Disk Encryption?**
+**K: Miben különbözik ez az Azure Disk Encryption?**
 
-V: azure Disk Encryption operációsrendszer- és adatlemezek az infrastruktúra-szolgáltatási virtuális gépek titkosítására szolgál. További információkért lásd: a [tárolási biztonsági útmutatója](../storage-security-guide.md).
+V: az azure Disk Encryption IaaS virtuális gépek az operációsrendszer- és adatlemezek titkosítására szolgál. További információkért lásd: a [Storage biztonsági útmutatóját](../storage-security-guide.md).
 
-**K: Azure Disk Encryption Mit tegyek, ha az adatok lemezeken engedélyezhető?**
+**K: Mi történik, ha engedélyezhető az Azure Disk Encryption a moje datové disky?**
 
-A: Ez zökkenőmentesen működnek. Mindkét módszer titkosítja az adatokat.
+V: Ez zökkenőmentesen működik. Mindkét módszer titkosítja az adatokat.
 
-**K: a tárfiók földrajzi redundantly replikálható be van állítva. A Storage szolgáltatás titkosítási saját redundáns példány is titkosítva lesznek?**
+**K: a tárfiók földrajzi redundantly replikálandó van beállítva. A Storage Service Encryptionnel saját redundáns példány is titkosítva lesznek?**
 
-A: a storage-fiók összes másolatát Igen, vannak titkosítva. Beállítások támogatottak--redundancia helyileg redundáns tárolás, a zónaredundáns tárolás, a georedundáns tárolást és az írásvédett georedundáns tárolás.
+V: Igen, a storage-fiók összes másolatát vannak titkosítva. Beállítások támogatottak – redundancia helyileg redundáns tárolás, a zónaredundáns tárolás, a georedundáns tárolás és az írásvédett georedundáns tárolás.
 
 **K: titkosítási is letiltja a storage-fiókom?**
 
-Válasz: alapértelmezés szerint engedélyezve van a titkosítás, és a tiltsa le a titkosítást a tárfiók nem rendelkeznek. 
+V: titkosítás alapértelmezés szerint engedélyezve van, és nem rendelkeznek a tárfiók titkosításának letiltása. 
 
-**K: Storage szolgáltatás titkosítási engedélyezett csak a meghatározott régióiba?**
+**K: a Storage Service Encryption megengedett csak bizonyos régiókban?**
 
-V: storage szolgáltatás titkosítási szolgáltatások minden területen érhető el. 
+V: a storage szolgáltatás titkosításának szolgáltatásokhoz minden régióban érhető el.
 
-**K: hogyan do I kapcsolatfelvételre Ha nem sikerül, vagy visszajelzést szeretne biztosítani?**
+**K: a Storage Service Encryption FIPS 140-2 szabványnak megfelelő?**
 
-V: kapcsolattartási [ ssediscussions@microsoft.com ](mailto:ssediscussions@microsoft.com) az esetleges problémák vagy a Storage szolgáltatás titkosítási kapcsolódik.
+V: Igen, a Storage Service Encryption a FIPS 140-2 szabványnak megfelelő.
+
+**K: hogyan vehetem fel a kapcsolatot valaki Ha I problémába ütközik, vagy visszajelzést szeretne biztosítani?**
+
+V: kapcsolattartási [ ssediscussions@microsoft.com ](mailto:ssediscussions@microsoft.com) bármilyen problémák és a Storage Service Encryption szolgáltatással kapcsolatos visszajelzéseket.
 
 ## <a name="next-steps"></a>További lépések
-Az Azure Storage előírja egy átfogó biztonsági képességeket, hogy együtt súgó fejlesztők build biztonságos alkalmazások. További információkért lásd: a [tárolási biztonsági útmutatója](../storage-security-guide.md).
+Az Azure Storage kínál átfogó készlete biztonsági képességeket, hogy együtt a fejlesztők biztonságos alkalmazásokat hozhat létre. További információkért lásd: a [Storage biztonsági útmutatóját](../storage-security-guide.md).

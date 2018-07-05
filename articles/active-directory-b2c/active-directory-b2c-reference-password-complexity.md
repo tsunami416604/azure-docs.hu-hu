@@ -1,80 +1,80 @@
 ---
-title: Jelszó erőssége az Azure Active Directory B2C |} Microsoft Docs
-description: Hogyan konfigurálható az Azure Active Directory B2C fogyasztói által biztosított jelszavak vonatkozó összetettségi követelményeknek.
+title: Jelszó erőssége az Azure Active Directory B2C |} A Microsoft Docs
+description: Hogyan kell konfigurálni a bonyolultsági feltételeknek az Azure Active Directory B2C a fogyasztók által megadott jelszót.
 services: active-directory-b2c
 author: davidmu1
 manager: mtillman
 ms.service: active-directory
 ms.workload: identity
-ms.topic: article
+ms.topic: conceptual
 ms.date: 08/16/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 617385bec29e2c09ae18bde3a7878624c0b2461f
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 4b027f6cd57dfa48ba2e230371ffcad97b1f8ec4
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34709835"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37445109"
 ---
-# <a name="azure-ad-b2c-configure-complexity-requirements-for-passwords"></a>Az Azure AD B2C: Bonyolult jelszót konfigurálása
+# <a name="azure-ad-b2c-configure-complexity-requirements-for-passwords"></a>Az Azure AD B2C: Konfigurálja a bonyolultsági feltételeknek, a jelszót
 
 > [!NOTE]
-> **A funkció jelenleg nyilvános előzetes verziójához.**
+> **Ez a funkció jelenleg nyilvános előzetes verzióban.**
 
-Az Azure Active Directory B2C (az Azure AD B2C) támogatja a bonyolultsági feltételeknek, egy fiók létrehozásakor a felhasználó által megadott jelszavak módosítása.  Alapértelmezés szerint az Azure AD B2C használja `Strong` jelszavakat.  Az Azure AD B2C beállítások szabályozzák, hogy az ügyfelek használhatják a összetettségét is támogatja.
+Az Azure Active Directory B2C (Azure AD B2C-vel) támogatja a bonyolultsági feltételeknek-fiók létrehozása során a felhasználó által megadott jelszavak módosítása.  Alapértelmezés szerint az Azure AD B2C-t használja `Strong` jelszavakat.  Az Azure AD B2C-t is támogatja a konfigurációs beállítások vezérléséhez, amellyel az ügyfelek jelszavak bonyolultságát.
 
-## <a name="when-password-rules-are-enforced"></a>Ha a jelszó-szabályok érvényesek
+## <a name="when-password-rules-are-enforced"></a>Amikor jelszó szabályok életbe lépnek
 
-Regisztráció során vagy a jelszó alaphelyzetbe állítása, amelyet a végfelhasználók, amely megfelel a bonyolultsági szabályokat jelszót kell megadnia.  Jelszó-bonyolultsági szabályokat száma szabályzat lépnek érvénybe.  Lehetséges, hogy egy négyjegyű PIN-kódot előfizetési kicsit során egy másik házirend nyolc karakterlánc szükséges regisztráció során több szabályzatot is.  Például használhatja egy házirend különböző jelszó erősségét a felnőttek mint számára készült.
+A regisztrációhoz, vagy a jelszó-visszaállítás, a végfelhasználó, amely megfelel a szabályoknak jelszót kell megadnia.  Jelszó-bonyolultsági szabályokat szabályzatonként érvényben vannak.  A regisztráció ideje alatt egy másik szabályzat nyolc karakterből álló karakterláncnak szükséges a regisztrációhoz négyjegyű PIN-kódot egy szabályzat hozzá van lehetőség.  Például használhat egy szabályzatot a különböző jelszavak összetettségére felnőttek, mint a gyermekek számára.
 
-Jelszó erőssége soha nem kényszerített bejelentkezés során.  Rendszer soha nem kéri a felhasználóktól bejelentkezés során a jelszó módosítására, mert nem felel meg az aktuális bonyolultsági követelményeknek.
+Jelszó bonyolultsága bejelentkezései soha nem lép érvénybe.  Felhasználók bejelentkezései soha nem kéri a jelszó módosítására, mert nem felel meg az aktuális bonyolultsági követelményeknek.
 
-Íme szabályzattípusokat, ahol a jelszó erősségét konfigurálható:
+Íme a típusú szabályzatok, ahol konfigurálható a jelszó erőssége:
 
-* Regisztráció vagy bejelentkezés házirend
+* Regisztrálási vagy bejelentkezési szabályzat
 * Jelszó-visszaállítási házirend
-* Egyéni házirend ([állítsa be a jelszó erősségét egyéni házirendek](active-directory-b2c-reference-password-complexity-custom.md))
+* Egyéni szabályzat ([jelszóösszetettség konfigurálása egyéni házirendek](active-directory-b2c-reference-password-complexity-custom.md))
 
-## <a name="how-to-configure-password-complexity"></a>Jelszó erőssége konfigurálása
+## <a name="how-to-configure-password-complexity"></a>Jelszó bonyolultsága konfigurálása
 
-1. Az alábbi lépéseket követve [navigáljon az Azure AD B2C beállítások](active-directory-b2c-app-registration.md#navigate-to-b2c-settings).
-1. Nyissa meg **regisztráció vagy bejelentkezés házirendek**.
-1. Jelöljön ki egy házirendet, és kattintson a **szerkesztése**.
-1. Nyissa meg **jelszó erőssége**.
-1. A jelszó erősségét a házirend módosítása **egyszerű**, **erős**, vagy **egyéni**.
+1. Az alábbi lépéseket követve [keresse meg az Azure AD B2C-beállítások](active-directory-b2c-app-registration.md#navigate-to-b2c-settings).
+1. Nyissa meg **regisztrálási vagy bejelentkezési szabályzatok**.
+1. Válasszon ki egy szabályzatot, és kattintson a **szerkesztése**.
+1. Nyissa meg **jelszóösszetettség**.
+1. Módosítsa ezt a házirend számára, a jelszó erőssége **egyszerű**, **erős**, vagy **egyéni**.
 
-### <a name="comparison-chart"></a>Összehasonlítási táblázat
+### <a name="comparison-chart"></a>Összehasonlítási táblázata
 
 | Összetettség | Leírás |
 | --- | --- |
-| Egyszerű | Legalább 8 – 64 karakter hosszú jelszót. |
-| Erős | Legalább 8 – 64 karakter hosszú jelszót. Igényel 3 kívüli 4, kisbetű, nagybetű, számok és szimbólumok. |
-| Egyéni | Ez a beállítás segítségével a jelszó-bonyolultsági szabályokat a legtöbb szabályozhatja.  Lehetővé teszi egy egyéni hosszának konfigurálása.  Azt is lehetővé teszi, hogy elfogadása csak szám jelszavak (PIN-ek). |
+| Egyszerű | Ez a jelszó legalább 8 és 64 karakter hosszú lehet. |
+| Erős | Ez a jelszó legalább 8 és 64 karakter hosszú lehet. 3 / 4 kisbetűk, nagybetűk, számok és szimbólumok van szükség. |
+| Egyéni | Ezt a beállítást a jelszó-bonyolultsági szabályokat a legtöbb felett biztosít.  Ez lehetővé teszi, hogy egy egyéni hosszának konfigurálása.  Lehetővé teszi elfogadásával csak szám jelszavak (PIN). |
 
-## <a name="options-available-under-custom"></a>Rendelkezésre álló lehetőségek egyéni alatt
+## <a name="options-available-under-custom"></a>Elérhető lehetőségek mellett egyéni
 
 ### <a name="character-set"></a>Karakterkészlet
 
-Lehetővé teszi, hogy el kell fogadnia a számjegyek csak (PIN-ek) vagy a teljes karakterkészlet.
+Lehetővé teszi, hogy fogadja el a számjegyek csak (PIN) vagy a teljes készletet.
 
-* **Csak számokat** lehetővé teszi, hogy a számjegyek csak (0-9) során, hogy jelszót írna be.
-* **Minden** lehetővé teszi, hogy bármely karakter, számot vagy szimbólumot.
+* **Csak számok** lehetővé teszi, hogy a számjegyek csak (0 – 9) során, hogy jelszót írna be.
+* **Az összes** lehetővé teszi, hogy bármely betűvel, számmal vagy szimbólumot.
 
 ### <a name="length"></a>Hossz
 
-Lehetővé teszi, hogy a hosszúsági követelményeknek, a jelszó vezérlését.
+Lehetővé teszi, hogy szabályozza a hosszúsági követelményeknek, a jelszó.
 
 * **Minimális hossz** legalább 4 kell lennie.
-* **Maximális hossz** nagyobbnak vagy minimális hosszának egyenlőnek kell lennie, és legfeljebb 64 karakter lehet.
+* **Maximális hossz** nagyobb vagy azzal egyenlő minimális hosszának kell lennie, és legfeljebb 64 karakter lehet.
 
-### <a name="character-classes"></a>Négy karaktertípusból
+### <a name="character-classes"></a>Karakterosztályok
 
-Lehetővé teszi, hogy a különböző karaktertípusokat a jelszót használt vezérlését.
+Segítségével szabályozhatja a különböző karakterkészletnek a jelszót használja.
 
-* **2. 4: kisbetűt, nagybetűt, számot (0-9), a szimbólum** biztosítja a jelszó legalább két karakter típusokat tartalmazza. Például egy számot és egy kisbetűt.
-* **3, 4: kisbetűt, nagybetűt, számot (0-9), a szimbólum** biztosítja a jelszó legalább két karakter típusokat tartalmazza. Például: egy szám, egy kisbetűt, és egy nagybetűt.
-* **4. 4: kisbetűt, nagybetűt, számot (0-9), a szimbólum** biztosítja a jelszó tartalmazza az összes a karaktertípusokat.
+* **2 / 4: kisbetűt, nagybetűt, számot (0 – 9), a szimbólum** biztosítja, hogy a jelszó legalább két karakter típusú tartalmaz. Például egy számot és egy kisbetűt.
+* **3 / 4: kisbetűt, nagybetűt, számot (0 – 9), a szimbólum** biztosítja, hogy a jelszó legalább két karakter típusú tartalmaz. Például több, egy kisbetűt és a egy nagybetűs karaktert.
+* **4-4: kisbetűt, nagybetűt, számot (0 – 9), a szimbólum** biztosítja, hogy a jelszó tartalmazza az összes karaktertípusokat.
 
     > [!NOTE]
-    > Igénylő **4 4** végfelhasználói eljárás megzavarását eredményezhet. Néhány a tanulmányok kimutatták, hogy ez a követelmény nem növelhető jelszó entrópiát. Lásd: [NIST jelszavakra vonatkozó irányelvek](https://pages.nist.gov/800-63-3/sp800-63b.html#appA)
+    > Igénylő **4 4** végfelhasználói as gazdasági válság után eredményezhet. Néhány tanulmányok kimutatták, hogy ez a követelmény nem növelhető az jelszó vysokou. Lásd: [NIST jelszavakra vonatkozó irányelvek](https://pages.nist.gov/800-63-3/sp800-63b.html#appA)

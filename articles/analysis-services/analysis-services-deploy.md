@@ -5,15 +5,15 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 04/12/2018
+ms.date: 07/03/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 5cbad33bf98e4138b94916a8f87cc7e34901b3da
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 9a3b969af861d6fb750b8aad666f2e1dfb7c8a3d
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34595658"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37447285"
 ---
 # <a name="deploy-a-model-from-ssdt"></a>Modell üzembe helyezése SSDT-ről
 Miután létrehozott egy kiszolgálót az Azure-előfizetésében, készen áll a táblázatos modelladatbázis üzembe helyezésére. Az SQL Server Data Tools (SSDT) segítségével létrehozhatja és üzembe helyezheti a táblázatosmodell-projektet, amelyen dolgozik. 
@@ -30,7 +30,7 @@ A kezdéshez a következők szükségesek:
 > 
 > 
 
-## <a name="get-the-server-name"></a>A kiszolgáló nevét
+## <a name="get-the-server-name"></a>A kiszolgáló nevének lekérése
 
 Másolja a kiszolgáló nevét az **Azure Portal** > kiszolgáló > **Áttekintés** > **Kiszolgálónév** részéből.
    

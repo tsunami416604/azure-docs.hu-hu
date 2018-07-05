@@ -1,6 +1,6 @@
 ---
-title: API verziója profilokkal a Python Azure verem |} Microsoft Docs
-description: Ismerje meg az API verzió profilokkal a Python Azure-készletben.
+title: Az Azure Stackben Python API-verzióprofilok használata |} A Microsoft Docs
+description: Ismerje meg az Azure Stackben Python API-verzióprofilok használatával.
 services: azure-stack
 documentationcenter: ''
 author: mattbriggs
@@ -15,52 +15,52 @@ ms.author: mabrigg
 ms.reviewer: sijuman
 <!-- dev: viananth -->
 ms.openlocfilehash: d17ba9ed4548a986d6846d934aee197609ec80ca
-ms.sourcegitcommit: 6cf20e87414dedd0d4f0ae644696151e728633b6
+ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/06/2018
+ms.lasthandoff: 07/03/2018
 ms.locfileid: "34806836"
 ---
-# <a name="use-api-version-profiles-with-python-in-azure-stack"></a>Python Azure verem API-verzió profilok használata
+# <a name="use-api-version-profiles-with-python-in-azure-stack"></a>API-verzióprofilok használata az Azure Stackben Pythonnal
 
-*A következőkre vonatkozik: Azure verem integrált rendszerek és az Azure verem szoftverfejlesztői készlet*
+*A következőkre vonatkozik: Azure Stackkel integrált rendszerek és az Azure Stack fejlesztői készlete*
 
-## <a name="python-and-api-version-profiles"></a>Python és API-verzió profilok
+## <a name="python-and-api-version-profiles"></a>Python- és API-verzióprofilok
 
-A Python SDK API verziója profilok, amelyekre a felhő különböző platformokon, például Azure verem és a globális Azure támogatja. A hibrid felhő megoldások létrehozása API-profilok is használhatja. A Python SDK az alábbi API profilokat támogatja:
+A Python SDK API-verzióprofilok célozhat meg például az Azure Stack és a globális Azure más felhőalapú platformot támogatja. Használhat API-t egy hibrid felhőalapú megoldások létrehozásához. A Python SDK támogatja a következő API-profilokat:
 
-1. **legújabb**  
-    A profil az Azure platform minden szolgáltatók számára a legújabb API verzióját célozza.
-2.  **2017-03-09-profil**  
-    **2017-03-09-profil**  
-    A profil az erőforrás-szolgáltatók támogatott Azure verem API verzióit célozza.
+1. **legfrissebb**  
+    A profil a legújabb API-verziók célozza meg benne az Azure platform minden szolgáltató számára.
+2.  **2017-03-09-profile**  
+    **2017-03-09-profile**  
+    A profil célozza meg benne az Azure Stack által támogatott erőforrás-szolgáltatók API verzióját.
 
-    API-profilok és az Azure-verem kapcsolatos további információkért lásd: [kezelése API verziója profilok Azure verem](azure-stack-version-profiles.md).
+    API-profilok és az Azure Stack kapcsolatos további információkért lásd: [kezelése API-verzióprofilok az Azure Stackben](azure-stack-version-profiles.md).
 
 ## <a name="install-azure-python-sdk"></a>Az Azure Python SDK telepítése
 
-1.  Telepítse a Git [a hivatalos webhely](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git).
-2.  További tájékoztatást a Python SDK telepítéséhez [Azure Python-fejlesztőknek](https://docs.microsoft.com/python/azure/python-sdk-azure-install?view=azure-python).
-3.  Nem érhető el, ha előfizetés létrehozása és mentése a későbbi előfizetés-azonosító. Előfizetés létrehozása a útmutatásért lásd: [ajánlatok-előfizetések létrehozása az Azure-készletben](../azure-stack-subscribe-plan-provision-vm.md). 
-4.  Hozzon létre egy egyszerű szolgáltatást, és mentse az Azonosítót és titkos kulcs. Hozzon létre egy egyszerű Azure verem utasításokért lásd: [alkalmazások elérést biztosíthat az Azure-verem](../azure-stack-create-service-principals.md). 
-5.  Győződjön meg arról az egyszerű szolgáltatásnév rendelkezik közreműködői és a tulajdonosi szerepkört az előfizetés. A szerepkör hozzárendelése egyszerű útmutatásért lásd: [alkalmazások elérést biztosíthat az Azure-verem](../azure-stack-create-service-principals.md).
+1.  A Git telepítése [a hivatalos hely](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git).
+2.  Telepítse a Python SDK-t útmutatásért lásd: [Python-fejlesztőknek az Azure](https://docs.microsoft.com/python/azure/python-sdk-azure-install?view=azure-python).
+3.  Ha nem érhető el, hozzon létre egy előfizetést és az előfizetés-azonosító későbbi felhasználás céljából. Hozzon létre egy előfizetést az utasításokért lásd: [ajánlatok, előfizetések létrehozása az Azure Stackben](../azure-stack-subscribe-plan-provision-vm.md). 
+4.  Hozzon létre egy egyszerű szolgáltatást, és mentse a azonosítója és kulcsa. Az Azure stack-beli szolgáltatásnév létrehozása az utasításokért lásd: [alkalmazások elérést biztosíthat az Azure Stack](../azure-stack-create-service-principals.md). 
+5.  Ellenőrizze, hogy az egyszerű szolgáltatás rendelkezik közreműködői vagy tulajdonosi szerepkört az előfizetésben. Szerepkör hozzárendelése egyszerű szolgáltatást, lásd: [alkalmazások elérést biztosíthat az Azure Stack](../azure-stack-create-service-principals.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Ahhoz, hogy az Azure-verem Python Azure SDK-t használja, adja meg a következő értékeket, és utána állítsa be a környezeti változók értékeit. Az utasításokat lásd a táblázat az operációs rendszerhez a környezeti változók beállítása után. 
+Annak érdekében, hogy a Python az Azure SDK használata az Azure Stack használatával, adja meg a következő értékeket, és adja meg az értékeket a környezeti változókat. Az utasításokat lásd a táblázat az operációs rendszerének a a környezeti változók beállítása után. 
 
 | Érték | Környezeti változók | Leírás |
 |---------------------------|-----------------------|-------------------------------------------------------------------------------------------------------------------------|
-| Bérlőazonosító | AZURE_TENANT_ID | Az Azure-verem értékének [bérlői azonosító](../azure-stack-identity-overview.md). |
-| Ügyfél-azonosító | AZURE_CLIENT_ID | A szolgáltatás egyszerű Alkalmazásazonosító mentett egyszerű szolgáltatás létrehozása az előző szakasz ebben a dokumentumban. |
-| Előfizetés azonosítója | AZURE_SUBSCRIPTION_ID | A [előfizetés-azonosító](../azure-stack-plan-offer-quota-overview.md#subscriptions) miként férhetnek hozzá az ajánlatok van Azure-készletben. |
-| Titkos ügyfélkulcs | AZURE_CLIENT_SECRET | A szolgáltatás egyszerű alkalmazás titkos kulcs mentésekor egyszerű szolgáltatásnév jött létre. |
-| Erőforrás-kezelő végpont | ARM_ENDPOINT | Lásd: [az Azure verem resource manager-végpont](azure-stack-version-profiles-ruby.md#the-azure-stack-resource-manager-endpoint). |
+| Bérlőazonosító | AZURE_TENANT_ID | Az Azure Stack értékét [bérlőazonosító](../azure-stack-identity-overview.md). |
+| Ügyfél-azonosító | AZURE_CLIENT_ID | A szolgáltatás egyszerű alkalmazást azonosító mentése az előző szakaszban Ez a dokumentum az egyszerű szolgáltatás létrehozásakor. |
+| Előfizetés azonosítója | AZURE_SUBSCRIPTION_ID | A [előfizetés-azonosító](../azure-stack-plan-offer-quota-overview.md#subscriptions) van, hogy miként férhetnek hozzá az ajánlatok az Azure Stackben. |
+| Titkos ügyfélkulcs | AZURE_CLIENT_SECRET | A szolgáltatás egyszerű alkalmazás titkos kulcs mentése egyszerű szolgáltatás létrehozásakor. |
+| Resource Manager-végpont | ARM_ENDPOINT | Lásd: [az Azure Stack resource manager-végpont](azure-stack-version-profiles-ruby.md#the-azure-stack-resource-manager-endpoint). |
 
 
-## <a name="python-samples-for-azure-stack"></a>Azure verem Python-minták 
+## <a name="python-samples-for-azure-stack"></a>Python-minták az Azure Stackben 
 
-A következő kódminták segítségével közös felügyeleti feladatok végrehajtása a virtuális gépek az Azure-készletben.
+A következő kódminták segítségével gyakori felügyeleti feladatok végrehajtása a virtuális gépek az Azure stack.
 
 A Kódminták megjelenítése, hogy:
 
@@ -68,30 +68,30 @@ A Kódminták megjelenítése, hogy:
     - Linuxos virtuális gépek létrehozása
     - Windowsos virtuális gép létrehozása
 - A virtuális gép frissítése:
-    - Bontsa ki a meghajtót
-    - A virtuális gépek címke
+    - Bontsa ki a meghajtó
+    - Virtuális gép címkézése
     - Adatlemez csatolása
     - Adatlemezek leválasztása
-- A virtuális gép működtetéséhez:
+- Virtuális gép működtetéséhez:
     - A virtuális gép elindítása
-    - A virtuális gép leállítása
-    - A virtuális gép újraindításához
+    - Virtuális gép leállítása
+    - Indítsa újra a virtuális gép
 - Virtuális gépek listája
 - A virtuális gép törlése
 
-Tekintse át a kódot, ezek a műveletek végrehajtásához, tekintse meg a **run_example()** függvényt a Python-parancsfájl **Hybrid/unmanaged-disks/example.py** a GitHub-tárházban [ virtuális-gépek-python-kezelése](https://github.com/viananth/virtual-machines-python-manage/tree/8643ed4bec62aae6fdb81518f68d835452872f88).
+Tekintse át a kódot, ezek a műveletek végrehajtásához, tekintse át a **run_example()** függvény a Python-szkriptet a **Hybrid/unmanaged-disks/example.py** a GitHub-adattárat a [ virtuális gépek – python-kezelhető](https://github.com/viananth/virtual-machines-python-manage/tree/8643ed4bec62aae6fdb81518f68d835452872f88).
 
-Egyes műveletek egyértelműen feliratú Megjegyzés és a nyomtatási funkció.
-A példák nem feltétlenül a fenti listában szereplő sorrendben.
+Minden művelet egyértelműen célállapotba megjegyzést, és a egy nyomtatási funkció.
+A példák nem feltétlenül a a fenti listában megadott sorrendben.
 
 
 ## <a name="run-the-python-sample"></a>A Python-minta futtatása
 
-1.  Ha még nem telepítette, [Python telepítése](https://www.python.org/downloads/).
+1.  Ha még nem rendelkezik, [telepítik a Pythont](https://www.python.org/downloads/).
 
-    Ez a minta (és az SDK-val) található Python 2.7, 3.4, 3.5-ös és 3.6 kompatibilis.
+    Ez a minta (és az SDK-t) a rendszer kompatibilis a Python 2.7-es, 3.4-es, 3.5-ös és 3.6-os.
 
-2.  A Python fejlesztői általános javasoljuk, hogy a virtuális környezetet használni. 
+2.  A Python-fejlesztés általános javaslat, hogy egy virtuális környezethez. 
     További információkért lásd: https://docs.python.org/3/tutorial/venv.html
     
     Telepítse, és a virtuális környezet a Python 3 "venv" modul inicializálása (telepítenie kell a [virtualenv](https://pypi.python.org/pypi/virtualenv) Python 2.7):
@@ -104,22 +104,22 @@ A példák nem feltétlenül a fenti listában szereplő sorrendben.
     ./scripts/activate.bat   # Windows CMD only
     ````
 
-3.  Klónozza a tárházat.
+3.  A tárház klónozásához.
 
     ````bash
     git clone https://github.com/Azure-Samples/virtual-machines-python-manage.git
     ````
 
-4.  A pip használatával függőségek telepítése.
+4.  A pip használatával függőségek telepítéséhez.
 
     ````bash
     cd virtual-machines-python-manage\Hybrid
     pip install -r requirements.txt
     ````
 
-5.  Hozzon létre egy [egyszerű](https://docs.microsoft.com/azure/azure-stack/azure-stack-create-service-principals) Azure verem használható. Győződjön meg arról, hogy a szolgáltatás egyszerű [közreműködő vagy tulajdonosa szerepkör](https://docs.microsoft.com/azure/azure-stack/azure-stack-create-service-principals#assign-role-to-service-principal) előfizetéséhez.
+5.  Hozzon létre egy [szolgáltatásnév](https://docs.microsoft.com/azure/azure-stack/azure-stack-create-service-principals) működjön az Azure Stack használatával. Győződjön meg arról, hogy rendelkezik az egyszerű szolgáltatás [közreműködői vagy tulajdonosi szerepkör](https://docs.microsoft.com/azure/azure-stack/azure-stack-create-service-principals#assign-role-to-service-principal) az előfizetésén.
 
-6.  A következő változókat, és ezek a környezeti változók exportálása az aktuális rendszerhéjban. 
+6.  Állítsa be a következő változókat, és ezeket a környezeti változókat az aktuális parancshéjban exportálása. 
 
     ````bash
     export AZURE_TENANT_ID={your tenant id}

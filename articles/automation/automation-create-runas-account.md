@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 03/15/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 3f6f2768e13e85edb8a314359fef0b0312a8e84d
-ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
+ms.openlocfilehash: a29379492f4ffd662244c3e42de321f47be13d9f
+ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37344894"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37436974"
 ---
 # <a name="update-your-automation-account-authentication-with-run-as-accounts"></a>Automation-fiók hitelesítésének frissítése futtató fiókokkal 
 Az Azure Portalról vagy a PowerShell-lel frissítheti meglévő Automation-fiókját. Erre a következő esetekben lehet szükség:
@@ -248,6 +248,9 @@ Ez a PowerShell-szkript a következő konfigurációk támogatását tartalmazza
         Write-Host -ForegroundColor red       $UploadMessage
     }
     ```
+
+    > [!IMPORTANT]
+    > **Add-AzureRmAccount** alias már **Connect-AzureRMAccount**. Ha a Keresés a szalagtár elemmel, ha nem látja, akkor **Connect-AzureRMAccount**, használhat **Add-AzureRmAccount**, vagy frissítheti az a modulokat az Automation-fiókban.
 
 2. A számítógépén indítsa el a **Windows PowerShell** alkalmazást a **Kezdőlap** képernyőről emelt szintű felhasználói jogokkal.
 3. A rendszergazda jogú parancssori felületből lépjen abba a mappába, amely az 1. lépésben létrehozott szkriptet tartalmazza.  

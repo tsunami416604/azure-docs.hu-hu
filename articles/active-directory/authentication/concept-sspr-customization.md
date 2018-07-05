@@ -1,6 +1,6 @@
 ---
-title: Az önkiszolgáló jelszó-átállítási testreszabási - Azure Active Directoryban
-description: Az Azure AD az önkiszolgáló jelszó-testreszabási beállítások visszaállítása
+title: Az önkiszolgáló jelszó-visszaállítási testreszabása – Azure Active Directory
+description: Az Azure AD önkiszolgáló jelszó-testreszabási beállítások alaphelyzetbe állítása
 services: active-directory
 ms.service: active-directory
 ms.component: authentication
@@ -10,73 +10,73 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.openlocfilehash: ffd12d03dffb5deafc8605cc7352bd71d588d235
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
-ms.translationtype: HT
+ms.openlocfilehash: afcd39e6512ac7bcb46f56df157822efa463113e
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2018
-ms.locfileid: "33866736"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37449930"
 ---
-# <a name="customize-the-azure-ad-functionality-for-self-service-password-reset"></a>Az önkiszolgáló jelszóváltoztatás az Azure AD funkciók testre szabása
+# <a name="customize-the-azure-ad-functionality-for-self-service-password-reset"></a>Az Azure AD-funkciókról, önkiszolgáló jelszó-visszaállítás testreszabása
 
-Informatikai szakemberek számára, akik az önkiszolgáló jelszó-változtatási (SSPR) telepíteni kívánja az Azure Active directory (Azure AD) a felhasználói élmény a felhasználók igényeinek megfelelően testre szabhatja.
+Informatikai szakemberek számára, akik önkiszolgáló jelszó-visszaállítás (SSPR) telepíteni szeretné az Azure Active directory (Azure AD) a élmény a felhasználók igényeinek megfelelően testre szabhatja.
 
-## <a name="customize-the-contact-your-administrator-link"></a>"Forduljon a rendszergazdához" hivatkozásra testreszabása
+## <a name="customize-the-contact-your-administrator-link"></a>A "Forduljon a rendszergazdához" hivatkozást testreszabása
 
-Akkor is, ha az önkiszolgáló jelszó-Változtatási nincs engedélyezve, a felhasználók továbbra is fennáll "Forduljon a rendszergazdához" hivatkozásra kattintva a jelszó-visszaállítási portál. Ha a felhasználó megadja a hivatkozás akkor vagy:
-   * E-mailt küld a rendszergazdák, és megkéri, ha segítségre van szüksége a jelszó módosítása. 
-   * A felhasználóknak küld egy URL-címet, adja meg, ha segítségre van szüksége. 
+Akkor is, ha az SSPR nincs engedélyezve, a felhasználók továbbra is rendelkezik egy "Forduljon a rendszergazdához" hivatkozást a jelszó-visszaállítási portál. Ha egy felhasználó kijelöli ezt a hivatkozást, vagy:
+   * E-mailt küld a rendszergazdákkal, és megkéri, ha segítségre van szüksége a felhasználó jelszavának módosítása. 
+   * A felhasználók küld egy Ön által megadott segítségért URL-címet. 
 
-Azt javasoljuk, hogy ez a kapcsolat egy például a felhasználók által már használt támogatási kérdéseket tesz fel e-mail cím vagy webhely.
+Azt javasoljuk, hogy állítsa a kapcsolattartó valami például egy e-mail címre vagy webhelyre, hogy a felhasználók már használnak.
 
 ![Contact][Contact]
 
-Az ügyfél e-mailt küld a következő címzettek, az alábbi sorrendben:
+Az ügyfél e-mailt küld a következő címzetteknek, a következő sorrendben:
 
-1. Ha a **jelszókezelő** szerepkör hozzá van rendelve, ezt a szerepkört a rendszergazda értesítést kap.
-2. Ha nincs jelszókezelők jelszavát állíthatják rendelt, majd a rendszergazda a **felhasználó rendszergazda** szerepkör értesítést kap.
-3. Ha az előző szerepkörök egyike sem van hozzárendelve, akkor a **globális rendszergazdák** értesítés jelenik meg.
+1. Ha a **jelszókezelő** szerepkör hozzá van rendelve, ezzel a szerepkörrel rendelkező rendszergazdák értesítést kap.
+2. Ha nincs jelszókezelők hozzá van rendelve, majd a rendszergazdák a **felhasználói rendszergazdája** szerepkör értesítést kap.
+3. Ha az előző szerepkörök egyike sem hozzá van rendelve, akkor a **globális rendszergazdák** értesítést kap.
 
-Minden esetben értesítést kap egy legfeljebb 100 címzetteknek.
+Minden esetben értesítést kap egy legfeljebb 100 címzettek.
 
-A másik, rendszergazdai szerepkörök és rendeljen hozzájuk kapcsolatban további információért lásd: [rendszergazdai szerepkörök hozzárendelése az Azure Active Directory](../active-directory-assign-admin-roles-azure-portal.md).
+Tudjon meg többet a különböző rendszergazdai szerepkörökről és való hozzárendelésének módját, tekintse meg [rendszergazdai szerepkörök hozzárendelése az Azure Active Directory](../users-groups-roles/directory-assign-admin-roles.md).
 
 ### <a name="disable-contact-your-administrator-emails"></a>"Forduljon a rendszergazdához" e-mailek letiltása
 
-Ha a szervezet nem szeretné értesíteni a rendszergazdákat a jelszó alaphelyzetbe állítása a kérelmeket, engedélyezheti a következő konfigurációt:
+Ha a szervezet nem szeretné, értesítse a rendszergazdákat a jelszó-átállítási kérelmet, engedélyezheti a következő konfigurációt:
 
-* Az önkiszolgáló jelszó-változtatási minden végfelhasználói engedélyezése. Ez a beállítás akkor a **jelszó-átállítási** > **tulajdonságok**.
+* Engedélyezze az önkiszolgáló jelszó-visszaállítás összes végfelhasználók számára. Ez a beállítás akkor alatt **új jelszó kérésére vonatkozó** > **tulajdonságok**.
   
-  Ha szeretné a felhasználók visszaállíthassák a saját jelszavukat, hatókörét megadhatja a üres csoport elérésére. *Ez a beállítás nem ajánlott.*
-* Testre szabhatja a segélyszolgálat hivatkozás egy webes URL-címe vagy mailto: címet, amely a felhasználók segítségével kérhet segítséget. Ez a beállítás akkor a **jelszó-átállítási** > **testreszabási** > **egyéni segélyszolgálat e-mail vagy URL-címe**.
+  Ha nem szeretné, hogy a felhasználók visszaállíthassák a saját jelszavukat, gazdagépcsoportjaira üres csoport elérését. *Ezt a beállítást nem ajánlott.*
+* Egy webes URL-címe vagy mailto az ügyfélszolgálati hivatkozás testreszabása: címet, amelyen a felhasználók juthat. Ez a beállítás akkor alatt **új jelszó kérésére vonatkozó** > **testreszabási** > **egyéni ügyfélszolgálati e-mail cím vagy URL-cím**.
 
-## <a name="customize-the-ad-fs-sign-in-page-for-sspr"></a>Az AD FS bejelentkezési oldalára sspr testreszabása
+## <a name="customize-the-ad-fs-sign-in-page-for-sspr"></a>Az AD FS bejelentkezési oldal testreszabása az SSPR
 
-Active Directory összevonási szolgáltatások (AD FS) a rendszergazdák használatával adhat hozzá egy hivatkozást a bejelentkezési oldalon található útmutatás a [bejelentkezésilap-leírás hozzáadása](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/add-sign-in-page-description) cikk.
+Az Active Directory összevonási szolgáltatások (AD FS) a rendszergazdák használatával adhat hozzá egy hivatkozást bejelentkezési oldalra az található útmutatót az [Hozzáadás bejelentkezésilap-leírást](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/add-sign-in-page-description) cikk.
 
-Az AD FS bejelentkezési oldalára hivatkozás hozzáadásához használja a következő parancsot az AD FS-kiszolgálón. Felhasználók is ezen a lapon adja meg az önkiszolgáló jelszó-Változtatási munkafolyamat.
+Az AD FS bejelentkezési oldalára hivatkozás hozzáadásához használja a következő parancsot az AD FS-kiszolgálóra. Felhasználók is ezen a lapon adja meg az SSPR-munkafolyamat.
 
 ``` Set-ADFSGlobalWebContent -SigninPageDescriptionText "<p><A href=’https://passwordreset.microsoftonline.com’>Can’t access your account?</A></p>" ```
 
-## <a name="customize-the-sign-in-page-and-access-panel-look-and-feel"></a>Testre szabhatja a bejelentkezési oldalon és a hozzáférési panel megjelenését és működését
+## <a name="customize-the-sign-in-page-and-access-panel-look-and-feel"></a>Bejelentkezési oldal és a hozzáférési panel megjelenésének és testreszabása
 
-A bejelentkezési oldal testreszabható. Hozzáadhat egy embléma akkor jelenik meg, amely megfelel a vállalati védjegyadatoknak a lemezképpel együtt.
+A bejelentkezési oldal testreszabható. Hozzáadhat egy embléma jelenik meg, valamint a lemezképet, amely megfelel saját céges védjegy megadásával.
 
-A képek, úgy dönt, a következő körülmények között láthatók:
+A grafikus úgy dönt, a következő körülmények között jelennek meg:
 
-* Miután a felhasználó adja meg a felhasználónevét
-* Ha a felhasználó fér hozzá az egyéni URL-cím:
-    * Úgy, hogy a *whr* paramétert a jelszó alaphelyzetbe állítása lap, például "https://login.microsoftonline.com/?whr=contoso.com"
-    * Úgy, hogy a *felhasználónév* paramétert a jelszó alaphelyzetbe állítása lap, például "https://login.microsoftonline.com/?username=admin@contoso.com"
+* Miután a felhasználó beírja a felhasználóneve
+* Ha a felhasználó hozzáfér a testre szabott URL-címe:
+    * Tartalmában való böngészéshez illessze a *whr* paramétert a jelszó-visszaállítási oldalra, például "https://login.microsoftonline.com/?whr=contoso.com"
+    * Tartalmában való böngészéshez illessze a *felhasználónév* paramétert a jelszó-visszaállítási oldalra, például "https://login.microsoftonline.com/?username=admin@contoso.com"
 
-Vállalati arculat megjelenítése a cikkben konfigurálásával kapcsolatos részletes keresését [vállalati arculat megjelenítése a bejelentkezési oldalra, hogy az Azure AD](../customize-branding.md).
+A konfigurálása a vállalati arculat megjelenítése a cikkben talál [vállalati arculat megjelenítése a bejelentkezési oldal az Azure ad-ben](../fundamentals/customize-branding.md).
 
 ### <a name="directory-name"></a>Címtár neve
 
-Módosíthatja a name attribútuma alatt **Azure Active Directory** > **tulajdonságok**. Egy rövid szervezet neve, amely látható a portálon, és az automatizált kommunikáció jelenítheti meg. Ez a beállítás esetén a legjobban az automatikus e-mailek, az alábbi formában látható:
+A könyvtár neve attribútum alapján módosíthatja **Azure Active Directory** > **tulajdonságok**. Egy rövid szervezetnevet, amely látható a portálon, és az automatikus kommunikáció jelenítheti meg. Ez a lehetőség akkor a legjobban az automatikus e-mailek, a megjelenő űrlapokat látható:
 
-* Az e-mailben, például "Microsoft nevében CONTOSO bemutató" rövid neve
-* Az e-mailben, például "CONTOSO bemutató fiók e-mail ellenőrző kód" tárgyát
+* Az e-mailben, például "a Microsoft nevében a CONTOSO bemutató" rövid neve
+* A Tárgy sorában az e-mailben, például "CONTOSO bemutató fiókjának e-mail ellenőrző kódja"
 
 ## <a name="next-steps"></a>További lépések
 
@@ -93,4 +93,4 @@ Módosíthatja a name attribútuma alatt **Azure Active Directory** > **tulajdon
 * [Azt hiszem, hogy valami nem működik. Hogyan háríthatom el az SSPR hibáit?](active-directory-passwords-troubleshoot.md)
 * [Olyan kérdésem van, amely máshol nem szerepelt](active-directory-passwords-faq.md)
 
-[Contact]: ./media/concept-sspr-customization/sspr-contact-admin.png "A rendszergazda kérjen segítséget a jelszó e-mail példa alaphelyzetbe állítása"
+[Contact]: ./media/concept-sspr-customization/sspr-contact-admin.png "Kérje a rendszergazda segítségét alaphelyzetbe a jelszót e-mail példa"
