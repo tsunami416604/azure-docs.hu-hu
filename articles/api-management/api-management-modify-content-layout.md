@@ -3,7 +3,7 @@ title: A fejlesztői portál oldaltartalmának módosítása az Azure API Manage
 description: Megtudhatja, hogyan szerkesztheti az oldaltartalmakat a fejlesztői portálon az Azure API Managementben.
 services: api-management
 documentationcenter: ''
-author: antonba
+author: vlvinogr
 manager: vlvinogr
 editor: ''
 ms.assetid: 186128fe-41c0-4efb-9efe-2478ad4d103f
@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
 ms.date: 02/09/2017
-ms.author: antonba
-ms.openlocfilehash: bcf48ab8dd3b57ace70fa713074b13a992940002
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.author: vlvinogr
+ms.openlocfilehash: 4a372b54ace87816b9e7cccbd38466331b5ebfc7
+ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2018
-ms.locfileid: "29377799"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37437596"
 ---
 # <a name="modify-the-content-and-layout-of-pages-on-the-developer-portal-in-azure-api-management"></a>Oldalak tartalmának és elrendezésének módosítása a fejlesztői portálon az Azure API Managementben
 A fejlesztői portál három alapvető módon szabható testre az Azure API Managementben:
@@ -34,7 +34,7 @@ A fejlesztői portál egy tartalomkezelő rendszeren alapul. Az egyes oldalak el
 
 ![A fejlesztői portál oldalszerkezete][api-management-customization-widget-structure]
 
-Az összes widget szerkeszthető. 
+Az összes widget szerkeszthető.
 * Az egyes oldalak fő tartalmai a „Tartalmak” widgetben találhatók. Egy oldal tartalmának szerkesztésekor ennek a widgetnek a tartalmát szerkeszti.
 * Az összes oldalelrendezési elem a többi widgetben található. A widgeteken végrehajtott módosítások az összes oldalra érvényesek. Ezeket „elrendezési widgeteknek” nevezzük.
 
@@ -42,12 +42,12 @@ A napi szintű oldalszerkesztés során általában csak a Tartalom widget szerk
 
 ## <a name="modify-layout-widget"></a>Elrendezési widget tartalmának módosítása
 
-A fejlesztői portál elérhető az Azure Portalról. 
+A fejlesztői portál elérhető az Azure Portalról.
 
 1. Kattintson a **Fejlesztői portál** elemre az API Management-példány eszköztárán.
-2. A widgetek tartalmának szerkesztéséhez kattintson a két ecsetet ábrázoló ikonra a bal oldalon található **Fejlesztői** portál menüben. 
+2. A widgetek tartalmának szerkesztéséhez kattintson a két ecsetet ábrázoló ikonra a bal oldalon található **Fejlesztői** portál menüben.
 3. A fejléc tartalmának módosításához görgessen a bal oldali lista **Fejléc** szakaszához.
-    
+
     A widgetek a mezőkön belülről szerkeszthetők.
 4. Ha készen áll a módosítások közzétételére, kattintson a lap alján található **Közzététel** gombra.
 

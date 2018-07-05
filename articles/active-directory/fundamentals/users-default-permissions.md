@@ -13,12 +13,12 @@ ms.topic: overview
 ms.date: 01/29/2018
 ms.author: lizross
 ms.reviewer: vincesm
-ms.openlocfilehash: 991feaa61a73d5ac96159fbd6a7dd1fdd420fd3c
-ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
+ms.openlocfilehash: e2571a6854d2c3de2425547b69c5435286182ef7
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36291412"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37448152"
 ---
 # <a name="default-user-permissions-in-azure-active-directory"></a>Alapértelmezett felhasználói engedélyek az Azure Active Directoryban
 
@@ -50,8 +50,8 @@ A tagfelhasználók alapértelmezett engedélyeinek korlátozására az alábbi 
 
 Engedély | Magyarázat beállítása
 ---------- | ------------
-Biztonsági csoportok létrehozásának képessége | Ha e beállítás értéke Nem, akkor a felhasználók nem hozhatnak létre biztonsági csoportokat. A globális rendszergazdák és a felhasználói fiókok rendszergazdái továbbra is létrehozhatnak biztonsági csoportokat. További tudnivalók: [Azure Active Directory-parancsmagok csoportbeállítások konfigurálásához](../active-directory-accessmanagement-groups-settings-cmdlets.md).
-Office 365-csoportok létrehozásának képessége | Ha e beállítás értéke Nem, akkor a felhasználók nem hozhatnak létre Office 365-csoportokat. Ha e beállítás értéke Néhány, akkor egyes kiválasztott felhasználók létrehozhatnak Office 365-csoportokat. A globális rendszergazdák és a felhasználói fiókok rendszergazdái továbbra is létrehozhatnak majd Office 365-csoportokat. További tudnivalók: [Azure Active Directory-parancsmagok csoportbeállítások konfigurálásához](../active-directory-accessmanagement-groups-settings-cmdlets.md).
+Biztonsági csoportok létrehozásának képessége | Ha e beállítás értéke Nem, akkor a felhasználók nem hozhatnak létre biztonsági csoportokat. A globális rendszergazdák és a felhasználói fiókok rendszergazdái továbbra is létrehozhatnak biztonsági csoportokat. További tudnivalók: [Azure Active Directory-parancsmagok csoportbeállítások konfigurálásához](../users-groups-roles/groups-settings-cmdlets.md).
+Office 365-csoportok létrehozásának képessége | Ha e beállítás értéke Nem, akkor a felhasználók nem hozhatnak létre Office 365-csoportokat. Ha e beállítás értéke Néhány, akkor egyes kiválasztott felhasználók létrehozhatnak Office 365-csoportokat. A globális rendszergazdák és a felhasználói fiókok rendszergazdái továbbra is létrehozhatnak majd Office 365-csoportokat. További tudnivalók: [Azure Active Directory-parancsmagok csoportbeállítások konfigurálásához](../users-groups-roles/groups-settings-cmdlets.md).
 Az Azure AD felügyeleti portálhoz való hozzáférés korlátozása | Ha e beállítás értéke Nem, akkor a felhasználók nem férhetnek hozzá az Azure Active Directory portálhoz.
 Egyéb felhasználók olvasásának képessége | Ez a beállítás csak a PowerShellben érhető el. Ha e beállítás értéke $false, akkor a nem rendszergazda felhasználók nem olvashatják a címtárban található felhasználói adatokat. Ez nem jelenti azt, hogy ne olvashatnák egyéb Microsoft-szolgáltatások (például az Exchange Online) felhasználói adatait. Ez a beállítás speciális esetekben alkalmazandó, ajánlott értéke: $false.
 

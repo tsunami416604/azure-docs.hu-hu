@@ -13,12 +13,12 @@ ms.topic: quickstart
 ms.date: 06/25/2018
 ms.author: lizross
 ms.reviewer: jeffsta
-ms.openlocfilehash: 7ed564d5954841f96109568b33183908d25bb8be
-ms.sourcegitcommit: 828d8ef0ec47767d251355c2002ade13d1c162af
+ms.openlocfilehash: ec30f1507bfa45c29709a7f4b7dc1e91aa25ca57
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36939548"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37440748"
 ---
 # <a name="assign-a-user-to-administrator-roles-in-azure-active-directory"></a>Felhasználó hozzárendelése rendszergazdai szerepkörökhöz az Azure Active Directory-ban
 Ez a cikk azt ismerteti, hogyan rendelhető hozzá egy rendszergazdai szerepkör egy felhasználóhoz az Azure Active Directoryban (Azure AD). További információ új vállalati felhasználók hozzáadásáról: [Új felhasználók felvétele az Azure Active Directoryba](../add-users-azure-active-directory.md). A hozzáadott felhasználók alapértelmezés szerint nem rendelkeznek rendszergazdai engedélyekkel, de bármikor hozzájuk rendelhet szerepköröket.
@@ -30,7 +30,7 @@ Ez a cikk azt ismerteti, hogyan rendelhető hozzá egy rendszergazdai szerepkör
 
     ![Felhasználókezelés megnyitása](./media/active-directory-users-assign-role-azure-portal/create-users-user-management.png)
 
-3. A kijelölt felhasználónál válassza a **Címtárbeli szerepkör**, majd a **Szerepkör hozzáadása** elemet, és válassza ki a megfelelő rendszergazdai szerepköröket (például **Feltételes hozzáférésű rendszergazda**) a **Címtárbeli szerepkörök** listából. A rendszergazdai szerepkörökről további információt a [Rendszergazdai szerepkörök hozzárendelése az Azure AD-ben](../active-directory-assign-admin-roles-azure-portal.md) című témakörben talál. 
+3. A kijelölt felhasználónál válassza a **Címtárbeli szerepkör**, majd a **Szerepkör hozzáadása** elemet, és válassza ki a megfelelő rendszergazdai szerepköröket (például **Feltételes hozzáférésű rendszergazda**) a **Címtárbeli szerepkörök** listából. A rendszergazdai szerepkörökről további információt a [Rendszergazdai szerepkörök hozzárendelése az Azure AD-ben](../users-groups-roles/directory-assign-admin-roles.md) című témakörben talál. 
 
     ![Felhasználó hozzárendelése egy szerepkörhöz](./media/active-directory-users-assign-role-azure-portal/create-users-assign-role.png)
 
