@@ -1,6 +1,6 @@
 ---
-title: Új-AzureRMVM parancsmaggal egyszerűsített a Azure Cloud rendszerhéj Windows virtuális gép létrehozása |} Microsoft Docs
-description: Gyorsan ismerje meg az Azure felhőalapú rendszerhéj egyszerűsített New-AzureRMVM parancsmag Windows virtuális gépek létrehozásához.
+title: Windows virtuális gép létrehozása a New-AzureRMVM parancsmag egyszerűsített az Azure Cloud Shellben |} A Microsoft Docs
+description: Gyorsan megismerheti az Azure Cloud Shellben az egyszerűsített New-AzureRMVM parancsmag Windows virtuális gépek létrehozásához.
 services: virtual-machines-windows
 documentationcenter: virtual-machines
 author: cynthn
@@ -16,15 +16,16 @@ ms.workload: infrastructure
 ms.date: 12/12/2017
 ms.author: cynthn
 ROBOTS: NOINDEX
-ms.openlocfilehash: a44c9ec9270e4ba76f0ff367e039f5ef72eb04a5
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: ede8fab67c04eb7ce8d26280de2d1563b6cc8ad2
+ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37435669"
 ---
-# <a name="create-a-windows-virtual-machine-with-the-simplified-new-azurermvm-cmdlet-in-cloud-shell"></a>Az egyszerűsített New-AzureRMVM parancsmag felhő rendszerhéj Windows virtuális gép létrehozása 
+# <a name="create-a-windows-virtual-machine-with-the-simplified-new-azurermvm-cmdlet-in-cloud-shell"></a>Az egyszerűsített New-AzureRMVM parancsmag a Cloud Shellben egy Windows virtuális gép létrehozása 
 
-A [New-AzureRMVM](/powershell/module/azurerm.resources/new-azurermvm) parancsmag hozzá van adva olyan paramétereket a PowerShell használatával új virtuális gép létrehozásához egyszerűsített készlete. Ez a témakör bemutatja, hogyan PowerShell használata Azure-felhő rendszerhéj, a New-AzureVM parancsmag előtelepített, hozzon létre egy új virtuális Gépet a legújabb verzióra. Egy egyszerűsített paraméter halmaza, amelyet automatikusan létrehozza az összes szükséges erőforrást intelligens alapértelmezett beállításaival használjuk. 
+A [New-AzureRMVM](/powershell/module/azurerm.resources/new-azurermvm) parancsmaggal hozzá van adva egy egyszerűsített készletét paramétereket a PowerShell használatával új virtuális gép létrehozásához. Ez a témakör bemutatja, hogyan használhatja a Powershellt az Azure Cloud Shellben, a New-AzureVM parancsmag előtelepített, hozzon létre egy új virtuális Gépet a legújabb verzióra. Egyszerűsített paraméterkészlet, amely automatikusan létrehozza az intelligens alapértelmezett beállítások használatával az összes szükséges erőforrást használjuk. 
 
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 
@@ -35,7 +36,7 @@ Ha a PowerShell helyi telepítése és használata mellett dönt, az oktatóanya
 
 ## <a name="create-the-vm"></a>Virtuális gép létrehozása
 
-Használhatja a [New-AzureRMVM](/powershell/module/azurerm.resources/new-azurermvm) parancsmaggal hozzon létre egy virtuális Gépet, amely tartalmazza a Windows Server 2016 Datacenter lemezképet használja az Azure piactérről intelligens alapértékeivel. Használhatja a New-AzureRMVM csak a **-név** paraméter, és használja ezt az értéket az összes erőforrás nevét. Ebben a példában a **-Name** paraméterhez a *myVM* beállítást használjuk. 
+Használhatja a [New-AzureRMVM](/powershell/module/azurerm.resources/new-azurermvm) parancsmaggal hozzon létre egy virtuális Gépet, amely tartalmazza az Azure Marketplace-ről a Windows Server 2016 Datacenter rendszerképet használó intelligens alapértelmezett beállítások. Használhatja a New-AzureRMVM csak a **-név** paramétert, és használja ezt az értéket az összes erőforrás neve. Ebben a példában a **-Name** paraméterhez a *myVM* beállítást használjuk. 
 
 Győződjön meg arról, hogy a Cloud Shellben a **PowerShell** van kiválasztva, és gépelje be a következőt:
 
@@ -45,11 +46,11 @@ New-AzureRMVm -Name myVM
 
 A rendszer felkéri a virtuális gép felhasználónevének és jelszavának létrehozására, amelyeket a jelen témakör későbbi részében, a virtuális géphez történő csatlakozáskor fog használni. A jelszónak 12–123 karakter hosszúnak kell lennie, és meg kell felelnie a következő négy összetettségi feltétel közül háromnak: egy kisbetű, egy nagybetű, egy szám és egy különleges karakter.
 
-A virtuális gép és az ahhoz kapcsolódó erőforrások létrehozása nagyjából egy percet vesz igénybe. Ha elkészült a [Find-AzureRmResource](/powershell/module/azurerm.resources/find-azurermresource) parancsmag használatával tekintheti meg az összes létrehozott erőforrást.
+A virtuális gép és az ahhoz kapcsolódó erőforrások létrehozása nagyjából egy percet vesz igénybe. Amikor végzett, láthatja a használatával létrehozott erőforrásokat a [Get-AzureRmResource](/powershell/module/azurerm.resources/get-azurermresource) parancsmagot.
 
 ```azurepowershell-interactive
-Find-AzureRmResource `
-    -ResourceGroupNameEquals myVMResourceGroup | Format-Table Name
+Get-AzureRmResource `
+    -ResourceGroupName myVMResourceGroup | Format-Table Name
 ```
 
 ## <a name="connect-to-the-vm"></a>Kapcsolódás a virtuális géphez
@@ -63,14 +64,14 @@ Get-AzureRmPublicIpAddress `
     -ResourceGroupName myVMResourceGroup | Select IpAddress
 ```
 
-A helyi számítógépen nyisson meg egy parancssort, és használja a **mstsc** parancsot az új virtuális gép elindítása egy távoli asztali munkamenetet. Cserélje le a &lt;publicIPAddress&gt; címet a virtuális gépe IP-címére. Amikor a rendszer felkéri erre, adja meg a virtuális gép létrehozásakor beállított felhasználónevet és jelszót.
+A helyi gépen nyisson meg egy parancssort, és használja a **mstsc** parancsot az új virtuális gép egy távoli asztali munkamenet elindításához. Cserélje le a &lt;publicIPAddress&gt; címet a virtuális gépe IP-címére. Amikor a rendszer felkéri erre, adja meg a virtuális gép létrehozásakor beállított felhasználónevet és jelszót.
 
 ```
 mstsc /v:<publicIpAddress>
 ```
-## <a name="specify-different-resource-names"></a>Adja meg a különböző erőforrások neve
+## <a name="specify-different-resource-names"></a>Adjon meg másik erőforrásnevet.
 
-Az erőforrások több leíró neveket is nyújt, és továbbra is fennáll, azok automatikusan létrehozza. Íme egy példa, ahol azt rendelkezik több erőforrást a új virtuális Gépnek megfelelő névvel, beleértve az új erőforráscsoport.
+Azoknak az erőforrásoknak leíró nevét is megadhatja, és továbbra is fennáll, azokat automatikusan létrehozza. Íme egy példa, ahol a Microsoft rendelkezik nevű több erőforrást az új virtuális gép, többek között egy új erőforráscsoportot.
 
 ```azurepowershell-interactive
 New-AzureRmVm `

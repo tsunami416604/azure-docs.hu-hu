@@ -5,15 +5,15 @@ services: service-bus-messaging
 author: sethmanheim
 ms.service: service-bus-messaging
 ms.topic: include
-ms.date: 06/29/2018
+ms.date: 07/03/2018
 ms.author: sethm
 ms.custom: include file
-ms.openlocfilehash: 503a1db726483709c351ac9861c5d54913de55d3
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.openlocfilehash: a110998505ed49c36e1ec722b1dfbf0969def060
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37132007"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37449558"
 ---
 A Service Bus-üzenetküldési entitások Azure-ban való használatának megkezdéséhez először létre kell hoznia egy, az Azure-ban egyedi névvel rendelkező névteret. A névtér egy hatókörkezelési tárolót biztosít a Service Bus erőforrásainak címzéséhez az alkalmazáson belül.
 
@@ -22,7 +22,7 @@ Névtér létrehozása:
 1. Jelentkezzen be az [Azure Portalra][Azure portal].
 2. A portál bal oldali navigációs paneljén kattintson a **+ Erőforrás létrehozása**, az **Integráció**, majd a **Service Bus** elemre.
 3. A **Névtér létrehozása** párbeszédpanelen adja meg a névtér nevét. A rendszer azonnal ellenőrzi, hogy a név elérhető-e.
-4. Miután ellenőrizte, hogy a névtér neve elérhető-e, válassza ki a tarifacsomagot (Basic, Standard vagy Prémium).
+4. Miután ellenőrizte, hogy a névtér neve elérhető-e, válassza ki a tarifacsomagot (Basic, Standard vagy Prémium). A [témakörök és előfizetések](../articles/service-bus-messaging/service-bus-queues-topics-subscriptions.md#topics-and-subscriptions) használatához válassza a standard vagy a prémium tarifacsomagot. A témakörök és az előfizetések nem támogatottak az alapszintű tarifacsomagban.
 5. Az **Előfizetés** mezőben válassza ki azt az Azure-előfizetést, amelyben a névteret létre kívánja hozni.
 6. Az **Erőforráscsoport** mezőben válasszon ki egy meglévő erőforráscsoportot, amelynek a névtér a része lesz, vagy hozzon létre egy újat.      
 7. A **Hely** mezőben válassza ki azt az országot vagy régiót, amelyben a névtér üzemeltetve lesz.

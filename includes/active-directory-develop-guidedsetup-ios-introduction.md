@@ -1,35 +1,35 @@
 
 # <a name="call-the-microsoft-graph-api-from-an-ios-application"></a>A Microsoft Graph API meghívása iOS-alkalmazásból
 
-Ez az útmutató bemutatja, hogyan olyan natív iOS-alkalmazás (Swift) API-k, a Microsoft Azure Active Directory (Azure AD) v2.0-végpontra a hozzáférési jogkivonatok igénylő tudják hívni. Az útmutató ismerteti, hogyan hozzáférési tokenek beszerzése érdekében, és a Microsoft Graph API és a többi API-hívások azok használatát.
+Ez az útmutató ismerteti, hogyan egy natív iOS-alkalmazás (Swift) segítségével meghívhatja a API-k, amelyek a Microsoft Azure Active Directory (Azure AD) v2.0-végpont a hozzáférési jogkivonatok igényelnek. Az útmutató bemutatja, hogyan hozzáférési tokenek beszerzése és a Microsoft Graph API és más API-hívásokat használni őket.
 
-Az útmutatóban szereplő gyakorlatok befejezése után az alkalmazás a vállalat vagy szervezet, amely az Azure AD egy védett API hívhatják meg. Az alkalmazás használatával, mint az Outlook.com-os, live.com és más személyes fiókokat, valamint a munkahelyi vagy iskolai fiókok tehet védett API-hívásokat.
+Miután végzett az útmutatóban szereplő gyakorlatok, az alkalmazás meghívhat egy védett API-t bármely vállalat vagy szervezet, amely rendelkezik az Azure ad-ben. Az alkalmazás például outlook.com, live.com, és egyéb személyes fiókok, valamint a munkahelyi vagy iskolai fiókok használatával is felvehető a védett API-hívások.
 
 ## <a name="prerequisites"></a>Előfeltételek
-- XCode verziójú 8.x szükség a mintát, amely a jelen útmutató jön létre. Az XCode letöltheti a [iTunes webhely](https://geo.itunes.apple.com/us/app/xcode/id497799835?mt=12 "XCode letöltési URL-cím").
-- A [Carthage](https://github.com/Carthage/Carthage) függőségi kezelő szükség a felügyeleti csomag.
+- XCode-verzió 8.x a jelen útmutatóban létrehozott minta megadása kötelező. Az XCode letöltheti a [iTunes webhely](https://geo.itunes.apple.com/us/app/xcode/id497799835?mt=12 "XCode letöltési URL-cím").
+- A [Carthage](https://github.com/Carthage/Carthage) Függőségkezelő csomagkezelés szükség.
 
 ## <a name="how-this-guide-works"></a>Ez az útmutató működése
 
 ![Ez az útmutató működése](media/active-directory-develop-guidedsetup-ios-introduction/iosintro.png)
 
-Ebben az útmutatóban a mintaalkalmazás lehetővé teszi az iOS alkalmazás a Microsoft Graph API-val vagy a webes API-k, amelyek az Azure AD v2.0-végpontra a jogkivonatokat fogad el. Ebben a forgatókönyvben egy token adni a HTTP-kérelmekre használatával a **engedélyezési** fejléc. Token beszerzése és -megújítás kezelése a Microsoft hitelesítési könyvtár (MSAL).
+Ebben az útmutatóban a mintaalkalmazás lehetővé teszi az IOS-es alkalmazás lekérdezése a Microsoft Graph API vagy a webes API-t, amely az Azure AD v2.0-végpont származó jogkivonatokat fogad el. Ebben a forgatókönyvben egy jogkivonatot a HTTP-kérelmekre szolgáltatással hozzáadott a **engedélyezési** fejléc. Token beszerzése és megújítása a Microsoft hitelesítési tár (MSAL) kezeli.
 
 
-### <a name="handle-token-acquisition-for-access-to-protected-web-apis"></a>Kezeli a védett webes API-k elérésére token beszerzése
+### <a name="handle-token-acquisition-for-access-to-protected-web-apis"></a>Token beszerzése a védett webes API-khoz való hozzáférés kezelése
 
-Miután a felhasználó hitelesíti magát, a mintaalkalmazást kap jogkivonat. A jogkivonatot a Microsoft Graph API vagy egy webes API-t, amelyet az Azure AD v2.0-végponttól lekérdezésére szolgál.
+Miután a felhasználó hitelesíti magát, a mintaalkalmazás kap jogkivonatot. A jogkivonatot a Microsoft Graph API vagy a webes API-k az Azure AD v2.0-végpont által védett lekérdezésére szolgál.
 
-API-k, például a Microsoft Graph olyan hozzáférési jogkivonatot, hogy egy adott erőforráshoz való hozzáférést igényel. Jogkivonatok szükség a felhasználói profil olvasása, hozzáférés egy felhasználó naptár, küldjön egy e-mailt, és így tovább. Az alkalmazás olyan hozzáférési jogkivonatot kérhetnek MSAL használatával és API-hatókörök megadásával. A hozzáférési jogkivonat hozzáadódik a HTTP **engedélyezési** minden hívás ellen védett erőforrás végrehajtott fejléc.
+API-k, például a Microsoft Graph, egy hozzáférési jogkivonatot az adott erőforrások hozzáférésének engedélyezéséhez szükséges. Jogkivonatok szükségesek egy felhasználói profil olvasása, a felhasználó naptár elérésére, e-mail küldése és így tovább. Az alkalmazás hozzáférési tokent tud kérni az MSAL használatával, és adja meg az API-hatóköröket. A hozzáférési jogkivonatot a HTTP-re kerül **engedélyezési** fejlécet minden hívás, amely a védett erőforrás ellen.
 
-MSAL kezeli, és a hozzáférési jogkivonatok frissítése, így nem kell az alkalmazást.
+Az MSAL gyorsítótárazását és hozzáférési jogkivonatok, frissíteni, így nem kell az alkalmazás kezeli.
 
 
-## <a name="libraries"></a>Szalagtárak
+## <a name="libraries"></a>Kódtárak
 
 Ez az útmutató használja a következő könyvtárban:
 
 |Részletes ismertetés|Leírás|
 |---|---|
-|[MSAL.framework](https://github.com/AzureAD/microsoft-authentication-library-for-objc)|IOS rendszerhez készült Microsoft hitelesítési könyvtár előzetes verzió|
+|[MSAL.framework](https://github.com/AzureAD/microsoft-authentication-library-for-objc)|IOS-hez készült Microsoft hitelesítési tár előzetes verzióját|
 

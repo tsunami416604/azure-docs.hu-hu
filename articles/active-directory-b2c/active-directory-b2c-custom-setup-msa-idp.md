@@ -1,99 +1,99 @@
 ---
-title: 'Az Azure Active Directory B2C: Egyéni házirendekkel identitás-szolgáltatóként hozzáadása a Microsoft-fiók (MSA)'
-description: A Microsoft identitás-szolgáltatóként OpenID Connect (OIDC) protokollt használó minta
+title: Adja hozzá a Microsoft-fiók (MSA) identitás-szolgáltatóként az Azure Active Directory B2C-vel egyéni szabályzatok használatával |} A Microsoft Docs
+description: A minta használata a Microsoft identitásszolgáltatótól az OpenID Connect (OIDC) protokoll használatával.
 services: active-directory-b2c
-documentationcenter: ''
 author: davidmu1
 manager: mtillman
-editor: ''
-ms.service: active-directory-b2c
+ms.service: active-directory
 ms.workload: identity
-ms.topic: article
+ms.topic: conceptual
 ms.date: 08/04/2017
 ms.author: davidmu
-ms.openlocfilehash: a49e9589322eeb90a713321b4fbe4c4820609f7a
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.component: B2C
+ms.openlocfilehash: 7a83ace83176d75abdac03b354c4c4ac71eb4238
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37450144"
 ---
-# <a name="azure-active-directory-b2c-add-microsoft-account-msa-as-an-identity-provider-using-custom-policies"></a>Az Azure Active Directory B2C: Egyéni házirendekkel identitás-szolgáltatóként hozzáadása a Microsoft-fiók (MSA)
+# <a name="azure-active-directory-b2c-add-microsoft-account-msa-as-an-identity-provider-using-custom-policies"></a>Az Azure Active Directory B2C: Egyéni szabályzat használata Identitásszolgáltatóként, adja hozzá a Microsoft-fiók (MSA)
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Ez a cikk bemutatja, hogyan használatával Bejelentkezés Microsoft-fiók (msa-t) a felhasználók engedélyezése [egyéni házirendek](active-directory-b2c-overview-custom.md).
+Ez a cikk bemutatja, hogyan bejelentkezés engedélyezése a felhasználók számára a Microsoft-fiókból (MSA) használatával [egyéni szabályzatok](active-directory-b2c-overview-custom.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
-Hajtsa végre a a [Ismerkedés az egyéni házirendek](active-directory-b2c-get-started-custom.md) cikk.
+A lépések elvégzéséhez a [Ismerkedés az egyéni szabályzatok](active-directory-b2c-get-started-custom.md) cikk.
 
-Ezek a lépések az alábbiak:
+Ezeket a lépéseket tartalmazza:
 
-1.  A Microsoft-fiók alkalmazás létrehozása.
-2.  A Microsoft-fiók alkalmazás kulcs hozzáadása az Azure AD B2C
-3.  Egy házirend hozzáadása jogcím-szolgáltató
-4.  A Microsoft Account jogcímszolgáltató felhasználói út regisztrálása
-5.  A házirend feltöltése az Azure AD B2C bérlői és tesztelik azt
+1.  Egy Microsoft-fiók alkalmazás létrehozása.
+2.  A Microsoft-fiók alkalmazáskulcsot hozzáadása az Azure AD B2C-vel
+3.  Egy házirend hozzáadása jogcím-szolgáltatói
+4.  A felhasználói út Microsoft Account jogcímszolgáltató regisztrálása
+5.  A szabályzat feltöltése egy Azure AD B2C-bérlőben és a tesztelés közben
 
-## <a name="create-a-microsoft-account-application"></a>Microsoft-fiók alkalmazás létrehozása
-Az Azure Active Directory (Azure AD) B2C identitás-szolgáltatóként a Microsoft-fiók használatához szüksége hozzon létre egy Microsoft-fiók alkalmazást, és adja meg azt a megfelelő paraméterekkel. Microsoft-fiók szükséges. Ha még nincs fiókja, látogasson el [ https://www.live.com/ ](https://www.live.com/).
+## <a name="create-a-microsoft-account-application"></a>Hozzon létre egy Microsoft-fiók alkalmazás
+Microsoft-fiók használata Identitásszolgáltatóként az Azure Active Directory (Azure AD) B2C-ben, meg kell hozzon létre egy Microsoft-fiók alkalmazást, és adja meg azt a megfelelő paraméterekkel. Microsoft-fiók szükséges. Ha még nincs fiókja, keresse fel [ https://www.live.com/ ](https://www.live.com/).
 
-1.  Lépjen a [Microsoft alkalmazásregisztrációs portálra](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/documentation/articles&deeplink=/appList) , és jelentkezzen be Microsoft-fiók hitelesítő adataival.
-2.  Kattintson a **hozzáadhat egy alkalmazást**.
+1.  Nyissa meg a [Microsoft alkalmazásregisztrációs portálon](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/documentation/articles&deeplink=/appList) , és jelentkezzen be a Microsoft-fiók hitelesítő adatait.
+2.  Kattintson a **alkalmazás hozzáadása**.
 
-    ![Microsoft fiók - alkalmazás hozzáadása](media/active-directory-b2c-custom-setup-ms-account-idp/msa-add-new-app.png)
+    ![A Microsoft-fiók – alkalmazás hozzáadása](media/active-directory-b2c-custom-setup-ms-account-idp/msa-add-new-app.png)
 
-3.  Adja meg egy **neve** az alkalmazás **lépjen kapcsolatba az e-mailek**, törölje a jelet **tudassa velünk megkezdésében súgó** kattintson **létrehozása**.
+3.  Adjon meg egy **neve** az alkalmazás **kapcsolattartási e-mail cím**, törölje a jelet **segítünk használatának megkezdése** kattintson **létrehozás**.
 
-    ![Microsoft-fiók – az alkalmazás regisztrálása](media/active-directory-b2c-custom-setup-ms-account-idp/msa-app-name.png)
+    ![A Microsoft-fiók – az alkalmazás regisztrálása](media/active-directory-b2c-custom-setup-ms-account-idp/msa-app-name.png)
 
-4.  Másolja a értékének **alkalmazásazonosító**. Esetleg szükség lenne rá, Microsoft-fiókok konfigurálása a bérlő az identitás-szolgáltatóként.
+4.  Másolja az értéket a **alkalmazásazonosító**. Szüksége lesz rá a Microsoft-fiók beállítása lehetőséget Identitásszolgáltatóként, a bérlőben.
 
-    ![Microsoft-fiók - példány az alkalmazás azonosítójának értéke](media/active-directory-b2c-custom-setup-ms-account-idp/msa-app-id.png)
+    ![Microsoft-fiók - példányt az alkalmazás azonosítójának értéke](media/active-directory-b2c-custom-setup-ms-account-idp/msa-app-id.png)
 
 5.  Kattintson a **Hozzáadás platform**
 
-    ![Microsoft fiók - platform hozzáadása](media/active-directory-b2c-custom-setup-ms-account-idp/msa-add-platform.png)
+    ![A Microsoft-fiók - platform hozzáadása](media/active-directory-b2c-custom-setup-ms-account-idp/msa-add-platform.png)
 
-6.  A platform listából válassza ki a **webes**.
+6.  Válassza ki a platform listából **webes**.
 
-    ![Microsoft-fiók – a platform listából válassza a webes](media/active-directory-b2c-custom-setup-ms-account-idp/msa-web.png)
+    ![A Microsoft-fiók – a platform listából válassza ki webes](media/active-directory-b2c-custom-setup-ms-account-idp/msa-web.png)
 
-7.  Adja meg `https://login.microsoftonline.com/te/{tenant}/oauth2/authresp` a a **átirányítási URI-azonosítók** mező. Cserélje le **{tenant}** a bérlő nevű (például contosob2c.onmicrosoft.com).
+7.  Adja meg `https://login.microsoftonline.com/te/{tenant}/oauth2/authresp` a a **átirányítási URI-k** mező. Cserélje le **{tenant}** a bérlő nevét (például: contosob2c.onmicrosoft.com).
 
-    ![Microsoft-fiók - készlet átirányítási URL-címek](media/active-directory-b2c-custom-setup-ms-account-idp/msa-redirect-url.png)
+    ![A Microsoft-fiók – Set átirányítási URL-címek](media/active-directory-b2c-custom-setup-ms-account-idp/msa-redirect-url.png)
 
-8.  Kattintson a **új jelszó létrehozása** alatt a **alkalmazás titkos kulcsok** szakasz. Másolja az új jelszót a képernyőn jelenik meg. Esetleg szükség lenne rá, Microsoft-fiókok konfigurálása a bérlő az identitás-szolgáltatóként. Ez a jelszó nem egy fontos biztonsági hitelesítő adatok.
+8.  Kattintson a **új jelszó készítése** alatt a **titkos Alkalmazáskulcsok** szakaszban. Másolja a képernyőn megjelenő új jelszót. Szüksége lesz rá a Microsoft-fiók beállítása lehetőséget Identitásszolgáltatóként, a bérlőben. Ez a jelszó, egy fontos biztonsági hitelesítő adat.
 
-    ![Microsoft fiók – új jelszó létrehozása](media/active-directory-b2c-custom-setup-ms-account-idp/msa-generate-new-password.png)
+    ![A Microsoft-fiók – új jelszó létrehozása](media/active-directory-b2c-custom-setup-ms-account-idp/msa-generate-new-password.png)
 
-    ![Microsoft-fiók - példány az új jelszó](media/active-directory-b2c-custom-setup-ms-account-idp/msa-new-password.png)
+    ![Microsoft-fiók – az új jelszó másolása](media/active-directory-b2c-custom-setup-ms-account-idp/msa-new-password.png)
 
-9.  Jelölje be a jelölőnégyzetet, amely szerint **Live SDK támogatási** alatt a **speciális beállítások** szakasz. Kattintson a **Save** (Mentés) gombra.
+9.  Jelölje be a jelölőnégyzetet, arról, hogy a **Live SDK támogatás** alatt a **speciális beállítások** szakaszban. Kattintson a **Save** (Mentés) gombra.
 
-    ![Microsoft-fiók - Live SDK-támogatás](media/active-directory-b2c-custom-setup-ms-account-idp/msa-live-sdk-support.png)
+    ![Microsoft-fiók – a Live SDK-támogatás](media/active-directory-b2c-custom-setup-ms-account-idp/msa-live-sdk-support.png)
 
-## <a name="add-the-microsoft-account-application-key-to-azure-ad-b2c"></a>A Microsoft-fiók alkalmazás kulcs hozzáadása az Azure AD B2C
-A Microsoft-fiókokkal az összevonáshoz szükség van egy ügyfélkulcsot Microsoft-fiók nevében az alkalmazás az Azure AD B2C megbízhatósági. A Microsoft-fiók alkalmazás secert tárolása az Azure AD B2C bérlő kell:   
+## <a name="add-the-microsoft-account-application-key-to-azure-ad-b2c"></a>Adja hozzá a Microsoft-fiók alkalmazás kulcsát az Azure AD B2C-vel
+Microsoft-fiókkal rendelkező összevonási ügyfélkódot nevében az alkalmazás Azure AD B2C-vel megbízható Microsoft-fiókra van szüksége. A Microsoft-fiók alkalmazás secert tárolása az Azure AD B2C-bérlő van szüksége:   
 
-1.  Nyissa meg az Azure AD B2C-bérlő, és válassza ki **B2C beállítások** > **identitás élmény keretrendszer**
-2.  Válassza ki **házirend kulcsok** érhető el a bérlői kulcsok megtekintéséhez.
+1.  Nyissa meg az Azure AD B2C-bérlő, és válassza ki **B2C-beállítások** > **identitás-kezelőfelületi keretrendszer**
+2.  Válassza ki **Szabályzatbejegyzések** elérhető a bérlői kulcsok megtekintéséhez.
 3.  Kattintson a **+ Hozzáadás**.
 4.  A **beállítások**, használjon **manuális**.
 5.  A **neve**, használjon `MSASecret`.  
-    Az előtag `B2C_1A_` előfordulhat, hogy automatikusan hozzáadja.
-6.  Az a **titkos** mezőbe írja be a Microsoft alkalmazás titkos kulcs a https://apps.dev.microsoft.com
+    Az előtag `B2C_1A_` automatikusan hozzáadhatók.
+6.  Az a **titkos** mezőbe írja be a Microsoft-alkalmazás titkos a https://apps.dev.microsoft.com
 7.  A **kulcshasználat**, használjon **aláírás**.
 8.  Kattintson a **Create** (Létrehozás) gombra
-9.  Győződjön meg arról, hogy létrehozta a kulcs `B2C_1A_MSASecret`.
+9.  Győződjön meg arról, hogy a kulcs létrehozott `B2C_1A_MSASecret`.
 
-## <a name="add-a-claims-provider-in-your-extension-policy"></a>A jogcím-szolgáltató hozzáadása a bővítmény házirend
-Ha azt szeretné, hogy a felhasználók Microsoft Account bejelentkezni, szüksége Microsoft Account megadása jogcímek-szolgáltatóként. Ez azt jelenti meg kell adnia egy végpontot, amely az Azure AD B2C-vel kommunikál. A végpont a jogcímek, az Azure AD B2C által használt győződjön meg arról, hogy egy adott felhasználó engedélyezést biztosít.
+## <a name="add-a-claims-provider-in-your-extension-policy"></a>A bővítmény a házirend a jogcímeket szolgáltató hozzáadása
+Ha azt szeretné, hogy a felhasználók számára, hogy jelentkezzen be Microsoft-Account használatával, definiálhatja a Microsoft Account egy jogcímszolgáltatótól szeretne. Más szóval meg kell adnia egy végpontot, amely az Azure AD B2C-vel kommunikál. A végpont ellenőrzése, hogy egy adott felhasználó rendelkezik hitelesítése Azure AD B2C által használt jogcímeket biztosít.
 
-Microsoft Account meghatározni, a Jogcímszolgáltatók hozzáadásával `<ClaimsProvider>` csomópont a bővítmény a házirend-fájlban:
+A Microsoft Account meghatározni egy jogcímszolgáltatótól, hozzáadásával `<ClaimsProvider>` csomópont a bővítmény a házirend fájlban:
 
-1.  Nyissa meg a házirend bővítményfájl (TrustFrameworkExtensions.xml) a munkakönyvtárat. Ha egy XML-szerkesztőt kell [próbálja meg a Visual Studio Code](https://code.visualstudio.com/download), egy egyszerű platformfüggetlen-szerkesztőben.
-2.  Keresés a `<ClaimsProviders>` szakasz
-3.  Adja hozzá a következő XML-részletet alatt a `ClaimsProviders` elem:
+1.  Nyissa meg a bővítmény a házirend fájlt (TrustFrameworkExtensions.xml) a munkakönyvtár. Ha egy XML-szerkesztőt kell [próbálja meg a Visual Studio Code](https://code.visualstudio.com/download), egy könnyen használható, többplatformos szerkesztő.
+2.  Keresse meg a `<ClaimsProviders>` szakasz
+3.  Adja hozzá az alábbi XML-kódrészlet alatt a `ClaimsProviders` elem:
 
     ```xml
 <ClaimsProvider>
@@ -135,91 +135,91 @@ Microsoft Account meghatározni, a Jogcímszolgáltatók hozzáadásával `<Clai
 </ClaimsProvider>
 ```
 
-4.  Cserélje le `client_id` értékének a Microsoft Account alkalmazás ügyfél-azonosítóját
+4.  Cserélje le `client_id` érték és a Microsoft Account alkalmazás ügyfél azonosítója
 
 5.  Mentse a fájlt.
 
-## <a name="register-the-microsoft-account-claims-provider-to-sign-up-or-sign-in-user-journey"></a>A Microsoft Account jogcímszolgáltató bejelentkezési mentése regisztrálásának vagy a felhasználói bejelentkezés használatában
+## <a name="register-the-microsoft-account-claims-provider-to-sign-up-or-sign-in-user-journey"></a>Regisztráljon a Microsoft Account jogcím-szolgáltatót, hogy jelentkezzen be, vagy jelentkezzen be a felhasználói interakciósorozat
 
-Ezen a ponton az identitásszolgáltató be van állítva, de a sign-Close-Up/sign-in képernyők egyik nem érhető el. Most a Microsoft Account identitásszolgáltató hozzáadása a felhasználói `SignUpOrSignIn` felhasználói út. Tegye elérhetővé, azt hozzon létre egy meglévő sablon felhasználói út duplikált.  Majd azt a Microsoft Account identitásszolgáltató hozzáadása:
+Ezen a ponton az identitásszolgáltató be lett állítva, de nem érhető el az összes regisztrálási-regisztrálási vagy bejelentkezési képernyőt. Most adja hozzá a Microsoft Account identitásszolgáltató a felhasználónak kell `SignUpOrSignIn` felhasználói interakciósorozat. Elérhető legyen, létrehozunk egy meglévő sablon felhasználói interakciósorozat másolatát.  Majd hozzáadjuk a Microsoft Account identitásszolgáltató:
 
 > [!NOTE]
 >
->Ha korábban kimásolt a `<UserJourneys>` a bővítményfájl házirend alap fájlból elem `TrustFrameworkExtensions.xml`, ezt a szakaszt kihagyhatja.
+>Ha korábban kimásolt a `<UserJourneys>` elem a szabályzat alapszintű fájlból a bővítmény fájl `TrustFrameworkExtensions.xml`, ezt a szakaszt kihagyhatja.
 
-1.  Nyissa meg a házirend (például TrustFrameworkBase.xml) Alap fájlt.
-2.  Keresés a `<UserJourneys>` elem és a teljes tartalmának másolása a `<UserJourneys>` csomópont.
-3.  Nyissa meg a bővítmény (például TrustFrameworkExtensions.xml) fájlt, és keresse a `<UserJourneys>` elemet. Ha az elem nem létezik, vegyen fel egyet.
-4.  Illessze be a teljes tartalmát `<UserJournesy>` csomópont gyermekeként másolt a `<UserJourneys>` elemet.
+1.  Nyissa meg a szabályzat (például TrustFrameworkBase.xml) alapszintű fájlt.
+2.  Keresse meg a `<UserJourneys>` elemet, és másolja a teljes tartalmát `<UserJourneys>` csomópont.
+3.  Nyissa meg a kiterjesztésű fájlt (például TrustFrameworkExtensions.xml), és keresse meg a `<UserJourneys>` elemet. Ha az elem nem létezik, adjon hozzá egyet.
+4.  Illessze be a teljes tartalmát `<UserJourneys>` csomópont gyermekeként kimásolt a `<UserJourneys>` elemet.
 
 ### <a name="display-the-button"></a>A gomb megjelenítése
-A `<ClaimsProviderSelections>` elem definiálja a jogcímeket szolgáltató tanúsítványválasztási beállítások és a sorrendjük listáját.  `<ClaimsProviderSelection>` a elem egy identity provider gombra a sign-Close-Up/sign-in oldalán hasonló. Ha ad hozzá egy `<ClaimsProviderSelection>` elem Microsoft-fiókot, egy új gomb megjelenik, amikor a felhasználó az oldalon fájljai. Ez az elem hozzáadása:
+A `<ClaimsProviderSelections>` elem definiálja a jogcímeket szolgáltató tanúsítványválasztási beállítások és a sorrendjük listáját.  `<ClaimsProviderSelection>` a elem egy identity provider gombjára egy regisztrálási-regisztrálási vagy bejelentkezési oldal hasonló. Ha hozzáad egy `<ClaimsProviderSelection>` elem a következő Microsoft-fiók, egy új gomb jelenik meg, amikor egy felhasználó hajtanak végre az oldalon. Ez az elem hozzáadása:
 
-1.  Keresés a `<UserJourney>` tartalmazó csomópont `Id="SignUpOrSignIn"` a a felhasználók utazás másolt.
+1.  Keresse meg a `<UserJourney>` tartalmazó csomópont `Id="SignUpOrSignIn"` a másolt felhasználói interakciósorozat.
 2.  Keresse meg a `<OrchestrationStep>` tartalmazó csomópont `Order="1"`
-3.  Adja hozzá a következő XML-részletet a `<ClaimsProviderSelections>` csomópont:
+3.  Adja hozzá az alábbi kódrészletet XML `<ClaimsProviderSelections>` csomópont:
 
 ```xml
-<ClaimsProviderSelection TargetClaimsExchangeId="MSAExchange" />
+<ClaimsProviderSelection TargetClaimsExchangeId="MicrosoftAccountExchange" />
 ```
 
 ### <a name="link-the-button-to-an-action"></a>A gomb összekapcsolása egy műveletet
-Most, hogy a gomb helyen, hogy egy művelet kapcsolódnia kell. A művelet, ebben az esetben, akkor az Azure AD B2C kommunikálni a Microsoft Account fogadhatnak jogkivonatot. A gomb művelet mutató hivatkozás létrehozása a műszaki profil létrehozhatja, ha a Microsoft Account jogcímeket szolgáltató:
+Most, hogy egyetlen helyen, amelyekkel hozzákapcsolhatja egy műveletet kell. A művelet, ebben az esetben pedig az Azure AD B2C-vel való kommunikációhoz Microsoft Account fogadhatnak jogkivonatot. A gomb összekapcsolása egy műveletet a Microsoft Account jogcím-szolgáltatói összekapcsolásának a technikai profil:
 
-1.  Keresés a `<OrchestrationStep>` is tartalmazó `Order="2"` a a `<UserJourney>` csomópont.
-2.  Adja hozzá a következő XML-részletet a `<ClaimsExchanges>` csomópont:
+1.  Keresse meg a `<OrchestrationStep>` tartalmazó `Order="2"` a a `<UserJourney>` csomópont.
+2.  Adja hozzá az alábbi kódrészletet XML `<ClaimsExchanges>` csomópont:
 
 ```xml
-<ClaimsExchange Id="MSAExchange" TechnicalProfileReferenceId="MSA-OIDC" />
+<ClaimsExchange Id="MicrosoftAccountExchange" TechnicalProfileReferenceId="MSA-OIDC" />
 ```
 
 > [!NOTE]
 >
->   * Győződjön meg arról a `Id` ugyanazzal az értékkel, amely rendelkezik `TargetClaimsExchangeId` az előző szakaszban leírt
->   * Győződjön meg arról `TechnicalProfileReferenceId` beállítása a műszaki profil létrehozott korábbi (MSA-OIDC).
+>   * Győződjön meg, hogy a `Id` , ugyanazzal az értékkel rendelkezik `TargetClaimsExchangeId` az előző szakaszban
+>   * Győződjön meg, hogy `TechnicalProfileReferenceId` azonosító értéke a technikai profil létrehozott korábbi (MSA-OIDC).
 
-## <a name="upload-the-policy-to-your-tenant"></a>A házirend a bérlő feltöltése
-1.  A a [Azure-portálon](https://portal.azure.com), átváltani a [az Azure AD B2C-bérlő kontextusában](active-directory-b2c-navigate-to-b2c-context.md), és nyissa meg a **az Azure AD B2C** panelen.
-2.  Válassza ki **identitás élmény keretrendszer**.
-3.  Nyissa meg a **házirend** panelen.
-4.  Válassza ki **házirend feltöltése**.
-5.  Ellenőrizze **felülírja a házirendet, ha létezik** mezőbe.
-6.  **Töltse fel** TrustFrameworkExtensions.xml, és győződjön meg arról, hogy az érvényesítése nem hiúsul meg az
+## <a name="upload-the-policy-to-your-tenant"></a>A szabályzat feltöltése a bérlőhöz
+1.  Az a [az Azure portal](https://portal.azure.com), váltson át a [az Azure AD B2C-bérlője kontextusában](active-directory-b2c-navigate-to-b2c-context.md), és nyissa meg a **Azure AD B2C-vel** panelen.
+2.  Válassza ki **identitás-kezelőfelületi keretrendszer**.
+3.  Nyissa meg a **összes szabályzat** panelen.
+4.  Válassza ki **szabályzat feltöltése**.
+5.  Ellenőrizze **szabályzat felülírása, ha létezik** mezőbe.
+6.  **Töltse fel** TrustFrameworkExtensions.xml, és győződjön meg arról, hogy azt érvényesítése nem hiúsul meg a
 
-## <a name="test-the-custom-policy-by-using-run-now"></a>Tesztelje az egyéni házirend segítségével futtatása most
+## <a name="test-the-custom-policy-by-using-run-now"></a>Az egyéni házirend tesztelése a Futtatás most
 
-1.  Nyissa meg **az Azure AD B2C beállítások** , és navigáljon **identitás élmény keretrendszer**.
+1.  Nyissa meg **Azure AD B2C-beállítások** , majd **identitás-kezelőfelületi keretrendszer**.
 > [!NOTE]
 >
->**Futtassa most** legalább egy alkalmazás a tenant preregistered lehet szükséges. Megtudhatja, hogyan kell regisztrálni az alkalmazások, tekintse meg az Azure AD B2C [Ismerkedés](active-directory-b2c-get-started.md) cikk vagy a [regisztrációja](active-directory-b2c-app-registration.md) cikk.
-2.  Nyissa meg **B2C_1A_signup_signin**, a függő entitásonkénti (RP) egyéni házirend feltöltött. Válassza ki **futtatása most**.
-3.  Jelentkezhet be Microsoft-fiók használatával kell lennie.
+>**Futtatás most** kell előzetesen regisztrálva, a bérlő legalább egy alkalmazás szükséges. Megtudhatja, hogyan regisztrálja az alkalmazást, tekintse meg az Azure AD B2C [Ismerkedés](active-directory-b2c-get-started.md) cikk vagy a [alkalmazásregisztráció](active-directory-b2c-app-registration.md) cikk.
+2.  Nyissa meg **B2C_1A_signup_signin**, a függő entitásonkénti (RP) egyéni-szabályzattal, a feltöltött. Válassza ki **Futtatás most**.
+3.  Jelentkezhet be Microsoft-fiókkal kell lennie.
 
-## <a name="optional-register-the-microsoft-account-claims-provider-to-profile-edit-user-journey"></a>[Választható] A Microsoft Account jogcímszolgáltató profil szerkesztheti a felhasználói út regisztrálása
-Érdemes lehet a Microsoft Account identitásszolgáltató is hozzáadása a felhasználói `ProfileEdit` felhasználói út. Tegye elérhetővé, hogy ismételje meg az utolsó két lépést:
+## <a name="optional-register-the-microsoft-account-claims-provider-to-profile-edit-user-journey"></a>[Opcionális] Regisztráljon a Microsoft Account jogcímszolgáltató Profilmódosítás felhasználói interakciósorozat
+A Microsoft Account identitásszolgáltató hozzáadása a felhasználói is érdemes `ProfileEdit` felhasználói interakciósorozat. Elérhető legyen, hogy az utolsó két lépést ismételje meg:
 
 ### <a name="display-the-button"></a>A gomb megjelenítése
-1.  Nyissa meg a bővítményfájl házirend (például TrustFrameworkExtensions.xml).
-2.  Keresés a `<UserJourney>` tartalmazó csomópont `Id="ProfileEdit"` a a felhasználók utazás másolt.
+1.  Nyissa meg a szabályzat (például TrustFrameworkExtensions.xml) a kiterjesztésű fájlt.
+2.  Keresse meg a `<UserJourney>` tartalmazó csomópont `Id="ProfileEdit"` a másolt felhasználói interakciósorozat.
 3.  Keresse meg a `<OrchestrationStep>` tartalmazó csomópont `Order="1"`
-4.  Adja hozzá a következő XML-részletet a `<ClaimsProviderSelections>` csomópont:
+4.  Adja hozzá az alábbi kódrészletet XML `<ClaimsProviderSelections>` csomópont:
 
 ```xml
 <ClaimsProviderSelection TargetClaimsExchangeId="MSAExchange" />
 ```
 
 ### <a name="link-the-button-to-an-action"></a>A gomb összekapcsolása egy műveletet
-1.  Keresés a `<OrchestrationStep>` is tartalmazó `Order="2"` a a `<UserJourney>` csomópont.
-2.  Adja hozzá a következő XML-részletet a `<ClaimsExchanges>` csomópont:
+1.  Keresse meg a `<OrchestrationStep>` tartalmazó `Order="2"` a a `<UserJourney>` csomópont.
+2.  Adja hozzá az alábbi kódrészletet XML `<ClaimsExchanges>` csomópont:
 
 ```xml
 <ClaimsExchange Id="MSAExchange" TechnicalProfileReferenceId="MSA-OIDC" />
 ```
 
-### <a name="test-the-custom-profile-edit-policy-by-using-run-now"></a>Tesztelje az egyéni házirend profil-módosítása segítségével futtatása most
-1.  Nyissa meg **az Azure AD B2C beállítások** , és navigáljon **identitás élmény keretrendszer**.
-2.  Nyissa meg **B2C_1A_ProfileEdit**, a függő entitásonkénti (RP) egyéni házirend feltöltött. Válassza ki **futtatása most**.
-3.  Jelentkezhet be Microsoft-fiók használatával kell lennie.
+### <a name="test-the-custom-profile-edit-policy-by-using-run-now"></a>Az egyéni Profilmódosítás házirend tesztelése a Futtatás most
+1.  Nyissa meg **Azure AD B2C-beállítások** , majd **identitás-kezelőfelületi keretrendszer**.
+2.  Nyissa meg **B2C_1A_ProfileEdit**, a függő entitásonkénti (RP) egyéni-szabályzattal, a feltöltött. Válassza ki **Futtatás most**.
+3.  Jelentkezhet be Microsoft-fiókkal kell lennie.
 
-## <a name="download-the-complete-policy-files"></a>A teljes házirend-fájlok letöltésére
-Választható lehetőség: Javasoljuk hoz létre a minta-fájlok használata helyett a saját egyéni házirend fájlok az első lépések egyéni házirendekkel befejezése után végezze el a forgatókönyvet.  [Házirend mintafájlok referencia](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/scenarios/aadb2c-ief-setup-msa-app)
+## <a name="download-the-complete-policy-files"></a>A teljes-fájlok letöltése
+Választható lehetőség: Javasoljuk, hogy a forgatókönyv a minta-fájlok használata helyett a saját egyéni házirend végig az Ismerkedés az egyéni szabályzatok befejezése után fájlok használatával fejleszt.  [A házirend mintafájlok referencia](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/scenarios/aadb2c-ief-setup-msa-app)

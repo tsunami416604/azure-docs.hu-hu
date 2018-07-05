@@ -1,28 +1,28 @@
-A feladat észlelt és a nyomon követett lapok metaadatokat tartalmazó JSON kimeneti fájlt hoz létre. A metaadatok közé tartozik a koordináták helyét, a lapok, valamint az, hogy egyes követését jelző arcfelismerési azonosító számot jelzi. Arcfelismerési azonosítószámát nagyon eséllyel fordulnak elő a elülső arcfelismerési ellopása vagy átfedésben vannak a keretében körülmények alaphelyzetbe néhány első hozzárendelt több azonosítók egyének eredményez.
+A feladat egy észlelt, és a nyomon követett arcok kapcsolatos metaadatokat tartalmazó JSON-kimenet fájlt hoz létre. Metaadatok helyét, arcok, valamint a nyomon követheti, hogy egyes jelző face ID szám jelző koordinátákat tartalmaznak. Face ID számok során gyakran fordul elő alaphelyzetbe körülmények között, ha a elülső face elvesztése vagy a keretbe átfedett bizonyos felhasználók több ID első hozzárendelt eredményez.
 
-A kimeneti JSON az alábbi elemeket tartalmazza:
+A kimenet JSON az alábbi elemeket tartalmazza:
 
-### <a name="root-json-elements"></a>Legfelső szintű JSON-elemek szerepelnek
+### <a name="root-json-elements"></a>Legfelső szintű JSON-elemek
 
 | Elem | Leírás |
 | --- | --- |
-| verzió: |Ez a videó API verziója vonatkozik. |
-| időskálára |A videó másodpercenként "ticks". |
-| Az offset |Ez az időbélyegek idő eltolása. Videó API-k 1.0-s verziójában az mindig 0 lesz. A jövőben támogatott forgatókönyveket, ezt az értéket módosíthatja. |
-| szélesség, kontrasztos |A szélesség és a kimeneti videó keret, képpontban kontrasztos.|
-| képkockasebességhez |A videó képkockasebessége. |
-| [töredék](#fragments-json-elements) |A metaadatok töredék nevű különböző részekre van darabolásos fel. Minden töredéke a start, a időtartama, a időszakának száma és a esemény (eke) tartalmaz. |
+| verzió: |Ez vonatkozik a Video API verziója. |
+| időskálára |"Órajel során végbemenő" a videó másodpercenként. |
+| offset |Ez az az idő eltolása az időbélyegekhez. Videó API-k 1.0-s verziójában ez mindig 0 lesz. A jövőben támogatott forgatókönyveket, ez az érték változhatnak. |
+| szélesség, kontrasztos |A szélesség és a kimeneti videót keret, képpontban kontrasztos.|
+| Képkockasebesség |A videó képkockamásodperc. |
+| [töredékek száma](#fragments-json-elements) |A metaadatok nevű töredék különböző részekre van darabolásos fel. Minden részlet egy kezdő, időtartamának, időszakának száma és esemény tartalmazza. |
 
-### <a name="fragments-json-elements"></a>Töredék JSON-elemek szerepelnek
+### <a name="fragments-json-elements"></a>Töredékek JSON-elemek
 
 |Elem|Leírás|
 |---|---|
-| start |A kezdési időt az első esemény a "ticks." |
-| Időtartam |A hosszát a töredéke a "ticks." |
-| index | (Ez kizárólag az Azure Media Redactor) határozza meg az aktuális esemény keret indexét. |
-| interval |Az időszak mindegyik esemény bejegyzése a töredéke a "ticks." |
-| események |Minden esemény észlelt, és adott időtartamig belül követhetők oldalakat tartalmaz. Események egy tömb. A külső tömb egy időköz jelöli. A belső tömb 0 vagy több olyan eseményeket, amelyek ezen a ponton az időben történtek áll. Egy üres zárójel [] azt jelenti, hogy nincs lapok észlelt. |
-| id |A rendszer nyomon követett arcfelismerési azonosítója. Ez a szám lehet, hogy akaratlanul is módosíthatja, ha egy lap nem válik. Egy adott személy teljes az általános videó ugyanezzel az Azonosítóval kell rendelkeznie, de ez nem garantálható az algoritmus (hangelnyelés, stb.) a korlátozásai miatt. |
-| x, y |A bal felső X és Y koordinátáit, valamint a 0,0 és 1,0 határolókeret normalizált méretezési felületen. <br/>-X és Y koordináták százalékosan fekvő mindig, relatív, ha egy álló video (vagy feje-tetejére, iOS esetén), összekapcsolta a koordináták transzponálása ennek megfelelően. |
-| szélesség, magassága |A szélességének és magasságának a 0,0 és 1,0 határolókeret normalizált méretezési felületen. |
-| facesDetected |Ez a JSON-eredményeket végén található, továbbá összefoglalja, amely az algoritmus a videó során észlelt száma. Mivel az azonosítók állítható alaphelyzetbe akaratlanul is, ha egy lap nem válik (pl. a tapasztalt kerül ki képernyőt, azonnal keres), ez a szám lehet, hogy nem mindig igaz számának egyenlőnek videóban lapokat. |
+| start |A kezdési idejét az első esemény a "órajelben." |
+| időtartam |A "órajelben.", a részlet hossza |
+| index | (Vonatkozik az Azure Media Redactor csak) határozza meg az aktuális esemény keret indexét. |
+| interval |Az időszak mindegyik esemény bejegyzése a részlet a "órajelben." |
+| események |Minden egyes esemény észlelt, és nyomon követett belül időt töltött az arcok tartalmazza. Az események egy tömb. A külső tömb jelöli egy időközt. A belső tömbben 0 vagy több esemény történt ekkor időben áll. Egy üres zárójel [] azt jelenti, hogy nincs arcok észlelt. |
+| id |A face a nyomon követett azonosítója. Ez a szám véletlenül változhat, ha egy ARC válik a rendszer nem észleli. Egy adott személy során a teljes videó ugyanazzal az Azonosítóval kell rendelkeznie, de ez az algoritmus (hangelnyelés, stb.) korlátozásai miatt nem lehet garantálni. |
+| x, y |A bal felső sarokban X és a face 0,0 és 1,0 határolókeret normalizált méretezési Y koordinátáját. <br/>-X és Y koordináták relatív fekvő mindig, és, így ha egy videó (vagy feje-le, iOS esetén) álló, kell a koordináták transzponálása ennek megfelelően. |
+| szélesség, hosszúság |A szélesség és a face 0,0 és 1,0 határolókeret normalizált méretezési magassága. |
+| facesDetected |Ez a JSON-eredményeket végén található, és összefoglalja az arcokat, az algoritmus a videó során észlelt száma. Mivel az azonosítók alaphelyzetbe lehet véletlenül, ha egy ARC válik a rendszer nem észleli (például a face megfelelően képernyőt, azonnal keresi ki), ez a szám nem lehet, hogy mindig egyenlő az arcokat a videókban igaz száma. |
