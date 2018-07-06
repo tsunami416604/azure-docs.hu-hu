@@ -1,6 +1,6 @@
 ---
-title: Node.js - Bing egyéni keresés – Microsoft kognitív szolgáltatásokkal hívás végpont
-description: A gyors üzembe helyezés bemutatja, hogyan keresési eredmények kérhet az egyéni keresési példányát hívni a Bing egyéni keresési végpont Node.js használatával.
+title: Végpont meghívása a Microsoft Cognitive Services – Bing egyéni keresés – Node.js használatával
+description: 'Ez a rövid útmutató bemutatja, hogyan keresési eredmények kérhet az egyéni keresőpéldányok: a Bing Custom Search-végpont meghívása Node.js használatával.'
 services: cognitive-services
 author: brapel
 manager: ehansen
@@ -9,38 +9,42 @@ ms.component: bing-custom-search
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: v-brapel
-ms.openlocfilehash: 48fc234e15ce3b9172d766f6fae11b51a017ce70
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 5d9391cc486dc868a1a291ccc7095291cddd3e4c
+ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "35349771"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37858459"
 ---
-# <a name="call-bing-custom-search-endpoint-nodejs"></a>Hívás Bing egyéni keresés végpont (Node.js)
+# <a name="call-bing-custom-search-endpoint-nodejs"></a>Hívást a Bing Custom Search-végpont (Node.js)
 
-A gyors üzembe helyezés bemutatja, hogyan keresési eredmények kérhet az egyéni keresési példányát hívni a Bing egyéni keresési végpont Node.js használatával. 
+Ez a rövid útmutató bemutatja, hogyan keresési eredmények kérhet az egyéni keresőpéldányok: a Bing Custom Search-végpont meghívása Node.js használatával. 
 
 ## <a name="prerequisites"></a>Előfeltételek
 A rövid útmutató elvégzéséhez a következőkre lesz szüksége:
 
-- Egy egyéni keresési példányát. Lásd: [hozza létre az első Bing egyéni keresési példányát](quick-start.md).
+- Egy egyéni keresési példány. Lásd: [az első Bing Custom Search-példány létrehozása](quick-start.md).
 
 - [NODE.js](https://www.nodejs.org/) telepítve.
 
--  [Kognitív szolgáltatások API-fiók](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) rendelkező **Bing keresési API-k**. A [ingyenes próbaverzió](https://azure.microsoft.com/try/cognitive-services/?api=bing-custom-search) elegendő-e a gyors üzembe helyezés. Az elérési kulcsot, ha aktiválja az ingyenes próbaverzió, vagy egy fizetős kulcsot használhatja az Azure irányítópultról van szüksége.
+-  [Cognitive Services API-fiók](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) a **Bing Search APIs**. A [az ingyenes próbaidőszak](https://azure.microsoft.com/try/cognitive-services/?api=bing-custom-search) elegendő ehhez a gyors útmutatóhoz. Szüksége lesz a hozzáférési kulcsot, ha az ingyenes próbaverzió aktiválásának, vagy használhat egy díjköteles előfizetési kulcsot az Azure irányítópultján.
 
 ## <a name="run-the-code"></a>A kód futtatása
 
-A Bing egyéni keresés végpont hívására, kövesse az alábbi lépéseket:
+A Bing Custom Search végpont meghívására, kövesse az alábbi lépéseket:
 
 1. Hozzon létre egy mappát a kódot.
-2. A parancssor vagy a Terminálszolgáltatások keresse meg az imént létrehozott mappára.
+
+2. A parancssorba vagy terminálba keresse meg az imént létrehozott mappára.
+
 3. Telepítse a **kérelem** csomópont modul:
     <pre>
     npm install request
     </pre>
-4. Hozza létre a fájlt BingCustomSearch.js, és másolja azt a következő kódot.
-5. Cserélje le **YOUR-ELŐFIZETÉS-kulcs** és **YOUR-egyéni-CONFIG-ID** a kulcs és a konfigurációs azonosítójú (lásd az 1. lépés).
+    
+4. A fájl BingCustomSearch.js létrehozásához, és másolja a következő kód azt.
+
+5. Cserélje le **YOUR-SUBSCRIPTION-KEY** és **YOUR-CUSTOM-CONFIG-ID** a kulcs és a konfigurációs azonosítóval (lásd az 1. lépés).
 
     ``` javascript
     var request = require("request");
@@ -71,12 +75,12 @@ A Bing egyéni keresés végpont hívására, kövesse az alábbi lépéseket:
         }
     })
     ```
-6. Futtassa a következő parancsot a kódot.
+6. Futtassa a kódot az alábbi paranccsal.
     ```    
     node BingCustomSearch.js
    ``` 
 
 ## <a name="next-steps"></a>További lépések
-- [A központi felhasználói felületi élmény konfigurálása](./hosted-ui.md)
-- [Jelölje ki a szöveget decoration jelölők használatával](./hit-highlighting.md)
-- [Lap szolgáltatásának konfigurálása](./page-webpages.md)
+- [A központi felhasználói felület konfigurálása](./hosted-ui.md)
+- [Kiemeli a szöveget decoration jelölők használatával](./hit-highlighting.md)
+- [Oldal weblapok](./page-webpages.md)

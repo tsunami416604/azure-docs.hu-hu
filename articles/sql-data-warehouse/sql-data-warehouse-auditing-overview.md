@@ -10,12 +10,12 @@ ms.component: manage
 ms.date: 04/11/2018
 ms.author: kavithaj
 ms.reviewer: igorstan
-ms.openlocfilehash: 306032ece4feda0e8132db1e95c4a229472e6c04
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 3630d4d694452f2c619e707d1e2e58f1bfe71c0e
+ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/04/2018
-ms.locfileid: "34643498"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37858952"
 ---
 # <a name="auditing-in-azure-sql-data-warehouse"></a>Az Azure SQL Data Warehouse naplózása
 
@@ -52,8 +52,9 @@ A naplózási házirend egy adott adatbázis vagy a kiszolgáló alapértelmezet
 > * Egy másik használni kívánt *tárfiók* vagy *megőrzési időszak* egy adott adatbázis számára.
 > * Eseménytípusok vagy egy adott adatbázis, amely eltér a többi a kiszolgálón lévő adatbázisokhoz kategóriáit naplózni kívánt. Előfordulhat például, hogy tábla Beszúrások, amelyet csak egy adott adatbázishoz kell naplózni kell.
 > * A Fenyegetésészlelés, amely jelenleg használni kívánt adatbázis adatbázisszintű naplózása csak támogatott.
->
 
+> [!IMPORTANT]
+>Az Azure SQL Data Warehouse, vagy egy kiszolgálóra, amelyen az Azure SQL Data Warehouse, a naplózás engedélyezése **eredményez az adattárház folytatása folyamatban**, még akkor is, abban az esetben, ha korábban már szünetel. **Ellenőrizze, hogy az adattárház felfüggesztése újra, miután engedélyezte a naplózási**.
 
 ## <a id="subheading-5"></a>Állítsa be a kiszolgálószintű naplózást az összes adatbázis
 

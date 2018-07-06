@@ -8,12 +8,12 @@ ms.date: 06/26/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 9ec396e8a1ad36e85e1291995345ca1de24668d0
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.openlocfilehash: d814bed6f126cb3b81d85c4e797a22d2ac22ddfb
+ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37128060"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37856205"
 ---
 # <a name="common-issues-and-resolutions-for-azure-iot-edge"></a>Az Azure IoT Edge gyakori problémái és azok megoldásai
 
@@ -23,7 +23,7 @@ Ha a környezetében az Azure IoT Edge futtatásakor problémákat tapasztal, ez
 
 Ha problémát tapasztal, a tárolónaplók és az eszközre küldött és az arról származó üzenetek áttekintésével további információt tudhat meg az IoT Edge-eszköz állapotáról. Az ebben a szakaszban szereplő parancsokkal és eszközökkel további információt gyűjthet. 
 
-### <a name="check-the-status-of-the-iot-edge-security-manager-and-its-logs"></a>Az IoT-peremhálózati biztonságkezelő és a naplók állapotának ellenőrzése:
+### <a name="check-the-status-of-the-iot-edge-security-manager-and-its-logs"></a>Az IoT Edge Security Manager és a naplók állapotának ellenőrzéséhez:
 
 Linux:
 - Az IoT Edge-biztonságkezelő állapotának megtekintése:
@@ -32,15 +32,15 @@ Linux:
    sudo systemctl status iotedge
    ```
 
-- A naplók a IoT peremhálózati biztonsági Manager megtekintéséhez:
+- A naplók az IoT Edge-biztonságkezelő megtekintéséhez:
 
     ```bash
     sudo journalctl -u iotedge -f
     ```
 
-- Az IoT Edge-biztonságkezelő naplók részletes megjelenítése:
+- Továbbiak megtekintése részletes naplók az IoT Edge-biztonságkezelő:
 
-   - A iotedge démon beállításainak szerkesztése:
+   - Szerkessze a iotedge démon beállításokat:
 
       ```bash
       sudo systemctl edit iotedge.service
@@ -53,7 +53,7 @@ Linux:
       Environment=IOTEDGE_LOG=edgelet=debug
       ```
     
-   - Indítsa újra az IoT-Edge biztonsági démon:
+   - Az IoT Edge biztonsági démon újraindításához:
     
       ```bash
       sudo systemctl cat iotedge.service
@@ -68,7 +68,7 @@ Windows rendszeren:
    Get-Service iotedge
    ```
 
-- A naplók a IoT peremhálózati biztonsági Manager megtekintéséhez:
+- A naplók az IoT Edge-biztonságkezelő megtekintéséhez:
 
    ```powershell
    # Displays logs from today, newest at the bottom.
@@ -80,10 +80,10 @@ Windows rendszeren:
    sort-object @{Expression="TimeCreated";Descending=$false}
    ```
 
-### <a name="if-the-iot-edge-security-manager-is-not-running-verify-your-yaml-configuration-file"></a>Ha az IoT-peremhálózati biztonságkezelő nem fut, ellenőrizze a yam konfigurációs fájlt
+### <a name="if-the-iot-edge-security-manager-is-not-running-verify-your-yaml-configuration-file"></a>Ha az IoT Edge biztonsági kezelője nem fut, ellenőrizze a yaml-konfigurációs fájl
 
 > [!WARNING]
-> YAM-fájlok nem lehetnek identation lapokon. 2 szóközt használja.
+> YAML-fájlok nem lehetnek identation lapokon. Használja helyette a 2 szóközöket.
 
 Linux:
 
@@ -97,17 +97,17 @@ Windows rendszeren:
    notepad C:\ProgramData\iotedge\config.yaml
    ```
 
-### <a name="check-container-logs-for-issues"></a>Tároló naplókban problémák
+### <a name="check-container-logs-for-issues"></a>Ellenőrizze a tároló naplóinak problémák
 
-Ha az IoT-Edge biztonsági démon fut, tekintse meg a naplókat a problémák észlelése tárolók. Kezdje az üzembe helyezett tárolókkal, majd tekintse meg az IoT Edge-futtatókörnyezetet alkotó tárolókat: az Edge Agentet és az Edge Hubot. Az Edge Agent-naplók általában az egyes tárolók életciklusáról nyújtanak információt. Az Edge Hub-naplók az üzenetküldésről és az útválasztásról nyújtanak információt. 
+Miután az IoT Edge biztonsági démon fut, tekintse meg a naplókat a tárolók a hibák észlelése. Kezdje az üzembe helyezett tárolókkal, majd tekintse meg az IoT Edge-futtatókörnyezetet alkotó tárolókat: az Edge Agentet és az Edge Hubot. Az Edge Agent-naplók általában az egyes tárolók életciklusáról nyújtanak információt. Az Edge Hub-naplók az üzenetküldésről és az útválasztásról nyújtanak információt. 
 
    ```cmd
    iotedge logs <container name>
    ```
 
-### <a name="view-the-messages-going-through-the-edge-hub"></a>A peremhálózati hub áthaladás üzenetek megjelenítése
+### <a name="view-the-messages-going-through-the-edge-hub"></a>Az Edge hubon áthaladó üzeneteket megtekintése
 
-A peremhálózati hub áthaladás üzenetek megjelenítése, és elemzések gyűjt az eszköz tulajdonságok frissítések részletes naplókat a edgeAgent és edgeHub futtatókörnyezet tárolókból. Ezek a tárolók részletes naplókat bekapcsolásához állítsa be a `RuntimeLogLevel` környezeti változót: 
+Megtekintheti az Edge hubon áthaladó üzeneteket, és gyűjtsön információt a részletes naplók eszköztulajdonságok frissítéseiről a edgeAgent és edgeHub futtatókörnyezet tárolóiból származó. Ezek a tárolók a részletes naplók bekapcsolásához állítsa be a `RuntimeLogLevel` környezeti változót: 
 
 Linux:
     
@@ -124,21 +124,21 @@ Windows rendszeren:
 Az IoT Hub és az IoT Edge-eszközök között küldött üzeneteket is ellenőrizheti. Ezeket az üzeneteket a Visual Studio Code [Azure IoT-eszközkészlet](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit) bővítményével tekintheti meg. További útmutatásért lásd [az Azure IoT-fejlesztések esetén hasznos eszközt](https://blogs.msdn.microsoft.com/iotdev/2017/09/01/handy-tool-when-you-develop-with-azure-iot/).
 
 ### <a name="restart-containers"></a>Indítsa újra a tárolók
-Után vizsgálja meg a naplókat és az üzenetek információt, próbálkozhat újraindítással tárolók:
+Miután megvizsgálta a naplók és üzenetek információit, próbálja meg újraindítani a tárolók:
 
 ```
 iotedge restart <container name>
 ```
 
-Indítsa újra az IoT-Edge futásidejű tárolókban:
+Indítsa újra az IoT Edge-futtatókörnyezet tárolóiból:
 
 ```
 iotedge restart edgeAgent && iotedge restart edgeHub
 ```
 
-### <a name="restart-the-iot-edge-security-manager"></a>Indítsa újra a IoT Edge-kezelő
+### <a name="restart-the-iot-edge-security-manager"></a>Indítsa újra az IoT Edge-biztonságkezelő
 
-Ha a probléma továbbra is megőrzése, megpróbálhatja az IoT-Edge biztonságkezelő újraindítani.
+Ha a probléma továbbra is átlátni, próbálja meg újraindítani az IoT Edge-biztonságkezelő.
 
 Linux:
 
@@ -199,30 +199,30 @@ Egy tároló nem fut, és az Edge Agent-naplók a 403-as hibát tartalmazzák.
 Az Edge Agentnek nincs engedélye egy modul rendszerképének eléréséhez. 
 
 ### <a name="resolution"></a>Megoldás:
-Győződjön meg arról, hogy a beállításjegyzék hitelesítő adatok helyesen vannak-e megadva az üzembe helyezési jegyzékben
+Győződjön meg arról, hogy a tárolójegyzék hitelesítő adatainak helyesen vannak megadva a manifest nasazení
 
-## <a name="iot-edge-security-daemon-fails-with-an-invalid-hostname"></a>Az IoT-Edge biztonsági démon meghiúsul, és egy érvénytelen állomásnév
+## <a name="iot-edge-security-daemon-fails-with-an-invalid-hostname"></a>IoT Edge biztonsági démon meghiúsul, és a egy érvénytelen állomásnév
 
-A parancs `sudo journalctl -u iotedge` sikertelen lesz, és kiírja a következő üzenetet: 
+A parancs `sudo journalctl -u iotedge` meghiúsul, és kinyomtatja a következő üzenet: 
 
 ```output
 Error parsing user input data: invalid hostname. Hostname cannot be empty or greater than 64 characters
 ```
 
 ### <a name="root-cause"></a>Gyökérok
-Az IoT-Edge futásidejű csak támogat, amelyek 64 karakternél rövidebb állomásnevek. Ez általában a fizikai gépek lemezhely, de akkor fordulhat elő, ha beállít egy virtuális gépen a futtatókörnyezet. Az automatikusan létrehozott állomásnevek Windows virtuális gépek Azure-ban üzemeltetett különösen általában hosszú. 
+Az IoT Edge-futtatókörnyezet csak támogatja, amelyek 64 karakternél rövidebb gazdanévvel. Ez általában nem jelent problémát, fizikai gépek számára, de előfordulhatnak, ha a virtuális gépen a futtatókörnyezet beállítása. Az automatikusan létrehozott gazdanevek Windows virtuális gépek az Azure-ban üzemeltetett, általában hosszú. 
 
 ### <a name="resolution"></a>Megoldás:
-Ha ez a hibaüzenet jelenik meg, hogyan oldható meg konfigurálásával a virtuális gép DNS-nevét, és majd beállítását az állomásnevet a setup parancs a DNS-nevét.
+Ha ezt a hibát látja, feloldhatja konfigurálásával a virtuális gép DNS-nevét, és beállítja a DNS-nevét a setup parancs az állomásnevet.
 
-1. Az Azure-portálon lépjen a virtuális gép – áttekintés oldalra. 
-2. Válassza ki **konfigurálása** DNS-neve alatt. Ha a virtuális gép már a DNS-név konfigurálva van, nem kell egy új konfigurálása. 
+1. Az Azure Portalon lépjen a virtuális gép áttekintés oldalán. 
+2. Válassza ki **konfigurálása** DNS-neve alatt. Ha a virtuális géphez már tartozik egy DNS-név konfigurálva, nem kell egy új konfigurálása. 
 
-   ![DNS-nevét konfigurálja](./media/troubleshoot/configure-dns.png)
+   ![Konfigurálja a DNS-név](./media/troubleshoot/configure-dns.png)
 
 3. Adjon meg egy értéket a **DNS-névcímke** válassza **mentése**.
-4. Másolja az új DNS-neve, ami a formátumúnak kell lennie  **\<DNSnamelabel\>.\< vmlocation\>. cloudapp.azure.com**.
-5. A virtuális gépen belül az alábbi parancs segítségével állítsa be a DNS-névvel az IoT peremhálózati futásidejű:
+4. Másolja a következő formátumban kell lennie új DNS-név  **\<DNSnamelabel\>.\< vmlocation\>. cloudapp.Azure.com formát követi**.
+5. A virtuális gépen belül a következő parancs használatával állítsa be az IoT Edge-futtatókörnyezet, a DNS-névvel:
 
    - Linux:
 
@@ -236,5 +236,37 @@ Ha ez a hibaüzenet jelenik meg, hogyan oldható meg konfigurálásával a virtu
       notepad C:\ProgramData\iotedge\config.yaml
       ```
 
+## <a name="stability-issues-on-resource-constrained-devices"></a>Erőforrás stabilitási problémák korlátozott eszközök 
+Felmerülhet korlátozott eszközökön, például a Raspberry Pi-októl stabilitását, különösen akkor, ha az átjáróként használt. Memória kivételeket az edge hub modul kívül tünetei, alsóbb rétegbeli eszközök nem csatlakoznak, vagy az eszköz nem a telemetriai üzeneteket küld a néhány óra múlva.
+
+### <a name="root-cause"></a>Gyökérok
+Az edge hub, az edge-futtatókörnyezet része, amely alapértelmezés szerint a teljesítmény optimalizáltuk, és megpróbálja nagy mennyiségű memóriát lefoglalni. Ez nem ideális korlátozott edge-eszközök és stabilitását problémákat okozhat.
+
+### <a name="resolution"></a>Megoldás:
+Az Edge hub környezeti változó értéke **OptimizeForPerformance** való **hamis**. Ehhez két módja van:
+
+A felhasználói felület: a portálon *eszközadatok*->*modulok beállítása*->*speciális Edge-futtatókörnyezet-beállítások konfigurálása*, környezet létrehozása nevű változó *OptimizeForPerformance* , amely *hamis* számára a *Edge hubot*.
+
+![optimizeforperformance][img-optimize-for-perf]
+
+A manifest nasazení:
+
+```json
+  "edgeHub": {
+    "type": "docker",
+    "settings": {
+      "image": "mcr.microsoft.com/azureiotedge-hub:1.0",
+      "createOptions": <snipped>
+    },
+    "env": {
+      "OptimizeForPerformance": {
+          "value": "false"
+      }
+    },
+```
+
 ## <a name="next-steps"></a>További lépések
 Úgy gondolja, hogy hibát talált az IoT Edge platformon? Kérjük, a kijavításához [küldje el a problémát](https://github.com/Azure/iotedge/issues). 
+
+<!-- Images -->
+[img-optimize-for-perf]: ./media/troubleshoot/OptimizeForPerformanceFalse.png

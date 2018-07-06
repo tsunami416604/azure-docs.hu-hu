@@ -1,6 +1,6 @@
 ---
-title: Telepítse át az új rugalmas adatbázis-feladatok |} Microsoft Docs
-description: Telepítse át az új rugalmas adatbázis-feladatok.
+title: Az új, rugalmas adatbázis-feladatok át |} A Microsoft Docs
+description: Telepítse át az új, rugalmas adatbázis-feladatok.
 services: sql-database
 author: johnpaulkee
 manager: craigg
@@ -8,29 +8,29 @@ ms.service: sql-database
 ms.topic: article
 ms.date: 06/14/2018
 ms.author: johnpaulkee
-ms.openlocfilehash: 2f5e4587de009329cd8cf0eded88f79afe96a184
-ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
+ms.openlocfilehash: 97d50b6ddcbb46cb291578caab5193e13cc56932
+ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37036101"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37868881"
 ---
-# <a name="migrate-to-the-new-elastic-database-jobs"></a>Telepítse át az új rugalmas adatbázis-feladatok
+# <a name="migrate-to-the-new-elastic-database-jobs"></a>Az új rugalmas adatbázis-feladatok áttelepítése
 
-Frissített verziójának [rugalmas adatbázis-feladatok](elastic-jobs-overview.md) érhető el.
+Frissített verziójú [Elastic Database-feladatok](elastic-jobs-overview.md) érhető el.
 
-Ha egy meglévő tárolt felhasználói verziót [rugalmas adatbázis-feladatok](sql-database-elastic-jobs-overview.md), áttelepítési parancsmagok és parancsfájlok biztosított könnyen áttelepítéséhez a legújabb verzióra.
+Ha rendelkezik meglévő üzemeltetett ügyfél verziója, [Elastic Database-feladatok](sql-database-elastic-jobs-overview.md), áttelepítési parancsmagokkal és parancsfájlokkal biztosított egyszerűen áttelepítéséhez a legújabb verzióra.
 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-A frissített verziót a rugalmas feladatok rendelkezik egy új PowerShell-parancsmagok használata az áttelepítés során. Ezek a parancsmagok az összes meglévő feladat hitelesítő adatait, átviteli irányul (például adatbázisok, kiszolgálók, a gyűjtemények), feladat eseményindítók, a feladatütemezéseket, a feladat tartalma és a feladatok keresztül egy új rugalmas feladat ügynöknek.
+A frissített rugalmas adatbázis-feladatok használata PowerShell-parancsmagok új készletét rendelkezik áttelepítés során. A parancsmagok átvinni az összes meglévő feladat hitelesítő adatait, célozza meg (például adatbázisok, kiszolgálók, egyéni gyűjtemények), feladat eseményindítók, a feladatok ütemezését, a feladat tartalma és a feladatok keresztül, egy új feladatügynök.
 
-### <a name="install-the-latest-elastic-jobs-cmdlets"></a>A legújabb rugalmas feladat parancsmagjainak telepítése
+### <a name="install-the-latest-elastic-jobs-cmdlets"></a>A legújabb Elastic Jobs-parancsmagjainak telepítése
 
-Ha még nem rendelkezik már rendelkezik Azure-előfizetéssel, [ingyenes fiók létrehozását](https://azure.microsoft.com/free/) megkezdése előtt.
+Ha még nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt [létrehozhat egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladat megkezdése előtt.
 
-Telepítse a legújabb előzetes AzureRM.Sql Powershell-modul a rugalmas feladat parancsmagjainak segítségével.
+Telepítse a legújabb előzetes verziót azurerm.SQL-hez Powershell-modul beszerzése a rugalmas feladat-parancsmagokat.
 
 ```powershell
 # Installs the latest PackageManagement powershell package which PowershellGet v1.6.5 is dependent on
@@ -44,9 +44,9 @@ Find-Package PowerShellGet -RequiredVersion 1.6.5 | Install-Package -Force
 Install-Module -Name AzureRM.Sql -AllowPrerelease -Force
 ```
 
-### <a name="create-a-new-elastic-job-agent"></a>Hozzon létre egy új rugalmas feladat ügynök
+### <a name="create-a-new-elastic-job-agent"></a>Hozzon létre egy új feladatügynök
 
-Miután telepítette az új parancsmagok, hozzon létre egy új rugalmas feladat ügynök.
+Miután telepítette az új parancsmagok, hozzon létre egy új feladatügynök.
 
 ```powershell
 # Register your subscription for the for the Elastic Jobs public preview feature
@@ -58,15 +58,15 @@ $db = Get-AzureRmSqlDatabase -ResourceGroupName <resourceGroupName> -ServerName 
 $agent = $db | New-AzureRmSqlElasticJobAgent -Name <agentName>
 ```
 
-### <a name="install-the-old-elastic-database-jobs-cmdlets"></a>A régi rugalmas adatbázis-feladatok-parancsmagjainak telepítése
+### <a name="install-the-old-elastic-database-jobs-cmdlets"></a>A régi Elastic Database-feladatok parancsmagjainak telepítése
 
-Áttelepítési néhány használatára van szüksége a *régi* rugalmas feladat-parancsmagokat, így futtassa a következő parancsokat, ha már nincs rájuk telepítve.
+Áttelepítési van szüksége, használhatja a *régi* rugalmas feladat parancsmagok, ezért futtassa a következő parancsokat, ha már nincs telepítve.
 
 ```powershell
 # Install the old elastic job cmdlets if necessary and initialize the old jobs cmdlets
 .\nuget install Microsoft.Azure.SqlDatabase.Jobs -prerelease
 
-# Install the the old jobs cmdlets
+# Install the old jobs cmdlets
 cd Microsoft.Azure.SqlDatabase.Jobs.x.x.xxxx.x*\tools
 Unblock-File .\InstallElasticDatabaseJobsCmdlets.ps1
 .\InstallElasticDatabaseJobsCmdlets.ps1
@@ -80,7 +80,7 @@ Use-AzureSqlJobConnection -CurrentAzureSubscription -Credential (Get-Credential)
 
 ## <a name="migration"></a>Migrálás
 
-Most, hogy mind a régi és új rugalmas feladat parancsmagok inicializálása, telepítse át a feladat hitelesítő adatai, célok és feladatok az új *feladat adatbázis*.
+Most, hogy mind a régi és új Elastic Jobs parancsmagok inicializálása, telepíti át a feladat hitelesítő adatai, tárolók és a feladatok az új *feladat adatbázis*.
 
 ### <a name="setup"></a>Beállítás
 
@@ -128,7 +128,7 @@ function Migrate-Credentials ($agent) {
 }
 ```
 
-A hitelesítő adatok áttelepítéséhez végre az alábbi parancsot a történő a `$agent` korábban a PowerShell-objektum.
+Át a hitelesítő adatait, hajtsa végre a következő parancs megadásával a `$agent` korábban a PowerShell-objektumot.
 
 ```powershell
 Migrate-Credentials $agent
@@ -356,10 +356,10 @@ function Setup-TargetGroup ($tgName, $agent) {
 }
 ```
 
-A cél (kiszolgálók, adatbázisok és egyéni gyűjtemények) az új feladat adatbázis áttelepítéséhez hajtsa végre a **áttelepítése-TargetGroups** parancsmaggal a következőket hajthatja végre:
+A tárolók (kiszolgálókat, adatbázisokat és egyéni gyűjtemények) át az új feladat adatbázis, hajtsa végre a **áttelepítése – célcsoportok** kövesse az alábbi parancsmagot:
 
-- Gyökér szintű célok, amelyek a kiszolgálók és adatbázisok telepíti át egy új célcsoport neve "(\<kiszolgálónév\>, \<databaseName\>)" csak a legfelső szintű tároló tartalmazó.
-- Egyéni gyűjteményt egy új célcsoportot tartalmazó összes gyermek-cél Ezzel telepíti át.
+- Gyökér szintű célok, amelyek a kiszolgálók és adatbázisok migrálása egy új nevű célcsoportot "(\<serverName\>, \<databaseName\>)" tartalmazó csak a legfelső szintű tároló.
+- Egyéni gyűjtemény összes gyermek cél csoportja új cél során migrálja.
 
 ```powershell
 Migrate-TargetGroups $agent
@@ -389,7 +389,7 @@ Példa a kimenetre:
 
 
 
-### <a name="migrate-jobs"></a>Telepítse át a feladatok
+### <a name="migrate-jobs"></a>Feladatok áttelepítése
 
 ```powershell
 function Migrate-Jobs ($agent)
@@ -552,11 +552,11 @@ function Setup-JobStep ($newJob, $job) {
 }
 ```
 
-A feladatok, a feladat tartalmát, a feladat eseményindítók és a feladatok ütemezésének keresztül az új ügynök rugalmas feladat adatbázis áttelepítéséhez hajtsa végre a **áttelepítése-feladatok** az ügynök benyújtása parancsmag.
+A feladatok, a feladat tartalmát, a feladat eseményindítók és a feladatütemezések keresztül át az új ügynök rugalmas feladat adatbázist, hajtsa végre a **áttelepítése-feladatok** parancsmag ad át az ügynököt.
 
-- Több, különböző ütemezése eseményindító feladatok vannak osztva több feladat elnevezési séma: "\<jobName\> (\<scheduleName\>)".
-- Feladat tartalma átkerülnek egy feladat feladatlépés használja nevű társított parancsszöveget alapértelmezett feladatlépéshez hozzáadásával.
-- Feladatok le vannak tiltva alapértelmezés szerint úgy, hogy az engedélyezésük előtt ellenőrizheti.
+- Eltérő ütemezésekkel való több eseményindító rendelkező feladatok vannak tagolva elnevezési sémával rendelkező több feladatot: "\<jobName\> (\<scheduleName\>)".
+- Feladat tartalmát JobStep nevű társított parancsszöveget alapértelmezett feladatlépéshez hozzáadásával egy feladathoz lesznek áttelepítve.
+- Feladatok le vannak tiltva alapértelmezés szerint úgy, hogy azok engedélyezése előtt ellenőrizheti őket.
 
 ```powershell
 Migrate-Jobs $agent
@@ -592,9 +592,9 @@ Job job4
 
 
 
-## <a name="migration-complete"></a>Az áttelepítés befejezése
+## <a name="migration-complete"></a>Áttelepítés befejezése
 
-A *feladat adatbázis* most már rendelkezik az összes a feladat hitelesítő adatai, a célok, a feladat eseményindítók, a feladatok ütemezését, a feladat tartalom, és át kell feladatok.
+A *feladat adatbázis* most már az összes feladat hitelesítő adatai, tárolók, feladat eseményindítók, feladatütemezések, feladat tartalmát, és a feladatok összesítjük.
 
 Győződjön meg arról, hogy minden megfelelően lett áttelepítve, használja az alábbi parancsfájlok:
 
@@ -605,13 +605,13 @@ $jobs = $agent | Get-AzureRmSqlElasticJob
 $steps = $jobs | Get-AzureRmSqlElasticJobStep
 ```
 
-Tesztelje, hogy feladatok megfelelően vannak-e végrehajtása, indítsa el őket:
+Ha tesztelni szeretné, hogy a feladatok megfelelően futtatja, indítsa el őket:
 
 ```powershell
 $jobs | Start-AzureRmSqlElasticJob
 ```
 
-Az összes feladat ütemezés szerint futtatott ne felejtse el lehetővé teszi, hogy a háttérben futnak:
+Az ütemezés szerint futó feladatok ne felejtse engedélyezheti őket, hogy a háttérben futnak:
 
 ```powershell
 $jobs | Set-AzureRmSqlElasticJob -Enable
@@ -619,5 +619,5 @@ $jobs | Set-AzureRmSqlElasticJob -Enable
 
 ## <a name="next-steps"></a>További lépések
 
-- [PowerShell-lel rugalmas feladatok létrehozásához és kezeléséhez](elastic-jobs-powershell.md)
-- [Transact-SQL (T-SQL) használatával rugalmas feladatok létrehozásához és kezeléséhez](elastic-jobs-tsql.md)
+- [Rugalmas feladatok létrehozása és kezelése a PowerShell használatával](elastic-jobs-powershell.md)
+- [Rugalmas feladatok létrehozása és kezelése a Transact-SQL (T-SQL) használatával](elastic-jobs-tsql.md)

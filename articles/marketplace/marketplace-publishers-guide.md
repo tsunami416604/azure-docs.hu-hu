@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 06/05/2018
 ms.author: ellacroi
-ms.openlocfilehash: ff78a7ed700506625761b0b1060040548b4a3ea1
-ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
+ms.openlocfilehash: 0572caa1cd09c164d6c5a53bfe1c143bccffd535
+ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37344814"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37859088"
 ---
 # <a name="azure-marketplace-and-appsource-publisher-guide"></a>Az Azure Marketplace és AppSource útmutató Közzétevőknek  
 
@@ -75,27 +75,18 @@ Egyszer, [küldje el a megoldás](https://azuremarketplace.microsoft.com/sell/si
 A Microsoft piaci megjelenést előnyökről és növelje üzletét a marketplace-en kapcsolatos további információkért látogasson el a [a Microsoft piaci megjelenést szolgáltatások lapon](https://partner.microsoft.com/reach-customers/gtm).
 
 ---  
+## <a name="marketplace-and-storefronts"></a>Marketplace-en és Kirakattípus 
 
-## <a name="storefronts"></a>Áruházak  
-A Microsoft két különböző kirakattípus biztosít a marketplace-en. A kirakattípus ajánlatok listázása, a kísérletek engedélyezése és a közvetlenül a Microsoft ügyfelei transact lehetővé teszik.  
-*   Appsource-ban és az Azure Marketplace-en
-    *   A kirakattípus kapcsolatos további információkért látogasson el a összehasonlítása appsource-ban, és Azure Marketplace-en oldalon található [összehasonlítása appsource-ban és az Azure Marketplace-en](./comparing-appsource-azure-marketplace.md).
-*   AppSource 
-    *   További információ az appsource-ban, keresse fel a növekedési üzleti AppSource oldalon található [Vállalatfejlesztés az AppSource segítségével](./grow-your-business-with-appsource.md).  
-*   Azure Piactér 
-    *   További információ az Azure Marketplace-en, keresse fel a növekedési címen található a vállalkozása az Azure Marketplace-en lap [növelje üzletét az Azure Marketplace](./grow-your-business-with-azure-marketplace.md).  
+A Microsoft biztosít két különböző kirakattípus a marketplace-en: appsource-ban és az Azure Marketplace-en. A piactér kirakattípus igazodik célközönség és a Microsoft felhőalapú termékek segítenek az ügyfeleknek, könnyedén megtalálhatja a pontosan mire van szükségük. 
 
-A kirakattípus lehetővé teszi található, és megvásárolják alkalmazásokat és szolgáltatásokat, felgyorsíthatja a digitális átalakulást. A kirakattípus segít Önnek a növekedésben a vállalatok a Microsoft ügyfelei és partnerei való hozzáférés kiterjesztésével.  
- 
-Minden kirakat biztosít a speciális beállításokat a közzétételi befektetések optimális kihasználása érdekében. Az alábbi táblázat foglalja össze, ezeket a beállításokat.  
+Kiválasztása kirakat kezdődik a megoldás a célközönség azonosítása. Az alábbi táblázat segítségével döntse el: 
 
-|  | AppSource | Azure Piactér |  
-|:--- |:--- |:--- |  
-| Célközönség | Az üzleti döntéshozók<table> <tr> <th>szakértő szerepkörök </th> </tr> <tr> <td>Könyvelés</td> </tr> <tr> <td>Beszerzés</td> </tr> <tr> <td>Gyártás</td> </tr> </table> | Informatikai szakemberek és fejlesztők<table> <tr> <th>szakértő szerepkörök </th> </tr> <tr> <td>DevOps</td> </tr> <tr> <td>Adatbázisok</td> </tr> <tr> <td>SecOps</td> </tr> </table> |  
+|  | AppSource | Azure Piactér |
+|:--- |:--- |:--- |
+| Célközönség | Az üzleti döntéshozók | Informatikai szakemberek és fejlesztők | 
 | A beépített vagy bővítése | Azure<br />Dynamics 365<br />Office 365<br />Power BI<br />PowerApps | Azure |  
-| Megoldás- és szolgáltatástípusok | Üzleti felhőalkalmazások befejeződött<br />Az Office 365-bővítmények | Infrastruktúra-megoldások<br />Professzionális szolgáltatások |  
-| Csomag típusa | Tanácsadási szolgáltatások<br />Kapcsolatfelvétel<br />Ingyenes próbaidőszak<br />Most<br />Próbaüzem | Azure-alkalmazások: a felügyelt alkalmazások<br />Az Azure apps: megoldássablonok<br />Tanácsadási szolgáltatások<br />Kapcsolatfelvétel<br />Próbaverzió<br />virtuális gép |  
-| A felhasználók hozzáférést alkalmazáson belüli élmény<br />alkalmazások és szolgáltatások keretében<br />az alkalmazás | Dynamics 365<br />Office 365<br />Office kliensalkalmazások<br />Power BI | Azure Portal<br />Az Azure Resource Manager parancssori felület |  
+
+Minden kirakat a Speciális beállítások és maximalizálhatja az üzleti lehetőség képességeket nyújt. Látogasson el a kirakattípus részletesebb összehasonlításáért [összehasonlítása appsource-ban és az Azure Marketplace-en](./comparing-appsource-azure-marketplace.md). 
 
 ---   
 

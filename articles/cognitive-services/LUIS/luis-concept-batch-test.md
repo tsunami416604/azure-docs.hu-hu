@@ -1,78 +1,79 @@
 ---
-title: Kötegelt a alkalmazás tesztelése a LUIS - Azure |} Microsoft Docs
-description: Kötegelt tesztelési célra használható az alkalmazás számára, pontosítsa és a nyelvi megértése folyamatosan dolgozunk.
+title: Batch tesztelése a LUIS-alkalmazás – Azure |} A Microsoft Docs
+description: Tesztelés a batch segítségével folyamatosan dolgozunk azon, pontosítsa és javítható a beszédfelismerés annak az alkalmazás.
 services: cognitive-services
 author: v-geberr
 manager: kaiqb
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 03/14/2018
+ms.date: 07/05/2018
 ms.author: v-geberr
-ms.openlocfilehash: 3803df32d6431b8413e8df0837ed62b2e4344cdc
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: f0366e805c9ae809a2800b0f4be53d08d9fc3d60
+ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35348183"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37857908"
 ---
-# <a name="batch-testing-in-luis"></a>Kötegelt LUIS tesztelése
+# <a name="batch-testing-in-luis"></a>A Batch a LUIS tesztelése
 
-Kötegelt tesztelés érvényesíti a [aktív](luis-concept-version.md#active-version) betanított modell méréséhez az előrejelzés pontosságát. A kötegelt teszt segít minden leképezés és az entitás pontosságát tekintse meg a diagramot a jelenlegi betanított modell. Ellenőrizze a kötegelt vizsgálati eredményeket hajtsa végre a megfelelő műveletet, például további példa utterances hozzáadása megjelölésű, ha az alkalmazás gyakran nem tudja azonosítani a helyes leképezés pontosság növeléséhez.
+Batch tesztelés érvényesíti a [aktív](luis-concept-version.md#active-version) betanított modell méréséhez az előrejelzés pontosságát. Az egyes szándékot és entitás pontosságát megtekintése a diagramon az aktuális betanított modell egy batch-teszt segítségével. Tekintse át a batch-vizsgálati eredmények pontosságának, például további példa beszédmódok hozzáadása megjelölésű, ha az alkalmazás gyakran nem tudja azonosítani a helyes cél növelése érdekében a megfelelő műveletet.
 
-## <a name="group-data-for-batch-test"></a>A kötegelt teszteléséhez csoport adatai
-Fontos, hogy kötegelt teszteléshez utterances még nem használta a LUIS. Ha a utterances dataset, ossza három be utterances: utterances megjelölésű hozzá, a közzétett végpont kapott utterances és utterances használt kötegelt tesztelési LUIS után be van tanítva. 
+## <a name="group-data-for-batch-test"></a>A batch-teszt csoport adatai
+Fontos, hogy batch tesztelésére utterances nem ismeri a LUIS. Ha utterances az adatkészlet, megcímkézzen három csoportokba oszthatja: utterances megjelölésű hozzáadott, a közzétett végpontról érkezett utterances és használt batch-próbára LUIS, ha be van tanítva kimondott szöveg. 
 
-## <a name="a-dataset-of-utterances"></a>A utterances adatkészlet
-Küldje el a utterances néven kötegelt fájl egy *adatkészlet*, kötegelt teszteléséhez. Az adatkészlet egy olyan JSON-formátumú fájl legfeljebb 1000 feliratú tartalmazó **nem ismétlődő** utterances. Legfeljebb 10 adatkészletek alkalmazáson belüli tesztelheti. Több tesztelni kell, ha törli egy adatkészletet, és adja meg egy új.
+## <a name="a-dataset-of-utterances"></a>Egy adatkészlet a kimondott szöveg
+Küldje el a fájlt egy kötegfájlban utterances, más néven egy *adatkészlet*, kötegelt teszteléséhez. Az adatkészlet maximum 1000 feliratú tartalmazó JSON-formátumú fájlt **egyszer előforduló** kimondott szöveg. Legfeljebb 10 adatkészletek tesztelheti egy alkalmazásban. Ha szeretne további tesztelése, adatkészlet törlése, és adja hozzá az egy újat.
 
 |**Szabályok**|
 |--|
-|* Nem ismétlődő utterances|
-|Nincs a hierarchikus gyermeke|
+|* Nincsenek ismétlődő kimondott szöveg|
+|A hierarchikus gyermekek nem|
 |1000 utterances vagy kevesebb|
 
-* Ismétlődések pontos karakterlánc megfelel, nem megfelelő találat először tokenekre bontott minősülnek. 
+* Ismétlődések karakterlánc pontos egyezést, nem a rendszer először tokenekre bontott egyezéstípust minősülnek. 
 
 <a name="json-file-with-no-duplicates"></a>
 <a name="example-batch-file"></a>
-## <a name="batch-file-format"></a>Kötegelt fájlformátum
-A kötegfájl utterances áll. Minden egyes utterance rendelkeznie kell egy várt leképezési előrejelzés együtt [gép megtanulta entitások](luis-concept-entity-types.md#types-of-entities) várhatóan észlelhető. 
+## <a name="batch-file-format"></a>Batch-fájlformátum
+A kötegfájl utterances áll. Minden kimondásakor rendelkeznie kell egy várt szándék előrejelzési együtt bármely [gép megismert entitások](luis-concept-entity-types.md#types-of-entities) várhatóan észlelhető. 
 
-A következő egy példa kötegfájl:
+Egy példa batch-fájl a következő:
 
    [!code-json[Valid batch test](~/samples-luis/documentation-samples/batch-testing/travel-agent-1.json)]
 
 
-## <a name="common-errors-importing-a-batch"></a>Gyakori hibák a kötegelt importálása
+## <a name="common-errors-importing-a-batch"></a>Gyakori hibák a batch importálása
 Gyakori hibák a következők: 
 
-> * Több mint 1000 utterances
-> * Egy entitás tulajdonsággal nem rendelkező utterance JSON objektum
+> * Több mint 1000 kimondott szöveg
+> * Az utterance (kifejezés) JSON-objektum, amely nem rendelkezik az entitások tulajdonság
+> * A több entitás feliratú szavak
 
-## <a name="batch-test-state"></a>Kötegelt teszt állapota
-LUIS minden adatkészlet utolsó vizsgálat állapotát követi nyomon. Tartalmazzák a legutóbbi futtatás méretét (a kötegben utterances száma), dátum és az utolsó eredményét (sikeres előre jelzett utterances száma).
+## <a name="batch-test-state"></a>Batch-teszt állapota
+A LUIS minden adathalmaz utolsó teszt állapotát követi nyomon. Ez magában foglalja a legutóbbi futtatás mérete (a köteg utterances száma), dátum, és a legutóbbi eredmény (utterances sikeresen előre jelzett száma).
 
 <a name="sections-of-the-results-chart"></a>
-## <a name="batch-test-results"></a>Kötegelt teszt eredményei
-A kötegelt tesztelési eredménye pont grafikon, egy hiba mátrix néven ismert. Ez a diagram a fájl és az aktuális modell előre jelzett leképezés és entitások utterances 4 – kétutas összehasonlítása. 
+## <a name="batch-test-results"></a>A Batch terhelésiteszt-eredményei
+A batch-vizsgálat eredményének a pontdiagram grafikon, egy hiba mátrix néven. Ez a diagram a fájlt, és az aktuális modell előre jelzett szándékot és entitások megcímkézzen 4-módszer összehasonlítását. 
 
-Az adatpontok a **téves pozitív** és **hamis negatív** szakaszok jelzi a hibákat, amelynek meg kell vizsgálni. Ha minden adatpontok a **igaz pozitív** és **igaz negatív** szakaszban, akkor az alkalmazás pontossága tökéletes megoldás az adatkészlethez.
+Az adatpontok a **hamis pozitív** és **téves negatív** szakaszok jelzi a hibákat, amelyeket meg kell vizsgálni. Összes adatpont esetén a **valódi pozitívak** és **igaz negatív** részei, akkor az alkalmazás pontossága tökéletes megoldás az adatkészlethez.
 
 ![Diagram négy részből áll](./media/luis-concept-batch-test/chart-sections.png)
 
-Ez a diagram segít az aktuális képzési helytelenül alapján, amely LUIS előrejelzi utterances található. Az eredmények a diagram régiónként jelennek meg. Válassza ki a diagramot úgy, hogy tekintse át a utterance adatokat, vagy jelölje ki a régió nevét, az adott régióban utterance eredményeinek áttekintése egyes pontjait.
+Ez a diagram segít helytelenül alapján a jelenlegi képzést, amely előrejelzi a LUIS utterances található. Az eredmények jelennek meg a diagram régiónként. Válassza ki a diagramon, tekintse át az utterance (kifejezés) adatokat, vagy válassza ki az adott régióban utterance (kifejezés) eredményeinek áttekintése régió neve egyedi pontokat.
 
-![Kötegelt tesztelése](./media/luis-concept-batch-test/batch-testing.png)
+![Kötegelt tesztelés](./media/luis-concept-batch-test/batch-testing.png)
 
 ## <a name="errors-in-the-results"></a>Eredmények hibái
-A kötegelt teszt utalnak, hogy a rendszer nem jelzett másolóeszközt leírtaknak megfelelően leképezések. Hibák a diagram a két piros szakaszban szerepelnek. 
+A batch-teszt utalnak, hogy a rendszer nem jelzett másolóeszközt feljegyzett leképezések. Hibák a diagram a két piros szakaszban szerepelnek. 
 
-A téves pozitív szakasz azt jelzi, hogy egy utterance megfelelő egy leképezés vagy entitás pedig nem kellett volna. A hamis negatív azt jelzi, hogy egy utterance nem egyezik a leképezés vagy entitás kell volna. 
+A hamis pozitív szakasz azt jelzi, hogy az utterance (kifejezés) egyezik a leképezés vagy entitás pedig nem kellett volna. A téves negatív azt jelzi, hogy az utterance (kifejezés) nem egyezik a leképezés vagy entitás amikor rendelkeznie kell. 
 
-## <a name="fixing-batch-errors"></a>Kötegelt hibák elhárítása
-Ha nincsenek hibák, a kötegelt teszteléshez, akkor is további utterances hozzáadása megjelölésű, és/vagy címke további utterances érdekében ellenőrizze a leképezések megkülönböztetését LUIS entitással. Ha hozzáadta utterances, és címkével őket, és továbbra is get előrejelzés hibáinak kötegelt tesztelése, vegyen fel egy [kifejezéslista](luis-concept-feature.md) tartományspecifikus szóhasználatának gyorsabban további LUIS segítségével a szolgáltatás. 
+## <a name="fixing-batch-errors"></a>A batch hibáinak javítása
+Ha hiba van a batch-tesztelés, is vagy további beszédmódok hozzáadása egy beszédszándék és/vagy az entitáshoz, LUIS, győződjön meg arról, közötti leképezések megkülönböztetés érdekében további utterances címkézését. Ha hozzáadta a kimondott szöveg, és feliratú őket, és továbbra is get előrejelzési hibák a batch tesztelése, érdemes lehet hozzáadni egy [kifejezéslista](luis-concept-feature.md) szolgáltatása, amely rendelkezik a tartomány-specifikus szöveg szóhasználati, ismerje meg, gyorsabb LUIS segítségével. 
 
 ## <a name="next-steps"></a>További lépések
 
-* Megtudhatja, hogyan [egy kötegelt tesztelése](luis-how-to-batch-test.md)
+* Ismerje meg, hogyan [kötegelt tesztelése](luis-how-to-batch-test.md)

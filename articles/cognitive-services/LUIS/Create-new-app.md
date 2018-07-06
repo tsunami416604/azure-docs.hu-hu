@@ -1,6 +1,6 @@
 ---
-title: Hozzon létre egy új alkalmazást LUIS |} Microsoft Docs
-description: Alkalmazások létrehozásához és kezeléséhez a nyelvi ismertetése (LUIS) webhelyen.
+title: Új alkalmazás létrehozása az intelligens hangfelismerési szolgáltatással |} A Microsoft Docs
+description: Létrehozhat és kezelhet az alkalmazások, a Language Understanding (LUIS) weblapon.
 services: cognitive-services
 author: v-geberr
 manager: kaiqb
@@ -9,76 +9,76 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 04/17/2018
 ms.author: v-geberr
-ms.openlocfilehash: 75edd39346995cdef72bb1e1fcb9eaff53d29702
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 998a85720f5707fbf6ed4c5cfa3ed0dab5d1cc0e
+ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "35349787"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37865045"
 ---
 # <a name="create-an-app"></a>Alkalmazás létrehozása
-Létrehoz egy új alkalmazást különböző módon: 
+Egy új alkalmazást hoz létre, különböző módon: 
 
-* [Start](#create-new-app) üres alkalmazáshoz, és hozzon létre a leképezések, utterances és entitások.
-* [Start](#create-new-app) üres alkalmazáshoz, és adja hozzá a [előre elkészített tartomány](luis-how-to-use-prebuilt-domains.md).
-* [Importálja a LUIS alkalmazások](#import-new-app) a JSON-fájl, amely már tartalmazza a leképezések, utterances és entitások.
+* [Indítsa el](#create-new-app) egy üres alkalmazást és szándék fog vonatkozni, utterances és entitások létrehozásához.
+* [Indítsa el](#create-new-app) egy üres alkalmazást, és adja hozzá a [előre összeállított tartomány](luis-how-to-use-prebuilt-domains.md).
+* [A LUIS alkalmazás importálása](#import-new-app) , amely már tartalmazza a szándék fog vonatkozni, utterances és entitások JSON-fájlból.
 
-## <a name="what-is-an-app"></a>Mi az az alkalmazást
-Az alkalmazás tartalmaz [verziók](luis-how-to-manage-versions.md) a modell, valamint bármely [közreműködők](luis-how-to-collaborate.md) az alkalmazás. Az alkalmazás létrehozásakor bejelöli-e a kulturális környezethez ([nyelvi](luis-supported-languages.md)) amely **később már nem módosítható**. 
+## <a name="what-is-an-app"></a>Mi az alkalmazás
+Az alkalmazás tartalmaz [verziók](luis-how-to-manage-versions.md) a modellt, valamint bármely [közreműködők](luis-how-to-collaborate.md) az alkalmazáshoz. Amikor az alkalmazást hoz létre, ki kell választania a kulturális környezet ([nyelvi](luis-supported-languages.md)) amely **később már nem módosítható**. 
 
-Az alapértelmezett egy új alkalmazás verziója "0,1." 
+Új alkalmazás alapértelmezett verzióját az "0.1". 
 
-Hozhat létre és kezeli az alkalmazásokat a **saját alkalmazások** lap. Ez a lap választásával mindig elérhető **alkalmazásaimat** a felső navigációs sávján látható a [LUIS](luis-reference-regions.md) webhely. 
+Létrehozhat és kezelhet alkalmazásokat a **saját alkalmazások** lapot. Ezen a lapon kattintva mindig elérheti **saját alkalmazások** a navigációs sáv tetején, a [LUIS](luis-reference-regions.md) webhely. 
 
-[![](media/luis-create-new-app/apps-list.png "Képernyőkép a alkalmazások listája")](media/luis-create-new-app/apps-list.png#lightbox)
+[![](media/luis-create-new-app/apps-list.png "Képernyőkép az alkalmazások listája")](media/luis-create-new-app/apps-list.png#lightbox)
 
 ## <a name="create-new-app"></a>Új alkalmazás létrehozása
 
-1. A **saját alkalmazások** lapon jelölje be **hozzon létre új alkalmazás**.
-2. A párbeszédpanelen adja meg az alkalmazás "TravelAgent" nevét.
+1. A **saját alkalmazások** lapon jelölje be **új alkalmazás létrehozása**.
+2. A párbeszédpanelen adjon nevet az alkalmazás "TravelAgent".
 
     ![Hozzon létre új alkalmazás párbeszédpanel](./media/luis-create-new-app/create-app.png)
 
-3. Válassza ki az alkalmazás kulturális környezet (TravelAgent alkalmazások esetén válassza az angol), majd válassza ki **végzett**. 
+3. Válassza ki az alkalmazás kulturális környezet (TravelAgent alkalmazások esetén válassza az angol nyelvű), majd válassza ki **kész**. 
 
     >[!NOTE]
-    >A kulturális környezet nem módosítható, az alkalmazás létrehozása után. 
+    >A kulturális környezet nem módosítható, ha az alkalmazás létrejött. 
 
 ## <a name="import-new-app"></a>Új alkalmazás importálása
-Beállíthatja a nevét (legfeljebb 50 karakter), a verzió (legfeljebb 10 karakter) és az alkalmazás leírása a JSON-fájlban. JSON alkalmazásfájlokhoz példák érhető el [LUIS-minták](https://github.com/Microsoft/LUIS-Samples/tree/master/documentation-samples/Examples-BookFlight).
+Beállíthatja a nevét (max. 50 karakter), verzió (legfeljebb 10 char) és az alkalmazás leírását a JSON-fájlban. Példák a alkalmazás JSON-fájlok esetén érhető el [LUIS-Samples](https://github.com/Microsoft/LUIS-Samples/tree/master/documentation-samples/Examples-BookFlight).
 
-1. A **saját alkalmazások** lapon jelölje be **importálási új alkalmazás**.
-2. Az a **importálási új alkalmazás** párbeszédpanelen válassza ki a JSON-fájlt a LUIS app meghatározása.
+1. A **saját alkalmazások** lapon jelölje be **importálása új alkalmazás**.
+2. Az a **importálása új alkalmazás** párbeszédpanelen válassza ki a JSON-fájlt a LUIS alkalmazás meghatározása.
 
-    ![Importálja az új alkalmazás párbeszédpanel](./media/luis-create-new-app/import-app.png)
+    ![Importálja egy új alkalmazás párbeszédpanel](./media/luis-create-new-app/import-app.png)
 
 ## <a name="export-app"></a>Alkalmazás exportálása
-1. A **saját alkalmazások** lapon, válassza ki a három pont (…) az alkalmazás sor végén.
+1. A **saját alkalmazások** lapon, válassza ki a három pontra (***...*** ) az alkalmazások sor végén található.
 
-    [![](media/luis-create-new-app/apps-list.png "Az alkalmazáson belüli műveletek felugró párbeszédpanel képernyőképe")](media/luis-create-new-app/three-dots.png#lightbox)
+    [![](media/luis-create-new-app/apps-list.png "App műveletek felugró párbeszédpanel képernyőképe")](media/luis-create-new-app/three-dots.png#lightbox)
 
-2. Válassza ki **exportálási app** a menüből. 
+2. Válassza ki **exportálási alkalmazás** a menüből. 
 
-## <a name="rename-app"></a>Nevezze át az alkalmazást
+## <a name="rename-app"></a>Alkalmazás átnevezése
 
-1. A **saját alkalmazások** lapon, válassza ki a három pont (…) az alkalmazás sor végén. 
+1. A **saját alkalmazások** lapon, válassza ki a három pontra (***...*** ) az alkalmazások sor végén található. 
 2. Válassza ki **átnevezése** a menüből.
-3. Írja be az alkalmazást, és válassza ki az új nevét **végzett**.
+3. Adja meg az alkalmazást, és válassza az új neve **kész**.
 
 ## <a name="delete-app"></a>Alkalmazás törlése
 
 > [!CAUTION]
-> Törli az összes közreműködők és a tulajdonos alkalmazása. [Exportálás](#export-app) törlése előtt az alkalmazást. 
+> Az alkalmazás összes közreműködők és a tulajdonos törlése folyamatban van. [Exportálás](#export-app) az alkalmazás törlése előtt. 
 
-1. A **saját alkalmazások** lapon, válassza ki a három pont (…) az alkalmazás sor végén. 
+1. A **saját alkalmazások** lapon, válassza ki a három pontra (***...*** ) az alkalmazások sor végén található. 
 2. Válassza ki **törlése** a menüből.
-3. Válassza ki **Ok** a az ablak.
+3. Válassza ki **Ok** a megerősítési ablakban.
 
-## <a name="export-endpoint-logs"></a>Végpont logs exportálása
-A naplók tartalmazza a következő lekérdezést, UTC idő szerint, és LUIS JSON-választ.
+## <a name="export-endpoint-logs"></a>Végpont naplók exportálása
+A naplók tartalmaznak a lekérdezést, UTC-idő és a LUIS JSON-választ.
 
-1. A **saját alkalmazások** lapon, válassza ki a három pont (…) az alkalmazás sor végén. 
-2. Válassza ki **végpont logs exportálása** a menüből.
+1. A **saját alkalmazások** lapon, válassza ki a három pontra (***...*** ) az alkalmazások sor végén található. 
+2. Válassza ki **végpont naplók exportálása** a menüből.
 
 ```
 Query,UTC DateTime,Response
@@ -87,4 +87,4 @@ text i'm driving and will be 30 minutes late to the meeting,02/13/2018 15:18:43,
 
 ## <a name="next-steps"></a>További lépések
 
-Az első feladat a alkalmazás [leképezések hozzáadása](luis-how-to-add-intents.md).
+Az első az alkalmazás feladata [leképezések hozzáadása](luis-how-to-add-intents.md).

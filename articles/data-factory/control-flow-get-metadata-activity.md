@@ -1,6 +1,6 @@
 ---
-title: Azure Data Factory beolvasása a metaadatok tevékenység |} Microsoft Docs
-description: Ismerje meg, hogyan használhatja az SQL Server tárolt eljárási tevékenység meghívni a Data Factory-folyamat az az Azure SQL Database vagy az Azure SQL Data Warehouse tárolt eljárást.
+title: Metaadatok beolvasása tevékenység az Azure Data Factoryban |} A Microsoft Docs
+description: Ismerje meg, hogyan használhatja az SQL Server tárolt eljárási tevékenység egy tárolt eljárást az Azure SQL Database vagy Azure SQL Data Warehouse a Data Factory-folyamatok meghívásához.
 services: data-factory
 documentationcenter: ''
 author: sharonlo101
@@ -12,38 +12,38 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/10/2018
+ms.date: 07/03/2018
 ms.author: shlo
-ms.openlocfilehash: c07199887faf073d19007f1ef410c193bbdbf3ee
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: c24bec7366ea62b3dd8f7a301c9d2d62c6dd6c7d
+ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37049366"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37859278"
 ---
-# <a name="get-metadata-activity-in-azure-data-factory"></a>Az Azure Data Factory metaadatok tevékenység beolvasása
-GetMetadata tevékenység használható beolvasása **metaadatok** az Azure Data Factory adatok. Ez a tevékenység a következő esetekben használhatók:
+# <a name="get-metadata-activity-in-azure-data-factory"></a>Metaadatok beolvasása tevékenység az Azure Data Factoryban
+GetMetadata tevékenység is lehet lekérni **metaadatok** minden adat, az Azure Data Factoryban. Ez a tevékenység a következő esetekben használhatók:
 
-- A metaadatok adatok ellenőrzése
-- Egy folyamat indul el, ha adatok készen / érhető el
+- Metaadat-információkat az adatok ellenőrzése
+- Folyamat aktiválása, ha az adatok készen / érhető el
 
-A következő funkciókat a vezérlési folyamatában érhető el:
+Az alábbi funkciókat átvitelvezérlés érhető el:
 
-- A GetMetadata tevékenység kimenete ellenőrzéshez feltételes kifejezéseket is használható.
-- Egy folyamat is elindítható, amikor keresztül tegye feltétel teljesül-e-amíg ismétlési
+- A feltételes kifejezések érvényesítésekhez GetMetadata tevékenység kimenete is használható.
+- Egy folyamat indítható el, ha a feltétel teljesül-keresztül Do-Until ciklusos
 
-## <a name="supported-capabilities"></a>Támogatott képességei
+## <a name="supported-capabilities"></a>Támogatott képességek
 
-A GetMetadata tevékenység egy kötelező bemeneti adatkészlet szükséges, és kiírja a tevékenység kimeneti elérhető metaadat-információt. Jelenleg az alábbi csatlakozók a megfelelő lekérhető meatadata támogatottak:
+A GetMetadata tevékenység egy kötelező bemeneti adatkészlet szükséges, és kiírja a tevékenység kimeneti elérhető metaadat-információkat. Jelenleg az alábbi csatlakozók a megfelelő lekérhető meatadata támogatottak, és a maximális támogatott metaadatok mérete legfeljebb **1MB**.
 
 >[!NOTE]
->Ha egy Self-hosted integrációs futásidejű GetMetadata tevékenység futtatja, a legújabb funkció támogatott 3.6 verzió vagy újabb verzióját. 
+>Ha egy helyi Integration Runtime GetMetadata tevékenység futtatja, a legújabb funkció támogatott 3.6-os verzióját vagy újabb. 
 
 ### <a name="supported-connectors"></a>Támogatott összekötők
 
 **Fájltároló:**
 
-| Összekötő/metaadatok | itemName<br>(fájl vagy mappa) | itemType<br>(fájl vagy mappa) | méret<br>(fájl) | létrehozva<br>(fájl vagy mappa) | módosítás dátuma<br>(fájl vagy mappa) |childItems<br>(mappa) |contentMD5<br>(fájl) | struktúra<br/>(fájl) | Oszlopszám<br>(fájl) | létezik-e<br>(fájl vagy mappa) |
+| Összekötő/metaadatok | Elemnév<br>(fájlok/mappák) | itemType<br>(fájlok/mappák) | méret<br>(fájl) | létrehozva<br>(fájlok/mappák) | módosítás dátuma<br>(fájlok/mappák) |childItems<br>(mappa) |contentMD5<br>(fájl) | struktúra<br/>(fájl) | Oszlopszám<br>(fájl) | létezik<br>(fájlok/mappák) |
 |:--- |:--- |:--- |:--- |:--- |:--- |:--- |:--- |:--- |:--- |:--- |
 | Amazon S3 | √/√ | √/√ | √ | x/x | √ / √ * | √ | x | √ | √ | √ / √ * |
 | Azure-blob | √/√ | √/√ | √ | x/x | √ / √ * | √ | √ | √ | √ | √/√ |
@@ -53,12 +53,12 @@ A GetMetadata tevékenység egy kötelező bemeneti adatkészlet szükséges, é
 | SFTP | √/√ | √/√ | √ | x/x | √/√ | √ | x | √ | √ | √/√ |
 | FTP | √/√ | √/√ | √ | x/x | √/√ | √ | x | √ | √ | √/√ |
 
-- Az Amazon S3 a `lastModified` gyűjtő és kulcs, de nem virtuális mappa; vonatkozik; és a `exists` vagy alkalmazza a gyűjtő és a kulcs azonban nem előtag virtuális mappa.
+- Az Amazon S3 a `lastModified` bucket és a kulcs, de nem virtuális mappában; vonatkozik; és a `exists` bucket és a kulcsot, de nem előtag vagy virtuális mappa vonatkozik.
 - Az Azure Blob a `lastModified` tároló és a blob, de nem virtuális mappa vonatkozik.
 
 **Relációs adatbázis:**
 
-| Összekötő/metaadatok | struktúra | Oszlopszám | létezik-e |
+| Összekötő/metaadatok | struktúra | Oszlopszám | létezik |
 |:--- |:--- |:--- |:--- |
 | Azure SQL Database | √ | √ | √ |
 | Azure SQL Data Warehouse | √ | √ | √ |
@@ -66,23 +66,23 @@ A GetMetadata tevékenység egy kötelező bemeneti adatkészlet szükséges, é
 
 ### <a name="metadata-options"></a>Metaadat-beállítások
 
-A következő metaadat-típusok beolvasása a GetMetadata tevékenység mezőlistán adható meg:
+A következő metaadat-típusok a GetMetadata tevékenység lekérdezni a mezőlistában adható meg:
 
-| Metaadatok típusa | Leírás |
+| Metaadat típusa | Leírás |
 |:--- |:--- |
-| itemName | A fájl vagy mappa neve. |
+| Elemnév | A fájl vagy mappa neve. |
 | itemType | A fájl vagy mappa típusú. Kimeneti érték `File` vagy `Folder`. |
-| méret | A fájl bájtos mérete. A következő fájl csak alkalmazható. |
+| méret | Fájl mérete a bájtban. Csak fájl alkalmazható. |
 | létrehozva | A fájl vagy mappa létrehozott datetime. |
-| módosítás dátuma | Utolsó módosítás dátum és idő, a fájl vagy mappa. |
-| childItems | Almappák és a megadott mappában lévő fájlok listájának. Csak a mappára érvényes. Kimeneti értéke nevét és típusát az egyes alárendelt elemek listáját. |
-| contentMD5 | A fájl a MD5-kivonata. A következő fájl csak alkalmazható. |
-| struktúra | A fájl vagy a relációs adatbázis tábla belül adatstruktúra. Kimeneti értéke oszlopnév és oszloptípus listáját. |
-| Oszlopszám | A fájl vagy a relációs tábla belül oszlopok száma. |
-| létezik-e| E egy fájl vagy mappa vagy a tábla létezik-e vagy sem. Vegye figyelembe, ha "létezik-e" a GetaMetadata mezőlistán van megadva, a tevékenység nem sikertelen, akkor is, ha a cikk (fájl/mappa vagy tábla) nem létezik; Ehelyett adja vissza `exists: false` kimenet. |
+| módosítás dátuma | Utolsó módosítás a fájl vagy mappa datetime. |
+| childItems | Almappák és az adott mappában lévő fájlok listája. Csak a mappára érvényes. Kimeneti érték neve és típusa, egyes alárendelt elemek listáját. |
+| contentMD5 | A fájl MD5-tel. Csak fájl alkalmazható. |
+| struktúra | A fájl vagy a relációs adatbázis-táblában lévő adatok szerkezetét. Kimeneti oszlop neve és típusú oszlop értéke. |
+| Oszlopszám | A fájl vagy a relációs tábla található oszlopok számát. |
+| létezik| Egy fájl/mappa/table megtalálható-e vagy sem. Megjegyzés: Ha "létezik" van megadva a GetaMetadata mezők listájában, a tevékenység sikertelen nem, akkor is, ha az elem (fájl/mappa/tábla) nem létezik; Ehelyett adja vissza `exists: false` a kimenetben. |
 
 >[!TIP]
->Ha azt szeretné, ellenőrizze, hogy a fájl vagy mappa vagy a tábla létezik-e vagy sem, adja meg a `exists` a GetMetadata tevékenység mezőlistán, majd ellenőrizheti a `exists: true/false` eredménye a tevékenység kimenetét. Ha `exists` nem szerepel a listán, a GetMetadata tevékenység sikertelen lesz, amikor az objektum nem található.
+>Amikor ellenőrizheti, hogy egy fájl/mappa/tábla létezik, vagy nem szeretné, adja meg a `exists` a GetMetadata tevékenység mezők listájában, majd ellenőrizheti a `exists: true/false` a tevékenység kimeneti eredménye. Ha `exists` nem történik meg a mezők listájában, a GetMetadata tevékenység sikertelen lesz, amikor az objektum nem található.
 
 ## <a name="syntax"></a>Szintaxis
 
@@ -124,20 +124,20 @@ A következő metaadat-típusok beolvasása a GetMetadata tevékenység mezőlis
 }
 ```
 
-## <a name="type-properties"></a>A típus tulajdonságai
+## <a name="type-properties"></a>Tulajdonságok
 
-Jelenleg a GetMetadata tevékenység is fetch metaadat-információkat a következő típusú.
+Jelenleg a GetMetadata tevékenység lehet beolvasni a következő típusú metaadat-információkat.
 
 Tulajdonság | Leírás | Szükséges
 -------- | ----------- | --------
-Mezőlista | Felsorolja a szükséges metaadatok. A részleteket a [metaadatok](#metadata-options) támogatott metaadatok szakaszt. | Igen 
-Adatkészlet | A referencia-adatkészletnek amelynek metaadatok tevékenysége a GetMetadata tevékenység által kérhető. Lásd: [támogatott képességek](#supported-capabilities) támogatott összekötők a szakaszt, és tekintse meg a dataset szintaxis részletek összekötő témakör. | Igen
+Mezőlista | Felsorolja a szükséges metaadatokat adatokat. A részleteket a [metaadatok beállítások](#metadata-options) a támogatott metaadatok szakasz. | Igen 
+adatkészlet | A referencia-adatkészletnek amelynek metaadatok tevékenységet, GetMetadata tevékenység által lekérni. Lásd: [Supported capabilities](#supported-capabilities) támogatott összekötők a szakaszt, és hivatkozik adatkészlet szintaxis részleteinek összekötő témakör. | Igen
 
 ## <a name="sample-output"></a>Példa kimenet
 
-A GetMetadata eredmény megjelenik az tevékenység kimenetét. Az alábbiakban a két minta hivatkozásként mező listában kijelölt teljes körű metaadatok beállításokkal. Az eredmény a soron következő tevékenységek használatához a mintát `@{activity('MyGetMetadataActivity').output.itemName}`.
+Tevékenység kimenete a GetMetadata eredménye látható. Az alábbiakban két mintát a teljes körű metaadatok beállítás van kiválasztva, a mező listában, hivatkozásként van listázva. Az eredmény a soron következő tevékenysége használatához használja a következő mintát, `@{activity('MyGetMetadataActivity').output.itemName}`.
 
-### <a name="get-a-files-metadata"></a>A fájl metaadatot beszerezni
+### <a name="get-a-files-metadata"></a>A fájl metaadatainak beolvasása
 
 ```json
 {
@@ -162,7 +162,7 @@ A GetMetadata eredmény megjelenik az tevékenység kimenetét. Az alábbiakban 
 }
 ```
 
-### <a name="get-a-folders-metadata"></a>A mappa metaadatot beszerezni
+### <a name="get-a-folders-metadata"></a>Egy mappametaadatok beolvasása
 
 ```json
 {
@@ -185,7 +185,7 @@ A GetMetadata eredmény megjelenik az tevékenység kimenetét. Az alábbiakban 
 ```
 
 ## <a name="next-steps"></a>További lépések
-Tekintse meg a többi adat-előállító által támogatott vezérlésfolyam-tevékenységek: 
+Tekintse meg a többi Data Factory által támogatott átvitelvezérlési tevékenységek: 
 
 - [Folyamat végrehajtása tevékenység](control-flow-execute-pipeline-activity.md)
 - [Minden egyes tevékenységhez](control-flow-for-each-activity.md)

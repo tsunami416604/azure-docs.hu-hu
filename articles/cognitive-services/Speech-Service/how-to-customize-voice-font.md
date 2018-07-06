@@ -1,6 +1,6 @@
 ---
-title: Mi az az egyéni hang? -Azure kognitív szolgáltatások |} Microsoft Docs
-description: A cikk áttekintése Microsoft szöveg-beszéd átalakítás hang testreszabásával, amely lehetővé teszi egy felismerhető, egy-az-a-jellegű márka hang létrehozását.
+title: Mi az egyéni beszédfelismerési? – Az azure Cognitive Services |} A Microsoft Docs
+description: Ez a cikk áttekintése Microsoft szöveg-beszéd átalakítás hangalapú testreszabásával, amely lehetővé teszi, hogy hozzon létre egy könnyen felismerhető névre, egy-az-maga nemében egyedülálló márka hangalapú.
 services: cognitive-services
 author: noellelacharite
 manager: nolach
@@ -8,87 +8,77 @@ ms.service: cognitive-services
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: nolach
-ms.openlocfilehash: ad5af799fd46dc51b85432999f986de8cdb056ec
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 9f7fbcc804229de69c3c72fb33ae03c88af70145
+ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35349347"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37857497"
 ---
-# <a name="creating-custom-voice-fonts"></a>Egyedi Hangüzenetek betűtípusok létrehozása
+# <a name="creating-custom-voice-fonts"></a>Egyéni hangtípust létrehozása
 
-Microsoft szöveg-beszéd átalakítás (TTS) hang testreszabási lehetővé teszi a márka számára felismerhető, egy-az-a-jellegű hangot létrehozását: egy *hang betűtípusát.* 
+Microsoft szövegfelolvasás (Szövegfelolvasás) hangalapú testreszabási lehetővé teszi, hogy hozzon létre egy könnyen felismerhető névre, egy-az-maga nemében egyedülálló hang, a saját márkáját: egy *hangtípusú.* 
 
-A hang betűtípus létrehozása, ellenőrizze a studio felvétel, majd töltse fel a betanítási adatok, a kapcsolódó parancsprogramokat. A szolgáltatás ekkor létrehoz egy egyedi hang modell a rögzítése terveztek. A beszédfelismerési betűtípusára majd beszéd szintetizálásához. 
+A hangtípusú létrehozásához, győződjön meg arról, a studio felvételt, és töltse fel a betanítási adatok, a kapcsolódó parancsprogramokat. A szolgáltatás ekkor létrehoz egy egyéni modell a rögzítése használatára vannak konfigurálva. Ezután használhatja e hangtípusú, beszéd szintetizálásához. 
 
-Ismerkedés a koncepció igazolása adatainak kevés. De a további adatokat ad meg, annál természetes és professional hanggal hangvételére.
+Az egy kisebb mennyiségű adatot egy megvalósíthatósági megkezdheti. De minél több adatot ad meg, annál természetes és professional a hangját hangzik.
 
-Hang testreszabási angol (en-US) és szárazföldi kínai (zh-CN) érhető el.
+Hangalapú testreszabási amerikai angol (en-US) és kontinens kínai (zh-CN) érhető el.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-A szöveg-beszéd átalakítás hang testreszabási szolgáltatás jelenleg magán előnézetben. [Töltse ki az alkalmazás űrlapot](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR0N8Vcdi8MZBllkZb70o6KdURjRaUzhBVkhUNklCUEMxU0tQMEFPMjVHVi4u) hozzáférés figyelembe kell venni.
+A szöveg-beszéd átalakítás testreszabási funkciót jelenleg privát előzetes verzióban érhető el. [Az alkalmazás űrlap kitöltésekor](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR0N8Vcdi8MZBllkZb70o6KdURjRaUzhBVkhUNklCUEMxU0tQMEFPMjVHVi4u) hozzáférés figyelembe kell venni.
 
-Emellett a következőkre van szükség:
+Az Azure-fiók és a egy előfizetést a beszédfelismerési szolgáltatás is szükséges. [Hozzon létre egyet] (https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/get-started) Ha még nem tette. A következő csatlakozzon az előfizetés az egyéni beszédfelismerési portálon.
 
-* Az Azure-fiók ([regisztráljon az ingyenes](https://azure.microsoft.com/free/ai/) Ha még nincs ilyen).
+1. Jelentkezzen be a [egyéni beszédfelismerési portál](https://customvoice.ai) hozzáférést alkalmazásához használt ugyanazon Microsoft-fiók használatával.
 
-* A beszéd-előfizetés. [Hozzon létre egyet](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesSpeechServices) Ha még nem tette meg.
-
-    ![Hozzon létre panel](media/custom-voice/create-panel.png)
-
-Miután létrehozta az előfizetést, a gyors üzembe helyezés vagy a áttekintése panelen az új előfizetés két előfizetés kulcsok találja. Vagy a kulcs segítségével.
-
-Végül csatlakoztassa az előfizetés az egyéni hang portálon az alábbiak szerint.
-
-1. Jelentkezzen be a [egyéni hang portal](https://customvoice.ai) hozzáféréshez használt alkalmazandó ugyanazon Microsoft-fiókjával.
-
-2. Nyissa meg a jobb felső "Előfizetések" a fiók alatt.
+2. Lépjen a fiók neve alatt az "előfizetések" jobb felső sarokban.
 
     ![Előfizetések](media/custom-voice/subscriptions.png)
 
-3. Az "Előfizetés" lapon válassza a "Csatlakozás meglévő előfizetés".
+3. Az "Előfizetések" oldalán válassza a "Csatlakozás meglévő előfizetés".
 
-     ![Csatlakozás meglévő előfizetés](media/custom-voice/connect-existing-sub.png)
+     ![Csatlakozás a meglévő előfizetés](media/custom-voice/connect-existing-sub.png)
 
-4. Az Előfizetés kulcs illessze be a táblázat alább látható módon.
+4. Az előfizetési kulcs illessze be a táblázat alább látható módon. Minden előfizetési csomaghoz tartozik két kulcsot, és bármelyiket használhatja.
 
      ![Előfizetés hozzáadása](media/custom-voice/add-subscription.png)
 
-Most készen áll!
+Készen áll a go!
 
-## <a name="prepare-recordings-and-transcripts"></a>Felvétel és ki előkészítése
+## <a name="prepare-recordings-and-transcripts"></a>És előkészítése
 
-Egy hang képzési dataset hangfájlok, az alábbi zenei fájlok átiratai tartalmazó szövegfájl együtt áll.
+Audio-fájlokat, és a egy szövegfájlt, amely tartalmazza az összes alábbi hangfájlok az átiratok hangalapú betanítási adatkészletet tartalmaz.
 
-Ezek a fájlok egyik irányban előkészítheti: vagy parancsfájlokat, és hang tehetség, olvassa vagy használja a nyilvánosan elérhető hang és szöveggé átvezeti őket. Az utóbbi esetben a hang fájlok, például a "százalékos" és más kitöltő hangok, akadozik, mumbled szavak vagy mispronunciations disfluencies szerkesztése.
+Ezek a fájlok bármelyik irányba előkészítheti: vagy írjon egy parancsfájlt, és annak hangalapú szakembereket, olvassa vagy használja a nyilvánosan elérhető hang és átvezeti őket szöveg. Az utóbbi esetben az audio fájlokból, például a "um" és egyéb kitöltő hangok, akadozik, mumbled szavakat vagy mispronunciations disfluencies szerkesztése.
 
-Egy jó hang betűtípus eredményezett, fontos, hogy a felvétel kiváló minőségű mikrofon csendes helyiségben történik. Egységes kötet sebessége, és beszéljen térközt és kifejező mannerisms beszéd beszéd nélkülözhetetlenek a kiváló digitális hangot felépítése. Egy hang üzemi használatra létrehozásához javasoljuk, használjon egy professzionális rögzítése studio és hangra vonatkozó tehetség.
+Egy jó hangtípusú előállításához, fontos, hogy a felvételt a magas színvonalú mikrofon csendes szoba történik. Egységes kötet, és beszéljen sebességét, beszéd térközt és kifejező mannerisms beszéd elengedhetetlenek, amellyel a nagyszerű digitális hangot. Hozzon létre egy hang éles környezetben, azt javasoljuk egy professzionális felvétel studio és a hangalapú szakembereket használja.
 
 ### <a name="audio-files"></a>Hangfájlok
 
-Mindegyik hangfájlt egy egyetlen utterance (például egyetlen mondatban vagy párbeszédpanel rendszer egyetlen menetben) kell tartalmaznia. Minden fájl (többnyelvű egyéni hangok nem támogatottak) nyelvével azonos nyelven kell lennie. A hangfájlok is egyes egy egyedi numerikus fájlnevet kell a fájlnév-kiterjesztésű végrehajtott `.wav`.
+Mindegyik hangfájlt tartalmaznia kell egy egyetlen utterance (például egyetlen mondatban vagy párbeszédpanel rendszer egyetlen menetben). Minden fájl (többnyelvű egyéni beszédhangot nejsou podporována) ugyanazt a nyelvet kell lennie. Hangfájlt is minden egyes rendelkeznie kell egy egyedi, a fájlnév-kiterjesztésű végzett numerikus filename `.wav`.
 
-Hangfájlok a következőképpen kell készíteni. Más formátum nem támogatott, és vissza lesznek utasítva.
+Hangfájlok a következőképpen kell készíteni. Más formátum nem támogatott, és a rendszer elutasítja.
 
 | **Tulajdonság** | **Érték** |
 | ------------ | --------- |
 | Fájlformátum  | RIFF (WAV)|
-| Mintavételi ráta| 16 000 Hz |
-| Csatornák     | 1 (monophonic)  |
-| A minta formátumban| PCM, 16 bites |
+| Mintavételi ráta| legalább 16 000 Hz |
+| Minta formátumával| A PCM, 16-bit |
 | Fájlnév    | A numerikus `.wav` bővítmény |
-| Archiválási formátum| zip      |
-| Archívum maximális mérete|200 MB|
+| Archív formátum| Zip      |
+| Maximális archívum mérete|200 MB|
 
-Helyezze el az hang fájlokat alkönyvtárak nélkül egyetlen mappába, majd egy ZIP-archívumból állítja be a teljes csomag.
+Hangfájlok készletét helyezzen alkönyvtárak nélkül egyetlen mappát, és egyetlen ZIP-archívumot, állítsa be a teljes csomag.
 
 > [!NOTE]
-> A portál jelenleg importálja ZIP legfeljebb 200 MB archiválja. Azonban több archívumot is fel kell tölteni. Az adatkészletek engedélyezett maximális számát az 10 ZIP-előfizetés felhasználóinak és a szabványos előfizetés felhasználók 50 szabad fájlokat.
+> Mintavételi sebessége alacsonyabb, mint 16000 Hz Wave fájlokat a rendszer elutasítja. Azokban az esetekben, ahol egy zip-fájl tartalmazza a regisztrálást megelőző szakaszban tanácsos különböző mintavételi aránnyal csak ezek egyenlő vagy nagyobb, mint 16000 Hz lesz importálva.
+> A portálon jelenleg importálja a TÖMÖRÍTETT archívum akár 200 MB. Azonban több archívumot lesz feltöltve. Adatkészletek engedélyezett maximális számát az 10 ZIP-előfizetés felhasználóinak és 50 a standard szintű előfizetés felhasználóinak ingyenes fájlok.
 
-### <a name="transcripts"></a>Ki
+### <a name="transcripts"></a>Szövegekben
 
-A írjanak elő fájl nem egy egyszerű Unicode-szövegfájlt (UTF-16 kevés-endian). A írjanak elő fájl minden egyes sorának hangfájl, tabulátor (kódpontot 9), és végül a Beszélgetés szövegének követ nevét kell rendelkeznie. Nem üres sorok engedélyezettek.
+Az átírási fájlja (ANSI/UTF-8/UTF-8-BOM/UTF-16-LE/UTF-16-BE) egyszerű szöveges fájlt. Az átírási fájl minden sorának rendelkeznie kell egy hangfájlt tabulátor (kódpont 9), végül pedig Videólejátszás követ nevét. Nem üres sorok engedélyezettek.
 
 Példa:
 
@@ -98,152 +88,152 @@ Példa:
 0000000003  It was Janet Maslin.
 ```
 
-Az egyedi Hangüzenetek rendszer normalizálja ki konvertálásakor a kisbetűs, és oda nem tartozó írásjelek eltávolításával. Fontos, hogy a ki-e a megfelelő hangfelvételei pontosságú 100 %.
+Az egyéni beszédfelismerési rendszer átiratok Normalizálja a szöveg konvertálása kisbetűket, és eltávolítja a felesleges beolvasások absztrakt. Fontos, hogy az átiratok-e a megfelelő hangfelvételeket pontosságú 100 %-os.
 
 > [!TIP]
-> Ha éles szöveg-beszéd átalakítás felépítése hangok, figyelembe véve a fonetikus érvényességének és a hatékonyság válassza utterances (vagy parancsfájlokat).
+> Amikor létrehozását a szöveg-hang transzformációs beszédhangot, figyelembe véve a fonetikus lefedettség és a hatékonyság válassza utterances (vagy parancsfájlokat).
 
-## <a name="upload-your-datasets"></a>Töltse fel az adatkészletek
+## <a name="upload-your-datasets"></a>Az adathalmazok feltöltése
 
-A hangfájl archiválási és ki előkészítése, után feltöltheti ezeket keresztül a [egyéni hang portálon](https://customvoice.ai).
+A hangfájl archív és szövegekben előkészítése, miután feltölti őket keresztül a [egyéni beszédfelismerési portál](https://customvoice.ai).
 
 > [!NOTE]
-> Adatkészletek nem szerkeszthető, miután fel lett töltve. Ha elfelejtette a átiratai zenei fájlok közé tartoznak például, vagy véletlenül válasszon ki a megfelelő nemét, újra kell tölteni a teljes adatkészletet. Ellenőrizze a DataSet adatkészlet és a beállítások alaposan feltöltésének megkezdése előtt.
+> Adatkészletek nem szerkeszthető, miután azok fel lett töltve. Ha elfelejtette szövegekben az egyes zenei fájlok tartalmazzák, például vagy véletlenül válassza ki a megfelelő nemek, újra fel kell tölteni a teljes adatkészletet. Ellenőrizze az adatkészlet és a beállításokat alaposan feltöltésének megkezdése előtt.
 
 1. Jelentkezzen be az Portalra.
 
-2. Válasszon **adatok** alatt egyéni hang fő lapján. 
+2. Válasszon **adatok** meg egyéni beszédfelismerési alatt. 
 
-    ![Saját projektek](media/custom-voice/my-projects.png)
+    ![Projektek](media/custom-voice/my-projects.png)
 
-    A saját hang adattábla jelenik meg. Üres, ha még nem feltöltött bármely hang adatkészletek.
+    A saját Beszédadatait tábla jelenik meg. Emellett akkor üres, ha még nem feltölteni hangalapú adatkészletekkel.
 
-3. Kattintson a **adatimportálás** új adatkészlet feltöltése lapjának megnyitásához.
+3. Kattintson a **adatimportálás** egy új adatkészlet feltöltése lap megnyitásához.
 
-    ![Hang-adatok beolvasása](media/custom-voice/import-voice-data.png)
+    ![Voice-adatok importálása](media/custom-voice/import-voice-data.png)
 
-4. Adjon meg nevet és leírást a megadott mezőket. 
+4. Adjon meg egy nevet és leírást a megadott mezőket. 
 
-5. Válassza ki a hang betűtípusok területi beállításokat. Győződjön meg arról, hogy a területibeállítás-információk rögzítése adatok és a parancsfájlok nyelvének megfelelő. 
+5. Válassza ki a területi beállításait a hangtípusokkal. Ellenőrizze, hogy a területi információval kapcsolatos adatok a felvétel és a parancsfájlok nyelvének megfelelő. 
 
-6. Válassza ki a nemének a hangalapú, amelynek hang használ.
+6. Válassza ki a beszélő, amelynek hangjával tartalmazzák.
 
-7. Válassza ki a parancsfájl és hangfájlok feltölteni. 
+7. Válassza ki a parancsfájl és hangfájlokat feltölteni. 
 
-8. Kattintson a **importálási** feltölteni az adatokat. Nagyobb adatkészletekhez importálása több percig is eltarthat.
+8. Kattintson a **importálás** feltölteni az adatokat. A nagyobb adatkészletek esetében importálása eltarthat néhány percig.
 
 > [!NOTE]
-> Ingyenes előfizetés felhasználók két adatkészletet feltöltheti egyszerre. Standard előfizetés felhasználóinak egyszerre öt adatkészletek töltse fel. Ha eléri a határértéket, várja meg, amíg a adatkészletek közül legalább egy befejezését importálása, és próbálkozzon újra.
+> Ingyenes előfizetés felhasználóinak egyszerre két adatkészletet tölthet fel. Standard szintű előfizetés felhasználóinak is feltölthet egyszerre öt adatkészletek. Ha eléri a korlátot, kis türelmet, amíg legalább egy, az adatkészletek importálásának befejezése, és próbálkozzon újra.
 
-Ha befejeződött a feltöltés, a saját hang adattábla ismét megjelenik. Meg kell jelennie egy bejegyzést, amely megfelel a most feltöltött DataSet adatkészlethez. 
+A feltöltés befejeződése után újra megjelenik a saját Beszédadatait tábla. Megjelenik egy bejegyzést, amely megfelel a feltöltött közvetlenül az adatkészlethez. 
 
-Adatkészletek feltöltése után automatikusan érvényesíti. Adatok érvényesítése több ellenőrzést a ellenőrizni a fájl formátumát, a mérete és a mintavételi ráta hangfájlok tartalmazza. A írjanak elő fájlok ellenőrzésére ellenőrizze a fájl formátumát, és hajtsa végre az egyes szöveg normalizálási. A utterances vannak kért beszédfelismerés, és így a szöveg a rendszer összehasonlítja a megadott szövegének.
+Az adatkészletek automatikusan érvényesíti feltöltés után. Adatok érvényesítése tartalmaz egy sor ellenőrzést a hang fájlokat, és ellenőrizze a fájlformátum, a méretet, és a mintavételi ráta. Ellenőrzések beszédátírási fájlokról ellenőrizze a fájlformátum, és hajtsa végre az egyes szöveg normalizálási. A kimondott szöveg beszédfelismerés megjelenített érzéseket, és így a szöveg a megadott szöveges összeveti.
 
-![A beszédfelismerési adataimhoz](media/custom-voice/my-voice-data.png)
+![Saját Beszédadatait](media/custom-voice/my-voice-data.png)
 
-Az alábbi táblázat a feldolgozási állapotok importált adatkészletek esetében. 
+Az alábbi táblázat a feldolgozási állapot importált adatkészletek esetében. 
 
 | Állapot | Jelentés
 | ----- | -------
-| `NotStarted` | A dataset érkezett, és a feldolgozáshoz sorba állított
-| `Running` | A dataset érvényesítésre kerül
-| `Succeeded` | A dataset ellenőrzése megtörtént, és előfordulhat, hogy most összeállításához kell használni egy hang betűtípus
+| `NotStarted` | Az adatkészlet megkaptuk, és a feldolgozáshoz sorba állított
+| `Running` | Folyamatban van az adatkészlet érvényesítése
+| `Succeeded` | Az adatkészlet ellenőrzése megtörtént, és előfordulhat, hogy most már használható hozhat létre egy hangtípusú
 
-Érvényesítési befejeződése után megtekintheti az egyes Utterance oszlopában az adatkészletek egyező utterances teljes száma.
+Érvényesítés befejezése után megjelenik az adatkészletek az utterance (kifejezés) oszlopban minden egyező utterances teljes száma.
 
-A jelentés a kiejtés pontokat és a zajszint ellenőrizze az egyes a felvételek töltheti le. A kiejtés pontszám tartományokon, 0 – 100. a pontszám alatt 70 általában azt jelzi, beszéd hiba vagy a parancsfájl nem egyeznek. Nehéz hangsúlyos csökkentheti a kiejtés pontszám és hatással lehet a létrehozott digitális hang.
+-Jelentés írásmódja pontszámokat és a zajszint ellenőrzéssel az egyes felvételeit töltheti le. A írásmódja pontszám értéke 0 – 100. 70 alatti általában azt jelzi, hogy beszéd hiba vagy a parancsfájl nem egyeznek. Nehéz hangsúlyos csökkenthető a írásmódja pontszám, és hatással van a generált digitális hangot.
 
-Magasabb jel-zaj arány (SNR) azt jelzi, hogy a hang az alsó zaj. Professional studios keresztül által általában egy 50 + SNR képes elérni. Az alábbi 20 egy SNR hang a generált hanggal nyilvánvaló zaj eredményezhet.
+Nagyobb jel zaj memóriaarányt (SNR) azt jelzi, hogy alacsonyabb lényeget a hangot a. Felvétel keresztül professzionális studios által általában egy több mint 50 SNR is elérheti. Az alábbi 20-SNR hang nyilvánvaló lényeget a generált hangminta eredményezhet.
 
-Vegye figyelembe a felvétel bármely utterances alacsony kiejtés pontszámok vagy gyenge jel zaj arányt tesz lehetővé. A felvétel nincs lehetőség, ha ezek utterances előfordulhat, hogy kizárja a dataset adatkészletből.
+Vegye figyelembe, hogy az alacsony írásmódja pontszámok vagy gyenge jel zaj arányok megszólalásokat a felvétel. A felvétel ez nem lehetséges, ha az adatkészlet előfordulhat, hogy kizárni azokat kimondott szöveg.
 
-## <a name="build-your-voice-font"></a>A beszédfelismerési betűtípus összeállítása
+## <a name="build-your-voice-font"></a>A hangtípusú létrehozása
 
-Miután a dataset ellenőrzése megtörtént, használhatja a egyedi Hangüzenetek betűtípus létrehozásához. 
+Ha az adatkészlet ellenőrzése megtörtént, hozhat létre az egyéni hangtípusú használhatja. 
 
-1. Válasszon **modellek** az "Egyéni Voice" legördülő menüjében. 
+1. Válasszon **modellek** "Egyéni beszédfelismerési" legördülő menüben. 
  
-    A saját hang betűtípusok tábla megjelenik, a már létrehozott egyedi Hangüzenetek betűtípusok tartalmazza.
+    A saját Hangtípust tábla megjelenő, bármely egyéni hangtípust már létrehozott.
 
-1. Kattintson a **hangok létrehozása** a tábla cím alatt. 
+1. Kattintson a **beszédhangot létrehozása** a táblázatban cím alatt. 
 
-    A lap egy hang betűtípus létrehozásához jelenik meg. A területi beállítás látható a tábla első sorát. Módosítsa a hangot létrehozásához egy másik nyelvű területi beállításokat. A területi beállítás ugyanaz, mint a hang létrehozásához használt adathalmaz kell lennie.
+    Az egy hangtípusú létrehozására szolgáló oldal jelenik meg. A tábla első sorát mutatja a jelenlegi területi beállításhoz. A területi beállítások egy hang létrehozása egy másik nyelven. A területi beállításai szerint ugyanaz, mint az adatkészletek a hangalapú létrehozásához használt kell lennie.
 
-1. Hasonló a dataset feltöltött, módon adja meg a nevet és leírást, hogy könnyebben azonosíthassa az ebben a modellben. 
+1. Az adatkészlet feltöltésekor ugyanúgy adjon meg egy nevet és leírást, hogy azonosíthatók legyenek az ebben a modellben. 
 
-    Itt neve lesz a nevet adja meg a hang a beszédfelismerés összefoglaló vonatkozó kérést az SSML-bemenet részeként, tehát a körültekintően használja. Csak betűket, számokat és néhány írásjelek karaktereket, mint például "-", "_" "(",")" engedélyezettek.
+    Itt adja meg a név lesz SSML bemeneti részeként adja meg a hangalapú beszédszintézishez vonatkozó kérelmét, ezért válasszon gondosan használt név. Csak betűket, számokat és néhány elválasztó karaktereket, például a '-', '_' '(',')' engedélyezettek.
 
-    A közös a Leírás mezőben rendeltetése jegyezze fel a modell létrehozása során használt adathalmaz nevét.
+    A Leírás mezőben egyik gyakori felhasználási, hogy a modell létrehozása során használt adatkészletekhez rekordnevekre.
 
-1. Válassza ki a nemét, a hang betűtípus. Meg kell egyeznie a nemét, a DataSet adatkészlet.
+1. Válassza ki a hangtípusú tartalmazzák. Meg kell egyeznie az adatkészlet tartalmazzák.
 
-1. Válassza ki az adathalmaz a hang betűtípus betanítása használni kívánt. Minden adatkészletekből a azonos hangalapú kell lennie.
+1. Válassza ki a képzés a hangtípusú használni kívánt adatkészlet(ek). Az azonos speaker használt összes adatkészlet kell lennie.
 
-1. Kattintson a **létrehozása** a hang betűtípus létrehozásának megkezdéséhez.
+1. Kattintson a **létrehozás** a hangtípusú létrehozásának megkezdéséhez.
 
     ![Modell létrehozása](media/custom-voice/create-model.png)
 
-Az új modell jelenik meg a saját hang betűtípusok tábla. 
+Az új modell jelenik meg a saját Hangtípust tábla. 
 
-![A beszédfelismerési betűkészletek](media/custom-voice/my-voice-fonts.png)
+![Saját Hangtípust](media/custom-voice/my-voice-fonts.png)
 
-A megjelenített állapot az adatkészlethez konvertálása egy hang betűtípus folyamata tükrözi, ahogy az itt látható.
+A megjelenített állapot jeleníti meg az adatkészlet egy hangtípusú átalakítása a folyamat itt látható módon.
 
 | Állapot | Jelentés
 | ----- | -------
-| `NotStarted` | A kérelem a hang betűtípus létrehozásához a a feldolgozáshoz sorba állított
-| `Running` | A beszédfelismerési betűtípus létrehozása folyamatban van
-| `Succeeded` | A beszédfelismerési betűtípus létrejött, és telepítésére
+| `NotStarted` | A kérelem a hangalapú betűtípus létrehozásához a feldolgozáshoz sorba állított
+| `Running` | A hangtípusú létrehozása folyamatban van
+| `Succeeded` | A hangtípusú létrejött, és is üzembe helyezhetők
 
-Idő betanítása attól függ, hogy a feldolgozott hang adatok mennyiségét. Tipikus időpontok között tájékozódhat utterances több száz 30 perc a 20 000 utterances 40 óra.
+Idő képzési hang feldolgozott adatok mennyiségétől függően változik. Tipikus alkalommal között tájékozódhat utterances több száz 30 perc a 20 000 utterances 40 óra.
 
 > [!NOTE]
-> Ingyenes előfizetés felhasználók is betanítása két hang betűtípusok egyszerre. Standard előfizetés felhasználóinak egyszerre három hangok még betanítani. Ha eléri a határértéket, várjon, amíg a hang betűtípusok közül legalább egy képzési befejeződik, majd próbálkozzon újra.
+> Ingyenes előfizetés felhasználóinak egy hangtípusú betaníthatja egyszerre. Standard szintű előfizetés felhasználóinak betaníthatja három beszédhangot egyszerre. Ha eléri a korlátot, várjon, amíg legalább egyike a hangtípust képzési befejeződik, majd próbálkozzon újra.
 
-## <a name="test-your-voice-font"></a>A beszédfelismerési betűtípus tesztelése
+## <a name="test-your-voice-font"></a>A hangtípusú tesztelése
 
-Miután a hang betűtípus sikeresen épül, mielőtt központilag telepítené azt a tesztelheti. Kattintson a **teszt** műveletek oszlopában. A teszt lap jelenik meg a kijelölt hangot betűkészlet. A táblázat üres, ha még nem még a vizsgálat kéréseit a hang.
+A hangtípusú sikeres létrehozása után tesztelheti, mielőtt központilag telepítené azt használja. Kattintson a **teszt** a műveletek oszlopban. A teszt lap megjelenik a kiválasztott hangtípusú. A táblázat üres, ha még nem még küldte el a hang teszt irányuló.
 
-![A beszédfelismerési betűkészletek, 2. rész](media/custom-voice/my-voice-fonts2.png)
+![Saját Hangtípust, 2. rész](media/custom-voice/my-voice-fonts2.png)
 
-Kattintson a **szövegre teszt** a tábla címben megjelenítendő szöveg a kérelmet a felbukkanó gombra. A tesztelési kérelem egyszerű szöveges vagy SSML elküldheti. A maximális bemeneti mérete 1024 karaktert, köztük az SSML-kérés található összes kódcímkének. A szöveg nyelvének a nyelve, a hang betűtípus azonosnak kell lennie.
+Kattintson a **szöveggel teszt** , megjelenik egy legördülő menü szöveg kérések elküldésére szolgáló tábla címe alatt megjelenő gomb. A tesztelési kérelem egyszerű szöveges vagy SSML küldhet. A maximális bemeneti mérete 1024 karakter hosszúságú, beleértve az összes címke SSML kérelem. A szöveg nyelvét a hangtípusú nyelvi azonosnak kell lennie.
 
-![Hangos betűtípus tesztelése](media/custom-voice/voice-font-testing.png)
+![Hangposta betűtípus tesztelése](media/custom-voice/voice-font-testing.png)
 
-A szövegmező kitöltése, és erősítse meg a beviteli módot, után kattintson a **Igen** küldje el a vizsgálati kérést, és a vizsgálati laphoz való visszatéréshez. A tábla most már tartalmaz egy bejegyzést, amely megfelel az új kérelmet, és most már ismerős állapot oszlopában. Beszéd szintetizálásához néhány percet is igénybe vehet. Az Állapot oszlopban sikeres olvasását, letöltheti a szöveges bevitel (egy `.txt` fájl) és a hangkimeneti (egy `.wav` fájl) és az utóbbi szolgáltatásminőségi audition.
+Miután a beviteli mód állapíthatja meg a beviteli mező kitöltése, kattintson a **Igen** a tesztelési kérelem elküldéséhez, és a teszt lapra való visszatéréshez. A táblázat most már tartalmaz egy bejegyzést, amely megfelel az új kérelmet, és a már ismerős Állapot oszlopban. Beszéd szintetizálásához néhány percet is igénybe vehet. Az Állapot oszlopban sikeres olvasását, letöltheti a szövegbevitel (egy `.txt` fájl) és a hangkimeneti (egy `.wav` fájl) és az utóbbi a minőségi audition.
 
-![Hangalámondás betűtípus tesztelése, 2. rész](media/custom-voice/voice-font-testing2.png)
+![Hangalapú betűtípus tesztelés, 2. rész](media/custom-voice/voice-font-testing2.png)
 
-## <a name="create-and-use-a-custom-endpoint"></a>Létrehozhat és használhat egy egyéni végpont
+## <a name="create-and-use-a-custom-endpoint"></a>Létrehozhat és használhat egyéni végpontok
 
-Miután sikeresen létrehozta és tesztelte a hang-modell, telepítheti azt egy egyéni szöveg-beszéd átalakítás végpont. Ehhez a végponthoz, a szokásos végpont helyett majd ha a szöveg-beszéd átalakítás kérést a REST API-n keresztül használja. Az egyéni végpont csak az előfizetést, a betűtípus központi telepítéséhez használt meghívható.
+Miután sikeresen létrehozta és tesztelte a hangalapú modell, üzembe helyezésekor egy egyéni szövegfelolvasás végpontot. Ezt a végpontot a szokásos végpont helyett majd a REST API-n keresztül szöveg-beszéd átalakítás kérések küldésekor használja. Egyéni végpontra az előfizetést, amellyel a betűtípus telepítése csak a nem hívható meg.
 
-Hozzon létre egy új egyéni végpontot, válassza a **végpontok** a lap tetején lévő egyedi Hangüzenetek menüből. A központi telepítés lap jelenik meg, és a tábla jelenlegi egyedi Hangüzenetek végpontok, ha van ilyen.
+Hozzon létre egy új egyéni végpontot, válassza a **végpontok** az oldal tetején lévő egyéni beszédfelismerési menüből. Az üzembe helyezés lap jelenik meg, az a tábla az aktuális egyéni beszédfelismerési végpontokat, ha van ilyen.
 
-Kattintson a **hangok telepítése** gombra kattintva új végpont létrehozásához. A Create Endpoint"lapon, az aktuális területi beállítása is megjelenik a tábla első sorát. Telepítést hozhat létre más nyelven, módosítsa a megjelenített nyelvterületi beállításokat. (Akkor meg kell egyeznie a hang telepít.) Adja meg a név és leírás egyéni végpontot.
+Kattintson a **üzembe helyezése beszédhangot** gombra egy új végpont létrehozásához. A Create Endpoint"lapon megjelenik a táblázat első sorában a jelenlegi területi beállításhoz. Hozzon létre egy üzemelő példánya egy másik nyelvet, módosítsa a megjelenített területi beállítás. (Azt meg kell egyeznie a hangalapú végzi.) Adja meg a nevét és leírását, egyéni végpontra.
 
-Az előfizetés menüből válassza ki a használni kívánt előfizetést. Ingyenes előfizetés felhasználók rendelkezhetnek telepített egyszerre csak egy modell. Standard előfizetés felhasználóinak legfeljebb 20 végpontok, mindegyiket a saját egyedi Hangüzenetek hozhat létre.
+Az előfizetés menüből válassza a használni kívánt előfizetést. Ingyenes előfizetés felhasználóinak üzembe helyezett egyszerre csak egy modell rendelkezhet. Standard szintű előfizetés felhasználóinak legfeljebb 20 a saját egyéni beszédfelismerési végpontokat hozhat létre.
 
-![-Végpont létrehozása](media/custom-voice/create-endpoint.png)
+![Végpont létrehozása](media/custom-voice/create-endpoint.png)
 
-A telepítendő modell kiválasztása után kattintson az **létrehozása**. A telepítési oldal ismét megjelenik, most már az új végpont olyan bejegyzés. Új végpont példányosítani néhány percig is eltarthat. A telepítés sikeres van, a végpont esetén használatra kész.
+A modell üzembe helyezni kiválasztása után kattintson az **létrehozás**. Az üzembe helyezés lap ismét megjelenik, most már az új végpont egy bejegyzés. Eltarthat néhány percig, hozza létre az új végpont. A központi telepítés állapotát a rendszer sikeres, a végpont készen áll a használatra.
 
-![A telepített hangok](media/custom-voice/my-deployed-voices.png)
+![Az üzembe helyezett beszédhangot](media/custom-voice/my-deployed-voices.png)
 
-Ha a központi telepítési állapot van sikeres volt, a végpont a telepített hang betűtípus megjelenik a telepített hangok táblázatban. Ezt az URI közvetlenül egy HTTP-kérelem használható.
+A sikeres üzembe helyezés állapota, az üzembe helyezett hangtípusú végpontja megjelenik az üzembe helyezett beszédhangot táblázat. Ez az URI használhatja közvetlenül a HTTP-kérést.
 
-A végpont online tesztelését is rendelkezésre áll, az egyedi Hangüzenetek portálján keresztül. A végpont teszteléséhez válassza **tesztelés végpontok** a egyéni hang legördülő menüből. A végpont tesztelés lap jelenik meg. Válassza ki a központilag telepített hang, és adjon meg a szövegmezőbe írja be a szöveget, (az egyszerű szöveges vagy SSML formátumban).
+A végpont tesztelését online érhető el az egyéni beszédfelismerési portálon keresztül. A végpont teszteléséhez válassza **tesztelés végpontok** az egyéni beszédfelismerési legördülő menüből. A végpont tesztelése oldalon jelenik meg. Válassza ki a központilag telepített hang, és adjon meg a szöveget, (az egyszerű szöveges vagy SSML formátumban) a szövegmezőbe.
 
 > [!NOTE] 
-> SSML, használatakor a `<voice>` címke a egyedi Hangüzenetek létrehozásakor megadott nevét kell megadnia.
+> SSML, használatakor a `<voice>` címke a neve, mint az egyéni beszédfelismerési létrehozásakor adott meg kell adnia.
 
-Kattintson a **lejátszása** a szöveget a egyedi Hangüzenetek betűmérettel szóbeli meghallgatásához.
+Kattintson a **lejátszása** felvesszük Önnel a szöveget az egyéni hangtípusú beszélt.
 
 ![Végpont tesztelése](media/custom-voice/endpoint-testing.png)
 
-Az egyéni végpont funkcionálisan megegyezik a szabványos végponthoz használt szöveg-beszéd átalakítás kérelmeket. Lásd: [REST API](rest-apis.md) további információt.
+Az egyéni végpont funkcionálisan megegyezik a standard szintű, szöveg-hang transzformációs kérelmek használt végponthoz. Lásd: [REST API-val](rest-apis.md) további információt.
 
 ## <a name="next-steps"></a>További lépések
 
-- [Beszéd próbaverziós előfizetés beszerzése](https://azure.microsoft.com/try/cognitive-services/)
-- [A C# beszéd felismerésére](quickstart-csharp-windows.md)
+- [A beszédfelismerés próbaverziós előfizetés beszerzése](https://azure.microsoft.com/try/cognitive-services/)
+- [A beszédfelismerést a C#-ban](quickstart-csharp-windows.md)

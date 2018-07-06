@@ -1,6 +1,6 @@
 ---
-title: Szöveg-beszéd átalakítás kapcsolatos |} Microsoft Docs
-description: Szöveg-beszéd átalakítás funkcióinak áttekintése.
+title: Szöveg-beszéd átalakítás kapcsolatos |} A Microsoft Docs
+description: Szöveg-beszéd átalakítás lehetőségeinek áttekintése.
 titleSuffix: Microsoft Cognitive Services
 services: cognitive-services
 author: v-jerkin
@@ -10,36 +10,36 @@ ms.component: speech-service
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: v-jerkin
-ms.openlocfilehash: 84baf03c83bb63883b80982056cdf6e1e25b3fb7
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: d7ec8648a8428558264c9bfd4d923523b90cce07
+ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35349706"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37855940"
 ---
-# <a name="about-the-text-to-speech-api"></a>A szöveg-hang transzformációs API kapcsolatos
+# <a name="about-the-text-to-speech-api"></a>Tudnivalók a Text to Speech API
 
-A **szöveg-beszéd átalakítás** (TTS) API a beszédfelismerés szolgáltatás bemeneti szöveg alakítja természetes hangzó beszéd (más néven *beszéd összefoglaló*).
+A **szöveg-beszéd átalakítás** (Szövegfelolvasás) API-ját a Speech service természetes hangzó beszéddé átalakítja a bemeneti szöveg (más néven *beszédszintézishez*).
 
-Beszéd létrehozásához az az alkalmazás HTTP POST kérelmek küldése a beszédfelismerés szolgáltatás. Hiba, szöveges az emberi hangzó beszéd synthesized-e és hangfájl adott vissza. Számos hangok és nyelvek támogatottak.
+Beszéd létrehozásához, az alkalmazás HTTP POST-kérelmet küld a Speech service. Itt szöveg van beszéddé emberi hangzó és a egy hangfájlt értéket küldi vissza. Hangok és nyelvek széles támogatottak.
 
-Mely beszéd összefoglaló elfogadott forgatókönyvek a következők:
+Melyik beszéd összefoglaló kik forgatókönyvek a következők:
 
-* *Kisegítő lehetőségek javítása:* **szöveg-beszéd átalakítás** technológia lehetővé teszi, hogy a tartalmak tulajdonosai és közzétevők a különböző módokon személyek válaszolni a tartalmuk. Készült kisegítő funkciók és olvasási nehézségek értékeljük igényt aurally tartalmakat használhat fel. Hang kimeneti is egyszerűbbé teszi a személyeknek lehetővé teszik a szöveges tartalmat, például hírlapok vagy blogok, miközben ingázást, illetve az ilyen mobileszközök.
+* *Kisegítő lehetőségek javítása:* **szöveg-beszéd átalakítás** technológia lehetővé teszi a tartalmak tulajdonosai, és különböző módokon személyek válaszolni a kiadók használhatja a saját tartalmakat. Készült kisegítő funkciók vagy olvasási nehézségekkel emberek értékeljük képes arra, hogy a tartalmak felhasználása aurally. Hangalapú kimeneti is megkönnyíti a szöveges tartalmakat, például újságok és blogok, miközben utazás, illetve az ilyen mobileszközök csak a felhasználók számára.
 
-* *Többfeladatos forgatókönyvekben válaszol:* **szöveg-beszéd átalakítás** lehetővé teszi, hogy a felhasználók befogadására fontos információk gyorsan és kényelmesen befolyásoló tényezők vagy egyéb kívül kényelmes környezet olvasása közben. Navigáció egy közös alkalmazást ezen a területen. 
+* *Többfeladatos feldolgozáshoz forgatókönyvekben válaszol:* **szöveg-beszéd átalakítás** lehetővé teszi személyek számára fontos információk gyorsan és kényelmesen vezetési vagy más módon kívül egy kényelmes környezet olvasása közben. Navigáció: egy közös alkalmazás ezen a területen. 
 
-* *Learning több módú továbbfejlesztésének:* más személyek további ajánlott különböző módon. Online tanulási szakértők kimutatták, hogy hang és a szöveg megadásával együtt is könnyebben információk ismerje meg, és tartsa meg.
+* *Több módok learning növelése:* különböző emberek különböző módokon Ismerkedjen meg a legjobb. Internetes tanulás szakértőktől kimutatták, hogy együtt nyújtó hanghívási és SMS is könnyebben információk ismerje meg, és azokat megőrizheti.
 
-* *Intuitív botok vagy segédek továbbítása:* kapcsolódniuk egy intelligens Csevegés botot vagy egy virtuális Segéd szerves része lehet. A vállalatok egyre több fejleszt Csevegés botok biztosításához kommunikáció zajlik ügyfél szolgáltatás feladatait az ügyfelek számára. Hang aurally fogadhatják (például a telefonszám) a botot válaszokat azáltal ad hozzá egy másik dimenziót.
+* *Intuitív robotokat vagy asszisztensek továbbítása:* kapcsolódniuk egy intelligens csevegőrobot, vagy egy virtuális asszisztensek szerves része lehet. Egyre több vállalat fejleszt Csevegés robotokat vonzó ügyfél szolgáltatás élményt biztosít az ügyfelek számára. Hang hozzáadása egy további dimenziót azáltal, hogy a robot válaszok (például telefonon) aurally fogadását.
 
-## <a name="voice-support"></a>Hang-támogatás
+## <a name="voice-support"></a>Beszédfelismerési támogatása
 
-A Microsoft **szöveg-beszéd átalakítás** szolgáltatás nyújt több mint 75 hangok legfeljebb 45 nyelv és területi beállításokat. Ezek szabványos "voice betűtípusok" használatához meg kell adja meg a hang nevét néhány más paraméterekkel, amikor a szolgáltatás REST API-t hívja. A támogatott hangok részletekért lásd: [támogatott nyelv](supported-languages.md). 
+A Microsoft **szöveg-hang transzformációs** szolgáltatás kínál a több mint 75 beszédhangot legfeljebb 45 nyelvet és területi beállításokat. Ezek szabványos "hangtípust" használatához meg kell adja meg a hangalapú nevét néhány más paraméterekkel, amikor a szolgáltatás REST API-t hívja. A támogatott beszédhangot részletekért lásd: [támogatott nyelvek](https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/supported-languages#text-to-speech). 
 
-Ha az alkalmazás egyedi hangot, létrehozhat [egyedi Hangüzenetek betűtípusok](how-to-customize-voice-font.md) saját beszéd minták.
+Ha az alkalmazás egyéni szeretne, létrehozhat [egyéni hangtípust](how-to-customize-voice-font.md) saját speech mintákból.
 
 ## <a name="next-steps"></a>További lépések
 
-* [Beszéd próbaverziós előfizetés beszerzése](https://azure.microsoft.com/try/cognitive-services/)
-* [Lásd: how to a C# beszéd felismerésére](quickstart-csharp-windows.md)
+* [A beszédfelismerés próbaverziós előfizetés beszerzése](https://azure.microsoft.com/try/cognitive-services/)
+* [A beszédfelismerést a C#-ban való használatáról](quickstart-csharp-windows.md)

@@ -1,6 +1,6 @@
 ---
-title: Tartós funkciók áttekintés – Azure
-description: Bevezetés az Azure Functions a tartós funkciók bővítmény.
+title: Durable Functions áttekintése – Azure
+description: Az Azure Functions szolgáltatáshoz a Durable Functions bővítmény bemutatása.
 services: functions
 author: cgillum
 manager: cfowler
@@ -14,35 +14,35 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 04/30/2018
 ms.author: azfuncdf
-ms.openlocfilehash: d253562e0ecb0d53739a4cdc5f9747e33d7e1171
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 4f09fa7b3f2aff38a016626af2d538f1eab3f5e8
+ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33764400"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37856623"
 ---
-# <a name="durable-functions-overview"></a>Tartós funkciók áttekintése
+# <a name="durable-functions-overview"></a>Durable Functions áttekintése
 
-*Tartós funkciók* kiterjesztése [Azure Functions](functions-overview.md) és [Azure webjobs-feladatok](../app-service/web-sites-create-web-jobs.md) , amely lehetővé teszi az állapotalapú írást egy kiszolgáló nélküli környezetben. A bővítmény állapotát, az ellenőrzőpontok és újraindul kezeli az Ön.
+*Durable Functions* kiterjesztése [Azure Functions](functions-overview.md) és [Azure webjobs-feladatok](../app-service/web-sites-create-web-jobs.md) , amellyel írási állapot-nyilvántartó functions egy kiszolgáló nélküli környezetben. A bővítmény kezeli a állapot, ellenőrzőpontok és újraindul az Ön számára.
 
-A bővítmény lehetővé teszi az állapotalapú munkafolyamatok definiálhatja a hívott függvény új típusú egy *orchestrator függvény*. Az alábbiakban néhány orchestrator funkciók előnyeit:
+A bővítmény lehetővé teszi, hogy egy új típusú nevű függvény az állapot-nyilvántartó munkafolyamatok meghatározhatja egy *vezérlőfüggvény*. Íme néhány az orchestrator-funkciók előnyeit:
 
-* Munkafolyamatok meghatározzák a kódban. JSON-sémák vagy tervezők nem szükségesek.
-* Ezek más függvényeinek meghívása szinkron és aszinkron módon. Helyi változók mentését hívott függvények kimenete.
-* Ezek automatikusan ellenőrzőpontot a folyamatban, amikor a függvény várja. Helyi állapot soha nem elvész, ha a folyamat újrahasznosítása vagy a virtuális gép újraindul.
+* A munkafolyamatok definiálják a kódban. JSON-sémáinak vagy tervezők nem szükségesek.
+* Más funkciók is hívják meg szinkron és aszinkron módon történik. Meghívott függvényeken kimenete melyekbe menthetők a helyi változókhoz.
+* Ezek automatikusan ellenőrzőpontot, amikor a függvény várja előrehaladás. Helyi állapot soha nem elvész, ha a folyamat újrahasznosítási eljárásának végrehajtásával vagy a virtuális gép újraindul.
 
 > [!NOTE]
-> Tartós funkciók speciális bővítménye, amely nincs megfelelő alkalmazásokhoz az Azure Functions. Ez a cikk többi feltételezi, hogy rendelkezik-e egy erős ismeretét [Azure Functions](functions-overview.md) fogalmakat és kihívásai kiszolgáló nélküli alkalmazásfejlesztés részt.
+> Durable Functions az Azure Functions, amely nem megfelelő összes alkalmazás speciális kiterjesztése. Ez a cikk többi része feltételezi, hogy erős ismeretét [Azure Functions](functions-overview.md) fogalmakat és kihívásai részt a kiszolgáló nélküli alkalmazások fejlesztését.
 
-Az elsődleges használati eset tartós függvények van egyszerűsítése összetett, állapot-nyilvántartó koordinációs felmerülő problémák kiszolgáló nélküli. A következő szakaszok ismertetik az egyes alkalmazások mintázatok tartós funkciók előnyeit is.
+Durable Functions elsődleges használati eset van egyszerűsítse összetett, állapot-nyilvántartó koordináció kapcsolatos problémák megoldásához a kiszolgáló nélküli alkalmazásokat. A következő szakaszok ismertetik az egyes Durable Functions is kihasználó tipikus alkalmazásminták.
 
-## <a name="pattern-1-function-chaining"></a>#1. minta: Működéséhez láncolás
+## <a name="pattern-1-function-chaining"></a>#1. minta: Függvény-láncolás
 
-*Függvény láncolás* is funkciók sorozata lehet meghatározott sorrendben mintát hivatkozik. A kimenet egy függvény gyakran kell másik függvény a bemeneti alkalmazható.
+*Függvény-láncolás* a minta egy adott sorrendben hajtsa végre a funkciók sorozatát jelenti. A kimenet egy függvény gyakran kell egy másik függvény a bemeneti alkalmazható.
 
 ![Függvény titkosításblokkoló diagramja](media/durable-functions-overview/function-chaining.png)
 
-Tartós funkciók kódban ebben a mintában tömören teszi lehetővé.
+Durable Functions lehetővé teszi, hogy ez a minta tömören programkódban implementálni.
 
 #### <a name="c"></a>C#
 
@@ -63,7 +63,7 @@ public static async Task<object> Run(DurableOrchestrationContext ctx)
 }
 ```
 
-#### <a name="javascript-functions-v2-only"></a>JavaScript (csak funkciók v2)
+#### <a name="javascript-functions-v2-only"></a>JavaScript (csak függvények v2)
 
 ```js
 const df = require("durable-functions");
@@ -76,17 +76,17 @@ module.exports = df(function*(ctx) {
 });
 ```
 
-A "F1", "F2", "F3" és "F4" értékei egyéb funkciók, a függvény alkalmazás nevét. Folyamatábrán szerkezetek kódolási normál imperatív segítségével van megvalósítva. Ez azt jelenti, hogy a kód felülről lefelé végrehajtja, és meglévő nyelvi ellenőrzési folyamata szemantikáját, például conditionals és hurkok magába foglaló.  Hiba történt az logika kezelése try vagy catch vagy finally blokkok tartalmazhat.
+A "F1", "F2", "F3" és "F4" értékek más függvények, a függvényalkalmazás nevére. Átvitelvezérlés szerkezeteket kódolási normál imperatív segítségével van megvalósítva. Kód, végrehajtja a fentről lefelé, és meglévő nyelvi ellenőrzési folyamat szemantikát, például a feltételek és ciklusok is magában foglalhat.  Hibakezelési logika is részét képezhetik try/catch/végül egységekben.
 
-A `ctx` paraméter ([DurableOrchestrationContext](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html)) egyéb funkciók meghívása neve, a paraméterek átadása, és vissza a függvény kimeneti metódusokat biztosít. Minden alkalommal, amikor a kód hívások `await`, a tartós funkciók keretrendszer *ellenőrzőpontokat* az aktuális függvény példány előrehaladását. Ha a folyamat vagy a virtuális gép újraindul parancsból félúton, a függvény példány folytatja az előző `await` hívható meg. Viselkedés később bővebben újraindításához.
+A `ctx` paraméter ([DurableOrchestrationContext](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html)) módszert biztosít a neve, a paraméterek átadása, más függvények meghívása és a függvény kimenetének visszaadása. Minden alkalommal, amikor a kód meghívja `await`, Durable Functions keretén *ellenőrzőpontok* az aktuális függvény példány állapotát. Ha a folyamat vagy a virtuális gép újraindul a végrehajtási keresztül midway, a függvény példány folytatja az előző `await` hívja. Ez a viselkedés később újraindíthatja.
 
-## <a name="pattern-2-fan-outfan-in"></a>#2. minta: Fan-kimenő/fan-a
+## <a name="pattern-2-fan-outfan-in"></a>#2. minta: Fan-kimenő/fan-alatt
 
-*Fan-kimenő/fan-lévő* párhuzamosan több funkciók végrehajtása, és az összes befejezéséhez majd várakozás mintát hivatkozik.  Gyakran néhány összesítési munkát a függvény által visszaadott eredmények.
+*Fan-kimenő/fan-alatt* hivatkozik a minta több függvények végrehajtása párhuzamosan, és majd várakozás az összes befejezéséhez.  Néhány összesítés gyakran történik a függvények által visszaadott eredményeket.
 
-![Fan-kimenő/fan-lévő diagramja](media/durable-functions-overview/fan-out-fan-in.png)
+![Fan-kimenő/fan-lévő diagram](media/durable-functions-overview/fan-out-fan-in.png)
 
-Normál funkciók, a szellőztető végezhető el több üzenetek küldése egy üzenetsorba funkciót ellátó. Vissza a szellőztető azonban sokkal több kihívást. Kód írása a várólista-eseményindítókkal aktivált függvényeket végén, és tárolja a függvény kimenetek nyomkövetéséhez kellene. A tartós funkciók bővítmény kezeli az ebben a mintában viszonylag egyszerű kóddal.
+A normál funkciók szellőztető hajtható végre több üzenetküldés egy üzenetsor funkciót ellátó. Azonban vissza az szellőztető, sokkal nagyobb kihívást. Ha az üzenetsor által aktivált függvények záró és függvény kimenetek tárolásához kód írása kellene. A Durable Functions bővítmény kezeli ezt a mintát, viszonylag egyszerű kóddal.
 
 #### <a name="c"></a>C#
 
@@ -111,7 +111,7 @@ public static async Task Run(DurableOrchestrationContext ctx)
 }
 ```
 
-#### <a name="javascript-functions-v2-only"></a>JavaScript (csak funkciók v2)
+#### <a name="javascript-functions-v2-only"></a>JavaScript (csak függvények v2)
 
 ```js
 const df = require("durable-functions");
@@ -133,17 +133,17 @@ module.exports = df(function*(ctx) {
 });
 ```
 
-A kívánt szétterítési munkahelyi terjesztése függvény több példánya `F2`, és követi nyomon a munkahelyi feladatokat dinamikus listáját használja. A .NET `Task.WhenAll` API hívása várja meg az összes, a hívott függvény befejezéséhez. Ezt követően a `F2`függvény a dinamikus feladatlista összesítik és a átadva, és kiírja a `F3` függvény.
+A logikájával munkahelyi terjesztése függvény több példányát `F2`, és követi nyomon a munkahelyi feladatokat dinamikus listáját használja. A .NET `Task.WhenAll` API-t, várjon, amíg befejeződik a meghívott függvényeken mindegyikét nevezzük. Ezután a `F2`függvény kimenete a dinamikus feladatlista összesíti, és az átadott a `F3` függvény.
 
-Az automatikus ellenőrzőpont-készítés, amely történik meg a `await` hívható meg `Task.WhenAll` biztosítja, hogy bármely összeomlási vagy újraindítást félúton keresztül nem szükséges újra kell indítani a már befejeződött feladatok.
+Az automatikus ellenőrzőpont-készítés, amely történik, ha a `await` hívja meg `Task.WhenAll` biztosítja, hogy bármely összeomlása vagy újraindítás midway keresztül nem igényel újraindítást bármely már befejeződött feladatokat.
 
 ## <a name="pattern-3-async-http-apis"></a>#3. minta: Aszinkron HTTP API-k
 
-A harmadik minta nem minden a hosszan futó műveletek olyan külső ügyfelek állapotának koordináló problémáról. A közös valósítja meg az ebben a mintában módja azzal, hogy a hosszú futású művelet egy HTTP hívás által indított és az ügyfél ezután átirányítására egy állapot végpontot, amelyhez azokat lekérdezheti a további, a művelet befejezését.
+A harmadik egyik az összes olyan külső ügyfelek hosszú ideig futó műveletek állapotának koordinálása a problémáról. A hosszú ideig futó művelet egy HTTP-hívás által aktivált egyik gyakori módja a minta megvalósítása és a egy állapot-végpontot, amely, lekérdezheti a Ismerje meg, ha a művelet befejeződik, majd az ügyfél átirányítására.
 
-![HTTP API diagramja](media/durable-functions-overview/async-http-api.png)
+![HTTP API-diagram](media/durable-functions-overview/async-http-api.png)
 
-Tartós funkciókat biztosít a beépített API-k, amelyek megkönnyítik a hosszan futó függvény végrehajtások való interakció írt kódot. A [minták](durable-functions-install.md) megjelenítése egy egyszerű REST-parancs használható elindítani az új orchestrator-funkció példányai. Egy példányát az elindítása után a bővítmény webhook HTTP API-k, hogy a lekérdezés az orchestrator függvény állapotát mutatja meg. A következő példa bemutatja a REST-parancsok az orchestrator elindításához és állapotának lekérdezéséhez. Az átláthatóság érdekében egyes adatok hiányoznak a példa.
+Durable Functions biztosít beépített API-k, amelyek egyszerűbbé teszik a hosszú ideig futó függvénykivételek használatához írt kódot. A [minták](durable-functions-install.md) megjelenítése egy egyszerű REST-parancs használható új orchestrator-funkció példányok elindításához. Miután elindult egy példányt, a bővítmény webhook HTTP API-kat, hogy az orchestrator függvény állapot lekérdezés tesz elérhetővé. Az alábbi példa bemutatja a REST-parancsokkal, az orchestrator és állapotának lekérdezéséhez. Az átláthatóság érdekében egyes részletei a példában nincs megadva.
 
 ```
 > curl -X POST https://myfunc.azurewebsites.net/orchestrators/DoWork -H "Content-Length: 0" -i
@@ -168,9 +168,9 @@ Content-Type: application/json
 {"runtimeStatus":"Completed","lastUpdatedTime":"2017-03-16T21:20:57Z", ...}
 ```
 
-Az állapot kezeli a tartós Functions futtatókörnyezete, mert nincs saját állapotának nyomon követése mechanizmus végrehajtásához.
+Az állapot a Durable Functions runtime kezeli, mert nem kell saját Állapotkövető mechanizmus megvalósításához.
 
-Annak ellenére, hogy a tartós funkciók bővítmény rendelkezik hosszú futású álló üzenettípusok összehangolását kezelésére szolgáló beépített webhookokkal, valósíthat meg ebben a mintában a saját függvény eseményindítók (pl. HTTP, a várólista vagy az Eseményközpont kiválasztásával) segítségével saját és a `orchestrationClient` kötés. Egy üzenetsor-üzenetet használhatja például a indító lezárást.  Vagy használhat egy HTTP-eseményindítóval helyett a beépített webhookokkal, amely egy létrehozott kulcsot a hitelesítéshez használt Azure Active Directory hitelesítési házirend által védett. 
+Annak ellenére, hogy a Durable Functions bővítmény rendelkezik beépített webhookok hosszú ideig futó vezénylések kezeléséhez, valósítható meg ez a minta saját magának a saját függvény eseményindítóit (például a HTTP, üzenetsor vagy Event Hub) és a `orchestrationClient` kötést. Például használhat egy üzenetsor-üzenetet aktiválhat megszűnése.  Vagy használhat a HTTP-trigger egy Azure Active Directory hitelesítési házirend helyett a beépített webhookok, amely a hitelesítéshez használni létrehozott kulcs által védett. 
 
 ```cs
 // HTTP-triggered function to start a new orchestrator function instance.
@@ -191,17 +191,17 @@ public static async Task<HttpResponseMessage> Run(
 }
 ```
 
-A [DurableOrchestrationClient](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html) `starter` paraméter értéke az a `orchestrationClient` kimeneti, kötelező, amely a tartós funkciók bővítmény része. Módszerek kezdési, küldő az események, leáll, és lekérdezi-e új vagy meglévő orchestrator-funkció példányok biztosít. Az előző példában egy HTTP indított-függvény veszi a `functionName` értéket a bejövő URL-cím és, hogy egy érték fázisok [StartNewAsync](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html#Microsoft_Azure_WebJobs_DurableOrchestrationClient_StartNewAsync_). A kötés API majd visszaküldi a választ, amely tartalmazza a `Location` fejléc és a példányon, amely később segítségével keressen további információt a elindított példány állapotának regisztrálnia, vagy állítsa le azt.
+A [DurableOrchestrationClient](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html) `starter` paraméter értéke az a `orchestrationClient` kimeneti, kötelező, amely a Durable Functions bővítmény része. Megszakítást okozó, és új vagy meglévő orchestrator függvény példányok lekérdezése, kezdési küldő táborokat módszert biztosít. Az előző példában egy HTTP által aktivált függvény fogadja a egy `functionName` a bejövő URL-cím és a pass ezt az értéket [StartNewAsync](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html#Microsoft_Azure_WebJobs_DurableOrchestrationClient_StartNewAsync_). A kötés API majd választ, amely tartalmazza a `Location` fejlécére, és a példány, és tekintse meg később használható további információt az elindított példány állapotának beállítása, vagy zárja be.
 
-## <a name="pattern-4-monitoring"></a>#4 mintát: figyelése
+## <a name="pattern-4-monitoring"></a>Minta #4: figyelése
 
-A figyelő mintát hivatkozik egy rugalmas *ismétlődő* folyamat például a munkafolyamat - lekérdezés csak bizonyos feltételek teljesülnek. Egy rendszeres időzítő indítófeltételt kezelheti egy egyszerű forgatókönyv, például a rendszeres karbantartási feladat, de az intervallumon statikus, példány élettartamát kezelése bonyolult válik. Tartós funkciók lehetővé teszi a rugalmas ismételt időszakok, a feladat életciklusának kezelését és a használatával hozhat létre több monitor folyamatok egyetlen vezénylési lehetőséget.
+A figyelő minta hivatkozik egy rugalmas *ismétlődő* folyamat például egy munkafolyamat - lekérdezés csak bizonyos feltételek teljesülnek-e. Rendszeres időzítő-eseményindító kezelheti egy egyszerű forgatókönyvet, mint a rendszeres karbantartási feladat, de az intervallumon statikus és összetett példány élettartam kezelésére válik. Durable Functions rugalmas ismétlődési időközök, feladat életciklusának kezelését és hozhat létre több figyelő folyamatok egyetlen vezénylési lehetővé teszi lehetővé.
 
-Példa a korábbi aszinkron HTTP API forgatókönyv volna lehet felcserélni. Ahelyett, hogy az ilyen végpont egy külső ügyfél figyelését egy hosszú ideig futó művelet, a hosszan futó figyelő használ fel külső végpont néhány állapotváltozás vár.
+Egy példa a korábbi aszinkron HTTP API-forgatókönyv lenne lehet kötelezőként. Helyett elérhetővé tenni a végpontokat figyelése egy hosszú ideig futó művelet egy külső ügyfél, a hosszú ideig futó figyelő használ fel külső végpont, néhány állapotváltozás vár.
 
 ![A figyelő diagramja](media/durable-functions-overview/monitor.png)
 
-Tartós funkciókat használ, több monitor, ahol a tetszőleges végpontot néhány sornyi kód hozhatók létre. A figyelők végrehajtásának befejezése bizonyos feltétel teljesül, vagy azonnali hatállyal a [DurableOrchestrationClient](durable-functions-instance-management.md), és a várakozási időközt módosíthatja a bizonyos feltétel (például az exponenciális leállítási.) A következő kód egy alapszintű figyelő valósítja meg.
+Durable Functions használja, figyelje meg tetszőleges végpontok monitorok hozhatók néhány sornyi kóddal. A figyelők végrehajtási fejezheti be bizonyos feltétel teljesül, vagy felmondja a [DurableOrchestrationClient](durable-functions-instance-management.md), és a várakozási időköz is módosítható bizonyos feltétel (azaz exponenciális visszatartással.) alapján A következő kódot egy alapszintű figyelő valósítja meg.
 
 #### <a name="c"></a>C#
 
@@ -231,7 +231,7 @@ public static async Task Run(DurableOrchestrationContext ctx)
 }
 ```
 
-#### <a name="javascript-functions-v2-only"></a>JavaScript (csak funkciók v2)
+#### <a name="javascript-functions-v2-only"></a>JavaScript (csak függvények v2)
 
 ```js
 const df = require("durable-functions");
@@ -259,17 +259,17 @@ module.exports = df(function*(ctx) {
 });
 ```
 
-Amikor egy kérelem érkezik, egy új vezénylési példány létrehozásakor a feladat azonosítóját. A példány állapota kérdezi le, amíg a feltétel teljesül, és a hurok van kilépett. Tartós időzítő segítségével szabályozhatja a lekérdezési időközt. További munkára majd hajtható végre, vagy az orchestration fejezheti. Ha a `ctx.CurrentUtcDateTime` meghaladja a `expiryTime`, a figyelő végpontok.
+Amikor kérelem érkezik, egy új vezénylési példány jön létre a feladat azonosítóját. A példány állapota kérdezi le, amíg egy feltétel teljesül, és a hurok van kilépett. Tartós időzítő segítségével szabályozhatja a lekérdezési időközt. További munka majd hajtható végre, vagy az orchestration fejezheti be. Ha a `ctx.CurrentUtcDateTime` meghaladja a `expiryTime`, a figyelő véget ér.
 
-## <a name="pattern-5-human-interaction"></a>#5. minta: Emberi beavatkozást igényel
+## <a name="pattern-5-human-interaction"></a>#5 a minta: Emberi beavatkozást igényel
 
-Folyamatok emberi beavatkozás vonatkozhat. A legbonyolultabb számítógépben az érintő emberek egy automatizált folyamatban, hogy személyek nem mindig a magas rendelkezésre állású és rugalmas felhőalapú szolgáltatásként. Automatizált folyamatok engedélyeznie kell a, és gyakran ehhez időtúllépések és kompenzációs logika használatával.
+Sok folyamat magában foglalja az emberi beavatkozás. Kapcsolatos használata esetén egy automatizált folyamattal láthatják a bonyolult dolog, hogy személyek nem mindig állnak, magas rendelkezésre állású és rugalmas felhőalapú szolgáltatásként. Automatizált folyamatok engedélyeznie kell a, és gyakran ehhez a időtúllépések és kompenzációs logika használatával.
 
-Például egy üzleti folyamat, amely magában foglalja a emberi beavatkozást igényel a jóváhagyási folyamatot. Például kezelőjéből jóváhagyásra lehet szükség, amelynek hossza meghaladja a bizonyos költség jelentés. Ha a kezelő 72 óra (lehet, hogy azok hiba szabadságon) belül nem hagyja jóvá, az eszkalációs folyamat jóváhagyása lekérése valaki más (lehet, hogy a kezelő-kezelője) lép működésbe.
+Például egy üzleti folyamat, amely magában foglalja az emberi beavatkozás olyan jóváhagyási folyamatra. Például egy manager jóváhagyása szükséges egy adott időtartamot meghaladó költségjelentés lehet. Ha a manager 72 órában (például azok szabadságon történt) nem hagyja jóvá, egy eszkalációs folyamat a jóváhagyást kérhet valaki (valószínűleg a felettes felettesének) lép működésbe.
 
-![Emberi beavatkozást igényel diagramja](media/durable-functions-overview/approval.png)
+![Emberi beavatkozás diagramja](media/durable-functions-overview/approval.png)
 
-Ebben a mintában az orchestrator függvény használatával valósítható meg. Az orchestrator szeretné használni a [tartós időzítő](durable-functions-timers.md) jóváhagyás-igénylést és időtúllépés esetén az ilyen. A várakoznia egy [külső esemény](durable-functions-external-events.md), amely az egyes emberi beavatkozást igényel által létrehozott értesítés lenne.
+Ez a minta egy orchestrator-funkció segítségével valósítható meg. Az orchestrator használna egy [tartós időzítő](durable-functions-timers.md) kérelem jóváhagyása és eszkalálása időtúllépés esetén. Akkor várjon, amíg egy [külső eseményre](durable-functions-external-events.md), amely az egyes emberi beavatkozás által létrehozott értesítés lenne.
 
 #### <a name="c"></a>C#
 
@@ -296,7 +296,7 @@ public static async Task Run(DurableOrchestrationContext ctx)
 }
 ```
 
-#### <a name="javascript-functions-v2-only"></a>JavaScript (csak funkciók v2)
+#### <a name="javascript-functions-v2-only"></a>JavaScript (csak függvények v2)
 
 ```js
 const df = require("durable-functions");
@@ -318,9 +318,9 @@ module.exports = df(function*(ctx) {
 });
 ```
 
-Hozza létre a tartós időzítő hívása `ctx.CreateTimer`. Az értesítés érkezik `ctx.WaitForExternalEvent`. És `Task.WhenAny` határozza meg, hogy az ilyen beszerzését (időtúllépés történik első) jóváhagyási folyamat (a jóváhagyási időtúllépés érkezik).
+A tartós időzítő jön létre meghívásával `ctx.CreateTimer`. Az értesítés érkezik `ctx.WaitForExternalEvent`. És `Task.WhenAny` hívja meg eszkalálni kell-e (időtúllépés történik először) vagy jóváhagyási feldolgozni (jóváhagyási időkorlát lejárta előtt kapott meg).
 
-Egy külső ügyfél az eseményértesítés biztosíthat a várakozási orchestrator függvény használatával a [beépített HTTP API-k](durable-functions-http-api.md#raise-event) vagy használatával [DurableOrchestrationClient.RaiseEventAsync](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html#Microsoft_Azure_WebJobs_DurableOrchestrationClient_RaiseEventAsync_System_String_System_String_System_Object_) az API egy másik függvényen:
+Egy külső ügyfél várakozási orchestrator függvény segítségével közvetíti az eseményértesítést a [beépített HTTP API-k](durable-functions-http-api.md#raise-event) vagy [DurableOrchestrationClient.RaiseEventAsync](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html#Microsoft_Azure_WebJobs_DurableOrchestrationClient_RaiseEventAsync_System_String_System_String_System_Object_) API-ja egy másik függvényt:
 
 ```csharp
 public static async Task Run(string instanceId, DurableOrchestrationClient client)
@@ -332,60 +332,60 @@ public static async Task Run(string instanceId, DurableOrchestrationClient clien
 
 ## <a name="the-technology"></a>A technológia
 
-A beépített a tartós funkciók bővítmény a háttérben a [tartós feladat keretrendszer](https://github.com/Azure/durabletask), egy nyílt forráskódú könyvtár a Githubon történő megtervezésével tartós feladat álló üzenettípusok összehangolását. Például az Azure Functions Mitől Azure webjobs-feladatok kiszolgáló nélküli fejlődéséhez, sokkal tartós funkciók tartós feladat keretében kiszolgáló nélküli fejlődéséhez. A tartós feladat keretében segítségével fokozottan Microsoft belül és kívül is kritikus fontosságú folyamatok automatizálása. Legyen egy természetes beválik, ha a kiszolgáló nélküli Azure Functions környezet.
+A színfalak mögött a Durable Functions bővítmény épül fel a a [tartós feladat keretrendszer](https://github.com/Azure/durabletask), egy nyílt forráskódú kódtár, a Githubon tartós feladat vezénylések létrehozásához. Hogyan Azure Functions az Azure webjobs-feladatok a kiszolgáló nélküli alakulása, például sokkal Durable Functions a kiszolgáló nélküli fejlődést szem előtt tartva a tartós feladat keretrendszer. Tartós feladat keretében szolgál az erősen Microsoft belül és kívül is automatizálhatja az üzleti szempontból alapvető fontosságú folyamatokat. Természetesen illeszkednek a az Azure Functions kiszolgáló nélküli környezetben.
 
-### <a name="event-sourcing-checkpointing-and-replay"></a>Esemény forrás, az ellenőrzőpontok létrehozása és a visszajátszás
+### <a name="event-sourcing-checkpointing-and-replay"></a>Az Event sourcing, ellenőrzőpont és visszajátszás
 
-Az orchestrator funkciók képesek megbízhatóan fenntartani egy úgynevezett felhőkialakítási mintájában a végrehajtási állapotot [esemény forrás](https://docs.microsoft.com/azure/architecture/patterns/event-sourcing). Helyett közvetlenül a *aktuális* az orchestration, a tartós bővítmény állapotának rögzítéséhez egy csak append tárolót használja a *műveletsorozattal teljes* által a függvény vezénylési. Számos előnyt, beleértve a teljesítmény, méretezhetőség és reakcióidőt "vonatkozó" teljes futásidejű állapot képest javítása azt. Más előnyöket nyújtja, és a végleges konzisztencia biztosít a tranzakciós adatokat, és teljes naplózási előzmények kezelése és az előzmények karbantartása. A napló ellenőrzését maguk megbízható kompenzációs műveletek engedélyezése.
+Az orchestrator funkciók képesek megbízhatóan fenntartani a végrehajtási állapot néven felhőalapú tervezési minta használatával [Event Sourcing](https://docs.microsoft.com/azure/architecture/patterns/event-sourcing). Helyett közvetlenül az *aktuális* folyamattevékenységek vezénylése, a tartós bővítmény állapotát egy csak hozzáfűzéssel bővíthető tár használatával rögzíti a *műveletsorozat teljes* függvény vezénylési által készített. Számos előnnyel jár, többek között, javul a teljesítmény, méretezhetőség és válaszképességét képest "való kiírása" teljes futásidejű állapot azt. Más értékelemek közé tartozik a végleges konzisztencia biztosítása a tranzakciós adatoknak, és teljes körű naplók és előzmények fenntartása. Maguk a naplók megbízható kompenzáló műveleteinek engedélyezése.
 
-Az esemény forrás a bővítmény által használata átlátszó. A színfalak a `await` operátor egy orchestrator függvényben a tartós feladat keretrendszer kézbesítő vissza a vezérlő az orchestrator szál adja eredményül. A kézbesítő majd érvényesítése bármely új műveletek az orchestrator függvény ütemezett (például egy vagy több alárendelt függvényt hívja, vagy egy tartós időzítő ütemezés) tárhelyre. A transzparens véglegesítési művelet hozzáfűzi a *futtatási előzményei* az orchestration-példány. Az előzmények tárolási tábla tárolja. A véglegesítési művelet üzenetek a tényleges munkát ütemezése várólista hozzáadja. Ezen a ponton az orchestrator függvény memóriából lehet. Az elszámolási leállítja használata az Azure funkciók fogyasztás megtervezése.  Ehhez több munka esetén, a függvény újraindul, és állapotában újraépíti.
+Az Event Sourcing a bővítmény által használata átlátszó. Valójában a `await` operátor szerepel egy orchestrator-függvényt az orchestrator szál irányítását poskytne térjen vissza a tartós feladat keretrendszer dispatcher. A kézbesítő fel minden olyan új műveletek (például egy vagy több alárendelt függvények hívása, vagy egy tartós időzítő ütemezésének) ütemezett az orchestrator függvény ezután véglegesíti Storage. A transzparens véglegesítési művelet fűz a *futtatási előzményei* orchestration-példány. Az előzmények tárolása egy tárolótáblában. A véglegesítési művelet üzeneteket ad hozzá egy üzenetsorba, a tényleges feladatok ütemezéséhez. Ezen a ponton az orchestrator függvény memóriából lehet. A számlázás, leállítja a használata az Azure Functions Használatalapú csomagban.  Ha több munka elvégzéséhez, a függvény újraindítását, és állapotában újraépíti.
 
-Miután egy vezénylési függvényben megadott van ehhez a további munkahelyi (például egy válaszüzenet érkezett vagy tartós idő letelte után), az orchestrator felébred újra és újra végrehajtja a teljes funkció elejéről. ahhoz, hogy a helyi állapot építse újra. Ha a visszajátszás közben a kód megpróbálja meghívni a függvényt (vagy bármely más aszinkron munkahelyi), tartós feladat keretében olvas, és a *futtatási előzményei* , az aktuális vezénylési. Ha úgy találja, hogy a tevékenység függvény már által végrehajtott eredményezte néhány eredményt, replays a függvény eredménye és az orchestrator kód továbbra is futnak. Ez továbbra is fennáll, addig, amíg a függvény kód lekér egy pontra, ahol befejeződött vagy ütemezett új aszinkron feladatot van folyamatban.
+Miután egy vezénylési függvény van megadva ehhez további munkahelyi (például egy válaszüzenetet érkezik, vagy egy tartós időzítő lejár), az orchestrator felébred újra és újra végrehajtja a kezdetektől a teljes függvény annak érdekében, hogy építse újra a helyi állapotot. Ha az ismétlés során a kód megpróbálja meghívni a függvényt (vagy bármely más aszinkron munkahelyi), tartós feladat keretében a csúcskategóriás a *futtatási előzményei* , az aktuális vezénylési. Ha úgy találja, hogy a tevékenység függvény már végre lett hajtva kurzorműveletnek néhány eredmény, visszajátssza a függvény eredménye, és az orchestrator kód fusson tovább. Ez továbbra is fennáll, addig, amíg a függvénykódot beolvasása, vagy befejeződött vagy ütemezett új aszinkron során van egy pontra történik.
 
-### <a name="orchestrator-code-constraints"></a>Az orchestrator kód megkötések
+### <a name="orchestrator-code-constraints"></a>Az orchestrator kód megkötései
 
-A visszajátszás viselkedés kódot, amely egy orchestrator függvényben csak írható típusú megkötéseket hoz létre. Például az orchestrator kódjának különböznie kell determinisztikus, több alkalommal üzenetet fog, és ki kell dolgoznia ugyanazt az eredményt minden alkalommal, amikor. A megkötések teljes listája megtalálható a [Orchestrator kód megkötések](durable-functions-checkpointing-and-replay.md#orchestrator-code-constraints) szakasza a **ellenőrzőpontokat, és indítsa újra a** cikk.
+A visszajátszás viselkedés hoz létre a kódot, amely az orchestrator függvényben csak írható típusú megkötéseket. Például az orchestrator kódnak kell lennie determinisztikus, mert fog többszöri megismétlését és kell bemutatniuk ugyanaz az eredmény minden alkalommal, amikor. A korlátok teljes listája megtalálható a [Orchestrator kód megkötések](durable-functions-checkpointing-and-replay.md#orchestrator-code-constraints) szakaszában a **ellenőrzőpontok használata, és indítsa újra a** cikk.
 
 ## <a name="language-support"></a>Nyelvi támogatás
 
-Jelenleg a C# (funkciók v1 és v2) és a JavaScript (csak funkciók 2) a tartós funkciók az egyetlen támogatott nyelvek vonatkoznak. Ez magában foglalja a tevékenységet és az orchestrator függvények. A jövőben minden nyelven, amely támogatja az Azure Functions támogatni fogják azt. Tekintse meg az Azure Functions [GitHub tárház problémák listájába](https://github.com/Azure/azure-functions-durable-extension/issues) legfrissebb állapotát a további nyelv támogatja tekintheti meg.
+Jelenleg a C# (Functions v1 és v2), F # vagy JavaScript (csak függvények v2) az egyetlen támogatott nyelvek Durable Functions vonatkoznak. Ez magában foglalja a tevékenység és az orchestrator függvények. A jövőben hozzáadjuk meg, amely az Azure Functions támogatja az összes nyelv támogatását. Tekintse meg az Azure Functions [GitHub-tárház hibalistájában](https://github.com/Azure/azure-functions-durable-extension/issues) a legfrissebb állapotának megtekintéséhez a további nyelvi támogatja.
 
 ## <a name="monitoring-and-diagnostics"></a>Monitorozás és diagnosztika
 
-A tartós funkciók bővítmény automatikusan bocsát ki a strukturált nyomon követési adatok [Application Insights](functions-monitoring.md) Ha a függvény alkalmazást az Application Insights instrumentation kulccsal van konfigurálva. Nyomon követési adatok viselkedést és a álló üzenettípusok összehangolását állapotának figyelésére használható.
+A Durable Functions bővítmény automatikusan bocsát ki strukturált nyomon követési adatok [Application Insights](functions-monitoring.md) Ha a függvényalkalmazást az Application Insights-kialakítási kulcs van konfigurálva. Nyomon követési adatok viselkedését és a vezénylések állapotának figyelésére használható.
 
-Íme egy példa hogyan a tartós funkciók nyomon követés meg az Application Insights portálon [Application Insights Analytics](https://docs.microsoft.com/azure/application-insights/app-insights-analytics):
+Íme egy példa a követési események Durable Functions kinézni az Application Insights portál felületén [Application Insights-elemzési](https://docs.microsoft.com/azure/application-insights/app-insights-analytics):
 
-![App Insights lekérdezés eredményei](media/durable-functions-overview/app-insights-1.png)
+![App Insights-lekérdezés eredményei](media/durable-functions-overview/app-insights-1.png)
 
-A csomagolt hasznos a strukturált adatok sok a `customDimensions` minden naplóbejegyzés mezőbe. Íme egy példa egy ilyen bejegyzés bonthatók ki teljesen.
+Sok hasznos a strukturált adatok elhelyezve a `customDimensions` minden naplóbejegyzés a mezőt. Íme egy példa az ilyen bonthatók ki teljesen egy bejegyzést.
 
-![App Insights lekérdezés customDimensions mezője](media/durable-functions-overview/app-insights-2.png)
+![az App Insights-lekérdezés a customDimensions mező](media/durable-functions-overview/app-insights-2.png)
 
-A visszajátszás jelenséget az a tartós feladat keretrendszer kézbesítő várhatóan redundáns naplóbejegyzése mértékéig megismételt műveletek megjelenítéséhez. Ez lehet a visszajátszás viselkedését az alapvető vezérlőprogramjával működésének megértése. A [diagnosztika](durable-functions-diagnostics.md) a cikk bemutatja, hogy kiszűrhetők a visszajátszás naplók hívjuk fel a "valós idejű" naplók mintalekérdezések.
+A tartós feladat keretrendszer dispatcher visszajátszását viselkedését miatt várható megismételt műveletek redundáns naplóbejegyzés megtekintéséhez. Ez lehet a visszajátszás viselkedése a core-motor megismeréséhez. A [diagnosztikai](durable-functions-diagnostics.md) a cikk bemutatja, hogy szűrje ki a visszajátszás naplókat, így láthatja, hogy csak a "valós idejű" naplók mintalekérdezések.
 
 ## <a name="storage-and-scalability"></a>Tárolás és méretezhetőség
 
-A tartós funkciók bővítmény megőrizni a végrehajtási előzményei állapotát és eseményindító függvény végrehajtása Azure tárolási sorok, a táblák és a blobokat használ. Az alapértelmezett tárfiókot, a függvény alkalmazáshoz használható, vagy beállíthatja, hogy egy külön tárfiókot. Érdemes lehet egy külön fiókot tárolási átviteli sebességének korlátai miatt. Az orchestrator írt kódot nem kell (és nem kell) működnie ezekre a tárfiókokra entitást. Az entitások kezeli közvetlenül tartós feladat keretében, egy megvalósítási részletei.
+A Durable Functions bővítmény használja az Azure Storage-üzenetsorok, táblák és blobok megőrizni, végrehajtási előzményeinek állapot és az eseményindító függvény végrehajtása. Az alapértelmezett tárfiókot a függvényalkalmazás is használható, vagy konfigurálhatja egy önálló tárfiókot. Érdemes lehet egy külön fiókot, mert a tárolási teljesítmény korlátait. Az orchestrator kód írása nem kell (és nem javasolt) dolgozhat az entitásokat, a storage-fiókokban. Az entitások egy implementálási részlete, közvetlenül a tartós feladat keretrendszer által felügyelt.
 
-Az orchestrator funkciók tevékenység funkciók ütemezése, és a válaszok keresztül belső üzenetsor-üzeneteket fogadni. Egy függvény alkalmazás futtatásakor az Azure Functions használat csomagban, ezek a várólisták által figyelt a [Azure Functions méretezése vezérlő](functions-scale.md#how-the-consumption-plan-works) és új számítási példányt igény szerint adja hozzá. Horizontálisan több virtuális géphez, amikor az orchestrator függvény által futtatható egy virtuális gép tevékenység funkciók meghívja számos különböző virtuális gépek az futtatása közben. További részleteket talál a skálázási viselkedés tartós funkciók [teljesítmény és méretezhetőség](durable-functions-perf-and-scale.md).
+Az orchestrator funkciók tevékenységfüggvényeket ütemezés, és azok belső üzenetsorbeli üzenetek keresztül válaszokat kaphatnak. Amikor egy függvényalkalmazást az Azure Functions Használatalapú csomagban fut, ezek a várólisták által figyelt a [Azure Functions méretezési vezérlő](functions-scale.md#how-the-consumption-plan-works) és új számítási példányt szükség szerint adja hozzá. Horizontálisan felskálázott több virtuális gépet, ha egy orchestrator-függvényt egy virtuális gépen futtathatja, tevékenységfüggvényeket meghívja a számos különböző virtuális gépek futtatása közben. További részleteket talál a méretezési csoport működését a tartós függvények [teljesítmény és méretezhetőség](durable-functions-perf-and-scale.md).
 
-A TABLE storage a futtatási előzményei orchestrator fiókok tárolására szolgál. Amikor egy példány rehydrates egy adott virtuális gépen, azt beolvassa a futtatási előzményei a table storage a úgy, hogy azt a helyi állapotában használható. A Table storage-ban rendelkezésre álló előzmények kapcsolatos kényelmes dolog, hogy tekintse meg, és tekintse meg a álló eszközökkel, például a üzenettípusok összehangolását előzményeinek [Microsoft Azure Tártallózó](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer).
+A TABLE storage a futtatási előzményei, az orchestrator-fiókok tárolására szolgál. Minden alkalommal, amikor egy példányt az egy adott virtuális gép rehydrates, lekérdezi a futtatási előzményei table storage-ból, hogy a helyi állapotában újraépítését. A Table storage-ban elérhető előzmények kapcsolatos kényelmes dolog, hogy figyelje, és tekintse meg az eszközök használatával, mint például a vezénylések előzményeit [Microsoft Azure Storage Explorer](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer).
 
-![Az Azure Tártallózó képernyőkép](media/durable-functions-overview/storage-explorer.png)
+![Képernyőkép az Azure Storage Explorerrel](media/durable-functions-overview/storage-explorer.png)
 
 > [!WARNING]
-> Is könnyen és kényelmes, a table storage-ban végrehajtási előzményei között találja, elkerülése érdekében ebben a táblázatban minden függőségi véve. A tartós funkciók bővítmény fejlődésének meg.
+> Bár könnyen és kényelmesen megtekintéséhez a futtatási előzményei, table storage-ban, kerülje a tábla minden olyan függőséget véve. Mivel a Durable Functions bővítmény haladásával is megváltoztathatja.
 
-## <a name="known-issues-and-faq"></a>Ismert problémák és gyakran ismételt kérdések
+## <a name="known-issues-and-faq"></a>Ismert problémák és gyakori kérdések
 
-Minden ismert problémák követhető nyomon a [GitHub problémák](https://github.com/Azure/azure-functions-durable-extension/issues) listája. Ha problémába ütközik, és a probléma nem találja a Githubon, nyisson meg egy új problémát, és a probléma részletes leírását tartalmazza.
+Az összes ismert problémák nyomon követése a [GitHub-problémák](https://github.com/Azure/azure-functions-durable-extension/issues) listája. Ha problémába ütközik, és nem találja a problémát a Githubban, nyisson egy új problémát, és a hiba részletes leírását tartalmazza.
 
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Továbbra is a tartós funkciók dokumentációja olvasása](durable-functions-bindings.md)
+> [Olvassa Durable Functions – dokumentáció](durable-functions-bindings.md)
 
 > [!div class="nextstepaction"]
-> [Telepítse a tartós funkciók bővítményt, és minták](durable-functions-install.md)
+> [Telepítse a Durable Functions bővítmény és a minták](durable-functions-install.md)
 

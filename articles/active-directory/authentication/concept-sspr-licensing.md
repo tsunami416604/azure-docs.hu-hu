@@ -1,6 +1,6 @@
 ---
-title: Licenc önkiszolgáló jelszó-átállítási - Azure Active Directoryban
-description: Az Azure AD az önkiszolgáló jelszó-átállítási licencelési követelmények
+title: Licenc önkiszolgáló jelszó-visszaállítási – Azure Active Directory
+description: Az Azure AD önkiszolgáló jelszó-visszaállítási licencelési követelményeket
 services: active-directory
 ms.service: active-directory
 ms.component: authentication
@@ -10,50 +10,50 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.openlocfilehash: b1cfb76c7e196441ebad3bcfcd1d788bd544ab74
-ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
+ms.openlocfilehash: 64c12177e5cf6c82018731b493c0da22e1895b7f
+ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36292559"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37855524"
 ---
-# <a name="licensing-requirements-for-azure-ad-self-service-password-reset"></a>Licencelési követelmények az Azure AD az önkiszolgáló jelszó alaphelyzetbe állítása
+# <a name="licensing-requirements-for-azure-ad-self-service-password-reset"></a>Az Azure AD önkiszolgáló jelszó-licencelési követelményei alaphelyzetbe állítása
 
-Ahhoz, hogy az Azure Active Directory (Azure AD) jelszó-változtatási függvény akkor *rendelkeznie kell legalább egy licenc nélküli a szervezet* az adott felhasználó. A megfelelő licencre van szükség, ha a felhasználó akár közvetlen, akár közvetett módon egy adott licenchez tartozó funkció előnyeihez jut.
+Ahhoz, hogy az Azure Active Directory (Azure AD) jelszó kéréséhez hogy *rendelkeznie kell legalább egy, a szervezet licenccel* az adott felhasználó. A megfelelő licencre van szükség, ha a felhasználó akár közvetlen, akár közvetett módon egy adott licenchez tartozó funkció előnyeihez jut.
 
-* **Csak felhőalapú felhasználók**: Office 365 bármely fizetett SKU vagy Azure AD alapvető
-* **Felhő** vagy **helyszíni felhasználók**: Azure AD Premium P1 vagy P2, Enterprise Mobility + Security (EMS) vagy Microsoft 365
+* **Csak felhőalapú felhasználói**: Office 365 fizetős Termékváltozat vagy alapszintű Azure AD
+* **Felhőalapú** vagy **a helyszíni felhasználók**: Azure AD Premium P1 vagy P2, Enterprise Mobility + Security (EMS) vagy a Microsoft 365
 
-## <a name="licensing-requirements-for-password-writeback"></a>A jelszóvisszaírás licencelési követelményei
+## <a name="licensing-requirements-for-password-writeback"></a>Jelszóvisszaíró licencelési követelményeket
 
-**Az önkiszolgáló jelszó alaphelyzetbe állítása/módosítás/feloldás a helyszíni visszaírási egy Azure ad premium-funkció**. Licenceléssel kapcsolatos további információkért lásd: a [Azure Active Directory-hely árképzési](https://azure.microsoft.com/pricing/details/active-directory/).
+**Az önkiszolgáló jelszó alaphelyzetbe állítása/módosítás /-Zárolásfeloldás helyszíni visszaírással a rendszer egy Azure ad premium-funkció**. Licenceléssel kapcsolatos további információkért lásd: a [Azure Active Directory díjszabását ismertető a hely](https://azure.microsoft.com/pricing/details/active-directory/).
 
-Jelszóvisszaírás használatához rendelkeznie kell a következő licenccel a tenant egyikét:
+A jelszóvisszaíró használandó kell rendelkeznie a következő licenccel, a bérlő egyik:
 
 * Prémium szintű Azure AD P1
 * Prémium szintű Azure AD P2
-* Nagyvállalati mobilitási + biztonsági E3 vagy a3 csomag
-* Nagyvállalati mobilitási + biztonsági E5 vagy a5 csomag
-* Microsoft 365 E3 vagy a3 csomag
-* Microsoft 365 E5 vagy a5 csomag
-* Microsoft 365 F1
+* Enterprise Mobility + Security E3 vagy A3
+* Enterprise Mobility + Security E5 vagy a5 csomag
+* A Microsoft 365 E3 vagy A3
+* A Microsoft 365 E5 vagy a5 csomag
+* A Microsoft 365 F1 csomag
 
 > [!WARNING]
-> Önálló Office 365 tervek licencelési *nem támogatják a jelszóvisszaírás* , és van szüksége, hogy ez a funkció működéséhez az előző csomagok valamelyikének.
+> Önálló Office 365 licencelési csomagok *nem támogatják a jelszóvisszaírást* , és rendelkezik a fenti csomagok keretében, az a funkciók működéséhez szükséges.
 >
 
-További licencelési információt, beleértve a költségek, a következő oldalakon található:
+További licencelési információk, beleértve a költségek, a következő lapokon található:
 
 * [Az Azure Active Directory-hely díjszabása](https://azure.microsoft.com/pricing/details/active-directory/)
-* [Az Azure Active Directory-funkciók és képességek](https://www.microsoft.com/cloud-platform/azure-active-directory-features)
+* [Az Azure Active Directory funkciók és képességek](https://www.microsoft.com/cloud-platform/azure-active-directory-features)
 * [Enterprise Mobility + Security](https://www.microsoft.com/cloud-platform/enterprise-mobility-security)
-* [A Microsoft 365 Enterprise](https://www.microsoft.com/microsoft-365/enterprise)
+* [A Microsoft 365 nagyvállalati verzió](https://www.microsoft.com/microsoft-365/enterprise)
 
-## <a name="enable-group-or-user-based-licensing"></a>Csoport vagy felhasználó alapú licencelés engedélyezése
+## <a name="enable-group-or-user-based-licensing"></a>Engedélyezze a csoport- vagy felhasználói alapú licencelése
 
-Mostantól az Azure AD licencelésre biztonságicsoport-alapú. A rendszergazdák is hozzárendelhet licenceket tömeges, felhasználók, mint az őket egyenként csoportja számára. További információkért lásd: [rendelhet, győződjön meg arról, és a licencek kapcsolatos problémák megoldásához](../active-directory-licensing-group-assignment-azure-portal.md#step-1-assign-the-required-licenses).
+Most már Azure ad-ben támogatja a Csoportalapú licencelés. A rendszergazdák tömeges licenceket rendelhet a felhasználók, mint az őket egyenként csoportja számára. További információkért lásd: [hozzárendelése, ellenőrzése és licencek kapcsolatos problémák megoldásához](../users-groups-roles/licensing-groups-assign.md#step-1-assign-the-required-licenses).
 
-Egyes Microsoft-szolgáltatások nem érhetők el az összes helyen. Mielőtt licenc rendelhet egy felhasználói, a rendszergazdának meg kell adnia a **felhasználási hely** tulajdonságát a felhasználó. A licencek hozzárendelése végezhető a **felhasználói** > **profil** > **beállítások** szakaszban az Azure portálon. *Licenc-hozzárendelést használ, anélkül, hogy a megadott felhasználási hely összes felhasználója örökli a könyvtár helye.*
+Bizonyos Microsoft-szolgáltatások nem érhetők el az összes helyen. Mielőtt egy úgy lehet licencet a felhasználóhoz, a rendszergazdának meg kell adnia a **a felhasználási hely** tulajdonság a felhasználóra. Licencek hozzárendelése alapján teheti meg a **felhasználói** > **profil** > **beállítások** szakaszban az Azure Portalon. *A licenc-hozzárendelés használatakor bármely felhasználó felhasználás helyének megadása nélkül örökli a könyvtár helye.*
 
 ## <a name="next-steps"></a>További lépések
 

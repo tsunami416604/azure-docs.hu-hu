@@ -1,95 +1,120 @@
 ---
-title: Bővítse a felderítés és az értékelés Azure áttelepítése használatával |} Microsoft Docs
-description: Ismerteti, hogyan lehet az Azure áttelepítése szolgáltatás használatával nagy számú helyszíni gépet felmérésére.
+title: Felderítés és értékelés méretezése az Azure Migrate használatával |} A Microsoft Docs
+description: Ismerteti, hogyan értékelheti a helyszíni gépek nagy számú az Azure Migrate szolgáltatás használatával.
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 06/19/2018
+ms.date: 07/03/2018
 ms.author: raynew
-ms.openlocfilehash: dd7524c0114589e0c145cb4c03b0f531d58ce950
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: dbd2ef6270d0f270dabb6a1f5461e09fc37102db
+ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36214691"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37859591"
 ---
 # <a name="discover-and-assess-a-large-vmware-environment"></a>Nagy méretű VMware-környezet felderítése és értékelése
 
-Azure áttelepítése egy legfeljebb 1500 gépek projekt száma, akkor ez a cikk ismerteti, hogyan használatával a helyszíni virtuális gépek (VM) nagy számú felmérésére [Azure áttelepítése](migrate-overview.md).   
+Az Azure Migrate rendelkezik a maximális hossza 1500 gépet projektenként, ez a cikk azt ismerteti, hogyan értékelheti a helyszíni virtuális gépek (VM) nagy számú használatával [Azure Migrate](migrate-overview.md).   
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- **VMware**: A virtuális gépek, amelyek az áttelepíteni kívánt vCenter Server 5.5, 6.0 vagy 6.5 kell kezelnie. Emellett kell egy ESXi gazdagépen futó verziójával 5.0-s vagy újabb, a gyűjtő VM telepítése.
-- **vCenter fiók**: olvasási fiók vCenter-kiszolgáló eléréséhez szükséges. Az Azure Migrate ezt a fiókot használja a helyszíni virtuális gépek felderítéséhez.
-- **Engedélyek**: A vCenter Server, hozzon létre egy virtuális Gépet petesejtek formátumú fájl importálásával engedélyekre van szükség.
-- **Statisztika beállítások**: A statisztika vcenter Server kell beállítás 3. szint telepítés megkezdése előtt. Ha a szintje alacsonyabb, mint 3, a frissítésfelmérő működni fog, de a tárolási és hálózati teljesítményadatok nem gyűjthetők. A méret javaslatok ebben az esetben alapjául Processzor- és teljesítményadatokat és a lemezek és a hálózati adapterek konfigurációs adatait.
+- **VMware**: A migrálni kívánt virtuális gépeket egy 5.5-ös, 6.0-s vagy 6.5-ös verziójú vCenter Servernek kell felügyelnie. Emellett szükség egy ESXi gazdagépet verziójú 5.0-s vagy újabb, a gyűjtő virtuális gép üzembe helyezéséhez.
+- **vCenter-fióknak**: egy csak olvasható fiókot vCenter-kiszolgáló eléréséhez szükséges. Az Azure Migrate ezt a fiókot használja a helyszíni virtuális gépek felderítéséhez.
+- **Engedélyek**: A vCenter Serverben, a virtuális gép létrehozása az OVA formátumú fájl importálásával engedélyek szükségesek.
+- **Statisztikai beállítások**: A vCenter Server statisztikai beállításait kell állítani a 3. szintre telepítés megkezdése előtt. Ha a szint alacsonyabb, mint 3, a kiértékelés működni fog, de a tárolási és hálózati teljesítményadatok nem gyűjthetők. A javaslatok a méretekkel kapcsolatban ebben az esetben alapjául Processzor- és teljesítményadatokat, és a lemez és a hálózati adapterek konfigurációs adatait.
 
-## <a name="plan-your-migration-projects-and-discoveries"></a>Az áttelepítési projektek és felderítések tervezése
 
-Egyetlen Azure áttelepítése adatgyűjtő több vcenter-kiszolgálók felderítése (egymás után) és az is támogatja több áttelepítési projektek észlelés (egymás után). A gyűjtő tűz is működik, és elfelejti modell, ha a felderítés végzett, segítségével az ugyanazon gyűjtő adatokat gyűjteni a különböző vCenter-kiszolgáló, vagy küldje el a különböző áttelepítési projekt.
+### <a name="set-up-permissions"></a>Engedélyek beállítása
 
-Tervezze meg a felderítések és a vizsgálatok során a következő korlátozások:
+Az Azure Migrate hozzá kell férnie a VMware-kiszolgálókhoz a virtuális gépek felderítéséhez kiértékelés céljából. A VMware-fiókot a következő engedélyekre van szüksége:
 
-| **Entitás** | **Számítógépek korlátja** |
+- Felhasználó típusa: Legalább egy, csak olvasási jogosultsággal rendelkező felhasználó.
+- Engedélyek: Adatközpont-objektum –> Gyermekobjektumba propagálás, szerepkör = csak olvasható.
+- Részletek: A felhasználó az adatközpontszinten hozzárendelve, és hozzáféréssel rendelkezik az adatközpontban lévő összes objektumhoz.
+- A hozzáférés korlátozásához rendelje a Gyermekobjektumba propagálás objektummal rendelkező Nincs hozzáférés szerepkört a gyermekobjektumokhoz (vSphere-gazdagépek, adattárolók, virtuális gépek és hálózatok).
+
+Ha a bérlő környezetben telepíti, a következő beállítására egyik módja:
+
+1.  Hozzon létre egy felhasználót bérlőnként és és [RBAC](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal), csak olvasási engedélyek hozzárendelése a virtuális gép összes tartozó, egy adott bérlőbe. Ezután használja ezeket a hitelesítő adatokat a felderítéshez. RBAC biztosítja, hogy a megfelelő vCenter-felhasználó hozzáférhet, csak az adott virtuális gép bérlői.
+2. RBAC beállítását másik bérlőben felhasználók felhasználói 1 és 2. felhasználói esetében az alábbi példában ismertetett módon:
+
+    - A **felhasználónév** és **jelszó**, adja meg a csak olvasható fiók hitelesítő adatait, amelynek használatával a gyűjtő a virtuális gépek felderítése 
+    - Datacenter1 - felhasználó 1 és 2. felhasználói írásvédett engedélyeket biztosíthat. Ilyen engedéllyel, hogy az összes gyermekobjektum nem propagálása, mert fog engedélyeket állít be egyéni virtuális Gépet.
+    
+      - A VM1 (bérlő #1) (olvasás csak engedély a felhasználó 1)
+      - VM2 (bérlő #1) (olvasás csak engedély a felhasználó 1)
+      - Vm3 virtuális gép (bérlő #2) (olvasási felhasználói 2 csak engedélyt)
+      - VM4 (bérlő #2) (olvasási felhasználói 2 csak engedélyt)
+
+   - Ha 1 felhasználói hitelesítő adatok használatával felderítést hajt végre, majd csak a VM1 és a VM2 lesz felderítve.
+
+## <a name="plan-your-migration-projects-and-discoveries"></a>A migrálási projektek és a felderítések megtervezése
+
+Egyetlen Azure Migrate collector támogatja a több vCenter-kiszolgálók felderítése (egymás után), és szintén támogatja a felderítést, hogy több áttelepítési projektet (egymás után). A gyűjtő egy működik, és a végrehajtásuk modell, miután megtörtént a felderítést, használhatja ugyanazt a gyűjtő adatokat gyűjteni a különböző vCenter-kiszolgáló, vagy elküldheti azt egy másik migrálási projekt.
+
+Tervezze meg a felderítések és értékelések az alábbi korlátok alapján:
+
+| **Entitás** | **Gép korlátja** |
 | ---------- | ----------------- |
 | Project    | 1,500             |
 | Detektálás  | 1,500             |
 | Értékelés | 1,500             |
 
-Ezeket a tervezési szempontokat vegye figyelembe:
+Ezeket a tervezési szempontokat tartsa szem előtt:
 
-- A felderítés az Azure áttelepítése gyűjtő úgy teheti meg, amikor a felderítési hatókör is beállíthatja a vCenter Server mappa, a datacenter, a fürt vagy a gazdagép.
-- Ehhez az egynél több felderítési, ellenőrizze a vCenter-kiszolgáló által a virtuális gépek felderíteni kívánt mappák, az adatközpontok, a fürtök vagy a gazdagépekhez, amelyek támogatják a korlátozás 1500 gépek.
-- Azt javasoljuk, értékelési célokra, akkor ne gépek egymástól függő szolgáltatásainak ugyanabban a projektben és értékelési belül. A vCenter Server ellenőrizze, hogy a függő gépek ugyanazon a mappa, datacenter vagy fürt értékeléséhez.
+- Amikor egy felderítési az Azure Migrate collector úgy teheti meg, a felderítési hatókörben egy vCenter-kiszolgáló mappája, adatközpont, fürt vagy gazdagép is beállíthatja.
+- Ehhez az egynél több felderítési, ellenőrizze a vCenter Serverben, amely a felderíteni kívánt virtuális gépek szerepelnek a mappákat, adatközpontok, fürtök vagy gazdagépekhez, amelyek támogatják a korlátozás 1500 gépet.
+- Azt javasoljuk, hogy értékelési célokra tartani ezeket a köztük fennálló függőségek értékelése és ugyanazon a projekten belül. A vCenter Serverben ellenőrizze, hogy a függő gépek ugyanazon a mappa, datacenter vagy-fürt létrehozása az értékelést.
 
-A forgatókönyvtől függően fel a felderítések előírt alatt:
+A forgatókönyvtől függően akkor is feloszthatja a felfedezett összefüggéseket az előírt az alábbi módon:
 
-### <a name="multiple-vcenter-servers-with-less-than-1500-vms"></a>Több vCenter-kiszolgálók legfeljebb 1500 virtuális gépek
+### <a name="multiple-vcenter-servers-with-less-than-1500-vms"></a>Több vCenter-kiszolgálók legfeljebb 1500 virtuális gépekkel
 
-Ha több vCenter-kiszolgálók vannak a környezetében, és a virtuális gépek száma kisebb, mint 1500, egyetlen adatgyűjtő és egyetlen áttelepítési projekt segítségével a virtuális gépek felderítése minden vCenter-kiszolgáló között. A gyűjtő egy vCenter-kiszolgáló egyszerre deríti fel, mert futtatni az azonos gyűjtő összes a vCenter-kiszolgálók, egymás után, és a gyűjtő mutasson áttelepítési ugyanabban a projektben. Ha befejeződött a felderítések, is létrehozhat a gépek értékeléseket.
+Ha több vCenter-kiszolgálók a környezetében rendelkezik, és kevesebb mint 1500 virtuális gépek teljes száma, egyetlen gyűjtő és a egy migrálási projekt használhatja a virtuális gépek felderítése minden vCenter-kiszolgáló között. A gyűjtő egy vCenter-kiszolgáló egyszerre deríti fel, mert az azonos gyűjtő futtatása ellen a vCenter-kiszolgálók egymás után, és a gyűjtő pontjára migrálás ugyanazon a projekten. Ha az összes felderítések befejeződött, majd létrehozhat értékeléseket a gépek.
 
-### <a name="multiple-vcenter-servers-with-more-than-1500-vms"></a>Több vCenter-kiszolgálók több mint 1500 virtuális gépek
+### <a name="multiple-vcenter-servers-with-more-than-1500-vms"></a>Több vCenter-kiszolgálók legfeljebb 1500 virtuális gépekkel
 
-Ha több vCenter-kiszolgálók legfeljebb 1500 virtuális gépek száma vCenter-kiszolgáló, de több mint 1500 virtuális gépek közötti összes vCenter szolgál, létrehozandó több áttelepítési projektet (egy áttelepítési projekt tárolására képes csak 1500 virtuális gépeken). Ez egy vCenter-kiszolgáló áttelepítési-projekt létrehozása és a felderítések felosztás érhet el. Egyetlen adatgyűjtő segítségével minden vCenter-kiszolgáló felderítése (egymás után). Ha azt szeretné, hogy egy időben elindítani a felderítések, is telepítheti a több készülékek és a felderítések párhuzamosan futnak.
+Ha több vCenter-kiszolgálók a vCenter-kiszolgáló legfeljebb 1500 virtuális gépet, de több mint 1500 virtuális gépet minden vCenter proxykiszolgálójaként között, szeretne létrehozni (egy migrálási projekt csak 1500 virtuális gépet tartalmazhat) több migrálási projektet. Ez a migrálási projekt / vCenter-kiszolgáló létrehozásával, és a felderítések felosztás érheti el. Egyetlen gyűjtő használatával minden vCenter-kiszolgáló felderítése (egymás után). Ha azt szeretné, hogy egy időben elindítani a felderítéseket, is több berendezések üzembe helyezése és a felderítések párhuzamosan futnak.
 
-### <a name="more-than-1500-machines-in-a-single-vcenter-server"></a>Több mint 1500 gépek egyetlen vCenter Serverrel
+### <a name="more-than-1500-machines-in-a-single-vcenter-server"></a>Több mint 1500 gépek egyetlen vCenter-kiszolgáló
 
-Ha több mint 1500 virtuális gépek egy vCenter-kiszolgáló van, a felderítés felosztása több áttelepítési projektek szeretné. Felderítések szétválasztásához használja ki a készüléket a hatókör mező, és adja meg a gazdagép, a fürt, a mappa vagy a adatközpont, amelyen szeretné felderíteni. Például, ha két mappa a vCenter Server, amelyek közül az 1000 (mappa1) virtuális gépek és egyéb 800 virtuális gépek (mappa2), egy egyetlen használják, és hajtsa végre a két felderítések. Az első felderítés hatókörének adja meg a Mappa1 majd mutasson az első áttelepítési projekthez, amikor elkészült, az első felderítési is használják az azonos, módosítsa a hatókört mappa2 és az áttelepítést a második áttelepítési projekthez projekt részleteit, és a második felderítési tegye.
+Ha egy vCenter-kiszolgáló 1500-nál több virtuális gép is van, a felderítés felosztása több áttelepítési projektet szeretné. Osztott felderítések, használja ki a készüléket a hatókör mezőt, és adja meg a gazdagép, fürt, mappa vagy adatközpontot, amelyben szeretné felderíteni. Például, ha a vCenter-kiszolgáló, egy 1000 két mappa (mappa1) virtuális gépek és a másik a 800 virtuális gép (mappa2), hajtsa végre a két felderítések és egyetlen gyűjtő használhatja. Az első felderítés, adja meg a hatókör mappa1 majd mutasson az első migrálási projektet, hogy az első felderítés befejeződése után is az azonos gyűjtő használja, módosítsa a hatókört, a második migrálási projekt mappa2 és a migrálási projekt részletei és Ezt a második felderítés.
 
 ### <a name="multi-tenant-environment"></a>Több-bérlős környezet
 
-Ha a bérlők által megosztott környezet, és nem szeretné, hogy a másik bérlői előfizetéshez egy bérlő virtuális gépeinek felderítése, a gyűjtő készülék hatókör mezője használhatja a felderítés hatókörének. A bérlők osztja gazdagépeken, ha csak a virtuális gépek az adott bérlőhöz tartozó csak olvasási jogosultságokkal rendelkező hitelesítő adatok létrehozása, majd ezeket a hitelesítő adatokat használja a gyűjtő készüléknek, és adja meg a hatókörét a gazdagép, a felderítés elvégzéséhez. Azt is megteheti a virtuális gépeket a Mappa1 tenant1 és tenant2 is létrehozhat mappákat a vCenter Server (Tételezzük fel a tenant1 mappa1 és a tenant2 mappa2), a megosztott gazdagép áthelyezi mappa2 és majd hatókörének megfelelően a gyűjtő a felderítések Megadja a megfelelő mappát.
+Ha a bérlők között megosztott környezet, és nem szeretné, hogy egy bérlő a bérlő egy másik előfizetésben található virtuális gépek felderítése, a hatókör mezője a gyűjtőberendezés segítségével a felderítés hatókörét. Ha a bérlők gazdagépek, csak a virtuális gépek az adott bérlőbe történő tartozó csak olvasási hozzáféréssel rendelkező hitelesítő adatok létrehozása, majd ezeket a hitelesítő adatokat használni a gyűjtőberendezés, és a gazdagépként ehhez a felderítési hatókör megadása. Azt is megteheti a virtuális gépek tenant1 mappa1, valamint tenant2 mappákat is létrehozhat a vCenter Server (tegyük a tenant1 mappa1 és a tenant2 mappa2), a megosztott gazdagép alatt helyezhetik át mappa2 és majd ennek megfelelően az a felderítéseket, a gyűjtő a hatókör Adja meg a megfelelő mappát.
 
 ## <a name="discover-on-premises-environment"></a>A helyszíni környezet felderítése
 
-Ha ezzel elkészült a csomagot, el is indíthatja a helyszíni virtuális gépek észlelése:
+Ha készen áll a csomagban, el is indíthatja a helyszíni virtuális gépek felderítése:
 
 ### <a name="create-a-project"></a>Projekt létrehozása
 
-A követelményeknek megfelelően Azure áttelepítése projekt létrehozása:
+Az Azure Migrate-projekt létrehozása a követelményeinek megfelelően:
 
-1. Válassza ki az Azure-portálon **hozzon létre egy erőforrást**.
+1. Az Azure Portalon válassza ki a **erőforrás létrehozása**.
 2. Keressen az **Azure Migrate** kifejezésre, és válassza ki az **Azure Migrate (előzetes verzió)** elemet a keresési eredmények közül. Ezután kattintson a **Létrehozás** elemre.
-3. Adja meg a projekt nevét és az Azure-előfizetés a projekthez.
+3. Adja meg a projekt nevét és az Azure-előfizetést a projekthez.
 4. Hozzon létre egy új erőforráscsoportot.
-5. Adja meg a helyet, ahol a projekt létrehozásához, majd válassza ki szeretné **létrehozása**. Vegye figyelembe, hogy a virtuális gépeket egy másik célhelyet a továbbra is felmérheti. A projekt helyére a metaadatok összegyűjtött a helyszíni virtuális gépek tárolására szolgál.
+5. Adja meg a helyét, amelyben a projekt létrehozásához, és válassza ki a kívánt **létrehozás**. Vegye figyelembe, hogy egy másik célhelyet a virtuális gépek továbbra is értékelhet. A projekt számára megadott helyen a helyszíni virtuális gépekről gyűjtött metaadatok tárolására szolgál.
 
-### <a name="set-up-the-collector-appliance"></a>A gyűjtő készülék beállítása
+### <a name="set-up-the-collector-appliance"></a>A gyűjtőberendezés beállításához
 
-Az Azure Migrate létrehoz egy gyűjtőberendezésnek nevezett helyszíni virtuális gépet. A virtuális gép deríti fel a helyszíni VMware virtuális gépek, és a rájuk vonatkozó metaadatok küld az Azure áttelepítése szolgáltatás. A gyűjtő készülék beállításához petesejtek fájl letöltésére, és importálja azt a helyszíni vCenter Server-példányhoz.
+Az Azure Migrate létrehoz egy gyűjtőberendezésnek nevezett helyszíni virtuális gépet. Ez a virtuális gép felderíti a helyszíni VMware virtuális gépeket, és a velük kapcsolatos metaadatok küld az Azure Migrate szolgáltatás. A gyűjtőberendezés beállításához egy OVA-fájl letöltéséhez, és importálni kell a helyszíni vCenter Server-példányt.
 
 #### <a name="download-the-collector-appliance"></a>A gyűjtőberendezés letöltése
 
-Ha több projekt van, akkor töltse le az adatgyűjtő készülék csak egyszer vCenter-kiszolgáló. Töltse le, és állítsa be a készülék, után kell futtatnia minden olyan projekthez, és a projekt egyedi Azonosítóját és kulcsát meg.
+Ha több projektet, a vCenter Serverhez csak egyszer a gyűjtőberendezés letöltése szeretne. Után töltse le és állítsa be a készülék, az egyes projektek futtatásához, és azt adja meg a projekt egyedi Azonosítóját és kulcsát.
 
-1. Azure áttelepítése projekt kijelölni **bevezetés** > **felderítési & felmérési** > **gépek felderítése**.
-2. A **gépek észlelése**, jelölje be **letöltése**, a petesejtek fájl letöltéséhez.
-3. A **projekt hitelesítő adatok másolása**, másolja le az Azonosítót, és a projekt kulcsát. Ezekre a gyűjtő konfigurálásához lesz szüksége.
+1. Válassza ki az Azure Migrate-projektben **bevezetés** > **felderítés és értékelés** > **gépek felderítése**.
+2. A **gépek felderítése**válassza **letöltése**, az OVA-fájl letöltéséhez.
+3. A **projekt hitelesítő adatainak másolása**, másolja az Azonosítót, és a projekt kulcsát. Ezekre a gyűjtő konfigurálásához lesz szüksége.
 
 
 #### <a name="verify-the-collector-appliance"></a>A gyűjtőberendezés ellenőrzése
 
-Ellenőrizze, hogy a petesejtek fájlt biztonságos telepítése előtt:
+Ellenőrizze, hogy az OVA-fájl biztonságos-e az üzembe helyezés előtt:
 
 1. A gépen, amelyre a fájlt letöltötte, nyisson meg egy rendszergazdai parancsablakot.
 
@@ -99,7 +124,7 @@ Ellenőrizze, hogy a petesejtek fájlt biztonságos telepítése előtt:
 
    Gyakorlati példa: ```C:\>CertUtil -HashFile C:\AzureMigrate\AzureMigrate.ova SHA256```
 
-3. Győződjön meg arról, hogy a létrehozott kivonatoló megegyezik-e a következő beállításokat.
+3. Győződjön meg arról, hogy a létrehozott kivonatnak megegyezik-e a következő beállításokat.
 
     Az OVA 1.0.9.8-as verziója esetében
 
@@ -135,86 +160,86 @@ Ellenőrizze, hogy a petesejtek fájlt biztonságos telepítése előtt:
 
 ### <a name="create-the-collector-vm"></a>A gyűjtő virtuális gép létrehozása
 
-A letöltött fájlt a vCenter-kiszolgáló importálása:
+Importálja a letöltött fájlt a vcenter-kiszolgálóhoz:
 
-1. Válassza ki a vSphere ügyfélkonzol **fájl** > **OVF-sablon telepítése**.
+1. Válassza ki a vSphere Client-konzolon **fájl** > **OVF-sablon telepítése**.
 
     ![Az OVF telepítése](./media/how-to-scale-assessment/vcenter-wizard.png)
 
-2. Az OVF-sablon központi telepítése varázslóban > **forrás**, adja meg a petesejtek fájl helyét.
+2. Az OVF-sablon üzembe helyezése varázsló > **forrás**, adja meg az OVA-fájl helyét.
 3. A **Name** (Név) és a **Location** (Hely) mezőben adjon meg egy rövid nevet a gyűjtő virtuális gépnek, valamint az azt futtató leltárobjektumnak.
 4. A **Host/Cluster** (Gazdagép/fürt) mezőben adja meg a gazdagépet vagy fürtöt, amelyen a gyűjtő virtuális gép futni fog.
 5. A tárolóban adja meg a célhelyet a gyűjtő virtuális gép tárolásához.
 6. A **Disk Format** (Lemezformátum) mezőben adja meg a lemez típusát és méretét.
-7. A **Network Mapping** (Hálózatleképezés) mezőben adja meg a hálózatot, amelyhez a gyűjtő virtuális gép kapcsolódni fog. A hálózati metaadatok küldésére Azure internetkapcsolat szükséges.
-8. Tekintse át és hagyja jóvá a beállításokat, majd válassza ki **Befejezés**.
+7. A **Network Mapping** (Hálózatleképezés) mezőben adja meg a hálózatot, amelyhez a gyűjtő virtuális gép kapcsolódni fog. A hálózati metaadatokat küldhet az Azure-bA internetkapcsolattal kell rendelkeznie.
+8. Tekintse át és hagyja jóvá a beállításokat, és válassza ki **Befejezés**.
 
-### <a name="identify-the-id-and-key-for-each-project"></a>Azonosítsa az ID és a kulcsok minden olyan projekthez
+### <a name="identify-the-id-and-key-for-each-project"></a>Az azonosító azonosításához, és a kulcs az egyes projektek
 
-Ha több projektet, ügyeljen arra, hogy azonosítsa a azonosítója és a kulcsok minden egyes számára. Be kell a kulcsot, a virtuális gépek felderítése a gyűjtő futtatásakor.
+Ha több projektet, mindenképpen azonosíthatja az azonosítója, és minden egyes kulcs. A kulcs kell futtatásakor a gyűjtő a virtuális gépek felderítéséhez.
 
-1. Válassza ki a projekt **bevezetés** > **felderítési & felmérési** > **gépek felderítése**.
-2. A **projekt hitelesítő adatok másolása**, másolja le az Azonosítót, és a projekt kulcsát.
-    ![Projekt hitelesítő adatok másolása](./media/how-to-scale-assessment/copy-project-credentials.png)
+1. Válassza ki a projekt **bevezetés** > **felderítés és értékelés** > **gépek felderítése**.
+2. A **projekt hitelesítő adatainak másolása**, másolja az Azonosítót, és a projekt kulcsát.
+    ![Projekt hitelesítő adatainak másolása](./media/how-to-scale-assessment/copy-project-credentials.png)
 
-### <a name="set-the-vcenter-statistics-level"></a>A vCenter statisztika szintjének beállítása
-A felderítés során gyűjtött teljesítményszámlálók listája látható. A számlálók a rendszer a vCenter Server különböző szinteken elérhető alapértelmezés szerint.
+### <a name="set-the-vcenter-statistics-level"></a>Állítsa be a vCenter statisztikai szintje
+Következő látható a felderítés során gyűjtött teljesítményszámlálók listája. A számlálók a vCenter-kiszolgáló különböző szinteken érhető el alapértelmezés szerint is.
 
-Azt javasoljuk, hogy a számlálók megfelelően vannak összegyűjtött legnagyobb közös szintjének (3) a statisztika szint beállítása. Ha vCenter egy alacsonyabb szinten adja meg, csak néhány számlálók gyűjtik be teljesen, és a többi értéke 0. Az értékelés majd előfordulhat, hogy megjelenítése nem teljes adatokat.
+Azt javasoljuk, hogy a legnagyobb közös szint (3) a statisztikai szint beállítása úgy, hogy az összes számláló gyűjtött megfelelően. VCenter egy alacsonyabb szinten van, ha csak néhány számlálókat a többi állítsa 0-ra teljesen, előfordulhat, hogy gyűjti. Az értékelés majd előfordulhat, hogy megjelenítése nem teljes adatokat.
 
-A következő táblázatban a értékelési eredmények, amelyek befolyásolják, ha a számláló nem gyűjtött a program.
+Az alábbi táblázatban is megjeleníti az értékelések eredményeinek, ha egy adott teljesítményszámláló gyűjtése nem érinti.
 
-| Számláló                                 | Szint | Eszközönkénti szint | Értékelés gyakorolt hatás                    |
+| Számláló                                 | Szint | Az eszközszintű szint | Értékelés gyakorolt hatás                    |
 | --------------------------------------- | ----- | ---------------- | ------------------------------------ |
-| CPU.Usage.average                       | 1     | NA               | Ajánlott Virtuálisgép-méretet és költség         |
-| mem.usage.average                       | 1     | NA               | Ajánlott Virtuálisgép-méretet és költség         |
-| virtualDisk.read.average                | 2     | 2                | Lemez méretét, a tárolási költségek és a Virtuálisgép-méretet |
-| virtualDisk.write.average               | 2     | 2                | Lemez méretét, a tárolási költségek és a Virtuálisgép-méretet |
-| virtualDisk.numberReadAveraged.average  | 1     | 3                | Lemez méretét, a tárolási költségek és a Virtuálisgép-méretet |
-| virtualDisk.numberWriteAveraged.average | 1     | 3                | Lemez méretét, a tárolási költségek és a Virtuálisgép-méretet |
+| CPU.Usage.average                       | 1     | NA               | Javasolt Virtuálisgép-méretet és költség         |
+| mem.usage.average                       | 1     | NA               | Javasolt Virtuálisgép-méretet és költség         |
+| virtualDisk.read.average                | 2     | 2                | Lemez mérete, a tárolási költségek és a Virtuálisgép-méret |
+| virtualDisk.write.average               | 2     | 2                | Lemez mérete, a tárolási költségek és a Virtuálisgép-méret |
+| virtualDisk.numberReadAveraged.average  | 1     | 3                | Lemez mérete, a tárolási költségek és a Virtuálisgép-méret |
+| virtualDisk.numberWriteAveraged.average | 1     | 3                | Lemez mérete, a tárolási költségek és a Virtuálisgép-méret |
 | NET.Received.average                    | 2     | 3                | Virtuális gép mérete és a hálózati költség             |
 | NET.transmitted.average                 | 2     | 3                | Virtuális gép mérete és a hálózati költség             |
 
 > [!WARNING]
-> Ha csak magasabb szintű statisztika, tart naponta a teljesítményszámlálók létrehozásához. Igen azt javasoljuk, hogy a felderítés egy nap után.
+> Csak statisztikai magasabb szintű állított be, ha tart naponta létrehozni a teljesítményszámlálókat. Ezért javasoljuk, hogy a felderítés futtatásakor egy nap elteltével.
 
 ### <a name="run-the-collector-to-discover-vms"></a>A gyűjtő futtatása a virtuális gépek felderítéséhez
 
-Minden felderítés, végre kell hajtania a gyűjtő felderítéséhez szükséges hatókörében virtuális gépek futnak. Futtassa a másikat a másik után. Egyidejű felderítések nem támogatottak, és mindegyik felderítés rendelkeznie kell egy másik hatókört.
+Kell végrehajtania minden felderítéshez, futtassa a gyűjtő a szükséges hatókörében virtuális gépek felderítéséhez. Futtassa a felderítések egy egymás után. Egyidejű felderítések nem támogatottak, és mindegyik felderítés rendelkeznie kell egy másik hatókört.
 
 1.  A vSphere Client-konzolon kattintson a jobb gombbal a virtuális gépre, majd kattintson az **Open Console** (Konzol megnyitása) elemre.
 2.  Adja meg a berendezés nyelv-, időzóna- és jelszóbeállításait.
-3.  Az asztalon, válassza ki a **futtassa a gyűjtő** helyi.
-4.  Nyissa meg az Azure áttelepítése gyűjtő **előfeltétel** , majd:
+3.  Az asztalon, válassza ki a **gyűjtő futtatása** parancsikon.
+4.  Az Azure Migrate collectorban nyissa meg **Előfeltételek beállítása** , majd:
 
     a. Fogadja el a licencfeltételeket, és olvassa el a külső szolgáltatóval kapcsolatos információkat.
 
     A gyűjtő ellenőrzi, hogy a virtuális gép rendelkezik-e internet-hozzáféréssel.
 
-    b. Ha a virtuális gép fér hozzá az internethez olyan proxyn keresztül, válassza ki a **proxybeállítások**, adja meg a proxykiszolgáló címét és a figyelő portja. Adja meg a hitelesítő adatokat, ha a proxykiszolgáló hitelesítést igényel.
+    b. Ha a virtuális gép az interneten egy proxyn keresztül fér hozzá, válassza ki a **proxybeállítások**, és adja meg a proxykiszolgáló címét és a figyelő portját. Adja meg a hitelesítő adatokat, ha a proxykiszolgáló hitelesítést igényel.
 
     A gyűjtő ellenőrzi, hogy fut-e a gyűjtőszolgáltatás. A szolgáltatás alapértelmezés szerint telepítve van a gyűjtő virtuális gépen.
 
     c. Töltse le és telepítse a VMware PowerCLI-t.
 
 5.  A **Specify vCenter Server details** (vCenter Server adatainak megadása) területen tegye a következőket:
-    - Adja meg a név (FQDN) vagy a vCenter-kiszolgáló IP-címét.
-    - A **felhasználónév** és **jelszó**, adja meg a csak olvasható fiók hitelesítő adatait, amelyet a gyűjtő virtuális gépek felderítése a vCenter Server fog használni.
-    - A **Select scope** (Hatókör kiválasztása) mezőben válassza ki a virtuális gépek felderítésének hatókörét. A gyűjtő képes felderíteni csak az adott hatókörben lévő virtuális gépek. A hatókör egy adott mappára, adatközpontra vagy fürtre állítható be. Hogy 1000-nél több virtuális gép nem tartalmaz.
+    - Adja meg a nevét (FQDN) vagy a vCenter-kiszolgáló IP-címét.
+    - A **felhasználónév** és **jelszó**, adja meg a csak olvasható fiók hitelesítő adatait, amelynek használatával a gyűjtő virtuális gépek felderítése a vCenter Serverben.
+    - A **Select scope** (Hatókör kiválasztása) mezőben válassza ki a virtuális gépek felderítésének hatókörét. A gyűjtő csak a megadott hatókörön belüli virtuális gépek képes felderíteni. A hatókör egy adott mappára, adatközpontra vagy fürtre állítható be. Nem tartalmazhat több mint 1000 virtuális gépet.
 
-6.  A **megadása áttelepítési projekt**, adja meg az Azonosítót, és a projekt kulcsát. Nem másolja őket, ha a gyűjtő VM nyissa meg az Azure-portálon. A projekt **áttekintése** lapon jelölje be **gépek felderítése** , és másolja az értékeket.  
-7.  A **gyűjtemény folyamatjelző**, a felderítési folyamat figyelésére, és győződjön meg arról, hogy a virtuális gépek gyűjtött metaadatai a hatókörben. Az adatgyűjtő mutatja a felderítés hozzávetőleges időtartamát.
+6.  A **adja meg a migrálási projekt**, adja meg az Azonosítót, és a projekt kulcsát. Ha nem másolja őket, a gyűjtő virtuális Gépről nyissa meg az Azure Portalon. A projekt **áttekintése** lapon jelölje be **gépek felderítése** és az értékek másolásához.  
+7.  A **adatgyűjtési folyamat megtekintése**, a felderítési folyamat figyelésére, és ellenőrizze, hogy a virtuális gépekről gyűjtött metaadatok hatókörében van. Az adatgyűjtő mutatja a felderítés hozzávetőleges időtartamát.
 
 
 #### <a name="verify-vms-in-the-portal"></a>Virtuális gépek ellenőrzése a portálon
 
-A felderítési idő a felderített virtuális gépek számától függ. Általában 100 virtuális gépekhez, felderítési befejezi a gyűjtő követően egy óra körül.
+A felderítési idő a felderített virtuális gépek számától függ. Általában 100 virtuális gép, a felderítés befejeződik egy órát, miután a gyűjtő a lejáratot követően újrainduljon.
 
-1. Válassza ki az áttelepítési Planner projektben **kezelése** > **gépek**.
+1. Válassza ki az áttelepítési Planner-projektben **kezelés** > **gépek**.
 2. Ellenőrizze, hogy a felderíteni kívánt virtuális gépek megjelennek-e a portálon.
 
 
 ## <a name="next-steps"></a>További lépések
 
-- Megtudhatja, hogyan [hozzon létre egy csoportot](how-to-create-a-group.md) értékeléséhez.
+- Ismerje meg, hogyan [hozzon létre egy csoportot](how-to-create-a-group.md) értékeléshez.
 - [További információk](concepts-assessment-calculation.md) az értékelések számításával kapcsolatban.

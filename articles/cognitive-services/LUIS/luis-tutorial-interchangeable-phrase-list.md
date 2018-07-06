@@ -9,12 +9,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 05/07/2017
 ms.author: v-geberr
-ms.openlocfilehash: 9f12d9e8c9ee2038e7841cd05bb438421a5a8984
-ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
+ms.openlocfilehash: 2fd53225a455a34d03772487a10f62a94ac86735
+ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37345345"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37868973"
 ---
 # <a name="tutorial-add-phrase-list-to-improve-predictions"></a>Oktatóanyag: A kifejezés lista előrejelzéseket javítása hozzáadása
 Ebben az oktatóanyagban szándék pontszámok pontosságának javítása, és a szavak jelentése megegyezik (szinonimák) rendelkező hozzáadásával egy cserélhető entitások azonosítása [kifejezés lista szolgáltatás](./luis-concept-feature.md).
@@ -192,7 +192,7 @@ Miután hozzáadta a kifejezéslista, a nagyobb pontosságát az utterance (kife
 
 |status | Kifejezéslista| Leképezési pontszám | Entitás pontszám |
 |--|--|--|--|
-| Közzétéve | - | 0.84 | - |
+| Közzétéve | - | 0,84 | - |
 | A jelenleg szerkesztett |✔| 0.92 | Azonosított hardver entitás |
 
 > [!TIP]
@@ -249,12 +249,12 @@ A **hardver** entitás egy kifejezést listáját tartalmazó 0.595 pontszámát
 
 |status | Kifejezéslista| Leképezési pontszám | Entitás pontszám |
 |--|--|--|--|
-| Közzétéve | - | 0.84 | - |
+| Közzétéve | - | 0,84 | - |
 | A jelenleg szerkesztett |✔| 0.92 | 0.595 |
 
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
-Ha már nincs rá szükség, törölje a LUIS-alkalmazást. Ehhez válassza az alkalmazáslistában az alkalmazás neve mellett jobbra található három pontot (...), majd a **Delete** (Törlés) lehetőséget. A **Delete app?** (Törli az alkalmazást?) előugró párbeszédpanelen válassza az **OK** lehetőséget.
+Ha már nincs rá szükség, törölje a LUIS-alkalmazást. Ehhez válassza a három pontot (***...*** ) az alkalmazások listájában, az alkalmazás nevétől jobbra, válassza ki a **törlése**. A **Delete app?** (Törli az alkalmazást?) előugró párbeszédpanelen válassza az **OK** lehetőséget.
 
 ## <a name="next-steps"></a>További lépések
 

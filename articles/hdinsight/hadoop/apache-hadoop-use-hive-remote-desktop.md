@@ -1,6 +1,6 @@
 ---
-title: Hadoop Hive és a távoli asztal használata a HDInsight - Azure |} Microsoft Docs
-description: Ismerje meg, hogyan csatlakozhat a HDInsight Hadoop-fürt távoli asztal használatával, és futtassa a Hive-lekérdezéseket a Hive parancssori felület használatával.
+title: A Hadoop Hive és a távoli asztal használata a HDInsight – Azure |} A Microsoft Docs
+description: Ismerje meg, hogyan csatlakozhat a HDInsight Hadoop-fürtöt a távoli asztal használatával, és futtassa a Hive-lekérdezéseket a Hive-parancssori felület használatával.
 services: hdinsight
 documentationcenter: ''
 author: Blackmist
@@ -14,42 +14,42 @@ ms.topic: conceptual
 ms.date: 01/12/2017
 ms.author: larryfr
 ROBOTS: NOINDEX
-ms.openlocfilehash: 70eab088ce87d8a62d3f258b70aaec5e2e147d0e
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 73b85e99ae1c100cefd50a1f2136a6b526490776
+ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31400639"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37868956"
 ---
-# <a name="use-hive-with-hadoop-on-hdinsight-with-remote-desktop"></a>A Hive használata a HDInsight a távoli asztal hadooppal
+# <a name="use-hive-with-hadoop-on-hdinsight-with-remote-desktop"></a>A Hive használata a Hadooppal a HDInsight a távoli asztallal
 [!INCLUDE [hive-selector](../../../includes/hdinsight-selector-use-hive.md)]
 
-Ebben a cikkben meg fog megtudhatja, hogyan távoli asztal használatával kapcsolódni HDInsight-fürtöt, és futtassa Hive-lekérdezéseket a Hive parancssori felület (CLI) használatával.
+Ebben a cikkben, fog megtudhatja, hogyan csatlakozhat egy HDInsight-fürtöt a távoli asztal használatával, és futtassa a Hive-lekérdezések a Hive-parancssori felület (CLI) használatával.
 
 > [!IMPORTANT]
-> A távoli asztal a Windows operációs rendszert használó HDInsight-fürtök csak érhető el. A Linux az egyetlen operációs rendszer, amely a HDInsight 3.4-es vagy újabb verziói esetében használható. További tudnivalókért lásd: [A HDInsight elavulása Windows rendszeren](../hdinsight-component-versioning.md#hdinsight-windows-retirement).
+> A távoli asztal csak akkor használható a Windows operációs rendszert használó HDInsight-fürtökön. A Linux az egyetlen operációs rendszer, amely a HDInsight 3.4-es vagy újabb verziói esetében használható. További tudnivalókért lásd: [A HDInsight elavulása Windows rendszeren](../hdinsight-component-versioning.md#hdinsight-windows-retirement).
 >
-> HDInsight 3.4-es vagy nagyobb, lásd: [használata a HDInsight és Beeline Hive](apache-hadoop-use-hive-beeline.md) információk Hive-lekérdezéseket közvetlenül a fürtben futó parancsot a parancssorból.
+> A HDInsight 3.4 vagy újabb, lásd: [Hive használata a HDInsight és a Beeline](apache-hadoop-use-hive-beeline.md) információ a Hive-lekérdezések futtatása közvetlenül a fürtön egy parancssorból.
 
 ## <a id="prereq"></a>Előfeltételek
-Ebben a cikkben szereplő lépések elvégzéséhez a következőkre lesz szüksége:
+A jelen cikkben ismertetett lépések elvégzéséhez a következőkre lesz szüksége:
 
-* (A HDInsight Hadoop) a Windows-alapú HDInsight-fürt
-* Windows 10, Windows 8 vagy Windows 7 rendszert futtató ügyfélszámítógép
+* A Windows-alapú HDInsight (Hadoop on HDInsight)-fürt
+* A Windows 10, Windows 8 vagy Windows 7 rendszert futtató ügyfélszámítógép
 
-## <a id="connect"></a>Csatlakozzon a távoli asztal
-A távoli asztal engedélyezése a HDInsight-fürthöz, majd csatlakozni a következő utasításokat követve [csatlakozás RDP Funkciót használnak a HDInsight-fürtök](../hdinsight-administer-use-management-portal.md#connect-to-clusters-using-rdp).
+## <a id="connect"></a>Csatlakozzon a távoli asztallal
+A távoli asztal engedélyezése a HDInsight-fürt, majd csatlakozhat az utasítások szerint [csatlakozhat a HDInsight-fürtök RDP-vel](../hdinsight-administer-use-management-portal.md#connect-to-clusters-using-rdp).
 
-## <a id="hive"></a>A Hive paranccsal
-Amikor az asztalon a HDInsight-fürthöz csatlakozik, tegye a következőket Hive használható:
+## <a id="hive"></a>A Hive-parancs használata
+Miután csatlakoztatta a HDInsight-fürt az asztalra, a következő lépések használatával Hive használata:
 
-1. A HDInsight asztalról indítsa el a **Hadoop parancssori**.
-2. Adja meg a következő parancsot a Hive CLI elindításához:
+1. A HDInsight asztaláról indítsa el a **Hadoop parancssor**.
+2. Adja meg a Hive-parancssori felület elindítása a következő parancsot:
 
         %hive_home%\bin\hive
 
-    Ha a parancssori felület elindult, jelennek meg a parancssori felület struktúra kérdés: `hive>`.
-3. A parancssori felület használatával adja meg az alábbi állításokat annak nevű új tábla létrehozása **log4jLogs** mintaadatok használatával:
+    A parancssori felület elindult, látni fogja a Hive-CLI használatával: `hive>`.
+3. A parancssori felületről, adja meg az alábbi utasításokat, hozzon létre egy új táblát nevű **log4jLogs** mintaadatokat használja:
 
         set hive.execution.engine=tez;
         DROP TABLE log4jLogs;
@@ -58,60 +58,60 @@ Amikor az asztalon a HDInsight-fürthöz csatlakozik, tegye a következőket Hiv
         STORED AS TEXTFILE LOCATION 'wasb:///example/data/';
         SELECT t4 AS sev, COUNT(*) AS count FROM log4jLogs WHERE t4 = '[ERROR]' AND INPUT__FILE__NAME LIKE '%.log' GROUP BY t4;
 
-    Ezekre az utasításokra hajtsa végre a következő műveleteket:
+    Ezek az utasítások hajtsa végre a következő műveleteket:
 
-   * **DROP TABLE**: törli a táblázat és az adatfájlban, ha a tábla már létezik.
-   * **A külső tábla létrehozása**: táblát hoz létre egy új "külső" struktúra. Külső táblák csak a táblázat megadása a Hive (az adatok marad az eredeti helyen) tárolja.
+   * **DROP TABLE**: törli az a táblázat és az adatfájlban, ha a tábla már létezik.
+   * **CREATE EXTERNAL TABLE**: új táblát hoz létre "külső" struktúrában. Külső táblák csak a tábla definícióját tárolja a Hive (az adatok az eredeti helyen van balra).
 
      > [!NOTE]
-     > Külső táblák kell használni, ha az alapul szolgáló adatokat frissítenie kell a külső forrásból (például egy automatizált adatok feltöltési folyamat) vagy egy másik MapReduce művelet által várt, de azt szeretné, hogy a legfrissebb adatok használata a Hive-lekérdezéseket.
+     > Külső táblák használata, ha az alapul szolgáló adatokat frissíteni kell a külső forrásból (például az automatikus feltöltési folyamat), vagy egy másik MapReduce művelet várható, de azt szeretné használni a legújabb adatok Hive-lekérdezéseket.
      >
-     > A külső tábla eldobása does **nem** törli az adatokat, csak a tábla definíciójában.
+     > A külső tábla elvetését does **nem** törölheti az adatokat, csak a tábla definícióját.
      >
      >
-   * **SOR formátum**: Hive közli az adatok formázását. Ebben az esetben a mezőket az egyes naplókon szóközzel elválasztva.
-   * **AS TEXTFILE helyen tárolt**: (a példa/adatkönyvtár) Hive közli az adatokat tárolja, és szövegként tárolt.
-   * **Válassza ki**: választja ki az összes sorok számát ahol oszlop **t4** értéke **[hiba]**. Ez visszaadja-e érték **3** mert három ezt az értéket tartalmazó sorok.
-   * **INPUT__FILE__NAME PÉLDÁUL "%.log"** -struktúra azt ismerteti, amely jelenleg csak a befejezési fájlok kell vissza adatokat. napló. Ez korlátozza a keresési a sample.log fájlt, amely tartalmazza az adatokat, és a nem ad vissza adatot más példa, amelyek nem felelnek meg a sémában meghatározott adatfájlok tartja azt.
-4. A következő utasítások használatával hozzon létre egy új "belső" táblát nevű **errorLogs**:
+   * **SOR FORMÁTUMBAN**: arra utasítja a Hive, az adatok formázását. Ebben az esetben minden napló mezőinek vesszővel elválasztva.
+   * **AS TEXTFILE helyen tárolt**: arra utasítja a Hive, az adatok tárolása a (a példaadatokat/directory), és hogy szövegként lesz tárolva.
+   * **Válassza ki**: választja ki az összes sor számát ahol oszlop **t4** értéket tartalmazza **[hiba]**. A kapott érték **3** mert három sort, amely tartalmazza ezt az értéket.
+   * **INPUT__FILE__NAME PÉLDÁUL "%.log"** -arra utasítja a Hive, amely azt kell csak adatokat adja vissza a végződésű fájlokból. napló. Ez korlátozza a keresést a sample.log fájlt, amely tartalmazza az adatokat, és a más példa adatok visszaadása, amelyek nem egyeznek meg a sémában meghatározott adatfájlok tartja azt.
+4. Az alábbi utasítások segítségével hozzon létre egy új "belső" nevű táblát **hibanaplókat**:
 
         CREATE TABLE IF NOT EXISTS errorLogs (t1 string, t2 string, t3 string, t4 string, t5 string, t6 string, t7 string) STORED AS ORC;
         INSERT OVERWRITE TABLE errorLogs SELECT t1, t2, t3, t4, t5, t6, t7 FROM log4jLogs WHERE t4 = '[ERROR]' AND INPUT__FILE__NAME LIKE '%.log';
 
-    Ezekre az utasításokra hajtsa végre a következő műveleteket:
+    Ezek az utasítások hajtsa végre a következő műveleteket:
 
-   * **Hozzon létre Ha nem létezik táblázat**: egy táblát hoz létre, ha még nem létezik. Mivel a **külső** kulcsszó nem használható, ez egy belső tábla, amely a Hive-adatraktárban tárolja, és teljesen kezeli a Hive.
+   * **Hozzon létre tábla IF NOT EXISTS**: egy táblát hoz létre, ha azt nem létezik. Mivel a **külső** kulcsszó nem használható, ez egy belső tábla, amely a Hive-adatraktárban tárolja, és Hive teljes mértékben felügyelt.
 
      > [!NOTE]
-     > Eltérően **külső** táblák, egy belső tábla eldobása is törli az alapul szolgáló adatokat.
+     > Ellentétben **külső** táblákat, egy belső tábla elvetését is törli az alapul szolgáló adatokat.
      >
      >
-   * **TÁROLT AS ORC**: az adatok optimalizált sor oszlopos (ORC) formátumban tárolja. Ez az egy magas optimalizált és hatékony formátumú Hive adatainak tárolásához.
-   * **ÍRJA FELÜL AZ INSERT... Válassza ki**: sorát kiválasztja a **log4jLogs** tartalmazó **[hiba]**, majd szúrja be az adatokat a **errorLogs** tábla.
+   * **TÁROLT AS ORC**: tárolja az adatokat optimalizált sor Oszlopalapú (ORC formátumban). Ez a Hive-adatok tárolására szolgáló nagymértékben optimalizált és hatékony formátumban.
+   * **ÍRJA FELÜL AZ INSERT... Válassza ki**: sor innen kiválasztja a **log4jLogs** tartalmazó tábla **[hiba]**, majd beszúrja az adatokat a **hibanaplókat** tábla.
 
-     Ellenőrizheti, hogy csak olyan sort tartalmazó **[hiba]** az oszlop t4 volt tároló a **errorLogs** table, használja a következő utasítás visszaadja az összes sort **errorLogs**:
+     Győződjön meg arról, hogy csak azok a sorok, amelyek tartalmazzák a **[hiba]** oszlop t4 is tárolja a **hibanaplókat** táblában, használja a következő utasítást az összes sorát **hibanaplókat**:
 
-       Válassza ki * a errorLogs;
+       Válassza ki * a hibanaplókat;
 
      Három sor adat vissza kell adni, az összes tartalmazó **[hiba]** az oszlop t4.
 
 ## <a id="summary"></a>Summary (Összefoglalás)
-Ahogy látja, a a Hive-parancs segítségével egyszerűen interaktív futtathat Hive-lekérdezéseket a HDInsight-fürtöt, figyelheti a feladat állapotát és a kimeneti beolvasása.
+Ahogy láthatjuk, a Hive-parancs itt egyszerűen interaktív Hive-lekérdezések futtatásához egy HDInsight-fürtön, a feladat állapotának nyomon és a kimeneti lekéréséhez.
 
 ## <a id="nextsteps"></a>Következő lépések
-Általános információk a hdinsight Hive:
+Általános információk a HDInsight Hive-ról:
 
-* [A Hive használata a hdinsight Hadoop](hdinsight-use-hive.md)
+* [A Hive használata a HDInsight Hadoop-keretrendszerrel](hdinsight-use-hive.md)
 
-Más módszerekkel kapcsolatos információk a HDInsight Hadoop dolgozhat:
+Egyéb módjaival kapcsolatos további információk a HDInsight Hadoop-keretrendszerrel használhatja:
 
-* [A Pig használata a HDInsight Hadoop](hdinsight-use-pig.md)
-* [A HDInsight Hadoop MapReduce használata](hdinsight-use-mapreduce.md)
+* [A Pig használata a HDInsight Hadoop-keretrendszerrel](hdinsight-use-pig.md)
+* [A MapReduce használata a HDInsight Hadoop](hdinsight-use-mapreduce.md)
 
-Ha Tez Hive használ, tekintse meg a hibakeresési információk a következő dokumentumokat:
+Ha Tez Hive-val használ, tekintse meg a hibakeresési információkat a következő dokumentumokat:
 
-* [A Tez felhasználói felület használata a Windows-alapú HDInsight-on](../hdinsight-debug-tez-ui.md)
-* [Az Ambari Tez nézetben a Linux-alapú HDInsight-on](../hdinsight-debug-ambari-tez-view.md)
+* [A Tez felhasználói felület használata a Windows-alapú HDInsight](../hdinsight-debug-tez-ui.md)
+* [A Linux-alapú HDInsight az Ambari Tez nézet használata](../hdinsight-debug-ambari-tez-view.md)
 
 [1]:apache-hadoop-visual-studio-tools-get-started.md
 

@@ -1,6 +1,6 @@
 ---
-title: A Power BI munkaterület gyűjteményekkel sorszintű biztonság
-description: Biztonsági szint a Power BI-munkaterület gyűjteményekkel kapcsolatos részletek
+title: Sorszintű biztonság a Power BI munkaterületi gyűjteményekkel
+description: Sorszintű biztonság a Power BI-Munkaterületcsoportok részleteit
 services: power-bi-embedded
 documentationcenter: ''
 author: markingmyname
@@ -15,94 +15,94 @@ ms.tgt_pltfrm: NA
 ms.workload: powerbi
 ms.date: 09/20/2017
 ms.author: maghan
-ms.openlocfilehash: 7256e2f798fbc32c098f19f60b62e577300868c7
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 09a0de1efc909b72192f9d8584edd0fda5e6217d
+ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31414099"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37856351"
 ---
-# <a name="row-level-security-with-power-bi-workspace-collections"></a>A Power BI munkaterület gyűjteményekkel sorszintű biztonság
+# <a name="row-level-security-with-power-bi-workspace-collections"></a>Sorszintű biztonság a Power BI munkaterületi gyűjteményekkel
 
-Sorszintű biztonság (RLS) a felhasználói hozzáférés korlátozása adott adatok egy jelentést vagy adatkészletet, így több másik felhasználó használja ugyanazt a jelentést, minden megnéz különböző adatainak közben használható. A Power BI munkaterület gyűjtemények konfigurálva az RLS adatkészleteket támogatja.
+Sorszintű biztonság (RLS) a felhasználói hozzáférés korlátozása egy adott jelentés vagy adatkészlet, amely lehetővé teszi a több különböző felhasználó használhassa ugyanazt a jelentést, de különböző adatokat láthasson adott adatok használható. Power BI munkaterületi gyűjtemények konfigurálva az RLS adatkészleteket támogatja.
 
-![A sorszintű biztonság van a Power BI munkaterület gyűjtemények folyamata](media/row-level-security/flow-1.png)
+![Sorszintű biztonság a Power BI-Munkaterületcsoportok munkafolyamata](media/row-level-security/flow-1.png)
 
 > [!IMPORTANT]
 > A Power BI munkaterületi gyűjtemények szolgáltatás elavult, és 2018 júniusáig vagy a szerződésében jelzett időpontig érhető el. Javasoljuk, hogy az alkalmazása zavartalan működése érdekében tervezze meg a migrációt a Power BI Embedded szolgáltatásba. Az adatok a Power BI Embedded szolgáltatásba való migrálásának részleteiért lásd a [Power BI munkaterületi gyűjtemények tartalmának Power BI Embedded szolgáltatásba történő migrálásával](https://powerbi.microsoft.com/documentation/powerbi-developer-migrate-from-powerbi-embedded/) foglalkozó cikket.
 
-RLS előnyeit, fontos, hogy tudomásul veszi, hogy három fő alapelv; Felhasználók, szerepkörök és szabályok. Megtudhatja, hogy minden egyes részletes bemutatása:
+Az RLS kihasználása érdekében fontos tisztában három fő alapelvet: Felhasználók, szerepkörök és szabályok. Tekintsünk meg minden egyes közelebbről:
 
-**Felhasználók** – a rendszer a tényleges végfelhasználók jelentések megtekintése. A Power BI munkaterület gyűjtemények a felhasználók a username tulajdonság egy alkalmazási jogkivonatot a azonosítják.
+**Felhasználók** – ezek vannak a jelentéseket megtekintő tényleges végfelhasználók. A Power BI-Munkaterületcsoportok, a felhasználók egy alkalmazási jogkivonatot lévő felhasználónév tulajdonság azonosítja.
 
-**Szerepkörök** – szerepkörökhöz tartozó felhasználókat. Egy szerepkör szabályok tárolója, és képes neve például "Értékesítési igazgató" vagy "Értékesítési Rep." A Power BI munkaterület gyűjtemények felhasználók azonosítja a szerepkörök tulajdonságot egy alkalmazási jogkivonatot.
+**Szerepkörök** – felhasználók szerepkörökhöz tartoznak. Egy szerepkör szabályok tárolói és olyan nevük lehet például "Értékesítési vezető" vagy "Értékesítő". A Power BI-Munkaterületcsoportok, a felhasználók egy alkalmazási jogkivonatot a szerepkörök tulajdonság azonosítja.
 
-**Szabályok** – szerepkörök rendelkezik szabályokat, és ezeket a szabályokat a tényleges szűrőket, hogy az adatok alkalmazható. Ennek oka lehet egyszerűen "ország = USA" vagy más sokkal több dinamikus.
+**Szabályok** – szerepkörök szabályokkal rendelkeznek, és ezeket a szabályokat a alkalmazni az adatok tényleges szűrők. Ez lehet egyszerűen "ország = USA", vagy sokkal dinamikusabb.
 
 ### <a name="example"></a>Példa
 
-Ez a cikk a többi nyújtunk RLS szerzői, és majd fel, amely beágyazott alkalmazáson belül. A példában a [kiskereskedelmi elemzési minta](http://go.microsoft.com/fwlink/?LinkID=780547) PBIX-fájl.
+Ez a cikk további részének biztosítunk egy példát az rls elkészítésére, és ezután megadunk egy beágyazott alkalmazásban. A példában a [kiskereskedelmi elemzési minta](http://go.microsoft.com/fwlink/?LinkID=780547) PBIX-fájlt.
 
-![Példa értékesítési jelentést](media/row-level-security/scenario-2.png)
+![Példa értékesítési jelentés](media/row-level-security/scenario-2.png)
 
-A kiskereskedelmi elemzési minta az összes értékesítés egy adott kereskedelmi lánc jeleníti meg. Nélkül RLS, függetlenül attól, milyen körzeti manager jelentkezik be, és megtekinti a jelentést, akkor jelenik meg ugyanazokat az adatokat. Vezető felügyeleti megállapítása szerint a minden körzet manager csak kell megjelennie az értékesítési az általuk felügyelt tárolókat, és ehhez az RLS használhatjuk.
+A kiskereskedelmi elemzési minta egy adott kiskereskedelmi láncban lévő összes áruház értékesítéseit jeleníti meg. Rls-t, függetlenül attól, hogy melyik district manager jelentkezik be, és megtekinti a jelentést, nélkül ugyanazokat az adatokat láthatják. Vezetőség meghatározta, mindegyik kerületi menedzser csak az általuk kezelt áruházak értékesítéseit mellett, és ehhez használhatjuk az rls-t.
 
-RLS állította össze a Power BI Desktopban. A DataSet adatkészlet és a jelentés megnyitásakor, a lehet diagram nézetet, hogy a séma váltani:
+Az RLS a Power BI Desktopban készül. Ha az adatkészlet és jelentés megnyitásakor, a is diagramnézet a séma váltani:
 
-![A Power BI Desktop modell diagramja](media/row-level-security/diagram-view-3.png)
+![A Power BI Desktopban modellek diagramja](media/row-level-security/diagram-view-3.png)
 
-Az alábbiakban néhány dolog, amit a sémát láthatja:
+Az alábbiakban néhány szempont, figyelje meg, hogy ebben a sémában:
 
-* Az összes mérték, például **összes értékesítés**, tárolja a **értékesítési** ténytábla.
-* Nincsenek négy további kapcsolódó dimenziótáblák: **elem**, **idő**, **tároló**, és **körzeti**.
-* A nyilak a kapcsolat sorok azt jelzik, hogy mely szűrők haladjanak, az egyik tábla másik módja. Például, ha a szűrőt el van helyezve **idő [dátum]**, az aktuális sémában azt fog csak szűrni le az értékeket a **értékesítési** tábla. Más táblák befolyásolhat a szűrőt, mert a nyilak a kapcsolat sorok összes mutasson az értékesítési táblázathoz és számítógépnél nem.
-* A **körzeti** táblázat azt jelzi, aki a kezelő minden körzet:
+* Az összes mértékre, például **Total Sales**, vannak tárolva a **értékesítési** ténytáblában.
+* Nincsenek négy további kapcsolódó dimenziótábla: **elem**, **idő**, **Store**, és **kerület**.
+* A kapcsolatvonalakon lévő azt jelzik, hogy milyen módon szűrőket is flow egyik táblából egy másikba. Ha például egy szűrő el van helyezve **Time [Date]**, az aktuális sémában, akkor csak szűrése lefelé értékeket a **értékesítési** tábla. Más táblák a szűrőt, mert a kapcsolatvonalakon lévő összes mutasson a sales táblába, és azonnal nem befolyásolhat.
+* A **kerület** mérőszámának táblájában, aki a kezelő az egyes kerületek:
   
-  ![Körzeti táblázat sorait](media/row-level-security/district-table-4.png)
+  ![Táblázatsorok körzet](media/row-level-security/district-table-4.png)
 
-Ebben a sémában alapján, ha a szűrőt érvénybe lépni a **körzeti Manager** az körzeti táblázatot, és ha ez a szűrő megfelel a felhasználó a jelentés megtekintése, amely szűrni is szűrők le a **tároló** és  **Értékesítési** táblázatokat csak jeleníthetők meg, hogy adott körzeti manager.
+A séma alapján, ha szűrőt alkalmazunk a **körzeti vezető** a körzeti táblában, és ez a szűrő megfelel a jelentést megtekintő felhasználónak, ha, amely lehet szűkíteni is szűrők a **Store** és  **Értékesítési** csak táblázatokban adott adott menedzser adatait manager.
 
-Itt módját:
+Íme, miként:
 
-1. Kattintson a modellezési lap **szerepkörök kezelése**.  
-   ![Szerepkörök gombra a menüszalag modellezése kezelése](media/row-level-security/modeling-tab-5.png)
-2. Hozzon létre egy új szerepkör neve **Manager**.  
-   ![A Power BI Desktop szerepkörök létrehozása](media/row-level-security/manager-role-6.png)
-3. Az a **körzeti** tábla adja meg a következő DAX-kifejezés: **[körzeti Manager] = USERNAME()**  
-   ![Szerepkör tábla DAX-kifejezése](media/row-level-security/manager-role-7.png)
-4. Győződjön meg arról, a szabályok dolgozik, az a **modellezési** lapra, majd **szerepkörök nézetként**, és írja be a következőt:  
-   ![Megtekinteni, mert a szerepkörök](media/row-level-security/view-as-roles-8.png)
+1. Kattintson a modellezés lap **szerepkörök kezelése**.  
+   ![Szerepkörök gombra a modellezés menüszalag kezelése](media/row-level-security/modeling-tab-5.png)
+2. Hozzon létre egy új szerepkör nevű **Manager**.  
+   ![Szerepkörök létrehozása a Power BI Desktopban](media/row-level-security/manager-role-6.png)
+3. Az a **kerület** táblában írja be a következő DAX-kifejezést: **[District Manager] = USERNAME()**  
+   ![Tábla a szerepkör DAX-kifejezés](media/row-level-security/manager-role-7.png)
+4. Annak biztosításához, hogy a szabályok dolgozik, az a **modellezés** lapra, majd **megtekintés szerepkörökként**, és írja be a következőt:  
+   ![Megtekintés szerepkörökként](media/row-level-security/view-as-roles-8.png)
 
-   A jelentések most adatait jeleníti meg, mintha csak akkor felhasználóként van bejelentkezve **Andrew Ma**.
+   A jelentéseket most már adatai jelennek meg, mintha néven jelentkezett **Andrew Ma**.
 
-A szűrés, azt itt volt módja szűrők le minden rekordot a **körzeti**, **tároló**, és **értékesítési** táblák. A szűrés irányát a közötti kapcsolatok miatt azonban **értékesítési** és **idő**, **értékesítési** és **elem**, és **Elem** és **idő** táblák nem lesznek szűrve le.
+A szűrő alkalmazásakor, az itt tettük, így az összes rekordhoz szűri a **kerület**, **Store**, és **értékesítési** táblák. Közötti kapcsolat szűrőiránya miatt azonban **értékesítési** és **idő**, **értékesítési** és **elem**, és **Elem** és **idő** táblák nem szűr le.
 
-![A kijelölt kapcsolatokat a diagram nézet](media/row-level-security/diagram-view-9.png)
+![A kiemelt kapcsolatok diagram nézet](media/row-level-security/diagram-view-9.png)
 
-Amely ehhez a követelményhez ok lehet, azonban elemeket, amelynek nem rendelkeznek bármely értékesítési kezelők nem szeretnénk, ha azt sikerült kapcsolja be a kétirányú keresztszűrés a kapcsolat és a biztonsági szűrés mindkét irányban folyik. Ezt megteheti a közötti kapcsolat szerkesztésével **értékesítési** és **elem**, ez, például:
+Ehhez a követelményhez ok lehet, azonban elemek nincs semmilyen rendelkeznek kezelők nem szeretnénk, ha azt sikerült kapcsolja be a kétirányú keresztszűrés a kapcsolat és a flow a biztonsági szűrőt mindkét irányban. Ezt megteheti közötti kapcsolat szerkesztésével **értékesítési** és **elem**, ehhez hasonló:
 
-![Kereszt-szűrés irányának kapcsolat](media/row-level-security/edit-relationship-10.png)
+![Tartományok közötti kapcsolat szűrőiránya](media/row-level-security/edit-relationship-10.png)
 
-Most, szűrők is áramolhasson az értékesítési táblából a **elem** tábla:
+Most szűrőket is áramolhasson a Sales tábláról, hogy a **elem** tábla:
 
-![Szűrő diagram nézet a kapcsolat irányát ikon](media/row-level-security/diagram-view-11.png)
+![Szűrő iránya ikon kapcsolat a diagram nézet](media/row-level-security/diagram-view-11.png)
 
 > [!NOTE]
-> Az adatok használata DirectQuery módban, kétirányú-határokon szűrés e két beállítás kiválasztásával engedélyezése szeretné:
+> A DirectQuery mód használata az adatok, ha szüksége a két lehetőség kiválasztásával szűrés kétirányú-közötti engedélyezése:
 
 1. **Fájl** -> **lehetőségek és beállítások** -> **előzetes verziójú funkciók** -> **DirectQuery kétirányú keresztszűrés engedélyezése** .
 2. **Fájl** -> **lehetőségek és beállítások** -> **DirectQuery** -> **korlátlan mérték engedélyezése DirectQuery módban**.
 
-Kétirányú keresztszűrés kapcsolatos további információkért töltse le a [kétirányú keresztszűrés a SQL Server Analysis Services 2016 és a Power BI Desktop](http://download.microsoft.com/download/2/7/8/2782DF95-3E0D-40CD-BFC8-749A2882E109/Bidirectional cross-filtering in Analysis Services 2016 and Power BI.docx) tanulmány.
+Kétirányú keresztszűrés kapcsolatos további információkért töltse le a [kétirányú keresztszűrés a Power BI Desktop és az SQL Server Analysis Services 2016](http://download.microsoft.com/download/2/7/8/2782DF95-3E0D-40CD-BFC8-749A2882E109/Bidirectional%20cross-filtering%20in%20Analysis%20Services%202016%20and%20Power%20BI.docx) tanulmány.
 
-Ez foglalja össze a munka azért van szükség, a Power BI Desktopban, de egy további munkákat, amelyet a érdekében, hogy az RLS-szabályok a Power BI Embedded munkahelyi meghatározott. A felhasználók hitelesítése és az alkalmazás által engedélyezett, és alkalmazási jogkivonatok segítségével egy adott Power BI Embedded jelentést felhasználói hozzáférést. A Power BI Embedded nem rendelkezik a felhasználó ki van információk. Az RLS működéséhez néhány további környezet átadása az alkalmazás jogkivonat részeként kell:
+Ez kell tenni a Power BI Desktopban minden munkát értünk, de egy további munkákat, amely kell végrehajtani, hogy az RLS-szabályok meghatározott munkahelyi Power BI Embedded. Felhasználókat hitelesíti és engedélyezi az alkalmazás számára, és alkalmazási jogkivonatok segítségével egy adott Power BI Embedded-jelentés felhasználói hozzáférést. Power BI Embedded nem rendelkezik konkrét információkkal arról, hogy ki a felhasználó van. Az RLS működéséhez további kontextust az alkalmazás-jogkivonatára részeként kell:
 
-* **felhasználónév** (opcionális) – ami az RLS használt karakterlánc, amely a felhasználó RLS szabályok alkalmazásakor azonosításához használható. Lásd a biztonság a Power BI Embedded sor segítségével:
-* **szerepkörök** – a szerepköröket válassza ki a sorszintű biztonság szabályok alkalmazásakor tartalmazó karakterláncot. Ha több szerepkör, át kell őket, egy karakterlánc-tömbben.
+* **felhasználónév** (nem kötelező) – használja az RLS Ez egy karakterláncérték, amely segítségével azonosítható a felhasználó az RLS-szabályok alkalmazásakor. Lásd a sorszintű biztonság a Power BI Embedded használatával:
+* **szerepkörök** – sorszintű biztonsági szabályok alkalmazásakor kiválasztható szerepköröket tartalmazó karakterlánc. Több szerepkör átadásakor kell azokat átadni karakterlánctömbként.
 
-A token használatával hoz létre a [CreateReportEmbedToken](https://docs.microsoft.com/dotnet/api/microsoft.powerbi.security.powerbitoken?redirectedfrom=MSDN#Microsoft_PowerBI_Security_PowerBIToken_CreateReportEmbedToken_System_String_System_String_System_String_System_DateTime_System_String_System_Collections_Generic_IEnumerable_System_String__) metódust. A username tulajdonság esetén is át kell legalább egy értéket a szerepkört.
+A jogkivonat használatával hoz létre a [CreateReportEmbedToken](https://docs.microsoft.com/dotnet/api/microsoft.powerbi.security.powerbitoken?redirectedfrom=MSDN#Microsoft_PowerBI_Security_PowerBIToken_CreateReportEmbedToken_System_String_System_String_System_String_System_DateTime_System_String_System_Collections_Generic_IEnumerable_System_String__) metódust. Ha a felhasználónév tulajdonság jelen, akkor szerepkörök is meg kell adnia legalább egy értéket.
 
-Például megváltoztathatja az EmbedSample. A DashboardController sor 55 frissítése sikerült
+Ha például sikerült módosítani a EmbedSample. Sikerült frissíteni a DashboardController sor 55
 
     var embedToken = PowerBIToken.CreateReportEmbedToken(this.workspaceCollection, this.workspaceId, report.Id);
 
@@ -110,17 +110,17 @@ erre:
 
     var embedToken = PowerBIToken.CreateReportEmbedToken(this.workspaceCollection, this.workspaceId, report.Id, "Andrew Ma", ["Manager"]);'
 
-A teljes alkalmazás jogkivonat a következőhöz hasonló:
+A teljes alkalmazás-jogkivonatára alábbihoz hasonlóan jelenik meg:
 
-![JSON web token példa](media/row-level-security/app-token-string-12.png)
+![Példa JSON webes jogkivonat](media/row-level-security/app-token-string-12.png)
 
-Most a minden a helyére együtt, ha valaki jelentkezik be, ezt a jelentést az alkalmazás látják kapjanak megtekintéséhez a sorszintű biztonság által meghatározott adatok.
+Most rendelkező minden a helyére együtt, amikor valaki bejelentkezik az alkalmazás a jelentés megtekintéséhez láthatják az adatokat, amelyek a számukra engedélyezett jelenik meg, ahogyan azt a sorszintű biztonság.
 
 ![Az alkalmazás megjelenik a jelentés](media/row-level-security/dashboard-13.png)
 
 ## <a name="see-also"></a>Lásd még
 
-[A sorszintű biztonságot (RLS) rendelkező Power](https://powerbi.microsoft.com/documentation/powerbi-admin-rls/)  
+[Sorszintű biztonság (RLS) Power](https://powerbi.microsoft.com/documentation/powerbi-admin-rls/)  
 [Hitelesítés és engedélyezés a Power BI-munkaterületcsoportok használatával](app-token-flow.md)  
 [Power BI Desktop](https://powerbi.microsoft.com/documentation/powerbi-desktop-get-the-desktop/)  
 [JavaScript beágyazási minta](https://microsoft.github.io/PowerBI-JavaScript/demo/)  

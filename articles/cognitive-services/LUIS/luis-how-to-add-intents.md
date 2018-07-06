@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 05/07/2018
 ms.author: v-geberr
 ms.service: cognitive-services
-ms.openlocfilehash: f004a0a1726ca6c513e2cb4c137f82ae40e31a01
-ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
+ms.openlocfilehash: 479fa450b86d19032e75ef6aa511a7bdca608d75
+ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37344327"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37869047"
 ---
 # <a name="manage-intents"></a>Leképezések kezelése 
 Adjon hozzá [leképezések](luis-concept-intent.md) az olyan kérdések vagy ugyanazon céljaira rendelkező parancsok azonosítására a LUIS-alkalmazás. 
@@ -75,9 +75,9 @@ Lásd: [Hozzáadás minta a leképezés vagy entitás oldalon meglévő utteranc
 
 ## <a name="edit-an-utterance-on-intent-page"></a>Egy leképezési oldalon utterance (kifejezés) szerkesztése
 
-Az utterance (kifejezés) szerkesztéséhez válassza a három pontra (...) ikont, hogy utterance (kifejezés) vonal a jobb végén, és válassza **szerkesztése**. Módosítsa a szöveget, majd nyomja le az Enter billentyűt.
+Az utterance (kifejezés) szerkesztéséhez kattintson a három pontra (***...*** ) gombra, hogy utterance (kifejezés) vonal a jobb végén, és válassza ki **szerkesztése**. Módosítsa a szöveget, majd nyomja le az Enter billentyűt.
 
-![Képernyőkép a szándék Részletek lap, a három pont ikonja kiemelve](./media/luis-how-to-add-intents/edit-utterance.png) 
+![Képernyőkép a leképezések Részletek lap, három pontot ábrázoló gomb kiemelésével](./media/luis-how-to-add-intents/edit-utterance.png) 
 
 ## <a name="reassign-utterances-on-intent-page"></a>Beszédmódok szándék oldalon újbóli hozzárendelése
 Egy vagy több utterances szándéka megváltoztatást őket egy másik beszédszándék módosíthatja. 
@@ -92,7 +92,7 @@ Több utterances szándéka módosításához jelölje be a jelölőnégyzeteket
 
 ## <a name="delete-utterances-on-intent-page"></a>Beszédmódok szándék oldalon törlése
 
-Ha törölni szeretné az utterance (kifejezés), válassza a három pontra (...) ikont, hogy utterance (kifejezés) vonal a jobb végén, és válassza **törlése**. Az utterance (kifejezés) listájából és a LUIS alkalmazás törlődik.
+Az utterance (kifejezés) törléséhez válassza ki a három pontra (***...*** ) gombra, hogy utterance (kifejezés) vonal a jobb végén, és válassza ki **törlése**. Az utterance (kifejezés) listájából és a LUIS alkalmazás törlődik.
 
 ![Képernyőkép a leképezések Részletek lap törlése lehetőséggel kiemelve](./media/luis-how-to-add-intents/delete-utterance-ddl.png)
 

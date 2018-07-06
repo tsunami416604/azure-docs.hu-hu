@@ -1,6 +1,6 @@
 ---
-title: Adatok betöltése az Azure Data Lake Store Azure Data Factory használatával |} Microsoft Docs
-description: Adatok másolása az Azure Data Lake Store az Azure Data Factory használatával
+title: Adatok betöltése az Azure Data Lake Storage Gen1 Azure Data Factory használatával |} A Microsoft Docs
+description: Az Azure Data Factory használata adatok másolása az Azure Data Lake Storage Gen1
 services: data-factory
 documentationcenter: ''
 author: linda33wj
@@ -11,138 +11,138 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/17/2018
 ms.author: jingwang
-ms.openlocfilehash: 25df96664f6b5fe9da26bee43bc726e05504e5b8
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: 7cdc4f0ef436fbd7ea3bdf1431b08be3b840290f
+ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37058917"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37857201"
 ---
-# <a name="load-data-into-azure-data-lake-store-by-using-azure-data-factory"></a>Adatok betöltése az Azure Data Lake Store Azure Data Factory használatával
+# <a name="load-data-into-azure-data-lake-storage-gen1-by-using-azure-data-factory"></a>Adatok betöltése az Azure Data Lake Storage Gen1 Azure Data Factory használatával
 
-[Azure Data Lake Store](../data-lake-store/data-lake-store-overview.md) van egy vállalati szintű kapacitású adattár a big data koncepción alapuló adatelemzési célokra. Azure Data Lake lehetővé teszi bármilyen méretű, típusú és adatfeldolgozást sebesség adatok rögzítéséhez. Az adatok rögzített a műveleti és felderítési jellegű egyetlen helyen.
+[Az Azure Data Lake Storage Gen1](../data-lake-store/data-lake-store-overview.md) (korábbi nevén Azure Data Lake Store) van egy vállalati szintű kapacitású adattár a big Data típusú adatok adatelemzési számítási feladatokhoz. Az Azure Data Lake lehetővé teszi az adatok bármilyen méretű, típusú és feldolgozási sebességét. Az adatok egy egy helyen történő műveleti és felderítési jellegű van rögzítve.
 
-Az Azure Data Factory egy olyan felhőalapú teljes körűen felügyelt adatok integrációs szolgáltatás. A szolgáltatás segítségével a data lake feltöltése a meglévő rendszerről és időt takaríthat meg az elemzési megoldásokat felépítése közben.
+Az Azure Data Factory egy teljes körűen felügyelt felhőalapú adatintegrációs szolgáltatás az. A szolgáltatás segítségével feltölti a a data lake a meglévő rendszerről és időt takaríthat meg az elemzési megoldások készítése során.
 
-Az Azure Data Factory az adatok betöltését az Azure Data Lake Store a következő előnyöket nyújtja:
+Az Azure Data Factory az adatok betöltését az Azure Data Lake Store a következő előnyöket biztosítja:
 
-* **Egyszerűen állíthat be**: egy egyszerűen elsajátítható 5. lépés varázsló nem parancsfájl-szükséges.
-* **Gazdag adattároló támogatási**: a helyszíni és felhőalapú adattároló széles skáláját beépített támogatása. Részletes listájáért lásd: a tábla [adattárolókhoz támogatott](copy-activity-overview.md#supported-data-stores-and-formats).
-* **Biztonságos és megfelelő**: HTTPS- vagy ExpressRoute keresztül továbbított adatok. A globális szolgáltatás meglétének biztosítja, hogy az adatok sosem hagyja el a földrajzi határ.
-* **Nagy teljesítményű**: legfeljebb 1-GB/s Adatbetöltési sebesség az Azure Data Lake Store. További információkért lásd: [a másolási tevékenység](copy-activity-performance.md).
+* **Könnyű beállítás**: 5-lépés egy intuitív varázslóval telepítheti nem parancsfájl-szükséges.
+* **Sokrétű támogatás adattároló**: a helyszíni és felhőalapú adattárak számos beépített támogatása. Részletes listáját, tekintse meg a fenti táblázat [támogatott adattárak](copy-activity-overview.md#supported-data-stores-and-formats).
+* **Biztonságos és megfelelő**: HTTPS- vagy ExpressRoute keresztül továbbított adatok. A szolgáltatás globális jelenlét biztosítja, hogy az adatok a földrajzi határ sosem hagyja el.
+* **Nagy teljesítményű**: legfeljebb 1 GB/s Adatbetöltési sebesség az Azure Data Lake Store-bA. További információkért lásd: [másolási tevékenység](copy-activity-performance.md).
 
-A cikkből megtudhatja, hogyan használható a Data Factory adatok másolása eszköz _adatok betöltése az Amazon S3 az Azure Data Lake Store_. Akkor is hasonló lépésekkel lehet adatok másolása az egyéb típusú adattároló.
+Ez a cikk bemutatja, hogyan használható a Data Factory az adatok másolása eszköz _adatok betöltése az Amazon S3-ból az Azure Data Lake Store_. Adatok másolása a más típusú adattárakban hasonló lépéseket követheti.
 
 > [!NOTE]
-> További információkért lásd: [másolása adatok vagy az Azure Data Lake Store az Azure Data Factory használatával](connector-azure-data-lake-store.md).
+> További információkért lásd: [adatok másolása az Azure Data Lake Store vagy az Azure Data Factory használatával](connector-azure-data-lake-store.md).
 ## <a name="prerequisites"></a>Előfeltételek
 
 * Azure-előfizetés: Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/) megkezdése előtt.
-* Azure Data Lake Store: Ha a Data Lake Store-fiók nem rendelkezik, tekintse meg a utasításait [Data Lake Store-fiók létrehozása](../data-lake-store/data-lake-store-get-started-portal.md#create-an-azure-data-lake-store-account).
-* Amazon S3: Ez a cikk bemutatja, hogyan adatok másolása az Amazon S3. Egyéb adattárakhoz hasonló módon használhatja.
+* Az Azure Data Lake Store: Ha egy Data Lake Store-fiók nem rendelkezik, tekintse meg a található [hozzon létre egy Data Lake Store-fiókot](../data-lake-store/data-lake-store-get-started-portal.md#create-an-azure-data-lake-store-account).
+* Az Amazon S3: Ez a cikk bemutatja, hogyan másolhat adatokat egy Amazon S3-ból. Hasonló lépéseket követve más adattárakban is használhatja.
 
 ## <a name="create-a-data-factory"></a>Data factory létrehozása
 
-1. A bal oldali menüben válassza **új** > **adatok + analitika** > **adat-előállító**:
+1. A bal oldali menüben válassza ki a **új** > **adatok + analitika** > **adat-előállító**:
    
    ![Új adat-előállító létrehozása](./media/load-data-into-azure-data-lake-store/new-azure-data-factory-menu.png)
-2. Az a **új adat-előállító** lapján adja meg a mezőket, amelyeknek az alábbi ábrán látható: 
+2. Az a **új adat-előállító** lap, adja meg a mezőket az alábbi képen látható: 
       
    ![Új adat-előállító lap](./media/load-data-into-azure-data-lake-store//new-azure-data-factory.png)
  
-    * **Név**: Adja meg az az Azure data factory globálisan egyedi nevet. Ha a hibaüzenet "adat-előállító \"LoadADLSDemo\" nem áll rendelkezésre," írjon be egy másik nevet az adat-előállítóban. Például használhatja a név  _**saját_név**_**ADFTutorialDataFactory**. Próbálja meg újra létrehozni az adat-előállítóban. A Data Factory-összetevők elnevezési szabályait a [Data Factory elnevezési szabályait](naming-rules.md) ismertető cikkben találja.
-    * **Előfizetés**: válassza ki az Azure-előfizetéshez használandó adat-előállító létrehozása. 
-    * **Erőforráscsoport**: a legördülő listából válasszon ki egy meglévő erőforráscsoportot, vagy válassza ki a **hozzon létre új** lehetőséget, majd írja be az erőforráscsoport nevét. Az erőforráscsoportokkal kapcsolatos információkért tekintse meg a [Using resource groups to manage your Azure resources](../azure-resource-manager/resource-group-overview.md) (Erőforráscsoportok használata az Azure-erőforrások kezeléséhez) című cikket.  
+    * **Név**: Adja meg az Azure data factory egy globálisan egyedi nevet. Ha a hibaüzenetet kapja "adat-előállító nevét \"LoadADLSDemo\" nem érhető el" adja meg a data Factory egy másik nevet. Például használhatja a név  _**sajátneve**_**ADFTutorialDataFactory**. Próbálja meg újra létrehozni az adat-előállító. A Data Factory-összetevők elnevezési szabályait a [Data Factory elnevezési szabályait](naming-rules.md) ismertető cikkben találja.
+    * **Előfizetés**: válassza ki az Azure-előfizetés, amelyben az adat-előállító létrehozásához. 
+    * **Erőforráscsoport**: a legördülő listából válasszon ki egy meglévő erőforráscsoportot, vagy válassza ki a **új létrehozása** lehetőséget, majd adja meg az erőforráscsoport nevét. Az erőforráscsoportokkal kapcsolatos információkért tekintse meg a [Using resource groups to manage your Azure resources](../azure-resource-manager/resource-group-overview.md) (Erőforráscsoportok használata az Azure-erőforrások kezeléséhez) című cikket.  
     * **Verzió**: válasszon **V2**.
-    * **Hely**: Jelölje ki az adat-előállítóban helyét. A legördülő listán csak a támogatott helyek jelennek meg. Az adattároló adat-előállító által használt más helyek és a régióban lehet. Ezekkel az áruházakkal adatok közé tartoznak a Azure Data Lake Store, Azure Storage, Azure SQL Database és így tovább.
+    * **Hely**: válassza ki az adat-előállító helyét. A legördülő listán csak a támogatott helyek jelennek meg. Az adat-előállítók által használt adattárak más helyeken / régiókban is lehetnek. Ezek adattárak közé tartozik az Azure Data Lake Store, az Azure Storage, Azure SQL Database és így tovább.
 
 3. Kattintson a **Létrehozás** gombra.
-4. Létrehozásának befejezése után lépjen a data factory. Megjelenik a **adat-előállító** kezdőlapja a következő ábrán látható módon: 
+4. Létrehozás befejezése után nyissa meg az adat-előállítóhoz. Megjelenik a **adat-előállító** kezdőlapja a következő képen látható módon: 
    
    ![Data factory kezdőlap](./media/load-data-into-azure-data-lake-store/data-factory-home-page.png)
 
-   Válassza ki a **Szerző & figyelő** csempe az adatok integrációs alkalmazást egy külön lapján.
+   Válassza ki a **létrehozás és Monitorozás** csempére kattintva indítsa el az adatintegrációs alkalmazás külön lapon.
 
 ## <a name="load-data-into-azure-data-lake-store"></a>Adatok betöltése az Azure Data Lake Store
 
-1. Az a **Ismerkedés** lapon jelölje be a **adatok másolása** csempe az adatok másolása eszköz: 
+1. Az a **Ismerkedés** lapon válassza ki a **adatok másolása** csempére, hogy az adatok másolása eszköz elindításához: 
 
    ![Az Adatok másolása eszköz csempéje](./media/load-data-into-azure-data-lake-store/copy-data-tool-tile.png)
-2. Az a **tulajdonságok** adja meg azokat **CopyFromAmazonS3ToADLS** a a **feladatnév** mezőjét, majd válassza **következő**:
+2. Az a **tulajdonságok** adja meg azokat **CopyFromAmazonS3ToADLS** számára a **feladat neve** mezőt, és válassza **tovább**:
 
     ![Tulajdonságok lap](./media/load-data-into-azure-data-lake-store/copy-data-tool-properties-page.png)
-3. Az a **forrás adattár** kattintson **+ új kapcsolat létrehozása**:
+3. Az a **forrásadattár** kattintson **+ új kapcsolat létrehozása**:
 
     ![Forrásadattár lap](./media/load-data-into-azure-data-lake-store/source-data-store-page.png)
     
     Válassza ki **Amazon S3**, és válassza ki **Folytatás**
     
-    ![Forrás adatokat tároló s3 lap](./media/load-data-into-azure-data-lake-store/source-data-store-page-s3.png)
+    ![Forrásadattár s3 lap](./media/load-data-into-azure-data-lake-store/source-data-store-page-s3.png)
     
-4. Az a **adja meg, Amazon S3 kapcsolat** lapon esetén tegye a következőket: 
-   1. Adja meg a **hozzáférési kulcs azonosító** érték.
-   2. Adja meg a **titkos hívóbetű** érték.
+4. Az a **adja meg az Amazon S3-kapcsolat** lapon, tegye a következőket: 
+   1. Adja meg a **elérési kulcs Azonosítóját** értéket.
+   2. Adja meg a **titkos elérési kulcsát** értéket.
    3. Válassza a **Finish** (Befejezés) elemet.
    
-   ![Adja meg az Amazon S3 fiók](./media/load-data-into-azure-data-lake-store/specify-amazon-s3-account.png)
+   ![Az Amazon S3-fiók megadása](./media/load-data-into-azure-data-lake-store/specify-amazon-s3-account.png)
    
-   4. Új kapcsolat jelenik meg. Kattintson a **Tovább** gombra.
+   4. Megjelenik egy új kapcsolatot. Kattintson a **Tovább** gombra.
    
-   ![Adja meg az Amazon S3 fiók](./media/load-data-into-azure-data-lake-store/specify-amazon-s3-account-created.png)
+   ![Az Amazon S3-fiók megadása](./media/load-data-into-azure-data-lake-store/specify-amazon-s3-account-created.png)
    
-5. Az a **válassza ki azt a bemeneti fájl vagy mappa** párbeszédpanelen keresse meg a mappát és a fájlt, amelyet másolja át. Válassza ki a mappát vagy fájlt, jelölje be **válasszon**, majd válassza ki **következő**:
+5. Az a **a bemeneti fájl vagy mappa kiválasztása** párbeszédpanelen tallózással keresse meg a mappát és fájlt, amelyet másolja át azokat. Válassza ki a mappát vagy fájlt, jelölje be **válasszon**, majd válassza ki **tovább**:
 
     ![Bemeneti fájl vagy mappa kiválasztása](./media/load-data-into-azure-data-lake-store/choose-input-folder.png)
 
-6. Válassza ki a példány viselkedést kiválasztásával a **fájlok másolása a rekurzív módon** és **bináris másolási** (mint a fájlok másolása-van) beállítások. Válassza ki **következő**:
+6. Válassza ki a másolási viselkedés kiválasztásával a **fájlok másolása a rekurzív módon** és **bináris másolat** (másolja a fájlokat,-van) lehetőségeket. Válassza ki **tovább**:
 
     ![Adja meg a kimeneti mappa](./media/load-data-into-azure-data-lake-store/specify-binary-copy.png)
     
-7. A a **adatok céltár** lapján kattintson **+ új kapcsolat létrehozása**, majd válassza ki **Azure Data Lake Store**, és válassza ki **Folytatás**:
+7. Az a **célként megadott adattárba** lap, kattintson **+ új kapcsolat létrehozása**, majd válassza ki **Azure Data Lake Store**, és válassza ki **Folytatás**:
 
     ![Céladattár lap](./media/load-data-into-azure-data-lake-store/destination-data-storage-page.png)
 
-8. Az a **megadása Data Lake Store kapcsolat** lapon esetén tegye a következőket: 
+8. Az a **megadása Data Lake Store-kapcsolat** lapon, tegye a következőket: 
 
-   1. Válassza ki a Data Lake Store a a **Data Lake Store-fiók neve**.
+   1. Válassza ki a Data Lake Store esetében a **Data Lake Store-fiók neve**.
    2. Adja meg a **bérlői**, és válassza ki a Befejezés gombra.
    3. Kattintson a **Tovább** gombra.
    
    > [!IMPORTANT]
-   > Ebben a bemutatóban használhat egy _identitás_ a Data Lake Store hitelesítéséhez. Ügyeljen arra, hogy adja meg az egyszerű szolgáltatás a megfelelő engedélyeket az Azure Data Lake Store következő [ezeket az utasításokat](connector-azure-data-lake-store.md#using-managed-service-identity-authentication).
+   > Ebben a bemutatóban használhat egy _felügyeltszolgáltatás-identitás_ a Data Lake Store hitelesítéséhez. Ügyeljen arra, hogy adja meg az egyszerű szolgáltatás az Azure Data Lake Store a megfelelő engedélyeket az alábbi [ezek az utasítások](connector-azure-data-lake-store.md#using-managed-service-identity-authentication).
    
-   ![Adja meg az Azure Data Lake Store-fiók](./media/load-data-into-azure-data-lake-store/specify-adls.png)
-9. Az a **válassza ki azt a kimeneti fájl vagy mappa** lapján adja meg **copyfroms3** a kimeneti mappa nevét, és válassza ki **következő**: 
+   ![Az Azure Data Lake Store-fiók megadása](./media/load-data-into-azure-data-lake-store/specify-adls.png)
+9. Az a **a kimeneti fájl vagy mappa kiválasztása** lap, adja meg **copyfroms3** , a kimeneti mappa nevét, és válassza **tovább**: 
 
     ![Adja meg a kimeneti mappa](./media/load-data-into-azure-data-lake-store/specify-adls-path.png)
 
-10. Az a **beállítások** lapon jelölje be **következő**:
+10. Az a **beállítások** lapon jelölje be **tovább**:
 
     ![Beállítások lap](./media/load-data-into-azure-data-lake-store/copy-settings.png)
-11. Az a **összegzés** lapon tekintse át a beállításokat, és válassza ki **következő**:
+11. Az a **összefoglalás** lapon tekintse át a beállításokat, és válassza ki **tovább**:
 
     ![Összefoglaló lap](./media/load-data-into-azure-data-lake-store/copy-summary.png)
-12. Az a **telepítési lap**, jelölje be **figyelő** figyelheti a folyamat (feladat):
+12. Az a **üzembe helyezés lap**válassza **figyelő** a folyamat (feladat) figyeléséhez:
 
     ![Üzembe helyezés lap](./media/load-data-into-azure-data-lake-store/deployment-page.png)
-13. Figyelje meg, hogy a bal oldalon található **Figyelés** lap automatikusan ki lesz választva. A **műveletek** oszlop ismerteti tevékenységfuttatási részletek megtekintése, és futtassa újra a folyamatot:
+13. Figyelje meg, hogy a bal oldalon található **Figyelés** lap automatikusan ki lesz választva. A **műveletek** oszlop tartalmazza a tevékenységfuttatási részletek megtekintéséhez és a folyamat ismételt futtatásához használható hivatkozások:
 
     ![Folyamatfuttatások monitorozása](./media/load-data-into-azure-data-lake-store/monitor-pipeline-runs.png)
-14. Válassza ki, ha tevékenység fut, amely társul a folyamat, futtassa a **nézet tevékenység fut** hivatkozásra a **műveletek** oszlop. Csak egy (másolási) tevékenység található a folyamatban, ezért csak egy bejegyzést lát. Váltson vissza az a folyamat futó nézet, válassza ki a **folyamatok** tetején. A lista frissítéséhez kattintson a **Frissítés** gombra. 
+14. A folyamat futásához társított tevékenységfuttatások megtekintéséhez jelölje ki a **Tevékenységfuttatások megtekintése** hivatkozásra a **műveletek** oszlop. Csak egy (másolási) tevékenység található a folyamatban, ezért csak egy bejegyzést lát. Válassza ki, váltson vissza a folyamatfuttatások nézetre a **folyamatok** a fenti hivatkozásra. A lista frissítéséhez kattintson a **Frissítés** gombra. 
 
     ![Tevékenységfuttatások monitorozása](./media/load-data-into-azure-data-lake-store/monitor-activity-runs.png)
 
-15. Minden egyes másolási tevékenység végrehajtási adatainak figyelésére, válassza ki a **részletek** hivatkozásra **műveletek** figyelési nézet tevékenységben. Részletes adatai figyelhetők adatokat fogadó, adatátvitelt, megfelelő időtartamú támadáséhoz hasonlók a forráskiszolgálóról másolt, és konfigurációkat használják:
+15. Figyelheti a minden egyes másolási tevékenység-végrehajtási részleteit, válassza ki a **részletei** mellett kapcsolni **műveletek** a figyelési nézet tevékenység. Adatait is figyelheti, például a fogadó, a fájlmegosztásra, a megfelelő időtartamot a végrehajtási lépések a forráskiszolgálóról másolt adatok mennyiségét, és a használt konfigurációk:
 
-    ![A figyelő tevékenységfuttatási részletei](./media/load-data-into-azure-data-lake-store/monitor-activity-run-details.png)
+    ![A figyelő tevékenységfuttatás részletei](./media/load-data-into-azure-data-lake-store/monitor-activity-run-details.png)
 
-16. Győződjön meg arról, hogy az adatokat az Azure Data Lake Store másoljuk: 
+16. Győződjön meg arról, hogy az adatokat másolja ki az Azure Data Lake Store-bA: 
 
-    ![Ellenőrizze a Data Lake Store kimeneti](./media/load-data-into-azure-data-lake-store/adls-copy-result.png)
+    ![Data Lake Store-kimenet ellenőrzése](./media/load-data-into-azure-data-lake-store/adls-copy-result.png)
 
 ## <a name="next-steps"></a>További lépések
 
-Továbblépés a következő cikkben tájékozódhat az Azure Data Lake Store támogatása: 
+Folytassa a következő cikkben megismerheti az Azure Data Lake Store támogatja: 
 
 > [!div class="nextstepaction"]
->[Azure Data Lake Store-összekötő](connector-azure-data-lake-store.md)
+>[Az Azure Data Lake Store-összekötő](connector-azure-data-lake-store.md)

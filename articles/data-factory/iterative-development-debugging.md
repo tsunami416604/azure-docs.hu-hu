@@ -1,6 +1,6 @@
 ---
-title: Ismétlődő fejlesztési és az Azure Data Factory-hibakeresés |} Microsoft Docs
-description: Megtudhatja, hogyan fejleszthet és hibakeresési adat-előállító adatcsatornák ismételt az Azure-portálon.
+title: Iteratív fejlesztés és hibakeresés az Azure Data Factoryban |} A Microsoft Docs
+description: Ismerje meg, hogyan fejlesztése és hibakeresése a Data Factory-folyamatok iteratív az Azure Portalon.
 author: douglaslMS
 ms.author: douglasl
 manager: craigg
@@ -12,55 +12,55 @@ documentationcenter: ''
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.openlocfilehash: ef30958ed0a88853b20278e6d628639ffc0cea34
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: a4d3f991dbba8a686c7242aabff11d9228300777
+ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34619473"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37865165"
 ---
-# <a name="iterative-development-and-debugging-with-azure-data-factory"></a>Ismétlődő fejlesztési és az Azure Data Factory-hibakeresés
+# <a name="iterative-development-and-debugging-with-azure-data-factory"></a>Iteratív fejlesztés és hibakeresés az Azure Data Factoryvel
 
-Az Azure Data Factory lehetővé teszi ismételt fejlesztéséhez és adat-előállító adatcsatornák hibakeresését.
+Az Azure Data Factory használatával iteratív fejlesztés és hibakeresés a Data Factory-folyamatok.
 
-Nyolc perces bevezető és a szolgáltatás bemutató tekintse meg a következő videót:
+Egy nyolc perces bevezető és a funkció bemutatójáért tekintse meg a következő videót:
 
 > [!VIDEO https://channel9.msdn.com/Shows/Azure-Friday/Iterative-development-and-debugging-with-Azure-Data-Factory/player]
 
-## <a name="iterative-debugging-features"></a>Ismétlődő hibakeresési szolgáltatások
-Adatcsatornák és ezek tesztelésével használatával fut a **Debug** képesség a feldolgozási sor vászonra egysoros kód írása nélkül.
+## <a name="iterative-debugging-features"></a>Iteratív hibakeresési funkciók
+Folyamatok létrehozása és tesztelése a használatával fut a **Debug** egy egyetlen sor kód megírása nélkül folyamatvásznon képesség.
 
-![A feldolgozási sor vásznon funkció hibakeresése](media/iterative-development-debugging/iterative-development-image1.png)
+![Képesség a folyamatvásznon hibakeresése](media/iterative-development-debugging/iterative-development-image1.png)
 
-Futtatja a vizsgálat eredményeinek megtekintése a **kimeneti** a feldolgozási sor vászon ablak.
+Fut a teszt eredményeinek megtekintése a **kimeneti** folyamatvásznon ablakában.
 
-![Kimeneti ablakában a feldolgozási sor vászonra](media/iterative-development-debugging/iterative-development-image2.png)
+![A folyamat vászon kimeneti ablak](media/iterative-development-debugging/iterative-development-image2.png)
 
-Követően a teszt futtatása sikeres, további tevékenységek hozzáadása a folyamat, és folytatni a hibakeresés ismétlődő módon. Emellett **Mégse** egy tesztet futtatni, amíg folyamatban van.
+Egy tesztfuttatás sikeres lesz, miután további tevékenységek hozzáadása a folyamatban, és továbbra is, folytatható iteratív hibakeresést. Emellett **Mégse** egy tesztfuttatás, amíg folyamatban van.
 
-![Szakítsa meg a teszt futtatása](media/iterative-development-debugging/iterative-development-image3.png)
+![Egy tesztfuttatás megszakítása](media/iterative-development-debugging/iterative-development-image3.png)
 
-Tesztelésekor fut, nem kell a változások közzétételére a data factory, kiválasztása előtt **Debug**. Ez akkor hasznos forgatókönyvekben, ahol szeretné győződjön meg arról, hogy a módosítások a data factory munkafolyamat frissítése előtt várt módon működik-e.
+Ha fut, nem kell a módosítások közzététele a data Factory kiválasztása előtt **Debug**. Ez hasznos forgatókönyvekben, ahol szeretné győződjön meg arról, hogy a módosítások a data factory munkafolyamat frissítése előtt várt módon működik-e.
 
 ## <a name="more-info-about-debugging"></a>További információ a hibakeresés
 
-1. A vizsgálat futtatása a kezdeményezett a **Debug** funkció nem érhetők el a listában szereplő a **figyelő** fülre. Csak tekintse meg a kiváltott futtatja **eseményindító most**, **ütemezés**, vagy **Átfedésmentes ablak** a elindítja a **figyelő** lapon. Láthatja, hogy a legutóbbi teszt futtatásakor a kezdeményezett a **Debug** képesség a **kimeneti** a feldolgozási sor vászon ablak.
+1. A teszt futtatása a kezdeményezett a **Debug** képességek nem érhetők el a listában a **figyelő** fülre. Csak lásd futtatja az aktivált **Aktiválás most**, **ütemezés**, vagy **Átfedésmentes ablak** eseményindítókra a **figyelő** fülre. Láthatja, hogy az utolsó teszt futtatásakor a kezdeményezett a **Debug** a képesség a **kimeneti** folyamatvásznon ablakában.
 
-2. Kiválasztása **Debug** ténylegesen fut a folyamatot. Igen például a feldolgozási sor tartalmazza a másolási tevékenység során, ha a vizsgálat másol adatokat forrás célhelyre. Ennek eredményeképpen ajánlott teszt mappákat használni a másolási tevékenység és más tevékenységekkel nyomkövetésére. Miután a folyamat már indítja, a normál műveletek használandó tényleges mappák vált.
+2. Kiválasztásával **Debug** ténylegesen futtatja a folyamatot. Így például, ha a folyamat másolási tevékenységet tartalmaz, a teszt futtatása adatokat másol forrás célhelyre. Emiatt ajánlott teszt mappákat használni a másolási tevékenységek és egyéb tevékenységeket történő hibakeresése során. A folyamat már hibakereséséhez, váltson a normál műveletek során használni kívánt tényleges mappákat.
 
-## <a name="setting-breakpoints-for-debugging"></a>A hibakereséshez töréspontok beállítása
+## <a name="setting-breakpoints-for-debugging"></a>Hibakeresési töréspontok beállításával
 
-Adat-előállító emellett lehetővé teszi a hibakeresési, amíg el nem éri a feldolgozási sor vásznon egy adott tevékenységet. Csak a tevékenység, ameddig szeretné tesztelni, és válassza ki a töréspont elhelyezése **Debug**. Adat-előállító biztosítja, hogy a vizsgálat a töréspont tevékenység csak a folyamat vásznon. Ez *Debug amíg* szolgáltatás akkor hasznos, ha nem kívánja tesztelni a teljes folyamat, de a tevékenységek a feldolgozási sor belül csak egy részét.
+Data Factory használatával végzett hibakeresésben, amíg el nem éri a folyamatvásznon egy adott tevékenységet. Ameddig szeretné tesztelni, és válassza ki a tevékenység csak tegyen egy töréspontot **Debug**. A Data Factory biztosítja, hogy a vizsgálatot futtat a töréspont tevékenység csak a folyamatvásznon. Ez *Debug amíg* funkció akkor hasznos, ha nem szeretné a teljes folyamat, de csak egy részhalmazát tevékenységek belül a folyamat teszteléséhez.
 
-![Töréspontokat a feldolgozási sor vászonra](media/iterative-development-debugging/iterative-development-image4.png)
+![A folyamat vásznon töréspontok keresése](media/iterative-development-debugging/iterative-development-image4.png)
 
-Töréspontokat állíthasson, a folyamat vászonra egy elem kijelölése. A *Debug amíg* beállítás elem jobb felső sarkában, egy üres piros kör jelenik meg.
+Állítson be egy töréspontot, hogy a folyamatvásznon elem kiválasztása. A *Debug amíg* lehetőséget az elem jobb felső sarokban található egy üres piros kör jelenik meg.
 
-![A kijelölt elem Töréspont beállítása előtt](media/iterative-development-debugging/iterative-development-image5.png)
+![A kijelölt elem egy töréspontot beállítása előtt](media/iterative-development-debugging/iterative-development-image5.png)
 
-Miután kiválasztotta a *Debug mindaddig, amíg* jelzésére kitöltött piros kör módosítja a beállítást, a a töréspont engedélyezve van.
+Kiválasztása után a *Debug amíg* beállítást, azt egy kitöltött vörös körre változik jelzi a töréspont engedélyezve van.
 
-![Miután beállította a Töréspont a kijelölt elem](media/iterative-development-debugging/iterative-development-image6.png)
+![Miután beállította a egy töréspontot a kijelölt elem](media/iterative-development-debugging/iterative-development-image6.png)
 
 ## <a name="next-steps"></a>További lépések
-[Folyamatos integrációt és üzembe helyezés az Azure Data Factory](continuous-integration-deployment.md)
+[Folyamatos integráció és üzembe helyezés az Azure Data Factoryban](continuous-integration-deployment.md)

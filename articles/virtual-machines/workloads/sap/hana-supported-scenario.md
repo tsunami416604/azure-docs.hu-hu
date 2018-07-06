@@ -1,6 +1,6 @@
 ---
-title: Támogatott forgatókönyvek SAP HANA (nagy példányok) Azure-on |} Microsoft Docs
-description: Támogatott forgatókönyveket és az architektúra adatait SAP Hana Azure (nagy példány)
+title: Támogatott forgatókönyveket az SAP HANA az Azure-ban (nagyméretű példányok) |} A Microsoft Docs
+description: Támogatott forgatókönyveket és architektúra adataikat, az SAP Hana az Azure-ban (nagyméretű példányok)
 services: virtual-machines-linux
 documentationcenter: ''
 author: saghorpa
@@ -11,397 +11,398 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 06/27/2018
+ms.date: 07/06/2018
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 656ba21abf06ad0f079e3ce425d3221724d195d4
-ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
+ms.openlocfilehash: 412872e607f62f710e013d88822cddc59255992e
+ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37113578"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37859952"
 ---
-# <a name="supported-scenarios-for-hana-large-instances"></a>Támogatott esetek nagy HANA-példányok
-Ez a dokumentum ismerteti a támogatott forgatókönyvek mellett az architektúra részleteiről a HANA nagy példányok (HLI) számára.
+# <a name="supported-scenarios-for-hana-large-instances"></a>Nagyméretű HANA-példányokhoz tartozó támogatott esetek
+Ez a dokumentum ismerteti a támogatott forgatókönyveket az architektúra részleteivel együtt a HANA nagyméretű példányok (HLI) számára.
 
 >[!NOTE]
->Ha az adott helyzetben itt nem említett, forduljon a Microsoft szolgáltatás-felügyeleti csoporthoz a követelmények ellenőrzéséhez.
-A kiépítés HLI egység folytatása előtt a Tervező SAP vagy a szolgáltatás megvalósítási partner ellenőrzése.
+>Ha az adott helyzetben itt nem említett, forduljon a Microsoft Service Management csapata a követelmények felmérése.
+A kiépítés HLI egység folytatása előtt ellenőrizze a tervezés, az SAP vagy megvalósítási partnere szolgáltatás.
 
 ## <a name="terms-and-definitions"></a>Kifejezések és meghatározások
-Most ismerje meg a feltételeket és a benne szereplő a dokumentum-definíciók.
+Tekintsük át a feltételeket és a dokumentumban használt definíciókat.
 
-- Biztonsági azonosító: Rendszerazonosító HANA rendszerhez.
-- HLI: Nagy Hana-példányokat.
-- DR: Egy vész helyreállítási helyet.
-- Normál DR: A rendszer telepítése egy dedikált kizárólag a felhasznált vész-Helyreállítási célú-erőforrást.
-- Multipurpose DR: A rendszer nem éles környezetben együtt vész-Helyreállítási eseményre használatára konfigurált éles példány használatára konfigurált vész-Helyreállítási helyen. 
-- Egyetlen SID: A rendszer, ha egy telepített példánya.
-- Több biztonsági azonosító: A rendszer több osztályt konfigurálva. Más néven MCOS környezet.
+- SID: HANA rendszer rendszer azonosítója.
+- HLI: Nagyméretű Hana-példányokhoz.
+- DR: Egy vész-helyreállítási helyként.
+- Normál DR: A rendszer a telepítés csak használt Vészhelyreállítási célból egy dedikált erőforrásokkal.
+- Multipurpose DR: A rendszer nem éles környezetben együtt használja való Vészhelyreállítás esemény éles üzemelő példányok használatára konfigurált DR-helyen. 
+- Egyetlen biztonsági azonosító: A rendszer, ha telepítve van egy példánya.
+- Több SID: A rendszer több példányával konfigurálva. Más néven MCOS környezet.
 
 
 ## <a name="overview"></a>Áttekintés
-A nagy HANA-példányok a különböző üzleti igényei elvégzéséhez architektúrák támogatja. Az alábbi lista ismerteti a forgatókönyvek és a konfigurációs adatait. 
+A HANA nagyméretű példányok támogatják a különböző architektúrák az üzleti követelményeinek megvalósításához. Az alábbi lista ismerteti a forgatókönyvek és azok konfigurációs adatai. 
 
-A származtatott architektúra pusztán az infrastruktúra szempontjából, és kell tájékozódnia a SAP vagy megvalósítási partnereivel HANA központi telepítésére vonatkozóan. A forgatókönyv nem szerepelnek a listán, ha forduljon a Microsoft fiókkezelési csapattal annak az architektúra áttekintése, és megoldást származnia meg.
+A származtatott architektúra pusztán az infrastruktúra szempontjából, és kell tekintse meg az SAP vagy a megvalósítás partnerek a HANA üzembe helyezéshez. Ha a forgatókönyvek nem jelennek meg, forduljon a áttekinteni az architektúrát és a megoldás nyer, a Microsoft-fiókok ügyfélszolgálatához.
 
-**Ezek architektúrák teljes mértékben megfelelővé vált, a TDI (igazított Adatintegráció) kialakítással és SAP által támogatott.**
+**Architektúrák teljes mértékben megfelelő TDI (szabott Adatintegráció) kialakítását, és az SAP által támogatott.**
 
-Ez a dokumentum ismerteti az egyes támogatott architektúrákhoz két összetevői részleteit:
+Ez a dokumentum ismerteti az egyes támogatott architektúrákhoz a két összetevő részletei:
 
 - Ethernet
 - Storage
 
 ### <a name="ethernet"></a>Ethernet
 
-Kiépített kiszolgálónként előre konfigurált ethernet a készletekkel származnak. Az alábbiakban az egyes HLI egységek konfigurált ethernet részleteit.
+Minden üzembe helyezett kiszolgáló előre konfigurálva, az ethernet-illesztőkhöz részhalmazához származnak. Az alábbiakban HLI egységenként konfigurált ethernet-adapterek.
 
-- **A**: / által az ügyfél-hozzáférési szolgál.
-- **B**: a csomópontok kommunikációs szolgál. Ez konfigurálva van (függetlenül a kért topológia) minden olyan kiszolgálón, de csak a kibővített környezetben használható.
-- **C**: Ez az interfész a csomópont a tárolóval való kapcsolat szolgál.
-- **D**: Ez az interfész szolgál az iSCSI-eszköz kapcsolat STONITH telepítő csomópontra. Ez az interfész csak van beállítva, ha a HSR telepítő van szükség.  
+- **A**: Ez az interfész által az ügyfél-hozzáférési/használja.
+- **B**: Ez az interfész a csomópontok kommunikációra lesz használatos. Ez az interfész az összes kiszolgálón (függetlenül a kért topológia) konfigurálva van, de csak használja a 
+- felskálázási forgatókönyveket.
+- **C**: Ez az interfész a csomópont a tárolási kapcsolat szolgál.
+- **D**: Ez az interfész a csomópont iSCSI-eszköz kapcsolat STONITH telepítő szolgál. Ez az interfész csak van konfigurálva, a HSR-telepítő igénylésekor.  
 
-| A HÁLÓZATI ADAPTER LOGIKAI FELÜLETEK | TERMÉKVÁLTOZAT-TÍPUS | SUSE operációs rendszer neve | RHEL operációs rendszer neve | Használati eset|
+| HÁLÓZATI ADAPTER LOGIKAI FELÜLETEK | TERMÉKVÁLTOZATÁNAK TÍPUSA | A SUSE operációs rendszer neve | Az RHEL operációs rendszer neve | Használati eset|
 | --- | --- | --- | --- | --- |
-| A | ÍRJA BE A I | eth0.tenant | eno1.tenant | HLI ügyfél |
-| B | ÍRJA BE A I | eth2.tenant | eno3.tenant | A csomópont csomópont |
-| C | ÍRJA BE A I | eth1.tenant | eno2.tenant | Tárhely csomópontot |
-| D | ÍRJA BE A I | eth4.tenant | eno4.tenant | STONITH |
-| A | TÍPUSÚ | VLAN<tenantNo> | team0.tenant | HLI ügyfél |
-| B | TÍPUSÚ | VLAN < tenantNo + 2 > | team0.tenant + 2 | A csomópont csomópont |
-| C | TÍPUSÚ | VLAN < tenantNo + 1 > | team0.tenant + 1 | Tárhely csomópontot |
-| D | TÍPUSÚ | VLAN < tenantNo + 3 > | team0.tenant + 3 | STONITH |
+| A | I. TÍPUS | eth0.tenant | eno1.tenant | Ügyfél HLI |
+| B | I. TÍPUS | eth2.tenant | eno3.tenant | A csomópontot a csomópont |
+| C | I. TÍPUS | eth1.tenant | eno2.tenant | A storage csomópont |
+| D | I. TÍPUS | eth4.tenant | eno4.tenant | STONITH |
+| A | II. TÍPUSÚ | VLAN<tenantNo> | team0.tenant | Ügyfél HLI |
+| B | II. TÍPUSÚ | VLAN < tenantNo + 2 > | team0.tenant + 2 | A csomópontot a csomópont |
+| C | II. TÍPUSÚ | VLAN < tenantNo + 1 > | team0.tenant + 1 | A storage csomópont |
+| D | II. TÍPUSÚ | VLAN < tenantNo + 3 > | team0.tenant + 3 | STONITH |
 
-A konfigurált HLI egységben topológia a kapcsolatok használhatja. Például a "B" illesztőfelület van beállítva csomópontok kommunikációt, ami akkor hasznos, ha egy kibővített topológia konfigurálva van. Ez az interfész egycsomópontos méretezett konfiguráció esetén nem használható. A felület használatával kapcsolatos további információért tekintse át a szükséges forgatókönyvekben (a dokumentum későbbi szakaszában). 
+Használhatja a felületek, a konfigurált a HLI egységen topológia alapján. Ha például a "B" felületen van beállítva csomópontok közötti kommunikáció, amely akkor hasznos, ha egy kibővített topológia konfigurálva van. Egyetlen csomópont vertikális felskálázás konfigurálása esetén ez az interfész nem használatos. A felület használatával kapcsolatos további információért tekintse át a szükséges forgatókönyveket (a dokumentum későbbi). 
 
-Szükség esetén további hálózati kártyák definiálhat a saját. Azonban a meglévő hálózati adaptereken a konfiguráció nem módosítható.
+Szükség esetén további hálózati kártyák megadhatja a saját maga. Azonban a meglévő hálózati adaptereket a konfiguráció nem módosítható.
 
 >[!NOTE]
->További felületek, amelyek fizikai összeköttetések vagy ragasztás találhatja. A használt eset vegye figyelembe a fent említett felületek, a többi figyelmen kívül hagyja vagy vagy nem rendelkező mérsékelni kell.
+>További felületek, amelyek fizikai adaptereket, vagy ragasztás továbbra is tapasztalhatja. Vegye figyelembe a fent említett felületek az használt esetekhez, rest figyelmen kívül hagyható vagy vagy nem rendelkező mérsékelni kell.
 
-Az egységek két IP-címek hozzárendelve a terjesztési hasonlóan kell kinéznie:
+A két IP-címek hozzárendelve egység terjesztési hasonlóan kell kinéznie:
 
-- "A" Ethernet kell egy hozzárendelt IP-címet, amely a kiszolgáló IP-készlet címtartománya, a Microsoftnak küldött kívül esik. Az IP-cím alkalmazzák az operációs rendszer/etc/hosts kezelésével.
+- Ethernet "A" kiosztott IP-cím, amely kívül esik a kiszolgáló IP-készlet címtartománya a Microsoftnak elküldött kell rendelkeznie. Az IP-címet kell használható az operációs rendszer Hosts kezelésével.
 
-- "C" Ethernet egy hozzárendelt IP-címet az NFS-kommunikációhoz használt kell rendelkeznie. Ezért ezeknél a címeknél tegye **nem** kell annak érdekében, hogy a bérlő belül példányt forgalom etc/hosts kezelhetők.
+- "C" Ethernet kiosztott IP-cím az NFS-kommunikációhoz használt kell rendelkeznie. Ezért ezek a címek tegye **nem** annak érdekében, hogy a példány a példány forgalmat a bérlőn belül a etc/hosts karban kell tartani.
 
-Két IP-címek hozzárendelve a panel-konfiguráció nem megfelelő HANA replikációs vagy HANA kibővített esetekben. Ha két IP-címtartományból csak, és meg szeretne ilyen konfiguráció alkalmazását, lépjen kapcsolatba az Azure szolgáltatásfelügyelet egy harmadik IP-cím beolvasása a harmadik SAP HANA VLAN van társítva. HANA nagy példány egységek három IP-címtartományból három hálózati portokra a következő használati szabályokat alkalmazza:
+HANA-Rendszerreplikálást vagy kibővített HANA üzembe helyezési esetben egy blade-konfigurációt a két rendelt IP-címek nem alkalmas. Ha két IP-címek csak a hozzárendelt kapcsolatban, és ilyen konfiguráció üzembe helyezése, forduljon az SAP HANA az Azure Service Management egy harmadik IP-cím beolvasása a harmadik, aki a hozzárendelt VLAN. A nagyméretű HANA-példány egység három három NIC-portot a hozzárendelt IP-címeket kellene a következő használati szabályok érvényesek:
 
-- "A" Ethernet kell egy hozzárendelt IP-címet, amely a kiszolgáló IP-készlet címtartománya, a Microsoftnak küldött kívül esik. Ezért az IP-címet kell nem használható az/etc/hosts az operációs rendszer karbantartásához.
+- Ethernet "A" kiosztott IP-cím, amely kívül esik a kiszolgáló IP-készlet címtartománya a Microsoftnak elküldött kell rendelkeznie. Ezért az IP-címet kell nem használható az operációs rendszer Hosts kezelésével.
 
-- "B" Ethernet kizárólag használandó stb/gazdagépeken a különböző példányok közötti kommunikáció fenntartásához. Ezek a címek is használhatók lesznek az IP-cím HANA használ a csomópontok közötti konfigurációs kibővített HANA konfigurációk fenntartásához az IP-címeket.
+- "B" Ethernet kizárólag használandó stb /-gazdagépek számára a különböző példányok közötti kommunikáció tarthatók. Ezek a címek is használhatók az IP-címek, amelyek az IP-címek HANA használ a csomópontok közötti konfiguráció a horizontális felskálázás HANA konfigurációkban karban kell tartani.
 
-- "C" Ethernet kell egy hozzárendelt IP-címet, amely az NFS-tárhelyre kommunikációra használja. Ezért az ilyen típusú cím nem fenn kell tartani a etc/hosts.
+- "C" Ethernet kiosztott IP-cím az NFS-tár és közötti kommunikációhoz használt kell rendelkeznie. Ezért az ilyen típusú címek nem fenn kell tartani a etc/hosts.
 
-- Ethernet "D" kizárólag használandó hozzáférési STONITH eszköz támasztja. Ez akkor szükséges, ha HANA rendszer replikációs (HSR) konfigurálása és automatikus feladatátvételt, az operációs rendszer alapján SBD eszközön megvalósítására.
+- Ethernet "D" hozzáférés STONITH eszköz támasztja kizárólag használandó. Ez az interfész megadása kötelező konfigurálásakor a HANA System replikációs (HSR), és szeretné az operációs rendszer SBD alapú eszközt használ, az Automatikus feladatátvétel érdekében.
 
 
 ### <a name="storage"></a>Storage
-Tárolási kért topológia alapján előre konfigurált. A kötet mérete és a csatlakoztatási pont a kiszolgálók számát, SKU, és konfigurálva topológia függően változhat. További információért tekintse át a szükséges forgatókönyvekben (a dokumentum későbbi szakaszában). Ha további tárhely szükséges, vásárolhat egy TB emelkednie.
+Storage a kért topológia alapján előre konfigurált. A kiszolgálók, az SKU-k és a konfigurált topológia számát a kötet mérete és a csatlakoztatási pont megoldástól. További információért tekintse át a szükséges forgatókönyveket (a dokumentum későbbi). Ha további tárhelyre szükség, a több TB-os növekmény is vásárolhat.
 
 >[!NOTE]
->A csatlakozásipont/usr/sap/<SID> a szimbolikus hivatkozást úgy, hogy a csatlakozási pont/hana/megosztott van.
+>A csatlakoztatási pont usr/sap/ <SID> /hana/megosztott csatlakoztatási pont mutató szimbolikus hivatkozás.
 
 
 ## <a name="supported-scenarios"></a>Támogatott helyzetek
 
-Az architektúra ábrákon következő jelölések a grafikus használják:
+Az architektúra-diagramok a következő jelölések használják a grafikus elemek:
 
 ![Legends.PNG](media/hana-supported-scenario/Legends.PNG)
 
-Az alábbi lista tartalmazza a támogatott forgatókönyvekről:
+Az alábbi lista tartalmazza a támogatott forgatókönyveket:
 
-1. Egy SID egyetlen csomópont
+1. Egy SID-jű egyetlen csomópont
 2. Egyetlen csomópont MCOS
-3. Egyetlen csomópont vész-Helyreállítási (normál)
-4. A vész-Helyreállítási (Multipurpose) egyetlen csomópont
+3. A DR (normál) egyetlen csomópont
+4. A DR (Multipurpose) egyetlen csomópont
 5. A STONITH HSR
-6. A vész-Helyreállítási HSR (normál / Multipurpose) 
-7. Állomás automatikus feladatátvétel (1 + 1) 
-8. Horizontális felskálázás az készenléti
+6. A DR HSR (normál / Multipurpose) 
+7. Gazdagép automatikus feladatátvétel (1 + 1) 
+8. Horizontális felskálázás való készenlét
 9. Horizontális felskálázás készenléti nélkül
-10. Horizontális felskálázás az vész-Helyreállítási
+10. Horizontális felskálázás a Vészhelyreállítás
 
 
 
-## <a name="1-single-node-with-one-sid"></a>1. Egy SID egyetlen csomópont
+## <a name="1-single-node-with-one-sid"></a>1. Egy SID-jű egyetlen csomópont
 
-Ez a topológia egy csomópontot a skálától beállítható egy SID-konfiguráció támogatja.
+Ez a topológia egy csomópontot egy méretezési csoportban egy SID-jű konfiguráció támogatja.
 
 ### <a name="architecture-diagram"></a>Architektúradiagram  
 
-![Egyetlen-csomópont-a-1-SID.png](media/hana-supported-scenario/Single-node-with-one-SID.png)
+![Single-csomópont-az-egy-SID.png](media/hana-supported-scenario/Single-node-with-one-SID.png)
 
 ### <a name="ethernet"></a>Ethernet
-Az előre a következő hálózati adapterek:
+A következő hálózati adapterek előre:
 
-| A HÁLÓZATI ADAPTER LOGIKAI FELÜLETEK | TERMÉKVÁLTOZAT-TÍPUS | SUSE operációs rendszer neve | RHEL operációs rendszer neve | Használati eset|
+| HÁLÓZATI ADAPTER LOGIKAI FELÜLETEK | TERMÉKVÁLTOZATÁNAK TÍPUSA | A SUSE operációs rendszer neve | Az RHEL operációs rendszer neve | Használati eset|
 | --- | --- | --- | --- | --- |
-| A | ÍRJA BE A I | eth0.tenant | eno1.tenant | HLI ügyfél |
-| B | ÍRJA BE A I | eth2.tenant | eno3.tenant | Nem használni de konfigurálva |
-| C | ÍRJA BE A I | eth1.tenant | eno2.tenant | Tárhely csomópontot |
-| D | ÍRJA BE A I | eth4.tenant | eno4.tenant | Nem használni de konfigurálva |
-| A | TÍPUSÚ | VLAN<tenantNo> | team0.tenant | HLI ügyfél |
-| B | TÍPUSÚ | VLAN < tenantNo + 2 > | team0.tenant + 2 | Nem használni de konfigurálva |
-| C | TÍPUSÚ | VLAN < tenantNo + 1 > | team0.tenant + 1 | Tárhely csomópontot |
-| D | TÍPUSÚ | VLAN < tenantNo + 3 > | team0.tenant + 3 | Nem használni de konfigurálva |
+| A | I. TÍPUS | eth0.tenant | eno1.tenant | Ügyfél HLI |
+| B | I. TÍPUS | eth2.tenant | eno3.tenant | Konfigurálva, de nincs használatban |
+| C | I. TÍPUS | eth1.tenant | eno2.tenant | A storage csomópont |
+| D | I. TÍPUS | eth4.tenant | eno4.tenant | Konfigurálva, de nincs használatban |
+| A | II. TÍPUSÚ | VLAN<tenantNo> | team0.tenant | Ügyfél HLI |
+| B | II. TÍPUSÚ | VLAN < tenantNo + 2 > | team0.tenant + 2 | Konfigurálva, de nincs használatban |
+| C | II. TÍPUSÚ | VLAN < tenantNo + 1 > | team0.tenant + 1 | A storage csomópont |
+| D | II. TÍPUSÚ | VLAN < tenantNo + 3 > | team0.tenant + 3 | Konfigurálva, de nincs használatban |
 
 ### <a name="storage"></a>Storage
-Az előre a következő csatlakozási pontok le:
+A következő csatlakozási pontok le előre:
 
-| Csatlakozási pont | Használati eset | 
+| Csatlakoztatási pont | Használati eset | 
 | --- | --- |
 |/Hana/Shared/SID | HANA telepítése | 
-|/Hana/Data/SID/mnt00001 | Az adatfájlok telepítése | 
-|/Hana/log/SID/mnt00001 | Fájlok telepítése | 
-|/Hana/logbackups/SID | Naplók visszaállítása |
+|/Hana/Data/SID/mnt00001 | Adatfájlok telepítése | 
+|/Hana/log/SID/mnt00001 | Naplófájlok telepítése | 
+|/Hana/logbackups/SID | Ismételje meg a naplók |
 
 ### <a name="key-considerations"></a>Fő szempontok
-- /usr/SAP/SID /hana/shared/SID a szimbolikus hivatkozást.
+- /usr/SAP/SID /hana/shared/SID mutató szimbolikus hivatkozást.
 
 ## <a name="2-single-node-mcos"></a>2. Egyetlen csomópont MCOS
 
-Ez a topológia egy csomópontot a skálától beállítható több SID-konfiguráció támogatja.
+Ez a topológia több SID-konfiguráció egy méretezési csoportban egy csomópont támogatja.
 
 ### <a name="architecture-diagram"></a>Architektúradiagram  
 
 ![Single-csomópont-mcos.png](media/hana-supported-scenario/single-node-mcos.png)
 
 ### <a name="ethernet"></a>Ethernet
-Az előre a következő hálózati adapterek:
+A következő hálózati adapterek előre:
 
-| A HÁLÓZATI ADAPTER LOGIKAI FELÜLETEK | TERMÉKVÁLTOZAT-TÍPUS | SUSE operációs rendszer neve | RHEL operációs rendszer neve | Használati eset|
+| HÁLÓZATI ADAPTER LOGIKAI FELÜLETEK | TERMÉKVÁLTOZATÁNAK TÍPUSA | A SUSE operációs rendszer neve | Az RHEL operációs rendszer neve | Használati eset|
 | --- | --- | --- | --- | --- |
-| A | ÍRJA BE A I | eth0.tenant | eno1.tenant | HLI ügyfél |
-| B | ÍRJA BE A I | eth2.tenant | eno3.tenant | Nem használni de konfigurálva |
-| C | ÍRJA BE A I | eth1.tenant | eno2.tenant | Tárhely csomópontot |
-| D | ÍRJA BE A I | eth4.tenant | eno4.tenant | Nem használni de konfigurálva |
-| A | TÍPUSÚ | VLAN<tenantNo> | team0.tenant | HLI ügyfél |
-| B | TÍPUSÚ | VLAN < tenantNo + 2 > | team0.tenant + 2 | Nem használni de konfigurálva |
-| C | TÍPUSÚ | VLAN < tenantNo + 1 > | team0.tenant + 1 | Tárhely csomópontot |
-| D | TÍPUSÚ | VLAN < tenantNo + 3 > | team0.tenant + 3 | Nem használni de konfigurálva |
+| A | I. TÍPUS | eth0.tenant | eno1.tenant | Ügyfél HLI |
+| B | I. TÍPUS | eth2.tenant | eno3.tenant | Konfigurálva, de nincs használatban |
+| C | I. TÍPUS | eth1.tenant | eno2.tenant | A storage csomópont |
+| D | I. TÍPUS | eth4.tenant | eno4.tenant | Konfigurálva, de nincs használatban |
+| A | II. TÍPUSÚ | VLAN<tenantNo> | team0.tenant | Ügyfél HLI |
+| B | II. TÍPUSÚ | VLAN < tenantNo + 2 > | team0.tenant + 2 | Konfigurálva, de nincs használatban |
+| C | II. TÍPUSÚ | VLAN < tenantNo + 1 > | team0.tenant + 1 | A storage csomópont |
+| D | II. TÍPUSÚ | VLAN < tenantNo + 3 > | team0.tenant + 3 | Konfigurálva, de nincs használatban |
 
 ### <a name="storage"></a>Storage
-Az előre a következő csatlakozási pontok le:
+A következő csatlakozási pontok le előre:
 
-| Csatlakozási pont | Használati eset | 
+| Csatlakoztatási pont | Használati eset | 
 | --- | --- |
-|/Hana/Shared/SID1 | SID1 HANA telepítését | 
-|/Hana/Data/SID1/mnt00001 | Az adatfájlok SID1 telepítése | 
+|/Hana/Shared/SID1 | SID1 HANA telepítése | 
+|/Hana/Data/SID1/mnt00001 | Adatfájlok SID1 telepítése | 
 |/Hana/log/SID1/mnt00001 | Naplófájlok SID1 telepítése | 
 |/Hana/logbackups/SID1 | Naplók SID1 megismétlése |
-|/Hana/Shared/SID2 | SID2 HANA telepítését | 
-|/Hana/Data/SID2/mnt00001 | Az adatfájlok SID2 telepítése | 
+|/Hana/Shared/SID2 | SID2 HANA telepítése | 
+|/Hana/Data/SID2/mnt00001 | Adatfájlok SID2 telepítése | 
 |/Hana/log/SID2/mnt00001 | Naplófájlok SID2 telepítése | 
 |/Hana/logbackups/SID2 | Naplók SID2 megismétlése |
 
 ### <a name="key-considerations"></a>Fő szempontok
-- /usr/SAP/SID /hana/shared/SID a szimbolikus hivatkozást.
-- Kötet méretének terjesztési adatbázis méretét a memóriában épül. Tekintse meg a [áttekintése és architektúra](https://docs.microsoft.com/en-us/azure/virtual-machines/workloads/sap/hana-overview-architecture) részből megtudhatja, milyen adatbázis méretét a memóriában multisid környezet használata támogatott.
+- /usr/SAP/SID /hana/shared/SID mutató szimbolikus hivatkozást.
+- Az adatbázis mérete, a memória mennyiségi eloszlás alapul. Tekintse meg a [áttekintése és architektúrája](https://docs.microsoft.com/en-us/azure/virtual-machines/workloads/sap/hana-overview-architecture) részből megtudhatja, milyen adatbázist a memóriában méretezi multisid környezet használata támogatott.
 
-## <a name="3-single-node-with-dr-normal"></a>3. Egyetlen csomópont vész-Helyreállítási (normál)
+## <a name="3-single-node-with-dr-normal"></a>3. A DR (normál) egyetlen csomópont
  
-Ez a topológia egy csomópontot a skálától beállítható a storage-alapú replikáció, a vész-Helyreállítási hely egy elsődleges biztonsági azonosító egy vagy több SID-konfiguráció támogatja. Az ábrán csak egyetlen SID írja le az elsődleges helyen, de multisid (MCOS) is támogatott.
+Ez a topológia egy csomópontja vertikális felskálázási egy vagy több biztonsági azonosítókkal való létrehozásához és a DR-helyre, egy elsődleges biztonsági azonosítója a storage-alapú replikálás konfigurációs támogatja. Az ábrán csak egyetlen SID megfelelőként jelenik az elsődleges helyen, de multisid (MCOS) használata is támogatott.
 
 ### <a name="architecture-diagram"></a>Architektúradiagram  
 
 ![Single-csomópont-az-dr.png](media/hana-supported-scenario/Single-node-with-dr.png)
 
 ### <a name="ethernet"></a>Ethernet
-Az előre a következő hálózati adapterek:
+A következő hálózati adapterek előre:
 
-| A HÁLÓZATI ADAPTER LOGIKAI FELÜLETEK | TERMÉKVÁLTOZAT-TÍPUS | SUSE operációs rendszer neve | RHEL operációs rendszer neve | Használati eset|
+| HÁLÓZATI ADAPTER LOGIKAI FELÜLETEK | TERMÉKVÁLTOZATÁNAK TÍPUSA | A SUSE operációs rendszer neve | Az RHEL operációs rendszer neve | Használati eset|
 | --- | --- | --- | --- | --- |
-| A | ÍRJA BE A I | eth0.tenant | eno1.tenant | HLI ügyfél |
-| B | ÍRJA BE A I | eth2.tenant | eno3.tenant | Nem használni de konfigurálva |
-| C | ÍRJA BE A I | eth1.tenant | eno2.tenant | Tárhely csomópontot |
-| D | ÍRJA BE A I | eth4.tenant | eno4.tenant | Nem használni de konfigurálva |
-| A | TÍPUSÚ | VLAN<tenantNo> | team0.tenant | HLI ügyfél |
-| B | TÍPUSÚ | VLAN < tenantNo + 2 > | team0.tenant + 2 | Nem használni de konfigurálva |
-| C | TÍPUSÚ | VLAN < tenantNo + 1 > | team0.tenant + 1 | Tárhely csomópontot |
-| D | TÍPUSÚ | VLAN < tenantNo + 3 > | team0.tenant + 3 | Nem használni de konfigurálva |
+| A | I. TÍPUS | eth0.tenant | eno1.tenant | Ügyfél HLI |
+| B | I. TÍPUS | eth2.tenant | eno3.tenant | Konfigurálva, de nincs használatban |
+| C | I. TÍPUS | eth1.tenant | eno2.tenant | A storage csomópont |
+| D | I. TÍPUS | eth4.tenant | eno4.tenant | Konfigurálva, de nincs használatban |
+| A | II. TÍPUSÚ | VLAN<tenantNo> | team0.tenant | Ügyfél HLI |
+| B | II. TÍPUSÚ | VLAN < tenantNo + 2 > | team0.tenant + 2 | Konfigurálva, de nincs használatban |
+| C | II. TÍPUSÚ | VLAN < tenantNo + 1 > | team0.tenant + 1 | A storage csomópont |
+| D | II. TÍPUSÚ | VLAN < tenantNo + 3 > | team0.tenant + 3 | Konfigurálva, de nincs használatban |
 
 ### <a name="storage"></a>Storage
-Az előre a következő csatlakozási pontok le:
+A következő csatlakozási pontok le előre:
 
-| Csatlakozási pont | Használati eset | 
+| Csatlakoztatási pont | Használati eset | 
 | --- | --- |
-|/Hana/Shared/SID | HANA telepítése a következő biztonsági AZONOSÍTÓHOZ: | 
-|/Hana/Data/SID/mnt00001 | Az adatfájlok telepítse a következő biztonsági AZONOSÍTÓHOZ: | 
-|/Hana/log/SID/mnt00001 | Naplófájlok telepítése a következő biztonsági AZONOSÍTÓHOZ: | 
-|/Hana/logbackups/SID | Naplók visszaállítása a következő biztonsági AZONOSÍTÓHOZ: |
+|/Hana/Shared/SID | Biztonsági azonosító HANA telepítése | 
+|/Hana/Data/SID/mnt00001 | Adatfájlok telepítése a következő biztonsági AZONOSÍTÓHOZ | 
+|/Hana/log/SID/mnt00001 | Naplófájlok telepítése a következő biztonsági AZONOSÍTÓHOZ | 
+|/Hana/logbackups/SID | Naplók SID megismétlése |
 
 
 ### <a name="key-considerations"></a>Fő szempontok
-- /usr/SAP/SID /hana/shared/SID a szimbolikus hivatkozást.
-- MCOS: a kötet mérete terjesztési adatbázis méretét a memóriában épül. Tekintse meg a [áttekintése és architektúra](https://docs.microsoft.com/en-us/azure/virtual-machines/workloads/sap/hana-overview-architecture) részből megtudhatja, milyen adatbázis méretét a memóriában multisid környezet használata támogatott.
-- A vész-Helyreállítási:: (megjelölve "HANA telepítéshez szükséges") konfigurált a kötetek és a csatlakozási pontok le az üzemi HANA-példány telepítése a vész-Helyreállítási HLI egység. 
-- A vész-Helyreállítási,:, logbackups, az adatokat a fürt megosztott kötetei ("Tárolóreplikálást" jelölésű) keresztül a munkakörnyezeti helyet a pillanatkép replikálódnak. Ezek a kötetek csatlakoztatva vannak, csak a feladatátvételi idő alatt. Tekintse meg a [vész-helyreállítási folyamattal feladatátvételi](https://docs.microsoft.com/en-us/azure/virtual-machines/workloads/sap/hana-overview-high-availability-disaster-recovery#disaster-recovery-failover-procedure) további részleteket.
-- Rendszerindító kötet a **i. osztály SKU típusú** vész-Helyreállítási csomópont replikálódik.
+- /usr/SAP/SID /hana/shared/SID mutató szimbolikus hivatkozást.
+- MCOS: a kötet mérete terjesztési adatbázis méretét a memóriában alapul. Tekintse meg a [áttekintése és architektúrája](https://docs.microsoft.com/en-us/azure/virtual-machines/workloads/sap/hana-overview-architecture) részből megtudhatja, milyen adatbázist a memóriában méretezi multisid környezet használata támogatott.
+- : A DR: A kötetek és a csatlakozási pontok le vannak konfigurálva, (megjelölve "HANA telepítéshez szükséges") az éles környezetben a DR HLI egység HANA-példány telepítését. 
+- : A DR: az adatok, logbackups és megosztott kötetek ("Tárreplikáció" megjelölve) lesznek replikálva az élesben használt helyet a pillanatkép-n keresztül. Ezek a kötetek csatlakoztatva vannak, csak a feladatátvételi idő alatt. További információkért olvassa el a dokumentumot [vészhelyreállítási feladatátvétel eljárást](https://docs.microsoft.com/en-us/azure/virtual-machines/workloads/sap/hana-overview-high-availability-disaster-recovery#disaster-recovery-failover-procedure) további részletekért.
+- Rendszerindító kötet a **I osztály Termékváltozatának típusa** DR csomópont replikálja.
 
 
-## <a name="4-single-node-with-dr-multipurpose"></a>4. A vész-Helyreállítási (Multipurpose) egyetlen csomópont
+## <a name="4-single-node-with-dr-multipurpose"></a>4. A DR (Multipurpose) egyetlen csomópont
  
-Ez a topológia egy csomópontot a skálától beállítható a storage-alapú replikáció, a vész-Helyreállítási hely egy elsődleges biztonsági azonosító egy vagy több SID-konfiguráció támogatja. Az ábrán csak egyetlen SID írja le az elsődleges helyen, de multisid (MCOS) is támogatott. A vész-Helyreállítási helyen HLI egység használható QA példány gyártási műveletek az elsődleges helyről működése közben. A vész-Helyreállítási feladatátvevő (vagy a feladatátvételi teszt) időpontjában leállítaná QA példány vész-Helyreállítási helyen.
+Ez a topológia egy csomópontja vertikális felskálázási egy vagy több biztonsági azonosítókkal való létrehozásához és a DR-helyre, egy elsődleges biztonsági azonosítója a storage-alapú replikálás konfigurációs támogatja. Az ábrán csak egyetlen SID megfelelőként jelenik az elsődleges helyen, de multisid (MCOS) használata is támogatott. A DR helyen HLI egység használható QA példány éles műveletek az elsődleges helyről működése közben. A DR feladatátvételének (vagy a feladatátvételi teszt) időpontjában alkotásait QA példány DR helyen.
 
 ### <a name="architecture-diagram"></a>Architektúradiagram  
 
 ![Single-csomópont-az-dr-multipurpose.png](media/hana-supported-scenario/single-node-with-dr-multipurpose.png)
 
 ### <a name="ethernet"></a>Ethernet
-Az előre a következő hálózati adapterek:
+A következő hálózati adapterek előre:
 
-| A HÁLÓZATI ADAPTER LOGIKAI FELÜLETEK | TERMÉKVÁLTOZAT-TÍPUS | SUSE operációs rendszer neve | RHEL operációs rendszer neve | Használati eset|
+| HÁLÓZATI ADAPTER LOGIKAI FELÜLETEK | TERMÉKVÁLTOZATÁNAK TÍPUSA | A SUSE operációs rendszer neve | Az RHEL operációs rendszer neve | Használati eset|
 | --- | --- | --- | --- | --- |
-| A | ÍRJA BE A I | eth0.tenant | eno1.tenant | HLI ügyfél |
-| B | ÍRJA BE A I | eth2.tenant | eno3.tenant | Nem használni de konfigurálva |
-| C | ÍRJA BE A I | eth1.tenant | eno2.tenant | Tárhely csomópontot |
-| D | ÍRJA BE A I | eth4.tenant | eno4.tenant | Nem használni de konfigurálva |
-| A | TÍPUSÚ | VLAN<tenantNo> | team0.tenant | HLI ügyfél |
-| B | TÍPUSÚ | VLAN < tenantNo + 2 > | team0.tenant + 2 | Nem használni de konfigurálva |
-| C | TÍPUSÚ | VLAN < tenantNo + 1 > | team0.tenant + 1 | Tárhely csomópontot |
-| D | TÍPUSÚ | VLAN < tenantNo + 3 > | team0.tenant + 3 | Nem használni de konfigurálva |
+| A | I. TÍPUS | eth0.tenant | eno1.tenant | Ügyfél HLI |
+| B | I. TÍPUS | eth2.tenant | eno3.tenant | Konfigurálva, de nincs használatban |
+| C | I. TÍPUS | eth1.tenant | eno2.tenant | A storage csomópont |
+| D | I. TÍPUS | eth4.tenant | eno4.tenant | Konfigurálva, de nincs használatban |
+| A | II. TÍPUSÚ | VLAN<tenantNo> | team0.tenant | Ügyfél HLI |
+| B | II. TÍPUSÚ | VLAN < tenantNo + 2 > | team0.tenant + 2 | Konfigurálva, de nincs használatban |
+| C | II. TÍPUSÚ | VLAN < tenantNo + 1 > | team0.tenant + 1 | A storage csomópont |
+| D | II. TÍPUSÚ | VLAN < tenantNo + 3 > | team0.tenant + 3 | Konfigurálva, de nincs használatban |
 
 ### <a name="storage"></a>Storage
-Az előre a következő csatlakozási pontok le:
+A következő csatlakozási pontok le előre:
 
-| Csatlakozási pont | Használati eset | 
+| Csatlakoztatási pont | Használati eset | 
 | --- | --- |
 |**Az elsődleges helyen**|
-|/Hana/Shared/SID | HANA üzemi SID telepítése | 
-|/Hana/Data/SID/mnt00001 | Az adatfájlok üzemi SID telepítése | 
-|/Hana/log/SID/mnt00001 | Naplófájlok üzemi SID telepítése | 
-|/Hana/logbackups/SID | Naplók üzemi SID visszaállítása |
-|**A vész-Helyreállítási helyen**|
-|/Hana/Shared/SID | HANA üzemi SID telepítése | 
-|/Hana/Data/SID/mnt00001 | Az adatfájlok üzemi SID telepítése | 
-|/Hana/log/SID/mnt00001 | Naplófájlok üzemi SID telepítése | 
-|/Hana/Shared/QA-SID | QA SID HANA telepítését | 
-|/Hana/Data/QA-SID/mnt00001 | Az adatfájlok QA SID telepítése | 
+|/Hana/Shared/SID | HANA telepítése éles környezetben biztonsági azonosítója | 
+|/Hana/Data/SID/mnt00001 | Adatfájlok telepítése éles környezetben biztonsági azonosítója | 
+|/Hana/log/SID/mnt00001 | Naplófájlok telepítése éles környezetben biztonsági azonosítója | 
+|/Hana/logbackups/SID | Éles környezetben SID naplók visszaállítása |
+|**A DR helyen**|
+|/Hana/Shared/SID | HANA telepítése éles környezetben biztonsági azonosítója | 
+|/Hana/Data/SID/mnt00001 | Adatfájlok telepítése éles környezetben biztonsági azonosítója | 
+|/Hana/log/SID/mnt00001 | Naplófájlok telepítése éles környezetben biztonsági azonosítója | 
+|/Hana/Shared/QA-SID | QA SID HANA telepítése | 
+|/Hana/Data/QA-SID/mnt00001 | Az adatfájlokat a QA SID telepítése | 
 |/Hana/log/QA-SID/mnt00001 | Naplófájlok a QA SID telepítése |
 |/Hana/logbackups/QA-SID | QA SID naplók megismétlése |
 
 ### <a name="key-considerations"></a>Fő szempontok
-- /usr/SAP/SID /hana/shared/SID a szimbolikus hivatkozást.
-- MCOS: a kötet mérete terjesztési adatbázis méretét a memóriában épül. Tekintse meg a [áttekintése és architektúra](https://docs.microsoft.com/en-us/azure/virtual-machines/workloads/sap/hana-overview-architecture) részből megtudhatja, milyen adatbázis méretét a memóriában multisid környezet használata támogatott.
-- A vész-Helyreállítási:: (megjelölve "HANA telepítéshez szükséges") konfigurált a kötetek és a csatlakozási pontok le az üzemi HANA-példány telepítése a vész-Helyreállítási HLI egység. 
-- A vész-Helyreállítási,:, logbackups, az adatokat a fürt megosztott kötetei ("Tárolóreplikálást" jelölésű) keresztül a munkakörnyezeti helyet a pillanatkép replikálódnak. Ezek a kötetek csatlakoztatva vannak, csak a feladatátvételi idő alatt. Tekintse meg a [vész-helyreállítási folyamattal feladatátvételi](https://docs.microsoft.com/en-us/azure/virtual-machines/workloads/sap/hana-overview-high-availability-disaster-recovery#disaster-recovery-failover-procedure) további részleteket. 
-- A vész-Helyreállítási:: az adatok, a logbackups, a napló, a QA-példány telepítése (a "QA példány telepítés" jelölésű) QA megosztott kötetek vannak beállítva.
-- Rendszerindító kötet a **i. osztály SKU típusú** vész-Helyreállítási csomópont replikálódik.
+- /usr/SAP/SID /hana/shared/SID mutató szimbolikus hivatkozást.
+- MCOS: a kötet mérete terjesztési adatbázis méretét a memóriában alapul. Tekintse meg a [áttekintése és architektúrája](https://docs.microsoft.com/en-us/azure/virtual-machines/workloads/sap/hana-overview-architecture) részből megtudhatja, milyen adatbázist a memóriában méretezi multisid környezet használata támogatott.
+- : A DR: A kötetek és a csatlakozási pontok le vannak konfigurálva, (megjelölve "HANA telepítéshez szükséges") az éles környezetben a DR HLI egység HANA-példány telepítését. 
+- : A DR: az adatok, logbackups és megosztott kötetek ("Tárreplikáció" megjelölve) lesznek replikálva az élesben használt helyet a pillanatkép-n keresztül. Ezek a kötetek csatlakoztatva vannak, csak a feladatátvételi idő alatt. További információkért olvassa el a dokumentumot [vészhelyreállítási feladatátvétel eljárást](https://docs.microsoft.com/en-us/azure/virtual-machines/workloads/sap/hana-overview-high-availability-disaster-recovery#disaster-recovery-failover-procedure) további részletekért. 
+- : A DR: az adatok, logbackups, log, QA (a "QA-példány telepítése" megjelölve) megosztott kötetek vannak konfigurálva a QA példány telepítéséhez.
+- Rendszerindító kötet a **I osztály Termékváltozatának típusa** DR csomópont replikálja.
 
 ## <a name="5-hsr-with-stonith"></a>5. A STONITH HSR
  
-Ez a topológia két csomópont támogatása HANA rendszer replikációs (HSR) konfigurációját. 
+Ez a topológia két csomópont támogatása a HANA System replikációs (HSR) konfigurációját. Ez a konfiguráció csak támogatott a csomópont egyetlen HANA-példányokhoz. Azt jelenti, hogy, MCOS forgatókönyvek nem támogatottak.
 
-**Mostantól Ez az architektúra csak támogatott SUSE operációs rendszer.**
+**Ez az architektúra jelen pillanatban csak a SUSE operációs rendszer esetében támogatott.**
 
 
 ### <a name="architecture-diagram"></a>Architektúradiagram  
 
-![HSR rendelkező STONITH.png](media/hana-supported-scenario/HSR-with-STONITH.png)
+![HSR-az-STONITH.png](media/hana-supported-scenario/HSR-with-STONITH.png)
 
 
 
 ### <a name="ethernet"></a>Ethernet
-Az előre a következő hálózati adapterek:
+A következő hálózati adapterek előre:
 
-| A HÁLÓZATI ADAPTER LOGIKAI FELÜLETEK | TERMÉKVÁLTOZAT-TÍPUS | SUSE operációs rendszer neve | RHEL operációs rendszer neve | Használati eset|
+| HÁLÓZATI ADAPTER LOGIKAI FELÜLETEK | TERMÉKVÁLTOZATÁNAK TÍPUSA | A SUSE operációs rendszer neve | Az RHEL operációs rendszer neve | Használati eset|
 | --- | --- | --- | --- | --- |
-| A | ÍRJA BE A I | eth0.tenant | eno1.tenant | HLI ügyfél |
-| B | ÍRJA BE A I | eth2.tenant | eno3.tenant | Nem használni de konfigurálva |
-| C | ÍRJA BE A I | eth1.tenant | eno2.tenant | Tárhely csomópontot |
-| D | ÍRJA BE A I | eth4.tenant | eno4.tenant | STONITH használatos |
-| A | TÍPUSÚ | VLAN<tenantNo> | team0.tenant | HLI ügyfél |
-| B | TÍPUSÚ | VLAN < tenantNo + 2 > | team0.tenant + 2 | Nem használni de konfigurálva |
-| C | TÍPUSÚ | VLAN < tenantNo + 1 > | team0.tenant + 1 | Tárhely csomópontot |
-| D | TÍPUSÚ | VLAN < tenantNo + 3 > | team0.tenant + 3 | STONITH használatos |
+| A | I. TÍPUS | eth0.tenant | eno1.tenant | Ügyfél HLI |
+| B | I. TÍPUS | eth2.tenant | eno3.tenant | Konfigurálva, de nincs használatban |
+| C | I. TÍPUS | eth1.tenant | eno2.tenant | A storage csomópont |
+| D | I. TÍPUS | eth4.tenant | eno4.tenant | STONITH használt |
+| A | II. TÍPUSÚ | VLAN<tenantNo> | team0.tenant | Ügyfél HLI |
+| B | II. TÍPUSÚ | VLAN < tenantNo + 2 > | team0.tenant + 2 | Konfigurálva, de nincs használatban |
+| C | II. TÍPUSÚ | VLAN < tenantNo + 1 > | team0.tenant + 1 | A storage csomópont |
+| D | II. TÍPUSÚ | VLAN < tenantNo + 3 > | team0.tenant + 3 | STONITH használt |
 
 ### <a name="storage"></a>Storage
-Az előre a következő csatlakozási pontok le:
+A következő csatlakozási pontok le előre:
 
-| Csatlakozási pont | Használati eset | 
+| Csatlakoztatási pont | Használati eset | 
 | --- | --- |
-|**Az elsődleges csomóponton lévő**|
-|/Hana/Shared/SID | HANA üzemi SID telepítése | 
-|/Hana/Data/SID/mnt00001 | Az adatfájlok üzemi SID telepítése | 
-|/Hana/log/SID/mnt00001 | Naplófájlok üzemi SID telepítése | 
-|/Hana/logbackups/SID | Naplók üzemi SID visszaállítása |
+|**Az elsődleges csomóponton**|
+|/Hana/Shared/SID | HANA telepítése éles környezetben biztonsági azonosítója | 
+|/Hana/Data/SID/mnt00001 | Adatfájlok telepítése éles környezetben biztonsági azonosítója | 
+|/Hana/log/SID/mnt00001 | Naplófájlok telepítése éles környezetben biztonsági azonosítója | 
+|/Hana/logbackups/SID | Éles környezetben SID naplók visszaállítása |
 |**A másodlagos csomópont**|
 |/Hana/Shared/SID | Másodlagos SID HANA telepítése | 
-|/Hana/Data/SID/mnt00001 | Az adatfájlok másodlagos SID telepítése | 
-|/Hana/log/SID/mnt00001 | Naplófájlok telepíteni a másodlagos biztonsági azonosítója | 
-|/Hana/logbackups/SID | Másodlagos SID naplók megismétlése |
+|/Hana/Data/SID/mnt00001 | Adatfájlok telepítse a másodlagos biztonsági azonosítója | 
+|/Hana/log/SID/mnt00001 | Naplófájlok telepítse a másodlagos biztonsági azonosítója | 
+|/Hana/logbackups/SID | Naplók megismétlése másodlagos biztonsági azonosítója |
 
 ### <a name="key-considerations"></a>Fő szempontok
-- /usr/SAP/SID /hana/shared/SID a szimbolikus hivatkozást.
-- MCOS: a kötet mérete terjesztési adatbázis méretét a memóriában épül. Tekintse meg a [áttekintése és architektúra](https://docs.microsoft.com/en-us/azure/virtual-machines/workloads/sap/hana-overview-architecture) részből megtudhatja, milyen adatbázis méretét a memóriában multisid környezet használata támogatott.
+- /usr/SAP/SID /hana/shared/SID mutató szimbolikus hivatkozást.
+- MCOS: a kötet mérete terjesztési adatbázis méretét a memóriában alapul. Tekintse meg a [áttekintése és architektúrája](https://docs.microsoft.com/en-us/azure/virtual-machines/workloads/sap/hana-overview-architecture) részből megtudhatja, milyen adatbázist a memóriában méretezi multisid környezet használata támogatott.
 - STONITH: A STONITH beállítása egy SBD van konfigurálva. STONITH használata azonban nem kötelező.
 
 
-## <a name="6-hsr-with-dr"></a>6. A vész-Helyreállítási HSR
+## <a name="6-hsr-with-dr"></a>6. A DR HSR
  
-Ez a topológia két csomópont támogatása HANA rendszer replikációs (HSR) konfigurációját. Mind a normál és többcélú DR esetén támogatott. 
+Ez a topológia két csomópont támogatása a HANA System replikációs (HSR) konfigurációját. A normál és a többcélú DR egyaránt támogatott. Ezek a beállítások csak egyetlen HANA-példányokhoz egy csomóponton támogatottak. Azt jelenti, hogy ezeket a konfigurációkat MCOS forgatókönyvek nem támogatottak.
 
-A diagramon többcélú forgatókönyvet az adott helyen a vész-Helyreállítási ideális, HLI egység QA példány szolgál, éles műveletek az elsődleges helyről működése közben. A vész-Helyreállítási feladatátvevő (vagy a feladatátvételi teszt) időpontjában leállítaná QA példány vész-Helyreállítási helyen. 
+Az ábrán a többcélú forgatókönyv adott helyen a Vészhelyreállítási megfelelőként jelenik, HLI egység QA példány használt, amíg az elsődleges helyről éles műveletek futnak. A DR feladatátvételének (vagy a feladatátvételi teszt) időpontjában alkotásait QA példány DR helyen. 
 
 
 
 ### <a name="architecture-diagram"></a>Architektúradiagram  
 
-![HSR rendelkező DR.png](media/hana-supported-scenario/HSR-with-DR.png)
+![HSR-az-DR.png](media/hana-supported-scenario/HSR-with-DR.png)
 
 ### <a name="ethernet"></a>Ethernet
-Az előre a következő hálózati adapterek:
+A következő hálózati adapterek előre:
 
-| A HÁLÓZATI ADAPTER LOGIKAI FELÜLETEK | TERMÉKVÁLTOZAT-TÍPUS | SUSE operációs rendszer neve | RHEL operációs rendszer neve | Használati eset|
+| HÁLÓZATI ADAPTER LOGIKAI FELÜLETEK | TERMÉKVÁLTOZATÁNAK TÍPUSA | A SUSE operációs rendszer neve | Az RHEL operációs rendszer neve | Használati eset|
 | --- | --- | --- | --- | --- |
-| A | ÍRJA BE A I | eth0.tenant | eno1.tenant | HLI ügyfél |
-| B | ÍRJA BE A I | eth2.tenant | eno3.tenant | Nem használni de konfigurálva |
-| C | ÍRJA BE A I | eth1.tenant | eno2.tenant | Tárhely csomópontot |
-| D | ÍRJA BE A I | eth4.tenant | eno4.tenant | STONITH használatos |
-| A | TÍPUSÚ | VLAN<tenantNo> | team0.tenant | HLI ügyfél |
-| B | TÍPUSÚ | VLAN < tenantNo + 2 > | team0.tenant + 2 | Nem használni de konfigurálva |
-| C | TÍPUSÚ | VLAN < tenantNo + 1 > | team0.tenant + 1 | Tárhely csomópontot |
-| D | TÍPUSÚ | VLAN < tenantNo + 3 > | team0.tenant + 3 | STONITH használatos |
+| A | I. TÍPUS | eth0.tenant | eno1.tenant | Ügyfél HLI |
+| B | I. TÍPUS | eth2.tenant | eno3.tenant | Konfigurálva, de nincs használatban |
+| C | I. TÍPUS | eth1.tenant | eno2.tenant | A storage csomópont |
+| D | I. TÍPUS | eth4.tenant | eno4.tenant | STONITH használt |
+| A | II. TÍPUSÚ | VLAN<tenantNo> | team0.tenant | Ügyfél HLI |
+| B | II. TÍPUSÚ | VLAN < tenantNo + 2 > | team0.tenant + 2 | Konfigurálva, de nincs használatban |
+| C | II. TÍPUSÚ | VLAN < tenantNo + 1 > | team0.tenant + 1 | A storage csomópont |
+| D | II. TÍPUSÚ | VLAN < tenantNo + 3 > | team0.tenant + 3 | STONITH használt |
 
 ### <a name="storage"></a>Storage
-Az előre a következő csatlakozási pontok le:
+A következő csatlakozási pontok le előre:
 
-| Csatlakozási pont | Használati eset | 
+| Csatlakoztatási pont | Használati eset | 
 | --- | --- |
-|**Az elsődleges helyen az elsődleges csomóponton**|
-|/Hana/Shared/SID | HANA üzemi SID telepítése | 
-|/Hana/Data/SID/mnt00001 | Az adatfájlok üzemi SID telepítése | 
-|/Hana/log/SID/mnt00001 | Naplófájlok üzemi SID telepítése | 
-|/Hana/logbackups/SID | Naplók üzemi SID visszaállítása |
+|**Az elsődleges hely elsődleges csomóponton**|
+|/Hana/Shared/SID | HANA telepítése éles környezetben biztonsági azonosítója | 
+|/Hana/Data/SID/mnt00001 | Adatfájlok telepítése éles környezetben biztonsági azonosítója | 
+|/Hana/log/SID/mnt00001 | Naplófájlok telepítése éles környezetben biztonsági azonosítója | 
+|/Hana/logbackups/SID | Éles környezetben SID naplók visszaállítása |
 |**A másodlagos csomópont az elsődleges helyen**|
 |/Hana/Shared/SID | Másodlagos SID HANA telepítése | 
-|/Hana/Data/SID/mnt00001 | Az adatfájlok másodlagos SID telepítése | 
-|/Hana/log/SID/mnt00001 | Naplófájlok telepíteni a másodlagos biztonsági azonosítója | 
-|/Hana/logbackups/SID | Másodlagos SID naplók megismétlése |
-|**A vész-Helyreállítási helyen**|
-|/Hana/Shared/SID | HANA üzemi SID telepítése | 
-|/Hana/Data/SID/mnt00001 | Az adatfájlok üzemi SID telepítése | 
-|/Hana/log/SID/mnt00001 | Naplófájlok üzemi SID telepítése | 
-|/Hana/Shared/QA-SID | QA SID HANA telepítését | 
-|/Hana/Data/QA-SID/mnt00001 | Az adatfájlok QA SID telepítése | 
+|/Hana/Data/SID/mnt00001 | Adatfájlok telepítse a másodlagos biztonsági azonosítója | 
+|/Hana/log/SID/mnt00001 | Naplófájlok telepítse a másodlagos biztonsági azonosítója | 
+|/Hana/logbackups/SID | Naplók megismétlése másodlagos biztonsági azonosítója |
+|**A DR helyen**|
+|/Hana/Shared/SID | HANA telepítése éles környezetben biztonsági azonosítója | 
+|/Hana/Data/SID/mnt00001 | Adatfájlok telepítése éles környezetben biztonsági azonosítója | 
+|/Hana/log/SID/mnt00001 | Naplófájlok telepítése éles környezetben biztonsági azonosítója | 
+|/Hana/Shared/QA-SID | QA SID HANA telepítése | 
+|/Hana/Data/QA-SID/mnt00001 | Az adatfájlokat a QA SID telepítése | 
 |/Hana/log/QA-SID/mnt00001 | Naplófájlok a QA SID telepítése |
 |/Hana/logbackups/QA-SID | QA SID naplók megismétlése |
 
 ### <a name="key-considerations"></a>Fő szempontok
-- /usr/SAP/SID /hana/shared/SID a szimbolikus hivatkozást.
-- MCOS: a kötet mérete terjesztési adatbázis méretét a memóriában épül. Tekintse meg a [áttekintése és architektúra](https://docs.microsoft.com/en-us/azure/virtual-machines/workloads/sap/hana-overview-architecture) részből megtudhatja, milyen adatbázis méretét a memóriában multisid környezet használata támogatott.
+- /usr/SAP/SID /hana/shared/SID mutató szimbolikus hivatkozást.
+- MCOS: a kötet mérete terjesztési adatbázis méretét a memóriában alapul. Tekintse meg a [áttekintése és architektúrája](https://docs.microsoft.com/en-us/azure/virtual-machines/workloads/sap/hana-overview-architecture) részből megtudhatja, milyen adatbázist a memóriában méretezi multisid környezet használata támogatott.
 - STONITH: A STONITH beállítása egy SBD van konfigurálva. STONITH használata azonban nem kötelező.
-- A vész-Helyreállítási:: **tárolókötetek két csoportjára szükség** elsődleges és másodlagos csomópont replikációhoz.
-- A vész-Helyreállítási:: (megjelölve "HANA telepítéshez szükséges") konfigurált a kötetek és a csatlakozási pontok le az üzemi HANA-példány telepítése a vész-Helyreállítási HLI egység. 
-- A vész-Helyreállítási,:, logbackups, az adatokat a fürt megosztott kötetei ("Tárolóreplikálást" jelölésű) keresztül a munkakörnyezeti helyet a pillanatkép replikálódnak. Ezek a kötetek csatlakoztatva vannak, csak a feladatátvételi idő alatt. Tekintse meg a [vész-helyreállítási folyamattal feladatátvételi](https://docs.microsoft.com/en-us/azure/virtual-machines/workloads/sap/hana-overview-high-availability-disaster-recovery#disaster-recovery-failover-procedure) további részleteket. 
-- A vész-Helyreállítási:: az adatok, a logbackups, a napló, a QA-példány telepítése (a "QA példány telepítés" jelölésű) QA megosztott kötetek vannak beállítva.
-- Rendszerindító kötet a **i. osztály SKU típusú** vész-Helyreállítási csomópont replikálódik.
+- : A DR: **tárolóköteteket két csoportjára szükség** elsődleges és másodlagos csomópont-replikációhoz.
+- : A DR: A kötetek és a csatlakozási pontok le vannak konfigurálva, (megjelölve "HANA telepítéshez szükséges") az éles környezetben a DR HLI egység HANA-példány telepítését. 
+- : A DR: az adatok, logbackups és megosztott kötetek ("Tárreplikáció" megjelölve) lesznek replikálva az élesben használt helyet a pillanatkép-n keresztül. Ezek a kötetek csatlakoztatva vannak, csak a feladatátvételi idő alatt. További információkért olvassa el a dokumentumot [vészhelyreállítási feladatátvétel eljárást](https://docs.microsoft.com/en-us/azure/virtual-machines/workloads/sap/hana-overview-high-availability-disaster-recovery#disaster-recovery-failover-procedure) további részletekért. 
+- : A DR: az adatok, logbackups, log, QA (a "QA-példány telepítése" megjelölve) megosztott kötetek vannak konfigurálva a QA példány telepítéséhez.
+- Rendszerindító kötet a **I osztály Termékváltozatának típusa** DR csomópont replikálja.
 
 
-## <a name="7-host-auto-failover-11"></a>7. Állomás automatikus feladatátvétel (1 + 1)
+## <a name="7-host-auto-failover-11"></a>7. Gazdagép automatikus feladatátvétel (1 + 1)
  
-Ez a topológia két csomópont támogatja a gazdagép automatikus feladatátvételi konfigurációban. Egy csomópont master/feldolgozói szerepkör és más, a készenléti van. **SAP S/4 HANA csak a támogatás a forgatókönyv.** Tekintse meg a OSS Megjegyzés "[2408419 - SAP S/4HANA - többcsomópontos támogatási](https://launchpad.support.sap.com/#/notes/2408419)" További részletek.
+Ez a topológia két csomópont támogatja a gazdagép automatikus feladatátvételi konfigurációban. Egy csomópont a fő/feldolgozói szerepkört, és más, egy a készenléti állapotban van. **SAP S/4 HANA csak a ebben a forgatókönyvben támogatja.** Tekintse meg a nyílt Forráskódú Megjegyzés "[2408419 – SAP S/4HANA - támogatás több csomópontos](https://launchpad.support.sap.com/#/notes/2408419)" További részleteket talál.
 
 
 
@@ -410,158 +411,158 @@ Ez a topológia két csomópont támogatja a gazdagép automatikus feladatátvé
 ![SCA](media/hana-supported-scenario/scaleup-with-standby.png)
 
 ### <a name="ethernet"></a>Ethernet
-Az előre a következő hálózati adapterek:
+A következő hálózati adapterek előre:
 
-| A HÁLÓZATI ADAPTER LOGIKAI FELÜLETEK | TERMÉKVÁLTOZAT-TÍPUS | SUSE operációs rendszer neve | RHEL operációs rendszer neve | Használati eset|
+| HÁLÓZATI ADAPTER LOGIKAI FELÜLETEK | TERMÉKVÁLTOZATÁNAK TÍPUSA | A SUSE operációs rendszer neve | Az RHEL operációs rendszer neve | Használati eset|
 | --- | --- | --- | --- | --- |
-| A | ÍRJA BE A I | eth0.tenant | eno1.tenant | HLI ügyfél |
-| B | ÍRJA BE A I | eth2.tenant | eno3.tenant | Csomópontok kommunikáció csomópont |
-| C | ÍRJA BE A I | eth1.tenant | eno2.tenant | Tárhely csomópontot |
-| D | ÍRJA BE A I | eth4.tenant | eno4.tenant | Nem használni de konfigurálva |
-| A | TÍPUSÚ | VLAN<tenantNo> | team0.tenant | HLI ügyfél |
-| B | TÍPUSÚ | VLAN < tenantNo + 2 > | team0.tenant + 2 | Csomópontok kommunikáció csomópont |
-| C | TÍPUSÚ | VLAN < tenantNo + 1 > | team0.tenant + 1 | Tárhely csomópontot |
-| D | TÍPUSÚ | VLAN < tenantNo + 3 > | team0.tenant + 3 | Nem használni de konfigurálva |
+| A | I. TÍPUS | eth0.tenant | eno1.tenant | Ügyfél HLI |
+| B | I. TÍPUS | eth2.tenant | eno3.tenant | Csomópont és csomópont közötti kommunikációhoz |
+| C | I. TÍPUS | eth1.tenant | eno2.tenant | A storage csomópont |
+| D | I. TÍPUS | eth4.tenant | eno4.tenant | Konfigurálva, de nincs használatban |
+| A | II. TÍPUSÚ | VLAN<tenantNo> | team0.tenant | Ügyfél HLI |
+| B | II. TÍPUSÚ | VLAN < tenantNo + 2 > | team0.tenant + 2 | Csomópont és csomópont közötti kommunikációhoz |
+| C | II. TÍPUSÚ | VLAN < tenantNo + 1 > | team0.tenant + 1 | A storage csomópont |
+| D | II. TÍPUSÚ | VLAN < tenantNo + 3 > | team0.tenant + 3 | Konfigurálva, de nincs használatban |
 
 ### <a name="storage"></a>Storage
-Az előre a következő csatlakozási pontok le:
+A következő csatlakozási pontok le előre:
 
-| Csatlakozási pont | Használati eset | 
+| Csatlakoztatási pont | Használati eset | 
 | --- | --- |
-|**A fő és készenléti csomópontokon**|
-|/ hana/megosztott | HANA üzemi SID telepítése | 
-|/Hana/Data/SID/mnt00001 | Az adatfájlok üzemi SID telepítése | 
-|/Hana/log/SID/mnt00001 | Naplófájlok üzemi SID telepítése | 
-|/Hana/logbackups/SID | Naplók üzemi SID visszaállítása |
+|**A master és a készenléti csomópontokon**|
+|/ hana/megosztott | HANA telepítése éles környezetben biztonsági azonosítója | 
+|/Hana/Data/SID/mnt00001 | Adatfájlok telepítése éles környezetben biztonsági azonosítója | 
+|/Hana/log/SID/mnt00001 | Naplófájlok telepítése éles környezetben biztonsági azonosítója | 
+|/Hana/logbackups/SID | Éles környezetben SID naplók visszaállítása |
 
 
 
 ### <a name="key-considerations"></a>Fő szempontok
-- /usr/SAP/SID /hana/shared/SID a szimbolikus hivatkozást.
-- Készenléti: A kötetek és a csatlakozási pontok le van beállítva, (megjelölve "HANA telepítéshez szükséges") a készenléti egység HANA példány telepíthető.
+- /usr/SAP/SID /hana/shared/SID mutató szimbolikus hivatkozást.
+- Készenléti módban futhat: A kötetek és a csatlakozási pontok le vannak konfigurálva, (megjelölve "HANA telepítéshez szükséges") a HANA-példány telepítését a készenléti egység számára.
  
 
-## <a name="8-scale-out-with-standby"></a>8. Horizontális felskálázás az készenléti
+## <a name="8-scale-out-with-standby"></a>8. Horizontális felskálázás való készenlét
  
-Ez a topológia több csomópont egy konfigurációs kiterjesztési támogatja. Készenléti főkiszolgálói szerepkört, a feldolgozói szerepkör egy vagy több csomópontot és egy vagy több csomópont egy csomópont áll. Azonban lehetnek csak egy fő csomópont idő álljon.
+Ez a topológia több csomópont támogatja a horizontális felskálázás konfigurációban. Készenléti, van egy csomópont főkiszolgálói szerepkört, egy vagy több csomóponton a feldolgozói szerepkör és a egy vagy több csomópontot. Azonban lehetnek csak egy fő csomópont idő lekérdezhet.
 
 
 ### <a name="architecture-diagram"></a>Architektúradiagram  
 
-![scaleout-nm-standby.png](media/hana-supported-scenario/scaleout-nm-standby.png)
+![horizontális felskálázás-nm-standby.png](media/hana-supported-scenario/scaleout-nm-standby.png)
 
 ### <a name="ethernet"></a>Ethernet
-Az előre a következő hálózati adapterek:
+A következő hálózati adapterek előre:
 
-| A HÁLÓZATI ADAPTER LOGIKAI FELÜLETEK | TERMÉKVÁLTOZAT-TÍPUS | SUSE operációs rendszer neve | RHEL operációs rendszer neve | Használati eset|
+| HÁLÓZATI ADAPTER LOGIKAI FELÜLETEK | TERMÉKVÁLTOZATÁNAK TÍPUSA | A SUSE operációs rendszer neve | Az RHEL operációs rendszer neve | Használati eset|
 | --- | --- | --- | --- | --- |
-| A | ÍRJA BE A I | eth0.tenant | eno1.tenant | HLI ügyfél |
-| B | ÍRJA BE A I | eth2.tenant | eno3.tenant | Csomópontok kommunikáció csomópont |
-| C | ÍRJA BE A I | eth1.tenant | eno2.tenant | Tárhely csomópontot |
-| D | ÍRJA BE A I | eth4.tenant | eno4.tenant | Nem használni de konfigurálva |
-| A | TÍPUSÚ | VLAN<tenantNo> | team0.tenant | HLI ügyfél |
-| B | TÍPUSÚ | VLAN < tenantNo + 2 > | team0.tenant + 2 | Csomópontok kommunikáció csomópont |
-| C | TÍPUSÚ | VLAN < tenantNo + 1 > | team0.tenant + 1 | Tárhely csomópontot |
-| D | TÍPUSÚ | VLAN < tenantNo + 3 > | team0.tenant + 3 | Nem használni de konfigurálva |
+| A | I. TÍPUS | eth0.tenant | eno1.tenant | Ügyfél HLI |
+| B | I. TÍPUS | eth2.tenant | eno3.tenant | Csomópont és csomópont közötti kommunikációhoz |
+| C | I. TÍPUS | eth1.tenant | eno2.tenant | A storage csomópont |
+| D | I. TÍPUS | eth4.tenant | eno4.tenant | Konfigurálva, de nincs használatban |
+| A | II. TÍPUSÚ | VLAN<tenantNo> | team0.tenant | Ügyfél HLI |
+| B | II. TÍPUSÚ | VLAN < tenantNo + 2 > | team0.tenant + 2 | Csomópont és csomópont közötti kommunikációhoz |
+| C | II. TÍPUSÚ | VLAN < tenantNo + 1 > | team0.tenant + 1 | A storage csomópont |
+| D | II. TÍPUSÚ | VLAN < tenantNo + 3 > | team0.tenant + 3 | Konfigurálva, de nincs használatban |
 
 ### <a name="storage"></a>Storage
-Az előre a következő csatlakozási pontok le:
+A következő csatlakozási pontok le előre:
 
-| Csatlakozási pont | Használati eset | 
+| Csatlakoztatási pont | Használati eset | 
 | --- | --- |
-|**A master, a munkavégző és a készenléti állapotban lévő csomópontok**|
-|/ hana/megosztott | HANA üzemi SID telepítése | 
-|/Hana/Data/SID/mnt00001 | Az adatfájlok üzemi SID telepítése | 
-|/Hana/log/SID/mnt00001 | Naplófájlok üzemi SID telepítése | 
-|/Hana/logbackups/SID | Naplók üzemi SID visszaállítása |
+|**A master, feldolgozói és készenléti csomópontokon**|
+|/ hana/megosztott | HANA telepítése éles környezetben biztonsági azonosítója | 
+|/Hana/Data/SID/mnt00001 | Adatfájlok telepítése éles környezetben biztonsági azonosítója | 
+|/Hana/log/SID/mnt00001 | Naplófájlok telepítése éles környezetben biztonsági azonosítója | 
+|/Hana/logbackups/SID | Éles környezetben SID naplók visszaállítása |
 
 
 ## <a name="9-scale-out-without-standby"></a>9. Horizontális felskálázás készenléti nélkül
  
-Ez a topológia több csomópont egy konfigurációs kiterjesztési támogatja. Van egy csomópont főkiszolgálói szerepkört, és egy vagy mód csomópontokat a feldolgozói szerepkör. Azonban lehetnek csak egy fő csomópont idő álljon.
+Ez a topológia több csomópont támogatja a horizontális felskálázás konfigurációban. Nincs főkiszolgálói szerepkört egy csomópont, és a egy és a feldolgozói szerepkör módban-csomópont. Azonban lehetnek csak egy fő csomópont idő lekérdezhet.
 
 
 ### <a name="architecture-diagram"></a>Architektúradiagram  
 
-![scaleout-nm.png](media/hana-supported-scenario/scaleout-nm.png)
+![horizontális felskálázás-nm.png](media/hana-supported-scenario/scaleout-nm.png)
 
 
 ### <a name="ethernet"></a>Ethernet
-Az előre a következő hálózati adapterek:
+A következő hálózati adapterek előre:
 
-| A HÁLÓZATI ADAPTER LOGIKAI FELÜLETEK | TERMÉKVÁLTOZAT-TÍPUS | SUSE operációs rendszer neve | RHEL operációs rendszer neve | Használati eset|
+| HÁLÓZATI ADAPTER LOGIKAI FELÜLETEK | TERMÉKVÁLTOZATÁNAK TÍPUSA | A SUSE operációs rendszer neve | Az RHEL operációs rendszer neve | Használati eset|
 | --- | --- | --- | --- | --- |
-| A | ÍRJA BE A I | eth0.tenant | eno1.tenant | HLI ügyfél |
-| B | ÍRJA BE A I | eth2.tenant | eno3.tenant | Csomópontok kommunikáció csomópont |
-| C | ÍRJA BE A I | eth1.tenant | eno2.tenant | Tárhely csomópontot |
-| D | ÍRJA BE A I | eth4.tenant | eno4.tenant | Nem használni de konfigurálva |
-| A | TÍPUSÚ | VLAN<tenantNo> | team0.tenant | HLI ügyfél |
-| B | TÍPUSÚ | VLAN < tenantNo + 2 > | team0.tenant + 2 | Csomópontok kommunikáció csomópont |
-| C | TÍPUSÚ | VLAN < tenantNo + 1 > | team0.tenant + 1 | Tárhely csomópontot |
-| D | TÍPUSÚ | VLAN < tenantNo + 3 > | team0.tenant + 3 | Nem használni de konfigurálva |
+| A | I. TÍPUS | eth0.tenant | eno1.tenant | Ügyfél HLI |
+| B | I. TÍPUS | eth2.tenant | eno3.tenant | Csomópont és csomópont közötti kommunikációhoz |
+| C | I. TÍPUS | eth1.tenant | eno2.tenant | A storage csomópont |
+| D | I. TÍPUS | eth4.tenant | eno4.tenant | Konfigurálva, de nincs használatban |
+| A | II. TÍPUSÚ | VLAN<tenantNo> | team0.tenant | Ügyfél HLI |
+| B | II. TÍPUSÚ | VLAN < tenantNo + 2 > | team0.tenant + 2 | Csomópont és csomópont közötti kommunikációhoz |
+| C | II. TÍPUSÚ | VLAN < tenantNo + 1 > | team0.tenant + 1 | A storage csomópont |
+| D | II. TÍPUSÚ | VLAN < tenantNo + 3 > | team0.tenant + 3 | Konfigurálva, de nincs használatban |
 
 ### <a name="storage"></a>Storage
-Az előre a következő csatlakozási pontok le:
+A következő csatlakozási pontok le előre:
 
-| Csatlakozási pont | Használati eset | 
+| Csatlakoztatási pont | Használati eset | 
 | --- | --- |
-|**A fő- és feldolgozó csomópontokon**|
-|/ hana/megosztott | HANA üzemi SID telepítése | 
-|/Hana/Data/SID/mnt00001 | Az adatfájlok üzemi SID telepítése | 
-|/Hana/log/SID/mnt00001 | Naplófájlok üzemi SID telepítése | 
-|/Hana/logbackups/SID | Naplók üzemi SID visszaállítása |
+|**A master és a feldolgozó csomópontok**|
+|/ hana/megosztott | HANA telepítése éles környezetben biztonsági azonosítója | 
+|/Hana/Data/SID/mnt00001 | Adatfájlok telepítése éles környezetben biztonsági azonosítója | 
+|/Hana/log/SID/mnt00001 | Naplófájlok telepítése éles környezetben biztonsági azonosítója | 
+|/Hana/logbackups/SID | Éles környezetben SID naplók visszaállítása |
 
 
 ### <a name="key-considerations"></a>Fő szempontok
-- /usr/SAP/SID /hana/shared/SID a szimbolikus hivatkozást.
+- /usr/SAP/SID /hana/shared/SID mutató szimbolikus hivatkozást.
 
-## <a name="10-scale-out-with-dr"></a>10. Horizontális felskálázás az vész-Helyreállítási
+## <a name="10-scale-out-with-dr"></a>10. Horizontális felskálázás a Vészhelyreállítás
  
-Ez a topológia több csomópont egy, a vész-Helyreállítási kiterjesztési támogatja. Normál és a többcélú vész-Helyreállítási esetén támogatott. Az ábrán csak a egycélú vész-Helyreállítási írja le. Ez a topológia, vagy a készenléti csomópont anélkül is igényelhet.
+Ez a topológia több csomópont egy DR-kibővített támogatja. Normál és a többcélú DR használata támogatott. Az ábrán csak egyetlen célja DR megfelelőként jelenik. Ez a topológia és a készenléti csomópontra anélkül kérhetnek.
 
 
 ### <a name="architecture-diagram"></a>Architektúradiagram  
 
-![scaleout rendelkező dr.png](media/hana-supported-scenario/scaleout-with-dr.png)
+![horizontális felskálázás-az-dr.png](media/hana-supported-scenario/scaleout-with-dr.png)
 
 
 ### <a name="ethernet"></a>Ethernet
-Az előre a következő hálózati adapterek:
+A következő hálózati adapterek előre:
 
-| A HÁLÓZATI ADAPTER LOGIKAI FELÜLETEK | TERMÉKVÁLTOZAT-TÍPUS | SUSE operációs rendszer neve | RHEL operációs rendszer neve | Használati eset|
+| HÁLÓZATI ADAPTER LOGIKAI FELÜLETEK | TERMÉKVÁLTOZATÁNAK TÍPUSA | A SUSE operációs rendszer neve | Az RHEL operációs rendszer neve | Használati eset|
 | --- | --- | --- | --- | --- |
-| A | ÍRJA BE A I | eth0.tenant | eno1.tenant | HLI ügyfél |
-| B | ÍRJA BE A I | eth2.tenant | eno3.tenant | Csomópontok kommunikáció csomópont |
-| C | ÍRJA BE A I | eth1.tenant | eno2.tenant | Tárhely csomópontot |
-| D | ÍRJA BE A I | eth4.tenant | eno4.tenant | Nem használni de konfigurálva |
-| A | TÍPUSÚ | VLAN<tenantNo> | team0.tenant | HLI ügyfél |
-| B | TÍPUSÚ | VLAN < tenantNo + 2 > | team0.tenant + 2 | Csomópontok kommunikáció csomópont |
-| C | TÍPUSÚ | VLAN < tenantNo + 1 > | team0.tenant + 1 | Tárhely csomópontot |
-| D | TÍPUSÚ | VLAN < tenantNo + 3 > | team0.tenant + 3 | Nem használni de konfigurálva |
+| A | I. TÍPUS | eth0.tenant | eno1.tenant | Ügyfél HLI |
+| B | I. TÍPUS | eth2.tenant | eno3.tenant | Csomópont és csomópont közötti kommunikációhoz |
+| C | I. TÍPUS | eth1.tenant | eno2.tenant | A storage csomópont |
+| D | I. TÍPUS | eth4.tenant | eno4.tenant | Konfigurálva, de nincs használatban |
+| A | II. TÍPUSÚ | VLAN<tenantNo> | team0.tenant | Ügyfél HLI |
+| B | II. TÍPUSÚ | VLAN < tenantNo + 2 > | team0.tenant + 2 | Csomópont és csomópont közötti kommunikációhoz |
+| C | II. TÍPUSÚ | VLAN < tenantNo + 1 > | team0.tenant + 1 | A storage csomópont |
+| D | II. TÍPUSÚ | VLAN < tenantNo + 3 > | team0.tenant + 3 | Konfigurálva, de nincs használatban |
 
 ### <a name="storage"></a>Storage
-Az előre a következő csatlakozási pontok le:
+A következő csatlakozási pontok le előre:
 
-| Csatlakozási pont | Használati eset | 
+| Csatlakoztatási pont | Használati eset | 
 | --- | --- |
-|**Az elsődleges csomóponton lévő**|
-|/ hana/megosztott | HANA üzemi SID telepítése | 
-|/Hana/Data/SID/mnt00001 | Az adatfájlok üzemi SID telepítése | 
-|/Hana/log/SID/mnt00001 | Naplófájlok üzemi SID telepítése | 
-|/Hana/logbackups/SID | Naplók üzemi SID visszaállítása |
-|**A vész-Helyreállítási csomóponton**|
-|/ hana/megosztott | HANA üzemi SID telepítése | 
-|/Hana/Data/SID/mnt00001 | Az adatfájlok üzemi SID telepítése | 
-|/Hana/log/SID/mnt00001 | Naplófájlok üzemi SID telepítése | 
+|**Az elsődleges csomóponton**|
+|/ hana/megosztott | HANA telepítése éles környezetben biztonsági azonosítója | 
+|/Hana/Data/SID/mnt00001 | Adatfájlok telepítése éles környezetben biztonsági azonosítója | 
+|/Hana/log/SID/mnt00001 | Naplófájlok telepítése éles környezetben biztonsági azonosítója | 
+|/Hana/logbackups/SID | Éles környezetben SID naplók visszaállítása |
+|**A DR-csomópont**|
+|/ hana/megosztott | HANA telepítése éles környezetben biztonsági azonosítója | 
+|/Hana/Data/SID/mnt00001 | Adatfájlok telepítése éles környezetben biztonsági azonosítója | 
+|/Hana/log/SID/mnt00001 | Naplófájlok telepítése éles környezetben biztonsági azonosítója | 
 
 
 ### <a name="key-considerations"></a>Fő szempontok
-- /usr/SAP/SID /hana/shared/SID a szimbolikus hivatkozást.
--  A vész-Helyreállítási:: (megjelölve "HANA telepítéshez szükséges") konfigurált a kötetek és a csatlakozási pontok le az üzemi HANA-példány telepítése a vész-Helyreállítási HLI egység. 
-- A vész-Helyreállítási,:, logbackups, az adatokat a fürt megosztott kötetei ("Tárolóreplikálást" jelölésű) keresztül a munkakörnyezeti helyet a pillanatkép replikálódnak. Ezek a kötetek csatlakoztatva vannak, csak a feladatátvételi idő alatt. Tekintse meg a [vész-helyreállítási folyamattal feladatátvételi](https://docs.microsoft.com/en-us/azure/virtual-machines/workloads/sap/hana-overview-high-availability-disaster-recovery#disaster-recovery-failover-procedure) további részleteket. 
-- Rendszerindító kötet a **i. osztály SKU típusú** vész-Helyreállítási csomópont replikálódik.
+- /usr/SAP/SID /hana/shared/SID mutató szimbolikus hivatkozást.
+-  : A DR: A kötetek és a csatlakozási pontok le vannak konfigurálva, (megjelölve "HANA telepítéshez szükséges") az éles környezetben a DR HLI egység HANA-példány telepítését. 
+- : A DR: az adatok, logbackups és megosztott kötetek ("Tárreplikáció" megjelölve) lesznek replikálva az élesben használt helyet a pillanatkép-n keresztül. Ezek a kötetek csatlakoztatva vannak, csak a feladatátvételi idő alatt. További információkért olvassa el a dokumentumot [vészhelyreállítási feladatátvétel eljárást](https://docs.microsoft.com/en-us/azure/virtual-machines/workloads/sap/hana-overview-high-availability-disaster-recovery#disaster-recovery-failover-procedure) további részletekért. 
+- Rendszerindító kötet a **I osztály Termékváltozatának típusa** DR csomópont replikálja.
 
 
 ## <a name="next-steps"></a>További lépések
-- Tekintse meg a [infrastruktúra és a csatlakozási](https://docs.microsoft.com/en-us/azure/virtual-machines/workloads/sap/hana-overview-infrastructure-connectivity) HLI számára
-- Tekintse meg a [magas rendelkezésre állási és vészhelyreállítási helyreállítási](https://docs.microsoft.com/en-us/azure/virtual-machines/workloads/sap/hana-overview-high-availability-disaster-recovery) HLI számára
+- Tekintse meg [infrastruktúra és kapcsolódás](https://docs.microsoft.com/en-us/azure/virtual-machines/workloads/sap/hana-overview-infrastructure-connectivity) HLI számára
+- Tekintse meg [magas rendelkezésre állás és vészhelyreállítás helyreállítási](https://docs.microsoft.com/en-us/azure/virtual-machines/workloads/sap/hana-overview-high-availability-disaster-recovery) HLI számára

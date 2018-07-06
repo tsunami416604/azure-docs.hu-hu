@@ -1,6 +1,6 @@
 ---
-title: Rögzítsen egy rendszerképet a Linux virtuális gépek az Azure-ban a parancssori felület 2.0 |} Microsoft Docs
-description: Rögzítsen egy rendszerképet az Azure virtuális gép tömeges üzembe helyezése az Azure CLI 2.0 használandó.
+title: Az Azure CLI 2.0 használatával Linux virtuális gép lemezképének |} A Microsoft Docs
+description: Készítsen lemezképet arról az olyan tömeges telepítésekhez az Azure CLI 2.0 használatával egy Azure virtuális Gépen.
 services: virtual-machines-linux
 documentationcenter: ''
 author: cynthn
@@ -15,56 +15,56 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 03/22/2018
 ms.author: cynthn
-ms.openlocfilehash: bb70b3ff84392797ce0d93b8cf5d4018ff8ebdd8
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: ea202cad06130cfaaa134cad94ac08bede2f41a9
+ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "33941969"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37867701"
 ---
-# <a name="how-to-create-an-image-of-a-virtual-machine-or-vhd"></a>Egy képet egy virtuális géphez vagy virtuális merevlemez létrehozása
+# <a name="how-to-create-an-image-of-a-virtual-machine-or-vhd"></a>Hogyan hozhat létre virtuális gépet vagy virtuális merevlemez képe
 
 <!-- generalize, image - extended version of the tutorial-->
 
-Szeretne létrehozni egy virtuális gép (VM) Azure-ban történő használatáról több példányát, a virtuális Gépet vagy virtuális merevlemez operációs rendszer lemezképének rögzítése. A képfájl létrehozásához személyes fiók adatait, amely biztonságosabbá teszi telepítése többször kell eltávolítani. A következő lépések, meglévő virtuális kiosztásának megszüntetése, felszabadítani és lemezkép létrehozása. Ez a rendszerkép hozhat létre a virtuális gépek közötti bármely erőforráscsoport az előfizetésen belül.
+Egy virtuális gépet (VM) az Azure-ban több példányának létrehozása, a virtuális gép vagy a rendszer virtuális Merevlemeze lemezkép rögzítése. Hozzon létre egy rendszerképet, a személyes fiók adatait, amely biztonságosabbá teszi az üzembe helyezése több alkalommal kell eltávolításakor. A következő lépések azt egy meglévő virtuális gép megszüntetése, felszabadítása és hozzon létre egy rendszerképet. Ez a rendszerkép használatával létrehozni a virtuális gépek keresztül bármely erőforráscsoport az előfizetésben.
 
-Ha azt szeretné, hozzon létre egy másolatot a meglévő Linux virtuális gép biztonsági mentését vagy hibakeresés, vagy egy helyszíni virtuális gép speciális Linux virtuális merevlemez feltöltése, lásd: [feltöltése és a Linux virtuális gép létrehozása az egyéni lemezképet](upload-vhd.md).  
+Ha azt szeretné, hozzon létre egy másolatot a meglévő Linux virtuális gép biztonsági mentése és a hibakeresés, vagy a helyszíni virtuális gépről egyéni Linux VHD feltöltése, lásd: [feltöltése és a egy Linux virtuális gép létrehozása egyéni rendszerképből](upload-vhd.md).  
 
-Is **csomagoló** az egyéni konfiguráció létrehozásához. Csomagoló használatával kapcsolatos további információkért lásd: [csomagoló használata a Linux virtuális gép képek létrehozása az Azure-ban](build-image-with-packer.md).
+Is **Packer** az egyéni konfiguráció létrehozásához. Packer használatával kapcsolatos további információkért lásd: [Packer használatával Linux virtuálisgép-rendszerképek létrehozása az Azure-ban](build-image-with-packer.md).
 
 
 ## <a name="before-you-begin"></a>Előkészületek
-Győződjön meg arról, hogy teljesülnek-e a következő előfeltételek teljesülését:
+Győződjön meg arról, hogy megfelel-e a következő előfeltételek vonatkoznak:
 
-* Egy Azure virtuális gép létrehozása a Resource Manager üzembe helyezési modellel felügyelt lemezekkel van szüksége. Ha még nem hozott létre egy Linux virtuális Gépet, használhatja a [portal](quick-create-portal.md), a [Azure CLI](quick-create-cli.md), vagy [Resource Manager-sablonok](create-ssh-secured-vm-from-template.md). Igény szerint konfigurálhatja a virtuális Gépet. Például [adatok lemezek hozzáadása a](add-disk.md), frissítések és alkalmazások telepítéséhez. 
+* Szüksége lesz egy Azure virtuális gép létrehozása a Resource Manager-alapú üzemi modellben, felügyelt lemezeket használ. Ha még nem hozott létre egy Linux rendszerű virtuális gép, használhatja a [portál](quick-create-portal.md), a [Azure CLI-vel](quick-create-cli.md), vagy [Resource Manager-sablonok](create-ssh-secured-vm-from-template.md). Konfigurálja a virtuális Gépet igény szerint. Ha például [adatlemezek hozzáadása](add-disk.md), alkalmazza a frissítéseket és az alkalmazások telepítésére. 
 
-* Szükség van a legújabb [Azure CLI 2.0](/cli/azure/install-az-cli2) telepítve, és az Azure-fiók használatával kell bejelentkezett [az bejelentkezési](/cli/azure/reference-index#az_login).
+* Szükség van a legújabb [Azure CLI 2.0](/cli/azure/install-az-cli2) telepítve van, és a egy Azure-fiók használatával kell jelentkeznie [az bejelentkezési](/cli/azure/reference-index#az_login).
 
 ## <a name="quick-commands"></a>Gyors parancsok
 
-Egy egyszerűsített verziója, tesztelési, ez a témakör értékelése és megismerése az virtuális gépeket az Azure-ban, olvassa el [hozzon létre egy Azure virtuális gép a parancssori felület használatával egyéni lemezkép](tutorial-custom-images.md).
+Ez a témakör a vizsgálat, egyszerűsített változata kiértékelése vagy megismerése az Azure-beli virtuális gépek esetén lásd: [hozzon létre egy egyéni rendszerképet egy Azure virtuális gépek, a parancssori felületről](tutorial-custom-images.md).
 
 
-## <a name="step-1-deprovision-the-vm"></a>1. lépés: A virtuális gép kiosztásának megszüntetése
-Ön kiosztásának megszüntetése a virtuális gépet az Azure Virtuálisgép-ügynök, a gép adott fájlokat és adatokat törli. Használja a `waagent` parancsot a *-deprovision + felhasználói* paraméter a Linux virtuális gép – forrásként. További információk: [Azure Linux-ügynök – felhasználói útmutató](../extensions/agent-linux.md).
+## <a name="step-1-deprovision-the-vm"></a>1. lépés: A virtuális gép megszüntetése
+A virtuális gép adott fájlokat és adatokat törli az Azure-beli Virtuálisgép-ügynök használatával, megszüntetése. Használja a `waagent` parancsot a *-megszüntetési + felhasználó* paraméter a forrás Linux rendszerű virtuális gép. További információk: [Azure Linux-ügynök – felhasználói útmutató](../extensions/agent-linux.md).
 
-1. Csatlakoztassa a Linux virtuális gép SSH-ügyfél.
-2. Az SSH-ablakban írja be a következő parancsot:
+1. A Linux virtuális gép egy SSH-ügyfél csatlakozhat.
+2. Az SSH ablakban írja be a következő parancsot:
    
     ```bash
     sudo waagent -deprovision+user
     ```
 <br>
    > [!NOTE]
-   > Ez a parancs csak egy virtuális gép rögzítése képként kívánt futtatható. Nem biztos, hogy a kép minden a bizalmas adatok megszűnik, vagy alkalmas terjesztését. A *+ felhasználói* paraméter is eltávolítja az utolsó kiépített felhasználói fiókot. Ha meg szeretné tartani a virtuális gép fiók hitelesítő adatait, használja *-deprovision* a felhasználói fiók kilép a helyen.
+   > Csak egy virtuális gép kívánt képként rögzítse a következő parancs futtatásával. Nem garantálja, hogy a lemezkép törlődik a bizalmas adatok, vagy alkalmas terjesztési. A *+ felhasználó* paramétert is eltávolítja az utoljára kiépített felhasználói fiókot. Ha azt szeretné, hogy a fiók hitelesítő adatait a virtuális gépen, használja *-megszüntetési* hagyja a felhasználói fiók helye.
  
-3. Típus **y** folytatja. Hozzáadhat a **-force** paraméter a megerősítési lépés elkerülése érdekében.
-4. Miután befejezte a parancsot, írja be a **kilépéshez**. Ez a lépés az SSH-ügyfél bezárása után.
+3. Típus **y** folytatásához. Adhat hozzá a **-force** paraméter a megerősítési lépés elkerülése érdekében.
+4. A parancs befejeződése után írja be a **kilépéshez**. Ebben a lépésben az SSH-ügyfél bezárása.
 
-## <a name="step-2-create-vm-image"></a>2. lépés: A Virtuálisgép-lemezkép létrehozása
-Az Azure CLI 2.0 segítségével a virtuális gép megjelölése általánosítva van, és a lemezképének rögzítése. A következő példákban cserélje le a saját értékeit példa paraméterek nevei. Példa paraméter nevek a következők *myResourceGroup*, *myVnet*, és *myVM*.
+## <a name="step-2-create-vm-image"></a>2. lépés: A virtuális gép rendszerképének létrehozása
+Az Azure CLI 2.0 használatával a virtuális gép megjelölése általánosként és a lemezképének rögzítése. A következő példákban cserélje le a példa a paraméter nevét a saját értékeire. Példa a paraméter nevek a következők *myResourceGroup*, *myVnet*, és *myVM*.
 
-1. A virtuális Gépet, amely az Ön platformelőfizetés felszabadítani [az virtuális gép felszabadítása](/cli//azure/vm#deallocate). Az alábbi példa felszabadítja a nevű virtuális gép *myVM* az erőforráscsoport neve *myResourceGroup*:
+1. Szabadítsa fel a virtuális Gépet, amely a – figyelmeztetés megszüntetésről [az vm deallocate](/cli//azure/vm#deallocate). Az alábbi példa felszabadítja a virtuális gép nevű *myVM* az erőforráscsoport neve *myResourceGroup*:
    
     ```azurecli
     az vm deallocate \
@@ -72,7 +72,7 @@ Az Azure CLI 2.0 segítségével a virtuális gép megjelölése általánosítv
       --name myVM
     ```
 
-2. A virtuális gép megjelölése rendelkező általánosított [az vm generalize](/cli//azure/vm#generalize). A következő példa jelek a nevű virtuális gép *myVM* az erőforráscsoport neve *myResourceGroup* , általánosítva van:
+2. Jelölje meg a virtuális gép általánosítottra az [az vm generalize](/cli//azure/vm#generalize). Az alábbi példa jelöli meg a virtuális gép nevű *myVM* az erőforráscsoport neve *myResourceGroup* általánosként:
    
     ```azurecli
     az vm generalize \
@@ -80,7 +80,7 @@ Az Azure CLI 2.0 segítségével a virtuális gép megjelölése általánosítv
       --name myVM
     ```
 
-3. Most létrehozza a virtuális gép erőforrásához a kép [az lemezkép létrehozása](/cli/azure/image#az_image_create). Az alábbi példakód létrehozza nevű kép *myImage* az erőforráscsoport neve *myResourceGroup* nevű VM erőforrás használatával *myVM*:
+3. Most hozzon létre egy rendszerképet a virtuális gép erőforrás- [az lemezkép létrehozása](/cli/azure/image#az_image_create). A következő példában létrehozunk egy nevű rendszerképet *myImage* az erőforráscsoport neve *myResourceGroup* nevű Virtuálisgép-erőforrást használ *myVM*:
    
     ```azurecli
     az image create \
@@ -89,12 +89,12 @@ Az Azure CLI 2.0 segítségével a virtuális gép megjelölése általánosítv
     ```
    
    > [!NOTE]
-   > A kép mint a forrás virtuális gép ugyanabban az erőforráscsoportban jön létre. Bármely erőforráscsoport virtuális gépeket hozhat létre a lemezképből az előfizetésen belül. Felügyeleti szempontból Kezdésként hozzon létre egy adott erőforráscsoportot a Virtuálisgép-erőforrások és a képeket.
+   > A kép a forrásoldali virtuális Géppel azonos erőforráscsoportban jön létre. A lemezkép alapján az adott előfizetéshez tartozó virtuális gépeket hozhat létre bármely erőforráscsoport. Felügyeleti szempontból érdemes létrehozni egy adott erőforráscsoporthoz a Virtuálisgép-erőforrások és a képek.
    >
-   > Ha szeretné a zóna rugalmas tárolás tárolják, egy régióban található, amely támogatja a létrehozásához szükséges [rendelkezésre állási zónák](../../availability-zones/az-overview.md) , és tartalmazzák a `--zone-resilient true` paraméter.
+   > Ha szeretné tárolni a rendszerkép zóna rugalmas tárolás, egy régióban, amely támogatja a létrehozásához szükséges [rendelkezésre állási zónák](../../availability-zones/az-overview.md) , és tartalmazzák a `--zone-resilient true` paraméter.
 
 ## <a name="step-3-create-a-vm-from-the-captured-image"></a>3. lépés: Virtuális gép létrehozása a rögzített lemezképből
-A lemezkép segítségével létrehozott virtuális gép létrehozása [az virtuális gép létrehozása](/cli/azure/vm#az_vm_create). Az alábbi példakód létrehozza a virtuális gépek nevű *myVMDeployed* nevű lemezkép alapján *myImage*:
+Hozzon létre egy virtuális Gépet a létrehozott rendszerkép használatával [az virtuális gép létrehozása](/cli/azure/vm#az_vm_create). A következő példában létrehozunk egy nevű virtuális Gépet *myVMDeployed* rendszerkép *myImage*:
 
 ```azurecli
 az vm create \
@@ -107,7 +107,7 @@ az vm create \
 
 ### <a name="creating-the-vm-in-another-resource-group"></a>A virtuális gép létrehozása egy másik erőforráscsoportban található 
 
-Bármely erőforráscsoport lemezkép virtuális gépeket hozhat létre az előfizetésen belül. A virtuális gép egy másik erőforráscsoportban található, mint a lemezkép létrehozásához adja meg a teljes erőforrás-azonosítója a képhez. Használjon [az képlistában](/cli/azure/image#az_image_list) képek listájának megtekintéséhez. A kimenet a következő példához hasonló:
+Az adott előfizetéshez tartozó virtuális gépeket hozhat létre bármely erőforráscsoport-lemezképről. Virtuális gép létrehozása egy másik erőforráscsoportban található, mint a kép, adja meg a képre a teljes erőforrás-azonosítója. Használat [az képlista](/cli/azure/image#az_image_list) rendszerképek listájának megtekintéséhez. A kimenet a következő példához hasonló:
 
 ```json
 "id": "/subscriptions/guid/resourceGroups/MYRESOURCEGROUP/providers/Microsoft.Compute/images/myImage",
@@ -129,7 +129,7 @@ az vm create \
 
 ## <a name="step-4-verify-the-deployment"></a>4. lépés: A telepítés ellenőrzése
 
-A virtuális géphez, ellenőrizze a központi telepítés és a használatával az új virtuális gép indítási létrehozott most SSH. SSH-kapcsolaton keresztül csatlakozni az IP-cím vagy FQDN-jét az a virtuális gép található [az vm megjelenítése](/cli/azure/vm#az_vm_show):
+Most már ssh-KAPCSOLATOT a virtuális géphez, ellenőrizze a telepítési és elkezdheti az új virtuális Géphez létrehozott. SSH-n keresztül csatlakozni, keresse meg az IP-címét vagy teljes Tartománynevét, a virtuális gép [az vm show](/cli/azure/vm#az_vm_show):
 
 ```azurecli
 az vm show \
@@ -139,11 +139,11 @@ az vm show \
 ```
 
 ## <a name="next-steps"></a>További lépések
-A forrás Virtuálisgép-lemezkép létrehozhat több virtuális géphez. Ha módosítania kell a lemezkép: 
+A forrás Virtuálisgép-rendszerképről több virtuális gépet hozhat létre. Ha módosítania kell a lemezkép: 
 
-- Hozzon létre egy virtuális Gépet a lemezképből.
-- Győződjön meg a szükséges frissítések vagy a konfigurációs módosításokat.
-- Kövesse a lépéseket újra kiosztásának megszüntetése, felszabadítani, generalize és lemezkép létrehozása.
-- Az új kép használata a jövőben a központi telepítésekre. Ha szükséges, az eredeti lemezkép törlése.
+- Hozzon létre egy virtuális gép a lemezkép alapján.
+- Győződjön meg a szükséges frissítések vagy konfigurációs módosítások.
+- Kövesse a lépéseket újra megszüntetése, felszabadítása, generalize és hozzon létre egy rendszerképet.
+- Az új rendszerkép használata a későbbiekben. Ha szükséges, törölje az eredeti képet.
 
-A parancssori felület a virtuális gépek kezelésével kapcsolatban további információkért lásd: [Azure CLI 2.0](/cli/azure).
+A CLI-vel a virtuális gépek kezeléséről további információkért lásd: [Azure CLI 2.0](/cli/azure).

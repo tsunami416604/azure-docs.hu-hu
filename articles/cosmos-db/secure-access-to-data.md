@@ -1,6 +1,6 @@
 ---
-title: Megtudhatja, hogyan biztosíthat biztonságos hozzáférést a adatokat az Adatbázisba az Azure Cosmos |} Microsoft Docs
-description: További tudnivalók access control jellemzői Azure Cosmos DB, beleértve a főkulcs, csak olvasható kulcsok, felhasználók és engedélyek.
+title: Ismerje meg, hogyan biztonságos hozzáférés az adatokhoz az Azure Cosmos DB |} A Microsoft Docs
+description: Ismerje meg, access control fogalmaival, az Azure Cosmos DB, beleértve a főkulcsok, csak olvasható kulcsok, felhasználókat és engedélyeket.
 services: cosmos-db
 author: SnehaGunda
 manager: kfile
@@ -9,48 +9,48 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/24/2017
 ms.author: sngun
-ms.openlocfilehash: 079cbff3a1669efb7ba7cd7a97da9256dbbfe9f8
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: eddfce08711043f81cee0b1c8d7ee8c6c02f6a45
+ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34613217"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37858738"
 ---
-# <a name="securing-access-to-azure-cosmos-db-data"></a>Azure Cosmos DB adatokhoz való hozzáférés biztonságossá tétele
-Ez a cikk áttekintést a adataihoz való hozzáférés biztosítása [Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/).
+# <a name="securing-access-to-azure-cosmos-db-data"></a>Azure Cosmos DB-adatokhoz való hozzáférés biztonságossá tétele
+Ez a cikk áttekintést tárolt adatokhoz való hozzáférés biztonságossá tétele [a Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/).
 
-Azure Cosmos-adatbázis kétféle kulcsok segítségével hitelesíti a felhasználókat, és az adatok és erőforrások eléréséhez. 
+Az Azure Cosmos DB kétféle típusú kulcsok használatával hitelesítheti a felhasználókat, és adja meg az adatok és erőforrások elérését. 
 
 |Kulcstípus|További források|
 |---|---|
-|[Főkulcsok](#master-keys) |Felügyeleti erőforrások használt: adatbázis-fiókok, adatbázisok, felhasználók és engedélyek|
-|[Erőforrás-tokenek](#resource-tokens)|Alkalmazás-erőforrásokat használt: gyűjtemények, dokumentumok, a mellékletek, tárolt eljárások, eseményindítók és felhasználó által megadott függvények|
+|[Mesterkulcs](#master-keys) |Felügyeleti erőforrásainak: adatbázis-fiókok, adatbázisok, felhasználók és engedélyek|
+|[Erőforrás-jogkivonatokat](#resource-tokens)|Alkalmazás erőforrásainak: tárolók, dokumentumok, a mellékleteket, tárolt eljárások, eseményindítók és felhasználói függvények|
 
 <a id="master-keys"></a>
 
-## <a name="master-keys"></a>Főkulcsok 
+## <a name="master-keys"></a>Mesterkulcs 
 
-Főkulcsait az összes felügyeleti erőforrást az adatbázis fiókjához tartozó hozzáférést biztosítanak. Főkulcsok:  
+Mesterkulcs biztosítanak az erőforrásokhoz való teljes hozzáférés a felügyeleti az adatbázis fiókjához tartozó. Fő kulcsok:  
 - Fiókok, adatbázisok, felhasználók és engedélyek hozzáférést biztosítanak. 
-- Nem használható a részletes hozzáférést biztosít a gyűjtemények és dokumentumok.
-- A fiók létrehozása során jönnek létre.
+- Nem használható a tárolókhoz és a dokumentumok testre szabott hozzáférés biztosításához.
+- Fiók létrehozása során jönnek létre.
 - Bármikor helyreállíthatja.
 
-Minden felhasználói fiókhoz két főkulcsok áll: egy elsődleges és másodlagos kulcsot. Kettős kulcsok célja, hogy generálni, vagy állítsa a kulcsokat, a fiók és az adatok folyamatos hozzáférést biztosító. 
+Minden fiók két főkulcsok áll: egy elsődleges és másodlagos kulcsot. A kettős kulcsok célja, hogy hozza létre újra, vagy visszaállítani, kulcsok biztosít folyamatos hozzáférést fiókját és adatait. 
 
-A Cosmos DB fiók két fő kulcsot kívül két írásvédett kulcsot. A csak olvasható kulcsokat engedélyezése csak a fiók az olvasási műveletek. Csak olvasható kulcsok nem biztosítanak engedélyeket erőforrások olvasási hozzáférést.
+A Cosmos DB-fiók két fő kulcsok kívül két csak olvasható kulcsok. A csak olvasható kulcsokat csak engedélyezze a fiókot az olvasási műveletek. Írásvédett kulcsok nem biztosítanak engedélyeket erőforrások olvasási hozzáférést.
 
-Elsődleges, másodlagos csak olvasható és írható-olvasható főkulcsok lekérhető, és újra létrehozza a rendszer az Azure portál használatával. Útmutatásért lásd: [megtekintése, másolása és újragenerálása hívóbetűk](manage-account.md#keys).
+Elsődleges, másodlagos csak olvasható és írható-olvasható főkulcsok lekérhető és újragenerálta az Azure portal használatával. Útmutatásért lásd: [megtekintése, másolása és újragenerálása tárelérési kulcsok](manage-account.md#keys).
 
-![Az Azure portál – bemutatásához NoSQL-adatbázis biztonsági hozzáférés-vezérlés (IAM)](./media/secure-access-to-data/nosql-database-security-master-key-portal.png)
+![Hozzáférés-vezérlés (IAM) bemutatására NoSQL adatbázis-biztonság – az Azure Portalon](./media/secure-access-to-data/nosql-database-security-master-key-portal.png)
 
-A főkulcs elforgatása folyamata felettébb egyszerű. Keresse meg a másodlagos kulcs lekérését, majd cserélje le az elsődleges kulcsra a másodlagos kulcs az alkalmazás az Azure portálon, majd forgassa el az elsődleges kulcsot az Azure portálon.
+A főkulcs Elforgatás folyamata használata egyszerű. Keresse meg az Azure Portalra, kérje le a másodlagos kulcsot, majd cserélje le az elsődleges kulcsot az alkalmazás a másodlagos kulcsot, majd az Azure Portalon az elsődleges kulcs rotálása.
 
-![Az Azure portál – NoSQL-adatbázis biztonsági, amely tartalmazza a főkulcs Elforgatás](./media/secure-access-to-data/nosql-database-security-master-key-rotate-workflow.png)
+![A főkulcs Elforgatás bemutatásához NoSQL adatbázis-biztonság – az Azure Portalon](./media/secure-access-to-data/nosql-database-security-master-key-rotate-workflow.png)
 
-### <a name="code-sample-to-use-a-master-key"></a>A főkulcs használandó kódminta
+### <a name="code-sample-to-use-a-master-key"></a>Kódminta főkulcs használata
 
-A következő példakód azt ábrázolja, hogyan Cosmos DB fiók végpontját és főkulcs használatával hozható létre egy DocumentClient, és hozzon létre egy adatbázist. 
+A következő példakód azt ábrázolja, hogyan használja a Cosmos DB-fiók végpontját és a főkulcs egy DocumentClient-példányt létrehozni, és hozzon létre egy adatbázist. 
 
 ```csharp
 //Read the Azure Cosmos DB endpointUrl and authorization keys from config.
@@ -72,42 +72,42 @@ Database database = await client.CreateDatabaseAsync(
 
 <a id="resource-tokens"></a>
 
-## <a name="resource-tokens"></a>Erőforrás-tokenek
+## <a name="resource-tokens"></a>Erőforrás-jogkivonatokat
 
-Erőforrás-jogkivonatokat biztosítanak hozzáférést az adatbázisban lévő alkalmazás-erőforrásokat. Erőforrás-jogkivonatokat:
-- Adott gyűjteményekre, partíciós kulcsok, dokumentumok, a mellékletek, tárolt eljárások, eseményindítók és felhasználó által megadott függvények hozzáférést biztosítanak.
-- Jönnek létre, amikor egy [felhasználói](#users) kap [engedélyek](#permissions) adott erőforráshoz.
-- Jönnek létre újból, akkor egy engedély erőforrás van a FELADÁS egy vagy több, a GET vagy a PUT hívás.
-- A felhasználói, erőforrás és engedélye kifejezetten összeállított kivonatoló erőforrás jogkivonatot használja.
-- Testre szabható érvényességi időtartam kötött megnyitásakor. Az alapértelmezett érvényes timespan egy óra. A jogkivonatok élettartama, azonban előfordulhat, hogy explicit módon megadni, legfeljebb öt órát.
-- Adjon meg egy biztonságos helyett a főkulcs kiadása. 
-- Engedélyezi az ügyfelek számára olvasási, írási és törli az erőforrást a Cosmos DB fiók megfelelően korábban megadott engedélyeket.
+Erőforrás-jogkivonatokat adatbázison belüli alkalmazás-erőforrásokhoz való hozzáférést biztosítanak. Erőforrás-jogkivonatokat:
+- Adott tárolók, partíciókulcsok, dokumentumok, a mellékleteket, tárolt eljárások, eseményindítók és felhasználói függvények hozzáférést biztosítanak.
+- Jönnek létre, amikor egy [felhasználói](#users) kap [engedélyek](#permissions) egy adott erőforráshoz.
+- Létrejönnek, amikor engedélyt erőforrás van intézkedni a POST, GET vagy PUT hívás által.
+- Használjon egy kivonatot erőforrás-jogkivonat épített kifejezetten a felhasználó, az erőforrás és engedélyt.
+- Kötve egy testre szabható érvényességi időt. Az alapértelmezett érvényes időtartam érték egy óra. Jogkivonat élettartama, azonban előfordulhat, hogy explicit módon megadni, legfeljebb 5 óra.
+- Adjon meg egy biztonságos alternatívája lehet a főkulcs kiadása. 
+- Engedélyezése az ügyfelek számára olvasási, írási és törlési azok szerez engedélyeinek megfelelően a Cosmos DB-fiók erőforrásokat.
 
-Egy erőforrás-jogkivonat (létrehozásával Cosmos DB felhasználókat és engedélyeket) is használhatja az Cosmos DB-fiókban lévő erőforrásokhoz való hozzáférés biztosításához ügyfél, amely nem adható meg megbízhatóként a főkulcs a kívánt.  
+Használhat egy erőforrás-jogkivonat (Cosmos DB-felhasználók és engedélyek létrehozása) Ha lehetővé szeretné tenni a Cosmos DB-fiókban lévő erőforrásokhoz való hozzáférést egy ügyfélre, mely nem megbízható főkulccsal.  
 
-Cosmos DB erőforrás jogkivonatokat adjon meg egy biztonságos megoldás, amely lehetővé teszi az ügyfelek számára olvasási, írási és törlési a jogosultságaitól megfelelően, és egy fő vagy a kulcs csak olvasható nélkül a Cosmos DB fiók erőforrásai.
+A cosmos DB erőforrás-jogkivonatokat adjon meg egy biztonságos megoldás, amely lehetővé teszi az ügyfelek számára, hogy az olvasási, írási és törlési erőforrásokat a Cosmos DB-fiókban megfelelően a jogosultságaitól és a master és a kulcs csak olvasható nélkül.
 
-Íme egy tipikus kialakításban, amellyel erőforrás jogkivonatok kérhetők, jön létre, és ügyfelek felé:
+Íme egy jellemző tervezési minta, amellyel erőforrás-jogkivonatokat kérhetők, jön létre, és ügyfelek felé:
 
-1. Egy közepes réteg szolgáltatás megosztásához a felhasználó fényképeihez mobilalkalmazás kiszolgálására van beállítva. 
-2. A közepes réteg szolgáltatás a fő oszlopkulcs Cosmos DB fiók rendelkezik.
-3. Az fényképező alkalmazás telepítve van a végfelhasználói mobileszközökön. 
-4. A bejelentkezés a fényképező alkalmazás létrehozza a felhasználó a közepes réteg szolgáltatással. A mechanizmus identitás létesítmény kizárólag az alkalmazás esetén.
-5. Miután az identitása létrejött, a közepes réteg a szolgáltatáskérések engedélyek személyazonossága alapján.
-6. A közepes réteg szolgáltatás elküldi egy erőforrás-jogkivonat a telefonalkalmazás.
-7. A telefonalkalmazás továbbra is használhatja az erőforrás-jogkivonat erőforrásokhoz való közvetlen hozzáféréshez Cosmos DB definiálva az erőforrás-jogkivonat és a alatt, az erőforrás-jogkivonat által engedélyezett engedélyekkel. 
-8. Amikor az erőforrás-jogkivonat lejár, a későbbi kérelmek kapnak a 401-es jogosulatlan kivételt.  Ezen a ponton a telefonalkalmazás újból létrehozza az identitás, és egy új erőforrás-jogkivonat kéri.
+1. A középső rétegbeli szolgáltatás szolgálja ki a felhasználói fényképek megosztására mobilalkalmazás van beállítva. 
+2. A középső rétegbeli szolgáltatás a főkulcs a Cosmos DB-fiók birtokában van.
+3. Az alkalmazás végfelhasználói mobileszközökön telepítve van. 
+4. A bejelentkezés az alkalmazás létrehozza a felhasználó a középső rétegbeli szolgáltatással. Ez a mechanizmus az identitás létrehozása kizárólag az alkalmazás esetén.
+5. Ha az identitás létrejött, akkor a középső rétegbeli szolgáltatás az identitása alapján engedélyt kér.
+6. A középső rétegbeli szolgáltatás elküldi egy erőforrás-jogkivonat a telefonos alkalmazást.
+7. A telefonos alkalmazást továbbra is az erőforrás-jogkivonat használatával közvetlenül az erőforrás-jogkivonat és az erőforrás-jogkivonat által engedélyezett az az időtartam alatt meghatározott engedélyekkel a Cosmos DB-erőforrások eléréséhez. 
+8. Ha az erőforrás-jogkivonat lejár, későbbi kérelmeket fogadni a 401-es jogosulatlan kivétel.  Ezen a ponton a telefonalkalmazás újból létrehozza az identitást, és kéri egy új erőforrás-jogkivonat.
 
-    ![Az Azure Cosmos DB erőforrás jogkivonatok munkafolyamat](./media/secure-access-to-data/resourcekeyworkflow.png)
+    ![Az Azure Cosmos DB erőforrás-jogkivonatok munkafolyamat](./media/secure-access-to-data/resourcekeyworkflow.png)
 
-Erőforrás-token létrehozása és kezelése végzi el a natív Cosmos DB ügyfél könyvtárakat. REST használatakor a kérelem/hitelesítési fejlécek kell létrehozni. A többi hitelesítési fejlécek létrehozásáról további információk: [Cosmos DB erőforrások hozzáférés-vezérlés](https://docs.microsoft.com/rest/api/cosmos-db/access-control-on-cosmosdb-resources) vagy a [forráskód az SDK-k](https://github.com/Azure/azure-documentdb-node/blob/master/source/lib/auth.js).
+Erőforrás-jogkivonat létrehozása és kezelése a natív Cosmos DB-klienskódtárakkal; kezeli Ha a REST használata a kérelem/hitelesítési fejléceket kell létrehozniuk. A hitelesítési fejléceket hoz létre REST további információkért lásd: [Cosmos DB-erőforrások hozzáférés-vezérlés](https://docs.microsoft.com/rest/api/cosmos-db/access-control-on-cosmosdb-resources) vagy a [forráskódját az SDK-Ink](https://github.com/Azure/azure-documentdb-node/blob/master/source/lib/auth.js).
 
-A középső réteg szolgáltatás létrehozásához vagy replikaszervező erőforrás jogkivonatok használt példáért lásd: a [ResourceTokenBroker app](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/xamarin/UserItems/ResourceTokenBroker/ResourceTokenBroker/Controllers).
+A középső réteg szolgáltatás készítése vagy erőforrás-jogkivonatokat közvetítse egy példa: a [ResourceTokenBroker alkalmazás](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/xamarin/UserItems/ResourceTokenBroker/ResourceTokenBroker/Controllers).
 
 <a id="users"></a>
 
 ## <a name="users"></a>Felhasználók
-Cosmos DB felhasználók hozzárendelve egy Cosmos DB adatbázisban.  Az egyes adatbázisok nulla vagy több Cosmos DB felhasználókat is tartalmazhat.  A következő példakód bemutatja, hogyan hozzon létre egy Cosmos DB felhasználói erőforrást.
+Cosmos DB felhasználók hozzárendelve a Cosmos DB-hez.  Minden adatbázis nulla vagy több Cosmos DB-felhasználókat is tartalmazhat.  Az alábbi példakód bemutatja, hogyan hozhat létre egy Cosmos DB felhasználói erőforrás.
 
 ```csharp
 //Create a user.
@@ -120,27 +120,27 @@ docUser = await client.CreateUserAsync(UriFactory.CreateDatabaseUri("db"), docUs
 ```
 
 > [!NOTE]
-> Minden egyes Cosmos DB felhasználói segítségével listájának beolvasása PermissionsLink tulajdonsággal rendelkezik [engedélyek](#permissions) a felhasználóhoz társított.
+> Egyes Cosmos DB-felhasználók listájának beolvasása használható PermissionsLink tulajdonsággal rendelkezik [engedélyek](#permissions) a felhasználóhoz társított.
 > 
 > 
 
 <a id="permissions"></a>
 
 ## <a name="permissions"></a>Engedélyek
-A Cosmos DB engedély erőforrás társítva egy Cosmos DB felhasználói.  Minden felhasználó nulla vagy több Cosmos DB engedélyeket is tartalmazhat.  Engedély erőforrás egy biztonsági jogkivonatot, amely a felhasználó számára szükséges egy adott alkalmazás erőforrás elérésére tett kísérlet során hozzáférést biztosít.
-Van engedélye az erőforrás által is megadható két rendelkezésre álló hozzáférési szintek:
+Egy Cosmos DB-engedély erőforráshoz társítva a Cosmos DB-felhasználó.  Minden felhasználó nulla vagy több Cosmos DB-engedélyeket is tartalmazhat.  Engedély erőforrás egy biztonsági jogkivonatot, amely a felhasználónak egy adott alkalmazás erőforrás elérésére tett kísérlet során hozzáférést biztosít.
+Nincsenek két elérhető hozzáférési szintek engedéllyel az erőforrás által biztosított:
 
-* Összes: A felhasználó teljes körű hozzáféréssel rendelkezik az erőforráson.
-* Olvassa el: A felhasználó csak olvashatók a tartalmát az erőforrás, de nem hajtható végre, írási, update vagy delete művelethez az erőforráson.
+* All: A felhasználó teljes körű hozzáféréssel rendelkezik az erőforráson.
+* Olvasás: A felhasználó az erőforrás a tartalmát csak olvasható, de nem hajtható végre, írási, frissítési vagy törlési műveletek az erőforráson.
 
 > [!NOTE]
-> Cosmos DB futtatásához tárolt eljárások a felhasználónak kell rendelkeznie az All engedély a gyűjteményt, amelyben a tárolt eljárás fog futni.
+> Annak érdekében, hogy futtassa a Cosmos DB tárolt eljárásokat, a felhasználó az összes engedéllyel kell rendelkeznie a tárolóhoz, amelyben a tárolt eljárás futni fog.
 > 
 > 
 
-### <a name="code-sample-to-create-permission"></a>Kódminta engedély létrehozása
+### <a name="code-sample-to-create-permission"></a>Kódminták az engedélyek létrehozása
 
-A következő példakód bemutatja, hogyan hozzon létre egy engedély erőforrást, olvassa el az erőforrás-jogkivonat a engedély erőforrás, és rendelje hozzá a az engedélyeket a [felhasználói](#users) a fenti létrehozott.
+Az alábbi példakód bemutatja, hogyan engedély erőforrás létrehozása, olvassa el az erőforrás-jogkivonat az engedély erőforrás és az engedélyek hozzárendelése a [felhasználói](#users) fent létrehozott.
 
 ```csharp
 // Create a permission.
@@ -155,11 +155,11 @@ docPermission = await client.CreatePermissionAsync(UriFactory.CreateUserUri("db"
 Console.WriteLine(docPermission.Id + " has token of: " + docPermission.Token);
 ```
 
-Ha a gyűjtemény adott meg partíciókulcsot, az engedély a gyűjtemény, a dokumentum és a melléklet erőforrások tartalmaznia mellett a ResourceLink ResourcePartitionKey.
+Ha a gyűjtemény a megadott egy partíciókulcsot, majd az engedély a gyűjtemény, a dokumentum és a melléklet erőforrások is tartalmaznia kell a ResourcePartitionKey mellett a ResourceLink.
 
-### <a name="code-sample-to-read-permissions-for-user"></a>Olvassa el a felhasználó engedélyeit kódminta
+### <a name="code-sample-to-read-permissions-for-user"></a>Kódmintát, hogy a felhasználó engedélyeinek olvasása
 
-Könnyen beszerzése az all engedély erőforrásokat egy adott felhasználóhoz társított, Cosmos DB teszi elérhetővé minden felhasználói objektum hírcsatorna engedély.  A következő kódrészletet bemutatja, hogyan beolvasni az előbb létrehozott felhasználói rendelt engedélynél, engedély listáját, és hozható létre egy új documentclient-ügyfelet a felhasználó nevében.
+Könnyedén beszerzése az all engedély erőforrások társított egy adott felhasználó, a Cosmos DB révén az elérhető minden felhasználói objektum hírcsatorna engedélyt.  A következő kódrészletet bemutatja, hogyan lekérni az engedélyt, a fent létrehozott felhasználóhoz tartozó, egy engedélylistában hozhatnak létre és példányt létrehozni egy új documentclient-ügyfelet a felhasználó nevében.
 
 ```csharp
 //Read a permission feed.
@@ -176,6 +176,6 @@ DocumentClient userClient = new DocumentClient(new Uri(endpointUrl), permList);
 ```
 
 ## <a name="next-steps"></a>További lépések
-* Cosmos-adatbázis adatbázis-biztonsággal kapcsolatos további tudnivalókért lásd: [Cosmos DB: adatbázis-biztonsági](database-security.md).
-* Fő és a csak olvasható kezelésével kapcsolatos információkért lásd: [Azure Cosmos DB fiók kezelése](manage-account.md#keys).
-* Azure Cosmos DB engedélyezési jogkivonatok létrehozásához, lásd: [Azure Cosmos DB erőforrások hozzáférés-vezérlés](https://docs.microsoft.com/rest/api/cosmos-db/access-control-on-cosmosdb-resources).
+* Cosmos DB-adatbázis biztonsági kapcsolatos további információkért lásd: [Cosmos DB: adatbázis-biztonság](database-security.md).
+* Fő és a csak olvasható kulcsok kezelésével kapcsolatos tudnivalókért lásd: [kezelése az Azure Cosmos DB-fiók](manage-account.md#keys).
+* Ismerje meg, hogyan hozhat létre Azure Cosmos DB engedélyezési jogkivonatok, lásd: [hozzáférés-vezérlés az Azure Cosmos DB-erőforrások](https://docs.microsoft.com/rest/api/cosmos-db/access-control-on-cosmosdb-resources).

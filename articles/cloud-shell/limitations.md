@@ -1,6 +1,6 @@
 ---
-title: Azure Cloud rendszerhéj-korlátozások |} Microsoft Docs
-description: Azure Cloud rendszerhéj vonatkozó korlátozások áttekintése
+title: Azure Cloud Shell-korlátozások |} A Microsoft Docs
+description: Azure Cloud Shell korlátozások áttekintése
 services: azure
 documentationcenter: ''
 author: jluk
@@ -14,73 +14,85 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/15/2018
 ms.author: juluk
-ms.openlocfilehash: 15e3dd11c371e0b23d5b506da9d824e1409fd359
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 135496e17ae884db580922aa31f6824b2e7fd934
+ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/19/2018
-ms.locfileid: "31590521"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37855984"
 ---
-# <a name="limitations-of-azure-cloud-shell"></a>Azure-felhőbe rendszerhéj korlátozásai
+# <a name="limitations-of-azure-cloud-shell"></a>Az Azure Cloud Shell korlátozásai
 
-Azure Cloud rendszerhéj ismert korlátai a következők:
+Az Azure Cloud Shell a következő ismert korlátozások vonatkoznak:
 
 ## <a name="general-limitations"></a>Általános korlátozások
 
-### <a name="system-state-and-persistence"></a>Rendszerállapot- és adatmegőrzési
+### <a name="system-state-and-persistence"></a>Rendszerállapot és adatmegőrzés
 
-A felhő rendszerhéj munkamenet biztosító a gép csak átmenetileg létezik, és újrahasznosítása után a munkamenet a 20 percig inaktív. Felhő rendszerhéj csatlakoztatni kell egy Azure fájlmegosztás szükséges. Ennek eredményeképpen az előfizetés kell tudni tárolási erőforrások beállítása felhő rendszerhéj eléréséhez. Egyéb szempontok a következők:
+A gép, amely biztosítja a Cloud Shell-munkamenetek ideiglenes, és legyen újrahasznosítása után a munkamenet a 20 percig inaktív. A cloud Shell Azure-fájlmegosztás csatlakoztatása a szükséges. Az előfizetés ennek eredményeképpen a Cloud Shell eléréséhez a tárolási erőforrások beállításához képesnek kell lennie. Egyéb szempontok közé tartoznak:
 
-* Csatlakoztatott tárolóval, csak azokat a módosításokat, belül a `clouddrive` directory megmaradnak. A Bash a `$Home` directory is megőrződjenek.
-* Azure fájlmegosztásokat csak belülről lehet csatlakoztatni az [hozzárendelve régió](persisting-shell-storage.md#mount-a-new-clouddrive).
-  * A Bash, futtassa az `env` állítja be a régióban található `ACC_LOCATION`.
+* Csatlakoztatott tárolóval, csak a módosítások belül a `$Home` könyvtár tárolja.
+* Azure-fájlmegosztások csak a csatlakoztathatók a [régió hozzárendelt](persisting-shell-storage.md#mount-a-new-clouddrive).
+  * Futtassa a Bash, `env` állítja be a régióban található `ACC_LOCATION`.
 
-### <a name="browser-support"></a>Webböngésző támogatása
+### <a name="browser-support"></a>Böngésző támogatása
 
-Felhő rendszerhéj a Microsoft Edge, a Microsoft Internet Explorer, a Google Chrome, a Mozilla Firefox és az Apple Safari legújabb verzióit támogatja. Safari privát üzemmódban nem támogatott.
+A cloud Shell támogatja a Microsoft Edge, a Microsoft Internet Explorer, a Google Chrome, a Mozilla Firefox és a Apple Safari legfrissebb verzióit. Safari böngészőt privát üzemmódban nem támogatott.
 
 ### <a name="copy-and-paste"></a>Másolás és beillesztés
 
 [!INCLUDE [copy-paste](../../includes/cloud-shell-copy-paste.md)]
 
-### <a name="for-a-given-user-only-one-shell-can-be-active"></a>A megadott felhasználó csak egy rendszerhéj lehet aktív
+### <a name="for-a-given-user-only-one-shell-can-be-active"></a>Egy adott felhasználó csak egy parancshéj lehet aktív.
 
-Felhasználók is csak elindíthatja egy adott típusú rendszerhéj egyszerre, vagy **Bash** vagy **PowerShell**. Azonban előfordulhat, hogy Bash vagy a PowerShell fut egyszerre több példányát. Csere Bash vagy a PowerShell okok felhő rendszerhéj újraindítására, amely megszakítja a meglévő munkamenetek között.
+Csak indíthatják egyfajta rendszerhéj egyszerre, vagy **Bash** vagy **PowerShell**. Előfordulhat azonban, Bash- vagy PowerShell fut egyszerre több példányát. Érvényesítheti a Bash- vagy PowerShell okok Cloud Shell újraindítása, amely befejezi a meglévő munkameneteket között.
 
 ### <a name="usage-limits"></a>Használati korlátozások
 
-Felhő rendszerhéj készült interaktív használati eseteket. Ennek eredményeképpen a hosszan futó nem interaktív munkamenet befejeződik figyelmeztetés nélkül.
+A cloud Shell interaktív használati esetek szól. Ennek eredményeképpen minden olyan hosszan futó nem interaktív munkamenet befejeződik figyelmeztetés nélkül.
 
-## <a name="bash-limitations"></a>Bash korlátozásai
+## <a name="bash-limitations"></a>Bash-korlátozások
 
 ### <a name="user-permissions"></a>Felhasználói engedélyek
 
-Engedélyek vannak beállítva, normál felhasználóként sudo hozzáférés nélkül. Bármely telepítési kívül a `$Home` könyvtár nem őrzi meg.
+Engedélyek beállítása normál felhasználóként sudo hozzáférés nélkül. Minden olyan telepítési kívül a `$Home` directory nincs megőrizve.
 
 ### <a name="editing-bashrc"></a>.Bashrc szerkesztése
 
-Szerkesztés .bashrc, így váratlan hibákat okozhat felhő rendszerhéj elvégzendő járjon el.
+Legyen körültekintő elvégzendő .bashrc, így szerkesztési váratlan hibákat eredményezhet a Cloud Shellben.
 
 ## <a name="powershell-limitations"></a>PowerShell-korlátozások
 
-### <a name="slow-startup-time"></a>Lassú indítási idő
+### <a name="azuread-module-name"></a>`AzureAD` a modul neve
 
-Azure Cloud rendszerhéj (előzetes verzió) PowerShell előzetes inicializálása 60 másodperc is beletelhet.
+A `AzureAD` modulnév jelenleg `AzureAD.Standard.Preview`, a modul adja meg ugyanazokat a funkciókat.
 
-### <a name="no-home-directory-persistence"></a>No $Home directory adatmegőrzési
+### <a name="sqlserver-module-functionality"></a>`SqlServer` a modul funkció
 
-Írt adatok `$Home` bármely alkalmazás (például: git, vim, megint mások) nem maradnak PowerShell-munkamenetek között. Megkerülő megoldásért [talál](troubleshooting.md#powershell-troubleshooting).
+A `SqlServer` modul tartalmazza a Cloud Shellben a PowerShell Core csak előzetes támogatással rendelkezik. Különösen `Invoke-SqlCmd` még nem áll rendelkezésre.
 
-### <a name="default-file-location-when-created-from-azure-drive"></a>Alapértelmezett helye az Azure-meghajtóról létrehozásakor:
+### <a name="default-file-location-when-created-from-azure-drive"></a>Alapértelmezett helye az Azure-meghajtó létrehozása:
 
-PowerShell-parancsmagok használatával felhasználók nem hozható létre az Azure meghajtón található fájl. Amikor a felhasználók más eszközökkel, például vim vagy nano, új fájlok létrehozása a fájlok kerülnek C:\Users mappa alapértelmezés szerint. 
+PowerShell-parancsmagok használatával felhasználókat nem lehet létrehozni az Azure-meghajtó a fájlok. Amikor a felhasználó más eszközökkel, például vim vagy nano, új fájlok létrehozása a fájlok menti, és a `$HOME` alapértelmezés szerint. 
 
 ### <a name="gui-applications-are-not-supported"></a>Grafikus felhasználói Felülettel alkalmazások nem támogatottak.
 
-Ha a felhasználó hozna létre például egy Windows párbeszédpanelen parancsot futtatja `Connect-AzureAD` vagy `Connect-AzureRmAccount`, egy üzenetet egy hiba például: `Unable to load DLL 'IEFRAME.dll': The specified module could not be found. (Exception from HRESULT: 0x8007007E)`.
+Ha egy felhasználó futtat egy parancsot kell létrehoznia egy Windows párbeszédablak, mint például `Connect-AzureAD` vagy `Connect-AzureRmAccount`, például kap egy hibaüzenetet: `Unable to load DLL 'IEFRAME.dll': The specified module could not be found. (Exception from HRESULT: 0x8007007E)`.
+
+### <a name="tab-completion-crashes-psreadline"></a>Kiegészítés PSReadline összeomlik
+
+Ha a felhasználó Szerkesztőmódba a PSReadline Emacs értékre van állítva, a felhasználó megpróbálja keresztül kiegészítés, az összes lehetőség megjelenítéséhez és az ablak mérete túl kicsi az összes lehetőség megjelenítéséhez, PSReadline összeomlik.
+
+### <a name="large-gap-after-displaying-progress-bar"></a>Miután a folyamatjelző sáv megjelenítése nagy közök
+
+Ha a felhasználó hajt végre egy műveletet, amely megjelenik egy folyamatjelző, ezen a lapon épp, miközben a a `Azure:` meghajtó, akkor lehetséges, hogy a kurzor nincs megfelelően beállítva, és eseményáramlási kimaradást jelenik meg, ahol a folyamatjelző sáv korábban volt.
+
+### <a name="random-characters-appear-inline"></a>Véletlenszerű karakter beágyazott jelennek meg.
+
+A kurzor pozíciója feladatütemezési kódjai, például `5;13R`, a felhasználói bevitel is megjelennek.  A karakterek manuálisan távolíthatja el.
 
 ## <a name="next-steps"></a>További lépések
 
-[Hibaelhárítási felhő rendszerhéj](troubleshooting.md) <br>
+[A Cloud Shell hibaelhárítása](troubleshooting.md) <br>
 [Rövid útmutató a Bash-hez](quickstart.md) <br>
 [Rövid útmutató a PowerShellhez](quickstart-powershell.md)

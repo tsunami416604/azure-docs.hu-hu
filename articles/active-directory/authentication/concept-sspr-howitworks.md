@@ -1,6 +1,6 @@
 ---
-title: Az önkiszolgáló jelszó-átállítási működésének - Azure Active Directory
-description: Az Azure AD az önkiszolgáló jelszó-átállítási részletes bemutatója
+title: Az önkiszolgáló jelszó-visszaállítási működését – Azure Active Directory
+description: Az Azure AD önkiszolgáló jelszó-visszaállítási részletes bemutatása
 services: active-directory
 ms.service: active-directory
 ms.component: authentication
@@ -10,48 +10,48 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.openlocfilehash: 42471687e0a56ff0bacf5c9effecb0e2466b4690
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: f2d0b009c4451a4108222ac7aa7954ba6dd86699
+ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34593591"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37869007"
 ---
-# <a name="self-service-password-reset-in-azure-ad-deep-dive"></a>Az önkiszolgáló jelszó-változtatási az Azure AD részletes bemutatója
+# <a name="self-service-password-reset-in-azure-ad-deep-dive"></a>Az önkiszolgáló jelszó-visszaállítás, az Azure AD részletes bemutatása
 
-Hogyan nem önkiszolgáló jelszó-változtatási (SSPR) munka? Mi ez a lehetőség jelent a felületen? További tudnivalók az Azure Active Directory (Azure AD) SSPR olvasási továbbra is.
+Nem az önkiszolgáló jelszó-visszaállítás (SSPR) munkahelyi? Mi ezt a lehetőséget jelent a felületen? Tudjon meg többet az Azure Active Directory (Azure AD) az SSPR kihívásokra.
 
-## <a name="how-does-the-password-reset-portal-work"></a>Hogyan alaphelyzetbe állítja a jelszót a munkahelyi portál?
+## <a name="how-does-the-password-reset-portal-work"></a>Hogyan a jelszó-visszaállítási portál működése?
 
-Amikor egy felhasználó megnyitja a a jelszó-visszaállítási portál, a munkafolyamat van kezdődött el meghatározásához:
+Amikor egy felhasználó megnyitja a a jelszó-visszaállítási portál, a munkafolyamat megkezdődik a meghatározásához:
 
-   * Hogyan lehet honosított a lapot?
-   * Érvénytelen a felhasználói fiókot?
-   * Milyen a szervezet a felhasználó tartozik?
-   * Hol áll a felhasználó jelszavát?
-   * A felhasználó rendelkezik licenccel a szolgáltatás használatához?
+   * Hogyan lehet honosított az oldal?
+   * Az a felhasználói fiók érvényes?
+   * Milyen a szervezetben a felhasználó tartozik?
+   * Hol történik a felhasználó jelszava kezelése?
+   * A felhasználó rendelkezik licenccel a funkció használatához?
 
-További információt a jelszó mögötti logika olvassa el a következő lépések lap visszaállítása:
+Olvassa el az alábbi lépések segítségével megismerheti a jelszó mögötti logika-visszaállítási oldalra:
 
-1. A felhasználó kijelöli a **nem fér hozzá a fiókjához** hivatkozásra, vagy közvetlenül kerül [ https://aka.ms/sspr ](https://passwordreset.microsoftonline.com).
-   * A böngésző nyelve alapján, a felhasználói élmény megjelenítése a megfelelő nyelvet. A jelszó alaphelyzetbe állítása élmény van, amely támogatja az Office 365 nyelvekre honosított.
-2. A felhasználó megadja a felhasználói Azonosítót, és továbbítja a captcha.
-3. Az Azure AD ellenőrzi, hogy a felhasználó képes a szolgáltatás használatához a következő ellenőrzések végrehajtásával:
-   * Ellenőrzi, hogy a felhasználó rendelkezik-e ez a funkció engedélyezve van, és rendelkezik az Azure AD-licenccel.
-     * Ha a felhasználó rendelkezik ezzel a funkcióval vagy nem egy licenccel, a felhasználónak kapcsolatba kell lépnie a jelszó alaphelyzetbe állításához a rendszergazda.
-   * Ellenőrzi, hogy a felhasználó rendelkezik-e a jobb oldali kihívást jelentenek a rendszergazda nyilatkozatnak a fiókot a megadott adatokat.
-     * Ha a házirend csak egy ellenőrző igényel, majd biztosítja, hogy a felhasználó rendelkezik-e a megfelelő adatokat, legalább az egyik kihívás a rendszergazda házirend engedélyezve van definiálva.
-       * Ha a felhasználó kihívás nincs konfigurálva, majd a felhasználó ajánlatos a jelszavuk a rendszergazdától.
-     * Ha a házirend két kihívást igényel, majd biztosítja, hogy a felhasználó rendelkezik-e a megfelelő adatokat, a rendszergazda házirend által engedélyezett kihívásai legalább két definiált.
-       * Ha a felhasználó kihívás nincs konfigurálva, majd a felhasználó ajánlatos a jelszavuk a rendszergazdától.
-   * Ellenőrzi, hogy ha a felhasználó jelszava felügyelt helyszíni (összevont, átmenő hitelesítést, vagy a Jelszókivonat szinkronizálása).
-     * Ha visszaírási van telepítve, és a jelszó helyszínen felügyelt, akkor a felhasználó hitelesítésére és jelszavuk folytatja-e.
-     * Ha visszaírási nincs telepítve, és a jelszó helyszínen felügyelt, majd a felhasználónak kapcsolatba kell lépnie a jelszó alaphelyzetbe állításához a rendszergazda.
-4. Ha megállapította, hogy a felhasználó nem tudja alaphelyzetbe állítása sikeresen megtörtént a jelszavát, majd a rendszer végigvezeti a felhasználót a visszaállítási folyamat során.
+1. A felhasználó kiválasztja az **nem tudja elérni a fiókját** hivatkozásra, vagy közvetlenül kerül [ https://aka.ms/sspr ](https://passwordreset.microsoftonline.com).
+   * A böngésző területi beállítása alapján, a tapasztalatok jelenik meg a megfelelő nyelven. A jelszó alaphelyzetbe állítása honosított ugyanazokat a nyelveket, amely támogatja az Office 365-be.
+2. A felhasználó beírja egy felhasználói Azonosítót, és átadja a captcha.
+3. Az Azure AD ellenőrzi, hogy a felhasználó nem használhatja ezt a szolgáltatást felderítéséhez a következő tevékenységek végrehajtásával:
+   * Ellenőrzi, hogy a felhasználó rendelkezik-e a szolgáltatás nincs engedélyezve, és rendelkezik az Azure AD-licenccel.
+     * Ha a felhasználó nem rendelkezik a szolgáltatás nincs engedélyezve, vagy egy licenccel, a felhasználónak meg kell adnia a saját jelszavuk-rendszergazdától.
+   * Ellenőrzi, hogy a felhasználó jogosult-e adatokat a fiók rendszergazdája szabályzatának megfelelően definiált kihívást jelentenek.
+     * Ha a szabályzat csak az egyik kihívás van szüksége, majd biztosítja azt, hogy a felhasználó rendelkezik-e a megfelelő adatokat, legalább az egyik kihívást a rendszergazdai házirend engedélyezve van definiálva.
+       * Ha a felhasználói feladvány nincs konfigurálva, majd a felhasználó javasolt a rendszergazdától új jelszót kérnek.
+     * Ha a szabályzat két lépés szükséges, majd biztosítja azt, hogy a felhasználó rendelkezik-e a megfelelő adatokat a felügyeleti házirend által engedélyezett kihívást legalább két definiált.
+       * Ha a felhasználói feladvány nincs konfigurálva, majd a felhasználó javasolt a rendszergazdától új jelszót kérnek.
+   * Ellenőrzi, hogy a felhasználó jelszava felügyelt helyszíni (összevont, átmenő hitelesítést, vagy a jelszókivonatok szinkronizálása).
+     * Ha a jelszóvisszaíró telepíti, és a felhasználó jelszava a helyszínen kezel, akkor a felhasználó számára engedélyezett a jelszavuk és hitelesítéséhez a folytatáshoz.
+     * Ha a jelszóvisszaíró nincs telepítve, és a felhasználó jelszava a helyszínen kezel, akkor a felhasználónak meg kell adnia a rendszergazdától új jelszót kérnek.
+4. Ha megállapította, hogy a felhasználó nem tudja sikeresen visszaállítva jelszavukat, majd a felhasználó rendszer végigvezeti a visszaállítás folyamatához.
 
 ## <a name="authentication-methods"></a>Hitelesítési módszerek
 
-Ha az önkiszolgáló jelszó-Változtatási engedélyezve van, ki kell választania a hitelesítési módszerek az alábbiak közül legalább egyet. Egyes esetekben hallott ezek a beállítások néven "kapuk." Erősen ajánlott legalább két hitelesítési módszerek úgy dönt, hogy a felhasználók több beleszólása van.
+Ha az SSPR engedélyezve van, választania kell a hitelesítési módszerek az alábbiak közül legalább egyet. Néha hallgassa meg ezek a beállítások "kapuk." néven Erősen ajánlott legalább két hitelesítési módszerek úgy dönt, hogy a felhasználók több beleszólása van.
 
 * E-mail
 * Mobiltelefon
@@ -60,57 +60,57 @@ Ha az önkiszolgáló jelszó-Változtatási engedélyezve van, ki kell választ
 
 ![Hitelesítés][Authentication]
 
-### <a name="what-fields-are-used-in-the-directory-for-the-authentication-data"></a>A címtár melyik mezők használ a megadott hitelesítési adat?
+### <a name="what-fields-are-used-in-the-directory-for-the-authentication-data"></a>Milyen mezőket a hitelesítési adatok használhatók a címtárban?
 
 * **Irodai telefon**: az irodai telefon felel meg.
-    * Nem állítható be ez a mező maguk a felhasználók. Egy rendszergazdának meg kell határozni.
-* **Mobiltelefon**: megfelel-e a hitelesítéshez megadott telefonját (nem nyilvánosan láthatóvá) vagy a mobiltelefon (nyilvánosan láthatóvá).
-    * A szolgáltatás először megkeresi a hitelesítéshez megadott telefonját, és ezután visszatér a mobiltelefon, ha a hitelesítéshez megadott telefonját jelent-e.
-* **Másodlagos e-mail cím**: megfelel a hitelesítési e-mail (nem nyilvánosan láthatóvá) vagy a másodlagos e-mail cím.
-    * A szolgáltatás a hitelesítési e-mail először keres, és ezután nem másodlagos e-mail cím.
+    * Felhasználók nem tudnak adja meg a mezőben saját magukat. Egy rendszergazdának kell definiálni.
+* **Mobiltelefon**: felel meg a hitelesítéshez használt telefon (nem nyilvánosan láthatók) vagy a mobiltelefon (nyilvánosan láthatók).
+    * A szolgáltatás először megkeresi a hitelesítéshez használt telefon, és ezután visszatér a létrejött a mobiltelefon, ha a hitelesítéshez használt telefon jelent-e.
+* **Másodlagos e-mail cím**: felel meg a hitelesítő e-mail-cím (nem nyilvánosan láthatók) vagy a másodlagos e-mail cím.
+    * A szolgáltatás először megkeresi a hitelesítési e-mail címére, és vissza a másodlagos e-mail cím, akkor sikertelen lesz.
 
-Alapértelmezés szerint csak a felhő attribútumok irodai telefon és mobiltelefonra szinkronizálva van a felhő címtárhoz a hitelesítési adatok a helyi címtárban lévő.
+Alapértelmezés szerint csak a felhőben attribútumok irodai telefon és mobiltelefon szinkronizálva van a felhőalapú címtárral hitelesítési adatokat a helyszíni címtárból.
 
-Felhasználók csak jelszó is visszaállítása, ha a hitelesítési módszereket, amelyek a rendszergazda engedélyezte, és megköveteli az adatok.
+Felhasználók csak alaphelyzetbe állíthatja a jelszavát Ha szerepel a hitelesítési módszereket, amelyek a rendszergazda engedélyezte, és a szükséges adatok rendelkeznek.
 
-Ha a felhasználók nem szeretné, hogy a címtárban a mobiltelefonszám, de továbbra is szeretnék használni szeretné a jelszó alaphelyzetbe állítása, a rendszergazdák nem kitölti azt a könyvtárban. Felhasználók majd fel kell töltenie a **hitelesítéshez megadott telefonját** keresztül attribútumot a [jelszó-változtatási regisztrációs portálra](https://aka.ms/ssprsetup). A rendszergazdák láthatják ezeket az információkat a profil, de nem máshol lesz közzétéve.
+Ha a felhasználók nem szeretnének a mobiltelefonszám lesznek láthatók a címtárban, de azok továbbra is azt szeretné használni a jelszó-visszaállításhoz, a rendszergazdák nem kitölti ezt a címtárban. Felhasználók majd fel kell töltenie saját **hitelesítéshez használt telefon** keresztül attribútum a [jelszóátállítási regisztrációs portál](https://aka.ms/ssprsetup). A rendszergazdák ezt az információt a felhasználói profil látható, de nincs közzétéve máshol.
 
-### <a name="the-number-of-authentication-methods-required"></a>Hitelesítési módszer szükséges száma
+### <a name="the-number-of-authentication-methods-required"></a>A szükséges hitelesítési módszerek száma
 
-Ez a beállítás a rendelkezésre álló hitelesítési módszerek vagy a felhasználó alaphelyzetbe állítása vagy a jelszavát zárolásának feloldásához keresztül kell haladnia kapuk minimális számát határozza meg. Egy vagy két beállítható.
+Ez a beállítás meghatározza, hogy a rendelkezésre álló hitelesítési módszerek vagy visszaállítására vagy zárolásának feloldásához jelszó keresztül kell haladnia a felhasználó kapuk minimális számát. Egy vagy két állítható.
 
-Felhasználók eldönthetik, adja meg a további hitelesítési módszerek, ha a rendszergazda engedélyezi a hitelesítési módszert.
+Adja meg a további hitelesítési módszereket, ha a rendszergazda a hitelesítési módszer lehetővé teszi a felhasználók választhat.
 
-Ha a felhasználó nem rendelkezik a minimálisan szükséges módszerek regisztrált, láthatják, amely arra utasítja, kérje a rendszergazda jelszó visszaállítása hibalap.
+Ha egy felhasználó nincs regisztrálva a minimálisan szükséges módszerek, láthatják, amelyek szólítja fel őket, hogy a rendszergazdák új jelszót kérnek kérelem hibalap.
 
 #### <a name="change-authentication-methods"></a>Módosítsa a hitelesítési módszerek
 
-Ha egy házirendet, amelynek csak egy szükséges hitelesítési módszer az alaphelyzetbe állítása vagy zárolásának feloldásához először regisztrálva, és módosíthatja, hogy a két módszer, mi történik?
+Ha először egy szabályzatot, amely csak egy szükséges hitelesítési módszert a visszaállítására vagy zárolásának feloldására rendelkezik a regisztrált, és módosíthatja, hogy a két módszer, mi történik?
 
-| Több regisztrált módszer | Szükséges módszerek száma | Eredmény |
+| Regisztrált módszerek száma | Szükséges módszerek száma | Eredmény |
 | :---: | :---: | :---: |
-| legalább 1 | 1 | **Képes** alaphelyzetbe állítása vagy feloldása |
-| 1 | 2 | **Nem lehet** alaphelyzetbe állítása vagy feloldása |
-| 2 vagy több | 2 | **Képes** alaphelyzetbe állítása vagy feloldása |
+| 1 vagy több | 1 | **Képes** visszaállítására vagy zárolásának feloldása |
+| 1 | 2 | **Nem sikerült** visszaállítására vagy zárolásának feloldása |
+| 2 vagy több | 2 | **Képes** visszaállítására vagy zárolásának feloldása |
 
-Ha módosítja a hitelesítési módszereket, amelyek a felhasználó típusú, akaratlanul leállhat a felhasználók nem tudnak önkiszolgáló jelszó-Változtatási használja, ha nincs telepítve a minimális mennyiségű adat.
+Ha módosítja a hitelesítési módszereket, amelyek a felhasználó használhatja típusú, a felhasználók nem tudnak az SSPR használatára, ha nem rendelkeznek a minimálisan elérhető adatok véletlenül leállhat.
 
 Példa: 
-1. Az eredeti házirenddel szükséges két hitelesítési módszerekkel együtt van konfigurálva. Csak a munkahelyi számának és a biztonsági kérdések használ. 
-2. A rendszergazdának a házirend már nem a biztonsági kérdések megváltozik, de lehetővé teszi, hogy a mobiltelefon és egy másodlagos e-mail.
-3. A mobileszköz és a másodlagos e-mail mezői nem rendelkező felhasználók a jelszavuk nem állítható alaphelyzetbe.
+1. Szükséges két hitelesítési módszerek az eredeti házirenddel van konfigurálva. Csak az irodai telefonszámát és a biztonsági kérdések használ. 
+2. A rendszergazda módosítja a már nem az a biztonsági kérdések használni kívánt házirendet, de engedélyezi a mobiltelefon és a egy másodlagos e-mail.
+3. A mobileszköz és a másodlagos e-mail-cím mezői nem rendelkező felhasználók a jelszavuk nem állítható alaphelyzetbe.
 
-### <a name="how-secure-are-my-security-questions"></a>Hogy mennyire vannak biztonságban vannak a biztonsági kérdések?
+### <a name="how-secure-are-my-security-questions"></a>Mennyire vannak biztonságban vannak a biztonsági kérdések megválaszolása?
 
-Ha a biztonsági kérdések használata együtt őket egy másik módszerrel használatát javasoljuk. Biztonsági kérdések lehet más módszernél kevésbé biztonságos, mert néhány felhasználó ismerheti egy másik felhasználó kérdésekre adott válaszokat.
+Biztonsági kérdések használatakor javasoljuk egy másik módszerrel együtt használja őket. Biztonsági kérdések kevésbé biztonságos, mint más módszerekkel is lehet, mivel vannak, akik előfordulhat, hogy egy másik felhasználó kérdésekre adott válaszokat.
 
 > [!NOTE] 
-> Biztonsági kérdések tárolja a könyvtárban olyan felhasználói objektum közvetlenül és biztonságosan, és képes csak válaszolni felhasználók regisztráció során. Nincs semmilyen módszer, olvassa el, vagy módosíthatja a felhasználói kérdések és válaszok a rendszergazda.
+> Biztonsági kérdések a címtárban lévő felhasználói objektum a privát módon és biztonságosan tárolja, és csak választ a felhasználók regisztrációja során. Nincs lehetőség a rendszergazda számára olvasására vagy módosítására egy felhasználói kérdések és válaszok.
 >
 
-### <a name="security-question-localization"></a>Biztonsági kérdés honosítása
+### <a name="security-question-localization"></a>Biztonsági kérdés honosítási
 
-Hajtsa végre az előre definiált kérdések az Office 365 nyelveken a teljes készletének honosítva vannak, és a felhasználó a böngésző nyelve alapulnak:
+Az előre meghatározott kérdések az alábbi Office 365 nyelveken a teljes körű honosítva vannak, és a felhasználó a böngésző nyelve alapján:
 
 * Melyik városban ismerkedett meg az első házastársával/párjával?
 * Melyik városban találkozak először a szülei?
@@ -126,7 +126,7 @@ Hajtsa végre az előre definiált kérdések az Office 365 nyelveken a teljes k
 * Mi a kedvenc étele?
 * Anyai nagyapja vezeték- és keresztneve?
 * Mi az édesanyja második keresztneve?
-* Mi az a legidősebb testvérének születési éve és hónapja? (pl. 1985. November)
+* Mi a legidősebb testvérének születési éve és hónapja? (Példa: 1985. November)
 * Mi a legidősebb testvérének második keresztneve?
 * Apai nagyapja vezeték- és keresztneve?
 * Mi a legfiatalabb tesvérének második keresztneve?
@@ -150,98 +150,98 @@ Hajtsa végre az előre definiált kérdések az Office 365 nyelveken a teljes k
 
 ### <a name="custom-security-questions"></a>Egyéni biztonsági kérdések
 
-Egyéni biztonsági kérdések nem a különböző területi beállításokhoz honosított. Minden egyéni kérdések jelennek meg nyelvével azonos nyelven, szerepel a felügyeleti felhasználói felület, akkor is, ha a felhasználó a böngésző nyelve nem egyezik. Ha honosított kérdése van szüksége, az előre definiált kérdéseket kell használnia.
+Egyéni biztonsági kérdések nem különböző területi beállításokhoz honosított. Minden egyéni kérdéseket vannak feltüntetve ugyanazt a nyelvet, szerepel a rendszergazdai felhasználói felület, akkor is, ha a felhasználó a böngésző nyelve nem egyezik. Ha honosított kérdésekre, az előre definiált kérdésekre kell használnia.
 
-Egy egyéni biztonsági kérdés hossza legfeljebb 200 karakter lehet.
+Egyéni biztonsági kérdések maximális hossza 200 karakternél hosszabb.
 
-Jelszó-változtatási portál és kérdések megjelenítése eltérő honosított nyelvű hozzáfűzése "? mkt =<Locale>" végén a jelszó alaphelyzetbe állítása az URL-cím azaz utáni spanyol példaként [ https://passwordreset.microsoftonline.com/?mkt=es-us ](https://passwordreset.microsoftonline.com/?mkt=es-us).
+Eltérő honosított jelszó-visszaállítási portál és kérdések megjelenítése nyelv hozzáfűzése "? mkt =<Locale>" végéig a jelszó alaphelyzetbe állítása URL-cím a spanyol, azaz a következő példában [ https://passwordreset.microsoftonline.com/?mkt=es-us ](https://passwordreset.microsoftonline.com/?mkt=es-us).
 
 ### <a name="security-question-requirements"></a>Biztonsági kérdés követelmények
 
-* A minimális válasz karakteres korlátot három karakterből áll.
-* A válasz maximális karakteres korlátot 40 karakter.
-* Felhasználók ugyanezt a kérdést egynél többször nem válaszol.
-* Felhasználók nem adhatók meg az azonos egynél több kérdésre adott válasz.
-* Bármely karakterkészlet segítségével határozza meg a kérdések és a válaszok, beleértve a Unicode-karaktereket.
-* A megadott kérdéseket száma nagyobb vagy egyenlő, melyeket regisztrálásához szükséges kérdések számát kell lennie.
+* A minimális válasz karakterszámot három karakterből áll.
+* A válasz maximális karakterszámot 40 karakterből áll.
+* Felhasználók ugyanezt a kérdést egynél több alkalommal nem válaszol.
+* Felhasználók nem adhatók meg a kérdéshez eltérő válaszokat.
+* Bármely karakterkészlet segítségével határozza meg a kérdéseket és válaszokat, beleértve a Unicode-karaktereket.
+* A megadott kérdések száma nagyobb vagy egyenlő, amelyek korábban regisztrálásához szükséges kérdések száma kell lennie.
 
 ## <a name="registration"></a>Regisztráció
 
-### <a name="require-users-to-register-when-they-sign-in"></a>Felhasználói bejelentkezéskor regisztráció megkövetelése
+### <a name="require-users-to-register-when-they-sign-in"></a>Szükséges a felhasználóknak regisztrálniuk a bejelentkezéskor
 
-Ahhoz, hogy ezt a beállítást, a felhasználó, aki engedélyezve van a jelszó alaphelyzetbe állítása a jelszóátállítás regisztrációját befejeződik, ha az Azure AD használatával alkalmazások bejelentkeznek az rendelkezik. Ez az alábbiakat tartalmazza:
+Ezt a beállítást engedélyezi, hogy a felhasználó, aki engedélyezve van a jelszó-visszaállítás elvégzéséhez a jelszóátállítás regisztrációját, ha bejelentkeznek az alkalmazások Azure AD-vel rendelkezik. Ez az alábbiakat tartalmazza:
 
 * Office 365
 * Azure Portal
 * Hozzáférési panel
-* Összevont alkalmazásokhoz
-* Azure AD használatával egyéni alkalmazások
+* Összevont alkalmazások
+* Egyéni alkalmazások Azure AD-vel
 
-Ha regisztrációs igénylő le van tiltva, a felhasználók továbbra is futtathatja manuálisan regisztrálhatják az elérhetőségét. Vagy keresse fel a következőkre [ https://aka.ms/ssprsetup ](https://aka.ms/ssprsetup) vagy válassza ki a **regisztrálása jelszóváltoztatásra** hivatkozásra a **profil** a hozzáférési Panel lapján.
+Regisztráció megkövetelése le van tiltva, ha a felhasználók manuálisan még mindig regisztrálhatnak az elérhetőségét. Vagy keresse fel a következőkre [ https://aka.ms/ssprsetup ](https://aka.ms/ssprsetup) vagy válassza ki a **regisztráció új jelszó kéréséhez** hivatkozásra a **profil** fülre a hozzáférési panelen.
 
 > [!NOTE]
-> Felhasználók kiválasztásával esetben elvetheti a jelszó-visszaállítási portál **Mégse** vagy zárja be az ablakot. Azonban meg kell regisztrálni a minden egyes bejelentkezéskor mindaddig, amíg a regisztrálást.
+> Felhasználó elvetheti a jelszó-visszaállítási portál kiválasztásával **Mégse** vagy zárja be az ablakot. De figyelmeztetést kapnak minden egyes bejelentkezéskor mindaddig, amíg azok a regisztráció befejezéséhez regisztrálja.
 >
-> Ez nem a felhasználó kapcsolat megszüntetése, ha már bejelentkezett a.
+> Ez nem a felhasználói kapcsolat megszüntetése, ha már bejelentkezett a.
 
-### <a name="set-the-number-of-days-before-users-are-asked-to-reconfirm-their-authentication-information"></a>Állítsa be a hány nap elteltével a felhasználó felkérést kap a hitelesítési adataikat megerősítése
+### <a name="set-the-number-of-days-before-users-are-asked-to-reconfirm-their-authentication-information"></a>Adja meg, hány nap elteltével a rendszer kéri a felhasználóktól a hitelesítési adataik ismételt megerősítését
 
-Ez a beállítás azt határozza meg, mennyi ideig beállítása és reconfirming hitelesítési adatok között, és csak akkor, ha engedélyezi a **felhasználói bejelentkezéskor regisztráció megkövetelése** lehetőséget.
+Ez a beállítás határozza meg azt a beállítást, és a hitelesítési adatok reconfirming közötti időszakot, és csak akkor, ha engedélyezi a **szükséges a felhasználóknak regisztrálniuk a bejelentkezéskor** lehetőséget.
 
-Érvényes értékek: 0 és 730 nap, "0", azaz a felhasználók soha nem a rendszer kéri a hitelesítési adatokat megerősítése.
+Érvényes értékek: 0 és 730 nap, a "0", azaz a felhasználók soha nem kéri a hitelesítési adataik ismételt megerősítését.
 
 ## <a name="notifications"></a>Értesítések
 
 ### <a name="notify-users-on-password-resets"></a>Értesítse a felhasználókat új jelszó kérésekor?
 
-Ha ez a beállítás értéke **Igen**, majd a jelszó alaphelyzetbe állításával a felhasználó kap egy e-mailt, amely értesíti őket, hogy a jelszó megváltozott. Az e-mailt küld az önkiszolgáló jelszó-Változtatási portálján keresztül az elsődleges és másodlagos e-mail címét, amelyek a fájl az Azure ad-ben. A visszaállítási értesítést senki más nem esemény.
+Ha ez a beállítás értéke **Igen**, majd az új jelszó felhasználó kap egy e-mailben értesíti őket, hogy módosította a jelszavát. Az e-mailt küld az SSPR-portálon keresztül elsődleges és másodlagos e-mail-címüket, amelyek a fájl az Azure ad-ben. A visszaállítási értesítést senki más nem esemény.
 
-### <a name="notify-all-admins-when-other-admins-reset-their-passwords"></a>Az összes rendszergazda értesítése, ha más rendszergazdák a jelszavak alaphelyzetbe állítása
+### <a name="notify-all-admins-when-other-admins-reset-their-passwords"></a>Minden rendszergazda kapjon értesítést, ha más rendszergazdák új jelszót kérjenek
 
-Ha ez a beállítás értéke **Igen**, majd *minden rendszergazda* az elsődleges e-mail címéhez a fájlt e-mailt kap az Azure ad-ben. Az e-mailben értesíti őket, hogy egy másik rendszergazda SSPR használatával megváltozott a jelszavát.
+Ha ez a beállítás értéke **Igen**, majd *minden rendszergazda* kap egy e-mailt a fájl elsődleges e-mail-címére az Azure ad-ben. Az e-mailben értesíti őket, hogy egy másik rendszergazda az SSPR megváltoztatta a jelszavát.
 
-Példa: Nincsenek négy rendszergazdák környezetben. A rendszergazda SSPR segítségével alaphelyzetbe állítja a jelszavát. A rendszergazdák B, C és D, amely azokat a jelszó-változtatási riasztást küld e-mailt kapni.
+Példa: Nincsenek négy rendszergazdák környezet. A rendszergazda SSPR segítségével alaphelyzetbe állítja a jelszavát. A rendszergazdák B, C és D kapnak egy e-mailt, amely riasztást küld, azokat a jelszó-visszaállítás.
 
 ## <a name="on-premises-integration"></a>Helyszíni integráció
 
-Ha telepítését, konfigurálását és az Azure AD Connect engedélyezése, lehetősége van a következő további helyszíni Integrációk. Ha ezek a beállítások szürkén jelennek meg, majd visszaírási nem megfelelően van konfigurálva. További információkért lásd: [jelszóvisszaírás konfigurálása](howto-sspr-writeback.md#configure-password-writeback).
+Ha telepítése, konfigurálása és az Azure AD Connect engedélyezéséhez, akkor a következő beállítások a helyszíni Integrációk. Ha ezek a beállítások szürkén jelennek meg, majd a jelszóvisszaíró nincs megfelelően konfigurálva. További információkért lásd: [konfigurálása a jelszóvisszaíró](howto-sspr-writeback.md#configure-password-writeback).
 
-![Visszaírásához.][Writeback]
+![A Jelszóvisszaíró][Writeback]
 
-Ezen a lapon a helyszíni visszaírási ügyfél az alábbi üzenetek egyike jelenik meg a jelenlegi konfiguráció alapján gyors állapotának tartalmazza:
+Ez az oldal a helyszíni visszaírási ügyfélhez az alábbi üzenetek egyike jelenik meg a jelenlegi konfiguráció alapján gyors állapotának tartalmazza:
 
-* A helyszíni visszaírási ügyfél megfelelően működik, és.
-* Az Azure AD online állapotban, és a helyszíni visszaírási ügyfél csatlakozik. Azonban úgy tűnik, az Azure AD Connect telepített verziója elavult. Érdemes lehet [frissítés Azure AD Connect](./../connect/active-directory-aadconnect-upgrade-previous-version.md) annak érdekében, hogy rendelkezik a legújabb kapcsolati funkciók és a fontos hibajavításokat tartalmaz.
-* A helyszíni visszaírási ügyfélállapot sajnos jelenleg nem lehet ellenőrizni, mert az Azure AD Connect telepített verziója elavult. [Az Azure AD Connect frissítése](./../connect/active-directory-aadconnect-upgrade-previous-version.md) tudjanak a kapcsolat állapotának ellenőrzése.
-* Sajnos úgy tűnik, nem lehet kapcsolódni a helyszíni visszaírási ügyfél most. [Hibaelhárítás az Azure AD Connect](active-directory-passwords-troubleshoot.md#troubleshoot-password-writeback-connectivity) a kapcsolat helyreállítására.
-* Sajnos nem lehet kapcsolódni a helyszíni visszaírási ügyfél mert jelszóvisszaírás nem megfelelően van konfigurálva. [Konfigurálja a jelszóvisszaírás](howto-sspr-writeback.md#configure-password-writeback) a kapcsolat helyreállítására.
-* Sajnos úgy tűnik, nem lehet kapcsolódni a helyszíni visszaírási ügyfél most. Ezt az End ideiglenes problémák okozhatják. Ha a probléma továbbra is fennáll, [hibaelhárítása az Azure AD Connectet](active-directory-passwords-troubleshoot.md#troubleshoot-password-writeback-connectivity) a kapcsolat helyreállítására.
+* A helyszíni visszaírási ügyfél működik-e.
+* Az Azure AD online állapotban, és a helyszíni visszaírási ügyfélhez csatlakozik. Azonban úgy tűnik, az Azure AD Connect telepített verziója elavult. Érdemes lehet [frissítése az Azure AD Connect](./../connect/active-directory-aadconnect-upgrade-previous-version.md) , gondoskodjon arról, hogy a legújabb kapcsolati funkciók és a fontos hibajavításokat tartalmaz.
+* Sajnos jelenleg nem lehet ellenőrizni a helyszíni visszaírási ügyfél állapotát, mert az Azure AD Connect telepített verziója elavult. [Azure AD Connect frissítése](./../connect/active-directory-aadconnect-upgrade-previous-version.md) tudni ellenőrizni a kapcsolat állapotát.
+* Sajnos úgy tűnik, nem lehet csatlakozni a helyszíni visszaírási ügyfélhez most. [Az Azure AD Connect – hibaelhárítás](active-directory-passwords-troubleshoot.md#troubleshoot-password-writeback-connectivity) a kapcsolat visszaállításához.
+* Sajnos nem nem lehet csatlakozni a helyszíni visszaírási ügyfélhez, mert a jelszóvisszaírás nincs megfelelően konfigurálva. [Jelszóvisszaíró konfigurálása](howto-sspr-writeback.md#configure-password-writeback) a kapcsolat visszaállításához.
+* Sajnos úgy tűnik, nem lehet csatlakozni a helyszíni visszaírási ügyfélhez most. Ez található a rendszerünkben ideiglenes problémák okozhatják. Ha a probléma tartósan fennáll, [hibaelhárítása Azure AD Connect](active-directory-passwords-troubleshoot.md#troubleshoot-password-writeback-connectivity) a kapcsolat visszaállításához.
 
-### <a name="write-back-passwords-to-your-on-premises-directory"></a>Jelszavakat írhasson a helyszíni címtár
+### <a name="write-back-passwords-to-your-on-premises-directory"></a>Visszaírja a jelszavakat a helyszíni címtár
 
-A vezérlő határozza meg, hogy engedélyezve van-e a jelszóvisszaírás ennél a címtárnál. Ha visszaírási, azt jelzi a helyszíni visszaírási szolgáltatás állapotát. Ez akkor hasznos, ha szeretné ideiglenesen letilthatja a jelszóvisszaírást anélkül, hogy az Azure AD Connect újrakonfigurálása.
+Ez a vezérlő határozza meg, hogy a jelszóvisszaíró engedélyezve van-e a könyvtárhoz. A jelszóvisszaíró egy, a helyszíni visszaírási szolgáltatás állapota azt jelzi. Ez akkor hasznos, ha azt szeretné, ideiglenesen letilthatja a jelszóvisszaírást az Azure AD Connect újrakonfigurálása nélkül.
 
-* Ha a kapcsoló értéke **Igen**, majd a visszaírás engedélyezve van, és összevont, átmenő hitelesítést, vagy a jelszó szinkronizálva kivonatoló felhasználók visszaállíthassák a jelszavukat.
-* Ha a kapcsoló értéke **nem**, majd a visszaírás le van tiltva, és összevont, átmenő hitelesítést, vagy a jelszó szinkronizálva kivonatoló felhasználók nem képesek visszaállíthassák a jelszavukat.
+* Ha a kapcsoló beállítása **Igen**, majd a jelszóvisszaíró engedélyezve van, és összevont, átmenő hitelesítést, vagy a jelszó Jelszókivonat szinkronizálása felhasználók képesek-e a jelszavaikat.
+* Ha a kapcsoló beállítása **nem**, majd a jelszóvisszaíró le van tiltva, és összevont, átmenő hitelesítést, vagy a jelszó Jelszókivonat szinkronizálása felhasználók számára nem érhetők el a jelszavaikat.
 
-### <a name="allow-users-to-unlock-accounts-without-resetting-their-password"></a>Engedélyezése a felhasználók számára a fiókok zárolásának feloldása nélkül a jelszó alaphelyzetbe állításával
+### <a name="allow-users-to-unlock-accounts-without-resetting-their-password"></a>Engedélyezése a felhasználók számára a fiókok zárolásának feloldása új jelszó nélkül
 
-Ez a vezérlő jelzi, hogy a felhasználók, akik látogasson el a jelszó-változtatási portál meg kell adni a lehetőséget, a helyszíni Active Directory-fiókok zárolásának anélkül, hogy a jelszó alaphelyzetbe állítása. Alapértelmezés szerint az Azure AD fiókok feloldja, amikor a jelszó alaphelyzetbe állítása hajt végre. E két művelet külön ezt a beállítást használja. 
+Ez a vezérlő azt jelzi, hogy a felhasználók, akik látogasson el a jelszó-visszaállítási portál meg kell adni a lehetőséget, azok a helyszíni Active Directory-fiókok zárolásának ne kelljen új jelszót kérnek. Alapértelmezés szerint az Azure AD fiókok feloldja a jelszó-visszaállítás végrehajtása során. E két művelet külön ezt a beállítást használja. 
 
-* Ha beállítása **Igen**, akkor a felhasználók kapnak, hogy a jelszó alaphelyzetbe állítása és a fiók zárolását kívánja feloldani, vagy a fiók zárolásának anélkül, hogy a jelszó alaphelyzetbe állítása.
-* Ha beállítása **nem**, majd felhasználók vannak csak tudják végrehajtani a kombinált jelszó alaphelyzetbe állítása és fiókok zárolásának feloldása műveletet.
+* Ha beállítása **Igen**, majd a felhasználók a jelszavuk és a zárolás feloldásához, vagy a fiók feloldása új jelszó nélkül kapnak.
+* Ha beállítása **nem**, majd felhasználók vannak csak tudni elvégezni a kombinált jelszó alaphelyzetbe állítása és fiókok zárolásának feloldása műveletet.
 
-## <a name="how-does-password-reset-work-for-b2b-users"></a>Hogyan alaphelyzetbe állítja a jelszót B2B felhasználók számára?
-Jelszó alaphelyzetbe állítása és módosítása teljes mértékben támogatottak összes üzleti vállalatközi (B2B) konfigurációja. A következő három esetben támogatott B2B felhasználói jelszó-visszaállítás:
+## <a name="how-does-password-reset-work-for-b2b-users"></a>Nem a jelszó-visszaállítás munkahelyi B2B-felhasználók számára?
+Az összes-vállalatközi (B2B) konfiguráció teljes mértékben támogatottak a jelszó-visszaállítás, és módosítsa. B2B-felhasználói jelszó-visszaállítás a következő három esetben támogatják:
 
-   * **A fiókpartner-szervezet az Azure AD-bérlő felhasználóit**: Ha a szervezetben, hogy együttműködve egy meglévő Azure AD-bérlő azt *tiszteletben tartják a bérlőre engedélyezve vannak függetlenül jelszó alaphelyzetbe állítása házirendjei*. Jelszó-változtatási működjön a fiókpartner-szervezet csak győződjön meg arról, hogy engedélyezve van-e az Azure AD SSPR van szüksége. Nem kell külön fizetni az Office 365-ügyfelek van, és a lépések elvégzésével engedélyezheti a [Ismerkedés a jelszókezeléssel](https://azure.microsoft.com/documentation/articles/active-directory-passwords-getting-started/#enable-users-to-reset-or-change-their-aad-passwords) útmutató.
-   * **Felhasználók, akik keresztül regisztráljon** önkiszolgáló regisztrációs: Ha a szervezet, hogy együttműködve használt a [önkiszolgáló regisztrációs](../active-directory-self-service-signup.md) a bérlő feltölti a beállítást, azt hogy azok az e-mailt, azok regisztrálva a jelszó alaphelyzetbe állítása.
-   * **B2B felhasználók**: az új létrehozott új B2B felhasználók [Azure AD B2B képességek](../active-directory-b2b-what-is-azure-ad-b2b.md) is tudnak visszaállíthassák a jelszavukat, az e-mailt a meghívott felhasználó során regisztrálják azokat.
+   * **Egy fiókpartner-szervezet egy meglévő Azure AD-bérlővel rendelkező felhasználók**: Ha a szervezetben használt együttműködését abban, meglévő Azure AD-bérlővel, hogy *tiszteletben bármilyen jelszóvisszaállítási szabályzatot engedélyezve vannak a bérlőt*. Jelszó-visszaállítás működéséhez az erőforráspartner-szervezet csak kell győződjön meg arról, hogy engedélyezve van-e az Azure AD SSPR. Semmilyen további díjat nem az Office 365-ügyfelek és a lépéseket követve is engedélyezhető a [jelszókezelés használatának első lépései](https://azure.microsoft.com/documentation/articles/active-directory-passwords-getting-started/#enable-users-to-reset-or-change-their-aad-passwords) útmutató.
+   * **Felhasználók, akik keresztül regisztrálnak** önkiszolgáló: Ha a szervezet, hogy partneri használt a [önkiszolgáló](../users-groups-roles/directory-self-service-signup.md) kerülnek a bérlőt a funkciót, azt, hogy értesítse az e-mail-címével, azok regisztrálva a jelszó alaphelyzetbe állítása.
+   * **B2B-felhasználók**: minden olyan új B2B-felhasználók hozta létre az új [Azure AD B2B-funkciói](../active-directory-b2b-what-is-azure-ad-b2b.md) is elérhetik a jelszavaikat az e-mailt, azok regisztrálva a meghívó folyamat során.
 
-Ez a forgatókönyv teszteléséhez Ugrás http://passwordreset.microsoftonline.com ezen partner felhasználók egyike. Ha egy másodlagos e-mail vagy a megadott hitelesítési e-mail, jelszó-változtatási működik megfelelően.
+Ez a forgatókönyv teszteléséhez nyissa meg http://passwordreset.microsoftonline.com egy partner felhasználók. Ha egy másodlagos vagy hitelesítési e-mail meghatározott rendelkeznek, új jelszó kérésének módja elvárt módon.
 
 > [!NOTE]
-> Hozzáférést kapott Vendég az Azure AD-bérlő, például Hotmail.com, Outlook.com-os vagy más személyes e-mail-címeket, amelyek Microsoft-fiókok nem képesek használni az Azure AD SSPR. Jelszó visszaállítása található információk segítségével van szükségük a [mikor nem tud bejelentkezni Microsoft-fiókja](https://support.microsoft.com/help/12429/microsoft-account-sign-in-cant) cikk.
+> Kapott a vendéghozzáférés az Azure AD-bérlőhöz, a Hotmail.com, Outlook.com vagy más személyes e-mail-címeket, például a Microsoft-fiókok, amelyek nem használhatják az Azure AD SSPR. Szükségük van a jelszó átállításának található információk segítségével a [mikor nem jelentkezhet be Microsoft-fiókjába](https://support.microsoft.com/help/12429/microsoft-account-sign-in-cant) cikk.
 
 ## <a name="next-steps"></a>További lépések
 
@@ -261,4 +261,4 @@ Az alábbi cikkekben az Azure AD jelszóátállításáról olvashat további in
 * [Olyan kérdésem van, amely máshol nem szerepelt](active-directory-passwords-faq.md)
 
 [Authentication]: ./media/concept-sspr-howitworks/sspr-authentication-methods.png "Az elérhető Azure AD-hitelesítési módszerek és a szükséges mennyiség"
-[Writeback]: ./media/concept-sspr-howitworks/troubleshoot-writeback-running.png "Helyszíni integráció jelszó visszaírási konfigurálása és a hibaelhárítási információkat"
+[Writeback]: ./media/concept-sspr-howitworks/troubleshoot-writeback-running.png "A helyszíni integrációs jelszó a jelszóvisszaíró konfigurálása és a hibaelhárítási információk"

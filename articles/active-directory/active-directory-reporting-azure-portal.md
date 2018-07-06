@@ -16,12 +16,12 @@ ms.component: compliance-reports
 ms.date: 01/15/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 1bcd7f9e0a134173a8942b71259428a720a3d076
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 06179d42d2904a4d82f466be0719768f9f010858
+ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36222501"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37868558"
 ---
 # <a name="azure-active-directory-reporting"></a>Jelentéskészítés az Azure Active Directoryban
 
@@ -113,7 +113,7 @@ Ha többet szeretne megtudni az Azure Active Directory különböző jelentést�
 - [Naplók jelentés](active-directory-reporting-activity-audit-logs.md)
 - [Bejelentkezési naplók jelentés](active-directory-reporting-activity-sign-ins.md)
 
-Ha többet szeretne megtudni a jelentésadatok jelentéskészítő API-val való eléréséről, lásd: 
+Ha szeretne többet tudni a jelentési adatokat a jelentéskészítési API-val való eléréséről, lásd: 
 
 - [Bevezetés az Azure Active Directory Premium Reporting API használatába](active-directory-reporting-api-getting-started-azure-portal.md)
 

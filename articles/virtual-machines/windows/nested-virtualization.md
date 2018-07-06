@@ -1,6 +1,6 @@
 ---
-title: Beágyazott virtualizálási Azure virtuális gépek engedélyezése |} Microsoft Docs
-description: Beágyazott virtualizálási Azure virtuális gépek engedélyezése
+title: Beágyazott virtualizálás az Azure Virtual machines gépeken engedélyezése |} A Microsoft Docs
+description: Az Azure Virtual machines gépeken beágyazott virtualizálás engedélyezése
 services: virtual-machines-windows
 documentationcenter: virtual-machines
 author: cynthn
@@ -11,30 +11,30 @@ ms.topic: howto
 ms.service: virtual-machines-windows
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
-ms.openlocfilehash: 0648a7555cb94543dadf5d73e0187927a90f5b5a
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: 3b606fc78327035e135e0f037288a817171385dd
+ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2018
-ms.locfileid: "31526518"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37857944"
 ---
-# <a name="how-to-enable-nested-virtualization-in-an-azure-vm"></a>Egy Azure virtuális gép beágyazott virtualizálás engedélyezése
+# <a name="how-to-enable-nested-virtualization-in-an-azure-vm"></a>Egy Azure virtuális Gépen a beágyazott virtualizálás engedélyezése
 
-Beágyazott virtualizálási az Dv3 és Ev3 lépéseket az Azure virtuális gépek esetén támogatott. Ez a funkció helyzeteket, például a fejlesztői, tesztelési, képzés és bemutató környezetekben nagy rugalmasságot biztosít. 
+Beágyazott virtualizálás a Dv3 és Ev3-sorozat az Azure-beli virtuális gépek használata támogatott. Ezt a képességet például fejlesztési, tesztelési, betanítási és bemutató forgatókönyvek támogatása nagyfokú rugalmasságot biztosít. 
 
-Ez a cikk lépéseit egy Azure virtuális gépen beágyazott virtualizálási engedélyezése és konfigurálása, hogy a Vendég virtuális gép internetkapcsolattal.
+Az összes Dv3 és Ev3 sorozatú virtuális gépek támogatja a beágyazott virtualizálás további konfiguráció nélkül.  Ez a cikk végigvezeti a Hyper-V-beli virtuális gépen engedélyezése és konfigurálása, hogy a Vendég virtuális gép az internetkapcsolat.
 
-## <a name="create-a-dv3-or-ev3-series-azure-vm"></a>Dv3 vagy Ev3 több Azure virtuális gép létrehozása
+## <a name="create-a-dv3-or-ev3-series-azure-vm"></a>A Dv3 és Ev3 sorozatú Azure virtuális gép létrehozása
 
-Hozzon létre egy új Windows Server 2016 Azure virtuális Gépet, és a Dv3 vagy Ev3 sorozatból méret kiválasztása. Győződjön meg arról, hogy elég nagy legyen a Vendég virtuális gépek igények támogatása méret kiválasztása. A jelen példában használjuk D3_v3 Azure virtuális gép méretét. 
+Hozzon létre egy új Windows Server 2016 az Azure virtuális Gépet, és a méretet válassza ki a Dv3 és Ev3-sorozat. Győződjön meg arról, úgy dönt, hogy egy mérete elég nagy legyen a Vendég virtuális gép igényeinek támogatásához. Ebben a példában használjuk egy Azure virtuális gép D3_v3 méretét. 
 
-Megtekintheti a regionális Dv3 vagy Ev3 adatsorozat virtuális gépek rendelkezésre állásának [Itt](https://azure.microsoft.com/regions/services/).
+Megtekintheti a Dv3 és Ev3 sorozatú virtuális gépek mely régiókban [Itt](https://azure.microsoft.com/regions/services/).
 
 >[!NOTE]
 >
->Egy új virtuális gép létrehozása a részletes utasításokért lásd: [létrehozása és kezelése a Windows virtuális gépek az Azure PowerShell modul](https://docs.microsoft.com/azure/virtual-machines/windows/tutorial-manage-vm)
+>Új virtuális gép létrehozásával kapcsolatos részletes utasításokért lásd: [létrehozása és kezelése a Windows virtuális gépek az Azure PowerShell modullal](https://docs.microsoft.com/azure/virtual-machines/windows/tutorial-manage-vm)
     
-## <a name="connect-to-your-azure-vm"></a>Csatlakozás az Azure virtuális gép
+## <a name="connect-to-your-azure-vm"></a>Csatlakozzon az Azure virtuális Géphez
 
 Hozzon létre egy távoli asztali kapcsolatot a virtuális géppel.
 
@@ -47,16 +47,16 @@ Hozzon létre egy távoli asztali kapcsolatot a virtuális géppel.
 4. A bejelentkezés során egy figyelmeztetés jelenhet meg a tanúsítvánnyal kapcsolatban. A csatlakozás folytatásához kattintson az **Igen** vagy **Folytatás** gombra.
 
 ## <a name="enable-the-hyper-v-feature-on-the-azure-vm"></a>Engedélyezze a Hyper-V szolgáltatást az Azure virtuális gépen
-Beállíthatja, hogy ezeket a beállításokat manuálisan vagy egy PowerShell-parancsfájl konfigurálásának automatizálásához adtunk.
+Konfigurálhatja ezeket a beállításokat manuálisan vagy adtunk meg egy PowerShell-parancsprogram segítségével automatizálhatja a konfigurálását.
 
-### <a name="option-1-use-a-powershell-script-to-configure-nested-virtualization"></a>1. lehetőség: A PowerShell parancsfájl segítségével beágyazott virtualizálási konfigurálása
-Egy PowerShell-parancsfájlt egy Windows Server 2016 gazdagépen beágyazott virtualizálás engedélyezése érhető el a [GitHub](https://github.com/charlieding/Virtualization-Documentation/tree/live/hyperv-tools/Nested). A parancsfájl ellenőrzi a szükséges előfeltételek, és ezután beágyazott virtualizálási konfigurálja az Azure virtuális Géphez. Az Azure virtuális gép újraindítására szükség, a konfigurálás befejezéséhez. Ez a parancsfájl más környezetekben is működik, de nem garantált. Tekintse meg az Azure-on futó beágyazott Virtualization egy élő videó az áttekintésről Azure blogbejegyzést! https://aka.ms/AzureNVblog.
+### <a name="option-1-use-a-powershell-script-to-configure-nested-virtualization"></a>1. lehetőség: Egy PowerShell-parancsprogram segítségével konfigurálhatja a beágyazott virtualizálás
+Egy PowerShell-parancsfájlt egy Windows Server 2016 gazdagépen beágyazott virtualizálás engedélyezése érhető el az [GitHub](https://github.com/charlieding/Virtualization-Documentation/tree/live/hyperv-tools/Nested). A parancsfájl ellenőrzi az előfeltételeket, és ezután beállítja a beágyazott virtualizálás az Azure virtuális gépen. Az Azure virtuális gép újraindítására szükség a konfiguráció befejezéséhez. Ez a szkript más környezetekben is működhet, azonban nem garantált. Tekintse meg az Azure blog bejegyzésében az élő videó bemutatója a beágyazott virtualizálás az Azure-ban! https://aka.ms/AzureNVblog.
 
-### <a name="option-2-configure-nested-virtualization-manually"></a>2. lehetőség: Beágyazott virtualizálási kézi konfigurálása
+### <a name="option-2-configure-nested-virtualization-manually"></a>2. lehetőség: Beágyazott virtualizálás kézi konfigurálása
 
 1. Az Azure virtuális gépen nyissa meg a Powershellt rendszergazdaként. 
 
-2. Engedélyezze a Hyper-V szolgáltatást és a felügyeleti eszközök.
+2. Engedélyezze a Hyper-V szolgáltatást és a felügyeleti eszközöket.
 
     ```powershell
     Install-WindowsFeature -Name Hyper-V -IncludeManagementTools -Restart
@@ -64,24 +64,24 @@ Egy PowerShell-parancsfájlt egy Windows Server 2016 gazdagépen beágyazott vir
 
     >[!WARNING] 
     >
-    >Ez a parancs az Azure virtuális gép újraindul. A távoli ASZTAL kapcsolaton keresztül a újraindítás során elvész.
+    >Ez a parancs az Azure virtuális gép újraindul. Az RDP-kapcsolatot az újraindítás során elvesznek.
     
-3. Az Azure virtuális gép újraindítása után kapcsolódjon a virtuális gép RDP Funkciót használnak.
+3. Az Azure virtuális gép újraindítása után a virtuális gép RDP-vel kapcsolódjon újra.
 
-## <a name="set-up-internet-connectivity-for-the-guest-virtual-machine"></a>A Vendég virtuális gép internetkapcsolat beállítása
-Hozzon létre egy új virtuális hálózati adaptert a Vendég virtuális gépen, és ahhoz, hogy internetkapcsolat NAT átjáró konfigurálásához.
+## <a name="set-up-internet-connectivity-for-the-guest-virtual-machine"></a>A Vendég virtuális gép internet kapcsolat beállítása
+Hozzon létre egy új virtuális hálózati adapter a Vendég virtuális gép, és internetes kapcsolat NAT átjáró konfigurálásához.
 
-### <a name="create-a-nat-virtual-network-switch"></a>NAT virtuális hálózati kapcsoló létrehozása
+### <a name="create-a-nat-virtual-network-switch"></a>A NAT virtuális hálózati kapcsoló létrehozása
 
 1. Az Azure virtuális gépen nyissa meg a Powershellt rendszergazdaként.
    
-2. Belső kapcsolót hoz létre.
+2. Hozzon létre egy belső kapcsoló.
 
     ```powershell
     New-VMSwitch -Name "InternalNATSwitch" -SwitchType Internal
     ```
 
-3. Tekintse meg a kapcsoló tulajdonságait, és jegyezze fel az új adapter ifIndex.
+3. A kapcsoló tulajdonságainak megtekintése, és jegyezze fel az új adapter a ifIndex.
 
     ```powershell
     Get-NetAdapter
@@ -91,13 +91,13 @@ Hozzon létre egy új virtuális hálózati adaptert a Vendég virtuális gépen
 
     >[!NOTE] 
     >
-    >Jegyezze fel a "ifIndex" a most létrehozott virtuális kapcsolóhoz.
+    >Jegyezze fel a "ifIndex" a létrehozott virtuális kapcsolóhoz.
     
-4. Hozzon létre egy IP-címet a NAT-átjáró.
+4. Hozzon létre egy IP-címet a NAT-átjáróhoz.
     
-Az átjáró konfigurálásához bizonyos adatok a hálózattal kapcsolatos szükségesek:    
-  * IP-cím - az NAT átjáró IP-cím legyen az alapértelmezett átjáró címét, a virtuális hálózati alhálózat IPv4 vagy IPv6-címet adja meg. Az általános űrlapon a.b.c.1 (például "192.168.0.1"). Amíg a végső pozíciója nem kell ikonra.1, akkor általában (alapul előtag hossza). Általában egy a RFC 1918 magánhálózati címtartománnyal kell használnia. 
-  * PrefixLength – az alhálózati előtag hossza meghatározása a helyi alhálózat méretét (alhálózati maszk). Az alhálózati előtag hossza 0 és 32 közötti egész számot lesz. 0 volna leképezéséhez az interneten, 32 csak lehetővé teszi egy leképezett IP-cím. Közös és közötti értékeket 24 12 attól függően, hogy hány IP-címet kell csatlakoztatni a hálózati címfordítást. A közös PrefixLength: 24 – Ez a 255.255.255.0 alhálózati maszkkal.
+Az átjáró konfigurálásához, a hálózattal kapcsolatos tudnia kell néhány dolgot:    
+  * IP-cím – a NAT-átjáró IP-cím megadja az IPv4 vagy IPv6-címet használja az alapértelmezett átjáró címét a virtuális hálózat alhálózatához. Az általános űrlapon a.b.c.1 (például "192.168.0.1"). Amíg a végső pozíció nem kell lennie a ikonra.1, ez általában akkor (alapján előtag hossza). Általában az RFC 1918 magánhálózati címtartomány kell használnia. 
+  * A PrefixLength – az alhálózati előtag hossza határozza meg a helyi alhálózat méretét (alhálózati maszk). Az alhálózati előtag hossza 0 és 32 közötti egész szám lesz. 0 lenne leképezéséhez az interneten, 32 csak egy leképezett IP lehetővé tenné. Közös és közötti értékeket 24-től 12 attól függően, hogy hány IP-címek kell csatolni a hálózati címfordítást. Egy közös PrefixLength 24 – Ez a 255.255.255.0 alhálózati maszkkal.
   * InterfaceIndex - **ifIndex** pedig az előző lépésben létrehozott virtuális kapcsoló. 
 
     ```powershell
@@ -106,11 +106,11 @@ Az átjáró konfigurálásához bizonyos adatok a hálózattal kapcsolatos szü
 
 ### <a name="create-the-nat-network"></a>A NAT-hálózat létrehozása
 
-Az átjáró konfigurálásához szüksége lesz a hálózati és a NAT-átjáró kapcsolatban nyújtanak információt:
-  * Név – Ez a NAT-hálózat nevét. 
-  * InternalIPInterfaceAddressPrefix - mind a NAT átjáró IP-előtagja, az újabb, valamint a NAT alhálózati előtag hossza a fent a NAT alhálózati előtag ismerteti. Az általános űrlapon a.b.c.0/NAT alhálózati előtaghossz lesz. 
+Az átjáró konfigurálásához, szüksége lesz a hálózat és a NAT-átjáró kapcsolatos adatok megadása:
+  * Név – a NAT-hálózat neve. 
+  * InternalIPInterfaceAddressPrefix – a NAT alhálózati előtag ismerteti mind a NAT-átjáró IP-előtag a fent, valamint a NAT alhálózati előtag hossza a fent. Az általános űrlapon a.b.c.0/NAT alhálózati előtaghossz lesz. 
 
-A PowerShellben hozzon létre egy új NAT hálózatot.
+A PowerShell hozzon létre egy új NAT-hálózatot.
 ```powershell
 New-NetNat -Name "InternalNat" -InternalIPInterfaceAddressPrefix 192.168.0.0/24
 ```
@@ -118,7 +118,7 @@ New-NetNat -Name "InternalNat" -InternalIPInterfaceAddressPrefix 192.168.0.0/24
 
 ## <a name="create-the-guest-virtual-machine"></a>A Vendég virtuális gép létrehozása
 
-1. Nyissa meg a Hyper-V kezelőjében, és hozzon létre egy új virtuális gépet. A létrehozott új belső hálózatot a virtuális gép konfigurálásához.
+1. Nyissa meg a Hyper-V kezelőjében, és hozzon létre egy új virtuális gépet. Konfigurálja a virtuális gép használata a létrehozott új belső hálózatot.
     
     ![NetworkConfig](./media/virtual-machines-nested-virtualization/configure-networking.png)
     
@@ -126,22 +126,22 @@ New-NetNat -Name "InternalNat" -InternalIPInterfaceAddressPrefix 192.168.0.0/24
     
     >[!NOTE] 
     >
-    >A virtuális Gépre telepítendő operációs rendszer telepítési adathordozója van szüksége. Ebben az esetben használjuk a Windows 10 Enterprise.
+    >Szüksége lesz a virtuális gépre telepítendő operációs rendszer telepítési adathordozója. Ebben az esetben használjuk a Windows 10 Enterprise.
 
-## <a name="assign-an-ip-address-to-the-guest-virtual-machine"></a>Rendeljen egy IP-címet a Vendég virtuális gépen
+## <a name="assign-an-ip-address-to-the-guest-virtual-machine"></a>IP-cím hozzárendelése a Vendég virtuális gépen
 
-A Vendég virtuális gépen, vagy manuálisan egy statikus IP-cím beállítása a Vendég virtuális gépen vagy a DHCP konfigurálása az Azure virtuális gépen az IP-cím hozzárendelése dinamikusan hozzárendelheti az IP-cím.
+A Vendég virtuális gép kézzel statikus IP-cím beállítása a Vendég virtuális gépen, vagy a DHCP konfigurálása az Azure virtuális gépen az IP-cím hozzárendelése dinamikusan IP-címet rendelhet hozzá.
 
 ###  <a name="option-1-configure-dhcp-to-dynamically-assign-an-ip-address-to-the-guest-virtual-machine"></a>1. lehetőség: A DHCP dinamikusan IP-cím hozzárendelése a Vendég virtuális gép konfigurálása
-DHCP konfigurálása a dinamikus cím hozzárendelése a gazdagép virtuális gépen az alábbi lépésekkel.
+DHCP konfigurálása a gazdagép virtuális gép dinamikus címet osszon meg az alábbi lépésekkel.
 
-#### <a name="install-dchp-server-on-the-azure-vm"></a>DHCP-kiszolgáló telepítése az Azure virtuális gépen
+#### <a name="install-dchp-server-on-the-azure-vm"></a>Az Azure virtuális Gépen futó DHCP-kiszolgáló telepítése
 
-1. Nyissa meg a Kiszolgálókezelőt. Az irányítópulton kattintson **szerepkörök és szolgáltatások hozzáadása**. A szerepkörök hozzáadása és szolgáltatások varázsló jelenik meg.
+1. Nyissa meg a Kiszolgálókezelőt. Az irányítópulton kattintson **szerepkörök és szolgáltatások hozzáadása**. A szerepkörök hozzáadása és a szolgáltatások varázsló jelenik meg.
   
-2. A varázslóban kattintson a **következő** csak a kiszolgálói szerepkörök lapon.
+2. A varázslóban kattintson a **tovább** csak a kiszolgálói szerepkörök lap.
   
-3. Kattintással jelölje ki a **DHCP-kiszolgáló** jelölőnégyzetet, kattintson a **szolgáltatások hozzáadása**, és kattintson a **következő** mindaddig, amíg a varázsló befejezéséhez.
+3. Kattintással jelölje ki a **DHCP-kiszolgáló** jelölőnégyzetet, kattintson a **szolgáltatások hozzáadása**, és kattintson a **tovább** mindaddig, amíg a varázsló befejezése.
   
 4. Kattintson az **Install** (Telepítés) gombra.
 
@@ -149,18 +149,18 @@ DHCP konfigurálása a dinamikus cím hozzárendelése a gazdagép virtuális g�
 
 1. Nyissa meg a DHCP-kezelőt.
   
-2. A navigációs ablaktáblán bontsa ki a kiszolgáló nevét, kattintson a jobb gombbal **IPv4**, és kattintson a **új hatókör**. Az új hatókör varázsló jelenik meg, kattintson a **következő**.
+2. A navigációs ablaktáblán bontsa ki a kiszolgáló nevét, kattintson a jobb gombbal **IPv4**, és kattintson a **új hatókör**. Az új hatókör varázsló jelenik meg, kattintson a **tovább**.
   
-3. Adjon meg egy nevet és leírást a hatókör, és kattintson a **következő**.
+3. Adjon meg egy nevet és leírást a hatókör, és kattintson a **tovább**.
   
-4. Adja meg az IP-tartomány a DHCP-kiszolgáló (például 192.168.0.100 való 192.168.0.200).
+4. A DHCP-kiszolgáló (például 192.168.0.100 való 192.168.0.200) határozza meg egy IP-címtartományt.
   
-5. Kattintson a **következő** csak az alapértelmezett átjáró oldalon. Adja meg az imént létrehozott korábbi (például 192.168.0.1) IP-címet alapértelmezett átjáróként.
+5. Kattintson a **tovább** amíg az alapértelmezett átjáró oldal. Adja meg a korábban (Ha például 192.168.0.1) létrehozott IP-címet alapértelmezett átjáróként.
   
-6. Kattintson a **következő** mindaddig, amíg a varázsló befejeződött, hagyja az összes alapértelmezett értéket, majd kattintson az **Befejezés**.
+6. Kattintson a **tovább** mindaddig, amíg a varázsló befejeződött, és az összes alapértelmezett értéket, majd kattintson az **Befejezés**.
     
-### <a name="option-2-manually-set-a-static-ip-address-on-the-guest-virtual-machine"></a>2. lehetőség: Manuális módon állítsa be a statikus IP-címet a Vendég virtuális gépen
-Ha a DHCP dinamikusan IP-cím hozzárendelése a Vendég virtuális gépen nincs konfigurálva, kövesse az alábbi lépéseket egy statikus IP-címének beállítása.
+### <a name="option-2-manually-set-a-static-ip-address-on-the-guest-virtual-machine"></a>2. lehetőség: Manuálisan állítsa be statikus IP-címet a Vendég virtuális gépen
+Ha nem konfigurálta a DHCP dinamikusan IP-cím hozzárendelése a Vendég virtuális gépen, kövesse az alábbi lépéseket egy statikus IP-cím beállítása.
 
 1. Az Azure virtuális gépen nyissa meg a Powershellt rendszergazdaként.
 
@@ -170,11 +170,11 @@ Ha a DHCP dinamikusan IP-cím hozzárendelése a Vendég virtuális gépen nincs
 
 4. A Vendég virtuális gépen nyissa meg a hálózati és megosztási központ.
 
-5. Konfigurálja a hálózati adaptert egy címet a NAT-hálózat az előző szakaszban létrehozott tartományba esik.
+5. Konfigurálja a hálózati adaptert egy címet az előző szakaszban létrehozott NAT-hálózatán tartományán belül.
 
-Ebben a példában egy címet fogja használni a 192.168.0.0/24 közé.
+Ebben a példában a 192.168.0.0/24 címtartományt a címet fogja használni.
 
-## <a name="test-connectivity-in-guest-virtual-machine"></a>Kapcsolat tesztelése a Vendég virtuális gépen
+## <a name="test-connectivity-in-guest-virtual-machine"></a>A Vendég virtuális gép kapcsolatának tesztelése
 
-A Vendég virtuális gépen nyissa meg a böngészőt, és keresse meg a weblap.
+A Vendég virtuális gépen nyissa meg a böngészőt, és keresse meg a weblapot.
     ![GuestVM](./media/virtual-machines-nested-virtualization/guest-virtual-machine.png)

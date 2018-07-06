@@ -15,12 +15,12 @@ ms.date: 05/11/18
 ms.author: markvi
 ms.reviewer: asteen
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: bc05ff8c6961cd9389a12ff9c082867eecb79bca
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: eff93b37be2ff770b90518f886bd4b54fa0ca2a1
+ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37449922"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37868990"
 ---
 # <a name="what-is-the-access-panel"></a>Mi az a hozzáférési panelen?
 
@@ -104,6 +104,10 @@ Távoli a bővítmény használata során, a belső vállalati URL-címek haszn�
 2. [Az alkalmazás közzététele](https://docs.microsoft.com/en-us/azure/active-directory/application-proxy-publish-azure-portal) és proxyn keresztül történő alkalmazás URL-CÍMÉT.
 3. Telepítse a bővítményt, és jelentkezzen be, válassza a bejelentkezés a kezdéshez.
 4. Most megnyithatja a belső vállalati URL-cím távoli közben is.
+
+> [!NOTE]
+> Is kikapcsolhatja vállalati URL-címek automatikus átirányítás kiválasztásával a beállítások fogaskereket a főmenü **ki** a vállalati belső URL-cím átirányítása lehetőség.
+
 
 ## <a name="mobile-app-support"></a>Mobilalkalmazás-támogatás
 

@@ -1,6 +1,6 @@
 ---
-title: Azure Cloud rendszerhéj hibaelhárítása |} Microsoft Docs
-description: Hibaelhárítás az Azure-felhőbe rendszerhéj
+title: Az Azure Cloud Shell – hibaelhárítás |} A Microsoft Docs
+description: Hibaelhárítás az Azure Cloud Shell
 services: azure
 documentationcenter: ''
 author: maertendMSFT
@@ -12,147 +12,145 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
-ms.date: 02/22/2018
+ms.date: 07/03/2018
 ms.author: damaerte
-ms.openlocfilehash: cffa67509690f4c594182fbe8104f0620da56bee
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 21bc0633a9cc607325b48998791cb12631ecd0d7
+ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34608950"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37856487"
 ---
-# <a name="troubleshooting--limitations-of-azure-cloud-shell"></a>Hibaelhárítás & korlátozások az Azure felhőalapú rendszerhéj
+# <a name="troubleshooting--limitations-of-azure-cloud-shell"></a>Hibaelhárítási & korlátozások az Azure Cloud Shell
 
-A hibaelhárításhoz Azure Cloud rendszerhéj ismert megoldások a következők:
+Ismert megoldásuk kapcsolatos hibák elhárítása az Azure Cloud Shellben a következők:
 
-## <a name="general-troubleshooting"></a>Általános hibaelhárítási
+## <a name="general-troubleshooting"></a>Általános hibaelhárítási tippek
 
-### <a name="early-timeouts-in-firefox"></a>A FireFox korai időtúllépések
-- **Részletek**: Felhő rendszerhéj egy bemeneti/kimeneti átadása a böngészőben nyissa meg websocket használja. A FireFox, bezárhatja a websocket túl korán okozó korai időtúllépések felhő rendszerhéj előre megadott házirendek rendelkezik.
-- **Megoldási**: Nyissa meg a FireFox, és keresse meg "kapcsolatos: config" az URL-cím mezőbe. Keresse meg a "network.websocket.timeout.ping.request", és módosítsa az értéket 0 és 10.
+### <a name="early-timeouts-in-firefox"></a>Korai időtúllépések, a Firefoxban
+- **Részletek**: a Cloud Shell egy bemeneti/kimeneti átadása a böngészőben nyissa meg websocket használja. A FireFox, bezárhatja a websocket túl korán okozó korai időtúllépések a Cloud Shellben előre beállított házirendek rendelkezik.
+- **Feloldási**: Nyissa meg a FireFox, és keresse meg "kapcsolatos: config" az URL mezőbe. Keresse meg a "network.websocket.timeout.ping.request", és módosítsa az értéket 0 és 10.
 
-### <a name="storage-dialog---error-403-requestdisallowedbypolicy"></a>Tárolási párbeszédpanel – hiba: 403-as RequestDisallowedByPolicy
-- **Részletek**: Felhő rendszerhéj keresztül tárfiók létrehozásához esetén sikerült, mert az Azure házirend helyez el a rendszergazdának. Hibaüzenet tartalmazza: `The resource action 'Microsoft.Storage/storageAccounts/write' is disallowed by one or more policies.`
-- **Megoldási**: a rendszergazdától Azure távolítsa el, vagy a tároló létrehozása megtagadása Azure házirend frissítése.
+### <a name="storage-dialog---error-403-requestdisallowedbypolicy"></a>Tároló párbeszédpanelen - hiba: 403-as RequestDisallowedByPolicy
+- **Részletek**: a Cloud Shell – tárfiók létrehozása esetén a rendszergazda által elhelyezett egy az Azure policy miatt volt sikertelen Hibaüzenet jelenik meg a következőket tartalmazzák: `The resource action 'Microsoft.Storage/storageAccounts/write' is disallowed by one or more policies.`
+- **Feloldási**: távolítsa el vagy frissítse a tagadja meg a tároló létrehozása az Azure policy az Azure rendszergazdához.
 
-### <a name="storage-dialog---error-400-disallowedoperation"></a>Tárolási párbeszédpanel – hiba: 400 DisallowedOperation
- - **Részletek**: Ha az Azure Active Directory-előfizetéssel, tárolási nem hozható létre.
- - **Megoldási**: képes a tárolási erőforrások létrehozása az Azure-előfizetést használ. Azure AD-előfizetések nem hozhat létre Azure-erőforrások.
+### <a name="storage-dialog---error-400-disallowedoperation"></a>Tároló párbeszédpanelen - hiba: 400 DisallowedOperation
+ - **Részletek**: egy Azure Active Directory-előfizetés használata esetén nem hozható létre tároló.
+ - **Feloldási**: Azure-előfizetést hozhat létre a tárolási erőforrásokat. Az Azure-erőforrások létrehozása az Azure AD-előfizetések nem jelennek meg.
 
-### <a name="terminal-output---error-failed-to-connect-terminal-websocket-cannot-be-established-press-enter-to-reconnect"></a>Terminálszolgáltatások kimeneti - hiba: nem sikerült kapcsolódni a Terminálszolgáltatások: websocket nem hozható létre. Nyomja le az `Enter` az újracsatlakozáshoz.
- - **Részletek**: Felhő rendszerhéj megbizonyosodhat websocket kapcsolatot létesíteni a felhő rendszerhéj infrastruktúra.
- - **Megoldási**: Ellenőrizze, hogy konfigurálta a hálózati beállításokat küldő https és a websocket-kérelmeket, tartományokra való engedélyezéséhez *. console.azure.com.
+### <a name="terminal-output---error-failed-to-connect-terminal-websocket-cannot-be-established-press-enter-to-reconnect"></a>Terminálszolgáltatások kimenete – hiba: nem sikerült kapcsolódni a terminálon: websocket nem hozható létre. Nyomja meg `Enter` az újracsatlakozáshoz.
+ - **Részletek**: a Cloud Shell lehetővé teszi a Cloud Shell infrastruktúra websocket kapcsolatot létesíteni a szükséges.
+ - **Feloldási**: Ellenőrizze, hogy konfigurálta a hálózati beállításokat a https-kérelmeket küldő és a tartományok websocket kérések engedélyezése *. console.azure.com.
 
-## <a name="bash-troubleshooting"></a>Hibaelhárítási bash
+## <a name="bash-troubleshooting"></a>Bash-hibaelhárítás
 
-### <a name="cannot-run-the-docker-daemon"></a>A docker démon nem futtatható.
+### <a name="cannot-run-the-docker-daemon"></a>A docker-démon nem futtatható.
 
-- **Részletek**: Felhő rendszerhéj használja egy tárolót a rendszerhéj környezet üzemeltetéséhez, ezért fut a démon nem engedélyezett.
-- **Megoldási**: kihasználhassák [docker-gép](https://docs.docker.com/machine/overview/), amelyiken telepítve van alapértelmezés szerint a docker-tárolók kezelése távoli Docker gazdagépről.
+- **Részletek**: a Cloud Shell egy tárolót a gazdagép a rendszerhéj-környezetet használja, ezért fut a démon nem engedélyezett.
+- **Feloldási**: vételéhez [docker-machine](https://docs.docker.com/machine/overview/), amely alapértelmezés szerint az kezelése a docker-tárolók egy távoli Docker gazdagépen települ.
 
-## <a name="powershell-troubleshooting"></a>PowerShell hibaelhárítása
-
-### <a name="no-home-directory-persistence"></a>No $Home directory adatmegőrzési
-
-- **Részletek**: adatokat használó alkalmazást (például: git, vim, megint mások) ír `$Home` nem őrzi meg PowerShell-munkamenetek között.
-- **Megoldási**: a PowerShell-profilt, hozzon létre egy alkalmazás adott mappához a szimbolikus hivatkozást `clouddrive` $Home számára.
-
-### <a name="ctrlc-doesnt-exit-out-of-a-cmdlet-prompt"></a>CTRL + C nem lépjen ki a parancsmag adatkérést
-
-- **Részletek**: megkísérlésekor. Lépjen ki a parancsmag parancssorba `Ctrl+C` nem létezik a parancssorba.
-- **Megoldási**: való kilépéshez a parancssorba, nyomja le az `Ctrl+C` majd `Enter`.
+## <a name="powershell-troubleshooting"></a>PowerShell-hibaelhárítás
 
 ### <a name="gui-applications-are-not-supported"></a>Grafikus felhasználói Felülettel alkalmazások nem támogatottak.
 
-- **Részletek**: Ha egy felhasználó elindítja egy grafikus felhasználói Felülettel alkalmazást, a kérdés nem ad vissza. Például amikor egy felhasználó klónokat titkos GitHub-tárház kéttényezős hitelesítés engedélyezve van, egy párbeszédpanel a kéttényezős hitelesítéshez befejezésének.  
-- **Megoldási**: zárja be és nyissa meg újra a rendszerhéj.
+- **Részletek**: Ha egy felhasználó elindítja egy grafikus felhasználói Felülettel alkalmazást, a rendszer nem ad vissza. Például amikor egy felhasználó klónozza a kéttényezős hitelesítés engedélyezve van, privát GitHub-tárházba, egy párbeszédpanel jelenik meg a kéttényezős hitelesítés elvégzése a.  
+- **Feloldási**: zárja be és nyissa meg újra a rendszerhéjat.
 
-### <a name="get-help--online-does-not-open-the-help-page"></a>Get-Help - online nem nyitható meg a súgólap
+### <a name="get-help--online-does-not-open-the-help-page"></a>Get-Help - online nem nyitható meg a következő súgóoldalt
 
-- **Részletek**: Ha a `Get-Help Find-Module -online`, egy üzenetet egy hiba, mint: `Starting a browser to display online Help failed. No program or browser is associated to open the URI http://go.microsoft.com/fwlink/?LinkID=398574.`
-- **Megoldási**: másolja az URL-címet, majd nyissa meg kézzel a böngésző.
+- **Részletek**: Ha a felhasználó begépeli `Get-Help Find-Module -online`, például kap egy hibaüzenetet: `Starting a browser to display online Help failed. No program or browser is associated to open the URI http://go.microsoft.com/fwlink/?LinkID=398574.`
+- **Feloldási**: másolja az URL-címet, és nyissa meg kézzel a böngészőben.
 
-### <a name="troubleshooting-remote-management-of-azure-vms"></a>Hibaelhárítás az Azure virtuális gépek távoli felügyelete
+### <a name="troubleshooting-remote-management-of-azure-vms"></a>Hibaelhárítás Azure virtuális gépek távoli felügyelete
 
-- **Részletek**: a Rendszerfelügyeleti webszolgáltatások a Windows tűzfal alapértelmezett beállításai miatt a felhasználó a következő hiba láthat: `Ensure the WinRM service is running. Remote Desktop into the VM for the first time and ensure it can be discovered.`
-- **Megoldási**: Győződjön meg arról, hogy a virtuális gép fut-e. Futtathat `Get-AzureRmVM -Status` a virtuális gép állapotának megállapítása.  Ezt követően adja hozzá egy új tűzfalszabály például egyetlen alhálózatának sem, a Rendszerfelügyeleti webszolgáltatások kapcsolatok engedélyezése a távoli virtuális Gépen
+- **Részletek**: a Rendszerfelügyeleti webszolgáltatások a Windows tűzfal alapértelmezett beállításai miatt a felhasználó lehet, hogy az alábbi hibát látja: `Ensure the WinRM service is running. Remote Desktop into the VM for the first time and ensure it can be discovered.`
+- **Feloldási**: futtassa `Enable-AzureRmVMPSRemoting` engedélyezése a PowerShell-táveléréssel a célgépen minden aspektusát.
+ 
 
- ``` Powershell
- New-NetFirewallRule -Name 'WINRM-HTTP-In-TCP-PSCloudShell' -Group 'Windows Remote Management' -Enabled True -Protocol TCP -LocalPort 5985 -Direction Inbound -Action Allow -DisplayName 'Windows Remote Management - PSCloud (HTTP-In)' -Profile Public
- ```
- Használhat [Azure egyéni parancsprogramok futtatására szolgáló bővítmény](https://docs.microsoft.com/azure/virtual-machines/windows/extensions-customscript) elkerülése érdekében jelentkezzen be a távoli virtuális Gépet az új szabály felvételéhez.
- Az előző parancsfájl menthető egy fájlba, mondja ki `addfirerule.ps1`, és töltse fel az Azure storage tárolót.
- Próbálja a következő parancsot:
+### <a name="dir-caches-the-result-in-azure-drive"></a>`dir` gyorsítótárazza az eredmény az Azure-meghajtó
 
- ``` Powershell
- Get-AzureRmVM -Name MyVM1 -ResourceGroupName MyResourceGroup | Set-AzureRmVMCustomScriptExtension -VMName MyVM1 -FileUri https://mystorageaccount.blob.core.windows.net/mycontainer/addfirerule.ps1 -Run 'addfirerule.ps1' -Name myextension
- ```
-
-### <a name="dir-caches-the-result-in-azure-drive"></a>`dir` gyorsítótárba helyezi azt az eredményt az Azure-meghajtó
-
-- **Részletek**: eredményét `dir` tárolja a rendszer az Azure-meghajtó.
-- **Megoldási**: Miután hoz létre, vagy eltávolít egy erőforrást az Azure meghajtó nézetben, `dir -force` frissítéséhez.
+- **Részletek**: eredményét `dir` tárolja a rendszer Azure-meghajtó.
+- **Feloldási**: után hoz létre, vagy eltávolít egy erőforrást az Azure-meghajtó nézetben, futtassa a `dir -force` frissíteni.
 
 ## <a name="general-limitations"></a>Általános korlátozások
-Azure Cloud rendszerhéj ismert korlátai a következők:
+Az Azure Cloud Shell a következő ismert korlátozások vonatkoznak:
 
-### <a name="system-state-and-persistence"></a>Rendszerállapot- és adatmegőrzési
+### <a name="system-state-and-persistence"></a>Rendszerállapot és adatmegőrzés
 
-A felhő rendszerhéj munkamenet biztosító a gép csak átmenetileg létezik, és újrahasznosítása után a munkamenet a 20 percig inaktív. Felhő rendszerhéj csatlakoztatni kell egy Azure fájlmegosztás szükséges. Ennek eredményeképpen az előfizetés kell tudni tárolási erőforrások beállítása felhő rendszerhéj eléréséhez. Egyéb szempontok a következők:
+A gép, amely biztosítja a Cloud Shell-munkamenetek ideiglenes, és legyen újrahasznosítása után a munkamenet a 20 percig inaktív. A cloud Shell Azure-fájlmegosztás csatlakoztatása a szükséges. Az előfizetés ennek eredményeképpen a Cloud Shell eléréséhez a tárolási erőforrások beállításához képesnek kell lennie. Egyéb szempontok közé tartoznak:
 
-* Csatlakoztatott tárolóval, csak azokat a módosításokat, belül a `clouddrive` directory megmaradnak. A Bash a `$Home` directory is megőrződjenek.
-* Azure fájlmegosztásokat csak belülről lehet csatlakoztatni az [hozzárendelve régió](persisting-shell-storage.md#mount-a-new-clouddrive).
-  * A Bash, futtassa az `env` állítja be a régióban található `ACC_LOCATION`.
-* Az Azure Files csak a helyileg redundáns tárolás és a georedundáns tárolás fiókokat támogatja.
+* Csatlakoztatott tárolóval, csak a módosítások belül a `clouddrive` könyvtár tárolja. A Bash a `$Home` is megőrzi a könyvtárban van.
+* Azure-fájlmegosztások csak a csatlakoztathatók a [régió hozzárendelt](persisting-shell-storage.md#mount-a-new-clouddrive).
+  * Futtassa a Bash, `env` állítja be a régióban található `ACC_LOCATION`.
+* Az Azure Files csak helyileg redundáns tárolás és a georedundáns tárolás fiókokat támogatja.
 
-### <a name="browser-support"></a>Webböngésző támogatása
+### <a name="browser-support"></a>Böngésző támogatása
 
-Felhő rendszerhéj a Microsoft Edge, a Microsoft Internet Explorer, a Google Chrome, a Mozilla Firefox és az Apple Safari legújabb verzióit támogatja. Safari privát üzemmódban nem támogatott.
+A cloud Shell támogatja a Microsoft Edge, a Microsoft Internet Explorer, a Google Chrome, a Mozilla Firefox és a Apple Safari legfrissebb verzióit. Safari böngészőt privát üzemmódban nem támogatott.
 
 ### <a name="copy-and-paste"></a>Másolás és beillesztés
 
 [!include [copy-paste](../../includes/cloud-shell-copy-paste.md)]
 
-### <a name="for-a-given-user-only-one-shell-can-be-active"></a>A megadott felhasználó csak egy rendszerhéj lehet aktív
+### <a name="for-a-given-user-only-one-shell-can-be-active"></a>Egy adott felhasználó csak egy parancshéj lehet aktív.
 
-Felhasználók is csak elindíthatja egy adott típusú rendszerhéj egyszerre, vagy **Bash** vagy **PowerShell**. Azonban előfordulhat, hogy Bash vagy a PowerShell fut egyszerre több példányát. Csere Bash vagy a PowerShell okok felhő rendszerhéj újraindítására, amely megszakítja a meglévő munkamenetek között.
+Csak indíthatják egyfajta rendszerhéj egyszerre, vagy **Bash** vagy **PowerShell**. Előfordulhat azonban, Bash- vagy PowerShell fut egyszerre több példányát. Érvényesítheti a Bash- vagy PowerShell okok Cloud Shell újraindítása, amely befejezi a meglévő munkameneteket között.
 
 ### <a name="usage-limits"></a>Használati korlátozások
 
-Felhő rendszerhéj készült interaktív használati eseteket. Ennek eredményeképpen a hosszan futó nem interaktív munkamenet befejeződik figyelmeztetés nélkül.
+A cloud Shell interaktív használati esetek szól. Ennek eredményeképpen minden olyan hosszan futó nem interaktív munkamenet befejeződik figyelmeztetés nélkül.
 
-## <a name="bash-limitations"></a>Bash korlátozásai
+## <a name="bash-limitations"></a>Bash-korlátozások
 
 ### <a name="user-permissions"></a>Felhasználói engedélyek
 
-Engedélyek vannak beállítva, normál felhasználóként sudo hozzáférés nélkül. Bármely telepítési kívül a `$Home` könyvtár nem őrzi meg.
+Engedélyek beállítása normál felhasználóként sudo hozzáférés nélkül. Minden olyan telepítési kívül a `$Home` directory nincs megőrizve.
 
 ### <a name="editing-bashrc"></a>.Bashrc szerkesztése
 
-Szerkesztés .bashrc, így váratlan hibákat okozhat felhő rendszerhéj elvégzendő járjon el.
+Legyen körültekintő elvégzendő .bashrc, így szerkesztési váratlan hibákat eredményezhet a Cloud Shellben.
 
 ## <a name="powershell-limitations"></a>PowerShell-korlátozások
 
-### <a name="slow-startup-time"></a>Lassú indítási idő
+### <a name="azuread-module-name"></a>`AzureAD` a modul neve
 
-Azure Cloud rendszerhéj (előzetes verzió) PowerShell előzetes inicializálása 60 másodperc is beletelhet.
+A `AzureAD` modulnév jelenleg `AzureAD.Standard.Preview`, a modul adja meg ugyanazokat a funkciókat.
 
-### <a name="default-file-location-when-created-from-azure-drive"></a>Alapértelmezett helye az Azure-meghajtóról létrehozásakor:
+### <a name="sqlserver-module-functionality"></a>`SqlServer` a modul funkció
 
-PowerShell-parancsmagok használatával felhasználók nem hozható létre az Azure meghajtón található fájl. Amikor a felhasználók más eszközökkel, például vim vagy nano, új fájlok létrehozása a fájlok kerülnek C:\Users mappa alapértelmezés szerint. 
+A `SqlServer` modul tartalmazza a Cloud Shellben a PowerShell Core csak előzetes támogatással rendelkezik. Különösen `Invoke-SqlCmd` még nem áll rendelkezésre.
+
+### <a name="default-file-location-when-created-from-azure-drive"></a>Alapértelmezett helye az Azure-meghajtó létrehozása:
+
+PowerShell-parancsmagok használatával felhasználókat nem lehet létrehozni az Azure-meghajtó a fájlok. Amikor a felhasználó más eszközökkel, például vim vagy nano, új fájlok létrehozása a fájlok menti, és a `$HOME` alapértelmezés szerint. 
 
 ### <a name="gui-applications-are-not-supported"></a>Grafikus felhasználói Felülettel alkalmazások nem támogatottak.
 
-Ha a felhasználó hozna létre például egy Windows párbeszédpanelen parancsot futtatja `Connect-AzureAD` vagy `Connect-AzureRmAccount`, egy üzenetet egy hiba például: `Unable to load DLL 'IEFRAME.dll': The specified module could not be found. (Exception from HRESULT: 0x8007007E)`.
+Ha egy felhasználó futtat egy parancsot kell létrehoznia egy Windows párbeszédablak, mint például `Connect-AzureAD` vagy `Connect-AzureRmAccount`, például kap egy hibaüzenetet: `Unable to load DLL 'IEFRAME.dll': The specified module could not be found. (Exception from HRESULT: 0x8007007E)`.
 
-## <a name="gdpr-compliance-for-cloud-shell"></a>Felhő rendszerhéj GDPR megfelelősége
+### <a name="tab-completion-crashes-psreadline"></a>Kiegészítés PSReadline összeomlik
 
-Azure Cloud rendszerhéj súlyosan veszi a személyes adatokat, rögzített, és az Azure felhőalapú Shell szolgáltatás által tárolt adatok alapértelmezett beállításokat biztosít a felhasználói élmény, például a legutóbb használt rendszerhéj használt, elsődleges betűméret, elsődleges betűtípus, és a fájlmegosztás részletei amely biztonsági clouddrive. Kell kíván exportálni, vagy törölje ezeket az adatokat, az alábbi utasítások alapján vannak megadva.
+Ha a felhasználó Szerkesztőmódba a PSReadline Emacs értékre van állítva, a felhasználó megpróbálja keresztül kiegészítés, az összes lehetőség megjelenítéséhez és az ablak mérete túl kicsi az összes lehetőség megjelenítéséhez, PSReadline összeomlik.
+
+### <a name="large-gap-after-displaying-progress-bar"></a>Miután a folyamatjelző sáv megjelenítése nagy közök
+
+Ha a felhasználó hajt végre egy műveletet, amely megjelenik egy folyamatjelző, ezen a lapon épp, miközben a a `Azure:` meghajtó, akkor lehetséges, hogy a kurzor nincs megfelelően beállítva, és eseményáramlási kimaradást jelenik meg, ahol a folyamatjelző sáv korábban volt.
+
+### <a name="random-characters-appear-inline"></a>Véletlenszerű karakter beágyazott jelennek meg.
+
+A kurzor pozíciója feladatütemezési kódjai, például `5;13R`, a felhasználói bevitel is megjelennek.  A karakterek manuálisan távolíthatja el.
+
+## <a name="personal-data-in-cloud-shell"></a>A Cloud Shellben személyes adatok
+
+Az Azure Cloud Shell komolyan veszi a személyes adatokat, a rögzített, és az Azure Cloud Shell szolgáltatás által tárolt adatok alapértelmezett beállításokat biztosítsanak a élményt biztosít, mint például a legutóbb használt shell segítségével, előnyben részesített betűméret, előnyben részesített betűtípus, és a fájlmegosztás részletei felhő, amely vissza a meghajtó. Meg szeretne exportálni, vagy törölje ezeket az adatokat, az alábbi utasításokat tartalmazza.
+
+[!INCLUDE [GDPR-related guidance](../../includes/gdpr-intro-sentence.md)]
 
 ### <a name="export"></a>Exportálás
-Annak érdekében, hogy **exportálása** felhő rendszerhéj menti, például a felhasználói beállítások előnyben részesített rendszerhéj, betűméret és a következő parancsokat betűtípus.
+Annak érdekében, hogy **exportálása** a Cloud Shell menti, például a felhasználói beállítások előnyben részesített felület, betűméret és betűtípus, futtassa a következő parancsokat.
 
-1. Indítsa el a felhő rendszerhéj Bash
+1. Indítsa el a Cloud Shell Bash
 2. Futtassa az alábbi parancsot:
 ```
 user@Azure:~$ token="Bearer $(curl http://localhost:50342/oauth2/token --data "resource=https://management.azure.com/" -H Metadata:true -s | jq -r ".access_token")"
@@ -160,11 +158,11 @@ user@Azure:~$ curl https://management.azure.com/providers/Microsoft.Portal/users
 ```
 
 ### <a name="delete"></a>Törlés
-Annak érdekében, hogy **törlése** a felhő rendszerhéj menti, például a felhasználói beállítások előnyben részesített rendszerhéj, betűméret és a következő parancsokat betűtípus. A felhő rendszerhéj következő indításakor fogja kérni bevezetésében fájlmegosztás újra. 
+Annak érdekében, hogy **törlése** a Cloud Shell menti, például a felhasználói beállítások előnyben részesített felület, betűméret és betűtípus, futtassa a következő parancsokat. A Cloud Shell következő indításakor kell adnia a munkába egy fájlmegosztás újra. 
 
-A tényleges Azure fájlok megosztás nem törlődik, ha törli a felhasználói beállításokat, nyissa meg az Azure Fileshoz, hogy a művelet elvégzéséhez.
+A tényleges Azure Files megosztási nem törlődnek, ha törli a felhasználói beállításokat, nyissa meg az Azure Files a művelet végrehajtásához.
 
-1. Indítsa el a felhő rendszerhéj Bash
+1. Indítsa el a Cloud Shell Bash
 2. Futtassa az alábbi parancsot:
 ```
 user@Azure:~$ token="Bearer $(curl http://localhost:50342/oauth2/token --data "resource=https://management.azure.com/" -H Metadata:true -s | jq -r ".access_token")"

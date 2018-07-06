@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: Azure Active Directoryval integrált Intralinks |} Microsoft Docs'
-description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés Azure Active Directory és Intralinks között.
+title: 'Oktatóanyag: Azure Active Directory-integráció az Intralinks |} A Microsoft Docs'
+description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés az Azure Active Directory és Intralinks között.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,110 +14,110 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/23/2017
 ms.author: jeedes
-ms.openlocfilehash: 613c1a0c9998d79961202beae4d7820bdaaf8c93
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: fbe3ceb3d26de90bd46ee02263d09c822ee90c29
+ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36227540"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37868847"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-intralinks"></a>Oktatóanyag: Azure Active Directoryval integrált Intralinks
+# <a name="tutorial-azure-active-directory-integration-with-intralinks"></a>Oktatóanyag: Azure Active Directory-integráció az Intralinks
 
-Ebben az oktatóanyagban elsajátíthatja Intralinks integrálása az Azure Active Directory (Azure AD).
+Ebben az oktatóanyagban elsajátíthatja, hogyan Intralinks integrálása az Azure Active Directory (Azure AD).
 
-Intralinks integrálása az Azure AD lehetővé teszi a következő előnyöket biztosítja:
+Intralinks integrálása az Azure ad-ben nyújt a következő előnyökkel jár:
 
-- Megadhatja a Intralinks hozzáféréssel rendelkező Azure AD-ben
-- Engedélyezheti a felhasználóknak, hogy automatikusan beolvasása bejelentkezett Intralinks (egyszeri bejelentkezés) számára a saját Azure AD-fiókok
-- Kezelheti a fiókokat, egy központi helyen – az Azure-portálon
+- Szabályozhatja, hogy ki férhet hozzá Intralinks Azure AD-ben
+- Engedélyezheti a felhasználóknak, hogy automatikusan első bejelentkezett Intralinks (egyszeri bejelentkezés) az Azure AD-fiókjukkal
+- Kezelheti a fiókokat, egyetlen központi helyen – az Azure Portalon
 
-Ha meg szeretné ismerni az Azure AD SaaS integrálásáról további adatait, tekintse meg [alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](../manage-apps/what-is-single-sign-on.md).
+Ha meg szeretné ismerni a SaaS-alkalmazás integráció az Azure ad-vel kapcsolatos további részletekért, lásd: [Mi az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](../manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Konfigurálása az Azure AD-integrációs Intralinks, a következőkre van szükség:
+Intralinks az Azure AD-integráció konfigurálásához a következőkre van szükség:
 
-- Az Azure AD szolgáltatásra
+- Az Azure AD-előfizetéshez
 - Egy Intralinks egyszeri bejelentkezés engedélyezve van az előfizetés
 
 > [!NOTE]
-> Ez az oktatóanyag lépéseit teszteléséhez nem ajánlott használata termelési környezetben.
+> Ebben az oktatóanyagban a lépéseket teszteléséhez nem ajánlott éles környezetben használja.
 
 Ebben az oktatóanyagban a lépéseket teszteléséhez kövesse ezeket a javaslatokat:
 
-- Ne használja az éles környezetben, nem szükséges.
-- Ha még nem rendelkezik az Azure AD próbaverziójának környezetben, egy hónapos próbaverzió kaphat [Itt](https://azure.microsoft.com/pricing/free-trial/).
+- Ne használja az éles környezetben, csak szükség esetén.
+- Ha nem rendelkezik egy Azure ad-ben a próbakörnyezet, beszerezheti a egy egy havi próbalehetőség [Itt](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
-Ebben az oktatóanyagban tesztelése az Azure AD egyszeri bejelentkezéshez egy tesztkörnyezetben. Ebben az oktatóanyagban leírt forgatókönyv két fő építőelemeket áll:
+Ebben az oktatóanyagban tesztelni az Azure AD egyszeri bejelentkezés egy tesztkörnyezetben. Az ebben az oktatóanyagban ismertetett forgatókönyvben két fő építőelemeket áll:
 
-1. A gyűjteményből Intralinks hozzáadása
-2. És tesztelés az Azure AD konfigurálása egyszeri bejelentkezés
+1. Intralinks hozzáadása a katalógusból
+2. Konfigurálás és tesztelés az Azure AD egyszeri bejelentkezés
 
-## <a name="adding-intralinks-from-the-gallery"></a>A gyűjteményből Intralinks hozzáadása
-Az Azure AD integrálása a Intralinks konfigurálásához kell hozzáadnia Intralinks a gyűjteményből a felügyelt SaaS-alkalmazások listájára.
+## <a name="adding-intralinks-from-the-gallery"></a>Intralinks hozzáadása a katalógusból
+Az Azure AD integrálása a Intralinks konfigurálásához hozzá kell Intralinks a katalógusból a felügyelt SaaS-alkalmazások listájára.
 
-**A gyűjteményből Intralinks hozzáadásához hajtsa végre az alábbi lépéseket:**
+**Intralinks hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a  **[Azure-portálon](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen **Azure Active Directory** ikonra. 
+1. Az a  **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra. 
 
-    ![Az Active Directory][1]
+    ![Active Directory][1]
 
-2. Navigáljon a **vállalati alkalmazások**. Ezután lépjen **összes alkalmazás**.
+2. Navigáljon a **vállalati alkalmazások**. Ezután lépjen a **minden alkalmazás**.
 
     ![Alkalmazások][2]
     
-3. Új alkalmazás hozzáadásához kattintson **új alkalmazás** párbeszédpanel tetején gombra.
+3. Új alkalmazás hozzáadásához kattintson **új alkalmazás** gombra a párbeszédpanel tetején.
 
     ![Alkalmazások][3]
 
-4. Írja be a keresőmezőbe, **Intralinks**.
+4. A Keresés mezőbe írja be a **Intralinks**.
 
-    ![Az Azure AD tesztfelhasználó létrehozása](./media/intralinks-tutorial/tutorial_intralinks_search.png)
+    ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/intralinks-tutorial/tutorial_intralinks_search.png)
 
 5. Az eredmények panelen válassza ki a **Intralinks**, és kattintson a **Hozzáadás** gombra kattintva vegye fel az alkalmazást.
 
-    ![Az Azure AD tesztfelhasználó létrehozása](./media/intralinks-tutorial/tutorial_intralinks_addfromgallery.png)
+    ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/intralinks-tutorial/tutorial_intralinks_addfromgallery.png)
 
-##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>És tesztelés az Azure AD konfigurálása egyszeri bejelentkezés
-Ebben a szakaszban, konfigurálás és tesztelés az Azure AD egyszeri bejelentkezéshez "Britta Simon" nevű tesztfelhasználó alapján Intralinks.
+##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Konfigurálás és tesztelés az Azure AD egyszeri bejelentkezés
+Ebben a szakaszban, konfigurálás és tesztelés az Azure AD egyszeri bejelentkezés Intralinks a teszt "Britta Simon" nevű felhasználó.
 
-Az egyszeri bejelentkezés működéséhez az Azure AD meg kell tudja, hogy mi a párjukhoz felhasználó Intralinks a felhasználó Azure AD-ben. Ez azt jelenti az Azure AD-felhasználó és a kapcsolódó felhasználó a Intralinks közötti kapcsolat kapcsolatot kell létrehozni.
+Egyszeri bejelentkezés működjön, az Azure ad-ben tudnia kell, a partner felhasználó Intralinks mi egy felhasználó számára az Azure ad-ben. Más szóval egy Azure AD-felhasználót és a kapcsolódó felhasználó Intralinks hivatkozás kapcsolata kell létrehozni.
 
-Intralinks, rendelje hozzá a értékének a **felhasználónév** értékeként Azure AD-ben a **felhasználónév** a hivatkozás kapcsolat létrehozására.
+Intralinks, rendelje hozzá az értékét a **felhasználónév** értékeként az Azure AD-ben a **felhasználónév** a hivatkozás kapcsolat létrehozására.
 
-Az Azure AD egyszeri bejelentkezést a Intralinks tesztelése és konfigurálása, hogy végezze el a következő építőelemeket kell:
+Az Azure AD egyszeri bejelentkezés az Intralinks tesztelése és konfigurálása, hogy hajtsa végre a következő építőelemeit kell:
 
-1. **[Az Azure AD az egyszeri bejelentkezés konfigurálása](#configuring-azure-ad-single-sign-on)**  – lehetővé teszi a felhasználók a szolgáltatás használatához.
-2. **[Az Azure AD tesztfelhasználó létrehozása](#creating-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezést a Britta Simon teszteléséhez.
-3. **[Egy Intralinks tesztfelhasználó létrehozása](#creating-an-intralinks-test-user)**  - való Britta Simon valami Intralinks, amely csatolva van a felhasználó az Azure AD-ábrázolását.
-4. **[Az Azure AD-teszt felhasználó hozzárendelése](#assigning-the-azure-ad-test-user)**  - Britta Simon használata az Azure AD az egyszeri bejelentkezés engedélyezése.
+1. **[Az Azure AD egyszeri bejelentkezés konfigurálása](#configuring-azure-ad-single-sign-on)**  – ahhoz, hogy ez a funkció használatát a felhasználók számára.
+2. **[Az Azure ad-ben tesztfelhasználó létrehozása](#creating-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezés az Britta Simon teszteléséhez.
+3. **[Egy Intralinks tesztfelhasználó létrehozása](#creating-an-intralinks-test-user)**  – egy megfelelője a Britta Simon Intralinks, amely a felhasználó Azure ad-ben ábrázolása van csatolva van.
+4. **[Az Azure ad-ben tesztfelhasználó hozzárendelése](#assigning-the-azure-ad-test-user)**  – Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
 5. **[Egyszeri bejelentkezés tesztelése](#testing-single-sign-on)**  – győződjön meg arról, hogy működik-e a konfiguráció.
 
-### <a name="configuring-azure-ad-single-sign-on"></a>Az Azure AD az egyszeri bejelentkezés konfigurálása
+### <a name="configuring-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása
 
-Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure portálon, és konfigurálása egyszeri bejelentkezéshez az Intralinks alkalmazásban.
+Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Portalon, és Intralinks alkalmazását az egyszeri bejelentkezés konfigurálása.
 
-**Konfigurálása az Azure AD az egyszeri bejelentkezés Intralinks, hajtsa végre az alábbi lépéseket:**
+**Szeretné konfigurálni az Azure AD egyszeri bejelentkezés Intralinks, hajtsa végre az alábbi lépéseket:**
 
-1. Az Azure portálon a a **Intralinks** alkalmazás integráció lapján, kattintson a **egyszeri bejelentkezés**.
+1. Az Azure Portalon az a **Intralinks** alkalmazás integrációs oldalán kattintson a **egyszeri bejelentkezési**.
 
     ![Egyszeri bejelentkezés konfigurálása][4]
 
-2. Az a **egyszeri bejelentkezés** párbeszédablakban válassza **mód** , **SAML-alapú bejelentkezés** egyszeri bejelentkezés engedélyezése.
+2. Az a **egyszeri bejelentkezési** párbeszédablakban válassza **mód** , **SAML-alapú bejelentkezés** egyszeri bejelentkezés engedélyezéséhez.
  
     ![Egyszeri bejelentkezés konfigurálása](./media/intralinks-tutorial/tutorial_intralinks_samlbase.png)
 
-3. Az a **Intralinks tartomány és az URL-címek** területen tegye a következőket:
+3. Az a **Intralinks tartomány és URL-címek** szakaszban, hajtsa végre az alábbi lépéseket:
 
     ![Egyszeri bejelentkezés konfigurálása](./media/intralinks-tutorial/tutorial_intralinks_url.png)
 
-    Az a **bejelentkezési URL-cím** szövegmező, adja meg a következő minta használatával URL-címe:  `https://<company name>.Intralinks.com/?PartnerIdpId=https://sts.windows.net/<AzureADTenantID>`
+    Az a **bejelentkezési URL-** szövegmezőbe írja be a következő minta használatával URL-címe:  `https://<company name>.Intralinks.com/?PartnerIdpId=https://sts.windows.net/<AzureADTenantID>`
 
     > [!NOTE] 
-    > Ez az érték nincs valós. Frissítse ezt az értéket a tényleges bejelentkezési URL-címet. Ügyfél [Intralinks ügyfél-támogatási csoport](https://www.intralinks.com/contact-1) lekérni ezt az értéket. 
+    > Az érték nem valódi. Ez az érték frissítse a tényleges bejelentkezési URL-CÍMÉT. Kapcsolattartó [Intralinks ügyfél-támogatási csapatának](https://www.intralinks.com/contact-1) lekérni ezt az értéket. 
  
-4. Az a **SAML-aláíró tanúsítványa** területen kattintson **metaadatainak XML-kódja** és mentse a metaadat-fájlt a számítógépen.
+4. Az a **SAML-aláíró tanúsítvány** területén kattintson **metaadatainak XML** , és mentse a metaadat-fájlt a számítógépen.
 
     ![Egyszeri bejelentkezés konfigurálása](./media/intralinks-tutorial/tutorial_intralinks_certificate.png) 
 
@@ -125,123 +125,123 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
 
     ![Egyszeri bejelentkezés konfigurálása](./media/intralinks-tutorial/tutorial_general_400.png)
 
-6. Egyszeri bejelentkezés konfigurálása **Intralinks** oldalon kell küldeniük a letöltött **metaadatainak XML-kódja** [Intralinks támogatási csoport](https://www.intralinks.com/contact-1). Akkor állítsa be ezt a beállítást, hogy a SAML SSO kapcsolat mindkét oldalán megfelelően beállítva.
+6. Az egyszeri bejelentkezés konfigurálása **Intralinks** oldalon kell küldenie a letöltött **metaadatainak XML** [Intralinks támogatási csoportjának](https://www.intralinks.com/contact-1). Akkor állítsa ezt a beállítást, hogy a SAML SSO-kapcsolat megfelelően állítsa be mindkét oldalon.
 
 > [!TIP]
-> Ezek az utasítások belül tömör verziója most el tudja olvasni a [Azure-portálon](https://portal.azure.com), míg az alkalmazás beállításakor!  Ez az alkalmazás a hozzáadása után a **Active Directory > Vállalati alkalmazások** egyszerűen kattintson a **egyszeri bejelentkezés** lapra, és a beágyazott dokumentációja keresztül a **konfigurációs** szakasz alján. További Itt a embedded dokumentációjából szolgáltatásról: [az Azure AD beágyazott dokumentáció]( https://go.microsoft.com/fwlink/?linkid=845985)
+> Ezek az utasítások belül tömör verziója elolvashatja a [az Azure portal](https://portal.azure.com), míg a állítja be az alkalmazás!  Ez az alkalmazás hozzáadása után a **Active Directory > Vállalati alkalmazások** egyszerűen kattintson a **egyszeri bejelentkezés** lapra, és a beágyazott dokumentáció eléréséhez a  **Konfigurációs** alul található szakaszában. Tudjon meg többet a beágyazott dokumentáció szolgáltatásról ide: [Azure ad-ben embedded – dokumentáció]( https://go.microsoft.com/fwlink/?linkid=845985)
 
-### <a name="creating-an-azure-ad-test-user"></a>Az Azure AD tesztfelhasználó létrehozása
-Ez a szakasz célja a tesztfelhasználó létrehozása az Azure portálon Britta Simon nevezik.
+### <a name="creating-an-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó létrehozása
+Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy tesztfelhasználót.
 
 ![Az Azure AD-felhasználó létrehozása][100]
 
 **Tesztfelhasználó létrehozása az Azure AD-ban, hajtsa végre az alábbi lépéseket:**
 
-1. Az a **Azure-portálon**, a bal oldali navigációs ablaktábláján kattintson **Azure Active Directory** ikonra.
+1. Az a **az Azure portal**, a bal oldali navigációs panelén kattintson **Azure Active Directory** ikonra.
 
-    ![Az Azure AD tesztfelhasználó létrehozása](./media/intralinks-tutorial/create_aaduser_01.png) 
+    ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/intralinks-tutorial/create_aaduser_01.png) 
 
-2. Azon felhasználók listájának megtekintéséhez keresse fel **felhasználók és csoportok** kattintson **minden felhasználó**.
+2. A felhasználók listájának megjelenítéséhez, lépjen a **felhasználók és csoportok** kattintson **minden felhasználó**.
     
-    ![Az Azure AD tesztfelhasználó létrehozása](./media/intralinks-tutorial/create_aaduser_02.png) 
+    ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/intralinks-tutorial/create_aaduser_02.png) 
 
-3. Lehetőségre a **felhasználói** párbeszédpanel, kattintson a **Hozzáadás** párbeszédpanel tetején.
+3. Megnyitásához a **felhasználói** párbeszédpanelen kattintson a **Hozzáadás** a párbeszédpanel tetején.
  
-    ![Az Azure AD tesztfelhasználó létrehozása](./media/intralinks-tutorial/create_aaduser_03.png) 
+    ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/intralinks-tutorial/create_aaduser_03.png) 
 
 4. Az a **felhasználói** párbeszédpanel lapon, a következő lépésekkel:
  
-    ![Az Azure AD tesztfelhasználó létrehozása](./media/intralinks-tutorial/create_aaduser_04.png) 
+    ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/intralinks-tutorial/create_aaduser_04.png) 
 
-    a. Az a **neve** szövegmezőhöz típus **BrittaSimon**.
+    a. Az a **neve** szövegmezőbe írja be **BrittaSimon**.
 
-    b. Az a **felhasználónév** szövegmezőhöz típusa a **e-mail cím** a BrittaSimon.
+    b. Az a **felhasználónév** szövegmezőbe írja be a **e-mail-cím** BrittaSimon az.
 
-    c. Válassza ki **megjelenítése jelszó** írja le a értékének a **jelszó**.
+    c. Válassza ki **jelszó megjelenítése** és jegyezze fel az értékét a **jelszó**.
 
     d. Kattintson a **Create** (Létrehozás) gombra.
  
 ### <a name="creating-an-intralinks-test-user"></a>Egy Intralinks tesztfelhasználó létrehozása
 
-Ebben a szakaszban egy Intralinks Britta Simon nevű felhasználót hoz létre. Adjon együttműködve [Intralinks támogatási csoport](https://www.intralinks.com/contact-1) a felhasználók hozzáadása a Intralinks platform.
+Ebben a szakaszban egy felhasználói Britta Simon nevű Intralinks hoz létre. Együttműködve [Intralinks támogatási csoportjának](https://www.intralinks.com/contact-1) a felhasználók hozzáadása az Intralinks platformon.
 
-### <a name="assigning-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználó hozzárendelése
+### <a name="assigning-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
 
-Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés Intralinks Azure egyszeri bejelentkezéshez használandó.
+Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés Intralinks Azure egyszeri bejelentkezés használatára.
 
 ![Felhasználó hozzárendelése][200] 
 
-**Britta Simon hozzárendelése Intralinks, hajtsa végre az alábbi lépéseket:**
+**Britta Simon rendel Intralinks, hajtsa végre az alábbi lépéseket:**
 
-1. Az Azure-portálon, nyissa meg az alkalmazások nézet, majd nyissa meg a könyvtár nézetet, és navigáljon **vállalati alkalmazások** kattintson **összes alkalmazás**.
+1. Az Azure Portalon nyissa meg az alkalmazások megtekintése, és a könyvtár nézetben keresse meg és nyissa meg **vállalati alkalmazások** kattintson **minden alkalmazás**.
 
     ![Felhasználó hozzárendelése][201] 
 
-2. Az alkalmazások listában válassza ki a **Intralinks**.
+2. Az alkalmazások listájában jelölje ki a **Intralinks**.
 
     ![Egyszeri bejelentkezés konfigurálása](./media/intralinks-tutorial/tutorial_intralinks_app.png) 
 
-3. A bal oldali menüben kattintson a **felhasználók és csoportok**.
+3. A bal oldali menüben kattintson **felhasználók és csoportok**.
 
     ![Felhasználó hozzárendelése][202] 
 
-4. Kattintson a **Hozzáadás** gombra. Válassza ki **felhasználók és csoportok** a **hozzáadása hozzárendelés** párbeszédpanel.
+4. Kattintson a **Hozzáadás** gombra. Válassza ki **felhasználók és csoportok** a **hozzárendelés hozzáadása** párbeszédpanel.
 
     ![Felhasználó hozzárendelése][203]
 
 5. A **felhasználók és csoportok** párbeszédablakban válassza **Britta Simon** a felhasználók listában.
 
-6. Kattintson a **válasszon** gombra **felhasználók és csoportok** párbeszédpanel.
+6. Kattintson a **kiválasztása** gombot **felhasználók és csoportok** párbeszédpanel.
 
-7. Kattintson a **hozzárendelése** gombra **hozzáadása hozzárendelés** párbeszédpanel.
+7. Kattintson a **hozzárendelése** gombot **hozzárendelés hozzáadása** párbeszédpanel.
 
-### <a name="add-intralinks-via-or-elite-application"></a>Intralinks keresztül vagy a Elite alkalmazás hozzáadása
+### <a name="add-intralinks-via-or-elite-application"></a>Intralinks keresztül vagy Elite alkalmazás hozzáadása
 
-Intralinks összes alkalmazáshoz más Intralinks üzlet Nexus alkalmazás kivételével azonos egyszeri bejelentkezési identitás platformot használ. Ezért ha egyetlen más Intralinks alkalmazáshoz használni kívánt majd először létre kell egyszeri bejelentkezés konfigurálása egy elsődleges Intralinks alkalmazáshoz a fent leírt eljárás segítségével.
+Intralinks kivéve ügylet Nexus alkalmazás Intralinks alkalmazására azonos SSO identity platformot használ. Így ha tervezi használni minden olyan Intralinks alkalmazást majd először kell egy elsődleges Intralinks alkalmazáshoz a fent ismertetett eljárással egyszeri bejelentkezés konfigurálása.
 
-Ezután kövesse az alábbi eljárás egy másik Intralinks alkalmazás hozzáadása az Ön bérlőjében, amelyek kihasználhatják az egyszeri bejelentkezés az elsődleges alkalmazás. 
+Ezt követően, kövesse az alábbi eljárást követve egy másik Intralinks alkalmazás hozzáadása a bérlőben, amelyek kihasználhatják az elsődleges alkalmazás egyszeri bejelentkezéshez. 
 
 >[!NOTE]
->Ez a funkció csak az Azure AD Premium Termékváltozat használó ügyfelek számára elérhető és nem érhető el az ingyenes vagy alapszintű Termékváltozat ügyfelek.
+>Ez a funkció csak az Azure AD Premium SKU-ügyfelek számára érhető el, és nem érhető el az ingyenes vagy alapszintű Termékváltozat ügyfelek.
 
-1. Az a  **[Azure-portálon](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen **Azure Active Directory** ikonra. 
+1. Az a  **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra. 
 
     ![Active Directory][1]
 
 
-2. Navigáljon a **vállalati alkalmazások**. Ezután lépjen **összes alkalmazás**.
+2. Navigáljon a **vállalati alkalmazások**. Ezután lépjen a **minden alkalmazás**.
 
     ![Alkalmazások][2]
     
-3. Új alkalmazás hozzáadásához kattintson **új alkalmazás** párbeszédpanel tetején gombra.
+3. Új alkalmazás hozzáadásához kattintson **új alkalmazás** gombra a párbeszédpanel tetején.
 
     ![Alkalmazások][3]
 
-4. Írja be a keresőmezőbe, **Intralinks**.
+4. A Keresés mezőbe írja be a **Intralinks**.
 
-    ![Az Azure AD tesztfelhasználó létrehozása](./media/intralinks-tutorial/tutorial_intralinks_search.png)
+    ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/intralinks-tutorial/tutorial_intralinks_search.png)
 
-5. A **alkalmazás Intralinks hozzáadása** hajtsa végre a következő lépéseket:
+5. A **alkalmazás Intralinks hozzáadása** hajtsa végre az alábbi lépéseket:
 
-    ![Intralinks keresztül vagy a Elite alkalmazás hozzáadása](./media/intralinks-tutorial/tutorial_intralinks_addapp.png)
+    ![Intralinks keresztül vagy Elite alkalmazás hozzáadása](./media/intralinks-tutorial/tutorial_intralinks_addapp.png)
 
-    a. A **neve** szövegmező, írja be például az alkalmazás megfelelő neve **Intralinks Elite**.
+    a. A **neve** szövegmezőbe írja be a megfelelő az alkalmazás neve, pl. **Intralinks Elite**.
 
     b. Kattintson a **Hozzáadás** gombra.
 
-6.  Az Azure portálon a a **Intralinks** alkalmazás integráció lapján, kattintson a **egyszeri bejelentkezés**.
+6.  Az Azure Portalon az a **Intralinks** alkalmazás integrációs oldalán kattintson a **egyszeri bejelentkezési**.
 
     ![Egyszeri bejelentkezés konfigurálása][4]
 
-7. Az a **egyszeri bejelentkezés** párbeszédablakban válassza **mód** , **társított bejelentkezés**.
+7. Az a **egyszeri bejelentkezési** párbeszédablakban válassza **mód** , **csatolt bejelentkezés**.
  
     ![Egyszeri bejelentkezés konfigurálása](./media/intralinks-tutorial/tutorial_intralinks_linkedsignon.png)
 
-8. Beolvasása a SP által kezdeményezett egyszeri bejelentkezési URL-CÍMÉT a [Intralinks team](https://www.intralinks.com/contact-1) más Intralinks alkalmazásához, és adja meg a **konfigurálása bejelentkezési URL-cím** alább látható módon. 
+8. Az SP által kezdeményezett egyszeri bejelentkezési URL-címet első [Intralinks csapat](https://www.intralinks.com/contact-1) a másik Intralinks alkalmazás írja be a **bejelentkezési URL-cím konfigurálása** alább látható módon. 
     
      ![Egyszeri bejelentkezés konfigurálása](./media/intralinks-tutorial/tutorial_intralinks_customappurl.png)
     
-     Az URL-cím bejelentkezési szövegmezőben írja be való bejelentkezéshez az Intralinks alkalmazáshoz a következő minta használatával a felhasználók által használt URL-cím:
+     A bejelentkezési az URL-címe szövegmezőbe írja be a bejelentkezéshez, a következő minta használatával Intralinks alkalmazását a felhasználók által használt URL-cím:
    
     `https://<company name>.Intralinks.com/?PartnerIdpId=https://sts.windows.net/<AzureADTenantID>`
 
@@ -249,19 +249,19 @@ Ezután kövesse az alábbi eljárás egy másik Intralinks alkalmazás hozzáad
 
     ![Egyszeri bejelentkezés konfigurálása](./media/intralinks-tutorial/tutorial_general_400.png)
 
-10. Rendelje hozzá az alkalmazás a felhasználók vagy csoportok, ahogy az a szakasz  **[hozzárendelése az Azure AD-teszt felhasználó](#assigning-the-azure-ad-test-user)**.
+10. Az alkalmazás felhasználókhoz vagy csoportokhoz hozzárendelni, ahogyan az a szakasz  **[hozzárendelése az Azure ad-ben tesztfelhasználó](#assigning-the-azure-ad-test-user)**.
 
 ### <a name="testing-single-sign-on"></a>Egyszeri bejelentkezés tesztelése
 
-Ebben a szakaszban az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen tesztelése.
+Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 
-Ha a hozzáférési panelen Intralinks csempére kattint, akkor kell beolvasása automatikusan bejelentkezett az Intralinks alkalmazására.
-A hozzáférési Panel kapcsolatos további információkért lásd: [a hozzáférési Panel bemutatása](../active-directory-saas-access-panel-introduction.md).
+Ha a hozzáférési panelen a Intralinks csempére kattint, meg kell lekérése automatikusan bejelentkezett az Intralinks alkalmazáshoz.
+A hozzáférési panelen kapcsolatos további információkért lásd: [Bevezetés a hozzáférési Panel használatába](../active-directory-saas-access-panel-introduction.md).
 
 ## <a name="additional-resources"></a>További források
 
-* [Az Azure Active Directoryval SaaS-alkalmazások integrációjával kapcsolatos bemutatók felsorolása](tutorial-list.md)
-* [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryban?](../manage-apps/what-is-single-sign-on.md)
+* [SaaS-alkalmazások integrálása az Azure Active Directory foglalkozó oktatóanyagok listája](tutorial-list.md)
+* [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
 
 
 <!--Image references-->

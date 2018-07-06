@@ -1,6 +1,6 @@
 ---
-title: Hang-és SMS (Ruby) Twilio használata |} Microsoft Docs
-description: Útmutató a telefonhívás, és a Twilio API szolgáltatás SMS üzenet küldése az Azure-on. Kódminták Ruby.
+title: A Twilio használata Hanghívási és SMS (Ruby) hogyan |} A Microsoft Docs
+description: Útmutató a telefonhívás, és a Twilio API-szolgáltatással egy SMS-üzenet küldése az Azure-ban. Ruby nyelven írt kódmintákat.
 services: ''
 documentationcenter: ruby
 author: devinrader
@@ -14,81 +14,81 @@ ms.devlang: ruby
 ms.topic: article
 ms.date: 11/25/2014
 ms.author: MicrosoftHelp@twilio.com
-ms.openlocfilehash: 69e50e7fe0e1f302e96c309878b8dea6869dff4a
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 14cfb50241c66fa2bc6a91a6cc2b4fcdef879549
+ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23866078"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37865365"
 ---
-# <a name="how-to-use-twilio-for-voice-and-sms-capabilities-in-ruby"></a>Hang-és SMS képességei Ruby Twilio használata
-Ez az útmutató bemutatja, hogyan Azure a Twilio API szolgáltatás közös programozási feladatok elvégzéséhez. A tárgyalt forgatókönyvekben szerepel, így a telefonhívás, és egy rövid üzenetet szolgáltatás (SMS) üzenet küldésekor. A Twilio- és hang- és SMS használata az alkalmazások további információkért lásd: a [lépések](#NextSteps) szakasz.
+# <a name="how-to-use-twilio-for-voice-and-sms-capabilities-in-ruby"></a>Hogyan lehet a Twilio használata Hanghívási és SMS-funkciókhoz Ruby nyelven
+Ez az útmutató bemutatja, hogyan hajthat végre gyakori programozási feladatokat, a Twilio API-t szolgáltatással az Azure-ban. Az ismertetett forgatókönyvek között megtalálható, így a telefonhívás, és a egy rövid üzenetet szolgáltatást (SMS) üzenetet küld. A Twilio és az alkalmazások használata hanghívási és SMS további információkért lásd: a [lépések](#NextSteps) szakaszban.
 
-## <a id="WhatIs"></a>Mi az, hogy a Twilio?
-Twilio egy telefonos webszolgáltatás API, amely lehetővé teszi, hogy a meglévő webes nyelv és képességeik felhasználásával hang- és SMS alkalmazások készítéséhez. Twilio egy olyan külső szolgáltatás (nem az Azure szolgáltatásai és nem Microsoft-termékek).
+## <a id="WhatIs"></a>Mit jelent a Twilio?
+A Twilio egy telefonos webszolgáltatás API-t, amely lehetővé teszi a meglévő webes nyelv és képességek használata hanghívási és SMS-alkalmazásokat hozhat létre. A Twilio egy külső szolgáltatás (nem az Azure szolgáltatásai és nem Microsoft-termékek).
 
-**Twilio hang** lehetővé teszi, hogy az alkalmazások és a telefonhívásokat fogadja. **Twilio SMS** lehetővé teszi, hogy az alkalmazások és az SMS-üzeneteket fogadni. **Twilio-ügyfél** lehetővé teszi, hogy a meglévő internetes kapcsolattal, többek között a mobil kapcsolatok hang kommunikáció engedélyezése az alkalmazások.
+**A twilio használata Hanghívási** lehetővé teszi, hogy telefonhívásokat fogadja, és az alkalmazások. **A Twilio SMS** lehetővé teszi, hogy az alkalmazások és az SMS-üzenetek fogadása. **A Twilio-ügyfél** lehetővé teszi az alkalmazások hangalapú kommunikációt folytatni a meglévő internetkapcsolatokon keresztül, beleértve a mobilhálózati kapcsolatokat engedélyezi.
 
-## <a id="Pricing"></a>Twilio árak és a különleges ajánlatokkal
-Információk a díjszabásról Twilio érhető el: [Twilio árképzési][twilio_pricing]. Az Azure-ügyfelek egy [a különleges ajánlat][special_offer]: 1000 szövegek szabad követel vagy bejövő perc 1000. Iratkozzon fel a szolgáltatásokat, vagy további információért látogasson el [http://ahoy.twilio.com/azure][special_offer].  
+## <a id="Pricing"></a>A Twilio-díjszabás és ajánlatok küldésére
+Információ a Twilio-díjszabás érhető el: [Twilio díjszabás][twilio_pricing]. Az Azure-ügyfelek kap egy [a különleges ajánlat][special_offer]: 1000 szövegek ingyenes kreditet, vagy bejövő perc 1000. Iratkozzon fel az ajánlatra, illetve további információért látogasson el [ http://ahoy.twilio.com/azure ] [ special_offer].  
 
-## <a id="Concepts"></a>Alapfogalmak
-A Twilio API egy RESTful API, hang- és SMS-funkciókat biztosít az alkalmazások számára. Ügyféloldali kódtáraknál érhetők el több nyelven is; az útmutató, [Twilio API függvénytárai][twilio_libraries].
+## <a id="Concepts"></a>Fogalmak
+A Twilio API egy RESTful API-t hanghívási és SMS-funkciókat biztosító alkalmazások. Ügyfélkódtárai több nyelven érhetők el egy listát lásd: [Twilio API függvénytárai][twilio_libraries].
 
 ### <a id="TwiML"></a>TwiML
-TwiML olyan XML-alapú utasításokat, amelyek tájékoztatják a Twilio hogyan lehet feldolgozni a hívást vagy SMS készlete.
+TwiML XML-alapú utasítások, amely tájékoztatja a hívás feldolgozása Twilio vagy SMS.
 
-Tegyük fel, a következő TwiML a szöveg volna átalakítása **Hello World** beszéddé.
+Tegyük fel, a következő TwiML konvertálná szöveg **Hello World** át.
 
     <?xml version="1.0" encoding="UTF-8" ?>
     <Response>
        <Say>Hello World</Say>
     </Response>
 
-Minden TwiML dokumentum rendelkezik `<Response>` , mint a legfelső szintű elem. Ott segítségével Twilio-műveletek az alkalmazás viselkedésének meghatározása.
+Az összes TwiML dokumentumok rendelkeznek `<Response>` , azok gyökérelem. Itt használatával a Twilio-műveletek az alkalmazás viselkedésének megadása.
 
 ### <a id="Verbs"></a>TwiML műveletek
-Twilio-műveletek a következők: XML-címkék, hogy a Twilio arról, mit kell **tegye**. Például a  **&lt;szóbeli&gt;**  parancs utasítja a Twilio hallhatóan hívás az üzenet kézbesítését. 
+A Twilio-műveletek XML-címkéket, hogy mit kell tudniuk Twilio **tegye**. Ha például a **&lt;Say&gt;** művelet arra utasítja a Twilio hallhatóan kézbesíteni az üzenetet hívás. 
 
-A Twilio-műveletek listáját a következő:
+Az alábbiakban látható egy Twilio-műveletek listájához.
 
-* **&lt;Telefonos kapcsolat&gt;**: a hívó kapcsolódik egy másik telefonon.
-* **&lt;Gyűjtsön&gt;**: adta meg a telefon billentyűzetén számjegyek gyűjti.
-* **&lt;Vonalbontás&gt;**: hívás véget ér.
-* **&lt;Lejátszási&gt;**: hangfájl lejátszása.
-* **&lt;Felfüggesztés&gt;**: Csendes megvárja-e a megadott számú másodpercnél tovább.
-* **&lt;Rekord&gt;**: a hívó hang rögzíti, és a felvétel tartalmazó fájl URL-címet adja vissza.
-* **&lt;Átirányítási&gt;**: hívás vagy SMS irányítását átviszi a TwiML egy másik URL-címen.
-* **&lt;Elutasítása&gt;**: a Twilio-szám egy bejövő hívás elutasítása a nélkül, számlázási
-* **&lt;Tegyük fel például&gt;**: konvertálja szöveg-beszéd átalakítás hívás készült.
+* **&lt;Tárcsázás&gt;**: a hívó kapcsolódik egy másik telefonszámot.
+* **&lt;Gyűjtse össze&gt;**: összegyűjti a telefon billentyűzeten beírt számjegyeket.
+* **&lt;Vonalbontás&gt;**: ér véget a hívást.
+* **&lt;Play&gt;**: fájlból játszik le egy hangfájlt.
+* **&lt;Felfüggesztés&gt;**: Csendes megvárja a megadott számú másodperc.
+* **&lt;Rekord&gt;**: a hívó hangalapú rögzíti, és a felvétel tartalmazó fájl URL-címet adja vissza.
+* **&lt;Átirányítási&gt;**: átadja a vezérlést a hívást vagy SMS a TwiML egy másik URL-címen.
+* **&lt;Elutasítás&gt;**: a Twilio-számra egy bejövő hívás elutasítása a számlázási, nélkül
+* **&lt;Tegyük fel, hogy&gt;**: alakíthatók át egymásba szöveg-beszéd átalakítás, amely a hívást.
 * **&lt;SMS&gt;**: SMS üzenetet küld.
 
-Twilio műveletek, az attribútumokat és TwiML kapcsolatos további információkért lásd: [TwiML][twiml]. A Twilio API-val kapcsolatos további információkért lásd: [Twilio API][twilio_api].
+A Twilio műveletek, az attribútumokat és TwiML kapcsolatos további információkért lásd: [TwiML][twiml]. A Twilio API-val kapcsolatos további információkért lásd: [Twilio API-t][twilio_api].
 
 ## <a id="CreateAccount"></a>Twilio-fiók létrehozása
-Amikor készen áll arra, hogy a Twilio-fiókot, feliratkozhat [próbálja Twilio][try_twilio]. Egy ingyenes fiókot kezdődnie, és később frissítse a fiókját.
+Amikor készen áll a Twilio-fiók létrehozása, regisztráció: [próbálja meg Twilio][try_twilio]. Kezdje egy ingyenes fiókot, és később frissítse a fiókját.
 
-Amikor regisztrál egy Twilio-fiókot, később is lesz egy ingyenes telefonszámot az alkalmazáshoz. Egy fiók SID azonosítója és egy hitelesítési jogkivonatot is kap. Is szükség lesz Twilio API-hívások indítása. Jogosulatlan hozzáférés elkerülése érdekében a fiókját, hogy a hitelesítési jogkivonat biztonságának megőrzése. A fiók SID azonosítója és a hitelesítési jogkivonat is látható, a [Twilio fióklapját][twilio_account], a mezőket, címkével **fiók SID** és **hitelesítési JOGKIVONAT**, kulcsattribútumokkal.
+Amikor regisztrál egy Twilio-fiók, az alkalmazás ingyenes telefonszám fog kapni. Egy fiók biztonsági azonosítója és a egy hitelesítési tokent is kap. Mindkét lesz szükség a Twilio API-hívásokat. Fiókja a jogosulatlan hozzáférés megakadályozása érdekében, hogy a hitelesítési jogkivonat biztonságának megőrzése. A fiók SID-je teljesítményobjektumok és -hitelesítési token, a [Twilio-fiók oldalán][twilio_account], a címkével ellátott mezőket **fiók SID** és **hitelesítési JOGKIVONATÁT**, jelölik.
 
-### <a id="VerifyPhoneNumbers"></a>Ellenőrizze a telefonszámok
-A szám kívül lehetősége van által Twilio, azt is ellenőrizheti, hogy legyen az alkalmazások által vezérelt (azaz a mobiltelefon vagy otthoni telefonszámot) számok. 
+### <a id="VerifyPhoneNumbers"></a>Telefonszám ellenőrzése
+A szám kívül, adja meg Twilio, azt is ellenőrizheti, hogy számok által vezérelt (azaz a mobiltelefonjára vagy otthoni telefonszámát) használható az alkalmazásokban. 
 
-Hogyan lehet ellenőrizni a telefonszám további információkért lásd: [kezelése számok][verify_phone].
+Telefonszám ellenőrzése a további információkért lásd: [számok kezelésére][verify_phone].
 
-## <a id="create_app"></a>Ruby-alkalmazás létrehozása
-Egy Ruby alkalmazás, amely a Twilio-szolgáltatás és az Azure-ban fut. ugyanolyan helyzetet teremt, mint bármely más Ruby használó alkalmazások a Twilio szolgáltatáshoz. Amíg Twilio-szolgáltatások RESTful, és a Ruby többféleképpen hívható, ez a cikk a Twilio-szolgáltatások használatával összpontosítanak [Twilio segítő kódtára a Rubyhoz][twilio_ruby].
+## <a id="create_app"></a>Ruby alkalmazás létrehozása
+Egy Ruby-alkalmazás, amely a Twilio szolgáltatás használja, és az Azure-ban fut-e semmiben nem különbözik bármely más Ruby-alkalmazás, amely a Twilio szolgáltatás használ. Bár a Twilio-szolgáltatások RESTful, és nem hívható meg a Ruby többféle módon, ez a cikk a Twilio-szolgáltatások használata összpontosítanak [Twilio segítő kódtára a Rubyhoz][twilio_ruby].
 
-Első, [beállításról egy új Azure Linux virtuális gép] [ azure_vm_setup] új Ruby webes alkalmazás állomás nevében járhasson el. Hagyja figyelmen kívül használata esetén egy sínek alkalmazáshoz, csak beállításról a virtuális gép létrehozásának lépéseit. Ellenőrizze, hogy egy külső port a 80-as és egy belső portjával 5000 hozzon létre egy végpontot.
+Először [beállítás egy új Azure Linux virtuális gép] [ azure_vm_setup] segítségével egy állomás új Ruby webalkalmazása számára. Hagyja figyelmen kívül használata esetén a Rails-alkalmazás, csak beállítás a virtuális gép létrehozásának lépéseit. Ellenőrizze, hogy egy külső port a 80-as és a egy belső port 5000-es egy végpontot hoz létre.
 
-Az alábbi példákban fogjuk használni [Sinatra][sinatra], egy nagyon egyszerű webes keretrendszer, a Ruby. De alapértékekkel használata a Twilio-segédkódtárba helyezni a Rubyhoz bármely más webes keretrendszer, többek között a Ruby sínen.
+Az alábbi példákban fogjuk használni [Sinatra][sinatra], egy nagyon egyszerű webes keretrendszer, a Ruby. Azonban természetesen használhat a Twilio segédkódtárba helyezni a Rubyhoz bármilyen más webes keretrendszer használatával, többek között a Ruby on Rails.
 
-SSH-ból az új virtuális gép, és hozzon létre egy könyvtárat, az új alkalmazás. Hozzon létre egy Gemfile nevű fájlt, és a következő kódot bemásolhatja belül könyvtárban:
+SSH-t az új virtuális gép és a egy könyvtárat, az új alkalmazás létrehozása. Belüli könyvtárban hozzon létre egy Gemfile nevű fájlt, és másolja az alábbi kódot a fájlba:
 
     source 'https://rubygems.org'
     gem 'sinatra'
     gem 'thin'
 
-A parancssorban futtassa `bundle install`. Ez telepíti az alábbi függőségeket. Ezután hozzon létre egy nevű fájlt `web.rb`. Ez lesz, ahol a kódot a webalkalmazás él. Az alábbi kód beillesztése azt:
+A parancssorban futtassa `bundle install`. Ez telepíti az alábbi függőségeket. Ezután hozzon létre egy fájlt, nevű `web.rb`. Ez lesz, ahol a webalkalmazás kódját él. Illessze be a következő kód azt:
 
     require 'sinatra'
 
@@ -96,21 +96,21 @@ A parancssorban futtassa `bundle install`. Ez telepíti az alábbi függőségek
         "Hello Monkey!"
     end
 
-Ekkor meg kell majd futtassa a parancsot `ruby web.rb -p 5000`. Ez fogja léptetéses-legfeljebb 5000-es port kis webkiszolgáló. Meg kell tudni keresse ki ezt az alkalmazást a böngészőben az URL-cím felkeresésével meg beállításról az Azure virtuális gép. A webalkalmazás a böngészőben érheti el, ha készen áll a Twilio-alkalmazások készítéséhez.
+Ezen a ponton kell látnia a futtassa a parancsot `ruby web.rb -p 5000`. Ez lesz léptetéses – legfeljebb 5000-es porton lévő kis webkiszolgáló. Böngészhet az alkalmazás a böngészőben az URL-cím felkeresésével, beállítás az Azure virtuális gép kell lennie. A webalkalmazást a böngészőben érheti el, ha készen áll a Twilio-alkalmazás elindításához.
 
-## <a id="configure_app"></a>Állítsa be az alkalmazását Twilio használata
-Beállíthatja, hogy a Twilio-könyvtár használata frissítésével a webalkalmazás a `Gemfile` ezt a sort tartalmazza:
+## <a id="configure_app"></a>A Twilio használata az alkalmazás konfigurálása
+A webalkalmazás a Twilio-könyvtár használata frissítésével konfigurálhatja a `Gemfile` tartalmazza ezt a sort:
 
     gem 'twilio-ruby'
 
-A parancssorban futtassa `bundle install`. Most nyissa meg a `web.rb` és a sor tetején, így:
+A parancssorban futtassa `bundle install`. Most nyissa meg a `web.rb` ezt a felső sort is beleértve:
 
     require 'twilio-ruby'
 
-Most már készen is szeretné használni a Twilio-segédkódtárba helyezni a Ruby a webes alkalmazást.
+Most már készen használható a Twilio segítő kódtára a Rubyhoz, a webalkalmazásban.
 
 ## <a id="howto_make_call"></a>Hogyan: végezhet
-A következő bemutatja, hogyan végezhet. Alapfogalmak közé tartozik a REST API-hívások indítása a Twilio segítő kódtára a Rubyhoz segítségével, és TwiML megjelenítése. Helyettesítse a saját értékeit a **a** és **való** telefonszámokat, és győződjön meg arról, hogy ellenőrizze a **a** telefonszám a Twilio-fiók a kód futtatása előtt.
+A következő bemutatja, hogyan végezhet. Fő fogalmak használatával a Twilio segítő kódtára a Rubyhoz a REST API-hívásokat, és a renderelési TwiML tartalmazza. Helyettesítse be a saját értékeit a **a** és **való** telefonszámai, és győződjön meg arról, hogy ellenőrizze a **a** telefonszám a Twilio-fiók, a kód futtatása előtt.
 
 Adja hozzá ezt a funkciót `web.md`:
 
@@ -118,7 +118,7 @@ Adja hozzá ezt a funkciót `web.md`:
     sid = "your_twilio_account_sid";
     token = "your_twilio_authentication_token";
 
-    # The number of the phone initiating the the call.
+    # The number of the phone initiating the call.
     # This should either be a Twilio number or a number that you've verified
     from = "NNNNNNNNNNN";
 
@@ -142,16 +142,16 @@ Adja hozzá ezt a funkciót `web.md`:
        </Response>"
     end
 
-Ha Ön nyílt felfelé `http://yourdomain.cloudapp.net/make_call` egy böngészőben, amely akkor indul el, a telefonhívás a Twilio API hívása. Az első két paraméterek `client.account.calls.create` magától értetődő viszonylag: száma a hívás nem `from` és szám a hívás nem `to`. 
+Ha Ön nyílt felfelé `http://yourdomain.cloudapp.net/make_call` egy böngészőben, amely elindítja a Twilio API-t, hogy a telefonhívás hívása. Az első két paraméterei `client.account.calls.create` magától értetődő viszonylag: a szám a hívás nem `from` és szám a hívás nem `to`. 
 
-A harmadik paraméter (`url`) az URL-cím, amelyet Twilio utasításokat hozzáférhet Mi a teendő, ha a csatlakozás igényel. Ebben az esetben azt URL-címet a telepítés (`http://yourdomain.cloudapp.net`), amely egy egyszerű TwiML dokumentumot ad vissza, és használja a `<Say>` hajtsa végre az egyes szöveg-beszéd átalakítás, és mondja ki a "Hello, Monkey" annak a személynek a hívás fogadása.
+A harmadik paraméter (`url`) Twilio kéri, hogy mi a teendő, ha van csatlakoztatva van a hívás útmutatást kaphat az URL-cím. Ebben az esetben mi egy URL-cím beállítása (`http://yourdomain.cloudapp.net`), amely egy egyszerű TwiML dokumentumot ad vissza, és használja a `<Say>` néhány szöveg-hang transzformációs és a hívási fogadó személy legyen például "Hello alfaja" művelet.
 
 ## <a id="howto_recieve_sms"></a>Útmutató: az SMS-üzenet fogadása
-Az előző példában a Microsoft által kezdeményezett egy **kimenő** telefonhívás. Ez alkalommal, most használja a telefonszámot, amelyet a Twilio megadott során regisztrációs folyamat egy **bejövő** SMS-üzenet.
+Az előző példában azt kezdeményezett egy **kimenő** telefonhívás. Ez alkalommal, használja a telefonszámot, amelyet a Twilio megadott során regisztrációs folyamatot egy **bejövő** SMS-üzenet.
 
-Első, jelentkezzen be a [Twilio-irányítópult][twilio_account]. Kattintson a "Numbers" a felső navigációs, és kattintson a Twilio számára lett megadva. Látni fogja, két URL-címeket, amelyeket konfigurálhat. Egy hang kérelem URL-CÍMÉT és az SMS kérelem URL-CÍMÉT. Ezek a Twilio meghívja a phone kezdeményezték, és az SMS a rendszer elküldi a használni kívánt URL-címek. Az URL-címek "webes hurkok" is nevezik.
+Először is, jelentkezzen be a [Twilio-irányítópult][twilio_account]. Kattintson a "Számok" a felső navigációs, és kattintson a a Twilio-szám van megadva. Látni fogja a két URL-címeket, amelyeket konfigurálhat. Egy hang-kérelem URL-CÍMÉT és a egy SMS kérelem URL-címe. Ezek a Twilio-hívások, ha telefonos hívást kezdeményez vagy SMS elküldenék a szám URL-címeket. Az URL-címeket "webhook" is nevezik.
 
-Bejövő SMS-üzenetek feldolgozásához, ezért frissíti az URL-CÍMÉT kell `http://yourdomain.cloudapp.net/sms_url`. Lépjen tovább, és kattintson a módosítások mentése a lap alján. Most, újból `web.rb` ennek kezelése az alkalmazás most program:
+Azt szeretnénk, bejövő SMS-üzenetek feldolgozása, úgyhogy frissítése az URL-címe `http://yourdomain.cloudapp.net/sms_url`. Lépjen tovább, és kattintson a módosítások mentése az oldal alján. Most, a biztonsági `web.rb` hozzunk program kezelje ezt az alkalmazást:
 
     post '/sms_url' do
       "<Response>
@@ -159,19 +159,19 @@ Bejövő SMS-üzenetek feldolgozásához, ezért frissíti az URL-CÍMÉT kell `
        </Response>"
     end
 
-A módosítás után győződjön meg arról, hogy indítsa újra a webes alkalmazást. Most vegye ki a telefonjára, és a Twilio-szám SMS küldése. Azonnal kapja meg az SMS-válasz, amely szerint "Hey, a ping Köszönjük! Twilio és az Azure rock! ".
+A módosítás elvégzése után győződjön meg arról, hogy indítsa újra a webalkalmazást. Most vegye ki a telefonjára, és SMS küldése a Twilio-számra. Azonnal kapja meg az SMS-választ, amely szerint a "Hey, a ping parancs Köszönjük! A Twilio és az Azure rock! ".
 
-## <a id="additional_services"></a>Útmutató: további Twilio-szolgáltatásokkal
-Az itt bemutatott példák Twilio lehetőséget biztosít webes API-k segítségével kihasználhatja az Azure alkalmazásról további Twilio-funkciókat. Teljes részletekért lásd: a [Twilio API-JÁNAK dokumentációja][twilio_api_documentation].
+## <a id="additional_services"></a>How to: további Twilio-szolgáltatások használata
+Itt látható példák, mellett Twilio kínál a webes API-kat használhatja az Azure-alkalmazásból további Twilio funkciói kihasználhatók. További részletek: a [Twilio API-dokumentáció][twilio_api_documentation].
 
 ### <a id="NextSteps"></a>Következő lépések
-Most, hogy megismerte a Twilio szolgáltatáshoz alapjait, az alábbi hivatkozásokból további:
+Most, hogy megismerte a Twilio szolgáltatás alapjait, kövesse az alábbi hivatkozások további:
 
-* [Twilio biztonsági irányelvek][twilio_security_guidelines]
-* [Twilio HowTos és példakódot][twilio_howtos]
-* [Twilio gyors üzembe helyezési oktatóanyag][twilio_quickstarts] 
-* [A Githubon Twilio][twilio_on_github]
-* [Kérdezze meg a Twilio-támogatás][twilio_support]
+* [A Twilio szolgáltatásra vonatkozó biztonsági irányelvek][twilio_security_guidelines]
+* [A Twilio HowTos és példakód][twilio_howtos]
+* [A Twilio-Gyorsútmutatók][twilio_quickstarts] 
+* [Twilio a Githubon][twilio_on_github]
+* [Beszéljen a Twilio-támogatás][twilio_support]
 
 [twilio_ruby]: https://www.twilio.com/docs/ruby/install
 

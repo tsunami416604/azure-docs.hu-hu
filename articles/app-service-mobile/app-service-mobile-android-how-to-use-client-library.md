@@ -1,6 +1,6 @@
 ---
-title: Hogyan használható az Azure Mobile Apps SDK Android |} Microsoft Docs
-description: Az Azure Mobile Apps SDK használatával Android rendszeren
+title: Az Azure Mobile Apps SDK használata az Android |} A Microsoft Docs
+description: Az Azure Mobile Apps SDK használata az Android rendszerhez
 services: app-service\mobile
 documentationcenter: android
 author: conceptdev
@@ -13,47 +13,47 @@ ms.devlang: java
 ms.topic: article
 ms.date: 11/16/2017
 ms.author: crdun
-ms.openlocfilehash: d89aa308ab8f6684cebbec49bbefdcb54d77c886
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: 1ab7aa9ecdd51809f6e1d82958f21b78b16e7e63
+ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2018
-ms.locfileid: "33869716"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37859557"
 ---
-# <a name="how-to-use-the-azure-mobile-apps-sdk-for-android"></a>Az Azure Mobile Apps SDK használatával Android rendszeren
+# <a name="how-to-use-the-azure-mobile-apps-sdk-for-android"></a>Az Azure Mobile Apps SDK használata az Android rendszerhez
 
-Ez az útmutató bemutatja, hogyan használhatja a Android SDK a Mobile Apps általános esetben, például a megvalósításához:
+Ez az útmutató bemutatja, hogyan megvalósítása a gyakori forgatókönyvek, például az Android ügyféloldali SDK-t, a Mobile Apps segítségével:
 
-* Lekérdezi az adatok (beszúrása, frissítése és törlése).
-* Hitelesítés.
-* Kezeli a hibákat.
-* Az ügyfél testreszabása.
+* Lekérdezési adatok (beszúrása, frissítése és törlése).
+* A hitelesítés.
+* A hibakezelést.
+* Az ügyfél testreszabásáról.
 
-Ez az útmutató elsősorban az ügyféloldali Android SDK-val.  További információt a kiszolgálóoldali SDK-k a Mobile Apps, lásd: [működéséhez a .NET-háttérrendszerrel SDK] [ 10] vagy [használata a Node.js-háttéralkalmazáshoz SDK][11].
+Ez az útmutató az Android ügyféloldali SDK összpontosít.  További információ a kiszolgálóoldali SDK-k a Mobile Apps, lásd: [.NET háttérrendszeri SDK használata] [ 10] vagy [használata a Node.js háttérrendszeri SDK][11].
 
-## <a name="reference-documentation"></a>Referenciadokumentációt
+## <a name="reference-documentation"></a>Segédanyagok
 
-Megtalálhatja az [Javadocs API-referencia] [ 12] az Android ügyféloldali kódtár a Githubon.
+Annak a [Javadocs API-referencia] [ 12] az Android ügyféloldali kódtár, a Githubon.
 
 ## <a name="supported-platforms"></a>A támogatott platformok
 
-Az Azure Mobile Apps SDK for Android API szintek 19-24 (KitKat nugát keresztül) helyigénnyel telefon és táblagép támogatja.  Hitelesítés, különösen, használja a hitelesítő adatok gyűjtéséhez közös webes keretrendszer megközelítést.  Kiszolgáló-folyamat hitelesítési kis űrlap tényező eszközök, például az órákat nem működik.
+Az Azure Mobile Apps SDK az Android API-szintek 19 – 24 (KitKat Nougat keresztül) a telefon és táblagép méretformátumú támogatja.  Hitelesítés, különösen, használja a webes keretrendszer általánosan használt megközelítés hitelesítő adatok gyűjtéséhez.  Folyamat-kiszolgáló hitelesítési kis képernyőn tényező eszközök, például az órákat nem működik.
 
 ## <a name="setup-and-prerequisites"></a>A telepítő és Előfeltételek
 
-Fejezze be a [Mobile Apps gyors üzembe helyezés](app-service-mobile-android-get-started.md) oktatóanyag.  Ez a feladat biztosítja, hogy a fejlesztés az Azure Mobile Apps minden előfeltétel teljesült.  A gyors üzembe helyezés is segítséget nyújt a fiókjának a konfigurálása és az első Mobile Apps-háttéralkalmazás létrehozása.
+Végezze el a [Mobile Apps – első lépések](app-service-mobile-android-get-started.md) oktatóanyag.  Ez a feladat biztosítja, hogy fejlesztése az Azure Mobile Apps minden előfeltétele teljesül-e.  Ez a rövid útmutató segítségével konfigurálhatja a fiókját, és az első Mobile Apps-háttéralkalmazás létrehozása.
 
-Ha nem kívánja a gyors üzembe helyezési oktatóanyag elvégzéséhez, a következő feladatokat kell végrehajtani:
+Ha úgy dönt, nem a rövid útmutató elvégzéséhez, hajtsa végre a következő feladatokat:
 
-* [Mobile Apps-háttéralkalmazás létrehozása] [ 13] androidos használata.
-* Az Android Studióban [frissítés a gradle-lel build fájlok](#gradle-build).
-* [Engedélyezi az internet engedélycsoportot](#enable-internet).
+* [a Mobile Apps-háttéralkalmazás létrehozása] [ 13] használata az Android-alkalmazás.
+* Az Android Studióban [frissítés a Gradle soubory sestavení](#gradle-build).
+* [Engedélyezi az internetes engedély](#enable-internet).
 
-### <a name="gradle-build"></a>A gradle-lel build fájl frissítése
+### <a name="gradle-build"></a>Frissítse a Gradle-buildfájlt
 
 Mindkettőt módosíthatja **build.gradle** fájlok:
 
-1. Adja hozzá a kódot, hogy a *projekt* szint **build.gradle** fájlon belül a *buildscript* címke:
+1. Adja hozzá a kódot a *projekt* szint **build.gradle** belül fájlt a *buildscript* címkét:
 
     ```text
     buildscript {
@@ -63,32 +63,32 @@ Mindkettőt módosíthatja **build.gradle** fájlok:
     }
     ```
 
-2. Adja hozzá a kódot, hogy a *modul app* szint **build.gradle** fájlon belül a *függőségek* címke:
+2. Adja hozzá a kódot a *modul alkalmazás* szint **build.gradle** belül fájlt a *függőségek* címkét:
 
     ```text
     compile 'com.microsoft.azure:azure-mobile-android:3.4.0@aar'
     ```
 
-    A legújabb verzióra jelenleg 3.4.0. A támogatott verziók találhatók [a Files][14].
+    A legújabb verzió jelenleg 3.4.0. A támogatott verziók láthatók [bintrayen][14].
 
-### <a name="enable-internet"></a>Internet engedélycsoportot engedélyezése
+### <a name="enable-internet"></a>Internetes engedély engedélyezése
 
-Azure szeretne használni, az alkalmazás engedélyezve van az INTERNET engedéllyel kell rendelkeznie. Ha még nincs engedélyezve, adja hozzá a következő sort a kód a **AndroidManifest.xml** fájlt:
+Hozzáférhet az Azure, az alkalmazás engedélyezve van az INTERNET engedéllyel kell rendelkeznie. Ha még nincs engedélyezve, adja hozzá a következő kódsort a **AndroidManifest.xml** fájlt:
 
 ```xml
 <uses-permission android:name="android.permission.INTERNET" />
 ```
 
-## <a name="create-a-client-connection"></a>Egy ügyfél-kapcsolat létrehozása
+## <a name="create-a-client-connection"></a>Ügyfélkapcsolat létrehozása
 
-Az Azure Mobile Apps a mobilalkalmazásban négy funkciókat biztosít:
+Az Azure Mobile Apps biztosítja a mobilalkalmazásban négy függvény:
 
-* Adathozzáférés és -kapcsolat nélküli szinkronizálás az Azure Mobile Apps-szolgáltatások.
-* Az Azure Mobile Apps Server SDK-val írt egyéni API-k hívása.
-* Hitelesítés az Azure App Service-hitelesítéshez és engedélyezéshez.
+* Adathozzáférés és -kapcsolat nélküli szinkronizálás az Azure Mobile Apps szolgáltatással.
+* Az Azure Mobile Apps Server SDK-készült egyéni API-jainak hívására.
+* Hitelesítés az Azure App Service-hitelesítés és engedélyezés.
 * Leküldéses értesítés regisztrálása a Notification hubs használatával.
 
-Ezek először megköveteli, hogy hozzon létre egy `MobileServiceClient` objektum.  Csak egy `MobileServiceClient` objektumot kell létrehozni a mobil ügyfél (Ez azt jelenti, hogy legyen egy egypéldányos mintát).  Létrehozásához egy `MobileServiceClient` objektum:
+Ezek a függvények mindegyike először létre kell hoznia meg egy `MobileServiceClient` objektum.  Csak egy `MobileServiceClient` objektumot kell létrehozni a mobilügyfél belüli (vagyis nem lehet egy Singleton-mintát).  Hozhat létre egy `MobileServiceClient` objektum:
 
 ```java
 MobileServiceClient mClient = new MobileServiceClient(
@@ -96,11 +96,11 @@ MobileServiceClient mClient = new MobileServiceClient(
     this);                  // Your application Context
 ```
 
-A `<MobileAppUrl>` egy karakterlánc vagy egy URL-cím objektum, amely a mobil-háttéralkalmazást mutat.  Ha az Azure App Service segítségével végzi a mobil-háttéralkalmazást gazdagép, majd biztosítja, hogy a biztonságos `https://` verzióját az URL-címet.
+A `<MobileAppUrl>` egy karakterlánc vagy egy URL-cím-objektumot, amely a mobil háttérszolgáltatás használatára.  Ha az Azure App Service-ben a mobil háttérszolgáltatásban üzemeltetésére használ, majd győződjön meg arról, a biztonságos `https://` az URL-cím verziója.
 
-Az ügyfél is azt a tevékenységet vagy Context - hozzáférésre van szüksége a `this` példában paraméter.  A MobileServiceClient konstrukció belül megtörténik a `onCreate()` módszer a tevékenység hivatkozik a `AndroidManifest.xml` fájlt.
+Az ügyfél emellett a tevékenység vagy környezet - hozzáférésre van szüksége a `this` a példa a paraméter.  A MobileServiceClient konstrukció belül történjen a `onCreate()` metódus a tevékenység hivatkozik a `AndroidManifest.xml` fájlt.
 
-Ajánlott eljárásként a kiszolgáló közötti kommunikációt a saját (Egypéldányos – minta) osztályba kell absztrakt.  Ebben az esetben kell átadni a tevékenységet a konstruktor megfelelően beállítani a szolgáltatást.  Példa:
+Ajánlott eljárásként meg kell absztrakt kiszolgálói kommunikációhoz a saját (singleton-mintát) osztályba.  Ebben az esetben kell átadnia a szolgáltatás megfelelő konfigurálásához a konstruktor belül a tevékenység.  Példa:
 
 ```java
 package com.example.appname.services;
@@ -142,21 +142,21 @@ public class AzureServiceAdapter {
 }
 ```
 
-Most hívása `AzureServiceAdapter.Initialize(this);` a a `onCreate()` a fő tevékenységnél metódusában.  Semmilyen más metódus anélkül, hogy az ügyfélen használjon `AzureServiceAdapter.getInstance();` a szolgáltatás adapter mutató hivatkozás beszerzése.
+Most már hívása `AzureServiceAdapter.Initialize(this);` a a `onCreate()` metódus a fő tevékenység.  Hozzáférnének az ügyfél használja más módon `AzureServiceAdapter.getInstance();` , szerezzen be egy hivatkozást a service adapter.
 
-## <a name="data-operations"></a>Adatok műveletek
+## <a name="data-operations"></a>Adatműveletek
 
-Az Azure Mobile Apps SDK mag, hogy a Mobile Apps-háttéralkalmazás SQL Azure-ban tárolt adatok eléréséhez.  Hozzáférnének ehhez ezen adatokhoz szigorú típusmegadású osztályokat (ajánlott) vagy típus nélküli lekérdezéseket (nem ajánlott).  Ez a szakasz a nagy foglalkozik szigorú típusmegadású osztályokat.
+Az Azure Mobile Apps SDK középpontjában az SQL Azure belül a Mobile Apps-háttéralkalmazás tárolt adatokhoz hozzáférést biztosítania.  Hozzáférnének ehhez ezen adatokhoz (preferált) erősen típusos osztály használatával, vagy a típus nélküli lekérdezések (nem ajánlott).  Ez a szakasz a nagy foglalkozik, erősen típusos osztály használatával.
 
-### <a name="define-client-data-classes"></a>Ügyfél adatosztályok definiálása
+### <a name="define-client-data-classes"></a>Ügyfél adatok definiálására
 
-Az SQL Azure táblákból származó adatok eléréséhez ügyfél adatok definiálására, amelyek megfelelnek a Mobile Apps-háttéralkalmazás tábláihoz. Ebben a témakörben szereplő példák feltételezik nevű tábla **MyDataTable**, amely a következő oszlopokkal rendelkezik:
+SQL Azure táblákból származó adatok eléréséhez ügyfél adatok definiálására, amelyek megfelelnek a Mobile Apps-háttéralkalmazás tábláihoz. Ebben a témakörben szereplő példák feltételezik nevű tábla **MyDataTable**, amely rendelkezik a következő oszlopokat:
 
 * id
-* Szöveg
-* Végezze el
+* szöveg
+* hajtsa végre
 
-A megfelelő típusos ügyféloldali objektum a nevű fájlban található **MyDataTable.java**:
+A megfelelő típusos ügyféloldali objektum nevű fájlban található **MyDataTable.java**:
 
 ```java
 public class ToDoItem {
@@ -166,7 +166,7 @@ public class ToDoItem {
 }
 ```
 
-Adja hozzá az egyes mezők hozzáadott elérő és beállító metódusokat.  Ha az SQL Azure táblában több oszlopot tartalmaz, akkor mezőket ad hozzá a megfelelő ezt az osztályt.  Például ha a DTO (adatobjektum átviteli) kellett szerepel egészszám-oszloppal prioritású virtuális gép, majd a mezőt, valamint beolvasó és beállító metódusa:
+Adja hozzá az egyes mezőkhöz, adja hozzá elérő és beállító metódusokat.  Ha az SQL Azure-tábla több oszlopot tartalmaz, akkor mezőket ad hozzá a megfelelő Ez az osztály.  Például ha a dto-t (adatátviteli objektumot) kellett egy egész számot a Prioritás oszlop, akkor ez a mező a Getter a Setter se módszerei felveheti:
 
 ```java
 private Integer priority;
@@ -189,17 +189,17 @@ public final void setPriority(Integer priority) {
 }
 ```
 
-További táblák létrehozása a Mobile Apps-háttéralkalmazásának további tudnivalókért lásd: [hogyan: Adja meg egy tábla vezérlő] [ 15] (.NET-háttérrendszer) vagy [dinamikus sémával definiálása táblák] [ 16] (Node.js háttérrendszer).
+Megtudhatja, hogyan hozhat létre további táblákat a Mobile Apps-háttéralkalmazást, lásd: [hogyan: Adja meg egy] [ 15] (.NET-háttérrendszer) vagy [használata a dinamikus sémák definiálása táblák] [ 16] (Node.js-háttérrendszer).
 
-Egy Azure Mobile Apps-háttéralkalmazás tábla meghatározza, hogy öt speciális mezőket, négy, amelyek elérhetők az ügyfelek számára:
+Az Azure Mobile Apps háttértáblára öt speciális mezők érhetők el az ügyfeleknek, amelyek négy határozza meg:
 
-* `String id`: A rekord globálisan egyedi azonosítója.  Ajánlott eljárásként, ellenőrizze az azonosító karakterláncos ábrázolása egy [UUID] [ 17] objektum.
-* `DateTimeOffset updatedAt`: A dátum/idő az utolsó frissítés.  A updatedAt mező a kiszolgáló úgy van beállítva, és az Ügyfélkód soha nem kell beállítani.
-* `DateTimeOffset createdAt`: A dátum/idő, az objektumot létrehozták.  A createdAt mező a kiszolgáló úgy van beállítva, és az Ügyfélkód soha nem kell beállítani.
-* `byte[] version`: Megszokott módon jelenik meg egy karakterláncot, a verziót is állítja be a kiszolgáló.
-* `boolean deleted`: Azt jelzi, hogy a rekord törölve lett, de még nem törlődnek.  Ne használjon `deleted` tulajdonságként a osztályban.
+* `String id`: A rekord globálisan egyedi azonosítója.  Ajánlott eljárásként, győződjön meg arról, az azonosítója a karakterláncos leképezését egy [UUID] [ 17] objektum.
+* `DateTimeOffset updatedAt`: A dátum/idő az utolsó frissítés.  A updatedAt mező a kiszolgáló úgy van beállítva, és az Ügyfélkód soha nem kell beállítania.
+* `DateTimeOffset createdAt`: A dátum/idő, hogy az objektumot létrehozták.  A createdAt mező a kiszolgáló úgy van beállítva, és az Ügyfélkód soha nem kell beállítania.
+* `byte[] version`: Egy karakterlánc-kiszolgálókként általában, a verzió is állítja be a kiszolgáló.
+* `boolean deleted`: Azt jelzi, hogy a rekord törölve lett, de még nem lett kiürítve.  Ne használjon `deleted` tulajdonságként az osztályban található.
 
-A `id` mező kitöltése kötelező.  A `updatedAt` mező és `version` mező a kapcsolat nélküli szinkronizáláshoz használt (a növekményes szinkronizálás és az ütközés feloldásához rendre).  A `createdAt` mező hivatkozás mező, az ügyfél nem használja.  A nevek tulajdonságainak "között tömörített" nevével és nem módosítható.  Azonban létrehozhat leképezéseket az objektum és a "közötti átvitel közbeni" nevét a között a [gson] [ 3] könyvtárban.  Példa:
+Az `id` mező kötelező.  A `updatedAt` mező és `version` mező kapcsolat nélküli szinkronizálás használhatók (a növekményes szinkronizálás és az ütközés feloldásához jelölik).  A `createdAt` mező egy referencia-mezőt, és az ügyfél nem használja.  A neveket a Tulajdonságok "közötti átvitel közbeni" nevei, és nem állítható.  Azonban létrehozhat egy leképezési az objektum és a "közötti átvitel közbeni" neveket között a [gson] [ 3] könyvtár.  Példa:
 
 ```java
 package com.example.zumoappname;
@@ -257,9 +257,9 @@ public class ToDoItem
 }
 ```
 
-### <a name="create-a-table-reference"></a>Egy tábla hivatkozás létrehozása
+### <a name="create-a-table-reference"></a>Hozzon létre egy táblahivatkozás
 
-Egy tábla szeretne használni, először létre kell hoznia egy [MobileServiceTable] [ 8] meghívásával objektum a **getTable** metódust a [MobileServiceClient][9].  Ez a módszer két túlterheléssel rendelkezik:
+Egy tábla eléréséhez, először hozzon létre egy [MobileServiceTable] [ 8] meghívásával objektum a **getTable** metódust a [MobileServiceClient] [9].  Ez a módszer két túlterheléssel rendelkezik:
 
 ```java
 public class MobileServiceClient {
@@ -268,13 +268,13 @@ public class MobileServiceClient {
 }
 ```
 
-Az alábbi kódban **mClient** a MobileServiceClient objektumra való hivatkozás.  Az első túlterhelési használatos, ha az osztály nevét és a tábla neve azonos, és az egyik használatos a gyors üzembe helyezés:
+Az alábbi kódban **mclient elemet** a MobileServiceClient objektumra hivatkozik.  Az első túlterhelési használatos, ahol az osztály nevét és a táblázat neve azonosak, és a egy használja a rövid útmutatóban:
 
 ```java
 MobileServiceTable<ToDoItem> mToDoTable = mClient.getTable(ToDoItem.class);
 ```
 
-A második túlterhelési használatos, ha a tábla neve eltér az osztály nevét: az első paramétere a tábla neve.
+A második túlterhelés szolgál, ha a tábla neve eltér az osztálynév: az első paraméter az a tábla neve.
 
 ```java
 MobileServiceTable<ToDoItem> mToDoTable = mClient.getTable("ToDoItemBackup", ToDoItem.class);
@@ -282,18 +282,18 @@ MobileServiceTable<ToDoItem> mToDoTable = mClient.getTable("ToDoItemBackup", ToD
 
 ## <a name="query"></a>Egy háttér-táblából
 
-Először szerezze be a táblahivatkozás.  Ezután a táblahivatkozás a lekérdezés végrehajtása.  A lekérdezés bármilyen kombinációját:
+Először szerezze be a táblahivatkozást.  Ezután hajtsa végre a lekérdezést a táblahivatkozáson.  A lekérdezés bármely kombinációja:
 
-* A `.where()` [szűrőfeltétel](#filtering).
-* Egy `.orderBy()` [záradék rendelési](#sorting).
+* A `.where()` [szűrőfeltételt](#filtering).
+* Egy `.orderBy()` [záradék rendezése](#sorting).
 * A `.select()` [mező kiválasztása záradék](#selection).
 * A `.skip()` és `.top()` a [lapozható eredmények](#paging).
 
 A feltételek a fenti sorrendben kell bemutatni.
 
-### <a name="filter"></a> Szűrési eredmények
+### <a name="filter"></a> Eredmények szűrése
 
-Az általános a lekérdezések formátuma:
+Az általános űrlap a lekérdezés a következő:
 
 ```java
 List<MyDataTable> results = mDataTable
@@ -302,11 +302,11 @@ List<MyDataTable> results = mDataTable
     .get()              // Converts the async into a sync result
 ```
 
-Az előző példában (akár a kiszolgáló által beállított maximális lapméretét) összes eredményt ad vissza.  A `.execute()` metódus végrehajtja a lekérdezést a háttérkiszolgálón.  A lekérdezés alakítja át egy [OData v3] [ 19] lekérdezés a Mobile Apps-háttéralkalmazás való továbbítás előtt.  Kézhezvétele után a Mobile Apps-háttéralkalmazás alakítja át a lekérdezést egy SQL-utasítás végrehajtása az SQL Azure-példányon előtt.  Mivel a hálózati tevékenységek bizonyos idő, a `.execute()` metódus értéket ad vissza egy [ `ListenableFuture<E>` ] [ 18].
+Az előző példában (akár a maximális méretének beállítása a kiszolgáló) minden eredményt visszaad.  A `.execute()` metódus hajtja végre a lekérdezést a háttérkiszolgálón.  A lekérdezés alakítja át egy [OData v3] [ 19] lekérdezést, mielőtt a Mobile Apps háttéralkalmazásból továbbítását.  Kézhezvétele után a Mobile Apps háttéralkalmazásból alakítja át a lekérdezést egy SQL-utasítás előtt futtassa a jelentést az SQL Azure-példányon.  Hálózati tevékenység eltarthat egy ideig, mivel a `.execute()` metódus adja vissza egy [ `ListenableFuture<E>` ] [ 18].
 
 ### <a name="filtering"></a>Visszaadott adatok szűrése
 
-A következő lekérdezés-végrehajtás adja vissza az összes elemet a **ToDoItem** where tábla **teljes** egyenlő **hamis**.
+A következő lekérdezés végrehajtása az összes elemet adja vissza a **ToDoItem** where tábla **teljes** egyenlő **hamis**.
 
 ```java
 List<ToDoItem> result = mToDoTable
@@ -316,11 +316,11 @@ List<ToDoItem> result = mToDoTable
     .get();
 ```
 
-**mToDoTable** a korábban létrehozott mobilszolgáltatás táblára hivatkozás.
+**mToDoTable** a hivatkozás a korábban létrehozott mobilszolgáltatás táblába.
 
-Adja meg a szűrő használatával a **ahol** metódus hívása a táblahivatkozás. A **ahol** metódus követi a **mező** metódus egy metódust, amely meghatározza a logikai predikátum követ. Lehetséges predikátum módszerekre **eq** (egyenlő), **ne** (egyenlő), **gt** (több mint), **ge** (nagyobb vagy egyenlő), **lt** (kevesebb mint), **le** (kisebb vagy egyenlő). Ezek a módszerek lehetővé teszik, hogy összehasonlítja az adott értékek száma és karakterlánc értékű mezőket.
+Adja meg a szűrő használatával a **ahol** metódus hívása a táblahivatkozáson. A **ahol** metódus követ egy **mező** módszer olyan módszer, amely meghatározza a logikai predikátum követ. Lehetséges predikátum módszerekre **eq** (egyenlő) **ne** (nem egyenlő), **gt** (nagyobb), **ge** (nagyobb vagy egyenlő) **lt** (kevesebb mint), **le** (kisebb vagy egyenlő). Ezek a módszerek segítségével megadott értékek száma és a karakterlánc mezők összehasonlítása.
 
-A dátumok végezhet. Az alábbi módszerek lehetővé teszik, hogy a teljes dátum mező vagy a dátum részei összehasonlítása: **év**, **hónap**, **nap**, **óra**, **perc**, és **második**. A következő példa a cikkek szűrőt ad amelynek *határidő* 2013 egyenlő.
+Dátumok szűrésével. Az alábbi módszerek lehetővé teszik a teljes dátum mező vagy a dátum részei összehasonlítása: **év**, **hónap**, **nap**, **óra**,  **perc**, és **második**. Az alábbi példa hozzáad egy szűrő elemek amelynek *határideje* 2013 egyenlő.
 
 ```java
 List<ToDoItem> results = MToDoTable
@@ -330,7 +330,7 @@ List<ToDoItem> results = MToDoTable
     .get();
 ```
 
-Az alábbi módszerek támogatja a speciális szűrők karakterláncmezőket: **megadott módon kezdődő**, **megadott módon végződő**, **concat**, **subString**, **indexOf**, **cserélje le**, **toLower**, **toUpper**, **trim**, és **hossza**. A következő példa szűrőket tábla forrása a *szöveg* oszlopok kezdődő "PRI0."
+Az alábbi módszereket támogatja a összetett szűrőket a karakterlánc-mezők: **startsWith**, **endsWith**, **concat**, **subString**, **indexOf**, **cseréje**, **toLower**, **toUpper**, **trim**, és **hossza** . A következő példa szűrők tábla sorok, ahol a *szöveg* oszlop kezdődik "PRI0."
 
 ```java
 List<ToDoItem> results = mToDoTable
@@ -340,7 +340,7 @@ List<ToDoItem> results = mToDoTable
     .get();
 ```
 
-A következő operátor módszerek támogatottak mező: **hozzáadása**, **sub**, **MUL számú**, **div**, **mod**, **emelet**, **felső határ**, és **kerekíteni**. A következő példa szűrőket tábla forrása a **időtartam** páros szám-e.
+A mező a következő operátor módszerek támogatottak: **hozzáadása**, **sub**, **MUL számú**, **div**, **mod**, **emelet**, **felső határ**, és **kerekíteni**. A következő példa szűrők tábla sorok, ahol a **időtartama** páros szám.
 
 ```java
 List<ToDoItem> results = mToDoTable
@@ -350,7 +350,7 @@ List<ToDoItem> results = mToDoTable
     .get();
 ```
 
-A következő logikai módszerekkel kombinálhatja a predikátum: **és**, **vagy** és **nem**. A következő példa az előző példák közül két egyesíti.
+A következő logikai módszerekkel kombinálhatja predikátumok: **és**, **vagy** és **nem**. Az alábbi példa az előző példák közül két egyesíti.
 
 ```java
 List<ToDoItem> results = mToDoTable
@@ -360,7 +360,7 @@ List<ToDoItem> results = mToDoTable
     .get();
 ```
 
-Logikai operátorok csoport és kivételblokkokra:
+Csoport és a beágyazott logikai operátor:
 
 ```java
 List<ToDoItem> results = mToDoTable
@@ -374,11 +374,11 @@ List<ToDoItem> results = mToDoTable
     .execute().get();
 ```
 
-Az ismertető és példákat a szűrés további: [az Android ügyfél lekérdezési modelljét gazdagsága felfedezése][20].
+Részletes leírását és példák a szűrés, lásd: [felfedezése az Android ügyfél lekérdezési modellje gazdagsága][20].
 
-### <a name="sorting"></a>A rendezési adatokat adott vissza
+### <a name="sorting"></a>Visszaadott adatok rendezése
 
-Az alábbi kód táblázatát adja vissza minden elem **ToDoItems** növekvő sorrend által a *szöveg* mező. *mToDoTable* a korábban létrehozott háttér táblára hivatkozás:
+A következő kódot az összes elem visszaadása egy táblából a **ToDoItems** szerint növekvő sorrendbe rendezve a *szöveg* mező. *mToDoTable* van, amelyet korábban hozott létre a háttértáblára mutató hivatkozást:
 
 ```java
 List<ToDoItem> results = mToDoTable
@@ -387,11 +387,11 @@ List<ToDoItem> results = mToDoTable
     .get();
 ```
 
-Az első paramétere a **orderBy** módszer: egyenlő a rendezéshez használandó mező neve karakterlánc. A második paraméter használja a **QueryOrder** megadhatja, hogy a Rendezés növekvő vagy csökkenő enumerálása.  Szűrése használata esetén a ***ahol*** metódus, a ***ahol*** metódust kell meghívni, mielőtt a ***orderBy*** metódust.
+Az első paraméterként a **orderBy** módszer a rendezéshez használandó mező neve megegyezik egy karakterláncot. A második paraméter használja a **QueryOrder** enumerálás adhatja meg, hogy a növekvő vagy csökkenő rendezéshez.  Szűrése használata esetén a ***ahol*** metódus, a ***ahol*** metódust kell hívni a előtt a ***orderBy*** metódust.
 
 ### <a name="selection"></a>Egyes oszlopok kiválasztásához
 
-Az alábbi kód bemutatja a tábla összes elemek visszaállítása **ToDoItems**, de csak azokat jeleníti meg a **teljes** és **szöveg** mezők. **mToDoTable** van a háttér-táblázat, amely korábban létrehozott objektumra mutató hivatkozást.
+Az alábbi kód bemutatja, hogyan minden elem visszaadása egy táblából a **ToDoItems**, csak jeleníti meg, de a **teljes** és **szöveg** mezőket. **mToDoTable** van a korábban létrehozott háttértáblára mutató hivatkozást.
 
 ```java
 List<ToDoItemNarrow> result = mToDoTable
@@ -400,13 +400,13 @@ List<ToDoItemNarrow> result = mToDoTable
     .get();
 ```
 
-A select függvény paraméterei szeretne visszaállítani táblaoszlopok karakterlánc nevét.  A **válasszon** metódust kell hajtsa végre a módszerek, például a **ahol** és **orderBy**. Lapozófájl módszerek, például követhetnek **kihagyása** és **felső**.
+A select függvény paraméterei a következők a táblázat oszlopaiba, amelyet vissza szeretne karakterlánc nevét.  A **kiválasztása** metódus szükséges módszerek, például **ahol** és **orderBy**. Lapozófájl módszerek, például követhetnek **kihagyása** és **felső**.
 
-### <a name="paging"></a>A lapok visszatérési adatai
+### <a name="paging"></a>Az oldalak adatokat adja vissza
 
-Adatok **mindig** lapok adott vissza.  A maximális számú rekordot adott vissza a kiszolgáló állítja be.  Ha az ügyfél több rekordot kéri, a kiszolgáló a maximális számú rekordot ad vissza.  Alapértelmezés szerint a kiszolgálón a maximális méretének 50 rekordok.
+Adatok **mindig** oldalakat adja vissza.  A visszaadott rekordok maximális száma a kiszolgáló állítja be.  Ha az ügyfél több rekordot kér, a kiszolgáló rekordok maximális számát adja vissza.  Alapértelmezés szerint a maximális méretének a kiszolgálón a 50 rögzíti.
 
-Az első példa bemutatja, hogyan válassza ki a felső öt elemek egy táblázatból. A lekérdezés táblázatát adja vissza a cikkek **ToDoItems**. **mToDoTable** a korábban létrehozott háttér táblára hivatkozás:
+Az első példa bemutatja, hogyan válassza ki a felső öt elemeket egy táblából. A lekérdezés tábláját adja vissza a cikkek **ToDoItems**. **mToDoTable** van, amelyet korábban hozott létre a háttértáblára mutató hivatkozást:
 
 ```java
 List<ToDoItem> result = mToDoTable
@@ -415,7 +415,7 @@ List<ToDoItem> result = mToDoTable
     .get();
 ```
 
-Lekérdezés, amely kihagyja az első öt elemeket, majd adja vissza a következő öt itt található:
+A következő lekérdezés, amely kihagyja az első öt elemeket, majd visszaadja a következő öt:
 
 ```java
 List<ToDoItem> result = mToDoTable
@@ -424,7 +424,7 @@ List<ToDoItem> result = mToDoTable
     .get();
 ```
 
-Ha szeretne egy tábla összes rekord beolvasása, az összes lapot ismétlés kód megvalósítását:
+Ha szeretne egy tábla összes rekord lekérése, az összes ciklustevékenység kód megvalósítását:
 
 ```java
 List<MyDataModel> results = new List<MyDataModel>();
@@ -441,14 +441,14 @@ do {
 } while (nResults > 0);
 ```
 
-Ezzel a módszerrel az összes rekord kérelmet legalább két kérelmet a Mobile Apps-háttéralkalmazás létrehozása
+Ezzel a módszerrel minden rekordnál kérelmet hoz létre, legalább két kérelmet, a Mobile Apps háttéralkalmazásból.
 
 > [!TIP]
-> A megfelelő méretének kiválasztásában memória használata közben a kérelem történik, a sávszélesség-használat és a késleltetés az adatok fogadása teljesen közötti egyensúly.  (50 rekordok) alapértelmezés szerint minden eszköz alkalmas.  Ha kizárólag fog működni, a nagyobb memória-eszközökön, növelje a legfeljebb 500.  Találtunk, amelyeknek, amely túl 500 rekordok eredmények elfogadható késések és nagy memóriaproblémák léptek fel a lap méretének növelését.
+> A megfelelő méretének kiválasztása a memóriahasználat, amíg a kérelem történik, a sávszélesség-használat és a késleltetés az adatok fogadása teljesen közötti egyensúly.  (50 rekordokat) alapértelmezés szerint minden eszköz alkalmas.  Ha kizárólag a nagyobb memória eszközökön, akár 500 növelése  Találtunk, amely a növekvő az oldalméret túl az elfogadhatatlan késéseket és nagy memóriaigényű problémák 500 rekord eredményez.
 
-### <a name="chaining"></a>Hogyan: összefűzésére lekérdezési módszerek
+### <a name="chaining"></a>Hogyan: fűzze össze a lekérdezési módszerek
 
-A háttérrendszer táblák lekérdezésére módszerek halmaz zónanevének is lehet. Lekérdezési módszerek láncolás lehetővé teszi a szűrt sorok rendezése és lapozható egyes oszlopok kiválasztásához. Létrehozhat összetett logikai szűrőket.  Minden egyes lekérdezés módszer egy lekérdezés objektumot ad vissza. Az adatsorozat módszerek befejezését, majd futtatja ténylegesen a lekérdezést, hívja az **hajtható végre** metódust. Példa:
+A háttérrendszer táblákat kérdezi le a használt módszerek is kell fűzni. Lekérdezési módszerek láncolási lehetővé teszi a szűrt sorok rendezve és lapozható egyes oszlopok kiválasztásához. Összetett logikai szűrőket hozhat létre.  Minden egyes lekérdezés módszer egy lekérdezés objektummal adja vissza. A sorozat módszerek befejezését, majd futtatja ténylegesen a lekérdezést, hívja a **végrehajtása** metódus. Példa:
 
 ```java
 List<ToDoItem> results = mToDoTable
@@ -464,26 +464,26 @@ List<ToDoItem> results = mToDoTable
         .get();
 ```
 
-A láncolt lekérdezési módszerek az alábbiak szerint kell rendelni:
+A kapcsolt lekérdezési módszerek módon rendelnünk kell:
 
-1. Szűrés (**ahol**) módszerek.
-2. Rendezés (**orderBy**) módszerek.
-3. Kijelölés (**válasszon**) módszerek.
-4. lapozás (**kihagyása** és **felső**) módszerek.
+1. Szűrés (**ahol**) módszereket.
+2. Rendezés (**orderBy**) módszereket.
+3. Kijelölés (**kiválasztása**) módszereket.
+4. lapozófájl (**kihagyása** és **felső**) módszereket.
 
-## <a name="binding"></a>Adatok kötni a felhasználói felületen
+## <a name="binding"></a>Adatok kötést létrehozni a felhasználói felület
 
-Az adatkötés magában foglalja a három összetevővel:
+Datová vazba három összetevőből áll:
 
 * Az adatforrás
-* A kezdőképernyő elrendezésének
-* Az adaptert, amely a két kötelékek együtt.
+* Az elrendezés
+* Az adapter, amely a két összeköt együtt.
 
-A minta kódban, a rendszer visszaadja a az adatokat a Mobile Apps SQL Azure táblából **ToDoItem** egy tömbbe. Ez a tevékenység az adatok alkalmazások közös mintázatát.  Az adatbázis-lekérdezések gyakran kell visszaadnia sorok, amelyekre az ügyfél megkapta a listában vagy tömb. Ez a példa a tömb az adatforráshoz.  A kód határozza meg a kezdőképernyő elrendezésének dimenzióattribútum megjelenő adatok az eszközön.  A két kötött együtt egy adapternek, amely ezt a kódot a kiterjesztés, a **ArrayAdapter&lt;ToDoItem&gt;**  osztály.
+A mintakód azt állítja vissza az adatokat a Mobile Apps SQL Azure-tábla **ToDoItem** egy tömbbe. Ezt a tevékenységet, gyakori minta adatokat kezelő alkalmazásokhoz.  Az adatbázis-lekérdezések gyakran a sorokat, amelyek az ügyfél lekéri a listában, vagy a tömb gyűjteményét adja vissza. Ebben a példában a Pole je zdrojem dat.  A kód meghatároz egy elrendezés, amely meghatározza az adatok, amely akkor jelenik meg a nézet az eszközön.  A kettő együtt egy adapternek, amely ebben a kódban kiterjesztése vannak kötve, a **ArrayAdapter&lt;ToDoItem&gt;**  osztály.
 
-#### <a name="layout"></a>Az elrendezés meghatározása
+#### <a name="layout"></a>Az elrendezés
 
-Az elrendezés XML-kód több kódtöredékek határozzák meg. A következő kódot adott meg egy létező elrendezést, jelöli a **ListView** azt szeretnénk, hogy az adatok feltöltése.
+Az elrendezés XML-kódot néhány kódrészleteket határozza meg. Adja meg egy létező elrendezést, a következő kód jelöli a **ListView** szeretnénk adja meg a kiszolgáló adatait.
 
 ```xml
     <ListView
@@ -494,7 +494,7 @@ Az elrendezés XML-kód több kódtöredékek határozzák meg. A következő k�
     </ListView>
 ```
 
-Az előző kódban a *listitem* attribútum az egyes sorok elrendezésének azonosítóját adja meg a listában. Ez a kód egy jelölőnégyzetet és a hozzá tartozó szöveg határozza meg, és egyszer lekérdezi példányosítani a lista minden eleme. Ebben az elrendezésben nem jelennek meg a **azonosító** mező, és olyan összetettebb elrendezést lehet megadni további mezők megjelenítése. Ez a kód szerepel a **row_list_to_do.xml** fájlt.
+Az a fenti kóddal a *listitem* attribútum az elrendezést az egyes sorok azonosítóját adja meg a listában. Ez a kód egy jelölőnégyzet és a hozzá tartozó szöveg adja meg, és egyszer lekérdezi példányosítása a lista minden eleme. Ez az elrendezés nem jelennek meg a **azonosító** mezőben, és a egy összetettebb elrendezés kellene megadnia további mezőket a megjelenő információk. Ez a kód szerepel a **row_list_to_do.xml** fájlt.
 
 ```java
 <?xml version="1.0" encoding="utf-8"?>
@@ -510,8 +510,8 @@ Az előző kódban a *listitem* attribútum az egyes sorok elrendezésének azon
 </LinearLayout>
 ```
 
-#### <a name="adapter"></a>Adja meg az adapter
-Mivel az adatforrás a nézet tömbje **ToDoItem**, azt alosztály az adapter egy **ArrayAdapter&lt;ToDoItem&gt;**  osztály. Az alosztály egy nézetet hoz létre minden **ToDoItem** használatával a **row_list_to_do** elrendezés.  A kódban, a következő osztály kiterjesztése meghatároztuk a **ArrayAdapter&lt;E&gt;**  osztály:
+#### <a name="adapter"></a>Az adapter meghatározása
+Mivel a nézet az adatforrás egy tömbjét **ToDoItem**, hogy alosztályát az adapter egy **ArrayAdapter&lt;ToDoItem&gt;**  osztály. Ez alosztályát egy nézetet hoz létre minden **ToDoItem** használatával a **row_list_to_do** elrendezését.  A kódban, a következő osztály, amely a kiterjesztése meghatározzuk a **ArrayAdapter&lt;E&gt;**  osztály:
 
 ```java
 public class ToDoItemAdapter extends ArrayAdapter<ToDoItem> {
@@ -554,23 +554,23 @@ Bírálja felül az adapterek **getView** metódust. Példa:
     }
 ```
 
-A Microsoft hozzon létre egy példányt az osztály a tevékenység az alábbiak szerint:
+Létrehozunk Ez az osztály egy példányát a tevékenység a következőképpen:
 
 ```java
     ToDoItemAdapter mAdapter;
     mAdapter = new ToDoItemAdapter(this, R.layout.row_list_to_do);
 ```
 
-A második paraméter a ToDoItemAdapter konstruktor elrendezését mutató hivatkozás. A Microsoft most példányosítható a **ListView** , és rendelje hozzá a csatoló a **ListView**.
+A második paraméter a ToDoItemAdapter konstruktor eszköztáblára mutató hivatkozás az elrendezést. Most már példányosítható, hogy a **ListView** és rendelje hozzá az adapteren, hogy a **ListView**.
 
 ```java
     ListView listViewToDo = (ListView) findViewById(R.id.listViewToDo);
     listViewToDo.setAdapter(mAdapter);
 ```
 
-#### <a name="use-adapter"></a>A használatára köti a felhasználói felületen
+#### <a name="use-adapter"></a>Az Adapter kötést létrehozni a felhasználói felület használata
 
-Most már készen áll az adatkötés használatára. A következő kód bemutatja, hogyan beolvasásának a táblázatban, és a helyi adapter beírja a visszaadott elemek.
+Most már készen áll adatkötés használatára. A következő kód bemutatja, hogyan elemek beolvasása a táblázatban, és a helyi adapter beírja a visszaadott elemek.
 
 ```java
     public void showAll(View view) {
@@ -599,13 +599,13 @@ Most már készen áll az adatkötés használatára. A következő kód bemutat
     }
 ```
 
-Hívja a adapter bármikor módosíthatja a **ToDoItem** tábla. Rekord által rekord alapon végzett módosításokat, mert egy gyűjtemény helyett egy sor kezeli. Egy elem beszúrásakor hívja a **hozzáadása** metódus az adapteren; törlésekor, hívja a **eltávolítása** metódus.
+A kártya hívása bármikor módosíthatja a **ToDoItem** tábla. A módosítások rekord által rekord alapon történik, mivel kezeli a egyetlen sor egy gyűjtemény helyett. Ha egy elem, hívja a **hozzáadása** metódus az adapteren; törlésekor, hívja a **eltávolítása** metódus.
 
-A teljes példáját megtalálhatja a [Android Gyorsútmutató-projekt][21].
+A teljes példát talál a [Android Gyorsútmutató-projekt][21].
 
-## <a name="inserting"></a>A háttérrendszer adatok beszúrása
+## <a name="inserting"></a>Adatok beszúrása a háttérrendszer
 
-Hozható létre példánya a *ToDoItem* osztály és tulajdonságainak beállítása.
+Egy példányát hozza létre a *ToDoItem* osztályt, és a tulajdonságainak beállításával.
 
 ```java
 ToDoItem item = new ToDoItem();
@@ -613,7 +613,7 @@ item.text = "Test Program";
 item.complete = false;
 ```
 
-Ezután **az insert()** egy olyan objektum beszúrására:
+Ezután **insert()** egy olyan objektum beszúrására:
 
 ```java
 ToDoItem entity = mToDoTable
@@ -621,21 +621,21 @@ ToDoItem entity = mToDoTable
     .get();
 ```
 
-A visszaadott entitás megegyezik a háttér táblába beszúrt adatokat tartalmazza, az ID és egyéb értékek (például a `createdAt`, `updatedAt`, és `version` mezők) állítsa be a háttérkiszolgálón.
+A visszaadott entitás egyezések a háttérrendszer táblába beszúrt adatokat tartalmaz, az Azonosítót és az egyéb értékek (például a `createdAt`, `updatedAt`, és `version` mezők) a háttérkiszolgáló beállítása.
 
-Mobile Apps táblák szükséges nevű elsődleges kulcsként megadott oszlop **azonosító**. Ez az oszlop karakterláncnak kell lennie. Az azonosító oszlop alapértelmezett értéke egy GUID Azonosítót.  Megadhatja, hogy más egyedi értékeket, például az e-mail címek vagy felhasználónevek. Egy beszúrt bejegyzés nincs megadva érvényes karakterlánc-azonosító értéke, a háttér hoz létre egy új GUID Azonosítót.
+A Mobile Apps táblák szükséges nevű elsődleges kulcsként megadott oszlop **azonosító**. Ez az oszlop karakterláncnak kell lennie. Az azonosító oszlop alapértelmezett értéke egy GUID Azonosítót.  Megadhat más egyedi értékeket, például az e-mail-címeket vagy a felhasználónevek egyeztetéséhez. Egy karakterláncértéket azonosítója nincs megadva egy beszúrva rekord, a háttérrendszer hoz létre egy új GUID Azonosítót.
 
-Karakterlánc-azonosító érték a következő előnyöket biztosítja:
+Karakterlánc-azonosító értéket adja meg a következő előnyökkel jár:
 
-* Azonosítók generálhatók anélkül, hogy az oda-vissza az adatbázisba.
-* Rekordok olyan könnyebben különböző táblákhoz vagy adatbázisok egyesíteni.
-* Azonosító értékek jobban integrálható egy alkalmazás logikáját.
+* Anélkül, hogy oda-vissza az adatbázis azonosítót lehet létrehozni.
+* Rekordok használata egyszerűbb, egyesítheti a különböző táblák vagy adatbázisok.
+* Azonosító értékek jobban integrálható az alkalmazás logikáját.
 
-Karakterlánc azonosító értékek a következők **REQUIRED** kapcsolat nélküli szinkronizálás támogatásához.  Egy azonosító nem módosítható, ha a háttér-adatbázisban tárolja.
+Karakterlánc-azonosító értékek a következők **kötelező** az offline szinkronizálás támogatásához.  Egy azonosító nem módosítható, ha a háttér adatbázis található.
 
-## <a name="updating"></a>A mobilalkalmazások adatok frissítése
+## <a name="updating"></a>A mobilalkalmazás adatainak frissítéséhez
 
-A tábla adatainak frissítéséhez adja át az új objektum a **az update()** metódust.
+Frissíti egy táblában lévő adatokat, át kell adnia az új objektum a **update()** metódust.
 
 ```java
 mToDoTable
@@ -643,18 +643,18 @@ mToDoTable
     .get();
 ```
 
-Ebben a példában *elem* sorában hivatkozás a *ToDoItem* táblázat, amely akkor történt változások.  A sor azonos **azonosító** frissül.
+Ebben a példában *elem* eszköztáblára mutató hivatkozás egy sort a *ToDoItem* táblában, amely azt változások volt-e.  A sor azonos **azonosító** frissül.
 
-## <a name="deleting"></a>A mobilalkalmazások adatok törlése
+## <a name="deleting"></a>A mobilalkalmazás adatainak törlése
 
-A következő kód bemutatja, hogyan adatok törléséhez a tábla az objektum megadásával.
+A következő kód bemutatja, hogyan törli az adatokat egy táblából az objektum megadásával.
 
 ```java
 mToDoTable
     .delete(item);
 ```
 
-Egy elem megadásával is törölheti a **azonosító** mezőjét a sor törlése.
+Egy elem megadásával is törölheti a **azonosító** a törlendő sor mezőjében.
 
 ```java
 String myRowId = "2FA404AB-E458-44CD-BC1B-3BC847EF0902";
@@ -662,9 +662,9 @@ mToDoTable
     .delete(myRowId);
 ```
 
-## <a name="lookup"></a>Kereshet egy adott cikk azonosítója
+## <a name="lookup"></a>Kereshet meg egy adott elem azonosítója
 
-Kereshet egy adott cikk **azonosító** mezőt a a **lookUp()** módszert:
+Kereshet meg egy adott elemet **azonosító** mezőt a a **lookUp()** módszer:
 
 ```java
 ToDoItem result = mToDoTable
@@ -672,13 +672,13 @@ ToDoItem result = mToDoTable
     .get();
 ```
 
-## <a name="untyped"></a>Útmutató: a típus nélküli adatok használata
+## <a name="untyped"></a>Útmutató: nem típusos adatok használata
 
-A típus nélküli programozási modell JSON-szerializálás pontos ellenőrzést ad.  Nincsenek olyan gyakori forgatókönyveket tartalmaz, ahol lehetséges, hogy szeretné használni egy típusos programozási modellt. Ha például a háttérbeli tábla sok oszlop szerepel, és csak hivatkoznia kell az oszlopok egy részét.  A beírt modell szükséges, hogy a Mobile Apps-háttérrendszer az adatok osztályban definiált összes oszlopát adja meg.  Az API-hívások adatainak eléréséhez a legtöbb hasonlóak a típusos programozási hívásokat. A fő különbség az, hogy a típus nélküli modell indításakor módszerek a a **MobileServiceJsonTable** objektum, ahelyett, hogy a **MobileServiceTable** objektum.
+A típus nélküli programozási modell révén, JSON-szerializálás pontosan szabályozhatja.  Van néhány gyakori forgatókönyvet, ahol érdemes egy típusos programozási modellt használja. Ha például a háttértáblára sok oszlopot tartalmaz, és csak hivatkoznia kell az oszlopok egy része.  A beírt modell megköveteli, hogy az adatok osztály a Mobile Apps háttéralkalmazásból definiált összes oszlopát adja meg.  Az API-hívások adatainak elérése többsége hasonló gépelt programozási hívásnak. A fő különbség az, hogy a nem típusos modellben, metódusokat hívhat meg, a **MobileServiceJsonTable** -objektum helyett a **MobileServiceTable** objektum.
 
-### <a name="json_instance"></a>A típus nélküli tábla példányt létrehozni
+### <a name="json_instance"></a>Hozzon létre egy példányt egy típusos táblázat
 
-A beírt modell hasonló, akkor indítja el a táblahivatkozás, de ebben az esetben egy **MobileServicesJsonTable** objektum. A hivatkozás beszerzése meghívásával a **getTable** metódus az ügyfél-példány:
+A beírt modell hasonló, akkor úgy indítja el a táblahivatkozást, de ebben az esetben egy **MobileServicesJsonTable** objektum. A hivatkozás beszerzése meghívásával a **getTable** metódus az ügyfél egy példányát:
 
 ```java
 private MobileServiceJsonTable mJsonToDoTable;
@@ -686,10 +686,10 @@ private MobileServiceJsonTable mJsonToDoTable;
 mJsonToDoTable = mClient.getTable("ToDoItem");
 ```
 
-Miután létrehozott egy példányát a **MobileServiceJsonTable**, gyakorlatilag az azonos API érhető el, a típusos programozási modellel rendelkezik. Bizonyos esetekben a módszerek Típusos paraméter helyett egy Típusos paraméter igénybe vehet.
+Miután létrehozott egy példányát a **MobileServiceJsonTable**, gyakorlatilag az azonos API elérhető gépelt programozási modell rendelkezik. Bizonyos esetekben a módszerek igénybe egy Típusos paraméter helyett egy típusos paraméterek.
 
-### <a name="json_insert"></a>A típus nélküli táblába beszúrása
-A következő kód bemutatja, hogyan egy INSERT utasítás végrehajtásához. Az első lépés az, hogy hozzon létre egy [JsonObject][1], amely része a [gson] [ 3] könyvtárban.
+### <a name="json_insert"></a>A típus nélküli táblába INSERT
+A következő kód bemutatja, hogyan teheti a Beszúrás. Az első lépés az, hogy hozzon létre egy [JsonObject][1], amely része a [gson] [ 3] könyvtár.
 
 ```java
 JsonObject jsonItem = new JsonObject();
@@ -697,7 +697,7 @@ jsonItem.addProperty("text", "Wake up");
 jsonItem.addProperty("complete", false);
 ```
 
-Ezt követően **az insert()** a nem típusos objektum beszúrására a táblába.
+Ezután használja **insert()** a típus nélküli objektum beszúrni a táblába.
 
 ```java
 JsonObject insertedItem = mJsonToDoTable
@@ -705,27 +705,27 @@ JsonObject insertedItem = mJsonToDoTable
     .get();
 ```
 
-Ha szeretné az importált objektum Azonosítóját, használja a **getAsJsonPrimitive()** metódust.
+Ha az importált objektum Azonosítójának lekéréséhez van szüksége, használja a **getAsJsonPrimitive()** metódust.
 
 ```java
 String id = insertedItem.getAsJsonPrimitive("id").getAsString();
 ```
-### <a name="json_delete"></a>A típus nélküli táblából törlése
-A következő kód bemutatja, hogyan kívánja törölni, ebben az esetben ugyanazt a példányát egy **JsonObject** előzetes létrehozott *beszúrása* példa. A kód azonos a típusos eset az, de a metódus aláírása egy másik óta az általa hivatkozott egy **JsonObject**.
+### <a name="json_delete"></a>Egy nem típusos tábla törlése
+A következő kód bemutatja, hogyan törölhet egy példányt, ebben az esetben példányát egy **JsonObject** előzetes hozták létre, amely *beszúrása* példa. A kód, mint a beírt eset az, de a metódus egy különböző aláírással rendelkezik, mivel az általa hivatkozott egy **JsonObject**.
 
 ```java
 mToDoTable
     .delete(insertedItem);
 ```
 
-Azonosítóval segítségével közvetlenül is törölhet egy példányát:
+Egy példány által közvetlenül az azonosítójával is törölheti:
 
 ```java
 mToDoTable.delete(ID);
 ```
 
-### <a name="json_get"></a>Visszaadja az összes sort típusos táblából
-A következő kód bemutatja, hogyan lehet lekérni a teljes táblát. Óta egy JSON-tábla használja, szelektív módon le közül csak az a táblázat oszlopaihoz.
+### <a name="json_get"></a>Az összes sor visszaadása egy típusos táblából
+A következő kód bemutatja, hogyan kérheti le a teljes táblát. Egy JSON-táblát használ, mivel külön-külön kérheti le a táblázat oszlopainak csak néhányat.
 
 ```java
 public void showAllUntyped(View view) {
@@ -761,20 +761,20 @@ public void showAllUntyped(View view) {
 }
 ```
 
-Ugyanazokat a szűrés, szűrést és a lapozás típusos modell felhasználható módszerek közül érhetők el a nem típusos modell.
+Ugyanazokat a szűrést, szűrés és a beírt modellben elérhető módszerek lapozás érhetők el a nem típusos modell.
 
-## <a name="offline-sync"></a>Kapcsolat nélküli szinkronizálás megvalósítása
+## <a name="offline-sync"></a>Offline szinkronizálás megvalósítása
 
-Az Azure Mobile Apps-ügyfél SDK megvalósít továbbá a kapcsolat nélküli szinkronizálását. SQLite-adatbázis segítségével tárolja a kiszolgáló adatok helyi másolatát.  Egy kapcsolat nélküli táblán végrehajtott műveletek nem igényelnek mobil kapcsolat működjön.  Kapcsolat nélküli szinkronizálás segít az rugalmasság és a teljesítmény rovására ütközésének feloldása összetettebb logikát.  Az Azure Mobile Apps-ügyfél SDK a következő szolgáltatásokat nyújtja:
+Az Azure Mobile Apps ügyféloldali SDK kapcsolat nélküli szinkronizálás az adatok is SQLite-adatbázis segítségével tárolja a kiszolgáló adatainak helyi másolatát valósítja meg.  Egy kapcsolat nélküli táblán végrehajtott műveletek mobil kapcsolat működéséhez nem szükséges.  Kapcsolat nélküli szinkronizálás – célszerű a rugalmasság és teljesítmény rovására összetettebb logika ütközésfeloldáshoz.  Az Azure Mobile Apps-ügyfél SDK a következő funkciókat tartalmazza:
 
-* Növekményes szinkronizálás: Csak a frissített és új rekordok lesznek letöltve, sávszélesség- és memória-felhasználás mentése.
-* Egyidejű hozzáférések optimista: Műveletek feltételezhető, hogy sikeres legyen.  Ütközések feloldása késleltetve mindaddig, amíg a kiszolgáló a frissítések megtörténik.
-* Ütközések feloldása: Az SDK-t egy ütköző módosítás történt a kiszolgálón, és a felhasználó figyelmét hurkok biztosít észleli.
-* Helyreállítható törlés: A törölt rekordok lesznek megjelölve törölt, így azok offline gyorsítótár frissítése más eszközök.
+* Növekményes szinkronizálás: Csak a frissített és új rekordok lesznek letöltve, sávszélesség-és memóriafelhasználás mentése.
+* Optimista párhuzamosság: Műveletek feltételezhető, hogy sikeres legyen.  Ütközésfeloldás van halasztott mindaddig, amíg a frissítéseket a kiszolgálón történik.
+* Ütközések feloldása: A az SDK észleli, ha egy ütköző módosítás történt a kiszolgálón, és biztosít beavatkozási pontjainak figyelmezteti a felhasználót.
+* Helyreállítható törlés: A törölt rekordok törölt, így azok offline gyorsítótár frissítése más eszközök lesznek megjelölve.
 
-### <a name="initialize-offline-sync"></a>Kapcsolat nélküli szinkronizálás inicializálása
+### <a name="initialize-offline-sync"></a>Kapcsolat nélküli szinkronizálás – inicializálása
 
-A kapcsolat nélküli gyorsítótár használat előtt definiálni kell minden egyes offline tábla.  Általában tábladefiníció közvetlenül az ügyfél a létrehozása után történik meg:
+Minden offline tábla az offline gyorsítótárban használata előtt definiálni kell.  Tábla definíciójának normális esetben az ügyfél létrehozása után azonnal történik:
 
 ```java
 AsyncTask<Void, Void, Void> initializeStore(MobileServiceClient mClient)
@@ -817,7 +817,7 @@ AsyncTask<Void, Void, Void> initializeStore(MobileServiceClient mClient)
 }
 ```
 
-### <a name="obtain-a-reference-to-the-offline-cache-table"></a>A kapcsolat nélküli gyorsítótár táblájának mutató hivatkozás beszerzése
+### <a name="obtain-a-reference-to-the-offline-cache-table"></a>Szerezzen be egy hivatkozást az Offline gyorsítótár táblájának
 
 Egy online tábla használja `.getTable()`.  Egy kapcsolat nélküli tábla használja `.getSyncTable()`:
 
@@ -825,11 +825,11 @@ Egy online tábla használja `.getTable()`.  Egy kapcsolat nélküli tábla hasz
 MobileServiceSyncTable<ToDoItem> mToDoTable = mClient.getSyncTable("ToDoItem", ToDoItem.class);
 ```
 
-Az online táblák (beleértve a szűrési, rendezési, lapozás, adatok beszúrása, adatok frissítése és adatok törlése) rendelkezésre álló módszerek működőképesek egyaránt online és offline táblákon.
+Online táblák (beleértve a szűrési, rendezési, lapozás, adatok beszúrása, adatok frissítése és adatok törlése) elérhető összes módszer jól működik egyaránt azokon a táblákon, online és offline állapotban van.
 
-### <a name="synchronize-the-local-offline-cache"></a>A helyi kapcsolat nélküli gyorsítótár szinkronizálása
+### <a name="synchronize-the-local-offline-cache"></a>A helyi Offline gyorsítótár szinkronizálása
 
-Az alkalmazás a vezérlőben van a szinkronizálás.  Íme egy példa szinkronizálási módszert:
+Szinkronizálás az alkalmazás irányítása alatt van.  Íme egy példa szinkronizálási módszert:
 
 ```java
 private AsyncTask<Void, Void, Void> sync(MobileServiceClient mClient) {
@@ -850,23 +850,23 @@ private AsyncTask<Void, Void, Void> sync(MobileServiceClient mClient) {
 }
 ```
 
-Ha a lekérdezés nevét megadott a `.pull(query, queryname)` módszer, majd a növekményes szinkronizálás ad vissza, csak azt jelzi, hogy a létrehozott vagy megváltozott a legutóbbi sikeres lekéréses befejeződött.
+Ha a lekérdezés nevét megadva, hogy a `.pull(query, queryname)` módszer, majd a növekményes szinkronizálás szolgál visszatérhet, csak a rekordok létrehozott, vagy az utolsó óta megváltozott sikeresen befejeződött a lekéréses.
 
-### <a name="handle-conflicts-during-offline-synchronization"></a>Kapcsolat nélküli szinkronizálás során ütközések kezelésére
+### <a name="handle-conflicts-during-offline-synchronization"></a>Offline szinkronizálás során az ütközések kezelése
 
-Ha ütközés során megtörténik egy `.push()` műveletet, a `MobileServiceConflictException` vált ki.   A kiszolgáló által kiállított elem van ágyazva a kivételt, és lekérhetők `.getItem()` a kivétel miatt.  Állítsa be a leküldéses meghívásával beolvasott MobileServiceSyncContext objektum a következő elemek:
+Ütközés során történik, ha egy `.push()` művelet egy `MobileServiceConflictException` fordul elő.   A kiszolgáló által kiállított elem van ágyazva a kivételt, és lekérheti `.getItem()` a kivételt.  Állítsa be a leküldéses a MobileServiceSyncContext objektum a következő elemek meghívásával:
 
 *  `.cancelAndDiscardItem()`
 *  `.cancelAndUpdateItem()`
 *  `.updateOperationAndItem()`
 
-Amennyiben az összes ütközésnél vannak megjelölve kívánja, hívja `.push()` ismét meg kell feloldani az ütközést.
+Miután az összes ütközésnél igény szerint vannak megjelölve, hívja `.push()` , újra feloldani az ütközést.
 
-## <a name="custom-api"></a>Egy egyéni API hívása
+## <a name="custom-api"></a>Egyéni API hívása
 
-Egy egyéni API lehetővé teszi, hogy adhatók meg egyéni végpontokat teszi közzé a kiszolgálói funkciót, amely nem egy INSERT utasítás van leképezve, frissítése, törlése, vagy olvasási művelete. Egy egyéni API használatával is befolyásolni további üzenetküldés, beleértve az olvasási és HTTP-üzenet fejlécek beállítása meghatározó JSON nem üzenet törzsének formátumban.
+Egyéni API-k lehetővé teszi, hogy meghatározza az egyedi végpontok, amelyek teszik közzé a kiszolgálói funkciót, amely nem egy insert leképezése, frissítése, törlése vagy olvasási művelete. Egyéni API-k használatával rendelkezhet több felügyeleti üzenetkezelés, beleértve olvasása és HTTP-üzenet fejlécek beállítása és eltérő JSON üzenet törzse formátum meghatározása.
 
-Android-ügyfélről, meghívja a **invokeApi** metódust kell meghívni az egyéni API-végpontot. A következő példa bemutatja, hogyan hívhatja meg az API-végpont nevű **completeAll**, egy gyűjtemény osztályt adja vissza, amely **MarkAllResult**.
+Android-ügyfélről, hívja a **invokeApi** metódus az egyéni API-végpont meghívására. Az alábbi példa bemutatja, hogyan hívhat meg egy API-végpont nevű **completeAll**, egy gyűjtemény osztályt adja vissza, amely **MarkAllResult**.
 
 ```java
 public void completeItem(View view) {
@@ -886,36 +886,36 @@ public void completeItem(View view) {
 }
 ```
 
-A **invokeApi** metódus lehívásra kerül az ügyfélszámítógépen, amely egy POST kérést küld az új egyéni API-t. Az egyéni API által visszaadott eredmény jelenik meg egy üzenet párbeszédpanelen hibák. Egyéb verziói **invokeApi** lehetővé teszik, hogy választhatóan egy objektum küldését a kérés törzsében, adja meg a HTTP-metódus és lekérdezési paraméterek kérelem küldése. Típus nélküli verziói **invokeApi** is találhatók.
+A **invokeApi** módszert hívja meg az ügyfélen, amely egy POST kérést küld az új egyéni API-t. Az egyéni API-k által visszaadott eredmény is megjelenik egy üzenet párbeszédpanelen esetleges hibák. Egyéb verziói **invokeApi** segítségével igény szerint a kérelem törzsében szereplő objektum küldése, adja meg a HTTP-metódus és lekérdezési paraméterek a kérés küldése. Típus nélküli verziói **invokeApi** is biztosított.
 
 ## <a name="authentication"></a>Hitelesítés hozzáadása az alkalmazáshoz
 
-Oktatóanyagok már ismertetik részletesen adja hozzá ezeket a szolgáltatásokat.
+Az oktatóanyagok már részletesen történő hozzáadását ismertetik ezeket a funkciókat.
 
-Támogatja az App Service [app felhasználók hitelesítéséhez](app-service-mobile-android-get-started-users.md) használatával különböző külső Identitásszolgáltatók: Facebook, a Google, a Microsoft Account, a Twitter és az Azure Active Directory. A engedélyeket korlátozhatja a hozzáférést a megadott művelet csak a hitelesített felhasználók táblákon. Hitelesített felhasználók identitásának használatával valósít meg a háttérrendszer az engedélyezési szabályok.
+Az App Service támogatja [. alkalmazás felhasználóinak hitelesítése](app-service-mobile-android-get-started-users.md) használatával különböző külső Identitásszolgáltatók: Facebook, Google, Microsoft Account, Twitter és az Azure Active Directoryban. Beállíthatja, hogy a engedélyeit azokon a táblákon, az adott műveletek csak a hitelesített felhasználók a hozzáférés korlátozásához. Az engedélyezési szabályok megvalósításához a háttérszolgáltatásban is használhatja a hitelesített felhasználók identitását.
 
-Két hitelesítési forgalom támogatottak: egy **server** folyamata és a **ügyfél** folyamata. A kiszolgáló folyamata nyújt a legegyszerűbb felhasználói hitelesítés az identitás-szolgáltatók webes felület támaszkodnak.  Nincsenek további SDK-k kiszolgálóhitelesítés folyamat végrehajtásához szükséges. Kiszolgálóhitelesítés folyamata nem biztosít részletes integrálása a mobil eszköz, és csak ajánlott forgatókönyvek koncepció igazolása.
+Két hitelesítési folyamatok támogatottak: egy **kiszolgáló** folyamat és a egy **ügyfél** folyamat. A server flow nyújt a legegyszerűbb felhasználói hitelesítés támaszkodik a identity providers webes felületén.  Nincsenek további SDK-k megvalósításához server flow-hitelesítés szükséges. Kiszolgálóhitelesítés folyamat nem biztosít a mély integráció, a mobil eszköz, és csak ajánlott forgatókönyvek koncepció igazolása.
 
-Az ügyféltanúsítvány-folyamat az eszközspecifikus képességekkel bővült, például egyszeri bejelentkezés szorosabb integrációt lehetővé teszi számára, támaszkodnak az SDK-k az identitásszolgáltató által biztosított.  Például a Facebookhoz SDK is integrálható a mobilalkalmazást.  A mobil ügyfél cseréje a Facebook-alkalmazásba, és megerősíti, hogy a bejelentkezés előtt vissza a mobilalkalmazás a csere.
+A client flow lehetővé teszi mélyebb integrációjuk eszközspecifikus képességek, például egyszeri bejelentkezés, SDK-k az identitásszolgáltató által biztosított támaszkodik.  Például a Facebook SDK is integrálja a mobilalkalmazást.  A mobil ügyfelekből felcseréli a Facebook-alkalmazásba, és megerősíti, hogy a bejelentkezés előtt érvényesítheti a mobilalkalmazásnak.
 
-Négy lépést kell az alkalmazás-hitelesítés engedélyezése:
+Négy lépések szükségesek az alkalmazás-hitelesítés engedélyezéséhez:
 
-* Hitelesítés az alkalmazás regisztrálása egy identitásszolgáltatóval.
-* App Service-háttéralkalmazásának konfigurálása.
-* A hitelesített felhasználókhoz csak az App Service-háttérrendszer tábla jogosultságok korlátozása.
+* Regisztrálja az alkalmazást a hitelesítést egy identitásszolgáltatóval.
+* Konfigurálja az App Service-ben háttérszolgáltatás használatára.
+* Az App Service háttérrendszer csak a hitelesített felhasználók tábla engedélyeinek korlátozása.
 * Hitelesítési kód hozzáadása az alkalmazáshoz.
 
-A engedélyeket korlátozhatja a hozzáférést a megadott művelet csak a hitelesített felhasználók táblákon. Egy hitelesített felhasználó biztonsági azonosítója segítségével módosíthatja a kérelem.  További információkért tekintse át a [Bevezetés a hitelesítés használatába] és a kiszolgáló SDK útmutató dokumentációjában talál.
+Beállíthatja, hogy a engedélyeit azokon a táblákon, az adott műveletek csak a hitelesített felhasználók a hozzáférés korlátozásához. A hitelesített felhasználó SID használatával módosíthatja a kérelmeket.  További információkért tekintse át a [hitelesítés első lépései] és a kiszolgáló SDK HOWTO dokumentációt.
 
-### <a name="caching"></a>Hitelesítési: Server folyamat
+### <a name="caching"></a>Hitelesítés: Server Flow
 
-A következő kódot a Google-szolgáltató kiszolgáló üzenetkezelési bejelentkezési folyamat elindul.  Nincs szükség további konfigurációra a Google-szolgáltató biztonsági követelmények miatt:
+A következő kódot a Google-szolgáltató kiszolgáló flow bejelentkezési folyamat elindul.  A Google-szolgáltató biztonsági követelmények miatt további konfigurálására szükség:
 
 ```java
 MobileServiceUser user = mClient.login(MobileServiceAuthenticationProvider.Google, "{url_scheme_of_your_app}", GOOGLE_LOGIN_REQUEST_CODE);
 ```
 
-A fő tevékenységosztállyal emellett hozzáadása a következő metódust:
+Emellett a fő tevékenységosztállyal adja hozzá a következő metódust:
 
 ```java
 // You can choose any unique number here to differentiate auth providers from each other. Note this is the same code at login() and onActivityResult().
@@ -942,9 +942,9 @@ protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 }
 ```
 
-A `GOOGLE_LOGIN_REQUEST_CODE` a fő definiált tevékenység szolgál a `login()` metódus és belül a `onActivityResult()` metódust.  Minden egyedi szám, választhat, mindaddig, amíg az azonos számú használják a `login()` metódus és a `onActivityResult()` metódust.  Az Ügyfélkód szolgáltatás kártyához (a korábban bemutatott) tehetik absztrakttá, ha a szolgáltatás adapteren a megfelelő módszereket célszerű hívni.
+A `GOOGLE_LOGIN_REQUEST_CODE` meghatározott a fő tevékenység szolgál a `login()` metódus és belül a `onActivityResult()` metódus.  Mindaddig, amíg az azonos számú belül használt bármilyen egyedi szám, kiválaszthatja a `login()` módszer és a `onActivityResult()` metódust.  Egy szolgáltatás kártyához, (, ahogy ezt korábban) absztrakt, az Ügyfélkód, a megfelelő módszerek a szolgáltatás-adapteren kell hívjuk.
 
-Szükség customtabs a projekt konfigurálásához.  Először adja meg egy átirányítási URL.  Adja hozzá a következő kódrészletet a `AndroidManifest.xml`:
+Azt is konfigurálnia kell a customtabs projektet.  Először adja meg egy átirányítási URL-címet.  Adja hozzá a következő kódrészletet `AndroidManifest.xml`:
 
 ```xml
 <activity android:name="com.microsoft.windowsazure.mobileservices.authentication.RedirectUrlActivity">
@@ -957,7 +957,7 @@ Szükség customtabs a projekt konfigurálásához.  Először adja meg egy áti
 </activity>
 ```
 
-Adja hozzá a **redirectUriScheme** számára a `build.gradle` fájl az alkalmazáshoz:
+Adja hozzá a **redirectUriScheme** , a `build.gradle` fájlt az alkalmazás:
 
 ```text
 android {
@@ -974,7 +974,7 @@ android {
 }
 ```
 
-Végül adja hozzá `com.android.support:customtabs:23.0.1` a Függőségek listába a `build.gradle` fájlt:
+Végül adja hozzá `com.android.support:customtabs:23.0.1` a függőségek listájához a `build.gradle` fájlt:
 
 ```text
 dependencies {
@@ -988,24 +988,24 @@ dependencies {
 }
 ```
 
-A bejelentkezett felhasználó az azonosító lekéréséhez a **MobileServiceUser** használatával a **getUserId** metódust. Például egy határidő használata az aszinkron bejelentkezési API-k hívására, lásd: [Bevezetés a hitelesítés használatába].
+Szerezze be a bejelentkezett felhasználó Azonosítóját egy **MobileServiceUser** használatával a **getUserId** metódust. Határidő használata az aszinkron bejelentkezési API-k hívásához egy példa: [hitelesítés első lépései].
 
 > [!WARNING]
-> Az URL-séma említett a kis-és nagybetűket.  Győződjön meg arról, hogy minden előfordulását `{url_scheme_of_you_app}` nagybetű.
+> Az említett URL-sémát a kis-és nagybetűket.  Ügyeljen arra, hogy minden előfordulását `{url_scheme_of_you_app}` és nagybetűk megkülönböztetése.
 
-### <a name="caching"></a>A hitelesítési tokenek gyorsítótárazása
+### <a name="caching"></a>Hitelesítési jogkivonatok gyorsítótárazása
 
-A hitelesítési tokenek gyorsítótárazás meg kell tárolni a felhasználói Azonosítót és a hitelesítési jogkivonat helyileg az eszközön. Az alkalmazás következő indításakor, akkor ellenőrizze, hogy a gyorsítótár, és ha ezek az értékek meg adva, a bejelentkezési eljárást kihagyhatja, és az ügyfél és az adatok rehydrate. Azonban ezek az adatok bizalmas, és azt kell tárolni, titkosított biztonsági abban az esetben, ha a telefonszám biztosítása.  Láthatja, hogy a gyorsítótár a hitelesítési tokenek az egy teljes példa bemutatja, hogyan [gyorsítótárazza a hitelesítési tokenek szakaszban][7].
+Hitelesítési jogkivonatok gyorsítótárazása megköveteli, hogy tárolja a felhasználói Azonosítót és a hitelesítési jogkivonat helyileg az eszközön. Az alkalmazás következő indításakor, ellenőrizze, hogy a gyorsítótárban, és ezek az értékek jelen, ha a bejelentkezési eljárást kihagyhatja, és az ügyfél és az adatok rehidratálási. Azonban az adatok bizalmas, és kell tárolni, abban az esetben a telefon ellopják biztonsági titkosítva lesznek.  Láthatja, hogy a gyorsítótár hitelesítési tokenek az egy teljes példát bemutatja, hogyan [gyorsítótárazzák a hitelesítési tokenek szakaszban][7].
 
-A lejárt tokent használatakor kap egy *nem engedélyezett 401* válasz. Hitelesítési hibák szűrők segítségével kezelheti.  Szűrők intercept az App Service-háttérrendszer kéréseket. A kód teszteli, az a 401-es válasz, a bejelentkezési folyamat elindítja és majd folytatja a kérelemhez, amely a 401-es jön létre.
+A lejárt tokent használatakor kap egy *401 – jogosulatlan hibaüzenetet* választ. Ezekkel a szűrőkkel hitelesítési hibák kezelésére is alkalmas.  Szűrők intercept az App Service háttérrendszer kérelmeket. A szűrő kód teszteli a 401-es válasz, a bejelentkezési folyamatot aktivál, és majd folytatja a kérelemhez, amely a 401-es generált.
 
-### <a name="refresh"></a>Használja a frissítési jogkivonatokat
+### <a name="refresh"></a>Frissítési biztonsági jogkivonat használata
 
-Az Azure App Service hitelesítés és engedélyezés által visszaadott jogkivonatának egy meghatározott élettartama 1 óra.  Ezt követően a felhasználó kell újból hitelesítésre.  Ha egy hosszú élettartamú, ügyfél-folyamat hitelesítési keresztül érkezett, akkor is hitelesítését jogkivonatot használja az Azure App Service hitelesítési és engedélyezési ugyanezt a tokent használ.  Egy másik Azure App Service-jogkivonat új élettartamán jön létre.
+Az Azure App Service-hitelesítés és engedélyezés által visszaadott tokent rendelkezik egy meghatározott élettartam egy óra.  Ez az időtartamnak az elteltével a felhasználó kell újból hitelesítésre.  Ha hosszú élettartamú jogkivonat, amely client flow hitelesítési keresztül kapott, és hitelesítse magát újra is használja az Azure App Service-hitelesítés és engedélyezés használatával ugyanezt a tokent.  Egy új élettartamát az Azure App Service egy másik jogkivonatot jön létre.
 
-Frissítési jogkivonatok használni kívánt szolgáltató is rögzítheti.  A frissítési Token nem mindig rendelkezésre áll.  Nincs szükség további konfigurációra:
+Frissítési jogkivonatok használni kívánt szolgáltató is rögzítheti.  A Token frissítése nem érhető mindig.  További konfigurációra szükség:
 
-* A **Azure Active Directory**, a titkos ügyfélkulcsot konfigurálása az Azure Active Directory-alkalmazás.  Adja meg a titkos ügyfélkulcs az Azure App Service, Azure Active Directory-hitelesítés konfigurálásakor.  Meghívásakor `.login()`, adja át `response_type=code id_token` paramétert:
+* A **Azure Active Directory**, ügyfélkódot konfigurálása az Azure Active Directory-alkalmazás.  Adja meg az ügyfél titkos kulcsát az Azure App Service konfigurálása Azure Active Directory-hitelesítés során.  Hívásakor `.login()`, pass `response_type=code id_token` paramétert:
 
     ```java
     HashMap<String, String> parameters = new HashMap<String, String>();
@@ -1031,7 +1031,7 @@ Frissítési jogkivonatok használni kívánt szolgáltató is rögzítheti.  A 
 
 * A **Microsoft Account**, jelölje be a `wl.offline_access` hatókör.
 
-Frissítse a jogkivonatot, hívja meg a `.refreshUser()`:
+A jogkivonat frissítéséhez hívja `.refreshUser()`:
 
 ```java
 MobileServiceUser user = mClient
@@ -1041,12 +1041,12 @@ MobileServiceUser user = mClient
 
 Ajánlott eljárásként hozzon létre egy szűrőt, amely észleli a 401-es választ a kiszolgálóról, és próbálja meg frissíteni a felhasználói jogkivonat.
 
-## <a name="log-in-with-client-flow-authentication"></a>Jelentkezzen be az ügyféltanúsítvány-folyamat hitelesítés
+## <a name="log-in-with-client-flow-authentication"></a>Folyamat ügyfél-hitelesítési bejelentkezés
 
-Az ügyféltanúsítvány-folyamat hitelesítési bejelentkezik az általános folyamat a következőképpen történik:
+A client flow hitelesítési bejelentkezik általános folyamata a következőképpen történik:
 
-* Azure App Service hitelesítés és engedélyezés konfigurálhatók, mint server-folyamat hitelesítés.
-* A hitelesítésszolgáltató egy hozzáférési jogkivonat létrehozásához hitelesítéshez SDK integrálását.
+* Az Azure App Service-hitelesítés és engedélyezés konfigurálhatók, mint folyamat server-hitelesítés.
+* Integrálhatja a hitelesítési szolgáltató SDK-t a hitelesítéshez szükséges hozzáférési jogkivonat.
 * Hívja a `.login()` módszert az alábbiak szerint:
 
     ```java
@@ -1065,14 +1065,14 @@ Az ügyféltanúsítvány-folyamat hitelesítési bejelentkezik az általános f
     });
     ```
 
-Cserélje le a `onSuccess()` metódus függetlenül kódját, kíván használni a sikeres bejelentkezés.  A `{provider}` karakterlánca egy érvényes szolgáltatói: **aad** (az Azure Active Directory), **facebook**, **google**, **microsoftaccount**, vagy **twitter**.  Ha egyéni hitelesítési megvalósítását, majd is használhatja az egyéni hitelesítési szolgáltató címkéje.
+Cserélje le a `onSuccess()` metódust bármilyen kódot szeretne használni a sikeres bejelentkezés.  A `{provider}` karakterlánc egy érvényes szolgáltatói: **aad** (az Azure Active Directory), **facebook**, **google**, **microsoftaccount**, vagy **twitter**.  Ha egyéni hitelesítési valósította meg, majd is használhatja az egyéni hitelesítési szolgáltató címkét.
 
-### <a name="adal"></a>Hitelesíti a felhasználókat a az Active Directory Authentication Library (ADAL)
+### <a name="adal"></a>Hitelesítheti a felhasználókat a az Active Directory Authentication Library (ADAL)
 
-Az Active Directory Authentication Library (ADAL) segítségével a felhasználók jelentkezzen be az alkalmazás Azure Active Directory használatával. Egy ügyfél folyamata bejelentkezési használata gyakran használata helyett a `loginAsync()` módszerek, mert több natív UX abba biztosít, és lehetővé teszi, hogy további testreszabási.
+Az Active Directory Authentication Library (ADAL) segítségével bejelentkezhetnek a felhasználók az alkalmazásokba az Azure Active Directoryval. Az ügyfél-flow bejelentkezés a következő gyakran használata helyett a `loginAsync()` módszerek, mert több natív UX betekintést nyújt, és lehetővé teszi, hogy további testreszabási.
 
-1. A mobil-háttéralkalmazás számára az AAD-bejelentkezés konfigurálása a következő a [App Service konfigurálása az Active Directory bejelentkezési] [ 22] oktatóanyag. Ügyeljen arra, hogy a natív ügyfélalkalmazás regisztrációján választható lépés elvégzése után.
-2. Telepítse az adal-t a build.gradle fájlban a következő definíciókat tartalmazza:
+1. A mobil-háttéralkalmazás az AAD-bejelentkezés konfigurálása a következő a [konfigurálása App Service-ben az Active Directory-bejelentkezés] [ 22] oktatóanyag. Ellenőrizze, hogy a natív ügyfélalkalmazás regisztrációja nem kötelező lépése.
+2. Telepítse az adal-t módosításával a build.gradle fájllal, hogy az alábbi definíciókat tartalmazza:
 
 ```
 repositories {
@@ -1097,12 +1097,12 @@ dependencies {
 }
 ```
 
-1. Adja hozzá a következő kódot az alkalmazásról, így az alábbi új:
+1. Az alkalmazását, így a következő cseréjére adja hozzá a következő kódot:
 
-* Cserélje le **INSERT-SZOLGÁLTATÓ-Itt** nevű, a bérlő, amelyben az alkalmazás üzembe. A következő formátumban kell megadni https://login.microsoftonline.com/contoso.onmicrosoft.com.
-* Cserélje le **INSERT-erőforrás-azonosító-Itt** az ügyfél-azonosító a mobil-háttéralkalmazás számára. Ezt úgy szerezheti be az ügyfél-azonosító a **speciális** lap **Azure Active Directory beállításai** a portálon.
-* Cserélje le **INSERT-ügyfél-azonosító-Itt** , az ügyfél-Azonosítót a natív ügyfélalkalmazás másolta.
-* Cserélje le **INSERT-REDIRECT-URI-Itt** a hellyel való */.auth/login/done* végpont, a HTTPS protokollt használ. Ez az érték a következőképpen kell kinéznie *https://contoso.azurewebsites.net/.auth/login/done*.
+* Cserélje le **INSERT-SZOLGÁLTATÓ – Itt** , amelyben az alkalmazás kiosztása a bérlő nevével. A formátum https://login.microsoftonline.com/contoso.onmicrosoft.com.
+* Cserélje le **INSERT-erőforrás-azonosító – Itt** az ügyfél-Azonosítóját a mobile Apps-háttéralkalmazást. Az ügyfél-Azonosítót a szerezheti be a **speciális** lapjára **Azure Active Directory-beállítások** a portálon.
+* Cserélje le **INSERT-ügyfél-azonosító – Itt** és az ügyfél-Azonosítót a natív ügyfélalkalmazás fájlból kimásolt.
+* Cserélje le **INSERT-REDIRECT-URI-Itt** a hellyel */.auth/login/done* végpontról, a HTTPS-sémát. Ez az érték legyen hasonló *https://contoso.azurewebsites.net/.auth/login/done*.
 
 ```java
 private AuthenticationContext mContext;
@@ -1169,17 +1169,17 @@ protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 
 ## <a name="filters"></a>Az ügyfél – kiszolgáló kommunikáció beállítása
 
-Az ügyfél kapcsolata általában egy alapvető HTTP-kapcsolat használatával az alapul szolgáló HTTP-könyvtár az Android SDK-val megadott.  Több oka miért szeretné módosítani, amely:
+Az ügyfél csatlakozásának értéke általában egy egyszerű HTTP-kapcsolatot az alapul szolgáló az Android SDK-val megadott HTTP-kódtár használatával.  Miért érdemes módosíthatja, hogy több oka is van:
 
-* Egy másik HTTP-könyvtár időtúllépések úgy, hogy használni kívánja.
-* Adjon meg egy folyamatjelző kívánja.
-* Adjon meg egy egyéni fejlécet az API-felügyeleti funkciók támogatásához kívánja.
-* Szeretné intercept sikertelen választ, így újrahitelesítés valósíthat meg.
-* Naplózza a háttér-kérelmeket az analitikai szolgáltatás kívánja.
+* Egy másik HTTP-kódtár segítségével időtúllépések szeretné.
+* Adjon meg egy folyamatjelző szeretné.
+* API management-funkciót egy egyéni fejlécet hozzá kívánja.
+* Szeretné intercept hibás választ, hogy az újbóli hitelesítés valósítható meg.
+* Szeretné egy elemzési szolgáltatás naplózza a háttér-kérelmeket.
 
-### <a name="using-an-alternate-http-library"></a>Egy másik HTTP-könyvtár használatával
+### <a name="using-an-alternate-http-library"></a>Egy másik HTTP-kódtár használatával
 
-Hívja a `.setAndroidHttpClientFactory()` ügyfél referenciaként a létrehozása után azonnal metódust.  Ha például kapcsolati időkorlát beállításához 60 másodperc (és nem az alapértelmezett 10 másodperc):
+Hívja a `.setAndroidHttpClientFactory()` metódus az ügyfél hivatkozás létrehozása után azonnal.  Például állítsa be a kapcsolat időkorlátja 60 másodperc (és nem az alapértelmezett 10 másodperc):
 
 ```java
 mClient = new MobileServiceClient("https://myappname.azurewebsites.net");
@@ -1194,9 +1194,9 @@ mClient.setAndroidHttpClientFactory(new OkHttpClientFactory() {
 });
 ```
 
-### <a name="implement-a-progress-filter"></a>A folyamatban lévő szűrő megvalósítása
+### <a name="implement-a-progress-filter"></a>Egy folyamat szűrő megvalósítása
 
-Megvalósíthat egy intercept minden kérelem implementálásával egy `ServiceFilter`.  Például a következő frissíti egy előre létrehozott folyamatjelzőt:
+Minden kérelem egy intercept az életbe léptetésével valósíthat meg egy `ServiceFilter`.  Például a következő frissíti egy előre létrehozott folyamatjelző sáv:
 
 ```java
 private class ProgressFilter implements ServiceFilter {
@@ -1233,13 +1233,13 @@ private class ProgressFilter implements ServiceFilter {
 }
 ```
 
-Csatolhat a szűrőt az ügyfél az alábbiak szerint:
+Az ügyfél a következő csatolhat a szűrőt:
 
 ```java
 mClient = new MobileServiceClient(applicationUrl).withFilter(new ProgressFilter());
 ```
 
-### <a name="customize-request-headers"></a>Kérelemfejléc testreszabása
+### <a name="customize-request-headers"></a>Kérelemfejlécek testreszabása
 
 Használja a következő `ServiceFilter` és csatolja a szűrőt a ugyanúgy, mint a `ProgressFilter`:
 
@@ -1266,7 +1266,7 @@ private class CustomHeaderFilter implements ServiceFilter {
 
 ### <a name="conversions"></a>Automatikus szerializálási konfigurálása
 
-Megadhat egy átalakítási stratégia segítségével minden egyes oszlophoz alkalmazó a [gson] [ 3] API. Az Android ügyféloldali kódtár által használt [gson] [ 3] Pojo objektumait JSON-adatok szerializálni az adatokat az Azure App Service elküldése előtt a háttérben.  A következő kódban a **setFieldNamingStrategy()** módszer beállítása az stratégia. Ebben a példában a lépéssel törli a kezdeti karaktert ("m"), majd kisbetűs és a következő karakter, minden mező nevét. Például azt szeretné ikonná "left" "id".  Csökkenti _identify_the átalakítás stratégia megvalósításához `SerializedName()` jegyzetek a legtöbb mező.
+Megadhatja, hogy a konvertálási stratégia, amely minden oszlop használatával vonatkozik a [gson] [ 3] API-t. Az Android-klienskódtár használ [gson] [ 3] szerializálni a Java-objektumok JSON-adatokat az Azure App Service-ben az adatok elküldése előtt a háttérben.  A következő kódban a **setFieldNamingStrategy()** metódussal adja meg a stratégiát. Ez a példa törli a kezdeti karaktert ("m"), majd kisbetűs és a következő karakter minden mező nevét. Például azt szeretné információkká "közepes" "id".  Csökkentése érdekében a konvertálási stratégia megvalósításához `SerializedName()` jegyzetek a legtöbb mezőkben.
 
 ```java
 FieldNamingStrategy namingStrategy = new FieldNamingStrategy() {
@@ -1283,17 +1283,17 @@ client.setGsonBuilder(
 );
 ```
 
-Ez a kód egy mobil ügyfél hivatkozás segítségével létrehozása előtt kell végrehajtani a **MobileServiceClient**.
+Ez a kód létrehozása egy mobilügyfél hivatkozás használata előtt végre kell hajtani a **MobileServiceClient**.
 
 <!-- URLs. -->
 [Get started with Azure Mobile Apps]: app-service-mobile-android-get-started.md
 [ASCII control codes C0 and C1]: http://en.wikipedia.org/wiki/Data_link_escape_character#C1_set
 [Mobile Services SDK for Android]: http://go.microsoft.com/fwlink/p/?LinkID=717033
 [Azure portal]: https://portal.azure.com
-[Bevezetés a hitelesítés használatába]: app-service-mobile-android-get-started-users.md
-[1]: http://google-gson.googlecode.com/svn/trunk/gson/docs/javadocs/com/google/gson/JsonObject.html
+[Hitelesítés első lépései]: app-service-mobile-android-get-started-users.md
+[1]: https://static.javadoc.io/com.google.code.gson/gson/2.8.5/com/google/gson/JsonObject.html
 [2]: http://hashtagfail.com/post/44606137082/mobile-services-android-serialization-gson
-[3]: http://go.microsoft.com/fwlink/p/?LinkId=290801
+[3]: https://www.javadoc.io/doc/com.google.code.gson/gson/2.8.5
 [4]: http://go.microsoft.com/fwlink/p/?LinkId=296840
 [5]: app-service-mobile-android-get-started-push.md
 [6]: ../notification-hubs/notification-hubs-push-notification-overview.md#integration-with-app-service-mobile-apps

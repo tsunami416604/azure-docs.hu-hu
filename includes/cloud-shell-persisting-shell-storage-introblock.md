@@ -1,51 +1,51 @@
-# <a name="persist-files-in-azure-cloud-shell"></a>Azure Cloud rendszerhéj fájlok megőrzése
-Felhő rendszerhéj használja az Azure File storage fájlok megőrizni a munkamenetek között.
+# <a name="persist-files-in-azure-cloud-shell"></a>Az Azure Cloud Shellben fájlok megtartása
+A cloud Shell az Azure File storage segítségével a fájlok munkamenetek közötti megtartása használja.
 
 ## <a name="set-up-a-clouddrive-file-share"></a>Clouddrive fájlmegosztás beállítása
-A kezdeti kezdőlapon a felhő rendszerhéj kéri, hogy társítson egy új vagy meglévő fájlmegosztást fájlok megőrizni a munkamenetek között.
+Az első indítás a Cloud Shell kéri, hogy társíthatja egy új vagy meglévő fájlmegosztást a fájlok munkamenetek közötti megtartása.
 
 > [!NOTE]
-> Bash és PowerShell ossza meg ugyanazt a fájlmegosztást. Lehet, hogy csak egy fájlmegosztás automatikus csatlakoztatását a felhő rendszerhéj társítani.
+> A bash és a PowerShell ossza meg ugyanazt a fájlmegosztást. Csak egy fájlmegosztás társítható automatikus csatlakoztatását a Cloud shellben.
 
 ### <a name="create-new-storage"></a>Új tároló létrehozása
 
-Ha alapszintű beállításokat alkalmazza, és válassza ki az előfizetés csak, felhőalapú rendszerhéj az Ön nevében, akkor a legközelebb esik a támogatott régióban hoz létre három erőforrásokat:
+Ha alapvető beállításokkal, és válasszon ki egy előfizetést csak, a Cloud Shell három erőforrást hoz létre az Ön nevében a legközelebbi támogatott régióban:
 * Erőforráscsoport: `cloud-shell-storage-<region>`
-* Storage-fiók: `cs<uniqueGuid>`
+* Tárfiók: `cs<uniqueGuid>`
 * Fájlmegosztás: `cs-<user>-<domain>-com-<uniqueGuid>`
 
-![Az előfizetési beállítás](../articles/cloud-shell/media/persisting-shell-storage/basic-storage.png)
+![Az előfizetés beállítása](../articles/cloud-shell/media/persisting-shell-storage/basic-storage.png)
 
-A fájlmegosztás csatlakoztatja `clouddrive` a a `$Home` könyvtár. Ez egy egyszeri művelet, és a további munkamenetekhez automatikusan csatlakoztatja a fájlmegosztást. 
+A fájlmegosztás csatlakoztatja `clouddrive` a a `$Home` könyvtár. Ez egy egyszeri művelet, és minden későbbi munkamenet során az automatikusan csatlakoztatja a fájlmegosztást. 
 
 > [!NOTE]
-> A biztonság érdekében minden felhasználó saját tárfiókot kell telepíteni.  Szerepköralapú hozzáférés-vezérlést (RBAC), a felhasználók kell közreműködői hozzáférhet, vagy újabb, a tárolási fiók szint.
+> A biztonság érdekében minden felhasználó a saját tárfiók kell kiépítenie.  A szerepköralapú hozzáférés-vezérlés (RBAC) a felhasználók kell közreműködői hozzáférés vagy újabb, a storage-fiók szint.
 
-A Bash, a fájlmegosztás is tartalmaz egy 5 GB-os lemezképnek, amely automatikusan jön létre, amelyek továbbra is fennáll az adatok a `$Home` könyvtár. 
+A Bash, a fájlmegosztást is tartalmaz egy 5 GB-os rendszerképet, amely automatikusan jön létre, amely továbbra is fennáll az adatok a `$Home` könyvtár. 
 
-### <a name="use-existing-resources"></a>Létező erőforrásokból
+### <a name="use-existing-resources"></a>Meglévő erőforrások használata
 
-A speciális beállítás használatával társíthatja a meglévő erőforrásokat. Ha a tárolási telepítő parancssor jelenik meg, válassza ki a **megjelenítése speciális beállítások** további beállítások. A legördülő menüből a hozzárendelt felhő rendszerhéj-régió, valamint helyileg redundáns tárolás és georedundáns tárolás fiókok szűrve.
+A speciális lehetőség használatával társíthatja a meglévő erőforrások. A storage-telepítő használatával megjelenésekor válassza **speciális beállítások megjelenítése** további beállítások megtekintéséhez. A legördülő menükben a hozzárendelt Cloud Shell-régióra és a helyileg redundáns tárolás és a georedundáns tárfiókok vannak szűrve.
 
-A Bash, meglévő fájlmegosztások megjelenik egy 5 GB-os lemezképet hozott létre az Ön megőrizni a `$Home` könyvtár.
+Fájlmegosztások kap egy 5 GB-os rendszerképet, megőrizheti a létrehozott a `$Home` könyvtár.
 
-![Az erőforrás-csoport beállítás](../articles/cloud-shell/media/persisting-shell-storage/advanced-storage.png)
+![Az erőforrás-csoport beállításai](../articles/cloud-shell/media/persisting-shell-storage/advanced-storage.png)
 
-### <a name="restrict-resource-creation-with-an-azure-resource-policy"></a>Erőforrás létrehozása az Azure-erőforrás házirendjével korlátozása
-A felhő rendszerhéj létrehozott tárfiókok vannak látva `ms-resource-usage:azure-cloud-shell`. Ha azt szeretné, hogy a storage-fiókok létrehozása a felhő rendszerhéj letilthatja, hozzon létre egy [Azure-erőforrás házirend címkék](../articles/azure-policy/json-samples.md) , amely váltja ki ezt a címkét.
+### <a name="restrict-resource-creation-with-an-azure-resource-policy"></a>Erőforrás-létrehozás az Azure-erőforrás szabályzatával korlátozása
+Storage-fiókokat, akkor a Cloud Shellben hozzon létre megfelelő címkékkel `ms-resource-usage:azure-cloud-shell`. Ha azt szeretné, letilthatja a Cloud shellben hozzon létre a storage-fiókok, hozzon létre egy [Azure erőforrás-szabályzat a címkék](../articles/azure-policy/json-samples.md) , amely az adott címkével által aktivált.
 
-## <a name="supported-storage-regions"></a>Támogatott tárolási régiók
-Kapcsolódó az Azure storage-fiókok és a felhő rendszerhéj gépet, hogy van-e csatlakoztatni őket ugyanabban a régióban kell lennie.
+## <a name="supported-storage-regions"></a>Támogatott storage-régiók
+Kapcsolódó Azure storage-fiókok és a Cloud Shell-gép, hogy van-e csatlakoztatni őket ugyanabban a régióban kell lennie.
 
 A hozzárendelt régióban található, lehetséges, hogy:
-* A "speciális tárolási beállítások" párbeszédpanelen feljegyzés megtekintése
-* Tekintse meg a tárfiókot hozott létre az Ön nevét (pl.: `cloud-shell-storage-westus`)
+* A megjegyzés megtekintéséhez a "speciális tárolási beállítások" párbeszédpanelen
+* Tekintse meg a létrehozott tárfiók neve (például: `cloud-shell-storage-westus`)
 * Futtatás `env` , és keresse meg a változó `ACC_LOCATION`
 
-Felhő rendszerhéj gép létezik a következő régióban:
+Cloud Shell gépek létezik a következő régióban:
 |Terület|Régió|
 |---|---|
-|Amerika|USA keleti régiója, USA déli középső RÉGIÓJA, USA nyugati régiója|
+|Amerika|USA keleti RÉGIÓJA, USA déli középső RÉGIÓJA, USA nyugati RÉGIÓJA|
 |Európa|Észak-Európa, Nyugat-Európa|
-|Ázsia és a Csendes-óceáni térség|India központi, Délkelet-Ázsia|
+|Ázsia és a Csendes-óceáni térség|India középső, Délkelet-Ázsia|
 

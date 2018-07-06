@@ -1,6 +1,6 @@
 ---
-title: Azure Automation-erőforrások-kezelési megoldásokban |} Microsoft Docs
-description: Megoldások rendszerint tartalmazza a runbookok az Azure Automationben folyamatoknak, mint például a összegyűjtése és figyelési adatokat feldolgozó automatizálására.  Ez a cikk ismerteti a runbookok és a kapcsolódó erőforrások közé tartoznak a megoldásban.
+title: Azure Automation-erőforrások felügyeleti megoldások |} A Microsoft Docs
+description: Felügyeleti megoldások általában az Azure Automationben, például a figyelési adatok feldolgozása és gyűjtéséről folyamatok automatizálása runbookok tartalmazza.  Ez a cikk ismerteti, hogyan foglalhat bele a runbookokat és az azokhoz kapcsolódó erőforrásokat a megoldás.
 services: monitoring
 documentationcenter: ''
 author: bwren
@@ -15,43 +15,43 @@ ms.workload: infrastructure-services
 ms.date: 05/24/2017
 ms.author: bwren
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a7f32cc47c96f6fc8adaedef8f8ea3156ee70115
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: 95d5b2499f9e260e6ed134c4191b053325ca3f42
+ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2018
-ms.locfileid: "33887894"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37868823"
 ---
-# <a name="adding-azure-automation-resources-to-a-management-solution-preview"></a>Azure Automation-erőforrások hozzáadása a felügyeleti megoldás (előzetes verzió)
+# <a name="adding-azure-automation-resources-to-a-management-solution-preview"></a>Azure Automation-erőforrások hozzáadása a felügyeleti megoldásra (előzetes verzió)
 > [!NOTE]
-> Ez az előzetes dokumentációjában létrehozása kezelési megoldást, amely jelenleg előzetes verziójúak. Az alábbiakban a séma van változhat.   
+> Ez az előzetes dokumentum, jelenleg előzetes verzióban elérhető kezelési megoldások létrehozásához. Semmilyen sémát, az alábbiakban a változhat.   
 
 
-[Megoldások]( monitoring-solutions.md) runbookok rendszerint tartalmazza az Azure Automationben folyamatoknak, mint például a összegyűjtése és figyelési adatokat feldolgozó automatizálására.  Mellett runbookok Automation-fiók erőforrásokat, például a változók és a megoldásban használt runbookok támogató ütemezéseket tartalmaz.  Ez a cikk ismerteti a runbookok és a kapcsolódó erőforrások közé tartoznak a megoldásban.
+[Felügyeleti megoldások]( monitoring-solutions.md) rendszerint tartalmazza a forgatókönyvek az Azure Automationben a automatizálhatja a folyamatokat, például a figyelési adatok feldolgozása és gyűjtéséről.  Runbookok, mellett az Automation-fiókok adategységeket, mint a változók és a megoldásban használt runbookok támogató ütemezések magában foglalja.  Ez a cikk ismerteti, hogyan foglalhat bele a runbookokat és az azokhoz kapcsolódó erőforrásokat a megoldás.
 
 > [!NOTE]
-> Ebben a cikkben a minták használható paramétereket és változókat, amelyek a szükséges vagy közös felügyeleti megoldás és a [tervezési és -buildek olyan felügyeleti megoldást az Azure-ban ]( monitoring-solutions-creating.md) 
+> Ebben a cikkben a minták használata, paraméterek és változók, kötelező vagy közös felügyeleti megoldások és az itt ismertetett [tervezés és felépítés felügyeleti megoldás az Azure-ban ]( monitoring-solutions-creating.md) 
 
 
 ## <a name="prerequisites"></a>Előfeltételek
-Ez a cikk feltételezi, hogy már ismeri a következő információkat.
+Ez a cikk azt feltételezi, hogy Ön már ismeri a következő információkat.
 
 - Hogyan [felügyeleti megoldás létrehozása]( monitoring-solutions-creating.md).
 - Szerkezete egy [megoldásfájlt]( monitoring-solutions-solution-file.md).
-- Hogyan [Resource Manager-sablonok készítésének](../azure-resource-manager/resource-group-authoring-templates.md)
+- Hogyan [Resource Manager-sablonok készítése](../azure-resource-manager/resource-group-authoring-templates.md)
 
 ## <a name="automation-account"></a>Automation-fiók
-Az Azure Automationben összes erőforrás található egy [Automation-fiók](../automation/automation-security-overview.md#automation-account-overview).  A [Naplóelemzési munkaterületet, és az Automation-fiók]( monitoring-solutions.md#log-analytics-workspace-and-automation-account) az Automation-fiók nem található meg a felügyeleti megoldás, de már léteznie kell a megoldás telepítve van.  Ha nem érhető el, akkor a megoldás telepítése sikertelen lesz.
+Található összes erőforrást az Azure Automation- [Automation-fiók](../automation/automation-security-overview.md#automation-account-overview).  Leírtak szerint [Log Analytics-munkaterületet és Automation-fiók]( monitoring-solutions.md#log-analytics-workspace-and-automation-account) az Automation-fiók nem található meg a felügyeleti megoldás, de a megoldás telepítése előtt léteznie kell.  Ha nem érhető el, majd a megoldás telepítése sikertelen lesz.
 
-Minden egyes Automation-erőforrás nevét tartalmazza az Automation-fiók nevét.  Ezt a megoldást a **accountName** paraméter egy runbook-erőforrást az alábbi példában látható módon.
+Minden Automation-erőforrás neve tartalmazza az Automation-fiók nevét.  Ezt a megoldást a **accountName** paraméter egy adott runbook-erőforrás a következő példához hasonlóan.
 
     "name": "[concat(parameters('accountName'), '/MyRunbook'))]"
 
 
 ## <a name="runbooks"></a>Runbookok
-A megoldás a megoldásfájl használja, hogy a megoldás telepítésekor jönnek létre runbookokat kell tartalmaznia.  A runbook a sablon törzsét nem tartalmazhat azonban, így kell közzétenni a runbookot, egy nyilvános helyre, ahol az elérhető bármely felhasználó, a megoldás telepítése.
+A megoldásfájl lévő megoldás által használt, hogy a megoldás telepítése során jönnek létre runbookokat kell tartalmaznia.  A runbook a sablon törzsét nem tartalmazza, ezért a runbook tegyen közzé egy nyilvános helyre, ahol is hozzáférhet a megoldás telepítése felhasználója sem.
 
-[Azure Automation-runbook](../automation/automation-runbook-types.md) erőforrások típusa lehet **Microsoft.Automation/automationAccounts/runbooks** és az alábbi szerkezettel rendelkezik. Ez magában foglalja közös változók és paramétereket, így másolhatja és illessze be a következő kódrészletet a megoldásfájlt a, és módosítsa a paraméterek nevei. 
+[Az Azure Automation-runbook](../automation/automation-runbook-types.md) erőforrás rendelkezik egy típusú **Microsoft.Automation/automationAccounts/runbooks** és az alábbi struktúrával rendelkeznek. Ez magában foglalja közös változók és paraméterek, így másolhatja, és ez a kódrészlet illessze be a megoldásfájlt, és módosítsa a paraméterek nevei. 
 
     {
         "name": "[concat(parameters('accountName'), '/', variables('Runbook').Name)]",
@@ -74,21 +74,21 @@ A megoldás a megoldásfájl használja, hogy a megoldás telepítésekor jönne
     }
 
 
-Az alábbi táblázat ismerteti a runbookok tulajdonságai.
+Runbookok tulajdonságai a következő táblázat ismerteti.
 
 | Tulajdonság | Leírás |
 |:--- |:--- |
-| a kötelező runbookType |Adja meg a runbook típusú. <br><br> Parancsfájl - PowerShell-parancsfájl <br>PowerShell - PowerShell munkafolyamat <br> GraphPowerShell - grafikus PowerShell-parancsfájl forgatókönyv <br> GraphPowerShellWorkflow - grafikus PowerShell-munkafolyamati forgatókönyv |
-| logProgress |Megadja, hogy [rekordok előrehaladás](../automation/automation-runbook-output-and-messages.md) elő kell állítani a runbookot. |
-| logVerbose |Megadja, hogy [részletes rekordok](../automation/automation-runbook-output-and-messages.md) elő kell állítani a runbookot. |
-| leírás |Megadhat egy leírást a runbook. |
-| publishContentLink |Adja meg a runbook tartalmának. <br><br>URI - Uri-t a runbook tartalmának.  Ez lesz a PowerShell és a parancsfájl runbookok .ps1 fájl, és az exportált grafikus forgatókönyvnek fájl, a Graph-forgatókönyvek esetében.  <br> verzió - verzió a runbook a saját nyomon követésére. |
+| runbookType |Adja meg a runbook típusú. <br><br> -Szkript – PowerShell-parancsfájl <br>PowerShell – PowerShell-munkafolyamat <br> GraphPowerShell - grafikus PowerShell-parancsprogram-forgatókönyv <br> GraphPowerShellWorkflow - grafikus PowerShell-munkafolyamati forgatókönyv |
+| logProgress |Megadja, hogy [rekordok halad](../automation/automation-runbook-output-and-messages.md) elő kell állítani a runbook. |
+| logVerbose |Megadja, hogy [részletes rekordok](../automation/automation-runbook-output-and-messages.md) elő kell állítani a forgatókönyvet. |
+| leírás |A runbook kívánja – leírását. |
+| publishContentLink |Adja meg a runbook tartalmát. <br><br>URI - URI-t a runbook tartalmát.  Ez lesz egy .ps1 fájlt a PowerShell és a parancsfájl runbookok és a egy Graph runbook exportált grafikus runbook fájl.  <br> verzió - verzió a runbook a saját nyomon követésére. |
 
 
-## <a name="automation-jobs"></a>Automatizálási feladatok
-Amikor elindít egy forgatókönyvet az Azure Automationben, létrehoz egy automation-feladat.  A megoldás automatikusan induljon egy runbookot a kezelési megoldással telepítve van az automation-feladat erőforrás adhat hozzá.  Ez a módszer általában segítségével indítsa el a kezdeti konfigurálása a megoldásban használt runbookok.  Runbook indítása rendszeres időközönként, hozzon létre egy [ütemezés](#schedules) és egy [feladat ütemezése](#job-schedules)
+## <a name="automation-jobs"></a>Automation-feladatokkal
+Az Azure Automationben elindít egy runbookot, amikor létrehoz egy automation-feladat.  A megoldás automatikusan elindíthat egy runbookot, ha a felügyeleti megoldás telepítve van egy automation-feladat erőforrás adhat hozzá.  Ez a módszer általában segítségével indítsa el a runbookokat, amelyek a megoldás kezdeti konfigurációjához.  Elindít egy runbookot, rendszeres időközönként, hozzon létre egy [ütemezés](#schedules) és a egy [feladat ütemezése](#job-schedules)
 
-Feladat erőforrások típusa lehet **Microsoft.Automation/automationAccounts/jobs** és az alábbi szerkezettel rendelkezik.  Ez magában foglalja közös változók és paramétereket, így másolhatja és illessze be a következő kódrészletet a megoldásfájlt a, és módosítsa a paraméterek nevei. 
+Feladat-erőforrások rendelkezik olyan típusú **Microsoft.Automation/automationAccounts/jobs** és az alábbi struktúrával rendelkeznek.  Ez magában foglalja közös változók és paraméterek, így másolhatja, és ez a kódrészlet illessze be a megoldásfájlt, és módosítsa a paraméterek nevei. 
 
     {
       "name": "[concat(parameters('accountName'), '/', parameters('Runbook').JobGuid)]",
@@ -110,20 +110,20 @@ Feladat erőforrások típusa lehet **Microsoft.Automation/automationAccounts/jo
       }
     }
 
-Az automatizálási feladatok tulajdonságok az alábbi táblázat ismerteti.
+Automatizálási feladatok tulajdonságainak a következő táblázat ismerteti.
 
 | Tulajdonság | Leírás |
 |:--- |:--- |
-| a runbook |Egyetlen entitás nevű, a runbook elindul. |
-| paraméterek |Az entitás minden egyes a runbook által igényelt paraméterérték. |
+| runbook |A runbook elindításához nevű entitás egyetlen nevet. |
+| paraméterek |Az entitás minden egyes paraméterérték a runbook által igényelt. |
 
-A feladat a runbook neve és a runbook küldendő paraméterértékeket tartalmaz.  A feladat-érdemes [függő]( monitoring-solutions-solution-file.md#resources) a runbook, mert a runbook indítása a feldolgozás előtt létre kell hozni.  Ha több runbook el kell indítani, megadhatja a sorrendjük azzal, hogy egy feladat minden más, fusson első feladat függ.
+A feladat a runbook nevét és a runbook küldendő paraméterértékeket tartalmaz.  A feladat kell [függenek]( monitoring-solutions-solution-file.md#resources) , amely azt indítása óta a runbookot a runbook a feladat előtt kell létrehozni.  Ha több runbook, el kell meghatározhatja a sorrendjük létesíteni egy feladat, bármilyen más feladatokat, amelyeket futtatni első függenek.
 
-Egy feladat erőforrás nevének tartalmaznia kell egy GUID, amely általában egy paraméter által hozzárendelt.  További a GUID-paraméterekkel kapcsolatos [felügyeleti megoldás fájl létrehozása az Azure-ban]( monitoring-solutions-solution-file.md#parameters).  
+Egy feladat erőforrás nevének tartalmaznia kell egy GUID Azonosítót, amely általában egy paraméter által hozzárendelt.  Tudjon meg többet a GUID-paraméterekkel kapcsolatos [felügyeleti megoldás fájl létrehozása az Azure-ban]( monitoring-solutions-solution-file.md#parameters).  
 
 
 ## <a name="certificates"></a>Tanúsítványok
-[Azure Automation-tanúsítványok](../automation/automation-certificates.md) típusú **Microsoft.Automation/automationAccounts/certificates** és az alábbi szerkezettel rendelkezik. Ez magában foglalja közös változók és paramétereket, így másolhatja és illessze be a következő kódrészletet a megoldásfájlt a, és módosítsa a paraméterek nevei. 
+[Az Azure Automation-tanúsítványok](../automation/automation-certificates.md) típusú **Microsoft.Automation/automationAccounts/certificates** és az alábbi struktúrával rendelkeznek. Ez magában foglalja közös változók és paraméterek, így másolhatja, és ez a kódrészlet illessze be a megoldásfájlt, és módosítsa a paraméterek nevei. 
 
     {
       "name": "[concat(parameters('accountName'), '/', variables('Certificate').Name)]",
@@ -141,17 +141,17 @@ Egy feladat erőforrás nevének tartalmaznia kell egy GUID, amely általában e
 
 
 
-A tanúsítványok erőforrás tulajdonságait az alábbi táblázat ismerteti.
+A tanúsítványok erőforrás tulajdonságait az alábbi táblázatban ismertetett.
 
 | Tulajdonság | Leírás |
 |:--- |:--- |
-| base64Value |A tanúsítvány Base 64 értéke. |
-| ujjlenyomat |A tanúsítvány ujjlenyomata. |
+| base64value tulajdonsága |A tanúsítvány Base 64 értéke. |
+| ujjlenyomat |A tanúsítvány ujjlenyomatát. |
 
 
 
 ## <a name="credentials"></a>Hitelesítő adatok
-[Azure Automation hitelesítő adataival](../automation/automation-credentials.md) típusú **Microsoft.Automation/automationAccounts/credentials** és az alábbi szerkezettel rendelkezik.  Ez magában foglalja közös változók és paramétereket, így másolhatja és illessze be a következő kódrészletet a megoldásfájlt a, és módosítsa a paraméterek nevei. 
+[Az Azure Automation hitelesítő adatok](../automation/automation-credentials.md) típusú **Microsoft.Automation/automationAccounts/credentials** és az alábbi struktúrával rendelkeznek.  Ez magában foglalja közös változók és paraméterek, így másolhatja, és ez a kódrészlet illessze be a megoldásfájlt, és módosítsa a paraméterek nevei. 
 
 
     {
@@ -168,16 +168,16 @@ A tanúsítványok erőforrás tulajdonságait az alábbi táblázat ismerteti.
       }
     }
 
-A hitelesítő adatok erőforrás tulajdonságait az alábbi táblázat ismerteti.
+Az alábbi táblázatban ismertetett hitelesítőadat-erőforrások tulajdonságai.
 
 | Tulajdonság | Leírás |
 |:--- |:--- |
-| Felhasználónév |A hitelesítő adatokat felhasználónév. |
-| jelszó |A hitelesítő adatok jelszavát. |
+| Felhasználónév |A hitelesítő felhasználó neve. |
+| jelszó |A hitelesítő adatainak jelszava. |
 
 
 ## <a name="schedules"></a>Ütemezések
-[Azure Automation-ütemezések](../automation/automation-schedules.md) típusú **Microsoft.Automation/automationAccounts/schedules** , és az az alábbi szerkezettel. Ez magában foglalja közös változók és paramétereket, így másolhatja és illessze be a következő kódrészletet a megoldásfájlt a, és módosítsa a paraméterek nevei. 
+[Az Azure automatizálási ütemezések](../automation/automation-schedules.md) típusú **Microsoft.Automation/automationAccounts/schedules** és az alábbi struktúrával rendelkeznek. Ez magában foglalja közös változók és paraméterek, így másolhatja, és ez a kódrészlet illessze be a megoldásfájlt, és módosítsa a paraméterek nevei. 
 
     {
       "name": "[concat(parameters('accountName'), '/', variables('Schedule').Name)]",
@@ -196,26 +196,26 @@ A hitelesítő adatok erőforrás tulajdonságait az alábbi táblázat ismertet
       }
     }
 
-Az ütemezés erőforrás tulajdonságait az alábbi táblázat ismerteti.
+Az alábbi táblázatban ismertetett ütemezés erőforrások tulajdonságait.
 
 | Tulajdonság | Leírás |
 |:--- |:--- |
-| leírás |Az ütemezés nem kötelező leírása. |
-| startTime |Adja meg az ütemezés kezdő időpontjának DateTime objektumként. Egy karakterlánc biztosítható, hogy ha konvertálható érvényes DateTime értékként. |
-| IsEnabled |Meghatározza, hogy engedélyezve van-e az ütemezés. |
+| leírás |Az ütemezés kívánja – leírását. |
+| startTime |Egy DateTime típusú objektumot egy ütemezés kezdési idejét határozza meg. Ha egy érvényes DateTime átalakítható karakterlánc adható meg. |
+| isEnabled |Itt adhatja meg, hogy engedélyezve van-e az ütemezés. |
 | interval |Az ütemezés intervallumát típusa.<br><br>nap<br>óra |
-| frequency |Az ütemezés a napok vagy órák száma kell érvényesítést gyakorisága. |
+| frequency |Az ütemezés kell aktiválódik a napok vagy órák során gyakoriságát. |
 
-A kezdési idő nagyobb, mint az aktuális idő értékkel ütemezések.  Nem adja meg ezt az értéket egy változóhoz, mivel semmilyen módon nem tudhatja, hogy mikor fog telepíteni kellene lennie.
+Ütemezés kezdési idő nagyobb, mint a jelenlegi idő értékkel kell rendelkeznie.  Ezt az értéket nem biztosítja egy változó számára, mert nem tudja, hogy mikor fog telepíteni kell.
 
-Használja a következő két stratégiák egyikét, ütemezés erőforrások a megoldás használata esetén.
+Használja a következő két stratégiák egyikét, ütemezheti az erőforrásokat a megoldás használatakor.
 
-- Az ütemezés kezdő időpontjának a paraméter használható.  Ez fogja kérni a felhasználó számára adjon meg egy értéket, a megoldás telepítésekor.  Ha egyszerre több ütemezés, használhat egy egyetlen paraméterérték egynél több.
-- Az ütemezések használatával, amely akkor kezdődik, amikor a megoldás telepítve van egy runbook létrehozása.  Ezzel megszünteti a felhasználó követelmény adjon meg egy időpontot, de az ütemezés nem tartalmazhatja a megoldásban, ezért el lesz távolítva, a megoldás eltávolításakor.
+- Egy paraméter használható az ütemezés kezdési idejét.  Ekkor megjelenik a felhasználó számára, hogy a megoldás telepítésekor, adjon meg egy értéket.  Ha több ütemezést, használhat egy egyetlen paraméter értéke több, mint egy.
+- Hozzon létre az ütemezések használatával egy runbookot, amely akkor kezdődik, amikor a megoldás telepítve van.  Ez a követelmény időpontnak a megadása, hogy a felhasználó eltávolítja, de az ütemezés nem tartalmazza a megoldásában, ezért el lesz távolítva, amikor a megoldás a rendszer eltávolítja.
 
 
 ### <a name="job-schedules"></a>Feladatütemezések
-Feladat ütemezése erőforrások ütemezés runbookokhoz hivatkozásra.  Olyan típusú rendelkeznek **Microsoft.Automation/automationAccounts/jobSchedules** , és az az alábbi szerkezettel.  Ez magában foglalja közös változók és paramétereket, így másolhatja és illessze be a következő kódrészletet a megoldásfájlt a, és módosítsa a paraméterek nevei. 
+Feladat ütemezése erőforrások csatolása egy runbook-ütemezés szerint.  Vannak olyan típusú **Microsoft.Automation/automationAccounts/jobSchedules** és az alábbi struktúrával rendelkeznek.  Ez magában foglalja közös változók és paraméterek, így másolhatja, és ez a kódrészlet illessze be a megoldásfájlt, és módosítsa a paraméterek nevei. 
 
     {
       "name": "[concat(parameters('accountName'), '/', variables('Schedule').LinkGuid)]",
@@ -239,17 +239,17 @@ Feladat ütemezése erőforrások ütemezés runbookokhoz hivatkozásra.  Olyan 
     }
 
 
-A feladatok ütemezésének tulajdonságait az alábbi táblázat ismerteti.
+Az alábbi táblázatban ismertetett feladatok ütemezésének tulajdonságai.
 
 | Tulajdonság | Leírás |
 |:--- |:--- |
-| az ütemezés nevének |Egyetlen **neve** entitás az ütemezés nevét. |
-| Runbook neve  |Egyetlen **neve** entitás a runbook nevével.  |
+| ütemezés neve |Egyetlen **neve** entitás az ütemezés nevét. |
+| runbook neve  |Egyetlen **neve** a runbook nevére entitáshoz.  |
 
 
 
 ## <a name="variables"></a>Változók
-[Azure Automation-változók](../automation/automation-variables.md) típusú **Microsoft.Automation/automationAccounts/variables** és az alábbi szerkezettel rendelkezik.  Ez magában foglalja közös változók és paramétereket, így másolhatja és illessze be a következő kódrészletet a megoldásfájlt a, és módosítsa a paraméterek nevei.
+[Az Azure Automation-változók](../automation/automation-variables.md) típusú **Microsoft.Automation/automationAccounts/variables** és az alábbi struktúrával rendelkeznek.  Ez magában foglalja közös változók és paraméterek, így másolhatja, és ez a kódrészlet illessze be a megoldásfájlt, és módosítsa a paraméterek nevei.
 
     {
       "name": "[concat(parameters('accountName'), '/', variables('Variable').Name)]",
@@ -266,31 +266,31 @@ A feladatok ütemezésének tulajdonságait az alábbi táblázat ismerteti.
       }
     }
 
-A változó erőforrás tulajdonságait az alábbi táblázat ismerteti.
+Változó erőforrások tulajdonságait a következő táblázat ismerteti.
 
 | Tulajdonság | Leírás |
 |:--- |:--- |
-| leírás | Választható módon leírás megadása a változót. |
-| isEncrypted | Adja meg a változó titkosítani kell-e. |
-| type | Ezt a tulajdonságot jelenleg nincs hatása.  A változó adattípusa a kezdeti érték határozza meg. |
+| leírás | A változó kívánja – leírását. |
+| isEncrypted | Határozza meg, hogy a változó rendszer titkosítsa. |
+| type | Ez a tulajdonság jelenleg nem befolyásolja.  A változó adattípusa fog határozza meg a kezdeti érték. |
 | érték | A változó értékét. |
 
 > [!NOTE]
-> A **típus** tulajdonság jelenleg nem befolyásolja a változó létrehozása folyamatban.  Az adattípus, a változó értéke határozza meg.  
+> A **típus** tulajdonság jelenleg nem érinti a változó létrehozása folyamatban.  Az adattípus a változó értéke határozza meg.  
 
-Ha a változó a kezdeti érték, akkor be kell állítani a megfelelő adattípusú értékként.  A következő táblázat a különböző adattípusú megengedett és szintaxisát.  Vegye figyelembe, hogy a JSON-ban értékek várhatóan mindig idézőjelek idézőjelek belül a különleges karaktereket a.  Például egy olyan karakterláncértéket szeretné megadni idézőjelek közé vannak zárva a karakterlánc (az escape-karakter használatával (\\)) egy numerikus érték lenne megadva, az idézőjelek közé foglalt egy készletével.
+Ha a változó kezdeti értéke, hogy kell konfigurálni a megfelelő adattípust.  A következő táblázat megengedett különböző adattípusok és a szintaxis.  Vegye figyelembe, hogy a JSON-értékek várhatóan mindig idézőjelek idézőjelek különleges karaktereket az.  Például egy karakterláncértéket ezt kell megadni a karakterlánc idézőjeleket által (használja az escape-karakter (\\)) közben egy numerikus értéket ezt kell megadni, az ajánlatok egy készletét.
 
-| Adattípus | Leírás | Példa | Oldja fel a rendszer |
+| Adattípus | Leírás | Példa | Oldja fel |
 |:--|:--|:--|:--|
-| karakterlánc   | Érték tegye idézőjelek közé foglalt.  | "\"Hello world\"" | "Hello world" |
-| Numerikus  | Szimpla idézőjelben numerikus értéket.| "64" | 64 |
-| logikai  | **Igaz** vagy **hamis** idézőjelben.  Vegye figyelembe, hogy ez az érték kisbetűnek kell lennie. | "true" | true |
-| dátum/idő | A szerializált dátumértéket.<br>A PowerShell ConvertTo-Json-parancsmaggal előállításához ezt az értéket egy adott dátumot.<br>Példa: get-date "5/24/2017 13:14:57" \| ConvertTo-Json | "\\/Date(1495656897378)\\/" | 2017-05-24 13:14:57 |
+| sztring   | Tegye idézőjelek értéket.  | "\"Helló, világ\"" | "Hello world" |
+| numerikus  | A numerikus értékek a szimpla idézőjelek között.| "64" | 64 |
+| logikai  | **Igaz** vagy **hamis** idézőjelben.  Vegye figyelembe, hogy ez az érték csak kisbetűket tartalmazhatnak. | "true" | true |
+| dátum/idő | A szerializált dátumérték.<br>A PowerShellben a ConvertTo-Json-parancsmag segítségével hozza létre ezt az értéket egy adott dátumot.<br>Példa: get-date "5/24/2017 13:14:57" \| ConvertTo-Json | "\\/Date(1495656897378)\\/" | 2017-05-24 13:14:57 |
 
 ## <a name="modules"></a>Modulok
-A felügyeleti megoldás nem kell meghatároznia [globális modulok](../automation/automation-integration-modules.md) a runbookok által használt, mert azok mindig elérhető lesz az Automation-fiók.  Meg kell adnia egy erőforrás bármely más, a runbookok által használt modul.
+A felügyeleti megoldás nem kell meghatároznia [globális modulok](../automation/automation-integration-modules.md) a runbookok által használt, mert ezek mindig elérhető lesz az Automation-fiók.  Között szerepelnek olyan erőforrások esetében a runbookok által használt bármely egyéb modult kell.
 
-[Integrációs modulok](../automation/automation-integration-modules.md) típusú **Microsoft.Automation/automationAccounts/modules** és az alábbi szerkezettel rendelkezik.  Ez magában foglalja közös változók és paramétereket, így másolhatja és illessze be a következő kódrészletet a megoldásfájlt a, és módosítsa a paraméterek nevei.
+[Integrációs modulok](../automation/automation-integration-modules.md) típusú **Microsoft.Automation/automationAccounts/modules** és az alábbi struktúrával rendelkeznek.  Ez magában foglalja közös változók és paraméterek, így másolhatja, és ez a kódrészlet illessze be a megoldásfájlt, és módosítsa a paraméterek nevei.
 
     {
       "name": "[concat(parameters('accountName'), '/', variables('Module').Name)]",
@@ -306,35 +306,35 @@ A felügyeleti megoldás nem kell meghatároznia [globális modulok](../automati
     }
 
 
-A modul erőforrás tulajdonságait az alábbi táblázat ismerteti.
+A modul erőforrás tulajdonságait az alábbi táblázatban ismertetett.
 
 | Tulajdonság | Leírás |
 |:--- |:--- |
-| contentLink |A modul tartalmának megadása <br><br>URI - a modul tartalmának Uri-t.  Ez lesz a PowerShell és a parancsfájl runbookok .ps1 fájl, és az exportált grafikus forgatókönyvnek fájl, a Graph-forgatókönyvek esetében.  <br> verzió - saját nyomon követésére modul verziója. |
+| contentLink |A modul tartalmának megadása <br><br>URI - a modul tartalmának URI-t.  Ez lesz egy .ps1 fájlt a PowerShell és a parancsfájl runbookok és a egy Graph runbook exportált grafikus runbook fájl.  <br> verzió - modul verziószámát az saját nyomon követésére. |
 
-A runbook modul erőforrást győződjön meg arról, hogy a runbook előtt létre kell függ.
+A runbook függ attól, hogy a runbook előtt létre modul erőforráson.
 
 ### <a name="updating-modules"></a>Modulok frissítése
-Ha egy felügyeleti megoldás, amely tartalmazza a runbook által használt ütemezés szerint frissíti, és az új verziót a megoldás, hogy a runbook által használt új modul, a runbook modul a régi verziót használhatja.  Kell felvenni a következő forgatókönyvek a megoldás, és más runbookokat előtt futtatandó feladat létrehozása.  Ezzel biztosíthatja, hogy a modul frissüljenek szükséges, mielőtt a runbookok be van töltve.
+Ha egy felügyeleti megoldás, amely tartalmazza az ütemezés használó runbookot frissíti, és az új verziót, hogy a megoldás, hogy a runbook által használt új modul, a runbook a régi verziót, a modul felhasználhatja.  Érdemes közé tartozik az alábbi runbookok a megoldásban, és hozzon létre egy feladatot, mielőtt más runbookokat futtatásához.  Ez biztosítja, hogy a szükséges modulok frissüljenek mielőtt a rendszer betölti a runbookok szükséges.
 
-* [Frissítés-ModulesinAutomationToLatestVersion](https://www.powershellgallery.com/packages/Update-ModulesInAutomationToLatestVersion/1.03/DisplayScript) biztosítja, hogy a megoldás a runbookok által használt modulok mindegyike a legújabb verzióra.  
-* [ReRegisterAutomationSchedule-MS-Mgmt](https://www.powershellgallery.com/packages/ReRegisterAutomationSchedule-MS-Mgmt/1.0/DisplayScript) újraregisztrálása összes annak érdekében, hogy a runbookok hozzájuk kapcsolódó használatával a legújabb modulok ütemezés erőforrást.
+* [Frissítés-ModulesinAutomationToLatestVersion](https://www.powershellgallery.com/packages/Update-ModulesInAutomationToLatestVersion/1.03/DisplayScript) biztosítja, hogy a megoldás a runbookok által használt összes-e a legújabb verzióra.  
+* [ReRegisterAutomationSchedule-MS-Mgmt](https://www.powershellgallery.com/packages/ReRegisterAutomationSchedule-MS-Mgmt/1.0/DisplayScript) újraregisztrálása ütemezés erőforrásokat annak érdekében, hogy a runbookok hozzájuk kapcsolódó használnak a legújabb modulok.
 
 
 
 
 ## <a name="sample"></a>Sample
-Az alábbiakban látható egy minta a megoldás, amely tartalmazza, amely a következőket tartalmazza:
+Következő látható egy minta olyan megoldás, amely tartalmazza, amely a következő forrásokat tartalmazza:
 
-- Runbook.  Ez a példa runbook egy nyilvános GitHub-tárházban tárolt.
-- Automation-feladat, amely elindítja a runbookot, ha a megoldás telepítve van.
-- Ütemezési és rendszeres időközönként a runbook indítására ütemezett feladat.
-- Tanúsítvány.
+- A forgatókönyv.  Ez a minta runbook egy nyilvános GitHub-adattár tárolja.
+- Automation-feladat, amely elindítja a runbookot, amikor a megoldás telepítve van.
+- Ütemezés és az ütemezett feladat, rendszeres időközönként a runbook elindításához.
+- A tanúsítvány.
 - Hitelesítő adatok.
-- Változó.
-- A modul.  Ez a [OMSIngestionAPI modul](https://www.powershellgallery.com/packages/OMSIngestionAPI/1.5) az írás a Naplóelemzési. 
+- A változó.
+- A modul.  Ez a [OMSIngestionAPI modul](https://www.powershellgallery.com/packages/OMSIngestionAPI/1.5) írja az adatokat a Log Analytics számára. 
 
-A mintánkban [szokásos megoldást paraméterek]( monitoring-solutions-solution-file.md#parameters) változókat, amelyek gyakran használni a megoldás az erőforrás-definíciókban hardcoding értékek szemben.
+A példa [standard megoldás paraméterek]( monitoring-solutions-solution-file.md#parameters) változókat gyakran használni kívánt figyelésekor az erőforrás-definíciókban hardcoding értékek-megoldásban.
 
 
     {
@@ -651,4 +651,4 @@ A mintánkban [szokásos megoldást paraméterek]( monitoring-solutions-solution
 
 
 ## <a name="next-steps"></a>További lépések
-* [Nézet felvétele a megoldás]( monitoring-solutions-resources-views.md) összegyűjtött adatok megjelenítéséhez.
+* [Nézet hozzáadása a megoldás]( monitoring-solutions-resources-views.md) összegyűjtött adatok vizualizálásához.

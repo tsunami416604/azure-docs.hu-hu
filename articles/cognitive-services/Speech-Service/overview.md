@@ -10,12 +10,12 @@ ms.component: speech-service
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: v-jerkin
-ms.openlocfilehash: ccdcdeeaf4ac8730be4f9e3ee648dc41c2a02641
-ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
+ms.openlocfilehash: 2c1fce35749dee12caec0bcd15a9eccdf81b8d1d
+ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37345158"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37856773"
 ---
 # <a name="what-is-the-speech-service-preview"></a>Mi az a Speech service (előzetes verzió)?
 
@@ -60,7 +60,7 @@ Testre szabható a Speech to Text akusztikai és nyelvi modelleket speciális sz
 
 A [szöveg-beszéd átalakítás](text-to-speech.md) (Szövegfelolvasás), vagy a beszédszintézishez, API-t konvertálja egyszerű szöveges természetes hangzó beszéddé, az alkalmazás a hangfájl lett elküldve. Több beszédhangot nemek vagy hangsúlyos, különböző számos nyelven érhetők el.
 
-Az API támogatja a Speech összefoglaló Markup Language (SSML) címkéket, így megadhatja, hogy pontos nevének fonetikus írásmódja feladatátvételnek szavak. Az SSML emellett a beszéd jellemzőit (beleértve a hangsúlyt, a sebességet, a hangerőt, a beszélő nemét és a hangmagasságot) közvetlenül a szövegben is képes jelölni.
+Az API támogatja [Speech összefoglaló Markup Language (SSML)](speech-synthesis-markup.md) címkék, így megadhatja, hogy pontos nevének fonetikus írásmódja a feladatátvételnek szavakat. Az SSML emellett a beszéd jellemzőit (beleértve a hangsúlyt, a sebességet, a hangerőt, a beszélő nemét és a hangmagasságot) közvetlenül a szövegben is képes jelölni.
 
 Az alábbiakban gyakori alkalmazási esetei a Text to Speech API.
 
@@ -68,7 +68,7 @@ Az alábbiakban gyakori alkalmazási esetei a Text to Speech API.
 * Hangalapú kérő üzenet autós navigációs alkalmazásokhoz
 * Természetes nyelvi felhasználói felületet a Speech to Text API-sel
 
-Ha egy nem támogatott dialect kell, vagy csak szeretné, az alkalmazás egyéni, a Text to Speech API támogatja a egyéni beszédfelismerési modelleket.
+Ha egy nem támogatott dialect kell, vagy csak szeretné, az alkalmazás egyéni, a Text to Speech API támogatja [egyéni beszédfelismerési modelleket](how-to-customize-voice-font.md).
 
 ## <a name="speech-translation"></a>Beszédfordítás
 

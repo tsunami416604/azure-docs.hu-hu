@@ -1,80 +1,80 @@
 ---
-title: A konfigurációs kiszolgáló, az Azure Site Recovery VMware vész-helyreállítási kezelése |} Microsoft Docs
-description: Ez a cikk az Azure-bA az Azure Site RecoveryS VMware vész-helyreállítási meglévő konfigurációs kiszolgáló kezelését ismerteti.
+title: Az Azure Site Recovery VMware-vészhelyreállításhoz használt konfigurációs kiszolgáló kezelése |} A Microsoft Docs
+description: Ez a cikk ismerteti, hogyan lehet egy meglévő konfigurációs kiszolgáló VMware-vészhelyreállításhoz az Azure-bA az Azure Site RecoveryS kezelése.
 author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 06/20/2018
 ms.author: raynew
-ms.openlocfilehash: 753e123c660b1aacea1157157f0e580e15c47536
-ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
+ms.openlocfilehash: 29fa232e328ec0b16cb4e00fb16e3be458936cd7
+ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36287405"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37857248"
 ---
-# <a name="manage-the-configuration-server-for-vmware-vms"></a>VMware virtuális gépek esetén a kiszolgáló kezelése
+# <a name="manage-the-configuration-server-for-vmware-vms"></a>A konfigurációs kiszolgáló VMware virtuális gépek kezelése
 
-Állít be egy helyszíni konfigurációs kiszolgáló használatakor [Azure Site Recovery](site-recovery-overview.md) vész-helyreállítási VMware virtuális gépek és fizikai kiszolgálók Azure-bA. A konfigurációs kiszolgáló közötti kommunikáció koordinálja a helyszíni VMware és az Azure és az adatreplikáció kezeli. Ez a cikk a konfigurációs kiszolgáló felügyelete a telepítés után a gyakori feladatokat foglalja össze.
+Beállította egy helyszíni konfigurációs kiszolgálót használatakor [Azure Site Recovery](site-recovery-overview.md) vész-helyreállítási VMware virtuális gépek és fizikai kiszolgálók Azure-bA. A konfigurációs kiszolgáló közötti kommunikáció koordinálja a helyszíni VMware és az Azure és felügyeli az adatreplikációt. Ez a cikk összefoglalja a gyakori feladatok kezeléséhez a konfigurációs kiszolgáló telepítése után.
 
 
 
-## <a name="modify-vmware-settings"></a>VMware beállításainak módosítása
+## <a name="modify-vmware-settings"></a>VMware-beállításainak módosítása
 
-A konfigurációs kiszolgáló az alábbiak szerint végezheti el:
-    - Jelentkezzen be a virtuális gép, amelyen telepítve van, és Azure Site Recovery a Configuration Manager indítsa el a az asztali parancsikonra.
-    - Másik lehetőségként elérheti a kiszolgáló távolról a **https://*ConfigurationServerName*/:44315 /**. Jelentkezzen be rendszergazdai hitelesítő adataival.
+A konfigurációs kiszolgáló módon érheti el:
+    - Jelentkezzen be a virtuális gép, amelyre telepítve van, és indítsa el az Azure Site Recovery Konfigurációkezelő, az asztali parancsikonjára.
+    - Azt is megteheti, érheti el a konfigurációs kiszolgáló **https://*ConfigurationServerName*/:44315 /**. Jelentkezzen be rendszergazdai hitelesítő adataival.
    
 ### <a name="modify-vmware-server-settings"></a>VMware-kiszolgáló beállításainak módosítása
 
-1. A konfigurációs kiszolgáló, a bejelentkezés után egy másik VMware-kiszolgáló társítani, válassza ki a **vCenter-kiszolgáló vagy vSphere ESXi kiszolgáló hozzáadása**.
-2. Adja meg a részleteket, és válassza **OK**.
+1. Szeretne társítani a konfigurációs kiszolgáló, egy másik VMware-kiszolgáló után jelentkezzen be, válassza ki a **Hozzáadás vCenter-kiszolgáló vagy vSphere ESXi kiszolgáló**.
+2. Adja meg a részleteket, és válassza ki **OK**.
 
 
 ### <a name="modify-credentials-for-automatic-discovery"></a>Automatikus felderítés hitelesítő adatok módosítása
 
-1. Frissítse a hitelesítő adatokat, csatlakozhat a VMware-kiszolgáló, a VMware virtuális gépek automatikus észlelése után bejelentkezhet, jelölje be **szerkesztése**.
-2. Adja meg az új hitelesítő adatokat, majd válassza ki **OK**.
+1. A bejelentkezést követően, a VMware virtuális gépek automatikus felderítését a VMware-kiszolgálóhoz való kapcsolódáshoz használt hitelesítő adatok frissítéséhez válassza **szerkesztése**.
+2. Adja meg az új hitelesítő adatait, és válassza ki **OK**.
 
     ![VMware módosítása](./media/vmware-azure-manage-configuration-server/modify-vmware-server.png)
 
 
 ## <a name="modify-credentials-for-mobility-service-installation"></a>A mobilitási szolgáltatás telepítési hitelesítő adatok módosítása
 
-Automatikusan telepíteni a mobilitási szolgáltatás a replikációs engedélyezte a VMware virtuális gépeken használt hitelesítő adatok módosítása.
+Automatikusan engedélyezi a replikációt a VMware virtuális gépeken a mobilitási szolgáltatás telepítéséhez használt hitelesítő adatok módosítása
 
-1. Után bejelentkezhet, válassza ki a **virtuális gép hitelesítő adatok kezelése**
-2. Adja meg az új hitelesítő adatokat, majd válassza ki **OK**.
+1. Válassza ki a bejelentkezést követően, **virtuális gép hitelesítő adatainak kezelése**
+2. Adja meg az új hitelesítő adatait, és válassza ki **OK**.
 
-    ![Módosítsa a mobilitási szolgáltatás hitelesítő adatait](./media/vmware-azure-manage-configuration-server/modify-mobility-credentials.png)
+    ![A mobilitási szolgáltatás hitelesítő adatainak módosítása](./media/vmware-azure-manage-configuration-server/modify-mobility-credentials.png)
 
-## <a name="modify-proxy-settings"></a>Proxy beállításainak módosítása
+## <a name="modify-proxy-settings"></a>Proxybeállítások módosítása
 
-A konfigurációs kiszolgáló gépen internet-hozzáférés az Azure által használt proxy beállítások módosítása. Ha a folyamat kiszolgálógép mellett az alapértelmezett folyamatkiszolgáló a konfigurációs kiszolgáló gépen futó, mindkét gépen beállítások módosítása.
+Módosítsa az internet-hozzáférés az Azure-bA a konfigurációs kiszolgáló gép által használt proxy beállításait. Ha egy folyamat kiszolgáló gép mellett a alapértelmezett folyamatkiszolgáló a konfigurációs kiszolgáló gépen futó, módosítsa a beállításokat mindkét gépen.
 
-1. Után jelentkezzen be a konfigurációs kiszolgáló, válassza ki a **kapcsolat kezelése**.
-2. A proxy értékeinek frissítéséhez. Válassza ki **mentése** frissíteni a beállításait.
+1. Bejelentkezés után a konfigurációs kiszolgálóhoz, válassza ki a **kapcsolat kezelése**.
+2. Frissítse a proxy. Válassza ki **mentése** a beállítások frissítéséhez.
 
 ## <a name="add-a-network-adapter"></a>Hálózati adapter hozzáadása
 
-A nyitott virtualizációs formátum (OVF) sablont a konfigurációs kiszolgáló virtuális gép egyetlen hálózati adapterrel telepíti.
+A nyílt virtualizációs formátum (OVF) sablont a konfigurációs kiszolgáló virtuális gép egyetlen hálózati adapterrel telepíti.
 
-- Is [vegyen fel egy további adaptert a virtuális gép)](vmware-azure-deploy-configuration-server.md#add-an-additional-adapter), de Ön hozzá kell adnia a konfigurációs kiszolgáló regisztrálja a tárolóban.
-- Adjon hozzá egy adaptert, a kiszolgáló regisztrálása a tárolóban lévő után, vegye fel az adaptert a virtuális gép tulajdonságai. Majd kell regisztrálja újra a kiszolgálót a tárolóban lévő állapottal.
-
-
-## <a name="reregister-a-configuration-server-in-the-same-vault"></a>Regisztrálja újra a konfigurációs kiszolgáló ugyanabban a tárolóban
-
-Ha szeretné újraregisztrálásához a konfigurációs kiszolgáló ugyanabban a tárolóban. Ha rendelkezik egy további folyamat kiszolgálógép mellett az alapértelmezett folyamatkiszolgáló a konfigurációs kiszolgáló gépen futó egyik gépen regisztrálja újra.
+- Is [további adapter hozzáadása a virtuális géphez](vmware-azure-deploy-configuration-server.md#add-an-additional-adapter), de Ön hozzá kell adnia a konfigurációs kiszolgálót regisztrálja a tárolóban.
+- Adjon hozzá egy adaptert, miután a konfigurációs kiszolgálót regisztrálja a tárolóban, a virtuális gép tulajdonságainak az adapter hozzáadásához. Ezután meg kell regisztrálja újra a kiszolgálót a tárolóban.
 
 
-  1. Nyissa meg a tároló **kezelése** > **Site Recovery-infrastruktúra** > **konfigurációs kiszolgálók**.
-  2. A **kiszolgálók**, jelölje be **regisztrációs kulcs letöltése** letölteni a tároló hitelesítési adatait tartalmazó fájlt.
-  3. Jelentkezzen be a konfigurációs kiszolgáló számítógépén.
+## <a name="reregister-a-configuration-server-in-the-same-vault"></a>Ugyanahhoz a tárolóhoz a konfigurációs kiszolgáló újraregisztrálása
+
+Ha szeretne újraregisztrálásához a konfigurációs kiszolgáló az ugyanahhoz a tárolóhoz. Ha az alapértelmezett folyamatkiszolgáló a konfigurációs kiszolgáló gépen futó mellett egy további kiszolgáló gép regisztrálja újra a gépeket is.
+
+
+  1. Nyissa meg a tároló **kezelés** > **Site Recovery-infrastruktúra** > **konfigurációs kiszolgálók**.
+  2. A **kiszolgálók**válassza **regisztrációs kulcs letöltése** töltheti le a tároló hitelesítőadat-fájlja.
+  3. Jelentkezzen be a konfigurációs kiszolgáló gép.
   4. A **%ProgramData%\ASR\home\svsystems\bin**, nyissa meg **cspsconfigtool.exe**.
-  5. Az a **tároló regisztrációs** lapon jelölje be **Tallózás**, és keresse meg a letöltött tárolói hitelesítő adatok fájlját.
-  6. Ha szükséges, adja meg a proxykiszolgáló kiszolgáló adatait. Ezután kattintson a **Regisztrálás** elemre.
-  7. Nyisson meg egy rendszergazda PowerShell parancsablakot, és futtassa a következő parancsot:
+  5. Az a **tár regisztrálása** lapon jelölje be **Tallózás**, és keresse meg a tároló hitelesítőadat-fájlja letöltött.
+  6. Ha szükséges, adja meg a proxykiszolgáló adatai. Ezután kattintson a **Regisztrálás** elemre.
+  7. Nyisson meg egy rendszergazdai PowerShell-parancsablakot, és futtassa a következő parancsot:
 
       ```
       $pwd = ConvertTo-SecureString -String MyProxyUserPassword
@@ -83,64 +83,61 @@ Ha szeretné újraregisztrálásához a konfigurációs kiszolgáló ugyanabban 
       net start obengine
       ```
 
-## <a name="upgrade-the-configuration-server"></a>A konfigurációs kiszolgáló verziófrissítése
+## <a name="upgrade-the-configuration-server"></a>A konfigurációs kiszolgáló frissítése
 
-Kumulatív frissítése a konfigurációs kiszolgáló futtatja. Frissítések is alkalmazhatók a legfeljebb N-4 verziók. Példa:
+Kumulatív frissítés a konfigurációs kiszolgálót frissíteni fogja futtatni. Frissítések akár N-4 verziók esetében is alkalmazható. Példa:
 
-- Ha futtatja a 9.7, 9.8, 9.9 vagy 9.10, frissíthet közvetlenül 9.11.
-- Ha 9.6 vagy korábbi futtatja, és frissíti a 9.11, először frissítenie kell 9.7 verzióra. Mielőtt 9.11.
+- Ha 9.7, 9.8, 9.9 vagy 9.10 futtatja, frissítheti, közvetlenül a 9.11.
+- Ha 9.6 vagy korábbi, és a 9.11 frissíteni, először frissítenie kell 9.7 verzióra. Mielőtt 9.11.
 
-A konfigurációs kiszolgáló az összes verziójára történő frissítés összegző mutató hivatkozások találhatók a [wiki frissítések lap](https://social.technet.microsoft.com/wiki/contents/articles/38544.azure-site-recovery-service-updates.aspx).
+Kumulatív frissítések a configuration server összes verziójára való frissítéshez mutató hivatkozások találhatók a [frissítések wikioldal](https://social.technet.microsoft.com/wiki/contents/articles/38544.azure-site-recovery-service-updates.aspx).
 
-A kiszolgáló frissítése az alábbiak szerint:
+A kiszolgáló frissítése a következőképpen:
 
-1. A tárolóban, Ugrás **kezelése** > **Site Recovery-infrastruktúra** > **konfigurációs kiszolgálók**.
+1. A tárolót, lépjen a **kezelés** > **Site Recovery-infrastruktúra** > **konfigurációs kiszolgálók**.
 2. Frissítés érhető el, ha egy hivatkozás megjelenik a **Ügynökverzió** > oszlop.
-
-    ![Frissítés](./media/vmware-azure-manage-configuration-server/update2.png)
-
-1. A telepítő fájl letöltése és a konfigurációs kiszolgáló.
+    ![Update](./media/vmware-azure-manage-configuration-server/update2.png)
+3. Töltse le a frissítést telepítő a konfigurációs kiszolgálón.
 
     ![Frissítés](./media/vmware-azure-manage-configuration-server/update1.png)
 
 4. A telepítő futtatásához kattintson duplán.
-2. A telepítő észleli az aktuális verzió fut a gépen. Kattintson a **Igen** a frissítés elindításához. 
-3. Ha a frissítés befejezése a kiszolgálókonfiguráció ellenőrzi.
+5. A telepítő észleli a gépen futó verziója. Kattintson a **Igen** a frissítés elindításához.
+6. A frissítés befejezése után ellenőrzi a kiszolgáló konfigurációját.
 
     ![Frissítés](./media/vmware-azure-manage-configuration-server/update3.png)
+    
+7. Kattintson a **Befejezés** gombra kattintva zárja be a telepítőt.
 
-4. Kattintson a **Befejezés** a telepítő bezárásához.
+## <a name="delete-or-unregister-a-configuration-server"></a>Törölje vagy a konfigurációs kiszolgáló regisztrációjának törlése
 
-
-## <a name="delete-or-unregister-a-configuration-server"></a>Törölje vagy a konfigurációs kiszolgáló regisztrációját
-
-1. [Tiltsa le a védelmet](site-recovery-manage-registration-and-protection.md#disable-protection-for-a-vmware-vm-or-physical-server-vmware-to-azure) alatt a kiszolgáló virtuális gépen.
-2. [Szüntesse meg](vmware-azure-set-up-replication.md#disassociate-or-delete-a-replication-policy) és [törlése](vmware-azure-set-up-replication.md#disassociate-or-delete-a-replication-policy) összes replikációs házirendet a konfigurációs kiszolgálóról.
-3. [Törlés](vmware-azure-manage-vcenter.md#delete-a-vcenter-server) vCenter kiszolgáló vagy vSphere minden gazdagép társított a konfigurációs kiszolgáló.
+1. [Tiltsa le a védelmet](site-recovery-manage-registration-and-protection.md#disable-protection-for-a-vmware-vm-or-physical-server-vmware-to-azure) a konfigurációs kiszolgáló területén az összes virtuális gép.
+2. [Szüntesse meg az](vmware-azure-set-up-replication.md#disassociate-or-delete-a-replication-policy) és [törlése](vmware-azure-set-up-replication.md#disassociate-or-delete-a-replication-policy) minden replikációs házirendek a konfigurációs kiszolgálóról.
+3. [Törlés](vmware-azure-manage-vcenter.md#delete-a-vcenter-server) minden vCenter kiszolgálók/vSphere-gazdagépek a konfigurációs kiszolgáló társítva.
 4. Nyissa meg a tároló **Site Recovery-infrastruktúra** > **konfigurációs kiszolgálók**.
-5. Válassza ki az eltávolítani kívánt konfigurációs kiszolgáló. Ezt követően a **részletek** lapon jelölje be **törlése**.
+5. Válassza ki a konfigurációs kiszolgáló, amely a el kívánja távolítani. Ezután a a **részletek** lapon jelölje be **törlése**.
 
-    ![Törli a konfigurációs kiszolgálót](./media/vmware-azure-manage-configuration-server/delete-configuration-server.png)
+    ![Konfigurációs kiszolgáló törlése](./media/vmware-azure-manage-configuration-server/delete-configuration-server.png)
    
 
-### <a name="delete-with-powershell"></a>Törölje a PowerShell használatával
+### <a name="delete-with-powershell"></a>Törölje a PowerShell-lel
 
-Törölheti a konfigurációs kiszolgáló opcionális PowerShell használatával.
+Szükség esetén törölheti a konfigurációs kiszolgáló PowerShell-lel.
 
-1. [Telepítés](https://docs.microsoft.com/powershell/azure/install-azurerm-ps?view=azurermps-4.4.0) az Azure PowerShell modul.
-2. Jelentkezzen be az Azure-fiókjával használja a következő parancsot:
+1. [Telepítés](https://docs.microsoft.com/powershell/azure/install-azurerm-ps?view=azurermps-4.4.0) az Azure PowerShell modult.
+2. Jelentkezzen be az Azure-fiókjába a következő paranccsal:
     
     `Connect-AzureRmAccount`
-3. Válassza ki a tároló-előfizetést.
+3. Válassza ki a tároló előfizetését.
 
      `Get-AzureRmSubscription –SubscriptionName <your subscription name> | Select-AzureRmSubscription`
-3.  A tároló környezet beállítása.
+3.  Állítsa be a tárolási környezet.
     
     ```
     $vault = Get-AzureRmRecoveryServicesVault -Name <name of your vault>
     Set-AzureRmSiteRecoveryVaultSettings -ARSVault $vault
     ```
-4. A konfigurációs kiszolgáló beolvasása.
+4. A konfigurációs kiszolgáló lekéréséhez.
 
     `$fabric = Get-AzureRmSiteRecoveryFabric -FriendlyName <name of your configuration server>`
 6. A konfigurációs kiszolgáló törlése.
@@ -148,29 +145,34 @@ Törölheti a konfigurációs kiszolgáló opcionális PowerShell használatáva
     `Remove-AzureRmSiteRecoveryFabric -Fabric $fabric [-Force] `
 
 > [!NOTE]
-> Használhatja a **-Force** a konfigurációs kiszolgáló kényszerített törlésének a Remove-AzureRmSiteRecoveryFabric beállítást.
+> Használhatja a **-Force** kényszerített törlése a konfigurációs kiszolgáló, a Remove-AzureRmSiteRecoveryFabric lehetőséget.
  
+## <a name="generate-configuration-server-passphrase"></a>Konfigurációs kiszolgáló hozzáférési kód létrehozása
 
+1. Jelentkezzen be a konfigurációs kiszolgáló, és nyissa meg egy parancssori ablakot rendszergazdaként.
+2. Módosítsa a könyvtárat a bin mappát, hajtsa végre a parancsot **cd %ProgramData%\ASR\home\svsystems\bin**
+3. A hozzáférési fájl kódjának létrehozásához hajtsa végre a **genpassphrase.exe - v > MobSvc.passphrase**.
+4. A megadott jelszó lesz tárolva helyen található fájl **%ProgramData%\ASR\home\svsystems\bin\MobSvc.passphrase**.
 
-## <a name="renew-ssl-certificates"></a>SSL-tanúsítványainak megújítása
+## <a name="renew-ssl-certificates"></a>SSL-tanúsítványok megújítása
 
-A kiszolgáló rendelkezik egy beépített webkiszolgálón, amely vezénylő tevékenységek a mobilitási szolgáltatás, a folyamat kiszolgálók és a hozzá kapcsolódó fő célkiszolgálóra. A webkiszolgáló az SSL-tanúsítvány használatával hitelesíti az ügyfeleket. A tanúsítvány három év után lejár, és bármikor lehet megújítani.
+A konfigurációs kiszolgáló rendelkezik egy beépített web server, mely a mobilitási szolgáltatást, folyamatkiszolgálók és fő célkiszolgálók ahhoz kapcsolódó tevékenységeket koordinálja. A webkiszolgáló egy SSL-tanúsítványt használ az ügyfelek hitelesítéséhez. A tanúsítvány három év után lejár, és bármikor meg lehet újítani.
 
-### <a name="check-expiry"></a>A lejárati ellenőrzése
+### <a name="check-expiry"></a>Lejáratának ellenőrzése
 
-Konfigurációs kiszolgáló központi telepítése előtt a 2016. május esetén a tanúsítvány lejárati egyéves lett beállítva. Ha olyan tanúsítvány, amely előzetes verziója, az alábbiak történnek:
+Konfigurációs kiszolgáló központi telepítése előtt a 2016. május esetén a tanúsítvány lejárati egy év lett beállítva. Ha rendelkezik egy tanúsítvánnyal, amelyet szeretne érvényessége lejár, az alábbiak történnek:
 
-- Ha a lejárati két hónapig vagy kevesebb, mint a szolgáltatás indításakor értesítések küldése a portálon, és e-mailben (ha előfizetni a Site Recovery-értesítések).
-- Értesítésszalagról lapján jelenik meg a tároló erőforrás. További információkért válassza ki a szalagcím.
-- Ha megjelenik egy **frissítés most** gomb, azt jelzi, hogy néhány összetevőt a környezetben még nem lett frissítve 9.4.xxxx.x vagy újabb verzió. A tanúsítvány megújításához, frissítse az összetevőket. A régebbi verziói nem újíthatók meg.
+- Ha a lejárati dátum két hónapig vagy kevesebb, mint a szolgáltatás elindul, értesítések küldése a portálon, és e-mailben (ha van, amelyre Ön feliratkozott a Site Recovery-értesítések).
+- Egy értesítési szalagcím jelenik meg az erőforrás-tároló oldalon. További információkért válassza ki a szalagcímet.
+- Ha megjelenik egy **frissítés most** gombra, az azt jelzi, hogy néhány összetevőt a környezetben még nem lett frissítve 9.4.xxxx.x vagy újabb verzió. Frissítse az összetevőket, a tanúsítvány megújításához. Régebbi verziójával nem újíthatók.
 
 ### <a name="renew-the-certificate"></a>A tanúsítvány megújítása
 
 1. Nyissa meg a tároló **Site Recovery-infrastruktúra** > **konfigurációs kiszolgáló**. Válassza ki a szükséges konfigurációs kiszolgálót.
-2. A lejárati jelenik meg az **konfigurációs kiszolgáló állapotának**.
-3. Válassza ki **megújítani a tanúsítványokat**. 
+2. Megjelenik a lejárati dátum **konfigurációs kiszolgáló állapota**.
+3. Válassza ki **tanúsítványok megújítása**. 
 
 
 ## <a name="next-steps"></a>További lépések
 
-Tekintse át a vész-helyreállítási beállításával kapcsolatos oktatóanyagok [VMware virtuális gépek](vmware-azure-tutorial.md) az Azure-bA.
+Tekintse át az oktatóanyagok, valamint beállításának [VMware virtuális gépek](vmware-azure-tutorial.md) az Azure-bA.

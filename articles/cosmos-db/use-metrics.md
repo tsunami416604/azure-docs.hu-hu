@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/25/2017
 ms.author: govindk
-ms.openlocfilehash: 9b9f72812b1a1f0e30379c32e10d316fcbf71d3b
-ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
+ms.openlocfilehash: 3c5629dc1ad87456583f5a713f16e696bc9b7b1e
+ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37345589"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37858663"
 ---
 # <a name="monitoring-and-debugging-with-metrics-in-azure-cosmos-db"></a>Figyelés és az Azure Cosmos DB metrikákkal hibakeresés
 
@@ -39,7 +39,7 @@ A leggyakoribb állapot hibakód 429-es (korlátozza/szabályozási értékelje)
 
 ## <a name="determining-the-throughput-distribution-across-partitions"></a>Partíciók között az átviteli sebesség terjesztési meghatározása
 
-A partíciókulcsok egy jó számossága kellene elengedhetetlen bármilyen méretezhető alkalmazást. Annak megállapításához, partíciók bontásban particionált gyűjtemény átviteli elosztását, keresse meg a **metrikák paneljén** a a [az Azure portal](https://portal.azure.com). Az a **átviteli** lapon jelenik meg a storage táblázat összefoglalja a **maximálisan felhasznált RU/s egyes fizikai partíciók által** diagram. A következő ábrán az adatok a bal szélső magokon partíció igazolt gyenge terjesztési példáját mutatja be. 
+A partíciókulcsok egy jó számossága kellene elengedhetetlen bármilyen méretezhető alkalmazást. Annak megállapításához, az átviteli sebesség terjesztési bármely particionált tároló partíciók bontásban, keresse meg a **metrikák paneljén** a a [az Azure portal](https://portal.azure.com). Az a **átviteli** lapon jelenik meg a storage táblázat összefoglalja a **maximálisan felhasznált RU/s egyes fizikai partíciók által** diagram. A következő ábrán az adatok a bal szélső magokon partíció igazolt gyenge terjesztési példáját mutatja be. 
 
 ![Egypartíciós jelennek meg (nagy erőforrásigényű) használati du. 3:05:](media/use-metrics/metrics-17.png)
 
@@ -47,7 +47,7 @@ Az egyenetlen átviteli terjesztési okozhat *gyakori elérésű* partíció, am
 
 ## <a name="determining-the-storage-distribution-across-partitions"></a>A tároló terjesztési meghatározása a partíciók között
 
-A partíció egy jó számossága kellene elengedhetetlen bármilyen méretezhető alkalmazást. Annak megállapításához, partíciók bontásban particionált gyűjtemény átviteli eloszlása, a metrikák paneljén lépjen az [az Azure portal](https://portal.azure.com). Az átviteli sebesség lapon tárolási táblázat összefoglalja a által maximálisan felhasznált RU/s minden egyes fizikai partíciók diagramon látható. A következő ábra mutatja be a bal szélső magokon partíció igazolt adatok gyenge eloszlása. 
+A partíció egy jó számossága kellene elengedhetetlen bármilyen méretezhető alkalmazást. Annak megállapításához, minden olyan partíció szerinti bontásban a particionált tároló átviteli eloszlása, a metrikák paneljén lépjen az [az Azure portal](https://portal.azure.com). Az átviteli sebesség lapon tárolási táblázat összefoglalja a által maximálisan felhasznált RU/s minden egyes fizikai partíciók diagramon látható. A következő ábra mutatja be a bal szélső magokon partíció igazolt adatok gyenge eloszlása. 
 
 ![Gyenge adatelosztás – példa](media/use-metrics/metrics-07.png)
 
@@ -55,7 +55,7 @@ Gyökérok is melyik partíciókulcs a partíció a diagram kattintva van eltorz
 
 ![Partíciós kulccsal van eltorzítják a terjesztés](media/use-metrics/metrics-05.png)
 
-Melyik partíciós kulcs azonosítja a terjesztési okoz a döntés, előfordulhat, hogy után a gyűjtemény újraparticionálni több elosztott partíciós kulccsal. Az Azure Cosmos DB particionálási kapcsolatos további információkért lásd: [particionálási és horizontális az Azure Cosmos DB](./partition-data.md).
+Melyik partíciós kulcs azonosítja a terjesztési okoz a döntés, előfordulhat, hogy után a tároló újraparticionálni több elosztott partíciós kulccsal. Az Azure Cosmos DB particionálási kapcsolatos további információkért lásd: [particionálási és horizontális az Azure Cosmos DB](./partition-data.md).
 
 ## <a name="comparing-data-size-against-index-size"></a>Index mérete alapján adatméret összehasonlítása
 

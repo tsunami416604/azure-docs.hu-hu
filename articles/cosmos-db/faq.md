@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/03/2018
 ms.author: sngun
-ms.openlocfilehash: c1ddb6beec3f7c41fa49f62a3ed9baa17c515fbd
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 30ebe4f990dc65e53c34673f0948d3aa2240385c
+ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37445517"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37859700"
 ---
 # <a name="azure-cosmos-db-faq"></a>Az Azure Cosmos DB – gyakori kérdések
 ## <a name="azure-cosmos-db-fundamentals"></a>Az Azure Cosmos DB – alapok
@@ -136,12 +136,16 @@ Az SQL API-minták [.NET](sql-api-dotnet-samples.md), [Java](https://github.com/
 Igen, az SQL API lehetővé teszi, hogy sémadefiníciók vagy mutatók nélkül tetszőleges JSON-dokumentumokat tárolhat alkalmazásokat. Adatok azonnal lekérdezhetők a Azure Cosmos DB SQL-lekérdezési felületén keresztül.  
 
 ### <a name="does-the-sql-api-support-acid-transactions"></a>Az SQL API támogatja az ACID-tranzakciókat?
-Igen, az SQL API támogatja a JavaScript-tárolt eljárásokkal és eseményindítókkal kifejezett dokumentumok közötti tranzakciókat. Tranzakciók egyes gyűjteményeken belül egyetlen partícióra hatókörű, és ACID szemantikákkal, "mindent vagy semmit," végrehajtani más párhuzamosan kódtól vagy felhasználói kérelmektől elkülönítve. Ha a kivételek jelentkeznek a JavaScript alkalmazáskód kiszolgálóoldali végrehajtási, a teljes tranzakció vissza lesz állítva. Tranzakciókkal kapcsolatos további információkért lásd: [adatbázis-program tranzakciókat](programming.md#database-program-transactions).
+Igen, az SQL API támogatja a JavaScript-tárolt eljárásokkal és eseményindítókkal kifejezett dokumentumok közötti tranzakciókat. Tranzakciók hatóköre a tárolók belül egyetlen partícióra és ACID szemantikákkal, "mindent vagy semmit," végrehajtani más párhuzamosan kódtól vagy felhasználói kérelmektől elkülönítve. Ha a kivételek jelentkeznek a JavaScript alkalmazáskód kiszolgálóoldali végrehajtási, a teljes tranzakció vissza lesz állítva. Tranzakciókkal kapcsolatos további információkért lásd: [adatbázis-program tranzakciókat](programming.md#database-program-transactions).
 
-### <a name="what-is-a-collection"></a>Mi a gyűjtemény?
-A gyűjtemény olyan dokumentumokat és a kapcsolódó JavaScript alkalmazáslogikát. Egy gyűjtemény egy számlázható entitás, a [költség](performance-levels.md) az átviteli sebesség határozza meg, és a storage használt. Gyűjtemények is kiterjedhet, egy vagy több partíció vagy a kiszolgálók és gyakorlatilag korlátlan mennyiségű tárterület vagy átviteli sebesség kezelésére méretezhetők.
+### <a name="what-is-a-container"></a>Mi az a tároló?
+Egy tároló olyan dokumentumokat és a kapcsolódó JavaScript alkalmazáslogikát. Egy tároló-e egy számlázható entitás, ahol a [költség](performance-levels.md) az átviteli sebesség határozza meg, és a storage használt. A tárolók is kiterjedhet, egy vagy több partíció vagy a kiszolgálók és gyakorlatilag korlátlan mennyiségű tárterület vagy átviteli sebesség kezelésére méretezhetők. 
 
-Gyűjtemények is rendelkezésre állnak az Azure Cosmos DB számlázási egységei. Az egyes gyűjtemények számlázása óránként, a kiosztott átviteli sebesség alapján, és felhasznált tárhely. További információkért lásd: [Azure Cosmos DB szolgáltatás díjszabása](https://azure.microsoft.com/pricing/details/cosmos-db/). 
+* SQL- és MongoDB API-fiókok esetében egy tároló képez le egy gyűjteményt. 
+* Cassandra- és Table API-fiókok esetében a tároló képez le egy táblát. 
+* Gremlin API-fiókok esetében egy tároló képez le egy grafikont. 
+
+Tárolók is rendelkezésre állnak az Azure Cosmos DB számlázási egységei. Minden tároló számlázása óránként, a kiosztott átviteli sebesség alapján és a felhasznált tárterület. További információkért lásd: [Azure Cosmos DB szolgáltatás díjszabása](https://azure.microsoft.com/pricing/details/cosmos-db/). 
 
 ### <a name="how-do-i-create-a-database"></a>Hogyan hozható létre adatbázis?
 Az adatbázist is létrehozhat a [az Azure portal](https://portal.azure.com)leírtak szerint [gyűjtemény hozzáadása](create-sql-api-dotnet.md#create-collection), egy, a [Azure Cosmos DB SDK](sql-api-sdk-dotnet.md), vagy a [REST API-k](/rest/api/cosmos-db/). 
@@ -170,7 +174,7 @@ Akkor is tömeges beszúrási dokumentumokat az Azure Cosmos DB-be a következő
 * Az adatáttelepítés eszközzel leírtak szerint [az Azure Cosmos DB adatbázis-áttelepítési eszköz](import-data.md).
 * Tárolt eljárások, leírtak szerint [kiszolgálóoldali JavaScript programozás az Azure Cosmos DB](programming.md).
 
-### <a name="i-have-setup-my-collection-to-use-lazy-indexing-i-see-that-my-queries-do-not-return-expected-results"></a>A telepítő használata a Lusta indexelő gyűjteményem van, látom, hogy a lekérdezés nem adott vissza várt eredményt. 
+### <a name="i-have-setup-my-container-to-use-lazy-indexing-i-see-that-my-queries-do-not-return-expected-results"></a>A telepítő használata a Lusta indexelő tárolóm van, látom, hogy a lekérdezés nem adott vissza várt eredményt. 
 Az indexelő szakaszban leírtak ezt a viselkedést a lusta indexelési eredményezhet. Mindig használjon egységes indexelő az összes alkalmazáshoz. 
 
 
@@ -185,7 +189,7 @@ Ez a korlátozás a JavaScript. JavaScript kétszeres pontosságú lebegőpontos
 
 ### <a name="where-are-permissions-allowed-in-the-object-hierarchy"></a>Ha engedélyezettek a engedélyek az objektum hierarchiában?
 
-Engedélyek ResourceTokens használatával történő létrehozásának a gyűjtemény szintjén és az annak leszármazottai (például dokumentumok, a mellékletek) használata engedélyezett. Ez azt jelenti, hogy hozzon létre egy engedéllyel, amikor az adatbázis próbálkozik, vagy a fiók szintjén jelenleg nem engedélyezett.
+A descendants (például dokumentumok, a mellékletek) és a tároló szintű engedélyek ResourceTokens használatával történő létrehozásának engedélyezett. Ez azt jelenti, hogy hozzon létre egy engedéllyel, amikor az adatbázis próbálkozik, vagy a fiók szintjén jelenleg nem engedélyezett.
 
 
 ## <a name="develop-against-the-api-for-mongodb"></a>Fejlesztés az API a mongodb-hez
