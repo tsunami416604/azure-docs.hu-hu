@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: hero-article
 ms.date: 05/15/2017
 ms.author: adegeo
-ms.openlocfilehash: 16d35a6b36f4dd85db430e05abdff898affbfd67
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 7860af5dea41ce00739b592c5409fe5a1a05383b
+ms.sourcegitcommit: 4597964eba08b7e0584d2b275cc33a370c25e027
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32160021"
+ms.lasthandoff: 07/02/2018
+ms.locfileid: "37342293"
 ---
 # <a name="get-started-with-azure-cloud-services-and-aspnet"></a>Ismerkedés az Azure Cloud Services szolgáltatással és az ASP.NET keretrendszerrel
 
@@ -78,7 +78,7 @@ Amikor egy felhasználó feltölt egy képet, a webes szerepkörrel rendelkező 
 
     Alapértelmezés szerint a Visual Studio automatikusan visszaállítja a NuGet-csomag tartalmát, amelyet a *.zip* fájl nem tartalmazott. Ha a csomagok nem állnak vissza, telepítse őket manuálisan. Ehhez lépjen a **Manage NuGet Packages for Solution** (Megoldás NuGet-csomagjainak kezelése) párbeszédpanelre, és kattintson a **Restore** (Visszaállítás) gombra a jobb felső sarokban.
 5. A **Megoldáskezelőben** győződjön meg arról, hogy a **ContosoAdsCloudService** van kiválasztva kiindulási projektként.
-6. Ha a Visual Studio 2015-öt használja, módosítsa az SQL Server kapcsolati karakterláncát az alkalmazás *Web.config* fájljában a ContosoAdsWeb projekt esetében, illetve a *ServiceConfiguration.Local.cscfg* fájlt a ContosoAdsCloudService projekt esetében. Mindkét esetben módosítsa a „(localdb)\v11.0” elemet a következőre: „(localdb)\MSSQLLocalDB”.
+6. Ha a Visual Studio 2015-öt használja, módosítsa az SQL Server kapcsolati sztringjét az alkalmazás *Web.config* fájljában a ContosoAdsWeb projekt esetében, illetve a *ServiceConfiguration.Local.cscfg* fájlt a ContosoAdsCloudService projekt esetében. Mindkét esetben módosítsa a „(localdb)\v11.0” elemet a következőre: „(localdb)\MSSQLLocalDB”.
 7. Az alkalmazás futtatásához nyomja le a Ctrl+F5 billentyűkombinációt.
 
     Amikor helyileg futtat egy felhőszolgáltatás-projektet, a Visual Studio automatikusan meghívja az Azure *Compute Emulator* és az Azure *Storage Emulator* eszközöket. A Compute Emulator a számítógép erőforrásait felhasználva szimulálja a webes és a feldolgozói szerepkörök környezeteit. A Storage Emulator egy [SQL Server Express LocalDB](http://msdn.microsoft.com/library/hh510202.aspx) adatbázis használatával szimulálja az Azure felhőalapú tárolást.
@@ -186,7 +186,7 @@ Egy valós alkalmazás esetében általában külön fiókot hozna létre az alk
     Az alábbi képen egy `csvccontosoads.core.windows.net` URL-címmel ellátott tárfiók lesz létrehozva.
 
 ### <a name="configure-the-solution-to-use-your-azure-sql-database-when-it-runs-in-azure"></a>A megoldás konfigurálása arra, hogy az Azure-ban való futáskor az Azure SQL-adatbázist használja
-A webes projekt és a feldolgozói szerepkör is saját adatbázis-kapcsolati karakterlánccal rendelkezik, és mindkettőnek az Azure SQL-adatbázisra kell mutatnia az alkalmazás Azure-ban való futásakor.
+A webes projekt és a feldolgozói szerepkör is saját adatbázis-kapcsolati sztringgel rendelkezik, és mindkettőnek az Azure SQL-adatbázisra kell mutatnia az alkalmazás Azure-ban való futásakor.
 
 A webes szerepkör esetében [Web.config transzformálása](http://www.asp.net/mvc/tutorials/deployment/visual-studio-web-deployment/web-config-transformations), a feldolgozói szerepkör esetében pedig felhőszolgáltatás környezeti beállítást kell alkalmaznia.
 
@@ -205,29 +205,29 @@ A webes szerepkör esetében [Web.config transzformálása](http://www.asp.net/m
     ```
 
     Hagyja megnyitva a fájlt a szerkesztéshez.
-2. Az [Azure Portalon](https://portal.azure.com) kattintson a bal oldali ablaktáblában található **SQL-adatbázisok** elemre, kattintson az oktatóanyaghoz létrehozott adatbázisra, majd kattintson a **Kapcsolati karakterláncok megjelenítése** elemre.
+2. Az [Azure Portalon](https://portal.azure.com) kattintson a bal oldali ablaktáblában található **SQL-adatbázisok** elemre, kattintson az oktatóanyaghoz létrehozott adatbázisra, majd kattintson a **Kapcsolati sztringek megjelenítése** elemre.
 
-    ![Kapcsolati karakterláncok megjelenítése](./media/cloud-services-dotnet-get-started/showcs.png)
+    ![Kapcsolati sztringek megjelenítése](./media/cloud-services-dotnet-get-started/showcs.png)
 
-    A portál megjeleníti a kapcsolati karakterláncokat helyőrzővel helyettesített jelszóval.
+    A portál megjeleníti a kapcsolati sztringekat helyőrzővel helyettesített jelszóval.
 
-    ![Kapcsolati karakterláncok](./media/cloud-services-dotnet-get-started/connstrings.png)
-3. A *Web.Release.config* átalakítófájlban törölje a `{connectionstring}` elemet, és illessze be a helyére az Azure Portalról származó ADO.NET kapcsolati karakterláncot.
-4. A *Web.Release.config* átalakítófájlba beillesztett kapcsolati karakterláncban helyettesítse a `{your_password_here}` elemet az új SQL-adatbázis számára létrehozott jelszóval.
+    ![Kapcsolati sztringek](./media/cloud-services-dotnet-get-started/connstrings.png)
+3. A *Web.Release.config* átalakítófájlban törölje a `{connectionstring}` elemet, és illessze be a helyére az Azure Portalról származó ADO.NET kapcsolati sztringet.
+4. A *Web.Release.config* átalakítófájlba beillesztett kapcsolati sztringben helyettesítse a `{your_password_here}` elemet az új SQL-adatbázis számára létrehozott jelszóval.
 5. Mentse a fájlt.  
-6. Jelölje ki és másolja a kapcsolati karakterláncot (az idézőjelek nélkül) a feldolgozóiszerepkör-projekt konfigurálásának alábbi lépéseiben való használatra.
+6. Jelölje ki és másolja a kapcsolati sztringet (az idézőjelek nélkül) a feldolgozóiszerepkör-projekt konfigurálásának alábbi lépéseiben való használatra.
 7. A **Megoldáskezelőben** a felhőszolgáltatás-projekt **Szerepkörök** területén kattintson a jobb gombbal a **ContosoAdsWorker**, majd a **Tulajdonságok** elemre.
 
     ![Szerepkör tulajdonságai](./media/cloud-services-dotnet-get-started/rolepropertiesworker.png)
 8. Kattintson a **Beállítások** fülre.
 9. Módosítsa a **Szolgáltatás konfigurációja** beállítását a következőre: **Felhő**.
-10. Jelölje ki a `ContosoAdsDbConnectionString` beállítás **Érték** mezőjét, majd illessze be az oktatóanyag előző szakaszából másolt kapcsolati karakterláncot.
+10. Jelölje ki a `ContosoAdsDbConnectionString` beállítás **Érték** mezőjét, majd illessze be az oktatóanyag előző szakaszából másolt kapcsolati sztringet.
 
-     ![A feldolgozói szerepkör adatbázis-kapcsolati karakterlánca](./media/cloud-services-dotnet-get-started/workerdbcs.png)
+     ![A feldolgozói szerepkör adatbázis-kapcsolati sztringje](./media/cloud-services-dotnet-get-started/workerdbcs.png)
 11. Mentse a módosításokat.  
 
 ### <a name="configure-the-solution-to-use-your-azure-storage-account-when-it-runs-in-azure"></a>A megoldás konfigurálása az Azure-tárfiók használatára az Azure-ban való futás során
-Az Azure-tárfiók kapcsolati karakterláncainak tárolása a webes- és a feldolgozóiszerepkör-projektek esetében egyaránt környezeti beállításokban történik a felhőszolgáltatás-projektben. Az egyes projektek esetén külön beállításokat kell alkalmazni, ha az alkalmazás helyileg vagy a felhőben fut. A felhőkörnyezet beállításait a webes és a feldolgozóiszerepkör-projektek esetében egyaránt frissíteni fogja.
+Az Azure-tárfiók kapcsolati sztringjeinek tárolása a webes- és a feldolgozóiszerepkör-projektek esetében egyaránt környezeti beállításokban történik a felhőszolgáltatás-projektben. Az egyes projektek esetén külön beállításokat kell alkalmazni, ha az alkalmazás helyileg vagy a felhőben fut. A felhőkörnyezet beállításait a webes és a feldolgozóiszerepkör-projektek esetében egyaránt frissíteni fogja.
 
 1. A **Megoldáskezelőben** a **ContosoAdsCloudService** projekt **Szerepkörök** területén kattintson a jobb gombbal a **ContosoAdsWeb** elemre, majd kattintson a **Tulajdonságok** lehetőségre.
 
@@ -235,17 +235,17 @@ Az Azure-tárfiók kapcsolati karakterláncainak tárolása a webes- és a feldo
 2. Kattintson a **Beállítások** fülre. A **Szolgáltatás konfigurációja** legördülő mezőben válassza a **Felhő** elemet.
 
     ![Felhő konfigurálása](./media/cloud-services-dotnet-get-started/sccloud.png)
-3. Jelölje ki a **StorageConnectionString** bejegyzést, és megjelenik egy három pontot (**...**) ábrázoló gomb a sor jobb oldali végén. Kattintson a három pontot ábrázoló gombra a **Create Storage Account Connection String** (Tárfiók kapcsolati karakterláncának létrehozása) párbeszédpanel megnyitásához.
+3. Jelölje ki a **StorageConnectionString** bejegyzést, és megjelenik egy három pontot (**...**) ábrázoló gomb a sor jobb oldali végén. Kattintson a három pontot ábrázoló gombra a **Create Storage Account Connection String** (Tárfiók kapcsolati sztringjének létrehozása) párbeszédpanel megnyitásához.
 
-    ![A Kapcsolati karakterlánc létrehozása mező megnyitása](./media/cloud-services-dotnet-get-started/opencscreate.png)
-4. A **Create Storage Connection String** (Tárfiók kapcsolati karakterláncának létrehozása) párbeszédpanelen kattintson a **Your subscription** (Saját előfizetés) elemre, válassza a korábban létrehozott tárfiókot, majd kattintson az **OK** gombra. Ha még nincs bejelentkezve, a rendszer az Azure-fiókja hitelesítő adatait kéri.
+    ![A Kapcsolati sztring létrehozása mező megnyitása](./media/cloud-services-dotnet-get-started/opencscreate.png)
+4. A **Create Storage Connection String** (Tárfiók kapcsolati sztringjének létrehozása) párbeszédpanelen kattintson a **Your subscription** (Saját előfizetés) elemre, válassza a korábban létrehozott tárfiókot, majd kattintson az **OK** gombra. Ha még nincs bejelentkezve, a rendszer az Azure-fiókja hitelesítő adatait kéri.
 
-    ![Tárfiók kapcsolati karakterláncának létrehozása](./media/cloud-services-dotnet-get-started/createstoragecs.png)
+    ![Tárfiók kapcsolati sztringjének létrehozása](./media/cloud-services-dotnet-get-started/createstoragecs.png)
 5. Mentse a módosításokat.
-6. A `Microsoft.WindowsAzure.Plugins.Diagnostics.ConnectionString` kapcsolati karakterlánc beállításához kövesse ugyanazt az eljárást, mint a `StorageConnectionString` kapcsolati karakterlánc esetében.
+6. A `Microsoft.WindowsAzure.Plugins.Diagnostics.ConnectionString` kapcsolati sztring beállításához kövesse ugyanazt az eljárást, mint a `StorageConnectionString` kapcsolati sztring esetében.
 
-    Ez a kapcsolati karakterlánc naplózásra használható.
-7. A **ContosoAdsWorker** szerepkör mindkét kapcsolati karakterláncának beállításához kövesse ugyanazt az eljárást, mint a **ContosoAdsWeb** szerepkör esetében. Ne felejtse el a **Szolgáltatás konfigurációja** beállítását a következőre módosítani: **Felhő**.
+    Ez a kapcsolati sztring naplózásra használható.
+7. A **ContosoAdsWorker** szerepkör mindkét kapcsolati sztringjének beállításához kövesse ugyanazt az eljárást, mint a **ContosoAdsWeb** szerepkör esetében. Ne felejtse el a **Szolgáltatás konfigurációja** beállítását a következőre módosítani: **Felhő**.
 
 A Visual Studio felhasználói felületén keresztül konfigurált szerepkörnyezeti beállítások a ContosoAdsCloudService projekt alábbi fájljaiban lesznek tárolva:
 
@@ -291,7 +291,7 @@ Az `<Instances>` beállítás megadja azon virtuális gépek számát, amelyeken
 
     ![Beállítások lépés](./media/cloud-services-dotnet-get-started/pubsettings.png)
 
-    A **Speciális** lapon szereplő alapértelmezett beállítások megfelelnek a jelen oktatóanyag céljainak. A Speciális lappal kapcsolatos további információkért lásd: [Publish Azure Application Wizard](http://msdn.microsoft.com/library/hh535756.aspx) (Azure-alkalmazás közzététele varázsló).
+    A **Speciális** lapon szereplő alapértelmezett beállítások megfelelnek a jelen oktatóanyag céljainak. A Speciális lappal kapcsolatos további információkért lásd: [Publish Azure Application Wizard](https://docs.microsoft.com/azure/vs-azure-tools-publish-azure-application-wizard) (Azure-alkalmazás közzététele varázsló).
 4. Az **Összegzés** lépésben kattintson a **Közzététel** lehetőségre.
 
     ![Összegzés lépés](./media/cloud-services-dotnet-get-started/pubsummary.png)
@@ -318,7 +318,7 @@ A Contoso Ads alkalmazás létrehozása az alábbi lépésekből áll:
 * Hozzon létre egy Visual Studio felhőszolgáltatás-megoldást.
 * Frissítse és adja hozzá a NuGet-csomagokat.
 * Állítsa be a projekt hivatkozásait.
-* Konfigurálja a kapcsolati karakterláncokat.
+* Konfigurálja a kapcsolati sztringekat.
 * Adja hozzá a kódfájlokat.
 
 A megoldás létrehozása után áttekinti a felhőszolgáltatás-projektekre nézve egyedi kódot, valamint az Azure-blobokat és üzenetsorokat.
@@ -364,8 +364,8 @@ A megoldás létrehozása után áttekinti a felhőszolgáltatás-projektekre n�
 
     Ezt a szerelvényt a háttéralkalmazás használja a képek miniatűrökké való átalakításához.
 
-### <a name="configure-connection-strings"></a>Csatlakozási karakterláncok konfigurálása
-Ebben a szakaszban Azure Storage- és SQL-kapcsolati sztringeket fog konfigurálni helyi tesztelés céljából. Az oktatóanyag korábbi telepítési utasításai ismertetik a kapcsolati karakterláncok beállításának módját, amikor az alkalmazás a felhőben fut.
+### <a name="configure-connection-strings"></a>Kapcsolati sztringek konfigurálása
+Ebben a szakaszban Azure Storage- és SQL-kapcsolati sztringeket fog konfigurálni helyi tesztelés céljából. Az oktatóanyag korábbi telepítési utasításai ismertetik a kapcsolati sztringek beállításának módját, amikor az alkalmazás a felhőben fut.
 
 1. A ContosoAdsWeb projektben nyissa meg az alkalmazás Web.config fájlját, és illessze be a következő `connectionStrings` elemet a `configSections` elem után.
 
@@ -385,14 +385,14 @@ Ebben a szakaszban Azure Storage- és SQL-kapcsolati sztringeket fog konfigurál
     A **Service Configuration** (Szolgáltatáskonfiguráció) **All Configurations** (Minden konfiguráció) értékét ne módosítsa.
 5. Adjon hozzá egy *StorageConnectionString* névvel ellátott beállítást. A **Típus** beállítása legyen *ConnectionString*, az **Érték** beállítása pedig *UseDevelopmentStorage=true*.
 
-    ![Új kapcsolati karakterlánc](./media/cloud-services-dotnet-get-started/scall.png)
+    ![Új kapcsolati sztring](./media/cloud-services-dotnet-get-started/scall.png)
 6. Mentse a módosításokat.
-7. Kövesse ugyanezt az eljárást egy tárolási kapcsolati karakterlánc hozzáadásához a ContosoAdsWeb szerepkör tulajdonságaihoz.
-8. A **ContosoAdsWorker [Szerepkör]** tulajdonságai ablakban maradva adjon hozzá egy másik kapcsolati karakterláncot:
+7. Kövesse ugyanezt az eljárást egy tárolási kapcsolati sztring hozzáadásához a ContosoAdsWeb szerepkör tulajdonságaihoz.
+8. A **ContosoAdsWorker [Szerepkör]** tulajdonságai ablakban maradva adjon hozzá egy másik kapcsolati sztringet:
 
    * Név: ContosoAdsDbConnectionString
-   * Típus: Karakterlánc
-   * Érték: Illessze be ugyanazt a kapcsolati karakterláncot, amelyet a webes szerepkör projekt esetében használt. (Az alábbi példa a Visual Studio 2013 kiadásra vonatkozik. (Ne feledje módosítani az Adatforrást, ha ezt a példát a Visual Studio 2015 vagy újabb kiadás használata mellett követi.)
+   * Típus: Sztring
+   * Érték: Illessze be ugyanazt a kapcsolati sztringet, amelyet a webes szerepkör projekt esetében használt. (Az alábbi példa a Visual Studio 2013 kiadásra vonatkozik. (Ne feledje módosítani az Adatforrást, ha ezt a példát a Visual Studio 2015 vagy újabb kiadás használata mellett követi.)
 
        ```
        Data Source=(localdb)\v11.0; Initial Catalog=ContosoAds; Integrated Security=True; MultipleActiveResultSets=True;
@@ -482,12 +482,12 @@ public class ContosoAdsContext : DbContext
 }
 ```
 
-Az osztály két konstruktorral rendelkezik. Az elsőt a webes projekt használja, és a Web.config fájlban tárolt kapcsolati karakterlánc nevét adja meg. A második konstruktorral adhatja meg a feldolgozói szerepkör projektje által használt tényleges kapcsolati sztringet, mivel a projektben nem található Web.config fájl. Korábban már látta a kapcsolati karakterlánc tárolásának helyét, a későbbiekben pedig láthatja, hogyan kérdezi le a kód a kapcsolati karakterláncot, amikor elindítja a DbContext osztályt.
+Az osztály két konstruktorral rendelkezik. Az elsőt a webes projekt használja, és a Web.config fájlban tárolt kapcsolati sztring nevét adja meg. A második konstruktorral adhatja meg a feldolgozói szerepkör projektje által használt tényleges kapcsolati sztringet, mivel a projektben nem található Web.config fájl. Korábban már látta a kapcsolati sztring tárolásának helyét, a későbbiekben pedig láthatja, hogyan kérdezi le a kód a kapcsolati sztringet, amikor elindítja a DbContext osztályt.
 
 ### <a name="contosoadsweb---globalasaxcs"></a>ContosoAdsWeb – Global.asax.cs
 Az `Application_Start` metódusból meghívott kód létrehoz egy *képek* blobtárolót és egy *képek* üzenetsort, amennyiben még nem léteznek. Ez biztosítja, hogy valahányszor új tárfiókot kezd használni, vagy egy új számítógépen használja a Storage Emulatort, a szükséges blobtároló és üzenetsor automatikusan létrejöjjön.
 
-A kód a *.cscfg*-fájlból származó tárolási kapcsolati karakterlánc használatával fér hozzá a tárfiókhoz.
+A kód a *.cscfg*-fájlból származó tárolási kapcsolati sztring használatával fér hozzá a tárfiókhoz.
 
 ```csharp
 var storageAccount = CloudStorageAccount.Parse
@@ -656,7 +656,7 @@ Egy `<input>` elem jelzi a böngészőnek, hogy biztosítson egy fájlkiválaszt
 ### <a name="contosoadsworker---workerrolecs---onstart-method"></a>ContosoAdsWorker – WorkerRole.cs – OnStart metódus
 A feldolgozói szerepkör indulásakor az Azure feldolgozóiszerepkör-környezet meghívja a `WorkerRole` osztályban lévő `OnStart` metódust, az `OnStart` metódus befejezésekor pedig a `Run` metódust.
 
-Az `OnStart` metódus lekéri az adatbázis-kapcsolati karakterláncot a *.cscfg*-fájlból, és átadja az Entity Framework DbContext osztálynak. Alapértelmezés szerint az SQLClient szolgáltató van használatban, így azt nem kell megadni.
+Az `OnStart` metódus lekéri az adatbázis-kapcsolati sztringet a *.cscfg*-fájlból, és átadja az Entity Framework DbContext osztálynak. Alapértelmezés szerint az SQLClient szolgáltató van használatban, így azt nem kell megadni.
 
 ```csharp
 var dbConnString = CloudConfigurationManager.GetSetting("ContosoAdsDbConnectionString");
@@ -747,7 +747,7 @@ Ha az oktatóanyag utasításainak követése ellenére valami mégsem működne
 ### <a name="serviceruntimeroleenvironmentexception"></a>ServiceRuntime.RoleEnvironmentException
 A `RoleEnvironment` objektumot az Azure biztosítja az alkalmazás Azure-ban való futtatásakor, vagy az Azure Compute Emulator használatával történő helyi futtatáskor.  Ha a helyi futtatás során ez a hiba jelenik meg, ellenőrizze, hogy a ContosoAdsCloudService projektet állította-e be kiindulási projektként. Beállítja a projektet, hogy az Azure Compute Emulator használatával fusson.
 
-Az alkalmazás többek között a *.cscfg*-fájlokban tárolt kapcsolati karakterlánc-értékek lekérésére használja az Azure RoleEnvironment-et, ezért a kivétel egy másik oka egy hiányzó kapcsolati karakterlánc. Győződjön meg arról, hogy a ContosoAdsWeb projekt Felhő- és a Helyi konfigurációiban is létrehozta a StorageConnectionString beállítást, illetve arról is, hogy a ContosoAdsWorker projekt mindkét konfigurációjában létrehozta mindkét kapcsolati karakterláncot. Ha a **Find All** (Összes keresése) funkció használatával keres a StorageConnectionString kifejezésre a megoldás egészében, 6 fájlban, 9 alkalommal kell megjelennie.
+Az alkalmazás többek között a *.cscfg*-fájlokban tárolt kapcsolatisztring-értékek lekérésére használja az Azure RoleEnvironmentet, ezért a kivétel egy másik oka egy hiányzó kapcsolati sztring. Győződjön meg arról, hogy a ContosoAdsWeb projekt Felhő- és a Helyi konfigurációiban is létrehozta a StorageConnectionString beállítást, illetve arról is, hogy a ContosoAdsWorker projekt mindkét konfigurációjában létrehozta mindkét kapcsolati sztringet. Ha a **Find All** (Összes keresése) funkció használatával keres a StorageConnectionString kifejezésre a megoldás egészében, 6 fájlban, 9 alkalommal kell megjelennie.
 
 ### <a name="cannot-override-to-port-xxx-new-port-below-minimum-allowed-value-8080-for-protocol-http"></a>A felülbírálás nem alkalmazható a(z) xxx portra. Az új port a HTTP protokoll esetében megengedett legalacsonyabb, 8080 érték alatt van
 Próbálja módosítani a webes projekt által használt port számát. Kattintson a jobb gombbal a ContosoAdsWeb projektre, majd kattintson a **Properties** (Tulajdonságok) elemre. Kattintson a **Web** lapra, majd módosítsa a port számát a **Projekt URL-címe** beállításban.

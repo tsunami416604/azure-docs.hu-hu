@@ -3,7 +3,7 @@ title: Azure PowerShell-példaszkript – Docker | Microsoft Docs
 description: Azure PowerShell-példaszkript – Docker
 services: virtual-machines-linux
 documentationcenter: virtual-machines
-author: neilpeterson
+author: iainfoulds
 manager: jeconnoc
 editor: tysonn
 tags: azure-service-management
@@ -14,18 +14,18 @@ ms.topic: sample
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 03/02/2017
-ms.author: nepeters
+ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 87b87734ebf2eaa266447cab0083c24399844f55
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: cfa42180d0cc25b3ee4da3f79b51775e8e62db81
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34653392"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37096662"
 ---
 # <a name="create-a-docker-host-with-powershell"></a>Docker-gazdagép létrehozása a PowerShell-lel
 
-Ez a szkript létrehoz egy virtuális gépet, amelyen engedélyezve van a Docker, és elindít egy NGINX-et futtató tárolót. A szkript futtatása után az Azure-beli virtuális gép teljes tartománynevén keresztül érheti el az NGINX-webkiszolgálót. 
+Ez a szkript létrehoz egy virtuális gépet, amelyen engedélyezve van a Docker, és elindít egy NGINX-et futtató tárolót. A szkript futtatása után az Azure-beli virtuális gép teljes tartománynevén keresztül érheti el az NGINX-webkiszolgálót.
 
 [!INCLUDE [sample-powershell-install](../../../includes/sample-powershell-install.md)]
 
@@ -35,7 +35,7 @@ Ez a szkript létrehoz egy virtuális gépet, amelyen engedélyezve van a Docker
 
 [!code-powershell[main](../../../powershell_scripts/virtual-machine/create-docker-host/create-docker-host.ps1 "Create Docker host")]
 
-## <a name="clean-up-deployment"></a>Az üzemelő példány eltávolítása 
+## <a name="clean-up-deployment"></a>Az üzemelő példány eltávolítása
 
 Az alábbi paranccsal eltávolítható az erőforráscsoport, a virtuális gép és az összes kapcsolódó erőforrás.
 

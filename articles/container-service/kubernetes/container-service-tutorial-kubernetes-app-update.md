@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 02/26/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: f54179329b521cc861e90f023ff0b010b7ce1f75
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 81f2302df5740b482f03a4a724d2899734579949
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32164959"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37096859"
 ---
 # <a name="update-an-application-in-kubernetes"></a>Alkalmazások frissítése a Kubernetesben
 
@@ -100,7 +100,7 @@ docker push <acrLoginServer>/azure-vote-front:redis-v2
 
 ## <a name="deploy-update-application"></a>A frissített alkalmazás üzembe helyezése
 
-A rendelkezésre állás maximalizálása érdekében az alkalmazáspodot több példányban kell futtatni. Ezt a konfigurációt a [kubectl get pod](https://kubernetes.io/docs/user-guide/kubectl/v1.6/#get) paranccsal ellenőrizheti.
+A rendelkezésre állás maximalizálása érdekében az alkalmazáspodot több példányban kell futtatni. Ezt a konfigurációt a [kubectl get pod](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get) paranccsal ellenőrizheti.
 
 ```bash
 kubectl get pod
@@ -123,13 +123,13 @@ Amennyiben az azure-vote-front rendszerkép nem fut egyszerre több podon, mére
 kubectl scale --replicas=3 deployment/azure-vote-front
 ```
 
-Az alkalmazás frissítéséhez használja a [kubectl set](https://kubernetes.io/docs/user-guide/kubectl/v1.6/#set) parancsot. Az `<acrLoginServer>` helyére a tárolóregisztrációs adatbázis bejelentkezési kiszolgálójának nevét vagy gazdanevét írja.
+Az alkalmazás frissítéséhez használja a [kubectl set](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#set) parancsot. Az `<acrLoginServer>` helyére a tárolóregisztrációs adatbázis bejelentkezési kiszolgálójának nevét vagy gazdanevét írja.
 
 ```azurecli-interactive
 kubectl set image deployment azure-vote-front azure-vote-front=<acrLoginServer>/azure-vote-front:redis-v2
 ```
 
-Az üzemelő példány monitorozásához használja a [kubectl get pod](https://kubernetes.io/docs/user-guide/kubectl/v1.6/#get) parancsot. A frissített alkalmazás üzembe helyezése során a rendszer a podokat megszünteti, majd az új tárolórendszerképpel újból létrehozza.
+Az üzemelő példány monitorozásához használja a [kubectl get pod](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get) parancsot. A frissített alkalmazás üzembe helyezése során a rendszer a podokat megszünteti, majd az új tárolórendszerképpel újból létrehozza.
 
 ```azurecli-interactive
 kubectl get pod

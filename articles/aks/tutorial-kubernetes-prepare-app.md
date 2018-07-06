@@ -2,23 +2,23 @@
 title: Az Azure-on futó Kubernetes oktatóanyaga – Az alkalmazás előkészítés
 description: AKS-oktatóanyag – Az alkalmazás előkészítése
 services: container-service
-author: neilpeterson
+author: iainfoulds
 manager: jeconnoc
 ms.service: container-service
 ms.topic: tutorial
 ms.date: 02/22/2018
-ms.author: nepeters
+ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 50c302ddc7bad9cd2de666c1b99d1fbc6d5a62a8
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 3e500ec0c7acbf8d8e10756c944516cd7e589610
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "33934114"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37101010"
 ---
 # <a name="tutorial-prepare-application-for-azure-kubernetes-service-aks"></a>Oktatóanyag: Alkalmazás előkészítése az Azure Kubernetes Service (AKS) szolgáltatáshoz
 
-Ebben az oktatóanyagban, amely egy nyolcrészes sorozat első része, egy többtárolós alkalmazást fog előkészíteni a Kubernetesben való használathoz. Ennek lépései az alábbiak:
+Ebben az oktatóanyagban, amely egy hétrészes sorozat első része, egy többtárolós alkalmazást fog előkészíteni a Kubernetesben való használathoz. Ennek lépései az alábbiak:
 
 > [!div class="checklist"]
 > * Alkalmazás forrásának klónozása a GitHubról

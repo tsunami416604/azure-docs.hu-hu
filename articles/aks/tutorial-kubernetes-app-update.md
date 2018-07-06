@@ -2,33 +2,31 @@
 title: Azure-on futó Kubernetes oktatóanyag – Alkalmazás frissítése
 description: AKS-oktatóanyag – Alkalmazás frissítése
 services: container-service
-author: neilpeterson
+author: iainfoulds
 manager: jeconnoc
 ms.service: container-service
 ms.topic: tutorial
 ms.date: 02/24/2018
-ms.author: nepeters
+ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 622cd17a93bf1b9fa9d3c138d385ca1d29426f3b
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 97d8c4bd179edc59d97914f86e2aa139681e739a
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "33934056"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37100970"
 ---
 # <a name="tutorial-update-an-application-in-azure-kubernetes-service-aks"></a>Oktatóanyag: Alkalmazások frissítése az Azure Kubernetes Service-ben (AKS)
 
 A Kubernetesben való telepítésüket követően az alkalmazások egy új tárolórendszerkép- vagy rendszerképverzió megadásával frissíthetőek. Ilyen esetben a frissítés úgy lesz ütemezve, hogy egy adott pillanatban az üzemelő példánynak csak egy része legyen frissítve. Ennek az eltolásos frissítésnek köszönhetően az alkalmazás a frissítés során is tovább fut. Ezen kívül visszaállítási mechanizmust is biztosít az üzembe helyezés során fellépő hibák esetére.
 
-Ebben az oktatóanyagban, amely egy nyolcrészes sorozat hatodik része, az Azure Vote alkalmazást frissítjük. A következő feladatokat fogjuk végrehajtani:
+Ebben az oktatóanyagban, amely egy hétrészes sorozat hatodik része, az Azure Vote mintaalkalmazást frissítjük. A következő feladatokat fogjuk végrehajtani:
 
 > [!div class="checklist"]
 > * Az előtér-alkalmazás kódjának frissítése
 > * Frissített tárolórendszerkép létrehozása
 > * A tárolórendszerkép leküldése az Azure Container Registrybe
 > * A frissített tárolórendszerkép üzembe helyezése
-
-Az ezt követő oktatóanyagokban a Log Analytics szolgáltatást fogjuk konfigurálni a Kubernetes-fürt monitorozására.
 
 ## <a name="before-you-begin"></a>Előkészületek
 

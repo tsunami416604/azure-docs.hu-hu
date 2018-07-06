@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 86bf28249321a705e8855de35121611b05009854
-ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
+ms.openlocfilehash: 27e5b7fed227248d9d60c8ede460c9ecc65ca52d
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37063493"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37096274"
 ---
 # <a name="quickstart-deploy-your-first-iot-edge-module-to-a-linux-x64-device"></a>Rövid útmutató: Az első IoT Edge-modul üzembe helyezése x64-es Linux-eszközön
 
@@ -171,8 +171,10 @@ A biztonsági démon rendszerszolgáltatásként lesz telepítve, így az IoT Ed
 6. Tekintse meg az eszközön futó modulokat: 
 
    ```bash
-   iotedge list
+   sudo iotedge list
    ```
+
+   Kijelentkezést és bejelentkezést követően a *sudo* nem szükséges a fenti parancshoz.
 
    ![Egy modul megtekintése az eszközön](./media/quickstart-linux/iotedge-list-1.png)
 
@@ -190,8 +192,9 @@ Ebben a rövid útmutatóban létrehozott egy új IoT Edge-eszközt, és telepí
 Nyissa meg újra a parancssort a szimulált eszközt futtató számítógépen. Győződjön meg arról, hogy a felhőből üzembe helyezett modul fut az IoT Edge-eszközön:
 
    ```bash
-   iotedge list
+   sudo iotedge list
    ```
+   Kijelentkezést és bejelentkezést követően a *sudo* nem szükséges a fenti parancshoz.
 
    ![Három modul megtekintése az eszközön](./media/quickstart-linux/iotedge-list-2.png)
 

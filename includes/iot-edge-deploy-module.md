@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/27/2018
 ms.author: kgremban
 ms.custom: include file
-ms.openlocfilehash: 9c562f1ce938e5f5d9371cbccf032c0eb1d67125
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: 3e7fcde204966e5a6a8154ab307807652cfa0419
+ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37055030"
+ms.lasthandoff: 06/28/2018
+ms.locfileid: "37086211"
 ---
 Az Azure IoT Edge egyik legfontosabb képessége a modulok felhőből való üzembe helyezése az IoT Edge-eszközökön. Az IoT Edge-modul egy tárolóként megvalósított végrehajtható csomag. Ebben a szakaszban üzembe helyez egy modult, amely telemetriát hoz létre a szimulált eszköz számára. 
 
@@ -21,7 +21,7 @@ Az Azure IoT Edge egyik legfontosabb képessége a modulok felhőből való üze
 1. Lépjen az **IoT Edge** részhez, és válassza ki az IoT Edge-eszközt.
 1. Válassza a **Modulok beállítása** lehetőséget.
 1. Az oldal **Üzembehelyezési modulok** szakaszában kattintson a **Hozzáadás** gombra, majd válassza az **IoT Edge-modul** lehetőséget.
-1. A **Név** mezőbe írja a következőt: `tempsensor`. 
+1. A **Név** mezőbe írja a következőt: `tempSensor`. 
 1. A **Rendszerkép URI** mezőbe írja be a következőt: `mcr.microsoft.com/azureiotedge-simulated-temperature-sensor:1.0`. 
 1. Hagyja változatlanul a többi beállítást, és válassza a **Mentés** lehetőséget.
 
