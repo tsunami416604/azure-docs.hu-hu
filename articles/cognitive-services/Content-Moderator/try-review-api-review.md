@@ -1,6 +1,6 @@
 ---
-title: Tartalom mérsékelt Azure tartalom moderátor emberi értékelést használatával |} Microsoft Docs
-description: 'Útmutató: a tartalom moderátor API konzolban emberi értékelést létrehozásához.'
+title: Tartalommoderálás, emberi ellenőrző használatával az Azure Content Moderator |} A Microsoft Docs
+description: Ismerje meg, hogyan hozhat létre az emberi ellenőrző a Content Moderator API-konzolon.
 services: cognitive-services
 author: sanjeev3
 manager: mikemcca
@@ -9,59 +9,59 @@ ms.component: content-moderator
 ms.topic: article
 ms.date: 08/05/2017
 ms.author: sajagtap
-ms.openlocfilehash: e9faf595e65ba4475a743e4cb45919fd30fbd6e8
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 214695ed3e23d1f501d6d4691104b3f8a91f6efc
+ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35347003"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37866508"
 ---
-# <a name="create-reviews-from-the-api-console"></a>Az API-konzolról értékelést létrehozása
+# <a name="create-reviews-from-the-api-console"></a>Értékelések készítése az API-konzol
 
-Az át API [tekintse át a műveletek](https://westus.dev.cognitive.microsoft.com/docs/services/580519463f9b070e5c591178/operations/580519483f9b0709fc47f9c4) emberi moderálás a kép vagy szöveg értékelést létrehozásához. Emberi moderátorok használja a a felülvizsgálati eszköz tekintse át a tartalmat. Használja ezt a műveletet a utáni moderálás üzleti logika alapján. Használja azt követően, rendelkezik a tartalom a tartalom moderátor kép vagy szöveges API-k és más kognitív szolgáltatások API-k használatával. 
+A tekintse át API [tekintse át az operations](https://westus.dev.cognitive.microsoft.com/docs/services/580519463f9b070e5c591178/operations/580519483f9b0709fc47f9c4) emberi moderálás képet vagy szöveget felülvizsgálatának létrehozásához. Az emberi moderátorok a felülvizsgálati eszköz használatával tekintse át a tartalmat. Használja ezt a műveletet a jóváhagyás utáni üzleti logika alapján. Azt követően, rendelkezik a tartalom a Content Moderator kép vagy a szöveges API-k, illetve egyéb Cognitive Services API-k egyikével használja. 
 
-Miután emberi Moderátorra ellenőrzi, hogy az automatikusan hozzárendelt címkék és előrejelzési adatokat, és elküldi a végleges moderálás döntést, tekintse át az API-t minden információt az API-végpont küldi el.
+Miután egy emberi moderátor ellenőrzi a hozzárendelt címkék és előrejelzési adatokat, és elküldi a végső jóváhagyás döntés, a felülvizsgálati API az API-végpont összes információt küldi el.
 
-## <a name="use-the-api-console"></a>Az API-konzollal
-Az API-t test-drive az online konzol használatával, kell néhány értékeket kell megadnia a konzolhoz:
+## <a name="use-the-api-console"></a>Az API-konzol használata
+Próbálhatják ki őket az API-t az online konzol használatával, meg kell adnia a konzol néhány értékek van szükség:
 
-- **teamName**: A csoport nevére, amelyet a felülvizsgálati eszköz fiók beállításakor hozott létre. 
-- **ContentId**: Ez a karakterlánc az API-nak átadott, és vissza a visszahívás keresztül. A ContentId esetén hasznos belső azonosítók vagy metaadatok társít egy moderálás feladat eredményeinek.
-- **Metaadatok**: egyéni kulcs-érték párok visszakerül az API-végpont a visszahívás során. Ha a kulcs egy rövid kódot, amely a felülvizsgálati eszköz van megadva, a kód jelenik meg.
-- **Az OCP-Apim-előfizetés-kulcs**: található a **beállítások** fülre. További információkért lásd: [áttekintése](overview.md).
+- **teamName**: A csoport nevére, a felülvizsgálati eszköz fiók beállításakor hozott létre. 
+- **ContentId**: Ez a karakterlánc az API-nak átadott és a visszahívás keresztül visszaadott. A ContentId hasznos belső azonosítók vagy metaadat társít egy moderálás feladat eredményét.
+- **Metaadatok**: az API-végpont egyéni kulcs-érték párok vissza a visszahívás során. Ha a kulcs egy rövid kód a vizsgálóeszközt definiált, egy címke jelenik meg.
+- **OCP-Apim-Subscription-Key**: található a **beállítások** fülre. További információkért lásd: [áttekintése](overview.md).
 
-Egy tesztelési konzol eléréséhez a legegyszerűbb származik a **hitelesítő adatok** ablak.
+A legegyszerűbb módszer a tesztelési konzol eléréséhez, az a **hitelesítő adatok** ablak.
 
-1.  Az a **hitelesítő adatok** ablakban válassza ki [felülvizsgálati API-referencia](https://westus.dev.cognitive.microsoft.com/docs/services/580519463f9b070e5c591178/operations/580519483f9b0709fc47f9c4).
+1.  Az a **hitelesítő adatok** ablakban válassza [felülvizsgálati API-referencia](https://westus.dev.cognitive.microsoft.com/docs/services/580519463f9b070e5c591178/operations/580519483f9b0709fc47f9c4).
 
   A **áttekintése – létrehozása** lap megnyitásakor.
 
-2.  A **nyílt API-t tesztelési konzol**, válassza ki azt a régiót, amely a leginkább leírja a tartózkodási helyét.
+2.  A **Open API tesztelési konzollal**, válassza ki a régiót, amelyben leginkább a tartózkodási ismerteti.
 
-  ![Tekintse át, – létrehozása lap terület kiválasztása](images/test-drive-region.png)
+  ![Tekintse át, – létrehozása lap régió kiválasztása](images/test-drive-region.png)
 
   A **áttekintése – létrehozása** API-konzol megnyitása.
   
-3.  Adja meg a kötelező lekérdezési paraméterek, tartalomtípus és az Előfizetés kulcs értékét. Az a **Request body** mezőben adja meg a tartalmat (például kép), a metaadatok és a más információk is társítva vannak a tartalmat.
+3.  Adja meg a szükséges lekérdezési paramétereket, tartalom típusa és az előfizetési kulcs értékét. Az a **kérelem törzse** adja meg a tartalom (például lemezkép helyét), a metaadatok és az egyéb a tartalommal kapcsolatos információkat.
 
-  ![Tekintse át,-konzol lekérdezési paraméterek, a fejlécek és a kérelem törzsében mezőbe létrehozása](images/test-drive-review-1.PNG)
+  ![Tekintse át,-konzol lekérdezési paramétereket, fejléceket és kérelem törzse mezőbe létrehozása](images/test-drive-review-1.PNG)
   
-4.  Kattintson a **Küldés** gombra. A felülvizsgálati ID jön létre. Másolja le az Azonosítót a következő lépések használatához.
+4.  Kattintson a **Küldés** gombra. A felülvizsgálati ID jön létre. Másolja ezt az Azonosítót a következő lépésekben használni.
 
-  ![Tekintse át,-konzol válasz tartalom jelenít meg a felülvizsgálati azonosító létrehozása](images/test-drive-review-2.PNG)
+  ![Tekintse át,-konzol válasz content jelenít meg a felülvizsgálati azonosító létrehozása](images/test-drive-review-2.PNG)
   
-5.  Válassza ki **beolvasása**, majd nyissa meg az API-t a gomb, amely megfelel a régió kiválasztásával. Az eredményül kapott oldalon adja meg az értékeket a **teamName**, **ReviewID**, és **előfizetés kulcs**. Válassza ki a **küldése** gombra a lapon. 
+5.  Válassza ki **első**, majd nyissa meg az API-t, amely megfelel az Ön régiójában gomb kiválasztásával. Az eredményül kapott lapon adja meg a **teamName**, **ReviewID**, és **előfizetési kulcs**. Válassza ki a **küldése** gombra a lapon. 
 
-  ![Tekintse át,-konzol Get eredmények létrehozása](images/test-drive-review-3.PNG)
+  ![Tekintse át – a Get-eredményeket hozhatnak létre a konzol](images/test-drive-review-3.PNG)
   
 6.  Látni fogja a vizsgálat eredményeit.
 
-  ![Tekintse át,-konzol válasz tartalom mezőben létrehozása](images/test-drive-review-4.PNG)
+  ![Tekintse át – a konzol válasz tartalom mező létrehozása](images/test-drive-review-4.PNG)
   
-7.  A tartalom moderátor irányítópultra, válassza ki a **felülvizsgálati** > **kép**. A vizsgált jelenik meg, és készen áll a emberi áttekintése.
+7.  A Content Moderator irányítópultján válassza ki a **felülvizsgálati** > **lemezkép**. A vizsgált kép akkor jelenik meg, emberi felülvizsgálati kész.
 
-  ![Tekintse át a focilabdát eszköz képe](images/test-drive-review-5.PNG)
+  ![Tekintse át a foci golyó eszköz képe](images/test-drive-review-5.PNG)
 
 ## <a name="next-steps"></a>További lépések
 
-A REST API-t használja a kódban, vagy indítsa el a [értékelést .NET gyors üzembe helyezés](moderation-reviews-quickstart-dotnet.md) integrálása az alkalmazást.
+A REST API használata a kódban, vagy kezdje a [felülvizsgálatok .NET – rövid útmutató](moderation-reviews-quickstart-dotnet.md) integrálhatja az alkalmazást.

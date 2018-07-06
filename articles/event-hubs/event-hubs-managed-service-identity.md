@@ -1,81 +1,77 @@
 ---
-title: Az Azure Event Hubs előzetes Szolgáltatásidentitás felügyelt |} Microsoft Docs
-description: Felügyelt szolgáltatás-identitások használja az Azure Event Hubs
+title: Felügyelt Felügyeltszolgáltatás-identitás az Azure Event Hubs előzetes verziójában |} A Microsoft Docs
+description: Felügyelt Szolgáltatásidentitások használata az Azure Event hubs szolgáltatással
 services: event-hubs
 documentationcenter: na
 author: sethmanheim
 manager: timlt
-editor: ''
-ms.assetid: ''
 ms.service: event-hubs
 ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 12/18/2017
+ms.date: 07/05/2018
 ms.author: sethm
-ms.openlocfilehash: dd50e4f6ebc5fdf5496a5127fde20bd052087b59
-ms.sourcegitcommit: f46cbcff710f590aebe437c6dd459452ddf0af09
+ms.openlocfilehash: 7c8f7fff5e3cf7334ce30a3fa90ae950f841662c
+ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/20/2017
-ms.locfileid: "26783444"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37865297"
 ---
-# <a name="managed-service-identity-preview"></a>Felügyelt Szolgáltatásidentitás (előzetes verzió)
+# <a name="managed-service-identity-preview"></a>Felügyeltszolgáltatás-identitás (előzetes verzió)
 
-Felügyelt szolgáltatás identitásának (MSI) lehetővé teszi az Azure-határokon, amely lehetővé teszi a központi telepítést, amely alatt az alkalmazás kódjában fut. társított egy biztonságos azonosító létrehozása. Identitás majd társíthat egyéni engedélyeket az eléréséhez szükséges konkrét Azure-erőforrások az alkalmazást, a hozzáférés-vezérlési szerepkörtől. 
+A Felügyeltszolgáltatás-identitás (MSI) közötti Azure-beli funkciója lehetővé teszi, hogy a központi telepítést, amely alatt az alkalmazás kódja fut társított biztonságos identitás létrehozása. Ezután társíthatja az identitásukat hozzáférés-vezérlési szerepkörökkel, amelyek egyéni engedélyeket adott, az alkalmazásnak szüksége van az Azure erőforrások eléréséhez. 
 
-Az MSI-fájl az Azure platform kezeli a futásidejű identitást. Nem kell tárolni, és az alkalmazás kódja vagy konfiguráció, vagy maga identitását, vagy az erőforrások eléréséhez szükséges tárelérési kulcsok védelme. Az Event Hubs ügyfélalkalmazás Azure App Service alkalmazás belül, vagy a virtuális gépen futó engedélyezett MSI-támogatással rendelkező nem kell SAS szabályok és a kulcsok vagy más hozzáférési jogkivonatok kell kezelni. A végpont címét, az Event Hubs névtér csak kell az ügyfél alkalmazást. Ha összekapcsolja az alkalmazást, az Event Hubs az MSI környezetet az ügyfél egy műveletben, például a cikk későbbi részében látható van kötve.
+Az MSI-vel az Azure platform kezeli a futtatókörnyezet identitást. Nem kell tárolja és védi a tárelérési kulcsok az alkalmazáskód vagy a konfiguráció, vagy maga identitását, vagy az erőforrások eléréséhez szükséges. Engedélyezett MSI-támogatással rendelkező Azure App Service-alkalmazáshoz vagy virtuális gépen futó alkalmazás az Event Hubs ügyfél nem kell kezelni a SAS-szabályok és a kulcsokat, vagy bármely más hozzáférési jogkivonatok. Az ügyfélalkalmazásnak csupán az Event Hubs-névtér végpont címe. Amikor az alkalmazás csatlakozik, az Event Hubs az MSI-környezet van kötve az ügyfél egy műveletben, például a cikk későbbi részében látható.
 
-Ha egy felügyelt partneridentitásával társított, Event Hubs-ügyfél az összes jogosult műveleteket hajthat végre. Az engedélyt az Event Hubs szerepkörök egy olyan MSI Csomaghoz rendeli. 
+Miután társítva a felügyeltszolgáltatás-identitás, Event Hubs-ügyfél az összes jogosult műveletek hajthatók végre. Az engedély megadása társít egy olyan MSI Csomaghoz, az Event Hubs-szerepkörökhöz. 
 
-## <a name="event-hubs-roles-and-permissions"></a>Event Hubs szerepköröket és engedélyeket
+## <a name="event-hubs-roles-and-permissions"></a>Event Hubs szerepkörök és engedélyek
 
-Kezdeti nyilvános előzetes csak a "Tulajdonos" vagy "Közreműködői" szerepkörök egy Event Hubs névtér, amely az identitás teljes hozzáférést a névtér összes entitásának a adhat hozzá egy felügyelt szolgáltatásidentitás. Azonban a névtér topológia módosítása olyan kezdetben felügyeleti támogatott azonban csak Azure Resource Manager és a nem a natív Event Hubs REST kiszolgálókezelési felületen segítségével. Ez a támogatás azt is jelenti, hogy nem használható a .NET-keretrendszer ügyfél [NamespaceManager](/dotnet/api/microsoft.servicebus.namespacemanager) felügyelt szolgáltatásidentitás objektummal. 
+A kezdeti előzetes kiadás csak a felügyeltszolgáltatás-identitás adhat hozzá a Event Hubs-névtér, amely az identitás a névtérben lévő összes entitáshoz teljes hozzáférést biztosít a "Tulajdonos" vagy "Közreműködő" szerepköröket. Azonban a névtér topológia módosító műveletekre kezdetben felügyeleti támogatott azonban csak az Azure Resource Manager és a nem a natív Event hubs szolgáltatás REST-felügyeleti felületén keresztül. Ez a támogatás azt is jelenti, hogy nem használható a .NET-keretrendszer ügyfél [NamespaceManager](/dotnet/api/microsoft.servicebus.namespacemanager) felügyeltszolgáltatás-identitás-objektummal. 
  
-## <a name="use-event-hubs-with-a-managed-service-identity"></a>Az Event Hubs egy felügyelt Szolgáltatásidentitás használni
+## <a name="use-event-hubs-with-a-managed-service-identity"></a>Az Event Hubs használata a Felügyeltszolgáltatás-identitás
 
-A következő szakasz azt ismerteti, hogyan hozhat létre és telepíthet a mintaalkalmazás, amely felügyelt szolgáltatásidentitás, hogyan egy Event Hubs névtér identitás hozzáférést, és hogyan kommunikál az event hubs használatával, amely az alkalmazás fut. identitás.
+Az alábbi szakasz létrehozása és üzembe helyezünk egy mintaalkalmazást, amely fut a felügyeltszolgáltatás-identitás, hogyan identitás hozzáférést Event Hubs-névtér és az alkalmazás hogyan kapcsolódik az event hubs használatával, amely a szükséges lépéseket ismerteti. identitás.
 
-Ez a bevezető ismerteti egy webalkalmazást [Azure App Service](https://azure.microsoft.com/services/app-service/). A virtuális gép által üzemeltetett alkalmazások szükséges lépések hasonlóak.
+Ez a bevezető ismerteti a lévő üzemeltetett webalkalmazásban [Azure App Service](https://azure.microsoft.com/services/app-service/). Egy virtuális gép által üzemeltetett alkalmazás számára szükséges lépések hasonlóak.
 
-### <a name="create-an-app-service-web-application"></a>Az App Service-webalkalmazás létrehozása
+### <a name="create-an-app-service-web-application"></a>Hozzon létre egy App Service-webalkalmazás
 
-Az első lépés, ha az App Service ASP.NET-alkalmazások. Ha még nem ismeri a ezzel az Azure-ban, hajtsa végre a [Ez az útmutató útmutató](../app-service/app-service-web-get-started-dotnet-framework.md). Ahogy az az oktatóprogram MVC alkalmazás létrehozása helyett azonban Web Forms-alkalmazás létrehozása.
+Az első lépés az App Service ASP.NET-alkalmazás létrehozása. Ha még nem ismeri az ehhez az Azure-ban, hajtsa végre a [Ez az útmutató](../app-service/app-service-web-get-started-dotnet-framework.md). Azonban helyett, ahogyan az oktatóprogram MVC alkalmazás létrehozása, hozzon létre egy Web Forms-alkalmazást.
 
-### <a name="set-up-the-managed-service-identity"></a>Állítsa be a felügyelt azonosítója
+### <a name="set-up-the-managed-service-identity"></a>A felügyeltszolgáltatás-identitás beállítása
 
-Miután létrehozta az alkalmazást, nyissa meg az újonnan létrehozott webalkalmazás az Azure portálon (az útmutató is látható), majd keresse meg a **Szolgáltatásidentitás felügyelt** lapon, és engedélyezze a szolgáltatást: 
+Miután létrehozta az alkalmazást, nyissa meg az újonnan létrehozott webalkalmazás az Azure Portalon (az útmutató is látható), majd nyissa meg a **Felügyeltszolgáltatás-identitás** lapon, és engedélyezze a szolgáltatást: 
 
 ![](./media/event-hubs-managed-service-identity/msi1.png)
  
-A szolgáltatás engedélyezése után egy új szolgáltatásidentitás létrehozása az Azure Active Directoryban, és az App Service-állomás konfigurált.
+Miután engedélyezte a funkciót, egy új felügyeltszolgáltatás-identitás létrehozása az Azure Active Directoryban, és az App Service-ben gazdagépen konfigurált.
 
-### <a name="create-a-new-event-hubs-namespace"></a>Az Event Hubs új névtér létrehozása
+### <a name="create-a-new-event-hubs-namespace"></a>Hozzon létre egy új Event Hubs-névtér
 
-Tovább, [az Event Hubs-névtér létrehozása](event-hubs-create.md) egy Azure-régiókban, amelyek MSI preview támogatása: **amerikai keleti**, **amerikai keleti régiója 2**, vagy **Nyugat-Európában**. 
+Ezután [Event Hubs-névtér létrehozása](event-hubs-create.md) MSI előzetes támogatással rendelkezik az Azure-régiók egyikében: **USA keleti régiójában**, **USA keleti régiója 2**, vagy **Nyugat-Európa**. 
 
-Keresse meg a névtér **hozzáférés-vezérlés (IAM)** a portál lapot, és kattintson a **Hozzáadás** hozzáadása a felügyelt identitását a **tulajdonos** szerepkör. Ehhez keresse meg a webalkalmazás nevét a **engedélyek hozzáadása** panel **válasszon** mezőben, majd kattintson a bejegyzést. Ezután kattintson a **Save** (Mentés) gombra.
+Keresse meg a névtér **hozzáférés-vezérlés (IAM)** lapon a portálon, és kattintson a **Hozzáadás** a felügyeltszolgáltatás-identitás hozzáadása a **tulajdonosa** szerepkör. Ehhez keresse meg a webalkalmazás nevére a **engedélyek hozzáadása** panel **kiválasztása** mezőben, majd kattintson a bejegyzésre. Ezután kattintson a **Save** (Mentés) gombra.
 
 ![](./media/event-hubs-managed-service-identity/msi2.png)
  
-A webalkalmazás felügyelt szolgáltatásidentitás most már hozzáférhet az Event Hubs névtérhez, és az event hubs korábban létrehozott. 
+A felügyeltszolgáltatás-identitás, a webes alkalmazás most már hozzáfér az Event Hubs-névtér és az event hubs korábban hozott létre. 
 
 ### <a name="run-the-app"></a>Az alkalmazás futtatása
 
-Most már módosíthatja az ASP.NET-alkalmazás létrehozott alapértelmezett oldalán. Használhatja a webes alkalmazás kód [a GitHub-tárházban](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/MSI/EventHubsMSIDemoWebApp). 
+Most úgy módosítja az alapértelmezett oldalt, az ASP.NET alkalmazás hozott létre. Használhatja a webes alkalmazás kódot az [GitHub-adattárban](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/MSI/EventHubsMSIDemoWebApp). 
 
-Ha az alkalmazás indításakor, irányítsa a böngészőt az EventHubsMSIDemo.aspx. Másik lehetőségként állítsa be a kezdőlapot. A kód a EventHubsMSIDemo.aspx.cs fájlban találhatók. Néhány számbeviteli mezők, valamint a minimális webalkalmazás eredménye **küldése** és **kap** gombok vagy üzenetek küldése / fogadása az Event Hubs-hez. 
+Miután az alkalmazás elindításához, a böngésző EventHubsMSIDemo.aspx mutat. Másik lehetőségként állítsa be a kezdőlap. A kód a EventHubsMSIDemo.aspx.cs fájlban található. Az eredmény néhány számbeviteli mezők, valamint a minimális webalkalmazás **küldése** és **kap** küldése vagy események fogadása az Event Hubs csatlakozó gombok. 
 
-Megjegyzés: az [MessagingFactory](/dotnet/api/microsoft.servicebus.messaging.messagingfactory) objektum inicializálása. A megosztott hozzáférési jogkivonat (SAS) jogkivonat-szolgáltató helyett a kód hoz létre a felügyelt szolgáltatás identitásának a jogkivonat-szolgáltatót a `TokenProvider.CreateManagedServiceIdentityTokenProvider(ServiceAudience.EventHubAudience)` hívható meg. Nincsenek, nincs megőrizheti és felhasználhatja a titkos kulcsok. A felügyelt szolgáltatás identitásának környezet az Eseményközpontokhoz és a hitelesítési kézfogás folyamata automatikusan kezeli a jogkivonat-szolgáltató, ami egy egyszerűbb modell, mint a SAS használatával.
+Megjegyzés: a [MessagingFactory](/dotnet/api/microsoft.servicebus.messaging.messagingfactory) objektum inicializálása. Helyett a szolgáltatóval közös hozzáférési jogkivonat (SAS-) token, a kódot hoz létre a felügyeltszolgáltatás-identitását a jogkivonat-szolgáltatót a `TokenProvider.CreateManagedServiceIdentityTokenProvider(ServiceAudience.EventHubAudience)` hívja. Ezért nincsenek nincs megőrizheti és felhasználhatja a titkos kulcsok. A jogkivonat-szolgáltatót, amely egyszerűbb, mint a SAS használatával modell automatikusan kezeli, a folyamat az Event Hubs és a hitelesítési kézfogás felügyeltszolgáltatás-identitás környezet.
 
-Miután végrehajtotta ezeket a módosításokat, közzététele, és futtassa az alkalmazást. Egyszerű módot nyújt a helyes közzétételi adatokat, hogy töltse le és majd a Visual Studio-közzétételi profil importálása:
+Miután elvégezte ezeket a módosításokat, közzététel, és futtathatja az alkalmazást. Egy egyszerű módja annak, hogy a helyes közzétételi adatokat, hogy töltse le és importálja a Visual Studióban egy közzétételi profilt:
 
 ![](./media/event-hubs-managed-service-identity/msi3.png)
  
-Üzenetek küldése / fogadása, adja meg a névtér nevét és a létrehozott entitás nevét, majd jelölje be az **küldése** vagy **kap**. 
+Üzeneteket küldeni vagy fogadni, adja meg a névtér nevét és a létrehozott entitás nevét, majd kattintson **küldése** vagy **kap**. 
  
-Figyelje meg, hogy a felügyelt szolgáltatásidentitás csak akkor működik, az Azure-környezeten belül, és csak a az App Service telepítésében, amelyben konfigurált ilyet. Ne feledje, hogy felügyelt szolgáltatás-identitások nem működik együtt az App Service üzembe helyezési most.
+Vegye figyelembe, hogy a felügyeltszolgáltatás-identitás csak működik az Azure-környezeten belül, és csak az App Service-környezet, amelyben be vannak állítva ezek. Vegye figyelembe, hogy felügyelt szolgáltatásidentitások sem működik együtt az App Service üzembe helyezési pontok jelenleg is.
 
 ## <a name="next-steps"></a>További lépések
 
@@ -83,5 +79,5 @@ Ha további információkat szeretne az Event Hubsról, tekintse meg az alábbi 
 
 * Bevezetés az [Event Hubs használatába oktatóanyag](event-hubs-dotnet-standard-getstarted-send.md)
 * [Event Hubs – gyakori kérdések](event-hubs-faq.md)
-* [Az Event Hubs díjszabása](https://azure.microsoft.com/pricing/details/event-hubs/)
+* [Az Event Hubs szolgáltatás díjszabását.](https://azure.microsoft.com/pricing/details/event-hubs/)
 * [Az Event Hubsot használó mintaalkalmazások](https://github.com/Azure/azure-event-hubs/tree/master/samples)

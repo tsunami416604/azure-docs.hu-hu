@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/04/2017
 ms.author: dstefan
-ms.openlocfilehash: c5f3904621dcc4fe992b2c2f8293ad706b01f713
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: d2a63a1a9b335b7765c5eaf8c90e1d755b2ce9c9
+ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37446775"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37867120"
 ---
 # <a name="azure-active-directory-proof-of-concept-playbook-building-blocks"></a>Az Azure Active Directory megvalósíthatósági fogalom forgatókönyv: építőelemek
 
@@ -42,7 +42,7 @@ Az alábbiakban néhány bármely POC-t az Azure AD Premium szükséges előfelt
 | Előfeltétel | További források |
 | --- | --- |
 | Az Azure AD bérlő által definiált érvényes Azure-előfizetéssel | [Az Azure Active Directory-bérlő beszerzése](active-directory-howto-tenant.md)<br/>**Megjegyzés:** Ha már rendelkezik prémium szintű Azure AD-licenceket tartalmazó környezet, nulla cap előfizetés beszerezheti az https://aka.ms/accessaad <br/>További információt: https://blogs.technet.microsoft.com/enterprisemobility/2016/02/26/azure-ad-mailbag-azure-subscriptions-and-azure-ad-2/ és https://technet.microsoft.com/library/dn832618.aspx |
-| Meghatározott és ellenőrzött tartományok | [Egyéni tartománynév hozzáadása az Azure Active Directoryhoz](active-directory-domains-add-azure-portal.md)<br/>**Megjegyzés:** egyes számítási feladatokhoz, mint a Power BI sikerült kiépítve a takaró alatt egy azure AD-bérlővel. Ellenőrizze, hogy egy bérlő társítva-e egy adott tartományon, navigáljon a https://login.microsoftonline.com/{domain}/v2.0/.well-known/openid-configuration. Ha sikeres válasz lekérése, majd a tartomány már hozzá van rendelve a bérlőhöz, és vegye át lehet szükség. Ha igen, forduljon a Microsofthoz további útmutatást tartalmaz. További információ az átvétel lehetőség is: [Mi az az Azure önkiszolgáló regisztráció?](active-directory-self-service-signup.md) |
+| Meghatározott és ellenőrzött tartományok | [Egyéni tartománynév hozzáadása az Azure Active Directoryhoz](active-directory-domains-add-azure-portal.md)<br/>**Megjegyzés:** egyes számítási feladatokhoz, mint a Power BI sikerült kiépítve a takaró alatt egy azure AD-bérlővel. Ellenőrizze, hogy egy bérlő társítva-e egy adott tartományon, navigáljon a https://login.microsoftonline.com/{domain}/v2.0/.well-known/openid-configuration. Ha sikeres válasz lekérése, majd a tartomány már hozzá van rendelve a bérlőhöz, és vegye át lehet szükség. Ha igen, forduljon a Microsofthoz további útmutatást tartalmaz. További információ az átvétel lehetőség is: [Mi az az Azure önkiszolgáló regisztráció?](users-groups-roles/directory-self-service-signup.md) |
 | Az Azure AD Premium vagy EMS-próba engedélyezve | [Az Azure Active Directory Premium egy hónapig ingyenesen használható](https://azure.microsoft.com/trial/get-started-active-directory/) |
 | Azure AD Premium vagy EMS-licenceket rendelt PoC-felhasználók | [Saját magának, mind pedig a felhasználók az Azure Active Directoryban](active-directory-licensing-get-started-azure-portal.md) |
 | Az Azure AD globális rendszergazdai hitelesítő adatait | [Rendszergazdai szerepkörök hozzárendelése az Azure Active Directory](users-groups-roles/directory-assign-admin-roles.md) |
@@ -125,11 +125,11 @@ Hozzávetőleges teljes ideje: 10 perc
 | Lépés | További források |
 | --- | --- |
 | Licencek az Azure AD felügyeleti portál paneljéről | [Az Azure AD felügyeleti portálra: licencelése](https://portal.azure.com/#blade/Microsoft_AAD_IAM/LicensesMenuBlade/Products) |
-| A licencek hozzárendelése a biztonsági csoport a POC-felhasználókkal. | [Licencek hozzárendelése az Azure Active Directory felhasználók egy csoportja](active-directory-licensing-group-assignment-azure-portal.md) |
+| A licencek hozzárendelése a biztonsági csoport a POC-felhasználókkal. | [Licencek hozzárendelése az Azure Active Directory felhasználók egy csoportja](users-groups-roles/licensing-groups-assign.md) |
 
 ### <a name="considerations"></a>Megfontolandó szempontok
 
-Bármely felmerülő problémák Ugrás [forgatókönyvek, korlátozások és csoportok használata kezelheti a licencelése az Azure Active Directory szolgáltatással kapcsolatos ismert problémák](active-directory-licensing-group-advanced.md)
+Bármely felmerülő problémák Ugrás [forgatókönyvek, korlátozások és csoportok használata kezelheti a licencelése az Azure Active Directory szolgáltatással kapcsolatos ismert problémák](users-groups-roles/licensing-group-advanced.md)
 
 ## <a name="saas-federated-sso-configuration"></a>SaaS-összevont egyszeri bejelentkezés konfigurálása
 

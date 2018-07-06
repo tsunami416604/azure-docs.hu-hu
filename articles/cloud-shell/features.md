@@ -1,6 +1,6 @@
 ---
-title: Azure Cloud rendszerhéj funkciói bash |} Microsoft Docs
-description: Az Azure felhőalapú rendszerhéj Bash funkcióinak áttekintése
+title: A bash Azure Cloud Shell funkciói |} A Microsoft Docs
+description: Az Azure Cloud Shellben lévő Bash funkcióinak áttekintése
 services: Azure
 documentationcenter: ''
 author: jluk
@@ -12,71 +12,75 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
-ms.date: 11/15/2017
+ms.date: 06/13/2018
 ms.author: juluk
-ms.openlocfilehash: b61dda5b56ca3cc8ef827a06aaedac701ca79f8f
-ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
+ms.openlocfilehash: f0be50a3e8328c26651e0db5c8fae708518a0ea1
+ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34850202"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37861765"
 ---
-# <a name="features--tools-for-bash-in-azure-cloud-shell"></a>Szolgáltatások & Azure Cloud rendszerhéj Bash eszközei
+# <a name="features--tools-for-bash-in-azure-cloud-shell"></a>Funkciók és eszközök számára az Azure Cloud Shell Bash
 
 [!INCLUDE [features-introblock](../../includes/cloud-shell-features-introblock.md)]
 
-> [!TIP]
-> Szolgáltatások & eszközei [PowerShell](features-powershell.md) is rendelkezésre áll.
-
-A felhő rendszerhéj felhőkörnyezetben bash `Ubuntu 16.04 LTS`.
+Az Azure Cloud Shell futtat `Ubuntu 16.04 LTS`.
 
 ## <a name="features"></a>Szolgáltatások
 
-### <a name="secure-automatic-authentication"></a>Biztonságos automatikus hitelesítés
+### <a name="secure-automatic-authentication"></a>Automatikus hitelesítésre
 
-A felhő rendszerhéj bash biztonságosan és automatikusan hitelesíti felhasználóifiók-hozzáférés az Azure CLI 2.0.
+A cloud Shell biztonságosan és automatikusan végzi a hitelesítést felhasználóifiók-hozzáférés az Azure CLI 2.0 és az Azure PowerShell.
 
-### <a name="ssh-into-azure-linux-virtual-machines"></a>SSH-ból az Azure Linux virtuális gépek
+### <a name="home-persistence-across-sessions"></a>$Home megőrzése munkamenetek között
 
-Linux virtuális gép létrehozása az Azure CLI 2.0 létrehozhat egy alapértelmezett SSH-kulcs és elhelyezheti a `$Home` könyvtár. SSH elhelyezéséhez kulcsoknak `$Home` lehetővé teszi, hogy SSH-kapcsolatok Azure Linux virtuális gépekhez közvetlenül a felhő rendszerhéjából. Kulcsok tartják acc_<user>.img a fájlmegosztáson, ajánlott eljárások használatával, vagy a megosztás hozzáférés a fájlmegosztáshoz vagy kulcsok használata.
+A fájlok munkamenetek közötti megtartása, a Cloud Shell végigvezeti csatlakoztatása egy Azure-fájlmegosztást az alkalmazás első indításakor.
+Ha befejeződött, a Cloud Shell automatikusan elvégzi a storage (meghajtóként csatlakoztatott `$Home\clouddrive`) minden későbbi munkamenet során.
+Ezenkívül a `$Home` könyvtár, egy .img az Azure-fájlmegosztás a rendszer megőrzi.
+Fájlok kívül `$Home` és a gép állapota nem megmaradnak a munkamenetek között. Ajánlott eljárások akkor használja, ha az SSH-kulcsok például a titkos kulcsok tárolására. Szolgáltatásokat, mint például [Azure Key Vault rendelkezik a telepítő oktatóanyagok](https://docs.microsoft.com/azure/key-vault/key-vault-manage-with-cli2#prerequisites).
 
-### <a name="home-persistence-across-sessions"></a>$Home adatmegőrzési munkamenetei között
+[További információ a Cloud Shellben fájlokat.](persisting-shell-storage.md)
 
-A munkamenetek között a fájlok továbbra is fennáll, felhőalapú rendszerhéj bemutatja, hogyan csatlakoztatása az Azure fájlmegosztások első indításkor.
-Ezt követően felhő rendszerhéj automatikusan elvégzi a tároló (mint csatlakoztatott `$Home\clouddrive`) minden későbbi.
-Ezenkívül a felhőalapú rendszerhéj Bash a `$Home` directory, az Azure fájlmegosztásban egy .img megőrződjenek.
-Fájlok kívüli `$Home` és a gép állapota nem maradnak meg a munkamenetek között.
+### <a name="azure-drive-azure"></a>Azure-meghajtó (Azure:)
 
-[Ismerje meg a felhő rendszerhéj Bash fájlok tárolásakor.](persisting-shell-storage.md)
+A Cloud Shellben (előzetes verzió) PowerShell elindul az Azure-meghajtó (`Azure:`).
+Az Azure-meghajtó lehetővé teszi, hogy könnyen felderítés és az Azure erőforrások, például számítási, hálózati, tárolási stb. fájlrendszer navigációs hasonló navigációs.
+Továbbra is a megszokott [Azure PowerShell-parancsmagok](https://docs.microsoft.com/powershell/azure) a meghajtó a függetlenül kezelhetők.
+Az Azure-erőforrásokat, vagy közvetlenül az Azure Portalon vagy Azure PowerShell-parancsmagok használatával végrehajtott módosítások megjelennek az Azure-meghajtó.  Futtathat `dir -Force` az erőforrások frissítése.
 
-### <a name="integration-with-open-source-tooling"></a>Integráció a nyílt forráskódú tooling
+![](media/features-powershell/azure-drive.png)
 
-A felhő rendszerhéj bash nyílt forrású eszközök például Terraform Ansible vagy Chef InSpec előre konfigurált hitelesítési tartalmaz. Próbálja ki a példa forgatókönyvek a.
+### <a name="deep-integration-with-open-source-tooling"></a>Szoros integráció nyílt forráskódú eszközök
+
+A cloud Shell nyílt forráskódú eszközök, például a Terraform, az Ansible és az InSpec Chef előre konfigurált hitelesítést. Próbálja ki az a példában forgatókönyvek.
 
 ## <a name="tools"></a>Eszközök
 
 |Kategória   |Name (Név)   |
 |---|---|
-|Linux-eszközök            |Bash<br> SH<br> tmux<br> Dig<br>               |
+|Linux rendszerű eszközök            |a bash<br> a zsh<br> SH<br> tmux<br> tájékozódjon<br>               |
 |Azure-eszközök            |[Az Azure CLI 2.0](https://github.com/Azure/azure-cli) és [1.0](https://github.com/Azure/azure-xplat-cli)<br> [AzCopy](https://docs.microsoft.com/azure/storage/storage-use-azcopy)<br> [Service Fabric parancssori felület](https://docs.microsoft.com/azure/service-fabric/service-fabric-cli) |
-|A szerkesztő szövege           |VIM<br> nano<br> emacs       |
-|A verziókövetési rendszerrel         |git                    |
-|Buildet            |Ellenőrizze<br> maven<br> npm<br> a pip         |
-|Containers             |[A docker parancssori felület](https://github.com/docker/cli)/[Docker gép](https://github.com/docker/machine)<br> [Kubectl](https://kubernetes.io/docs/user-guide/kubectl-overview/)<br> [Helm](https://github.com/kubernetes/helm)<br> [DC/OS PARANCSSORI FELÜLET](https://github.com/dcos/dcos-cli)         |
-|Adatbázisok              |MySQL-ügyfél<br> PostgreSql-ügyfél<br> [Az Sqlcmd segédprogram használatával](https://docs.microsoft.com/sql/tools/sqlcmd-utility)<br> [mssql-scripter](https://github.com/Microsoft/sql-xplat-cli) |
-|Egyéb                  |iPython ügyfél<br> [Felhő Foundry parancssori felület](https://github.com/cloudfoundry/cli)<br> [Terraform](https://www.terraform.io/docs/providers/azurerm/)<br> [Ansible](https://www.ansible.com/microsoft-azure)<br> [InSpec Chef](https://www.chef.io/inspec/)| 
+|Szövegszerkesztő           |VIM<br> a nano<br> emacs       |
+|Verziókövetés         |git                    |
+|Eszközök létrehozása            |Győződjön meg arról<br> maven<br> npm<br> a pip         |
+|Containers             |[Docker CLI](https://github.com/docker/cli)/[a Docker Machine](https://github.com/docker/machine)<br> [Kubectl](https://kubernetes.io/docs/user-guide/kubectl-overview/)<br> [Helm](https://github.com/kubernetes/helm)<br> [DC/OS PARANCSSORI FELÜLETTEL](https://github.com/dcos/dcos-cli)         |
+|Adatbázisok              |MySQL-ügyfél<br> PostgreSql-ügyfél<br> [Az Sqlcmd segédprogram](https://docs.microsoft.com/sql/tools/sqlcmd-utility)<br> [mssql-scripter](https://github.com/Microsoft/sql-xplat-cli) |
+|Egyéb                  |iPython ügyfél<br> [A cloud Foundry parancssori felület](https://github.com/cloudfoundry/cli)<br> [A Terraform](https://www.terraform.io/docs/providers/azurerm/)<br> [Az Ansible](https://www.ansible.com/microsoft-azure)<br> [A Chef InSpec](https://www.chef.io/inspec/)| 
 
 ## <a name="language-support"></a>Nyelvi támogatás
 
 |Nyelv   |Verzió   |
 |---|---|
-|.NET       |2.0.0       |
+|.NET Core  |2.0.0       |
 |Indítás         |1.9        |
 |Java       |1.8        |
 |Node.js    |8.9.4      |
 |PowerShell |[6.0.2](https://github.com/PowerShell/powershell/releases)       |
-|Python     |2.7 és 3.5-ös (alapértelmezett)|
+|Python     |2.7-es és 3.5-ös (alapértelmezett)|
 
 ## <a name="next-steps"></a>További lépések
-[A felhő rendszerhéj gyors üzembe helyezés bash](quickstart.md) <br>
-[További tudnivalók az Azure CLI 2.0](https://docs.microsoft.com/cli/azure/)
+[A bash Cloud Shell rövid](quickstart.md) <br>
+[A PowerShell Cloud Shell (előzetes verzió) a rövid útmutatóban](quickstart-powershell.md) <br>
+[További tudnivalók az Azure CLI 2.0 használatával](https://docs.microsoft.com/cli/azure/) <br>
+[További tudnivalók az Azure PowerShell](https://docs.microsoft.com/powershell/azure/) <br>

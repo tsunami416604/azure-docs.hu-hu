@@ -14,18 +14,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/02/2018
 ms.author: shants
-ms.openlocfilehash: 1e8bc92c15296395121a3b9c2696a761f676e430
-ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
+ms.openlocfilehash: 12a3c4556de21bb0c0dd6b09458943fb03092532
+ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37437674"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37866127"
 ---
 # <a name="handling-planned-maintenance-notifications-for-linux-virtual-machines"></a>Tervezett karbantartásával kapcsolatos értesítések Linux rendszerű virtuális gépek kezelése
 
 Az Azure rendszeresen végez frissítéseket a megbízhatóságának, teljesítményének és a gazda-infrastruktúrát, a virtuális gépek biztonságának javítása érdekében. A frissítések olyan módosítások, például javítása, a üzemeltetési környezet vagy a frissítés és a hardver leszerelése. Ezek a frissítések többségét annak hatását a futtatott virtuális gépek működésére. Előfordulhatnak azonban olyan esetekben, amikor frissítések hatással:
 
-- A karbantartás nem igényel újraindítást, ha az Azure a virtuális gép felfüggesztése, amíg frissül a gazdagép helyi áttelepítést használ.
+- A karbantartás nem igényel újraindítást, ha az Azure a virtuális gép felfüggesztése, amíg frissül a gazdagép helyi áttelepítést használ. Ezek nem rebootful karbantartási műveleteket tartalék tartomány által alkalmazott tartalék tartományt, és folyamatban le van állítva, ha bármilyen figyelmeztetés állapot jelek.
 
 - Ha karbantartási újraindítás szükséges, egy értesítés, amikor a karbantartás tervezett kap. Ezekben az esetekben, kapnak egy olyan időkeretet, ahol elkezdheti a karbantartás saját magának, mikor működik az Ön számára.
 
@@ -44,30 +44,31 @@ Az Azure portal, PowerShell, REST API-t és parancssori felület segítségével
  
 ## <a name="should-you-start-maintenance-using-during-the-self-service-window"></a>Érdemes karbantartási használatának megkezdése az önkiszolgáló időszakban?  
 
-Az alábbi irányelvek segítenek használhatják ezt a funkciót, és a saját időpontban karbantartási el kell-e.
+Az alábbi irányelvek segítenek használhatják ezt a funkciót, és a saját időpontban karbantartási el kell-e. 
 
 > [!NOTE] 
 > Az önkiszolgáló karbantartás nem érhető el az összes, a virtuális gépeket. Annak megállapításához, hogy proaktív ismételt üzembe helyezése a virtuális Géphez elérhető, keresse meg a **most** a karbantartási állapota. Az önkiszolgáló karbantartás jelenleg nem érhető el a Cloud Services (webes/feldolgozói szerepkör) és a Service Fabric.
 
 
 Az önkiszolgáló karbantartás nem ajánlott használó **rendelkezésre állási csoportok** mivel ezek a magas rendelkezésre állású beállításnál, ha csak egyetlen frissítési tartományt kihatással van a egy adott időpontban. 
-    - Lehetővé teszik az Azure-eseményindító a karbantartás, de vegye figyelembe, hogy befolyásolja a frissítési tartományok sem feltétlenül történik egymás után, és hogy van-e a 30 perces szüneteltetése frissítési tartományok között.
-    - Ha átmenetileg megszakad a kapacitást (1/frissítési tartományok száma) néhány szempont, azt is könnyen lehet kompenzálni emellett példány lefoglalása a karbantartási időszak alatt. 
+- Bízza az Azure-trigger a karbantartás. Újraindítás szükséges karbantartás vegye figyelembe, hogy a karbantartás történik, hogy a frissítési tartományok nem feltétlenül kap a karbantartás egymás után, frissítési tartományonként frissítési tartományt, és hogy van-e a 30 perces szüneteltetése frissítési tartományok között. 
+- Ha átmenetileg megszakad a kapacitást (1/frissítési tartományok száma) néhány szempont, azt is könnyen lehet kompenzálni emellett példány lefoglalása a karbantartási időszak alatt. 
+- Nem igénylő karbantartási újraindítás, a frissítések alkalmazása a tartalék tartomány szintjén. 
 
 **Nem** önkiszolgáló karbantartási használja a következő esetekben: 
-    - Ha leállítja a virtuális gépek gyakran, akár manuálisan, DevTest Labs használatával automatikus leállítási, vagy ütemezés szerint, a következő használatával, képes a karbantartási állapot visszaállítása, és ezért a további üzemkimaradást eredményezhet.
-    - A rövid élettartamú virtuális gépeken arról, hogy törli a karbantartás lejárta előtt. 
-    - A számítási feladatok nagy állapotú tárolt helyi (ideiglenes) lemezre, amely megmaradjon a frissítés után van szükség. 
-    - Olyan esetekben, ahol a virtuális gép átméretezésekor, gyakran, ahogy sikerült a karbantartási állapot visszaállítása. 
-    - Ha az ütemezett események, amelyekkel proaktív feladatátvételi vagy a számítási feladatok leállításának karbantartási leállítás kezdete előtt 15 perccel elfogadott
+- Ha leállítja a virtuális gépek gyakran, akár manuálisan, DevTest Labs használatával automatikus leállítási, vagy ütemezés szerint, a következő használatával, képes a karbantartási állapot visszaállítása, és ezért a további üzemkimaradást eredményezhet.
+- A rövid élettartamú virtuális gépeken arról, hogy törli a karbantartás lejárta előtt. 
+- A számítási feladatok nagy állapotú tárolt helyi (ideiglenes) lemezre, amely megmaradjon a frissítés után van szükség. 
+- Olyan esetekben, ahol a virtuális gép átméretezésekor, gyakran, ahogy sikerült a karbantartási állapot visszaállítása. 
+- Ha az ütemezett események, amelyekkel proaktív feladatátvételi vagy a számítási feladatok leállításának karbantartási leállítás kezdete előtt 15 perccel elfogadott
 
 **Használat** az önkiszolgáló karbantartás, ha tervez futtatni a virtuális gép zavartalan az ütemezett karbantartás során, és a fent említett másik jelzések sem alkalmazható. 
 
 Célszerű használni az önkiszolgáló karbantartás a következő esetekben:
-    - Szeretne kommunikálni a felügyeleti vagy végfelhasználói egy pontos karbantartási időszak. 
-    - Egy adott időpontig a karbantartás végrehajtásához szükséges. 
-    - Kell sorrendjét szabályozhatja a karbantartás, például több rétegből álló alkalmazás biztonságos helyreállítás biztosítása érdekében.
-    - Két frissítési tartomány (frissítési) között a virtuális gép helyreállítási idő több mint 30 percnyi van szüksége. A frissítési tartományok között eltelt idő szabályozásához indít el a kell karbantartási a virtuális gépek egy frissítési tartomány (UD) egyszerre.
+- Szeretne kommunikálni a felügyeleti vagy végfelhasználói egy pontos karbantartási időszak. 
+- Egy adott időpontig a karbantartás végrehajtásához szükséges. 
+- Kell sorrendjét szabályozhatja a karbantartás, például több rétegből álló alkalmazás biztonságos helyreállítás biztosítása érdekében.
+- Két frissítési tartomány (frissítési) között a virtuális gép helyreállítási idő több mint 30 percnyi van szüksége. A frissítési tartományok között eltelt idő szabályozásához indít el a kell karbantartási a virtuális gépek egy frissítési tartomány (UD) egyszerre.
 
 
 

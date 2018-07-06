@@ -1,6 +1,6 @@
 ---
-title: Az Azure Active Directory v2.0 és az OpenID Connect protokoll |} Microsoft Docs
-description: A webalkalmazások Azure AD v2.0 végrehajtása az OpenID Connect hitelesítési protokoll használatával.
+title: Az Azure Active Directory 2.0-s verzió és az OpenID Connect protokoll |} A Microsoft Docs
+description: Webes alkalmazásokat hozhat létre az Azure AD v2.0 végrehajtása az OpenID Connect hitelesítési protokoll használatával.
 services: active-directory
 documentationcenter: ''
 author: CelesteDG
@@ -17,48 +17,48 @@ ms.date: 04/18/2018
 ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: a0cd077b1c6530c5794c92f131dffb814f5b341d
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.openlocfilehash: 747ba9c51181c62b45bb060810391ca54f4c044e
+ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/14/2018
-ms.locfileid: "34157717"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37869099"
 ---
-# <a name="azure-active-directory-v20-and-the-openid-connect-protocol"></a>Az Azure Active Directory v2.0 és az OpenID Connect protokoll
-OpenID Connect hitelesítési protokoll segítségével biztonságosan jelentkezzen be a felhasználót, hogy egy webes alkalmazás OAuth 2.0-s épülő. A v2.0-végpontra végrehajtása az OpenID Connect használatakor adhat hozzá bejelentkezési és API-hozzáférés a webalapú alkalmazások. Ebben a cikkben azt mutatja be a független nyelv tegye. Azt ismerteti, hogyan küldésére és fogadására a HTTP-üzenetek a Microsoft nyílt forráskódú kódtárai használata nélkül.
+# <a name="azure-active-directory-v20-and-the-openid-connect-protocol"></a>Az Azure Active Directory 2.0-s verzió és az OpenID Connect protokoll
+OpenID Connect nem épül, amely segítségével biztonságosan jelentkezzen be a felhasználót, hogy egy webes alkalmazás OAuth 2.0 hitelesítési protokoll. OpenID Connect megvalósítását a v2.0-végpont használata esetén is hozzáadhat be- és API-hozzáférés a webalapú alkalmazások. Ebben a cikkben bemutatjuk, hogyan teheti ezt független nyelvi. Üzenetek küldése és fogadása HTTP-könyvtárra sem a Microsoft nyílt forráskódú használata nélkül hogyan ismertetünk.
 
 > [!NOTE]
-> A v2.0-végpontra nem támogatja az összes Azure Active Directory forgatókönyvek és funkciók. Annak megállapításához, hogy a v2.0-végponttal kell használnia, olvassa el [v2.0 korlátozások](active-directory-v2-limitations.md).
+> A v2.0-végpont nem támogatja az összes Azure Active Directory-forgatókönyvek és funkciók. Annak megállapításához, hogy használjon a v2.0-végpont, olvassa el [v2.0 korlátozások](active-directory-v2-limitations.md).
 > 
 > 
 
-[OpenID Connect](http://openid.net/specs/openid-connect-core-1_0.html) kibővíti az OAuth 2.0 *engedélyezési* használandó protokoll egy *hitelesítési* protokollt, így egyetlen hajthat végre bejelentkezés OAuth protokollt használó. OpenID Connect jelenik meg az egy *azonosító token*, amelyen egy biztonsági jogkivonatot, amely lehetővé teszi, hogy az ügyfél számára, hogy a felhasználó identitásának ellenőrzéséhez. Az azonosító token is lekérdezi a felhasználó alapvető profiladataihoz adatait. OAuth 2.0 OpenID Connect terjeszti ki, mert az alkalmazások biztonságos lekérheti *hozzáférési jogkivonatok*, által védett erőforrások eléréséhez használható egy [engedélyezési server](active-directory-v2-protocols.md#the-basics). A v2.0-végpontra azt is lehetővé teszi, hogy a harmadik féltől származó alkalmazások és az Azure AD hozzáférési jogkivonatok a védett erőforrások, például webes API-k kiállítására regisztrált. Az alkalmazás hozzáférési jogkivonatokat kibocsátani, a telepítő kapcsolatos további információkért lásd: [egy alkalmazás regisztrálása a v2.0-végponttal](active-directory-v2-app-registration.md). Javasoljuk, hogy használjon OpenID Connect készítésekor egy [webes alkalmazás](active-directory-v2-flows.md#web-apps) , a kiszolgáló által üzemeltetett és böngészőalapú hozzáférést biztosít.
+[OpenID Connect](http://openid.net/specs/openid-connect-core-1_0.html) kibővíti az OAuth 2.0 *engedélyezési* protokollt használja, mint egy *hitelesítési* protokoll, így egyetlen hajthat végre bejelentkezés OAuth használatával. OpenID Connect bemutatja a egy *azonosító jogkivonat*, amelynek egy biztonsági jogkivonatot, amely lehetővé teszi, hogy az ügyfél számára, hogy a felhasználó identitásának ellenőrzéséhez. Az azonosító jogkivonat is lekéri a felhasználóval kapcsolatos főbb profiladatait. OpenID Connect kibővíti az OAuth 2.0, mert az alkalmazások biztonságos beszerezhető *hozzáférési jogkivonatokat*, által védett erőforrások eléréséhez használható egy [az engedélyezési kiszolgáló](active-directory-v2-protocols.md#the-basics). A v2.0-végpontra is lehetővé teszi, hogy a harmadik féltől származó alkalmazások, amelyek az Azure ad-vel védett erőforrások, például webes API-k számára a hozzáférési jogkivonatok kiállításához. Hogyan állíthatja be az alkalmazás hozzáférési jogkivonatokat kibocsátani, kapcsolatos további információkért tekintse meg [alkalmazás regisztrálása a v2.0-végponttal](active-directory-v2-app-registration.md). Javasoljuk, hogy használjon OpenID Connect készítésekor egy [webes alkalmazás](active-directory-v2-flows.md#web-apps) , amelyet a kiszolgáló által üzemeltetett és böngészőalapú hozzáférést biztosít.
 
-## <a name="protocol-diagram-sign-in"></a>Protokoll diagramja: bejelentkezés
-A legalapvetőbb bejelentkezési folyamata rendelkezik a lépéseket, a következő ábrán is látható. Azt írja le a részletes információkat ebben a cikkben minden lépést.
+## <a name="protocol-diagram-sign-in"></a>Diagram protokoll: bejelentkezés
+A legalapvetőbb bejelentkezési folyamat rendelkezik a lépéseket, a következő ábrán látható. Ez a cikk részletes lépéseit ismertetünk.
 
 ![OpenID Connect protokoll: bejelentkezés](../../media/active-directory-v2-flows/convergence_scenarios_webapp.png)
 
 ## <a name="fetch-the-openid-connect-metadata-document"></a>Az OpenID Connect metaadat-dokumentum beolvasása
-A legtöbb alkalmazás bejelentkezési végrehajtásához szükséges adatokat tartalmazó metaadat-dokumentum OpenID Connect ismerteti. Ide tartoznak például az URL-címek használatára és a szolgáltatás nyilvános aláírási kulcsok helyét. A v2.0-végpontra ez pedig az OpenID Connect metaadat-dokumentum kell használnia:
+A metaadat-dokumentum, amely tartalmazza az alkalmazás bejelentkezési végrehajtásához szükséges adatokat a legtöbb OpenID Connect ismerteti. Ez magában foglalja az adatokat, például a használandó URL-címek és a szolgáltatás nyilvános aláírási kulcsok helyét. A v2.0-végpont Ez az az OpenID Connect metaadat-dokumentumokról kell használnia:
 
 ```
 https://login.microsoftonline.com/{tenant}/v2.0/.well-known/openid-configuration
 ```
 > [!TIP] 
-> Kipróbálom! Kattintson a [ https://login.microsoftonline.com/common/v2.0/.well-known/openid-configuration ](https://login.microsoftonline.com/common/v2.0/.well-known/openid-configuration) megtekintéséhez a `common` bérlők konfigurációs. 
+> Próbálja ki! Kattintson a [ https://login.microsoftonline.com/common/v2.0/.well-known/openid-configuration ](https://login.microsoftonline.com/common/v2.0/.well-known/openid-configuration) megtekintéséhez a `common` bérlők konfiguráció. 
 >
 
 A `{tenant}` négy értékek valamelyikét hajthatja végre:
 
 | Érték | Leírás |
 | --- | --- |
-| `common` |A felhasználók a személyes Microsoft-fiókkal, és a munkahelyi vagy iskolai fiókkal az Azure Active Directory (Azure AD) is jelentkezzen be az alkalmazást. |
-| `organizations` |Csak a felhasználók munkahelyi vagy iskolai fiókok Azure ad-jelentkezhetnek be az alkalmazást. |
-| `consumers` |Csak a személyes Microsoft-fiókkal rendelkező felhasználók is jelentkezzen be az alkalmazást. |
-| `8eaef023-2b34-4da1-9baa-8bc8c9d6a490` vagy `contoso.onmicrosoft.com` |Csak a felhasználók a munkahelyi vagy iskolai fiókkal, egy adott Azure ad-bérlő jelentkezhetnek be az alkalmazást. Az Azure AD-bérlő rövid tartomány nevét vagy GUID-azonosító a bérlő is használható. |
+| `common` |Személyes Microsoft-fiókkal és a egy munkahelyi vagy iskolai fiókkal az Azure Active Directory (Azure AD) rendelkező felhasználók jelentkezhetnek be az alkalmazáshoz. |
+| `organizations` |Csak a felhasználók munkahelyi vagy iskolai fiókok Azure AD-ből az alkalmazás jelentkezhetnek be. |
+| `consumers` |Csak a személyes Microsoft-fiókkal rendelkező felhasználók jelentkezhetnek be az alkalmazáshoz. |
+| `8eaef023-2b34-4da1-9baa-8bc8c9d6a490` vagy `contoso.onmicrosoft.com` |Csak a felhasználók egy munkahelyi vagy iskolai fiókot egy adott Azure AD-ből a bérlői jelentkezhetnek be az alkalmazást. Az Azure AD-bérlő rövid tartományneve, vagy a bérlő GUID-azonosító is használható. |
 
-Egy egyszerű JavaScript Object Notation (JSON) dokumentum metaadatai. Tekintse meg az alábbi részlet egy példát. A kódrészletet tartalma részletesen a [OpenID Connect specification](https://openid.net/specs/openid-connect-discovery-1_0.html#rfc.section.4.2).
+Egy egyszerű JavaScript Object Notation (JSON) a dokumentum metaadatai. Tekintse meg példaként az alábbi kódrészletet. A kódtöredék tartalma részletesen a [OpenID Connect specifikáció](https://openid.net/specs/openid-connect-discovery-1_0.html#rfc.section.4.2).
 
 ```
 {
@@ -75,17 +75,17 @@ Egy egyszerű JavaScript Object Notation (JSON) dokumentum metaadatai. Tekintse 
 }
 ```
 
-Általában szeretné használni a metaadat-dokumentum konfigurálása az OpenID Connect könyvtárban vagy SDK; a könyvtár a munkájuk elvégzéséhez használja a metaadatok. Ha az OpenID Connect könyvtár előtti nem használja, követheti használatával történő végrehajtásához bejelentkezési használnak egy webalkalmazásban a v2.0-végpontra a cikk fennmaradó lépéseit.
+Általában használna a metaadat-dokumentum-könyvtár OpenID Connect vagy az SDK; konfigurálása a könyvtár a metaadatokat használja ezt a munkát. Ha a létrehozás előtti OpenID Connect tár nem használ, követheti a lépések végrehajtásához jelentkezzen be egy webes alkalmazásban a v2.0-végpont használatával Ez a cikk további részében.
 
-## <a name="send-the-sign-in-request"></a>A bejelentkezési kérelem elküldése
-Ha a webalkalmazás kell hitelesíteni a felhasználót, utasíthatja-e a felhasználót, hogy a `/authorize` végpont. A kérelem hasonlít az első szakasza a [OAuth 2.0 hitelesítésikód-folyamata](active-directory-v2-protocols-oauth-code.md), az alábbi fontos különbség:
+## <a name="send-the-sign-in-request"></a>A bejelentkezési kérelem küldése
+A webalkalmazás kell hitelesíteni a felhasználót, amikor azt a felhasználót, hogy irányíthatók a `/authorize` végpont. Ezt a kérelmet az első alapját képező hasonlít a [OAuth 2.0 hitelesítési kódfolyamat](active-directory-v2-protocols-oauth-code.md), az alábbi fontos különbség:
 
-* A kérelem tartalmaznia kell a `openid` a hatókör a `scope` paraméter.
+* A kérésnek tartalmaznia kell a `openid` hatókörét a a `scope` paraméter.
 * A `response_type` paraméternek tartalmaznia kell `id_token`.
-* A kérelem tartalmaznia kell a `nonce` paraméter.
+* A kérésnek tartalmaznia kell a `nonce` paraméter.
 
 > [!IMPORTANT]
-> Ahhoz, hogy sikeresen egy azonosító jogkivonatot, az alkalmazás regisztrációja a kérelem a [regisztrációs portál](https://apps.dev.microsoft.com) kell rendelkeznie a **[Implicit grant](active-directory-v2-protocols-implicit.md)** engedélyezve a a webes ügyféllel. Ha nincs engedélyezve, egy `unsupported_response` hibaüzenetet küld: "a"response_type"bemeneti paraméter megadott értéke nem engedélyezett ennél az ügyfélnél. Várt érték "code" "
+> Ahhoz, hogy sikerült-azonosító jogkivonat, az alkalmazás regisztrációját a kérelem a [regisztrációs portál](https://apps.dev.microsoft.com) kell rendelkeznie a **[típusú Implicit engedélyezés](active-directory-v2-protocols-implicit.md)** a webes ügyfél engedélyezve. Ha nincs engedélyezve, egy `unsupported_response` visszaadott hiba: "a"response_type"bemeneti paraméter megadott értéke nem engedélyezett ennél az ügyfélnél. Várt érték "code" "
 
 Példa:
 
@@ -103,31 +103,31 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 ```
 
 > [!TIP]
-> A kérelem végrehajtása a következő hivatkozásra kattintva. Miután bejelentkezik, a böngésző át lesz irányítva https://localhost/myapp/, címsor Azonosítóját tokenhez. Vegye figyelembe, hogy ehhez a kérelemhez használt `response_mode=fragment` (bemutatási célokra csak). Azt javasoljuk, hogy használjon `response_mode=form_post`.
+> Kattintson az alábbi hivatkozásra a kérelem végrehajtásához. Miután bejelentkezett, a böngésző átirányítja https://localhost/myapp/, egy azonosító jogkivonat címet a címsorba. Vegye figyelembe, hogy a kérelem használ `response_mode=fragment` (bemutatási célokra csak). Javasoljuk, hogy használjon `response_mode=form_post`.
 > <a href="https://login.microsoftonline.com/common/oauth2/v2.0/authorize?client_id=6731de76-14a6-49ae-97bc-6eba6914391e&response_type=id_token&redirect_uri=http%3A%2F%2Flocalhost%2Fmyapp%2F&scope=openid&response_mode=fragment&state=12345&nonce=678910" target="_blank">https://login.microsoftonline.com/common/oauth2/v2.0/authorize...</a>
 > 
 > 
 
-| Paraméter | Feltétel | Leírás |
+| Paraméter | Állapot | Leírás |
 | --- | --- | --- |
-| bérlő |Szükséges |Használhatja a `{tenant}` személyek jelentkezhetnek be az alkalmazás a kérelem elérési útjában szereplő értéket. Az engedélyezett értékek a következők `common`, `organizations`, `consumers`, és a bérlői azonosítókat. További információkért lásd: [alapjai protokoll](active-directory-v2-protocols.md#endpoints). |
-| client_id |Szükséges |Az alkalmazás azonosítója, amely a [alkalmazásregisztrációs portálra](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/documentation/articles&deeplink=/appList) az alkalmazáshoz hozzárendelni. |
-| response_type |Szükséges |Tartalmaznia kell `id_token` az OpenID Connect bejelentkezhet. Is tartalmazhat más `response_types` értékek, például a `code`. |
-| redirect_uri |Ajánlott |Az átirányítási URI-t, az alkalmazás, ahol küldött és az alkalmazás által fogadott a hitelesítési válaszokat. Az pontosan egyeznie kell az átirányítási URI-azonosítók regisztrálta a portálon, azzal a különbséggel, hogy az URL-kódolású kell lennie. |
-| scope |Szükséges |Hatókörök szóközökkel elválasztott listája. Az OpenID Connect, magában kell foglalnia a hatókör `openid`, amely az eszköz a hozzájárulási felhasználói felületén a "Bejelentkezés" engedélyt. A kérésben a hozzájárulás kérése kiterjedhetnek más hatókörök. |
-| Nonce |Szükséges |A kérelem, az alkalmazás, az eredményül kapott id_token érték jogcímként szerepeltetni által generált szerepel érték. Az alkalmazás ellenőrizheti a hitelesítési karakterláncok ismétlésének támadások mérséklése ezt az értéket. Az érték általában a véletlenszerű, egyedi karakterlánc, amely segítségével azonosíthatja a kérelem forrása. |
-| response_mode |Ajánlott |Megadja azt a módszert, amelynek használatával az eredményül kapott engedélyezési kód küldi vissza az alkalmazás. A következők egyike lehet: `form_post` vagy `fragment`. Webes alkalmazásokhoz, javasoljuk `response_mode=form_post`, annak érdekében, az alkalmazás a jogkivonatok legbiztonságosabb átvitelét. |
-| állapot |Ajánlott |A kérelem is visszaad a biztonságijogkivonat-válaszban szereplő érték. Bármilyen tartalmat karakterlánc lehet. Egy véletlenszerűen generált egyedi érték általában szolgál [webhelyközi kérések hamisításának megakadályozása támadások megelőzése érdekében](http://tools.ietf.org/html/rfc6749#section-10.12). Az állapot is kódolásához használatos a felhasználói állapot az alkalmazás információkat előtt a hitelesítési kérést, például az oldal vagy a felhasználó nem a nézet. |
-| parancssor |Nem kötelező |Azt jelzi, hogy milyen típusú felhasználói beavatkozás szükséges. Jelenleg csak az érvényes értékek a következők `login`, `none`, és `consent`. A `prompt=login` jogcím kényszeríti a felhasználó megadja a hitelesítő adataik adott kérelem, amely az egyszeri bejelentkezés ellentettjét adja. A `prompt=none` jogcím fordítottja. A jogcím biztosítja, hogy a felhasználó számára nem jelenik meg minden bármely interaktív kérdés. Ha a kérelem nem hajtható végre csendes keresztül egyszeri bejelentkezést, a v2.0-végpontra hibát ad vissza. A `prompt=consent` jogcímet a felhasználó bejelentkezése után az váltja ki az OAuth-hozzájárulás párbeszédpanel. A párbeszédpanelen kéri a felhasználót, hogy engedélyezze, hogy az alkalmazás. |
-| login_hint |Nem kötelező |Ez a paraméter segítségével előre töltse ki a felhasználónevet és e-mail cím mező a bejelentkezési oldal a felhasználó számára, ha a felhasználónév időben tudja. Gyakran, alkalmazások használata során ismételt hitelesítés után már kibontása a felhasználónév egy korábbi bejelentkezés használatával ezt a paramétert a `preferred_username` jogcímek. |
-| domain_hint |Nem kötelező |Az érték lehet `consumers` vagy `organizations`. Ha tartalmazza, azt az e-mail alapú felderítési folyamat, amely a felhasználó végighalad a bejelentkezési lapon v2.0 nagyobb jelentőséggel zökkenőmentes felhasználói élmény kihagyja. Gyakran, alkalmazások használja ezt a paramétert ismételt hitelesítés során kivonja a `tid` a Azonosítót jogkivonatban a jogcím. Ha a `tid` jogcím értéke `9188040d-6c67-4c5b-b112-36a304b66dad` (a Microsoft Account fogyasztói bérlő), használjon `domain_hint=consumers`. Ellenkező esetben használja `domain_hint=organizations`. |
+| bérlő |Szükséges |Használhatja a `{tenant}` szabályozza, ki is jelentkezzen be az alkalmazásba irányuló kérelem elérési útja értéket. Az engedélyezett értékek a következők `common`, `organizations`, `consumers`, és a bérlői azonosító. További információkért lásd: [protokoll alapvető](active-directory-v2-protocols.md#endpoints). |
+| client_id |Szükséges |Az alkalmazás AZONOSÍTÓJÁT, amely a [alkalmazásregisztrációs portálon](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/documentation/articles&deeplink=/appList) az alkalmazáshoz rendelt. |
+| response_type |Szükséges |Tartalmaznia kell `id_token` OpenID Connect bejelentkezhet. Emellett tartalmazhat más `response_types` értékek, mint például `code`. |
+| redirect_uri |Ajánlott |Az átirányítási URI-ját az alkalmazás, ahol küldött és az alkalmazás által fogadott a hitelesítési válaszokat. Ez pontosan egyeznie kell az átirányítási URI-k a portál regisztrált egyik azzal a különbséggel, hogy az URL-kódolású kell lennie. |
+| scope |Szükséges |Hatókörök szóközzel elválasztott listáját. Az OpenID Connect, tartalmaznia kell a hatókör `openid`, amelyet a rendszer lefordítja arra a jóváhagyási felhasználói felület a "Bejelentkezés" engedélyt. Más hatókörök tartalmazhatják a hozzájárulás kérése a kéréshez. |
+| egyszeri |Szükséges |A kérésben, az eredményül kapott id_token érték jogcímként szerepeljenek, az alkalmazás által generált érték. Az alkalmazás ellenőrizheti ezt az értéket ismétlésének támadások számának csökkentése érdekében. Az érték általában véletlenszerű, egyedi karakterlánc, amely a kérés eredetének azonosítására használhatók. |
+| response_mode |Ajánlott |Meghatározza az eredményül kapott engedélyezési kód küldi vissza az alkalmazáshoz használandó módszert. A következők egyike lehet: `form_post` vagy `fragment`. A webes alkalmazásokhoz, javasoljuk `response_mode=form_post`, annak érdekében, a jogkivonatok legbiztonságosabb átvitelét az alkalmazáshoz. |
+| state |Ajánlott |A kérelem is visszaadott a jogkivonat-válaszban szereplő érték. Bármilyen tartalmat karakterlánc lehet. Egy véletlenszerűen generált egyedi érték általában szolgál [webhelyközi kérések hamisításának megakadályozása támadások megelőzése érdekében](http://tools.ietf.org/html/rfc6749#section-10.12). Az állapot is szolgál a felhasználói állapot az alkalmazás információ kódolása előtt a hitelesítési kérelmet, például a lapot vagy a nézet a felhasználó nem található. |
+| parancssor |Optional |Azt jelzi, hogy milyen típusú felhasználói beavatkozás szükséges. Jelenleg az egyetlen érvényes értékek a következők `login`, `none`, és `consent`. A `prompt=login` jogcím kényszeríti a felhasználónak meg kell adnia a hitelesítő adataikat a kérelmet, amely egyszeri bejelentkezés ellentettjét adja. A `prompt=none` jogcím ennek az ellenkezője. Ez a jogcím biztosítja, hogy a felhasználó el minden olyan interaktív kérdés nem egyike. Ha a kérés nem lehet végrehajtani csendes keresztül egyszeri bejelentkezést, a v2.0-végpont hibát ad vissza. A `prompt=consent` jogcím elindítja az OAuth-hozzájárulási párbeszédpanel a felhasználó bejelentkezése után az. A párbeszédpanel megkérdezi a felhasználót, engedélyeket az alkalmazáshoz. |
+| login_hint |Optional |Ez a paraméter használatával előre töltse ki a felhasználónevét és e-mail cím mező, a bejelentkezési oldal a felhasználó számára, ha a felhasználónév előre tudja. Gyakran alkalmazások használata során ismételt hitelesítés után már kinyerését a felhasználónevet egy korábbi bejelentkezési használatával ezt a paramétert a `preferred_username` jogcím. |
+| domain_hint |Optional |Ez az érték lehet `consumers` vagy `organizations`. Ha a csomagban foglalt, kihagyja az az e-mail-alapú felderítési folyamat, amely a felhasználó végighalad a bejelentkezési lapon v2.0 némileg több zökkenőmentes felhasználói élményt. Gyakran alkalmazások használja ezt a paramétert újbóli hitelesítés során oly módon, a `tid` jogcím a azonosító jogkivonat. Ha a `tid` jogcím értéke `9188040d-6c67-4c5b-b112-36a304b66dad` (a Microsoft Account fogyasztói bérlő), használjon `domain_hint=consumers`. Ellenkező esetben használjon `domain_hint=organizations`. |
 
-Ezen a ponton a felhasználótól a hitelesítő adataik megadására, és a hitelesítés végrehajtásához. A v2.0-végpontra ellenőrzi, hogy a felhasználó hozzájárult szerepelnek az engedélyeket a `scope` lekérdezési paraméter. Ha a felhasználó nem hozzájárult bármelyik ezeket az engedélyeket, a v2.0-végpontra kéri a felhasználó számára, hogy a szükséges engedélyekkel. További tudnivalók [engedélyek, beleegyezése és több-bérlős alkalmazásokhoz](active-directory-v2-scopes.md).
+Ezen a ponton a felhasználótól megadják hitelesítő adataikat, és a hitelesítés végrehajtásához. A v2.0-végpont ellenőrzi, hogy a felhasználó hozzájárult a megadott engedélyeket a `scope` lekérdezési paraméter. Ha a felhasználó nem egyezett bele bármelyik ezeket az engedélyeket, a v2.0-végpont kéri a felhasználó beleegyezését, a szükséges engedélyekkel. További információ [engedélyek, beleegyezése és több-bérlős alkalmazások](active-directory-v2-scopes.md).
 
-Miután a felhasználó hitelesíti és engedélyezi a hozzájárulási, a v2.0-végpontra adja vissza az alkalmazást a jelzett választ átirányítási URI-címe részben ismertetett módon használatával a `response_mode` paraméter.
+Miután a felhasználó hitelesíti és engedélyezi a jóváhagyás, a v2.0-végpont választ küld az alkalmazást a jelzett átirányítási URI-t a megadott módszer használatával a `response_mode` paraméter.
 
 ### <a name="successful-response"></a>A sikeres válasz
-A sikeres válasz használatakor `response_mode=form_post` dolgozunk:
+A sikeres válasz használatakor `response_mode=form_post` kell kinéznie:
 
 ```
 POST /myapp/ HTTP/1.1
@@ -139,11 +139,11 @@ id_token=eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik1uQ19WWmNB...&state=12345
 
 | Paraméter | Leírás |
 | --- | --- |
-| id_token |Az alkalmazás által kért azonosítója jogkivonat. Használhatja a `id_token` paraméter, a felhasználó személyazonosságát, és a felhasználói munkamenet elindításához. Azonosító-jogkivonatokat és azok tartalmát kapcsolatos további tudnivalókért tekintse meg a [v2.0-végponttól jogkivonatok hivatkozás](active-directory-v2-tokens.md). |
-| állapot |Ha egy `state` paraméter szerepel a kérést, ugyanazt az értéket meg kell jelennie a válaszban. Az alkalmazás győződjön meg arról, hogy a kérés- és állapot értékei megegyeznek. |
+| id_token |Az azonosító jogkivonat, amely az alkalmazás kéri. Használhatja a `id_token` paraméter segítségével ellenőrizze a felhasználó identitását, és megkezdheti a felhasználói munkamenetet. Azonosító-jogkivonatokat, és azok tartalmát kapcsolatos további részletekért tekintse meg a [v2.0-végpont jogkivonatok referencia](active-directory-v2-tokens.md). |
+| state |Ha egy `state` paraméter tartalmazza a kérés ugyanazt az értéket meg kell jelennie a választ. Az alkalmazás ellenőrizze, hogy a kérés- és állapot értékei azonosak. |
 
-### <a name="error-response"></a>Hibaválaszba
-Hibaválaszok is lehet küldeni az átirányítási URI-t, hogy az alkalmazás képes kezelni azokat. Egy hiba történt egy válasz így néz ki:
+### <a name="error-response"></a>Hiba történt a válasz
+Hibaválaszok is előfordulhat, hogy az átirányítási URI-JÁNAK küldött, úgy, hogy az alkalmazás képes kezelni őket. Egy hibaválasz a következőhöz hasonló:
 
 ```
 POST /myapp/ HTTP/1.1
@@ -155,64 +155,64 @@ error=access_denied&error_description=the+user+canceled+the+authentication
 
 | Paraméter | Leírás |
 | --- | --- |
-| hiba |Egy hiba kód karakterlánc, amely a besorolására a felmerülő hibákat, és reagálni hibákat is használhatja. |
-| error_description |Egy adott hibaüzenet, melyek segíthetnek hitelesítési hiba okának azonosításához. |
+| error |Egy hibakód karakterláncát besorolása a fellépő hibákat, és reagálhat a hibák használható. |
+| error_description |Egy adott hibaüzenet, amelyek segítségével hitelesítési hiba kiváltó okának azonosításához. |
 
-### <a name="error-codes-for-authorization-endpoint-errors"></a>Engedélyezési végpont hibái hibakódok
-A következő táblázat ismerteti a visszaadható hibakódok a `error` paramétere a hibaválaszba:
+### <a name="error-codes-for-authorization-endpoint-errors"></a>Hitelesítési végpont hibák hibakódok
+A következő táblázat ismerteti azokat a hibakódokat, a visszaadható a `error` válaszként küldött hibaüzenetben paraméteréhez:
 
 | Hibakód | Leírás | Ügyfélművelet |
 | --- | --- | --- |
-| invalid_request |Protokollhiba történt, például egy hiányzó kötelező paraméter. |Javítsa ki, és küldje el újra a kérelmet. Ez a kezdeti tesztelés során általában kiszűri a fejlesztési hiba. |
-| unauthorized_client |Az ügyfélalkalmazás az engedélyezési kód nem lehet kérni. |Ez általában akkor fordul elő, amikor az ügyfél-alkalmazás nincs regisztrálva az Azure ad-ben, vagy nem kerül be a felhasználó Azure AD-bérlő. Az alkalmazás kérheti a felhasználó az alkalmazás telepítéséhez, adja hozzá az Azure AD útmutatást. |
-| ACCESS_DENIED |Az erőforrás tulajdonosa hozzájárulási megtagadva. |Az ügyfélalkalmazás is értesíti a felhasználót, hogy azt nem folytatható, kivéve, ha a felhasználó. |
-| unsupported_response_type |Az engedélyezési kiszolgáló nem támogatja a kérelem a válasz típusa. |Javítsa ki, és küldje el újra a kérelmet. Ez a kezdeti tesztelés során általában kiszűri a fejlesztési hiba. |
-| server_error |A kiszolgáló váratlan hibát észlelt. |Próbálkozzon újra a kéréssel. Ezeket a hibákat okozhat az átmeneti állapotot. Az ügyfélalkalmazás elmagyarázhatja a felhasználót, hogy egy ideiglenes hiba miatt késik a válaszában. |
-| temporarily_unavailable |A kiszolgáló ideiglenesen jelenleg túl elfoglalt a kérelem kezelésére. |Próbálkozzon újra a kéréssel. Az ügyfélalkalmazás elmagyarázhatja a felhasználót, hogy egy ideiglenes állapot miatt késik a válaszában. |
-| invalid_resource |A cél erőforráson érvénytelen, mert nem létezik, az Azure AD a fájl nem található vagy nincs megfelelően konfigurálva. |Ez azt jelzi, hogy az erőforrás, ha létezik, nincs konfigurálva a bérlőben. Az alkalmazás kérheti a felhasználói utasításokat tartalmaz az alkalmazás telepítése és az Azure AD hozzáadni. |
+| invalid_request |Protokollhiba történt, például egy hiányzó kötelező paraméter. |Javítsa ki, és küldje el újra a kérelmet. Ez az egy fejlesztési hiba, amely a kezdeti tesztelés során általában történt. |
+| unauthorized_client |Az ügyfélalkalmazás egy hozzáférési kód nem lehet kérni. |Ez általában akkor fordul elő, ha az ügyfélalkalmazás nincs regisztrálva az Azure ad-ben, vagy a felhasználó Azure AD-bérlő nem kerül. Az alkalmazás is kéri a felhasználót az utasításokat az alkalmazás telepítéséhez, és adja hozzá az Azure AD. |
+| ACCESS_DENIED |Az erőforrás tulajdonosa jóváhagyás elutasítva. |Az ügyfélalkalmazás is értesíti a felhasználót, hogy azt nem lehet folytatni, kivéve, ha a felhasználó. |
+| unsupported_response_type |Az engedélyezési kiszolgáló nem támogatja a kód választípusához a kérésben. |Javítsa ki, és küldje el újra a kérelmet. Ez az egy fejlesztési hiba, amely a kezdeti tesztelés során általában történt. |
+| server_error |A kiszolgáló váratlan hibát észlelt. |Ismételje meg a kérelmet. Ezeket a hibákat okozhat az ideiglenes feltételek. Az ügyfélalkalmazás megmagyarázhatják a felhasználót, hogy a válasz egy átmeneti hiba miatt késik. |
+| temporarily_unavailable |A kiszolgáló nem túlságosan elfoglalt a kérelem kezelése. |Ismételje meg a kérelmet. Az ügyfélalkalmazás megmagyarázhatják a felhasználót, hogy a válasz egy ideiglenes állapot miatt késik. |
+| invalid_resource |A célként megadott erőforrás érvénytelen, mert nem létezik, az Azure AD nem találja, vagy azt nem megfelelően van konfigurálva. |Ez azt jelzi, hogy az erőforrást, ha létezik, nincs konfigurálva a bérlőben. Az alkalmazás kérheti a felhasználói utasításokat az alkalmazás telepítése és az Azure ad-hez adásával. |
 
-## <a name="validate-the-id-token"></a>Az azonosító token ellenőrzése
-Egy azonosító tokent fogadása túl kicsi a felhasználó hitelesítésére. Az azonosító jogkivonat-aláírás ellenőrzése és a jogcímek, az alkalmazás követelményeinek / token ellenőrzése is. Használja a v2.0-végpontra [JSON Web Tokens (JWTs)](http://self-issued.info/docs/draft-ietf-oauth-json-web-token.html) és a jogkivonatok aláírásához, és ellenőrizze, hogy azok érvényes nyilvános kulccsal történő titkosítás.
+## <a name="validate-the-id-token"></a>Az azonosító jogkivonat érvényesítése
+Egy azonosító jogkivonat fogadása azonban nem a felhasználó hitelesítéséhez. Kell érvényesíteni az azonosító jogkivonat aláírása, és ellenőrizze a jogcímeket az alkalmazáskövetelmények szerint. Használja a v2.0-végpont [JSON webes jogkivonatainak (JWTs)](http://self-issued.info/docs/draft-ietf-oauth-json-web-token.html) és a nyilvános kulcsú hitelesítésen jogkivonatok aláírásához, és ellenőrizze, hogy azok érvényesek.
 
-Választhat, hogy az azonosító lexikális elem szerepel az Ügyfélkód érvényesítéséhez, de a gyakori eljárás a Azonosítót jogkivonatban küldeni egy háttér-kiszolgálónak, és hajtsa végre az érvényesítési hiba. Az azonosító jogkivonat aláírása ellenőrzését követően lesz szüksége lehet néhány jogcímek ellenőrzése. További információt, beleértve a több kapcsolatos [jogkivonatok ellenőrzése](active-directory-v2-tokens.md#validating-tokens) és [fontos információkat a kulcsváltás](active-directory-v2-tokens.md#validating-tokens), tekintse meg a [v2.0 jogkivonatok hivatkozás](active-directory-v2-tokens.md). Azt javasoljuk, hogy a szalagtárat használó elemezni és érvényesíthet jogkivonatokat. Van legalább egy ezeket a könyvtárakat legtöbb nyelvekhez és platformokhoz érhető el.
+Dönthet úgy, hogy az ügyfélkód a azonosító jogkivonat érvényesítéséhez, de általános gyakorlat, hogy az azonosító jogkivonat háttér-kiszolgálónak küldött, majd az ellenőrzési hiba. Az azonosító jogkivonat aláírása érvényesítése után kell néhány jogcímek ellenőrzése. További információkat, beleértve kapcsolatos további [jogkivonatok érvényességének](active-directory-v2-tokens.md#validating-tokens) és [aláírókulcs kapcsolatos fontos információkat](active-directory-v2-tokens.md#validating-tokens), tekintse meg a [2.0-s verziójú jogkivonatok referencia](active-directory-v2-tokens.md). Elemezheti és érvényesítse a kódtár használatát javasoljuk. Nincs legalább egy ezeket a könyvtárakat a legtöbb nyelvekhez és platformokhoz érhető el.
 <!--TODO: Improve the information on this-->
 
-Emellett előfordulhat, hogy szeretné érvényesíteni további jogcímeket, a forgatókönyvtől függően. Néhány gyakori érvényesítést a következők:
+Emellett érdemes további jogcímek a forgatókönyvtől függően ellenőrzése. Néhány gyakori ellenőrzések a következők:
 
-* Győződjön meg arról, hogy a felhasználó vagy a szervezet rendelkezik regisztrálta az alkalmazást.
-* Győződjön meg arról, hogy a felhasználó szükséges engedélyezési vagy jogosultságokra.
-* Győződjön meg arról, hogy bizonyos erősségével hitelesítési történt, például a többtényezős hitelesítést.
+* Győződjön meg arról, hogy a felhasználó vagy a szervezet regisztrált az alkalmazáshoz.
+* Győződjön meg arról, hogy a felhasználó engedélyezési vagy jogosultság szükséges.
+* Győződjön meg arról, hogy egy bizonyos hitelesítés erőssége történt, például többtényezős hitelesítést.
 
-A jogcímek egy Azonosítót jogkivonatban kapcsolatos további információkért tekintse meg a [v2.0-végponttól jogkivonatok hivatkozás](active-directory-v2-tokens.md).
+Egy azonosító jogkivonat jogcímeiben kapcsolatos további információkért lásd: a [v2.0-végpont jogkivonatok referencia](active-directory-v2-tokens.md).
 
-Teljesen érvényesítése a Azonosítót jogkivonatban után megkezdheti a munkamenet a felhasználó. Az Azonosítót jogkivonatban a jogcím segítségével az alkalmazás a felhasználó adatainak beolvasása. A kijelző, rekordok, engedélyek és így tovább használhatja ezeket az információkat.
+Teljesen érvényesítése az azonosító jogkivonat után elkezdheti a munkamenet a felhasználóval. Az azonosító jogkivonat a jogcímek segítségével a felhasználó adatainak lekérése az alkalmazásban. Használhatja ezt az információt a megjelenített, rekordok, engedélyek és így tovább.
 
 ## <a name="send-a-sign-out-request"></a>Kijelentkezési kérés küldése
-Ha azt szeretné, az alkalmazás a felhasználó kijelentkezik, nem elegendő az alkalmazás cookie-k törléséhez, vagy ellenkező esetben az a felhasználói munkamenet befejezése. Meg kell is átirányítja a felhasználót a v2.0-végpontra jelentkezzen ki. Ha nem így tesz, a felhasználó újra hitelesíti magát az alkalmazás a hitelesítő adatok újbóli megadása nélkül, mert egy érvényes egyszeri bejelentkezési munkamenet a v2.0-végponttal rendelkeznek.
+Ha meg szeretné ki a felhasználót az alkalmazásból, nem elegendő az alkalmazás cookie-k törléséhez, vagy ellenkező esetben az a felhasználói munkamenet befejezése. Meg kell is átirányítja a felhasználót a v2.0-végpont, jelentkezzen ki. Ha nem így tesz, a felhasználó újra hitelesíti magát az alkalmazás a hitelesítő adatok újbóli megadása nélkül, mert egy érvényes egyszeri bejelentkezési munkamenet a v2.0-végponttal rendelkeznek.
 
-Irányíthatja át a felhasználót, hogy a `end_session_endpoint` az OpenID Connect metaadat-dokumentum szerepel:
+Irányíthatja át a felhasználót, hogy a `end_session_endpoint` az OpenID Connect metaadat-dokumentumban felsorolt:
 
 ```
 GET https://login.microsoftonline.com/common/oauth2/v2.0/logout?
 post_logout_redirect_uri=http%3A%2F%2Flocalhost%2Fmyapp%2F
 ```
 
-| Paraméter | Feltétel | Leírás |
+| Paraméter | Állapot | Leírás |
 | ----------------------- | ------------------------------- | ------------ |
-| post_logout_redirect_uri | Ajánlott | Az URL-címet, amely a felhasználó sikeresen kijelentkezést követően van átirányítva. Ha a paraméter nincs megadva, a felhasználó a v2.0-végpontra által létrehozott általános üzenet jelenik meg. URL-címet meg kell egyeznie az átirányítási URI-azonosítók regisztrálva az alkalmazás az app-regisztrálási portál egyikét. |
+| post_logout_redirect_uri | Ajánlott | Az URL-cím, amely a felhasználó sikeres bejelentkezés után van átirányítva. Ha a paraméter nem tartalmaz, a felhasználó a v2.0-végpont által létrehozott általános üzenet jelenik meg. Az URL-címet meg kell egyeznie az átirányítási URI-k az alkalmazás az app-regisztrációs portál regisztrált egyikét. |
 
 ## <a name="single-sign-out"></a>Egyszeri kijelentkezés
-Ha átirányítja a felhasználót, hogy a `end_session_endpoint`, a v2.0-végpontra törli a felhasználói munkamenetet a böngészőből. Azonban a felhasználó esetleg még be van jelentkezve más alkalmazásokhoz, amelyek a hitelesítéshez használandó Microsoft-fiókok. Ahhoz, hogy ezek az alkalmazások beléptetni a felhasználót egy időben, a v2.0 kimenő végpont egy HTTP GET kérést küld a regisztrált `LogoutUrl` , a felhasználó van éppen bejelentkezve az alkalmazásokat. Alkalmazások bármely, amely azonosítja a felhasználói munkamenet és vissza ehhez a kérelemhez kell válaszolnia a `200` válasz. Ha támogatja az egyszeri bejelentkezési ki az alkalmazásban, meg kell-e valósítania például egy `LogoutUrl` az alkalmazás kódjában. Beállíthatja a `LogoutUrl` az alkalmazás regisztrációs portálon.
+Amikor átirányítja a felhasználót, hogy a `end_session_endpoint`, a v2.0-végpont törlése a felhasználó munkamenetének a böngészőből. Azonban a előfordulhat, hogy továbbra is lehet bejelentkezett felhasználó egyéb alkalmazásokhoz, amelyek a Microsoft-fiókokat használnak a hitelesítéshez. Ahhoz, hogy ezek az alkalmazások aláírására a felhasználó ki egyszerre, a v2.0 végpont egy HTTP GET kérést küld a regisztrált `LogoutUrl` , a felhasználó jelenleg be van jelentkezve az alkalmazásokat. Alkalmazások válaszolnia kell ehhez a kérelemhez, amely azonosítja a felhasználói munkamenettől és visszaadó egy `200` választ. Ha szeretne egyszeri bejelentkezés támogatására ki az alkalmazásban, meg kell valósítani például egy `LogoutUrl` az alkalmazás kódjában. Beállíthatja a `LogoutUrl` az alkalmazás regisztrációs portálon.
 
-## <a name="protocol-diagram-access-token-acquisition"></a>Protokoll diagramja: hozzáférési jogkivonat beszerzése
-Sok webalkalmazások kell jelentkeznie nem csak a felhasználó, de is OAuth elérni egy webszolgáltatás-bővítmény, a felhasználó nevében. Ebben a forgatókönyvben egyesíti az OpenID Connect felhasználói hitelesítés egy engedélyezési kódot, amely segítségével a hozzáférési jogkivonatok lekérésére, az OAuth hitelesítésikód-folyamata használatakor egyidejűleg lekérése közben.
+## <a name="protocol-diagram-access-token-acquisition"></a>Protokoll ábra: a hozzáférési token beszerzése
+Számos webes alkalmazás kell nem csak a felhasználó, de még a felhasználó nevében egy webszolgáltatás eléréséhez az OAuth használatával. Ebben a forgatókönyvben egyesíti a OpenID Connect-felhasználói hitelesítést az engedélyezési kódot, amellyel hozzáférési tokenekhez, az OAuth hitelesítési kódfolyamat használatakor egyidejűleg beolvasása közben.
 
-A teljes OpenID Connect bejelentkezési és jogkivonat-beszerzési folyamatot a következő ábra hasonlít. Azt írja le a cikk a következő szakaszokban részletesen lépésre.
+A következő diagram a teljes OpenID Connect bejelentkezést és a jogkivonat beszerzéséhez folyamat hasonlít. A cikk a következő szakaszokban részletesen lépéseinek ismertetünk.
 
-![OpenID Connect protokoll: lexikális elem az beszerzése](../../media/active-directory-v2-flows/convergence_scenarios_webapp_webapi.png)
+![OpenID Connect protokoll: Token beszerzése](../../media/active-directory-v2-flows/convergence_scenarios_webapp_webapi.png)
 
-## <a name="get-access-tokens"></a>A hozzáférési jogkivonatok lekérésére
-Szerezzen be a hozzáférési jogkivonatok, módosítsa a bejelentkezési kérelem:
+## <a name="get-access-tokens"></a>Hozzáférési jogkivonat beszerzése
+Hozzáférési jogkivonatok beszerzésére, módosítsa a bejelentkezési kérelem:
 
 ```
 // Line breaks are for legibility only.
@@ -230,15 +230,15 @@ https%3A%2F%2Fgraph.microsoft.com%2Fmail.read
 ```
 
 > [!TIP]
-> A kérelem végrehajtása a következő hivatkozásra kattintva. Miután bejelentkezik, a rendszer átirányítja a böngésző https://localhost/myapp/, az ID-tokent és a címsorba kódot. Vegye figyelembe, hogy ehhez a kérelemhez használt `response_mode=fragment` (bemutatási célokra csak). Azt javasoljuk, hogy használjon `response_mode=form_post`.
+> Kattintson az alábbi hivatkozásra a kérelem végrehajtásához. Miután bejelentkezett, a rendszer átirányítja a böngésző https://localhost/myapp/, egy azonosító jogkivonat és a egy kód a címsorba. Vegye figyelembe, hogy a kérelem használ `response_mode=fragment` (bemutatási célokra csak). Javasoljuk, hogy használjon `response_mode=form_post`.
 > <a href="https://login.microsoftonline.com/common/oauth2/v2.0/authorize?client_id=6731de76-14a6-49ae-97bc-6eba6914391e&response_type=id_token%20code&redirect_uri=http%3A%2F%2Flocalhost%2Fmyapp%2F&response_mode=fragment&scope=openid%20offline_access%20https%3A%2F%2Fgraph.microsoft.com%2Fmail.read&state=12345&nonce=678910" target="_blank">https://login.microsoftonline.com/common/oauth2/v2.0/authorize...</a>
 > 
 > 
 
-Engedélyhatókörök ot helyez el a kérelmet, és az `response_type=id_token code`, a v2.0-végpontra biztosítja, hogy a felhasználó hozzájárult szerepelnek az engedélyeket a `scope` lekérdezési paraméter. Engedélyezési kódot az alkalmazásban, az exchange-hozzáférési tokent ad vissza.
+-Engedélyhatókörök, beleértve a kérésben és segítségével `response_type=id_token code`, a v2.0-végpont biztosítja, hogy a felhasználó hozzájárult a megadott engedélyeket a `scope` lekérdezési paraméter. Az engedélyezési kódot az alkalmazásba és az exchange-hozzáférési jogkivonatot ad vissza.
 
 ### <a name="successful-response"></a>A sikeres válasz
-A sikeres válasz használatával `response_mode=form_post` dolgozunk:
+Használatával a sikeres válasz `response_mode=form_post` kell kinéznie:
 
 ```
 POST /myapp/ HTTP/1.1
@@ -250,12 +250,12 @@ id_token=eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik1uQ19WWmNB...&code=AwABAA
 
 | Paraméter | Leírás |
 | --- | --- |
-| id_token |Az alkalmazás által kért azonosítója jogkivonat. Az azonosító jogkivonat segítségével ellenőrzi a felhasználó identitását, és a felhasználói munkamenet elindításához. Azonosító-jogkivonatokat és azok tartalmát, a további információkat találhat a [v2.0-végponttól jogkivonatok hivatkozás](active-directory-v2-tokens.md). |
-| Kód |Az engedélyezési kód, amely az alkalmazás kéri. Az alkalmazás az engedélyezési kód segítségével olyan hozzáférési jogkivonatot célerőforrás igényelhetnek. Az engedélyezési kód nagyon rövid élettartamú. Általában egy engedélyezési kód körülbelül 10 perc múlva lejár. |
-| állapot |Ha a kérelem egy állapot paramétert tartalmaz, ugyanazt az értéket meg kell jelennie a válasz. Az alkalmazás győződjön meg arról, hogy a kérés- és állapot értékei megegyeznek. |
+| id_token |Az azonosító jogkivonat, amely az alkalmazás kéri. Az azonosító jogkivonat segítségével ellenőrizze a felhasználó identitását, és megkezdheti a felhasználói munkamenetet. Azonosító-jogkivonatokat és azok tartalmát, a további információt találhat a [v2.0-végpont jogkivonatok referencia](active-directory-v2-tokens.md). |
+| Kód |Az engedélyezési kód, amely az alkalmazás kéri. Az alkalmazás az engedélyezési kód használatával a célként megadott erőforrás-hozzáférési jogkivonat kérése. Az engedélyezési kódot nagyon rövid ideig tartó. Általában egy hozzáférési kód körülbelül 10 perc múlva lejár. |
+| state |Ha a kérelem tartalmazza a state paraméterben, ugyanazt az értéket meg kell jelennie a választ. Az alkalmazás ellenőrizze, hogy a kérés- és állapot értékei azonosak. |
 
-### <a name="error-response"></a>Hibaválaszba
-Hibaválaszok is lehet küldeni az átirányítási URI-t, hogy az alkalmazás képes kezelni őket megfelelően. Egy hiba történt egy válasz így néz ki:
+### <a name="error-response"></a>Hiba történt a válasz
+Hibaválaszok is előfordulhat, hogy az átirányítási URI-JÁNAK küldött, úgy, hogy az alkalmazás képes kezelni őket megfelelően. Egy hibaválasz a következőhöz hasonló:
 
 ```
 POST /myapp/ HTTP/1.1
@@ -267,9 +267,9 @@ error=access_denied&error_description=the+user+canceled+the+authentication
 
 | Paraméter | Leírás |
 | --- | --- |
-| hiba |Egy hiba kód karakterlánc, amely a besorolására a felmerülő hibákat, és reagálni hibákat is használhatja. |
-| error_description |Egy adott hibaüzenet, melyek segíthetnek hitelesítési hiba okának azonosításához. |
+| error |Egy hibakód karakterláncát besorolása a fellépő hibákat, és reagálhat a hibák használható. |
+| error_description |Egy adott hibaüzenet, amelyek segítségével hitelesítési hiba kiváltó okának azonosításához. |
 
-A lehetséges hibakódok és ajánlott ügyfél válaszok ismertetését lásd: [engedélyezési végpont hibái hibakódok](#error-codes-for-authorization-endpoint-errors).
+Egy lehetséges hibakódok és ajánlott ügyfél válaszok ismertetését lásd: [hibakódok hitelesítési végpont hibák](#error-codes-for-authorization-endpoint-errors).
 
-Van egy engedélyezési kódot és az azonosító tokent, ha a felhasználó bejelentkezhet, és a nevében a hozzáférési jogkivonatok lekérésére. A felhasználó bejelentkezni ellenőrizni kell a Azonosítót jogkivonatban [leírtak pontosan](#validate-the-id-token). Ahhoz, hogy a hozzáférési jogkivonatok, kövesse a témakörben ismertetett a [OAuth-protokoll dokumentációját](active-directory-v2-protocols-oauth-code.md#request-an-access-token).
+Ha az engedélyezési kódot, és a egy azonosító jogkivonat, jelentkezzen be a felhasználó, és hozzáférési tokenek beszerzése a felhasználók nevében. A felhasználó a aláírásához, ellenőrizni kell az azonosító jogkivonat [leírtak szerint pontosan](#validate-the-id-token). Hozzáférési jogkivonatok beszerzéséhez kövesse az ismertetett lépéseket a [OAuth-protokoll dokumentációját](active-directory-v2-protocols-oauth-code.md#request-an-access-token).

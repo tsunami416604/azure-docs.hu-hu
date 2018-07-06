@@ -1,6 +1,6 @@
 ---
-title: Ismerkedés az Azure Data Lake Analytics U-SQL nyelv
-description: További tudnivalók az Azure Data Lake Analytics U-SQL nyelv alapjait.
+title: Az Azure Data Lake Analytics U-SQL nyelv – első lépések
+description: Ismerje meg az Azure Data Lake Analytics U-SQL nyelv az alapokat.
 services: data-lake-analytics
 author: saveenr
 ms.author: saveenr
@@ -10,29 +10,29 @@ ms.assetid: 57143396-ab86-47dd-b6f8-613ba28c28d2
 ms.service: data-lake-analytics
 ms.topic: conceptual
 ms.date: 06/23/2017
-ms.openlocfilehash: 2903046154808da5113f7b32a04bbfba254a07ae
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 2d6688524e396a6e36f6d7f293f2930598afaad1
+ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34623451"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37867283"
 ---
-# <a name="get-started-with-u-sql-in-azure-data-lake-analytics"></a>Ismerkedés az Azure Data Lake Analytics U-SQL
-U-SQL nyelven, hogy feltétlenül szükséges C#, így deklaratív SQL bármilyen léptékben adatok feldolgozása. U-SQL skálázható, elosztott lekérdezés funkció segítségével hatékonyan elemezheti adatok relációs áruházak, például az Azure SQL-adatbázis között. U-SQL, a strukturálatlan adatok feldolgozását olvassa el a séma alkalmazása és egyéni logika és a felhasználó által megadott függvények beszúrni. Ezenkívül a U-SQL, amely lehetővé teszi az részletes szabályozhatják, hogyan hajthat végre léptékű bővítési is. 
+# <a name="get-started-with-u-sql-in-azure-data-lake-analytics"></a>U-SQL-lel az Azure Data Lake Analytics használatának első lépései
+U-SQL nyelv, amely ötvözi az deklaratív SQL C-vel imperatív lehetővé teszi, hogy az bármilyen méretű adatok feldolgozása. U-SQL skálázható, elosztott lekérdezési képességek segítségével hatékonyan elemezheti adatok például az Azure SQL Database relációs adattárak között. Az U-SQL strukturált adatok feldolgozására olvasási séma alkalmazásának, és egyéni logikát és felhasználói függvények szúr be. Továbbá a U-SQL tartalmazza, amely felkínálja részletesen szabályozhatja, hogyan hajtható végre, ipari méretekben bővíthetőséget. 
 
-## <a name="learning-resources"></a>Képzési erőforrást
+## <a name="learning-resources"></a>Tanulási források
 
-* A [U-SQL-oktatóanyag](http://aka.ms/usqltutorial) egy részletes útmutató a U-SQL nyelv legtöbb biztosít. Ez a dokumentum olvasása az összes, aki a U-SQL további ajánlott.
-* További információk a **U-SQL nyelvi szintaxisát**, tekintse meg a [U-SQL nyelvi referencia](http://go.microsoft.com/fwlink/p/?LinkId=691348).
-* Megérteni a **U-SQL-Tervező alapvetően**, a Visual Studio blogbejegyzésből [bevezetéséről U-SQL – A nyelv, amely megkönnyíti, nagy adatfeldolgozási](https://blogs.msdn.microsoft.com/visualstudio/2015/09/28/introducing-u-sql-a-language-that-makes-big-data-processing-easy/).
+* A [U-SQL-oktatóanyag](http://aka.ms/usqltutorial) nyelve a U-SQL legtöbb részletes bemutatóját tartalmazza. Ebben a dokumentumban ajánlott minden fejlesztő, aki a U-SQL további olvasása.
+* További információk a **U-SQL nyelv szintaxisát**, tekintse meg a [U-SQL nyelvi referencia](http://go.microsoft.com/fwlink/p/?LinkId=691348).
+* Megérteni a **U-SQL-Tervező filozófia**, blogbejegyzésből a Visual Studio [bemutatása U-SQL – A nyelvet, amely a big Data jellegű adatok feldolgozása egyszerűen](https://blogs.msdn.microsoft.com/visualstudio/2015/09/28/introducing-u-sql-a-language-that-makes-big-data-processing-easy/).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Mielőtt továbblépne ebben a dokumentumban a U-SQL minták keresztül, olvassa el, és végezze el [oktatóanyag: Data Lake Tools for Visual Studio használatával fejlesztése U-SQL-parancsfájlok](data-lake-analytics-data-lake-tools-get-started.md). Hogy az oktatóanyag azt ismerteti, beállítás esetén az Azure Data Lake Tools for Visual Studio U-SQL használatával.
+Előtt ebben a dokumentumban a U-SQL-mintákat, olvassa el, és végezze el [oktatóanyag: U-SQL-parancsfájlok fejlesztése a Data Lake Tools for Visual Studio használatával](data-lake-analytics-data-lake-tools-get-started.md). Az oktatóanyag azt ismerteti, hogy beállítás esetén a U-SQL az Azure Data Lake Tools for Visual Studio használatával.
 
 ## <a name="your-first-u-sql-script"></a>Az első U-SQL-szkript
 
-Az alábbi U-SQL parancsfájl egyszerű, és sok szempontból nyelve a U-SQL vizsgálatát teszi lehetővé.
+Az alábbi U-SQL parancsfájl egyszerű, és lehetővé teszi, hogy bizonyos szempontokból az U-SQL nyelv vizsgálatát.
 
 ```
 @searchlog =
@@ -51,30 +51,30 @@ OUTPUT @searchlog
     USING Outputters.Csv();
 ```
 
-Ez a parancsfájl nem rendelkezik olyan átalakítása lépéseket. Emellett beolvassa a forrásfájl neve is `SearchLog.tsv`, schematizes, és kiírja a sorhalmaz vissza SearchLog-first-u-sql.csv nevű fájlba.
+Ez a szkript nem rendelkezik olyan Adatátalakítási lépéseket. A forrásfájl nevű olvas `SearchLog.tsv`schematizes, és a sorkészlet visszaírja SearchLog-first-u-sql.csv nevű fájlba.
 
-Figyelje meg a kérdéses az adatok mellett írja be a `Duration` mező. Ez azt jelenti, hogy a `Duration` mezője null értékű lehet.
+Figyelje meg, hogy a kérdéses adatok mellett írja be a `Duration` mező. Azt jelenti, hogy a `Duration` mező lehet null értékű.
 
 ### <a name="key-concepts"></a>Fő fogalmak
-* **A sorhalmaz változók**: minden lekérdezési kifejezés, amely létrehozza a sorhalmaz változó lehet hozzárendelni. U-SQL-T-SQL változó elnevezési mintát követi (`@searchlog`, például) a parancsfájlban.
-* A **KIBONTÁSA** kulcsszó fájlból olvassa be az adatokat, és határozza meg, olvassa el a séma. `Extractors.Tsv` a beépített U-SQL kivonatoló lapon tagolt fájlok van. Egyéni vagyis fejleszthet.
-* A **kimeneti** fájlba írja az adatokat a sorkészlet. `Outputters.Csv()` az egy beépített U-SQL outputter vesszővel tagolt fájl létrehozásához. Egyéni outputters fejleszthet.
+* **Sorhalmaz változók**: minden lekérdezési kifejezés, amely egy sorhalmaz változóhoz rendelhető. A T-SQL változó elnevezési mintát követi, U-SQL (`@searchlog`, például) a szkriptben.
+* A **KINYERÉSE** kulcsszó adatokat olvas be egy fájlt, és határozza meg, a séma olvasása. `Extractors.Tsv` van egy beépített U-SQL-információkinyerő lapon tagolt fájlok. Egyéni információkinyerők fejleszthet.
+* A **kimeneti** sorhalmaz adatokat ír egy fájlba. `Outputters.Csv()` van egy beépített U-SQL outputter, hozzon létre egy vesszővel tagolt fájlt. Egyéni kiírókra fejleszthet.
 
 ### <a name="file-paths"></a>Fájlok elérési útja
 
-A KIVONATOT, és a kimeneti utasítás elérési utat használja. Abszolút vagy relatív elérési útvonalat lehet:
+A KINYERÉSI, és a kimeneti utasítást használja a Fájlelérési utak. Fájlok elérési útja lehet abszolút vagy relatív:
 
-A következő fájl abszolút elérési út egy-egy Data Lake Store nevű fájlra hivatkozik `mystore`:
+A következő fájl abszolút elérési út hivatkozik egy fájlt egy Data Lake Store nevű `mystore`:
 
     adl://mystore.azuredatalakestore.net/Samples/Data/SearchLog.tsv
 
-A következő fájl elérési útját kezdődik-e `"/"`. Az alapértelmezett Data Lake Store-fiók egy fájlra vonatkozik:
+A következő fájl elérési útja kezdődik `"/"`. Az alapértelmezett Data Lake Store-fiók egy fájl hivatkozik:
 
     /output/SearchLog-first-u-sql.csv
 
 ## <a name="use-scalar-variables"></a>Skaláris változót használja.
 
-Skaláris változót is segítségével egyszerűbbé teszik a parancsfájl karbantartási. Az előző U-SQL-parancsfájlt is írhatók mint:
+Skaláris változókat is használhatja a parancsfájl karbantartási megkönnyítése. Az előző U-SQL parancsfájlt is írható mint:
 
     DECLARE @in  string = "/Samples/Data/SearchLog.tsv";
     DECLARE @out string = "/output/SearchLog-scalar-variables.csv";
@@ -94,9 +94,9 @@ Skaláris változót is segítségével egyszerűbbé teszik a parancsfájl karb
         TO @out
         USING Outputters.Csv();
 
-## <a name="transform-rowsets"></a>Átalakítás sorkészletek
+## <a name="transform-rowsets"></a>Sorkészletek átalakítása
 
-Használjon **válasszon** sorkészletek átalakítására:
+Használat **kiválasztása** sorkészletek átalakításához:
 
     @searchlog =
         EXTRACT UserId          int,
@@ -118,9 +118,9 @@ Használjon **válasszon** sorkészletek átalakítására:
         TO "/output/SearchLog-transform-rowsets.csv"
         USING Outputters.Csv();
 
-A WHERE záradékban használ egy [C# logikai kifejezés](https://msdn.microsoft.com/library/6a71f45d.aspx). A C# kifejezés nyelv segítségével a saját kifejezések és a funkciók. Összetettebb szűrés alkalmazásával logikai kötőszavak (jelölőnégyzetből) és disjunctions (ORs) még akkor is végrehajtható.
+A WHERE záradékban használt egy [C# logikai kifejezés](https://msdn.microsoft.com/library/6a71f45d.aspx). A C# kifejezés nyelve segítségével hajtsa végre a saját kifejezések és függvények. A logikai kötőszavak (Equal) és disjunctions (ORs) kombinálásával összetettebb szűrés még akkor is elvégezheti.
 
-Az alábbi parancsfájl a DateTime.Parse() metódus és a együtt használja.
+A következő parancsfájl DateTime.Parse() módszer és a egy együtt használja.
 
     @searchlog =
         EXTRACT UserId          int,
@@ -148,14 +148,14 @@ Az alábbi parancsfájl a DateTime.Parse() metódus és a együtt használja.
         USING Outputters.Csv();
 
  >[!NOTE]
- >A második lekérdezés eredménye az első sorhalmaz, és létrehozza a két szűrő összetett működik. Is felhasználhatja a változó nevét, és a nevek lexically hatóköre.
+ >A második lekérdezés eredménye az első sorhalmaz, amely létrehozza a két szűrő összetett működik. Is felhasználhatja a változó neve, és a nevek betűrendbe is meghatározhat.
 
 ## <a name="aggregate-rowsets"></a>Összesített sorkészletek
-U-SQL lehetővé teszi az ismerős ORDER BY, GROUP BY és összesítések.
+U-SQL biztosítja a jól ismert ORDER BY, GROUP BY, és összesítést.
 
-A következő lekérdezés a teljes időtartam talál régiónként, és ezután jeleníti meg az első öt időtartamok sorrendben.
+Az alábbi lekérdezés a teljes időtartam talál régiónként, és ezután megjeleníti az első öt időtartamok sorrendben.
 
-U-SQL sorkészletek nem őrzi meg a következő lekérdezés sorrendjét. Így egy output sorrendben kell ORDER BY hozzáadása a kimeneti kivonat:
+U-SQL-sorkészletek nem őrzi meg a következő lekérdezés sorrendjét. Így egy output sorrendben szüksége ORDER BY záradék hozzáadása a kimeneti kivonat:
 
     DECLARE @outpref string = "/output/Searchlog-aggregation";
     DECLARE @out1    string = @outpref+"_agg.csv";
@@ -195,9 +195,9 @@ U-SQL sorkészletek nem őrzi meg a következő lekérdezés sorrendjét. Így e
         ORDER BY TotalDuration DESC
         USING Outputters.Csv();
 
-A U-SQL ORDER BY záradék van szükség a FETCH záradék használatával válassza ki a kifejezésben.
+A U-SQL ORDER BY záradék szükséges, jelölje be a kifejezésben a FETCH záradék használatával.
 
-A U-SQL rendelkező záradékot a kimeneti korlátozása csoportokat, amelyek a HAVING feltételnek megfelelő használható:
+A U-SQL KELLENE záradékot a kimeneti korlátozhatja a csoportokat, amelyek megfelelnek a HAVING feltétel használható:
 
     @searchlog =
         EXTRACT UserId          int,
@@ -223,7 +223,7 @@ A U-SQL rendelkező záradékot a kimeneti korlátozása csoportokat, amelyek a 
         ORDER BY TotalDuration DESC
         USING Outputters.Csv();
 
-Speciális összesítő forgatókönyvek esetén dokumentációjában az U-SQL referencia [összesíteni, elemzési, és hivatkozzon funkciók](https://msdn.microsoft.com/library/azure/mt621335.aspx)
+Speciális összesítési forgatókönyvek esetén tekintse meg a U-SQL dokumentációja [összesítéséhez, elemzési és hivatkozási függvények](https://msdn.microsoft.com/library/azure/mt621335.aspx)
 
 ## <a name="next-steps"></a>További lépések
 * [A Microsoft Azure Data Lake Analytics áttekintése](data-lake-analytics-overview.md)

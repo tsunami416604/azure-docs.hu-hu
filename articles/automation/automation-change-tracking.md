@@ -10,12 +10,12 @@ ms.date: 03/15/2018
 ms.topic: conceptual
 manager: carmonm
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 79d64a5a7eb339c6904fe026209292202632f640
-ms.sourcegitcommit: 4597964eba08b7e0584d2b275cc33a370c25e027
+ms.openlocfilehash: 717cf6b2abfb529313699836b790bd3f07844a67
+ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37342011"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37867953"
 ---
 # <a name="track-changes-in-your-environment-with-the-change-tracking-solution"></a>Változások követése saját környezetében a Change Tracking megoldás
 
@@ -57,6 +57,7 @@ A következő lépések segítségével nyomon követésének konfigurálása Li
 |Rekurzió     | Meghatározza, hogy a rendszer rekurziót használjon-e a követni kívánt elem keresésekor.        |
 |Sudo használata     | Ez a beállítás határozza meg, hogy a rendszer sudót használjon-e az elem keresésekor.         |
 |Hivatkozások     | Ez a beállítás határozza meg a szimbolikus hivatkozások kezelésének módját, amikor áthaladnak a címtárakon.<br> **Hagyja figyelmen kívül** – mellőzi a szimbolikus hivatkozásokat, és nem tartalmazza a hivatkozott fájlokat/címtárakat.<br>**Hajtsa végre a** – követi a szimbolikus hivatkozásokat a rekurzió során, és szerepelteti a hivatkozott fájlokat/címtárakat.<br>**Kezelése** – követi a szimbolikus hivatkozásokat, és lehetővé teszi, hogy a visszaadott tartalom módosítása.     |
+|Töltse fel a fájlok tartalmát, hogy minden beállítás| Engedélyezi vagy letiltja az fájl tartalom feltöltése a nyomon követett módosításait. Az elérhető lehetőségek: **igaz** vagy **hamis**.|
 
 > [!NOTE]
 > A „Kezelés” használata nem ajánlott, mert a fájltartalom lekérése nem támogatott.
@@ -75,6 +76,13 @@ A következő lépéseket követve konfigurálja a fájlok nyomon követése a W
 |Elem neve     | A követendő fájl felhasználóbarát neve.        |
 |Csoport     | Fájlok logikai csoportosítására szolgáló csoportnév.        |
 |Elérési út megadása     | A fájl elérési útja, például: „c:\temp\myfile.txt”       |
+|Töltse fel a fájlok tartalmát, hogy minden beállítás| Engedélyezi vagy letiltja az fájl tartalom feltöltése a nyomon követett módosításait. Az elérhető lehetőségek: **igaz** vagy **hamis**.|
+
+## <a name="configure-file-content-tracking"></a>Fájl tartalma követési konfigurálása
+
+Megtekintheti a előtti és utáni módosítását a File Content Change Tracking egy fájl tartalmát. Ez érhető el a Windows és Linux-fájlok minden módosítása a fájlt, a fájl tartalmát a storage-fiókban tárolt, és bemutatja a fájl előtt és után a változás, a beágyazott vagy egymás mellett. További tudnivalókért lásd: [követett fájl tartalmának megtekintése](change-tracking-file-contents.md).
+
+![változások megtekintése egy fájlban](./media/change-tracking-file-contents/view-file-changes.png)
 
 ### <a name="configure-windows-registry-keys-to-track"></a>Nyomon követheti a Windows-beállításkulcsok konfigurálása
 

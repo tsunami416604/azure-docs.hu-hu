@@ -1,6 +1,6 @@
 ---
-title: Tartalom a Microsoft PlayReady vagy Apple FairPlay - Azure HLS védelme |} Microsoft Docs
-description: Ez a témakör áttekintést nyújt, és dinamikusan titkosítani a HTTP-Live Streaming (HLS) Apple FairPlay az Azure Media Services használatát ismerteti. Azt is bemutatja, hogyan használja a Media Services licenctovábbítási szolgáltatása képes biztosítani a FairPlay-licenc ügyfelek számára.
+title: HLS-tartalom a Microsoft PlayReady- vagy Apple FairPlay - Azure védelme |} A Microsoft Docs
+description: Ez a témakör áttekintést nyújt, és bemutatja, hogyan használható az Azure Media Services dinamikusan titkosítani a HTTP Live Streaming (HLS) az Apple fairplay által. Azt is bemutatja, hogyan használja a Media Services licenctovábbítási szolgáltatása FairPlay-licenc továbbítására az ügyfelek számára.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -13,134 +13,134 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/09/2017
 ms.author: juliako
-ms.openlocfilehash: fc3504f71af2f5e8f989a1d015ff78dda2c85d66
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 65188dacbb29fea5562ca5b83283861986719ce1
+ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33790684"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37866678"
 ---
-# <a name="protect-your-hls-content-with-apple-fairplay-or-microsoft-playready"></a>A tartalom Apple FairPlay vagy a Microsoft PlayReady HLS védelme
-Az Azure Media Services lehetővé teszi, hogy dinamikusan titkosítani a HTTP-Live Streaming (HLS) a következő formátum használatával:  
+# <a name="protect-your-hls-content-with-apple-fairplay-or-microsoft-playready"></a>HLS-tartalmak az Apple fairplay által vagy a Microsoft PlayReady védelme
+Az Azure Media Services lehetővé teszi, hogy dinamikusan titkosítani a HTTP Live Streaming (HLS) használatával a következő formátumok:  
 
-* **AES-128 boríték tiszta kulcsot**
+* **A boríték AES-128 titkosítatlan kulcs**
 
-    A teljes rendszer használatával titkosítja a **AES-128 CBC** mód. Az adatfolyam visszafejtése natív módon támogatott iOS és OS X-lejátszót. További információkért lásd: [AES-128 használata a dinamikus titkosítás és a kulcs kézbesítési szolgáltatás](media-services-protect-with-aes128.md).
-* **Apple FairPlay**
+    A teljes adattömbök használatával titkosítja a **AES-128 CBC** mód. A titkosítást a Stream natív módon támogatott iOS és OS X lejátszási szerint. További információkért lásd: [használó AES-128, a dinamikus titkosítás és kulcstovábbítást](media-services-protect-with-aes128.md).
+* **Az Apple FairPlay**
 
-    Az egyes video- és minták segítségével lettek titkosítva a **AES-128 CBC** mód. **FairPlay Streaming** (FPS) integrálva van az eszköz-operációsrendszerek, iOS és az Apple TV natív támogatását. OS x Safari FPS használatával a titkosított adathordozó-bővítmények (EME) felület támogatása lehetővé teszi.
-* **Microsoft PlayReady**
+    Az egyes video- és minták segítségével lettek titkosítva a **AES-128 CBC** mód. **FairPlay Streaming** (FPS) integrálva van az eszköz operációs rendszerének támogatást biztosít az iOS és az Apple TV. OS x-en a Safari FPS az Encrypted Media Extensions (EME) felületen támogatási segítségével teszi lehetővé.
+* **A Microsoft PlayReady**
 
-Az alábbi képen látható a **HLS + FairPlay vagy PlayReady a dinamikus titkosítás** munkafolyamat.
+Az alábbi képen látható a **HLS + FairPlay vagy a PlayReady, a dinamikus titkosítás** munkafolyamat.
 
-![A dinamikus titkosítás munkafolyamat diagramja](./media/media-services-content-protection-overview/media-services-content-protection-with-FairPlay.png)
+![A dinamikus titkosítás munkafolyamatának ábrája](./media/media-services-content-protection-overview/media-services-content-protection-with-FairPlay.png)
 
-Ez a cikk bemutatja, hogyan használja a Media Services dinamikus titkosítást az Apple FairPlay HLS tartalmaihoz. Azt is bemutatja, hogyan használja a Media Services licenctovábbítási szolgáltatása képes biztosítani a FairPlay-licenc ügyfelek számára.
+Ez a cikk bemutatja, hogyan használja a Media Services dinamikus titkosítást az Apple FairPlay a HLS-tartalmak. Azt is bemutatja, hogyan használja a Media Services licenctovábbítási szolgáltatása FairPlay-licenc továbbítására az ügyfelek számára.
 
 > [!NOTE]
-> Ha szeretné titkosítani a HLS a PlayReady, szeretné hozzon létre egy közös tartalomkulcsot, és rendelje hozzá azt az objektumot. Azt is konfigurálnia kell a tartalomkulcs hitelesítési szabályzatának, a [segítségével PlayReady a dynamic common encryption](media-services-protect-with-playready-widevine.md).
+> Ha szeretné is, a HLS-tartalmak playreadyvel, hozzon létre egy közös tartalomkulcsot, és társíthatja azt az objektumot szüksége. Emellett konfigurálnia kell a tartalomkulcs hitelesítési szabályzatának, leírtak szerint [PlayReady használatával a dynamic common encryption](media-services-protect-with-playready-widevine.md).
 >
 >
 
 ## <a name="requirements-and-considerations"></a>Követelmények és szempontok
 
-A következőkre szükség FairPlay titkosított HLS továbbítására, és képes biztosítani a FairPlay-licenc Media Services használata közben:
+A következőkre szükség, hogy a titkosított FairPlay HLS, és a FairPlay-licencek Media Services használata esetén:
 
   * Egy Azure-fiók. További részletek: [Ingyenes Azure-próbafiók](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A261C142F).
-  * Egy Media Services-fiók. Szeretne létrehozni egyet, lásd: [hozzon létre egy Azure Media Services-fiók az Azure portál használatával](media-services-portal-create-account.md).
-  * A regisztráció [Apple fejlesztési Program](https://developer.apple.com/).
-  * Apple szükséges a tartalom tulajdonosa az beszerzése a [központi telepítési csomag](https://developer.apple.com/contact/fps/). Adja meg, hogy már megvalósította a kulcs biztonsági modul (KSM) a Media Services, és a végső FPS csomag kérelmet. A végső FPS csomagban hitelesítésszolgáltató létrehozása, és szerezze be a titkos kulcs (?) utasításokat is. Kérje meg FairPlay konfigurálására használt.
+  * Egy Media Services-fiók. Hozzon létre egyet, tekintse meg [hozzon létre egy Azure Media Services-fiók az Azure portal használatával](media-services-portal-create-account.md).
+  * Regisztrálás a következővel [Apple fejlesztői programjában](https://developer.apple.com/).
+  * Apple szükséges a tartalom tulajdonosa beszerzése a [központi telepítési csomag](https://developer.apple.com/contact/fps/). Adja meg, hogy már megvalósította a kulcs biztonsági modul (KSM) a Media Services használatával, és, hogy a kért a végső FPS csomag. Nincsenek a végső FPS csomag létrehozása a hitelesítésszolgáltató, és szerezze be a titkos kulcs (?) témakör utasításait. Kérje meg a FairPlay konfigurálása használhatja.
   * Az Azure Media Services .NET SDK-verzió **3.6.0** vagy újabb.
 
-A következő műveleteket kell állítani a Media Services kulcs kézbesítési oldalon:
+A Media Services kulcskézbesítési oldalon be kell állítani a az alábbiakat:
 
-  * **Alkalmazás Cert (AC)**: egy .pfx-fájl, amely tartalmazza a titkos kulcsot. A fájl létrehozásához, és a titkosítás jelszóval.
+  * **Alkalmazás-tanúsítvány (AC)**: Ez az egy .pfx-fájlt, amely tartalmazza a titkos kulcsot. A fájl létrehozásához és a titkosítás, a jelszó.
 
-       A kulcs továbbítási szabályzatban konfigurálásakor meg kell adnia, hogy a jelszó és a .pfx fájl Base64 formátumban.
+       Egy kulcs objektumtovábbítási szabályzat konfigurálásakor meg kell adnia, hogy a jelszó és a .pfx-fájlt Base64 formátumban.
 
-      A következő lépések azt ismertetik, hogyan FairPlay .pfx tanúsítványfájl létrehozására:
+      Az alábbi lépések bemutatják, hogyan hozhat létre egy *.pfx formátumú tanúsítványfájlt a fairplay rendszerhez:
 
-    1. Telepítse a OpenSSL https://slproweb.com/products/Win32OpenSSL.html.
+    1. Telepítse az OpenSSL https://slproweb.com/products/Win32OpenSSL.html.
 
-        Nyissa meg azt a mappát, amelyben a FairPlay tanúsítvány és egyéb Apple kézbesítette fájlokat is.
-    2. Futtassa az alábbi parancsot a parancssorból. A .cer fájl konvertál egy .pem fájlt.
+        Lépjen abba a mappába, amelyeknél a FairPlay tanúsítvány és az Apple által biztosított egyéb fájlokat.
+    2. Futtassa az alábbi parancsot a parancssorból. A .cer fájl konvertál egy .pem fájlra.
 
-        "C:\OpenSSL-Win32\bin\openssl.exe" x509-der tájékoztatja-a FairPlay.cer-FairPlay-out.pem kimenő
-    3. Futtassa az alábbi parancsot a parancssorból. A titkos kulcsot tartalmazó .pfx fájlba alakítja a .pem fájl. OpenSSL majd felkéri, a .pfx fájlhoz tartozó jelszót.
+        "C:\OpenSSL-Win32\bin\openssl.exe" x509-tájékoztatja der-a FairPlay.cer-FairPlay-out.pem ki
+    3. Futtassa az alábbi parancsot a parancssorból. A titkos kulccsal is egy .pfx fájlba alakítja a .pem-fájlt. OpenSSL majd felkéri, a jelszót a .pfx fájl számára.
 
-        "C:\OpenSSL-Win32\bin\openssl.exe" pkcs12-exportálása - kimenő FairPlay-out.pfx-inkey privatekey.pem-FairPlay-out.pem - passin file:privatekey-pem-pass.txt a
-  * **Alkalmazás Cert jelszó**: A jelszót a .pfx fájl létrehozásához.
-  * **Alkalmazás Cert jelszó azonosítója**: a jelszó, hogyan azok feltölteni más Media Services kulcsok hasonló kell feltöltenie. Használja a **ContentKeyType.FairPlayPfxPassword** Felsorolásérték lekérni a Media Services-azonosító. Ez akkor szükséges a kulcs kézbesítési házirend-beállításként belül használja.
-  * **IV**: egy véletlenszerű érték 16 bájt. Meg kell egyeznie a iv az adategység továbbítási házirendjét. Ön hozza létre a iv, és mindkét helyen elhelyezi: az adategység továbbítási házirendjét és a kulcs kézbesítési házirend-beállításként.
-  * **Kérje meg**: Ez a kulcs érkezik, ha a hitelesítésszolgáltató létrehozásakor az Apple fejlesztői portáljáról használatával. Minden fejlesztési csapat kap egy egyedi kérje meg. A KÉRJEN másolatának mentése, és tárolja biztonságos helyen. Kérje meg beállítása később a Media Services FairPlayAsk kell.
-  * **Kérje meg azonosító**: Ez az azonosító kapjuk meg, kérje meg a Media Services feltöltésekor. Kérje meg a kell feltöltenie az **ContentKeyType.FairPlayAsk** számbavételi érték. Ennek eredményeképpen a Media Services Azonosítót ad vissza, és azt kell használni, ha a beállítás a kulcs kézbesítési házirend-beállításként.
+        "C:\OpenSSL-Win32\bin\openssl.exe" pkcs12-exportálás - FairPlay-out.pfx ki-inkey privatekey.pem – a FairPlay-out.pem - passin file:privatekey-pem-pass.txt
+  * **Alkalmazás tanúsítvány jelszava**: A jelszót a .pfx-fájl létrehozásához.
+  * **Alkalmazás-Cert jelszó megadása**: fel kell töltenie a jelszót, és hogyan feltöltik más Media Services kulcs hasonló. Használja a **ContentKeyType.FairPlayPfxPassword** Felsorolásérték lekérni, a Media Services-azonosító. Ez az, hogy mit kell használniuk a kulcskézbesítési házirend-beállításként belül.
+  * **IV**: Ez az 16 bájtos véletlenszerű értéket. Meg kell egyeznie a iv az adategység továbbítási házirendjét. Ön hozza létre a iv, és helyezze azt mindkét helyen: az adategység továbbítási házirendjét és a kulcskézbesítési házirend-beállításként.
+  * **Kérje meg**: ezt a kulcsot érkezik, amikor tanúsítványt generál az Apple fejlesztői portál használatával. Minden egyes fejlesztési csapat kap egy egyedi kérje meg. Másolat készítése a kérje meg a, és tárolja biztonságos helyen. Kérje meg FairPlayAsk később a Media Services-t konfigurálhatja kell.
+  * **Kérje meg azonosító**: Ez az azonosító kapjuk meg, kérje meg a Media Services szolgáltatásba való feltöltésekor. Fel kell töltenie használatával kérje meg a **ContentKeyType.FairPlayAsk** felsorolási érték. Ennek eredményeképpen a Media Services-Azonosítót ad vissza, és azt, hogy mit kell használni, amikor a kulcskézbesítési házirend beállítást.
 
-A következő műveleteket kell beállítania a FPS ügyféloldali:
+A következőkre FPS ügyféloldali be kell állítania:
 
-  * **Alkalmazás Cert (AC)**: egy.cer/.der fájl, amely tartalmazza a nyilvános kulcsot, amely néhány hasznos titkosítására használja az operációs rendszer. A Media Services kell tudnia, vagy mert a Windows Media Player van szükség. A kulcs kézbesítési szolgáltatás visszafejti a megfelelő titkos kulccsal.
+  * **Alkalmazás-tanúsítvány (AC)**: egy.cer/.der-fájl, amely tartalmazza a nyilvános kulcsot, amely néhány hasznos titkosításához használja az operációs rendszer. A Media Services kell ismernem, mert a a Windows Media Player. A kulcstovábbítást visszafejti a megfelelő titkos kulccsal.
 
-FairPlay titkosított adatfolyam lejátszását, első lekérni egy valódi kérje meg, és majd a valódi tanúsítvány jön létre. A folyamat minden három részből hoz létre:
+A FairPlay titkosított stream lejátszás, első beolvasása egy valódi kérje meg, és ezután hozza létre a tanúsítványnak valódi. A folyamat hoz létre minden három részből áll:
 
   * .der fájl
   * .pfx file
-  * a .pfx jelszavát
+  * a .pfx jelszava
 
-A következő ügyfelek támogatják a HLS **AES-128 CBC** titkosítási: OS X, az Apple TV IOS Safari böngésző.
+A következő ügyfelek támogatja a HLS- **AES-128 CBC** titkosítási: az OS X, az Apple TV, iOS Safari böngésző.
 
-## <a name="configure-fairplay-dynamic-encryption-and-license-delivery-services"></a>FairPlay dinamikus titkosítás és licenc licenctovábbítási szolgáltatások konfigurálása
-Az alábbi lépések általános FairPlay a eszközök védelmére, a Media Services licenctovábbítási szolgáltatása segítségével, valamint a dinamikus titkosítás használatával.
+## <a name="configure-fairplay-dynamic-encryption-and-license-delivery-services"></a>FairPlay a dinamikus titkosítás és a licenc licenctovábbítási szolgáltatások konfigurálása
+A következőkben általános lépéseket a FairPlay eszközök védelmére, a Media Services licenctovábbítási szolgáltatása használatával, valamint a dinamikus titkosítás segítségével.
 
 1. Hozzon létre egy objektumot, és töltse fel bele a fájlokat.
 2. Kódolja a fájlt tartalmazó objektumot az adaptív sávszélességű MP4 típusú beállításkészlettel.
 3. Hozzon létre egy tartalomkulcsot, és társítsa a kódolt objektumhoz.  
-4. Konfigurálja a tartalomkulcs hitelesítési szabályzatát. Adja meg az alábbiakat:
+4. Konfigurálja a tartalomkulcs hitelesítési szabályzatát. Adja meg a következőket:
 
    * A kézbesítési módszert (ebben az esetben az FairPlay).
-   * FairPlay házirend-beállítások konfigurálása. FairPlay konfigurálásával kapcsolatos részletekért lásd: a **ConfigureFairPlayPolicyOptions()** módszer az alábbi minta.
+   * FairPlay házirend-beállítások konfigurálása. További információ a FairPlay konfigurálása: a **ConfigureFairPlayPolicyOptions()** metódus az alábbi példában.
 
      > [!NOTE]
-     > Általában célszerű FairPlay házirend beállításainak konfigurálása csak egyszer, mert csak egy hitelesítő és egy KÉRJEN egy készletét van.
+     > Általában érdemes FairPlay házirend beállításainak konfigurálása csak egyszer, mert csak van egy tanúsítási és a egy kérje meg egy készletét.
      >
      >
-   * Korlátozások (nyitott vagy token).
-   * A kulcs kézbesítési típust, amely meghatározza, hogyan a kulcs kézbesítve lenne az ügyfél-specifikus adatait.
-5. Konfigurálja az adategység továbbítási házirendjét. A továbbítási szabályzat konfigurációjához tartalmazza:
+   * Korlátozások (nyitott vagy jogkivonat).
+   * A kulcskézbesítési típus, amely meghatározza, hogy a kulcsot a rendszer hogyan továbbítja az ügyfélnek-re vonatkozó információk.
+5. Az objektumtovábbítási szabályzat konfigurálása. A továbbítási szabályzat konfigurációjának tartalmazza:
 
    * A továbbítási protokoll (HLS).
-   * A dinamikus titkosítás (közös CBC titkosítás) típusú.
+   * A dinamikus titkosítás típusa (közös CBC encryption).
    * A licenc licenckérési URL-cím.
 
      > [!NOTE]
-     > Ha azt szeretné, hogy FairPlay és egy másik digitális tartalomvédelmi (DRM) rendszeren titkosított adatfolyam, hogy külön továbbítási házirendjeit konfigurálnia:
+     > Ha szeretne olyan adatfolyamra, amely a FairPlay és a egy másik digitális jogkezelési (DRM) rendszer titkosítva van, hogy külön kézbesítési házirendek konfigurálása:
      >
-     > * Egy IAssetDeliveryPolicy konfigurálása a dinamikus adaptív Streameléshez HTTP (DASH) a Common Encryption (CENC) (PlayReady + Widevine), és a PlayReady Smooth keresztül
-     > * Egy másik IAssetDeliveryPolicy HLS FairPlay konfigurálása
+     > * Egy IAssetDeliveryPolicy dinamikus adaptív Streamelés konfigurálása HTTP (DASH) az általános titkosítás (CENC) (PlayReady és Widevine), valamint zökkenőmentes playreadyvel
+     > * Egy másik IAssetDeliveryPolicy konfigurálása FairPlay a HLS Protokollhoz
      >
      >
 6. Hozzon létre egy OnDemand-lokátort a streamelési URL-cím lekéréséhez.
 
-## <a name="use-fairplay-key-delivery-by-player-apps"></a>FairPlay kulcs kézbesítési player alkalmazások használatát
-Az IOS SDK player alkalmazásokat fejleszthet. Nem fogja tudni FairPlay tartalom lejátszása, be kell megvalósítani a licenc exchange protokoll. Ez a protokoll Apple nincs megadva. Esetén a minden alkalmazás kulcs kézbesítési kérelem küldése. A Media Services FairPlay kulcs kézbesítési szolgáltatás vár a SPC lesz üzenetként www-form-url kódolt feladás egy vagy több, a következő formában:
+## <a name="use-fairplay-key-delivery-by-player-apps"></a>Használja a FairPlay kulcskézbesítési lejátszó alkalmazások által
+Az iOS SDK használatával is fejleszthet alkalmazásokat player. Hogy a FairPlay lejátszani, kell megvalósítani a licenc az exchange-protokollt. Ez a protokoll nem adott meg az Apple. Esetén a minden alkalmazás kulcskézbesítési kérelem küldése. A Media Services FairPlay kulcstovábbítást vár a SPC lesz, mint egy www-form-url kódolt üzenet közzététele, a következő formátumban:
 
     spc=<Base64 encoded SPC>
 
 > [!NOTE]
-> Az Azure Media Player FairPlay lejátszását támogatja. Lásd: [Azure Media Player dokumentáció](https://amp.azure.net/libs/amp/latest/docs/index.html) további tájékoztatást talál.
+> Az Azure Media Player támogatja a FairPlay lejátszási. Lásd: [dokumentáció az Azure Media Player](https://amp.azure.net/libs/amp/latest/docs/index.html) találhat további információt.
 >
 >
 
 ## <a name="streaming-urls"></a>Streamelési URL-ek
-Ha az objektum egynél több DRM lett titkosítva, egy titkosítási címke használjon az adatfolyam-továbbítási URL-cím: (formátum = "m3u8-aapl" titkosítási = "xxx").
+Ha egynél több DRM-az eszköz titkosítva van, a streamelési URL-címben egy titkosítási címke használja: (formátum = "m3u8-aapl" titkosítási = "xxx").
 
-A következők érvényesek:
+A következő szempontokat kell figyelembe venni:
 
 * Csak nulla vagy egy titkosítási típus adható meg.
-* A titkosítási típus nem kell az URL-cím adható meg, ha csak egy titkosítási alkalmazta az eszközhöz.
-* A titkosítási típus-és nagybetűket.
-* A következő titkosítási típusok adhatók meg:  
-  * **cenc**: Common encryption (PlayReady vagy Widevine)
+* A titkosítási típus nem kell az URL-cím adható meg, ha csak az eszköz egy titkosítási lett alkalmazva.
+* A titkosítási típus megkülönbözteti a kis-és nagybetű nincs megkülönböztetve.
+* A következő titkosítási típusok adható meg:  
+  * **cenc**: általános titkosítás (PlayReady vagy Widevine)
   * **cbcs-aapl**: FairPlay
-  * **CBC**: AES envelope titkosítás
+  * **CBC**: boríték AES-titkosítás
 
 ## <a name="create-and-configure-a-visual-studio-project"></a>Egy Visual Studio-projekt létrehozása és konfigurálása
 
@@ -154,7 +154,7 @@ A következők érvényesek:
 
 ## <a name="example"></a>Példa
 
-A következő példa bemutatja teszi a Media Services használatát a FairPlay titkosított tartalom. Ez a funkció az Azure Media Services SDK bevezetett a .NET-hez 3.6.0 verziója. 
+A következő minta bemutatja, hogyan képes a FairPlay titkosított tartalmat a Media Services használatával. Ez a funkció az Azure Media Services SDK for .NET 3.6.0-ás jelent. 
 
 Írja felül a Program.cs fájlban található kódot az itt látható kóddal.
 
@@ -249,7 +249,7 @@ namespace DynamicEncryptionWithFairPlay
                 TokenRestrictionTemplate tokenTemplate =
                     TokenRestrictionTemplateSerializer.Deserialize(tokenTemplateString);
 
-                // Generate a test token based on the the data in the given TokenRestrictionTemplate.
+                // Generate a test token based on the data in the given TokenRestrictionTemplate.
                 // Note, you need to pass the key id Guid because we specified
                 // TokenClaim.ContentKeyIdentifierClaim in during the creation of TokenRestrictionTemplate.
                 Guid rawkey = EncryptionUtils.GetKeyIdAsGuid(key.Id);

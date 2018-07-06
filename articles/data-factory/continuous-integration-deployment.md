@@ -1,6 +1,6 @@
 ---
-title: Folyamatos integrációt és üzembe helyezés az Azure Data Factory |} Microsoft Docs
-description: Megtudhatja, hogyan folyamatos integrációt és telepítést segítségével adat-előállító adatcsatornák áthelyezése (fejlesztési, tesztelési, éles) egyik környezetből a másikba.
+title: Folyamatos integráció és üzembe helyezés az Azure Data Factoryban |} A Microsoft Docs
+description: Ismerje meg, hogyan folyamatos integráció és készregyártás használatával helyezze át a Data Factory-folyamatok (fejlesztési, tesztelési és éles környezetben) egyik környezetből a másikba.
 services: data-factory
 documentationcenter: ''
 author: douglaslMS
@@ -12,76 +12,76 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/18/2018
 ms.author: douglasl
-ms.openlocfilehash: febd43586ab3006303143ca04ce8a37941a6fd60
-ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
+ms.openlocfilehash: ee01980229495d9b3f372ec85ee874955c291e5c
+ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36268163"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37868320"
 ---
-# <a name="continuous-integration-and-deployment-in-azure-data-factory"></a>Folyamatos integrációt és üzembe helyezés az Azure Data Factory
+# <a name="continuous-integration-and-deployment-in-azure-data-factory"></a>Folyamatos integráció és üzembe helyezés az Azure Data Factoryban
 
-Folyamatos integrációt az eljárást minden módosításakor azelőtt tesztelése a codebase automatikusan és a lehető leghamarabb. Folyamatos üzembe helyezés követi a tesztelés folyamatos integráció során történik, és leküldéses értesítések módosításokat egy átmeneti vagy üzemi rendszerre.
+Folyamatos integráció az eljárás a tesztelési minden módosítás történik az automatikusan és a lehető leghamarabb kódbázis. Folyamatos üzembe helyezés követi a tesztelés, amely történik a folyamatos integráció során, majd leküldi a módosítások egy átmeneti és éles rendszerbe.
 
-Az Azure Data Factory folyamatos integrációt és a központi telepítés azt jelenti, hogy a másikra a környezetek (fejlesztési, tesztelési, éles) mozgó adat-előállító adatcsatornák. Ehhez az folyamatos integrációt és telepítése, használata Data Factory UI integration Azure Resource Manager-sablonok. A Data Factory felhasználói felület hozhat létre a Resource Manager-sablon, amikor kiválaszt a **ARM-sablon** beállítások. Ha bejelöli **exportálása ARM-sablon**, a portál létrehozza a Resource Manager-sablon az adat-előállító és a kapcsolatok karakterláncok és más paramétereket tartalmazó konfigurációs fájlt. Majd kell létrehoznia egy konfigurációs fájl (fejlesztési, tesztelési, éles) környezetben. A fő Resource Manager sablon fájlt a környezetek változatlan marad.
+Az Azure Data Factoryhoz folyamatos integráció és üzembe helyezés azt jelenti, hogy a másikra történő áthelyezésének Data Factory-folyamatok az egyik környezetből (fejlesztési, tesztelési és éles környezetben). Ehhez a folyamatos integráció és üzembe helyezés, Azure Resource Manager-sablonok a Data Factory felhasználói felülete integrációs használhatja. A Data Factory felhasználói felülete egy Resource Manager-sablont hozhat létre, kiválasztásakor a **ARM-sablon** beállítások. Ha bejelöli **exportálása ARM-sablon**, a portál létrehozza a Resource Manager-sablon a data factory és a egy konfigurációs fájl, amely tartalmazza az összes kapcsolat-karakterlánc és más paramétereket. Akkor rendelkezik az egyes környezetekhez (fejlesztési, tesztelési és éles környezetben) egy konfigurációs fájl létrehozása céljából. A fő Resource Manager-sablonfájl minden környezet esetében ugyanaz marad.
 
-Kilenc perces bevezető és a szolgáltatás bemutató tekintse meg a következő videót:
+A 9 perces bevezető és a funkció bemutatójáért tekintse meg a következő videót:
 
 > [!VIDEO https://channel9.msdn.com/Shows/Azure-Friday/Continuous-integration-and-deployment-using-Azure-Data-Factory/player]
 
-## <a name="create-a-resource-manager-template-for-each-environment"></a>Minden környezet Resource Manager sablon létrehozása
-Válassza ki **exportálása ARM-sablon** a data factory a fejlesztési környezetet az erőforrás-kezelő sablonjának exportálása.
+## <a name="create-a-resource-manager-template-for-each-environment"></a>Az egyes környezetekhez Resource Manager-sablon létrehozása
+Válassza ki **exportálása ARM-sablon** a Resource Manager-sablon a fejlesztési környezetben a data Factory exportálása.
 
 ![](media/continuous-integration-deployment/continuous-integration-image1.png)
 
-Ezután nyissa meg a teszt adat-előállító és a termelési adat-előállítót, és válassza **importálási ARM-sablon**.
+Ezután nyissa meg a teszt a data factory és az éles környezetben a data factory, majd válassza ki **importálás ARM-sablon**.
 
 ![](media/continuous-integration-deployment/continuous-integration-image2.png)
 
-Ez a művelet viszi az Azure-portálon, ahol az exportált sablon importálhatja. Válassza ki **a szerkesztőben saját sablon létrehozása** , majd **fájl betöltése** , és válassza ki a létrehozott erőforrás-kezelő sablont. Adja meg a beállításokat, és az adat-előállító és a teljes folyamat importálva van az éles környezetben.
+Ez a művelet megnyílik az Azure Portalon, ahol az exportált sablon importálhatja. Válassza ki **a szerkesztőben saját sablon készítése** , majd **fájl betöltése** , és válassza ki a létrehozott Resource Manager-sablont. Adja meg a beállításokat, és a data factory és a teljes folyamat importálása az éles környezetben.
 
 ![](media/continuous-integration-deployment/continuous-integration-image3.png)
 
 ![](media/continuous-integration-deployment/continuous-integration-image4.png)
 
-Válassza ki **fájl betöltése** jelölje ki az exportált Resource Manager-sablon, majd adja meg az összes konfigurációs értékeket (például összekapcsolt szolgáltatások).
+Válassza ki **fájl betöltése** válassza ki az exportált Resource Manager-sablont, és adja meg az összes konfigurációs értékeket (például a társított szolgáltatások).
 
 ![](media/continuous-integration-deployment/continuous-integration-image5.png)
 
-## <a name="continuous-integration-lifecycle"></a>Folyamatos integrációt életciklusa
-Ez a teljes életciklusa folyamatos integrációt és a központi telepítést, amelyet használhat a Data Factory felhasználói felületén VSTS GIT integráció engedélyezése után:
+## <a name="continuous-integration-lifecycle"></a>Folyamatos integráció életciklusa
+Itt van a folyamatos integráció és üzembe helyezés, amelyekkel a teljes életciklusát a Data Factory felhasználói felületén VSTS GIT-integráció engedélyezése után:
 
-1.  Állítsa be a fejlesztési VSTS, amelyben az összes adat-előállító erőforrásokhoz, mint a folyamatok, adatkészletek és így tovább hozhat létre az adat-előállítóban.
+1.  Állítsa be a fejlesztési adat-előállító a vsts-sel, amelyben minden fejlesztő hozhat létre Data Factory-erőforrások, például folyamatokat, adatkészletek és így tovább.
 
-2.  A fejlesztők majd módosíthatja az erőforrások, például a folyamatok. Mivel ezeket a módosításokat, és kiválaszthatja, melyik **Debug** hogyan fut, a feldolgozási sor a legutóbbi módosítások megtekintéséhez.
+2.  A fejlesztők ezután módosíthatja az erőforrások, például folyamatokat. Mivel ezek a módosításokat, és kiválaszthatja **Debug** hogyan a folyamatfuttatások a legutóbbi módosítások megtekintéséhez.
 
-3.  Után fejlesztők elégedett a módosításokat, akkor létrehozhat egy lekérési kérelmet a fiókiroda lekérni a módosításokat társak vizsgálja felül a főágba (vagy az együttműködés ág).
+3.  A fejlesztők elégedett a módosításokat, miután is létrehozhatnak lekéréses kérelmek azok ágból beolvasni a társaknak véleményező módosításokat a master ággal (vagy az együttműködési ág).
 
-4.  Miután módosítások vannak a főágba, azokat is közzéteheti a fejlesztési gyári kiválasztásával **közzététel**.
+4.  Változások a főágban van, miután azok is közzéteheti a fejlesztési gyári kiválasztásával **közzététel**.
 
-5.  Amikor a csapat lépteti elő a teszt gyári és a termelési gyári módosításait készen áll, exportálhatja a Resource Manager-sablon a főágba, vagy bármely más fiókja abban az esetben, ha a főágba készít az élő fejlesztési adat-Előállítóban.
+5.  Ha készen áll a módosítások a teszt factory és az éles előállító előléptetése a csapat, akkor exportálhatja a Resource Manager-sablon a master ágról, vagy bármely más ágból abban az esetben a "master" ága biztonsági mentést készít az élő fejlesztése a Data Factory.
 
-6.  Az exportált Resource Manager-sablon üzembe helyezhetők a teszt gyári és a termelési gyári különböző paraméterfájlt.
+6.  Az exportált Resource Manager-sablon különböző paraméterfájlokkal a teszt factory és az éles előállító is telepíthető.
 
-## <a name="automate-continuous-integration-with-vsts-releases"></a>Folyamatos integrációt VSTS kiadásainak automatizálásához
+## <a name="automate-continuous-integration-with-vsts-releases"></a>Folyamatos integráció a VSTS-kiadások automatizálása
 
-Az alábbiakban egy VSTS-Feloldás beállítása, úgy automatizálható, hogy egy adat-előállító több környezetekben való központi telepítésének lépéseit.
+Az alábbiakban a lépések a VSTS-kiadási beállításához, adat-előállító több környezethez való telepítésének automatizálásához.
 
-![Folyamatos integráció a VSTS ábrája](media/continuous-integration-deployment/continuous-integration-image12.png)
+![Folyamatos integráció, a vsts-sel ábrája](media/continuous-integration-deployment/continuous-integration-image12.png)
 
 ### <a name="requirements"></a>Követelmények
 
--   Azure-előfizetés csatolva a Team Foundation Server vagy a VSTS használja a [ *Azure Resource Manager szolgáltatási végpont*](https://docs.microsoft.com/vsts/build-release/concepts/library/service-endpoints#sep-azure-rm).
+-   Egy Azure-előfizetéshez kapcsolódó Team Foundation Server vagy a VSTS használatával a [ *Azure Resource Manager-szolgáltatásvégpont*](https://docs.microsoft.com/vsts/build-release/concepts/library/service-endpoints#sep-azure-rm).
 
--   A Data Factory VSTS git konfigurálva.
+-   VSTS Git konfigurált rendelkező Data Factoryt.
 
 -   Egy [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) tartalmazó a titkos kulcsok.
 
-### <a name="set-up-a-vsts-release"></a>A VSTS-Feloldás beállítása
+### <a name="set-up-a-vsts-release"></a>Egy VSTS-kiadási beállítása
 
-1.  Nyissa meg az ugyanabban a projektben megegyezik a konfigurálva a Data Factory VSTS oldalát.
+1.  Nyissa meg a VSTS-oldalát, azzal, az adat-előállító konfigurált ugyanabban a projektben.
 
-2.  Kattintson a felső menüben **összeállítása, és felszabadíthatja a** &gt; **kiadásokban** &gt; **létrehozás kiadás definition**.
+2.  Kattintson a felső menüben **készítése és kiadása** &gt; **kiadásokban** &gt; **kiadási definíció létrehozása**.
 
     ![](media/continuous-integration-deployment/continuous-integration-image6.png)
 
@@ -89,41 +89,41 @@ Az alábbiakban egy VSTS-Feloldás beállítása, úgy automatizálható, hogy e
 
 4.  Adja meg a környezet nevét.
 
-5.  A Git-összetevő hozzáadása, és válassza ki az egyazon adattárban konfigurálva a Data Factory. Válasszon `adf_publish` , az alapértelmezett ág legújabb alapértelmezett verziójával.
+5.  A Git-összetevő hozzáadása, és válassza ki az adat-előállító konfigurálva az egyazon adattárban. Válasszon `adf_publish` , az alapértelmezett ággal alapértelmezett legújabb verziójával.
 
     ![](media/continuous-integration-deployment/continuous-integration-image7.png)
 
-7.  Adja hozzá az Azure Resource Manager központi telepítési feladatot:
+7.  Egy Azure Resource Manager üzembe helyezési feladat hozzáadása:
 
-    a.  Új feladatot létrehozni, keresse meg **Azure erőforrás-csoport központi telepítésének**, majd vegye fel azt.
+    a.  Új feladat létrehozása, keressen rá a **Azure erőforráscsoport-telepítés**, és adja hozzá.
 
-    b.  A központi telepítési feladatot válassza ki az előfizetést, erőforráscsoport és a Data Factory cél helyét, és adja meg a hitelesítő adatokat, ha szükséges.
+    b.  A központi telepítési feladatot válassza ki az előfizetést, erőforráscsoportot és a célként megadott adat-előállító helyét, és szükség esetén adja meg a hitelesítő adatokat.
 
-    c.  Válassza ki a **létrehozás vagy frissítés erőforráscsoport** művelet.
+    c.  Válassza ki a **erőforráscsoport létrehozásának vagy frissítésének** művelet.
 
-    d.  Válassza ki **...** az a **sablon** mező. Tallózással keresse meg a Resource Manager-sablon (*ARMTemplateForFactory.json*), amely a portál a közzététel művelet hozta létre. Ez a fájl a mappában keres `<FactoryName>` , a `adf_publish` ág.
+    d.  Válassza ki **...** az a **sablon** mező. Keresse meg a Resource Manager-sablon (*ARMTemplateForFactory.json*), amely a közzététel a portál által létrehozott. Keresse meg a fájl a mappában `<FactoryName>` , a `adf_publish` ágat.
 
-    e.  Hajtsa végre ugyanezt a paraméterfájlban. Válassza ki a megfelelő fájlt, attól függően, hogy létrehozott egy másolatot, vagy az alapértelmezett fájl használata *ARMTemplateParametersForFactory.json*.
+    e.  Hajtsa végre ugyanezt a paramétereket tartalmazó fájlt. Válassza ki a megfelelő fájlt, attól függően, hogy létrehozott egy másolatot, vagy használja az alapértelmezett fájl *ARMTemplateParametersForFactory.json*.
 
-    f.  Válassza ki **...** mellett a **sablon paraméterének** mezőben, majd töltse ki a cél adat-előállító vonatkozó információkat. A hitelesítő adatokat, amelyeket a kulcstároló, a titkos kulcs ugyanazt a nevet használja a következő formátumban: feltéve, hogy a titkos kulcs neve van `cred1`, adja meg `"$(cred1)"` (ajánlatok) között.
+    f.  Válassza ki **...** mellett a **Sablonparaméterek felülbírálása** mezőben, majd töltse ki a cél a Data Factory az információkat. A hitelesítő adatokat, amelyeket a key vaultban, használja ugyanazt a nevet a titkos kulcsot a következő formátumban: Ha a titkos kód nevét `cred1`, adja meg `"$(cred1)"` (idézőjelek) között.
 
     ![](media/continuous-integration-deployment/continuous-integration-image9.png)
 
-8.  A kiadási definíció mentése.
+8.  A kiadási definíció mentéséhez.
 
-9.  Ebben a kiadásban definícióból új verziót kell létrehoznia.
+9.  Hozzon létre egy új kiadása, a kiadási definíció.
 
     ![](media/continuous-integration-deployment/continuous-integration-image10.png)
 
-### <a name="optional---get-the-secrets-from-azure-key-vault"></a>Nem kötelező – a titkos kulcsok lekérése az Azure Key Vault
+### <a name="optional---get-the-secrets-from-azure-key-vault"></a>Nem kötelező – a titkos kulcsok lekérése az Azure Key vault
 
-Ha titkos kulcsok Azure Resource Manager sablon továbbítani, azt javasoljuk, az Azure Key Vault VSTS számára készült kiadásával.
+Ha rendelkezik egy Azure Resource Manager-sablonban adja át a titkos kulcsokat, javasoljuk, az Azure Key Vault használata a VSTS-kiadási.
 
 A titkos kulcsok kezeléséhez két módja van:
 
-1.  Adja hozzá a titkos kulcsok paraméterek fájlba. További információk: [használja az Azure Key Vault üzembe helyezése során biztonságos paraméterérték átadni](../azure-resource-manager/resource-manager-keyvault-parameter.md).
+1.  Adja hozzá a titkos kulcsok paramétereket tartalmazó fájlt. További információ: [használata Azure Key Vaultban történő biztonságos paraméter értéke továbbítása üzembe helyezés során](../azure-resource-manager/resource-manager-keyvault-parameter.md).
 
-    -   Másolatot készít a paraméterfájlban a közzététel fiókirodai feltöltött, és adja meg a paraméterek le szeretné kérdezni a kulcstároló, az alábbi formátumban:
+    -   Másolatot készít a paramétereket tartalmazó fájlt, amely a közzététel ág töltenek fel, és állítsa az értékeket a paraméterek szeretné megkapni a key vaulttal és a következő formátumban:
 
     ```json
     {
@@ -140,29 +140,29 @@ A titkos kulcsok kezeléséhez két módja van:
     }
     ```
 
-    -   Ha ezt a módszert használja, a titkos kulcs van lekért a key vault automatikusan.
+    -   Ha ezt a módszert használja, a titkos kulcs lehívja a key vaultban tárolt automatikusan.
 
-    -   A paraméterek fájlnak kell lennie a közzététel ágában is.
+    -   A paraméterfájl kell lennie, valamint a közzététel ágban.
 
-2.  Adja hozzá egy [Azure Key Vault feladat](https://docs.microsoft.com/vsts/build-release/tasks/deploy/azure-key-vault) előtt az előző szakaszban leírt Azure Resource Manager üzembe helyezéséhez:
+2.  Adjon hozzá egy [Azure Key Vault feladat](https://docs.microsoft.com/vsts/build-release/tasks/deploy/azure-key-vault) az előző szakaszban ismertetett Azure Resource Manager üzembe helyezése előtt:
 
-    -   Válassza ki a **feladatok** lapra, hozzon létre egy új feladatot, keressen **Azure Key Vault** , és adja hozzá.
+    -   Válassza ki a **feladatok** lapon, hozzon létre egy új feladatot, keressen rá a **Azure Key Vault** , és adja hozzá.
 
-    -   A Key Vault tevékenységhez, válassza ki az előfizetést, amelyben a kulcstartót létrehozó, adjon meg hitelesítő adatokat, ha szükséges, és válassza a a key vault.
+    -   A Key Vault a feladatban az előfizetés, amelyben létrehozta a key vaultban, és adja meg hitelesítő adatait, ha szükséges, és válassza a key vaultban.
 
     ![](media/continuous-integration-deployment/continuous-integration-image8.png)
 
-### <a name="grant-permissions-to-the-vsts-agent"></a>A hozzáférési jogot a VSTS-ügynökök
-Az Azure Key Vault feladat megtagadta a hozzáférést az első alkalommal sikertelen lehet. A kiadás a naplók letöltéséhez, és keresse meg a `.ps1` fájl engedélyeket adhat a VSTS-ügynökök paranccsal. A parancs futtatható közvetlenül, vagy az egyszerű azonosító átmásolni a fájlt, és adja hozzá manuálisan a hozzáférési házirendben az Azure-portálon. (*Beolvasása* és *lista* rendszer szükséges minimális engedélyeket).
+### <a name="grant-permissions-to-the-vsts-agent"></a>Engedélyek megadása a VSTS-ügynök
+Az Azure Key Vault-tevékenység az első alkalommal a hozzáférés megtagadva hiba miatt sikertelen lehet. A kiadás a naplók letöltéséhez, és keresse meg a `.ps1` fájlt a paranccsal a VSTS-ügynök engedélyt. Futtathatja a parancsot közvetlenül, vagy a résztvevő-azonosító átmásolhatja a fájlt, és manuálisan adja hozzá a hozzáférési szabályzat az Azure Portalon. (*Első* és *lista* rendszer szükséges minimális engedélyeket).
 
 ### <a name="update-active-triggers"></a>Aktív eseményindítók frissítése
-Központi telepítés sikertelen lehet, ha aktív eseményindítók frissíti. Aktív eseményindítók frissítéséhez szükség manuális őket, és elindítja azokat a telepítés után. Erre a célra az Azure Powershell feladat adhat hozzá a következő példában látható módon:
+Központi telepítés is sikertelen, ha aktív eseményindítók frissíti. Aktív eseményindítók frissítéséhez szüksége manuális állítják őket, és indítsa el őket az üzembe helyezés után. Erre a célra az Azure PowerShell-lel feladat adhat hozzá az alábbi példában látható módon:
 
-1.  A feladatok lapon a VSTS-kiadás, keresse meg a **Azure Powershell** , és adja hozzá.
+1.  A VSTS-kiadási tevékenységek lapján keresse meg **Azure PowerShell-lel** , és adja hozzá.
 
-2.  Válasszon **Azure Resource Manager** kapcsolattal írja be, és jelölje ki az előfizetését.
+2.  Válasszon **Azure Resource Manager** kapcsolatként írja be, és válassza ki az előfizetését.
 
-3.  Válasszon **beágyazott parancsfájlja** a parancsfájlként írja be, és adja meg a kódot. A következő példakód leállítja az eseményindítók:
+3.  Válasszon **beágyazott parancsfájlja** szkriptet írja be, és adja meg a kódot. A következő példa leállítja az eseményindítók:
 
     ```powershell
     $triggersADF = Get-AzureRmDataFactoryV2Trigger -DataFactoryName $DataFactoryName -ResourceGroupName $ResourceGroupName
@@ -172,15 +172,15 @@ Központi telepítés sikertelen lehet, ha aktív eseményindítók frissíti. A
 
     ![](media/continuous-integration-deployment/continuous-integration-image11.png)
 
-Hasonló lépésekkel és a hasonló kód használata (a a `Start-AzureRmDataFactoryV2Trigger` függvény) való telepítést követően újraindítható az eseményindítók.
+Hasonló lépésekkel és a hasonló kóddal (az a `Start-AzureRmDataFactoryV2Trigger` függvény) a telepítést követően újraindítható az eseményindítók.
 
-## <a name="sample-template-and-script"></a>Minta sablon és a parancsfájl
-Az alábbiakban a két minta használatába folyamatos integrációt és telepítést a Data Factory használható:
+## <a name="sample-template-and-script"></a>Mintasablon és parancsfájl
+Két mintát, amely segítségével folyamatos integrációt és üzembe helyezést, a Data Factory használatának első lépései a következők:
 
--   Példa a központi telepítési sablont, amelyet importálhat a VSTS.
--   Ezután elindítja a egy minta parancsfájlt eseményindítók központi telepítés előtt állítsa le és indítsa újra. A parancsfájl törli az erőforrást, amelyek el lettek távolítva a kódot is.
+-   Példa a központi telepítési sablont, amelyet importálhat a vsts-ben.
+-   Egy mintaszkriptet eseményindítók telepítés előtt állítsa le, és ezt követően indítsa újra az eseményindítók. A parancsfájl is tartalmaz a kódot, és törölje az erőforrást, amelyek el lettek távolítva.
 
-Íme egy minta központi telepítési sablont, amelyet importálhat a VSTS.
+Íme egy példa központi telepítési sablont, amelyet importálhat a vsts-ben.
 
 ```json
 {
@@ -718,7 +718,7 @@ Az alábbiakban a két minta használatába folyamatos integrációt és telepí
 }
 ```
 
-Íme egy minta parancsfájlt eseményindítók központi telepítés előtt állítsa le, és ezt követően indítsa újra az eseményindítók:
+Itt látható egy minta parancsfájlt eseményindítók telepítés előtt állítsa le, és ezt követően indítsa újra az eseményindítók:
 
 ```powershell
 param
@@ -794,3 +794,94 @@ else {
     $deletedintegrationruntimes | ForEach-Object { Remove-AzureRmDataFactoryV2IntegrationRuntime -Name $_.Name -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Force }
 }
 ```
+
+## <a name="use-custom-parameters-with-the-resource-manager-template"></a>Egyéni paraméterek használata a Resource Manager-sablon
+
+A Resource Manager-sablon egyéni paraméterek határozhatja meg. Rendelkezik egy fájlt a `arm-template-parameters-definition.json` a tárház gyökérmappájában. (A fájl nevének egyeznie kell a név pontosan az itt látható.) A Data Factory megpróbálja beolvasni a fájlt, bármelyik ágból az éppen dolgozik, ne csak az együttműködés ágból. Ha nincs fájl található, a Data Factory használ alapértelmezett definíciókat.
+
+Az alábbi példa bemutatja egy minta paramétereket tartalmazó fájlt. Referenciaként a minta használatával hozza létre a saját egyéni paramétereket tartalmazó fájlt. Ha Ön a fájl nem a megfelelő JSON formátumban, a Data Factory kimenete egy a böngészőbeli konzolon megjelenő hibaüzenet, és visszaáll az alapértelmezett definíciókat a Data Factory felhasználói felületén látható.
+
+```json
+{
+    "Microsoft.DataFactory/factories/pipelines": {},
+    "Microsoft.DataFactory/factories/integrationRuntimes": {
+        "properties": {
+            "typeProperties": {
+                "ssisProperties": {
+                    "catalogInfo": {
+                        "catalogServerEndpoint": "=",
+                        "catalogAdminUserName": "=",
+                        "catalogAdminPassword": {
+                            "value": "-::secureString"
+                        }
+                    },
+                    "customSetupScriptProperties": {
+                        "sasToken": {
+                            "value": "-::secureString"
+                        }
+                    }
+                },
+                "linkedInfo": {
+                    "key": {
+                        "value": "-::secureString"
+                    }
+                }
+            }
+        }
+    },
+    "Microsoft.DataFactory/factories/triggers": {
+        "properties": {
+            "pipelines": [{
+                    "parameters": {
+                        "*": "="
+                    }
+                },
+                "pipelineReference.referenceName"
+            ],
+            "pipeline": {
+                "parameters": {
+                    "*": "="
+                }
+            }
+        }
+    },
+    "Microsoft.DataFactory/factories/linkedServices": {
+        "*": {
+            "properties": {
+                "typeProperties": {
+                    "accountName": "=",
+                    "username": "=",
+                    "userName": "=",
+                    "accessKeyId": "=",
+                    "servicePrincipalId": "=",
+                    "userId": "=",
+                    "clientId": "=",
+                    "clusterUserName": "=",
+                    "clusterSshUserName": "=",
+                    "hostSubscriptionId": "=",
+                    "clusterResourceGroup": "=",
+                    "subscriptionId": "=",
+                    "resourceGroupName": "=",
+                    "tenant": "=",
+                    "dataLakeStoreUri": "=",
+                    "baseUrl": "=",
+                    "connectionString": {
+                        "secretName": "="
+                    }
+                }
+            }
+        }
+    },
+    "Microsoft.DataFactory/factories/datasets": {
+        "*": {
+            "properties": {
+                "typeProperties": {
+                    "folderPath": "=",
+                    "fileName": "="
+                }
+            }
+        }
+    }
+}
+```
+

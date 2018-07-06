@@ -1,7 +1,7 @@
 ---
-title: Előre elkészített útmutatója - Azure |} Microsoft Docs
+title: Előre összeállított útmutatója – Azure |} A Microsoft Docs
 titleSuffix: Azure
-description: Az előre elkészített tartományokhoz, amelyek gyűjteményei előre elkészített leképezések és entitásokat a nyelvi ismertetése intelligens szolgáltatások (LUIS) hivatkozás.
+description: Az előre összeállított tartományok, amelyek előre elkészített gyűjteménye szándékokat és entitásokat a Language Understanding Intelligent Services (LUIS) referenciája.
 services: cognitive-services
 author: v-geberr
 manager: kaiqb
@@ -10,79 +10,79 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 06/20/2018
 ms.author: v-geberr
-ms.openlocfilehash: 14c53bd25913922a0cd7cc438ad0fbe8b4663dd1
-ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
+ms.openlocfilehash: fe035c744e7cbc291fa392205239f331410412dc
+ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37061964"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37866331"
 ---
 # <a name="prebuilt-domain-reference"></a>Előre összeállított tartományhivatkozás
-Ez az útmutató információt nyújt a [előre elkészített tartományok](luis-how-to-use-prebuilt-domains.md), amely gyűjteményei előre elkészített leképezések és entitások LUIS kínál.
+Ez az útmutató információkkal szolgál a [előre összeállított tartományok](luis-how-to-use-prebuilt-domains.md), amely gyűjteményei előre összeállított szándékok és entitások, amelyek a LUIS kínál.
 
-[Egyéni tartományok](create-new-app.md), ellentétben nem leképezések és modellek kezdődhet. Egy egyéni modell bármely előre elkészített tartomány leképezések és entitások adhat hozzá.
+[Egyéni tartományok](create-new-app.md), ezzel szemben az elindításához nincs leképezések és a modellek. Egy egyéni modell bármilyen előre összeállított tartományban szándékok és entitások adhat hozzá.
 
-## <a name="list-of-prebuilt-domains"></a>Előre elkészített tartományok listáját
-LUIS 20 előre elkészített tartományok kínál. 
+## <a name="list-of-prebuilt-domains"></a>Előre összeállított tartományok listája
+A LUIS 20 előre összeállított tartományok kínál. 
 
-| Előre elkészített tartomány | Leírás | Támogatott nyelvek |
+| Előre összeállított tartomány | Leírás | Támogatott nyelvek |
 | ---------------- |-----------------------|:------:|
-| Naptár | A naptár tartomány leképezés és entitások hozzáadásával, törlésével, vagy egy időpontot egyeztessen szerkesztésére, résztvevők rendelkezésre állásának ellenőrzése és adatait, a naptár esemény biztosít.| hu-HU<br/> zh-CN |
-| Kamera | A kamera tartomány leképezések és entitásokat biztosít képek, a rögzítés videók és a szórásos videó véve egy alkalmazáshoz.| hu-HU |
-| Kommunikáció | Üzenetek küldése és telefonhívások.| hu-HU <br/> zh-CN |
-| Szórakozás  | Zene, filmek és TV kapcsolódó lekérdezések kezelése.| hu-HU |
-| Események | A jegyektől Koncertek, fesztiválok, sport játékok és comedy foglalás jeleníti meg.| hu-HU |
-| Alkalmasságra | Kezelési alkalmasságra tevékenységek nyomon követéséhez kapcsolódó kérelem.| hu-HU |
+| Naptár | A naptár tartomány szándékot és entitások hozzáadása, törlése, vagy egy találkozót szerkesztésére, résztvevő rendelkezésre állásának ellenőrzése és adatait, egy naptáresemény biztosít.| hu-HU<br/> zh-CN |
+| Kamera | A kamera tartományban szándékok és entitások biztosít képek, a rögzítés videók és a szórásos videók véve az alkalmazás.| hu-HU |
+| Kommunikáció | Üzenetek küldése és telefonhívásokat.| hu-HU <br/> zh-CN |
+| Szórakoztatás  | Zene, filmek és TV kapcsolódó lekérdezések kezelése.| hu-HU |
+| Események | Foglalás Koncertek, fesztiválok, sport játékokat és comedy jegyek jeleníti meg.| hu-HU |
+| Alkalmasságát | Kezelési mentességre tevékenységek nyomon követéséhez kapcsolódó kérelem.| hu-HU |
 | Játékok | Több résztvevős játék játék féllel kapcsolatos kérések kezelésével.| hu-HU |
-| HomeAutomation | Intelligens otthoni eszközök, például fény és készülékek vezérlése.| hu-HU<br/> zh-CN |
-| MovieTickets | Egy movie képernyős filmeket a jegyektől foglalás.| hu-HU |
-| Zene | Zene játsszon tovább zenelejátszó.| hu-HU<br/> zh-CN |
-| Megjegyzés | A Megjegyzés tartomány leképezések és a kapcsolódó létrehozására, szerkesztésére és megjegyzések keresése entitások biztosít.| hu-HU<br/> zh-CN |
-| OnDevice | A OnDevice tartomány leképezések és az eszköz vezérlésére kapcsolódó entitások biztosít.| hu-HU<br/> zh-CN |
-| Helyek  | Vagy hasonló vállalatok számára, intézmények, éttermekben, nyilvános szóközöket és címek kapcsolódó lekérdezések kezelése.| hu-HU<br/> zh-CN |
+| HomeAutomation | Az intelligens otthoni eszközök, például lámpa és berendezések szabályozása.| hu-HU<br/> zh-CN |
+| MovieTickets | Foglalás egy filmet mozi filmeket jegyeket.| hu-HU |
+| Zene | Zene játsszon egy zenelejátszókkal.| hu-HU<br/> zh-CN |
+| Megjegyzés | A Megjegyzés tartományban szándékok és entitások létrehozására, szerkesztésére és megjegyzések keresése kapcsolatos biztosít.| hu-HU<br/> zh-CN |
+| OnDevice | A OnDevice tartományban szándékok és entitások, az eszköz vezérlésére kapcsolatos biztosít.| hu-HU<br/> zh-CN |
+| Forráshelyek  | A kezelése, többek között a vállalkozások, intézmények, éttermek, nyilvános szóközöket és címek kapcsolódó lekérdezések.| hu-HU<br/> zh-CN |
 | Emlékeztető | Kezelési létrehozására, szerkesztésére és emlékeztetők keresése kapcsolódó kérelem.| hu-HU<br/> zh-CN |
 | RestaurantReservation | Kezelési kérelem éttermi foglalások kezelése.| hu-HU<br/> zh-CN |
-| Taxi | A taxiban foglalások kezelése.| hu-HU<br/> zh-CN |
-| Fordítás | A megadott nyelv fordítása szöveg.| hu-HU<br/> zh-CN |
-| TV | Televízió vezérlése.| hu-HU |
-| Közművek  | Kezelési kérelem, az adott sok tartományokban, például a "Súgó", "ismételje meg a", "kezdje újra a folyamatot."| hu-HU |
-| Időjárás | Időjárás-jelentések és előrejelzések beolvasásakor.| hu-HU<br/> zh-CN |
-| Web | Navigálás a webhelyen.| hu-HU<br/> zh-CN |
+| Taxi | -I taxik foglalások kezelése.| hu-HU<br/> zh-CN |
+| Fordítás | A célként megadott nyelvre a szöveg fordítása.| hu-HU<br/> zh-CN |
+| TV | Televízióra szabályozása.| hu-HU |
+| Közművek  | Kezelési kérelem, amelyek közösek a számos tartományok, mint például a "Súgó", "ismételje meg a", "kezdje újra a folyamatot."| hu-HU |
+| Időjárás | Időjárás-előrejelzéseket és előrejelzések beolvasásakor.| hu-HU<br/> zh-CN |
+| Web | Navigálás egy webhelyre.| hu-HU<br/> zh-CN |
 
-Minden tartományban további részletekért tekintse meg a következő szakaszok.
+Minden tartományban a további részletekért tekintse meg a következő szakaszok.
 
 ## <a name="calendar"></a>Naptár 
 
-A naptár tartomány leképezések és a kapcsolódó naptárbejegyzések entitások biztosít. A naptár leképezések hozzáadása, törlése vagy egy időpontot egyeztessen szerkesztése, rendelkezésre állásának ellenőrzése és a Naptári tétel vagy időpontot egyeztessen vonatkozó információk keresése tartalmaznak.
+A naptár tartományban szándékok és entitások naptárbejegyzések megőrzésének kapcsolatos biztosít. A naptár leképezések hozzáadása, törlése vagy találkozó szerkesztése, a rendelkezésre állásának ellenőrzése és a egy naptár bejegyzés vagy találkozó vonatkozó információk keresése tartalmazza.
 
 ### <a name="intents"></a>Leképezések
-| Leképezési neve | Leírás | Példák |
+| Leképezés neve | Leírás | Példák |
 | ---------------- |-----------------------|----|
-| Hozzáadás | Egy új egyszeri elem felvétele a naptárban.| Ellenőrizze egy időpontot egyeztessen az Lisa 2 du. vasárnap <br/><br/>Értekezlet ütemezése<br/><br/>Értekezlet kell|
-| CheckAvailability | Egy időpontot egyeztessen vagy a felhasználó vagy egy másik személyre naptárat értekezlet rendelkezésre állási található.| Ha van elérhető teljesítéséhez Jim? <br/><br/>Carol elérhető esetén holnap megjelenítése<br/><br/>Az Chris szabad szombaton?|
-| Törlés | Kérelem pedig törölheti a naptár bejegyzést.| Szakítsa meg a időpontot egyeztessen az Carol. <br/><br/>A reggel 9 értekezlet törlése<br/>|
-| Szerkesztés | Módosíthatja egy meglévő értekezlet vagy naptár belépési kérelmet.| Helyezze át a reggel 9 értekezlet 10 óra.<br/><br/>Szeretném a ütemezésének frissítése.<br/><br/>Értekezlet a Reschdule Ryan együtt.|
-| Keresés | Heti naptár megjelenítéséhez.| A Keresés a dentist tekintse át az időpontot egyeztessen. <br/><br/>a naptár megjelenítése<br/>|
+| Hozzáadás | Új egyszeri elem felvétele a naptárba.| Győződjön meg arról, Lisa vasárnap 2-kor egy találkozót <br/><br/>Értekezlet ütemezése<br/><br/>Kell egy értekezlet beállítása|
+| CheckAvailability | Rendelkezésre állási találkozó vagy a felhasználó vagy egy másik személy naptárat az értekezlet található.| Ha van elérhető teljesítéséhez Jim? <br/><br/>Ha Carol holnap elérhető megjelenítése<br/><br/>Chris szombat ingyenes van?|
+| Törlés | Kérelem törlése egy naptár-bejegyzést.| Carol saját találkozót megszakítása <br/><br/>Értekezlet a 9: 00 törlése<br/>|
+| Szerkesztés | Módosíthatja egy meglévő megbeszélésen vagy a naptár belépési kérelmet.| Helyezze át 9: 00-értekezlet a 10-kor.<br/><br/>Szeretnék saját ütemezés frissítése.<br/><br/>Értekezlet a Reschdule Ryan együtt.|
+| Keresés | A heti naptár megjelenítése.| A fogorvosnak tekintse át a találkozó keresése. <br/><br/>Naptár megjelenítése<br/>|
 
 ### <a name="entities"></a>Entitások
 | Entitás neve | Leírás | Példák |
 | ---------------- |-----------------------|----|
-| Hely | Naptárelem, az értekezlet vagy az időpontot egyeztessen helyét. Címek városokat és régiók helyek jó példák.| 209 Nashville Fitnessklub <br/><br/>897 pancake house<br/><br/>Garázs|
-| Tárgy | A cím értekezlet vagy időpontot egyeztessen.| Dentist tartozó időpontot egyeztessen <br/><br/>A Ágnes ebéd<br/><br/>Orvosi időpontot egyeztessen|
+| Hely | Naptári elemet, az értekezlet vagy a találkozó helye. Cím, város és régiók helyek jó példák.| 209 Nashville Fitnessklub <br/><br/>897 pancake ház<br/><br/>Garázs|
+| Tárgy | Egy megbeszélésen vagy találkozó címe.| Dentist a találkozó <br/><br/>A Julia ebéd<br/><br/>Orvos találkozó|
 
 ## <a name="camera"></a>Kamera 
-A kamera tartományi biztosítja a leképezések és entitásokat a fényképezőgép használatát. A leképezések fénykép, selfie, képernyőkép vagy videó rögzítése, és teszi közzé a videót, amely az alkalmazás tartozik.
+A kamera tartományban szándékok és entitások egy kamera használatához kapcsolódó biztosít. A leképezések foglalkozik, selfie, képernyőkép videófelvétel vagy fénykép rögzítése, és teszi közzé a videót, amely egy alkalmazást.
 
 ### <a name="intents"></a>Leképezések
-| Leképezési neve | Leírás | Példák |
+| Leképezés neve | Leírás | Példák |
 | ---------------- |-----------------------|----|
-| CapturePhoto| Egy fénykép rögzíti.| Egy fénykép<br/><br/>rögzítése|
-| CaptureScreenshot | A képernyőkép rögzítése.| Képernyőfelvétel igénybe vehet.<br/><br/>rögzítse a képernyő.|
-| CaptureSelfie | Egy selfie rögzíti.| Egy selfie igénybe <br/><br/>készíthet egy képet arról nekem |
-| CaptureVideo | A rögzítés videó elindítása.| Felvétel indítása <br/><br/>A rögzítés megkezdéséhez|
-| StartBroadcasting| Indítsa el a szórásos videó.| Indítsa el a szórásos a Facebook-on|
-| StopBroadcasting| Állítsa le a szórásos videó.| Állítsa le a szórásos|
-| StopVideoRecording| Rögzítés a videó.| Ez elég<br/><br/>Rögzítés|
+| CapturePhoto| Egy fénykép rögzítése.| Fényképezés<br/><br/>rögzítése|
+| CaptureScreenshot | Képernyőkép rögzítése.| A képernyőképet.<br/><br/>rögzítse a képernyőn.|
+| CaptureSelfie | Egy selfie rögzítése.| Egy selfie igénybe <br/><br/>Kép készítése Me |
+| CaptureVideo | Indítsa el a felvételt a videó.| Felvétel indítása <br/><br/>Rögzítés megkezdéséhez|
+| StartBroadcasting| Indítsa el a szórásos videót.| Indítsa el a szórásos a Facebookon|
+| StopBroadcasting| Állítsa le a szórásos videót.| Közvetítés leállítása|
+| StopVideoRecording| Videó Rögzítés leállítása.| Végeztünk<br/><br/>Rögzítés leállítása|
 
 ### <a name="entities"></a>Entitások
 | Entitás neve | Leírás | Példák |
@@ -91,154 +91,154 @@ A kamera tartományi biztosítja a leképezések és entitásokat a fényképez�
 
 
 ## <a name="communication"></a>Kommunikáció 
-A kommunikációs tartomány leképezések és e-mailek, az üzenetek és a telefonhívások kapcsolódó entitások biztosít.
+A kommunikációs tartományban szándékok és entitások kapcsolatos e-mailek, az üzenetek és a telefonhívások biztosít.
 
 ### <a name="intents"></a>Leképezések
-| Leképezési neve | Leírás | Példák |
+| Leképezés neve | Leírás | Példák |
 | ---------------- |-----------------------|----|
-| AddContact| Egy új partner felvétele a felhasználó listájához.|Új kapcsolat felvétele <br/><br/>Mentse ezt a számot, és helyezze a neve, ahogyan Carol|
-| AddMore| Adja hozzá több, egy e-mailek vagy a szöveg, többlépcsős e-mailben vagy szöveges összeállítás részeként.|További szöveg hozzáadása <br/><br/>Több e-mail törzse is hozzáadása|
-| Válasz| Bejövő telefonhívás fogadása.|a hívás <br/><br/>Emelje fel|
-| AssignContactNickname| Becenév rendelni egy ügyfélhez.|Módosítsa Isaac dad <br/>Szerkesztés Jim becenév<br/>Patti Owens becenév hozzáadása|
-| CallVoiceMail| A felhasználó hangposta csatlakozni.|Csatlakoztatás a hangposta mezőbe <br/>Hangposta<br/>hívás hangposta|
-| CheckIMStatus| Egy partner Skype állapotának ellenőrzéséhez.|Jim tartozó online állapot értéke számítógépnél? <br/>Carol érhető el partnerünk?|
-| Megerősítés| Erősítse meg a műveletet.|Igen<br/>Rendben<br/>rendben<br/>Megerősítem, hogy szeretnénk elküldeni az e-mailt.<br/>|
-| telefonos kapcsolat| Telefonhívás.|Hívás Jim<br/>Adjon tárcsázza a 311<br/>|
-| FindContact| Kapcsolattartási adatok Keresés név alapján.|Carol található<br/>Carol számának megjelenítése<br/>|
-| FindSpeedDial| A telefonszám van beállítva, a, és ez fordítva is igaz speedial szám található.|Mi az a tárcsázandó 5?<br/>Tárcsázza a készlet sebesség van?<br/>Mi az a telefonszáma 941-5555-333?|
-| GetForwardingsStatus| Átirányítás aktuális állapotának beolvasása.|Az átirányítás engedélyezve van?<br/>Figyelmeztessen, ha az állapot vagy be van kapcsolva<br/>|
-| GoBack| Térjen vissza az előző lépésben.|Lépjen vissza a twitteren<br/>Lépjen vissza a lépés<br/>Vissza|
-| Kihagyás| Egy bejövő hívás figyelmen kívül.|Nem fogadja a hívást<br/>Figyelmen kívül hagyja a hívást|
-| IgnoreWithMessage| Egy bejövő hívás figyelmen kívül, és ehelyett válasz szóra.|A hívás nem válaszol, de ehelyett elküldeni az üzenetet.<br/>Figyelmen kívül hagyhatja, és küldje vissza egy szöveges.|
-| PressKey| Nyomja le az ENTER egy gombra való kattintást vagy számát a billentyűzeten.|Telefonos kapcsolat csillag.<br/>Nyomja meg a 2-3 1.|
-| ReadAloud| Olvassa el egy üzenetet vagy a felhasználó számára.|Olvassa el a szöveget.<br/>Mi volt ő fel az üzenet?|
+| AddContact| Új ügyfél hozzá a felhasználó ügyfelek listáját.|Új kapcsolat felvétele <br/><br/>Mentse ezt a számot, és helyezze a nevet a következőként Carol|
+| AddMore| Adja hozzá több, egy e-mailben vagy szöveges, többlépcsős e-mail vagy szöveges juthat szerephez.|Szöveg bővítése <br/><br/>E-mail törzse bővítése|
+| Válasz| A Bejövő telefonhívás fogadása.|A hívás <br/><br/>Emelje fel|
+| AssignContactNickname| Rendelje hozzá egy névjegyet egy becenév.|Imrének apa módosítása <br/>Szerkesztés Jim becenév<br/>Patti Owens becenév hozzáadása|
+| CallVoiceMail| A felhasználó hangposta csatlakozni.|Csatlakozzon számomra a saját hangposta <br/>Hangposta<br/>Hívás hangposta|
+| CheckIMStatus| A Skype-ügyfél állapotának ellenőrzéséhez.|Jim az online állapot értéke azonnal? <br/>Carol érhető el a Csevegés?|
+| Megerősítés| Erősítse meg a műveletet.|Igen<br/>Rendben<br/>rendben<br/>Megerősítem, hogy szeretnék-e e-mailt.<br/>|
+| Telefonos kapcsolat létrehozása| Telefonhívás.|Jim hívása<br/>Adjon tárcsázza a 311<br/>|
+| FindContact| Kapcsolattartási adatok keresése név alapján.|Carol szám keresése<br/>Carol szám megjelenítése<br/>|
+| FindSpeedDial| A jelenlegi súly mentése|saját súly Jelentkezzen most<br/>a jelenlegi törzs súly tárolásához<br/>Tevékenységtípus|
+| Nyomon követő tevékenység típusa.| Az útmutató|Úszni<br/>Élelmiszer mentességre alkalmazásban nyomon követéséhez egy típusa.<br/>|
+| Banán| Lépjen vissza az előző lépésben.|Lépjen vissza a twitteren<br/>Lépjen vissza az adott lépés<br/>Vissza|
+| Kihagyás| Bejövő hívás figyelmen kívül.|Nem válaszol<br/>Hagyja figyelmen kívül a hívás|
+| IgnoreWithMessage| Bejövő hívás figyelmen kívül, és inkább szöveget tartalmazó válasz.|Ez a meghívás nem válaszol, de küldjön inkább üzenetet.<br/>Figyelmen kívül hagyhatja, és vissza egy szöveges üzenet elküldéséhez.|
+| PressKey| Egy gomb vagy a szám nyomja le a billentyűzeten.|Tárcsázás csillagra.<br/>Nyomja meg az 1-2 3.|
+| ReadAloud| Olvassa el az üzenet vagy e-mailt a felhasználónak.|Olvassa el a szöveget.<br/>Mi volt ő tegyük fel, hogy az üzenet?|
 | TurnForwardingOff| Telefonhívás.|<br/><br/>|
-| Újratárcsázás| Újratárcsázás, vagy egy szám hívja meg ismét.|Újratárcsázás.<br/>Az utolsó hívás Újratárcsázás.|
-| Elutasítás| Egy bejövő hívás elutasítása.|Hívás elutasítása<br/>Most már nem válaszol<br/>Pillanatnyilag nem érhető el, és a szolgáltatás fel fogja hívni vissza később.|
-| Sendemail művelet| E-mailt küldeni. Ez a leképezés e-mailek, de nem a szöveges üzenetek vonatkozik.|E-mailek nagy vizek: Mike, hogy vacsora múlt héten splendid volt.<br/>E-mail küldése a Bob<br/>|
-| SendMessage| Egy szöveges üzenetet vagy azonnali üzenet küldése.|Szöveg Chris és Carol küldése|
-| SetSpeedDial| Telefonos kapcsolat sebessége parancsikon be a telefonszámát.|Carol egy gyors tárcsázás be.<br/>A mom gyors tárcsázás beállítása.|
-| ShowNext| Jelenik meg a következő elem, például a szöveges üzenetek vagy e-maileket.|A következő egy megjelenítése.<br/>Nyissa meg a következő oldalra.|
-| ShowPrevious| Lásd az előző elemnél, például a szöveges üzenetek vagy e-mailek listája.|Az előzőre megjelenítése.<br/>Előző<br/>Ugrás az előzőre.|
-| StartOver| A rendszer kezdje újra a folyamatot, vagy indítson egy újat.|Újrakezdés<br/>Új munkamenet<br/>restart|
-| TurnForwardingOff| Kapcsolja ki az átirányítás.|a hívások továbbítani<br/>Kapcsolja ki az átirányítás|
-| TurnForwardingOn| Kapcsolja ki a hangalapú phone.|A hívások 3333 továbbítása<br/>Hívás-továbbítást a 3333 váltani|
-| TurnSpeakerOff| Kapcsolja ki a hangalapú phone.|Ugrás a hangalapú ki.<br/>Kapcsolja ki a kihangosító.<br/>|
-| TurnSpeakerOn| Kapcsolja be a hangalapú phone.|Kihangosító mód.<br/>Kihangosító helyezhető el.<br/>|
+| Újratárcsázás| Újratárcsázás, vagy egy szám hívja meg újra.|Újratárcsázás.<br/>A legutóbbi hívásának Újratárcsázás.|
+| Elutasítás| Bejövő hívás elutasítása.|Hívás elutasítása<br/>Most már nem válaszol<br/>Jelenleg nem érhető el, és meghívja vissza később.|
+| Sendemail művelet| E-mail küldése. Ez a leképezés e-mailt, de nem a szöveges üzenetek vonatkozik.|E-mailek Mike víz: Mike, hogy az elmúlt hét vacsora splendid volt-e.<br/>Bob e-mail küldése<br/>|
+| SendMessage| Szöveges üzenet vagy azonnali üzenet küldése.|Chris és Carol szöveg küldése|
+| SetSpeedDial| Sebesség tárcsázás parancsikon be a telefonszámát.|Carol egy gyors tárcsázás be.<br/>Állítsa be a mom sebesség bármekkora munkát képes elvégezni.|
+| ShowNext| Lásd a következő elem, például a szöveges üzenetben vagy e-mailek listáját.|Megjelenítés a következő parancsot.<br/>A következő oldalra lépéshez.|
+| ShowPrevious| Lásd az előző elemmel, például a szöveges üzenetben vagy e-mailek listáját.|Az előző feladat megjelenítése.<br/>Előző<br/>Nyissa meg az előző.|
+| StartOver| A rendszer kezdje újra a folyamatot, vagy új munkamenet indításához.|Újrakezdés<br/>Új munkamenet<br/>restart|
+| TurnForwardingOff| Kapcsolja ki az átirányítás.|Hívásaim hibajelentéseket<br/>Kikapcsolhatja az átirányítás|
+| TurnForwardingOn| Kapcsolja ki a kihangosítás.|A hívások 3333 továbbítása<br/>Hívás-továbbítást a 3333 váltani|
+| TurnSpeakerOff| Kapcsolja ki a kihangosítás.|Ugrás a beszélő ki.<br/>Kapcsolja ki a kihangosító.<br/>|
+| TurnSpeakerOn| Kapcsolja be a kihangosítás.|Kihangosító mód.<br/>Kihangosító helyezze.<br/>|
 
 ### <a name="entities"></a>Entitások
 | Entitás neve | Leírás | Példák |
 | ---------------- |-----------------------|----|
-| AudioDeviceType | Audioeszköz (előadói, Fejbeszélő, mikrofon, stb.) típusú.| Beszélő<br/>Beavatkozás nélküli<br/>Bluetooth-on|
-| Kategória | A kategória üzenet vagy e-mailt.| Fontos<br/>Magas prioritású virtuális gép|
-| ContactAttribute | Az ügyfél a felhasználói attribútum vonatkozó lekérdezésekben.| Születésnapjának<br/>Cím<br/>Telefonszám|
-| Ügyintéző | Egy ügyfél vagy üzenet címzettje neve.| Carol<br/>Jim<br/>Chris|
-| EmailSubject | Az e-mail tárgyát használt szöveg.| ISMÉTELT: érdekes szövegegység|
-| Vonal | A sor a felhasználó a hívást, vagy egy szöveges/e-mail üzenetek küldéséhez a szeretne.| Munkahelyi sor<br/>Brit cella<br/>Skype|
-| Üzenet | Az üzenet, szöveges vagy e-mailek küldése.| Nagyszerű ma értekezlet meg volt. További tudnivalók, nézzen!|
+| AudioDeviceType | Hangeszköz (előadói, mikrofonos, mikrofon, stb.) típusú.| Beszélő<br/>Kihangosítás<br/>Bluetooth|
+| Kategória | A kategória üzenetben vagy e-mailt.| Fontos<br/>Magas prioritású|
+| ContactAttribute | Az ügyfél a felhasználói attribútum vonatkozó lekérdezésekben.| Születésnapok<br/>Cím<br/>Telefonszám|
+| ContactName | Egy ügyfél vagy üzenet címzettje neve.| Carol<br/>Jim<br/>Chris|
+| EmailSubject | A szöveg tárgy szolgáló e-mailt.| RE: érdekes történetet|
+| Vonal | A sor a felhasználó szeretne egy hívást, vagy a szöveg/e-mail küldése.| Munkahelyi sor<br/>Brit cella<br/>Skype|
+| Üzenet | Küldendő e-mail vagy szöveges üzenet.| Nagyszerű, ma értekezlet-volt. Találkozunk kis idő múlva!|
 | MessageType | Egy ügyfél vagy üzenet címzettje neve.| Szöveg<br/>E-mail|
-| OrderReference | A listán, ha egy elem beolvasása azonosító sorszám vagy relatív pozíciója. Például a "legutóbbi" vagy "legutóbbi" a "Mi volt az utolsó üzenet elküldött?"| Vezetéknév<br/>Legutóbbi|
-| SenderName | A küldő neve.| Patti Owens|
+| OrderReference | Sorszámnál vagy relatív azonosító lekéréséhez elem lista pozíciója. Például "last" vagy "legutóbbi" a "Mi volt az utolsó üzenet elküldött?"| Vezetéknév<br/>Legutóbbi|
+| SenderName | A feladó neve.| Patti Owens|
 
-## <a name="entertainment"></a>Szórakozás  
-A tartomány biztosít a leképezések és a kapcsolódó filmek, zene, játékok és TV keresése entitások Szórakozás jeleníti meg.
+## <a name="entertainment"></a>Szórakoztatás  
+A Szórakozás tartományban szándékok és entitások filmek, zene, játékokat és TV megkeresésével kapcsolatos biztosít jeleníti meg.
 
 ### <a name="intents"></a>Leképezések
-| Leképezési neve | Leírás | Példák |
+| Leképezés neve | Leírás | Példák |
 | ---------------- |-----------------------|----|
-| Keresés| Keresse meg a filmek, zene, alkalmazások, játékok és TV jeleníti meg.|Keressen rá az áruházban Halo.<br/>Keresés a profilképet.|
+| Keresés| Keresse meg a filmek, zene, alkalmazásokat, játékokat és TV jeleníti meg.|Keressen rá az áruházban a Halo.<br/>Az Avatar keresése.|
 
 ### <a name="entities"></a>Entitások
 | Entitás neve | Leírás | Példák |
 | ---------------- |-----------------------|----|
-| ContentRating | Multimédiás tartalom filmek például a G vagy R besorolását.|Gyermekek videó.<br/>A védelmi besorolása.|
-| Genre | A genre movie, játék, alkalmazás vagy szám.|Comedies<br/>Dramas<br/>vicces|
-| Kulcsszó| Adjon meg egy attribútumot általános keresési kulcsszó a nem létezik, a pontosabb media tárolóhelyre.|Számokat hozzanak<br/>Hold folyó<br/>Amelia Earhart|
-| Nyelv | Multimédiás tartalom filmek például a G vagy R besorolását.|francia<br/>Angol<br/>koreai|
-| MediaFormat | A további technikai futásakor, amelyben az adathordozó formázása.|HD filmeket<br/>3D filmek<br/>Letölthető|
-| MediaSource | A tároló vagy piactér az beszerzése az adathordozót.|Netflix<br/>Prime|
-| MediaSubTypes| Kisebb, mint filmek és játékok adathordozók típusairól.|Bemutatók<br/>DLC<br/>Pótkocsik|
-| Állampolgárság| Az ország, amelyen létrehozták a movie, megjelenítése vagy szám.|francia<br/>német<br/>koreai|
-| Személy| Az aktor, igazgató, készítő, zenésze vagy művésze movie, alkalmazás, játék vagy TV show.|Madonna<br/>Stanley Kubrick|
-| Szerepkör| Szerepet, amelyet a személy adathordozó létrehozásához.|Sings<br/>Útmutatása alapján<br/>–|
-| Beosztás| Egy movie, alkalmazás, játék, TV show vagy dal neve.|Barátok<br/>Minecraft|
-| Típus| A típus vagy media formátuma egy movie, alkalmazás, játék, TV show vagy szám.|Zene<br/>MovieTV <br/>azt mutatja be|
-| UserRating| Felhasználói csillag vagy minősítés OK.|5 csillagos<br/>3 csillag<br/>4 csillag|
+| ContentRating | Media tartalom filmekhez például G vagy R minősítése.|Gyerek videó.<br/>PG besorolása.|
+| Műfaj | A műfajt filmet, játékot, alkalmazást vagy dal.|Comedies<br/>Dramas<br/>vicces|
+| Kulcsszó| Adjon meg egy attribútum általános keresési kulcsszó a pontosabb media tárolóhelyben nem létezik.|Zeneszámokat<br/>Hold folyam<br/>Amelia Earhart|
+| Nyelv | Media tartalom filmekhez például G vagy R minősítése.|francia<br/>Angol<br/>koreai|
+| MediaFormat | A további technikai különleges, amelyben az adathordozó van formázva.|HD filmek<br/>3D filmek<br/>Letölthető|
+| MediaSource | A tároló vagy a Marketplace-en az adathordozó beszerzése a.|Netflix<br/>Prime|
+| MediaSubTypes| Adathordozó-típusok kisebb, mint a mozi- és játékokat.|Bemutatók<br/>DLC<br/>Pótkocsik|
+| Állampolgárság| Az ország, ahol egy filmet, megjelenítése vagy egy zeneszám lett létrehozva.|francia<br/>német<br/>koreai|
+| Személy| Az aktor, igazgató, előállítói, zenésze vagy egy filmet, alkalmazás, játék vagy TV-műsor előadója.|Madonna<br/>Stanley Kubrick|
+| Szerepkör| Szerepet, amelyet a személy, a média létrehozása.|Sings<br/>Útmutatása alapján<br/>–|
+| Beosztás| Egy filmet, alkalmazás, játékot, TV-műsor vagy dal neve.|Ismerősök felvételének engedélyezése<br/>Minecraft|
+| Típus| Egy filmet, alkalmazás, játékot, TV show vagy szám típus vagy adathordozó formátumát.|Zene<br/>MovieTV <br/>jeleníti meg|
+| UserRating| Felhasználói csillag vagy minősítés miniatűrök.|5 csillag<br/>3 csillag<br/>4 csillag|
 
 ## <a name="events"></a>Események 
-Az események tartomány leképezések biztosít, és entitások kapcsolódó foglalási jegyek Koncertek, fesztiválok, sport játékok és comedy hasonló események megjelenítése.
+Az események tartományban szándékok biztosít, és lefoglalási jegyeket, Koncertek, fesztiválok, sport játékokat és comedy hasonló események mutat be kapcsolatos entitásokat.
 
 ### <a name="intents"></a>Leképezések
-| Leképezési neve | Leírás | Példák |
+| Leképezés neve | Leírás | Példák |
 | ---------------- |-----------------------|----|
-| Könyv| Vásárolja meg a jegyektől eseményre.|Szeretnék a symphony a jegyet a hétvégi vásárolni.|
+| Címjegyzék| Jegyek az esemény.|Szeretnék vásárolni egy jegyet a symphony a hétvégi.|
 
 
 ### <a name="entities"></a>Entitások
 | Entitás neve | Leírás | Példák |
 | ---------------- |-----------------------|----|
-| Cím | Események helye vagy a cím. |Palo Alto<br/>300 112th Ave használata <br/> Seattle |
-| Name (Név) | Az esemény neve.|Az a Park Shakespeare|
+| Cím | Az esemény helyszíne vagy címe. |Rendszert futtató Palo Alto<br/>300 112th Ave képlet használata <br/> Seattle |
+| Name (Név) | Egy esemény neve.|Az a Park Shakespeare|
 | PlaceName| Az esemény hely nevét.|Louvre<br/>Opera ház<br/>Broadway|
 | PlaceType | A hely típusa az esemény tárolandók.|Cafe<br/>Terület<br/>Részletes ismertetés|
-| Típus | Az esemény típusa.|Energiaoptimalizálást egyszerre<br/>Sport játék|
+| Típus | Az esemény típusa.|Concert<br/>Sport-játék|
 
-## <a name="fitness"></a>Alkalmasságra 
-A megkövetelt tartomány leképezések és a kapcsolódó alkalmasságra tevékenységek nyomon követése entitások biztosít. A leképezések tartalmaz megjegyzéseket, hátralévő idő vagy Distance lehet, vagy tevékenység eredmények mentése mentése.
+## <a name="fitness"></a>Alkalmasságát 
+A mentességre tartományban szándékok és entitások mentességre tevékenységek nyomon követéséhez kapcsolódó biztosít. A leképezések közé tartozik a megjegyzések, hátralévő idő vagy a távolságot vagy tevékenység eredmények mentése mentése.
 
 ### <a name="intents"></a>Leképezések
-| Leképezési neve | Leírás | Példák |
+| Leképezés neve | Leírás | Példák |
 | ---------------- |-----------------------|----|
-| AddNote| Kiegészítő megjegyzések ad hozzá a nyomon követett tevékenységet.|Ehhez a futtató nehézsége 6/10 volt.<br/>A futó vagyok terület aszfalt<br/>3 sebesség kerékpárt használok|
-|GetRemaining| Egy tevékenység lekéri a hátralévő idő vagy Distance lehet.|A következő lap: mennyi idő?<br/>Hány miles hátralévő saját futtatása? Mennyi időt a felosztás esetében?|
-| LogActivity| Mentse, vagy jelentkezzen befejezett tevékenység eredménye.|A legutóbbi futtatás mentése<br/>A szombat reggel bejárása naplózása<br/>a korábbi szóra tárolásához|
-| LogWeight| Mentse, vagy a felhasználó aktuális súly naplózása.|A jelenlegi súly mentése<br/>a súlyozással most naplózása<br/>a szervezet aktuális súly tárolásához|
+| AddNote| A nyomon követett tevékenységet ad hozzá kiegészítő megjegyzések.|A Futtatás nehéz volt 6/10<br/>A futó vagyok a terep aszfaltot<br/>Egy 3 sebesség kerékpárt használok|
+|GetRemaining| Egy tevékenység lekéri a hátralévő idő vagy távolság.|Mennyi ideig, amíg a következő rövid ismertetése?<br/>Hány mérföld hátralévő a Futtatás? Mennyi időt a felosztás?|
+| LogActivity| Mentse, vagy jelentkezzen befejezett tevékenység eredménye.|Mentse a legutóbbi futtatás<br/>Jelentkezzen a saját szombat reggel útmutató<br/>az előző úszó tárolásához|
+| LogWeight| Mentse, vagy a felhasználó aktuális súly naplózása.|A jelenlegi súly mentése<br/>saját súly Jelentkezzen most<br/>a jelenlegi törzs súly tárolásához|
 
 ### <a name="entities"></a>Entitások
 | Entitás neve | Leírás | Példák |
 | ---------------- |-----------------------|----|
-| Az ActivityType tulajdonság | A típusú tevékenység nyomon követéséhez. |Futtassa a következőt:<br/>Lépésről lépésre<br/>Szóra<br/>Ciklus |
-| Élelmiszer | Nyomon követéséhez alkalmasságra alkalmazásban étele típusú. |Banánbehozatali<br/>Lazac<br/>Fehérje rázó|
-| MealType| A rendszerállapot vagy alkalmasságra alkalmazásban nyomon étele típus.|Reggeli<br/>Vacsora<br/>Ebéd<br/>Supper|
-| Mérés| Idő, távolság vagy weight alkalmasságra vagy állapotfigyelő alkalmazása mérések típusú.|Kilométerben<br/>Miles<br/>perc<br/>Kilogramm|
-| Szám | Egy numerikus mennyiség alkalmasságra vagy állapotfigyelő alkalmazása.|19<br/>három<br/>200<br/>egy|
-| StatType | Egy összesített adatai a alkalmasságra vagy állapotfigyelő alkalmazása statisztikai adat típusa.|Összeg<br/>Átlag<br/>Maximum<br/>Minimális|
+| Tevékenységtípus | Nyomon követő tevékenység típusa. |Futtassa a következőt:<br/>Az útmutató<br/>Úszni<br/>Ciklus |
+| Élelmiszer | Élelmiszer mentességre alkalmazásban nyomon követéséhez egy típusa. |Banán<br/>Lazacvörös<br/>Fehérjék rázó|
+| MealType| Állapot és a valamilyen alkalmazásban nyomon dara típusa.|A reggeli<br/>Vacsora<br/>Ebéd<br/>Supper|
+| Mérés| Idő, a távolságot vagy a súly alkalmasságra vagy egészségügyi alkalmazásban használható méréseket típusát.|Adja meg kilométerben<br/>Mérföld<br/>perc<br/>Kg|
+| Szám | Numerikus mennyiség alkalmasságra vagy egészségügyi alkalmazásban használható.|19<br/>három<br/>200<br/>egy|
+| StatType | Egy összesített adat, egy alkalmasságra vagy egészségügyi alkalmazásban használható statisztika típusa.|Összeg<br/>Átlag<br/>Maximum<br/>Minimális|
 
 ## <a name="gaming"></a>Játékok 
-A játékok tartomány leképezések és egy játék entitás több résztvevős játék felügyeletével kapcsolatos entitásokat biztosít.
+A játék tartományban szándékok és entitások egy több résztvevős játék a játék fél felügyeletével kapcsolatos biztosít.
 
 ### <a name="intents"></a>Leképezések
-| Leképezési neve | Leírás | Példák |
+| Leképezés neve | Leírás | Példák |
 | ---------------- |-----------------------|----|
-| InviteParty| Egy kapcsolat egy játék entitás csatlakozni meghívása.|A saját fél player meghívása<br/>Az entitás tudomást<br/>Csatlakozás a clan|
-|LeaveParty| Egy tevékenység lekéri a hátralévő idő vagy Distance lehet.|Ki vagyok<br/>A másik fél I vagyok elhagyása<br/>I vagyok Kilépés|
-| StartParty| Több résztvevős játék egy játék entitás elindítása.|Most volt egy entitás indítása<br/>egy entitás indítása<br/>kell először egy clan esti|
+| InviteParty| Meghívhat egy névjegyet egy játékokkal foglalkozó fél csatlakozni.|A player saját fél meghívása<br/>Saját fél jár<br/>Csatlakozzon a saját clan|
+|LeaveParty| Egy tevékenység lekéri a hátralévő idő vagy távolság.|Ki vagyok<br/>I vagyok és a egy másik entitás<br/>I/am Kilépés|
+| StartParty| Indítsa el a játék fél több résztvevős játék.|Nézzük dude egy entitás indítása<br/>egy entitás indítása<br/>érdemes kezdődik meg, egy clan vacsora|
 
 ### <a name="entities"></a>Entitások
 | Entitás neve | Leírás | Példák |
 | ---------------- |-----------------------|----|
-| Kapcsolatfelvétel| Több résztvevős játék használandó kapcsolattartási nevet.|Carol<br/>Jim|
+| Kapcsolatfelvétel| Több résztvevős játék használata a kapcsolattartó nevét.|Carol<br/>Jim|
 
 
 ## <a name="homeautomation"></a>HomeAutomation 
-A HomeAutomation tartomány leképezések és intelligens otthoni eszközök, például fény és készülékek szabályozása kapcsolódó entitások biztosít.
+A HomeAutomation tartományban szándékok és entitások intelligens otthoni eszközök, például lámpa és berendezések szabályozásával kapcsolatos biztosít.
 
 ### <a name="intents"></a>Leképezések
-| Leképezési neve | Leírás | Példák |
+| Leképezés neve | Leírás | Példák |
 | ---------------- |-----------------------|----|
-| Kikapcsolás| Kapcsolja ki, zárja be, vagy egy eszköz zárolásának feloldásához.|Kapcsolja ki a fény<br/>A kávét készítő leállítása<br/>Bezárás garázs ajtó|
-|Bekapcsolása| Kapcsolja be az eszközön, vagy állítsa be az eszköz egy adott beállítást vagy mód.|a kávét készítő bekapcsolása<br/>kapcsolhatja be a kávét készítő?<br/>Állítsa a termosztát 72 fokban megadva.|
+| Kikapcsolás| Kapcsolja ki, zárja be, vagy egy adott eszköz feloldásához.|Kapcsolja ki a jelzőfény<br/>A kávét készítő leállítása<br/>Ajtó bezárása garázs|
+|Bekapcsolása| Kapcsolja be az eszközön, vagy állítsa be az eszköz egy adott beállítást vagy mód.|a kávét készítő bekapcsolása<br/>kapcsolhatja be a kávét készítő?<br/>Állítsa az okosórák 72 fok.|
 
 
 ### <a name="entities"></a>Entitások
 | Entitás neve | Leírás | Példák |
 | ---------------- |-----------------------|----|
-| Eszköz | A típusú eszköz be és ki kell kapcsolni.|kávét készítő<br/>Termosztát<br/>fény|
-| Művelet | Az állapot az eszköz beállításához.|zárolás<br/>megnyitás<br/>be<br/>kikapcsolva|
-| Hely | A hely vagy az eszköz a helyiségben.|nappali<br/>szobája<br/>konyhai|
+| Eszköz | Eszköz, amely be vagy ki kell kapcsolni egy típusa.|kávét készítő<br/>thermostat<br/>lámpa|
+| Művelet | Az eszköz beállítása állapota.|zárolás<br/>megnyitás<br/>be<br/>kikapcsolva|
+| Hely | A hely vagy az eszköz a helyiségben.|nappali<br/>szobája<br/>megjelenítő kijelzőket a konyhai|
 
 ## <a name="movietickets"></a>MovieTickets 
-A MovieTickets tartomány leképezések és egy movie képernyős filmeket foglalási jegyeket kapcsolódó entitások biztosít.
+A MovieTickets tartományi biztosítja, leképezések és a egy filmet mozi filmeket foglalási jegyeket kapcsolódó entitások.
 
 ### <a name="examples"></a>Példák
 ```
@@ -248,22 +248,22 @@ When is Captain Omar showing?
 ```
 
 ### <a name="intents"></a>Leképezések
-| Leképezési neve | Leírás | Példák |
+| Leképezés neve | Leírás | Példák |
 | ---------------- |-----------------------|----|
-| Könyv | Film jegyek vásárolhat.|Lefoglalja me két jegyek kapitány Omar és a két musketeers<br/>A jegy jövő film megvásárlása kívánt<br/>2. rész Captian Omar következő szerda kívánt jegy|
-|GetShowTime| Egy film showtime beolvasása.|Ha azt a kapitány Omar?|
+| Címjegyzék | Film jegyek.|Könyv me kapitány Omar és a két musketeers két jegyek<br/>Holnapi movie egy jegyet vásárolni kívánt<br/>2. rész Captian Omar tovább szerda kívánt jegy|
+|GetShowTime| Az egy filmet showtime beolvasása.|Ha látható a kapitány Omar?|
 
 
 ### <a name="entities"></a>Entitások
 | Entitás neve | Leírás | Példák |
 | ---------------- |-----------------------|----|
-| Cím | Egy movie képernyős címe.|Palo Alto<br/>300 112th Ave használata<br/>Seattle|
+| Cím | Egy filmet mozi címe.|Rendszert futtató Palo Alto<br/>300 112th Ave képlet használata<br/>Seattle|
 | MovieTitle | Film címe.|A Pi élettartama<br/>Éhezés játékok<br/>Kezdete|
-| PlaceName | Egy movie képernyős vagy film neve.|Film Amir<br/>Alexandria terület<br/>Győr képernyős|
-| PlaceType | A hely film típusa jelenít meg.|film<br/>képernyős<br/>IMAX film|
+| PlaceName | Mozi webhelyét vagy mozibemutatók neve.|Mozi Amir<br/>Alexandria terület<br/>New York-i mozi|
+| PlaceType | Film jelenik-e meg a hely típusa.|mozi<br/>mozi<br/>IMAX mozibemutatók|
 
 ## <a name="music"></a>Zene 
-A zene tartomány leképezések és a kapcsolódó zene játsszon tovább zenelejátszó entitások biztosít.
+A zene tartományban szándékok és entitások zene játsszon egy zenelejátszókkal kapcsolatos biztosít.
 
 ### <a name="examples"></a>Példák
 ```
@@ -273,28 +273,28 @@ Skip to the next song
 ```
 
 ### <a name="intents"></a>Leképezések
-| Leképezési neve | Leírás | Példák |
+| Leképezés neve | Leírás | Példák |
 | ---------------- |-----------------------|----|
-| DecreaseVolume | Az eszköz kötet csökkentése.|track kötet csökkentése<br/>kötet le|
-| IncreaseVolume | Az eszköz kötet növeléséhez.|Növelje a kötet nyomon követése<br/>kötet mentése|
-| Csend |A lejátszott zene elnémíthatja.|Némító szám<br/>Helyezze a csend követése<br/>Némító zene |
-| Szünet | A lejátszott zene felfüggesztése.|Szünet<br/>Felfüggesztés zene<br/>Felfüggesztés nyomon követése|
-| PlayMusic | Zene lejátszása az eszközön.|Kevin Durant lejátszása<br/>Paradicsom által Coldplay lejátszása<br/>Hello által Adele lejátszása|
+| DecreaseVolume | Az eszköz kötet csökkentése.|zeslabení hlasitosti nyomon követése<br/>kötet le|
+| IncreaseVolume | Az eszköz kötet növelése.|Növelje a kötet nyomon követése<br/>kötet mentése|
+| Elnémítás |A lejátszás zene vypnutí.|A dal vypnutí<br/>Helyezze a csend a nyomon követése<br/>Vypnutí zene |
+| Szünet | A lejátszás zene felfüggesztése.|Szünet<br/>Felfüggesztés zene<br/>Felfüggesztés nyomon követése|
+| PlayMusic | Zene játsszon egy eszközön.|Kevin Durant lejátszása<br/>által Coldplay paradicsom lejátszása<br/>Adele által Hello lejátszása|
 | Ismétlés |Ismételje meg a lejátszás zene.|Ismételje meg a dal<br/>A track nyereség lejátszása<br/>Ismételje meg a zene|
-| Folytatás | Végezze el újra a lejátszott zene.|RESUME-dal<br/>Indítsa el újból a zene<br/>Folytatásához|
-| SkipBack | Kihagyása visszamenőleges nyomon.|Ugorjon a következő dal<br/>A következő lejátszása|
+| Folytatás | A lejátszás zene folytatódik.|RESUME-dal<br/>Indítsa újra a zene<br/>Folytatásához|
+| SkipBack | Folytassa a visszamenőleges nyomon.|Folytassa a következő zeneszám<br/>A következő lejátszása|
 | SkipForward |Ugrás előre nyomon.|Az előző lejátszása<br/>Lépjen vissza az előző szám |
-| Leállítás | Zene lejátszás vonatkozó művelet leállítása. |A lemez megszakad.|
-| Ki bekapcsolása | Ki-zene lejátszás eszköz bekapcsolása.| Ki bekapcsolása.|
+| Leállítás | Zene lejátszási vonatkozó művelet leállításához. |Állítsa le a lemez játszott.|
+| Némítás feloldása | Zene a lejátszás eszköz némításának feloldása.| Ki-bekapcsolása.|
 
 ### <a name="entities"></a>Entitások
 | Entitás neve | Leírás | Példák |
 | ---------------- |-----------------------|----|
-| ArtistName | Az aktor, igazgató, készítő, író, zenésze vagy művésze társított adathordozó számára, hogy az eszközön.|Elvis Presley<br/>Taylor Swift<br/>Adele<br/>Mozart|
-| Genre | A kért zene genre.|Ország zene<br/>Broadway classics<br/>A Baroque időszakba eső klasszikus zene lejátszása|
+| ArtistName | Az aktor, igazgató, termelő, író, zenésze vagy egy eszközön lejátszása a media előadója.|Elvis Presley<br/>Taylor Swift<br/>Adele<br/>Mozart|
+| Műfaj | A kért zene műfaj.|Ország zene<br/>Broadway classics<br/>A klasszikus zene Baroque időszak lejátszása|
 
 ## <a name="note"></a>Megjegyzés 
-A Megjegyzés tartomány leképezések és a kapcsolódó létrehozására, szerkesztésére és megjegyzések keresése entitások biztosít.
+A Megjegyzés tartományban szándékok és entitások létrehozására, szerkesztésére és megjegyzések keresése kapcsolatos biztosít.
 
 ### <a name="examples"></a>Példák
 ```
@@ -304,30 +304,30 @@ Remove all items from my vacation list
 ```
 
 ### <a name="intents"></a>Leképezések
-| Leképezési neve | Leírás | Példák |
+| Leképezés neve | Leírás | Példák |
 | ---------------- |-----------------------|----|
-| AddToNote | -Adatokat hozzáadni a megjegyzés.|A élelmiszerszükségletét Megjegyzés saláta paradicsom be kávé hozzáadása<br/>A teendőlista hozzáadása<br/>a Wunderlist cupcakes hozzáadása|
-| CheckOffItem | Pipálja ki egy már meglévő megjegyzés szereplő elemeket.|Jelölje ki a bevásárlólista banánmennyiség<br/>Jelölje meg a szünnap vásárlás lista, mint a sajt torta|
-| Törlés | Egy már meglévő megjegyzés összes elem törléséhez.|Az összes elem eltávolítása a szabadsága listából<br/>Törölje a jelet minden saját olvasási listából|
-| Megerősítés | Erősítse meg az arra vonatkozó műveletet.|Az általam kapcsolatát<br/>igen<br/>Megőrzi az összes elemet a listák I vagyok megerősítése|
-| Létrehozás | Új jegyzet létrehozása. | Hozzon létre egy listát<br/>Vegye figyelembe, hogy Jason Emlékeztessen a város első hetében, előfordulhat, hogy|
-| Törlés | Egy teljes megjegyzés törlése. |A szabadsága lista törlése <br/>a élelmiszerszükségletét Megjegyzés törlése|
-| DeleteNoteItem | Elemeket töröl egy már meglévő megjegyzés.| A bevásárlólista modulok törlése<br/>A lista vásárlás iskolai toll eltávolítása|
-| ReadAloud | Hangos olvasás listáját.|Az információs fájl<br/>A részleteiből tájékozódjon|
-| ShowNext | Tekintse meg a következő elem megjegyzések listáját.|A következő egy megjelenítése<br/>Következő oldal<br/>Következő lépés|
+| AddToNote | Információ hozzáadása egy megjegyzés.|Saját élelmiszerszükségletét Megjegyzés saláta tomato kenyér kávé hozzáadása<br/>Saját teendőlista hozzáadása<br/>a Wunderlist cupcakes hozzáadása|
+| CheckOffItem | Pipálja ki egy már meglévő megjegyzés szereplő elemeket.|Jelölje ki a saját bevásárlólistáról banánok<br/>A saját vásárlási listája, ahogyan az ünnepi sajtok iránti szenvedélyének torta megjelölése|
+| Törlés | Egy már meglévő megjegyzés összes elemének törlése.|Szabadságolási lista összes elemének eltávolításához<br/>Törölje az összes saját olvasási listából|
+| Megerősítés | Erősítse meg a vonatkozó megjegyzés művelet.|Az általam rendben<br/>igen<br/>Minden elem tartja a listák I vagyok megerősítése|
+| Létrehozás | Hozzon létre egy új megjegyzés. | Hozzon létre egy listát<br/>Figyelje meg, a Jason Emlékeztessen város első hete – május|
+| Törlés | Egy teljes megjegyzés törlése. |Saját szabadság lista törlése <br/>saját élelmiszerszükségletét jegyzet törlése|
+| DeleteNoteItem | Elemeket töröl egy már meglévő megjegyzés.| A megosztott bevásárlólistáról lapkák törlése<br/>Saját iskolai lista vásárlás tollak eltávolítása|
+| ReadAloud | Olvassa el hangos listáját.|Az első egy információs fájl<br/>Információs fájl részletei|
+| ShowNext | Tekintse meg a következő elem egy listában megjegyzések.|Következő megjelenítése<br/>Következő oldal<br/>Következő lépés|
 
 ### <a name="entities"></a>Entitások
 | Entitás neve | Leírás | Példák |
 | ---------------- |-----------------------|----|
-| Alkalmazásnév | A Megjegyzés-és alkalmazás-neve.|Wunderlist<br/>OneNote|
-| Ügyintéző | Megjegyzés a partner neve.|Carol<br/>Jim<br/>Chris|
+| Alkalmazásnév | Jegyzetelő alkalmazást neve.|Wunderlist<br/>OneNote|
+| ContactName | Egy partnert a jegyzet neve.|Carol<br/>Jim<br/>Chris|
 | Adatforrás | Megjegyzések helye.|OneDrive<br/>Google docs<br/>a számítógép|
-| Adattípus | A fájl vagy a dokumentumot, általában az adott szoftver társított típusát.|Diák<br/>Számolótábla<br/>Munkalap|
-| Szöveg | Megjegyzés: vagy emlékeztető szöveg.|a Stretch előtt érdekében<br/>hosszú futtatásukkor holnap|
-| Beosztás | Megjegyzés címe.|élelmiszerszükségletét<br/>felhasználó<br/>Tennivalók|
+| Adattípus | A fájl vagy dokumentum, általában az adott programok társított típusát.|Diák<br/>Számolótábla<br/>Munkalap|
+| Szöveg | Egy megjegyzés vagy emlékeztető szöveg.|a Stretch walking előtt<br/>hosszú futtatású holnap|
+| Beosztás | Megjegyzés címe.|élelmiszerszükségletét<br/>Személyek meghívásához<br/>TEENDŐ|
 
 ## <a name="ondevice"></a>OnDevice 
-A OnDevice tartomány leképezések és az eszköz vezérlésére kapcsolódó entitások biztosít.
+A OnDevice tartományban szándékok és entitások, az eszköz vezérlésére kapcsolatos biztosít.
 
 ### <a name="examples"></a>Példák
 ```
@@ -337,48 +337,48 @@ Can you make the screen brighter?
 ```
 
 ### <a name="intents"></a>Leképezések
-| Leképezési neve | Leírás | Példák |
+| Leképezés neve | Leírás | Példák |
 | ---------------- |-----------------------|----|
-| AreYouListening | Kérje meg, ha az eszközök figyel.|Ez a van?<br/>figyelnek?|
-|CloseApplication|Zárja be az alkalmazást.|videólejátszó bezárása|
-|FileBug|Hibajelentést az eszközön.|Adjon hibajelentést<br/>Tudja meg hibajelentést a számomra?<br/>Én ezen hiba jelentése|
-|GoBack|Kérje meg, hogy lépjen vissza egy lépést vagy térjen vissza az előző lépésben.|Adja vissza<br/>Ugrás az előző képernyőre<br/>Lépjen vissza a stop-figyelő|
-|Súgó| Segítséget kérni.|Adjon Súgó<br/>Üdvözöljük!<br/>Mire szolgál?<br/>Segítségre van szükségem| 
-|LocateDevice|Keresse meg az eszközt.|Megtalálhassák a telefonomat<br/>Tom tartozó iphone keresése<br/>Telefon|
-|Bejelentkezés|Jelentkezzen be a szolgáltatást, az eszköz használatával.|Bejelentkezési adjon<br/>A Facebook-napló<br/>Jelentkezzen be a LinkedIn|
-|Kijelentkezés|Jelentkezzen ki a szolgáltatást, az eszköz használatával.|Jelentkezzen ki telefonomra<br/>Jelentkezzen be a twitteren<br/>Kijelentkezés|
-|MainMenu|A főmenü eszközök megtekintése.|Nézet menü.|
-|OpenApplication|Nyisson meg egy alkalmazást az eszközön.|Nyissa meg a riasztás adjon<br/>Kamera bekapcsolása<br/>Indítsa el a naptár|
+| AreYouListening | Kérje meg, ha az eszköz figyeli.|Ez az a?<br/>figyelik?|
+|CloseApplication|Zárja be az alkalmazást.|Zárja be a videólejátszó|
+|FileBug|Hiba jelentése az eszközön.|Hiba jelentése.<br/>Tudja meg jelentése a számomra?<br/>Én választom jelentse a hibát|
+|GoBack|Kérje meg, hogy egy lépéssel újra, vagy térjen vissza az előző lépésben.|Lépjen vissza.<br/>Ugrás az előző képernyőre<br/>Lépjen vissza stop-figyelő|
+|Súgó| Segítséget kérni.|Súgó.<br/>Üdvözöljük!<br/>Mire használható?<br/>Segítségre van szükségem| 
+|LocateDevice|Keresse meg az eszközt.|Megtalálhassák telefonomat<br/>A tom iphone keresése<br/>Telefon nyomon követése|
+|Bejelentkezés|Jelentkezzen be az eszköz használatával.|Bejelentkezés.<br/>Facebook-bejelentkezés<br/>Jelentkezzen be a LinkedIn|
+|Kijelentkezés|Jelentkezzen ki az eszköz használatával.|Kijelentkezés a telefonomra<br/>Twitter-bejelentkezés<br/>Kijelentkezés|
+|MainMenu|Tekintse meg az eszköz fő menüjéből.|Nézet menü.|
+|OpenApplication|Nyisson meg egy alkalmazást az eszközön.|Nyissa meg a riasztás.<br/>Kapcsolja be a kamerához<br/>Indítsa el a naptárban|
 |OpenSetting|Nyissa meg a beállítást, az eszközön.|Nyissa meg a hálózati beállításokat.|
-|PairDevice|Az eszköz pár.|Akkor segítik kérek a Bluetooth jel telefonjára párosítás<br/>A bluetooth bekapcsolásának és párosítsa azt hordozható számítógép<br/>Pár Bluetooth jel hordozható számítógéphez|
+|PairDevice|Párosítsa az eszközt.|Lehet, segít a párosítást Bluetooth jel telefonjára<br/>A bluetooth aktiválását, és párosítsa azt hordozható számítógép<br/>Párosítsa a hordozható Bluetooth jelzés|
 |Kikapcsolás | Kapcsolja ki az eszközt.|Állíthatják le a számítógépemen<br/>Leállítás<br/>A mobile kikapcsolása|
-|QueryBattery|Eszközakkumulátor élettartamának adatainak beolvasása.|Eszközakkumulátor élettartamának megjelenítése.<br/>Mi az az akkumulátor állapota<br/>Mennyi töltöttség most?<br/>Jelenjen meg töltöttség esetén|
-|QueryWifi|Wi-Fi adatainak beolvasása.|Wi-Fi-adatok beolvasása.|
+|QueryBattery|Akkumulátor-élettartamát adatainak beolvasása.|Megjelenítés élettartamának.<br/>Mi az akkumulátor Állapotom<br/>Mennyi töltöttség most?<br/>Akkumulátor-megjelenítés|
+|QueryWifi|Wi-Fi adatainak beolvasása.|Wi-Fi-adatainak beolvasása.|
 |Újraindítás|Indítsa újra az eszközt.|Indítsa újra.|
-|RingDevice| Kérje meg az eszköz a telefonja, ahhoz, hogy megtalálja, ha rendelkezik elveszett.|Telefonszám gyűrű.| 
-|SetBrightness|Az eszköz fényerő beállítása.|Set fényerő közepes<br/>Set fényerő magas<br/>Set fényerő alacsony értékre|
-|SetupDevice|Indítsa el az eszközt.|Szeretnék telepíteni az operációs rendszer telepítése<br/>Adjon beállítása<br/>A telepítő tegye a számomra|
-|ShowAppBar|Egy alkalmazás sávjának megjelenítése.|Az alkalmazás sávjának megjelenítése<br/>Alkalmazás sáv kérjük<br/>Az alkalmazás sáv én|
-|ShowContextMenu|A helyi menü megjelenítése.|Én tekintse meg a helyi menü<br/>A helyi menü adjon<br/>Tudja meg jelenjen meg a helyi menü|
-|Alvó állapot|Az eszköz alvó állapotba helyezni.|menj aludni<br/>Alvó állapot<br/>A számítógép alvó állapota|
-|SwitchApplication|Váltás az alkalmazás használata az eszközön.|Váltás a saját media player.|
+|RingDevice| Kérje meg az eszköz telefonja, annak érdekében, hogy ha megszakadt, keresse meg.|Gyűrűpuffer telefonomra.| 
+|SetBrightness|Állítsa be az eszköz fényereje.|Közepes set fényereje<br/>A magas set fényereje<br/>Set fényerő prioritásának alacsonyra történő átállításához|
+|SetupDevice|Kezdeményezheti az eszköz beállítását.|Szeretnék telepíteni az operációs rendszer telepítése<br/>A telepítő.<br/>Hajtsa végre a telepítő nekem|
+|ShowAppBar|Egy alkalmazás sávjának megjelenítése.|Az alkalmazás sávjának megjelenítése<br/>Alkalmazás sáv meg<br/>Én választom az alkalmazássáv lásd:|
+|ShowContextMenu|A helyi menü megjelenítése|Tekintse meg a helyi menü velem<br/>Helyi menü.<br/>Megmutatnád számomra a helyi menüben|
+|Alvó állapot|Az eszköz alvó állapotba helyezi.|menj aludni<br/>Alvó állapot<br/>A számítógép alvó állapota|
+|SwitchApplication|Váltson az alkalmazás számára az eszköz használatát.|Váltson a saját media player.|
 |TurnDownBrightness|Kapcsolja be az eszköz fényerő le.|A képernyő Dim.|
-|TurnOffSetting|Kapcsolja ki a beállítást.|Bluetooth inaktiválása<br/>Tiltsa le az adatok<br/>Válassza le a Bluetooth-on|
+|TurnOffSetting|Kapcsolja ki a beállítást.|Bluetooth inaktiválása<br/>Tiltsa le az adatokat<br/>Bluetooth leválasztása|
 |TurnOnSetting|Kapcsolja be a beállítást.|Bekapcsolva <br/> Ki|
-|TurnUpBrightness|Eszköz fényerő bekapcsolásáról.|Győződhet meg a képernyő fényesebbre?|
+|TurnUpBrightness|Kapcsolja be eszköz fényerő.|Módosíthatja a képernyőt világosabb?|
 
 ### <a name="entities"></a>Entitások
 | Entitás neve | Leírás | Példák |
 | ---------------- |-----------------------|----|
-| Alkalmazásnév | Az eszközön az alkalmazás neve.|SoundCloud<br/>YouTube|
-| BrightnessLevel | Értékével beállítása az eszközön.|Száz százaléka<br/>Ötven<br/>40%|
-| Ügyintéző | Egy ügyfél az eszköz nevét.|Paul<br/>Marlen maximális száma|
-| DeviceType | Milyen típusú eszköz. |Telefonszám<br/>Kindle<br/>Hordozható számítógép|
-| Adathordozó típusa | A médiatípus kezeli az eszközt.|Zene<br/>Film<br/>Tévéműsorok|
-| Kiszolgálónévhez | A beállítás vagy a beállítások panel, amely a felhasználó szeretne szerkesztése típus.|Wi-Fi<br/>Vezeték nélküli hálózat<br/>Színséma<br/>Értesítési központ|
+| Alkalmazásnév | Egy alkalmazás az eszköz nevét.|SoundCloud<br/>YouTube|
+| BrightnessLevel | Brightness szintjének beállítása az eszközön.|100 %-os<br/>Ötven<br/>40%|
+| ContactName | Egy ügyfél az eszköz nevét.|Paul<br/>Marlen maximális száma|
+| DeviceType | Eszköz típusa. |Telefonszám<br/>Kindle<br/>Hordozható számítógép|
+| MediaType | Az adathordozó típusát, kezeli az eszközt.|Zene<br/>Film<br/>Tévéműsorok|
+| Példányokat | Beállítás vagy a beállítások panel, amely a felhasználó szeretne szerkeszteni egy típusa.|Wi-Fi<br/>Vezeték nélküli hálózat<br/>Színsémát<br/>Értesítési központ|
 
-## <a name="places"></a>Helyek  
-A helyek tartományi vagy hasonló vállalatok számára, intézmény, éttermekben, nyilvános szóközöket és címek kapcsolódó lekérdezések kezelése leképezések biztosítja.
+## <a name="places"></a>Forráshelyek  
+A helyek tartományban szándékok kezeléséhez, többek között a vállalkozások, intézmény, éttermek, nyilvános szóközöket és címek kapcsolódó lekérdezések biztosít.
 
 ### <a name="examples"></a>Példák
 ```
@@ -388,66 +388,66 @@ At what time does Safeway close?
 ```
 
 ### <a name="intents"></a>Leképezések
-| Leképezési neve | Leírás | Példák |
+| Leképezés neve | Leírás | Példák |
 | ---------------- |-----------------------|----|
-| AddFavoritePlace | A hely hozzáadása a felhasználói Kedvencek listájában.|Ezen a helyen mentése a Kedvencek közé<br/>Ez a cím felvétele a Kedvencek|
-|CheckAccident|Kérje meg, hogy van-e egy véletlen megadott úton.|Van valamilyen nem várt esemény a 880?<br/>Baleset információk megjelenítése|
-|CheckAreaTraffic|Ellenőrizze a forgalom egy általános terület vagy highway, nem a megadott útvonalon.|Budapesti forgalom<br/>Mi az a forgalmat, például a budapesti?|
-|CheckIntoPlace|Ellenőrizze közösségi adathordozóval helyre.|Utánanézni me Foursquare<br/>Jelölje be|
-|CheckRouteTraffic| Ellenőrizze a forgalmat egy adott felhasználó által megadott útvonal.|Hogyan van a forgalom Mashiko?<br/>A Kirkland traffice megjelenítése<br/>Hogyan van a forgalom Budapest?| 
-|Megerősítés|Erősítse meg a helyre vonatkozó műveletet.|Erősítse meg a éttermi foglalás.|
-|Kilépés|A művelet a kilépéshez a helyre vonatkozó feladat.|Lépjen ki a adjon<br/>Lépjen ki a jogosultságot utasításokat ad|
-|FindPlace|Keresse meg a hely (üzleti, intézmény, éttermi, nyilvános helyen, a cím).|Hol található a legközelebbi könyvtár?<br/>Megtaláljanak egy jó olasz étterem hegyi nézetben|
-|GetAddress| Kérje meg a helyet, a cím.|A Robson utca Guu címét megjelenítése<br/>Mi az a legközelebbi Starbucks címét?| 
-|GetDistance|Kérdezze meg a megadott helyre távolság.|Milyen távolságra van szünnap Inn?<br/>milyen távolságban az, hogy itt négyzetes Bellevue<br/>Mi az a távolság Tahoe|
-|GetHours|Kérdezze meg a hely üzemel.|Milyen időpontban nem Safeway bezárja?<br/>Mik az órák kezdőlap raktár számára?<br/>Folyamatban van a Starbucks?|
-|GetMenu|A menü menüpontjai egy étterem kell kérni.|Nem Zucca kiszolgálására semmit vegan?<br/>Mi az a menü Sizzler:<br/>Applebee tartozó menü megjelenítése|
-|GetPhoneNumber| Kérje meg a helyet, a telefonszám mellékét.|Mi az a legközelebbi Starbucks telefonszámát?<br/>Meg kell adni a szám kezdőlap raktár számára| 
-|GetPriceRange| A hely ár tartomány kér.|Az Zucca olcsó?<br/>Az a Cineplex fele ár szerdánként?<br/>Mennyibe Sizzler, teljes homár vacsora költségekkel?|
-|GetReviews|Kérje meg a hely ellenőrzésekhez.|A beépített Cheesecase értékelést megjelenítése<br/>Olvasási Cineplex ellenőrzi, hogy a Yelp|
-|GetRoute|Kérje meg egy olyan helyre való.|Hogyan végigvezetheti a négyzetes Bellevue<br/>A lehető legrövidebb úgy a 8. és 59th innen megjelenítése<br/>Első me való hegyi nézet hitelesítésszolgáltató|
-|GetStarRating|Kérje meg a hely értékelések születtek.|Hogyan értékelés szerint Yelp Zucca?<br/>Hány csillag rendelkezik a francia mosnivaló?<br/>A Monterrey akvárium jó van?|
-|GetTransportationSchedule|A busz ütemezés lekérése egy helyen.|Milyen ideje a következő buszon New York?<br/>Az képeznie megye a buszok megjelenítése|
-|GetTravelTime|Kérje meg a megadott helyre utazás alkalommal.|Mennyi ideig tart a innen San Francisco eléréséhez<br/>Mi ú való jelenti az vezetői idő|
-|MakeCall eljárás|Telefonhívás helyre.|Mom hívása<br/>A Skype hívást Anna szeretnék<br/>Hívás Jim|
-|MakeReservation|Egy étterem vagy egyéb üzleti foglalás kérelmet.|Foglaljon le Zucca: kettőt csak a tonight<br/>Egy tábla lefoglalja holnap<br/>Palo Alto 3 8: a tábla|
-|MapQuestions|Információk utasításait, és hogy megadott közúti kerül a rendeltetési kérelmet.|13 New York továbbítása?<br/>I tarthat 880 Oakland?|
-|Minősítés|Egy étterem vagy a hely leírása minősítés beolvasása.|Hány csillag rendelkezik a Contoso Inn?|
-|ReadAloud|Hangos kiolvassa a helyek listáját.|Az információs fájl<br/>A részleteiből tájékozódjon|
-|SelectItem|Válasszon ki egy elemet egy olyan helyre vagy helyek kapcsolatos lehetőségek közül.|Válassza ki a második érték<br/>Válassza ki az első|
-|ShowMap|Olyan térképet terület megjelenítése.|A második egy térképre megjelenítése<br/>Térkép megjelenítése<br/>San Francisco keresse meg a térképen|
-|ShowNext|A következő elem megjelenítése egy sorozatban.|A következő egy megjelenítése<br/>Nyissa meg a következő oldalra|
-|ShowPrevious|Az előző elem megjelenítése azokat.|Előző megjelenítése<br/>vissza<br/>Ugrás az előzőre|
-|StartOver|Indítsa újra az alkalmazást, vagy indítson egy újat.|Újrakezdés<br/>Új munkamenet<br/>
+| AddFavoritePlace | Adjon hozzá egy olyan helyre a felhasználó Kedvencek listájához.|A hely mentése a Kedvencek<br/>Ez a cím felvétele a Kedvencek|
+|CheckAccident|Kérje meg, hogy van-e valamilyen egy megadott útközben.|Van valamilyen a 880?<br/>Objektuma információk megjelenítése|
+|CheckAreaTraffic|Ellenőrizze a forgalmat egy általános területen vagy highway, nem a megadott útvonalon.|Seattle forgalma<br/>Mi az a forgalmat, például a Seattle?|
+|CheckIntoPlace|Ellenőrizze, hogy a közösségi média használatával történik.|A Foursquare me beadás<br/>Ellenőrizze Itt|
+|CheckRouteTraffic| Ellenőrizze a forgalmat egy adott, a felhasználó által megadott útvonal.|Hogyan alakul a forgalom Mashiko?<br/>A traffice Kirkland való megjelenítése<br/>Hogyan alakul a forgalom Seattle?| 
+|Megerősítés|Erősítse meg a helyre vonatkozó műveletet.|Győződjön meg róla saját éttermi foglalás.|
+|Kilépés|Lépjen ki a feladat arra a helyre vonatkozó művelet.|Lépjen ki.<br/>Lépjen ki a jogosultságot utasításokat ad|
+|FindPlace|Keresse meg a hely (üzleti, intézmény, vendéglátás, nyilvános címtér, cím).|Hol található a legközelebbi tár?<br/>Megtaláljanak egy jó olasz éttermi hegyi nézetben|
+|GetAddress| Kérje meg a cím, egy helyen.|Az utca Robson Guu címét megjelenítése<br/>Mi az a legközelebbi Kávézik címét?| 
+|GetDistance|Kérdezzen a távolság egy adott helyen.|Milyen távol az ünnepi adóazonosító?<br/>milyen távolságban az, hogy itt négyzetes Bellevue<br/>Mi az a távolság Tahoe|
+|GetHours|Kérdezze meg a hely üzemel.|Mely nem Safeway bezárja?<br/>Mik azok a kezdőlap Depot az órák?<br/>Még mindig nyitva van a Kávézik?|
+|GetMenu|Kérjen egy étterem menü elemei.|Nem Zucca kiszolgálása bármit kis?<br/>Mi az a Sizzler menü<br/>A Applebee menü megjelenítése|
+|GetPhoneNumber| Kérdezze meg a telefonszámát helyen.|Mi az a legközelebbi Kávézik telefonszáma?<br/>A szám Depot kezdőlap meg kell adni| 
+|GetPriceRange| Egy hely ár tartományán kér.|Az olcsó Zucca?<br/>Az a Cineplex féláron szerdánként?<br/>Mennyibe kerül, Sizzler teljes lobster vacsora költsége?|
+|GetReviews|Kérje meg a hely felülvizsgálatai.|Cheesecase Factory felülvizsgálatok megjelenítése<br/>Olvassa el a Yelppel Cineplex értékelések|
+|GetRoute|Kérje meg egy helyen irányban.|Hogyan végigvezetheti a Bellevue négyzetes<br/>Megjelenítés a legrövidebb 8. között, valamint elvégezhető 59th innen<br/>Hegyi nézet hitelesítésszolgáltatóhoz irányban első kérek|
+|GetStarRating|Kérje meg a minősítést, egy helyen.|Hogyan besorolása alapján Yelppel Zucca?<br/>Hány csillagot rendelkezik a francia ruhák?<br/>A aquarium Monterrey a jó van?|
+|GetTransportationSchedule|Szerezze be a busz ütemezés egy helyen.|Milyen ideje a következő busz, New York?<br/>A King County megye a buszok megjelenítése|
+|GetTravelTime|Kérje az utazási időt egy meghatározott célhelyre.|Mennyi ideig tart a San Franciscóban innen érheti<br/>Mi az az utazási időn, Denver az SF|
+|MakeCall eljárás|Telefonhívás helyre.|A mom hívása<br/>Szeretném, ha a Skype hívást Anna<br/>Jim hívása|
+|MakeReservation|Egy étterem vagy egyéb üzleti foglalás kérelmet.|Két tonight, Zucca fenntarthat<br/>Könyv a másnapi tábla<br/>3. a Palo Alto 8: tábla|
+|MapQuestions|Információkérés kapcsolatos utasításokat, vagy egy megadott út e cél kerül.|13 Seattle belvárosában továbbítása?<br/>Használhatom-e 880 Oakland?|
+|Minősítés|Egy étterem vagy a hely leírása minősítés beszerzése.|Hány csillagot rendelkezik a Contoso adóazonosító?|
+|ReadAloud|Olvassa el hangos helyek listáját.|Az első egy információs fájl<br/>Információs fájl részletei|
+|SelectItem|Válasszon egy elemet egy helyre vagy helyek kapcsolatos választási listájáról.|A második érték kiválasztása<br/>Válassza ki az első|
+|ShowMap|Egy terület térkép megjelenítése.|A második egy térképen megjelenítése<br/>Térkép megjelenítése<br/>Keresse meg a San Franciscóban a térképen|
+|ShowNext|A következő elem megjelenítése egy sorozatban.|Következő megjelenítése<br/>a következő oldalra lépéshez|
+|ShowPrevious|Sorozat megjelenítése az előző elemmel.|egy korábbi megjelenítése<br/>előző<br/>Nyissa meg az előző|
+|StartOver|Indítsa újra az alkalmazást, vagy új munkamenet indításához.|Újrakezdés<br/>Új munkamenet<br/>
 restart|
-|TakesReservations|Kérje meg, hogy a hely fogad foglalások.|fogadja el foglalások a galéria<br/>Van lehetőség: a olívaolaj kerti lefoglalni úgy
+|TakesReservations|Kérje meg, hogy helyet fogad-e a foglalások.|Nem a tárban foglalások elfogadása<br/>Az lehetséges, ha szeretné tenni egy foglalást a olívaolaj kertben
 
 ### <a name="entities"></a>Entitások
 | Entitás neve | Leírás | Példák |
 | ---------------- |-----------------------|----|
-| AbsoluteLocation | A hely vagy egy helyének címét.|Palo Alto<br/>300 112th Ave használata<br/>Seattle|
-| Eszközök | Egy hely objektív jellemzők/előnyeit.|gyermekek keleti-afrikai szabad<br/>partszakasz<br/>szabad várakozást|
-| Légkör | A hely légkörbe.|KID mobilbarát<br/>alkalmi éttermi<br/>sporty|
+| AbsoluteLocation | A hely vagy a hely címe.|Rendszert futtató Palo Alto<br/>300 112th Ave képlet használata<br/>Seattle|
+| Eszközök | A cél jellemzők/előnyei egy helyen.|gyerek étkezési ingyenes<br/>i partszakasz<br/>ingyenes várakozást|
+| Levegőben | A levegőben hely.|gyerek mobilbarát<br/>az alkalmi éttermi<br/>sporty|
 | Cuisine | Egy hely cuisine. |Mediterrán<br/>olasz<br/>Indiai|
-| DestinationAddress| A célhely vagy címe.|Palo Alto<br/>300 112th Ave használata<br/>Seattle|
-| DestinationPlaceName| A cél, amely egy üzleti, éttermi, nyilvános vonzás vagy intézmény neve.|központi park<br/>safeway<br/>walmart|
-| DestinationPlaceType | A cél, amely egy helyi üzleti, éttermi, nyilvános vonzás vagy intézmény típusa. |Étterem<br/>Opera<br/>film|
-| Távolság | Egy olyan helyre, távolságot.|15 miles<br/>5 miles<br/>10 miles számítógépnél|
-| MealType | Például reggeli vagy ebéd étele típusú. |Reggeli<br/>Vacsora<br/>Ebéd<br/>Supper|
-| OpenStatus | Azt jelzi, hogy a hely megnyitott vagy lezárt.|Open program<br/>lezárt<br/>megnyitása|
+| DestinationAddress| A célhely vagy címe.|Rendszert futtató Palo Alto<br/>300 112th Ave képlet használata<br/>Seattle|
+| DestinationPlaceName| A cél, amely egy üzleti, vendéglátás, nyilvános vonzás vagy intézmény neve.|Közép-India park<br/>safeway<br/>walmart|
+| DestinationPlaceType | A cél, amely egy helyi üzleti, vendéglátás, nyilvános vonzás vagy intézmény típusa. |Éttermek<br/>Opera<br/>Mozi|
+| Távolság | A távolság egy helyen.|15 mérföld<br/>5 mérföld<br/>10 mérföld távolságban|
+| MealType | Például a reggeli vagy ebédszünetet beiktatni dara típusa. |a reggeli<br/>Vacsora<br/>ebéd<br/>supper|
+| OpenStatus | Azt jelzi, hogy egy helyen nyílt vagy lezárt.|Open program<br/>lezárt<br/>megnyitása|
 | PlaceName | A hely neve.|Cheesecake gyári|
 | PlaceType | Hely típusa.|Cafe<br/>Terület<br/>Részletes ismertetés|
-| PreferredRoute | Az előnyben részesített útvonal, a felhasználó által megadott. | 101 <br/>202 <br/>401 útvonal|
-| Product | A hely által kínált termék. | Munkaruházat<br/>Az ASR digitális fényképezőgépek<br/>A halszem friss | 
-| PublicTransportationRoute | A nyilvános szállítására útvonalat, amely a felhasználó keres neve. | Északkelet-folyosó vonat<br/>BUS útvonal X 3 |
-| Minősítés | Egy helyet minősítés. | 5 csillagos<br/>3 csillag<br/>4 csillag|
-| RouteAvoidanceCriteria | Meghatározott útvonalakat például véletlenül, építmények vagy autópályadíjak elkerülhető elkerülése szempontjai | Autópályadíjak <br/>Építmények<br/>Útvonal 11|
-| ServiceProvided | Ez az üzleti vagy feladat, például a hely által biztosított szolgáltatás hó plowing, környezetével. | feladat<br/>szerelő<br/>plumber|
+| PreferredRoute | Az előnyben részesített a felhasználó által megadott útvonal. | 101 <br/>202 <br/>401-es útvonal|
+| Product | A termék által egy helyen érhető el. | Ruhák<br/>Az ASR digitális fényképezőgépek<br/>Friss hal | 
+| PublicTransportationRoute | A nyilvános szállítás útvonal, amely a felhasználó keres neve. | Északkelet folyosó train<br/>3-szor Bus útvonal |
+| Minősítés | A helyszín minősítése. | 5 csillag<br/>3 csillag<br/>4 csillag|
+| RouteAvoidanceCriteria | Kerülje a meghatározott útvonalakat feltételeit, például balesetek, építmények vagy útdíjak elkerülése | Útdíjak <br/>Építmények<br/>Útvonal 11|
+| ServiceProvided | Ez a szolgáltatás egy üzleti vagy a feladat, például a hely által a hó plowing, környezetével. | feladat<br/>szerelő<br/>plumber|
 | TransportationCompany | A szállítási szolgáltató neve.|Amtrak<br/>Acela<br/>Greyhound|
 | TransportationType | A szállítási típusa.|Busz<br/>Betanítás<br/>Vezetés|
 
 ## <a name="reminder"></a>Emlékeztető 
-A felszólítás tartományi biztosítja a leképezések és identitások létrehozására, szerkesztésére és emlékeztetők keresése.
+Az emlékeztető tartományban szándékok és entitások létrehozására, szerkesztésére és emlékeztetők keresése a biztosít.
 
 ### <a name="examples"></a>Példák
 ```
@@ -457,20 +457,20 @@ Can you check if I have a reminder about Christine's birthday?
 ```
 
 ### <a name="intents"></a>Leképezések
-| Leképezési neve | Leírás | Példák |
+| Leképezés neve | Leírás | Példák |
 | ---------------- |-----------------------|----|
-| Módosítás| Emlékeztető módosítása.|Módosítsa a interjú holnap reggel 9<br/>Helyezze át a hozzárendelés emlékeztető holnap|
-| Létrehozás| Hozzon létre egy új emlékeztető.|Hozzon létre egy emlékeztető<br/>Emlékeztessen tej megvásárlása<br/>Ne felejtse el Rebecca hívja, ha nem vagyok a otthoni szeretnék|
-| Törlés | Emlékeztető törlése.|a kép emlékeztető törlése<br/>Ezt az emlékeztetőt törlése|
-| Keresés | Emlékeztető található.|Van egy emlékeztető a évforduló kapcsolatban?<br/>Ellenőrizheti Ha Christine tartozó születési emlékeztető?|
+| Módosítás| Emlékeztető módosítása|Módosítsa a Kérdezési holnap 9: 00<br/>A hozzárendelés emlékeztető holnap áthelyezése|
+| Létrehozás| Hozzon létre egy új emlékeztető.|Hozzon létre egy emlékeztető<br/>Emlékeztessen tej megvásárlása<br/>Szeretném Rebecca hívásokat otthonról dolgozom a vágólapra|
+| Törlés | Emlékeztető törlése.|Saját kép emlékeztető törlése<br/>Ezt az emlékeztetőt törlése|
+| Keresés | Emlékeztető található.|Van egy emlékeztető az évfordulós kapcsolatban?<br/>Ha az emlékeztető Christine a születésnap is ellenőrizheti?|
 
 ### <a name="entities"></a>Entitások
 | Entitás neve | Leírás | Példák |
 | ---------------- |-----------------------|----|
-| Szöveg | Emlékeztető szöveg leírása.|vegytisztítás átvételéhez<br/>a car eldobása a szolgáltatás központban|
+| Szöveg | Emlékeztető szöveges leírása.|vegytisztítás csomópontmetrikák<br/>autómon elvetését a szolgáltatás középen|
 
 ## <a name="restaurantreservation"></a>RestaurantReservation 
-A RestaurantReservation tartomány leképezések és a kapcsolódó éttermi foglalások kezelése entitások biztosít.
+A RestaurantReservation tartományban szándékok és entitások éttermi foglalások felügyeletével kapcsolatos biztosít.
 
 ### <a name="examples"></a>Példák
 ```
@@ -480,26 +480,26 @@ Table for 3 in Palo Alto at 7
 ```
 
 ### <a name="intents"></a>Leképezések
-| Leképezési neve | Leírás | Példák |
+| Leképezés neve | Leírás | Példák |
 | ---------------- |-----------------------|----|
-| Tartalék | Egy étterem foglalás kérelmet. |Foglaljon le Zucca: kettőt csak a tonight<br/>Egy tábla lefoglalja holnap<br/>A 3. a Palo Alto 7 tábla|
+| Foglalás | Egy étterem foglalás kérelmet. |Két tonight, Zucca fenntarthat<br/>Könyv a másnapi tábla<br/>3. a Palo Alto 7 tábla|
 
 ### <a name="entities"></a>Entitások
 | Entitás neve | Leírás | Példák |
 | ---------------- |-----------------------|----|
-| Cím| Egy esemény hely vagy a Foglalás címét.|Palo Alto<br/>300 112th Ave használata<br/>Seattle|
-| Eszközök | A hely eszközök leíró attribútum.|óceáni megtekintése<br/>nem fogyasztási|
-| Alkalmazásnév | Adja meg a megfelelő foglalások alkalmazás neve.|TáblaMegnyitása<br/>Yelp<br/>TripAdvisor|
-| Légkör | Egy étterem vagy más hely légkör leírását.|romantic<br/>alkalmi<br/>a csoportok jó|
-| Cuisine | Étele, cuisine vagy cuisine állampolgárság típusú. |kínai<br/>olasz<br/>Mexikói|
-| MealType | A Foglalás rendelt étele típusát.|Reggeli<br/>Vacsora<br/>Ebéd<br/>Supper|
-| PlaceName | Egy helyi üzleti, éttermi, nyilvános vonzás vagy intézmény neve.|IHOP<br/>Cheesecake gyári<br/>Louvre|
-| PlaceType | A helyi vállalati, a éttermi, a nyilvános vonzás vagy az intézmény típusa.|étterem<br/>Opera<br/>film|
-| Minősítés | Egy hely vagy egy éttermi minősítése.|5 csillagos<br/>3 csillag<br/>4 csillag|
+| Cím| Egy esemény helyre vagy egy foglalás címe.|Rendszert futtató Palo Alto<br/>300 112th Ave képlet használata<br/>Seattle|
+| Eszközök | Az eszközök egy helyszín leíró attribútum.|óceán megtekintése<br/>nem fogyasztási|
+| Alkalmazásnév | Egy alkalmazás végzett foglalásokat neve.|TáblaMegnyitása<br/>Yelppel<br/>TripAdvisor|
+| Levegőben | Egy étterem vagy más helyen a levegőben leírása.|romantic<br/>az alkalmi<br/>a csoportok jó|
+| Cuisine | Élelmiszer, cuisine vagy cuisine állampolgárság típusát. |kínai<br/>olasz<br/>Mexikói|
+| MealType | A Foglalás társított dara típus.|a reggeli<br/>Vacsora<br/>ebéd<br/>supper|
+| PlaceName | Egy helyi üzleti, vendéglátás, nyilvános vonzás vagy intézmény neve.|IHOP<br/>Cheesecake gyári<br/>Louvre|
+| PlaceType | Egy helyi üzleti, vendéglátás, nyilvános vonzás vagy intézmény típusa.|éttermek<br/>Opera<br/>mozi|
+| Minősítés | Egy hely vagy egy éttermi minősítése.|5 csillag<br/>3 csillag<br/>4 csillag|
 
 ## <a name="taxi"></a>Taxi 
  
-A Taxi tartomány leképezések és entitások létrehozására és kezelésére taxi lefoglalások biztosít.
+A Taxi tartományban szándékok és entitások létrehozására és kezelésére taxi foglalások biztosít.
 
 ### <a name="examples"></a>Példák
 ```
@@ -509,26 +509,26 @@ Cancel my Uber
 ```
 
 ### <a name="intents"></a>Leképezések
-| Leképezési neve | Leírás | Példák |
+| Leképezés neve | Leírás | Példák |
 | ---------------- |-----------------------|----|
-| Könyv | Egy taxi hívja. |Cab-fájl lekérése me egy<br/>egy taxi keresése<br/>Egy uber ablakban me x|
-| Mégse | Szakítsa meg a Foglalás taxiban kapcsolatos műveletet.|Szakítsa meg a taxi<br/>Szakítsa meg a Uber|
-| Követés | Nyomon követi a taxi útvonalat.|Milyen mértékű már rendelkeznek a taxi várni?<br/>Hol található a Uber?|
+| Címjegyzék | Hívja meg a taxi. |A cab-fájl első kérek<br/>Keresse meg az-i taxik<br/>Az uber repülőjáratra me x|
+| Mégse | Foglalás-i taxik vonatkozó művelet törlése.|Saját taxi megszakítása<br/>Megszakítja az Uber|
+| Követés | Nyomon követheti a taxi útvonalat.|Mennyi már rendelkezik saját taxi várni?<br/>Hol található az Uber?|
 
 ### <a name="entities"></a>Entitások
 | Entitás neve | Leírás | Példák |
 | ---------------- |-----------------------|----|
-| Cím| A cím foglalási taxiban. |Palo Alto<br/>300 112th Ave használata<br/>Seattle|
-| DestinationAddress| A célhely vagy címe. |Palo Alto<br/>300 112th Ave használata<br/>Seattle|
-| DestinationPlaceName | A cél, amely egy helyi üzleti, éttermi, nyilvános vonzás vagy intézmény neve. |Központi Park<br/>Safeway<br/>Walmart|
-| DestinationPlaceType | A cél, amely egy helyi üzleti, éttermi, nyilvános vonzás vagy intézmény típusa. |Étterem<br/>Opera<br/>film|
-| PlaceName | Helyi üzleti, éttermi, nyilvános vonzás vagy intézmény neve. |Központi Park<br/>Safeway<br/>Walmart|
-| PlaceType| A hely taxiban foglalható le a kérelem típusa.|Étterem<br/>Opera<br/>film|
+| Cím| Foglalás-i taxik társított cím. |Rendszert futtató Palo Alto<br/>300 112th Ave képlet használata<br/>Seattle|
+| DestinationAddress| A célhely vagy címe. |Rendszert futtató Palo Alto<br/>300 112th Ave képlet használata<br/>Seattle|
+| DestinationPlaceName | A cél, amely egy helyi üzleti, vendéglátás, nyilvános vonzás vagy intézmény neve. |Közép-India Park<br/>Safeway<br/>Walmart|
+| DestinationPlaceType | A cél, amely egy helyi üzleti, vendéglátás, nyilvános vonzás vagy intézmény típusa. |Éttermek<br/>Opera<br/>Mozi|
+| PlaceName | Helyi üzleti, vendéglátás, nyilvános vonzás vagy intézmény neve. |Közép-India Park<br/>Safeway<br/>Walmart|
+| PlaceType| A kérelem-i taxik foglalható le a hely típusa.|Éttermek<br/>Opera<br/>Mozi|
 | TransportationCompany | A szállítási szolgáltató neve.|Amtrak<br/>Acela<br/>Greyhound|
 | TransportationType | A szállítási típusa.|Busz<br/>Betanítás<br/>Vezetés|
 
 ## <a name="translate"></a>Fordítás 
-A fordítás tartomány leképezések és a kapcsolódó szöveges cél nyelvre fordítása entitások biztosít.
+A fordítás tartományban szándékok és entitások kapcsolatos szöveget a cél nyelvre fordításával biztosít.
 
 ### <a name="examples"></a>Példák
 ```
@@ -538,20 +538,20 @@ Translate this sentence to English
 ```
 
 ### <a name="intents"></a>Leképezések
-| Leképezési neve | Leírás | Példák |
+| Leképezés neve | Leírás | Példák |
 | ---------------- |-----------------------|----|
-| Fordítás| A szöveg más nyelven történő fordításához.|Francia fordítás<br/>Német hello fordítása|
+| Fordítás| Egy másik nyelven használható szövegfordításra.|Francia fordítás<br/>Német hello fordítása|
 
 
 ### <a name="entities"></a>Entitások
 | Entitás neve | Leírás | Példák |
 | ---------------- |-----------------------|----|
-| TargetLanguage | A cél a fordítás nyelvét.|francia<br/>német<br/>koreai|
+| TargetLanguage | Egy fordítási Célnyelv.|Francia<br/>Német<br/>koreai|
 | Szöveg | A fordítandó szöveg.|Hello World<br/>jó reggelt<br/>jó estét|
 
 ## <a name="tv"></a>TV 
  
-A TV tartomány leképezések és entitásokat biztosít televízió vezérlése.
+A TV tartományban szándékok és entitások biztosít televízióra szabályozása.
 
 ### <a name="examples"></a>Példák
 ```
@@ -561,19 +561,19 @@ Watch National Geographic
 ```
 
 ### <a name="intents"></a>Leképezések
-| Leképezési neve | Leírás | Példák |
+| Leképezés neve | Leírás | Példák |
 | ---------------- |-----------------------|----|
-| ChangeChannel| Módosítsa a egy TV-csatornát.|CNN csatorna módosítása<br/>BBC kapcsoló csatorna<br/>Ugrás a csatorna 4|
-| ShowGuide| A TV útmutató megjelenítése.|TV útmutató megjelenítése<br/>Mi az az movie csatornán most?<br/>a program lista megjelenítése|
-| WatchTV| Kérje meg, hogy figyelje a TV-csatorna.|Tekintse meg a Disney csatorna szeretnék<br/>Ugrás a TV adjon<br/>Tekintse meg a földrajzi National|
+| ChangeChannel| A TV-csatorna módosítása|CNN csatorna módosítása<br/>BBC kapcsoló csatorna<br/>Megnyithatja a csatornát 4|
+| ShowGuide| Útmutató a TV megjelenítése.|Útmutató TV show<br/>Mi az a film csatornán most?<br/>a program lista megjelenítése|
+| WatchTV| Kérje meg, hogy egy TV-csatorna megtekintése.|Szeretném a Disney-csatorna megtekintése<br/>Ugrás a TV.<br/>Tekintse meg a földrajzi National|
 
 ### <a name="entities"></a>Entitások
 | Entitás neve | Leírás | Példák |
 | ---------------- |-----------------------|----|
-| CsatornaNeve | A TV-csatorna nevét.|CNN<br/>BBC<br/>Film csatorna|
+| ChannelName | TV-csatorna neve.|CNN<br/>BBC<br/>Film-csatorna|
 
 ## <a name="utilities"></a>Közművek  
-A segédprogramok tartomány leképezések biztosít sok feladatokat, mint például a hónap, törlését, megerősítő, Súgó, megismétlését, navigációs indítása és leállítása a feladatokat.
+A segédprogramok tartományban szándékok számos feladat, például üdvözletek, törlését, megerősítő, Súgó, ismétlődés, navigációs, elindítása és leállítása a feladatokat biztosít.
 
 ### <a name="examples"></a>Példák
 ```
@@ -583,21 +583,21 @@ Repeat last question please
 ```
 
 ### <a name="intents"></a>Leképezések
-| Leképezési neve | Leírás | Példák |
+| Leképezés neve | Leírás | Példák |
 | ---------------- |-----------------------|----|
-| Mégse | Szakítsa meg a műveletet.|Az üzenet törlése<br/>Nem szeretnék többé az e-mailek küldése|
-| Megerősítés | Erősítse meg a műveletet.|Igen bizony megerősítem<br/>Jó I vagyok megerősítése<br/>Rendben I vagyok megerősítése|
-| FinishTask | Fejezze be a feladat a felhasználó elindult.|Elkészült<br/>Végeztem<br/>Elkészült|
-| GoBack | Lépjen vissza egy lépést, vagy visszatérhet az előző lépésben.|Vissza a Twitteren<br/>Lépjen vissza a lépés<br/>Vissza|
-| Súgó | Kérelem segítségét.|Kérjük, segítsen<br/>Súgó megnyitása<br/>help|
-| Ismétlés | Ismételje meg a műveletet.|Ismételje meg az utolsó kérdés adjon<br/>Ismételje meg az utolsó szám|
-| ShowNext | A következő elem megjelenítése egy sorozatban. |A következő egy megjelenítése<br/>Nyissa meg a következő oldalra|
-| ShowPrevious | Az előző elem megjelenítése azokat.|Előző megjelenítése|
-| StartOver | Indítsa újra az alkalmazást, vagy indítson egy újat.|Újrakezdés<br/>Új munkamenet<br/>restart|
-| Leállítás | Állítsa le a műveletet.| Állítsa le, ezzel arról<br/>fogd be<br/>Adjon leállítása|
+| Mégse | Művelet törlése.|Az üzenet törlése<br/>Nem szeretnék többé elküldeni az e-mailben|
+| Megerősítés | Erősítse meg a műveletet.|Igen hoppá megerősítem, hogy<br/>Jól tudom vagyok megerősítése<br/>Rendben, szeretnék vagyok megerősítése|
+| FinishTask | Fejezze be a felhasználó egy feladatot.|Már nem használom<br/>Végeztem<br/>Művelet befejeződött|
+| GoBack | Lépjen vissza egy lépést, vagy térjen vissza az előző lépésben.|Lépjen vissza a Twitteren<br/>Lépjen vissza az adott lépés<br/>Visszalépés|
+| Súgó | Kérelem segítséget.|Kérjük, segítsen<br/>Súgó megnyitása<br/>help|
+| Ismétlés | Ismételje meg a műveletet.|Ismételje meg az utolsó kérdés.<br/>Ismételje meg a legutóbbi dal|
+| ShowNext | A következő elem megjelenítése egy sorozatban. |Következő megjelenítése<br/>a következő oldalra lépéshez|
+| ShowPrevious | Sorozat megjelenítése az előző elemmel.|egy korábbi megjelenítése|
+| StartOver | Indítsa újra az alkalmazást, vagy új munkamenet indításához.|Újrakezdés<br/>Új munkamenet<br/>restart|
+| Leállítás | Állítsa le a műveletet.| Arról tájékoztatja a kérjük leállítása<br/>fogd be<br/>Állítsa le.|
 
 ## <a name="weather"></a>Időjárás 
-A időjárási tartományi leképezések és entitások biztosítja az első időjárás-jelentések és előrejelzések.
+Az időjárási tartományban szándékok és entitások biztosít időjárás-előrejelzéseket és előrejelzések.
 
 ### <a name="examples"></a>Példák
 ```
@@ -607,18 +607,18 @@ What's the average temperature in India in september?
 ```
 
 ### <a name="intents"></a>Leképezések
-| Leképezési neve | Leírás | Példák |
+| Leképezés neve | Leírás | Példák |
 | ---------------- |-----------------------|----|
-| GetCondition | Időjárás kapcsolódó történelmi tények beolvasása. |szeptembertől Londonban időjárási<br/>Mi az az átlaghőmérséklet Indiában szeptemberben?|
-| GetForecast | Az aktuális időjárása és a előrejelzésének a következő néhány nap múlva. |Hogyan van a időjárási ma?<br/>Mi az a 10 nap előrejelzési?<br/>Hogyan fogja a időjárási a hétvégi?|
+| GetCondition | Időjárási kapcsolatos korábbi tények beolvasása. |szeptembertől londoni időjárás<br/>Mi az az átlaghőmérséklet Indiában szeptembertől?|
+| GetForecast | Az aktuális időjárás beolvasása, és jelezze előre a következő néhány napra. |Hogyan alakul mai időjárás?<br/>Mi az a 10 nap-előrejelzési?<br/>Hogyan fogja a hétvégi az időjárás?|
 
 ### <a name="entities"></a>Entitások
 | Entitás neve | Leírás | Példák |
 | ---------------- |-----------------------|----|
-| Hely| A időjárási kérelmek abszolút helye.|Seattle<br/>Párizs<br/>Palo Alto|
+| Hely| Az időjárási kérelem abszolút helye.|Seattle<br/>Párizs<br/>Rendszert futtató Palo Alto|
 
 ## <a name="web"></a>Web 
-A webes tartomány megjelölésű biztosít egy weboldal-elérési útvonalon.
+A webes tartomány megjelölésű biztosít ellenőrizheti, hogy egy webhely.
 
 ### <a name="examples"></a>Példák
 ```
@@ -628,7 +628,7 @@ Navigate to www.bing.com
 ```
 
 ### <a name="intents"></a>Leképezések
-| Leképezési neve | Leírás | Példák |
+| Leképezés neve | Leírás | Példák |
 | ---------------- |-----------------------|----|
-| Navigálás | Nyisson meg egy adott webhelyet kérést. |Navigáljon a Facebook.com weboldalt<br/>Ugrás a www.twitter.com|
+| Navigálás | Egy kérelem egy adott webhelyre navigálhat. |Navigáljon a Facebook.com weboldalt<br/>Ugrás a www.twitter.com|
 

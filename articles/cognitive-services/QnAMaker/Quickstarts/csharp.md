@@ -1,6 +1,6 @@
 ---
-title: C# gyors üzembe helyezés Microsoft kérdés-válasz Maker API (V4) - Azure kognitív szolgáltatások |} Microsoft Docs
-description: Get információkat és a kód minták segítségével gyorsan Ismerkedés a Microsoft Translator szöveg API használatával a Microsoft Azure kognitív Services.
+title: A Microsoft a QnA Maker API (V4) – az Azure Cognitive Services rövid útmutatóban a C# |} A Microsoft Docs
+description: Get information és kód minták segítségével gyorsan használatának első lépései a Microsoft Translator Text API a Microsoft Cognitive Services, Azure-ban.
 services: cognitive-services
 documentationcenter: ''
 author: v-jaswel
@@ -9,48 +9,48 @@ ms.technology: qna-maker
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: v-jaswel
-ms.openlocfilehash: 15f0415819bc0ae51e8160bb2b4a12c409b13baa
-ms.sourcegitcommit: ea5193f0729e85e2ddb11bb6d4516958510fd14c
+ms.openlocfilehash: 4bcc52547b5610bcb8dfa9b0cc56b2afc40e3c32
+ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/21/2018
-ms.locfileid: "36301334"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37866083"
 ---
-# <a name="quickstart-for-microsoft-qna-maker-api-with-c"></a>Gyors üzembe helyezés Microsoft kérdés-válasz Maker a C# API 
+# <a name="quickstart-for-microsoft-qna-maker-api-with-c"></a>Gyors útmutató: a Microsoft a QnA Maker API, a C# használatával 
 <a name="HOLTop"></a>
 
-Ez a cikk bemutatja, hogyan használható a [Microsoft kérdés-válasz készítő API](../Overview/overview.md) a C# az alábbiakhoz.
+Ez a cikk bemutatja, hogyan használható a [Microsoft QnA Maker API](../Overview/overview.md) a C# használatával tegye a következőket.
 
 - [Hozzon létre egy új Tudásbázis.](#Create)
-- [Egy meglévő Tudásbázis frissítése.](#Update)
-- [A kérelem létrehozása vagy frissítése a Tudásbázis állapotának beolvasása.](#Status)
+- [Frissíti egy meglévő Tudásbázis.](#Update)
+- [Egy kérelem létrehozása vagy frissítése a Tudásbázis állapotának beolvasása.](#Status)
 - [Egy meglévő Tudásbázis közzététele.](#Publish)
-- [Cserélje ki egy meglévő Tudásbázis tartalmát.](#Replace)
+- [Cserélje le egy meglévő Tudásbázis tartalmát.](#Replace)
 - [Töltse le a Tudásbázis tartalmát.](#GetQnA)
-- [A kérdés a Tudásbázis segítségével választ kaphat.](#GetAnswers)
-- [A Tudásbázis adatainak beolvasása.](#GetKB)
-- [A megadott felhasználóhoz tartozó összes Tudásbázis körrel adatainak beolvasása.](#GetKBsByUser)
-- [A Tudásbázis törlése.](#Delete)
+- [Válaszok a Tudásbázis használva tehet fel kérdéseket.](#GetAnswers)
+- [Tudásbázis adatainak beolvasása.](#GetKB)
+- [A megadott felhasználóhoz tartozó összes tudásbázisok adatainak beolvasása.](#GetKBsByUser)
+- [Törölje a Tudásbázis.](#Delete)
 - [Az aktuális végpont kulcsok beolvasása.](#GetKeys)
 - [Az aktuális végpont kulcsok újbóli létrehozásához.](#PutKeys)
-- [Az aktuális készletében lévő word változásokból eredő beolvasása.](#GetAlterations)
-- [Cserélje le az aktuális készletében lévő word változásokból eredő.](#PutAlterations)
+- [Első word változtatások az aktuális készletét.](#GetAlterations)
+- [Cserélje le a word változtatások az aktuális készletét.](#PutAlterations)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Szüksége lesz [Visual Studio 2017](https://www.visualstudio.com/downloads/) ezt a kódot futtathatnak Windows. (Az ingyenes közösségi Edition fog működni.)
+Szüksége lesz [Visual Studio 2017](https://www.visualstudio.com/downloads/) ezt a kódot futtathatnak Windows. (Az ingyenes közösségi kiadása fog működni.)
 
-Rendelkeznie kell egy [kognitív szolgáltatások API-fiók](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) rendelkező **Microsoft kérdés-válasz készítő API**. Szüksége lesz egy fizetős kulcsot a [Azure irányítópult](https://portal.azure.com/#create/Microsoft.CognitiveServices).
+Rendelkeznie kell egy [Cognitive Services API-fiók](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) a **Microsoft QnA Maker API**. Szüksége lesz egy fizetős kulcs a [Azure irányítópultján](https://portal.azure.com/#create/Microsoft.CognitiveServices).
 
 <a name="Create"></a>
 
 ## <a name="create-knowledge-base"></a>Tudásbázis létrehozása
 
-Az alábbi kód létrehoz egy új Tudásbázis alap, használja a [létrehozása](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75ff) metódust.
+Az alábbi kód létrehoz egy új ismeretek körét, használja a [létrehozás](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75ff) metódust.
 
-1. Hozzon létre egy új C#-projektet a kedvenc ide.
+1. Hozzon létre egy új C#-projektet a kedvenc IDE-ben.
 2. Adja hozzá az alábbi kódot.
-3. Cserélje le a `key` hívóbetű érvényes az előfizetéshez tartozó értéket.
+3. Cserélje le a `key` az előfizetéshez tartozó érvényes hozzáférési kulcs-érték.
 4. Futtassa a programot.
 
 ```csharp
@@ -208,7 +208,7 @@ namespace QnAMaker
 
 **Tudásbázis válasz létrehozása**
 
-A sikeres válasz ad vissza a JSON-ban, a következő példában látható módon: 
+A sikeres válasz JSON-fájlban, az alábbi példában látható módon: 
 
 ```json
 {
@@ -237,17 +237,17 @@ A sikeres válasz ad vissza a JSON-ban, a következő példában látható módo
 }
 ```
 
-[Lap tetejére](#HOLTop)
+[Vissza a tetejére](#HOLTop)
 
 <a name="Update"></a>
 
-## <a name="update-knowledge-base"></a>Frissítés a Tudásbázis
+## <a name="update-knowledge-base"></a>Tudásbázis frissítése
 
-Az alábbi kód frissíti egy meglévő Tudásbázis alap, használja a [frissítés](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da7600) metódust.
+Az alábbi kód frissíti egy meglévő ismeretek körét, használja a [frissítés](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da7600) metódust.
 
-1. Hozzon létre egy új C#-projektet a kedvenc ide.
+1. Hozzon létre egy új C#-projektet a kedvenc IDE-ben.
 2. Adja hozzá az alábbi kódot.
-3. Cserélje le a `key` hívóbetű érvényes az előfizetéshez tartozó értéket.
+3. Cserélje le a `key` az előfizetéshez tartozó érvényes hozzáférési kulcs-érték.
 4. Futtassa a programot.
 
 ```csharp
@@ -407,9 +407,9 @@ namespace QnAMaker
 
 ```
 
-**Frissítés a Tudásbázis válasz**
+**Tudásbázis válasz frissítése**
 
-A sikeres válasz ad vissza a JSON-ban, a következő példában látható módon: 
+A sikeres válasz JSON-fájlban, az alábbi példában látható módon: 
 
 ```json
 {
@@ -431,25 +431,25 @@ A sikeres válasz ad vissza a JSON-ban, a következő példában látható módo
 Press any key to continue.
 ```
 
-[Lap tetejére](#HOLTop)
+[Vissza a tetejére](#HOLTop)
 
 <a name="Status"></a>
 
-## <a name="get-request-status"></a>Kérelem állapota
+## <a name="get-request-status"></a>Kérelem állapotának beolvasása
 
-Hívása a [művelet](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/operations_getoperationdetails) metódus létrehozása vagy frissítése a Tudásbázis kérelem állapotának ellenőrzéséhez. Ez a módszer használatáról megtekintéséhez lásd: a minta kódját a [létrehozása](#Create) vagy [frissítés](#Update) metódust.
+Hívása a [művelet](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/operations_getoperationdetails) metódus egy kérelmet létrehozni vagy frissíteni a Tudásbázis állapotának ellenőrzéséhez. Szeretné látni, ez a módszer használatáról, tekintse át a mintakód a [létrehozás](#Create) vagy [frissítés](#Update) metódust.
 
-[Lap tetejére](#HOLTop)
+[Vissza a tetejére](#HOLTop)
 
 <a name="Publish"></a>
 
 ## <a name="publish-knowledge-base"></a>Tudásbázis közzététele
 
-A következő kód egy meglévő Tudásbázis alap, használatával tesz közzé a [közzététel](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75fe) metódust.
+A következő kódot egy meglévő ismeretek körét, használatával teszi közzé a [közzététel](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75fe) metódust.
 
-1. Hozzon létre egy új C#-projektet a kedvenc ide.
+1. Hozzon létre egy új C#-projektet a kedvenc IDE-ben.
 2. Adja hozzá az alábbi kódot.
-3. Cserélje le a `key` hívóbetű érvényes az előfizetéshez tartozó értéket.
+3. Cserélje le a `key` az előfizetéshez tartozó érvényes hozzáférési kulcs-érték.
 4. Futtassa a programot.
 
 ```csharp
@@ -526,7 +526,7 @@ namespace QnAMaker
 
 **Tudásbázis válasz közzététele**
 
-A sikeres válasz ad vissza a JSON-ban, a következő példában látható módon: 
+A sikeres válasz JSON-fájlban, az alábbi példában látható módon: 
 
 ```json
 {
@@ -534,17 +534,17 @@ A sikeres válasz ad vissza a JSON-ban, a következő példában látható módo
 }
 ```
 
-[Lap tetejére](#HOLTop)
+[Vissza a tetejére](#HOLTop)
 
 <a name="Replace"></a>
 
 ## <a name="replace-knowledge-base"></a>Cserélje le a Tudásbázis
 
-A következő kódot a felváltja a tartalmát a megadott alap, használatával Tudásbázis a [cseréje](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/knowledgebases_publish) metódust.
+A következő kódot váltja fel a körét, használja a megadott Tudásbázis tartalmát a [cseréje](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/knowledgebases_publish) metódust.
 
-1. Hozzon létre egy új C#-projektet a kedvenc ide.
+1. Hozzon létre egy új C#-projektet a kedvenc IDE-ben.
 2. Adja hozzá az alábbi kódot.
-3. Cserélje le a `key` hívóbetű érvényes az előfizetéshez tartozó értéket.
+3. Cserélje le a `key` az előfizetéshez tartozó érvényes hozzáférési kulcs-érték.
 4. Futtassa a programot.
 
 ```csharp
@@ -641,9 +641,9 @@ namespace QnAMaker
 
 ```
 
-**Cserélje le a Tudásbázis válasz**
+**Cserélje le a Tudásbázis-válasz**
 
-A sikeres válasz ad vissza a JSON-ban, a következő példában látható módon: 
+A sikeres válasz JSON-fájlban, az alábbi példában látható módon: 
 
 ```json
 {
@@ -651,17 +651,17 @@ A sikeres válasz ad vissza a JSON-ban, a következő példában látható módo
 }
 ```
 
-[Lap tetejére](#HOLTop)
+[Vissza a tetejére](#HOLTop)
 
 <a name="GetQnA"></a>
 
-## <a name="download-the-contents-of-a-knowledge-base"></a>A Tudásbázis tartalmának letöltése
+## <a name="download-the-contents-of-a-knowledge-base"></a>Töltse le a Tudásbázis tartalmát
 
-A következő kódot a tartalmát a megadott alap, használatával Tudásbázis letölti a [töltse le a Tudásbázis](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/knowledgebases_download) metódust.
+Az alábbi kód letölti a körét, használja a megadott Tudásbázis tartalmát a [töltse le a Tudásbázis](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/knowledgebases_download) metódust.
 
-1. Hozzon létre egy új C#-projektet a kedvenc ide.
+1. Hozzon létre egy új C#-projektet a kedvenc IDE-ben.
 2. Adja hozzá az alábbi kódot.
-3. Cserélje le a `key` hívóbetű érvényes az előfizetéshez tartozó értéket.
+3. Cserélje le a `key` az előfizetéshez tartozó érvényes hozzáférési kulcs-érték.
 4. Futtassa a programot.
 
 ```csharp
@@ -733,9 +733,9 @@ namespace QnAMaker
 
 ```
 
-**Töltse le a Tudásbázis válasz**
+**Töltse le a Tudásbázis-válasz**
 
-A sikeres válasz ad vissza a JSON-ban, a következő példában látható módon: 
+A sikeres válasz JSON-fájlban, az alábbi példában látható módon: 
 
 ```json
 {
@@ -768,19 +768,19 @@ A sikeres válasz ad vissza a JSON-ban, a következő példában látható módo
 }
 ```
 
-[Lap tetejére](#HOLTop)
+[Vissza a tetejére](#HOLTop)
 
 <a name="GetAnswers"></a>
 
-## <a name="get-answers-to-a-question-by-using-a-knowledge-base"></a>A Tudásbázis segítségével könnyebben nyerhet a kérdésekre adott válaszok
+## <a name="get-answers-to-a-question-by-using-a-knowledge-base"></a>Tudásbázis segítségével egy kérdésre adott válaszok
 
-A következő kód jogosultságot kap a választ egy kérdést, a megadott Tudásbázis segítségével, használja a **válaszok készítése** metódust.
+A következő kód lekéri egy kérdést a megadott Tudásbázis használatával, a segítségével választ a **készítése a válaszok** metódust.
 
-1. Hozzon létre egy új C#-projektet a kedvenc ide.
+1. Hozzon létre egy új C#-projektet a kedvenc IDE-ben.
 1. Adja hozzá az alábbi kódot.
-1. Cserélje le a `host` a webhely nevét, a kérdések és válaszok készítő előfizetéshez tartozó értéket. További információ: [Maker kérdések és válaszok szolgáltatás létrehozása](../How-To/set-up-qnamaker-service-azure.md).
-1. Cserélje le a `endpoint_key` érték az előfizetéshez tartozó érvényes végpontot kulccsal. Megjegyzés: Ez nem ugyanaz, mint az Előfizetés-kulcs. A végpont kulcsok használatával kaphat a [beolvasni végpontot kulcsok](#GetKeys) metódust.
-1. Cserélje le a `kb` az érték a válaszok szeretné lekérdezni a Tudásbázis Azonosítóját. Vegye figyelembe a Tudásbázis kell már közzétett használatával a [közzététel](#Publish) metódust.
+1. Cserélje le a `host` a webhely nevét, a QnA Maker előfizetéshez tartozó értéket. További információ: [QnA Maker szolgáltatás létrehozása](../How-To/set-up-qnamaker-service-azure.md).
+1. Cserélje le a `endpoint_key` az előfizetéshez tartozó érvényes végponti kulcs-érték. Vegye figyelembe, hogy ez nem ugyanaz, mint az előfizetési kulcs. A végpont kulcsok használatával megtekintheti a [végpont kulcsok beolvasása](#GetKeys) metódus.
+1. Cserélje le a `kb` értéket választ szeretné lekérdezni a Tudásbázis Azonosítóját. Vegye figyelembe a Tudásbázis kell már közzétett használatával a [közzététel](#Publish) metódust.
 1. Futtassa a programot.
 
 ```csharp
@@ -849,9 +849,9 @@ namespace QnAMaker
 }
 ```
 
-**Válaszok tarozik**
+**Válaszok válasz**
 
-A sikeres válasz ad vissza a JSON-ban, a következő példában látható módon: 
+A sikeres válasz JSON-fájlban, az alábbi példában látható módon: 
 
 ```json
 {
@@ -871,17 +871,17 @@ A sikeres válasz ad vissza a JSON-ban, a következő példában látható módo
 }
 ```
 
-[Lap tetejére](#HOLTop)
+[Vissza a tetejére](#HOLTop)
 
 <a name="GetKB"></a>
 
-## <a name="get-information-about-a-knowledge-base"></a>A Tudásbázis adatainak beolvasása
+## <a name="get-information-about-a-knowledge-base"></a>Tudásbázis adatainak lekérése
 
-Az alábbi kód lekérdezi a megadott Tudásbázis információ alap, használja a [Tudásbázis részletes](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/knowledgebases_getknowledgebasedetails) metódust.
+Az alábbi kód adatainak beolvasása, a megadott Tudásbázis körét, használja a [részletek a Tudásbázis](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/knowledgebases_getknowledgebasedetails) metódust.
 
-1. Hozzon létre egy új C#-projektet a kedvenc ide.
+1. Hozzon létre egy új C#-projektet a kedvenc IDE-ben.
 2. Adja hozzá az alábbi kódot.
-3. Cserélje le a `key` hívóbetű érvényes az előfizetéshez tartozó értéket.
+3. Cserélje le a `key` az előfizetéshez tartozó érvényes hozzáférési kulcs-érték.
 4. Futtassa a programot.
 
 ```csharp
@@ -949,9 +949,9 @@ namespace QnAMaker
 
 ```
 
-**Tarozik Tudásbázis részletei**
+**Tudásbázis részletek válasz**
 
-A sikeres válasz ad vissza a JSON-ban, a következő példában látható módon: 
+A sikeres válasz JSON-fájlban, az alábbi példában látható módon: 
 
 ```json
 {
@@ -971,17 +971,17 @@ A sikeres válasz ad vissza a JSON-ban, a következő példában látható módo
 }
 ```
 
-[Lap tetejére](#HOLTop)
+[Vissza a tetejére](#HOLTop)
 
 <a name="GetKBsByUser"></a>
 
-## <a name="get-all-knowledge-bases-for-a-user"></a>Egy felhasználó összes Tudásbázis körrel beolvasása
+## <a name="get-all-knowledge-bases-for-a-user"></a>Felhasználó minden tudásbázisok lekérése
 
-A következő kód egy adott felhasználó összes Tudásbázis körrel információ lekérése használatával a [Tudásbázis alapjait, felhasználói beolvasása](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/knowledgebases_getknowledgebasesforuser) metódust.
+A következő kódot egy adott felhasználó összes tudásbázisok olyan adatainak beolvasása használatával a [első felhasználó tudásbázisok](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/knowledgebases_getknowledgebasesforuser) metódust.
 
-1. Hozzon létre egy új C#-projektet a kedvenc ide.
+1. Hozzon létre egy új C#-projektet a kedvenc IDE-ben.
 2. Adja hozzá az alábbi kódot.
-3. Cserélje le a `key` hívóbetű érvényes az előfizetéshez tartozó értéket.
+3. Cserélje le a `key` az előfizetéshez tartozó érvényes hozzáférési kulcs-érték.
 4. Futtassa a programot.
 
 ```csharp
@@ -1046,9 +1046,9 @@ namespace QnAMaker
 
 ```
 
-**A felhasználói válaszra Tudásbázis körrel beolvasása**
+**A felhasználói válaszra tudásbázisok beolvasása**
 
-A sikeres válasz ad vissza a JSON-ban, a következő példában látható módon: 
+A sikeres válasz JSON-fájlban, az alábbi példában látható módon: 
 
 ```json
 {
@@ -1084,17 +1084,17 @@ A sikeres válasz ad vissza a JSON-ban, a következő példában látható módo
 Press any key to continue.
 ```
 
-[Lap tetejére](#HOLTop)
+[Vissza a tetejére](#HOLTop)
 
 <a name="Delete"></a>
 
-## <a name="delete-a-knowledge-base"></a>A Tudásbázis törlése
+## <a name="delete-a-knowledge-base"></a>Tudásbázis törlése
 
-A következő kódot a megadott alap, használatával Tudásbázis törli a [Tudásbázis törlése](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/knowledgebases_delete) metódust.
+Az alábbi kód törli a megadott alap használatával ismereteket a [Tudásbázis törlése](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/knowledgebases_delete) metódust.
 
-1. Hozzon létre egy új C#-projektet a kedvenc ide.
+1. Hozzon létre egy új C#-projektet a kedvenc IDE-ben.
 2. Adja hozzá az alábbi kódot.
-3. Cserélje le a `key` hívóbetű érvényes az előfizetéshez tartozó értéket.
+3. Cserélje le a `key` az előfizetéshez tartozó érvényes hozzáférési kulcs-érték.
 4. Futtassa a programot.
 
 ```csharp
@@ -1170,7 +1170,7 @@ namespace QnAMaker
 
 **Tudásbázis válasz törlése**
 
-A sikeres válasz ad vissza a JSON-ban, a következő példában látható módon: 
+A sikeres válasz JSON-fájlban, az alábbi példában látható módon: 
 
 ```json
 {
@@ -1178,17 +1178,17 @@ A sikeres válasz ad vissza a JSON-ban, a következő példában látható módo
 }
 ```
 
-[Lap tetejére](#HOLTop)
+[Vissza a tetejére](#HOLTop)
 
 <a name="GetKeys"></a>
 
-## <a name="get-endpoint-keys"></a>Végpont kulcsok beszerzése
+## <a name="get-endpoint-keys"></a>Végpont-kulcsok beolvasása
 
-A következő kód jogosultságot kap a jelenlegi végpont-kulcsokat, a használatával a [beolvasni végpontot kulcsok](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/endpointkeys_getendpointkeys) metódust.
+A következő kódot lekérdezi az aktuális végpont kulcsok használatával a [végpont kulcsok beolvasása](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/endpointkeys_getendpointkeys) metódust.
 
-1. Hozzon létre egy új C#-projektet a kedvenc ide.
+1. Hozzon létre egy új C#-projektet a kedvenc IDE-ben.
 2. Adja hozzá az alábbi kódot.
-3. Cserélje le a `key` hívóbetű érvényes az előfizetéshez tartozó értéket.
+3. Cserélje le a `key` az előfizetéshez tartozó érvényes hozzáférési kulcs-érték.
 4. Futtassa a programot.
 
 ```csharp
@@ -1252,9 +1252,9 @@ namespace QnAMaker
 }
 ```
 
-**Tarozik végpont kulcsok**
+**Végpont kulcsok válasz**
 
-A sikeres válasz ad vissza a JSON-ban, a következő példában látható módon: 
+A sikeres válasz JSON-fájlban, az alábbi példában látható módon: 
 
 ```json
 {
@@ -1263,17 +1263,17 @@ A sikeres válasz ad vissza a JSON-ban, a következő példában látható módo
 }
 ```
 
-[Lap tetejére](#HOLTop)
+[Vissza a tetejére](#HOLTop)
 
 <a name="PutKeys"></a>
 
 ## <a name="refresh-endpoint-keys"></a>Végpont kulcsok frissítése
 
-A következő kódot az aktuális végpont kulcsok használatával újragenerálja a [végpont kulcsok frissítése](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/endpointkeys_refreshendpointkeys) metódust.
+Aktuális végpont kulcsainak, használatával újragenerálása a következő kódot a [végpont kulcsok frissítése](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/endpointkeys_refreshendpointkeys) metódust.
 
-1. Hozzon létre egy új C#-projektet a kedvenc ide.
+1. Hozzon létre egy új C#-projektet a kedvenc IDE-ben.
 2. Adja hozzá az alábbi kódot.
-3. Cserélje le a `key` hívóbetű érvényes az előfizetéshez tartozó értéket.
+3. Cserélje le a `key` az előfizetéshez tartozó érvényes hozzáférési kulcs-érték.
 4. Futtassa a programot.
 
 ```csharp
@@ -1340,9 +1340,9 @@ namespace QnAMaker
 }
 ```
 
-**Frissítse a végpont kulcsok válasz**
+**Kulcsok válasz végpont frissítése**
 
-A sikeres válasz ad vissza a JSON-ban, a következő példában látható módon: 
+A sikeres válasz JSON-fájlban, az alábbi példában látható módon: 
 
 ```json
 {
@@ -1351,17 +1351,17 @@ A sikeres válasz ad vissza a JSON-ban, a következő példában látható módo
 }
 ```
 
-[Lap tetejére](#HOLTop)
+[Vissza a tetejére](#HOLTop)
 
 <a name="GetAlterations"></a>
 
-## <a name="get-word-alterations"></a>Word változásokból eredő beolvasása
+## <a name="get-word-alterations"></a>A word változásokból beolvasása
 
-Az alábbi kód lekérdezi az aktuális word változtatások, amely használatával a [töltse le a változások](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75fc) metódust.
+A következő kód lekéri a jelenlegi word változtatások, amely használatával a [töltse le a változtatások](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75fc) metódust.
 
-1. Hozzon létre egy új C#-projektet a kedvenc ide.
+1. Hozzon létre egy új C#-projektet a kedvenc IDE-ben.
 2. Adja hozzá az alábbi kódot.
-3. Cserélje le a `key` hívóbetű érvényes az előfizetéshez tartozó értéket.
+3. Cserélje le a `key` az előfizetéshez tartozó érvényes hozzáférési kulcs-érték.
 4. Futtassa a programot.
 
 ```csharp
@@ -1425,9 +1425,9 @@ namespace QnAMaker
 }
 ```
 
-**Word változásokból eredő válasz lekérése**
+**A word változásokból válasz**
 
-A sikeres válasz ad vissza a JSON-ban, a következő példában látható módon: 
+A sikeres válasz JSON-fájlban, az alábbi példában látható módon: 
 
 ```json
 {
@@ -1442,17 +1442,17 @@ A sikeres válasz ad vissza a JSON-ban, a következő példában látható módo
 }
 ```
 
-[Lap tetejére](#HOLTop)
+[Vissza a tetejére](#HOLTop)
 
 <a name="PutAlterations"></a>
 
-## <a name="replace-word-alterations"></a>Cserélje le a word változások
+## <a name="replace-word-alterations"></a>Cserélje le a word-átalakítások
 
-A következő kódot a felváltja az aktuális word változtatások, amely használatával a [cserélje le a változások](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75fd) metódust.
+A következő kódot váltja fel az aktuális word változtatások, amely használatával a [cserélje le a változtatások](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75fd) metódust.
 
-1. Hozzon létre egy új C#-projektet a kedvenc ide.
+1. Hozzon létre egy új C#-projektet a kedvenc IDE-ben.
 2. Adja hozzá az alábbi kódot.
-3. Cserélje le a `key` hívóbetű érvényes az előfizetéshez tartozó értéket.
+3. Cserélje le a `key` az előfizetéshez tartozó érvényes hozzáférési kulcs-érték.
 4. Futtassa a programot.
 
 ```csharp
@@ -1549,9 +1549,9 @@ namespace QnAMaker
 }
 ```
 
-**Cserélje le a word változásokból eredő válasz**
+**Cserélje le a word változásokból válasz**
 
-A sikeres válasz ad vissza a JSON-ban, a következő példában látható módon: 
+A sikeres válasz JSON-fájlban, az alábbi példában látható módon: 
 
 ```json
 {
@@ -1559,13 +1559,13 @@ A sikeres válasz ad vissza a JSON-ban, a következő példában látható módo
 }
 ```
 
-[Lap tetejére](#HOLTop)
+[Vissza a tetejére](#HOLTop)
 
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Kérdések és válaszok Maker (V4) REST API-referencia](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75ff)
+> [A QnA Maker (V4) REST API-referencia](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75ff)
 
 ## <a name="see-also"></a>Lásd még 
 
-[Kérdések és válaszok készítő áttekintése](../Overview/overview.md)
+[A QnA Maker – áttekintés](../Overview/overview.md)

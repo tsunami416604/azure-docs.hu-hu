@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 05/21/2018
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 8aea56017d38b57d36f5f1d42e2d4e9ed1d809e5
-ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
+ms.openlocfilehash: f807264dc2c2e07ccd175fb1b0427b7ce9e9f524
+ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37346093"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37868245"
 ---
 # <a name="volumes-with-azure-disks"></a>Az Azure-lemezek kötetek
 
@@ -51,6 +51,10 @@ A lemez létrehozása után az alábbihoz hasonló kimenetnek kell megjelennie. 
 ```
 > [!NOTE]
 > Azure managed disksbe számlázása Termékváltozat által egy adott méretet. Ezen SKU-k és közé eső 32GiB S4 vagy P4 szintű lemezek 4TiB S50-es vagy P50 lemez. Továbbá, az átviteli sebesség és IOPS-teljesítmény egy prémium szintű felügyelt lemez a Termékváltozat és a példány mérete az AKS-fürt csomópontjainak függ. Lásd: [díjszabás és a felügyelt lemezek teljesítményének][managed-disk-pricing-performance].
+
+> [!NOTE]
+> Ha a lemez hozzon létre egy külön erőforráscsoportban van szüksége, is kell a fürthöz tartozó egyszerű szolgáltatásról az Azure Kubernetes Service (AKS) ad hozzá a lemezt a tartalmazó erőforráscsoportot a `Contributor` szerepkör. 
+>
 
 ## <a name="mount-disk-as-volume"></a>Lemez csatolása kötetként
 

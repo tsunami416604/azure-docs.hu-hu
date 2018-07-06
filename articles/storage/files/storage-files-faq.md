@@ -1,6 +1,6 @@
 ---
-title: Gyakori kérdések (GYIK) Azure-fájlok |} Microsoft Docs
-description: Azure-fájlokkal kapcsolatban gyakran feltett kérdésekre adott válaszokat megkeresése
+title: Gyakori kérdések (GYIK) az Azure Files |} A Microsoft Docs
+description: Azure Files szolgáltatással kapcsolatos gyakori kérdésekre adott válaszokat megkeresése
 services: storage
 documentationcenter: ''
 author: RenaShahMSFT
@@ -13,143 +13,143 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.date: 05/31/2018
 ms.author: renash
-ms.openlocfilehash: c78138fa06da4d83774f9a2270263a48d404b17a
-ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
+ms.openlocfilehash: d11ddb0bc15798187ccea22fe1a80a9c86162dcd
+ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36751855"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37866470"
 ---
-# <a name="frequently-asked-questions-faq-about-azure-files"></a>Azure-fájlok kapcsolatos gyakori kérdések (GYIK)
-[Az Azure Files](storage-files-introduction.md) teljes körűen felügyelt fájlmegosztást kínáló a felhőben, amelyek elérhetők a szabványos [Server Message Block (SMB) protokoll](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx). Akkor is csatlakoztathatja az Azure fájlmegosztások egyidejűleg felhőalapú vagy helyszíni üzemelő példányok esetében a Windows, Linux és macOS. Azure fájlmegosztásokat Windows kiszolgáló gépen a gyors hozzáférés megközelíti az adatok helyének Azure fájlszinkronizálás (előzetes verzió) segítségével képes gyorsítótárazni.
+# <a name="frequently-asked-questions-faq-about-azure-files"></a>Az Azure Files kapcsolatos gyakori kérdések (GYIK)
+[Az Azure Files](storage-files-introduction.md) teljes körűen felügyelt fájlmegosztást kínáló, amely az iparági szabványnak megfelelő keresztül érhető el a felhőben [Server Message Block (SMB) protokoll](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx). Azure-fájlmegosztások párhuzamosan csatlakoztathatja felhőbeli vagy helyszíni üzemelő példányok esetében a Windows, Linux és macOS. A Windows Server-gépek Azure-fájlmegosztások közel, ahol az adatok felhasználásának gyors hozzáférés az Azure File Sync (előzetes verzió) használatával képes gyorsítótárazni.
 
-Ebben a cikkben megválaszolunk Azure fájlok szolgáltatásokat és funkciókat, beleértve az Azure fájlszinkronizálás Azure fájlokkal kapcsolatos gyakori kérdésekre. Ha nem látja a választ a kérdésére, lépjen kapcsolatba velünk (a növekvő sorrendben) a következő csatornákon keresztül:
+Ez a cikk az Azure Files szolgáltatást és funkciót, beleértve az Azure File Sync az Azure Files kapcsolatos gyakori kérdésekre ad választ. Ha nem látja a választ a kérdésére, lépjen kapcsolatba velünk (a eszkalálásáról rendelésben) a következő csatornákon keresztül:
 
-1. Ez a cikk megjegyzéseket tartalmazó részét.
-2. [Az Azure Storage fórum](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazuredata).
-3. [Azure-fájlokat UserVoice](https://feedback.azure.com/forums/217298-storage/category/180670-files). 
-4. A Microsoft ügyfélszolgálata. Az Azure portálon, egy új támogatási kérelem létrehozásához a **súgó** lapon jelölje be a **súgó + támogatás** gombra, és válassza **új támogatja a kérelem**.
+1. Ez a cikk a megjegyzéseket.
+2. [Az Azure Storage-fórum](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazuredata).
+3. [Azure Files UserVoice](https://feedback.azure.com/forums/217298-storage/category/180670-files). 
+4. A Microsoft ügyfélszolgálata. Hozhat létre egy új támogatási kérelmet az Azure Portalon, az a **súgó** lapon jelölje be a **súgó + támogatás** gombra, és válassza ki **új támogatási kérelem**.
 
 ## <a name="general"></a>Általános kérdések
 * <a id="why-files-useful"></a>
-**Hogyan van hasznos az Azure-fájlok?**  
-   Használhatja az Azure fájlokat fájlmegosztásokat hozhat létre a felhőben anélkül, hogy a terhelést a fizikai kiszolgáló, az eszköz vagy a készülék kezeléséért. Azt a munkához monoton, beleértve az operációs rendszer frissítéseinek alkalmazása és cseréje a hibás lemezeket. Azure-fájlok segítségével a forgatókönyvekkel kapcsolatos további tudnivalókért lásd: [miért Azure Files szolgáltatás hasznos](storage-files-introduction.md#why-azure-files-is-useful).
+**Hogyan érdemes az Azure Files?**  
+   Az Azure Files segítségével fájlmegosztásokat hozhat létre a felhőben anélkül, hogy kezeléséért egy fizikai kiszolgálón, az eszköz vagy a készülék járó többletterhelést. Monoton munkát végzünk, beleértve az operációs rendszer frissítéseinek alkalmazása és a hibás lemezek. A forgatókönyvek, amelyek az Azure Files segítségével az kapcsolatos további információkért lásd: [akkor hasznos, miért az Azure Files](storage-files-introduction.md#why-azure-files-is-useful).
 
 * <a id="file-access-options"></a>
-**Mik azok a fájlok eléréséhez Azure-fájlokban szereplő különböző módokon?**  
-    Akkor is csatlakoztathatja a fájlmegosztást a helyi számítógépen az SMB 3.0 protokoll használatával, vagy használhatja a hasonló eszközök [Tártallózó](http://storageexplorer.com/) a fájlmegosztás található fájlokat. Az alkalmazásból használhatja storage ügyfélkódtáraival, a REST API-k, a PowerShell vagy az Azure CLI-t a fájlok az Azure fájlmegosztás eléréséhez.
+**Mik azok a fájlok eléréséhez az Azure Files különböző módokon?**  
+    Akkor is csatlakoztathatja a fájlmegosztást a helyi gépen az SMB 3.0 protokoll használatával, vagy használhatja a hasonló eszközök [Tártallózó](http://storageexplorer.com/) fájlmegosztásban lévő fájlok eléréséhez. Az alkalmazásból használhatja tároló ügyfélkódtárai, a REST API-k, a PowerShell vagy az Azure CLI a fájlok az Azure-fájlmegosztás eléréséhez.
 
 * <a id="what-is-afs"></a>
-**Mi az Azure fájlszinkronizálás?**  
-    Azure fájlszinkronizálás segítségével központosíthatja a fájlmegosztások a szervezet Azure fájlokban, ugyanakkor változatlanul megőrizze a rugalmasság, a teljesítmény és a kompatibilitási egy helyszíni fájlkiszolgáló. Azure fájl szinkronizálása a Windows Server-gépek átalakítja a Azure fájlmegosztás gyors gyorsítótárába. Minden protokoll, amely a Windows Server helyileg, az adatok eléréséhez használhatja, például SMB, a hálózati fájlrendszer (NFS) és a fájl átvitele protokoll Service (ftps-t). Akkor is annyi gyorsítótárak világszerte szükség szerint.
+**Mi az Azure File Sync?**  
+    Az Azure File Sync használatával fájlmegosztásainak a szervezet az Azure Files között, miközben gondoskodik a rugalmasságát, teljesítményét és kompatibilitását a helyszíni fájlkiszolgálók. Az Azure File Sync a Windows Server rendszerű gépek az Azure-fájlmegosztás gyors gyorsítótáraivá alakítja át. Helyileg, az adatok eléréséhez a Windows Serveren elérhető bármely protokollt használhatja, beleértve az SMB, a hálózati fájlrendszer (NFS) és a File Transfer Protocol szolgáltatás (FTPS). Tetszőleges számú gyorsítótárak világszerte igény szerint is rendelkezhet.
 
 * <a id="files-versus-blobs"></a>
-**Mire használható az Azure fájlmegosztások Azure Blob storage és az adataimat?**  
-    Az Azure Files és az Azure Blob storage nyújtanak módjai nagy mennyiségű adat tárolása a felhőben, ők azonban hasznos némileg eltérő célokra. 
+**Miért célszerű használni az Azure-fájlmegosztások az Azure Blob storage és az adataim?**  
+    Az Azure Files és az Azure Blob storage módjai mindkettő lehetővé teszi nagy mennyiségű adat tárolása a felhőben, de hasznosak lehetnek némileg különböző célokra. 
     
-    Az Azure Blob storage akkor hasznos, strukturálatlan adatok tárolásához igénylő jelentős mértékű, natív felhőalapú alkalmazásokhoz. Maximalizálása a teljesítmény és méretezhetőség érdekében az Azure Blob Storage tárolóban egy egyszerűbb tárolási absztrakciós, mint egy igaz fájlrendszer. Azure Blob Storage tárolóban végezheti el, csak a REST-alapú ügyfél függvénytárainak (vagy közvetlenül a REST-alapú protokollon keresztül).
+    Az Azure Blob storage nagy léptékben méretezhető, felhőbeli működésre, a strukturálatlan adatok tárolásához igénylő alkalmazások esetében hasznos. A maximális teljesítmény és méretezhetőség érdekében az Azure Blob storage egy egyszerűbb tárolás absztrakciós, mint egy valós fájlrendszer. Elérheti az Azure Blob storage csak REST-alapú klienskódtárak révén (vagy közvetlenül a REST-alapú protokollon keresztül).
 
-    Az Azure Files szolgáltatás kifejezetten egy fájlrendszer. Az Azure Files ismert, és a helyszíni operációs rendszerek használata évnyi kedvelt minden fájl kivonatok rendelkezik. Azure Blob Storage tárolóban, például a Azure fájlok egy REST-felületen és a REST-alapú ügyfél függvénytárainak kínál. Azure Blob Storage tárolóban, ellentétben a Azure fájlok az Azure fájlmegosztások SMB hozzáférést biztosít. SMB használatával akkor is csatlakoztathatja az Azure fájlmegosztások közvetlenül Windows, Linux vagy macOS, vagy a helyszíni vagy felhőalapú virtuális gépek, a programozás vagy különleges illesztőprogramok csatolása a fájlrendszer nélkül. A helyszíni fájlkiszolgálókon lévő Azure fájlmegosztásokat Azure fájlszinkronizálás használatával gyorsan elérheti őket, az adatok helyének hamarosan képes gyorsítótárazni. 
+    Az Azure Files egy kifejezetten egy fájlrendszer. Az Azure Files ismert és kedvelt a munka a helyi operációs rendszer összes fájl kivonatok rendelkezik. Azure Blob storage, például a az Azure Files egy REST-felület és a REST-alapú klienskódtárak kínál. Ellentétben az Azure Blob storage az Azure Files Azure-fájlmegosztások SMB hozzáférést biztosít. Az SMB használatával csatlakoztathatja Azure-fájlmegosztások közvetlenül Windows, Linux vagy MacOS rendszerű, helyszíni vagy felhőbeli VM-eken, kód írása és speciális illesztőprogramok csatolása a fájlrendszer nélkül. A helyszíni fájlkiszolgálókon lévő Azure-fájlmegosztások a gyors hozzáférés érdekében közel, ahol az adatokat használja az Azure File Sync használatával képes gyorsítótárazni. 
    
-    Az Azure-fájlok és az Azure Blob Storage tárolóban különbségei részletesebb leírásáért lásd: [Azure Blob Storage tárolóban, a Azure fájlok vagy az Azure-lemezek használatára való](../common/storage-decide-blobs-files-disks.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json). Azure Blob Storage tárolóban kapcsolatos további információkért lásd: [Blob storage bemutatása](../blobs/storage-blobs-introduction.md).
+    Az Azure Files és az Azure Blob storage közötti különbségekről további részletes ismertetését lásd: [való használata az Azure Blob storage, az Azure Files és az Azure Disks](../common/storage-decide-blobs-files-disks.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json). Azure Blob storage szolgáltatással kapcsolatos további tudnivalókért lásd: [Blob storage bemutatása](../blobs/storage-blobs-introduction.md).
 
-* <a id="files-versus-disks"></a>**Mire használható az Azure fájlmegosztások Azure lemezek helyett?**  
-    Egy Azure lemezeken található egyszerűen egy lemezt. Egy önálló önmagában lemez nem túl hasznos. Lehet értéket kiolvasni a Azure-lemezeket, egy lemezt kell csatlakoztatni az Azure-ban futó virtuális gép. Azure-lemezeket használható minden olyan lemezt egy helyszíni kiszolgálón szeretné használni. Az operációs rendszer tárolására, egy operációs rendszer a lapozófájl vagy az alkalmazás dedikált tárolóként használható. Egy Azure lemezek érdekes használja, ha egy fájlkiszolgáló ugyanazon a helyen, ahol az az Azure fájlmegosztások segítségével lehet használni a felhőben. Egy fájlkiszolgáló Azure virtuális gépek telepítése módja a nagy teljesítményű a file storage beolvasása az Azure-ban, ha jelenleg nem támogatottak az Azure-fájlok (például az NFS protokoll támogatása, vagy a prémium szintű storage) telepítési lehetőségeket. 
+* <a id="files-versus-disks"></a>**Miért célszerű használni az Azure-fájlmegosztások Azure-lemezek helyett?**  
+    Az Azure Disks egy lemez egyszerűen egy lemez. Egy önálló önmagában lemez nem túl hasznos. Az Azure Disks érték lekéréséhez a lemez csatolása kell az Azure-ban futó virtuális géphez. Azure-lemezek minden, egy helyszíni kiszolgálón szeretné használni a lemez is használható. Egy operációs rendszer lemezként, lapozóterület-os vagy egy alkalmazás dedikált tárolására használható. Egy Azure-lemezek érdekes használja, ha egy fájlkiszolgáló ugyanazon a helyen, ahol az Azure-fájlmegosztás segítségével lehet használni a felhőben. Egy Azure Virtual Machines fájlkiszolgáló üzembe helyezésének módja a nagy teljesítményű kaphat a file storage az Azure-ban, ha a központi telepítési beállítások, amelyek jelenleg nem támogatottak az Azure Files (például az NFS protokoll támogatása vagy a prémium szintű storage) van szüksége. 
 
-    A fájlkiszolgálót futtató Azure lemezzel háttér-tárolóként általában azonban sokkal drágább, mint az Azure fájlmegosztások használata néhány okokból. Először mellett a lemezes tárolás fizet, is kell fizetnie egy vagy több Azure virtuális gépeken futó járó költségek. Másodszor is kell kezelni a virtuális gépeket, a fájlkiszolgáló futtatásához használt. Például való telepítésért felelős az operációs rendszer frissítései. Végezetül végső soron van szüksége a gyorsítótárazott helyszíni az adatokat, esetén az Ön számára a állíthat be és felügyelhet replikációs technológiák, például elosztott fájl rendszer replikációs (DFSR), hogy fordulhat elő.
+    Azonban a fájlkiszolgálót futtató Azure-lemezek háttér-tárolóként általában nem sokkal drágábbak, mint az Azure-fájlmegosztások használatával több okból is. Először a lemezes tárhely gyorsítótárpéldányok is külön kell fizetni egy vagy több Azure virtuális gépeken futó járó költségek. Másodszor is kell kezelni a virtuális gépek, amelyek a fájlkiszolgálón futtassa. Ha például Ön felelős az operációs rendszer frissítései. Végül végső soron az adatokat helyszíni gyorsítótárazott van szüksége, hogy, állítsa be, és kezelheti a replikációs technológiák, például az elosztott fájl replikációs (DFSR), győződjön meg, hogy történjen.
 
-    Egyik módszer az első a legjobb Azure fájlok és a fájlkiszolgáló futó Azure virtuális gépek (mellett háttér-tárolóként Azure lemez felhasználásával) egy fájlkiszolgálón, amely a virtuális gép felhőben található Azure fájlszinkronizálás telepíteni fogja. Ha Azure fájlmegosztás ugyanabban a régióban, mint a fájlkiszolgáló, engedélyezheti a felhő rétegezéséhez, és állítsa be a szabad terület százalékos mennyisége maximális (99 %). Ez biztosítja, hogy a minimális duplikálva lettek-e az adatok. Bármely kívánt alkalmazásokat a fájl-kiszolgálókkal, például támogatja az NFS-protokollt igénylő alkalmazások is használhatja.
+    Bevezetés az Azure Files és a egy fájlkiszolgálón, amely az Azure Virtual machines szolgáltatásban üzemeltetett (mellett az Azure-lemezek használatával háttér-tároló) a legjobb egyik módja, hogy egy fájlkiszolgálón, amely egy felhőalapú virtuális gép az Azure File Sync telepítése. Ha az Azure-fájlmegosztást a fájlkiszolgáló ugyanabban a régióban, felhőbeli rétegezés, és állítsa be a kötetet a szabad terület százalékos aránya (99 %) legfeljebb engedélyezheti. Ez biztosítja, hogy a minimális adatredundancia. Is használhatja az alkalmazásokat, a fájlkiszolgálók, az azt szeretné, például az NFS-protokollt igénylő alkalmazások támogatásához.
 
-    A beállítás a egy nagy teljesítményű és magas rendelkezésre állású fájlkiszolgálót az Azure-ban való beállításának kapcsolatos információkért lásd: [telepítése infrastruktúra-szolgáltatási virtuális gép vendég fürtök a Microsoft Azure-ban](https://blogs.msdn.microsoft.com/clustering/2017/02/14/deploying-an-iaas-vm-guest-clusters-in-microsoft-azure/). Azure-fájlok és az Azure lemezek közötti különbségekről részletesebb leírását lásd: [Azure Blob Storage tárolóban, a Azure fájlok vagy az Azure-lemezek használatára való](../common/storage-decide-blobs-files-disks.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json). Azure-lemezeket kapcsolatos további információkért lásd: [Azure felügyelt lemezekhez – áttekintés](../../virtual-machines/windows/managed-disks-overview.md).
+    A beállítás a egy nagy teljesítményű és magas rendelkezésre állású fájlkiszolgáló az Azure-ban való beállításának kapcsolatos információkért lásd: [telepítése IaaS virtuális gépek vendégfürtjének a Microsoft Azure-ban](https://blogs.msdn.microsoft.com/clustering/2017/02/14/deploying-an-iaas-vm-guest-clusters-in-microsoft-azure/). Az Azure Files és az Azure-lemezek közötti különbségekről további részletes ismertetését lásd: [való használata az Azure Blob storage, az Azure Files és az Azure Disks](../common/storage-decide-blobs-files-disks.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json). Az Azure Disks kapcsolatos további információkért lásd: [Azure Managed Disks – áttekintés](../../virtual-machines/windows/managed-disks-overview.md).
 
 * <a id="get-started"></a>
-**Hogyan kezdjem el Azure-fájlokat használ?**  
-   Ismerkedés az Azure-fájlok is könnyen. Első, [fájlmegosztás létrehozása](storage-how-to-create-file-share.md), és csatlakoztassa az előnyben részesített operációs rendszer: 
+**Hogyan kezdhetem Azure Files használatával?**  
+   Az Azure Files Sajátítsa el könnyedén. Először [fájlmegosztás létrehozása](storage-how-to-create-file-share.md), és csatlakoztathatja az előnyben részesített operációs rendszerben: 
 
-    * [A Windows csatlakoztatása](storage-how-to-use-files-windows.md)
-    * [A Linux csatlakoztatása](storage-how-to-use-files-linux.md)
-    * [A macOS csatlakoztatása](storage-how-to-use-files-mac.md)
+    * [Csatlakoztatás Windows az](storage-how-to-use-files-windows.md)
+    * [Csatlakoztatás Linux az](storage-how-to-use-files-linux.md)
+    * [Csatlakoztatás macOS az](storage-how-to-use-files-mac.md)
 
-   Részletesebb az Azure fájlmegosztások telepítésével kapcsolatos éles fájlmegosztások a szervezet cserélni, váltásról [Azure fájlok központi telepítésének tervezésében](storage-files-planning.md).
+   Azure-fájlmegosztások telepítéséről részletesebb útmutató cserélje le a termelési fájlmegosztások a szervezetben, lásd: [Azure Files üzembe helyezésének megtervezése](storage-files-planning.md).
 
 * <a id="redundancy-options"></a>
-**Milyen tárolási redundancia lehetőségeket támogat az Azure fájlok?**  
-    Azure-fájlok jelenleg helyileg redundáns tárolás (LRS), a zóna redundáns tárolás (ZRS) és a georedundáns tárolás (GRS). Írásvédett georedundáns (RA-GRS) tárolás támogatása a jövőben, de ütemtervek megosztásához jelenleg nem tudunk.
+**Milyen tárolási adatredundanciával kapcsolatos lehetőségek támogat az Azure Files?**  
+    Az Azure Files jelenleg támogatja a helyileg redundáns tárolás (LRS), a zónaredundáns tárolás (ZRS) és a georedundáns tárolás (GRS). Írásvédett georedundáns tárolást (RA-GRS) tárolás támogatása a jövőben azonban ütemtervek megosztásához jelenleg nem áll rendelkezésre.
 
 * <a id="tier-options"></a>
-**Milyen tárolási rétegek Azure fájlok támogatottak?**  
-    Azure-fájlok jelenleg csak a standard rétege. Nem tudunk ütemtervek most támogatja prémium szintű storage, és ritkán használt adatok megosztásához. 
+**Milyen tárolási rétegek az Azure Files támogatottak?**  
+    Az Azure Files jelenleg csak a standard szintű tárolási réteg támogatja. Nem kell, hogy az jelenleg támogatja a premium storage és a ritkán használt adatok megosztásához ütemtervek. 
     
     > [!NOTE]
-    > Nem hozható létre Azure fájlmegosztásokat, csak a blob storage-fiókok vagy a prémium szintű storage-fiókok.
+    > Azure-fájlmegosztások nem hozható létre, csak blob storage-fiókok vagy a prémium szintű storage-fiókok.
 
 * <a id="give-us-feedback"></a>
-**Valóban szeretném tekinteni az Azure Fileshoz hozzá egy adott funkcióhoz. Felveheti azt?**  
-    Az Azure-fájlok csapat iránt érdeklődik rendelkezik minden visszajelzés hallgatás szolgáltatásainkkal. Adjon szavazhatnak szolgáltatás kérelmek [Azure fájlok UserVoice](https://feedback.azure.com/forums/217298-storage/category/180670-files)! Jelenleg folyamatban Reméljük, delighting, számos új szolgáltatást.
+**Szeretném tekintse meg az Azure Files hozzáadott egy adott szolgáltatáshoz. Hozzáadhatja azt?**  
+    Az Azure Files csapat érdekli minden visszajelzését, várjuk a szolgáltatással kapcsolatban. Adjon a szolgáltatással kapcsolatos kéréseit szavazhat [Azure Files UserVoice](https://feedback.azure.com/forums/217298-storage/category/180670-files)! Mi vagyunk Reméljük, delighting, számos új szolgáltatást.
 
 ## <a name="azure-file-sync"></a>Azure File Sync
 
 * <a id="afs-region-availability"></a>
-**Milyen régiókban támogatott Azure fájlszinkronizálás (előzetes verzió)?**  
-    Jelenleg Azure fájlszinkronizálás Kelet-Ausztrália, Ausztrália délkeleti, Kanada központi, Kanada keleti régiója, USA középső RÉGIÓJA, Kelet-Ázsia, USA keleti régiója, kelet-US2, Észak-Európa, Délkelet-Ázsiában, Egyesült Királyság déli régiója, Egyesült Királyság nyugati régiója, Nyugat-Európa és érhető USA nyugati régiója. További régiókhoz fogja támogatni, általánosan rendelkezésre álló felé dolgozunk. További információkért lásd: [régiónkénti elérhetőség](storage-sync-files-planning.md#region-availability).
+**Mely régiókban érhető el az Azure File Sync (előzetes verzió)?**  
+    Az Azure File Sync jelenleg Ausztrália keleti régiója, Délkelet-Ausztrália, közép-Kanada, kelet-Kanada, USA középső RÉGIÓJA, Kelet-Ázsia, USA keleti RÉGIÓJA, USA 2. keleti régiója, Észak-Európa, Délkelet-Ázsia, Egyesült Királyság déli régiója, Egyesült Királyság nyugati régiója, Nyugat-Európa és USA nyugati Régiójában érhető el. Több régió támogatása bekerül, dolgozunk az általános elérhetőség felé. További információkért lásd: [régiók rendelkezésre állása](storage-sync-files-planning.md#region-availability).
 
 * <a id="cross-domain-sync"></a>
-**Szinkronizálási ugyanabban a csoportban is rendelkezem tartományhoz csatlakoztatott és a nem tartományhoz csatlakoztatott?**  
-    Igen. A szinkronizálási csoport tartalmazhat rendelkeznek eltérő Active Directory tagsági server-végpontokat, akkor is, ha nem a tartományhoz. Bár technikailag működik, ebben a konfigurációban, nem ajánlott ennek a szokásos beállításokkal, mert a hozzáférés-vezérlési listák (ACL) a fájlok és mappák több kiszolgálón definiált nem feltétlenül érvénybe lépteti a szinkronizálási csoport többi kiszolgálójára. A legjobb eredmények elérése érdekében ajánlott szinkronizálása az Active Directory-erdőben lévő kiszolgálók között, kiszolgálók, amelyek más Active Directory-erdőben található, de amelyek bizalmi kapcsolatok létesítése vagy kiszolgálók, amelyek nincsenek a tartomány között. Ajánlott elkerülni, álló ezeket a beállításokat használja.
+**Tartalmazhat tartományhoz csatlakoztatott és a nem tartományhoz csatlakoztatott kiszolgálók ugyanazt a szinkronizálási csoportot?**  
+    Igen. Szinkronizálási csoport tartalmazhat kiszolgálói végpontot, amely rendelkezik a különböző Active Directory-csoporttagságok, még akkor is, ha azok nem a tartományhoz. Bár technikailag működik ez a konfiguráció, nem ajánlott ennek egy tipikus konfigurációja, mivel hozzáférés-vezérlési listák (ACL) a fájlok és mappák több kiszolgálón definiált előfordulhat, hogy nem tudja majd érvénybe lépteti a szinkronizálási csoport többi kiszolgálóján. A legjobb eredmények érdekében javasoljuk, hogy ugyanazon Active Directory-erdőben lévő kiszolgálók között, kiszolgálók, amelyek eltérő Active Directory-erdőben találhatók, de amelyek létesített megbízhatósági kapcsolatokkal vagy kiszolgálón, amely nem egy tartomány között szinkronizálása. Ajánlott elkerülni, illetve ezeket a konfigurációkat.
 
 * <a id="afs-change-detection"></a>
-**A fájl létrehozott közvetlenül a saját Azure fájlmegosztások SMB használatával, vagy a portálon. Mennyi időt vesz igénybe a fájl szinkronizálása a szinkronizálási csoport kiszolgálójára?**  
+**Hoztam létre egy fájlt közvetlenül a saját Azure-fájlmegosztást az SMB használatával, vagy a portálon. Mennyi ideig tart a fájlt a kiszolgálóra a szinkronizálási csoport szinkronizálása?**  
     [!INCLUDE [storage-sync-files-change-detection](../../../includes/storage-sync-files-change-detection.md)]
 
-* <a id="afs-conflict-resolution"></a>**Ha ugyanazon fájl két kiszolgáló körülbelül egy időben történtek, mi történik?**  
-    Az Azure fájlszinkronizálás használ egy egyszerű ütközésfeloldás stratégia: jelenleg mindkét módosításokat, a két kiszolgáló egyidejűleg módosított fájlok nyomon. A legutóbb írt módosítás megtartja az eredeti fájlnevet. A régebbi fájl rendelkezik a "forrás" gép és az ütközést a névhez. Ez azt jelenti, hogy ez a besorolás: 
+* <a id="afs-conflict-resolution"></a>**Ha ugyanazt a fájlt módosul a két kiszolgáló körülbelül egy időben, mi történik?**  
+    Az Azure File Sync egyszerű ütközésfeloldás stratégiát alkalmaz: mindkét módosítások nálunk a fájlokra, amelyek egy időben két kiszolgálóra változnak. A legutóbb írt módosítás megtartja az eredeti fájlnevet. A régebbi fájl rendelkezik a "forrás" gép és a ütközés számot a névhez. Ez a besorolás a következő: 
    
     \<FileNameWithoutExtension\>-\<MachineName\>\[-#\].\< ext\>  
 
-    Például az első CompanyReport.docx irányadók válna CompanyReport-CentralServer.docx Ha CentralServer, ahol a régebbi írása történt. A második ütközés CompanyReport-CentralServer-1.docx neve.
+    Például az első ütközése CompanyReport.docx válnak CompanyReport-CentralServer.docx hol lépett fel a régebbi írási CentralServer esetén. A második ütközés CompanyReport-CentralServer-1.docx neve.
 
 * <a id="afs-storage-redundancy"></a>
-**Georedundáns tárolás az Azure-fájl szinkronizálás támogatva van?**  
-    Igen, Azure fájlokat helyileg redundáns tárolás (LRS) és a georedundáns tárolás (GRS) is támogatja. Georedundáns párosított régiók közötti feladatátvétel, azt javasoljuk, hogy kezeli-e az új régió csak az adatok biztonsági mentéséhez. Azure fájl szinkronizálása nem automatikusan megkezdődik az új elsődleges régióban való szinkronizálás. 
+**Georedundáns tárolás az Azure File Sync támogatott?**  
+    Igen, az Azure Files támogatja mind a helyileg redundáns tárolás (LRS), és a georedundáns tárolás (GRS). Ha GRS párosított régiók közötti feladatátvétel esetén javasoljuk az új régióban gyökérkönyvtárral csak az adatok biztonsági másolata. Az Azure File Sync nem kezdődik automatikusan az új elsődleges régióba való szinkronizálását. 
 
 * <a id="sizeondisk-versus-size"></a>
-**Miért nem a *lemezterület* tulajdonság fájl megfelelést a *mérete* tulajdonság használata Azure fájlszinkronizálás után?**  
-    A Windows Fájlkezelőben egy fájl mérete képviselő két tulajdonságok közzététele: **mérete** és **lemezterület**. Ezek a Tulajdonságok találhatókkal jelentése különböznek. **Méret** a fájl teljes méretét jelenti. **Lemezterület** a fájlfolyam a lemezen tárolt méretét adja meg. Ezek a tulajdonságok értékeit számos okból, például a tömörítési eltérnek, az Adatdeduplikáció használata, vagy a felhőalapú Azure fájl szinkronizálással rétegezésével. Ha egy fájl Azure-fájlmegosztásra többszintű, a a lemez mérete nulla, mivel a fájlok továbbítása az Azure-fájlmegosztáshoz, és nem a lemezen. Lehetőség arra is részben rétegzett (vagy részben visszaírt) fájl. Részlegesen rétegzett fájlban a fájl a lemezen van. Ez akkor fordulhat elő, amikor fájlok alkalmazások, például médialejátszó részben olvasható, vagy a zip-segédprogramok. 
+**Miért nem a *lemezterület* fájl egyezést tulajdonsága a *mérete* tulajdonság használata az Azure File Sync után?**  
+    Windows Fájlkezelőben tesz elérhetővé, amelyek egy fájl mérete két tulajdonság: **mérete** és **lemezterület**. Ezek a Tulajdonságok találhatókkal jelentése különböznek. **Méret** a fájl teljes méretét jelenti. **A lemez mérete** a fájlfolyamot, hogy a lemez méretét adja meg. Ezek a tulajdonságok értékeit számos okból, például a tömörítés esetében eltérőek, az Adatdeduplikáció használatát, vagy az Azure File Sync felhőrétegzési. Egy fájlt az Azure-fájlmegosztások többszintű, ha a lemez mérete nulla, mert a fájlfolyamot van tárolva, az Azure-fájlmegosztást, és nem a lemezen. Lehetőség arra is a fájlok részben rétegzett (vagy részlegesen visszahívott szoftvertermék) lehet. A részlegesen rétegezett fájl a fájl a lemezen van megvalósítva. Ez akkor fordulhat elő, amikor fájlt például a multimédia-lejátszó alkalmazások által részben olvasható vagy segédprogramok zip. 
 
 * <a id="is-my-file-tiered"></a>
-**Hogyan állapítható meg, hogy a fájl rétegzett lett-e?**  
-    Ellenőrizze, hogy egy fájl rétegzett lett-e az Azure fájlmegosztások számos módja van:
+**Hogyan állapítható meg, hogy egy fájl tartozik lett a rétegzett?**  
+    Ellenőrizze, hogy a fájl tartozik rétegzett az Azure-fájlmegosztás számos módja van:
     
    *  **Ellenőrizze a fájl a fájl attribútumait.**
-     Ehhez kattintson a jobb gombbal a fájlra, ugorjon a **részletek**, majd görgessen le a a **attribútumok** tulajdonság. A rétegzett fájl a következő attribútummal rendelkezik:     
+     Ehhez kattintson a jobb gombbal a fájlra, ugorjon a **részletek**, majd görgessen le a a **attribútumok** tulajdonság. Egy rétegzett fájlt állítsa be a következő attribútumokkal rendelkezik:     
         
-        | A levél attribútum | Attribútum | Meghatározás |
+        | Levél attribútum | Attribútum | Meghatározás |
         |:----------------:|-----------|------------|
-        | A | Archívum | Azt jelzi, hogy a fájl készüljön biztonsági másolat biztonsági mentési szoftverrel. Ez az attribútum értéke mindig, függetlenül attól, hogy a fájl rétegzett vagy teljesen tárolása a lemezen. |
-        | P | Ritka fájl | Azt jelzi, hogy a fájl ritka fájlok. Ritka fájl egy speciális típusa a hatékony NTFS kínál a fájl esetén a lemez-adatfolyamban lévő fájl többnyire üres. Azure fájlszinkronizálás használja a ritka fájlokat, mivel a fájl rétegzett teljesen vagy részben előtt tartani. Egy teljesen rétegzett fájlban a fájlfolyam tárolja a felhőben. A részlegesen visszaírt fájl a fájl már a lemezen. Ha egy fájl teljesen előtt tartani, lemezre, Azure fájlszinkronizálás átalakítja a ritka fájlok rendszeres fájlba. |
-        | L | Újraelemzési pont | Azt jelzi, hogy a fájl rendelkezik-e az újraelemzési pont. Újraelemzési pont egy fájlrendszerszűrő általi használatra különleges mutató. Az Azure fájlszinkronizálás újraelemzési pontokat használ, a Azure fájlszinkronizálás fájlrendszerszűrő (StorageSync.sys) a felhő a fájl tárolási helyének meghatározásához. Ez a funkció támogatja zökkenőmentes hozzáférést. Felhasználóknak nem kell tudnia, hogy Azure fájlszinkronizálás használatban van-e, illetve a fájl az Azure fájlmegosztás eléréséhez. Ha egy fájl teljesen visszaírása, Azure fájlszinkronizálás az újraelemzési pont eltávolítása a fájlból. |
-        | O | Offline | Azt jelzi, hogy vagy azok egy részét a fájl tartalma nem tárolása a lemezen. Ha egy fájl teljesen visszaírása, Azure fájlszinkronizálás eltávolítja ezt az attribútumot. |
+        | A | Archívum | Azt jelzi, hogy a fájl másolatot kell készíteni a biztonsági mentési szoftverrel. Ez az attribútum értéke mindig, függetlenül attól, hogy a fájl rétegzett vagy teljes mértékben a lemezen tárolt. |
+        | P | Ritka fájl | Azt jelzi, hogy a fájl egy ritka fájlok. Ritka fájl a hatékony NTFS kínál a fájl egy speciális típusa esetén a fájl lemezre Stream nagyrészt üres. Az Azure File Sync ritka fájlokat használ, mert a fájl teljes rétegzett vagy részlegesen idézni. A fájlfolyamot egy teljes körűen rétegzett fájlt, a felhőben van tárolva. A részlegesen visszaírt fájl a fájl már a lemezen. Ha a fájl teljes idézni lemezre, az Azure File Sync átalakítja a ritka fájlok regulárním souborem. |
+        | L | Újraelemzési pontok | Azt jelzi, hogy a fájl egy újraelemzési pont. Újraelemzési pont egy speciális mutató egy fájlrendszerszűrő általi használatra. Az Azure File Sync újraelemzési pontokat használ, az Azure File Sync fájlrendszerszűrőnek (StorageSync.sys) a felhő a fájl tárolási helyének meghatározásához. Ez támogatja a közvetlen hozzáférést. Felhasználóknak nem kell tudnia, hogy az Azure File Sync használatban van-e, illetve a fájlt az Azure-fájlmegosztás eléréséhez. A fájl teljes ismeretes, az Azure File Sync a fájlt az újraelemzési pont eltávolítása. |
+        | O | Offline | Azt jelzi, hogy néhány vagy összes a fájl tartalma nem tárolja a lemezen. A fájl teljes ismeretes, az Azure File Sync eltávolítja ezt az attribútumot. |
 
-        ![A fájl esetén a kiválasztott Részletek lap tulajdonságai párbeszédpanel](media/storage-files-faq/azure-file-sync-file-attributes.png)
+        ![A fájlhoz, a részletek lapon kiválasztott a tulajdonságai párbeszédpanel](media/storage-files-faq/azure-file-sync-file-attributes.png)
         
-        Megjelenik a mappában lévő összes fájl attribútumai hozzáadásával a **attribútumok** mezőjét a Fájlkezelőben tábla megjelenítéséhez. Ehhez kattintson a jobb gombbal az oszlop (például **mérete**) elemre, jelölje be **további**, majd válassza ki **attribútumok** a legördülő listából.
+        Megjelenik egy mappában található összes fájl attribútumait hozzáadásával a **attribútumok** a tábla megjelenített a fájlkezelő mezőt. Ehhez kattintson a jobb gombbal egy meglévő oszlopára vonatkozóan (például **mérete**), jelölje be **további**, majd válassza ki **attribútumok** a legördülő listából.
         
-   * **Használjon `fsutil` a fájl újraelemzési pontok kereséséhez.**
-       Az előző beállítás leírtak a rétegzett fájl mindig rendelkezik egy újraelemzési pont beállítása. Újraelemzési mutató egy különleges mutatót a Azure fájlszinkronizálás fájlrendszerszűrő (StorageSync.sys). Ellenőrizze, hogy van-e a fájl egy újraelemzési pont egy emelt szintű parancssorból vagy a PowerShell-ablakban, futtassa a `fsutil` segédprogram:
+   * **Használat `fsutil` egy fájlt az újraelemzési pontok kereséséhez.**
+       Az előző beállítás leírtak egy rétegzett fájlt mindig van egy újraelemzési pont beállítása. Egy újraelemzési mutató az Azure File Sync fájlrendszerszűrő (StorageSync.sys) a speciális mutató. Ellenőrizze, hogy rendelkezik-e a fájl egy újraelemzési pont egy emelt szintű parancssort vagy a PowerShell-ablakban, futtassa a `fsutil` segédprogrammal:
     
         ```PowerShell
         fsutil reparsepoint query <your-file-name>
         ```
 
-        Ha a fájl egy újraelemzési pont, is a várt **újraelemzési címke: 0x8000001e**. A hexadecimális érték az újraelemzési pont érték Azure fájlszinkronizálás tulajdonában. A kimeneti elérési képviseli a fájlmegosztáson az Azure újraelemzési adatokat is tartalmazza.
+        Ha a fájl egy újraelemzési ponttal rendelkezik, tekintse meg a várható **címkeértékkel újraelemzési: 0x8000001e**. A hexadecimális érték az újraelemzési pont érték, amely az Azure File Sync tulajdonában van. A kimenet a fájlt a az Azure-fájlmegosztást az elérési utat jelölő újraelemzési adatokat is tartalmazza.
 
         > [!WARNING]  
-        > A `fsutil reparsepoint` segédprogram parancsot is van lehetősége, újraelemzési pont törlése. Kivéve, ha a fájlszinkronizálás Azure mérnöki csapat arra kéri, hogy ne hajtsa végre ezt a parancsot. A parancs futtatása adatvesztést eredményezhet. 
+        > A `fsutil reparsepoint` segédprogram parancsot is van lehetősége, újraelemzési pont törlése. Ez a parancs nem végrehajtani, kivéve, ha az Azure File Sync mérnöki csapata arra kéri, hogy. A parancs futtatása az adatvesztést eredményezhet. 
 
-* <a id="afs-recall-file"></a>**A használni kívánt fájl rendelkezik lett rétegzett. Hogyan lehet visszahívása lemezt kell használni, helyileg a fájlt?**  
-    A lemezre fájl visszahívásának legkönnyebben megnyitni a fájlt. Az Azure fájlszinkronizálás fájlrendszerszűrő (StorageSync.sys) zökkenőmentesen letölti a fájlt az Azure fájlmegosztásról beavatkozást munka nélkül. Fájltípus esetében, és lehet részlegesen. számú, például a multimédia vagy .zip fájlt, a fájl megnyitása nem sikerül letölteni a teljes fájlt.
+* <a id="afs-recall-file"></a>**A használni kívánt fájl tartozik lett rétegzett. Hogyan lehet visszahívása vele helyi lemezre a fájlt?**  
+    A fájl lemezre visszahívásának legegyszerűbb módja, hogy nyissa meg a fájlt. Az Azure File Sync fájlrendszerszűrő (StorageSync.sys) zökkenőmentesen fájlt tölt le a az Azure-fájlmegosztást az Ön részéről munka nélkül. Minden fájltípus esetében, amelyek részben olvasható, például multimédiás vagy .zip fájlokat, a fájl megnyitása nem sikerül letölteni a teljes fájlt.
 
-    Is használhatja PowerShell kényszerítheti a fájlt. A beállítás akkor lehet hasznos, ha előhívja több fájl egyszerre, például egy mappában lévő összes fájlt. A kiszolgáló-csomópontra, amelyen telepítve van-e az Azure fájlszinkronizálás PowerShell munkamenetet nyit meg, és futtassa a következő PowerShell-parancsokat:
+    Is használhatja PowerShell kényszerítése egy fájlt. Ez a beállítás akkor hasznos, ha egyszerre, majd előkeresnie több fájl egy mappában található összes fájl például lehet. Nyissa meg a kiszolgáló-csomóponton, amelyen telepítve van-e az Azure File Sync egy PowerShell-munkamenetet, és futtassa a következő PowerShell-parancsokat:
     
     ```PowerShell
     Import-Module "C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.ServerCmdlets.dll"
@@ -157,8 +157,8 @@ Ebben a cikkben megválaszolunk Azure fájlok szolgáltatásokat és funkciókat
     ```
 
 * <a id="afs-force-tiering"></a>
-**Hogyan kényszeríti a fájlt vagy könyvtárat helyezhető el?**  
-    Ha a felhő rétegezési szolgáltatás engedélyezve van, a felhő rétegezéséhez automatikusan rétegek fájlok utolsó hozzáférés alapul, és módosítási eléréséhez a kötet szabad terület százalékos aránya a felhőbeli végpont a megadott időpont. Egyes esetekben azonban előfordulhat, hogy manuálisan kényszeríteni kívánja a réteg egy fájlt. Ez akkor lehet hasznos, ha menti, amelyet nem kíván újra használni a hosszú ideig nagy fájlok, és a szabad lemezterület a köteten a más fájlok és mappák használni kívánt. Beállíthatja, hogy a következő PowerShell-parancsok segítségével rétegezéséhez:
+**Hogyan kényszeríthetem egy fájl vagy címtár helyezhető el?**  
+    Ha a felhő rétegezési szolgáltatás engedélyezve van, felhőbeli rétegezés automatikusan rétegek fájlok alapján az utolsó hozzáférés, és elérése érdekében a kötet szabad terület százalékos aránya a felhőbeli végpont a megadott idő módosítása. Egyes esetekben azonban érdemes manuálisan a Tier fájl kényszerített. Ez akkor lehet hasznos, ha menti a nagy méretű fájlt, amely nem szeretne hosszú ideig újra használni, és azt szeretné, a szabad lemezterület a köteten a más fájlok és mappák használata. Kényszerítheti, hogy a következő PowerShell-parancsok használatával rétegezést:
 
     ```PowerShell
     Import-Module "C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.ServerCmdlets.dll"
@@ -166,12 +166,12 @@ Ebben a cikkben megválaszolunk Azure fájlok szolgáltatásokat és funkciókat
     ```
 
 * <a id="afs-effective-vfs"></a>
-**Hogyan van *kötet hely* értelmezi, ha egy köteten több kiszolgáló-végpontot?**  
-    Ha egy köteten több kiszolgáló végpont, hatékony kötet szabad terület küszöbértéke bármely kiszolgáló végpont a köteten lévő között megadott legnagyobb kötet szabad terület. Függetlenül attól, hogy melyik kiszolgáló végpont, amelyekhez tartoznak a használati mintáknak megfelelően fog helyezhető el a fájlokat. Például, ha két kiszolgáló végpontok egy köteten, Endpoint1 és Endpoint2, ahol Endpoint1 egy kötet szabad terület küszöbértéke 25 %-os és Endpoint2 rendelkezik egy mennyiségi szabad terület küszöbértéke 50 %-os mindkét kiszolgáló végpont kötet hely küszöbértéke 50 % lesz.
+**Hogyan van *szabad terület a köteten* értelmezni, ha egy köteten van több kiszolgálói végpontot?**  
+    Ha egynél több kiszolgálói végpontot egy köteten, a kötet tényleges szabad terület küszöbértékei a legnagyobb szabad terület a köteten a köteten lévő összes kiszolgálói végpontot között megadott. Fájlok rétegezettek lesznek függetlenül attól, hogy mely kiszolgálói végpontot, amelyhez tartoznak azok használati mintáknak megfelelően. Például ha a két kiszolgáló végpontokat egy köteten, Endpoint1 és típusú Endpoint2, ahol Endpoint1 egy kötet szabad terület küszöbértékei 25 %-os és típusú Endpoint2 rendelkezik egy mennyiségi szabad terület küszöbértékei 50 %-os a kötet szabad terület küszöbértékei mindkét kiszolgáló végpont lesz 50 %-a.
 
 * <a id="afs-files-excluded"></a>
-**Azure fájlszinkronizálás automatikusan kizárja a mely fájlok vagy mappák?**  
-    Alapértelmezés szerint Azure fájlszinkronizálás nem tartalmazza a következő fájlokat:
+**Mely fájlok vagy mappák automatikusan kizáródnak az Azure File Sync?**  
+    Alapértelmezés szerint az Azure File Sync kizárja a következő fájlokat:
     * Desktop.ini
     * thumbs.db
     * ehthumbs.db
@@ -180,191 +180,191 @@ Ebben a cikkben megválaszolunk Azure fájlok szolgáltatásokat és funkciókat
     * \*.tmp
     * 635D02A9D91C401B97884B82B3BCDAEA.\*
 
-    A következő mappák is ki vannak zárva, alapértelmezés szerint:
+    Alapértelmezés szerint is kizárja a következő mappák:
 
     * \System volume Information
     * \$RECYCLE.BIN
     * \SyncShareState
 
 * <a id="afs-os-support"></a>
-**Használható a Windows Server 2008 R2, a Linux vagy a hálózati csatolású (NAS) tárolóeszköz Azure fájlszinkronizálás?**  
-    Azure fájlszinkronizálás jelenleg csak a Windows Server 2016 és a Windows Server 2012 R2. Jelenleg nem tudunk bármely más terveket is osztjuk meg, de meg van nyitva támogató ügyfelek igény szerint további platformok még. Ossza meg velünk [Azure fájlok UserVoice](https://feedback.azure.com/forums/217298-storage/category/180670-files) milyen platformok szeretné támogatásához.
+**Használhatom az Azure File Sync Windows Server 2008 R2, a Linux vagy a hálózati tárolóeszközök (NAS) eszközömet?**  
+    Az Azure File Sync jelenleg csak a Windows Server 2016 és a Windows Server 2012 R2 támogatja. Jelenleg nem áll rendelkezésre más terveket osztjuk meg is, de vagyunk az ügyfelek igényei szerint további platformokat támogatja. Tudassa velünk [Azure Files UserVoice](https://feedback.azure.com/forums/217298-storage/category/180670-files) milyen platformok szeretné támogatásához.
 
 * <a id="afs-tiered-files-out-of-endpoint"></a>
-**Miért léteznek a rétegzett fájlok kívül a kiszolgáló végpont névtér?**  
-    Azure fájlszinkronizálás ügynök-es vagy korábbi 3 Azure fájlszinkronizálás rétegzett fájlok, a kiszolgáló végpont kívül, de a kiszolgáló végpont ugyanazon a köteten az áthelyezés letiltva. Másolási művelet, a fájlok nem rétegzett áthelyezi, és a helyezi át a rétegzett más kötetek sérült volt. Ez a jelenség oka volt a implicit feltételezve, hogy a Fájlkezelőben és a többi Windows API-k, amelyek ugyanazon a köteten műveletek áthelyezése instanenous átnevezése műveletek (majdnem). Ez azt jelenti, hogy a kurzor megkönnyítő fájlkezelő vagy egyéb move metódussal (például a parancssor vagy PowerShell) válaszol, amíg Azure fájlszinkronizálás visszaírja az adatokat a felhőből. Kezdve [Azure fájlszinkronizálás ügynökverzió 3.0.12.0](storage-files-release-notes.md#agent-version-30120), Azure fájlszinkronizálás lehetővé teszi a kiszolgáló végpont kívül rétegzett fájl áthelyezése. A korábban említett engedélyezi a rétegzett fájl létezik-e a kiszolgáló végpont kívül egy rétegzett fájlt, és ezután tárolóról a fájlt a háttérben negatív hatások elkerülése azt. Ez azt jelenti, hogy áthelyezi ugyanazon kötet instaneous, és végezzük előhívja a lemezre a fájlt, az áthelyezés után a munkát. 
+**Miért léteznek a rétegzett fájlok kívül a kiszolgálói végpont névtér?**  
+    Azure File Sync ügynök 3-as verziójú, mielőtt az Azure File Sync blokkolja a rétegzett fájlok a kiszolgálói végpont kívüli, de a kiszolgálói végpont ugyanazon a köteten az áthelyezés. Másolási műveletek – a rétegzett fájlok áthelyezése és áthelyezi a rétegzett más köteteket is nem érinti. Ez a jelenség oka implicit feltételezve, hogy a Fájlkezelőben és a többi Windows API-k, hogy ugyanazon a köteten műveletekre (majdnem) instanenous műveletek átnevezése volt. Ez azt jelenti, a kurzor elvégzi a Fájlkezelőben, vagy más áthelyezési módszerek (mint például a parancssor vagy PowerShell) jelennek meg nem válaszol, amíg az Azure File Sync visszahívja az adatok a felhőből. Kezdve [Azure File Sync ügynök verziója 3.0.12.0](storage-files-release-notes.md#agent-version-30120), az Azure File Sync lehetővé teszi a áthelyezése egy rétegzett fájlt a kiszolgálói végpont kívül. A korábban említett engedélyezi a rétegzett fájl létezik és a egy rétegzett fájlt a kiszolgálói végpont kívül, és ezután – a háttérben a fájl lehívása negatív hatások elkerülése azt. Ez azt jelenti, hogy áthelyezi az ugyanazon kötet instaneous, és visszaírni a lemezre a fájlt, az Áthelyezés befejezése után a munkát végzünk. 
 
 * <a id="afs-do-not-delete-server-endpoint"></a>
-**Problémáim Azure fájlszinkronizálás problémát (szinkronizálása, felhőalapú rétegezési, stb.) a kiszolgálón. I távolítsa el, majd hozza létre újra a saját kiszolgáló végpont?**  
+**Problémát tapasztalok egy probléma az Azure File Sync használatával a my server (szinkronizálási szolgáltatás cloud rétegezési, stb). E távolítsa el, majd hozza létre újra a kiszolgálói végpontot?**  
     [!INCLUDE [storage-sync-files-remove-server-endpoint](../../../includes/storage-sync-files-remove-server-endpoint.md)]
 
-## <a name="security-authentication-and-access-control"></a>Biztonsági, hitelesítési és hozzáférés-vezérlés
+## <a name="security-authentication-and-access-control"></a>Biztonság, hitelesítés és hozzáférés-vezérlés
 * <a id="ad-support"></a>
-**Az Active Directory-alapú hitelesítési és hozzáférés-vezérlés Azure fájlok által támogatott?**  
-    Az Azure Files hozzáférés vezérléséhez két lehetőséget kínál:
+**Az Active Directory-alapú hitelesítés és hozzáférés-vezérlés az Azure Files által támogatott?**  
+    Az Azure Files kezelése a hozzáférés-vezérlés két lehetőséget kínál:
 
-    - Közös hozzáférésű jogosultságkód (SAS) segítségével a rendszer, hogy meghatározott engedélyekkel rendelkezik, és amelyek érvényesek a megadott időtartam alatt jogkivonatokat hoz létre. Például a jogkivonatot az olvasási hozzáférést egy adott fájlt, amelynek a 10 perces lejárati is létrehozhat. Csak olvasási hozzáféréssel bárki, aki a token érvényességi ideje alatt birtokában van, amely a fájl ezen 10 percig. Jelenleg megosztott elérési aláírási kulcsokat csak a REST API-n keresztül, vagy a klienskódtárak segítségével használható. Csatlakoztatnia kell az Azure fájlmegosztások SMB-n keresztül a tárfiókkulcsokat használatával.
+    - Közös hozzáférésű jogosultságkódok (SAS) használatával, amely van konkrét engedélyük, és amely érvényes a megadott időtartam alatt jogkivonatokat hoz létre. Például egy jogkivonatot a csak olvasási hozzáférést egy adott fájlt, amely rendelkezik egy 10 perc elteltével is létrehozhat. Csak olvasási hozzáféréssel bárki, aki ismeri a jogkivonatot, amíg a jogkivonat érvényes rendelkezik, amely a fájl 10 percnek. Jelenleg a közös hozzáférési aláírási kulcsokat csak a REST API-val vagy a klienskódtárak támogatottak. Csatlakoztatnia kell az Azure-fájlmegosztás SMB-n keresztül a storage-fiók kulcsainak használatával.
 
-    - Az Azure fájlszinkronizálás megőrzi, és minden tulajdonosi hozzáférés-vezérlési listákat vagy DACL, replikálja az (akár az Active Directory-alapú helyi) számára a szinkronizált server-végpontokat. Windows Server már képes hitelesíteni az Active Directoryban, mert Azure fájlszinkronizálás hatékony stop-résnek lehetséges csak teljes körű támogatása az Active Directory-alapú hitelesítéshez, de ACL-támogatás érkezik.
+    - Az Azure File Sync megőrzi, és minden tulajdonosi hozzáférés-vezérlési listák vagy DACL-EK, replikálja az (akár Active Directory-alapú vagy helyi) az összes kiszolgálói végpontot, amely a szinkronizált. A Windows Server Active Directoryval már hitelesíthetők, mert az Azure File Sync teljes körűen támogatja az Active Directory-alapú hitelesítésre amíg hatékony stop-gap lehetőség, és ACL-támogatás érkezik.
 
-    Jelenleg Azure-fájlok nem támogatja az Active Directory közvetlenül.
+    Jelenleg az Azure Files nem támogatja az Active Directory közvetlenül.
 
 * <a id="encryption-at-rest"></a>
-**Hogyan tudom biztosítható, hogy az Azure fájlmegosztások titkosítása?**  
-    Az Azure Storage szolgáltatás titkosítási éppen minden régióban alapértelmezés szerint engedélyezett. Ezek a területek nem kell bármilyen műveletet engedélyezheti a titkosítást. Más régiókból, lásd: [kiszolgálóoldali titkosítás](../common/storage-service-encryption.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json).
+**Hogyan tudok biztosíthatja, hogy az Azure-fájlmegosztás titkosítása?**  
+    Az Azure Storage Service Encryption az összes régióban alapértelmezés szerint engedélyezése folyamatban van. Ezekben a régiókban nem kell minden olyan műveleteket, engedélyezze a titkosítást. Más régiókban, lásd: [kiszolgálóoldali titkosítás](../common/storage-service-encryption.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json).
 
 * <a id="access-via-browser"></a>
-**Hogyan tud nyújtani azzal, hogy egy webböngészővel egy adott fájlt a hozzáférést?**  
-    Közös hozzáférésű jogosultságkód segítségével hoz létre jogkivonatokat, amelyek adott engedélyekkel rendelkezik, és amelyek érvényesek a megadott időtartam alatt. Például egy jogkivonatot, amely egy adott fájlt, csak olvasható hozzáférést biztosít a beállított időn is létrehozhat. Bárki, aki rendelkezik az URL-cím érhetik el a fájlt közvetlenül bármely webböngészőben a token érvényességi ideje alatt. Könnyen létrehozhat egy közös hozzáférésű aláírási kulcs a Tártallózó például egy felhasználói Felületéről.
+**Hogyan is biztosít egy webes böngésző használatával egy adott fájlhoz történő hozzáférés?**  
+    Közös hozzáférésű jogosultságkódok használatával, amely van konkrét engedélyük, és amely érvényes a megadott időtartam alatt jogkivonatokat hoz létre. Ha például egy jogkivonatot, amely egy adott fájl csak olvasható hozzáférést biztosít egy megadott ideig is létrehozhat. Bárki, aki ismeri az URL-címet is elérheti a fájl bármely webböngészőben amíg a token érvényes. Egyszerűen létrehozhat egy közös hozzáférésű jogosultságkód kulcsot egy felhasználói felületen, mint a Storage Explorer.
 
 * <a id="file-level-permissions"></a>
-**Ennyi az egész lehetséges, adja meg a csak olvasható vagy csak írási engedélyeket a megosztáson belüli mappákhoz?**  
-    Csatlakoztatja a fájlmegosztást SMB használatával, ha nem rendelkezik engedélyekkel mappaszintű szabályozhatják. Azonban ha egy közös hozzáférésű jogosultságkódot a REST API vagy klienskódtárak használatával hoz létre, megadhatja csak olvasható, vagy csak írási engedélyekkel kell rendelkeznie a megosztáson belüli mappákhoz.
+**Ennyi az egész lehetséges adja meg a csak olvasási vagy csak írási engedélyeket a megosztáson belüli mappákhoz?**  
+    Csatlakoztatja a fájlmegosztást SMB használatával, ha nem rendelkezik engedélyekkel mappaszintű felett. Azonban a REST API vagy klienskódtárak használatával hoz létre egy közös hozzáférésű jogosultságkódot, csak olvasható, vagy csak írási engedélyeket a a megosztáson belüli mappákhoz is megadhat.
 
 * <a id="ip-restrictions"></a>
-**IP-korlátozások, az Azure fájlmegosztások is létrehozható?**  
-    Igen. Az Azure fájlmegosztás elérését a tárolási fiók szintjén korlátozható. További információkért lásd: [konfigurálása Azure Storage tűzfalak és a virtuális hálózatok](../common/storage-network-security.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json).
+**Megvalósíthat egy Azure-fájlmegosztást az IP-korlátozások?**  
+    Igen. A hozzáférést az Azure-fájlmegosztást a storage-fiók szintjén korlátozható. További információkért lásd: [konfigurálása az Azure Storage-tűzfalak és virtuális hálózatok](../common/storage-network-security.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json).
 
 * <a id="data-compliance-policies"></a>
-**Milyen adatok megfelelőségi házirendek támogatja az Azure-fájlok?**  
-   Az Azure Files egyéb tárolási szolgáltatások az Azure Storage használt azonos tároló-architektúra futtatható. Az Azure Files az azonos megfelelőségi szabályzatok az egyéb Azure storage szolgáltatások használt vonatkozik. Adatok Azure Storage-ellenőrzésre vonatkozó további információkért töltse le és tekintse meg a [Microsoft Azure Data Protection dokumentum](http://go.microsoft.com/fwlink/?LinkID=398382&clcid=0x409), és navigáljon a [Microsoft Trust Center](https://microsoft.com/en-us/trustcenter/default.aspx).
+**Milyen adatok megfelelőségi szabályzatok támogatja az Azure Files?**  
+   Az Azure Files fut. a más tárolási szolgáltatásokra az Azure Storage-ban használt azonos tárolási architektúrával. Az Azure Files az azonos megfelelőségi szabályzatok az egyéb Azure storage-szolgáltatások által használt vonatkozik. Az Azure Storage-adatok megfelelőségi kapcsolatos további információkért töltse le és tekintse meg a [Microsoft Azure adatvédelmi dokumentum](http://go.microsoft.com/fwlink/?LinkID=398382&clcid=0x409), és nyissa meg a [Microsoft Trust Center](https://microsoft.com/en-us/trustcenter/default.aspx).
 
 ## <a name="on-premises-access"></a>Helyszíni hozzáférés
 * <a id="expressroute-not-required"></a>
-**Konfigurálnom kell a Azure ExpressRoute segítségével csatlakozzon az Azure Fileshoz vagy Azure fájl Sync szolgáltatás használatával a helyszíni?**  
-    Nem. ExpressRoute az Azure fájlmegosztások eléréséhez nem szükséges. Ha csatlakoztat egy Azure fájlmegosztás közvetlen a helyszínen, az összes, amely szükséges, hogy a 445-ös porton (TCP, kimenő) nyissa meg az internet-hozzáférés (azt a portot, amelyet való kommunikációhoz az SMB protokollt használja). Azure fájlszinkronizálás használata szükséges csak a 443-as (TCP, kimenő) portot a HTTPS-hozzáféréshez (nem szükséges SMB). Azonban Ön *is* ExpressRoute használja az egyik hozzáférési lehetőséget.
+**Kell az Azure Files csatlakozás az Azure ExpressRoute használatával vagy az Azure File Sync használata a helyszínen?**  
+    Nem. Az ExpressRoute nem szükséges Azure-fájlmegosztás eléréséhez. Ha a rendszer csatlakoztatása egy Azure-fájlmegosztás közvetlenül a helyszínen, az összes, amely szükséges az, hogy a 445-ös (TCP, kimenő) nyissa meg az internet-hozzáférés (Ez az SMB által való kommunikációra használt port). Ha az Azure File Sync használata esetén szükséges csak HTTPS-hozzáféréshez (nem szükséges SMB) a 443-as (TCP, kimenő) porton. Azonban Ön *is* bármelyik hozzáférést az expressroute-ot használni.
 
 * <a id="mount-locally"></a>
-**Hogyan is csatlakoztathatja a helyi számítógépen az Azure fájlmegosztások?**  
-    A fájlmegosztást csatlakoztathatja az SMB protokoll segítségével, ha a port 445 (TCP, kimenő) meg nyitva, és az ügyfél támogatja az SMB 3.0 protokollt (például, ha a Windows 10 vagy Windows Server 2016 használata). Ha a 445-ös porton le van tiltva, vagy az Internetszolgáltató által a szervezet házirendje, Azure fájlszinkronizálás használhatja az Azure fájlmegosztás eléréséhez.
+**Hogyan csatlakoztathatom Azure-fájlmegosztás a helyi gépemen?**  
+    A fájlmegosztás akkor is csatlakoztathatja az SMB protokoll használatával, ha a 445-ös (TCP, kimenő) meg nyitva, és az ügyfél támogatja az SMB 3.0 protokollt (például, ha a Windows 10-es vagy Windows Server 2016 használ). Ha a 445-ös port le van tiltva, a szervezeti házirend vagy az Internetszolgáltató által, az Azure File Sync használatával az Azure-fájlmegosztás eléréséhez.
 
 ## <a name="backup"></a>Backup
 * <a id="backup-share"></a>
-**Készítsen biztonsági másolatot az Azure-fájl megosztása?**  
-    Rendszeres használható [pillanatképek megosztása](storage-snapshots-files.md) véletlen törlés elleni védelem. Is használhatja AzCopy, Robocopy, vagy egy külső biztonsági mentési eszköz képes biztonsági mentést egy csatlakoztatott fájlmegosztást. Azure biztonsági mentés kínál Azure fájlok biztonsági mentését. További információ [biztonsági mentése Azure fájlmegosztásokat Azure biztonsági mentéssel](https://docs.microsoft.com/en-us/azure/backup/backup-azure-files).
+**Hogyan oszthatom saját Azure-fájlmegosztások biztonsági mentése meg?**  
+    Rendszeres használható [megosztási pillanatképek](storage-snapshots-files.md) véletlen törlés elleni védelem. Is használhatja az AzCopy, Robocopy vagy egy külső biztonsági mentési eszköz, amely egy csatlakoztatott fájlmegosztás készíthető. Az Azure Backup kínál az Azure Files biztonsági mentése. Tudjon meg többet [biztonsági mentése az Azure-fájlmegosztások az Azure Backup](https://docs.microsoft.com/en-us/azure/backup/backup-azure-files).
 
-## <a name="share-snapshots"></a>A pillanatképek megosztása
-### <a name="share-snapshots-general"></a>Pillanatképek megosztása: általános
+## <a name="share-snapshots"></a>Megosztási pillanatképek
+### <a name="share-snapshots-general"></a>A fájlmegosztások pillanatképeinek: általános
 * <a id="what-are-snaphots"></a>
-**Mik azok a fájlpillanatképek megosztást?**  
-    Az Azure file megosztás pillanatképeket hozhat létre egy csak olvasható verziója a fájlmegosztásokat. Is használhatja Azure fájlokat másolni a tartalom vissza egy korábbi ugyanennek a megosztásnak, az Azure rendszerben, vagy további módosításokat helyszíni másik helyre. Megosztás pillanatképeket vonatkozó további információkért tekintse meg a [áttekintése pillanatkép megosztása](storage-snapshots-files.md).
+**Mik azok a fájlmegosztások pillanatképei?**  
+    Az Azure fájlmegosztási pillanatképeket segítségével hozza létre a fájlmegosztások csak olvasható verzióját. Is használhatja az Azure Files a tartalom vissza egy korábbi másolása máshová az Azure-ban vagy a helyszíni további módosításokat a megosztáshoz. Megosztási pillanatképek kapcsolatos további információkért tekintse meg a [pillanatkép áttekintése megosztása](storage-snapshots-files.md).
 
 * <a id="where-are-snapshots-stored"></a>
-**A megosztás pillanatképeket tároló?**  
-    Megosztás pillanatképek ugyanazt a tárfiókot, a fájlmegosztást tárolja.
+**A megosztási pillanatképek tároló?**  
+    Megosztási pillanatképek az adott tárfiók, mivel a fájlmegosztás vannak tárolva.
 
 * <a id="snapshot-perf-impact"></a>
-**Vannak a teljesítményre gyakorolt hatása megosztás pillanatképek használata?**  
-    Megosztás pillanatképek nem rendelkezik a teljesítményigény.
+**Vannak-e bármilyen teljesítményre gyakorolt hatása a megosztási pillanatképek?**  
+    Megosztási pillanatképek nem kell semmilyen teljesítménybeli terhelést okoz.
 
 * <a id="snapshot-consistency"></a>
-**Azok megosztási pillanatképek alkalmazáskonzisztens?**  
-    Nem, nincsenek alkalmazáskonzisztens pillanatképek megosztás. A felhasználó a írások ürítse ki az alkalmazásból a megosztáshoz a megosztást pillanatképének készítése előtt kell.
+**Megosztási pillanatképek alkalmazáskonzisztens vannak?**  
+    Nem, megosztási pillanatképek használata nem alkalmazás-konzisztens. A felhasználó az alkalmazás a megosztáshoz a megosztási pillanatkép kiléptetése előtt kell kiüríti az írási műveletek.
 
 * <a id="snapshot-limits"></a>
-**Vannak-e használható megosztás pillanatképek számára vonatkozó korlátozások?**  
-    Igen. Az Azure Files legfeljebb 200 megosztás pillanatképek továbbra is. Megosztás pillanatképek nem száma a fájlmegosztási kvóta felé így a teljes lemezterület, melynek használatával a megosztás pillanatképek megosztásonkénti korlátozva. Tárfiókok korlátai továbbra is érvényesek lesznek. Után 200 megosztás pillanatképeket törölnie kell a korábbi pillanatképek új megosztás-pillanatképek létrehozásához.
+**Használhatom a megosztási pillanatképek száma korlátozva van?**  
+    Igen. Az Azure Files őrizheti meg egy legfeljebb 200 megosztási pillanatképek. Megosztási pillanatképek nem számítanak felé a fájlmegosztás kvótájának, így a teljes terület, a fájlmegosztási pillanatképekből által használt fájlmegosztásonként korlátlan. Tárfiókok korlátai továbbra is érvényesek. Után 200 megosztási pillanatképek törölnie kell a korábbi pillanatképek új megosztási pillanatképek létrehozása.
 * <a id="snapshot-cost"></a>
-**Mennyi nem megosztás pillanatkép költség?**  
-    Szabványos és standard tárolási költségű pillanatkép vonatkoznak. A pillanatképeket növekményes jellegűek. A kiinduló pillanatkép a megosztás saját magát. A későbbi pillanatképek növekményes, és csak a korábbi pillanatképből különbözeti tárolja. Ez azt jelenti, hogy az új módosításokkal, amely a számlázási lesz látható minimális, ha a munkaterhelés forgalom minimális lesz. Lásd: [árazás lap](https://azure.microsoft.com/pricing/details/storage/files/) Standard Azure-fájlok díjszabási információkat. A megosztás pillanatkép által felhasznált mérete meg módja a számlázott kapacitás összevetésével ma használható kapacitás. Jelenleg is dolgozunk eszközt használunk erre a jelentéskészítési javítása érdekében.
+**Mennyi nem meg pillanatkép költség?**  
+    Standard szintű tranzakció, és standard tárterület költségeit pillanatkép vonatkoznak. A pillanatképeket növekményes jellegűek. A kiinduló pillanatkép maga a megosztást. Az ezt követő pillanatképek növekményes, és csak fogja tárolni a korábbi pillanatképből a különbözeti. Ez azt jelenti, hogy az új módosításokkal, amely látható lesz a számlán minimális, ha a munkaterhelés forgalma minimális lesz. Lásd: [díjszabási oldalunkon](https://azure.microsoft.com/pricing/details/storage/files/) szabványos Azure Files a díjszabásról. A megosztási pillanatképek által felhasznált méret nézze módja a számlázott kapacitás összevetésével ma használt kapacitás. Dolgozunk a javítása, a jelentés azokat az eszközöket.
 
 
-### <a name="create-share-snapshots"></a>Megosztás pillanatképeket
+### <a name="create-share-snapshots"></a>Megosztási pillanatképek létrehozása
 * <a id="file-snaphsots"></a>
-**Az egyes fájlok megosztási pillanatkép hozhat létre?**  
-    Megosztás pillanatképek a fájl fájlmegosztási szinten jönnek létre. A megosztás fájlpillanatkép állíthatja vissza a fájlokat, de fájlszintű megosztás pillanatképek nem hozható létre. Azonban ha elvégezte a megosztási szintű megosztás pillanatképet, és meg szeretné tekinteni a megosztás pillanatképeket, amelyekben egy adott fájl módosult, ehhez a **korábbi verziók** csatlakoztatott Windows-megosztáson található. 
+**Hozhat létre az egyes fájlok megosztási pillanatkép?**  
+    Megosztási pillanatképek hozhatók létre, a fájl megosztási szintje. Visszaállíthatja az egyes fájlok megosztási pillanatképből, de a fájlszintű megosztási pillanatképek nem hozható létre. Azonban, ha elvégezte a megosztásszintű megosztási pillanatkép, és meg szeretné tekinteni egy adott fájl módosított rendelkező megosztási pillanatképek, ezt megteheti a **korábbi verziók** csatlakoztatott Windows-megosztáson található. 
     
-    Ha egy fájl pillanatkép funkció, ossza meg velünk [Azure fájlok UserVoice](https://feedback.azure.com/forums/217298-storage/category/180670-files).
+    Ha egy fájl pillanatkép funkció, ossza meg velünk [Azure Files UserVoice](https://feedback.azure.com/forums/217298-storage/category/180670-files).
 
 * <a id="encypted-snapshots"></a>
-**Egy titkosított fájlmegosztás megosztás pillanatképeket hozhat létre?**  
-    Titkosítás engedélyezve aktívan rendelkező Azure fájlmegosztásokat megosztás pillanatképet is igénybe vehet. Egy megosztás pillanatképből fájlok visszaállíthatja egy titkosított fájlmegosztás. Ha a megosztás titkosítva van, a megosztás pillanatkép is titkosítva van.
+**Egy titkosított fájlmegosztás megosztási pillanatképeket hozhat létre?**  
+    Azure-fájlmegosztások titkosítás inaktív állapotban engedélyezett rendelkező megosztási pillanatképek is igénybe vehet. Fájlok megosztási pillanatképből egy titkosított megosztás visszaállítása. Ha a megosztás titkosítva van, a megosztási pillanatképek is titkosítva.
 
 * <a id="geo-redundant-snaphsots"></a>
-**A megosztás pillanatképek georedundáns vannak?**  
-    Megosztás pillanatképek rendelkezik, amelynek felvétel Azure fájlmegosztás azonos redundanciát. Georedundáns tárolás jelölt ki a fiókot, ha a pillanatkép-is megosztásba tárolódik redundantly párosított régióban.
+**A megosztási pillanatképek georedundáns vannak?**  
+    Megosztási pillanatképek Azure-fájlmegosztás, amelynek adatpontjára, az azonos redundanciával rendelkezik. Ha kiválasztotta a georedundáns tárolás a fiók, a megosztási pillanatkép is redundantly tárolódik a párosított régióra.
 
-### <a name="manage-share-snapshots"></a>Megosztás pillanatképek kezeléséhez
+### <a name="manage-share-snapshots"></a>Megosztási pillanatképek kezelése
 * <a id="browse-snapshots-linux"></a>
-**Tallózhatja a Linux megosztás pillanatképeinek?**  
-    Azure CLI 2.0 segítségével létrehozása, listázása, keresse meg és állítson vissza egy megosztás pillanatképet a Linux.
+**Megnyithatja a megosztási pillanatképek Linux rendszerben?**  
+    Azure CLI 2.0 használatával létrehozása, listázása, keresse meg és állítsa vissza a megosztási pillanatképek Linux rendszeren.
 
 * <a id="copy-snapshots-to-other-storage-account"></a>
-**Átmásolhatók-e a megosztás pillanatképek során eltérő tárfiók?**  
-    Másolhat fájlokat származó megosztás egy másik helyre, de nem lehet másolni a megosztás pillanatképek magukat.
+**Képes a megosztási pillanatképek is másolja egy másik tárfiókba?**  
+    Másolhat fájlokat a megosztási pillanatképek egy másik helyre, de a megosztási pillanatképek maguk nem lehet másolni.
 
-### <a name="restore-data-from-share-snapshots"></a>Megosztás származó adatok visszaállítása
+### <a name="restore-data-from-share-snapshots"></a>Adatok visszaállítása megosztási pillanatképekből
 * <a id="promote-share-snapshot"></a>
-**A kiinduló megosztáshoz való megosztás pillanatkép is előléptetni?**  
-    Megosztás pillanatkép adatokat semmilyen más célra másolhatja. A kiinduló megosztáshoz való megosztás pillanatkép nem léptethető elő.
+**Előléptethet egy megosztási pillanatképre annak a kiinduló megosztást?**  
+    Adatokat egy megosztás pillanatképéből bármely más célhelyre másolja. Egy megosztási pillanatképre annak az alapszintű megosztás nem léptethető elő.
 
 * <a id="restore-snapshotted-file-to-other-share"></a>
-**Állíthatók vissza adatokat a megosztás pillanatképből egy másik tárfiókkal?**  
-    Igen. Egy megosztás pillanatképből fájlokat az eredeti helyre vagy másik helyre, amely tartalmazza a tárfiókon vagy egy másik tárolási fiókot, vagy ugyanabban a régióban vagy különböző régiókban lehet másolni. Akkor is tud fájlokat másolni a helyszíni helyre vagy bármely más felhőbe.    
+**Vissza tudok állítani biztonsági adatok a megosztás pillanatképéből, amely eltérő tárfiókot használ?**  
+    Igen. Egy megosztás pillanatképéből fájlokat az eredeti helyre vagy egy másik helyre, amely tartalmazza ugyanazt a tárfiókot, vagy egy másik tárfiókot, vagy ugyanabban a régióban, vagy különböző régiókban lehet másolni. Akkor is tud fájlokat másolni a helyszíni helyre, vagy bármely más felhőbe.    
   
-### <a name="clean-up-share-snapshots"></a>Megosztás pillanatképek tisztítása
+### <a name="clean-up-share-snapshots"></a>Megosztási pillanatképek törlése
 * <a id="delete-share-keep-snapshots"></a>
-**Törölje a megosztást azonban nem törli a megosztást pillanatképek?**  
-    Ha a megosztás aktív megosztás pillanatképekkel rendelkezik, a megosztás nem törölhető. Az API-k segítségével törölje a megosztást pillanatképeket, és a megosztáshoz. Is törölheti a megosztás pillanatképek mind a megosztás, az Azure portálon.
+**Törli a megosztást azonban nem a saját megosztási pillanatképek törlése?**  
+    Ha aktív megosztási pillanatképek a megosztáson található, a megosztás nem törölhető. API-k segítségével, és a megosztás megosztási pillanatképek törlése. Is törölheti a megosztási pillanatképek és a megosztás, az Azure Portalon is.
 
 * <a id="delete-share-with-snapshots"></a>
-**Mi történik a megosztás pillanatképet, ha a tárfiókot?**  
-    Ha törli a tárfiókot, a megosztás pillanatképek is törlődnek.
+**Mi történik a megosztási pillanatképek, ha a storage-fiókomat?**  
+    Ha törli a tárfiókot, a megosztási pillanatképek is törlődnek.
 
-## <a name="billing-and-pricing"></a>Számlázási és az árképzés terén
+## <a name="billing-and-pricing"></a>Számlázási és díjszabás
 * <a id="vm-file-share-network-traffic"></a>
-**Nem közötti hálózati forgalom az Azure virtuális gép és egy Azure fájlmegosztás fájlszám külső sávszélesség, amelyet az előfizetést?**  
-    Ha a fájlmegosztás és a virtuális gép ugyanazon Azure-régióban van, akkor nem kell külön fizetni a fájlmegosztás és a virtuális gép közötti forgalom. Ha a fájlmegosztás és a virtuális gép különböző régiókban, adatforgalom külső sávszélességnek minősül, van szó.
+**Nem a hálózati forgalom egy Azure virtuális gép és egy Azure-beli fájlmegosztás közötti külső sávszélesség, amely az előfizetés díját?**  
+    Ha a fájlmegosztás és a virtuális gép ugyanazon Azure-régióban, nincs a fájlmegosztás és a virtuális gép közötti adatforgalom díjmentes. Ha a fájlmegosztás és a virtuális gép eltérő régióban van, közöttük a forgalom külső sávszélességnek számítjuk fel.
 
 * <a id="share-snapshot-price"></a>
-**Milyen mértékű ugyanazt a pillanatképek költség?**  
-     Előzetes nincs megosztás pillanatképet jelent a kapacitástervezés nem kell fizetni. Standard szintű tárolást kilépő és tranzakciós költségek vonatkoznak. Általános rendelkezésre állás érdekében után előfizetések a kapacitás és a tranzakciókért a megosztás pillanatképek fogjuk számlázni.
+**IP-címek fenntartási tegye meg a pillanatképek költség?**  
+     Előzetes verzióban nem számítunk fel díjat megosztási pillanatkép-kapacitás. Standard szintű storage kimenő forgalom és tranzakciós költségek a alkalmazni. Általános elérhetőségét követően kapacitás és a tranzakciókért a megosztási pillanatképek előfizetések számítunk ki.
      
-     Megosztás pillanatképei növekményes jellegűek. A kiinduló megosztás pillanatkép a megosztás saját magát. Minden ezt követő megosztás pillanatképet növekményes, és csak az előző megosztás pillanatképből különbség tárolja. Csak a módosított tartalmat a kell fizetni. Ha egy megosztást az adatok 100 GiB rendelkezik, de csak 5 GiB megváltozott az utolsó megosztás pillanatfelvétel óta, a megosztás pillanatkép csak 5 további GiB használ fel, és a 105 GiB kell fizetni. Tranzakció és a szabványos kilépő díjakat kapcsolatos további információkért tekintse meg a [árazás lap](https://azure.microsoft.com/pricing/details/storage/files/).
+     Megosztási pillanatképek olyan növekményes jellegűek. A kiinduló megosztási pillanatkép maga a megosztást. Az összes későbbi megosztási pillanatképek növekményes, és csak a különbség az előző megosztás pillanatképéből tárolásához. Fizetnie csak a módosított tartalmat. Ha egy megosztást a 100 GB adat van, de csak 5 GiB az utolsó megosztási pillanatkép óta megváltozott, a megosztási pillanatképek csak 5 további GiB használ fel, és 105 GiB számlázzuk ki. Tranzakciók és a standard szintű kimenő forgalom költségeit kapcsolatos további információkért lásd: a [díjszabási oldalunkon](https://azure.microsoft.com/pricing/details/storage/files/).
 
 ## <a name="scale-and-performance"></a>Méretezés és teljesítmény
 * <a id="files-scale-limits"></a>
-**A skálázási korlátai Azure fájlok**  
-    Azure-fájlok méretezhetőségi és Teljesítménycélok kapcsolatos információkért lásd: [Azure fájlok méretezhetőségi és Teljesítménycélok](storage-files-scale-targets.md).
+**Mik azok a skálázási korlátokat az Azure Files?**  
+    Az Azure Files méretezhetőségi és teljesítménycéljai kapcsolatos információkért lásd: [Azure Files méretezhetőségi és teljesítménycéljai](storage-files-scale-targets.md).
 
 * <a id="need-larger-share"></a>
-**Van szükségem az Azure-fájlok jelenleg nyújt, mint nagyobb fájlmegosztást. A saját Azure fájlmegosztás méretének növelése?**  
-    Nem. Az Azure fájlmegosztások maximális mérete 5 TiB. Ez jelenleg rögzített korlátját, amely jelenleg nem lehet beállítani. A fájlmegosztás méretét 100 TiB megoldás jelenleg is dolgozunk, de ütemtervek megosztásához jelenleg nem tudunk.
+**Az Azure Files jelenleg érhetők el, mint nagyobb fájlmegosztás van szükségem. Növelheti a saját Azure-fájlmegosztás méretét?**  
+    Nem. Az Azure-fájlmegosztás maximális mérete 5 Tib-ra. Ez jelenleg rögzített korlátja, amely azt nem lehet beállítani. Folyamatban van egy megoldás 100 Tib-ra a megosztás méretének növeléséhez, de ütemtervek megosztásához jelenleg nem áll rendelkezésre.
 
 * <a id="open-handles-quota"></a>
-**Hány ügyfél egyidejűleg hozzáfér ugyanazt a fájlt?**   
-    Egyetlen fájl 2000 megnyitott kezelőkkel tartozó kvóta van. Ha 2000 megnyitott leíróinak, egy hibaüzenet jelenik meg, amely szerint a kvóta elérésekor.
+**Hány ügyfelek hozzáférhetnek a egyszerre ugyanazt a fájlt?**   
+    Nincs egyetlen fájl 2000 megnyitott kezelőkkel-kvótát. Ha 2000 megnyitott leíróinak, egy hibaüzenet jelenik meg, amely szerint a kvóta elérése.
 
 * <a id="zip-slow-performance"></a>
-**A teljesítmény akkor lassú, ha szeretnék csomagolja ki a fájlokat az Azure Fileshoz. Mit tegyek?**  
-    Nagyszámú fájlok átvitele az Azure Fileshoz, javasoljuk, AzCopy (a Windows; a Linux és UNIX rendszerű előzetes verzió) vagy az Azure PowerShell használata. Ezek az eszközök a hálózati átvitel optimalizált.
+**A teljesítmény akkor lassú, ha az Azure Files fájlokat kicsomagolni a lemezen. Mit tegyek?**  
+    Nagy mennyiségű fájlt át az Azure Files, azt javasoljuk, hogy használja-e AzCopy (Windows, Linux és UNIX rendszerekhez készült előzetes verzióban érhető el) vagy az Azure PowerShell. Ezek az eszközök hálózati átvitelt lettek optimalizálva.
 
 * <a id="slow-perf-windows-81-2012r2"></a>
-**Miért van a lassú teljesítmény, miután szeretnék saját Azure fájlmegosztás csatlakoztatása a Windows Server 2012 R2 vagy Windows 8.1?**  
-    Egy ismert probléma van, amikor az Azure fájlmegosztások csatlakoztatása a Windows Server 2012 R2 és Windows 8.1. A probléma a 2014. április összegző frissítés a Windows 8.1 és Windows Server 2012 R2 lett telepítve. Az optimális teljesítmény érdekében győződjön meg arról, hogy Windows Server 2012 R2 és Windows 8.1 alkalmazza a javítás. (Mindig kap a Windows Update Windows javítások.) További információkért lásd: a Microsoft Tudásbázis kapcsolódó cikkében tanulmányozható [csökkentheti a teljesítményt, amikor Azure fájlok fér hozzá a Windows 8.1 vagy Server 2012 R2](https://support.microsoft.com/kb/3114025).
+**Miért van a teljesítmény lassú, miután I saját Azure-fájlmegosztás csatlakoztatása a Windows Server 2012 R2 vagy Windows 8.1?**  
+    Egy ismert probléma van, amikor az Azure-fájlmegosztás csatlakoztatása a Windows Server 2012 R2 és Windows 8.1. A probléma volt javítani a 2014. április összegző frissítés a Windows 8.1 és Windows Server 2012 R2. Az optimális teljesítmény érdekében győződjön meg arról, hogy a Windows Server 2012 R2 és Windows 8.1 összes példánya rendelkezik-e a alkalmazni a javítást. (Mindig küld Windows javításai a Windows Update szolgáltatáson keresztül.) További információkért lásd: a Microsoft Tudásbázis társított [csökkentheti a teljesítményt, amikor az Azure Files fér hozzá a Windows 8.1 vagy Server 2012 R2](https://support.microsoft.com/kb/3114025).
 
-## <a name="features-and-interoperability-with-other-services"></a>Szolgáltatások és egyéb szolgáltatások együttműködés
+## <a name="features-and-interoperability-with-other-services"></a>Funkciók és más szolgáltatásokkal való együttműködés
 * <a id="cluster-witness"></a>
-**Használható az Azure-fájlmegosztáshoz, egy *fájl megosztása tanúsító* a Windows Server feladatátvevő fürt?**  
-    Ez a konfiguráció egy Azure fájlmegosztás nem támogatott. Ez az Azure Blob Storage tárolóban szolgáltatáshoz beállításával kapcsolatos további információkért lásd: [felhő tanúsító feladatátvevő fürt telepítése](https://docs.microsoft.com/windows-server/failover-clustering/deploy-cloud-witness).
+**Használható a saját Azure-fájlmegosztást, egy *tanúsító fájlmegosztást* saját Windows Server feladatátvevő fürt?**  
+    Ez a konfiguráció jelenleg nem támogatott az Azure-fájlmegosztások. Állítsa be ezt az Azure Blob storage szolgáltatásra kapcsolatos további információkért lásd: [Felhőbeli tanúsító telepítése feladatátvevő fürt](https://docs.microsoft.com/windows-server/failover-clustering/deploy-cloud-witness).
 
 * <a id="containers"></a>
-**Csatlakoztathatok egy Azure-fájlmegosztáshoz egy Azure-tárolóba példány?**  
-    Igen, az Azure fájlmegosztások is jó választás, ha azt szeretné megőrizni az adatokat tároló példány élettartamát túl. További információkért lásd: [csatlakoztatása az Azure fájlmegosztások Azure-tárolóba osztályt](../../container-instances/container-instances-mounting-azure-files-volume.md).
+**Csatlakoztathatok egy Azure-fájlmegosztást az egy Azure-tárolópéldányon?**  
+    Azure-fájlmegosztások Igen, akkor érdemes választani, ha meg szeretné megőrizni az adatokat tárolópéldány időtartama túl. További információkért lásd: [csatlakoztatása egy Azure-fájlmegosztás az Azure Container instances szolgáltatással](../../container-instances/container-instances-mounting-azure-files-volume.md).
 
 * <a id="rest-rename"></a>
-**Van-e a REST API átnevezési művelettel?**  
+**Van-e a REST API-ban átnevezési művelettel?**  
     Jelenleg nem.
 
 * <a id="nested-shares"></a>
-**Adható meg a beágyazott megosztás? Más szóval a megosztás egy megosztásban?**  
-    Nem. A fájlmegosztás *van* a virtuális meghajtó, amelyet csatlakoztathat, így nem támogatottak a beágyazott megosztás.
+**Állítható be a beágyazott megosztás? Más szóval olyan megosztás egy megosztásban?**  
+    Nem. A fájlmegosztás *van* a virtuális meghajtó, amelyet csatlakoztathat, így a beágyazott megosztás nem támogatottak.
 
 * <a id="ibm-mq"></a>
-**Miként használható az Azure-fájlok IBM MQ-val?**  
-    Az IBM kiadott egy dokumentumot, amely segítségével az IBM MQ-ügyfelek konfigurálása az Azure-fájlok az IBM szolgáltatással. További információkért lásd: [beállítása az IBM MQ többpéldányos várólista-kezelő Microsoft Azure fájlok szolgáltatással](https://github.com/ibm-messaging/mq-azure/wiki/How-to-setup-IBM-MQ-Multi-instance-queue-manager-with-Microsoft-Azure-File-Service).
+**Hogyan használhatom az Azure Files az IBM MQ-val?**  
+    Az IBM kiadott egy dokumentumot, amelyek segítségével az IBM MQ-ügyfelek konfigurálása az Azure Files az IBM-szolgáltatással. További információkért lásd: [beállítása az IBM MQ többpéldányos üzenetsor-kezelő a Microsoft Azure Files szolgáltatással](https://github.com/ibm-messaging/mq-azure/wiki/How-to-setup-IBM-MQ-Multi-instance-queue-manager-with-Microsoft-Azure-File-Service).
 
 ## <a name="see-also"></a>Lásd még
-* [A Windows Azure fájlok hibaelhárítása](storage-troubleshoot-windows-file-connection-problems.md)
-* [Az Azure Files lévő Linux hibaelhárítása](storage-troubleshoot-linux-file-connection-problems.md)
-* [Hibaelhárítás az Azure fájlszinkronizálás (előzetes verzió)](storage-sync-files-troubleshoot.md)
+* [A Windows Azure-fájlok hibaelhárítása](storage-troubleshoot-windows-file-connection-problems.md)
+* [A Linux Azure-fájlok hibaelhárítása](storage-troubleshoot-linux-file-connection-problems.md)
+* [Hibaelhárítás az Azure File Sync (előzetes verzió)](storage-sync-files-troubleshoot.md)

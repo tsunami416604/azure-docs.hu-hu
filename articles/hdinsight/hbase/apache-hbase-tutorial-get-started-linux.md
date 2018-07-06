@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/22/2018
 ms.author: jgao
-ms.openlocfilehash: b9298b081baf94350ab19a5d9a8af2705327eed6
-ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
+ms.openlocfilehash: a77724bd5ed14bf8eb91bf64a1837ce7106edd06
+ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37102242"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37867895"
 ---
 # <a name="get-started-with-an-apache-hbase-example-in-hdinsight"></a>Bevezetés a HDInsight egy Apache HBase-példájába
 
@@ -35,7 +35,7 @@ Az alábbi HBase-példa kipróbálásához a következőkkel kell rendelkeznie:
 * [curl](http://curl.haxx.se/download.html).
 
 ## <a name="create-hbase-cluster"></a>HBase-fürt létrehozása
-Az alábbi eljárás egy Azure Resource Manager-sablont használ egy HBase-fürt és a függő Azure Storage-fiók létrehozására. Az eljárásban és egyéb fürtlétrehozási módszerekben használt paraméterek megértéséhez lásd: [Create Linux-based Hadoop clusters in HDInsight](../hdinsight-hadoop-provision-linux-clusters.md) (Linux-alapú Hadoop-fürtök létrehozása a HDInsightban). Data Lake tárolási Gen2 használatáról további információk: [gyors üzembe helyezés: hdinsight fürtök beállítása](../../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md).
+Az alábbi eljárás egy Azure Resource Manager-sablont használ egy HBase-fürt és a függő Azure Storage-fiók létrehozására. Az eljárásban és egyéb fürtlétrehozási módszerekben használt paraméterek megértéséhez lásd: [Create Linux-based Hadoop clusters in HDInsight](../hdinsight-hadoop-provision-linux-clusters.md) (Linux-alapú Hadoop-fürtök létrehozása a HDInsightban). A Data Lake Storage Gen2 használatával további információkért lásd: [a rövid útmutató: a HDInsight-fürtök beállítása](../../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md).
 
 1. Az alábbi képre kattintva megnyithatja a sablont az Azure Portalon. A sablon az [Azure gyorsindítási sablonok](https://azure.microsoft.com/resources/templates/) között található.
    
@@ -248,7 +248,7 @@ A HBase a HDInsightban a fürtök megfigyelésére szolgáló webes felhasznál�
 
 **A HBase mesterfelületének elérése**
 
-1. Jelentkezzen be az Ambari webes felületre a https://&lt;Fürtnév>.azurehdinsight.net címen.
+1. Jelentkezzen be az Ambari webes felhasználói Felületet a https://&lt;Clustername >. azurehdinsight.NET formátumban van.
 2. Kattintson a **HBase** elemre a bal oldali menüben.
 3. Kattintson a **Gyorshivatkozások** elemre a lap tetején, mutasson az aktív Zookeeper-csomópont hivatkozására, majd kattintson a **HBase-mesterfelület** elemre.  A felület egy új böngészőlapon nyílik meg:
 

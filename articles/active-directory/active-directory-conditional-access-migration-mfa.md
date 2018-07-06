@@ -1,8 +1,8 @@
 ---
-title: Telepítse át az Azure portálon többtényezős hitelesítést igénylő klasszikus házirend |} Microsoft Docs
-description: Ez a cikk bemutatja, hogyan telepíthet át egy klasszikus házirendet, amely az Azure portálon többtényezős hitelesítést igényel.
+title: Áttelepíteni a klasszikus szabályzat megköveteli a multi-factor Authentication hitelesítés az Azure Portalon |} A Microsoft Docs
+description: Ez a cikk bemutatja, hogyan telepíthet át egy klasszikus szabályzat megköveteli a multi-factor Authentication hitelesítés az Azure Portalon.
 services: active-directory
-keywords: alkalmazások, a feltételes hozzáférés az Azure ad-vel, a biztonságos hozzáférés a vállalati erőforrásokhoz, a feltételes hozzáférési házirendekkel a feltételes hozzáférés
+keywords: feltételes hozzáférés az alkalmazásokhoz, az Azure AD feltételes hozzáférés, biztonságos hozzáférés a vállalati erőforrásokhoz, a feltételes hozzáférési szabályzatok
 documentationcenter: ''
 author: MarkusVi
 manager: mtillman
@@ -14,52 +14,52 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 12/11/2017
+ms.date: 06/13/2018
 ms.author: markvi
 ms.reviewer: nigu
-ms.openlocfilehash: 52d4297d2e86ad67672d38f1c527041b813f8d61
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 6190a8ee90855223779751373bf16ca3db0fe761
+ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34723687"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37872050"
 ---
-# <a name="migrate-a-classic-policy-that-requires-multi-factor-authentication-in-the-azure-portal"></a>Az Azure portálon többtényezős hitelesítést igénylő klasszikus házirend áttelepítése 
+# <a name="migrate-a-classic-policy-that-requires-multi-factor-authentication-in-the-azure-portal"></a>Áttelepíteni a klasszikus szabályzat megköveteli a multi-factor Authentication hitelesítés az Azure Portalon 
 
-Ez a cikk bemutatja, hogyan telepíthet át egy klasszikus házirend igénylő **a multi-factor authentication** felhőalapú alkalmazások. Bár ez nem előfeltétel, azt javasoljuk, hogy olvassa el [klasszikus szabályzatokkal az Azure portálon áttelepítése](active-directory-conditional-access-migration.md) a klasszikus házirendek áttelepítése előtt.
+Ez a cikk bemutatja, hogyan telepíthet át egy klasszikus szabályzat megköveteli **a multi-factor authentication** felhőalapú alkalmazás esetében. Bár ez nem előfeltétel, azt javasoljuk, hogy olvasási [az Azure Portalon klasszikus szabályzatok Migrálása](active-directory-conditional-access-migration.md) a klasszikus szabályzatok áttelepítése előtt.
 
 
  
 ## <a name="overview"></a>Áttekintés 
 
-Ebben a cikkben a forgatókönyvből megtudhatja, hogyan telepíthet át egy klasszikus házirend igénylő **a multi-factor authentication** felhőalapú alkalmazások. 
+Ez a cikk a forgatókönyv bemutatja, hogyan telepíthet át egy klasszikus szabályzat megköveteli **a multi-factor authentication** felhőalapú alkalmazás esetében. 
 
 ![Azure Active Directory](./media/active-directory-conditional-access-migration/33.png)
 
 
-Az áttelepítési folyamat a következőket foglalják magukban:
+Az áttelepítési folyamat a következő lépéseket tartalmazza:
 
-1. [Nyissa meg a klasszikus házirend](#open-a-classic-policy) beolvasni a konfigurációs beállításait.
-2. Hozzon létre egy új Azure AD feltételes hozzáférési házirend felülírja a klasszikus házirend. 
-3. A klasszikus házirendet.
+1. [Nyissa meg a klasszikus szabályzatot](#open-a-classic-policy) beolvasni a konfigurációs beállításokat.
+2. Hozzon létre egy új Azure AD feltételes hozzáférési szabályzat a klasszikus szabályzat helyett. 
+3. A klasszikus szabályzat letiltása.
 
 
 
-## <a name="open-a-classic-policy"></a>Nyissa meg a klasszikus házirend
+## <a name="open-a-classic-policy"></a>Nyissa meg a klasszikus szabályzatot
 
-1. Az a [Azure-portálon](https://portal.azure.com), kattintson a bal oldali navigációs sávja **Azure Active Directory**.
+1. Az a [az Azure portal](https://portal.azure.com), a bal oldali navigációs sávon kattintson **Azure Active Directory**.
 
     ![Azure Active Directory](./media/active-directory-conditional-access-migration-mfa/01.png)
 
-2. Az a **Azure Active Directory** lap a **kezelése** kattintson **feltételes hozzáférés**.
+2. Az a **Azure Active Directory** lap a **kezelés** területén kattintson **feltételes hozzáférési**.
 
     ![Feltételes hozzáférés](./media/active-directory-conditional-access-migration-mfa/02.png)
 
-3. Az a **kezelése** kattintson **klasszikus házirendek (előzetes verzió)**.
+3. Az a **kezelés** területén kattintson **(előzetes) klasszikus szabályzatok**.
 
     ![Klasszikus szabályzatok](./media/active-directory-conditional-access-migration-mfa/12.png)
 
-4. A klasszikus házirendek listájában, kattintson a szabályzatot, amely megköveteli **a multi-factor authentication** felhőalapú alkalmazások.
+4. Klasszikus szabályzatok listájában kattintson a szabályzatot, amely megköveteli **a multi-factor authentication** felhőalapú alkalmazás esetében.
 
     ![Klasszikus szabályzatok](./media/active-directory-conditional-access-migration-mfa/13.png)
 
@@ -67,80 +67,78 @@ Az áttelepítési folyamat a következőket foglalják magukban:
 ## <a name="create-a-new-conditional-access-policy"></a>Új feltételes hozzáférési szabályzat létrehozása
 
 
-1. Az a [Azure-portálon](https://portal.azure.com), kattintson a bal oldali navigációs sávja **Azure Active Directory**.
+1. Az a [az Azure portal](https://portal.azure.com), a bal oldali navigációs sávon kattintson **Azure Active Directory**.
 
     ![Azure Active Directory](./media/active-directory-conditional-access-migration/01.png)
 
-2. Az a **Azure Active Directory** lap a **kezelése** kattintson **feltételes hozzáférés**.
+2. Az a **Azure Active Directory** lap a **kezelés** területén kattintson **feltételes hozzáférési**.
 
     ![Feltételes hozzáférés](./media/active-directory-conditional-access-migration/02.png)
 
 
 
-3. A a **feltételes hozzáférés** lapon nyissa meg a **új** lapon, a felső eszköztáron kattintson **Hozzáadás**.
+3. Az a **feltételes hozzáférési** oldal megnyitásához a **új** oldalon, a felső eszköztáron kattintson **Hozzáadás**.
 
     ![Feltételes hozzáférés](./media/active-directory-conditional-access-migration/03.png)
 
-4. Az a **új** lap a **neve** szövegmező, írja be a házirend nevét.
+4. Az a **új** lap a **neve** szövegmezőbe írja be a szabályzat nevét.
 
     ![Feltételes hozzáférés](./media/active-directory-conditional-access-migration/29.png)
 
-5. Az a **hozzárendelések** kattintson **felhasználók és csoportok**.
+5. Az a **hozzárendelések** területén kattintson **felhasználók és csoportok**.
 
     ![Feltételes hozzáférés](./media/active-directory-conditional-access-migration/05.png)
 
-    a. Ha a klasszikus házirend kiválasztott összes felhasználó, kattintson a **minden felhasználó**. 
+    a. Ha az összes felhasználó lehetőséget jelölte meg a klasszikus szabályzat van, kattintson a **minden felhasználó**. 
 
     ![Feltételes hozzáférés](./media/active-directory-conditional-access-migration/35.png)
 
-    b. Ha a klasszikus házirend kijelölt csoportokat, kattintson a **felhasználók és csoportok kiválasztása**, majd válassza ki a szükséges felhasználók és csoportok.
+    b. Ha a klasszikus szabályzatot a kijelölt csoportok, kattintson a **válassza ki a felhasználók és csoportok**, majd válassza ki a szükséges felhasználókat és csoportokat.
 
     ![Feltételes hozzáférés](./media/active-directory-conditional-access-migration/36.png)
 
-    c. Ha a kizárási csoportokat, kattintson a **kizárása** lapot, és jelölje ki a szükséges felhasználók és csoportok. 
+    c. Ha a kizárt csoportok, kattintson a **kizárása** lapra, és válassza ki a szükséges felhasználókat és csoportokat. 
 
     ![Feltételes hozzáférés](./media/active-directory-conditional-access-migration/37.png)
 
-6. Az a **új** lapon nyissa meg a **felhőalapú alkalmazásokba** lap a **hozzárendelés** területen kattintson **felhőalapú alkalmazásokba**.
+6. A a **új** oldal megnyitásához a **Felhőalkalmazások** lap a **hozzárendelés** területén kattintson **Felhőalkalmazások**.
 
-    ![Feltételes hozzáférés](./media/active-directory-conditional-access-azure-portal-get-started/07.png)
-
-8. Az a **felhőalapú alkalmazásokba** lapon, a következő lépésekkel:
+8. Az a **Felhőalkalmazások** lapon, a következő lépésekkel:
 
     ![Feltételes hozzáférés](./media/active-directory-conditional-access-migration/08.png)
 
-    a. Kattintson a **alkalmazásokról**.
+    a. Kattintson a **alkalmazások kiválasztása**.
 
     b. Kattintson a **Kiválasztás** gombra.
 
-    c. A a **válasszon** lapon válassza ki a cloud app, és kattintson a **válasszon**.
+    c. Az a **kiválasztása** lapon válassza ki a felhőalapú alkalmazás, és kattintson a **kiválasztása**.
 
-    d. Az a **felhőalapú alkalmazásokba** kattintson **végzett**.
+    d. Az a **Felhőalkalmazások** kattintson **kész**.
 
 
 
-9. Ha rendelkezik **többtényezős hitelesítést** kijelölt:
+9. Ha rendelkezik **többtényezős hitelesítés megkövetelése** kiválasztott:
 
     ![Feltételes hozzáférés](./media/active-directory-conditional-access-migration/26.png)
 
-    a. Az a **hozzáférés-szabályozási** kattintson **Grant**.
+    a. Az a **hozzáférés-vezérlés** területén kattintson **Grant**.
 
     ![Feltételes hozzáférés](./media/active-directory-conditional-access-migration/27.png)
 
-    b. Az a **Grant** kattintson **hozzáférést**, és kattintson a **többtényezős hitelesítést**.
+    b. Az a **Grant** kattintson **hozzáférést**, és kattintson a **többtényezős hitelesítés megkövetelése**.
 
     c. Kattintson a **Kiválasztás** gombra.
 
 
-10. Kattintson a **a** ahhoz, hogy a házirend.
+10. Kattintson a **a** a szabályzat engedélyezéséhez.
 
     ![Feltételes hozzáférés](./media/active-directory-conditional-access-migration/30.png)
 
 
 
-## <a name="disable-the-classic-policy"></a>A klasszikus házirend letiltása
+## <a name="disable-the-classic-policy"></a>A klasszikus szabályzat letiltása
 
-A klasszikus házirend letiltásához kattintson **letiltása** a a **részletek** megtekintése.
+A klasszikus szabályzat letiltásához kattintson **letiltása** a a **részletei** megtekintése.
 
 ![Klasszikus szabályzatok](./media/active-directory-conditional-access-migration-mfa/14.png)
 
@@ -148,9 +146,9 @@ A klasszikus házirend letiltásához kattintson **letiltása** a a **részletek
 
 ## <a name="next-steps"></a>További lépések
 
-- A klasszikus házirend áttelepítésével kapcsolatos további információkért lásd: [klasszikus szabályzatokkal az Azure portálon áttelepítése](active-directory-conditional-access-migration.md).
+- A klasszikus szabályzat áttelepítése kapcsolatos további információkért lásd: [az Azure Portalon klasszikus szabályzatok Migrálása](active-directory-conditional-access-migration.md).
 
 
-- Ha meg szeretné ismerni a feltételes hozzáférési házirend konfigurálása tudnivalókat [Ismerkedés a feltételes hozzáférés az Azure Active Directoryban](active-directory-conditional-access-azure-portal-get-started.md).
+- Ha azt szeretné tudni, hogyan lehet feltételes hozzáférési szabályzat konfigurálása, lásd: [többtényezős hitelesítés megkövetelése az Azure Active Directory feltételes hozzáférés az adott alkalmazások](active-directory-conditional-access-app-based-mfa.md).
 
-- Ha készen áll a környezet feltételes hozzáférési házirend-beállításokkal, tekintse meg a [ajánlott eljárások a feltételes hozzáférés az Azure Active Directoryban](active-directory-conditional-access-best-practices.md). 
+- Ha készen áll a környezetre vonatkozó feltételes hozzáférési szabályzatok konfigurálására, tekintse meg a [ajánlott eljárások az Azure Active Directory feltételes hozzáférés](active-directory-conditional-access-best-practices.md). 

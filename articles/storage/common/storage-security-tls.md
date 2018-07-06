@@ -1,6 +1,6 @@
 ---
-title: Azure Storage-ügyfél biztonságos TLS engedélyezése |} Microsoft Docs
-description: Ismerje meg, hogy a TLS 1.2 engedélyezése az ügyfél az Azure Storage.
+title: Engedélyezze a biztonságos TLS-ügyfél Azure Storage |} A Microsoft Docs
+description: Ismerje meg, hogy a TLS 1.2 engedélyezése az Azure Storage-ügyfél.
 services: storage
 documentationcenter: na
 author: fhryo-msft
@@ -14,28 +14,28 @@ ms.tgt_pltfrm: na
 ms.workload: storage
 ms.date: 06/25/2018
 ms.author: fryu
-ms.openlocfilehash: 5c21df2b3bdeee6ac7c3956fe1cafa4f947dd6dd
-ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
+ms.openlocfilehash: 6c313b6015a8a6dcc4ca5befb5fef70b047d0410
+ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37036094"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37866525"
 ---
-# <a name="enable-secure-tls-for-azure-storage-client"></a>Azure Storage-ügyfél biztonságos TLS engedélyezése
+# <a name="enable-secure-tls-for-azure-storage-client"></a>Biztonságos TLS engedélyezése az Azure Storage-ügyfélnek
 
-Ha naplózni kell Azure Storage használata a szolgáltatások alapján legújabb megfelelőségi és biztonsági követelmények, SSL 1.0, 2.0-s, 3.0 és TLS 1.0 értelmezhető nem megfelelő kommunikációs protokollokat.
+Ha naplózni kell az Azure Storage használatát a szolgáltatások legújabb megfelelőségi és biztonsági követelmények, SSL 1.0, az 2.0-s, 3.0 és TLS 1.0-t ismerik el nem megfelelő kommunikációs protokollok.
 
-SSL 1.0-s 2.0 és 3.0 található érinti. Azok az RFC által tilos rendelkezik. A TLS 1.0 nem biztonságos blokktitkosításon (DES CBC és RC2 CBC) és adatfolyam-titkosítás (RC4) nem biztonságos lesz. PCI Tanács is ajánlott az áttelepítés magasabb TLS verziói. A részleteket megtekintheti [Transport Layer Security (TLS)](https://en.wikipedia.org/wiki/Transport_Layer_Security#SSL_1.0.2C_2.0_and_3.0).
+Az SSL 1.0, 2.0 és 3.0 sebezhetők találhatók. Ezek RFC lett tiltják. A TLS 1.0 nem biztonságos, az nem biztonságos blokktitkosító (DES CBC és RC2 CBC) és a Stream titkosító (RC4) lesz. PCI Tanács is ajánlott az áttelepítés, a TLS újabb verziójának. További részletekért lásd [Transport Layer Security (TLS)](https://en.wikipedia.org/wiki/Transport_Layer_Security#SSL_1.0.2C_2.0_and_3.0).
 
-Az Azure Storage 2015 leállt az SSL 3.0, és használja a TLS 1.2-es HTTPs-végponton nyilvános, de a TLS 1.0-s és a TLS 1.1 továbbra is támogatott a visszamenőleges kompatibilitás érdekében.
+Az Azure Storage már le van állítva az SSL 3.0 2015 óta, és használja a TLS 1.2-es nyilvános HTTPs-végpontokat, de a TLS 1.0-s és a TLS 1.1 továbbra is támogatott a visszamenőleges kompatibilitás érdekében.
 
-Annak érdekében, Azure Storage biztonságosságának és kapcsolat, lehetővé kell tenni a TLS 1.2 ügyféloldali az Azure Storage szolgáltatás működtetéséhez kérelmek elküldése előtt.
+Az Azure Storage biztonságos és megfelelő kapcsolat biztosítása érdekében, engedélyeznie kell a TLS 1.2 ügyféloldali Azure Storage szolgáltatás kérések elküldése előtt.
 
 ## <a name="enable-tls-12-in-net-client"></a>A TLS 1.2 engedélyezze a .NET-ügyfél
 
-Az ügyfél egyeztetni a TLS 1.2-es, az operációs rendszer és a .NET-keretrendszer verziója is kell támogatja a TLS 1.2-es. További részletek az [támogatja a TLS 1.2](https://docs.microsoft.com/en-us/dotnet/framework/network-programming/tls#support-for-tls-12).
+Az ügyfél egyeztetni a TLS 1.2-es, az operációs rendszer és a .NET-keretrendszer verziója is támogatnia kell a TLS 1.2. További részletek az [a TLS 1.2 támogatása](https://docs.microsoft.com/en-us/dotnet/framework/network-programming/tls#support-for-tls-12).
 
-A következő példa bemutatja, hogyan TLS 1.2 ahhoz, hogy a .NET-ügyfél.
+A következő minta bemutatja, hogyan engedélyezze a TLS 1.2 a .NET-ügyfél.
 
 ```csharp
 
@@ -56,7 +56,7 @@ A következő példa bemutatja, hogyan TLS 1.2 ahhoz, hogy a .NET-ügyfél.
 
 ## <a name="enable-tls-12-in-powershell-client"></a>A TLS 1.2 engedélyezése a PowerShell-ügyfél
 
-A következő példa bemutatja, hogyan TLS 1.2 engedélyezése a PowerShell-ügyfél.
+A következő minta bemutatja a TLS 1.2 engedélyezése a PowerShell-ügyfél.
 
 ```powershell
 
@@ -77,12 +77,13 @@ $listOfContainers
 
 ## <a name="verify-tls-12-connection"></a>A TLS 1.2-es kapcsolat ellenőrzése
 
-Fiddler segítségével győződjön meg arról, ha a TLS 1.2 ténylegesen szerepel-e. Nyissa meg az ügyfél hálózati forgalmat rögzítő elindításához Fiddler, majd hajtsa végre minta fent. Ezután a minta a kapcsolat a TLS verziója található.
+A Fiddler segítségével győződjön meg arról, ha a TLS 1.2 ténylegesen használt-e. Indítsa el az ügyfél hálózati forgalom rögzítése a Fiddler megnyitásához, majd hajtsa végre a fenti példa. Ezután a TLS-verzió található, amely a minta lehetővé teszi a kapcsolatot.
 
-Az alábbi képernyőfelvételen egy minta az ellenőrzéshez.
+Az alábbi képernyőképen egy mintát, az ellenőrzés.
 
-![Képernyőkép a TLS-verziót a Fiddler ellenőrzése](./media/storage-security-tls/storage-security-tls-verify-in-fiddler.png)
+![Képernyőkép a Fiddlert a TLS-verzió ellenőrzése](./media/storage-security-tls/storage-security-tls-verify-in-fiddler.png)
 
 ## <a name="see-also"></a>Lásd még
 
-* [A Transport Layer Security (TLS)](https://en.wikipedia.org/wiki/Transport_Layer_Security#SSL_1.0.2C_2.0_and_3.0)
+* [Transport Layer Security (TLS)](https://en.wikipedia.org/wiki/Transport_Layer_Security#SSL_1.0.2C_2.0_and_3.0)
+* [Engedélyezze a TLS Java-ügyfél](https://www.java.com/en/configure_crypto.html)

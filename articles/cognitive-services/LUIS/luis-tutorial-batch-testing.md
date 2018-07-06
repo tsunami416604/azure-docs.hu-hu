@@ -1,7 +1,7 @@
 ---
-title: Kötegelt tesztelési célra használható LUIS előrejelzéseket javítására |} Microsoft Docs
+title: Batch tesztelés használatával javíthatja a LUIS-előrejelzés |} A Microsoft Docs
 titleSuffix: Azure
-description: Kötegelt terheléstesztet, tekintse át az eredményeket, és javíthatja a LUIS előrejelzéseket módosításokkal.
+description: Batch terhelésteszt eredmények áttekintése és módosítása a LUIS-előrejelzések javítása.
 services: cognitive-services
 author: v-geberr
 manager: kamran.iqbal
@@ -10,63 +10,63 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 03/19/2018
 ms.author: v-geberr
-ms.openlocfilehash: 5788f17f2724a0354a1db506971c2343c1800f01
-ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
+ms.openlocfilehash: 4a5ace10c171d17235051c5bd666526318829fd7
+ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36266396"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37867341"
 ---
-# <a name="use-batch-testing-to-find-prediction-accuracy-issues"></a>Kötegelt tesztelési célra használható található előrejelzés pontosságát problémák
+# <a name="use-batch-testing-to-find-prediction-accuracy-issues"></a>Előrejelzési pontosság problémák kereséséhez használja a batch tesztelése
 
-Ez az oktatóanyag bemutatja, hogyan kell utterance előrejelzés problémák keresése a kötegelt tesztelési célra használható.  
+Ez az oktatóanyag bemutatja, hogyan utterance (kifejezés) előrejelzési problémák kereséséhez használja a batch-tesztelés.  
 
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
-* Hozzon létre egy kötegfájlt tesztelése 
-* A kötegelt teszt futtatása
-* Ellenőrizze a teszteredmények
-* Javítsa a hibákat a leképezések
-* A kötegelt ellenőrzése hosszadalmas
+* Hozzon létre egy kötegfájlt teszt 
+* Egy batch-teszt futtatása
+* Vizsgálati eredmények áttekintése
+* Javítsa a hibákat a szándék
+* A batch ellenőrzése hosszadalmas
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 > [!div class="checklist"]
-> * Ebből a cikkből is van szüksége egy [LUIS][LUIS] fiók ahhoz, hogy a LUIS alkalmazás létrehozásához.
+> * Ez a cikk is szüksége lesz egy [LUIS][LUIS] fiók annak érdekében, hogy a LUIS-alkalmazás létrehozásához.
 
 > [!Tip]
-> Ha még nem rendelkezik előfizetéssel, akkor a regisztrálhatja a [ingyenes fiókot](https://azure.microsoft.com/free/).
+> Ha Ön még nem rendelkezik előfizetéssel, regisztrálhat egy [ingyenes fiókot](https://azure.microsoft.com/free/).
 
 ## <a name="create-new-app"></a>Új alkalmazás létrehozása
-Ez a cikk az előre elkészített tartományt HomeAutomation használja. Az előre elkészített tartomány leképezések, entitásokat és HomeAutomation eszközök, például fény szabályozásának utterances rendelkezik. A tartomány, az alkalmazás létrehozását, betanítását és közzététele.
+Ez a cikk az előre összeállított tartomány HomeAutomation használja. Az előre összeállított tartományban van, szándék fog vonatkozni, az entitások és HomeAutomation eszközök, például lámpa való kimondott szöveg. A tartomány az alkalmazás létrehozását, betanítását és közzététele.
 
-1. Az a [LUIS] webhelyet, hozzon létre egy új alkalmazást kiválasztásával **hozzon létre új alkalmazás** a a **MyApps** lap. 
+1. Az a [LUIS] webhely, hozzon létre egy új alkalmazást kiválasztásával **új alkalmazás létrehozása** a a **MyApps** lapot. 
 
     ![Új alkalmazás létrehozása](./media/luis-tutorial-batch-testing/create-app-1.png)
 
-2. Adja meg a nevét `Batchtest-HomeAutomation` párbeszédpanelen.
+2. Adja meg a nevét `Batchtest-HomeAutomation` a párbeszédpanelen.
 
     ![Adja meg az alkalmazás neve](./media/luis-tutorial-batch-testing/create-app-2.png)
 
-3. Válassza ki **előre elkészített tartományok** bal alsó sarokban. 
+3. Válassza ki **előre összeállított tartományok** a bal alsó sarokban. 
 
-    ![Előre elkészített tartomány kiválasztása](./media/luis-tutorial-batch-testing/prebuilt-domain-1.png)
+    ![Előre összeállított tartomány kiválasztása](./media/luis-tutorial-batch-testing/prebuilt-domain-1.png)
 
 4. Válassza ki **tartomány hozzáadása** HomeAutomation számára.
 
     ![HomeAutomation tartomány hozzáadása](./media/luis-tutorial-batch-testing/prebuilt-domain-2.png)
 
-5. Válassza ki **vonat** a jobb felső navigációs sávban.
+5. Válassza ki **Train** a jobb oldali navigációs sáv tetején.
 
-    ![Válassza ki a vonat gomb](./media/luis-tutorial-batch-testing/train-button.png)
+    ![Válassza ki a tanítási gomb](./media/luis-tutorial-batch-testing/train-button.png)
 
-## <a name="batch-test-criteria"></a>Kötegelt teszt feltételek
-Kötegelt tesztelése, tesztelheti egyszerre legfeljebb 1000 utterances. A köteg nem lehetnek duplikált elemek. [Exportálás](create-new-app.md#export-app) az alkalmazás aktuális utterances listájának megjelenítéséhez.  
+## <a name="batch-test-criteria"></a>A Batch tesztkritériumban
+Batch tesztelés tesztelheti egyszerre legfeljebb 1000 kimondott szöveg. A batch nem rendelkezhet duplikált elemeket. [Exportálás](create-new-app.md#export-app) az alkalmazást, annak érdekében, hogy a jelenlegi utterances listájának megtekintéséhez.  
 
-LUIS teszt stratégiája használ az adatok három különálló további: a modell utterances, a kötegelt teszt utterances és a végpont utterances. Ebben az oktatóanyagban győződjön meg arról, hogy a utterances vagy modell utterances (megjelölésű hozzá) származó, vagy a végpont utterances nem használ. 
+A LUIS teszt stratégiát használ három különálló adatkészletek: modell utterances, a batch teszt kimondott szöveg és a végpont kimondott szöveg. Ebben az oktatóanyagban győződjön meg arról, hogy nem használja a kimondott szöveg vagy modell utterances (megjelölésű hozzá) a, vagy a végpont kimondott szöveg. 
 
-Ne használja a utterances bármelyike már az alkalmazásban a kötegelt vizsgálathoz:
+Ne használja a kimondott szöveg bármelyike már az alkalmazásban a batch-teszt:
 
 ```
 'breezeway on please',
@@ -108,12 +108,12 @@ Ne használja a utterances bármelyike már az alkalmazásban a kötegelt vizsg�
 'turn thermostat on 70 .' 
 ```
 
-## <a name="create-a-batch-to-test-intent-prediction-accuracy"></a>Hozzon létre egy kötegelt leképezési előrejelzés pontosságát tesztelése
+## <a name="create-a-batch-to-test-intent-prediction-accuracy"></a>Hozzon létre egy batch szándék előrejelzési pontosság tesztelése
 1. Hozzon létre `homeauto-batch-1.json` egy szövegszerkesztőben, például [VSCode](https://code.visualstudio.com/). 
 
-2. Adja hozzá a utterances a **leképezés** azt szeretné, a teszt előre jelzett. Ebben az oktatóanyagban abba, hogy egyszerű, végezze el utterances szereplő a `HomeAutomation.TurnOn` és `HomeAutomation.TurnOff` és egy kapcsolót a `on` és `off` a utterances szöveget. Az a `None` leképezés, adja hozzá, amelyek nincsenek utterances néhány része a [tartomány](luis-glossary.md#domain) (tulajdonos) területen. 
+2. A beszédmódok hozzáadása a **szándékot** azt szeretné, a teszt előre jelzett. A jelen oktatóanyag esetében legyen egyszerű, vesz utterances a `HomeAutomation.TurnOn` és `HomeAutomation.TurnOff` , és váltson a `on` és `off` a kimondott szöveg szövegére. Az a `None` szándékkal, pár, amelyek nem beszédmódok hozzáadása része a [tartomány](luis-glossary.md#domain) (tárgy) területre. 
 
-    Ahhoz, hogy megértse, hogyan a kötegelt teszteredmények gyűjtött a kötegelt JSON, vegye fel a csak hat leképezések.
+    Annak érdekében, hogy érti, hogyan a batch-vizsgálati eredmények korrelációját, ha a Batch JSON, legfeljebb hat leképezések hozzáadása.
 
     ```JSON
     [
@@ -150,105 +150,105 @@ Ne használja a utterances bármelyike már az alkalmazásban a kötegelt vizsg�
     ]
     ```
 
-## <a name="run-the-batch"></a>A kötegelt futtatása
+## <a name="run-the-batch"></a>Futtassa a köteget
 1. Válassza ki **teszt** a felső navigációs sávban. 
 
-    ![Válassza ki a teszt a navigációs sáv](./media/luis-tutorial-batch-testing/test-1.png)
+    ![A navigációs sávban válassza ki a teszt](./media/luis-tutorial-batch-testing/test-1.png)
 
-2. Válassza ki **tesztelési panel kötegelt** a jobb oldali panelen. 
+2. Válassza ki **Batch-tesztelési panel** a jobb oldali panelen. 
 
-    ![Válassza ki a kötegelt teszt panel](./media/luis-tutorial-batch-testing/test-2.png)
+    ![Válassza ki a Batch-teszt panel](./media/luis-tutorial-batch-testing/test-2.png)
 
-3. Válassza ki **importálási dataset**.
+3. Válassza ki **importálás adatkészlet**.
 
     ![Importálás adatkészlet kiválasztása](./media/luis-tutorial-batch-testing/test-3.png)
 
 4. Válassza ki a fájl rendszer helyét a `homeauto-batch-1.json` fájlt.
 
-5. A DataSet adatkészlet neve `set 1`.
+5. Nevezze el az adatkészlet `set 1`.
 
     ![Fájl kiválasztása](./media/luis-tutorial-batch-testing/test-4.png)
 
-6. Kattintson a **Futtatás** gombra. Várjon, amíg a vizsgálat történik.
+6. Kattintson a **Futtatás** gombra. Várjon, amíg a teszt történik.
 
-    ![Válassza a Futtatás](./media/luis-tutorial-batch-testing/test-5.png)
+    ![Válasszon futtató](./media/luis-tutorial-batch-testing/test-5.png)
 
-7. Válassza ki **eredményeket**.
+7. Válassza ki **eredmények megtekintéséhez**.
 
     ![Eredmények megtekintése](./media/luis-tutorial-batch-testing/test-6.png)
 
-8. Tekintse át a grafikon és jelmagyarázat eredményez.
+8. Tekintse át az eredményeket a graph és jelmagyarázat.
 
-    ![Kötegelt eredmények](./media/luis-tutorial-batch-testing/batch-result-1.png)
+    ![Batch-eredmények](./media/luis-tutorial-batch-testing/batch-result-1.png)
 
-## <a name="review-batch-results"></a>Kötegelt eredményeinek áttekintése
-A kötegelt eredményei két szakaszban. A felső rész tartalmazza a diagram és jelmagyarázat. Az alsó részén utterances jeleníti meg, amikor kiválaszt egy gráf diagramterületnek a neve.
+## <a name="review-batch-results"></a>Batch-eredmények áttekintése
+A batch-eredmények két szakaszokban találhatók. A felső rész tartalmazza a graph és a jelmagyarázat. Az alsó szakaszt utterances jeleníti meg, amikor kiválaszt egy a gráf neve.
 
-A vörös színt ki a hibákat jelzik. A diagramhoz négy részből áll, és két pirossal részeiből van. **Ezek a szakaszok összpontosíthat a a**. 
+Hibák piros szín jelzi. A gráf van négy részből áll, és két a szakaszok vörös színnel jelenik meg. **Ezek a szakaszok a fókusz a a**. 
 
-Jobb felső sarokban a szakasz azt jelzi, a teszt megfelelően előre jelezni, hogy létezik-e egy leképezés vagy entitás. A bal alsó részén azt jelzi, hogy a teszt helytelenül egy leképezés vagy entitás hiányában előre jelezni.
+A szakasz azt jelzi, hogy a teszt nem megfelelően jobb felső sarokban előre jelzett-leképezés vagy entitás létezik-e. A bal alsó részén azt jelzi, hogy a teszt nem megfelelően előre jelzett-leképezés vagy entitás hiányában.
 
-### <a name="homeautomationturnoff-test-results"></a>HomeAutomation.TurnOff teszt eredményei
-A jelmagyarázat, válassza ki a `HomeAutomation.TurnOff` leképezés. A jelmagyarázatban rendelkezik egy zöld sikeres ikonra a nevétől balra található. Ez a leképezés a hibák nem találhatók. 
+### <a name="homeautomationturnoff-test-results"></a>HomeAutomation.TurnOff terhelésiteszt-eredményei
+A jelmagyarázat, válassza ki a `HomeAutomation.TurnOff` szándékot. Egy zöld, sikeres ikonra a bal oldalon a név tartalmaz a jelmagyarázatban. Nincsenek a leképezés a hibák. 
 
-![Kötegelt eredmények](./media/luis-tutorial-batch-testing/batch-result-1.png)
+![Batch-eredmények](./media/luis-tutorial-batch-testing/batch-result-1.png)
 
-### <a name="homeautomationturnon-and-none-intents-have-errors"></a>HomeAutomation.TurnOn és "nincs" leképezések rendelkezik hibák
-A többi két leképezések hibák, ami azt jelenti, a teszt-előrejelzés nem egyeztek a kötegelt fájl verziójával kapcsolatos elvárások rendelkezik. Válassza ki a `None` leképezési, hogy tekintse át az első hiba a jelmagyarázatban. 
+### <a name="homeautomationturnon-and-none-intents-have-errors"></a>HomeAutomation.TurnOn, és nincs leképezések hibásak
+A két szándék más hibák, ami azt jelenti, a teszt előrejelzéseket nem egyeztek a batch fájl verziójával kapcsolatos elvárások rendelkezik. Válassza ki a `None` szándék, tekintse át az első hiba a jelmagyarázatban. 
 
-![Nincs leképezési](./media/luis-tutorial-batch-testing/none-intent-failures.png)
+![Nincs leképezés](./media/luis-tutorial-batch-testing/none-intent-failures.png)
 
-Hibák jelennek meg a diagram a piros szakaszokban: **téves pozitív** és **hamis negatív**. Válassza ki a **hamis negatív** szakasznév a diagram a diagram alá sikertelen utterances megjelenítéséhez. 
+Hibák jelennek meg a diagram a piros szakaszokban: **hamis pozitív** és **téves negatív**. Válassza ki a **téves negatív** szakasz nevét a diagram alatt sikertelen megcímkézzen megtekintéséhez a diagramban. 
 
-![Negatív a hibákra](./media/luis-tutorial-batch-testing/none-intent-false-negative.png)
+![Téves negatív hibák](./media/luis-tutorial-batch-testing/none-intent-false-negative.png)
 
-A hibás utterance `help` várta a `None` leképezés, de a teszt előre jelezni `HomeAutomation.TurnOn` leképezés.  
+A sikertelen utterance (kifejezés), `help` várta, mint egy `None` szándékot, de az előre jelzett teszt `HomeAutomation.TurnOn` szándékot.  
 
-Nincsenek két hibák, HomeAutomation.TurnOn egyet-egyet, és egy-egy None. Mind a utterance által okozott `help` , mert nem felel meg a várt eredmény sincs, és egy nem várt egyezik a HomeAutomation.TurnOn célt a volt. 
+Nincsenek két hibák, egy HomeAutomation.TurnOn a, és egy sem található. Mindkettő az utterance (kifejezés) által okozott `help` , mert nem felel meg az elvárás a None, és a egy váratlan pontosan megegyezik az HomeAutomation.TurnOn célja volt. 
 
-Hogy miért a `None` utterances sikertelen, tekintse át a jelenleg a utterances `None`. 
+Ezért meghatározni a `None` utterances nem működik, tekintse át a jelenleg megcímkézzen `None`. 
 
-## <a name="review-none-intents-utterances"></a>Felülvizsgálati nincs leképezési utterances végpontjára
+## <a name="review-none-intents-utterances"></a>Felülvizsgálat nincs szándék a kimondott szöveg
 
-1. Zárja be a **teszt** kiválasztásával panel a **teszt** a felső navigációs sáv gombjára. 
+1. Zárja be a **teszt** panelen válassza a **teszt** gombot a felső navigációs sávon. 
 
-2. Válassza ki **Build** a felső navigációs panelen. 
+2. Válassza ki **összeállítása** a felső navigációs panelen. 
 
-3. Válassza ki **nincs** leképezési leképezések listája.
+3. Válassza ki **nincs** szándék listájában leképezéseket.
 
-4. Válassza ki a vezérlő + E a utterances token megtekintéséhez 
+4. Válassza ki a Control + E megcímkézzen token megtekintéséhez 
     
-    |Nincs leképezési utterances végpontjára|Előrejelzés pontszám|
+    |Nincs leképezés a kimondott szöveg|Előrejelzési pontszám|
     |--|--|
-    |"csökkentése hőmérséklet számomra adjon"|0,44|
-    |"25 konyhai fény dim."|0.43|
-    |"a kötet alacsonyabb"|0.46|
-    |"a szobája az internet bekapcsolása"|0.28|
+    |"csökkentése hőmérséklet számomra."|0,44|
+    |"(dimenzió) megjelenítő kijelzőket a konyhai lámpa 25."|0.43|
+    |"a kötet alsó"|0.46|
+    |"az interneten, a saját szobája kérjük bekapcsolása"|0,28|
 
-## <a name="fix-none-intents-utterances"></a>Javítsa ki nincs leképezési utterances végpontjára
+## <a name="fix-none-intents-utterances"></a>Javítsa ki nincs szándék a kimondott szöveg
     
-Az összes utterances `None` kívül az alkalmazástartomány elvileg. Ezek utterances vannak viszonyítva HomeAutomation, így a nem megfelelő leképezés. 
+A megszólalásokat `None` alkalmazástartomány-en kívül kell maradniuk. Ezek a kimondott szöveg olyan viszonyított HomeAutomation, így azokat a nem megfelelő leképezés. 
 
-LUIS is biztosít a utterances, amely kisebb, mint 50 % (<.50) előrejelzés pontszámot. A többi két leképezések a utterances tekinti meg, ha sokkal nagyobb előrejelzés pontszámok láthatja. Ha LUIS példa utterances, amely jól jelzi az alacsony pontszámait a utterances között az aktuális szándékot és egyéb leképezések LUIS zavaró. 
+A LUIS is biztosít a kimondott szöveg, amely kisebb, mint 50 %-os (<.50) előrejelzési pontszámot. Ha a többi a két szándék megcímkézzen tekinti meg, sokkal nagyobb előrejelzési pontszámok jelenik meg. Ha LUIS alacsony értékeket, hogy jól jelzi példa megcímkézzen megcímkézzen zavaró, LUIS, a jelenlegi leképezés és más leképezések között. 
 
-Az alkalmazást, és jelenleg a utterances javításához a `None` leképezés kell helyezhetők át a megfelelő cél és a `None` leképezés van szüksége, új, megfelelő leképezések. 
+Az alkalmazás jelenleg megcímkézzen javításához a `None` szándékot helyezhetők át a helyes leképezést kell és a `None` leképezést kell új, a megfelelő leképezések. 
 
-Három a utterances a `None` leképezés van kialakítva, hogy az automatizálási eszköz beállításait. Szavak használják, mint `dim`, `lower`, vagy `decrease`. A negyedik utterance megkérdezi, kapcsolja be az interneten. Mivel minden négy utterances bekapcsolásával vagy power fokának módosítása a egy eszközt, akkor kell áthelyezni a `HomeAutomation.TurnOn` leképezés. 
+Három a megcímkézzen a `None` szándékot úgy van kialakítva, hogy az automation-eszközbeállítások csökkentheti. Például szavak használata `dim`, `lower`, vagy `decrease`. A negyedik utterance (kifejezés) megkérdezi, hogy kapcsolja be az interneten. Mivel az összes négy utterances bekapcsolása vagy erejének módosítása egy eszközhöz, azok kell áthelyezni a `HomeAutomation.TurnOn` szándékot. 
 
-Ez az egyetlen megoldás. Is létrehozhat egy új szándékával `ChangeSetting` helyezze át a utterances használatával dim, alsó, és csökkenti az, hogy új leképezés. 
+Ez az egyetlen megoldás. Akkor is létrehozhat egy új szándéka `ChangeSetting` és helyezze át a kimondott szöveg használatával (dimenzió), csökkentheti, és be, hogy új szándékot csökkentéséhez. 
 
-## <a name="fix-the-app-based-on-batch-results"></a>Javítsa ki az alkalmazás kötegelt eredmények alapján
-A négy utterances történő áthelyezése a `HomeAutomation.TurnOn` leképezés. 
+## <a name="fix-the-app-based-on-batch-results"></a>Javítsa ki az alkalmazást, a batch eredményei alapján
+Helyezze át a négy kimondott szöveg a `HomeAutomation.TurnOn` szándékot. 
 
-1. A utterance lista fölött jelölőnégyzet bejelölésével, így minden utterances van kiválasztva. 
+1. Jelölje be a jelölőnégyzetet az utterance (kifejezés) lista fölött, így minden kimondott szöveg van kijelölve. 
 
-2. Az a **ismételt hozzárendelése leképezés** legördülő listából válassza `HomeAutomation.TurnOn`. 
+2. Az a **újbóli hozzárendelése a leképezés** legördülő menüben válassza `HomeAutomation.TurnOn`. 
 
-    ![Helyezze át a utterances](./media/luis-tutorial-batch-testing/move-utterances.png)
+    ![Helyezze át a kimondott szöveg](./media/luis-tutorial-batch-testing/move-utterances.png)
 
-    A négy utterances hozzárendelését, miután a utterance listázása a `None` célja üres.
+    Négy megcímkézzen hozzárendelését, miután az utterance (kifejezés) listázása a `None` célja a üres.
 
-3. Négy új leképezések hozzáadása a nincs leképezési:
+3. Négy új leképezések hozzáadása a nincs szándék számára:
 
     ```
     "fish"
@@ -257,26 +257,26 @@ A négy utterances történő áthelyezése a `HomeAutomation.TurnOn` leképezé
     "pizza"
     ```
 
-    Ezek utterances mindenképpen HomeAutomation tartományán kívül vannak. Minden utterance ad meg, tekintse meg a pontszám hozzá. A pontszám alacsony, vagy akár nagyon alacsony (a vörös téglalappal köré) lehet. Az alkalmazást, és 8. lépésben a vonat a pontszám sokkal nagyobb lesz. 
+    Ezek a kimondott szöveg mindenképp HomeAutomation tartományán kívül van. Minden kimondásakor meg, tekintse meg a pontszám. A pontszám alacsony vagy még nagyon alacsony (és a piros Keretes azt) lehet. Miután az alkalmazást, a 8. lépésében a vonat a pontszám sokkal magasabb lesz. 
 
-7. Távolítsa el a címkéket a utterance, és válasszon a kék címke kiválasztásával **Remove label**.
+7. Távolítsa el a címkék az utterance (kifejezés), és válassza a kék címke kiválasztásával **Remove label**.
 
-8. Válassza ki **vonat** a jobb felső navigációs sávban. Az egyes utterance pontszám, sokkal nagyobb. Az összes pontszámait a `None` leképezés fölött van.80 most. 
+8. Válassza ki **Train** a jobb oldali navigációs sáv tetején. A pontszám minden kimondásakor, sokkal magasabb. Az összes értékeket a `None` szándékot fölött van.80 most. 
 
-## <a name="verify-the-fix-worked"></a>Ellenőrizze, hogy a javítás dolgozott
-Annak ellenőrzéséhez, hogy a batch-teszt utterances megfelelően előre a a **nincs** leképezés, futtassa újra a kötegelt vizsgálat.
+## <a name="verify-the-fix-worked"></a>Ellenőrizze, hogy a javítás működött
+Annak érdekében, hogy ellenőrizze, hogy a batch-teszt megcímkézzen megfelelően előrejelzett számára a **nincs** szándékkal, futtassa újra a batch-vizsgálat.
 
 1. Válassza ki **teszt** a felső navigációs sávban. 
 
-2. Válassza ki **tesztelési panel kötegelt** a jobb oldali panelen. 
+2. Válassza ki **Batch-tesztelési panel** a jobb oldali panelen. 
 
-3. Válassza ki a három pont (…) jobb oldalán a neve, majd **adatkészlet futtatásához**. Várjon, amíg a kötegelt teszt történik.
+3. Kattintson a három pontra (***...*** ) gombot a batch nevétől jobbra **futtatása adatkészlet**. Várjon, amíg a batch-teszt történik.
 
-    ![A dataset futtatása](./media/luis-tutorial-batch-testing/run-dataset.png)
+    ![Futtassa az adatkészlet](./media/luis-tutorial-batch-testing/run-dataset.png)
 
-4. Válassza ki **eredményeket**. A leképezések összes kell zöld ikonok bal oldalán található a leképezési nevét. A jobb oldali szűrővel beállítása a `HomeAutomation.Turnoff` leképezés, jelölje be a zöld pont a felső legközelebbi közepén levő a diagram jobb oldali panelen. A diagram az alábbi táblázatban a utterance neve jelenik meg. A pontszám `breezeway off please` nagyon alacsony. Egy nem kötelező tevékenysége több utterances hozzáadása a célt a pontszám növelése érdekében. 
+4. Válassza ki **eredmények megtekintéséhez**. A leképezések összes kell zöld ikonok a leképezés neve a bal oldalon. A jobb oldali szűrővel, állítsa a `HomeAutomation.Turnoff` szándékkal, válassza ki a zöld pont a legközelebbi a diagram közepét felső jobb oldali panelen. Az utterance (kifejezés) nevét a táblázatban a diagram alatt jelenik meg. A pontszám `breezeway off please` nagyon alacsony. Egy nem kötelező tevékenységet, további beszédmódok hozzáadása célja, hogy növelni ezt az értéket. 
 
-    ![A dataset futtatása](./media/luis-tutorial-batch-testing/turnoff-low-score.png)
+    ![Futtassa az adatkészlet](./media/luis-tutorial-batch-testing/turnoff-low-score.png)
 
 <!--
     The Entities section of the legend may have errors. That is the next thing to fix.
@@ -374,7 +374,7 @@ Entity testing is diferrent than intents. An utterance will have only one top sc
 
 3. Select **Test** on the top navigation panel to open the Batch testing pane again. 
 
-4. If the list of datasets is not visible, select **Back to list**. Select the three dots (...) at the end of `Set 2` and select `Run Dataset`. Wait for the test to complete.
+4. If the list of datasets is not visible, select **Back to list**. Select the ellipsis (***...***) button at the end of `Set 2` and select `Run Dataset`. Wait for the test to complete.
 
 5. Select **See results** to review the test results.
 
@@ -383,6 +383,6 @@ Entity testing is diferrent than intents. An utterance will have only one top sc
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [További tudnivalók példa utterances](luis-how-to-add-example-utterances.md)
+> [További tudnivalók a példa kimondott szöveg](luis-how-to-add-example-utterances.md)
 
 [LUIS]: https://docs.microsoft.com/azure/cognitive-services/luis/luis-reference-regions

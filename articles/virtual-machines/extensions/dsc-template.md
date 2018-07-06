@@ -1,6 +1,6 @@
 ---
-title: Az Azure Resource Manager-sablonok kívánt állapot konfigurációs bővítmény
-description: Ismerje meg a kívánt állapot konfigurációs szolgáltatása (DSC) bővítmény, az Azure Resource Manager sablon definíciója.
+title: Az Azure Resource Manager-sablonok Desired State Configuration bővítmény
+description: További információ a Desired State Configuration (DSC) bővítmény, az Azure Resource Manager sablon definíciója.
 services: virtual-machines-windows
 documentationcenter: ''
 author: DCtheGeek
@@ -16,24 +16,24 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: na
 ms.date: 05/02/2018
 ms.author: dacoulte
-ms.openlocfilehash: 8d1e8b4d529936a2401c734b2eff1f0c02dae352
-ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
+ms.openlocfilehash: d007869bb8bad1a2f0775a1ab2c1bf5d27c1cb8f
+ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/21/2018
-ms.locfileid: "36307866"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37866221"
 ---
-# <a name="desired-state-configuration-extension-with-azure-resource-manager-templates"></a>Az Azure Resource Manager-sablonok kívánt állapot konfigurációs bővítmény
+# <a name="desired-state-configuration-extension-with-azure-resource-manager-templates"></a>Az Azure Resource Manager-sablonok Desired State Configuration bővítmény
 
-Ez a cikk ismerteti az Azure Resource Manager sablon a [kívánt állapot konfigurációs szolgáltatása (DSC) bővítmény kezelő](dsc-overview.md).
+Ez a cikk ismerteti az Azure Resource Manager-sablon esetében a [Desired State Configuration (DSC) bővítmény kezelő](dsc-overview.md).
 
 > [!NOTE]
-> Némileg eltérő séma példák léphetnek fel. A séma megváltozott a 2016. októberi kiadás. További információkért lásd: [frissítés az előző formátumból](#update-from-the-previous-format).
+> Némileg eltérő séma példák léphetnek fel. A séma megváltozott a 2016. október kiadásban. További információkért lásd: [frissítés egy előző formátumból](#update-from-a-previous-format).
 
-## <a name="template-example-for-a-windows-vm"></a>A Windows virtuális gépek sablon – példa
+## <a name="template-example-for-a-windows-vm"></a>Windows Virtuálisgép-sablon példa
 
-A következő kódrészletet mutat a **erőforrás** a sablon szakasza.
-A DSC-bővítményt alapértelmezett bővítmény tulajdonságokat örökli.
+Az alábbi kódrészlet kerül a **erőforrás** szakaszában a sablont.
+A DSC-bővítmény alapértelmezett bővítménytulajdonságok örökli.
 További információkért lásd: [VirtualMachineExtension osztály](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.compute.models.virtualmachineextension?view=azure-dotnet.).
 
 ```json
@@ -77,12 +77,12 @@ További információkért lásd: [VirtualMachineExtension osztály](https://doc
 }
 ```
 
-## <a name="template-example-for-windows-virtual-machine-scale-sets"></a>Windows virtuálisgép-méretezési sablon példa beállítása
+## <a name="template-example-for-windows-virtual-machine-scale-sets"></a>A Windows virtuálisgép-méretezési csoport sablon példa
 
-A virtuális gép méretezési készlet fürtcsomópont egy **tulajdonságok** szakaszt, amely rendelkezik egy **VirtualMachineProfile, extensionProfile** attribútum.
-A **bővítmények**, a részletek hozzáadása a DSC-bővítményt.
+Egy virtuális gép méretezési készlet csomópont tartalmaz egy **tulajdonságok** szakaszt, amely rendelkezik egy **VirtualMachineProfile, extensionProfile** attribútum.
+A **bővítmények**, adhatja hozzá a DSC-bővítmény adatait.
 
-A DSC-bővítményt alapértelmezett bővítmény tulajdonságokat örökli.
+A DSC-bővítmény alapértelmezett bővítménytulajdonságok örökli.
 További információkért lásd: [VirtualMachineScaleSetExtension osztály](/dotnet/api/microsoft.azure.management.compute.models.virtualmachinescalesetextension?view=azure-dotnet).
 
 ```json
@@ -130,9 +130,9 @@ További információkért lásd: [VirtualMachineScaleSetExtension osztály](/do
 
 ## <a name="detailed-settings-information"></a>Részletes beállítási információk
 
-A következő séma használata a **beállítások** a Resource Manager-sablon Azure DSC-bővítmény szakasza.
+Használja a következő sémának a **beállítások** szakasz a Resource Manager-sablon Azure DSC-bővítmény.
 
-A következő paraméterek érhetők el az alapértelmezett konfigurációs parancsfájl listájáért lásd: [konfigurációs parancsfájl alapértelmezett](#default-configuration-script).
+Érhetők el az alapértelmezett konfigurációs szkript a következő paraméterek listáját lásd: [alapértelmezett konfigurációs parancsfájl](#default-configuration-script).
 
 ```json
 "settings": {
@@ -178,43 +178,43 @@ A következő paraméterek érhetők el az alapértelmezett konfigurációs para
 
 | Tulajdonság neve | Típus | Leírás |
 | --- | --- | --- |
-| settings.wmfVersion |sztring |Megadja a verzióját a Windows Management Framework (WMF), amely a virtuális Gépre kell telepíteni. Ez a tulajdonság **legújabb** WMF legújabb verzióját telepíti. Ez a tulajdonság csak lehetséges értékei jelenleg **4.0**, **5.0**, **5.0PP**, és **legújabb**. A lehetséges értékek a frissítések vonatkoznak. Az alapértelmezett érték **legújabb**. |
-| settings.configuration.url |sztring |Meghatározza a URL-címét, amelyről letöltheti a DSC-konfiguráció .zip fájlt. Ha az URL-cím egy SAS-jogkivonat hozzáférést igényel, állítsa be a **protectedSettings.configurationUrlSasToken** tulajdonság a SAS-jogkivonat értékével. E tulajdonság megadása kötelező, ha **settings.configuration.script** vagy **settings.configuration.function** vannak definiálva. Ha nincs érték megadva ezekhez a tulajdonságokhoz, a bővítményt meghívja az alapértelmezett konfigurációs parancsfájl helyét a Configuration Manager (LCM) metaadatok beállítani, és argumentumot kell megadni. |
-| settings.configuration.script |sztring |Adja meg a parancsfájl a DSC-konfiguráció definícióját tartalmazó fájl neve. Ez a parancsfájl által megadott URL-címről letöltött .zip fájl a gyökérmappában kell lennie a **configuration.url** tulajdonság. E tulajdonság megadása kötelező, ha **settings.configuration.url** vagy **settings.configuration.script** vannak definiálva. Ha nincs érték megadva ezekhez a tulajdonságokhoz, a bővítményt meghívja az alapértelmezett konfigurációs parancsfájl LCM metaadatok beállítani, és argumentumot kell megadni. |
-| settings.configuration.function |sztring |Megadja a DSC-konfiguráció nevét. A konfigurációs nevű szerepelnie kell a parancsfájlt, amely **configuration.script** határozza meg. E tulajdonság megadása kötelező, ha **settings.configuration.url** vagy **settings.configuration.function** vannak definiálva. Ha nincs érték megadva ezekhez a tulajdonságokhoz, a bővítményt meghívja az alapértelmezett konfigurációs parancsfájl LCM metaadatok beállítani, és argumentumot kell megadni. |
-| settings.configurationArguments |Gyűjtemény |Határozza meg a paramétereket, szeretné továbbítani a DSC-konfiguráció. Ez a tulajdonság nincs titkosítva. |
-| settings.configurationData.url |sztring |Meghatározza a URL-címet, amelyről letöltheti a konfigurációs adatfájlt (.psd1) használandó bemenetként a DSC-konfiguráció. Ha az URL-cím egy SAS-jogkivonat hozzáférést igényel, állítsa be a **protectedSettings.configurationDataUrlSasToken** tulajdonság a SAS-jogkivonat értékével. |
-| settings.privacy.dataEnabled |sztring |Engedélyezheti vagy letilthatja a telemetriai adatok gyűjtése. Ez a tulajdonság csak lehetséges értékei **engedélyezése**, **letiltása**, **"**, vagy **$null**. Így ez a tulajdonság üres vagy null értékű lehetővé teszi, hogy a telemetriai adatokat. Az alapértelmezett érték **"**. További információkért lásd: [Azure DSC-bővítmény adatgyűjtés](https://blogs.msdn.microsoft.com/powershell/2016/02/02/azure-dsc-extension-data-collection-2/). |
-| settings.advancedOptions.downloadMappings |Gyűjtemény |Határozza meg a másodlagos helyeket, ahonnan letölthető a WMF. További információkért lásd: [2.8 Azure DSC-bővítményt, és hogyan képezheti bővítmény függőség letöltések saját](http://blogs.msdn.com/b/powershell/archive/2015/10/21/azure-dsc-extension-2-2-amp-how-to-map-downloads-of-the-extension-dependencies-to-your-own-location.aspx). |
-| protectedSettings.configurationArguments |Gyűjtemény |Határozza meg a paramétereket, szeretné továbbítani a DSC-konfiguráció. Ez a tulajdonság titkosítva van. |
-| protectedSettings.configurationUrlSasToken |sztring |Megadja a SAS-jogkivonat használatával férjenek hozzá az URL-címet, amely **configuration.url** határozza meg. Ez a tulajdonság titkosítva van. |
-| protectedSettings.configurationDataUrlSasToken |sztring |Megadja a SAS-jogkivonat használatával férjenek hozzá az URL-címet, amely **configurationData.url** határozza meg. Ez a tulajdonság titkosítva van. |
+| settings.wmfVersion |sztring |Adja meg a verziót a Windows Management Framework (WMF), amely a virtuális Gépen kell telepíteni. Ez a tulajdonság **legújabb** a WMF legújabb verzióját telepíti. Ez a tulajdonság csak lehetséges értékei jelenleg **4.0**, **5.0**, **5.0PP**, és **legújabb**. Ezek lehetséges értékek a következők vonatkoznak a frissítéseket. Az alapértelmezett érték **legújabb**. |
+| settings.configuration.url |sztring |Itt adhatja meg, ahonnan letölthető a DSC-konfiguráció .zip fájl URL-címét. Ha a megadott URL-cím egy SAS-tokent igényel hozzáférést, állítsa be a **protectedSettings.configurationUrlSasToken** tulajdonság értéke az SAS-jogkivonatot. Ez a tulajdonság nem kötelező, ha **settings.configuration.script** vagy **settings.configuration.function** vannak definiálva. Ha nincs érték megadva ezekhez a tulajdonságokhoz, a bővítményt meghívja az alapértelmezett konfigurációs parancsfájl helye Configuration Manager (LCM) Konfigurálása metaadatok beállítása és argumentumot kell megadni. |
+| settings.configuration.script |sztring |Megadja a fájl nevét, a parancsfájl, amely tartalmazza a DSC-konfiguráció definíciójának. Ez a parancsfájl a megadott URL-címről letöltött .zip fájl a gyökérmappában kell lennie a **configuration.url** tulajdonság. Ez a tulajdonság nem kötelező, ha **settings.configuration.url** vagy **settings.configuration.script** vannak definiálva. Ha nincs érték megadva ezekhez a tulajdonságokhoz, a bővítményt meghívja az alapértelmezett konfigurációs parancsfájl LCM metaadatok beállítása és argumentumot kell megadni. |
+| settings.configuration.function |sztring |Megadja a DSC-konfiguráció nevét. A konfiguráció nevű szerepelnie kell a parancsfájlt, amely **configuration.script** határozza meg. Ez a tulajdonság nem kötelező, ha **settings.configuration.url** vagy **settings.configuration.function** vannak definiálva. Ha nincs érték megadva ezekhez a tulajdonságokhoz, a bővítményt meghívja az alapértelmezett konfigurációs parancsfájl LCM metaadatok beállítása és argumentumot kell megadni. |
+| settings.configurationArguments |Gyűjtemény |Határozza meg, amely a DSC-konfiguráció átadni kívánt paramétereket. Ez a tulajdonság nincs titkosítva. |
+| settings.configurationData.url |sztring |Adja meg az URL-cím, ahonnan letölthető a konfigurációs adatfájl (.psd1) való használatra a DSC-konfiguráció bemenetként. A probléma**: egy meghatározott tulajdonság szüksége van egy másik tulajdonságot használja, amely nincs megadva. |
+| settings.privacy.dataEnabled |sztring |Megoldások: Adja meg a hiányzó tulajdonság. Távolítsa el a tulajdonságot, amelyet a hiányzó tulajdonságot. Ismerje meg **virtuális gép méretezési csoportokat használ az Azure DSC bővítménnyel**. További részleteket talál a kapcsolatos [DSC a biztonságos hitelesítő adatok kezelése](https://blogs.msdn.microsoft.com/powershell/2016/02/02/azure-dsc-extension-data-collection-2/). |
+| settings.advancedOptions.downloadMappings |Gyűjtemény |Get- bemutatása az Azure DSC Bővítménykezelő. További információ a PowerShell DSC, nyissa meg a [PowerShell dokumentációs központban](http://blogs.msdn.com/b/powershell/archive/2015/10/21/azure-dsc-extension-2-2-amp-how-to-map-downloads-of-the-extension-dependencies-to-your-own-location.aspx). |
+| protectedSettings.configurationArguments |Gyűjtemény |Határozza meg, amely a DSC-konfiguráció átadni kívánt paramétereket. Ez a tulajdonság titkosított. |
+| protectedSettings.configurationUrlSasToken |sztring |Adja meg a SAS-jogkivonat használatával a URL-címet, amely **configuration.url** határozza meg. Ez a tulajdonság titkosított. |
+| protectedSettings.configurationDataUrlSasToken |sztring |Adja meg a SAS-jogkivonat használatával a URL-címet, amely **configurationData.url** határozza meg. Ez a tulajdonság titkosított. |
 
 ## <a name="default-configuration-script"></a>Alapértelmezett konfigurációs parancsfájl
 
-A következő értékek kapcsolatos további információkért lásd: [helyi Configuration Manager alapbeállítások](/powershell/dsc/metaconfig#basic-settings).
-A DSC-bővítmény alapértelmezett konfigurációs parancsfájl segítségével csak a felsorolt LCM tulajdonságainak konfigurálása a következő táblázat az.
+A következő értékeket kapcsolatos további információkért lásd: [helyi Configuration Manager alapbeállítások](/powershell/dsc/metaconfig#basic-settings).
+A DSC-bővítmény alapértelmezett konfigurációs parancsfájl segítségével az alábbi táblázat csak a felsorolt LCM tulajdonságok konfigurálása.
 
 | Tulajdonság neve | Típus | Leírás |
 | --- | --- | --- |
-| settings.configurationArguments.RegistrationKey |SecureString |Kötelező tulajdonság. Megadja a kulcsot, amellyel egy csomópont és a PowerShell-hitelesítő adat objektum az Azure Automation szolgáltatás regisztrálása. Ezt az értéket automatikusan észlelhetők használatával a **listkeys** metódus az Automation-fiók ellen. Az érték egy védett beállítás titkosítani kell. |
-| settings.configurationArguments.RegistrationUrl |sztring |Kötelező tulajdonság. Adja meg a-automatizálás végpontjának, ahol a csomópontra megkísérel regisztrálni URL-CÍMÉT. Ezt az értéket automatikusan észlelhetők használatával a **hivatkozás** metódus az Automation-fiók ellen. |
-| settings.configurationArguments.NodeConfigurationName |sztring |Kötelező tulajdonság. Meghatározza a csomópont-konfiguráció hozzárendelése a csomópont Automation-fiók. |
-| settings.configurationArguments.ConfigurationMode |sztring |Meghatározza a mód LCM. Érvényes lehetőségek a következők **ApplyOnly**, **ApplyandMonitor**, és **ApplyandAutoCorrect**.  Az alapértelmezett érték **ApplyandMonitor**. |
-| settings.configurationArguments.RefreshFrequencyMins | UInt32 | Itt adhatja meg, milyen gyakran kíséri meg LCM lépjen kapcsolatba az Automation-fiók a frissítéseket.  Alapértelmezett érték **30**.  Minimális érték **15**. |
-| settings.configurationArguments.ConfigurationModeFrequencyMins | UInt32 | Itt adhatja meg, milyen gyakran LCM ellenőrzi az aktuális konfigurációt. Alapértelmezett érték **15**. Minimális érték **15**. |
-| settings.configurationArguments.RebootNodeIfNeeded | logikai | Meghatározza, hogy a csomópont automatikusan az OK gombra a DSC-művelet kérésére. Alapértelmezett érték **hamis**. |
-| settings.configurationArguments.ActionAfterReboot | sztring | Itt adhatja meg, mi történik, a rendszer újraindítása után a konfiguráció alkalmazása során. Az érvényes beállítások: **ContinueConfiguration** és **StopConfiguration**. Alapértelmezett érték **ContinueConfiguration**. |
-| settings.configurationArguments.AllowModuleOverwrite | logikai | Meghatározza, hogy LCM felülírja a meglévő modulok a csomóponton. Alapértelmezett érték **hamis**. |
+| settings.configurationArguments.RegistrationKey |SecureString |Kötelező tulajdonság. Megadja a kulcsot, amellyel egy csomópont regisztrálása az Azure Automation szolgáltatással a PowerShell hitelesítő objektumot jelszóként. Ezt az értéket automatikusan felderített használatával a **listkeys műveletének** metódus az Automation-fiók ellen. Az érték egy védett beállításként védelméhez. |
+| settings.configurationArguments.RegistrationUrl |sztring |Kötelező tulajdonság. Adja meg a végpont URL-címét az Automation, a csomópont próbál meg regisztrálni. Ezt az értéket automatikusan felderített használatával a **referencia** metódus az Automation-fiók ellen. |
+| settings.configurationArguments.NodeConfigurationName |sztring |Kötelező tulajdonság. Adja meg a csomópont-konfiguráció hozzárendelése a csomópontot az Automation-fiókot. |
+| settings.configurationArguments.ConfigurationMode |sztring |Az LCM meghatározza a módját. Érvényes lehetőségek a következők **ApplyOnly**, **ApplyandMonitor**, és **ApplyandAutoCorrect**.  Az alapértelmezett érték **ApplyandMonitor**. |
+| settings.configurationArguments.RefreshFrequencyMins | UInt32 | Megadja, hogy milyen gyakran LCM ellenőrizze a frissítéseket az Automation-fiókot.  Alapértelmezett érték **30**.  Minimális érték **15**. |
+| settings.configurationArguments.ConfigurationModeFrequencyMins | UInt32 | Itt adhatja meg, milyen gyakran az LCM ellenőrzi az aktuális konfigurációt. Alapértelmezett érték **15**. Minimális érték **15**. |
+| settings.configurationArguments.RebootNodeIfNeeded | logikai | Itt adhatja meg, e csomópont is automatikusan újraindul, ha egy DSC művelet azt kéri. Alapértelmezett érték **hamis**. |
+| settings.configurationArguments.ActionAfterReboot | sztring | Itt adhatja meg, mi történik, a rendszer újraindítása után a konfiguráció alkalmazásakor. Az érvényes beállítások: **ContinueConfiguration** és **StopConfiguration**. Alapértelmezett érték **ContinueConfiguration**. |
+| settings.configurationArguments.AllowModuleOverwrite | logikai | Itt adhatja meg, hogy LCM felülírja a meglévő modulok a csomóponton. Alapértelmezett érték **hamis**. |
 
-## <a name="settings-vs-protectedsettings"></a>Vs beállításait. ProtectedSettings
+## <a name="settings-vs-protectedsettings"></a>Beállítások vs. ProtectedSettings
 
-Minden beállítások mentése beállítások a fájlt a virtuális Gépen.
-A felsorolt tulajdonságok **beállítások** nyilvános tulajdonságokat.
-Nyilvános tulajdonságok a beállítások szövegfájlban nincsenek titkosítva.
-A felsorolt tulajdonságok **protectedSettings** a tanúsítvánnyal titkosított, és nem jelenítjük meg egyszerű szövegként a virtuális Gépre, a beállítások fájlban.
+Az összes beállítások mentése a virtuális gép beállításai a fájlt.
+Tartozó Tulajdonságok **beállítások** nyilvános tulajdonságok vannak.
+A beállítások szövegfájl nyilvános tulajdonságok nincsenek titkosítva.
+Tartozó Tulajdonságok **protectedSettings** van titkosítva, egy tanúsítványt, és nem jelennek meg a beállítások-fájlt a virtuális gép egyszerű szöveget.
 
-Ha a konfiguráció a hitelesítő adatokat igényel, a felhasználó hitelesítő adatait is felvehet **protectedSettings**:
+Ha a konfigurációs van szüksége a hitelesítő adatokat, megadhatja a hitelesítő adatok **protectedSettings**:
 
 ```json
 "protectedSettings": {
@@ -229,9 +229,9 @@ Ha a konfiguráció a hitelesítő adatokat igényel, a felhasználó hitelesít
 
 ## <a name="example-configuration-script"></a>Példa konfigurációs parancsfájl
 
-A következő példa bemutatja a DSC-bővítményt, amely metaadat-beállításai LCM adja meg, és regisztrálja az Automation DSC szolgáltatással alapértelmezett viselkedése.
-Konfigurációs argumentumok megadása kötelező.
-Konfigurációs argumentumok továbbítódnak az alapértelmezett konfigurációs parancsfájl LCM metaadatok beállításához.
+Az alábbi példa bemutatja az alapértelmezett viselkedést, a DSC-bővítmény, amely LCM metaadat-beállításainak nyújtson, és regisztrálnia kell az Automation DSC szolgáltatással.
+Konfigurációs argumentumokra szükség.
+Konfigurációs argumentumok a LCM metaadatainak alapértelmezett konfigurációs parancsfájlt.
 
 ```json
 "settings": {
@@ -254,14 +254,14 @@ Konfigurációs argumentumok továbbítódnak az alapértelmezett konfiguráció
 }
 ```
 
-## <a name="example-using-the-configuration-script-in-azure-storage"></a>A konfigurációs parancsfájl használata az Azure Storage – példa
+## <a name="example-using-the-configuration-script-in-azure-storage"></a>A példában a konfigurációs parancsfájl használata az Azure Storage-ban
 
-A rendszer a következő példa a [DSC-bővítmény kezelő áttekintése](dsc-overview.md).
-A példa Resource Manager-sablonok parancsmagok helyett a bővítmény telepítéséhez.
-A IisInstall.ps1 konfiguráció mentéséhez, és helyezheti el egy .zip fájl majd töltse fel a fájlt egy elérhető URL-CÍMÉT.
-A példában az Azure Blob Storage tárolóban, de a .zip-fájlt tölthet le bármely tetszőleges helyre.
+A következő példa a [DSC bővítmény kezelő áttekintése](dsc-overview.md).
+Ebben a példában helyett parancsmagok Resource Manager-sablonok használatával a bővítmény telepítése.
+A IisInstall.ps1 konfiguráció mentéséhez, helyezze egy .zip fájlt, és majd feltöltjük a fájlt az elérhető URL-címre.
+Ebben a példában az Azure Blob-tárolót használ, de .zip fájlokat tölthet le bármely tetszőleges helyre.
 
-A Resource Manager sablon a következő kódot arra utasítja a virtuális Gépet, és töltse le a megfelelő fájlt, majd futtassa a megfelelő PowerShell függvényt:
+A Resource Manager-sablonban a következő kód arra utasítja a virtuális Gépre, és töltse le a megfelelő fájlt, és futtassa a megfelelő PowerShell-függvény:
 
 ```json
 "settings": {
@@ -276,12 +276,12 @@ A Resource Manager sablon a következő kódot arra utasítja a virtuális Gépe
 }
 ```
 
-## <a name="update-from-a-previous-format"></a>Előző formátumból frissítése
+## <a name="update-from-a-previous-format"></a>Egy előző formátumból frissítése
 
-A bővítmény előző formátum tartozó egyik beállítás (és a nyilvános jellemzőkkel rendelkezik, amely **ModulesUrl**, **ConfigurationFunction**, **SasToken**, vagy  **Tulajdonságok**) automatikusan alkalmazkodnak hozzá a bővítmény formátumban.
+A bővítmény előző formátumú beállítások (és amelyek a nyilvános tulajdonságok **ModulesUrl**, **ConfigurationFunction**, **SasToken**, vagy  **Tulajdonságok**) automatikusan alkalmazkodik a bővítmény formátumban.
 A Futtatás mint előtt.
 
-A következő séma bemutatja, milyen az előző beállítási sémában például keresést végrehajtani:
+A következő séma milyen az előző beállítások séma hasonlított mutatja be:
 
 ```json
 "settings": {
@@ -311,14 +311,14 @@ A következő séma bemutatja, milyen az előző beállítási sémában példá
 }
 ```
 
-Ez a korábbi formátum hogyan alkalmazkodik a formátumban:
+Itt látható, hogyan a korábbi formátumot alkalmazkodik a formátumban:
 
-| Tulajdonság neve | Előző séma egyenértékű |
+| Tulajdonság neve | Előző egyenértékű séma |
 | --- | --- |
 | settings.wmfVersion |settings.WMFVersion |
 | settings.configuration.url |settings.ModulesUrl |
 | settings.configuration.script |Beállítások első része. ConfigurationFunction (előtt \\ \\) |
-| settings.configuration.function |Második része a beállításokat. ConfigurationFunction (után \\ \\) |
+| settings.configuration.function |Második része a beállításokat. ConfigurationFunction (miután \\ \\) |
 | settings.configurationArguments |settings.Properties |
 | settings.configurationData.url |protectedSettings.DataBlobUri (nélkül SAS-jogkivonat) |
 | settings.privacy.dataEnabled |settings.Privacy.DataEnabled |
@@ -329,72 +329,72 @@ Ez a korábbi formátum hogyan alkalmazkodik a formátumban:
 
 ## <a name="troubleshooting---error-code-1100"></a>Hibaelhárítás – 1100-as hibakód
 
-1100-as hibakód azt jelzi, hogy a felhasználó által megadott a DSC-bővítmény probléma.
+1100-as hibakód a DSC-bővítmény a felhasználói adatbevitelt tartalmazó problémát jelez.
 Ezek a hibák szövegét változik, és előfordulhat, hogy módosítani.
-Íme néhány a hibák mutatjuk be, és hogyan oldhatja meg őket.
+Íme néhány megjelenhet a hibákat, és hogyan oldhatja meg őket.
 
-### <a name="invalid-values"></a>Érvénytelen értékekkel
+### <a name="invalid-values"></a>Érvénytelen értékek
 
 "Privacy.dataCollection van"{0}".
-Az egyetlen lehetséges értékek: ","Engedélyezése"és"Disable"".
+Az egyetlen lehetséges értékek: ""% s, "Engedélyezése" és "Disable" ".
 "WmfVersion van"{0}".
 Csak a lehetséges értékek a következők... "legújabb" és ".
 
-**A probléma**: A megadott érték nem megengedett.
+**A probléma**: A megadott érték nem engedélyezett.
 
-**Megoldás**: módosítsa a érvénytelen érvényes értéket.
-További információkért lásd: a táblázatban szereplő [részletek](#details).
+**Megoldás**: érvénytelen, hogy módosítja egy érvényes értéket.
+További információkért lásd a táblázatot Itt [részletek](#details).
 
 ### <a name="invalid-url"></a>Érvénytelen URL
 
-"ConfigurationData.url van"{0}". Ez nem egy érvényes URL-címet az"" DataBlobUri van "{0}". Ez nem egy érvényes URL-címet az"" Configuration.url van "{0}". Ez nem egy érvényes URL-címet az"
+"ConfigurationData.url van"{0}". Ez nem egy érvényes URL-cím"" DataBlobUri van "{0}". Ez nem egy érvényes URL-cím"" Configuration.url van "{0}". Ez nem egy érvényes URL-címe"
 
-**A probléma**: A megadott URL-cím érvénytelen.
+**A probléma**: A megadott URL-je nem érvényes.
 
-**Megoldás**: Ellenőrizze az a megadott URL-címet.
-Győződjön meg arról, hogy az URL-címet oldható fel érvényes helyekre, hogy a kiterjesztés hozzáférhet-e a távoli számítógépen.
+**Megoldás**: Ellenőrizze a megadott URL-címekhez.
+Arról, hogy az összes URL-címeket feloldani érvényes helyekre, hogy a bővítmény hozzáférhet-e a távoli számítógépen.
 
 ### <a name="invalid-configurationargument-type"></a>Érvénytelen ConfigurationArgument típusa
 
 "Érvénytelen configurationArguments típus {0}"
 
-**A probléma**: A *ConfigurationArguments* tulajdonság nem oldható fel egy **Hashtable** objektum.
+**A probléma**: A *ConfigurationArguments* tulajdonság nem oldható fel egy **kivonattábla** objektum.
 
-**Megoldás**: Ellenőrizze a *ConfigurationArguments* tulajdonság egy **Hashtable**.
-Kövesse az előző példában megadott formátumban. Figyelendő ajánlatok, vesszővel válassza el egymástól, és kell használni.
+**Megoldás**: Győződjön meg arról, a *ConfigurationArguments* tulajdonság egy **kivonattábla**.
+Kövesse az előző példában megadott formátumban. Figyelje meg, az ajánlatok, vesszővel válassza el egymástól, és kapcsos zárójelek.
 
 ### <a name="duplicate-configurationarguments"></a>Ismétlődő ConfigurationArguments
 
-"Ismétlődő argumentumok található{0}" a nyilvános és a védett configurationArguments "
+"Ismétlődő argumentumok található{0}" a nyilvános, mind a védett configurationArguments "
 
-**A probléma**: A *ConfigurationArguments* nyilvános beállításai és a *ConfigurationArguments* a védett beállításai tulajdonság azonos névvel rendelkezik.
+**A probléma**: A *ConfigurationArguments* nyilvános beállításaiban, és a *ConfigurationArguments* védett beállításaiban tulajdonságok ugyanazzal a névvel rendelkezik.
 
 **Megoldás**: távolítsa el az ismétlődő tulajdonságok egyikét.
 
 ### <a name="missing-properties"></a>Hiányzó tulajdonságok
 
-"Megköveteli, hogy configuration.url configuration.module meg van adva vagy Configuration.function"
+"Configuration.function megköveteli, hogy configuration.url vagy configuration.module van megadva"
 
-"Megköveteli, hogy configuration.script megadott Configuration.url"
+"Configuration.url van szükség, hogy configuration.script van megadva."
 
-"Megköveteli, hogy configuration.url megadott Configuration.script"
+"Configuration.script van szükség, hogy configuration.url van megadva."
 
-"Megköveteli, hogy configuration.function megadott Configuration.url"
+"Configuration.url van szükség, hogy configuration.function van megadva."
 
-"Megköveteli, hogy configuration.url megadott ConfigurationUrlSasToken"
+"ConfigurationUrlSasToken van szükség, hogy configuration.url van megadva."
 
-"Megköveteli, hogy configurationData.url megadott ConfigurationDataUrlSasToken"
+"ConfigurationDataUrlSasToken van szükség, hogy configurationData.url van megadva."
 
-**A probléma**: kell egy másik tulajdonság, amely nem található A megadott tulajdonságot.
+**A probléma**: egy meghatározott tulajdonság szüksége van egy másik tulajdonságot használja, amely nincs megadva.
 
 **Megoldások**:
 
 - Adja meg a hiányzó tulajdonság.
-- Távolítsa el azt a tulajdonságot, amelyet a hiányzó tulajdonság.
+- Távolítsa el a tulajdonságot, amelyet a hiányzó tulajdonságot.
 
 ## <a name="next-steps"></a>További lépések
 
-- További tudnivalók [virtuálisgép-méretezési használatával beállítja a Azure DSC-bővítménnyel](../../virtual-machine-scale-sets/virtual-machine-scale-sets-dsc.md).
-- Kapcsolatos további részletekért található [DSC biztonságos hitelesítőadat-kezelés](dsc-credentials.md).
-- Első egy [bemutatása az Azure DSC-bővítmény kezelő](dsc-overview.md).
-- A PowerShell DSC kapcsolatos további információkért lásd a [PowerShell dokumentációs központban](/powershell/dsc/overview).
+- Ismerje meg [virtuális gép méretezési csoportokat használ az Azure DSC bővítménnyel](../../virtual-machine-scale-sets/virtual-machine-scale-sets-dsc.md).
+- További részleteket talál a kapcsolatos [DSC a biztonságos hitelesítő adatok kezelése](dsc-credentials.md).
+- Get- [bemutatása az Azure DSC Bővítménykezelő](dsc-overview.md).
+- További információ a PowerShell DSC, nyissa meg a [PowerShell dokumentációs központban](/powershell/dsc/overview).

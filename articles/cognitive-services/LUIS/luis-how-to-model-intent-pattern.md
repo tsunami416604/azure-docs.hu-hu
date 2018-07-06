@@ -10,12 +10,12 @@ ms.technology: luis
 ms.topic: article
 ms.date: 06/08/2018
 ms.author: v-geberr;
-ms.openlocfilehash: 9dd23fd5f8a0024f127b71160899d10042037a66
-ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
+ms.openlocfilehash: 26fb9c6349b46e0c920506c39ba53b26f215d330
+ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37346008"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37867188"
 ---
 # <a name="how-to-add-patterns-to-improve-prediction-accuracy"></a>Az előrejelzési pontosság növeléséhez minták hozzáadása
 LUIS-alkalmazásokon végpont utterances kap, miután a [fogalom](luis-concept-patterns.md) minták növelve előrejelzés pontosságát, hogy egy mintát szórendjét és a word választási lehetőség felfedéséhez megcímkézzen számára. Használati mintáit [entitások](luis-concept-entity-types.md) és azok szerepköreivel adott minta szintaxis segítségével adatokat szeretne kinyerni. 
@@ -57,7 +57,7 @@ A keresés lehetővé teszi a megadott szöveget tartalmazó mintákat találni.
 <!-- TBD: should I be able to click on the magnifying glass again to close the search box? It doesn't reset the list. -->
 
 ## <a name="edit-a-pattern"></a>Egy szabály módosítása
-1. A minta szerkesztéséhez válassza a három pontra (...) ikont, hogy a minta vonal a jobb végén, majd válassza ki **szerkesztése**. 
+1. A minta szerkesztéséhez kattintson a három pontra (***...*** ) minta vonal a jobb végén gombra, majd válassza **szerkesztése**. 
 
     ![Minta sorban menüpont szerkesztése képernyőképe](./media/luis-how-to-model-intent-pattern/patterns-three-dots.png) 
 
@@ -79,7 +79,7 @@ Egy másik beszédszándék több mintákat szeretné hozzárendelni, jelölje b
 
 ## <a name="delete-a-single-pattern"></a>Egyetlen mintát törlése
 
-1. Töröl egy mintát, a minta vonal a jobb végén a három pontra (...) ikonra, majd jelölje ki **törlése**. 
+1. A minta törléséhez válassza ki a három pontra (***...*** ) minta vonal a jobb végén gombra, majd válassza **törlése**. 
 
     ![Törlés képernyőfelvétel utterance (kifejezés)](./media/luis-how-to-model-intent-pattern/patterns-three-dots-ddl.png)
 
@@ -123,7 +123,7 @@ A szűrő törlődik, és minden minták megjelenítése.
 ## <a name="add-pattern-from-existing-utterance-on-intent-or-entity-page"></a>Adja hozzá a minta a leképezés vagy entitás oldalon meglévő utterance (kifejezés)
 Egy meglévő utterance (kifejezés) sem hozhat létre egy minta a **szándékot** vagy **entitás** lap. Minden utterances bármely leképezés vagy entitás lapján jelennek meg listáját a jobb oldali oszlopban, mint például a utterance (kifejezés) szintű beállításokat való hozzáférés biztosítása a **szerkesztése**, **törlése**, és **mintakénthozzáadása**.
 
-1. A kijelölt sor az utterance (kifejezés), válassza a három pontra (...) az utterance (kifejezés) jobbra, és válassza ki **mintaként Hozzáadás**.
+1. A kijelölt sora az utterance (kifejezés), válassza a három pontra (***...*** ) az utterance (kifejezés) jobb gombra, és válassza **mintaként Hozzáadás**.
 
     [![](./media/luis-how-to-model-intent-pattern/add-pattern-from-utterance.png "Képernyőkép a beállítások menü kiemelt Hozzáadás minta utterances-tábla")](./media/luis-how-to-model-intent-pattern/add-pattern-from-utterance.png)
 

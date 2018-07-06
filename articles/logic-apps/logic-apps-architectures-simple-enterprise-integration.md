@@ -1,6 +1,6 @@
 ---
-title: Az Azure integrációs szolgáltatások - egyszerű vállalati integrációs
-description: Bemutatja, hogyan valósítja meg az Azure Logic Apps és az Azure API Management tartalmazó egyszerű vállalati integrációs mintát referencia-architektúrában
+title: Azure integrációs szolgáltatásai – egyszerű vállalati integráció
+description: A referenciaarchitektúra az Azure Logic Apps és az Azure API Management egy egyszerű enterprise-integrációs minta megvalósítása megjelenítése
 author: mattfarm
 manager: jonfan
 editor: ''
@@ -14,161 +14,160 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 06/15/2018
 ms.author: LADocs; estfan
-ms.openlocfilehash: 17f591a470bf65d3c9365bca9c5ae2d5a6c9574f
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: df86ca5aed405ab5eda05c1dd207f0b6656bfd96
+ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36232351"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37860197"
 ---
-# <a name="simple-enterprise-integration---reference-architecture"></a>Egyszerű vállalati integrációs - referencia-architektúrában
+# <a name="simple-enterprise-integration---reference-architecture"></a>Egyszerű vállalati integráció – referenciaarchitektúra
 
 ## <a name="overview"></a>Áttekintés
 
-A referencia-architektúrában bevált gyakorlat az integráció alkalmazás által használt Azure integrációs szolgáltatások készletként jeleníti meg. Ez az architektúra ezek alapján HTTP API-k, a munkafolyamat és a vezénylési igénylő számos különböző alkalmazás minták lehetnek.
+Ez a referenciaarchitektúra egy adatintegrációs alkalmazás által használt Azure integrációs szolgáltatások bevált eljárásokat mutat be. Ez az architektúra a HTTP API-k, a munkafolyamat és a koordinálást igénylő számos különböző alkalmazásminták alapját szolgálhatnak.
 
-*Sok lehetséges alkalmazások integrációs technológia, egyszerű pont közötti pont-alkalmazás a teljes vállalati service Bus vannak. Az architektúra adatsorozat meghatározza a újrafelhasználható összetevő kijelzők bármely integrációs alkalmazások készítéséhez – a fejlesztők gondolja át az alkalmazásaikat és infrastruktúrájukat a rendszer szükséges összetevőket.*
+*Számos lehetséges alkalmazás integrációs technológiával, az egyszerű pont a pont-alkalmazás, a teljes enterprise service bus is. Ez architektúra sorozat határoz meg egy általános adatintegrációs alkalmazás készítéséhez alkalmazandók újrafelhasználható összetevőit – architects gondolja át az alkalmazásaikat és infrastruktúrájukat megvalósítása kell adott összetevőit.*
 
-   ![Architektúra diagramja – egyszerű vállalati integrációs](./media/logic-apps-architectures-simple-enterprise-integration/simple_arch_diagram.png)
+   ![Architekturális diagramja – egyszerű vállalati integráció](./media/logic-apps-architectures-simple-enterprise-integration/simple_arch_diagram.png)
 
 ## <a name="architecture"></a>Architektúra
 
 Az architektúra a következő összetevőkből áll:
 
-- Erőforráscsoport. Egy erőforráscsoportot az Azure-erőforrások logikai tárolója.
-- Az Azure API Management. Az Azure API Management az egy teljes körűen felügyelt platform közzétételéhez, biztonságossá tétele és átalakítása HTTP API-k.
-- Az Azure API Management fejlesztői portálján. A fejlesztői portálra visszatérve adjon hozzáférést a dokumentáció, Kódminták és tesztelheti az API-k olyan Azure API Management-példányokhoz tartalmaz.
-- Az Azure Logic Apps. A Logic Apps szolgáltatás egy kiszolgáló nélküli platform vállalati munkafolyamat és integrációs készítéséhez.
-- Összekötők. Összekötők Logic Apps a gyakran használt szolgáltatásokhoz használják. A Logic Apps már van másik összekötők több száz, de ezek is létrehozhat egyéni összekötő használatával.
-- IP-címet. Az Azure API Management szolgáltatás egy rögzített nyilvános IP-cím és tartománynév rendelkezik. A tartománynév azure-api.net, például a contoso altartománya. Azure-api.net. A Logic Apps is rendelkezik egy nyilvános IP-címet; azonban ebben az architektúrában azt hozzáférés korlátozása hívásához használandó Logic apps végpontok csak az IP-címet a API kezelése (biztonság).
-- Az Azure DNS. Az Azure DNS egy olyan üzemeltetési szolgáltatás DNS-tartományok, biztosítani a névfeloldást a Microsoft Azure-infrastruktúra használatával. Ha tartományait az Azure-ban üzemelteti, DNS-rekordjait a többi Azure-szolgáltatáshoz is használt hitelesítő adatokkal, API-kkal, eszközökkel és számlázási információkkal kezelheti. Használhat egy egyéni tartománynevet (például contoso.com) hozzon létre DNS-rekordokat, amelyek kapcsolódnak az egyéni tartománynevet az IP-címet. További információkért lásd: Configure Azure API Management egy egyéni tartománynevet.
-- Azure Active Directory (Azure AD). A hitelesítéshez használja az Azure AD-t vagy egy másik identitásszolgáltatót. Az Azure AD hozzáférési API végpontokhoz történő hitelesítést biztosít (úgy, hogy a JSON Web Token az API Management ellenőrzése), és biztonságossá teheti az API Management fejlesztői portálján (Standard és Premium rétegek csak) elérésére.
+- Erőforráscsoport. Az [erőforráscsoport](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) az Azure-erőforrások logikai tárolója.
+- Az Azure API Management. [Az Azure API Management](https://docs.microsoft.com/azure/api-management/) közzététele, biztosítása és a HTTP API-k átalakítása egy teljes körűen felügyelt platform.
+- Az Azure API Management fejlesztői portálon. Az Azure API Management minden példányának tartalmaz egy [fejlesztői portál](https://docs.microsoft.com/azure/api-management/api-management-customize-styles), dokumentáció, Kódminták és tesztelhetik az API-KHOZ való hozzáférés megadását.
+- Az Azure Logic Apps. [A Logic Apps](https://docs.microsoft.com/azure/logic-apps/logic-apps-overview) egy kiszolgáló nélküli platform nagyvállalati munkafolyamat és integrációs létrehozásához.
+- Az összekötők. [Összekötők](https://docs.microsoft.com/azure/connectors/apis-list) Logic Apps által gyakran használt serviceshez való csatlakozáshoz használt. A Logic Apps már rendelkezik a különböző összekötők több száz, de ezek is hozható létre egy egyéni összekötőt.
+- IP-cím. Az Azure API Management szolgáltatás rendelkezik egy nyilvános [IP-cím](https://docs.microsoft.com/azure/virtual-network/virtual-network-ip-addresses-overview-arm) és a egy tartomány nevét. A tartománynév altartománya API.NET-webhelyen, azure, például a contoso.azure-API.NET webhelyen. A Logic Apps és a Service Bus is rendelkezik egy nyilvános IP-cím; azonban ebben az architektúrában a Microsoft-hozzáférés korlátozása hívja fel a Logic apps végpontok csak az IP cím az API Management (az biztonság). A Service Bus-hívások közös hozzáférésű jogosultságkód védik.
+- Az Azure DNS. [Az Azure DNS](https://docs.microsoft.com/azure/dns/) egy üzemeltetési szolgáltatás DNS-tartományok biztosítani a névfeloldást a Microsoft Azure infrastruktúráját használja. Ha tartományait az Azure-ban üzemelteti, DNS-rekordjait a többi Azure-szolgáltatáshoz is használt hitelesítő adatokkal, API-kkal, eszközökkel és számlázási információkkal kezelheti. Egy egyéni tartománynevet (például contoso.com) használatához hozzon létre az egyéni tartománynév leképezése az IP-cím DNS-rekordjait. További információkért lásd: Configure egy egyéni tartománynevet az Azure API Management szolgáltatásban.
+- Az Azure Active Directory (Azure AD). Használat [Azure ad-ben](https://docs.microsoft.com/azure/active-directory/) vagy egy másik identitásszolgáltatót a hitelesítéshez. Az Azure AD hitelesítési API-hozzáférés végpontokra biztosít (átadásával egy [JSON Web Token az API Management](https://docs.microsoft.com/azure/api-management/policies/authorize-request-based-on-jwt-claims) ellenőrzése), és biztosíthatja a hozzáférést az API Management fejlesztői portálon (Standard és prémium szinten csak).
 
-Ez az architektúra rendelkezik néhány alapvető minták működését:
+Ez az architektúra rendelkezik a művelet néhány alapvető minták:
 
-1. HTTP API-k segítségével az API Management fejlesztői portálján, amely lehetővé teszi a fejlesztők számára közzétett létező háttérrendszerek (vagy belső a szervezet, külső vagy mindkettő) ezen API-k hívásainak integrálja alkalmazások.
-2. Összetett API-k használatával Logic Apps; készített hívások SAAS rendszereken futó, Azure-szolgáltatásokat és minden API-k közzé az API Management. A Logic Apps is közzé az API Management Developer portálon.
-3. Alkalmazások szerezni az OAuth 2.0 biztonsági jogkivonat-szükséges az API-k használata az Azure Active Directory elérésekor.
-4. Az Azure API Management érvényesíti a biztonsági jogkivonatot, és továbbítja a kérelmet a háttérkiszolgálón API vagy logikai alkalmazást.
+2. Összetett API-k felhasználásával történik a Logic Apps; replikálásával segít a vállalatnak SAAS-rendszerekhez hívások, Azure-szolgáltatások és minden API-k közzététele és az API Management. A [Logic Apps is közzétett](https://docs.microsoft.com/azure/api-management/import-logic-app-as-api) az API Management fejlesztői portálon keresztül.
+3. Alkalmazások [az OAuth 2.0 biztonsági jogkivonat beszerzése](https://docs.microsoft.com/azure/api-management/api-management-howto-protect-backend-with-aad) szükséges API-khoz, az Azure Active Directory elérésekor.
+4. Az Azure API Management [érvényesíti a biztonsági jogkivonatot](https://docs.microsoft.com/azure/api-management/api-management-howto-protect-backend-with-aad), és továbbítja a háttérrendszeri API-t vagy logikai alkalmazást.
 
 ## <a name="recommendations"></a>Javaslatok
 
-Az Ön követelményei eltérhetnek az itt leírt architektúrától. A jelen szakaszban leírt javaslatokat tekintse kiindulópontnak.
+A konkrét követelmények eltérhetnek az itt leírt általános architektúra. A jelen szakaszban leírt javaslatokat tekintse kiindulópontnak.
 
-### <a name="azure-api-management-tier"></a>Az Azure API Management réteg
+### <a name="azure-api-management-tier"></a>Az Azure API Management-szint
 
-Használja a Basic, Standard vagy prémium tiers, mivel egy éles SLA kínálnak, illetve támogatja a kibővített belül az Azure-régió (egységek száma eltérő szint). Prémium csomagban kibővített is támogatja több Azure-régiók között. A réteg a szükséges átviteli szintű választott kiinduló- és szolgáltatáskészleteket. További információkért lásd: [API Management árképzési](https://azure.microsoft.com/pricing/details/api-management/).
+Használja az alapszintű, Standard vagy prémium szint esetében, mivel egy éles SLA-t kínál, és támogatja a horizontális felskálázás az Azure-régión belül (szint szerint változó egységek száma). A prémium szintű is támogatja a horizontális felskálázás több Azure-régiók között. A réteg a szükséges átviteli sebességtől mértéke a kiválasztott alap- és szolgáltatáskészleteket. További információkért lásd: [az API Management díjszabása](https://azure.microsoft.com/pricing/details/api-management/).
 
-Van szó, a példányainak API Management amikor futnak. Ha rendelkezik-e kiterjesztett, és nincs szüksége ekkora szintű teljesítményre mindig, fontolja meg az API Management óránkénti számlázási és a skála.
+Ha még futnak az összes API Management-példány díja. Ha vertikálisan rendelkezik, és nincs szükség ilyen szintű teljesítmény az idő, vegye figyelembe, kihasználhatja az API Management óraalapú számlázás és méretezési.
 
 ### <a name="logic-apps-pricing"></a>A Logic Apps díjszabása
 
-A Logic Apps működik, mint egy [kiszolgáló nélküli](logic-apps-serverless-overview.md) modell – számlázási kiszámítja végrehajtásának műveletet és összekötőt. Lásd: [Logic Apps árképzési](https://azure.microsoft.com/pricing/details/logic-apps/) további információt. Jelenleg nincs a Logic Apps réteg szempontjai.
+A Logic Apps működik, mint egy [kiszolgáló nélküli](logic-apps-serverless-overview.md) modell, a számlázás a műveleti és összekötőhöz végrehajtási alapján kiszámítja. Lásd: [Logic Apps díjszabási](https://azure.microsoft.com/pricing/details/logic-apps/) további információt. Jelenleg nincs a Logic Apps szint szempontjai.
 
-### <a name="logic-apps-for-asynchronous-api-calls"></a>A Logic Apps aszinkron API-hívások
+### <a name="logic-apps-for-asynchronous-api-calls"></a>A Logic Apps aszinkron API-hívások esetében
 
-A Logic Apps működik a legjobban forgatókönyvek, amelyek nem igényelnek a kis késleltetésű – pl. aszinkron vagy félstatikus-hosszú futású API-hívásokat. Ha kis késleltetésű szükség (pl. egy hívás, amely megakadályozza a felhasználói felület) azt javasoljuk, hogy API vagy egy másik technológiával, pl. az Azure Functions vagy webes API App Service használatával telepített művelet végrehajtására. Mégis azt javasoljuk, hogy kell-e ez az API fronted API Management használata API fogyasztók számára.
+A Logic Apps a legalkalmasabb az alacsony késés – pl. aszinkron nem igénylő forgatókönyvek vagy félstatikus-hosszú ideig futó API-hívások. Ha kis késleltetésre szükség (például a hívás, amely letiltja a felhasználói felület) azt javasoljuk, hogy API-t vagy egy másik technológiát, például az Azure Functions vagy az üzembe helyezett App Service használatával Web API művelet végrehajtására. Továbbra is javasoljuk, hogy kell-e az API-t az API Management használata API-fogyasztókat fronted.
 
 ### <a name="region"></a>Régió
 
-Az API Management és a Logic Apps ugyanabban a régióban hálózati késés csökkentése érdekében érdemes kiépítéséhez. Általában érdemes a felhasználókhoz legközelebbi régiót választani.
+Az API Management üzembe helyezése és Logic Apps ugyanabban a régióban a hálózati késés minimalizálása érdekében. Általában érdemes a felhasználókhoz legközelebbi régiót választani.
 
-Az erőforráscsoport is rendelkezik egy régiót, amely megadja a központi telepítési metaadatok tárolására, és ha a központi telepítési sablont a végrehajtása. Az erőforráscsoportot és a hozzá tartozó erőforrásokat helyezze ugyanabba a régióba. Ez javíthatja a rendelkezésre állást az üzembe helyezés során.
+Az erőforráscsoport szintén van régiója, amely megadja a központi telepítési metaadatok tárolódnak, és ahol a központi telepítési sablont a hajtja végre. Az erőforráscsoportot és a hozzá tartozó erőforrásokat helyezze ugyanabba a régióba. Ez javíthatja a rendelkezésre állást az üzembe helyezés során.
 
 ## <a name="scalability-considerations"></a>Méretezési szempontok
 
-Az API Management rendszergazdák hozzá kell adnia [házirendek gyorsítótárazás](../api-management/api-management-howto-cache.md) adott esetben a szolgáltatás a méretezhetőség javítása és a háttér-szolgáltatások terhelését.
+Az API Management-rendszergazdák hozzá kell adnia [gyorsítótárazási házirendek](../api-management/api-management-howto-cache.md) adott esetben a kapacitás bővítése érdekében a szolgáltatás és a háttérszolgáltatások terhelésének csökkentése.
 
-Az Azure API Management alapszintű, Standard és Premium rétegek kiterjeszthető a nagyobb kapacitást kínálnak az Azure-régióban. Rendszergazdák a kapacitás metrika belül a metrikák menü segítségével elemezheti a szolgáltatás használatát, és növelheti vagy csökkentheti szükség szerint.
+Az Azure API Management alapszintű, Standard és Premium szintű kiterjeszthető az Azure-régióban a nagyobb kapacitást kínálnak. A rendszergazdák a kapacitás metrika belül a metrikák menü segítségével a a szolgáltatás használatának elemzése és vertikális felskálázás vagy leskálázás megfelelő módon.
 
-Az API Management szolgáltatás méretezéshez ajánlásokat:
+Az API Management-szolgáltatás méretezése javaslatok:
 
-- Skálázás igényeinek figyelembevételével forgalmi minták – több "volatile" forgalmi minták rendelkező ügyfelek megnövekedett kapacitás nagyobb szükségességét fog rendelkezni.
-- Egységes kapacitás 66 % feletti vertikális felskálázás kell utalhat.
-- Egységes kapacitás 20 % alatt jelezheti csökkentheti lehetőséget.
-- Mindig ajánlott betöltése a API-kezelés szolgáltatás a reprezentatív terhelés tesztelése éles környezetben engedélyezése előtt.
+- Skálázási igényeihez figyelembevétele forgalmi minták – több ideiglenes forgalmat rendelkező ügyfelek lesz a megnövekedett kapacitás nagyobb szükség.
+- Konzisztens kapacitás 66 %-ot meghaladó jele lehet, vertikális kell.
+- 20 % alatti konzisztens kapacitás jele lehet, vertikális leskálázás lehetőséget.
+- Mindig ajánlott betölteni az API Management szolgáltatás egy tipikus terhelés tesztelése éles környezetben engedélyezése előtt.
 
-Prémium szint szolgáltatások kiterjeszthető több Azure-régiók között. Ily módon történő telepítése ügyfelek érhetnek el egy magasabb SLA-t (99,9 %-os figyelésekor 99,95 %), valamint építhető ki több régióba felhasználók közel szolgáltatások.
+Prémium szintű szolgáltatások kiterjeszthető több Azure-régiók között. Ügyfelek központi telepítése, ilyen módon magasabb SLA (99,95 %-os figyelésekor 99,9 %-os) érhetnek el, és építhető ki a felhasználók több régióban figyeléséért szolgáltatások.
 
-A Logic Apps kiszolgáló nélküli modell azt jelenti, hogy rendszergazdáknak nem kell további figyelmet szolgáltatás méretezhetőségre; hogy a szolgáltatás automatikusan méretezi igény kielégítéséhez.
+A Logic Apps kiszolgáló nélküli modelljének köszönhetően a rendszergazdáknak nem kell, hogy a szolgáltatás méretezhetősége; a további szempontok a szolgáltatás automatikusan méretezi az igényeknek.
 
 ## <a name="availability-considerations"></a>Rendelkezésre állási szempontok
 
-Írásának időpontjában a szolgáltatásiszint-szerződéssel (SLA) az Azure API Management 99,9 %-os Basic, Standard és Premium rétege számára. Prémium szint konfigurációhoz telepítés két vagy több régióban legalább egy egység van szolgáltatásiszint-szerződésben garantált 99,95 %-os.
+Írása idején a szolgáltatásiszint-szerződés (SLA) az Azure API Management az alapszintű, Standard és prémium szint esetében 99,9 %-os. Prémium szintű konfigurációk legalább egy egység két vagy több régióban üzembe helyezéssel rendelkezik 99,95 %-os SLA-t.
 
-Írásának időpontjában a szolgáltatásiszint-szerződés (SLA) Azure Logic Apps 99,9 %-os.
+Írása idején a szolgáltatásiszint-szerződés (SLA) az Azure Logic Apps-ja 99,9 %.
 
 ### <a name="backups"></a>Biztonsági másolatok
 
-Az Azure API Management a konfiguráció nem lehet [rendszeresen végeznek biztonsági mentést](../api-management/api-management-howto-disaster-recovery-backup-restore.md) (megfelelően a változás rendszerességét alapján), és egy helyet, vagy másik, ahol a szolgáltatás található a Azure-régióban található biztonsági mentési fájlok. Az ügyfelek kiválaszthatja a vész-Helyreállítási stratégia két lehetőség közül:
+Az Azure API Management-beállításokat kell megadni [rendszeresen biztonsági másolat](../api-management/api-management-howto-disaster-recovery-backup-restore.md) (megfelelően a változtatás rendszerességét alapján), és a egy helyet, vagy az Azure-régió, ahol a szolgáltatás található különböző tárolt biztonsági mentési fájlokat. Ügyfelek ezután választhat a DR-stratégiájuk két lehetőség egyikét:
 
-1. A vész-Helyreállítási esetben egy új API Management-példány lett kiépítve, a biztonsági másolatot visszaállítja azt, és DNS-rekordok vannak repointed.
-2. Passzív másolat a szolgáltatás egy másik Azure-régiót (nélül további költség nélkül) biztonsági mentései során is garantálják az ügyfelek rendszeresen állítja vissza azt. A vész-Helyreállítási esetben csak a DNS-rekordokat kell repointed a szolgáltatást.
+1. A DR esemény egy új API Management-példány üzembe van helyezve, visszaállítja azt a biztonsági mentés és a DNS-rekordok vannak repointed.
+2. Ügyfelek megtartása passzív másolat egy másik Azure-régiót (költségekkel jár további) biztonsági szolgáltatása sikeréért rendszeresen állítja vissza azt. A DR esemény csak a DNS-rekordokat kell repointed visszaállítani a szolgáltatás.
 
-A Logic Apps nagyon gyorsan létrehozhatók és kiszolgáló nélküli, hogy biztonsági másolatot a társított Azure Resource Manager-sablon másolatának mentése. Ezek is menthető forrás-vezérlő/integrálva a felhasználók folyamatos integráció/folyamatos (CI/CD) telepítési folyamat.
+Logikai alkalmazások is nagyon gyorsan újra létrehozza és kiszolgáló nélküli, akkor készül biztonsági másolat által a társított Azure Resource Manager-sablon másolatának mentése. Ezek melyekbe menthetők a forrás-vezérlő/integrált ügyfelek általi folyamatos integráció/folyamatos készregyártás (CI/CD) folyamatot.
 
-A Logic Apps az API Management keresztül közzétett helyükre frissíteni kell azokat helyezze át egy másik adatközpont. Ez az API háttéralkalmazás tulajdonság egy egyszerű PowerShell-parancsprogram használatával valósítható meg.
+A Logic Apps, API Management szolgáltatáson keresztül közzétett kell frissíteni a helyüket, helyezze át egy másik adatközpontba. Ez egy egyszerű PowerShell-szkriptet a háttérrendszer tulajdonság frissítése az API használatával is elvégezhető.
 
 ## <a name="manageability-considerations"></a>Felügyeleti szempontok
 
-Termelési környezetben, fejlesztési, külön erőforráscsoportokat létrehozni, és tesztelési környezetben. Ez megkönnyíti az üzemelő példányok felügyeletét, a tesztkörnyezetek törlését és a hozzáférési jogok kiosztását.
+Hozzon létre külön erőforráscsoportok éles környezetben, fejlesztési, és tesztelési környezetek. Ez megkönnyíti az üzemelő példányok felügyeletét, a tesztkörnyezetek törlését és a hozzáférési jogok kiosztását.
 Amikor erőforrásokat rendel az erőforráscsoportokhoz, vegye figyelembe a következőket:
 
 - Életciklus. Általában érdemes az azonos életciklusú erőforrásokat ugyanabba az erőforráscsoportba helyezni.
-- Hozzáférés. Használhat [szerepköralapú hozzáférés-vezérlés](../role-based-access-control/overview.md) (RBAC) hozzáférési házirendek alkalmazása az erőforrások csoportba.
+- Hozzáférés. Használhat [szerepköralapú hozzáférés-vezérlés](../role-based-access-control/overview.md) (RBAC) a csoportokban található erőforrások hozzáférési szabályzatok alkalmazásához.
 - Számlázás. Megtekintheti az erőforráscsoport összegzett költségeit.
-- Tarifacsomag kiválasztása az API Management-használatát javasoljuk fejlesztői réteg fejlesztési és tesztkörnyezetek. Üzem előtti javasoljuk az éles környezet replika telepítése tesztek futtatása, és a költségek minimalizálása érdekében leáll.
+- Tarifacsomag kiválasztása az API Management – javasoljuk a fejlesztői csomag fejlesztési és tesztelési környezetek esetében. Éles üzem előtti javasolt egy replikát, az éles környezet üzembe helyezése tesztek futtatása, és a költségek minimalizálása érdekében leállítása.
 
 További információkért lásd: [erőforráscsoport](../azure-resource-manager/resource-group-overview.md) áttekintése.
 
 ### <a name="deployment"></a>Környezet
 
-Azt javasoljuk, hogy használjon [Azure Resource Manager-sablonok](../azure-resource-manager/resource-group-authoring-templates.md) központi telepítése az Azure API Management és az Azure Logic Apps alkalmazásokat is. Sablonok megkönnyítik a PowerShell vagy az Azure parancssori felület (CLI) használatával központi telepítések automatizálásához.
+Javasoljuk, hogy használjon [Azure Resource Manager-sablonok](../azure-resource-manager/resource-group-authoring-templates.md) üzembe helyezéséhez az Azure API Management és az Azure Logic Apps. Sablonok megkönnyítik a PowerShell vagy az Azure parancssori felület (CLI) üzembe helyezések automatizálását.
 
-Azt javasoljuk, hogy a saját külön Resource Manager-sablonok az Azure API Management és minden egyes Logic Apps üzembe. Ez lehetővé teszi a forrásrendszerek vezérlő tárolja őket. Ezek a sablonok majd együtt vagy külön-külön a folyamatos integrációs/folyamatos (CI/CD) központi telepítési folyamat részeként telepíthető.
+Azt javasoljuk, hogy a saját külön Resource Manager-sablonok az Azure API Management és az összes egyéni Logic Apps üzembe. Ez lehetővé teszi a verziókövetési rendszerekben tárolja őket. Ezek a sablonok majd együtt vagy külön-külön egy folyamatos integráció/folyamatos (CI/CD) folyamatot részeként telepíthető.
 
 ### <a name="versions"></a>Verziók
 
-Minden alkalommal, amikor a beállítások logikai alkalmazás módosítsa (vagy egy frissítést a Resource Manager sablon segítségével), verzió egy példányát az Ön kényelme (futtatási előzmények rendelkező összes verzió folyamatosan) tárolódik. Ezen verziói segítségével nyomon követheti a korábbi módosítások, és is támogatja, a verzió a logic app; aktuális konfigurációja Ez azt jelenti, is hatékonyan visszaállítási logikai alkalmazás, például.
+Minden alkalommal, amikor egy konfigurációs győződjön meg arról, módosítsa a logikai alkalmazás (vagy egy Resource Manager-sablon segítségével frissítést telepíteni), azt a verziót másolatát adatért a felhasználók kényelme érdekében (futtatási előzmények rendelkező összes verzió folyamatosan). Ezek a fájlok segítségével korábbi változásainak követése, és lehet a logikai alkalmazás; az aktuális konfiguráció verziója is támogatja Ez azt jelenti, is hatékonyan visszaállítási egy logikai alkalmazást, például.
 
-Az API Management két különálló (de udvarias) tartozik [versioning fogalmak](https://blogs.msdn.microsoft.com/apimanagement/2018/01/11/versions-revisions-general-availibility/):
+Az API Management rendelkezik két különböző (de díjtalan) [versioning fogalmak](https://blogs.msdn.microsoft.com/apimanagement/2018/01/11/versions-revisions-general-availibility/):
 
-- A kiválaszthatja, hogy az API-t használják ki volt a API fogyasztók használt verziók igényeiknek (pl. v1, v2 vagy beta, éles) alapján.
-- A változatok API rendszergazdái biztonságosan módosíthatja az API-k és telepíthet a felhasználók számára a választható magyarázatokkal.
+- Verziók biztosít az API-fogyasztókat alkalmazásmodelleknek köszönhetően az API-t fizetnek sikerült (pl. v1, v2 vagy bétaverzió, éles környezetben) igényeik alapján.
+- Változatok, hogy a rendszergazdák API biztonságosan módosítja egy API-t, és telepíthet a felhasználók számára a nem kötelező mellékmondatokkal.
 
-A környezetben a központi telepítés – változatok módosításokat biztonságosan, úgy kell tekinteni az API Management módosítási előzményeit, és API fogyasztók tudomást ezeket a módosításokat. Egy változat fejlesztői környezetben létrehozott és telepített más Resource Manager-sablonok segítségével különböző környezetek között lehet.
+Üzembe helyezés – változatok arra, hogy biztonságosan, hajtsa végre a módosításokat kell alkalmazni az API Management kontextusában tartsa a módosítási előzményeit, és győződjön meg arról, az API-fogyasztókat figyelembe ezeket a módosításokat. Egy változat fejlesztői környezetben létrehozott és telepített más környezetek használatával a Resource Manager-sablonok között lehet.
 
-Változatok amellyel tesztelheti az API-k előtt az "aktuális", és elérhetővé a felhasználók számára, miközben betöltés vagy integráció tesztelése a mechanizmus használatával nem ajánlott – külön teszt- vagy éles üzem előtti környezetben kell használni helyette.
+Változatok használható API-k tesztelése előtt az "aktuális" történik, és a felhasználók számára elérhető, bár nem javasoljuk ezt a mechanizmust betöltése vagy integrációs tesztelés – külön tesztelési vagy éles üzem előtti környezetben kell használni helyette.
 
 ### <a name="configuration"></a>Konfiguráció
 
-Jelszavak, hívóbetűk vagy a verziókövetési kapcsolat karakterláncait keresésének mellőzése. Ha van szükség a megfelelő módszer segítségével telepítheti és biztonságos ezeket az értékeket. 
+Soha ne tároljon jelszavakat, hozzáférési kulcsokat és kapcsolati karakterláncokat a verziókövetési. Ha szükség van rájuk, használja a megfelelő módszer üzembe helyezéséhez és biztonságos ezeket az értékeket. 
 
-A Logic Apps minden olyan bizalmas értéket a logikai alkalmazásban (azaz nem hozható létre kapcsolat formájában) szükséges legyen tárolva az Azure Key Vault, és a Resource Manager-sablon hivatkozik. Emellett javasoljuk, hogy használja a központi telepítési sablon paraméterek, valamint paraméterfájlt minden környezetben. További útmutatást [biztonságossá tétele a paraméterek és egy munkafolyamat bemenetei](logic-apps-securing-a-logic-app.md#secure-parameters-and-inputs-within-a-workflow).
+A Logic Apps esetében minden szükséges a logikai alkalmazásban (azaz nem hozható létre kapcsolat formájában) bizalmas értékeket kell az Azure Key Vaultban tárolt és a Resource Manager-sablon hivatkozik. Emellett javasoljuk, hogy központi telepítési sablon paramétereit használatával az egyes környezetekhez paraméterfájlokkal együtt. További útmutatást [biztonságossá tétele a paramétereket és a egy munkafolyamaton belül bemenetek](logic-apps-securing-a-logic-app.md#secure-parameters-and-inputs-within-a-workflow).
 
-Az API Management titkos kulcsok kezelése objektumokban, úgynevezett nevű értékek/tulajdonságok használatával. Ezek biztonságosan tárolni értékek, amelyek elérhetők az API-felügyeleti házirendek. Lásd: hogyan [az API Management titkos kulcsok kezelése](../api-management/api-management-howto-properties.md).
+Az API Management titkos kulcsok segítségével kezelt objektumokban, úgynevezett nevű értékek, illetve a tulajdonságokat. Ezek biztonságosan tárolja elérhető értékeket az API Management házirendek. Lásd: hogyan [az API Management titkos kódok kezelése](../api-management/api-management-howto-properties.md).
 
 ### <a name="diagnostics-and-monitoring"></a>Diagnosztika és figyelés
 
-Mindkét [API Management](../api-management/api-management-howto-use-azure-monitor.md) és [Logic Apps](logic-apps-monitor-your-logic-apps.md) keresztül működési figyelésére alkalmas [Azure figyelő](../monitoring-and-diagnostics/monitoring-overview-azure-monitor.md). Az Azure a figyelő alapértelmezés szerint engedélyezve van, és a beállítást minden egyes szolgáltatáshoz más metrikák alapján tájékoztatást fogunk adni.
+Mindkét [az API Management](../api-management/api-management-howto-use-azure-monitor.md) és [Logic Apps](logic-apps-monitor-your-logic-apps.md) támogatja a műveletek figyelése keresztül [Azure Monitor](../monitoring-and-diagnostics/monitoring-overview-azure-monitor.md). Az Azure Monitor alapértelmezés szerint engedélyezve van, és minden szolgáltatáshoz beállítva a különböző mérőszámok alapján információkkal szolgálnak.
 
-Emellett lehetőség áll rendelkezésre további az egyes szolgáltatásokhoz:
+Ezenkívül további lehetőség van az egyes szolgáltatásokhoz:
 
-- Logic Apps naplók küldhető [Naplóelemzési](logic-apps-monitor-your-logic-apps-oms.md) mélyebb elemzés és dashboarding.
-- Az API Management fejlesztői Ops figyelés konfigurálása az Application Insights támogatja.
-- Az API Management támogatja a [Power BI Megoldássablon az egyéni API használatával](http://aka.ms/apimpbi). Ez a megoldás sablon lehetővé teszi a felhasználóknak a saját egyéni elemzési megoldások az üzleti felhasználók számára a Power bi-ban elérhető jelentések létrehozásához.
+- Logic Apps-naplók elküldött [Log Analytics](logic-apps-monitor-your-logic-apps-oms.md) mélyebb elemzésre és dashboarding.
+- Az API Management konfigurálása az Application Insights figyelési és-üzemeltetői támogatja.
+- Az API Management támogatja a [Power BI Megoldássablon az egyéni API-analytics](http://aka.ms/apimpbi). Ez a megoldássablon lehetővé teszi az üzleti felhasználók számára a Power bi-ban elérhető jelentéseket a saját egyéni elemzési megoldás létrehozásához.
 
 ## <a name="security-considerations"></a>Biztonsági szempontok
 
-Ez a rész felsorolja a biztonsági szempontok adott Azure-szolgáltatás a cikkben, az architektúra foglaltak alapján telepítették. Nem tartalmazza az összes ajánlott biztonsági eljárást.
+Ebben a szakaszban leírt ebben a cikkben leírtak szerint az architektúra üzembe helyezett Azure-szolgáltatásokra vonatkozó biztonsági szempontokat sorolja fel. Nem tartalmazza az összes ajánlott biztonsági eljárást.
 
-- Szerepköralapú hozzáférés-vezérlést (RBAC) használatával biztosíthatja a megfelelő szintű hozzáféréssel a felhasználók számára.
-- Biztonságos nyilvános API-végpontok az API Management OAuth/megnyitása IDConnect használatával. Ehhez az identitásszolgáltató konfigurálása, és vegye fel a JWT érvényesség-ellenőrzési házirend.
-- Háttér-szolgáltatások csatlakozni az API Management-tanúsítványok kölcsönös használatával
-- Biztonságos HTTP eseményindító-alapú Logic Apps hozzon létre egy IP-cím engedélyezett, az IP-címet a API kezelése mutat. Ez megakadályozza, hogy a logikai alkalmazást hívja a nyilvános interneten keresztül. az API Management első áthaladás nélkül.
+- Szerepköralapú hozzáférés-vezérlés (RBAC) segítségével győződjön meg, hogy megfelelő szintű hozzáféréssel a felhasználók számára.
+- Az API Management OAuth/nyílt IDConnect használ nyilvános API-végpontok védelme. Ehhez egy identitásszolgáltató konfigurálása és a egy JWT-ellenőrzési szabályzat felvétele.
+- Csatlakozás a Háttérszolgáltatásokhoz az API Management-tanúsítványok kölcsönös használatával
+- HTTP eseményindító-alapú logikai alkalmazások védelme a hozzon létre egy IP-cím engedélyezett az IP cím az API Management mutat. Ez megakadályozza, hogy a logikai alkalmazás hívása a nyilvános interneten keresztül az API Management első áthaladás nélkül.
 
-A referencia-architektúrában bemutatta, hogyan hozhat létre egy egyszerű vállalati integrációs platformján Azure integrációs szolgáltatásainak használatával.
+Ez a referenciaarchitektúra bemutatta, hogyan hozhat létre egy egyszerű vállalati integrációs platform Azure integrációs szolgáltatások használatával.
 
 ## <a name="next-steps"></a>További lépések
 
-* [Vállalati integrációs várólisták és eseményekkel](logic-apps-architectures-enterprise-integration-with-queues-events.md)
+- [Enterprise Integration és üzenetsorokat és események](logic-apps-architectures-enterprise-integration-with-queues-events.md)

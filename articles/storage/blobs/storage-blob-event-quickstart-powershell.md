@@ -1,27 +1,27 @@
 ---
-title: Egyéni webkiszolgáló-végpont - Powershell Azure Blob storage-események átirányíthatja |} Microsoft Docs
+title: Az Azure Blob storage-események átirányítása egyéni webes végpontra – Powershell |} A Microsoft Docs
 description: Az Azure Event Griddel előfizethet Blob Storage-eseményekre.
 services: storage,event-grid
 keywords: ''
 author: david-stanford
 ms.author: dastanfo
-ms.date: 05/24/2018
+ms.date: 07/05/2018
 ms.topic: article
 ms.service: storage
-ms.openlocfilehash: b6764ffa0e7cfbc888f11c22af855d48d8160372
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 2c61c58398b8c095002db4bc59afed1c95e3550f
+ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34650502"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37865420"
 ---
-# <a name="route-blob-storage-events-to-a-custom-web-endpoint-with-powershell"></a>Útvonal Blob storage-események egy egyéni webkiszolgáló-végponthoz, a PowerShell használatával
+# <a name="route-blob-storage-events-to-a-custom-web-endpoint-with-powershell"></a>Blob storage-események átirányítása egyéni webes végpontra a PowerShell-lel
 
-Az Azure Event Grid egy felhőalapú eseménykezelési szolgáltatás. Ebben a cikkben előfizetni a Blob storage-események, eseményindító egy eseményt, az Azure PowerShell használatával, és az eredmény. 
+Az Azure Event Grid egy felhőalapú eseménykezelési szolgáltatás. Ebben a cikkben az Azure PowerShell használatával feliratkozás Blob storage-események, az eseményindító egy eseményt, és az eredmény megtekintéséhez. 
 
-Általában olyan végponttal, amely az eseményadatok feldolgozza, és műveleteket hajtja végre küldött események. Ez a cikk leegyszerűsítése az események küldése egy webalkalmazásba, amely összegyűjti és az üzeneteket jelenít meg.
+Általában olyan végpontoknak szoktunk eseményeket küldeni, amelyek eseményadatokat dolgoznak fel és műveleteket hajtanak végre. A cikk egyszerűsítése érdekében azonban az eseményeket egy olyan webalkalmazásnak küldjük el, amely az üzenetek gyűjtésével és megjelenítésével foglalkozik.
 
-Ha végzett, megjelenik az, hogy az eseményadat a webes alkalmazás el lett küldve.
+A folyamat végén látni fogja, hogy a rendszer elküldte az eseményadatokat a webalkalmazásnak.
 
 ![Eredmények megtekintése](./media/storage-blob-event-quickstart-powershell/view-results.png)
 
@@ -38,9 +38,9 @@ Connect-AzureRmAccount
 ```
 
 > [!NOTE]
-> Rendelkezésre állás a Storage-események kötődik esemény rács [rendelkezésre állási](../../event-grid/overview.md) és más régiókban is elérhető lesz a esemény rács hasonlóan.
+> Rendelkezésre állás, a Storage-események vannak kötve, Event Grid [rendelkezésre állási](../../event-grid/overview.md) és Event Grid választókkal válnak más régiókban érhető el.
 
-Ez a példa **westus2** , és tárolja a kijelölt változó használható.
+Ez a példa **westus2** és a kijelölés tárolja egy változóban használható.
 
 ```powershell
 $location = "westus2"
@@ -61,12 +61,12 @@ New-AzureRmResourceGroup -Name $resourceGroup -Location $location
 
 ## <a name="create-a-storage-account"></a>Create a storage account
 
-A Blob storage-események használatához szüksége vagy egy [Blob storage-fiók](../common/storage-create-storage-account.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#blob-storage-accounts) vagy egy [általános célú v2 tárfiókkal](../common/storage-account-options.md#general-purpose-v2). **Általános célú v2 (GPv2)** minden funkció támogatása az összes tárolószolgáltatásokra, köztük a blobokat, fájlok, üzenetsorok és táblák storage-fiókok vannak. A **Blob storage-fiók** egy speciális tárfiók a strukturálatlan adatok blobként (objektumokként) az Azure Storage való tárolására. BLOB storage-fiókok hasonló általános célú tárfiókok, és minden nagy tartósságot, rendelkezésre állási, méretezhetőség és teljesítmény szolgáltatás használata ma beleértve a 100 %-os API-konzisztenciát a blokkblobokhoz, és a hozzáfűző blobokhoz. A csak blokkok és hozzáfűző blobok tárolását igénylő alkalmazásokhoz javasoljuk a Blob Storage-fiókok használatát.  
+A Blob Storage-események használatához szüksége lesz vagy egy [Blob Storage-fiókra](../common/storage-create-storage-account.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#blob-storage-accounts), vagy egy [General Purpose v2-tárfiókra](../common/storage-account-options.md#general-purpose-v2). Az általános célú **General Purpose v2- (GPv2-)** fiókok olyan tárfiókok, amelyek a Storage-szolgáltatások összes funkcióját támogatják, beleértve a blobokat, a fájlokat, az üzenetsorokat és a táblákat is. A **Blob Storage-fiók** egy speciális tárfiók a strukturálatlan adatok blobként (objektumként) való tárolására az Azure Storage-ban. A Blob Storage-fiókok olyanok, mint a meglévő általános célú tárfiókjai, és a jelenlegi rendszereivel megegyező szintű tartósságot, rendelkezésre állást, méretezhetőséget és teljesítményt nyújtanak, beleértve a 100%-os API-konzisztenciát a blokkblobokhoz és a hozzáfűző blobokhoz. A csak blokkok és hozzáfűző blobok tárolását igénylő alkalmazásokhoz javasoljuk a Blob Storage-fiókok használatát.  
 
-A Blob storage-fiók létrehozása az LRS-replikáció használatával [New-AzureRmStorageAccount](/powershell/module/azurerm.storage/New-AzureRmStorageAccount), majd lekérheti a tárfiók környezetét, amely definiálja a tárfiókot használni. Ha a tárfiókokkal való munka során erre a környezetre hivatkozik, nem kell minden alkalommal megadnia a hitelesítő adatokat. Ez a példa nevű tárfiók létrehozása **gridstorage** a helyileg redundáns tárolás (LRS). 
+Az LRS replikációt a Blob storage-fiók létrehozása [New-AzureRmStorageAccount](/powershell/module/azurerm.storage/New-AzureRmStorageAccount), majd lekérheti a tárfiók környezetét, amely meghatározza a használandó tárfiókot. Ha a tárfiókokkal való munka során erre a környezetre hivatkozik, nem kell minden alkalommal megadnia a hitelesítő adatokat. Ez a példa létrehoz egy nevű tárfiókot **gridstorage** a helyileg redundáns tárolás (LRS). 
 
 > [!NOTE]
-> Tárfiókneveket globális névteret szerepelnek, ezért meg kell néhány véletlenszerű karakter hozzáfűzése a parancsfájl a megadott névvel.
+> Tárfiókok nevének találhatók globális névtér úgy kell hozzáfűznie valamilyen véletlenszerű karakter, ez a szkript megadott névvel.
 
 ```powershell
 $storageName = "gridstorage"
@@ -82,9 +82,9 @@ $ctx = $storageAccount.Context
 
 ## <a name="create-a-message-endpoint"></a>Üzenetvégpont létrehozása
 
-A témakörre való feliratkozás előtt hozzuk létre az eseményüzenet végpontját. Általában a végpont eseményadatok alapján műveleteket hajtja végre. A gyors üzembe helyezés leegyszerűsítése telepít egy [előre elkészített webalkalmazás](https://github.com/dbarkol/azure-event-grid-viewer) , amely az esemény üzeneteket jelenít meg. A telepített megoldás tartalmaz az App Service-csomag, az App Service web app és forráskód a Githubról.
+A témakörre való feliratkozás előtt hozzuk létre az eseményüzenet végpontját. A végpont általában az eseményadatok alapján hajt végre műveleteket. Az útmutató egyszerűsítése érdekében egy olyan [előre létrehozott webalkalmazást](https://github.com/dbarkol/azure-event-grid-viewer) helyezünk üzembe, amely megjeleníti az esemény üzeneteit. Az üzembe helyezett megoldás egy App Service-csomagot, egy App Service-webalkalmazást és egy, a GitHubról származó forráskódot tartalmaz.
 
-Cserélje le `<your-site-name>` a webalkalmazás egyedi névvel. A webalkalmazás nevének egyedinek kell lennie, mert része a DNS-bejegyzés.
+A `<your-site-name>` elemet a webalkalmazás egyedi nevére cserélje le. A webalkalmazás nevének egyedinek kell lennie, mert a DNS-bejegyzés része.
 
 ```powershell
 $sitename="<your-site-name>"
@@ -96,13 +96,15 @@ New-AzureRmResourceGroupDeployment `
   -hostingPlanName viewerhost
 ```
 
-A telepítés néhány percet is igénybe vehet. A telepítés sikeres befejezése, után megtekintheti a győződjön meg arról, hogy a webalkalmazás fut-e. A webböngésző keresse meg: `https://<your-site-name>.azurewebsites.net`
+Az üzembe helyezés befejezése eltarthat néhány percig. A sikeres üzembe helyezést követően tekintse meg a webalkalmazást, hogy meggyőződjön annak működéséről. Egy webböngészőben navigáljon a következő helyre: `https://<your-site-name>.azurewebsites.net`.
 
-Meg kell jelennie a hely nem aktuálisan megjelenő üzeneteket.
+A helynek megjelenített üzenetek nélkül kell megjelennie.
 
-## <a name="subscribe-to-your-storage-account"></a>A storage-fiók előfizetés
+[!INCLUDE [event-grid-register-provider-powershell.md](../../../includes/event-grid-register-provider-powershell.md)]
 
-A témakörre való feliratkozással lehet tudatni az Event Griddel, hogy mely eseményeket kívánja nyomon követni. A következő példa a tárfiókot hozott létre, és adja át az URL-címet a webes alkalmazás és a végpontnak a eseményértesítés számítógépcsoportra fizetett elő. A webalkalmazás a végpontot tartalmaznia kell a utótag `/api/updates/`.
+## <a name="subscribe-to-your-storage-account"></a>Iratkozzon fel a tárfiók
+
+A témakörre való feliratkozással lehet tudatni az Event Griddel, hogy mely eseményeket kívánja nyomon követni. Az alábbi példa feliratkozik a létrehozott, és az eseményértesítés végpontjaként adja át az URL-címet a webalkalmazás a storage-fiókba. A webalkalmazás végpontjának az `/api/updates/` utótagot kell tartalmaznia.
 
 ```powershell
 $storageId = (Get-AzureRmStorageAccount -ResourceGroupName $resourceGroup -AccountName $storageName).Id
@@ -114,13 +116,13 @@ New-AzureRmEventGridSubscription `
   -ResourceId $storageId
 ```
 
-A webalkalmazás ismét megtekintheti, és figyelje meg, hogy egy előfizetés érvényesítési esemény el lett küldve azt. Válassza ki a szem ikonra, bontsa ki az eseményadatok. Esemény rács küld az érvényesítési eseményt, így a végpont ellenőrizheti, hogy azt kéri a eseményadatok. A webalkalmazás az előfizetés érvényesítése kódot tartalmazza.
+Tekints meg újra a webalkalmazást, ahol láthatja, hogy az fogadta az előfizetés érvényesítési eseményét. Az eseményadatok kibontásához kattintson a szem ikonra. Az Event Grid elküldi az érvényesítési eseményt, így a végpont megerősítheti, hogy eseményadatokat akar kapni. A webalkalmazás az előfizetés érvényesítéséhez szükséges kódot tartalmaz.
 
-![Előfizetés eseményének megtekintése](./media/storage-blob-event-quickstart-powershell/view-subscription-event.png)
+![Előfizetési esemény megtekintése](./media/storage-blob-event-quickstart-powershell/view-subscription-event.png)
 
 ## <a name="trigger-an-event-from-blob-storage"></a>Esemény kiváltása a Blob Storage-ból
 
-Most aktiváljunk egy eseményt, és lássuk, hogyan küldi el az üzenetet az Event Grid a végpontnak. Először hozzon létre egy tárolót és egy objektumot. Ezt követően most töltse fel az objektum a tárolóba.
+Most aktiváljunk egy eseményt, és lássuk, hogyan küldi el az üzenetet az Event Grid a végpontnak. Először is hozzunk létre egy tárolót, és a egy objektumot. Ezután töltse fel az objektum a tárolóba.
 
 ```powershell
 $containerName = "gridcontainer"
@@ -131,7 +133,7 @@ echo $null >> gridTestFile.txt
 Set-AzureStorageBlobContent -File gridTestFile.txt -Container $containerName -Context $ctx -Blob gridTestFile.txt
 ```
 
-Ön kiváltotta az eseményt, az Event Grid pedig elküldte az üzenetet a feliratkozáskor konfigurált végpontnak. Tekintse meg az imént a telefonjára küldött esemény webalkalmazás megtekintése.
+Ön kiváltotta az eseményt, az Event Grid pedig elküldte az üzenetet a feliratkozáskor konfigurált végpontnak. Tekintse meg a webalkalmazást az imént elküldött esemény megtekintéséhez.
 
 ```json
 [{
