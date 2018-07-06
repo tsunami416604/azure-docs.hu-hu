@@ -1,6 +1,6 @@
 ---
-title: Azure – első lépések a verem - portál virtuális gép létrehozása
-description: Azure verem Quick Start - Linux virtuális gép létrehozása a portálon
+title: Az Azure Stack gyors üzembe helyezési – Portal virtuális gép létrehozása
+description: Azure Stack gyors üzembe helyezés – Linux rendszerű virtuális gép létrehozása a portálon
 services: azure-stack
 cloud: azure-stack
 author: brenduns
@@ -11,91 +11,91 @@ ms.date: 04/24/2018
 ms.author: brenduns
 ms.reviewer: ''
 ms.custom: mvc
-ms.openlocfilehash: 2ea07f04d4c566c0add39d75cad3d3a4ed81c6c8
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: c364a9ba5a9606967fa86262417ccd1ac3aeffc3
+ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32152220"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37866270"
 ---
-# <a name="quickstart-create-a-linux-server-virtual-machine-with-the-azure-stack-portal"></a>Gyors üzembe helyezés: Linux server virtuális gép létrehozása az Azure-verem portállal
+# <a name="quickstart-create-a-linux-server-virtual-machine-with-the-azure-stack-portal"></a>Gyors útmutató: Linux rendszerű kiszolgáló virtuális gép létrehozása az Azure Stack portálon
 
-*A következőkre vonatkozik: Azure verem integrált rendszerek és az Azure verem szoftverfejlesztői készlet*
+*A következőkre vonatkozik: Azure Stackkel integrált rendszerek és az Azure Stack fejlesztői készlete*
 
-A verem Azure portál használatával létrehozhat egy Ubuntu Server 16.04 LTS virtuális gépet. Kövesse a cikkben történő létrehozásáról és használatáról a virtuális gép. Ez a cikk is lehetővé teszi a lépéseket:
+Létrehozhat egy Ubuntu Server 16.04 LTS virtuális gépet az Azure Stack-portál használatával. Kövesse a cikkben hozhat létre és használhat egy virtuális gépet. Ez a cikk is biztosít a lépéseket:
 
-* Csatlakoztassa a virtuális gép egy távoli ügyfélhez.
-* Egy NGINX-webkiszolgáló telepítéséhez.
+* Csatlakozzon a virtuális géphez a távoli ügyfélhez.
+* Telepítse az NGINX-webkiszolgálót.
 * Az erőforrások törlése.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* **A Linux-lemezkép a verem Azure piactéren**
+* **Egy Linuxos rendszerképet az Azure Stack piactéren**
 
-   A verem Azure piactér nem tartalmazza a Linux-lemezkép alapértelmezés szerint. Linux virtuális gépek létrehozása előtt győződjön meg arról, hogy az Azure-verem üzemeltető biztosítja a **Ubuntu Server 16.04 LTS** lemezkép van szüksége. Az operátor használhatja a leírt lépéseket a [Piactéri elemek töltse le az Azure-ból Azure verem](../azure-stack-download-azure-marketplace-item.md) cikk.
+   Az Azure Stack piactéren alapértelmezés szerint nem tartalmaz a Linux-rendszerképen. Linuxos virtuális gép létrehozása előtt győződjön meg arról, hogy biztosít-e az Azure Stack-operátorokról a **Ubuntu Server 16.04 LTS** rendszerképre van szüksége. Az operátor leírt lépéseket követve használhat a [Piactéri termékek letöltése az Azure-ból az Azure Stackhez](../azure-stack-download-azure-marketplace-item.md) cikk.
 
-* **Egy SSH-ügyfél a hozzáférést**
+* **Egy SSH-ügyféllel való hozzáférés**
 
-   Ha az Azure verem Development Kit (ASDK) használ, nincs egy SSH-ügyfél a hozzáférést. Ha egy ügyfél van szüksége, nincsenek több, egy SSH-ügyfelet tartalmazó csomagot. Például a PuTTY tartalmaz egy SSH-ügyfél és egy SSH megosztottelérésikulcs-készítő (puttygen.exe). További információ az elérhető csomagokat, olvassa el a következő Azure: [az SSH-kulcsok a Windows Azure hogyan](https://docs.microsoft.com/azure/virtual-machines/linux/ssh-from-windows#windows-packages-and-ssh-clients).
+   Az Azure Stack Development Kit (ASDK) használatakor, előfordulhat, hogy nincs hozzáférése egy SSH-ügyfél. Egy ügyfél van szüksége, van-e több SSH-ügyfelet tartalmazó csomagot. Például a putty-kapcsolaton keresztül egy SSH-ügyfél és az SSH megosztottelérésikulcs-készítő (puttygen.exe) tartalmaz. Elérhető csomagok kapcsolatos további információkért olvassa el az Azure-cikket: [az SSH-kulcsok az Azure-ban a Windows hogyan](https://docs.microsoft.com/azure/virtual-machines/linux/ssh-from-windows#windows-packages-and-ssh-clients).
 
-   A gyors üzembe helyezés használja a PuTTY az SSH-kulcsok létrehozásához és a Linux virtuális gép csatlakozni. Töltse le és telepítse a PuTTY, keresse fel [ http://www.putty.org/ ](http://www.putty.org).
+   Ez a rövid útmutató használja a putty-kapcsolaton keresztül az SSH-kulcsok létrehozása és a Linux-kiszolgáló virtuális géphez csatlakozni. Töltse le és telepítse a Puttyt, keresse fel a [ http://www.putty.org/ ](http://www.putty.org).
 
 ## <a name="create-an-ssh-key-pair"></a>SSH-kulcs létrehozása
 
-Ebben a cikkben minden lépést befejezéséhez egy SSH-kulcspárral van szüksége. Ha egy meglévő SSH-kulcspárral, kihagyhatja ezt a lépést.
+Szüksége lesz egy SSH-kulcspár ebben a cikkben minden lépést befejezéséhez. Ha rendelkezik egy meglévő SSH-kulcspárral, kihagyhatja ezt a lépést.
 
-1. Keresse meg azt a PuTTY telepítési mappát (az alapértelmezett hely: ```C:\Program Files\PuTTY```), és futtassa ```puttygen.exe```.
-2. A PuTTY kulcs generátor ablakban ellenőrizze, hogy a **létrehozni kívánt kulcs típusa** értéke **RSA**, és a **létrehozott kulcs bitjeinek száma** értéke **2048**. Ha elkészült, kattintson a **Generate**.
+1. Keresse meg a PuTTY telepítési mappájából (az alapértelmezett hely a ```C:\Program Files\PuTTY```), és futtassa ```puttygen.exe```.
+2. A PuTTY Key Generator ablakában győződjön meg arról a **készítése a kulcs típusa,** értékre van állítva **RSA**, és a **létrehozott kulcs bitjeinek száma** értékre van állítva **2048**. Amikor elkészült, kattintson a **Generate**.
 
-   ![PuTTY kulcs Generator-konfiguráció](media/azure-stack-quick-linux-portal/Putty01.PNG)
+   ![PuTTY Key Generator-konfiguráció](media/azure-stack-quick-linux-portal/Putty01.PNG)
 
-3. A kulcs létrehozása, mutasson az egérrel véletlenszerűen a PuTTY kulcs generátor ablakban.
-4. A kulcs létrehozásának befejezése után kattintson **mentés nyilvános kulcs** , majd **mentés titkos kulcs** a kulcsok fájlokat menteni.
+3. Hozzon létre egy kulcsot, mozgassa az egérmutatót véletlenszerűen a PuTTY Key Generator ablakban.
+4. Kattintson a kulcs létrehozásának befejezése **mentés nyilvános kulcs** majd **titkos kulcs mentése** fájlokat menteni a kulcsok.
 
-   ![PuTTY kulcs generátor eredmények](media/azure-stack-quick-linux-portal/Putty02.PNG)
+   ![PuTTY Key Generator eredmények](media/azure-stack-quick-linux-portal/Putty02.PNG)
 
-## <a name="sign-in-to-the-azure-stack-portal"></a>Jelentkezzen be a verem Azure portálra
+## <a name="sign-in-to-the-azure-stack-portal"></a>Jelentkezzen be az Azure Stack portálon
 
-Jelentkezzen be a verem Azure portálra. A cím az Azure-verem portál függ, hogy melyik Azure verem termékre való kapcsolódás esetén:
+Jelentkezzen be az Azure Stack portálon. Az Azure Stack portálon címe attól függ, melyik Azure Stack termék csatlakozik:
 
-* Ugrás az Azure verem Development Kit (ASDK): https://portal.local.azurestack.external.
-* Integrált Azure verem rendszert nyissa meg az Azure-verem operátor megadott URL-címre.
+* Nyissa meg az Azure Stack Development Kit (ASDK): https://portal.local.azurestack.external.
+* Az Azure Stackkel integrált rendszer nyissa meg az Azure Stack-operátorokról megadott URL-CÍMÉT.
 
 ## <a name="create-the-virtual-machine"></a>A virtuális gép létrehozása
 
-1. Kattintson a **hozzon létre egy erőforrást** a verem Azure portál bal felső sarokban.
+1. Kattintson a **erőforrás létrehozása** az Azure Stack portal bal felső sarkában található.
 
 2. Válassza a **Számítás**, majd az **Ubuntu Server 16.04 LTS** elemet.
 3. Kattintson a **Create** (Létrehozás) gombra.
 
-4. Írja be a virtuális gép adatait. A **Hitelesítés típusa** résznél válassza az **SSH nyilvános kulcs** lehetőséget. Az SSH nyilvános kulcsát, mentett, és kattintson a Beillesztés **OK**.
+4. Írja be a virtuális gép adatait. A **Hitelesítés típusa** résznél válassza az **SSH nyilvános kulcs** lehetőséget. Illessze be az SSH nyilvános kulcs mentése, és kattintson a **OK**.
 
    >[!NOTE]
- Győződjön meg arról, hogy a kulcs akkor távolítsa el a kezdő vagy záró szóközt.
+ Ellenőrizze, hogy ezek billentyűt a eltávolít minden kezdő vagy záró térközt.
 
    ![Alapvető beállítások panel – a virtuális gép konfigurálása](media/azure-stack-quick-linux-portal/linux-01.PNG)
 
-5. Válassza ki **D1_V2** a virtuális géphez.
+5. Válassza ki **D1_V2** a virtuális gép.
 
-   ![Méretezés panel – a virtuális gép méretének kiválasztása](media/azure-stack-quick-linux-portal/linux-02.PNG)
+   ![Méret panel – a virtuális gép méretének kiválasztása](media/azure-stack-quick-linux-portal/linux-02.PNG)
 
-6. Az a **beállítások** lapon hagyja az alapértelmezett beállításokat, majd kattintson **OK**.
+6. Az a **beállítások** oldalon hagyja változatlanul az alapértelmezett beállításokat, és kattintson **OK**.
 
-7. A a **összegzés** kattintson **OK** elindítani a virtuális gépek telepítése során.
+7. Az a **összefoglalás** kattintson **OK** a virtuális gép üzembe helyezésének megkezdéséhez.
 
 ## <a name="connect-to-the-virtual-machine"></a>Csatlakozás a virtuális géphez
 
-1. Kattintson a **Connect** a virtuális gép oldalon. Megjelenik egy SSH-kapcsolati karakterlánc, amelyekre szüksége van a virtuális géphez történő csatlakozáshoz.
+1. Kattintson a **Connect** a virtuális gép oldalon. Ez megjeleníti a virtuális géphez való kapcsolódáshoz szükséges SSH kapcsolati karakterláncot.
 
-   ![Csatlakozás a virtuális gép](media/azure-stack-quick-linux-portal/linux-03.PNG)
+   ![Virtuális gép csatlakoztatása](media/azure-stack-quick-linux-portal/linux-03.PNG)
 
 2. Nyissa meg a PuTTY eszközt.
-3. Az a **PuTTY konfigurációs** képernyő fogja használni a **kategória** felfelé vagy lefelé ablak. Görgessen le a **SSH**, bontsa ki a **SSH**, és kattintson a **Auth**. Kattintson a **Tallózás** és a titkos kulcsfájl mentett válasszon.
+3. Az a **PuTTY konfigurációs** képernyő fog használni a **kategória** ablakban görgessen felfelé vagy lefelé. Görgessen le a **SSH**, bontsa ki a **SSH**, és kattintson a **Auth**. Kattintson a **Tallózás** , és válassza ki a mentett titkos kulcs fájlját.
 
-   ![PuTTY titkos kulcs kiválasztása](media/azure-stack-quick-linux-portal/Putty03.PNG)
+   ![Válassza ki a PuTTY titkos kulcs](media/azure-stack-quick-linux-portal/Putty03.PNG)
 
-4. Görgessen fel, a a **kategória** ablakot, és kattintson **munkamenet**.
-5. Az a **állomásnevet (vagy IP-cím)** mezőbe illessze be a kapcsolati karakterlánc jelenik meg a verem Azure portálon. Ebben a példában a karakterlánc értéke ```asadmin@192.168.102.34```.
+4. A másolatot görgessen a **kategória** ablakot, és kattintson **munkamenet**.
+5. Az a **gazdagép nevét (vagy IP-cím)** mezőbe illessze be az Azure Stack portálon látható kapcsolati karakterláncban. Ebben a példában a karakterlánc van ```asadmin@192.168.102.34```.
 
    ![PuTTY konfigurációs kapcsolati karakterlánc](media/azure-stack-quick-linux-portal/Putty04.PNG)
 
@@ -105,7 +105,7 @@ Jelentkezzen be a verem Azure portálra. A cím az Azure-verem portál függ, ho
 
 ## <a name="install-the-nginx-web-server"></a>Az NGINX-webkiszolgáló telepítése
 
-A következő parancsokkal bash csomag források frissítse és telepítse a legújabb NGINX-csomagot a virtuális gépen.
+Az alábbi bash-parancsok használatával frissítse a csomagforrásokat, és telepítse a legújabb NGINX-csomagot a virtuális gépen.
 
 ```bash
 #!/bin/bash
@@ -117,31 +117,31 @@ sudo apt-get -y update
 sudo apt-get -y install nginx
 ```
 
-Amikor befejezte a NGINX telepítése, zárja be az SSH-munkamenetet, és nyissa meg a a virtuális gép – áttekintés oldalra a verem Azure-portálon.
+Ha befejezte az NGINX telepítése, zárja be az SSH-munkamenetet, és nyissa meg a virtuális gépek – áttekintés oldalra az Azure Stack portálon.
 
 ## <a name="open-port-80-for-web-traffic"></a>A 80-as port megnyitása a webes adatforgalom számára
 
-A hálózati biztonsági csoport (NSG) feladata a bejövő és kimenő forgalom védelme. Egy virtuális gép létrehozásakor a verem Azure-portálon létrejön egy bejövő forgalomra vonatkozó szabály az SSH-kapcsolatokhoz 22-es portot. Ezt a virtuális gépet üzemeltető webkiszolgálóra, mert egy NSG-szabály kell létrehozni webes forgalmat engedélyezi a 80-as porton.
+A hálózati biztonsági csoport (NSG) feladata a bejövő és kimenő forgalom védelme. Ha egy virtuális gép létrehozása az Azure Stack portálon, egy bejövő szabályt a 22-es portot SSH-kapcsolatok jön létre. A virtuális gép egy webkiszolgálót futtat, mert egy NSG-szabályt kell létrehozni a 80-as portot a webes forgalom engedélyezéséhez.
 
-1. A virtuális gépen **áttekintése** lapján kattintson a nevét a **erőforráscsoport**.
-2. Válassza ki a **hálózati biztonsági csoport** a virtuális géphez. A hálózati biztonsági csoport a **Típus** oszlop segítségével azonosítható.
-3. A bal oldali menü alatti **beállítások**, kattintson a **bejövő biztonsági szabályok**.
+1. A virtuális gépen **áttekintése** lap, kattintson a nevére a **erőforráscsoport**.
+2. Válassza ki a **hálózati biztonsági csoport** a virtuális gép. A hálózati biztonsági csoport a **Típus** oszlop segítségével azonosítható.
+3. A bal oldali menüben a **beállítások**, kattintson a **bejövő biztonsági szabályok**.
 4. Kattintson a **Hozzáadás** parancsra.
 5. A **Név** mezőbe írja be a **http** karakterláncot. Ügyeljen rá, hogy a **Porttartomány** értéke 80, a **Művelet** értéke pedig **Engedélyezés** legyen.
 6. Kattintson az **OK** gombra
 
 ## <a name="view-the-nginx-welcome-page"></a>Az NGINX kezdőlapjának megtekintése
 
-Az NGINX telepítve, és a virtuális gépen nyissa meg a 80-as porton a webkiszolgálón, a virtuális gép nyilvános IP-cím használatával végezheti el. (A nyilvános IP-cím jelenik meg a virtuális gép – áttekintés oldalra.)
+Az NGINX telepítve van, és nyissa meg a virtuális gépen a 80-as porton a webkiszolgáló, a virtuális gép nyilvános IP-cím használatával is elérheti. (A nyilvános IP-cím jelenik meg a virtuális gép – áttekintés oldalra.)
 
 Nyisson meg egy webböngészőt, és keresse meg a ```http://<public IP address>```.
 
-![NGINX web server kezdőlap](media/azure-stack-quick-linux-portal/linux-04.PNG)
+![Az NGINX web server kezdőlap](media/azure-stack-quick-linux-portal/linux-04.PNG)
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Az erőforrásokat, amelyek többé nem kell törölni. A virtuális gép és az erőforrások törléséhez válassza ki az erőforráscsoportot, a virtuális gép oldalon, és kattintson **törlése**.
+Az erőforrásokat, amelyeket többé nem kell törölni. A virtuális gép és az erőforrások törléséhez válassza ki az erőforráscsoportot a virtuális gép oldalon, és kattintson a **törlése**.
 
 ## <a name="next-steps"></a>További lépések
 
-A gyors üzembe helyezési webkiszolgáló alapvető Linux-kiszolgáló virtuális gépek telepítette. További információt a verem Azure virtuális gépek, továbbra is [szempontok a virtuális gépek Azure-készletben](azure-stack-vm-considerations.md).
+Ez a rövid útmutatóban üzembe helyezett egy egyszerű Linux server virtuális géphez a webkiszolgáló. További információ a virtuális gépekről az Azure Stack, továbbra is [szempontok a virtuális gépek az Azure Stackben](azure-stack-vm-considerations.md).
