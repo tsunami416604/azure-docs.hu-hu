@@ -1,7 +1,7 @@
 ---
-title: A módosítást végzett adatcsatorna-támogatás az Azure Cosmos Adatbázisba |} Microsoft Docs
-description: Azure Cosmos DB módosítás adatcsatorna támogatási használja a dokumentumok nyomon követéséhez és esemény-alapú feldolgozási például eseményindítók és gyorsítótárak és elemzési rendszerek frissítése.
-keywords: adatcsatorna módosítása
+title: A módosítás használatának hírcsatorna támogatása az Azure Cosmos DB |} A Microsoft Docs
+description: Használja az Azure Cosmos DB módosítási hírcsatorna támogatása a dokumentumok nyomon követésére, és végezze el a feldolgozási eseményalapú eseményindítókat például és a gyorsítótárak és elemzési rendszerek naprakészen tartása.
+keywords: a módosítási hírcsatornáról
 services: cosmos-db
 author: rafats
 manager: kfile
@@ -10,93 +10,93 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: rafats
-ms.openlocfilehash: 6b0aaa075b8b2881e269d79a67e75528d0d9a86a
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.openlocfilehash: e53f1e62b9265d2eec2f49537cc05c865e1436f3
+ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37129858"
+ms.lasthandoff: 07/07/2018
+ms.locfileid: "37902962"
 ---
-# <a name="working-with-the-change-feed-support-in-azure-cosmos-db"></a>A módosítás adatcsatorna-támogatás az Azure Cosmos Adatbázisba használata
+# <a name="working-with-the-change-feed-support-in-azure-cosmos-db"></a>A módosítási hírcsatorna támogatása az Azure Cosmos DB használata
 
-[Az Azure Cosmos DB](../cosmos-db/introduction.md) gyors és rugalmas globálisan replikált adatbázis, az IoT, játékok, kiskereskedelmi, jól alkalmazható és működési naplózási alkalmazások. Egy közös kialakítási mintában a ezeket az alkalmazásokat, hogy az adatok módosításait használja a további műveletek indítsa. Ezeket a további műveleteket is a következő lehet: 
+[Az Azure Cosmos DB](../cosmos-db/introduction.md) gyors és rugalmas globálisan replikált adatbázis, az IoT-játékok, kiskereskedelmi, jól alkalmazható tevékenységekről és a működési naplózási alkalmazások. Ezeket az alkalmazásokat a gyakori tervezési minta, hogy az adatok módosításait, további műveletekkel. Ezek további műveletek a következők bármelyike lehet: 
 
-* Indítására egy értesítést vagy az API-k hívása, amikor egy dokumentum hozzáadásakor vagy módosításakor.
-* Az adatfolyam feldolgozása IoT vagy elemzés végrehajtása.
-* További adatmozgás szinkronizálása a gyorsítótár, a keresőmotor vagy a data warehouse-ba, vagy a cold tárolási adatok archiválása.
+* Indítására egy értesítést vagy egy API-hívás, amikor a dokumentum hozzáadásakor vagy módosításakor.
+* Stream analytics az IoT feldolgozása illetve.
+* További adatmozgatás szinkronizálása a gyorsítótár, a keresőmotor vagy a data warehouse-ba, vagy a ritka elérésű tárolási adatok archiválása.
 
-A **módosítás hírcsatorna támogatási** az Azure Cosmos adatbázis létrehozását teszi lehetővé méretezhető és hatékony megoldások az egyes ezeket a mintákat a következő ábrán látható módon:
+A **módosítási hírcsatorna támogatása** az Azure Cosmos DB lehetővé teszi, hogy ezek a minták minden hatékony és méretezhető megoldások létrehozását a következő képen látható módon:
 
-![Energiagazdálkodási valós idejű elemzési és számítógépes forgatókönyvek eseményvezérelt hírcsatorna használata Azure Cosmos DB módosítása](./media/change-feed/changefeedoverview.png)
+![Power valós idejű elemzési és számítási eseményvezérelt forgatókönyvek használatával az Azure Cosmos DB-módosítási hírcsatorna](./media/change-feed/changefeedoverview.png)
 
 > [!NOTE]
-> Támogatási hírcsatorna módosítása az összes adatmodellek és a tárolók Azure Cosmos DB valósul meg. A módosítás hírcsatorna azonban az SQL-ügyfélprogrammal olvasható, ezért rendezi sorba elemek JSON formátumban. Miatt az ügyfelek fog tapasztalni MongoDB formázást, JSON formátumú BSON dokumentumokat és a JSON eltérést formázott hírcsatorna módosítása.
+> A módosítási hírcsatorna támogatása az összes adatmodellek és tárolók az Azure Cosmos DB biztosítunk. A módosítási hírcsatorna azonban az SQL-ügyfél használatával olvasható, és szerializálja elemek JSON formátumba. A JSON formázását, MongoDB ügyfelek tapasztalható miatt egyeznek a BSON, formázott dokumentumok és a JSON formátumú – csatorna módosítása.
 
-Az alábbi videó az Azure Cosmos DB Programvezető Andrew Liu bemutatja, hogyan Azure Cosmos DB módosítása hírcsatorna működik.
+Az alábbi videó az Azure Cosmos DB Programigazgatója Andrew Liu bemutatja, hogyan az Azure Cosmos DB-módosítási hírcsatorna a működését.
 
 > [!VIDEO https://www.youtube.com/embed/mFnxoxeXlaU]
 >
 >
 
-## <a name="how-does-change-feed-work"></a>Hogyan módosítás munkahelyi hírcsatorna?
+## <a name="how-does-change-feed-work"></a>Hogyan módosítási munkahelyi hírcsatorna?
 
-Egy Azure Cosmos DB gyűjteményhez módosításai figyel módosításához Azure Cosmos DB works adatcsatorna támogatást. Majd exportálja azt jelzi, hogy módosultak a sorrendet, amelyben a módosítás a rendezett lista is. A változtatások megmaradnak, aszinkron módon történik, és fokozatosan lehet feldolgozni, és a kimeneti párhuzamos feldolgozás egy vagy több fogyasztó számára legyen elosztva. 
+Módosítási hírcsatorna támogatása az Azure Cosmos DB működését úgy, hogy történt egy Azure Cosmos DB-gyűjtemény. Majd megjeleníti a dokumentumok a sorrendben, amelyben a módosítás módosult a listán. A változtatások megmaradnak, aszinkron módon és Növekményesen a dolgozhatók, és a kimenet egy vagy több ügyfél párhuzamos feldolgozáshoz szét lehetnek osztva. 
 
-A módosítás három különböző módon hírcsatorna el tudja olvasni, ebben a cikkben leírtaknak megfelelően:
+A változáscsatorna három különböző módon olvashat ebben a cikkben leírt módon:
 
 *   [Az Azure Functions használatával](#azure-functions)
 *   [Az Azure Cosmos DB SDK használatával](#sql-sdk)
-*   [Az Azure Cosmos DB módosítás használatával hírcsatorna processzor könyvtár](#change-feed-processor)
+*   [Használatával az Azure Cosmos DB-módosítási hírcsatorna feldolgozói kódtára](#change-feed-processor)
 
-A módosítás hírcsatorna minden partíció kulcs tartományon belül a dokumentumgyűjteményt érhető el, és így képes legyen elosztva párhuzamos feldolgozás egy vagy több fogyasztó számára a következő ábrán látható módon.
+A módosítási hírcsatorna egyes partíciókulcs-tartományok belül a dokumentum egy dokumentumgyűjteményben érhető el, és ily módon – szét lehetnek osztva egy vagy több ügyfél párhuzamos feldolgozásra az alábbi képen látható módon.
 
-![Elosztott feldolgozásához hírcsatorna Azure Cosmos DB módosítása](./media/change-feed/changefeedvisual.png)
+![Elosztott feldolgozásához Azure Cosmos DB – csatorna módosítása](./media/change-feed/changefeedvisual.png)
 
 További részletek:
-* Az összes fiók alapértelmezés szerint engedélyezve van a módosítás adatcsatornát.
-* Használhatja a [kiosztott átviteli sebesség](request-units.md) a írási régióban vagy bármely [olvassa el a régió](distribute-data-globally.md) olvasni a hírcsatorna váltás, ugyanúgy, mint bármely más Azure Cosmos DB műveletet.
-* A módosítás hírcsatorna beszúrások és a frissítési műveleteket a gyűjteményben lévő dokumentumokon végzett tartalmazza. Rögzítheti a törlések úgy, hogy a "soft-törlés" jelzőt belül a dokumentumok törlése helyett. Azt is megteheti, beállíthat egy véges lejárati időt a dokumentumok keresztül a [TTL funkció](time-to-live.md), például 24 óra és használja a törlések rögzítéséhez tulajdonság értékeként. A megoldás dolgozni a változásokat a TTL lejárata időszaknál rövidebb időintervallumon belül van.
-* A dokumentum minden módosításakor pontosan egyszer jelenik meg a hírcsatorna módosítás, és ügyfelek kezelése az ellenőrzőpontok használata logikát. A módosítás adatcsatorna processzor kódtár biztosít automatikus ellenőrzőpont-készítés és a "legalább egyszeri" szemantikáját.
-* Egy adott dokumentum csak a legutóbbi változás a módosítási napló tartalmazza. Előfordulhat, hogy köztes módosítások nem érhető el.
-* A módosítás hírcsatorna szolgáló belül minden partíciókulcs-értékkel módosítást van rendezve. Nincs garantált rendelés partíciókulcs értékek között.
-* Módosítások is szinkronizálhatja a bármely-időpontban, ez azt jelenti, hogy nincs nem rögzített adatmegőrzési időtartam, amelynek módosítások érhetők el.
-* Változások a partíció kulcstartományokkal adattömböket írnak érhetők el. Ez a funkció lehetővé teszi, hogy a módosítások több fogyasztók/kiszolgáló párhuzamos feldolgozásra nagy gyűjteményekre.
-* Alkalmazások kérhet több módosítás hírcsatornákra egyidejűleg az ugyanahhoz a gyűjteményekhez.
-* ChangeFeedOptions.StartTime is használható, például egy kezdeti kiindulási pont, így, megadott idő megfelelő folytatási kereséséhez. A ContinuationToken, ha meg van adva, a WINS-be a StartTime és StartFromBeginning értékek. A pontosság ChangeFeedOptions.StartTime ~ 5 másodperc. 
+* Az összes fiók alapértelmezés szerint engedélyezve van a módosítási hírcsatorna.
+* Használhatja a [kiosztott átviteli sebesség](request-units.md) az írási régiót, vagy bármely [olvasási régió](distribute-data-globally.md) olvasni a változáscsatorna, ugyanúgy, mint az Azure Cosmos DB fel más műveletekhez.
+* A módosítási hírcsatorna beszúrások és a gyűjteményben lévő dokumentumokon végrehajtott frissítési műveletek tartalmazza. Törlések rögzítheti is egy "helyreállítható törlés" jelző törlése helyett a dokumentumokon belül. Másik lehetőségként beállíthatja egy véges lejárati idejét via a dokumentumok a [TTL képesség](time-to-live.md), például 24 óra és a törlések rögzítéséhez tulajdonság értékét használja. Ezzel a megoldással hogy a TTL lejárata időszaknál rövidebb időközt belül feldolgozza a módosításokat.
+* Minden egyes dokumentum módosítása pontosan egyszer jelenik meg a változáscsatorna, és az ügyfelek kezelése az ellenőrzőpontok használata logic. A változáscsatorna feldolgozói könyvtárával biztosít automatikus ellenőrzőpont-készítés és a "legalább egyszer" szemantika.
+* Csak a legutóbbi módosítása egy adott dokumentum a módosítási napló tartalmazza. Közbenső változások nem érhető el.
+* A módosítási hírcsatorna szolgáló módosításának belül minden egyes partíciókulcs-értékkel van rendezve. Nincs garantált rendelés partíciókulcs értékek között.
+* Módosítások származó bármely-időponthoz szinkronizálhatók, vagyis nem nem rögzített Adatmegőrzés időtartama, amelyekhez le változások.
+* Módosítások partíció kulcstartományokkal blokkonként érhetők el. Ez a funkció lehetővé teszi, hogy a változásokat a nagy gyűjteményeknek több fogyasztók/kiszolgáló párhuzamos feldolgozásra.
+* Alkalmazások egyidejűleg ugyanabban a gyűjteményben található több módosítás adatcsatorna kérhetnek.
+* ChangeFeedOptions.StartTime is használható, adja meg például egy kezdeti kiindulási pont, és keresse meg a folytatási kód megadott idő értékeknek megfelelő. A continuationtoken argumentumot használja, ha meg van adva, a WINS-keresztül a StartTime és StartFromBeginning értékeket. A pontosság ChangeFeedOptions.StartTime ~ 5 másodperc. 
 
-## <a name="use-cases-and-scenarios"></a>Használati esetek és forgatókönyvek
+## <a name="use-cases-and-scenarios"></a>Használati esetekre és forgatókönyvekre
 
-A módosítás hírcsatorna lehetővé teszi nagy mennyiségű írási műveletek nagy adatkészletek hatékony feldolgozás, illetve alternatívája azonosítására, hogy mi változott egy teljes adatkészlet lekérdezése. 
+A változáscsatorna lehetővé teszi, hogy az írási műveletek nagy mennyiségű nagy adatkészletek hatékony feldolgozás, és alternatívája lekérdezése egy teljes adatkészleten, mi változott a azonosításához. 
 
-Például a hírcsatorna módosítását, feladatokat végezheti el a következő hatékonyan:
+Például a csatorna módosítása, a következő feladatokat végezheti hatékonyan:
 
-* Frissítse a gyorsítótárat, search-index vagy adatraktár Azure Cosmos DB-ben tárolt adatokkal.
-* Alkalmazásszintű adatok rétegezési és archiválási alkalmazására, ez azt jelenti, hogy "gyakran használt adatokkal" tárolása Azure Cosmos DB és elavulnak "ritkán használt adatok", a [Azure Blob Storage](../storage/common/storage-introduction.md) vagy [Azure Data Lake Store](../data-lake-store/data-lake-store-overview.md).
-* Egy másik particionálási sémát rendelkező Azure Cosmos DB fiókot nulla várakozási-ideje áttelepítés végrehajtható.
-* Alkalmazzon [lambda folyamatok Azure](https://blogs.technet.microsoft.com/msuspartner/2016/01/27/azure-partner-community-big-data-advanced-analytics-and-lambda-architecture/) rendelkező Azure Cosmos DB. Azure Cosmos-adatbázis, amely kezeli az adatfeldolgozást és a lekérdezés, és az alacsony TCO lambda architektúrák megvalósítása adatbázis méretezhető megoldást kínál. 
-* Kapni az eszközök, érzékelőket, infrastruktúra és az alkalmazások esemény adatainak tárolásához és feldolgozásához ezeket az eseményeket valós idejű [Azure Stream Analytics](../stream-analytics/stream-analytics-documentdb-output.md), [alatt futó Apache Storm](../hdinsight/storm/apache-storm-overview.md), vagy [Apache Spark](../hdinsight/spark/apache-spark-overview.md). 
+* Frissítse az Azure Cosmos DB-ben tárolt adatok egy cache, search-index vagy data warehouse-bA.
+* Alkalmazás-szintű adatok rétegezési és archiválási megvalósítását, azt jelenti, "gyors elérésű adatok" tárolására az Azure Cosmos DB és "ritkán használt adatok" elavulnak, [Azure Blob Storage](../storage/common/storage-introduction.md) vagy [Azure Data Lake Store](../data-lake-store/data-lake-store-overview.md).
+* Nulla, egy másik Azure Cosmos DB-fiókot egy másik particionálási séma-ideje migrálások végrehajtása.
+* Alkalmazzon [lambda folyamatokat az Azure-ban](https://blogs.technet.microsoft.com/msuspartner/2016/01/27/azure-partner-community-big-data-advanced-analytics-and-lambda-architecture/) az Azure Cosmos DB használatával. Az Azure Cosmos DB, amelyek adatfeldolgozást és a lekérdezés, és alacsony teljes bekerülési Költséget a lambda architektúra megvalósítása méretezhető adatbázis megoldást kínál. 
+* Fogadása és tárolja az eseményadatokat az eszközök, érzékelők, az infrastruktúra és alkalmazások, és ezek az események valós időben dolgozhat fel [Azure Stream Analytics](../stream-analytics/stream-analytics-documentdb-output.md), [Apache Storm](../hdinsight/storm/apache-storm-overview.md), vagy [Apache A Spark](../hdinsight/spark/apache-spark-overview.md). 
 
-A következő kép bemutatja, hogyan lambda folyamatok, amelyek mind a betöltési és lekérdezést Azure Cosmos DB használatával használható módosítani adatcsatorna támogatása: 
+A következő kép bemutatja, hogyan fogadása és használhatja az Azure Cosmos DB lekérdezési lambda folyamatok módosítani a hírcsatorna támogatása: 
 
-![Az Azure Cosmos DB-alapú lambda csővezeték adatfeldolgozást és lekérdezés](./media/change-feed/lambda.png)
+![Az Azure Cosmos DB-alapú lambda folyamat fenntartásával és a lekérdezések](./media/change-feed/lambda.png)
 
-Emellett belül a [kiszolgáló nélküli](http://azure.com/serverless) webes és mobilalkalmazások, például a felhasználói profil, beállítások, vagy helyre bizonyos műveletek, például a leküldéses értesítések küldése eszközekeit használatávalvalóváltozásokatnyomonkövethetiazeseményeketis[Az azure Functions](#azure-functions). Azure Cosmos DB játék összeállításához használata, is, például használata módosítása adatcsatorna megvalósításához a valós idejű ranglisták befejezett játékok származó eredmények alapján.
+Ezenkívül belül a [kiszolgáló nélküli](http://azure.com/serverless) webes és mobil alkalmazások, például a felhasználói profil, beállítások vagy helyre bizonyos műveleteket, például a leküldéses értesítések küldése használatávaltörténőindításáhozanyomonkövethetiazeseményeketis[Az azure Functions](#azure-functions). Készítsen játékot használata Azure Cosmos DB, akkor is, például használata módosításcsatornáját befejezett játékok a pontszámok alapján a valós idejű ranglisták megvalósításához.
 
 <a id="azure-functions"></a>
 ## <a name="using-azure-functions"></a>Az Azure Functions használatával 
 
-Az Azure Functions használata, a legegyszerűbb egy Azure Cosmos DB módosítás adatcsatornához való kapcsolódáshoz módja egy Azure Cosmos DB eseményindító hozzáadása az Azure Functions alkalmazáshoz. Az Azure Functions alkalmazást egy Azure Cosmos DB eseményindítót hoz létre, amikor csatlakozni az Azure Cosmos DB gyűjtemény választja, és a funkció akkor váltódik ki, amikor a gyűjteménybe módosításakor. 
+Azure Functions használata, a legegyszerűbb szeretne csatlakozni egy Azure Cosmos DB-módosítási hírcsatorna egy Azure Cosmos DB-eseményindító hozzáadása az Azure Functions-alkalmazás. Ha az Azure Functions alkalmazásokban hoz létre egy Azure Cosmos DB-eseményindítóval, választja, az Azure Cosmos DB-gyűjtemények való csatlakozáshoz, és a függvény akkor aktiválódik, amikor a gyűjteménybe módosításakor. 
 
-Eseményindítók hozhatók létre az Azure Functions portálon az Azure Cosmos DB portálon vagy programozottan. További információkért lásd: [Azure Cosmos DB: kiszolgáló nélküli adatbázis számítási Azure Functions használatával](serverless-computing-database.md).
+Eseményindítók hozható létre az Azure Functions portálon az Azure Cosmos DB Portalon vagy programozott módon. További információkért lásd: [Azure Cosmos DB: az Azure Functions szolgáltatással kiszolgáló nélküli adatbázis-használat](serverless-computing-database.md).
 
 <a id="sql-sdk"></a>
 ## <a name="using-the-sdk"></a>Az SDK használata
 
-A [SQL SDK](sql-api-sdk-dotnet.md) Azure Cosmos DB nyújtott olvassa el és kezelheti a hírcsatorna módosítása a teljesítményt. De a kiváló power származik sok feladatkörök, túl. Ha azt szeretné, ellenőrzési pontjainak felügyelete, a dokumentum sorszámok kezelésére és partíciókulcsok részletes szabályozhatják, majd a SDK használatával lehet a megfelelő módszert.
+A [SQL SDK](sql-api-sdk-dotnet.md) az Azure Cosmos DB lehetővé teszi az összes írását és felügyeletét egy csatorna módosítása. De hatalommal tartalmaz felelősségekről, rengeteg túl. Ha azt szeretné, ellenőrzőpontok kezelése, dokumentum sorozatszámok foglalkozik és szabályozható partíciókulcsok rendelkezik, majd az SDK-val lehet a megfelelő módszert.
 
-Ez a szakasz végigvezeti az SQL-SDK használatával történő együttműködésre a hírcsatorna módosítása.
+Ez a szakasz végigvezeti a változáscsatorna használata az SQL SDK használatával.
 
-1. Indítsa el a következő erőforrások olvasásakor az appconfig. A végpont és a hitelesítési kulcs lekérése a találhatók [frissítse a kapcsolati karakterlánc](create-sql-api-dotnet.md#update-your-connection-string).
+1. A következő források az appconfig elolvasásával kezdje. A végpont és a hitelesítési kulcs lekérésével útmutatást [a kapcsolati karakterlánc frissítése](create-sql-api-dotnet.md#update-your-connection-string).
 
     ``` csharp
     DocumentClient client;
@@ -106,7 +106,7 @@ Ez a szakasz végigvezeti az SQL-SDK használatával történő együttműködé
     string authorizationKey = ConfigurationManager.AppSettings["authKey"];
     ```
 
-2. Az ügyfél létrehozása az alábbiak szerint:
+2. Az ügyfél a következőképpen hozhat létre:
 
     ```csharp
     using (client = new DocumentClient(new Uri(endpointUrl), authorizationKey,
@@ -115,7 +115,7 @@ Ez a szakasz végigvezeti az SQL-SDK használatával történő együttműködé
     }
     ```
 
-3. A partíció kulcstartományokkal beolvasása:
+3. A partíció kulcstartományokkal lekérése:
 
     ```csharp
     FeedResponse pkRangesResponse = await client.ReadPartitionKeyRangeFeedAsync(
@@ -127,7 +127,7 @@ Ez a szakasz végigvezeti az SQL-SDK használatával történő együttműködé
     pkRangesResponseContinuation = pkRangesResponse.ResponseContinuation;
     ```
 
-4. Hívás ExecuteNextAsync minden partíciós kulcs címtartomány:
+4. Minden egyes partíciókulcs-tartományok ExecuteNextAsync igényelnek:
 
     ```csharp
     foreach (PartitionKeyRange pkRange in partitionKeyRanges){
@@ -158,75 +158,75 @@ Ez a szakasz végigvezeti az SQL-SDK használatával történő együttműködé
     ```
 
 > [!NOTE]
-> Ahelyett, hogy `ChangeFeedOptions.PartitionKeyRangeId`, használhat `ChangeFeedOptions.PartitionKey` adható meg a egypartíciós kulcs az adatcsatorna-változás beszerzéséhez. Például: `PartitionKey = new PartitionKey("D8CFA2FD-486A-4F3E-8EA6-F3AA94E5BD44")`.
+> Helyett `ChangeFeedOptions.PartitionKeyRangeId`, használhat `ChangeFeedOptions.PartitionKey` , adja meg, amelyik egyetlen partíciókulcsot, egy csatorna módosítása betöltéséhez. Például: `PartitionKey = new PartitionKey("D8CFA2FD-486A-4F3E-8EA6-F3AA94E5BD44")`.
 > 
 >
 
-Ha több olvasók, használhatja **ChangeFeedOptions** különböző szálakon vagy a különböző ügyfelek olvasási terhelés elosztása.
+Ha több olvasók, használhat **ChangeFeedOptions** a olvasási terheléselosztásban, különböző szálakon vagy különböző ügyfelek részére.
 
-Ennyi az egész, ezek néhány sornyi kódot el lehet indítani a módosítás hírcsatorna olvasása. A teljes kód a jelen cikkben használt beszerezheti a [GitHub-tárház](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/code-samples/ChangeFeed).
+És ennyi az egész, ezek néhány sornyi kóddal elkezdheti a módosítási hírcsatorna olvasása. Ebben a cikkben használt teljes kódot kap a [GitHub-adattárat](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/code-samples/ChangeFeed).
 
-A fenti 4. lépésben a kódban a **ResponseContinuation** az utolsó sor a legutóbbi logikai sorszáma (LSN) rendelkezik a dokumentum, amely új dokumentumok a sorszám után olvassa el a következő indításakor fogja használni. Használatával a **StartTime** , a **ChangeFeedOption** lekérni a dokumentumok a net szélességűre állítható. Tehát, ha a **ResponseContinuation** null értékű, azonban a **StartTime** vissza időben kerül majd óta megváltoztak a valamennyi dokumentumot elérhetővé válik a **StartTime**. De ha a **ResponseContinuation** értékkel rendelkezik, akkor a rendszer segítséget nyújtanak a dokumentumokat, hogy Naplósorszám óta.
+A fenti 4. lépésben a kódban a **ResponseContinuation** az utolsó sort az utolsó logikai sorszáma (LSN) rendelkezik a dokumentum, melyiket fogja használni a következő alkalommal, amikor új dokumentumok elolvasása után ez a sorszám. Használatával a **StartTime** , a **ChangeFeedOption** is szélesíti a net lekérni a dokumentumokat. Tehát ha a **ResponseContinuation** érték null, azonban a **StartTime** visszatér az idő óta az összes dokumentumokat kap, majd a **StartTime**. De ha a **ResponseContinuation** értékkel rendelkezik, akkor a rendszer beolvassa a dokumentumokat, Naplósorszám óta.
 
-Igen a checkpoint tömb csak megakadályozza a minden partíció esetében Naplósorszám. De ha nem szeretné a partíciók foglalkozik, ellenőrzőpontokat, Naplósorszám, kezdési idő stb. a egyszerűbb lehetőséget, hogy a processzor könyvtár hírcsatorna módosítás.
+Az ellenőrzőpont-tömb így csak megakadályozza a a Naplósorszám minden partíció esetében. De a partíciók kezelésére nem szeretné, ha ellenőrzőpontokat, Naplósorszám, kezdési idő, stb. a egyszerűbb lehetőség a változáscsatorna feldolgozói kódtára használandó.
 
 <a id="change-feed-processor"></a>
-## <a name="using-the-change-feed-processor-library"></a>A módosítás használatával hírcsatorna processzor könyvtár 
+## <a name="using-the-change-feed-processor-library"></a>Használatával a módosítási hírcsatorna feldolgozói kódtára 
 
-A [Azure Cosmos DB módosítás hírcsatorna processzor könyvtár](https://docs.microsoft.com/azure/cosmos-db/sql-api-sdk-dotnet-changefeed) esemény feldolgozása könnyen szét több felhasználóból nyújt segítséget. Ezt a szalagtárat olvasási módosítások partíciók és párhuzamosan működik több szál egyszerűbbé teszi.
+A [Azure Cosmos DB-módosítási hírcsatorna feldolgozói kódtára](https://docs.microsoft.com/azure/cosmos-db/sql-api-sdk-dotnet-changefeed) segítségével könnyedén feloszthatja az események feldolgozása több ügyfél között. Ebben a könyvtárban olvasási módosítások egyszerűbbé teszi a partíciók és több szál párhuzamos használata.
 
-Változáskezelési adatcsatorna processzor könyvtár fő előnye, hogy ne kelljen minden partíció kezelése és folytatási kód, és ne kelljen manuálisan kérdezze le az egyes gyűjtemények.
+Változáscsatorna feldolgozói könyvtárával fő előnye, hogy nem kell kezelni az egyes partíciók és a folytatási tokent, és nem rendelkezik az egyes gyűjtemények manuális lekérdezésére.
 
-Az adatcsatorna processzor változáskezelési könyvtár olvasási módosítások partíciók és párhuzamosan működik több szál egyszerűbbé teszi.  A bérleti mechanizmussal partíciók között olvasási módosítások automatikusan kezeli. Mint ha két-ügyfelek a hírcsatorna processzor szalagtár módosítása az alábbi képen látható, akkor a munkát egymás között osztják. Növelje az ügyfelek továbbra is, mivel azok tartsa felosztásával a munkát egymás között.
+A változáscsatorna feldolgozói könyvtárával olvasási módosítások egyszerűbbé teszi a partíciók és több szál párhuzamos használata.  A bérlet mechanizmussal partíciójára olvasási módosítások automatikusan kezeli. Ha két a változáscsatorna feldolgozói kódtára használó ügyfelek az alábbi képen, láthatjuk, ahogy azok a munkát egymás között osztja fel. Növelheti az ügyfelek továbbra is, mivel azok tartsa osztani a munkát egymás között.
 
-![Elosztott feldolgozásához hírcsatorna Azure Cosmos DB módosítása](./media/change-feed/change-feed-output.png)
+![Elosztott feldolgozásához Azure Cosmos DB – csatorna módosítása](./media/change-feed/change-feed-output.png)
 
-A bal oldali ügyfél első indult el, és indulása összes a partíciót, majd a második ügyfél indította el, majd az első segítségével nyissa meg néhány második ügyfél a címbérlet figyelése. Ez látható a töltött módja terjesztése a munkahelyi különböző gépek és az ügyfelek között.
+A bal oldali ügyfél első lett elindítva, és indulása, figyelés, az összes partíciót, majd a második ügyfél lett elindítva, majd az első lehetővé teszik a bérletek második ügyfélnek némelyikének nyissa meg. Amint láthatja, ez a nagyszerű módja a munkát egymás között különböző gépek és az ügyfelek között.
 
-Vegye figyelembe, hogy ha két kiszolgáló nélküli Azure funtions ugyanaz a gyűjtemény figyelése és az azonos bérleti használatával, akkor a két funkciók kaphat attól függően, hogy a processzor könyvtár úgy dönt, hogy észlelést a partíciók különböző dokumentumok.
+Vegye figyelembe, hogy ha két kiszolgáló nélküli Azure funtions figyelési ugyanabba a gyűjteménybe, és az azonos bérleti használatával, akkor a két függvényt kaphat a különböző dokumentumokon, attól függően, hogy a feldolgozói kódtára úgy dönt, hogy észlelést a partíciók.
 
 <a id="understand-cf"></a>
-### <a name="understanding-the-change-feed-processor-library"></a>A módosítás ismertetése hírcsatorna processzor könyvtár
+### <a name="understanding-the-change-feed-processor-library"></a>Feldolgozói kódtára ismertetése a módosítási hírcsatorna
 
-Az adatcsatorna processzor változáskezelési könyvtár végrehajtási négy fő összetevőből: a figyelt gyűjteményhez, a címbérlet gyűjteményt, a processzor gazdagép és a fogyasztók. 
+A változáscsatorna feldolgozói könyvtárával végrehajtási négy fő összetevőből áll: a figyelt gyűjteményhez, a bérletek gyűjteményének, a processzor gazdagép és a fogyasztók számára. 
 
 > [!WARNING]
 > A gyűjtemények létrehozása a díjszabásra is hatással van, mivel átviteli sebességet tart fenn az alkalmazás számára az Azure Cosmos DB-vel folytatott kommunikációhoz. További részletekért látogasson el az [árképzést ismertető oldalra](https://azure.microsoft.com/pricing/details/cosmos-db/).
 > 
 > 
 
-**Figyelt gyűjtemény:** a figyelt gyűjteményhez az adatok, a módosítás hírcsatorna képzésére szolgáló. Bármely beszúrások és a figyelt gyűjtemény módosításait a módosítási hírcsatorna a gyűjtemény is megjelennek. 
+**Figyelt gyűjtemény:** a figyelt gyűjteményhez az adatok, amelyről a módosítási hírcsatorna jön létre. Bármely beszúrások és, a figyelt gyűjtemény módosításait a módosítási hírcsatorna a gyűjtemény is megjelennek. 
 
-**Címbérlet gyűjtemény:** feldolgozása a módosítás több Worker közötti adatcsatorna bérleti gyűjtemény koordinátáit. Egy külön gyűjteményt a bérletek egy bérletet eredményez. partíciónként tárolására szolgál. Célszerű a címbérlet gyűjtemény tárolását a írási terület közelebb a hírcsatorna processzor módosítás futtató egy másik fiókot. A bérleti objektum tartalmazza a következő attribútumokat: 
-* Tulajdonos: Adja meg a címbérlet birtokló állomás
-* Folytatási: Meghatározza a módosítás egy adott partíció-hírcsatorna helyét (folytatási kód)
-* Időbélyeg: Legutóbbi bérleti frissült; az időbélyeg segítségével ellenőrizze, hogy a bérlet lejárt tekinthető 
+**A bérletek gyűjteményének:** a bérlet gyűjtemény koordináták feldolgozása a változáscsatorna feldolgozó között. Egy külön gyűjteményt a partíciónként egy bérlet a bérletek tárolásához használni kívánt szolgál. Célszerű tárolni a bérletek gyűjteményének az írási régió közelebb hol futnak a változáscsatorna processzor egy másik fiókot. A bérlet objektum tartalmazza a következő attribútumokat: 
+* Tulajdonos: Itt adhatja meg a gazdagépet, amely a bérlet tulajdonosa
+* Folytatási: Adja meg a pozíció (folytatási kód) egy adott partíció a változáscsatorna
+* Időbélyeg: Legutóbbi bérleti frissítése megtörtént; az időbélyeg segítségével ellenőrizze, hogy a bérlet lejárt számít 
 
-**Processzor-állomás:** minden állomás határozza meg, hány particionálja alapján más gazdagépek hány példányban vannak-e aktív bérletek folyamathoz. 
-1.  A gazdagép indításakor minden gazdagép elosztásához címbérleteket szerez be. Egy gazdagép rendszeres időközönként megújítja címbérleteket,, címbérleteket aktív marad. 
-2.  A gazdagép ellenőrzőpontokat az egyes bérletekhez utolsó folytatási olvasni. Párhuzamossági biztonsága érdekében a gazdagép minden egyes bérleti frissítés ETag ellenőrzi. Más ellenőrzőpont stratégiák használata is támogatott.  
-3.  Leállásakor egy állomás kiadott összes címbérlet, de a folytatási információkért tartja, így újból engedélyezheti az olvasást a tárolt ellenőrzőponttól később. 
+**Processor Host:** minden gazdagépen határozza meg, hány particionálja folyamat gazdagépek hány példánya van aktív bérleteket alapján. 
+1.  A gazdagép indításakor az összes gazdagép a terhelés elosztása érdekében a bérletek szerez be. Egy gazdagép rendszeres időközönként megújítja bérleteket, a bérletek aktív marad, így. 
+2.  Egy gazdagép ellenőrzőpontokat olvassa el a legutóbbi folytatási token az egyes bérletét. A párhuzamosság biztonság érdekében, egy gazdagépet ellenőrzi az ETag bérleti frissítése. Ellenőrzőpont biztosító egyéb stratégiák is támogatottak.  
+3.  Leállásakor egy gazdagép összes címbérlet-kiadások, de megőrzi a folytatási adatokat, így, folytathatja a tárolt ellenőrzőpont később olvasásakor. 
 
-Jelenleg a gazdagépek száma nem lehet nagyobb, mint a partíciók (címbérleteket).
+Jelenleg a gazdagépek száma nem lehet nagyobb, mint a partíciók (bérletek).
 
-**A fogyasztók:** fogyasztók vagy dolgozó a szál által az egyes állomások által kezdeményezett hírcsatorna módosítása feldolgozási műveleteket. Mindegyik feldolgozó gazdagépnek több felhasználóból lehet. Mindegyik felhasználó olvassa be, a módosítás hírcsatorna a partícióból hozzá van rendelve, és változások a gazdagép értesítést küld, és címbérleteket lejárt.
+**A fogyasztók:** fogyasztók számára, és a feldolgozókhoz, a változáscsatorna feldolgozást egyes állomások által indított hozzászóláslánc. Minden egyes processzor gazdagép több fogyasztó is rendelkezhet. Összes fogyasztóvédelmi olvassa be, a módosítás hírcsatorna oszlopát a partícióból hozzá van rendelve, és értesíti a változások gazdagépe és bérleteket lejárt.
 
-További tudni, hogyan következő négy elemeinek módosítása adatcsatorna processzor munkahelyi együtt, vizsgáljuk meg az alábbi ábra egy példát. A figyelt gyűjtemény tárolja a dokumentumokat, és a "város" használja, mint a partíciós kulcs. Látható, hogy a kék partíció és így tovább tartalmaz-e "A-E" a "város" mezőt a dokumentumokat. Nincsenek két olvasásakor a négy partíció párhuzamosan két fogyasztók rendelkező állomás. A nyilak a fogyasztók olvasásakor a hírcsatorna változásával konkrét helyet. Az első partícióban a sötétebb kék olvasatlan módosítások jelöli, míg a ritka kék jelenti. a módosítás adatcsatorna már olvasási változásaival. A gazdagépek a bérleti gyűjtemény a "Folytatás" érték az aktuális olvasási pozíció az egyes felhasználók nyomon követéséhez tárolására használható. 
+Így jobban megismerheti az ezen négy módosítási hírcsatorna elemeinek processzor munkahelyi együtt, nézzük meg az alábbi ábrán egy példa. A figyelt gyűjteményhez tárolja a dokumentumokat, és a "city" használja partíciókulcsként. Láthatjuk, hogy a kék partíció "A-E" a "city" mezőt a dokumentumok tartalmazza, és így tovább. Nincsenek a négy partíció párhuzamosan olvasásakor két fogyasztóval rendelkező két gazdagép. A nyilak a fogyasztók a csatorna módosítása egy adott helyszínen olvasásakor. Az első partícióban a sötétebb kék olvasatlan módosítások jelöli, míg a világoskék jelöli a változáscsatorna már olvasási megváltozik a. A gazdagépek a bérletek gyűjteményének használni egy "folytatási" érték az aktuális olvasó pozíció minden felhasználóhoz nyomon követéséhez. 
 
-![Az Azure Cosmos DB módosítás használatával hírcsatorna processzor állomás](./media/change-feed/changefeedprocessornew.png)
+![Processor host használatával az Azure Cosmos DB-módosítási hírcsatorna](./media/change-feed/changefeedprocessornew.png)
 
-### <a name="working-with-the-change-feed-processor-library"></a>A módosítás hírcsatorna processzor könyvtár használata
+### <a name="working-with-the-change-feed-processor-library"></a>A változáscsatorna feldolgozói kódtára használata
 
-Mielőtt processzor NuGet-csomag módosítása telepítése hírcsatornát, először telepíteni: 
+Mielőtt telepítése a módosítási hírcsatorna processzor NuGet-csomagot, először telepítenie: 
 
 * Microsoft.Azure.DocumentDB, a legújabb verzióra.
 * Newtonsoft.Json, legújabb verzió
 
-Telepítse a [Microsoft.Azure.DocumentDB.ChangeFeedProcessor Nuget-csomag](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB.ChangeFeedProcessor/) adja hozzá hivatkozásként.
+Majd telepítse a [Microsoft.Azure.DocumentDB.ChangeFeedProcessor Nuget-csomag](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB.ChangeFeedProcessor/) és a egy hivatkozásként.
 
-A módosítás adatcsatorna processzor könyvtárban van, hogy végrehajtásához a következő:
+A változáscsatorna feldolgozói könyvtárával be kell megvalósítani a következő:
 
-1. Alkalmazzon egy **DocumentFeedObserver** objektum, amely **IChangeFeedObserver**.
+1. Alkalmazzon egy **DocumentFeedObserver** objektum, amely megvalósítja **IChangeFeedObserver**.
     ```csharp
     using System;
     using System.Collections.Generic;
@@ -299,7 +299,7 @@ A módosítás adatcsatorna processzor könyvtárban van, hogy végrehajtásáho
     }
     ```
 
-2. Alkalmazzon egy **DocumentFeedObserverFactory**, amely megvalósítja a **IChangeFeedObserverFactory**.
+2. Alkalmazzon egy **DocumentFeedObserverFactory**, mely valósít meg egy **IChangeFeedObserverFactory**.
     ```csharp
      using Microsoft.Azure.Documents.ChangeFeedProcessor.FeedProcessing;
 
@@ -328,14 +328,14 @@ A módosítás adatcsatorna processzor könyvtárban van, hogy végrehajtásáho
     }
     ```
 
-3. Adja meg *CancellationTokenSource* és *ChangeFeedProcessorBuilder*
+3. Definiálása *CancellationTokenSource* és *ChangeFeedProcessorBuilder*
 
     ```csharp
     private readonly CancellationTokenSource cancellationTokenSource = new CancellationTokenSource();
     private readonly ChangeFeedProcessorBuilder builder = new ChangeFeedProcessorBuilder();
     ```
 
-5. build a **ChangeFeedProcessorBuilder** a releváns objektumok meghatározása után 
+5. hozhat létre a **ChangeFeedProcessorBuilder** a kívánt objektumok meghatározása után 
 
     ```csharp
             string hostName = Guid.NewGuid().ToString();
@@ -383,89 +383,89 @@ A módosítás adatcsatorna processzor könyvtárban van, hogy végrehajtásáho
             await result.StartAsync();
             Console.Read();
             await result.StopAsync();    
-            ```
+    ```
 
-That’s it. After these few steps documents will start showing up into the **DocumentFeedObserver.ProcessChangesAsync** method.
+Ennyi az egész. Ezeket a lépéseket néhány dokumentumok jelenik meg elindul a **DocumentFeedObserver.ProcessChangesAsync** metódust.
 
-Above code is for illustration purpose to show different kind of objects and their interaction. You have to define proper variables and initiate them with correct values. You can get the complete code used in this article from the [GitHub repo](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/code-samples/ChangeFeedProcessorV2).
+Kód felett van ábra célra különböző típusú objektumok és azok interakció megjelenítéséhez. Megfelelő változókat határozhat meg, és indítsa el őket a megfelelő értékekkel kell. Ebben a cikkben használt teljes kódot kap a [GitHub-adattárat](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/code-samples/ChangeFeedProcessorV2).
 
 > [!NOTE]
-> You should never have a master key in your code or in config file as shown in above code. Please see [how to use Key-Vault to retrive the keys](https://sarosh.wordpress.com/2017/11/23/cosmos-db-and-key-vault/).
+> Soha nem kell egy főkulcsot a kódban, vagy a konfigurációs fájlban a fenti kód látható módon. Lásd: [a kulcsok használata a Key-Vault beolvasni](https://sarosh.wordpress.com/2017/11/23/cosmos-db-and-key-vault/).
 
 
-## FAQ
+## <a name="faq"></a>GYIK
 
-### What are the different ways you can read Change Feed? and when to use each method?
+### <a name="what-are-the-different-ways-you-can-read-change-feed-and-when-to-use-each-method"></a>Mik azok a különböző módokon tudja olvasni a módosítási hírcsatorna? és mikor érdemes használni az egyes módszerek?
 
-There are three options for you to read change feed:
+Módosítási hírcsatorna olvasásra három lehetőség áll rendelkezésre:
 
-* **[Using Azure Cosmos DB SQL API .NET SDK](#sql-sdk)**
+* **[Az Azure Cosmos DB SQL API .NET SDK használatával](#sql-sdk)**
    
-   By using this method, you get low level of control on change feed. You can manage the checkpoint, you can access a particular partition key etc. If you have multiple readers, you can use [ChangeFeedOptions](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.changefeedoptions?view=azure-dotnet) to distribute read load to different threads or different clients. .
+   Ezzel a módszerrel kap alacsony mértékű a módosítási hírcsatorna. Az ellenőrzőpont kezelheti, elérheti, hogy egy adott partíció kulcsok stb. Ha több olvasók, használhat [ChangeFeedOptions](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.changefeedoptions?view=azure-dotnet) a olvasási terheléselosztásban, különböző szálakon vagy különböző ügyfelek részére. .
 
-* **[Using the Azure Cosmos DB change feed processor library](#change-feed-processor)**
+* **[Használatával az Azure Cosmos DB-módosítási hírcsatorna feldolgozói kódtára](#change-feed-processor)**
 
-   If you want to outsource lot of complexity of change feed then you can use change feed processor library. This library hides lot of complexity, but still gives you complete control on change feed. This library follows an [observer pattern](https://en.wikipedia.org/wiki/Observer_pattern), your processing function is called by the SDK. 
+   Ha azt szeretné, a módosítási hírcsatorna összetettsége rengeteg kiszervezik a változáscsatorna feldolgozói könyvtárával használhatja. Ez a kódtár elrejti összetettséget rengeteg, de továbbra is lehetővé teszi a teljes felügyeletet módosításcsatornáját. Ez a kódtár egy [megfigyelő minta](https://en.wikipedia.org/wiki/Observer_pattern), az SDK-t hívja meg a feldolgozó függvényhez. 
 
-   If you have a high throughput change feed, you can instantiate multiple clients to read the change feed. Because you are using “change feed processor library”, it will automatically divide the load among different clients. You do not have to do anything. All the complexity is handled by SDK. However, if you want to have your own load balancer, then you can implement IParitionLoadBalancingStrategy for custom partition strategy. Implement IPartitionProcessor – for custom processing changes on a partition. However, with SDK, you can process a partition range but if you want to process a particular partition key then you have to use SDK for SQL API.
+   Ha egy nagy átviteli sebességű változáscsatorna, olvassa el a módosítási hírcsatorna több ügyféllel példányosítható. Mivel "módosítása a változáscsatorna feldolgozói könyvtárával" használ, automatikusan felosztja a terhelést különböző ügyfelek között. Nem kell tennie semmit. Az összes összetettsége SDK kezeli. Azonban ha azt szeretné, hogy a saját terheléselosztóját, majd valósíthat meg IParitionLoadBalancingStrategy egyéni partíció stratégiához. Megvalósítása IPartitionProcessor – egyéni feldolgozási módosítások partíción. Az SDK-val, azonban egy partíciótartomány dolgozhatja fel, de ha szeretne feldolgozni egy adott partíciókulcs akkor rendelkezik az SQL API-hoz az SDK használatához.
 
-* **[Using Azure Functions](#azure-functions)** 
+* **[Az Azure Functions használatával](#azure-functions)** 
    
-   The last option Azure Function is the simplest option. We recommend using this option. When you create an Azure Cosmos DB trigger in an Azure Functions app, you select the Azure Cosmos DB collection to connect to and the function is triggered whenever a change to the collection is made. watch a [screen cast](https://www.youtube.com/watch?v=Mnq0O91i-0s&t=14s) of using Azure function and change feed
+   Az Azure-függvény utolsó dolog, a legegyszerűbb lehetőség. Ez a beállítás használatát javasoljuk. Ha az Azure Functions alkalmazásokban hoz létre egy Azure Cosmos DB-eseményindítóval, választja, az Azure Cosmos DB-gyűjtemények való csatlakozáshoz, és a függvény akkor aktiválódik, amikor a gyűjteménybe módosításakor. Tekintse meg a [képernyő cast](https://www.youtube.com/watch?v=Mnq0O91i-0s&t=14s) , az Azure-függvényt, és a módosítási hírcsatornáról
 
-   Triggers can be created in the Azure Functions portal, in the Azure Cosmos DB portal, or programmatically. Visual Studio and VS Code has great support to write Azure Function. You can write and debug the code on your desktop, and then deploy the function with one click. For more information, see [Azure Cosmos DB: Serverless database computing using Azure Functions](serverless-computing-database.md) article.
+   Eseményindítók hozható létre az Azure Functions portálon az Azure Cosmos DB Portalon vagy programozott módon. A Visual Studio és a VS Code Azure-függvény írása nagyszerű támogatással rendelkezik. Írási és a kódok hibakeresése az Ön asztalán, és telepíteni a függvény egyetlen kattintással. További információkért lásd: [Azure Cosmos DB: az Azure Functions szolgáltatással kiszolgáló nélküli adatbázis-használat](serverless-computing-database.md) cikk.
 
-### What is the sort order of documents in change feed?
+### <a name="what-is-the-sort-order-of-documents-in-change-feed"></a>Mi az a rendezési sorrend – csatorna módosítása a dokumentumok?
 
-Change feed documents comes in order of their modification time. This sort order is guaranteed only per partition.
+A változáscsatorna dokumentumok sorrendjét, a módosítás ideje érhető el. A rendezési sorrend garantáltan partíciónként csak.
 
-### For a multi-region account, what happens to the change feed when the write-region fails-over? Does the change feed also failover? Would the change feed still appear contiguous or would the fail-over cause change feed to reset?
+### <a name="for-a-multi-region-account-what-happens-to-the-change-feed-when-the-write-region-fails-over-does-the-change-feed-also-failover-would-the-change-feed-still-appear-contiguous-or-would-the-fail-over-cause-change-feed-to-reset"></a>Egy többrégiós fiókhoz mi történik, ha az írási régió nem sikerül feladatátvételi a változáscsatorna? Nem a módosítási hírcsatorna is feladatátvételi? A változáscsatorna továbbra is jelenjen meg összefüggő, vagy megváltozna a feladatátvétel ok új adatcsatorna?
 
-Yes, change feed will work across the manual failover operation and it will be contiguous.
+Igen, módosítási hírcsatorna a manuális feladatátvételt művelet között fog működni, és összefüggő lesz.
 
-### How long change feed persist the changed data if I set the TTL (Time to Live) property for the document to -1?
+### <a name="how-long-change-feed-persist-the-changed-data-if-i-set-the-ttl-time-to-live-property-for-the-document-to--1"></a>Módosítási hírcsatorna mennyi ideig megőrizni a módosított adatokat, ha megadom a dokumentum TTL (Time élettartama) tulajdonsága a-1?
 
-Change feed will persist forever. If data is not deleted, it will remain in change feed.
+Módosítási hírcsatorna a végtelen megmaradnak. Adatok nem törlődnek, ha a módosítási hírcsatorna megmarad.
 
-### How can I configure Azure functions to read from a particular region, as change feed is available in all the read regions by default?
+### <a name="how-can-i-configure-azure-functions-to-read-from-a-particular-region-as-change-feed-is-available-in-all-the-read-regions-by-default"></a>Hogyan konfigurálhatok régiót beolvasni az Azure functions, a olvasási régiók alapértelmezés szerint a módosítási hírcsatorna elérhető?
 
-Currently it’s not possible to configure Azure Functions to read from a particular region. There is a GitHub issue in the Azure Functions repo to set the preferred regions of any Azure Cosmos DB binding and trigger.
+Ez jelenleg nem konfigurálhatja az Azure Functions szolgáltatást egy adott régió olvasni. Állítsa be a preferált régiók bármilyen Azure Cosmos DB-kötés és az eseményindító az Azure Functions-adattárat a githubon szerepel.
 
-Azure Functions uses the default connection policy. You can configure connection mode in Azure Functions and by default, it reads from the write region, so it is best to co-locate Azure Functions on the same region.
+Az Azure Functions az alapértelmezett kapcsolat házirendet használja. Beállíthatja a kapcsolati módot az Azure Functions szolgáltatásban, és alapértelmezés szerint, olvas az írási régió, ezért érdemes közös elhelyezése az Azure Functions az ugyanabban a régióban.
 
-### What is the default size of batches in Azure Functions?
+### <a name="what-is-the-default-size-of-batches-in-azure-functions"></a>Mi az az alapértelmezett méret az Azure Functions kötegek?
 
-100 documents at every invocation of Azure Functions. However, this number is configurable within the function.json file. Here is complete [list of configuration options](../azure-functions/functions-run-local.md). If you are developing locally, update the application settings within the [local.settings.json](../azure-functions/functions-run-local.md) file.
+az Azure Functions minden hívás 100 dokumentumok. Azonban ez a szám nem konfigurálható a function.json fájlban. Itt van a teljes [konfigurációs listájának](../azure-functions/functions-run-local.md). Ha helyileg fejleszt, belüli alkalmazás-beállításainak frissítése a [local.settings.json](../azure-functions/functions-run-local.md) fájlt.
 
-### I am monitoring a collection and reading its change feed, however I see I am not getting all the inserted document, some documents are missing. What is going on here?
+### <a name="i-am-monitoring-a-collection-and-reading-its-change-feed-however-i-see-i-am-not-getting-all-the-inserted-document-some-documents-are-missing-what-is-going-on-here"></a>Általam figyelt gyűjtemény és olvasása a módosítási hírcsatorna, azonban láthatók nem érkeznek meg hozzám a beszúrt dokumentum, egyes dokumentumok hiányoznak. Mi történik Itt?
 
-Please make sure that there is no other function reading the same collection with the same lease collection. It happened to me, and later I realized the missing documents are processed by my other Azure functions, which is also using the same lease.
+Győződjön meg arról, hogy nincs-e más függvény. ugyanabban a gyűjteményben az ugyanazon a bérletek gyűjteményének beolvasása. Történt, a velem, és később vettem a hiányzó dokumentumok dolgozza fel saját más az Azure functions, amely is használ ugyanabban a bérlet.
 
-Therefore, if you are creating multiple Azure Functions to read the same change feed then they must use different lease collection or use the “leasePrefix” configuration to share the same collection. However, when you use change feed processor library you can start multiple instances of your function and SDK will divide the documents between different instances automatically for you.
+Ezért létrehozásakor olvassa el a több Azure Functions ugyanaz a módosítási hírcsatornáról akkor kell használni a különböző a bérletek gyűjteményének vagy a "leasePrefix" konfiguráció használata ugyanabban a gyűjteményben. Azonban a változáscsatorna feldolgozói könyvtárával használatakor a függvény több példányát is elindítható, és SDK felosztja a dokumentumok automatikusan az Ön számára különböző példányai között.
 
-### My document is updated every second, and I am not getting all the changes in Azure Functions listening to change feed.
+### <a name="my-document-is-updated-every-second-and-i-am-not-getting-all-the-changes-in-azure-functions-listening-to-change-feed"></a>A dokumentum másodpercenként frissül, és nem érkeznek meg hozzám a módosításokat az Azure Functions módosításcsatornáját figyeli.
 
-Azure Functions polls change feed for every 5 seconds, so any changes made between 5 seconds are lost. Azure Cosmos DB stores just one version for every 5 seconds so you will get the 5th change on the document. However, if you want to go below 5 second, and want to poll change Feed every second, You can configure the polling time “feedPollTime”, see [Azure Cosmos DB bindings](../azure-functions/functions-bindings-cosmosdb.md#trigger---configuration). It is defined in milliseconds with a default of 5000. Below 1 second is possible but not advisable, as you will start burning more CPU.
+Az Azure Functions szavazások változás hírcsatornáját 5 másodpercenként, 5 másodperc között végrehajtott módosítások elvesznek. Az Azure Cosmos DB tárolja csak egyetlen verziója 5 másodpercenként, 5. a módosítás megjelenik a dokumentum. Azonban ha azt szeretné, 5 másodperc alatt, és szeretné lekérdezni a változáscsatorna másodpercenként, akkor is konfigurálja a lekérdezési idő "feedPollTime", lásd: [Azure Cosmos DB-kötéseket](../azure-functions/functions-bindings-cosmosdb.md#trigger---configuration). Az alapértelmezett 5000-es érték ezredmásodpercben van definiálva. 1 másodperc alatt a lehetőség lehetséges, de nem javasolt, több Processzor írás indul.
 
-### I inserted a document in the Mongo API collection, but when I get the document in change feed, it shows a different id value. What is wrong here?
+### <a name="i-inserted-a-document-in-the-mongo-api-collection-but-when-i-get-the-document-in-change-feed-it-shows-a-different-id-value-what-is-wrong-here"></a>A Mongo-API-gyűjtemény beszúrt egy dokumentumot, de a dokumentum a módosítási hírcsatorna kapok, ha egy másik azonosító értéket mutatja. Miért nem megfelelő Itt?
 
-Your collection is Mongo API collection. Remember, change feed is read using the SQL client and serializes items into JSON format. Because of the JSON formatting, MongoDB clients will experience a mismatch between BSON formatted documents and the JSON formatted change feed. You are seeing is the representation of a BSON document in JSON. If you use binary attributes in a Mongo accounts, they are converted to JSON.
+A gyűjtemény olyan Mongo API gyűjteménye. Ne feledje, módosítási hírcsatorna olvasható az SQL-ügyfél használatával, és szerializálja elemek JSON formátumba. A JSON formázását, MongoDB ügyfelek tapasztalható miatt egyeznek a BSON, formázott dokumentumok és a JSON formátumú – csatorna módosítása. Jelennek meg a BSON dokumentum JSON-ábrázolása. A bináris attribútumok egy Mongo-fiókokat használ, ha azok konvertálja JSON.
 
-### Is there a way to control change feed for updates only and not inserts?
+### <a name="is-there-a-way-to-control-change-feed-for-updates-only-and-not-inserts"></a>Van mód a frissítések csak változáscsatorna szabályozására, és nem szúr be?
 
-Not today, but this functionality is on roadmap. Today, you can add a soft marker on the document for updates.
+Nincs még ma de ez a funkció a terveink között. Napjainkban a dokumentum a frissítések egy helyreállítható jelölő is hozzáadhat.
 
-### Is there a way to get deletes in change feed?
+### <a name="is-there-a-way-to-get-deletes-in-change-feed"></a>Van mód a törlések beolvasása a módosítási hírcsatorna?
 
-Currently change feed doesn’t log deletes. Change feed is continuously improving, and this functionality is on roadmap. Today, you can add a soft marker on the document for delete. Add an attribute on the document called “deleted” and set it to “true” and set a TTL on the document so that it can be automatically deleted.
+Jelenleg a módosítási hírcsatorna jelentkezzen nem törli. Módosítási hírcsatorna is folyamatosan javítja, és ez a funkció terveink között. Még ma a dokumentum a törlés helyreállítható jelölő is hozzáadhat. Attribútum hozzáadása a dokumentum "törölt" nevű és "true" értékűre, és állíthat be a dokumentum TTL így automatikusan törli.
 
-### Can I read change feed for historic documents(for example, documents that were added 5 years back) ?
+### <a name="can-i-read-change-feed-for-historic-documentsfor-example-documents-that-were-added-5-years-back-"></a>Olvashatja a változáscsatorna történelmi dokumentumok (például dokumentumok 5 éves vissza hozzáadott)?
 
-Yes, if the document is not deleted you can read the change feed as far as the origin of your collection.
+Igen, ha a dokumentum törlése nem érheti el, a módosítás adatcsatorna lehetőség a gyűjtemény forrása.
 
-### Can I read change feed using JavaScript?
+### <a name="can-i-read-change-feed-using-javascript"></a>Olvashatja a módosítási hírcsatorna JavaScript használatával?
 
-Yes, Node.js SDK initial support for change feed is recently added. It can be used as shown in the following example, please update documentdb module to current version before you run the code:
+Igen, a Node.js SDK kezdeti támogatás a módosítási hírcsatorna nemrégiben hozzáadott. Ahogyan az a következő példában adjon aktuális verzióra frissítés documentdb modult a kód futtatása előtt használható:
 
 ```js
 
@@ -502,54 +502,54 @@ query.executeNext((err, results, headers) =&gt; {
 
 ```
 
-### <a name="can-i-read-change-feed-using-java"></a>Elolvashatják a módosítás adatcsatorna Java használatával?
+### <a name="can-i-read-change-feed-using-java"></a>Olvashatja a módosítási hírcsatorna Java használatával?
 
-Java kódtár módosítás adatcsatorna elolvasására is elérhető [Github-tárházban](https://github.com/Azure/azure-documentdb-changefeedprocessor-java). Azonban Java kódtár jelenleg néhány verziók .NET kódtár mögött. Mindkét a szalagtárak hamarosan le lesz szinkronban.
+Olvassa el a módosítási hírcsatorna a Java-kódtár érhető el a [Github-adattár](https://github.com/Azure/azure-documentdb-changefeedprocessor-java). Azonban jelenleg Java-kódtár, néhány verzió .NET-kódtár mögött. Mindkét a kódtárakat hamarosan szinkronizálva lesz.
 
-### <a name="can-i-use-etag-lsn-or-ts-for-internal-bookkeeping-which-i-get-in-response"></a>Használhatok _etag, _lsn vagy _ts a belső könyvelés, a válasz jelenik meg?
+### <a name="can-i-use-etag-lsn-or-ts-for-internal-bookkeeping-which-i-get-in-response"></a>Használható _etag, _lsn vagy _ts a belső könyvelés, amely válasz jelenik meg?
 
-_etag formátuma belső és meg kell nem használják (nem elemezhető azt), mert bármikor megváltoztathatja.
-_ts módosítása vagy a létrehozás időpontjának időbélyegét. Az időrendi összehasonlításhoz _ts is használhatja.
-_lsn van egy kötegazonosítót, csak a módosítás adatcsatorna hozzáadott, a tranzakció azonosítóját jelzi az áruházból... Előfordulhat, hogy hány dokumentum azonos _lsn.
-Egy dolog vegye figyelembe a FeedResponse ETag nem egyezik a _etag megtekintheti a dokumentumot. _etag belső azonosító és feldolgozási használatával, a dokumentumot a verziójával kapcsolatos információt szolgáltat arról és ETag használható műveleti sorrend a hírcsatorna.
+belső _etag formátum, és meg nem függ attól, hogy (nem elemezhető,), mert bármikor módosíthatja.
+_ts létrehozásának vagy módosításának időbélyeg. Időrendi összehasonlító _ts is használhat.
+_lsn van egy kötegazonosítót, csak a módosítási hírcsatorna hozzáadott, a azt a tranzakcióazonosító jelöli az áruházból... Előfordulhat, hogy hány dokumentum ugyanazon _lsn.
+Egy dolog, vegye figyelembe, FeedResponse az ETag nem egyezik a _etag akkor jelenik meg a dokumentumot. _etag belső azonosító és egyidejűségi, a verziójának használatát a dokumentum ismerteti, az ETag pedig az alkalmazás-előkészítés a hírcsatornát.
 
-### <a name="does-reading-change-feed-add-any-additional-cost-"></a>Változás hírcsatorna olvasása már minden további költség nélkül?
+### <a name="does-reading-change-feed-add-any-additional-cost-"></a>Nem, olvasási, módosítási hírcsatorna hozzá többletköltség nélkül?
 
-A RU felhasznált, azaz az Azure Cosmos DB gyűjtemények mindkét bármikor felhasználhatja a RU számolnak. A bérleti gyűjtemény által felhasznált RU felhasználók fogjuk számlázni.
+A Kérelemegység felhasznált, azaz az Azure Cosmos DB-gyűjtemények kimenő és bemenő bármikor felhasználhatja a RU díjkötelesek. Felhasználók által a bérletek gyűjteményének felhasznált RU kell fizetnie.
 
-### <a name="can-multiple-azure-functions-read-one-collections-change-feed"></a>Elolvashatják a több Azure Functions egy gyűjtemény módosítás hírcsatorna?
+### <a name="can-multiple-azure-functions-read-one-collections-change-feed"></a>Olvashatja a több Azure Functions egy gyűjtemény módosítási hírcsatorna?
 
-Igen. Több Azure Functions ugyanaz a gyűjtemény megváltoztatása adatcsatorna olvashatja. Azonban az Azure Functions kell rendelkeznie egy külön definiált leaseCollectionPrefix.
+Igen. Több Azure Functions ugyanabba a gyűjteménybe módosítási hírcsatorna olvashatja. Azonban az Azure Functions kell egy külön leaseCollectionPrefix definiálva van.
 
-### <a name="should-the-lease-collection-be-partitioned"></a>A bérleti gyűjtemény particionálható?
+### <a name="should-the-lease-collection-be-partitioned"></a>A bérletek gyűjteményének particionált?
 
-Nem, bérleti gyűjtemény lehet meghatározni. Nincs szükség a particionált bérleti gyűjteményt, és jelenleg nem támogatott.
+Nem, a bérletek gyűjteményének lehet meghatározni. A particionált a bérletek gyűjteményének nincs szükség, és jelenleg nem támogatja.
 
-### <a name="can-i-read-change-feed-from-spark"></a>Tudom is módosítás hírcsatornát Spark on az?
+### <a name="can-i-read-change-feed-from-spark"></a>Olvastam is módosítási hírcsatorna a Spark?
 
-Igen. Ellenőrizze a [Azure Cosmos DB Spark összekötő](spark-connector.md). Íme egy [képernyő típuskonverzió](https://www.youtube.com/watch?v=P9Qz4pwKm_0&t=1519s) jelenít meg, hogyan tudja dolgozni a strukturált adatfolyamként hírcsatorna módosítása.
+Igen. Lásd: [Azure Cosmos DB Spark-összekötő](spark-connector.md). Íme egy [képernyő cast](https://www.youtube.com/watch?v=P9Qz4pwKm_0&t=1519s) látható, hogyan tud feldolgozni egy strukturált stream, csatorna módosítása.
 
-### <a name="if-i-am-processing-change-feed-by-using-azure-functions-say-a-batch-of-10-documents-and-i-get-an-error-at-7th-document-in-that-case-the-last-three-documents-are-not-processed-how-can-i-start-processing-from-the-failed-documentie-7th-document-in-my-next-feed"></a>I vagyok dolgozza fel az Azure Functions használatával hírcsatorna módosítása, egy 10 dokumentumok kötegelt fel, és a 7. a dokumentum jelenik meg hibaüzenet. Ebben az esetben az utolsó három dokumentumok nincsenek feldolgozva hogyan lehet indításakor feldolgozása a hibás dokumentumból (azaz 7. a dokumentum) található a következő adatcsatorna?
+### <a name="if-i-am-processing-change-feed-by-using-azure-functions-say-a-batch-of-10-documents-and-i-get-an-error-at-7th-document-in-that-case-the-last-three-documents-are-not-processed-how-can-i-start-processing-from-the-failed-documentie-7th-document-in-my-next-feed"></a>I vagyok feldolgozása az Azure Functions szolgáltatással csatorna módosítása, ha 10 dokumentumok kötegelt tegyük fel, és hibaüzenetet kapok, 7. a dokumentum. Ebben az esetben az utolsó három dokumentumok feldolgozása nem Hogyan tudok indíthatja feldolgozása a hibás dokumentum (vagyis) a dokumentum 7.) a következő hírcsatornában?
 
-Kezelje a hiba, a javasolt minta nem csomagolásához try-catch blokkon a kódot. Dolgozza fel a hiba, és a dokumentum elhelyezése egy üzenetsort (kézbesítetlen), és majd megadása logikát, amely a hiba előállított a dokumentumok kezelése érdekében. Ezzel a módszerrel a 200-dokumentum kötegelt, és nem sikerült, csak egy dokumentumot rendelkező nincs a dobni a teljes kötegelt.
+Kezelni a hibát, a javasolt egyik burkolhatja a kód a try-catch blokkban. A hiba tényleges és helyezze a dokumentum egy üzenetsorban (kézbesíthetetlen levelek), és megadhatja, logikai dokumentumokat állítja elő a hiba kezelésére. Ezzel a módszerrel van egy 200-dokumentum batch, és nem sikerült, csak egyetlen dokumentumot nem rendelkezik, az egész batch dobja.
 
-Abban az esetben, ha a hiba akkor kell nem visszatekerés a jelölőnégyzet pont vissza elejéig más meg fog is folyton ezekben a dokumentumokban módosítás csatornáról. Ne feledje, hogy módosítás adatcsatorna a memóriában tárolja a dokumentumokat, ezt, mert az utolsó végső beépülő kapcsolatos hibaüzenetet elveszítheti a dokumentum az előző pillanatképet. módosítás adatcsatorna tartja a dokumentum csak egy utolsó verzióját, és a kettő között más folyamatok származnak, és módosítani a dokumentumot.
+Abban az esetben, ha hiba meg kell nem Visszatekerés az ellenőrzőpont vissza a kezdő más meg fog is továbbra is megkapja ezeket a dokumentumokat a módosítási hírcsatorna. Ne feledje, hogy a dokumentum az előző pillanatképet elveszítheti a módosítási hírcsatorna tartja a dokumentumokat, ezt, mert az utolsó végső beépülő képernyőképe. módosítási hírcsatorna tartja a dokumentum csak egy előző verzióját, és a köztes más folyamatok származnak, és módosítani a dokumentumot.
 
-A kód tartsa kijavítása, mivel hamarosan találja egyetlen dokumentum kézbesítetlen levelek várólistájára.
-Az Azure Functions módosítás adatcsatorna rendszer által automatikusan nevezik, és ellenőrzés pont stb Azure-függvény belsőleg kezeli. Ha azt szeretné, állítsa vissza a jelölőnégyzet pontot, és minden szempontját szabályozásához, érdemes lehet processzor SDK használatával módosítás hírcsatorna.
+A kód tartsa kijavítása, hamarosan található dokumentumok a kézbesítetlen levelek várólistájára vonatkozik.
+Módosítási hírcsatorna rendszer automatikusan hívja meg az Azure Functions és a check point stb belsőleg munkaterheléseire Azure-függvény. Ha azt szeretné, állítsa vissza a a check point és minden szempontját, érdemes lehet processzor SDK használatával módosítási hírcsatorna.
 
 
 ## <a name="next-steps"></a>További lépések
 
-Az Azure Functions Azure Cosmos DB használatával kapcsolatos további információk: [Azure Cosmos DB: kiszolgáló nélküli adatbázis számítási Azure Functions használatával](serverless-computing-database.md).
+Azure Cosmos DB használatával az Azure Functions használatával kapcsolatos további információk: [Azure Cosmos DB: az Azure Functions szolgáltatással kiszolgáló nélküli adatbázis-használat](serverless-computing-database.md).
 
-További információ az adatcsatorna processzor szalagtár módosítása használatával használja a következőket:
+További információ a változáscsatorna feldolgozói kódtára használatával használja az alábbi forrásanyagokat:
 
-* [Információ lap](sql-api-sdk-dotnet-changefeed.md) 
+* [Adatai lap](sql-api-sdk-dotnet-changefeed.md) 
 * [Nuget-csomag](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB.ChangeFeedProcessor/)
-* [1-6 lépéseket bemutató mintakód](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/code-samples/ChangeFeedProcessor)
-* [További minták a Githubon](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/ChangeFeedProcessor)
+* [1 – 6. lépéseket bemutató mintakód](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/code-samples/ChangeFeedProcessor)
+* [További példák a Githubon](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/ChangeFeedProcessor)
 
-További információ a módosítás hírcsatorna keresztül az SDK használatával használja a következőket:
+További információ a változáscsatorna keresztül az SDK használatával használja az alábbi forrásanyagokat:
 
-* [SDK adatai lap](sql-api-sdk-dotnet.md)
+* [SDK-t adatai lap](sql-api-sdk-dotnet.md)

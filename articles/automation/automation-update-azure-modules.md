@@ -1,6 +1,6 @@
 ---
-title: Az Azure Automationben Azure modulok frissítése
-description: Ez a cikk ismerteti, hogyan most már frissítheti az Azure Automationben alapértelmezés szerint biztosított közös Azure PowerShell-modulok.
+title: Az Azure Automationben Azure-modulok frissítése
+description: Ez a cikk bemutatja, hogyan frissítheti Azure Automation alapértelmezés szerint biztosított közös Azure PowerShell-modulok.
 services: automation
 ms.service: automation
 ms.component: process-automation
@@ -9,26 +9,29 @@ ms.author: gwallace
 ms.date: 03/16/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: fe263346d8794b3dc85b6420d8b9b02efa5f9684
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: f968bd75c7aee4ad390f9206bb1fa210e7fcd8ff
+ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34193505"
+ms.lasthandoff: 07/07/2018
+ms.locfileid: "37903149"
 ---
-# <a name="how-to-update-azure-powershell-modules-in-azure-automation"></a>Az Azure Automationben Azure PowerShell-modulok frissítése
+# <a name="how-to-update-azure-powershell-modules-in-azure-automation"></a>Az Azure Automationben az Azure PowerShell-modulok frissítése
 
-A leggyakoribb Azure PowerShell-modulok minden Automation-fiókban alapértelmezés szerint biztosítottak. Az Azure-csapat rendszeresen, frissíti az Azure modulok, így az Automation-fiók rendelkezésre állnak a modulok a fiók frissíteni, ha elérhetők új verziók a portálról úgy.  
+A leggyakrabban használt Azure PowerShell-modulok minden Automation-fiókban alapértelmezés szerint biztosított. Az Azure-csapat rendszeresen frissíti az Azure-modulokat, ezért az Automation-fiókban a modulok a fiókban lévő frissítéséhez, ha elérhetővé válik a portálról az új verziók úgy vannak megadva.
 
-Modulok rendszeresen frissülnek a csoport által, mert negatívan befolyásolhatja a változás, például egy paraméter átnevezése vagy teljesen elavulttá parancsmag típusától függően a runbookok a belefoglalt parancsmagok módosítások alakulhat ki. A runbookok és a folyamatok automatizálásához azok érintő elkerülése ajánlott tesztelése, és a folytatás előtt ellenőrzi. Ha erre a célra készült dedikált Automation-fiók nem rendelkezik, fontolja meg, hogy a teszteléssel számos különböző alkalmazási helyzetek és kombinációinak a runbookok fejlesztése során továbbá frissítése iteratív változásokra hozzon létre egyet a PowerShell-modulok. Után az eredményeket a rendszer érvényesíti, és telepítette a szükséges módosításokat, összehangolása a runbookokat, amely szükséges a módosítási áttelepítésének folytatásához, és hajtsa végre a következő frissítés termelési leírtak szerint.
+A termékcsoport modulok rendszeresen frissülnek, mert módosítások előfordulhatnak változás, például egy paraméter átnevezése vagy teljes egészében a parancsmag elavulttá típusától függően a runbookok negatív hatással lehet a csomagban foglalt parancsmagok. Hatással lenne a runbookok és a folyamatok automatizálása azok elkerüléséhez ajánlott, hogy tesztelje, és a folytatás előtt. Ha erre a célra készült dedikált Automation-fiók nem rendelkezik, érdemes lehet létrehozni egy, így tesztelheti számos különféle célra és permutációk a runbookok fejlesztése során ezen kívül, iteratív változások, például frissítése a PowerShell-modulok. Után az eredményeket a rendszer érvényesíti, és telepítette a szükséges módosításokat, összehangolása a módosítást igénylő runbookokat migrálásának folytatásához, és hajtsa végre a következő frissítés termelési leírtak szerint.
 
-## <a name="updating-azure-modules"></a>Az Azure modulok frissítése
+> [!NOTE]
+> Egy új Automation-fiók nem tartalmazhatja a legújabb modulok.
 
-1. Az Automation-fiók modulok lapján, a rendszer felajánlja a nevű **frissítés Azure modulok**. Mindig engedélyezve van.<br><br> ![Azure-modulok beállítás modulok oldalon frissítése](media/automation-update-azure-modules/automation-update-azure-modules-option.png)
+## <a name="updating-azure-modules"></a>Az Azure-modulok frissítése
 
-2. Kattintson a **frissítés Azure modulok**, megerősítési értesítés jelenik meg, amely engedélyt kér a folytatáshoz.<br><br> ![Azure-modulok értesítési frissítése](media/automation-update-azure-modules/automation-update-azure-modules-popup.png)
+1. Az Automation-fiók a modulok oldalon lehetősége van nevű **frissítés az Azure-modulok**. Mindig engedélyezve van.<br><br> ![Modulok oldalon lehetőség az Azure-modulok frissítése](media/automation-update-azure-modules/automation-update-azure-modules-option.png)
 
-3. Kattintson a **Igen** és a modul frissítési folyamat megkezdése. A frissítési folyamat veszi körülbelül 15 – 20 perc frissítése a következő modult:
+2. Kattintson a **frissítés az Azure-modulok**, a megerősítési értesítés jelenik meg, amely engedélyt kér a folytatáshoz.<br><br> ![Értesítés az Azure-modulok frissítése](media/automation-update-azure-modules/automation-update-azure-modules-popup.png)
+
+3. Kattintson a **Igen** és a modul frissítési folyamat megkezdése. A frissítési folyamat nagyjából 15 – 20 percet vesz igénybe a következő modulok frissítése:
 
   * Azure
   * Azure.Storage
@@ -39,15 +42,15 @@ Modulok rendszeresen frissülnek a csoport által, mert negatívan befolyásolha
   * AzureRm.Sql
   * AzureRm.Storage
 
-    Ha a modulok már naprakészek, a folyamat néhány másodpercen belül befejeződik. Ha a frissítési folyamat befejeződik, értesítés jelenik meg.<br><br> ![Azure-modulok frissítési állapotának frissítése](media/automation-update-azure-modules/automation-update-azure-modules-updatestatus.png)
+    Ha a modul már naprakész, majd a folyamat befejeződése után pár másodpercen belül. Ha a frissítési folyamat befejeződött, értesítést kap.<br><br> ![Azure-modulok frissítése állapotának frissítése](media/automation-update-azure-modules/automation-update-azure-modules-updatestatus.png)
 
 > [!NOTE]
-> Azure Automation szolgáltatásbeli használja a legújabb modulok az Automation-fiók egy új ütemezett feladat futtatásakor.    
+> Az Azure Automation használja a legújabb modulokat az Automation-fiók egy új ütemezett feladatot a futása során.    
 
-Ezek az Azure PowerShell-modul a parancsmagok használata a runbookokban, ha szeretne a frissítési folyamat minden hónapban lefusson, vagy ezért győződjön meg arról, hogy rendelkezik-e a legújabb modulok.
+Ezeket az Azure PowerShell-modulok a parancsmagok használata a runbookokban, szeretné-e a frissítési folyamat minden hónapban lefusson, vagy ezért győződjön meg arról, hogy rendelkezik-e a legújabb modulok.
 
 ## <a name="next-steps"></a>További lépések
 
-* Integrációs modulok és az egyéni modulok további Automation integrálása más rendszerek, a szolgáltatások vagy a megoldások létrehozásával kapcsolatos további információkért lásd: [integrációs modulok](automation-integration-modules.md).
+* Integrációs modulok és egyéni modulok további Automation integrálása más rendszerek, szolgáltatások és megoldások létrehozásával kapcsolatos további információkért lásd: [integrációs modulok](automation-integration-modules.md).
 
-* Érdemes lehet forrás vezérlő integrációs [GitHub vállalati](automation-scenario-source-control-integration-with-github-ent.md) vagy [Visual Studio Team Services](automation-scenario-source-control-integration-with-vsts.md) központi kezelésére, és szabályozhatja a automatizálási runbook és konfigurációs portfóliót kiadásaiban.  
+* Érdemes lehet forrás vezérlő integrációs [GitHub Enterprise-zal](automation-scenario-source-control-integration-with-github-ent.md) vagy [Visual Studio Team Services](automation-scenario-source-control-integration-with-vsts.md) központilag és kiadások, az Automation-runbook és konfigurációs portfólió szabályozására.  

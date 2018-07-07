@@ -9,12 +9,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 03/06/2018
 ms.author: v-geberr
-ms.openlocfilehash: b7e8bf9046d432bd830f65e1934704ec5036fd1c
-ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
+ms.openlocfilehash: af5079e8c448a0df6b1109f5f23e3e3a2871a167
+ms.sourcegitcommit: 11321f26df5fb047dac5d15e0435fce6c4fde663
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37346630"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37887266"
 ---
 # <a name="web-app-bot-using-the-luis-template-for-c"></a>Webes alkalmazás robot a LUIS-sablon használatával a C#
 
@@ -47,7 +47,7 @@ Létrehozhat egy csevegőrobotot, integrált a language understanding használat
     * Állítsa be **alkalmazásnév** a robot neve. A robot a felhőben (például mynotesbot.azurewebsites.net) történő telepítése során az altartomány neve lesz. <!-- This name is also used as the name of the LUIS app associated with your bot. Copy it to use later, to find the LUIS app associated with the bot. -->
     * Válassza ki az előfizetést [erőforráscsoport](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview), App service-csomagot, és [hely](https://azure.microsoft.com/regions/).
     * Válassza ki a **Language understanding (C#)** sablonját a **Bot sablon** mező.
-    * Válassza ki a **LUIS alkalmazás hely**. Ez az a szerzői műveletekhez részben [régió] [ LUIS] jön létre az alkalmazást.
+    * Válassza ki a **LUIS alkalmazás hely**. Ez az a szerzői műveletekhez részben [régió](luis-reference-regions.md) jön létre az alkalmazást.
     * Jelölje be a megerősítő a jogi nyilatkozat. A jogi nyilatkozat feltételeit az alábbiakban olvashatják be a jelölőnégyzetet.
 
     ![Robotszolgáltatás](./media/luis-tutorial-cscharp-web-bot/bot-service-setting-callout-template.png)
@@ -170,7 +170,6 @@ Adja hozzá a LUIS-leképezések és a Bot service párbeszédpanelek kezelésé
 [BFPortal]: https://dev.botframework.com/
 [RegisterInstructions]: https://docs.microsoft.com/bot-framework/portal-register-bot
 [BotFramework]: https://docs.microsoft.com/bot-framework/
-[AssignedEndpointDoc]: https://docs.microsoft.com/azure/cognitive-services/LUIS/luis-how-to-manage-keys
 [VisualStudio]: https://www.visualstudio.com/
-[LUIS]: https://docs.microsoft.com/azure/cognitive-services/luis/luis-reference-regions
+
 <!-- tested on Win10 -->

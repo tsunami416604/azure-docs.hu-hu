@@ -1,6 +1,6 @@
 ---
-title: Az Azure IoT-központ frissítése |} Microsoft Docs
-description: Módosítsa a tarifa- és méretcsomag IoT hub több üzenetkezelési és az eszköz felügyeleti lehetőségek elérése.
+title: Az Azure IoT Hub frissítése |} A Microsoft Docs
+description: Módosítsa a tarifacsomagot és méretet tarifacsomag IoT hubot, hogy további üzenetküldési és eszközfelügyeleti felügyeleti képességek beolvasása.
 author: kgremban
 manager: timlt
 ms.service: iot-hub
@@ -8,46 +8,46 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 04/02/2018
 ms.author: kgremban
-ms.openlocfilehash: 472115f166adc5385b6f46b2f3ac5ef75a6cde92
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 1f60b7d30c073c49d5e0a7d35e7263c2181ed744
+ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34637276"
+ms.lasthandoff: 07/07/2018
+ms.locfileid: "37903064"
 ---
-# <a name="how-to-upgrade-your-iot-hub"></a>Az IoT-központ frissítése
+# <a name="how-to-upgrade-your-iot-hub"></a>Az IoT hub frissítése
 
-Az IoT-megoldásból növekedésével Azure IoT Hub készen áll a vertikális felskálázás nyújt segítséget. Az Azure IoT Hub kínál a két réteg, basic (B) és a standard (S) olyan ügyfelek számára, szeretné használni a különböző szolgáltatásokat. Minden egyes réteg van három méretben kaphatók (1., 2, 3), amelyek meghatározzák, naponta elküldött üzenetek száma. 
+Az IoT-megoldás növekedésével Azure IoT Hub készen áll a vertikális felskálázás nyújt segítséget. Az Azure IoT Hub két szintet kínál, (B) alapszintű és a standard (S), befogadásához kívánó ügyfelek különböző funkciók használata. Az egyes szinteken belül vannak három méretben (1., 2, 3), amely naponta elküldött üzenetek számának meghatározásához. 
 
-Ha több eszközt, és további képességeket kell, három módon úgy, hogy az IoT hub az igényeinek:
+Ha több eszközt rendelkezik, és további funkciókat, három módja van az IoT hub igény szerint módosíthatja:
 
-* Adja hozzá a egység az IoT hub belül. Például minden további egységhez egy B1 IoT-központ lehetővé teszi 400 000 üzenet naponta. 
-* Az IoT hub méretének módosításához. Például telepíthet át a B1 rétegtől a K2 szintet növelje meg az üzenetek támogató tárolóegységekhez / nap.
-* Váltson egy magasabb szintű csomagra. Például váltson a B1 rétegtől azonos üzenetkezelési képességét, de a normál rétegben, a speciális szolgáltatások S1 csomagra.
+* Adja hozzá az egységeket az IoT hub-ban. Például minden további egység egy B1 IoT hub lehetővé teszi, hogy egy további napi 400 000 üzenet. 
+* Az IoT hub méretének módosítása. Például át az B1 szint minden egység / nap által támogatott üzenetek növeléséhez a B2 szintre.
+* Váltson magasabb szintre. Az S1 szintre, az üzenetkezelési kapacitáson, de a standard szintű csomag olyan fejlett szolgáltatásokat, például frissítse a az B1 szint.
 
-Ezek a változások meglévő műveletek megszakítása nélkül fordulhat.
+Ezek a változások meglévő műveletek megzavarása nélkül fordulhat.
 
-Ha szeretné használni az IoT hub, távolítsa el az egységet, és az IoT hub méretének csökkentése. Azonban Ön nem visszaminősítését alacsonyabb réteghez. Például áthelyezheti a S2 rétegtől S1 csomagra, de nem a S2 réteg B1 csomagra. 
+Ha alacsonyabb szolgáltatásszintre váltásához az IoT hub, egységek eltávolítása, és az IoT hub méretének csökkentésére. Azonban nem léphet vissza egy alacsonyabb szintre. Például átválthat az S2 szint az S1 szintre, azonban nem az B1 szint, az S2 szint. 
 
-Ezek a példák segítségével megtudhatja, hogyan lehet beállítani az IoT hub a megoldás módosítás célja. Szeretne többet megtudni az egyes szolgáltatásszintek lehetőségei mindig tekintse át [Azure IoT Hub árképzési](https://azure.microsoft.com/pricing/details/iot-hub/). 
+Ezek a példák segítségével megismerheti, hogyan állíthatja be az IoT hub, a megoldás módosítások hivatottak. Részletes információ az egyes szolgáltatásszintek lehetőségei mindig hivatkozzon [Azure IoT Hub díjszabás](https://azure.microsoft.com/pricing/details/iot-hub/). 
 
-## <a name="upgrade-your-existing-iot-hub"></a>A meglévő IoT-központ frissítése 
+## <a name="upgrade-your-existing-iot-hub"></a>A meglévő IoT hub frissítése 
 
-1. Jelentkezzen be a [Azure-portálon](https://portal.azure.com/) , és keresse meg az IoT hub. 
-2. Válassza ki **árak és a skála**. 
+1. Jelentkezzen be a [az Azure portal](https://portal.azure.com/) , és keresse meg az IoT hubot. 
+2. Válassza ki **díjszabással**. 
 
    ![Díjszabás és méretezés](./media/iot-hub-upgrade/pricing-scale.png)
 
-3. A réteg a központ módosításához válassza **árazás és méretcsomag**. Válassza ki az új réteget, majd kattintson a **válasszon**.
+3. A réteg a hub módosításához válassza **díjszabással**. Válassza ki az új szintet, majd kattintson a **kiválasztása**.
 
    ![Díjszabás és méretezés](./media/iot-hub-upgrade/select-tier.png)
 
-4. A központban egységek számának módosításához adjon meg egy új értéket a **IoT Hub-egységek**. 
-5. Válassza ki **mentése** menti a módosításokat. 
+4. Ha módosítani szeretné az hub egységek számát, adja meg egy új értéket a **IoT Hub-egységek**. 
+5. Válassza ki **mentése** a módosítások mentéséhez. 
 
-Az IoT hub most módosul, és a beállítások nem változnak. 
+Az IoT hub most módosul, és a beállítások nem változnak. Vegye figyelembe, hogy a partíció korlátot, az alapszintű díjcsomag az IoT Hub 8. Ez a korlátozás változatlan marad, az alapszintű csomag a standard szintű csomag áttelepítésekor.
 
 ## <a name="next-steps"></a>További lépések
 
-További részletek [kiválasztása a megfelelő IoT-központ réteg](iot-hub-scaling.md). 
+További részletek [a megfelelő IoT Hub-csomag kiválasztása](iot-hub-scaling.md). 
 

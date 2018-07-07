@@ -9,12 +9,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 02/13/2018
 ms.author: v-geberr
-ms.openlocfilehash: 9b8556a30169561488a7b46f93af87b31e049e7a
-ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
+ms.openlocfilehash: 4a3571acade7b7bd304c91eadc90b1a9f6e53860
+ms.sourcegitcommit: 11321f26df5fb047dac5d15e0435fce6c4fde663
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37345508"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37886841"
 ---
 # <a name="utterances-in-luis"></a>A LUIS kimondott szöveg
 
@@ -23,7 +23,7 @@ ms.locfileid: "37345508"
 Kifejezések, amelyek úgy gondolja, hogy a felhasználók be fogja gyűjteni. Vegye fel ugyanazt jelenti, de tevődnek utterances eltérően word hossza és a word elhelyezési. 
 
 ## <a name="how-to-choose-varied-utterances"></a>Változatos utterances kiválasztása
-Amikor Ön először első lépésként [példa beszédmódok hozzáadása] [ add-example-utterances] figyelembe kell venni néhány alapelvet, a LUIS-modell, Íme.
+Amikor Ön először első lépésként [példa beszédmódok hozzáadása](luis-how-to-add-example-utterances.md) figyelembe kell venni néhány alapelvet, a LUIS-modell, Íme.
 
 ### <a name="utterances-arent-always-well-formed"></a>Beszédmódok mindig nem megfelelő
 Elképzelhető, hogy egy mondatot, például "Book me egy jegyet Párizs", vagy egy kódrészletet egy mondatot, például a "Foglalás" vagy "Párizs repülési."  Felhasználók gyakran ellenőrizze a helyesírási hibákat. Az alkalmazás megtervezésekor vegye figyelembe a-e, helyesírás-ellenőrzésének felhasználói bevitel LUIS való továbbítás előtt. A [Bing Spell Check API] [ BingSpellCheck] az intelligens hangfelismerési szolgáltatással integrálható. Társíthatja a LUIS-alkalmazás egy külső kulcs a Bing Spell Check API számára való közzétételekor. Ha Ön nem helyesírás-ellenőrzés felhasználói kimondott szöveg, a LUIS kell vonat a a kimondott szöveg, amely tartalmazza a gépelési és helyesírási hibák.
@@ -70,7 +70,6 @@ Miután a modellt, betanított, a közzétett és a fogadó [végpont](luis-glos
 Felülvizsgálat [ajánlott eljárások](luis-concept-best-practices.md) további.
 
 ## <a name="next-steps"></a>További lépések
-Lásd: [példa beszédmódok hozzáadása] [ add-example-utterances] a LUIS-alkalmazások felhasználói utterances megértéséhez képzési információkat.
+Lásd: [példa beszédmódok hozzáadása](luis-how-to-add-example-utterances.md) a LUIS-alkalmazások felhasználói utterances megértéséhez képzési információkat.
 
-[add-example-utterances]: https://docs.microsoft.com/azure/cognitive-services/luis/luis-how-to-add-example-utterances
 [BingSpellCheck]: https://docs.microsoft.com/azure/cognitive-services/bing-spell-check/proof-text

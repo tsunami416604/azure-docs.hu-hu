@@ -1,6 +1,6 @@
 ---
-title: Adatok kinyerése jellemzői LUIS - Azure megértése |} Microsoft Docs
-description: Ismerje meg, hogy milyen típusú adatok kiolvasható a nyelvi ismertetése (LUIS)
+title: Adatok kinyerése fogalmait a LUIS - Azure megismerése |} A Microsoft Docs
+description: Ismerje meg, milyen típusú adatok kinyerhetők a Language Understanding (LUIS)
 services: cognitive-services
 author: v-geberr
 manager: kamran.iqbal
@@ -9,29 +9,29 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: v-geberr;
-ms.openlocfilehash: 8d8620a1c53037be6f1a33083f41964655a04921
-ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
+ms.openlocfilehash: 4d18419a6ad8be6ee46944c34205e450212b23a8
+ms.sourcegitcommit: 11321f26df5fb047dac5d15e0435fce6c4fde663
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37112116"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37888513"
 ---
 # <a name="data-extraction"></a>Adatok kinyerése
-LUIS lehetővé teszi az adatok lehívása egy felhasználó természetes nyelvű utterances. Az adatokat oly módon, hogy azt használhatja a program, alkalmazás vagy chatbot cselekedhetnek. ki kell olvasni.
+A LUIS teszi lehetővé a felhasználó a természetes nyelvű utterances lekérni adatait. Az adatokat oly módon, hogy használat szerint a program, alkalmazás vagy csevegőrobot műveletet ki kell olvasni.
 
-A következő szakaszban megtudhatja, milyen adatokat leképezések és a kapcsolódó JSON entitások küld vissza. A nagyon nehéz adatok kibontása a számítógép-megtanulta, adatok, mert nem egy szöveges pontos egyezés. A számítógép által ismert adatok kivonása [entitások](luis-concept-entity-types.md) részét kell a [ciklus szerzői](luis-concept-app-iteration.md) amíg nem biztos benne, hogy a várt adatokat fogad. 
+A következő szakaszban megtudhatja, milyen adatokat küld vissza, a szándékok és entitások példákkal a JSON. A kinyerni kívánt nagyon nehéz adatok átadott gép megtanult adatot, mivel nem egy pontos egyezés egyeztetése. Adatok kinyerése, a gép megtanult [entitások](luis-concept-entity-types.md) részét kell a [ciklus szerzői](luis-concept-app-iteration.md) amíg nem biztos benne, hogy a várt adatokat kap. 
 
-## <a name="data-location-and-key-usage"></a>Adatok helye és a kulcs használata
-LUIS biztosít a közzétett adatait [végpont](luis-glossary.md#endpoint). A **HTTPS-kérést** (a POST vagy a GET) tartalmaz a utterance, valamint néhány választható konfigurációk, például az átmeneti vagy üzemi környezetben. 
+## <a name="data-location-and-key-usage"></a>Adatok helye és a kulcsot használat
+A LUIS biztosít a közzétett adatait [végpont](luis-glossary.md#endpoint). A **HTTPS-kérést** (POST vagy GET) tartalmazza az utterance (kifejezés), valamint az egyes választható konfigurációk, például átmeneti és éles környezetekben. 
 
 `https://westus.api.cognitive.microsoft.com/luis/v2.0/apps/<appID>?subscription-key=<subscription-key>&verbose=true&timezoneOffset=0&q=book 2 tickets to paris`
 
-A `appID` érhető el a **beállítások** oldalán a LUIS függvényalkalmazás és az URL-cím (után `/apps/`) LUIS alkalmazást szerkesztésekor. A `subscription-key` lekérdezése az alkalmazásban használt végpont kulcsa. Használhatja az ingyenes szerzői/alapszintű kulcs LUIS való ismerkedés során, fontos, hogy módosítsa a végpont kulcs egy kulcsot, amely támogatja a [várható LUIS használati](luis-boundaries.md#key-limits). A `timezoneOffset` egység érték perc.
+A `appID` érhető el a **beállítások** lapján a LUIS-alkalmazásokon, valamint az URL-cím (után `/apps/`), amelyet a LUIS az alkalmazás szerkesztésekor. A `subscription-key` a végpont kulcs az alkalmazás lekérdezésekhez használja fel. Bár használhatja az ingyenes szerzői/alapszintű kulcsot, LUIS tanulás közben, fontos, hogy módosítsa a végpont kulcs, amely támogatja a kulcs a [várható LUIS használati](luis-boundaries.md#key-limits). A `timezoneOffset` egység érték perc.
 
-A **HTTPS válasz** tartalmazza az összes LUIS megállapíthatja, hogy a célt és egyéb entitások adatokat az aktuális közzétett modell a következők alapján az átmeneti vagy üzemi végpont. A végpont URL-címe megtalálható a [LUIS] [ LUIS] webhely **közzététel** lap. 
+A **HTTPS válaszokat** tartalmazza az összes, vagy az aktuális közzétett modell alapján a leképezés és entitás adatait, LUIS megadhatja, hogy az átmeneti és éles végpontot. A végpont URL-cím található a [LUIS](luis-reference-regions.md) webhely **közzététel** lapot. 
 
 ## <a name="data-from-intents"></a>Leképezések adatait
-Az elsődleges adatok felső pontozási **leképezési neve**. Használja a `MyStore` [gyors üzembe helyezés](luis-quickstart-intents-only.md), a rendszer a végpont választ:
+Az elsődleges adatokat a felső pontozási **leképezés neve**. Használatával a `MyStore` [rövid](luis-quickstart-intents-only.md), a végpont válasz:
 
 ```JSON
 {
@@ -46,9 +46,9 @@ Az elsődleges adatok felső pontozási **leképezési neve**. Használja a `MyS
 
 |Objektum|Adattípus|Az adatok helye|Érték|
 |--|--|--|--|
-|Kísérlet történt|Sztring|topScoringIntent.intent|"GetStoreInfo"|
+|Leképezés|Sztring|topScoringIntent.intent|"GetStoreInfo"|
 
-Ha a chatbot vagy LUIS-hívása alkalmazás lehetővé teszi több leképezési pontszám alapján döntés, térjen vissza a leképezések pontszámok úgy, hogy a lekérdezési karakterlánc paraméter `verbose=true`. A rendszer a végpont választ:
+Ha a csevegőrobot, vagy a LUIS-hívása alkalmazás meghozta a döntést, egynél több leképezés pontszám alapján, lépjen vissza a leképezések pontszámok a lekérdezési karakterlánc paraméter által `verbose=true`. A végpont válasz a következő:
 
 ```JSON
 {
@@ -71,14 +71,14 @@ Ha a chatbot vagy LUIS-hívása alkalmazás lehetővé teszi több leképezési 
 }
 ```
 
-A leképezések a legalacsonyabb pontszám a legnagyobb vannak rendezve.
+A leképezések vannak rendezve legmagasabbtól a legalacsonyabb pontszámot.
 
 |Objektum|Adattípus|Az adatok helye|Érték|Pontszám|
 |--|--|--|--|:--|
-|Kísérlet történt|Sztring|[0] leképezések .intent|"GetStoreInfo"|0.984749258|
-|Kísérlet történt|Sztring|[1] leképezések .intent|"Nincs"|0.0168218873|
+|Leképezés|Sztring|[0]. szándék .intent|"GetStoreInfo"|0.984749258|
+|Leképezés|Sztring|[1]. szándék .intent|"Nincs"|0.0168218873|
 
-Előre elkészített tartományokat ad hozzá, ha a leképezési neve, mint jelzi-e a tartomány `Utilties` vagy `Communication` és a leképezés:
+Előre összeállított tartományok ad hozzá, ha a leképezés neve azt jelzi, hogy a tartományhoz, mint például `Utilties` vagy `Communication` valamint célja:
 
 ```JSON
 {
@@ -106,17 +106,17 @@ Előre elkészített tartományokat ad hozzá, ha a leképezési neve, mint jelz
     
 |Tartomány|Objektum|Adattípus|Az adatok helye|Érték|
 |--|--|--|--|--|
-|Közművek|Kísérlet történt|Sztring|[0] leképezések .intent|"<b>Segédprogramok</b>. ShowNext"|
-|Kommunikáció|Kísérlet történt|Sztring|[1] leképezések .intent|<b>Kommunikációs</b>. StartOver"|
-||Kísérlet történt|Sztring|[2] leképezések .intent|"Nincs"|
+|Közművek|Leképezés|Sztring|[0]. szándék .intent|"<b>Segédprogramok</b>. ShowNext"|
+|Kommunikáció|Leképezés|Sztring|[1]. szándék .intent|<b>Kommunikációs</b>. StartOver"|
+||Leképezés|Sztring|[a(z) 2]. szándék .intent|"Nincs"|
 
 
-## <a name="data-from-entities"></a>Entitások adatait
-A legtöbb chatbots és alkalmazásokat kell a több, mint a leképezési neve. Ez további, opcionális adatok felderítését a utterance az entitások származik. Minden entitás típusa a egyeznek különböző információt ad vissza. 
+## <a name="data-from-entities"></a>Entitások adatainak
+A legtöbb csevegőrobotok és alkalmazások kell több, mint a leképezés neve. Ez további, opcionális adatokat az utterance (kifejezés) a felderített entitások származik. Minden entitás típusa az egyezés különböző adatait adja vissza. 
 
-Egy egyetlen szó vagy kifejezés egy utterance is megegyezhet egynél több entitás. Ebben az esetben minden egyező entitást a pontszámot is visszaad. 
+Egy egyetlen slovo nebo frázi v az utterance (kifejezés) meg tudja több entitást. Ebben az esetben minden ilyen entitás a pontszámot is visszaad. 
 
-Minden entitás vissza a **entitások** a választ kapott a végpont a tömb:
+Minden entitás rendszer adja vissza a **entitások** a válasz a végpontról tömb:
 
 ```JSON
 "entities": [
@@ -139,20 +139,20 @@ Minden entitás vissza a **entitások** a választ kapott a végpont a tömb:
 ]
 ```
 
-## <a name="tokenized-entity-returned"></a>Visszaadott tokenekre entitás
-Több [kulturális környezetek](luis-supported-languages.md#tokenization) térjen vissza a forrásentitás-objektum az az `entity` érték [tokenekre bontott](luis-glossary.md#token). A startIndex és a forrásentitás-objektum a LUIS által visszaadott endIndex van leképezve a tokenekre, új érték hanem ahhoz, hogy a nyers entitás programozott módon bontsa ki az eredeti lekérdezést. 
+## <a name="tokenized-entity-returned"></a>Tokenekre entitást adott vissza
+Több [kulturális környezetek](luis-supported-languages.md#tokenization) az a entitás objektumot ad vissza a `entity` érték [tokenekre](luis-glossary.md#token). A startIndex és a LUIS az adott vissza a célentitás objektum endIndex nem feleltethető meg az új, tokenekre érték hanem ahhoz, hogy programozott módon bontsa ki a nyers entitás az eredeti lekérdezésre. 
 
-Például a német, a word `das Bauernbrot` van a tokenekre bontott `das bauern brot`. A tokenekre érték `das bauern brot`, ad vissza, és az eredeti érték programozott módon lehet meghatározni a startIndex és az eredeti lekérdezés, felkínálva endIndex `das Bauernbrot`.
+Ha például a német, a word `das Bauernbrot` be van tokenekre `das bauern brot`. A tokenekre érték `das bauern brot`, adja vissza, és az eredeti érték programozott módon lehet meghatározni a startIndex és az eredeti lekérdezés, így endIndex `das Bauernbrot`.
 
 ## <a name="simple-entity-data"></a>Egyszerű Entitásadatok
 
-A [egyszerű entitás](luis-concept-entity-types.md) gép megtanulta érték. Lehet, hogy egy szót vagy kifejezést. 
+A [egyszerű entitás](luis-concept-entity-types.md) egy gép megtanult érték. Lehet, hogy egy szót vagy kifejezést. 
 
 `Bob Jones wants 3 meatball pho`
 
-Az előző utterance a `Bob Jones` van egy egyszerű címkézve `Customer` entitás.
+Az előző utterance (kifejezés), a `Bob Jones` van jelölve egy egyszerű `Customer` entitás.
 
-A végpont által visszaadott adatokat az entitás nevét, a utterance felderített szöveget, a helyét, valamint a felderített szöveget a pontszám tartalmazza:
+A végpont által visszaadott szerepel az entitás nevét, a felderített szöveget az utterance (kifejezés), a helyét a felderített szöveg és a pontszám:
 
 ```JSON
 "entities": [
@@ -168,17 +168,17 @@ A végpont által visszaadott adatokat az entitás nevét, a utterance felderít
 
 |Objektum|Entitás neve|Érték|
 |--|--|--|
-|Egyszerű entitás|"Ügyfél"|"Belinszky János"|
+|Egyszerű entitás|"Ügyfél"|"Belinszky jones"|
 
 ## <a name="hierarchical-entity-data"></a>A hierarchikus adatok
 
-[Hierarchikus](luis-concept-entity-types.md) entitások gép megtanulta, és egy szót vagy kifejezést tartalmazhat. Gyermekek azonosítja a környezetben. Ha a szülő-gyermek kapcsolat a szöveg pontos egyezés, használja a [lista](#list-entity-data) entitás. 
+[Hierarchikus](luis-concept-entity-types.md) entitások gép megtudhatta, és tartalmazhat egy szót vagy kifejezést. Gyermekek környezet azonosítja. Ha egy szülő-gyermek kapcsolat a pontos egyezés egyeztetése keres, használja a [lista](#list-entity-data) entitás. 
 
 `book 2 tickets to paris`
 
-Az előző utterance a `paris` lett címkézve egy `Location::ToLocation` gyermeke a `Location` a hierarchikus. 
+Az előző utterance (kifejezés), a `paris` feliratú egy `Location::ToLocation` gyermeke a `Location` hierarchikus entitás. 
 
-A végpont által visszaadott adatokat az entitás nevét és a gyermek nevét, a utterance felderített szöveget, a helyét, valamint a felderített szöveget a pontszám tartalmazza: 
+A végpont által visszaadott szerepel az entitás nevét és a gyermek nevét, a felderített szöveget az utterance (kifejezés), a helyét a felderített szöveget, és a pontszám: 
 
 ```JSON
 "entities": [
@@ -194,18 +194,18 @@ A végpont által visszaadott adatokat az entitás nevét és a gyermek nevét, 
 
 |Objektum|Szülő|Gyermek|Érték|
 |--|--|--|--|--|
-|A hierarchikus|Hely|ToLocation|"Párizsi"|
+|A hierarchikus|Hely|ToLocation|"Párizs"|
 
 ## <a name="composite-entity-data"></a>Összetett Entitásadatok
-[Összetett](luis-concept-entity-types.md) entitások gép megtanulta, és egy szót vagy kifejezést tartalmazhat. Vegye figyelembe például egy összetett entitást az előre elkészített `number` és `Location::ToLocation` , a következő utterance:
+[Összetett](luis-concept-entity-types.md) entitások gép megtudhatta, és tartalmazhat egy szót vagy kifejezést. Vegyük példaként egy összetett entitást, előre elkészített `number` és `Location::ToLocation` az a következő utterance (kifejezés):
 
 `book 2 tickets to paris`
 
-Figyelje meg, hogy `2`, számot, és `paris`, a ToLocation közöttük, amelyek nem részei, azokat az entitásokat szavak rendelkezik. A zöld aláhúzási, egy címkézett utterance a szerepel a [LUIS] [ LUIS] webhelyen, az azt jelzi, egy összetett entitást.
+Figyelje meg, hogy `2`, száma, és `paris`, a ToLocation van közöttük, amelyek nem részei a bármelyikével szavakat. A zöld, szerepel a címkézett utterance (kifejezés) az aláhúzás a [LUIS](luis-reference-regions.md) -webhely azt jelzi, hogy egy összetett entitást.
 
-![Összetett entitás](./media/luis-concept-data-extraction/composite-entity.png)
+![Összetett entitást](./media/luis-concept-data-extraction/composite-entity.png)
 
-Összetett entitások vissza egy `compositeEntities` tömb és az összetett belül minden entitásokat is vissza a `entities` tömb:
+A visszaadott összetett entitások egy `compositeEntities` is ad a tömb és az összetett lévő entitások a `entities` tömb:
 
 ```JSON
   "entities": [
@@ -253,23 +253,23 @@ Figyelje meg, hogy `2`, számot, és `paris`, a ToLocation közöttük, amelyek 
 
 |Objektum|Entitás neve|Érték|
 |--|--|--|
-|Előre elkészített entitás - szám|"builtin.number"|"2"|
-|Hierarchikus entitás - helye|"Location::ToLocation"|"Párizsi"|
+|Előre összeállított entitások - szám|"builtin.number"|"2"|
+|Hierarchikus entitás - helye|"Location::ToLocation"|"Párizs"|
 
-## <a name="list-entity-data"></a>Entitás listaadatai
+## <a name="list-entity-data"></a>Entitások adatainak listája
 
-A [lista](luis-concept-entity-types.md) entitás nem gép-nal. Egy szöveges pontos egyezés. Egy listát olyan cikkekhez szinonimák mellett a listán szereplő elemek jelöli. LUIS listát elemen egyező egy entitásként a válaszul jelöli meg. Egy szinonima egynél több lista lehet. 
+A [lista](luis-concept-entity-types.md) entitás nem machine-megtanult. Egy pontos egyezés egyeztetése. Egy listát a listában, és ezekhez az elemekhez tartozó szinonimák jelöli. A LUIS bármely lista egy elemének való egyezés a válasz egy egységként jelöli meg. A szinonimát egynél több lista is lehet. 
 
-Tegyük fel, hogy az alkalmazás még a listáját, és nevű `Cities`, így módosuló város nevek, beleértve a város repülőtéri (tenger-tac), a repülőtéri kód (SZE), a postai irányítószám (98101) és a telefon körzetszám (206). 
+Tegyük fel, hogy az alkalmazás rendelkezik egy nevű lista `Cities`, ami lehetővé teszi a városok nevei, beleértve a város, repülőtér (Sea-tac), a repülőtér kódja (SEA), a postai irányítószám (98101) és a telefonszám körzetszámát (206) változata. 
 
-|Listaelem|Elem szinonimák|
+|Listaelem|Elemet a szinonimák|
 |---|---|
-|Seattle|tenger-tac, tengeri, 98101, 206, + 1 |
-|Párizs|CDG, roissy, leltár, 75001, 1, +33|
+|Seattle|tenger-tac, tenger 98101, 206, + 1 |
+|Párizs|CDG, leltár, roissy 75001, 1, +33|
 
 `book 2 tickets to paris`
 
-Az előző utterance, a word a `paris` Párizsi elem részeként van rendelve a `Cities` entitás listában. A lista entitás mind a cikk normalizált nevet, valamint az elemet már megegyezik. 
+Az az előző utterance (kifejezés), a word `paris` Párizs elem részeként van leképezve a `Cities` entitás listája. A lista entitás illeszkedik mind a cikk normalizált nevét, valamint az elemet a szinonimák. 
 
 ```JSON
 "entities": [
@@ -287,7 +287,7 @@ Az előző utterance, a word a `paris` Párizsi elem részeként van rendelve a 
 ]
 ```
 
-Egy másik példa utterance, Párizsi szinonimát használja:
+Egy másik példa utterance (kifejezés), Párizs szinonima használatával:
 
 `book 2 tickets to roissy`
 
@@ -307,8 +307,8 @@ Egy másik példa utterance, Párizsi szinonimát használja:
 ]
 ```
 
-## <a name="prebuilt-entity-data"></a>Előre elkészített Entitásadatok
-[Előre elkészített](luis-concept-entity-types.md) entitások alapján használja a nyílt forráskódú reguláris kifejezéssel egyező felderített [felismerő szöveges](https://github.com/Microsoft/Recognizers-Text) projekt. Előre elkészített entitásokat a entitások tömb vissza, és használja a következő típusnév előtagként `builtin::`. A következő egy példa utterance a visszaadott előre elkészített entitásokkal áll:
+## <a name="prebuilt-entity-data"></a>Előre összeállított entitások adatainak
+[Előre összeállított](luis-concept-entity-types.md) entitások egy reguláris kifejezés egyeztetése a nyílt forráskódú használatával alapján felderített [felismerő szöveges](https://github.com/Microsoft/Recognizers-Text) projekt. Előre összeállított entitások entitások tömbben visszaküldi, és használja a típusnév előtaggal `builtin::`. A következő szöveg egy példa utterance (kifejezés) a visszaadott előre összeállított entitások a következő:
 
 `Dec 5th send to +1 360-555-1212`
 
@@ -391,8 +391,8 @@ Egy másik példa utterance, Párizsi szinonimát használja:
   ]
 ``` 
 
-## <a name="regular-expression-entity-data"></a>Reguláris kifejezés Entitásadatok
-[Reguláris kifejezés](luis-concept-entity-types.md) entitások felderített megadta az entitás létrehozásakor eredményező kifejezés reguláris kifejezéssel egyező alapján. Használata esetén `kb[0-9]{6}` az reguláris kifejezés meghatározását, a következő JSON-válasz lesz a visszaadott reguláris kifejezés entitásokkal a lekérdezés egy példa utterance `When was kb123456 published?`:
+## <a name="regular-expression-entity-data"></a>Entitásadatok reguláris kifejezés
+[Reguláris kifejezés](luis-concept-entity-types.md) entitások felderített alapján egy reguláris kifejezés egyeztetése adnia az entitás létrehozásakor kifejezés használatával. Használata esetén `kb[0-9]{6}` reguláris kifejezés definícióját, a következő JSON-választ az egy példa utterance (kifejezés) a lekérdezés a visszaadott reguláris kifejezés entitásokkal `When was kb123456 published?`:
 
 ```JSON
 {
@@ -423,18 +423,18 @@ Egy másik példa utterance, Párizsi szinonimát használja:
 ```
 
 ## <a name="extracting-names"></a>Nevek kibontása
-Nevek lekérése egy utterance nem nehéz, mert a név lehet a betűk és szavak szinte bármilyen kombinációját. Attól függően, hogy milyen típusú nevet szeretné bontani több lehetőség közül választhat. Ezek nincsenek szabályok, de további útmutatást. 
+Nevének lekérése az utterance (kifejezés) azért nehéz, mert a neve betűket és szavakat szinte bármilyen kombinációja lehet. Milyen típusú neve, kibontására, függően több lehetőség közül választhat. Ezek nem a szabályokat, de további útmutatást. 
 
-### <a name="names-of-people"></a>Azoknak a személyeknek nevét
-Népi neve lehet néhány enyhe formátum attól függően, hogy a nyelvi és kulturális környezet. Vagy a hierarchikus entitás első és utolsó nevével gyermekobjektumokkal vagy egy egyszerű entitás szerepkörök első és utolsó neve. Ügyeljen arra, hogy példákat mutatnak be, amely használja az első és utolsó a utterance utterances különböző hosszúságú, és utterances különböző részein közötti összes leképezések, beleértve a nincs szándék. [Felülvizsgálati](label-suggested-utterances.md) végpont utterances rendszeresen nem jelzett megfelelően nevek megjelölésére. 
+### <a name="names-of-people"></a>Személyek nevét
+Emberek neve nem lehet néhány kisebb formátum nyelvi és kulturális környezet függően. Vezetéknév és utónév gyermekeként vagy egy hierarchikus entitás használata, vagy egy egyszerű entitás a szerepkörök az utónév és Vezetéknév. Ügyeljen arra, hogy példákkal szemlélteti, hogy az első és utolsó az utterance (kifejezés), a különböző hosszúságú kimondott szöveg és a kimondott szöveg különböző részein nevét használja az összes szándék fog vonatkozni, akár a egy sem szándék. [Felülvizsgálat](label-suggested-utterances.md) végpont utterances rendszeresen bármely címkenevek nem jelzett megfelelően. 
 
 ### <a name="names-of-places"></a>Helyek nevei
-Hely neve beállítása és például városokat, országok, állapotok, tartományok és országok ismert. Ha az alkalmazás olyan helyek megkaphat készletét használja, fontolja meg egy listában entitás. Ha található összes helyezze nevek van szüksége, hozzon létre egy egyszerű entitás, és példák számos. Adja meg kifejezést helyneveket megerősítése milyen helyi nevek megjelenését, például az alkalmazásban. [Felülvizsgálati](label-suggested-utterances.md) végpont utterances rendszeresen nem jelzett megfelelően nevek megjelölésére. 
+Hely neve beállítása és ismert, például a város, megyék, államok, megyék és országok. Ha az alkalmazás egy helyen tudja készletét használja, fontolja meg egy lista entitást. Ha meg kell keresnie az összes helyezze el a neveket, hozzon létre egy egyszerű entitás, és adja meg a különböző példákat. Adja hozzá a hely nevének megerősítése milyen helyen nevek néz ki az alkalmazásban kifejezés listáját. [Felülvizsgálat](label-suggested-utterances.md) végpont utterances rendszeresen bármely címkenevek nem jelzett megfelelően. 
 
-### <a name="new-and-emerging-names"></a>Új és neve
-Egyes alkalmazások kell új és nevét, például a termék vagy a vállalatok találja. Ez az adatok kinyerése a legbonyolultabb típusát. Egy egyszerű entitás kezdődnie, és adja hozzá a kódot listáját. [Felülvizsgálati](label-suggested-utterances.md) végpont utterances rendszeresen nem jelzett megfelelően nevek megjelölésére. 
+### <a name="new-and-emerging-names"></a>Új és újonnan megjelenő neve
+Bizonyos alkalmazásokhoz kell tudni új és újonnan felbukkanó nevek, például a termékek vagy cégek keresése. Ez az a legbonyolultabb adatkinyerés típusát. Egy egyszerű entitás előtaggal kell kezdődnie, és adja hozzá a kifejezések listáját. [Felülvizsgálat](label-suggested-utterances.md) végpont utterances rendszeresen bármely címkenevek nem jelzett megfelelően. 
 
-## <a name="pattern-roles-data"></a>Minta szerepkörök adatok
+## <a name="pattern-roles-data"></a>A minta szerepkörök adatok
 Szerepkörök az entitások környezetfüggő különbségek. 
 
 ```JSON
@@ -495,8 +495,8 @@ Szerepkörök az entitások környezetfüggő különbségek.
 }
 ```
 
-## <a name="patternany-entity-data"></a>Pattern.any Entitásadatok
-Pattern.any entitások használt sablon utterances, a változó hosszúságú entitások legyenek egy [mintát](luis-concept-patterns.md). 
+## <a name="patternany-entity-data"></a>Entitásadatok pattern.any
+Pattern.any entitásokat is használt sablon utterances, a változó hosszúságú entitások egy [minta](luis-concept-patterns.md). 
 
 ```JSON
 {
@@ -541,10 +541,10 @@ Pattern.any entitások használt sablon utterances, a változó hosszúságú en
 
 
 ## <a name="sentiment-analysis"></a>Hangulatelemzés
-Ha véleményeket elemzés van konfigurálva, a a LUIS json válasz tartalmazza véleményeket elemzés. További információ a céggel kapcsolatos véleményeket elemzés a [Szövegelemzések](https://docs.microsoft.com/azure/cognitive-services/text-analytics/) dokumentációját.
+Ha hangulatelemzés van konfigurálva, a LUIS json-válasz tartalmazza a hangulatelemzés. További információ a hangulatelemzés az [Szövegelemzés](https://docs.microsoft.com/azure/cognitive-services/text-analytics/) dokumentációját.
 
-### <a name="sentiment-data"></a>Véleményeket adatok
-Véleményeket adatai között 1 vagy 0 az pozitív jelző pontszámot (közelebb 1) vagy negatív (0-ra közelebb) az adatok céggel kapcsolatos véleményeket.
+### <a name="sentiment-data"></a>Véleményadatok
+Véleményadatok egy 1 és 0 a pozitív jelző közötti pontszámot (közelebb 1) vagy negatív (0 közelebb) az adatok a róluk szóló véleményeket.
 
 Kulturális környezet esetén `en-us`, a válasz:
 
@@ -555,7 +555,7 @@ Kulturális környezet esetén `en-us`, a válasz:
 }
 ```
 
-Minden más országban használható a rendszer a választ:
+Minden más országban a válasz a következő:
 
 ```JSON
 "sentimentAnalysis": {
@@ -564,8 +564,8 @@ Minden más országban használható a rendszer a választ:
 ```
 
 
-### <a name="key-phrase-extraction-entity-data"></a>Kulcs kifejezés kibontási Entitásadatok
-A kulcs kifejezés kibontási entitás legfontosabb kifejezések adja vissza a utterance által biztosított [Szövegelemzések](https://docs.microsoft.com/azure/cognitive-services/text-analytics/).
+### <a name="key-phrase-extraction-entity-data"></a>A kulcsfontosságú kifejezések kinyerése Entitásadatok
+A kulcsfontosságú kifejezések kinyerése entitás kulcskifejezéseket adja vissza az utterance (kifejezés), által biztosított [Szövegelemzés](https://docs.microsoft.com/azure/cognitive-services/text-analytics/).
 
 <!-- TBD: verify JSON-->
 ```JSON
@@ -576,12 +576,12 @@ A kulcs kifejezés kibontási entitás legfontosabb kifejezések adja vissza a u
 ]
 ```
 
-## <a name="data-matching-multiple-entities"></a>Több entitás megfelelő adatok
-LUIS felderítését a utterance az összes entitásokat ad vissza. Ennek eredményeképpen a chatbot kell a döntést az eredmények alapján. Egy utterance egy utterance sok entitás is van:
+## <a name="data-matching-multiple-entities"></a>Az adatokat több entitás megfelelő
+A LUIS felderítését az utterance (kifejezés) az összes entitásokat ad vissza. Ennek eredményeképpen a csevegőrobot szükségessé eredményei alapján döntéseket. Az utterance (kifejezés) az utterance (kifejezés) számos entitás is rendelkeznek:
 
 `book me 2 adult business tickets to paris tomorrow on air france`
 
-A LUIS végpont fel tud deríteni a különféle entitásokat ugyanazokat az adatokat: 
+A LUIS-végpont felderítése is ugyanazokat az adatokat különböző entitások: 
 
 ```JSON
 {
@@ -709,6 +709,4 @@ A LUIS végpont fel tud deríteni a különféle entitásokat ugyanazokat az ada
 
 ## <a name="next-steps"></a>További lépések
 
-Lásd: [entitások hozzáadása](luis-how-to-add-entities.md) entitások felvétele a LUIS app tájékozódhat.
-
-[LUIS]: https://docs.microsoft.com/azure/cognitive-services/luis/luis-reference-regions
+Lásd: [entitások hozzáadása](luis-how-to-add-entities.md) további információ entitások hozzáadása a LUIS-alkalmazás.

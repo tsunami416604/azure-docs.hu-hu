@@ -1,6 +1,6 @@
 ---
-title: Szempontok a virtuális gépek Azure-készletben és különbségeket |} Microsoft Docs
-description: További tudnivalók a különbségek és szempontokat, az Azure-veremben lévő virtuális gépek használatakor.
+title: Különbségek és szempontok a virtuális gépek az Azure Stackben |} A Microsoft Docs
+description: Különbségek és szempontok ismerje meg az Azure Stack lévő virtuális gépek használatakor.
 services: azure-stack
 documentationcenter: ''
 author: brenduns
@@ -14,44 +14,44 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/23/2018
 ms.author: brenduns
-ms.openlocfilehash: 324fa19aa97cead44f38d07a2fd0765048cd6238
-ms.sourcegitcommit: 680964b75f7fff2f0517b7a0d43e01a9ee3da445
+ms.openlocfilehash: 4d475ec93bd8bfa5cc84848ed61afa6a9d6e319b
+ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34605388"
+ms.lasthandoff: 07/07/2018
+ms.locfileid: "37902180"
 ---
-# <a name="considerations-for-using-virtual-machines-in-azure-stack"></a>Virtuális gépek Azure-készletben használatának szempontjai
+# <a name="considerations-for-using-virtual-machines-in-azure-stack"></a>Szempontok a virtuális gépek az Azure Stackben
 
-*A következőkre vonatkozik: Azure verem integrált rendszerek és az Azure verem szoftverfejlesztői készlet*
+*A következőkre vonatkozik: Azure Stackkel integrált rendszerek és az Azure Stack fejlesztői készlete*
 
-Az Azure verem virtuális gépek igény szerinti, méretezhető számítási erőforrások adja meg. Virtuális gépek (VM) telepítése előtt ismernie kell a virtuális gép szolgáltatásához Azure verem és a Microsoft Azure közötti különbségekről. Ez a cikk ismerteti, ezek a különbségek, és azonosítja a virtuális gépek telepítéséhez tervezési fő szempontjait. Azure verem és az Azure közötti magas szintű különbségek kapcsolatos további tudnivalókért lásd: a [szempontok kulcs](azure-stack-considerations.md) cikk.
+Az Azure Stack virtuális gépek igény szerinti, méretezhető számítási erőforrás biztosítanak. Mielőtt telepít virtuális gépeket (VM), ismernie kell a virtuális gép az Azure Stackben elérhető funkciókat és a Microsoft Azure közötti különbségeket. Ez a cikk ismerteti a különbségeket, és azonosítja a virtuális gép központi telepítések tervezésének fő szempontjait. Azure Stack és az Azure magas szintű különbségeit kapcsolatos további információkért tekintse meg a [szempontok kulcs](azure-stack-considerations.md) cikk.
 
-## <a name="cheat-sheet-virtual-machine-differences"></a>Lap cheat: virtuális gép különbségek
+## <a name="cheat-sheet-virtual-machine-differences"></a>Hasznos tanácsok: virtuális gép különbségek
 
 | Szolgáltatás | Azure (globális) | Azure Stack |
 | --- | --- | --- |
-| Virtuálisgép-rendszerképek | Az Azure piactéren lemezképeket hozhat létre virtuális gépet tartalmaz. Tekintse meg a [Azure piactér](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/category/compute?subcategories=virtual-machine-images&page=1) lap használatával jeleníthetők meg az Azure piactéren elérhető képeket listáját. | Alapértelmezés szerint nincs képeket elérhető a verem Azure piactéren. Az Azure-verem felhő rendszergazdájának kell közzétételére, vagy töltse le a lemezképet a verem Azure piactéren előtt a felhasználók használni tudják őket. |
-| Virtuálisgép-méretek | Azure virtuális gépek méretű széles választékát támogatja. Az elérhető méretek és a lehetőségek kapcsolatos információkért tekintse meg a [Windows virtuális gépek méretét](../../virtual-machines/virtual-machines-windows-sizes.md) és [Linux virtuálisgép-méretek](../../virtual-machines/linux/sizes.md) témaköröket. | Az Azure verem támogatja az Azure-ban rendelkezésre álló virtuálisgép-méretek egy részét. A támogatott méretek listájának megtekintéséhez, tekintse meg a [virtuálisgép-méretek](#virtual-machine-sizes) című szakaszát. |
-| Virtuális gép kvóták | [Kvótakorlát](../../azure-subscription-service-limits.md#service-specific-limits) a Microsoft által beállított | Az Azure verem felhő rendszergazdájának kell megadnia a kvóták, ahhoz, azok a felhasználók számára virtuális gépek kínálnak. |
-| Virtuálisgép-bővítmények |Azure virtuálisgép-bővítmények széles választékát támogatja. Az elérhető bővítmények kapcsolatos információkért tekintse meg a [virtuálisgép-bővítmények és a szolgáltatások](../../virtual-machines/windows/extensions-features.md) cikk.| Az Azure verem támogatja az Azure-ban rendelkezésre álló bővítmények egy részét, és a bővítmény rendelkező különböző verziókat. Az Azure verem felhő rendszergazda megadhatja, hogy mely bővítmények, amelyeket a felhasználók számára elérhetővé kell tenni. A támogatott bővítmények listájának megtekintéséhez, tekintse meg a [virtuálisgép-bővítmények](#virtual-machine-extensions) című szakaszát. |
-| Virtuálisgép-hálózat | Nyilvános IP-címek hozzárendelését a virtuális gép az interneten keresztül érhetők el.<br><br><br>Az Azure virtuális gépek egy rögzített DNS-névvel rendelkezik. | A bérlői virtuális géphez rendelt nyilvános IP-címek csak Azure verem szoftverfejlesztői készlet környezetben érhetők el. A felhasználóknak rendelkezniük kell az Azure verem szoftverfejlesztői készlet keresztül hozzáférést [RDP](azure-stack-connect-azure-stack.md#connect-to-azure-stack-with-remote-desktop) vagy [VPN](azure-stack-connect-azure-stack.md#connect-to-azure-stack-with-vpn) csatlakozni a virtuális gép, amely Azure-készletben jön létre.<br><br>Egy Azure verem példány belül létrehozott virtuális gépek rendelkezik egy DNS-nevet, a felhő rendszergazdája által beállított értéke alapján. |
-| Virtuálisgép-tároló | Támogatja a [által kezelt lemezeken.](../../virtual-machines/windows/managed-disks-overview.md) | Felügyelt lemezek még nem támogatottak Azure-készletben. |
-| API-verziók | Azure mindig a legújabb API-verziók a virtuális gép minden funkció rendelkezik. | Azure verem adott Azure-szolgáltatások és az adott API-verziók támogatja ezeket a szolgáltatásokat. A támogatott API-verziók listáját megtekintéséhez tekintse meg a [API-verziók](#api-versions) című szakaszát. |
-|Virtuális gép rendelkezésre állási csoportok|Több tartalék tartományok (2 vagy 3 régiónként)<br>Több frissítési tartományt<br>Felügyelt támogatása|Több tartalék tartományok (2 vagy 3 régiónként)<br>Több frissítési tartományt (legfeljebb 20)<br>Nem felügyelt támogatása|
-|Virtuálisgép-méretezési csoportok|Támogatott automatikus méretezése|Automatikus skálázása nem támogatott.<br>Adja hozzá a méretezési készletben, a portál, a Resource Manager-sablonok vagy a PowerShell használatával további példányokat.
+| Virtuálisgép-lemezképek | Az Azure Marketplace-en a lemezképek, amelyek segítségével hozzon létre egy virtuális gépet tartalmaz. Tekintse meg a [Azure Marketplace-en](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/category/compute?subcategories=virtual-machine-images&page=1) oldal az Azure piactéren elérhető rendszerképek listájának megtekintéséhez. | Alapértelmezés szerint nincsenek képeket elérhető az Azure Stack piactéren. Az Azure Stack-felhő rendszergazdájának kell közzétenni vagy töltse le a rendszerképeket az Azure Stack piactéren felhasználók használatba vétel előtt. |
+| Virtuálisgép-méretek | Az Azure számos különböző méretet a virtuális gépeket támogatja. A rendelkezésre álló méretekben és lehetőségekkel kapcsolatos további információkért tekintse meg a [Windows virtuális gépek méretei](../../virtual-machines/virtual-machines-windows-sizes.md) és [Linux virtuálisgép-méretek](../../virtual-machines/linux/sizes.md) témaköröket. | Az Azure Stack az Azure-ban elérhető virtuálisgép-méretek egy részét támogatja. Ha szeretné megtekinteni a támogatott méretek listáját, tekintse meg a [virtuálisgép-méretek](#virtual-machine-sizes) című szakaszát. |
+| Virtuális gép kvóták | [Magkvóta korlátozásának](../../azure-subscription-service-limits.md#service-specific-limits) Microsoft-beállításokat | Az Azure Stack-felhő rendszergazdája hozzá kell rendelnie kvóták, mielőtt azok a felhasználók számára a virtuális gépek kínálnak. |
+| Virtuálisgép-bővítmények |Az Azure számos különböző virtuálisgép-bővítmények támogatja. Az elérhető bővítmények kapcsolatos további információkért tekintse meg a [virtuális gépi bővítmények és szolgáltatások](../../virtual-machines/windows/extensions-features.md) cikk.| Az Azure Stack az Azure-ban elérhető bővítmények egy részét támogatja, és a bővítmény rendelkező verzióját. Az Azure Stack-felhő rendszergazdája választhat a kiterjesztések lehetővé kell tenni a felhasználók számára. A támogatott bővítmények listájának megtekintéséhez, tekintse meg a [virtuálisgép-bővítmények](#virtual-machine-extensions) című szakaszát. |
+| Virtuálisgép-hálózat | A bérlői virtuális géphez rendelt nyilvános IP-címeket az interneten keresztül érhetők el.<br><br><br>Az Azure Virtual Machines rögzített DNS névvel rendelkezik. | A bérlői virtuális géphez társított nyilvános IP-címek csak az Azure Stack Development Kit környezetben érhetők el. A felhasználó az Azure Stack Development Kit használatával hozzáféréssel kell rendelkeznie [RDP](azure-stack-connect-azure-stack.md#connect-to-azure-stack-with-remote-desktop) vagy [VPN](azure-stack-connect-azure-stack.md#connect-to-azure-stack-with-vpn) kapcsolódni egy virtuális gépet, amely jön létre az Azure Stackben.<br><br>Egy adott Azure Stack-példánnyal belül létrehozott virtuális gépeket kell egy DNS-nevet, a felhő rendszergazdája által beállított értéke alapján. |
+| Virtuálisgép-tároló | Támogatja a [felügyelt lemezeket.](../../virtual-machines/windows/managed-disks-overview.md) | A felügyelt lemezek még nem támogatottak az Azure Stackben. |
+| API-verziók | Az Azure mindig a legújabb API-verziók a virtuális gép minden funkció esetén rendelkezik. | Az Azure Stack konkrét Azure-szolgáltatás és az adott API-verziók támogatja ezeket a szolgáltatásokat. Ha szeretné megtekinteni a támogatott API-verziók listáját, tekintse meg a [API-verziók](#api-versions) című szakaszát. |
+|Virtuális gép rendelkezésre állási csoportok|Több tartalék tartomány (2 vagy 3 régiónként)<br>Több frissítési tartomány<br>Felügyelt lemezek támogatása|Több tartalék tartomány (2 vagy 3 régiónként)<br>(Legfeljebb 20) több frissítési tartomány<br>Nem felügyelt lemezes támogatás|
+|Virtuálisgép-méretezési csoportok|Automatikus skálázás támogatott|Automatikus skálázás nem támogatott.<br>További példányok hozzáadása egy méretezési csoportot a portálon, a Resource Manager-sablonok vagy a PowerShell használatával.
 
 ## <a name="virtual-machine-sizes"></a>Virtuálisgép-méretek
 
-Azure verem írja elő az erőforrás-korlátozások keresztül (helyi és a szolgáltatásiszint-kiszolgálón.) erőforrások fogyasztásának elkerülése érdekében Ezek a korlátozások a bérlő élmény javításához, csökkenti a többi bérlő erőforrás-fogyasztásának hatását.
+Az Azure Stack közzétételével erőforráskorlátok elkerülése érdekében keresztül használatalapú erőforrások (helyi és a szolgáltatásiszint-kiszolgáló.) Ezek a korlátok a bérlői erőforrás-használat más bérlők által hatásának csökkentése révén javíthatja.
 
-- A virtuális hálózati kimenő sávszélesség caps vezessen be olyan. Azure-készletben a Caps ugyanazok, mint a caps az Azure-ban.
-- Tároló-erőforrások, az Azure verem tárolási IOPS-korlátok vonatkoznak a bérlők a tárolók eléréséhez erőforrások alapvető overconsumption elkerülése érdekében valósít meg.
-- Csatolt adatok több lemezzel rendelkező virtuális gépekhez a maximális átviteli sebességgel minden adatlemez 500 IOPS HHDs, de 2300 IOPS SSD-k.
+- A hálózati kimenő forgalom a virtuális gépről nincsenek sávszélesség caps helyen. Az Azure Stackben Caps ugyanazok, mint a caps az Azure-ban.
+- A tárolási erőforrások az Azure Stack IOPS-korlátok storage tárolóhoz a hozzáférés a bérlők által erőforrások alapszintű overconsumption elkerülése érdekében valósít meg.
+- Több csatlakoztatott adatlemezekkel rendelkező virtuális gépek esetén a maximális sebessége az egyes adatlemezek 500 IOPS HDD és SSD-k 2300 IOPS.
 
-A következő táblázat felsorolja a virtuális gépek által támogatott Azure veremben konfigurációjuk együtt:
+Az alábbi táblázat a virtuális gépek által támogatott az Azure Stacken és annak konfigurációját sorolja fel:
 
-| Típus           | Méret          | A támogatott méretek tartomány |
+| Típus           | Méret          | Támogatott méretek tartományán |
 | ---------------| ------------- | ------------------------ |
 |Általános célú |Alapszintű A        |[A0 - A4](azure-stack-vm-sizes.md#basic-a)                   |
 |Általános célú |Standard A     |[A0 - A7](azure-stack-vm-sizes.md#standard-a)              |
@@ -62,15 +62,15 @@ A következő táblázat felsorolja a virtuális gépek által támogatott Azure
 |Memóriaoptimalizált|D-sorozat       |[D11 - D14](azure-stack-vm-sizes.md#mo-d)            |
 |Memóriaoptimalizált|DS-sorozat      |[DS11 - DS14](azure-stack-vm-sizes.md#mo-ds)|
 |Memóriaoptimalizált|Dv2-sorozat     |[D11_v2 - DS14_v2](azure-stack-vm-sizes.md#mo-dv2)     |
-|Memóriaoptimalizált|DSv2-sorozat-  |[DS11_v2 - DS14_v2](azure-stack-vm-sizes.md#mo-dsv2)    |
+|Memóriaoptimalizált|DSv2 sorozat –  |[DS11_v2 - DS14_v2](azure-stack-vm-sizes.md#mo-dsv2)    |
 
-Virtuálisgép-méretek és a kapcsolódó erőforrás mennyiségek Azure verem és az Azure közötti megegyeznek. Ez magában foglalja az a memóriamennyiség, magok száma, és az adatlemezek hozható létre, szám vagy mérete. Az azonos méretű virtuális gépek teljesítményét azonban egy adott Azure verem környezetben alapul szolgáló jellemzői függ.
+Virtuálisgép-méretek és a társított erőforrás mennyiségek konzisztensek az Azure Stack és az Azure között. Ez magában foglalja a memória, a magok számát és a létrehozott adatlemezek száma és mérete. Az azonos méretű virtuális gépek teljesítményét azonban egy adott Azure Stack-környezet alapul szolgáló jellemzőit függ.
 
 ## <a name="virtual-machine-extensions"></a>Virtuálisgép-bővítmények
 
- Azure verem bővítmények egy kis készletét tartalmazza. Frissítések és a további kiterjesztések piactér szindikálási keresztül érhetők el.
+ Az Azure Stack bővítmények egy kis készletét tartalmazza. Frissítések és a további kiterjesztések tartalomtípus-gyűjtési Marketplace-en keresztül érhető el.
 
-A következő PowerShell-parancsfájl segítségével a verem Azure környezetben elérhető virtuálisgép-bővítmények listájának beolvasása:
+A következő PowerShell-parancsfájl használatával érhetők el az Azure Stack környezettel virtuálisgép-bővítmények listájának beolvasása:
 
 ```powershell
 Get-AzureRmVmImagePublisher -Location local | `
@@ -82,11 +82,11 @@ Get-AzureRmVmImagePublisher -Location local | `
 
 ## <a name="api-versions"></a>API-verziók
 
-Virtuális gépek jellemzői Azure verem a következő API-verzióit támogatja:
+Virtuális gépek jellemzői az Azure Stack a következő API-verziók támogatják:
 
-![Virtuális gép típusú erőforrások](media/azure-stack-vm-considerations/vm-resoource-types.png)
+![Virtuális gép erőforrástípusok](media/azure-stack-vm-considerations/vm-resoource-types.png)
 
-A következő PowerShell-parancsfájl segítségével az API verziójának lekérése elérhető Azure verem környezetében a virtuális gépek jellemzői:
+A következő PowerShell-parancsfájl segítségével az API-verziók lekérése az Azure Stack-környezet által biztosított virtuálisgép-funkciók:
 
 ```powershell
 Get-AzureRmResourceProvider | `
@@ -96,17 +96,17 @@ Get-AzureRmResourceProvider | `
   where-Object {$_.ProviderNamespace -like “Microsoft.compute”}
 ```
 
-A támogatott erőforrástípusai és API-verziók listáját változhat, ha a felhő üzemeltetője a Azure verem környezet frissíti egy újabb verzióra.
+A támogatott erőforrástípusok és API-verziók listáját eltérőek lehetnek, ha a felhő üzemeltetője frissíti az Azure Stack-környezet újabb verzióra.
 
 ## <a name="windows-activation"></a>Windows-aktiválás
 
-A Windows-termékeket termékkel használati jogosultságok és a Microsoft feltételeinek megfelelően kell használni. Használja az Azure verem [automatikus Virtuálisgép-aktiválás](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/dn303421(v%3dws.11)) Windows Server virtuális gépek (VM) aktiválása (AVMA).
+Windows termékek termékhasználati jogosultságoknak és a Microsoft licencfeltételeit összhangban kell felhasználni. Használja az Azure Stack [automatikus Virtuálisgép-aktiválás](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/dn303421(v%3dws.11)) Windows Server virtuális gépeken (VM) aktiválása (AVMA).
 
-- Az Azure-verem gazdagép akkor aktiválódik, a Windows Server 2016 Windows az AVMA kulcsokat. Minden virtuális gép, amely a Windows Server 2012 vagy újabb rendszer automatikusan aktiválja.
-- Futtassa a Windows Server 2008 R2 automatikusan nincs aktiválva, és aktiválni kell a virtuális gépek [MAK-aktiválást](https://technet.microsoft.com/library/ff793438.aspx). MAK-aktiválást használ, meg kell adnia a saját termékkulcsot.
+- Az Azure Stack gazdagépen az AVMA kulcsokat Windows aktiválja a Windows Server 2016-hoz. Az összes virtuális gépek, amelyek a Windows Server 2012 vagy újabb a rendszer automatikusan aktiválja.
+- Futtassa a Windows Server 2008 R2 automatikusan nem aktív, és aktiválni kell a virtuális gépek [MAK-aktiválást](https://technet.microsoft.com/library/ff793438.aspx). A MAK-aktiválást használjon, meg kell adnia a saját termékkulcsot.
 
-Microsoft Azure használatával, hogy a KMS-aktiválás Windows virtuális gépek aktiválása. Ha áthelyezi a virtuális gépek Azure-veremből Azure és az esetlegesen fellépő problémák aktiválása, lásd: [hibaelhárítása a Windows Azure virtuális gép aktiválással kapcsolatos problémák](https://docs.microsoft.com/azure/virtual-machines/windows/troubleshoot-activation-problems). További információk találhatók a [hibaelhárítás Windows aktiválási hibák Azure virtuális gépeken](https://blogs.msdn.microsoft.com/mast/2017/06/14/troubleshooting-windows-activation-failures-on-azure-vms/) Azure támogatási csapatának blogja post.
+A Microsoft Azure Windows virtuális gépek aktiválása KMS-aktiválást használ. Ha áthelyezi egy virtuális Gépet az Azure Stack az Azure és az esetlegesen fellépő problémák aktiválása, lásd: [hibaelhárítása az Azure Windows virtuális gép aktiválási problémák](https://docs.microsoft.com/azure/virtual-machines/windows/troubleshoot-activation-problems). További információt talál a [hibaelhárítása Windows-aktiválási hibák az Azure virtuális gépekhez](https://blogs.msdn.microsoft.com/mast/2017/06/14/troubleshooting-windows-activation-failures-on-azure-vms/) Azure támogatási csapatának blogbejegyzést.
 
 ## <a name="next-steps"></a>További lépések
 
-[Windows virtuális gép létrehozása Azure-készletben a PowerShell használatával](azure-stack-quick-create-vm-windows-powershell.md)
+[Windows virtuális gép létrehozása a PowerShell-lel az Azure Stackben](azure-stack-quick-create-vm-windows-powershell.md)

@@ -1,6 +1,6 @@
 ---
-title: MSI konfigurálása az Azure virtuálisgép-méretezési beállítása az Azure portál használatával
-description: Lépés által felügyelt szolgáltatás identitásának (MSI) lévő Azure VMSS, az Azure portál használatával konfigurálására vonatkozó részletes utasításokat.
+title: Az MSI konfigurálása egy Azure-beli virtuálisgép-méretezési csoportban a az Azure portal használatával
+description: Útmutató az Azure VMSS, az Azure portal használatával konfigurálja a Felügyeltszolgáltatás-identitás (MSI) lépésben.
 services: active-directory
 documentationcenter: ''
 author: daveba
@@ -9,73 +9,73 @@ editor: ''
 ms.service: active-directory
 ms.component: msi
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 02/20/2018
 ms.author: daveba
-ms.openlocfilehash: c915c692a12781538e10d367d40e3efe473a6853
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 1ba9f827abeb0c0cf6430089e1fb504288550737
+ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "33929043"
+ms.lasthandoff: 07/07/2018
+ms.locfileid: "37900463"
 ---
-# <a name="configure-a-vmss-managed-service-identity-msi-using-the-azure-portal"></a>Konfigurálja a VMSS felügyelt szolgáltatás identitás (MSI) az Azure portál használatával
+# <a name="configure-a-virtual-machine-scale-set-managed-service-identity-msi-using-the-azure-portal"></a>A virtuális gép konfigurálása méretezési Felügyeltszolgáltatás-identitás (MSI) az Azure portal használatával
 
 [!INCLUDE[preview-notice](../../../includes/active-directory-msi-preview-notice.md)]
 
-Felügyelt Szolgáltatásidentitást az Azure Active Directoryban automatikusan felügyelt identitással Azure szolgáltatásokat biztosít. Ez az identitás, amely támogatja az Azure AD-alapú hitelesítés, anélkül, hogy a hitelesítő adatokat a kódban a szolgáltatással való hitelesítésre szolgáló használhatja. 
+Felügyeltszolgáltatás-identitás az Azure-szolgáltatásokat az Azure Active Directoryban automatikusan felügyelt identitást biztosít. Használhatja ezt az identitást, amely támogatja az Azure AD-hitelesítés, a kód a hitelesítő adatok nélkül bármely szolgáltatással való hitelesítésre. 
 
-Ön ebből a cikkből megtudhatja, hogyan engedélyezheti vagy letilthatja a rendszer identitás hozzárendelése egy VMSS, az Azure portál használatával. Hozzárendelése és eltávolítása a felhasználói identitások az Azure VMSS a jelenleg nem támogatott az Azure portálon.
+Ebben a cikkben, megtudhatja, hogyan engedélyezheti és tilthatja le a hozzárendelt identitás egy virtuálisgép-méretezési csoportot, a rendszer az Azure portal használatával. Hozzárendelése, illetve a felhasználó által hozzárendelt identitások egy Azure-beli virtuálisgép-méretezési készlet eltávolítása jelenleg nem támogatott az Azure Portalon keresztül.
 
 > [!NOTE]
-> A felhasználói identitás műveletek jelenleg nem támogatottak az Azure portálon. Biztonsági frissítések ellenőrzése.
+> A felhasználóhoz hozzárendelt identitás műveletek jelenleg nem támogatottak az Azure Portalon keresztül. Biztonsági frissítések keresése.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 
-- Ha nem ismeri a felügyelt Szolgáltatásidentitás, tekintse meg a [áttekintés szakaszban](overview.md).
-- Ha még nem telepítette az Azure-fiók [regisztráljon egy ingyenes fiókot](https://azure.microsoft.com/free/) folytatása előtt.
+- Ha még nem ismeri a Felügyeltszolgáltatás-identitást, tekintse meg a [áttekintés szakaszban](overview.md).
+- Ha még nem rendelkezik Azure-fiók [regisztrálhat egy ingyenes fiókot](https://azure.microsoft.com/free/) a folytatás előtt.
 
-## <a name="managed-service-identity-during-creation-of-an-azure-virtual-machine-scale-set"></a>Felügyelt Szolgáltatásidentitás egy Azure virtuálisgép-méretezési csoport létrehozásakor
+## <a name="managed-service-identity-during-creation-of-an-azure-virtual-machine-scale-set"></a>Felügyeltszolgáltatás-identitás létrehozása az Azure-beli virtuálisgép-méretezési csoportot
 
-Virtuális gép létrehozása az Azure-portálon jelenleg nem támogatja a felügyelt Szolgáltatásidentitás műveleteket. Ehelyett tekintse meg a következő Azure virtuális gép méretezési készlet létrehozása gyors üzembe helyezés cikk először létre kell hoznia egy Azure virtuálisgép-méretezési csoport:
+A virtuális gép létrehozása az Azure Portalon keresztül jelenleg nem támogatja a Felügyeltszolgáltatás-identitás műveletek. Ehelyett olvassa el az alábbi Azure virtuális gép méretezési készlet létrehozása a rövid útmutató cikkben először hozzon létre egy Azure-beli virtuálisgép-méretezési csoportot:
 
-- [Egy virtuálisgép-méretezési készlet létrehozása az Azure portálon](../../virtual-machine-scale-sets/quick-create-portal.md)  
+- [Hozzon létre egy virtuálisgép-méretezési csoportban az Azure Portalon](../../virtual-machine-scale-sets/quick-create-portal.md)  
 
-Lépjen a következő szakaszban talál részletes információt MSI engedélyezését a virtuálisgép-méretezési készlet.
+Majd folytassa a következő szakaszban az MSI engedélyezéséhez a virtuálisgép-méretezési csoportot a részletekért.
 
-## <a name="enable-managed-service-identity-on-an-existing-azure-vmms"></a>Egy meglévő Azure VMMS szolgáltatás identitásának felügyelt engedélyezése
+## <a name="enable-managed-service-identity-on-an-existing-azure-vmms"></a>Felügyeltszolgáltatás-identitását egy meglévő Azure VMMS a engedélyezése
 
-A rendszer, amely eredetileg lett kiépítve nélkül identitásának hozzárendelt engedélyezése:
+Ahhoz, hogy a rendszer hozzárendelt identitás eredetileg anélkül, hogy üzembe helyezett virtuális gépen:
 
-1. Jelentkezzen be a [Azure-portálon](https://portal.azure.com) társított Azure-előfizetést, amely a virtuálisgép-méretezési csoport tartalmaz egy olyan fiók használatával.
+1. Jelentkezzen be a [az Azure portal](https://portal.azure.com) az Azure-előfizetést, amely tartalmazza a virtuálisgép-méretezési csoporthoz tartozó fiókkal.
 
-2. Nyissa meg a kívánt virtuálisgép-méretezési készlet.
+2. Keresse meg a kívánt virtuálisgép-méretezési csoportot.
 
-3. Engedélyezéséhez a virtuális Géphez hozzárendelt rendszer identitásának jelölje ki "Yes" a "Felügyelt szolgáltatásidentitás", és kattintson a **mentése**. Ez a művelet eltarthat 60 másodperc, vagy a több befejezése:
+3. A virtuális gépen a rendszer által hozzárendelt identitással engedélyezése "Igen" kiválasztásával "Managed service identity" alatt, és kattintson a **mentése**. Ez a művelet is igénybe vehet, 60 másodperc vagy több végrehajtásához:
 
    [![Konfiguráció lap képernyőképe](../media/msi-qs-configure-portal-windows-vmss/create-windows-vmss-portal-configuration-blade.png)](../media/msi-qs-configure-portal-windows-vmss/create-windows-vmss-portal-configuration-blade.png#lightbox)  
 
-## <a name="remove-managed-service-identity-from-an-azure-virtual-machine-scale-set"></a>Egy Azure virtuálisgép-méretezési csoport felügyelt Szolgáltatásidentitás eltávolítása
+## <a name="remove-managed-service-identity-from-an-azure-virtual-machine-scale-set"></a>Felügyeltszolgáltatás-identitás eltávolítása egy Azure-beli virtuálisgép-méretezési csoportot
 
-Ha egy virtuálisgép-méretezési csoport, amely már nem kell egy olyan MSI Csomaghoz:
+Ha egy virtuális gép méretezési csoportot, amely már nem kell egy olyan MSI Csomaghoz van:
 
-1. Jelentkezzen be a [Azure-portálon](https://portal.azure.com) társított Azure-előfizetést, amely a virtuálisgép-méretezési csoport tartalmaz egy olyan fiók használatával. Emellett győződjön meg arról, hogy a fiókja tagja egy szerepkör, amely lehetővé teszi az írási engedéllyel a virtuálisgép-méretezési készlet.
+1. Jelentkezzen be a [az Azure portal](https://portal.azure.com) az Azure-előfizetést, amely tartalmazza a virtuálisgép-méretezési csoporthoz tartozó fiókkal. Ügyeljen arra, hogy a fiók tartozik egy szerepkör, amely lehetővé teszi a virtuálisgép-méretezési csoportot írási engedéllyel.
 
-2. Nyissa meg a kívánt virtuálisgép-méretezési készlet.
+2. Keresse meg a kívánt virtuálisgép-méretezési csoportot.
 
-3. Tiltsa le a rendszer a virtuális gép identitásának rendelt "Felügyelt szolgáltatás identitás" a "nem" kiválasztásával, majd kattintson a Mentés gombra. Ez a művelet eltarthat 60 másodperc, vagy a több befejezése:
+3. Tiltsa le a rendszer, ha a "Nem", "Managed service identity" alatt a virtuális gép identitásának hozzárendelte, majd kattintson a Mentés gombra. Ez a művelet is igénybe vehet, 60 másodperc vagy több végrehajtásához:
 
    ![Konfiguráció lap képernyőképe](../media/msi-qs-configure-portal-windows-vmss/disable-windows-vmss-portal-configuration-blade.png)  
 
 ## <a name="related-content"></a>Kapcsolódó tartalom
 
-- Felügyelt Szolgáltatásidentitás áttekintését lásd: [áttekintése](overview.md).
+- Felügyeltszolgáltatás-identitás áttekintését lásd: [áttekintése](overview.md).
 
 ## <a name="next-steps"></a>További lépések
 
-- Az Azure portálon adjon egy Azure virtuális gép méretezési MSI [egy másik Azure-erőforrás elérésére](howto-assign-access-portal.md).
+- Az Azure Portallal, adja meg az Azure virtuálisgép-méretezési csoport beállítása MSI [egy másik Azure-erőforrásokhoz való hozzáférés](howto-assign-access-portal.md).
 
-Az alábbi Megjegyzések szakasz segítségével visszajelzést, és segítsen pontosítsa és a tartalom.
+Használja a következő megjegyzéseket visszajelzést, és segítsen finomíthatja és a tartalom formázása.

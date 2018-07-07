@@ -8,12 +8,12 @@ ms.date: 06/26/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: d814bed6f126cb3b81d85c4e797a22d2ac22ddfb
-ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
+ms.openlocfilehash: 4862e3aa976287512fd69fdfe9295e3f3328d5a7
+ms.sourcegitcommit: 11321f26df5fb047dac5d15e0435fce6c4fde663
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37856205"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37887776"
 ---
 # <a name="common-issues-and-resolutions-for-azure-iot-edge"></a>Az Azure IoT Edge gyakori problémái és azok megoldásai
 
@@ -245,9 +245,13 @@ Az edge hub, az edge-futtatókörnyezet része, amely alapértelmezés szerint a
 ### <a name="resolution"></a>Megoldás:
 Az Edge hub környezeti változó értéke **OptimizeForPerformance** való **hamis**. Ehhez két módja van:
 
-A felhasználói felület: a portálon *eszközadatok*->*modulok beállítása*->*speciális Edge-futtatókörnyezet-beállítások konfigurálása*, környezet létrehozása nevű változó *OptimizeForPerformance* , amely *hamis* számára a *Edge hubot*.
+A felhasználói felületen: 
+
+A portálon *eszközadatok*->*modulok beállítása*->*speciális Edge-futtatókörnyezet-beállítások konfigurálása*, egy környezeti változó létrehozása nevű *OptimizeForPerformance* , amely *hamis* számára a *Edge hubot*.
 
 ![optimizeforperformance][img-optimize-for-perf]
+
+**VAGY**
 
 A manifest nasazení:
 

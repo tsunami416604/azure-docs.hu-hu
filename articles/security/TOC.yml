@@ -164,8 +164,16 @@
           href: azure-operational-security-checklist.md
 - name: Cégirányítás és megfelelőség
   items:
-    - name: Pénzügyi szolgáltatások szabályozott számítási feladatokhoz
-      href: ./blueprints/financial-services-regulated-workloads.md
+    - name: FFIEC
+      items:
+        - name: Adatelemzés
+          href: ./blueprints/ffiec-analytics-overview.md
+        - name: Adattárház
+          href: ./blueprints/ffiec-dw-overview.md
+        - name: IaaS-webalkalmazás
+          href: ./blueprints/ffiec-iaaswa-overview.md
+        - name: PaaS webalkalmazás
+          href: ./blueprints/ffiec-paaswa-overview.md
     - name: GDPR
       items:
         - name: Adatelemzés
@@ -187,34 +195,15 @@
         - name: PaaS webalkalmazás
           href: ./blueprints/fedramp-paaswa-overview.md
     - name: PCI DSS
-      href: ./blueprints/payment-processing-blueprint.md
       items:
-        - name: Követelmények áttekintése
-          href: ./blueprints/pci-dss-requirements-overview.md
-        - name: 1. követelmény – tűzfalak
-          href: ./blueprints/pci-dss-requirement-1-firewall.md
-        - name: 2. követelmény – jelszavak
-          href: ./blueprints/pci-dss-requirement-2-password.md
-        - name: 3. követelmény – CHD
-          href: ./blueprints/pci-dss-requirement-3-chd.md
-        - name: 4. követelmény – titkosítás
-          href: ./blueprints/pci-dss-requirement-4-encryption.md
-        - name: 5. követelmény – kártevők
-          href: ./blueprints/pci-dss-requirement-5-malware.md
-        - name: 6. követelmény – biztonságos rendszerek
-          href: ./blueprints/pci-dss-requirement-6-secure-system.md
-        - name: 7. követelmény – hozzáférés
-          href: ./blueprints/pci-dss-requirement-7-access.md
-        - name: 8. követelmény – identitás
-          href: ./blueprints/pci-dss-requirement-8-identity.md
-        - name: 9. követelmény – fizikai hozzáférés
-          href: ./blueprints/pci-dss-requirement-9-physical-access.md
-        - name: 10. követelmény – monitorozás
-          href: ./blueprints/pci-dss-requirement-10-monitoring.md
-        - name: 11. követelmény – tesztelés
-          href: ./blueprints/pci-dss-requirement-11-testing.md
-        - name: 12. követelmény – szabályzat
-          href: ./blueprints/pci-dss-requirement-12-policy.md
+        - name: Adatelemzés
+          href: ./blueprints/pcidss-analytics-overview.md
+        - name: Adattárház
+          href: ./blueprints/pcidss-dw-overview.md
+        - name: IaaS-webalkalmazás
+          href: ./blueprints/pcidss-iaaswa-overview.md
+        - name: PaaS webalkalmazás
+          href: ./blueprints/pcidss-paaswa-overview.md
     - name: Az Egyesült Királyság Nemzeti Egészségügyi Szolgálata
       items:
         - name: Adatelemzés

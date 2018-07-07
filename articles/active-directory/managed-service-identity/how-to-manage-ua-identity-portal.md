@@ -1,6 +1,6 @@
 ---
-title: Hogyan kezelheti a felhasználó hozzárendelt felügyelt szolgáltatás identitásának (MSI) az Azure portál használatával
-description: Lépésről lépésre történő létrehozása, listázása és hozzárendelt felhasználó törlése a felügyelt identitás.
+title: Hogyan kezelheti a felhasználó hozzárendelt Felügyeltszolgáltatás-identitás (MSI) az Azure portal használatával
+description: Részletes útmutatást létrehozása, listázása és törlése a felhasználóhoz rendelt a felügyelt identitás.
 services: active-directory
 documentationcenter: ''
 author: daveba
@@ -9,22 +9,22 @@ editor: ''
 ms.service: active-directory
 ms.component: msi
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/16/2018
 ms.author: daveba
-ms.openlocfilehash: 206f508ca8df13cdc8194cc9a95d828397ea0b85
-ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
+ms.openlocfilehash: 02073742264e4f65d3c582174348495d86f47d43
+ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/22/2018
-ms.locfileid: "33929352"
+ms.lasthandoff: 07/07/2018
+ms.locfileid: "37903935"
 ---
-# <a name="create-list-or-delete-a-user-assigned-managed-service-identity-msi-using-the-azure-portal"></a>Lista létrehozása vagy törlése a felhasználó által felügyelt szolgáltatás Identity (MSI) az Azure portál használatával
+# <a name="create-list-or-delete-a-user-assigned-managed-service-identity-msi-using-the-azure-portal"></a>Lista létrehozása vagy törlése a felhasználóhoz rendelt Felügyeltszolgáltatás-identitás (MSI) az Azure portal használatával
 
 [!INCLUDE[preview-notice](~/includes/active-directory-msi-preview-notice-ua.md)]
 
-Felügyelt Szolgáltatásidentitás az Azure Active Directory-identitással felügyelt Azure-szolgáltatásokhoz biztosít. Ezzel az identitással használhatja az Azure AD-alapú hitelesítés, anélkül, hogy hitelesítő adatok a kódban támogató szolgáltatások felé történő hitelesítésre. 
+Felügyeltszolgáltatás-identitás egy felügyelt identitás, az Azure Active Directory Azure-szolgáltatásokat biztosít. Ez az identitás használatával, amelyek támogatják az Azure AD-hitelesítés, anélkül, hogy hitelesítő adatok a kód a szolgáltatásokhoz való hitelesítéséhez. 
 
-Jelenleg nincs lehetőség létrehozása, listázása, vagy az Azure portál használatával felügyelt identitás hozzárendelt felhasználó törlése.  Biztonsági frissítések ellenőrzése.
+Jelenleg nincs lehetőség a létrehozása, listázása és törlése a felhasználóhoz rendelt felügyelt identitás, az Azure portal használatával.  Biztonsági frissítések keresése.

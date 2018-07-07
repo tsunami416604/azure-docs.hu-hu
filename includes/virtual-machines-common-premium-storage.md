@@ -8,143 +8,149 @@ ms.topic: include
 ms.date: 06/05/2018
 ms.author: ramankum
 ms.custom: include file
-ms.openlocfilehash: 5cbe6f1f8f15e9da8e1fe6961d3da9b9e2a31e4b
-ms.sourcegitcommit: b7290b2cede85db346bb88fe3a5b3b316620808d
+ms.openlocfilehash: 4c14bfbad58849acefdc8c3a5513f681aba84ab8
+ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34806383"
+ms.lasthandoff: 07/07/2018
+ms.locfileid: "37909921"
 ---
-# <a name="high-performance-premium-storage-and-managed-disks-for-vms"></a>Prémium szintű Storage nagy teljesítményű és a virtuális gépek felügyelt lemezek
-Prémium szintű Storage nagy teljesítményű, alacsony késésű támogatása a virtuális gépek (VM) továbbítja a bemeneti/kimeneti (I/O)-igényes munkaterhelések. Prémium szintű Storage használó Virtuálisgép-lemezek SSD-meghajtót (SSD) adatait tárolják. Hogy kihasználják a sebesség és a prémium szintű storage lemezek teljesítményét, prémium szintű Storage áttelepítheti a meglévő virtuális gépek lemezei.
+# <a name="high-performance-premium-storage-and-managed-disks-for-vms"></a>Nagy teljesítményű Premium Storage és a felügyelt lemezek virtuális gépekhez
+Az Azure Premium Storage nagy teljesítményű, kis késleltetésű lemeztámogatás a virtuális gépek (VM) biztosít a bemeneti/kimeneti (I/O)-igényű számítási feladatokhoz. A Premium Storage szolgáltatást használó Virtuálisgép-lemezek tartós állapotú meghajtókhoz (SSD-kkel) adatokat tárolja. A sebesség előnyeit, és a prémium szintű tárolólemezeket teljesítményét is, áttelepítheti a meglévő Virtuálisgép-lemezek prémium szintű Storage.
 
-Az Azure több premium tárolólemezek csatolhat egy virtuális géphez. Több lemez használatával biztosít az alkalmazások tárolási virtuális gépenként legfeljebb 256 TB. Prémium szintű Storage az alkalmazások 80000 másodpercenkénti I/O műveletek (IOPS) virtuális gépenként, és legfeljebb 2000 megabájt / másodperc (MB/s) virtuális gépenként lemez átviteli érhető el. Olvasási műveletek nagyon kis késleltetést biztosítanak.
+Az Azure-ban egy virtuális géphez több premium storage-lemez is csatlakoztatható. Több lemez használata lehetővé teszi az alkalmazások legfeljebb 256 TB-nyi tárhelyet. A Premium Storage az alkalmazások másodpercenként (IOPS) virtuális gépenként 80 000 i/o-műveletek és a egy adatátviteli sebességet, akár 2000 megabájt (MB/s) másodpercenként és virtuális gépenként érheti el. Olvasási műveletek rendkívül alacsony késéssel biztosítanak.
 
-Prémium szintű Storage Azure felajánlja a valóban növekedési-és-shift kibővített vállalati alkalmazások, például Dynamics AX, a Dynamics CRM-hez, a Exchange Server, a SAP Business Suite és a SharePoint-farmok a felhőbe. Teljesítmény-igényes adatbázis-terhelések alkalmazások, például az SQL Server, Oracle, MongoDB, MySQL és Redis, egységes magas teljesítménye és kis késleltetése igénylő futtathat.
+A Premium Storage Azure lehetőséget biztosít a valóban lift-and-shift igényű, vállalati alkalmazások például a Dynamics AX, Dynamics CRM, az Exchange Server, SAP Business Suite és a SharePoint-farmok a felhőbe. Teljesítmény-igényes adatbázis-munkaterhelés például az SQL Server, Oracle, MongoDB, MySQL és a Redis, konzisztens magas teljesítménye és kis késleltetése igénylő alkalmazások futtatása.
 
 > [!NOTE]
-> Az alkalmazás a legjobb teljesítmény érdekében javasoljuk, hogy az áttelepített bármely virtuális gép lemezt, amely prémium szintű Storage magas iops értéket igényel. Ha a lemez nem igényli a magas iops értéket, lekapcsolva tartja szabványos Azure Storage segítségével korlát költségek. Standard szintű tárolást, a Virtuálisgép-lemez adatainak (merevlemezes HDD) meghajtók helyett SSD meghajtókon tárolják.
+> Az alkalmazás a legjobb teljesítmény érdekében javasoljuk, hogy minden Virtuálisgép-lemez magas iops-érték a Premium Storage igénylő áttelepített. A lemez nincs szükség a magas iops értéket, ha a standard szintű Azure Storage-ban tartja segíthet korlát költségek. Virtuálisgép-lemez adatait standard szintű tárolóban (merevlemezes HDD) meghajtók helyett SSD meghajtókon tárolják.
 > 
 
-Azure virtuális gépek prémium szintű storage lemezek létrehozásához két lehetőséget kínál:
+Azure-beli virtuális gépek létrehozásához a prémium szintű tárolólemezeket két lehetőséget kínál:
 
 * **Nem felügyelt lemezek**
 
-    Az eredeti metódus nem kezelt lemezeket használni. Az egy nem felügyelt lemezt kezelhetők a storage-fiókok, amelyek a virtuális merevlemez (VHD) fájlok, amelyek megfelelnek a virtuális gépek lemezei tárolhatja. VHD-fájlokat, az Azure storage-fiókok lapblobokat tárolódnak. 
+    Az eredeti metódus nem felügyelt lemezeket használ. A nem felügyelt lemez a storage-fiókok, amellyel a virtuális merevlemez (VHD) fájlok, amelyek megfelelnek a Virtuálisgép-lemezek kezelése. VHD-fájlokat az Azure storage-fiókok lap blobként vannak tárolva. 
 
-* **Felügyelt lemezek**
+* **A felügyelt lemezek**
 
-    Ha úgy dönt, [Azure felügyelt lemezek](../articles/virtual-machines/windows/managed-disks-overview.md), Azure kezeli a storage-fiókok, amelyek a virtuális gép lemezeit használja. Megadhatja, hogy a lemez típusát (prémium és Standard) és a mérete a lemez, amelyekre szüksége van. Azure hoz létre, és az Ön kezeli a lemezt. Nincs több tárfiókot biztosításához maradjon a méretezhetőségi korlátok a storage-fiókok helyezi el a lemezek foglalkoznia. Azure kezeli, amely meg.
+    Ha úgy dönt [Azure Managed Disks](../articles/virtual-machines/windows/managed-disks-overview.md), Azure kezeli a virtuális gépek lemezeihez használt tárfiókok. A lemez típusát (prémium vagy Standard) és a szükséges a lemez kívánt méretét kell megadni. Az Azure létrehozza és felügyeli a lemezt Ön helyett. Nem kell aggódnia a lemezek maradjon a méretezhetőségi korlátok a storage-fiókok biztosítása érdekében több tárfiókban helyezi el. Az Azure kezeli, amely az Ön számára.
 
-Azt javasoljuk, hogy ezt a módot felügyelt lemezek, a számos szolgáltatás előnyeit.
+Azt javasoljuk, hogy a felügyelt lemezek előnyeit azok számos funkciót kiválasztani.
 
-Prémium szintű Storage, első lépésként [az ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/pricing/free-trial/). 
+Ismerkedés a Premium Storage [ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/pricing/free-trial/). 
 
-Prémium szintű Storage a meglévő virtuális gépek áttelepítéssel kapcsolatos információkért lásd: [alakítsa át a Windows virtuális gép nem felügyelt lemezekből felügyelt](../articles/virtual-machines/windows/convert-unmanaged-to-managed-disks.md) vagy [alakítsa át a Linux virtuális gép nem felügyelt lemezekből felügyelt](../articles/virtual-machines/linux/convert-unmanaged-to-managed-disks.md).
+További információ a meglévő virtuális gépek Premium Storage-ba való migrálás: [nem felügyeltről felügyelt Windows virtuális gép konvertálása a felügyelt lemezek](../articles/virtual-machines/windows/convert-unmanaged-to-managed-disks.md) vagy [átalakítása nem felügyeltről felügyelt Linux rendszerű virtuális gép felügyelt lemezeket](../articles/virtual-machines/linux/convert-unmanaged-to-managed-disks.md).
 
 > [!NOTE]
-> Prémium szintű Storage a legtöbb régióban érhető el. Elérhető régiók listáját lásd: a sort **lemezegységet** a [régiónként rendelkezésre Azure termékek](https://azure.microsoft.com/regions/#services).
+> A Premium Storage a legtöbb régióban érhető el. Az elérhető régiók listájáért lásd: sornak **Disk Storage** a [elérhető Azure-termékek régiók szerint](https://azure.microsoft.com/regions/#services).
 > 
 
 ## <a name="features"></a>Szolgáltatások
 
-Az alábbiakban néhány, a prémium szintű Storage szolgáltatásait:
+Íme néhány a Premium Storage jellemzői:
 
-* **Prémium szintű storage-lemezekhez**
+* **Prémium szintű tárolólemezeket**
 
-    Prémium szintű Storage támogatja a megadott méret sorozatú virtuális gépekhez csatolt virtuális gépek lemezei. Prémium szintű Storage támogatja a DS-méretek, DSv2-méretek, GS-méretek, Ls-sorozat, Fs-sorozat és Esv3 sorozatú virtuális gépeket. Megválaszthatja, a hét lemezméret: P4 (32 GB), P6 (64 GB-os), P10 (128 GB), P20 (512 GB), P30 (1024 GB), P40 (2048 GB), P50 (4095 GB). P4 és P6 lemezméret csak még támogatottak felügyelt lemezek. Minden lemez mérete a saját teljesítmény specifikációi. Attól függően, hogy az alkalmazás követelményeinek csatolhat egy vagy több lemezt a virtuális Gépet. Azt ismerteti részletesen specifikációk [prémium szintű Storage méretezhetőségi és Teljesítménycélok](#scalability-and-performance-targets).
+    A Premium Storage támogatja a Virtuálisgép-lemezek, amelyek adott méret-sorozat virtuális gépei csatolhatók. A Premium Storage számos különböző Azure virtuális gépeket támogatja. A hét lemezméretek megválaszthatja: P4 (32 GB), P6 (64 GB), P10 (128 GB), P20 (512 GB), P30 (1024 GB), P40 (2048 GB), P50 (4095 GB). P4 és a P6 szintű lemezméretek csak még támogatottak Managed Disks esetében. Minden lemez méretét a saját teljesítmény specifikációi. Az alkalmazás követelményeitől függően egy vagy több lemez is csatlakoztatható a virtuális géphez. A specifikációk részletesebben leírjuk, hogy [prémium szintű Storage méretezhetőségi és teljesítménycéljai](#scalability-and-performance-targets).
 
-* **Prémium szintű lapblobokat**
+* **Prémium szintű lapblobok**
 
-    Prémium szintű Storage támogatja a lapblobokat. Állandó, nem felügyelt lemezek tárolására prémium szintű Storage a virtuális gépek lapblobokat használnak. Eltérően Azure standard szintű tárolást prémium szintű Storage nem támogatja a blokkblobokat, hozzáfűző blobokat, fájlok, táblák vagy várólisták. Prémium szintű lapblobokat támogatja P50 és P60 P10 a hat méretet (8191GiB). Virtuális gép lemezként csatolandó P60 prémium oldalakra vonatkozó blob nem támogatott. 
+    A Premium Storage támogatja a lapblobokat. Állandó és nem felügyelt lemezek tárolására a Premium Storage-beli virtuális gépek lapblobokat használnak. Ellentétben a standard szintű Azure Storage a Premium Storage nem támogatja a blokkblobokat, hozzáfűző blobok, fájlok, táblák vagy várólisták. Prémium szintű lapblobok támogatja a P10 hat méret és a P50 és P60 (8191GiB). A P60 prémium szintű lapblobok nem támogatott Virtuálisgép-lemezként van csatlakoztatva. 
 
-    Minden objektum, a prémium szintű tárfiók helyezett oldalakra vonatkozó blob lesz. Az oldalakra vonatkozó blob egy, a támogatott kiosztott méretű illesztése. Ezért a prémium szintű tárfiók nem célja, hogy apró blobok tárolására.
+    Minden objektum premium storage-fiókba elhelyezni egy lapblob lesz. A lapblob egy, a támogatott kiosztott méretű illesztése. Éppen ezért a premium storage-fiók nem célja a nagyon kicsi blobok tárolására használható.
 
-* **Prémium szintű storage-fiók**
+* **Premium storage-fiók**
 
-    Prémium szintű Storage használatának megkezdéséhez a nem felügyelt lemezeket, prémium szintű storage-fiók létrehozása. Az a [Azure-portálon](https://portal.azure.com), a prémium szintű storage-fiók létrehozása, válassza ki a **prémium** teljesítményszinttel. Válassza ki a **helyileg redundáns tárolás (LRS)** replikációs beállítás. Is létrehozhat a prémium szintű tárfiók teljesítményszint értékre állításával **Premium_LRS**. A teljesítményszintet módosításához használja a következő módszerek egyikét:
+    A Premium Storage használatának megkezdéséhez hozzon létre a nem felügyelt lemezek prémium szintű tárfiókot. Az a [az Azure portal](https://portal.azure.com), a prémium szintű storage-fiók létrehozása, válassza ki a **prémium** teljesítményszint. Válassza ki a **helyileg redundáns tárolás (LRS)** replikációs beállítás. Is létrehozhat prémium szintű tárfiók úgy, hogy a teljesítményszint **Premium_LRS**. A teljesítmény szint módosításához használja a következő módszerek egyikét:
      
-    - [Az Azure Storage PowerShell](../articles/storage/common/storage-powershell-guide-full.md#manage-the-storage-account)
-    - [Az Azure-tárolás az Azure parancssori felület](../articles/storage/common/storage-azure-cli.md#manage-storage-accounts)
-    - [Az Azure Storage erőforrás szolgáltató REST API](https://docs.microsoft.com/rest/api/storagerp) (az Azure Resource Manager üzembe helyezések) vagy az Azure Storage erőforrás-szolgáltató ügyfélkódtáraival egyik
+    - [PowerShell az Azure Storage szolgáltatáshoz](../articles/storage/common/storage-powershell-guide-full.md#manage-the-storage-account)
+    - [Az Azure CLI az Azure Storage szolgáltatáshoz](../articles/storage/common/storage-azure-cli.md#manage-storage-accounts)
+    - [Az Azure Storage Resource Provider REST API](https://docs.microsoft.com/rest/api/storagerp) (az Azure Resource Manageren alapuló üzemelő példányok) vagy az Azure Storage erőforrás-szolgáltatói ügyfélkódtárak valamelyik
 
-    További információ a prémium szintű tárfiókok korlátairól, lásd: [prémium szintű Storage méretezhetőségi és Teljesítménycélok](#premium-storage-scalability-and-performance-targets).
+    Prémium szintű tárfiókok korlátai kapcsolatos további információkért lásd: [prémium szintű Storage méretezhetőségi és teljesítménycéljai](#premium-storage-scalability-and-performance-targets).
 
-* **Prémium szintű helyileg redundáns tárolás**
+* **Helyileg redundáns Premium tárolóban**
 
-    A prémium szintű tárfiók csak a helyileg redundáns tárolás támogatja a következő replikálási beállítás között. Helyileg redundáns tárolás három másolatot az adatok tartja egyetlen régión belül. Regionális katasztrófa utáni helyreállítás, biztonsági másolatot kell készíteni a virtuális gép lemezeit, egy másik régióban használatával [Azure biztonsági mentés](../articles/backup/backup-introduction-to-azure-backup.md). A georedundáns tárolás (GRS) fiókot és a biztonsági mentési tárolónak kell használnia. 
+    Premium storage-fiók replikálási beállítását csak helyileg redundáns tárolást támogatja. Helyileg redundáns tárolás biztosítja, hogy az adatok három másolatát egy adott régión belül. A regionális vészhelyreállítás, biztonsági másolatot kell készíteni a Virtuálisgép-lemezek egy másik régióban használatával [Azure Backup](../articles/backup/backup-introduction-to-azure-backup.md). A georedundáns tárolás (GRS) fiókot és a biztonsági mentési tárolónak kell használnia. 
 
-    Azure a tárfiók tárolóként a nem kezelt lemezeken használ. Egy Azure virtuális Gépen, amely támogatja a prémium szintű Storage nem felügyelt lemezzel létrehozásakor, és a prémium szintű tárfiók lehetőséget választja, az operációs rendszer és az adatlemezek vannak tárolva, hogy a tárfiók.
+    Az Azure storage-fiókjában tárolójaként a nem felügyelt lemezek esetén használja. Amikor létrehoz egy Azure virtuális Gépen, amely támogatja a nem felügyelt lemezek prémium szintű Storage, és a egy prémium szintű storage-fiókot, az operációs rendszer és az adatlemezek tárolódnak a tárfiók.
 
 ## <a name="supported-vms"></a>Támogatott virtuális gépek
 
-Prémium szintű Storage támogatja a B sorozatnak, DS-méretek, DSv2-méretek, DSv3-sorozat, Esv3-sorozat, GS-méretek, Ls-sorozat, M-sorozat és Fs sorozatú virtuális gépeket. Az ilyen méretű standard és prémium szintű storage lemezek is használhatók. Nem használhat a prémium szintű storage lemezekhez Virtuálisgép-sorozat, amelyek nem prémium szintű Storage-kompatibilis.
+A Premium Storage számos különböző Azure-beli virtuális gépek esetén támogatott. Standard és prémium szintű tárolólemezeket az ilyen virtuális Gépet is használhatja. Nem használhat prémium szintű tárolólemezeket a Virtuálisgép-sorozat, amelyek nem prémium szintű Storage-kompatibilis.
 
 
 További információt az Azure windowsos virtuálisgép-típusairól és -méreteiről a [windowsos virtuális gépek méretét](../articles/virtual-machines/windows/sizes.md) ismertető szakaszban talál. További információt az Azure linuxos virtuálisgép-típusairól és -méreteiről a [linuxos virtuális gépek méretét](../articles/virtual-machines/linux/sizes.md) ismertető szakaszban talál.
 
-Íme néhány a DS-méretek, DSv2-méretek, GS-méretek, a szolgáltatásait Ls-sorozat és Fs sorozatú virtuális gépek:
+Íme néhány a támogatott a prémium szintű funkciók tárolási használó virtuális gépekről:
 
-* **A felhőalapú szolgáltatás**
+* **Rendelkezésre állási csoport**
 
-    DS sorozatnak virtuális gépeket adhat hozzá egy felhőszolgáltatás, amely csak a DS sorozatnak virtuális gépeket tartalmaz. Ne vegyen fel a DS sorozatnak virtuális gépek egy meglévő felhőalapú szolgáltatást típustól eltérő, DS sorozatnak virtuális gépeket. Új felhőalapú szolgáltatás csak a DS sorozatnak virtuális gépeken futó áttelepítheti a meglévő VHD-k. Ha az új felhőalapú szolgáltatás, amelyen a DS sorozatnak virtuális gépekre, használja az ugyanazon virtuális IP-címet használni kívánt [fenntartott IP-cím](../articles/virtual-network/virtual-networks-instance-level-public-ip.md). GS sorozatnak virtuális gépeket lehet hozzáadni egy meglévő felhőalapú szolgáltatást csak a GS sorozatnak virtuális gépeket.
+    A példában a DS sorozatú virtuális gépek használata esetén is hozzáadhat a DS sorozatú virtuális gép egy felhőszolgáltatás, amely csak a DS sorozatú virtuális gépeket tartalmaz. Ne adjon hozzá egy meglévő felhőszolgáltatáshoz, amely rendelkezik típustól eltérő, DS sorozatú virtuális gépek DS sorozatú virtuális gépeket. Új felhőalapú szolgáltatás, amely csak a DS sorozatú virtuális gépek a meglévő virtuális merevlemezeket áttelepítheti. Ha az új felhőalapú szolgáltatás, amely futtatja a DS sorozatú virtuális gépek, használja az ugyanazon virtuális IP-címet használni kívánt [fenntartott IP-címek](../articles/virtual-network/virtual-networks-instance-level-public-ip.md).
 
 * **Operációsrendszer-lemez**
 
-    A prémium szintű Storage virtuális Gépet állíthat be egy prémium szintű vagy egy szabványos operációsrendszer-lemez használatával. A legjobb használhatóság érdekében ajánlott prémium szintű Storage-alapú operációs rendszer lemezt használ.
+    A Premium Storage virtuális gépek állíthat egy prémium szintű vagy egy szabványos operációsrendszer-lemez használatára. A legjobb használhatóság érdekében javasoljuk egy prémium szintű Storage-alapú operációs rendszert tároló lemez használatával.
 
 * **Adatlemezek**
 
-    Prémium szintű Storage azonos virtuális gép prémium és standard lemezek használható. Prémium szintű Storage a virtuális gép kiépítéséhez, és több állandó adatlemezt csatolni a virtuális Gépet. Szükség esetén kapacitást és teljesítményt a kötet, növelje meg a lemezeken is paritásos.
+    Az azonos Premium Storage virtuális gépek premium és standard szintű lemezek használhatja. A Premium Storage virtuális gép létrehozása, és több állandó adatlemezeket csatlakoztathat a virtuális Gépet. Ha szükséges, a kapacitás és a kötet teljesítményének növelése érdekében azt is stripe-a lemezek között.
 
     > [!NOTE]
-    > Ha a prémium szintű storage adatlemezek meg paritásos [tárolóhelyek](http://technet.microsoft.com/library/hh831739.aspx), állítsa be a tárolóhelyek az egyes lemezek használt 1 oszlop. Ellenkező esetben a csíkozott kötet általános teljesítménye lehet kisebb, mint a várt forgalom egyenetlen eloszlását miatt a lemezeken. Alapértelmezés szerint a Kiszolgálókezelőben állíthat be a lemezeket, legfeljebb 8 oszlopok. Ha több mint 8 lemez, a PowerShell segítségével hozza létre a kötetet. Adja meg manuálisan az oszlopok számát. Ellenkező esetben a kiszolgáló-kezelő felhasználói felületén továbbra is használja a 8 oszlopok, még akkor is, ha több lemezt rendelkezik. Ha egy egyetlen paritásos készlet 32 lemezre, például 32 oszlopok megadása. A virtuális lemezt használ, az oszlopok száma a [New-VirtualDisk](http://technet.microsoft.com/library/hh848643.aspx) PowerShell-parancsmag használatát a *numberofcolumns tulajdonsághoz* paraméter. További információkért lásd: [tárolóhelyek – áttekintés](http://technet.microsoft.com/library/hh831739.aspx) és [tárolási tárolóhelyek – gyakori kérdések](http://social.technet.microsoft.com/wiki/contents/articles/11382.storage-spaces-frequently-asked-questions-faq.aspx).
+    > Ha a stripe-e adatokat prémium szintű tárolólemezeket [tárolóhelyek](http://technet.microsoft.com/library/hh831739.aspx), állítsa be a tárolóhelyek 1 oszlop az egyes lemezek, amelyet használhat. Ellenkező esetben a csíkozott kötet általános teljesítményét alacsonyabb, mint a lemezek között miatt a forgalom eloszlása egyenletlen várt lehet. A Kiszolgálókezelőben alapértelmezés szerint állíthat be legfeljebb 8 lemezek oszlopokat. Ha több mint 8 lemez, a PowerShell használatával létrehozni a kötetet. Adja meg manuálisan az oszlopok számát. Ellenkező esetben a Server Manager felhasználói felületén továbbra is használja 8 oszlopokat, ha már rendelkezik további lemezeket. Például ha 32 lemezek egy egyetlen stripe-készlet, adja meg az oszlopok 32. Adja meg a virtuális lemezt használ, az oszlopok számát, a [New-VirtualDisk](http://technet.microsoft.com/library/hh848643.aspx) PowerShell-parancsmagot használja a *NumberOfColumns* paraméter. További információkért lásd: [tárolóhelyek – áttekintés](http://technet.microsoft.com/library/hh831739.aspx) és [Storage Spaces – gyakori kérdések](http://social.technet.microsoft.com/wiki/contents/articles/11382.storage-spaces-frequently-asked-questions-faq.aspx).
     >
     > 
 
 * **Gyorsítótár**
 
-    A méret sorozat, amely támogatja a prémium szintű Storage virtuális gépek egyedi gyorsítótárazási lehetővé teszi a magas szintű teljesítményt és a késés rendelkezik. A gyorsítótárazási funkció meghaladja az alapul szolgáló prémium szintű tároló lemez teljesítménye. Beállíthatja, hogy a lemez gyorsítótárazási házirend prémium szintű storage lemezein **ReadOnly**, **ReadWrite**, vagy **nincs**. A gyorsítótárazási házirend alapértelmezett lemez **ReadOnly** minden prémium adatlemezekhez és **ReadWrite** operációsrendszer-lemezek. Az alkalmazás optimális teljesítmény érdekében használja a megfelelő gyorsítótár-beállítást. Például az olvasási műveleteket, vagy csak olvasható adatlemezek, például az SQL Server-adatfájlok, állítsa a gyorsítótárazási házirend a lemez **ReadOnly**. Írási műveleteket vagy a csak írható adatlemezek, például az SQL Server naplófájlokat, állítsa be a gyorsítótárazási házirend, hogy a lemez **nincs**. Prémium szintű Storage a Tervező optimalizálása kapcsolatos további információkért lásd: [terv teljesítmény a prémium szintű Storage](../articles/virtual-machines/windows/premium-storage-performance.md).
+    Amely támogatja a Premium Storage virtuális gépek (VM) rendelkezik egy egyedi gyorsítótárazási funkció magasabb szintű teljesítményt és kisebb késést eredményez. A gyorsítótárazási funkció meghaladja az alapul szolgáló prémium szintű tárolólemez-teljesítményt. Nem minden virtuális gépek támogatási gyorsítótárazás, ezért tekintse a Virtuálisgép-specifikációk a Virtuálisgép-méretek is érdeklik a további információt.  Virtuális gépek, amelyek támogatják a gyorsítótárazás jelzi, ez a "Maximális gyorsítótárazott és ideiglenes tárolóteljesítmény" mérték azok specifikációja.  Közvetlenül a virtuális gép cím alatt is megadott.
+    
+    Gyorsítótár-, beállíthatja a gyorsítótárazási házirend a prémium szintű tárolólemezeket a lemez **ReadOnly**, **ReadWrite**, vagy **nincs**. A gyorsítótárazási házirend alapértelmezett lemez **ReadOnly** minden prémium szintű adatlemezek esetén és **ReadWrite** operációsrendszer-lemezek esetében. Az optimális teljesítmény érdekében az alkalmazás meg a ne felejtse el a megfelelő gyorsítótárba beállítással. 
+    
+    Például az olvasási vagy csak olvasható az adatlemezeket, például az SQL Server-adatfájlok, gyorsítótárazási szabályzatot állíthat be **ReadOnly**. Írási vagy csak írási adatlemezek, például az SQL Server-naplófájlok, állítsa be a gyorsítótárazási házirend **None**. 
+    
+    A tervezés a Premium Storage optimalizálása kapcsolatos további információkért lásd: [teljesítménybeli tervezés a Premium Storage-](../articles/virtual-machines/windows/premium-storage-performance.md).
 
 * **Elemzés**
 
-    Virtuális gép Teljesítményelemzés lemezek használatával a prémium szintű Storage, kapcsolja be a Virtuálisgép-diagnosztika a [Azure-portálon](https://portal.azure.com). További információkért lásd: [Azure Diagnostics kiterjesztésű monitoring Azure virtuális gép](https://azure.microsoft.com/blog/2014/09/02/windows-azure-virtual-machine-monitoring-with-wad-extension/). 
+    A virtuális gép teljesítményét elemezheti az lemez prémium szintű Storage-ban, a Virtuálisgép-diagnosztika bekapcsolása a [az Azure portal](https://portal.azure.com). További információkért lásd: [Azure virtuális gép figyelése az Azure Diagnostics bővítmény](https://azure.microsoft.com/blog/2014/09/02/windows-azure-virtual-machine-monitoring-with-wad-extension/). 
 
-    Lemez teljesítménye megtekintéséhez operációs rendszerű eszközök, például [Windows Teljesítményfigyelő](https://technet.microsoft.com/library/cc749249.aspx) Windows virtuális gépek és a [iostat](http://linux.die.net/man/1/iostat) Linux virtuális gépek parancsot.
+    Lemez teljesítménye megtekintéséhez használja operációsrendszer-alapú eszközök, például [Windows Performance Monitor](https://technet.microsoft.com/library/cc749249.aspx) Windows virtuális gépek és a [iostat](http://linux.die.net/man/1/iostat) parancsot a Linux rendszerű virtuális gépekhez.
 
-* **VM skálázási korlátai és teljesítmény**
+* **Virtuális gépek kibővített skálázási korlátai és teljesítmény**
 
-    Minden prémium szintű Storage-támogatott Virtuálisgép-méretet rendelkezik méretkorlátai és teljesítmény specifikációk IOPS, sávszélesség és a virtuális gépenként csatolható lemezek számát. Prémium szintű storage lemezek virtuális gépek használatakor győződjön meg arról, hogy nincs-e elegendő iops-érték és a virtuális Gépet, a meghajtó lemez forgalom sávszélességét.
+    Minden prémium szintű Storage által támogatott Virtuálisgép-méret van skálázási korlátait és a teljesítmény specifikációk IOPS, sávszélesség- és a virtuális géphez csatolt lemezek számát. Premium storage-lemezekkel rendelkező virtuális gépek használatakor győződjön meg arról, hogy nincs-e elegendő IOPS és sávszélesség meghajtó lemez forgalmat a virtuális gépen.
 
-    Például a STANDARD_DS1 virtuális gépek sávszélessége dedikált 32 MB/s a prémium szintű tároló lemez forgalmához. Egy P10 prémium szintű tároló lemez a 100 MB/s sávszélességet biztosít. Ha egy P10 prémium szintű tároló lemez a virtuális Géphez van csatolva, csak folytathatja legfeljebb 32 MB/s. A maximális 100 MB/s, amely a P10 lemez nyújt nem használható.
+    Például egy STANDARD_DS1 virtuális gép rendelkezik egy dedikált sávszélesség 32 MB/s a prémium szintű storage lemez forgalmat. Egy P10 prémium szintű tárolólemez 100 MB/s sávszélességet biztosít. Ha egy P10 premium storage lemezt a virtuális Géphez van csatlakoztatva, csak megnyithatja legfeljebb 32 MB/s. A legfeljebb 100 MB/s a P10 lemez által biztosított nem használható.
 
-    A legnagyobb virtuális Gépet a DS-sorozat jelenleg a Standard_DS15_v2. A Standard_DS15_v2 legfeljebb 960 MB/s is biztosít az összes lemez. A GS sorozatnak legnagyobb virtuális gép a Standard_GS5. A Standard_GS5 legfeljebb 2000 MB/s is biztosít az összes lemez.
+    A legnagyobb virtuális Gépet a DS-sorozat jelenleg a Standard_DS15_v2. A Standard_DS15_v2 révén akár 960 MB/s biztosíthat az összes lemez. A GS-sorozat a legnagyobb virtuális Géphez a például a Standard_GS5. A Standard_GS5 révén akár 2000 MB/s biztosíthat az összes lemez.
 
-    Ezek a korlátozások csak a lemez forgalom vannak. Ezek a korlátozások nem tartalmaznak, találatot eredményező gyorsítótárbeli kereséseinek és a hálózati forgalom. Egy külön sávszélesség érhető el virtuális gépek hálózati forgalmához. A hálózati forgalom a sávszélesség eltér a prémium szintű storage lemezek által használt dedikált sávszélesség.
+    Lemez forgalmat csak ezek a korlátok vonatkoznak. Ezek a korlátok nem tartalmazzák a gyorsítótár-találatok és a hálózati forgalmat. Virtuális gép hálózati forgalmának külön sávszélesség érhető el. A hálózati forgalom sávszélessége különbözik a prémium szintű tárolólemezeket által használt dedikált sávszélesség.
 
-    Prémium szintű Storage által támogatott virtuális gépek maximális iops-érték és átviteli sebesség (sávszélesség) kapcsolatos legfrissebb információk: [Windows Virtuálisgép-méretek](../articles/virtual-machines/windows/sizes.md) vagy [Linux Virtuálisgép-méretek](../articles/virtual-machines/linux/sizes.md).
+    A Premium Storage virtuális gépek maximális IOPS és átviteli sebesség (sávszélesség) kapcsolatos legfrissebb információkat lásd: [Windows Virtuálisgép-méretek](../articles/virtual-machines/windows/sizes.md) vagy [Linux Virtuálisgép-méretek](../articles/virtual-machines/linux/sizes.md).
 
-    Prémium szintű storage lemezek és az iops-érték és az átviteli Sebességkorlát kapcsolatos további információkért lásd: a tábla a következő szakaszban.
+    További információ a prémium szintű tárolólemezeket és IOPS és átviteli sebesség korlátaikról a tábla a következő szakaszban talál.
 
 ## <a name="scalability-and-performance-targets"></a>Méretezhetőségi és teljesítménycélok
-Ez a szakasz azt a prémium szintű Storage használatakor vegye figyelembe a méretezhetőségi és Teljesítménycélok írják le.
+Ebben a szakaszban ismertetünk figyelembe kell venni a Premium Storage használata a méretezhetőségi és teljesítménycéljai.
 
-Prémium szintű storage-fiókok a következő méretezhetőségi célok rendelkezik:
+Premium storage-fiókok a következő teljesítménycélokat rendelkezik:
 
-| Teljes kapacitásával | A helyileg redundáns tárolás fiók teljes sávszélesség |
+| Teljes számla kapacitás | Helyileg redundáns tárfiókok teljes sávszélesség |
 | --- | --- | 
-| Lemez kapacitás: 35 TB <br>Pillanatkép-kapacitás: 10 TB | Másolatot 50 Gigabit / másodperc, a bejövő<sup>1</sup> + kimenő<sup>2</sup> |
+| Lemez kapacitása: 35 TB <br>Pillanatkép-kapacitás: 10 TB-os | Felfelé 50 Gigabit / másodperc a bejövő<sup>1</sup> + kimenő<sup>2</sup> |
 
-<sup>1</sup> tárfiók küldött minden adat (kérelmek)
+<sup>1</sup> tárfiók küldött összes adatot (kérést)
 
-<sup>2</sup> tárfiók érkező összes adat (válasz)
+<sup>2</sup> egy tárfiókból fogadott összes adatot (választ)
 
-További információkért lásd: [Azure Storage méretezhetőségi és Teljesítménycélok](../articles/storage/common/storage-scalability-targets.md).
+További információkért lásd: [Azure Storage méretezhetőségi és teljesítménycéljai](../articles/storage/common/storage-scalability-targets.md).
 
-Ha prémium szintű tárfiókok nem felügyelt lemezek használ, és az alkalmazás meghaladja a méretezhetőségi célok egyetlen tárfiók, előfordulhat, hogy az áttelepítést szeretné kezelt lemezre. Ha nem szeretné felügyelt lemezek áttelepítése, összeállítása a több tárfiókot használni kívánt alkalmazást. Ezt követően partícióazonosító az adatok adott tárfiókok között. Például ha azt szeretné, 51-TB lemezek között több virtuális gép csatlakoztatni, elosztva őket két storage-fiókok. 35 TB egy prémium szintű tárfiókok esetén a korlátot. Győződjön meg arról, hogy egy prémium szintű tárfiók soha nem legfeljebb 35 TB-nyi kiosztott lemezeket.
+Ha a premium storage-fiókok nem felügyelt lemezeket használ, és az alkalmazás meghaladja a skálázhatósági célokat, az egy tárfiókban, érdemes migrálása felügyelt lemezekre. Ha nem szeretné migrálása felügyelt lemezekre, hozhat létre az alkalmazás több tárfiók használata. Ezt követően az adatok particionálása ezen a tárfiókon keresztül. Például, ha 51 TB-os lemezek csatolása több virtuális gép között elosztva őket két tárfiókot. 35 TB csak az egyetlen prémium szintű storage-fiókok. Győződjön meg arról, hogy egyetlen premium storage-fiók soha nem rendelkezik több mint 35 TB kiosztott lemezeket.
 
-### <a name="premium-storage-disk-limits"></a>Prémium szintű Tárfiókok lemez korlátai
-Ha a prémium szintű tároló lemez, a lemez mérete határozza meg, a maximális iops-érték és átviteli sebesség (sávszélesség). Az Azure támogatási tárolólemezek hét típusú kínál: P4 (kezelt lemezek csak), P6 (kezelt lemezek csak), P10, P20, P30, P40 és P50. Minden prémium típusú adott korlátai vannak a iops-érték és a teljesítményt. A lemez legyen kijelölve határértékei az alábbi táblázatban ismertetjük:
+### <a name="premium-storage-disk-limits"></a>Prémium szintű Storage korlátok
+Egy prémium szintű tárolólemez üzembe helyezésekor, a lemez mérete határozza meg, a maximális IOPS és átviteli sebesség (sávszélesség). Az Azure premium storage-lemezekkel hét típusú kínál: P4 (Managed Disks csak) P6 (Managed Disks csak) P10, P20, P30, P40 vagy P50. Minden egyes prémium szintű tárolólemez-típusba IOPS és átviteli sebesség bizonyos korlátozások vonatkoznak. Az alábbi táblázat ismerteti a lemeztípusok korlátai:
 
 | Prémium szintű lemezek típusa  | P4    | P6    | P10   | P15   | P20   | P30   | P40   | P50   | 
 |---------------------|-------|-------|-------|-------|-------|-------|-------|-------|
@@ -153,107 +159,107 @@ Ha a prémium szintű tároló lemez, a lemez mérete határozza meg, a maximál
 | Adattovábbítás lemezenként | 25 MB / s  | 50 MB / s  | 100 MB / s | 125 MB / s | 150 MB / s | 200 MB / s | 250 MB / s | 250 MB / s | 
 
 > [!NOTE]
-> Győződjön meg arról, hogy elegendő sávszélesség érhető el a virtuális Gépet, a meghajtó lemez forgalom, lásd: [prémium szintű Storage által támogatott virtuális gépek](#premium-storage-supported-vms). Ellenkező esetben a lemez adatátviteli sebessége és IOPS értékek csökkenthető van korlátozva. Maximális átviteli sebesség és IOPS VM használati korlátait, nem az előző táblázatban ismertetett lemez korlátokat alapul.  
+> Ellenőrizze, hogy elegendő sávszélesség érhető el a virtuális gép meghajtó lemez forgalomra, leírtak szerint [Premium Storage virtuális gépek](#premium-storage-supported-vms). Ellenkező esetben a lemez adatátviteli sebessége és IOPS je omezeno alacsonyabb értékeket. Maximális átviteli sebesség és iops-t a VM-korlátok, nem pedig az előző táblázatban ismertetett korlátok alapján.  
 > 
 > 
 
-Az alábbiakban néhány fontos dolgot tudnia a prémium szintű Storage méretezhetőségi és Teljesítménycélok:
+Íme néhány fontos tudnivaló a Premium Storage méretezhetőségi és teljesítménycéljai kapcsolatban:
 
-* **Kiosztott kapacitást és teljesítményt**
+* **Kiosztott kapacitás és teljesítmény**
 
-    Amikor egy prémium szintű tároló lemez, Standard szintű tárolást, ellentétben a kapacitás, IOPS és átviteli sebessége a lemezen levő kézbesítése garantáltan. Például P50 lemez létrehozása, ha Azure kiépítését 4095 GB-os tárolási kapacitás, 7500 IOPS és 250 MB/s, hogy a lemez adatátviteli sebességét. Az alkalmazás használhat egyetlen kapacitást és teljesítményt részét sem.
+    Amikor üzembe helyez egy prémium szintű tárolólemez standard szintű tárolás esetén, garantáltan a kapacitás, IOPS és átviteli sebessége a lemezen. Ha például P50 lemez létrehozása, ha Azure látja el 4095 GB-os tárolási kapacitás, 7500 IOPS és 250 MB/s átviteli sebességet, hogy a lemez. Az alkalmazás használhatja a kapacitás és teljesítmény részét vagy egészét.
 
-* **Lemez mérete**
+* **Lemezméret**
 
-    Azure leképezve a legközelebbi prémium szintű tároló lemez lehetőséget, a táblának az előző szakaszban meghatározottak szerint a lemez mérete (kerekítve). Például a lemez mérete 100 GB-os besorolásának P10 beállításként. Műveleteket hajthat végre legfeljebb 500 IOPS, az akár 100 MB/s átviteli sebesség. Hasonlóképpen ekkora lemezt 400 GB egy P20 lesz minősítve. Legfeljebb 150 MB/s átviteli sebességgel a 2,300 IOPS ellátásához.
+    Az Azure a legközelebbi prémium szintű tárlemezméretre kerekítünk, mint az előző szakaszban a táblázatban megadott képez le a lemez mérete (kerekítve). A lemez mérete 100 GB-os például egy P10 lehetőségként van besorolva. Műveleteket hajthat végre legfeljebb 500 IOPS, a legfeljebb 100 MB/s átviteli sebesség. Hasonlóképpen egy lemezt méretű 400 GB között P20 sorolja be a rendszer. Legfeljebb 150 MB/s átviteli sebességgel 2,300 IOPS ellátásához.
     
     > [!NOTE]
-    > Könnyen növelhető a meglévő lemezek mérete. Például érdemes 128 GB-os, vagy akár 1 TB-os 30 GB-os lemez méretének növelése céljából. Vagy előfordulhat, hogy szeretné a P20 lemez konvertálása P30 lemezt, mert további kapacitást vagy további IOPS és átviteli van szükség. 
+    > Könnyedén növelheti a meglévő lemezek mérete. Például érdemes 128 GB-os, vagy akár 1 TB-os 30 GB-os lemez méretének növeléséhez. Vagy előfordulhat, hogy szeretné a P20-as lemez konvertálása P30 lemez, mert szüksége további kapacitást vagy további IOPS és átviteli sebességet. 
     > 
  
 * **I/o-mérete**
 
-    Az i/o mérete 256 KB. Ha az átvitt adatok kisebb, mint 256 KB, ez 1 i/o-egység tekintendő. Nagyobb i/o-méretek számlálási több i/o mérete 256 KB. Például 1100 KB i/o 5 i/o-egységek számítanak.
+    Az i/o-mérete 256 KB. Ha az átvitt adatok kisebb, mint 256 KB-os, akkor számít 1 i/o-egységek. Nagyobb méretű i/o-méretek számítanak több i/o-méret 256 KB. Ha például 1100 KB i/o 5 i/o-egységek számítanak.
 
 * **Átviteli sebesség**
 
-    Az átviteli sebesség korlátot a lemezre írás tartalmazza, és azt lemez olvasási műveletek nem kiszolgálása a gyorsítótárból. Például egy P10 lemez rendelkezik 100 MB/s átviteli lemezenként. Néhány példa az érvényes P10 lemez adatátviteli sebességét az alábbi táblázatban láthatók:
+    Az átviteli sebesség korlát a lemez írási műveletek tartalmazza, az azt lemez olvasási műveletek nem szolgálja ki a gyorsítótárból. Például egy P10 lemezt, lemezenként 100 MB/s átviteli. Néhány példa az érvényes átviteli P10 lemez az alábbi táblázatban láthatók:
 
-    | Maximális átviteli sebesség P10 lemezenként | Nem-gyorsítótár beolvasása a lemezről | Nem-gyorsítótár lemez írási műveletek |
+    | P10 lemezenkénti maximális átviteli sebesség | Nem gyorsítótárazási beolvasása a lemezről | Nem gyorsítótárazási lemez írási műveletek |
     | --- | --- | --- |
     | 100 MB/s | 100 MB/s | 0 |
     | 100 MB/s | 0 | 100 MB/s |
     | 100 MB/s | 60 MB/s | 40 MB/s |
 
-* **Találatot eredményező gyorsítótárbeli kereséseinek**
+* **Gyorsítótár-találatok**
 
-    A lefoglalt IOPS vagy a lemez átviteli találatot eredményező gyorsítótárbeli kereséseinek nincs korlátozva. Például azonosítójú adatlemez használatakor egy **ReadOnly** gyorsítótár beállítása a prémium szintű Storage, a gyorsítótárból szolgáltatott olvasások által támogatott virtuális gép nem tartoznak az iops-érték és a teljesítményt biztosít, amelyet a lemezen. Ha egy lemez munkaterhelés túlnyomórészt tesz az olvasási és nagyon nagy átviteli kapacitás kaphat. A gyorsítótár az külön IOPS és átviteli sebességének korlátai, a virtuális gép szintjén, a virtuális gép mérete alapján. DS sorozatnak virtuális gépek körülbelül 4000 iops-érték és a központi gyorsítótár és a helyi SSD i/o-/ 33-MB/s átviteli rendelkezik. GS sorozatnak virtuális gépek legfeljebb 5000 iops teljesítményt és a központi gyorsítótár és a helyi SSD i/o-/ 50 MB/s átviteli rendelkezik. 
+    Gyorsítótár-találatok hozzáférésüket nem korlátozza a kiosztott iops-érték vagy átviteli sebessége a lemezen. Például használhatja az adatlemez egy **ReadOnly** az ügyfélgyorsítótár beállítása a prémium szintű Storage, Olvasás a gyorsítótárból fájlnévkiterjesztései által támogatott virtuális gép nem vonatkozik az IOPS és átviteli sebesség caps a lemezen. Ha egy lemez a munkaterhelés túlnyomórészt szól, nagyon nagy átviteli sebességű kaphat. A gyorsítótár el külön IOPS és átviteli sebesség korlátok, a virtuális gép szint alapján a Virtuálisgép-méretet. DS sorozatú virtuális gépek körülbelül 4000 IOPS és a gyorsítótár és helyi SSD-i magonként 33 MB/s átviteli rendelkezik. A GS sorozatú virtuális gépek legfeljebb 5000 IOPS és a gyorsítótár és helyi SSD-i magonként 50 MB/s átviteli. 
 
 ## <a name="throttling"></a>Throttling
-Sávszélesség-szabályozás fordulhatnak elő, ha az alkalmazás IOPS vagy átviteli meghaladja a prémium szintű storage lemezként lefoglalt korlátok. Sávszélesség-szabályozás is akkor fordulhat elő, ha a lemez teljes forgalom a virtuális Gépen lévő összes lemezeken túllépi ezt a lemezt sávszélesség érhető el a virtuális gép számára. Sávszélesség-szabályozás elkerülése azt javasoljuk, hogy korlátozza-e a függőben lévő a lemez i/o-kérelmek számát. Használja a határértéket, a lemez ellátta méretezhetőségi és Teljesítménycélok, és a lemez sávszélesség álljon rendelkezésre a virtuális gép alapján.  
+Szabályozás fordulhatnak elő, ha az átviteli sebesség vagy az alkalmazás iops-érték meghaladja a lefoglalt korlátozásokat a prémium szintű storage lemezről. Szabályozás is okozhat, ha a lemez teljes forgalmat a virtuális gép összes lemezen meghaladja a lemez sávszélesség érhető el a virtuális gép számára. Szabályozás elkerülése azt javasoljuk, hogy a függőben lévő a lemez i/o-kérések számának korlátozásához. Használja a korlát a lemez ellátta méretezhetőségi és teljesítménycéljai, és a lemez a virtuális gép számára elérhető sávszélesség alapján.  
 
-Az alkalmazás érhető el a legkisebb mértékű késleltetést, ha úgy van kialakítva, hogy elkerülheti a sávszélesség-szabályozás. Azonban ha függőben lévő a lemez i/o-kérelmek száma túl kicsi, az alkalmazás nem használja fel a maximális IOPS és átviteli sebességekhez, a lemez számára elérhető.
+Az alkalmazás a legkisebb késés érhető el, ha arra tervezték, szabályozás elkerülése érdekében. Azonban, ha túl kicsi a függőben lévő a lemez i/o-kérések számát, az alkalmazás nem tudja kihasználni a maximális IOPS és átviteli sebességekhez a lemez számára elérhető.
 
-Az alábbi példák bemutatják, hogyan lehet szabályozási szintek kiszámításához. Minden számítás egy i/o foglalásiegység-méret 256 KB-os alapulnak.
+Az alábbi példák bemutatják, hogyan szabályozási szint kiszámításához. Minden előzetes számítás-i/o-egység mérete 256 KB-os alapulnak.
 
 ### <a name="example-1"></a>1. példa
-Az alkalmazás egy második P10 lemezen feldolgozott 495 i/o-egység 16 KB-os méret. Az i/o-egységek számítanak 495 iops-érték. Ha a második kísérli meg egy 2 MB i/o ugyanazon, i/o-egységek az összes 495 + 8 gyakoriságnál. Ennek az az oka 2 MB i/o = 2048 KB / 256 KB-os = 8 i/o-egység, ha az i/o-egység mérete 256 KB. 495 + 8 hosszúsága meghaladja a 500 IOPS-korláttal lemezként, mert a sávszélesség-szabályozás akkor következik be.
+Az alkalmazás egy P10 lemez egy második feldolgozta a 16 KB-os méret 495 i/o-egységek. Az i/o-egységek számítanak 495 iops-t. Ha második próbál egy 2 MB-os i/o ugyanazon, az összes i/o-egységek egyenlő 495 + 8 iops-t. Ennek az az oka 2 MB méretű i/o = 2048 KB / 256 KB-os = 8 i/o-egységek, ha az i/o-egység mérete 256 KB. A 495 + 8 meghaladja az 500 IOPS-korlát a lemez, mert a szabályozás akkor fordul elő.
 
 ### <a name="example-2"></a>2. példa
-Az alkalmazás feldolgozott 400 i/o-egység P10 lemezen 256 KB-os méret. A teljes sávszélesség felhasznált (400 &#215; 256) / 1 024 KB = 100 MB/s. Egy P10 lemez van 100 MB/s átviteli sebesség korlátozva. Ha az alkalmazás próbálja a második több i/o-műveletet hajt végre, mert az nagyobb a lefoglalt maximális van szabályozva.
+Az alkalmazás P10 lemez mérete 256 KB-os, 400 i/o-egységek dolgozott fel. A teljes sávszélesség felhasznált (400 &#215; 256) / 1024 KB-os = 100 MB/s. P10 lemez 100 MB/s átviteli sebesség határral rendelkezik. Ha az alkalmazás további i/o-műveletek végrehajtása a második megpróbál, Tranzakciókorlát, mert túllépi a lefoglalt korlátot.
 
 ### <a name="example-3"></a>3. példa
-DS4 virtuális gép csatlakoztatott két P30 lemezzel rendelkezik. Minden egyes P30 lemez képes a 200 MB/s átviteli sebesség. DS4 virtuális gép azonban a teljes sávszélesség lemezkapacitás 256 MB/s van. Ön nem meghajtója mindkét csatlakoztatott lemezek maximális átviteli DS4 virtuális Gépet egy időben. A probléma megoldásához, 200 MB/s egy lemezen és 56 MB/s a lemezen forgalmát képes elviselni. Ha a lemez forgalom összege 256 MB/s keresztül kerül, a lemez forgalom folyamatban van.
+DS4 virtuális gép a két P30 lemez csatolva van. Minden egyes P30 lemez 200 MB/s átviteli sebesség alkalmas állapotban. Viszont DS4 virtuális gép rendelkezik a lemez teljes 256 MB/s sávszélesség-kapacitást. Ön nem meghajtót, mindkét csatlakoztatott lemezek maximális átviteli sebesség a DS4 virtuális gépen egyszerre. A probléma megoldásához, képes elviselni forgalmat egy lemezen 200 MB/s és 56 MB/s a lemezen. Ha a lemez forgalom összege 256 MB/s keresztül haladnak, mely folyamatban van.
 
 > [!NOTE]
-> Ha a lemez forgalom legtöbbször a kis i/o-méretek, az alkalmazás valószínűleg elért átviteli sebesség előbb IOPS-korláttal. Azonban ha a lemez forgalom leginkább a nagy i/o-méretek, az alkalmazás valószínűleg elért átviteli sebesség korlát először az IOPS-korláttal helyett. Optimális i/o-méretek segítségével maximalizálhatja az alkalmazás IOPS és átviteli sebesség. Emellett korlátozhatja a függőben lévő lemez i/o-kérelmek számát.
+> A lemez forgalom többnyire áll, kisméretű i/o-mérete, ha az alkalmazás valószínűleg eléri az átviteli sebességhatár előtt IOPS-korlátját. Azonban ha a lemez forgalom többnyire nagy i/o-méretek tartalmaz, valószínűleg az alkalmazás eléri az átviteli sebességhatár először helyett az IOPS-korlátját. Az alkalmazás IOPS és átviteli kapacitás maximalizálhatja a optimális i/o-méretek használatával. Emellett a függőben lévő lemez i/o-kérések számát korlátozhatja.
 > 
 
-További információk a magas teljesítmény designing prémium szintű Storage használatával kapcsolatban lásd: [terv teljesítmény a prémium szintű Storage](../articles/virtual-machines/windows/premium-storage-performance.md).
+A nagy teljesítményű tervezésével kapcsolatos további tudnivalókért a Premium Storage segítségével tekintse meg [teljesítménybeli tervezés a Premium Storage-](../articles/virtual-machines/windows/premium-storage-performance.md).
 
-## <a name="snapshots-and-copy-blob"></a>A pillanatképek és a Blob másolása
+## <a name="snapshots-and-copy-blob"></a>A pillanatképek és a Blob másolásához
 
-A VHD-fájlt a társzolgáltatás nem oldalakra vonatkozó blob. Pillanatképek készítése a lapblobokat, és másolja őket egy másik helyre, például egy másik tárfiókhoz.
+A Storage szolgáltatásban a VHD-fájl egy lapblob. A lapblobok pillanatképeket készíthet, és másolja őket egy másik helyre, például egy másik tárfiókba.
 
 ### <a name="unmanaged-disks"></a>Nem felügyelt lemezek
 
-Hozzon létre [növekményes pillanatképek](../articles/virtual-machines/linux/incremental-snapshots.md) a nem felügyelt premium lemezek, a megszokott módon teszi lehetővé a pillanatképek standard szintű tárolóval. Prémium szintű Storage támogatja a következő replikálási beállítás csak a helyileg redundáns tárolás. Azt javasoljuk, hogy pillanatképeket, és másolja a pillanatképek egy standard georedundáns tárfiókot. További információkért lásd: [Azure Storage redundancia beállítások](../articles/storage/common/storage-redundancy.md).
+Hozzon létre [növekményes pillanatképek](../articles/virtual-machines/linux/incremental-snapshots.md) a nem felügyelt prémium szintű lemezek pillanatképeket használhatja a standard szintű storage szolgáltatással azonos módon. A Premium Storage támogatja a következő replikálási beállítás csak a helyileg redundáns tárolás. Azt javasoljuk, hogy pillanatképeket létrehozni, és másolja a pillanatképek egy georedundáns standard szintű tárfiókot. További információkért lásd: [Azure Storage redundanciabeállításai](../articles/storage/common/storage-redundancy.md).
 
-Egy lemezt a virtuális Géphez van csatolva, ha a lemezen lévő egyes API műveletek nem engedélyezettek. Például nem hajtható végre egy [másolási Blob](/rest/api/storageservices/Copy-Blob) , hogy a blob, ha a lemez csatolva van egy virtuális Gépen a műveletet. Ehelyett először létre kell hoznia egy pillanatképet, hogy a blob használatával a [pillanatkép Blob](/rest/api/storageservices/Snapshot-Blob) REST API-t. Ezután hajtson végre a [másolási Blob](/rest/api/storageservices/Copy-Blob) másolni a csatlakoztatott lemez a pillanatkép. Alternatív megoldásként válassza le a lemezt, és végezze el a szükséges műveleteket.
+Ha egy lemezt egy virtuális Géphez van csatlakoztatva, bizonyos API-műveleteket a lemez használata nem engedélyezett. Például nem végezhető el egy [a Blob másolásához](/rest/api/storageservices/Copy-Blob) műveletet, hogy a blob, ha a lemezt egy virtuális Géphez van csatlakoztatva. Ehelyett először hozzon létre egy adott blob pillanatképe használatával a [Blob pillanatkép](/rest/api/storageservices/Snapshot-Blob) REST API-t. Ezután hajtson végre a [a Blob másolásához](/rest/api/storageservices/Copy-Blob) a pillanatkép másolása a csatlakoztatott lemezen. Másik lehetőségként válassza le a lemezt, és hajtsa végre a szükséges műveleteket.
 
-Prémium szintű storage-blob pillanatfelvételekkel a következő korlátozások vonatkoznak:
+Az alábbi korlátozások érvényesek a prémium szintű storage blob-pillanatfelvételek:
 
 | Prémium szintű tárolási kapacitása | Érték |
 | --- | --- |
-| Egy blob pillanatképek maximális száma | 100 |
-| A pillanatképek tárfiókok kapacitásával<br>(Csak a pillanatképek adatokat tartalmazza. Nem tartalmaz adatokat alap BLOB.) | 10 TB |
-| Egymást követő pillanatképek közötti minimális időtartam | 10 perc |
+| Blobonkénti pillanatképek maximális száma | 100 |
+| A pillanatképek a tárfiókok kapacitásával<br>(Az adatok a pillanatképek csak tartalmazza. Nem tartalmaznak adatokat alap blob.) | 10 TB |
+| Egymást követő-pillanatképek közötti minimális idő | 10 perc |
 
-A pillanatképek georedundáns másolatait átmásolhatja pillanatképek a prémium szintű storage-fiók egy standard georedundáns tárfiókot az AzCopy vagy a Blob másolása. További információkért lásd: [adatátvitel az AzCopy parancssori segédprogram](../articles/storage/common/storage-use-azcopy.md) és [másolási Blob](/rest/api/storageservices/Copy-Blob).
+A pillanatképek georedundáns másolatait másolhatja a pillanatképek a premium storage-fiók georedundáns standard storage-fiókba az AzCopy és a Blob másolásához. További információkért lásd: [adatátvitel az AzCopy parancssori segédprogram](../articles/storage/common/storage-use-azcopy.md) és [a Blob másolásához](/rest/api/storageservices/Copy-Blob).
 
-A prémium szintű storage-fiók ellen lapblobokat REST műveleteinek kapcsolatos részletes információkért lásd: [szolgáltatási műveletek prémium szintű Azure Storage Blob](http://go.microsoft.com/fwlink/?LinkId=521969).
+A premium storage-fiók ellen a lapblobok REST-műveleteinek végrehajtásáról részletes információkért lásd: [az Azure Premium Storage szolgáltatás Blobműveletei](http://go.microsoft.com/fwlink/?LinkId=521969).
 
 ### <a name="managed-disks"></a>Felügyelt lemezek
 
-A felügyelt lemezes pillanatképet a felügyelt lemezes csak olvasható másolatát. A pillanatkép egy standard szintű felügyelt lemezes tárolja. Jelenleg [növekményes pillanatképek](../articles/virtual-machines/windows/incremental-snapshots.md) felügyelt lemezek használata nem támogatott. A felügyelt lemezként pillanatképének elkészítéséhez, lásd: [egy Azure kezelt állapotúként tárolt virtuális merevlemez másolatának létrehozása lemez által felügyelt pillanatképek használata a Windows](../articles/virtual-machines/windows/snapshot-copy-managed-disk.md) vagy [egy Azure kezelt állapotúként tárolt virtuális merevlemez másolatának létrehozása lemez felügyelt használatával a Linux pillanatképek](../articles/virtual-machines/linux/snapshot-copy-managed-disk.md).
+A felügyelt lemez pillanatképét az a felügyelt lemez csak olvasható példányát. A pillanatkép egy standard szintű felügyelt lemez van tárolva. Jelenleg [növekményes pillanatképek](../articles/virtual-machines/windows/incremental-snapshots.md) nem támogatja a felügyelt lemezeket. A felügyelt lemez pillanatképének elkészítéséhez, lásd: [, egy Azure által felügyelt tárolt VHD másolatának létrehozása lemez által felügyelt pillanatképekkel Windows](../articles/virtual-machines/windows/snapshot-copy-managed-disk.md) vagy [, egy Azure által felügyelt tárolt VHD másolatának létrehozása a felügyelt lemez a Linux pillanatképek](../articles/virtual-machines/linux/snapshot-copy-managed-disk.md).
 
-Ha egy felügyelt lemezt egy virtuális Géphez van csatolva, a lemezen lévő egyes API műveletek nem engedélyezettek. Például egy közös hozzáférésű jogosultságkód (SAS), a másolási műveletek végrehajtásához, amíg a lemez csatolva van egy virtuális gép nem hozható létre. Ehelyett először hozzon létre egy pillanatképet a lemezen, és végezze el a pillanatkép példányát. Alternatív megoldásként válassza le a lemezt, és előállít egy SAS-t, a másolási művelet végrehajtására.
+Ha egy felügyelt lemezt egy virtuális Géphez van csatlakoztatva, bizonyos API-műveleteket a lemez használata nem engedélyezett. Például nem hozható létre egy közös hozzáférésű jogosultságkód (SAS) a másolási műveletek végrehajtásához, amíg a lemezt egy virtuális Géphez van csatlakoztatva. Ehelyett először hozzon létre a lemez pillanatképét, és végezze el a pillanatkép másolatát. Azt is megteheti válassza le a lemezt, és ezután hozza létre az SAS a másolási művelet végrehajtásához.
 
 
-## <a name="premium-storage-for-linux-vms"></a>Prémium szintű Storage Linux virtuális gépekhez
-Az alábbi információk segítségével a Linux virtuális gépek a prémium szintű Storage beállításához:
+## <a name="premium-storage-for-linux-vms"></a>Linux rendszerű virtuális gépek Premium Storage
+Az alábbi információk segítségével segítségével állítsa be a Linux rendszerű virtuális gépek Premium Storage-ban:
 
-Prémium szintű Storage, a méretezhetőségi célok eléréséhez, az összes prémium tárolólemezek gyorsítótárával állítsa **ReadOnly** vagy **nincs**, le kell tiltani "korlátok", a fájlrendszer csatlakoztatásakor. Ebben a forgatókönyvben korlátok nem szükséges, mivel az írási műveleteket ad ki premium tárolólemezek tartós vonatkozó beállítások. Amikor az írási kérelem sikeresen befejeződik, a program az adatok bejegyzésre az állandó tároló. "Korlátok" letiltásához használja a következő módszerek egyikét. A fájlrendszer közül választhat:
+A Premium Storage skálázhatósági célértékét beállítása minden prémium szintű tárolólemezeket a gyorsítótár eléréséhez **ReadOnly** vagy **None**, ha csatlakoztatja a fájlrendszer le kell tiltania "korlátok". Mivel a prémium szintű tárolólemezeket írási műveletek ezeket a gyorsítótár-beállításokat a tartós megszüntesse az ebben a forgatókönyvben nem szükséges. Ha az írási kérelem sikeresen befejeződik, adatok állandó tárolóján lett írva. "Korlátok" letiltásához használja a következő módszerek egyikét. A fájlrendszer közül választhat:
   
-* A **reiserFS**, az korlátok letiltásához használja a `barrier=none` csatlakoztatási lehetőséget. (Korlátok engedélyezéséhez az `barrier=flush`.)
-* A **ext3/ext4**, az korlátok letiltásához használja a `barrier=0` csatlakoztatási lehetőséget. (Korlátok engedélyezéséhez az `barrier=1`.)
-* A **XFS**, az korlátok letiltásához használja a `nobarrier` csatlakoztatási lehetőséget. (Korlátok engedélyezéséhez az `barrier`.)
-* Prémium szintű storage a lemezek, amelyek gyorsítótár be **ReadWrite**, engedélyezze az írási tartóssága korlátok.
-* A kötet feliratainak megőrzéséhez a virtuális gép újraindítása után frissítenie kell az /etc/fstab a lemezek univerzálisan egyedi azonosítóval (UUID) hivatkozik. További információkért lásd: [Linux virtuális gép hozzáadása egy felügyelt lemezes](../articles/virtual-machines/linux/add-disk.md).
+* A **reiserFS**, hogy tiltsa le a akadályozó tényezők, használja a `barrier=none` csatlakoztatási lehetőséget. (Korlátok engedélyezze az `barrier=flush`.)
+* A **ext3/ext4**, hogy tiltsa le a akadályozó tényezők, használja a `barrier=0` csatlakoztatási lehetőséget. (Korlátok engedélyezze az `barrier=1`.)
+* A **XFS**, hogy tiltsa le a akadályozó tényezők, használja a `nobarrier` csatlakoztatási lehetőséget. (Korlátok engedélyezze az `barrier`.)
+* A premium storage gyorsítótár-lemezek beállítása **ReadWrite**, engedélyezze a korlátok írási tartósságot biztosítanak.
+* A kötet címkéket a virtuális gép újraindítása után is fennállnak frissítenie kell az /etc/fstab a lemezek univerzálisan egyedi azonosítót (UUID) hivatkozik. További információkért lásd: [felügyelt lemez hozzáadása Linux rendszerű virtuális gép](../articles/virtual-machines/linux/add-disk.md).
 
-A következő Linux terjesztésekről érvényesítése a prémium szintű Azure Storage. A jobb teljesítmény és stabilitását prémium szintű Storage azt javasoljuk, hogy verzió, legalább egy (vagy újabb verzióra) frissítése a virtuális gépek. A legújabb Linux integrációs szolgáltatások (LIS), v4.0, az Azure-szükséges néhány verziójára. Töltse le, és egy terjesztési telepítése, az alábbi táblázatban szereplő hivatkozásra. A Microsoft lemezképek hozzáadása a listához, azt végezze el az érvényesítés. Vegye figyelembe, hogy az érvényesítést megjelenítése, hogy a teljesítmény változhat az egyes lemezképek. Teljesítmény a munkaterhelés jellemzőit és a lemezkép beállításainak függ. Különböző képek hangolt különböző típusú munkaterhelések.
+Az Azure Premium Storage a következő Linux-disztribúciók ellenőrzése. A jobb teljesítmény és a Premium Storage stabilitását azt javasoljuk, frissítse a virtuális gépek ezen verziói legalább egyik (vagy újabb verzióra). A legújabb Linux Integration Services (LIS), 4.0, az Azure-hoz szükséges néhány verziójára. Töltse le, és a egy terjesztési telepítéséhez, az alábbi táblázatban szereplő hivatkozásra. Hogy képek hozzáadása a listához, hogy végezze el az érvényesítési. Vegye figyelembe, hogy az ellenőrzések megjelenítése, hogy a teljesítmény változhat az egyes lemezképek. Teljesítmény függ a számítási feladatok jellemzői, és a lemezkép-beállításokat. Különböző képek amelyek ideálisak a különböző típusú számítási feladatokat.
 
-| Disztribúció | Verzió | Támogatott kernel | Részletek |
+| Disztribúció | Verzió | Támogatott kernelverzióra | Részletek |
 | --- | --- | --- | --- |
 | Ubuntu | 12.04 | 3.2.0-75.110+ | Ubuntu-12_04_5-LTS-amd64-server-20150119-en-us-30GB |
 | Ubuntu | 14.04 | 3.13.0-44.73+ | Ubuntu-14_04_1-LTS-amd64-server-20150123-en-us-30GB |
@@ -261,15 +267,15 @@ A következő Linux terjesztésekről érvényesítése a prémium szintű Azure
 | SUSE | SLES 12| 3.12.36-38.1+| suse-sles-12-priority-v20150213 <br> SUSE-sles-12-v20150213 |
 | SUSE | SLES 11 SP4 | 3.0.101-0.63.1+ | &nbsp; |
 | CoreOS | 584.0.0+| 3.18.4+ | CoreOS 584.0.0 |
-| CentOS | 6.5, 6.6, 6.7, 7.0 | &nbsp; | [Szükséges LIS4](http://go.microsoft.com/fwlink/?LinkID=403033&clcid=0x409) <br> *Megjegyzés: a következő szakaszban talál* |
-| CentOS | 7.1+ | 3.10.0-229.1.2.el7+ | [Ajánlott LIS4](http://go.microsoft.com/fwlink/?LinkID=403033&clcid=0x409) <br> *Megjegyzés: a következő szakaszban talál* |
+| CentOS | 6.5, 6.6, 6.7, 7.0 | &nbsp; | [Szükséges LIS4](http://go.microsoft.com/fwlink/?LinkID=403033&clcid=0x409) <br> *Vegye figyelembe a következő szakaszban talál.* |
+| CentOS | 7.1+ | 3.10.0-229.1.2.el7+ | [Ajánlott LIS4](http://go.microsoft.com/fwlink/?LinkID=403033&clcid=0x409) <br> *Vegye figyelembe a következő szakaszban talál.* |
 | Red Hat Enterprise Linux (RHEL) | 6.8+, 7.2+ | &nbsp; | &nbsp; |
 | Oracle | 6.0+, 7.2+ | &nbsp; | UEK4 vagy RHCK |
-| Oracle | 7.0-7.1 | &nbsp; | UEK4 vagy RHCK keresztüli rendelkező[LIS 4.1 +](http://go.microsoft.com/fwlink/?LinkID=403033&clcid=0x409) |
-| Oracle | 6.4-6.7 | &nbsp; | UEK4 vagy RHCK keresztüli rendelkező[LIS 4.1 +](http://go.microsoft.com/fwlink/?LinkID=403033&clcid=0x409) |
+| Oracle | 7.0-7.1 | &nbsp; | UEK4 vagy RHCK használatával[4.1 + LIS](http://go.microsoft.com/fwlink/?LinkID=403033&clcid=0x409) |
+| Oracle | 6.4-6.7 | &nbsp; | UEK4 vagy RHCK használatával[4.1 + LIS](http://go.microsoft.com/fwlink/?LinkID=403033&clcid=0x409) |
 
 
-### <a name="lis-drivers-for-openlogic-centos"></a>OpenLogic CentOS LIS illesztőprogramok
+### <a name="lis-drivers-for-openlogic-centos"></a>OpenLogic CentOS típusú LIS illesztőprogramok
 
 OpenLogic CentOS virtuális gépek futnak, ha a következő paranccsal telepítse a legújabb illesztőprogramokat:
 
@@ -282,35 +288,35 @@ Aktiválja az új illesztőprogramok, indítsa újra a számítógépet.
 
 ## <a name="pricing-and-billing"></a>Árak és számlázás
 
-Prémium szintű Storage használata esetén az alábbi számlázási szempontok érvényesek:
+A Premium Storage használata esetén az alábbi számlázási szempontok érvényesek:
 
-* **Prémium szintű tároló lemez és a blob mérete**
+* **Prémium szintű storage disk és a blob mérete**
 
-    Prémium szintű tároló lemez vagy blob számlázási kiosztott mérete a lemez vagy a blob függ. Azure a kiépített mérete (kerekítve) van leképezve a legközelebbi prémium szintű tároló lemez lehetőséget. További információkért lásd: a táblázatban szereplő [prémium szintű Storage méretezhetőségi és Teljesítménycélok](#premium-storage-scalability-and-performance-targets). Egyes lemezek egy támogatott kiépített lemez méretének van leképezve, és ennek megfelelően van-e terhelve. A kiépített lemez számlázási van arányosítva óránként, a prémium szintű Storage-szolgáltatásokat a havi díjakon használatával. Például ha kiépített P10 lemezt, és 20 óra múlva törli azt, kell fizetni az az P10 elérhető arányosítva 20 óra. Ettől függetlenül a tényleges adatok írása a lemezre vagy az iops-érték és a használt átviteli sebesség mennyisége.
+    Egy prémium szintű tárolólemez-vagy blob számlázása a lemez-vagy blob kiépített méretétől függ. Az Azure a legközelebbi prémium szintű tárlemezméretre kerekítünk képez le a kiépítési méret (kerekítve). További információkért lásd: a tábla [prémium szintű Storage méretezhetőségi és teljesítménycéljai](#premium-storage-scalability-and-performance-targets). Mindegyik lemez képez le egy támogatott kiosztott lemez méretét, és ennek megfelelően történik. Minden üzembe helyezett lemez használata óradíjas a Premium Storage-ajánlat a havi díjak használatával. Például ha üzembe helyezett egy P10 lemezt, és 20 óra múlva törli azt, számítjuk fel a P10 előfizetésért arányosan 20 óra. Ez a tényleges adatok írása a lemezt vagy az IOPS és a használt átviteli sebesség függetlenül.
 
-* **Prémium szintű nem felügyelt lemezek pillanatképek**
+* **Nem felügyelt lemezek prémium szintű pillanatképek**
 
-    Nem felügyelt premium lemezek pillanatfelvételeket számlázása a további kapacitást, a pillanatképek használják. A pillanatképek kapcsolatos további információkért lásd: [pillanatkép létrehozása a blob](/rest/api/storageservices/Snapshot-Blob).
+    A prémium szintű unmanaged disks pillanatképek számlázása a további kapacitás, a pillanatképek által használt. A pillanatképek kapcsolatos további információkért lásd: [hozzon létre egy pillanatképet egy blobról](/rest/api/storageservices/Snapshot-Blob).
 
-* **Prémium szintű lemezek pillanatképek felügyelt**
+* **Prémium szintű felügyelt lemez-pillanatképek**
 
-    Felügyelt lemezes pillanatképet a lemezen csak olvasható másolatát. Standard szintű felügyelt lemezes a lemezen tárolja. Pillanatkép költségek azonos szabványos lemez kezeli. Például ha egy pillanatképet, 128 GB-os prémium szintű felügyelt lemezes, a költség, a pillanatkép megegyezik a 128 GB-os standard szintű felügyelt lemezes.  
+    Felügyelt lemez pillanatképét a lemez csak olvasható példányát. A lemez egy standard szintű felügyelt lemez van tárolva. Pillanatkép költségek ugyanaz, mint a standard szintű felügyelt lemez. Például ha egy 128 GB-os prémium szintű felügyelt lemez pillanatképét, a költség, a pillanatkép megegyezik egy 128 GB méretű standard szintű felügyelt lemez.  
 
-* **Kimenő adatátvitel**
+* **Kimenő adatforgalom**
 
-    [Kimenő adatátvitel](https://azure.microsoft.com/pricing/details/data-transfers/) (adatok kilépő Azure adatközpontjaiban) gigabájtalapú sávszélesség-használat.
+    [Kimenő adatforgalom](https://azure.microsoft.com/pricing/details/data-transfers/) (az Azure adatközpontok kimenő adatforgaloma adatok) díjak lépnek fel a sávszélesség-használat.
 
-Prémium szintű Storage, a prémium szintű Storage által támogatott virtuális gépek és a felügyelt lemezek árazással kapcsolatos részletes információkért lásd: ezek a cikkek:
+A Premium Storage, a Premium Storage virtuális gépek és a felügyelt lemezek díjszabása kapcsolatos részletes információkért tanulmányozza a következő cikkeket:
 
 * [Az Azure Storage szolgáltatás díjszabása](https://azure.microsoft.com/pricing/details/storage/)
-* [Virtuális gépek díjszabása](https://azure.microsoft.com/pricing/details/virtual-machines/)
-* [Felügyelt lemezek díjszabása](https://azure.microsoft.com/pricing/details/managed-disks/)
+* [Virtual Machines díjszabása](https://azure.microsoft.com/pricing/details/virtual-machines/)
+* [A Managed disks díjszabása](https://azure.microsoft.com/pricing/details/managed-disks/)
 
 ## <a name="azure-backup-support"></a>Az Azure Backup-támogatás 
 
-Regionális katasztrófa utáni helyreállítás, biztonsági másolatot kell készíteni a virtuális gép lemezeit, egy másik régióban használatával [Azure biztonsági mentési](../articles/backup/backup-introduction-to-azure-backup.md) és egy biztonsági mentési tárolóval Georedundáns tárfiókot.
+A regionális vészhelyreállítás, biztonsági másolatot kell készíteni a Virtuálisgép-lemezek egy másik régióban használatával [Azure Backup](../articles/backup/backup-introduction-to-azure-backup.md) és a egy backup-tároló GRS társzolgáltatás fiókját.
 
-Segítségével hozhat létre egy biztonsági mentési feladat időalapú biztonsági könnyű VM-helyreállítás és biztonsági mentési adatmegőrzési, Azure Backup szolgáltatással. Nem felügyelt és a felügyelt biztonsági mentés is használható. További információkért lásd: [Azure biztonsági mentés nem felügyelt lemezzel rendelkező virtuális gépek](../articles/backup/backup-azure-vms-first-look-arm.md) és [felügyelt lemezzel rendelkező virtuális gépek Azure Backup](../articles/backup/backup-introduction-to-azure-backup.md#using-managed-disk-vms-with-azure-backup). 
+Az idő-alapú biztonsági mentések, könnyű VM-helyreállítás és a biztonsági másolatok megőrzési házirendeket, használja az Azure Backup hozzon létre egy biztonsági mentési feladat. Nem felügyelt és felügyelt lemezek biztonsági mentés egyaránt használhatja. További információkért lásd: [nem felügyelt lemezekkel rendelkező virtuális gépek az Azure Backup](../articles/backup/backup-azure-vms-first-look-arm.md) és [felügyelt lemezekkel rendelkező virtuális gépek az Azure Backup](../articles/backup/backup-introduction-to-azure-backup.md#using-managed-disk-vms-with-azure-backup). 
 
 ## <a name="next-steps"></a>További lépések
-Prémium szintű Storage kapcsolatos további információkért tekintse meg a következő cikkekben talál.
+Prémium szintű Storage szolgáltatással kapcsolatos további információkért tekintse meg a következő cikkeket.

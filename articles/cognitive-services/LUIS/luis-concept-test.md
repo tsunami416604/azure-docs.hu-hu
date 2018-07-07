@@ -1,6 +1,6 @@
 ---
-title: A alkalmazás tesztelése a LUIS - Azure |} Microsoft Docs
-description: Nyelvi ismertetése (LUIS) segítségével az alkalmazás számára, pontosítsa és a nyelvi megértése folyamatosan működik.
+title: Tesztelje a LUIS-alkalmazás – Azure |} A Microsoft Docs
+description: Folyamatosan dolgozunk azon, pontosítsa és javítható a beszédfelismerés annak az alkalmazás a Language Understanding (LUIS) használatával.
 services: cognitive-services
 author: v-geberr
 manager: kaiqb
@@ -9,54 +9,52 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 03/14/2018
 ms.author: v-geberr
-ms.openlocfilehash: 8c702d2adbadd2736eed05c7580e8aabf69affbf
-ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
+ms.openlocfilehash: 6c9bd93cf6e67aa815d289260f2b37bd3189c1d1
+ms.sourcegitcommit: 11321f26df5fb047dac5d15e0435fce6c4fde663
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36266328"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37887589"
 ---
-# <a name="testing-in-luis"></a>LUIS tesztelése
+# <a name="testing-in-luis"></a>A LUIS tesztelése
 
-Tesztelés az a folyamat LUIS minta utterances biztosítása és LUIS felismerhető leképezések és entitások választ kap. 
+Tesztelés az a folyamat minta utterances biztosítva a LUIS, és a egy beérkező válasszal, LUIS elismert szándékokat és entitásokat. 
 
-Is [tesztelése](interactive-test.md) LUIS interaktív módon, egy utterance egyszerre, vagy adjon meg egy [kötegelt](luis-concept-batch-test.md) a utterances. Tesztelési, akkor összehasonlíthatja az aktuális [aktív](luis-concept-version.md#active-version) a közzétett modell modellre. 
+Is [tesztelése](interactive-test.md) LUIS interaktívan, egyetlen utterance egyszerre, vagy adjon meg egy [batch](luis-concept-batch-test.md) a kimondott szöveg. Tesztelés, akkor összehasonlíthatja az aktuális [aktív](luis-concept-version.md#active-version) modell a közzétett modell. 
 
 <a name="A-test-score"></a>
 <a name="Score-all-intents"></a>
 <a name="E-(exponent)-notation"></a>
-## <a name="what-is-a-score-in-testing"></a>Mi az a tesztelése pontszámot?
-Lásd: [előrejelzés pontszám](luis-concept-prediction-score.md) koncepciókról további információk előrejelzés pontszámait.
+## <a name="what-is-a-score-in-testing"></a>Mi az a pontszám a tesztelés?
+Lásd: [előrejelzési pontszám](luis-concept-prediction-score.md) fogalmak előrejelzési pontszámok tájékozódhat.
 
-## <a name="interactive-testing"></a>Interaktív tesztelése
-Interaktív tesztelés végezheti el a **teszt** a webhely panel. Megadhat egy utterance hogyan leképezések és entitások azonosított és pontozza a mennyiségeket. Ha a tesztelés ablaktáblán egy utterance a várt módon a leképezések és entitások nem előrejelzésére LUIS, másolja a **leképezés** egy új utterance a lapra. Ezután címke adott utterance részeit, és LUIS betanításához. 
+## <a name="interactive-testing"></a>Interaktív tesztelés
+Interaktív vizsgálati végezheti el a **teszt** panel a webhely. Megadhatja az utterance (kifejezés), hogyan szándékok és entitások azonosítani és pontozunk. Ha az utterance (kifejezés), a tesztelési panelen a várt módon a szándékok és entitások nem előrejelzésére LUIS, másolja a a **szándékot** egy új utterance (kifejezés) oldalt. Ezután azon részeit, hogy utterance (kifejezés) felirat, és a LUIS betanításához. 
 
-## <a name="batch-testing"></a>Kötegelt tesztelése
-Lásd: [kötegelt tesztelés](luis-concept-batch-test.md) egyszerre egynél több utterance teszteléséhez.
+## <a name="batch-testing"></a>Kötegelt tesztelés
+Lásd: [batch tesztelés](luis-concept-batch-test.md) egyszerre egynél több utterance (kifejezés) teszteléséhez.
 
 ## <a name="endpoint-testing"></a>Végpont tesztelése
-Segítségével tesztelheti a [végpont](luis-glossary.md#endpoint) az alkalmazás két verziója legfeljebb. A fő vagy élő verziójával állítja be az alkalmazás a **éles** végpont, adja hozzá a második verzióra a **átmeneti** végpont. Ez a megközelítés lehetővé teszi az olyan utterance három verzióját: az aktuális modell vizsgálati panelén a [LUIS] [ LUIS] webhelyet, és a két különböző végponton két verziója. 
+Segítségével tesztelnie a [végpont](luis-glossary.md#endpoint) az alkalmazás két verziója, mely legfeljebb. Az állítja be az alkalmazás fő vagy élő verziójával a **éles** végpont, a második verzió hozzáadása a **átmeneti** végpont. Ez a megközelítés biztosítja az utterance (kifejezés) három verzióját: az aktuális modell vizsgálati ablaktábláján a [LUIS](luis-reference-regions.md) webhelyét, és a két verzió a két különböző végponton. 
 
-Összes végpont tesztelési száma a memóriahasználati kvóta felé. 
+Az összes endpoint tesztelési számát a használati kvóta felé. 
 
-## <a name="do-not-log-tests"></a>Nem jelentkezhet tesztek
-Ha a második megvizsgál egy végpontot, és nem szeretné, a naplózott utterance, fontos, hogy a `logging=false` konfiguráció lekérdezés-karakterlánc.
+## <a name="do-not-log-tests"></a>Ne jelentkezzen tesztek
+Ha tesztelése egy végponton, és nem naplózza az utterance (kifejezés) kíván, ne felejtse el használni a `logging=false` lekérdezési karakterláncok konfigurálása.
 
-## <a name="where-to-find-utterances"></a>Hol található utterances
-LUIS összes naplózott utterances tárolja a lekérdezési napló, a letölthető a [LUIS] [ LUIS] webhely **alkalmazások** lista lap, valamint a LUIS [szerzői API-k ](https://aka.ms/luis-authoring-apis). 
+## <a name="where-to-find-utterances"></a>Hol található a kimondott szöveg
+A LUIS tárolja az összes naplózott utterances a lekérdezési napló, letölthető a [LUIS](luis-reference-regions.md) webhely **alkalmazások** listáját tartalmazó lapon, valamint a LUIS [API-k készítése](https://aka.ms/luis-authoring-apis). 
 
-Bármely utterances LUIS nem szerepelnek a **[tekintse át a végpont utterances](label-suggested-utterances.md)** oldalán a [LUIS] [ LUIS] webhelyet. 
+LUIS párbeszédpaneléből megszólalásokat szerepelnek a **[tekintse át a végpont utterances](label-suggested-utterances.md)** lapján a [LUIS](luis-reference-regions.md) webhelyén. 
 
-![Tekintse át a végpont utterances](./media/luis-concept-test/review-endpoint-utterances.png)
+![A végpont beszédmódjainak áttekintése](./media/luis-concept-test/review-endpoint-utterances.png)
  
-## <a name="remember-to-train"></a>Ne felejtse el képzése
-Ne felejtse el [betanítása](luis-how-to-train.md) LUIS után módosítja a modellt. A LUIS alkalmazás nem látják a tesztelése, amíg az alkalmazás be van tanítva. 
+## <a name="remember-to-train"></a>Ne felejtse el betanítása
+Ne felejtse el [betanításához](luis-how-to-train.md) LUIS után módosítja a modellt. A LUIS alkalmazás módosításai nem láthatók, amíg az alkalmazás be van tanítva teszteléshez. 
 
 ## <a name="best-practices"></a>Ajánlott eljárások
 Ismerje meg, [ajánlott eljárások](luis-concept-best-practices.md).
 
 ## <a name="next-steps"></a>További lépések
 
-* További információ [tesztelés](interactive-test.md) a utterances.
-
-[LUIS]: https://docs.microsoft.com/azure/cognitive-services/luis/luis-reference-regions
+* Tudjon meg többet [tesztelés](interactive-test.md) a kimondott szöveg.

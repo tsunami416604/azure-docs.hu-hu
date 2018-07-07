@@ -1,7 +1,7 @@
 ---
-title: Ismerje meg, hogyan minták növelni előrejelzés pontosságát |} Microsoft Docs
+title: Ismerje meg, hogyan a minták előrejelzési pontosság növeléséhez |} A Microsoft Docs
 titleSuffix: Azure
-description: Útmutató a kialakítási minták leképezési előrejelzés pontszámok és entitások található.
+description: Útmutató a tervezési minták szándék előrejelzési pontszámok növelését, majd keresse meg az entitásokat.
 services: cognitive-services
 author: v-geberr
 manager: kaiqb
@@ -10,111 +10,111 @@ ms.technology: luis
 ms.topic: article
 ms.date: 06/08/2018
 ms.author: v-geberr
-ms.openlocfilehash: c3c0d12bbbeec85d2cbf0daead49ee16ca7728fb
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: 4a23ebddc29c6c519e68a00ef6cbff107061c341
+ms.sourcegitcommit: 11321f26df5fb047dac5d15e0435fce6c4fde663
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37046258"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37888279"
 ---
 # <a name="patterns-improve-prediction-accuracy"></a>Minták előrejelzési pontosság növeléséhez.
-Minták pontosság növeléséhez, ha több utterances nagyon hasonló készültek. A minta biztosítva a utterance, LUIS lehet a magas megbízhatósági előrejelzését. 
+Pontosság javításához, ha több utterances nagyon hasonló minták lettek kialakítva. Az utterance (kifejezés) megadásával mintát, LUIS rendelkezhet egy megbízható az előrejelzéshez. 
 
-## <a name="patterns-solve-low-intent-confidence"></a>Minták alacsony leképezési abban, hogy megoldása
-Fontolja meg egy az emberi erőforrások alkalmazást, amely a szervezeti diagram viszonyítva egy alkalmazott kapcsolatos jelentések. Az alkalmazottak és a kapcsolat megadott, LUIS adja vissza az alkalmazottak jár. Fontolja meg az alkalmazottak, Tom, egy Manager Alice nevét, és a beosztottak nevű csoport: Michael Rebecca és Carl.
+## <a name="patterns-solve-low-intent-confidence"></a>Minták szándék alacsony megbízhatósági megoldása
+Fontolja meg egy emberi erőforrások alkalmazáson, amely a szervezeti diagram viszonyítva egy alkalmazott a jelentést. Az alkalmazottak és a kapcsolat, LUIS ad vissza, az alkalmazottak érint. Fontolja meg egy alkalmazott Tom, egy alkalmazott felettesétől az Alice nevét, és a beosztottak nevű csapat: Michael Rebecca és Carl.
 
 ![Szervezeti diagram képe](./media/luis-concept-patterns/org-chart.png)
 
-|Beszédmódok|Előre meghatározott leképezés|Leképezési pontszám|
+|Beszédmódok|Előre jelzett leképezés|Leképezési pontszám|
 |--|--|--|
-|Ki az alárendelt Tom meg?|GetOrgChart|.30|
-|A beosztottja az Tom ki?|GetOrgChart|.30|
+|A Tom alárendelt ki?|GetOrgChart|.30|
+|Tom beosztottja ki?|GetOrgChart|.30|
 
-Ha egy alkalmazás közötti 10 és 20 utterances különböző hosszúságú mondat, más word sorrendben és még más szavakat (szinonimák "alárendelt", "kezelése", "jelentés"), a LUIS térhetnek vissza egy kis abban, hogy pontszám. Ahhoz, hogy a word sorrendje fontos megérteni LUIS érdekében hozzon létre egy mintát. 
+Ha egy alkalmazás közötti 10 és 20 mondat, különböző szórendjét és még más szavakat (szinonimák "alárendelt", "felügyelet", "jelentés") különböző hosszúságú kimondott szöveg, LUIS egy alacsony megbízhatósági pontszám adhatnak vissza. Annak érdekében, hogy tisztában a szórendjét fontosságával LUIS érdekében hozzon létre egy minta. 
 
-Minták oldja meg a következő esetekben: 
+Minták oldja meg a következő helyzetekben: 
 
-* Ha a szándék pontszám alacsony
-* Ha a megfelelő célja nem a legfelső szintű pontszám, de a felső pontszám túl közel. 
+* Ha a szándék pontszám, alacsony
+* Ha a megfelelő leképezés nem a felső pontszám, de túl zárja be a felső pontszámot. 
 
-## <a name="patterns-are-not-a-guarantee-of-intent"></a>Minták nincsenek-e a céljának garancia
-Minták előrejelzés technológiák vegyesen használni. Egy olyan sablon utterance leképezésének beállítása egy minta nem garantált leképezési előrejelzését, de egy erős jel. 
+## <a name="patterns-are-not-a-guarantee-of-intent"></a>Minták amelyek nem garantálja az leképezés
+Minták előrejelzési technológiák kombinációját használja. Egy leképezésének egy sablon utterance (kifejezés) a mintát, nem garantálja a szándék előrejelzési de erős védelem. 
 
 ## <a name="patterns-do-not-improve-entity-detection"></a>Minták növelhető az entitás észlelése
-Pedig minták entitások igényelnek, akkor a minta nem működik a észlelésére az entitás. A minta csak arra szolgál, hogy súgó leképezések és szerepköröket előrejelzését.  
+Minták entitások használatához, a minta nem észlelhetők az entitás. Egy minta csak célja, hogy az előrejelzés leképezések és szerepkörök segítségével.  
 
-## <a name="patterns-use-entity-roles"></a>Minták entitás szerepkörök használatával
-Ha két vagy több entitás bankkártyaszám összefüggéseikben való kapcsolódó, a minták entitás használható [szerepkörök](luis-concept-roles.md) környezetfüggő-entitások kapcsolatos információkat. Ez a hierarchikus gyermekek egyenértékűek, de **csak** minták érhető el. 
+## <a name="patterns-use-entity-roles"></a>Minták entitás szerepkörök használata
+Ha két vagy több entitások egy minta kontextusban kapcsolódó, mintákat használják az entitást [szerepkörök](luis-concept-roles.md) entitásokról környezeti információk kinyeréséhez. Ez a hierarchikus gyermekek egyenértékűek, de **csak** minták érhető el. 
 
-## <a name="prediction-scores-with-and-without-patterns"></a>Előrejelzés pontszámok rendelkező és anélküli minták
-Elegendő példa utterances tekintve LUIS lenne növelheti a előrejelzés abban, hogy mintákat nélkül. Minták növelje az vetett bizalmat pontszám annyi utterances megadása nélkül.  
+## <a name="prediction-scores-with-and-without-patterns"></a>Előrejelzési pontszámok rendelkező és anélküli minták
+Adott elegendő példa utterances, LUIS elvileg látnia kell növelni az előrejelzés megbízhatósági minták nélkül. Minták növelheti a megbízhatósági pontszám annyi kimondott szöveg megadása nélkül.  
 
-## <a name="pattern-matching"></a>Mintaegyezéshez
-A minta egyezik belül a minta entitások először észlelésére, majd a többi szavak és a word sorrendjét a minta ellenőrzése alapján. A minta egyező mintát entitások kell megadni. 
+## <a name="pattern-matching"></a>Minták egyeztetése
+A minta egyezik az entitások belül a mintát először észlelése, majd ellenőrzése a többi szavak és szórendjét, a minta alapján. Egyeztetendő mappaminta minta entitások szükséges. 
 
-## <a name="pattern-syntax"></a>Minta szintaxis
-Minta szintaxisa egy utterance sablonját. A sablon szavak és entitásokat szavak valamint egyeztetni kívánt és írásjelet figyelmen kívül kell tartalmaznia. Az **nem** reguláris kifejezést. 
+## <a name="pattern-syntax"></a>A minta-szintaxis
+A minta szintaxisa az utterance (kifejezés) sablont. A sablon tartalmaznia kell a szavak és szavak és egyeztetni kívánt entitásokat és írásjelek figyelmen kívül kívánja. Ez **nem** reguláris kifejezést. 
 
-A minták entitások tette kapcsos zárójelek között van feltüntetve, `{}`. Minták entitásokat és szerepkörök rendelkező entitások lehetnek. Pattern.any egy entitás csak akkor minták használják. A szintaxis a következő szakaszok az ismertetése.
+Entitások minták a kapcsos zárójeleket veszi körül `{}`. Minták lehetnek, alá tartozó alanyokra és szerepkörökkel. Pattern.any csak használatban minták entitás. A szintaxis a következő szakaszok ismertetése.
 
-### <a name="syntax-to-add-an-entity-to-a-pattern-template"></a>Egy entitás hozzáadása egy minta sablon szintaxis
-A minta sablonba vehető fel olyan entitás, helyezze az entitás nevével és a kapcsos zárójelek, például a `Who does {Employee} manage?`. 
+### <a name="syntax-to-add-an-entity-to-a-pattern-template"></a>Entitás hozzáadása egy minta sablon szintaxisát
+Entitás hozzáadása a minta-sablonba, körülvevő az entitás neve a kapcsos zárójelek között, mint például `Who does {Employee} manage?`. 
 
 ```
 Who does {Employee} manage?
 ```
 
-### <a name="syntax-to-add-an-entity-and-role-to-a-pattern-template"></a>Egy entitás és a szerepkör hozzáadása egy minta sablon szintaxis
-Egy entitás szerepkör jelölése `{entity:role}` az az entitás nevét kettősponttal, majd a szerepkör neve követ. A minta sablonba szerepkörrel rendelkező entitás hozzáadásához helyezze az entitás és a kapcsos zárójelek szerepkör nevét, mint `Book a ticket from {Location:Origin} to {Location:Destination}`. 
+### <a name="syntax-to-add-an-entity-and-role-to-a-pattern-template"></a>Az entitásokhoz és a szerepkör hozzáadása egy minta sablon szintaxisát
+Egy entitás szerepkör jelölése `{entity:role}` kettősponttal, akkor a szerepkör neve követ entitás nevét. A szerepkörrel rendelkező entitás hozzáadása a minta-sablonba, körülvevő az entitás neve és a szerepkör nevét a kapcsos zárójelek között, mint például `Book a ticket from {Location:Origin} to {Location:Destination}`. 
 
 ```
 Book a ticket from {Location:Origin} to {Location:Destination}
 ```
 
-### <a name="syntax-to-add-a-patternany-to-pattern-template"></a>Szintaxis egy pattern.any mintát sablon hozzáadása
-A Pattern.any entitás változó hosszúságú entitás hozzáadása a minta teszi lehetővé. Mindaddig, amíg a minta sablont követi, akkor a pattern.any tetszőleges hosszúságúak lehetnek. 
+### <a name="syntax-to-add-a-patternany-to-pattern-template"></a>Egy pattern.any hozzáadása minta sablon szintaxisát
+A Pattern.any entitás lehetővé teszi, hogy a minta egy entitás különböző hosszúságú. Mindaddig, amíg a minta sablon követik, a pattern.any lehet bármely olyan. 
 
-Hozzáadása egy **Pattern.any** entitás a minta sablonba, helyezze a kapcsos zárójelek Pattern.any egyed például `How much does {Booktitle} cost and what format is it available in?`.  
+Hozzáadása egy **Pattern.any** a minta sablonba entitás körülvevő Pattern.any egyed kapcsos zárójeleket kell használni, mint például `How much does {Booktitle} cost and what format is it available in?`.  
 
 ```
 How much does {Booktitle} cost and what format is it available in?
 ```
 
-|A mintában könyv címek|
+|A mintában a könyv címek|
 |--|
-|Mennyibe **ellopni a könyv** költségeket, és milyen formátumban is elérhető?|
-|Mennyibe **kérje meg** költségeket, és milyen formátumban is elérhető?|
-|Mennyibe **az éjszakai a kutya a fejezetét incidens** költségeket, és milyen formátumban is elérhető?| 
+|Mennyibe kerül **ellopni a könyv** költség, és milyen formátumú érhető el?|
+|Mennyibe kerül **kérje meg** költség, és milyen formátumú érhető el?|
+|Mennyibe kerül **a inspirációkkal incidens a kutya az éjszakai a** költség, és milyen formátumú érhető el?| 
 
-Könyv cím példákban a könyv cím környezetfüggő szavak nincsenek zavaró LUIS való. LUIS tudja, ahol a könyv címe véget ér, mert egy mintát és egy Pattern.any entitás jelölésű.
+Könyv cím példákban szereplő a környezetfüggő szavakat a könyv cím nem, a LUIS kikapcsolnia. A LUIS tudja, ahol a könyv cím ér véget, mert azt a mintát, és Pattern.any entitáshoz.
 
-### <a name="explicit-lists"></a>Explicit listája
-Ha a minta egy Pattern.any tartalmazza, és a minta-szintaxis lehetővé teszi, hogy a lehetőségét a utterance alapján egy helytelen entitás kinyerési, hozzon létre egy [Explicit lista](https://aka.ms/ExplicitList) a beállítását a szerzői műveletekhez API-n keresztül. 
+### <a name="explicit-lists"></a>Explicit listák
+Ha a minta egy Pattern.any tartalmaz, és a minta-szintaxis lehetővé teszi a lehetőségét az utterance (kifejezés) alapján egy helytelen entitások kinyeréséhez, hozzon létre egy [Explicit lista](https://aka.ms/ExplicitList) , hogy a kivételt a szerzői műveletekhez részben API-n keresztül. 
 
-Tegyük fel például, van egy mintát tartalmazó mindkét választható szintaxis `[]`, és az entitás `{}`, az adatok kinyerése érdekében helytelen módon kombinált.
+Tegyük fel például, mind a nem kötelező szintaxist tartalmazó mintát rendelkezik `[]`, és az entitás `{}`, kombinált úgy, hogy helytelen adatokat nyerhet ki.
 
-Fontolja meg a minta "[keresése] e-mail vonatkozó {} [személytől {}]". A következő utterances a **tulajdonos** és **személy** entitást ki kell olvasni a helyes és helytelen:
+Fontolja meg a minta "[keresése] e-mail kapcsolatos {subject} [{személy}]". A következő megcímkézzen a **tulajdonos** és **személy** entitás ki kell olvasni, megfelelő és nem megfelelően:
 
 |Kimondott szöveg|Entitás|Megfelelő kivonása|
 |--|--|:--:|
-|a e-mailekhez kapcsolatos kutya Chris|tulajdonos kutya =<br>személy = Chris|✔|
-|e-mailben a La Mancha man kapcsolatos|tulajdonos a man =<br>személy La Mancha =|X|
+|a Chris kutyák kapcsolatos e-mail|tulajdonos kutyák =<br>személy = Chris|✔|
+|a férfi a La Mancha kapcsolatos e-mailben|tulajdonos férfi =<br>személy La Mancha =|X|
 
-Az előző táblázatban, a utterance `email about the man from La Mancha`, a tulajdonosának kell lennie `the man from La Mancha` (a könyv címét), de, mert a tulajdonos tartalmazza a választható word `from`, a cím helytelenül várhatóan. 
+Az előző táblázatban, az utterance (kifejezés) `email about the man from La Mancha`, a tulajdonosának kell lennie `the man from La Mancha` (a könyv címét), de a tulajdonos tartalmazza a nem kötelező szó `from`, a cím helytelenül összegyűjtése várható. 
 
-Ez a kivétel a típus kijavításához vegye fel `the man from la mancha` használó {tulajdonos} entitás egy explicit lista megfelelést a [API szerzői explicit listáját](https://aka.ms/ExplicitList).
+Javítsa ki a kivételt a minta, adjon hozzá `the man from la mancha` egy explicit lista egyezik meg a {subject} entitás használatával, a [API szerzői explicit listát](https://aka.ms/ExplicitList).
 
-### <a name="syntax-to-mark-optional-text-in-a-template-utterance"></a>A sablon utterance a választható szöveg szintaxis
-Jelölje meg a reguláris kifejezés szögletes zárójelet szintaxis használatával utterance választható szöveg `[]`. A választható szöveg ágyazhatja legfeljebb két zárójeleket csak a kapcsos zárójeleket.
+### <a name="syntax-to-mark-optional-text-in-a-template-utterance"></a>Egy sablon utterance (kifejezés) a nem kötelező szöveg megjelölésére szintaxis
+A reguláris kifejezés szögletes zárójel szintaxis használatával az utterance (kifejezés) a nem kötelező szöveg `[]`. A nem kötelező szöveg ágyazhatja szögletes zárójelek között legfeljebb csak két zárójelek közé.
 
 ```
 [find] email about {subject} [from {person}]
 ```
 
-Például írásjelek `.`, `!`, és `?` figyelmen kívül hagyhatja a kapcsos zárójeleket használatával. Ahhoz, hogy figyelmen kívül hagyja ezeket a jeleket, minden be van jelölve egy külön mintát kell lennie. A választható szintaxis jelenleg nem támogatja a rendszer figyelmen kívül hagyja a több elem a lista egy elemére.
+Például írásjelek `.`, `!`, és `?` figyelmen kívül hagyhatja a szögletes zárójelek segítségével. Annak érdekében, hogy figyelmen kívül hagyja ezeket a jeleket, minden be van jelölve egy külön mintának kell lennie. A választható szintaxist jelenleg nem támogatja a rendszer figyelmen kívül hagyja a több elem a lista egy elemének.
 
-## <a name="patterns-only"></a>Csak minták
-LUIS leképezés számára lehetővé teszi bármely példa utterances nem rendelkező alkalmazások. Csak akkor, ha használatban minták használata engedélyezett. Minták megkövetelése minden mintában legalább egy entitást. Csak minta alkalmazások esetén a minta nem tartalmazhatja a entitások gép-megtanulta, mert például utterances szükséges. 
+## <a name="patterns-only"></a>Csak a minták
+LUIS lehetővé teszi, hogy egy alkalmazás például megszólalásokat nélkül szándékot. A használati engedélyezett csak akkor, ha a mintákat használják. Minták legalább egy entitás minden egyes mintában van szükség. Csak a minta alkalmazások esetén a mintázat nem tartalmazhat gép megismert entitások, mert az ilyen esetekben példa kimondott szöveg. 
 
 ## <a name="best-practices"></a>Ajánlott eljárások
 Ismerje meg, [ajánlott eljárások](luis-concept-best-practices.md).
@@ -122,6 +122,4 @@ Ismerje meg, [ajánlott eljárások](luis-concept-best-practices.md).
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Megtudhatja, hogyan minták megvalósítását az oktatóanyag a](luis-tutorial-pattern.md)
-
-[LUIS]: https://docs.microsoft.com/azure/cognitive-services/luis/luis-reference-regions
+> [Ebben az oktatóanyagban minták megvalósítása](luis-tutorial-pattern.md)

@@ -9,12 +9,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: v-geberr
-ms.openlocfilehash: 3016d1318d031494057f4a8ce61af37576a7c4f2
-ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
+ms.openlocfilehash: c7a57ad13bbab66f0c100ed0a5bdb3fb20064806
+ms.sourcegitcommit: 11321f26df5fb047dac5d15e0435fce6c4fde663
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37346807"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37887674"
 ---
 # <a name="glossary"></a>Szószedet
 
@@ -92,15 +92,15 @@ A példában a végpont hasonlóan néz ki:
 
 ## <a name="f-measure"></a>F-mérték
 
-A [batch tesztelés][batch-testing], a vizsgálat pontosságának mértékegysége.
+A [batch tesztelés](interactive-test.md#batch-testing), a vizsgálat pontosságának mértékegysége.
 
 ## <a name="false-negative"></a>Téves negatív (TN)
 
-A [batch tesztelés][batch-testing], az adatpontok képviselik, amelyben az alkalmazás nem megfelelően előrejelzett érhető el a leképezés/célentitás a kimondott szöveg.
+A [batch tesztelés](interactive-test.md#batch-testing), az adatpontok képviselik, amelyben az alkalmazás nem megfelelően előrejelzett érhető el a leképezés/célentitás a kimondott szöveg.
 
 ## <a name="false-positive"></a>False positive (TP)
 
-A [batch tesztelés][batch-testing], az adatok pontok olyan időpontokat jelölnek, kimondott szöveg, amelyben az alkalmazás nem megfelelően előre jelzett a célként megadott leképezés/entitás létezik-e.
+A [batch tesztelés](interactive-test.md#batch-testing), az adatok pontok olyan időpontokat jelölnek, kimondott szöveg, amelyben az alkalmazás nem megfelelően előre jelzett a célként megadott leképezés/entitás létezik-e.
 
 ## <a name="features"></a>Szolgáltatások
 
@@ -138,7 +138,7 @@ A [előre összeállított tartomány](luis-how-to-use-prebuilt-domains.md) LUIS
 A [előre összeállított entitások](luis-prebuilt-entities.md) olyan entitás, LUIS nyújt általános típusú adatok például a száma, URL-cím és e-mailt. Úgy dönt, hogy egy előre létrehozott entitás hozzáadása az alkalmazáshoz. 
 
 ## <a name="precision"></a>Pontosság
-A [batch tesztelés][batch-testing], pontosság (más néven prediktív értéke pozitív) a százalékértékében mutatkozó megfelelő utterances lekért megcímkézzen között.
+A [batch tesztelés](interactive-test.md#batch-testing), pontosság (más néven prediktív értéke pozitív) a százalékértékében mutatkozó megfelelő utterances lekért megcímkézzen között.
 
 ## <a name="programmatic-key"></a>Programozott kulcs
 
@@ -153,7 +153,7 @@ Azt jelenti, hogy így a LUIS közzétételi [aktív verzió](#active-version) �
 A LUIS-kvóta korlátozásának a [Azure-előfizetés-szintű](https://aka.ms/luis-price-tier). A LUIS-kvóta mindkét kérelmek / másodperc (HTTP-állapot 429) és a egy hónapig (HTTP-állapot 403) teljes kéréseket is korlátozza. 
 
 ## <a name="recall"></a>Idézze
-A [batch tesztelés][batch-testing], visszahívása (más néven érzékenységi), a rendszer azon képessége, a LUIS általánosítására. 
+A [batch tesztelés](interactive-test.md#batch-testing), visszahívása (más néven érzékenységi), a rendszer azon képessége, a LUIS általánosítására. 
 
 ## <a name="semantic-dictionary"></a>Szemantikai szótár
 A szemantikai szótárba áll rendelkezésre az a entitás-lista oldalára, valamint a kifejezés-lista oldalára. A szemantikai szótár nyújt segítséget az aktuális hatókör alapján szó.
@@ -196,11 +196,11 @@ Képzési azt a folyamatot, LUIS oktatási bármely érintő változásokról a 
 
 ## <a name="true-negative"></a>Igaz negatív (TN)
 
-A [batch tesztelés][batch-testing], az adatpontok képviselik, amelyben az alkalmazás megfelelően előrejelzett érhető el a leképezés/célentitás a kimondott szöveg.
+A [batch tesztelés](interactive-test.md#batch-testing), az adatpontok képviselik, amelyben az alkalmazás megfelelően előrejelzett érhető el a leképezés/célentitás a kimondott szöveg.
 
 ## <a name="true-positive"></a>TRUE positive (TP)
 
-A [batch tesztelés][batch-testing], az adatok pontok olyan időpontokat jelölnek, kimondott szöveg, amelyben az alkalmazás megfelelően előre jelzett a célként megadott leképezés/entitás létezik-e.
+A [batch tesztelés](interactive-test.md#batch-testing), az adatok pontok olyan időpontokat jelölnek, kimondott szöveg, amelyben az alkalmazás megfelelően előre jelzett a célként megadott leképezés/entitás létezik-e.
 
 ## <a name="utterance"></a>Utterance (kifejezés)
 
@@ -209,5 +209,3 @@ Az utterance (kifejezés), például a "2 könyv jegyek következő" frissítő 
 ## <a name="version"></a>Verzió
 
 A LUIS [verzió](luis-how-to-manage-versions.md) egy adott adatmodell, a LUIS app ID és a közzétett végponthoz társított. Minden LUIS alkalmazás rendelkezik legalább egy verzió.
-
-[batch-testing]: https://docs.microsoft.com/azure/cognitive-services/luis/interactive-test#batch-testing

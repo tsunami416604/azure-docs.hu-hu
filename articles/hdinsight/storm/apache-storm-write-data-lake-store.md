@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/27/2018
 ms.author: larryfr
-ms.openlocfilehash: 95dea2896bf1d116a14d8b51ada9e17f186d4373
-ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
+ms.openlocfilehash: 7a314ada1c25b57b6d1701bf414a42a58397e1f0
+ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37856256"
+ms.lasthandoff: 07/07/2018
+ms.locfileid: "37903132"
 ---
 # <a name="write-to-hdfs-from-apache-storm-on-hdinsight"></a>A HDInsight Apache Storm írhat HDFS-be
 
@@ -133,7 +133,7 @@ Ez a YAML határozza meg a következő elemek:
 * `rotationPolicy`: Meghatározza, hogy mikor rotálása fájlokat. Ebben a példában elforgatás nélkül történik.
 * `hdfs-bolt`: Az előző összetevők működését visszafelé használja a konfigurációs paramétereket az `HdfsBolt` osztály.
 
-A fluxus keretrendszer további információkért lásd: [ https://storm.apache.org/releases/1.1.0/flux.html ](https://storm.apache.org/releases/1.1.0/flux.html).
+A fluxus keretrendszer további információkért lásd: [ https://storm.apache.org/releases/1.1.2/flux.html ](https://storm.apache.org/releases/1.1.2/flux.html).
 
 ## <a name="configure-the-cluster"></a>A fürt konfigurálása
 

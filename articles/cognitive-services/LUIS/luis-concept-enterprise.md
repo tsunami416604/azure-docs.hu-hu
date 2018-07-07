@@ -1,6 +1,6 @@
 ---
-title: LUIS alkalmazás - Azure vállalati fogalmak |} Microsoft Docs
-description: Tervezési alapelvek nagy LUIS alkalmazások megismerése.
+title: A LUIS-alkalmazás – az Azure Enterprise fogalmai |} A Microsoft Docs
+description: Nagy LUIS-alkalmazások tervezési fogalmak ismertetése.
 services: cognitive-services
 author: v-geberr
 manager: kaiqb
@@ -9,62 +9,61 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 06/05/2018
 ms.author: v-geberr
-ms.openlocfilehash: f5d1cf61ca7b8d8eeaed52fc3f45f8d4847ddda9
-ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
+ms.openlocfilehash: aca67db88255585355bc59a29e53639bc5eca717
+ms.sourcegitcommit: 11321f26df5fb047dac5d15e0435fce6c4fde663
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37108688"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37886756"
 ---
-# <a name="enterprise-strategies-for-a-luis-app"></a>Vállalati stratégiák LUIS alkalmazások
-Tekintse át a Tervező stratégiák a vállalati alkalmazás.
+# <a name="enterprise-strategies-for-a-luis-app"></a>Vállalati stratégiák a LUIS-alkalmazások
+Tekintse át ezeket a vállalati alkalmazások tervezési stratégiák.
 
-## <a name="when-you-expect-luis-requests-beyond-the-quota"></a>Ha várhatóan LUIS kérelmek száma meghaladja a kvótát
-Ha a LUIS app kérelmek aránya meghaladja a megengedett [kvóta arány](https://azure.microsoft.com/pricing/details/cognitive-services/language-understanding-intelligent-services/), további LUIS alkalmazásaira terheléselosztás végett a [azonos app-definíciót](#use-multiple-apps-with-same-app-definition) , vagy hozzon létre és [több kulcs hozzárendelése](#assign-multiple-luis-keys-to-same-app) való a alkalmazás. 
+## <a name="when-you-expect-luis-requests-beyond-the-quota"></a>Ha a kvóta túl LUIS-kérelmek várt
+Ha a LUIS alkalmazás kérések sebessége meghaladja a megengedett [kvóta arány](https://azure.microsoft.com/pricing/details/cognitive-services/language-understanding-intelligent-services/), a terhelés több LUIS-alkalmazásokba az a [ugyanazon definíció](#use-multiple-apps-with-same-app-definition) , vagy hozzon létre és [hozzárendelése több kulcs](#assign-multiple-luis-keys-to-same-app) , a alkalmazás. 
 
-### <a name="use-multiple-apps-with-same-app-definition"></a>Ugyanazon alkalmazás definícióját több alkalmazások használata
-Az eredeti LUIS alkalmazás exportálása, majd importálja vissza az alkalmazás különálló alkalmazás. Minden alkalmazás rendelkezik saját alkalmazás azonosítója. Történő közzétételekor minden alkalmazások között, ugyanazzal a kulccsal használata helyett hozzon létre egy külön kulcsot minden alkalmazáshoz. A terhelés kiegyenlítése összes alkalmazások között, így nem egyetlen meghatározott alkalmazás túlterhelik. Adja hozzá [Application Insights](luis-tutorial-bot-csharp-appinsights.md) felhasználásának figyelésére. 
+### <a name="use-multiple-apps-with-same-app-definition"></a>Több alkalmazás használata azonos app-definíció
+Az eredeti LUIS alkalmazás exportálása, majd importálja a az alkalmazás különböző alkalmazás be újra. Minden alkalmazás rendelkezik a saját alkalmazás azonosítóját. Ha közzéteszi, alkalmazásnévnek, ugyanazzal a kulccsal használata helyett hozzon létre minden alkalmazáshoz külön kulcsnak. A terhelés kiegyenlítése alkalmazásnévnek úgy, hogy nincs egyetlen alkalmazás túlterhelte van. Adjon hozzá [Application Insights](luis-tutorial-bot-csharp-appinsights.md) felhasználásának figyelésére. 
 
-Ahhoz, hogy az alkalmazások közötti azonos felső leképezés szüksége van, ellenőrizze, hogy az első és második szándékot közötti leképezési előrejelzését van elég nagy, hogy LUIS nincs konfigurálja, különböző eredményt utterances kisebb változások alkalmazások között. 
+Annak érdekében, hogy az első közötti összes alkalmazás ugyanazon felső célja, ellenőrizze, hogy az első és második célja között szándék előrejelzési van elég széles ahhoz, hogy a LUIS ne legyen összetéveszteni őket, között kisebb eltérések utterances alkalmazások különböző eredményt. 
 
-Jelölje ki a fő egyetlen alkalmazást. Bármely utterances, amelyek a felülvizsgálati javaslat kell hozzáadni a fő alkalmazást, majd visszahelyezi a más alkalmazásokba. Ez az egy teljes exportálása, az alkalmazás vagy a címkézett utterances tölt be a fő a gyermekek számára. Betöltés teheti vagy a [LUIS] [ LUIS] webhelyére vagy a szerzői műveletekhez API-t a egy [utterance egyszeri](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c08) vagy egy [kötegelt](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c09). 
+Egyetlen alkalmazás jelölhetnek ki a főkiszolgáló. Amely a felülvizsgálatra javasolt megszólalásokat kell adva a fő alkalmazáshoz, majd visszahelyezi a többi alkalmazást is. Ez az vagy egy teljes exportálás, az alkalmazás vagy a betöltés címkézett megcímkézzen a főágból a gyermekek. Betöltése teheti meg, vagy a [LUIS](luis-reference-regions.md) webhelyére vagy a szerzői műveletekhez részben API egy [utterance (kifejezés) egyetlen](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c08) , vagy egy [batch](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c09). 
 
-Ütemezhet egy rendszeres [át kell tekinteni végpont utterances](label-suggested-utterances.md) aktív biztonságával, például a kéthetente, majd újratanítása és közzé. 
+Egy rendszeres ütemezés [végpont kimondott szöveg felülvizsgálata](label-suggested-utterances.md) aktív tanulás, például kéthetente, majd újbóli betanítás után tegye közzé újra. 
 
-### <a name="assign-multiple-luis-keys-to-same-app"></a>Hozzárendelése több LUIS kulcsok ugyanahhoz az alkalmazáshoz
-Ha a LUIS app kap további végpont találatok, mint a egyetlen kulcs kvótája engedélyez, hozzon létre, és további kulcsok rendelje a LUIS alkalmazást. Hozzon létre egy traffic manager vagy a terheléselosztó a végpont lekérdezések kezelése a végpont kulcsok között. 
+### <a name="assign-multiple-luis-keys-to-same-app"></a>Ugyanazt az alkalmazást a kulcsok több LUIS hozzárendelése
+Ha a LUIS-alkalmazás több végpontot, a találatok, mint az egyetlen kulcs kvótája engedélyez, és társítsa további kulcsok a LUIS alkalmazás kap. Hozzon létre egy traffic manager vagy a terheléselosztó a végpont lekérdezések kezelése a végpont kulcsok között. 
 
-## <a name="when-your-monolithic-app-returns-wrong-intent"></a>Ha az egységes alkalmazás adja vissza nem megfelelő leképezés
-Ha a célja, hogy az alkalmazás felhasználói utterances számos előre jelezni, vegye fontolóra a [feladó modell](#dispatch-tool-and-model). Egy egységes alkalmazás összeállításának lehetővé teszi a LUIS fókusz észlelési közötti leképezések sikeresen helyett első nem biztos a szülő alkalmazás közötti leképezések és alárendelt alkalmazások között. 
+## <a name="when-your-monolithic-app-returns-wrong-intent"></a>Ha a monolitikus alkalmazások adja vissza nem megfelelő leképezés
+Ha az alkalmazás számos különböző felhasználói utterances előrejelzése hivatott, vegye fontolóra a [dispatch modell](#dispatch-tool-and-model). LUIS fókusz észlelési sikeresen helyett első nem biztos a szülő alkalmazás közötti leképezések és az alárendelt alkalmazások közötti leképezések között egy monolitikus alkalmazások használhatatlanná tévő lehetővé teszi. 
 
-Ütemezhet egy rendszeres [át kell tekinteni végpont utterances](label-suggested-utterances.md) aktív biztonságával, például a kéthetente, majd újratanítása és közzé. 
+Egy rendszeres ütemezés [végpont kimondott szöveg felülvizsgálata](label-suggested-utterances.md) aktív tanulás, például kéthetente, majd újbóli betanítás után tegye közzé újra. 
 
-## <a name="when-you-need-to-have-more-than-500-intents"></a>Ha szüksége van a több mint 500 leképezések
-Például tegyük fel, amely rendelkezik 500 leképezések office asszisztens kidolgozása. 200 leképezések értekezletek ütemezés vonatkoznak, ha emlékeztetők készül 200-as, 200 készül, munkatársakat kapcsolatos információk beolvasásakor és 200 az e-mailek küldéséhez, csoport leképezések, hogy minden egyes csoport egyetlen alkalmazást, majd hozzon létre egy legfelső szintű alkalmazást tartalmazó minden leképezés. Használja a [csatolva az eszköz és az architektúra](#dispatch-tool-and-model) a legfelső szintű alkalmazás elkészítésére. Módosítsa a Megjelenítés a a kaszkádolt hívásához használandó botot a [feladó oktatóanyag][dispatcher-application-tutorial]. 
+## <a name="when-you-need-to-have-more-than-500-intents"></a>Ha szüksége van a több mint 500 szándékot
+Például tegyük fel, amely több mint 500 szándékot rendelkezik office asszisztens fejleszt. 200 leképezések értekezleteit vonatkoznak, ha emlékeztetők készül a 200-as, 200-as készül a munkatársai, kapcsolatos információk lekérése és e-mailt küld a rendszer 200-as, csoport szándékot, hogy minden csoport egyetlen alkalmazást, majd hozzon létre egy legfelső szintű alkalmazást, amely tartalmazza minden egyes szándékot. Használja a [csatolva az eszköz és architektúra](#dispatch-tool-and-model) hozhat létre a legfelső szintű alkalmazást. Módosítsa a robot a lépcsőzetes hívást használja, mint a show a [dispatch oktatóanyag][dispatcher-application-tutorial]. 
 
-## <a name="when-you-need-to-combine-several-luis-and-qna-maker-apps"></a>Ha több LUIS és kérdések és válaszok készítő alkalmazások egyesítenie kell
-Ha több LUIS és kérdések és válaszok készítő alkalmazások, amelyeknek válaszolni bot, használja a [küldő eszköz](#dispatch-tool-and-model) a legfelső szintű alkalmazás elkészítésére. Módosítsa a Megjelenítés a a kaszkádolt hívásához használandó botot a [feladó oktatóanyag][dispatcher-application-tutorial]. 
+## <a name="when-you-need-to-combine-several-luis-and-qna-maker-apps"></a>Mikor kell egyesíteni több LUIS és a QnA maker alkalmazások
+Ha több LUIS és a QnA maker alkalmazásokkal rendelkezik, kell válaszolnia-robot esetén használja a [küldő eszköz](#dispatch-tool-and-model) hozhat létre a legfelső szintű alkalmazást. Módosítsa a robot a lépcsőzetes hívást használja, mint a show a [dispatch oktatóanyag][dispatcher-application-tutorial]. 
 
 ## <a name="dispatch-tool-and-model"></a>Küldő eszköz és a modell
-Használja a [feladó] [ dispatch-tool] található a parancssori eszköz [BotBuilder-eszközök](https://github.com/Microsoft/botbuilder-tools) több LUIS és/vagy a kérdések és válaszok készítő alkalmazások egyesítése egy szülő LUIS alkalmazás számára. Ez a megközelítés lehetővé teszi, hogy a tartomány a különálló alkalmazás tulajdonosok és a különböző alárendelt területeket is beleértve. 
+Használja a [Dispatch] [ dispatch-tool] parancssori eszköz, található [BotBuilder-eszközök](https://github.com/Microsoft/botbuilder-tools) úgy, hogy több LUIS és/vagy a QnA Maker alkalmazásokat a LUIS alkalmazás szülő összevonásával. Ez a megközelítés lehetővé teszi a szülőtartományban, többek között a tulajdonosok és a különböző alárendelt területek önálló alkalmazásokban. 
 
 ![Küldési architektúra fogalmi képe](./media/luis-concept-enterprise/dispatch-architecture.png)
 
-A szülőtartomány LUIS szerint jelenik meg egy **V feladó** alkalmazást. 
+A szülőtartományban, LUIS megadó egy **V Dispatch** alkalmazást. 
 
-![Képernyőfelvétel a LUIS alkalmazások listája a küldő eszköz által létrehozott LUIS alkalmazással](./media/luis-concept-enterprise/dispatch.png)
+![Képernyőkép a LUIS alkalmazások listája a küldő eszköz által létrehozott LUIS-alkalmazás](./media/luis-concept-enterprise/dispatch.png)
 
-A chatbot megkapja a utterance, majd elküldi a szülő LUIS app előrejelzés. A felső előre jelzett célt a szülő alkalmazás mely LUIS alkalmazás mellett elnevezése gyermek határozza meg. A chatbot a utterance küld az alárendelt alkalmazás pontosabb előrejelzés.
+A csevegőrobot kap az utterance (kifejezés), majd elküldi a szülő előrejelzéshez LUIS-alkalmazás. A szülő alkalmazásból felső előre jelzett célja határozza meg, melyik gyermek LUIS-alkalmazás neve mellett. A csevegőrobot küld az alárendelt alkalmazás pontosabb előrejelzéshez az utterance (kifejezés).
 
-Megérteni, hogyan ezt a hierarchiát a hívások a Botot jelentéskészítő v4 érkezett [kézbesítő-alkalmazás-oktatóanyag][dispatcher-application-tutorial].  
+Megismerheti, hogyan szeretné tenni ezt a hierarchiát a hívások, a Bot Builder v4 [dispatcher-alkalmazás-tutorial][dispatcher-application-tutorial].  
 
-### <a name="intent-limits-in-dispatch-model"></a>A küldő modell leképezési korlátok
-A küldő alkalmazás maximális 500 feladó adatforrások, 500 leképezések egyenértékű rendelkezik. 
+### <a name="intent-limits-in-dispatch-model"></a>A feladó modellben szándék korlátok
+A küldő alkalmazás 500 dispatch forrásokból, egyenértékű 500 szándékot, mint a maximális rendelkezik. 
 
 ## <a name="next-steps"></a>További lépések
 
-* Megtudhatja, hogyan [egy kötegelt tesztelése](luis-how-to-batch-test.md)
+* Ismerje meg, hogyan [kötegelt tesztelése](luis-how-to-batch-test.md)
 
-[LUIS]: https://docs.microsoft.com/azure/cognitive-services/luis/luis-reference-regions
 [dispatcher-application-tutorial]: https://aka.ms/bot-dispatch
 [dispatch-tool]: https://github.com/Microsoft/botbuilder-tools/tree/master/Dispatch

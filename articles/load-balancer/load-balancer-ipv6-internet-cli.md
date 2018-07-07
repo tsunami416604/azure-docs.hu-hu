@@ -1,12 +1,12 @@
 ---
-title: Hozzon létre egy nyilvános terheléselosztó IPv6 - Azure parancssori Felülettel |} Microsoft Docs
-description: Megtudhatja, hogyan hozzon létre egy nyilvános terheléselosztó IPv6 Azure parancssori felület használatával.
+title: Nyilvános load balancer létrehozása IPv6 - Azure CLI-vel |} A Microsoft Docs
+description: Ismerje meg, hogyan hozhat létre az Azure CLI-vel nyilvános load balancer konfigurálása IPv6-tal.
 services: load-balancer
 documentationcenter: na
 author: KumudD
 manager: jeconnoc
 tags: azure-resource-manager
-keywords: IPv6-alapú, azure load balancer, kettős verem, nyilvános IP-cím, natív ipv6, mobil, iot
+keywords: IPv6-alapú, az azure load balancer, kettős verem, nyilvános IP-cím, natív ipv6, mobil, iot
 ms.assetid: a1957c9c-9c1d-423e-9d5c-d71449bc1f37
 ms.service: load-balancer
 ms.devlang: na
@@ -15,51 +15,51 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/25/2018
 ms.author: kumud
-ms.openlocfilehash: 10698c79b11a47a465604f90bf63e180615a5ed7
-ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
+ms.openlocfilehash: 3172736edf4e38f53858620ebac95b711857010b
+ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37112734"
+ms.lasthandoff: 07/07/2018
+ms.locfileid: "37901265"
 ---
-# <a name="create-a-public-load-balancer-with-ipv6-using-azure-cli"></a>Hozzon létre egy nyilvános terheléselosztó IPv6 Azure parancssori felület használatával
+# <a name="create-a-public-load-balancer-with-ipv6-using-azure-cli"></a>Hozzon létre egy nyilvános load balancer konfigurálása IPv6-tal Azure CLI használatával
 
 
-Az Azure Load Balancer 4. szintű (TCP, UDP) terheléselosztónak minősül. Terheléselosztó bejövő forgalmat a felhőszolgáltatások kifogástalan szolgáltatáspéldány vagy a load balancer csoportban lévő virtuális gépek között elosztásával magas rendelkezésre állás biztosításához. A terheléselosztók is jelenthet, ezek a szolgáltatások több portot vagy több IP-cím, vagy mindkettőt.
+Az Azure Load Balancer 4. szintű (TCP, UDP) terheléselosztónak minősül. Terheléselosztók osztja meg a bejövő forgalmat, többek között a kifogástalan állapotú szolgáltatási példányai a felhőszolgáltatások vagy virtuális gépek egy terheléselosztó készletet: a magas rendelkezésre állást biztosít. Terheléselosztók is jelenthet, ezeket a szolgáltatásokat több portra vagy több IP-cím vagy mindkettőt meg.
 
-## <a name="example-deployment-scenario"></a>Központi telepítési példa
+## <a name="example-deployment-scenario"></a>A példában üzembe helyezési forgatókönyv
 
-A következő ábra szemlélteti a terheléselosztási megoldás, amely a jelen cikkben ismertetett példa sablon használatával történik.
+A következő ábra szemlélteti a terheléselosztási megoldás, amely a jelen cikkben ismertetett példa sablon segítségével telepítve van.
 
 ![Terheléselosztói forgatókönyv](./media/load-balancer-ipv6-internet-cli/lb-ipv6-scenario-cli.png)
 
-Ebben a forgatókönyvben a következő Azure-erőforrások létrehozása:
+Ebben a forgatókönyvben a következő Azure-erőforrásokat hoz létre:
 
-* Két virtuális gépek (VM)
-* Az egyes virtuális gépekhez rendelt IPv4 és IPv6-címmel rendelkező virtuális hálózati illesztő
-* Egy nyilvános terheléselosztó egy IPv4-és IPv6 nyilvános IP-cím
-* A két virtuális gépeket tartalmazó rendelkezésre állási csoportok
-* Két terheléselosztási szabályok a nyilvános virtuális IP-címek hozzárendelését a saját végpontokhoz való betöltése
+* Két virtuális gép (VM)
+* Az egyes virtuális Gépekhez rendelt IPv4- és IPv6-címekkel rendelkező virtuális hálózati adapter
+* Nyilvános load balancer egy IPv4-és IPv6-alapú nyilvános IP-cím
+* A két virtuális gépet tartalmazó rendelkezésre állási csoport
+* Két a nyilvános VIP-címek leképezése a privát végpontok terheléselosztási szabályok betöltése
 
-## <a name="deploy-the-solution-by-using-azure-cli"></a>A megoldás üzembe helyezéséhez az Azure parancssori felület használatával
+## <a name="deploy-the-solution-by-using-azure-cli"></a>A megoldás üzembe helyezése az Azure CLI használatával
 
-A következő lépések bemutatják, hogyan hozhat létre egy nyilvános terheléselosztó Azure parancssori felület használatával. Parancssori felület használatával, létrehozása és beállítása az egyes objektumok külön-külön, majd tegye azokat együtt egy erőforrás létrehozásához.
+A következő lépésekkel egy nyilvános terheléselosztó létrehozása az Azure parancssori felület használatával. Parancssori felület használatával, létre és konfigurálhatja az egyes objektumok egyenként, és csak utána őket egy erőforrás létrehozása.
 
-Terheléselosztó telepítéséhez hozzon létre, és adja meg a következő objektumok:
+A terheléselosztó üzembe helyezéséhez, hozzon létre és konfigurálja a következő objektumokat:
 
-* **Előtér-IP-konfiguráció**: a bejövő hálózati forgalmat a nyilvános IP-cím szerepel.
-* **Háttér-címkészlet**: tartalmazza a hálózati adapterek (NIC) a virtuális gépek hálózati forgalom fogadására a terheléselosztótól.
-* **Terheléselosztási szabályok**: egy nyilvános port terheléselosztón van leképezve a háttér-címkészletbeli port szabályokat tartalmaz.
-* **Bejövő NAT-szabályok**: hálózati cím címfordítási (NAT) szabályok, amelyek egy nyilvános port terheléselosztón leképezése egy adott virtuális gép a háttér-címkészletbeli port tartalmazza.
-* **Vizsgálat**: állapotfigyelő mintavételek menüpontban, amely segítségével a háttér-címkészletben lévő virtuálisgép-példányok rendelkezésre állásának ellenőrzése tartalmazza.
+* **Előtérbeli IP-konfigurációhoz**: a bejövő hálózati forgalomhoz nyilvános IP-címeket tartalmazza.
+* **Háttér címkészletet**: hálózati adaptereket (NIC) tartalmaz a virtuális gépek a terheléselosztóról érkező hálózati forgalom fogadására.
+* **Terheléselosztási szabályok**: olyan szabályokat, amelyek a terheléselosztó nyilvános portját a háttér-címkészletben levő porthoz tartalmaz.
+* **Bejövő NAT-szabályok**: tartalmazza a hálózati címfordítás (NAT) szabályait, amelyek a terheléselosztó nyilvános portjait egy adott virtuális gép a háttér-címkészletben levő porthoz.
+* **Mintavételek**: a háttér-címkészletet a virtuálisgép-példányok rendelkezésre állásának ellenőrzésére használt állapotfigyelő mintavételezőket tartalmaz.
 
-## <a name="set-up-azure-cli"></a>Azure CLI beállítása
+## <a name="set-up-azure-cli"></a>Az Azure parancssori felület beállítása
 
-Ebben a példában futtassa az Azure CLI-eszközeit egy PowerShell-parancsablakot. Olvashatóság és újbóli javítása érdekében használhatja a PowerShell parancsfájl-kezelési képességei, nem az Azure PowerShell-parancsmagok.
+Ebben a példában az Azure CLI-eszközöket egy PowerShell-parancsablakban futtassa. A jobb olvashatóság érdekében és újbóli érdekében PowerShell a parancsfájl-kezelési képességei, nem az Azure PowerShell-parancsmagokat kell használnia.
 
-1. [Telepítse és konfigurálja az Azure parancssori felület]((https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)) követve csatolt-cikkben található lépéseket, és jelentkezzen be az Azure-fiókjával.
+1. [Telepítse és konfigurálja az Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) a következő a hivatkozott cikk lépéseit, és jelentkezzen be Azure-fiókjába.
 
-2. Az Azure parancssori felület parancsait való használatra PowerShell változók beállítása:
+2. Állítsa be az Azure CLI-parancsokkal használható PowerShell-változók:
 
     ```powershell
     $subscriptionid = "########-####-####-####-############"  # enter subscription id
@@ -75,15 +75,15 @@ Ebben a példában futtassa az Azure CLI-eszközeit egy PowerShell-parancsablako
     $lbName = "myIPv4IPv6Lb"
     ```
 
-## <a name="create-a-resource-group-a-load-balancer-a-virtual-network-and-subnets"></a>Hozzon létre egy erőforráscsoportot, egy adott terheléselosztóhoz, egy virtuális hálózatot és alhálózatok
+## <a name="create-a-resource-group-a-load-balancer-a-virtual-network-and-subnets"></a>Hozzon létre egy erőforráscsoportot, egy terheléselosztót, virtuális hálózat és alhálózatok
 
 1. Hozzon létre egy erőforráscsoportot:
 
     ```azurecli
-    az group create $rgName $location
+    az group create --name $rgName --location $location
     ```
 
-2. Hozzon létre egy terhelés-kiegyenlítő:
+2. Load balancer létrehozása:
 
     ```azurecli
     $lb = az network lb create --resource-group $rgname --location $location --name $lbName
@@ -95,41 +95,41 @@ Ebben a példában futtassa az Azure CLI-eszközeit egy PowerShell-parancsablako
     $vnet = az network vnet create  --resource-group $rgname --name $vnetName --location $location --address-prefixes $vnetPrefix
     ```
 
-4. A virtuális hálózatban két alhálózat létrehozása:
+4. A virtuális hálózat létrehozása két alhálózattal:
 
     ```azurecli
     $subnet1 = az network vnet subnet create --resource-group $rgname --name $subnet1Name --address-prefix $subnet1Prefix --vnet-name $vnetName
     $subnet2 = az network vnet subnet create --resource-group $rgname --name $subnet2Name --address-prefix $subnet2Prefix --vnet-name $vnetName
     ```
 
-## <a name="create-public-ip-addresses-for-the-front-end-pool"></a>Nyilvános IP-címeket az előtér-készlet létrehozása
+## <a name="create-public-ip-addresses-for-the-front-end-pool"></a>Nyilvános IP-címek az előtér-készlet létrehozása
 
-1. A PowerShell-változó beállítása:
+1. Állítsa be a PowerShell-változókat:
 
     ```powershell
     $publicIpv4Name = "myIPv4Vip"
     $publicIpv6Name = "myIPv6Vip"
     ```
 
-2. Hozzon létre egy nyilvános IP-címet az előtér-IP-címkészlet:
+2. Hozzon létre egy nyilvános IP-címet az előtérbeli IP-címkészlet:
 
     ```azurecli
-    $publicipV4 = az network public-ip create --resource-group $rgname --name $publicIpv4Name --location $location --ip-version IPv4 --allocation-method Dynamic --domain-name-label $dnsLabel
-    $publicipV6 = az network public-ip create --resource-group $rgname --name $publicIpv6Name --location $location --ip-version IPv6 --allocation-method Dynamic --domain-name-label $dnsLabel
+    $publicipV4 = az network public-ip create --resource-group $rgname --name $publicIpv4Name --location $location --version IPv4 --allocation-method Dynamic --dns-name $dnsLabel
+    $publicipV6 = az network public-ip create --resource-group $rgname --name $publicIpv6Name --location $location --version IPv6 --allocation-method Dynamic --dns-name $dnsLabel
     ```
 
     > [!IMPORTANT]
-    > A terheléselosztó a nyilvános IP-cím a tartomány címkéjének teljesen minősített tartománynév (FQDN) használja. Ez a változás a klasszikus üzembe helyezési, amely használja a felhőalapú szolgáltatás nevezze el a terheléselosztó FQDN.
+    > A terheléselosztó a nyilvános IP-cím tartománycímkéjét használja a teljes tartománynév (FQDN). Ez a klasszikus üzemelő példányról, amely a felhőalapú szolgáltatást használ egy módosítást nevezze el a terheléselosztó FQDN.
     >
     > Ebben a példában az FQDN-je *contoso09152016.southcentralus.cloudapp.azure.com*.
 
-## <a name="create-front-end-and-back-end-pools"></a>Hozzon létre az előtér- és készletek
+## <a name="create-front-end-and-back-end-pools"></a>Előtér- és háttér-címkészletek létrehozása
 
 Ebben a szakaszban a következő IP-címkészletek létrehozása:
-* Az előtér-IP-címkészlet, amely megkapja a bejövő hálózati forgalmat a terheléselosztón.
-* A háttér IP-készlet, amennyiben az előtér-készlet elküldi a hálózati terheléselosztással rendelkező forgalmat.
+* Az előtérbeli IP-címkészlet, amely megkapja a terheléselosztón a bejövő hálózati forgalmat.
+* A háttérbeli IP-készlet hová az előtérkészlet küldi az elosztott terhelésű hálózati forgalmat.
 
-1. A PowerShell-változó beállítása:
+1. Állítsa be a PowerShell-változókat:
 
     ```powershell
     $frontendV4Name = "FrontendVipIPv4"
@@ -138,27 +138,27 @@ Ebben a szakaszban a következő IP-címkészletek létrehozása:
     $backendAddressPoolV6Name = "BackendPoolIPv6"
     ```
 
-2. Hozzon létre egy előtér-IP-címkészletet, és rendelje hozzá azt az előző lépésben és a terheléselosztó a nyilvános IP-cím.
+2. Hozzon létre egy előtérbeli IP-címkészletet, és társítsa a nyilvános IP-cím, amelyet az előző lépést, és a terheléselosztóhoz.
 
     ```azurecli
-    $frontendV4 = az network lb frontend-ip create --resource-group $rgname --name $frontendV4Name --public-ip-name $publicIpv4Name --lb-name $lbName
-    $frontendV6 = az network lb frontend-ip create --resource-group $rgname --name $frontendV6Name --public-ip-name $publicIpv6Name --lb-name $lbName
+    $frontendV4 = az network lb frontend-ip create --resource-group $rgname --name $frontendV4Name --public-ip-address $publicIpv4Name --lb-name $lbName
+    $frontendV6 = az network lb frontend-ip create --resource-group $rgname --name $frontendV6Name --public-ip-address $publicIpv6Name --lb-name $lbName
     $backendAddressPoolV4 = az network lb address-pool create --resource-group $rgname --name $backendAddressPoolV4Name --lb-name $lbName
     $backendAddressPoolV6 = az network lb address-pool create --resource-group $rgname --name $backendAddressPoolV6Name --lb-name $lbName
     ```
 
-## <a name="create-the-probe-nat-rules-and-load-balancer-rules"></a>A mintavételi, a NAT-szabályok létrehozása, és terheléselosztói szabály
+## <a name="create-the-probe-nat-rules-and-load-balancer-rules"></a>A mintavétel, a NAT-szabályok létrehozása és a load balancer-szabályok
 
 Ez a példa a következő elemeket hozza létre:
 
-* Ellenőrizze a kapcsolatot a 80-as TCP-port mintavételi szabályra.
-* NAT-szabály RDP a 3389-es porton keresztül 3389-es port minden bejövő forgalom lefordítani.\*
-* NAT-szabály lefordítani az összes porton érkező forgalom 3391 3389-es port a távoli asztal protokoll (RDP).\*
-* Olyan terheléselosztó szabályhoz minden bejövő forgalom 80-as porton a címkészletben levő a háttér-80-as portjához egyensúlyba.
+* Egy mintavételi szabályt, a 80-as porton való csatlakozást.
+* Az RDP a 3389-es portra 3389-es porton bejövő összes forgalmat lefordítja a NAT-szabályt.\*
+* A távoli asztal protokoll (RDP) a 3389-es portra 3391 porton bejövő összes forgalmat lefordítja a NAT-szabályt.\*
+* Egy terheléselosztó-szabályt a 80-as portot a háttér-címkészletben szereplő címek a 80-as porton bejövő összes forgalmat elosztása érdekében.
 
-\* NAT-szabályok társítva a terheléselosztó mögött egy adott virtuális gép példányt. A 3389-es port érkező hálózati forgalom érkezik, az adott virtuális gép és a portot, amelyet a NAT-szabály van társítva. A NAT-szabályhoz meg kell adnia egy protokollt (UDP vagy TCP). Mindkét protokollt nem lehet hozzárendelni ugyanazt a portot.
+\* NAT-szabályok társítva a terheléselosztó mögött egy adott virtuálisgép példányhoz. A 3389-es portra érkező hálózati forgalom érkezik az adott virtuális gép és portot, amelyet a NAT-szabályhoz van társítva. A NAT-szabályhoz meg kell adnia egy protokollt (UDP vagy TCP). Mindkét protokollt nem rendelhető hozzá ugyanahhoz a porthoz.
 
-1. A PowerShell-változó beállítása:
+1. Állítsa be a PowerShell-változókat:
 
     ```powershell
     $probeV4V6Name = "ProbeForIPv4AndIPv6"
@@ -168,26 +168,26 @@ Ez a példa a következő elemeket hozza létre:
     $lbRule1V6Name = "LBRuleForIPv6-Port80"
     ```
 
-2. A mintavétel létrehozása.
+2. A projekt létrehozásához.
 
-    Az alábbi példakód létrehozza a TCP-vizsgálatot, amely ellenőrzi a kapcsolatot a háttér-TCP 80-as port 15 másodpercenként. Után két egymást követő hibák a háttér-erőforrás nem érhető el, jelöli.
+    A következő példában létrehozunk egy TCP-mintavétel, amely ellenőrzi a csatlakozást a háttérbeli 80-as porton 15 másodpercenként. Két egymást követő hibák után, a háttér-erőforrás nem jelöli meg.
 
     ```azurecli
-    $probeV4V6 = az network lb probe create --resource-group $rgname --name $probeV4V6Name --protocol tcp --port 80 --interval 15 --count 2 --lb-name $lbName
+    $probeV4V6 = az network lb probe create --resource-group $rgname --name $probeV4V6Name --protocol tcp --port 80 --interval 15 --threshold 2 --lb-name $lbName
     ```
 
-3. Bejövő NAT-szabályok, amelyek lehetővé teszik a háttér-erőforrások RDP-kapcsolatok létrehozása:
+3. Bejövő NAT-szabályok, amelyek lehetővé teszik a háttér-erőforrásokhoz való RDP-kapcsolatok létrehozása:
 
     ```azurecli
     $inboundNatRuleRdp1 = az network lb inbound-nat-rule create --resource-group $rgname --name $natRule1V4Name --frontend-ip-name $frontendV4Name --protocol Tcp --frontend-port 3389 --backend-port 3389 --lb-name $lbName
     $inboundNatRuleRdp2 = az network lb inbound-nat-rule create --resource-group $rgname --name $natRule2V4Name --frontend-ip-name $frontendV4Name --protocol Tcp --frontend-port 3391 --backend-port 3389 --lb-name $lbName
     ```
 
-4. Hozzon létre terheléselosztási szabály, amely forgalmat küldeni a különböző háttér-portok, attól függően, hogy az előtér, amely a kérelmet kapott.
+4. Hozzon létre a load balancer-szabályok, amelyek forgalmat küldeni, a másik háttér-portok, attól függően, hogy a kérés érkezett a kezelőfelület.
 
     ```azurecli
-    $lbruleIPv4 = az network lb rule create --resource-group $rgname --name $lbRule1V4Name --frontend-ip-name $frontendV4Name --backend-address-pool-name $backendAddressPoolV4Name --probe-name $probeV4V6Name --protocol Tcp --frontend-port 80 --backend-port 80 --lb-name $lbName
-    $lbruleIPv6 = az network lb rule create --resource-group $rgname --name $lbRule1V6Name --frontend-ip-name $frontendV6Name --backend-address-pool-name $backendAddressPoolV6Name --probe-name $probeV4V6Name --protocol Tcp --frontend-port 80 --backend-port 8080 --lb-name $lbName
+    $lbruleIPv4 = az network lb rule create --resource-group $rgname --name $lbRule1V4Name --frontend-ip-name $frontendV4Name --backend-pool-name $backendAddressPoolV4Name --probe-name $probeV4V6Name --protocol Tcp --frontend-port 80 --backend-port 80 --lb-name $lbName
+    $lbruleIPv6 = az network lb rule create --resource-group $rgname --name $lbRule1V6Name --frontend-ip-name $frontendV6Name --backend-pool-name $backendAddressPoolV6Name --probe-name $probeV4V6Name --protocol Tcp --frontend-port 80 --backend-port 8080 --lb-name $lbName
     ```
 
 5. Ellenőrizze a beállításokat:
@@ -238,9 +238,9 @@ Ez a példa a következő elemeket hozza létre:
 
 ## <a name="create-nics"></a>Hálózati adapterek létrehozása
 
-Hálózati adaptert létrehozni, és rendelje hozzá őket mintavételek menüpontban, a NAT szabályok és a terheléselosztási szabály.
+Hálózati adapterek létrehozása, és rendelje azokat NAT-szabályok, a load balancer-szabályok és a mintavételek.
 
-1. A PowerShell-változó beállítása:
+1. Állítsa be a PowerShell-változókat:
 
     ```powershell
     $nic1Name = "myIPv4IPv6Nic1"
@@ -253,61 +253,48 @@ Hálózati adaptert létrehozni, és rendelje hozzá őket mintavételek menüpo
     $natRule2V4Id = "/subscriptions/$subscriptionid/resourceGroups/$rgname/providers/Microsoft.Network/loadbalancers/$lbName/inboundNatRules/$natRule2V4Name"
     ```
 
-2. Hozzon létre egy minden háttérbeli hálózati Adapterhez, és adja hozzá az IPv6 konfiguráció:
+2. Hozzon létre egy hálózati Adaptert az egyes háttérrendszerének, és a egy IPv6-konfiguráció hozzáadása:
 
     ```azurecli
-    $nic1 = az network nic create --name $nic1Name --resource-group $rgname --location $location --private-ip-version "IPv4" --subnet-id $subnet1Id --lb-address-pool-ids $backendAddressPoolV4Id --lb-inbound-nat-rule-ids $natRule1V4Id
-    $nic1IPv6 = az network nic ip-config create --resource-group $rgname --name "IPv6IPConfig" --private-ip-version "IPv6" --lb-address-pool-ids $backendAddressPoolV6Id --nic-name $nic1Name
+    $nic1 = az network nic create --name $nic1Name --resource-group $rgname --location $location --private-ip-address-version "IPv4" --subnet $subnet1Id --lb-address-pools $backendAddressPoolV4Id --lb-inbound-nat-rules $natRule1V4Id
+    $nic1IPv6 = az network nic ip-config create --resource-group $rgname --name "IPv6IPConfig" --private-ip-address-version "IPv6" --lb-address-pools $backendAddressPoolV6Id --nic-name $nic1Name
 
-    $nic2 = az network nic create --name $nic2Name --resource-group $rgname --location $location --subnet-id $subnet1Id --lb-address-pool-ids $backendAddressPoolV4Id --lb-inbound-nat-rule-ids $natRule2V4Id
-    $nic2IPv6 = azure network nic ip-config create --resource-group $rgname --name "IPv6IPConfig" --private-ip-version "IPv6" --lb-address-pool-ids $backendAddressPoolV6Id --nic-name $nic2Name
+    $nic2 = az network nic create --name $nic2Name --resource-group $rgname --location $location --private-ip-address-version "IPv4" --subnet $subnet1Id --lb-address-pools $backendAddressPoolV4Id --lb-inbound-nat-rules $natRule2V4Id
+    $nic2IPv6 = az network nic ip-config create --resource-group $rgname --name "IPv6IPConfig" --private-ip-address-version "IPv6" --lb-address-pools $backendAddressPoolV6Id --nic-name $nic2Name
     ```
 
-## <a name="create-the-back-end-vm-resources-and-attach-each-nic"></a>A háttér-Virtuálisgép-erőforrások létrehozása és csatolása az egyes hálózati adapterek
+## <a name="create-the-back-end-vm-resources-and-attach-each-nic"></a>A háttérbeli Virtuálisgép-erőforrások létrehozása, és minden egyes hálózati adapter csatolása
 
-Virtuális gépek létrehozására, rendelkeznie kell egy tárfiókot. A terheléselosztást, a virtuális gépek kell lennie a rendelkezésre állási csoportok tagjai. Virtuális gépek létrehozásával kapcsolatos további információkért lásd: [egy Azure virtuális gép létrehozása a PowerShell használatával](../virtual-machines/virtual-machines-windows-ps-create.md?toc=%2fazure%2fload-balancer%2ftoc.json).
+Virtuális gépek létrehozásához, egy storage-fiókot kell rendelkeznie. A terheléselosztást, a virtuális gépek rendelkezésre állási csoport tagjának lennie kell. Virtuális gépek létrehozásával kapcsolatos további információkért lásd: [egy Azure virtuális gép létrehozása PowerShell használatával](../virtual-machines/virtual-machines-windows-ps-create.md?toc=%2fazure%2fload-balancer%2ftoc.json).
 
-1. A PowerShell-változó beállítása:
+1. Állítsa be a PowerShell-változókat:
 
     ```powershell
-    $storageAccountName = "ps08092016v6sa0"
     $availabilitySetName = "myIPv4IPv6AvailabilitySet"
     $vm1Name = "myIPv4IPv6VM1"
     $vm2Name = "myIPv4IPv6VM2"
     $nic1Id = "/subscriptions/$subscriptionid/resourceGroups/$rgname/providers/Microsoft.Network/networkInterfaces/$nic1Name"
     $nic2Id = "/subscriptions/$subscriptionid/resourceGroups/$rgname/providers/Microsoft.Network/networkInterfaces/$nic2Name"
-    $disk1Name = "WindowsVMosDisk1"
-    $disk2Name = "WindowsVMosDisk2"
-    $osDisk1Uri = "https://$storageAccountName.blob.core.windows.net/vhds/$disk1Name.vhd"
-    $osDisk2Uri = "https://$storageAccountName.blob.core.windows.net/vhds/$disk2Name.vhd"
-    $imageurn "MicrosoftWindowsServer:WindowsServer:2012-R2-Datacenter:latest"
+    $imageurn = "MicrosoftWindowsServer:WindowsServer:2012-R2-Datacenter:latest"
     $vmUserName = "vmUser"
     $mySecurePassword = "PlainTextPassword*1"
     ```
 
     > [!WARNING]
-    > Ez a példa a felhasználónevet és jelszót a virtuális gépek nem titkosított. Megfelelő gondossággal járjanak el, ha használja ezeket a hitelesítő adatokat nem titkosított. Egy biztonságosabb módszer a PowerShell hitelesítő adatok kezelésére, tekintse meg a [ `Get-Credential` ](https://technet.microsoft.com/library/hh849815.aspx) parancsmag.
+    > Ebben a példában a virtuális gépek nem titkosított felhasználónevet és jelszót használja. Megfelelő gondossággal ezeket a hitelesítő adatokat nem titkosított szövegben való használatakor. A PowerShell hitelesítő adatok kezelésére egy biztonságosabb módszert a [ `Get-Credential` ](https://technet.microsoft.com/library/hh849815.aspx) parancsmagot.
 
-2. A tárolási fiók és a rendelkezésre állási készlet létrehozása.
-
-    Meglévő tárfiók a virtuális gépek létrehozásakor használható. A következő paranccsal létrehozhat egy új tárfiókot:
-
-    ```azurecli
-    $storageAcc = az storage account create $storageAccountName --resource-group $rgName --location $location --sku-name "LRS" --kind "Storage"
-    ```
-
-3. A rendelkezésre állási csoport létrehozása:
+2. A rendelkezésre állási csoport létrehozása:
 
     ```azurecli
     $availabilitySet = az vm availability-set create --name $availabilitySetName --resource-group $rgName --location $location
     ```
 
-4. A társított hálózati adaptert a virtuális gépek létrehozására:
+3. A társított hálózati adapterrel rendelkező virtuális gépek létrehozása:
 
     ```azurecli
-    $vm1 = az vm create --resource-group $rgname --location $location --availability-set $availabilitySet --name $vm1Name --nic-id $nic1Id --os-disk-vhd $osDisk1Uri --os-type "Windows" --admin-username $vmUserName --admin-password $mySecurePassword --vm-size "Standard_A1" --image-urn $imageurn --storage-account-name $storageAccountName --disable-bginfo-extension
+    az vm create --resource-group $rgname --name $vm1Name --image $imageurn --admin-username $vmUserName --admin-password $mySecurePassword --nics $nic1Id --location $location --availability-set $availabilitySetName --size "Standard_A1" 
 
-    $vm2 = azure vm create --resource-group $rgname --location $location --availability-set $availabilitySet --name $vm2Name --nic-id $nic2Id --os-disk-vhd $osDisk2Uri --os-type "Windows" --admin-username $vmUserName --admin-password $mySecurePassword --vm-size "Standard_A1" --image-urn $imageurn --storage-account-name $storageAccountName --disable-bginfo-extension
+    az vm create --resource-group $rgname --name $vm2Name --image $imageurn --admin-username $vmUserName --admin-password $mySecurePassword --nics $nic2Id --location $location --availability-set $availabilitySetName --size "Standard_A1" 
     ```
 
 ## <a name="next-steps"></a>További lépések

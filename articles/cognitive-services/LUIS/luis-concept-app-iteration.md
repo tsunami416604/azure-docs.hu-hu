@@ -9,12 +9,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 02/12/2018
 ms.author: v-geberr
-ms.openlocfilehash: b1736630317d9cbcf2e7380df29bfa8c383b681d
-ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
+ms.openlocfilehash: e0467e4c41209c937f548edc0c40c05cae588f4c
+ms.sourcegitcommit: 11321f26df5fb047dac5d15e0435fce6c4fde663
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37346773"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37888248"
 ---
 # <a name="authoring-cycle"></a>Tartalomkészítési ciklus
 LUIS legjobb megtanulja az iteratív ciklusának adatmodell változásainak, utterance (kifejezés) példákat, közzététel és adatok összegyűjtése a végpont lekérdezések. 
@@ -51,5 +51,3 @@ A Batch vizsgálat nem láthatják az hány példa utterances LUIS szerint kell 
 ## <a name="next-steps"></a>További lépések
 
 Tudnivalók a fogalmak [együttműködési](luis-concept-collaborator.md).
-
-[luis-reference-prebuilt-domains]: https://docs.microsoft.com/azure/cognitive-services/luis/luis-reference-prebuilt-domains

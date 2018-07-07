@@ -13,12 +13,12 @@ ums.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 07/05/2018
 ms.author: rclaus
-ms.openlocfilehash: c7c90a2e24d8dbe7764825abe18c5a1e73b67499
-ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
+ms.openlocfilehash: 1d3089052a67b899e2e4b38123145bd4ae51693f
+ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37868738"
+ms.lasthandoff: 07/07/2018
+ms.locfileid: "37902299"
 ---
 # <a name="sap-hana-backup-based-on-storage-snapshots"></a>Tárolási pillanatképeken alapuló biztonsági mentés SAP HANA-hoz
 
@@ -90,7 +90,8 @@ Hol másolja ezeket a parancsfájlokat a részleteket, és az Azure Backup műk�
 
 - [Virtuális gép biztonsági infrastruktúrájának megtervezése az Azure-ban](https://docs.microsoft.com/en-us/azure/backup/backup-azure-vms-introduction)
 - [Egységes alkalmazáskonzisztens biztonsági mentése az Azure Linux rendszerű virtuális gépek](https://docs.microsoft.com/en-us/azure/backup/backup-azure-linux-app-consistent)
-- 
+
+
 
 Ezen a ponton az időben, a Microsoft nem tett közzé az SAP Hana-hoz és a pillanatkép utáni parancsfájlok előkészítése. Ügyfél vagy a rendszer integráló kell ezeket a szkripteket létrehozni és konfigurálni az eljárást a fentiekben említett dokumentáció alapján.
 
@@ -99,7 +100,7 @@ Ezen a ponton az időben, a Microsoft nem tett közzé az SAP Hana-hoz és a pil
 A cikk ismerteti a visszaállítási folyamat, az alkalmazás konzisztens biztonsági mentését az Azure backup által készített [fájlok helyreállítása Azure virtuális gépek biztonsági mentésének](https://docs.microsoft.com/azure/backup/backup-azure-restore-files-from-vm). 
 
 > [!IMPORTANT]
-> A cikk [fájlok helyreállítása Azure virtuális gépek biztonsági mentésének](https://docs.microsoft.com/azure/backup/backup-azure-restore-files-from-vm), azon kivételek listáját, és mikor jelennek stripe lemezkészletek használatával. A csíkozott lemez amelyek valószínűleg a normál virtuális gép konfigurációjához az SAP Hana-hoz. Ezért elengedhetetlen, olvassa el a cikket, és az ezekben az esetekben a cikkben felsorolt a visszaállítási folyamat teszteléséhez. 
+> A cikk [fájlok helyreállítása Azure virtuális gépek biztonsági mentésének](https://docs.microsoft.com/azure/backup/backup-azure-restore-files-from-vm) azon kivételek listáját, és paritásos lemezkészletek használatakor felsorolt lépéseket. A csíkozott lemez amelyek valószínűleg a normál virtuális gép konfigurációjához az SAP Hana-hoz. Ezért elengedhetetlen, olvassa el a cikket, és az ezekben az esetekben a cikkben felsorolt a visszaállítási folyamat teszteléséhez. 
 
 
 

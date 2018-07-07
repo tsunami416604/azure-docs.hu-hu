@@ -1,39 +1,40 @@
 ---
-title: "fájl belefoglalása"
-description: "fájl belefoglalása"
+title: fájl belefoglalása
+description: fájl belefoglalása
 services: virtual-machines
 author: jonbeck7
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 03/09/2018
-ms.author: azcspmt;jonbeck;cynthn
+ms.date: 05/29/2018
+ms.author: azcspmt;jonbeck;cynthn;danlep
 ms.custom: include file
-ms.openlocfilehash: ee32886ddb74bdbbe0f240310629c8ef26230a68
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 296e92d803bb69376f286aa60cfb4a955b08010f
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "34669346"
 ---
 ## <a name="deployment-considerations"></a>Telepítési szempontok
-* **Azure-előfizetés** – a használatalapú előfizetés vagy egyéb beszerzési lehetőségek csak néhány számítási igényű példányok telepítése érdekében. Amennyiben [ingyenes Azure-fiókot](https://azure.microsoft.com/free/) használ, csak korlátozott számú számítási magot használhat az Azure-ban.
+* **Azure-előfizetés** –, több nagy számítási igényű példányok üzembe helyezése, fontolja meg a használatalapú fizetéses előfizetésre, vagy egyéb fizetési lehetőségeket. Amennyiben [ingyenes Azure-fiókot](https://azure.microsoft.com/free/) használ, csak korlátozott számú számítási magot használhat az Azure-ban.
 
-* **Tarifa- és rendelkezésre állás** -ezek a Virtuálisgép-méretek érhető el csak a Standard tarifacsomagot. Ellenőrizze a [régió elérhető termékek] (https://azure.microsoft.com/regions/services/) a Azure-régiók rendelkezésre állás érdekében. 
-* **Magok kvóta** – szükség lehet az Azure-előfizetéshez az alapértelmezett érték a magok kvótájának növeléséhez. Az előfizetés is lehet, hogy korlátozza az egyes virtuális gép mérete családok, többek között a H-sorozat telepítheti magok száma. A kvóta növelését [nyissa meg az online támogatás ügyfélkérés](../articles/azure-supportability/how-to-create-azure-support-request.md) díjmentesen. (Alapértelmezett korlátokat eltérhetnek attól függően, hogy az előfizetés kategória.)
+* **Díjszabás és a rendelkezésre állási** – ezek a Virtuálisgép-méretek érhetők el csak a Standard tarifacsomagra. Ellenőrizze az [elérhető termékek régiók szerint] (https://azure.microsoft.com/regions/services/) a rendelkezésre állás érdekében az Azure-régióban. 
+* **Magkvóta** – szükség lehet az Azure-előfizetésében az alapértelmezett érték a magkvóta növeléséhez. Az előfizetés is korlátozhatja az egyes virtuális gép többek között a H-sorozat családokban üzembe helyezhető magok számát. Kérje egy kvótájának növelését, [nyisson meg egy támogatási kérést online](../articles/azure-supportability/how-to-create-azure-support-request.md) díjmentesen. (Alapértelmezett korlátok az előfizetés kategória függvénye.)
   
   > [!NOTE]
-  > Ha nagyméretű kapacitási igényeihez van, forduljon az Azure támogatási szolgálatához. Azure-kvótákról jóváírás korlátozza, nem a kapacitás garanciát. Függetlenül attól, a kvóta van csak szó, a magok használatát.
+  > Ha nagyméretű kapacitásigények, forduljon az Azure ügyfélszolgálatához. Azure kvóták kredit korlátai, nem a kapacitás garanciát. Függetlenül attól, a kvóta csak díjkötelesek mag használatát.
   > 
   > 
-* **Virtuális hálózati** – az Azure [virtuális hálózati](https://azure.microsoft.com/documentation/services/virtual-network/) a számítási igényű példányok használatához nem szükséges. Azonban a számos olyan telepítése esetén kell legalább egy felhőalapú Azure virtuális hálózat vagy a hely-hely kapcsolatot, ha a helyszíni erőforrások eléréséhez szükséges. Szükség esetén hozzon létre egy új virtuális hálózat a példányok telepítése. Az affinitáscsoportokban lévő virtuális hálózathoz számítási igényű virtuális gépek hozzáadása nem támogatott.
-* **Átméretezése** – miatt a speciális hardverre átméretezése csak az ugyanazon mérete család (H-méretek és számítási igényű A-sorozatú) számítási igényű példányokat. Például csak átméretezheti H-sorozat VM egy H sorozatnak megfelelő méretűre egy másikra. A számítási igényű méretre eltér egy nem számítási intenzív átméretezése ezenkívül nem támogatott.  
+* **Virtuális hálózat** – Azure [virtuális hálózat](https://azure.microsoft.com/documentation/services/virtual-network/) a nagy számítási igényű példányok használatához nem szükséges. Azonban számos kell legalább egy felhő alapú Azure virtuális hálózat, vagy egy helyek közötti kapcsolatot, ha van szükség a helyszíni erőforrások eléréséhez. Ha szükséges, hozzon létre egy új virtuális hálózatot a példányok üzembe helyezéséhez. Nagy számítási igényű virtuális gépek hozzáadása egy affinitáscsoportban található egy virtuális hálózathoz nem támogatott.
+* **Átméretezés** – speciális hardveradatokkal miatt csak méretezze át a nagy számítási igényű példányok belül az azonos virtuálisgépméret-családhoz (H-sorozat vagy a nagy számítási igényű A-sorozat). Ha például csak átméretezhető H-sorozatú VM egy H-sorozat mérete a másikra. Átméretezés eltér egy nem nagy számítási igényű, nagy számítási igényű méretre ezenkívül nem támogatott.  
 
-## <a name="rdma-capable-instances"></a>Az RDMA-kompatibilis példányok
-A számítási igényű példányok (H16r, H16mr, A8 és A9) egy részét a beállítást, a távoli közvetlen memória-hozzáférés (RDMA) hálózati kapcsolatot a hálózati adaptert. (Kijelölt N-sorozat "r" NC24r például kijelölt értékek is RDMA-kompatibilis.) Ez az interfész mellett más Virtuálisgép-méretek elérhető szabványos Azure hálózati kapcsolat van. 
+## <a name="rdma-capable-instances"></a>RDMA-kompatibilis példányok
+A funkció a távoli közvetlen memória-hozzáféréses (RDMA) kapcsolat egy hálózati adapter egy részét a nagy számítási igényű példányok (H16r, H16mr, a8-as és a9-es). (A kijelölt N-sorozat méretei NC24r például az "r" jelöléssel is is RDMA-kompatibilisek.) Ez az interfész a standard szintű Azure-hálózat felület érhető el, hogy más Virtuálisgép-méretek mellett van. 
   
-Ez az interfész lehetővé teszi az RDMA-kompatibilis példányok egy InfiniBand (IB) hálózaton, működő FDR díjszabás H16r H16mr és RDMA-kompatibilis N sorozatú virtuális gépekhez, és QDR díjszabás A8 és A9 virtuális gépekhez való kommunikációhoz. E RDMA-képességeinek képes javítani, a méretezhetőség és a bizonyos Message Passing Interface (MPI) alkalmazások teljesítményét.
+Ez az interfész lehetővé teszi az RDMA-kompatibilis példány egy InfiniBand (IB) hálózat, a üzemeltetési FDR H16r, H16mr és RDMA-kompatibilis az N sorozatú virtuális gépek díjait, valamint A8 és a9-es virtuális gépek díjait QDR protokollt használó kommunikációra. Ezek az RDMA-képességeinek képes javítani a méretezhetőségi és az egyes Message Passing Interface (MPI) alkalmazásokhoz.
 
 > [!NOTE]
-> Az Azure IP / IB nem támogatott. Csak IB feletti RDMA esetén támogatott.
+> Az Azure-on keresztül IB IP nem támogatott. Csak IB feletti RDMA használata támogatott.
 >
 
-Telepítse az RDMA-kompatibilis HPC az azonos rendelkezésre állási készlet vagy Virtuálisgép-méretezési készlet (Ha használja az Azure Resource Manager telepítési modell) vagy felhő szolgáltatásának ugyanazt a virtuális gépek (Ha használja a klasszikus üzembe helyezési modellel). Hajtsa végre a HPC-RDMA-kompatibilisek-e virtuális gépek az Azure RDMA hálózati elérésére vonatkozó további követelményeket.
+Az RDMA-kompatibilis HPC virtuális gépek üzembe helyezése az ugyanazon rendelkezésre állási vagy Virtuálisgép-méretezési csoportot (Ha használja az Azure Resource Manager üzemi modell) vagy ugyanazon a felhőszolgáltatáson (Ha használja a klasszikus üzemi modellhez). Ha egy Virtuálisgép-méretezési csoportot használ, győződjön meg arról, korlátozza az egyetlen elhelyezési csoportból; üzembe helyezés például egy Resource Manager-sablon beállítása az *singlePlacementGroup* tulajdonságot *igaz*. Kövesse a további követelmények HPC-RDMA-kompatibilis virtuális gépek az Azure RDMA hálózati hozzáféréshez.

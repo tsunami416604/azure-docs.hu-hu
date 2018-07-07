@@ -1,6 +1,6 @@
 ---
-title: Az Azure File használata AKS
-description: Azure-lemezeket használata AKS
+title: Az Azure használata az aks-sel
+description: Azure-lemezek használata az aks-sel
 services: container-service
 author: iainfoulds
 manager: jeconnoc
@@ -9,22 +9,22 @@ ms.topic: article
 ms.date: 03/08/2018
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 25ae0e508223b50219e40245cc9dfbc407b96bba
-ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
+ms.openlocfilehash: 0479e4d80b7490db170255d47ef3190bb744d2d8
+ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37096696"
+ms.lasthandoff: 07/07/2018
+ms.locfileid: "37901493"
 ---
-# <a name="volumes-with-azure-files"></a>Az Azure files kötetek
+# <a name="volumes-with-azure-files"></a>Az Azure files-kötetek
 
-Tároló-alapú alkalmazások gyakran kell elérni, és egy külső adatmennyiség adatok megőrzéséhez. Az Azure files változtatás nélkül használhatók az külső adattárolót. A cikk adatokat az Azure files Kubernetes kötetként az Azure Kubernetes szolgáltatás használatával.
+Tárolóalapú alkalmazások gyakran kell eléréséhez, és a egy külső adatmennyiség adatok megőrzése. Az Azure files a külső adatok tárolását is használható. Ez a cikk részletesen, az Azure files használata az Azure Kubernetes Service-ben a Kubernetes-kötet.
 
-Kubernetes köteteken további információkért lásd: [Kubernetes kötetek][kubernetes-volumes].
+A Kubernetes-köteteken további információkért lásd: [Kubernetes kötetek][kubernetes-volumes].
 
 ## <a name="create-an-azure-file-share"></a>Azure-fájlmegosztás létrehozása
 
-Használata előtt egy Azure fájlmegosztás Kubernetes kötetként, létre kell hoznia egy Azure Storage-fiók és a fájlmegosztást. A következő parancsfájl segítségével ezeket a feladatokat. Jegyezze fel, vagy frissítse a paraméterek értékeit, néhány esetben van szükség, amikor a Kubernetes kötet létrehozásához.
+Mielőtt egy Azure-fájlmegosztás, egy Kubernetes-kötet, létre kell hoznia egy Azure Storage-fiókot és a fájlmegosztást. A következő szkriptet a feladatok végrehajtásához használható. Jegyezze fel, vagy frissítse a paraméterek értékeit, ezek közül néhányat a Kubernetes-kötet létrehozásakor van szükség.
 
 ```azurecli-interactive
 #!/bin/bash
@@ -52,14 +52,14 @@ STORAGE_KEY=$(az storage account keys list --resource-group $AKS_PERS_RESOURCE_G
 
 # Echo storage account name and key
 echo Storage account name: $AKS_PERS_STORAGE_ACCOUNT_NAME
-echo Storgae account key: $STORAGE_KEY
+echo Storage account key: $STORAGE_KEY
 ```
 
-## <a name="create-kubernetes-secret"></a>Kubernetes titkos kulcs létrehozása
+## <a name="create-kubernetes-secret"></a>Kubernetes titkos kód létrehozása
 
-Kubernetes kell a fájlmegosztás eléréséhez szükséges hitelesítő adatokat. Ezek a hitelesítő adatok vannak tárolva egy [Kubernetes titkos][kubernetes-secret], amely hivatkozik a Kubernetes pod létrehozásakor.
+Kubernetes van szüksége a fájlmegosztás eléréséhez szükséges hitelesítő adatokat. Ezek a hitelesítő adatok vannak tárolva egy [Kubernetes titkos][kubernetes-secret], amelyre hivatkozik egy Kubernetes-podok létrehozásakor.
 
-Az alábbi parancs segítségével hozzon létre a titkos kulcsot. Cserélje le `STORAGE_ACCOUNT_NAME` rendelkező a tárfiók nevére, és `STORAGE_ACCOUNT_KEY` a tárolási kulccsal.
+A következő paranccsal hozzon létre a titkos kulcsot. Cserélje le `STORAGE_ACCOUNT_NAME` az a tárfiók nevét, és `STORAGE_ACCOUNT_KEY` az a tárfiók kulcsát.
 
 ```console
 kubectl create secret generic azure-secret --from-literal=azurestorageaccountname=STORAGE_ACCOUNT_NAME --from-literal=azurestorageaccountkey=STORAGE_ACCOUNT_KEY
@@ -67,7 +67,7 @@ kubectl create secret generic azure-secret --from-literal=azurestorageaccountnam
 
 ## <a name="mount-file-share-as-volume"></a>Fájlmegosztás csatlakoztatása kötetként
 
-A kötet konfigurálása a saját egyedi csatlakoztassa azokat a pod az Azure-fájlok megosztást. Hozzon létre egy új fájlt `azure-files-pod.yaml` a következő tartalommal. Frissítés `aksshare` az Azure-fájlok neve azonos.
+Csatlakoztassa az Azure-fájlmegosztást be a pod a kötetet a specifikációja konfigurálásával. Hozzon létre egy új fájlt `azure-files-pod.yaml` a következő tartalommal. Frissítés `aksshare` név, az Azure Files-megosztás.
 
 ```yaml
 apiVersion: v1
@@ -89,20 +89,20 @@ spec:
       readOnly: false
 ```
 
-Kubectl segítségével hozzon létre egy pod.
+A kubectl használatával hozzon létre egy pod.
 
 ```azurecli-interactive
 kubectl apply -f azure-files-pod.yaml
 ```
 
-Az Azure fájlmegosztás-e csatlakoztatva a most már rendelkezik egy futó tároló a `/mnt/azure` könyvtár.  Láthatja, hogy a kötet csatlakoztatási vizsgálatakor ellenőrizze a pod keresztül `kubectl describe pod azure-files-pod`.
+A futó tárolót a csatlakoztatott Azure-fájlmegosztást most már a `/mnt/azure` könyvtár.  Láthatja, hogy a kötet csatlakoztatása, amikor be a pod-n keresztül `kubectl describe pod azure-files-pod`.
 
 ## <a name="next-steps"></a>További lépések
 
-További tudnivalók Kubernetes kötetek Azure fájlokat használja.
+További információ az Azure Files segítségével Kubernetes-köteteket.
 
 > [!div class="nextstepaction"]
-> [Azure-fájlok Kubernetes beépülő modul][kubernetes-files]
+> [Kubernetes-beépülő modul az Azure Files számára][kubernetes-files]
 
 <!-- LINKS - external -->
 [kubectl-create]: https://kubernetes.io/docs/user-guide/kubectl/v1.8/#create

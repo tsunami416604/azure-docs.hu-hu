@@ -10,12 +10,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 03/19/2018
 ms.author: v-geberr
-ms.openlocfilehash: 4a5ace10c171d17235051c5bd666526318829fd7
-ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
+ms.openlocfilehash: 27d6bbc628ac3183032a90d8f3ad98998c76a957
+ms.sourcegitcommit: 11321f26df5fb047dac5d15e0435fce6c4fde663
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 07/06/2018
-ms.locfileid: "37867341"
+ms.locfileid: "37888830"
 ---
 # <a name="use-batch-testing-to-find-prediction-accuracy-issues"></a>Előrejelzési pontosság problémák kereséséhez használja a batch tesztelése
 
@@ -33,7 +33,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 ## <a name="prerequisites"></a>Előfeltételek
 
 > [!div class="checklist"]
-> * Ez a cikk is szüksége lesz egy [LUIS][LUIS] fiók annak érdekében, hogy a LUIS-alkalmazás létrehozásához.
+> * Ez a cikk is szüksége lesz egy [LUIS](luis-reference-regions.md) fiók annak érdekében, hogy a LUIS-alkalmazás létrehozásához.
 
 > [!Tip]
 > Ha Ön még nem rendelkezik előfizetéssel, regisztrálhat egy [ingyenes fiókot](https://azure.microsoft.com/free/).
@@ -41,7 +41,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 ## <a name="create-new-app"></a>Új alkalmazás létrehozása
 Ez a cikk az előre összeállított tartomány HomeAutomation használja. Az előre összeállított tartományban van, szándék fog vonatkozni, az entitások és HomeAutomation eszközök, például lámpa való kimondott szöveg. A tartomány az alkalmazás létrehozását, betanítását és közzététele.
 
-1. Az a [LUIS] webhely, hozzon létre egy új alkalmazást kiválasztásával **új alkalmazás létrehozása** a a **MyApps** lapot. 
+1. Az a [LUIS](luis-reference-regions.md) webhely, hozzon létre egy új alkalmazást kiválasztásával **új alkalmazás létrehozása** a a **MyApps** lapot. 
 
     ![Új alkalmazás létrehozása](./media/luis-tutorial-batch-testing/create-app-1.png)
 

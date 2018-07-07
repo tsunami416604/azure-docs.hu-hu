@@ -1,26 +1,26 @@
 ---
-title: A Marathon felhasználói felület Azure DC/OS-fürt kezeléséhez
+title: A Marathon felhasználói felületén Azure DC/OS fürt kezelése
 description: A cikk azt ismerteti, hogyan telepíthetők tárolók egy Azure tárolószolgáltatásba a Marathon webes felhasználói felület segítségével.
 services: container-service
-author: dlepow
+author: iainfoulds
 manager: jeconnoc
 ms.service: container-service
 ms.topic: article
 ms.date: 04/04/2017
-ms.author: danlep
+ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 43407d40db0aab2772cb1baeab3471be68aee2ab
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: a22bddf48f97d961d481e2aedb42f7d645f3e678
+ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32166983"
+ms.lasthandoff: 07/07/2018
+ms.locfileid: "37903081"
 ---
 # <a name="manage-an-azure-container-service-dcos-cluster-through-the-marathon-web-ui"></a>Azure Container Service DC/OS-fürt kezelése a Marathon webes felhasználói felületén
 
 A DC/OS biztosítja a fürtözött feladatok telepítését és skálázását lehetővé tevő környezetet, ugyanakkor absztrakciós rétegként működik a hardver fölött. A DC/OS fölötti keretrendszer gondoskodik a számítási feladatok ütemezéséről és végrehajtásáról.
 
-Számos népszerű számítási elérhetők keretrendszerek, ez a dokumentum ismerteti a marathon segítségével tárolók üzembe helyezésének első lépései. 
+Számos népszerű számítási feladathoz elérhetők keretrendszerek, ez a dokumentum azt ismerteti, hogyan kezdheti el a marathon segítségével tárolók üzembe helyezése. 
 
 
 ## <a name="prerequisites"></a>Előfeltételek
@@ -30,7 +30,7 @@ A példákban szereplő feladatok elvégzéséhez szüksége lesz egy az Azure t
 * [Csatlakozás Azure Container Service-fürthöz](../container-service-connect.md)
 
 > [!NOTE]
-> Ez a cikk feltételezi, hogy az alagutat a DC/OS-fürtre a helyi 80-as porton keresztül.
+> Ez a cikk feltételezi, hogy a 80-as helyi porton keresztül bújtatás a DC/OS-fürtre.
 >
 
 ## <a name="explore-the-dcos-ui"></a>A DC/OS felhasználói felületének megnyitása
@@ -39,7 +39,7 @@ Az egy Secure Shell (SSH) alagút [létrehozott](../container-service-connect.md
 ![A DC/OS UI felhasználói felülete](./media/container-service-mesos-marathon-ui/dcos2.png)
 
 ## <a name="explore-the-marathon-ui"></a>A Marathon felhasználói felület megnyitása
-A Marathon felhasználói felület megtekintéséhez navigáljon a http://localhost/marathon. Ezen a képernyőn elindíthat egy új tárolót vagy más szolgáltatást az Azure tárolószolgáltatási DC/OS-fürtön. A futó tárolókkal és alkalmazásokkal kapcsolatos információkat is láthat.  
+A Marathon felhasználói felület megtekintéséhez keresse meg a http://localhost/marathon. Ezen a képernyőn elindíthat egy új tárolót vagy más szolgáltatást az Azure tárolószolgáltatási DC/OS-fürtön. A futó tárolókkal és alkalmazásokkal kapcsolatos információkat is láthat.  
 
 ![Marathon felhasználói felület](./media/container-service-mesos-marathon-ui/dcos3.png)
 
@@ -83,7 +83,7 @@ A Marathon főoldalára visszatérve láthatja a tároló üzembe helyezési ál
 
 ![A Marathon főoldala – a tároló üzembe helyezési állapota](./media/container-service-mesos-marathon-ui/dcos7.png)
 
-Amikor visszavált a DC/OS webes felhasználói felülete (http://localhost/), láthatja, hogy a DC/OS fürtben fut egy feladat (ebben az esetben egy Docker-formázású tároló).
+Amikor visszavált a DC/OS webes felhasználói Felületét (http://localhost/), láthatja, hogy a DC/OS-fürtön fut egy feladat (az ebben az esetben egy Docker-formázású tároló).
 
 ![DC/OS webes felhasználói felülete – a fürtön futó feladat](./media/container-service-mesos-marathon-ui/dcos8.png)
 
@@ -91,9 +91,9 @@ Ha szeretné megtekinteni azt a fürtcsomópontot, amelyen a feladat fut, kattin
 
 ![A DC/OS webes felhasználói felülete – a feladat fürtcsomópontja](./media/container-service-mesos-marathon-ui/dcos9.png)
 
-## <a name="reach-the-container"></a>A tároló elérése
+## <a name="reach-the-container"></a>A tároló eléréséhez
 
-Ebben a példában az alkalmazás fut egy nyilvános ügynök csomóponton. Keresse meg azt az ügynöknek a fürt eléri az alkalmazást az internetről: `http://[DNSPREFIX]agents.[REGION].cloudapp.azure.com`, ahol:
+Ebben a példában az alkalmazás fut egy nyilvános ügynök csomóponton. Navigáljon az ügynököt a fürt teljes Tartománynevét az eléri az alkalmazást az internetről: `http://[DNSPREFIX]agents.[REGION].cloudapp.azure.com`, ahol:
 
 * a **DNSPREFIX** a fürt telepítésekor megadott DNS-előtag.
 * a **REGION** az a régió, ahol az erőforráscsoport megtalálható.

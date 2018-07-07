@@ -1,6 +1,6 @@
 ---
-title: Az Azure Windows Virtuálisgép-méretek - tároló |} Microsoft Docs
-description: A Windows virtuális gépek Azure-ban elérhető optimalizált eltérő tárolási méretek sorolja fel. Vcpu, adatlemezek és hálózati adapterek, valamint tárolási átviteli sebesség és a hálózati sávszélesség az a sorozat-méretek számát tartalmazza.
+title: Az Azure Windows VM-méretek – Storage |} A Microsoft Docs
+description: Felsorolja a különböző optimalizált méretű tárhely az Azure-beli Windows virtuális gépek számára elérhető. Tartalmazza a vcpu-k, az adatlemezeket és a hálózati adapterek, valamint tárolási átviteli sebesség és a hálózati sávszélesség-sorozat méretei száma.
 services: virtual-machines-windows
 documentationcenter: ''
 author: jonbeck7
@@ -13,30 +13,30 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 01/11/2018
+ms.date: 07/06/2018
 ms.author: jonbeck
-ms.openlocfilehash: 99a777b1689ae0641729709e30c4880479243d71
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 7e0b22751cd72f0c7e4e1452c1f1d6c78d9fbc20
+ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34658179"
+ms.lasthandoff: 07/07/2018
+ms.locfileid: "37903833"
 ---
-# <a name="storage-optimized-virtual-machine-sizes"></a>Tárolási optimalizált virtuálisgép-méretek
+# <a name="storage-optimized-virtual-machine-sizes"></a>Tárolásra optimalizált virtuális gépek méretei
 
 
 
 [!INCLUDE [virtual-machines-common-sizes-general](../../../includes/virtual-machines-common-sizes-storage.md)]
 
 
-## <a name="other-sizes"></a>Más méretek
+## <a name="other-sizes"></a>További méretek
 - [Általános célú](sizes-general.md)
 - [Számításra optimalizált](sizes-compute.md)
 - [Memóriaoptimalizált](sizes-memory.md)
 - [GPU-optimalizált](sizes-gpu.md)
 - [Nagy teljesítményű számítás](sizes-hpc.md)
-- [Előző generációs](sizes-previous-gen.md)
+- [Előző generációs szoftvereknél jobban](sizes-previous-gen.md)
 
 ## <a name="next-steps"></a>További lépések
-További tudnivalók [Azure számítási egység (ACU)](acu.md) segíthetnek a számítási teljesítmény összehasonlítása Azure termékváltozatok mentén.
+Tudjon meg többet [Azure számítási egységek (ACU)](acu.md) Azure-termékváltozatok hasonlítsa össze a számítási teljesítményt nyújt segítséget.
 

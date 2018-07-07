@@ -1,6 +1,6 @@
 ---
-title: Létrehozása, listázása és egy felhasználó lehet hozzárendelve (MSI) az Azure PowerShell törlése
-description: Lépésről lépésre történő létrehozása, listázása és törlése a felhasználó hozzárendelése az Azure PowerShell felügyelt Szolgáltatásidentitás.
+title: Hogyan hozhat létre, listázása és törlése a felhasználóhoz rendelt (MSI) Azure PowerShell-lel
+description: Részletes útmutatást létrehozása, listázása és törlése a felhasználó hozzárendelt Felügyeltszolgáltatás-identitás az Azure PowerShell használatával.
 services: active-directory
 documentationcenter: ''
 author: daveba
@@ -9,66 +9,66 @@ editor: ''
 ms.service: active-directory
 ms.component: msi
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/16/2018
 ms.author: daveba
-ms.openlocfilehash: d413e5821aff8cf26dfc9ba03e6ec9d4134af76e
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: ca0493d43abb5d1e79ffb28e45b427eef0432b9e
+ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34698944"
+ms.lasthandoff: 07/07/2018
+ms.locfileid: "37904105"
 ---
-# <a name="create-list-or-delete-a-user-assigned-identity-using-azure-powershell"></a>Lista létrehozása, vagy egy Azure PowerShell használatával a felhasználói identitás törlése
+# <a name="create-list-or-delete-a-user-assigned-identity-using-azure-powershell"></a>Lista létrehozása vagy törlése a felhasználóhoz hozzárendelt identitás Azure PowerShell-lel
 
 [!INCLUDE[preview-notice](~/includes/active-directory-msi-preview-notice-ua.md)]
 
-Felügyelt Szolgáltatásidentitás az Azure Active Directory-identitással felügyelt Azure-szolgáltatásokhoz biztosít. Ezzel az identitással használhatja az Azure AD-alapú hitelesítés, anélkül, hogy hitelesítő adatok a kódban támogató szolgáltatások felé történő hitelesítésre. 
+Felügyeltszolgáltatás-identitás egy felügyelt identitás, az Azure Active Directory Azure-szolgáltatásokat biztosít. Ez az identitás használatával, amelyek támogatják az Azure AD-hitelesítés, anélkül, hogy hitelesítő adatok a kód a szolgáltatásokhoz való hitelesítéséhez. 
 
-Ebből a cikkből megismerheti, hogyan létrehozása, listázása és törlése az Azure PowerShell hozzárendelt felhasználói azonosítót.
+Ebből a cikkből megismerheti, hogyan hozhatók létre, lista és a egy Azure PowerShell-lel a felhasználóhoz hozzárendelt identitás törlése.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Ha nem ismeri a felügyelt Szolgáltatásidentitás, tekintse meg a [áttekintés szakaszban](overview.md). **Ne feledje el áttekinteni a [különbség egy hozzárendelt rendszer és a felhasználói identitás](overview.md#how-does-it-work)**.
-- Ha még nem telepítette az Azure-fiók [regisztráljon egy ingyenes fiókot](https://azure.microsoft.com/free/) folytatása előtt.
-- Telepítés [Azure PowerShell legújabb verziójának](https://www.powershellgallery.com/packages/AzureRM) Ha még nem tette meg.
-- Ha PowerShell telepítéséhez és használatához helyileg, ez az oktatóanyag igényel-e az Azure PowerShell modul verziója 5.7.0 vagy újabb. A verzió azonosításához futtassa a következőt: ` Get-Module -ListAvailable AzureRM`. Ha frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-azurerm-ps) ismertető cikket. Ha helyileg futtatja a PowerShellt, akkor emellett a `Login-AzureRmAccount` futtatásával kapcsolatot kell teremtenie az Azure-ral.
+- Ha még nem ismeri a Felügyeltszolgáltatás-identitást, tekintse meg a [áttekintés szakaszban](overview.md). **Ne feledje el áttekinteni a [különbség egy rendszer által hozzárendelt, és a felhasználóhoz hozzárendelt identitás](overview.md#how-does-it-work)**.
+- Ha még nem rendelkezik Azure-fiók [regisztrálhat egy ingyenes fiókot](https://azure.microsoft.com/free/) a folytatás előtt.
+- Telepítés [az Azure PowerShell legújabb verzióját](https://www.powershellgallery.com/packages/AzureRM) Ha még nem tette.
+- Ha helyi telepítése és használata PowerShell választja, az oktatóanyaghoz az Azure PowerShell 5.7.0 modul verzió vagy újabb. A verzió azonosításához futtassa a következőt: ` Get-Module -ListAvailable AzureRM`. Ha frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-azurerm-ps) ismertető cikket. Ha helyileg futtatja a PowerShellt, akkor emellett a `Login-AzureRmAccount` futtatásával kapcsolatot kell teremtenie az Azure-ral.
 
-## <a name="create-a-user-assigned-identity"></a>Hozzon létre egy felhasználó lehet hozzárendelve identitás
+## <a name="create-a-user-assigned-identity"></a>A felhasználóhoz hozzárendelt identitás létrehozása
 
-Egy felhasználó lehet hozzárendelve identitás létrehozásához használja a [New-AzureRmUserAssignedIdentity](/powershell/module/azurerm.managedserviceidentity/new-azurermuserassignedidentity) parancsot. A `ResourceGroupName` paraméter határozza meg az erőforráscsoportot, a felhasználói identitás létrehozásának a helyét és a `-Name` paraméter határozza meg a nevét. Cserélje le a `<RESOURCE GROUP>` és `<USER ASSIGNED IDENTITY NAME>` paraméterértékeket a saját értékekkel:
+A felhasználóhoz hozzárendelt identitás létrehozása, használja a [New-AzureRmUserAssignedIdentity](/powershell/module/azurerm.managedserviceidentity/new-azurermuserassignedidentity) parancsot. A `ResourceGroupName` paraméter adja meg az erőforráscsoport helyét a felhasználóhoz hozzárendelt identitás létrehozása és a `-Name` paraméter adja meg a nevét. Cserélje le a `<RESOURCE GROUP>` és `<USER ASSIGNED IDENTITY NAME>` paraméterértékeket a saját értékeire:
 
 [!INCLUDE[ua-character-limit](~/includes/managed-identity-ua-character-limits.md)]
 
  ```azurepowershell-interactive
 New-AzureRmUserAssignedIdentity -ResourceGroupName <RESOURCEGROUP> -Name <USER ASSIGNED IDENTITY NAME>
 ```
-## <a name="list-user-assigned-identities"></a>A felhasználói listában identitások
+## <a name="list-user-assigned-identities"></a>Listát a felhasználóhoz hozzárendelt identitás
 
-A felhasználói identitások listán, használja a [Get-AzureRmUserAssigned](/powershell/module/azurerm.managedserviceidentity/get-azurermuserassignedidentity) parancsot.  A `-ResourceGroupName` paraméter határozza meg az erőforráscsoportot, ahol a felhasználó identitása létrejött.  Cserélje le a `<RESOURCE GROUP>` saját értékkel:
+Felhasználó által hozzárendelt identitások listán, használja a [Get-AzureRmUserAssigned](/powershell/module/azurerm.managedserviceidentity/get-azurermuserassignedidentity) parancsot.  A `-ResourceGroupName` paraméter adja meg az erőforráscsoport, ahol a felhasználóhoz hozzárendelt identitás létrehozták.  Cserélje le a `<RESOURCE GROUP>` saját értékét:
 
 ```azurepowershell-interactive
 Get-AzureRmUserAssignedIdentity -ResourceGroupName <RESOURCE GROUP>
 ```
-A válasz a felhasználói identitások van `"Microsoft.ManagedIdentity/userAssignedIdentities"` kulcs, a visszaadott érték `Type`.
+A választ, a felhasználói identitások van `"Microsoft.ManagedIdentity/userAssignedIdentities"` kulcs, a visszaadott érték `Type`.
 
 `Type :Microsoft.ManagedIdentity/userAssignedIdentities`
 
-## <a name="delete-a-user-assigned-identity"></a>Identitás hozzárendelt felhasználó törlése
+## <a name="delete-a-user-assigned-identity"></a>A felhasználóhoz hozzárendelt identitás törlése
 
-A felhasználói identitás törléséhez használja a [Remove-AzureRmUserAssignedIdentity](/powershell/module/azurerm.managedserviceidentity/remove-azurermuserassignedidentity) parancsot.  A `-ResourceGroupName` paraméter határozza meg az erőforráscsoportot, ahol a felhasználó identitása létrejött, és a `-Name` paraméter határozza meg a nevét.  Cserélje le a `<RESOURCE GROUP>` és a `<USER ASSIGNED IDENTITY NAME>` paraméterek értékét a saját értékekkel:
+A felhasználói identitás törléséhez használja a [Remove-AzureRmUserAssignedIdentity](/powershell/module/azurerm.managedserviceidentity/remove-azurermuserassignedidentity) parancsot.  A `-ResourceGroupName` paraméter adja meg az erőforráscsoport, ahol a felhasználóhoz hozzárendelt identitás lett létrehozva, és a `-Name` paraméter adja meg a nevét.  Cserélje le a `<RESOURCE GROUP>` és a `<USER ASSIGNED IDENTITY NAME>` paraméterek értékét a saját értékeire:
 
  ```azurecli-interactive
 Remove-AzurRmUserAssignedIdentity -ResourceGroupName <RESOURCE GROUP> -Name <USER ASSIGNED IDENTITY NAME>
 ```
 > [!NOTE]
-> Egy felhasználó lehet hozzárendelve identitás nem törlésével a hivatkozást a hozzá rendelt összes erőforrást. Identitás hozzárendeléseket nem kell külön-külön el kell távolítani.
+> Egy felhasználóhoz hozzárendelt identitás törlése nem távolítja el a hivatkozást, a hozzá rendelt összes erőforrást. Identitás-hozzárendelések kell külön lépésben lehet eltávolítani.
 
 ## <a name="related-content"></a>Kapcsolódó tartalom
 
-Teljes listáját és az Azure PowerShell MSI parancsok további részletekért lásd: [AzureRM.ManagedServiceIdentity](/powershell/module/azurerm.managedserviceidentity#managed_service_identity).
+Teljes listáját és az Azure PowerShell MSI-parancsok további részleteket lásd: [AzureRM.ManagedServiceIdentity](/powershell/module/azurerm.managedserviceidentity#managed_service_identity).
 
 
  

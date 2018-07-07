@@ -1,46 +1,46 @@
 ---
-title: Azure Tárolószolgáltatási DC/OS-ügynök készleteket
-description: A nyilvános és titkos ügynök készletek működéséről az Azure tároló szolgáltatás DC/OS-fürt
+title: Az Azure Container Service DC/OS-ügynökkészletek
+description: A nyilvános és privát ügynökként működése egy Azure Container Service DC/OS-fürttel
 services: container-service
-author: dlepow
+author: iainfoulds
 manager: jeconnoc
 ms.service: container-service
 ms.topic: article
 ms.date: 01/04/2017
-ms.author: danlep
+ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 81059fd75f0e61324221614c4bb8eccd94203478
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 9dda6d45caf69734eb135779c8bac00fea721efd
+ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32162262"
+ms.lasthandoff: 07/07/2018
+ms.locfileid: "37901058"
 ---
-# <a name="dcos-agent-pools-for-azure-container-service"></a>Azure Tárolószolgáltatási DC/OS-ügynök készleteket
-Azure Tárolószolgáltatási DC/OS fürtök ügynök csomópontok két rendelkezik, egy nyilvános készlet és egy személyes készletet tartalmaz. Egy alkalmazás vagy a készletbe, a tárolószolgáltatás gépek közötti kisegítő érintő is telepíthető. A gépek kommunikál az internettel (nyilvános), vagy belső (magánhálózati) tartani. Ez a cikk rövid áttekintést nyújt, ezért azonban nyilvános és titkos.
+# <a name="dcos-agent-pools-for-azure-container-service"></a>Az Azure Container Service DC/OS-ügynökkészletek
+Az Azure Container Service DC/OS fürtök ügynökcsomópontok két készleteket, a nyilvános készlet és a egy privát készletet tartalmaz. Egy alkalmazás vagy a készlethez, ez hatással lenne a kisegítő lehetőségek között a gépek a container service-ben is telepíthető. A gépek lehetnek közzétéve az interneten (nyilvános) vagy tartani a belső (magánhálózati). Ez a cikk rövid áttekintést ad meg, miért azonban nyilvános és privát.
 
 
-* **Személyes ügynökök**: titkos ügynök csomópontokat átszervezhető nem irányítható hálózathoz. Ez a hálózat csak érhető el, az admin zónából, vagy a nyilvános zóna útválasztón keresztül. Alapértelmezés szerint a DC/OS indít alkalmazások titkos ügynök csomópontján. 
+* **Privát ügynökök**: privát ügynök csomópontok futtatása nem irányítható hálózaton keresztül. Ehhez a hálózathoz csak érhető el, a rendszergazda zónából, vagy a nyilvános zónákhoz peremhálózati útválasztó keresztül. Alapértelmezés szerint DC/OS elindítja az alkalmazások privát ügynök csomópontokon. 
 
-* **Nyilvános ügynökök**: nyilvános ügynök csomópontok DC/OS-alkalmazások és szolgáltatások futtatása egy nyilvánosan elérhető a hálózaton keresztül. 
+* **Nyilvános ügynökök**: nyilvános ügynökcsomópontok DC/OS-alkalmazások és szolgáltatások futtatása egy nyilvánosan elérhető-e a hálózaton keresztül. 
 
-A DC/OS hálózati biztonsággal kapcsolatos további információkért lásd: a [DC/OS-dokumentáció](https://dcos.io/docs/1.7/administration/securing-your-cluster/).
+További információ a DC/OS-hálózati biztonság: a [DC/OS dokumentációt](https://dcos.io/docs/1.7/administration/securing-your-cluster/).
 
-## <a name="deploy-agent-pools"></a>Ügynök-készletek központi telepítése
+## <a name="deploy-agent-pools"></a>Ügynökkészletek üzembe helyezése
 
-A DC/OS-ügynök készletek az Azure Tárolószolgáltatás jönnek létre az alábbiak szerint:
+Az Azure Container Service DC/OS-ügynökkészletek módon jönnek létre:
 
-* A **titkos készlet** tartalmazza, hogy mikor megadja ügynök csomópontok száma, [a DC/OS-fürt üzembe](container-service-deployment.md). 
+* A **privát készlet** adjon meg mikor ügynökcsomópontok számát tartalmazza, [a DC/OS fürt üzembe helyezéséhez](container-service-deployment.md). 
 
-* A **nyilvános készlet** kezdetben a egy előre meghatározott számú ügynök csomópontot tartalmaz. Ha a DC/OS-fürt ki van építve a rendszer automatikusan hozzáadja a készlet.
+* A **nyilvános készlet** kezdetben az ügynökcsomópontok előre meghatározott számát tartalmazza. Van a DC/OS fürt üzembe helyezésekor a rendszer automatikusan hozzáadja a készlethez.
 
-A privát készlet és a nyilvános készlet olyan Azure virtuálisgép-méretezési készlet. Telepítés után a készletek is átméretezhetők.
+A privát készlet és a nyilvános készlet is az Azure-beli virtuálisgép-méretezési csoportok. Ezen készletek átméretezhető üzembe helyezés után.
 
-## <a name="use-agent-pools"></a>Ügynök-készletek használatára
-Alapértelmezés szerint **Marathon** bármely új alkalmazás telepíti a *titkos* ügynök csomópontok. Explicit módon telepítheti az alkalmazást, hogy a *nyilvános* csomópontok az alkalmazás létrehozása közben. Válassza ki a **nem kötelező** lapra, és írja be **slave_public** a a **elfogadott erőforrás szerepkörök** érték. Ez a folyamat dokumentált [Itt](container-service-mesos-marathon-ui.md#deploy-a-docker-formatted-container) és a a [DC/OS](https://dcos.io/docs/1.7/administration/installing/custom/create-public-agent/) dokumentációját.
+## <a name="use-agent-pools"></a>Használja az ügynökkészletek
+Alapértelmezés szerint **Marathon** bármely új alkalmazást helyez üzembe a *privát* ügynökcsomóponttal. Az alkalmazás számára explicit módon telepíteni kívánt a *nyilvános* csomópontok az alkalmazás létrehozása során. Válassza ki a **nem kötelező** lapra, és adja meg **slave_public** számára a **elfogadott erőforrás-szerepkörökkel** értéket. Ez a folyamat dokumentált [Itt](container-service-mesos-marathon-ui.md#deploy-a-docker-formatted-container) és a a [DC/OS](https://dcos.io/docs/1.7/administration/installing/custom/create-public-agent/) dokumentációját.
 
 ## <a name="next-steps"></a>További lépések
-* Tudjon meg többet az [a DC/OS-tárolók kezelése](container-service-mesos-marathon-ui.md).
+* Tudjon meg többet [a DC/OS-tárolók kezelése](container-service-mesos-marathon-ui.md).
 
-* Megtudhatja, hogyan [nyissa meg a tűzfal](container-service-enable-public-access.md) a DC/OS-tárolók nyilvános hozzáférés engedélyezése az Azure által biztosított.
+* Ismerje meg, hogyan [megnyitja a tűzfalat](container-service-enable-public-access.md) tárolóit DC/OS nyilvános hozzáférésének engedélyezéséhez az Azure által biztosított.
 

@@ -9,12 +9,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 03/13/2018
 ms.author: v-geberr
-ms.openlocfilehash: 694b195440936a6eb42520c3343b6ff13194cc79
-ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
+ms.openlocfilehash: f897a3c85bebff3c4534679d45e8af49aacba44a
+ms.sourcegitcommit: 11321f26df5fb047dac5d15e0435fce6c4fde663
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37346331"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37888116"
 ---
 # <a name="versions"></a>Verziók
 Ugyanezt az alkalmazást a különböző modellek létrehozásának eljárásait [verziók](luis-how-to-manage-versions.md). 
@@ -26,7 +26,7 @@ A Verzióazonosító karakterek, számjegyek áll, vagy ".", és nem lehet hossz
 A kezdeti verzióhoz (0,1) az alapértelmezett active verzió. 
 
 ## <a name="active-version"></a>Aktív verziója
-A [-verzió beállítása](luis-how-to-manage-versions.md#set-active-version) , az aktív jelenti, hogy a jelenleg szerkesztett és tesztelése a [LUIS] [ LUIS] webhelyén. Az adatok eléréséhez, hajtsa végre a frissítéseket, is tesztelheti, és tegye közzé az active-verzió beállítása.
+A [-verzió beállítása](luis-how-to-manage-versions.md#set-active-version) , az aktív jelenti, hogy a jelenleg szerkesztett és tesztelése a [LUIS](luis-reference-regions.md) webhelyén. Az adatok eléréséhez, hajtsa végre a frissítéseket, is tesztelheti, és tegye közzé az active-verzió beállítása.
 
 A jelenleg aktív verzió neve a felső, a bal oldali panelen jelenik meg az alkalmazás neve után. 
 
@@ -62,5 +62,3 @@ A tulajdonos és az összes [közreműködők](luis-how-to-collaborate.md) telje
 Tekintse meg, hogyan adhat hozzá [versioning](luis-how-to-manage-versions.md) alkalmazás beállítások oldalán. 
 
 Ismerje meg, hogyan tervezhet [leképezések](luis-concept-intent.md) a modellbe.
-
-[LUIS]: https://docs.microsoft.com/azure/cognitive-services/luis/luis-reference-regions

@@ -9,18 +9,18 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: v-geberr
-ms.openlocfilehash: c581c26f867ca78a5ed12922c9e8760f5f903881
-ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
+ms.openlocfilehash: f55574f7a9ffbcc2a1c8bd160bb66336b59c348c
+ms.sourcegitcommit: 11321f26df5fb047dac5d15e0435fce6c4fde663
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37345858"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37888599"
 ---
 # <a name="authoring-and-endpoint-user-access"></a>Létrehozási és -végpont felhasználói hozzáférés
 Authoring hozzáférés tulajdonosok és a közreműködők érhető el. Saját alkalmazások esetén végponti hozzáférés tulajdonosai és a közreműködők érhető el. Egy nyilvános alkalmazás végponti hozzáférés érhető el mindenki számára, amelyek a saját LUIS-fiókkal rendelkezik, és a nyilvános alkalmazás-azonosítóval rendelkezik. 
 
 ## <a name="access-to-authoring"></a>Az authoring hozzáférés
-Az alkalmazáshoz való hozzáférést a [LUIS] [ LUIS] webhely vagy a [API-k készítése](https://aka.ms/luis-authoring-apis) vezérlik az alkalmazás tulajdonosának. 
+Az alkalmazáshoz való hozzáférést a [LUIS](luis-reference-regions.md#luis-website) webhely vagy a [API-k készítése](https://aka.ms/luis-authoring-apis) vezérlik az alkalmazás tulajdonosának. 
 
 A tulajdonos és az összes közreműködők hozzáférése ahhoz, hogy az alkalmazást. 
 
@@ -80,5 +80,3 @@ A LUIS sikeresen befejeződött, az ISO 27001:2013 és 27018:2014 ISO auditálá
 ## <a name="next-steps"></a>További lépések
 
 Lásd: [ajánlott eljárások](luis-concept-best-practices.md) hogyan használja a legjobb előrejelzéseket szándékokat és entitásokat.
-
-[LUIS]: https://docs.microsoft.com/azure/cognitive-services/luis/luis-reference-regions#luis-website

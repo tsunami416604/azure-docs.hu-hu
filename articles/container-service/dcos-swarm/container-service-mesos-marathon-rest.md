@@ -1,24 +1,24 @@
 ---
-title: A Marathon REST API-t Azure DC/OS-fürt kezeléséhez
-description: Tárolók telepítése egy Azure tároló szolgáltatás DC/OS fürtben a Marathon REST API használatával.
+title: A Marathon REST API-val Azure DC/OS fürt kezelése
+description: Tárolók üzembe helyezése egy Azure Container Service DC/OS-fürtön a Marathon REST API-val.
 services: container-service
-author: dlepow
+author: iainfoulds
 manager: jeconnoc
 ms.service: container-service
 ms.topic: article
 ms.date: 04/04/2017
-ms.author: danlep
+ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: edd66be25bf2571a7315372898300476fec101ca
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 34fc6f946d172f1431367e84f9d4d8a6855003ed
+ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32165605"
+ms.lasthandoff: 07/07/2018
+ms.locfileid: "37901767"
 ---
-# <a name="dcos-container-management-through-the-marathon-rest-api"></a>A Marathon REST API-t a DC/OS-tárolók kezelése
+# <a name="dcos-container-management-through-the-marathon-rest-api"></a>DC/OS-tárolók kezelése a Marathon REST API
 
-A DC/OS biztosítja a fürtözött feladatok telepítését és skálázását lehetővé tevő környezetet, ugyanakkor absztrakciós rétegként működik a hardver fölött. A DC/OS fölötti keretrendszer gondoskodik a számítási feladatok ütemezéséről és végrehajtásáról. Bár számos népszerű számítási elérhetők keretrendszerek, ez a dokumentum beolvasása elkezdésének létrehozásán és skálázásán üzemelő tárolópéldányokat a Marathon REST API használatával. 
+A DC/OS biztosítja a fürtözött feladatok telepítését és skálázását lehetővé tevő környezetet, ugyanakkor absztrakciós rétegként működik a hardver fölött. A DC/OS fölötti keretrendszer gondoskodik a számítási feladatok ütemezéséről és végrehajtásáról. Számos népszerű számítási feladathoz érhetők el a keretrendszerek, ez a dokumentum megkönnyíti első lépéseit létrehozásán és skálázásán üzemelő tárolópéldányokat a Marathon REST API-val. 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -27,13 +27,13 @@ A példákban szereplő feladatok elvégzéséhez szüksége lesz egy az Azure t
 * [Azure Container Service-fürt üzembe helyezése](container-service-deployment.md)
 * [Csatlakozás Azure Container Service-fürthöz](../container-service-connect.md)
 
-## <a name="access-the-dcos-apis"></a>Hozzáférés a DC/OS API-k
-Miután csatlakozott az Azure Tárolószolgáltatási fürthöz, és érheti el a DC/OS keresztül kapcsolódó REST API-k http://localhost:local-port. Az ebben a dokumentumban szereplő példák azt feltételezik, hogy az alagutat a 80-as porton keresztül hozta létre. Például a Marathon végpontok címen érhető el URI-azonosítók kezdve `http://localhost/marathon/v2/`. 
+## <a name="access-the-dcos-apis"></a>A DC/OS API-k elérése
+Miután csatlakozott az Azure Container Service-fürthöz, és hozzáférhet, a DC/OS keresztül kapcsolódó REST API-k http://localhost:local-port. Az ebben a dokumentumban szereplő példák azt feltételezik, hogy az alagutat a 80-as porton keresztül hozta létre. Ha például a Marathon végpontok címen érhető el URI-k kezdve `http://localhost/marathon/v2/`. 
 
 A [Marathon API-ról](https://mesosphere.github.io/marathon/docs/rest-api.html) és a [Chronos API-ról](https://mesos.github.io/chronos/docs/api.html) a Mesosphere dokumentációjában, a [Mesos Scheduler API-ról](http://mesos.apache.org/documentation/latest/scheduler-http-api/) pedig az Apache dokumentációjában talál további információt.
 
 ## <a name="gather-information-from-dcos-and-marathon"></a>Információgyűjtés a DC/OS-ről és a Marathonról
-Mielőtt tárolókat a DC/OS-fürtről telepít, a DC/OS-fürtről, például nevét és a DC/OS-ügynökök állapotának néhány információt gyűjteni. Ehhez kérdezze le a DC/OS REST API fő- és alárendelt kiszolgálóinak (`master/slaves`) végpontját. Ha minden megfelelően működik, a lekérdezés a DC/OS-ügynökök listáját és az ügynökök különböző tulajdonságait adja vissza.
+Tárolók a DC/OS fürt üzembe helyezése előtt gyűjtsön össze néhány információt a DC/OS fürt, például a neveket és a DC/OS-ügynökök állapotát. Ehhez kérdezze le a DC/OS REST API fő- és alárendelt kiszolgálóinak (`master/slaves`) végpontját. Ha minden megfelelően működik, a lekérdezés a DC/OS-ügynökök listáját és az ügynökök különböző tulajdonságait adja vissza.
 
 ```bash
 curl http://localhost/mesos/master/slaves
@@ -48,7 +48,7 @@ curl localhost/marathon/v2/apps
 ```
 
 ## <a name="deploy-a-docker-formatted-container"></a>Docker-formátumú tároló üzembe helyezése
-A JSON-fájl, amely leírja a kívánt üzembe helyezéssel segítségével telepítheti Docker-formátumú tárolók Marathon REST API-n keresztül. Az alábbi minta egy titkos ügynököt a fürt egy Nginx tároló telepíti. 
+Docker-formátumú tárolók Marathon REST API-val egy JSON-fájlt, amely leírja a kívánt központi telepítés segítségével telepítheti. Az alábbi minta egy privát ügynök a fürt telepíti az Nginx-tároló. 
 
 ```json
 {
@@ -69,7 +69,7 @@ A JSON-fájl, amely leírja a kívánt üzembe helyezéssel segítségével tele
 }
 ```
 
-Egy Docker-formátumú tároló üzembe helyezéséhez tárolja elérhető helyen a JSON-fájlt. Ezt követően a tároló üzembe helyezéséhez futtassa az alábbi parancsot. Adja meg a JSON-fájl nevét (`marathon.json` ebben a példában).
+Docker-formátumú tároló üzembe helyezéséhez a JSON-fájlt tárolja elérhető helyen. Ezt követően a tároló üzembe helyezéséhez futtassa az alábbi parancsot. Adja meg a JSON-fájl nevét (`marathon.json` ebben a példában).
 
 ```bash
 curl -X POST http://localhost/marathon/v2/apps -d @marathon.json -H "Content-type: application/json"
@@ -87,41 +87,41 @@ Ha ezt követően lekérdezi az alkalmazásokat a Marathonban, az eredmények k�
 curl localhost/marathon/v2/apps
 ```
 
-## <a name="reach-the-container"></a>A tároló elérése
+## <a name="reach-the-container"></a>A tároló eléréséhez
 
-Ellenőrizheti, hogy a Nginx tároló fut. a titkos ügynököket a fürt egyik. A gazdagép és a port, amelyen fut a tárolóban található, marathonban a futó feladatok: 
+Ellenőrizheti, hogy az Nginx-tárolóban fut a privát ügynökök, a fürt egyik. Az állomás és port, ahol a tároló fut-e megkereséséhez marathonban a futó feladatok: 
 
 ```bash
 curl localhost/marathon/v2/tasks
 ```
 
-Keresse meg az értéket a `host` kimenet (hasonló IP-cím `10.32.0.x`), és az értéke `ports`.
+Keresse meg az értéket a `host` a kimenetben (IP-cím hasonló `10.32.0.x`), és az értéke `ports`.
 
 
-Egy terminál SSH-kapcsolat (nem bújtatott kapcsolat) Ellenőrizze a fürt FQDN-felügyelet. A csatlakozás után ellenőrizze a következő kérelmet, és a megfelelő értékeket `host` és `ports`:
+Egy terminál SSH-kapcsolatot (nem bújtatott kapcsolat) Ellenőrizze a fürt FQDN-felügyelet. Ha csatlakoztatva van, győződjön meg a következő kérelmet, a megfelelő értékeit helyettesítse `host` és `ports`:
 
 ```bash
 curl http://host:ports
 ```
 
-A Nginx server kimenete az alábbihoz hasonló:
+Az nginx-et kiszolgáló kimenete az alábbihoz hasonló:
 
-![Nginx-tárolójából.](./media/container-service-mesos-marathon-rest/nginx.png)
+![Az Nginx-tárolóból](./media/container-service-mesos-marathon-rest/nginx.png)
 
 
 
 
 ## <a name="scale-your-containers"></a>A tárolók skálázása
-A Marathon API segítségével horizontális felskálázás vagy méretezni az alkalmazások központi telepítéseit. Az előző példában üzembe helyezett egy alkalmazáspéldányt. Ezt most skálázhatja három alkalmazáspéldányra. Ehhez hozzon létre egy JSON-fájlt az alábbi JSON-szöveg használatával, és tárolja elérhető helyen.
+A Marathon API segítségével horizontálisan felskálázhatja vagy leskálázhatja az alkalmazások központi telepítéseit. Az előző példában üzembe helyezett egy alkalmazáspéldányt. Ezt most skálázhatja három alkalmazáspéldányra. Ehhez hozzon létre egy JSON-fájlt az alábbi JSON-szöveg használatával, és tárolja elérhető helyen.
 
 ```json
 { "instances": 3 }
 ```
 
-A bújtatott kapcsolat létrehozásakor futtassa a következő parancsot az alkalmazás horizontális.
+Futtassa a következő parancsot az alkalmazás horizontális felskálázása a bújtatott kapcsolat.
 
 > [!NOTE]
-> A megadott URI azonosító http://localhost/marathon/v2/apps/ skálázandó alkalmazás azonosítója követ. Ha az Nginx-mintát szövegdobozba itt, akkor az URI lesz az http://localhost/marathon/v2/apps/nginx.
+> Az URI-ja http://localhost/marathon/v2/apps/ méretezhető az alkalmazás azonosítója követ. Ha az Nginx-mintát, hogy melyik itt, az URI lesz az http://localhost/marathon/v2/apps/nginx.
 > 
 > 
 
@@ -138,7 +138,7 @@ curl localhost/marathon/v2/apps
 ## <a name="equivalent-powershell-commands"></a>Egyenértékű PowerShell-parancsok
 Ugyanezeket a műveleteket elvégezheti Windows rendszerben is a PowerShell-parancsok használatával.
 
-Gyűjtsön információt a DC/OS fürtben, mint az ügynökök nevét és állapotát, a következő parancsot:
+A DC/OS fürt, például az ügynökök nevét és állapotát, információkat gyűjthet a következő parancsot:
 
 ```powershell
 Invoke-WebRequest -Uri http://localhost/mesos/master/slaves
@@ -165,7 +165,7 @@ A Docker-formátumú tárolók Marathon segítségével való üzembe helyezés�
 }
 ```
 
-Egy Docker-formátumú tároló üzembe helyezéséhez tárolja elérhető helyen a JSON-fájlt. Ezt követően a tároló üzembe helyezéséhez futtassa az alábbi parancsot. Adja meg a JSON-fájl elérési útját (`marathon.json` ebben a példában).
+Docker-formátumú tároló üzembe helyezéséhez a JSON-fájlt tárolja elérhető helyen. Ezt követően a tároló üzembe helyezéséhez futtassa az alábbi parancsot. A JSON-fájl elérési útját (`marathon.json` ebben a példában).
 
 ```powershell
 Invoke-WebRequest -Method Post -Uri http://localhost/marathon/v2/apps -ContentType application/json -InFile 'c:\marathon.json'
@@ -177,10 +177,10 @@ A Marathon API-t az üzemelő alkalmazáspéldányok horizontális skálázásá
 { "instances": 3 }
 ```
 
-A következő parancsot az alkalmazás horizontális:
+A következő parancsot az alkalmazás horizontális felskálázása:
 
 > [!NOTE]
-> A megadott URI azonosító http://localhost/marathon/v2/apps/ skálázandó alkalmazás azonosítója követ. Ha az Nginx-mintát itt használ, akkor az URI lesz http://localhost/marathon/v2/apps/nginx.
+> Az URI-ja http://localhost/marathon/v2/apps/ méretezhető az alkalmazás azonosítója követ. Ha itt az Nginx-mintát használ, az URI lesz http://localhost/marathon/v2/apps/nginx.
 > 
 > 
 
@@ -189,6 +189,6 @@ Invoke-WebRequest -Method Put -Uri http://localhost/marathon/v2/apps/nginx -Cont
 ```
 
 ## <a name="next-steps"></a>További lépések
-* [További tudnivalók a Mesos HTTP-végpontokról](http://mesos.apache.org/documentation/latest/endpoints/)
-* [További tudnivalók a Marathon REST API](https://mesosphere.github.io/marathon/docs/rest-api.html)
+* [További információ a Mesos HTTP-végpontokat](http://mesos.apache.org/documentation/latest/endpoints/)
+* [További információ a Marathon REST API](https://mesosphere.github.io/marathon/docs/rest-api.html)
 

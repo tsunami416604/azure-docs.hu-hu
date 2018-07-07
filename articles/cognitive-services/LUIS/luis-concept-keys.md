@@ -9,12 +9,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 03/23/2018
 ms.author: v-geberr
-ms.openlocfilehash: fe6bd0803098854c7ced1a7d816ebbc8cce23b09
-ms.sourcegitcommit: 4597964eba08b7e0584d2b275cc33a370c25e027
+ms.openlocfilehash: eb3487a304ec2e4045ff76253c456dc4b6ee19b5
+ms.sourcegitcommit: 11321f26df5fb047dac5d15e0435fce6c4fde663
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37340613"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37888622"
 ---
 # <a name="keys-in-luis"></a>A LUIS kulcsok
 A LUIS használ két kulcsot: [szerzői](#programmatic-key) és [végpont](#endpoint-key). Az Authoring Tool kulcs az Ön számára automatikusan létrejön a LUIS-fiók létrehozásakor. Amikor készen áll a LUIS-alkalmazás közzététele, meg kell [a végpont kulcs létrehozása](luis-how-to-azure-subscription.md#create-luis-endpoint-key), [rendelje hozzá](luis-how-to-manage-keys.md#assign-endpoint-key) , a LUIS-alkalmazás és [használhatja a végpont lekérdezés](#use-endpoint-key-in-query). 
@@ -31,7 +31,7 @@ Fontos, hogy a LUIS-alkalmazások készítése [régiók](luis-reference-regions
 
 Egy szerzői kulcs, más néven egy alapszintű kulcs, automatikusan létrejön, amikor létrehoz egy LUIS-fiókot, és ingyenes. Az egyes szerzői valamennyi LUIS alkalmazás rendelkezik egy szerzői kulccsal [régió](luis-reference-regions.md). A LUIS-alkalmazás létrehozásához, vagy végpont tesztlekérdezések az Authoring Tool kulcsot biztosítunk. 
 
-Az Authoring Tool kulcs megkereséséhez jelentkezzen be [LUIS] [ LUIS] , majd kattintson a jobb felső navigációs sávon, nyissa meg a fiók nevét a **fiókbeállításokat**.
+Az Authoring Tool kulcs megkereséséhez jelentkezzen be [LUIS](luis-reference-regions.md#luis-website) , majd kattintson a jobb felső navigációs sávon, nyissa meg a fiók nevét a **fiókbeállításokat**.
 
 ![Kulcs létrehozási](./media/luis-concept-keys/programatic-key.png)
 
@@ -70,10 +70,8 @@ Lásd: [korlátok kulcs](luis-boundaries.md#key-limits) és [Azure-régiók](lui
 Közzétételi régiója nem ugyanaz a létrehozási régiók. Ellenőrizze, hogy az Authoring Tool régió régióhoz tartozó, a közzétételi szeretné az alkalmazást hoz létre.
 
 ## <a name="key-limit-errors"></a>Korlát hibák
-Ha túllépi a második kvótája per HTTP 429-es hibaüzenetet kap. Ha túllépi a havi kvóta, egy HTTP 403-as hibaüzenetet kap. Javítsa ki a hibákat a LUIS lekérésével [végpont](#endpoint-key) kulcs [hozzárendelése](luis-how-to-manage-keys.md#assign-endpoint-key) a kulcsot az alkalmazás a **közzététel** lapján a [LUIS] [ LUIS] webhelyén.
+Ha túllépi a második kvótája per HTTP 429-es hibaüzenetet kap. Ha túllépi a havi kvóta, egy HTTP 403-as hibaüzenetet kap. Javítsa ki a hibákat a LUIS lekérésével [végpont](#endpoint-key) kulcs [hozzárendelése](luis-how-to-manage-keys.md#assign-endpoint-key) a kulcsot az alkalmazás a **közzététel** lapján a [LUIS](luis-reference-regions.md#luis-website) webhely.
 
 ## <a name="next-steps"></a>További lépések
 
 * Ismerje meg, [fogalmak](luis-how-to-manage-keys.md#assign-endpoint-key) létrehozási és -végpont kulcsokkal kapcsolatos.
-
-[LUIS]: https://docs.microsoft.com/azure/cognitive-services/luis/luis-reference-regions#luis-website

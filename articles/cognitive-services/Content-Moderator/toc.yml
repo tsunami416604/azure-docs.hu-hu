@@ -115,6 +115,8 @@
   items:
     - name: GYIK
       href: FAQs.md
+    - name: Régiónkénti rendelkezésre állás
+      href: 'https://azure.microsoft.com/global-infrastructure/services/'
     - name: Díjszabás
       href: 'https://azure.microsoft.com/pricing/details/cognitive-services/content-moderator'
     - name: Fiókadatok exportálása vagy törlése

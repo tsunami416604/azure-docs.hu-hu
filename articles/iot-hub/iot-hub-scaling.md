@@ -1,6 +1,6 @@
 ---
-title: Az Azure IoT-központ méretezése |} Microsoft Docs
-description: A várható üzenet átviteli sebesség és a kívánt funkciók támogatásához az IoT hub méretezési módját. Az egyes rétegekhez a támogatott átviteli sebesség és a horizontális skálázási beállításokat összegzését tartalmazza.
+title: Méretezés az Azure IoT Hub |} A Microsoft Docs
+description: Hogyan skálázhatja az IoT hub a várható üzeneteinek átviteli sebessége és a kívánt funkciók támogatásához. A támogatott, az egyes szintek átviteli és a horizontális skálázási lehetőségek összegzését tartalmazza.
 author: kgremban
 manager: timlt
 ms.service: iot-hub
@@ -8,112 +8,112 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 04/02/2018
 ms.author: kgremban
-ms.openlocfilehash: d77953100bb7007553cf1c5ab00b9cdafea281e9
-ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
+ms.openlocfilehash: b4c5bf3b11c2ee661d95dc50f5c93e12fe2d56bf
+ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37030437"
+ms.lasthandoff: 07/07/2018
+ms.locfileid: "37901041"
 ---
-# <a name="choose-the-right-iot-hub-tier-for-your-solution"></a>A megoldás a megfelelő IoT-központ szint kiválasztása
+# <a name="choose-the-right-iot-hub-tier-for-your-solution"></a>A megoldás a megfelelő IoT Hub-csomag kiválasztása
 
-Minden IoT-megoldás eltér, így Azure IoT Hub tarifa- és alapján több lehetőséget kínál. Ez a cikk arra szolgál, hogy az IoT-központ igényeinek kiértékeléséhez. Díjszabási IoT-központ rétegek kapcsolatos információkért tekintse meg [árképzési IoT-központ](https://azure.microsoft.com/pricing/details/iot-hub). 
+Minden IoT-megoldás eltér, ezért a tarifacsomag és méret alapján többféle lehetőséget kínál az Azure IoT Hub. Ez a cikk az adott segítségével kiértékelheti az IoT Hub igényeinek. További díjszabási információk az IoT Hub szintekről [IoT Hub díjszabása](https://azure.microsoft.com/pricing/details/iot-hub). 
 
-Döntse el, mely az IoT-központ érvényben lévő korlát miatt a megoldás megfelelő, tegye fel magának két kérdéseket:
+Döntse el, melyik az IoT Hub-szint a legmegfelelőbb megoldás, tegye fel magának két kérdéseket:
 
-**Mely szolgáltatások tegye tervez használni?**
-Azure IoT Hub kínál a két réteg, egyszerű és szabványos, amely nem egyezik a szolgáltatások támogatják-e száma. Ha az IoT-megoldásból alapú eszközök adatainak begyűjtése és elemzése azt központilag alapszintű rétegben valószínűleg jobb meg. Ha az IoT-eszközök vezérlését vagy terjeszteni a munkaterhelés összevonásához a eszközöktől néhány speciális konfigurációk használni kívánt majd fontolja meg a standard csomagra. A funkciókat, amelyek minden egyes rétegben tartalmaz részletes információkat továbbra is [egyszerű és szabványos rétegek](#basic-and-standard-tiers).
+**Milyen funkciókat tervezhetem használni?**
+Az Azure IoT Hub réteget kínál a két, alapszintű és standard szintű, az általuk támogatott funkciókról számában eltérő. Ha az adatok gyűjtése eszközökről, és központilag elemezheti őket az IoT-megoldás alapul majd az alapszintű csomag valószínűleg Önnek ideális. Ha speciális konfigurációk használatával távolról vezérelheti az IoT-eszközök, vagy eloszthatja az alakzatot magukhoz az eszközökhöz tevékenységprofilok egy része szeretne majd érdemes a standard szintre. A funkciókat, amelyek az egyes szintek tartalmaz részletes információkat továbbra is [alapszintű és standard csomagokról](#basic-and-standard-tiers).
 
-**Mennyi adatot tegye tervezi a naponta áthelyezése?**
-Minden egyes IoT-központ réteg érhető három méretben kaphatók, alapú körül hány adatátvitelt azok kezelni tud a bármely adott napon belül. Ezek méretek szám 1, 2 és 3 azonosítja. Például egy 1. szintű IoT-központ egységenként kezelni tud a 400 ezer üzenetek napi, amíg a 3. szint egység kezelni tud a 300 millió. További információt az adatok útmutatást, továbbra is [üzenet átviteli](#message-throughput).
+**Mennyi adatot tervezhetem naponta áthelyezni?**
+Minden IoT Hub-csomag érhető el három méretben alapú körül mennyi adat átviteli bármelyik nap, képes kezelni. 1, 2 és 3 numerikusan azonosítja ezeket a méreteket. Például egy 1. szintű IoT-központ minden egység képes kezelni napi 400 ezer üzenetet, míg a 3. szintre egység 300 millió képes kezelni. Az adatok irányelvek kapcsolatos további információért folytassa [üzeneteinek átviteli sebessége](#message-throughput).
 
-## <a name="basic-and-standard-tiers"></a>Basic és standard rétegek
+## <a name="basic-and-standard-tiers"></a>Alapszintű és standard csomagokról
 
-A standard szint IoT-központ lehetővé teszi, hogy minden funkció, és bármely, kíván tenni az IoT-megoldások működéséhez szükség a kétirányú kommunikáció képességeit használja. Az alapszintű rétegben lehetővé teszi a funkciók egy részét, és célja, hogy az IoT-megoldások, amelyeket csak egyirányú a felhőben csatlakozó eszközökről érkező kommunikációt. Mindkét rétegen nyújtott biztonsági és hitelesítési szolgáltatások.
+A standard szintű IoT-központ összes funkciókat tesz elérhetővé, és kötelező megadni minden olyan IoT-megoldások, győződjön meg arról, hogy a kívánt kétirányú kommunikációt képességeket használhatja. Az alapszintű csomag lehetővé teszi, hogy az funkciók egy részét, és csak egyirányú kommunikációs eszközökről a felhőbe igénylő IoT-megoldások szól. Mindkét rétegei ugyanazokat a biztonsági és hitelesítési szolgáltatásokat.
 
-Az IoT hub létrehozása után frissítheti az alapszintű rétegben standard csomagra a meglévő műveletek megszakítása nélkül. További információkért lásd: [az IoT-központ frissítésével](iot-hub-upgrade.md).
+Miután létrehozta az IoT hub a frissíthető az alapszintű csomag a standard szintre a meglévő operations megszakítása nélkül. További információkért lásd: [az IoT hub frissítése](iot-hub-upgrade.md). Vegye figyelembe, hogy a partíció korlátot, az alapszintű díjcsomag az IoT Hub 8. Ez a korlátozás változatlan marad, az alapszintű csomag a standard szintű csomag áttelepítésekor.
 
 | Képesség | Alapszintű csomag | Standard csomag |
 | ---------- | ---------- | ------------- |
-| [Eszköz-felhő telemetriai adat](iot-hub-devguide-messaging.md) | Igen | Igen |
-| [Eszköz identitás](iot-hub-devguide-identity-registry.md) | Igen | Igen |
-| [Üzenet-útválasztás](iot-hub-devguide-messages-read-custom.md) és [esemény rács integráció](iot-hub-event-grid.md) | Igen | Igen |
-| [HTTP AMQP és MQTT protokollok](iot-hub-devguide-protocols.md) | Igen | Igen |
-| [Eszközök telepítési szolgáltatásával](../iot-dps/about-iot-dps.md) | Igen | Igen |
-| [Megfigyelési és diagnosztikai](iot-hub-monitor-resource-health.md) | Igen | Igen |
-| [Felhő eszközre üzenetkezelés](iot-hub-devguide-c2d-guidance.md) |   | Igen |
-| [Eszköz twins](iot-hub-devguide-device-twins.md), [modul twins](iot-hub-devguide-module-twins.md) és [Eszközkezelés](iot-hub-device-management-overview.md) |   | Igen |
-| [Azure IoT Edge](../iot-edge/about-iot-edge.md) |   | Igen |
+| [Eszköz – felhő telemetriát](iot-hub-devguide-messaging.md) | Igen | Igen |
+| [Eszközönkénti identitás](iot-hub-devguide-identity-registry.md) | Igen | Igen |
+| [Üzenet-útválasztása](iot-hub-devguide-messages-read-custom.md) és [Event Grid-integrációt](iot-hub-event-grid.md) | Igen | Igen |
+| [HTTP, AMQP és MQTT protokoll](iot-hub-devguide-protocols.md) | Igen | Igen |
+| [Eszközök kiépítési szolgáltatáshoz](../iot-dps/about-iot-dps.md) | Igen | Igen |
+| [Monitorozás és diagnosztika](iot-hub-monitor-resource-health.md) | Igen | Igen |
+| [Üzenetküldés a felhőből az eszközre](iot-hub-devguide-c2d-guidance.md) |   | Igen |
+| [Ikereszközök](iot-hub-devguide-device-twins.md), [ikermodulokkal](iot-hub-devguide-module-twins.md) és [Eszközkezelés](iot-hub-device-management-overview.md) |   | Igen |
+| [Azure IoT Edge](../iot-edge/how-iot-edge-works.md) |   | Igen |
 
-Az IoT-központ is biztosít, egy ingyenes szint, amely készült tesztelésében és értékelésében. A standard szint, de korlátozott üzenetkezelési támogatás minden képességet tartalmaz. Ingyenes szint az alapszintű vagy standard nem verzióról. 
+Az IoT Hub is biztosít egy ingyenes csomag, amelynek szinkronban tesztelés és értékelés céljából használják. Rendelkezik a standard szintű, de korlátozott üzenetkezelési keretek összes funkcióját. Az ingyenes vagy alapszintű vagy standard szintű nem verzióról. 
 
 ### <a name="iot-hub-rest-apis"></a>IoT Hub REST API-k
 
-A támogatott képességek közötti különbség a basic és standard rétegek IoT-központ azt jelenti, hogy néhány API-hívások nem működnek az alapszintű rétegben hubs használatával. A következő táblázat azt mutatja, melyik API-k áll rendelkezésre: 
+A támogatott képességek közötti különbség az alapszintű és standard csomagokról az IoT Hub azt jelenti, hogy egyes API-hívások nem működik az alapszintű csomag hubs használatával. Az alábbi táblázat azt mutatja, melyik API-k érhetők el: 
 
 | API | Alapszintű csomag | Standard csomag |
 | --- | ---------- | ------------- |
 | [Eszköz törlése](https://docs.microsoft.com/en-us/rest/api/iothub/service/service/deletedevice) | Igen | Igen |
 | [Eszköz](https://docs.microsoft.com/en-us/rest/api/iothub/service/service/getdevice) | Igen | Igen |
-| A modul törlése | Igen | Igen |
+| Modul törlése | Igen | Igen |
 | Modul beolvasása | Igen | Igen |
-| [Megtekintheti a beállításjegyzék statisztikákat](https://docs.microsoft.com/en-us/rest/api/iothub/service/service/getdeviceregistrystatistics) | Igen | Igen |
-| [Get-szolgáltatásokra vonatkozó statisztikák](https://docs.microsoft.com/en-us/rest/api/iothub/service/service/getservicestatistics) | Igen | Igen |
-| [Hozzon létre vagy az eszköz frissítése](https://docs.microsoft.com/rest/api/iothub/service/service/createorupdatedevice) | Igen | Igen |
-| PUT modul | Igen | Igen |
-| [Az IoT-központ lekérdezése](https://docs.microsoft.com/rest/api/iothub/service/service/queryiothub) | Igen | Igen |
+| [Beállításjegyzék statisztikájának beolvasása](https://docs.microsoft.com/en-us/rest/api/iothub/service/service/getdeviceregistrystatistics) | Igen | Igen |
+| [Szolgáltatások statisztikájának beolvasása](https://docs.microsoft.com/en-us/rest/api/iothub/service/service/getservicestatistics) | Igen | Igen |
+| [A PUT eszköz](https://docs.microsoft.com/rest/api/iothub/deviceapi/putdevice) | Igen | Igen |
+| A PUT-modul | Igen | Igen |
+| [Eszközök lekérdezése](https://docs.microsoft.com/rest/api/iothub/deviceapi/querydevices) | Igen | Igen |
 | Lekérdezés-modulok | Igen | Igen |
-| [Fájl feltöltése SAS URI-t létrehozni](https://docs.microsoft.com/en-us/rest/api/iothub/device/device/createfileuploadsasuri) | Igen | Igen |
-| [Eszköz kötött értesítés](https://docs.microsoft.com/en-us/rest/api/iothub/device/device/receivedeviceboundnotification) | Igen | Igen |
+| [Fájl feltöltése SAS URI létrehozása](https://docs.microsoft.com/en-us/rest/api/iothub/device/device/createfileuploadsasuri) | Igen | Igen |
+| [Értesítés e kötve eszköz](https://docs.microsoft.com/en-us/rest/api/iothub/device/device/receivedeviceboundnotification) | Igen | Igen |
 | [Esemény küldése](https://docs.microsoft.com/en-us/rest/api/iothub/device/device/senddeviceevent) | Igen | Igen |
 | A modul esemény küldése | Igen | Igen |
-| [Fájl feltöltése állapotának frissítése](https://docs.microsoft.com/en-us/rest/api/iothub/device/device/updatefileuploadstatus) | Igen | Igen |
-| [Tömeges eszköz művelet](https://docs.microsoft.com/en-us/rest/api/iot-dps/deviceenrollment/bulkoperation) | Igen, kivéve a IoT biztonsági képességei | Igen | 
-| [A parancs várólista törlése](https://docs.microsoft.com/en-us/rest/api/iothub/service/service/purgecommandqueue) |   | Igen |
-| [A két eszköz beolvasása](https://docs.microsoft.com/en-us/rest/api/iothub/service/service/gettwin) |   | Igen |
-| A két modul beolvasása |   | Igen |
-| [Eszköz metódus meghívása](https://docs.microsoft.com/en-us/rest/api/iothub/service/service/invokedevicemethod) |   | Igen |
-| [A két eszköz frissítése](https://docs.microsoft.com/en-us/rest/api/iothub/service/service/updatetwin) |   | Igen | 
-| A modul iker frissítése |   | Igen | 
-| [Eszköz kötött értesítési Abandon](https://docs.microsoft.com/en-us/rest/api/iothub/device/device/abandondeviceboundnotification) |   | Igen |
-| [Teljes eszköz értesítést kötött](https://docs.microsoft.com/en-us/rest/api/iothub/device/device/completedeviceboundnotification) |   | Igen |
-| [Megszakítása](https://docs.microsoft.com/en-us/rest/api/iothub/service/service/canceljob) |   | Igen |
+| [Fájlfeltöltés állapota frissítése](https://docs.microsoft.com/en-us/rest/api/iothub/device/device/updatefileuploadstatus) | Igen | Igen |
+| [A tömeges eszköz művelet](https://docs.microsoft.com/en-us/rest/api/iot-dps/deviceenrollment/bulkoperation) | Igen, kivéve az IoT Edge-képességek | Igen | 
+| [A parancs üzenetsor kiürítése](https://docs.microsoft.com/en-us/rest/api/iothub/service/service/purgecommandqueue) |   | Igen |
+| [Ikereszköz beolvasása](https://docs.microsoft.com/en-us/rest/api/iothub/service/service/gettwin) |   | Igen |
+| Ikermodul beolvasása |   | Igen |
+| [Eszközmetódus meghívása](https://docs.microsoft.com/en-us/rest/api/iothub/service/service/invokedevicemethod) |   | Igen |
+| [Ikereszköz frissítése](https://docs.microsoft.com/en-us/rest/api/iothub/service/service/updatetwin) |   | Igen | 
+| Ikermodul frissítése |   | Igen | 
+| [Értesítési eszköz kötött Abandon](https://docs.microsoft.com/en-us/rest/api/iothub/device/device/abandondeviceboundnotification) |   | Igen |
+| [Teljes eszközhöz kötött értesítés](https://docs.microsoft.com/en-us/rest/api/iothub/device/device/completedeviceboundnotification) |   | Igen |
+| [Feladat megszakítása](https://docs.microsoft.com/en-us/rest/api/iothub/service/service/canceljob) |   | Igen |
 | [Feladat létrehozása](https://docs.microsoft.com/en-us/rest/api/iothub/service/service/createjob) |   | Igen |
 | [Feladat beolvasása](https://docs.microsoft.com/en-us/rest/api/iothub/service/service/getjob) |   | Igen |
 | [Lekérdezés feladatok](https://docs.microsoft.com/en-us/rest/api/iothub/service/service/queryjobs) |   | Igen |
 
-## <a name="message-throughput"></a>Üzenet átviteli sebesség
+## <a name="message-throughput"></a>Üzeneteinek átviteli sebessége
 
-A legjobb módszer a következő méretre egy IoT-központ megoldás a forgalom egy egységenként kiértékeléséhez. Különösen fontolja meg a szükséges maximális átviteli sebesség műveletek az alábbi kategóriákban:
+A legjobb módszer a következő méretre egy IoT Hub-megoldás, hogy a forgalmat egy egységenként kiértékeléséhez. Különösen fontolja meg a szükséges maximális átviteli sebesség a műveletek az alábbi kategóriákban:
 
 * Az eszközről a felhőbe irányuló üzenetek
-* Felhő-eszközre küldött üzenetek
+* Felhőből az eszközre irányuló üzenetek
 * Identitásjegyzék műveletei
 
-Egy egységenként, nem / hub a forgalom mérése történik. Egy szint, 1 vagy 2 IoT-központ példánya társítva akár 200 egység is lehet. A 3. szint IoT-központ példánya legfeljebb 10 egység is lehet. Az IoT hub létrehozása után egységek számának módosítása, vagy helyezze át az 1, 2 és 3 méretű belül egy adott réteg között a meglévő műveletek megszakítása nélkül. További információkért lásd: [az IoT-központ frissítésével](iot-hub-upgrade.md).
+Forgalom egységenkénti alapon, nem / hub mérjük. Egy 1 vagy 2-es szintű IoT Hub-példány lehet akár 200 egységre lenne szüksége társítva. 3. szintre IoT Hub-példány legfeljebb 10 egység lehet. Az IoT hub létrehozása után módosíthatja az egységek számát, vagy helyezze át az 1, 2 és a egy adott szinten belül 3 méretet között zavarja meg a meglévő operations. További információkért lásd: [az IoT Hub frissítése](iot-hub-upgrade.md).
 
-Minden egyes réteg forgalom képességeket például eszköz a felhőbe küldött üzeneteket az alábbiakra fenntartható:
+Például az egyes szintek forgalom képességeit eszköz – felhő üzeneteket az alábbiakra vendégteljesítmény:
 
-| Szint | Fenntartható | Tartós küldések |
+| Szint | Folyamatos teljesítményt | Tartós küldések |
 | --- | --- | --- |
-| B1, S1 |1111 KB percenként egységenként legfeljebb<br/>(1,5 GB/nap/egység) |278 üzenetek/másodperc egységenként átlaga<br/>(400 000 üzenetek/nap / egység) |
-| B2, S2 |Legfeljebb 16 MB percenként egység<br/>(22.8 GB/nap/egység) |4,167 üzenetek/másodperc egységenként átlaga<br/>(6 millió üzenetek/nap / egység) |
-| B3, S3 |814 MB percenként egységenként legfeljebb<br/>(1144.4 GB/nap/egység) |208,333 üzenetek/másodperc egységenként átlaga<br/>(300 millió üzenetek/nap / egység) |
+| B1, S1 |Akár 1111 KB/perc / egység<br/>(1,5 GB/nap/egység) |Átlagosan 278 üzenetek/perc / egység<br/>(400 000 üzenet/nap / egység) |
+| B2, S2 |Legfeljebb 16 MB/perc / egység<br/>(22.8 GB/nap/egység) |Átlagosan 4,167 üzenetek/perc / egység<br/>(6 millió üzenet/nap / egység) |
+| B3, S3 |Akár 814 MB/perc / egység<br/>(1144.4 GB/nap/egység) |Átlagosan 208,333 üzenetek/perc / egység<br/>(300 millió üzenet/nap / egység) |
 
-Lásd: az átviteli információk mellett [IoT-központ kvóták és szabályozások] [ IoT Hub quotas and throttles] és ennek megfelelően a megoldás megtervezése.
+Mellett az átviteli sebességgel kapcsolatos információkat lásd: [az IoT Hub kvótái és szabályozások] [ IoT Hub quotas and throttles] , és ennek megfelelően a megoldás megtervezése.
 
-### <a name="identity-registry-operation-throughput"></a>Identitás beállításjegyzék művelet átviteli sebesség
-IoT Hub identitás kapcsolatos műveletek nem elvileg futásidejű műveletek, mivel ezek többnyire kapcsolódó eszközök kiépítését.
+### <a name="identity-registry-operation-throughput"></a>Identitás beállításjegyzék műveleti teljesítménye
+Az IoT Hub identitásjegyzék műveletei vannak nem lehet futásidejű művelet, mivel ezek többnyire kapcsolódó eszközök üzembe helyezését.
 
-Adott kapacitásnövelés számok, lásd: [IoT-központ kvóták és szabályozások][IoT Hub quotas and throttles].
+Adott burst teljesítményszámokhoz lásd [az IoT Hub kvótái és szabályozások][IoT Hub quotas and throttles].
 
 ## <a name="sharding"></a>Sharding
-Egyetlen IoT-központ eszközök millióira méretezhetők, amíg a megoldás specifikus teljesítményt nyújt, amely egyetlen IoT-központ nem garantálható, hogy szükség. Ebben az esetben az eszközök is partícióazonosító több IoT-központok között. Több IoT-központok forgalom felszakadásáig sima, és szerezze be a szükséges átviteli vagy a művelet díjszabás szükséges.
+Egyetlen IoT hubra eszközök millióira méretezhetők, míg egyes esetekben a megoldáshoz szükséges specifikus teljesítményt nyújt, amely nem garantálja az egyetlen IoT hubra. Ebben az esetben az eszközök particionáló több IoT hubon keresztül. Több IoT hubon forgalomnövekedések smooth, és szerezze be a szükséges kapacitás vagy a művelet díjakat, amelyek szükségesek.
 
 ## <a name="next-steps"></a>További lépések
 
-* További információ a IoT-központ képességek és a teljesítmény részletei: [IoT-központ díjszabás] [hivatkozás – díjszabás] vagy [IoT-központ kvóták és szabályozások][IoT Hub quotas and throttles].
-* Az IoT-központ réteg, kövesse a lépéseket [frissítse az IoT hub](iot-hub-upgrade.md).
+* Az IoT Hub képességek és a teljesítményadatok kapcsolatos további információkért lásd: [az IoT Hub díjszabás] [hivatkozás díjszabás] vagy [az IoT Hub kvótái és szabályozások][IoT Hub quotas and throttles].
+* Az IoT Hub-csomag módosításához kövesse [az IoT hub frissítése](iot-hub-upgrade.md).
 
 [lnk-pricing]: https://azure.microsoft.com/pricing/details/iot-hub
 [IoT Hub quotas and throttles]: iot-hub-devguide-quotas-throttling.md

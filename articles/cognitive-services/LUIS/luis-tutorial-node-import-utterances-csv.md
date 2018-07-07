@@ -1,7 +1,7 @@
 ---
-title: Hozza létre a programozott módon, Node.js LUIS alkalmazását |} Microsoft Docs
+title: Programozott módon a Node.js használatával a LUIS alkalmazás készítése |} A Microsoft Docs
 titleSuffix: Azure
-description: Ismerje meg, hogyan hozhat létre egy LUIS alkalmazást programozott már meglévő adatok CSV formátumban LUIS szerzői API használatával.
+description: Ismerje meg, hogyan hozhat létre egy már létező adatokat CSV formátumban a LUIS jelentéskészítési API-val programozott módon a LUIS-alkalmazás.
 services: cognitive-services
 author: DeniseMak
 manager: rstand
@@ -10,45 +10,45 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 02/21/2018
 ms.author: v-geberr
-ms.openlocfilehash: e97dc184266bc9518ee5f909891bd97f7c71804b
-ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
+ms.openlocfilehash: 54c7565dd00305d3ce1faba5d7cc5616c53dd026
+ms.sourcegitcommit: 11321f26df5fb047dac5d15e0435fce6c4fde663
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37113053"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37888160"
 ---
-# <a name="build-a-luis-app-programmatically-using-nodejs"></a>Hozza létre a programozott módon, Node.js LUIS alkalmazását
+# <a name="build-a-luis-app-programmatically-using-nodejs"></a>Programozott módon a Node.js használatával a LUIS alkalmazás készítése
 
-LUIS biztosít egy programozott API-t, amelyet minden, a [LUIS] [ LUIS] webhely does. Ez Ha rendelkezik már létező adatokat, és gyorsabb programozott módon, mint LUIS alkalmazás létrehozása beírásával kézzel lenne időt takaríthat meg. 
+A LUIS programozható API-t, amely minden, amely biztosít a [LUIS](luis-reference-regions.md) webhely does. Ez Ha rendelkezik már meglévő adatokat, és írja be az adatokat manuálisan hozhat létre programozott módon, mint a LUIS-alkalmazások gyorsabb lenne időt takaríthat meg. 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Jelentkezzen be a [LUIS] [ LUIS] webhely és a Keresés a [kulcs szerzői](luis-concept-keys.md#authoring-key) -fiókjának beállításai. Ez a kulcs használatával hívható meg a szerzői API-k.
+* Jelentkezzen be a [LUIS](luis-reference-regions.md) webhelyet, és keresse meg a [kulcs létrehozási](luis-concept-keys.md#authoring-key) a fiók beállításait. Ezt a kulcsot a jelentéskészítési API-kat használhatja.
 * Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
-* Ez az oktatóanyag a felhasználói kérelmek feltételezett a vállalat naplófájlokat egy CSV kezdődik. Töltse le [Itt](https://github.com/Microsoft/LUIS-Samples/blob/master/examples/build-app-programmatically-csv/IoT.csv).
-* Telepítse a legújabb Node.js NPM. Töltse le [Itt](https://nodejs.org/en/download/).
-* **[Ajánlott]**  Visual Studio Code IntelliSense és a hibakeresést, töltse le [Itt](https://code.visualstudio.com/) szabad.
+* Ebben az oktatóanyagban egy kitalált vállalat naplófájljainak a felhasználói kérések CSV kezdődik. Töltse le [Itt](https://github.com/Microsoft/LUIS-Samples/blob/master/examples/build-app-programmatically-csv/IoT.csv).
+* A legfrissebb Node.js telepítése az npm-mel. Töltse le [Itt](https://nodejs.org/en/download/).
+* **[Ajánlott]**  Visual Studio Code IntelliSense és a hibakereséshez, töltse le [Itt](https://code.visualstudio.com/) ingyenes.
 
-## <a name="map-preexisting-data-to-intents-and-entities"></a>Térkép már létező adatokat leképezések és entitások
-Ha létrehozott nem LUIS szem előtt, a rendszer szöveges adatok, amelyek különböző fogalom felhasználók leképezve szeretné tartalmaz rendelkezik, valószínűleg leképezéseket kapja meg a felhasználó a leképezések LUIS a meglévő kategóriák. Ha fontos szavakat vagy kifejezéseket a a felhasználók említett azonosíthatja, ezeknek a szavaknak entitások le lehet képezni.
+## <a name="map-preexisting-data-to-intents-and-entities"></a>Már létező adatokat leképezze szándékok és entitások felismerésére
+Ha már rendelkezik egy rendszer, amely szem előtt, az intelligens hangfelismerési szolgáltatással nem lett létrehozva, ha maps kezdhet a felhasználók számára szeretné szöveges adatok tartalmazza, lehet felhasználói bevitelt a LUIS szándék, a meglévő kategóriák egy leképezéssel merülnek fel. Amennyiben azonosítani lehet fontos szavak vagy kifejezések a felhasználók mondta, előfordulhat, hogy ezeknek a szavaknak képezze le entitásokat.
 
-Nyissa meg az `IoT.csv` fájlt. Naplózása a felhasználói lekérdezések elméleti otthoni automation szolgáltatás, hogyan lettek besorolva, a felhasználó említett, és azokat az oszlopokat beleértve azokat kihúzott hasznos információkat tartalmaz. 
+Nyissa meg az `IoT.csv` fájlt. Elméleti otthoni automation szolgáltatás, beleértve a hogyan lettek besorolva, a felhasználó mondta, és a néhány hasznos információkkal kihúzott azokat a felhasználói lekérdezések naplózása a tartalmazza. 
 
-![A CSV-fájl](./media/luis-tutorial-node-import-utterances-csv/csv.png) 
+![CSV-fájl](./media/luis-tutorial-node-import-utterances-csv/csv.png) 
 
-Tekintse meg, amely a **RequestType** oszlop lehet leképezések, és a **kérelem** az oszlopban látható egy példa utterance. A többi mező okozhat a utterance jelentkeznek entitásokat. Mivel leképezések, entitások és példa utterances, hogy egy egyszerű, mintaalkalmazást követelményei.
+Látni, hogy a **RequestType** oszlop lehet szándék fog vonatkozni, és a **kérelem** az oszlopban látható egy példa utterance (kifejezés). A többi mező entitások lehet, ha azok az utterance (kifejezés). Mivel szándék fog vonatkozni, az entitások és példa kimondott szöveg van, hogy egy egyszerű, mintaalkalmazást a követelmények.
 
-## <a name="steps-to-generate-a-luis-app-from-non-luis-data"></a>Nem LUIS adatokból LUIS-alkalmazás létrehozása
-Használatával hozzon létre egy új LUIS alkalmazást a forrásfájl, először a adatokat a CSV-fájlból olvassa be, majd ezek az adatok átalakítása feltöltheti a szerzői API használatával LUIS formátumú. Az elemzett adatokból hogy információkat gyűjt az mi leképezések és entitások vannak-e. Ezután API-hívások az alkalmazás létrehozásához, és adja hozzá a leképezések és az elemzett adatokat gyűjtött lettek entitások. Miután létrehozta a LUIS alkalmazást, a példában utterances az elemzett adatokat is hozzáadhat. Ez a folyamat az alábbi kód utolsó részében tekintheti meg. Másolás vagy [letöltése](https://github.com/Microsoft/LUIS-Samples/blob/master/examples/build-app-programmatically-csv/index.js) a code, és mentse a `index.js`.
+## <a name="steps-to-generate-a-luis-app-from-non-luis-data"></a>A LUIS adatok a LUIS-alkalmazások létrehozására vonatkozó lépéseket
+Hozzon létre egy új LUIS-alkalmazást a forrásfájl, először, a CSV-fájlból az adatok elemzése és az adatok átalakítása a jelentéskészítési API-val LUIS feltölthet formátumú. Az elemzett adatokból Ön információkat gyűjthet mi szándékok és entitások vannak-e. Ezután API-hívásokat az alkalmazás létrehozásához, és adja hozzá a szándékok és entitások, amelyek az elemzett adatokból is megtörtént. Miután létrehozta a LUIS-alkalmazás, például megcímkézzen is hozzáadhat az elemzett adatokból. Ez a folyamat a következő kód utolsó részében tekintheti meg. Másolás vagy [letöltése](https://github.com/Microsoft/LUIS-Samples/blob/master/examples/build-app-programmatically-csv/index.js) a kódot, és mentse `index.js`.
 
    [!code-javascript[Node.js code for calling the steps to build a LUIS app](~/samples-luis/examples/build-app-programmatically-csv/index.js)]
 
 
 ## <a name="parse-the-csv"></a>A fürt megosztott kötetei szolgáltatás elemzése
 
-A megosztott fürtkötet utterances tartalmazó bejegyzést kell LUIS tudja értelmezni JSON formátumban értelmezni. A JSON formátum tartalmaznia kell egy `intentName` , amely azonosítja a utterance szándékával mező. Is tartalmaznia kell egy `entityLabels` mező, amely lehet üres, ha nincsenek a utterance az entitások. 
+Az oszlopok bejegyzéseit, amelyek tartalmazzák a Megosztott fürtköteten megcímkézzen rendelkezik, amelyet az képes megérteni a LUIS JSON formátumban értelmezni. A JSON-formátumban tartalmaznia kell egy `intentName` azonosító szándéka az utterance (kifejezés) mezőben. Is tartalmaznia kell egy `entityLabels` lehet üres, ha nincsenek entitások a az utterance (kifejezés) mezőben. 
 
-Például a bejegyzést a JSON "Kapcsolja be a fény" leképezve:
+Például a bejegyzés a térképek szolgáltatáshoz "Kapcsolja fel a lámpákat" ezt a JSON:
 
 ```json
         {
@@ -69,33 +69,33 @@ Például a bejegyzést a JSON "Kapcsolja be a fény" leképezve:
         }
 ```
 
-Ebben a példában a `intentName` származik, a felhasználói kérelem alatt a **kérelem** oszlopfejlécre kattint a CSV-fájlt, és a `entityName` kapcsolatos információkat a más oszlopok származik. Például, ha a bejegyzés **művelet** vagy **eszköz**, és, hogy a karakterlánc is a tényleges kérelem következik be, majd egy egységként neve. A következő kód bemutatja a folyamat elemzése. Másolhatja vagy [letöltése](https://github.com/Microsoft/LUIS-Samples/blob/master/examples/build-app-programmatically-csv/_parse.js) , majd mentse azokat `_parse.js`.
+Ebben a példában a `intentName` származik, a felhasználói kérelem alapján a **kérelem** oszlopfejlécre a CSV-fájl és a `entityName` adatait a többi oszlop származik. Például, ha van olyan bejegyzés **művelet** vagy **eszköz**, és, hogy a karakterlánc is bekövetkezik a tényleges kérelemben, majd egy egységként is címkével. A következő kód bemutatja ennek elemzési folyamatot. Másolhatja vagy [letöltése](https://github.com/Microsoft/LUIS-Samples/blob/master/examples/build-app-programmatically-csv/_parse.js) , és mentse a `_parse.js`.
 
    [!code-javascript[Node.js code for parsing a CSV file to extract intents, entities, and labeled utterances](~/samples-luis/examples/build-app-programmatically-csv/_parse.js)]
 
 
 
 ## <a name="create-the-luis-app"></a>A LUIS-alkalmazás létrehozása
-Ha az adatokat a JSON-ba rendelkezik elemzett, adja hozzá egy LUIS alkalmazást. A következő kódot a LUIS alkalmazást hoz létre. Másolás vagy [letöltése](https://github.com/Microsoft/LUIS-Samples/blob/master/examples/build-app-programmatically-csv/_create.js) , és mentse azokat `_create.js`.
+Miután az adatok rendelkezik elemzett JSON-ba, adja hozzá a LUIS-alkalmazás. A következő kódot a LUIS-alkalmazást hoz létre. Másolás vagy [letöltése](https://github.com/Microsoft/LUIS-Samples/blob/master/examples/build-app-programmatically-csv/_create.js) , és mentse őket `_create.js`.
 
    [!code-javascript[Node.js code for creating a LUIS app](~/samples-luis/examples/build-app-programmatically-csv/_create.js)]
 
 
 ## <a name="add-intents"></a>Leképezések hozzáadása
-Miután egy alkalmazást, kell leképezések rá. A következő kódot a LUIS alkalmazást hoz létre. Másolás vagy [letöltése](https://github.com/Microsoft/LUIS-Samples/blob/master/examples/build-app-programmatically-csv/_intents.js) , és mentse azokat `_intents.js`.
+Ha már rendelkezik egy alkalmazást, szüksége hozzá leképezések. A következő kódot a LUIS-alkalmazást hoz létre. Másolás vagy [letöltése](https://github.com/Microsoft/LUIS-Samples/blob/master/examples/build-app-programmatically-csv/_intents.js) , és mentse őket `_intents.js`.
 
    [!code-javascript[Node.js code for creating a series of intents](~/samples-luis/examples/build-app-programmatically-csv/_intents.js)]
 
 
 ## <a name="add-entities"></a>Entitások hozzáadása
-A következő kódot az entitások hozzáadja az LUIS alkalmazáshoz. Másolás vagy [letöltése](https://github.com/Microsoft/LUIS-Samples/blob/master/examples/build-app-programmatically-csv/_entities.js) , és mentse azokat `_entities.js`.
+A következő kódot az entitásokat ad hozzá a LUIS-alkalmazás. Másolás vagy [letöltése](https://github.com/Microsoft/LUIS-Samples/blob/master/examples/build-app-programmatically-csv/_entities.js) , és mentse őket `_entities.js`.
 
    [!code-javascript[Node.js code for creating entities](~/samples-luis/examples/build-app-programmatically-csv/_entities.js)]
    
 
 
 ## <a name="add-utterances"></a>Beszédmódok hozzáadása
-Miután az entitásokat és a leképezések az LUIS alkalmazásban definiálva van, a utterances is hozzáadhat. A következő kódban a [Utterances_AddBatch](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c09) API, amely lehetővé teszi, hogy akár 100 utterances felvenni egy időben.  Másolás vagy [letöltése](https://github.com/Microsoft/LUIS-Samples/blob/master/examples/build-app-programmatically-csv/_upload.js) , és mentse azokat `_upload.js`.
+Ha az entitások és a szándék fog vonatkozni a LUIS alkalmazás definiálva van, a kimondott szöveg is hozzáadhat. A következő kódban a [Utterances_AddBatch](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c09) API-t, amely lehetővé teszi, hogy egyszerre akár 100 beszédmódok hozzáadása.  Másolás vagy [letöltése](https://github.com/Microsoft/LUIS-Samples/blob/master/examples/build-app-programmatically-csv/_upload.js) , és mentse őket `_upload.js`.
 
    [!code-javascript[Node.js code for adding utterances](~/samples-luis/examples/build-app-programmatically-csv/_upload.js)]
 
@@ -104,16 +104,16 @@ Miután az entitásokat és a leképezések az LUIS alkalmazásban definiálva v
 
 
 ### <a name="install-nodejs-dependencies"></a>Telepítse a Node.js-függőségek
-Telepítse a Node.js-függőségek NPM a Terminálszolgáltatások/parancssorban.
+A Node.js-függőségek telepítése az npm-ből a terminálon/parancssorból.
 
 ````
 > npm install
 ````
 
 ### <a name="change-configuration-settings"></a>Konfigurációs beállítások módosítása
-Az alkalmazás használatához meg kell módosítsa az értékeket a index.js fájlban saját végpont kulcsot, és adjon meg egy nevet az alkalmazásnak. Állítsa be az alkalmazás kulturális környezet vagy a verziószám módosíthatja is.
+Annak érdekében, hogy az alkalmazás használatához meg kell az index.js fájlt az értékeket módosítsa saját végponti kulcs, és adja meg azt szeretné, hogy az alkalmazás nevét. Állítsa be az alkalmazás kulturális környezet vagy a verziószám módosíthatja is.
 
-Nyissa meg a index.js fájlt, és módosítsa a fájl elején ezeket az értékeket.
+Nyissa meg az index.js fájlt, és módosítsa ezeket az értékeket a fájl elején.
 
 
 ````JavaScript
@@ -124,7 +124,7 @@ const LUIS_appCulture = "en-us";
 const LUIS_versionId = "0.1";
 ````
 ### <a name="run-the-script"></a>A parancsfájl futtatása
-Node.js egy terminál-/ parancssorból futtassa a parancsfájlt.
+Futtassa a szkriptet a terminálon/parancssorból a node.js használatával.
 
 ````
 > node index.js
@@ -135,7 +135,7 @@ vagy
 ````
 
 ### <a name="application-progress"></a>Alkalmazás folyamatban
-Az alkalmazás futása közben, a parancssor folyamatban jeleníti meg. A parancssori kimenet tartalmazza a formátum LUIS válaszát.
+Az alkalmazás futása közben a parancssori folyamatot mutatja. A parancssori kimenet tartalmazza a válaszokat a LUIS formátumát.
 
 ````
 > node index.js
@@ -162,8 +162,8 @@ upload done
 
 
 
-## <a name="open-the-luis-app"></a>Nyissa meg a LUIS alkalmazást
-A parancsfájl után is jelentkezik be a [LUIS] [ LUIS] , és megtekintheti a LUIS app alatt létrehozott **saját alkalmazások**. A hozzáadása az utterances láthatók el a **bekapcsolása**, **kikapcsolásának**, és **nincs** leképezések.
+## <a name="open-the-luis-app"></a>Nyissa meg a LUIS-alkalmazás
+Miután a parancsfájl lefutott, bejelentkezhet a [LUIS](luis-reference-regions.md) , és tekintse meg a LUIS alapján létrehozott alkalmazást **saját alkalmazások**. A hozzáadott megcímkézzen láthatja el a **bekapcsolása**, **Kikapcsolás**, és **nincs** szándék fog vonatkozni.
 
 ![Leképezés bekapcsolása](./media/luis-tutorial-node-import-utterances-csv/imported-utterances-661.png)
 
@@ -171,15 +171,12 @@ A parancsfájl után is jelentkezik be a [LUIS] [ LUIS] , és megtekintheti a LU
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Tesztelje, és az alkalmazás LUIS webhelyen betanítása](interactive-test.md)
+> [LUIS webhelyen az alkalmazást kész, és tesztelése](interactive-test.md)
 
 ## <a name="additional-resources"></a>További források
 
-Ez a minta az alkalmazás a következő LUIS API-kat használ:
+Ez a mintaalkalmazás az alábbi intelligens HANGFELISMERÉSI API-kat használja:
 - [alkalmazás létrehozása](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c36)
 - [leképezések hozzáadása](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c0c)
-- [entitás hozzáadása](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c0e) 
-- [utterances hozzáadása](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c09) 
-
-[LUIS]: https://docs.microsoft.com/azure/cognitive-services/luis/luis-reference-regions
-
+- [entitások hozzáadása](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c0e) 
+- [beszédmódok hozzáadása](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c09)

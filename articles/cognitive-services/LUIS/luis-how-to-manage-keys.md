@@ -10,12 +10,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 03/21/2018
 ms.author: v-geberr
-ms.openlocfilehash: 80064584468c109d0bad49f1a22c485fa9cce846
-ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
+ms.openlocfilehash: 99ba867b10c82d226948b13fda448cd24a33c553
+ms.sourcegitcommit: 11321f26df5fb047dac5d15e0435fce6c4fde663
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37344518"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37888728"
 ---
 # <a name="manage-your-luis-keys"></a>A LUIS kulcsok kezelése
 Egy kulcs használatával hozhat létre és a LUIS-alkalmazás közzététele vagy lekérdezni a végpont teszi lehetővé. 
@@ -72,5 +72,3 @@ További tudnivalók a közzététel [régiók](luis-reference-regions.md) több
 ## <a name="next-steps"></a>További lépések
 
 Az alkalmazás közzététele a kulcsa segítségével a **alkalmazás közzététele** lapot. Közzétételi útmutatásért lásd: [alkalmazás közzététele](luis-how-to-publish-app.md).
-
-[LUIS]: https://docs.microsoft.com/azure/cognitive-services/luis/luis-reference-regions#luis-website

@@ -1,6 +1,6 @@
 ---
-title: Az előrejelzés pontszám LUIS - Azure által visszaadott megértése |} Microsoft Docs
-description: Ismerje meg, mi az előrejelzés pontszám azt jelenti, hogy a LUIS
+title: A LUIS - Azure által visszaadott előrejelzési pontszám ismertetése |} A Microsoft Docs
+description: Ismerje meg, mi az előrejelzési pontszám azt jelenti, hogy a LUIS
 services: cognitive-services
 author: v-geberr
 manager: kaiqb
@@ -9,57 +9,55 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: v-geberr
-ms.openlocfilehash: 31c101a23892df8599b8cdc0f67647fefb969490
-ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
+ms.openlocfilehash: 88d5eb22186248024a356610addab0d43f68a961
+ms.sourcegitcommit: 11321f26df5fb047dac5d15e0435fce6c4fde663
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36265988"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37887130"
 ---
-# <a name="prediction-score"></a>Előrejelzés pontszám
-Előrejelzési jelző pontszámot fokának abban, hogy LUIS rendelkezik-e előrejelzés eredmények jelzi. 
+# <a name="prediction-score"></a>Előrejelzési pontszám
+Előrejelzési pontszámot rendelkezik a LUIS-előrejelzési eredményeket megbízhatósági mértékét jelzi. 
 
-Előrejelzési jelző pontszámot az általában nulla (0) és egy (1) között. Például egy magas biztosnak LUIS pontszám érték 0,99. Alacsony abban, hogy a pontszám például 0,01. 
+Előrejelzési pontszámot általában a nulla (0) és a egy (1) között. Egy példát egy magas abban a LUIS-pontszám 0.99. Egy példa egy alacsony megbízhatósági pontszám, 0,01. 
 
-|Pontszám érték|Megbízhatóság|
+|Pontszám értéke|Megbízhatóság|
 |--|--|
 |1|egyértelmű egyezés|
-|0,99|magas megbízhatóság|
-|0.01|alacsony abban, hogy|
-|0|határozott nem felel meg|
+|0.99|magas megbízhatóság|
+|0.01|alacsony megbízhatósági|
+|0|megfelelő határozott hiba|
 
-Egy utterance alacsony – abban, hogy pontszámot eredményez, LUIS emeli, amelyek a [LUIS] [ LUIS] webhely **leképezés** lapon, a megadott **feliratú-leképezés**  piros vázolt. 
+Az utterance (kifejezés) egy alacsony-megbízhatósági pontszám eredményez, amikor a LUIS kiemeli, hogy a a [LUIS](luis-reference-regions.md) webhely **szándékot** oldala, amelyen az azonosított **feliratú szándékot** piros vázolt. 
 
-![Pontszám eltérést](./media/luis-concept-score/score-discrepancy.png)
+![Pontszám eltérés](./media/luis-concept-score/score-discrepancy.png)
 
-## <a name="top-scoring-intent"></a>Felső pontozási leképezés
-Minden utterance előrejelzésének felső pontozási leképezés adja vissza. Ez az előrejelzés pontszámok numerikus összehasonlítása. A felső két pontszámok nagyon kis különbség a kettő között lehet. LUIS nem jelzi a közelségi kapcsolat eltérő pontszámok ad vissza.  
+## <a name="top-scoring-intent"></a>Felső-pontozás leképezés
+Minden utterance (kifejezés) előrejelzési adja vissza egy felső pontozási szándékot. Ez az előrejelzési eredmények numerikus összehasonlítása. A felső két pontszámok rendelkezhet egy kis különbsége. A LUIS a közelségi eltérő pontszámok adatszolgáltató nem jelzi.  
 
-Ha a felső pontszámok közelében térjen vissza az összes leképezések pontszámot. A két leképezések, amelyek jelzik, a word-adatbázissal apróságokban vagy utterances is hozzáadhat és megállapodás vagy is LUIS-hívása alkalmazás, például egy chatbot, arról, hogyan kezelje a két legfontosabb leképezések programozott lehetőségeket. 
+Ha a felső pontszámok közelében, az összes leképezések pontszámának kell visszaadnia. Beszédmódok vagy hozzáadása a két szándék, amelyek jelzik a különbségek a word választási lehetőséget és megállapodás vagy Ön is a LUIS-hívása alkalmazás, például egy csevegőrobotot, győződjön meg arról, hogyan legyen kezelve a két leggyakoribb leképezések programozott megállapításánál. 
 
-## <a name="return-prediction-score-for-all-intents"></a>Térjen vissza az összes leképezések előrejelzési jelző pontszámot
-Teszt- vagy endpoint eredményeként minden leképezések tartalmazhatnak. Ez a konfiguráció be van állítva a [végpont](https://aka.ms/v1-endpoint-api-docs) rendelkező a `verbose=true` lekérdezési karakterlánc név-érték pár. 
+## <a name="return-prediction-score-for-all-intents"></a>Minden leképezések előrejelzési pontszámának visszaadása
+Teszt vagy a végpont eredményeképpen minden leképezések is tartalmazhatnak. Ez a beállítás be van állítva a [végpont](https://aka.ms/v1-endpoint-api-docs) az a `verbose=true` lekérdezési karakterlánc név-érték pár. 
 
 ## <a name="review-intents-with-similar-scores"></a>Tekintse át a hasonló pontszámok leképezések
-Tekintse át az összes leképezések pontszámot módja a helyes győződjön meg arról, hogy nem csak a helyes leképezés, amelynél, azonban, hogy a következő azonosított leképezés a pontszám jelentősen alacsonyabb következetesen utterances. 
+Tekintse át az összes leképezések pontszámának módja a helyes győződjön meg arról, hogy nem csak a megfelelő leképezés azonosított azonban, hogy a következő azonosítja a leképezés a pontszám jelentősen alacsonyabb egységesen a kimondott szöveg. 
 
-Ha több leképezések Bezárás előrejelzés pontszámok, egy utterance keretében alapján LUIS a leképezések is végrehajtható. A javítás érdekében továbbra is minden leképezést és környezetfüggő különbségek többféle utterances hozzáadása.   
+Ha több leképezések Bezárás előrejelzési pontok utterance (kifejezés) egy, a környezet alapján LUIS a leképezések is végrehajtható. A probléma megoldásához, továbbra is minden egyes beszédszándék környezetfüggő különbségek szélesebb körű számos beszédmódok hozzáadása.   
 
-## <a name="e-exponent-notation"></a>E (hatványát) jelöléssel
+## <a name="e-exponent-notation"></a>E (kitevő) jelölés
 
-Előrejelzés pontszámok használható kitevő notation *szereplő* fent a 0-1 között, például a `9.910309E-07`. Ez az érték utalhat, hogy egy nagyon **kis** számát.
+Előrejelzési pontszámok használható kitevő jelöléssel *jelennek meg* fent a 0 – 1 tartományban, mint például `9.910309E-07`. Ezt az értéket arra utalhat, hogy egy rendkívül **kis** számát.
 
-|E notation pontszám |Tényleges pontszám|
+|E jelöléssel pontszám |Tényleges eredmény|
 |--|--|
 |9.910309E-07|.0000009910309|
 
-## <a name="differences-with-predictions"></a>Az előrejelzés különbségek
-Amikor a vonat ugyanannak a modellnek egy másik alkalmazásban, és a pontszámok nem ilyen azonos, ennek az az oka a képzés véletlenszerű eleme van. Másodszor az egynél több leképezés egy utterance bármely átfedésének azt jelenti, hogy az azonos utterance a felső leképezésének képzési alapján módosíthatja.
+## <a name="differences-with-predictions"></a>Az előrejelzések különbségek
+Ha egy másik alkalmazásban ugyanannak a modellnek a vonat, és a pontszámok nem ez ugyanaz, ennek az az oka egy elem, a képzés a véletlenszerűségre azért van. Másodszor az utterance (kifejezés) egynél több beszédszándék bármely átfedésének azt jelenti, hogy az azonos utterance (kifejezés) a felső leképezésének képzési alapján módosíthatja.
 
-Ha a chatbot szükséges egy adott LUIS pontszám megjelölésű az vetett bizalmat jelzi, helyette használja a felső két leképezések pontszám különbsége. Változások a képzés rugalmasságot biztosít. 
+A csevegőrobot szükség van egy adott LUIS pontszám bizalom a megjelölésű jelzi, ha Ehelyett használjon a felső két szándék pontszám különbsége. Ezáltal rugalmasan képzési-változások. 
 
 ## <a name="next-steps"></a>További lépések
 
-Lásd: [entitások hozzáadása](luis-how-to-add-entities.md) entitások felvétele a LUIS app tájékozódhat.
-
-[LUIS]: https://docs.microsoft.com/azure/cognitive-services/luis/luis-reference-regions
+Lásd: [entitások hozzáadása](luis-how-to-add-entities.md) további információ entitások hozzáadása a LUIS-alkalmazás.

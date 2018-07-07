@@ -9,12 +9,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: v-geberr
-ms.openlocfilehash: eb8e55b3763c66dd2c8aabe92376bcb1278a0f45
-ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
+ms.openlocfilehash: 291eb9ef7d8d089b443b55ac181e9fdd65fcb413
+ms.sourcegitcommit: 11321f26df5fb047dac5d15e0435fce6c4fde663
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37346756"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37888857"
 ---
 # <a name="language-understanding-faq"></a>Language Understanding – gyakori kérdések
 
@@ -183,7 +183,7 @@ A cikkek, amelyek az oktatóanyag szakaszban korábban voltak, mostantól az út
 |Programozott módon használja a LUIS-alkalmazások felépítése [Node.js](luis-tutorial-node-import-utterances-csv.md)|
 |Használat [összetett entitást](luis-tutorial-composite-entity.md) csoportosított adatokat nyerhet ki|
 |Adjon hozzá [entitás listában](luis-tutorial-list-entity.md) nagyobb entitás észlelési Node.js használatával|
-|Az előrejelzési pontosság növeléséhez egy [kifejezéslista](luis-tutorial-interchangeable-phrase-list.md), [minták](luis-tutorial-pattern.md), és [batch tesztelése](luis-tutorial-batch-testing.md)|
+|Az előrejelzési pontosság növeléséhez egy [kifejezéslista](luis-quickstart-primary-and-secondary-data.md), [minták](luis-tutorial-pattern.md), és [batch tesztelése](luis-tutorial-batch-testing.md)|
 |[Javítsa ki a helyesírás-ellenőrzés](luis-tutorial-batch-testing.md) a Bing Spell Check API 7-es verziója
 
 ### <a name="at-the-build-2018-conference-i-heard-about-a-language-understanding-feature-or-demo-but-i-dont-remember-what-it-was-called"></a>A Build 2018 konferencián hallottam Language Understanding funkció vagy bemutató, de nem emlékszem, hogy milyen hívták? 
@@ -213,5 +213,3 @@ Projektek:
 A LUIS kapcsolatos további információkért lásd a következőket:
 * [Stack Overflow kérdések címkézett az intelligens hangfelismerési szolgáltatással](https://stackoverflow.com/questions/tagged/luis)
 * [MSDN Language Understanding Intelligent Services (LUIS) fórum](https://social.msdn.microsoft.com/forums/azure/home?forum=LUIS) 
-
-[LUIS]: https://docs.microsoft.com/azure/cognitive-services/luis/luis-reference-regions#luis-website

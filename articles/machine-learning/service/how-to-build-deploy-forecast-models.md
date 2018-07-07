@@ -1,6 +1,6 @@
 ---
-title: Hozza létre, és központi telepítése egy Azure Machine Learning csomag használatával előrejelzés az előrejelzési modell.
-description: Megtudhatja, hogyan létre, betanítását, tesztelése és telepítése az Azure Machine Learning csomagot használ előrejelzés előrejelzési modell.
+title: Hozhat létre és helyezhet üzembe egy előrejelzési modellt előrejelzés az Azure Machine Learning-csomag használatával.
+description: Ismerje meg, hogyan hozhat létre, betanítását, tesztelése és üzembe helyezése az Azure Machine Learning csomag segítségével az előrejelzés előrejelzési modell.
 services: machine-learning
 ms.service: machine-learning
 ms.component: core
@@ -9,23 +9,23 @@ ms.reviewer: jmartens
 ms.author: mattcon
 author: matthewconners
 ms.date: 05/07/2018
-ms.openlocfilehash: 320a7cf4a34657138c9096cdc4b573170be376e9
-ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
+ms.openlocfilehash: 44093dfde926b92d1617b85d27e362a8e40e5c56
+ms.sourcegitcommit: 11321f26df5fb047dac5d15e0435fce6c4fde663
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37036172"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37888670"
 ---
-# <a name="build-and-deploy-forecasting-models-with-azure-machine-learning"></a>Hozza létre és telepítheti az előrejelzési modell Azure Machine Learning segítségével
+# <a name="build-and-deploy-forecasting-models-with-azure-machine-learning"></a>Hozhat létre, és az Azure Machine Learning előrejelzési modellek üzembe helyezése
 
-Ebből a cikkből megtudhatja, hogyan használható **Azure Machine Learning csomag előrejelzés** (AMLPF) gyorsan készíthet és központi telepítése egy előrejelzési modellt. A munkafolyamat a következőképpen történik:
+Ebből a cikkből megtudhatja, hogyan használható **Azure Machine Learning-csomagja előrejelzés** (AMLPF) gyorsan készíthet és helyezhet üzembe egy előrejelzési modellt. A munkafolyamat a következőképpen történik:
 
-1. Betölteni és adatokba
+1. Betölteni és az adatok megismerése
 2. Funkciók létrehozása
-3. Betanítása, és válassza ki a legjobb modell
-4. A modell rendszerbe állítása, és felhasználhatják a webszolgáltatás
+3. Betanítása, és válassza ki a legjobb modellt
+4. A modell üzembe helyezése, és a webszolgáltatás használata
 
-Tekintse át a [referenciadokumentációt csomag](https://aka.ms/aml-packages/forecasting) transzformátorok és modellek, valamint az egyes modul és osztály részletesebb referencia teljes listáját.
+Tekintse át a [csomag dokumentációja](https://aka.ms/aml-packages/forecasting) transzformátorok és modellek, valamint a részletesen ismertetjük az egyes modul és osztály teljes listáját.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -33,40 +33,40 @@ Tekintse át a [referenciadokumentációt csomag](https://aka.ms/aml-packages/fo
 
 1. A következő fiókok és az alkalmazás kell hozni és telepítve:
    - Egy Azure Machine Learning kísérletezési fiókra 
-   - Az Azure Machine Learning modell felügyeleti fiók
+   - Az Azure Machine Learning Modellkezelés-fiók
    - Egy telepített Azure Machine Learning Workbenchre 
 
-    Ha három még nincs létrehozva, és telepítve, kövesse a [Azure Machine Learning gyors üzembe helyezés és a munkaterületet üzemeltető telepítési](../service/quickstart-installation.md) cikk.
+    Ha három vannak létrehozott vagy még nincs telepítve, kövesse a [Azure Machine Learning gyors üzembe helyezés és a Workbench telepítési](../service/quickstart-installation.md) cikk.
 
-1. Az Azure Machine Learning csomag előrejelzés telepítve kell lennie. Megtudhatja, hogyan [Itt a csomag telepítéséhez](https://aka.ms/aml-packages/forecasting).
+1. Előrejelzés az Azure Machine Learning csomag telepítve kell lennie. Ismerje meg, hogyan [telepíti ezt a csomagot Itt](https://aka.ms/aml-packages/forecasting).
 
-## <a name="sample-data-and-jupyter-notebook"></a>Mintaadatokat és Jupyter notebook
+## <a name="sample-data-and-jupyter-notebook"></a>Mintaadatok és a Jupyter notebook
 
-### <a name="sample-workflow"></a>Minta munkafolyamat 
+### <a name="sample-workflow"></a>Munkafolyamat-minta 
 A példában a munkafolyamat követi:
  
-1. **Adatok**: betöltése a dataset, majd átalakíthatja TimeSeriesDataFrame. A dataframe egy sorozat időadatok Azure Machine Learning csomag által előírt előrejelzés, mint a jelen dokumentumban említett struktúra **AMLPF**.
+1. **Adatok**: az adatkészlet betöltése és átalakíthatja TimeSeriesDataFrame. A dataframe egy idősorozat-adatok az Azure Machine Learning csomag által előírt előrejelzés, itt néven struktúra **AMLPF**.
 
-2. **Szolgáltatások létrehozása**: különböző featurization transzformátorok AMLPF által nyújtott szolgáltatások létrehozásához használja.
+2. **Funkciók létrehozása**: különböző featurization transzformátorok AMLPF által biztosított szolgáltatások létrehozásához használja.
 
-3. **Tanítási és legjobb modell kiválasztása**: vetik össze a különböző egyváltozós idő adatsorozat modellek és machine learning modellek. 
+3. **Train, és válassza ki a legoptimálisabb modellt**: különböző egyváltozós time series modelleket és gépi tanulási modellek teljesítményének összehasonlítására. 
 
-4. **Modell rendszerbe állítása**: adatcsatornát a betanított modell Azure Machine Learning-munkaterület keresztül webszolgáltatásként, mások által is használt.
+4. **Modell üzembe helyezése**: helyezze üzembe a betanított modell folyamatot webszolgáltatásként, amely az Azure Machine Learning Workbench-n keresztül, így mások is képes használni.
 
-### <a name="get-the-jupyter-notebook"></a>A Jupyter notebook beolvasása
+### <a name="get-the-jupyter-notebook"></a>A Jupyter notebook beszerzése
 
-A notebook mintakódok futtatásához letöltési jelen dokumentumban ismertetett magát.
+A jegyzetfüzet futtatásához a Kódminták letöltése jelen dokumentumban ismertetett anyagokon saját magának.
 
 > [!div class="nextstepaction"]
-> [A Jupyter notebook beolvasása](https://aka.ms/aml-packages/forecasting/notebooks/sales_forecasting)
+> [A Jupyter notebook beszerzése](https://aka.ms/aml-packages/forecasting/notebooks/sales_forecasting)
 
-### <a name="explore-the-sample-data"></a>A mintaadatok felfedezés
+### <a name="explore-the-sample-data"></a>Ismerje meg a mintaadatokat
 
-A gépi tanulás példák a kövesse kódban minták támaszkodnak az előrejelzés a [egyetemi a Chicagói tartozó Dominick egyeztetését élelmiszerek dataset](https://research.chicagobooth.edu/kilts/marketing-databases/dominicks) narancssárga lé értékesítési az előre jelzett. Dominick meg lett a Chicagói térsége élelmiszerboltban láncba kapcsolhatók.
+A machine learning példák a minták támaszkodjon kövesse kód előrejelzés az [University a Chicagói a Dominick kifinomultabb élelmiszerek adatkészlet](https://research.chicagobooth.edu/kilts/marketing-databases/dominicks) narancssárga lé értékesítés-előrejelzést. A Dominick egy pékséglánc láncot, a Chicagói nagyvárosi körzetében volt.
 
-### <a name="import-any-dependencies-for-this-sample"></a>Ez a minta bármely függőségeinek importálása
+### <a name="import-any-dependencies-for-this-sample"></a>Ehhez a mintához függőségek importálása
 
-Ezek a függőségi importálni kell a következő mintakódok:
+Ezeket a függőségeket kell importálni a következő kódmintákhoz:
 
 
 ```python
@@ -103,9 +103,9 @@ print('imports done')
     imports done
     
 
-## <a name="load-data-and-explore"></a>Adatok betöltése és felfedezés
+## <a name="load-data-and-explore"></a>Adatok betöltése és megismerése
 
-A kódrészletet bemutatja a tipikus kiindulási nyers adatok vannak beállítva, ebben az esetben a [Dominick tartozó egyeztetését élelmiszerek adatait](https://research.chicagobooth.edu/kilts/marketing-databases/dominicks).  Használhatja a kényelmi funkciót is [load_dominicks_oj_data](https://docs.microsoft.com/en-us/python/api/ftk.data.dominicks_oj.load_dominicks_oj_data).
+Ez a kódrészlet ebben az esetben egy nyers adatkészlet kezdve tipikus folyamatát mutatja be a [Dominick a kifinomultabb élelmiszerek származó adatok](https://research.chicagobooth.edu/kilts/marketing-databases/dominicks).  A kényelmi funkciót is használhatja [load_dominicks_oj_data](https://docs.microsoft.com/en-us/python/api/ftk.data.dominicks_oj.load_dominicks_oj_data).
 
 
 ```python
@@ -154,7 +154,7 @@ whole_df.head()
       <td>0.25</td>
       <td>0,11</td>
       <td>10.55</td>
-      <td>0.10</td>
+      <td>0.10-ás</td>
       <td>0,30</td>
       <td>0.46</td>
       <td>2.11</td>
@@ -174,7 +174,7 @@ whole_df.head()
       <td>0.25</td>
       <td>0,11</td>
       <td>10.55</td>
-      <td>0.10</td>
+      <td>0.10-ás</td>
       <td>0,30</td>
       <td>0.46</td>
       <td>2.11</td>
@@ -194,7 +194,7 @@ whole_df.head()
       <td>0.25</td>
       <td>0,11</td>
       <td>10.55</td>
-      <td>0.10</td>
+      <td>0.10-ás</td>
       <td>0,30</td>
       <td>0.46</td>
       <td>2.11</td>
@@ -214,7 +214,7 @@ whole_df.head()
       <td>0.25</td>
       <td>0,11</td>
       <td>10.55</td>
-      <td>0.10</td>
+      <td>0.10-ás</td>
       <td>0,30</td>
       <td>0.46</td>
       <td>2.11</td>
@@ -234,7 +234,7 @@ whole_df.head()
       <td>0.25</td>
       <td>0,11</td>
       <td>10.55</td>
-      <td>0.10</td>
+      <td>0.10-ás</td>
       <td>0,30</td>
       <td>0.46</td>
       <td>2.11</td>
@@ -247,11 +247,11 @@ whole_df.head()
 
 
 
-Az adatok tartalmazzák a heti értékesítési márka és tárolója. Eladott mennyiség logaritmusát van a _logmove_ oszlop. Az adatok is olyan ügyfél demográfiai funkciókat is tartalmaz. 
+Az adatok márka és az áruházbeli heti eladások állnak. Eladott mennyiség logaritmusát szerepel a _logmove_ oszlop. Egyes ügyfelek demográfiai funkciók is szerepel. 
 
-A modell a idősorozat, az alábbi elemeket kinyerése a dataframe kell: 
+A time series modell, a következő elemek kinyerése a dataframe kell: 
 + Egy dátum/idő tengely 
-+ Az előrejelzéshez kell mennyiség
++ Az lehet az előre jelzett értékesítési mennyiség
 
 
 ```python
@@ -334,11 +334,11 @@ print('{} time series in the data frame.'.format(nseries))
     249 time series in the data frame.
     
 
-Az adatok körülbelül 250 különböző kombinációkban store és a márka adatok keret tartalmazza. Minden egyes meghatározza az értékesítési saját idősor. 
+Az adatok körülbelül 250 különböző kombinációit tároló és a egy adatkeretben márka tartalmazza. Minden kombinációja határozza meg a saját idősorozat, az értékesítés. 
 
-Használhatja a [TimeSeriesDataFrame](https://docs.microsoft.com/en-us/python/api/ftk.dataframe_ts.timeseriesdataframe?view=azure-ml-py-latest) osztály egyetlen struktúra használata több sorozat kényelmesen modellezésére a _bontásban_. A felbontása megadja a `store` és `brand` oszlopok.
+Használhatja a [TimeSeriesDataFrame](https://docs.microsoft.com/en-us/python/api/ftk.dataframe_ts.timeseriesdataframe?view=azure-ml-py-latest) osztály egyetlen struktúra használata több sorozat kényelmesen modellezésére a _időfelbontási szint_. A időfelbontási szint szerint van megadva a `store` és `brand` oszlopokat.
 
-A különbség a között _bontásban_ és _csoport_ az, hogy felbontása mindig fizikailag kifejező, a valós életben, amíg a csoport nem kell lennie. Belső csomag funkciók csoportot hozhat létre a több idősorozatban egyetlen modellt, ha a felhasználó úgy véli, hogy ez a csoportosítás javítja a modell teljesítmény használni. Alapértelmezés szerint csoportja felbontása egyenlőnek kell lennie, és minden olyan aggregációs időközt egyetlen modellt lett tervezve. 
+A különbség a között _időfelbontási szint_ és _csoport_ , hogy időfelbontási szint mindig fizikailag kifejező, a való világból bármit, amíg a csoport nem kell lennie. A csomag belső függvények csoport használatával az idősorozatban egyetlen modell létrehozása, ha a felhasználó úgy véli, hogy ez a csoportosítás javítja a modell teljesítményét. Alapértelmezés szerint tulajdonoscsoportja időfelbontási szint egyenlőnek kell lennie, és egyetlen modellben minden egyes időfelbontási szint lett tervezve. 
 
 
 ```python
@@ -409,7 +409,7 @@ whole_tsdf[['Quantity']].head()
 
 
 
-TimeSeriesDataFrame ábrázolás a időtengelye aggregációs időköze most az adatok keret index részét képezik és a Felosztás funkció pandas datetime egyszerű hozzáférést.
+A TimeSeriesDataFrame reprezentációban szereplő a időtengelye időfelbontási szint most már az adatok keret index részét képezik, és lehetővé teszi a pandas dátum és idő, tovább szeletelve funkciókat is egyszerű hozzáférést.
 
 
 ```python
@@ -470,7 +470,7 @@ whole_tsdf.loc[pd.IndexSlice['1990-06':'1990-09', 2, 'dominicks'], ['Quantity']]
       <td>1600</td>
     </tr>
     <tr>
-      <th>1990-09-05 23:59:59</th>
+      <th>1990-09-05-23:59:59</th>
       <th>2</th>
       <th>dominicks</th>
       <td>25344</td>
@@ -482,7 +482,7 @@ whole_tsdf.loc[pd.IndexSlice['1990-06':'1990-09', 2, 'dominicks'], ['Quantity']]
       <td>10752</td>
     </tr>
     <tr>
-      <th>1990-09-19 23:59:59</th>
+      <th>1990-09-19-23:59:59</th>
       <th>2</th>
       <th>dominicks</th>
       <td>6656</td>
@@ -498,7 +498,7 @@ whole_tsdf.loc[pd.IndexSlice['1990-06':'1990-09', 2, 'dominicks'], ['Quantity']]
 
 
 
-A [TimeSeriesDataFrame.ts_report](https://docs.microsoft.com/en-us/python/api/ftk.dataframe_ts.timeseriesdataframe?view=azure-ml-py-latest#ts-report) függvény az adatsorozat adatainak időkeretet átfogó jelentést hoz létre. A jelentés tartalmazza a is egy általános adatok leírása, valamint idő adatsor adott statisztika. 
+A [TimeSeriesDataFrame.ts_report](https://docs.microsoft.com/en-us/python/api/ftk.dataframe_ts.timeseriesdataframe?view=azure-ml-py-latest#ts-report) függvény a time series adatok keret átfogó jelentést hoz létre. A jelentés egy általános leírása és is idősorozat-adatok az adott statisztika tartalmazza. 
 
 
 ```python
@@ -663,11 +663,16 @@ whole_tsdf.ts_report()
 
 ![PNG](./media/how-to-build-deploy-forecast-models/output_15_6.png)
 
+![PNG](./media/how-to-build-deploy-forecast-models/output_59_0.png)
+![png](./media/how-to-build-deploy-forecast-models/output_61_0.png)
+![png](./media/how-to-build-deploy-forecast-models/output_63_0.png)
+![png](./media/how-to-build-deploy-forecast-models/output_63_1.png)
+ 
 
 
 ## <a name="integrate-with-external-data"></a>Külső adatok integrálása
 
-Egyes esetekben célszerű integrálják a külső adatokat, az előrejelzési további szolgáltatásokat. A fenti a csatlakozik a TimeSeriesDataFrame külső időjárási kapcsolódó adatokat.
+Néha hasznos külső adatokat integrálhat, az előrejelzési további szolgáltatásokat. Ez a kódminta a csatlakozik TimeSeriesDataFrame időjárási kapcsolódó külső adatokat.
 
 
 ```python
@@ -770,7 +775,7 @@ whole_tsdf.head()
       <td>0.25</td>
       <td>0,11</td>
       <td>10.55</td>
-      <td>0.10</td>
+      <td>0.10-ás</td>
       <td>0,30</td>
       <td>...</td>
       <td>2.11</td>
@@ -778,7 +783,7 @@ whole_tsdf.head()
       <td>1.93</td>
       <td>0.38</td>
       <td>10560</td>
-      <td>14-06-1990.</td>
+      <td>1990-06-14</td>
       <td>72,00 lesz</td>
       <td>61.87</td>
       <td>9.74</td>
@@ -794,7 +799,7 @@ whole_tsdf.head()
       <td>0.25</td>
       <td>0,11</td>
       <td>10.55</td>
-      <td>0.10</td>
+      <td>0.10-ás</td>
       <td>0,30</td>
       <td>...</td>
       <td>2.11</td>
@@ -802,7 +807,7 @@ whole_tsdf.head()
       <td>1.93</td>
       <td>0.38</td>
       <td>4480</td>
-      <td>14-06-1990.</td>
+      <td>1990-06-14</td>
       <td>72,00 lesz</td>
       <td>61.87</td>
       <td>9.74</td>
@@ -818,7 +823,7 @@ whole_tsdf.head()
       <td>0.25</td>
       <td>0,11</td>
       <td>10.55</td>
-      <td>0.10</td>
+      <td>0.10-ás</td>
       <td>0,30</td>
       <td>...</td>
       <td>2.11</td>
@@ -826,7 +831,7 @@ whole_tsdf.head()
       <td>1.93</td>
       <td>0.38</td>
       <td>8256</td>
-      <td>14-06-1990.</td>
+      <td>1990-06-14</td>
       <td>72,00 lesz</td>
       <td>61.87</td>
       <td>9.74</td>
@@ -843,7 +848,7 @@ whole_tsdf.head()
       <td>0.32</td>
       <td>0,05</td>
       <td>10.92</td>
-      <td>0.10</td>
+      <td>0.10-ás</td>
       <td>0.41</td>
       <td>...</td>
       <td>3.80</td>
@@ -851,7 +856,7 @@ whole_tsdf.head()
       <td>1.60</td>
       <td>0.74</td>
       <td>1792</td>
-      <td>14-06-1990.</td>
+      <td>1990-06-14</td>
       <td>72,00 lesz</td>
       <td>61.87</td>
       <td>9.74</td>
@@ -867,7 +872,7 @@ whole_tsdf.head()
       <td>0.32</td>
       <td>0,05</td>
       <td>10.92</td>
-      <td>0.10</td>
+      <td>0.10-ás</td>
       <td>0.41</td>
       <td>...</td>
       <td>3.80</td>
@@ -875,7 +880,7 @@ whole_tsdf.head()
       <td>1.60</td>
       <td>0.74</td>
       <td>4224</td>
-      <td>14-06-1990.</td>
+      <td>1990-06-14</td>
       <td>72,00 lesz</td>
       <td>61.87</td>
       <td>9.74</td>
@@ -887,14 +892,14 @@ whole_tsdf.head()
 
 ## <a name="preprocess-data-and-impute-missing-values"></a>Az adatok előfeldolgozása és a hiányzó értékeket imputálására
 
-Indítsa el az adatok felosztása tanítási és tesztelési meg a [ftk.tsutils.last_n_periods_split](https://docs.microsoft.com/en-us/python/api/ftk.ts_utils?view=azure-ml-py-latest) segédprogram függvény. A létrejövő készletet tesztelése tartalmazza a legutóbbi 40 minden idősorozat. 
+Indítsa el az adatok gyakorlókészlethez és a egy csoportot az tesztelési halmazra a [ftk.tsutils.last_n_periods_split](https://docs.microsoft.com/en-us/python/api/ftk.ts_utils?view=azure-ml-py-latest) segédprogram függvény. A létrejövő set tesztelés tartalmazza minden egyes utolsó 40 észrevételeit. 
 
 
 ```python
 train_tsdf, test_tsdf = last_n_periods_split(whole_tsdf, 40)
 ```
 
-Alapszintű idő adatsorozat modellek összefüggő idősor igényelnek. Ellenőrizze, hogy az adatsorozat-rendszeres, ami azt jelenti, hogy rendelkezik-e egy idő index mintát rendszeres időközönként, használja a [check_regularity_by_grain](https://docs.microsoft.com/en-us/python/api/ftk.dataframe_ts.timeseriesdataframe?view=azure-ml-py-latest#check-regularity-by-grain) függvény.
+Alapszintű time series modellek összefüggő idősorozat van szükség. Ellenőrizze, hogy rendszeres, ami azt jelenti, hogy rendelkeznek-e egy rendszeres időközönként, használja a mintavétel ideje index az adatsorozat-a [check_regularity_by_grain](https://docs.microsoft.com/en-us/python/api/ftk.dataframe_ts.timeseriesdataframe?view=azure-ml-py-latest#check-regularity-by-grain) függvény.
 
 
 ```python
@@ -969,7 +974,7 @@ print(ts_regularity[ts_regularity['regular'] == False])
     [213 rows x 2 columns]
     
 
-Láthatja, hogy az adatsorozat (213 kívüli 249) többsége szabálytalan. Egy [imputálási átalakító](https://docs.microsoft.com/en-us/python/api/ftk.transforms.ts_imputer?view=azure-ml-py-latest) hiányzó értékesítési mennyiség érték szükséges. Többféleképpen imputálási, amíg az az alábbi példakód egy lineáris köztes használja.
+Láthatja, hogy a sorozat (213 kívüli 249) többsége szabálytalan. Egy [imputálási átalakító](https://docs.microsoft.com/en-us/python/api/ftk.transforms.ts_imputer?view=azure-ml-py-latest) értékesítési mennyiség értékek a hiányzó szükséges. Többféleképpen imputálási, amíg az az alábbi mintakód egy lineáris interpolációs használ.
 
 
 ```python
@@ -982,7 +987,7 @@ imputer = TimeSeriesImputer(input_column='Quantity',
 train_imputed_tsdf = imputer.transform(train_tsdf)
 ```
 
-A imputálási kód futtatása után az összes adatsorozatokban rendszeres gyakorisága:
+A imputálási kód futtatása után az összes adatsorozat rendelkezik egy szokásos gyakoriság:
 
 
 ```python
@@ -995,18 +1000,18 @@ print(ts_regularity_imputed[ts_regularity_imputed['regular'] == False])
     Index: []
     
 
-## <a name="univariate-time-series-models"></a>Egyváltozós idő adatsorozat modellek
+## <a name="univariate-time-series-models"></a>Egyváltozós time series modellek
 
-Most, hogy az adatok kell tisztítani, megkezdheti a modellezési.  Először hozzon létre három egyváltozós modellt: a "natív" modell, a "határozza naïve" modellhez és az "Elemhez tartozó ARIMA" modell.
-* A Naiv előrejelzési algoritmust használja az előre jelzett érték az aktuális idő a tényleges target változó értéke a legutóbbi időszak.
+Most, hogy eltávolította az adatokat, elkezdheti modellezési.  Először hozzon létre három egyváltozós modell: a "natív" modell, a "szezonális naiv" típusú és egy "ARIMA" modellt.
+* Az előre jelzett érték az aktuális időszak a tényleges cél változó értéke a legutóbbi időszak Naiv előrejelzési algoritmust használja.
 
-* A Naiv határozza algoritmus a tényleges cél változó értékét a azonos idő pont a korábbi szezon az előre jelzett érték az aktuális idő pont használja. Néhány példa a tényleges érték az előző év azonos hónapjában használ az előrejelzéshez hónappal az aktuális év; a tegnap az azonos órához segítségével előrejelzési ma óra. 
+* Az időszakos Naiv algoritmus a tényleges cél változó értékét az előző szezon azonos idő pont használja, mint az előre jelzett érték az aktuális idő pont. Néhány példa: a tényleges érték az előző év azonos hónapjában segítségével előrejelzési hónappal az aktuális év; tegnap azonos órányi használatával előrejelzést órát még ma. 
 
-* Az exponenciális simítás (ETS) algoritmus előrejelzések által az elmúlt megfigyelések súlyozott átlagok számítástechnikai csillapított exponenciálisan növekszik, a megfigyelések régebbi get mérettartományon állít elő. 
+* Az exponenciális simítás (ETS) algoritmus előrejelzések szerint súlyozott átlagok múltbeli megfigyelések megoldásokkal csillapított exponenciálisan növekszik, a megfigyelés első régebbi súlyozású: állít elő. 
 
-* A AutoRegressive integrált áthelyezése átlagos (ARIMA) algoritmus idő adatsorozat adatok autocorrelation rögzíti. Az elemhez tartozó ARIMA kapcsolatos további információkért lásd: [Ez a hivatkozás](https://en.wikipedia.org/wiki/Autoregressive_integrated_moving_average)
+* A Autoregressziós integrált mozgó átlag (ARIMA) algoritmus a autocorrelation az idősorozat-adatokat rögzíti. ARIMA kapcsolatos további információkért lásd: [ezt a hivatkozást](https://en.wikipedia.org/wiki/Autoregressive_integrated_moving_average)
 
-Indítsa el az adatok feltárása alapuló modell paraméterek beállításával. 
+Indítsa el az egyes modell paraméter az adatfeltárás alapján beállításával. 
 
 
 ```python
@@ -1014,7 +1019,7 @@ oj_series_freq = 'W-WED'
 oj_series_seasonality = 52
 ```
 
-### <a name="initialize-models"></a>Modellek inicializálása
+### <a name="initialize-models"></a>Modell inicializálása
 
 
 ```python
@@ -1033,9 +1038,9 @@ arima_order = [2, 1, 0]
 arima_model = Arima(oj_series_freq, arima_order)
 ```
 
-### <a name="combine-multiple-models"></a>Több modellek egyesítése
+### <a name="combine-multiple-models"></a>Több modell egyesítése
 
-A [ForecasterUnion](https://docs.microsoft.com/en-us/python/api/ftk.models.forecaster_union.forecasterunion?view=azure-ml-py-latest) négyzetgyökének lehetővé teszi több estimators kombinálhatja, és azokat egy kódsort a méretezési/előrejelzése.
+A [ForecasterUnion](https://docs.microsoft.com/en-us/python/api/ftk.models.forecaster_union.forecasterunion?view=azure-ml-py-latest) estimator lehetővé teszi, hogy több estimators egyesítése, és ezeket egyetlen sor kód segítségével a laphoz/előrejelzésével.
 
 
 ```python
@@ -1044,29 +1049,29 @@ forecaster_union = ForecasterUnion(
                      ('ets', ets_model), ('arima', arima_model)]) 
 ```
 
-### <a name="fit-and-predict"></a>Alkalmas, és előrejelzése
+### <a name="fit-and-predict"></a>Szélességhez és előrejelzése
 
-A AMLPF estimators kövesse, scikit azonos API-estimators további: illeszkedő módszert a modell betanítási és előrejelzések generálásához predict metódust. 
+A estimators AMLPF a kövesse az azonos API-t, a scikit-estimators további: regressziós módszert a modellek tanítása és a egy predict metódus előrejelzések létrehozásához. 
 
-**Modellek betanítása**  
-Mivel ezek a modellek összes egyváltozós modell, egy modellt a van az adatok minden felbontása legyen. AMLPF használja, minden 249 modellek is kell felel egy függvény hívásához szükséges.
+**Modellek**  
+Mivel ezek a modellek minden egyváltozós modell, egy modellt az adatok minden időfelbontási szint van igazítás. AMLPF használja, minden 249 modell csak egy függvényt hívással kell illeszkednek.
 
 
 ```python
 forecaster_union_fitted = forecaster_union.fit(train_imputed_tsdf)
 ```
 
-**A tesztadatokat előrejelzés**  
-Hasonló a illeszkedő metódus, hozhat létre minden 249 adatsorozathoz előrejelzéseket egy hívás a tesztelési adatkészlet a `predict` függvény. 
+**A teszt adatai értékesítés-előrejelzést**  
+Hasonlóan a regressziós módszert, hozhat létre minden 249 adatsorozathoz előrejelzéseket a tesztelési adatkészlet egy hívás az a `predict` függvény. 
 
 
 ```python
 forecaster_union_prediction = forecaster_union_fitted.predict(test_tsdf, retain_feature_column=True)
 ```
 
-**Értékelje ki a modell teljesítmény**   
+**Modellek teljesítményének kiértékelése**   
 
-Az előrejelzési hibákat a TesztKészlet a most is kiszámíthatja. Az átlagos abszolút százalékos hiba (MAPE) itt is használhatja. MAPE képest a tényleges értékesítési értékek átlagos abszolút százalékos hiba. A ```calc_error``` függvény néhány beépített funkciókat biztosít a leggyakrabban használt hiba metrikákat. Megadhatja az egyéni hiba függvény MedianAPE kiszámításához, és adja át a err_fun argumentum.
+Most, kiszámíthatja a teszt esetén előre jelzett hibákat. Az átlagos abszolút százalékos aránya (MAPE) hiba itt is használhatja. MAPE képest a tényleges értékesítési értékek átlagos abszolút százalékos hiba. A ```calc_error``` függvény néhány beépített funkciókat biztosít a gyakran használt hiba metrikákkal. Az egyéni hiba függvény MedianAPE kiszámítása, és adja át a err_fun argumentum is meghatározhat.
 
 
 ```python
@@ -1143,16 +1148,16 @@ univariate_model_errors
 
 
 
-## <a name="build-machine-learning-models"></a>Machine learning modellek létrehozása
+## <a name="build-machine-learning-models"></a>Machine learning-modellek létrehozása
 
-Hagyományos egyváltozós modellek mellett Azure Machine Learning-csomagja előrejelzés is lehetővé teszi a machine learning modellek létrehozása.
+Mellett hagyományos egyváltozós modellek Azure Machine Learning-csomag az előrejelzés emellett lehetővé teszi a machine learning-modellek létrehozása.
 
-Ezek a modellek esetében először hozzon létre a szolgáltatásokat.
+Ezen modellek szolgáltatások létrehozásával kezdődik.
 
 ### <a name="feature-engineering"></a>A szolgáltatás műszaki osztály
 
 **Transzformátorok**   
-A csomag számos transzformátorok biztosít idő adatsorozat adatok előfeldolgozása és featurization. A következő példák bemutatják az egyes előfeldolgozása és featurization szolgáltatásai.
+A csomag számos transzformátorok idősorozat-adatok előfeldolgozása és featurization biztosít. A következő példák az előfeldolgozási és featurization funkcióit mutatják be.
 
 
 ```python
@@ -1181,8 +1186,8 @@ time_index_featurizer = TimeIndexFeaturizer(correlation_cutoff=0.1, overwrite_co
 grain_featurizer = GrainIndexFeaturizer(overwrite_columns=True, ts_frequency=oj_series_freq)
 ```
 
-**Folyamatok**   
-Adatcsatorna objektumok könnyen ismertetett lépések mentése, alkalmazhatók és újra különböző objektumokra. Is csővezeték objektumok is pickled való könnyen hordozható központi telepítés más számítógépekre. Egy folyamatot, amennyiben használatával létrehozott összes transzformátorok is láncában találhatók. 
+**A folyamatok**   
+Folyamat objektumok megkönnyítik a több lépésre mentéséhez, így a különböző objektumok, és újra alkalmazhatók. Ezenkívül folyamat objektumokat is pickled, így könnyen hordozható való üzembe helyezéshez gépeivel. Eddig a folyamat használatával létrehozott összes transzformátorok láncolhatja össze. 
 
 
 ```python
@@ -1249,7 +1254,7 @@ print(train_feature_tsdf.head())
 
  **RegressionForecaster**
 
-A [RegressionForecaster](https://docs.microsoft.com/en-us/python/api/ftk.models.regression_forecaster.regressionforecaster?view=azure-ml-py-latest) függvény sklearn regressziós estimators becsomagolja, így azok a TimeSeriesDataFrame kell képezni. A burkolt forecaster is elhelyezi mindegyik csoportnál a nagybetűk tárolóban levő ugyanannak a modellnek. A forecaster is találhat egy modell hasonló tekintik, és együtt készletezett sorozat egy csoportja számára. Egy modell adatsorozat csoportjának gyakran az adatok hosszabb sorozatból javítására használja előrejelzések rövid adatsorozathoz. Ezek a modellek bármely más modellek a könyvtárban, amely támogatja a regressziós helyére is. 
+A [RegressionForecaster](https://docs.microsoft.com/en-us/python/api/ftk.models.regression_forecaster.regressionforecaster?view=azure-ml-py-latest) függvény sklearn regressziós estimators burkolja, így azok a TimeSeriesDataFrame kell képezni. A burkolt forecaster is beteszi mindegyik csoportnál a case tárolóban levő ugyanannak a modellnek. A forecaster tudhat meg egy modellt a sorozat, amely hasonló tekintik, és együtt összevonhatják egy csoportjánál. Adatsorozat-csoport egy modellt gyakran hosszabb adatsorozat adatainak fejlesztésére használja rövid adatsorozathoz előrejelzéseket. Ezek bármely más modellek az erőforrástárban, amelyek támogatják a regressziós modellek helyettesítheti. 
 
 
 ```python
@@ -1363,13 +1368,13 @@ all_errors.sort_values('MedianAPE')
 
 
 
-Egyes machine learning modellek képes kihasználni a hozzáadott szolgáltatásokat és jobb előrejelzési pontosság beolvasandó adatsorozat Hasonlóságok volt.
+Néhány gépi tanulási modelleket képes kihasználni az új funkciók és az a sorozat első jobb előrejelzések pontossága döntésünket is.
 
-**Kereszt-ellenőrzési és paraméter abszolút**    
+**Kereszt-ellenőrzési és paraméter kezdik**    
 
-A csomag alkalmazkodik néhány hagyományos gépi tanulási a függvény egy előrejelzési alkalmazáshoz.  [RollingOriginValidator](https://docs.microsoft.com/python/api/ftk.model_selection.cross_validation.rollingoriginvalidator) kereszt-ellenőrzési ideiglenesen, does mi lesz, és nem lenne ismert előrejelzési keretrendszer tiszteletben. 
+A csomag néhány hagyományos machine learning-függvény egy előrejelzési alkalmazáshoz alkalmazkodik.  [RollingOriginValidator](https://docs.microsoft.com/python/api/ftk.model_selection.cross_validation.rollingoriginvalidator) kereszt-ellenőrzési ideiglenesen, does mi lenne, és nem lenne ismert előrejelzési keretrendszer lehetőségekből. 
 
-Az alábbi ábrán minden négyzet egy idő pontról adatokat képvisel. A kék négyzetes felel meg a képzés és narancssárga négyzetes képviseli minden egyes modellrészek tesztelése. Tesztelési adatokat a legnagyobb képzési idő időpontot követően időpontban kell származnia. Ellenkező esetben jövőbeli adatok kiszivárgott a betanítási adatok, amely a modell kiértékelése is érvénytelenné válhatnak. 
+Az alábbi ábra az egyes szögletes egy idő pontról adatokat jelöli. A kék négyzetes betanítási képviseli, és narancssárga négyzetes képviseli minden egyes modellrészek tesztelése. Tesztelési adatok későbbinek kell lennie az idő pontokról a legnagyobb képzési idő pont. Ellenkező esetben jövőbeli adatkezelési kiszivárgott való betanítási adatok, így a minta értékelés érvénytelenné válik. 
 
 ![PNG](./media/how-to-build-deploy-forecast-models/cv_figure.PNG)
 
@@ -1391,8 +1396,8 @@ print('Best paramter: {}'.format(randomforest_cv_fitted.best_params_))
     Best paramter: {'estimator__n_estimators': 100}
     
 
-**A végső folyamat létrehozása**   
-Most, hogy a legjobb modell azonosította, hozza létre, és a végső folyamat összes transzformátorok és a legjobb modell megfelelően. 
+**Az utolsó folyamat létrehozása**   
+Most, hogy azonosította a legoptimálisabb modellt, hozhat létre, és alkalmas az összes transzformátorok és a legjobb modellt a végső folyamatot. 
 
 
 ```python
@@ -1411,13 +1416,13 @@ print('Median of APE of final pipeline: {0}'.format(final_median_ape))
     Median of APE of final pipeline: 42.54336821266968
     
 
-## <a name="operationalization-deploy-and-consume"></a>Operationalization: telepítheti, és felhasználása
+## <a name="operationalization-deploy-and-consume"></a>Operacionalizálás: üzembe helyezése és felhasználása
 
-Ebben a szakaszban telepítsen egy folyamatot, az Azure Machine Learning webszolgáltatásként, és a képzési és pontozási szokásokra is. Az üzembe helyezett webszolgáltatáshoz pontozási retrains a modell, és új adatok előrejelzések állít elő.
+Ebben a szakaszban egy folyamat, az Azure Machine Learning webszolgáltatás üzembe helyezéséhez és felhasználását, a tanítási és pontozási folyamatokat. Az üzembe helyezett webszolgáltatáshoz pontozási retrains a modell, és előrejelzések az új adatokat generál.
 
-### <a name="set-model-deployment-parameters"></a>A megadott modell telepítési paraméterek
+### <a name="set-model-deployment-parameters"></a>Modell üzembe helyezési paraméterek beállítása
 
-Módosítsa a következő paramétereit a saját értékeit. Győződjön meg arról, hogy az Azure Machine Learning környezetet, a modell felügyeleti fiókja és az erőforráscsoport ugyanabban a régióban találhatók.
+Módosítsa a következő paramétereket saját értékeire. Ellenőrizze, hogy a környezet az Azure Machine Learning modellkezelési fiók és erőforráscsoport ugyanabban a régióban találhatók.
 
 
 ```python
@@ -1456,7 +1461,7 @@ deployment_name = '<web service name>'
 deployment_working_directory = '<local working directory>'
 ```
 
-### <a name="define-the-azure-machine-learning-environment-and-deployment"></a>Adja meg az Azure Machine Learning környezet és a központi telepítés
+### <a name="define-the-azure-machine-learning-environment-and-deployment"></a>Az Azure Machine Learning-környezet és a központi telepítési definiálása
 
 
 ```python
@@ -1483,7 +1488,7 @@ aml_deployment = ForecastWebserviceFactory(deployment_name=deployment_name,
                                            ftk_wheel_loc='https://azuremlpackages.blob.core.windows.net/forecasting/azuremlftk-0.1.18055.3a1-py3-none-any.whl')
 ```
 
-### <a name="create-the-web-service"></a>Hozzon létre a webszolgáltatás
+### <a name="create-the-web-service"></a>A webszolgáltatás létrehozása
 
 
 ```python
@@ -1491,9 +1496,9 @@ aml_deployment = ForecastWebserviceFactory(deployment_name=deployment_name,
 aml_deployment.deploy()
 ```
 
-### <a name="score-the-web-service"></a>A webszolgáltatás pontozása
+### <a name="score-the-web-service"></a>A web service pontszám
 
-Pontszám kisebb adatkészlet, használja a [pontszám](https://docs.microsoft.com/python/api/ftk.operationalization.deployment.amlwebservice) elküldeni egy webszolgáltatás kiszolgálómetódus-hívás az összes adat.
+Pontszám egy kisméretű adatkészlet, használja a [pontszám](https://docs.microsoft.com/python/api/ftk.operationalization.deployment.amlwebservice) elküldeni egy webszolgáltatás metódust hívja fel az összes adatot.
 
 
 ```python
@@ -1514,7 +1519,7 @@ aml_web_service = aml_deployment.get_deployment()
 results = aml_web_service.score(score_context=score_context)
 ```
 
-Pontszám nagy adatbázisból, használja a [párhuzamos pontozási](https://docs.microsoft.com/python/api/ftk.operationalization.deployment.amlwebservice) módot nyújt több webszolgáltatás meghívja,-az adatok egy csoporthoz.
+Egy nagy méretű adathalmazt pontszám, használja a [párhuzamos pontozási](https://docs.microsoft.com/python/api/ftk.operationalization.deployment.amlwebservice) mód elküldése több webszolgáltatás meghívja,-adatok egy csoporthoz.
 
 
 ```python
@@ -1523,10 +1528,10 @@ results = aml_web_service.score(score_context=score_context, method='parallel')
 
 ## <a name="next-steps"></a>További lépések
 
-További információk az Azure Machine Learning csomag az előrejelzés a cikkeiben:
+Tudjon meg többet az Azure Machine Learning csomag előrejelzés az alábbi cikkeket:
 
 + Olvassa el a [csomag áttekintése, és megtudhatja, hogyan telepítheti](https://aka.ms/aml-packages/forecasting).
 
-+ Megismerkedhet a [docs hivatkozhat](https://aka.ms/aml-packages/forecasting) a csomag számára.
++ Fedezze fel a [docs hivatkozhat](https://aka.ms/aml-packages/forecasting) a csomag számára.
 
-+ További tudnivalók [egyéb Python-csomagokat, az Azure Machine Learning](reference-python-package-overview.md).
++ Ismerje meg [egyéb Python-csomagokat az Azure Machine Learning](reference-python-package-overview.md).

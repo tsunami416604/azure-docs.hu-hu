@@ -1,6 +1,6 @@
 ---
-title: Az Azure SQL-adatbázisban található Lekérdezéstár működő
-description: Útmutató a Lekérdezéstár az Azure SQL-adatbázis
+title: Az Azure SQL Database Query Store működtetése
+description: Ismerje meg, hogyan működnek a Query Store az Azure SQL Database-ben
 services: sql-database
 author: bonova
 manager: craigg
@@ -9,51 +9,51 @@ ms.custom: monitor & tune
 ms.topic: conceptual
 ms.date: 04/01/2018
 ms.author: bonova
-ms.openlocfilehash: 92e4180f1efe62d2dae9778f70e25f1bb0273b7f
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 37cb77b6738ba1354034dcf77d22a19b96c4ef23
+ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34649883"
+ms.lasthandoff: 07/07/2018
+ms.locfileid: "37903098"
 ---
-# <a name="operating-the-query-store-in-azure-sql-database"></a>Az Azure SQL-adatbázisban található Lekérdezéstár működő
-A Lekérdezéstár az Azure-ban érhető el egy teljes körűen felügyelt adatbázis-szolgáltatás, amely folyamatosan gyűjti, és minden lekérdezést előzménymodell részletes adatait jeleníti meg. Információ a Lekérdezéstárról egy repülőgép felé továbbított adatok író, amely jelentősen leegyszerűsíti a lekérdezési teljesítmény hibaelhárítási mind a felhőalapú és helyszíni felhasználók hasonló, gondolja. Ez a cikk ismerteti a Lekérdezéstár az Azure-ban működő adott aspektusait. Ez előtti gyűjtött adatait használja, gyorsan diagnosztizálhatja és teljesítménybeli problémák megoldásához és így az üzleti összpontosító több időt tölt. 
+# <a name="operating-the-query-store-in-azure-sql-database"></a>Az Azure SQL Database-ben a Query Store működtetése
+Query Store az Azure-ban olyan teljes körűen felügyelt adatbázis-szolgáltatás, amely folyamatosan gyűjti, és az összes lekérdezés részletes történelmi adatait jeleníti meg. Egy repülőgép adatok eseményrögzítő, amely jelentősen leegyszerűsíti a lekérdezési teljesítmény hibaelhárítása, mind a felhőbeli és helyszíni ügyfelek hasonlíthatók Query Store is gondolja. Ez a cikk ismerteti az Azure-ban a Query Store működtetése adott aspektusait. Ez előtti gyűjtött adatait használja, gyorsan diagnosztizálhatja és teljesítménybeli problémák megoldásához és így több időt üzleti kellene összpontosítani. 
 
-A Lekérdezéstár le lett [világszerte elérhető](https://azure.microsoft.com/updates/general-availability-azure-sql-database-query-store/) az Azure SQL Database, 2015. November óta. A Lekérdezéstár képezi a Teljesítményelemzés és a szolgáltatások, például a hangolása alapját [SQL Database Advisor és teljesítmény irányítópult](https://azure.microsoft.com/updates/sqldatabaseadvisorga/). Ez a cikk közzétételének időpontjában a Lekérdezéstár fut a több mint 200 000 felhasználói adatbázisokat az Azure több hónapig megszakítás nélkül lekérdezéssel kapcsolatos adatok gyűjtése.
+Query Store lett [globálisan elérhető](https://azure.microsoft.com/updates/general-availability-azure-sql-database-query-store/) az Azure SQL Database 2015 November óta. Query Store szolgáltatás teljesítményét elemző- és finomhangolási funkciókhoz, mint például az alapja [az SQL Database Advisor és a teljesítmény irányítópult](https://azure.microsoft.com/updates/sqldatabaseadvisorga/). Ez a cikk közzététel időpontjában Query Store fut a több mint 200 000 felhasználói adatbázisok az Azure-ban több hónapig megszakítás nélkül lekérdezéssel kapcsolatos információk összegyűjtése.
 
 > [!IMPORTANT]
-> A Microsoft a Lekérdezéstár az összes Azure SQL-adatbázisok (meglévő és új) aktiválása folyamatban van. 
+> A Microsoft az összes Azure SQL-adatbázis (meglévő vagy új) Query Store aktiválása folyamatban van. 
 > 
 > 
 
-## <a name="optimal-query-store-configuration"></a>A Lekérdezéstár optimális konfiguráció
-Ez a szakasz ismerteti, amelyek működése megbízható a Lekérdezéstár és a függő szolgáltatások, például a optimális konfigurációs alapértelmezéseinek [SQL Database Advisor és teljesítmény irányítópult](https://azure.microsoft.com/updates/sqldatabaseadvisorga/). Alapértelmezett konfiguráció folyamatos az adatgyűjtés, a minimális OFF/READ_ONLY állapotban töltött ideje van optimalizálva.
+## <a name="optimal-query-store-configuration"></a>Optimális Query Store konfiguráció
+Ez a szakasz ismerteti, amely megbízható működését a Query Store és a függő szolgáltatások, például biztosítja, hogy optimális konfigurációt alapértelmezett [az SQL Database Advisor és a teljesítmény irányítópult](https://azure.microsoft.com/updates/sqldatabaseadvisorga/). Alapértelmezett konfiguráció folyamatos az adatgyűjtés, az OFF/READ_ONLY Államokban minimális idő van optimalizálva.
 
 | Konfiguráció | Leírás | Alapértelmezett | Megjegyzés |
 | --- | --- | --- | --- |
-| MAX_STORAGE_SIZE_MB |Megadja a Lekérdezéstár is igénybe vehet az ügyféladatbázis belüli adatok terület korlátja |100 |Az új adatbázisokat kényszerítése |
-| INTERVAL_LENGTH_MINUTES |Határozza meg az időtartományt, amely során összegyűjtött futásidejű statisztikája lekérdezésterveket összesített értéket és megőrzött méretét. Minden aktív lekérdezésterv legfeljebb egy sor rendelkezik ezzel a konfigurációval meghatározott ideig |60 |Az új adatbázisokat kényszerítése |
-| AZ STALE_QUERY_THRESHOLD_DAYS |A megőrzési időtartam megőrzött futásidejű statisztikák és inaktív lekérdezések vezérlő időalapú karbantartása házirend |30 |Az új adatbázisokat és adatbázisokat az előző alapértelmezetten (367) érvényes |
-| A SIZE_BASED_CLEANUP_MODE BEÁLLÍTÁST |Megadja, hogy automatikus adatok karbantartása kerül sor a Lekérdezéstár adatok mérete megközelíti a korlátot |AUTOMATIKUS |Az összes adatbázisra érvényes |
-| A QUERY_CAPTURE_MODE BEÁLLÍTÁST |Megadja, hogy lekérdezések csak egy részhalmazát vagy az összes lekérdezés követi |AUTOMATIKUS |Az összes adatbázisra érvényes |
-| FLUSH_INTERVAL_SECONDS |Megadja, hogy rögzíteni futásidejű statisztikák lemezre kiürítése előtt a memóriában, mindig maximális időtartama |900 |Az új adatbázisokat kényszerítése |
+| MAX_STORAGE_SIZE_MB |Adja meg a korlátot, az adatok terület, amely a Query Store is igénybe vehet, az ügyfél-adatbázisban |100 |Az új adatbázisokat kényszerítése |
+| INTERVAL_LENGTH_MINUTES |Időtartomány, mely során összegyűjtött futásidejű statisztikája lekérdezési tervek összesített és megőrzött mérete határozza meg. Minden aktív lekérdezésterv legfeljebb egy sor egy ebben a konfigurációban meghatározott ideig rendelkezik. |60 |Az új adatbázisokat kényszerítése |
+| STALE_QUERY_THRESHOLD_DAYS |Időalapú törlési szabályzattal, amely szabályozza a megőrzött futásidejének statisztikai adatait és inaktív lekérdezések megőrzési időtartama |30 |Új adatbázisokat és adatbázisok korábbi alapértelmezett (367) kényszerítése |
+| SIZE_BASED_CLEANUP_MODE |Itt adhatja meg, hogy automatikus adatok törlése kerül sor, amikor Query Store adatok mérete megközelíti a korlátot |AUTOMATIKUS |Az összes adatbázis által kényszerített |
+| QUERY_CAPTURE_MODE |Itt adhatja meg, akár az összes lekérdezés vagy a lekérdezések csak egy részhalmazát nyomon követi |AUTOMATIKUS |Az összes adatbázis által kényszerített |
+| FLUSH_INTERVAL_SECONDS |Megadja a maximális időtartamot, amelynek során rögzített statisztikákat előtt lemezre írja a memóriában, tartják modul |900 |Az új adatbázisokat kényszerítése |
 |  | | | |
 
 > [!IMPORTANT]
-> A Lekérdezéstár aktiválási minden Azure SQL-adatbázisban (lásd az előző fontos megjegyzés) utolsó szakasza automatikusan alkalmazza ezeket az alapértelmezett értékeket. A ritka be, miután az Azure SQL Database nem módosítják, az ügyfelek által beállított konfigurációs értékeket kivéve, ha negatív hatással elsődleges munkaterhelésére vagy a Lekérdezéstár megbízható működésére.
+> Ezeket az alapértelmezett értékeket a rendszer automatikusan alkalmazza az utolsó fáziséit Query Store aktiválás az Azure SQL-adatbázisok (lásd az előző fontos megjegyzést). Után fel a világos Azure SQL Database nem lehet módosítása ügyfelei által beállított konfigurációs értékeket, kivéve, ha negatív hatással elsődleges számítási feladat vagy a Query Store a megbízható műveleteket.
 > 
 > 
 
-Ha azt szeretné, hogy az egyéni beállításokkal maradjanak, használjon [ALTER DATABASE a Lekérdezéstár beállításokkal](https://msdn.microsoft.com/library/bb522682.aspx) konfigurációját, és a korábbi állapotának visszaállításához. Tekintse meg [gyakorlati tanácsok a Lekérdezéstár rendelkező](https://msdn.microsoft.com/library/mt604821.aspx) ahhoz, hogy megtudhatja, hogyan felső döntött, hogy optimális konfigurációs paramétereket.
+Ha azt szeretné, az egyéni beállításokkal rendelkező marad, [ALTER DATABASE Query Store beállításokkal](https://msdn.microsoft.com/library/bb522682.aspx) konfigurációs a korábbi állapotára visszaállítani. Tekintse meg [ajánlott eljárásokat a Query Store](https://msdn.microsoft.com/library/mt604821.aspx) annak érdekében, hogy ismerje meg, hogyan a felső választott optimális konfigurációs paramétereket.
 
 ## <a name="next-steps"></a>További lépések
-[SQL adatbázis elemzéséhez](sql-database-performance.md)
+[Az SQL Database Terheléselemző](sql-database-performance.md)
 
 ## <a name="additional-resources"></a>További források
-A további információkat kivétel a következő cikkeket:
+További információkért tekintse meg a következő cikkeket:
 
-* [A felhőszolgáltató közötti átviteléhez rögzítő az adatbázis számára](https://azure.microsoft.com/blog/query-store-a-flight-data-recorder-for-your-database) 
-* [A Lekérdezéstár használatával teljesítményének figyelése](https://msdn.microsoft.com/library/dn817826.aspx)
-* [A Lekérdezéstár használati forgatókönyvek](https://msdn.microsoft.com/library/mt614796.aspx)
-* [A Lekérdezéstár használatával teljesítményének figyelése](https://msdn.microsoft.com/library/dn817826.aspx) 
+* [Az adatbázishoz tartozó adatok eseményrögzítő](https://azure.microsoft.com/blog/query-store-a-flight-data-recorder-for-your-database) 
+* [Teljesítmény figyelése a Query Store használatával](https://msdn.microsoft.com/library/dn817826.aspx)
+* [Query Store használati forgatókönyvek](https://msdn.microsoft.com/library/mt614796.aspx)
+ 
 

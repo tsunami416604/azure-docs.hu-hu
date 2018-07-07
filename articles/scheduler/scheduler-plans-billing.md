@@ -1,6 +1,6 @@
 ---
-title: Csomagok és a számlázás az Azure Schedulerrel
-description: Csomagok és a számlázás az Azure Schedulerrel
+title: Csomagok és számlázás az Azure Schedulerben
+description: Csomagok és számlázás az Azure Schedulerben
 services: scheduler
 documentationcenter: .NET
 author: derek1ee
@@ -14,55 +14,55 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/18/2016
 ms.author: deli
-ms.openlocfilehash: b25e97b0f0d0b6f63134a774856eb7ec8f77b679
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 03f335634b7ce1fe4aa6251d6ec21922ed9b84c8
+ms.sourcegitcommit: 11321f26df5fb047dac5d15e0435fce6c4fde663
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/05/2018
-ms.locfileid: "30837438"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37887487"
 ---
-# <a name="plans-and-billing-in-azure-scheduler"></a>Csomagok és a számlázás az Azure Schedulerrel
+# <a name="plans-and-billing-in-azure-scheduler"></a>Csomagok és számlázás az Azure Schedulerben
 ## <a name="job-collection-plans"></a>Feladat gyűjtési terveket
-Feladatgyűjtemények az Azure Scheduler számlázható entitás. Feladatgyűjtemények feladatok száma tartalmazhat, és a három csomagokban – Standard, P10 Premium és P20 prémium –, amelyek folyamata az alábbiakban olvasható származnak.
+Feladatgyűjtemények az Azure Schedulerben a számlázható entitás. Feladatgyűjtemények feladatok számos tartalmaznak, és a következő három csomagok – Standard, P10 prémium és P20 prémium szintűre –, amelyek leírása alább.
 
-| **Feladat gyűjtési terv** | **Feladat gyűjteményenként feladatok maximális száma** | **Maximális ismétlődésére** | **Maximális Feladatgyűjteményei előfizetésenként** | **Korlátok** |
+| **Feladatgyűjtemény** | **Feladatok száma gyűjteményenként feladatok maximális száma** | **Ismétlődési maximum** | **Feladatgyűjtemények maximális száma előfizetésenként** | **Korlátok** |
 |:--- |:--- |:--- |:--- |:--- |
-| **Standard** |50 feladatok feladat gyűjteményenként |Percenkénti. Percenként egyszer többször nem hajtható végre feladatok |Egy előfizetés legfeljebb 100 szabványos feladatgyűjteményei engedélyezett |A Feladatütemező szolgáltatás teljes készletét a hozzáférést |
-| **P10 Premium** |50 feladatok feladat gyűjteményenként |Percenkénti. Percenként egyszer többször nem hajtható végre feladatok |Egy előfizetés legfeljebb 10 000 P10 prémium feladatgyűjteményei engedélyezett. <a href="mailto:wapteams@microsoft.com">Kapcsolatfelvétel</a> több. |A Feladatütemező szolgáltatás teljes készletét a hozzáférést |
-| **P20 prémium** |1000 feladatok feladat gyűjteményenként |Percenkénti. Percenként egyszer többször nem hajtható végre feladatok |Egy előfizetés legfeljebb 10 000 P20 prémium feladatgyűjteményei engedélyezett. <a href="mailto:wapteams@microsoft.com">Kapcsolatfelvétel</a> több. |A Feladatütemező szolgáltatás teljes készletét a hozzáférést |
+| **Standard** |50 feladatok feladat gyűjteményenként |Percenként egyszer. Percenként egyszer többször nem hajtható végre feladatok |Egy előfizető legfeljebb 100 standard feladatgyűjtemény |A Scheduler teljes funkciókészlete a hozzáférést |
+| **P10 prémium** |50 feladatok feladat gyűjteményenként |Percenként egyszer. Percenként egyszer többször nem hajtható végre feladatok |Egy előfizető legfeljebb 10 000 P10 prémium feladatgyűjtemény. <a href="mailto:wapteams@microsoft.com">Lépjen kapcsolatba velünk</a> további. |A Scheduler teljes funkciókészlete a hozzáférést |
+| **P20 prémium** |1000 feladatok feladat gyűjteményenként |Percenként egyszer. Percenként egyszer többször nem hajtható végre feladatok |Egy előfizető legfeljebb 10 000 P20 prémium feladatgyűjtemény. <a href="mailto:wapteams@microsoft.com">Lépjen kapcsolatba velünk</a> további. |A Scheduler teljes funkciókészlete a hozzáférést |
 
-## <a name="upgrades-and-downgrades-of-job-collection-plans"></a>Frissítések és a feladat gyűjtési terveket Downgrades
-Előfordulhat, hogy frissítse vagy visszaminősítését egy feladat gyűjtési terv bármikor a Standard, P10 Premium és P20 prémium csomagok között.
+## <a name="upgrades-and-downgrades-of-job-collection-plans"></a>A feladat gyűjtési terveket előfizetések
+Előfordulhat, hogy bármelyik irányba változtathatja a feladatgyűjtemény bármikor között a Standard, P10 prémium és P20 prémium szintű csomag.
 
-## <a name="billing-and-azure-plans"></a>Számlázási és az Azure-csomagok
-Ha több mint 100 szabványos feladatgyűjteményei (szabványos 10 számlázási egységek), majd egy jobb üzletet, hogy minden feladat gyűjtemény a prémium tervének.
+## <a name="billing-and-azure-plans"></a>Számlázással és az Azure-csomagok
+Ha több mint 100, standard feladatgyűjtemény (10 standard szintű elszámolási egység) rendelkezik, majd, jobb üzletet, szeretné, hogy minden feladatgyűjtemények a prémium szintű csomag.
 
-Ha egy szabványos feladatgyűjtemény és egy prémium szintű feladatgyűjtemény,-e számlázott egy standard számlázási egység *és* egy prémium szintű számlázási egységet. A Feladatütemező szolgáltatás váltók standard vagy prémium; beállított aktív feladat gyűjtemények száma alapján Ennek a magyarázatát a következő két szakaszokban további.
+Ha egy standard feladatgyűjtemény és a egy prémium feladatgyűjtemény,-e számlázott egy standard szintű elszámolási egység *és* egy prémium szintű elszámolási egység. A Scheduler szolgáltatás számlázása a standard vagy prémium szintű; beállított egy aktív feladatgyűjtemény száma alapján a további a következő két szakasz ennek a magyarázatát.
 
-## <a name="standard-billable-units"></a>Standard számlázható egység
-Egy szabványos számlázható egység legfeljebb 10 szabványos feladatgyűjteményei tartalmazhatnak. Mivel a szabványos feladatgyűjtemény feladat gyűjteményenként legfeljebb 50 feladatok is rendelkeznek, egy standard számlázási egységet lehetővé teszi, hogy legfeljebb 500 feladatok – szinte 22 millió feladat végrehajtások havonta legfeljebb egy előfizetést.
+## <a name="standard-billable-units"></a>Standard szintű elszámolási egységek
+A standard számlázható egység akár 10 standard feladatgyűjtemény is tartalmazhat. Egy standard feladatgyűjtemény feladat gyűjteményenként legfeljebb 50 feladatok is rendelkezik, mivel egy standard szintű elszámolási egység segítségével az előfizetés legfeljebb 500 feladatokat – akár szinte 22 millió feladatfuttatás havonta.
 
-Ha szabványos feladatgyűjteményei 1 és 10 között, akkor 1 standard számlázási egység fogjuk számlázni. Ha szabványos feladatgyűjteményei 11 és 20 közötti, hogy 2 standard számlázási egység fogjuk számlázni. Ha 21 és 30 szabványos feladatgyűjteményei között, 3 standard számlázási egység fogjuk számlázni, és így tovább.
+1 és 10 standard feladatgyűjtemény között van, ha esetén egy standard szintű elszámolási egység után kell díjat. Ha 11. és 20 standard feladatgyűjtemény között van, akkor számítunk két standard szintű elszámolási egység. 21. és 30 standard feladatgyűjtemény között van, ha standard szintű elszámolási egység három számítunk, és így tovább.
 
-## <a name="p10-premium-billable-units"></a>P10 Prémium számlázható egységek
-Egy P10 prémium számlázható egység legfeljebb 10 000 P10 prémium feladatgyűjteményei tartalmazhatnak. Mivel egy P10 prémium feladatgyűjtemény feladat gyűjteményenként legfeljebb 50 feladatok is rendelkeznek, egy prémium szintű számlázási egységet lehetővé teszi, hogy legfeljebb 500 000 feladatok – szinte 22 milliárd feladat végrehajtások havonta legfeljebb egy előfizetést.
+## <a name="p10-premium-billable-units"></a>P10 Prémium szintű elszámolási egységek
+Egy P10 premium számlázható egység legfeljebb 10 000 P10 prémium feladatgyűjtemény is tartalmazhat. Egy prémium szintű elszámolási egység egy P10 prémium feladatgyűjtemény feladat gyűjteményenként legfeljebb 50 feladatok is rendelkezik, mivel segítségével az előfizetés legfeljebb 500 000 feladatokat – szinte 22-es milliárd feladatfuttatás havonta legfeljebb.
 
-Ha prémium szintű feladat gyűjtemények 1 és 10 000 között, akkor 1 P10 prémium számlázási egység fogjuk számlázni. Ha 10,001 és 20 000 prémium feladatgyűjteményei között, 2 P10 prémium számlázási egység fogjuk számlázni, és így tovább.
+1 és 10 000 prémium feladatgyűjtemény között van, akkor lesz kell fizetnie egy P10 prémium szintű elszámolási egység. Ha 10,001 és 20 000 prémium feladatgyűjtemény között van, díját fogjuk számlázni 2 P10 prémium szintű elszámolási egység, és így tovább.
 
-Így P10 prémium feladatgyűjteményei ugyanazt a funkciót látja, mint a szokásos feladatgyűjteményeket, de ár szünet adja meg, abban az esetben, ha az alkalmazás által igényelt feladatgyűjteményei számos.
+Így P10 prémium feladatgyűjtemény a standard feladatgyűjtemény ugyanazokkal a funkciókkal rendelkezik, de abban az esetben, ha az alkalmazás számos feladatgyűjtemények igényel, adjon meg egy árváltozás.
 
-## <a name="p20-premium-billable-units"></a>P20 Prémium számlázható egységek
-P20 prémium számlázható egység legfeljebb 5000 P20 prémium feladatgyűjteményei tartalmazhatnak. Mivel egy P20 prémium feladatgyűjtemény feladat gyűjteményenként legfeljebb 1000 feladatot is rendelkeznek, egy prémium szintű számlázási egység lehetővé teszi, hogy legfeljebb 5,000,000 feladatok – szinte 220 milliárd feladat végrehajtások havonta legfeljebb egy előfizetést.
+## <a name="p20-premium-billable-units"></a>P20 Prémium szintű elszámolási egységek
+Prémium szintű P20 számlázható egység legfeljebb 5 000 P20 prémium feladatgyűjtemény is tartalmazhat. Mivel a prémium szintű P20-as feladatgyűjtemények feladat gyűjteményenként legfeljebb 1000 feladatok is rendelkezik, egy prémium szintű elszámolási egység segítségével az előfizetés legfeljebb 5,000,000 feladatokat – akár szinte 220 milliárd feladatfuttatás havonta.
 
-P20 prémium feladatgyűjteményei P10 prémium feladatgyűjteményeket, ugyanazokat a képességeket biztosít, de támogatja a feladat gyűjteményenként nagyobb számú feladatok és a nagyobb feladatok teljes száma általános mint P10 támogatás lehetővé teszi további méretezhetőséget.
+P20 prémium feladatgyűjtemény, P10 prémium feladatgyűjtemény ugyanazokat a képességeket biztosítanak, de feladat gyűjteményenként egy nagyobb számú feladatok és a egy nagyobb feladatok teljes száma általános P10 prémium, lehetővé téve, hogy nagyobb méretezhetőséget is jelent, mint is támogatja.
 
-## <a name="billing-and-active-status"></a>Számlázási és aktív állapota
-Feladatgyűjtemények mindig aktívak, kivéve, ha a teljes előfizetés számlázási problémák miatt egyes ideiglenes letiltott állapotba állapotba került. Csak annak érdekében, hogy a feladatgyűjtemény nem lesz számlázva, vagy állítsa be a *szabad* terv vagy a feladatgyűjtemény törlése.
+## <a name="billing-and-active-status"></a>Számlázási és aktív állapot
+Feladatgyűjtemények mindig aktívak, kivéve, ha a teljes előfizetés számlázási problémák miatt bizonyos ideiglenes letiltott állapotba került. Győződjön meg arról, hogy nem kell fizetniük a feladatgyűjtemény csak úgy, hogy a feladatgyűjtemény törlése.
 
-Bár előfordulhat, hogy letiltja a feladatokhoz minden esetben a feladatgyűjtemény egyetlen művelettel, az a feladatgyűjtemény számlázási állapota nem változtatható – a feladatgyűjtemény fog *továbbra is* kell fizetni. Hasonlóképpen üres feladatgyűjteményei aktív számít, és lesz terhelve.
+Bár előfordulhat, hogy letiltja a feladatokhoz minden esetben egyetlen művelettel feladatgyűjtemények, nem változtatja meg a feladatgyűjtemény számlázási állapota – a feladatgyűjtemény fog *továbbra is* számolunk. Hasonlóképpen üres feladatgyűjtemények aktív számít, és számítjuk fel.
 
 ## <a name="pricing"></a>Díjszabás
-A díjszabás részleteit, lásd: [Feladatütemező árképzési](https://azure.microsoft.com/pricing/details/scheduler/).
+A díjszabás részleteiért lásd: [Scheduler díjszabása](https://azure.microsoft.com/pricing/details/scheduler/).
 
 ## <a name="see-also"></a>Lásd még:
  [A Scheduler ismertetése](scheduler-intro.md)

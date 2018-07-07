@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 07/02/2018
 ms.author: brenduns
 ms.reviewer: jeffgo
-ms.openlocfilehash: 2dc59a631107df6a9e77722b98fa77f7936f07aa
-ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
+ms.openlocfilehash: 9216d43bd6431bb16c14e0bf2d8fb7d174365417
+ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37437297"
+ms.lasthandoff: 07/07/2018
+ms.locfileid: "37902700"
 ---
 # <a name="azure-marketplace-items-available-for-azure-stack"></a>Elérhető az Azure Stackhez az Azure piactéren elemek
 
@@ -228,6 +228,7 @@ A Microsoft Azure Stackhez az Azure piactér következő virtuális gépek és a
 | ![F5](media/azure-stack-marketplace-azure-items/f5.png) | [F5 Big-IP virtuális kiadás](https://azuremarketplace.microsoft.com/marketplace/apps/f5-networks.f5-big-ip-best)  | Speciális terheléselosztás, GSLB, a hálózati tűzfal, a DNS, a WAF és alkalmazás-hozzáférés. | F5 Networks |
 | ![Hortonworks Data Platform (HDP) tesztkörnyezet](media/azure-stack-marketplace-azure-items/hortonworks.png) | [Hortonworks Data Platform (HDP) tesztkörnyezet](https://azuremarketplace.microsoft.com/marketplace/apps/hortonworks.hortonworks-sandbox) | Szolgáltató: HDP 2,5 100 %-os nyílt forráskódú platform a Hadoop, Spark, Storm, HBase, a Kafka, Hive, az Ambari. | Hortonworks |
 | ![KEMP LoadMaster Load Balancer ADC tartalom kapcsoló](media/azure-stack-marketplace-azure-items/kemp.png) | [KEMP LoadMaster Load Balancer ADC tartalom kapcsoló](https://azuremarketplace.microsoft.com/marketplace/apps/kemptech.vlm-azure) | 4 – 7. rétegbeli alkalmazás kézbesítési Vezérlőszolgáltatást (ADC) terheléselosztót, Content kapcsolóval, és a Traffic Manager. | KEMP Technologies Inc. |
+| ![NRI mPLAT Suite - Többfelhős Conductor](media/azure-stack-marketplace-azure-items/nri.png) | [mPLAT Suite - Többfelhős Conductor](https://azuremarketplace.microsoft.com/marketplace/apps/nri.mplatmc2018-vm) | Szeretne figyelni, a vészhelyzeti egyetlen panelen konfigurálása, üzembe helyezése, automatizálhatja és szabályozása bármilyen számítási feladat vagy a felhőben. | NRI |
 | ![NooBaa hibrid az AWS S3 kompatibilis – Community Edition](media/azure-stack-marketplace-azure-items/noobaa.png) | [NooBaa hibrid az AWS S3 compatibe – Community Edition](https://azuremarketplace.microsoft.com/marketplace/apps/noobaa.noobaa-hybrid-s3-archive-05) | S3-kompatibilis tárolási szolgáltatás, amely átnyúlik a nyilvános és helyi kapacitás erőforrásokhoz. | NooBaa |
 | ![A PT Application Firewall](media/azure-stack-marketplace-azure-items/pt.png) | [A PT Application Firewall](https://azuremarketplace.microsoft.com/marketplace/apps/ptsecurity.ptaf) | A PT Application Firewall észleli az ismert és ismeretlen biztonsági réseket, és megakadályozza a támadásokat a webalkalmazások. **Mindkét PT Piactéri termékek letöltése.** | Pozitív technológiák |
 | ![Puppet Enterprise](media/azure-stack-marketplace-azure-items/puppet.png) | [Puppet Enterprise](https://azuremarketplace.microsoft.com/marketplace/apps/puppet.puppet-enterprise-2017-2) | Puppet vállalati segítségével automatizálhatja az Azure Stack-infrastruktúra teljes életciklusát. **Mindkét Puppet Piactéri termékek letöltése.** | Puppet |

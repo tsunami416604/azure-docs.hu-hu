@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/05/2018
 ms.author: sethm
-ms.openlocfilehash: 7c8f7fff5e3cf7334ce30a3fa90ae950f841662c
-ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
+ms.openlocfilehash: abff3f715a1fccba172147f02b83f7209f87cf9e
+ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37865297"
+ms.lasthandoff: 07/07/2018
+ms.locfileid: "37902516"
 ---
 # <a name="managed-service-identity-preview"></a>Felügyeltszolgáltatás-identitás (előzetes verzió)
 
@@ -60,6 +60,9 @@ A felügyeltszolgáltatás-identitás, a webes alkalmazás most már hozzáfér 
 ### <a name="run-the-app"></a>Az alkalmazás futtatása
 
 Most úgy módosítja az alapértelmezett oldalt, az ASP.NET alkalmazás hozott létre. Használhatja a webes alkalmazás kódot az [GitHub-adattárban](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/MSI/EventHubsMSIDemoWebApp). 
+
+>[!NOTE] 
+> Bár az MSI-funkció előzetes verzióban érhető el, ügyeljen arra, hogy a [előzetes verzióját, a Service Bus library](https://www.nuget.org/packages/WindowsAzure.ServiceBus/4.2.2-preview) az új API-k eléréséhez. 
 
 Miután az alkalmazás elindításához, a böngésző EventHubsMSIDemo.aspx mutat. Másik lehetőségként állítsa be a kezdőlap. A kód a EventHubsMSIDemo.aspx.cs fájlban található. Az eredmény néhány számbeviteli mezők, valamint a minimális webalkalmazás **küldése** és **kap** küldése vagy események fogadása az Event Hubs csatlakozó gombok. 
 

@@ -1,6 +1,6 @@
 ---
-title: Ügyféloldali ads beszúrása |} Microsoft Docs
-description: Ez a témakör azt ismerteti, hogyan ügyféloldali ads beszúrása.
+title: Hirdetések ügyféloldali beillesztése |} A Microsoft Docs
+description: Ez a témakör bemutatja, hogyan hirdetések ügyféloldali beillesztése.
 services: media-services
 documentationcenter: ''
 author: juliako
@@ -14,41 +14,41 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/26/2016
 ms.author: juliako
-ms.openlocfilehash: 57cb06fcee029f72dd1cf81ef086985fdda3f45f
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 0ca9c7ff1ac4cfbb50f251679286a933429bf03f
+ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33788969"
+ms.lasthandoff: 07/07/2018
+ms.locfileid: "37903047"
 ---
-# <a name="inserting-ads-on-the-client-side"></a>Ügyféloldali ads beszúrása
-Ez a cikk beszúrása ügyféloldali ads különböző típusú információkat tartalmaz.
+# <a name="inserting-ads-on-the-client-side"></a>Hirdetések ügyféloldali beillesztése
+Ez a cikk különböző típusú hirdetések ügyféloldali beillesztése információt tartalmaz.
 
-Az élő adatfolyam-továbbítási videók lezárt feliratok és az ad támogatásával kapcsolatos további információkért lásd: [támogatott kódolt feliratok és Ad beszúrási szabványok](media-services-live-streaming-with-onprem-encoders.md#cc_and_ads).
+Élő adatfolyam-továbbítási videók lezárt feliratozás és az Active Directory támogatásával kapcsolatos információkat lásd: [támogatott kódolt feliratok és Ad beszúrási szabványok](media-services-live-streaming-with-onprem-encoders.md#cc_and_ads).
 
 > [!NOTE]
-> Az Azure Media Player jelenleg nem támogatja a hirdetések.
+> Az Azure Media Player jelenleg nem támogatja a hirdetéseket.
 > 
 > 
 
 ## <a id="insert_ads_into_media"></a>A Media Ads beszúrása
-Az Azure Media Services támogatást nyújt a Windows Media platformon keresztül ad beszúrási: lejátszó-Keretrendszerekhez. Ad-támogatással rendelkező lejátszó-keretrendszerekhez Windows 8, a Silverlight, a Windows Phone 8 és az iOS-eszközök érhetők el. Minden egyes player keretrendszer mintakód bemutatja, hogy a lejátszóalkalmazás megvalósításához tartalmazza. Nincsenek media: listájába szúrhatók ads három különböző típusú.
+Az Azure Media Services támogatja a reklámjelölőket keresztül a Windows Media Platform: Player keretrendszerekkel. Ad-támogatás a Player keretrendszerek érhetők el a Windows 8, a Silverlight, a Windows Phone 8 és az iOS-eszközökhöz. Minden egyes player keretrendszer, amely bemutatja, hogyan valósíthat meg egy médialejátszó alkalmazásba mintakód tartalmazza. Nincsenek az adathordozó: a lista beilleszthet ads három különböző típusú.
 
-* **Lineáris** – teljes keret hirdetések felfüggeszti a fő videó.
-* **Nem lineáris** – jelennek meg a fő videó lejátszása hirdetések átmeneti területre, általában embléma vagy egyéb statikus kép kerül a Windows Media player belül.
-* **Kiegészítő** – kívül a Windows Media player megjelenített ads.
+* **Lineáris** – teljes keret hirdetések fő videó megállítása.
+* **Lineáris** – területre hirdetések vannak feltüntetve, a fő videó lejátszása, általában egy emblémáját vagy más statikus kép umístit v a Windows Media player.
+* **Kiegészítő** – kívül a Windows Media player megjelenített hirdetéseket.
 
-A fő videó idősorán bármikor ADs helyezhető. A Windows Media player kell arról, mikor számára, hogy az ad és számára, hogy mely hirdetések. Ebben az esetben a szabványos XML alapú fájlok készletből: videó Ad szolgáltatás sablon (VAST), a digitális videót több Ad lista (VMAP), a Media absztrakt alkalmazás-előkészítés sablon (OSZLOPOS) és a digitális videót Player Ad felület Definition (VPAID). NAGY fájlok adja meg, milyen ads megjelenítéséhez. VMAP fájlok idejére különböző ads lejátszásához és HATALMAS XML kódot tartalmaz. A fájlok OSZLOPOS is tartalmazhat túlnyomó XML feladatütemezési hirdetések másik módja van. VPAID fájlok határozza meg azt a videólejátszó és az ad vagy ad-kiszolgáló közötti illesztőfelületet szolgáltasson.
+Hirdetések helyezhető a fő videó idősorán bármely pontján. A Windows Media player kell mondja el, ha lejátszása az ad és melyik lejátszásához hirdetéseket. Ebben az esetben a szabványos XML-alapú fájlokat használ: a videó Ad szolgáltatás sablon (VAST), a digitális videót több Ad lista (VMAP), a Media absztrakt alkalmazás-előkészítés sablon (OSZLOPOS) és a digitális videót Player Ad Interface Definition (VPAID). HATALMAS fájlokat adja meg, milyen hirdetések megjelenítéséhez. VMAP fájlokat adja meg, mikor lejátszása különböző hirdetések és HATALMAS XML-kódot tartalmaz. OSZLOPOS fájlokhoz, amely is tartalmazhat HATALMAS XML feladatütemezési ads egy másik módja. VPAID fájlokat adja meg a videó lejátszási és az ad vagy ad-kiszolgáló közötti illesztőfelületet.
 
-Minden egyes player keretrendszer eltérő módon működik, és minden egyes külön cikk tárgyalja. Ez a cikk ismerteti az alapvető módszerek segítségével szúrják be az ads. Videólejátszó alkalmazások ads kérhet egy ad-kiszolgáló. Az ad-kiszolgáló többféle módon válaszolhat:
+Minden egyes player keretrendszer eltérően működik, és minden egyes tárgyalja a saját cikkben. Ez a cikk ismerteti az alapszintű mechanizmusok ads szúrható. Videolejátszó alkalmazások ads kérése egy ad-kiszolgálóról. Az ad kiszolgáló válaszolhat a különféle módokon:
 
-* Térjen vissza a túlnyomó fájl
-* Térjen vissza a VMAP fájlt (a beágyazott VAST)
-* Egy OSZLOPOS fájlt (a beágyazott VAST) visszaadása
-* Térjen vissza a VPAID ads túlnyomó fájl
+* Egy HATALMAS fájlt küld vissza
+* Egy VMAP fájlt (az embedded VAST) adja vissza
+* Egy OSZLOPOS fájlt (az embedded VAST) adja vissza
+* VPAID ads HATALMAS fájlt vissza
 
 ### <a name="using-a-video-ad-service-template-vast-file"></a>Videó Ad szolgáltatás sablon (VAST) fájl használatával
-Egy túlnyomó fájlt határozza meg, milyen ad vagy ads megjelenítéséhez. A következő XML-kódja egy lineáris ad túlnyomó fájl például:
+Egy HATALMAS fájl adja meg, milyen ad vagy hirdetések megjelenítéséhez. A következő XML formátumú egy HATALMAS fájlt egy lineáris ad példát:
 
 ```xml
     <VAST version="2.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="oxml.xsd">
@@ -94,9 +94,9 @@ Egy túlnyomó fájlt határozza meg, milyen ad vagy ads megjelenítéséhez. A 
     </VAST>
 ```
 
-A lineáris ad le a <**lineáris**> elemet. Azt adja meg az ad időtartama, nyomon követés, átkattintással, követési kattintson, és számos **MediaFile** elemek. Nyomkövetési események belül vannak megadva a <**TrackingEvents**> elemet, és teszi lehetővé egy ad-kiszolgáló az ad megtekintése közben előforduló különféle események nyomon követéséhez. Ebben az esetben a kezdő középpont, befejeződött, és bontsa ki a események nyomon követi. Az ad jelenik meg a kezdő esemény következik be. A középpont esemény következik be, legalább 50 %-a az ad idősor már megtekintett. Az ad a befejezési futott a teljes esemény következik be. A kibontott esemény következik be, amikor a felhasználó a videólejátszó bővíti a teljes képernyős. Clickthroughs vannak megadva, a <**Átkattintós**> elemen belül egy <**VideoClicks**> elemet, és adja meg egy erőforrás URI-t jelenítsen meg, ha a felhasználó kattint az ad. ClickTracking van megadva egy <**ClickTracking**> elem, belül is a <**VideoClicks**> elemet, és adja meg a Windows Media Player kérése, amikor a felhasználó kattint az ad követési erőforrás . A <**MediaFile**> elemek adjon meg egy adott kódolását, az ad információt. Ha egynél több <**MediaFile**> elem, a videólejátszó kiválaszthatja a platform legjobb kódolást. 
+A lineáris ad írja le a <**lineáris**> elemet. Azt adja meg az ajánlat időtartamát az ad, a nyomon követés, kattintson a kampányban, és számos keresztül **MediaFile** elemeket. Követési események belül vannak megadva a <**TrackingEvents**> elem és a egy ad-kiszolgáló az ad megtekintése közben előforduló különféle események nyomon követése. Ebben az esetben a kezdő, középpont befejeződött, és bontsa ki a eseményeket a rendszer nyomon követi. Az indítási esemény akkor fordul elő, amikor az megjelenik az ad. A középpont esemény következik be legalább 50 %-a az ad-idősor már megtekintett. Az ad a teljes körű futott a teljes esemény következik be. A kibontás esemény következik be, amikor a felhasználó a videólejátszó nyit a teljes képernyős. Clickthroughs vannak megadva, a <**Átkattintós**> elemet egy <**VideoClicks**> elem és a egy jelenítsen meg, ha a felhasználó kattint a ad erőforrás URI-t adja meg. ClickTracking van megadva egy <**ClickTracking**> elemen belül is a <**VideoClicks**> elem határozza meg azt a Windows Media Player kérése, amikor a felhasználó kattint az ad követési erőforrás . A <**MediaFile**> elemeket adja meg az ad egy adott kódolási adatait. Ha egynél több <**MediaFile**> elemben, a videó lejátszási választhat a platform a legjobb kódolást. 
 
-Lineáris ads megjeleníthető a megadott sorrendben. Ehhez adja hozzá további <Ad> a VAST elemek fájlt, majd adja meg a feladatütemezési attribútum használatával. A következő példa ezt mutatja be:
+Lineáris ads is megjeleníthetők a megadott sorrendben. Ehhez hozzá további <Ad> elemeit, amelyek a VAST fájlt, és adja meg a feladatütemezés attribútum használatával sorrendjét. A következő példa ezt mutatja be:
 
 ```xml
     <VAST version="2.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="oxml.xsd">
@@ -143,7 +143,7 @@ Lineáris ads megjeleníthető a megadott sorrendben. Ehhez adja hozzá további
     </VAST>
 ```
 
-Nem lineáris ads megadott egy <Creative> elemet is. Az alábbi példa mutatja egy <Creative> elem az lineáris ad.
+Lineáris ads megadott egy <Creative> elemet is. A következő példa bemutatja egy <Creative> elem, amely nem lineáris ad ismerteti.
 
 ```xml
     <Creative id="video" sequence="1" AdID="">
@@ -160,20 +160,20 @@ Nem lineáris ads megadott egy <Creative> elemet is. Az alábbi példa mutatja e
     </Creative>
 ```
 
-A <**NonLinearAds**> elem tartalmazhat egy vagy több <**NonLinear**> elemek, amelyek leírhatja lineáris ad. A <**NonLinear**> elem meghatározza a lineáris ad erőforrás. Az erőforrás lehet egy <**StaticResouce**>, <**IFrameResource**>, vagy egy <**HTMLResouce**>. <**StaticResource**> nem HTML erőforrás ismerteti, és arról, hogyan jelenjen meg az erőforrás egy creativeType attribútum határozza meg:
+A <**NonLinearAds**> elem tartalmazhat egy vagy több <**NonLinear**> elemek, amelyek mindegyike egy lineáris ad is ismertetik. A <**NonLinear**> elem azt határozza meg az erőforrás a nemlineáris ad-hez. Az erőforrás lehet egy <**StaticResouce**>, <**IFrameResource**>, vagy egy <**HTMLResouce**>. <**StaticResource**>-HTML erőforrás ismerteti, és határozza meg, amely meghatározza, hogyan jelenjen meg az erőforrás egy creativeType attribútum:
 
-Kép/gif, a kép/jpeg, a lemezkép vagy png – HTML jelenik meg az erőforrás <**img**> címke.
+Kép/gif, a kép/jpeg, a lemezkép/png – az erőforrás megjelenik egy HTML <**img**> címke.
 
-Alkalmazás/x-javascript – HTML jelenik meg az erőforrás <**parancsfájl**> címke.
+Application/x-javascript – az erőforrás megjelenik egy HTML <**parancsfájl**> címke.
 
-Alkalmazás/x-shockwave-flash – az erőforrás egy Flash player jelenik meg.
+Flash-lejátszó Application/x-shockwave-flash – az erőforrás megjelenik.
 
-**IFrameResource** egy HTML-erőforrás IFRAME megjeleníthető ismerteti. **HTMLResource** szúrhatók be egy weblap, HTML-kódja egy adat ismerteti. **TrackingEvents** adja meg a nyomkövetési események és az URI-t kérése az esemény akkor következik be. Ez a példa a acceptInvitation és összecsukása események követi. További információ a **NonLinearAds** elem és a gyermekek, lásd: IAB.NET/VAST. Vegye figyelembe, hogy a **TrackingEvents** elem a helyen belüli a **NonLinearAds** elem helyett a **NonLinear** elemet.
+**IFrameResource** ismerteti egy HTML-erőforrást egy IFRAME elembe jelenhet meg. **HTMLResource** HTML-kódot, amely szúrhatók be egy weblap, egy darab ismerteti. **TrackingEvents** adja meg a követési események és az esemény bekövetkeztekor kérés URI Azonosítóját. Ebben a példában a acceptInvitation és összecsukása események nyomon követi. További információ a **NonLinearAds** elemet és annak gyermekeihez IAB.NET/VAST talál. Vegye figyelembe, hogy a **TrackingEvents** elem található a **NonLinearAds** elem helyett a **NonLinear** elemet.
 
-Kiegészítő ads meghatározott egy <CompanionAds> elemet. A <CompanionAds> elem tartalmazhat egy vagy több <Companion> elemek. Minden egyes <Companion> elem egy kiegészítő ad ismerteti, és tartalmazhat egy <StaticResource>, <IFrameResource>, vagy <HTMLResource> amely lineáris ad a megszokott módon vannak megadva. A túlnyomó is tartalmazhatnak, több kiegészítő ads, és a lejátszóalkalmazás kiválaszthatja a megjelenítendő legmegfelelőbb ad. VAST kapcsolatos további információkért lásd: [túlnyomó 3.0](http://www.iab.net/media/file/VASTv3.0.pdf).
+Kiegészítő ads belül definiált egy <CompanionAds> elemet. A <CompanionAds> elemet tartalmazhat egy vagy több <Companion> elemeket. Minden egyes <Companion> elem egy kiegészítő ad ismerteti, és tartalmazhat egy <StaticResource>, <IFrameResource>, vagy <HTMLResource> amely lineáris ad alkalmazott módon vannak megadva. Egy HATALMAS fájlt tartalmazhat több kiegészítő hirdetések és a lejátszóalkalmazás kiválaszthatja a legmegfelelőbb ad megjelenítéséhez. VAST kapcsolatos további információkért lásd: [HATALMAS 3.0](http://www.iab.net/media/file/VASTv3.0.pdf).
 
-### <a name="using-a-digital-video-multiple-ad-playlist-vmap-file"></a>Egy digitális videót több Ad-lista (VMAP) fájl használatával
-Egy VMAP fájl lehetővé teszi annak megadását, amikor ad oldaltörések fordulhat elő, mennyi ideig egyes szünetek, hány ads belül szünet jeleníthető meg, és ads típusú lehet megszakítás alatt jelenik meg. A következő egy példa VMAP fájl, amely meghatározza egy egyetlen ad break:
+### <a name="using-a-digital-video-multiple-ad-playlist-vmap-file"></a>Egy digitális videót több Ad lista (VMAP) fájl használatával
+VMAP fájl lehetővé teszi, hogy adja meg, ha ad oldaltörések történik, minden egyes break mennyi ideig tart, hány ads szünet is meg és hirdetések típusú lehet megszakítás alatt jelenik meg. A következő egy példa, amely meghatározza egy egyetlen ad break VMAP fájlban:
 
 ```xml
     <vmap:VMAP xmlns:vmap="http://www.iab.net/vmap-1.0" version="1.0">
@@ -224,34 +224,34 @@ Egy VMAP fájl lehetővé teszi annak megadását, amikor ad oldaltörések ford
     </vmap:VMAP>
 ```
 
-Egy VMAP fájl kezdődik egy <VMAP> elem, amely tartalmazza egy vagy több <AdBreak> elemek, egy ad break meghatározása. Minden ad break határozza meg, egy break típusát, a sortörés azonosítója és a idő eltolódását. A breakType attribútum határozza meg a során a szünet lejátszható ad: lineáris, nem lineáris, vagy megjelenítése. Ads térkép megjelenítése túlnyomó kiegészítő ads. Egynél több ad-típus (szóközök nélkül) vesszővel elválasztott listában adható meg. A breakID pedig az ad azonosítója, amelyet a nem kötelező. A timeOffset határozza meg, ha az ad üzenetnek kell megjelennie. Azt is megadhatók a következő módszerek valamelyikével:
+VMAP fájl kezdődik a <VMAP> elem, amely tartalmaz egy vagy több <AdBreak> elemeket, egy ad break meghatározása. Minden ad break egy/csere típusú, eseti azonosítója és idő eltolása szolgál. A breakType attribútum határozza meg, amely során a szünet lejátszhatók ad: lineáris, nem lineáris, vagy megjelenítése. Hirdetések térkép megjelenítése HATALMAS kiegészítő hirdetéseket. Egynél több ad típusa (szóközök nélkül) vesszővel tagolt listában adható meg. A breakID az ad-azonosítója egy nem kötelező megadni. A timeOffset adja meg, ha az ad üzenetnek kell megjelennie. A következő módokon adhatók meg:
 
-1. Idő óó: pp: vagy hh:mm:ss.mmm formátumban, ahol .mmm az ezredmásodperc. Ez az attribútum értékét megadja azt az időtartamot, a videó ütemterv kezdetétől a az ad-break elejére.
-2. Százalékos – n % formátumban ahol n az százaléka a videó ütemterv számára, hogy az ad lejátszás előtt
-3. Kezdő és záró – Megadja, hogy egy ad üzenetnek kell megjelennie, előtt vagy után a videó meg lett jelenítve.
-4. Helyezze – ad oldaltörések sorrendje határozza meg, ha az ad oldaltörések időzítése ismeretlen, például élő Stream továbbítása. Minden ad break sorrendjét a #n formátumban, ahol n az 1 vagy nagyobb egész szám van megadva. 1 azt jelzi, hogy az ad lejátszani az első adandó 2 azt jelzi, hogy az ad lejátszani a második alkalommal és így tovább.
+1. Idő ezredmásodpercben .mmm esetén óó vagy hh:mm:ss.mmm formátumú. Ez az attribútum értékét idejét határozza meg a videó ütemterv kezdettől fogva az ad/csere típusú elejére.
+2. Százalékos – n % formátumban ahol n értéke a videó ütemterv százalékos az ad lejátszás előtt lejátszása
+3. Kezdő és záró – Itt adhatja meg, hogy egy ad üzenetnek kell megjelennie, előtt vagy után megjelenik a videót
+4. Pozíció – ad oldaltörések sorrendjét határozza meg, ha az ad oldaltörések időzítése ismeretlen, például élő adatfolyam-továbbítás. Minden ad break sorrendje a következő #n formátumban, ahol n az 1 vagy nagyobb egész szám van megadva. 1 azt jelzi, hogy az ad lejátszani az első adandó 2 azt jelzi, hogy az ad lejátszani a második lehetőséghez, és így tovább.
 
-Belül a <AdBreak> elem nem lehet az egyik <**AdSource**> elemet. A <**AdSource**> elem tartalmazza-e a következő attribútumokat:
+Belül a <AdBreak> elemben is lehet az egyik <**AdSource**> elemet. A <**AdSource**> elem tartalmazza a következő attribútumokat:
 
-1. Azonosító – meghatározza az ad-forrás azonosítója
-2. allowMultipleAds – egy logikai érték, amely meghatározza, hogy több ads is megjelenjen-e az ad-break során
-3. followRedirects – egy választható logikai érték, amely meghatározza, hogy ha a videólejátszó kell tiszteletben átirányítja a felhasználókat egy ad választ belül
+1. Azonosítója – az ad-forrása azonosítóját határozza meg.
+2. allowMultipleAds – logikai érték, amely meghatározza, hogy több ads jeleníthető meg az ad/csere során
+3. belül választ ad átirányítja egy választható logikai érték, amely meghatározza, hogy ha a videolejátszó tiszteletben kell followRedirects –
 
-A <**AdSource**> elem biztosít a Windows Media player egy beágyazott ad választ vagy egy ad választ mutató hivatkozás. Az alábbi elemek egyikét tartalmazhat:
+A <**AdSource**> elem biztosít a Windows Media player beágyazott ad választ, vagy egy hivatkozást ad választ. Ez tartalmazza a következő elemek közül:
 
-* <VASTAdData> azt jelzi, hogy a VMAP fájlon belüli beágyazott túlnyomó ad választ
-* <AdTagURI> URI, amely egy ad választ hivatkozik másik rendszerről
-* <CustomAdData> -a nem túlnyomó választ jelölő tetszőleges karakterláncot.
+* <VASTAdData> azt jelzi, hogy a HATALMAS ad választ a VMAP fájl van beágyazva.
+* <AdTagURI> egy URI-t ad választ hivatkozik egy másik rendszerből
+* <CustomAdData> – tetszés szerinti karakterlánc, amely nem HATALMAS választ jelöli
 
-Ebben a példában egy beágyazott ad választ meg van adva egy <VASTAdData> elem, amely tartalmazza a túlnyomó ad választ. Más elemeivel kapcsolatos további információkért lásd: [VMAP](http://www.iab.net/guidelines/508676/digitalvideo/vsuite/vmap).
+Ebben a példában egy egysoros ad választ meg van adva egy <VASTAdData> elem, amely tartalmazza a HATALMAS ad választ. Az egyéb elemek kapcsolatos további információkért lásd: [VMAP](http://www.iab.net/guidelines/508676/digitalvideo/vsuite/vmap).
 
-A <**AdBreak**> elem is tartalmazhat egy <**TrackingEvents**> elemet. A <**TrackingEvents**> elem lehetővé teszi, hogy nyomon követheti a kezdeti vagy egy ad break vagy e hiba történ a ad break végét. A <**TrackingEvents**> elem tartalmaz egy vagy több <**követési**> elemek, amelyek mindegyike egy nyomkövetési esemény és egy követési URI adja meg. A lehetséges nyomkövetési események állnak:
+A <**AdBreak**> elem is tartalmazhat egy <**TrackingEvents**> elemet. A <**TrackingEvents**> elem lehetővé teszi, hogy nyomon követheti az elején vagy végén egy ad break, vagy hogy hiba történt az ad/csere során. A <**TrackingEvents**> elem tartalmaz egy vagy több <**követési**> elemek, amelyek mindegyike egy követési eseményének és a egy nyomkövetési URI-t adja meg. A lehetséges követési események a következők:
 
-1. breakStart – nyomon követi az ad-break kezdete
+1. breakStart – nyomon követi az ad/csere típusú kezdete
 2. breakEnd – egy ad break megvalósításának nyomon követése
-3. Hiba – nyomon követi a ad break bekövetkezett hiba
+3. Hiba – az ad/csere során fellépő hiba követi nyomon.
 
-A következő példa bemutatja, amely meghatározza a nyomkövetési események VMAP fájl
+Az alábbi példa bemutatja egy VMAP fájlt, amely meghatározza a nyomkövetési események
 
 ```xml
     <vmap:VMAP xmlns:vmap="http://www.iab.net/vmap-1.0" version="1.0">
@@ -276,10 +276,10 @@ A következő példa bemutatja, amely meghatározza a nyomkövetési események 
     </vmap:VMAP>
 ```
 
-További információt a <**TrackingEvents**> elem és a gyermekek, lásd: http://iab.org/VMAP.pdf
+További információ a <**TrackingEvents**> elemet és annak gyermekeihez: http://iab.net/VMAP.pdf
 
-### <a name="using-a-media-abstract-sequencing-template-mast-file"></a>Egy Media absztrakt alkalmazás-előkészítés sablonfájl (OSZLOPOS) használatával
-Egy OSZLOPOS fájlt adja meg, amelyek meghatározzák, hogy mikor jelenik meg az ad eseményindítók teszi lehetővé. Egy példa egy előtti összegző ad, egy közepes összegző ad és a utáni összegző ad eseményindítók tartalmazó OSZLOPOS fájlt a következő:
+### <a name="using-a-media-abstract-sequencing-template-mast-file"></a>Egy Media absztrakt alkalmazás-előkészítés a sablonfájlt (OSZLOPOS) használatával
+Egy OSZLOPOS fájlt adja meg, amelyek meghatározzák, hogy mikor jelenik meg az ad eseményindítók teszi lehetővé. Az alábbiakban látható egy példa, amely tartalmaz egy előre összegző ad, egy közepes összegző ad és a egy utáni bevezetése ad eseményindítók OSZLOPOS fájlt.
 
 ```xml
     <MAST xsi:schemaLocation="http://openvideoplayer.sf.net/mast http://openvideoplayer.sf.net/mast/mast.xsd" xmlns="http://openvideoplayer.sf.net/mast" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
@@ -325,16 +325,16 @@ Egy OSZLOPOS fájlt adja meg, amelyek meghatározzák, hogy mikor jelenik meg az
 ```
 
 
-Egy OSZLOPOS fájl kezdődik egy **OSZLOPOS** elem, amely egy **eseményindítók** elemet. A <triggers> egy vagy több elemet tartalmaz **eseményindító** határozza meg, ha az ad lejátszani. 
+OSZLOPOS fájl kezdődik a **OSZLOPOS** elem, amely tartalmaz egy **eseményindítók** elemet. A <triggers> egy vagy több elemet tartalmaz **eseményindító** elemek, amelyek meghatározzák, hogy mikor lehet lejátszani egy ad. 
 
-A **eseményindító** elem tartalmazza-e egy **startConditions** elemet birtokló adjon meg, ha az ad számára, hogy kezdjen. A **startConditions** egy vagy több elemet tartalmaz <condition> elemek. Ha minden <condition> igaz eseményindító kezdeményezett, vagy visszavonták, attól függően, hogy a <condition> magában foglal egy **startConditions** vagy **endConditions** elem kulcsattribútumokkal. Ha több <condition> elem is szerepel, azokat egy implicit vagy számít, a feltétel kiértékelése igaz, akkor az eseményindító kezdeményezéséhez. <condition> elemek egymásba ágyazható. Ha gyermek <condition> elemek előre be van állítva, akkor számít egy implicit és, minden feltétel ki kell értékelnie az eseményindító kezdeményezése igaz. A <condition> elem tartalmazza-e a következő attribútumok, amelyek meghatározzák a következő feltételt: 
+A **eseményindító** elem tartalmaz egy **startConditions** elemet, adja meg, ha az ad lejátszása kell kezdődnie. A **startConditions** egy vagy több elemet tartalmaz <condition> elemeket. Ha minden egyes <condition> egy eseményindító kezdeményezi, vagy visszavonja, attól függően, hogy igaz értéket ad vissza a <condition> belül található egy **startConditions** vagy **endConditions** elem jelölik. Ha több <condition> elemeket is, mint egy implicit vagy lesznek kezelve, bármely feltétel kiértékelése igaz kezdeményezni az eseményindító hatására. <condition> elemek ágyazhatók be. Ha gyermek <condition> elemek előre be van állítva, akkor számít egy implicit és, minden feltétel igaz kezdeményezni az eseményindító kell visszaadnia. A <condition> elem tartalmazza a következő attribútumokat, amelyek meghatározzák a feltétel: 
 
-1. **típus** – meghatározza az állapot, esemény vagy tulajdonság típusát
-2. **név** – a következő tulajdonság vagy esemény kiértékelés során használandó neve
-3. **érték** – az értéket, amelyet a tulajdonság értékelni
-4. **operátor** – a kiértékelés során használandó művelet: EQ (egyenlő), a NEQ (nem egyenlő), a GTR (nagyobb), a GEQ (nagyobb vagy egyenlő), a LT (kisebb), LEQ (kisebb vagy egyenlő), MOD ELEMET (Maradékos osztás)
+1. **típus** – határozza meg az állapot, esemény vagy tulajdonság
+2. **név** – a tulajdonságot, vagy a kiértékelés során használandó esemény neve
+3. **érték** – fog értékelni egy tulajdonság értékét
+4. **operátor** – a kiértékelés során használandó művelet: EQ (egyenlő), a NEQ (nem egyenlő), a GTR (nagyobb), a GEQ (nagyobb vagy egyenlő), az LT (kisebb), LEQ (kisebb vagy egyenlő), a maradék (modulus)
 
-**endConditions** is tartalmazhat, <condition> elemek. Ha a feltétel igaz az eseményindító alaphelyzetbe áll. A <trigger> elem is tartalmaz egy <sources> elem, amely tartalmazza egy vagy több <source> elemek. A <source> elemek a ad választ, és milyen típusú ad választ az URI határozza meg. Ebben a példában egy URI túlnyomó választ kapja. 
+**endConditions** is tartalmaznak <condition> elemeket. Ha a feltétel igaz értékre, a trigger alaphelyzetbe áll. A <trigger> elem emellett tartalmaz egy <sources> elem, amely tartalmaz egy vagy több <source> elemeket. A <source> elemek a ad választ és ad válasz típusának definiálása az URI-t. Ebben a példában egy URI-t egy HATALMAS választ kapja. 
 
 ```xml
     <trigger id="postroll" description="postroll"  >
@@ -349,10 +349,10 @@ A **eseményindító** elem tartalmazza-e egy **startConditions** elemet birtokl
     </trigger>
 ```
 
-### <a name="using-video-player-ad-interface-definition-vpaid"></a>Videó Player Ad felületdefiníció (VPAID) használatával
-VPAID az API-k engedélyezésének végrehajtható ad egység egy videólejátszó folytatott kommunikációhoz. Ez lehetővé teszi a magas interaktív ad lép. A felhasználók beavatkozhatnak-e az ad-val, és az ad válaszolhassanak a megjelenítő végrehajtott műveleteket. Például az ad megjelenítésére gombok, amelyek lehetővé teszik a felhasználó hosszabb verzióját az ad vagy további információk megtekintéséhez. A videólejátszó támogatnia kell a VPAID API-t, és a végrehajtható ad meg kell valósítania az API-t. Ha egy player kísérel meg a kiszolgáló ad-kiszolgálóról ad túlnyomó választ, amely tartalmaz egy VPAID ad jelenhetnek meg.
+### <a name="using-video-player-ad-interface-definition-vpaid"></a>A videó Player-Ad Interface Definition (VPAID)
+VPAID API-k olyan videolejátszót kommunikálni végrehajtható ad egységek engedélyezése. Ez lehetővé teszi interaktív ad élményt. A felhasználók beavatkozhatnak-az ad és az ad válaszolhat a megjelenítő által végzett műveleteket. Például egy ad jeleníthet meg gombok, amelyek lehetővé teszik a felhasználó további információt, vagy az ad hosszabb verziójának megtekintéséhez. A videó lejátszási támogatnia kell a VPAID API-t, és a végrehajtható ad meg kell valósítania az API-t. Amikor egy kér egy ad-kiszolgálóról a kiszolgálót az ad HATALMAS választ, amely tartalmaz egy VPAID ad jelenhetnek meg.
 
-Egy végrehajtható ad Adobe Flash™ vagy a webböngészőben végrehajtható JavaScript futásidejű környezetben kell végrehajtani kód jön létre. Egy ad-kiszolgáló egy olyan VPAID ad tartalmazó túlnyomó választ ad vissza, ha a apiFramework értékének attribútumnak a <MediaFile> elemnek kell lennie a "VPAID". Ez az attribútum Megadja, hogy az abban található ad VPAID végrehajtható ad. Az attribútum a MIME-típusát a végrehajtható fájljához, amilyen például az "application/x-shockwave-flash" vagy "application/x-javascript" értékre kell állítani. A következő XML-részlet mutatja a <MediaFile> VPAID végrehajtható ad tartalmazó túlnyomó választ elemét. 
+Egy végrehajtható ad jön létre a kódot, amely például Adobe Flash™ vagy egy webböngészőben végrehajtható JavaScript futtatókörnyezet környezetben kell végrehajtani. Egy ad-kiszolgáló egy VPAID ad tartalmazó HATALMAS választ ad vissza, ha a apiFramework értékét az attribútum a <MediaFile> elemnek kell lennie a "VPAID". Ez az attribútum meghatározza, hogy az abban található ad egy VPAID végrehajtható ad. A type attribútumot állítsa a végrehajtható fájlt, például az "application/x-shockwave-flash" vagy "application/x-javascript" MIME-típusát. A következő XML-kódrészlet bemutatja a <MediaFile> egy HATALMAS választ, amely tartalmazza a VPAID végrehajtható ad elemet. 
 
 ```xml
     <MediaFiles>
@@ -363,27 +363,27 @@ Egy végrehajtható ad Adobe Flash™ vagy a webböngészőben végrehajtható J
     </MediaFiles>
 ```
 
-Egy végrehajtható ad használatával inicializálhatók a <AdParameters> elemet a <Linear> vagy <NonLinear> elemek túlnyomó választ. További információ a <AdParameters> elem, lásd: [túlnyomó 3.0](http://www.iab.net/media/file/VASTv3.0.pdf). A VPAID API-val kapcsolatos további információkért lásd: [VPAID 2.0](http://www.iab.net/media/file/VPAID_2.0_Final_04-10-2012.pdf).
+Egy végrehajtható ad használatával lehet inicializálni a <AdParameters> elemen belül a <Linear> vagy <NonLinear> elemek HATALMAS választ. További információ a <AdParameters> elem, lásd: [HATALMAS 3.0](http://www.iab.net/media/file/VASTv3.0.pdf). A VPAID API-val kapcsolatos további információkért lásd: [VPAID 2.0](http://www.iab.net/media/file/VPAID_2.0_Final_04-10-2012.pdf).
 
-## <a name="implementing-a-windows-or-windows-phone-8-player-with-ad-support"></a>A Windows vagy Windows Phone 8 Player Ad-támogatással rendelkező megvalósítása
-A Microsoft Media Platform: Player keretrendszer Windows 8 és Windows Phone 8 tartalmaz alkalmazásokra, amelyek bemutatják a keretrendszerrel videólejátszó alkalmazások végrehajtásához. Letöltheti a Player keretrendszer és a minták [Player keretrendszer Windows 8 és Windows Phone 8](https://playerframework.codeplex.com).
+## <a name="implementing-a-windows-or-windows-phone-8-player-with-ad-support"></a>A Windows- vagy Ad-támogatás a Windows Phone 8-lejátszó megvalósítása
+A Microsoft Media Platform: Player keretrendszer a Windows 8 és Windows Phone 8 tartalmaz egy gyűjteményt az alkalmazásokra, amelyek bemutatják, hogyan valósíthat meg egy videó médialejátszó alkalmazásba, a keretrendszert használja. Letöltheti a Player keretrendszer és a minták a [Player keretrendszer a Windows 8 és Windows Phone 8](https://playerframework.codeplex.com).
 
-A Microsoft.PlayerFramework.Xaml.Samples megoldás megnyitásakor látni fogja a mappák a projekt számát. A hirdetés mappa létrehozása egy videólejátszó ad-támogatással rendelkező kapcsolódik mintakód tartalmazza. A hirdetés belül az mappa az XAML/cs fájlok száma, amelyek bemutatják, hogyan ads beszúrása más módon. Az alábbi lista ismerteti:
+A Microsoft.PlayerFramework.Xaml.Samples megoldás megnyitásakor látni fogja a mappák a projekten belül számos. A hirdetési mappa tartalmazza a videolejátszót létrehozásához az ad-támogatás a mintakódot. A hirdetési belüli mappa a következő egy XAML és cs fájlok száma, amelyek bemutatják, hogyan helyezze be a hirdetések eltérő módon. Az alábbi lista ismerteti:
 
-* AdPodPage.xaml bemutatja, hogyan egy ad pod megjelenítéséhez.
-* AdSchedulingPage.xaml bemutatja, hogyan ads ütemezni.
-* FreeWheelPage.xaml ads ütemezni a FreeWheel beépülő modul használatával jeleníti meg.
-* MastPage.xaml bemutatja, hogyan ads ütemezése egy OSZLOPOS fájllal.
+* AdPodPage.xaml mutatja be egy ad-pod megjelenítéséhez.
+* AdSchedulingPage.xaml ads ütemezése mutatja be.
+* FreeWheelPage.xaml ads ütemezése a FreeWheel beépülő modul használatával mutatja be.
+* MastPage.xaml bemutatja, hogyan ads ütemezni egy OSZLOPOS fájllal.
 * ProgrammaticAdPage.xaml programozott módon ütemezhet egy videóban ads mutatja be.
-* ScheduleClipPage.xaml bemutatja, hogyan ütemezése egy ad túlnyomó fájl nélkül.
-* VastLinearCompanionPage.xaml beszúrása egy lineáris és kiegészítő ad jeleníti meg.
-* VastNonLinearPage.xaml bemutatja, hogyan lehet beszúrni egy nem lineáris ad.
-* VmapPage.xaml bemutatja, hogyan adhatja meg a hirdetések VMAP fájllal.
+* ScheduleClipPage.xaml bemutatja, hogyan ütemezhet egy ad egy HATALMAS fájl nélkül.
+* VastLinearCompanionPage.xaml bemutatja, hogyan szúrható be egy lineáris és kiegészítő ad.
+* VastNonLinearPage.xaml Beszúrás nem lineáris ad mutatja be.
+* VmapPage.xaml bemutatja, hogyan adja meg a hirdetések VMAP-fájllal.
 
-Ezeket a mintákat mindegyikének használ a Media Player határozzák meg a player keretrendszer. A legtöbb minták beépülő modulok, amelyek különböző ad választ formátumban támogatásához használja. A ProgrammaticAdPage minta programokon keresztül kommunikál egy MediaPlayer-példányt.
+Ezek a minták minden egyes használja a Media Player osztály a player keretrendszer által meghatározott. A legtöbb minták használata, amely számos ad választ formátumú támogatása beépülő modulokat. A ProgrammaticAdPage minta programozott módon használja, ha a Media Player példánya.
 
 ### <a name="adpodpage-sample"></a>AdPodPage minta
-Ez a minta a AdSchedulerPlugin megadására az ad megjelenítéséhez használ. Ebben a példában egy közepes összegző hirdetmény öt másodperc után lejátszandó van ütemezve. Ad fogyasztanak (ads sorrendben megjelenítendő csoportja) egy ad-kiszolgáló által visszaadott túlnyomó fájlban van megadva. Az URI-t a túlnyomó fájl van megadva a <RemoteAdSource> elemet.
+Ebben a példában a AdSchedulerPlugin mikor jelenjenek meg az ad meg. Ebben a példában egy közepes összegző hirdetmény öt másodperc után lejátszandó van ütemezve. Az ad-pod (csoportja hirdetések megjelenítéséhez sorrendben) egy-egy ad-kiszolgáló által visszaadott HATALMAS fájlban van megadva. Az URI-t a HATALMAS fájl van megadva a <RemoteAdSource> elemet.
 
 ```xml
     <mmppf:MediaPlayer x:Name="player" Source="http://smf.blob.core.windows.net/samples/videos/bigbuck.mp4">
@@ -405,10 +405,10 @@ Ez a minta a AdSchedulerPlugin megadására az ad megjelenítéséhez használ. 
     </mmppf:MediaPlayer>
 ```
 
-A AdSchedulerPlugin kapcsolatos további információkért lásd: [hirdetési Player keretében a Windows 8 és Windows Phone 8](http://playerframework.codeplex.com/wikipage?title=Advertising&referringTitle=Windows%208%20Player%20Documentation)
+A AdSchedulerPlugin kapcsolatos további információkért lásd: [hirdetési a Player keretrendszer, a Windows 8 és Windows Phone 8](http://playerframework.codeplex.com/wikipage?title=Advertising&referringTitle=Windows%208%20Player%20Documentation)
 
 ### <a name="adschedulingpage"></a>AdSchedulingPage
-Ez a minta a AdSchedulerPlugin is használ. Három ads, egy előtti összegző ad, egy közepes összegző ad és a utáni összegző ad ütemezés. Az URI-t az egyes hirdetések VAST van megadva egy <RemoteAdSource> elemet.
+Ez a példa a AdSchedulerPlugin is használ. Ütemezi a három hirdetések, egy üzem előtti összegző ad, a közepes összegző ad és egy utáni bevezetése ad. Az URI-t az egyes hirdetések esetében az VAST van megadva egy <RemoteAdSource> elemet.
 
 ```xml
     <mmppf:MediaPlayer x:Name="player" Source="http://smf.blob.core.windows.net/samples/videos/bigbuck.mp4">
@@ -442,7 +442,7 @@ Ez a minta a AdSchedulerPlugin is használ. Három ads, egy előtti összegző a
 ```
 
 ### <a name="freewheelpage"></a>FreeWheelPage
-Ezt a mintát használja, amely meghatározza a forrásattribútumot, amely meghatározza az URI, amely egy SmartXML fájlra mutat, amely meghatározza a tartalom ad, valamint az ütemezési információkat ad a FreeWheelPlugin.
+Ez a minta a FreeWheelPlugin, amely meghatározza a forrásattribútumot, amely meghatározza egy SmartXML fájlra mutat, amely meghatározza a tartalom ad, valamint az ütemezési információkat ad URI-t használja.
 
 ```xml
     <mmppf:MediaPlayer x:Name="player" Source="http://smf.blob.core.windows.net/samples/videos/bigbuck.mp4">
@@ -454,7 +454,7 @@ Ezt a mintát használja, amely meghatározza a forrásattribútumot, amely megh
 ```
 
 ### <a name="mastpage"></a>MastPage
-Ez a minta a MastSchedulerPlugin, amely lehetővé teszi egy OSZLOPOS fájl használja. Az adatforrás-attribútum meghatározza a OSZLOPOS fájl helyét.
+Ez a minta a MastSchedulerPlugin, amely lehetővé teszi, hogy egy OSZLOPOS fájlt használja. Az adatforrás-attribútum meghatározza az OSZLOPOS fájl helyét.
 ```xml
     <mmppf:MediaPlayer x:Name="player" Source="http://smf.blob.core.windows.net/samples/videos/bigbuck.mp4">
                 <mmppf:MediaPlayer.Plugins>
@@ -465,13 +465,13 @@ Ez a minta a MastSchedulerPlugin, amely lehetővé teszi egy OSZLOPOS fájl hasz
 ```
 
 ### <a name="programmaticadpage"></a>ProgrammaticAdPage
-Ez a minta a Media Player programokon keresztül kommunikál. A ProgrammaticAdPage.xaml fájl elindítja a Media Player:
+Ez a minta programozott módon kommunikál a Media Player. A ProgrammaticAdPage.xaml fájl példányosítják a Media Player:
 
 ```xml
     <mmppf:MediaPlayer x:Name="player" Source="http://smf.blob.core.windows.net/samples/videos/bigbuck.mp4"/>
 ```
 
-A ProgrammaticAdPage.xaml.cs fájlt hoz létre egy AdHandlerPlugin ad meg egy TimelineMarker ad üzenetnek kell megjelennie, és hozzáadja a kezelő, amely betölti a RemoteAdSource túlnyomó fájlba URI megadása, és az ad majd játszik MarkerReached eseménynél.
+A ProgrammaticAdPage.xaml.cs fájlt hoz létre egy AdHandlerPlugin hozzáad egy TimelineMarker megadásához egy ad üzenetnek kell megjelennie, és ezt követően hozzáadja a kezelő, amely betölti egy RemoteAdSource HATALMAS fájlba URI megadása, és az ad majd játszik MarkerReached eseményhez.
 
 ```csharp
     public sealed partial class ProgrammaticAdPage : Microsoft.PlayerFramework.Samples.Common.LayoutAwarePage
@@ -504,7 +504,7 @@ A ProgrammaticAdPage.xaml.cs fájlt hoz létre egy AdHandlerPlugin ad meg egy Ti
 ```
 
 ### <a name="scheduleclippage"></a>ScheduleClipPage
-Ez a minta egy közepes összegző ad ütemezése egy .wmv-fájlt, amely tartalmazza az ad megadásával a AdSchedulerPlugin használja.
+Ebben a példában a AdSchedulerPlugin ütemezése egy közepes összegző ad egy .wmv-fájlt, amely tartalmazza az ad megadásával.
 
 ```xml
     <mmppf:MediaPlayer x:Name="player" Source="http://smf.cloudapp.net/html5/media/bigbuck.mp4">
@@ -530,7 +530,7 @@ Ez a minta egy közepes összegző ad ütemezése egy .wmv-fájlt, amely tartalm
 ```
 
 ### <a name="vastlinearcompanionpage"></a>VastLinearCompanionPage
-Ez a minta bemutatja, hogyan használja a AdSchedulerPlugin ütemezése egy közepes összegző lineáris ad egy kiegészítő ad-val. A <RemoteAdSource> elem a túlnyomó fájl helyét adja meg.
+Ez a példa bemutatja, hogyan használható a AdSchedulerPlugin ütemezni egy közepes összegző lineáris ad egy kiegészítő ad-vel. A <RemoteAdSource> elem azt határozza meg a HATALMAS fájl helyét.
 
 ```xml
     <mmppf:MediaPlayer Grid.Row="1"  x:Name="player" Source="http://smf.blob.core.windows.net/samples/videos/bigbuck.mp4">
@@ -552,7 +552,7 @@ Ez a minta bemutatja, hogyan használja a AdSchedulerPlugin ütemezése egy köz
 ```
 
 ### <a name="vastlinearnonlinearpage"></a>VastLinearNonLinearPage
-Ez a minta egy lineáris ütemezése AdSchedulerPlugin és egy nem lineáris ad használja. A nagy fájl helye van megadva a <RemoteAdSource> elemet.
+Ebben a példában a AdSchedulerPlugin ütemezni egy lineáris és a egy nem lineáris ad. A HATALMAS helye meg van adva a <RemoteAdSource> elemet.
 
 ```xml
     <mmppf:MediaPlayer x:Name="player" Source="http://smf.blob.core.windows.net/samples/videos/bigbuck.mp4">
@@ -574,7 +574,7 @@ Ez a minta egy lineáris ütemezése AdSchedulerPlugin és egy nem lineáris ad 
 ```
 
 ### <a name="vmappage"></a>VMAPPage
-Ez a minta VMAP fájllal ads ütemezni a VmapSchedulerPlugin használja. Az URI-t a VMAP fájl forrásattribútumának van megadva a <VmapSchedulerPlugin> elemet.
+Ebben a példában a VmapSchedulerPlugin ütemezése ads VMAP fájl használatával. Az URI-t a VMAP fájl forrásattribútumának van megadva a <VmapSchedulerPlugin> elemet.
 
 ```xml
     <mmppf:MediaPlayer x:Name="player" Source="http://smf.blob.core.windows.net/samples/videos/bigbuck.mp4">
@@ -585,11 +585,11 @@ Ez a minta VMAP fájllal ads ütemezni a VmapSchedulerPlugin használja. Az URI-
             </mmppf:MediaPlayer>
 ```
 
-## <a name="implementing-an-ios-video-player-with-ad-support"></a>IOS rendszerű Ad-támogatással rendelkező videó Player megvalósítása
-A Microsoft Media Platform: Player keretrendszer IOS-alkalmazásokat, amelyek bemutatják a keretrendszerrel videólejátszó alkalmazások végrehajtásához gyűjteményét tartalmazza. Letöltheti a Player keretrendszer és a minták [Azure Media Player keretrendszer](https://github.com/Azure/azure-media-player-framework). A github-oldalon tartalmaz egy hivatkozást egy Wiki player keretében további adatokat tartalmazó és a player minta bemutatása: [Azure Media Player Wiki](https://github.com/Azure/azure-media-player-framework/wiki/How-to-use-Azure-media-player-framework).
+## <a name="implementing-an-ios-video-player-with-ad-support"></a>IOS rendszerű Ad-támogatás a videolejátszó megvalósítása
+A Microsoft Media Platform: Player keretrendszere az iOS-alkalmazásokra, amelyek bemutatják, hogyan valósíthat meg egy videólejátszó alkalmazások a keretrendszer használatával gyűjteményét tartalmazza. Letöltheti a Player keretrendszer és a minták a [Azure Media Player keretrendszerének](https://github.com/Azure/azure-media-player-framework). A github-oldalon rendelkezik, amely tartalmaz további információt a player keretrendszer Wiki mutató hivatkozást és a játékosok minta bemutatása: [Azure Media Player Wiki](https://github.com/Azure/azure-media-player-framework/wiki/How-to-use-Azure-media-player-framework).
 
-### <a name="scheduling-ads-with-vmap"></a>VMAP hirdetések ütemezése
-A következő példa bemutatja, hogyan VMAP fájllal ads ütemezni.
+### <a name="scheduling-ads-with-vmap"></a>Hirdetések VMAP ütemezése
+Az alábbi példa bemutatja, hogyan ütemezése ads VMAP fájl használatával.
 
 ```csharp
     // How to schedule an Ad using VMAP.
@@ -609,8 +609,8 @@ A következő példa bemutatja, hogyan VMAP fájllal ads ütemezni.
             }
 ```
 
-### <a name="scheduling-ads-with-vast"></a>VAST hirdetések ütemezése
-A következő példa bemutatja, hogyan ütemezni a késői kötés túlnyomó ad.
+### <a name="scheduling-ads-with-vast"></a>Hirdetések VAST ütemezése
+A következő minta bemutatja, hogyan ütemezhet egy frissítéskibocsátási kötés HATALMAS ad.
 
 
 ```csharp
@@ -640,7 +640,7 @@ A következő példa bemutatja, hogyan ütemezni a késői kötés túlnyomó ad
     }
 ```
 
-   A következő példa bemutatja, hogyan ütemezése egy korai kötés túlnyomó ad.
+   A következő minta bemutatja, hogyan ütemezhet egy korai kötés HATALMAS ad.
 
 ```csharp
     //Example:4 Schedule an early binding VAST ad
@@ -669,7 +669,7 @@ A következő példa bemutatja, hogyan ütemezni a késői kötés túlnyomó ad
     }
 ```
 
-A következő példa bemutatja, hogyan hirdetések nyers Kivágás szerkesztése (RCE) használatával
+A következő minta bemutatja, hogyan szúrható be egy ad hozzávetőleges Kivágás szerkesztése (Rrásszámítógép) használatával
 
 ```csharp
     //Example:1 How to use RCE.
@@ -687,7 +687,7 @@ A következő példa bemutatja, hogyan hirdetések nyers Kivágás szerkesztése
     }
 ```
 
-A következő példa bemutatja, hogyan egy ad pod ütemezni.
+Az alábbi példa bemutatja, hogyan ütemezhet egy ad-pod.
 
 ```csharp
     //Example:5 Schedule an ad Pod.
@@ -717,7 +717,7 @@ A következő példa bemutatja, hogyan egy ad pod ütemezni.
     }
 ```
 
-A következő példa bemutatja, hogyan ütemezése a nem kapcsolódó közepes összegző ad. A nem kapcsolódó ad csak lejátszott, miután függetlenül bármilyen keresést az használatával hajtja végre.
+Az alábbi példa bemutatja, hogyan ütemezhet egy nem kiemelt közepes összegző ad. Egy nem kiemelt ad csak játsszák után függetlenül bármely kérné a megjelenítő hajt végre.
 
 ```csharp
     //Example:6 Schedule a single non sticky mid roll Ad
@@ -746,7 +746,7 @@ A következő példa bemutatja, hogyan ütemezése a nem kapcsolódó közepes �
     }
 ```
 
-A következő példa bemutatja, hogyan egy állandóságát közepes összegző ad ütemezni. Minden alkalommal, amikor az adott pont a videó idősoron éri el a kapcsolódó ad jelenik meg.
+Az alábbi példa bemutatja, hogyan ütemezhet egy Beragadó közepes összegző ad. Minden alkalommal, amikor eléri az adott pont a videó eseményeket egy idővonalon megjelenítve egy Beragadó ad jelenik meg.
 
 ```csharp
     //Example:7 Schedule a single sticky mid roll Ad
@@ -772,7 +772,7 @@ A következő példa bemutatja, hogyan egy állandóságát közepes összegző 
     }
 ```
 
-A következő példa bemutatja, hogyan ütemezése egy utáni összegző ad.
+A következő minta bemutatja, hogyan ütemezhet egy utáni bevezetése ad.
 
 ```csharp
     //Example:8 Schedule Post Roll Ad
@@ -794,7 +794,7 @@ A következő példa bemutatja, hogyan ütemezése egy utáni összegző ad.
     }
 ```
 
-A következő példa bemutatja, hogyan ütemezése egy előtti összegző ad.
+A következő minta bemutatja, hogyan ütemezhet egy üzem előtti összegző ad.
 
 ```csharp
     //Example:9 Schedule Pre Roll Ad
@@ -816,7 +816,7 @@ A következő példa bemutatja, hogyan ütemezése egy előtti összegző ad.
     }
 ```
 
-A következő példa bemutatja, hogyan ütemezése egy közepes összegző átfedő ad.
+A következő minta bemutatja, hogyan ütemezhet egy átfedő vásárolok összegző ad.
 
 ```csharp
     // Example10: Schedule a Mid Roll overlay Ad
