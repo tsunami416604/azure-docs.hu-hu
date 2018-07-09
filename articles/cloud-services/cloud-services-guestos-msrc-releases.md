@@ -12,19 +12,19 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 7/3/2018
+ms.date: 7/6/2018
 ms.author: raiye
-ms.openlocfilehash: 5fe3bd3bd63c08d779abffdac6b214989fd3970f
-ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
+ms.openlocfilehash: 440f988744a99d4857c6b9fa58f52e0f1eef1a3f
+ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37860061"
+ms.lasthandoff: 07/07/2018
+ms.locfileid: "37902163"
 ---
 # <a name="azure-guest-os"></a>Azure Guest OS
 Az alábbi táblázatokban a Microsoft Security Response Center (MSRC) az Azure vendég operációs rendszerre alkalmazott frissítések. Ez a cikk meghatározni, ha az adott frissítés alkalmazza a vendég operációs rendszer keresése. Frissítések mindig átviszi az adott [termékcsalád] [ family-explain] azokat a jelentek meg.
 
-## <a name="may-guest-os"></a>Előfordulhat, hogy a vendég operációs rendszer
+## <a name="june-guest-os"></a>Június vendég operációs rendszer
 | Termékkategória | Szülő KB cikk | Biztonsági rés leírása | A vendég operációs rendszer | Először a dátum |
 | --- | --- | --- | --- | --- |
 | 18-06-rel | [4284880] |A Windows 10 biztonsági |5.20 |2018. június 12. |

@@ -1,6 +1,6 @@
 ---
-title: A SendGrid e-mail szolgáltatás (PHP) használatával |} Microsoft Docs
-description: Megtudhatja, hogyan küldjön e-maileket a SendGrid e-mail szolgáltatás az Azure-on. Kódminták PHP.
+title: A SendGrid e-mail szolgáltatás (PHP) használata |} A Microsoft Docs
+description: Ismerje meg, hogyan e-mail küldése a SendGrid e-mail szolgáltatás az Azure-ban. A PHP nyelven írt kódmintákat.
 documentationcenter: php
 services: ''
 manager: sendgrid
@@ -14,40 +14,40 @@ ms.devlang: PHP
 ms.topic: article
 ms.date: 10/30/2014
 ms.author: elmer.thomas@sendgrid.com; erika.berkland@sendgrid.com; vibhork; matt.bernier@sendgrid.com
-ms.openlocfilehash: 523b986f66a2e48685e9707903194856f0dcf4a2
-ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
+ms.openlocfilehash: bceec3e85a54eb0e8b542d40ab20536ab41a50f0
+ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "23874030"
+ms.lasthandoff: 07/07/2018
+ms.locfileid: "37903703"
 ---
 # <a name="how-to-use-the-sendgrid-email-service-from-php"></a>Php-ből a SendGrid E-mail szolgáltatás használata
-Ez az útmutató bemutatja, hogyan Azure a SendGrid e-mail szolgáltatás közös programozási feladatok elvégzéséhez. A minták PHP nyelven íródtak.
-Az ismertetett forgatókönyvek **hozhat létre, e-mailek**, **e-mailek küldéséhez**, és **mellékletek hozzáadása**. A SendGrid és e-mailek küldéséhez további információkért lásd: a [lépések](#next-steps) szakasz.
+Ez az útmutató bemutatja, hogyan hajthat végre gyakori programozási feladatokat, a SendGrid e-mail szolgáltatással az Azure-ban. A minta PHP nyelven íródtak.
+Az ismertetett forgatókönyvek között megtalálható **hozhat létre, amely e-mailek**, **e-mail-küldési**, és **mellékletek hozzáadása**. A SendGrid és az e-mailt küld a további információkért lásd: a [lépések](#next-steps) szakaszban.
 
-## <a name="what-is-the-sendgrid-email-service"></a>Mi az a SendGrid E-mail szolgáltatás?
-SendGrid van egy [felhőalapú szolgáltatás] biztosít megbízható [tranzakciós e-mailben kézbesítésre], a méretezhetőség és a valós idejű elemzési rugalmas API-k, amelyek egyéni integrációs könnyedén együtt. Gyakori SendGrid használati forgatókönyvek a következők:
+## <a name="what-is-the-sendgrid-email-service"></a>Mi az a SendGrid E-mail szolgáltatással?
+A SendGrid van egy [e-mail felhő alapú szolgáltatás] , amely megbízható biztosít [tranzakciós e-mail kézbesítési], a méretezhetőség és a valós idejű analitikát és rugalmas API-kat, amelyek elérhetőbbé teszik egyéni integrációs egyszerű. A SendGrid gyakori használati forgatókönyvek a következők:
 
-* Automatikusan az ügyfél számára a visszaigazolások küldésére
-* Az ügyfelek havi e-szórólapok és a különleges ajánlatokkal terjesztési felügyelete listája
-* Többek között a blokkolt e-mail, és az ügyfél reakcióidőt valós idejű metrikáját gyűjtése
-* Jelentések segítségével azonosíthatja a trendeket létrehozása
-* Ügyfél-lekérdezések továbbítása
-* E-mail értesítések az alkalmazásról
+* Automatikusan adatokat küldjenek a visszaigazolások az ügyfelek számára
+* Ügyfelek küldéséhez a havi e-közleményekben és ajánlatok küldésére terjesztési felügyelete listája
+* Valós idejű metrikák, például a blokkolt e-mail és a vásárlói válaszkészségének gyűjtése
+* Azonosíthatja a trendeket,-jelentések létrehozása
+* Továbbítás vásárlói kapcsolatos kérdésekben
+* E-mail-értesítések az alkalmazásból
 
 További információkért lásd: [ https://sendgrid.com ] [ https://sendgrid.com].
 
 ## <a name="create-a-sendgrid-account"></a>A SendGrid-fiók létrehozása
 [!INCLUDE [sendgrid-sign-up](../includes/sendgrid-sign-up.md)]
 
-## <a name="using-sendgrid-from-your-php-application"></a>A PHP-alkalmazás a SendGrid használatával
-Nincsenek különleges SendGrid használatát egy Azure PHP-alkalmazás szükséges konfiguráció vagy a kódolást. SendGrid egy olyan szolgáltatás, mert hozzáférhetők pontosan ugyanúgy felhő-alkalmazásból használhatja a helyszíni alkalmazásból.
+## <a name="using-sendgrid-from-your-php-application"></a>A PHP-alkalmazások a SendGrid használatával
+Egy Azure PHP-alkalmazások a SendGrid használatával kell semmilyen speciális konfiguráció és a kódolási. Mivel a SendGrid-szolgáltatás, hozzáférhetők pontosan ugyanúgy a felhőalapú alkalmazások eltárolni a helyszíni alkalmazásból.
 
-## <a name="how-to-send-an-email"></a>Útmutató: az e-mailek küldése
-Elküldheti e-mailek SMTP vagy a SendGrid által biztosított webes API használatával.
+## <a name="how-to-send-an-email"></a>Útmutató: E-mail küldése
+Küldhet e-mailt SMTP vagy a SendGrid által biztosított webes API használatával.
 
 ### <a name="smtp-api"></a>SMTP API
-A SendGrid SMTP API használatával e-mailt küldeni, használja a *Swift levelezőprogrammal*, egy összetevő-alapú kódtár a PHP-alkalmazások az e-mailek küldésekor. Letöltheti a *Swift levelezőprogrammal* kódtárat [ http://swiftmailer.org/download ] [ http://swiftmailer.org/download] v5.3.0 (használata [Composer] Swift levelezőprogrammal telepítése). A könyvtárhoz e-mailek küldéséhez magában foglalja a példányok a <span class="auto-style2">Swift\_SmtpTransport</span>, <span class="auto-style2">Swift\_levelezőprogrammal</span>, és <span class="auto-style2">Swift\_üzenet </span> osztályok, a megfelelő tulajdonságokat, és hívja a <span class="auto-style2">Swift\_Mailer::send</span> metódust.
+E-mailt a SendGrid SMTP API-val, használja a *Swift levelezőprogrammal*, egy összetevő-alapú kódtár a e-mailek küldését a PHP-alkalmazások. Letöltheti a *Swift levelezőprogrammal* kódtárat [http://swiftmailer.org/download] [https://swiftmailer.symfony.com/] v5.3.0 (használata [Composer] Swift levelezőprogrammal telepítéséhez). Példányainak létrehozása és az e-mail-küldési beletartozik a <span class="auto-style2">Swift\_SmtpTransport</span>, <span class="auto-style2">Swift\_levelezőprogrammal</span>, és <span class="auto-style2">Swift\_üzenet </span> osztályok, a megfelelő tulajdonságokat beállítást, és hívása a <span class="auto-style2">Swift\_Mailer::send</span> metódust.
 
     <?php
      include_once "vendor/autoload.php";
@@ -110,7 +110,7 @@ A SendGrid SMTP API használatával e-mailt küldeni, használja a *Swift levele
      }
 
 ### <a name="web-api"></a>Webes API
-Használja a PHP tartozó [függvény curl] [ curl function] a SendGrid webes API-jával e-mail üzenetek küldéséhez.
+Használható a PHP a [függvény curl] [ curl function] e-mail küldése a SendGrid webes API használatával.
 
     <?php
 
@@ -150,11 +150,11 @@ Használja a PHP tartozó [függvény curl] [ curl function] a SendGrid webes AP
      // print everything out
      print_r($response);
 
-A SendGrid tartozó webes API nagyon hasonlít a REST API-t, ha az nem valóban RESTful API, mivel a legtöbb hívások, mind az beszerzése és POST műveletek felcserélhetők.
+SendGrid webes API nagyon hasonlít egy REST API-t, ha az nem igazi RESTful API-t, mivel a legtöbb hívásban mindkét LEKÉRÉSE, és a POST műveletek felcserélhetők.
 
-## <a name="how-to-add-an-attachment"></a>Hogyan: hozzá mellékletet
+## <a name="how-to-add-an-attachment"></a>Útmutató: a melléklet hozzáadása
 ### <a name="smtp-api"></a>SMTP API
-Az SMTP API-val melléklet küldése magában foglalja egy további kódsort a Swift levelezőprogrammal az e-mailt küld a példaként megadott parancsfájlt.
+Egy további kódsort a példaként megadott parancsfájlt tartalmazó Swift levelezőprogrammal egy e-mailt küld az SMTP API-val a melléklet foglalja magában.
 
     <?php
      include_once "vendor/autoload.php";
@@ -223,10 +223,10 @@ A további kódsort a következőképpen történik:
 
      $message->attach(Swift_Attachment::fromPath("path\to\file")->setFileName('file_name'));
 
-A kódsort az attach metódus meghívja a <span class="auto-style2">Swift\_üzenet</span> objektumra, és használja a statikus metódus <span class="auto-style2">fromPath</span> a a <span class="auto-style2">Swift\_melléklet</span> fájl csatolása egy üzenetet, és az osztály.
+Ez kódsort az attach metódus meghívja a a <span class="auto-style2">Swift\_üzenet</span> objektumra, és statikus metódust <span class="auto-style2">fromPath</span> a a <span class="auto-style2">Swift\_melléklet</span> fájl csatolása egy üzenetet, és osztály.
 
 ### <a name="web-api"></a>Webes API
-A webes API-jával melléklet küldése nagyon hasonlít a webes API-jával e-mail. Vegye figyelembe azonban, hogy az alábbi példában a paraméter tömbjének tartalmaznia kell ezt az elemet:
+A webes API-val melléklet küldése nagyon hasonlít a webes API-val e-mail küldése. Vegye azonban figyelembe, hogy a következő példában a paraméternek tömbnek tartalmaznia kell ezt az elemet:
 
     'files['.$fileName.']' => '@'.$filePath.'/'.$fileName
 
@@ -276,12 +276,12 @@ Példa:
      // print everything out
      print_r($response);
 
-## <a name="how-to-use-filters-to-enable-footers-tracking-and-analytics"></a>Útmutató: a szűrők segítségével engedélyezze a láblécben, nyomon követési és elemzés
-SendGrid "szűrők" révén további e-mail-funkciókat biztosítja. Ezek a beállítások, amelyek e-mailt ahhoz, hogy bizonyos funkciók, például követési kattintson, Google analytics, követési előfizetés, és így tovább is hozzáadhatók.
+## <a name="how-to-use-filters-to-enable-footers-tracking-and-analytics"></a>Útmutató: a szűrők segítségével élőlábak, nyomon követés és az Analytics engedélyezése
+A SendGrid használatával "szűrők" e-mail további funkciókat biztosít. Ezek a beállítások, amelyek e-mailbe ahhoz, hogy bizonyos funkciók, például engedélyezheti a kampányban, a Google analytics, előfizetés nyomon követése és így tovább lehet hozzáadni.
 
-Szűrők üzenet szűrők tulajdonságának használatával alkalmazhatók. Minden egyes szűrő szűrő-specifikus beállításokat tartalmazó kivonat szerint van megadva. Az alábbi példa lehetővé teszi, hogy a lábléc szűrőt, és határozza meg, hogy a rendszer hozzáfűzi az e-mailt szöveges üzenetet.
-Ehhez a példához használjuk [sendgrid-php könyvtár].
-Használjon [Composer] telepíteni szalagtár:
+Szűrők, egy üzenet, a szűrők tulajdonság használatával alkalmazhatók. Minden szűrő egy szűrő-specifikus beállításokat tartalmazó kivonat szerint van megadva. Az alábbi példa lehetővé teszi, hogy a lábléc szűrőt, és adja meg a szöveges üzenet, amely az e-mail-üzenet alján lesz hozzáfűzve.
+Ebben a példában használjuk [sendgrid-php-könyvtár].
+Használat [Composer] erőforrástár telepítése:
 
     php composer.phar require sendgrid/sendgrid 2.1.1
 
@@ -381,11 +381,11 @@ Példa:
      print_r($response);
 
 ## <a name="next-steps"></a>További lépések
-Most, hogy megismerte a SendGrid E-mail szolgáltatás alapjait, az alábbi hivatkozásokból további.
+Most, hogy megismerte az alapokat, a SendGrid E-mail szolgáltatás, kövesse az alábbi hivatkozások további.
 
-* SendGrid dokumentáció: <https://sendgrid.com/docs>
-* SendGrid PHP-könyvtár: <https://github.com/sendgrid/sendgrid-php>
-* SendGrid a különleges ajánlat Azure ügyfelek esetén: <https://sendgrid.com/windowsazure.html>
+* A SendGrid-dokumentációja: <https://sendgrid.com/docs>
+* A SendGrid PHP-könyvtár: <https://github.com/sendgrid/sendgrid-php>
+* A SendGrid a különleges ajánlat Azure-ügyfelek számára: <https://sendgrid.com/windowsazure.html>
 
 További információ: a [PHP fejlesztői központ](/develop/php/).
 
@@ -395,7 +395,7 @@ További információ: a [PHP fejlesztői központ](/develop/php/).
 [Packaging and Deploying PHP Applications for Azure]: http://msdn.microsoft.com/library/windowsazure/hh674499(v=VS.103).aspx
 [http://swiftmailer.org/download]: http://swiftmailer.org/download
 [curl function]: http://php.net/curl
-[felhőalapú szolgáltatás]: https://sendgrid.com/email-solutions
-[tranzakciós e-mailben kézbesítésre]: https://sendgrid.com/transactional-email
-[sendgrid-php könyvtár]: https://github.com/sendgrid/sendgrid-php/tree/v2.1.1
+[e-mail felhő alapú szolgáltatás]: https://sendgrid.com/email-solutions
+[tranzakciós e-mail kézbesítési]: https://sendgrid.com/transactional-email
+[sendgrid-php-könyvtár]: https://github.com/sendgrid/sendgrid-php/tree/v2.1.1
 [Composer]: https://getcomposer.org/download/
