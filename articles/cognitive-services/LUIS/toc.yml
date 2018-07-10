@@ -71,8 +71,6 @@
           href: luis-tutorial-review-endpoint-utterances.md
         - name: Mintákkal
           href: luis-tutorial-pattern.md
-        - name: Kifejezéslistával
-          href: luis-tutorial-interchangeable-phrase-list.md
 - name: Példák
   items:
     - name: Kódminták

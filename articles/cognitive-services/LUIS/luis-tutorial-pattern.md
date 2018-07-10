@@ -1,7 +1,7 @@
 ---
-title: Az oktatóanyagot minták használatával LUIS előrejelzéseket - Azure javítására |} Microsoft Docs
+title: Az oktatóanyag minták segítségével javíthatja a LUIS-előrejelzés – Azure |} A Microsoft Docs
 titleSuffix: Azure
-description: Ebben az oktatóanyagban leképezések mintát segítségével LUIS leképezés és egyéb entitások előrejelzéseket javítása.
+description: Ebben az oktatóanyagban a leképezések mintájának használatával javíthatja a LUIS szándékot és egyéb entitások előrejelzéseket.
 services: cognitive-services
 author: v-geberr
 manager: kamran.iqbal
@@ -10,78 +10,78 @@ ms.technology: luis
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: v-geberr;
-ms.openlocfilehash: ff5572366be548132b28e5ce03b9595e7f98128c
-ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
-ms.translationtype: MT
+ms.openlocfilehash: 9793b98c384346dc0de68061d42b4bcb3c513ed4
+ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36265316"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37866202"
 ---
-# <a name="tutorial-use-patterns-to-improve-predictions"></a>Oktatóanyag: A minták használatával javíthatja az előrejelzés
+# <a name="tutorial-use-patterns-to-improve-predictions"></a>Oktatóanyag: A minták előrejelzéseket javítása érdekében
 
-Ebben az oktatóanyagban minták segítségével növelheti a célt és egyéb entitások előrejelzés.  
+Ebben az oktatóanyagban minták használatával növelheti a leképezés és egyéb entitások előrejelzési.  
 
 > [!div class="checklist"]
-* Azonosítása, hogy a minta segít az alkalmazás
+* Hogyan azonosíthatja, hogy egy minta segíthet az alkalmazás
 * A minta létrehozása 
-* A minta használata előre elkészített és egyéni entitások 
-* Minta előrejelzés fejlesztései ellenőrzése
-* Egy entitás található entitások összefüggéseikben való alapú szerepkör hozzáadása
-* Egy szabad formátumú entitások található Pattern.any hozzáadása
+* A minta előre elkészített és az egyéni entitások használata 
+* Azt, hogyan ellenőrizheti, mintát előrejelzési fejlesztései
+* Szerepkör hozzáadása egy entitás kontextusban-alapú entitások keresése
+* Egy Pattern.any található szabad formátumú entitások hozzáadása
 
-Ez a cikk van szüksége egy szabad [LUIS] [ LUIS] fiók ahhoz, hogy a LUIS alkalmazás létrehozásához.
+Ehhez a cikkhez egy ingyenes [LUIS][LUIS]-fiókra van szüksége a LUIS-alkalmazás létrehozásához.
 
-## <a name="import-humanresources-app"></a>Importálás emberi alkalmazás
-Ez az oktatóanyag egy emberi app importálja. Az alkalmazás még három leképezések: None, GetEmployeeOrgChart, GetEmployeeBenefits. Az alkalmazás még két entitás: előre elkészített száma és alkalmazottak. A alkalmazott egy egyszerű entitás kibontásához egy alkalmazott neve. 
+## <a name="import-humanresources-app"></a>Emberi alkalmazás importálása
+Ebben az oktatóanyagban egy emberi alkalmazás importál. Az alkalmazás három leképezések rendelkezik: None, GetEmployeeOrgChart, GetEmployeeBenefits. Az alkalmazás két entitás rendelkezik: előre elkészített száma és alkalmazottak. Az alkalmazott entitás, az alkalmazottak nevének kinyerése egy egyszerű entitás. 
 
-1. Hozzon létre egy új LUIS app fájlt, és adjon neki nevet `HumanResources.json`. 
+1. Hozzon létre egy új fájlt a LUIS alkalmazás `HumanResources.json`. 
 
-2. Másolja a következő app-definíciót a fájlba:
+2. A következő app-definíciót másolja a fájlba:
 
    [!code-json[Add the LUIS model](~/samples-luis/documentation-samples/tutorial-patterns/HumanResources.json?range=1-164 "Add the LUIS model")]
 
-3. A a LUIS **alkalmazások** lapon jelölje be **importálási új alkalmazás**. 
+3. A LUIS szolgáltatáson alapuló **alkalmazások** lapon jelölje be **importálása új alkalmazás**. 
 
-4. Az a **importálási új alkalmazás** párbeszédpanelen válassza a `HumanResources.json` az 1. lépésben létrehozott fájlt.
+4. Az a **importálása új alkalmazás** párbeszédpanelen válassza ki a `HumanResources.json` az 1. lépésben létrehozott fájlt.
 
-5. Válassza ki a **GetEmployeeOrgChart** célt, majd módosítsa a **entitások nézet** való **nézet jogkivonatok**. Néhány példa utterances vannak felsorolva. Minden egyes utterance alkalmazott entitás nevét tartalmazza. Figyelje meg, hogy minden olyan név különböző, és a megállapodás szövegének minden utterance eltérő. Ez a változatosság utterances számos további LUIS segítségével.
+5. Válassza ki a **GetEmployeeOrgChart** szándékot, majd módosítsa a **entitások nézet** való **nézet jogkivonatok**. Néhány példa utterances jelennek meg. Minden kimondásakor egy nevet, amely egy alkalmazott entitás tartalmazza. Figyelje meg, hogy minden egyes neve nem egyezik, és a megfogalmazást elrendezésének eltérő az egyes utterance (kifejezés). Ez a sokféleség utterances számos további LUIS segítségével.
 
-    ![Képernyőfelvétel a cél lap váltható entitások nézet](media/luis-tutorial-pattern/utterances-token-view.png)
+    ![Entitások megtekintése lap képernyőképe a leképezés vezérlőelem](media/luis-tutorial-pattern/utterances-token-view.png)
 
-6. Válassza ki **betanítása** betanítása az alkalmazás a felső navigációs sávon. Várjon, amíg a zöld sikeres sáv.
+6. Válassza ki **betanításához** a felső navigációs sávban az alkalmazás betanításához. Várjon, amíg a zöld, sikeres sávon.
 
-7. Válassza ki **teszt** a az ablak tetején. Adja meg `Who does Patti Owens report to?` , majd válassza ki, adja meg. Válassza ki **vizsgálat** további információ a próba utterance alatt.
+7. Válassza ki **teszt** a az ablak tetején. Adja meg `Who does Patti Owens report to?` majd válassza ki az Entert. Válassza ki **vizsgálat** alatt az utterance (kifejezés), a teszt kapcsolatos további információkat.
     
-    Az alkalmazott nevét, Patti Owens nem szerepel egy példa utterance még. Ez az egy ellenőrizze, hogy mennyire LUIS megtanulta, ez utterance szolgál a `GetEmployeeOrgChart` leképezés és az alkalmazott entitás kell `Patti Owens`. Az eredmény 50 % alatt kell lennie (. 50) esetében a `GetEmployeeOrgChart` leképezés. A leképezés helyességét, amíg a pontszám értéke alacsony. Az alkalmazott entitás is megfelelően azonosítottak `Patti Owens`. Minták növelje meg a kezdeti előrejelzés pontszámot. 
+    Egy példa utterance (kifejezés) még nem használták Patti Owens, az alkalmazott neve. Ez a tesztüzenet arról, hogy a LUIS megtudhatta, a rendszer az utterance (kifejezés) megtekintéséhez a `GetEmployeeOrgChart` szándékot és az alkalmazott entitást kell `Patti Owens`. Az eredmény 50 %-os alatt kell lennie (. 50) esetében a `GetEmployeeOrgChart` szándékot. A leképezés helyességét, míg a pontszám értéke alacsony. Az alkalmazott entitás is megfelelően legyen azonosítva `Patti Owens`. Minták a kezdeti előrejelzési pontszám növelése. 
 
-    ![Képernyőfelvétel a teszt panel](media/luis-tutorial-pattern/original-test.png)
+    ![Képernyőfelvétel: a teszt panel](media/luis-tutorial-pattern/original-test.png)
 
-8. Zárja be a teszt panel kiválasztásával a **tesztelése** a felső navigációs sáv gombjára. 
+8. Zárja be a teszt panelen válassza a **tesztelése** a felső navigációs gombra. 
 
-## <a name="patterns-teach-luis-common-utterances-with-fewer-examples"></a>Mintákat mutatja meg LUIS közös utterances kevesebb-példákkal
-Az emberi erőforrás-tartomány jellege miatt módon néhány gyakori kérni a szervezetben alkalmazott kapcsolatok. Példa:
+## <a name="patterns-teach-luis-common-utterances-with-fewer-examples"></a>Minták tanít LUIS kevesebb példákkal közös kimondott szöveg
+Az emberi erőforrás-tartomány jellege miatt a szervezetben alkalmazott kapcsolatok kapcsolatos néhány gyakori módon is. Példa:
 
 ```
 Who does Mike Jones report to?
 Who reports to Mike Jones? 
 ```
 
-Ezek utterances szorosan határozzák meg a környezetfüggő egyediségének sok utterance példák megadása nélkül. Egy mintát megjelölésű hozzáadásával LUIS megjelölésű közös utterance mintái megtanulja sok utterance példák megadása nélkül. 
+Ezek a kimondott szöveg szorosan határozzák meg az egyes nélkül számos utterance (kifejezés) példákkal környezetfüggő egyediségét. Ad hozzá egy minta megjelölésű, LUIS megtanulja megjelölésű közös utterance (kifejezés) minta számos utterance (kifejezés) Példák megadása nélkül. 
 
-Példa sablon utterances ezt leképezési a következők:
+Példa a sablon utterances ezt szándék a következők:
 
 ```
 Who does {Employee} report to?
 Who reports to {Employee}? 
 ```
 
-A minta nem reguláris kifejezések egyeztetésének és a gépi tanulás. Ezt követően adjon meg néhány-sablont a minta további LUIS utterance példák. Ezekben a példákban a leképezési utterances adjon LUIS, milyen utterances megfelelően a célt átláthatóbbá és ott, ahol, a utterance belül az entitás. <!--A pattern is specific to an intent. You can't duplicate the same pattern on another intent. That would confuse LUIS, which lowers the prediction score. -->
+A reguláris kifejezések egyeztetésének és a machine learning egyik. Következő lépésként adja meg néhány sablont LUIS a minta további példákat utterance (kifejezés). Ezekben a példákban a szándék utterances adjon LUIS, milyen kimondott szöveg igazítása a leképezés átláthatóbbá és, amelyen belül az utterance (kifejezés), az entitás létezik. <!--A pattern is specific to an intent. You can't duplicate the same pattern on another intent. That would confuse LUIS, which lowers the prediction score. -->
 
-## <a name="add-the-template-utterances"></a>A sablon utterances hozzáadása
+## <a name="add-the-template-utterances"></a>A sablon beszédmódok hozzáadása
 
-1. A bal oldali navigációs alatt **alkalmazás teljesítményének javítása**, jelölje be **minták** a bal oldali navigációs sávon.
+1. A bal oldali navigációs területen **megnövelheti az alkalmazások teljesítményét**, jelölje be **minták** a bal oldali navigációs sávon.
 
-2. Válassza ki a **GetEmployeeOrgChart** célt, majd írja be a következő sablon utterances, egyenként, kiválasztása után minden sablon utterance adja meg:
+2. Válassza ki a **GetEmployeeOrgChart** szándékot, majd adja meg a következő sablon megcímkézzen, egyenként meg kiválasztása után minden sablon utterance (kifejezés):
 
     ```
     Does {Employee} have {number} subordinates?
@@ -92,32 +92,32 @@ A minta nem reguláris kifejezések egyeztetésének és a gépi tanulás. Ezt k
     Who are {Employee}'s subordinates?
     ```
 
-    A `{Employee}` szintaxis jelöli meg a sablon utterance, valamint entitáshoz van az entitás helyére. 
+    A `{Employee}` szintaxis jelöli meg a sablon utterance (kifejezés), valamint entitáshoz van az entitás helyére. 
 
-    ![Képernyőkép a sablon utterances a cél megadása](./media/luis-tutorial-pattern/enter-pattern.png)
+    ![Képernyőkép a leképezés a sablon utterances megadása](./media/luis-tutorial-pattern/enter-pattern.png)
 
-3. Válassza ki **vonat** a felső navigációs sávban. Várjon, amíg a zöld sikeres sáv.
+3. Válassza ki **Train** a felső navigációs sávban. Várjon, amíg a zöld, sikeres sávon.
 
-4. Válassza ki **teszt** a az ablak tetején. Adja meg `Who does Patti Owens report to?` a szövegmezőben. Válassza ki a adja meg. Ez az a azonos utterance tesztelve az előző szakaszban. Az eredmény a nagyobbnak kell lennie a `GetEmployeeOrgChart` leképezés. 
+4. Válassza ki **teszt** a az ablak tetején. Adja meg `Who does Patti Owens report to?` a szövegmezőben. Válassza ki a adja meg. Ez az az azonos utterance (kifejezés) az előző szakaszban tesztelni. Az eredmény nagyobb a kell lennie a `GetEmployeeOrgChart` szándékot. 
 
-    A pontszám már javulás. LUIS megtanulta, a célt vonatkozó mintát sok példák megadása nélkül.
+    A pontszám már sokkal hatékonyabb. Használatával egy Pattern.any entitást a minta lehetővé teszi, hogy így LUIS megfelelően kinyeri az űrlap neve elején és végén, a képernyő nevét adja meg.
 
-    ![Képernyőfelvétel a teszt panel a legjobb eredmény eredménye](./media/luis-tutorial-pattern/high-score.png)
+    ![Az űrlap egy új leképezésének létrehozása](./media/luis-tutorial-pattern/high-score.png)
 
-    Az entitás először található, akkor megtalálja a mintát, a célt jelző. Ha egy tesztelési eredménye, ahol az entitás nem található a szolgáltatás, és ezért nem megtalálja a mintát, szüksége további példa utterances adja hozzá a célt (nem a minta). 
+    Hozzon létre egy új célja, hogy a képernyők keres megcímkézzen számára. Válassza ki leképezések bal oldali navigációs sávon. 
 
-5. Zárja be a teszt panel kiválasztásával a **tesztelése** a felső navigációs sáv gombjára.
+5. Zárja be a teszt panelen válassza a **tesztelése** a felső navigációs gombra.
 
-## <a name="use-an-entity-with-a-role-in-a-pattern"></a>Egy entitás használja a mintában szerepkörrel
-A LUIS app alkalmazottak áthelyezése egyik helyről egy másikra elősegítésére szolgál. Egy példa utterance van `Move Bob Jones from Seattle to Los Colinas`. Minden egyes helyére a utterance jelentése van. Budapest származási helyét, és másik Colinas az áthelyezés célhelye. Azokon a helyeken, az alábbi szakaszok a mintában megkülönböztetéséhez hoz létre egy egyszerű entitás hely két szerepkörök: forrás és cél. 
+## <a name="use-an-entity-with-a-role-in-a-pattern"></a>Nevezze el az új szándékot .
+Adjon hozzá egy példa utterance (kifejezés). A képernyő címe az `Move Bob Jones from Seattle to Los Colinas`. Az utterance (kifejezés) kérése a helyet a következő formátumban van, és azt is kéri, olvassa el, az alkalmazott ellenőrzése alá kell. Egy Pattern.any entitás nélkül nehéz átlátni, ahol az űrlap címe ér véget, és bontsa ki az űrlap címe az utterance (kifejezés), egy egységként lenne. A képernyő címének Pattern.any entitás létrehozása 
 
-### <a name="create-a-new-intent-for-moving-people-and-assets"></a>Hozzon létre egy új leképezés áthelyezésére, személyek és eszközök
-Hozzon létre egy új, amely mozgó felhasználók vagy eszközök készül egyetlen utterances leképezésének.
+### <a name="create-a-new-intent-for-moving-people-and-assets"></a>A Pattern.any entitás lehetővé teszi, hogy az entitások változó hosszúságú.
+Csak működik a mintát, mert a minta elején és végén az entitás jelöli.
 
-1. Válassza ki **leképezések** bal oldali navigációs sávon
-2. Válassza ki **új leképezés létrehozásához**
-3. Az új cél neve `MoveAssetsOrPeople`
-4. Példa utterances hozzáadása:
+1. Válassza ki **entitások** a bal oldali navigációs menüben.
+2. Az entitás neve **típusú**Pattern.any.**
+3. Adott ehhez az oktatóanyaghoz nem kell minden olyan szerepkörök hozzáadása az entitáshoz. `MoveAssetsOrPeople`
+4. Entitás neve és entitástípus párbeszédpanel
 
     ```
     Move Bob Jones from Seattle to Los Colinas
@@ -126,130 +126,130 @@ Hozzon létre egy új, amely mozgó felhasználók vagy eszközök készül egye
     Move Jill Benson from Boston to London
     Move Travis Hinton from Portland to Orlando
     ```
-    ![Példa utterance MoveAssetsOrPeople leképezés a bemutató képernyőkép](./media/luis-tutorial-pattern/intent-moveasserts-example-utt.png)
+    ![Adja hozzá a Pattern.any használó minta](./media/luis-tutorial-pattern/intent-moveasserts-example-utt.png)
 
-    A példa utterances célja elég példákat mutatnak. Ha a későbbi szakaszában a vizsgálat a hely entitás nem észlelhető, és ezért nem észlelte a minta, térjen vissza ehhez a lépéshez, és adja hozzá a további példákat. Majd betanítását, majd tesztelje újból. 
+    Válassza ki a FindForm szándékot. Adja meg az új entitást használó sablon utterance (kifejezés) Képernyőkép a sablon utterance (kifejezés) pattern.any entitást használó 
 
-5. A példa utterances entitást az alkalmazott entitással megjelölni az Utónév, majd a Vezetéknév egy utterance kiválasztja, akkor az alkalmazott entitás listából történő kiválasztásakor.
+5. A szabad formátumú adatok kinyerése az új mintára tesztelése
 
-    ![Képernyőfelvétel az alkalmazott entitás jelölésű MoveAssetsOrPeople utterances](./media/luis-tutorial-pattern/intent-moveasserts-employee.png)
+    ![Válassza ki tesztelése a felső sávon a teszt panel megnyitásához.](./media/luis-tutorial-pattern/intent-moveasserts-employee.png)
 
-6. Válassza ki a szöveget `portland` a utterance a `move travis hinton from portland to orlando`. Az előugró párbeszédpanelen adja meg az új entitásnév `Location`, és válassza ki **új entitás létrehozása**. Válassza ki a **egyszerű** entitástípus, és válassza **végzett**.
+6. A kifejezés lista `portland`segítségével előrejelzési `move travis hinton from portland to orlando` javítása Az előugró párbeszédpanelen adja meg az új entitás nevét `Location`, és válassza ki **új entitás létrehozása**. Válassza ki a **egyszerű** entitástípus, és válassza ki **kész**.
 
-    ![Képernyőkép a hely új entitás létrehozása](./media/luis-tutorial-pattern/create-new-location-entity.png)
+    ![Képernyőkép az új hely entitás létrehozása](./media/luis-tutorial-pattern/create-new-location-entity.png)
 
-    Jelölje meg a többi a utterances a hely nevét. 
+    Jelölje meg a hely neve a kimondott szöveg többi részétől. 
 
     ![Képernyőkép a megjelölt összes entitás](./media/luis-tutorial-pattern/moveasset-all-entities-labeled.png)
 
-    A minta word választott és egy rendezési nem egyértelmű az előző ábrán. Ha **nem** használatát, és a leképezés a utterances rendelkezik, amely kell használni minták jól jelzi egy nyilvánvaló mintában. 
+    A minta word választási lehetőség és a sorrend, akkor az előző képen látható. Ha **nem** használatával mintákat, és a szándéka megcímkézzen rendelkezik, amely jól jelzi kell minták használatával egy felmerül a nyilvánvaló minta. 
 
-    Ha várhatóan széles körét utterances helyett egy olyan mintát, ez a nem megfelelő példa utterances értendő. Ebben az esetben kívánt igen eltérő utterances, kifejezés vagy a word választás, a utterance hossza és a entitás elhelyezését. 
+    Ha várhatóan széles körének kimondott szöveg helyett egy olyan mintát, ezek nem megfelelő példa megcímkézzen lenne. Ebben az esetben a kifejezés vagy a word választás, utterance (kifejezés) hossza és entitás elhelyezési széles körben különböző utterances kapni szeretne. 
 
 <!--TBD: what guidance to move from hier entities to patterns with roles -->
 <!--    The [Hierarchical entity quickstart](luis-quickstart-intent-and-hier-entity.md) uses the  same idea of location but uses child entities to find origin and destination locations. 
 -->
-### <a name="add-role-to-location-entity"></a>Hely entitás szerepkör hozzáadása 
-Szerepkörök csak mintára használható. A forrás és cél szerepkörök hozzáadása a hely entitás. 
+### <a name="add-role-to-location-entity"></a>Szerepkör hozzáadása hely entitáshoz 
+Szerepkörök csak használható mintákat. A forrás és cél-szerepkörök hozzáadása a hely entitáshoz. 
 
-1. Válassza ki **entitások** a bal oldali navigációs, majd **hely** az entitások listájából.
+1. Válassza ki **entitások** a bal oldali navigációs menüben, majd **hely** az entitások listájában.
 
-2. Adja hozzá `Origin` és `Destination` szerepkörök az entitásban.
+2. Adjon hozzá `Origin` és `Destination` szerepkörök az entitáshoz.
 
-    ![Új entitás szerepkörök képernyőképe](./media/luis-tutorial-pattern/location-entity.png)
+    ![Képernyőkép a szerepkörök az új entitás](./media/luis-tutorial-pattern/location-entity.png)
 
-    A szerepkörök nincsenek megjelölve MoveAssetsOrPeople leképezési lapon, mert a szerepkörök nem található a leképezési utterances. Csak léteznek, a minta sablon utterances. 
+    A szerepkörök a MoveAssetsOrPeople szándék oldalon nem vannak megjelölve, mert a szerepkörök nem léteznek a szándék kimondott szöveg. Csak léteznek, a minta sablon kimondott szöveg. 
 
-### <a name="add-template-utterances-that-uses-location-and-destination-roles"></a>Sablon utterances használó hely és a célkiszolgáló szerepkörök hozzáadása
-Adja hozzá az új entitás használó sablon utterances.
+### <a name="add-template-utterances-that-uses-location-and-destination-roles"></a>Hely és a cél szerepköröket használó sablon beszédmódok hozzáadása
+Az új entitást használó sablon beszédmódok hozzáadása.
 
 1. Válassza ki **minták** a bal oldali navigációs sávon.
 
-2. Válassza ki a **MoveAssetsOrPeople** leképezés.
+2. Válassza ki a **MoveAssetsOrPeople** szándékot.
 
-3. Adjon meg egy új sablont utterance használatával az új entitás `Move {Employee} from {Location:Origin} to {Location:Destination}`. A szervezet és a sablon utterance belül szerepkör szintaxisa a következő `{entity:role}`.
+3. Adjon meg egy új sablont utterance (kifejezés) az új entitást használó `Move {Employee} from {Location:Origin} to {Location:Destination}`. Az entitásokhoz és a egy sablon utterance (kifejezés) belüli szerepkör szintaxisa `{entity:role}`.
 
-    ![Új entitás szerepkörök képernyőképe](./media/luis-tutorial-pattern/pattern-moveassets.png)
+    ![Képernyőkép a szerepkörök az új entitás](./media/luis-tutorial-pattern/pattern-moveassets.png)
 
-4. Az alkalmazást az új leképezés, entitás és minta betanításához.
+4. Az alkalmazás az új szándékot, a személy és a minta betanításához.
 
-### <a name="test-the-new-pattern-for-role-data-extraction"></a>Az új mintát szerepkör adatok kiolvasásához tesztelése
-Ellenőrizze az új mintát a teszt.
+### <a name="test-the-new-pattern-for-role-data-extraction"></a>A szerepkör adatok kinyerése az új mintára tesztelése
+Az új mintára ellenőrzés egy tesztet.
 
 1. Válassza ki **teszt** a az ablak tetején. 
-2. Adja meg a utterance `Move Tammi Carlson from Bellingham to Winthrop`.
-3. Válassza ki **vizsgálat** személy és a leképezés a teszteredmények megtekintéséhez eredménye alapján.
+2. Írja be az utterance (kifejezés) `Move Tammi Carlson from Bellingham to Winthrop`.
+3. Válassza ki **vizsgálat** entitáshoz és leképezés a teszteredmények megtekintéséhez az eredmény alapján.
 
-    ![Új entitás szerepkörök képernyőképe](./media/luis-tutorial-pattern/test-with-roles.png)
+    ![Képernyőkép a szerepkörök az új entitás](./media/luis-tutorial-pattern/test-with-roles.png)
 
-    Az entitások először találhatók, akkor megtalálja a mintát, a célt jelző. Ha egy tesztelési eredménye, ahol az entitások nem észleli a rendszer, és ezért nem megtalálja a mintát, szüksége további példa utterances adja hozzá a célt (nem a minta). 
+    Az entitásokat először találhatók, akkor megtalálja a mintát, a célt jelző. Ha rendelkezik egy vizsgálati eredmény, ahol az entitások nem észlelt, és ezért nem található a minta, szüksége további példa beszédmódok hozzáadása a célt (nem a minta). 
 
-4. Zárja be a teszt panel kiválasztásával a **tesztelése** a felső navigációs sáv gombjára.
+4. Zárja be a teszt panelen válassza a **tesztelése** a felső navigációs gombra.
 
-## <a name="use-a-patternany-entity-to-find-free-form-entities-in-a-pattern"></a>A minta szabad formátumú entitások kereséséhez egy Pattern.any entitás használhatja
-Az emberi alkalmazást is lehetővé teszi a vállalat képernyők alkalmazottak. Az űrlapok számos rendelkezik nevet, amely a rendszer változó hosszúságú. A változó hosszúságú kifejezéseket, ahol véget ér az űrlap neve kapcsolatos LUIS megzavarhatja tartalmazza. Használja a **Pattern.any** bankkártyaszám entitás lehetővé teszi a elején és végén lévő nevére, LUIS megfelelően kibontja az űrlap neve. 
+## <a name="use-a-patternany-entity-to-find-free-form-entities-in-a-pattern"></a>Szabad formátumú entitások található mintát használja egy Pattern.any entitás
+Az emberi alkalmazás képernyők a vállalat alkalmazottai is segít. Az űrlapok számos rendelkezik vannak változó hosszúságú leltárát. A változó hosszúságú tartalmazza a kifejezéseket, előfordulhat, hogy összekeveri a LUIS kapcsolatos, ahol az űrlap neve véget ér. Használatával egy **Pattern.any** entitást a minta lehetővé teszi, hogy így LUIS megfelelően kinyeri az űrlap neve elején és végén, a képernyő nevét adja meg. 
 
-### <a name="create-a-new-intent-for-the-form"></a>Az űrlap egy új leképezés létrehozásához
-Hozzon létre egy új, amely a keresett űrlapok utterances leképezésének.
+### <a name="create-a-new-intent-for-the-form"></a>Az űrlap egy új leképezésének létrehozása
+Hozzon létre egy új célja, hogy a képernyők keres megcímkézzen számára.
 
 1. Válassza ki **leképezések** bal oldali navigációs sávon.
 
-2. Válassza ki **új leképezés létrehozásához**.
+2. Válassza a **Create new intent** (Új szándék létrehozása) lehetőséget.
 
-3. Az új leképezés neve `FindForm`.
+3. Nevezze el az új szándékot `FindForm`.
 
-4. Adjon hozzá egy példa utterance.
+4. Adjon hozzá egy példa utterance (kifejezés).
 
     ```
     `Where is the form What to do when a fire breaks out in the Lab and who needs to sign it after I read it?`
     ```
 
-    ![Új entitás szerepkörök képernyőképe](./media/luis-tutorial-pattern/intent-findform.png)
+    ![Képernyőkép a szerepkörök az új entitás](./media/luis-tutorial-pattern/intent-findform.png)
 
-    A képernyő cím `What to do when a fire breaks out in the Lab`. A utterance az űrlap helyzete által kért, és azt is kéri, akik be kell jelentkeznie, olvassa el az alkalmazott ellenőrzése. Egy Pattern.any entitás nélkül nehéz lenne tudni, ahol a címe véget ér, és bontsa ki a címe a utterance egy egységként.
+    A képernyő címe az `What to do when a fire breaks out in the Lab`. Az utterance (kifejezés) kérése a helyet a következő formátumban van, és azt is kéri, olvassa el, az alkalmazott ellenőrzése alá kell. Egy Pattern.any entitás nélkül nehéz átlátni, ahol az űrlap címe ér véget, és bontsa ki az űrlap címe az utterance (kifejezés), egy egységként lenne.
 
-### <a name="create-a-patternany-entity-for-the-form-title"></a>A képernyő cím Pattern.any entitás létrehozása
-A Pattern.any entitás lehetővé teszi, hogy az entitások változó hosszúságú. Ez csak működik egy mintát, mert a minta elején és végén az entitás jelöli. Ha talál, amely a mintát, ha az egy Pattern.any, kivonatok entitások helytelenül, használjon egy [explicit lista](luis-concept-patterns.md#explicit-lists) a probléma elhárítása érdekében. 
+### <a name="create-a-patternany-entity-for-the-form-title"></a>A képernyő címének Pattern.any entitás létrehozása
+A Pattern.any entitás lehetővé teszi, hogy az entitások változó hosszúságú. Csak működik a mintát, mert a minta elején és végén az entitás jelöli. Ha talál, amely a mintát, ha egy Pattern.any tartalmazza, nem megfelelően, használja-e kivonatokat entitások egy [explicit lista](luis-concept-patterns.md#explicit-lists) a probléma elhárításához. 
 
-1. Válassza ki **entitások** a bal oldali navigációs.
+1. Válassza ki **entitások** a bal oldali navigációs menüben.
 
-2. Válassza ki **új entitás létrehozása**. 
+2. Válassza a **Create new entity** (Új entitás létrehozása) lehetőséget. 
 
-3. Az entitás neve `FormName` típusú **Pattern.any**. Az adott oktatóanyag nem kell a szerepkörök hozzáadása az entitáshoz.
+3. Az entitás neve `FormName` típusú **Pattern.any**. Adott ehhez az oktatóanyaghoz nem kell minden olyan szerepkörök hozzáadása az entitáshoz.
 
-    ![Az entitás neve és entitástípus párbeszédpanel képe](./media/luis-tutorial-pattern/create-entity-pattern-any.png)
+    ![Entitás neve és entitástípus párbeszédpanel](./media/luis-tutorial-pattern/create-entity-pattern-any.png)
 
 ### <a name="add-a-pattern-that-uses-the-patternany"></a>Adja hozzá a Pattern.any használó minta
 
 1. Válassza ki **minták** a bal oldali navigációs sávon.
 
-2. Válassza ki a **FindForm** leképezés.
+2. Válassza ki a **FindForm** szándékot.
 
-3. Adja meg a sablon utterance használatával az új entitáshoz `Where is the form {FormName} and who needs to sign it after I read it?`
+3. Adja meg az új entitást használó sablon utterance (kifejezés) `Where is the form {FormName} and who needs to sign it after I read it?`
 
-    ![Képernyőkép a sablon utterance pattern.any entitás használatával](./media/luis-tutorial-pattern/pattern.any-template-utterance.png)
+    ![Képernyőkép a sablon utterance (kifejezés) pattern.any entitást használó](./media/luis-tutorial-pattern/pattern.any-template-utterance.png)
 
-4. Az alkalmazást az új leképezés, entitás és minta betanításához.
+4. Az alkalmazás az új szándékot, a személy és a minta betanításához.
 
-### <a name="test-the-new-pattern-for-free-form-data-extraction"></a>Az új mintát, szabad formátumú adatokat kiolvasásához tesztelése
-1. Válassza ki **tesztelése** a a felső sávon a teszt panel megnyitásához. 
+### <a name="test-the-new-pattern-for-free-form-data-extraction"></a>A szabad formátumú adatok kinyerése az új mintára tesztelése
+1. Válassza ki **tesztelése** a felső sávon a teszt panel megnyitásához. 
 
-2. Adja meg a utterance `Where is the form Understand your responsibilities as a member of the community and who needs to sign it after I read it?`.
+2. Írja be az utterance (kifejezés) `Where is the form Understand your responsibilities as a member of the community and who needs to sign it after I read it?`.
 
-3. Válassza ki **vizsgálat** személy és a leképezés a teszteredmények megtekintéséhez eredménye alapján.
+3. Válassza ki **vizsgálat** entitáshoz és leképezés a teszteredmények megtekintéséhez az eredmény alapján.
 
-    ![Képernyőkép a sablon utterance pattern.any entitás használatával](./media/luis-tutorial-pattern/test-pattern.any-results.png)
+    ![Képernyőkép a sablon utterance (kifejezés) pattern.any entitást használó](./media/luis-tutorial-pattern/test-pattern.any-results.png)
 
-    Az entitás először található, akkor megtalálja a mintát, a célt jelző. Ha egy tesztelési eredménye, ahol az entitások nem észleli a rendszer, és ezért nem megtalálja a mintát, szüksége további példa utterances adja hozzá a célt (nem a minta).
+    Hozzon létre egy új célja, hogy a képernyők keres megcímkézzen számára. Ha rendelkezik egy vizsgálati eredmény, ahol az entitások nem észlelt, és ezért nem található a minta, szüksége további példa beszédmódok hozzáadása a célt (nem a minta).
 
-4. Zárja be a teszt panel kiválasztásával a **tesztelése** a felső navigációs sáv gombjára.
+4. Zárja be a teszt panelen válassza a **tesztelése** a felső navigációs gombra.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
-Ha már nincs szükség, a LUIS alkalmazás törlése. Ehhez az szükséges, válassza a három pont menü (...) az alkalmazás nevétől jobbra alkalmazáslistájában, jelölje be **törlése**. Az előugró párbeszédpanelen **Delete app?**, jelölje be **Ok**.
+Ha már nincs rá szükség, törölje a LUIS-alkalmazást. Ehhez válassza a három pontot (***...*** ) az alkalmazások listájában, az alkalmazás nevétől jobbra, válassza ki a **törlése**. A **Delete app?** (Törli az alkalmazást?) előugró párbeszédpanelen válassza az **OK** lehetőséget.
 
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Kifejezés lista segítségével javíthatja az előrejelzés](luis-tutorial-interchangeable-phrase-list.md)
+> [A kifejezés lista segítségével előrejelzési javítása](luis-tutorial-interchangeable-phrase-list.md)
 
 [LUIS]: https://docs.microsoft.com/azure/cognitive-services/luis/luis-reference-regions

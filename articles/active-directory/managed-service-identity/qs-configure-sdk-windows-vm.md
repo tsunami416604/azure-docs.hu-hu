@@ -1,6 +1,6 @@
 ---
-title: Az MSI-kompatibilis Azure virtuális gép az Azure SDK használatával konfigurálása
-description: Lépés lépés útmutatást, konfigurálásához és használatához a kezelt Service identitás (MSI) egy Azure virtuális gépen, az Azure SDK használatával.
+title: Az MSI-kompatibilis Azure virtuális Gépekhez az Azure SDK-val konfigurálása
+description: Lépés útmutató konfigurálásához és használatához a Felügyeltszolgáltatás-identitás (MSI)-beli virtuális gépen, az Azure SDK-val.
 services: active-directory
 documentationcenter: ''
 author: daveba
@@ -9,24 +9,25 @@ editor: ''
 ms.service: active-directory
 ms.component: msi
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 09/28/2017
 ms.author: daveba
-ms.openlocfilehash: 781f332b2892d9af536bf9a6f81642842285927b
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: dee4a3e27623150ce3fa648d73542db0cbb23e93
+ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 07/07/2018
+ms.locfileid: "37901442"
 ---
-# <a name="configure-a-vm-managed-service-identity-msi-using-an-azure-sdk"></a>Konfigurálja a virtuális gép felügyelt szolgáltatás identitásának (MSI) az Azure SDK használatával
+# <a name="configure-a-vm-managed-service-identity-msi-using-an-azure-sdk"></a>Konfigurálja a VM-Managed Felügyeltszolgáltatás-identitás (MSI) az Azure SDK-val
 
 [!INCLUDE[preview-notice](../../../includes/active-directory-msi-preview-notice.md)]
 
-Felügyelt Szolgáltatásidentitás automatikusan felügyelt identitással az Azure Active Directory (AD) Azure-szolgáltatásokhoz biztosít. Ez az identitás, amely támogatja az Azure AD-alapú hitelesítés, anélkül, hogy a hitelesítő adatokat a kódban a szolgáltatással való hitelesítésre szolgáló használhatja. 
+Felügyeltszolgáltatás-identitás az Azure-szolgáltatásokat az Azure Active Directory (AD) automatikusan felügyelt identitást biztosít. Használhatja ezt az identitást, amely támogatja az Azure AD-hitelesítés, a kód a hitelesítő adatok nélkül bármely szolgáltatással való hitelesítésre. 
 
-Ebből a cikkből megismerheti, hogyan engedélyezheti és MSI eltávolítása egy Azure virtuális gép, egy Azure SDK használatával.
+Ebből a cikkből megismerheti, hogyan engedélyezheti és távolítsa el az MSI egy Azure virtuális gép, egy Azure SDK-val.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -34,18 +35,18 @@ Ebből a cikkből megismerheti, hogyan engedélyezheti és MSI eltávolítása e
 
 ## <a name="azure-sdks-with-msi-support"></a>MSI-támogatással rendelkező Azure SDK-k 
 
-Azure végig több programozási platformot támogat [Azure SDK-k](https://azure.microsoft.com/downloads). Ezek MSI támogatják, és megfelelő minták használati bemutatásához frissítve lett. Ez a lista frissül a további támogatja:
+Az Azure támogatja több programozási platformon keresztül sorozatát [Azure SDK-k](https://azure.microsoft.com/downloads). Ezek a MSI támogatják, és megfelelő mintákat a használatot bemutató frissültek. Ez a lista frissül a kiegészítő támogatás:
 
 | SDK | Sample |
 | --- | ------ | 
-| .NET   | [Az MSI-kompatibilis virtuális gép erőforrás kezelése](https://azure.microsoft.com/resources/samples/aad-dotnet-manage-resources-from-vm-with-msi/) |
-| Java   | [Az MSI-kompatibilis virtuális gép a tárterület kezelése](https://azure.microsoft.com/resources/samples/compute-java-manage-resources-from-vm-with-msi-in-aad-group/)|
-| Node.js| [Hozzon létre egy virtuális gép MSI engedélyezve](https://azure.microsoft.com/resources/samples/compute-node-msi-vm/) |
-| Python | [Hozzon létre egy virtuális gép MSI engedélyezve](https://azure.microsoft.com/resources/samples/compute-python-msi-vm/) |
-| Ruby   | [Egy olyan MSI Csomaghoz, az Azure virtuális gép létrehozása](https://azure.microsoft.com/resources/samples/compute-ruby-msi-vm/) |
+| .NET   | [Erőforrás kezelése MSI-kompatibilis virtuális gépről](https://azure.microsoft.com/resources/samples/aad-dotnet-manage-resources-from-vm-with-msi/) |
+| Java   | [MSI-kompatibilis virtuális gépről tárhely kezelése](https://azure.microsoft.com/resources/samples/compute-java-manage-resources-from-vm-with-msi-in-aad-group/)|
+| Node.js| [Engedélyezett MSI-vel rendelkező virtuális gép létrehozása](https://azure.microsoft.com/resources/samples/compute-node-msi-vm/) |
+| Python | [Engedélyezett MSI-vel rendelkező virtuális gép létrehozása](https://azure.microsoft.com/resources/samples/compute-python-msi-vm/) |
+| Ruby   | [Az Azure virtuális gép létrehozása egy MSI-vel](https://azure.microsoft.com/resources/samples/compute-ruby-msi-vm/) |
 
 ## <a name="next-steps"></a>További lépések
 
-- Olvassa el a kapcsolódó cikkeket az "Konfigurálása MSI-fájl számára egy Azure virtuális gép", megtudhatja, hogyan használhatja az Azure portálon, a PowerShell, a parancssori felület és az erőforrás-sablonok.
+- Tekintse meg a kapcsolódó cikkeket "Konfigurálása MSI számára egy Azure virtuális gép", megtudhatja, hogyan használhatja az Azure portal, PowerShell, CLI és erőforrás-sablonok alapján.
 
-Az alábbi Megjegyzések szakasz segítségével visszajelzést, és segítsen pontosítsa és a tartalom.
+Használja a következő megjegyzéseket visszajelzést, és segítsen finomíthatja és a tartalom formázása.
