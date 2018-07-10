@@ -4,22 +4,11 @@
 ### Áttekintés és előnyök  
 ### Áruházak  
 #### [Az AppSource és az Azure Marketplace összehasonlítása](./comparing-appsource-azure-marketplace.md)  
-#### [Vállalatfejlesztés az AppSource segítségével](./grow-your-business-with-appsource.md) 
-##### [Saját kezdőlap létrehozása](./build-your-landing-page.md)  
-##### [Érdeklődők megosztásának bekapcsolása](./enable-lead-sharing.md)  
-##### [A GTM-előnyök a piactéren](./gtm-benefits.md)  
-##### [Üzleti gyarapodás a Microsofttal](./promote-your-business-with-microsoft.md)  
-#### [Vállalatfejlesztés az Azure Marketplace segítségével](./grow-your-business-with-azure-marketplace.md)  
-##### [Saját kezdőlap létrehozása](./build-your-landing-page.md)  
-##### [Érdeklődők megosztásának bekapcsolása](./enable-lead-sharing.md)  
-##### [A GTM-előnyök a piactéren](./gtm-benefits.md)  
-##### [Üzleti gyarapodás a Microsofttal](./promote-your-business-with-microsoft.md)  
 
 ### Közzététel a piactér áruházaiban  
 #### [A megoldás-termékoldal típusának meghatározása](./determine-your-listing-type.md)  
 #### [Közzétevővé válás a piactér áruházaiban](./become-publisher.md)  
 #### [Az egyes termékoldal-típusok követelményei](./listing-type-requirements.md) 
-#### [Előnyben részesített megoldások](./preferred-solutions.md) 
 
 ### Közzétételi ellenőrzőlisták  
 #### [Közzétételi ellenőrzőlista az AppSource-hoz](./publishing-checklist-appsource.md)  
@@ -38,6 +27,9 @@
 #### [Bank- és adóinformációk hozzáadása](./add-bank-tax-info.md)  
 #### [Próbaverzió engedélyezése az Azure AD használatával](./enable-trial-using-azure-ad.md)  
 #### [Díjszabási lehetőségek az Azure Marketplace-en](./billing-options-azure-marketplace.md)  
+
+### [Vállalatfejlesztés a piactéren](./grow-your-business-with-azure-marketplace.md)  
+#### [Előnyben részesített megoldások](./preferred-solutions.md) 
 
 ## [Felhőpartnerportál](./cloud-partner-portal/cloud-partner-portal-what-is-the-cloud-partner-portal.md)  
 

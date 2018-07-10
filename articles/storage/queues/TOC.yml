@@ -98,6 +98,8 @@
           href: ../common/storage-network-security.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
         - name: Biztonságos TLS engedélyezése az Azure Storage-ügyfélnek
           href: ../common/storage-security-tls.md
+        - name: Megfelelőségi ajánlatok
+          href: ../common/storage-compliance-offerings.md
         - name: Ügyféloldali titkosítás
           items:
             - name: .NET

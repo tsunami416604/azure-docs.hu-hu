@@ -5,13 +5,12 @@
 ## [PowerShell – Rövid útmutató](quickstart-powershell.md)
 
 # Funkciók és eszközök
-## [Bash – Funkciók és eszközök](features.md)
-## [PowerShell – Funkciók és eszközök](features-powershell.md)
+## [Funkciók és eszközök](features.md)
 
 # Használati útmutató
-## [Bash – Tároló megőrzése](persisting-shell-storage.md)
-## [PowerShell – Tároló megőrzése](persisting-shell-storage-powershell.md)
+## [Tároló megőrzése](persisting-shell-storage.md)
 ## [Az ablak használata](using-the-shell-window.md)
+## [PowerShell Cloud Shell Windows-felhasználóknak](cloud-shell-windows-users.md)
 
 # Példák
 ## [Bash – Erőforrások létrehozása a Terraformmal](example-terraform-bash.md)

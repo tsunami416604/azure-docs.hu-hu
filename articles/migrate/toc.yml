@@ -36,6 +36,10 @@
           href: contoso-migration-rehost-linux-vm.md
         - name: 8. Contoso – Linux-alkalmazás áthelyezése Azure-beli virtuális gépekre és az Azure MySQL-re
           href: contoso-migration-rehost-linux-vm-mysql.md
+        - name: 9. Contoso – alkalmazás újrabontása az Azure Web Appsben és az Azure SQL Database-ben
+          href: contoso-migration-refactor-web-app-sql.md
+        - name: 10. Contoso – Linux-alkalmazás újrabontása az Azure Web Appsben és az Azure MySQL-ben
+          href: contoso-migration-refactor-linux-app-service-mysql.md
     - name: Nagy méretű környezet felderítése és értékelése
       href: how-to-scale-assessment.md
     - name: Gépek csoportosítása

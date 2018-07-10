@@ -40,12 +40,11 @@
 #### [Cognitive-bővítmények](data-lake-analytics-u-sql-cognitive.md)
 #### [Programozhatósági útmutató](data-lake-analytics-u-sql-programmability-guide.md)
 
-### U-SQL SDK
-#### [Helyi futtatás és hibakeresés](data-lake-analytics-data-lake-tools-local-run.md)
-#### [Futtatás és tesztelés](data-lake-analytics-u-sql-sdk.md) 
-
 ### Visual Studio
 #### [Telepítés](data-lake-analytics-data-lake-tools-install.md)
+#### [Helyi futtatás](data-lake-analytics-data-lake-tools-local-run.md)
+#### [Helyi hibakeresés](data-lake-analytics-data-lake-tools-local-debug.md)
+#### [U-SQL-adatbázisok fejlesztése](data-lake-analytics-data-lake-tools-develop-usql-database.md)
 #### [Feladatok tallózása és megtekintése](data-lake-analytics-data-lake-tools-view-jobs.md)
 #### [Egyéni C#-kód hibakeresése](data-lake-analytics-debug-u-sql-jobs.md)
 #### [Ismétlődő feladatok hibaelhárítása](data-lake-analytics-data-lake-tools-debug-recurring-job.md)
@@ -59,6 +58,11 @@
 #### [Tartalomkészítés](data-lake-analytics-data-lake-tools-for-vscode.md)
 #### [Egyéni kód](data-lake-analytics-u-sql-develop-with-python-r-csharp-in-vscode.md)
 #### [Helyi futtatás és hibakeresés](data-lake-tools-for-vscode-local-run-and-debug.md)
+
+### Folyamatos integráció és folyamatos üzembe helyezés
+#### [Áttekintés](data-lake-analytics-cicd-overview.md)
+#### [Tesztek beállítása](data-lake-analytics-cicd-test.md)
+#### [U-SQL SDK](data-lake-analytics-u-sql-sdk.md)
 
 # Referencia
 ## [Azure PowerShell](/powershell/module/azurerm.datalakeanalytics)

@@ -14,14 +14,14 @@ metadata:
   ms.topic: landing-page
   ms.date: 04/01/2018
   ms.author: carlrab
-  ms.openlocfilehash: 64c6bd7ee69f443f819676d1605aa679066e2e84
-  ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
+  ms.openlocfilehash: c159eec7a8674e57e6f7a815040527ed60966f46
+  ms.sourcegitcommit: 11321f26df5fb047dac5d15e0435fce6c4fde663
   ms.translationtype: HT
   ms.contentlocale: hu-HU
-  ms.lasthandoff: 06/27/2018
-  ms.locfileid: "37063349"
+  ms.lasthandoff: 07/06/2018
+  ms.locfileid: "37887283"
 abstract:
-  description: Az Azure SQL Database a Microsoft SQL Server adatbázismotor legújabb, stabil verzióján alapuló, szolgáltatásként nyújtott relációs adatbázis. Az SQL Database egy nagy teljesítményű, megbízható és biztonságos adatbázis, amely segítségével adatvezérelt alkalmazásokat és webhelyeket hozhat létre egy tetszőleges programozási nyelven, infrastruktúrakezelés nélkül. Ismerje meg, hogyan használhatja az Azure SQL Database szolgáltatást a gyors útmutatóink, oktatóanyagaink és példáink segítségével.
+  description: Az Azure SQL Database a Microsoft SQL Server-adatbázismotor legújabb, stabil verzióján alapuló, szolgáltatásként nyújtott (DBaaS) relációs adatbázis. Az SQL Database egy nagy teljesítményű, megbízható és biztonságos adatbázis, amely segítségével adatvezérelt alkalmazásokat és webhelyeket hozhat létre egy tetszőleges programozási nyelven, infrastruktúrakezelés nélkül. Ismerje meg, hogyan használhatja az Azure SQL Database szolgáltatást a gyors útmutatóink, oktatóanyagaink és példáink segítségével.
   aside:
     image:
       alt: 
@@ -32,6 +32,42 @@ abstract:
     href: https://azure.microsoft.com/resources/videos/create-sql-database-on-azure/
     width: 250
 sections:
+- items:
+  - type: list
+    style: cards
+    className: cardsM
+    columns: 3
+    items:
+    - href: /azure/sql-database/sql-database-technical-overview
+      html: <p><a href="/azure/sql-database/sql-database-high-availability">Nagy rendelkezésre állású</a> PaaS-adatbázis, amely mindig az SQL Server-adatbázismotor legfrissebb stabil verzióját és javított operációs rendszert futtat <a href="/azure/sql-database/sql-database-automated-backups">az adatbázisok automatikus biztonsági mentésével</a>.</p>
+      image:
+        src: media/index/i_managed.svg
+      title: Teljes körű felügyelet
+    - href: /azure/sql-database/sql-database-service-tiers
+      html: <p>A kedvező árú havi 5 dollárostól a nagy teljesítményű 80 magos adatbázisokig terjedő <a href="/azure/sql-database/sql-database-service-tiers">rugalmas teljesítményszintekkel</a> igény szerint módosíthatja az ár-teljesítmény arányt.</p>
+      image:
+        src: media/index/i_perftier.svg
+      title: Ár/teljesítményszintek
+    - href: /azure/sql-database/sql-database-single-database-scale
+      html: <p>Az adatbázisait egyszerűen <a href="/azure/sql-database/sql-database-single-database-scale">felskálázhatja vertikálisan</a> vagy <a href="/azure/sql-database/sql-database-read-scale-out">horizontálisan</a>, illetve horizontálisan particionálhatja attól függően, hogy mire van szüksége az alkalmazás teljesítményének javításához.</p>
+      image:
+        src: media/index/i_scale.svg
+      title: Méretezhetőség és rugalmasság
+    - href: /azure/sql-database/sql-database-automatic-tuning
+      html: <p>A szolgáltatás beépített intelligenciája képes az <a href="/azure/sql-database/sql-database-automatic-tuning">adatbázis teljesítményének automatikus finomhangolására</a>, valamint a <a href="/azure/sql-database/sql-advanced-threat-protection">fenyegetések</a> és az adatbázis <a href="/azure/sql-database/sql-vulnerability-assessment">biztonsági réseinek</a> azonosítására.</p>
+      image:
+        src: media/index/i_intelligence.svg
+      title: Beépített intelligencia
+    - href: /azure/sql-database/sql-database-servers-databases
+      html: <p>A <a href="/azure/sql-database/sql-database-managed-instance">logikai kiszolgálókon futó önálló adatbázist</a> olyan <a href="/azure/sql-database/saas-tenancy-app-design-patterns">SaaS-alkalmazásokhoz</a> és mikroszolgáltatásokhoz használhatja, amelyek egyetlen önálló adatbázist igényelnek kiszámítható teljesítményszinttel.</p>
+      image:
+        src: media/index/i_db.svg
+      title: Önálló adatbázis
+    - href: /azure/sql-database/sql-database-managed-instance
+      html: <p>A <a href="/azure/sql-database/sql-database-managed-instance">felügyelt példánnyal</a> egyszerűen az Azure PaaS-ba <a href="azure/sql-database/sql-database-managed-instance-migrate">migrálhatja a helyszíni adatbázisait</a> minimális adatbáziskód-módosítás mellett.</p>
+      image:
+        src: media/index/i_mi.svg
+      title: Felügyelt példány
 - title: 5 perces gyors útmutatók
   items:
   - type: paragraph
@@ -48,27 +84,34 @@ sections:
     - image:
         src: media/index/logo_powershell.svg
       title: PowerShell
+    - image:
+        src: media/index/logo_arm.svg
+      title: Azure Resource Manager-sablon
     rows:
     - title: Önálló SQL Database-adatbázis létrehozása
       values:
       - href: /azure/sql-database/sql-database-get-started-portal
       - href: /azure/sql-database/sql-database-get-started-cli
       - href: /azure/sql-database/sql-database-get-started-powershell
+      - href: 
     - title: Felügyelt SQL-példány létrehozása
       values:
       - href: /azure/sql-database/sql-database-managed-instance-create-tutorial-portal
       - href: 
       - href: https://blogs.msdn.microsoft.com/sqlserverstorageengine/2018/06/27/quick-start-script-create-azure-sql-managed-instance-using-powershell/
+      - href: 
     - title: Rugalmas SQL-készlet létrehozása
       values:
       - href: 
       - href: /azure/sql-database/scripts/sql-database-move-database-between-pools-cli
       - href: /azure/sql-database/scripts/sql-database-move-database-between-pools-powershell
+      - href: https://github.com/Azure/azure-quickstart-templates/tree/master/101-sql-elastic-pool-create
     - title: Önálló SQL Database-adatbázis méretezése
       values:
       - href: 
       - href: /azure/sql-database/scripts/sql-database-monitor-and-scale-database-cli
       - href: /azure/sql-database/scripts/sql-database-monitor-and-scale-database-powershell
+      - href: 
     - title: Rugalmas SQL-készlet méretezése
       values:
       - href: 
@@ -79,11 +122,13 @@ sections:
       - href: 
       - href: 
       - href: https://blogs.msdn.microsoft.com/sqlserverstorageengine/2018/05/31/change-size-azure-sql-managed-instance-using-powershell/
+      - href: 
     - title: Azure-hálózat konfigurálása felügyelt példányhoz
       values:
       - href: /azure/sql-database/sql-database-managed-instance-create-tutorial-portal
       - href: 
       - href: https://blogs.msdn.microsoft.com/sqlserverstorageengine/2018/06/25/quick-start-script-setup-azure-network-environment-for-azure-sql-managed-instance/
+      - href: https://github.com/Azure/azure-quickstart-templates/tree/master/101-sql-managed-instance-azure-environment
 - title: Részletes útmutatók
   items:
   - type: paragraph

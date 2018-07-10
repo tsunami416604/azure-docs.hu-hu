@@ -98,7 +98,7 @@
 
 ### Bővített IoT-forgatókönyvek
 #### [Eszközök felhőalapú üzenetkezelése az iothub-explorerrel](iot-hub-explorer-cloud-device-messaging.md)
-#### [IoT Hub-üzenetek mentése Azure-adattárba](iot-hub-store-data-in-azure-table-storage.md)
+#### [IoT Hub-üzenetek mentése az Azure Blob Storage-ba](iot-hub-store-data-in-azure-table-storage.md)
 #### [Adatmegjelenítés a Power BI-ban](iot-hub-live-data-visualization-in-power-bi.md)
 #### [Adatmegjelenítés a Web Apps használatával](iot-hub-live-data-visualization-in-web-apps.md)
 #### [Időjárás-előrejelzés az Azure Machine Learning használatával](iot-hub-weather-forecast-machine-learning.md)

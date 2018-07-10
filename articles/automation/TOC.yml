@@ -47,6 +47,8 @@
       items:
         - name: Változáskövetés áttekintése
           href: automation-change-tracking.md
+        - name: A nyomon követett fájlok tartalmának megjelenítése
+          href: change-tracking-file-contents.md
     - name: Leltár
       items:
         - name: Virtuális gépek kezelése leltár használatával

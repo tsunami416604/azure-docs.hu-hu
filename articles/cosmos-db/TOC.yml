@@ -172,8 +172,6 @@ items:
                 href: bulk-executor-dot-net.md
               - name: BulkExecutor – Java
                 href: bulk-executor-java.md
-              - name: Kezelés a Storage Explorer használatával
-                href: storage-explorer.md
               - name: Lekérdezés
                 items:
                   - name: SQL-lekérdezések végrehajtása
@@ -184,8 +182,6 @@ items:
                 href: indexing-policies.md
               - name: SQL-adatparticionálás
                 href: sql-api-partition-data.md
-              - name: 'Tárolt eljárások, eseményindítók és felhasználói függvények'
-                href: programming.md
               - name: Csatorna módosítása
                 href: change-feed.md
               - name: Adattípusok
@@ -262,8 +258,6 @@ items:
                 href: sql-api-sql-query-reference.md
           - name: További források
             items:
-              - name: Kezelés a Storage Explorer használatával
-                href: storage-explorer.md
               - name: Visual Studio Code-bővítmény
                 href: 'https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-cosmosdb'
               - name: SQL-játszótér
@@ -328,12 +322,8 @@ items:
                 href: mongodb-ttl.md
               - name: Adatok megjelenítése Power BI használatával
                 href: powerbi-visualize.md
-              - name: Kezelés a Storage Explorer használatával
-                href: storage-explorer.md
           - name: További források
             items:
-              - name: Kezelés a Storage Explorer használatával
-                href: storage-explorer.md
               - name: Visual Studio Code-bővítmény
                 href: 'https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-cosmosdb'
       - name: Graph API-dokumentumok
@@ -352,12 +342,8 @@ items:
             items:
               - name: Graph-particionálás
                 href: graph-partitioning.md
-              - name: Kezelés a Storage Explorer használatával
-                href: storage-explorer.md
           - name: További források
             items:
-              - name: Kezelés a Storage Explorer használatával
-                href: storage-explorer.md
               - name: Visual Studio Code-bővítmény
                 href: 'https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-cosmosdb'
       - name: Table API-dokumentumok
@@ -410,8 +396,6 @@ items:
                 href: table-sdk-python.md
           - name: További források
             items:
-              - name: Kezelés a Storage Explorer használatával
-                href: storage-explorer.md
               - name: A Table Storage áttekintése
                 href: table-storage-overview.md
               - name: Tervezési útmutató a Table Storage-hoz
@@ -450,6 +434,8 @@ items:
         href: regional-failover.md
       - name: Diagnosztikai naplózás
         href: logging.md
+      - name: 'Tárolt eljárások, eseményindítók és felhasználói függvények'
+        href: programming.md
       - name: A BulkExecutor áttekintése
         href: bulk-executor-overview.md
       - name: Költséghatékony írások és olvasások
@@ -460,12 +446,10 @@ items:
         href: manage-account-with-powershell.md
       - name: Kezelés a Storage Explorer használatával
         href: storage-explorer.md
-      - name: Többrégiós írók
+      - name: Több főkiszolgálós telepítés
         href: multi-master-workaround.md
   - name: További források
     items:
-      - name: Kezelés a Storage Explorer használatával
-        href: storage-explorer.md
       - name: Lekérdezésekre vonatkozó hasznos tanácsok
         href: query-cheat-sheet.md
       - name: 20 napi tipp

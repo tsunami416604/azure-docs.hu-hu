@@ -65,8 +65,10 @@
           href: luis-quickstart-intent-and-key-phrase.md
         - name: 8. Hangulatelemzés hozzáadása
           href: luis-quickstart-intent-and-sentiment-analysis.md
-    - name: Előrejelzés javítása
+    - name: Az alkalmazás továbbfejlesztése
       items:
+        - name: A végpont beszédmódjainak áttekintése
+          href: luis-tutorial-review-endpoint-utterances.md
         - name: Mintákkal
           href: luis-tutorial-pattern.md
         - name: Kifejezéslistával
@@ -313,6 +315,8 @@
       href: 'https://github.com/Microsoft/Recognizers-Text'
 - name: További források
   items:
+    - name: Régiónkénti rendelkezésre állás
+      href: 'https://azure.microsoft.com/global-infrastructure/services/'
     - name: Azure-ütemterv
       href: 'https://aka.ms/luis-roadmap'
     - name: Szószedet
@@ -326,7 +330,7 @@
     - name: UserVoice
       href: 'https://aka.ms/luis-uservoice-forum'
     - name: Keresés
-      href: 'https://docs.microsoft.com/en-us/search/index?search=LUIS'
+      href: 'https://docs.microsoft.com/search/index?search=LUIS'
     - name: Blog
       href: 'https://blog.botframework.com/category/luis/'
     - name: Tudásbázis

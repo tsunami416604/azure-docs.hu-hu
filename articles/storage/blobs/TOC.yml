@@ -20,7 +20,9 @@
       href: storage-quickstart-blobs-cli.md
     - name: Blobok használata – .NET
       href: storage-quickstart-blobs-dotnet.md
-    - name: Blobok használata – Java
+    - name: Blobok használata – Java (Storage SDK V10)
+      href: storage-quickstart-blobs-java-v10.md
+    - name: Blobok használata – Java (Storage SDK V7)
       href: storage-quickstart-blobs-java.md
     - name: Blobok használata – Python
       href: storage-quickstart-blobs-python.md
@@ -192,6 +194,8 @@
           href: storage-blob-immutable-storage.md
         - name: Biztonságos TLS engedélyezése az Azure Storage-ügyfélnek
           href: ../common/storage-security-tls.md
+        - name: Megfelelőségi ajánlatok
+          href: ../common/storage-compliance-offerings.md
     - name: Figyelés és hibaelhárítás
       items:
         - name: Oktatóanyag a hibaelhárításhoz
