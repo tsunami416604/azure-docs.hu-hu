@@ -1,6 +1,6 @@
 ---
-title: Szolgáltatástelepítési konfigurációk az Azure verem Development Kit (ASDK) a POST |} Microsoft Docs
-description: Az Azure verem Development Kit (ASDK) telepítése után ellenőrizze az ajánlott konfiguráció változásait ismerteti.
+title: Szolgáltatástelepítési konfigurációk az Azure Stack Development Kit (ASDK) a közzététele |} A Microsoft Docs
+description: Az Azure Stack Development Kit (ASDK) telepítése után győződjön meg arról is, ajánlott konfigurációs változásait ismerteti.
 services: azure-stack
 documentationcenter: ''
 author: jeffgilb
@@ -15,22 +15,22 @@ ms.topic: article
 ms.date: 06/05/2018
 ms.author: jeffgilb
 ms.reviewer: misainat
-ms.openlocfilehash: ec5947bc68ba95a7b1e1588c444f4b28a7435f1c
-ms.sourcegitcommit: b7290b2cede85db346bb88fe3a5b3b316620808d
+ms.openlocfilehash: 23d99c498c139da3a145a1df230f419b4591b256
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34801541"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38598441"
 ---
 # <a name="post-asdk-installation-configuration-tasks"></a>ASDK telepítés utáni konfigurációs feladatok
 
-Miután [telepítése az Azure verem Development Kit (ASDK)](asdk-install.md), szüksége lesz egy néhány ajánlott telepítés utáni konfigurációs módosításokat.
+Miután [telepítése az Azure Stack Development Kit (ASDK)](asdk-install.md), néhány ajánlott telepítés utáni konfigurációs változtatásokat kell.
 
 ## <a name="install-azure-stack-powershell"></a>Az Azure Stack PowerShell telepítése
 
-Azure verem kompatibilis Azure PowerShell-modulok az Azure veremnek megfelelő működéséhez szükségesek.
+Az Azure Stack kompatibilis az Azure PowerShell-modulok használata az Azure Stack van szükség.
 
-Azure verem PowerShell-parancsokat a PowerShell-galériában keresztül telepített. Regisztrálja a PSGallery tárház, nyisson meg egy rendszergazda jogú PowerShell-munkamenetet, és futtassa a következő parancsot:
+Azure Stack PowerShell-parancsokat a PowerShell-galériából keresztül telepíti. A PSGallery tárház regisztrálása nyisson meg egy rendszergazda jogú PowerShell-munkamenetet, és futtassa a következő parancsot:
 
 ``` Powershell
 Set-PSRepository `
@@ -38,14 +38,14 @@ Set-PSRepository `
   -InstallationPolicy Trusted
 ```
 
-API-verzió profilok segítségével adja meg Azure verem kompatibilis AzureRM modulok.  API-verzió profilok teszik lehetővé az Azure és az Azure-verem közötti kezelése. Az API-verzió profilok olyan AzureRM PowerShell modult az adott API-verziók. A **AzureRM.Bootstrapper** modult, amelyben a PowerShell-galériában keresztül elérhető API-verzió profilokkal működéséhez szükséges PowerShell-parancsmagokat kínál.
+API-verzióprofilok segítségével adja meg az Azure Stack-kompatibilis AzureRM-modulok.  API-verzióprofilok kezelése az Azure és az Azure Stack közötti terveztek. Egy API-verzióprofil egy adott API-verziók az AzureRM PowerShell-modulok. A **AzureRM.Bootstrapper** modul, amely a PowerShell-galériából érhető el az API-verzióprofilok működéséhez szükséges PowerShell-parancsmagokat kínál.
 
-A legújabb Azure verem PowerShell-modul is telepíthet, vagy a ASDK gazdaszámítógéphez internetkapcsolat nélkül:
+Telepítheti a legújabb Azure Stack PowerShell-modul vagy a ASDK gazdagépnek internetkapcsolat nélkül:
 
 > [!IMPORTANT]
-> A szükséges verzió telepítése előtt győződjön meg arról, hogy [távolítsa el a meglévő Azure PowerShell modul](.\.\azure-stack-powershell-install.md#uninstall-existing-versions-of-powershell).
+> A szükséges verzió telepítése előtt győződjön meg arról, hogy [távolítsa el minden meglévő Azure PowerShell-modulok](.\.\azure-stack-powershell-install.md#uninstall-existing-versions-of-the-azure-stack-powershell-modules).
 
-- **Internetkapcsolat** az ASDK állomásról. Ezek a modulok telepítését az development kit telepítése a következő PowerShell-parancsfájl futtatása:
+- **Internetkapcsolattal rendelkező** ASDK állomásról. Futtassa a következő PowerShell-parancsfájlt a development kit telepítésen ezeket a modulokat telepíteni:
 
   ``` PowerShell
   # Install the AzureRM.Bootstrapper module. Select Yes when prompted to install NuGet. 
@@ -61,9 +61,9 @@ A legújabb Azure verem PowerShell-modul is telepíthet, vagy a ASDK gazdaszám�
 
   ```
 
-  Ha a telepítés sikeres, a kimenet a AzureRM és AzureStack modulok jelennek meg.
+  Ha a telepítés sikeres, a kimenetben az AzureRM- és AzureStack modulok jelennek meg.
 
-- **Internetkapcsolat nélkül** az ASDK állomásról. Kapcsolat nélküli forgatókönyv esetében először le kell töltenie a PowerShell-modul a következő PowerShell-parancsokkal internetkapcsolattal rendelkező géphez:
+- **Internetkapcsolat nélküli** ASDK állomásról. A leválasztott forgatókönyvekben, először le kell töltenie a PowerShell-modulok a gépre, amely rendelkezik internetkapcsolattal, a következő PowerShell-parancsokkal:
 
   ```PowerShell
   $Path = "<Path that is used to save the packages>"
@@ -86,7 +86,7 @@ A legújabb Azure verem PowerShell-modul is telepíthet, vagy a ASDK gazdaszám�
     -RequiredVersion 1.3.0
   ```
 
-  Ezután a letöltött csomagok másolása a ASDK számítógép és a hely alapértelmezett tárházaként rögzítéséhez, és a AzureRM és AzureStack modulok telepítése ebben a tárházban lévő:
+  Ezután másolja a letöltött csomagokat ASDK számítógépre, és regisztrálja a hely alapértelmezett tárházaként, és a tárházból az AzureRM- és az AzureStack modulok telepítéséhez:
 
     ```PowerShell  
     $SourceLocation = "<Location on the development kit that contains the PowerShell packages>"
@@ -104,9 +104,9 @@ A legújabb Azure verem PowerShell-modul is telepíthet, vagy a ASDK gazdaszám�
       -Repository $RepoName
     ```
 
-## <a name="download-the-azure-stack-tools"></a>Töltse le az Azure-verem eszközök
+## <a name="download-the-azure-stack-tools"></a>Az Azure Stack-eszközök letöltése
 
-[AzureStack-eszközök](https://github.com/Azure/AzureStack-Tools) van egy GitHub-tárházban, amelyen a PowerShell-modulok kezelése és Azure verem erőforrásokat üzembe helyezi. Ezek az eszközök klónozza a GitHub-tárházban, vagy töltse le a AzureStack-eszközök mappa a következő parancsfájl futtatásával:
+[1.2.9-es-eszközök](https://github.com/Azure/AzureStack-Tools) van egy GitHub-adattár, amely futtatja a PowerShell-modulok kezelésére és üzembe erőforrásokat az Azure Stack. Ezek az eszközök klónozza a GitHub-adattárát, vagy töltse le az AzureStack-eszközök mappát a következő szkript futtatásával:
 
   ```PowerShell
   # Change directory to the root directory. 
@@ -128,48 +128,48 @@ A legújabb Azure verem PowerShell-modul is telepíthet, vagy a ASDK gazdaszám�
   ```
 
 ## <a name="validate-the-asdk-installation"></a>A ASDK a telepítés ellenőrzése
-Győződjön meg arról, hogy a ASDK telepítése sikeres volt-e, használhatja a Test-AzureStack parancsmag az alábbiak szerint:
+Győződjön meg arról, hogy a ASDK központi telepítés sikeres volt-e, használhatja a Test-AzureStack parancsmag az alábbi lépéseket:
 
-1. Jelentkezzen be az ASDK állomáson AzureStack\AzureStackAdmin.
-2. Nyissa meg a Powershellt rendszergazdaként (nem a PowerShell ISE).
-3. Futtatás: `Enter-PSSession -ComputerName AzS-ERCS01 -ConfigurationName PrivilegedEndpoint`
-4. Futtatás: `Test-AzureStack`
+1. Jelentkezzen AzureStack\AzureStackAdmin ASDK a gazdagépen.
+2. Nyissa meg a Powershellt rendszergazdaként (nem PowerShell ISE-ben).
+3. Futtassa: `Enter-PSSession -ComputerName AzS-ERCS01 -ConfigurationName PrivilegedEndpoint`
+4. Futtassa: `Test-AzureStack`
 
-A tesztek néhány percet igénybe vehet. Ha a telepítés sikeres volt, a kimeneti alábbihoz hasonló:
+A tesztek végrehajtásához néhány percet igénybe vehet. Ha a telepítés sikeres volt, a következőhöz hasonló eredményt fog:
 
 ![test-azurestack](media/asdk-post-deploy/test-azurestack.png)
 
-Hiba történt, ha a hibaelhárítási lépésekkel kapcsolatos súgó megjelenítése.
+Hiba lépett fel, ha a hibaelhárítási lépésekkel segítséget kaphat.
 
-## <a name="activate-the-administrator-and-tenant-portals"></a>A rendszergazda és bérlői portálon aktiválása
-Után használó központi telepítések az Azure AD aktiválnia kell mindkét az Azure verem rendszergazda és bérlői portálon. Az aktiválás hozzájárul a verem Azure portál és az Azure Resource Manager a megfelelő engedélyeket ad (a hozzájárulási oldalon felsorolt) az összes felhasználó számára a könyvtár.
+## <a name="activate-the-administrator-and-tenant-portals"></a>A rendszergazda és bérlői portálok aktiválása
+Után az Azure AD telepítéseknek aktiválnia kell a mindkét az Azure Stack rendszergazdai és bérlői portált. Az aktiválás járul hozzá engedélyeket ad az Azure Stack portálon és az Azure Resource Manager a megfelelő (a jóváhagyás lapon felsorolt) az összes felhasználó számára a címtár.
 
-- Lépjen a felügyeleti portál https://adminportal.local.azurestack.external/guest/signup, olvassa el az adatokat, és kattintson a **elfogadás**. Után elfogadása, a szolgáltatás kevésbé jártas rendszergazdák számára is directory bérlői rendszergazdákat is hozzáadhat.
+- A felügyeleti portálon nyissa meg az https://adminportal.local.azurestack.external/guest/signup, olvassa el az adatokat, és kattintson **elfogadás**. Követő, szolgáltatás-rendszergazdák, akik nem is directory bérlői rendszergazdákat is hozzáadhat.
 
-- A bérlői portál navigáljon https://portal.local.azurestack.external/guest/signup, olvassa el az adatokat, és kattintson a **elfogadás**. Elfogadása után a címtárban szereplő felhasználó bármikor beléphet a bérlői portálra. 
+- A bérlői portálon nyissa meg az https://portal.local.azurestack.external/guest/signup, olvassa el az adatokat, és kattintson **elfogadás**. Követő, a felhasználók a címtárban a bérlői portálra jelentkezhetnek be. 
 
 > [!NOTE] 
-> Ha nem aktiválta a portálon, a címtár csak a rendszergazda bejelentkezhet és használja a portálok. Ha egy másik felhasználó jelentkezik be, akkor hibaüzenetet kap, amely meghatározza, hogy a rendszergazda nem adott engedélyek más felhasználók számára. Ha a rendszergazda natív módon nem tartozik Azure verem regisztrálva van a könyvtárra, az Azure-verem directory csatolni kell az aktiválási URL-címet. Például, ha Azure verem van regisztrálva a fabrikam.onmicrosoft.com és a rendszergazdai jogú felhasználó nem admin@contoso.com, navigáljon a https://portal.local.azurestack.external/guest/signup/fabrikam.onmicrosoft.com aktiválásához a portálon. 
+> Ha nem aktiválják a portálok, a directory-rendszergazda bejelentkezhet, és a portálok használata. Egy másik felhasználó jelentkezik be, ha azok hibaüzenetet kap, amely közli velük, hogy a rendszergazda nem adott engedélyek más felhasználók számára. Ha a rendszergazda nem natív módon az Azure Stack regisztrálva van a címtár tartozik, az Azure Stack-könyvtár az Aktiválás URL-címet kell bővül. Például az Azure Stack fabrikam.onmicrosoft.com és a rendszergazdai felhasználó regisztrálva van-e admin@contoso.com, navigáljon a https://portal.local.azurestack.external/guest/signup/fabrikam.onmicrosoft.com aktiválása a portálon. 
 
-## <a name="reset-the-password-expiration-policy"></a>A jelszó-elévülési szabályzatának alaphelyzetbe állítása 
-Győződjön meg arról, hogy a jelszót ahhoz, hogy a development kit gazdagép az értékelés időszak lejárta előtt nem lejár, tegye a következőket a ASDK telepítése után.
+## <a name="reset-the-password-expiration-policy"></a>Jelszó-elévülési szabályzatának alaphelyzetbe állítása 
+Ahhoz, hogy, hogy a jelszó a development kit gazdagép le nem jár, a kiértékelési időszak vége előtt, kövesse az alábbi lépéseket a ASDK üzembe helyezése után.
 
-### <a name="to-change-the-password-expiration-policy-from-powershell"></a>A jelszó-elévülési szabályzatának módosítása a Powershellből:
+### <a name="to-change-the-password-expiration-policy-from-powershell"></a>Jelszó-elévülési szabályzatának módosítása a Powershell:
 Futtassa a parancsot egy rendszergazda jogú Powershell-konzolt:
 
 ```powershell
 Set-ADDefaultDomainPasswordPolicy -MaxPasswordAge 180.00:00:00 -Identity azurestack.local
 ```
 
-### <a name="to-change-the-password-expiration-policy-manually"></a>A jelszó-elévülési szabályzatának manuális módosítása:
-1. Nyissa meg a development kit gazdagép **csoportházirend-kezelő** (GPMC. MMC), és keresse meg **csoportházirend-kezelő** – **erdő: azurestack.local** – **tartományok** – **azurestack.local**.
-2. Kattintson a jobb gombbal **alapértelmezett tartományházirend** kattintson **szerkesztése**.
-3. Navigáljon a a Csoportházirendkezelés-szerkesztő, **számítógép konfigurációja** – **házirendek** – **Windows-beállítások** – **biztonsági beállítások**– **Fiókházirendek** – **jelszóházirend**.
-4. A jobb oldali ablaktáblában kattintson duplán a **jelszó maximális élettartama**.
-5. Az a **jelszó maximális élettartama tulajdonságok** párbeszédpanelen módosítsa a **a jelszó lejár** egy érték **180**, és kattintson a **OK**.
+### <a name="to-change-the-password-expiration-policy-manually"></a>Jelszó-elévülési szabályzatának manuális módosítása:
+1. Nyissa meg a fejlesztői csomag gazdagép **Csoportházirend kezelése** (GPMC. Az MMC), és keresse meg **Csoportházirend kezelése** – **erdő: azurestack.local** – **tartományok** – **azurestack.local**.
+2. Kattintson a jobb gombbal **alapértelmezett tartományi házirend** kattintson **szerkesztése**.
+3. Lépjen a a Csoportházirendkezelés-szerkesztő, **számítógép konfigurációja** – **házirendek** – **Windows beállítások** – **biztonsági beállítások**– **Fiókházirend** – **jelszóházirend**.
+4. A jobb oldali ablaktáblában kattintson duplán a **jelszó maximális kora**.
+5. Az a **jelszó maximális kora tulajdonságok** párbeszédpanelen módosítsa a **a jelszó lejár** értéket a következőre **180**, és kattintson a **OK**.
 
 ![Csoportházirend kezelése konzol](media/asdk-post-deploy/gpmc.png)
 
 
 ## <a name="next-steps"></a>További lépések
-[A ASDK regisztrálni Azure-ral](asdk-register.md)
+[A ASDK regisztrálása az Azure-ral](asdk-register.md)

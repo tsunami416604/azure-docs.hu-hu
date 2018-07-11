@@ -11,15 +11,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/02/2018
+ms.date: 07/10/2018
 ms.author: jeffgilb
 ms.reviewer: jeffgo
-ms.openlocfilehash: e8dd425bbb5839b1c2f5ad4e217c61dc50b38ce1
-ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
+ms.openlocfilehash: c9249de56979d47a29fc9d7c12b99e41b3ada0fd
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37346824"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38465837"
 ---
 # <a name="add-hosting-servers-for-the-sql-resource-provider"></a>Az erőforrás-szolgáltató SQL üzemeltetési kiszolgáló hozzáadása
 
@@ -100,9 +100,6 @@ Adjon hozzá egy önálló üzemeltető kiszolgálót, amely már be van állít
    * Egy meglévő Termékváltozat használatához válassza ki a Termékváltozat érhető el, majd **létrehozás**.
    * A Termékváltozat létrehozásához válassza **+ létrehozni az új Termékváltozatot**. A **Termékváltozat létrehozása**, és adja meg a szükséges információkat, majd válassza ki **OK**.
 
-     > [!IMPORTANT]
-     > Különleges karaktereket, szóközöket és időszakok, többek között nem támogatottak a **neve** mező. Az alábbi képernyőfelvétel-készítés példák segítségével adja meg az értékeket a **termékcsalád**, **szint**, és **Edition** mezőket.
-
      ![A Termékváltozat létrehozása](./media/azure-stack-sql-rp-deploy/sqlrp-newsku.png)
 
 ## <a name="provide-high-availability-using-sql-always-on-availability-groups"></a>Magas rendelkezésre állás SQL Always On rendelkezésre állási csoportok használatával
@@ -119,16 +116,18 @@ SQL Always On példányok konfigurálásához további lépéseket igényel, és
 
 Engedélyeznie kell a [automatikus összehangolása](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/automatically-initialize-always-on-availability-group) az egyes rendelkezésre állási csoport, az SQL Server mindegyik példányán.
 
-Ahhoz, hogy minden példány automatikus összehangolása, szerkesztése, és futtassa a következő SQL-parancsot minden példány esetében:
+Ahhoz, hogy minden példány automatikus összehangolása, szerkesztése, és futtassa a következő SQL-parancsot minden egyes másodlagos példány esetében az elsődleges replikán:
 
   ```sql
   ALTER AVAILABILITY GROUP [<availability_group_name>]
-      MODIFY REPLICA ON 'InstanceName'
+      MODIFY REPLICA ON '<secondary_node>'
       WITH (SEEDING_MODE = AUTOMATIC)
   GO
   ```
 
-Másodlagos-példányokon szerkesztése, és futtassa a következő SQL-parancsot minden példány esetében:
+Vegye figyelembe, hogy a rendelkezésre állási csoport szögletes zárójelbe kell tenni.
+
+A másodlagos csomópontokra, futtassa a következő SQL-parancsot:
 
   ```sql
   ALTER AVAILABILITY GROUP [<availability_group_name>] GRANT CREATE ANY DATABASE
@@ -156,7 +155,7 @@ Ezeket a parancsokat használja a tartalmazott adatbázis hitelesítési kiszolg
 
    A **SQL üzemeltető kiszolgálók**, az SQL Server erőforrás-szolgáltató csatlakozhat tényleges példányait, amelyeket az SQL Server, az erőforrás-szolgáltató háttérrendszer szolgálhat.
 
-3. Adja meg az SQL Server-példány kapcsolati adatait tartalmazó képernyő. Győződjön meg arról, hogy használja-e a teljes tartománynév a címe mindig figyelő (opcionális port számát.) Adja meg az adatokat, a konfigurált rendszergazdai jogosultságokkal rendelkező fiók.
+3. Adja meg az SQL Server-példány kapcsolati adatait tartalmazó képernyő. Ellenőrizze, hogy az mindig figyelő (és az opcionális port számát és a példány neve) FQDN címére használt. Adja meg az adatokat, a konfigurált rendszergazdai jogosultságokkal rendelkező fiók.
 
 4. Az Always On rendelkezésre állási csoport jelölőnégyzetet az SQL Always On rendelkezésre állási csoport példányok támogatásának engedélyezése.
 

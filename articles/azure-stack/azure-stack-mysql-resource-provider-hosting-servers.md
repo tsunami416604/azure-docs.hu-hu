@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 07/02/2018
 ms.author: jeffgilb
 ms.reviewer: jeffgo
-ms.openlocfilehash: 60f1978b4173f169ad14deb67b075a61f9e7f149
-ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
+ms.openlocfilehash: bccc2dcad8e326cd29cfe031a95a7c2d0cf5ec7f
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37344138"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38302313"
 ---
 # <a name="add-hosting-servers-for-the-mysql-resource-provider"></a>Üzemeltetési kiszolgáló hozzáadása a MySQL erőforrás-szolgáltató
 
@@ -52,9 +52,6 @@ Győződjön meg arról, hogy rendszergazdai jogosultságokkal rendelkező fiók
    ![Hozzon létre egy MySQL-Termékváltozat](./media/azure-stack-mysql-rp-deploy/mysql-new-sku.png)
 
    A Termékváltozat **neve** Termékváltozat tulajdonságainak tükröznie kell, így a felhasználók adatbázisaikat telepítheti a megfelelő Termékváltozatot.
-
-   >[!IMPORTANT]
-   >Különleges karaktereket, szóközöket és időszakok, többek között nem támogatottak a **neve** vagy **szint** létrehozásakor, a Termékváltozat a MySQL erőforrás-szolgáltató.
 
 6. Válassza ki **OK** a Termékváltozat létrehozása.
 > [!NOTE]

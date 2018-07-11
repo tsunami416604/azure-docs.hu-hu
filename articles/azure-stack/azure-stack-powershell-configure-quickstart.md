@@ -1,6 +1,6 @@
 ---
-title: PowerShell telepítése és konfigurálása az Azure-verem gyors üzembe helyezés |} Microsoft Docs
-description: További tudnivalók a telepítése és beállítása a PowerShell Azure verem.
+title: PowerShell telepítése és konfigurálása az Azure Stack gyors |} A Microsoft Docs
+description: Ismerje meg a telepítése és konfigurálása a PowerShell az Azure Stackhez.
 services: azure-stack
 documentationcenter: ''
 author: mattbriggs
@@ -14,25 +14,25 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/30/2018
 ms.author: mabrigg
-ms.openlocfilehash: 66598bda7ca1fcf5c6e05ab47232236b740177a6
-ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
+ms.openlocfilehash: 70c1fd72df437ade3bc12cd23db923f6d449e7fb
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/12/2018
-ms.locfileid: "34075238"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38465743"
 ---
-# <a name="get-up-and-running-with-powershell-in-azure-stack"></a>Amelyekből megismerheti a verem Azure PowerShell használatával
+# <a name="get-up-and-running-with-powershell-in-azure-stack"></a>Első lépésekhez a PowerShell-lel az Azure Stackben
 
-*A következőkre vonatkozik: Azure verem integrált rendszerek és az Azure verem szoftverfejlesztői készlet*
+*A következőkre vonatkozik: Azure Stackkel integrált rendszerek és az Azure Stack fejlesztői készlete*
 
-A gyors üzembe helyezés telepítése és konfigurálása az Azure-verem környezet a PowerShell segítségével. A parancsfájl, amely ebben a cikkben nyújtunk hatókörét a **Azure verem operátor** csak.
+A rövid útmutató segítségével telepítését és a egy Azure Stack-környezet konfigurálása a PowerShell használatával. A parancsfájl, amely ebben a cikkben kínálunk hatókörét a **Azure Stack-operátorokról** csak.
 
-Ebben a cikkben ismertetett lépéseit tömörített verziója telepítve a [PowerShell telepítése]( azure-stack-powershell-install.md), [eszközök]( azure-stack-powershell-download.md), és [az Azure-verem operátor PowerShell környezetkonfigurálása]( azure-stack-powershell-configure-admin.md) cikkeket. Ez a témakör a parancsfájlok használatával állíthat be PowerShell Azure Active Directory vagy Active Directory összevonási szolgáltatások (AD FS) üzembe helyezett Azure verem környezetekben.  
+Ebben a cikkben ismertetett lépéseket a rövidített változata a [PowerShell telepítése]( azure-stack-powershell-install.md), [eszközök]( azure-stack-powershell-download.md), és [az Azure Stack-operátorokrólPowerShell-környezetkonfigurálása]( azure-stack-powershell-configure-admin.md) cikkeket. Ez a témakör a parancsfájlok használatával állíthat be PowerShell az Azure Active Directoryval vagy az Active Directory összevonási szolgáltatások (AD FS) üzembe helyezett Azure Stack-környezetekhez.  
 
 
-## <a name="set-up-powershell-for-azure-active-directory-based-deployments"></a>Azure Active Directory-alapú telepítések PowerShell beállítása
+## <a name="set-up-powershell-for-azure-active-directory-based-deployments"></a>Az Azure Active Directory-alapú környezetekben a PowerShell beállítása
 
-Jelentkezzen be a Azure verem szoftverfejlesztői készlet, vagy a Windows-alapú külső ügyfél Ha VPN-en keresztül kapcsolódik. Nyisson meg egy emelt szintű PowerShell ISE-munkamenetet, és futtassa az alábbi parancsfájlt. Ne felejtse el frissíteni a **TenantName**, **ArmEndpoint**, és **GraphAudience** a környezet konfigurálása a megfelelő változók:
+Jelentkezzen be az Azure Stack fejlesztői készletet, vagy egy Windows-alapú külső ügyfél Ha VPN-kapcsolaton keresztül kapcsolódik. Nyisson meg egy rendszergazda jogú PowerShell ISE-munkamenetet, és futtassa az alábbi parancsfájlt. Győződjön meg arról, hogy frissítette a **TenantName**, **ArmEndpoint**, és **GraphAudience** változók szükség szerint az Ön környezetének konfigurációját:
 
 ```powershell
 # Specify Azure Active Directory tenant name.
@@ -98,9 +98,9 @@ Import-Module .\Connect\AzureStack.Connect.psm1
     -TenantId $TenantID 
 ```
 
-## <a name="set-up-powershell-for-ad-fs-based-deployments"></a>AD FS-alapú telepítések PowerShell beállítása
+## <a name="set-up-powershell-for-ad-fs-based-deployments"></a>PowerShell beállítása az AD FS-alapú központi telepítésekhez
 
-Az alábbi parancsfájlt használhatja, ha Azure verem internet való csatlakozáskor. Azonban Azure verem internetkapcsolat nélkül működnek, ha használja a [leválasztása módszer a PowerShell telepítése](azure-stack-powershell-install.md#install-powershell-in-a-disconnected-or-a-partially-connected-scenario-with-limited-internet-connectivity) és a konfigurálása a PowerShell-parancsmagok azonos, ahogy a parancsfájl az maradnak. Jelentkezzen be a Azure verem szoftverfejlesztői készlet, vagy a Windows-alapú külső ügyfél Ha VPN-en keresztül kapcsolódik. Nyisson meg egy emelt szintű PowerShell ISE-munkamenetet, és futtassa az alábbi parancsfájlt. Ne felejtse el frissíteni a **ArmEndpoint** és **GraphAudience** a környezet konfigurálása a megfelelő változók:
+Az alábbi parancsfájlt is használhatja, ha az Azure Stack, ha az internethez csatlakozó működik. Azonban ha az Azure Stack internetkapcsolat nélkül működnek, használja a [leválasztott telepítésére a PowerShell](azure-stack-powershell-install.md) és a konfigurálása a PowerShell-parancsmagok megmarad ugyanaz a szkriptben látható módon. Jelentkezzen be az Azure Stack fejlesztői készletet, vagy egy Windows-alapú külső ügyfél Ha VPN-kapcsolaton keresztül kapcsolódik. Nyisson meg egy rendszergazda jogú PowerShell ISE-munkamenetet, és futtassa az alábbi parancsfájlt. Győződjön meg arról, hogy frissítette a **ArmEndpoint** és **GraphAudience** változók szükség szerint az Ön környezetének konfigurációját:
 
 ```powershell
 
@@ -166,14 +166,14 @@ Add-AzureRmAccount `
 
 ## <a name="test-the-connectivity"></a>A kapcsolat tesztelése
 
-Most, hogy a PowerShell konfigurálását, hozzon létre egy erőforráscsoportot tesztelheti a konfiguráció:
+Most, hogy konfigurálta a PowerShell, a konfiguráció tesztelheti hozzon létre egy erőforráscsoportot:
 
 ```powershell
 New-AzureRMResourceGroup -Name "ContosoVMRG" -Location Local
 ```
 
 > [!note]  
-> Adja meg egy erőforráscsoportot, szüksége lesz az előfizetéshez van erőforráscsoport. Előfizetések kapcsolatos további információkért lásd: [terv, ajánlat, kvóta és előfizetés – áttekintés](azure-stack-plan-offer-quota-overview.md)
+> Adjon meg egy erőforráscsoportot, szüksége lesz rendelkezik erőforráscsoporttal az előfizetésében. Az előfizetésekkel kapcsolatos további információkért lásd: [csomag, ajánlat, kvóta és előfizetés áttekintése](azure-stack-plan-offer-quota-overview.md)
 
 Az erőforráscsoport létrehozása után a **üzembe helyezési állapota** tulajdonsága **sikeres**.
 
