@@ -1,6 +1,6 @@
 ---
 title: Azure Health Analytics Blueprint
-description: Útmutatás a HIPAA vagy HITRUST állapotfigyelő Analytics tervezetének telepítéséhez
+description: Útmutató a HIPAA/HITRUST egészségügyi Analytics tervrajz üzembe helyezése
 services: security
 documentationcenter: na
 author: jomolesk
@@ -15,62 +15,62 @@ ms.workload: na
 ms.date: 02/27/2018
 ms.author: jomolesk
 ms.openlocfilehash: f58466bb4cc90823d8e75e0371b400ee674e8b5d
-ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
+ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/29/2018
+ms.lasthandoff: 07/10/2018
 ms.locfileid: "37113231"
 ---
-# <a name="azure-security-and-compliance-blueprint---hipaahitrust-health-data-and-ai"></a>Azure biztonsági és megfelelőségi tervezetének - HIPAA/HITRUST állapotadatok és AI
+# <a name="azure-security-and-compliance-blueprint---hipaahitrust-health-data-and-ai"></a>Azure biztonsági és megfelelőségi terv – a HIPAA/HITRUST-állapotadatok és mesterséges Intelligencia
 
 ## <a name="overview"></a>Áttekintés
 
-**Az Azure biztonsági és megfelelőségi tervezetének - HIPAA/HITRUST állapotadatok és AI kínál a kulcsrakész megoldás üzembe helyezése az Azure PaaS bemutatni, hogyan biztonságosan betöltési, tárolásához, elemzése, és ugyanakkor nem képes kielégíteni iparági megfelelési egészségügyi adatok kezeléséhez követelmények. Szerkezeti terve segít felgyorsítani felhő elfogadása és kihasználtsági adatok szabályozott rendelkező ügyfelek esetén.**
+**Az Azure biztonsági és -megfelelőségi terv – a HIPAA/HITRUST-állapotadatok és mesterséges Intelligencia egy kulcsrakész megoldás üzembe helyezése egy Azure PaaS, bemutatják, hogyan lehet biztonságosan betöltési, tárolásához, elemzéséhez és egészségügyi adatok kezelése során képes arra, hogy megfelel az iparági megfelelőségi ajánlatok követelmények. A tervezet segítségével felgyorsíthatja a felhőre való áttérés és kihasználtságát az ügyfelek, amelyek a szabályozott adatokkal.**
 
-Az Azure biztonsági és megfelelőségi tervezetének - HIPAA/HITRUST állapotadatok és AI tervezetének biztosít az eszközök és telepítheti a biztonságos útmutatást, egészségügyi biztosítás hordozhatóságáról és elszámolási kötelezettségéről szóló törvény (HIPAA) és egészségügyi adatokat megbízható Alliance (HITRUST) készen áll Platform,--szolgáltatás (PaaS) környezetben választásával dolgozhat fel, a tárolás, a elemzése és a személyes és a nem személyes orvosi rekordok végpont megoldásként telepített biztonságos, többrétegű felhőalapú környezetben való interakció. Bővíthető egy közös referencia-architektúrában, és arra tervezték, hogy egyszerűsítése érdekében a Microsoft Azure elfogadását. A megadott architektúra keresést egy felhőalapú megközelítése az terheket és a központi telepítési költségek csökkentése a szervezetek igényei megoldást mutatja be.
+Az Azure biztonsági és -megfelelőségi terv – a HIPAA/HITRUST egészségügyi adatok és AI-terv biztosít eszközöket és útmutatás nyújtása a telepítése egy biztonságos, Health Insurance Portability és Accountability Act (HIPAA) és egészségügyi információk megbízható Alliance (HITRUST) készen áll Platform--szolgáltatásként (PaaS) környezetet fürtjét, tárolása, elemzése és személyes, mind a nem személyes orvosi egy biztonságos, többrétegű felhőalapú környezetben, egy teljes körű megoldás telepített implementálására. Ez gyakori referenciaarchitektúra bemutatja, és egyszerűsíti a Microsoft Azure bevezetését. A megadott architektúra a felhőalapú megközelítés a terheket és a központi telepítési költségek csökkentéséhez kérő szervezetek igényeit megoldást mutatja be.
 
 ![](images/components.png)
 
-A megoldást arra tervezték, a minta adatkészletet gyors egészségügy együttműködési erőforrások (FHIR), az egészségügyi információcserére elektronikus úton, szabvánnyá fájlrendszerrel formázott fogadni, és biztonságos módon tárolja. Az ügyfelek ezután használhatja Azure Machine Learning hatékony üzleti intelligencia eszközök és az elemzések rajta a mintaadatokra végzett előrejelzések áttekintéséhez előnyeit. Például, hogy milyen típusú Azure Machine Learning megkönnyítheti kísérlet szerkezeti terve mintát adatkészletre, parancsfájlok, és eszközöket tartalmaz a a hossza egy türelmet egy kórháznak létesítményt a személyes előrejelzéséhez. 
+A megoldás célja egy minta adatkészlet gyors Healthcare együttműködési erőforrások (FHIR), az egészségügyi információk cseréje elektronikus úton, globális szabvány használatával formázott felhasználását, és biztonságos módon tárolja. Ügyfelek ezután használhatja az Azure Machine Learning hatékony üzleti intelligencia eszközök és az analitikai tekintse át a mintaadatok rmse előnyeit. Például, hogy milyen típusú kísérlet Azure Machine Learning megkönnyítheti a tervezet minta adatkészlet, a parancsfájlokat és a egy betegnek a kórházi létesítménybe vesznek hossza előrejelzésére szolgáló eszközök is tartalmaz. 
 
-Ez tervezetének készült ügyfelek úgy, hogy az egyedi követelményeket, új Azure Machine learning kísérleteket mindkét klinikai és működési használati eset forgatókönyvek megoldására fejlesztése moduláris alapjaként kiszolgálására. Arra tervezték, biztonságos és megfelelő telepítésekor; azonban ügyfelei felelősek az szerepkörök konfigurálása megfelelő, és minden egyéb módosítás megvalósítása. Vegye figyelembe a következőket:
+Ez a megoldás alkalmas szolgál az ügyfelek számára állítsa be az adott követelményekhez, új Azure Machine learning-példakísérleteket megoldásában mindkét klinikai és a működési használati esetek fejlesztése moduláris alapjaként. Arra tervezték, hogy biztonságos és megfelelő telepítésekor; azonban ügyfelei felelősek az megfelelően szerepkörök konfigurálása, és minden egyéb módosítás végrehajtása. Vegye figyelembe a következőket:
 
--   Ez tervezetének biztosít a Microsoft Azure használni egy HITRUST ügyfelek alapterv és a HIPAA környezet.
+-   A megoldás lehetővé teszi az ügyfelek számára a Microsoft Azure használata egy HITRUST alapterv és a HIPAA-környezet.
 
--   Bár szerkezeti terve úgy lett kialakítva, a HIPAA és (a gyakori biztonsági keretrendszeren keresztül--CSF) HITRUST igazítva, akkor nem tekinthető megfelelő, amíg egy külső auditor / HIPAA és HITRUST a hardvertanúsítvány követelményeit által hitelesített.
+-   Bár a tervezet úgy lett kialakítva, hogy illeszkedjenek a HIPAA és a HITRUST (keresztül a közös biztonsági keretrendszert--CSF), azt kell nem megfelelőnek tekinthető mindaddig, amíg egy külső auditor szerint a HIPAA és a HITRUST-minősítési követelmények által hitelesített.
 
--   Ügyfelei felelősek a legalapvetőbb architektúra használatával készített megoldások megfelelő biztonsági és megfelelőségi ellenőrzések elvégzéséhez.
+-   Ügyfelek megoldással, ez a alapvető architektúra használatával létrehozott megfelelő biztonsági és megfelelőségi felülvizsgálatai elvégzéséért felelős.
 
 ## <a name="deploying-the-automation"></a>Az automatizálás telepítése
 
-- A megoldás telepítéséhez kövesse a megjelenő utasításokat az üzembe helyezési útmutatót. 
+- A megoldás üzembe helyezéséhez kövesse az ismertetett az üzembe helyezési útmutatót. 
 
 [![](./images/deploy.png)](https://aka.ms/healthblueprintdeploy)
 
-Nézze meg ezt a gyors áttekintést a megoldás működéséről, [videó](https://aka.ms/healthblueprintvideo) foglalja össze, és a központi telepítés bemutatására.
+Röviden, ez a megoldás működéséről, tekintse meg ezt [videó](https://aka.ms/healthblueprintvideo) pedig elmagyarázza és annak üzembe helyezési bemutatására.
 
-- A gyakran ismételt kérdések megtalálhatók a [gyakran ismételt kérdések](https://aka.ms/healthblueprintfaq) útmutatást.
+- Gyakran feltett kérdést találhat a [– gyakori kérdések](https://aka.ms/healthblueprintfaq) útmutatást.
 
--   **Architekturális diagramja.** Az ábrán látható a referencia-architektúrában szerkezeti terve használt, és a példa eset használja.
+-   **Architekturális diagramja.** Az ábrán látható a referenciaarchitektúrát a tervezet használt, és a példát használja használatieset-forgatókönyvek.
 
--   **A központi telepítési sablonok**. Ebben a felállásban [Azure Resource Manager-sablonok](/azure/azure-resource-manager/resource-group-overview#template-deployment) automatikusan központi telepítésével a architektúra összetevői a Microsoft Azure konfigurációs paraméterek megadásával a telepítés során.
+-   **A központi telepítési sablonok**. Ebben a felállásban [Azure Resource Manager-sablonok](/azure/azure-resource-manager/resource-group-overview#template-deployment) automatikusan helyezheti üzembe az architektúra összetevői a Microsoft Azure konfigurációs paraméterek megadásával a telepítés során használt.
 
--   **[Automatikus központi telepítési parancsfájlok](https://aka.ms/healthblueprintdeploy)**. Ezek a parancsfájlok segítségével, a megoldás üzembe helyezéséhez. A parancsfájlok foglalják magukban:
+-   **[Automatizált üzembehelyezési szkriptek](https://aka.ms/healthblueprintdeploy)**. Ezek a szkriptek segítségével, a megoldás üzembe helyezéséhez. A parancsfájlok áll:
 
 
--   A házirendmodul-telepítésének és [globális rendszergazda](/azure/active-directory/active-directory-assign-admin-roles-azure-portal) telepítési parancsfájl használatával telepítse, és győződjön meg arról, hogy a szükséges PowerShell-modulok és a globális rendszergazdai szerepkörök helyesen vannak konfigurálva. 
--   PowerShell parancsfájl telepítés üzembe helyezéséhez, egy előre elkészített bemutató funkciók tartalmazó .zip fájl keresztül megadott szolgál.
+-   A modul telepítése és [globális rendszergazdai](/azure/active-directory/active-directory-assign-admin-roles-azure-portal) telepítési parancsfájl segítségével telepítse, és győződjön meg arról, hogy a szükséges PowerShell-modulok és a globális rendszergazdai szerepkör megfelelően vannak konfigurálva. 
+-   Egy telepítési PowerShell-parancsfájl segítségével üzembe helyezheti a megoldást egy .zip fájlt, amely tartalmaz egy előre elkészített bemutató funkciókat nyújtja.
 
 ## <a name="solution-components"></a>Megoldás-összetevők
 
 
-A legalapvetőbb architektúra a következő összetevőkből áll:
+Alapvető architektúrája a következő összetevőkből áll:
 
--   **[Fenyegetések modellezése](https://aka.ms/healththreatmodel)**  egy átfogó fenyegetések modellezése való használatra tm7 formátumban van megadva a [Microsoft fenyegetések modellezése eszköz](https://www.microsoft.com/en-us/download/details.aspx?id=49168), a megoldás összetevői megjelenítő, az adatok között zajló kommunikációról, és a megbízhatóság határok. A modell segít megérteni a pontokat a rendszer infrastruktúra kockázatokkal machine learning-összetevők vagy egyéb módosítások fejlesztése során az ügyfelek.
+-   **[Fenyegetések modellezése](https://aka.ms/healththreatmodel)**  egy átfogó fenyegetések modellezése tm7 formátumban van megadva a segítségével a [Microsoft Threat Modeling Tool](https://www.microsoft.com/en-us/download/details.aspx?id=49168), a megoldás összetevői látható, a közti adatfolyamok, és a megbízhatósági kapcsolat határok. A modell segítségével az ügyfelek megismerhetik a pontokat a rendszer infrastruktúra esetleges kockázat, machine learning-összetevők vagy egyéb módosítások fejlesztése során.
 
--   **[Ügyfél megvalósítása mátrix](https://aka.ms/healthcrmblueprint)**  A Microsoft Excel-munkafüzet HITRUST vonatkozó követelményeit sorolja fel, és elmagyarázza, hogyan Microsoft és az ügyfél felelősek az értekezlet minden egyes.
+-   **[Ügyfél megvalósítása mátrix](https://aka.ms/healthcrmblueprint)**  A Microsoft Excel-munkafüzet HITRUST vonatkozó követelményeit, és azt ismerteti, hogyan a Microsoft és az ügyfél a mindegyiknél teljesítéséért felelős.
 
--   **[Állapotának áttekintése.](https://aka.ms/healthreviewpaper)** A megoldás Coalfire Systems, Inc. lett felül Az állapotfigyelő megfelelőségi (HIPAA és HITRUST) áttekintése és útmutatást biztosít a megvalósítás biztosít egy auditor\'s át kell tekinteni a megoldás, és egy éles használatra kész telepítéshez szerkezeti terve átalakítása szempontjai.
+-   **[Állapotának áttekintése.](https://aka.ms/healthreviewpaper)** A megoldás felülvizsgálták Coalfire Systems, Inc. Az egészségügyi megfelelőségi (a HIPAA és a HITRUST) felülvizsgálati és megvalósítási útmutatást nyújt egy auditor\'s át kell tekinteni a megoldás és a egy éles használatra kész telepítéshez a tervezet átalakítása szempontjai.
 
 # <a name="architectural-diagram"></a>Architekturális diagramja
 
@@ -80,306 +80,306 @@ A legalapvetőbb architektúra a következő összetevőkből áll:
 ## <a name="roles"></a>Szerepkörök
 
 
-Szerkezeti terve kórháznak felügyeleti és betegápolás határozza meg két szerepkört azon rendszergazda felhasználók (operátorok), és három szerepkörök a felhasználók számára. Hatodik szerepkör a HIPAA és egyéb szabályozásoknak való megfelelőség kiértékeléséhez egy auditor van meghatározva. Azure szerepköralapú hozzáférés-vezérlés (RBAC) lehetővé teszi, hogy pontosan célzott kezelési minden felhasználóhoz a megoldás a beépített és egyéni szerepkörök keresztül. Lásd: [szerepköralapú hozzáférés-vezérlés az Azure-portálon az első lépései](https://docs.microsoft.com/azure/role-based-access-control/overview) és [Azure szerepköralapú hozzáférés-vezérlés beépített szerepkörök](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles) RBAC, szerepkörök és engedélyekkel kapcsolatos részletes információkat.
+A tervezet határozza meg a két szerepkört azon rendszergazda felhasználók (operátorok), és a felhasználók számára három szerepkört a kórházvezetés és a betegellátásban. A hatodik szerepkör van definiálva egy auditor kiértékelni a HIPAA és más szabályozások előírásainak betartását. Az Azure szerepköralapú hozzáférés-vezérlés (RBAC) lehetővé teszi, hogy a megoldás beépített és egyéni szerepkör segítségével minden felhasználó pontosan koncentrálhassanak a kezelését. Lásd: [szerepköralapú hozzáférés-vezérlés az Azure Portalon – első lépések](https://docs.microsoft.com/azure/role-based-access-control/overview) és [Azure szerepköralapú hozzáférés-vezérlés beépített szerepkörei](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles) RBAC szerepkörök és engedélyek kapcsolatos részletes információkat.
 
 ### <a name="site-administrator"></a>Hely rendszergazdája
 
 
-A hely rendszergazdájának felelős az ügyfél az Azure-előfizetéséhez. Általános központi telepítésére, de nincs hozzáférési jogosultsága beteg rögzíti.
+A hely rendszergazdájának felelős az ügyfél Azure-előfizetést. Általános üzembe helyezését, de nem férhetnek hozzá a betegek kartonjai.
 
--   Alapértelmezett szerepkör-hozzárendelések: [tulajdonosa](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#owner)
+-   Alapértelmezett szerepkör-hozzárendeléseit: [tulajdonosa](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#owner)
 
--   Egyéni szerepkör-hozzárendelések: nincs
+-   Egyéni szerepkör-hozzárendeléseit: N/A
 
 -   Hatókör: előfizetés
 
 ### <a name="database-analyst"></a>Adatbázis-elemző
 
-Az adatbázis elemző felügyeli az SQL Server-példány és az adatbázis.
-Nem lehet hozzáférni beteg rekordok rendelkeznek.
+Az adatbázis-elemző felügyeli, az SQL Server-példány és az adatbázist.
+A betegek kartonjai nincs hozzáféréssel rendelkeznek.
 
--   Beépített szerepkör-hozzárendelések: [SQL DB Contributor](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#sql-db-contributor), [SQL Server közreműködő](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#sql-server-contributor)
+-   Beépített szerepkör-hozzárendeléseit: [SQL DB Contributor](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#sql-db-contributor), [SQL Server Közreműködője](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#sql-server-contributor)
 
--   Egyéni szerepkör-hozzárendelések: nincs
-
--   Hatókör: erőforráscsoport
-
- ### <a name="data-scientist"></a>Adatok tudósok
-
-
-Az adatok tudósok az Azure Machine Learning szolgáltatás működik. Ezek importálni, exportálni, és adatok kezelésére, és jelentéseket is futtathatnak. Az adatok tudósok betegek adatai hozzáféréssel rendelkezik, de nem rendelkezik rendszergazdai jogosultságokkal.
-
--   Beépített szerepkör-hozzárendelések: [tárolási fiók közreműködői](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-account-contributor)
-
--   Egyéni szerepkör-hozzárendelések: nincs
+-   Egyéni szerepkör-hozzárendeléseit: N/A
 
 -   Hatókör: erőforráscsoport
 
-### <a name="chief-medical-information-officer-cmio"></a>Fő orvosi információk tisztviselő (CMIO)
+ ### <a name="data-scientist"></a>Adatelemzési szakértő
 
 
-A CMIO straddles az oszd informatikai/technológiák és egészségügyi szervezetben egészségügyi szakemberek között. Feladataik rendszerint analytics segítségével határozza meg, ha éppen erőforrásokat megfelelően a szervezeten belül.
+Az adatszakértő működik, az Azure Machine Learning szolgáltatáshoz. Ezek is importálása, exportálása, adatok kezelése és jelentések futtatása. Az adatszakértő férhet hozzá a betegek adatai, de nem rendelkezik rendszergazdai jogosultságokkal.
 
--   Beépített szerepkör-hozzárendelések: nincs
+-   Beépített szerepkör-hozzárendeléseit: [Tárfiók-közreműködő](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-account-contributor)
 
-### <a name="care-line-manager"></a>Ügyeljen arra, Vonalkezelő
+-   Egyéni szerepkör-hozzárendeléseit: N/A
+
+-   Hatókör: erőforráscsoport
+
+### <a name="chief-medical-information-officer-cmio"></a>Informatikai Medical igazgató (Fontos)
 
 
-A figyelmet vonalkezelő van közvetlenül érintett betegek körültekintően.
-Az e munkakörben dolgozók feladata, hogy nyomon kövessék az egyes betegek állapotát, valamint garantálják, hogy a dolgozók megfeleljenek a hozzájuk rendelt betegek ellátási igényeinek. A figyelmet vonalkezelő hozzáadása és beteg rekordok frissítése felelős.
+Az egészségügyi Informatikai igazgató a informatikusait/technológiai szakértőit az egészségügyi egészségügyi szervezet közötti szakadékot feladata. A feladataik rendszerint elemzés segítségével határozza meg, ha erőforrások kerülnek lefoglalásra megfelelően a szervezeten belül.
 
--   Beépített szerepkör-hozzárendelések: nincs
+-   Beépített szerepkör-hozzárendeléseit: nincs
 
--   Egyéni szerepkör-hozzárendelések: rendelkezik-e ehhez mindkét türelmet beléptetésre HealthcareDemo.ps1 futtatásához és ellátásához.
+### <a name="care-line-manager"></a>Betegápolási vezető
+
+
+A betegápolási vezető van közvetlenül is részt vesz a betegek ellátásában.
+Az e munkakörben dolgozók feladata, hogy nyomon kövessék az egyes betegek állapotát, valamint garantálják, hogy a dolgozók megfeleljenek a hozzájuk rendelt betegek ellátási igényeinek. A betegápolási vezető felelős hozzáadása és a betegek kartonjai frissítése.
+
+-   Beépített szerepkör-hozzárendeléseit: nincs
+
+-   Egyéni szerepkör-hozzárendeléseit: jogosultsággal ehhez mindkét beteg már a Betegfelvétel, HealthcareDemo.ps1 futtatásához és lezárására.
 
 -   Hatókör: erőforráscsoport
 
 ### <a name="auditor"></a>Auditor
 
 
-Az auditor kiértékeli megfelelőség szempontjából a megoldás. Nincs a hálózathoz közvetlen hozzáférést rendelkeznek.
+Az auditor kiértékeli megfelelőség szempontjából a megoldás. A hálózat nincs közvetlen hozzáféréssel rendelkeznek.
 
--   Beépített szerepkör-hozzárendelések: [olvasó](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#reader)
+-   Beépített szerepkör-hozzárendeléseit: [olvasó](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#reader)
 
--   Egyéni szerepkör-hozzárendelések: nincs
+-   Egyéni szerepkör-hozzárendeléseit: N/A
 
 -   Hatókör: előfizetés
 
-## <a name="example-use-case"></a>Példa használati eset
+## <a name="example-use-case"></a>Példa használati esetekhez
 
 
-A példa használati eset a tervezetének mellékelt mutatja be, hogyan szerkezeti terve segítségével engedélyezze a gépi tanulási és elemzés egészségügyi adatok a felhőben. Contosoclinic egy kis kórháznak az Amerikai Egyesült Államokban található. A kórháznak hálózati rendszergazdáknak is érdemes Azure Machine Learning segítségével jobban előre jelezni az egy türelmet hossza időpontjában felvételéről működési munkaterhelés hatékonyság növelése, és nyújthat gondot minőségének javítása érdekében.
+Ez a megoldás részét képező példa használati eset azt mutatja be, hogyan a tervezet használható engedélyezése a machine learning és a felhőalapú egészségügyi adatok elemzése. Contosoclinic egy kis kórházi, az Egyesült Államokban található. A kórházi hálózati rendszergazdáknak is érdemes az Azure Machine Learning segítségével jobban előre jelezni a beteg ápolás felvételéről hatékonyságának növeléséhez és ellátás azt is lehetővé teszi a minőség fokozása érdekében időpontjában.
 
-### <a name="predicting-length-of-stay"></a>Előrejelzésére hossza
+### <a name="predicting-length-of-stay"></a>Tartózkodás időtartamának előrejelzése
 
 
-A példa felhasználási forgatókönyve Azure Machine Learning segítségével egy újonnan bevezetett türelmet hossza előrejelzése összehasonlítva beteg bevitel venni az összesített előzményadatok az előző betegek orvosi részleteit.
-Szerkezeti terve anonimizált egészségügyi adatok bemutatják a képzés és prediktív képességeit a megoldás nagy készletét tartalmazza. Éles környezetben az ügyfelek saját használna a megoldást a környezet, az eszközök és a betegek egyedi részleteit tükröző több pontos előrejelzéseket betanításához.
+A példa használati esetekhez Azure Machine Learning segítségével előre jelezni egy újonnan bevezetett beteg kórházi ápolás összehasonlításával összesített előzményadatok előző betegek származnak, betegek bevitel orvosi részleteit.
+A tervezet anonimizált orvosi bemutatásához a megoldás betanítást, prediktív képességeit nagy készletét tartalmazza. Az éles környezet esetében ügyfelek lenne használja saját rekordokat a megoldást a pontos előrejelzések tükröző a környezetben, a létesítmények és a betegek egyedi részleteit.
 
 ### <a name="users-and-roles"></a>Felhasználók és szerepkörök
 
 
-**Webhely-rendszergazda--Alex**
+**Hely rendszergazdája--Alex**
 
-*E-mailek: Alex\_SiteAdmin*
+*E-mail cím: Alex\_SiteAdmin*
 
-Alex a folyamat, amely csökkentheti a helyszíni hálózat felügyelete okozta terheket és a felügyeleti költségek csökkentése kiértékelése. Alex rendelkezik lett kiértékelése Azure egy kis ideig, de a szolgáltatásait, amely a HiTrust megfelelőségi követelményeknek a felhőben tárolni türelmet kell struggled rendelkezik. Alex az Azure állapotfigyelő AI telepíthet megfelelőségi használatra kész állapotfigyelő megoldást, amely a felhasználói igényeknek HiTrust követelmények küldött van kijelölve.
+Alex a feladat, amely egy helyszíni hálózat kezelésének terhe csökkentése és a felügyeleti költségek csökkentése technológiák kiértékelheti, hogy. Alex rendelkezik lett szeretném összehasonlítani az Azure egy kis ideig, de rendelkezik struggled konfigurálása a szolgáltatásokat, amelyek kell beteg adatokat tárolni a felhőben, a HiTrust megfelelőségi követelmények teljesítése érdekében. Alex ki van választva az Azure állapota AI telepíthet megfelelőségi használatra kész állapot megoldást, a HiTrust az ügyfelek igényeinek megfelelően a követelményeknek már képes kezelni.
 
-**Adatok tudósok--Perényi**
+**Statisztikusnak Perényi**
 
-*E-mailek: Perényi\_DataScientist*
+*E-mail cím: Perényi\_DataScientist*
 
-Perényi van feladata használ, és betekintést betegápolás egészségügyi adatok elemzése modellek létrehozása. Perényi saját modellek létrehozásához használja az SQL és az R statisztikai programozási nyelv.
+Perényi használatával, és elemzéséhez, orvosi betegellátásban betekintést biztosít a modellek létrehozására van. Perényi SQL és statisztikai R programozási nyelv használatával saját modelleket hozhat létre.
 
 **Adatbázis-elemző--Danny**
 
-*E-mailek: Danny\_DBAnalyst*
+*E-mail cím: Danny\_DBAnalyst*
 
-Danny a fő kapcsolódási semmit a Microsoft SQL Server minden beteg adatokat tároló Contosoclinic a kapcsolatban. Danny egy tapasztalt SQL Server rendszergazdaként közelmúltban vált ismeri az Azure SQL Database.
+Danny bármit fő forduljon a Microsoft SQL Server, amely a betegek adatokat tárolja a Contosoclinic kapcsolatban. Danny egy tapasztalt SQL Server-rendszergazdához, aki rendelkezik nemrég megismerkedhet az Azure SQL Database.
 
-**Fő orvosi információk tisztviselő--Caroline**
+**Informatikai Medical igazgató – Caroline**
 
-Caroline Chris a fontos Vonalkezelő, és az adatok tudósok Perényi meghatározza ható tényezők hatással beteg hossza dolgoznak.
-Caroline az előrejelzés a hosszát a tartózkodási (másik) megoldásban való alapján határozza meg, ha éppen erőforrásokat megfelelően a kórháznak hálózatban. Például az irányítópulttal megadott ebben a megoldásban.
+Chris a betegápolási vezető, és az Adatszakértő Perényi meghatározni, hogy milyen tényezők befolyásolják a betegek kórházi ápolás Caroline dolgoznak.
+Caroline a hossz – a tartózkodási (LOS) megoldás által létrehozott javaslatok alapján határozza meg, ha erőforrások kerülnek lefoglalásra megfelelően a kórházi hálózatban. Ha például az irányítópulttal ebben a megoldásban foglalt.
 
-**Fontos sor Manager--Chris**
+**Chris gondoskodik a betegápolási vezető--**
 
-*E-mailek: Chris\_CareLineManager*
+*E-mail cím: Chris\_CareLineManager*
 
-Az egyes, közvetlenül kezeléséért beteg beléptetése és a kibocsátás Contosoclinic, a Chris használja az előrejelzés a másik megoldás által létrehozott arról, hogy megfelelő személyzettel meghozandó gondot kínálnak, amíg azok tartózkodó a lehetőség.
+Az egyéni közvetlenül betegek már a betegfelvétel és Contosoclinic, a kibocsátás kezeléséért Chris használ a LOS megoldás által generált előrejelzések győződjön meg arról, hogy elérhetők-e megfelelő gondossággal nyújt betegeket, míg azok tartózkodó a létesítmény.
 
 **Auditor--Han**
 
-*E-mailek: Han\_Auditor*
+*E-mail cím: Han\_Auditor*
 
-Han élmény naplózásának ISO, SOC és HiTrust rendelkező tanúsított naplózójának. Tekintse át a Contosoclinc tartozó hálózati han lett alkalmaz. Han tekintheti meg a felhasználói felelősségi mátrix a megoldás megadott győződjön meg arról, hogy a tervezetének és a másik megoldás vannak tárolva, a folyamat, és bizalmas személyes adatok megjelenítéséhez használható.
+Han egy hitelesített auditor rendelkező, az ISO, SOC és a HiTrust naplózásának élmény. Han volt felvett Contosoclinc a hálózati áttekintéséhez. Han tekintheti át az ügyfél felelőssége mátrix a megoldáshoz mellékelt győződjön meg arról, hogy a tervezet és LOS megoldás tárol, dolgoz fel, és jelenítheti meg a személyes adatok használhatók.
 
 
 # <a name="design-configuration"></a>Tervezési konfiguráció
 
 
-Ez a szakasz részletesen felsorolja a meghatározott alapértelmezett konfigurációk és a leírt szerkezeti terve beépített biztonsági intézkedéseket:
+Ez a szakasz részletesen a meghatározott alapértelmezett konfigurációk és a tervezet vázolt a beépített biztonsági intézkedéseket:
 
-- **BEMENETI** nyers adatforrás FHIR adatforrás
-- **TÁROLÓ** bizalmas információk
-- **ELEMZÉS** és eredmények előrejelzése
-- **KOMMUNIKÁCIÓ** az eredmények és előrejelzés
+- **BETÖLTÉS** FHIR adatforrás beleértve nyers adatforrások
+- **TÁROLÓ** bizalmas adatokat
+- **Az elemzés** és az eredmények előrejelzése
+- **JELENTÉSEK** az eredmények és az előrejelzések
 - **IDENTITÁS** felügyeleti megoldás
-- **BIZTONSÁGI** engedélyezve van a szolgáltatások
+- **BIZTONSÁGI** funkciók engedélyezve
 
 
 ## <a name="identity"></a>IDENTITÁS 
 
-### <a name="azure-active-directory-and-role-based-access-control-rbac"></a>Az Azure Active Directory és a szerepköralapú hozzáférés-vezérlést (RBAC)
+### <a name="azure-active-directory-and-role-based-access-control-rbac"></a>Az Azure Active Directory és a szerepköralapú hozzáférés-vezérlés (RBAC)
 
 
 **Hitelesítés:**
 
--   [Azure Active Directory (Azure AD)](https://azure.microsoft.com/services/active-directory/) van a Microsoft\'s több-bérlős felhőalapú címtár- és identitáskezelési felügyeleti szolgáltatást. Minden felhasználó a megoldáshoz az Azure Active Directoryban, beleértve az SQL-adatbázist elérő felhasználók jöttek létre.
+-   [Az Azure Active Directory (Azure AD)](https://azure.microsoft.com/services/active-directory/) van a Microsoft\'s több-bérlős felhőalapú címtár- és identitáskezelési szolgáltatás. A megoldás összes felhasználó jöttek létre az Azure Active Directoryban, beleértve a felhasználók az SQL-adatbázis elérésére.
 
 
 
--   Az alkalmazás-hitelesítés az Azure AD használatával történik. További információkért lásd: [alkalmazások integrálása az Azure Active Directory](/azure/active-directory/develop/active-directory-integrating-applications).
+-   Az alkalmazás-hitelesítést az Azure AD használatával történik. További információkért lásd: [alkalmazások integrálása az Azure Active Directory](/azure/active-directory/develop/active-directory-integrating-applications).
 
--   [Az Azure Active Directory Identity Protection](/azure/active-directory/active-directory-identityprotection) észlel, a szervezet identitásait érintő lehetséges biztonsági rések, konfigurálja az automatikus válaszokat ad a szervezet identitásait kapcsolódó észlelt gyanús tevékenységek és gyanús incidensek megvizsgálja, és végrehajtja a megfelelő művelettel hárítsa el őket.
+-   [Az Azure Active Directory Identity Protection](/azure/active-directory/active-directory-identityprotection) észlel, a szervezet identitásait érintő lehetséges biztonsági résekről, konfigurálja az automatikus reakciók, a szervezet identitásait, kapcsolódó észlelt gyanús tevékenységeket és kivizsgálja a gyanús eseményekre, és a problémák megoldásához szükséges lépéseket tart.
 
--   [Azure szerepköralapú hozzáférés-vezérlés (RBAC)](/azure/role-based-access-control/role-assignments-portal) lehetővé teszi, hogy pontosan célzott hozzáférés-kezelés az Azure-bA. Előfizetés hozzáférés korlátozódik előfizetés-rendszergazdaként, és az Azure Key Vault hozzáférés korlátozódik a webhely rendszergazdájához. Az erős jelszavak (legalább egy felső/alsó betűvel, számot és speciális karakterek minimális 12 karakter) szükség.
+-   [Az Azure szerepköralapú hozzáférés-vezérlés (RBAC)](/azure/role-based-access-control/role-assignments-portal) lehetővé teszi, hogy pontosan fókuszban lévő hozzáférés-kezelés az Azure-hoz. Előfizetéshez való hozzáférés korlátozva, az előfizetés rendszergazdája, és az Azure Key Vault hozzáférés korlátozódik a webhely rendszergazdájához. Az erős jelszavak (felső és alsó legalább egy betűt, számot és speciális karaktert a minimális 12 karakter) szükség.
 
--   A multi-factor authentication akkor támogatott, ha a - enableMFA kapcsoló engedélyezve van a telepítés során.
+-   A multi-factor authentication használata támogatott, ha a - enableMFA kapcsoló üzembe helyezése során engedélyezve van.
 
--   A jelszavak lejárnak, ha engedélyezve van a - enableADDomainPasswordPolicy kapcsoló üzembe helyezése során 60 nap után.
+-   Jelszavak Ha engedélyezve van a - enableADDomainPasswordPolicy kapcsoló üzembe helyezése során 60 nap után lejár.
 
 **Szerepkörök:**
 
--   A megoldás teszi [beépített szerepkörök](/azure/role-based-access-control/built-in-roles) erőforrásokhoz való hozzáférés kezeléséhez.
+-   A megoldás használnak az [beépített szerepkörök](/azure/role-based-access-control/built-in-roles) erőforrásokhoz való hozzáférés kezelésére.
 
--   Minden felhasználó adott beépített szerepkörök alapértelmezett rendeli hozzá.
+-   Minden felhasználó rendelt konkrét beépített szerepkörök alapértelmezés szerint.
 
 ### <a name="azure-key-vault"></a>Azure Key Vault
 
--   A Key Vault adataihoz tartalmazza:
+-   A Key Vaultban tárolt adatokat tartalmazza:
 
-    -   Alkalmazás insight kulcs
-    -   Beteg adatokat tároló elérési kulcsot
-    -   Beteg kapcsolati karakterlánc
+    -   Application insight-kulcs
+    -   Betegek adatokat tároló hozzáférési kulcs
+    -   Betegek kapcsolati karakterlánc
     -   A betegek adatai tábla neve
-    -   Az Azure gépi tanulás webszolgáltatás végpontja
-    -   Az Azure ML Service API-kulcs
+    -   Az Azure ML Web Service-végpont
+    -   Az Azure Machine Learning szolgáltatás API-kulcs
 
--   Speciális hozzáférési házirendek kell alapon
--   Kulcstároló hozzáférési házirendeket a kulcsok és titkos minimálisan szükséges engedélyeket
--   Minden kulcsok és titkos kulcs tárolóban lévő állapottal rendelkezik lejárati dátuma
--   A Key Vault minden kulcs HSM által védett \[kulcs HSM-védelemmel 2048 bites RSA-kulcs =\]
--   Minden felhasználó/identitások kapnak a minimálisan szükséges engedélyeket szerepköralapú hozzáférés vezérlés (RBAC) használata
--   Alkalmazások nem ugyanazt a kulcstároló, kivéve, ha azok megbízhatósági kapcsolat áll fenn, és ugyanazt a titkos kulcsok, futási időben való hozzáférésre van szükségük
--   Diagnosztikai naplókat a Key Vault legalább 365 nap megőrzési idővel rendelkező engedélyezve van.
--   A kulcsok engedélyezett titkosítási műveleteket a meglévők közül szükséges korlátozva
+-   Speciális hozzáférési szabályzatok vannak konfigurálva kell alapon
+-   A Key Vault hozzáférési házirendeket a kulcsok és titkos kulcsok minimálisan szükséges engedélyeket
+-   Összes kulcsot és titkos kulcsokat a Key Vault lejárati dátummal rendelkezik
+-   HSM által védett összes kulcsok a Key Vaultban \[kulcstípus HSM által védett 2048-bites RSA-kulcs =\]
+-   Összes felhasználók és identitások szerepkör alapú hozzáférés-vezérlés (RBAC) használatával minimálisan szükséges engedélyeket kapjanak.
+-   Alkalmazások nem osztoznak egy Key Vaultot, ha azok megbíznak egymásban és futásidőben az azonos titkos kódokhoz való hozzáférés szükséges
+-   Diagnosztikai naplók a Key vault legalább 365 napos megőrzési idővel rendelkező engedélyezve vannak.
+-   Engedélyezett titkosítási műveletek kulcsok korlátozva a szükséges kapcsolatok
 
 ## <a name="ingest"></a>BETÖLTÉSI 
 
 ### <a name="azure-functions"></a>Azure Functions
-A megoldás úgy lett kialakítva, használandó [Azure Functions](/azure/azure-functions/) feldolgozni a tartózkodási adatait az analytics bemutató mintát hosszát. A funkciók három képességei lettek létrehozva.
+A megoldás úgy lett kialakítva, használandó [Azure Functions](/azure/azure-functions/) tartózkodási data analytics bemutató használt minta hossza feldolgozásához. Három képességek az a funkciók lettek létrehozva.
 
-**1. Tömeges importálással adatok Fí ügyféladatok**
+**1. Vásárlói adatok phi adatokat tömeges importálása**
 
-Ha a bemutató-parancsfájl használatával. . \\Rendelkező HealthcareDemo.ps1 a **BulkPatientAdmission** a Váltás **központi telepítése és futtatása a bemutató** végrehajtása a következő folyamat:
-1. **Az Azure Blob Storage** -tárhelyre feltöltött beteg adatokat .csv fájl minta
-2. **Esemény rács** -esemény tesz közzé adatokat az Azure-függvény (tömeges importálással - blob esemény)
-3. **Az Azure-függvény** - hajtja végre a feldolgozását, és tárolja az adatok a biztonságos funkcióval SQL-tároló - esemény (típusú; blob URL-címe)
-4. **SQL-adatbázis a** – türelmet adatok az adatbázis-tároló besorolási címkék és a gépi tanulás folyamat van kezdődött el ehhez a tanítási kísérletet.
+Ha a bemutató-parancsfájl használatával. . \\A HealthcareDemo.ps1 a **BulkPatientAdmission** leírt módon váltson **üzembe helyezése és futtatása a bemutató** a következő feldolgozási folyamat végrehajtása:
+1. **Az Azure Blob Storage** -tárolóba feltöltött betegek adatokat .csv fájlba minta
+2. **Event Grid** -eseményt tesz közzé adatokat az Azure-függvény (tömeges importálás – blob esemény)
+3. **Azure-függvény** - elvégzi a feldolgozást, és tárolja az adatokat a biztonságos függvény használatával az SQL-tároló - esemény (írja be a; blob URL-címe)
+4. **Az SQL DB** - besorolási címkék a betegek adatait az adatbázis-tároló, és a gépi Tanulási folyamat a tanítási kísérlet ehhez megkezdődik.
 
 ![](images/dataflow.png)
 
-Az azure függvény emellett úgy lett kialakítva, olvassa el és a következő minta adatkészletben, a következő címkék használatával kijelölt bizalmas adatok védelmét:
+Az azure-függvény ezen kívül úgy lett kialakítva, és a minta adatkészletben, a következő címkék használatával kijelölt bizalmas adatok védelme érdekében:
 - dataProfile = > "ePHI"
-- tulajdonos = > \<hely Admin egyszerű felhasználónév\>
+- tulajdonos = > \<hely felügyeleti egyszerű felhasználónév\>
 - környezet = > "Próbaüzem"
-- szervezeti egység = > "Globális ökoszisztéma", a címkézés lett alkalmazva: a minta adatkészlet, ahol türelmet "neve" egyszerű szövegként azonosított.
+- részleg = > "Globális ökoszisztéma", a címkézés lett alkalmazva a mintaadatkészlettel, ahol beteg "nevek" egyszerű szövegként azonosított.
 
 **2. Új betegek beléptetéséhez**
 
-Ha a bemutató-parancsfájl használatával. . \\Rendelkező HealthcareDemo.ps1 a **BulkPatientadmission** a Váltás **központi telepítése és futtatása a bemutató** végrehajtása a következő folyamat: ![](images/securetransact.png) 
- **1. Azure függvény** elindul, és a vonatkozó kérések a függvény egy [tulajdonosi jogkivonattal](/rest/api/) az Azure Active Directoryból.
+Ha a bemutató-parancsfájl használatával. . \\A HealthcareDemo.ps1 a **BulkPatientadmission** leírt módon váltson **üzembe helyezése és futtatása a bemutató** a következő feldolgozási folyamat végrehajtása: ![](images/securetransact.png) 
+ **1. Azure-függvény** aktiválódik, és a függvény vonatkozó kérések egy [tulajdonosi jogkivonat](/rest/api/) az Azure Active Directoryból.
 
-**2. Key Vault** kért a titkos kulcs, amely a kért token rendelve.
+**2. A Key Vault** kért a titkos kulcs, amely a kért jogkivonatot társítva van.
 
-**3. Az Azure szerepkörök érvényesíteni a kérést, és engedélyezik a kulcstároló hozzáférési kérelmet.
+**3. Azure-szerepkörök a kérelem érvényesítéséhez, és engedélyezze a Key Vault hozzáférési kérelmet.
 
-**4. Key Vault** karakterláncot ad vissza, a titkos kulcsot, ebben az esetben az SQL adatbázis-kapcsolatot.
+**4. A Key Vault** karakterláncot ad vissza, a titkos kulcsot, ebben az esetben az SQL DB-kapcsolat.
 
-**5. Az Azure-függvény** a kapcsolati karakterlánc segítségével biztonságosan csatlakozzon az SQL Database, és továbbra is fennáll, további feldolgozás ePHI adatok tárolására.
+**5. Azure-függvény** , biztonságosan csatlakozhat az SQL-adatbázis kapcsolati karakterláncát használja, és továbbra is fennáll, további feldolgozás ePHI adatok tárolására.
 
-Eléréséhez, hogy az adatokat, egy közös API-séma megtörtént, a következő gyors egészségügy együttműködési erőforrások (FHIR, tűz hangsúlyozottan). A függvény lett megadva a következő FHIR exchange elemeket:
+A storage, az adatok elérése, egy közös API-séma implementálása a következő gyors Healthcare együttműködési erőforrások (FHIR, fire erősebb). A függvény lett megadva, a következő FHIR exchange elemeket:
 
--   [Beteg séma](https://www.hl7.org/fhir/patient.html) tartalmaz, a "ki" egy türelmet információt.
+-   [Betegek séma](https://www.hl7.org/fhir/patient.html) tartalmaz, a "ki" becsléseknek információt.
 
--   [Megfigyelési séma](https://www.hl7.org/fhir/observation.html) egészségügyi központi elemet tartalmazza, támogatja az elemzés céljából, figyelemmel az előrehaladást, alapkonfigurációk és minták segítségével és demográfiai jellemzőit is rögzítheti. 
+-   [Megfigyelési séma](https://www.hl7.org/fhir/observation.html) magában foglalja a központi eleme az egészségügyben, támogatja a diagnosztikát, előrehaladásának figyeléséhez, alapkonfigurációk és minták segítségével és demográfiai jellemzőit is rögzítheti. 
 
--   [Séma előforduló](https://www.hl7.org/fhir/encounter.html) magában foglalja az a típusú ütközik ambulatory, sürgős, például otthoni állapot, a beteg és a virtuális ütközik.
+-   [Ütközik a sémában](https://www.hl7.org/fhir/encounter.html) tartalmazza a típusú ütközik ambulatory, sürgős, például otthoni állapot, a beteg és a virtuális ütközik.
 
--   [Az állapot séma](https://www.hl7.org/fhir/condition.html) egy feltétel, a probléma, elemzés céljából, vagy más esemény, helyzet, probléma vagy klinikai fogalom, amely potenciálisan veszélyes szintre van során részletes információkat tartalmazza.  
+-   [A feltétel séma](https://www.hl7.org/fhir/condition.html) feltétel, a probléma, elemzés céljából, vagy más esemény, helyzet, a probléma vagy klinikai demonstráció létrehozásában, amely potenciálisan veszélyes szintre emelkedett kapcsolatos részletes információkat tartalmaz.  
 
 
 
 ### <a name="event-grid"></a>Event Grid
 
 
-A megoldás Azure esemény rács, az útválasztás kezelése összes események forrásból bármilyen célra, amely egyetlen szolgáltatásként támogatja:
+A megoldás az Azure Event Grid, egy egyetlen szolgáltatás kezelése, az összes esemény bármilyen forrásból bármilyen cél felé való útválasztását biztosító támogatja:
 
--   [Biztonsági és hitelesítési](/azure/event-grid/security-authentication)
+-   [Biztonság és hitelesítés](/azure/event-grid/security-authentication)
 
--   [Szerepköralapú hozzáférés-vezérlés](/azure/event-grid/security-authentication#management-access-control) különféle felügyeleti műveletek, például esemény-előfizetések listázása, új címkék létrehozása és a kulcsok létrehozása
+-   [Szerepköralapú hozzáférés-vezérlés](/azure/event-grid/security-authentication#management-access-control) különféle felügyeleti műveletek, például ajánlati esemény-előfizetések, újakat hozna létre és a kulcs létrehozásakor
 
 -   Naplózás
 
 ## <a name="store"></a>TÁROLÓ 
 
-### <a name="sql-database-and-server"></a>SQL-adatbázis és a kiszolgáló 
+### <a name="sql-database-and-server"></a>Az SQL Database és a kiszolgáló 
 
 
--   [Transzparens Data Encryption (TDE)](/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql) biztosít a valós idejű titkosítási és visszafejtési az Azure SQL Database az Azure Key Vault-ben tárolt kulcs használatával tárolt adatok.
+-   [Transzparens adattitkosítás (TDE)](/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql) valós időben titkosítja és az Azure SQL Database, az Azure Key Vaultban tárolt kulcs használatával tárolt visszafejtés biztosít.
 
--   [SQL biztonsági réseinek értékelése](https://docs.microsoft.com/azure/sql-database/sql-vulnerability-assessment) egy könnyen beállítható eszköz, amely is felderítése, nyomon követheti és szervizelheti azokat a potenciális adatbázis biztonsági réseket.
+-   [SQL-sebezhetőségi felmérés](https://docs.microsoft.com/azure/sql-database/sql-vulnerability-assessment) egy egyszerű, Fedezze fel, nyomon követheti, és javíthatja az adatbázis biztonsági réseinek eszköz konfigurálása.
 
--   [SQL-adatbázis Fenyegetésészlelés](/azure/sql-database/sql-database-threat-detection) engedélyezve van.
+-   [Az SQL Database Threat Detection](/azure/sql-database/sql-database-threat-detection) engedélyezve van.
 
--   [SQL Database Auditing](/azure/sql-database/sql-database-auditing) engedélyezve van.
+-   [Az SQL Database naplózási szolgáltatásával](/azure/sql-database/sql-database-auditing) engedélyezve van.
 
--   [SQL-adatbázis metrikák és diagnosztikai naplózás](/azure/sql-database/sql-database-metrics-diag-logging) engedélyezve van.
+-   [SQL-adatbázis-metrikák és diagnosztikai naplózás](/azure/sql-database/sql-database-metrics-diag-logging) engedélyezve van.
 
--   [Adatbázis - és kiszolgálószintű tűzfal-szabályok](/azure/sql-database/sql-database-firewall-configure) egyszerűsítették.
+-   [Kiszolgáló - és adatbázisszintű tűzfalszabályok](/azure/sql-database/sql-database-firewall-configure) egyszerűsítették.
 
--   [Mindig titkosítja az oszlopok](/azure/sql-database/sql-database-always-encrypted-azure-key-vault) beteg első, a középső és az utolsó nevek védelmére használhatók.
-    Emellett az adatbázis oszlopok titkosítását is az Azure Active Directory (AD) segítségével hitelesíti az alkalmazás az Azure SQL Database.
+-   [Always Encrypted az oszlopok](/azure/sql-database/sql-database-always-encrypted-azure-key-vault) betegek első, a középső és az utolsó nevek védelmére használhatók.
+    Ezenkívül az adatbázis oszloptitkosítás is használ az Azure Active Directory (AD) hitelesítheti az alkalmazást az Azure SQL Database.
 
--   SQL-adatbázis és az SQL Server elérésére a legalacsonyabb jogosultsági szint elvét megfelelően van konfigurálva.
+-   SQL Database és SQL Server elérését az elvét megfelelően van konfigurálva.
 
--   Csak a szükséges IP-címek hozzáférhetnek az SQL-tűzfalon keresztül.
+-   Csak a szükséges IP-címek engedélyezettek a hozzáférés az SQL-tűzfalon keresztül.
 
 ### <a name="storage-accounts"></a>Tárfiókok
 
 
--   [Mozgásérzékelő – az adatátvitel csak TLS/SSL használatával](/azure/storage/common/storage-require-secure-transfer?toc=%2Fazure%2Fstorage%2Fblobs%2Ftoc.json).
+-   [Mozgásban lévő adatok továbbítása a TLS/SSL használatával csak](/azure/storage/common/storage-require-secure-transfer?toc=%2Fazure%2Fstorage%2Fblobs%2Ftoc.json).
 
--   Névtelen hozzáférés nem engedélyezett az tárolókat.
+-   Névtelen hozzáférés nem engedélyezett a for containers szolgáltatásban.
 
--   A riasztási szabályok névtelen tevékenység követési vannak konfigurálva.
+-   Riasztási szabályok nyomon követési tevékenység névtelen vannak konfigurálva.
 
 -   HTTPS-kapcsolat szükséges a tárfiók erőforrásainak eléréséhez.
 
--   Hitelesítési kérelem adatokat naplózza, és figyeli.
+-   Hitelesítési kérelem adatai naplózza, és figyelemmel kísérni.
 
--   A Blob Storage tárolóban adatok titkosítása.
+-   A Blob storage szolgáltatásban tárolt adatok titkosítása.
 
 ## <a name="analyze"></a>ELEMZÉSE
 
 ### <a name="machine-learning"></a>Machine Learning
 
 
--   [Naplózás engedélyezve van](/azure/machine-learning/studio/web-services-logging) Machine Learning webszolgáltatások.
-- használatával [Machine Learning](/azure/machine-learning/desktop-workbench/experimentation-service-configuration) munkaterület megköveteli a kísérletek, amely lehetővé teszi a előre jelezni, hogy egy megoldást. [A munkaterület integrálása](/azure/machine-learning/desktop-workbench/using-git-ml-project) kísérletek felügyeleti csoportosíthatók.
+-   [Naplózás engedélyezve van](/azure/machine-learning/studio/web-services-logging) a Machine Learning webszolgáltatások.
+- használatával [Machine Learning](/azure/machine-learning/desktop-workbench/experimentation-service-configuration) workbench igényel, amely lehetővé teszi a számára egy megoldás előrejelzése kísérletek, fejlesztését. [A workbench integrálása](/azure/machine-learning/desktop-workbench/using-git-ml-project) segíthet kísérletek felügyelete egyszerűbb.
 
 ## <a name="security"></a>BIZTONSÁG
 
 ### <a name="azure-security-center"></a>Azure Security Center
-- [Az Azure Security Center](https://azure.microsoft.com/services/security-center/) központosított összes Azure-erőforrások biztonsági állapotát jeleníti meg. Egy pillanat alatt ellenőrizze, hogy a megfelelő biztonsági vezérlőket teljesül, és megfelelően konfigurálva, és gyorsan azonosíthatja a figyelmet igénylő erőforrásokat. 
+- [Az Azure Security Center](https://azure.microsoft.com/services/security-center/) központi az Azure-erőforrások biztonsági állapotát jeleníti meg. Egy pillanat alatt ellenőrizheti, hogy a megfelelő biztonsági ellenőrzések, és megfelelően konfigurálva, és gyorsan azonosíthatja a figyelmet igénylő erőforrásokat. 
 
-- [Az Azure Advisor](/azure/advisor/advisor-overview) , amelynek segítségével személyre szabott felhő tanácsadó kövesse a bevált gyakorlatokat az Azure-környezetekhez optimalizálása érdekében. Az Advisor elemzi az erőforrások konfiguráció- és használattelemetriáját, és megoldási javaslatokat tesz, amelyek segítségével javítható az Azure-erőforrások költséghatékonysága, teljesítménye, rendelkezésre állása és biztonsága.
+- [Az Azure Advisor](/azure/advisor/advisor-overview) egy személyre szabott felhőalapú tanácsadó, amely segítséget nyújt az Azure-környezetek optimalizálására vonatkozó ajánlott eljárásokat követve. Az Advisor elemzi az erőforrások konfiguráció- és használattelemetriáját, és megoldási javaslatokat tesz, amelyek segítségével javítható az Azure-erőforrások költséghatékonysága, teljesítménye, rendelkezésre állása és biztonsága.
 
 ### <a name="application-insights"></a>Application Insights
-- [Az Application Insights](/azure/application-insights/app-insights-overview) egy bővíthető alkalmazásteljesítmény-felügyeleti (APM) szolgáltatás webfejlesztőknek, több platformon. Az élő webalkalmazásának figyelésére használhatja. Teljesítményanomáliákat észlel. Hatékony elemzőeszközöket tartalmaz, amelyek segítenek a problémák felismerésében, és annak a megértésében, hogy a felhasználók mire használják ténylegesen az alkalmazást. Úgy tervezték, hogy használatával folyamatosan javíthassa a teljesítményt és a használhatóságot.
+- [Az Application Insights](/azure/application-insights/app-insights-overview) egy bővíthető alkalmazásteljesítmény-felügyeleti (APM) szolgáltatás webfejlesztőknek, több platformon. Az élő webalkalmazásának figyelésére használhatja. Teljesítménnyel kapcsolatos anomáliák észlel. Hatékony elemzőeszközöket tartalmaz, amelyek segítenek a problémák felismerésében, és annak a megértésében, hogy a felhasználók mire használják ténylegesen az alkalmazást. Úgy tervezték, hogy használatával folyamatosan javíthassa a teljesítményt és a használhatóságot.
 
 ### <a name="azure-alerts"></a>Azure-riasztások
-- [Riasztások kínálnak az Azure-szolgáltatások figyelésére szolgáló módszer, és lehetővé teszik adatok konfigurálhatja a platformesemények létrehozási feltételeit. Riasztások is adja meg az értesítéseket, egy riasztási feltétel megegyezik a figyelési adatokat.
+- [Riasztások kínálnak az Azure-szolgáltatások figyelésére szolgáló módszer, és lehetővé teszi, hogy feltételeket konfiguráljon az adatok. Riasztások értesítések is biztosítanak, amikor egy riasztási feltétel megfelel a monitorozási adatok.
 
 ### <a name="operations-management-suite-oms"></a>Az Operations Management Suite (OMS)
-[Az Operations Management Suite (OMS)](/azure/operations-management-suite/operations-management-suite-overview) szolgáltatások gyűjteménye.
+[Az Operations Management Suite (OMS)](/azure/operations-management-suite/operations-management-suite-overview) felügyeleti szolgáltatások gyűjteménye.
 
--   A Security Center engedélyezve van a munkaterület
+-   Munkaterület engedélyezve van a Security Centerben
 
 -   Munkaterület engedélyezve van a munkaterhelés-figyelés
 
--   Munkaterhelés-figyelés engedélyezve van:
+-   Számítási feladatok figyelés engedélyezve van:
 
     -   Identitás és hozzáférés
 
@@ -387,7 +387,7 @@ A megoldás Azure esemény rács, az útválasztás kezelése összes események
 
     -   Azure SQL DB Analytics
 
-    -   [Az Azure webalkalmazás Analytics](/azure/log-analytics/log-analytics-azure-web-apps-analytics) megoldás
+    -   [Azure WebApp Analytics](/azure/log-analytics/log-analytics-azure-web-apps-analytics) megoldás
 
     -   Key Vault-elemzés
 
@@ -395,4 +395,4 @@ A megoldás Azure esemény rács, az útválasztás kezelése összes események
 
 -   [Application Insights-összekötő (előzetes verzió)](/azure/log-analytics/log-analytics-app-insights-connector) engedélyezve van
 
--   [Tevékenység naplóelemzési](/azure/log-analytics/log-analytics-activity) engedélyezve van
+-   [Tevékenység a log analytics](/azure/log-analytics/log-analytics-activity) engedélyezve van

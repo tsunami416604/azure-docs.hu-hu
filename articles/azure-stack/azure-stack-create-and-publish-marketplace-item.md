@@ -1,6 +1,6 @@
 ---
-title: Hozzon létre, és tegye közzé a Piactéri elemet Azure verem |} Microsoft Docs
-description: Hozzon létre, és tegye közzé a Piactéri elemet Azure-készletben.
+title: Hozzon létre, és a Piactéri elem közzététele az Azure Stackben |} A Microsoft Docs
+description: Hozzon létre, és a Piactéri elem közzététele az Azure Stackben.
 services: azure-stack
 documentationcenter: ''
 author: brenduns
@@ -11,22 +11,23 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/10/2018
+ms.date: 06/14/2018
 ms.author: brenduns
 ms.reviewer: jeffgo
-ms.openlocfilehash: 5e0349d6bae9295e7a0ba9f366f84753ebd838c2
-ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
+ms.openlocfilehash: 101686149c0e3faaf442c58f4002cbbfe0e72eaa
+ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/12/2018
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "35645000"
 ---
 # <a name="create-and-publish-a-marketplace-item"></a>Piactéri termék létrehozása és közzététele
 
-*A következőkre vonatkozik: Azure verem integrált rendszerek és az Azure verem szoftverfejlesztői készlet*
+*A következőkre vonatkozik: Azure Stackkel integrált rendszerek és az Azure Stack fejlesztői készlete*
 
 ## <a name="create-a-marketplace-item"></a>Piactéri elem létrehozása
-1. [Töltse le](http://www.aka.ms/azurestackmarketplaceitem) az Azure-gyűjtemény csomagoló eszköz és a minta Azure verem Piactéri elemet.
-2. Nyissa meg a minta Piactéri elemet, és nevezze át a **SimpleVMTemplate** mappa. (Az azonos név használata az a Piactéri elemet – például **Contoso.TodoList**.) Ez a mappa tartalmaz:
+1. [Töltse le](http://www.aka.ms/azurestackmarketplaceitem) az Azure katalógusában Packager eszköz és a minta az Azure Stack piactéren elemet.
+2. Nyissa meg a minta Piactéri elemet, és nevezze át a **SimpleVMTemplate** mappát. (Például használja ugyanazt a nevet, a Piactéri elem – **Contoso.TodoList**.) Ez a mappa tartalmaz:
    
        /Contoso.TodoList/
        /Contoso.TodoList/Manifest.json
@@ -34,18 +35,22 @@ ms.lasthandoff: 05/12/2018
        /Contoso.TodoList/Icons/
        /Contoso.TodoList/Strings/
        /Contoso.TodoList/DeploymentTemplates/
-3. [Hozzon létre egy Azure Resource Manager sablon](../azure-resource-manager/resource-group-authoring-templates.md) , vagy válasszon egy sablont a Githubból. A Piactéri elemet a sablon használatával hozható létre erőforrás.
-4. Győződjön meg arról, hogy az erőforrás sikeresen telepíthető-e, tesztelje a sablon a Microsoft Azure verem API-khoz.
-5. Ha a sablont a virtuálisgép-lemezkép támaszkodik, kövesse az utasításokat [egy virtuálisgép-lemezkép hozzáadása Azure verem](azure-stack-add-vm-image.md).
-6. Az Azure Resource Manager sablon mentése az a **/Contoso.TodoList/DeploymentTemplates/** mappa.
-7. Válassza ki az ikonok és a szöveg a Piactéri elemet. Ikonok hozzáadása a **ikonok** mappa, és adja hozzá a szöveget a **erőforrások** fájlt a **karakterláncok** mappát. A kis, közepes, Large és Wide elnevezési konvenciót használ ikonok. Lásd: [Piactéri elemet felhasználói felület hivatkozás](#reference-marketplace-item-ui) részletes leírását.
+3. [Hozzon létre egy Azure Resource Manager-sablon](../azure-resource-manager/resource-group-authoring-templates.md) , vagy válasszon ki egy sablont a Githubból. A Piactéri elem a sablont használja az erőforrás létrehozásához.
+
+    > [!Note]  
+    > Keményen soha nem kód a titkos kulcsok termékazonosító kulcsok, jelszót vagy az Azure Resource Manager-sablon bármely ügyfél azonosításra alkalmas adatok. A sablon json-fájlok érhetők el, hitelesítés nélkül a katalógusban közzététele után.  Az összes titkos Store [Key Vault](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-keyvault-parameter) , és azokat a sablonon belül.
+
+4. Győződjön meg arról, hogy az erőforrás sikeresen telepíthető-e, tesztelje a sablon a Microsoft Azure Stack API-kkal.
+5. Ha a sablont a virtuálisgép-lemezkép támaszkodik, kövesse az utasításokat [virtuálisgép-lemezkép hozzáadása az Azure Stackhez](azure-stack-add-vm-image.md).
+6. Az Azure Resource Manager-sablon mentése a **/Contoso.TodoList/DeploymentTemplates/** mappát.
+7. Válassza ki az ikonok és a Marketplace-elem szövege. Az ikonok hozzáadása a **ikonok** mappában, és adja hozzá a szöveget a **erőforrások** fájlt a **karakterláncok** mappát. Kicsi, közepes, nagy és Wide elnevezési ikonokat használja. Lásd: [segédanyag a Piactéri elem](#reference-marketplace-item-ui) részletes leírást.
    
    > [!NOTE]
-   > Négy ikon különböző méretű (kis, közepes, nagy, széles) szükség a Piactéri elemet megfelelően készítéséhez.
+   > Négy ikon méretek (kicsi, közepes, nagy mennyiségű, széles) szükség, a Piactéri elem megfelelően létrehozásához.
    > 
    > 
-8. Az a **manifest.json** fájl, módosítsa **neve** nevére, a Piactéri elemet. Is módosíthatja **publisher** a nevét vagy a vállalat.
-9. A **összetevők**, módosítsa **neve** és **elérési** az Azure Resource Manager sablon foglalja a megfelelő információkkal történő.
+8. Az a **manifest.json** fájl, módosítsa **neve** a Piactéri elem nevét. Módosítson **közzétevő** a neve vagy a vállalat.
+9. Alatt **összetevők**, módosítsa **neve** és **elérési út** a Azure Resource Manager-sablon, amely tartalmazza a megfelelő információkkal történő.
    
          "artifacts": [
             {
@@ -54,109 +59,115 @@ ms.lasthandoff: 05/12/2018
                 "path": "DeploymentTemplates\\Type your path",
                 "isDefault": true
             }
-10. Cserélje le **saját Piactéri elemek** a kategóriák, ahol a Piactéri elemet meg kell jelennie az listáját.
+10. Cserélje le **My Marketplace-elemek** , a Piactéri elem meg kell jelennie a kategóriák listája.
     
              "categories":[
                  "My Marketplace Items"
               ],
-11. Bármely további módosításainak manifest.json, lásd [hivatkozás: piactér elem manifest.json](#reference-marketplace-item-manifestjson).
-12. A mappák csomagolni .azpkg fájlként, nyisson meg egy parancssort, és futtassa a következő parancsot:
+11. Manifest.json további szerkesztéseket tekintse [hivatkozás: Piactéri elem manifest.json](#reference-marketplace-item-manifestjson).
+12. A mappák csomag .azpkg fájlba, nyisson meg egy parancssort, és futtassa a következő parancsot:
     
         AzureGalleryPackager.exe package –m <path to manifest.json> -o <output location for the package>
     
     > [!NOTE]
-    > A kimeneti csomag teljes elérési útja létezzen. Például ha a kimeneti elérési út C:\MarketPlaceItem\yourpackage.azpkg, a mappa C:\MarketPlaceItem léteznie kell.
+    > A teljes elérési útja a kimeneti csomaghoz léteznie kell. Például ha a kimeneti elérési út C:\MarketPlaceItem\yourpackage.azpkg, a mappa C:\MarketPlaceItem léteznie kell.
     > 
     > 
 
 ## <a name="publish-a-marketplace-item"></a>Piactéri elem közzététele
-1. A Piactéri elemet (.azpkg) feltöltése az Azure Blob storage használata a PowerShell vagy Azure Tártallózó. Töltse fel a helyi Azure verem tárterület, vagy töltse fel az Azure-tárhelyre. (A csomag egy ideiglenes helyre szó.) Győződjön meg arról, hogy a blob nyilvánosan elérhető-e.
-2. Az ügyfél virtuális gépen a Microsoft Azure verem környezetben győződjön meg arról, hogy a PowerShell-munkamenethez be van állítva a szolgáltatás rendszergazdai hitelesítő adataival. Hogyan hitelesítheti az Azure-készletben PowerShell utasításokat található [a PowerShell-lel egy sablon telepítésének](user/azure-stack-deploy-template-powershell.md).
-3. Használja a **Add-AzureRMGalleryItem** PowerShell-parancsmag használatával a Piactéri elemet közzétételéhez Azure verem. Példa:
+1. PowerShell vagy az Azure Storage Explorer használatával töltse fel a Piactéri elem (.azpkg) az Azure Blob storage. A helyi Azure Stack-tároló feltöltése, vagy töltse fel az Azure Storage. (A csomag egy ideiglenes helyre szó.) Győződjön meg arról, hogy a blob nyilvánosan elérhető-e.
+2. Az ügyfél virtuális gépen a Microsoft Azure Stack-környezetben győződjön meg arról, hogy a PowerShell-munkamenethez be van állítva a szolgáltatás rendszergazdai hitelesítő adataival. Hogyan hitelesítheti az Azure stack PowerShell vonatkozó utasításokat talál [a PowerShell-sablon üzembe helyezése](user/azure-stack-deploy-template-powershell.md).
+3. Használata esetén [PowerShell 1.3.0]( azure-stack-powershell-install.md) vagy újabb, használhatja a **Add-AzsGalleryItem** a Piactéri elem közzététele az Azure Stack PowerShell-parancsmagot. Előtt PowerShell 1.3.0 használatával, használhatja a parancsmagot **Add-AzureRMGalleryitem** helyén **Add-AzsGalleryItem**.  Ha például a PowerShell 1.3.0 használ, vagy később:
    
-       Add-AzureRMGalleryItem -GalleryItemUri `
+       Add-AzsGalleryItem -GalleryItemUri `
        https://sample.blob.core.windows.net/gallerypackages/Microsoft.SimpleTemplate.1.0.0.azpkg –Verbose
    
    | Paraméter | Leírás |
    | --- | --- |
-   | SubscriptionID |Felügyeleti előfizetés-azonosító. Ez a PowerShell használatával kérheti le. Ha inkább a portál eléréséhez, nyissa meg a szolgáltató előfizetés, és másolja az előfizetés-azonosító. |
-   | GalleryItemUri |A gyűjtemény csomagot, amely már fel lett töltve tárolási URI BLOB. |
-   | Apiversion |Állítja be **2015-04-01**. |
-4. Navigáljon a portálon. A Piactéri elemet a portálon--operátor vagy a felhasználó láthatja.
+   | SubscriptionID |Felügyeleti előfizetés-azonosítójára. Ez a PowerShell használatával kérheti le. Ha inkább a portálon beolvasásához, nyissa meg a szolgáltatói előfizetés, és másolja az előfizetés azonosítóját. |
+   | GalleryItemUri |BLOB URI-t a Storage már feltöltött galéria csomag. |
+   | API-verzió |Beállítás **2015-04-01**. |
+4. Ugrás a portálra. Most láthatja a portálon – a Piactéri elem, az operátornak, vagy a felhasználó.
    
    > [!NOTE]
-   > A csomag jelenik meg több percig is eltarthat.
+   > A csomag listában való megjelenése több percet is igénybe vehet.
    > 
    > 
-5. A Piactéri elemet már korábban mentett verem Azure piactérről. Ha szeretné törölni az a Blob-tároló helyéhez.
-6. A Piactéri elemet eltávolításához használja a **Remove-AzureRMGalleryItem** parancsmag. Példa:
+5. A Piactéri elem már megtörtént az Azure Stack piactéren. Kiválaszthatja, hogy törli-e a Blob storage-helyről.
+    > [!Caution]  
+    > Az összes alapértelmezett katalógus összetevők és az egyéni katalógus összetevőkhöz most már hozzáférhetők-hitelesítést a következő URL-címek nélkül:  
+`https://adminportal.[Region].[external FQDN]:30015/artifact/20161101/[Template Name]/DeploymentTemplates/Template.json`  
+`https://portal.[Region].[external FQDN]:30015/artifact/20161101/[Template Name]/DeploymentTemplates/Template.json`  
+`https://systemgallery.blob.[Region].[external FQDN]/dev20161101-microsoft-windowsazure-gallery/[Template Name]/UiDefinition.json`
+
+6. Piactéri elem használatával is eltávolíthatja a **Remove-AzureRMGalleryItem** parancsmagot. Példa:
    
         Remove-AzureRMGalleryItem -Name Microsoft.SimpleTemplate.1.0.0  –Verbose
    
    > [!NOTE]
-   > A piactér felhasználói felület hiba jelenhet meg elem eltávolítása után. A hiba javításához kattintson **beállítások** a portálon. Ezt követően válassza **elveti a módosításokat** alatt **Portal testreszabási**.
+   > A piactér felhasználói felület valószínűleg hiba elem eltávolítása után. A hiba javításához kattintson **beállítások** a portálon. Ezután válassza ki **módosítások elvetése** alatt **portál testreszabási**.
    > 
    > 
 
-## <a name="reference-marketplace-item-manifestjson"></a>– Referencia: Piactér-elem manifest.json
+## <a name="reference-marketplace-item-manifestjson"></a>Dokumentáció: Marketplace-elem manifest.json
 ### <a name="identity-information"></a>Azonosító adatok
 | Name (Név) | Szükséges | Típus | Korlátozások | Leírás |
 | --- | --- | --- | --- | --- |
-| Name (Név) |X |Karakterlánc |[A-Za-z0-9]+ | |
-| Közzétevő |X |Karakterlánc |[A-Za-z0-9]+ | |
-| Verzió |X |Karakterlánc |[SemVer v2](http://semver.org/) | |
+| Name (Név) |X |Sztring |[A-Za-z0-9]+ | |
+| Közzétevő |X |Sztring |[A-Za-z0-9]+ | |
+| Verzió |X |Sztring |[SemVer v2](http://semver.org/) | |
 
 ### <a name="metadata"></a>Metaadatok
 | Name (Név) | Szükséges | Típus | Korlátozások | Leírás |
 | --- | --- | --- | --- | --- |
-| Megjelenítendő név |X |Karakterlánc |A javaslat 80 karakter |A portál nem jelenik meg az elem neve szabályosan Ha hosszabb 80 karakternél. |
-| PublisherDisplayName |X |Karakterlánc |A javaslat 30 karakternél |A portál nem jelenik meg a kiadó nevét szabályosan ha 30 karakternél hosszabb. |
-| PublisherLegalName |X |Karakterlánc |Legfeljebb 256 karakter hosszú lehet | |
-| Összegzés |X |Karakterlánc |60 és 100 karakter | |
-| LongSummary |X |Karakterlánc |140 és 256 karakter |Még nincs Azure-készletben. |
-| Leírás |X |[HTML](https://auxdocs.azurewebsites.net/en-us/documentation/articles/gallery-metadata#html-sanitization) |500 – 5000 karakter | |
+| Megjelenítendő név |X |Sztring |Az ajánlás 80 karakter |A portál nem jelenítik meg a konfigurációelem nevét szabályosan Ha hosszabb 80 karakternél. |
+| PublisherDisplayName |X |Sztring |Az ajánlás 30 karakter |A portál nem jelenítik meg a közzétevő neve szabályosan ha 30 karakternél hosszabb. |
+| PublisherLegalName |X |Sztring |Legfeljebb 256 karakter hosszú lehet | |
+| Összegzés |X |Sztring |60 és 100 karakter | |
+| LongSummary |X |Sztring |140 és 256 karakter |Még alkalmazhatók az Azure Stackben. |
+| Leírás |X |[HTML](https://auxdocs.azurewebsites.net/en-us/documentation/articles/gallery-metadata#html-sanitization) |500-as és 5000 karakternél | |
 
 ### <a name="images"></a>Képek
-A piactér az alábbi ikonok:
+A piactéren az alábbi ikonok használja:
 
 | Name (Név) | Szélesség | Magasság | Megjegyzések |
 | --- | --- | --- | --- |
-| Széles |255 px |115 px |Mindig szükséges. |
+| Széles körű |255 px |115 px |Mindig szükséges. |
 | Nagy |115 px |115 px |Mindig szükséges. |
 | Közepes |90 képpont |90 képpont |Mindig szükséges. |
 | Kicsi |40 px |40 px |Mindig szükséges. |
 | Képernyőfelvétel |533 képpont |32 px |Optional |
 
 ### <a name="categories"></a>Kategóriák
-Minden egyes Piactéri elemet kell címkézését egy kategóriát, amely azonosítja a portál felhasználói felületi elem helyére. Azure verem a meglévő kategóriák közül választhat (számítási, adatok + tárolás, stb.), vagy válasszon egy újat.
+Minden Marketplace-elem egy kategóriát, amely azonosítja, ahol az elem megjelenik a portál felhasználói Felületét kell megcímkézni. Azure Stack a meglévő kategóriák közül választhat (számítási, adatok + tárolás, stb.), vagy válasszon egy újat.
 
 ### <a name="links"></a>Hivatkozások
-Minden egyes Piactéri elemet tartalmazhat különböző, a tartalmakra mutató hivatkozásokat tartalmaz. A hivatkozások vannak megadva a nevek és URI-azonosítók listáját.
+Minden Marketplace-elem lehetnek különböző további tartalmakra is hivatkozik. A hivatkozások mint neve és URI-k listáját vannak megadva.
 
 | Name (Név) | Szükséges | Típus | Korlátozások | Leírás |
 | --- | --- | --- | --- | --- |
-| Megjelenítendő név |X |Karakterlánc |Legfeljebb 64 karakter hosszú lehet | |
+| Megjelenítendő név |X |Sztring |Legfeljebb 64 karakter hosszú lehet | |
 | URI |X |URI | | |
 
 ### <a name="additional-properties"></a>További tulajdonságok
-A fenti metaadatok mellett piactér szerzők biztosíthat egyéni kulcs/érték pár adatokat a következő formában:
+Mellett az előző metaadatok Marketplace szerzők megadhat egyéni kulcs/érték pár adatokat a következő formátumban:
 
 | Name (Név) | Szükséges | Típus | Korlátozások | Leírás |
 | --- | --- | --- | --- | --- |
-| Megjelenítendő név |X |Karakterlánc |Legfeljebb 25 karakter hosszú lehet | |
-| Érték |X |Karakterlánc |Legfeljebb 30 karakterből | |
+| Megjelenítendő név |X |Sztring |Legfeljebb 25 karakterből álló | |
+| Érték |X |Sztring |Legfeljebb 30 karakter hosszú lehet | |
 
-### <a name="html-sanitization"></a>HTML tisztítási
-Valamelyik mezőben, amely lehetővé teszi a HTML a következő elemek és attribútumok használhatók:
+### <a name="html-sanitization"></a>HTML-tisztító
+Bármely mező, amely lehetővé teszi, hogy a HTML a következő elemek és attribútumok használata engedélyezett:
 
-H1, h2, h3, h4, h5, p, ol, ul, li, a [cél |} href], br, erős, em, a b kiszolgálóra, és i
+H1 címsor használata, a h2, h3, h4, h5, p, ol, ul, li, a [cél |} href], Brazília, erős, em, a b i
 
-## <a name="reference-marketplace-item-ui"></a>Útmutató: Piactéri elemet felhasználói felület
-Ikonok és Piactéri elemek, mint a verem Azure-portálon szövege a következők.
+## <a name="reference-marketplace-item-ui"></a>Referencia: Piactéri elem felhasználói felület
+Ikonok és a szöveg a Marketplace-elemek az Azure Stack portálon látható módon az alábbiak szerint.
 
 ### <a name="create-blade"></a>A Create (Létrehozás) panel
 ![A Create (Létrehozás) panel](media/azure-stack-marketplace-item-ui-reference/image1.png)
 
-### <a name="marketplace-item-details-blade"></a>Piactér elem részleteit megjelenítő panelen
-![Piactér elem részleteit megjelenítő panelen](media/azure-stack-marketplace-item-ui-reference/image3.png)
+### <a name="marketplace-item-details-blade"></a>Piactéri elem részletei panel
+![Piactéri elem részletei panel](media/azure-stack-marketplace-item-ui-reference/image3.png)
 

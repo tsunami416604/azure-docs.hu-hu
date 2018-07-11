@@ -1,21 +1,21 @@
-1. Másolja a telepítése a kiszolgálóra, és ezután nyissa meg a telepítőt.
-2. A **telepítésen**, jelölje be **telepíteni a mobilitási szolgáltatás**.
+1. Másolja a telepítése a kiszolgálóra, és nyissa meg a telepítőt.
+2. A **telepítési lehetőség**válassza **telepíteni a mobilitási szolgáltatást**.
 
-    ![Mobilitási szolgáltatás telepítési beállítások lapján](./media/site-recovery-install-mob-svc-gui/mobility1.png)
+    ![A mobilitási szolgáltatás telepítési lehetőség lapja](./media/site-recovery-install-mob-svc-gui/mobility1.png)
 
 3. A telepítés helyét, majd válassza ki és **telepítése** a telepítési folyamat elindításához.
 
-    ![Mobilitási szolgáltatás telepítési helyét lap](./media/site-recovery-install-mob-svc-gui/mobility2.png)
+    ![A mobilitási szolgáltatás telepítési helyét lapja](./media/site-recovery-install-mob-svc-gui/mobility2.png)
 
-4. Használja a **telepítési folyamat** oldalon a telepítő előrehaladást mérik.
+4. Használja a **telepítési folyamat** oldalon a telepítő folyamat állapotának monitorozásához.
 
-    ![Mobilitási szolgáltatás telepítési folyamat oldalon](./media/site-recovery-install-mob-svc-gui/mobility3.png)
+    ![A mobilitási szolgáltatás telepítésének állapotlapja](./media/site-recovery-install-mob-svc-gui/mobility3.png)
 
-5. A telepítés befejezése után válassza ki a **konfigurációs folytassa** mobilitási szolgáltatás regisztrálása a konfigurációs kiszolgáló.
+5. A telepítés befejezése után jelölje ki a **lépjen tovább a konfigurációs** regisztrálni a mobilitási szolgáltatás a konfigurációs kiszolgálóra.
 
-    ![Mobilitási szolgáltatás regisztrációs lapjához](./media/site-recovery-install-mob-svc-gui/mobility4.png)
+    ![A mobilitási szolgáltatás való regisztrációhoz](./media/site-recovery-install-mob-svc-gui/mobility4.png)
 
 6. Válassza ki **regisztrálása** a regisztráció befejezéséhez.
 
-    ![Mobilitási szolgáltatás regisztrációs végső lap](./media/site-recovery-install-mob-svc-gui/mobility5.png)
+    ![A mobilitási szolgáltatás regisztrációs utolsó oldal](./media/site-recovery-install-mob-svc-gui/mobility5.png)
 

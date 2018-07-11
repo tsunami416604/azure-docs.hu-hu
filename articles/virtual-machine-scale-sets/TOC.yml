@@ -55,10 +55,6 @@
           href: tutorial-autoscale-powershell.md
         - name: Sablon
           href: tutorial-autoscale-template.md
-    - name: Alkalmazások üzembe helyezése Azure-beli virtuálisgép-méretezési csoportokban egyéni Packer-rendszerképpel
-      items:
-        - name: Azure CLI 2.0
-          href: 'https://docs.microsoft.com/learn/deploy-custom-vmss-app/index'
 - name: Példák
   items:
     - name: Azure CLI 2.0

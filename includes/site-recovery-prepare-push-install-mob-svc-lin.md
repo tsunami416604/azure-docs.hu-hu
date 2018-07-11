@@ -1,19 +1,19 @@
 ### <a name="prepare-for-a-push-installation-on-a-linux-server"></a>Felkészülés leküldéses telepítésre Linux-kiszolgálón
 
-1. Győződjön meg arról, hogy van hálózati kapcsolat a Linux-számítógép és a folyamatkiszolgáló között.
-2. Hozzon létre egy fiókot, amelyen keresztül a folyamatkiszolgáló hozzáférhet a számítógéphez. A fióknak **gyökér** szintű felhasználónak kell lennie a forrás Linux-kiszolgálón. Ezt a fiókot használják, csak az ügyfélleküldéses telepítés és a frissítéseket.
+1. Győződjön meg arról, hogy nincs-e hálózati kapcsolat a Linux-számítógép és a folyamatkiszolgáló között.
+2. Hozzon létre egy fiókot, amelyen keresztül a folyamatkiszolgáló hozzáférhet a számítógéphez. A fióknak **gyökér** szintű felhasználónak kell lennie a forrás Linux-kiszolgálón. Használja ezt a fiókot, csak a leküldéses telepítéshez és frissítésekhez.
 3. Ellenőrizze, hogy a forrás Linux-kiszolgálón található /etc/hosts fájl tartalmaz-e olyan bejegyzéseket, amelyek a helyi gazdanevet az összes hálózati adapterhez társított IP-címekké képezik le.
 4. Telepítse a legfrissebb openssh, openssh-server és openssl csomagokat a replikálni kívánt számítógépen.
 5. Ügyeljen arra, hogy a Secure Shell (SSH) engedélyezve legyen, és a 22-es porton fusson.
-6. SFTP alrendszer és a jelszó-hitelesítés engedélyezése a sshd_config fájlban. Kövesse az alábbi lépéseket:
+6. Engedélyezze az SFTP alrendszer és a jelszó hitelesítését az sshd_config fájlban. Kövesse az alábbi lépéseket:
 
     a. Jelentkezzen be **gyökér** szintű felhasználóként.
 
-    b. Az a **/etc/ssh/sshd_config** fájlt, keresse meg a sor kezdődő **PasswordAuthentication**.
+    b. Az a **/etc/ssh/sshd_config** fájlt és keresse meg azt a sort, kezdődik **PasswordAuthentication**.
 
-    c. Állítsa vissza a sort, és módosítsa az értéket a következőre **Igen**.
+    c. Állítsa vissza a sort, és módosítsa az értéket **Igen**.
 
-    d. A sor kezdődő található **alrendszer**, és állítsa vissza a sor.
+    d. Keresse meg a sort, amely a következővel kezdődik: **alrendszer**, és állítsa vissza a sort.
 
       ![Linux](./media/site-recovery-prepare-push-install-mob-svc-lin/mobility2.png)
 
@@ -23,7 +23,7 @@
 
     a. Jelentkezzen be a konfigurációs kiszolgálóra.
 
-    b. Nyissa meg a következőt: **cspsconfigtool.exe**. Egy parancsikont az asztalon és az %ProgramData%\home\svsystems\bin mappában érhető el.
+    b. Nyissa meg a következőt: **cspsconfigtool.exe**. Parancsikonja az asztalon, és a %ProgramData%\home\svsystems\bin mappában érhető el.
 
     c. Az a **fiókok kezelése** lapon jelölje be **fiók hozzáadása**.
 

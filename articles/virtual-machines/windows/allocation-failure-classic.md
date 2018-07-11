@@ -1,6 +1,6 @@
 ---
-title: Klasszikus üzembe helyezési modellel Azure Windows virtuális gép foglalási hibáinak elhárítása |} Microsoft Docs
-description: Hozzon létre, újraindításakor vagy átméretezésekor a klasszikus windowsos virtuális gép az Azure-ban fellépő lefoglalási hibák elhárítása
+title: A klasszikus üzemi modellben Azure Windows virtuális gépek foglalási hibáinak elhárítása |} A Microsoft Docs
+description: Amikor létrehozása, újraindítása vagy átméretezése az Azure-beli klasszikus Windows virtuális gépek foglalási hibáinak elhárítása
 services: virtual-machines-windows, azure-resource-manager
 documentationcenter: ''
 author: genlin
@@ -16,13 +16,13 @@ ms.topic: article
 ms.date: 04/13/2018
 ms.author: genli
 ms.openlocfilehash: 659781a16663d815e54454746d017eef29414b95
-ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
+ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/08/2018
+ms.lasthandoff: 07/10/2018
 ms.locfileid: "31529498"
 ---
-# <a name="troubleshooting-steps-specific-to-allocation-failure-scenarios-in-the-classic-deployment-model"></a>Foglalási hiba forgatókönyvek a klasszikus üzembe helyezési modellben megadott hibaelhárítási lépéseket
+# <a name="troubleshooting-steps-specific-to-allocation-failure-scenarios-in-the-classic-deployment-model"></a>Foglalási hibák esetét a klasszikus üzemi modellben meghatározott hibaelhárítási lépéseket
 
 [!INCLUDE [virtual-machines-common-allocation-failure-classic](../../../includes/virtual-machines-common-allocation-failure-classic.md)]
 

@@ -9,13 +9,13 @@ ms.date: 07/05/2018
 ms.author: shants
 ms.custom: include file
 ms.openlocfilehash: abf10177f8ce86309043da92d1f2b690775b6d89
-ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
+ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2018
+ms.lasthandoff: 07/10/2018
 ms.locfileid: "37909912"
 ---
-Az Azure rendszeresen végez frissítéseket a megbízhatóságának, teljesítményének és a gazda-infrastruktúrát, a virtuális gépek biztonságának javítása érdekében. Ezen frissítések közé eső szoftver-összetevő (például az operációs rendszer, hipervizor, és különböző, a gazdagépen telepített ügynökök), a üzemeltetési környezetben javítás hálózati összetevők frissítése hardver leszerelése. Ezek a frissítések a legtöbb annak hatását a futtatott virtuális gépek működésére. Előfordulhatnak azonban olyan esetekben, amikor frissítések hatással:
+Az Azure rendszeresen végez frissítéseket a virtuális gépeket futtató infrastruktúra megbízhatóságának, teljesítményének és biztonságának javítása érdekében. Ezek a frissítések a futtatókörnyezet szoftverösszetevőinek (például az operációs rendszer, a hipervizor és a gazdagépen telepített különböző ügynökök) javítását, a hálózati összetevők frissítését és a hardverek leszerelését takarják. Ezek a frissítések a legtöbb annak hatását a futtatott virtuális gépek működésére. Előfordulhatnak azonban olyan esetekben, amikor frissítések hatással:
 
 - Ha lehetőség egy újraindítás nélküli frissítését, az Azure karbantartás megőrzése memóriát használ a virtuális gép felfüggesztése, amíg a gazdagép frissítése vagy a virtuális gép áthelyezése egy már frissített gazdagépre hozhassanak.
 

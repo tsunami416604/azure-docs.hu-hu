@@ -1,5 +1,5 @@
 ---
-title: 'Útválasztási (társviszony-létesítés) a egy ExpressRoute-áramkör konfigurálása: Azure: klasszikus |} Microsoft Docs'
+title: 'Útválasztás (társviszony-létesítés) az expressroute-kapcsolatcsoport konfigurálása: Azure: klasszikus |} A Microsoft Docs'
 description: A cikk az ExpressRoute-kapcsolatcsoportok privát, nyilvános és Microsoft társviszony-létesítéses létrehozásának és kiépítésének lépéseit ismerteti. A cikk azt is bemutatja, hogyan ellenőrizheti a kapcsolatcsoport társviszonyainak állapotát, illetve hogyan frissítheti vagy törölheti őket.
 documentationcenter: na
 services: expressroute
@@ -16,24 +16,24 @@ ms.workload: infrastructure-services
 ms.date: 03/21/2017
 ms.author: ganesr;cherylmc
 ms.openlocfilehash: 9cebb196bd91da704798fb001763a76e6d090472
-ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
+ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/08/2018
+ms.lasthandoff: 07/10/2018
 ms.locfileid: "31594137"
 ---
-# <a name="create-and-modify-peering-for-an-expressroute-circuit-classic"></a>Létrehozásához és módosításához (klasszikus) ExpressRoute-kör társviszony
+# <a name="create-and-modify-peering-for-an-expressroute-circuit-classic"></a>ExpressRoute-kapcsolatcsoport (klasszikus) társviszony létesítése és módosítása
 > [!div class="op_single_selector"]
 > * [Azure Portal](expressroute-howto-routing-portal-resource-manager.md)
 > * [PowerShell](expressroute-howto-routing-arm.md)
 > * [Azure CLI](howto-routing-cli.md)
-> * [Video - privát társviszony-létesítés](http://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-set-up-azure-private-peering-for-your-expressroute-circuit)
-> * [Video - nyilvános társviszony-létesítés](http://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-set-up-azure-public-peering-for-your-expressroute-circuit)
-> * [Videó – a Microsoft társviszony-létesítés](http://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-set-up-microsoft-peering-for-your-expressroute-circuit)
+> * [Videó - privát társviszony](http://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-set-up-azure-private-peering-for-your-expressroute-circuit)
+> * [Videó - nyilvános társviszony-létesítés](http://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-set-up-azure-public-peering-for-your-expressroute-circuit)
+> * [Videó – Microsoft társviszony-létesítés](http://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-set-up-microsoft-peering-for-your-expressroute-circuit)
 > * [PowerShell (klasszikus)](expressroute-howto-routing-classic.md)
 > 
 
-Ez a cikk végigvezeti a létrehozása és kezelése a PowerShell és a klasszikus üzembe helyezési modellel ExpressRoute-kapcsolatcsoportot útválasztási konfigurációja. Az alábbi lépések azt is bemutatják, hogyan ellenőrizheti az ExpressRoute-kapcsolatcsoport társviszonyainak állapotát, illetve hogyan frissítheti vagy törölheti és szüntetheti meg őket.
+Ez a cikk végigvezeti a lépéseken, hozhat létre és kezelhet egy ExpressRoute-kapcsolatcsoporttal a PowerShell és a klasszikus üzemi modell használatával útválasztási konfigurációja. Az alábbi lépések azt is bemutatják, hogyan ellenőrizheti az ExpressRoute-kapcsolatcsoport társviszonyainak állapotát, illetve hogyan frissítheti vagy törölheti és szüntetheti meg őket.
 
 [!INCLUDE [expressroute-classic-end-include](../../includes/expressroute-classic-end-include.md)]
 
@@ -43,9 +43,9 @@ Ez a cikk végigvezeti a létrehozása és kezelése a PowerShell és a klasszik
 
 
 ## <a name="configuration-prerequisites"></a>Konfigurációs előfeltételek
-* Szüksége lesz a legújabb Azure Service Management (SM) PowerShell-parancsmagok. További információkért lásd: [Ismerkedés az Azure PowerShell-parancsmagok](/powershell/azure/overview).  
+* Az Azure Service Management (SM) PowerShell-parancsmagjainak legújabb verzióját kell. További információkért lásd: [Ismerkedés az Azure PowerShell-parancsmagok](/powershell/azure/overview).  
 * A konfigurálás megkezdése előtt mindenképp tekintse át az [előfeltételek](expressroute-prerequisites.md), az [útválasztási követelmények](expressroute-routing.md) és a [munkafolyamatok](expressroute-workflows.md) lapot.
-* Egy aktív ExpressRoute-kapcsolatcsoportra lesz szüksége. Kövesse az utasításokat [ExpressRoute-kapcsolatcsoportot létrehozni](expressroute-howto-circuit-classic.md) , és folytassa a kapcsolat szolgáltatójánál előtt által engedélyezett körön. Az ExpressRoute-kapcsolatcsoportnak kiosztott és engedélyezett állapotban kell lennie, hogy az alább ismertetett parancsmagokat futtatni lehessen.
+* Egy aktív ExpressRoute-kapcsolatcsoportra lesz szüksége. Kövesse az utasításokat [ExpressRoute-kapcsolatcsoport létrehozása](expressroute-howto-circuit-classic.md) , és engedélyeztesse a kapcsolatcsoportot kapcsolatszolgáltatójával, mielőtt a folytatáshoz. Az ExpressRoute-kapcsolatcsoportnak kiosztott és engedélyezett állapotban kell lennie, hogy az alább ismertetett parancsmagokat futtatni lehessen.
 
 > [!IMPORTANT]
 > Az utasítások csak 2. rétegbeli kapcsolatszolgáltatásokat kínáló szolgáltatóknál létrehozott kapcsolatcsoportokra vonatkoznak. Ha 3. rétegbeli szolgáltatásokat kínáló szolgáltatóval rendelkezik (tipikusan IPVPN, mint az MPLS), a kapcsolatszolgáltató konfigurálja és felügyeli az útválasztást Ön helyett.
@@ -55,7 +55,7 @@ Ez a cikk végigvezeti a létrehozása és kezelése a PowerShell és a klasszik
 Egy, két vagy akár mindhárom társviszony-létesítést (Azure privát, Azure nyilvános és Microsoft) is konfigurálhatja egy adott ExpressRoute-kapcsolatcsoportban. A társviszony-létesítéseket tetszőleges sorrendben konfigurálhatja. Az egyes társviszony-létesítéseket azonban mindenképp egyenként kell végrehajtania.
 
 
-### <a name="log-in-to-your-azure-account-and-select-a-subscription"></a>Jelentkezzen be az Azure-fiókjával, és válasszon egy előfizetést
+### <a name="log-in-to-your-azure-account-and-select-a-subscription"></a>Jelentkezzen be az Azure-fiókjával, és válasszon ki egy előfizetést
 1. Nyissa meg emelt szintű jogosultságokkal a PowerShell konzolt, és csatlakozzon a fiókjához. A következő példa segít a kapcsolódásban:
 
         Connect-AzureRmAccount
@@ -68,7 +68,7 @@ Egy, két vagy akár mindhárom társviszony-létesítést (Azure privát, Azure
 
         Select-AzureRmSubscription -SubscriptionName "Replace_with_your_subscription_name"
 
-4. Ezután az alábbi parancsmaggal adja hozzá az Azure-előfizetéshez a PowerShell a a klasszikus üzembe helyezési modellben.
+4. Ezután használja a következő parancsmagot az Azure-előfizetés hozzáadása a PowerShell a klasszikus üzemi modellhez.
 
         Add-AzureAccount
 
@@ -77,16 +77,16 @@ Egy, két vagy akár mindhárom társviszony-létesítést (Azure privát, Azure
 Ez a szakasz tartalmazza az ExpressRoute-kapcsolatcsoport Azure privát társviszony-létesítési konfigurációjának létrehozására, lekérésére, frissítésére és törlésére vonatkozó utasításokat. 
 
 ### <a name="to-create-azure-private-peering"></a>Azure privát társviszony-létesítés létrehozása
-1. **A PowerShell-modul ExpressRoute importálhatók.**
+1. **A PowerShell-modul importálása az expressroute-hoz.**
    
-    Importálnia kell az Azure és az ExpressRoute modulok a PowerShell-munkamenetben megkezdéséhez az ExpressRoute-parancsmagok használatával. A következő parancsokat az Azure és az ExpressRoute modulok importálása a PowerShell-munkamenetben. A verzió változhat.    
+    Importálnia kell az Azure és az ExpressRoute-modulokat a PowerShell-munkamenetbe az ExpressRoute-parancsmagok használatának elkezdéséhez. Futtassa az alábbi parancsokat a PowerShell-munkamenetbe az Azure és az ExpressRoute modulok importálásához. A verzió eltérőek lehetnek.    
    
         Import-Module 'C:\Program Files\WindowsPowerShell\Modules\Azure\5.1.1\Azure\Azure.psd1'
         Import-Module 'C:\Program Files\WindowsPowerShell\Modules\Azure\5.1.1\ExpressRoute\ExpressRoute.psd1'
-2. **ExpressRoute-kapcsolatcsoportot létrehozni.**
+2. **Hozzon létre egy ExpressRoute-kapcsolatcsoportot.**
    
     Kövesse az utasításokat az [ExpressRoute-kapcsolatcsoport](expressroute-howto-circuit-classic.md) létrehozásához, és kérje meg kapcsolatszolgáltatóját, hogy ossza ki azt. Ha kapcsolatszolgáltatója felügyelt 3. rétegbeli szolgáltatásokat kínál, igényelheti tőle, hogy engedélyezze Önnek az Azure privát társviszony-létesítést. Ebben az esetben nem szükséges a következő szakaszokban foglalt lépéseket végrehajtania. Ha azonban a kapcsolatszolgáltató felügyeli az útválasztást Ön helyett, a kör létrehozása után kövesse az alábbi utasításokat. 
-3. **Ellenőrizze a ExpressRoute-kapcsolatcsoport ki van építve biztosításához.**
+3. **Ellenőrizze a ExpressRoute-kapcsolatcsoport győződjön meg arról, hogy ki van építve.**
    
     Először ellenőrizze, hogy az ExpressRoute-kapcsolatcsoport Kiosztott és Engedélyezett állapotban van-e. Lásd az alábbi példát.
    
@@ -101,11 +101,11 @@ Ez a szakasz tartalmazza az ExpressRoute-kapcsolatcsoport Azure privát társvis
         Sku                              : Standard
         Status                           : Enabled
    
-    Győződjön meg arról, hogy látható-e a kapcsolatcsoport kiépítve és engedélyezve. Ha nem, a kapcsolat szolgáltatójánál lekérni a szükséges állapot és állapotának a kapcsolatcsoport működik.
+    Győződjön meg arról, hogy a kapcsolatcsoport kiosztott és engedélyezett jeleníti meg. Ha nem, beolvasni a szükséges állapot és az állapot a kapcsolatcsoport a kapcsolatszolgáltató együttműködve.
    
         ServiceProviderProvisioningState : Provisioned
         Status                           : Enabled
-4. **Konfigurálja az Azure magánhálózati társviszony-létesítés a kapcsolat.**
+4. **Konfigurálja az Azure privát társviszony-létesítést a kapcsolatcsoporthoz.**
    
     Mielőtt folytatná a következő lépésekkel, ellenőrizze az alábbi elemek meglétét:
    
@@ -167,16 +167,16 @@ A társviszony-létesítés konfigurációját a következő parancsmag futtatá
 Ez a szakasz tartalmazza az ExpressRoute-kapcsolatcsoport Azure nyilvános társviszony-létesítési konfigurációjának létrehozására, lekérésére, frissítésére és törlésére vonatkozó utasításokat.
 
 ### <a name="to-create-azure-public-peering"></a>Azure nyilvános társviszony-létesítés létrehozása
-1. **A PowerShell-modul ExpressRoute importálhatók.**
+1. **A PowerShell-modul importálása az expressroute-hoz.**
    
-    Importálnia kell az Azure és az ExpressRoute modulok a PowerShell-munkamenetben megkezdéséhez az ExpressRoute-parancsmagok használatával. A következő parancsokat az Azure és az ExpressRoute modulok importálása a PowerShell-munkamenetben. A verzió változhat.   
+    Importálnia kell az Azure és az ExpressRoute-modulokat a PowerShell-munkamenetbe az ExpressRoute-parancsmagok használatának elkezdéséhez. Futtassa az alábbi parancsokat a PowerShell-munkamenetbe az Azure és az ExpressRoute modulok importálásához. A verzió eltérőek lehetnek.   
    
         Import-Module 'C:\Program Files\WindowsPowerShell\Modules\Azure\5.1.1\Azure\Azure.psd1'
         Import-Module 'C:\Program Files\WindowsPowerShell\Modules\Azure\5.1.1\ExpressRoute\ExpressRoute.psd1'
 2. **ExpressRoute-kapcsolatcsoport létrehozása**
    
     Kövesse az utasításokat az [ExpressRoute-kapcsolatcsoport](expressroute-howto-circuit-classic.md) létrehozásához, és kérje meg kapcsolatszolgáltatóját, hogy ossza ki azt. Ha kapcsolatszolgáltatója felügyelt 3. rétegbeli szolgáltatásokat kínál, igényelheti tőle, hogy engedélyezze Önnek az Azure nyilvános társviszony-létesítést. Ebben az esetben nem szükséges a következő szakaszokban foglalt lépéseket végrehajtania. Ha azonban a kapcsolatszolgáltató felügyeli az útválasztást Ön helyett, a kör létrehozása után kövesse az alábbi utasításokat.
-3. **Ellenőrizze a ExpressRoute-kapcsolatcsoport ki van építve biztosításához**
+3. **Ellenőrizze az ExpressRoute kapcsolatcsoport ki van építve**
    
     Először ellenőrizze, hogy az ExpressRoute-kapcsolatcsoport Kiosztott és Engedélyezett állapotban van-e. Lásd az alábbi példát.
    
@@ -191,11 +191,11 @@ Ez a szakasz tartalmazza az ExpressRoute-kapcsolatcsoport Azure nyilvános társ
         Sku                              : Standard
         Status                           : Enabled
    
-    Győződjön meg arról, hogy látható-e a kapcsolatcsoport kiépítve és engedélyezve. Ha nem, a kapcsolat szolgáltatójánál lekérni a szükséges állapot és állapotának a kapcsolatcsoport működik.
+    Győződjön meg arról, hogy a kapcsolatcsoport kiosztott és engedélyezett jeleníti meg. Ha nem, beolvasni a szükséges állapot és az állapot a kapcsolatcsoport a kapcsolatszolgáltató együttműködve.
    
         ServiceProviderProvisioningState : Provisioned
         Status                           : Enabled
-4. **Az Azure nyilvános társviszony-létesítés a kapcsolat konfigurálása**
+4. **Az Azure nyilvános társviszony-létesítést a kapcsolatcsoporthoz konfigurálása**
    
     Mielőtt folytatná, ellenőrizze az alábbi információk meglétét:
    
@@ -253,18 +253,18 @@ A társviszony-létesítés konfigurációját a következő parancsmag futtatá
 Ez a szakasz tartalmazza az ExpressRoute-kapcsolatcsoport Microsoft társviszony-létesítési konfigurációjának létrehozására, lekérésére, frissítésére és törlésére vonatkozó utasításokat. 
 
 ### <a name="to-create-microsoft-peering"></a>Microsoft társviszony-létesítés létrehozása
-1. **A PowerShell-modul ExpressRoute importálhatók.**
+1. **A PowerShell-modul importálása az expressroute-hoz.**
    
-    Importálnia kell az Azure és az ExpressRoute modulok a PowerShell-munkamenetben megkezdéséhez az ExpressRoute-parancsmagok használatával. A következő parancsokat az Azure és az ExpressRoute modulok importálása a PowerShell-munkamenetben. A verzió változhat.   
+    Importálnia kell az Azure és az ExpressRoute-modulokat a PowerShell-munkamenetbe az ExpressRoute-parancsmagok használatának elkezdéséhez. Futtassa az alábbi parancsokat a PowerShell-munkamenetbe az Azure és az ExpressRoute modulok importálásához. A verzió eltérőek lehetnek.   
    
         Import-Module 'C:\Program Files\WindowsPowerShell\Modules\Azure\5.1.1\Azure\Azure.psd1'
         Import-Module 'C:\Program Files\WindowsPowerShell\Modules\Azure\5.1.1\ExpressRoute\ExpressRoute.psd1'
 2. **ExpressRoute-kapcsolatcsoport létrehozása**
    
     Kövesse az utasításokat az [ExpressRoute-kapcsolatcsoport](expressroute-howto-circuit-classic.md) létrehozásához, és kérje meg kapcsolatszolgáltatóját, hogy ossza ki azt. Ha kapcsolatszolgáltatója felügyelt 3. rétegbeli szolgáltatásokat kínál, igényelheti tőle, hogy engedélyezze Önnek az Azure privát társviszony-létesítést. Ebben az esetben nem szükséges a következő szakaszokban foglalt lépéseket végrehajtania. Ha azonban a kapcsolatszolgáltató felügyeli az útválasztást Ön helyett, a kör létrehozása után kövesse az alábbi utasításokat.
-3. **Ellenőrizze a ExpressRoute-kapcsolatcsoport ki van építve biztosításához**
+3. **Ellenőrizze az ExpressRoute kapcsolatcsoport ki van építve**
    
-    Kell először ellenőrizze, hogy az ExpressRoute-kapcsolatcsoport kiépítve és engedélyezett állapotban van.
+    Először ellenőrizze, hogy van-e az ExpressRoute-kapcsolatcsoport kiosztott és engedélyezett állapotban.
    
         PS C:\> Get-AzureDedicatedCircuit -ServiceKey "*********************************"
    
@@ -277,11 +277,11 @@ Ez a szakasz tartalmazza az ExpressRoute-kapcsolatcsoport Microsoft társviszony
         Sku                              : Standard
         Status                           : Enabled
    
-    Győződjön meg arról, hogy látható-e a kapcsolatcsoport kiépítve és engedélyezve. Ha nem, a kapcsolat szolgáltatójánál lekérni a szükséges állapot és állapotának a kapcsolatcsoport működik.
+    Győződjön meg arról, hogy a kapcsolatcsoport kiosztott és engedélyezett jeleníti meg. Ha nem, beolvasni a szükséges állapot és az állapot a kapcsolatcsoport a kapcsolatszolgáltató együttműködve.
    
         ServiceProviderProvisioningState : Provisioned
         Status                           : Enabled
-4. **A kör társviszony Microsoft konfigurálása**
+4. **Konfigurálja a Microsoft társviszony-létesítést a kapcsolatcsoporthoz**
    
     Mielőtt folytatná, ellenőrizze az alábbi információk meglétét.
    
@@ -294,7 +294,7 @@ Ez a szakasz tartalmazza az ExpressRoute-kapcsolatcsoport Microsoft társviszony
    * Útválasztási jegyzék neve: Megadhatja az RIR/IRR jegyzék nevét, amelyben az AS-szám és az előtagok regisztrálva vannak.
    * Egy MD5-kivonat, ha használni kívánja. **Ez nem kötelező.**
      
-    A kör Microsoft pering konfigurálása a következő parancsmag futtatása
+    A kapcsolatcsoport Microsoft pering konfigurálásához a következő parancsmag futtatása
      
         New-AzureBGPPeering -AccessType Microsoft -ServiceKey "*********************************" -PrimaryPeerSubnet "131.107.0.0/30" -SecondaryPeerSubnet "131.107.0.4/30" -VlanId 300 -PeerAsn 1234 -CustomerAsn 2245 -AdvertisedPublicPrefixes "123.0.0.0/30" -RoutingRegistryName "ARIN" -SharedKey "A1B2C3D4"
 
@@ -328,8 +328,8 @@ A társviszony-létesítés konfigurációját a következő parancsmag futtatá
     Remove-AzureBGPPeering -AccessType Microsoft -ServiceKey "*********************************"
 
 ## <a name="next-steps"></a>További lépések
-Ezt követően [egy virtuális hálózat csatolása ExpressRoute-kapcsolatcsoportot](expressroute-howto-linkvnet-classic.md).
+Ezután [virtuális hálózat összekapcsolása egy ExpressRoute-kapcsolatcsoport](expressroute-howto-linkvnet-classic.md).
 
-* Munkafolyamatokkal kapcsolatos további információkért lásd: [ExpressRoute-munkafolyamatokat](expressroute-workflows.md).
+* Munkafolyamatokkal kapcsolatos további információkért lásd: [az ExpressRoute-munkafolyamatokat](expressroute-workflows.md).
 * A kapcsolatcsoportok társviszony-létesítéseivel kapcsolatos további információkért lásd: [ExpressRoute circuits and routing domains](expressroute-circuit-peerings.md) (ExpressRoute-kapcsolatcsoportok és útválasztási tartományok).
 

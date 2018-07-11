@@ -1,9 +1,9 @@
 <!--
     Separate the generic "Get started" paragraph from each connector-* article in azure-docs-pr/articles/data-factory/ to ease future central update.
 -->
-A másolási tevékenység az adatcsatorna hozhat létre egyet a következő eszközök és az SDK-k használatával. Válassza ki a másolási tevékenység során a folyamat létrehozásának részletes útmutatóját egy oktatóanyag Ugrás mutató hivatkozást. 
+A másolási tevékenységgel rendelkező folyamatot hozhat létre egyet a következő eszközök és az SDK-k használatával. Nyissa meg egy másolási tevékenységgel rendelkező folyamat létrehozása a részletes oktatóanyag mutató hivatkozás kiválasztása. 
 
-- [Másolja az eszköz](../articles/data-factory/quickstart-create-data-factory-copy-data-tool.md)
+- [Adatok másolása eszköz](../articles/data-factory/quickstart-create-data-factory-copy-data-tool.md)
 - [Azure Portal](../articles/data-factory/quickstart-create-data-factory-portal.md)
 - [.NET SDK](../articles/data-factory/quickstart-create-data-factory-dot-net.md)
 - [Python SDK](../articles/data-factory/quickstart-create-data-factory-python.md)

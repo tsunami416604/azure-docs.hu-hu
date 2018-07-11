@@ -5,15 +5,15 @@ services: virtual-machines
 author: jonbeck7
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 05/22/2018
+ms.date: 07/06/2018
 ms.author: azcspmt;jonbeck;cynthn
 ms.custom: include file
-ms.openlocfilehash: 016aa15f391daedae1b87fc6c7099b72b50f7160
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
-ms.translationtype: HT
+ms.openlocfilehash: 0cd31a6acaa248b53fbe90684894b3bb3e7ebf86
+ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "34669322"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37907043"
 ---
 Általános célú virtuális gépek méreteit adja meg a kiegyensúlyozott Processzor-memória arány. Ideális választás tesztelési-fejlesztési feladatokhoz, kis és közepes méretű adatbázisokhoz, valamint kis és közepes adatforgalmú webkiszolgálókhoz. Ez a cikk ismerteti a vcpu-k, az adatlemezeket és a hálózati adapterek, valamint az ennél a csoportosításnál méretek esetében a tárterületek átviteli sebességének számát. 
 
@@ -25,6 +25,10 @@ ms.locfileid: "34669322"
 
 
 ## <a name="b-series"></a>B sorozat
+
+A Premium Storage: támogatott
+
+Prémium szintű Storage gyorsítótárazási: Nem támogatott
 
 A B sorozat – adatlöket-kezelés virtuális gépek ideálisak a nagy számítási feladatokhoz, amelyek nem a teljes teljesítmény, a processzor folyamatos kell például a webkiszolgálók, kis méretű adatbázisokhoz, és a fejlesztési és tesztelési környezetek. Ezeket a feladatokat jellemzően rendelkeznek – adatlöket-kezelés teljesítményre vonatkozó követelmények. A B sorozat teszi lehetővé ezen ügyfelek vásárolhat egy tudatában alapkonfiguráció árteljesítménnyel, amely lehetővé teszi, hogy a Virtuálisgép-példány krediteket felépíthető, a virtuális gép kevesebb, mint az alapszintű teljesítmény használatakor a Virtuálisgép-méretét. A virtuális gép kredit keletkezett, amikor a a virtuális Géphez is megnövelheti arra legfeljebb 100 %-a CPU-használatát, amikor az alkalmazás magasabb processzorteljesítményre van szükség a virtuális gép eredeti felett.
 
@@ -43,6 +47,10 @@ A B sorozat – adatlöket-kezelés virtuális gépek ideálisak a nagy számít
 
 ACU: 160–190
 
+A Premium Storage: támogatott
+
+Prémium szintű Storage gyorsítótárazási: támogatott
+
 A Dsv3 sorozatú méretek alapulnak a 2,4 GHz-es Intel Xeon® E5-2673 v3 (Haswell) processzor- és a legújabb 2,3 GHz-es Intel XEON® E5-2673 v4 (Broadwell) processzoron, amely az Intel Turbo Boost Technology 2.0 3,5 GHz- és prémium szintű storage használata. A Dsv3-sorozat méretei vCPU, memória és ideiglenes tárterület kombinációját nyújtják a legtöbb éles számítási feladathoz.
 
 
@@ -60,6 +68,10 @@ A Dsv3 sorozatú méretek alapulnak a 2,4 GHz-es Intel Xeon® E5-2673 v3 (Haswel
 ## <a name="dv3-series-sup1sup"></a>Dv3-sorozat <sup>1</sup>
 
 ACU: 160–190
+
+A Premium Storage: Nem támogatott.
+
+Prémium szintű Storage gyorsítótárazási: Nem támogatott
 
 Dv3-sorozat méretei alapulnak a 2,4 GHz-es Intel Xeon® E5-2673 v3 (Haswell) processzor- és 2,3 GHz-es Intel XEON® E5-2673 v4 (Broadwell) processzoron, amely az Intel Turbo Boost Technology 2.0 3,5 GHz-es érhető el. A Dv3-sorozat méretei vCPU, memória és ideiglenes tárterület kombinációját nyújtják a legtöbb éles számítási feladathoz.
 
@@ -82,6 +94,10 @@ Az adatlemezes tárolást a virtuális gépektől függetlenül számlázzuk. Pr
 
 ACU: 210–250
 
+A Premium Storage: támogatott
+
+Prémium szintű Storage gyorsítótárazási: támogatott
+
 | Méret | vCPU | Memória: GiB | Ideiglenes tárterület (SSD) GiB | Adatlemezek max. száma | Maximális gyorsítótárazott és ideiglenes tárolóteljesítmény: IOPS/MBps (gyorsítótár mérete GiB-ban) | Max. gyorsítótárazás nélküli lemezteljesítmény: IOPS/MBps | Hálózati adapterek max. száma / várt hálózati sávszélesség (Mbps) |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | Standard_DS1_v2 |1 |3.5 |7 |4 |4,000 / 32 (43) |3,200 / 48 |2 / 750 |
@@ -96,6 +112,10 @@ ACU: 210–250
 
 ACU: 210–250
 
+A Premium Storage: Nem támogatott.
+
+Prémium szintű Storage gyorsítótárazási: Nem támogatott
+
 | Méret           | vCPU | Memória: GiB | Ideiglenes tárterület (SSD) GiB | Ideiglenes tárterület maximális teljesítménye: IOPS / Olvasási MBps / Írási MBps | Adatlemezek max. száma | Átviteli sebesség: IOPS | Hálózati adapterek max. száma / várt hálózati sávszélesség (Mbps) |
 |----------------|------|-------------|------------------------|------------------------------------------------------------|----------------|------------------|----------------------------------------------|
 | Standard_D1_v2 | 1    | 3.5         | 50                     | 3000 / 46 / 23                                             | 4              | 4x500            | 2 / 750                                      |
@@ -109,7 +129,9 @@ ACU: 210–250
 
 ACU: 100
 
+A Premium Storage: Nem támogatott.
 
+Prémium szintű Storage gyorsítótárazási: Nem támogatott
 
 | Méret            | vCPU | Memória: GiB | Ideiglenes tárterület (SSD) GiB | Ideiglenes tárterület maximális teljesítménye: IOPS / Olvasási MBps / Írási MBps | Adatlemezek max. száma / teljesítménye: IOPS | Hálózati adapterek max. száma / várt hálózati sávszélesség (Mbps) | 
 |-----------------|-----------|-------------|----------------|----------------------------------------------------------|-----------------------------------|------------------------------|

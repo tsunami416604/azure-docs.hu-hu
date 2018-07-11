@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 07/02/2018
+ms.date: 07/08/2018
 ms.author: magoedte
-ms.openlocfilehash: e7d3fdf9e6f027ab1c23a057ad6e039d50cab9ad
-ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
+ms.openlocfilehash: a94f7289c75a4f4d466542c608d81cf5b954f4b1
+ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37436422"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37917334"
 ---
 # <a name="monitor-azure-kubernetes-service-aks-container-health-preview"></a>Figyelje az Azure Kubernetes Service (AKS) tároló állapotát (előzetes verzió)
 
@@ -54,7 +54,7 @@ Ez a funkció a tárolóalapú OMS-ügynök Linux rendszeren, a teljesítmény- 
 Jelentkezzen be az Azure Portalra a [https://portal.azure.com](https://portal.azure.com) webhelyen. 
 
 ## <a name="enable-container-health-monitoring-for-a-new-cluster"></a>Engedélyezze a tárolót állapotfigyelés egy új fürthöz
-Engedélyezheti csak az AKS-fürt figyelése az Azure Portalról üzembe helyezéskor.  Kövesse a cikk rövid [Azure Kubernetes Service (AKS)-fürt üzembe helyezése](../aks/kubernetes-walkthrough-portal.md).  Ha befejezte a a **figyelés** lapon jelölje be **Igen** beállítás **figyelés engedélyezése** engedélyezi, majd válasszon egy meglévő, vagy hozzon létre egy új Log Analytics-munkaterületet.  
+Engedélyezheti egy új AKS-fürt figyelése az Azure Portalról üzembe helyezés során.  Kövesse a cikk rövid [Azure Kubernetes Service (AKS)-fürt üzembe helyezése](../aks/kubernetes-walkthrough-portal.md).  Ha befejezte a a **figyelés** lapon jelölje be **Igen** beállítás **figyelés engedélyezése** engedélyezi, majd válasszon egy meglévő, vagy hozzon létre egy új Log Analytics-munkaterületet.  
 
 Figyelés engedélyezése után minden konfigurációs feladat sikeresen befejeződött, a teljesítmény, a fürt a két módszer egyikével figyelheti:
 
@@ -66,7 +66,7 @@ Figyelés engedélyezése után minden konfigurációs feladat sikeresen befejez
 Figyelés engedélyezését követően eltarthat körülbelül 15 perc elteltével megtekintheti a fürt működési adatokat.  
 
 ## <a name="enable-container-health-monitoring-for-existing-managed-clusters"></a>Engedélyezze a tárolót állapotfigyelés a meglévő felügyelt fürtöket.
-A már üzembe helyezte az AKS-tároló figyelés engedélyezése valósítható meg az Azure Portalról vagy a PowerShell-parancsmag segítségével megadott Azure Resource Manager-sablonnal **New-AzureRmResourceGroupDeployment** vagy Az Azure parancssori felület.  
+A már üzembe helyezte az Azure Portalról vagy a PowerShell-parancsmag segítségével megadott Azure Resource Manager-sablonnal egy AKS-fürt figyelése **New-AzureRmResourceGroupDeployment** vagy Azure CLI használatával.  
 
 
 ### <a name="enable-from-azure-portal"></a>Az Azure Portalról engedélyezése
@@ -75,13 +75,11 @@ A következő lépésekkel engedélyezze a monitorozást az AKS-tároló az Azur
 1. Az Azure Portalon kattintson a **Minden szolgáltatás** lehetőségre. Az erőforrások listájába írja be a **tárolók**. Ahogy elkezd gépelni, a lista a beírtak alapján szűri a lehetőségeket. Válassza ki **Kubernetes-szolgáltatás**.<br><br> ![Azure Portal](./media/monitoring-container-health/azure-portal-01.png)<br><br>  
 2. A tárolók listájában válassza ki a tárolót.
 3. A tároló áttekintés oldalán válassza **tároló állapotának monitorozása** és a **tároló állapotának és a naplók bevezetési** lap jelenik meg.
-4. Az a **tároló állapotának és a naplók bevezetési** lapon, ha rendelkezik egy meglévő Log Analytics munkaterület ugyanabban az előfizetésben a fürttel, válassza a legördülő listából.  A lista preselects az alapértelmezett munkaterületre, és az AKS-tároló helye telepítve van az előfizetésben. Vagy választhat **hozzon létre új** , és adja meg az új munkaterület ugyanabban az előfizetésben.<br><br> ![AKS-tároló állapotfigyelésének engedélyezése](./media/monitoring-container-health/container-health-enable-brownfield.png) 
+4. Az a **tároló állapotának és a naplók bevezetési** lapon, ha rendelkezik egy meglévő Log Analytics munkaterület ugyanabban az előfizetésben a fürttel, válassza a legördülő listából.  A lista preselects az alapértelmezett munkaterületre, és az AKS-tároló helye telepítve van az előfizetésben.<br><br> ![AKS-tároló állapotfigyelésének engedélyezése](./media/monitoring-container-health/container-health-enable-brownfield-02.png) 
 
-    Ha **hozzon létre új**, a **új munkaterület létrehozása** ablaktáblán jelenik meg. A **régió** a régióban, az alapértelmezett érték a tároló-erőforrás jön létre, és fogadja el az alapértelmezett vagy válasszon ki egy másik régiót, és adja meg a munkaterület nevét.  Kattintson a **létrehozás** , fogadja el a kívánt beállítást.<br><br> ![Adja meg a tároló monintoring munkaterülete](./media/monitoring-container-health/create-new-workspace-01.png)  
-
-    >[!NOTE]
-    >Nem hozhat létre egy új munkaterületet az USA nyugati középső régiójában jelenleg csak az adott régióban is válasszon egy már meglévő munkaterületet.  Annak ellenére, hogy az adott régióban is kijelölhet a listában, az üzembe helyezés elindul, de ez nem sikerül röviddel utána.  
-    >
+>[!NOTE]
+>Ha szeretne létrehozni egy új Log Analytics-munkaterület a fürtből a monitorozási adatok tárolásához, kövesse a [Cretae Log Analytics-munkaterület](../log-analytics/log-analytics-quick-create-workspace.md) , és ügyeljen arra, hogy ugyanahhoz az előfizetéshez tartozik, amely az AKS-tároló a munkaterület létrehozása üzembe helyezését.  
+>
  
 Figyelés engedélyezését követően eltarthat körülbelül 15 perc elteltével megtekintheti a fürt működési adatokat. 
 
@@ -243,10 +241,11 @@ Ha úgy döntött, hogy az Azure parancssori felület használata, először tel
         ```
 Figyelés engedélyezését követően eltarthat körülbelül 15 perc elteltével megtekintheti a fürt működési adatokat.  
 
-## <a name="verify-agent-deployed-successfully"></a>Ellenőrizze az ügynök üzembe helyezése sikeresen befejeződött
+## <a name="verify-agent-and-solution-deployment"></a>Az ügynök és a megoldás a telepítés ellenőrzése
+Az ügynök verziója *06072018* és újabb verziója szükséges, ellenőrizheti, hogy az ügynök és a megoldás is sikeresen lettek telepítve.  Az ügynök korábbi verzióival ügynök telepítésének ellenőrzése csak is.
 
 ### <a name="agent-version-06072018-and-higher"></a>Ügynök verziója 06072018 és magasabb
-Ellenőrizze az OMS-ügynök verziója *06072018* vagy újabb verziója van telepítve megfelelően, futtassa a következő parancsokat: 
+A következő parancs futtatásával ellenőrizze az ügynök telepítése sikeresen megtörtént.   
 
 ```
 kubectl get ds omsagent --namespace=kube-system
@@ -260,7 +259,7 @@ NAME       DESIRED   CURRENT   READY     UP-TO-DATE   AVAILABLE   NODE SELECTOR 
 omsagent   2         2         2         2            2           beta.kubernetes.io/os=linux   1d
 ```  
 
-Új központi telepítés ellenőrzéséhez futtassa a következő parancsot:
+A megoldás üzembe helyezése ellenőrzéséhez futtassa a következő parancsot:
 
 ```
 kubectl get deployment omsagent-rs -n=kube-system
@@ -524,7 +523,7 @@ Ha a tároló állapotának lett sikeresen engedélyezve és konfigurálva, de �
     NAME       DESIRED   CURRENT   READY     UP-TO-DATE   AVAILABLE   NODE SELECTOR                 AGE
     omsagent   2         2         2         2            2           beta.kubernetes.io/os=linux   1d
     ```  
-2. Az ügynök verziószámát az üzembe helyezés állapotának ellenőrzéséhez *06072018* vagy újabb, a következő parancs futtatásával:
+2. Ellenőrizze a megoldás az üzemállapot-ügynök verziója *06072018* vagy újabb, a következő parancs futtatásával:
 
     `kubectl get deployment omsagent-rs -n=kube-system`
 

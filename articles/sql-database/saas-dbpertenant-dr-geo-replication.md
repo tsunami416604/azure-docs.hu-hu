@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 04/09/2018
 ms.author: ayolubek
 ms.openlocfilehash: f2ad92118c00f08e5dcdd4a8a12f007308b3fbd1
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/04/2018
+ms.lasthandoff: 07/10/2018
 ms.locfileid: "34645793"
 ---
 # <a name="disaster-recovery-for-a-multi-tenant-saas-application-using-database-geo-replication"></a>Egy több-bérlős SaaS-alkalmazás, adatbázis-replikációval geo-vészhelyreállítás
@@ -90,8 +90,8 @@ Később egy különálló hazatelepítési lépésben átadja a feladatokat az 
 A helyreállítási folyamat megkezdése előtt tekintse át az alkalmazás normál kifogástalan állapotát.
 1. A böngészőben nyissa meg a Wingtip Tickets Eseményközpontot (http://events.wingtip-dpt.&lt; felhasználó&gt;. trafficmanager.net - cserélje le &lt;felhasználói&gt; az üzemelő példány felhasználói értékkel).
     * Görgessen a lap aljára, és figyelje meg, hogy a katalógus-kiszolgáló nevét és helyét a láblécben. A hely az a régió, amelyben az alkalmazás üzembe helyezésekor.
-    *Tipp: Vigye az egérmutatót megjelenítéséhez nagyítsa fel a helyet. * 
-     ![Események központ megfelelő állapotba eredeti régióban](media/saas-dbpertenant-dr-geo-replication/events-hub-original-region.png)
+    *Tipp: Vigye az egérmutatót megjelenítéséhez nagyítsa fel a helyet.*
+    ![Események központ megfelelő állapotba eredeti régióban](media/saas-dbpertenant-dr-geo-replication/events-hub-original-region.png)
 
 2. Kattintson a Contoso Concert Hall a bérlőhöz, és nyissa meg az események lapján.
     * A láblécben figyelje meg a bérlő kiszolgáló nevét. A hely ugyanaz, mint a katalóguskiszolgálón helye lesz.

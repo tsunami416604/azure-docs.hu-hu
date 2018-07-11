@@ -1,5 +1,5 @@
 ---
-title: A Microsoft Azure új támogatási kérelem fájlfeltöltés segédprogram irányelvek |} Microsoft Docs
+title: A Microsoft Azure új támogatási kérelem segédprogram irányelvek fájl feltöltése |} A Microsoft Docs
 description: Az útmutató ismerteti, Microsoft Azure új támogatási kérelem fájlfeltöltés segédprogram használata esetén
 services: ''
 documentationcenter: ''
@@ -16,28 +16,28 @@ ms.topic: article
 ms.date: 05/11/2018
 ms.author: genli
 ms.openlocfilehash: 6edcf9ae8135de8bf82d819e50d3d336b641166e
-ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
+ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/08/2018
+ms.lasthandoff: 07/10/2018
 ms.locfileid: "34068573"
 ---
 # <a name="microsoft-azure-new-support-request-file-upload-utility-guidelines"></a>A Microsoft Azure új támogatási kérelem segédprogram irányelvek fájl feltöltése
-Ha Ön [hozzon létre egy támogatási kérést](https://portal.azure.com/#create/Microsoft.Support), a fájl feltöltése segédprogram segítségével könnyen feltöltés diagnosztikai fájloké vagy bármely más úgy gondolja, hogy az incidens kapcsolódik.  
+Ha Ön [hozzon létre egy támogatási kérést](https://portal.azure.com/#create/Microsoft.Support), a fájl feltöltése segédprogram segítségével könnyedén diagnosztikai fájlok feltöltése vagy úgy véli, hogy az incidens a többi fájlt.  
 
 > [!NOTE]
-> Az adatok védelme, nem tartalmaznak személyes adatokat a a feltöltést.
+> Adatainak védelme, nem tartalmaznak személyes adatokat a feltöltést.
 >
 >
 
 Ha a fájl feltöltése segédprogramot használja, kövesse az alábbi irányelveket:
 
-* Minden fájl a fájlnév-kiterjesztésűeket, például a .docx vagy .xlsx kell rendelkeznie. Lásd a táblázatot az engedélyezett fájlnévkiterjesztések listájára.
-* A fájlnév legfeljebb 110 karakter hosszúságú lehet.
-* Több fájl nem tölthető fel.
+* Minden fájl a fájlnév kiterjesztését, például a .docx vagy .xlsx-fájlba kell rendelkeznie. Tekintse meg a tábla engedélyezett fájlnévkiterjesztések listájához.
+* A fájlnév legfeljebb 110 karakter kell lennie.
+* Egynél több fájl feltöltése nem sikerült.
 * Fájlok nem lehet nagyobb, mint 4 MB.
 
-## <a name="table-of-the-allowed-file-name-extensions"></a>Az engedélyezett fájlnévkiterjesztések táblázata
+## <a name="table-of-the-allowed-file-name-extensions"></a>Az engedélyezett fájlnévkiterjesztések táblája
 | 0-9, A-C    | D-G   | H-M         | N-P   | R-T      | U-W        | X-Z     |
 |-------------|-------|-------------|-------|----------|------------|---------|
 | .7z         | .dat  | .hwl        | .odx  | .RAR     | .tdb       | .xlam   |
@@ -45,8 +45,8 @@ Ha a fájl feltöltése segédprogramot használja, kövesse az alábbi irányel
 | .abc        | .DMP  | .ini        | .old  | .RDLC    | .Text      | .xls    |
 | .adm        | .do_  | .java       | .one  | .re_     | .thmx      | .xlsb   |
 | .aspx       | .doc  | .jpg        | .osd  | .reg     | .tif       | .xlsm   |
-| . ATF        | .docm | .LDF        | . KIMENŐ  | .remove  | .TRC       | .xlsx   |
-| .b          | .docx | .Letterhead | .P1   | .ren     | . TTD       | .xlt    |
+| . ATF        | .docm | .LDF        | . KI  | .remove  | .TRC       | .xlsx-fájlba   |
+| .b          | .docx | .Letterhead | .P1   | .ren     | . KOMOLY       | .xlt    |
 | .ba_        | .dotm | .lnk        | .pcap | .rename  | .tx_       | .xltx   |
 | .bak        | .dotx | .lo_        | .pdb  | .RFT     | .txt       | .XML    |
 | .bat        | .dtsx | .log        | .pdf  | .rpt     | .uccapilog | .XMLA   |
@@ -54,7 +54,7 @@ Ha a fájl feltöltése segédprogramot használja, kövesse az alábbi irányel
 | .CA_        | .emf  | .manifest   | .pmls | .rtf     | .udcx      | .xsd    |
 | .CAB        | .eml  | .master     | .png  | .run     | .vb_       | XSN    |
 | .cap        | .emz  | .mdmp       | .potx | .sAz     | .vbs_      | .xxx    |
-| .catx       | .err  | .mof        | .ppt  | .sql     | .vcf       | .z_     |
+| .catx       | .err fájllal egészít ki  | .mof        | .ppt  | .sql     | .vcf       | .z_     |
 | .CFG        | .etl  | .mp3        | .pptm | .sqlplan | .vsd       | .z01    |
 | .Compressed | .evt  | .mpg        | .pptx | .stp     | .wdb       | .z02    |
 | .Config     | .evtx | .ms_        | .prn  | .svclog  | .wks       | .zi     |

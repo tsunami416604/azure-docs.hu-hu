@@ -1,5 +1,5 @@
 ---
-title: Windows-alapú virtuális gépek Azure-ban frissítéseinek és karbantartás |} Microsoft Docs
+title: Karbantartás és frissítések Windows virtuális gépek az Azure-ban |} A Microsoft Docs
 description: Az Azure-ban futó Windows virtuális gépek frissítéseinek és karbantartási áttekintése.
 services: virtual-machines-windows
 documentationcenter: ''
@@ -16,16 +16,16 @@ ms.topic: article
 ms.date: 03/21/2018
 ms.author: cynthn
 ms.openlocfilehash: a2222b77f049f0aa4d311abf85340c5efd5258e5
-ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
+ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/05/2018
+ms.lasthandoff: 07/10/2018
 ms.locfileid: "30190276"
 ---
-# <a name="planned-maintenance-for-virtual-machines-in-azure"></a>Az Azure virtuális gépek tervezett karbantartása
+# <a name="planned-maintenance-for-virtual-machines-in-azure"></a>Azure-beli virtuális gépek tervezett karbantartása
 
 [!INCLUDE [virtual-machines-common-planned-maintenance](../../../includes/virtual-machines-common-planned-maintenance.md)]
 
 ## <a name="next-steps"></a>További lépések 
 
-A rendszer újraindítását igénylik karbantartási kezeléséről további információért lásd: [kezelési tervezett karbantartás értesítések](maintenance-notifications.md).
+Újraindítás karbantartási kezeléséről további információért lásd: [tervezett karbantartásával kapcsolatos értesítések kezelése](maintenance-notifications.md).

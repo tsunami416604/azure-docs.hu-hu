@@ -59,10 +59,10 @@
 #### [Egyéni kód](data-lake-analytics-u-sql-develop-with-python-r-csharp-in-vscode.md)
 #### [Helyi futtatás és hibakeresés](data-lake-tools-for-vscode-local-run-and-debug.md)
 
-### Folyamatos integráció és folyamatos üzembe helyezés
-#### [Áttekintés](data-lake-analytics-cicd-overview.md)
-#### [Tesztek beállítása](data-lake-analytics-cicd-test.md)
-#### [U-SQL SDK](data-lake-analytics-u-sql-sdk.md)
+## Folyamatos integráció és folyamatos üzembe helyezés
+### [Áttekintés](data-lake-analytics-cicd-overview.md)
+### [Tesztek beállítása](data-lake-analytics-cicd-test.md)
+### [U-SQL SDK](data-lake-analytics-u-sql-sdk.md)
 
 # Referencia
 ## [Azure PowerShell](/powershell/module/azurerm.datalakeanalytics)

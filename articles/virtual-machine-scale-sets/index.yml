@@ -12,12 +12,12 @@ metadata:
   ms.topic: landing-page
   ms.date: 03/14/2018
   ms.author: carolz
-  ms.openlocfilehash: d26c3a94c166a91644397e4a31aeede55ec29284
-  ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+  ms.openlocfilehash: ea8437adf7224c4605f31ccdea281669b89bb7c9
+  ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
   ms.translationtype: HT
   ms.contentlocale: hu-HU
-  ms.lasthandoff: 05/10/2018
-  ms.locfileid: "33941067"
+  ms.lasthandoff: 07/10/2018
+  ms.locfileid: "37949730"
 abstract:
   description: Az Azure-beli virtuálisgép-méretezési csoportok segítségével azonos, elosztott terhelésű, automatikus skálázású virtuális gépek csoportját hozhatja létre és kezelheti. Rövid útmutatóink, oktatóanyagaink és példáink segítségével megtudhatja, hogyan hozhat létre, konfigurálhat, felügyelhet és skálázhat automatikusan virtuálisgép-méretezési csoportokat.
 sections:
@@ -52,7 +52,6 @@ sections:
     - html: Egyéni virtuálisgép-rendszerképek használata az <a href="/azure/virtual-machine-scale-sets/tutorial-use-custom-image-cli">Azure CLI 2.0-val</a> vagy az <a href="/azure/virtual-machine-scale-sets/tutorial-use-custom-image-powershell">Azure Powershell-lel</a>
     - html: Alkalmazások üzembe helyezése méretezési csoportba az <a href="/azure/virtual-machine-scale-sets/tutorial-install-apps-cli">Azure CLI 2.0</a> vagy az <a href="/azure/virtual-machine-scale-sets/tutorial-install-apps-powershell">Azure Powershell</a> használatával
     - html: Méretezési csoportok automatikus skálázása az <a href="/azure/virtual-machine-scale-sets/tutorial-autoscale-cli">Azure CLI 2.0</a> vagy az <a href="/azure/virtual-machine-scale-sets/tutorial-autoscale-powershell">Azure Powershell</a> használatával
-    - html: <a href="https://docs.microsoft.com/learn/deploy-custom-vmss-app/index">Alkalmazások üzembe helyezése Azure-beli virtuálisgép-méretezési csoportokban egyéni Packer-rendszerképpel</a>
 - title: Példák
   items:
   - type: paragraph

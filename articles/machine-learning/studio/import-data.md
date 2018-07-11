@@ -1,7 +1,7 @@
 ---
-title: Adatok importálása a Machine Learning Studio |} Microsoft Docs
-description: Az adatok importálása az Azure Machine Learning Studio a különféle adatforrásokból származó módjáról. Ismerje meg, milyen típusú adatokat és az adatok formátumok támogat.
-keywords: adatok, adatformátum, adattípusok, adatforrások, betanítási adatok importálása
+title: Adatok importálása a Machine Learning Studióban |} A Microsoft Docs
+description: Adatok importálása az Azure Machine Learning Studióba különböző adatforrásokból származó adatokat hogyan. Ismerje meg, milyen típusú adatokat és adatformátumok a célnyelven támogatottak.
+keywords: adatok, az adatok formátuma, adattípusok, adatforrások, betanítási adatok importálása
 services: machine-learning
 documentationcenter: ''
 author: heatherbshapiro
@@ -17,65 +17,65 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/29/2017
 ms.openlocfilehash: a5750555802489b41b007831164767beb953ebc4
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/07/2018
+ms.lasthandoff: 07/10/2018
 ms.locfileid: "34837463"
 ---
 # <a name="import-your-training-data-into-azure-machine-learning-studio-from-various-data-sources"></a>A betanítási adatok importálása az Azure Machine Learning Studióba különböző adatforrásokból
-A saját adatok használata a Machine Learning Studióban fejlesztésére és egy prediktív elemzési megoldások betanítását, a következőket teheti: 
+A Machine Learning Studio a saját adatok használatával fejlesztése és betanítunk egy prediktív elemzési megoldás, a következőket teheti: 
 
-* az adatok feltöltése egy **helyi fájl** időben a merevlemez-meghajtóról hozzon létre egy adatkészlet-modult a munkaterületen
-* adatelérés több egyikéből **online adatforrások** kísérletbe használatával futása közben a [és adatokat importálhat] [ import-data] modul 
-* Használjon egy másik Azure Machine learning adatait **kísérletezhet** adatkészletként mentése
-* a helyszíni adatok felhasználásával **SQL Server-adatbázis**
+* az adatok feltöltése egy **helyi fájl** előre a merevlemezen a munkaterületen lévő adatkészlet modul létrehozása
+* érheti el adatait több egyik **online adatforrás** kísérletét használatával futása közben a [adatok importálása] [ import-data] modul 
+* adatok forrása egy másik Azure Machine learning **kísérletezhet** adatkészletként mentve
+* adatok forrása egy helyszíni **SQL Server-adatbázis**
 
-Ezen lehetőségek ismertetett a témaköröket a lenti menüben. Ezek a témakörök bemutatják a Machine Learning Studio-ban történő használatáról a különféle adatforrásokból származó adatok importálása. 
+Ezek a beállítások leírását a témakörök egyikében az alábbi menü. Ezek a témakörök bemutatják, hogyan importálhat adatokat a különböző adatforrásokból származó adatokat a Machine Learning Studio használatához. 
 
 [!INCLUDE [import-data-into-aml-studio-selector](../../../includes/machine-learning-import-data-into-aml-studio.md)]
 
 > [!NOTE]
-> Nincsenek elérhető a betanítási adatok használható a Machine Learning Studio számos mintaként használható adathalmazt. Ezek az információk: [a mintaként használható adathalmazt használja az Azure Machine Learning Studióban](use-sample-datasets.md)).
+> Nincsenek mintaadatkészletek számos Machine Learning studióban, amely a betanítási adatok is használhat. Ezek a további információkért lásd: [az Azure Machine Learning Studio mintaadatkészleteinek használata](use-sample-datasets.md)).
 > 
 > 
 
-Ez a témakör bevezető is ismerteti, hogy hogyan adatok használatra kész állapotba hozásához a Machine Learning Studióban, és írja le, mely adatokat formátumok és adattípusok használata támogatott. 
+Ez a témakör bevezető is ismerteti, hogyan olvashat be adatokat használatra kész a Machine Learning Studióban, és ismerteti, hogy mely adatformátumok a célnyelven és adattípusok használata támogatott. 
 
 > [!INCLUDE [machine-learning-free-trial](../../../includes/machine-learning-free-trial.md)]
 > 
 > 
 
-## <a name="get-data-ready-for-use-in-azure-machine-learning-studio"></a>Adatok használatra kész állapotba hozásához az Azure Machine Learning Studióban
-A Machine Learning Studio téglalap vagy táblázatos adatok, például egy adatbázis strukturált bizonyos körülmények között nem téglalap használhatja, ha vagy tagolt szöveges adat tervezték.
+## <a name="get-data-ready-for-use-in-azure-machine-learning-studio"></a>Az Azure Machine Learning Studióban használatra kész adatok lekérése
+A Machine Learning Studio téglalap alakú vagy táblázatos adatok, például a strukturált adatok egy adatbázisból, azonban bizonyos körülmények között nem téglalap adatok használhatók vagy tagolt szöveges adat tervezték.
 
-Az ajánlott, ha az adatok viszonylag tiszta. Ez azt jelenti, hogy érdemes például nem jegyzett karakterláncok gondoskodunk az adatok kísérletbe való feltöltés előtt.
+A legjobb, ha az adatok viszonylag tiszta. Ez azt jelenti, hogy szeretné problémákat, például nem jegyzett karakterláncok gondoskodik az adatok feltöltése a kísérlet előtt.
 
-Van azonban modulok érhető el a Machine Learning Studióban, amelyek lehetővé teszik az adatok kísérletbe belül néhány kezeléséhez. Attól függően gépi tanulási algoritmusok fogja használni, szükség lehet annak eldöntése, hogyan fogja kezelni adatok strukturális problémák, például a hiányzó értékeket, és a ritka adatokhoz, így nincsenek a modulokat, amelyek segíthetnek, hogy a. Keresse meg a **Data Transformation** modulok végre ezeket a funkciókat, a modulpalettán szakasza.
+Azonban nincsenek modulok elérhető a Machine Learning Studióban, amelyek lehetővé teszik az adatok a kísérleten belülről néhány kezeléséhez. Attól függően, gépi tanulási algoritmusok fogja használni, szükség lehet annak eldöntése, hogyan fogja kezelni adatok szerkezeti problémák, például a hiányzó értékeket és a ritka adatokhoz, és vannak, amelyek segíthetnek, hogy a modulok. Tekintse meg a **adatátalakítás** a modulpaletta végre ezeket a funkciókat modulokba vonatkozó szakaszában.
 
-A kísérletben bármikor megtekintheti, és töltse le az adatokat, kattintson a kimeneti portra modul által létrehozott. Attól függően, hogy a modul nincs másik letöltési beállítások érhetők el, vagy esetleg a Machine Learning Studióban webböngészőből adatok megjelenítéséhez.
+A kísérlet során bármikor megtekintheti, és töltse le a kimeneti portra kattintva egy modul által előállított adatok. Attól függően, a modul lehet különböző letöltési beállítások használható, vagy előfordulhat, hogy a jeleníthetik meg az adatokat a Machine Learning Studióban webböngészőből.
 
 ## <a name="data-formats-and-data-types-supported"></a>Támogatott formátumok és adattípusok
-Adattípusok számos importálhatja a kísérletet, attól függően, hogy milyen mechanizmus használatával importálja az adatokat, és ahol adatforrásból származó:
+Különféle típusú adatokat importálhat is futtathatja a kísérletet, attól függően, hogy milyen mechanizmussal importálni az adatokat, és azt forrását használja:
 
-* Egyszerű szöveges (.txt)
-* Vesszővel tagolt (CSV) a fejléc (.csv) vagy anélkül (. nh.csv)
-* A lapon elválasztott értékeket (TSV) fejléc (.tsv) vagy anélkül (. nh.tsv)
+* Egyszerű szövegfájlt (.txt)
+* Vesszővel tagolt (CSV) egy fejlécet (tartalmazó.csv) vagy anélkül (. nh.csv)
+* Tabulátorral tagolt értékeket (TSV) fejléc (.tsv) vagy anélkül (. nh.tsv)
 * Excel-fájl
 * Azure-tábla
-* Hive tábla
+* Hive-tábla
 * SQL Database tábla
-* Az OData-értékek
-* SVMLight adatok (.svmlight) (lásd a [SVMLight definition](http://svmlight.joachims.org/) formátum információt)
-* Attribútum-kapcsolat fájlformátumra (ARFF) adatokat (.arff) (lásd: a [ARFF definition](http://weka.wikispaces.com/ARFF) formátum információt)
+* OData-értékek
+* SVMLight adatok (.svmlight) (lásd a [SVMLight definíció](http://svmlight.joachims.org/) formátum információ)
+* Attribútum-relációs fájlformátumra (ARFF) adatokat (.arff) (lásd a [ARFF definíció](http://weka.wikispaces.com/ARFF) formátum információ)
 * Zip-fájl (.zip)
-* R-objektum vagy munkaterület fájl (. RData)
+* R-objektum vagy a munkaterület fájlt (. Rekordadat)
 
-Ha például a metaadatokat tartalmazó ARFF formátumú adatokat importál, a Machine Learning Studio ezeket a metaadatokat használja adható meg a címsor és minden oszlop adattípusát.
+Ha például a metaadatokat tartalmazó ARFF formátumú adatokat importál, a Machine Learning Studio ezeket a metaadatokat használja meghatározásához a fejlécet és az egyes oszlopok adattípusát.
 
-Ha importálja az adatokat, például TSV vagy CSV formátum, amely nem tartalmazza ezeket a metaadatokat, a Machine Learning Studio által az adatok mintavétele arra következtet minden oszlop adattípusát. Ha az adatok nem rendelkezik oszlopának fejlécére kattintva rendezhető, a Machine Learning Studio biztosít alapértelmezett nevét.
+Ha importálja az adatokat, például a TSV- vagy CSV formátum, amely nem tartalmazza ezeket a metaadatokat, a Machine Learning Studio minden oszlop adattípusát kikövetkezteti által az adatok mintavételezésének. Ha az adatok nem rendelkezik oszlopfejlécekkel, a Machine Learning Studio alapértelmezett nevek biztosítja.
 
-Explicit módon adja meg vagy módosítsa a használatával oszlopok fejlécére kattintva rendezhető és adattípusok a [szerkesztése metaadatok][edit-metadata].
+Explicit módon adja meg vagy módosítsa a fejlécek és adattípusok használatával oszlopok esetében a [metaadatainak szerkesztése][edit-metadata].
 
 A következő **adattípusok** felismeri a Machine Learning Studio:
 
@@ -84,14 +84,14 @@ A következő **adattípusok** felismeri a Machine Learning Studio:
 * Dupla
 * Logikai
 * DateTime
-* A TimeSpan
+* Időtartam
 
-A Machine Learning Studio nevű belső adatok típust használ ***adattábla*** mechanizmusok adatok átadására modulok között. Explicit módon az adatokat átalakíthatja adattábla formátum használatával az [átalakítása Dataset] [ convert-to-dataset] modul.
+A Machine Learning Studio nevű belső adattípust használ ***adattábla*** adatok átadására a modulok között. Adattábla formátum használatával az explicit módon átalakíthatja az adatokat a [adatkészlet átalakítása] [ convert-to-dataset] modul.
 
-Bármely modul, amely fogadja a formátumok adattábla nem lesz adatok átalakítása adattábla beavatkozás nélkül átadja azt a következő modul előtt.
+Adattábla eltérő formátumokban fogad modulok konvertálja az adatok adattábla csendes mielőtt továbbítaná a következő modul számára.
 
-Ha szükséges, konvertálhatja adattábla CSV, TSV, ARFF programba, vagy SVMLight formátumban más átalakítás modulok használata.
-Keresse meg a **adatok formátuma átalakítások** modulok végre ezeket a funkciókat, a modulpalettán szakasza.
+Szükség esetén átválthat adatok táblázatos formában visszaimportálni CSV, TSV, ARFF vagy más átalakítási modulok SVMLight formátumú.
+Tekintse meg a **formátum Adatátalakítókat** a modulpaletta végre ezeket a funkciókat modulokba vonatkozó szakaszában.
 
 <!-- Module References -->
 [convert-to-dataset]: https://msdn.microsoft.com/library/azure/72bf58e0-fc87-4bb1-9704-f1805003b975/
