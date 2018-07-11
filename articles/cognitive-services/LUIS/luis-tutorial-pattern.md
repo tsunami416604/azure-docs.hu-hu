@@ -10,12 +10,12 @@ ms.technology: luis
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: v-geberr;
-ms.openlocfilehash: 9793b98c384346dc0de68061d42b4bcb3c513ed4
-ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
-ms.translationtype: HT
+ms.openlocfilehash: 12105829f62b988760d3bbf18000466fd27b9aff
+ms.sourcegitcommit: 11321f26df5fb047dac5d15e0435fce6c4fde663
+ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 07/06/2018
-ms.locfileid: "37866202"
+ms.locfileid: "37888331"
 ---
 # <a name="tutorial-use-patterns-to-improve-predictions"></a>Oktatóanyag: A minták előrejelzéseket javítása érdekében
 
@@ -29,7 +29,7 @@ Ebben az oktatóanyagban minták használatával növelheti a leképezés és eg
 * Szerepkör hozzáadása egy entitás kontextusban-alapú entitások keresése
 * Egy Pattern.any található szabad formátumú entitások hozzáadása
 
-Ehhez a cikkhez egy ingyenes [LUIS][LUIS]-fiókra van szüksége a LUIS-alkalmazás létrehozásához.
+Ehhez a cikkhez egy ingyenes [LUIS](luis-reference-regions.md)-fiókra van szüksége a LUIS-alkalmazás létrehozásához.
 
 ## <a name="import-humanresources-app"></a>Emberi alkalmazás importálása
 Ebben az oktatóanyagban egy emberi alkalmazás importál. Az alkalmazás három leképezések rendelkezik: None, GetEmployeeOrgChart, GetEmployeeBenefits. Az alkalmazás két entitás rendelkezik: előre elkészített száma és alkalmazottak. Az alkalmazott entitás, az alkalmazottak nevének kinyerése egy egyszerű entitás. 
@@ -250,6 +250,4 @@ Ha már nincs rá szükség, törölje a LUIS-alkalmazást. Ehhez válassza a h�
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [A kifejezés lista segítségével előrejelzési javítása](luis-tutorial-interchangeable-phrase-list.md)
-
-[LUIS]: https://docs.microsoft.com/azure/cognitive-services/luis/luis-reference-regions
+> [Ismerje meg, a LUIS-alkalmazások ajánlott eljárásai](luis-concept-best-practices.md)
