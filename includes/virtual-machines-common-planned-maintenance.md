@@ -21,9 +21,9 @@ Az Azure rendszeresen végez frissítéseket a virtuális gépeket futtató infr
 
 - Ha karbantartási újraindítás szükséges, egy értesítés, amikor a karbantartás tervezett kap. Ezekben az esetekben meg fogjuk is kell adni egy olyan időkeretet, ahol elkezdheti a karbantartási feladattal saját maga is az Önnek legmegfelelőbb egyszerre.
 
-Ez az oldal ismerteti, hogyan végez a Microsoft Azure-karbantartási mindkét típusú. Nem tervezett események (leállások) kapcsolatos további információkért lásd: a virtuális gépek rendelkezésre állásának kezelése a [Windows] (.. / articles/virtual-machines/windows/manage-availability.md) vagy [Linux](../articles/virtual-machines/linux/manage-availability.md).
+Ez az oldal ismerteti, hogyan végez a Microsoft Azure-karbantartási mindkét típusú. Nem tervezett események (leállások) kapcsolatos további információkért lásd: a virtuális gépek rendelkezésre állásának kezelése a [Windows] (.. /articles/virtual-machines/windows/manage-availability.md) vagy [Linux](../articles/virtual-machines/linux/manage-availability.md).
 
-Egy virtuális gépen futó alkalmazások közelgő frissítésével kapcsolatos információkat gyűjthet a az Azure Metadata Service használatával [Windows](../articles/virtual-machines/windows/instance-metadata-service.md) vagy [Linux] (.. / articles/virtual-machines/linux/instance-metadata-service.md).
+Egy virtuális gépen futó alkalmazások közelgő frissítésével kapcsolatos információkat gyűjthet a az Azure Metadata Service használatával [Windows](../articles/virtual-machines/windows/instance-metadata-service.md) vagy [Linux] (.. /articles/virtual-machines/linux/instance-metadata-service.md).
 
 "Útmutató" információ a tervezett karbantartás kezelése: "Tervezett karbantartásával kapcsolatos értesítések kezelése" a [Linux](../articles/virtual-machines/linux/maintenance-notifications.md) vagy [Windows](../articles/virtual-machines/windows/maintenance-notifications.md).
 
