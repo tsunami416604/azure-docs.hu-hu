@@ -1,8 +1,7 @@
 ---
-title: .NET - Azure HDInsight Hadoop-fürtök létrehozása |} Microsoft Docs
-description: Útmutató a Hadoop, HBase, Storm vagy Spark-fürtök létrehozása Linux rendszeren a HDInsight a HDInsight .NET SDK használatával.
+title: Használatával a .NET-keretrendszerhez – Azure HDInsight Hadoop-fürtök létrehozása |} A Microsoft Docs
+description: Ismerje meg, Hadoop, HBase, Storm vagy Spark-fürtök létrehozása Linux rendszeren a HDInsight a HDInsight .NET SDK használatával.
 services: hdinsight
-documentationcenter: ''
 author: mumian
 manager: jhubbard
 editor: cgronlun
@@ -10,26 +9,25 @@ tags: azure-portal
 ms.assetid: 9c74e3dc-837f-4c90-bbb1-489bc7124a3d
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/14/2018
+ms.date: 07/09/2018
 ms.author: jgao
-ms.openlocfilehash: 8523b012d6ceaf116e6849abaf8952bbde8b41b3
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: a0e5bf4afcd1d02c81597efdab8ff349e6adf856
+ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34201285"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37952926"
 ---
 # <a name="create-linux-based-clusters-in-hdinsight-using-the-net-sdk"></a>Linux-alapú fürtök létrehozása a HDInsight .NET SDK használatával
 
 [!INCLUDE [selector](../../includes/hdinsight-create-linux-cluster-selector.md)]
 
 
-Ismerje meg, a Hadoop-fürt létrehozása az Azure HDInsight-fürt a .NET SDK használatával.
+Ismerje meg a Hadoop-fürt létrehozása az Azure HDInsight-fürt .NET SDK használatával.
 
 > [!IMPORTANT]
-> A jelen dokumentumban leírt lépések egy munkavégző csomóponton hozzon létre egy fürtöt. Ha azt tervezi, több mint 32 munkavégző csomópont, vagy a fürt létrehozásakor, vagy a fürt létrehozása után skálázással szüksége legalább 8 maggal és 14GB ram átjárócsomópont kiválasztásához.
+> A jelen dokumentumban leírt lépések egy munkavégző csomópont-fürt létrehozása. Ha azt tervezi, hogy több mint 32 feldolgozó csomópontokat, a fürt létrehozáskor vagy a fürt skálázást a létrehozás után kell válassza ki a fő csomópont méretének legalább 8 maggal és 14GB ram.
 >
 > További információ a csomópontméretekről és a velük járó költségekről: [A HDInsight díjszabása](https://azure.microsoft.com/pricing/details/hdinsight/).
 
@@ -38,14 +36,14 @@ Ismerje meg, a Hadoop-fürt létrehozása az Azure HDInsight-fürt a .NET SDK ha
 [!INCLUDE [delete-cluster-warning](../../includes/hdinsight-delete-cluster-warning.md)]
 
 * **Azure-előfizetés**. Lásd: [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/).
-* **Azure-tárfiók**. Lásd: [hozzon létre egy tárfiókot](../storage/common/storage-create-storage-account.md#create-a-storage-account).
-* **Visual Studio 2013, Visual Studio 2015-öt vagy a Visual Studio 2017**.
+* **Az Azure storage-fiók**. Lásd: [hozzon létre egy tárfiókot](../storage/common/storage-create-storage-account.md#create-a-storage-account).
+* **A Visual Studio 2013, Visual Studio 2015 vagy Visual Studio 2017**.
 
 ## <a name="create-clusters"></a>Fürtök létrehozása
 
-1. Nyissa meg a Visual Studio 2017.
+1. Nyissa meg a Visual Studio 2017-ben.
 2. Hozzon létre egy új Visual C# konzolalkalmazást.
-3. Az a **eszközök** menüben kattintson a **NuGet-Csomagkezelő**, és kattintson a **Csomagkezelő konzol**.
+3. Az a **eszközök** menüben kattintson a **NuGet-Csomagkezelő**, és kattintson a **Package Manager Console**.
 4. A konzolon a csomagok telepítéséhez futtassa a következő parancsot:
 
     ```powershell
@@ -54,8 +52,8 @@ Ismerje meg, a Hadoop-fürt létrehozása az Azure HDInsight-fürt a .NET SDK ha
     Install-Package Microsoft.Azure.Management.HDInsight
     ```
 
-    Ezek a parancsok .NET-kódtárakra és azok mutató hivatkozások hozzáadása a jelenlegi Visual Studio-projekt.
-5. A Megoldáskezelőben kattintson duplán a **Program.cs** való megnyitásához, az alábbi kódot, és adjon meg értékeket a változók:
+    Ezek a parancsok hozzáadása az aktuális Visual Studio-projekt .NET-kódtárakkal és hivatkozások.
+5. A Megoldáskezelőben kattintson duplán a **Program.cs** megnyitható, illessze be a következő kódot, és adja meg a változók értékeit:
 
     ```csharp
     using System;
@@ -190,14 +188,14 @@ Ismerje meg, a Hadoop-fürt létrehozása az Azure HDInsight-fürt a .NET SDK ha
     }
     ```
 
-6. Cserélje le a osztály kombinálását.
-7. Az alkalmazás futtatásához nyomja le az **F5** billentyűt. A konzolablakban nyissa meg kell, és az alkalmazás állapotának megjelenítése. Az Azure-fiók hitelesítő adatainak megadását kéri. Hozzon létre egy HDInsight-fürtjéhez, általában körülbelül 15 több percet is igénybe vehet.
+6. Cserélje le az osztály tag értékeket.
+7. Az alkalmazás futtatásához nyomja le az **F5** billentyűt. A konzolablakban nyissa meg kell, és az alkalmazás állapotának megjelenítése. Az Azure-fiók hitelesítő adatainak megadását kéri. Általában körülbelül 15 egy HDInsight-fürt létrehozása több percet is igénybe vehet.
 
-## <a name="use-bootstrap"></a>Használja a rendszerindítás
+## <a name="use-bootstrap"></a>Rendszerindítási használata
 
-Rendszerindítási használva állíthatja hozzáadása a fürt létrehozása során.  További információkért lásd: [testreszabása HDInsight-fürtök használata rendszerindítási](hdinsight-hadoop-customize-cluster-bootstrap.md).
+Bootstrap használatával, a fürt létrehozása során további beállításokat lehet megadni.  További információkért lásd: [Bootstrap használatával testre szabhatja a HDInsight-fürtök](hdinsight-hadoop-customize-cluster-bootstrap.md).
 
-Módosítsa a minta [fürtöket létrehozni](#create-clusters) a Hive beállításainak:
+Módosítja a mintát a [fürtöket](#create-clusters) egy Hive-beállítás konfigurálása:
 
 ```csharp
 static void Main(string[] args)
@@ -322,11 +320,11 @@ static void Main(string[] args)
 }
 ```
 
-## <a name="use-script-action"></a>Parancsfájl művelettel
+## <a name="use-script-action"></a>Szkriptműveleteket használata
 
-Parancsfájlművelet használja, beállíthatja a további beállítások fürt létrehozása során.  További információkért lásd: [testreszabása Linux-alapú HDInsight-fürtök használata parancsfájlművelet](hdinsight-hadoop-customize-cluster-linux.md).
+Szkriptműveletek használatával fürt létrehozása során további beállításokat lehet megadni.  További információkért lásd: [testreszabása Linux-alapú HDInsight-fürtök szkriptműveletekkel](hdinsight-hadoop-customize-cluster-linux.md).
 
-Módosítsa a minta [fürtöket létrehozni](#create-clusters) hívni egy parancsfájlművelet r telepítéséhez
+Módosítja a mintát a [fürtöket](#create-clusters) R: telepítéséhez Szkriptműveletet meghívásához
 
 ```csharp
 static void Main(string[] args)
@@ -375,30 +373,31 @@ static void Main(string[] args)
 Ha problémába ütközik a HDInsight-fürtök létrehozása során, tekintse meg [a hozzáférés-vezérlésre vonatkozó követelményeket](hdinsight-administer-use-portal-linux.md#create-clusters).
 
 ## <a name="next-steps"></a>További lépések
-Most, hogy sikeresen létrehozott egy HDInsight-fürtre, használja a következő megtudhatja, hogyan működnek a fürthöz. 
+Most, hogy sikeresen létrehozott egy HDInsight-fürtöt, a következő segítségével megtudhatja, hogyan működik a fürttel. 
 
 ### <a name="hadoop-clusters"></a>Hadoop-fürtök
 * [A Hive használata a HDInsightban](hadoop/hdinsight-use-hive.md)
 * [A Pig használata a HDInsightban](hadoop/hdinsight-use-pig.md)
-* [Use MapReduce with HDInsight](hadoop/hdinsight-use-mapreduce.md)
+* [A MapReduce használata a HDInsight](hadoop/hdinsight-use-mapreduce.md)
 
-### <a name="hbase-clusters"></a>HBase-fürtökkel
+### <a name="hbase-clusters"></a>HBase-fürtök
 * [A HDInsighton futó HBase használatának első lépései](hbase/apache-hbase-tutorial-get-started-linux.md)
-* [A HDInsight HBase Java-alkalmazások fejlesztése](hbase/apache-hbase-build-java-maven-linux.md)
+* [A HDInsight hbase Java-alkalmazások fejlesztése](hbase/apache-hbase-build-java-maven-linux.md)
 
 ### <a name="storm-clusters"></a>Storm-fürtök
-* [Java-topológiák fejlesztése hdinsight alatt futó Storm](storm/apache-storm-develop-java-topology.md)
-* [A HDInsight alatt futó Storm Python-összetevőket használnak](storm/apache-storm-develop-python-topology.md)
-* [Telepítheti és figyelheti a HDInsight alatt futó Storm topológiák](storm/apache-storm-deploy-monitor-topology-linux.md)
+* [Java-topológiák fejlesztése HDInsight alatt futó Stormmal](storm/apache-storm-develop-java-topology.md)
+* [Python-összetevők használata a HDInsight alatt futó Stormmal](storm/apache-storm-develop-python-topology.md)
+* [Telepítheti és figyelheti a HDInsight Storm-topológiák](storm/apache-storm-deploy-monitor-topology-linux.md)
 
 ### <a name="spark-clusters"></a>A Spark-fürtök
 * [Önálló alkalmazás létrehozása a Scala használatával](spark/apache-spark-create-standalone-application.md)
 * [Feladatok távoli futtatása Spark-fürtön a Livy használatával](spark/apache-spark-livy-rest-interface.md)
 * [Spark és BI: Interaktív adatelemzés végrehajtása a Spark on HDInsight használatával, BI-eszközökkel](spark/apache-spark-use-bi-tools.md)
 * [Spark és Machine Learning: A Spark on HDInsight használata az élelmiszervizsgálati eredmények előrejelzésére](spark/apache-spark-machine-learning-mllib-ipython.md)
+
 ### <a name="run-jobs"></a>Feladatok futtatása
 * [Hive-feladatok futtatása a HDInsight .NET SDK használatával](hadoop/apache-hadoop-use-hive-dotnet-sdk.md)
 * [A Pig-feladatok futtatása a HDInsight .NET SDK használatával](hadoop/apache-hadoop-use-pig-dotnet-sdk.md)
-* [Sqoop feladatok futtatása a HDInsight .NET SDK használatával](hadoop/apache-hadoop-use-sqoop-dotnet-sdk.md)
-* [A HDInsight Oozie feladatok futtatása](hdinsight-use-oozie.md)
+* [Sqoop-feladatok futtatása a HDInsight .NET SDK használatával](hadoop/apache-hadoop-use-sqoop-dotnet-sdk.md)
+* [Az Oozie-feladatok futtatása a HDInsight](hdinsight-use-oozie.md)
 

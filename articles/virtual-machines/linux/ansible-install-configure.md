@@ -1,9 +1,9 @@
 ---
-title: Telepítse és konfigurálja a Ansible Azure virtuális gépeken való használatra |} Microsoft Docs
-description: Megtudhatja, hogyan telepítse és konfigurálja a Ansible Ubuntu, CentOS és SLES Azure-erőforrások kezeléséhez
+title: Ansible telepítése és konfigurálása Azure virtual machines szolgáltatásban való használatra |} A Microsoft Docs
+description: Ismerje meg, hogyan Ansible telepítése és konfigurálása az Ubuntu, a CentOS és a SLES az Azure-erőforrások kezeléséhez
 services: virtual-machines-linux
 documentationcenter: virtual-machines
-author: iainfoulds
+author: cynthn
 manager: jeconnoc
 editor: na
 tags: azure-resource-manager
@@ -14,35 +14,35 @@ ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 05/04/2018
-ms.author: iainfou
-ms.openlocfilehash: 262c72968ddb5985e0217bced1b83af6fdb7c03c
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.author: cynthn
+ms.openlocfilehash: e7d57ead2caff87db07380582b9085b831844f1e
+ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37052606"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37930069"
 ---
-# <a name="install-and-configure-ansible-to-manage-virtual-machines-in-azure"></a>Telepítse és konfigurálja az Azure virtuális gépek kezeléséhez Ansible
+# <a name="install-and-configure-ansible-to-manage-virtual-machines-in-azure"></a>Az Azure-beli virtuális gépek kezelése az Ansible telepítése és konfigurálása
 
-Ansible lehetővé teszi, hogy automatizálja a központi telepítési és konfigurációs az erőforrásoknak a környezetben. Ansible segítségével kezelheti a virtuális gépek (VM), ugyanaz, mint bármely egyéb erőforrásokat az Azure-ban. Ez a cikk részletesen Ansible és a szükséges Azure Python SDK-modulok telepítése a leggyakrabban használt Linux disztribúciókkal részénél. Más disztribúciókkal Ansible telepíthető a telepített csomagok, hogy elférjen az adott platform beállításával. Szeretne létrehozni Azure-erőforrások biztonságos elérését, is megismerheti, hogyan hozhat létre és Ansible használandó hitelesítő adatok megadása.
+Az Ansible segítségével automatizálhatja a telepítését és konfigurálását az erőforrásoknak a környezetben. Az Ansible segítségével kezelheti a virtuális gépek (VM) az Azure-ban, ugyanaz, mint bármely más erőforrást. Ez a cikk részletesen Ansible és a szükséges Azure Python SDK-modulok telepítése a leggyakrabban használt Linux-disztribúciók magyarázatát. Az Ansible telepíthető többi a disztribúciókat, a telepített csomagokat, hogy illeszkedjen az adott platform módosításával. Hozhat létre Azure-erőforrások biztonságos módon, azt is megtudhatja, hogyan hozhat létre, és adja meg a hitelesítő adatok használata az Ansible.
 
-További telepítési opciókon és a további platformok lépéseket, tekintse meg a [Ansible telepítése útmutató](https://docs.ansible.com/ansible/intro_installation.html).
+További telepítési lehetőségei és további platformok lépései: a [Ansible telepítése útmutató](https://docs.ansible.com/ansible/intro_installation.html).
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-Telepítése és a parancssori felület helyileg használata mellett dönt, ez a cikk számára szükséges, hogy futnak-e az Azure parancssori felület 2.0.30 verzió vagy újabb. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI 2.0 telepítése]( /cli/azure/install-azure-cli).
+Ha helyi telepítése és használata a parancssori felület, ez a cikk megköveteli, hogy futnak-e az Azure CLI 2.0.30-as verzió vagy újabb. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI 2.0 telepítése]( /cli/azure/install-azure-cli).
 
-## <a name="install-ansible"></a>Ansible telepítése
+## <a name="install-ansible"></a>Az Ansible telepítése
 
-Az Azure felhőalapú rendszerhéj, egy webböngésző-alapú rendszerhéj élmény és Azure-erőforrások fejlesztését egyik legegyszerűbb módja Ansible használata Azure jelenti. Ansible előre telepített, a felhő rendszerhéj, így a utasításokat kihagyhatja Ansible telepítése, és navigáljon a [létrehozása Azure hitelesítő adatok](#create-azure-credentials). További eszközök is elérhető a felhő rendszerhéj listájáért lásd: [funkciók és eszközök számára az Azure-felhő rendszerhéj Bash](../../cloud-shell/features.md#tools).
+A legegyszerűbb használata az Ansible az Azure-ral egyike az Azure Cloud Shell egy böngészőalapú rendszerhéj-felület és Azure-erőforrások fejlesztését. Az Ansible a Cloud Shellben előzetesen már telepítve, ezért kihagyhatja az utasításokat az Ansible telepítése, és nyissa meg a [létrehozása Azure hitelesítő adatok](#create-azure-credentials). További eszközök is elérhető a Cloud shellben listáját lásd: [funkciók és eszközök számára az Azure Cloud Shellben lévő Bash](../../cloud-shell/features.md#tools).
 
-Az alábbi utasítások alapján hozzon létre egy Linux virtuális Gépet a különböző disztribúciókkal és telepítse a Ansible megjelenítése. Ha nincs szüksége a Linux virtuális gép létrehozásához, hagyja ki az első lépés egy Azure erőforráscsoport létrehozásához. A virtuális gépek létrehozásához szükséges, ha először hozzon létre egy erőforráscsoportot a [az csoport létrehozása](/cli/azure/group#az_group_create). A következő példában létrehozunk egy *myResourceGroup* nevű erőforráscsoportot az *EastUS* helyen:
+Az alábbi utasításokat követve bemutatják, hogyan hozzon létre egy Linux rendszerű virtuális Gépet a különböző disztribúciók és Ansible telepítését. Ha nem szeretne Linux virtuális gép létrehozása az Azure-erőforráscsoport létrehozásához az első lépéshez ugorjon. Ha szeretne egy virtuális gép létrehozása, először hozzon létre egy erőforráscsoportot az [az csoport létrehozása](/cli/azure/group#az_group_create). A következő példában létrehozunk egy *myResourceGroup* nevű erőforráscsoportot az *EastUS* helyen:
 
 ```azurecli
 az group create --name myResourceGroup --location eastus
 ```
 
-Most válasszon egyet a következő disztribúciókkal a regisztráláshoz szükség esetén hozzon létre egy virtuális Gépet, és telepítse a Ansible:
+Most válasszon egyet a következő disztribúciókhoz hozhat létre egy virtuális Gépet, szükség esetén útmutatást, majd ezután telepítse az Ansible:
 
 - [7.4 centOS](#centos-74)
 - [Ubuntu 16.04 LTS](#ubuntu1604-lts)
@@ -50,7 +50,7 @@ Most válasszon egyet a következő disztribúciókkal a regisztráláshoz szük
 
 ### <a name="centos-74"></a>7.4 centOS
 
-Szükség esetén hozzon létre virtuális gép és [az virtuális gép létrehozása](/cli/azure/vm#az_vm_create). Az alábbi példakód létrehozza a virtuális gépek nevű *myVMAnsible*:
+Szükség esetén hozzon létre egy virtuális Gépet a [az virtuális gép létrehozása](/cli/azure/vm#az_vm_create). A következő példában létrehozunk egy nevű virtuális Gépet *myVMAnsible*:
 
 ```azurecli
 az vm create \
@@ -61,13 +61,13 @@ az vm create \
     --generate-ssh-keys
 ```
 
-SSH-kapcsolatot a virtuális gép használata a `publicIpAddress` feljegyzett kimenetét a virtuális Gépet a létrehozási művelet futtatásakor:
+Ssh-KAPCSOLATOT a virtuális gépet a `publicIpAddress` a virtuális gép kimenetében feljegyzett-létrehozási művelet:
 
 ```bash
 ssh azureuser@<publicIpAddress>
 ```
 
-A virtuális gépen, a szükséges csomagok telepítése az Azure Python SDK modulok és Ansible az alábbiak szerint:
+A virtuális Gépen a szükséges csomagokat az Azure Python SDK-modulokat és Ansible a következőképpen telepítheti:
 
 ```bash
 ## Install pre-requisite packages
@@ -82,7 +82,7 @@ Most helyezze át a [létrehozása Azure hitelesítő adatok](#create-azure-cred
 
 ### <a name="ubuntu-1604-lts"></a>Ubuntu 16.04 LTS
 
-Szükség esetén hozzon létre virtuális gép és [az virtuális gép létrehozása](/cli/azure/vm#az_vm_create). Az alábbi példakód létrehozza a virtuális gépek nevű *myVMAnsible*:
+Szükség esetén hozzon létre egy virtuális Gépet a [az virtuális gép létrehozása](/cli/azure/vm#az_vm_create). A következő példában létrehozunk egy nevű virtuális Gépet *myVMAnsible*:
 
 ```azurecli
 az vm create \
@@ -93,13 +93,13 @@ az vm create \
     --generate-ssh-keys
 ```
 
-SSH-kapcsolatot a virtuális gép használata a `publicIpAddress` feljegyzett kimenetét a virtuális Gépet a létrehozási művelet futtatásakor:
+Ssh-KAPCSOLATOT a virtuális gépet a `publicIpAddress` a virtuális gép kimenetében feljegyzett-létrehozási művelet:
 
 ```bash
 ssh azureuser@<publicIpAddress>
 ```
 
-A virtuális gépen, a szükséges csomagok telepítése az Azure Python SDK modulok és Ansible az alábbiak szerint:
+A virtuális Gépen a szükséges csomagokat az Azure Python SDK-modulokat és Ansible a következőképpen telepítheti:
 
 ```bash
 ## Install pre-requisite packages
@@ -113,7 +113,7 @@ Most helyezze át a [létrehozása Azure hitelesítő adatok](#create-azure-cred
 
 ### <a name="sles-12-sp2"></a>SLES 12 SP2
 
-Szükség esetén hozzon létre virtuális gép és [az virtuális gép létrehozása](/cli/azure/vm#az_vm_create). Az alábbi példakód létrehozza a virtuális gépek nevű *myVMAnsible*:
+Szükség esetén hozzon létre egy virtuális Gépet a [az virtuális gép létrehozása](/cli/azure/vm#az_vm_create). A következő példában létrehozunk egy nevű virtuális Gépet *myVMAnsible*:
 
 ```azurecli
 az vm create \
@@ -124,13 +124,13 @@ az vm create \
     --generate-ssh-keys
 ```
 
-SSH-kapcsolatot a virtuális gép használata a `publicIpAddress` feljegyzett kimenetét a virtuális Gépet a létrehozási művelet futtatásakor:
+Ssh-KAPCSOLATOT a virtuális gépet a `publicIpAddress` a virtuális gép kimenetében feljegyzett-létrehozási művelet:
 
 ```bash
 ssh azureuser@<publicIpAddress>
 ```
 
-A virtuális gépen, a szükséges csomagok telepítése az Azure Python SDK modulok és Ansible az alábbiak szerint:
+A virtuális Gépen a szükséges csomagokat az Azure Python SDK-modulokat és Ansible a következőképpen telepítheti:
 
 ```bash
 ## Install pre-requisite packages
@@ -148,15 +148,15 @@ Most helyezze át a [létrehozása Azure hitelesítő adatok](#create-azure-cred
 
 ## <a name="create-azure-credentials"></a>Az Azure hitelesítő adatok létrehozása
 
-Ansible kommunikál az Azure-ban, a felhasználónév és jelszó vagy egy egyszerű szolgáltatást. Egy Azure szolgáltatás egyszerű egy biztonsági azonosító, amely alkalmazások, szolgáltatások és automatizálási eszközökkel, például a Ansible használható. Szabályozza, és adja meg az engedélyeket, hogy milyen műveletek a szolgáltatás egyszerű hajthat végre az Azure-ban. A biztonság növelése érdekében csak a felhasználónév és jelszó megadása keresztül alábbi példa létrehoz egy alapszintű service egyszerű.
+Az Ansible kommunikál az Azure-ban a felhasználónév és jelszó vagy egy egyszerű szolgáltatást. Azure-beli szolgáltatásnév egy biztonsági identitás, amelyekkel az alkalmazások, szolgáltatások és automatizálási eszközökkel, mint például az Ansible. Szabályozhatja és az egyszerű szolgáltatás az Azure-ban hajthat végre műveleteket helyrendszerszerepkörökre engedélyeinek megadásához. A biztonság növelése érdekében csak a felhasználónév és jelszó megadása során ez a példa létrehoz egy alapszintű egyszerű szolgáltatást.
 
-Az állomáson, vagy az Azure-felhő rendszerhéj létre szolgáltatás egyszerű [az ad sp létrehozása-az-rbac](/cli/azure/ad/sp#az-ad-sp-create-for-rbac). Ansible szükséges hitelesítő adatok a képernyőre kimeneti:
+Az állomáson, vagy az Azure Cloud shellben hozzon létre egy szolgáltatás egyszerű [az ad sp create-for-rbac](/cli/azure/ad/sp#az-ad-sp-create-for-rbac). Az Ansible szükséges hitelesítő adatokat a képernyőre kimeneti:
 
 ```azurecli-interactive
 az ad sp create-for-rbac --query '{"client_id": appId, "secret": password, "tenant": tenant}'
 ```
 
-A kimenet a fenti parancsok például a következőképpen történik:
+Egy példa a kimenetre az az előző parancsokban a következőképpen történik:
 
 ```json
 {
@@ -166,26 +166,26 @@ A kimenet a fenti parancsok például a következőképpen történik:
 }
 ```
 
-A hitelesítéshez az Azure-ba is be kell szereznie az Azure-előfizetés azonosítója használatával [az fiók megjelenítése](/cli/azure/account#az-account-show):
+Az Azure-beli hitelesítésre, szükség beszerzése az Azure-előfizetés azonosítója segítségével [az fiók show](/cli/azure/account#az-account-show):
 
 ```azurecli-interactive
 az account show --query "{ subscription_id: id }"
 ```
 
-Ez a két parancs kimenete a következő lépésben használhatja.
+Ez a két parancs kimenete a következő lépésben fogja használni.
 
-## <a name="create-ansible-credentials-file"></a>Ansible hitelesítőadat-fájlt létrehozni
+## <a name="create-ansible-credentials-file"></a>Az Ansible hitelesítő adatait tartalmazó fájl létrehozása
 
-Adja meg a hitelesítő adatokat a Ansible, adja meg a környezeti változókat, vagy hozzon létre egy helyi hitelesítőadat-fájlt. További információ a Ansible hitelesítő adatok megadását: [hitelesítő adatokat biztosító Azure-modulok](https://docs.ansible.com/ansible/guide_azure.html#providing-credentials-to-azure-modules).
+Adja meg a hitelesítő adatokat, az Ansible, a környezeti változókat határozhat meg, vagy hozzon létre egy helyi hitelesítő adatokkal fájlt. Az Ansible hitelesítő adatok definiálása kapcsolatos további információkért lásd: [hitelesítő adatok megadása az Azure-modulok](https://docs.ansible.com/ansible/guide_azure.html#providing-credentials-to-azure-modules).
 
-A fejlesztési környezet létrehozása egy *hitelesítő adatok* fájl Ansible a virtuális gép a gazdagépen. Hozzon létre egy hitelesítőadat-fájlt a virtuális gépen, ahol az előző lépésben telepített Ansible:
+A fejlesztési környezet létrehozása egy *hitelesítő adatok* Ansible fájlt a gazdagépen a virtuális gép. Hozza létre a virtuális gépre, amelyre telepítette az Ansible az előző lépésben egy hitelesítőadat-fájlja:
 
 ```bash
 mkdir ~/.azure
 vi ~/.azure/credentials
 ```
 
-A *hitelesítő adatok* maga az előfizetés-azonosító egyesíti az egyszerű szolgáltatás létrehozása kimenetét. Az előző kimeneti [az ad sp létrehozása-az-rbac](/cli/azure/ad/sp#create-for-rbac) parancs megegyezik az igény szerint *client_id*, *titkos*, és *bérlői*. Az alábbi példa *hitelesítő adatok* fájl ezeket az értékeket az előző kimeneti megfelelő jeleníti meg. Adja meg a saját értékek a következők szerint:
+A *hitelesítő adatok* fájl magát az előfizetés-azonosító ötvözi a kimenet az egyszerű szolgáltatás létrehozása. Az előző kimeneti [az ad sp create-for-rbac](/cli/azure/ad/sp#create-for-rbac) parancs megegyezik az igény szerint *client_id*, *titkos*, és *bérlői*. Az alábbi példa *hitelesítő adatok* fájl bemutatja ezeket az értékeket az előző kimeneti megfelelő. Adja meg a saját értékeit a következők szerint:
 
 ```bash
 [default]
@@ -197,9 +197,9 @@ tenant=72f988bf-86f1-41af-91ab-2d7cd011db47
 
 Mentse és zárja be a fájlt.
 
-## <a name="use-ansible-environment-variables"></a>Ansible környezeti változók használata
+## <a name="use-ansible-environment-variables"></a>Az Ansible környezeti változók használata
 
-Ha eszközöket, például a Ansible torony vagy Jenkins használni kívánja, akkor adja meg a környezeti változókat. Ezt a lépést, ha csak szeretné használni a Ansible ügyfél és az Azure hitelesítési adatait tartalmazó fájlt az előző lépésben létrehozott figyelmen kívül hagyja. Környezeti változók ugyanazokat az információkat, az Azure hitelesítési adatait tartalmazó fájlt határozza meg:
+Ha például Ansible Tower vagy Jenkins eszközei használatával, meg kell környezeti változókat határozhat meg. Ez a lépés is kimarad, ha csak kívánja használni az Ansible-ügyfél és az Azure hitelesítő adatait tartalmazó fájlt az előző lépésben létrehozott. A környezeti változók ugyanazokat az információkat az Azure-beli hitelesítő fájllal határozza meg:
 
 ```bash
 export AZURE_SUBSCRIPTION_ID=xxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
@@ -210,4 +210,4 @@ export AZURE_TENANT=72f988bf-86f1-41af-91ab-2d7cd011db47
 
 ## <a name="next-steps"></a>További lépések
 
-Most már rendelkezik Ansible és a szükséges Azure Python SDK modulok telepítve és Ansible megadott hitelesítő adatok használatához. Megtudhatja, hogyan [hozzon létre egy virtuális gép Ansible](ansible-create-vm.md). Azt is megtudhatja hogyan [teljes Azure virtuális gép létrehozása és az azt támogató erőforrások Ansible](ansible-create-complete-vm.md).
+Most már az Ansible, és a szükséges Azure Python SDK-modulok telepítése, és Ansible meghatározott hitelesítő adatokat használja. Ismerje meg, hogyan [virtuális gép létrehozása az ansible segítségével](ansible-create-vm.md). Azt is megtudhatja, hogyan [teljes Azure virtuális gép létrehozása és a támogató erőforrások az ansible segítségével](ansible-create-complete-vm.md).

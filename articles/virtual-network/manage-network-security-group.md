@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/05/2018
 ms.author: jdial
-ms.openlocfilehash: 774d429b960e56e998e9d964b9de1e6461816734
-ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
+ms.openlocfilehash: 5ca70b085b5ac9db4d108966fa695f042c20489d
+ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2018
-ms.locfileid: "37901697"
+ms.lasthandoff: 07/09/2018
+ms.locfileid: "37920511"
 ---
 # <a name="create-change-or-delete-a-network-security-group"></a>Létrehozása, módosítása vagy egy hálózati biztonsági csoport törlése
 
@@ -253,21 +253,25 @@ Egy alkalmazásbiztonsági csoportot nem lehet törölni, ha bármely, a hálóz
 
 A hálózati biztonsági csoportok biztonsági szabályokat és az alkalmazásbiztonsági csoportok feladatait, a fiókot hozzá kell rendelni a [hálózati közreműködő](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) szerepkör vagy egy [egyéni szerepkör](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) , amely hozzá van rendelve a az alábbi táblázatban felsorolt megfelelő engedélyei:
 
-### <a name="network-security-groups"></a>Network security groups (Hálózati biztonsági csoportok)
+### <a name="network-security-group"></a>Hálózati biztonsági csoport
 
 | Műveletek                                                        |   Name (Név)                                                                |
 |-------------------------------------------------------------- |   -------------------------------------------                         |
-| Microsoft.Network/ruleTables/read                             |   Hálózati biztonsági csoport lekérése                                          |
-| Microsoft.Network/ruleTables/write                            |   Létrehozni vagy frissíteni a hálózati biztonsági csoport                             |
-| Microsoft.Network/ruleTables/delete                           |   Hálózati biztonsági csoport törlése                                       |
-| Microsoft.Network/ruleTables/join/action                      |   Egy alhálózathoz vagy hálózati adapterhez a hálózati biztonsági csoport hozzárendelése |
-| Microsoft.Network/ruleTables/rules/read                       |   Get szabály                                                            |
-| Microsoft.Network/ruleTables/rules/write                      |   Hozzon létre vagy szabály frissítése                                               |
-| Microsoft.Network/ruleTables/rules/delete                     |   Szabály törlése                                                         |
-| Microsoft.Network/networkInterfaces/effectiveruleTable/action |   Hálózati adapter érvényes hálózati biztonsági csoport lekérése              |
-| Microsoft.Network/networkWatchers/nextHop/action              |   A következő ugrás lekérdezi egy virtuális gépről                                         |
+| Microsoft.Network/networkSecurityGroups/read                  |   Hálózati biztonsági csoport lekérése                                          |
+| Microsoft.Network/networkSecurityGroups/write                 |   Létrehozni vagy frissíteni a hálózati biztonsági csoport                             |
+| Microsoft.Network/networkSecurityGroups/delete                |   Hálózati biztonsági csoport törlése                                       |
+| Microsoft.Network/networkSecurityGroups/join/action           |   Egy alhálózathoz vagy hálózati adapterhez a hálózati biztonsági csoport hozzárendelése 
 
-### <a name="application-security-groups"></a>Alkalmazásbiztonsági csoportok
+
+### <a name="network-security-group-rule"></a>Hálózatbiztonságicsoport-szabály
+
+| Műveletek                                                        |   Name (Név)                                                                |
+|-------------------------------------------------------------- |   -------------------------------------------                         |
+| Microsoft.Network/networkSecurityGroups/rules/read            |   Get szabály                                                            |
+| Microsoft.Network/networkSecurityGroups/rules/write           |   Hozzon létre vagy szabály frissítése                                               |
+| Microsoft.Network/networkSecurityGroups/rules/delete          |   Szabály törlése                                                         |
+
+### <a name="application-security-group"></a>Alkalmazásbiztonsági csoportok
 
 | Műveletek                                                                     | Name (Név)                                                     |
 | --------------------------------------------------------------             | -------------------------------------------              |

@@ -10,15 +10,18 @@ ms.topic: conceptual
 ms.date: 08/16/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: eb9e4c58343e1f628ff862009b1d12dad07a1c91
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: e56b6f9360bdbfe2c5dcb2e81862cb80310bf54c
+ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37442440"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37928732"
 ---
 # <a name="azure-ad-b2c-frequently-asked-questions-faq"></a>Az Azure AD B2C: Gyakori kérdések (GYIK) 
 Ez az oldal az Azure Active Directory (Azure AD) B2C-vel kapcsolatos gyakori kérdésekre ad választ. Tartsa vissza a frissítések keresése.
+
+### <a name="why-cant-i-access-the-azure-ad-b2c-extension-in-the-azure-portal"></a>Miért nem fér hozzá az Azure AD B2C-bővítmény az Azure Portalon?
+Miért érdemes az Azure AD-bővítmény nem működik az Ön számára a két gyakori oka van.  Az Azure AD B2C a a címtár globális rendszergazdai felhasználói szerepkör szükséges.  Ha úgy véli, hogy hozzáférhet, forduljon a rendszergazdához.  Ha globális rendszergazdai jogosultságokkal rendelkezik, győződjön meg arról, hogy az Azure AD B2C-címtár és a egy Azure Active Directory címtár nem áll.  Láthatja, hogy útmutatást [létrehozása az Azure AD B2C-címtár Itt](https://docs.microsoft.com/azure/active-directory-b2c/tutorial-create-tenant).
 
 ### <a name="can-i-use-azure-ad-b2c-features-in-my-existing-employee-based-azure-ad-tenant"></a>Használható az Azure AD B2C-funkciók a meglévő, az alkalmazott-alapú Azure AD-bérlőm?
 Az Azure AD és az Azure AD B2C-t külön termékajánlatokat, és nem szerepelhet egyszerre ugyanabban a bérlőben.  Az Azure AD-bérlő szervezet jelöli.  Azure AD B2C-bérlő egy függő entitás alkalmazásai a használni kívánt identitások gyűjteményét képviseli.  Egyéni szabályzatok (nyilvános előzetes verzióban elérhető) az Azure AD B2C-vel az Azure AD lehetővé teszi az alkalmazottak hitelesítését egy szervezet is összevonható.

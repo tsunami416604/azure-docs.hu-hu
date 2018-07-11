@@ -1,86 +1,86 @@
 ---
-title: Azure virtuális gépek és az Azure Site Recovery a helyszíni VMware közötti feladat-visszavétel során hibák elhárítása |} Microsoft Docs
-description: Ez a cikk ismerteti azokat a módszereket hibaelhárítás általános feladat-visszavétel és ismételt védelem feladat-visszavétel során VMware az Azure-ból Azure Site Recovery segítségével.
+title: Az Azure az Azure Site Recovery a helyszíni VMware virtuális gépek feladat-visszavétel során hibák elhárítása |} A Microsoft Docs
+description: Ez a cikk ismerteti azokat a módszereket, feladat-visszavétel és ismételt védelem jelentkező gyakori hibák elhárítása feladat-visszavétel során a VMware Azure-ból az Azure Site Recovery használatával.
 services: site-recovery
 documentationcenter: ''
 author: rajani-janaki-ram
 manager: gauravd
 ms.service: site-recovery
 ms.topic: article
-ms.date: 03/09/2018
+ms.date: 07/06/2018
 ms.author: rajanaki
-ms.openlocfilehash: 480c3524ad4fb8a8c6ea02f09b8d27f254da9b08
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: c5ba0f1d98f3e4023e767bf3eea7a0b497d47686
+ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2018
-ms.locfileid: "29941033"
+ms.lasthandoff: 07/09/2018
+ms.locfileid: "37920969"
 ---
 # <a name="troubleshoot-failback-from-azure-to-vmware"></a>A feladat-visszavétel az Azure-ból VMware hibaelhárítása
 
-Ez a cikk ismerteti, ha nem sikerül vissza Azure virtuális gépek számára a helyszíni VMware-infrastruktúra az Azure-bA a feladatátvételt követően előforduló hibák elhárítása [Azure Site Recovery](site-recovery-overview.md).
+Ez a cikk ismerteti az Azure virtuális gépek átadja az Azure-bA a feladatátvételt követően a helyszíni VMware-infrastruktúra előforduló hibáinak elhárítása [Azure Site Recovery](site-recovery-overview.md).
 
-Feladat-visszavétel lényegében két fő lépést foglal magában. Az első lépés a feladatátvétel után kell állítsa a helyszíni Azure virtuális gépeken, így replikálást indítani. A második lépése, hogy feladatátvételt az a visszaadják feladataikat a helyszíni hely Azure-ból.
+Feladat-visszavétel lényegében két fő lépésből áll. Az első lépés a feladatátvételt követően kell ismételt védelem – Azure virtuális gépek a helyszíni, hogy megkezdődhessen a replikálás. A második lépés, hogy futtasson egy feladatátvételi feladat-visszavételhez a helyszíni hely Azure-ból.
 
-## <a name="troubleshoot-reprotection-errors"></a>Ismételt védelem hibák elhárítása
+## <a name="troubleshoot-reprotection-errors"></a>Ismételt védelem kapcsolatos hibák elhárítása
 
-Ez a szakasz részletesen gyakran ismételt védelem előforduló hiba és azok megoldására.
+Ez a szakasz részletesen az ismételt védelem előforduló gyakori hibák és a rendszernaplóban őket.
 
 ### <a name="error-code-95226"></a>95226. Hibakód:
 
-**Védelem-újrabeállítási sikertelen volt, mert a virtuális gépet az Azure nem tudta elérni a helyi konfigurációs kiszolgálót.**
+**Az ismételt védelem sikertelen volt, mert az Azure virtuális gép nem tudta elérni a helyszíni konfigurációs kiszolgálót.**
 
 Ez a hiba akkor fordul elő, ha:
 
-* Az Azure virtuális gép nem érhető el a helyszíni konfigurációs kiszolgáló. A virtuális gép nem felderítése és a konfigurációs kiszolgáló regisztrálva.
-* Az InMage Scout alkalmazásszolgáltatás nem fut az Azure virtuális gép a feladatátvételt követően. A szolgáltatás a helyi kiszolgáló kommunikációjához szükséges.
+* Az Azure virtuális gép nem tudja elérni a helyszíni konfigurációs kiszolgálót. A virtuális gép nem felderíthető és a konfigurációs kiszolgáló regisztrálva.
+* Az InMage Scout alkalmazásszolgáltatás nem fut az Azure virtuális gép a feladatátvételt követően. A szolgáltatás a helyszíni konfigurációs kiszolgálóval való kommunikációhoz szükséges.
 
 A probléma megoldásához:
 
-* Ellenőrizze, hogy az Azure Virtuálisgép-hálózat lehetővé teszi, hogy az Azure virtuális Gépen a helyi konfigurációs kiszolgálóval való kommunikációhoz. A helyszíni adatközpontját a telephelyek közötti VPN beállítása, vagy Azure ExpressRoute kapcsolat konfigurálása a magánhálózati társviszony-létesítés az Azure virtuális gép a virtuális hálózaton.
-* Ha a virtuális gép kommunikálhat a helyszíni konfigurációs kiszolgáló, jelentkezzen be a virtuális Gépet. Ellenőrizze az InMage Scout alkalmazásszolgáltatás. Ha azt látja, hogy nem fut, indítsa el kézzel a szolgáltatást. Ellenőrizze, hogy a szolgáltatás indítási típus értéke **automatikus**.
+* Ellenőrizze, hogy az Azure Virtuálisgép-hálózat lehetővé teszi, hogy az Azure virtuális Gépen a helyszíni konfigurációs kiszolgálóval való kommunikációhoz. A site-to-site VPN beállítása a helyszíni adatközponthoz, vagy az Azure ExpressRoute-kapcsolatok konfigurálása a privát társviszony-létesítést az Azure virtuális gépek a virtuális hálózaton.
+* Ha a virtuális gép kommunikálhat a helyszíni konfigurációs kiszolgálót, jelentkezzen be a virtuális géphez. Ezután ellenőrizze az InMage Scout application szolgáltatást. Ha látja, hogy nem fut, indítsa el manuálisan a szolgáltatást. Ellenőrizze, hogy a szolgáltatás indítási típus beállítása **automatikus**.
 
 ### <a name="error-code-78052"></a>78052. Hibakód:
 
-**Nem sikerült engedélyezni a virtuális gép védelmét.**
+**A virtuális gép védelme nem sikerült befejezni.**
 
-A probléma akkor fordulhat elő, ha már van egy virtuális Gépet, a fő célkiszolgálón, amelyhez visszavétele vissza ugyanazzal a névvel.
+A probléma akkor fordulhat elő, ha már van egy virtuális Gépet, amelyhez Ön éppen visszavétel a fő célkiszolgáló ugyanazzal a névvel.
 
 A probléma megoldásához:
 
-* Válassza ki egy másik fő célkiszolgáló egy másik gazdagépen, így ismételt védelemmel ellátni azt egy másik gazdagépet, ahol a nevek nem ütköznek a gép hoz létre.
-* Is használhatja vMotion a fő célkiszolgáló áthelyezése egy másik gazdagépen, ahol nem történik meg az ütközést. Ha a meglévő virtuális gép szétszórt, nevezze át azt, hogy az új virtuális gép ugyanazon az ESXi-állomáson is létrehozható.
+* Válassza ki egy másik fő célkiszolgálót egy másik gazdagépen, így ismételt védelem hoz létre a gépen egy másik gazdagépre, ahol a nevek nem ütköznek.
+* Emellett használhatja vMotion a fő célkiszolgáló áthelyezése egy másik gazdagépre, ahol a névütközést nem történik meg. Ha a meglévő virtuális gép egy szétszórt gép, nevezze át, hogy az új virtuális gép ugyanazon az ESXi-gazdagépen hozható létre.
 
 
 ### <a name="error-code-78093"></a>78093. Hibakód:
 
-**A virtuális gép nem fut, lefagyott állapotú, vagy nem érhető el.**
+**A virtuális gép nem fut, lefagyott állapotban, vagy nem érhető el.**
 
 A probléma megoldásához:
 
-Állítsa a virtuális gép feladatátadása, az Azure virtuális Gépen kell futnia, hogy a mobilitási szolgáltatás regisztrál a konfigurációs kiszolgáló a helyszíni és a részleg által a folyamat kiszolgálóval való kommunikáció replikálást indítani. Ha a gépet egy megfelelő hálózati, vagy nem futnak (lefagyott állapot vagy a leállítási le), a kiszolgáló nem érhető el a virtuális gépek ismételt védelem megkezdéséhez a mobilitási szolgáltatást.
+Egy átvevő virtuális gép ismételt védelme, hogy az Azure virtuális Gépen kell futnia, hogy a mobilitási szolgáltatás regisztrál a konfigurációs kiszolgálót a helyszínen és a is replikáljon által a folyamat-kiszolgálóval való kommunikációhoz. Ha a gép egy hibás hálózati vagy nem fut (lefagyott állapotban vagy a Leállítás le), a konfigurációs kiszolgáló nem érhető el a mobilitási szolgáltatás a virtuális gépen az ismételt védelem megkezdéséhez.
 
-* Indítsa újra a virtuális gép, így hátsó helyszíni kommunikáció elindíthatja.
-* Indítsa újra a védelem-újrabeállítási feladat, az Azure virtuális gép elindítása után.
+* Indítsa újra a virtuális Gépet, így kommunikál a helyszíni elindul.
+* Indítsa újra az ismételt védelmi feladat, az Azure virtuális gép elindítása után.
 
 ### <a name="error-code-8061"></a>8061. Hibakód:
 
-**Az adattároló nem érhető el az ESXi-állomáson.**
+**Az adattárhoz az ESXi-gazdagép nem érhető el.**
 
-Ellenőrizze a [fő cél Előfeltételek és a támogatott adattárolókhoz](vmware-azure-reprotect.md#deploy-a-separate-master-target-server) feladat-visszavételre.
+Ellenőrizze a [fő cél Előfeltételek és a támogatott adattárak](vmware-azure-reprotect.md#deploy-a-separate-master-target-server) a feladat-visszavételhez.
 
 
-## <a name="troubleshoot-failback-errors"></a>Feladat-visszavétel hibák elhárítása
+## <a name="troubleshoot-failback-errors"></a>Feladat-visszavétel kapcsolatos hibák elhárítása
 
-Ez a szakasz ismerteti a feladat-visszavétel során esetleg előforduló gyakori hibák.
+Ez a szakasz ismerteti a feladat-visszavétel során esetleg felmerülő gyakori hibák.
 
 ### <a name="error-code-8038"></a>8038. Hibakód:
 
-**Nem sikerült elindítani a helyszíni virtuális gépet a hiba miatt.**
+**Csatlakozva a helyszíni virtuális gép a hiba miatt nem sikerült.**
 
-A probléma történik, ha a helyszíni virtuális Gépet olyan gazdagépre, amely nem rendelkezik elegendő memóriával kiépítése nem válik. 
+A hiba akkor fordul elő, amikor a helyszíni virtuális gép egy gazdagépen, amely nem rendelkezik elegendő kiosztott memória van állapotba. 
 
 A probléma megoldásához:
 
-* Több memóriát az ESXi-állomáson kiépítéséhez.
-* Ezenkívül vMotion használatával a virtuális gép áthelyezése egy másik ESXi-állomáson indítsa el a virtuális gép elegendő memóriával rendelkezik.
+* Építhet ki több memóriát az ESXi-gazdagépen.
+* Emellett a vMotion használatával a virtuális gép áthelyezése egy másik ESXi-gazdagép, amely a virtuális gép elegendő memóriával rendelkezik.

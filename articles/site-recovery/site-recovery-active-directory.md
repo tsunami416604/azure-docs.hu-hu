@@ -1,127 +1,127 @@
 ---
-title: Active Directory és a DNS az Azure Site Recovery védelmét |} Microsoft Docs
-description: A cikk ismerteti az Active Directory, Azure Site Recovery segítségével megvalósítható a vész-helyreállítási megoldást.
+title: Active Directory és az Azure Site Recovery DNS védelme |} A Microsoft Docs
+description: Ez a cikk ismerteti, hogyan valósíthat meg egy vész-helyreállítási megoldást az Active Directory az Azure Site Recovery használatával.
 services: site-recovery
 documentationcenter: ''
 author: mayanknayar
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 05/11/2018
+ms.date: 07/06/2018
 ms.author: manayar
-ms.openlocfilehash: 97923af5ed4191f66434166c4743e398f8ac635a
-ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
+ms.openlocfilehash: e8094c582af6ea03f5ffcc4f61914488891cb556
+ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/11/2018
-ms.locfileid: "34072606"
+ms.lasthandoff: 07/09/2018
+ms.locfileid: "37920889"
 ---
-# <a name="use-azure-site-recovery-to-protect-active-directory-and-dns"></a>Azure Site Recovery használatával védi az Active Directory és a DNS-
+# <a name="use-azure-site-recovery-to-protect-active-directory-and-dns"></a>Active Directory és DNS védelme az Azure Site Recovery használatával
 
-Vállalati alkalmazások, például a SharePoint, a Dynamics AX és az SAP attól függ, az Active Directory és a DNS-infrastruktúra a megfelelő működéshez. Az alkalmazások vész-helyreállítási beállításakor gyakran kell helyreállítania Active Directory és a DNS, megfelelő működésének biztosításához más alkalmazás-összetevő helyreállítása előtt.
+Vállalati alkalmazások, például a SharePoint, a Dynamics AX és az SAP attól függ, az Active Directory és DNS-infrastruktúra a megfelelő működéshez. Alkalmazások vészhelyreállítása beállításakor gyakran kell az Active Directory és DNS-helyre, mielőtt helyreállítja más alkalmazás-összetevők, hogy helyes-e az alkalmazás funkciói.
 
-Használhat [Site Recovery](site-recovery-overview.md) az Active Directory egy vész-helyreállítási terv létrehozásához. A szüneteltetése esetén is kezdeményezhető a feladatátvételt. Akkor is fel az Active Directory és a futtató néhány perc múlva. Ha az elsődleges helyen telepített Active Directory egyszerre több alkalmazás, például a SharePoint és az SAP, érdemes a webhely teljes feladatátvételt. Active Directory használata a webhely helyreállítási először feladatátvételt. Ezt követően átadja a más alkalmazásokhoz, és alkalmazásspecifikus helyreállítási tervet.
+Használhat [Site Recovery](site-recovery-overview.md) az Active Directory egy vész-helyreállítási terv létrehozásához. Egy bekövetkező szolgáltatáskimaradás esetén is kezdeményezhető feladatátvétel. Használhat fel az Active Directory és a néhány perc leforgása alatt. Ha az elsődleges helyen telepített Active Directory több alkalmazáshoz, például a SharePoint és az SAP, érdemes a webhely teljes feladatátvételt. Az Active Directory használatával helyreállítási hely először feladatátvételt. Ezt követően átadja a feladatokat a más alkalmazásokhoz, alkalmazásspecifikus helyreállítási tervet.
 
-Ez a cikk ismerteti a vész-helyreállítási megoldás létrehozása az Active Directory. Ez magában foglalja az Előfeltételek és a feladatátvételi utasításokat. Ismernie kell az Active Directory és a helyreállítás megkezdése előtt.
+Ez a cikk bemutatja, hogyan hozhat létre vészhelyreállítási megoldást az Active Directory. Előfeltételek és a feladatátvételi utasításokat tartalmazza. Ismernie kell az Active Directory és a Site Recovery megkezdése előtt.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Ha az Azure-bA replikál [előkészítése az Azure-erőforrások](tutorial-prepare-azure.md), beleértve az előfizetés, egy Azure virtuális hálózatot, tárfiókot és Recovery Services-tároló.
+* Az Azure-ba történő replikálás [Azure-erőforrások előkészítése](tutorial-prepare-azure.md), beleértve egy előfizetést, az Azure Virtual Network, egy tárfiókot és egy Recovery Services-tárolót.
 * Minden összetevőre vonatkozóan tekintse át a [támogatási követelményeket](site-recovery-support-matrix-to-azure.md).
 
-## <a name="replicate-the-domain-controller"></a>A tartományvezérlő replikálja.
+## <a name="replicate-the-domain-controller"></a>A tartományvezérlő replikálása
 
-Be kell állítania [Site Recovery replikációs](#enable-protection-using-site-recovery), legalább egy virtuális gépre, a tartományvezérlő vagy a DNS-tároló. Ha rendelkezik [több tartományvezérlő](#environment-with-multiple-domain-controllers) a környezetben is be kell állítania egy [további tartományvezérlő](#protect-active-directory-with-active-directory-replication) a célként megadott helyen. A további tartományvezérlő lehet az Azure-ban, vagy egy másodlagos helyszíni adatközpontba.
+Be kell állítania [Site Recovery replikációs](#enable-protection-using-site-recovery), legalább egy virtuális gépen, amelyen egy tartományvezérlő vagy a DNS. Ha rendelkezik [több tartományvezérlő](#environment-with-multiple-domain-controllers) környezete is be kell állítania egy [további tartományvezérlő](#protect-active-directory-with-active-directory-replication) a célként megadott helyen. A további tartományvezérlő lehet az Azure-ban, vagy egy másodlagos helyszíni adatközpontba.
 
 ### <a name="single-domain-controller"></a>Egyetlen tartományvezérlő
-Ha csak néhány alkalmazások vagy egy tartományvezérlő van, érdemes feladataikat együtt átadó a teljes webhelyet. Ebben az esetben ajánlott a tartományvezérlő replikálja az adatokat a célhelyre (vagy az Azure-ban, vagy egy másodlagos helyszíni adatközpontba) a Site Recovery segítségével. Használhatja a azonos replikált tartományvezérlő vagy a virtuális gép DNS [feladatátvételi teszt](#test-failover-considerations).
+Ha csak néhány alkalmazások és a egy tartományvezérlő, érdemes lehet, hogy feladatátvételt együtt a teljes helyre. Ebben az esetben ajánlott a Site Recovery használatával a tartományvezérlő replikálja a célhely (vagy egy másodlagos helyszíni adatközpontba vagy az Azure-ban). Az azonos replikált tartományvezérlőt vagy a DNS virtuális gép [feladatátvételi teszt](#test-failover-considerations).
 
-### <a name="multiple-domain-controllers"></a>Több tartományvezérlő
-Ha több alkalmazás és egynél több tartományvezérlő van a környezetben, vagy ha azt tervezi, hogy feladatátvételt néhány alkalmazások egyszerre, továbbá a tartomány tartományvezérlő virtuális gépnek a Site Recovery replikálása azt javasoljuk, hogy beállított egy [további tartományvezérlő](#protect-active-directory-with-active-directory-replication) a célként megadott helyen (vagy az Azure-ban, vagy egy másodlagos helyszíni adatközpontba). A [feladatátvételi teszt](#test-failover-considerations), használhatja a Site Recovery által replikált tartományvezérlő. Feladatátvétel a további tartományvezérlő használhatja, ha a célként megadott helyen.
+### <a name="multiple-domain-controllers"></a>Több tartományvezérlőn
+Ha több alkalmazás és több tartományvezérlő van a környezetben, vagy ha azt tervezi, hogy átadja a feladatokat néhány alkalmazások egyszerre, továbbá a tartományt vezérlő virtuális gépet a Site Recovery replikálja azt javasoljuk, hogy beállította- [további tartományvezérlő](#protect-active-directory-with-active-directory-replication) a célként megadott helyen (vagy egy másodlagos helyszíni adatközpontba vagy az Azure-ban). A [feladatátvételi teszt](#test-failover-considerations), használhatja a Site Recovery által replikált tartományvezérlőt. A feladatátvételhez használhatja a további tartományvezérlő a célként megadott helyen.
 
-## <a name="enable-protection-with-site-recovery"></a>A Site Recovery védelmének engedélyezése
+## <a name="enable-protection-with-site-recovery"></a>Engedélyezze a Site recoveryvel
 
-A Site Recovery segítségével a virtuális gép, amelyen a tartományvezérlő vagy a DNS-védelme.
+A Site Recovery segítségével megvédheti a virtuális gép, amelyen a tartományvezérlő vagy a DNS.
 
 ### <a name="protect-the-vm"></a>A virtuális gép védelme
-A Site Recovery segítségével replikált használja a rendszer a [feladatátvételi teszt](#test-failover-considerations). Győződjön meg arról, hogy megfelel-e az alábbi követelményeknek:
+A Site Recovery használatával replikált tartományvezérlő használt [feladatátvételi teszt](#test-failover-considerations). Győződjön meg arról, hogy megfelel-e a következő követelményeknek:
 
-1. A tartományvezérlő globáliskatalógus-kiszolgáló nem.
-2. A tartományvezérlőnek kell lennie, a feladatátvételi teszt során szükséges szerepkörök a műveleti Főkiszolgálói szerepkör tulajdonosával. Ellenkező esetben ezek a szerepkörök kell lennie [lefoglalt](http://aka.ms/ad_seize_fsmo) a feladatátvétel után.
+1. A tartományvezérlő globáliskatalógus-kiszolgáló.
+2. A tartományvezérlő feladatátvételi teszt során szükséges szerepkörök a műveleti Főkiszolgálói szerepkör tulajdonosa kell lennie. Ellenkező esetben ezek a szerepkörök kell lennie [lefoglalt](http://aka.ms/ad_seize_fsmo) a feladatátvétel után.
 
 ### <a name="configure-vm-network-settings"></a>Virtuális gép hálózati beállításainak konfigurálása
-A virtuális gép, amelyen a tartományvezérlő vagy a DNS, a Site Recovery szolgáltatásban, konfigurálja a hálózati beállításait a **számítás és hálózat** a replikált virtuális gép beállításai között. Ez biztosítja, hogy a virtuális géphez van csatolva a megfelelő hálózati feladatátvételt követően.
+A virtuális gép, amelyen a tartományvezérlő vagy a DNS, a Site Recoveryben, a hálózati beállítások konfigurálása a **számítás és hálózat** a replikált virtuális gép beállításait. Ez biztosítja, hogy a virtuális gép a feladatátvételt követően a megfelelő hálózathoz csatlakozik.
 
-## <a name="protect-active-directory"></a>Az Active Directory védelmére
+## <a name="protect-active-directory"></a>Az Active Directory védelme
 
-### <a name="site-to-site-protection"></a>Pont-pont védelme
-A tartományvezérlő létrehozása a másodlagos helyen. Amikor előlépteti egy tartomány tartományvezérlői szerepkör a kiszolgálót, adja meg annak a tartománynak az elsődleges helyen használt nevét. Használhatja a **Active Directory – helyek és szolgáltatások** beépülő modul segítségével a hely objektum, amelyhez a helyek ad hozzá a beállításokat. A helykapcsolatot beállítások konfigurálásával szabályozhatja, hogy milyen gyakran történik, és két vagy több hely közötti replikáció során. További információkért lásd: [helyek közötti replikáció ütemezése](https://technet.microsoft.com/library/cc731862.aspx).
+### <a name="site-to-site-protection"></a>Site-to-site védelme
+Hozzon létre egy tartományvezérlőt a másodlagos helyen. Amikor előlépteti a kiszolgáló egy tartományvezérlő szerepkör, adja meg annak a tartománynak az elsődleges helyen használt nevét. Használhatja a **Active Directory – helyek és szolgáltatások** beépülő modul konfigurálja a hely hivatkozásra objektum, amely a helyek ad hozzá. A helykapcsolatot. a beállítások konfigurálásával szabályozhatja, hogy milyen gyakran jelentkezik, és két vagy több helyek közötti replikáció során. További információkért lásd: [helyek közötti replikáció ütemezése](https://technet.microsoft.com/library/cc731862.aspx).
 
-### <a name="site-to-azure-protection"></a>Hely Azure védelem
-Először hozzon létre egy tartományvezérlő egy Azure virtuális hálózatban. Amikor előlépteti egy tartomány tartományvezérlői szerepkör a kiszolgálót, adja meg az elsődleges helyen használt ugyanazon tartomány nevét.
+### <a name="site-to-azure-protection"></a>Hely – Azure védelme
+Először hozzon létre egy olyan tartományvezérlő egy Azure virtuális hálózatban. Amikor előlépteti a kiszolgáló egy tartományvezérlő szerepkör, adja meg az elsődleges helyen használt ugyanazon a néven.
 
-Ezután konfigurálja úgy a DNS-kiszolgáló a DNS-kiszolgáló használatára az Azure virtuális hálózat.
+Ezután konfigurálja újra a virtuális hálózat DNS-kiszolgáló használata az Azure-ban, a DNS-kiszolgáló.
 
 ![Azure Network-hálózat](./media/site-recovery-active-directory/azure-network.png)
 
-### <a name="azure-to-azure-protection"></a>Azure-Azure védelme
-Először hozzon létre egy tartományvezérlő egy Azure virtuális hálózatban. Amikor előlépteti egy tartomány tartományvezérlői szerepkör a kiszolgálót, adja meg az elsődleges helyen használt ugyanazon tartomány nevét.
+### <a name="azure-to-azure-protection"></a>Azure – Azure védelme
+Először hozzon létre egy olyan tartományvezérlő egy Azure virtuális hálózatban. Amikor előlépteti a kiszolgáló egy tartományvezérlő szerepkör, adja meg az elsődleges helyen használt ugyanazon a néven.
 
-Ezután konfigurálja úgy a DNS-kiszolgáló a DNS-kiszolgáló használatára az Azure virtuális hálózat.
+Ezután konfigurálja újra a virtuális hálózat DNS-kiszolgáló használata az Azure-ban, a DNS-kiszolgáló.
 
-## <a name="test-failover-considerations"></a>Feladatátvételi szempontokat részletező cikket
-A feladatátvételi teszt termelési számítási feladatokhoz gyakorolt hatás elkerülése érdekében a termelési hálózati elkülönített hálózatban következik be.
+## <a name="test-failover-considerations"></a>Feladatátvételi szempontokat részletező cikkben
+Éles számítási feladatokra gyakorolt hatás elkerülése érdekében, hogy az éles hálózattól elkülönített hálózat feladatátvételi teszt történik.
 
-A legtöbb alkalmazás egy tartományvezérlő és DNS-kiszolgáló szükséges. Ezért az alkalmazás nem keresztül, mielőtt, a tartományvezérlő feladatátvételi teszt végrehajtásához használja a elkülönített hálózatot kell létrehoznia. Ennek legegyszerűbb módja a Site Recovery segítségével a virtuális gép, amelyen egy tartományvezérlő vagy a DNS-replikáció. Ezután futtassa az alkalmazás a helyreállítási terv feladatátvételi teszt futtatása előtt tartomány a tartományvezérlő virtuális gép feladatátvételi tesztet. Itt látható, hogyan teheti, hogy:
+A legtöbb alkalmazás tartományvezérlőként vagy DNS-kiszolgáló meglétének megkövetelése. Ezért mielőtt az alkalmazás átadja a feladatokat, létre kell hoznia tartományvezérlő a elkülönített hálózat feladatátvételi teszthez használni. Ennek legegyszerűbb módja, hogy a Site Recovery használatával egy olyan tartományvezérlő vagy a DNS-üzemeltető virtuális gép replikálása. Ezután futtasson egy feladatátvételi tesztet a domain controller virtuális gép az alkalmazás a helyreállítási terv feladatátvételi teszt futtatása előtt. Itt látható, hogyan teheti, hogy:
 
-1. A Site Recovery használata [replikálása](vmware-azure-tutorial.md) a virtuális gépet, amely a tartományvezérlő vagy a DNS.
-2. Hozzon létre egy elkülönített hálózatot. Az Azure-ban létrehozott virtuális hálózatnak el különítve a többi hálózat alapértelmezés szerint. Azt javasoljuk, hogy használja-e az azonos IP-címtartomány ehhez a hálózathoz, amely a termelési hálózat használata. Hely-hely kapcsolatot, a hálózat nem engedélyezi.
-3. Adjon meg egy DNS-IP-címet, az elkülönített hálózatban. Használja az IP-cím, a DNS-virtuális gép beolvasandó várt. Ha az Azure-bA replikál, adja meg az IP-címet a virtuális gép feladatátvételi használt. Adja meg az IP-cím, a replikált virtuális gépen, hogy a **számítás és hálózat** beállításaiban, válassza a **cél IP-címet** beállításait.
+1. A Site Recovery használata [replikálása](vmware-azure-tutorial.md) a virtuális gép, amelyen a tartományvezérlő vagy a DNS.
+2. Hozzon létre egy elkülönített hálózatot. Bármely hoz létre az Azure-beli virtuális hálózat el különítve a más hálózatok alapértelmezés szerint. Azt javasoljuk, hogy használja-e az IP-címtartományból ehhez a hálózathoz, amelyek használatával az éles hálózattól. Nem engedélyezi a helyek közötti kapcsolat a hálózaton.
+3. Adjon meg egy DNS IP-címet a elkülönített hálózatban. A DNS virtuális gép első várt IP-címet használja. Ha az Azure-bA replikál, adja meg az IP-címet a virtuális gép feladatátvételi használt. Adja meg az IP-cím, a replikált virtuális gépen, hogy a **számítás és hálózat** beállításaiban, válassza a **cél IP-címet** beállításait.
 
-    ![Azure tesztet hálózathoz](./media/site-recovery-active-directory/azure-test-network.png)
+    ![Az Azure tesztelési célú hálózat](./media/site-recovery-active-directory/azure-test-network.png)
 
     > [!TIP]
-    > A Site Recovery megpróbálja létrehozni a teszt virtuális gépek azonos nevű és ugyanazon az IP-cím, a megadott alhálózat a **számítás és hálózat** a virtuális gép beállításai között. Ha azonos nevű alhálózat nem használható az Azure virtuális hálózatban, a feladatátvételi teszthez megadott, a teszt virtuális gépét a betűrendben az első alhálózat jön létre.
+    > A teszt virtuális gépek létrehozása egy alhálózatot az azonos nevű és azonos IP-cím van megadva a használatával a Site Recovery megkísérli a **számítás és hálózat** a virtuális gép beállításait. Az azonos nevű alhálózat nem található az Azure virtuális hálózat feladatátvételi teszthez megadott érhető el, ha a teszt virtuális gép jön létre a betűrend szerint az első alhálózat.
     >
-    > Ha a cél IP-címet a kijelölt alhálózathoz tartozik, a Site Recovery megkísérli a feladatátvételi teszt virtuális gép létrehozása a figyelt IP cím használatával. Ha a figyelt IP cím nem része a kiválasztott alhálózatnak, a feladatátvételi teszt virtuális gép hozta létre a következő rendelkezésre álló IP használata a kiválasztott alhálózatnak.
+    > Ha a figyelt IP cím nem a kiválasztott alhálózatnak a része, a Site Recovery megkísérli a feladatátvételi teszt virtuális gép létrehozása a cél IP-cím használatával. Ha a cél IP-cím nem része a kijelölt alhálózat, a teszt feladatátvételi virtuális gépen jön létre a kiválasztott alhálózatban a legközelebbi elérhető IP-cím használatával.
     >
     >
 
 ### <a name="test-failover-to-a-secondary-site"></a>Feladatátvételi teszt egy másodlagos helyre
 
-1. Ha egy másik helyszíni helyre replikál, és a DHCP használatára [állítsa be a DNS és DHCP-feladatátvételi teszt](hyper-v-vmm-test-failover.md#prepare-dhcp).
-2. Végezzen a tartomány a tartományvezérlő virtuális gép elkülönített hálózatban futó feladatátvételi tesztet. Használja a legújabb elérhető *konzisztens alkalmazás* helyreállítási pont a tartomány a tartományvezérlő virtuális gép feladatátvételi teszt végrehajtásához.
-3. A helyreállítási terv, amely tartalmazza az alkalmazás a futó virtuális gépek feladatátvételi teszt futtatása.
-4. Ha a vizsgálat befejeződött, *karbantartása a feladatátvételi tesztet* a tartomány a tartományvezérlő virtuális gépen. Ezzel a lépéssel törli a teszt feladatátvételhez létrehozott tartományvezérlő.
+1. Ha egy másik helyszíni helyre replikál, és a DHCP szolgáltatást [állítsa be a DNS és DHCP-feladatátvételi teszthez](hyper-v-vmm-test-failover.md#prepare-dhcp).
+2. Ezt a tartományt vezérlő virtuális gép, amely az elkülönített hálózatra irányuló feladatátvételi teszt. Használja a legújabb elérhető *alkalmazáskonzisztens* helyreállítási pontot a tartomány tartományvezérlő virtuális gép feladatátvételi teszt végrehajtásához.
+3. A helyreállítási terv, amely tartalmazza az alkalmazást futtató virtuális gépek feladatátvételi teszt futtatása.
+4. Ha a vizsgálat befejeződött, *távolítsa el a feladatátvételi tesztet* a domain controller virtuális gépen. Ezzel a lépéssel törli a teszt feladatátvételhez létrehozott tartományvezérlő.
 
 
-### <a name="remove-references-to-other-domain-controllers"></a>Távolítsa el a többi tartományvezérlőn hivatkozásokat
-Elindít egy feladatátvételi tesztet, ne adja meg a tartományvezérlők a tesztelési célú hálózat. Távolítsa el a többi tartományvezérlőn, amely létezik a hivatkozásokat az éles környezetben, szükség van a [FSMO Active Directory-szerepkörök zárolása](http://aka.ms/ad_seize_fsmo) és [metaadatok](https://technet.microsoft.com/library/cc816907.aspx) a hiányzó tartományvezérlők .
+### <a name="remove-references-to-other-domain-controllers"></a>Más tartományvezérlők mutató hivatkozások eltávolítása
+Feladatátvételi teszt után, a tartományvezérlők ne tartalmazza a tesztelési célú hálózat. Más tartományvezérlők létező mutató hivatkozások eltávolításához az éles környezetben szüksége lehet [Active Directory műveleti Főkiszolgálói szerepkörök](http://aka.ms/ad_seize_fsmo) és [metaadattörlést](https://technet.microsoft.com/library/cc816907.aspx) a hiányzó tartományvezérlők .
 
 
-### <a name="issues-caused-by-virtualization-safeguards"></a>A virtualizációvédelmi funkciók által okozott problémák
+### <a name="issues-caused-by-virtualization-safeguards"></a>A virtualizációvédelmi által okozott problémák
 
 > [!IMPORTANT]
-> A jelen szakaszban bemutatott konfigurációk némelyike nem standard vagy alapértelmezett tartományvezérlő-konfigurációkban. Ha nem kívánja ilyen jellegű változtatásokat éles-tartományvezérlővé, létrehozhat egy tartományvezérlő, amely a Site Recovery számára a feladatátvételi teszthez használni. Ezek a módosítások csak az adott tartományvezérlő.  
+> A jelen szakaszban bemutatott konfigurációk némelyike nem standard vagy alapértelmezett tartományvezérlő-konfigurációkban. Ha nem szeretné, hogy ezek a változások éles-tartományvezérlővé, létrehozhat egy olyan tartományvezérlőt, a feladatátvételi teszthez használni a Site Recovery számára van fenntartva. Ezek a módosítások csak az adott tartományvezérlőhöz.  
 >
 >
 
-Windows Server 2012 rendszertől kezdődően [további védelmet az Active Directory tartományi szolgáltatások (AD DS) beépített](https://technet.microsoft.com/windows-server-docs/identity/ad-ds/introduction-to-active-directory-domain-services-ad-ds-virtualization-level-100). Ezek a funkciók védelme a virtualizált tartományvezérlők USN visszagörgetése ellen, ha az alapul szolgáló hipervizor platform támogatja **virtuális gép Generációazonosítóját**. Az Azure által támogatott **virtuális gép Generációazonosítóját**. Ebből kifolyólag a Windows Server 2012 vagy újabb Azure virtuális gépek futtató tartományvezérlők ezek további funkciók rendelkezik.
+Windows Server 2012 verziótól [szabályozzuk Active Directory Domain Services (AD DS) beépített](https://technet.microsoft.com/windows-server-docs/identity/ad-ds/introduction-to-active-directory-domain-services-ad-ds-virtualization-level-100). Ezen védelmi funkciók segítségével a virtualizált tartományvezérlők USN visszagörgetése elleni védelmére, ha az alapul szolgáló hipervizorkonzol támogatja **virtuális gép Generációazonosítóját**. Az Azure támogatja a **virtuális gép Generációazonosítóját**. Emiatt a tartományvezérlők, melyeken a Windows Server 2012 vagy később az Azure virtual machines ezek szabályozzuk rendelkezik.
 
 
-Ha **virtuális gép Generációazonosítóját** alaphelyzetbe áll, a **InvocationID** érték az AD DS-adatbázis is alaphelyzetbe áll. Ezenkívül a program elveti a RID-verem, és a SYSVOL nem mérvadó van megjelölve. További információkért lásd: [Bevezetés az Active Directory tartományi szolgáltatások virtualizálása](https://technet.microsoft.com/windows-server-docs/identity/ad-ds/introduction-to-active-directory-domain-services-ad-ds-virtualization-level-100) és [DFSR biztonságos virtualizálása](https://blogs.technet.microsoft.com/filecab/2013/04/05/safely-virtualizing-dfsr/).
+Amikor **virtuális gép Generációazonosítóját** alaphelyzetbe áll, a **InvocationID** az AD DS-adatbázis értékét is alaphelyzetbe áll. Emellett a rendszer elveti a RID-verem, és a SYSVOL nem mérvadó van megjelölve. További információkért lásd: [az Active Directory Domain Services virtualizálásába bevezető](https://technet.microsoft.com/windows-server-docs/identity/ad-ds/introduction-to-active-directory-domain-services-ad-ds-virtualization-level-100) és [DFSR biztonságos virtualizálása](https://blogs.technet.microsoft.com/filecab/2013/04/05/safely-virtualizing-dfsr/).
 
-Előfordulhat, hogy az Azure-bA feladatátvételét **virtuális gép Generációazonosítóját** alaphelyzetbe állítása. Alaphelyzetbe állítása **virtuális gép Generációazonosítóját** váltja ki további védelmet, ha a tartomány a tartományvezérlő virtuális gép elindul az Azure-ban. Emiatt előfordulhat, hogy egy *jelentős késés* a tudnak majd bejelentkezni a tartomány a tartományvezérlő virtuális gépet.
+Előfordulhat, hogy az Azure-ba irányuló feladatátvétel **virtuális gép Generációazonosítóját** alaphelyzetbe állítása. Alaphelyzetbe állítás **virtuális gép Generációazonosítóját** szabályozzuk aktivál, ha a tartomány tartományvezérlő virtuális gép elindul az Azure-ban. Emiatt előfordulhat, hogy egy *jelentős késleltetés* képes arra, hogy jelentkezzen be a tartomány tartományvezérlő virtuális gép található.
 
-Ezt használja a rendszer csak a feladatátvételi tesztet, mert a virtualizációvédelmi funkciók nem szükséges. Annak érdekében, hogy a **virtuális gép Generációazonosítóját** érték a tartomány a tartományvezérlő virtuális gépnek nem változik, módosíthatja a következő DWORD értékét **4** a helyi tartományvezérlő:
+Ez a tartományvezérlő csak feladatátvételi teszt használja, mert a virtualizációvédelmi nem szükséges. Annak érdekében, hogy a **virtuális gép Generációazonosítóját** érték a domain controller virtuális gép nem változik, a következő DWORD értékét módosítani **4** a helyszíni tartományvezérlő:
 
 
 `HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\gencounter\Start`
 
 
-#### <a name="symptoms-of-virtualization-safeguards"></a>A virtualizációvédelmi funkciók tünetei
+#### <a name="symptoms-of-virtualization-safeguards"></a>A virtualizációvédelmi tünetei
 
-A virtualizációvédelmi funkciók lépnek működésbe. a feladatátvételi teszt után nem látható alábbi jelenségek közül:  
+A virtualizációvédelmi aktivált tesztelési feladatátvétel után, ha egy vagy több alábbi tünetek felbukkanását jelenhetnek meg:  
 
 * A **GenerationID** érték változik.
 
@@ -129,78 +129,78 @@ A virtualizációvédelmi funkciók lépnek működésbe. a feladatátvételi te
 
 * A **InvocationID** érték változik.
 
-    ![Meghívási azonosító módosításának](./media/site-recovery-active-directory/Event1109.png)
+    ![Meghívási azonosító módosítását](./media/site-recovery-active-directory/Event1109.png)
 
-* NETLOGON és a SYSVOL megosztás nem érhetők el.
+* SYSVOL és NETLOGON-megosztások nem érhetők el.
 
     ![SYSVOL-megosztás](./media/site-recovery-active-directory/sysvolshare.png)
 
     ![NtFrs SYSVOL](./media/site-recovery-active-directory/Event13565.png)
 
-* Elosztott fájlrendszer-replikációs adatbázisok törlődnek.
+* Elosztott fájlrendszer-replikációs adatbázisokat is törli.
 
-    ![Elosztott fájlrendszer-replikációs adatbázisok törlődnek.](./media/site-recovery-active-directory/Event2208.png)
+    ![Elosztott fájlrendszer-replikációs adatbázisok törlése](./media/site-recovery-active-directory/Event2208.png)
 
 
-### <a name="troubleshoot-domain-controller-issues-during-test-failover"></a>Tartomány a tartományvezérlő elhárítása feladatátvételi tesztje közben
+### <a name="troubleshoot-domain-controller-issues-during-test-failover"></a>Feladatátvételi teszt során tartomány tartományvezérlő hibáinak elhárítása
 
 > [!IMPORTANT]
-> A jelen szakaszban bemutatott konfigurációk némelyike nem standard vagy alapértelmezett tartományvezérlő-konfigurációkban. Ha nem kívánja ilyen jellegű változtatásokat éles-tartományvezérlővé, létrehozhat egy tartományvezérlő, amely a Site Recovery feladatátvételi teszt végrehajtásához. A módosítások csak az adott dedikált tartományvezérlőről.  
+> A jelen szakaszban bemutatott konfigurációk némelyike nem standard vagy alapértelmezett tartományvezérlő-konfigurációkban. Ha nem szeretné, hogy ezek a változások éles-tartományvezérlővé, létrehozhat egy olyan tartományvezérlőt, a Site Recovery feladatátvételi teszt számára van fenntartva. A módosítások csak az adott dedikált tartományvezérlőhöz.  
 >
 >
 
-1. A parancssorban futtassa a következő parancs futtatásával ellenőrizze, hogy megosztott SYSVOL-és a NETLOGON:
+1. Parancsot a parancssorba a következő parancs futtatásával ellenőrizze e SYSVOL és NETLOGON mappák meg vannak osztva:
 
     `NET SHARE`
 
-2. A parancssorban futtassa a következő parancs futtatásával győződjön meg arról, hogy a tartományvezérlő megfelelően működik-e:
+2. A parancssorban futtassa a ellenőrizze, hogy a tartományvezérlő megfelelően működik-e a következő parancsot:
 
     `dcdiag /v > dcdiag.txt`
 
 3. Keresse meg a következő szöveget a kimeneti naplót. A szöveg megerősíti, hogy a tartományvezérlő megfelelően működik-e.
 
-    * "test átadott kapcsolat"
-    * "átadott teszt hirdetési"
+    * "kapcsolat átadott test"
+    * "a sikeres vizsgálat hirdetési"
     * "test átadott MachineAccount"
 
-Ha az előző feltételek teljesülnek, valószínű, hogy a tartományvezérlő megfelelően működik-e. Ha nem, kövesse az alábbi lépéseket:
+Ha az előző feltételek teljesülnek, akkor valószínű, hogy a tartományvezérlő megfelelően működik-e. Ha nem, kövesse az alábbi lépéseket:
 
-1. Hajtsa végre a tartományvezérlő mérvadó visszaállítást. Vegye figyelembe a következőket:
-    * Bár nem javasolt [fájlreplikációs](https://blogs.technet.microsoft.com/filecab/2014/06/25/the-end-is-nigh-for-frs/), ha fájlreplikációs, kövesse a lépéseket mérvadó visszaállítást. Az eljárást a [fájlreplikációs szolgáltatás újrainicializálása a BurFlags beállításkulcs használatával](https://support.microsoft.com/kb/290762).
+1. Hajtsa végre a tartományvezérlő mérvadó visszaállítást. Tartsa szem előtt az alábbi adatokat:
+    * Bár nem javasoljuk, hogy [fájlreplikációs](https://blogs.technet.microsoft.com/filecab/2014/06/25/the-end-is-nigh-for-frs/), ha fájlreplikációs, kövesse a lépéseket a mérvadó visszaállítást. Az eljárást a [fájlreplikációs szolgáltatás újrainicializálása a BurFlags beállításkulcs használatával](https://support.microsoft.com/kb/290762).
 
-        BurFlags kapcsolatos további információkért lásd a következő blogbejegyzésben [D2 és D4: Mi az az?](https://blogs.technet.microsoft.com/janelewis/2006/09/18/d2-and-d4-what-is-it-for/).
-    * Elosztott fájlrendszer-replikációs replikáció használata, végezze el a lépéseket mérvadó visszaállítást. Az eljárást a [egy mérvadó és nem mérvadó szinkronizálásának kikényszerítéséhez a DFSR-rel replikált SYSVOL mappa ("D4/D2" beállításaihoz hasonlóan az FRS)](https://support.microsoft.com/kb/2218556).
+        BurFlags kapcsolatos további információkért lásd a következő blogbejegyzésben: [D2 és D4: Mi az a?](https://blogs.technet.microsoft.com/janelewis/2006/09/18/d2-and-d4-what-is-it-for/).
+    * Ha az elosztott fájlrendszer-replikációs replikációt használ, a lépéseket a mérvadó visszaállítást. Az eljárást a [egy mérvadó és nem mérvadó szinkronizálást kényszerítheti az elosztott fájlrendszer replikációs szolgáltatása által replikált SYSVOL (például "D4/D2" beállításaihoz az FRS)](https://support.microsoft.com/kb/2218556).
 
-        A PowerShell funkciókat is használhatja. További információkért lásd: [DFSR-SYSVOL mappa mérvadó/nem mérvadó visszaállítást PowerShell funkciók](https://blogs.technet.microsoft.com/thbouche/2013/08/28/dfsr-sysvol-authoritative-non-authoritative-restore-powershell-functions/).
+        A PowerShell-funkciók is használható. További információkért lásd: [DFSR-SYSVOL mappa mérvadó és nem mérvadó visszaállítást PowerShell funkciók](https://blogs.technet.microsoft.com/thbouche/2013/08/28/dfsr-sysvol-authoritative-non-authoritative-restore-powershell-functions/).
 
-2. A kezdeti szinkronizálási követelményt kihagyása a következő beállításkulcsot értékre állításával **0** a helyi tartományvezérlőn. Ha a DWORD nem létezik, létrehozhatja a a **paraméterek** csomópont.
+2. A kezdeti szinkronizálási követelményt megkerülése úgy, hogy a következő beállításkulcs **0** a helyi tartományvezérlőn. Ha a DWORD nem létezik, létrehozhatja a a **paraméterek** csomópont.
 
     `HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\NTDS\Parameters\Repl Perform Initial Synchronizations`
 
-    További információkért lásd: [hibaelhárítása DNS Event ID 4013: A DNS-kiszolgáló nem tudta betölteni AD integrált DNS-zónák](https://support.microsoft.com/kb/2001093).
+    További információkért lásd: [hibaelhárítása DNS Event ID 4013: A DNS-kiszolgáló nem tudta betölteni az AD integrált DNS-zónák](https://support.microsoft.com/kb/2001093).
 
-3. Tiltsa le a követelmény, hogy elérhetők-e globáliskatalógus-kiszolgáló a felhasználói bejelentkezési érvényesítéséhez. Ehhez a helyi tartományvezérlő a következő beállításkulcs beállítása **1**. Ha a DWORD nem létezik, létrehozhatja a a **Lsa** csomópont.
+3. Tiltsa le az, hogy egy globáliskatalógus-kiszolgáló érhetők el a felhasználói bejelentkezési ellenőrzéséhez követelmény. Ehhez a helyi tartományvezérlő, a következő beállításkulcs beállítása **1**. Ha a DWORD nem létezik, létrehozhatja a a **Lsa** csomópont.
 
     `HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Lsa\IgnoreGCFailures`
 
-    További információkért lásd: [tiltsa le a követelmény, hogy elérhetők-e globáliskatalógus-kiszolgáló felhasználói bejelentkezések érvényesítéséhez](http://support.microsoft.com/kb/241789).
+    További információkért lásd: [tiltsa le a követelmény, hogy elérhetők-e egy globáliskatalógus-kiszolgáló felhasználói bejelentkezések ellenőrzése](http://support.microsoft.com/kb/241789).
 
-### <a name="dns-and-domain-controller-on-different-machines"></a>A különböző gépeken DNS- és tartományvezérlő
-Ha a DNS nem szerepel az azonos virtuális gépen, ahol a tartományvezérlő, a feladatátvételi teszt virtuális gép DNS kell létrehoznia. Ha a DNS és a tartományvezérlő nem ugyanazon a virtuális gépen, ez a szakasz kihagyhatja.
+### <a name="dns-and-domain-controller-on-different-machines"></a>DNS és a tartományvezérlő különböző gépeken
+Ha a DNS nem az azonos virtuális gépen a tartományvezérlő, DNS virtuális gép feladatátvételi teszthez kell létrehoznia. Ha a DNS és a tartományvezérlő nem ugyanazon a virtuális gépen, ez a szakasz kihagyhatja.
 
-Egy új DNS-kiszolgálót használjon, és hozzon létre a szükséges zónákat. Például ha az Active Directory-tartomány pedig contoso.com, létrehozhat egy DNS-zónát a contoso.com tartománynevet a. A bejegyzéseket, hogy az Active Directory frissíteni kell a DNS-ben az alábbiak szerint:
+Friss DNS-kiszolgálóra, és hozhat létre a szükséges zónákat. Például az Active Directory-tartománya a contoso.com, létrehozhat egy DNS-zóna neve Contoso.com. A bejegyzéseket, amelyek megfelelnek az Active Directory frissíteni kell a DNS-ben a következő:
 
-1. Győződjön meg arról, hogy ezek a beállítások vannak, a helyreállítási tervben szereplő bármely más virtuális gép indítása előtt:
-   * A zóna nevet kell kapniuk az erdő gyökér neve után.
+1. Győződjön meg arról, hogy ezek a beállítások vannak, a helyreállítási tervben szereplő bármely más virtuális gép elindítása előtt:
+   * A zóna névvel kell rendelkeznie az erdő gyökér neve után.
    * A zóna fájl alapú elemnek kell lennie.
-   * A zóna biztonságos és nem biztonságos frissítések engedélyezni kell.
-   * A DNS-virtuális gép IP-címét a tartományvezérlőt üzemeltető virtuális gép a feloldó kell mutatnia.
+   * A zóna engedélyezni kell a biztonságos és biztonságos frissítéseket.
+   * A virtuális gép, amelyen a tartományvezérlő a feloldó DNS virtuális gép IP-címre kell mutatnia.
 
-2. A következő parancsot a tartományvezérlőt üzemeltető virtuális Gépen:
+2. Futtassa a következő parancsot a tartományvezérlőt üzemeltető virtuális gépen:
 
     `nltest /dsregdns`
 
-3. Vegyen fel egy zónát a DNS-kiszolgálón, nem biztonságos frissítések engedélyezése, és adjon hozzá egy bejegyzést a zóna DNS a következő parancsok futtatásával:
+3. Futtassa a következő parancsokat, adjon hozzá egy zónát a DNS-kiszolgálón, nem biztonságos frissítések engedélyezése, és adjon hozzá egy bejegyzést a zóna DNS:
 
     `dnscmd /zoneadd contoso.com  /Primary`
 
@@ -211,4 +211,4 @@ Egy új DNS-kiszolgálót használjon, és hozzon létre a szükséges zónákat
     `dnscmd /config contoso.com /allowupdate 1`
 
 ## <a name="next-steps"></a>További lépések
-További információ [az Azure Site Recovery vállalati munkaterhelések védelme](site-recovery-workload.md).
+Tudjon meg többet [vállalati számítási feladatokat az Azure Site Recovery védelmét](site-recovery-workload.md).

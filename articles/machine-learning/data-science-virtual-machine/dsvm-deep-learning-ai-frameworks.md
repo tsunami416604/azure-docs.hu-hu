@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/11/2017
 ms.author: gokuma
-ms.openlocfilehash: af2a6b19d74e02b9368722cadf4d57aef377d43a
-ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
+ms.openlocfilehash: 891059a440189112c834f3402725781a6b4a3960
+ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37865437"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37952824"
 ---
 # <a name="deep-learning-and-ai-frameworks"></a>Mély tanulás és mesterségesintelligencia-keretrendszerek
 A [adatelemző virtuális gép](http://aka.ms/dsvm) (DSVM) és a [Deep Learning virtuális gép](http://aka.ms/dsvm/deeplearning) segítségével prediktív elemzéssel mesterséges intelligencia (AI) alkalmazásokat hozhat létre deep learning-keretrendszerek számos támogat, és kognitív képességeket, például kép és a language understanding. 
@@ -66,7 +66,7 @@ Az alábbiakban az összes a mélytanulási keretrendszerekkel a dsvm-hez elérh
 
 |    |           |
 | ------------- | ------------- |
-| Mi ez?   | Deep learning-keretrendszerek      |
+| Mi ez?   | Magas szintű deep learning-API      |
 | Támogatott DSVM-kiadások      | Windows, Linux     |
 | Hogyan van azt konfigurálni / telepíteni a dsvm-hez?  | Tensorflow-hoz a Python 3.5 települ az [Linux és Windows 2012](dsvm-languages.md#python-linux-and-windows-server-2012-edition) és a Python 3.6-os [Windows 2016](dsvm-languages.md#python-windows-server-2016-edition). |
 | A minták mutató hivatkozások      | https://github.com/fchollet/keras/tree/master/examples      |

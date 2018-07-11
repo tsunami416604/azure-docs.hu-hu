@@ -8,15 +8,15 @@ ms.topic: include
 ms.date: 06/01/2018
 ms.author: ghogen
 ms.custom: include file
-ms.openlocfilehash: 56e3cf04e87f628dda9e2b0008c4d3c942f28eb6
-ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
+ms.openlocfilehash: eac352ac43293da923fa0e6edf2e0074c05659ab
+ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34825139"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37927488"
 ---
 > [!IMPORTANT]
-> Azure fejlesztői szóközöket jelenleg előzetes verzióban érhetők, és csak AKS fürtöket támogatja a **USA keleti régiója**, **Nyugat-Európában**, és **Kanada keleti** régiók. Az előzetes verziók azzal a feltétellel érhetők el, hogy Ön beleegyezik a [kiegészítő használati feltételekbe][terms-of-use]. A szolgáltatás néhány eleme megváltozhat a nyilvános rendelkezésre állás előtt.
+> Az Azure fejlesztési tárolóhelyek jelenleg előzetes verzióban érhető el, és csak az AKS-fürtök által támogatott a **USA keleti Régiójában**,**USA középső RÉGIÓJA**, **USA 2. nyugati**, **Nyugat-Európa**, **Közép-Kanada**, és **kelet-Kanada** régióban. Az előzetes verziók azzal a feltétellel érhetők el, hogy Ön beleegyezik a [kiegészítő használati feltételekbe][terms-of-use]. A szolgáltatás néhány eleme megváltozhat a nyilvános rendelkezésre állás előtt.
 
 <!-- LINKS - External -->
 [terms-of-use]: https://azure.microsoft.com/support/legal/preview-supplemental-terms/

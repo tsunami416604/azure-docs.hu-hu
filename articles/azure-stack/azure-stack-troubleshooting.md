@@ -1,6 +1,6 @@
 ---
-title: A Microsoft Azure verem hibaelhárítása |} Microsoft Docs
-description: Az Azure verem hibaelhárítás.
+title: A Microsoft Azure Stack hibaelhárítása |} A Microsoft Docs
+description: Az Azure Stack hibaelhárítása.
 services: azure-stack
 documentationcenter: ''
 author: jeffgilb
@@ -12,68 +12,57 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/21/2018
+ms.date: 07/09/2018
 ms.author: jeffgilb
 ms.reviewer: unknown
-ms.openlocfilehash: b63fdd630647cc970a2d935619b4d3f16b8c0375
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 53bb89daee47d5f380786246070cf5cddb69b731
+ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2018
-ms.locfileid: "30229890"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37929557"
 ---
-# <a name="microsoft-azure-stack-troubleshooting"></a>A Microsoft Azure verem hibaelhárítása
+# <a name="microsoft-azure-stack-troubleshooting"></a>A Microsoft Azure Stack hibaelhárítása
 
-*A következőkre vonatkozik: Azure szoftverfejlesztői készletet*
+Ez a dokumentum az Azure Stackhez készült gyakori hibaelhárítási információt nyújt. 
 
-A dokumentum Azure verem általános hibaelhárítási információkat tartalmaz. 
+> [!NOTE]
+> Az Azure Stack technikai Development Kit (ASDK) egy kiértékelési környezete érhető el, mert rendszer nem hivatalos támogatja a Microsoft ügyfél-támogatási szolgálathoz. Ha problémát tapasztal, ellenőrizze, hogy ellenőrizze a [Azure Stack MSDN-fórumában](https://social.msdn.microsoft.com/Forums/azure/home?forum=azurestack) további segítséget és információt.  
 
-Az Azure verem műszaki szoftverfejlesztői készlet érhető el egy kiértékelési környezet, mert nincs hivatalos támogatás a Microsoft ügyfél-támogatási szolgálathoz. Ha nem dokumentált problémát tapasztal, ellenőrizze, hogy a [Azure verem MSDN fórumon](https://social.msdn.microsoft.com/Forums/azure/home?forum=azurestack) további segítséget vagy arról információkat.  
-
-Ebben a szakaszban ismertetett hibaelhárításával kapcsolatos ajánlások több forrásból származnak, és előfordulhat, hogy, vagy nem lehet feloldani az adott problémát. Kódminták kapnak, és nem lehet garantálni a kívánt eredmény elérése érdekében. Ez a szakasz az gyakori módosításokat és frissítések, a termék fejlesztései valósíthatók meg.
+A problémák megoldásához, amelyek ebben a szakaszban ismertetett javaslatok több forrásból származnak, és előfordulhat, hogy, vagy sem oldja meg az adott problémát. Hitelesítésikód-példák találhatók, és nem lehet garantálni a várt eredményt. Ebben a szakaszban megegyezik a gyakori módosítások és a frissítések fejlesztéseket a termékhez vannak megvalósítva.
 
 ## <a name="deployment"></a>Környezet
 ### <a name="deployment-failure"></a>Központi telepítési problémái
-Hiba a telepítés során tapasztal, indíthatja el a központi telepítést a sikertelen lépés használata a telepítési parancsfájl a - Újrafuttatás lehetőséget.  
+Ha hibát tapasztal a telepítés során, a központi telepítést a sikertelen lépés újraindíthatja használatával - Újrafuttatás lehetősége az üzembe helyezési parancsfájlt.  
 
-
-### <a name="at-the-end-of-the-deployment-the-powershell-session-is-still-open-and-doesnt-show-any-output"></a>A telepítés végén a PowerShell-munkamenet még meg nyitva, és nem jelenik meg a kimenetet
-Ez a viselkedés esetén valószínűleg csak egy PowerShell-parancsablakban alapértelmezett viselkedése eredményét van kijelölve. A development kit telepítési ténylegesen sikeresen befejeződött, de a parancsfájl az ablak kiválasztásakor szünetel. Ellenőrizheti a telepítés befejeződött, a word keresi, "select" a parancs ablakának címsorában.  Az ESC billentyű kikapcsolni azt, és az üzenet megjelenjenek-e után azt.
+### <a name="at-the-end-of-asdk-deployment-the-powershell-session-is-still-open-and-doesnt-show-any-output"></a>ASDK üzembe helyezés végén a PowerShell-munkamenet még meg nyitva, és nem jelenik meg a kimenetet.
+Ez a viselkedés esetén valószínűleg csak egy PowerShell-parancsablakban alapértelmezett viselkedését eredményét lett kiválasztva. A development kit központi telepítés sikeres volt, de a parancsfájl az ablak kiválasztásakor szünetel. Ellenőrizheti a telepítés véget ért által keresett szót "Válassza" a parancsablakban címsorában.  Kijelölésének, az ESC billentyű lenyomásával, és azt követően a befejezési üzenetet jelenjenek meg.
 
 ## <a name="virtual-machines"></a>Virtual machines (Virtuális gépek)
-### <a name="default-image-and-gallery-item"></a>Alapértelmezett kép és a gyűjtemény elem
-Virtuális gépek Azure-készletben telepítése előtt hozzá kell adni egy Windows Server kép és a galériabeli elemet.
+### <a name="default-image-and-gallery-item"></a>Alapértelmezett kép és a katalógus elem
+Virtuális gépek az Azure Stack üzembe helyezése előtt hozzá kell adni egy Windows Server rendszerképet és a katalógus elemet.
 
-### <a name="after-restarting-my-azure-stack-host-some-vms-may-not-automatically-start"></a>A saját Azure verem állomás az újraindítás után néhány virtuális gép esetleg nem indul el automatikusan.
-Miután a gazdagép újraindul, azt tapasztalhatja, Azure verem szolgáltatások nem érhetők el azonnal.  Ennek az az oka az Azure a verem [infrastruktúra virtuális gépek](..\azure-stack\asdk\asdk-architecture.md#virtual-machine-roles) és RPs eltarthat egy kis bit konzisztenciájának ellenőrzése, de végül indul el automatikusan.
+### <a name="after-restarting-my-azure-stack-host-some-vms-may-not-automatically-start"></a>Az Azure Stack gazdagépen az újraindítás után néhány virtuális gép esetleg nem indul el automatikusan.
+A gazdagép az újraindítást követően, Észreveheti, az Azure Stack-szolgáltatások nem érhetők el közvetlenül.  Ennek az az oka az Azure Stack [infrastruktúra virtuális gépein](..\azure-stack\asdk\asdk-architecture.md#virtual-machine-roles) és erőforrás-szolgáltatók konzisztenciájának ellenőrzése hosszabb időt is igénybe, de végül automatikusan elindul.
 
-Előfordulhat, hogy a bérlői virtuális gépek nem indul el automatikusan a rendszer az Azure verem development kit gazdagép újraindítása után is. Ez egy ismert probléma, és online állapotba kerüljön néhány manuális szükséges:
+Előfordulhat, hogy a bérlői virtuális gépek nem indul el automatikusan az Azure Stack development kit gazdagép újraindítása után is. Ez egy ismert probléma, és csak az online állapotba helyezés néhány manuális lépéseket igényel:
 
-1.  Indítsa el az Azure verem development kit állomás **Feladatátvevőfürt-kezelő** a Start menüből.
-2.  Válassza ki a fürtöt **S-Cluster.azurestack.local**.
+1.  Indítsa el az Azure Stack development kit állomás **Feladatátvevőfürt-kezelőben** a Start menüből.
+2.  Válassza ki a fürt **S-Cluster.azurestack.local**.
 3.  Válassza ki **szerepkörök**.
-4.  Bérlői virtuális gépek szerepelnek a *mentett* állapotát. Miután minden infrastruktúra virtuális gépek futnak, kattintson a jobb gombbal a bérlői virtuális gépek, és válassza ki **Start** folytatni a virtuális Gépet.
+4.  Bérlő virtuális gépek megjelennek egy *mentett* állapota. Ha minden infrastruktúra virtuális gépek futnak, kattintson a jobb gombbal a bérlői virtuális gépeket, és válassza ki **Start** folytatni a virtuális gép.
 
-### <a name="i-have-deleted-some-virtual-machines-but-still-see-the-vhd-files-on-disk-is-this-behavior-expected"></a>Tudom néhány virtuális gépnél, hogy törölték, de továbbra is tekintse meg a VHD-fájlok a lemezen. Ez a viselkedés várható?
-Igen, ez az elvárt viselkedés. Az ezzel a módszerrel úgy lett kialakítva, mert:
+### <a name="i-have-deleted-some-virtual-machines-but-still-see-the-vhd-files-on-disk-is-this-behavior-expected"></a>Tudom a törölt néhány virtuális gép, de továbbra is tekintse meg a VHD-fájlok a lemezen. Ez a viselkedés várható?
+Igen, ez az elvárt működés. Így mivel készült:
 
-* Ha töröl egy virtuális Gépet, a VHD-k nem törlődnek. Lemezek külön erőforrások az erőforráscsoportban.
-* A storage-fiók törlésekor a lekérdezi a törlés látható azonnal Azure Resource Manageren keresztül, de a lemezek tartalmazhat továbbra is őrizze meg tárolási szemétgyűjtés futtatásáig.
+* Ha töröl egy virtuális Gépet, a VHD-k nem törlődnek. A lemezei külön erőforrások az erőforráscsoportban.
+* Lekérdezi egy storage-fiók törlésekor a törlés látható azonnal az Azure Resource Manageren keresztül, de a lemezek tartalmazhat továbbra is tartanak Storage szemétgyűjtés futtatásáig.
 
-Ha azt látja, hogy "árva" VHD-k, fontos tudni, hogy ha a mappa a tárfiókon törölt részét képezik. A tárfiók nem lett törölve, akkor szokásos azok továbbra is létezik.
+Ha a VHD-k "árva" című fontos tudni, hogy találhatók-e egy storage-fiók, amely törölve lett a mappában részei. Ha a tárfiók nem lett törölve, normál, azok továbbra is létezik.
 
-További az adatmegőrzési küszöbértékének és az igény visszaigénylését konfigurálásával kapcsolatos [storage-fiókok kezelése](azure-stack-manage-storage-accounts.md).
+Tudjon meg többet az adatmegőrzési küszöbérték és igény szerinti visszaigénylését konfigurálásával kapcsolatos [tárfiókok kezelését](azure-stack-manage-storage-accounts.md).
 
-## <a name="storage"></a>Tárolás
+## <a name="storage"></a>Storage
 ### <a name="storage-reclamation"></a>Tárolási visszaigénylését
-Megjelennek a portálon regenerált kapacitást akár a 14 órát is igénybe vehet. Terület-visszanyerést attól függ, hogy számos tényező befolyásolja, többek között a használat százalékos belső tároló fájlok blokk blob-tárolóban. Ezért attól függően, hogy mennyi adat törlődik, nincs garancia a szemétgyűjtő futtatásakor kell visszaigényelt terület mennyisége.
-
-## <a name="windows-azure-pack-connector"></a>Windows Azure Pack-összekötő
-* Ha Azure verem szoftverfejlesztői készlet telepítése után megváltoztatja a azurestackadmin fiók jelszavát, több felhőalapú mód már nem konfigurálhatja. Ezért hogy nem lehet kapcsolódni a Windows Azure Pack célkörnyezet.
-* Miután beállította a többszörös felhő mód:
-    * A felhasználó csak azok a beállítások alaphelyzetbe állítása után az irányítópulton látható. (A felhasználói portálon, kattintson a portál beállítások (fogaskerék ikonra a jobb felső sarokban) ikonra. A **alapértelmezett beállításainak visszaállítása**, kattintson a **alkalmaz**.)
-    * Az irányítópult címek nem jelenhet meg. Ha a probléma akkor fordul elő, manuálisan kell hozzáadni azokat vissza.
-    * Egyes csempék nem lehetséges, hogy megfelelően megjelenítése, amikor először hozzáadja őket az irányítópult megnyitásához. A probléma megoldásához frissítse a böngészőt.
-
-
+Akár 14 óra regenerált kapacitás megjelennek a portálon vehet igénybe. Terület-visszaigénylést számos tényező befolyásolja, többek között a használat százalékos aránya a tároló belső fájlok block blob tárolóban függ. Ezért attól függően, hogy mennyi adat törlődik, nincs garancia arra, hogy a szemétgyűjtő futtatásakor kell visszaigényelt terület mennyisége a.
 

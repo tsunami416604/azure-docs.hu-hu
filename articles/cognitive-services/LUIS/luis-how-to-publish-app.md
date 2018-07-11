@@ -10,12 +10,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: v-geberr;
-ms.openlocfilehash: 1bd24af0498755b7cdcb170624fd8f9f3b39c85a
-ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
+ms.openlocfilehash: 0f6ba76ede48502e4f3308b11d41bf141f0188fb
+ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37347408"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37927774"
 ---
 # <a name="publish-your-trained-app"></a>A betanított alkalmazás közzététele
 Ha befejezte a elkészítését és tesztelését a LUIS-alkalmazás, tegye közzé. Az alkalmazás közzététele után a közzétételi oldalon látható-e az összes kapcsolódó HTTP [végpontok](luis-glossary.md#endpoint). Ezeket a végpontokat kiszolgálónként [régió](luis-reference-regions.md) és a egy [kulcs](luis-how-to-manage-keys.md), majd integrálva vannak minden olyan ügyfél, a csevegőrobot, vagy a háttérrendszer alkalmazás. 
@@ -67,7 +67,7 @@ A **minden beágyazott előre jelzett szándék pontszámok** jelölőnégyzet l
 
 Ez a beállítás lehetővé teszi, hogy a csevegőrobot, vagy a LUIS-hívása alkalmazás a programozott döntéshozáshoz, a visszaadott leképezések a pontszámok alapján. A felső két szándék általában a legjobban érdekli. Ha a felső pontszám nem a nincs szándék, a csevegőrobot, amely lehetővé teszi a nincs szándékának és a nagy pontozási célt végleges választhat követő kérdést feltenni választhat. 
 
-A leképezések és azok pontszámok is vannak-e a végpont naplók tartalmazza. Is [exportálása](create-new-app.md#export-app) ezeket a naplókat és elemezheti a pontszámokat. 
+A leképezések és azok pontszámok is vannak-e a végpont naplók tartalmazza. Is [exportálása](luis-how-to-start-new-app.md#export-app) ezeket a naplókat és elemezheti a pontszámokat. 
 
 ```
 {

@@ -1,9 +1,9 @@
 ---
-title: A Linux virtuális gép távoli asztal |} Microsoft Docs
-description: Megtudhatja, hogyan telepítse és konfigurálja a klasszikus telepítési modell a Microsoft Azure Linux virtuális gép kapcsolódni a távoli asztal
+title: Linux virtuális géphez a távoli asztal |} A Microsoft Docs
+description: Ismerje meg, hogyan telepítheti és konfigurálhatja a Microsoft Azure Linux virtuális gépek a klasszikus üzemi modellhez való kapcsolódáshoz a távoli asztal
 services: virtual-machines-linux
 documentationcenter: ''
-author: iainfoulds
+author: cynthn
 manager: jeconnoc
 editor: ''
 tags: azure-service-management
@@ -15,64 +15,64 @@ ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
 ms.date: 05/30/2017
-ms.author: iainfou
-ms.openlocfilehash: 0e1bfe468e1572ca98be956d39d82df562dce0e6
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.author: cynthn
+ms.openlocfilehash: 5e68774c3edb7d82fef388c593a6b96c52857be6
+ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2018
-ms.locfileid: "30238613"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37927740"
 ---
 # <a name="using-remote-desktop-to-connect-to-a-microsoft-azure-linux-vm"></a>Kapcsolódás Microsoft Azure-beli linuxos VM-hez a Távoli asztal használatával
 > [!IMPORTANT] 
-> Azure az erőforrások létrehozására és kezelésére két különböző üzembe helyezési modellel rendelkezik: [Resource Manager és klasszikus](../../../resource-manager-deployment-model.md). Ez a cikk a klasszikus telepítési modell használatát bemutatja. A Microsoft azt javasolja, hogy az új telepítések esetén a Resource Manager modellt használja. Ez a cikk frissített Resource Manager verziója, lásd: [Itt](../use-remote-desktop.md).
+> Az Azure az erőforrások létrehozásához és használatához két különböző üzembe helyezési modellel rendelkezik: [Resource Manager és klasszikus](../../../resource-manager-deployment-model.md). Ez a cikk ismerteti a klasszikus üzemi modell használatával. A Microsoft azt javasolja, hogy az új telepítések esetén a Resource Manager modellt használja. Ez a cikk frissített erőforrás-kezelő verzióját, lásd: [Itt](../use-remote-desktop.md).
 
 ## <a name="overview"></a>Áttekintés
-RDP (Remote Desktop Protocol) a saját fejlesztésű protokollja használt Windows. A Microsoft használatát RDP távolról csatlakozni a Linux virtuális gépek (virtuális gép)?
+RDP (Remote Desktop Protocol) egy olyan saját fejlesztésű protokoll Windows használt. Hogyan használhatjuk RDP (virtuális gép) Linux virtuális gép távolról csatlakozni?
 
-Ez az útmutató Erre azért van szükség a válasz! Azt, hogy telepítse és a Microsoft Azure Linux virtuális gép meg, amely lehetővé teszi, hogy csatlakozni a távoli asztalról a Windows-gépről a config xrdp segítségével. Ubuntu, OpenSUSE vagy az ebben az útmutatóban példaként futó Linux virtuális gép használjuk.
+Ez az útmutató a választ ad meg! Ez segít, hogy telepítse és a Microsoft Azure Linux VM, amely lehetővé teszi egy Windows-gépről a távoli asztalon keresztül csatlakozzanak ahhoz a config xrdp. Linux rendszerű virtuális gép futtatása az Ubuntu vagy opensuse-alapú ebben az útmutatóban példaként használjuk.
 
-A xrdp eszköze egy nyílt forráskódú RDP-kiszolgáló, amely lehetővé teszi a kapcsolódást a Linux-kiszolgálóra a távoli asztalról a Windows-gépről. RDP (virtuális hálózat számítástechnikai) VNC jobb teljesítményt rendelkezik. VNC Renderelés JPEG minőségű grafikus használatával, és a lassú lehet, mivel az RDP gyors és egyszerű crystal.
+A xrdp eszköze egy nyílt forráskódú RDP-kiszolgáló, amely lehetővé teszi, hogy a Linux-kiszolgáló csatlakoztatása a távoli asztalon keresztül egy Windows-gépen. RDP jobb teljesítményt, mint a VNC (virtuális hálózat Computing) rendelkezik. VNC rendereli JPEG minőségű képek használatával, és a lassú lehet, mivel az RDP gyors és crystal törlése.
 
 > [!NOTE]
-> Már rendelkeznie kell egy Microsoft Azure virtuális gépet. Hozzon létre, és a Linux virtuális gépet, a [Azure Linux virtuális gép oktatóanyag](createportal-classic.md).
+> Már rendelkeznie kell egy Microsoft Azure virtuális Gépet. Hozhat létre, és állítsa be a Linux virtuális Gépet, tekintse meg a [Azure Linux VM-oktatóanyag](createportal-classic.md).
 > 
 > 
 
-## <a name="create-an-endpoint-for-remote-desktop"></a>Hozzon létre egy végpontot a távoli asztal
-Használjuk az alapértelmezett végpont 3389-es távoli asztal Ez a dokumentum. Állítsa be, 3389 végpont `Remote Desktop` a Linux virtuális gépekre például alatt:
+## <a name="create-an-endpoint-for-remote-desktop"></a>A távoli asztal végpont létrehozása
+Az alapértelmezett végpont 3389-es feljegyzett használjuk a távoli asztal. Állítsa be, 3389 végpont `Remote Desktop` alább például a Linux rendszerű virtuális:
 
 ![image](./media/remote-desktop/endpoint-for-linux-server.png)
 
-Ha nem tudja, hogyan állíthatja be a végpont a virtuális Gépet, tekintse meg [Ez az útmutató](setup-endpoints.md).
+Ha nem tudja, hogyan állíthatja be egy végpontot a virtuális géphez, tekintse meg [Ez az útmutató](setup-endpoints.md).
 
-## <a name="install-gnome-desktop"></a>Gnome asztali telepítése
-Csatlakoztassa a Linux virtuális Gépet keresztül `putty`, és telepítse `Gnome Desktop`.
+## <a name="install-gnome-desktop"></a>Gnome Desktop telepítése
+A Linux rendszerű virtuális gép keresztül csatlakozni `putty`, és telepítse `Gnome Desktop`.
 
-Ubuntu használja:
+Ubuntu rendszeren használja:
 
 ```bash
 sudo apt-get update
 sudo apt-get install ubuntu-desktop
 ```
 
-OpenSUSE használja:
+Az OpenSUSE használja:
 
 ```bash
 sudo zypper install gnome-session
 ```
 
 ## <a name="install-xrdp"></a>Xrdp telepítése
-Ubuntu használja:
+Ubuntu rendszeren használja:
 
 ```bash
 sudo apt-get install xrdp
 ```
 
-OpenSUSE használja:
+Az OpenSUSE használja:
 
 > [!NOTE]
-> Frissítse a OpenSUSE a verziójával, az alábbi parancsot használja. Az alábbi példa `OpenSUSE 13.2`.
+> Frissítse az OpenSUSE-verzió az alábbi parancsban használt verzióval. Az alábbi példa `OpenSUSE 13.2`.
 > 
 > 
 
@@ -81,32 +81,32 @@ sudo zypper in http://download.opensuse.org/repositories/X11:/RemoteDesktop/open
 sudo zypper install tigervnc xorg-x11-Xvnc xterm remmina-plugin-vnc
 ```
 
-## <a name="start-xrdp-and-set-xdrp-service-at-boot-up"></a>Indítsa el a xrdp, és állítsa be xdrp szolgáltatás állítja
-OpenSUSE használja:
+## <a name="start-xrdp-and-set-xdrp-service-at-boot-up"></a>Indítsa el a xrdp és értékre beállított xdrp szolgáltatás rendszerindítás
+Az OpenSUSE használja:
 
 ```bash
 sudo systemctl start xrdp
 sudo systemctl enable xrdp
 ```
 
-Az Ubuntu xrdp fog legyen elindult, és automatikusan engedélyezve állítja, a telepítés után.
+Az Ubuntu, a xrdp fog indíthatók és automatikusan engedélyezve rendszerindítás, a telepítés után.
 
-## <a name="using-xfce-if-you-are-using-an-ubuntu-version-later-than-ubuntu-1204lts"></a>Ha a Ubuntu 12.04LTS később egy Ubuntu verzióját használja xfce használatával
-Mert xrdp jelenlegi verziója nem támogatja a Gnome asztali Ubuntu verzióihoz Ubuntu 12.04LTS később, használjuk `xfce` asztali helyette.
+## <a name="using-xfce-if-you-are-using-an-ubuntu-version-later-than-ubuntu-1204lts"></a>Xfce használatával, ha később Ubuntu 12.04LTS használ egy Ubuntu-verzió
+Mert xrdp jelenlegi verziója nem támogatja a Gnome asztali Ubuntu-verziók Ubuntu 12.04LTS később, ezzel `xfce` asztali helyette.
 
-A telepítendő `xfce`, használja ezt a parancsot:
+A telepítendő `xfce`, használja a következő parancsot:
 
 ```bash
 sudo apt-get install xubuntu-desktop
 ```
 
-Engedélyezze a `xfce` használja a következő parancsot:
+Engedélyeznie kell a `xfce` ezzel a paranccsal:
 
 ```bash
 echo xfce4-session >~/.xsession
 ```
 
-A konfigurációs fájl szerkesztése `/etc/xrdp/startwm.sh`:
+A konfigurációs fájl szerkesztésével `/etc/xrdp/startwm.sh`:
 
 ```bash
 sudo vi /etc/xrdp/startwm.sh   
@@ -120,12 +120,12 @@ Indítsa újra a xrdp szolgáltatást, használja ezt:
 sudo service xrdp restart
 ```
 
-## <a name="connect-your-linux-vm-from-a-windows-machine"></a>Csatlakozás a Linux virtuális Gépet egy Windows-gépről
-A Windows-gépen a távoli asztal ügyfél elindítása, és adjon meg a Linux virtuális gép DNS-nevét. Vagy a virtuális gép az Azure-portálon az irányítópult megnyitásához, és kattintson a `Connect` a Linux virtuális gép csatlakozni. Ebben az esetben a bejelentkezési ablak jelenik meg:
+## <a name="connect-your-linux-vm-from-a-windows-machine"></a>A Linux rendszerű virtuális gép csatlakoztatása a Windows-gépről
+Egy Windows-gépen a távoli asztali ügyfél elindítása és a Linux rendszerű virtuális gép DNS-nevet adjon meg. Vagy nyissa meg az irányítópultot, a virtuális gép az Azure Portalon, és kattintson a `Connect` Linuxos virtuális gép csatlakozni. Ebben az esetben a bejelentkezési ablak jelenik meg:
 
 ![image](./media/remote-desktop/no2.png)
 
-Jelentkezzen be a felhasználónevet és jelszót a Linux virtuális gép.
+Jelentkezzen be a felhasználónevet és jelszót a Linux rendszerű virtuális gép.
 
 ## <a name="next-steps"></a>További lépések
 Xrdp használatával kapcsolatos további információkért lásd: [ http://www.xrdp.org/ ](http://www.xrdp.org/).

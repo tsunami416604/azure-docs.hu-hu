@@ -1,6 +1,6 @@
 ---
-title: Elindítása és leállítása Azure verem |} Microsoft Docs
-description: Megtudhatja, hogyan indítása és leállítása Azure verem.
+title: Elindítása és leállítása az Azure Stackben |} A Microsoft Docs
+description: Megtudhatja, hogyan indítása és leállítása az Azure Stack.
 services: azure-stack
 documentationcenter: ''
 author: jeffgilb
@@ -15,47 +15,50 @@ ms.topic: article
 ms.date: 04/09/2018
 ms.author: jeffgilb
 ms.reviewer: misainat
-ms.openlocfilehash: 53015ba5c282bbe9c7b8185b080ffb6d834b6c75
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: dd1e64d5ad6982c85a8205e3036d30a2ede92f7c
+ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31391133"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37930290"
 ---
-# <a name="start-and-stop-azure-stack"></a>Elindítása és leállítása Azure verem
-Kövesse a cikk megfelelően állítsa le és indítsa újra az Azure-verem szolgáltatások eljárásokat. 
+# <a name="start-and-stop-azure-stack"></a>Elindítása és leállítása az Azure Stackben
+Ez a cikk megfelelően állítsa le és indítsa újra az Azure Stack-szolgáltatásokat az eljárást kell követnie. Leállítás fizikailag a teljes Azure Stack-környezet lesz kikapcsolásához. Indítási összes infrastruktúra-szerepkörök bekapcsolását, és a leállítás előtt voltak energiaállapotát bérlői erőforrások visszaadja.
 
-## <a name="stop-azure-stack"></a>Állítsa le az Azure verem 
+## <a name="stop-azure-stack"></a>Állítsa le az Azure Stack 
 
-Azure verem leállítani a következő lépéseket:
+Állítsa le az Azure Stack az alábbi lépéseket követve:
 
-1. Nyissa meg a kiemelt végpont munkamenet (EGP) a virtuális gép hálózati hozzáférés az Azure verem ERCS virtuális gépekhez. Útmutatásért lásd: [használatával a privilegizált végpont Azure verem](azure-stack-privileged-endpoint.md).
+1. Az Azure Stack-környezet bérlői erőforrások a közelgő leállítás futó összes számítási feladatainak előkészítése. 
 
-2. Futtassa az EGP:
+2. Nyissa meg egy emelt szintű végpont munkamenet (EGP) hálózati hozzáféréssel rendelkező számítógépen az Azure Stack ERCS virtuális gépekre. Útmutatásért lásd: [a rendszerjogosultságú végpont használata az Azure Stackben](azure-stack-privileged-endpoint.md).
+
+3. Futtassa az EGP:
 
     ```powershell
       Stop-AzureStack
     ```
 
-3. Várjon, amíg minden fizikai Azure csomópontok energiagazdálkodással ki.
+4. Várjon, amíg az összes fizikai az Azure Stack csomópontok, a power ki.
 
 > [!Note]  
-> Ellenőrizheti a fizikai csomópont power állapotának a az eredeti hardvergyártó (OEM) számára az Azure-verem hardver megadott utasítások alapján. 
+> Ellenőrizheti a fizikai csomópont power állapotát, a számítógépgyártó (OEM) ki az Azure Stack hardverét megadott utasítások szerint. 
 
-## <a name="start-azure-stack"></a>Indítsa el az Azure verem 
+## <a name="start-azure-stack"></a>Indítsa el az Azure Stack 
 
-Azure verem kezdje az alábbi lépéseket. Kövesse az alábbi lépéseket, függetlenül attól, milyen Azure verem leállt.
+Indítsa el az Azure Stack az alábbi lépéseket követve. Kövesse az alábbi lépéseket, függetlenül attól, milyen az Azure Stack leállt.
 
-1. Bekapcsolás a fizikai csomópontok a verem Azure környezetben. Utasításokat a fizikai csomópontok bekapcsolás ellenőrizze a az eredeti hardvergyártó (OEM) számára megadott a hardver az Azure-verem cikk utasításait követve.
+1. Az egyes fizikai csomópontjainak az Azure Stack környezettel Power. Győződjön meg arról a fizikai csomópontok utasításokat bekapcsolási a a számítógépgyártó (OEM) ki az Azure Stackhez készült hardver megadott utasítások szerint.
 
-2. Várjon, amíg elindítja a verem Azure infrastruktúra-szolgáltatásokat. Verem Azure infrastruktúra-szolgáltatásokat is a folyamat befejezése két órát igénybe vehet. Azure verem és a kezdő állapotát ellenőrizheti a [ **Get-ActionStatus** parancsmag](#get-the-startup-status-for-azure-stack).
+2. Várjon, amíg elindítja az Azure Stack infrastruktúra-szolgáltatásokat. Az Azure Stack infrastruktúra-szolgáltatások, az indítási folyamat befejezése két óra lehet szükség. Az Azure Stack kezdő állapotának ellenőrzéséhez a [ **Get-ActionStatus** parancsmag](#get-the-startup-status-for-azure-stack).
 
+3. Győződjön meg arról, hogy az összes bérlői erőforrás vissza az állapot, leállítás előtt voltak. Bérlői erőforrások futó számítási feladatokat kell előfordulhat, hogy a munkaterhelés-kezelő indítás után konfigurálni.
 
-## <a name="get-the-startup-status-for-azure-stack"></a>Azure verem indítási állapotának beolvasása
+## <a name="get-the-startup-status-for-azure-stack"></a>Az Azure stack-beli indítási állapotának beolvasása
 
-Az indítási érhető el az Azure verem közben a következő lépéseket:
+Az indítási lekérése az Azure Stack indítási rutin a következő lépésekkel:
 
-1. Munkamenetet nyit meg egy Rendszerjogosultságú végpont a virtuális gép hálózati hozzáférés az Azure verem ERCS virtuális gépekhez.
+1. Munkamenetet nyit meg egy emelt szintű végpont hálózati hozzáféréssel rendelkező számítógépen az Azure Stack ERCS virtuális gépekre.
 
 2. Futtassa az EGP:
 
@@ -63,28 +66,28 @@ Az indítási érhető el az Azure verem közben a következő lépéseket:
       Get-ActionStatus Start-AzureStack
     ```
 
-## <a name="troubleshoot-startup-and-shutdown-of-azure-stack"></a>Indítási és leállítási Azure verem hibaelhárítása
+## <a name="troubleshoot-startup-and-shutdown-of-azure-stack"></a>Indítási és leállítási az Azure Stack hibaelhárítása
 
-Hajtsa végre az alábbi lépéseket, ha az infrastrukturális és bérlői szolgáltatások nem sikeresen indul el, energiagazdálkodási után 2 óra Azure verem környezetben. 
+Az alábbi lépések végrehajtásával, ha az infrastrukturális és bérlői szolgáltatások nem sikerült elindítani a 2 órával később, a power az Azure Stack környezettel a. 
 
-1. Munkamenetet nyit meg egy Rendszerjogosultságú végpont a virtuális gép hálózati hozzáférés az Azure verem ERCS virtuális gépekhez.
+1. Munkamenetet nyit meg egy emelt szintű végpont hálózati hozzáféréssel rendelkező számítógépen az Azure Stack ERCS virtuális gépekre.
 
-2. Futtatás: 
+2. Futtassa: 
 
     ```powershell
       Test-AzureStack
       ```
 
-3. Tekintse át a kimenetet, és javítsa ki a rendszerállapot-hibákat. További információkért lásd: [Azure verem teszt futtatása](azure-stack-diagnostic-test.md).
+3. Tekintse át a kimenetet, és bármely állapotával kapcsolatos hibák elhárításához. További információkért lásd: [futtatása az Azure Stack teszt](azure-stack-diagnostic-test.md).
 
-4. Futtatás:
+4. Futtassa:
 
     ```powershell
       Start-AzureStack
     ```
 
-5. Ha fut **Start-AzureStack** , hibát okoz, lépjen kapcsolatba a Microsoft ügyfélszolgálata szolgáltatások. 
+5. Ha fut **Start-AzureStack** eredményez a hiba, kérjen segítséget a Microsoft Services. 
 
 ## <a name="next-steps"></a>További lépések 
 
-További tudnivalók az Azure-verem diagnosztikai eszköz és naplózási ki, lásd: [Azure verem diagnosztikai eszközök](azure-stack-diagnostics.md).
+További információ az Azure Stack diagnosztikai eszköz, és adja ki a naplózást, lásd: [Azure Stack diagnosztikai eszközök](azure-stack-diagnostics.md).

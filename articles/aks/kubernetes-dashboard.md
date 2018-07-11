@@ -1,72 +1,110 @@
 ---
-title: Webes felhasználói felület Azure Kubernetes fürt kezelése
-description: Az Kubernetes irányítópulttal AKS
+title: Azure-beli Kubernetes-fürt webes felhasználói felületének kezelése
+description: Ismerje meg, hogyan használható a beépített Kubernetes webes felhasználói felületének irányítópultja az Azure Kubernetes Service (AKS)
 services: container-service
 author: iainfoulds
 manager: jeconnoc
 ms.service: container-service
 ms.topic: article
-ms.date: 02/24/2018
+ms.date: 07/09/2018
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: b56751750d5c0731a79b3229106a6bc2a5eccac9
-ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
+ms.openlocfilehash: e197a251df3f34e5416bafacfd54a3fc7f51d503
+ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37100425"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37928216"
 ---
-# <a name="kubernetes-dashboard-with-azure-kubernetes-service-aks"></a>Kubernetes irányítópult Azure Kubernetes szolgáltatás (AKS)
+# <a name="access-the-kubernetes-dashboard-with-azure-kubernetes-service-aks"></a>Hozzáférés a Kubernetes-irányítópultot az Azure Kubernetes Service (AKS)
 
-Az Azure CLI segítségével a Kubernetes irányítópult elindításához. Ez a dokumentum végigvezeti a Kubernetes irányítópult kezdődően az Azure parancssori felület, és néhány alapvető irányítópult művelet is végigvezeti. További információ a Kubernetes irányítópult lásd [Kubernetes webes felhasználói felületének irányítópultja][kubernetes-dashboard].
+Kubernetes webes irányítópultot is használható alapvető felügyeleti műveletet tartalmaz. Ez a cikk bemutatja, hogyan érhető el az Azure CLI segítségével Kubernetes-irányítópult, és végigvezeti néhány alapvető irányítópult művelet. A Kubernetes-irányítópult további információkért lásd: [Kubernetes webes felhasználói felületének irányítópultja][kubernetes-dashboard].
 
 ## <a name="before-you-begin"></a>Előkészületek
 
-A dokumentumban foglalt lépések feltételezik, hogy korábban már létrehozott egy AKS-fürtöt, és kiépített egy kubectl-kapcsolatot a fürttel. Ha ezek az elemek megjelenítéséhez a [AKS gyors üzembe helyezés][aks-quickstart].
+Ebben a dokumentumban ismertetett lépések feltételezik, hogy már létrehozott egy AKS-fürtöt, és létrehozott egy `kubectl` kapcsolatot a fürttel. Ha szeretne létrehozni egy AKS-fürtöt, tekintse meg a [AKS gyors][aks-quickstart].
 
-Emellett az Azure CLI 2.0.27-es vagy újabb, telepített és konfigurált verziójával is rendelkeznie kell. A verzió megkereséséhez futtassa a következő parancsot: az --version. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése][install-azure-cli].
+Emellett az Azure CLI 2.0.27-es vagy újabb, telepített és konfigurált verziójával is rendelkeznie kell. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése][install-azure-cli].
 
-## <a name="start-kubernetes-dashboard"></a>Indítsa el a Kubernetes irányítópult
+## <a name="start-kubernetes-dashboard"></a>Indítsa el a Kubernetes-irányítópult
 
-Használja a `az aks browse` parancsot a Kubernetes irányítópult elindításához. A parancs futtatásakor cserélje le az erőforrás-csoport és a fürt nevét.
+A Kubernetes-irányítópult indításához használja a [az aks browse] [ az-aks-browse] parancsot. Az alábbi példa megnyitja az irányítópultot, a fürt nevű *myAKSCluster* az erőforráscsoport neve *myResourceGroup*:
 
 ```azurecli
 az aks browse --resource-group myResourceGroup --name myAKSCluster
 ```
 
-A parancs létrehozza a fejlesztői rendszerhez és a Kubernetes API között elhelyezkedő proxy, és a Kubernetes irányítópult egy webböngészőben megnyílik.
+Ez a parancs létrehoz egy proxy között a fejlesztői rendszerhez, és a Kubernetes API-t, és a Kubernetes-irányítópult egy webböngészőben megnyílik.
+
+### <a name="for-rbac-enabled-clusters"></a>A fürtök RBAC-kompatibilis
+
+Ha az AKS-fürtöt használ, az RBAC- *ClusterRoleBinding* léteznie kell az irányítópult eléréséhez. Egy szerepkör-kötés nélkül az Azure CLI hibát ad vissza a következő példához hasonló:
+
+```
+error: unable to forward port because pod is not running. Current status=Pending
+```
+
+Hozzon létre egy kötést, hozzon létre egy fájlt *irányítópult-admin.yaml* , és illessze be a következő mintát. Ez a minta kötés nem vonatkozik minden további hitelesítés összetevői. Használhatja a mechanizmusokkal, mint például a tulajdonosi jogkivonatokat vagy férhet hozzá az irányítópultot, és mi felhasználónév/jelszó engedélyekkel rendelkeznek. Hitelesítési módszerekkel kapcsolatos további információkért tekintse meg a Kubernetes-irányítópult wiki [hozzáférés-vezérlés][dashboard-authentication].
+
+```yaml
+apiVersion: rbac.authorization.k8s.io/v1beta1
+kind: ClusterRoleBinding
+metadata:
+  name: kubernetes-dashboard
+  labels:
+    k8s-app: kubernetes-dashboard
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: cluster-admin
+subjects:
+- kind: ServiceAccount
+  name: kubernetes-dashboard
+  namespace: kube-system
+```
+
+A kötés a alkalmazni [a kubectl a alkalmazni] [ kubectl-apply] , és adja meg a *irányítópult-admin.yaml*, az alábbi példában látható módon:
+
+```
+$ kubectl apply -f dashboard-admin.yaml
+
+clusterrolebinding.rbac.authorization.k8s.io/kubernetes-dashboard created
+```
+
+Most már elérheti a Kubernetes-irányítópultot az RBAC-t fürtben. A Kubernetes-irányítópult indításához használja a [az aks browse] [ az-aks-browse] parancsot az előző lépésben leírt módon.
+
 
 ## <a name="run-an-application"></a>Alkalmazás futtatása
 
-Kubernetes irányítópultján kattintson a **létrehozása** gombra a jobb felső ablakban. Nevezze el a központi telepítés a `nginx` , és írja be `nginx:latest` a kép Tárolónév. A **szolgáltatás**, jelölje be **külső** , és írja be `80` a port és a cél port.
+A Kubernetes-irányítópultot, kattintson a **létrehozás** gombra a jobb felső ablakban. Nevezze el az üzembe helyezés a `nginx` , és adja meg `nginx:latest` a tároló-rendszerkép neveként. Alatt **szolgáltatás**válassza **külső** , és adja meg `80` a port és a célport.
 
-Ha elkészült, kattintson **telepítés** létrehozza a központi telepítést.
+Ha elkészült, kattintson a **telepítés** a központi telepítés létrehozásához.
 
-![Kubernetes Service létrehozás párbeszédpanel](./media/container-service-kubernetes-ui/create-deployment.png)
+![Kubernetes-szolgáltatás létrehozása párbeszédpanel](./media/container-service-kubernetes-ui/create-deployment.png)
 
 ## <a name="view-the-application"></a>Az alkalmazás megtekintése
 
-Az alkalmazás állapotát a Kubernetes irányítópulton látható. Ha az alkalmazás fut, minden egyes összetevő rendelkezik egy zöld jelölőnégyzetét.
+Az alkalmazás állapota a Kubernetes-irányítópult látható. Miután az alkalmazás fut, az egyes összetevők rendelkezik egy zöld jelölőnégyzetét.
 
-![Kubernetes három munkaállomás-csoporttal](./media/container-service-kubernetes-ui/complete-deployment.png)
+![Kubernetes-Podok](./media/container-service-kubernetes-ui/complete-deployment.png)
 
-Az alkalmazás három munkaállomás-csoporttal kapcsolatos további információk megtekintéséhez kattintson a **három munkaállomás-csoporttal** a bal oldali menüből, majd válassza ki a **NGINX** pod. Itt látható, például az erőforrás-felhasználás pod-specifikus adatait.
+További információ az alkalmazás podok megtekintéséhez kattintson a **Podok** a bal oldali menüben, és válassza ki a **NGINX** pod. Itt láthatja a pod-specifikus információkat, például az erőforrás-használat.
 
-![Kubernetes erőforrások](./media/container-service-kubernetes-ui/running-pods.png)
+![Kubernetes-erőforrást](./media/container-service-kubernetes-ui/running-pods.png)
 
-Az alkalmazás az IP-cím kereséséhez kattintson az **szolgáltatások** a bal oldali menüből, majd válassza ki a **NGINX** szolgáltatás.
+Az alkalmazás IP-cím kereséséhez kattintson a **szolgáltatások** a bal oldali menüben, és válassza ki a **NGINX** szolgáltatás.
 
-![nginx megtekintése](./media/container-service-kubernetes-ui/nginx-service.png)
+![az nginx-nézet](./media/container-service-kubernetes-ui/nginx-service.png)
 
 ## <a name="edit-the-application"></a>Az alkalmazás szerkesztése
 
-Létrehozásán és alkalmazások megtekintése, a Kubernetes Irányítópult segítségével módosítsa és frissítse az alkalmazások központi telepítéseit.
+Létrehozása és alkalmazások megtekintése, mellett a Kubernetes-irányítópult szerkesztése, és frissíti az alkalmazás-KözpontiTelepítés használható.
 
-A központi telepítés szerkesztéséhez kattintson **központi telepítések** a bal oldali menüből, majd válassza ki a **NGINX** központi telepítés. Végül válassza ki **szerkesztése** jobb felső navigációs sávon.
+Központi telepítés szerkesztéséhez kattintson **központi telepítések** a bal oldali menüben, és válassza ki a **NGINX** üzembe helyezési. Végül válassza **szerkesztése** a jobb felső navigációs sávban.
 
 ![Kubernetes Edit](./media/container-service-kubernetes-ui/view-deployment.png)
 
-Keresse meg a `spec.replica` értéket, amely 1 kell lennie, módosítsa ezt az értéket a 3. Ennek során a replika száma az NGINX-telepítés megnövelik 1-3.
+Keresse meg a `spec.replica` érték, amely 1 kell lennie, módosíthatja ezt az értéket a 3. Ennek során az NGINX üzembe helyezés a replika száma 1-ra emelkedett 3.
 
 Válassza ki **frissítés** Ha készen áll.
 
@@ -74,14 +112,17 @@ Válassza ki **frissítés** Ha készen áll.
 
 ## <a name="next-steps"></a>További lépések
 
-A Kubernetes irányítópulttal kapcsolatos további információkért a Kubernetes dokumentációjában talál.
+A Kubernetes-irányítópulttal kapcsolatos további információkért tekintse meg a Kubernetes dokumentációját.
 
 > [!div class="nextstepaction"]
 > [Kubernetes webes felhasználói felületének irányítópultja][kubernetes-dashboard]
 
 <!-- LINKS - external -->
 [kubernetes-dashboard]: https://kubernetes.io/docs/tasks/access-application-cluster/web-ui-dashboard/
+[dashboard-authentication]: https://github.com/kubernetes/dashboard/wiki/Access-control
+[kubectl-apply]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#apply
 
 <!-- LINKS - internal -->
 [aks-quickstart]: ./kubernetes-walkthrough.md
 [install-azure-cli]: /cli/azure/install-azure-cli
+[az-aks-browse]: /cli/azure/aks#az-aks-browse

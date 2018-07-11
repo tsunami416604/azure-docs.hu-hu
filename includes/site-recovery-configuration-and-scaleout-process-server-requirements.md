@@ -9,46 +9,46 @@ ms.topic: include
 ms.date: 06/10/2018
 ms.author: raynew
 ms.custom: include file
-ms.openlocfilehash: bc1beb53c5919914919e666ecf1836ec45d32ccf
-ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
+ms.openlocfilehash: f6053c4ef1fe9ce7cc3f06804822afa98055a645
+ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/22/2018
-ms.locfileid: "36319726"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37967783"
 ---
-**Konfiguráció/folyamat kiszolgáló követelményei**
+**Configuration/Process server-követelmények**
 
 **Összetevő** | **Követelmény** 
 --- | ---
 **HARDVERBEÁLLÍTÁSOK** | 
 Processzormagok | 8 
 RAM | 16 GB
-Lemezek száma | 3., beleértve az operációs rendszer lemez, a folyamat kiszolgáló gyorsítótár lemez és a feladat-visszavételi adatmegőrzési meghajtó 
-Szabad lemezterület (folyamat kiszolgáló gyorsítótárának) | 600 GB
-Szabad lemezterület (adatmegőrzési lemez) | 600 GB
+Lemezek száma | 3., beleértve az operációs rendszer lemez, a folyamatkiszolgálói gyorsítótárlemez és az adatmegőrzési meghajtó a feladat-visszavételhez 
+Szabad lemezterület (folyamatkiszolgálói gyorsítótár) | 600 GB
+Szabad területe (adatmegőrzési lemez) | 600 GB
  | 
 **SZOFTVERFRISSÍTÉSI BEÁLLÍTÁSOK** | 
 Operációs rendszer | Windows Server 2012 R2 <br> Windows Server 2016
 Operációs rendszer területi beállítása | Angol (en-us)
 Windows Server-szerepkörök | Ezek a szerepkörök nem engedélyezi: <br> - Active Directory tartományi szolgáltatások <br>– Internet Information Services <br> - Hyper-V 
-Csoportházirendek | A csoportházirendek nem engedélyezi: <br> -Tagadni a hozzáférést a parancssorba. <br> -A hozzáférés megakadályozása a beállításjegyzék szerkesztésével eszközök. <br> – Megbízható vonatkozó logikát. <br> -Parancsfájl végrehajtása bekapcsolása. <br> [További információ](https://technet.microsoft.com/library/gg176671(v=ws.10).aspx)
-IIS | -Nincs elérésű, korábban létező alapértelmezett webhely <br> -Egyetlen elérésű, korábban létező webhely vagy alkalmazás figyeli a 443-as port <br>-Engedélyezése [névtelen hitelesítés](https://technet.microsoft.com/library/cc731244(v=ws.10).aspx) <br> -Engedélyezése [FastCGI](https://technet.microsoft.com/library/cc753077(v=ws.10).aspx) beállítás 
+Csoportházirendek | Ezek a szabályzatok csoport nem engedélyezi: <br> -Hozzáférés megakadályozása a parancssorba. <br> -A beállításjegyzék szerkesztőeszközeihez való hozzáférés letiltása. <br> -Megbízhatósági logika fájlmellékletekhez. <br> – Kapcsolja be a parancsfájl végrehajtása. <br> [További információ](https://technet.microsoft.com/library/gg176671(v=ws.10).aspx)
+IIS | – Nincs már létező alapértelmezett webhelye <br> – Nincs már létező webhely vagy alkalmazás 443-as porton <br>-Engedélyezése [a névtelen hitelesítés](https://technet.microsoft.com/library/cc731244(v=ws.10).aspx) <br> -Engedélyezése [FastCGI](https://technet.microsoft.com/library/cc753077(v=ws.10).aspx) beállítás 
 | 
 **HÁLÓZATI BEÁLLÍTÁSOK** | 
 IP-cím típusa | Statikus 
-Internetelérés | A kiszolgáló URL-hozzáférésre van szüksége (közvetlen vagy proxyn keresztül) <br> - \*.accesscontrol.windows.net<br> - \*.backup.windowsazure.com <br>- \*.store.core.windows.net<br> - \*.blob.core.windows.net<br> - \*.hypervrecoverymanager.windowsazure.com <br> - https://dev.mysql.com/get/Downloads/MySQLInstaller/mysql-installer-community-5.7.20.0.msi (Ha a konfigurációs kiszolgáló beállítása) <br> - time.nist.gov <br> - time.windows.com 
+Internetelérés | A kiszolgáló URL-hozzáférésre van szüksége (közvetlenül vagy proxyn keresztül) <br> - \*.accesscontrol.windows.net<br> - \*.backup.windowsazure.com <br>- \*.store.core.windows.net<br> - \*.blob.core.windows.net<br> - \*.hypervrecoverymanager.windowsazure.com  <br> - https://management.azure.com <br> -*. services.visualstudio.com <br> - time.nist.gov <br> - time.windows.com <br> OVF is a következő URL-hozzáférésre van szükségük <br> - https://login.microsoftonline.com <br> - https://secure.aadcdn.microsoftonline-p.com <br> - https://login.live.com  <br> - https://auth.gfx.ms <br> - https://graph.windows.net <br> - https://login.windows.net <br> - https://www.live.com <br> - https://www.microsoft.com <br> - https://dev.mysql.com/get/Downloads/MySQLInstaller/mysql-installer-community-5.7.20.0.msi 
 Portok | 443 (vezérlőcsatorna-vezénylés)<br>9443 (Adatátvitel) 
-A hálózati adapter típusa | VMXNET3 (Ha a konfigurációs kiszolgáló VMware virtuális gép)
+Hálózati adapter típusa | VMXNET3 (Ha a konfigurációs kiszolgáló VMware virtuális gép)
  | 
 **SZOFTVER TELEPÍTÉSE** | 
-VMware vSphere PowerCLI | [PowerCLI 6.0-s verzió](https://my.vmware.com/web/vmware/details?productId=491&downloadGroup=PCLI600R1) kell telepíteni, ha a VMware virtuális gép működik a konfigurációs kiszolgáló.
-MYSQL | MySQL kell telepíteni. A Site Recovery telepítheti, vagy manuálisan telepíthet.
+A VMware vSphere PowerCLI | [A PowerCLI 6.0-s verzió](https://my.vmware.com/web/vmware/details?productId=491&downloadGroup=PCLI600R1) kell telepíteni, ha fut a konfigurációs kiszolgáló VMware virtuális gép.
+MYSQL | MySQL kell telepíteni. Manuálisan is telepítheti, vagy a Site Recovery telepíthetik azt.
 
-**Konfiguráció/folyamatkiszolgáló követelmények méretezése**
+**A méretezési követelmények Configuration/Process server**
 
-**CPU** | **Memória** | **Gyorsítótár-lemez** | **Adatváltozási sebesség** | **Replikált gépek**
+**CPU** | **Memória** | **Gyorsítótárlemez** | **A módosult adatok aránya** | **Replikált gépek**
 --- | --- | --- | --- | ---
-8 Vcpu<br/><br/> 2 sockets * @ 2,5 GHz, 4 mag | 16GB | 300 GB | 500 GB vagy kevesebb | < 100 gépek
-12 Vcpu<br/><br/> 2 socks * @ 2,5 GHz-es 6 mag | 18 GB | 600 GB | 500 GB - 1 TB-OS | 100-150 gépek
-16 Vcpu<br/><br/> 2 socks * @ 2,5 GHz-es 8 magos | 32 GB | 1 TB | 1-2 TB | 150-200 gépek
+8 Vcpu<br/><br/> 2 sockets * 4 mag, 2,5 GHz-es @ | 16GB | 300 GB | 500 GB vagy kevesebb | < 100 gépek
+12 vcpu-k<br/><br/> 2 socks * 6 mag, 2,5 GHz-es @ | 18 GB | 600 GB | 500 GB – 1 TB | 100-150 gépek
+16 vcpu-k<br/><br/> 2 socks * 8 mag, 2,5 GHz-es @ | 32 GB | 1 TB | 1 – 2 TB | 150-200 gépek
 

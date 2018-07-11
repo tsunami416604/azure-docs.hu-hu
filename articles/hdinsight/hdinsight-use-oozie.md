@@ -1,6 +1,6 @@
 ---
-title: Hdinsight Hadoop Oozie használata |} Microsoft Docs
-description: Hadoop Oozie használata a Hdinsightban, big data-szolgáltatása. Megtudhatja, hogyan határozza meg az Oozie munkafolyamat, valamint az Oozie feladat elküldéséhez.
+title: Hadoop az Oozie használata a HDInsight |} A Microsoft Docs
+description: Hadoop az Oozie használata a HDInsight, a big data-szolgáltatás. Megtudhatja, hogyan Oozie munkafolyamatokat, és az Oozie-feladatok elküldéséhez.
 services: hdinsight
 documentationcenter: ''
 tags: azure-portal
@@ -16,31 +16,31 @@ ms.date: 05/25/2017
 ms.author: jgao
 ROBOTS: NOINDEX
 ms.openlocfilehash: c0558432c0d74e2c9fcec108182a4dbafa332904
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32176575"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37952858"
 ---
-# <a name="use-oozie-with-hadoop-to-define-and-run-a-workflow-in-hdinsight"></a>A Hadoop Oozie segítségével határozza meg, és futtatnak egy munkafolyamatot a Hdinsightban
+# <a name="use-oozie-with-hadoop-to-define-and-run-a-workflow-in-hdinsight"></a>Az Oozie használata a Hadooppal megadásához és a HDInsight a munkafolyamat futtatása
 [!INCLUDE [oozie-selector](../../includes/hdinsight-oozie-selector.md)]
 
-Útmutató Apache Oozie segítségével határozza meg a munkafolyamat és a HDInsight a munkafolyamatot futtatni. Az Oozie-koordinátor kapcsolatos további tudnivalókért lásd: [időalapú Hadoop Oozie-koordinátor használata a HDInsight][hdinsight-oozie-coordinator-time]. Azure Data Factory kapcsolatban [használja a Pig és a Data Factory Hive][azure-data-factory-pig-hive].
+Ismerje meg, hogyan lehet Apache Oozie segítségével a munkafolyamatokat és a munkafolyamat futtatása a HDInsight. Az Oozie-koordinátor kapcsolatos további információkért lásd: [időalapú Hadoop Oozie-koordinátor használata a HDInsight][hdinsight-oozie-coordinator-time]. Azure Data Factory kapcsolatban lásd: [Hive és a Data Factory és a Pig használata a][azure-data-factory-pig-hive].
 
-Apache Oozie egy munkafolyamat/koordinációs rendszer, amely a Hadoop-feladatokat kezeli. Integrálva van a Hadoop-veremmel, és támogatja a Hadoop-feladatokat Apache MapReduce, Apache Pig, Apache Hive és Apache Sqoop. Is használható, például Java programok vagy héjparancsfájlok ütemezésére rendszerspecifikus feladatok ütemezése.
+Az Apache Oozie egy munkafolyamat/koordinációs rendszer, amely a Hadoop-feladatokat kezeli. Integrálva van a Hadoop-veremmel, és támogatja a Hadoop-feladatok Apache MapReduce, Apache Pig, Apache Hive- és Apache sqoop használatával. Is használható a rendszer, például Java programok vagy héjparancsfájlok ütemezésére adott feladatok ütemezéséhez.
 
-Az oktatóanyagban szereplő utasítások alapján alkalmazza a munkafolyamat két műveletet tartalmaz:
+Ez az oktatóanyag utasításait követve meg, hogy a munkafolyamat két műveletet tartalmaz:
 
-![Munkafolyamat diagramja][img-workflow-diagram]
+![A munkafolyamat diagramja][img-workflow-diagram]
 
-1. A Hive művelet a log4j fájlban napló szintű típusonkénti előfordulások megszámlálásához HiveQL parancsfájlt futtatja. A mezők típusát és súlyosságát, például bemutató [NAPLÓZÁSI szint] mező tartalmazó sor minden log4j fájl foglalja magában:
+1. Egy Hive-művelet megszámlálni az egyes log-szintű írja be a log4j file egy HiveQL-parancsfájlt futtatja. Minden egyes log4j fájl, amely megjeleníti a típusát és súlyosságát, például [NAPLÓZÁSI szint] mező tartalmazó mezők üzletági áll:
    
         2012-02-03 18:35:34 SampleClass6 [INFO] everything normal for id 577725851
         2012-02-03 18:35:34 SampleClass4 [FATAL] system problem at id 1991281254
         2012-02-03 18:35:34 SampleClass3 [DEBUG] detail for id 1304807656
         ...
    
-    A Hive parancsfájl kimenete hasonló:
+    A Hive-parancsfájl kimenet hasonlít:
    
         [DEBUG] 434
         [ERROR] 3
@@ -50,15 +50,15 @@ Az oktatóanyagban szereplő utasítások alapján alkalmazza a munkafolyamat k�
         [WARN]  4
    
     További információ a Hive-ról: [A Hive használata a HDInsightban][hdinsight-use-hive].
-2. A Sqoop művelet exportálja a HiveQL kimeneti egy Azure SQL adatbázis egyik táblája. További információ a Sqoop: [Hadoop Sqoop használata a hdinsightban][hdinsight-use-sqoop].
+2. A Sqoop művelet exportálja a HiveQL kimenet egy Azure SQL database egyik táblájába. Sqoop használatával kapcsolatos további információkért lásd: [Hadoop Sqoop használata a HDInsight-][hdinsight-use-sqoop].
 
 > [!NOTE]
-> Tekintse meg a HDInsight-fürtökön támogatott Oozie verziók [What's new in HDInsight által biztosított Hadoop-fürt verziók?] [hdinsight-versions].
+> Tekintse meg a HDInsight-fürtökön támogatott Oozie verziók [a HDInsight által biztosított Hadoop-fürtverziók újdonságai?] [hdinsight-versions].
 > 
 > 
 
 ### <a name="prerequisites"></a>Előfeltételek
-Ez az oktatóanyag elkezdéséhez a következő elemet kell tartalmaznia:
+Ez az oktatóanyag elkezdéséhez a következő elemet kell rendelkeznie:
 
 * **Munkaállomás Azure PowerShell-lel**. 
   
@@ -66,8 +66,8 @@ Ez az oktatóanyag elkezdéséhez a következő elemet kell tartalmaznia:
 [!INCLUDE [upgrade-powershell](../../includes/hdinsight-use-latest-powershell.md)]
   
 
-## <a name="define-oozie-workflow-and-the-related-hiveql-script"></a>Oozie munkafolyamat és a kapcsolódó HiveQL-parancsfájlt
-Oozie munkafolyamatok definíciók hPDL (egy XML folyamat Definition Language) nyelven íródtak. Az alapértelmezett munkafolyamat Fájlnév *workflow.xml*. A munkafolyamat fájlja, ebben az oktatóanyagban használja a következő:
+## <a name="define-oozie-workflow-and-the-related-hiveql-script"></a>Oozie-munkafolyamatokkal, és a kapcsolódó HiveQL-parancsfájlt megadása
+Az Oozie-munkafolyamatok definíciók hPDL (egy XML folyamat Definition Language) nyelven íródtak. Az alapértelmezett munkafolyamat-fájl neve *workflow.xml*. A munkafolyamat fájlja, ebben az oktatóanyagban használja a következő:
 
     <workflow-app name="useooziewf" xmlns="uri:oozie:workflow:0.2">
         <start to = "RunHiveScript"/>
@@ -124,78 +124,78 @@ Oozie munkafolyamatok definíciók hPDL (egy XML folyamat Definition Language) n
         <end name="end"/>
     </workflow-app>
 
-Nincsenek a munkafolyamatban meghatározott két műveletet. A start művelet *RunHiveScript*. A művelet sikeresen lefutott, hogy van-e a következő művelet *RunSqoopExport*.
+Nincsenek definiálva a munkafolyamat két műveletet. A kezdő művelet *RunHiveScript*. Ha a művelet sikeresen lefutott, a következő beavatkozásra *RunSqoopExport*.
 
-A RunHiveScript több változót tartalmaz. Amikor az Oozie-feladatot a munkaállomáson Azure PowerShell használatával átadják az értékeket.
+A RunHiveScript rendelkezik értékkel a változókat. Az Oozie feladat elküldésekor a munkaállomásáról Azure PowerShell-lel átadhatja az értékeket.
 
 <table border = "1">
 <tr><th>Munkafolyamat-változók</th><th>Leírás</th></tr>
-<tr><td>${jobTracker}</td><td>Adja meg a Hadoop-feladat követő URL-CÍMÉT. Használjon <strong>jobtrackerhost:9010</strong> hdinsight 3.0-s és a 2.1-es verzióját.</td></tr>
-<tr><td>${nameNode}</td><td>Meghatározza a URL-címet a Hadoop neve csomópont. Az alapértelmezett fájl rendszer címet, például használja <i>wasb: / /&lt;containerName&gt;@&lt;storageAccountName&gt;. blob.core.windows.net</i>.</td></tr>
-<tr><td>${queueName}</td><td>A feladat elküldve a várólista nevét adja meg. Használja a <strong>alapértelmezett</strong>.</td></tr>
+<tr><td>${jobTracker}</td><td>Adja meg a Hadoop-feladat tracker URL-CÍMÉT. Használat <strong>jobtrackerhost:9010</strong> a HDInsight 3.0-s és a 2.1-es verzió.</td></tr>
+<tr><td>${nameNode}</td><td>Adja meg a Hadoop neve csomópont URL-CÍMÉT. Például használja az alapértelmezett fájl rendszer cím <i>wasb: / /&lt;containerName&gt;@&lt;storageAccountName&gt;. blob.core.windows.net</i>.</td></tr>
+<tr><td>${queueName}</td><td>Megadja, hogy a feladat elküldve a várólista nevét. Használja a <strong>alapértelmezett</strong>.</td></tr>
 </table>
 
 <table border = "1">
-<tr><th>Műveleti változó struktúra</th><th>Leírás</th></tr>
-<tr><td>${hiveDataFolder}</td><td>Adja meg a Hive Create Table parancs a forráskönyvtár.</td></tr>
-<tr><td>${hiveOutputFolder}</td><td>Adja meg a kimeneti mappa az FELÜLÍRÁSA INSERT utasítás.</td></tr>
-<tr><td>${hiveTableName}</td><td>Megadja a log4j adatfájlok hivatkozó Hive tábla nevét.</td></tr>
+<tr><th>Hive-művelet</th><th>Leírás</th></tr>
+<tr><td>${hiveDataFolder}</td><td>Megadja a forráskönyvtár a Hive-tábla létrehozása a parancshoz.</td></tr>
+<tr><td>${hiveOutputFolder}</td><td>Megadja a kimeneti mappát az FELÜLÍRÁSA INSERT utasítás.</td></tr>
+<tr><td>${hiveTableName}</td><td>Itt adhatja meg, amely hivatkozik a log4j adatfájlok Hive-tábla neve.</td></tr>
 </table>
 
 <table border = "1">
-<tr><th>Sqoop művelet változó</th><th>Leírás</th></tr>
-<tr><td>${sqlDatabaseConnectionString}</td><td>Adja meg az Azure SQL adatbázis-kapcsolati karakterlánc.</td></tr>
-<tr><td>${sqlDatabaseTableName}</td><td>Adja meg az Azure SQL-adatbázistáblában szereplő, ahol az Exportálás számára.</td></tr>
-<tr><td>${hiveOutputFolder}</td><td>Adja meg a kimeneti mappa a Hive BESZÚRÁSA FELÜLÍRÁSA utasítás. Ez a Sqoop export (Exportálás-dir) ugyanabban a mappában.</td></tr>
+<tr><th>Műveleti változó sqoop használatával</th><th>Leírás</th></tr>
+<tr><td>${sqlDatabaseConnectionString}</td><td>Itt adhatja meg az Azure SQL-adatbázis kapcsolati karakterláncát.</td></tr>
+<tr><td>${sqlDatabaseTableName}</td><td>Adja meg az Azure SQL database tábla, ahol az adatok exportálva lettek.</td></tr>
+<tr><td>${hiveOutputFolder}</td><td>Megadja a kimeneti mappát, a Hive-BESZÚRÁSA FELÜLÍRÁSA utasításra vonatkozóan. Ez a Sqoop export (Exportálás-dir) ugyanabban a mappában.</td></tr>
 </table>
 
-Oozie munkafolyamat és a munkafolyamat-műveleteket használatával kapcsolatos további információkért lásd: [Apache Oozie 4.0 dokumentáció] [ apache-oozie-400] (a HDInsight 3.0-s verziója) vagy [Apache Oozie 3.3.2 dokumentáció] [ apache-oozie-332] (a HDInsight 2.1-es verzió).
+Oozie-munkafolyamatokkal és a munkafolyamat-műveletek használatával kapcsolatos további információkért lásd: [Apache Oozie 4.0 dokumentáció] [ apache-oozie-400] (a HDInsight 3.0-s verzió) vagy [ApacheOozie3.3.2-dokumentáció] [ apache-oozie-332] (a HDInsight 2.1-es verzió).
 
-A munkafolyamat Hive műveletét meghívja a HiveQL-parancsfájlt. A parancsfájl három HiveQL utasításokat tartalmazza:
+A Hive-művelet a munkafolyamat meghívja a HiveQL-parancsfájlt. A parancsfájl három HiveQL utasításokat tartalmazza:
 
     DROP TABLE ${hiveTableName};
     CREATE EXTERNAL TABLE ${hiveTableName}(t1 string, t2 string, t3 string, t4 string, t5 string, t6 string, t7 string) ROW FORMAT DELIMITED FIELDS TERMINATED BY ' ' STORED AS TEXTFILE LOCATION '${hiveDataFolder}';
     INSERT OVERWRITE DIRECTORY '${hiveOutputFolder}' SELECT t4 AS sev, COUNT(*) AS cnt FROM ${hiveTableName} WHERE t4 LIKE '[%' GROUP BY t4;
 
-1. **A DROP TABLE utasítás** törli a log4j Hive táblát, ha van ilyen.
-2. **A CREATE TABLE utasítás** log4j Hive külső tábla létrehozása, amely a log4j naplófájl helyre mutat. A mező határoló ",". Az alapértelmezett sor elválasztó karaktere "\n". Külső Hive tábla szolgál az adatfájl távolít el az eredeti helyre, ha azt szeretné, az Oozie munkafolyamat többször is lefuthat elkerülése érdekében.
-3. **Az INSERT FELÜLÍRÁSA utasítás** a log4j Hive tábla napló szintű típusonkénti előfordulások száma, és menti a kimenetet, az Azure Storage blob.
+1. **A DROP TABLE utasítás** törli a log4j Hive-táblába, ha van ilyen.
+2. **A CREATE TABLE utasítás** log4j Hive külső tábla létrehozása, amely a log4j naplófájlok helyét. A mezőhatároló van ",". Az alapértelmezett sor határoló "\n". Külső Hive-tábla szolgál az éppen eltávolítják az eredeti helyre, ha szeretné futtatni az Oozie-munkafolyamatokkal többször adatfájl elkerülése érdekében.
+3. **A FELÜLÍRÁSA INSERT utasítás** számít minden napló-szintű típusok a log4j Hive-táblából, és menti a kimenet az Azure Storage-blobba.
 
-Három változókat a parancsfájl használatban van:
+A szkriptben használt három változók vannak:
 
 * ${hiveTableName}
 * ${hiveDataFolder}
 * ${hiveOutputFolder}
 
-A munkafolyamat-definíciós fájl (ebben az oktatóanyagban workflow.xml) továbbítja ezeket az értékeket a HiveQL-parancsfájlt futási időben.
+A munkafolyamat-definíciós fájlja (ebben az oktatóanyagban workflow.xml) továbbítja ezeket az értékeket a HiveQL-parancsfájlt futási időben.
 
-A munkafolyamat és a HiveQL fájlt is a blob-tároló vannak tárolva.  A PowerShell-parancsfájlt az oktatóanyag későbbi részében használhatja az alapértelmezett tárfiók mindkét fájlokat másolja. 
+A munkafolyamat és a HiveQL fájlt is a blobtárolóban vannak tárolva.  A PowerShell-parancsfájlt az oktatóanyag későbbi részében használja az alapértelmezett tárfiók mindkét fájlokat másolja. 
 
-## <a name="submit-oozie-jobs-using-powershell"></a>PowerShell-lel Oozie feladatok elküldéséhez
-Az Azure PowerShell jelenleg nem biztosít semmilyen parancsmagok Oozie feladatok meghatározásához. Használhatja a **Invoke-RestMethod** parancsmag Oozie webszolgáltatás meghívására. Az Oozie webszolgáltatási API-ra egy HTTP REST API-t JSON. Az Oozie-webszolgáltatások API kapcsolatos további információkért lásd: [Apache Oozie 4.0 dokumentáció] [ apache-oozie-400] (a HDInsight 3.0-s verziója) vagy [Apache Oozie 3.3.2 dokumentáció] [ apache-oozie-332] (a HDInsight 2.1-es verzió).
+## <a name="submit-oozie-jobs-using-powershell"></a>PowerShell-lel az Oozie-feladatok elküldése
+Az Azure PowerShell jelenleg nem biztosít semmilyen parancsmagok Oozie feladatok meghatározása. Használhatja a **Invoke-RestMethod** Oozie webszolgáltatások meghívása parancsmagot. Az Oozie webszolgáltatási API-ra egy HTTP REST API-t JSON. Az Oozie-webszolgáltatások API kapcsolatos további információkért lásd: [Apache Oozie 4.0 dokumentáció] [ apache-oozie-400] (a HDInsight 3.0-s verzió) vagy [Apache Oozie 3.3.2 dokumentáció] [ apache-oozie-332] (a HDInsight 2.1-es verzió).
 
-A PowerShell parancsfájl ebben a szakaszban a következő lépéseket végzi el:
+Ez a szakasz a PowerShell-parancsprogram a következő lépéseket hajtja végre:
 
 1. Csatlakozás az Azure-bA.
-2. Azure-erőforráscsoport létrehozása További információkért lásd: [használata Azure PowerShell használata Azure Resource Managerrel](../powershell-azure-resource-manager.md).
-3. Hozzon létre egy Azure SQL adatbázis-kiszolgáló, az Azure SQL-adatbázis és a két tábla. Ezek használhatók a munkafolyamat Sqoop művelete által.
+2. Azure-erőforráscsoport létrehozása További információkért lásd: [az Azure PowerShell használata az Azure Resource Manager](../powershell-azure-resource-manager.md).
+3. Hozzon létre egy Azure SQL Database-kiszolgáló, egy Azure SQL database és a két táblázat. Ezek a Sqoop művelet a munkafolyamat által használt.
    
-    A táblázat neve *log4jLogCount*.
-4. Oozie feladatok futtatásához használt HDInsight-fürtök létrehozása.
+    A tábla neve a *log4jLogCount*.
+4. Hozzon létre egy HDInsight-fürtöt, az Oozie-feladatok futtatásához használt.
    
-    Vizsgálja meg a fürt, használhatja az Azure portálon vagy az Azure PowerShell.
-5. Másolja az oozie munkafolyamat fájl- és a HiveQL-parancsfájlt az alapértelmezett fájlrendszert.
+    Vizsgálja meg a fürt, használhatja az Azure portal vagy Azure PowerShell-lel.
+5. Másolja az oozie-munkafolyamat fájl- és a HiveQL-parancsfájlt az alapértelmezett fájlrendszer.
    
-    Mindkét fájljai a következő nyilvános blobtárolóban.
+    Mindkét fájljai egy nyilvános Blob-tárolóba.
    
-   * Másolja a HiveQL-parancsfájlt (useoozie.hql) Azure Storage (wasb:///tutorials/useoozie/useoozie.hql).
+   * Másolja a HiveQL-parancsfájlt (useoozie.hql) az Azure Storage (wasb:///tutorials/useoozie/useoozie.hql).
    * Másolja a workflow.xml wasb:///tutorials/useoozie/workflow.xml.
-   * Másolja az adatokat (/ example/data/sample.log) wasb:///tutorials/useoozie/data/sample.log számára.
-6. Az Oozie feladat küldése
+   * Másolja az adatfájl (/ example/data/sample.log) való wasb:///tutorials/useoozie/data/sample.log.
+6. Az Oozie-feladat elküldéséhez.
    
-    Vizsgálja meg az OOzie feladat eredményét, használja a Visual Studio vagy más eszközök az Azure SQL adatbázishoz való kapcsolódáshoz.
+    Vizsgálja meg az OOzie-feladat eredményét, használja a Visual Studio vagy más eszközök az Azure SQL Database-adatbázishoz csatlakozhat.
 
-Ez a parancsfájl.  A parancsfájl futtathatja a Windows PowerShell ISE. Csak kell az első 7 változók konfigurálását.
+Íme a szkript.  A szkriptet futtathatja a Windows PowerShell ISE-ben. Csak az első 7 változók konfigurálásához kell.
 
     #region - provide the following values
 
@@ -577,14 +577,14 @@ Ez a parancsfájl.  A parancsfájl futtathatja a Windows PowerShell ISE. Csak ke
     #endregion
 
 
-**Az oktatóanyag újbóli futtatásához**
+**Majd futtassa újból az oktatóanyag**
 
-Futtassa újra a munkafolyamatot, törölnie kell a következő elemek:
+Futtassa újra a munkafolyamatot, törölnie kell a következőkkel:
 
-* A Hive parancsfájl kimeneti fájl
-* A log4jLogsCount tábla
+* A Hive-parancsfájl kimeneti fájl
+* A log4jLogsCount táblában lévő adatokat
 
-Íme egy PowerShell-parancsfájlpélda közül választhat:
+Itt látható egy minta PowerShell-parancsfájlt, amelyet használhat:
 
     $resourceGroupName = "<AzureResourceGroupName>"
 
@@ -617,17 +617,17 @@ Futtassa újra a munkafolyamatot, törölnie kell a következő elemek:
     $conn.close()
 
 ## <a name="next-steps"></a>További lépések
-Ebben az oktatóanyagban megtanulta, hogyan adhat meg az Oozie-munkafolyamat és az Oozie-feladat futtatása a PowerShell használatával. További tudnivalókért tekintse meg a következő cikkeket:
+Ebben az oktatóanyagban megtudhatta, az Oozie-munkafolyamatokkal definiálása és az Oozie-feladatok futtatása a PowerShell használatával. További tudnivalókért tekintse meg a következő cikkeket:
 
-* [Időalapú Oozie-koordinátor használata a hdinsight eszközzel][hdinsight-oozie-coordinator-time]
-* [Hadoop használatának megkezdésében a hdinsight Hive elemzéséhez mobil kézibeszélő használata][hdinsight-get-started]
-* [Használhat Azure Blob Storage tárolót a hdinsight eszközzel][hdinsight-storage]
-* [HDInsight a PowerShell felügyelete][hdinsight-admin-powershell]
-* [Hdinsight Hadoop-feladatokat az adatok feltöltése][hdinsight-upload-data]
-* [Sqoop használata a hadooppal a Hdinsightban][hdinsight-use-sqoop]
-* [A Hive használata a hdinsight Hadoop][hdinsight-use-hive]
-* [A Pig használata a HDInsight Hadoop][hdinsight-use-pig]
-* [Java-MapReduce programok fejlesztése a HDInsight][hdinsight-develop-mapreduce]
+* [Időalapú Oozie-koordinátor használata a HDInsight][hdinsight-oozie-coordinator-time]
+* [Hadoop első lépései a HDInsight Hive-val elemzéséhez mobil kézibeszélőt használata][hdinsight-get-started]
+* [Az Azure Blob storage használata a HDInsight][hdinsight-storage]
+* [Felügyelheti a HDInsight PowerShell használatával][hdinsight-admin-powershell]
+* [A HDInsight Hadoop-feladatok adatok feltöltése][hdinsight-upload-data]
+* [A Sqoop használata a HDInsight Hadoop-keretrendszerrel][hdinsight-use-sqoop]
+* [A Hive használata a HDInsight Hadoop-keretrendszerrel][hdinsight-use-hive]
+* [A Pig használata a HDInsight Hadoop-keretrendszerrel][hdinsight-use-pig]
+* [Java MapReduce programok fejlesztése a HDInsight][hdinsight-develop-mapreduce]
 
 [hdinsight-cmdlets-download]: http://go.microsoft.com/fwlink/?LinkID=325563
 

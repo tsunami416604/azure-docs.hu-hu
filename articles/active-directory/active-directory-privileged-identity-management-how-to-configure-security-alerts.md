@@ -13,18 +13,18 @@ ms.component: protection
 ms.date: 06/06/2017
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: d054ca015fd97b3ec45f18b2d3a795eccf606993
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: fee4344be2875140a2e9c35bd83eb668bd1efa3f
+ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37447557"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37952459"
 ---
 # <a name="how-to-configure-security-alerts-in-azure-ad-privileged-identity-management"></a>Biztonsági riasztások konfigurálása az Azure AD Privileged Identity Management
 ## <a name="security-alerts"></a>Biztonsági riasztások
 Azure Privileged Identity Management (PIM) riasztásokat állít elő, ha bármi gyanúsat vagy nem biztonságos tevékenységre van a környezetben. Riasztást vált ki, amikor megjelenik a PIM-irányítópulton. Válassza ki a riasztást a felhasználók vagy szerepkörök a riasztást kiváltó felsoroló jelentés megtekintéséhez.
 
-![A PIM irányítópult biztonsági riasztások – képernyőkép][1]
+![A PIM irányítópult biztonsági riasztások – képernyőkép](./media/active-directory-privileged-identity-management-how-to-configure-security-alerts/PIM_security_dash.png)
 
 | Riasztás | Severity | Eseményindító | Ajánlás |
 | --- | --- | --- | --- |
@@ -45,7 +45,7 @@ Testre szabhatja a PIM-a környezetet és biztonsági célok biztonsági riaszt�
 1. Jelentkezzen be a [az Azure portal](https://portal.azure.com/) , és válassza ki a **Azure AD Privileged Identity Management** csempére az irányítópulton.
 2. Válassza ki **kiemelt szerepkörök felügyelt** > **beállítások** > **riasztási beállítások**.
    
-    ![Biztonsági riasztások beállítások megnyitása][2]
+    ![Biztonsági riasztások beállítások megnyitása](./media/active-directory-privileged-identity-management-how-to-configure-security-alerts/PIM_security_settings.png)
 
 ### <a name="roles-are-being-activated-too-frequently-alert"></a>A riasztás "Szerepkörök vannak aktiválása folyamatban túl gyakran"
 Ezt a riasztást aktivál, ha egy felhasználó aktiválja a azonos kiemelt szerepkörű meghatározott időn belül többször is feldolgozza. Beállíthatja, hogy az adott időszakban és az aktiválások száma is.
@@ -66,8 +66,3 @@ Ezt a riasztást aktivál, ha egy felhasználó egy adott időtartamot a szerepk
 
 ## <a name="next-steps"></a>További lépések
 [!INCLUDE [active-directory-privileged-identity-management-toc](../../includes/active-directory-privileged-identity-management-toc.md)]
-
-<!--Image references-->
-
-[1]: ./media/active-directory-privileged-identity-management-how-to-configure-security-alerts/PIM_security_dash.png
-[2]: ./media/active-directory-privileged-identity-management-how-to-configure-security-alerts/PIM_security_settings.png

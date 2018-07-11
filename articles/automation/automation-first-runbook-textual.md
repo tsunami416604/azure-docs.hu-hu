@@ -10,12 +10,12 @@ ms.author: gwallace
 ms.date: 03/16/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 4f91cfcce3643d96f241cb5408efc2455367c336
-ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
+ms.openlocfilehash: 32ad5ef4f297a64f0925febb247ccb117dffedf0
+ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37435701"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37928590"
 ---
 # <a name="my-first-powershell-workflow-runbook"></a>Az első PowerShell-alapú munkafolyamat-forgatókönyvem
 
@@ -113,7 +113,10 @@ már teszteltük és a runbook közzétett, de eddig még nem csinál semmi hasz
    ```
 
    > [!IMPORTANT]
-   > **Add-AzureRmAccount** és **Login-AzureRmAccount** aliasai most **Connect-AzureRMAccount**. Ha a **Connect-AzureRMAccount** parancsmag nem létezik, akkor használhatja **Add-AzureRmAccount** vagy **Login-AzureRmAccount**, vagy frissítheti az a modulokat az Automation A fiók a legújabb verzióra.
+   > **Add-AzureRmAccount** és **Login-AzureRmAccount** aliasai most **Connect-AzureRMAccount**. Ha a **Connect-AzureRMAccount** parancsmag nem létezik, akkor használhatja **Add-AzureRmAccount** vagy **Login-AzureRmAccount**, vagy beállíthatja a [a modulok frissítése ](automation-update-azure-modules.md) az Automation-fiókban a legújabb verzióra. 
+
+> [!NOTE]
+> Szüksége lehet [a modulok frissítése](automation-update-azure-modules.md) annak ellenére, hogy az imént létrehozott egy új automation-fiókot.
 
 5. Kattintson a **teszt panel** úgy, hogy a runbook teszteléséhez.
 6. Kattintson az **Indítás** gombra a teszt elindításához. Ha kész, a kimenetnek a fiókja alapvető adatait kell megjelenítenie, a következőhöz hasonló módon. Ez ellenőrzi, hogy érvényes-e a hitelesítő adat.<br><br> ![Hitelesítés](media/automation-first-runbook-textual/runbook-auth-output.png)

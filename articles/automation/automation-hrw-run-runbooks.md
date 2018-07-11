@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 04/25/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 58ff2b5bbf338f3af78b693aef57cf6293dc08b7
-ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
+ms.openlocfilehash: 899e5dc13dfaf7d7545955e7b4b73939c3275d3f
+ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37436508"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37930307"
 ---
 # <a name="running-runbooks-on-a-hybrid-runbook-worker"></a>Runbookok futtatása hibrid Runbook-feldolgozón
 
@@ -158,7 +158,7 @@ Mentse a *Export-RunAsCertificateToHybridWorker* runbookot, hogy a számítógé
 
 ## <a name="job-behavior"></a>Feladat viselkedés
 
-Feladatok kezelése némileg eltérő hibrid Runbook-feldolgozók mint Azure próbakörnyezetbe lefordítja a futtatás esetén. Egy fő különbséggel, hogy nincs korlátozva a hibrid Runbook-feldolgozók feladat időtartama. Ha rendelkezik egy hosszú ideig futó runbook érdekében, hogy rugalmas lehetséges újraindítja a számítógépet, például ha a gép, amelyen a hibrid feldolgozó újraindítja a számítógépet szeretné. Ha a hibrid feldolgozói gazdagép gép újraindul, majd minden futó runbook-feladat újraindítja az elejéről, vagy a PowerShell-munkafolyamati runbookok az utolsó ellenőrzőponttól. Ha egy runbook-feladat több mint 3 alkalommal újraindul, majd fel van függesztve.
+Feladatok kezelése némileg eltérő hibrid Runbook-feldolgozók mint Azure próbakörnyezetbe lefordítja a futtatás esetén. Egy fő különbséggel, hogy nincs korlátozva a hibrid Runbook-feldolgozók feladat időtartama. Az Azure-ban futtatott Runbookok próbakörnyezetbe lefordítja korlátozva, 3 óra, mert a [igazságos elosztás](automation-runbook-execution.md#fair-share). Ha rendelkezik egy hosszú ideig futó runbook érdekében, hogy rugalmas lehetséges újraindítja a számítógépet, például ha a gép, amelyen a hibrid feldolgozó újraindítja a számítógépet szeretné. Ha a hibrid feldolgozói gazdagép gép újraindul, majd minden futó runbook-feladat újraindítja az elejéről, vagy a PowerShell-munkafolyamati runbookok az utolsó ellenőrzőponttól. Ha egy runbook-feladat több mint 3 alkalommal újraindul, majd fel van függesztve.
 
 ## <a name="troubleshoot"></a>Hibaelhárítás
 

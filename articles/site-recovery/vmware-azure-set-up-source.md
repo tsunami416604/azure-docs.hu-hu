@@ -1,61 +1,61 @@
 ---
-title: A forrás környezet beállítása a VMware Azure replikáció az Azure Site Recovery szolgáltatással |} Microsoft Docs
-description: Ez a cikk ismerteti, hogyan állíthat be a helyszíni környezetben VMware virtuális gépek replikálása az Azure-bA az Azure Site Recovery.
+title: A forráskörnyezet beállítása VMware-ről az Azure-bA az Azure Site Recoveryvel |} A Microsoft Docs
+description: Ez a cikk ismerteti, hogyan lehet VMware virtuális gépek replikálásához az Azure-bA az Azure Site Recovery a helyszíni környezet beállítása.
 services: site-recovery
-author: AnoopVasudavan
-manager: gauravd
+author: Rajeswari-Mamilla
+manager: rochakm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 03/05/2018
-ms.author: anoopkv
-ms.openlocfilehash: 01b0717660265b28d4ea7d804a761e7e425c997c
-ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
+ms.date: 07/06/2018
+ms.author: ramamill
+ms.openlocfilehash: 1380c1bc820a815fae317a86fcd0ee4f46dd9aa5
+ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/22/2018
-ms.locfileid: "36319600"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37952654"
 ---
-# <a name="set-up-the-source-environment-for-vmware-to-azure-replication"></a>A forrás környezet beállítása a VMware Azure replikáció
+# <a name="set-up-the-source-environment-for-vmware-to-azure-replication"></a>A forráskörnyezet beállítása VMware-ről az Azure-bA
 
-Ez a cikk ismerteti, hogyan állíthat be a forráskörnyezettel helyszíni VMware virtuális gépek replikálása az Azure-bA. A replikációs forgatókönyvben egy a helyi számítógépen, mint a Site Recovery konfigurációs kiszolgáló beállítása kiválasztására szolgáló lépéseket tartalmazza, és automatikusan felderítéséhez a helyszíni virtuális gépek. 
+Ez a cikk ismerteti, hogyan állítható be a forráskörnyezethez a helyszíni VMware virtuális gépek replikálásához az Azure-bA. A replikációs forgatókönyv, egy a helyszíni gépen a Site Recovery konfigurációs kiszolgálóként beállítása kiválasztására szolgáló lépéseket tartalmazza, és automatikusan felderítése a helyszíni virtuális gépeket. 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-A cikk feltételezi, hogy már rendelkezik:
-- [Erőforrások beállítása](tutorial-prepare-azure.md) a a [Azure-portálon](http://portal.azure.com).
-- [Állítsa be a helyszíni VMware](vmware-azure-tutorial-prepare-on-premises.md), beleértve egy külön fiókot a automatikus felderítése.
+A cikk feltételezi, hogy már:
+- [Erőforrások beállítása](tutorial-prepare-azure.md) a a [az Azure portal](http://portal.azure.com).
+- [Állítsa be a helyszíni VMware](vmware-azure-tutorial-prepare-on-premises.md), beleértve az automatikus felderítéshez egy dedikált fiókot.
 
 
 
 ## <a name="choose-your-protection-goals"></a>Védelmi célok megválasztása
 
-1. Az Azure-portálon lépjen a **Recovery Services** tároló panelt, és válassza ki a tároló.
-2. A tároló erőforrás menüben Ugrás **bevezetés** > **Site Recovery** > **1. lépés: infrastruktúra előkészítése**  >  **Védelmi cél**.
+1. Az Azure Portalon nyissa meg a **Recovery Services** panel tárolóját, és válassza ki a tárolót.
+2. A tár erőforrás menüben nyissa meg **bevezetés** > **Site Recovery** > **1. lépés: az infrastruktúra előkészítése**  >  **Védelmi cél**.
 
     ![Célok megválasztása](./media/vmware-azure-set-up-source/choose-goals.png)
-3. A **védelmi cél**, jelölje be **az Azure-bA**, és válassza a **Igen, amelyen a VMware vSphere Hipervizorra**. Ezután kattintson az **OK** gombra.
+3. A **védelmi cél**válassza **az Azure-bA**, és válassza a **Igen, a VMware vSphere Hipervizorral**. Ezután kattintson az **OK** gombra.
 
     ![Célok megválasztása](./media/vmware-azure-set-up-source/choose-goals2.png)
 
 ## <a name="set-up-the-configuration-server"></a>A konfigurációs kiszolgáló beállítása
 
-Állíthat be a konfigurációs kiszolgáló, egy helyszíni VMware virtuális gép egy megnyitott virtualizálási alkalmazás (petesejtek) sablon segítségével. [További](concepts-vmware-to-azure-architecture.md) azokról az az összetevőkről, amelyek a VMware virtuális gép lesz telepítve.
+Állítható be a konfigurációs kiszolgálót egy helyszíni VMware virtuális gép egy Open Virtualization alkalmazás (OVA) sablon segítségével. [További](concepts-vmware-to-azure-architecture.md) kapcsolatban az összetevőket, amelyek a VMware virtuális gép lesz telepítve.
 
-1. További tudnivalók a [Előfeltételek](vmware-azure-deploy-configuration-server.md#prerequisites) a konfigurációs kiszolgáló környezethez.
-2. [Ellenőrizze a kapacitás számok](vmware-azure-deploy-configuration-server.md#capacity-planning) központi telepítéshez.
-3. [Töltse le](vmware-azure-deploy-configuration-server.md#download-the-template) és [importálása](vmware-azure-deploy-configuration-server.md#import-the-template-in-vmware) petesejtek sablon állítson be egy helyszíni VMware virtuális gép, amelyen a konfigurációs kiszolgáló. Az engedélyt a sablonhoz megadott értékelési engedélyhez és érvényes 180 napig tart. POST ezen időszak alatt ügyféligények határidődátumával engedéllyel rendelkező a windows aktiválása.
-4. A VMware virtuális gép bekapcsolása és [bejegyzéséhez](vmware-azure-deploy-configuration-server.md#register-the-configuration-server-with-azure-site-recovery-services) a helyreállítási szolgáltatások tároló.
+1. További információ a [Előfeltételek](vmware-azure-deploy-configuration-server.md#prerequisites) server központi telepítésére vonatkozóan.
+2. [Ellenőrizze a kapacitás számok](vmware-azure-deploy-configuration-server.md#capacity-planning) üzembe helyezéshez.
+3. [Töltse le](vmware-azure-deploy-configuration-server.md#download-the-template) és [importálása](vmware-azure-deploy-configuration-server.md#import-the-template-in-vmware) az OVA sablon egy helyszíni VMware virtuális gép, amely futtatja a konfigurációs kiszolgáló beállításához. Az engedélyt a sablonhoz megadott értékelési engedélyhez és érvényes 180 napig. POST ennek az időtartamnak kell határidődátumával engedéllyel rendelkező a windows aktiválása.
+4. A VMware virtuális gép bekapcsolása és [regisztrálja](vmware-azure-deploy-configuration-server.md#register-the-configuration-server-with-azure-site-recovery-services) a Recovery Services-tároló.
 
 
-## <a name="add-the-vmware-account-for-automatic-discovery"></a>Adja hozzá a VMware-fiókot a automatikus felderítése
+## <a name="add-the-vmware-account-for-automatic-discovery"></a>Adja hozzá a VMware-fiók automatikus felderítéshez
 
 [!INCLUDE [site-recovery-add-vcenter-account](../../includes/site-recovery-add-vcenter-account.md)]
 
-## <a name="connect-to-the-vmware-server"></a>Csatlakozás a VMware-kiszolgálóhoz
+## <a name="connect-to-the-vmware-server"></a>A VMware-kiszolgálóhoz való csatlakozáshoz
 
-Ahhoz, hogy az Azure Site Recovery számára a helyszíni környezetben futó virtuális gépek felderítése, meg kell kapcsolni a VMware vCenter-kiszolgáló vagy vSphere ESXi-gazdagépek a Site Recovery.
+Ahhoz, hogy az Azure Site Recovery a helyszíni környezetben futó virtuális gépek felderítése, a Site Recovery a VMware vCenter-kiszolgáló vagy vSphere ESXi-gazdagépek csatlakoznia kell.
 
-Válassza ki **+ vCenter** elindítani a VMware vCenter-kiszolgáló vagy egy VMware vSphere ESXi-állomáson.
+Válassza ki **+ vCenter** VMware vCenter-kiszolgáló vagy a VMware vSphere ESXi-gazdagéphez csatlakozó elindításához.
 
 [!INCLUDE [site-recovery-add-vcenter](../../includes/site-recovery-add-vcenter.md)]
 

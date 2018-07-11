@@ -1,6 +1,6 @@
 ---
-title: Támogatja a honosítás LUIS alkalmazások használata az Azure-ban |} Microsoft Docs
-description: Ismerje meg a nyelveket, amelyek LUIS támogatja.
+title: Támogatja a LUIS-alkalmazások használata az Azure-ban honosítási |} A Microsoft Docs
+description: Ismerje meg, amely támogatja a LUIS nyelveket.
 services: cognitive-services
 author: cahann
 manager: hsalama
@@ -9,25 +9,25 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 06/04/2017
 ms.author: cahann
-ms.openlocfilehash: 1eabc01ee07f8791680738a156471e3efe2c44ff
-ms.sourcegitcommit: b7290b2cede85db346bb88fe3a5b3b316620808d
-ms.translationtype: HT
+ms.openlocfilehash: f2c9514f03019a742044dc077b395025d7d698e3
+ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "35349949"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37927757"
 ---
-# <a name="culture-specific-understanding-in-luis-apps"></a>Kulturális környezet-specifikus LUIS alkalmazásokban ismertetése
+# <a name="culture-specific-understanding-in-luis-apps"></a>Kulturális környezet jellemző a LUIS-alkalmazások ismertetése
 
-Egy LUIS app kulturális környezet függ, és beállítása után már nem módosítható. 
+LUIS-alkalmazásokon kulturális környezet-specifikus, és nem módosítható, hogy be van állítva. 
 
-## <a name="multi-language-luis-apps"></a>Több nyelven LUIS alkalmazások
-Ha például egy chatbot beszélő LUIS ügyfélalkalmazás van szüksége, több lehetősége van. Ha LUIS támogatja az összes nyelven, ki kell dolgoznia egy LUIS alkalmazást az egyes nyelvekhez. Minden LUIS alkalmazás rendelkezik, egy egyedi Azonosítót, és a végpont naplót. Ha meg kell adni a nyelvi ismertetése LUIS nem támogatja, nyelvet használhat [Microsoft Translator API](../Translator/translator-info-overview.md) egy támogatott nyelvre utterance fordításához küldje el a LUIS végpontnak utterance, és fogadni a eredményül kapott eredmények.
+## <a name="multi-language-luis-apps"></a>A többnyelvű LUIS-alkalmazások
+Ha például egy csevegőrobotot többnyelvű LUIS ügyfélalkalmazás van szüksége, több lehetősége van. Ha LUIS támogatja az összes nyelv, az egyes nyelvekhez a LUIS-alkalmazások fejlesztése. Minden egyes LUIS alkalmazás rendelkezik egy egyedi Alkalmazásazonosító, és a végpont napló. Ha meg kell adnia a nyelv értelmezése nem támogatja a LUIS, nyelvet használhatja [Microsoft Translator API](../Translator/translator-info-overview.md) lefordítani az utterance (kifejezés) egy támogatott nyelvre, küldje el az utterance (kifejezés), a LUIS-végponthoz, és megkapta az eredményül kapott értékeket.
 
 ## <a name="languages-supported"></a>Támogatott nyelvek
-LUIS megértette utterances a következő nyelveken:
+A LUIS tisztában van azzal a kimondott szöveg a következő nyelveken:
 
 
-| Nyelv |Területi beállítás  |  Előre elkészített tartomány | Előre elkészített entitás | Kifejezés javaslatok | **[Szövegelemzések](https://docs.microsoft.com/azure/cognitive-services/text-analytics/text-analytics-supported-languages) | 
+| Nyelv |Területi beállítás  |  Előre összeállított tartomány | Előre összeállított entitások | A kifejezés javaslatok | **[Szövegelemzés](https://docs.microsoft.com/azure/cognitive-services/text-analytics/text-analytics-supported-languages) | 
 |--|--|:--:|:--:|:--:|:--:|
 | Amerikai angol |`en-US` | ✔ | ✔  |✔|✔|
 | Kanadai francia |`fr-CA` |-|   -   |-|✔|
@@ -36,59 +36,59 @@ LUIS megértette utterances a következő nyelveken:
 | francia (Franciaország) |`fr-FR` |-| ✔ |✔ |✔|
 | német |`de-DE` |-| ✔ |✔ |✔|
 | olasz |`it-IT` |-| ✔ |✔|✔|
-| *[japán](#japanese-support-notes) |`ja-JP` |-| ✔ |✔|Csak a kulcsfontosságú kifejezés|
-| koreai |`ko-KR` |-|   -   |-|Csak a kulcsfontosságú kifejezés|
+| *[japán](#japanese-support-notes) |`ja-JP` |-| ✔ |✔|Csak a kulcsfontosságú kifejezések|
+| koreai |`ko-KR` |-|   -   |-|Csak a kulcsfontosságú kifejezések|
 | portugál (brazíliai) |`pt-BR` |-| ✔ |✔ |nem minden alárendelt kulturális környezetek|
 | spanyol (spanyolországi) |`es-ES` |-| ✔ |✔|✔|
 | spanyol (Mexikó)|`es-MX` |-|  -   |✔|✔|
 
 
-Nyelvi támogatás változó [előre elkészített entitások](luis-reference-prebuilt-entities.md) és [előre elkészített tartományok](luis-reference-prebuilt-domains.md). 
+Nyelvi támogatás esetében eltérő [előre összeállított entitások](luis-reference-prebuilt-entities.md) és [előre összeállított tartományok](luis-reference-prebuilt-domains.md). 
 
-### <a name="chinese-support-notes"></a>* Kínai () támogatja a jegyzeteket
+### <a name="chinese-support-notes"></a>* Kínai támogatja a jegyzeteket
 
- - Az a `zh-cn` kulturális környezet, LUIS vár az egyszerűsített kínai karakterkészletet helyett a hagyományos karakterkészlet.
- - A leképezések, entitásokat, szolgáltatások és reguláris kifejezések nevei kínai vagy latin karaktereket lehet.
- - Tekintse meg a [előre elkészített tartományok hivatkozás ](luis-reference-prebuilt-domains.md) információt, amelyen előre elkészített tartományok támogatottak a `zh-cn` kulturális környezet.
+ - Az a `zh-cn` kulturális környezet, LUIS vár helyett a hagyományos karakterkészlet egyszerűsített kínai karakterkészlet.
+ - Leképezések, az entitások, a funkciók és a reguláris kifejezések nevei a kínai vagy latin karaktereket lehet.
+ - Tekintse meg a [előre összeállított tartományok referencia ](luis-reference-prebuilt-domains.md) , amelyen előre összeállított tartományok használata támogatott, az információ a `zh-cn` kulturális környezet.
 <!--- When writing regular expressions in Chinese, do not insert whitespace between Chinese characters.-->
 
 ### <a name="japanese-support-notes"></a>* Japán támogatja a jegyzeteket
 
- - LUIS nem szintaktikai elemzés, ezért nem lesz a következő Keigo és kötetlen Japán közötti különbségek megértése, mert az alkalmazások példák mint formalitást különböző szintjei tartalmaznia kell. 
-     - でございます megegyezik nem です. 
-     - です megegyezik nem だ. 
+ - Mivel a LUIS nem biztosít szintaktikai analysis, és nem lesz a következő Keigo és az informális Japán közötti különbségek megértése, kell foglalják magukban képzési példaként használt alkalmazásait formalitást különböző szintjeit. 
+     - でございます nem ugyanaz, mint です. 
+     - です nem ugyanaz, mint だ. 
 
-### <a name="text-analytics-support-notes"></a>** Szövegelemzések támogatja a jegyzeteket
-Csak portugál támogatott tápfolyadékok cseréjét: `pt-PT` és `pt-BR`. Minden más országban használható elsődleges kulturális környezet szinten támogatottak. További tudnivalók Szövegelemzések [támogatott nyelv](https://docs.microsoft.com/azure/cognitive-services/text-analytics/text-analytics-supported-languages). 
+### <a name="text-analytics-support-notes"></a>** A text analytics támogatja a jegyzeteket
+Szövegelemzés tartalmaz keyPhrase előre létrehozott entitás- és vélemények elemzése. Csak portugál tápfolyadékok cseréjét esetében támogatott: `pt-PT` és `pt-BR`. Minden más kultúrák támogatottak az elsődleges kulturális környezet szintjén. További információ a Text Analytics [támogatott nyelvek](https://docs.microsoft.com/azure/cognitive-services/text-analytics/text-analytics-supported-languages). 
 
-### <a name="speech-api-supported-languages"></a>Diktálásfelismerési API támogatott nyelvek
-Tekintse meg a beszédfelismerés [támogatott nyelv](https://docs.microsoft.com/azure/cognitive-services/Speech/api-reference-rest/supportedlanguages##interactive-and-dictation-mode) beszéd Diktálás mód nyelvekhez.
+### <a name="speech-api-supported-languages"></a>Beszédfelismerési API támogatott nyelvek
+Tekintse meg a beszédfelismerés [támogatott nyelvek](https://docs.microsoft.com/azure/cognitive-services/Speech/api-reference-rest/supportedlanguages##interactive-and-dictation-mode) Speech Diktálás üzemmód nyelveken.
 
-### <a name="bing-spell-check-supported-languages"></a>Bing helyesírás-ellenőrzés támogatott nyelvek
-Bing helyesírás-ellenőrzés lásd [támogatott nyelv](https://docs.microsoft.com/azure/cognitive-services/bing-spell-check/bing-spell-check-supported-languages) támogatott nyelvek és állapot listáját.
+### <a name="bing-spell-check-supported-languages"></a>A Bing Spell Check, támogatott nyelvek
+Tekintse meg a Bing Spell Check [támogatott nyelvek](https://docs.microsoft.com/azure/cognitive-services/bing-spell-check/bing-spell-check-supported-languages) támogatott nyelvek és állapot listáját.
 
-## <a name="rare-or-foreign-words-in-an-application"></a>Egy alkalmazás ritka vagy külső szavakat
-Az a `en-us` kulturális környezet, LUIS megtanulja a legtöbb angol szavak, beleértve a zsargon megkülönböztetésére. Az a `zh-cn` kulturális környezet, LUIS megtanulja segítségével különböztetheti meg egymástól a legtöbb kínai karaktereket. Ha ritka szó `en-us` vagy karakter `zh-cn`, és meggyőződött arról, hogy LUIS úgy tűnik, nem különbözteti meg a szó vagy karakter, adhat hozzá, hogy a word vagy a karakter egy [kifejezéslista szolgáltatás](luis-how-to-add-features.md). Például a kulturális környezet, az alkalmazás – Ez azt jelenti, hogy külső szavak – kívül szavak kell adni egy kifejezéslista szolgáltatás. A kifejezéslista nem cserélhető, annak jelzésére, hogy a ritka szavak készlete képezi egy osztály, amely LUIS kell bemutatják, hogyan ismeri fel, de nincsenek szinonimák vagy cserélhető egymás mellett kell megjelölni.
+## <a name="rare-or-foreign-words-in-an-application"></a>Ritka vagy külső szavak egy alkalmazásban
+Az a `en-us` kulturális környezet, LUIS megtanulja különbséget tenni a legtöbb angol szavak, beleértve a szleng felismerését. Az a `zh-cn` kulturális környezet, LUIS megtanulja különbséget tenni a legtöbb kínai karaktereket. Egy ritka kifejezése használatakor `en-us` karakter vagy `zh-cn`, és láthatja, hogy a LUIS úgy tűnik, nem tesz különbséget az adott szó vagy karakter lehet, adja hozzá az adott szó vagy a karakter egy [kifejezéslista funkció](luis-how-to-add-features.md). Például szavak kívül az alkalmazás –, hogy külső szavak--kulturális környezete kell adni egy kifejezéslista szolgáltatás. Ez a kifejezés a lista nem cserélhető, annak jelzésére, hogy a ritka szavak készletét képezi egy osztályt, amely a LUIS kell további ismeri fel, de azok nem szinonimák vagy cserélhető, egymással kell megjelölni.
 
 ### <a name="hybrid-languages"></a>Hibrid nyelvek
-Hibrid nyelvek két kulturális környezetek, például az angol és kínai szavak össze. Ezeken a nyelveken nem támogatottak a LUIS, mert egy alkalmazás egy egyetlen kulturális környezet alapul.
+Hibrid nyelvek szó azoktól, például az angol és kínai két kulturális környezetek egyesítése. Ezeken a nyelveken nem támogatottak a LUIS, mivel az alkalmazás egyetlen kulturális környezetet alapul.
 
-## <a name="tokenization"></a>Jogkivonat-létrehozási
-Gépi tanulás végrehajtásához LUIS bontja egy utterance [jogkivonatok](luis-glossary.md#token) kulturális környezet alapján. 
+## <a name="tokenization"></a>A jogkivonatok
+Machine learning alkalmazásához, LUIS bontja az utterance (kifejezés) [jogkivonatok](luis-glossary.md#token) kulturális környezet alapján. 
 
-|Nyelv|  minden szóközt vagy speciális karakter | karakter szint|összetett szavakat|[Visszaadott tokenekre entitás](luis-concept-data-extraction.md#tokenized-entity-returned)
+|Nyelv|  minden szóközt vagy különleges karaktert | karakter szint|összetett szavakat|[tokenekre entitást adott vissza](luis-concept-data-extraction.md#tokenized-entity-returned)
 |--|:--:|:--:|:--:|:--:|
 |kínai||✔||✔|
 |holland|||✔|✔|
 |Angol (en-us)|✔ ||||
 |Francia (fr-FR)|✔||||
-|Francia (fr-CA)|✔||||
+|Francia (fr, CA)|✔||||
 |német|||✔|✔|
 |olasz|✔||||
 |japán||||✔|
 |koreai||✔||✔|
 |portugál (brazíliai)|✔||||
 |Spanyol (es-ES)|✔||||
-|Spanyol (es MX)|✔||||
+|Spanyol (es – MX)|✔||||
 
  

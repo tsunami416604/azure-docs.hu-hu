@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 03/16/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: f968bd75c7aee4ad390f9206bb1fa210e7fcd8ff
-ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
+ms.openlocfilehash: 90aa19d690b1b4ab28c3a65a287a10aaf6a03ac6
+ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2018
-ms.locfileid: "37903149"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37929032"
 ---
 # <a name="how-to-update-azure-powershell-modules-in-azure-automation"></a>Az Azure Automationben az Azure PowerShell-modulok frissítése
 
@@ -47,7 +47,7 @@ A termékcsoport modulok rendszeresen frissülnek, mert módosítások előfordu
 > [!NOTE]
 > Az Azure Automation használja a legújabb modulokat az Automation-fiók egy új ütemezett feladatot a futása során.    
 
-Ezeket az Azure PowerShell-modulok a parancsmagok használata a runbookokban, szeretné-e a frissítési folyamat minden hónapban lefusson, vagy ezért győződjön meg arról, hogy rendelkezik-e a legújabb modulok.
+Ezeket az Azure PowerShell-modulok a parancsmagok használata a runbookokban, szeretné-e a frissítési folyamat minden hónapban lefusson, vagy ezért győződjön meg arról, hogy rendelkezik-e a legújabb modulok. Azure Automation az AzureRunAsConnection kapcsolat a modulok frissítésekor, ha az egyszerű szolgáltatás lejárt, vagy már nem létezik az előfizetés szintjén, a modul frissítése a hitelesítés sikertelen lesz.
 
 ## <a name="next-steps"></a>További lépések
 

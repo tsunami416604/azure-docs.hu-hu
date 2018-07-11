@@ -1,6 +1,6 @@
 ---
-title: Feladatátvétel az Azure hibák elhárítása |} Microsoft Docs
-description: A cikk ismerteti az Azure-bA feladatátvételét gyakori hibáinak elhárítása
+title: Hibák az Azure-ba irányuló feladatátvétel hibaelhárítása |} A Microsoft Docs
+description: Ez a cikk ismerteti azokat a módszereket, az Azure-ba irányuló feladatátvétel előforduló gyakori hibák elhárítása
 services: site-recovery
 documentationcenter: ''
 author: ponatara
@@ -12,69 +12,69 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
-ms.date: 03/09/2018
+ms.date: 07/06/2018
 ms.author: ponatara
-ms.openlocfilehash: 838eac510fc17d56f808f541f4e205a279f63c56
-ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
+ms.openlocfilehash: ad8b69bfe6f3261f00cd33846efc86ce3b198954
+ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/22/2018
-ms.locfileid: "36318891"
+ms.lasthandoff: 07/09/2018
+ms.locfileid: "37919692"
 ---
-# <a name="troubleshoot-errors-when-failing-over-a-virtual-machine-to-azure"></a>Ha az Azure virtuális gép feladatátvétele hibák elhárítása
+# <a name="troubleshoot-errors-when-failing-over-a-virtual-machine-to-azure"></a>Az Azure virtuális gép feladatátvétele során előforduló hibák elhárítása
 
-Hibák a következők egyike jelenhet meg közben a virtuális gép az Azure-bA. Hibaelhárítás, az ismertetett lépésekkel az egyes.
+Az Azure-bA egy virtuális gép feladatátvétele közben hibák a következők egyike jelenhet meg. A hiba elhárításához használja az itt ismertetett lépéseket az egyes hibaállapotokhoz.
 
-## <a name="failover-failed-with-error-id-28031"></a>Hibaazonosító 28031 feladatátvétele sikertelen volt
+## <a name="failover-failed-with-error-id-28031"></a>Hibaazonosító: 28031 feladatátvétel sikertelen
 
-A Site Recovery nem tudott létrehozni egy sikertelen átadó virtuális gép az Azure-ban. Ez a következő okok valamelyike miatt fordulhat elő:
+A Site Recovery nem tudta egy nem sikerült létrehozni a feladatátviteli virtuális géphez az Azure-ban. Ez a következő okok egyike miatt fordulhat elő:
 
-* Nem áll rendelkezésre a virtuális gép létrehozása kvóta elegendő: előfizetés megnyitásával ellenőrizheti a rendelkezésre álló kvóta -> használati + kvótákat. Megnyithatja a [új támogatási kérelem](http://aka.ms/getazuresupport) a kvóta növeléséhez.
+* Nem áll rendelkezésre elegendő mag érhető el a virtuális gép létrehozásához: a rendelkezésre álló kvótát ellenőrizheti a előfizetés -> használat + kvóták. Megnyithatja a [új támogatási kérelem](http://aka.ms/getazuresupport) a kvóta növeléséhez.
 
-* Különböző méretű kártevőcsaládok azonos rendelkezésre állási csoport virtuális gépeinek feladatátvételi próbál. Gondoskodjon arról, hogy az összes virtuális gép ugyanazon mérete család választja az azonos rendelkezésre állási készlet. Az oldalméret módosítása a virtuális gép számítási és hálózati beállításainak megnyitásával, majd próbálkozzon újra a feladatátvételt.
+* A feladatátvételi virtuális gépek ugyanazon rendelkezésre állási csoportban lévő különböző méretcsaládokhoz szeretne. Győződjön meg arról, hogy ugyanabban a rendelkezésre állási csoportban válassza ki az összes virtuális gép ugyanazon virtuálisgépméret-családhoz. Nyissa meg a virtuális gép számítási és hálózati beállításainál módosíthatja a méretét, és próbálkozzon újra a feladatátvételt.
 
-* Az előfizetés, amely megakadályozza a virtuális gép létrehozásához a házirend nincs. Módosítsa a házirendet, engedélyezi a virtuális gépek létrehozását, majd próbálkozzon újra a feladatátvételt.
+* Nincs szabályzat az előfizetést, amely megakadályozza a virtuális gép létrehozását. Módosítsa a házirendet, engedélyezi a virtuális gépet, majd próbálkozzon újra a feladatátvételt.
 
-## <a name="failover-failed-with-error-id-28092"></a>Hibaazonosító 28092 feladatátvétele sikertelen volt
+## <a name="failover-failed-with-error-id-28092"></a>Hibaazonosító: 28092 feladatátvétel sikertelen
 
-A Site Recovery nem tudta hozzon létre egy hálózati összeköttetést a feladatokat átadó virtuális gép. Győződjön meg arról, hogy a hálózati adapterek létrehozása az előfizetésben elérhető kvóta elegendő. Előfizetés megnyitásával ellenőrizheti a rendelkezésre álló kvóta -> használati + kvótákat. Megnyithatja a [új támogatási kérelem](http://aka.ms/getazuresupport) a kvóta növeléséhez. Ha rendelkezik elegendő kvótával, akkor ez egy időszakos lehet mellett próbálja megismételni a műveletet. Ha a probléma továbbra is fennáll, még akkor is ismételt próbálkozások után sem, ezután a helyén hagyja a dokumentum végén megjegyzést.  
+A Site Recovery nem tudta hozzon létre egy hálózati adaptert a sikertelen a feladatátviteli virtuális géphez. Győződjön meg arról, hogy elegendő kvótával a hálózati adapterek létrehozása az előfizetésben elérhető. A rendelkezésre álló kvótát ellenőrizheti a előfizetés -> használat + kvóták. Megnyithatja a [új támogatási kérelem](http://aka.ms/getazuresupport) a kvóta növeléséhez. Ha elegendő kvótával rendelkezik, akkor ez lehet egy átmeneti probléma, próbálja megismételni a műveletet. Ha a probléma továbbra is fennáll, ismétlés után sem, majd a dokumentum végén található Megjegyzés írása.  
 
-## <a name="failover-failed-with-error-id-70038"></a>Hibaazonosító 70038 feladatátvétele sikertelen volt
+## <a name="failover-failed-with-error-id-70038"></a>Feladatátvétel sikertelen Hibaazonosító: 70038
 
-A Site Recovery nem tudott létrehozni egy sikertelen keresztül az Azure klasszikus virtuális géphez. Ez akkor fordulhat elő, mert:
+A Site Recovery nem tudta egy nem sikerült létrehozni a klasszikus virtuális gép az Azure-ban keresztül. Ez akkor fordulhat elő, mert:
 
-* Például egy virtuális hálózatot a virtuális gép létrehozásához szükséges erőforrások egyike nem létezik. A virtuális hálózat létrehozása a virtuális gép számítási és hálózati beállításainak előírt, vagy módosítsa a beállítást, amely már létezik, és próbálkozzon újra a feladatátvételi virtuális hálózathoz.
+* Például egy virtuális hálózatot a virtuális gépet létrehozni a szükséges erőforrások egyike nem létezik. A virtuális hálózat létrehozása a virtuális gép számítási és hálózati beállításaiban meg vagy módosítsa a beállítást, amely már létezik, és próbálkozzon újra a feladatátvételi virtuális hálózathoz.
 
-## <a name="unable-to-connectrdpssh-to-the-failed-over-virtual-machine-due-to-grayed-out-connect-button-on-the-virtual-machine"></a>Nem lehet csatlakozni vagy RDP/SSH a feladatokat átadó virtuális gép, mert a szürkén jelenik meg a Csatlakozás gombra a virtuális gépen
+## <a name="unable-to-connectrdpssh-to-the-failed-over-virtual-machine-due-to-grayed-out-connect-button-on-the-virtual-machine"></a>Nem lehet csatlakozni RDP/SSH a feladatátviteli virtuális géphez oka az, hogy szürkén jelenik meg a virtuális gépen a csatlakozás gomb
 
-Ha a csatlakozás gomb szürkén jelenik meg, és az Express Route vagy telephelyek közötti VPN-kapcsolaton keresztül, majd, nem csatlakozik Azure
+Ha a csatlakozás gomb szürkén jelenik meg, és az Express Route vagy helyek közötti VPN-kapcsolaton keresztül, ezt követően nem csatlakozik Azure
 
-1. Ugrás a **virtuális gép** > **hálózati**, kattintson a szükséges hálózati kapcsolat neve.  ![hálózati-illesztő](media/site-recovery-failover-to-azure-troubleshoot/network-interface.PNG)
-2. Navigáljon a **IP-konfigurációk**, majd kattintson az a név mező szükséges IP-konfiguráció. ![IP-konfigurációk](media/site-recovery-failover-to-azure-troubleshoot/IpConfigurations.png)
-3. Ahhoz, hogy a nyilvános IP-cím, kattintson a **engedélyezése**. ![IP-címek](media/site-recovery-failover-to-azure-troubleshoot/Enable-Public-IP.png)
-4. Kattintson a **kötelező beállítások konfigurálása** > **hozzon létre új**. ![Új létrehozása](media/site-recovery-failover-to-azure-troubleshoot/Create-New-Public-IP.png)
-5. Adja meg a nevét, nyilvános cím, az alapértelmezett beállítások megadása **SKU** és **hozzárendelés**, majd kattintson a **OK**.
-6. Most, a módosítások mentéséhez kattintson **mentése**.
-7. Zárja be a panelt, és keresse meg **áttekintése**  /RDP csatlakozzon a virtuális gép szakasza.
+1. Lépjen a **virtuális gép** > **hálózatkezelés**, kattintson a szükséges hálózati kapcsolat neve.  ![hálózati-adapter](media/site-recovery-failover-to-azure-troubleshoot/network-interface.PNG)
+2. Navigáljon a **Ip-konfigurációk**, majd kattintson a szükséges IP-konfiguráció a név mező. ![IP-konfigurációk](media/site-recovery-failover-to-azure-troubleshoot/IpConfigurations.png)
+3. Ahhoz, hogy a nyilvános IP-címet, kattintson a **engedélyezése**. ![IP engedélyezése](media/site-recovery-failover-to-azure-troubleshoot/Enable-Public-IP.png)
+4. Kattintson a **kötelező beállítások konfigurálása** > **új létrehozása**. ![Új létrehozása](media/site-recovery-failover-to-azure-troubleshoot/Create-New-Public-IP.png)
+5. Adja meg a nyilvános cím nevére, és válassza ki az alapértelmezett beállításainak **Termékváltozat** és **hozzárendelés**, majd kattintson a **OK**.
+6. Most a módosítások mentéséhez kattintson **mentése**.
+7. Zárja be a panelt, és keresse meg a **áttekintése** virtuális gép csatlakoztatása/RDP szakaszában.
 
-## <a name="unable-to-connectrdpssh-to-the-failed-over-virtual-machine-even-though-connect-button-is-available-not-grayed-out-on-the-virtual-machine"></a>Nem lehet csatlakozni vagy RDP/SSH-kapcsolatot a sikertelen keresztül a virtuális gép akkor is, ha a Csatlakozás gombra érhető el (szürkén nem jelenik meg) a virtuális gépen
+## <a name="unable-to-connectrdpssh-to-the-failed-over-virtual-machine-even-though-connect-button-is-available-not-grayed-out-on-the-virtual-machine"></a>Nem lehet csatlakozni RDP/SSH a keresztül a virtuális gép akkor is, ha a csatlakozás gomb érhető el (szürkén nem jelenik meg) a virtuális gépen
 
-Ellenőrizze **rendszerindítási diagnosztika** a virtuális gépen, a cikkben felsorolt hibák.
+Ellenőrizze **rendszerindítási diagnosztika** a virtuális gép és ellenőrzése ebben a cikkben felsorolt hibákat.
 
-1. Ha a virtuális gép nem indult el, próbálkozzon egy korábbi helyreállítási pontra feladatátvétele.
-2. Ha az alkalmazás a virtuális gépen nem működik-e az alkalmazáskonzisztens helyreállítási pontnak feladatátvételét próbálja meg.
-3. Ha a virtuális gép tartományhoz csatlakozik, majd győződjön meg arról, hogy a tartományvezérlő működik pontosan. Következő ehhez az alább megadott lépéseket.
+1. Ha a virtuális gép nem indult el, próbálja meg átvitelét egy régebbi helyreállítási pontra.
+2. Ha az alkalmazás a virtuális gépen belül nem átvitelét, próbálkozzon egy alkalmazáskonzisztens helyreállítási pontra.
+3. Ha a virtuális gép tartományhoz, majd győződjön meg arról, hogy a tartományvezérlő pontosan működik. A következő ehhez az alábbiakban megadott lépéseket.
     a. Hozzon létre egy új virtuális gép ugyanazon a hálózaton
 
-    b.  Győződjön meg arról, hogy az ugyanahhoz a tartományhoz, amelyen csatlakozhat a feladatokat átadó virtuális gép várható elérni.
+    b.  Győződjön meg arról, hogy csatlakozni tudjon ugyanahhoz a tartományhoz, amely a feladatátviteli virtuális géphez várhatóan merülnek fel.
 
-    c. Ha a tartományvezérlő **nem** működik pontosan, ismételje meg a bejelentkezést a feladatokat átadó virtuális gép egy helyi rendszergazdai fiók használatával
-4. Ha egy egyéni DNS-kiszolgálót használ, majd győződjön meg arról, hogy az elérhető-e. Következő ehhez az alább megadott lépéseket.
-    a. Hozzon létre egy új virtuális gép a hálózat és a b. Ellenőrizze, hogy a virtuális gép tudni az egyéni DNS-kiszolgáló segítségével névfeloldás
+    c. Ha a tartományvezérlő **nem** működik pontosan, majd próbálja jelentkezzen be a feladatátviteli virtuális gépre a helyi rendszergazdai fiókkal
+4. Ha egyéni DNS-kiszolgálót használ, majd győződjön meg arról, hogy legyen elérhető. A következő ehhez az alábbiakban megadott lépéseket.
+    a. Hozzon létre egy új virtuális gép a hálózat és a b. Ellenőrizze, hogy a virtuális gép tud-e névfeloldást végezni az egyéni DNS-kiszolgáló használatával
 
 >[!Note]
->Rendszerindítási diagnosztika kívül bármely beállítást igényel Azure VM ügynököt kell telepíteni a virtuális gépről a feladatátvétel előtt
+>Azure Virtuálisgép-ügynököt kell telepíteni a virtuális gépet a feladatátvétel előtt a rendszerindítási Diagnosztikán kívül más beállítások engedélyezéséhez lenne szükség
 
 ## <a name="next-steps"></a>További lépések
 
-Ha további segítségre van szüksége, majd tegye fel a lekérdezés [Site Recovery fórum](https://social.msdn.microsoft.com/Forums/azure/home?forum=hypervrecovmgr) vagy ez a dokumentum végén megjegyzés. Van egy aktív Közösség, amely segít képesnek kell lennie.
+Ha további segítségre van szüksége, majd el a lekérdezést az [Site Recovery fórum](https://social.msdn.microsoft.com/Forums/azure/home?forum=hypervrecovmgr) vagy ez a dokumentum végén található Megjegyzés írása. Van egy aktív Közösség, amely segítségére képesnek kell lennie.

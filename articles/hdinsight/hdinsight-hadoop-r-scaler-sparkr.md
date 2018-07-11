@@ -1,6 +1,6 @@
 ---
-title: ScaleR és SparkR használata az Azure HDInsight |} Microsoft Docs
-description: ScaleR és SparkR használata a HDInsight ML-szolgáltatások
+title: ScaleR és SparkR használata Azure HDInsight |} A Microsoft Docs
+description: ScaleR és SparkR használata a HDInsight Machine Learning-szolgáltatások
 services: hdinsight
 documentationcenter: ''
 author: bradsev
@@ -14,34 +14,34 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/19/2017
 ms.author: bradsev
-ms.openlocfilehash: 34d923cdf2dd96412996c766632ae42aac576e8c
-ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
+ms.openlocfilehash: 2b16135e83ba52f7a2e6bd214791910db80634bc
+ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37061478"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37952841"
 ---
-# <a name="combine-scaler-and-sparkr-in-hdinsight"></a>ScaleR és SparkR a Hdinsightban
+# <a name="combine-scaler-and-sparkr-in-hdinsight"></a>ScaleR és SparkR a HDInsight egyesítése
 
-Ez a dokumentum bemutatja, hogyan repülési érkezési késések használatával megjósolható egy **ScaleR** logisztikai regresszió modell. A példában repülési késleltetés és a időjárási adatokat illesztve **SparkR**.
+Ez a dokumentum bemutatja, hogy miként jelezhetők előre a járatok érkezési késésének használatával egy **ScaleR** logisztikai regressziós modellt. A példában repülési késleltetés és az időjárási adatok, illesztve **SparkR**.
 
-Bár mindkét csomagot Hadoop a Spark végrehajtási motorján futnak, akkor sem, minden egyes van szükségük a saját megfelelő Spark-munkamenetek megosztása a memóriában levő. Ezzel a problémával az ML Server egy jövőbeli verziójában, amíg a megoldás, Spark-munkameneteket mozaikként, átfedés nélkül, és az exchange-adatok keresztül közbülső fájlok. Az utasítások mutatja, hogy ezek a követelmények egyszerű eléréséhez.
+Bár mindkét csomagot futtatja a Hadoop Spark-végrehajtó motor, azok hozzáférése a memóriában lévő adatok megosztása, tesztelhető, mindegyik a saját megfelelő Spark-munkamenetet. Ezzel a problémával ML Server egy jövőbeli verziójában, amíg a megoldás, hogy egymást nem átfedő Spark-munkameneteket, valamint az exchange-adatok köztes fájlok között. Az itt leírt utasításokat mutatja, hogy ezek a követelmények egyszerű eléréséhez.
 
-Ez a példa kezdetben megosztott egy előadás rétegek 2016, az Mario Inchiosa és Roni Burd. A következő előadás található [egy méretezhető tudományos Adatplatform r felépítése](http://event.on24.com/eventRegistration/console/EventConsoleNG.jsp?uimode=nextgeneration&eventid=1160288&sessionid=1&key=8F8FB9E2EB1AEE867287CD6757D5BD40&contenttype=A&eventuserid=305999&playerwidth=1000&playerheight=650&caller=previewLobby&text_language_id=en&format=fhaudio).
+Ebben a példában először megosztott egy előadás Strata 2016 a Mario Inchiosa és Roni Burd. Ez az előadás címen található [létrehozása egy méretezhető adatelemzési Platform r](http://event.on24.com/eventRegistration/console/EventConsoleNG.jsp?uimode=nextgeneration&eventid=1160288&sessionid=1&key=8F8FB9E2EB1AEE867287CD6757D5BD40&contenttype=A&eventuserid=305999&playerwidth=1000&playerheight=650&caller=previewLobby&text_language_id=en&format=fhaudio).
 
-A kód eredetileg készült ML-kiszolgáló fut a Spark on Azure HDInsight-fürtöt. De a SparkR és ScaleR használatát egy parancsfájlban keverése fogalma is a helyszíni környezetben környezetében érvényes.
+A kód eredetileg íródott ML Server Spark futtat egy HDInsight-fürtön az Azure-ban. Azonban egy parancsfájl ScaleR és SparkR használatát keverése fogalma is érvényes a helyszíni környezetekben kontextusában.
 
-A jelen dokumentumban leírt lépések azt feltételezik, hogy rendelkezik-e a közbenső szintű Tudásbázis R és a [ScaleR](https://msdn.microsoft.com/microsoft-r/scaler-user-guide-introduction) ML Server könyvtárban. Ön belépnek [SparkR](https://spark.apache.org/docs/2.1.0/sparkr.html) ebben a forgatókönyvben közben.
+Ez a dokumentum lépései azt feltételezik, hogy egy köztes szint alatt, és az R ismerete a [ScaleR](https://msdn.microsoft.com/microsoft-r/scaler-user-guide-introduction) ML Server könyvtárában. Jelennek meg [SparkR](https://spark.apache.org/docs/2.1.0/sparkr.html) közben ebben a forgatókönyvben.
 
 ## <a name="the-airline-and-weather-datasets"></a>A légitársaság és időjárási adatkészletek
 
-A felhőszolgáltató közötti átviteléhez adat a [Egyesült államokbeli kormányzati archívumokat](http://www.transtats.bts.gov/DL_SelectFields.asp?Table_ID=236). Azt is rendelkezésre áll, mint a zip [AirOnTimeCSV.zip](http://packages.revolutionanalytics.com/datasets/AirOnTime87to12/AirOnTimeCSV.zip).
+A flight data érhető el a [US government archívumok](http://www.transtats.bts.gov/DL_SelectFields.asp?Table_ID=236). Emellett érhető el a zip [AirOnTimeCSV.zip](http://packages.revolutionanalytics.com/datasets/AirOnTime87to12/AirOnTimeCSV.zip).
 
-A időjárási adatok letölthető zip fájlt nyers formátumban, hónap, a [nemzeti óceáni és légköri felügyeleti tárház](http://www.ncdc.noaa.gov/orders/qclcd/). Ebben a példában töltse le az adatokat, lehetséges, hogy 2007 – December 2012. Használja az óránkénti adatfájlok és `YYYYMMMstation.txt` fájl a zips belül. 
+Az időjárási adatok letölthető tömörített fájlként nyers formában, havonta, a [együttműködési és a felügyelet alá tárház](http://www.ncdc.noaa.gov/orders/qclcd/). Ebben a példában töltse le az adatokat a május 2007 – a 2012. December. Az óránkénti adatfájlokat használjon, és `YYYYMMMstation.txt` fájlt a zips belül. 
 
-## <a name="setting-up-the-spark-environment"></a>A Spark-környezet létrehozása
+## <a name="setting-up-the-spark-environment"></a>A Spark környezet beállítása
 
-A következő kódot a Spark-környezetet használja:
+Használja a következő kódot a Spark környezet beállításához:
 
 ```
 workDir        <- '~'  
@@ -86,7 +86,7 @@ logmsg('Start')
 logmsg(paste('Number of task nodes=',length(trackers)))
 ```
 
-Ezután adja hozzá `Spark_Home` a keresési elérési útjára vonatkozóan R csomagokat. A keresési elérési út való hozzáadását lehetővé teszi SparkR használja, és egy SparkR munkamenet inicializálása:
+Ezután adjon hozzá `Spark_Home` az R-csomagoknak a keresési elérési utat. A keresési útvonalat adásával lehetővé teszi SparkR használja, és a egy SparkR munkamenet inicializálása:
 
 ```
 #..setup for use of SparkR  
@@ -107,20 +107,20 @@ sc <- sparkR.init(
 sqlContext <- sparkRSQL.init(sc)
 ```
 
-## <a name="preparing-the-weather-data"></a>Az időjárási adatok előkészítése
+## <a name="preparing-the-weather-data"></a>Az időjárási adatok előkészítésével
 
-A időjárási adatok előkészítéséhez részét úgy, hogy az oszlopok szükséges modellezési: 
+Az időjárási adatok előkészítéséhez, részhalmazát, hogy az oszlopok szükséges modellezés: 
 
-- "Látható"
+- "Visibility"
 - "DryBulbCelsius"
 - "DewPointCelsius"
 - "RelativeHumidity"
-- "Szélsebesség"
+- "Szélsebesség."
 - "Magasságmérő"
 
-Majd adja hozzá az időjárási állomás társított repülőtéri kódot, és a mértékek konvertálása helyi idő az egyezményes világidőhöz.
+Ezután adjon hozzá egy repülőtér kódja a időjárásjelző társított, és a mértékek konvertálása helyi idő (UTC).
 
-Először hozzon létre egy fájlt a időjárási állomáson (WBAN) adatait hozzárendelése egy repülőtéri kódot. Az alábbi kód beolvassa az óránkénti nyers időjárási adatok fájlok, igazolnia kell, a időjárási állomás leképezési fájlban egyesíti, állítja be az időpontok UTC mérések és a fájl egy új verzióját, majd írja oszlopokra részhalmazának:
+Első lépésként hozzon létre egy fájlt a időjárásjelző (WBAN) adatok leképezése egy repülőtér kódja. Az alábbi kód beolvassa az óránkénti nyers időjárási adatok fájlok, részhalmazainak azt kell, egyesíti a időjárásjelző leképezési fájl, beállítja az dátum időpontokat az UTC Időzóna mérések és a fájl új verziója, majd írja az oszlopokhoz:
 
 ```
 # Look up AirportID and Timezone for WBAN (weather station ID) and adjust time
@@ -198,9 +198,9 @@ rxDataStep(weatherDF, outFile = weatherDF1, rowsPerRead = 50000, overwrite = T,
            transformObjects = list(wbanToAirIDAndTZDF1 = wbanToAirIDAndTZDF))
 ```
 
-## <a name="importing-the-airline-and-weather-data-to-spark-dataframes"></a>A légitársaság és időjárási adatok importálása a Spark DataFrames
+## <a name="importing-the-airline-and-weather-data-to-spark-dataframes"></a>A légitársaság és időjárási az adatok importálása a Spark adatkerettípusokat jelölhet.
 
-Most a SparkR használjuk [read.df()](https://docs.databricks.com/spark/1.6/sparkr/functions/read.df.html#read-df) működnek, mint a időjárása és a légitársaság adatok importálása a Spark DataFrames. Ez a funkció számos más Spark módszerek, például végrehajtása lazily, ami azt jelenti, hogy a végrehajtási sorba állított, de nem hajtotta végre a kötelező.
+Most használjuk a SparkR [read.df()](https://docs.databricks.com/spark/1.6/sparkr/functions/read.df.html#read-df) függvényt, hogy az adatok importálása az időjárási és légitársaság Spark adatkerettípusokat jelölhet. Ez a funkció számos más Spark módszerrel, például végrehajtása ráérősen, ami azt jelenti, hogy a végrehajtási várólistára, de nem hajtotta végre, amíg nem szükséges.
 
 ```
 airPath     <- file.path(inputDataDir, "AirOnTime08to12CSV")
@@ -222,9 +222,9 @@ weatherDF <- read.df(sqlContext, weatherPath, source = "com.databricks.spark.csv
                      header = "true", inferSchema = "true")
 ```
 
-## <a name="data-cleansing-and-transformation"></a>Adatok tisztítására és átalakítás
+## <a name="data-cleansing-and-transformation"></a>Adattisztítás és átalakítása
 
-Ezután néhány tisztítás azt importált légitársaság adatokon végezzük oszlop átnevezése. Jelenleg csak megőrzése a változók szükséges, és le a legfrissebb időjárási adatokkal induláskor az egyesítés a legközelebbi óra ütemezett indulási idő kerekíteni:
+Ezután végzünk néhány karbantartást az légitársaság adatok importálása után az oszlopok átnevezése. Azt csak hagyja meg a szükséges változókat, és ütemezett indító alkalommal le a legfrissebb időjárás adatokkal induláskor az egyesítés a legközelebbi óra kerekíteni:
 
 ```
 logmsg('clean the airline data') 
@@ -252,7 +252,7 @@ coltypes(airDF) <- c("character", "integer", "integer", "integer", "integer", "c
 airDF$CRSDepTime <- floor(airDF$CRSDepTime / 100)
 ```
 
-Most végezzük az időjárási adatokon hasonló műveletek:
+Most már az időjárási adatok hasonló műveletek elvégzése:
 
 ```
 # Average weather readings by hour
@@ -271,9 +271,9 @@ weatherDF <- rename(weatherDF,
 )
 ```
 
-## <a name="joining-the-weather-and-airline-data"></a>A időjárása és a légitársaság adatok csatlakoztatása
+## <a name="joining-the-weather-and-airline-data"></a>Az időjárási és légitársaság adatok csatlakoztatása
 
-Használja a SparkR [join()](https://docs.databricks.com/spark/latest/sparkr/functions/join.html) függvény elvégzéséhez a bal oldali külső illesztések az indító AirportID légitársaság és időjárási adatait és a dátum és idő. A külső illesztés lehetővé teszi a légitársaság adatrekordot megőrizni, akkor is, ha nincsenek egyező időjárási adatok. A való csatlakozást követően azt néhány felesleges oszlopok eltávolítása, és nevezze át a megtartva oszlopok eltávolítása az illesztés által bemutatott bejövő DataFrame előtag.
+Most használjuk a SparkR [join()](https://docs.databricks.com/spark/1.6/sparkr/functions/join.html#join) függvény bal külső illesztéssel az indító AirportID által légitársaság és időjárási adatokat és a dátum és idő tennie. A külső illesztés lehetővé teszi számunkra, hogy a légitársaság adatfelderítési rekordok megőrizni, akkor is, ha nem tartoznak megfelelő időjárási adatok. A csatlakozás a következő azt távolítsa el néhány felesleges oszlopot, és nevezze át a megőrzött oszlopot távolítsa el a csatlakozás által bemutatott bejövő DataFrame előtagot.
 
 ```
 logmsg('Join airline data with weather at Origin Airport')
@@ -304,7 +304,7 @@ joinedDF2 <- rename(joinedDF1,
 )
 ```
 
-Hasonló módon csatlakoztassa azt érkezési AirportID és a dátum és idő alapján az időjárási és légitársaság adatokat:
+Hasonló módon hogy csatlakozzon a érkezési AirportID és a dátum és idő alapján az időjárási és légitársaság adatokat:
 
 ```
 logmsg('Join airline data with weather at Destination Airport')
@@ -335,9 +335,9 @@ joinedDF5 <- rename(joinedDF4,
                     )
 ```
 
-## <a name="save-results-to-csv-for-exchange-with-scaler"></a>A CSV-eredményeket menteni ScaleR az exchange-hez
+## <a name="save-results-to-csv-for-exchange-with-scaler"></a>Az eredmények mentése CSV ScaleR az exchange-hez
 
-Ezzel befejezte az illesztések kell elvégezni a segítségével SparkR. Az adatok mentése a végső Spark DataFrame a bemeneti egy CSV kötethez "joinedDF5" ScaleR azt, és zárja be a SparkR munkamenet ki. Explicit módon biztosítunk SparkR menteni a eredő CSV 80 külön partíciók elegendő párhuzamos ScaleR feldolgozásának engedélyezése:
+Ezzel befejezte az illesztések SparkR mindenre kell. Az adatok mentése a végső Spark DataFrame a bemenet egy CSV kötethez "joinedDF5" ScaleR azt, és zárja be a SparkR munkamenet ki. Explicit módon biztosítunk SparkR menteni a eredő CSV 80 külön partíciókon tárolják a ScaleR feldolgozása elegendő párhuzamosság engedélyezése:
 
 ```
 logmsg('output the joined data from Spark to CSV') 
@@ -353,9 +353,9 @@ sparkR.stop()
 rxHadoopRemove(file.path(dataDir, "joined5Csv/_SUCCESS"))
 ```
 
-## <a name="import-to-xdf-for-use-by-scaler"></a>ScaleR általi használatra XDF importálása
+## <a name="import-to-xdf-for-use-by-scaler"></a>ScaleR által használható XDF importálása
 
-A CSV-fájl illesztett légitársaság és időjárási adataikat sikerült használjuk-a modellezési ScaleR szöveg adatforrás keresztül. De azt importálja XDF először, mert ez sokkal hatékonyabb az adatkészlettel több művelet futtatásakor:
+Használjuk a csatlakoztatott légitársaság és időjárási adatok, a CSV-fájlt sikerült – a modellezési szöveg ScaleR adatforrás-n keresztül. De azt azok importálása az XDF először, mivel azt a hatékonyabb, ha az adatkészlet több műveletet:
 
 ```
 logmsg('Import the CSV to compressed, binary XDF format') 
@@ -438,9 +438,9 @@ finalData <- RxXdfData(file.path(dataDir, "joined5XDF"), fileSystem = hdfsFS)
 
 ```
 
-## <a name="splitting-data-for-training-and-test"></a>Felosztása tanítási és tesztelési adatokat
+## <a name="splitting-data-for-training-and-test"></a>Felosztása tanítási és tesztelési adatait
 
-RxDataStep ossza fel a tesztelési 2012 adatai és a többi képzési használjuk:
+RxDataStep tesztelési 2012 adatok felosztása és a többi képzéshez használjuk:
 
 ```
 # split out the training data
@@ -463,9 +463,9 @@ rxGetInfo(trainDS)
 rxGetInfo(testDS)
 ```
 
-## <a name="train-and-test-a-logistic-regression-model"></a>Betanítása és logisztikai regresszió modell teszteléséhez
+## <a name="train-and-test-a-logistic-regression-model"></a>Taníthat vagy tesztelhet egy logisztikai regressziós modell
 
-Most azt készen áll a modell létrehozása. Késleltetés a érkezésének ideje a időjárási adatok hatását megtekintéséhez ScaleR tartozó logisztikai regresszió rutin használjuk. Használjuk, hogy egy érkezési késés nagyobb, mint 15 percig befolyásolja a indulási és érkezési repülőtereken időjárási modellek:
+Most már készen állunk modell létrehozásához. A késleltetés az időjárási adatok hatását a érkezési ideje látható, a ScaleR a logisztikai regressziós rutin használjuk. Használjuk-e egy érkezési késleltetése nagyobb, mint 15 perccel az időjárás az indulási és érkezési repülőtereken befolyásol modellek:
 
 ```
 logmsg('train a logistic regression model for Arrival Delay > 15 minutes') 
@@ -485,7 +485,7 @@ logitModel <- rxLogit(formula, data = trainDS, maxIterations = 3)
 base::summary(logitModel)
 ```
 
-Most nézzük meg, hogyan végez el a a tesztadatokat néhány előrejelzéseket és ROC és AUC megnézi.
+Most nézzük meg, hogyan képes minderre a Tesztadatok az egyes előrejelzéseket és ROC és AUC.
 
 ```
 # Predict over test data (Logistic Regression).
@@ -510,9 +510,9 @@ logitAuc
 plot(logitRoc)
 ```
 
-## <a name="scoring-elsewhere"></a>A pontozási máshol
+## <a name="scoring-elsewhere"></a>A pontozás máshol
 
-Azt is használható a modell más platformon pontozási adatokat. Egy távoli asztali szolgáltatások fájlt mentse és átvitele, és a távoli asztali szolgáltatások importál egy cél, például az SQL Server R Services környezet pontozási. Fontos, hogy az adatok pontozni tényező szintjének meg kell azokat, amelyeken a modell lett létrehozva. Megfelelő legyen elérhető kinyeréséhez, valamint a társított a modellezési keresztül ScaleR tartozó oszlop adatok mentése `rxCreateColInfo()` függvény és majd, hogy oszlopra vonatkozó információ alkalmazása az előrejelzés bemeneti adatforrását. A következő azt a tesztelési adatkészletnél néhány sornyi mentése, bontsa ki és olvassa el oszlop ettől a példától az előrejelzés parancsfájl:
+Azt is használhatja a modell pontozási adatok egy másik platformon. Mentése folyamatban van egy távoli asztali fájl és átvitel, és a cél környezetekben, például az SQL Server R Services pontozási való importálásakor, a távoli asztali szolgáltatások. Fontos győződjön meg arról, hogy az adatok pontozandó tényező szintek egyeznek, amelyen a modell lett létrehozva. Megfelelést kiváltó elérhető kinyeréséhez és az oszlopadatokat a ScaleR-n keresztül a modellezési adatok társított `rxCreateColInfo()` függvény és előrejelzési bemeneti adatok forrásának majd alkalmazza az adott oszlopra vonatkozó információ. A következő azt menteni a tesztelési adatkészletnél néhány sornyi és bontsa ki és használja ezt a mintát oszlop adatait az előrejelzési szkriptben:
 
 ```
 # save the model and a sample of the test dataset 
@@ -537,18 +537,18 @@ logmsg(paste('Elapsed time=',sprintf('%6.2f',elapsed),'(sec)\n\n'))
 
 ## <a name="summary"></a>Összegzés
 
-Ez a cikk azt már látható hogyan is lehet kombinálni SparkR használható modell fejlesztési Hadoop Spark ScaleR adatok módosítását. Ebben a forgatókönyvben csak fut egyszerre csak egy munkamenet külön Spark munkamenetek, karbantartása és exchange-adatok CSV-fájlok keresztül igényel. Egyszerű, bár ez a folyamat lehet egy jövőbeli ML szolgáltatások a kiadásban még egyszerűbbé SparkR és ScaleR is megosztani egy Spark-munkamenetet, és így megosztani a Spark DataFrames.
+Ez a cikk mutattuk be, hogyan kombinálhatók az adatkezelés a ScaleR modell fejlesztéséhez, a Hadoop Spark SparkR használata lehetőség. Ehhez a forgatókönyvhöz szükséges, hogy karbantartása külön Spark-munkameneteket, csak egy időben futnak egy munkamenetet, és exchange-adatok CSV-fájlok használatával. Bár ez egyszerűnek tűnik, ez a folyamat lehet még egyszerűbbé teszi a Machine Learning Services egy soron következő kiadásban SparkR és ScaleR is megosztani egy Spark-munkamenetet, és így a Spark DataFrames megosztása.
 
 ## <a name="next-steps-and-more-information"></a>Következő lépések és további információ
 
-- Spark ML-kiszolgáló használatára vonatkozó további információkért tekintse meg a [kezdeti lépések útmutatóban](https://msdn.microsoft.com/microsoft-r/scaler-spark-getting-started)
+- A Spark ML-kiszolgáló használatára további információkért lásd: a [útmutató az első lépésekhez](https://msdn.microsoft.com/microsoft-r/scaler-spark-getting-started)
 
-- Gépi tanulás kiszolgálón általános információkért lásd: a [Ismerkedés az R](https://msdn.microsoft.com/microsoft-r/microsoft-r-get-started-node) cikk.
+- A Machine Learning-kiszolgáló általános információkért lásd: a [R – első lépések](https://msdn.microsoft.com/microsoft-r/microsoft-r-get-started-node) cikk.
 
-- Információk a HDInsight ML-szolgáltatásoknak: [áttekintése az ML szolgáltatások, a HDInsight](r-server/r-server-overview.md) és [Ismerkedés az Azure hdinsight ML Services](r-server/r-server-get-started.md).
+- A Machine Learning szolgáltatások a HDInsight további információkért lásd: [áttekintése, gépi Tanulási szolgáltatásokat, a HDInsight](r-server/r-server-overview.md) és [Machine Learning-szolgáltatások az Azure HDInsight – első lépések](r-server/r-server-get-started.md).
 
-SparkR használatára vonatkozó további információkért lásd:
+SparkR használata további információkat lásd:
 
-- [Apache SparkR dokumentum](https://spark.apache.org/docs/2.1.0/sparkr.html)
+- [Az Apache SparkR dokumentum](https://spark.apache.org/docs/2.1.0/sparkr.html)
 
-- [SparkR áttekintése](https://docs.databricks.com/spark/latest/sparkr/overview.html) a Databricks
+- [SparkR áttekintése](https://docs.databricks.com/spark/latest/sparkr/overview.html) databricksből

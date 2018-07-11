@@ -1,9 +1,9 @@
 ---
-title: Rögzítsen egy rendszerképet a Linux virtuális gépek |} Microsoft Docs
-description: Útmutató a Linux-alapú Azure virtuális gépek (VM) a klasszikus üzembe helyezési modellel létrehozott lemezkép rögzítése.
+title: Linux rendszerű virtuális gép lemezképének |} A Microsoft Docs
+description: Ismerje meg, hogyan rögzíthet egy képet a Linux-alapú Azure virtuális gép (VM) a klasszikus üzemi modellel létrehozott.
 services: virtual-machines-linux
 documentationcenter: ''
-author: iainfoulds
+author: cynthn
 manager: jeconnoc
 editor: tysonn
 tags: azure-service-management
@@ -15,100 +15,100 @@ ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2017
-ms.author: iainfou
-ms.openlocfilehash: 6071e025352199c5ec559598a580a918c2e9c666
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.author: cynthn
+ms.openlocfilehash: ae87af45ffc442c0de6c7f703694a994e536cdb8
+ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "33941428"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37929212"
 ---
 # <a name="how-to-capture-a-classic-linux-virtual-machine-as-an-image"></a>Klasszikus linuxos virtuális gép rögzítése lemezképként
 > [!IMPORTANT]
-> Azure az erőforrások létrehozására és kezelésére két különböző üzembe helyezési modellel rendelkezik: [Resource Manager és klasszikus](../../../resource-manager-deployment-model.md). Ez a cikk a klasszikus telepítési modell használatát bemutatja. A Microsoft azt javasolja, hogy az új telepítések esetén a Resource Manager modellt használja. [ Ismerje meg, hogyan ](../capture-image.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)hajthatja végre ezeket a lépéseket a Resource Manager-modell használatával.
+> Az Azure az erőforrások létrehozásához és használatához két különböző üzembe helyezési modellel rendelkezik: [Resource Manager és klasszikus](../../../resource-manager-deployment-model.md). Ez a cikk ismerteti a klasszikus üzemi modell használatával. A Microsoft azt javasolja, hogy az új telepítések esetén a Resource Manager modellt használja. [ Ismerje meg, hogyan ](../capture-image.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)hajthatja végre ezeket a lépéseket a Resource Manager-modell használatával.
 > [!INCLUDE [virtual-machines-common-classic-createportal](../../../../includes/virtual-machines-classic-portal.md)]
 
-Ez a cikk bemutatja, hogyan a klasszikus Azure virtuális gép (VM) Linux futtató más virtuális gépek létrehozása lemezkép rögzítése. Ez a rendszerkép tartalmazza az operációsrendszer-lemez és adatlemezek a virtuális Géphez csatlakozik. Nem tartoznak bele, olyan hálózati beállításokat úgy kell konfigurálni, hogy a virtuális gép létrehozásakor a lemezképből.
+Ez a cikk bemutatja, hogyan a klasszikus Azure futtató virtuális gépet (VM) Linux hozhat létre más virtuális gépeket a lemezkép rögzítése. Ez a rendszerkép tartalmazza az operációsrendszer-lemez és a virtuális Géphez csatolt adatlemezek. Hálózati konfiguráció, úgy kell konfigurálni, hogy a virtuális gép létrehozásakor a lemezképből nem tartalmazza.
 
-Azure tárolja a **képek**, feltöltött képeket együtt. Lemezképek kapcsolatos további információkért lásd: [kapcsolatos virtuálisgép-lemezképeket az Azure-ban][About Virtual Machine Images in Azure].
+Az Azure tárolja a kép alatt **lemezképek**, bármely Ön által feltöltött képek együtt. További információk a rendszerképekről további információkért lásd: [kapcsolatos virtuálisgép-lemezképek az Azure-ban][About Virtual Machine Images in Azure].
 
 ## <a name="before-you-begin"></a>Előkészületek
-Ezek a lépések feltételezik, hogy korábban már létrehozott egy Azure virtuális Gépen, klasszikus telepítési modellel és konfigurálva az operációs rendszer, beleértve a bármely adatlemezt csatolni. Ha szeretne virtuális gép létrehozása, olvasása [létrehozása Linux virtuális gépek][How to Create a Linux Virtual Machine].
+A lépések feltételezik, hogy már létrehozta a klasszikus üzemi modellt használó Azure virtuális gép és az operációs rendszer, beleértve a bármely adatlemezek csatolására konfigurálva. Ha szeretne egy virtuális gép létrehozása, olvasása [létrehozása Linux rendszerű virtuális gép][How to Create a Linux Virtual Machine].
 
 ## <a name="capture-the-virtual-machine"></a>A virtuális gép rögzítése
-1. [Csatlakoztassa a virtuális Gépet](../mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) egy SSH-ügyfél az Ön által választott használatával.
-2. Az SSH ablakban írja be a következő parancsot. A kimenet `waagent` függően eltérőek lehetnek attól függően, hogy ezt a segédprogramot verziója:
+1. [Csatlakozzon a virtuális Géphez](../mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) tetszőleges egy SSH-ügyfél használatával.
+2. Az SSH ablakban írja be a következő parancsot. A kimenet `waagent` némileg eltérőek lehetnek a segédprogram verziójától függően:
 
     ```bash
     sudo waagent -deprovision+user
     ```
 
-    A fenti paranccsal próbál tisztítsa meg a rendszer, és lehetővé teszi a megfelelő reprovisioning. Ez a művelet a következő feladatokat hajtja végre:
+    A fenti paranccsal próbál meg törölni a rendszer, és adja meg a megfelelő reprovisioning. Ez a művelet a következő feladatokat hajtja végre:
 
-   * SSH-állomások kulcsait eltávolítja (ha Provisioning.RegenerateSshHostKeyPair "y", a konfigurációs fájlban)
-   * Törli a /etc/resolv.conf névkiszolgáló-konfiguráció
-   * Eltávolítja a `root` a felhasználó jelszava a/etc/árnyékmásolat (ha Provisioning.DeleteRootPassword "y" konfigurációs fájlban)
+   * SSH-állomáskulcsok eltávolítja (ha Provisioning.RegenerateSshHostKeyPair "y", a konfigurációs fájlban)
+   * Az /etc/resolv.conf névkiszolgáló-konfiguráció törlése
+   * Eltávolítja a `root` a felhasználó jelszava a/etc/árnyékmásolat (ha Provisioning.DeleteRootPassword "y" a konfigurációs fájlban)
    * A gyorsítótárazott DHCP-ügyfélbérletek eltávolítása
    * A localhost.localdomain állomásnév visszaállítása
-   * Törli a legutóbbi kiépített felhasználói fiókot (/var/lib/waagent nyert) **és az adatok**.
+   * Törli az utolsó kiépített felhasználói fiókot (/var/lib/waagent szerzett) **és a kapcsolódó adatokat**.
 
      > [!NOTE]
-     > Megszüntetés törli a fájlokat és adatokat a lemezkép "általánosítja". Ez a parancs csak egy virtuális Gépet, amelyet lemezképfájlforrásként kíván új sablonként lemezkép rögzítése futtatható. Nem biztos, hogy a lemezkép minden a bizalmas adatok megszűnik, vagy alkalmas terjesztési át harmadik félnek.
+     > A megszüntetés törli a fájlokat és adatokat a "" a lemezkép általánossá tétele. Csak az alábbi paranccsal egy új sablonként lemezkép rögzítése kívánt virtuális gépen. Nem garantálja, hogy a lemezkép törlődik a bizalmas adatok, vagy alkalmas terjesztési át harmadik félnek.
 
-3. Típus **y** folytatja. Hozzáadhat a `-force` paraméter a megerősítési lépés elkerülése érdekében.
-4. Típus **kilépési** az SSH-ügyfél bezárásához.
-
-   > [!NOTE]
-   > A fennmaradó lépések azt feltételezik, hogy már rendelkezik [az Azure parancssori felület telepítve](../../../cli-install-nodejs.md) az ügyfélszámítógépen. Az alábbi lépéseket is teheti a [Azure-portálon](http://portal.azure.com).
-
-5. Az ügyfélszámítógépen nyissa meg az Azure parancssori felület, és jelentkezzen be az Azure-előfizetéshez. További információkért olvassa el a [csatlakozás Azure-előfizetéshez az Azure parancssori felületen](/cli/azure/authenticate-azure-cli).
+3. Típus **y** folytatásához. Hozzáadhat a `-force` paraméter a megerősítési lépés elkerülése érdekében.
+4. Típus **kilépési** gombra kattintva zárja be az SSH-ügyfél.
 
    > [!NOTE]
-   > Az Azure portálon jelentkezzen be a portálra.
+   > A fennmaradó lépések azt feltételezik, hogy már [telepítve van az Azure CLI](../../../cli-install-nodejs.md) az ügyfélszámítógépen. Az alábbi lépéseket is el lehet végezni a [az Azure portal](http://portal.azure.com).
 
-6. Ellenőrizze, hogy a szolgáltatás felügyeleti mód:
+5. Az ügyfélszámítógépről nyissa meg az Azure CLI-vel, és jelentkezzen be az Azure-előfizetésében. További információkért olvassa el a [csatlakozhat az Azure-előfizetés az Azure parancssori felületen](/cli/azure/authenticate-azure-cli).
+
+   > [!NOTE]
+   > Az Azure Portalon jelentkezzen be a portálra.
+
+6. Győződjön meg arról, hogy szolgáltatásfelügyelet módban van:
 
     ```azurecli
     azure config mode asm
     ```
 
-7. Állítsa le a virtuális Gépet, amely már platformelőfizetés. Az alábbi példa nevű virtuális gép leáll `myVM`:
+7. Állítsa le a virtuális gép, amely már eltávolította a következő. A következő példa leállítja a virtuális gép neve `myVM`:
 
     ```azurecli
     azure vm shutdown myVM
     ```
-   Ha szükséges, megtekintheti az előfizetésében használatával létrehozott virtuális gépek listája `azure vm list`
+   Szükség esetén megtekintheti egy lista használatával az előfizetésben létrehozott virtuális gépek `azure vm list`
 
    > [!NOTE]
-   > Az Azure portál használata, jelölje ki a virtuális Gépet, és kattintson **leállítása** a virtuális gép leállítása.
+   > Ha használja az Azure Portalon, válassza ki a virtuális Gépet, és kattintson **leállítása** a virtuális gép leállítása.
 
-8. Ha a virtuális gép le van állítva, a lemezképének rögzítése. Az alábbi példa rögzíti a virtuális gép nevű `myVM` , és létrehoz egy általánosított nevű lemezkép `myNewVM`:
+8. Ha a virtuális gép le van állítva, a lemezkép rögzítése. Az alábbi példa rögzíti a virtuális gép nevű `myVM` , és létrehoz egy általános rendszerkép nevű `myNewVM`:
 
     ```azurecli
     azure vm capture -t myVM myNewVM
     ```
 
-    A `-t` alparancs törli az eredeti virtuális gépet.
+    A `-t` alárendelt parancs törli az eredeti virtuális gépet.
 
     > [!NOTE]
-    > Az Azure-portálon rögzítheti képként kiválasztásával **kép** a központ menüben. Kell megadnia a kép a következő információkat: neve, a erőforráscsoport, a helye, a operációs rendszer típusa és a tárolási blob elérési útja.
+    > Az Azure Portalon, egy lemezképét rögzítheti kiválasztásával **kép** a központ menüben. Adja meg a kép a következő információkat kell: név, erőforráscsoport, hely, operációs rendszer típusa és storage-blob elérési útja.
 
-9. Az új lemezképet a listában minden új virtuális gép konfigurálásához használható képek most érhető el. Ez a parancs tekintheti meg:
+9. Az új rendszerképet most már minden olyan új virtuális gép konfigurálásához használható rendszerképek listájának érhető el. Ez a parancs tekintheti meg:
 
    ```azurecli
    azure vm image list
    ```
 
-   Az a [Azure-portálon](http://portal.azure.com), megjelenik az új lemezképet a **Virtuálisgép-rendszerképek (klasszikus)** , amely a **számítási** szolgáltatások. Van-e hozzáférési **Virtuálisgép-rendszerképek (klasszikus)** kattintva **minden szolgáltatás** tetején található az Azure szolgáltatás a lista, majd a **számítási** szolgáltatások.   
+   Az a [az Azure portal](http://portal.azure.com), megjelenik az új rendszerképet a **Virtuálisgép-lemezképek (klasszikus)** tartozik, amely a **számítási** szolgáltatások. Elérheti **Virtuálisgép-lemezképek (klasszikus)** kattintva **minden szolgáltatás** tetején található az Azure szolgáltatásra a listában, és majd jövőt láthatja a **számítási** szolgáltatások.   
 
-   ![Lemezkép-rögzítési sikeres](./media/capture-image/VMCapturedImageAvailable.png)
+   ![Rendszerkép-rögzítési sikeres](./media/capture-image/VMCapturedImageAvailable.png)
 
 ## <a name="next-steps"></a>További lépések
-A lemezkép készen áll a virtuális gépek létrehozásához használható. Az Azure CLI paranccsal `azure vm create` és adja meg a létrehozott lemezkép nevét. További információkért lásd: [klasszikus telepítési modellt az Azure parancssori felület használatával](https://docs.microsoft.com/cli/azure/get-started-with-az-cli2).
+A lemezkép készen áll a virtuális gépek létrehozásához használható. Az Azure CLI-parancsot is használhatja `azure vm create` , és adja meg a rendszerkép nevének hozott létre. További információkért lásd: [az Azure CLI használatával a klasszikus üzemi modellel](https://docs.microsoft.com/cli/azure/get-started-with-az-cli2).
 
-Másik megoldásként használhatja a [Azure-portálon](http://portal.azure.com) használatával egyéni virtuális gép létrehozása a **kép** metódus és a létrehozott lemezkép kiválasztása. További információkért lásd: [egyéni virtuális gép létrehozása][How to Create a Custom Virtual Machine].
+Másik megoldásként használhatja a [az Azure portal](http://portal.azure.com) hozhat létre egy egyéni virtuális Gépet a **kép** metódust, és a létrehozott lemezkép kiválasztása. További információkért lásd: [egy egyéni virtuális gép létrehozása][How to Create a Custom Virtual Machine].
 
-**További információ:** [Azure Linux ügynök felhasználói útmutatója](../../extensions/agent-linux.md)
+**Lásd még:** [Azure Linux-ügynök használati útmutatója](../../extensions/agent-linux.md)
 
 [About Virtual Machine Images in Azure]:../../virtual-machines-linux-classic-about-images.md
 [How to Create a Custom Virtual Machine]:create-custom-classic.md

@@ -9,12 +9,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 06/22/2017
 ms.author: v-geberr
-ms.openlocfilehash: da8ea6dead6b22d97e7338b2aa57a892be475417
-ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
+ms.openlocfilehash: 1c68c586fb799a540f70804d181aa66b2bda9e97
+ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37344831"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37952538"
 ---
 # <a name="what-is-language-understanding-luis"></a>Mit jelent a Language Understanding (LUIS)?
 Language Understanding (LUIS) egy felhőalapú szolgáltatás, amely egyéni gépi tanulási vonatkozik a felhasználó természetes nyelvi, természetes nyelvi szöveg teljes jelentése találnia, és ki a megfelelő, részletes információkat. 
@@ -99,7 +99,7 @@ Példa [utterance (kifejezés)](luis-how-to-add-example-utterances.md) van a fel
 A LUIS-alkalmazás közzé van téve, és a valós felhasználói utterances kap, miután a LUIS növelve előrejelzés pontosságát több módszert is biztosít: [aktív tanulás](#active-learning) a végpont utterances, [listák kifejezés](#phrase-lists) tartomány a felvételt a Word és [minták](#patterns) szükséges utterances számának csökkentése érdekében.
 
 ### <a name="active-learning"></a>Aktív tanulás
-Az a [aktív tanulás](label-suggested-utterances.md) folyamat, LUIS lehetővé teszi, hogy a LUIS-alkalmazás a való életből vett utterances alkalmazkodnak a végponton felülvizsgálandó kapott utterances kiválasztásával. Fogadja el, vagy javítsa ki a végpont-előrejelzés, teljesített kapcsolat-újraépítési és újra közzétettük. A LUIS megtanulja gyorsan a iteratív folyamattal minimális mennyisége az idő és erőfeszítés véve. 
+Az a [aktív tanulás](luis-how-to-review-endoint-utt.md) folyamat, LUIS lehetővé teszi, hogy a LUIS-alkalmazás a való életből vett utterances alkalmazkodnak a végponton felülvizsgálandó kapott utterances kiválasztásával. Fogadja el, vagy javítsa ki a végpont-előrejelzés, teljesített kapcsolat-újraépítési és újra közzétettük. A LUIS megtanulja gyorsan a iteratív folyamattal minimális mennyisége az idő és erőfeszítés véve. 
 
 ### <a name="phrase-lists"></a>Kifejezéslisták 
 A LUIS biztosít [listák kifejezések](luis-concept-feature.md) úgy adhatja meg, fontos szavakat vagy kifejezéseket modell tartományához. A LUIS ezek a listák segítségével további többszörösére hozzá ezekhez a szavak és kifejezések, amelyek lenne egyébként nem található a modellben.

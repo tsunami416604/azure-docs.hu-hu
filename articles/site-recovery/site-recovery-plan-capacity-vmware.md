@@ -4,15 +4,15 @@ description: Ez a cikk a kapacitás megtervezése és a méretezési csoport has
 services: site-recovery
 author: rayne-wiselman
 ms.service: site-recovery
+ms.date: 07/06/2018
 ms.topic: conceptual
-ms.date: 06/20/2018
 ms.author: rayne
-ms.openlocfilehash: 9fe7ed4cb965dfb4aa6be592ab4653ae4be534cf
-ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
+ms.openlocfilehash: 905798acd5836c31953714d7984cfb19f16cecab
+ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37859176"
+ms.lasthandoff: 07/09/2018
+ms.locfileid: "37920797"
 ---
 # <a name="plan-capacity-and-scaling-for-vmware-replication-with-azure-site-recovery"></a>Kapacitás megtervezése és skálázás az Azure Site Recovery VMware-replikáláshoz
 

@@ -1,9 +1,9 @@
 ---
-title: A MongoDB a Linux virtuális gép és az Azure parancssori felület telepítése |} Microsoft Docs
-description: Megtudhatja, hogyan telepítheti és konfigurálhatja a Linux virtuális gép iusing az Azure CLI 2.0 MongoDB
+title: A MongoDB telepítése egy Linux rendszerű virtuális gépen az Azure CLI-vel |} A Microsoft Docs
+description: Ismerje meg, hogyan telepítse és konfigurálja a MongoDB egy Linux rendszerű virtuális gép iusing az Azure CLI 2.0 használatával
 services: virtual-machines-linux
 documentationcenter: ''
-author: iainfoulds
+author: cynthn
 manager: jeconnoc
 editor: ''
 ms.assetid: 3f55b546-86df-4442-9ef4-8a25fae7b96e
@@ -13,24 +13,24 @@ ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 12/15/2017
-ms.author: iainfou
-ms.openlocfilehash: a47c0e2f655f51444dc586f696c26caa63ab6cac
-ms.sourcegitcommit: 828d8ef0ec47767d251355c2002ade13d1c162af
+ms.author: cynthn
+ms.openlocfilehash: d066b412fb722318824a408861fe7d9595c71537
+ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36937582"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37928233"
 ---
-# <a name="how-to-install-and-configure-mongodb-on-a-linux-vm"></a>Hogyan kell telepíteni, és konfigurálja a MongoDB a Linux virtuális gép
-[MongoDB](http://www.mongodb.org) egy népszerű nyílt forráskódú, nagy teljesítményű NoSQL-adatbázis. Ez a cikk bemutatja, hogyan telepítse és konfigurálja a MongoDB a Linux virtuális gép az Azure CLI 2.0. Példák, amelyek részletesen hogyan számára:
+# <a name="how-to-install-and-configure-mongodb-on-a-linux-vm"></a>Telepítése és konfigurálása a MongoDB egy Linux rendszerű virtuális gépen
+[MongoDB](http://www.mongodb.org) egy népszerű nyílt forráskódú, nagy teljesítményű NoSQL-adatbázis. Ez a cikk bemutatja, hogyan telepítése és konfigurálása a MongoDB egy Linux rendszerű virtuális gépen az Azure CLI 2.0 használatával. Példák hogyan jelenik meg, amelyek részletesen a:
 
-* [Kézi telepítését és konfigurálását egy alapszintű MongoDB-példány](#manually-install-and-configure-mongodb-on-a-vm)
-* [Egy alapszintű MongoDB-példány használata a Resource Manager-sablon létrehozása](#create-basic-mongodb-instance-on-centos-using-a-template)
-* [Hozzon létre egy összetett MongoDB replikával szilánkos fürt beállítja a Resource Manager-sablon használatával](#create-a-complex-mongodb-sharded-cluster-on-centos-using-a-template)
+* [Kézi telepítését és konfigurálását egy alapszintű MongoDB-példányban](#manually-install-and-configure-mongodb-on-a-vm)
+* [Hozzon létre egy alapszintű MongoDB-példányban, Resource Manager-sablon használatával](#create-basic-mongodb-instance-on-centos-using-a-template)
+* [Hozzon létre egy összetett MongoDB, a replika horizontálisan skálázott fürt beállítja a Resource Manager-sablon használatával](#create-a-complex-mongodb-sharded-cluster-on-centos-using-a-template)
 
 
-## <a name="manually-install-and-configure-mongodb-on-a-vm"></a>Kézi telepítését és konfigurálását a MongoDB a virtuális gép
-MongoDB [telepítési utasításokkal](https://docs.mongodb.com/manual/administration/install-on-linux/) a Linux disztribúciókkal, beleértve a Red Hat / CentOS, SUSE, Ubuntu és Debian. Az alábbi példa létrehoz egy *CentOS* virtuális gép. Ebben a környezetben, meg kell a legújabb [Azure CLI 2.0](/cli/azure/install-az-cli2) telepítve, és bejelentkezett az Azure-fiók használatával [az bejelentkezési](/cli/azure/reference-index#az_login).
+## <a name="manually-install-and-configure-mongodb-on-a-vm"></a>Kézi telepítését és konfigurálását a MongoDB egy virtuális gépen
+MongoDB [adja meg a telepítési utasításokat](https://docs.mongodb.com/manual/administration/install-on-linux/) többek között a Red Hat Linux-disztribúciók esetében / CentOS, SUSE, Ubuntu és a Debian. A következő példában létrehozunk egy *CentOS* virtuális Gépet. A környezet létrehozására, a legújabb kell [Azure CLI 2.0](/cli/azure/install-az-cli2) telepítve, és bejelentkezett egy Azure-fiókba az [az bejelentkezési](/cli/azure/reference-index#az_login).
 
 Hozzon létre egy erőforráscsoportot az [az group create](/cli/azure/group#az_group_create) paranccsal. A következő példában létrehozunk egy *myResourceGroup* nevű erőforráscsoportot az *EastUS* helyen:
 
@@ -38,7 +38,7 @@ Hozzon létre egy erőforráscsoportot az [az group create](/cli/azure/group#az_
 az group create --name myResourceGroup --location eastus
 ```
 
-Hozzon létre egy virtuális gépet az [az vm create](/cli/azure/vm#az_vm_create) paranccsal. Az alábbi példakód létrehozza a virtuális gépek nevű *myVM* nevű felhasználóval történő *azureuser* SSH nyilvános kulcsos hitelesítés használatával
+Hozzon létre egy virtuális gépet az [az vm create](/cli/azure/vm#az_vm_create) paranccsal. A következő példában létrehozunk egy nevű virtuális Gépet *myVM* nevű felhasználóhoz *azureuser* SSH nyilvános kulcsos hitelesítés használatával
 
 ```azurecli
 az vm create \
@@ -49,13 +49,13 @@ az vm create \
     --generate-ssh-keys
 ```
 
-SSH-kapcsolatot a virtuális gép saját felhasználónév és a `publicIpAddress` kimenete az előző lépést a felsorolt:
+Ssh-KAPCSOLATOT a virtuális gép használata a saját felhasználónevét és a `publicIpAddress` a kimenetben az előző lépésben szereplő:
 
 ```bash
 ssh azureuser@<publicIpAddress>
 ```
 
-Adja hozzá a telepítési források mongodb, hozzon létre egy **yum** tárház fájlt az alábbiak szerint:
+Adja hozzá a telepítési források a mongodb-hez, hozzon létre egy **yum** tárház fájlt az alábbiak szerint:
 
 ```bash
 sudo touch /etc/yum.repos.d/mongodb-org-3.6.repo
@@ -72,32 +72,32 @@ enabled=1
 gpgkey=https://www.mongodb.org/static/pgp/server-3.6.asc
 ```
 
-Telepítse a MongoDB használatával **yum** az alábbiak szerint:
+Telepítse a MongoDB használatával **yum** módon:
 
 ```bash
 sudo yum install -y mongodb-org
 ```
 
-Alapértelmezés szerint SELinux megvalósul CentOS képek, amely megakadályozza a MongoDB-hozzáférése. Csoportházirend-kezelő eszközök telepítése és konfigurálása SELinux engedélyezi a MongoDB működéséhez az alapértelmezett TCP-porton 27017 az alábbiak szerint:
+Alapértelmezés szerint a CentOS-lemezképek, amely meggátolja a mongodb-hez hozzáférő SELinux lép érvénybe. Csoportházirend-kezelő eszközök telepítése és konfigurálása, hogy az alapértelmezett TCP-porton 27017 működéséhez a következő MongoDB SELinux:
 
 ```bash
 sudo yum install -y policycoreutils-python
 sudo semanage port -a -t mongod_port_t -p tcp 27017
 ```
 
-Indítsa el a MongoDB szolgáltatást a következőképpen:
+Indítsa el a MongoDB-szolgáltatást a következőképpen:
 
 ```bash
 sudo service mongod start
 ```
 
-Ellenőrizze a MongoDB telepítése a helyi használatával `mongo` ügyfél:
+Ellenőrizze a MongoDB telepítése a helyi `mongo` ügyfél:
 
 ```bash
 mongo
 ```
 
-Bizonyos adatok hozzáadása, és majd a Keresés most tesztelje a MongoDB-példány:
+Bizonyos adatok hozzáadásával, és ezután a keresés, tesztelje a MongoDB-példányban:
 
 ```sh
 > db
@@ -108,50 +108,50 @@ test
 > exit
 ```
 
-Igény szerint konfigurálja automatikus indításra során a rendszer újraindítását MongoDB:
+Ha szükséges, konfigurálja a MongoDB automatikus indításra során a rendszer újraindítása:
 
 ```bash
 sudo chkconfig mongod on
 ```
 
 
-## <a name="create-basic-mongodb-instance-on-centos-using-a-template"></a>Alapszintű MongoDB-példány létrehozása sablon használatával CentOS
-Létrehozhat egy alapszintű MongoDB-példány egy CentOS virtuális a Githubról a következő Azure gyors üzembe helyezési sablonja segítségével. Ez a sablon használatával az egyéni parancsprogramok futtatására szolgáló bővítmény Linux adhat hozzá egy **yum** tárház az újonnan létrehozott CentOS virtuális gép és a MongoDB telepítse.
+## <a name="create-basic-mongodb-instance-on-centos-using-a-template"></a>Alapszintű MongoDB-példány létrehozása a CentOS egy sablon használatával
+Egy alapszintű MongoDB-példányban githubból az alábbi Azure gyors üzembe helyezés sablon használatával egy CentOS virtuális gépen is létrehozhat. Ez a sablon az egyéni szkriptek futtatására szolgáló bővítmény linuxhoz használatával adhat hozzá egy **yum** az újonnan létrehozott CentOS virtuális Gépet és telepítse a MongoDB-adattár.
 
-* [Alapszintű MongoDB-példány a CentOS](https://github.com/Azure/azure-quickstart-templates/tree/master/mongodb-on-centos) - https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/mongodb-on-centos/azuredeploy.json
+* [Alapszintű, a CentOS MongoDB-példányban](https://github.com/Azure/azure-quickstart-templates/tree/master/mongodb-on-centos) - https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/mongodb-on-centos/azuredeploy.json
 
-Ebben a környezetben, meg kell a legújabb [Azure CLI 2.0](/cli/azure/install-az-cli2) telepítve, és bejelentkezett az Azure-fiók használatával [az bejelentkezési](/cli/azure/reference-index#az_login). Először hozzon létre egy erőforráscsoportot az [az group create](/cli/azure/group#az_group_create) paranccsal. A következő példában létrehozunk egy *myResourceGroup* nevű erőforráscsoportot az *EastUS* helyen:
+A környezet létrehozására, a legújabb kell [Azure CLI 2.0](/cli/azure/install-az-cli2) telepítve, és bejelentkezett egy Azure-fiókba az [az bejelentkezési](/cli/azure/reference-index#az_login). Először hozzon létre egy erőforráscsoportot az [az group create](/cli/azure/group#az_group_create) paranccsal. A következő példában létrehozunk egy *myResourceGroup* nevű erőforráscsoportot az *EastUS* helyen:
 
 ```azurecli
 az group create --name myResourceGroup --location eastus
 ```
 
-Ezután telepítse a MongoDB-sablont a [az csoport központi telepítésének létrehozása](/cli/azure/group/deployment#az_group_deployment_create). Amikor a rendszer kéri, adja meg a saját egyedi értékeket az *newStorageAccountName*, *dnsNameForPublicIP*, és a rendszergazda felhasználónevét és jelszavát:
+Ezután telepítse a MongoDB-sablont a [az csoport központi telepítésének létrehozása](/cli/azure/group/deployment#az_group_deployment_create). Amikor a rendszer kéri, adja meg a saját egyedi értékek *newStorageAccountName*, *dnsNameForPublicIP*, és rendszergazdai felhasználónevét és jelszavát:
 
 ```azurecli
 az group deployment create --resource-group myResourceGroup \
   --template-uri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/mongodb-on-centos/azuredeploy.json
 ```
 
-Jelentkezzen be a virtuális gép használata a nyilvános DNS-címét, a virtuális gép. Megtekintheti a nyilvános DNS-cím [az vm megjelenítése](/cli/azure/vm#az_vm_show):
+Jelentkezzen be a virtuális Gépet a virtuális gép nyilvános DNS-címének használatával. Megtekintheti a nyilvános DNS-cím [az vm show](/cli/azure/vm#az_vm_show):
 
 ```azurecli
 az vm show -g myResourceGroup -n myLinuxVM -d --query [fqdns] -o tsv
 ```
 
-SSH-kapcsolatot a virtuális Gépet, a saját felhasználónévvel és a nyilvános DNS-címét:
+Ssh-KAPCSOLATOT a virtuális gépet, a saját felhasználónevét és a nyilvános DNS-cím:
 
 ```bash
 ssh azureuser@mypublicdns.eastus.cloudapp.azure.com
 ```
 
-Ellenőrizze a MongoDB telepítése a helyi használatával `mongo` ügyfél az alábbiak szerint:
+Ellenőrizze a MongoDB telepítése a helyi `mongo` ügyfél az alábbiak szerint:
 
 ```bash
 mongo
 ```
 
-Most tesztfiókok az egyes adatok hozzáadása, majd keresse az alábbiak szerint:
+Most tesztelheti a példány hozzáadásával bizonyos adatokat, és keressen a következő:
 
 ```sh
 > db
@@ -163,21 +163,21 @@ test
 ```
 
 
-## <a name="create-a-complex-mongodb-sharded-cluster-on-centos-using-a-template"></a>A sablon használatával CentOS összetett MongoDB szilánkos fürt létrehozása
-Egy összetett MongoDB szilánkos fürtöt a következő Azure gyors üzembe helyezés sablont a Githubból is létrehozhat. Ez a sablon a következő a [MongoDB szilánkos fürt gyakorlati tanácsok](https://docs.mongodb.com/manual/core/sharded-cluster-components/) redundancia és a magas rendelkezésre állás biztosításához. A sablon két szilánkok, az egyes replika három csomópontot hoz létre. Egy konfigurációs kiszolgálót replikakészlethez három csomópontot is létrejön, és két **mongos** útválasztó kiszolgálók között a szilánkok származó alkalmazások konzisztencia biztosításához.
+## <a name="create-a-complex-mongodb-sharded-cluster-on-centos-using-a-template"></a>Hozzon létre egy összetett horizontálisan skálázott MongoDB-fürtöt CentOS-sablon használatával
+Létrehozhat egy összetett MongoDB horizontálisan skálázott fürtöt a következő Azure gyorsindítási sablont a Githubból. Ez a sablon a következő a [MongoDB horizontálisan skálázott fürthöz ajánlott eljárások](https://docs.mongodb.com/manual/core/sharded-cluster-components/) redundancia és magas rendelkezésre állás biztosításához. A sablon létrehozza a két szegmensek minden replika három csomóponttal. Egy konfigurációs kiszolgáló replika három csomóponttal rendelkező is létrejön, valamint két **mongos** útválasztó kiszolgálók biztosítsa a konzisztenciát az alkalmazások a szegmensek között.
 
-* [MongoDB horizontális fürt a CentOS](https://github.com/Azure/azure-quickstart-templates/tree/master/mongodb-sharding-centos) - https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/mongodb-sharding-centos/azuredeploy.json
+* [A mongodb-hez a horizontális skálázás fürt CentOS](https://github.com/Azure/azure-quickstart-templates/tree/master/mongodb-sharding-centos) - https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/mongodb-sharding-centos/azuredeploy.json
 
 > [!WARNING]
-> Az összetett szilánkos MongoDB-fürt telepítése szükséges több mint 20 mag, vagyis általában az alapértelmezett magok száma az előfizetéshez régiónként. Nyissa meg a alapszámának növeléséhez az Azure támogatási kérelmet.
+> Ez összetett horizontálisan skálázott MongoDB-fürt üzembe helyezésekor kell lennie, több mint 20 mag, ami általában az előfizetéshez tartozó régiónkénti alapértelmezett-magok száma. Nyisson meg egy Azure-támogatási kérést, hogy növelje a magok száma.
 
-Ebben a környezetben, meg kell a legújabb [Azure CLI 2.0](/cli/azure/install-az-cli2) telepítve, és bejelentkezett az Azure-fiók használatával [az bejelentkezési](/cli/azure/reference-index#az_login). Először hozzon létre egy erőforráscsoportot az [az group create](/cli/azure/group#az_group_create) paranccsal. A következő példában létrehozunk egy *myResourceGroup* nevű erőforráscsoportot az *EastUS* helyen:
+A környezet létrehozására, a legújabb kell [Azure CLI 2.0](/cli/azure/install-az-cli2) telepítve, és bejelentkezett egy Azure-fiókba az [az bejelentkezési](/cli/azure/reference-index#az_login). Először hozzon létre egy erőforráscsoportot az [az group create](/cli/azure/group#az_group_create) paranccsal. A következő példában létrehozunk egy *myResourceGroup* nevű erőforráscsoportot az *EastUS* helyen:
 
 ```azurecli
 az group create --name myResourceGroup --location eastus
 ```
 
-Ezután telepítse a MongoDB-sablont a [az csoport központi telepítésének létrehozása](/cli/azure/group/deployment#az_group_deployment_create). Adja meg a saját erőforrás nevét, és ahol szükséges, az ilyen méretű *mongoAdminUsername*, *sizeOfDataDiskInGB*, és *configNodeVmSize*:
+Ezután telepítse a MongoDB-sablont a [az csoport központi telepítésének létrehozása](/cli/azure/group/deployment#az_group_deployment_create). Adja meg a saját erőforrás-neveket, és ahol szükséges, például a méretű *mongoAdminUsername*, *sizeOfDataDiskInGB*, és *configNodeVmSize*:
 
 ```azurecli
 az group deployment create --resource-group myResourceGroup \
@@ -199,7 +199,7 @@ az group deployment create --resource-group myResourceGroup \
   --no-wait
 ```
 
-A központi telepítés is igénybe vehet, akár egy óráig telepítheti és konfigurálhatja a Virtuálisgép-példányok. A `--no-wait` jelző használata az előző parancs végén a parancssorba való visszatéréshez vezérlő, amennyiben az a sablon-üzembehelyezés elfogadta az Azure platformon. Megtekintheti a központi telepítési állapot [az csoport telepítési megjelenítése](/cli/azure/group/deployment#az_group_deployment_show). A következő példa a állapota megtekinti a *myMongoDBCluster* központi telepítést, a *myResourceGroup* erőforráscsoport:
+A központi telepítés is igénybe vehet, telepítheti és konfigurálhatja a Virtuálisgép-példányok egy óránál. A `--no-wait` jelző szolgál az előző parancs végén vezérlési visszatérhet a parancssor használatával után a sablon üzembe helyezéséhez az Azure platform által elfogadott. Ezután megtekintheti a központi telepítési állapot [az csoport deployment show](/cli/azure/group/deployment#az_group_deployment_show). Az alábbi példa megjeleníti az állapotát a *myMongoDBCluster* központi telepítést, a *myResourceGroup* erőforráscsoportot:
 
 ```azurecli
 az group deployment show \
@@ -210,11 +210,11 @@ az group deployment show \
 ```
 
 ## <a name="next-steps"></a>További lépések
-Ezekben a példákban csatlakozik a MongoDB-példány helyileg a virtuális gépről. Ha szeretné a MongoDB-példány egy másik virtuális gép vagy a hálózati csatlakozás, ellenőrizze a megfelelő [jönnek létre a hálózati biztonsági csoportszabályok](nsg-quickstart.md).
+Ezekben a példákban csatlakozik a MongoDB-példányban helyileg a virtuális gépről. Ha szeretne egy másik virtuális Géphez vagy hálózati csatlakozás a MongoDB-példányban, győződjön meg, hogy a megfelelő [jönnek létre a hálózati biztonsági csoport szabályai](nsg-quickstart.md).
 
-Ezek a példák központi telepítése a core MongoDB környezet fejlesztési célokra szolgál. Alkalmazza a szükséges biztonsági konfigurációs beállításokat a környezetéhez. További információkért lásd: a [MongoDB biztonsági docs](https://docs.mongodb.com/manual/security/).
+Ezekben a példákban üzembe helyezése a core MongoDB környezet fejlesztési célra. A alkalmazni a szükséges biztonsági beállítási lehetőségei a környezetben. További információkért lásd: a [MongoDB biztonsági docs](https://docs.mongodb.com/manual/security/).
 
-Sablonok használata létrehozásával kapcsolatos további információkért lásd: a [Azure Resource Manager áttekintése](../../azure-resource-manager/resource-group-overview.md).
+Létrehozásával sablonok használatával kapcsolatos további információkért lásd: a [Azure Resource Manager áttekintése](../../azure-resource-manager/resource-group-overview.md).
 
-Az Azure Resource Manager-sablonok segítségével az egyéni parancsprogramok futtatására szolgáló bővítmény letöltésére és végrehajtására parancsfájlok a virtuális gépeken. További információkért lásd: [használata az Azure egyéni parancsprogramok futtatására szolgáló bővítmény Linux virtuális gépek](extensions-customscript.md).
+Az Azure Resource Manager-sablonok az egyéni Szkriptbővítmény használatával töltsön le, és szkriptek végrehajtása a virtuális gépeken. További információkért lásd: [az Azure egyéni szkriptek futtatására szolgáló bővítmény használata a Linux rendszerű virtuális gépek](extensions-customscript.md).
 

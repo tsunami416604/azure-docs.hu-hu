@@ -1,5 +1,5 @@
 ---
-title: Hogyan oszthatja meg Azure fejlesztői szóközöket |} Microsoft Docs
+title: Hogyan oszthatja meg az Azure fejlesztési tárolóhelyek |} A Microsoft Docs
 titleSuffix: Azure Dev Spaces
 services: azure-dev-spaces
 ms.service: azure-dev-spaces
@@ -11,22 +11,27 @@ ms.topic: article
 description: Gyors Kubernetes-fejlesztés tárolókkal és mikroszolgáltatásokkal az Azure-ban
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, tárolók
 manager: douge
-ms.openlocfilehash: ca644cc412ad0c8f0e2a0781d9419fba58ed8d12
-ms.sourcegitcommit: 50f82f7682447245bebb229494591eb822a62038
+ms.openlocfilehash: 9345015a8732da02ea68711cd807556a543d8d01
+ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35247704"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37930144"
 ---
-# <a name="share-azure-dev-spaces"></a>Megosztás Azure fejlesztői szóközöket
+# <a name="share-azure-dev-spaces"></a>Az Azure fejlesztői, szóközök megosztása
 
-A Azure fejlesztői szóközt tartalmaz a csapat a fejlesztői tárhely másokkal is megoszthatja. Minden egyes fejlesztői saját tárolóhelyet mások számára megtörje való nélkül is használhatók. Is egy helyről együttesen működő lehetővé teszik a kód-végpontok tesztelése mocks létrehozása vagy szimulálása függőségek nélkül. Tekintse meg a [további információ a fejlesztési csapat](../get-started-nodejs.md#learn-about-team-development) útmutatójában talál.
+Azure fejlesztői szóközöket megoszthatja a csapat a fejlesztési tárhely másokkal. Minden fejlesztő saját tárolóhelyet, a használhatatlanná tévő mások lehetőségének nélkül is használhatók. Is együttműködése egy tárolóhely engedélyezheti, hogy tesztelje a kódot teljes körű mocks létrehozása és a függőségek szimulálása nélkül. Tekintse meg a [megismerheti a fejlesztési csapat](../team-development-nodejs.md) útmutató tartalmaz további tudnivalókat.
 
-Fejlesztői adhatja beállítása több fejlesztőknek:
-1. Hozzon létre egy fejlesztői tárolóhelyet az Azure-ban. Válasszon [.NET Core és a Visual STUDIO Code](../get-started-netcore.md), [.NET Core és a Visual Studio](../get-started-netcore-visualstudio.md), vagy [Node.js és a Visual STUDIO Code](../get-started-nodejs.md). A kijelölt Azure-előfizetés tulajdonosának vagy Közreműködőjének hozzáférése lesz szüksége.
-1. Konfigurálja az Azure fejlesztői területet **erőforráscsoport** való [közreműködői hozzáférést](/azure/active-directory/role-based-access-control-configure) minden csapattag. A fejlesztői terület erőforráscsoport Ez a parancs futtatásával ellenőrizheti: `azds list`
-1. Kérje meg a csoport tagjai **jelölje ki a fejlesztői területet** azt fejlesztése érdekében.
-     * **Parancssor vagy a Visual STUDIO Code**: meglévő Azure fejlesztői szóközöket megjelenítéséhez rendelkezik hozzáféréssel: `azds space list`. Jelölje be a fejlesztési adhatja: `azds space select`.
-     * **Visual Studio IDE**: Nyissa meg a projektet a Visual Studio felületén válassza **Azure fejlesztői szóközöket** az indítási beállítások legördülő. A megnyíló párbeszédpanelen válasszon egy meglévő fürthöz.
+## <a name="set-up-a-dev-space-for-multiple-developers"></a>Állítsa be egy fejlesztési terület több fejlesztő
 
-![A Visual Studio indítási beállítások legördülő](../media/get-started-netcore-visualstudio/LaunchSettings.png)
+1. Hozzon létre egy fejlesztési tárolóhelyet az Azure-ban. Válasszon [.NET Core- és a VS Code](../get-started-netcore.md), [.NET Core és a Visual Studio](../get-started-netcore-visualstudio.md), vagy [Node.js és a VS Code](../get-started-nodejs.md). A kiválasztott Azure-előfizetés tulajdonosa vagy Közreműködője hozzá kell.
+1. Konfigurálja az Azure fejlesztési területet **erőforráscsoport** való [közreműködői hozzáférés biztosítása](/azure/active-directory/role-based-access-control-configure) minden egyes csapattag számára. Ez a parancs futtatásával ellenőrizheti egy fejlesztési terület erőforráscsoportot: `azds list`
+1. Kérje meg a csoport tagjai **jelölje ki a fejlesztői területet** , fejlesztése érdekében.
+     * **Parancssor vagy a VS Code**:, tekintse meg a meglévő Azure fejlesztői tárolóhelyek való hozzáféréssel rendelkezik: `azds space list`. Jelölje be a fejlesztési szóközzel: `azds space select`.
+     * **Visual Studio IDE**: nyisson meg egy projektet a Visual Studióban válassza **Azure fejlesztési tárolóhelyek** az indítási beállítások legördülő listából. A megnyíló párbeszédpanelen válassza ki egy meglévő fürthöz.
+
+    ![A Visual Studio indítási beállítások legördülő menü](../media/get-started-netcore-visualstudio/LaunchSettings.png)
+
+## <a name="next-steps"></a>További lépések
+
+Lásd: [megismerheti a fejlesztési csapat](../team-development-nodejs.md) további információt.

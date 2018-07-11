@@ -1,9 +1,9 @@
 ---
-title: Nyisson meg portokat a Linux virtuális gép Azure CLI 2.0 |} Microsoft Docs
-description: Nyisson meg egy portot / hozzon létre egy végpontot a Linux virtuális gép az Azure resource manager üzembe helyezési modellben és az Azure CLI 2.0 útmutató
+title: Nyissa meg a portokat a Linux rendszerű virtuális gép az Azure CLI 2.0 használatával |} A Microsoft Docs
+description: Ismerje meg, hogyan nyisson meg egy portot / hozzon létre egy végpontot a Linux rendszerű virtuális géphez az Azure resource manager üzemi modell és az Azure CLI 2.0 használatával
 services: virtual-machines-linux
 documentationcenter: ''
-author: iainfoulds
+author: cynthn
 manager: jeconnoc
 editor: ''
 ms.assetid: eef9842b-495a-46cf-99a6-74e49807e74e
@@ -13,34 +13,34 @@ ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 12/13/2017
-ms.author: iainfou
-ms.openlocfilehash: 77e4744d43aa4e71e6cdbbe2364149465a5aeae1
-ms.sourcegitcommit: 828d8ef0ec47767d251355c2002ade13d1c162af
+ms.author: cynthn
+ms.openlocfilehash: 7125523b051441a2547560ff3af650ccd91f07a0
+ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36936615"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37928889"
 ---
-# <a name="open-ports-and-endpoints-to-a-linux-vm-with-the-azure-cli"></a>Nyisson meg portokat és a Linux virtuális gép végpontokat az Azure parancssori felület
-Nyissa meg a portot, vagy hozzon létre egy végpontot a virtuális gép (VM), az Azure-ban egy alhálózatot vagy a virtuális gép hálózati illesztő hálózati szűrő létrehozásával. Ezek a szűrők, amely szabályozza a bejövő és kimenő forgalmat, a hálózati biztonsági csoport az erőforrás a forgalmat fogadó csatolva helyezze el. Ilyenek például a webes forgalom most használja a 80-as porton. Ez a cikk bemutatja, hogyan nyisson meg egy portot a virtuális gépre az Azure CLI 2.0. 
+# <a name="open-ports-and-endpoints-to-a-linux-vm-with-the-azure-cli"></a>Nyitott portok és végpontok egy Linux rendszerű virtuális géphez az Azure CLI-vel
+Nyisson meg egy portot, vagy hozzon létre egy végpontot a virtuális géphez (VM) az Azure-ban egy alhálózatot vagy virtuális hálózati adapter hálózati szűrő létrehozásával. Ezeket a szűrőket, amely a bejövő és kimenő adatforgalom vezérlésére, helyezze el az erőforrás a forgalmat fogadó csatolt hálózati biztonsági csoport. Használjuk a webes forgalom ilyenek például a 80-as porton. Ez a cikk bemutatja, hogyan nyithat meg egy portot egy virtuális géphez az Azure CLI 2.0 használatával. 
 
-Hálózati biztonsági csoport és a legújabb szükséges szabályok létrehozásához [Azure CLI 2.0](/cli/azure/install-az-cli2) telepítve, és bejelentkezett az Azure-fiók használatával [az bejelentkezési](/cli/azure/reference-index#az_login).
+A hálózati biztonsági csoport és a legújabb szükséges szabályok létrehozásához [Azure CLI 2.0](/cli/azure/install-az-cli2) telepítve, és bejelentkezett egy Azure-fiókba az [az bejelentkezési](/cli/azure/reference-index#az_login).
 
-A következő példákban cserélje le a saját értékeit példa paraméterek nevei. Példa paraméter nevek a következők *myResourceGroup*, *myNetworkSecurityGroup*, és *myVnet*.
+A következő példákban cserélje le a példa a paraméter nevét a saját értékeire. Példa a paraméter nevek a következők *myResourceGroup*, *myNetworkSecurityGroup*, és *myVnet*.
 
 
-## <a name="quickly-open-a-port-for-a-vm"></a>Gyorsan nyisson meg egy portot a virtuális gépek
-Ha gyorsan nyisson meg egy portot a virtuális gépek a fejlesztési és tesztelési célú forgatókönyvek van szüksége, használhatja a [az vm-port megnyitása](/cli/azure/vm#az_vm_open_port) parancsot. Ez a parancs hálózati biztonsági csoportot hoz létre, szabály hozzáadása, és alkalmazza azt a virtuális gép vagy alhálózat. Az alábbi példa portot nyit meg *80* nevű virtuális gépen *myVM* az erőforráscsoport neve *myResourceGroup*.
+## <a name="quickly-open-a-port-for-a-vm"></a>Gyorsan megnyit egy portot a virtuális gép
+Ha szeretne gyorsan megnyit egy portot a virtuális gépek fejlesztési és tesztelési forgatókönyvek esetében, használhatja a [az vm open-port](/cli/azure/vm#az_vm_open_port) parancsot. Ez a parancs létrehoz egy hálózati biztonsági csoportot, szabály hozzáadása és alkalmazza azt a virtuális gép vagy az alhálózat. Az alábbi példa portot nyitja meg *80-as* nevű virtuális gépre *myVM* az erőforráscsoport neve *myResourceGroup*.
 
 ```azure-cli
 az vm open-port --resource-group myResourceGroup --name myVM --port 80
 ```
 
-Pontosabban a szabályokat, például egy forrás IP-címtartomány meghatározása további ebben a cikkben további lépéseket.
+A szabályok definiálása egy forrás IP-címtartomány, például jobban kézben továbbra is a további lépésekről ebben a cikkben.
 
 
-## <a name="create-a-network-security-group-and-rules"></a>Hálózati biztonsági csoport és a szabályok létrehozása
-A hálózati biztonsági csoport létrehozása [az hálózati nsg létrehozása](/cli/azure/network/nsg#az_network_nsg_create). Az alábbi példakód létrehozza a hálózati biztonsági csoport nevű *myNetworkSecurityGroup* a a *eastus* helye:
+## <a name="create-a-network-security-group-and-rules"></a>A hálózati biztonsági csoport és a szabályok létrehozása
+A hálózati biztonsági csoport létrehozása [az network nsg létrehozása](/cli/azure/network/nsg#az_network_nsg_create). A következő példában létrehozunk egy hálózati biztonsági csoport nevű *myNetworkSecurityGroup* a a *eastus* helye:
 
 ```azurecli
 az network nsg create \
@@ -49,7 +49,7 @@ az network nsg create \
     --name myNetworkSecurityGroup
 ```
 
-Vegye fel a szabályt [az hálózati nsg-szabály létrehozása](/cli/azure/network/nsg/rule#az_network_nsg_rule_create) engedélyezi a HTTP-forgalom számára a webkiszolgáló (vagy a saját forgatókönyvben például SSH hozzáférés vagy az adatbázis-kapcsolat beállítása). Az alábbi példa létrehoz egy nevű szabályt *myNetworkSecurityGroupRule* a TCP-forgalmat engedélyezi a 80-as port:
+Adjon hozzá egy szabályt az [az network nsg-szabály létrehozása](/cli/azure/network/nsg/rule#az_network_nsg_rule_create) , a webkiszolgáló HTTP-forgalom engedélyezése (vagy módosítsa a saját igényeinek megfelelően, például az SSH-hozzáférést, vagy az adatbázis-kapcsolatok esetében). A következő példában létrehozunk egy nevű szabályt *myNetworkSecurityGroupRule* a TCP-forgalmat a 80-as port engedélyezése:
 
 ```azurecli
 az network nsg rule create \
@@ -62,8 +62,8 @@ az network nsg rule create \
 ```
 
 
-## <a name="apply-network-security-group-to-vm"></a>Hálózati biztonsági csoport alkalmazása a virtuális gép
-A hálózati biztonsági csoport társítani a virtuális gép hálózati illesztőt (NIC) a [az hálózati nic frissítés](/cli/azure/network/nic#az_network_nic_update). A következő példa egy olyan meglévő hálózati adapter nevű társítja *myNic* együtt a hálózati biztonsági csoport nevű *myNetworkSecurityGroup*:
+## <a name="apply-network-security-group-to-vm"></a>Hálózati biztonsági csoport alkalmazása a virtuális géphez
+A virtuális gép hálózati adapteréhez (NIC) a hálózati biztonsági csoport társítása [az network nic update](/cli/azure/network/nic#az_network_nic_update). Ez a példa hozzárendeli egy meglévő hálózati Adaptert *myNic* nevű hálózati biztonsági csoporttal *myNetworkSecurityGroup*:
 
 ```azurecli
 az network nic update \
@@ -72,7 +72,7 @@ az network nic update \
     --network-security-group myNetworkSecurityGroup
 ```
 
-Azt is megteheti, hogy társíthasson a hálózati biztonsági csoport virtuális hálózati alhálózat [az hálózati vnet alhálózati frissítés](/cli/azure/network/vnet/subnet#az_network_vnet_subnet_update) helyett csak egy virtuális hálózati adapteréhez. A következő példa egy létező alhálózatot nevű társítja *mySubnet* a a *myVnet* a hálózati biztonsági csoport nevű virtuális hálózat *myNetworkSecurityGroup*:
+Azt is megteheti, hozzárendelheti a hálózati biztonsági csoportot a virtuális hálózat alhálózatának [az hálózati virtuális hálózat alhálózati frissítés](/cli/azure/network/vnet/subnet#az_network_vnet_subnet_update) helyett csak a hálózati adapter egyetlen virtuális géphez. Az alábbi példa egy meglévő nevű alhálózatot társítja *mySubnet* a a *myVnet* nevű hálózati biztonsági csoportot a virtuális hálózat *myNetworkSecurityGroup*:
 
 ```azurecli
 az network vnet subnet update \
@@ -83,12 +83,12 @@ az network vnet subnet update \
 ```
 
 ## <a name="more-information-on-network-security-groups"></a>További információ a hálózati biztonsági csoportok
-A gyors parancsok lehetővé teszik, amelyekből megismerheti a forgalom halad a virtuális Gépet. Hálózati biztonsági csoportok számos különleges szolgáltatásait és az erőforrásokhoz való hozzáférés szabályozása részletességgel adja meg. További tudnivalók [itt szabályok létrehozása a hálózati biztonsági csoport és a hozzáférés-vezérlési lista](tutorial-virtual-network.md#secure-network-traffic).
+A gyors parancsok lehetővé teszik elsajátíthatja a használatát az adatforgalom a virtuális géphez. Hálózati biztonsági csoportok számos nagyszerű funkciókkal és az erőforrásokhoz való hozzáférés szabályozása részletességgel adja meg. További információ [létrehozása egy hálózati biztonsági csoportok és ACL-szabályok itt](tutorial-virtual-network.md#secure-network-traffic).
 
-Magas rendelkezésre állású webes alkalmazásokhoz helyezze a virtuális gépek az Azure terheléselosztó mögött. A load balancer osztja el a forgalmat a virtuális gépekhez, a hálózati biztonsági csoport, amely biztosítja a forgalomszűrést végez. További információkért lásd: [betöltése Linux virtuális gépek magas rendelkezésre állású alkalmazás létrehozása az Azure-ban egyenleg](tutorial-load-balancer.md).
+A magas rendelkezésre állású webes alkalmazásokhoz helyezze a virtuális gépek az Azure Load Balancer mögött. A terheléselosztó elosztja a forgalmat, amely biztosítja a forgalom szűrése hálózati biztonsági csoport rendelkező virtuális gépek között. További információkért lásd: [betöltés Linux rendszerű virtuális gépek terheléselosztása az Azure-ban magas rendelkezésre állású alkalmazások létrehozásához](tutorial-load-balancer.md).
 
 ## <a name="next-steps"></a>További lépések
-Ebben a példában létrehozott egy egyszerű szabályt, amely engedélyezi a HTTP-forgalmat. További részletes környezetek létrehozásáról a következő cikkekben találhat:
+Ebben a példában létrehozott egy egyszerű HTTP-forgalmat engedélyező szabállyal. Részletesebb környezetek létrehozásáról a következő cikkekben talál:
 
 * [Az Azure Resource Manager áttekintése](../../azure-resource-manager/resource-group-overview.md)
 * [Mi az a hálózati biztonsági csoport (NSG)?](../../virtual-network/security-overview.md)

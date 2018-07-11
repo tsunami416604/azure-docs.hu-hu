@@ -1,104 +1,104 @@
 ---
-title: Sikertelen az Azure-ból az Azure Site Recovery VMware |} Microsoft Docs
-description: Az Azure virtuális gépek feladatátvétel után megkezdheti a feladat-visszavétel vissza a helyszíni virtuális gépek érdekében. Ismerje meg a szükséges lépéseket a feladat-visszavételt.
+title: Nem sikerült az Azure-ból az Azure Site Recovery VMware |} A Microsoft Docs
+description: Az Azure virtuális gépek a feladatátvételt követően térjen vissza a helyszíni virtuális gépek csatlakozva a feladat-visszavételhez is elindítható. Ismerje meg, hogy a feladat-visszavételt lépéseit.
 author: nsoneji
 ms.service: site-recovery
+ms.date: 07/06/2018
 ms.topic: conceptual
-ms.date: 05/20/2018
 ms.author: nisoneji
-ms.openlocfilehash: 1e8e2384d6d5672e29e6d7bc28f0772cd5b78519
-ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
+ms.openlocfilehash: 9d8398582766a27f1457e3a59bdde0c59298ed50
+ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36287517"
+ms.lasthandoff: 07/09/2018
+ms.locfileid: "37919835"
 ---
 # <a name="fail-back-from-azure-to-an-on-premises-site"></a>Az Azure-ból a helyszíni helyhez sikertelen
 
-Ez a cikk ismerteti, hogyan sikertelen hátsó virtuális gépeket az Azure virtuális gépek egy helyszíni VMware-környezetben. Ez a cikk utasításait követve sikertelen biztonsági a VMware virtuális gépeket vagy windowsos/Linuxos fizikai kiszolgálók után azok feladatátvételt is a helyszíni hely Azure használatával hajtsa végre a [az Azure Site Recovery feladatátvételi](site-recovery-failover.md) oktatóanyag.
+Ez a cikk ismerteti, hogyan végezhet vissza virtuális gépeket az Azure Virtual Machines egy helyszíni VMware-környezetről. Ez a cikk utasításait követve sikertelen biztonsági a VMware virtuális gépek vagy Windows/Linux hely után, a feladatátvétel a helyszíni fizikai kiszolgálóknak az Azure-bA használatával kövesse a [az Azure Site Recovery feladatátvételi](site-recovery-failover.md) oktatóanyag.
 
 ## <a name="prerequisites"></a>Előfeltételek
-- Győződjön meg arról, hogy rendelkezik olvassa el a részleteket a [feladat-visszavétel különböző típusú](concepts-types-of-failback.md) és a megfelelő korlátozásokkal.
+- Győződjön meg arról, hogy rendelkezik-e a részletek olvasási kapcsolatos, a [különböző típusú feladat-visszavétel](concepts-types-of-failback.md) és a megfelelő korlátozásokkal.
 
 > [!WARNING]
-> Nem utasíthat el után már [áttelepítésével kész](migrate-overview.md#what-do-we-mean-by-migration), a virtuális gép áthelyezése a másik erőforráscsoportba vagy törölni az Azure virtuális géphez. Ha letiltja a virtuális gép védelmét, akkor nem feladat-visszavételt.
+> Nem utasíthat el újra, miután van az egyik [áttelepítésével kész](migrate-overview.md#what-do-we-mean-by-migration), egy virtuális gép áthelyezése egy másik erőforráscsoportot, vagy az Azure virtuális gép törlése. Ha letiltja a virtuális gép védelmét, visszavételt nem.
 
 > [!WARNING]
-> Windows Server 2008 R2 SP1 fizikai kiszolgálók, ha a védett, és az Azure-ba, a feladatátvételt nem sikerült vissza.
+> Egy Windows Server 2008 R2 SP1 fizikai kiszolgálóra, ha védett, és az Azure-bA feladatátvétele nem kell a feladatátvételben.
 
 > [!NOTE]
-> Ha VMware virtuális gépeket sikertelenek voltak, nem utasíthat el a Hyper-V gazdagépet.
+> Ha VMware virtuális gépek feladatátvétel nem visszaadja a feladatokat egy Hyper-V gazdagépen.
 
 
-- A folytatás előtt hajtsa végre a védelem-újrabeállítási, hogy a virtuális gépek replikált állapotban van, és elindíthatja a feladatátvételt egy helyszíni hely. További információkért lásd: [hogyan lássa el újból védelemmel az Azure-ból a helyszíni](vmware-azure-reprotect.md).
+- A folytatás előtt hajtsa végre az ismételt védelem, hogy egy replikált állapotban van a virtuális gépek és a egy helyszíni hely feladatátvétel megkezdése. További információkért lásd: [hogyan ismételt védelme az Azure-ból a helyszíni](vmware-azure-reprotect.md).
 
-- Győződjön meg arról, hogy a vCenter csatlakoztatott állapotban van, a feladat-visszavétel előtt. Ellenkező esetben lemez leválasztása és csatolva a virtuális gépre meghiúsul.
+- Győződjön meg arról, hogy a vcenter-kiszolgáló csatlakoztatott állapotban a feladat-visszavétel előtt. Ellenkező esetben lemezek leválasztása és csatolja őket a virtuális gépre sikertelen lesz.
 
-- Az Azure-bA a feladatátvétel során a helyszíni hely nem feltétlenül érhető el, és előfordulhat, hogy a konfigurációs kiszolgáló nem érhető el, vagy leállított le. Védelem-újrabeállítási és a feladat-visszavétel során a helyszíni konfigurációs kiszolgáló fut, és egy csatlakoztatott OK állapotúnak kell lennie. 
+- Az Azure-ba történő feladatátvétel során a helyszíni hely nem érhető el, és előfordulhat, hogy a konfigurációs kiszolgáló nem érhető el, vagy leállították le. Védelem-újrabeállítást és a feladat-visszavétel során a helyszíni konfigurációs kiszolgálón fut, és a egy csatlakoztatott OK állapotúnak kell lennie. 
 
-- A feladat-visszavétel során a virtuális gép léteznie kell a konfigurációs kiszolgáló adatbázisában, vagy nem sikerült a feladat-visszavétel. Győződjön meg arról, hogy a rendszeresen ütemezett biztonsági mentések a kiszolgáló is. Ha katasztrófa történik, a feladat-visszavételi működéséhez az eredeti IP-címmel-kiszolgáló helyreállítása szeretné.
+- A feladat-visszavétel során a virtuális gép léteznie kell a konfigurációs kiszolgáló adatbázisában, vagy nem sikerült a feladat-visszavétel. Ellenőrizze, hogy tegye meg a kiszolgáló rendszeresen ütemezett biztonsági mentéseket. Ha katasztrófa történik, meg kell-visszaállítás működéséhez a feladat-visszavétel az eredeti IP-címet a kiszolgálón.
 
-- A fő célkiszolgáló nem kell meglévő pillanatképeket védelem-újrabeállítási/feladat-visszavétel elindítása előtt.
+- A fő célkiszolgáló nem kell minden olyan pillanatképek aktiválása az ismételt védelem, illetve-visszavétel előtt.
 
 ## <a name="overview-of-failback"></a>Feladat-visszavétel áttekintése
-Miután az Azure-bA rendelkezik nem sikerült keresztül, akkor is visszaadják feladataikat a helyszíni hely a következő lépések végrehajtásával:
+Miután Ön rendelkezik a feladatátvétel az Azure-ba is visszaadja a feladatokat a helyszíni hely a következő lépések végrehajtásával:
 
-1. [Lássa el újból védelemmel](vmware-azure-reprotect.md) az Azure virtuális gépeket, hogy elindítja a helyszíni hely VMware virtuális gépeket replikálni. Ez a folyamat részeként szükség:
+1. [Ismételt védelem](vmware-azure-reprotect.md) a virtuális gépek az Azure-ban, hogy megkezdődhessen a helyszíni helyen található VMware virtuális gépek replikálása. Ez a folyamat részeként szükség:
 
-    * Állítson be egy helyszíni fő célkiszolgáló. Használja a Windows fő célkiszolgáló Windows virtuális gépek és a [Linuxos fő célkiszolgáló](vmware-azure-install-linux-master-target.md) Linux virtuális gépekhez.
-    * Állítson be egy [folyamatkiszolgáló](vmware-azure-set-up-process-server-azure.md).
-    * Start [lássa el újból védelemmel](vmware-azure-reprotect.md) kapcsolja ki a helyszíni virtuális gépet, és az Azure virtuális gépek adatainak szinkronizálja a helyi lemezek.
+    * Állítsa be egy helyszíni fő célkiszolgálót. Egy Windows fő célkiszolgálót használja a Windows virtuális gépek és a egy [Linuxos fő célkiszolgáló](vmware-azure-install-linux-master-target.md) Linux rendszerű virtuális gépek.
+    * Állítsa be a [folyamatkiszolgáló](vmware-azure-set-up-process-server-azure.md).
+    * Indítsa el [ismételt védelme](vmware-azure-reprotect.md) kapcsolja ki a helyszíni virtuális gépet, és az Azure virtuális gépek adatainak szinkronizálja a helyi lemezek.
 
-2. Miután az Azure virtuális gépei replikálnak a helyi webhelyhez, akkor indítson el egy feladatátvételt az Azure-ból a helyszíni hely.
+2. Miután az Azure-beli virtuális gépek replikálása a helyszíni helyre, megkezdése feladatátvétel az Azure-ból a helyszíni helyre.
 
-3. Az adatok visszaállítása sikertelen, akkor állítsa a helyszíni virtuális gépek újra, hogy elindítja replikálása Azure-bA.
+3. Után az adatok vissza nem sikerül, akkor ismételt védelme a helyszíni virtuális gépeket újra, hogy megkezdődhessen a replikálás az Azure-bA.
 
-Gyors áttekintését tekintse meg a következő videót visszaadják feladataikat egy helyszíni hely kapcsolatos:
+Röviden tekintse meg a következő videó bemutatja, hogyan feladat-visszavételhez egy helyszíni helyhez:
 > [!VIDEO https://channel9.msdn.com/Series/Azure-Site-Recovery/VMware-to-Azure-with-ASR-Video5-Failback-from-Azure-to-On-premises/player]
 
 
-## <a name="steps-to-fail-back"></a>A feladat-visszavételt lépései
+## <a name="steps-to-fail-back"></a>Feladat-visszavételt lépései
 
 > [!IMPORTANT]
-> Feladat-visszavétel megkezdése előtt győződjön meg arról, hogy befejeződött-e a virtuális gépek ismételt védelem. A virtuális gépek védett állapotban kell lennie, és meg kell az állapotukat **OK**. Adja meg újra a virtuális gépek védelmét, olvassa el [hogyan állítsa](vmware-azure-reprotect.md).
+> Feladat-visszavétel előtt ellenőrizze, hogy befejeződött-e a virtuális gépek ismételt védelem. A virtuális gép védett állapotban kell lennie, és azok állapotának kell **OK**. A virtuális gépek ismételt védelme, olvassa el [hogyan védi meg ismét](vmware-azure-reprotect.md).
 
-1. A replikált elemek lapon válassza ki a virtuális gép. Kattintson a jobb gombbal, válassza ki, hogy **nem tervezett feladatátvétel**.
-2. A **megerősítéséhez feladatátvétel**, ellenőrizze a feladatátvételi irányát (az Azure-ból). Válassza ki a helyreállítási pontot (legújabb vagy a legutóbbi alkalmazáskonzisztens), amely a feladatátvételre használni kívánt. Az alkalmazás konzisztens pont mögött a legutóbbi pontnak időben, ami adatvesztést.
-3. A feladatátvétel során a Site Recovery Azure virtuális gépek leáll. Után ellenőrizze, hogy feladat-visszavétel befejezése a várt módon, ellenőrizheti, hogy a virtuális gépeket az Azure-on le.
-4. **Véglegesítse** az Azure-ból a átvevő virtuális gép eltávolításához szükséges. Kattintson a jobb gombbal a védett elem, majd válassza ki **véglegesítése**. Egy feladat eltávolítja az átvevő virtuális gépek az Azure-ban.
+1. A replikált elemet oldalon válassza ki a virtuális gépet. Kattintson a jobb gombbal, válassza ki, hogy **nem tervezett feladatátvétel**.
+2. A **feladatátvétel megerősítése**, ellenőrizze a feladatátvétel iránya (az Azure-ból). Válassza ki a helyreállítási pontot (legújabb vagy a legutóbbi alkalmazáskonzisztens), amelyet a feladatátvételre használni szeretne. Az alkalmazás konzisztens pont időben a legutóbbi időpontra mögött van, és némi adatvesztést okoz.
+3. A feladatátvétel során a Site Recovery leállítja a virtuális gépek az Azure-ban. Után ellenőrizheti, hogy feladat-visszavétel befejezése a várt módon, nézze meg, hogy az Azure-beli virtuális gépek leállítása.
+4. **Véglegesítse** az Azure-ból a átvevő virtuális gép eltávolításához szükséges. Kattintson a jobb gombbal a védett elem, és válassza **véglegesítése**. Egy feladat eltávolítja a átvevő virtuális gépeket az Azure-ban.
 
 
-## <a name="to-what-recovery-point-can-i-fail-back-the-virtual-machines"></a>Milyen helyreállítási pontra is szeretnék a feladat-visszavételt a virtuális gépek?
+## <a name="to-what-recovery-point-can-i-fail-back-the-virtual-machines"></a>Milyen helyreállítási pontnak is szeretnék feladat-visszavételt a virtuális gépek?
 
-A feladat-visszavétel során történő feladat-visszavételt a virtuális gép vagy helyreállítási terv két választási lehetősége van.
+A feladat-visszavétel során való feladat-visszavételt a virtuális gép, illetve helyreállítási terv két lehetősége van.
 
-- Idő a legújabb feldolgozott pontot választ, ha az összes virtuális gép átadja a legújabb elérhető pont időben. Ha a replikációs csoport a helyreállítási terv belül, a replikációs csoport minden egyes virtuális gép feladatátadás a független legújabb pontjára időben.
+- Ha a legutóbbi feldolgozott pont időben, az összes virtuális gép feladatátvételt a legutóbbi pont időben. Ha egy replikációs csoportot a helyreállítási terven belül, a replikációs csoport minden virtuális gép feladatait a független legújabb pontnak időben.
 
-  Nem utasíthat el újra a virtuális gépek amíg rá nem kényszerül legalább egy helyreállítási pontot. Nem utasíthat el újra a helyreállítási terv mindaddig, amíg az összes virtuális gép rendelkezik legalább egy helyreállítási pontot.
+  Nem utasíthat el vissza egy virtuális gép mindaddig, amíg legalább egy helyreállítási pont rendelkezik. Nem utasíthat el vissza a helyreállítási terv mindaddig, amíg az összes virtuális gép rendelkezik legalább egy helyreállítási pontot.
 
   > [!NOTE]
-  > A legutóbbi helyreállítási pontot az összeomlás-konzisztens helyreállítási pontot.
+  > A legutóbbi helyreállítási pontot az összeomlás-konzisztens helyreállítási pont.
 
-- Ha a alkalmazáskonzisztens helyreállítási pontot választja, a legutóbbi elérhető alkalmazáskonzisztens helyreállítási pontnak egyetlen virtuális gép feladat-visszavétel állítja helyre. Minden replikációs csoport esetében a replikációs csoport helyreállítási tervet, az általános rendelkezésre álló helyreállítási pontra állítja helyre.
-Alkalmazáskonzisztens helyreállítási pontokat is szerepelhet mögött ideje, és előfordulhat adatvesztés adatokat.
+- Ha az alkalmazás-konzisztens helyreállítási pont, egy egyetlen virtuális gép feladat-visszavétel, a legutóbbi elérhető alkalmazáskonzisztens helyreállítási pontot állítja helyre. A replikációs csoport helyreállítási terv esetén minden replikációs csoport az általános rendelkezésre álló helyreállítási pontot állítja helyre.
+Alkalmazáskonzisztens helyreállítási pontok időben késhet, és előfordulhat adatvesztés az adatokat.
 
-## <a name="what-happens-to-vmware-tools-post-failback"></a>Mi történik a VMware-eszközök feladás egy vagy több feladat-visszavétel?
+## <a name="what-happens-to-vmware-tools-post-failback"></a>Mi történik a VMware tools utáni feladat-visszavétel?
 
-Egy Windows rendszerű virtuális gép esetén a Site Recovery a VMware-eszközök letiltja a feladatátvétel során. A VMware-eszközök a Windows virtuális gép feladat-visszavétel során újra vannak engedélyezve. 
+Egy Windows virtuális gép esetén a Site Recovery a VMware-eszközök letiltja a feladatátvétel során. A Windows virtuális gép feladat-visszavétel során a VMware-eszközöket újra vannak engedélyezve. 
 
 
-## <a name="reprotect-from-on-premises-to-azure"></a>Állítsa a helyszíni Azure-bA
-Követően visszaadását, és már elindította véglegesítési, a rendszer törli a helyreállított virtuális gépeket az Azure-ban. Most a virtuális gép vissza a helyszíni hely van, de azt nem lehet védetté tenni. Indítsa el újra az Azure-bA replikálni, tegye a következőket:
+## <a name="reprotect-from-on-premises-to-azure"></a>A helyszínről az Azure-bA ismételt védelme
+Feladat-visszavétel befejezése és a véglegesítés elindítása után a rendszer törli a helyreállított virtuális gépek az Azure-ban. Most a virtuális gép vissza a helyszíni helyen van, de már nem biztosítható. Indítsa el újra az Azure-bA replikálni, tegye a következőket:
 
-1. Válassza ki **tároló** > **beállítás** > **replikált elemek**, vissza sikertelen virtuális gépeket, majd válassza ki és  **Ismételt védelemmel**.
-2. Adja meg a folyamatkiszolgáló, amelyet a adatokat küldhet vissza az Azure-bA értékét.
-3. Válassza ki **OK** a védelem-újrabeállítási feladat megkezdéséhez.
+1. Válassza ki **tároló** > **beállítás** > **replikált elemek**, a virtuális gépek, amelyek a feladat-visszavételben, majd válassza ki és  **Ismételt védelem**.
+2. Adja meg a folyamatkiszolgálót kell használni adatok küldése az Azure-ba, az értékét.
+3. Válassza ki **OK** az ismételt védelmi feladat elindításához.
 
 > [!NOTE]
-> Miután egy helyszíni virtuális gép elindul, csak bizonyos idő az ügynök regisztrálása a konfigurációs kiszolgálóra (legfeljebb 15 perc). Ebben az időszakban a védelem-újrabeállítási sikertelen lesz, és egy hibaüzenetet jelenít meg arról, hogy az ügynök nincs telepítve. Várjon néhány percet, és próbálkozzon újra az védelem-újrabeállítási.
+> Ha egy helyszíni virtuális gép generációazonosítójának ideig, az ügynököt, hogy regisztrálja a konfigurációs kiszolgálóra (akár 15 perc) vesz igénybe. Ebben az időszakban az ismételt védelem sikertelen lesz, és egy hibaüzenetet jelenít meg arról, hogy az ügynök nincs telepítve. Várjon néhány percet, és próbálkozzon az ismételt védelem-újrabeállításba.
 
 ## <a name="next-steps"></a>További lépések
 
-A védelem-újrabeállítási feladat befejezése után a virtuális gép replikálódik vissza Azure, és végezheti a [feladatátvételi](site-recovery-failover.md) újra át a virtuális gépet az Azure-bA.
+Teheti meg az ismételt védelmi feladat befejezése után a virtuális gépet replikálja vissza az Azure, és a egy [feladatátvételi](site-recovery-failover.md) a virtuális gépek áthelyezése az Azure-bA újra.
 
 

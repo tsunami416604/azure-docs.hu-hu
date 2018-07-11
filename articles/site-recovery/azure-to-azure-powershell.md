@@ -1,65 +1,65 @@
 ---
-title: Az Azure Site Recovery - telepítő és vészhelyreállítás Azure virtuális gépek az Azure PowerShell tesztelése |} Microsoft Docs
-description: Ismerje meg, hogyan állíthat be az Azure Site Recovery Azure PowerShell használatával az Azure virtuális gépek vész-helyreállítási.
+title: Az Azure Site Recovery - beállítása és tesztelése a vészhelyreállítás Azure virtuális gépek Azure PowerShell-lel |} A Microsoft Docs
+description: Ismerje meg, hogyan állítható be az Azure Site Recovery az Azure PowerShell használatával Azure-beli virtuális gépek vészhelyreállítása.
 services: site-recovery
 author: bsiva
 manager: abhemraj
 editor: raynew
 ms.service: site-recovery
 ms.topic: article
-ms.date: 05/31/2018
+ms.date: 07/06/2018
 ms.author: bsiva
-ms.openlocfilehash: 3fa9ee27a1b9717d8011b7b46a1116f1f1ac1df5
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 62dd02d53c14635a386a8c6fa3fbfbd6f91a88f7
+ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34716329"
+ms.lasthandoff: 07/09/2018
+ms.locfileid: "37921086"
 ---
-# <a name="set-up-disaster-recovery-for-azure-virtual-machines-using-azure-powershell"></a>Állítsa be az Azure virtuális gépek az Azure PowerShell katasztrófa utáni helyreállítás
+# <a name="set-up-disaster-recovery-for-azure-virtual-machines-using-azure-powershell"></a>Azure PowerShell-lel az Azure virtuális gépek vészhelyreállításának beállítása
 
-Ebben a cikkben láthatja, hogyan kell beállítania, és tesztelje az Azure virtuális gépek az Azure PowerShell katasztrófa utáni helyreállítás. 
+Ebben a cikkben bemutatjuk, hogyan tesztelheti, majd a vészhelyreállítás Azure virtuális gépek Azure PowerShell-lel. 
 
 Az alábbiak végrehajtásának módját ismerheti meg:
 
 > [!div class="checklist"]
 > - Recovery Services-tároló létrehozása.
-> - A tároló környezet beállítása a PowerShell-munkamenethez.
-> - Készítse elő a tárolóban, az Azure virtuális gépek replikálást indítani.
-> - Hozzon létre a hálózatok leképezését.
-> - Virtuális gépek replikálásához storage-fiókok létrehozása.
-> - Az Azure virtuális gépeket replikálhat a vész-helyreállítási helyreállítási régióban.
-> - Feladatátvételi teszt végrehajtása, ellenőrzéséhez és karbantartása a feladatátvételi teszthez.
-> - A helyreállítási régió feladatátvételt.
+> - A tárolási környezet beállítása a PowerShell-munkamenetben.
+> - Készítse elő a tároló az Azure-beli virtuális gépek replikálásának megkezdéséhez.
+> - Hozzon létre hálózati leképezésben.
+> - Hozzon létre a tárfiókok, virtuális gépeket replikálhat.
+> - Azure-beli virtuális gépek replikálása egy vész-helyreállítási régióban.
+> - Feladatátvételi teszt végrehajtása, ellenőrzés, és a feladatátvételi teszt utáni karbantartás.
+> - Feladatátvétel helyreállítási régióban.
 
 > [!NOTE]
-> Nem minden forgatókönyv képességek a portálon keresztül elérhető Azure PowerShell keresztül érhetők el. A forgatókönyv képességek az Azure PowerShell jelenleg nem támogatott a következők:
-> - Lehetővé teszi az Azure virtuális gépek, amelyek felügyelt lemezek replikálásához.
-> - Annak megadása, hogy az összes lemez a virtuális gépen replikálni kell explicit módon az egyes lemezek, a virtuális gép megadása nélkül.  
+> Előfordulhat, hogy nem minden eset képességek a portálon keresztül elérhető Azure Powershellen keresztül érhető el. Az Azure Powershellen keresztül jelenleg nem támogatott forgatókönyv funkciói a következők:
+> - Azure-felügyelt lemezeket használó virtuális gépek replikálása lehetővé teszi.
+> - Adja meg, hogy az összes lemez a virtuális gépen replikálni kell a virtuális gép minden lemezét explicit módon megadása nélkül lehetővé teszi.  
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 Előkészületek:
 - Ismernie kell a [forgatókönyv-architektúrát és az összetevőket](azure-to-azure-architecture.md).
 - Minden összetevőre vonatkozóan tekintse át a [támogatási követelményeket](azure-to-azure-support-matrix.md).
-- Verziót 5.7.0 vagy nagyobb a AzureRm PowerShell modul. Ha szeretné telepíteni vagy frissíteni az Azure PowerShell, folytassa a [útmutató az Azure PowerShell telepítése és konfigurálása](/powershell/azureps-cmdlets-docs).
+- 5.7.0 verzióval rendelkezik, vagy nagyobb, mint az AzureRm PowerShell-modul. Ha telepíteni vagy frissíteni az Azure PowerShell-lel van szüksége, kövesse ezt [útmutató az Azure PowerShell telepítése és konfigurálása](/powershell/azureps-cmdlets-docs).
 
 ## <a name="log-in-to-your-microsoft-azure-subscription"></a>Jelentkezzen be a Microsoft Azure-előfizetés
 
-Jelentkezzen be az Azure-előfizetéshez a Connect-AzureRmAccount parancsmaggal
+Jelentkezzen be az Azure-előfizetéshez a Connect-AzureRmAccount parancsmag használatával
 
 ```azurepowershell
 Connect-AzureRmAccount
 ```
-Válassza ki az Azure-előfizetését. A Get-AzureRmSubscription parancsmag segítségével juthatnak az Azure-előfizetéssel rendelkezik listáját. Válassza ki az Azure-előfizetés a Select-AzureRmSubscription parancsmaggal használható.
+Válassza ki az Azure-előfizetését. A Get-AzureRmSubscription parancsmaghoz használatával hozzáféréssel rendelkezik az Azure-előfizetések listájának beolvasása. Válassza ki a Select-AzureRmSubscription parancsmag használata az Azure-előfizetést.
 
 ```azurepowershell
 Select-AzureRmSubscription -SubscriptionId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
 ```
 
-## <a name="get-details-of-the-virtual-machines-to-be-replicated"></a>Ezzel a virtuális gépek replikálása az adatokat
+## <a name="get-details-of-the-virtual-machines-to-be-replicated"></a>Részletek a replikálni kívánt virtuális gép(ek)
 
-Ebben a cikkben a példában a virtuális gép USA keleti régiójában fog kell replikált és 2 USA nyugati régiója régióban helyre. A replikált virtuális gép operációsrendszer-lemez, és egyetlen adatlemezt rendelkező virtuális gép. Az a virtuális gép nevét, a példában használt AzureDemoVM.
+Ebben a cikkben a példában egy virtuális gépet az USA keleti régiójában fog replikálja és az USA 2. nyugati régió helyreállítása. A virtuális gép replikálása folyamatban az operációsrendszer-lemezt és egy adatlemezt egy virtuális gépet. A virtuális gép, a példában használt név AzureDemoVM.
 
 ```azurepowershell
 # Get details of the virtual machine
@@ -84,7 +84,7 @@ ProvisioningState  : Succeeded
 StorageProfile     : {ImageReference, OsDisk, DataDisks}
 ```
 
-A lemezek, a virtuális gép beolvasása – részletek. A céllemez adatai később kezdődően Ha a virtuális gép replikálása fogja használni.
+Szerezze be a virtuális gép lemezei lemez adatai. Lemez adatai fogja használni, amikor később kezdve a virtuális gép replikációját.
 
 ```azurepowershell
 $OSDiskVhdURI = $VM.StorageProfile.OsDisk.Vhd
@@ -93,14 +93,14 @@ $DataDisk1VhdURI = $VM.StorageProfile.DataDisks[0].Vhd
 
 ## <a name="create-a-recovery-services-vault"></a>Recovery Services-tároló létrehozása
 
-Hozzon létre egy erőforráscsoportot a Recovery Services-tároló létrehozásához. 
+Hozzon létre egy erőforráscsoportot, amelyben létrehozza a Recovery Services-tároló. 
 
 > [!IMPORTANT]
-> * A Recovery services-tároló és a virtuális gépeket védetté tétele folyamatban, különböző Azure helyen kell lennie.
-> * Az erőforráscsoport a Recovery services-tároló és a virtuális gépeket védetté tétele folyamatban, az Azure különböző helyeken kell lennie.
-> * A Recovery services-tároló és az erőforráscsoporthoz, amelyhez tartozik, az Azure ugyanazon a helyen lehet.
+> * A Recovery services-tároló és a virtuális gépek védett, különböző Azure-helyen kell lennie.
+> * Az erőforráscsoport, a Recovery services-tárolót, és a virtuális gépek védett, különböző Azure-helyen kell lennie.
+> * A Recovery services-tárolót, és az erőforráscsoportot, amelyhez tartozik, ugyanazon Azure-helyen lehet.
  
-Ez a cikk a példában a védett virtuális gépet az USA keleti régiója régióban van. A megadott vész-helyreállítási helyreállítási régió, a 2. nyugati US régió. A recovery services-tároló és az erőforráscsoport, a tároló, mind a helyreállítási régióban (USA nyugati 2)
+A példában ez a cikk a védett virtuális gép van, az USA keleti régiójában. A katasztrófa utáni helyreállításra kijelölt helyreállítási régió az USA 2. nyugati régió. A recovery services-tárolót, és az erőforráscsoportot, a tároló mind a helyreállítási régióban (USA nyugati RÉGIÓJA 2)
 
 ```azurepowershell
 #Create a resource group for the recovery services vault in the recovery Azure region
@@ -114,7 +114,7 @@ Tags              :
 ResourceId        : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/a2ademorecoveryrg
 ```
    
-A Recovery services-tároló létrehozása. A Recovery Services-tároló a2aDemoRecoveryVault nevű az alábbi példában jön létre a 2. nyugati US régió.
+Hozzon létre egy Recovery services-tárolót. Recovery Services-tároló nevű a2aDemoRecoveryVault az alábbi példában az USA 2. nyugati régióban jön.
 
 ```azurepowershell
 #Create a new Recovery services vault in the recovery region
@@ -131,14 +131,14 @@ ResourceGroupName : a2ademorecoveryrg
 SubscriptionId    : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
 Properties        : Microsoft.Azure.Commands.RecoveryServices.ARSVaultProperties
 ``` 
-## <a name="set-the-vault-context"></a>A tároló környezet beállítása
+## <a name="set-the-vault-context"></a>A tárolási környezet beállítása
 
 > [!TIP]
-> Az Azure Site Recovery PowerShell modul (AzureRm.RecoveryServices.SiteRecovery modul) könnyen használható aliasok legtöbb parancsmagokat tartalmaz. A modul parancsmagjai formájában  *\<művelet >-**AzureRmRecoveryServicesAsr**\<objektum >* és egyenértékű aliast is, amely formájú  *\<Művelet >-**ASR**\<objektum >*. Ez a cikk a parancsmag aliasok olvasási könnyű használ.
+> A legtöbb parancsmag könnyen használható aliasok az Azure Site Recovery PowerShell modul (AzureRm.RecoveryServices.SiteRecovery modul) tartalmaz. A modul parancsmagjai utat  *\<művelet >-**: AzureRmRecoveryServicesAsr**\<objektum >* és egyenértékű aliast is beállíthat, amely formájában  *\<Művelet >-**ASR**\<objektum >*. Ebben a cikkben a parancsmag aliasok átláthatóbbá tétele.
 
-Állítsa be a tároló környezetben használható a PowerShell-munkamenetben. Ehhez a tároló beállításai fájlt, és importálja a letöltött fájlt a PowerShell-munkamenetben a tároló környezet beállítása. 
+A tárolási környezet használatra beállítása a PowerShell-munkamenetben. Ehhez töltse le a tároló beállításait, és importálni a letöltött fájlt a PowerShell-munkamenetben, a tárolási környezet beállításához. 
 
-Beállítása után további Azure Site Recovery a PowerShell-munkamenetben műveleteket a kijelölt tároló környezetében. 
+Beállítása után a PowerShell-munkamenetben későbbi Azure Site Recovery-műveletek a kiválasztott tár környezetében történik. 
 
  ```azurepowershell
 #Download the vault settings file for the vault.
@@ -158,14 +158,14 @@ a2aDemoRecoveryVault a2ademorecoveryrg Microsoft.RecoveryServices Vaults
 #Delete the downloaded vault settings file
 Remove-Item -Path $Vaultsettingsfile.FilePath
 ```
-## <a name="prepare-the-vault-to-start-replicating-azure-virtual-machines"></a>A tároló az Azure virtuális gépek replikálást indítani előkészítése
+## <a name="prepare-the-vault-to-start-replicating-azure-virtual-machines"></a>A tároló replikáljon az Azure-beli virtuális gépek előkészítése
 
-####<a name="1-create-a-site-recovery-fabric-object-to-represent-the-primarysource-region"></a>1. Hozzon létre egy Site Recovery háló objektumot képviselő primary(source) régió
+####<a name="1-create-a-site-recovery-fabric-object-to-represent-the-primarysource-region"></a>1. Hozzon létre egy Site Recovery fabric objektumot képviselő a primary(source) régió
 
-A háló objektum a tárolóban az Azure-régiót jelöli. Az elsődleges háló objektum az Azure-régió, amelyek a tárolóba védett virtuális gépek jelölésére létrehozott háló objektum. Ez a cikk a példában a védett virtuális gépet az USA keleti régiója régióban van.
+A fabric objektum a tároló egy Azure-régiót jelöli. Az elsődleges fabric objektum olyan képviselő tartozó virtuális gépek védelméről a tároló az Azure-régióban létrehozott fabric objektum. A példában ez a cikk a védett virtuális gép van, az USA keleti régiójában.
 
 > [!NOTE]
-> Az Azure Site Recovery-műveleteket aszinkron módon végrehajtása. Egy művelet kezdeményezésekor egy Azure Site Recovery-feladat nyújtják, és egy objektum követési feladatot ad vissza. A feldolgozással objektum követési legfrissebb állapotának beolvasása (Get-ASRJob) feladat, és a művelet állapotának figyelésére.
+> Az Azure Site Recovery-műveletek aszinkron végrehajtása. Egy művelet kezdeményezésekor az Azure Site Recovery-feladatok elküldésekor, és a egy feladat nyomon követése az objektumot ad vissza. Használja a nyomkövetési objektum feladat, legfrissebb állapotának beolvasása a feladat (Get-ASRJob), és a művelet állapotának figyelésére.
 
 ```azurepowershell
 #Create Primary ASR fabric
@@ -183,11 +183,11 @@ Write-Output $TempASRJob.State
 
 $PrimaryFabric = Get-AsrFabric -Name "A2Ademo-EastUS"
 ```
-Ha több Azure-régiók származó virtuális gépek ugyanahhoz a tárolóhoz élveznek védelmet, hozzon létre az egyes források Azure-régió, egy háló objektum.
+Ha vannak védett virtuális gépek több Azure-régióban ugyanazzal a tárral, egy háló objektumot hoz létre minden forrás az Azure-régióban.
 
-####<a name="2-create-a-site-recovery-fabric-object-to-represent-the-recovery-region"></a>2. A helyreállítási régió képviselő Site Recovery háló objektum létrehozása
+####<a name="2-create-a-site-recovery-fabric-object-to-represent-the-recovery-region"></a>2. Hozzon létre egy Site Recovery fabric objektumot képviselő helyreállítási régióban
 
-A helyreállítási háló objektum az Azure-beli hely helyreállítási jelöli. Virtuális gépek a rendszer replikálja, és a helyreállítási terület a helyreállítási háló által képviselt (feladatátvételnél) helyre. A helyreállítás ebben a példában használt Azure-régió az USA nyugati régiója 2.
+A helyreállítási fabric objektum képviseli a helyreállítás az Azure-helyen. A virtuális gépeket replikálja, és a helyreállítási háló által képviselt helyreállítási régióban (feladatátvétel) esetén helyre. A helyreállítás ebben a példában használt Azure-régió az USA 2. nyugati.
 
 ```azurepowershell
 #Create Recovery ASR fabric
@@ -206,9 +206,9 @@ $RecoveryFabric = Get-AsrFabric -Name "A2Ademo-WestUS"
 
 ```
 
-####<a name="3-create-a-site-recovery-protection-container-in-the-primary-fabric"></a>3. Az elsődleges háló a Site Recovery védelmi tároló létrehozása
+####<a name="3-create-a-site-recovery-protection-container-in-the-primary-fabric"></a>3. A Site Recovery védelmi tároló létrehozása elsődleges-hálóban
 
-A védelmi tároló egy olyan tároló, a replikált elemek belül a háló csoportosításához használt.
+A védelmi tároló egy olyan replikált elemek a háló belül csoportosítására használhatók, tároló.
 
 ```azurepowershell
 #Create a Protection container in the primary Azure region (within the Primary fabric)
@@ -224,7 +224,7 @@ Write-Output $TempASRJob.State
 
 $PrimaryProtContainer = Get-ASRProtectionContainer -Fabric $PrimaryFabric -Name "A2AEastUSProtectionContainer"
 ```
-####<a name="4-create-a-site-recovery-protection-container-in-the-recovery-fabric"></a>4. A helyreállítási háló a Site Recovery védelmi tároló létrehozása
+####<a name="4-create-a-site-recovery-protection-container-in-the-recovery-fabric"></a>4. A helyreállítási hálóban a Site Recovery védelmi tároló létrehozása
 
 ```azurepowershell
 #Create a Protection container in the recovery Azure region (within the Recovery fabric)
@@ -260,9 +260,9 @@ Write-Output $TempASRJob.State
 
 $ReplicationPolicy = Get-ASRPolicy -Name "A2APolicy"
 ```
-####<a name="6-create-a-protection-container-mapping-between-the-primary-and-recovery-protection-container"></a>6. Hozzon létre egy elsődleges és a helyreállítási védelmi tároló között védelmitároló-leképezés
+####<a name="6-create-a-protection-container-mapping-between-the-primary-and-recovery-protection-container"></a>6. Hozzon létre egy között az elsődleges és a helyreállítási védelmi tároló védelmitároló-leképezés
 
-A védelmi tároló egyhez az elsődleges védelmet tárolóhoz a helyreállítási védelmi tároló és a replikációs házirend. Hozzon létre egy leképezést fogja használni virtuális gépeket replikálhat a védelmi tároló párjai közötti replikációs házirendet.
+Egy védelmitároló-leképezés az elsődleges védelmi tároló egy helyreállítási védelmi tároló és a egy replikációs szabályzatot hozzárendeli. Hozzon létre minden egyes virtuális gépeket replikálhat a védelmi tároló két között fogjuk replikációs házirend egy hozzárendelését.
 
 ```azurepowershell
 #Create Protection container mapping between the Primary and Recovery Protection Containers with the Replication policy
@@ -280,9 +280,9 @@ Write-Output $TempASRJob.State
 $EusToWusPCMapping = Get-ASRProtectionContainerMapping -ProtectionContainer $PrimaryProtContainer -Name "A2APrimaryToRecovery"
 ```
 
-####<a name="7-create-a-protection-container-mapping-for-failback-reverse-replication-after-a-failover"></a>7. A feladat-visszavételi (egy feladatátvétel után a visszirányú replikálás) védelmitároló-leképezés létrehozása
+####<a name="7-create-a-protection-container-mapping-for-failback-reverse-replication-after-a-failover"></a>7. Hozzon létre egy feladat-visszavételhez (egy feladatátvétel után a visszirányú replikálás) védelmitároló-leképezés
 
-Feladatátvétel után, amikor készen áll a kerüljön a feladatokat átadó virtuális gép vissza az eredeti Azure-régió, hogy feladat-visszavétel. Feladat-visszavételi, a feladatokat átadó virtuális gép visszirányú replikálása a sikertelen a régióban legyen, az eredeti terület felett. Visszirányú replikálás a szerepköröket, az eredeti területi és a helyreállítási régió kapcsoló. Az eredeti régió most lesz az új helyreállítási régió, pedig mi eredetileg volt a helyreállítási régió most az elsődleges régióban. A fordított replikáció védelmitároló-leképezés az eredeti és helyreállítási régiók kapcsolt szerepkörök jelöli.
+Amikor elkészült, ahhoz, hogy a feladatátviteli virtuális géphez vissza az eredeti Azure-régió, feladat-visszavételt a feladatátvételt. Történő feladat-visszavételhez, a feladatátviteli virtuális géphez fordított replikálódnak az a régió az eredeti régióba keresztül. Visszirányú replikálás kapcsoló a szerepkörök az eredeti régióban és a helyreállítási régióban. Az eredeti régió mostantól az új helyreállítási régióban, és mi eredetileg volt a helyreállítási régióban most lesz az elsődleges régióba. A visszirányú replikálás védelmitároló-leképezés a kapcsolt szerepkörök eredeti és helyreállítási régiót jelöli.
 
 ```azurepowershell
 #Create Protection container mapping (for failback) between the Recovery and Primary Protection Containers with the Replication policy 
@@ -298,16 +298,16 @@ while (($TempASRJob.State -eq "InProgress") -or ($TempASRJob.State -eq "NotStart
 Write-Output $TempASRJob.State
 ```
 
-## <a name="create-cache-storage-accounts-and-target-storage-accounts"></a>Gyorsítótár-tárfiókok és a cél tárfiókok létrehozása
+## <a name="create-cache-storage-accounts-and-target-storage-accounts"></a>Gyorsítótárfiók(ok) és a céltárfiók létrehozása
 
-A gyorsítótár storage-fiók egy standard szintű tárfiókot replikált virtuális gépként Azure ugyanabban a régióban. A gyorsítótár tárfiók segítségével történő replikációs módosításokat ideiglenesen, tartsa, mielőtt a módosítások átkerülnek a helyreállítást az Azure-régió. Ha szeretné (de nem kell megegyeznie) adjon meg másik gyorsítótármappa storage-fiókok a virtuális gépek különböző lemezei esetén.
+A gyorsítótárfiók egy standard szintű tárfiókot a replikált virtuális gép is az azonos Azure-régióban. A gyorsítótárfiók segítségével átmenetileg, tartsa replikációs módosításokat, mielőtt a módosítások átkerülnek a helyreállítási Azure-régióban. Dönthet úgy (de nem kell) adja meg a virtuális gép különböző lemezek különböző gyorsítótárfiókok.
 
 ```azurepowershell
 #Create Cache storage account for replication logs in the primary region
 $EastUSCacheStorageAccount = New-AzureRmStorageAccount -Name "a2acachestorage" -ResourceGroupName "A2AdemoRG" -Location 'East US' -SkuName Standard_LRS -Kind Storage
 ```
 
-A virtuális gépek nem felügyelt lemezt használ a céloldali tárfiók a tárfiókok, amelyhez a virtuális gépek replikálva vannak a helyreállítási régióban. A céloldali tárfiók lehet vagy egy standard szintű tárfiókot, vagy a prémium szintű storage-fiók. Válassza ki, hogy a tárfiók szükséges milyen alapján az adatmódosítási arány (IO írási sebesség) a lemezek és az Azure Site Recovery támogatott forgalom határértékeit tárolási típusát.
+Felügyelt lemezeket nem használó virtuális gépek esetében a célként megadott tárfiók a tárfiók(ok) a helyreállítási régióban, amelyhez a rendszer a virtuális gép lemezét replikálja. A célként megadott tárfiók vagy a standard szintű tárfiókot, vagy a premium storage-fiók lehet. Válassza ki a storage-fiók szükséges típusú adatváltozási sebesség (i/o írási arány) a lemezek és a tárolási típust az Azure Site Recovery által támogatott lemorzsolódási korlátai alapján.
 
 ```azurepowershell
 #Create Target storage account in the recovery region. In this case a Standard Storage account
@@ -315,11 +315,11 @@ $WestUSTargetStorageAccount = New-AzureRmStorageAccount -Name "a2atargetstorage"
 
 ```
 
-## <a name="create-network-mappings"></a>Hálózati hozzárendelések létrehozása
+## <a name="create-network-mappings"></a>Hálózatleképezések létrehozása
 
-A hálózatleképezés az elsődleges régióban lévő virtuális hálózatok rendel a virtuális hálózatok a helyreállítási régióban. A hálózatra való leképezést a helyreállítási régió, egy virtuális gép által az elsődleges virtuális hálózatot a feladatátvétel az Azure virtuális hálózat határozza meg. Egy Azure virtuális hálózat csak egy Azure virtuális hálózatnak egy helyreállítási régióban rendelhetők.
+A hálózatleképezés az elsődleges régióban lévő virtuális hálózatok rendel a virtuális hálózatok a helyreállítási régióban. A hálózatleképezést a helyreállítási régióban, amely az elsődleges virtuális hálózat egy virtuális gép feladatátvételt kell az Azure virtuális hálózat határozza meg. Egy Azure virtuális hálózat csak egy Azure virtuális hálózatnak egy helyreállítási régióban is rendelhető.
 
-- A helyreállítási régióban, így az Azure virtuális hálózat létrehozása
+- A feladatátvétel helyreállítási régióban hozza létre Azure-beli virtuális hálózathoz
 
    ```azurepowershell
     #Create a Recovery Network in the recovery region
@@ -329,7 +329,7 @@ A hálózatleképezés az elsődleges régióban lévő virtuális hálózatok r
 
     $WestUSRecoveryNetwork = $WestUSRecoveryVnet.Id
    ```
-- Az elsődleges virtuális hálózat (a virtuális hálózat, amely a virtuális gép csatlakozik) beolvasása
+- Az elsődleges virtuális hálózat (a virtuális hálózattal, a virtuális gép csatlakozik) beolvasása
    ```azurepowershell
     #Retrieve the virtual network that the virtual machine is connected to
     
@@ -351,7 +351,7 @@ A hálózatleképezés az elsődleges régióban lévő virtuális hálózatok r
     # Extract the resource ID of the Azure virtual network the nic is connected to from the subnet ID
     $EastUSPrimaryNetwork = (Split-Path(Split-Path($PrimarySubnet.Id))).Replace("\","/")  
    ```
-- Az elsődleges virtuális hálózat és a helyreállítási virtuális hálózat között hálózatra való leképezés létrehozása
+- Az elsődleges virtuális hálózat és a helyreállítási virtuális hálózat közötti hálózatleképezést létrehozása
    ```azurepowershell
     #Create an ASR network mapping between the primary Azure virtual network and the recovery Azure virtual network
     $TempASRJob = New-ASRNetworkMapping -AzureToAzure -Name "A2AEusToWusNWMapping" -PrimaryFabric $PrimaryFabric -PrimaryAzureNetworkId $EastUSPrimaryNetwork -RecoveryFabric $RecoveryFabric -RecoveryAzureNetworkId $WestUSRecoveryNetwork
@@ -366,7 +366,7 @@ A hálózatleképezés az elsődleges régióban lévő virtuális hálózatok r
     Write-Output $TempASRJob.State
     
    ```
-- A fordított irányában (feladat-visszavétel) hálózatra való leképezés létrehozása
+- A fordított irányát (feladat-visszavétel) hálózatleképezés létrehozása
     ```azurepowershell
     #Create an ASR network mapping for failback between the recovery Azure virtual network and the primary Azure virtual network
     $TempASRJob = New-ASRNetworkMapping -AzureToAzure -Name "A2AWusToEusNWMapping" -PrimaryFabric $RecoveryFabric -PrimaryAzureNetworkId $WestUSRecoveryNetwork -RecoveryFabric $PrimaryFabric -RecoveryAzureNetworkId $EastUSPrimaryNetwork
@@ -415,13 +415,13 @@ while (($TempASRJob.State -eq "InProgress") -or ($TempASRJob.State -eq "NotStart
 Write-Output $TempASRJob.State
 ```
 
-A start replikációs művelet sikeres, ha virtuálisgép-adatokat a helyreállítási régió replikálódik. 
+A kezdő replikációs művelet sikeres, ha a rendszer a helyreállítási régióba replikálja a virtuális gépek adatainak. 
 
-A replikálási folyamat egy példányát a replikálás alatt álló helyreállítási régióban a virtuális gép lemezei kezdetben összehangolásával kezdődik. Ebben a fázisban a kezdeti replikációs szakasz neve. 
+A replikálási folyamat elindítja a kezdeti beültetés egy példányát a replikáló lemez a virtuális gép a helyreállítási régióban. Ebben a fázisban a kezdeti replikáció fázis neve. 
 
-Kezdeti replikálás után a replikáció áthelyezi a különbözeti szinkronizálási fázis. Ezen a ponton a virtuális gép védett, és a teszt feladatátvételi művelet is végezhető el rajta. Kezdeti replikáció befejezése után a replikált elemet képviselő a virtuális gép replikációs állapota a "Protected" állapotba kerül.
+Kezdeti replikálás befejezése után a különbözeti szinkronizálási fázis replikációs helyezi át. Ezen a ponton a virtuális gép védett, és a egy teszt feladatátvételi művelet végezhető rajta. Kezdeti replikálás befejezése után a replikált elemet képviselő a virtuális gép replikációs állapota "Védett" állapotba kerül.
 
-A védett replikációs elem rá vonatkozó információk lekérdezése figyelje a replikációs állapot és a virtuális gép replikációs állapotát.
+A replikációs állapotot és a virtuális gép replikációs állapotát figyeli a hozzá tartozó replikációval védett elem részleteinek beolvasása közben.
 ```azurepowershell
  Get-ASRReplicationProtectedItem -ProtectionContainer $PrimaryProtContainer | Select FriendlyName, ProtectionState, ReplicationHealth
 ```
@@ -431,9 +431,9 @@ FriendlyName ProtectionState ReplicationHealth
 AzureDemoVM  Protected       Normal           
 ```
 
-## <a name="perform-a-test-failover-validate-and-cleanup-test-failover"></a>Feladatátvételi teszt végrehajtása, ellenőrzéséhez és karbantartása a feladatátvételi teszt
+## <a name="perform-a-test-failover-validate-and-cleanup-test-failover"></a>Feladatátvételi teszt végrehajtása, ellenőrzés, és a feladatátvételi teszt utáni karbantartás
 
-Miután a virtuális gép replikálása elérte a védett állapotban, a teszt feladatátvételi művelet is végezhető el a virtuális gépen (a replikációval védett elemen a virtuális gép.)
+A virtuális gép replikálása elérte a védett állapotba, ha a teszt feladatátvételi művelet is elvégezhető a virtuális gépen (a virtuális gép replikációval védett elemen.)
 
 ```azurepowershell
 #Create a seperate network for test failover (not connected to my DR network)
@@ -453,7 +453,7 @@ $TFOJob = Start-ASRTestFailoverJob -ReplicationProtectedItem $ReplicationProtect
 
 ```
 
-Várja meg a teszt feladatátvételi művelet elvégzéséhez.
+Várjon, amíg a teszt feladatátvételi művelet végrehajtásához.
 ```azurepowershell
 Get-ASRJob -Job $TFOJob
 ```
@@ -477,9 +477,9 @@ AllowedActions   :
 Tasks            : {Prerequisites check for test failover, Create test virtual machine, Preparing the virtual machine, Start the virtual machine}
 Errors           : {}
 ```
-Ha a teszt feladatátvételi feladat sikeresen befejeződik, a teszt virtuális gép a feladatátvételt csatlakozhat, és a teszt feladatátvétel érvényesítése.
+Ha a teszt feladatátvételi feladat sikeresen befejeződött, a teszt virtuális gép feladatátvétele csatlakozhat, és a teszt feladatátvétel érvényesítése.
 
-Tesztelés befejezése után a teszteléshez használt virtuális gép a feladatátvételt, karbantartása a tesztelési másolatot a karbantartás elindításával teszt feladatátvételi művelet. Ez a művelet törli a teszt másolatot a virtuális gép által a teszt feladatátvételhez létrehozott.
+Tesztelés befejezése után a teszteléshez használt virtuális gép feladatátvétele a távolítsa el a tesztelési másolatot a tisztítás elindításával tesztelheti a feladatátvételi művelet. Ez a művelet törli a tesztelési másolatot a virtuális gép feladatátvételi teszt által létrehozott.
 
 ```azurepowershell
 $Job_TFOCleanup = Start-ASRTestFailoverCleanupJob -ReplicationProtectedItem $ReplicationProtectedItem
@@ -522,7 +522,7 @@ $Job_Failover.State
 Succeeded
 ```
 
-Ha feladatátvételt sikeresen, véglegesítése a a feladatátvételi műveletet.
+Miután a feladatátvétel sikeresen véglegesítheti a feladatátvételi műveletet.
 ```azurepowershell
 $CommitFailoverJOb = Start-ASRCommitFailoverJob -ReplicationProtectedItem $ReplicationProtectedItem
 
@@ -549,7 +549,7 @@ Tasks            : {Prerequisite check, Commit}
 Errors           : {}
 ```
 
-A feladatátvétel után a térhet vissza az eredeti régió készen áll, ha a frissítés-AzureRmRecoveryServicesAsrProtectionDirection parancsmaggal replikációval védett elem visszirányú replikálás indítása.
+A feladatátvétel után a amikor elkészült, lépjen vissza az eredeti régióban, az Update-AzureRmRecoveryServicesAsrProtectionDirection parancsmag segítségével replikációval védett elem visszirányú replikálás indítása.
 
 ## <a name="next-steps"></a>További lépések
-Nézet a [Azure Site Recovery PowerShell-referencia ](https://docs.microsoft.com/powershell/module/AzureRM.RecoveryServices.SiteRecovery) megtudhatja, hogyan egyéb feladatokhoz, mint a helyreállítási terv létrehozása és tesztelése a feladatátvételi helyreállítási tervek a PowerShell segítségével végezheti el.
+Nézet a [Azure Site Recovery PowerShell-referencia ](https://docs.microsoft.com/powershell/module/AzureRM.RecoveryServices.SiteRecovery) megtudhatja, hogyan hajthat végre egyéb feladatok, például a helyreállítási tervek létrehozása és tesztelése a Powershellen keresztül a helyreállítási terv feladatátvételét.

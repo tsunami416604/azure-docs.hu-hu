@@ -1,5 +1,5 @@
 ---
-title: Entitás létrehozása egy összetett bontsa ki az összetett adatokat – Azure |} A Microsoft Docs
+title: Az oktatóanyag pedig az entitások összetett bontsa ki az összetett adatokat – Azure |} A Microsoft Docs
 description: Megtudhatja, hogyan hozhat létre összetett entitásokat a különböző típusú entitások adatainak kinyeréséhez a LUIS-alkalmazás.
 services: cognitive-services
 author: v-geberr
@@ -7,118 +7,109 @@ manager: kaiqb
 ms.service: cognitive-services
 ms.component: luis
 ms.topic: article
-ms.date: 03/28/2018
+ms.date: 07/09/2018
 ms.author: v-geberr
-ms.openlocfilehash: 375b52f9206f55e620d5e664844b8fa1d7249a07
-ms.sourcegitcommit: 11321f26df5fb047dac5d15e0435fce6c4fde663
+ms.openlocfilehash: d73dc9b9f204e334a75c9de5e19c6b11e3a95b12
+ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37888745"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37929185"
 ---
-# <a name="use-composite-entity-to-extract-complex-data"></a>Összetett entitást használja az összetett adatokat nyerhet ki
-Az egyszerű alkalmazás van két [leképezések](luis-concept-intent.md) és több entitásokat. Feladata, például az "1 jegy Seattle péntekjén Cairo" repülőjáratok foglalható le, és visszaad egy egyetlen adat, a Foglalás összes tulajdonságairól. 
+# <a name="tutorial-6-add-composite-entity"></a>Oktatóanyag: 6. Összetett entitás hozzáadása 
+Ebben az oktatóanyagban egy összetett entitás szeretné a befoglaló entitás be kinyert adatok hozzáadása.
 
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
+<!-- green checkmark -->
 > [!div class="checklist"]
-* Előre összeállított entitások datetimeV2 és szám hozzáadása
-* Összetett entitás létrehozása
-* A LUIS lekérdezését, és összetett entitást adatfogadás
+> * Összetett entitásainak ismertetése 
+> * Adatokat nyerhet ki összetett entitás hozzáadása
+> * Alkalmazás betanítása és közzététele
+> * Alkalmazás végpontjának lekérdezése a LUIS által visszaadott JSON-válasz megtekintéséhez
 
 ## <a name="before-you-begin"></a>Előkészületek
-* A LUIS-alkalmazás, a  **[hierarchikus rövid](luis-tutorial-composite-entity.md)**. 
+Ha még nincs meg az Emberi erőforrások alkalmazása a [hierarchikus entitás](luis-quickstart-intent-and-hier-entity.md) oktatóanyagából, [importálja](luis-how-to-start-new-app.md#import-new-app) a JSON-t egy új alkalmazásba a [LUIS](luis-reference-regions.md#luis-website) webhelyén. Az importálandó alkalmazás a [LUIS-minták](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/quickstarts/custom-domain-hier-HumanResources.json) GitHub-adattárban található.
 
-> [!Tip]
-> Ha Ön még nem rendelkezik előfizetéssel, regisztrálhat egy [ingyenes fiókot](https://azure.microsoft.com/free/).
+Ha meg szeretné tartani az eredeti Emberi erőforrások alkalmazást, klónozza a [Settings](luis-how-to-manage-versions.md#clone-a-version) (Beállítások) lapon a verziót, és adja neki a következő nevet: `composite`. A klónozás nagyszerű mód, hogy kísérletezhessen a különböző LUIS-funkciókkal anélkül, hogy az az eredeti verzióra hatással lenne.  
 
 ## <a name="composite-entity-is-a-logical-grouping"></a>Összetett entitás, logikai csoportosítása 
-Az entitás célja, hogy megtalálja és kategorizálja a kimondott szöveg egyes részeit. A [összetett](luis-concept-entity-types.md) entitás más entitástípusok származó környezet áll. Az utazási alkalmazás, amely a flight foglalásokat például a dátumok, a helyek és a munkaállomások száma több adatra van. 
+Az összetett entitás az a célja, hogy egy szülőentitás kategória kapcsolódó entitások csoportosíthatja. Az információk létezik külön entitásokként összetett létrehozása előtt. Azt a hierarchikus hasonló, de több entitástípus is tartalmazhat. 
 
-Az információk létezik külön entitásokként összetett létrehozása előtt. Hozzon létre egy összetett entitást, ha a különálló entitások logikailag csoportosíthatók, és ez a logikai csoportosítás akkor hasznos, a csevegőrobot, vagy más LUIS-igényes alkalmazások. 
+ Hozzon létre egy összetett entitást, ha a különálló entitások logikailag csoportosíthatók, és ez a logikai csoportosítás akkor hasznos, az ügyfélalkalmazásnak. 
 
-Egyszerű példák felhasználók által kimondott szövegekre:
+Ebben az alkalmazásban, az alkalmazott neve van megadva a **alkalmazott** entitás listában, és tartalmazza a neve, e-mail címét, vállalati a mellék, mobiltelefonszám és USA szinonimák Szövetségi adózási azonosítója. 
 
-```
-Book a flight to London for next Monday
-2 tickets from Dallas to Dublin this weekend
-Reserve a seat from New York to Paris on the first of April
-```
+A **MoveEmployee** szándékot rendelkezik példa utterances kérése egy alkalmazott egy épület és az office áthelyezni egy másikba. Épület nevében betűk, a rendszer: "A", "B", stb. amíg irodák numerikus: "1234", "13245". 
+
+A példa utterances a **MoveEmployee** szándékot tartalmazza:
+
+|Példák kimondott szövegekre|
+|--|
+|John W át. A-2345 Smith|
+|x12345 váltása holnap: h-1234|
  
-Az összetett entitás munkaállomásszámot, a feladás helyét, a célhely és a dátum megegyezik. 
+Az áthelyezési kérelemnek legalább tartalmaznia kell az alkalmazott (bármely szinonimát használatával), illetve a végső épület és az office helyét. A kérelem is tartalmazhat az eredeti office, valamint egy dátumot, az áthelyezés történjen. 
 
-## <a name="what-luis-does"></a>A LUIS által elvégzett feladat
-A LUIS akkor van készen, ha azonosította, [kinyerte](luis-concept-data-extraction.md#list-entity-data), és a [végpontról](https://aka.ms/luis-endpoint-apis) JSON-formátumban visszaadta a kimondott szöveg szándékát és entitásait. A hívó alkalmazás vagy a csevegőrobot fogadja a JSON-választ és teljesíti a kérést a kialakításának megfelelő módon. 
+A kibontott adatok végpontról tartalmazzák ezt az információt és küldje vissza, az egy `RequestEmployeeMove` összetett entitást. 
 
-## <a name="add-prebuilt-entities-number-and-datetimev2"></a>Előre összeállított entitások száma és datetimeV2 hozzáadása
-1. Válassza ki a `MyTravelApp` alkalmazást a listából az alkalmazások a [LUIS](luis-reference-regions.md#luis-website) webhelyén.
+## <a name="create-composite-entity"></a>Összetett entitás létrehozása
+1. Győződjön meg arról, hogy az Emberi erőforrások alkalmazás a LUIS **Build** (Létrehozás) szakaszában van. Ha erre a szakaszra szeretne lépni, válassza a jobb felső menüsávon a **Build** (Létrehozás) elemet. 
 
-2. Amikor megnyitja az alkalmazást, válassza ki a **entitások** bal oldali navigációs hivatkozás.
+    [ ![Képernyőkép a LUIS-alkalmazásról a kiemelt Létrehozás elemmel a jobb felső navigációs sávon](./media/luis-tutorial-composite-entity/hr-first-image.png)](./media/luis-tutorial-composite-entity/hr-first-image.png#lightbox)
 
-    ![Válassza ki az entitásokat gomb](./media/luis-tutorial-composite-entity/intents-page-select-entities.png)    
+2. Az a **leképezések** lapon jelölje be **MoveEmployee** szándékot. 
 
-3. Válassza a **Manage prebuilt entities** (Előre összeállított entitások kezelése) lehetőséget.
+    [![](media/luis-tutorial-composite-entity/hr-intents-moveemployee.png "LUIS képernyőképe a kiemelt \"MoveEmployee\" szándék")](media/luis-tutorial-composite-entity/hr-intents-moveemployee.png#lightbox)
 
-    ![Válassza ki az entitásokat gomb](./media/luis-tutorial-composite-entity/manage-prebuilt-entities-button.png)
+3. Válassza a Nagyító ikont, az eszköztáron a kimondott szöveg szűréséhez. 
 
-4. A legördülő mezőben válassza ki a **szám** és **datetimeV2**.
+    [![](media/luis-tutorial-composite-entity/hr-moveemployee-magglass.png "Képernyőkép a LUIS \"MoveEmployee\" szándékot Nagyító gomb kiemelésével")](media/luis-tutorial-composite-entity/hr-moveemployee-magglass.png#lightbox)
 
-    ![Válassza ki az entitásokat gomb](./media/luis-tutorial-composite-entity/prebuilt-entity-ddl.png)
+4. Adja meg `tomorrow` be a szűrő szövegmezőbe az utterance (kifejezés) található `shift x12345 to h-1234 tomorrow`.
 
-5. Válassza ki ahhoz, hogy az új entitások kinyerni, **Train** a felső navigációs sávban.
+    [![](media/luis-tutorial-composite-entity/hr-filter-by-tomorrow.png "Képernyőkép a LUIS \"MoveEmployee\" leképezés \"holnap innovációit\" szűrővel kiemelésével")](media/luis-tutorial-composite-entity/hr-filter-by-tomorrow.png#lightbox)
 
-    ![Train (Betanítás) gomb kiválasztása](./media/luis-tutorial-composite-entity/train.png)
+    Hogy az entitás szűrés datetimeV2, kiválasztásával **entitás szűrők** majd **datetimeV2** a listából. 
 
-## <a name="use-existing-intent-to-create-composite-entity"></a>Meglévő leképezés használatával összetett entitás létrehozása
-1. Válassza ki **leképezések** a bal oldali navigációs sávon. 
+5. Válassza ki az első entitás `Employee`, majd **Zabalit do összetett entitást** előugró menü listájában. 
 
-    ![Válassza ki a leképezések lap](./media/luis-tutorial-composite-entity/intents-from-entities-page.png)
+    [![](media/luis-tutorial-composite-entity/hr-create-entity-1.png "Képernyőkép a LUIS \"MoveEmployee\" szándékot összetett, kiemelve az első entitás kiválasztása")](media/luis-tutorial-composite-entity/hr-create-entity-1.png#lightbox)
 
-2. Válassza ki `BookFlight` származó a **leképezések** listája.  
 
-    ![Válassza ki a listából BookFlight leképezés](./media/luis-tutorial-composite-entity/intent-page-with-prebuilt-entities-labeled.png)
+6. Azonnal válassza ki az utolsó entitás `datetimeV2` az utterance (kifejezés) található. Zöld sáv megjelenítése a kiválasztott szavakat jelző egy összetett entitás alapján. Az előugró menüben írja be a összetett nevét `RequestEmployeeMove` majd **hozzon létre új összetett** a a helyi menüből. 
 
-    A szám és datetimeV2 előre összeállított entitások a megcímkézzen vannak ellátva.
+    [![](media/luis-tutorial-composite-entity/hr-create-entity-2.png "Képernyőkép a LUIS összetett és létrehozni egy entitásban utolsó entitás kiválasztása \"MoveEmployee\" szándékot kiemelésével")](media/luis-tutorial-composite-entity/hr-create-entity-2.png#lightbox)
 
-3. Az utterance (kifejezés) a `book 2 flights from seattle to cairo next monday`, válassza a kék `number` entitásra, majd válassza ki **Zabalit do összetett entitást** a listából. Egy zöld vonal alatt a szavakat a kurzor követi, a jobb oldalon, egy összetett entitást jelző mozgó. Helyezze át a jogot arra, hogy válassza ki az utolsó előre összeállított entitások `datetimeV2`, majd adja meg `FlightReservation` az előugró ablakban a szövegmezőbe, majd válassza ki **hozzon létre új összetett**. 
+7. A **milyen típusú entitást szeretne létrehozni?**, szinte az összes, a szükséges mezők szerepelnek a listában. Csak a származási helye nincs megadva. Válassza ki **adjon hozzá egy gyermek entitásnak**, jelölje be **Locations::Origin** meglévő entitások, majd válassza ki a listáról **kész**. 
 
-    ![A leképezések lapon összetett entitás létrehozása](./media/luis-tutorial-composite-entity/create-new-composite.png)
+  ![Képernyőkép a LUIS "MoveEmployee" szándékot egy másik entitás hozzáadása az előugró ablakban](media/luis-tutorial-composite-entity/hr-create-entity-ddl.png)
 
-4. Egy felugró párbeszédpanel jelenik meg, ahol ellenőrizheti a összetett entitást gyermekek. Válassza a **Done** (Kész) lehetőséget.
+8. Válassza a Nagyító ikonra az eszköztáron a szűrő eltávolításához. 
 
-    ![A leképezések lapon összetett entitás létrehozása](./media/luis-tutorial-composite-entity/validate-composite-entity.png)
+## <a name="label-example-utterances-with-composite-entity"></a>Az összetett entitás címke példa kimondott szöveg
+1. Valamennyi példa utterance (kifejezés) válassza ki a bal szélső entitást, amely az összetett kell lennie. Válassza ki **Zabalit do összetett entitást**.
 
-## <a name="wrap-the-entities-in-the-composite-entity"></a>Az entitások zabalit do az összetett entitás
-Az összetett entitás létrehozása után a fennmaradó megcímkézzen az összetett entitásban címkét. Jelölje ki a bal szélső szót, majd válassza ki kell burkolása összetett egységként kifejezés, **Zabalit do összetett entitást** a megjelenő listában, majd jelölje ki a jobb szélső szót, majd válassza a névvel rendelkező összetett entitás `FlightReservation`. Ez a gyors és zökkenőmentes lépésében beállításokat is, a következő lépések szerinti bontásban:
+    [![](media/luis-tutorial-composite-entity/hr-label-entity-1.png "Képernyőkép a LUIS \"MoveEmployee\" szándékot összetett, kiemelve az első entitás kiválasztása")](media/luis-tutorial-composite-entity/hr-label-entity-1.png#lightbox)
 
-1. Az utterance (kifejezés) a `schedule 4 seats from paris to london for april 1`, válassza a 4 számú előre elkészített entitásként.
+2. Válassza ki az utolsó szót az összetett entitásban, majd válassza ki **RequestEmployeeMove** az előugró menüben. 
 
-    ![Válassza ki a bal szélső word](./media/luis-tutorial-composite-entity/wrap-composite-step-1.png)
+    [![](media/luis-tutorial-composite-entity/hr-label-entity-2.png "Képernyőkép a LUIS \"MoveEmployee\" szándékot összetett, kiemelve az utolsó entitás kiválasztása")](media/luis-tutorial-composite-entity/hr-label-entity-2.png#lightbox)
 
-2. Válassza ki **Zabalit do összetett entitást** a listából, amely akkor jelenik meg.
+3. Ellenőrizze, hogy a célt az összes utterances vannak ellátva, az összetett entitáshoz. 
 
-    ![A listáról válassza sortörés](./media/luis-tutorial-composite-entity/wrap-composite-step-2.png)
-
-3. Válassza ki a jobb szélső szó. Zöld vonal a kifejezést jelzi egy összetett entitást alatt jelenik meg.
-
-    ![Válassza ki a jobb szélső word](./media/luis-tutorial-composite-entity/wrap-composite-step-3.png)
-
-4. Válassza ki összetett név `FlightReservation` a listából, amely akkor jelenik meg.
-
-    ![Névvel rendelkező összetett entitás kiválasztása](./media/luis-tutorial-composite-entity/wrap-composite-step-4.png)
-
-    Az utolsó utterance (kifejezés), wrap `London` és `tomorrow` az összetett entitásban ugyanezen utasításokat követve. 
+    [![](media/luis-tutorial-composite-entity/hr-all-utterances-labeled.png "Képernyőkép a LUIS \"MoveEmployee\" címkével ellátott összes utterances az")](media/luis-tutorial-composite-entity/hr-all-utterances-labeled.png#lightbox)
 
 ## <a name="train-the-luis-app"></a>A LUIS-alkalmazás betanítása
-Amíg nincs betanítva, a LUIS nem ismeri fel a szándékok és entitások (a modell) módosításait. 
+A LUIS mindaddig, amíg az alkalmazás be van tanítva az új összetett entitás nem ismert. 
 
 1. A LUIS-webhely jobb felső részén kattintson a **Train** (Betanítás) gombra.
 
-    ![Az alkalmazás betanítása](./media/luis-tutorial-composite-entity/train-button.png)
+    ![Az alkalmazás betanítása](./media/luis-tutorial-composite-entity/hr-train-button.png)
 
 2. A betanítás akkor van kész, ha a webhely tetején megjelenik a sikerességet jelző zöld állapotsáv.
 
-    ![A betanítás sikeres volt](./media/luis-tutorial-composite-entity/trained.png)
+    ![A betanítás sikeres volt](./media/luis-tutorial-composite-entity/hr-trained.png)
 
 ## <a name="publish-the-app-to-get-the-endpoint-url"></a>Az alkalmazás közzététele a végpont URL-címének lekéréshez
 Ahhoz, hogy LUIS-előrejelzéseket kaphasson egy csevegőrobotban vagy más alkalmazásban, közzé kell tennie az alkalmazást. 
@@ -127,123 +118,202 @@ Ahhoz, hogy LUIS-előrejelzéseket kaphasson egy csevegőrobotban vagy más alka
 
 2. Válasza a Production (Termelés) helyet, és kattintson a **Publish** (Közzététel) gombra.
 
-    ![alkalmazás közzététele](./media/luis-tutorial-composite-entity/publish-to-production.png)
+    ![alkalmazás közzététele](./media/luis-tutorial-composite-entity/hr-publish-to-production.png)
 
 3. A közzététel akkor van kész, ha a webhely tetején megjelenik a sikerességet jelző zöld állapotsáv.
 
-## <a name="query-the-endpoint-with-a-different-utterance"></a>A végpont lekérdezése egy másik kimondott szöveggel
+## <a name="query-the-endpoint"></a>A végpont lekérdezése 
 1. A **Publish** (Közzététel) lapon kattintson a lap alján található **Endpoint** (Végpont) hivatkozásra. Ez a művelet megnyit egy másik böngészőablakot, amelynek címsorában a végpont URL-címe látható. 
 
-    ![Válassza ki a végpont URL-címe](./media/luis-tutorial-composite-entity/publish-select-endpoint.png)
+    ![Válassza ki a végpont URL-címe](./media/luis-tutorial-composite-entity/hr-publish-select-endpoint.png)
 
-2. Lépjen az URL-cím végéhez, és írja be a következőt: `reserve 3 seats from London to Cairo on Sunday`. Az utolsó lekérdezési karakterlánc paraméter `q`, az utterance (kifejezés) lekérdezést. A kimondott szöveg nem egyezik meg egyik címkézett kimondott szöveggel sem, ezért tesztnek megfelelő, és a következő szándékot kell visszaadnia a kinyert hierarchikus entitással: `BookFlight`.
+2. Lépjen az URL-cím végéhez, és írja be a következőt: `Move Jill Jones from a-1234 to z-2345 on March 3 2 p.m.`. Az utolsó lekérdezési karakterlánc paraméter `q`, az utterance (kifejezés) lekérdezést. 
 
-```
+    Mivel ez a teszt ellenőrzése az összetett ki kell olvasni megfelelően, egy tesztet vagy tartalmazhat egy meglévő minta utterance (kifejezés) vagy egy új utterance (kifejezés). Ellenőrzi, hogy a gyermekentitások tartalmazza az összetett entitásban.
+
+```JSON
 {
-  "query": "reserve 3 seats from London to Cairo on Sunday",
+  "query": "Move Jill Jones from a-1234 to z-2345 on March 3  2 p.m",
   "topScoringIntent": {
-    "intent": "BookFlight",
-    "score": 0.999999046
+    "intent": "MoveEmployee",
+    "score": 0.9959525
   },
   "intents": [
     {
-      "intent": "BookFlight",
-      "score": 0.999999046
+      "intent": "MoveEmployee",
+      "score": 0.9959525
+    },
+    {
+      "intent": "GetJobInformation",
+      "score": 0.009858314
+    },
+    {
+      "intent": "ApplyForJob",
+      "score": 0.00728598563
+    },
+    {
+      "intent": "FindForm",
+      "score": 0.0058053555
+    },
+    {
+      "intent": "Utilities.StartOver",
+      "score": 0.005371796
+    },
+    {
+      "intent": "Utilities.Help",
+      "score": 0.00266987388
     },
     {
       "intent": "None",
-      "score": 0.227036044
+      "score": 0.00123299169
+    },
+    {
+      "intent": "Utilities.Cancel",
+      "score": 0.00116407464
+    },
+    {
+      "intent": "Utilities.Confirm",
+      "score": 0.00102653319
+    },
+    {
+      "intent": "Utilities.Stop",
+      "score": 0.0006628214
     }
   ],
   "entities": [
     {
-      "entity": "sunday",
-      "type": "builtin.datetimeV2.date",
-      "startIndex": 40,
-      "endIndex": 45,
+      "entity": "march 3 2 p.m",
+      "type": "builtin.datetimeV2.datetime",
+      "startIndex": 41,
+      "endIndex": 54,
       "resolution": {
         "values": [
           {
-            "timex": "XXXX-WXX-7",
-            "type": "date",
-            "value": "2018-03-25"
+            "timex": "XXXX-03-03T14",
+            "type": "datetime",
+            "value": "2018-03-03 14:00:00"
           },
           {
-            "timex": "XXXX-WXX-7",
-            "type": "date",
-            "value": "2018-04-01"
+            "timex": "XXXX-03-03T14",
+            "type": "datetime",
+            "value": "2019-03-03 14:00:00"
           }
         ]
       }
     },
     {
-      "entity": "3 seats from london to cairo on sunday",
-      "type": "flightreservation",
-      "startIndex": 8,
-      "endIndex": 45,
-      "score": 0.6892485
+      "entity": "jill jones",
+      "type": "Employee",
+      "startIndex": 5,
+      "endIndex": 14,
+      "resolution": {
+        "values": [
+          "Employee-45612"
+        ]
+      }
     },
     {
-      "entity": "cairo",
-      "type": "Location::Destination",
+      "entity": "z - 2345",
+      "type": "Locations::Destination",
       "startIndex": 31,
-      "endIndex": 35,
-      "score": 0.557570755
+      "endIndex": 36,
+      "score": 0.9690751
     },
     {
-      "entity": "london",
-      "type": "Location::Origin",
+      "entity": "a - 1234",
+      "type": "Locations::Origin",
       "startIndex": 21,
       "endIndex": 26,
-      "score": 0.8933808
+      "score": 0.9713137
+    },
+    {
+      "entity": "-1234",
+      "type": "builtin.number",
+      "startIndex": 22,
+      "endIndex": 26,
+      "resolution": {
+        "value": "-1234"
+      }
+    },
+    {
+      "entity": "-2345",
+      "type": "builtin.number",
+      "startIndex": 32,
+      "endIndex": 36,
+      "resolution": {
+        "value": "-2345"
+      }
     },
     {
       "entity": "3",
       "type": "builtin.number",
-      "startIndex": 8,
-      "endIndex": 8,
+      "startIndex": 47,
+      "endIndex": 47,
       "resolution": {
         "value": "3"
       }
+    },
+    {
+      "entity": "2",
+      "type": "builtin.number",
+      "startIndex": 50,
+      "endIndex": 50,
+      "resolution": {
+        "value": "2"
+      }
+    },
+    {
+      "entity": "jill jones from a - 1234 to z - 2345 on march 3 2 p . m",
+      "type": "requestemployeemove",
+      "startIndex": 5,
+      "endIndex": 54,
+      "score": 0.4027723
     }
   ],
   "compositeEntities": [
     {
-      "parentType": "flightreservation",
-      "value": "3 seats from london to cairo on sunday",
+      "parentType": "requestemployeemove",
+      "value": "jill jones from a - 1234 to z - 2345 on march 3 2 p . m",
       "children": [
         {
-          "type": "builtin.datetimeV2.date",
-          "value": "sunday"
+          "type": "builtin.datetimeV2.datetime",
+          "value": "march 3 2 p.m"
         },
         {
-          "type": "Location::Destination",
-          "value": "cairo"
+          "type": "Locations::Destination",
+          "value": "z - 2345"
         },
         {
-          "type": "builtin.number",
-          "value": "3"
+          "type": "Employee",
+          "value": "jill jones"
         },
         {
-          "type": "Location::Origin",
-          "value": "london"
+          "type": "Locations::Origin",
+          "value": "a - 1234"
         }
       ]
     }
-  ]
+  ],
+  "sentimentAnalysis": {
+    "label": "neutral",
+    "score": 0.5
+  }
 }
 ```
 
-Az utterance (kifejezés) adja vissza egy összetett entitások tömb többek között a **flightreservation** objektumot ki kell olvasni az adatokat.  
+Az utterance (kifejezés) egy összetett entitások tömböt ad vissza. Minden entitás egy típusa és értéke van megadva. Minden gyermek entitásnak pontossággal megkereséséhez használja a megfelelő elem található entitások tömbben típusa és értéke összetett tömb elemének kombinációja.  
 
 ## <a name="what-has-this-luis-app-accomplished"></a>Milyen műveleteket végzett el a LUIS-alkalmazás?
-Az alkalmazás, amely csak két leképezések és a egy összetett entitást azonosítani a természetes nyelvű lekérdezés szándékát, és a kinyert adatokat adott vissza. 
+Az alkalmazás azonosítani a természetes nyelvű lekérdezés szándékát, és a nevesített csoportként kinyert adatokat adott vissza. 
 
-A csevegőrobot most már rendelkezik elegendő információt határozza meg az elsődleges művelet `BookFlight`, és a fenntartás információit az utterance (kifejezés). 
+A csevegőrobot most már elég információt meghatározhatja az elsődleges művelet és a kapcsolódó részletes adatait a az utterance (kifejezés). 
 
 ## <a name="where-is-this-luis-data-used"></a>Hol vannak használatban ezek a LUIS-adatok? 
 A LUIS végzett ezzel a kéréssel. A hívó alkalmazás, például egy csevegőrobot, felhasználhatja a topScoringIntent eredményt és az entitás adatait a következő lépés végrehajtásához. A LUIS nem végzi el ezt a programozható munkát a csevegőrobotnak vagy a hívó alkalmazásnak. A LUIS csak azt határozza meg, hogy mi a felhasználó szándéka. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+Ha már nincs rá szükség, törölje a LUIS-alkalmazást. Válassza ki **saját alkalmazások** bal felső menüjében. Kattintson a három pontra (***...*** ) az alkalmazások listájában, jelölje be az alkalmazás nevétől jobbra látható gombra **törlése**. A **Delete app?** (Törli az alkalmazást?) előugró párbeszédpanelen válassza az **OK** lehetőséget.
 
-[További információ az entitások](luis-concept-entity-types.md). 
+## <a name="next-steps"></a>További lépések
+> [!div class="nextstepaction"] 
+> [Egy kifejezés listát egy egyszerű entitás hozzáadása](luis-quickstart-primary-and-secondary-data.md)  

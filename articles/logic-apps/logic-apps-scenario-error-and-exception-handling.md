@@ -1,6 +1,6 @@
 ---
-title: Kivételkezelés & hiba naplózási forgatókönyv – Azure Logic Apps |} Microsoft Docs
-description: Speciális kivétel- és az Azure Logic Apps hibanaplózás valódi használati eset ismerteti
+title: Kivételkezelés & hiba naplózási forgatókönyv – Azure Logic Apps |} A Microsoft Docs
+description: Valós használati eset ismerteti a speciális kivételkezelést, és a hibanaplózás az Azure Logic Apps
 keywords: ''
 services: logic-apps
 author: hedidin
@@ -16,52 +16,52 @@ ms.topic: article
 ms.custom: H1Hack27Feb2017
 ms.date: 07/29/2016
 ms.author: LADocs; b-hoedid
-ms.openlocfilehash: cb80423266d3e9c0b3cac31821965ad92c0420d9
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: c4114e32053410689c0482816a46376947023972
+ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35299358"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37930273"
 ---
-# <a name="scenario-exception-handling-and-error-logging-for-logic-apps"></a>Forgatókönyv: Kivételkezelést és a hibanaplózás a logic Apps alkalmazások
+# <a name="scenario-exception-handling-and-error-logging-for-logic-apps"></a>Forgatókönyv: Kivételkezelést, és a hibanaplózás logikai alkalmazásokhoz
 
-Ez a forgatókönyv leírja, hogyan bővítheti a logikai alkalmazás kivételkezelést hatékonyabb támogatásához. A kérdés megválaszolásához jelenleg használt valós használati eset: "Az Azure Logic Apps támogatja kivétel és hibakezelés?"
+Ez a forgatókönyv leírja, hogyan terjesztheti ki egy logikai alkalmazást, amelyek hatékonyabban támogatják a kivételek kezelése. Valós használati eset a választ a kérdésre használja: "Az Azure Logic Apps támogatja a kivételek és hibakezelés?"
 
 > [!NOTE]
-> A jelenlegi Azure Logic Apps séma művelet válaszokat biztosít a szabványos sablon. Ez a sablon belső érvényesítési és API-alkalmazás által visszaadott hiba válaszai egyaránt tartalmazza.
+> Az aktuális Azure Logic Apps-séma művelet válaszokat biztosít a szabványos sablon. Ez a sablon belső érvényesítése és a egy API-alkalmazás által visszaadott hiba válaszokat tartalmazza.
 
-## <a name="scenario-and-use-case-overview"></a>A forgatókönyv és -felhasználási eset áttekintése
+## <a name="scenario-and-use-case-overview"></a>A forgatókönyv és a használati eset – áttekintés
 
-A szövegegység itt van, mint az ebben a forgatókönyvben használata esetében: 
+Itt van a történetet, mint a használati eset ehhez a forgatókönyvhöz: 
 
-Egy jól ismert egészségügyi szervezet részt vevő számunkra, hogy egy rekordot kell létrehoznia egy beteg portál a Microsoft Dynamics CRM Online Azure megoldást fejleszthet. Azok a Dynamics CRM Online beteg portál és a Salesforce időpontot egyeztessen rekordok elküldéséhez szükséges. Azt is kéri, hogy használja a [HL7 FHIR](http://www.hl7.org/implement/standards/fhir/) összes beteg rekordok szabványos.
+Egy jól ismert egészségügyi szervezet végző velünk egy Azure-megoldás, amely a betegek portál hozna létre a Microsoft Dynamics CRM Online használatával. Találkozó rekordok a Dynamics CRM Online betegek portál és a Salesforce között küldése szükség rájuk. Azt is kéri, hogy használja a [HL7 FHIR](http://www.hl7.org/implement/standards/fhir/) minden a betegek kartonjai szabvány.
 
-A projekt két fő követelmény rendelkezett:  
+A projekt kellett két fő követelmény:  
 
-* A Dynamics CRM Online portálon küldött rekordok naplózására metódus
-* A munkafolyamaton belül történt hibákról megtekintése
+* A Dynamics CRM Online portál által küldött rekordok naplózására metódus
+* Bármely a munkafolyamaton belüli fellépő hibák megtekintése
 
 > [!TIP]
-> A projekt egy magas szintű videót: [integrációs felhasználói csoport](http://www.integrationusergroup.com/logic-apps-support-error-handling/ "integrációs felhasználói csoport").
+> Egy magas szintű videót a projekttel kapcsolatos [Integration User Group](http://www.integrationusergroup.com/logic-apps-support-error-handling/ "Integration User Group").
 
-## <a name="how-we-solved-the-problem"></a>Hogyan azt megoldotta a problémát
+## <a name="how-we-solved-the-problem"></a>Hogyan tudjuk megoldani a problémát
 
-Választottuk [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/ "Azure Cosmos DB") , a napló és a hiba (Cosmos DB-dokumentumokként rekordok jelenti) rekordok tára. Mivel Azure Logic Apps összes szabványos sablonját, azt nem kell létrehozni egy egyéni séma. API-alkalmazás sikerült létrehozhatunk **beszúrása** és **lekérdezés** hiba és a naplófájlokon is rekordok. Azt is meghatározhatja a séma minden, az API-alkalmazásban.  
+Választottuk [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/ "Azure Cosmos DB") vagy a (Cosmos DB-dokumentumok formájában rekordok jelenti) a napló- és rekordokat. Mivel az Azure Logic Apps minden válasz standard sablont, hogy nem kellene hozzon létre egy egyéni sémát. Létrehozhatunk egy API-alkalmazás **beszúrása** és **lekérdezés** hiba és a naplózási bejegyzések. Azt is megadására sémát minden, az API-alkalmazásban.  
 
-Egy további követelmény a rekordok kiüríteni egy bizonyos dátum után volt. Cosmos DB nevű tulajdonsággal rendelkezik [élettartama](https://azure.microsoft.com/blog/documentdb-now-supports-time-to-live-ttl/ "élettartama") (TTL), amely engedélyezett, hogy állítsa be a **élettartama** rekordok vagy gyűjtemény értékét. Ez a funkció Cosmos DB rekord manuálisan törölnie kell számolni.
+Egy további követelmény a rekordok kiürítése után egy adott dátumon volt. A cosmos DB nevű tulajdonsággal rendelkezik [élettartama](https://azure.microsoft.com/blog/documentdb-now-supports-time-to-live-ttl/ "élettartama") élettartam (TTL), ami engedélyezett számunkra, hogy állítsa be a **élettartama** érték minden egyes rekord vagy egy egész gyűjteményre vonatkozóan. Ez a funkció kiküszöbölhetők azok a rekordok Cosmos DB-ben manuálisan törölni kell.
 
 > [!IMPORTANT]
-> Az oktatóanyag teljesítéséhez szüksége egy Cosmos DB adatbázisban és két gyűjtemények (naplózás és -hibák) létrehozásához.
+> Az oktatóanyag elvégzéséhez szüksége hozhat létre egy Cosmos DB-adatbázis és a két gyűjteménnyel (naplózás és a hibák).
 
 ## <a name="create-the-logic-app"></a>A logikai alkalmazás létrehozása
 
-Az első lépés a logikai alkalmazás létrehozása, és nyissa meg az alkalmazás a Logic App tervezőben. A jelen példában használjuk a logic apps szülő-gyermek. Tegyük fel, hogy azt a szülő már létrehozott és tervezi, hogy egy gyermek logikai alkalmazás létrehozása.
+Az első lépés, hogy a logikai alkalmazás létrehozásához, és nyissa meg az alkalmazást a Logikaialkalmazás-tervezőben. Ebben a példában használjuk a szülő-gyermek logic apps. Tegyük fel, hogy már létrehozta a szülő, és hozzon létre egy gyermek logikai alkalmazást fog.
 
-A Dynamics CRM Online kívül hamarosan naplórekord fogjuk, kezdjük, míg a lap tetején. Igazolnia kell használnia egy **kérelem** eseményindítót, mert a szülő logikai alkalmazás elindítja a gyermek.
+Bejelentkezés a Dynamics CRM Online típusúaké rekord fogjuk, mert kezdjük az elején. Kell használnunk egy **kérelem** eseményindítót, mert a szülő logikai alkalmazás aktiválása a gyermek.
 
 ### <a name="logic-app-trigger"></a>Logikaialkalmazás-trigger
 
-Használjuk a **kérelem** indítható el, mert a következő példában látható módon:
+Használjuk a **kérelem** aktiválása az alábbi példában látható módon:
 
 ```` json
 "triggers": {
@@ -101,39 +101,39 @@ Használjuk a **kérelem** indítható el, mert a következő példában láthat
 
 ## <a name="steps"></a>Lépések
 
-A forrás (kérelem) a beteg rekord azt kell jelentkeznie a Dynamics CRM Online portálon.
+A betegek rekord forrása (kérelem) azt kell jelentkeznie a Dynamics CRM Online portálon.
 
-1. A Dynamics CRM Online azt kell szereznie egy új időpontot egyeztessen rekordot.
+1. Azt be kell szereznie egy új találkozó rekordot a Dynamics CRM Online-hoz.
 
-   Az eseményindító CRM érkező nyújt nekünk a a **CRM PatentId**, **rekordtípus**, **új vagy frissített rekord** (új vagy frissíteni a logikai értéket), és **SalesforceId**. A **SalesforceId** null is lehet, mert csak a frissítéshez használja.
-   A CRM-bejegyzés azt lekérése a CRM használatával **PatientID** és a **rekordtípus**.
+   Az eseményindító CRM-ből érkező velünk a kapcsolatot biztosít a **CRM PatentId**, **rekordtípus**, **új és frissített rekord** (új vagy nem frissíthető, logikai értéket), és  **SalesforceId**. A **SalesforceId** null is lehet, mert csak egy frissítés használja.
+   A CRM használatával lekérjük a CRM-rekord **PatientID** és a **rekordtípus**.
 
-2. Ezt követően kell az Azure Cosmos DB SQL API-alkalmazás hozzáadása **InsertLogEntry** művelet Logic App Designer itt látható módon.
+2. Következő lépésként adja hozzá az Azure Cosmos DB SQL API-alkalmazás **InsertLogEntry** művelet Logic App Designerben itt látható módon.
 
    **Naplóbejegyzés beszúrása**
 
    ![Naplóbejegyzés beszúrása](media/logic-apps-scenario-error-and-exception-handling/lognewpatient.png)
 
-   **Hiba bejegyzés beillesztése**
+   **Hiba történt a bejegyzés beszúrása**
 
    ![Naplóbejegyzés beszúrása](media/logic-apps-scenario-error-and-exception-handling/insertlogentry.png)
 
-   **Ellenőrizze a rekord hiba létrehozása**
+   **Ellenőrzés létrehozása rekord sikertelen**
 
    ![Állapot](media/logic-apps-scenario-error-and-exception-handling/condition.png)
 
-## <a name="logic-app-source-code"></a>Logic app forráskód
+## <a name="logic-app-source-code"></a>Logikai alkalmazás forráskódja
 
 > [!NOTE]
-> A következő példák csak minták. Mivel ebben az oktatóanyagban alapul most az üzemi környezetben, értékének megvalósítását egy **forráscsomópont** nem jelenik meg az ütemezés egy időpontot egyeztessen. kapcsolódó Tulajdonságok > 
+> A következő példák olyan csak példák. Mivel ebben az oktatóanyagban egy implementáció, most már az éles környezetben, az értékét alapul egy **forráscsomópont** nem jelenítik meg az ütemezés egy találkozót. kapcsolódó Tulajdonságok > 
 
 ### <a name="logging"></a>Naplózás
 
-A következő logic app példakód bemutatja, hogyan naplózási kezelésére.
+A következő logic app-minta bemutatja, hogyan kezelje a naplózás.
 
 #### <a name="log-entry"></a>Naplóbejegyzés
 
-Ez a logic app forráskódja naplóbejegyzést beszúrni.
+Itt van a logikai alkalmazás forráskódja szúr be egy naplóbejegyzést.
 
 ``` json
 "InsertLogEntry": {
@@ -161,7 +161,7 @@ Ez a logic app forráskódja naplóbejegyzést beszúrni.
 
 #### <a name="log-request"></a>Napló kérelem
 
-Ez a napló kérelemüzenet közzé az API-alkalmazásba.
+Ez a napló kérelemüzenet tesznek közzé az API-alkalmazásba.
 
 ``` json
     {
@@ -181,7 +181,7 @@ Ez a napló kérelemüzenet közzé az API-alkalmazásba.
 
 #### <a name="log-response"></a>Válasz naplózása
 
-Ez a napló válaszüzenetet az API-alkalmazás.
+Ez a napló válaszüzenet az API-alkalmazásból.
 
 ``` json
 {
@@ -215,15 +215,15 @@ Ez a napló válaszüzenetet az API-alkalmazás.
 
 ```
 
-Most már a hibakezelési lépéseket vizsgáljuk meg.
+Most nézzük meg a hibakezelési lépések.
 
 ### <a name="error-handling"></a>Hibakezelés
 
-A következő logic app példakód bemutatja, hogyan implementálható hibakezelés.
+A következő logic app-minta bemutatja, hogyan implementálható a hibakezelést.
 
-#### <a name="create-error-record"></a>Hiba rekord létrehozása
+#### <a name="create-error-record"></a>Hiba-rekord létrehozása
 
-Ez a logic app forráskód egy hibarekordot létrehozásához.
+Íme egy hiba rekord létrehozása a logikai alkalmazás forráskódja.
 
 ``` json
 "actions": {
@@ -258,7 +258,7 @@ Ez a logic app forráskód egy hibarekordot létrehozásához.
 }             
 ```
 
-#### <a name="insert-error-into-cosmos-db--request"></a>Helyezze be a hiba a Cosmos DB--kérése
+#### <a name="insert-error-into-cosmos-db--request"></a>Hiba beszúrása az, Cosmos DB – kérelem
 
 ``` json
 
@@ -281,7 +281,7 @@ Ez a logic app forráskód egy hibarekordot létrehozásához.
 }
 ```
 
-#### <a name="insert-error-into-cosmos-db--response"></a>Hiba beszúrása Cosmos DB--válasz
+#### <a name="insert-error-into-cosmos-db--response"></a>Cosmos DB – válasz hiba beszúrása
 
 ``` json
 {
@@ -320,7 +320,7 @@ Ez a logic app forráskód egy hibarekordot létrehozásához.
 }
 ```
 
-#### <a name="salesforce-error-response"></a>Salesforce hibaválaszba
+#### <a name="salesforce-error-response"></a>A Salesforce hibaválaszba
 
 ``` json
 {
@@ -349,11 +349,11 @@ Ez a logic app forráskód egy hibarekordot létrehozásához.
 
 ```
 
-### <a name="return-the-response-back-to-parent-logic-app"></a>Térjen vissza a választ szülő logikai alkalmazás
+### <a name="return-the-response-back-to-parent-logic-app"></a>Vissza a szülő logikai alkalmazás a választ adja vissza
 
-Miután lekérni a választ, adja meg a választ a szülő logikai alkalmazást.
+Miután a választ kap, a választ a szülő logikai alkalmazás adhat át.
 
-#### <a name="return-success-response-to-parent-logic-app"></a>Szülő logikai alkalmazás sikeres választ küldi vissza
+#### <a name="return-success-response-to-parent-logic-app"></a>A szülő logikai alkalmazás sikeres választ adja vissza
 
 ``` json
 "SuccessResponse": {
@@ -375,7 +375,7 @@ Miután lekérni a választ, adja meg a választ a szülő logikai alkalmazást.
 }
 ```
 
-#### <a name="return-error-response-to-parent-logic-app"></a>Szülő logikai alkalmazás hiba választ küldi vissza
+#### <a name="return-error-response-to-parent-logic-app"></a>A szülő logikai alkalmazás hiba választ adja vissza
 
 ``` json
 "ErrorResponse": {
@@ -399,18 +399,18 @@ Miután lekérni a választ, adja meg a választ a szülő logikai alkalmazást.
 ```
 
 
-## <a name="cosmos-db-repository-and-portal"></a>Cosmos DB tárház és -portál
+## <a name="cosmos-db-repository-and-portal"></a>A cosmos DB-tárházat és a portálon
 
-A megoldás hozzáadott képességei a [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db).
+A megoldás képességeit a hozzáadott [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db).
 
 ### <a name="error-management-portal"></a>Hiba történt a felügyeleti portálon
 
-Meg a hibákat, létrehozhat egy MVC webalkalmazás Cosmos DB hiba rekordját megjelenítéséhez. A **lista**, **részletek**, **szerkesztése**, és **törlése** műveletek szerepelnek a jelenlegi verziójával.
+A hibák megtekintéséhez, létrehozhat egy MVC-webalkalmazást, a Cosmos DB-ből a hiba a rekordok jelenjenek meg. A **lista**, **részletek**, **szerkesztése**, és **törlése** műveletek szerepelnek a jelenlegi verziót.
 
 > [!NOTE]
-> Művelet szerkesztése: Cosmos DB a felváltja a teljes dokumentumot. A bejegyzések a **lista** és **részletes** nézetek olyan csak minták. Nincsenek tényleges beteg időpontot egyeztessen rögzíti.
+> Művelet szerkesztése: Cosmos DB váltja fel a teljes dokumentumot. A rekordok látható a **lista** és **részletes** nézetek mintát csak olyan. Még nincsenek tényleges betegek találkozó rögzíti.
 
-Az alábbiakban az MVC-alkalmazás adatait, a korábban ismertetett módszert létrehozott példát.
+Az alábbiakban példát az MVC-alkalmazás adatait, a korábban ismertetett megközelítés hoztak létre.
 
 #### <a name="error-management-list"></a>Hiba a felügyeleti lista
 ![Hibalista](media/logic-apps-scenario-error-and-exception-handling/errorlist.png)
@@ -418,31 +418,31 @@ Az alábbiakban az MVC-alkalmazás adatait, a korábban ismertetett módszert l�
 #### <a name="error-management-detail-view"></a>Hiba felügyeleti részletes nézet
 ![A hiba adatai](media/logic-apps-scenario-error-and-exception-handling/errordetails.png)
 
-### <a name="log-management-portal"></a>Napló felügyeleti portálon
+### <a name="log-management-portal"></a>Napló felügyeleti portálján
 
-A naplók megtekintéséhez is létrehoztunk egy MVC webalkalmazás. Az alábbiakban az MVC-alkalmazás adatait, a korábban ismertetett módszert létrehozott példát.
+A naplók megtekintéséhez is létrehoztunk egy MVC-webalkalmazást. Az alábbiakban példát az MVC-alkalmazás adatait, a korábban ismertetett megközelítés hoztak létre.
 
-#### <a name="sample-log-detail-view"></a>A minta napló részletes nézet
+#### <a name="sample-log-detail-view"></a>Minta napló részletes nézet
 ![Napló részletes nézet](media/logic-apps-scenario-error-and-exception-handling/samplelogdetail.png)
 
-### <a name="api-app-details"></a>API-alkalmazás adatait
+### <a name="api-app-details"></a>API-alkalmazás részletei
 
-#### <a name="logic-apps-exception-management-api"></a>Logic Apps kivételek kezelése API
+#### <a name="logic-apps-exception-management-api"></a>Logic Apps kivétel felügyeleti API
 
-A nyílt forráskódú Azure Logic Apps kivétel felügyeleti API app funkciókat biztosítja a itt leírtak – két vezérlők:
+A nyílt forráskódú Azure Logic Apps kivétel felügyeleti API-alkalmazást a funkcionalitást biztosít az itt leírt módon – a két vezérlőn:
 
-* **ErrorController** szúr be egy hibarekordot (dokumentumok) Azure Cosmos DB gyűjteményben.
-* **LogController** szúr be egy naplóbejegyzést képviselnek (dokumentumok) Azure Cosmos DB gyűjteményben.
+* **ErrorController** szúr be egy hibarekord (dokumentum) egy Azure Cosmos DB-gyűjteményben.
+* **LogController** szúr be egy naplórekord (dokumentum) egy Azure Cosmos DB-gyűjteményben.
 
 > [!TIP]
-> Mindkét vezérlők használata `async Task<dynamic>` műveletek, így a műveletek megoldásához futásidőben, így vannak, létrehozható az Azure Cosmos megadott adatbázissémát törzsében. a műveletet. 
+> Mindkét vezérlő használata `async Task<dynamic>` művelet, így műveletlánc futásidőben, így az Azure Cosmos DB-séma létrehozhatjuk a művelet törzsében. 
 > 
 
-Minden Azure Cosmos DB a dokumentum egy egyedi azonosítóval kell rendelkeznie. Használjuk `PatientId` és egy Unix timestamp értéket (kétirányú) konvertált időbélyeg hozzáadása. Az érték, a tört érték eltávolítása csonkolja azt.
+Az Azure Cosmos DB minden dokumentumnak rendelkeznie kell egy egyedi azonosítót. Használjuk `PatientId` , és vegye fel a következő időbélyeget Unix timestamp értéket (kétirányú) alakítja át. Az értéket a törtrész csonkolja azt.
 
-Megtekintheti a hiba vezérlőhöz API forráskódját [a Githubról](https://github.com/HEDIDIN/LogicAppsExceptionManagementApi/blob/master/Logic App Exception Management API/Controllers/ErrorController.cs).
+Megtekintheti a forráskódot a hiba vezérlő API [GitHub](https://github.com/HEDIDIN/LogicAppsExceptionManagementApi/blob/master/LogicAppsExceptionManagementApi/Controllers/LogController.cs).
 
-Az API-t a logikai alkalmazás, a következő szintaxissal nevezzük:
+Az API-hoz logikai alkalmazásból származó, a következő szintaxis használatával nevezzük:
 
 ``` json
  "actions": {
@@ -475,20 +475,20 @@ Az API-t a logikai alkalmazás, a következő szintaxissal nevezzük:
  }
 ```
 
-Az előző példakódban kifejezést keresi a *Create_NewPatientRecord* állapotának **sikertelen**.
+A kifejezés a fenti kódmintában keres a *Create_NewPatientRecord* állapotát **sikertelen**.
 
 ## <a name="summary"></a>Összegzés
 
-* Naplózás és a logikai alkalmazás hibakezelési könnyedén alkalmazni.
-* Azure Cosmos DB a tárház védelemként is alkalmazhatják a napló és a hiba a rekordok (dokumentumok).
-* MVC hozhat létre a napló és a hiba a rekordok megjelenítéséhez a portálon.
+* Könnyen valósítható meg naplózás és hibakezelés egy logikai alkalmazást.
+* Azure Cosmos DB napló- és -rekordok (dokumentumok) használhatja a tárházban.
+* MVC segítségével hozzon létre egy napló és a hiba a rekordok jelenjenek meg a portálon.
 
 ### <a name="source-code"></a>Forráskód
 
-A Logic Apps kivétel felügyeleti API-alkalmazás forráskódja érhető el ezen [GitHub-tárházban](https://github.com/HEDIDIN/LogicAppsExceptionManagementApi "Logic App kivétel felügyeleti API").
+A Logic Apps kivétel Management API-alkalmazás forráskódja elérhető a jelen [GitHub-adattár](https://github.com/HEDIDIN/LogicAppsExceptionManagementApi "Logic App kivétel felügyeleti API").
 
 ## <a name="next-steps"></a>További lépések
 
 * [További logic app példák és forgatókönyvek megtekintése](../logic-apps/logic-apps-examples-and-scenarios.md)
-* [További információk a logic Apps alkalmazások figyelése](../logic-apps/logic-apps-monitor-your-logic-apps.md)
-* [A logic Apps alkalmazások automatikus központi telepítési sablonok létrehozása](../logic-apps/logic-apps-create-deploy-template.md)
+* [További információ a logic apps figyelése](../logic-apps/logic-apps-monitor-your-logic-apps.md)
+* [A logic apps automatizált üzembehelyezési sablonok létrehozása](../logic-apps/logic-apps-create-deploy-template.md)

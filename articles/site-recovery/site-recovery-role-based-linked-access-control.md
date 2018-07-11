@@ -1,44 +1,47 @@
 ---
-title: Szerepköralapú hozzáférés-vezérlés használatával kezelheti az Azure Site Recovery |} Microsoft Docs
-description: Ez a cikk ismerteti, hogyan alkalmazza, és szerepköralapú hozzáférés-vezérlést (RBAC) használata az Azure Site Recovery központi telepítések felügyeletéhez szükséges
+title: Szerepköralapú hozzáférés-vezérlés használata kezelheti az Azure Site Recovery |} A Microsoft Docs
+description: Ez a cikk ismerteti a alkalmazni, és a szerepköralapú hozzáférés-vezérlés (RBAC) használatával az Azure Site Recovery üzembe helyezett megoldások kezelése
 ms.service: site-recovery
+ms.workload: backup-recovery
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.date: 07/06/2018
 author: mayanknayar
 ms.topic: conceptual
-ms.date: 06/20/2018
 ms.author: manayar
-ms.openlocfilehash: 9d1d6aac463e5b9cf9994bfefac1aa1c38bb1e03
-ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
+ms.openlocfilehash: dfd880b6ff3a7e199ea259acc5e5ec59f89c897d
+ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36284741"
+ms.lasthandoff: 07/09/2018
+ms.locfileid: "37919726"
 ---
 # <a name="use-role-based-access-control-to-manage-site-recovery-access"></a>A Site Recovery-hozzáférés kezelése szerepköralapú hozzáférés-vezérlés használatával
 
-Az Azure Szerepköralapú hozzáférés-vezérlés (RBAC) részletes hozzáférés-vezérlést biztosít az Azure-hoz. Az RBAC használata, feladatkörök elkülönítse a munkacsoporton belül, és csak különleges hozzáférési engedélyeket a felhasználóknak adott feladatok elvégzéséhez szükség szerint.
+Az Azure Szerepköralapú hozzáférés-vezérlés (RBAC) részletes hozzáférés-vezérlést biztosít az Azure-hoz. Az RBAC használatával, feladatkörök elkülönítse a csapaton belül, és csak különleges hozzáférési engedélyeket a felhasználóknak adott feladatok elvégzéséhez szükség szerint.
 
-Az Azure Site Recovery 3 beépített szerepkörök, amelyekkel szabályozhatja a Site Recovery felügyeleti műveleteket biztosít. További információ az [Azure beépített RBAC-szerepköreivel](../role-based-access-control/built-in-roles.md) kapcsolatban.
+Az Azure Site Recovery a Site Recovery felügyeleti műveleteinek szabályozásához 3 beépített szerepkört biztosít. További információ az [Azure beépített RBAC-szerepköreivel](../role-based-access-control/built-in-roles.md) kapcsolatban.
 
-* [Site Recovery-közreműködő](../role-based-access-control/built-in-roles.md#site-recovery-contributor) – Ez a szerepkör minden olyan engedéllyel rendelkezik, amelyek az Azure Site Recovery-műveletek Recovery Services-tárolókban történő kezeléséhez szükségesek. Az ezzel a szerepkörrel rendelkező felhasználók nem hozhatnak létre, illetve nem törölhetnek Recovery Services-tárolókat, és nem adhatnak hozzáférési jogokat más felhasználóknak. A szerepkör legmegfelelőbb vész helyreállítási rendszergazdák, akik engedélyezése és kezelése a esettől vész-helyreállítási az alkalmazások vagy a teljes szervezet számára.
-* [Helyreállítási operátor hely](../role-based-access-control/built-in-roles.md#site-recovery-operator) -ezt a szerepkört jogosult végrehajtása és feladatátvétel és a feladat-visszavétel műveleteinek a felügyeletét. A felhasználói szerephez nem tudja engedélyezni vagy tiltsa le a replikációt, létrehozása vagy törlése a tárolóból, új infrastruktúra regisztrálása vagy más felhasználók hozzáférési jogosultságokat rendelhet hozzá. Ezt a szerepkört egy feladatátvételi virtuális gépek is vész helyreállítási kezelők a legalkalmasabb vagy alkalmazások, ha arra utasította az alkalmazástulajdonosok és a rendszergazdák egy tényleges vagy szimulált katasztrófa helyzetben, például egy vész-Helyreállítási részletezést. POST a katasztrófa feloldását, a vész-Helyreállítási operátor ismételt védelemmel láthatná és a feladat-visszavételt a virtuális gépek.
-* [Site Recovery-olvasó](../role-based-access-control/built-in-roles.md#site-recovery-reader) – Ez a szerepkör a Site Recovery összes felügyeleti műveletének a megtekintésére rendelkezik engedélyekkel. Ezt a szerepkört olyan egy informatikai felügyeleti vezető, akik védelmi aktuális állapotának figyelése és támogatási jegyek ablakába, ha szükséges.
+* [Site Recovery-közreműködő](../role-based-access-control/built-in-roles.md#site-recovery-contributor) – Ez a szerepkör minden olyan engedéllyel rendelkezik, amelyek az Azure Site Recovery-műveletek Recovery Services-tárolókban történő kezeléséhez szükségesek. Az ezzel a szerepkörrel rendelkező felhasználók nem hozhatnak létre, illetve nem törölhetnek Recovery Services-tárolókat, és nem adhatnak hozzáférési jogokat más felhasználóknak. Ez a szerepkör az vész-helyreállítási rendszergazdák engedélyezhetik és felügyelhetik a esettől a vész-helyreállítási alkalmazások vagy az egész vállalatra, akik számára a leginkább megfelelő.
+* [Site Recovery-operátor](../role-based-access-control/built-in-roles.md#site-recovery-operator) – Ez a szerepkör jogosult hajtható végre, és a feladatátvétel és feladat-visszavétel kezeléséhez. Ezzel a szerepkörrel rendelkező felhasználók nem engedélyezze vagy tiltsa le a replikációt, hozzon létre vagy törölhetnek tárolókat, regisztrálhatnak új infrastruktúrát vagy adhatnak hozzáférési jogokat más felhasználóknak. Ez a szerepkör egy vész-helyreállítási operátorok számára is a feladatátvételi virtuális gépek számára a leginkább megfelelő, vagy alkalmazások tulajdonosaitól alkalmazástulajdonosok és a egy szimulált vagy tényleges katasztrófa utáni helyzetben, például a Vészhelyreállítás a rendszergazdák részletes. POST feloldás a vész Helyreállítási operátor újra védetté és feladat-visszavételt a virtuális gépeket.
+* [Site Recovery-olvasó](../role-based-access-control/built-in-roles.md#site-recovery-reader) – Ez a szerepkör a Site Recovery összes felügyeleti műveletének a megtekintésére rendelkezik engedélyekkel. Ez a szerepkör az olyan informatikai felügyeleti vezető, akik protection aktuális állapotának figyelése és emelje a támogatási jegyeket, szükség esetén – egygépes.
 
-Ha még nagyobb mértékben vezérelheti a saját szerepköröket definiál, lásd: hogyan [egyéni szerepkörök létrehozása](../role-based-access-control/custom-roles.md) az Azure-ban.
+Ha még több vezérlő saját szerepköröket definiál keres, tekintse meg, hogyan [hozhat létre egyéni szerepkörök](../role-based-access-control/custom-roles.md) az Azure-ban.
 
 ## <a name="permissions-required-to-enable-replication-for-new-virtual-machines"></a>Új virtuális gépek replikációjának engedélyezéséhez szükséges engedélyek
-Ha Azure-bA az Azure Site Recovery segítségével új virtuális gép replikálódik, a kapcsolódó felhasználó a hozzáférési szintek érvényesítése annak érdekében, hogy a felhasználó rendelkezik-e a szükséges engedélyekkel a Site Recovery számára a megadott Azure-erőforrások használatára.
+Az Azure-bA az Azure Site Recovery segítségével új virtuális gép van replikálva, amikor a társított felhasználói hozzáférési szintek érvényesíti annak érdekében, hogy a felhasználó rendelkezik-e a szükséges engedélyekkel a Site Recovery a megadott Azure-erőforrások használatára.
 
-Ahhoz, hogy egy új virtuális gép replikálását, a felhasználóknak rendelkezniük kell:
-* A virtuális gép létrehozása a kijelölt erőforráscsoportban engedély
-* Engedéllyel a kiválasztott virtuális hálózatban lévő virtuális gép létrehozása
-* A kiválasztott tárolási fiók írásához engedély
+Egy új virtuális gép replikálásának engedélyezéséhez a felhasználónak kell rendelkeznie:
+* A kiválasztott erőforráscsoportban egy virtuális gép létrehozásához szükséges engedéllyel
+* A kiválasztott virtuális hálózat egy virtuális gép létrehozásához szükséges engedéllyel
+* A kiválasztott tárfiók írási engedéllyel
 
-A felhasználó nem tudja befejezni a replikációt az új virtuális gépek a következő engedélyeket.
+A felhasználó a következő engedélyeket kell egy új virtuális gép replikálása befejeződik.
 
 > [!IMPORTANT]
->Győződjön meg arról, hogy a megfelelő engedélyeket kerülnek-e a telepítési modell / (erőforrás-kezelő / klasszikus) erőforrás-telepítéshez használt.
+>Győződjön meg arról, hogy megfelelő engedélyekkel az üzemi modell / adják (Resource Manager / Classic) erőforrás üzembe helyezéshez használt.
 
-| **Erőforrás típusa** | **Telepítési modell** | **Engedély** |
+| **Erőforrás típusa** | **Üzemi modell** | **Engedély** |
 | --- | --- | --- |
 | Compute | Resource Manager | Microsoft.Compute/availabilitySets/read |
 |  |  | Microsoft.Compute/virtualMachines/read |
@@ -66,12 +69,12 @@ A felhasználó nem tudja befejezni a replikációt az új virtuális gépek a k
 | Erőforráscsoport | Resource Manager | Microsoft.Resources/deployments/* |
 |  |  | Microsoft.Resources/subscriptions/resourceGroups/read |
 
-Fontolja meg a "Virtuális gép közreműködő" és "Klasszikus virtuális gép közreműködő" [beépített szerepkörök](../role-based-access-control/built-in-roles.md) a Resource Manager és klasszikus telepítési modellek kulcsattribútumokkal.
+Fontolja meg a "Virtuális gépek Közreműködője" és "Klasszikus virtuális gépek Közreműködője" [beépített szerepkörök](../role-based-access-control/built-in-roles.md) a Resource Manager és klasszikus üzembe helyezési modellek jelölik.
 
 ## <a name="next-steps"></a>További lépések
-* [Szerepköralapú hozzáférés-vezérlés](../role-based-access-control/role-assignments-portal.md): az RBAC első lépései az Azure portálon.
-* Útmutató: a hozzáférés kezelése:
+* [Szerepköralapú hozzáférés-vezérlés](../role-based-access-control/role-assignments-portal.md): Ismerkedés az RBAC az Azure Portalon.
+* Ismerje meg, hogyan való hozzáférés kezelése:
   * [PowerShell](../role-based-access-control/role-assignments-powershell.md)
   * [Azure CLI](../role-based-access-control/role-assignments-cli.md)
   * [REST API](../role-based-access-control/role-assignments-rest.md)
-* [Szerepköralapú hozzáférés-vezérlés hibaelhárítási](../role-based-access-control/troubleshooting.md): kapcsolatos gyakori hibák elhárítására vonatkozó javaslatok beolvasása.
+* [Szerepköralapú hozzáférés-vezérlés hibáinak elhárítása](../role-based-access-control/troubleshooting.md): gyakori hibák rögzítésére vonatkozó javaslatokat kérhet.
