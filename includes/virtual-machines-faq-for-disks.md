@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/03/2018
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 66964e4ed0877cc47dd7d2b5f3c6a62f4fa006b1
-ms.sourcegitcommit: 4597964eba08b7e0584d2b275cc33a370c25e027
+ms.openlocfilehash: 336e6e163178cd6d244460dbf9bee2a5bc9d714e
+ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37348184"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37935782"
 ---
 # <a name="frequently-asked-questions-about-azure-iaas-vm-disks-and-managed-and-unmanaged-premium-disks"></a>Azure IaaS virtuális gépek és a felügyelt és nem felügyelt prémium szintű lemezek – gyakori kérdések
 
@@ -125,6 +125,10 @@ Nem. A számítógép neve tulajdonság nem frissíthető. Az új virtuális gé
 **Hol találok az Azure Resource Manager-sablonok minta felügyelt lemezekkel rendelkező virtuális gépek létrehozásához?**
 * [A felügyelt lemezek használatával sablonok listáját.](https://github.com/Azure/azure-quickstart-templates/blob/master/managed-disk-support-list.md)
 * https://github.com/chagarw/MDPP
+
+**Is szeretnék kerüljenek a nem felügyelt és felügyelt lemezek ugyanazon a virtuális Gépen?**
+
+Nem.
 
 ## <a name="standard-ssd-disks-preview"></a>Standard SSD-lemezeket (előzetes verzió)
 
@@ -286,7 +290,7 @@ A partíció típusa, amely az Azure támogatja az operációsrendszer-lemez a f
 
 **Mi az a legnagyobb lapblob méretét, amely támogatott?**
 
-A legnagyobb lapblob méretét, amely támogatja az Azure esetében 8 TB (8,191 GB). A maxmium lap blog, amikor a virtuális Géphez csatolt adatok vagy operációsrendszer-lemezek mérete 4 TB-ig (4095 GB).
+A legnagyobb lapblob méretét, amely támogatja az Azure esetében 8 TB (8,191 GB). A maximális blog, amikor a virtuális Géphez csatolt adatok vagy operációsrendszer-lemezek mérete 4 TB-ig (4095 GB).
 
 **Kell létrehozása, csatlakoztatása, átméretezése és 1 TB-nál nagyobb lemezek feltöltése az Azure-eszközök új verziójának használatával?**
 

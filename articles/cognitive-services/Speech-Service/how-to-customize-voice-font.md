@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: nolach
-ms.openlocfilehash: 9f7fbcc804229de69c3c72fb33ae03c88af70145
-ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
+ms.openlocfilehash: b9218600db8bd3e20528e61e411bb64c10dd9c84
+ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37857497"
+ms.lasthandoff: 07/09/2018
+ms.locfileid: "37917635"
 ---
 # <a name="creating-custom-voice-fonts"></a>Egyéni hangtípust létrehozása
 
@@ -51,9 +51,9 @@ Készen áll a go!
 
 Audio-fájlokat, és a egy szövegfájlt, amely tartalmazza az összes alábbi hangfájlok az átiratok hangalapú betanítási adatkészletet tartalmaz.
 
-Ezek a fájlok bármelyik irányba előkészítheti: vagy írjon egy parancsfájlt, és annak hangalapú szakembereket, olvassa vagy használja a nyilvánosan elérhető hang és átvezeti őket szöveg. Az utóbbi esetben az audio fájlokból, például a "um" és egyéb kitöltő hangok, akadozik, mumbled szavakat vagy mispronunciations disfluencies szerkesztése.
+Ezek a fájlok bármelyik irányba előkészítheti: vagy írjon egy parancsfájlt, és annak hangalapú szakembereket, olvassa vagy használja a nyilvánosan elérhető hang és lefényképezze azt a szöveget. Az utóbbi esetben az audio fájlokból, például a "um" és egyéb kitöltő hangok, akadozik, mumbled szavakat vagy mispronunciations disfluencies szerkesztése.
 
-Egy jó hangtípusú előállításához, fontos, hogy a felvételt a magas színvonalú mikrofon csendes szoba történik. Egységes kötet, és beszéljen sebességét, beszéd térközt és kifejező mannerisms beszéd elengedhetetlenek, amellyel a nagyszerű digitális hangot. Hozzon létre egy hang éles környezetben, azt javasoljuk egy professzionális felvétel studio és a hangalapú szakembereket használja.
+Egy jó hangtípusú előállításához, fontos, hogy a felvételt a magas színvonalú mikrofon csendes szoba történik. Egységes kötet, és beszéljen sebességét, beszéd térközt és kifejező mannerisms beszéd elengedhetetlenek, amellyel a nagyszerű digitális hangot. Hozzon létre egy hang éles környezetben, azt javasoljuk egy professzionális felvétel studio és a hangalapú szakembereket használja. További részletekért lásd: [hogyan rögzítése a voice-minták az egyéni beszédfelismerési](record-custom-voice-samples.md).
 
 ### <a name="audio-files"></a>Hangfájlok
 

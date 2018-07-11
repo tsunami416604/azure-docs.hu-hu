@@ -8,21 +8,21 @@ ms.topic: include
 ms.date: 05/29/2018
 ms.author: danlep
 ms.custom: include file
-ms.openlocfilehash: 8f3d57f8f1f3631421618e31e943606a16e6bf5b
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: a07f1622f2d41d105c79fa5354d97aa079567e62
+ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34670019"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37935769"
 ---
 ## <a name="supported-operating-systems-and-drivers"></a>Támogatott operációs rendszerek és illesztőprogramok
 
-### <a name="nvidia-tesla-cuda-drivers"></a>Illesztőprogramok NVIDIA Tesla (CUDA)
+### <a name="nvidia-tesla-cuda-drivers"></a>Az NVIDIA Tesla (CUDA) illesztőprogramok
 
-NVIDIA Tesla (CUDA) illesztőprogramok NC, NCv2, NCv3 és ND sorozatú virtuális gépek (portok HV-sorozat nem kötelező) csak a következő táblázatban felsorolt operációs rendszerek támogatottak. Illesztőprogram letöltési hivatkozásokat a kiadvány időpontjában naprakészek. A legújabb illesztőprogramokért látogasson el az [NVIDIA](http://www.nvidia.com/) webhelyére.
+A hálózati vezérlő, NCv2, az NCv3 és ND sorozatú virtuális gépek (NV-sorozat nem kötelező) az NVIDIA Tesla (CUDA) illesztőprogramok csak az alábbi táblázatban felsorolt operációs rendszerek támogatottak. Illesztőprogram letöltési hivatkozásai a rendszer az aktuális időpontjában aktuálisak. A legújabb illesztőprogramokért látogasson el az [NVIDIA](http://www.nvidia.com/) webhelyére.
 
 > [!TIP]
-> A Windows Server virtuális gép manuális CUDA illesztőprogram telepítése helyett, telepíthet egy Azure [adatok tudományos virtuális gép](../articles/machine-learning/data-science-virtual-machine/overview.md) kép. A Windows Server 2016 DSVM kiadásai a telepítés előtti NVIDIA CUDA illesztőprogramokat, a CUDA mély Neurális hálózat könyvtár és más eszközök.
+> A Windows Server virtuális gép manuális CUDA illesztőprogram telepítése helyett, üzembe helyezése Azure-beli [adatelemző virtuális gép](../articles/machine-learning/data-science-virtual-machine/overview.md) kép. A DSVM-kiadások, a Windows Server 2016-hoz a telepítés előtti NVIDIA CUDA illesztőprogramokat, a CUDA részletes Neurális hálózati könyvtár és egyéb eszközökkel.
 
 
 | Operációs rendszer | Illesztőprogram |
@@ -31,11 +31,11 @@ NVIDIA Tesla (CUDA) illesztőprogramok NC, NCv2, NCv3 és ND sorozatú virtuáli
 | Windows Server 2012 R2 | [397.44](http://us.download.nvidia.com/Windows/Quadro_Certified/397.44/397.44-tesla-desktop-winserver2008-2012r2-64bit-international.exe) (.exe) |
 
 
-### <a name="nvidia-grid-drivers"></a>NVIDIA rács illesztőprogramok
+### <a name="nvidia-grid-drivers"></a>Az NVIDIA GRID illesztőprogramok
 
-Microsoft újraterjeszti NVIDIA rács illesztőprogram telepítők, virtuális munkaállomásokon használt portok HV-sorozatú virtuális gépek vagy a virtuális alkalmazásokhoz. Csak rács illesztőprogramok telepítése Azure virtuális gépeken portok HV, csak a következő táblázatban felsorolt operációs rendszerek. Ezeket az illesztőprogramokat tartalmazza, a licencelés rács virtuális GPU szoftver az Azure-ban.
+A Microsoft újraterjeszti az NVIDIA GRID illesztőprogramok telepítők használt virtuális munkaállomásait NV-sorozat virtuális gépei vagy a virtuális alkalmazásokhoz. Csak GRID illesztőprogramok telepítése Azure virtuális gépeken NV, csak az alábbi táblázatban felsorolt operációs rendszerek a. Ezeket az illesztőprogramokat tartalmazza a licencelési rács virtuális GPU szoftverek az Azure-ban.
 
 | Operációs rendszer | Illesztőprogram |
 | -------- |------------- |
-| Windows Server 2016<br/><br/>Windows 10 | [RÁCS 6.1 (391.58)](https://go.microsoft.com/fwlink/?linkid=836843) (.exe) |
-| Windows Server 2012 R2 | [RÁCS 6.1 (391.58)](https://go.microsoft.com/fwlink/?linkid=836844) (.exe)  |
+| Windows Server 2016<br/><br/>Windows 10 | [RÁCS (391.81) 6.2](https://go.microsoft.com/fwlink/?linkid=836843) (.exe) |
+| Windows Server 2012 R2 | [RÁCS (391.81) 6.2](https://go.microsoft.com/fwlink/?linkid=836844) (.exe)  |

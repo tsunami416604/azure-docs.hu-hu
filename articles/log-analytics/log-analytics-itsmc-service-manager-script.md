@@ -1,6 +1,6 @@
 ---
-title: Parancsfájl létrehozása IT Service Management-összekötő az Azure-ban kapcsolódni a Service Manager webalkalmazás automatikus |} Microsoft Docs
-description: A Service Manager-webalkalmazás létrehozása IT Service Management-összekötő Azure, a csatlakozás központilag figyelheti és a ITSM munkaelemek kezelésére egy automatizált parancsfájl használatával.
+title: Informatikai szolgáltatásfelügyeleti összekötő az Azure-ban kapcsolódni a Service Manager webes alkalmazás létrehozása a parancsfájl automatikus |} A Microsoft Docs
+description: Csatlakozás az IT Service Management-összekötő az Azure-ban, és központilag felügyelhető és kezelhető az ITSM-munkatétel egy automatizált szkript használatával a Service Manager webes alkalmazás létrehozása.
 services: log-analytics
 documentationcenter: ''
 author: jyothirmaisuri
@@ -15,34 +15,34 @@ ms.topic: conceptual
 ms.date: 01/23/2018
 ms.author: v-jysur
 ms.component: na
-ms.openlocfilehash: 15626a9dd2e889470477e34d6f1ebd47cce1411b
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.openlocfilehash: 0fe987b00da669daf3830e903d53793d9d1edab6
+ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37128656"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37950124"
 ---
-# <a name="create-service-manager-web-app-using-the-automated-script"></a>Az automatizált parancsfájl használatával a Service Manager webalkalmazás létrehozása
+# <a name="create-service-manager-web-app-using-the-automated-script"></a>Az automatizált szkript használatával a Service Manager webes alkalmazás létrehozása
 
-A webalkalmazás a Service Manager-példány létrehozásához használja az alábbi parancsfájlt. További információ a Service Manager-kapcsolat a következő helyen: [Service Manager-webalkalmazás](log-analytics-itsmc-connections.md#create-and-deploy-service-manager-web-app-service)
+A következő szkript használatával a webes alkalmazás a Service Manager-példány létrehozása. További információ a Service Manager-kapcsolat érhető el: [a Service Manager-webalkalmazás](log-analytics-itsmc-connections.md#create-and-deploy-service-manager-web-app-service)
 
-Futtassa a parancsfájlt a következő szükséges adatok megadásával:
+Futtassa a parancsfájlt azáltal, hogy a következő szükséges adatokat:
 
 - Azure-előfizetés részletei
 - Erőforráscsoport neve
 - Hely
 - A Service Manager-kiszolgálóadatok (kiszolgáló neve, tartomány, felhasználónév és jelszó)
-- A webalkalmazás hely előtagja
-- A Szolgáltatásbusz-Namespace.
+- A webalkalmazás-hely előtagja
+- A ServiceBus-Namespace.
 
-A parancsfájlt a webes alkalmazás az Ön által megadott nevét (valamint néhány további karakterláncok, ami) használatával hoz létre. Előállítja a **webes alkalmazás URL-címhez**, **ügyfél-azonosító**, és **ügyfélkulcs**.
+A parancsfájl létrehozza a webalkalmazást (valamint néhány további karakterláncok egyedi legyen) megadott neve. Állít elő a **webes alkalmazás URL-cím**, **ügyfél-azonosító**, és **titkos Ügyfélkód**.
 
-Menteni ezeket az értékeket akkor ezeket az értékeket kapcsolatot az informatikai szolgáltatás Management-összekötő létrehozásakor.
+Mentse ezeket az értékeket szüksége lesz ezekre az értékekre a kapcsolatot az IT Service Management-összekötő létrehozásakor.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
- A Windows Management Framework 5.0-s vagy újabb.
-Windows 10 5.1 alapértelmezés szerint rendelkezik. Letöltheti a keretrendszer [Itt](https://www.microsoft.com/download/details.aspx?id=53347):
+ Windows Management Framework 5.0-s vagy újabb.
+Windows 10-es 5.1 alapértelmezés szerint rendelkezik. Letöltheti a keretrendszer [Itt](https://www.microsoft.com/download/details.aspx?id=50395):
 
 Használja a következő parancsfájlt:
 
@@ -323,4 +323,4 @@ if(!$err)
 
 ```
 ## <a name="next-steps"></a>További lépések
-[A hibrid kapcsolat beállítása](log-analytics-itsmc-connections.md#configure-the-hybrid-connection).
+[A hibrid kapcsolat konfigurálása](log-analytics-itsmc-connections.md#configure-the-hybrid-connection).

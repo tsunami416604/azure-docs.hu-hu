@@ -10,12 +10,12 @@ ms.technology: luis
 ms.topic: article
 ms.date: 06/26/2018
 ms.author: v-geberr;
-ms.openlocfilehash: 283dcdc718231e5f0f82fb98fe71b77aa54d741b
-ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
+ms.openlocfilehash: 3b225a012abe4796172327d8a723338e8de67749
+ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37867684"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37930018"
 ---
 # <a name="integrate-speech-service"></a>Beszédszolgáltatás integrálása
 A [beszédszolgáltatás](https://docs.microsoft.com/azure/cognitive-services/Speech-Service/) lehetővé teszi, hogy egyetlen kérés fogadásához hang, és a LUIS-előrejelzési JSON objektumokat adjanak vissza.
@@ -28,7 +28,7 @@ Ez a cikk szüksége lesz egy ingyenes [LUIS] [ LUIS] webhely fiók annak érdek
 Az Azure Portalon [létrehozása](luis-how-to-azure-subscription.md#create-luis-endpoint-key) egy **Language Understanding** (LUIS) kulcsa. 
 
 ## <a name="import-human-resources-luis-app"></a>Importálja az emberi erőforrások LUIS alkalmazás
-A leképezések és a kimondott szöveg ebben a cikkben vannak az emberi erőforrások LUIS érhető el az alkalmazásból a [LUIS-Samples](https://github.com/Microsoft/LUIS-Samples) Github-adattárban. Töltse le a [HumanResources.json](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/quickstarts/HumanResources.json) *.json kiterjesztésű, mentse a fájlt, és [importálása](create-new-app.md#import-new-app) LUIS be azt. 
+A leképezések és a kimondott szöveg ebben a cikkben vannak az emberi erőforrások LUIS érhető el az alkalmazásból a [LUIS-Samples](https://github.com/Microsoft/LUIS-Samples) Github-adattárban. Töltse le a [HumanResources.json](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/quickstarts/HumanResources.json) *.json kiterjesztésű, mentse a fájlt, és [importálása](luis-how-to-start-new-app.md#import-new-app) LUIS be azt. 
 
 Az alkalmazás van, szándék fog vonatkozni, az entitások és az emberi erőforrások tartományhoz kapcsolódó kimondott szöveg. Példa utterances a következők:
 

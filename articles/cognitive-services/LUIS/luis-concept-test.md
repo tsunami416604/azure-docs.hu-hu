@@ -9,12 +9,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 03/14/2018
 ms.author: v-geberr
-ms.openlocfilehash: 6c9bd93cf6e67aa815d289260f2b37bd3189c1d1
-ms.sourcegitcommit: 11321f26df5fb047dac5d15e0435fce6c4fde663
+ms.openlocfilehash: d6cbba2a5bf9ff44439c6e98debde5cd47d4bfc3
+ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37887589"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37950389"
 ---
 # <a name="testing-in-luis"></a>A LUIS tesztelése
 
@@ -45,7 +45,7 @@ Ha tesztelése egy végponton, és nem naplózza az utterance (kifejezés) kív�
 ## <a name="where-to-find-utterances"></a>Hol található a kimondott szöveg
 A LUIS tárolja az összes naplózott utterances a lekérdezési napló, letölthető a [LUIS](luis-reference-regions.md) webhely **alkalmazások** listáját tartalmazó lapon, valamint a LUIS [API-k készítése](https://aka.ms/luis-authoring-apis). 
 
-LUIS párbeszédpaneléből megszólalásokat szerepelnek a **[tekintse át a végpont utterances](label-suggested-utterances.md)** lapján a [LUIS](luis-reference-regions.md) webhelyén. 
+LUIS párbeszédpaneléből megszólalásokat szerepelnek a **[tekintse át a végpont utterances](luis-how-to-review-endoint-utt.md)** lapján a [LUIS](luis-reference-regions.md) webhelyén. 
 
 ![A végpont beszédmódjainak áttekintése](./media/luis-concept-test/review-endpoint-utterances.png)
  

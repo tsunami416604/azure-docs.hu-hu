@@ -11,12 +11,12 @@ ms.workload: data-management
 ms.topic: article
 ms.date: 10/27/2016
 ms.author: sumuth
-ms.openlocfilehash: 5e6acf59410099ba36bfa6fa89a576d83b61cf00
-ms.sourcegitcommit: 4597964eba08b7e0584d2b275cc33a370c25e027
+ms.openlocfilehash: ff36a67cd09dd1e5cb5635be17d1dd76fc824d1a
+ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37341504"
+ms.lasthandoff: 07/09/2018
+ms.locfileid: "37917074"
 ---
 # <a name="faq-for-cleardb-mysql-databases-with-azure-app-service"></a>ClearDB MySQL-adatbázisok használata az Azure App Service szolgáltatásban – gyakori kérdések
 Ez a GYIK használatával, és az Azure Web Appshez az adatbázisok a ClearDB MySQL vásárlásával kapcsolatos gyakori kérdésekre ad választ.
@@ -44,7 +44,6 @@ Ez az előfizetés típusától függ. Íme néhány gyakran használt előfizet
 * [Az ingyenes próbaidőszak](https://azure.microsoft.com/pricing/free-trial/): krediteket tartalmaz, használja a Microsoft Azure-szolgáltatások, de nem teszi lehetővé a külső erőforrások beszerzési. Vásárolja meg a harmadik féltől származó szolgáltatásokkal vagy egy fizetős MySQL-adatbázist kell hitelkártyát használnia engedélyezve van az előfizetésben. A Web Apps létrehozhat egy ingyenes a ClearDB MySQL-adatbázishoz.
 * [MSDN-nel](https://azure.microsoft.com/pricing/member-offers/msdn-benefits/) és **MSDN Dev-Test használatalapú**: hasonlóan az ingyenes próbaverzióban, MSDN-előfizetés szükséges hozzá, arra, hogy fizetős megoldás MySQL a ClearDB hitelkártya.
 * [Nagyvállalati Szerződés (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/): nagyvállalati szerződéssel rendelkező ügyfelek számlázása a nagyvállalati szerződés terhére negyedévente összes az Azure Marketplace-en (külső) vásárlások külön, összevont számlán. A bármelyik piactéren történő vásárlások pénzügyi kötelezettségvállalást kívül számítjuk fel. Vegye figyelembe, hogy jelenleg Azure Store nem érhető el az ügyfelek számára a regisztrált Azerbajdzsán, Horvátország, Norvégia és Puerto Ricóban. 
-* [DreamSpark](https://www.dreamspark.com/Product/Product.aspx?productid=99): Web Apps csak az ingyenes ClearDB-adatbázist is létrehozhat. Nincs nem hozhat létre ingyenes ClearDB MySQL-adatbázisok száma nincs korlátozva. Vegye figyelembe, hogy ingyenes adatbázist, nem használható éles webes alkalmazások számára, ez a szolgáltatás csak próbaverzió szól.
 
 ## <a name="why-was-i-charged-350-for-a-web-app--mysql-from-the-azure-marketplace"></a>Miért érdemes fizetni egy webalkalmazás és MySQL az Azure Marketplace-ről a 3.50 $?
 Az alapértelmezett adatbázis-beállítás Titan $3.50. Hogy ne jelenjen meg a költségek az adatbázis létrehozása során, és előfordulhat, hogy véletlenül vásárol egy adatbázis nem szeretett volna. Szeretne megtalálni a élmény javításához, de addig gombra kattintás előtt kell jelölnie minden a kiválasztott tarifacsomag webalkalmazáshoz és adatbázishoz **létrehozás** és az erőforrások a telepítés elindítása.

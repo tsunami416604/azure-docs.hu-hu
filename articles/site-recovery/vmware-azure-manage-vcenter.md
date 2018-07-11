@@ -1,76 +1,76 @@
 ---
-title: " VMware vCenter Server az Azure Site Recovery kezelése |} Microsoft Docs"
-description: Ez a cikk ismerteti, hogyan hozzáadása és kezelése az Azure Site Recovery a VMware vcenter programban.
-author: AnoopVasudavan
+title: " Az Azure Site Recovery VMware vCenter-kiszolgálók kezelése |} A Microsoft Docs"
+description: Ez a cikk azt ismerteti, hogyan hozzáadása és kezelése az Azure Site Recovery VMware vCenter.
+author: Rajeswari-Mamilla
 ms.service: site-recovery
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/20/2018
-ms.author: anoopkv
-ms.openlocfilehash: 48b6cf9b90b429520df435aee00f57ea7b588748
-ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
+ms.author: ramamill
+ms.openlocfilehash: 6f3edf8e5d7a6fda1795991ac0a21cc316c29414
+ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36284998"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37950444"
 ---
 # <a name="manage-vmware-vcenter-servers"></a>VMware vCenter-kiszolgálók kezelése 
 
-A cikk ismerteti a különböző Site Recovery-műveleteket, amelyek a VMware vCenter végrehajtható. Ellenőrizze a [Előfeltételek](vmware-physical-azure-support-matrix.md#replicated-machines) megkezdése előtt.
+Ez a cikk ismerteti a különböző a Site Recovery-műveletek egy VMware vcenter végrehajtható. Ellenőrizze a [Előfeltételek](vmware-physical-azure-support-matrix.md#replicated-machines) megkezdése előtt.
 
 
-## <a name="set-up-an-account-for-automatic-discovery"></a>Az automatikus felderítési fiókot
+## <a name="set-up-an-account-for-automatic-discovery"></a>Az automatikus felderítési fiók beállítása
 
-A Site Recovery VMware hozzáférésre van szüksége, a folyamatkiszolgálót a virtuális gépek automatikus észlelése és a feladatátvétel és a feladat-visszavételt a virtuális gépek. A hozzáférés-fiók létrehozása az alábbiak szerint:
+A folyamatkiszolgáló automatikusan a virtuális gépek felderítése és a feladatátvétel és feladat-visszavételt a virtuális gépek a Site Recovery VMware hozzá kell férnie. Következőképpen hozhat létre egy fiókot a hozzáféréshez:
 
-1. Jelentkezzen be a konfigurációs kiszolgáló számítógépén.
-2. Nyissa meg az indítási a cspsconfigtool.exe használatával az asztali parancsikonra.
+1. Jelentkezzen be a konfigurációs kiszolgáló gép.
+2. Nyissa meg a bevezetésre a cspsconfigtool.exe használatával az asztali parancsikonjára.
 3. Kattintson a **fiók hozzáadása** a a **fiók kezelése** fülre.
 
   ![fiók hozzáadása](./media/vmware-azure-manage-vcenter/addaccount.png)
-1. Adja meg a fiók adatait, majd kattintson a **OK** veheti fel.  A fióknak rendelkeznie kell a jogosultságokat az alábbi táblázat foglalja össze. 
+1. Adja meg a fiók adatait, és kattintson a **OK** hozzáadáshoz.  A fióknak rendelkeznie kell a jogosultságokat a következő táblázat foglalja össze. 
 
-A számítógépfiók adatai szinkronizálva a Site Recovery szolgáltatásban körülbelül 15 percet vesz igénybe.
+Felfelé a Site Recovery szolgáltatással való szinkronizálása megtörténik az fiók információk nagyjából 15 percet vesz igénybe.
 
-### <a name="account-permissions"></a>Fiók engedélyeit
+### <a name="account-permissions"></a>Fiók engedélyei
 
 |**Tevékenység** | **Fiók** | **Engedélyek** | **Részletek**|
 |--- | --- | --- | ---|
-|**Automatikus felderítés/áttelepítése (nélkül a feladat-visszavétel)** | Legalább egy írásvédett felhasználó van szüksége | Adatközpont-objektum –> Gyermekobjektumba propagálás, szerepkör = csak olvasható | A felhasználó az adatközpontszinten hozzárendelve, és hozzáféréssel rendelkezik az adatközpontban lévő összes objektumhoz.<br/><br/> A hozzáférés korlátozása érdekében rendelje hozzá a **nem lehet hozzáférni** szerepkört a **gyermekre propagálása** objektum, a gyermekobjektumokra (vSphere-gazdagép, datastores, virtuális gépek és hálózatok).|
-|**Replikációs/feladatátvétel** | Legalább egy írásvédett felhasználó van szüksége| Adatközpont-objektum –> Gyermekobjektumba propagálás, szerepkör = csak olvasható | A felhasználó az adatközpontszinten hozzárendelve, és hozzáféréssel rendelkezik az adatközpontban lévő összes objektumhoz.<br/><br/> A hozzáférés korlátozása érdekében rendelje hozzá a **nem lehet hozzáférni** szerepkört a **gyermekre propagálása** a gyermekobjektumokra (vSphere-gazdagép, datastores, virtuális gépek és hálózatok) objektum.<br/><br/> Akkor hasznos, ha az áttelepítési célokból, de nem a teljes replikáció, feladatátvétel, feladat-visszavétel.|
-|**Replikációs és feladatátvételi/feladat-visszavételi** | Javasoljuk, hogy (AzureSiteRecoveryRole) szerepkör létrehozása a szükséges engedélyekkel, és hozzárendelheti a szerepkör egy VMware-felhasználó vagy csoport | Adatközpont objektum –> propagálása gyermekobjektum, a szerepkör = AzureSiteRecoveryRole<br/><br/> Adattároló -> Terület lefoglalása, adattároló böngészése, alacsony szintű fájlműveletek, fájl eltávolítása, virtuális gépek fájljainak frissítése<br/><br/> Hálózat -> Hálózat hozzárendelése<br/><br/> Erőforrás -> Virtuális gép hozzárendelése az erőforráskészlethez, kikapcsolt virtuális gép migrálása, bekapcsolt virtuális gép migrálása<br/><br/> Feladatok -> Feladat létrehozása, feladat frissítése<br/><br/> Virtuális gép -> Konfiguráció<br/><br/> Virtuális gép -> Használat -> Kérdés megválaszolása, eszközkapcsolat, CD-adathordozó konfigurálása, hajlékonylemezes adathordozó, kikapcsolás, bekapcsolás, VMware-eszközök telepítése<br/><br/> Virtuális gép -> Leltár -> Létrehozás, regisztrálás, regisztráció törlése<br/><br/> Virtuális gép -> Üzembe helyezés -> Virtuális gép letöltésének engedélyezése, virtuálisgépfájlok feltöltésének engedélyezése<br/><br/> Virtuális gép -> Pillanatképek -> Pillanatképek eltávolítása | A felhasználó az adatközpontszinten hozzárendelve, és hozzáféréssel rendelkezik az adatközpontban lévő összes objektumhoz.<br/><br/> A hozzáférés korlátozása érdekében rendelje hozzá a **nem lehet hozzáférni** szerepkört a **gyermekre propagálása** objektum, a gyermekobjektumokra (vSphere-gazdagép, datastores, virtuális gépek és hálózatok).|
+|**Automatikus felderítés/Migrálása (nélkül a feladat-visszavétel)** | Legalább egy olvasási jogosultsággal rendelkező felhasználó van szüksége | Adatközpont-objektum –> Gyermekobjektumba propagálás, szerepkör = csak olvasható | A felhasználó az adatközpontszinten hozzárendelve, és hozzáféréssel rendelkezik az adatközpontban lévő összes objektumhoz.<br/><br/> Hozzáférés korlátozásához rendelje a **nincs hozzáférés** szerepkört a **Gyermekobjektumba** objektum, a gyermekobjektumokhoz (vSphere-gazdagépek, adattárolók, virtuális gépek és hálózatok).|
+|**Replikáció és feladatátvétel** | Legalább egy olvasási jogosultsággal rendelkező felhasználó van szüksége| Adatközpont-objektum –> Gyermekobjektumba propagálás, szerepkör = csak olvasható | A felhasználó az adatközpontszinten hozzárendelve, és hozzáféréssel rendelkezik az adatközpontban lévő összes objektumhoz.<br/><br/> Hozzáférés korlátozásához rendelje a **nincs hozzáférés** szerepkört a **Gyermekobjektumba** objektum a gyermekobjektumokhoz (vSphere-gazdagépek, adattárolók, virtuális gépek és hálózatok).<br/><br/> Az áttelepítés során, de nem a teljes replikáció, feladatátvétel, feladat-visszavétel hasznos.|
+|**Replikációs és feladatátvételi és feladat-visszavétel** | Javasoljuk, hozzon létre egy szerepkört (AzureSiteRecoveryRole) a szükséges engedélyekkel, és rendelje hozzá a szerepkört egy VMware-felhasználóhoz vagy csoporthoz | Adatközpont-objektum gyermekobjektumba propagálás, szerepkör = AzureSiteRecoveryRole<br/><br/> Adattároló -> Terület lefoglalása, adattároló böngészése, alacsony szintű fájlműveletek, fájl eltávolítása, virtuális gépek fájljainak frissítése<br/><br/> Hálózat -> Hálózat hozzárendelése<br/><br/> Erőforrás -> Virtuális gép hozzárendelése az erőforráskészlethez, kikapcsolt virtuális gép migrálása, bekapcsolt virtuális gép migrálása<br/><br/> Feladatok -> Feladat létrehozása, feladat frissítése<br/><br/> Virtuális gép -> Konfiguráció<br/><br/> Virtuális gép -> Használat -> Kérdés megválaszolása, eszközkapcsolat, CD-adathordozó konfigurálása, hajlékonylemezes adathordozó, kikapcsolás, bekapcsolás, VMware-eszközök telepítése<br/><br/> Virtuális gép -> Leltár -> Létrehozás, regisztrálás, regisztráció törlése<br/><br/> Virtuális gép -> Üzembe helyezés -> Virtuális gép letöltésének engedélyezése, virtuálisgépfájlok feltöltésének engedélyezése<br/><br/> Virtuális gép -> Pillanatképek -> Pillanatképek eltávolítása | A felhasználó az adatközpontszinten hozzárendelve, és hozzáféréssel rendelkezik az adatközpontban lévő összes objektumhoz.<br/><br/> Hozzáférés korlátozásához rendelje a **nincs hozzáférés** szerepkört a **Gyermekobjektumba** objektum, a gyermekobjektumokhoz (vSphere-gazdagépek, adattárolók, virtuális gépek és hálózatok).|
 
 
 ## <a name="add-vmware-server-to-the-vault"></a>VMware-kiszolgáló hozzáadása a tárolóhoz
 
-1. Az Azure-portálon, nyissa meg a tároló > **Site Recovery-infrastruktúra** > **konfigurációs kiszolgálója**, és nyissa meg a konfigurációs kiszolgáló.
+1. Az Azure Portalon nyissa meg a tároló > **Site Recovery-infrastruktúra** > **konfigurációs adatbázisai**, és nyissa meg a konfigurációs kiszolgálón.
 2. Az a **részletek** kattintson **+ vCenter**.
 
 [!INCLUDE [site-recovery-add-vcenter](../../includes/site-recovery-add-vcenter.md)]
 
 ## <a name="modify-credentials"></a>Hitelesítő adatok módosítása
 
-Módosítsa a hitelesítő adatokat, csatlakozhat a vCenter-kiszolgáló vagy ESXi-állomáson, az alábbiak szerint:
+A vCenter-kiszolgálón vagy ESXi-gazdagéphez való kapcsolódáshoz a következőképpen használt hitelesítő adatok módosítása:
 
-1. Jelentkezzen be a konfigurációs kiszolgáló, és indítsa el a cspsconfigtool.exe az asztalról.
+1. Jelentkezzen be a konfigurációs kiszolgálót, és indítsa el a cspsconfigtool.exe az asztalról.
 2. Kattintson a **fiók hozzáadása** a a **fiók kezelése** fülre.
 
   ![fiók hozzáadása](./media/vmware-azure-manage-vcenter/addaccount.png)
-3. Adja meg az új fiók adatait, majd kattintson a **OK** veheti fel. A fióknak rendelkeznie kell a felsorolt jogosultságok [fent](#account-permissions).
-4. Az Azure-portálon, nyissa meg a tároló > **Site Recovery-infrastruktúra** > **konfigurációs kiszolgálója**, és nyissa meg a konfigurációs kiszolgáló.
-5. Az a **részletek** kattintson **kiszolgáló frissítését**.
-6. A kiszolgáló frissítését feladat befejezése után válassza ki a vCenter-kiszolgálót, nyissa meg a vCenter **összegzés** lap.
-7. Válassza ki az újonnan hozzáadott fiókot a **vCenter kiszolgáló vagy vSphere-gazdagép fiókja** mezőben, majd kattintson a **mentése**.
+3. Adja meg az új fiók adatait, és kattintson a **OK** hozzáadáshoz. A fióknak rendelkeznie kell a felsorolt jogosultságok [fent](#account-permissions).
+4. Az Azure Portalon nyissa meg a tároló > **Site Recovery-infrastruktúra** > **konfigurációs adatbázisai**, és nyissa meg a konfigurációs kiszolgálón.
+5. Az a **részletek** kattintson **kiszolgáló frissítése**.
+6. A kiszolgáló frissítése feladat befejezése után jelölje ki a vCenter-kiszolgálóra, nyissa meg a vcenter-kiszolgáló **összefoglalás** lapot.
+7. Válassza ki az újonnan hozzáadott fiókot a **vCenter-kiszolgáló vagy vSphere-gazdagép fiókja** mezőben, majd kattintson a **mentése**.
 
-    ![-fiók módosítása](./media/vmware-azure-manage-vcenter/modify-vcente-creds.png)
+    ![fiók módosítása](./media/vmware-azure-manage-vcenter/modify-vcente-creds.png)
 
-## <a name="delete-a-vcenter-server"></a>Törli a vCenter-kiszolgáló
+## <a name="delete-a-vcenter-server"></a>VCenter-kiszolgáló törlése
 
-1. Az Azure-portálon, nyissa meg a tároló > **Site Recovery-infrastruktúra** > **konfigurációs kiszolgálója**, és nyissa meg a konfigurációs kiszolgáló.
+1. Az Azure Portalon nyissa meg a tároló > **Site Recovery-infrastruktúra** > **konfigurációs adatbázisai**, és nyissa meg a konfigurációs kiszolgálón.
 2. Az a **részletek** lapon, válassza ki a vCenter-kiszolgáló.
 3. Kattintson a **törlése** gombra.
 
-  ![törlés-fiók](./media/vmware-azure-manage-vcenter/delete-vcenter.png)
+  ![delete-fiók](./media/vmware-azure-manage-vcenter/delete-vcenter.png)
 
 > [!NOTE]
-Ha módosítania kell a vCenter IP-cím, az FQDN vagy a port, majd szeretné törölni a vCenter-kiszolgálót, és adja hozzá újra a portálon.
+Ha szeretné módosítani a vCenter IP-címet, a teljes tartománynév vagy a port, majd szeretné törölni a vCenter-kiszolgáló, és adja hozzá újból a portálon.

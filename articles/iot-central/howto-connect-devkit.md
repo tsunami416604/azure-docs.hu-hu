@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 237a19b76268e1207c9de438a4f79d3dc8382476
-ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
+ms.openlocfilehash: c2a7278f4ee6861a1e47610c06fdc6ffcec52247
+ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2018
-ms.locfileid: "37903809"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37931082"
 ---
 # <a name="connect-an-mxchip-iot-devkit-device-to-your-azure-iot-central-application"></a>Az MXChip IoT DevKit eszköz csatlakoztatása az Azure IoT Central alkalmazáshoz
 
@@ -82,7 +82,8 @@ A beállítások ki-/ bekapcsolása
 | Típus            | Megjelenített név | Mező neve | Adattípus |
 | --------------- | ------------ | ---------- | --------- |
 | Eszköztulajdonság | Die száma   | dieNumber  | szám    |
-| Szöveg            | Hely     | location   | –       |
+| Eszköztulajdonság | Eszköz helye   | location  | location    |
+| Szöveg            | Az előállított     | manufacturedIn   | –       |
 
 
 ### <a name="add-a-real-device"></a>Valós eszköz hozzáadása
@@ -152,19 +153,24 @@ A telemetriai adatok mérések és a jelentett tulajdonságértékeket megtekint
 
 1. Használat **Device Explorer** navigálhat a **mérések** lapját valós MXChip hozzáadott:
 
-    ![Navigáljon a valódi eszköz](media/howto-connect-devkit/realdevice.png)
+    ![Navigáljon a valódi eszköz](media/howto-connect-devkit/realdevicenew.png)
 
 1. Az a **mérések** lapon megtekintheti az MXChip eszközről érkező telemetriai adatok:
 
-    ![Valódi eszköz telemetriájának megtekintése](media/howto-connect-devkit/realtelemetry.png)
+    ![Valódi eszköz telemetriájának megtekintése](media/howto-connect-devkit/devicetelemetrynew.png)
 
-1. Az a **tulajdonságok** lapon megtekintheti a legutóbbi száma az eszköz által jelentett:
+1. Az a **tulajdonságok** lapon megtekintheti a legutóbbi száma és az eszköz helye, az eszköz által jelentett:
 
-    ![Az eszköz tulajdonságai](media/howto-connect-devkit/deviceproperties.png)
+    ![Az eszköz tulajdonságai](media/howto-connect-devkit/devicepropertynew.png)
 
 1. Az a **beállítások** lapon módosíthatja a beállításokat az MXChip eszközön:
 
-    ![Eszköz-beállítások megjelenítése](media/howto-connect-devkit/settings.png)
+    ![Eszköz-beállítások megjelenítése](media/howto-connect-devkit/devicesettingsnew.png)
+
+1. Az a **irányítópult** lapon láthatja a hely hozzárendelése
+
+    ![Eszköz-irányítópult megtekintése](media/howto-connect-devkit/devicedashboardnew.png)
+
 
 ## <a name="download-the-source-code"></a>Letöltheti a forráskódot
 

@@ -1,8 +1,7 @@
 ---
-title: A Parancsfájlműveletek - Azure HDInsight-fürtök testreszabása |} Microsoft Docs
-description: Ismerje meg a parancsfájlművelet HDInsight-fürtök testreszabása.
+title: Parancsfájlműveletekkel – Azure HDInsight-fürtök testre szabása |} A Microsoft Docs
+description: Ismerje meg, hogyan Szkriptműveletek használatával HDInsight-fürtök testre szabása.
 services: hdinsight
-documentationcenter: ''
 author: nitinme
 manager: jhubbard
 editor: cgronlun
@@ -14,76 +13,76 @@ ms.topic: conceptual
 ms.date: 10/05/2016
 ms.author: nitinme
 ROBOTS: NOINDEX
-ms.openlocfilehash: 15fa3e7738810ada48f471a685f79a82445ad70c
-ms.sourcegitcommit: 6cf20e87414dedd0d4f0ae644696151e728633b6
+ms.openlocfilehash: 50ef40b3ea3bc8c768e8b4266ef50ad02e02f026
+ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34808859"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37950614"
 ---
-# <a name="customize-windows-based-hdinsight-clusters-using-script-action"></a>Parancsfájlművelet Windows-alapú HDInsight-fürtök testreszabása
-**Parancsfájl-művelet** alkalmazásához használt [egyéni parancsfájlok](hdinsight-hadoop-script-actions.md) a fürt további szoftver telepítése a fürt létrehozása során.
+# <a name="customize-windows-based-hdinsight-clusters-using-script-action"></a>Szkriptműveletek használatával Windows-alapú HDInsight-fürtök testre szabása
+**Parancsfájl-művelet** hívja használhatók [egyéni parancsfájlok](hdinsight-hadoop-script-actions.md) a további szoftverek telepítése egy fürtre a fürt létrehozása során.
 
-Ebben a cikkben szereplő információk csak a Windows-alapú HDInsight-fürtök az elő. Linux-alapú fürtök esetében lásd: [testreszabása Linux-alapú HDInsight-fürtök használata parancsfájlművelet](hdinsight-hadoop-customize-cluster-linux.md).
+Ebben a cikkben található információk csak a Windows-alapú HDInsight-fürtök. A Linux-alapú fürtök esetén lásd: [testreszabása Linux-alapú HDInsight-fürtök szkriptműveletekkel](hdinsight-hadoop-customize-cluster-linux.md).
 
 > [!IMPORTANT]
 > A Linux az egyetlen operációs rendszer, amely a HDInsight 3.4-es vagy újabb verziói esetében használható. További tudnivalókért lásd: [A HDInsight elavulása Windows rendszeren](hdinsight-component-versioning.md#hdinsight-windows-retirement).
 
-További Azure Storage-fiókok ideértve például a HDInsight-fürtök testre szabható más módszerekkel is, számos, a Hadoop módosítása konfigurációs fájljai (core-site.xml, hive-site.xml stb.), vagy a megosztott függvénytárak (például a Hive, az Oozie) hozzáadása a fürt közös helyen való. Ezek a testreszabások végezhető el az Azure PowerShell, az Azure HDInsight .NET SDK vagy az Azure-portálon. További információkért lásd: [Hadoop létrehozása a HDInsight-fürtök][hdinsight-provision-cluster].
+HDInsight-fürtök számos más módon is testre szabható, többek között további Azure Storage-fiókokat, például a Hadoop módosítása konfigurációs fájlok (core-site.xml, hive-site.xml stb.) vagy kódtárakat (pl. a Hive, az Oozie) való hozzáadása megosztott általánosan használt helyet ismertet a fürtben. Ezek a testreszabások végezhető el az Azure PowerShell, az Azure HDInsight .NET SDK vagy az Azure Portalon. További információkért lásd: [Hadoop-fürtök létrehozása a HDInsight][hdinsight-provision-cluster].
 
 [!INCLUDE [upgrade-powershell](../../includes/hdinsight-use-latest-powershell-cli-and-dotnet-sdk.md)]
 
-## <a name="script-action-in-the-cluster-creation-process"></a>A Fürtlétrehozási folyamat parancsfájlművelet
-Parancsfájl művelet csak akkor használatos, miközben a fürt létrehozása folyamatban van. A következő ábra szemlélteti a parancsfájl művelet végrehajtásakor a létrehozási folyamat során:
+## <a name="script-action-in-the-cluster-creation-process"></a>A fürtlétrehozás a parancsfájlművelet
+Parancsfájlművelet csak akkor használható, amíg a fürt létrehozása folyamatban van. A következő ábra szemlélteti a parancsprogram-művelet végrehajtásakor a létrehozási folyamat során:
 
-![A HDInsight fürt testreszabási és fürt létrehozása során szakaszai][img-hdi-cluster-states]
+![HDInsight-fürt testreszabása és -szakaszok a fürt létrehozásakor][img-hdi-cluster-states]
 
-A parancsprogram futtatásakor kerül, a fürt a **ClusterCustomization** szakaszban. Ebben a szakaszban a parancsfájlt a fürt összes az adott csomóponton párhuzamosan a rendszer rendszergazdai fiók alatt fut, és teljes rendszergazdai jogosultságokat biztosít a csomópontokon.
+A parancsprogram futtatásakor kerül, a fürt a **ClusterCustomization** szakaszban. Ezen a ponton a parancsfájl a rendszer rendszergazdai fiók a megadott csomópontok a fürtben, párhuzamos alatt fut, és teljes körű rendszergazdai jogosultságokat biztosít a csomópontokon.
 
 > [!NOTE]
-> Mivel a rendszergazdai jogosultságokkal rendelkezik a fürtcsomópontokon során a **ClusterCustomization** szakasza alatt a parancsfájlt használhatja például a szolgáltatások, beleértve a Hadoop-kapcsolatos szolgáltatások indítása és leállítása műveletek végrehajtásához. Igen, a parancsfájl gondoskodnia kell arról, hogy az Ambari és egyéb Hadoop-kapcsolódó szolgáltatás megfelelően működik, mielőtt a parancsfájl befejezése után történik. Ezek a szolgáltatások szükségesek állapotát és a fürt állapotának sikeresen megállapítása közben létrehozása folyamatban van. Ha módosítja a fürtön, ezeket a szolgáltatásokat érintő beállításra, a súgófunkciókat által biztosított kell használnia. Súgófunkciókat kapcsolatos további információkért lásd: [parancsfájlművelet fejlesztése parancsfájlok a HDInsight][hdinsight-write-script].
+> Mivel a rendszergazdai jogosultságokkal rendelkezik a fürtcsomópontokon során a **ClusterCustomization** fázis, a parancsfájl használatával hajtsa végre a műveletek, mint a szolgáltatások, beleértve a Hadoop-hez kapcsolódó szolgáltatások indítása és leállítása. Tehát, a parancsfájl bizonyosodjon meg, hogy az Ambari-szolgáltatások és egyéb Hadoop-hez kapcsolódó szolgáltatások és a parancsfájl futtatásának befejezése előtt. Ezek a szolgáltatások szükségesek sikeresen listájáért állapotát és a fürt állapotát, amíg létrehozása folyamatban van. Ha módosítja a fürtön, amely érinti ezeket a szolgáltatásokat semmilyen konfigurálást, a segédfüggvények biztosított kell használnia. Segédfüggvények kapcsolatos további információkért lásd: [Szkriptművelet fejlesztése HDInsight-parancsfájlok][hdinsight-write-script].
 >
 >
 
-A kimeneti és a hibanaplókat a parancsfájl az alapértelmezett tárfiókot, a fürt számára megadott vannak tárolva. A naplók tárolódnak a nevű tábla **u < \cluster-name-fragment >< \time-stamp > setuplog**. Ezek a összesített napló, a parancsfájl futhat az összes (átjárócsomópont és feldolgozó csomópontokat) a fürt csomópontja.
+A kimenet és a hibanaplókat, a parancsfájl az alapértelmezett tárfiókot, a fürt megadott vannak tárolva. A naplók vannak tárolva egy tábla nevét **u < \cluster-name-fragment >< \time-stamp > setuplog**. Ezek azok a parancsfájl a csomópontokon futtatott összes (fő csomópontot és a feldolgozó csomópontok) a fürtben aggregált naplóinak.
 
-Az egyes fürtökön fogadhatnak kerül meghívásra, amely a megadott sorrendben több parancsfájl-műveletek. Egy parancsfájlt is futott, az átjárócsomópont, a munkavégző csomópontokhoz vagy mindkettőt.
+Minden egyes fürt fogadhat több parancsfájl-műveletek kerül meghívásra, amely a megadott sorrendben. A fő csomópontot és a feldolgozó csomópontok tartozhatnak parancsfájlt is futtatunk.
 
-HDInsight több parancsprogramokat a HDInsight-fürtök az alábbi összetevők telepítése itt:
+HDInsight számos szkript a következő összetevők telepítése a HDInsight-fürtökön biztosítja:
 
 | Name (Név) | Szkript |
 | --- | --- |
-| **Spark telepítése** |https://hdiconfigactions.blob.core.windows.net/sparkconfigactionv03/spark-installer-v03.ps1. Lásd: [telepítése és használata a HDInsight Spark-fürtök][hdinsight-install-spark]. |
-| **R telepítéséhez** |https://hdiconfigactions.blob.core.windows.net/rconfigactionv02/r-installer-v02.ps1. Lásd: [telepítése és használata R HDInsight-fürtök] [a hdinsight-install-r]. |
-| **Solr telepítése** |https://hdiconfigactions.blob.core.windows.net/solrconfigactionv01/solr-installer-v01.ps1. Lásd: [telepítése és használata Solr a HDInsight-fürtök](hdinsight-hadoop-solr-install.md). |
-| - **Giraph telepítése** |https://hdiconfigactions.blob.core.windows.net/giraphconfigactionv01/giraph-installer-v01.ps1. Lásd: [telepítése és használata Giraph a HDInsight-fürtök](hdinsight-hadoop-giraph-install.md). |
-| **Hive-könyvtárakhoz előzetes betöltése** |https://hdiconfigactions.blob.core.windows.net/setupcustomhivelibsv01/setup-customhivelibs-v01.ps1. Lásd: [kódtárak hozzáadása Hive HDInsight-fürtök](hdinsight-hadoop-add-hive-libraries.md) |
+| **A Spark telepítése** | `https://hdiconfigactions.blob.core.windows.net/sparkconfigactionv03/spark-installer-v03.ps1`. Lásd: [telepítése és használata a Spark on HDInsight-fürtök][hdinsight-install-spark]. |
+| **Az R telepítése** | `https://hdiconfigactions.blob.core.windows.net/rconfigactionv02/r-installer-v02.ps1`. Lásd: [telepítése és az R használata a HDInsight-fürtökön](r-server/r-server-hdinsight-manage.md#install-additional-r-packages-on-the-cluster). |
+| **A Solr telepítése** | `https://hdiconfigactions.blob.core.windows.net/solrconfigactionv01/solr-installer-v01.ps1`. Lásd: [telepítése és használata a Solr a HDInsight-fürtök](hdinsight-hadoop-solr-install.md). |
+| **A Giraph telepítése** | `https://hdiconfigactions.blob.core.windows.net/giraphconfigactionv01/giraph-installer-v01.ps1`. Lásd: [telepítése és használata a Giraph a HDInsight-fürtök](hdinsight-hadoop-giraph-install.md). |
+| **Hive-kódtárak előzetes betöltése** | `https://hdiconfigactions.blob.core.windows.net/setupcustomhivelibsv01/setup-customhivelibs-v01.ps1`. Lásd: [adja hozzá a Hive-kódtárak a HDInsight-fürtök](hdinsight-hadoop-add-hive-libraries.md) |
 
-## <a name="call-scripts-using-the-azure-portal"></a>Az Azure portál használatával hívás parancsfájlok
-**Az Azure-portálon**
+## <a name="call-scripts-using-the-azure-portal"></a>Hívás parancsfájlok az Azure portal használatával
+**Az Azure Portalról**
 
-1. Indítsa el a fürt létrehozása a részben ismertetett módon [Hadoop létrehozása a HDInsight-fürtök](hdinsight-hadoop-provision-linux-clusters.md).
-2. Választható konfiguráció alatt az a **Parancsfájlműveletek** panelen kattintson **parancsfájlművelet hozzáadása** adni a parancsfájlművelet alább látható módon:
+1. Indítsa el a fürt létrehozása ismertetett módon [Hadoop-fürtök létrehozása a HDInsight](hdinsight-hadoop-provision-linux-clusters.md).
+2. Választható konfiguráció mellett a a **Parancsfájlműveletek** panelen kattintson a **parancsfájlművelet hozzáadása** , adja meg a parancsfájlművelet adatait, ahogy az alábbi:
 
-    ![Parancsfájlművelet használni ahhoz, hogy a fürt](./media/hdinsight-hadoop-customize-cluster/HDI.CreateCluster.8.png "parancsfájlművelet használja a fürt testreszabása")
+    ![Fürt testreszabása Szkriptműveletek használatával](./media/hdinsight-hadoop-customize-cluster/HDI.CreateCluster.8.png "Szkriptműveleteket használata a fürt testreszabása")
 
     <table border='1'>
         <tr><th>Tulajdonság</th><th>Érték</th></tr>
         <tr><td>Name (Név)</td>
             <td>Adja meg a parancsfájlművelet nevét.</td></tr>
-        <tr><td>A parancsfájl URI azonosítója</td>
-            <td>Adja meg az URI-t a parancsfájlt, amelyet a fürt testreszabásához. s</td></tr>
-        <tr><td>HEAD/munkavégző</td>
+        <tr><td>Szkript URI-ja</td>
+            <td>Adja meg az URI-t a parancsfájl, amely a fürt testreszabásához meghívott. s</td></tr>
+        <tr><td>A fő/feldolgozó</td>
             <td>Adja meg a csomópontok (**Head** vagy **munkavégző**) a testreszabási parancsfájl futtatása a</b>.
         <tr><td>Paraméterek</td>
-            <td>Adja meg a paraméterek, ha a parancsfájl által igényelt.</td></tr>
+            <td>Adja meg a paramétereket, ha a parancsfájl által igényelt.</td></tr>
     </table>
 
-    Nyomja le az ENTER billentyűt több összetevőinek telepítése a fürt több parancsfájlművelet hozzáadása.
-3. Kattintson a **válasszon** a parancsfájl művelet konfiguráció mentéséhez, majd folytassa a fürt létrehozása.
+    Nyomja le az ENTER billentyűt, hogy több összetevő telepítése a fürtön egynél több parancsprogram-művelet hozzáadása.
+3. Kattintson a **kiválasztása** mentse a parancsfájlt művelet konfigurációját, és folytassa a fürt létrehozása.
 
-## <a name="call-scripts-using-azure-powershell"></a>Hívja meg az Azure PowerShell parancsfájlok
-A következő PowerShell-parancsfájl bemutatja, hogyan kell külső telepítse a Windows-alapú HDInsight-fürthöz.  
+## <a name="call-scripts-using-azure-powershell"></a>Azure PowerShell-lel szkriptek meghívása
+A következő PowerShell-parancsprogram bemutatja, hogyan Spark telepítése Windows-alapú HDInsight-fürt.  
 
     # Provide values for these variables
     $subscriptionID = "<Azure Suscription ID>" # After "Connect-AzureRmAccount", use "Get-AzureRmSubscription" to list IDs.
@@ -165,17 +164,17 @@ A következő PowerShell-parancsfájl bemutatja, hogyan kell külső telepítse 
             -Config $config
 
 
-Más szoftverek telepítése, akkor cserélje le a parancsfájlt a parancsfájl:
+Más szoftver telepítéséhez szüksége cserélje le a parancsfájlt a parancsfájlt:
 
-Amikor a rendszer kéri, adja meg a hitelesítő adatok a fürt. A fürt létrehozása előtt több percet is igénybe vehet.
+Amikor a rendszer kéri, adja meg a hitelesítő adatokat a fürtön. Mielőtt a fürt létrehozása több percet is igénybe vehet.
 
-## <a name="call-scripts-using-net-sdk"></a>Hívás parancsfájlok .NET SDK használatával
-A következő példa bemutatja, hogyan Spark telepítse a Windows-alapú HDInsight-fürthöz. Más szoftver telepítéséhez, akkor cserélje le a parancsfájlt a kódban.
+## <a name="call-scripts-using-net-sdk"></a>.NET SDK használatával szkriptek meghívása
+A következő minta bemutatja, hogyan Spark telepítése Windows-alapú HDInsight-fürt. Más szoftverek telepítése, szüksége lesz cserélje le a parancsfájlt a kódban.
 
-**A Spark HDInsight-fürtök létrehozása**
+**A Spark egy HDInsight-fürt létrehozása**
 
 1. Hozzon létre egy C# konzolalkalmazást a Visual Studióban.
-2. A Nuget-Csomagkezelő konzolról a következő parancsot.
+2. A Nuget-Csomagkezelő konzolról futtassa a következő parancsot.
 
         Install-Package Microsoft.Rest.ClientRuntime.Azure.Authentication -Pre
         Install-Package Microsoft.Azure.Management.ResourceManager -Pre
@@ -283,38 +282,38 @@ A következő példa bemutatja, hogyan Spark telepítse a Windows-alapú HDInsig
         }
 5. Az alkalmazás futtatásához nyomja le az **F5** billentyűt.
 
-## <a name="support-for-open-source-software-used-on-hdinsight-clusters"></a>A HDInsight-fürtökön használt nyílt forráskódú szoftvereket támogatása
-A Microsoft Azure HDInsight-szolgáltatás rugalmas platform, amely lehetővé teszi a felhőalapú big data-alkalmazások összeállítását az ökoszisztéma formátumú-e körül Hadoop nyílt forráskódú technológiák használatával. A Microsoft Azure biztosít, általános támogatási nyílt forráskódú technológiák leírtaknak megfelelően a **támogatja a hatókör** szakasza a <a href="http://azure.microsoft.com/support/faq/" target="_blank">Azure támogatási gyakori Kérdéseinek webhelyre</a>. A HDInsight-szolgáltatás egy további szintű egyes összetevői, támogatást biztosít, az alább ismertetett.
+## <a name="support-for-open-source-software-used-on-hdinsight-clusters"></a>A HDInsight-fürtökön használt nyílt forráskódú szoftverek támogatása
+A Microsoft Azure HDInsight szolgáltatást az rugalmas platform, amely lehetővé teszi a felhőbeli big-data alkalmazások kiépítését az ökoszisztéma formátumú körül Hadoop nyílt forráskódú technológiák használatával. Microsoft Azure nyílt forráskódú technológiák, egy általános szintű támogatást kínál a leírt módon a **-támogatás hatóköre** szakaszában a <a href="http://azure.microsoft.com/support/faq/" target="_blank">Azure támogatási gyakori Kérdéseinek webhelyre</a>. A HDInsight szolgáltatás egy további szintű egyes összetevői, támogatást biztosít, az alább ismertetett.
 
-A HDInsight szolgáltatásban elérhető nyílt forráskódú összetevőinek két típusa van:
+A HDInsight szolgáltatásban elérhető nyílt forráskódú összetevőket két típusa van:
 
-* **A beépített összetevők** -ezeket az összetevőket a HDInsight-fürtök előre telepített, és adja meg a fürt alapvető funkcióit. Például YARN erőforrás-kezelő, a Hive lekérdezési nyelv (HiveQL) és a Mahout könyvtárban a kategóriába tartoznak. A kiszolgálófürt-összetevők teljes listáját a érhető [What's new in HDInsight által biztosított Hadoop-fürt verziók?](hdinsight-component-versioning.md) </a>.
-* **Egyéni összetevők** -Ön, mint a felhasználó a fürt telepítése vagy használata előtt a munkaterhelésnek valamelyik összetevő a közösségi érhető el, vagy Ön által létrehozott.
+* **Beépített összetevők** – ezek az összetevők a HDInsight-fürtök előre telepítve vannak, és adja meg a fürt fő funkciói. Ha például YARN ResourceManager, a Hive-lekérdezés nyelv (HiveQL) és a Mahout kódtár tartoznak ebbe a kategóriába. Kiszolgálófürt-összetevők teljes listája megtalálható [a HDInsight által biztosított Hadoop-fürtverziók újdonságai?](hdinsight-component-versioning.md) </a>.
+* **Egyéni összetevők** -, a fürt felhasználói telepítése vagy használata az alkalmazások és szolgáltatások valamelyik összetevő a Közösségben elérhető vagy Ön által létrehozott.
 
-A beépített összetevők teljes mértékben támogatottak, és a Microsoft Support fog help elkülönítésére, és ezeket az összetevőket kapcsolatos problémák megoldásához.
+Beépített összetevők teljes mértékben támogatottak, és a Microsoft Support fog help elkülönítésére, és ezeket az összetevőket kapcsolatos problémák megoldásához.
 
 > [!WARNING]
-> A HDInsight-fürt összetevői teljes mértékben támogatottak, és a Microsoft Support fog help elkülönítésére, és ezeket az összetevőket kapcsolatos problémák megoldásához.
+> A HDInsight-fürthöz megadott összetevők teljes mértékben támogatottak, és a Microsoft Support fog help elkülönítésére, és ezeket az összetevőket kapcsolatos problémák megoldásához.
 >
-> Egyéni összetevők kapnak minden üzleti szempontból ésszerű támogatási segítséget nyújtanak a probléma további hibaelhárításához. A probléma megoldását, vagy kéri fel, a nyílt forráskódú technológiák, ahol a részletes segítséget, hogy a technológiát található elérhető csatorna végezhetnek eredményezhet. Például nincsenek sok közösségi webhelyek használható, például: [MSDN fórum hdinsight](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=hdinsight), [ http://stackoverflow.com ](http://stackoverflow.com). Is Apache projektek rendelkezik projekt helyek [ http://apache.org ](http://apache.org), például: [Hadoop](http://hadoop.apache.org/), [Spark](http://spark.apache.org/).
+> Egyéni összetevők annak érdekében, hogy a probléma további hibaelhárításához üzletileg ésszerű támogatást kapnak. Emiatt előfordulhat, hogy a probléma megoldásához vagy rákérdez arra, hogy a nyílt forráskódú technológiák, ahol található részletes szakértelmét, hogy a technológiát a rendelkezésre álló csatorna léphet. Számos, használható, például közösségi helyek vannak, például: [HDInsight az MSDN-fórum](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=hdinsight), [ http://stackoverflow.com ](http://stackoverflow.com). Is Apache projektek rendelkeznek projekt helyek [ http://apache.org ](http://apache.org), például: [Hadoop](http://hadoop.apache.org/), [Spark](http://spark.apache.org/).
 >
 >
 
-A HDInsight-szolgáltatás többféleképpen is egyéni összetevőket használnak. Függetlenül attól, milyen összetevőt használja vagy a fürt telepíteni az azonos szintű támogatást vonatkozik. Alább felsoroljuk, hogy használható-e az egyéni összetevőkben HDInsight-fürtök leggyakoribb módja:
+A HDInsight szolgáltatás használatához az egyéni összetevők több módot nyújt. Függetlenül attól, milyen egy összetevő használt vagy a fürtön telepíteni azonos szintű támogatási vonatkozik. Alább felsoroljuk a leggyakoribb módja, hogy egyéni összetevők a HDInsight-fürtökön is használható:
 
-1. Feladat elküldése - Hadoop és egyéb feladatok végrehajtása, vagy használjon egyéni összetevők küldheti el a fürtöt.
-2. Fürt testreszabási - fürt létrehozása során megadhatja további beállításokat és a fürtcsomópontokon telepített egyéni összetevők.
-3. Minták – a népszerű egyéni összetevők, a Microsoft és a mások által biztosított mintákat ezeket az összetevőket hogyan használható a HDInsight-fürtök. Ezeket a mintákat támogatás nélkül van megadva.
+1. Feladat küldése – a Hadoop és egyéb feladatok végrehajtása, vagy használjon egyéni összetevők küldheti el a fürtöt.
+2. Fürt testreszabása – fürt létrehozása során, megadhat további beállításokat és egyéni, a fürtcsomópontokon telepített összetevőket.
+3. Minták – a népszerű egyéni összetevők, a Microsoft és mások rendelkezhetnek mintákat ezeket az összetevőket hogyan használható a HDInsight-fürtökön. Ezek a minták támogatás nélkül állnak rendelkezésre.
 
 ## <a name="develop-script-action-scripts"></a>Parancsfájlművelet-parancsfájlok fejlesztése
-Lásd: [parancsfájlművelet fejlesztése parancsfájlok a HDInsight][hdinsight-write-script].
+Lásd: [Szkriptművelet fejlesztése HDInsight-parancsfájlok][hdinsight-write-script].
 
 ## <a name="see-also"></a>Lásd még
-* [Hdinsight Hadoop-fürtök létrehozása] [ hdinsight-provision-cluster] HDInsight-fürtök létrehozása más egyéni beállítások használatával kapcsolatos utasításokat tartalmazza.
-* [A HDInsight parancsfájlművelet-parancsfájlok fejlesztése][hdinsight-write-script]
-* [Telepítse, és válassza a Spark on HDInsight-fürtök][hdinsight-install-spark]
-* [Telepítheti és használhatja a HDInsight-fürtök Solr](hdinsight-hadoop-solr-install.md).
-* [Telepítheti és használhatja a HDInsight-fürtök Giraph](hdinsight-hadoop-giraph-install.md).
+* [A HDInsight Hadoop-fürtök létrehozása] [ hdinsight-provision-cluster] útmutatás egy HDInsight-fürt létrehozása más egyéni beállításai használatával.
+* [Parancsfájlművelet-parancsfájlok fejlesztése a HDInsight][hdinsight-write-script]
+* [Spark telepítése és használata HDInsight-fürtökön][hdinsight-install-spark]
+* [Soir telepítése és használata HDInsight-fürtökön](hdinsight-hadoop-solr-install.md).
+* [Giraph telepítése és használata HDInsight-fürtökön](hdinsight-hadoop-giraph-install.md).
 
 [hdinsight-install-spark]: hdinsight-hadoop-spark-install.md
 [hdinsight-write-script]: hdinsight-hadoop-script-actions.md
@@ -322,4 +321,4 @@ Lásd: [parancsfájlművelet fejlesztése parancsfájlok a HDInsight][hdinsight-
 [powershell-install-configure]: /powershell/azureps-cmdlets-docs
 
 
-[img-hdi-cluster-states]: ./media/hdinsight-hadoop-customize-cluster/HDI-Cluster-state.png "Fürt létrehozása során szakaszból"
+[img-hdi-cluster-states]: ./media/hdinsight-hadoop-customize-cluster/HDI-Cluster-state.png "Fürt létrehozása során szakaszai"

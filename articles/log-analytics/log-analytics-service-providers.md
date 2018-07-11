@@ -3,7 +3,7 @@ title: Log Analytics a szolgáltatók számára |} A Microsoft Docs
 description: A log Analytics segítségével a felügyelt szolgáltatóknak (MSP), a nagyobb vállalatok független szoftver szállítói (ISV-k) és az üzemeltetési szolgáltatók kiszolgálók kezelése és figyelése az ügyfél helyszíni vagy felhőalapú infrastruktúrában.
 services: log-analytics
 documentationcenter: ''
-author: richrundmsft
+author: MeirMen
 manager: jochan
 editor: ''
 ms.assetid: c07f0b9f-ec37-480d-91ec-d9bcf6786464
@@ -12,17 +12,17 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 06/27/2018
+ms.date: 07/05/2018
 ms.author: meirm
 ms.component: na
-ms.openlocfilehash: 13f36f67e76b75176940a0f36121be30ba27d519
-ms.sourcegitcommit: 4597964eba08b7e0584d2b275cc33a370c25e027
+ms.openlocfilehash: ad0a3b8e0ee5f1114ea1db95cfe2f4176b8e2ddb
+ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37340865"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37931990"
 ---
-# <a name="log-analytics-features-for-service-providers"></a>Log Analytics-funkciók a szolgáltatók számára
+# <a name="log-analytics-for-service-providers"></a>A log Analytics, a szolgáltatók számára
 A log Analytics segítségével a felügyelt szolgáltatóknak (MSP), a nagyobb vállalatok, független szoftverszállítók (ISV-k) és üzemeltetési szolgáltatók az ügyfél helyszíni vagy felhőalapú infrastruktúrában lévő kiszolgálók kezelése és figyelése. 
 
 A nagyobb cégeknek is megoszthatja számos Hasonlóságok szolgáltatók, különösen akkor, ha van egy központi informatikai csoportját, amelyek kezeléséért felelős informatikai számos különböző üzleti egységek számára. Az egyszerűség kedvéért a jelen dokumentum kifejezést használja *szolgáltató* , de ugyanazokat a funkciókat is vállalatok és más ügyfelek számára érhető el.
@@ -61,7 +61,8 @@ Ez az architektúra előnyei a következők:
 * A szolgáltató ügyfelek összes hajthat végre analytics.
 
 Ez az architektúra a hátrányai:
-* Az ügyfelek közötti adatokat nehéz lesz. Ehhez az egyetlen jó módszer, hogy a számítógép tartománynevét használja.
+* Ez az architektúra az ügynök-alapú virtuális gép adatai csak az érvényes, nem fedezik, PaaS, SaaS- és az Azure fabric adatforrások.
+* Rögzített adatokat az ügyfelek olyan egységes munkaterületre egyesítésekor között lehet. Ehhez az egyetlen jó módszer, hogy a számítógép teljesen minősített tartománynevét (FQDN) használja, vagy keresztül az Azure-előfizetés azonosítóját. 
 * Minden az ügyfelektől származó összes adatot ugyanabban a régióban, az egyetlen számlán és azonos megőrzési és konfigurációs beállítások tárolódik.
 * Az Azure fabric és a PaaS szolgáltatásokat, mint az Azure Diagnostics és az Azure-naplózás a munkaterületet és az erőforrásnak ugyanabban a bérlőben így ezek nem küldi el a naplókat a központi munkaterület szükséges.
 * Minden ügyfél az összes Virtuálisgép-ügynökök hitelesítése a cental-munkaterülethez a azonos munkaterület Azonosítóját és kulcsát. Nincs más ügyfelek megszakítása nélkül naplók egy adott ügyfél blokkolása módszer.

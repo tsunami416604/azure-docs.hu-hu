@@ -3,7 +3,7 @@ title: Azure-ügynök nélkül egy helyi Windows-jelszó alaphelyzetbe állítá
 description: Ha az Azure-vendégügynök nincs telepítve vagy nem működik a virtuális gép alaphelyzetbe állítása a helyi Windows felhasználói fiók jelszava
 services: virtual-machines-windows
 documentationcenter: ''
-author: iainfoulds
+author: cynthn
 manager: jeconnoc
 editor: ''
 ms.assetid: cf353dd3-89c9-47f6-a449-f874f0957013
@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 01/25/2018
-ms.author: iainfou
-ms.openlocfilehash: 6745d5f7c31ca00c7915874b038488f4487959a9
-ms.sourcegitcommit: 4597964eba08b7e0584d2b275cc33a370c25e027
+ms.author: cynthn
+ms.openlocfilehash: 791ac9ca7795b5317c7b6e12a67327e7710a71ff
+ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37342935"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37932517"
 ---
 # <a name="reset-local-windows-password-for-azure-vm-offline"></a>Kapcsolat nélküli az Azure virtuális gép helyi Windows-jelszó visszaállítása
 A virtuális gépek az Azure-ban a helyi Windows-jelszó alaphelyzetbe állíthatja a [az Azure portal vagy az Azure PowerShell](reset-rdp.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) biztosított az Azure Vendég ügynök van telepítve. Ez a módszer az elsődleges módja egy Azure virtuális gép a jelszó alaphelyzetbe állítása. Ha problémák merülnek fel a az Azure Vendég ügynök nem válaszol, vagy egyéni kép feltöltése után telepítése meghiúsul, manuálisan egy Windows-jelszó alaphelyzetbe állítása. Ez a cikk részletesen bemutatja egy helyi fiók jelszavának alaphelyzetbe a forrás operációs rendszer virtuális lemez egy másik virtuális géphez való csatlakoztatásával. A jelen cikkben ismertetett lépések Windows rendszerű tartományvezérlők nem vonatkoznak. 

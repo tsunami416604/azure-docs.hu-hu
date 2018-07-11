@@ -13,12 +13,12 @@ ms.component: protection
 ms.date: 06/21/2018
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: 28a998647dacdf57390638b8ce1629a76077b450
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 38386de86c83733e3539048de9e263ed6225eee5
+ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37446894"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37952160"
 ---
 # <a name="how-to-start-an-access-review-in-azure-ad-privileged-identity-management"></a>Az Azure AD Privileged Identity Management hozzáférési felülvizsgálat indítása
 Szerepkör-hozzárendelések "elavult" válnak, amikor a felhasználók a privilegizált hozzáférés, amelyekre már nincs szükségük. A régi szerepkör-hozzárendelések, a kiemelt szerepkörű a kockázatának csökkentése érdekében vagy globális rendszergazdái rendszeresen készítsen tehet fel és rendszergazdák számára, tekintse át a szerepkörök rendelkező felhasználók a hozzáférési felülvizsgálatok. Ez a dokumentum ismerteti a lépéseket a hozzáférési felülvizsgálat indítása az Azure AD Privileged Identity Management (PIM).
@@ -37,12 +37,12 @@ A PIM-alkalmazás fő lapján, a három módja van hozzáférési felülvizsgál
 
 Amikor rákattint a a **áttekintése** gombra, a **hozzáférési felülvizsgálat indítása** panel jelenik meg. Ezen panel fog konfigurálása a felülvizsgálat neve és időbeli korlát, tekintse át, majd döntse el, akik végrehajtják a felülvizsgálat munkakör kiválasztása.
 
-![Hozzáférési felülvizsgálat indítása – képernyőkép][1]
+![Hozzáférési felülvizsgálat indítása – képernyőkép](./media/active-directory-privileged-identity-management-how-to-start-security-review/PIM_start_review.png)
 
 ### <a name="configure-the-review"></a>A felülvizsgálat konfigurálása
 Hozzáférési felülvizsgálat létrehozása, meg kell neki, és állítsa be a kezdő és záró dátumát.
 
-![Konfigurálja a felülvizsgálati – képernyőkép][2]
+![Konfigurálja a felülvizsgálati – képernyőkép](./media/active-directory-privileged-identity-management-how-to-start-security-review/PIM_review_configure.png)
 
 Győződjön meg arról, túl hosszú ahhoz, a felhasználók számára, végezze el a felülvizsgálatot hosszát. Ha befejezte a záró dátum előtt, mindig állítsa le a felülvizsgálat korai.
 
@@ -51,7 +51,7 @@ Kritika csak egy szerepkör összpontosít. Kivéve, ha egy adott szerepkör pan
 
 1. Navigáljon a **szerepkörtagság felülvizsgálata**
    
-    ![Tekintse át a szerepkör tagságát – képernyőkép][3]
+    ![Tekintse át a szerepkör tagságát – képernyőkép](./media/active-directory-privileged-identity-management-how-to-start-security-review/PIM_review_role.png)
 2. A listából válasszon egy szerepkört.
 
 ### <a name="decide-who-will-perform-the-review"></a>Döntse el, akik végrehajtják a felülvizsgálat
@@ -59,7 +59,7 @@ Felülvizsgálat végrehajtásához három lehetőség áll rendelkezésre. Vala
 
 1. Navigáljon a **felülvizsgálók kiválasztása**
    
-    ![Válassza ki a felülvizsgálók – képernyőkép][4]
+    ![Válassza ki a felülvizsgálók – képernyőkép](./media/active-directory-privileged-identity-management-how-to-start-security-review/PIM_review_reviewers.png)
 2. A lehetőségek közül választhat:
    
    * **Válassza ki a felülvizsgáló**: használja ezt a beállítást, ha nem ismeri ki hozzá kell férnie. Ezzel a beállítással a felülvizsgálat hozzárendelheti egy erőforrás tulajdonosa vagy a csoport kezelőjének végrehajtásához.
@@ -79,10 +79,3 @@ Amíg viszonyt keresztül, emlékeztesse a felhasználókat, végezze el a felü
 <!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
 ## <a name="pim-table-of-contents"></a>A PIM tartalomjegyzék
 [!INCLUDE [active-directory-privileged-identity-management-toc](../../includes/active-directory-privileged-identity-management-toc.md)]
-
-<!--Image references-->
-
-[1]: ./media/active-directory-privileged-identity-management-how-to-start-security-review/PIM_start_review.png
-[2]: ./media/active-directory-privileged-identity-management-how-to-start-security-review/PIM_review_configure.png
-[3]: ./media/active-directory-privileged-identity-management-how-to-start-security-review/PIM_review_role.png
-[4]: ./media/active-directory-privileged-identity-management-how-to-start-security-review/PIM_review_reviewers.png

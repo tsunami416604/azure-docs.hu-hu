@@ -1,5 +1,5 @@
 ---
-title: A SUSE Linux Enterprise Server az Azure-ban támasztja beállítása |} Microsoft Docs
+title: A SUSE Linux Enterprise Server az Azure-ban támasztja beállítása |} A Microsoft Docs
 description: A SUSE Linux Enterprise Server az Azure-ban támasztja beállítása
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 03/20/2018
 ms.author: sedusch
-ms.openlocfilehash: ba44a8988c4af68abf4d155a2b9cb490b6122d39
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: cac2f91a25907be824e3fd3517736d921c3fde64
+ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34656414"
+ms.lasthandoff: 07/09/2018
+ms.locfileid: "37921506"
 ---
 # <a name="setting-up-pacemaker-on-suse-linux-enterprise-server-in-azure"></a>A SUSE Linux Enterprise Server az Azure-ban támasztja beállítása
 
@@ -28,24 +28,26 @@ ms.locfileid: "34656414"
 [deployment-guide]:deployment-guide.md
 [dbms-guide]:dbms-guide.md
 [sap-hana-ha]:sap-hana-high-availability.md
+[virtual-machines-linux-maintenance]:../../linux/maintenance-and-updates.md#memory-preserving-maintenance
+[virtual-machines-windows-maintenance]:../../windows/maintenance-and-updates.md#memory-preserving-maintenance
 
-Az Azure-ban támasztja fürt beállításához két lehetőség áll rendelkezésre. Használhatja a kerítés ügynök, amely gondoskodik az Azure API-k segítségével sikertelen csomópont újraindítása, vagy egy SBD eszközt is használhat.
+Az Azure-ban támasztja fürt létrehozása két módon lehet. Használhat egy szintaxiskiemeléshez ügynököt, amely gondoskodik az Azure API-kon keresztül sikertelen csomópont újraindítása, vagy egy SBD eszközt is használhat.
 
-A SBD eszköz szükséges további virtuális gépek közül az iSCSI-tárolókiszolgáló funkcionál, és egy SBD eszközt biztosít. Az iSCSI-tárolókiszolgáló azonban lehet más támasztja fürtök megosztott. Egy SBD eszköz használatának előnye feladatátvételi gyorsabb és SBD a helyszíni eszközök, használatakor nem szükséges hogyan fog működni a támasztja fürt végzett módosításokat. A SBD kerítés továbbra is használhatja az Azure időkorlát ügynök biztonsági kerítésépítés mechanizmus, abban az esetben, ha az iSCSI-tárolókiszolgáló nem érhető el.
+A SBD eszköz, amely az iSCSI-tárolókiszolgáló funkcionál, és a egy SBD eszközt, egy további virtuális gép igényel. Az iSCSI-tárolókiszolgáló azonban lehetnek más támasztja fürtökkel osztva. Azt az előnyt SBD eszközt használ, gyorsabb feladatátvételt, valamint SBD a helyszíni eszközök, használatakor nem szükséges a támasztja fürt működési módját a módosításokat. A SBD szintaxiskiemeléshez továbbra is használhatja az Azure időkorlát ügynök elkerítjük mechanizmust, abban az esetben, ha az iSCSI-tárolókiszolgáló nem áll rendelkezésre biztonsági mentéséhez.
 
-Ha nem szeretné, hogy további virtuális gépek beruházásának, az Azure időkorlát ügynök is használhatja. A hátránya az, hogy a feladatátvétel esetén is igénybe vehet 10 – 15 perc között erőforrás stop meghibásodik, vagy a fürt csomópontjai nem tud kommunikálni amelyek egymással többé.
+Ha nem szeretné, hogy egy további virtuális gép be, használhatja az Azure időkorlát ügynök. A hátránya az, hogy a feladatátvétel eltarthat 10 – 15 perc között, ha egy erőforrás leállítása sikertelen, vagy a fürt csomópontjai nem tud kommunikálni amely egymáshoz többé.
 
 ![Támasztja a SLES áttekintése](./media/high-availability-guide-suse-pacemaker/pacemaker.png)
 
-## <a name="sbd-fencing"></a>SBD kerítés
+## <a name="sbd-fencing"></a>SBD szintaxiskiemeléshez
 
-Ha azt szeretné, hogy egy SBD eszköz használandó kerítés, kövesse az alábbi lépéseket.
+Ha szeretne egy SBD eszköz használata az elkerítés, kövesse az alábbi lépéseket.
 
-### <a name="set-up-an-iscsi-target-server"></a>Az iSCSI-tárolókiszolgáló beállítása
+### <a name="set-up-an-iscsi-target-server"></a>ISCSI-tárolókiszolgáló beállítása
 
-Először hozzon létre egy iSCSI cél virtuális gépre, ha még nem rendelkezik ilyennel már. iSCSI-célkiszolgálókhoz megosztható több támasztja fürt.
+Először hozzon létre egy iSCSI cél virtuális gépen, ha Ön nem rendelkezik ilyennel. iSCSI-célkiszolgálókhoz megoszthatók több támasztja fürtökkel.
 
-1. Új SLES 12 SP1 vagy újabb virtuális gépet telepít, és kapcsolódjon a géphez keresztül ssh. A gép nem kell tekintélyes lehet. A virtuális gép méretét, például Standard_E2s_v3 vagy Standard_D2s_v3 is használhatók.
+1. Egy új SLES 12 SP1 vagy újabb virtuális gép üzembe helyezése és kapcsolódjon a gép ssh. Nem kell a gép nagy. A virtuális gép méretét, Standard_E2s_v3 vagy Standard_D2s_v3 nem elegendő.
 
 1. SLES frissítése
 
@@ -53,9 +55,9 @@ Először hozzon létre egy iSCSI cél virtuális gépre, ha még nem rendelkezi
    sudo zypper update
    </code></pre>
 
-1. Távolítsa el a csomagok
+1. Csomagok eltávolítása
 
-   SLES 12 SP3 és targetcli egy ismert probléma elkerülése érdekében a következő csomagok eltávolításához. Nem található csomagokról hibák figyelmen kívül hagyhatja
+   SLES 12 SP3 és targetcli egy ismert probléma elkerülése érdekében távolítsa el a következő csomagok. Hibák, amelyek nem találhatók csomagok figyelmen kívül hagyhatja
    
    <pre><code>
    sudo zypper remove lio-utils python-rtslib python-configshell targetcli
@@ -76,9 +78,9 @@ Először hozzon létre egy iSCSI cél virtuális gépre, ha még nem rendelkezi
 
 ### <a name="create-iscsi-device-on-iscsi-target-server"></a>Az iSCSI-tárolókiszolgáló iSCSI-eszköz létrehozása
 
-ISCSI cél virtuális gép nem használható ehhez a fürthöz egy új adatlemezt csatolni. Az adatlemez lehet mérete 1 GB legyen, és kell helyezni a prémium szintű Storage-fiók vagy a prémium szintű felügyelt lemez is kihasználhatják a [egyetlen virtuális gép SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines).
+Új adatlemez csatolása az iSCSI cél virtuális gépen, amely használható a fürt számára. Az adatlemez lehet kisebb 1 GB-os, és kell helyezni a Premium Storage-fiók vagy a prémium szintű felügyelt lemez számára, hogy a [egyetlen virtuális gép SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines).
 
-Futtassa a következő parancsot a **iSCSI-tároló virtuális gép** iSCSI-lemez az új fürt létrehozásához. A következő példában **cl1** alapján határozza meg az új fürthöz és **termék-cl1-0** és **termék-cl1-1** a gazdagép neve a fürtcsomópontok vannak. Cserélje le azokat a gazdagép neve a csomópont.
+Futtassa a következő parancsot a **iSCSI cél virtuális gép** létre iSCSI lemezt, az új fürt létrehozásához. A következő példában **cl1** azonosítja az új fürthöz és **éles-cl1-0** és **éles-cl1-1** fürtcsomópont a gazdanevek vannak. Cserélje le őket a fürtcsomópontok állomásnevét.
 
 <pre><code>
 # List all data disks with the following command
@@ -110,13 +112,13 @@ sudo targetcli saveconfig
 
 ### <a name="set-up-sbd-device"></a>SBD eszköz beállítása
 
-Az iSCSI-eszközhöz a fürtből az előző lépésben létrehozott csatlakozni.
-A következő parancsokat a csomópontokon szeretne létrehozni az új fürthöz.
-A következő elemek fűzve előtagként vagy **[A]** – az összes csomópont alkalmazandó **[1]** – csak érvényes csomópont 1 vagy **[2]** - csomópont 2 csak érvényes.
+Az iSCSI-eszközt a fürtből az előző lépésben létrehozott csatlakozni.
+Futtassa az alábbi parancsokat a létrehozni kívánt új fürt csomópontjain.
+A következő elemek van fűzve előtagként vagy **[A]** – az összes csomópont alkalmazandó **[1]** – 1. csomópont csak érvényes vagy **: [2]** – 2. csomópont csak érvényes.
 
-1. **[A]**  Csatlakozás az iSCSI-eszközök
+1. **[A]**  Csatlakozhat az iSCSI-eszközök
 
-   Az iSCSI és a szolgáltatások SBD először, engedélyezése.
+   Először engedélyezze az iSCSI és SBD szolgáltatásokat.
 
    <pre><code>
    sudo systemctl enable iscsid
@@ -124,25 +126,25 @@ A következő elemek fűzve előtagként vagy **[A]** – az összes csomópont 
    sudo systemctl enable sbd
    </code></pre>
 
-1. **[1]**  Az első csomóponton kezdeményező nevének módosítása
+1. **[1]**  Első csomópontjára kezdeményező nevének módosítása
 
    <pre><code>
    sudo vi /etc/iscsi/initiatorname.iscsi
    </code></pre>
 
-   A fájl az ACL-ek az iSCSI-tárolókiszolgáló az iSCSI-eszközhöz létrehozásakor használt kereséséhez a tartalmának módosítása
+   A megfelelő ACL-ek az iSCSI-tárolókiszolgáló az iSCSI-eszközt létrehozásakor használt a fájl tartalmának módosítása
 
    <pre><code>   
    InitiatorName=<b>iqn.2006-04.prod-cl1-0.local:prod-cl1-0</b>
    </code></pre>
 
-1. **[2]**  a kezdeményező neve, a második csomópont módosítása
+1. **a(z) [2]**  Kezdeményező a második csomópont nevének módosítása
 
    <pre><code>
    sudo vi /etc/iscsi/initiatorname.iscsi
    </code></pre>
 
-   A fájl az ACL-ek az iSCSI-tárolókiszolgáló az iSCSI-eszközhöz létrehozásakor használt kereséséhez a tartalmának módosítása
+   A megfelelő ACL-ek az iSCSI-tárolókiszolgáló az iSCSI-eszközt létrehozásakor használt a fájl tartalmának módosítása
 
    <pre><code>
    InitiatorName=<b>iqn.2006-04.prod-cl1-1.local:prod-cl1-1</b>
@@ -150,14 +152,14 @@ A következő elemek fűzve előtagként vagy **[A]** – az összes csomópont 
 
 1. **[A]**  Az iSCSI-szolgáltatás újraindítása
 
-   Most indítsa újra az iSCSI szolgáltatást, a módosítás alkalmazására
+   Most indítsa újra az iSCSI szolgáltatást, a módosítás alkalmazása
    
    <pre><code>
    sudo systemctl restart iscsid
    sudo systemctl restart iscsi
    </code></pre>
 
-   Az iSCSI-eszközök csatlakoztatásához. Az alábbi példában 10.0.0.17 az iSCSI-tárolókiszolgáló IP-címe pedig 3260-as az alapértelmezett port. <b>IQN.2006-04.cl1.local:cl1</b> a cél neve, amely szerepel az első parancs futtatásakor.
+   Az iSCSI-eszközök csatlakoztatása. Az alábbi példában 10.0.0.17 az iSCSI-tárolókiszolgáló IP-címe pedig 3260-as az alapértelmezett portot. <b>IQN.2006-04.cl1.local:cl1</b> a cél neve, amely szerepel a listán az első parancs futtatásakor.
 
    <pre><code>
    sudo iscsiadm -m discovery --type=st --portal=<b>10.0.0.17:3260</b>
@@ -166,7 +168,7 @@ A következő elemek fűzve előtagként vagy **[A]** – az összes csomópont 
    sudo iscsiadm -m node -p <b>10.0.0.17:3260</b> --op=update --name=node.startup --value=automatic
    </code></pre>
 
-   Győződjön meg arról, hogy az iSCSI-eszköz rendelkezésre áll-e, és ne feledkezzen meg az eszköz nevét (a következő példa/dev/sde)
+   Győződjön meg arról, hogy elérhető legyen-e az iSCSI-eszközt, és jegyezze fel az eszköz neve (a következő példa/dev/sde) kész
 
    <pre><code>
    lsscsi
@@ -178,7 +180,7 @@ A következő elemek fűzve előtagként vagy **[A]** – az összes csomópont 
    # <b>[6:0:0:0]    disk    LIO-ORG  cl1              4.0   /dev/sde</b>
    </code></pre>
 
-   Most beolvasása az iSCSI-eszköz azonosítója.
+   Az eszköz azonosítója, az iSCSI, lekéréséhez.
 
    <pre><code>
    ls -l /dev/disk/by-id/scsi-* | grep <b>sde</b>
@@ -188,27 +190,27 @@ A következő elemek fűzve előtagként vagy **[A]** – az összes csomópont 
    # lrwxrwxrwx 1 root root  9 Feb  7 12:39 /dev/disk/by-id/scsi-SLIO-ORG_cl1_3fe4da37-1a5a-4bb6-9a41-9a4df57770e4 -> ../../sde
    </code></pre>
 
-   A parancs három eszközazonosítókat listán. Javasoljuk, hogy a scsi-3, a fenti példában kezdetű azonosító használata
+   A parancs három eszközazonosítókat listája. Javasoljuk, hogy kezdetű scsi-3, ez a fenti példában az azonosító használata
    
    **/dev/disk/by-id/scsi-360014053fe4da371a5a4bb69a419a4df**
 
 1. **[1]**  A SBD eszköz létrehozása
 
-   Az Eszközazonosítót az iSCSI-eszköz segítségével hozzon létre egy új SBD eszköz az első csomóponton.
+   Az eszköz azonosítója, az iSCSI használatával hozzon létre egy új SBD eszköz az első fürtcsomópontra.
 
    <pre><code>
    sudo sbd -d <b>/dev/disk/by-id/scsi-360014053fe4da371a5a4bb69a419a4df</b> -1 10 -4 20 create
    </code></pre>
 
-1. **[A]**  Igazítja a SBD konfigurációja
+1. **[A]**  Alkalmazkodnak a SBD config
 
-   Nyissa meg a SBD konfigurációs fájl
+   Nyissa meg a SBD konfigurációs fájlt
 
    <pre><code>
    sudo vi /etc/sysconfig/sbd
    </code></pre>
 
-   A tulajdonság a SBD eszköz módosításához, a támasztja integrációjának engedélyezése és SBD indítási módja módosítása.
+   A tulajdonság az SBD eszköz módosítása, támasztja integrációjának engedélyezése és SBD indítási módját módosítani.
 
    <pre><code>
    [...]
@@ -225,7 +227,7 @@ A következő elemek fűzve előtagként vagy **[A]** – az összes csomópont 
    echo softdog | sudo tee /etc/modules-load.d/softdog.conf
    </code></pre>
 
-   A modul most betöltése
+   Töltse be a modul
 
    <pre><code>
    sudo modprobe -v softdog
@@ -233,7 +235,7 @@ A következő elemek fűzve előtagként vagy **[A]** – az összes csomópont 
 
 ## <a name="cluster-installation"></a>Fürt telepítése
 
-A következő elemek fűzve előtagként vagy **[A]** – az összes csomópont alkalmazandó **[1]** – csak érvényes csomópont 1 vagy **[2]** - csomópont 2 csak érvényes.
+A következő elemek van fűzve előtagként vagy **[A]** – az összes csomópont alkalmazandó **[1]** – 1. csomópont csak érvényes vagy **: [2]** – 2. csomópont csak érvényes.
 
 1. **[A]**  SLES frissítése
 
@@ -254,7 +256,7 @@ A következő elemek fűzve előtagként vagy **[A]** – az összes csomópont 
    sudo cat /root/.ssh/id_rsa.pub
    </code></pre>
 
-2. **[2]**  Ssh hozzáférés engedélyezése
+2. **a(z) [2]**  Ssh hozzáférés engedélyezése
 
    <pre><code>
    sudo ssh-keygen
@@ -277,22 +279,22 @@ A következő elemek fűzve előtagként vagy **[A]** – az összes csomópont 
    sudo vi /root/.ssh/authorized_keys
    </code></pre>
 
-1. **[A]**  Telepítése magas rendelkezésre ÁLLÁSÚ bővítmény
+1. **[A]**  Ügynökök telepítése időkorlátja
    
    <pre><code>
-   sudo zypper install sle-ha-release fence-agents
+   sudo zypper install fence-agents
    </code></pre>
 
-1. **[A]**  Állomásnév beállítása   
+1. **[A]**  Állomásnév-feloldás beállítása   
 
-   DNS-kiszolgálót használjon, vagy módosítsa az/etc/hosts minden csomóponton. Ez a példa bemutatja, hogyan használható az/etc/hosts fájlt.
-   Cserélje le az IP-cím és a következő parancsokat az állomásnevet. A/etc/hosts használatának előnye, hogy független DNS legyen az egyetlen pont, a hibák túl válik-e a fürt.
+   DNS-kiszolgálót használjon, vagy módosítsa a Hosts az összes csomópontra. Ez a példa bemutatja, hogyan használhatja a Hosts fájlt.
+   Cserélje le az IP-cím és az állomásnevet, az alábbi parancsokban. A Hosts használatával előnye, hogy a fürt válik független a DNS, amely túl lehet egyetlen pont, a hibák.
 
    <pre><code>
    sudo vi /etc/hosts
    </code></pre>
    
-   Helyezze be a következő sorokat/etc/hosts. Az IP-cím és a környezet megfelelő állomásnév módosítása   
+   Helyezze be a következő sorokat Hosts. Módosítsa az IP-cím és a környezet megfelelő állomásnév   
    
    <pre><code>
    # IP address of the first cluster node
@@ -313,7 +315,7 @@ A következő elemek fűzve előtagként vagy **[A]** – az összes csomópont 
    # Do you wish to configure an administration IP? [y/N] -> N
    </code></pre>
 
-1. **[2]**  Csomópont hozzáadása a fürthöz
+1. **a(z) [2]**  Csomópont hozzáadása a fürthöz
    
    <pre><code> 
    sudo ha-cluster-join
@@ -323,23 +325,23 @@ A következő elemek fűzve előtagként vagy **[A]** – az összes csomópont 
    # /root/.ssh/id_rsa already exists - overwrite? [y/N] N
    </code></pre>
 
-1. **[A]**  Hacluster ugyanazt a jelszót a jelszó módosítása
+1. **[A]**  Ugyanazt a jelszót hacluster jelszó módosítása
 
    <pre><code> 
    sudo passwd hacluster
    </code></pre>
 
-1. **[A]**  Egyéb átvitelt használ, és adja hozzá a csomópontlista corosync konfigurálása. Fürt egyébként nem működik.
+1. **[A]**  Más átviteli használhatja, és adja hozzá a csomópontlista corosync konfigurálása. Fürt egyébként nem működik.
    
    <pre><code> 
    sudo vi /etc/corosync/corosync.conf   
    </code></pre>
 
-   Adja hozzá a következő félkövér tartalmat a fájlhoz, ha az érték nem mert vagy egy másik.
+   Adja hozzá a következő félkövér tartalmat a fájlhoz, ha az értékek nem ott vagy eltérő. Ellenőrizze, hogy módosítsa a jogkivonatot, hogy a karbantartás megőrzése memória 30000. Lásd: [Ez a cikk a Linux-] [ virtual-machines-linux-maintenance] vagy [Windows] [ virtual-machines-windows-maintenance] további részletekért.
    
    <pre><code> 
    [...]
-     <b>token:          5000
+     <b>token:          30000
      token_retransmits_before_loss_const: 10
      join:           60
      consensus:      6000
@@ -372,7 +374,7 @@ A következő elemek fűzve előtagként vagy **[A]** – az összes csomópont 
    }
    </code></pre>
 
-   Indítsa újra a corosync szolgáltatás
+   Indítsa újra az corosync
 
    <pre><code>
    sudo service corosync restart
@@ -386,25 +388,25 @@ A következő elemek fűzve előtagként vagy **[A]** – az összes csomópont 
 
 ## <a name="create-stonith-device"></a>STONITH eszköz létrehozása
 
-A STONITH eszköz egy egyszerű szolgáltatást használ, szemben a Microsoft Azure engedélyezése. Kövesse az alábbi lépéseket egy egyszerű szolgáltatásnév létrehozásához.
+A STONITH eszköz hitelesítéséhez, szemben a Microsoft Azure egy egyszerű szolgáltatást használja. Kövesse az alábbi lépéseket egy szolgáltatásnév létrehozásához.
 
 1. Nyissa meg a következőt: <https://portal.azure.com>
-1. Nyissa meg az Azure Active Directory panelt  
-   Nyissa meg tulajdonságait, és jegyezze fel a könyvtár-azonosító. Ez a **bérlői azonosító**.
-1. Kattintson az alkalmazás-regisztráció
+1. Nyissa meg az Azure Active Directory panel  
+   Lépjen a Tulajdonságok részhez, és jegyezze fel a címtár-azonosító. Ez a **bérlőazonosító**.
+1. Kattintson az alkalmazásregisztrációk
 1. Kattintson az Add (Hozzáadás) parancsra
 1. Adjon meg egy nevet, válassza ki a "Web app/API" alkalmazástípus, adja meg a bejelentkezési URL-címet (például http://localhost) , és kattintson a Létrehozás gombra
-1. A bejelentkezési URL-címet nem használja, és bármilyen érvényes URL-CÍMEK lehetnek
+1. A bejelentkezési URL-címet nem használja, és bármilyen érvényes URL-cím lehet
 1. Válassza ki az új alkalmazást, és a beállítások lapon kattintson a kulcsok
 1. Adja meg egy új kulcs leírását, válassza a "Soha nem jár le", és kattintson a Mentés gombra
-1. Jegyezze fel az értéket. Használják a **jelszó** a szolgáltatás egyszerű
-1. Jegyezze fel az alkalmazás azonosítóját. A felhasználónév használják (**bejelentkezési azonosító** az alábbi lépéseket a) a szolgáltatás egyszerű
+1. Jegyezze fel az értéket. Használatban van a **jelszó** a Szolgáltatásnévhez
+1. Jegyezze fel az alkalmazás azonosítóját. A felhasználónév használatban van (**bejelentkezési azonosító** az alábbi lépéseket a) a szolgáltatásnév
 
-### <a name="1-create-a-custom-role-for-the-fence-agent"></a>**[1]**  Hozzon létre egy egyéni biztonsági szerepkört az időkorlát ügynök
+### <a name="1-create-a-custom-role-for-the-fence-agent"></a>**[1]**  Az időkorlát-ügynökhöz tartozó egyéni szerepkör létrehozása
 
-A szolgáltatás egyszerű nincs engedélye a alapértelmezés szerint az Azure-erőforrások eléréséhez. Hozzá kell rendelnie a szolgáltatás egyszerű engedélyek indítása és leállítása (felszabadítása) a fürt összes virtuális gépet. Ha nem már Ön a egyéni biztonsági szerepkört, létrehozhat használatával [PowerShell](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-powershell#create-a-custom-role) vagy [Azure parancssori felület](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli#create-a-custom-role)
+Az egyszerű szolgáltatás nem rendelkezik engedélyekkel alapértelmezés szerint az Azure-erőforrások eléréséhez. Elindíthatja és leállíthatja a szolgáltatásnév-engedélyt kell (szabadítsa fel) a fürt összes virtuális gépet. Ha nem hozott már létre az egyéni szerepkör, létrehozhat használatával [PowerShell](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-powershell#create-a-custom-role) vagy [Azure CLI-vel](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli#create-a-custom-role)
 
-A következő tartalmat használni, a bemeneti fájl. Az előfizetések a tartalmat, amely igazítja, c276fc76-9cd4-44c9-99a7-4fd71546436e és e91d47c4-76f3-4271-a796-21b4ecfe3624 cserélje le az azonosítók, az előfizetés kell. Ha több előfizetéssel rendelkezik, távolítsa el a második bejegyzés AssignableScopes.
+A bemeneti fájl használja az alábbi tartalommal. Szeretne az előfizetések a tartalmat, amely alkalmazkodik c276fc76-9cd4-44c9-99a7-4fd71546436e és e91d47c4-76f3-4271-a796-21b4ecfe3624 cserélje le az előfizetés azonosítóját. Ha több előfizetéssel rendelkezik, távolítsa el a második bejegyzés AssignableScopes.
 
 ```json
 {
@@ -426,24 +428,24 @@ A következő tartalmat használni, a bemeneti fájl. Az előfizetések a tartal
 }
 ```
 
-### <a name="1-assign-the-custom-role-to-the-service-principal"></a>**[1]**  Rendelje hozzá az egyéni biztonsági szerepkört a szolgáltatás egyszerű
+### <a name="1-assign-the-custom-role-to-the-service-principal"></a>**[1]**  Az egyéni szerepkör hozzárendelése a Szolgáltatásnévhez
 
-A "Linux időkorlát ügynök szerepkör" az előző fejezetben a szolgáltatás egyszerű a létrehozott egyéni szerepkör hozzárendelése. Nem használható a tulajdonosi szerepkört már!
+Rendelje hozzá az egyéni szerepkör "Linux időkorlát ügynök szerepkör", amely az előző fejezetben a szolgáltatásnév sikeresen létrehozva. A tulajdonosi szerepkör ne használjon többé!
 
 1. Nyissa meg a következőt: https://portal.azure.com
-1. Nyissa meg az összes erőforrás panel
-1. Válassza ki a virtuális gépet, az első fürtcsomópont
+1. Nyissa meg az összes erőforrás panelen
+1. Válassza ki a virtuális gépet, az első fürtcsomópontra
 1. Kattintson a hozzáférés-vezérlés (IAM)
 1. Kattintson az Add (Hozzáadás) parancsra
-1. Válassza ki a szerepkört "Linux időkorlát ügynök szerepkör"
-1. Adja meg az előbb létrehozott alkalmazás nevét
+1. A "Linux időkorlát ügynök szerepkör" szerepkör kiválasztása
+1. Adja meg a fent létrehozott alkalmazás neve
 1. Kattintson az OK gombra
 
-Ismételje meg a fenti lépéseket a második fürt összes csomópontjára vonatkozóan.
+Ismételje meg a fenti lépéseket a második fürtcsomópontra.
 
-### <a name="1-create-the-stonith-devices"></a>**[1]**  STONITH eszközök létrehozása
+### <a name="1-create-the-stonith-devices"></a>**[1]**  A STONITH eszközök létrehozása
 
-Után szerkeszteni a virtuális gépek engedélyeit, beállíthatja a STONITH eszközök a fürtben.
+Miután szerkesztette az engedélyek a virtuális gépek, konfigurálhatja úgy a STONITH eszközöket a fürtben.
 
 <pre><code>
 # replace the bold string with your subscription ID, resource group, tenant ID, service principal ID and password
@@ -454,9 +456,9 @@ sudo crm configure primitive rsc_st_azure stonith:fence_azure_arm \
 
 </code></pre>
 
-### <a name="1-create-fence-topology-for-sbd-fencing"></a>**[1]**  SBD kerítés időkorlát topológia létrehozása
+### <a name="1-create-fence-topology-for-sbd-fencing"></a>**[1]**  SBD szintaxiskiemeléshez időkorlát topológia létrehozása
 
-Ha egy SBD eszközt használni kívánt, továbbra is használatát javasoljuk Azure időkorlát ügynök biztonsági abban az esetben, ha az iSCSI-tárolókiszolgáló nem érhető el.
+Ha szeretne egy SBD eszközt használja, továbbra is használatát javasoljuk Azure időkorlát ügynök biztonsági abban az esetben, ha az iSCSI-tárolókiszolgáló nem érhető el.
 
 <pre><code>
 sudo crm configure fencing_topology \
@@ -471,7 +473,7 @@ sudo crm configure property stonith-enabled=true
 
 
 ## <a name="next-steps"></a>További lépések
-* [Az Azure virtuális gépek tervezési és megvalósítási az SAP][planning-guide]
-* [Az SAP Azure virtuális gépek telepítése][deployment-guide]
-* [Az SAP Azure virtuális gépek adatbázis-kezelő telepítése][dbms-guide]
-* Magas rendelkezésre állás és az Azure virtuális gépeken az SAP HANA vész-helyreállítási terv létrehozásához, lásd: [magas rendelkezésre állás az SAP HANA Azure virtuális gépek (VM)][sap-hana-ha]
+* [Az Azure virtuális gépek tervezése és megvalósítása SAP][planning-guide]
+* [Az SAP az Azure virtuális gépek üzembe helyezése][deployment-guide]
+* [Az SAP az Azure Virtual Machines DBMS üzembe helyezése][dbms-guide]
+* Magas rendelkezésre állást és az Azure virtuális gépeken SAP Hana vész-helyreállítási terv létrehozásához, lásd: [magas rendelkezésre állás az SAP HANA Azure-beli virtuális gépeken (VM)][sap-hana-ha]

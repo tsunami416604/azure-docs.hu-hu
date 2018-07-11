@@ -1,88 +1,88 @@
 ---
-title: IP-címzés beállítása az Azure-bA az Azure Site Recovery feladatátvételt követően csatlakozhatnak |} Microsoft Docs
-description: Ismerteti, hogyan lehet IP-címzési való csatlakozáshoz Azure virtuális gépek a feladatátvételt követően az Azure Site Recovery helyszíni beállítása
+title: IP-címzés beállítása az Azure-bA az Azure Site Recovery a feladatátvételt követően kapcsolódni |} A Microsoft Docs
+description: Ismerteti, hogyan állíthatja be az IP-címek az Azure virtuális géphez való kapcsolódásra a feladatátvételt követően a helyszínről az Azure Site Recoveryvel
 services: site-recovery
 documentationcenter: ''
 author: mayanknayar
 manager: carmonm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 05/11/2018
+ms.date: 07/06/2018
 ms.author: manayar
-ms.openlocfilehash: 9d4bf43ea727bbf7df79532499007dbd23eea925
-ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
+ms.openlocfilehash: 99b8287b79a7cf9802ab3b71ce4c90032706bc63
+ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/11/2018
-ms.locfileid: "34071637"
+ms.lasthandoff: 07/09/2018
+ms.locfileid: "37919243"
 ---
-# <a name="set-up-ip-addressing-to-connect-after-failover-to-azure"></a>Az IP-címzést, az Azure-bA a feladatátvételt követően kapcsolódni
+# <a name="set-up-ip-addressing-to-connect-after-failover-to-azure"></a>IP-címek az Azure-bA a feladatátvételt követően kapcsolódni beállítása
 
-Ez a cikk ismerteti a hálózati követelmények használata után Azure virtuális gépekhez való csatlakozás a [Azure Site Recovery](site-recovery-overview.md) replikációs és feladatátvételi Azure szolgáltatást.
+Ez a cikk ismerteti a hálózati követelmények használata után az Azure virtuális gépekhez való csatlakozáshoz a [Azure Site Recovery](site-recovery-overview.md) replikáció és feladatátvétel az Azure szolgáltatásba.
 
-Ebben a cikkben megtanulhatja:
+Ez a cikk azt ismerteti:
 
 > [!div class="checklist"]
-> * A csatlakozási módszer használható
-> * Egy másik IP-cím használata Azure replikált virtuális gépekhez
-> * Hogyan szeretné megőrizni az IP-címek Azure virtuális gépek a feladatátvételt követően
+> * A kapcsolódási módszert használhat
+> * A másik IP-cím használata Azure virtuális gépek replikálása
+> * IP-cím megőrzése Azure-beli virtuális gépek a feladatátvételt követően
 
-## <a name="connecting-to-replica-vms"></a>A replika virtuális gépek csatlakoztatása
+## <a name="connecting-to-replica-vms"></a>Replika virtuális gépek csatlakoztatása
 
-A replikációs és feladatátvételi stratégiát tervezésekor az alábbiakhoz hasonló fontos kérdések egyike csatlakoztatása az Azure virtuális gép a feladatátvételt követően. Számos több lehetősége a replika Azure virtuális gépek hálózati stratégia tervezésekor.
+A replikációs és feladatátvételi stratégiát tervezésekor a legfontosabb kérdések egyik, hogyan csatlakozhat az Azure virtuális gép a feladatátvételt követően. A replika Azure virtuális gépek hálózati stratégia tervezésekor, van több lehetősége:
 
-- **Különböző IP-cím**: egy másik IP-címtartományt használja a replikált Azure Virtuálisgép-hálózat állítható be. Ebben a forgatókönyvben a virtuális Gépet egy új IP-cím beolvasása feladatátvétel után, és egy DNS-frissítés szükséges.
-- **Tartsa meg az IP-cím**: Előfordulhat, hogy szeretné használják az azonos IP-címtartományt, amely a helyszíni elsődleges hely, a feladatátvételt követően az Azure-hálózatot. Megőrzi az azonos IP-cím címek egyszerűbbé teszi a helyreállítást csökkentésével hálózattal kapcsolatos problémákat a feladatátvételt követően. Azonban ha az Azure-bA replikál, szüksége lesz az útvonalak frissítése az új hellyel a IP-címek a feladatátvételt követően.
+- **Használjon eltérő IP-címet**: választhat egy másik IP-címtartományt használjon replikált Azure Virtuálisgép-hálózathoz. Ebben a forgatókönyvben a virtuális gép új IP-címet lekéri a feladatátvételt követően, és a egy DNS-frissítés szükség.
+- **Azonos IP-cím megőrzése**: Előfordulhat, hogy használni kívánt IP-címtartományból, mint az elsődleges helyszíni hely, a feladatátvétel után az Azure-hálózatot. A azonos IP-cím megőrzése címek egyszerűbbé teszi a helyreállítás csökkentésével hálózattal kapcsolatos problémákat a feladatátvételt követően. Azonban ha az Azure-bA replikál, szüksége lesz az útvonalak frissítése az IP-címet az új helyre a feladatátvételt követően.
 
-## <a name="retaining-ip-addresses"></a>IP-címek megőrzése
+## <a name="retaining-ip-addresses"></a>IP-cím megőrzése
 
-A Site Recovery biztosít a funkció megőrzését rögzített IP oldja meg, amikor az Azure-ba, az alhálózati feladatátvevő feladatátvétele.
+A Site recoveryben teszi, hogy a fix IP-cím megőrzése oldja meg, amikor az Azure-bA egy alhálózat-feladatátvétellel feladatátvétele.
 
-- Alhálózati feladatátvétellel egy bizonyos alhálózat jelen webhely 1 vagy 2. hely, de soha nem mindkét helyen egyszerre.
-- Ahhoz, hogy a feladatátvétel esetén az IP-címtér kezelése, programozott módon el rendezése az útválasztó-infrastruktúra az alhálózatok áthelyezése egyik helyről egy másikra.
-- A feladatátvételi az alhálózatok a társított védett virtuális gépek áthelyezése. A fő hátránya, hogy hiba esetén, hogy a teljes alhálózat áthelyezése.
-
-
-### <a name="failover-example"></a>Feladatátvétel – példa
-
-Azure-ban egy fiktív cég, a Woodgrove Bank feladatátvételi példa vizsgáljuk meg.
-
-- A Woodgrove Bank üzleti alkalmazások egy helyszíni hely üzemelteti. Azok a gazdagép a mobile apps szolgáltatásban az Azure-on.
-- Nincs VPN webhelyek kapcsolat a helyszíni peremhálózati hálózat és az Azure virtuális hálózat között. A VPN-kapcsolat, mert a virtuális hálózat az Azure-ban jelenik meg a helyszíni hálózat kiterjesztése.
-- Woodgrove szeretné replikálni a helyszíni munkaterhelések az Azure Site Recovery szolgáltatással.
- - Woodgrove kódolt IP-címek, így azok meg kell őriznie az alkalmazások számára az IP-címek az Azure-bA a feladatátvételt követően függő alkalmazások rendelkezik.
- - Azure-beli erőforrást használja az IP cím tartomány 172.16.1.0/24 172.16.2.0/24.
-
-![Alhálózati feladatátvétel előtt](./media/site-recovery-network-design/network-design7.png)
-
-**Feladatátvétel előtt infrastruktúra**
+- Alhálózat feladatátvétel esetén a megadott alhálózat jelen legyen hely 1 vagy 2. hely, de soha nem mindkét helyen egyszerre.
+- Annak érdekében, hogy feladatátvétel esetén az IP-címtér kezelése, programozott módon elrendezte az útválasztó-infrastruktúra az alhálózatok áthelyezheti egyik helyről egy másikra.
+- A feladatátvétel során az alhálózatok és a kapcsolódó védett virtuális gépek áthelyezése. A fő hátránya, hogy hiba esetén, hogy a teljes alhálózat áthelyezése.
 
 
-A Woodgrove tenni a virtuális gépek replikálása az Azure-ba, megtartja az IP-címek, itt meg Mi az a vállalati kell tennie:
+### <a name="failover-example"></a>Feladatátvételi példa
+
+Lássunk erre egy példát feladatátvételi az Azure-ban egy fiktív vállalat, a Woodgrove Bank.
+
+- A Woodgrove Bank futtat egy helyszíni hely üzleti alkalmazások. Az Azure-ban a mobilalkalmazások üzemeltetheti azokat.
+- Nincs VPN hely – hely kapcsolat a helyszíni peremhálózati hálózat és az Azure virtuális hálózat között. A VPN-kapcsolat miatt a virtuális hálózat az Azure-ban a helyszíni hálózat kiterjesztése jelenik meg.
+- A Woodgrove szeretné az Azure-bA a Site Recovery a helyszíni számítási feladatok replikálására.
+ - A Woodgrove rendelkezik változtatható IP-címek, így azok kell megőrizni az alkalmazásokat, IP-címek az Azure-bA a feladatátvételt követően függő alkalmazásokat.
+ - Az Azure-ban futó erőforrásokat használja az IP cím tartományt 172.16.1.0/24 172.16.2.0/24.
+
+![Alhálózat a feladatátvétel előtt](./media/site-recovery-network-design/network-design7.png)
+
+**A feladatátvétel előtt infrastruktúra**
 
 
-1. Hozzon létre, amelyben az Azure virtuális gépek létrehozása után a feladatátvétel a helyszíni gépeket az Azure virtuális hálózatot. A helyszíni hálózat kiterjesztése kell, hogy az alkalmazások zökkenőmentesen feladatátvétel.
-2. A Site Recovery szolgáltatásban, a feladatátvétel előtt azok hozzárendelése a azonos IP-címet a virtuálisgép-tulajdonságokat. A feladatátvétel után a Site Recovery rendel hozzá ezt a címet az Azure virtuális Géphez.
-3. Miután feladatátvételi fut, és az Azure virtuális gépek jönnek létre a azonos IP-címmel, csatlakoznak-e a hálózat használja egy [kapcsolatcsoporttal Vnet](../vpn-gateway/virtual-networks-configure-vnet-to-vnet-connection.md). Ez a művelet parancsfájlalapú lehet.
-4. Módosítsa az útvonalak, hogy tükrözze a 192.168.1.0/24 most áthelyezte az Azure van szükségük.
+A Woodgrove lehessen a virtuális gépek replikálásához az Azure-ban milyen IP-címeket, itt a megőrzése a vállalat kell tennie:
+
+
+1. Hozzon létre, amelyben az Azure virtuális gépek létrehozása után feladatátvétele a helyszíni gépek az Azure virtual network. A helyszíni hálózat kiterjesztése, hogy az alkalmazások átveheti zökkenőmentesen kell.
+2. A Site Recovery a feladatátvétel előtt hozzá az azonos IP-cím a gép tulajdonságai. A feladatátvételt követően a Site Recovery hozzárendeli ezt a címet az Azure virtuális Gépen.
+3. Miután feladatátvételi fut, és az Azure virtuális gépek jönnek létre ugyanazon az IP-címmel, csatlakoznak-e a hálózaton történő egy [virtuális hálózatok közötti kapcsolat](../vpn-gateway/virtual-networks-configure-vnet-to-vnet-connection.md). Ez a művelet parancsfájlalapú lehet.
+4. Akkor kell módosítania az útvonalakat, hogy tükrözze a 192.168.1.0/24 most már át lett helyezve az Azure-bA.
 
 
 **A feladatátvételt követően infrastruktúra**
 
-![Alhálózati feladatátvételt követően](./media/site-recovery-network-design/network-design9.png)
+![Alhálózat feladatátvétel után](./media/site-recovery-network-design/network-design9.png)
 
-#### <a name="site-to-site-connection"></a>Hely-hely kapcsolat
+#### <a name="site-to-site-connection"></a>Helyek közötti kapcsolat
 
-A vnet – vnet-kapcsolatot, a feladatátvétel után mellett Woodgrove pont-pont VPN-kapcsolat adható meg:
-- A pont-pont kapcsolat beállításához, az Azure-hálózatot csak irányíthatja forgalom a helyszíni helyre (helyi-ntwork) Ha az IP-címtartomány eltér a helyi IP-címtartomány. Ennek az az oka Azure felhőbe archivált alhálózatok nem támogatja. Ezért, ha alhálózati 192.168.1.0/24 helyi, nem egy helyi hálózati 192.168.1.0/24 az Azure-hálózat. Ez elvárható, hiszen az Azure nem tudja, hogy nincs aktív virtuális gépek nincsenek-e az alhálózatot, és csak a vész-helyreállítási létre az alhálózatot.
-- Nem fogja tudni megfelelően irányítható a hálózati forgalom kívül az Azure-hálózatot, hogy a hálózat és a helyi hálózat alhálózatai nem ütköznek.
+Site-to-site VPN-kapcsolat mellett a vnet – vnet kapcsolat, a feladatátvételt követően a Woodgrove adható meg:
+- Egy helyek közötti kapcsolat beállításakor az Azure-hálózatot csak irányíthatja a forgalmat a helyszíni helyre (helyi-hálózatot) Ha az IP-címtartomány eltér a helyi IP-címtartományt. Ennek az oka az Azure nem támogatja a többhelyes alhálózatokat. Így ha alhálózati 192.168.1.0/24 helyi, nem egy helyi hálózati 192.168.1.0/24 adhat hozzá a az Azure-hálózatot. Ez elvárható, hiszen az Azure nem ismert, hogy nincsenek-e nincs aktív virtuális gépeket az alhálózaton, és csak a vész-helyreállítási létre az alhálózatot.
+- Az, hogy megfelelően irányítani az Azure-hálózat hálózati forgalom, a hálózat és a helyi hálózat alhálózatai nem ütköznek.
 
 
 
 
 ## <a name="assigning-new-ip-addresses"></a>Új IP-címek hozzárendelése
 
-Ez [blogbejegyzés](http://azure.microsoft.com/blog/2014/09/04/networking-infrastructure-setup-for-microsoft-azure-as-a-disaster-recovery-site/) ismerteti, hogyan állíthatja be az Azure hálózati infrastruktúra, ha már nincs szükség IP-címek megőrizni a feladatátvételt követően. Az kezdődik-e az alkalmazás leírása, hogyan állíthatja be a helyszíni hálózat és az Azure-ban megvizsgálja, és folyamat végén a feladatátvételeket a futtatásával kapcsolatos információkat.
+Ez [blogbejegyzés](http://azure.microsoft.com/blog/2014/09/04/networking-infrastructure-setup-for-microsoft-azure-as-a-disaster-recovery-site/) azt ismerteti, hogyan állítható be az Azure hálózati infrastruktúra, ha már nincs szükség IP-cím megőrzése feladatátvétel után. Azt az alkalmazás leírásának kezdődik, módját beállítása a helyszíni hálózat és az Azure-ban, és azt állapítja meg, a feladatátvétel futtatásával kapcsolatos információkat.
 
 ## <a name="next-steps"></a>További lépések
 [Feladatátvétel futtatása](site-recovery-failover.md)

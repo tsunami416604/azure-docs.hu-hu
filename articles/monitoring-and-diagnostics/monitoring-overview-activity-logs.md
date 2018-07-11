@@ -1,6 +1,6 @@
 ---
 title: Az Azure tevékenységnapló áttekintése
-description: Megtudhatja, mi az Azure tevékenységnapló és hogyan használhatja az Azure-előfizetése belül bekövetkező események megértéséhez.
+description: Ismerje meg, mi az az Azure-tevékenységnapló, és hogyan használhatja azt az Azure-előfizetésen belül bekövetkező események megértéséhez.
 author: johnkemnetz
 services: azure-monitor
 ms.service: azure-monitor
@@ -8,126 +8,131 @@ ms.topic: conceptual
 ms.date: 05/30/2018
 ms.author: johnkem
 ms.component: activitylog
-ms.openlocfilehash: b6639ecc6fbd36df29458532d555b68b50b0a19c
-ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
+ms.openlocfilehash: 51cc4c37ba661feb63880c138e98200c981f6054
+ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37018977"
+ms.lasthandoff: 07/09/2018
+ms.locfileid: "37918481"
 ---
-# <a name="monitor-subscription-activity-with-the-azure-activity-log"></a>Az Azure tevékenységnapló figyelő előfizetés tevékenység
+# <a name="monitor-subscription-activity-with-the-azure-activity-log"></a>Az Azure-tevékenységnapló-előfizetési tevékenység figyelése
 
-A **Azure tevékenységnapló** van egy előfizetési napló, amely történt az Azure-előfizetés szintű események betekintést nyújt. Ez magában foglalja az Azure Resource Manager működési adatokat a frissítésekre a szolgáltatás állapotával kapcsolatos események adatait számos. A műveletnapló korábban hívták "Naplófájlok" vagy "Működési Logs", a felügyeleti kategória jelentések vezérlő-vezérlősík eseményeket az előfizetések óta. A tevékenység-naplót használó, meghatározhatja a "mi, ki, és mikor" az esetleges írási műveleteket (PUT, POST, Törlés) végzett az erőforrást az előfizetésében. A művelet és az egyéb kapcsolódó tulajdonságainak állapotának értelmezni is lehet. A műveletnapló nem tartalmaz olvasható (GET) vagy a klasszikus használó erőforrások / "RDFE" modell.
+A **Azure-tevékenységnapló** van egy előfizetési napló, amely az Azure-ban bekövetkezett események előfizetés-szintű betekintést nyújt. Ez magában foglalja az adatok az Azure Resource Manager frissítéseket a Service Health-események operatív adatok széles. A tevékenységnapló nevezték "Naplófájlok" vagy "Műveleti naplók," a felügyeleti kategória jelentések vezérlősík események az előfizetésekre vonatkozó óta. A tevékenységnapló használatával megadhatja, hogy a "mit, ki, és mikor" írási műveletek (PUT, POST, DELETE) tett erőforrásokra az előfizetésben. A művelet és az egyéb releváns tulajdonságok állapotát is ismernie is. A tevékenységnapló olvasási (GET) műveleteket, illetve a klasszikus erőforrások műveletei nem tartalmaz / "RDFE" modellt.
 
-![Tevékenység naplók és a más típusú naplók ](./media/monitoring-overview-activity-logs/Activity_Log_vs_other_logs_v5.png)
+![Tevékenység-naplók és egyéb típusú naplók ](./media/monitoring-overview-activity-logs/Activity_Log_vs_other_logs_v5.png)
 
-1. ábra: Tevékenységi naplóit vagy más típusú naplók
+1. ábra: Tevékenységeket tartalmazó naplók és egyéb típusú naplók
 
-A műveletnapló eltér az [diagnosztikai naplók](monitoring-overview-of-diagnostic-logs.md). Tevékenységi naplóit biztosítanak kívülről erőforráson műveleteire vonatkozó adatokat (a "vezérlő vezérlősík"). Diagnosztikai naplók az erőforrás által kibocsátott, és adja meg (az "adatok vezérlősík") erőforrás működésével kapcsolatos adatokat.
+A tevékenységnapló eltér [diagnosztikai naplók](monitoring-overview-of-diagnostic-logs.md). A Tevékenységnaplók adatait a műveletek egy erőforráson kívülről (a "vezérlősík"). Diagnosztikai naplók az erőforrás által kibocsátott vannak, és adja meg a műveletet az erőforrás (az "adatsík") kapcsolatos információkat.
 
 > [!WARNING]
-> Az Azure tevékenységnapló van, amely elsősorban az Azure Resource Manager-tevékenységek. A klasszikus/RDFE modellt használó erőforrások nem követi nyomon. Egyes klasszikus erőforrás állnak a proxy erőforrás-szolgáltató az Azure Resource Manager (például Microsoft.ClassicCompute). Ha Ön a szolgáltatóosztályokkal klasszikus erőforrástípus Azure Resource Manageren keresztül a proxy erőforrás-szolgáltatókat használ, a műveletek a műveletnapló jelennek meg. Ha Ön a szolgáltatóosztályokkal kívül az Azure Resource Manager-proxyk klasszikus erőforrástípus, a műveletek csak tárolja, amely a műveletnaplóban. A műveletnapló tallózható a portál egy külön szakaszban.
+> Az Azure-tevékenységnapló elsősorban az Azure Resource Manager-tevékenységek szól. A klasszikus/RDFE modellt használó erőforrások nem követi nyomon. Néhány klasszikus erőforrástípusok rendelkezik egy proxykiszolgáló erőforrás-szolgáltató az Azure Resource Manager (például Microsoft.ClassicCompute). Klasszikus erőforrástípust Azure Resource Manageren keresztül ezek proxy erőforrás-szolgáltatók használata kezelheti, ha a műveletek a tevékenységnaplóban jelennek meg. Egy klasszikus erőforrástípus kívül az Azure Resource Manager-proxyk dolgozhat, ha a műveletek csak a műveleti napló elszámolni. A műveleti napló egy külön szakaszban a portál tallózható.
 >
 >
 
-Az Azure portál, CLI, PowerShell-parancsmagok használatával tevékenységnapló kérhetnek le események és Azure figyelő REST API-t.
+A Tevékenységnaplót, az Azure portal, a parancssori felület, a PowerShell-parancsmagok használatával lehet lekérdezni események és az Azure Monitor REST API-t.
 
 > [!NOTE]
->  [Az újabb riasztások](monitoring-overview-unified-alerts.md) továbbfejlesztett megoldást nyújt, ha jelentkeznek be riasztási szabályok létrehozását és kezelését a tevékenység.  [További információk](monitoring-activity-log-alerts-new-experience.md).
+>  [Az újabb riasztások](monitoring-overview-unified-alerts.md) egy továbbfejlesztett felületet kínál, amikor létrehozása és kezelése a tevékenység naplózása a riasztási szabályok.  [További információk](monitoring-activity-log-alerts-new-experience.md).
 
-Tekintse meg a következő videót a műveletnapló bemutatása.
+A tevékenységnapló bemutatása a következő videó megtekintése.
 > [!VIDEO https://channel9.msdn.com/Blogs/Seth-Juarez/Logs-John-Kemnetz/player]
 
 
-## <a name="categories-in-the-activity-log"></a>A műveletnapló kategóriák
-A műveletnapló számos modulkategória közül adatokat tartalmazza. Az ezekben a kategóriákban sémákra részletes [ebben a cikkben találhat](monitoring-activity-log-schema.md). Ezek a következők:
-* **Felügyeleti** – Ez a kategória tartalmazza az összes rekord létrehozása, update, delete és művelet műveleteket Resource Manageren keresztül. Milyen típusú mutatunk be, ebbe a kategóriába tartozó eseményeket például "virtuális gép létrehozása" és "hálózati biztonsági csoport törlése" minden felhasználó vagy alkalmazás erőforrás-kezelő használatával végrehajtott műveletet egy adott erőforrástípus művelet van modellezve. Ha a művelet típusa írási, a Delete és a művelet, a rekordokat a kezdő és a sikeres vagy sikertelen lesz, hogy a művelet tárolja, amely a felügyeleti kategória. A felügyeleti kategória is a szerepköralapú hozzáférés-vezérlést módosításokat egy előfizetésben.
-* **Szolgáltatás állapota** -ebbe a kategóriába történt az Azure-szolgáltatás állapotának események adatait tartalmazza. Az ebbe a kategóriába tartozó mutatunk be eseménytípusra példa: "USA keleti régiója az SQL Azure tapasztal állásidő." Szolgáltatás állapotával kapcsolatos események térjen öt fajta: beavatkozás szükséges, támogatott helyreállítási, incidens, karbantartási, adatokat vagy biztonsági, és csak jelenik meg, ha egy erőforrást, amely akkor negatív hatással lehet az esemény az előfizetést.
-* **Riasztási** -ebbe a kategóriába látható Azure riasztások valamennyi aktiváláshoz. Az ebbe a kategóriába tartozó mutatunk be eseménytípusra példa: "CPU % myVM már több mint 80 az elmúlt 5 percben." Az Azure rendszereket rendelkezik egy riasztási koncepció--valamiféle szabály megadása, és értesítést kaphat, ha feltételek egyeznek meg, hogy a szabály. Minden alkalommal, amikor egy támogatott Azure riasztástípus "aktiválja," vagy a feltételek értesítést létrehozásához, egy rekordot az aktiválás is leküldött ebbe a kategóriába a műveletnapló.
-* **Automatikus skálázás** – Ez a kategória tartalmazza a rekord a a művelethez az automatikus skálázás motor bármely adta meg az előfizetés automatikus skálázás beállításai alapján a kapcsolódó események. Az ebbe a kategóriába tartozó mutatunk be eseménytípusra példa, hogy "Automatikus skálázás felskálázott művelete nem sikerült." Használja az automatikus skálázás, automatikusan horizontális felskálázás vagy méretezni támogatott erőforrástípus található példányok száma a nap és/vagy terhelés (mérték) adatok az automatikus skálázási beállítás használatával ideje alapján. Ha a feltételek felfelé vagy lefelé méretezési, a kezdő és a sikeres és sikertelen események ebbe a kategóriába tartozó rögzítését.
-* **A javaslat** -ebbe a kategóriába Azure Advisor szolgáltatásból való javaslat eseményeket tartalmazza.
-* **Biztonsági** – Ez a kategória tartalmazza az Azure Security Center által generált riasztások adatainak. Az ebbe a kategóriába tartozó mutatunk be eseménytípusra példa, hogy "gyanús dupla bővítményfájl végrehajtása."
-* **Házirend- és erőforrás állapota** – ezen kategóriák nem tartalmaz eseményeket, a jövőbeli használatra fenntartva.
+## <a name="categories-in-the-activity-log"></a>Kategóriák a tevékenységnaplóban
+A tevékenységnapló megjelenítése és adatokat. További részletek a sémák szerializálása e kategóriák közül a [ebben a cikkben](monitoring-activity-log-schema.md). Ezek a következők:
+* **Felügyeleti** – ezt a kategóriát tartalmazza az összes rekordot létrehozni, frissítési, törlési és műveleti műveleteket hajtja végre a Resource Manageren keresztül. Milyen típusú itt jelennének meg ebbe a kategóriába tartozó eseményeket például a "virtuális gép létrehozása" és "hálózati biztonsági csoport törlése" minden felhasználó vagy alkalmazás használatával a Resource Manager által végrehajtott műveletek az egyes erőforrástípusok műveletként van modellezve. Ha a művelet típusa, Write, Delete vagy műveletet, a rekordokat a kezdő és a sikeres vagy sikertelen a művelet rögzítve lesznek a felügyeleti kategória. A felügyeleti kategória is módosítania kellene a szerepköralapú hozzáférés-vezérlés az előfizetéshez.
+* **A Service Health** – Ez a kategória tartalmazza a service health az Azure-ban bekövetkezett események rekord. Itt jelennének meg ebbe a kategóriába tartozó esemény típusa például a "SQL Azure, az USA keleti régiójában üzemen kívül van." A Szolgáltatásállapot-események az öt fajta származnak: szükséges művelet, eszközkapcsolat helyreállítási, incidens, karbantartási, adatokat vagy biztonsági, és csak jelenik meg, ha egy erőforráshoz lenne hatással lehet az esemény-előfizetés.
+* **Riasztási** – Ez a kategória összes aktiválás az Azure-riasztások rekordja látható. Itt jelennének meg ebbe a kategóriába tartozó esemény típusa például a "százalékos processzorhasználatról a myVM már több mint 80-as az elmúlt 5 percben." Azure rendszerek különböző rendelkezik egy riasztási elv – valamilyen szabály meghatározása, és értesítést kaphat, ha a feltétel egyezik az szabályokat. Minden alkalommal, amikor egy támogatott Azure riasztástípus "aktiválja,", vagy értesítést hozhat létre, hogy a feltételek teljesülnek, egy rekord, az aktiválás szintén leküldéssel ebbe a kategóriába, a tevékenységnapló.
+* **Automatikus skálázási** – Ez a kategória tartalmazza a rekord a meghatározott az előfizetés automatikus skálázási beállítások alapján automatikus skálázási motor a művelethez kapcsolódó események. Itt jelennének meg ebbe a kategóriába tartozó esemény típusa például a "Automatikus vertikális felskálázási művelet sikertelen volt." Használja az automatikus méretezés, akkor lehet automatikusan horizontálisan felskálázhatja vagy leskálázhatja a támogatott erőforrástípus a példányok számának napi és/vagy terhelési () metrikaadatok egy automatikus skálázási beállítás használatával ideje alapján. Ha a feltételek teljesülnek felfelé vagy lefelé méretezés, a kezdő és a sikeres és sikertelen események ebbe a kategóriába vannak rögzítve.
+* **Az ajánlás** – Ez a kategória javaslattételi események az Azure Advisor tartalmaz.
+* **Biztonsági** – Ez a kategória tartalmazza a rekord minden olyan Azure Security Center által generált riasztások. Itt jelennének meg ebbe a kategóriába tartozó esemény típusa például a "a program kettős kiterjesztésű gyanús fájlt futtatott."
+* **Házirend- és a Resource Health** – ezen kategóriák nem tartalmaznak más eseményeket; számára későbbi használatra fenntartva.
 
-## <a name="event-schema-per-category"></a>Esemény séma kategóriánként
-[Ez a cikk a tevékenységnapló esemény séma kategóriánként megértéséhez tekintse meg.](monitoring-activity-log-schema.md)
+## <a name="event-schema-per-category"></a>Kategória szerinti eseménysémája
+[Ebből a cikkből megismerheti a tevékenységnapló eseménysémája kategória szerinti megtekintéséhez.](monitoring-activity-log-schema.md)
 
-## <a name="what-you-can-do-with-the-activity-log"></a>Mire képes a műveletnapló
-Íme néhány a műveletnapló teheti:
+## <a name="what-you-can-do-with-the-activity-log"></a>Mire képes az Activity Log a
+Az alábbiakban néhány, a tevékenységnapló megteheti:
 
 ![Azure-tevékenységnapló](./media/monitoring-overview-activity-logs/Activity_Log_Overview_v3.png)
 
 
-* Lekérdezés, és megtekintheti a a **Azure-portálon**.
-* [Riasztás létrehozása a tevékenységnapló esemény.](monitoring-activity-log-alerts.md)
-* [Adatfolyam-úgy, hogy egy **Eseményközpont** ](monitoring-stream-activity-logs-event-hubs.md) egy külső szolgáltatás vagy az egyéni elemzési megoldások, például a Power bi szempontjából.
-* A Power bi használatával elemezze a [ **Power bi tartalomcsomag**](https://powerbi.microsoft.com/documentation/powerbi-content-pack-azure-audit-logs/).
-* [Menti egy **Tárfiók** archív vagy manuális ellenőrzést](monitoring-archive-activity-log.md). A megőrzési ideje (nap) használatával is megadhat a **napló profil**.
-* Lekérdezése a PowerShell-parancsmag, a parancssori felületen vagy a REST API-t.
+* Lekérdezni és megtekinteni azt a a **az Azure portal**.
+* [Egy tevékenységnapló eseményéhez, hozzon létre egy riasztást.](monitoring-activity-log-alerts.md)
+* [Stream, hogy egy **Eseményközpont** ](monitoring-stream-activity-logs-event-hubs.md) egy külső szolgáltatás vagy az egyéni elemzési megoldással, például a Power bi támogatunk.
+* A Power bi használatával elemezhetők a [ **Power bi-tartalomcsomag**](https://powerbi.microsoft.com/documentation/powerbi-content-pack-azure-audit-logs/).
+* [Mentse azt egy **Tárfiók** archív vagy manuális ellenőrzést](monitoring-archive-activity-log.md). A megőrzési ideje (nap) használatával is megadhat a **Naplóprofil**.
+* PowerShell-parancsmagot, a CLI vagy a REST API-n keresztül lekérdezéseket futtathat rajta.
 
-## <a name="query-the-activity-log-in-the-azure-portal"></a>A lekérdezés a műveletnapló az Azure-portálon
-Az Azure-portálon belül több helyen tekintheti meg a tevékenységnapló:
-* A **tevékenységnapló** , így hozzáférhet a műveletnapló alatt keresve **minden szolgáltatás** a bal oldali navigációs ablaktáblán.
-* **A figyelő** a bal oldali navigációs panelen alapértelmezés szerint megjelenik. A műveletnapló Azure figyelő egy szakaszában.
-* Minden erőforrás **erőforrás**, például a virtuális gép konfigurációs panelt. A műveletnapló, a legtöbb a erőforrás paneleken részeiből kell, és kattintással automatikusan szűri az eseményeket az adott erőforrás.
+## <a name="query-the-activity-log-in-the-azure-portal"></a>Lekérdezés a tevékenységnapló az Azure Portalon
+Az Azure Portalon a tevékenységnapló több helyen is megtekintheti:
+* A **tevékenységnapló** , így hozzáférhet a tevékenységnaplóban a Keresés **minden szolgáltatás** a bal oldali navigációs ablaktáblán.
+* **A figyelő** a bal oldali navigációs ablaktáblán alapértelmezés szerint megjelenik. A tevékenységnapló Azure Monitor egy szakaszában.
+* Minden erőforrás **erőforrás**, például a virtuális gép konfigurációs panel. A tevékenységnapló az szakaszokban ezeket erőforráspanelek többsége a, és kattintással automatikusan szűri az eseményeket csak az adott erőforráshoz kapcsolódó.
 
-Az Azure portálon a tevékenységnapló a mezők szerint szűrheti:
-* A TimeSpan - a kezdési és befejezési ideje eseményeket.
-* Kategória – az eseményforrásra fent leírt módon.
-* -Előfizetés egy vagy több Azure-előfizetés nevét.
-* Erőforráscsoport - egy vagy több erőforráscsoportokat előfizetésekben belül.
+Az Azure Portalon a Tevékenységnaplót, ezek a mezők szerint szűrheti:
+* Időtartomány - események kezdő és befejező időpontját.
+* Kategória – az esemény kategóriáját fent leírtak szerint.
+* Előfizetés – egy vagy több Azure-előfizetés nevét.
+* Erőforráscsoport – egy vagy több erőforrás csoportosítja ezen előfizetések keretében.
 * Erőforrás (név) – egy adott erőforrás nevét.
-* Erőforrástípus - típusú erőforrások, például Microsoft.Compute/virtualmachines.
-* A művelet neve – az Azure Resource Manager művelet, például Microsoft.SQL/servers/Write neve.
-* Súlyosság - a súlyossági szintet az esemény (tájékoztatás, figyelmeztetés, hiba, kritikus).
-* -A "hívó", vagy a művelet felhasználó által kezdeményezett esemény.
-* Nyissa meg a keresési - egy megnyitott keresési szövegmezőben, amely megkeresi az adott karakterlánc összes esemény található összes mezőhöz között.
+* Erőforrástípus - erőforrás, például Microsoft.Compute/virtualmachines típusát.
+* Název operace – egy Azure Resource Manager-műveletet, például Microsoft.SQL/servers/Write nevére.
+* Súlyosság – az a súlyossági szintet az esemény (tájékoztatás, figyelmeztetés, hiba, kritikus).
+* Esemény kezdeményezője – a "hívó" vagy a műveletet végrehajtó felhasználó.
+* Keresés megnyitása – Ez az egy megnyitott szövegkeresési mező, amelyek között az összes esemény található összes mezőhöz adott karakterláncot keres.
 
-Miután beállított szűrők csoportja, mentheti munkamenetei között legalább egyszer kell végrehajtani ugyanabban a lekérdezésben újra alkalmazza a jövőben ezek szűrőkkel Ha fennállásának lekérdezésként. A lekérdezés is rögzítheti az irányítópulton való rögzítéséhez Azure mindig követésére egy adott esemény.
+Miután beállított szűrők csoportja, mentheti, egy lekérdezést, amely a rendszer megőrzi munkamenetek között, ha a jövőben újra alkalmazza ezeket a szűrőket az ugyanabból a lekérdezés végrehajtásához átállítására lenne szükség. Lekérdezés mindig kövesse figyelemmel az adott események az Azure-irányítópultra is rögzítheti.
 
-Kattintson az "Apply" a lekérdezés futtatása, és minden egyező események megjelenítése. Kattintson a minden esetben a listán a jeleníti meg az esemény összegzése, valamint, hogy az esemény teljes nyers JSON.
+Kattintson az "Alkalmazás" a lekérdezés fut, és minden egyező események megjelenítése. Kattintson egy eseményre a listában a jeleníti meg az esemény összegzése, valamint a teljes nyers JSON az adott esemény.
 
-Még több bekapcsolási, kattintson a **naplófájl-keresési** ikonra, amely a tevékenységnapló adatait jeleníti meg a [napló Analytics tevékenység Naplóelemzési megoldás](../log-analytics/log-analytics-activity.md). A műveletnapló panel lehetővé teszi egy alapszintű szűrő/tallózási élménynek napló, de Naplóelemzési lehetővé teszi forgáspont, azok lekérdezésére vagy az adatok megjelenítése hatékonyabb módon.
+Még hatékonyabbá elemre a **naplóbeli keresés** ikont, mely megjeleníti a tevékenységnapló adatait a [Log Analytics Activity Log Analytics megoldás](../log-analytics/log-analytics-activity.md). A tevékenységnapló panel kínál egy alapszintű szűrő/tallózási élménynek a naplók, de a Log Analytics lehetővé teszi, hogy forgáspont, lekérdezése és hatékonyabb módon jelenítheti meg az adatok.
 
-## <a name="export-the-activity-log-with-a-log-profile"></a>A műveletnapló napló profillal exportálása
-A **napló profil** a tevékenységnapló exportálásának módját szabályozza. Napló profilt használ, konfigurálhatja:
+## <a name="export-the-activity-log-with-a-log-profile"></a>A napló profillal tevékenységnapló exportálása
+A **Naplóprofil** a tevékenységnapló exportálása hogyan szabályozza. Napló profilt használ, konfigurálhatja:
 
-* Ha a műveletnapló kell küldeni (Tárfiók, vagy az Event Hubs)
-* Esemény kategóriák (írási, törlés, művelete) kell küldeni. *"Kategória" napló profilok és tevékenységnapló események szerinti nem egyezik. A napló profil "Kategória" jelenti. a művelet típusa (írási, törlés, művelete). Tevékenységnapló esetben a "kategória" tulajdonság jelöli, a forrás- vagy típusú eseményeket (például felügyeleti ServiceHealth, riasztás és több).*
-* Mely régiókat (hely) exportálja. Ügyeljen arra, hogy tartalmazzák "globális", vagy a műveletnaplóban sok eseményt sem globális események.
-* Mennyi ideig a műveletnapló rendszer meddig őrizze meg a Storage-fiók.
-    - Egy nulla napos megőrzési azt jelenti, hogy a naplók végtelen tartanak. Ellenkező esetben a értéke lehet bármely 1 és 2147483647 között eltelt napok számát.
-    - Ha a megőrzési házirend-beállításokat, de naplók tárolása a Storage-fiók le van tiltva, (például, ha csak az Event Hubs vagy Naplóelemzési beállítások vannak jelölve), az adatmegőrzési hatástalan.
-    - Adatmegőrzési alkalmazott napi,, így napi (UTC) szerint naplókat, amelyik most már a megőrzési túl napjától végén házirend törlődnek. Például ha egy nap adatmegőrzési, mai nap kezdetén a napló, a nap előtt tegnap törlése akkor történik meg. A törlési folyamat kezdődik éjfél UTC, de vegye figyelembe, hogy törli a tárfiókot az naplók akár 24 óráig is eltarthat.
+* Ha a tevékenységnapló kell küldeni (Storage-fiók vagy az Event Hubs)
+* Melyik eseménykategóriák (írás, törlés, a művelet) küldendő adattípusokat. *A "category" Naplóprofilok és tevékenységnapló eseményei jelentése nem egyezik. A napló-profilban a "Category" a művelet típusa (írás, törlés, a művelet) jelöli. Egy tevékenységnapló-esemény a "category" tulajdonság jelöli a forrás- vagy típusú eseményeket (például felügyeleti ServiceHealth, riasztást és több).*
+* Mely régiókban (helyeken) exportálja. Ügyeljen arra, hogy tartalmaznak "globális", mivel a tevékenységnaplóban sok eseményt globális események.
+* Mennyi ideig a tevékenységnapló fenn kell tartani a Storage-fiókban.
+    - Egy nulla napnyi adatmegőrzéshez azt jelenti, hogy naplókat tartják örökre. Ellenkező esetben az érték lehet minden olyan 1 és 2147483647 között eltelt napok számát.
+    - Ha a megőrzési házirend-beállításokat, de a naplók tárolása a Storage-fiók le van tiltva, (például, ha csak az Event Hubs és a Log Analytics lehetőség be van jelölve), az adatmegőrzési szabályzatok nem befolyásolják.
+    - Adatmegőrzési házirendek, az alkalmazott napi, hogy naponta (UTC), naplók, amely mostantól a megőrzési ideje meghaladja a nap végén törli a házirendet. Például ha egy nap adatmegőrzési, ma a nap kezdetén az a napja előtt tegnap naplóinak törlődnének. A törlési folyamat kezdődik UTC szerint éjfélig, de vegye figyelembe, hogy a naplók a tárfiókból a törlendő akár 24 órát is igénybe vehet.
 
-A tárolási fiók vagy esemény hub névtér, amely nem ugyanahhoz az előfizetéshez, mint a naplók kibocsátó is használhatja. A beállítás konfiguráló felhasználónak mindkét előfizetéshez megfelelő RBAC hozzáféréssel kell rendelkeznie.
+Egy tároló vagy egy eseményközpontba eseményközpont-névtér, amely nem ugyanabban az előfizetésben, mint a naplókat kibocsátó is használhatja. A beállítást konfiguráló felhasználónak rendelkeznie kell a megfelelő RBAC-hozzáférés mindkét előfizetéshez.
 
 > [!NOTE]
->  Jelenleg nem archiválhatja adatok tárolási funkciókat biztosító fiókot, amellyel mögött egy védett virtuális hálózatot.
+>  Jelenleg nem archiválhatja adatokat egy Storage-fiók, amely mögött egy biztonságos virtuális hálózaton.
 
-Ezek a beállítások a "Export" lehetőséget a tevékenységnapló panelen a portálon keresztül is konfigurálható. Akkor is konfigurálható programozott módon [a Azure REST API használatával](https://msdn.microsoft.com/library/azure/dn931927.aspx), PowerShell-parancsmagokkal vagy a parancssori felület. Előfizetés csak egy naplófájl-profillal rendelkezhet.
+> [!WARNING]
+> A formátum a naplóadatok a tárfiókban lévő JSON-sorok 2018. november 1-től változik. [Tekintse meg a jelen cikk egy leírást a hatás és az eszközök kezeléséhez az új formátum frissítése.](./monitor-diagnostic-logs-append-blobs.md) 
+>
+> 
 
-### <a name="configure-log-profiles-using-the-azure-portal"></a>Az Azure portál használatával napló profilok konfigurálása
-A műveletnapló az Eseményközpontba adatfolyam, vagy az Azure-portálon a "Export" beállítás használatával tárolhatja őket egy Tárfiókot.
+Ezek a beállítások az "Export" lehetőséget a tevékenységnapló panel a portálon keresztül konfigurálható. Akkor is konfigurálható programozott módon [az Azure Monitor REST API használatával](https://msdn.microsoft.com/library/azure/dn931927.aspx), PowerShell-parancsmagok vagy a parancssori felület. Egy előfizetéshez csak egy naplóprofil rendelkezhet.
 
-1. Navigáljon a **tevékenységnapló** a portál bal oldalán a menü segítségével.
+### <a name="configure-log-profiles-using-the-azure-portal"></a>Az Azure portal használatával naplóprofilok konfigurálása
+A tevékenységnapló streamelése az Eseményközpontba, vagy az "Export" lehetőség az Azure Portal használatával egy tárfiókban tárolja őket.
+
+1. Navigáljon a **tevékenységnapló** menüjének használatával, a portál bal oldalán.
 
     ![Tevékenységnapló navigáljon a portálon](./media/monitoring-overview-activity-logs/activity-logs-portal-navigate.png)
-2. Kattintson a **exportálása** gomb a panel tetején.
+2. Kattintson a **exportálása** gombra a panel tetején.
 
     ![A portál Exportálás gomb](./media/monitoring-overview-activity-logs/activity-logs-portal-export.png)
-3. A megjelenő panelen közül választhat:  
-  * régiók, amelynek szeretné események exportálása
-  * a Storage-fiók, amelyet szeretne menteni események
-  * szeretné megőrizni ezeket az eseményeket, megőrzés napok száma. 0 nap beállítását végtelen őrzi meg a naplókat.
-  * a Service Bus Namespace, amelyben szeretné létrehozni az adatfolyamként történő ezeket az eseményeket egy Eseményközpontba.
+3. A megjelenő panelen választhatja:  
+  * régiók, amelynek szeretné exportálni az események
+  * a Storage-fiókot, amelyhez szeretné menteni az események
+  * nap meg szeretné őrizni a storage-ban ezek az események száma. 0 napra beállítását örökre megőrzi a naplókat.
+  * a Service Bus Namespace, amelyben szeretné létrehozni a streamelési ezeket az eseményeket egy Eseményközpontba.
 
-     ![Exportálás tevékenységnapló panel](./media/monitoring-overview-activity-logs/activity-logs-portal-export-blade.png)
+     ![Tevékenységnapló panel exportálása](./media/monitoring-overview-activity-logs/activity-logs-portal-export-blade.png)
 4. Kattintson a **mentése** ezek a beállítások mentéséhez. A rendszer azonnal alkalmazni fogja a beállításokat az előfizetésére.
 
-### <a name="configure-log-profiles-using-the-azure-powershell-cmdlets"></a>Az Azure PowerShell-parancsmagok használatával napló profilok konfigurálása
+### <a name="configure-log-profiles-using-the-azure-powershell-cmdlets"></a>Az Azure PowerShell-parancsmagok használatával naplóprofilok konfigurálása
 
-#### <a name="get-existing-log-profile"></a>Meglévő napló profil beolvasása
+#### <a name="get-existing-log-profile"></a>Meglévő log profil beolvasása
 
 ```
 Get-AzureRmLogProfile
@@ -141,28 +146,28 @@ Add-AzureRmLogProfile -Name my_log_profile -StorageAccountId /subscriptions/s1/r
 
 | Tulajdonság | Szükséges | Leírás |
 | --- | --- | --- |
-| Name (Név) |Igen |A napló profil neve. |
-| StorageAccountId |Nem |Erőforrás-azonosító a tárfiók a műveletnapló mentésére. |
-| serviceBusRuleId |Nem |Service Bus-Szabályazonosító a Service Bus-névtér szeretné létrehozni az event hubs rendelkezik. Egy karakterlánc, ebben a formátumban: `{service bus resource ID}/authorizationrules/{key name}`. |
-| Hely |Igen |Régiók, amelynek szeretné tevékenységnapló eseményeinek gyűjtése vesszővel tagolt listája. |
-| RetentionInDays |Igen |Az eseményeket meg kell őrizni, 1 és 2147483647 közötti napok számát. A nulla érték a naplók határozatlan ideig tárolja (végtelen). |
-| Kategória |Nem |Be kell esemény kategóriák vesszővel tagolt listája. Lehetséges értékek a következők: Olvasás, törlés és művelet. |
+| Name (Név) |Igen |A napló-profil neve. |
+| StorageAccountId |Nem |Erőforrás-azonosító, amelyhez a tevékenységnapló menteni a tárfiók. |
+| serviceBusRuleId |Nem |Service Bus Szabályazonosító a Service Bus-névtér szeretné, hogy a létrehozott event hubs. Egy karakterlánc, a következő formátumban: `{service bus resource ID}/authorizationrules/{key name}`. |
+| Hely |Igen |Régiók, amelynek szeretné tevékenységnapló eseményeket gyűjtő vesszővel tagolt listája. |
+| RetentionInDays |Igen |Mely eseményeket meg kell őrizni, 1 és 2147483647 között eltelt napok száma. A nulla érték határozatlan ideig tárolja a naplók (végtelen). |
+| Kategória |Nem |Eseménykategóriák kell gyűjteni, vesszővel tagolt listája. Lehetséges értékek: írási, törlési és művelet. |
 
-#### <a name="remove-a-log-profile"></a>Napló-profil eltávolítása
+#### <a name="remove-a-log-profile"></a>Napló profil eltávolítása
 ```
 Remove-AzureRmLogProfile -name my_log_profile
 ```
 
-### <a name="configure-log-profiles-using-the-azure-cli-20"></a>Az Azure CLI 2.0 használatával napló profilok konfigurálása
+### <a name="configure-log-profiles-using-the-azure-cli-20"></a>Az Azure CLI 2.0 használatával naplóprofilok konfigurálása
 
-#### <a name="get-existing-log-profile"></a>Meglévő napló profil beolvasása
+#### <a name="get-existing-log-profile"></a>Meglévő log profil beolvasása
 
 ```azurecli
 az monitor log-profiles list
 az monitor log-profiles show --name <profile name>
 ```
 
-A `name` tulajdonság a napló profil nevének kell lennie.
+A `name` tulajdonságot kell lennie a napló-profil nevét.
 
 #### <a name="add-a-log-profile"></a>Napló profil hozzáadása
 
@@ -173,14 +178,14 @@ az monitor log-profiles create --name <profile name> \
     --categories <category1 category2 ...>
 ```
 
-Az a figyelő profilok létrehozása a parancssori felület a teljes dokumentációjáért lásd: a [CLI parancsdokumentációja](/cli/azure/monitor/log-profiles#az-monitor-log-profiles-create)
+A figyelő profilok létrehozása a CLI-vel teljes dokumentációjáért lásd: a [CLI parancsdokumentációja](/cli/azure/monitor/log-profiles#az-monitor-log-profiles-create)
 
-#### <a name="remove-a-log-profile"></a>Napló-profil eltávolítása
+#### <a name="remove-a-log-profile"></a>Napló profil eltávolítása
 
 ```azurecli
 az monitor log-profiles delete --name <profile name>
 ```
 
 ## <a name="next-steps"></a>További lépések
-* [További információ a tevékenységnapló (korábbi nevén naplók)](../azure-resource-manager/resource-group-audit.md)
-* [Az Event hubs Azure tevékenységnapló adatfolyam](monitoring-stream-activity-logs-event-hubs.md)
+* [További információ a tevékenységnapló (korábbi nevén Auditnaplók)](../azure-resource-manager/resource-group-audit.md)
+* [Az Event hubs Azure tevékenységnapló Stream](monitoring-stream-activity-logs-event-hubs.md)

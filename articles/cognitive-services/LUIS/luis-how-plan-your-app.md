@@ -9,12 +9,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 05/07/2017
 ms.author: v-geberr
-ms.openlocfilehash: 66036da19b0c7f49935b32272e963b3766497605
-ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
+ms.openlocfilehash: 2ce202bbb1479db18fb88cfef4d510ae4cb39a78
+ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37438175"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37952100"
 ---
 # <a name="plan-your-luis-app"></a>A LUIS-alkalmazás megtervezése
 
@@ -53,7 +53,7 @@ Egy hierarchikus entitás egy olyan speciális típusú egy **egyszerű** entit�
 
 Lásd: [Adatkinyerés](luis-concept-data-extraction.md#hierarchical-entity-data) tudhat meg többet a végpont JSON lekérdezési válasz a hierarchikus entitás kinyerését. Próbálja ki a hierarchikus entitás [rövid](luis-quickstart-intent-and-hier-entity.md) hierarchikus entitás használatával kapcsolatos további.
 
-### <a name="composite-entity"></a>Összetett entitást
+### <a name="composite-entity"></a>összetett entitást
 Egy összetett entitást az egész részét alkotó más entitások épül fel. 
 
 ![összetett entitást](./media/luis-plan-your-app/composite-entity.png)
@@ -82,7 +82,7 @@ A reguláris kifejezésnek entitás lehetővé teszi, hogy a LUIS az adatok kiny
 Lásd: [Adatkinyerés](luis-concept-data-extraction.md#regular-expression-entity-data) tudhat meg többet a végpontról JSON lekérdezési válasz reguláris kifejezés entitások kinyeréséhez. Próbálja ki a [rövid](luis-quickstart-intents-regex-entity.md) egy reguláris kifejezésnek entitás használatával kapcsolatos további.
 
 ## <a name="after-getting-endpoint-utterances"></a>Ha végpont kimondott szöveg
-Után az alkalmazás lekéri a végpont utterances, kívánnak megvalósítani az előrejelzési fejlesztései [aktív tanulás](label-suggested-utterances.md), [listák kifejezés](luis-concept-feature.md), és [minták](luis-concept-patterns.md). 
+Után az alkalmazás lekéri a végpont utterances, kívánnak megvalósítani az előrejelzési fejlesztései [aktív tanulás](luis-how-to-review-endoint-utt.md), [listák kifejezés](luis-concept-feature.md), és [minták](luis-concept-patterns.md). 
 
 ### <a name="patternany-entity"></a>Pattern.any entitás
 Patterns.any csak a használt változó hosszúságú helyőrzőt egy [mintázatnak](luis-concept-patterns.md) sablon utterance (kifejezés) való megjelöléséhez, ahol az entitás kezdődik és ér véget. Felelnek meg a sablon utterances [helyes szintaxist](luis-concept-patterns.md#pattern-syntax) entitásokat, és figyelmen kívül hagyható, szöveges azonosításához.

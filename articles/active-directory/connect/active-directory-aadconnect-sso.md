@@ -1,10 +1,10 @@
 ---
-title: 'Az Azure AD Connect: Zökkenőmentes egyszeri bejelentkezést |} Microsoft Docs'
-description: Ez a témakör ismerteti az Azure Active Directory (Azure AD) zökkenőmentes egyszeri bejelentkezést és hogyan lehetővé teszi, hogy valódi egyszeri bejelentkezést a vállalati asztali felhasználók a vállalati hálózaton belüli adja meg.
+title: 'Az Azure AD Connect: Zökkenőmentes egyszeri bejelentkezést |} A Microsoft Docs'
+description: Ez a témakör ismerteti az Azure Active Directory (Azure AD) zökkenőmentes egyszeri bejelentkezést, és hogyan teszi lehetővé vállalati asztali gépek felhasználóinak a vállalati hálózaton belüli valódi egyszeri bejelentkezést biztosít.
 services: active-directory
-keywords: Mi az Azure AD Connect telepítés Active Directory szükséges összetevőket az Azure AD, SSO, egyszeri bejelentkezést.
+keywords: Mi az Azure AD Connect, Active Directory telepítése szükséges összetevők SSO, Azure AD egyszeri bejelentkezés
 documentationcenter: ''
-author: swkrish
+author: billmath
 manager: mtillman
 ms.assetid: 9f994aca-6088-40f5-b2cc-c753a4f41da7
 ms.service: active-directory
@@ -15,50 +15,50 @@ ms.topic: article
 ms.date: 03/22/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 11a04d40a403231db728d6bf0caade5969bba84d
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: ad7c412ee92db53dd797e38df2fc6db0a762fe78
+ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34593661"
+ms.lasthandoff: 07/09/2018
+ms.locfileid: "37916166"
 ---
-# <a name="azure-active-directory-seamless-single-sign-on"></a>Az Azure Active Directory zökkenőmentes egyszeri bejelentkezést.
+# <a name="azure-active-directory-seamless-single-sign-on"></a>Az Azure Active Directory zökkenőmentes egyszeri bejelentkezés
 
-## <a name="what-is-azure-active-directory-seamless-single-sign-on"></a>Mi az az Azure Active Directory zökkenőmentes egyszeri bejelentkezést?
+## <a name="what-is-azure-active-directory-seamless-single-sign-on"></a>Mi az Azure Active Directory zökkenőmentes egyszeri bejelentkezés?
 
-Azure Active Directory zökkenőmentes egyszeri bejelentkezést (az Azure AD zökkenőmentes SSO) amikor kapcsolódnak a vállalati eszközök csatlakoznak a vállalati hálózathoz a felhasználók bejelentkezésekor automatikusan. Ha engedélyezve van, a felhasználók nem kell írja be a jelszavát, jelentkezzen be az Azure AD, és általában, akkor írja be a felhasználónevek. Ez a funkció a felhőalapú alkalmazások egyszerű hozzáférést biztosít a felhasználók anélkül, hogy semmilyen további helyszíni összetevőt.
+Az Azure Active Directory zökkenőmentes egyszeri bejelentkezés (Azure AD közvetlen egyszeri bejelentkezés) automatikusan aláírja a felhasználók mikor legyenek a vállalati eszközeiket a vállalati hálózathoz csatlakozik. Ha engedélyezve van, a felhasználók nem kell írja be az jelszavait, hogy jelentkezzen be Azure ad-ben, és általában, még akkor is írja a felhasználónevek. Ez a szolgáltatás felhőalapú alkalmazásait is egyszerű hozzáférést biztosít a felhasználók anélkül, hogy bármilyen további helyszíni összetevők.
 
 >[!VIDEO https://www.youtube.com/embed/PyeAC85Gm7w]
 
-Zökkenőmentes SSO kombinálva, vagy a [Jelszókivonat-szinkronizálást](active-directory-aadconnectsync-implement-password-hash-synchronization.md) vagy [áteresztő hitelesítés](active-directory-aadconnect-pass-through-authentication.md) bejelentkezési módszerek.
+Közvetlen egyszeri bejelentkezés kombinálva, vagy a [Jelszókivonat-szinkronizálás](active-directory-aadconnectsync-implement-password-hash-synchronization.md) vagy [átmenő hitelesítés](active-directory-aadconnect-pass-through-authentication.md) bejelentkezési módszereket.
 
-![Zökkenőmentes egyszeri bejelentkezést.](./media/active-directory-aadconnect-sso/sso1.png)
+![Közvetlen egyszeri bejelentkezés](./media/active-directory-aadconnect-sso/sso1.png)
 
 >[!IMPORTANT]
->Zökkenőmentes SSO _nem_ alkalmazható az Active Directory összevonási szolgáltatások (ADFS).
+>Közvetlen egyszeri bejelentkezés van _nem_ alkalmazható az Active Directory összevonási szolgáltatások (ADFS).
 
 ## <a name="key-benefits"></a>Főbb előnyök
 
-- *Kiváló felhasználói élmény*
-  - Felhasználók automatikusan bejelentkezett mind a helyszíni és felhőalapú alkalmazásokat.
+- *Nagyszerű felhasználói élményét*
+  - Felhasználók automatikusan bejelentkezett a helyszíni és felhőbeli alkalmazásokat is.
   - Adja meg ismételten a jelszavukat a felhasználóknak nem kell.
-- *Könnyen üzembe helyezése és felügyelete*
-  - További összetevők szükségesek a helyszíni működnek.
-  - A felhőalapú hitelesítés - bármely metódusát együttműködve [Jelszókivonat-szinkronizálást](active-directory-aadconnectsync-implement-password-hash-synchronization.md) vagy [áteresztő hitelesítés](active-directory-aadconnect-pass-through-authentication.md).
-  - Egyes kell eldöntése vagy csoportházirend segítségével minden felhasználó.
-  - Windows 10-eszközök regisztrálása nélkül bármely AD FS infrastruktúra Azure AD-val. Ez a funkció arra kéri, hogy 2.1-es vagy újabb verzióját használja a [munkahelyhez ügyfél](https://www.microsoft.com/download/details.aspx?id=53554).
+- *Egyszerű üzembe helyezése és felügyelete*
+  - További összetevők szükséges a helyszíni működnek.
+  - A felhőalapú hitelesítés – bármely metódusát együttműködik [Jelszókivonat-szinkronizálás](active-directory-aadconnectsync-implement-password-hash-synchronization.md) vagy [átmenő hitelesítés](active-directory-aadconnect-pass-through-authentication.md).
+  - Egyes is történni vagy csoportházirend segítségével minden felhasználó.
+  - A Windows 10-eszközök regisztrálása az Azure ad-vel bármely AD FS-infrastruktúra nélkül. Ez a funkció csak 2.1-es vagy újabb verzióját használja a [munkahelyhez való csatlakozás ügyfél](https://www.microsoft.com/download/details.aspx?id=53554).
 
-## <a name="feature-highlights"></a>A szolgáltatás kiemelések
+## <a name="feature-highlights"></a>A szolgáltatás emeli ki.
 
-- Bejelentkezési felhasználónév vagy a helyszíni alapértelmezett felhasználónév lehet (`userPrincipalName`) vagy az Azure AD Connect konfigurált egy másik attribútum (`Alternate ID`). Mindkét esetben a munkahelyi használható, mert a zökkenőmentes egyszeri Bejelentkezést használ a `securityIdentifier` ellenőrizzék a megfelelő felhasználói objektum, az Azure ad-ben a Kerberos jegyet a jogcímek.
-- Zökkenőmentes SSO az alkalmi szolgáltatása. Ha bármilyen okból nem sikerül, a felhasználói bejelentkezési élmény visszatér a rendszeres viselkedését - Egytényezős, a felhasználó adja meg a jelszót a bejelentkezési oldalon kell.
-- Ha egy alkalmazás (például https://myapps.microsoft.com/contoso.com) továbbítja a `domain_hint` (OpenID Connect) vagy `whr` (SAML) paraméter - azonosító a bérlő vagy `login_hint` paraméter - a felhasználói azonosító az Azure AD bejelentkezési kérelem, a felhasználók vannak automatikusan megtörténik a őket belépés felhasználónév vagy jelszó nélkül.
-- A felhasználók is kapnak a beavatkozás nélküli bejelentkezést, ha egy alkalmazás (például https://contoso.sharepoint.com) bejelentkezési kérelmek küldése az Azure AD-végpontok központjaként – Ez azt jelenti, hogy https://login.microsoftonline.com/contoso.com/<..> vagy https://login.microsoftonline.com/<tenant_ID>/<..> - helyett az Azure AD közös végpont - Ez azt jelenti, hogy https://login.microsoftonline.com/common/<...>.
-- Kijelentkezési esetén támogatott. Ez lehetővé teszi a felhasználók kiválaszthatják a bejelentkezéshez, zökkenőmentes SSO használatával automatikusan automatikusan aláírás alatt álló helyett egy másik Azure AD-fiókot.
-- Office 365-ügyfelek (16.0.8730.xxxx és újabb) használata támogatott a nem interaktív folyamat használatával.
+- Bejelentkezési felhasználónév vagy a helyszíni alapértelmezett felhasználónév lehet (`userPrincipalName`) vagy egy másik attribútum konfigurálva az Azure AD Connectben (`Alternate ID`). Mindkét esetben munkahelyi használható, mert a zökkenőmentes egyszeri Bejelentkezést használ az `securityIdentifier` keresse ki a megfelelő felhasználói objektum az Azure AD-ben a Kerberos-jegy jogcím.
+- Közvetlen egyszeri bejelentkezés az alkalmi szolgáltatása. Ha bármilyen okból nem sikerül, a felhasználói bejelentkezési élmény kerül vissza a normál viselkedési – azaz, a felhasználó kell a jelszavát adja meg a bejelentkezési oldalon.
+- Ha egy alkalmazás (például https://myapps.microsoft.com/contoso.com) továbbítja egy `domain_hint` (OpenID Connect) vagy `whr` (SAML) paraméter – a bérlői azonosító vagy `login_hint` paraméter – a felhasználói azonosító az Azure AD bejelentkezési kérés esetén a felhasználók vannak automatikusan megtörténik a őket belépés felhasználónevek vagy jelszavak nélkül.
+- A felhasználók is kapnak a beavatkozás nélküli bejelentkezést, ha egy alkalmazás (például https://contoso.sharepoint.com) ábráját végpontok az Azure AD - be kéréseket küld, https://login.microsoftonline.com/contoso.com/<..> vagy https://login.microsoftonline.com/<tenant_ID>/<..> – helyett az Azure AD közös végpont – vagyis https://login.microsoftonline.com/common/<...>.
+- Jelentkezzen ki támogatott. Ez lehetővé teszi a felhasználók kiválaszthatják a bejelentkezéshez, automatikus bejelentkezés folyamatban közvetlen egyszeri bejelentkezés használatával automatikusan helyett egy másik Azure AD-fiókot.
+- Office 365-ügyfelek (16.0.8730.xxxx és újabb) nem interaktív folyamat használatával támogatott.
 - Az Azure AD Connect használatával engedélyezhető.
-- Egy szabad szolgáltatást, és nem kell használni az Azure AD bármely fizetős verziója.
-- A webes webböngésző-alapú ügyfelek és a támogató Office-ügyfelek támogatott [modern hitelesítést](https://aka.ms/modernauthga) platformok és böngészők képes a Kerberos-hitelesítés:
+- Egy ingyenes szolgáltatás, és nem kell minden fizetős kiadásban az Azure AD használatát.
+- A webes böngésző alapú ügyfelek és az Office-ügyfelek, amelyek támogatják a támogatott [modern hitelesítést](https://aka.ms/modernauthga) platformon és böngészők képes a Kerberos-hitelesítés:
 
 | OS\Browser |Internet Explorer|Edge|Google Chrome|Mozilla Firefox|Safari|
 | --- | --- |--- | --- | --- | -- 
@@ -71,12 +71,12 @@ Zökkenőmentes SSO kombinálva, vagy a [Jelszókivonat-szinkronizálást](activ
 \*Szükséges [további konfigurációs](active-directory-aadconnect-sso-quick-start.md#browser-considerations)
 
 >[!NOTE]
->Windows 10, a ajánljuk, hogy használjon [az Azure AD Join](../active-directory-azureadjoin-overview.md) a optimális egyszeri bejelentkezéses felhasználói élmény biztosítása az Azure AD számára.
+>A Windows 10 esetén ajánlott használni [az Azure AD Join](../active-directory-azureadjoin-overview.md) az optimális egyszeri bejelentkezést az Azure AD számára.
 
 ## <a name="next-steps"></a>További lépések
 
-- [**Gyors üzembe helyezési** ](active-directory-aadconnect-sso-quick-start.md) - létrehozásához, és az Azure AD zökkenőmentes SSO futtatása.
-- [**Műszaki mélyreható** ](active-directory-aadconnect-sso-how-it-works.md) – Ez a funkció működésének megismerése.
-- [**Gyakran ismételt kérdések** ](active-directory-aadconnect-sso-faq.md) -gyakran feltett kérdésekre adott válaszokat.
-- [**Hibaelhárítás** ](active-directory-aadconnect-troubleshoot-sso.md) -Útmutató: a szolgáltatással kapcsolatos gyakori problémák megoldása.
-- [**UserVoice** ](https://feedback.azure.com/forums/169401-azure-active-directory/category/160611-directory-synchronization-aad-connect) – új funkciókérések tárolásához.
+- [**Gyors üzembe helyezési** ](active-directory-aadconnect-sso-quick-start.md) – és az Azure AD közvetlen egyszeri bejelentkezés futtatása.
+- [**Részletes technikai** ](active-directory-aadconnect-sso-how-it-works.md) – Ez a funkció működésének megismerése.
+- [**Gyakran ismételt kérdések** ](active-directory-aadconnect-sso-faq.md) – a gyakran feltett kérdésekre adott válaszok.
+- [**Hibaelhárítás** ](active-directory-aadconnect-troubleshoot-sso.md) – ismerje meg, a szolgáltatással kapcsolatos gyakori problémák megoldása.
+- [**UserVoice** ](https://feedback.azure.com/forums/169401-azure-active-directory/category/160611-directory-synchronization-aad-connect) – új funkcióra vonatkozó javaslata tárolásához.

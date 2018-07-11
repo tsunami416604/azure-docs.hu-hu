@@ -1,9 +1,9 @@
 ---
-title: A lemezt leválasztani a Linux virtuális Gépet az Azure-ban |} Microsoft Docs
-description: Ismerje meg, egy data lemezt leválasztani a klasszikus telepítési modellel készült Azure virtuális géphez.
+title: Az Azure-beli Linuxos virtuális gép lemez leválasztása |} A Microsoft Docs
+description: Ismerje meg a klasszikus üzemi modellel létrehozott Azure virtuális gépből adatlemez leválasztása.
 services: virtual-machines-linux
 documentationcenter: ''
-author: iainfoulds
+author: cynthn
 manager: jeconnoc
 editor: ''
 tags: azure-service-management
@@ -15,23 +15,23 @@ ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
 ms.date: 02/09/2017
-ms.author: iainfou
-ms.openlocfilehash: 1d4490e21dba139117471bbf270bd33e7503b6b6
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.author: cynthn
+ms.openlocfilehash: 844c5652fd3ffee792c2c6f26b9b04ea4e752230
+ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/05/2018
-ms.locfileid: "30840510"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37932748"
 ---
 # <a name="how-to-detach-a-disk-from-a-linux-virtual-machine"></a>Lemez leválasztása linuxos virtuális gépről
 > [!IMPORTANT] 
-> Azure az erőforrások létrehozására és kezelésére két különböző üzembe helyezési modellel rendelkezik: [Resource Manager és klasszikus](../../../resource-manager-deployment-model.md). Ez a cikk a klasszikus telepítési modell használatát bemutatja. A Microsoft azt javasolja, hogy az új telepítések esetén a Resource Manager modellt használja.
+> Az Azure az erőforrások létrehozásához és használatához két különböző üzembe helyezési modellel rendelkezik: [Resource Manager és klasszikus](../../../resource-manager-deployment-model.md). Ez a cikk ismerteti a klasszikus üzemi modell használatával. A Microsoft azt javasolja, hogy az új telepítések esetén a Resource Manager modellt használja.
 
 [!INCLUDE [howto-detach-disk-windows-linux](../../../../includes/howto-detach-disk-linux.md)]
 
 ## <a name="next-steps"></a>További lépések
-További információk a Linux virtuális gép használata a következő cikkekben:
+Tudjon meg többet a Linux rendszerű virtuális gép használatáról az alábbi cikkeket:
 
-* [Hogyan lehet adatlemezt csatolni egy Linux virtuális gép](attach-disk-classic.md)
-* [A klasszikus telepítési modellt az Azure parancssori felület használatával](https://docs.microsoft.com/cli/azure/get-started-with-az-cli2)
+* [Adatlemez csatlakoztatása Linux rendszerű virtuális gép](attach-disk-classic.md)
+* [Az Azure CLI használatával a klasszikus üzemi modellel](https://docs.microsoft.com/cli/azure/get-started-with-az-cli2)
 

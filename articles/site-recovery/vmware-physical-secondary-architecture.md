@@ -1,20 +1,21 @@
 ---
-title: "Azure Site Recovery architektúrájáról VMware vagy fizikai kiszolgáló replikációs |} Microsoft Docs"
-description: "Ez a cikk áttekintést összetevők és használható, ha replikálása a helyszíni VMware virtuális gépek vagy windowsos/Linuxos fizikai kiszolgálók az Azure Site Recovery másodlagos VMware-hely architektúra"
+title: Az Azure Site Recovery VMware-ről/fizikai kiszolgáló-replikáció architektúrája |} A Microsoft Docs
+description: Ez a cikk áttekintést amikor replikálja a helyszíni VMware virtuális gépek vagy fizikai Windows/Linux kiszolgálók egy másodlagos VMware-helyről az Azure Site Recovery használt összetevőkről és architektúráról
 author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: article
-ms.date: 03/06/2018
+ms.date: 07/06/2018
 ms.author: raynew
-ms.openlocfilehash: 97a990aa3ed9043280888900d8fc7b604b6c22b5
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 04591c57f90e3c540963d77c2213498bf0ad2577
+ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 07/09/2018
+ms.locfileid: "37921401"
 ---
-# <a name="vmware-vmphysical-server-to-vmware-replication-architecture"></a>VMware virtuális gép vagy fizikai kiszolgáló VMware-replikáció architektúra
+# <a name="vmware-vmphysical-server-to-vmware-replication-architecture"></a>VMware virtuális gépek/fizikai kiszolgáló VMware-replikáció architektúrája
 
-Ez a cikk ismerteti, architektúrájának és folyamatainak használható, ha a replikálása, feladatátvétele, és a helyszíni VMware virtuális gépek (VM) vagy egy másodlagos VMware webhely használja a fizikai Windows/Linux rendszerű kiszolgálók helyreállításához [Azure Site Recovery](site-recovery-overview.md).
+Ez a cikk azt ismerteti, architektúrájának és folyamatainak használható replikálni, átadja a feladatokat, és a helyszíni VMware virtuális gépek (VM) vagy fizikai Windows/Linux kiszolgálók egy másodlagos VMware webhely használja a helyreállítása [Azure Site Recovery](site-recovery-overview.md).
 
 
 ## <a name="architectural-components"></a>Az architektúra összetevői
@@ -43,4 +44,4 @@ Ez a cikk ismerteti, architektúrájának és folyamatainak használható, ha a 
 
 ## <a name="next-steps"></a>További lépések
 
-[Állítson be](vmware-physical-secondary-disaster-recovery.md) vész-helyreállítási VMware virtuális gépek és fizikai kiszolgálók egy másodlagos helyre.
+[Állítsa be a](vmware-physical-secondary-disaster-recovery.md) vész-helyreállítási VMware virtuális gépek és fizikai kiszolgálók másodlagos helyre.

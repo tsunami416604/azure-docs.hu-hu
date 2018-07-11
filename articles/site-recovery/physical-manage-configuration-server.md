@@ -5,14 +5,14 @@ services: site-recovery
 author: AnoopVasudavan
 ms.service: site-recovery
 ms.topic: article
-ms.date: 07/01/2018
+ms.date: 07/06/2018
 ms.author: anoopkv
-ms.openlocfilehash: 0b30e4df71bae631366e81ebd2d4e1c467981fbe
-ms.sourcegitcommit: 4597964eba08b7e0584d2b275cc33a370c25e027
+ms.openlocfilehash: 068d2774791995fab1c07c73e6d733a6e09379f1
+ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37341960"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37951176"
 ---
 # <a name="manage-the-configuration-server-for-physical-server-disaster-recovery"></a>Fizikai kiszolgáló vészhelyreállításhoz használt konfigurációs kiszolgáló kezelése
 
@@ -37,7 +37,7 @@ A táblázat összefoglalja az előfeltételeket a helyszíni konfigurációs ki
 | IIS | – Nincs már meglévő alapértelmezett webhelye <br> -Engedélyezése [a névtelen hitelesítés](https://technet.microsoft.com/library/cc731244(v=ws.10).aspx) <br> -Engedélyezése [FastCGI](https://technet.microsoft.com/library/cc753077(v=ws.10).aspx) beállítás  <br> – Nincs már meglévő webhely vagy alkalmazás 443-as porton<br>|
 | Hálózati adapter típusa | VMXNET3 (Ha a VMware virtuális gépként telepített) |
 | IP-cím típusa | Statikus |
-| Internetelérés | A kiszolgálónak az URL-hozzáférésre van szüksége: <br> - \*.accesscontrol.windows.net<br> - \*.backup.windowsazure.com <br>- \*.store.core.windows.net<br> - \*.blob.core.windows.net<br> - \*.hypervrecoverymanager.windowsazure.com <br> - dc.services.visualstudio.com <br> - https://cdn.mysql.com/archives/mysql-5.5/mysql-5.5.37-win32.msi (horizontális felskálázási Folyamatkiszolgáló nem szükséges) <br> - time.nist.gov <br> - time.windows.com |
+| Internetelérés | A kiszolgálónak az URL-hozzáférésre van szüksége: <br> - \*.accesscontrol.windows.net<br> - \*.backup.windowsazure.com <br>- \*.store.core.windows.net<br> - \*.blob.core.windows.net<br> - \*.hypervrecoverymanager.windowsazure.com <br> - https://management.azure.com <br> -*. services.visualstudio.com <br> - https://dev.mysql.com/get/Downloads/MySQLInstaller/mysql-installer-community-5.7.20.0.msi (horizontális felskálázási Folyamatkiszolgáló nem szükséges) <br> - time.nist.gov <br> - time.windows.com |
 | Portok | 443 (vezérlőcsatorna-vezénylés)<br>9443 (Adatátvitel)|
 
 ## <a name="download-the-latest-installation-file"></a>Töltse le a legújabb telepítési fájlját

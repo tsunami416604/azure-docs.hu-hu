@@ -1,6 +1,6 @@
 ---
-title: Platformok és az eszközök adattudomány a csapat projektek - Azure |} Microsoft Docs
-description: Részletezi, valamint az adatok és analitikák rendelkezésére álló erőforrások Team adatok tudományos folyamat szabványosítása vállalatok ismerteti.
+title: Platformok és eszközök adatelemzéshez team projects – Azure |} A Microsoft Docs
+description: Elemenként mutatja be, és a csoportos adatelemzési folyamat a szabványosításával vállalatok számára rendelkezésre álló adatok és analitika forrásokat ismerteti.
 documentationcenter: ''
 author: deguhath
 manager: cgronlun
@@ -14,119 +14,119 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/04/2017
 ms.author: deguhath
-ms.openlocfilehash: f447378816f137517a3d542a27841d0cab351473
-ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
+ms.openlocfilehash: 4b0c5d55c8a62dadbe11382997f4d258e66e1a31
+ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37112680"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37951141"
 ---
-# <a name="platforms-and-tools-for-data-science-team-projects"></a>Platformok és az adatok tudományos csapatprojektek eszközök
+# <a name="platforms-and-tools-for-data-science-team-projects"></a>Platformok és eszközök a data science csapatprojektek
 
-A Microsoft biztosít felhő vagy a helyszíni platformok adatok és analitikák szolgáltatások és erőforrások teljes skáláját. Ahhoz, hogy a végrehajtási adatok tudományos projektben, hatékony és méretezhető telepíthető. Adatok tudományos projektek valósít meg olyan trackable csoportjai útmutatásért verzió vezérelt, és által biztosított együttműködési módot a [Team adatok tudományos folyamat](overview.md) (TDSP).  A személyzet szerepkörök és a kapcsolódó feladatok szabványosításával egy adatok tudományos csapat a folyamatban végrehajtott áttekintését lásd: [Team adatok tudományos folyamat szerepköröket és feladatokat](roles-tasks.md).
+A Microsoft cloud vagy a helyszíni rendszerek egy teljes spektruma elérhető data és analitikai szolgáltatásokat és erőforrásokat kínál. Győződjön meg arról, az adatelemzési projektek végrehajtásának hatékony és méretezhető telepíthetők. Útmutató a végrehajtási adatelemzési projektek egy trackable csapatok, verzió ellenőrzött, és remek biztosítja a [csoportos adatelemzési folyamat](overview.md) (TDSP).  A személyzet szerepkörök és hozzájuk kapcsolódó részfeladatokat szabványosításával egy data science csapat ezt a folyamatot a kezelt áttekintését lásd: [csoportos adatelemzési folyamat szerepkörök és feladatok](roles-tasks.md).
 
-Az elérhető adatok tudományos csoportok használatával a TDSP adatok és analitikák szolgáltatások a következők:
+A rendelkezésre álló adatok adattudománnyal foglalkozó csapatai TDSP használata az adatok és analitika szolgáltatások a következők:
 
-- Adatok tudományos virtuális gép (Windows és Linux CentOS)
-- A HDInsight Spark-fürtök
+- Adatelemző virtuális gépek (Windows és Linux CentOS)
+- HDInsight Spark-fürtök
 - SQL Data Warehouse
 - Azure Data Lake
-- A HDInsight Hive-fürtök
+- Hive a HDInsight-fürtök
 - Azure File Storage
 - SQL Server 2016 R Services
 
-Ez a dokumentum azt röviden erőforrásokat leíró, és adja meg az oktatóanyagok és a TDSP csoportokkal közzétett forgatókönyvek mutató hivatkozásokat tartalmaz. Ezek segítségével megtudhatja, hogyan használhatja őket részletes máris használhatja azokat az intelligens alkalmazásokat hozhatnak létre. Ezeket az erőforrásokat további információk a termék oldalain érhető el. 
+Ez a dokumentum azt röviden ismertetik az erőforrások és oktatóanyagok és útmutatók a TDSP csapatok közzétette mutató hivatkozásokat tartalmaznak. Ezek segítségével megtudhatja, hogyan használhat lépésről lépésre, és azokat az intelligens alkalmazásokat hozhat létre használatának megkezdéséhez. Ezeket az erőforrásokat a további információk termék oldalakon érhetők el. 
 
-## <a name="data-science-virtual-machine-dsvm"></a>Adatok tudományos virtuális gép (DSVM)
+## <a name="data-science-virtual-machine-dsvm"></a>Adatelemző virtuális gép (DSVM)
 
-Az adatok tudományos virtuális gép Windows és Linux Microsoft által kínált adatok tudományos modellezési és fejlesztési tevékenységek népszerű eszközöket tartalmazza. Eszközök, mint tartalmazza:
+A Windows és a Linux, a Microsoft által kínált az adatelemző virtuális gép az adatelemzési modellezéshez és fejlesztéshez tevékenységeket népszerű eszközöket tartalmaz. Eszközök például tartalmazza:
 
-- Microsoft R Server Developer Edition 
+- A Microsoft R Server Developer Edition 
 - Anaconda Python elosztási
-- A Python és R Jupyter notebookok 
-- A Visual Studio Community Edition Python és R eszközök a Windows / Linux Holdas
-- A Windows a Power BI desktop
-- SQL Server 2016 Developer kiadásában a Windows / Linux Postgres
+- A Jupyter notebooks, a Python- és R 
+- A Visual Studio Community Edition kiadást a Python és az R-eszközök a Windows / Linux Eclipse
+- A Windows a Power BI desktopban
+- Az SQL Server 2016 Developer Edition verziót a Windows / Linux Postgres
 
-Emellett **ML és AI eszközök** CNTK (egy forrás nyissa meg a részletes tanulási eszközkészlet Microsoft), xgboost, mxnet és Vowpal Wabbit, például.
+Ezenkívül **gépi Tanulási és AI-eszközök** CNTK (egy nyílt forráskódú Mélytanulási eszközkészlet a Microsoft), illetve xgboost, mxnet és Vowpal Wabbit, például.
 
-Jelenleg DSVM érhető el **Windows** és **Linux CentOS** operációs rendszerek. Válassza ki a DSVM (Processzormagok száma) és a memória mennyiségét, amely azt tervezi, hogy hajtható végre rajta adatok tudományos projektek igények alapján méretét. 
+Dsvm-hez jelenleg elérhető **Windows** és **Linux CentOS** operációs rendszereket. Válassza ki a dsvm-hez (a Processzormagok száma) és a memória mennyiségét, amelyre hajthat végre, az adatelemzési projektek igényeinek megfelelően méretét. 
 
-A Windows kiadását DSVM további információkért lásd: [Microsoft adatok tudományos virtuális gép](https://azure.microsoft.com/marketplace/partners/microsoft-ads/standard-data-science-vm/) az Azure piactéren. A DSVM Linux-kiadás, lásd: [Linux adatok tudományos virtuális gép](https://azure.microsoft.com/marketplace/partners/microsoft-ads/linux-data-science-vm/).
+A DSVM Windows-kiadását további információkért lásd: [Microsoft Data Science virtuális gép](https://azure.microsoft.com/marketplace/partners/microsoft-ads/standard-data-science-vm/) az Azure marketplace-en. A DSVM Linux-kiadását, lásd: [Linux rendszerű adatelemző virtuális gép](https://azure.microsoft.com/marketplace/partners/microsoft-ads/linux-data-science-vm/).
 
-Megtudhatja, hogyan hajthat végre a közös adatok tudományos feladatokat a DSVM a hatékony, lásd: [tíz lehetősége van az adatok tudományos virtuális gép](../data-science-virtual-machine/vm-do-ten-things.md)
+Megtudhatja, hogyan hajthat végre a gyakori adatelemzési feladatok némelyikét a DSVM hatékonyan, lásd: [tíz dolog, amire alkalmas az adatelemző virtuális gép](../data-science-virtual-machine/vm-do-ten-things.md)
 
 
 ## <a name="azure-hdinsight-spark-clusters"></a>Az Azure HDInsight Spark-fürtök
 
-Apache Spark egy nyílt forráskódú párhuzamos feldolgozása keretrendszer, amely támogatja a memórián belüli feldolgozást a big data elemző alkalmazások teljesítményének növelése érdekében. A Spark program sebességét, a könnyű, valamint a kifinomult analytics lett tervezve. A Spark memóriában tárolt számítási képességei jól funkcionálnak a machine learning iteratív algoritmusaival és a graph számítások. Spark is az Azure Blob storage (WASB) szolgáltatással kompatibilis, így a meglévő Azure-ban tárolt adatok könnyen dolgozhatók Spark használatával.
+Az Apache Spark egy nyílt forráskódú párhuzamos adatfeldolgozási keretrendszer, amely támogatja a memórián belüli feldolgozást a big data elemző alkalmazások teljesítményének növelése érdekében. A Spark feldolgozási motorjára a nagy sebesség, a könnyű használat és a kifinomult elemzési. Spark memóriában tárolt számítási képességei győződjön meg arról, hogy a jó választás, és a graph számítások iteratív algoritmusaival együtt a machine Learning szolgáltatásban. A Spark az is kompatibilis Azure Blob storage (WASB), a, így az Azure-ban tárolt meglévő adatok is a Spark használatával.
 
-Amikor Spark-fürtöt hoz létre a HDInsightban, olyan Azure számítási erőforrásokat is létrehoz, amelyeken a Spark telepítve és konfigurálva van. Hdinsight Spark-fürt létrehozása nagyjából 10 percet vesz igénybe. Az Azure Blob storage feldolgozandó adatok tárolására. Az Azure Blob Storage használata a fürt további információkért lásd: [használatát a HDFS-kompatibilis Azure Blob storage hadooppal a Hdinsightban](../../hdinsight/hdinsight-hadoop-use-blob-storage.md).
+Amikor Spark-fürtöt hoz létre a HDInsightban, olyan Azure számítási erőforrásokat is létrehoz, amelyeken a Spark telepítve és konfigurálva van. A HDInsight Spark-fürt létrehozása nagyjából 10 percet tart. Store az adatok Azure Blob storage-ban a feldolgozásra. Az Azure Blob Storage használata a fürt további információkért lásd: [használja a HDFS-kompatibilis Azure Blob storage a HDInsight Hadoop-keretrendszerrel](../../hdinsight/hdinsight-hadoop-use-blob-storage.md).
 
-TDSP csapat a Microsoft tett közzé két végpont forgatókönyvek adatok tudományos megoldások létrehozásához Azure HDInsight Spark-fürtök használatáról Python és az egyéb Scala egy használatával. További információ az Azure HDInsight **Spark-fürtjei**, lásd: [– áttekintés: Apache Spark on HDInsight Linux rendszeren](../../hdinsight/spark/apache-spark-overview.md). Megtudhatja, hogyan hozhat létre egy tudományos megoldás használatával végzett **Python** az Azure HDInsight Spark-fürtöt, tekintse meg a [áttekintése adatok tudományos Spark on Azure HDInsight használatának](spark-overview.md). Megtudhatja, hogyan hozhat létre egy tudományos megoldás használatával végzett **Scala** az Azure HDInsight Spark-fürtöt, tekintse meg a [Scala és Spark az Azure használatával Adattudomány](scala-walkthrough.md). 
+TDSP-csapat a Microsoft közzétette az adatelemzési megoldások, Azure HDInsight Spark-fürtök használatával két végpontok közötti forgatókönyvek közül egy a Python és az egyéb Scala. További információ az Azure HDInsight **Spark-fürtök**, lásd: [áttekintés: Apache Spark on HDInsight Linux](../../hdinsight/spark/apache-spark-overview.md). Megtudhatja, hogyan hozhat létre egy data science megoldás használatával **Python** az Azure HDInsight Spark-fürt látható [áttekintése az adatelemzés az Azure HDInsight Spark használatával](spark-overview.md). Megtudhatja, hogyan hozhat létre egy data science megoldás használatával **Scala** az Azure HDInsight Spark-fürt látható [Scala és Spark használata az Azure Data Science](scala-walkthrough.md). 
 
 
 ##  <a name="azure-sql-data-warehouse"></a>Azure SQL Data Warehouse
 
-Az SQL Data Warehouse lehetővé teszi a számítási erőforrások egyszerűen és méretezhető (másodpercben), túlzott fizető, vagy túlzott kiosztása nélkül. Az egyedi a beállítást a számítási erőforrások, felkínálva a szabadságot, hogy jobb kezelése érdekében a felhő költségek is biztosít. Méretezhető számítási erőforrások telepítése lehetővé teszi az adatok az Azure SQL Data Warehouse érdekében. Tárolási költségek minimálisak, és futtathatja számítási csak az elemezni kívánt adatkészletek részeit. 
+Az Azure SQL Data Warehouse lehetővé teszi a számítási erőforrások egyszerűen és skálázását (másodpercben), túlterhelt túltelepítés és túlfizetés nélkül. Szüneteltetés használt számítási erőforrások, így a felhőköltségek kontrollja szabadon egyedülálló lehetőséget is kínál. Méretezhető számítási erőforrások üzembe helyezése lehetővé teszi az összes adatot betöltheti a az Azure SQL Data Warehouse lehetővé teszi. Tárolási költségek minimálisak, és futtathatja számítási csak azon részei, amely az elemezni kívánt adatkészlet. 
 
-Azure SQL Data Warehouse további információkért tekintse meg a [SQL Data Warehouse](https://azure.microsoft.com/services/sql-data-warehouse) webhelyet. Megtudhatja, hogyan hozhat létre az SQL Data Warehouse-végpontok közötti speciális elemzési megoldásairól, lásd: [a csapat adatok tudományos folyamat működés közben: az SQL Data Warehouse](sqldw-walkthrough.md).
+Az Azure SQL Data Warehouse további információkért lásd: a [SQL Data Warehouse](https://azure.microsoft.com/services/sql-data-warehouse) webhelyén. Az SQL Data Warehouse teljes körű, fejlett elemzési megoldásokat hozhat létre, lásd: [a csoportos adatelemzési folyamat működés közben: az SQL Data Warehouse](sqldw-walkthrough.md).
 
 
 ## <a name="azure-data-lake"></a>Azure Data Lake
 
-Az Azure data lake van, mint egy vállalati szintű tárház adatgyűjtés egyetlen helyen, bármely bevonja vagy a séma éppen bevezetett előtt minden típusú. Erre a rugalmasságra lehetővé minden típusú adatok a data lake, függetlenül annak méretét vagy a struktúra vagy okozhatnak milyen gyorsan kell tartani. A szervezetek használhatja Hadoop, vagy a ezeket az adatokat mintákra található speciális elemzésekre tavakat. Adatok tavakat is működhetnek alacsonyabb költségű adatok előkészítése előtt az adatok a felfedezhetőséget és áthelyezni, ha az egy data warehouse-tárházat.
+Az Azure data lake van, mint egy vállalati szintű adattár, bármilyen típusú adat egyetlen helyen, bármely bevonja vagy a séma éppen bevezetett előtt gyűjteni. Ez rugalmasságot lehetővé teszi, hogy bármilyen típusú adat a data lake, függetlenül a méret vagy struktúra, vagy milyen gyors adatbetöltés sebességétől kell tartani. Szervezetek használhatják majd a Hadoop, vagy keresse meg a speciális analitikai ezeket az adatokat Lake mintáit. Data Lake tárolók segédanyagként is használható vagy a alacsonyabb költségű adatelőkészítés előtt a felfedezhetőséget az adatokat, és áthelyezi a data warehouse-bA.
 
-További információ az Azure Data Lake: [Introducing Azure Data Lake](https://azure.microsoft.com/blog/introducing-azure-data-lake/). Megtudhatja, hogyan hozhat létre Azure Data Lake egy méretezhető végpont adatok tudományos megoldást, lásd: [Azure Data Lake méretezhető Adattudomány: egy végpont forgatókönyv](data-lake-walkthrough.md)
+További információ az Azure Data Lake: [Introducing Azure Data Lake](https://azure.microsoft.com/blog/introducing-azure-data-lake/). Ismerje meg, hogyan hozhat létre egy méretezhető teljes körű adatelemzési megoldással az Azure Data Lake, lásd: [méretezhető adatelemzés az Azure Data Lake: egy végpontok közötti forgatókönyv](data-lake-walkthrough.md)
 
 
-## <a name="azure-hdinsight-hive-hadoop-clusters"></a>Az Azure HDInsight Hive (Hadoop) fürtök
+## <a name="azure-hdinsight-hive-hadoop-clusters"></a>Az Azure HDInsight Hive (Hadoop) fürtön
 
-A Hadoop, amely lehetővé teszi a adatainak összefoglalója, lekérdezését és a HiveQL, hasonló SQL lekérdezésnyelvet használatával adatelemzési adatraktárrendszer Apache Hive. Hive interaktív módon az adatokba, vagy újrafelhasználható kötegelt feldolgozási feladatok létrehozására használható.
+Az Apache Hive-egy rendszer data warehouse hadoophoz, amely adatösszegzéseket, lekérdezéséhez és a HiveQL, egy hasonló, az SQL-lekérdezési nyelv használata az adatok elemzése lehetővé teszi. Hive használható az adatok interaktív feltárása, vagy hozhat létre újrahasznosítható kötegelt feldolgozás feladatokat.
 
-Hive lehetővé teszi a nagy mértékben strukturálatlan adatok szerkezetének. A struktúra meghatározása után használhatja a Hive nélkül használja, vagy nem ismert, Java vagy MapReduce a Hadoop fürtök tárolt adatokat lekérdezni. HiveQL (a Hive query language) lehetővé teszi az utasításokat, amelyek hasonlóak a T-SQL-lekérdezések írása.
+Hive teszi projektstruktúra nagymértékben strukturálatlan adatokon. Struktúráját határozza meg, miután a Hive használatával, vagy még akkor is tudom, Java vagy a MapReduce nélkül kérdezheti le az adatokat a Hadoop-fürt. HiveQL (a Hive query language) lehetővé teszi az utasításokat, amelyek hasonlóak a T-SQL lekérdezéseket írni.
 
-Adatszakértőkön, a Hive futtathat Python User-Defined funkciókat (UDF) rekordok feldolgozásához Hive-lekérdezéseket. Ez a lehetőség jelentősen kiterjeszti az adatok elemzése a Hive-lekérdezések képességet. Pontosabban, lehetővé teszi a méretezhető szolgáltatás mérnöki legtöbbször nem ismeri nyelvű elvégzésére adatszakértőkön: az SQL-szerű HiveQL és a Python. 
+Adatszakértők Hive Python User-Defined függvények (UDF-EK) futtathat a Hive-lekérdezések rekordok feldolgozásához. Ez a képesség jelentősen kibővíti az adatok elemzése a Hive-lekérdezések képességét. Pontosabban, lehetővé teszi az adatszakértők megalapozottságát biztosító előzetes tájékozódást méretezhető funkciófejlesztési nyelvű többnyire nem ismeri: az SQL-szerű HiveQL- és Python. 
 
-Azure HDInsight Hive fürtökön további információkért lásd: [használata Hive és a HiveQL hadooppal a Hdinsightban](../../hdinsight/hadoop/hdinsight-use-hive.md). Az Azure HDInsight Hive fürtök egy méretezhető végpont adatok tudományos megoldás kiépítését, lásd: [a csapat adatok tudományos folyamat működés közben: HDInsight Hadoop-fürtök használata](hive-walkthrough.md).
+Az Azure HDInsight Hive-fürtök további információkért lásd: [Hive és a hadooppal a HDInsight HiveQL](../../hdinsight/hadoop/hdinsight-use-hive.md). Ismerje meg, hogyan hozhat létre egy méretezhető teljes körű adatelemzési megoldás az Azure HDInsight Hive-fürtöket, lásd: [a csoportos adatelemzési folyamat működés közben: HDInsight Hadoop-fürtöket használó](hive-walkthrough.md).
 
 
 ## <a name="azure-file-storage"></a>Azure File Storage 
 
-Az Azure File Storage egy olyan szolgáltatás, a felhőben, a standard Server Message Block (SMB) protokollt használó fájlmegosztások által. Az SMB 2.1 és az SMB 3.0 protokollt is támogatja. Az Azure File Storage szolgáltatással költséges újraírások nélkül, gyorsan megoldható a fájlmegosztásra támaszkodó, régi típusú alkalmazások áttelepítése az Azure-ra. Az Azure virtuális gépeken vagy felhőszolgáltatásában, esetleg helyszíni ügyfeleken üzemelő alkalmazások fájlmegosztást csatlakoztathatnak a felhőben. Ez a megosztás hasonló ahhoz a csatlakoztatott SMB-megosztáshoz, amelyet az asztali alkalmazások használnak. Ezután bármennyi alkalmazás-összetevő egyszerre csatlakoztathatja a File Storage-megosztást, és hozzá is férhet.
+Az Azure File Storage olyan szolgáltatás, a felhőben, a szabványos Server Message Block (SMB) protokollt használó fájlmegosztások. Az SMB 2.1 és az SMB 3.0 protokollt is támogatja. Az Azure File Storage szolgáltatással költséges újraírások nélkül, gyorsan megoldható a fájlmegosztásra támaszkodó, régi típusú alkalmazások áttelepítése az Azure-ra. Az Azure virtuális gépeken vagy felhőszolgáltatásában, esetleg helyszíni ügyfeleken üzemelő alkalmazások fájlmegosztást csatlakoztathatnak a felhőben. Ez a megosztás hasonló ahhoz a csatlakoztatott SMB-megosztáshoz, amelyet az asztali alkalmazások használnak. Ezután bármennyi alkalmazás-összetevő egyszerre csatlakoztathatja a File Storage-megosztást, és hozzá is férhet.
 
-Különösen hasznos az adatok tudományos projektek azt a képességet hozzon létre egy Azure fájltároló projekt adatok megosztása a projekt csapattagok helyként. Azok majd az az Azure file storage az adatok ugyanazon példányát hozzáféréssel rendelkezik. A fájltároló ahhoz, hogy a projekt végrehajtása során létrehozott szolgáltatáskészletek szolgáltatást is alkalmazhatja. Ha a projekt egy ügyfél engagement, az ügyfelek számára a saját Azure-előfizetéshez a projekt adatok és a szolgáltatások megosztott Önnel egy az Azure file storage hozhat létre. Így az ügyfél rendelkezik teljes körű hozzáférést engedélyezzenek a projekt adategységeket. További információ az Azure File Storage: [Ismerkedés az Azure File storage on Windows](https://azure.microsoft.com/documentation/articles/storage-dotnet-how-to-use-files) és [Azure File Storage használata Linux](../../storage/files/storage-how-to-use-files-linux.md).
+Adatelemzési projektek különösen hasznos a rendszer azon képessége, egy Azure-beli tároló létrehozása, a hely a projekt adatok megosztása a projekt csapatával. Mindegyik majd hozzáféréssel rendelkezik az adatok egyazon példányát az Azure file storage-ban. Ez a file storage a projekt végrehajtása során létrehozott szolgáltatáskészleteket megosztása szolgáltatást is alkalmazhatja. Ha a projekt egy ügyfél engagement, az ügyfelek egy az Azure file storage a saját Azure-előfizetéshez megosztani a projekt adatokat és szolgáltatásokat hozhat létre. Így az ügyfél a projekt adategységek teljes hozzáféréssel rendelkezik. További információ az Azure File Storage: [a Windows Azure File storage használatának első lépései](https://azure.microsoft.com/documentation/articles/storage-dotnet-how-to-use-files) és [Azure File Storage használata linuxszal](../../storage/files/storage-how-to-use-files-linux.md).
 
 
 ## <a name="sql-server-2016-r-services"></a>SQL Server 2016 R Services
 
-(Az adatbázis-) R biztosítanak a platform fejlesztéséhez és telepítéséhez is nyújt új betekintést intelligens alkalmazásokat. A hatékony és erőteljes R nyelvi, többek között a csomagok számát az R Közösség által biztosított modellek létrehozásához, és hozza létre az SQL Server-adatok előrejelzéseket használhatja. R szolgáltatások (az adatbázis-) az R nyelv integrálható az SQL Server, mert a analytics megközelíti az adatokat, így a költségeket és a biztonsági kockázatok megköveteli az adatok nem tartanak.
+R Services (adatbázison belüli) adja meg a platform fejlesztéséhez és üzembe helyezéséhez intelligens alkalmazásokat, amelyek új elemzéseket is. Használhatja a sokoldalú, hatékony R nyelven, ideértve például az R-Közösség által biztosított csomagok számát modelleket hozhat létre és előrejelzések készítése az SQL Server-adatok alapján. R Services (adatbázison belüli) integrálható az SQL Server az R nyelvvel, mert analytics közel az adatokat, így a költségek és az adatok áthelyezését a kapcsolódó biztonsági kockázatok nem őrzi meg.
 
-R-szolgáltatások (az adatbázis-) támogatja az SQL Server-eszközök és technológiák átfogó készlete nyílt forráskódú R nyelvét. Kiváló teljesítmény, biztonságra, megbízhatóságra és kezelhetőségre biztosítanak. R megoldások kényelmes és ismerős eszközökkel is telepíthet. Az üzemi alkalmazások adhatja az R-futtatókörnyezet, és előrejelzéseket és a látványelemek Transact-SQL használatával. A méretezési és az R-megoldások teljesítményének javítása érdekében használja a ScaleR könyvtárak is. További információkért lásd: [SQL Server R szolgáltatások](https://msdn.microsoft.com/library/mt604845.aspx)
+R Services (adatbázison belüli) támogatja a nyílt forráskódú R nyelvvel, az SQL Server-eszközök és technológiák átfogó készletével. Kiváló teljesítmény, biztonság, megbízhatóság és kezelhetőségi kínálnak. R-alapú megoldások kényelmes és ismerős eszközök használatával is telepítheti. Az éles alkalmazások hívja az R futtatókörnyezettel és előrejelzéseket és a Vizualizációk Transact-SQL használatával. Is használhatja a ScaleR-kódtárakat a méretezési csoport és az R-alapú megoldások teljesítményének javítása érdekében. További információkért lásd: [SQL Server R Services](https://docs.microsoft.com/sql/advanced-analytics/r/sql-server-r-services).
 
-A TDSP csapat a Microsoft tett közzé két végpont forgatókönyvek, amelyek bemutatják, hogyan hozhat létre a tudományos megoldás az SQL Server 2016 R Servicesben: egyet az R-t használó programozók és egy SQL-fejlesztőknek. A **R-t használó programozók**, lásd: [Adattudomány végpont forgatókönyv](https://msdn.microsoft.com/library/mt612857.aspx). A **SQL fejlesztők**, lásd: [SQL-fejlesztőknek (Útmutató) adatbázis-Advanced Analytics](https://msdn.microsoft.com/library/mt683480.aspx).
+A TDSP csapat a Microsoft tett közzé két végpontok közötti forgatókönyvek, amelyek bemutatják az SQL Server 2016 R Services adatelemzési megoldások: egy R-programozók, egy, az SQL-fejlesztők számára. A **R-programozók**, lásd: [Data Science végpontok közötti forgatókönyv](https://docs.microsoft.com/sql/advanced-analytics/tutorials/walkthrough-data-science-end-to-end-walkthrough). A **SQL fejlesztők**, lásd: [(oktatóanyag) fejlesztőknek SQL adatbázis-Advanced Analytics](https://docs.microsoft.com/sql/advanced-analytics/tutorials/sqldev-in-database-r-for-sql-developers).
 
 
-## <a name="appendix"></a>A függelék: Eszközök adatok tudományos projektek beállítása
+## <a name="appendix"></a>A függelék: Eszközök adatelemzési projektek beállítása
 
-### <a name="install-git-credential-manager-on-windows"></a>A Windows Git hitelesítőadat-kezelő telepítése
+### <a name="install-git-credential-manager-on-windows"></a>A Git Credential Manager telepíthető Windows
 
-Ha a TDSP következő **Windows**, telepítenie kell a **Git hitelesítőadat-kezelő (GCM)** a Git adattárak folytatott kommunikációhoz. GCM telepítéséhez először telepítendő **Chocolaty**. Chocolaty és a GCM telepítéséhez futtassa a következő parancsokat a Windows Powershellt, egy **rendszergazda**:  
+Ha az a TDSP **Windows**, telepítenie kell a **Git Credential Manager (GCM)** kommunikálni a Git-tárházakat. GCM telepíteni, először telepítenie kell **Chocolaty**. Chocolaty és a GCM telepítéséhez futtassa az alábbi parancsokat a Windows Powershellt, egy **rendszergazda**:  
 
     iwr https://chocolatey.org/install.ps1 -UseBasicParsing | iex
     choco install git-credential-manager-for-windows -y
     
 
-### <a name="install-git-on-linux-centos-machines"></a>Telepítse a Git gépeken Linux (CentOS)
+### <a name="install-git-on-linux-centos-machines"></a>A Git telepítése (CentOS) Linux rendszerű gépeken
 
-A következő parancsot bash Git telepítése Linux (CentOS) gépeken:
+A következő paranccsal bash Git telepítéséhez (CentOS) Linuxos gépeken:
 
     sudo yum install git
 
 
-### <a name="generate-public-ssh-key-on-linux-centos-machines"></a>Linux (CentOS) gépeken nyilvános SSH-kulcs létrehozása
+### <a name="generate-public-ssh-key-on-linux-centos-machines"></a>(CentOS) Linuxos gépeken a nyilvános SSH-kulcs létrehozása
 
-Linux (CentOS) gépek használatakor a git-parancsok futtatásához kell hozzáadnia a nyilvános SSH-kulcs a számítógép a VSTS-kiszolgálóhoz, hogy a VSTS-kiszolgáló felismeri ezen a számítógépen. Először meg kell hozzon létre egy nyilvános SSH-kulcsot, és a kulcs hozzáadása a VSTS biztonsági beállításait tartalmazó lapra a nyilvános SSH-kulcsok. 
+(CentOS) Linux-gépek használatakor a git-parancsok futtatásához kell hozzáadnia a nyilvános SSH-kulcsot a gép a VSTS-kiszolgálóhoz, hogy a gép a VSTS-kiszolgáló felismer. Először hozzon létre egy nyilvános SSH-kulcsot, és a kulcs hozzáadása a VSTS-biztonsági beállítások oldalon nyilvános SSH-kulcsokat. 
 
 - Az SSH-kulcs létrehozásához futtassa az alábbi két parancsot: 
 
@@ -136,20 +136,20 @@ Linux (CentOS) gépek használatakor a git-parancsok futtatásához kell hozzáa
 ![](./media/platforms-and-tools/resources-1-generate_ssh.png)
 
 - Másolja a teljes ssh kulcs beleértve *ssh-rsa*. 
-- Jelentkezzen be a VSTS-kiszolgálóra. 
-- Kattintson a **< név\>**  a lapon, majd kattintson a jobb felső sarokban, **biztonsági**. 
+- Jelentkezzen be a VSTS-kiszolgáló. 
+- Kattintson a **< név\>**  a lapot, majd kattintson a jobb felső sarokban található **biztonsági**. 
     
     ![](./media/platforms-and-tools/resources-2-user-setting.png)
 
-- Kattintson a **nyilvános SSH-kulcsok**, és kattintson a **+ Hozzáadás**. 
+- Kattintson a **nyilvános SSH-kulcsokat**, és kattintson a **+ Hozzáadás**. 
 
     ![](./media/platforms-and-tools/resources-3-add-ssh.png)
 
-- Beillesztés az ssh kulcs legutóbb másolt a szövegmezőbe, és mentse el.
+- Illessze be az ssh kulcs imént másolt a szövegmezőbe, és mentse el.
 
 
 ## <a name="next-steps"></a>További lépések
 
-Végpont forgatókönyvek, amelyek azt mutatják, a folyamat lépései teljes **meghatározott forgatókönyvek** is rendelkezésre állnak. Szerepel a listában, és kapcsolódik a miniatűr leírásokat a [példa forgatókönyvek](walkthroughs.md) témakör. Ezek bemutatják, hogyan lehet felhő, a helyszíni eszközök és szolgáltatások egyesítése munkafolyamat vagy csővezeték intelligens alkalmazás létrehozása. 
+Teljes, végpontok közötti forgatókönyvek, amelyek bemutatják, a folyamat összes lépését **meghatározott forgatókönyvek** is rendelkezésre állnak. Felsorolt, és a miniatűr leírásokat tartalmazó társított a [példa forgatókönyvek](walkthroughs.md) témakör. Ezek bemutatják, hogyan kombinálhatja a felhőbeli, helyszíni eszközöket és szolgáltatásokat, munkafolyamat vagy folyamat, intelligens alkalmazások létrehozására. 
 
-Az adatok tudományos folyamatban lépések végrehajtása, amelyek használják az Azure Machine Learning Studióban, tekintse meg a [Azure ML](http://aka.ms/datascienceprocess) képzési.
+Példák a csoportos adatelemzési folyamat a lépések végrehajtása, amelyek használják az Azure Machine Learning Studióban az [az Azure ML](http://aka.ms/datascienceprocess) képzési terv.

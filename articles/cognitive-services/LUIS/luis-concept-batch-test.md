@@ -9,12 +9,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 07/06/2018
 ms.author: v-geberr
-ms.openlocfilehash: d4f00e2470bac08c333411646dca90b3e2105073
-ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
+ms.openlocfilehash: 0e484a6cae1b56983c4854664088ada8aa504568
+ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2018
-ms.locfileid: "37900480"
+ms.lasthandoff: 07/09/2018
+ms.locfileid: "37918815"
 ---
 # <a name="batch-testing-in-luis"></a>A Batch a LUIS tesztelése
 
@@ -33,6 +33,10 @@ Küldje el a fájlt egy kötegfájlban utterances, más néven egy *adatkészlet
 |1000 utterances vagy kevesebb|
 
 * Ismétlődések karakterlánc pontos egyezést, nem a rendszer először tokenekre bontott egyezéstípust minősülnek. 
+
+## <a name="entities-allowed-in-batch-tests"></a>Entitások engedélyezett a batch-tesztek
+Entitások például az egyszerű, hierarchikus szülők és összetett. Az ilyen jellegű összes entitások jelennek meg entitások szűrő batch teszt, akkor sem, ha nincs megfelelő entitásokat a parancsfájlba.
+
 
 <a name="json-file-with-no-duplicates"></a>
 <a name="example-batch-file"></a>

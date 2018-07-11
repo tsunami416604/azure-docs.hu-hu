@@ -1,6 +1,6 @@
 ---
-title: VMware virtuális gépek vagy fizikai kiszolgálók egy másodlagos helyre, az Azure Site Recovery vész-helyreállítási beállítása |} Microsoft Docs
-description: Megtudhatja, hogyan állíthatja be a VMware virtuális gépeket, vagy a Windows és Linux fizikai kiszolgálókon, egy másodlagos helyre, az Azure Site Recovery vész-helyreállítási.
+title: VMware virtuális gépek vagy fizikai kiszolgálók másodlagos helyre az Azure Site Recoveryvel történő vészhelyreállításának beállítása |} A Microsoft Docs
+description: Ismerje meg, hogyan állítható be, valamint VMware virtuális gépeket, vagy a Windows és Linux rendszerű fizikai kiszolgálókat, az Azure Site Recovery egy másodlagos helyre.
 services: site-recovery
 author: nsoneji
 manager: gauarvd
@@ -8,244 +8,244 @@ ms.service: site-recovery
 ms.workload: backup-recovery
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 03/08/2018
+ms.date: 07/06/2018
 ms.author: raynew
-ms.openlocfilehash: 7d172b89a0846c8ccf19896400e127a3bec0b55e
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 251e2b1f8785408bf441bcbcf3d0fcbdd767a358
+ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/09/2018
-ms.locfileid: "29852217"
+ms.lasthandoff: 07/09/2018
+ms.locfileid: "37917778"
 ---
-# <a name="set-up-disaster-recovery-of-on-premises-vmware-virtual-machines-or-physical-servers-to-a-secondary-site"></a>Helyszíni VMware virtuális gépek vagy fizikai kiszolgálók egy másodlagos helyre vész-helyreállítási beállítása
+# <a name="set-up-disaster-recovery-of-on-premises-vmware-virtual-machines-or-physical-servers-to-a-secondary-site"></a>A helyszíni VMware virtuális gépek vagy fizikai kiszolgálók másodlagos helyre történő vészhelyreállításának beállítása
 
-Az InMage Scout [Azure Site Recovery](site-recovery-overview.md) biztosít a valós idejű replikációs között a helyszíni VMware helyek. Azure Site Recovery szolgáltatás előfizetések InMage Scout tartalmazza. 
+Az InMage Scout [Azure Site Recovery](site-recovery-overview.md) védekezés valós idejű között a helyszíni VMware-webhelyek. Az InMage Scout segédprogramot az Azure Site Recovery szolgáltatás előfizetések tartalmazza. 
 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 Az oktatóanyag elvégzéséhez:
 
-- [Felülvizsgálati](vmware-physical-secondary-support-matrix.md) a támogatási követelmények lévő valamennyi összetevőnél.
-- Győződjön meg arról, hogy a replikálni kívánt gépek ahhoz [replikált gép támogatási](vmware-physical-secondary-support-matrix.md#replicated-vm-support).
+- [Felülvizsgálat](vmware-physical-secondary-support-matrix.md) a támogatási követelmények valamennyi összetevője számára.
+- Győződjön meg arról, hogy a replikálni kívánt gépek megfelelnek-e a [replikált gépek támogatása](vmware-physical-secondary-support-matrix.md#replicated-vm-support).
 
 
 ## <a name="create-a-vault"></a>Tároló létrehozása
 
 [!INCLUDE [site-recovery-create-vault](../../includes/site-recovery-create-vault.md)]
 
-## <a name="choose-a-protection-goal"></a>Válassza ki a védelmi cél
+## <a name="choose-a-protection-goal"></a>Egy védelmi cél kiválasztása
 
-Kiválasztása replikálja, valamint replikálni úgy, hogy a helyét.
+Válassza ki a replikálás, és replikálja, hogy hol mi.
 
 1. Kattintson a **Site Recovery** > **infrastruktúra előkészítése** > **védelmi cél**.
-2. Válassza ki **helyreállítási hely** > **Igen, amelyen a VMware vSphere Hipervizorra**. Ezután kattintson az **OK** gombra.
-3. A **Scout telepítő**, InMage Scout 8.0.1 GA szoftver, és a regisztrációs kulcs letöltése. A telepítési fájlok lévő valamennyi összetevőnél szerepelnek a letöltött zip-fájlt.
+2. Válassza ki **helyreállítási helyre** > **Igen, a VMware vSphere Hipervizorral**. Ezután kattintson az **OK** gombra.
+3. A **Scout beállítása**, töltse le az InMage Scout 8.0.1 GA szoftvert, és a regisztrációs kulccsal. A telepítési fájlokat az összes összetevő megtalálhatók a letöltött zip-fájlt.
 
-## <a name="download-and-install-component-updates"></a>Összetevő-frissítések letöltése és telepítése
+## <a name="download-and-install-component-updates"></a>Töltse le és telepítse az összetevő-frissítései
 
- Tekintse át és telepítse a legújabb [frissítések](#updates). Frissítéseket kell telepíteni a kiszolgálókon a következő sorrendben:
+ Tekintse át, és telepítse a legújabb [frissítések](#updates). A következő sorrendben kiszolgálók frissítéseket kell telepíteni:
 
-1. (Ha van ilyen) a RX kiszolgáló
-2. Configuration servers
-3. Folyamat kiszolgálók
-4. A fő célkiszolgálón kiszolgálók
+1. RX kiszolgálón (ha van)
+2. Konfigurációs kiszolgálók
+3. Folyamatkiszolgálók
+4. A fő célkiszolgáló kiszolgálók
 5. vContinuum-kiszolgáló
-6. (A Windows és Linux-kiszolgálókon) a forráskiszolgálón
+6. Forráskiszolgáló (Windows és Linux-kiszolgálók)
 
-A frissítések telepítése az alábbiak szerint:
+A frissítések a következőképpen telepítheti:
 
 > [!NOTE]
->Minden Scout összetevők frissítés verzióját nem lehet ugyanaz a frissítés .zip-fájlban. A régebbi jelzi, hogy az összetevő nem módosult a frissítés az előző frissítés óta.
+>Minden a Scout összetevőinek fájl frissítési verziója nem lehet ugyanaz a frissítés .zip-fájlban. A régebbi verziót azt jelzik, hogy nem történik változás az összetevő a frissítés az előző frissítés óta.
 
-Töltse le a [frissítése](https://aka.ms/asr-scout-update6) .zip fájl. A fájl a következő összetevőkből áll: 
+Töltse le a [frissítése](https://aka.ms/asr-scout-update6) .zip-fájlt. A fájl a következő összetevőket tartalmazza: 
   - RX_8.0.4.0_GA_Update_4_8725872_16Sep16.tar.gz
   - CX_Windows_8.0.6.0_GA_Update_6_13746667_18Sep17.exe
   - UA_Windows_8.0.5.0_GA_Update_5_11525802_20Apr17.exe
   - UA_RHEL6-64_8.0.4.0_GA_Update_4_9035261_26Sep16.tar.gz
   - vCon_Windows_8.0.6.0_GA_Update_6_11525767_21Sep17.exe
-  - EE update4 bits RHEL5, OL5, OL6, SUSE 10, SUSE 11: UA_<Linux OS>_8.0.4.0_GA_Update_4_9035261_26Sep16.tar.gz
-1. Bontsa ki a .zip fájlt.
-2. **Kiszolgáló a RX**: másolás **RX_8.0.4.0_GA_Update_4_8725872_16Sep16.tar.gz** a RX kiszolgálóra, és bontsa ki. A kibontott mappát, futtassa **/telepítése**.
+  - UA update4 bits RHEL5, OL5, OL6, SUSE 10, SUSE 11: UA_<Linux OS>_8.0.4.0_GA_Update_4_9035261_26Sep16.tar.gz
+1. Bontsa ki a .zip fájlokat.
+2. **RX kiszolgáló**: másolás **RX_8.0.4.0_GA_Update_4_8725872_16Sep16.tar.gz** a RX kiszolgálóra, és csomagolja ki. A kibontott mappát, futtassa a **/Install**.
 3. **Konfigurációs kiszolgáló és a folyamatkiszolgáló**: másolás **CX_Windows_8.0.6.0_GA_Update_6_13746667_18Sep17.exe** a konfigurációs kiszolgáló és a folyamatkiszolgáló. Kattintson duplán a futtatáshoz.<br>
-4. **Windows fő célkiszolgáló**: a unified agent frissítéséhez másolása **UA_Windows_8.0.5.0_GA_Update_5_11525802_20Apr17.exe** a kiszolgálóra. Kattintson duplán a való futtatáshoz. Egyesített ügynök frissítése esetén is alkalmazható a forráskiszolgálón. Ha a forrás frissítése 4 még nem frissítették, frissítenie kell a unified agent.
-  A frissítés nem kell alkalmazni a fő cél a előkészített **InMage_Scout_vContinuum_MT_8.0.1.0_Windows_GA_10Oct2017_release.exe** , ez ugyanis, hogy a legújabb módosításokkal új GA telepítő.
-5. **vContinuum-kiszolgáló**: másolás **vCon_Windows_8.0.6.0_GA_Update_6_11525767_21Sep17.exe** a kiszolgálóra.  Győződjön meg arról, hogy a vContinuum varázsló bezárt. Kattintson duplán a futtatható fájl.
-    A frissítés nem kell alkalmazni a fő célkiszolgálón a előkészített **InMage_Scout_vContinuum_MT_8.0.1.0_Windows_GA_10Oct2017_release.exe** , ez ugyanis, hogy a legújabb módosításokkal új GA telepítő.
-6. **Linux fő célkiszolgáló**: a unified agent frissítéséhez másolása **UA_RHEL6-64_8.0.4.0_GA_Update_4_9035261_26Sep16.tar.gz** a fő célkiszolgáló, és bontsa ki. A kibontott mappát, futtassa **/telepítése**.
-7. **A forráskiszolgáló Windows**: a unified agent frissítéséhez másolása **UA_Windows_8.0.5.0_GA_Update_5_11525802_20Apr17.exe** a forráskiszolgálóra. Kattintson duplán a futtatható fájl. 
+4. **Windows fő célkiszolgáló**: a egységes ügynök frissítése, másolása **UA_Windows_8.0.5.0_GA_Update_5_11525802_20Apr17.exe** a kiszolgálóhoz. Kattintson duplán a futtatáshoz. Az azonos egységes ügynök frissítése akkor is alkalmazható a forráskiszolgálón. Ha a forrás még nem lett frissítve, a 4-es frissítést, frissítenie kell az egyesített ügynök.
+  A frissítést nem szükséges a alkalmazni a fő cél az előkészített **InMage_Scout_vContinuum_MT_8.0.1.0_Windows_GA_10Oct2017_release.exe** , ez az új GA telepítő a legújabb módosításokkal.
+5. **vContinuum-kiszolgáló**: másolás **vCon_Windows_8.0.6.0_GA_Update_6_11525767_21Sep17.exe** a kiszolgálóhoz.  Győződjön meg arról, hogy bezárt a vContinuum varázslóját. Kattintson duplán a fájlra a futtatáshoz.
+    A frissítést nem szükséges a fő célkiszolgálón előkészítve a alkalmazni **InMage_Scout_vContinuum_MT_8.0.1.0_Windows_GA_10Oct2017_release.exe** mivel ez új a végleges verzió telepítőjét a érintő legújabb változásokat.
+6. **Linux rendszerű fő célkiszolgáló**: a egységes ügynök frissítése, másolása **UA_RHEL6-64_8.0.4.0_GA_Update_4_9035261_26Sep16.tar.gz** a fő célkiszolgáló és csomagolja ki. A kibontott mappát, futtassa a **/Install**.
+7. **A forráskiszolgáló Windows**: a egységes ügynök frissítése, másolása **UA_Windows_8.0.5.0_GA_Update_5_11525802_20Apr17.exe** a forráskiszolgálón. Kattintson duplán a fájlra a futtatáshoz. 
     Nem kell a frissítés 5-ügynök telepítése a forráskiszolgálón, ha már frissítették Update 4 vagy a forrás-ügynök telepítve van a legújabb kiinduló installer **InMage_UA_8.0.1.0_Windows_GA_28Sep2017_release.exe**.
-8. **Linux-forráskiszolgáló**: a unified agent frissítéséhez a unified agent fájl megfelelő verziója a Linux-kiszolgálóra másolja, majd bontsa ki. A kibontott mappát, futtassa **/telepítése**.  Példa: RHEL 6,7 64 bites kiszolgálót, másolja át **UA_RHEL6-64_8.0.4.0_GA_Update_4_9035261_26Sep16.tar.gz** a kiszolgálóra, és bontsa ki. A kibontott mappát, futtassa **/telepítése**.
+8. **Linux-forráskiszolgálón**: az egyesített ügynök frissítéséhez az egyesített ügynök fájl megfelelő verziója a Linux-kiszolgálóra másolja, majd csomagolja. A kibontott mappát, futtassa a **/Install**.  Példa: Az RHEL 6,7 64 bites kiszolgálón másolja **UA_RHEL6-64_8.0.4.0_GA_Update_4_9035261_26Sep16.tar.gz** a kiszolgálóra, és csomagolja ki. A kibontott mappát, futtassa a **/Install**.
 
 ## <a name="enable-replication"></a>A replikáció engedélyezése
 
-1. Állítsa be a forrás közötti replikációt, és a cél a VMware-hely.
-2. Tekintse meg a következő dokumentumok további információt a telepítési, védelmi és helyreállítási:
+1. Beállítja a replikációt a forrás között, és célozhat meg VMware-webhelyek.
+2. További információ a telepítés, védelem és helyreállítás a következő dokumentumokban talál:
 
    * [Kiadási megjegyzések](https://aka.ms/asr-scout-release-notes)
    * [Kompatibilitási mátrix](https://aka.ms/asr-scout-cm)
    * [Felhasználói útmutató](https://aka.ms/asr-scout-user-guide)
-   * [Útmutató a RX felhasználó](https://aka.ms/asr-scout-rx-user-guide)
-   * [A gyors telepítési útmutató](https://aka.ms/asr-scout-quick-install-guide)
+   * [RX felhasználói útmutató](https://aka.ms/asr-scout-rx-user-guide)
+   * [Gyors telepítési útmutató](https://aka.ms/asr-scout-quick-install-guide)
 
 ## <a name="updates"></a>Frissítések
 
-### <a name="site-recovery-scout-801-update-6"></a>Site Recovery Scout 8.0.1 frissítés 6 
-Frissített: Október 12, 2017
+### <a name="site-recovery-scout-801-update-6"></a>Site Recovery Scout 8.0.1 frissítése 6 
+Frissítve: 2017. október 12
 
-Töltse le [Scout frissítés 6](https://aka.ms/asr-scout-update6).
+Töltse le [Scout 6. összesített frissítéssel](https://aka.ms/asr-scout-update6).
 
-6 Scout frissítés az összesítő frissítés. Frissítés 5 és az új javítások és továbbfejlesztett funkcióit az alábbiakban az 1. frissítést minden javításokat tartalmaz. 
+6. összesített frissítéssel Scout az összesítő frissítés. Az 1. frissítés Update 5 és az új javítások és fejlesztések az alább ismertetett összes javításokat tartalmaz. 
 
 #### <a name="new-platform-support"></a>Új eszközplatform-támogatás
-* Már támogatja az adatforrás a Windows Server 2016
-* Már támogatja a következő Linux operációs rendszereken:
+* Támogatási hozzá van adva forrás a Windows Server 2016-hoz
+* A következő Linux operációs rendszerek már támogatja:
     - Red Hat Enterprise Linux (RHEL) 6.9.
     - CentOS 6.9.
-    - Oracle Linux 5.11
+    - Oracle Linux 5.11.
     - Oracle Linux 6.8
 * Már támogatja a VMware Center 6.5
 
 > [!NOTE]
-> * Alap Agent(UA) az egységes telepítő Windows lett támogatásához a Windows Server 2016 frissíteni. Az új telepítő **InMage_UA_8.0.1.0_Windows_GA_28Sep2017_release.exe** Scout GA ALAPCSOMAG együtt van csomagolva (**InMage_Scout_Standard_8.0.1 GA-Oct17.zip**). Az azonos telepítőn minden támogatott Windows-verzióhoz használható. 
-> * Kiinduló Windows vContinuum & fő célkiszolgáló lett, hogy a telepítő frissíteni a Windows Server 2016 támogatásához. Az új telepítő **InMage_Scout_vContinuum_MT_8.0.1.0_Windows_GA_10Oct2017_release.exe** Scout GA ALAPCSOMAG együtt van csomagolva (**InMage_Scout_Standard_8.0.1 GA-Oct17.zip**). Az azonos telepítőn Windows 2016 fő célkiszolgáló és a Windows 2012R2 fő célkiszolgáló telepítésére használható.
-> * A GA csomag letöltéséről a portálon, a [hozzon létre egy tárolót](#create-a-vault).
+> * Alap Agent(UA) egyesített telepítő Windows lett frissítve a támogatási szolgálatának a Windows Server 2016-ban. Az új telepítő **InMage_UA_8.0.1.0_Windows_GA_28Sep2017_release.exe** a Scout általánosan elérhető alapszintű csomag együtt van csomagolva (**InMage_Scout_Standard_8.0.1 a GA-Oct17.zip**). Az azonos telepítő minden támogatott Windows-verzió lesz használható. 
+> * Alap Windows vContinuum és a fő célkiszolgáló lett, hogy a telepítő támogatási szolgálatának a Windows Server 2016-ra frissíteni. Az új telepítő **InMage_Scout_vContinuum_MT_8.0.1.0_Windows_GA_10Oct2017_release.exe** a Scout általánosan elérhető alapszintű csomag együtt van csomagolva (**InMage_Scout_Standard_8.0.1 a GA-Oct17.zip**). Az azonos telepítő Windows 2016 a fő célkiszolgáló és a Windows 2012 R2 a fő célkiszolgáló telepítéséhez használható.
+> * Töltse le a GA-csomagot a portálról, leírtak szerint [hozzon létre egy tárolót](#create-a-vault).
 >
 
-#### <a name="bug-fixes-and-enhancements"></a>Hibajavításokat és fejlesztések
-- Feladat-visszavétel védelem meghiúsul a Linux virtuális gép replikálása lemezek listáját nincs megadva konfigurációs végén.
+#### <a name="bug-fixes-and-enhancements"></a>Hibajavítások és fejlesztések
+- Replikálandó lemezek listájával Linux rendszerű virtuális gép feladat-visszavétel védelem sikertelen je prázdná config végén.
 
-### <a name="site-recovery-scout-801-update-5"></a>Hely helyreállítási Scout 8.0.1 5. frissítése
-5. Scout frissítése az összesítő frissítés. Update 4-es frissítés 1-től minden javítások, valamint az alább ismertetett új javítások tartalmazza.
-- A Site Recovery Scout Update 4 javítások történtek, a frissítés 5 kifejezetten a fő célkiszolgáló és a vContinuum összetevők vonatkoznak.
-- Ha az adatforrás-kiszolgálók, a fő célkiszolgáló, konfigurációs, folyamat, és kiszolgálók a RX már fut az Update 4, majd alkalmazhatja azt csak a fő célkiszolgálón. 
+### <a name="site-recovery-scout-801-update-5"></a>Site Recovery Scout 8.0.1 5. frissítése
+Scout Update 5 a kumulatív frissítés. Update 4-es frissítés 1-től az összes javításokat, és az alább ismertetett új javítások tartalmazza.
+- Hibajavítások. a Site Recovery Scout Update 4 Update 5 kifejezetten a fő cél- és a vContinuum-összetevőket a rendszer.
+- Ha az adatforrás-kiszolgálók, a fő célkiszolgáló, konfigurációs, folyamat és RX kiszolgálók Update 4 már fut, akkor csak a fő célkiszolgáló a alkalmazni azt. 
 
 #### <a name="new-platform-support"></a>Új eszközplatform-támogatás
-* SUSE Linux Enterprise Server 11 szervizcsomag 4(SP4)
-* SLES 11 SP4 64 bites **InMage_UA_8.0.1.0_SLES11-SP4-64_GA_13Apr2017_release.tar.gz** Scout GA ALAPCSOMAG együtt van csomagolva (**InMage_Scout_Standard_8.0.1 GA.zip**). A GA csomag letöltéséről a portálon, a [hozzon létre egy tárolót](#create-a-vault).
+* SUSE Linux Enterprise Server 11. szervizcsomag 4(SP4)
+* SLES 11 SP4 64 bites **InMage_UA_8.0.1.0_SLES11-SP4-64_GA_13Apr2017_release.tar.gz** a Scout általánosan elérhető alapszintű csomag együtt van csomagolva (**InMage_Scout_Standard_8.0.1 GA.zip**). Töltse le a GA-csomagot a portálról, leírtak szerint [hozzon létre egy tárolót](#create-a-vault).
 
 
-#### <a name="bug-fixes-and-enhancements"></a>Hibajavításokat és fejlesztések
+#### <a name="bug-fixes-and-enhancements"></a>Hibajavítások és fejlesztések
 
-* Megnövelt Windows-fürtszolgáltatás javításokat megbízhatóság támogatja:
-    * Rögzített – a P2V MSCS némelyike fürtlemezekhez válik a helyreállítás után RAW.
+* Megnövelt Windows-fürtszolgáltatás javításait megbízhatóság támogatják:
+    * Kijavítva – a P2V MSCS némelyike fürt válnak lemezek RAW helyreállítás után.
     * A lemez rendelés eltérése miatt nem sikerül fixed-P2V MSCS fürt helyreállítani.
-    * Rögzített - az MSCS a fürt hozzáadása a lemezek meghiúsul a lemez mérete eltérés műveletet.
-    * Rögzített a készültségi ellenőrizze, hogy a forrás MSCS-fürtökben RDM LUN-leképezéssel mérete ellenőrzése sikertelen.
-    * Fixed-egyetlen csomópont fürt védelme egy SCSI-eltérés probléma miatt sikertelen. 
-    * A P2V Windows fürtkiszolgáló fixed-az újbóli védelem sikertelen lesz, ha a cél fürtlemezek szerepelnek. 
+    * A fürt való hozzáadása lemezek sikertelen lesz, és a egy lemez méretű verzióeltérési hiba kijavítva – az MSCS.
+    * Kijavítva a készültségi ellenőrizze, hogy a forrás RDM LUN-ok leképezése MSCS-fürt méretének ellenőrzése sikertelen.
+    * Fixed-egyetlen csomópont fürt védelme egy SCSI eltérése miatt nem működik. 
+    * A P2V Windows cluster server fixed-ismételt védelme sikertelen lesz, ha a cél fürtlemezek szerepelnek. 
     
-* Rögzített: Során feladat-visszavétel védelem, ha a kijelölt fő célkiszolgáló nem szerepel a védett forrásgép megegyező ESXi-kiszolgálóhoz (során előre védelemmel), majd vContinuum szerzi be a megfelelő fő célkiszolgáló és a helyreállítási feladat-visszavétel, a helyreállítási a művelet sikertelen lesz.
+* Kijavítva: Során feladat-visszavétel védelmet, ha a kijelölt fő célkiszolgáló nem ugyanazon a kiszolgálón ESXi, a védett forrásgép (során előre védelem), majd vContinuum szerzi be a megfelelő fő célkiszolgáló és a helyreállítási feladat-visszavételt, a helyreállítás a művelet sikertelen lesz.
 
 > [!NOTE]
-> * A P2V-fürt javítások csak a hely helyreállítási Scout frissítés 5 újonnan védett fizikai MSCS-fürtök vonatkoznak. A fürt javítások régebbi frissítésekkel védett P2V MSCS fürtökön telepítéséhez hajtsa végre a frissítési lépéseket 12 részben a [hely helyreállítási Scout kibocsátási megjegyzések](https://aka.ms/asr-scout-release-notes).
-> * Ha az újbóli védelem idején ugyanazokat a lemezek nem aktív mindegyik fürtcsomópont mint az eredetileg védett, majd egy fizikai MSCS-fürtökben az újbóli védelem csak meglévő céllemezek is felhasználhatja. Ha nem, használja a manuális módszerrel 12 szakaszában [hely helyreállítási Scout kibocsátási megjegyzések](https://aka.ms/asr-scout-release-notes), a céllemezek ügyféloldali áthelyezése a megfelelő datastore elérési útját, során az újbóli védelem újbóli. Ha Ön lássa el újból védelemmel az MSCS-fürtökben P2V módban a frissítési lépések nélkül, a célkiszolgáló ESXi létrehoz egy új lemezt. Szüksége lesz az adattároló manuálisan törölje a régi lemezt.
-> * Ha a forrás SLES11 vagy SLES11 (és bármilyen szervizcsomag) kiszolgáló szabályosan újraindul, majd manuális megjelöléséhez a **legfelső szintű** lemez replikációs párok újbóli szinkronizáláshoz. A felhasználó nem kap értesítést a CX felületen. Ha nem jelöli be a legfelső szintű lemez az újraszinkronizálás, megfigyelheti az adatok épségével kapcsolatos problémákat.
+> * A P2V-fürt javítások csak az újonnan védett a Site Recovery Scout Update 5 fizikai MSCS-fürtök vonatkoznak. A fürt javítások a védett P2V MSCS-fürtökben régebbi frissítések telepítéséhez hajtsa végre a frissítési lépéseket szakaszában 12 a [Site Recovery Scout kibocsátási megjegyzések](https://aka.ms/asr-scout-release-notes).
+> * Ha ismételt védelem idején ugyanazokat a lemezek aktív mindegyik fürtcsomópont, amikor az eredetileg védett, majd egy fizikai MSCS-fürt ismételt védelem csak felhasználhatja meglévő lemezeit. Ha nem, majd kövesse a manuális szakaszában 12 [Site Recovery Scout kibocsátási megjegyzések](https://aka.ms/asr-scout-release-notes), a cél egymás lemezek áthelyezése a megfelelő adattároló elérési útját, újból ismételt védelem során. A P2V módban MSCS-fürt frissítési lépések nélkül ismételt védelme, ha a céloldali ESXi-kiszolgálón létrehoz egy új lemezt. Szüksége lesz a régi lemezt manuálisan törölje az adattárhoz.
+> * Ha a forrás SLES11 vagy SLES11 (az összes szervizcsomaggal) kiszolgáló szabályosan újraindul, majd manuális megjelöléséhez a **legfelső szintű** lemez replikációs párok újbóli szinkronizáláshoz. Nincs a CX felületen nem kap értesítést. Ha a legfelső szintű lemez újraszinkronizálásra nem jelöli be, megfigyelheti az adatok épségével kapcsolatos problémákat.
 
 
-### <a name="azure-site-recovery-scout-801-update-4"></a>Azure Site Recovery Scout 8.0.1 Update 4
-Scout Update 4 az összesítő frissítés. Minden javítások történtek az 1. frissítést a Update 3 és az alábbiakban ismertetett új javításokat tartalmaz.
+### <a name="azure-site-recovery-scout-801-update-4"></a>Az Azure Site Recovery Scout 8.0.1 Update 4
+4. frissítéssel Scout az összesítő frissítés. Ez magában foglalja az összes javítások történtek az 1. frissítés Update 3 és az alább ismertetett új javítások.
 
 #### <a name="new-platform-support"></a>Új eszközplatform-támogatás
 
-* Már támogatja a vCenter vagy vSphere 6.0, 6.1 és 6.2
-* Már támogatja a fenti Linux operációs rendszerek:
+* Már támogatja a vCenter/vsphere-6.0, 6.1-es és 6.2
+* A Linux operációs rendszer már támogatja:
   * Red Hat Enterprise Linux (RHEL) 7.0, 7.1-es és 7.2
   * 7.0, 7.1-es és 7.2 centOS
   * Red Hat Enterprise Linux (RHEL) 6.8
   * CentOS 6.8
 
 > [!NOTE]
-> RHEL/CentOS 7 64 bites **InMage_UA_8.0.1.0_RHEL7-64_GA_06Oct2016_release.tar.gz** Scout GA ALAPCSOMAG együtt van csomagolva **InMage_Scout_Standard_8.0.1 GA.zip**. A Scout GA csomag letöltéséről a portálon, a [hozzon létre egy tárolót](#create-a-vault).
+> RHEL/CentOS 7 64 bites **InMage_UA_8.0.1.0_RHEL7-64_GA_06Oct2016_release.tar.gz** a Scout általánosan elérhető alapszintű csomag együtt van csomagolva **InMage_Scout_Standard_8.0.1 GA.zip**. A Scout a GA-csomag letöltése a portálról, leírtak szerint [hozzon létre egy tárolót](#create-a-vault).
 
-#### <a name="bug-fixes-and-enhancements"></a>Hibajavításokat és fejlesztések
+#### <a name="bug-fixes-and-enhancements"></a>Hibajavítások és fejlesztések
 
-* A következő Linux operációs rendszerek és klónok nemkívánatos újbóli szinkronizálási előforduló problémák megelőzéséhez kezelésének továbbfejlesztett Leállítás:
+* Továbbfejlesztett leállítás kezelése a következő Linux operációs rendszerek és klónozásával jár, nemkívánatos újbóli szinkronizálási problémák elkerülése érdekében:
     * Red Hat Enterprise Linux (RHEL) 6.x
     * Oracle Linux (OL) 6.x
-* A Linux minden mappahozzáférési engedélyek a unified agent telepítési könyvtárban most csak a helyi felhasználói korlátozódik.
-* A Windows, egy javítást alkalmaztunk a problémát, amely közös elosztott konzisztencia könyvjelzők kiállításához történt időtúllépés a terhelve elosztott alkalmazások, például az SQL Server és a megosztási pont fürtök.
-* A napló kapcsolódó javítsa ki a konfigurációs kiszolgáló alap telepítőben.
-* A letöltési hivatkozás a VMware vCLI 6.0 a fő célkiszolgáló alap Windows installer lett adva.
-* További ellenőrzéseket és a naplókat a rendszer adott, a hálózati konfigurációs módosításokat feladatátvétel és vész-helyreállítási csukja során.
-* Egy javítást alkalmaztunk megőrzési nem jelentendő információkat és a konfigurációs kiszolgáló okozó problémát.  
-* Fizikai fürtök esetén egy javítást alkalmaztunk a kötet átméretezése, sikertelen lehet a vContinuum varázslóban, ha a forráskötet zsugorítását okozó problémát.
-* Egy javítást alkalmaztunk a fürt védelmi hiba, amely a hiba miatt sikertelen volt: "Nem található a lemezaláírását", amikor a fürt lemez egy PRDM lemez.
-* Egy javítást alkalmaztunk a cxps átviteli kiszolgáló összeomlik vagy out tartományon kívüli kivétel okozta.
-* Kiszolgáló neve és IP-cím oszlopot is méretezhető a a **leküldéses ügyféltelepítés** a vContinuum varázsló.
-* Fejlesztések a RX API:
-  * Az öt legújabb elérhető közös konzisztencia most rendelkezésre álló pont (csak a címkék garantált).
+* Linux esetén az egyesített ügynöktelepítési könyvtár összes mappa hozzáférési engedélyeket csak a helyi felhasználói most már korlátozódik.
+* A Windows, egy közös, elosztott konzisztencia könyvjelzők, kiadásakor fellépő probléma időtúllépése javítja a terhelve elosztott alkalmazások, például az SQL Server és SharePoint-fürtöket.
+* A napló a konfigurációs kiszolgáló alap telepítőjében javítás kapcsolatos.
+* A VMware vCLI 6.0 egy letöltési hivatkozást a fő célkiszolgáló alap Windows installer lett hozzáadva.
+* További ellenőrzési és naplók lettek hozzáadva, a feladatátvétel és a vészhelyreállítási próbák során a hálózati konfigurációs módosításokat.
+* Egy javít egy problémát okozó megőrzési információk nem jelenthető legyen a konfigurációs kiszolgálóhoz.  
+* Fizikai fürtök esetén a kötet átméretezése a vContinuum varázslóját a forráskötet összezsugorítása során meghibásodását okozó probléma megoldását.
+* Javítás egy fürt védelmi problémára, amely a következő hibával meghiúsult: "Nem található a lemez(ek) aláírása", ha a fürtözött lemez-e a PRDM lemez.
+* Egy cxps átviteli kiszolgáló összeomlik, egy kibővített tartományon kívüli kivétel okozza a megoldását.
+* Kiszolgáló neve és IP-cím oszlopok immár a méretezhető a **Ügyfélleküldéses telepítés** vContinuum lapján.
+* RX API fejlesztései:
+  * Az öt legújabb elérhető közös konzisztencia most már rendelkezésre álló pont (csak garantált címkék).
   * Kapacitás és szabad terület részletei jelennek meg az összes védett eszköz.
-  * A forráskiszolgálón Scout illesztőprogram állapotba áll rendelkezésre.
+  * A forráskiszolgálón a Scout illesztőprogram állapot érhető el.
 
 > [!NOTE]
-> * **InMage_Scout_Standard_8.0.1_GA.zip** ALAPCSOMAG rendelkezik:
-    * Egy frissített konfigurációs alap telepítője (**InMage_CX_8.0.1.0_Windows_GA_26Feb2015_release.exe**)
-    * A fő célkiszolgáló alap Windows installer (**InMage_Scout_vContinuum_MT_8.0.1.0_Windows_GA_26Feb2015_release.exe**).
-    * Minden új telepítések esetén használja az új konfigurációs kiszolgáló és a Windows a fő célkiszolgáló GA bit.
-> * 4. frissítés közvetlenül 8.0.1 alkalmazható GA
-> * A konfigurációs kiszolgáló és a RX frissítések után is érvényben nem állítható.
+> * **InMage_Scout_Standard_8.0.1_GA.zip** alapszintű csomag:
+    * Egy frissített konfigurációs kiszolgáló alap telepítője (**InMage_CX_8.0.1.0_Windows_GA_26Feb2015_release.exe**)
+    * Egy fő célkiszolgáló alap Windows installer (**InMage_Scout_vContinuum_MT_8.0.1.0_Windows_GA_26Feb2015_release.exe**).
+    * Minden új telepítések esetén használja az új konfigurációs kiszolgáló és a fő célkiszolgáló általánosan elérhető a bits Windows.
+> * 4. frissítés akkor alkalmazható, közvetlenül a 8.0.1 általánosan elérhető
+> * A konfigurációs kiszolgáló és a frissítések RX majd, miután a alkalmazni már nem állítható.
 
 
-### <a name="azure-site-recovery-scout-801-update-3"></a>Azure Site Recovery Scout 8.0.1 Update 3
+### <a name="azure-site-recovery-scout-801-update-3"></a>Az Azure Site Recovery Scout 8.0.1 3-as frissítés
 
-Összes helyreállítás esetben összegző frissítésről. Frissítés 3 Update 1 és 2. frissítést minden javításait tartalmazzák. Frissítés 3 közvetlenül alkalmazható 8.0.1 GA A konfigurációs kiszolgáló és a RX frissítések után is érvényben nem állítható.
+Site Recovery-hírek összeadódnak. 3. frissítés Update 1 és 2. frissítés minden javításokat tartalmaz. 3. frissítés közvetlenül alkalmazható 8.0.1 általánosan elérhető A konfigurációs kiszolgáló és a frissítések RX majd, miután a alkalmazni már nem állítható.
 
-#### <a name="bug-fixes-and-enhancements"></a>Hibajavításokat és fejlesztések
-Frissítés 3 javítja a következő problémákat:
+#### <a name="bug-fixes-and-enhancements"></a>Hibajavítások és fejlesztések
+3. frissítés az alábbi problémákat javítja:
 
-* A konfigurációs kiszolgáló és a RX nem a tárolóban regisztrált ha azok a proxykiszolgáló mögött található.
-* A jelentés nem frissül az órát, amelyben a helyreállítási időkorlát (RPO) nem érhető el.
-* A konfigurációs kiszolgáló nincs szinkronizálás a RX amikor az ESX hardveres jellemzőit, vagy hálózati adatok bármely UTF-8 karaktereket tartalmaz.
-* Windows Server 2008 R2 rendszerű tartományvezérlők ne indítsa el a helyreállítás után.
-* Kapcsolat nélküli szinkronizálás nem a várt módon működik.
-* Virtuális gép feladatátvétele után replikációs érpáras törlése nem előrehaladás a konfigurációs kiszolgáló konzolon hosszú ideig. Felhasználók nem a feladat-visszavétel befejezése, és folytathatja műveleteket.
-* A teljes pillanatkép műveleteket a konzisztencia-feladatot a optimalizált, például az SQL Server-ügyfeleken leválasztja alkalmazás csökkentése érdekében.
-* Konzisztencia eszköz (VACP.exe) teljesítménye javult. A Windows pillanatképek létrehozásához szükséges memória használata csökkent.
-* A leküldéses telepítés szolgáltatás összeomlik, ha a jelszó nem nagyobb, mint 16 karakter hosszúságú lehet.
-* vContinuum nem ellenőrizze, és új vCenter hitelesítőadat, bekéri a hitelesítő adatok módosításakor.
-* Linux a fő célkiszolgáló gyorsítótár-kezelő (cachemgr) nem fájlok letöltése adatok a folyamatkiszolgálótól. Az eredmény replikációs pár sávszélesség-szabályozás.
-* Ha a fizikai feladatátvevő fürtöt (MSCS) lemez sorrendje nem ugyanaz az összes olyan csomóponton, replikációs a fürtkötetek részénél nincs beállítva. A fürt kell látható el újra védelemmel javítás kihasználásához.  
-* SMTP-funkciókat az elvárt módon, nem működik, után a RX Scout 8.0.1 Scout 7.1 legyen frissítve.
-* További statisztika a naplóban a visszaállítási művelet, nyomon követheti az befejezéséhez szükséges idő hozzáadva.
-* Már támogatja a Linux operációs rendszereken a forráskiszolgálón:
-  * Red Hat Enterprise Linux (RHEL) 6 frissítés 7
+* A konfigurációs kiszolgáló és a RX aspektusnevek regisztrálva a tároló Ha a proxy mögött.
+* Az állapotjelentés, amelyben a helyreállításipont-célkitűzés (RPO) elérte a nem órák száma nem frissül.
+* A konfigurációs kiszolgáló nincs szinkronizálva RX ezzel esetén az ESX-alapú hardverek részletei vagy szerepelnek hálózati adatok, tartalmazhat UTF-8 karaktereket.
+* A Windows Server 2008 R2 rendszerű tartományvezérlők ne indítsa el a helyreállítás után.
+* Kapcsolat nélküli szinkronizálás nem működik megfelelően.
+* Virtuális gép a feladatátvételt követően replikációs-pár törlése nem halad a konfigurációs kiszolgáló konzol a hosszú ideig. A felhasználók nem a feladat-visszavétel befejezése vagy folytatni működését.
+* A teljes pillanatkép-készítési műveletek a konzisztencia feladat által optimalizált forráskötetekben, csökkentheti az alkalmazás időnként például az SQL Server-ügyfeleken.
+* Konzisztencia (VACP.exe) eszköz teljesítménye javult. A memóriahasználat pillanatképeket létrehozni a Windows csökkentett szükséges.
+* Leküldéses telepítési szolgáltatás összeomlik, ha a jelszó, 16 karakternél.
+* vContinuum nem ellenőrizze, és kérheti a új vCenter hitelesítő adatokat, hitelesítő adatok módosításakor.
+* A Linux a fő célkiszolgáló gyorsítótár-kezelő (cachemgr) nem fájlok letöltése a folyamatkiszolgálóról. Az eredmény replikációs pár szabályozás.
+* Ha a fizikai feladatátvevő fürt: (MSCS) lemezrendelését nem ugyanaz az összes csomóponton, replikációs néhány a fürt kötetén nincs beállítva. A fürt kell újra javítás előnyeinek kihasználása érdekében.  
+* SMTP-funkciók nem várt módon működik, RX Scout 7.1 Scout 8.0.1 frissítése után.
+* További statisztika lettek hozzáadva a visszaállítási művelethez, nyomon követéséhez, végrehajtásához szükséges idő a naplóban.
+* A forráskiszolgálón a Linux operációs rendszerekhez már támogatja:
+  * Red Hat Enterprise Linux (RHEL) 6 7. frissítés
   * CentOS 6 7 frissítése
-* A konfigurációs kiszolgáló és a RX konzolok most értesítési megjelenítése a pár, amelyek bitkép üzemmódba.
-* A következő biztonsági javításokat a RX bővült:
-    * Engedélyezési megkerülése keresztül illetéktelen paraméter: nem megfelelő felhasználók korlátozott hozzáféréssel.
-    * Webhelyközi kérések hamisítására: A lap-jogkivonat koncepció lett megvalósítva, és minden oldalon véletlenszerűen létrehozott. Ez azt jelenti, hogy csak egy bejelentkezési példányban a felhasználónak, és a lap frissítése nem működik. Ehelyett az átirányítja az irányítópulton.
-    * Rosszindulatú fájlfeltöltés: fájlok csak bizonyos bővítmények: z, aiff, az ASP, avi, bmp, csv, doc, docx, fla, flv, gif, gz, gzip, jpeg, jpg, napló mid, mov, mp3, mp4, Microsoft termékkód, mpeg, mpg, ods, odt, pdf, png, ppt, pptx, pxd, qt, ram, rar, erőforrás-kezelő, rmi, rmvb, rtf , sdc, sitd, swf, sxc, sxw, bont, tgz, tif, tiff, txt, vsd, wav, wma, wmv, xls, xlsx, xml és zip.
-    * Állandó többhelyes scripting: bemeneti érvényesítést lettek hozzáadva.
+* A konfigurációs kiszolgáló és a RX-konzolok most az értesítések megjelenítése a párhoz, amely bitkép üzemmódba.
+* A következő biztonsági javításokat a RX lettek hozzáadva:
+    * Engedélyezési megkerülése keresztül paraméter illetéktelen módosítása: korlátozott hozzáférés a nem megfelelő felhasználók számára.
+    * Webhelyközi kérések hamisításának megakadályozása: A lap-token fogalma lett megvalósítva, és minden oldalon véletlenszerűen létrehozott. Ez azt jelenti, hogy csak egy egyszeri bejelentkezési példánya adott felhasználó számára, és a lap frissítése nem működik. Ehelyett átirányítja a az irányítópulthoz.
+    * Kártevő fájl feltöltése: fájlok korlátozva, az egyes bővítményekről: z, aiff, az ASP, avi, bmp, csv, doc, docx, fla, flv, gif, gz, gzip, jpeg, jpg, log, mid mov, mp3, mp4, mpc, mpeg, mpg, ods odt, pdf, png, ppt, pptx, pxd, qt, ram, a rar, erőforrás-kezelő, rmi, rmvb, rtf , sdc, sitd, swf, sxc, sxw, tar, tgz, tif, tiff, txt, vsd, wav, wma, wmv, xls, xlsx, xml és zip.
+    * Állandó többhelyes scripting: bemenet-ellenőrzés bővült.
 
-### <a name="azure-site-recovery-scout-801-update-2-update-03dec15"></a>Az Azure Site Recovery Scout 8.0.1 frissítés 2 (a 03 frissítés Dec 15)
+### <a name="azure-site-recovery-scout-801-update-2-update-03dec15"></a>Az Azure Site Recovery Scout 8.0.1 (a 03 frissítést december 15) 2-es frissítés
 
-2. frissítés javításairól a következők:
+A 2. frissítésben javításokat tartalmazza:
 
-* **Konfigurációs kiszolgáló**: problémákat, amelyek miatt sikertelen volt, a 31 napos ingyenes mérési várt, a konfigurációs kiszolgáló sikeresen regisztrálva a Site Recovery szolgáltatás működését.
-* **Az Unified agent**: Javítsa ki a Update 1, amelyek a frissítés nincs telepítve a fő célkiszolgálón, hogy 8.0.1 8.0-s verziójáról a frissítés során hibát.
+* **Konfigurációs kiszolgáló**: problémákat, amelyek miatt nem sikerült a 31 napos ingyenes mérési megfelelően működik, amikor a konfigurációs kiszolgáló regisztrálva lett a Site Recovery szolgáltatás működését.
+* **Egyesített ügynök**: egy probléma a Update 1, melyek kiváltották a 8.0.1 8.0-s verziójáról a frissítés során a fő célkiszolgálón, nem telepíti a frissítést.
 
-### <a name="azure-site-recovery-scout-801-update-1"></a>Azure Site Recovery Scout 8.0.1 Update 1
-1. frissítés a következő hibajavításokat tartalmaz, és új funkcióit tartalmazza:
+### <a name="azure-site-recovery-scout-801-update-1"></a>Az Azure Site Recovery Scout 8.0.1 1. frissítés
+1. frissítés a következő hibajavítások és új funkciókat tartalmazza:
 
-* 31 napos ingyenes védelmet egy kiszolgáló-példány. Ez lehetővé teszi a funkció tesztelése, vagy egy-a-koncepció igazolása beállításához.
-* Az első 31 napra vonatkozó összes műveleteket végez a kiszolgálón, beleértve a feladatátvételi és a feladat-visszavétel szabadon. Az idő kezdődik, amikor egy kiszolgáló hely helyreállítási Scout először védi. 32 napjától egyes védett kiszolgálókon a Site Recovery által védett felhasználói tulajdonú helyhez szabványos példány díj számítjuk fel.
-* Bármikor, jelenleg felszámított védett kiszolgálók számát úgy érhető el a **irányítópult** a tárolóban lévő állapottal.
-* Támogatást kaptak a vSphere parancssori felület (vCLI) 5.5 Update 2.
-* Támogatást kaptak a Linux operációs rendszerek a forráskiszolgálón:
+* 31 napig ingyenes védelem különbséglemezekhez. Ez lehetővé teszi, hogy a funkció tesztelése, vagy hozzon létre egy proof-of-concept.
+* Az első 31 napra vonatkozó összes műveletet a kiszolgálón, beleértve a feladatátvétel és feladat-visszavétel használata ingyenes. Az idő a kiszolgáló első védett a Site Recovery Scout indul el. A 32 nap, a védett kiszolgáló díja felhasználói tulajdonú helyre a Site Recovery általi védelem standard szintű példány díjának.
+* Bármikor, jelenleg ezekért a védett kiszolgálók száma érhető el a **irányítópult** a tárolóban.
+* Támogatási 5.5-ös frissítés 2 vsphere parancssori felület (vCLI) lett hozzáadva.
+* Támogatás hozzáadva ezen Linux operációs rendszerek a forráskiszolgálón:
     * RHEL 6 6 frissítése
     * RHEL 5 11 frissítése
-    * A centOS 6 frissítés 6
+    * CentOS 6 6. összesített frissítéssel
     * CentOS 5 frissítés 11
-* A következő problémák hibajavítások:
-  * Tároló regisztrálása meghiúsul, a konfigurációs kiszolgáló, vagy a RX kiszolgáló.
-  * Fürtkötetek nem jelenik meg a várt fürtözött virtuális gépek vannak látható el újra védelemmel, akkor folytassa.
-  * Feladat-visszavétel sikertelen lesz, amikor a fő célkiszolgáló üzemelteti a helyszíni virtuális gépek gyártási eltérő ESXi-kiszolgálón.
-  * Konfigurációs fájl engedélyei módosulnak 8.0.1 történő frissítésekor. Ez a módosítás hatással van a védelem és a műveletek.
-  * Az újraszinkronizálás küszöbérték nem lépnek érvénybe, elvárás, amely inkonzisztens replikáció működését.
-  * A helyreállítási Időkorlátra vonatkozó beállításait nem jelennek meg helyesen a konfigurációs kiszolgáló konzol. A kibontott adatok értékeinek helytelenül jeleníti meg a tömörített értékét.
-  * Az eltávolítási művelet nem a várt módon a vContinuum varázsló törli, és a replikáció nem törlődik a konfigurációs kiszolgáló konzolján.
-  * A vContinuum varázsló lemez automatikusan ki nem jelölt kattintva **részletek** a lemez nézetben MSCS virtuális gépek védelme során.
-  * A fizikai-virtuális (P2V) forgatókönyv esetén szükséges HP szolgáltatások (például CIMnotify és CqMgHost) a virtuális gép helyreállítási kézi áthelyezése nem. A probléma további rendszerindítás eredményez.
-  * Linux virtuális gép védelme nem működik, ha több mint 26 lemezeket a fő célkiszolgálón.
+* Hibajavítások a következő problémák:
+  * Tár regisztrálása sikertelen lesz, a konfigurációs kiszolgáló vagy a RX kiszolgáló.
+  * Fürt kötetek nem jelennek meg a várt Ha fürtözött virtuális gépek ismételt védelme, azok folytatása.
+  * Feladat-visszavétel sikertelen lesz, amikor a fő célkiszolgáló ESXi-kiszolgálón egy másik, a helyszíni éles üzemű virtuális gépekre üzemel.
+  * Konfigurációs fájl engedélyei módosulnak 8.0.1 történő frissítéskor. Ez a módosítás érinti, védelmi és műveletek.
+  * Az újraszinkronizálás küszöbérték megfelelően működik, konzisztens replikációs viselkedést okozó nincs kényszerítve.
+  * A helyreállítási Időkorlát-beállítások nem jelennek meg helyesen a konfigurációs kiszolgáló konzol. A tömörítetlen adat értéke helytelenül a tömörített értéket mutatja.
+  * Az eltávolítási művelet nem törli a vContinuum varázslóját a várt módon, és a replikáció nem törlődik a konfigurációs kiszolgáló konzolról.
+  * A vContinuum varázslóját a lemez automatikusan ki nem jelölt kattintva **részletek** a lemez nézetben MSCS virtuális gépek védelme során.
+  * A fizikai-virtuális (P2V) forgatókönyvben szükséges HP szolgáltatások (például CIMnotify és CqMgHost) a virtuális gép helyreállítási manuális nem helyezi. A probléma további rendszerindító időt eredményez.
+  * Linux rendszerű virtuális gép védelme nem működik, ha több mint 26 lemezeket a fő célkiszolgálón.
 

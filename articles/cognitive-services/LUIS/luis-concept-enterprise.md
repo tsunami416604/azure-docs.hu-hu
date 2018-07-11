@@ -9,12 +9,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 06/05/2018
 ms.author: v-geberr
-ms.openlocfilehash: aca67db88255585355bc59a29e53639bc5eca717
-ms.sourcegitcommit: 11321f26df5fb047dac5d15e0435fce6c4fde663
+ms.openlocfilehash: 0c1cd175649415e811140e45225bd8441071ab19
+ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37886756"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37950838"
 ---
 # <a name="enterprise-strategies-for-a-luis-app"></a>Vállalati stratégiák a LUIS-alkalmazások
 Tekintse át ezeket a vállalati alkalmazások tervezési stratégiák.
@@ -29,7 +29,7 @@ Annak érdekében, hogy az első közötti összes alkalmazás ugyanazon felső 
 
 Egyetlen alkalmazás jelölhetnek ki a főkiszolgáló. Amely a felülvizsgálatra javasolt megszólalásokat kell adva a fő alkalmazáshoz, majd visszahelyezi a többi alkalmazást is. Ez az vagy egy teljes exportálás, az alkalmazás vagy a betöltés címkézett megcímkézzen a főágból a gyermekek. Betöltése teheti meg, vagy a [LUIS](luis-reference-regions.md) webhelyére vagy a szerzői műveletekhez részben API egy [utterance (kifejezés) egyetlen](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c08) , vagy egy [batch](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c09). 
 
-Egy rendszeres ütemezés [végpont kimondott szöveg felülvizsgálata](label-suggested-utterances.md) aktív tanulás, például kéthetente, majd újbóli betanítás után tegye közzé újra. 
+Egy rendszeres ütemezés [végpont kimondott szöveg felülvizsgálata](luis-how-to-review-endoint-utt.md) aktív tanulás, például kéthetente, majd újbóli betanítás után tegye közzé újra. 
 
 ### <a name="assign-multiple-luis-keys-to-same-app"></a>Ugyanazt az alkalmazást a kulcsok több LUIS hozzárendelése
 Ha a LUIS-alkalmazás több végpontot, a találatok, mint az egyetlen kulcs kvótája engedélyez, és társítsa további kulcsok a LUIS alkalmazás kap. Hozzon létre egy traffic manager vagy a terheléselosztó a végpont lekérdezések kezelése a végpont kulcsok között. 
@@ -37,7 +37,7 @@ Ha a LUIS-alkalmazás több végpontot, a találatok, mint az egyetlen kulcs kv�
 ## <a name="when-your-monolithic-app-returns-wrong-intent"></a>Ha a monolitikus alkalmazások adja vissza nem megfelelő leképezés
 Ha az alkalmazás számos különböző felhasználói utterances előrejelzése hivatott, vegye fontolóra a [dispatch modell](#dispatch-tool-and-model). LUIS fókusz észlelési sikeresen helyett első nem biztos a szülő alkalmazás közötti leképezések és az alárendelt alkalmazások közötti leképezések között egy monolitikus alkalmazások használhatatlanná tévő lehetővé teszi. 
 
-Egy rendszeres ütemezés [végpont kimondott szöveg felülvizsgálata](label-suggested-utterances.md) aktív tanulás, például kéthetente, majd újbóli betanítás után tegye közzé újra. 
+Egy rendszeres ütemezés [végpont kimondott szöveg felülvizsgálata](luis-how-to-review-endoint-utt.md) aktív tanulás, például kéthetente, majd újbóli betanítás után tegye közzé újra. 
 
 ## <a name="when-you-need-to-have-more-than-500-intents"></a>Ha szüksége van a több mint 500 szándékot
 Például tegyük fel, amely több mint 500 szándékot rendelkezik office asszisztens fejleszt. 200 leképezések értekezleteit vonatkoznak, ha emlékeztetők készül a 200-as, 200-as készül a munkatársai, kapcsolatos információk lekérése és e-mailt küld a rendszer 200-as, csoport szándékot, hogy minden csoport egyetlen alkalmazást, majd hozzon létre egy legfelső szintű alkalmazást, amely tartalmazza minden egyes szándékot. Használja a [csatolva az eszköz és architektúra](#dispatch-tool-and-model) hozhat létre a legfelső szintű alkalmazást. Módosítsa a robot a lépcsőzetes hívást használja, mint a show a [dispatch oktatóanyag][dispatcher-application-tutorial]. 

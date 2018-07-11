@@ -1,6 +1,6 @@
 ---
-title: Virtuális hálózatok közötti két Azure-régiók az Azure Site Recovery leképezése |} Microsoft Docs
-description: Az Azure Site Recovery koordinálja a replikáció, feladatátvétel és helyreállítási virtuális gépek és fizikai kiszolgálók. További információk a feladatátvétel az Azure-bA vagy másodlagos adatközpontba.
+title: Az Azure Site Recoveryben két Azure-régiók közötti virtuális hálózatok leképezése |} A Microsoft Docs
+description: Az Azure Site Recovery koordinálja a replikáció, feladatátvétel és helyreállítás virtuális gépek és fizikai kiszolgálók. Ismerje meg a feladatátvételt az Azure-bA vagy egy másodlagos adatközpontba.
 services: site-recovery
 documentationcenter: ''
 author: mayanknayar
@@ -12,92 +12,92 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
-ms.date: 05/11/2018
+ms.date: 07/06/2018
 ms.author: manayar
-ms.openlocfilehash: 9294940785deb0834a419de8320286783635d68e
-ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
+ms.openlocfilehash: 7b7f9c079a1fc9d74fed4cc4d94d37f336ca5dc7
+ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/11/2018
-ms.locfileid: "34072133"
+ms.lasthandoff: 07/09/2018
+ms.locfileid: "37916740"
 ---
-# <a name="map-virtual-networks-in-different-azure-regions"></a>Virtuális hálózatok a különböző Azure-régiók leképezése
+# <a name="map-virtual-networks-in-different-azure-regions"></a>Különböző Azure-régiókban található virtuális hálózatok leképezése
 
 
-A cikkből megtudhatja, hogyan képezheti Azure Virtual Network különböző Azure-régiók egymás mellett található két példánya. A hálózatleképezés biztosítja, hogy a replikált virtuális gépek létrehozásakor a cél Azure-régió, a virtuális gép is létrejön a virtuális hálózaton, amelyek a forrás virtuális gép virtuális hálózathoz van rendelve.  
+Ez a cikk ismerteti, hogyan képezhet le egymással különböző Azure-régióban található Azure Virtual Network két példánya. A hálózatleképezés biztosítja, hogy egy replikált virtuális gép létrehozásakor a cél Azure-régió, a virtuális gép is jön létre a virtuális hálózaton, amely a virtuális hálózat, a forrás virtuális gép le van képezve.  
 
 ## <a name="prerequisites"></a>Előfeltételek
-Hálózatok megfeleltetéséhez előtt győződjön meg arról, hogy létrehozott egy [Azure-beli virtuális hálózat](../virtual-network/virtual-networks-overview.md) a forrás-régió, mind a cél Azure-régiót.
+Hálózatok leképezése, előtt győződjön meg arról, hogy létrehozott-e egy [az Azure virtual network](../virtual-network/virtual-networks-overview.md) a forrásrégióban és a cél Azure-régióban is.
 
 ## <a name="map-virtual-networks"></a>Virtuális hálózatok leképezése
 
-Egy Azure virtuális hálózatot, amely egy Azure-régiót (Forráshálózat), amely az Azure virtuális gépek (célhálózat), egy másik régióban található, virtuális hálózathoz található leképezni, keresse fel **Site Recovery-infrastruktúra**  >  **Leképezési hálózati**. Hozzon létre egy hálózatra való leképezés.
+Képezze le az Azure virtuális hálózat, amely egy Azure-régiót (forrás-hálózat), az Azure virtual machines (célhálózat), egy másik régióban található virtuális hálózat található, lépjen a **Site Recovery-infrastruktúra**  >  **Leképezés hálózati**. A hálózatleképezés létrehozása.
 
-![Hozzárendelések ablak hálózati – a hálózatra való leképezés létrehozása](./media/site-recovery-network-mapping-azure-to-azure/network-mapping1.png)
-
-
-A következő példában a virtuális gép fut a Kelet-Ázsia régióban. A virtuális gép a Délkelet-Ázsia régió replikálódnak.
-
-A Kelet-Ázsia régió Délkelet-Ázsia régió egy hálózatra való leképezés létrehozásához válassza ki a forrás hálózati helye és a cél hálózati helyét. Ezután válassza az **OK** lehetőséget.
-
-![Adja hozzá a hálózat leképezési ablakban - forrása és célja a forrás hálózati helyek kiválasztása](./media/site-recovery-network-mapping-azure-to-azure/network-mapping2.png)
+![Hálózati leképezések ablak – hálózatleképezés létrehozása](./media/site-recovery-network-mapping-azure-to-azure/network-mapping1.png)
 
 
-Ismételje meg a fenti folyamatot létrehozni a hálózati hozzárendelést Délkelet-Ázsia régióban, Kelet-Ázsia régió.
+A következő példában a virtuális gép fut, a kelet-ázsiai régióban. A virtuális gép replikálása folyamatban van a Délkelet-ázsiai régióban.
 
-![Adja hozzá a hálózati leképezési ablaktábla - forrás- és a cél hálózati helyek kiválasztása](./media/site-recovery-network-mapping-azure-to-azure/network-mapping3.png)
+A hálózatleképezés létrehozása a Kelet-Ázsia régióból a Délkelet-ázsiai régióban, válassza ki a forrás hálózati helyét, és a cél hálózati helyét. Ezután válassza az **OK** lehetőséget.
+
+![Hálózat leképezése ablakban - hozzáadása a Forráshálózat a forrás- és helyek kiválasztása](./media/site-recovery-network-mapping-azure-to-azure/network-mapping2.png)
 
 
-## <a name="map-a-network-when-you-enable-replication"></a>A hálózati hozzárendelését, amikor a replikáció engedélyezése
+Ismételje meg a fenti folyamatot a hálózatleképezés létrehozására a Délkelet-ázsiai régióban és a kelet-ázsiai régióban.
 
-A replikált virtuális gép egy Azure-régióban egy másik régióban először, ha nincs hálózati leképezés, amikor a replikáció beállítása a cél hálózati állíthatja be. Ez a beállítás alapján, Azure Site Recovery hoz létre hálózatok leképezését a forrás-régióban, a cél régióban, és a cél-régióban, a forrás régióban.   
+![Adja hozzá a hálózati hozzárendelési ablaktáblán – a célhálózat a forrás- és helyek kiválasztása](./media/site-recovery-network-mapping-azure-to-azure/network-mapping3.png)
 
-![A beállítások ablaktábla konfigurálása - a célhelye](./media/site-recovery-network-mapping-azure-to-azure/network-mapping4.png)
 
-Alapértelmezés szerint a Site Recovery egy hálózatot, amely azonos a forrás hálózati cél régióban hoz létre. A Site Recovery létrehoz egy hálózati hozzáadásával **-asr** utótagként a forrás hálózati nevét. Már létezik a hálózat kiválasztásához jelölje ki a **Testreszabás**.
+## <a name="map-a-network-when-you-enable-replication"></a>Egy hálózat leképezése, amikor a replikáció engedélyezése
 
-![Testre szabhatja a cél beállításai ablaktábla - készlet célként megadott erőforráscsoport-név és cél virtuális hálózat neve](./media/site-recovery-network-mapping-azure-to-azure/network-mapping5.png)
+Replikálásakor egy virtuális gépet egy Azure-régióból egy másik régióba először, ha nem hálózati létezik leképezés, beállíthatja a célhálózat, amikor a replikáció beállítása. Ez a beállítás alapján, az Azure Site Recovery létrehoz hálózatleképezések a célrégióban a forrás-régióban, valamint a célrégióban a forrás régiójára.   
 
-Ha hálózati leképezése már megtörtént, a cél virtuális hálózati replikációs engedélyezésekor nem módosíthatja. Ebben az esetben a cél virtuális hálózat megváltoztatásához módosítsa a meglévő hálózatleképezést.  
+![Beállítások panel konfigurálása – válassza ki a célhelyen](./media/site-recovery-network-mapping-azure-to-azure/network-mapping4.png)
 
-![Testre szabhatja a cél beállításai ablaktábla - állítsa be a célként megadott erőforráscsoport-név](./media/site-recovery-network-mapping-azure-to-azure/network-mapping6.png)
+Alapértelmezés szerint a Site Recovery létrehoz egy hálózatot a célrégióban a forrás hálózati azonos. A Site Recovery létrehoz egy hálózati hozzáadásával **-asr** utótagként a Forráshálózat nevét. Már létre van hozva a hálózat kiválasztásához jelölje ki a **Testreszabás**.
 
-![Hálózati leképezési ablaktábla módosítása – egy olyan meglévő cél virtuális hálózat nevének módosítása](./media/site-recovery-network-mapping-azure-to-azure/modify-network-mapping.png)
+![Testre szabhatja a célként megadott beállítások panel - készlet célként megadott erőforráscsoport-nevet és a cél virtuális hálózat neve](./media/site-recovery-network-mapping-azure-to-azure/network-mapping5.png)
+
+Ha már elvégezte a hálózatleképezést, ha engedélyezi a replikációt a cél virtuális hálózattal nem módosítható. Ebben az esetben ha módosítani szeretné a cél virtuális hálózattal, a meglévő hálózatleképezés módosítása.  
+
+![Testre szabhatja a célként megadott beállítások panel – állítsa be a célként megadott erőforráscsoport-név](./media/site-recovery-network-mapping-azure-to-azure/network-mapping6.png)
+
+![Hálózati hozzárendelési ablaktáblán módosítása – módosíthatja egy meglévő céloldali virtuális hálózat neve](./media/site-recovery-network-mapping-azure-to-azure/modify-network-mapping.png)
 
 > [!IMPORTANT]
-> Ha módosít egy hálózatleképezés terület A B régióban, győződjön meg arról, a hálózatleképezés régió B régióban A. módosítása
+> B régióba régióból A hálózatleképezés módosítása esetén győződjön meg arról, a hálózatleképezés régióba. a B-régióból módosítása
 >
 >
 
 
 ## <a name="subnet-selection"></a>Alhálózat kiválasztása
-A cél virtuális gép alhálózata a forrás virtuális gép az alhálózat neve alapján van kiválasztva. Olyan alhálózatot, amely ugyanaz a neve, mint a forrás virtuális gép a célhálózat érhető el, ha a cél virtuális gép alhálózaton van beállítva. Ha egy ilyen nevű alhálózat nem létezik a célhálózat, a betűrendben az első alhálózat értéke a cél alhálózathoz.
+A cél virtuális gép az alhálózat van kiválasztva, a forrás virtuális gép az alhálózat neve alapján. Egy alhálózat, amelynek a neve megegyezik a forrás virtuális gép a célhálózat érhető el, ha a cél virtuális gépen az alhálózatban van beállítva. Ha egy azonos nevű alhálózat nem létezik a célhálózat, a betűrend szerint az első alhálózat a célként megadott alhálózat van beállítva.
 
-Az alhálózat módosításához keresse fel a **számítás és hálózat** a virtuális gép beállításait.
+Az alhálózat módosításához nyissa meg a **számítás és hálózat** a virtuális gép beállításait.
 
-![A számítási műveletek és hálózati számítási tulajdonságok ablak](./media/site-recovery-network-mapping-azure-to-azure/modify-subnet.png)
+![Számítás és hálózat számítási tulajdonságok ablak](./media/site-recovery-network-mapping-azure-to-azure/modify-subnet.png)
 
 
 ## <a name="ip-address"></a>IP-cím
 
-Az alábbi szakaszok ismertetik az a cél virtuális gép egyes hálózati adapter IP-cím van megadva.
+A cél virtuális gép minden hálózati adapter IP-cím van beállítva, a következő szakaszokban leírtak szerint.
 
 ### <a name="dhcp"></a>DHCP
-A hálózati illesztő a forrás virtuális gép DHCP használja, ha a cél virtuális gép hálózati kapcsolat is van beállítva a DHCP használatára.
+Ha a forrás virtuális gép hálózati adapterét használ a DHCP, a a cél virtuális gép hálózati adapterét is DHCP használatára van beállítva.
 
 ### <a name="static-ip-address"></a>Statikus IP-cím
-Ha a forrás virtuális gép hálózati kapcsolat egy statikus IP-címet használ, a hálózati illesztő a cél virtuális gép is használatára van beállítva a statikus IP-címet. A következő szakaszok ismertetik, hogyan egy statikus IP-cím van beállítva.
+Ha a forrás virtuális gép hálózati adapterét statikus IP-címet használ, a cél virtuális gép hálózati adapterét is használatára van beállítva a statikus IP-címet. A következő szakaszok ismertetik, hogyan statikus IP-cím van beállítva.
 
-#### <a name="same-address-space"></a>Ugyanazt a címtartományt
+#### <a name="same-address-space"></a>Azonos címtartomány
 
-Ha a forrás alhálózat és a cél alhálózathoz ugyanazt a címtartományt, a forrás virtuális gép hálózati illesztő IP-címe van állítja be a cél IP-címet. Ha az azonos IP-cím nem érhető el, a következő elérhető IP-cím értéke a cél IP-címet.
+Ha a forrásoldali alhálózat és a célként megadott alhálózat ugyanazt a címtartományt, a forrás virtuális gép hálózati adapterének IP-címét a cél IP-cím van beállítva. Az azonos IP-cím nem érhető el, ha a cél IP-cím a következő elérhető IP-címe van beállítva.
 
 #### <a name="different-address-spaces"></a>Különböző címterek
 
-Ha a forrás alhálózat és a cél alhálózathoz különböző címterek, a következő elérhető IP-címet a cél alhálózathoz értéke a cél IP-címet.
+Ha a forrásoldali alhálózat és a célként megadott alhálózat címe különböző tárolóhelyek, a célként megadott alhálózat következő elérhető IP-címek a cél IP-cím van beállítva.
 
-A cél IP-címet meg mindegyik hálózati interfész módosításához keresse fel a **számítás és hálózat** a virtuális gép beállításait.
+A cél IP-címet minden egyes hálózati adapter módosításához nyissa meg a **számítás és hálózat** a virtuális gép beállításait.
 
 ## <a name="next-steps"></a>További lépések
 
-* Felülvizsgálati [útmutató az Azure virtuális gépek replikálása a hálózat](site-recovery-azure-to-azure-networking-guidance.md).
+* Felülvizsgálat [hálózatkezelési útmutató Azure-beli virtuális gépek replikálásához](site-recovery-azure-to-azure-networking-guidance.md).

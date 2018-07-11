@@ -9,12 +9,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 02/13/2018
 ms.author: v-geberr
-ms.openlocfilehash: 4a3571acade7b7bd304c91eadc90b1a9f6e53860
-ms.sourcegitcommit: 11321f26df5fb047dac5d15e0435fce6c4fde663
+ms.openlocfilehash: 5babe089575d03db1f6bc0dd3f01bd3b6a5475fe
+ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37886841"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37951899"
 ---
 # <a name="utterances-in-luis"></a>A LUIS kimondott szöveg
 
@@ -51,7 +51,7 @@ A modell minden egyes ismétléskor ne adjon hozzá egy nagy mennyiségű kimond
 
 A LUIS, gondosan ki van jelölve, hogy megcímkézzen hatékony modelleket hoz létre. Túl sok beszédmódok hozzáadása nincs értékes keveredési, mert.  
 
-Néhány utterances, majd indítása jobb [tekintse át a végpont utterances](label-suggested-utterances.md) megfelelő szándék előrejelzése és egyéb entitások kivonási.
+Néhány utterances, majd indítása jobb [tekintse át a végpont utterances](luis-how-to-review-endoint-utt.md) megfelelő szándék előrejelzése és egyéb entitások kivonási.
 
 ## <a name="ignoring-words-and-punctuation"></a>Szavak és írásjelek figyelmen kívül hagyása
 Ha azt szeretné, figyelmen kívül hagyja a szó vagy az a példában utterance (kifejezés) absztrakt, egy [minta](luis-concept-patterns.md#pattern-syntax) az a _figyelmen kívül hagyása_ szintaxist. 
@@ -61,10 +61,10 @@ Képzési nem determinisztikus: az utterance (kifejezés) előrejelzési némile
 
 ## <a name="testing-utterances"></a>Tesztelési kimondott szöveg 
 
-A fejlesztők el kell indulnia a LUIS alkalmazás valódi forgalom tesztelés utterances a végpontra küldésével. Ezek a kimondott szöveg a szándékok és entitások teljesítményének javítását szolgálják [tekintse át a kimondott szöveg](label-suggested-utterances.md). A LUIS-webhely panel tesztelése az elküldött tesztek nem kap a végponton keresztül, és ezért nem jelentenek aktív tanulás. 
+A fejlesztők el kell indulnia a LUIS alkalmazás valódi forgalom tesztelés utterances a végpontra küldésével. Ezek a kimondott szöveg a szándékok és entitások teljesítményének javítását szolgálják [tekintse át a kimondott szöveg](luis-how-to-review-endoint-utt.md). A LUIS-webhely panel tesztelése az elküldött tesztek nem kap a végponton keresztül, és ezért nem jelentenek aktív tanulás. 
 
 ## <a name="review-utterances"></a>Tekintse át a kimondott szöveg
-Miután a modellt, betanított, a közzétett és a fogadó [végpont](luis-glossary.md#endpoint) lekérdezéseket, [tekintse át a kimondott szöveg](label-suggested-utterances.md) LUIS által javasolt. A LUIS választja ki a végpont kimondott szöveg, amely rendelkezik a leképezés vagy egy entitás alacsony értékeket. 
+Miután a modellt, betanított, a közzétett és a fogadó [végpont](luis-glossary.md#endpoint) lekérdezéseket, [tekintse át a kimondott szöveg](luis-how-to-review-endoint-utt.md) LUIS által javasolt. A LUIS választja ki a végpont kimondott szöveg, amely rendelkezik a leképezés vagy egy entitás alacsony értékeket. 
 
 ## <a name="best-practices"></a>Ajánlott eljárások
 Felülvizsgálat [ajánlott eljárások](luis-concept-best-practices.md) további.

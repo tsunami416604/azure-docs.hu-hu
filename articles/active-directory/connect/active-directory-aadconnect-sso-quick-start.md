@@ -1,10 +1,10 @@
 ---
-title: 'Az Azure AD Connect: Zökkenőmentes egyszeri bejelentkezés – első lépések |} Microsoft Docs'
-description: Ez a cikk ismerteti az első lépések az Azure Active Directory zökkenőmentes egyszeri bejelentkezést.
+title: 'Az Azure AD Connect: Zökkenőmentes egyszeri bejelentkezés – gyors üzembe helyezési |} A Microsoft Docs'
+description: Ez a cikk azt ismerteti, hogyan kezdheti el az Azure Active Directory zökkenőmentes egyszeri bejelentkezés
 services: active-directory
-keywords: Mi az Azure AD Connect telepítés Active Directory szükséges összetevőket az Azure AD, SSO, egyszeri bejelentkezést.
+keywords: Mi az Azure AD Connect, Active Directory telepítése szükséges összetevők SSO, Azure AD egyszeri bejelentkezés
 documentationcenter: ''
-author: swkrish
+author: billmath
 manager: mtillman
 ms.assetid: 9f994aca-6088-40f5-b2cc-c753a4f41da7
 ms.service: active-directory
@@ -15,111 +15,111 @@ ms.topic: article
 ms.date: 02/23/2017
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: e6bb32c20ca9bb6c514cab462e94018543c3a702
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: f8639cbb5c7ba86b4786f3d0b913d64bad59ad66
+ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34592612"
+ms.lasthandoff: 07/09/2018
+ms.locfileid: "37917516"
 ---
-# <a name="azure-active-directory-seamless-single-sign-on-quick-start"></a>Az Azure Active Directory zökkenőmentes egyszeri bejelentkezés: első lépések
+# <a name="azure-active-directory-seamless-single-sign-on-quick-start"></a>Az Azure Active Directory zökkenőmentes egyszeri bejelentkezés: gyors üzembe helyezési
 
-## <a name="deploy-seamless-single-sign-on"></a>Zökkenőmentes egyszeri bejelentkezést telepítése
+## <a name="deploy-seamless-single-sign-on"></a>Közvetlen egyszeri bejelentkezés üzembe helyezése
 
-Az Azure Active Directory (Azure AD) zökkenőmentes egyszeri bejelentkezést (zökkenőmentes SSO) automatikusan képes bejelentkeztetni a felhasználókat, ha vannak a saját vállalati asztali számítógépek, amelyek a vállalati hálózathoz csatlakoznak. Zökkenőmentes egyszeri Bejelentkezést biztosít a felhasználók számára könnyen a felhőalapú alkalmazások anélkül, hogy további helyszíni összetevők.
+Az Azure Active Directory (Azure AD) zökkenőmentes egyszeri bejelentkezés (közvetlen egyszeri bejelentkezés) automatikusan bejelentkezteti a felhasználókat, amelyek a saját vállalati asztali számítógépek, a vállalati hálózathoz csatlakozó. Közvetlen egyszeri bejelentkezés a felhasználókat az felhőalapú alkalmazásait is egyszerű hozzáférést biztosít anélkül, hogy bármilyen további helyszíni összetevők.
 
-Zökkenőmentes SSO telepítéséhez kövesse az alábbi lépéseket.
+Közvetlen egyszeri bejelentkezés üzembe helyezéséhez kövesse az alábbi lépéseket.
 
 ## <a name="step-1-check-the-prerequisites"></a>1. lépés: Az Előfeltételek ellenőrzése
 
 Győződjön meg arról, hogy a következő előfeltételeket:
 
-* **Az Azure AD Connect kiszolgáló**: Ha [áteresztő hitelesítés](active-directory-aadconnect-pass-through-authentication.md) legyen a bejelentkezési módszer, nincs további előfeltétel-ellenőrzésre szükség. Ha [Jelszókivonat-szinkronizálást](active-directory-aadconnectsync-implement-password-hash-synchronization.md) legyen a bejelentkezési módszer, és ha az Azure AD Connect és az Azure AD között tűzfal, ellenőrizze, hogy:
-   - Német nyelvű verziót 1.1.644.0 vagy újabb, az Azure AD Connect. 
-   - Ha a tűzfal vagy a proxy lehetővé teszi a DNS engedélyezett, az engedélyezett a kapcsolatok a  **\*. msappproxy.net** URL-címek 443-as porton keresztül. Ha nem, a hozzáférést a [Azure datacenter IP-címtartományok](https://www.microsoft.com/download/details.aspx?id=41653), amely hetente frissíteni. Ezt az előfeltételt csak a szolgáltatás engedélyezése esetén alkalmazható. Nincs szükség a tényleges felhasználói bejelentkezések.
+* **Az Azure AD Connect-kiszolgáló beállítása**: Ha [átmenő hitelesítés](active-directory-aadconnect-pass-through-authentication.md) a bejelentkezési módszerrel, nincs további előfeltétel-ellenőrzés nem szükséges. Ha [Jelszókivonat-szinkronizálás](active-directory-aadconnectsync-implement-password-hash-synchronization.md) legyen a bejelentkezési módszer, és ha az Azure AD Connect és az Azure AD között tűzfal, ellenőrizze, hogy:
+   - 1.1.644.0 verziót vagy az Azure AD Connect újabb. 
+   - Ha a tűzfal vagy proxy engedélyezett DNS engedélyezéskor a kapcsolatokat engedélyez a  **\*. msappproxy.net** URL-címek 443-as porton keresztül. Való hozzáférés engedélyezése, ha nem, akkor a [Azure adatközpont IP-címtartományait](https://www.microsoft.com/download/details.aspx?id=41653), amely hetente frissül. Ezt az előfeltételt alkalmazható, csak akkor, ha engedélyezi a funkciót. Nem kötelező a tényleges felhasználói bejelentkezéseket.
 
     >[!NOTE]
-    >Az Azure AD Connect 1.1.557.0, 1.1.558.0, 1.1.561.0 és 1.1.614.0 verziónál Jelszókivonat-szinkronizálást kapcsolatos hiba. Ha Ön _nem_ kíván használni a Jelszókivonat-szinkronizálást átmenő hitelesítéssel, olvassa el a [az Azure AD Connect kibocsátási megjegyzések](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-version-history#116470) további.
+    >Az Azure AD Connect-verziók 1.1.557.0, 1.1.558.0, 1.1.561.0 és 1.1.614.0 van a Jelszókivonat-szinkronizálás kapcsolatos probléma. Ha Ön _nem_ kívánja használni a Jelszókivonat-szinkronizálás az átmenő hitelesítéssel, olvassa el a [kibocsátási megjegyzések az Azure AD Connect](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-version-history#116470) további.
 
-* **Tartományi rendszergazdai hitelesítő adatok beállítása**: kell rendelkeznie a tartományi rendszergazda hitelesítő adatait, az egyes Active Directory-erdőben, amely:
+* **Tartományi rendszergazdai hitelesítő adatok beállítása**: szüksége lesz a tartományi rendszergazda hitelesítő adatai esetében minden egyes Active Directory-erdő, amely:
     * Az Azure AD-keresztül az Azure AD Connect szinkronizálása.
-    * Zökkenőmentes egyszeri bejelentkezéshez engedélyezni kívánt felhasználókat tartalmazza.
+    * Közvetlen egyszeri bejelentkezés engedélyezése kívánt felhasználókat tartalmazza.
 
 ## <a name="step-2-enable-the-feature"></a>2. lépés: A funkció engedélyezése
 
-A zökkenőmentes SSO engedélyezése [az Azure AD Connect](active-directory-aadconnect.md).
+Engedélyezze a közvetlen egyszeri bejelentkezés révén [az Azure AD Connect](active-directory-aadconnect.md).
 
-Ha végzett az Azure AD Connect új példánya, válassza ki azt a [egyéni telepítési útvonal](active-directory-aadconnect-get-started-custom.md). : A **felhasználói bejelentkezés** lapon jelölje be a **engedélyezése egyszeri bejelentkezéshez** lehetőséget.
+Ha az Azure AD Connect új példánya, válassza ki a [egyéni telepítési útvonal](active-directory-aadconnect-get-started-custom.md). Jelenleg a **felhasználói bejelentkezés** lapon válassza ki a **egyszeri bejelentkezés engedélyezése** lehetőséget.
 
 ![Az Azure AD Connect: Felhasználói bejelentkezés](./media/active-directory-aadconnect-sso/sso8.png)
 
-Ha már rendelkezik egy Azure AD Connect telepítése, válassza ki a **felhasználói bejelentkezés módosítása** az Azure AD Connectben lapon, majd válassza ki **következő**.
+Ha már rendelkezik egy Azure AD Connect telepítését, jelölje be a **felhasználói bejelentkezés módosítása** az Azure AD Connect lapján, és válassza ki **tovább**.
 
-![Az Azure AD Connect: Módosítsa a felhasználói bejelentkezés](./media/active-directory-aadconnect-user-signin/changeusersignin.png)
+![Az Azure AD Connect: A felhasználói bejelentkezés módosítása](./media/active-directory-aadconnect-user-signin/changeusersignin.png)
 
-Kövesse a varázsló utasításait, amíg elér a **engedélyezése egyszeri bejelentkezéshez** lap. Adja meg a tartományi rendszergazda hitelesítő adatait, az egyes Active Directory-erdőben:
+Járja végig a varázsló, amíg nem kap a **egyszeri bejelentkezés engedélyezése** lapot. Adja meg a tartományi rendszergazda hitelesítő adatai az egyes Active Directory erdő, amely:
     * Az Azure AD-keresztül az Azure AD Connect szinkronizálása.
-    * Zökkenőmentes egyszeri bejelentkezéshez engedélyezni kívánt felhasználókat tartalmazza.
+    * Közvetlen egyszeri bejelentkezés engedélyezése kívánt felhasználókat tartalmazza.
 
-A varázsló befejezése után a zökkenőmentes SSO engedélyezve van a tenant.
+A varázsló befejezését követően a közvetlen egyszeri bejelentkezés engedélyezve van a bérlő.
 
 >[!NOTE]
-> A tartományi rendszergazda hitelesítő adatai nem tárolja az Azure AD Connectben vagy az Azure ad-ben. Ezek mire szolgál a csak a funkció engedélyezése érdekében.
+> A tartományi rendszergazda hitelesítő adatai nem tárolja az Azure AD Connectben vagy az Azure ad-ben. Csak az a funkció engedélyezéséhez használhatók.
 
-Következő lépések követésével ellenőrizze, hogy engedélyezte zökkenőmentes SSO megfelelően:
+Kövesse az alábbi utasításokat, győződjön meg arról, hogy engedélyezte a közvetlen egyszeri bejelentkezés megfelelően:
 
-1. Jelentkezzen be a [Azure Active Directory felügyeleti központ](https://aad.portal.azure.com) a bérlő számára a globális rendszergazdai hitelesítő adataival.
-2. Válassza ki **Azure Active Directory** a bal oldali ablaktáblán.
+1. Jelentkezzen be a [Azure Active Directory felügyeleti központ](https://aad.portal.azure.com) a bérlőhöz tartozó globális rendszergazdai hitelesítő adatokkal.
+2. Válassza ki **Azure Active Directory** a bal oldali panelen.
 3. Válassza ki **az Azure AD Connect**.
 4. Ellenőrizze, hogy a **zökkenőmentes egyszeri bejelentkezést** jelenik meg a szolgáltatás **engedélyezve**.
 
-![Azure-portálon: az Azure AD Connect ablaktábla](./media/active-directory-aadconnect-sso/sso10.png)
+![Az Azure portal: az Azure AD Connect panel](./media/active-directory-aadconnect-sso/sso10.png)
 
-## <a name="step-3-roll-out-the-feature"></a>3. lépés: A szolgáltatás megkezdik
+## <a name="step-3-roll-out-the-feature"></a>3. lépés: A szolgáltatás bevezetése
 
-Számára, hogy a szolgáltatás a felhasználók számára, a következő Azure AD URL-cím hozzáadása a felhasználók Intranet zóna beállításainak az Active Directory csoportházirend segítségével kell:
+A szolgáltatás bevezetése a felhasználók számára, szüksége az Active Directory csoportházirend segítségével a felhasználók intranetes zóna beállításait az alábbi Azure AD URL-cím hozzáadása:
 
 - https://autologon.microsoftazuread-sso.com
 
 
-Emellett az Intranet zóna a házirend-beállítással a hívott engedélyeznie kell **beállítható a frissítések állapotsor keresztül parancsfájl** csoportházirenden keresztül. 
+Ezenkívül, engedélyeznie kell az Intranet zóna házirend nevű beállítása **lehetővé teszik a frissítések állapotsor keresztül parancsfájl** csoportházirenden keresztül. 
 
 >[!NOTE]
-> Az alábbi utasítások működnek csak az Internet Explorer és a Google Chrome Windows (Ha a megbízható helyek URL-címek készlete, osztja meg az Internet Explorer). Mozilla Firefox és Google Chrome Mac beállításával kapcsolatos utasításokat a következő szakaszban olvasható
+> Az alábbi utasításokat követve dolgozhat csak az Internet Explorer és a Google Chrome Windows (ha az Internet Explorer Megbízható helyek URL-címek készletét közös). Olvassa el a következő szakaszban útmutatást, Mozilla Firefox és a Google Chrome Mac beállítása
 
-### <a name="why-do-you-need-to-modify-users-intranet-zone-settings"></a>Miért van szüksége a felhasználói intranetes beállítások módosítása?
+### <a name="why-do-you-need-to-modify-users-intranet-zone-settings"></a>Miért van szüksége felhasználói intranetes zóna beállításait módosítani?
 
-Alapértelmezés szerint a böngésző automatikusan kiszámítja a megfelelő zónához, internetes vagy intranetes, egy adott URL-címről. Például "http://contoso/"van leképezve az Intranet zónához, mivel a"http://intranet.contoso.com/" (mert az URL-cím pontot tartalmaz) van leképezve az Internet zónában. Böngészők nem küld a Kerberos jegyek küldenek a felhővégpontnak, például az Azure AD URL-CÍMÉT, kivéve, ha explicit módon hozzáadása az URL-CÍMÉT a böngésző Intranet zónához.
+Alapértelmezés szerint a böngésző automatikusan kiszámolja a megfelelő zónához, internetes vagy intranetes, egy adott URL-címről. Például "http://contoso/"az Intranet zóna képez, mivel a"http://intranet.contoso.com/" rendeli az Internet zóna (mivel az URL-cím pont szerepel). Böngészők nem küldenek Kerberos-jegyekhez felhőbeli végpont, például az Azure AD URL-cím, kivéve, ha explicit módon fel az URL-CÍMÉT a böngésző intranetzónához az.
 
 ### <a name="detailed-steps"></a>Részletes lépések
 
 1. Nyissa meg a Csoportházirendkezelés-szerkesztő eszközt.
-2. Az egyes alkalmazott csoportházirend szerkesztése vagy a felhasználók. Ez a példa **alapértelmezett tartományházirend**.
-3. Keresse meg a **felhasználói konfiguráció** > **felügyeleti sablonok** > **Windows-összetevők**  >   **Az Internet Explorer** > **Internet Vezérlőpult** > **biztonsági beállításait tartalmazó lapot**. Válassza ki **zónákhoz való társításának listája a hely**.
+2. Az egyes alkalmazott csoportházirend szerkesztése vagy az összes felhasználó. Ez a példa **alapértelmezett tartományi házirend**.
+3. Keresse meg a **felhasználói konfiguráció** > **felügyeleti sablonok** > **Windows-összetevők**  >   **Az Internet Explorer** > **Internet Vezérlőpult** > **Biztonság lap**. Válassza ki **zónákhoz való társításának listája a hely**.
     ![Egyszeri bejelentkezés](./media/active-directory-aadconnect-sso/sso6.png)
-4. Engedélyezi a házirendet, és írja be a következő értékeket a párbeszédpanelen:
-   - **Érték neve**: az Azure AD URL-CÍMÉT a Kerberos-jegyek továbbított ahol.
-   - **Érték** (adatok): **1** az Intranet zóna jelzi.
+4. Engedélyezze a házirendet, és írja be a következő értékeket a párbeszédpanelen:
+   - **Érték neve**: az Azure AD URL-CÍMÉT, a Kerberos-jegyet a rendszer továbbítja.
+   - **Érték** (adatok): **1** azt jelzi, hogy az Intranet zóna.
 
-    Az eredmény így néz ki:
+    Az eredmény a következőhöz hasonló:
 
     Érték: https://autologon.microsoftazuread-sso.com
   
     Adatok: 1
 
    >[!NOTE]
-   > Ha azt szeretné, hogy egyes felhasználók zökkenőmentes SSO használatával (például, ha ezek a felhasználók jelentkezzen be a megosztott számítógépeken) nem engedélyezi, a fenti értékek beállítása **4**. Ez a művelet az Azure AD URL-címet ad hozzá a Tiltott helyek zónához, és zökkenőmentes SSO folyamatosan sikertelen.
+   > Ha azt szeretné, letilthatja egyes a közvetlen egyszeri bejelentkezés használatával (például, ha ezek a felhasználók jelentkezzen be a megosztott számítógépek), állítsa az előző értékeket **4**. Ez a művelet az Azure AD URL-címet ad hozzá a Tiltott helyek zónához, és közvetlen egyszeri bejelentkezés folyamatosan meghiúsul.
    >
 
 5. Válassza ki **OK**, majd válassza ki **OK** újra.
 
     ![Egyszeri bejelentkezés](./media/active-directory-aadconnect-sso/sso7.png)
 
-6. Keresse meg a **felhasználói konfiguráció** > **felügyeleti sablonok** > **Windows-összetevők**  >   **Az Internet Explorer** > **Internet Vezérlőpult** > **biztonsági beállításait tartalmazó lapot** > **Intranet zóna**. Válassza ki **beállítható a frissítések állapotsor keresztül parancsfájl**.
+6. Keresse meg a **felhasználói konfiguráció** > **felügyeleti sablonok** > **Windows-összetevők**  >   **Az Internet Explorer** > **Internet Vezérlőpult** > **Biztonság lap** > **Intranetzónához**. Válassza ki **lehetővé teszik a frissítések állapotsor keresztül parancsfájl**.
 
     ![Egyszeri bejelentkezés](./media/active-directory-aadconnect-sso/sso11.png)
 
-7. Engedélyezi a házirend-beállítást, majd válassza ki **OK**.
+7. Engedélyezi a házirend-beállítást, és válassza ki **OK**.
 
     ![Egyszeri bejelentkezés](./media/active-directory-aadconnect-sso/sso12.png)
 
@@ -127,56 +127,56 @@ Alapértelmezés szerint a böngésző automatikusan kiszámítja a megfelelő z
 
 #### <a name="mozilla-firefox-all-platforms"></a>Mozilla Firefox (minden platform)
 
-Mozilla Firefox automatikusan nem használja a Kerberos-hitelesítést. Minden felhasználó manuálisan kell hozzáadnia az Azure AD URL-CÍMÉT a Firefox beállításait, az alábbi lépéseket követve:
-1. Futtassa a Firefox, és adja meg `about:config` a böngésző címsorába. Hagyja figyelmen kívül belőle értesítéseket, amelyek akkor jelennek meg.
-2. Keresse meg a **network.negotiate-auth.trusted-URI-azonosítók** beállítás. Ez a beállítás a Firefox a megbízható helyek a Kerberos-hitelesítést sorolja fel.
+Mozilla Firefox automatikusan nem használ Kerberos-hitelesítést. Minden felhasználónak manuálisan kell hozzáadni az Azure AD URL-cím a Firefox beállításait az alábbi lépések segítségével:
+1. Futtassa a Firefox és adja meg `about:config` címet a címsorba. Hagyja figyelmen kívül minden értesítést fog látni.
+2. Keresse meg a **network.negotiate-auth.trusted-URI-k** előnyben. Ez a beállítás a megbízható helyek Firefox a Kerberos-hitelesítéshez sorolja fel.
 3. Kattintson a jobb gombbal, és válassza ki **módosítás**.
 4. Adja meg https://autologon.microsoftazuread-sso.com a mezőben.
-5. Válassza ki **OK** és a böngészőben nyissa meg újra.
+5. Válassza ki **OK** majd nyissa meg a böngészőben.
 
 #### <a name="safari-mac-os"></a>Safari (Mac OS)
 
-Győződjön meg arról, hogy a Mac OS futtató gép AD egy tartományhoz. További tájékoztatást AD való csatlakozásról [ajánlott eljárások az Active Directory integrálása OS X](http://www.isaca.org/Groups/Professional-English/identity-management/GroupDocuments/Integrating-OS-X-with-Active-Directory.pdf).
+Győződjön meg arról, hogy a Mac OS futtató gép az AD-tartományhoz csatlakozik. Való csatlakozásról AD útmutatásért lásd: [ajánlott eljárások az OS X integrálja az Active Directory](http://www.isaca.org/Groups/Professional-English/identity-management/GroupDocuments/Integrating-OS-X-with-Active-Directory.pdf).
 
 #### <a name="google-chrome-all-platforms"></a>Google Chrome (minden platform)
 
-Ha felülbírálva a [AuthNegotiateDelegateWhitelist](https://www.chromium.org/administrators/policy-list-3#AuthNegotiateDelegateWhitelist) vagy a [AuthServerWhitelist](https://www.chromium.org/administrators/policy-list-3#AuthServerWhitelist) házirend-beállítások a környezetben, győződjön meg arról, az Azure AD URL-cím hozzáadása (https://autologon.microsoftazuread-sso.com) is számukra.
+Ha rendelkezik kényszerítettnek a [AuthNegotiateDelegateWhitelist](https://www.chromium.org/administrators/policy-list-3#AuthNegotiateDelegateWhitelist) vagy a [AuthServerWhitelist](https://www.chromium.org/administrators/policy-list-3#AuthServerWhitelist) házirend-beállítások a környezetben, győződjön meg arról, hogy a az Azure AD URL-cím hozzáadása (https://autologon.microsoftazuread-sso.com) nekik is.
 
-#### <a name="google-chrome-mac-os-only"></a>Google Chrome (Mac OS csak)
+#### <a name="google-chrome-mac-os-only"></a>Google Chrome (csak Mac OS)
 
-Google Chrome a Mac OS és más nem Windows platformokon, tekintse meg a [a króm házirend Projektlista](https://dev.chromium.org/administrators/policy-list-3#AuthServerWhitelist) az engedélyezési lista hogy az Azure AD URL-címe hogyan integrált hitelesítés olvashat.
+Google Chrome, a Mac OS és más nem Windows platformokon, tekintse meg a [a króm projekt Policy List](https://dev.chromium.org/administrators/policy-list-3#AuthServerWhitelist) információk, amelyeket engedélyezni kell hogy Azure ad-ben URL-Címének hogyan integrált hitelesítés.
 
-Külső Active Directory csoportházirend-bővítmények számára, hogy az Azure AD URL-cím Firefox és Google Chrome Macintosh-felhasználók a használata, ez a cikk hatókörén kívül.
+Külső Active Directory csoportházirend-bővítmények számára, hogy az Azure AD URL-cím Google Chrome, Firefox a Mac-felhasználók használata ebben a cikkben hatókörén kívül.
 
-#### <a name="known-browser-limitations"></a>A böngésző ismert korlátozásai
+#### <a name="known-browser-limitations"></a>A böngésző ismert korlátozások
 
-Privát böngészés módban a Firefox és Edge böngésző zökkenőmentes SSO nem működik. Is nem működik az Internet Explorer böngészőben fokozott védett módban fut. Ha.
+Közvetlen egyszeri bejelentkezés nem működik a privát böngészési módban, a Firefox és az Edge böngészőben. Azt is nem működik az Internet Explorer böngészőben fokozott védett módban fut, ha.
 
 ## <a name="step-4-test-the-feature"></a>4. lépés: A szolgáltatás tesztelése
 
-A szolgáltatás adott felhasználó tesztelése, gondoskodjon arról, hogy a következő feltételek teljesülnek:
-  - A felhasználó bejelentkezik vállalati eszköz.
-  - Az eszköz az Active Directory-tartomány tagja.
-  - Az eszköz a tartományvezérlő (DC) közvetlen kapcsolattal rendelkezik, a vállalati vezetékes vagy vezeték nélküli hálózat vagy távelérési kapcsolatot, például a VPN-kapcsolaton keresztül.
-  - Rendelkezik [megkezdődött a szolgáltatás](##step-3-roll-out-the-feature) csoportházirenden keresztül a felhasználóhoz.
+A funkció egy adott felhasználó teszteléséhez ellenőrizze, hogy az alábbi feltételek teljesülnek:
+  - A felhasználó bejelentkezik vállalati eszközök.
+  - Az eszköz az Active Directory-tartományhoz csatlakozik.
+  - Az eszköz a tartományvezérlő (DC), hogy közvetlen kapcsolat van, a vállalati vezetékes vagy vezeték nélküli hálózaton vagy a távelérési kapcsolatot, például a VPN-kapcsolat használatával.
+  - Rendelkezik [egyik tagján jelennek meg a szolgáltatás](##step-3-roll-out-the-feature) ehhez a felhasználóhoz a csoportházirenden keresztül.
 
-A forgatókönyv, ahol a felhasználó beírja, csak a felhasználónév, de nem a jelszó ellenőrzése
-   - Jelentkezzen be https://myapps.microsoft.com/ egy új titkos böngésző-munkamenetben.
+A forgatókönyv, ahol a felhasználó sikeresen Megadja, csak a felhasználónév, de a jelszavát nem teszteléséhez:
+   - Jelentkezzen be a https://myapps.microsoft.com/ egy új privát böngésző-munkamenetben.
 
-Tesztelje a forgatókönyvet, ahol a felhasználó nem rendelkezik a felhasználónév vagy jelszó megadását, használja az alábbi lépések egyikét: 
-   - Jelentkezzen be https://myapps.microsoft.com/contoso.onmicrosoft.com egy új titkos böngésző-munkamenetben. Cserélje le *contoso* a bérlő névvel.
-   - Jelentkezzen be https://myapps.microsoft.com/contoso.com egy új titkos böngésző-munkamenetben. Cserélje le *contoso.com* a tenant egy ellenőrzött tartomány (nem összevont tartományhoz).
+Tesztelje a forgatókönyvet, ahol a felhasználó nem rendelkezik a felhasználónév vagy jelszó megadását, használja az alábbi lépéseket: 
+   - Jelentkezzen be a https://myapps.microsoft.com/contoso.onmicrosoft.com egy új privát böngésző-munkamenetben. Cserélje le *contoso* a bérlő nevét.
+   - Jelentkezzen be a https://myapps.microsoft.com/contoso.com egy új privát böngésző-munkamenetben. Cserélje le *contoso.com* az a bérlő ellenőrzött tartományt (nem összevont tartományban).
 
-## <a name="step-5-roll-over-keys"></a>5. lépés: A kulcs váltása
+## <a name="step-5-roll-over-keys"></a>5. lépés: Vihető kulcsok
 
-2. lépésben az Azure AD Connect számítógépfiókot hoz létre (az Azure AD közti) amelyiken engedélyezte a zökkenőmentes SSO minden Active Directory-erdőben. További tudnivalókért lásd: [Azure Active Directory zökkenőmentes egyszeri bejelentkezés: technikai mélyreható](active-directory-aadconnect-sso-how-it-works.md). A nagyobb biztonság érdekében azt javasoljuk, hogy Ön rendszeresen váltása a Kerberos visszafejtési kulcs esetében a számítógépfiókok. Kulcsok váltása kapcsolatos útmutatásért lásd: [Azure Active Directory zökkenőmentes egyszeri bejelentkezés: gyakran ismételt kérdések](active-directory-aadconnect-sso-faq.md#how-can-i-roll-over-the-kerberos-decryption-key-of-the-azureadssoacc-computer-account).
+2. lépésben az Azure AD Connect létrehoz számítógépfiókok (amely az Azure AD), amelyen engedélyezte a közvetlen egyszeri bejelentkezés az Active Directory erdőkben. További tudnivalókért lásd: [Azure Active Directory zökkenőmentes egyszeri bejelentkezés: részletes technikai](active-directory-aadconnect-sso-how-it-works.md). A nagyobb biztonság érdekében azt javasoljuk, hogy rendszeres időközönként hosszabbítsa a Kerberos visszafejtési kulcs esetében a számítógépfiókoknak. Hogyan állítható kulcsok útmutatásért lásd: [Azure Active Directory zökkenőmentes egyszeri bejelentkezés: gyakran ismételt kérdések](active-directory-aadconnect-sso-faq.md#how-can-i-roll-over-the-kerberos-decryption-key-of-the-azureadssoacc-computer-account).
 
 >[!IMPORTANT]
->Végezze el ezt a lépést nem kell _azonnal_ a szolgáltatás engedélyezése után. Váltása a Kerberos-visszafejtési kulcsok 30 naponta legalább egyszer.
+>Ez a lépés nem kell _azonnal_ a funkció engedélyezése után. Vihetők át a Kerberos-visszafejtési kulcsok a 30 nap során legalább egyszer.
 
 ## <a name="next-steps"></a>További lépések
 
-- [Műszaki mélyreható](active-directory-aadconnect-sso-how-it-works.md): a zökkenőmentes egyszeri bejelentkezés funkció működésének megismerése.
-- [Gyakori kérdések](active-directory-aadconnect-sso-faq.md): kapcsolatos zökkenőmentes egyszeri bejelentkezést gyakran feltett kérdésekre adott válaszok.
-- [Hibaelhárítás](active-directory-aadconnect-troubleshoot-sso.md): Útmutató: a zökkenőmentes egyszeri bejelentkezés funkció kapcsolatos gyakori problémák megoldásához.
-- [UserVoice](https://feedback.azure.com/forums/169401-azure-active-directory/category/160611-directory-synchronization-aad-connect): az Azure Active Directory fórumán használja a következő fájl új frissítéseiről.
+- [Részletes technikai](active-directory-aadconnect-sso-how-it-works.md): a közvetlen egyszeri bejelentkezés funkció működésének megismerése.
+- [Gyakori kérdések](active-directory-aadconnect-sso-faq.md): választ találhat a gyakori kérdésekre vonatkozó zökkenőmentes egyszeri bejelentkezést.
+- [Hibaelhárítás](active-directory-aadconnect-troubleshoot-sso.md): ismerje meg a zökkenőmentes egyszeri bejelentkezés funkció szolgáltatással kapcsolatos gyakori problémák megoldásához.
+- [UserVoice](https://feedback.azure.com/forums/169401-azure-active-directory/category/160611-directory-synchronization-aad-connect): az Azure Active Directory-fórumon használatával új funkcióra vonatkozó javaslata fájlt.

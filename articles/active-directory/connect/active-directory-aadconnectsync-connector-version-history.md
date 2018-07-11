@@ -1,6 +1,6 @@
 ---
-title: Összekötő Verziókiadások |} Microsoft Docs
-description: Ez a témakör az összekötők összes kiadásaiban a Forefront Identity Manager (FIM) és a Microsoft Identity Manager (MIM)
+title: Connector Verziókiadásai |} A Microsoft Docs
+description: Ez a témakör felsorolja az összekötők összes kiadása a Forefront Identity Manager (FIM) és a Microsoft Identity Manager (MIM)
 services: active-directory
 documentationcenter: ''
 author: billmath
@@ -14,124 +14,124 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 03/22/2018
 ms.component: hybrid
-ms.author: davidste
-ms.openlocfilehash: 11794739974a0efdd93a9c45cd18c6d959b1f7b2
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.author: billmath
+ms.openlocfilehash: 9bbf75f258f9853803ca4c00155eb186ceca54a3
+ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34592673"
+ms.lasthandoff: 07/09/2018
+ms.locfileid: "37916406"
 ---
 # <a name="connector-version-release-history"></a>Összekötő verziókiadásai
-Az összekötők a Forefront Identity Manager (FIM) és a Microsoft Identity Manager (MIM) gyakran frissül.
+Az összekötők a Forefront Identity Manager (FIM) és a Microsoft Identity Manager (MIM) rendszeresen frissülnek.
 
 > [!NOTE]
-> Ez a témakör csak a FIM és a MIM rendszer. Az összekötők nem támogatottak az Azure AD Connect telepítése. Kiadott összekötők frissítése a megadott Build esetén az AADConnect előtelepített.
+> Ez a témakör csak a FIM és a MIM van. Ezek az összekötők nem támogatottak az Azure AD Connect telepítés. Elérhető összekötők verzióra a megadott Build esetén az aad Connect előre telepített.
 
 
-Ez a témakör a csatlakozók kiadott összes verziójának felsorolása.
+Ez a témakör az összekötők kiadott összes verzió listázása.
 
 Kapcsolódó hivatkozások:
 
-* [Töltse le a legfrissebb összekötők](http://go.microsoft.com/fwlink/?LinkId=717495)
-* [Általános LDAP-összekötő](https://docs.microsoft.com/microsoft-identity-manager/reference/microsoft-identity-manager-2016-connector-genericldap) dokumentáció
-* [Általános SQL-összekötő](https://docs.microsoft.com/microsoft-identity-manager/reference/microsoft-identity-manager-2016-connector-genericsql) dokumentáció
-* [Webalkalmazás-Services-összekötő](https://docs.microsoft.com/microsoft-identity-manager/reference/microsoft-identity-manager-2016-ma-ws) dokumentáció
-* [PowerShell-összekötő](https://docs.microsoft.com/microsoft-identity-manager/reference/microsoft-identity-manager-2016-connector-powershell) dokumentáció
-* [Lotus Domino-összekötő](https://docs.microsoft.com/microsoft-identity-manager/reference/microsoft-identity-manager-2016-connector-domino) dokumentáció
+* [Töltse le a legújabb összekötők](http://go.microsoft.com/fwlink/?LinkId=717495)
+* [Általános LDAP-összekötő](https://docs.microsoft.com/microsoft-identity-manager/reference/microsoft-identity-manager-2016-connector-genericldap) referenciadokumentációt
+* [Általános SQL-összekötő](https://docs.microsoft.com/microsoft-identity-manager/reference/microsoft-identity-manager-2016-connector-genericsql) referenciadokumentációt
+* [Web Services-összekötő](https://docs.microsoft.com/microsoft-identity-manager/reference/microsoft-identity-manager-2016-ma-ws) referenciadokumentációt
+* [PowerShell-összekötő](https://docs.microsoft.com/microsoft-identity-manager/reference/microsoft-identity-manager-2016-connector-powershell) referenciadokumentációt
+* [Lotus Domino-összekötő](https://docs.microsoft.com/microsoft-identity-manager/reference/microsoft-identity-manager-2016-connector-domino) referenciadokumentációt
 
 
 ## <a name="118300"></a>1.1.830.0
 
-### <a name="fixed-issues"></a>Javított problémák:
+### <a name="fixed-issues"></a>Rögzített problémák:
 * Megoldott ConnectorsLog System.Diagnostics.EventLogInternal.InternalWriteEvent(Message: A device attached to the system is not functioning)
-* Ebben a kiadásban összekötők kell kötés irányítja át a felhasználókat 3.3.0.0-4.1.3.0 a miiserver.exe.config 4.1.4.0 frissítése
-* Általános webszolgáltatások:
-    * Megoldott érvényes JSON-válasz nem lehet menteni a konfigurációs eszközt
+* Ebben a kiadásban az összekötők kell frissíteni a kötés irányítja át a 3.3.0.0-4.1.3.0 4.1.4.0 miiserver.exe.config a
+* Általános webes szolgáltatások:
+    * Megoldott érvényes JSON-válasz nem lehet menteni a konfigurációs eszköz
 * Általános SQL:
-    * Exportálás mindig törlésével a művelet csak frissítés lekérdezés állít elő. A delete lekérdezés létrehozásához hozzá
-    * Az SQL-lekérdezést, amely lekérdezi objektumok különbözeti importálás működéséhez, ha "Különbözeti stratégia" változások követése rögzített volt. Ebben az implementációban ismert korlátozás: a változások követése mód különbözeti importálás nem többértékű attribútumok változásainak követése
-    * A hozzáadott lehetőségét esetben törlő lekérdezés generáljon többértékű attribútum utolsó értékét törölni kell, és a sor nem tartalmaz értéket, amelyet törölni kell kivételével bármely egyéb adatot.
-    * Mikor kezelése System.ArgumentException végrehajtott SP által a kimeneti paraméterek 
-    * Ha a műveletet exportálás mezőbe, amely a varbinary(max) típusú helytelen lekérdezés
-    * Probléma parameterList változóval kétszer (a ExportAttributes és GetQueryForMultiValue funkciók) inicializálása
+    * Exportálás mindig csak frissítés lekérdezés törlése működéséhez állít elő. Hozzáadott hozható létre lekérdezés törlése
+    * Az SQL-lekérdezést, mely objektumokat a művelet a különbözeti importálás, ha "A különbözeti stratégia" Change Tracking rendszerriasztások mechanizmusában. Ez a megvalósítás ismert korlátozás a: Change Tracking móddal különbözeti importálás nem többértékű attribútumok változásainak követése
+    * Hozzáadott lehetősége arra, hogy egy törlési lekérdezés esetekhez generáljon többértékű attribútum utolsó értékét törölni kell, és a sor nem tartalmaz értéket, amelyet törölni kell kivételével minden egyéb adatot.
+    * Kezelése mikor System.ArgumentException végrehajtott SP által a kimeneti paraméterek 
+    * Ha a műveletet az export mezőbe, amely a varbinary(max) típusú helytelen lekérdezés
+    * Probléma parameterList változó inicializálása kétszer (az a funkciók ExportAttributes és GetQueryForMultiValue)
 
 
 ## <a name="116490-aadconnect-116490"></a>1.1.649.0 (AADConnect 1.1.649.0)
 
-### <a name="fixed-issues"></a>Javított problémák:
+### <a name="fixed-issues"></a>Rögzített problémák:
 
 * Lotus Notes:
   * Egyéni képesítést adók engedélyezése beállítás szűrése
-  * Az osztály ImportOperations importálási rögzített a meghatározását, hogy milyen műveleteket futtathatja a "Nézetek" módban, és amely a "Search" módban.
+  * Importálás az osztály ImportOperations rögzíteni a meghatározását, hogy milyen műveleteket a "Nézetek" módban, és amely a "Search" üzemmódban futtatható.
 * Általános LDAP:
-  * OpenLDAP Directory DN entryUUI, hanem horgonyzási használja. Új lehetőség GLDAP összekötőt, amely lehetővé teszi a horgony módosítása
+  * OpenLDAP Directory entryUUI helyett a forráshorgony DN-t használja. Új beállítás GLDAP összekötőt, amely lehetővé teszi, hogy módosítani a forráshorgony
 * Általános SQL:
   * Rögzített exportálási mezőbe, amely a varbinary(max) típusú.
-  * Amikor hozzá a bináris adatok adatforrásból származó CSEntry objektum, a DataTypeConversion függvény nulla bájt sikertelen volt. Rögzített DataTypeConversion függvény CSEntryOperationBase osztály.
+  * Bináris adatokat egy adatforrásból való hozzáadásakor CSEntry objektum, a DataTypeConversion függvény nulla bájtot sikertelen volt. Rögzített DataTypeConversion függvény CSEntryOperationBase osztály.
 
 
 
 
-### <a name="enhancements"></a>Fejlesztései:
+### <a name="enhancements"></a>Fejlesztések:
 
 * Általános SQL:
-  * Az ügyfélgépek konfigurálására a végrehajtási mód tárolt eljárást az elnevezett paramétereket, vagy neve nem szerepel-e az általános SQL felügyeleti ügynök a lap "Globális paraméterek" konfigurációs ablakban. A lap "Globális paraméterek" nincs "Use elnevezett paramétereket a tárolt eljárás végrehajtásához" hajtsa végre a tárolt eljárás mód felelős címkével jelölőnégyzetet neve paraméterek vagy nem.
-    * Az elnevezett paraméterek tárolt eljárás végrehajtásához képességét jelenleg csak olyan adatbázisok IBM DB2 és MSSQL működik. Az Oracle és a MySQL-adatbázisok Ez a módszer nem működik: 
-      * Az SQL-szintaxis MySQL az elnevezett paraméterek nem támogatja a tárolt eljárások.
-      * Az Oracle ODBC-illesztőprogram nem támogatja az elnevezett paraméterek az elnevezett paramétereket a tárolt eljárások)
+  * Hajtsa végre a mód beállításával tárolt eljárást az elnevezett paraméterek vagy a neve nem kerül be a "Globális Parameters" oldalon általános SQL kezelőügynök konfigurációs ablak. Az oldal "Globális Parameters" hiba "Felhasználás elnevezett paraméterek egy tárolt eljárás végrehajtására" mód az execute tárolt eljárás felelős címkével jelölőnégyzetet neve paraméterek, vagy nem.
+    * Lehetővé teszi az elnevezett paraméterek tárolt eljárás végrehajtása jelenleg csak olyan adatbázisok, IBM DB2-höz és MSSQL működik. Az Oracle- és MySQL adatbázisok Ez a módszer nem működik: 
+      * Az SQL-szintaxis a MySQL elnevezett paramétereket nem támogatja a tárolt eljárásokban.
+      * Az Oracle ODBC-illesztő nem támogatja a tárolt eljárások elnevezett paraméterek elnevezett paraméterek)
 
 ## <a name="116040-aadconnect-116140"></a>1.1.604.0 (AADConnect 1.1.614.0)
 
 
-### <a name="fixed-issues"></a>Javított problémák:
+### <a name="fixed-issues"></a>Rögzített problémák:
 
-* Általános webszolgáltatások:
-  * Megtörtént egy probléma javítása meggátolja, hogy a SOAP-projekt jöjjenek létre, amikor két vagy több végpontot történt.
+* Általános webes szolgáltatások:
+  * Kijavítva egy probléma megakadályozza, hogy egy SOAP-projektet jöjjenek létre, amikor két vagy több végpontot volt.
 * Általános SQL:
-  * Importálási műveletben a GSQL lett nem időpont váltásakor megfelelően, a kapcsolódási térbe mentésekor. A GSQL a kapcsolódási térbe alapértelmezett dátum és idő formátuma "éééé-HH-NN HH:mm:ssZ" értékről "éééé-hh-nn hh:mm:ssZ" értékűre változott.
+  * Az importálási művelet az GSQL volt nem konvertálása idő megfelelően összekötőterében mentésekor. Az alapértelmezett dátum és idő formátumban az összekötőtérben, a GSQL módosult a "éééé-hh-nn hh:mm:ssZ" a "éééé-HH-NN HH:mm:ssZ".
 
 ## <a name="115510-aadconnect-115530"></a>1.1.551.0 (AADConnect 1.1.553.0)
 
-### <a name="fixed-issues"></a>Javított problémák:
+### <a name="fixed-issues"></a>Rögzített problémák:
 
-* Általános webszolgáltatások:
-  * A Wsconfig eszköz nem megfelelő átalakítani a Json-tömb, a "kérelemmintát" a többi metódust. A Json-tömb, a többi kéréshez ennek oka a szerializálás problémákat.
-  * Web Service Connector konfigurációs eszköz nem támogatja a hely szimbólumok használata a JSON-attribútum neve 
-    * A behelyettesítések is manuálisan hozzáadni az WSConfigTool.exe.config fájlra, pl. ```<appSettings> <add key=”JSONSpaceNamePattern” value="__" /> </appSettings>```
+* Általános webes szolgáltatások:
+  * A Wsconfig eszköz nem megfelelő átalakítani a Json-tömb, a REST szolgáltatás esetén "mintakérelemből" való. Ez problémákat okozott a szerializálása a Json-tömb, a többi kéréshez.
+  * Webes szolgáltatás-összekötő konfigurálása eszközben nem támogatja a hely szimbólumok használatának JSON attribútumnevek 
+    * Helyettesítés mintát is hozzáadhatók manuálisan a WSConfigTool.exe.config fájlt, például: ```<appSettings> <add key=”JSONSpaceNamePattern” value="__" /> </appSettings>```
 > [!NOTE]
-> JSONSpaceNamePattern kulcsra szükség, mivel az exportált a következő hibaüzenet fog megjelenni: üzenet: üres a név nem lehet. 
+> JSONSpaceNamePattern kulcsot kötelező megadni, ahogy exportálása a következő hibaüzenetet kap: üzenet: üres a név nem lehet. 
 
 * Lotus Notes:
-  * Ha a beállítás **lehetővé teszik egyéni képesítést adók engedélyezése a szervezet vagy szervezeti egység** le van tiltva, akkor az összekötő nem tud exportálásakor (frissítés), miután az Exportálás flow attribútumainak Domino exportálják, de exportálás időpontjában egy KeyNotFoundException szinkronizálási visszakerül. 
-    * Ez akkor fordul elő, mert az átnevezési sikertelen lesz, amikor megpróbálja módosítani a megkülönböztető név (felhasználónév attribútum) módosításával az alábbi attribútumok egyikét:  
+  * Ha a beállítás **lehetővé teszik egyéni képesítést adók engedélyezése a szervezet vagy szervezeti egység** le van tiltva, akkor az összekötő nem tud exportálásakor (frissítés) után az exportálási folyamat Domino de exportfájljához exportált attribútumok egy Szinkronizálási KeyNotFoundException küld vissza. 
+    * Ennek oka az, átnevezése sikertelen való DN (felhasználónév attribútum) módosítsa az alábbi attribútumok módosításával:  
       - Vezetéknév
-      - Utónév
+      - Keresztnév
       - MiddleInitial
       - AltFullName
       - AltFullNameLanguage
       - szervezeti egység
       - altcommonname
 
-  * Ha **lehetővé teszik egyéni képesítést adók engedélyezése a szervezet vagy szervezeti egység** engedélyezve van, de szükséges képesítést adók engedélyezése továbbra is üres, akkor KeyNotFoundException következik be.
+  * Amikor **lehetővé teszik egyéni képesítést adók engedélyezése a szervezet vagy szervezeti egység** beállítás engedélyezve van, de képesítést a szükséges adók engedélyezése továbbra is üresek, akkor KeyNotFoundException történik.
 
-### <a name="enhancements"></a>Fejlesztései:
-
-* Általános SQL:
-  * **Forgatókönyv: újratervezett megvalósítva:** "*" funkció
-  * **Megoldás leírása:** megközelítés megváltozott [többértékű hivatkozási attribútum kezelési](https://docs.microsoft.com/microsoft-identity-manager/reference/microsoft-identity-manager-2016-connector-genericsql).
-
-
-### <a name="fixed-issues"></a>Javított problémák:
-
-* Általános webszolgáltatások:
-  * Kiszolgálókonfiguráció nem importálható, ha az megtalálható a WebService összekötő
-  * Több webkiszolgáló szolgáltatással nem működik a WebService összekötő
+### <a name="enhancements"></a>Fejlesztések:
 
 * Általános SQL:
-  * Egyetlen értéket hivatkozott attribútum nem objektumtípusok találhatók
-  * Különbözeti importálás objektumon változások követése stratégia törlések érték többértékű táblából eltávolításakor
-  * Az AS a DB2 GSQL Connector OverflowException / 400
+  * **Forgatókönyv: újratervezve implementálva:** "*" funkció
+  * **Megoldás leírása:** megközelítés megváltozott [többértékű hivatkozási attribútumok kezelése](https://docs.microsoft.com/microsoft-identity-manager/reference/microsoft-identity-manager-2016-connector-genericsql).
+
+
+### <a name="fixed-issues"></a>Rögzített problémák:
+
+* Általános webes szolgáltatások:
+  * Kiszolgálókonfiguráció nem importálható, ha az megtalálható a webszolgáltatás-összekötő
+  * Több webes szolgáltatással nem működik a webszolgáltatás-összekötő
+
+* Általános SQL:
+  * Nincs objektumtípusok egyetlen érték hivatkozott attribútumot fel vannak sorolva
+  * Különbözeti importálás a Change Tracking stratégia törlések objektumot a rendszer eltávolítja az értéket a többértékű táblából
+  * Az AS DB2-összekötőben GSQL OverflowException / 400
 
 Lotus:
   * Keresés a szervezeti egységek GlobalParameters lap megnyitása előtt enable\disable hozzáadott lehetőséget
@@ -143,18 +143,18 @@ Kiadás dátuma: 2017. március
 ### <a name="enhancements"></a>Fejlesztések
 
 * Általános SQL:</br>
-  **A forgatókönyvben a jelenség:** az SQL-összekötővel, ha azt csak teszi lehetővé egy hivatkozás egy objektumtípus és tagokat kereszthivatkozás szükséges egy jól ismert korlátozás. </br>
-  **Megoldás leírása:** a feldolgozási lépést hivatkozásainak voltak "*" lehetőséget választja, minden kombinációi objektumtípusok visszatér vissza a szinkronizálási motor.
+  **A forgatókönyv tünetek:** egy jól ismert korlátozás nevezhetjük csak egy hivatkozást egy objektumtípus engedélyezése és kereszthivatkozás tagjaival szükséges az SQL-összekötővel. </br>
+  **Megoldás leírása:** hivatkozásokat a feldolgozási lépést a voltak "*" lehetőséget választja, minden kombinációja objektumtípusok ad vissza vissza a szinkronizálási motor.
 
 >[!Important]
-- Ezzel létrehoz sok helyőrzők
-- Ellenőrizze, hogy a kiosztási egyedi közötti objektumtípusok szükség.
+- Ezzel létrehoz számú helyőrzőket
+- Fontos, hogy ellenőrizze, hogy a kiosztási egyedi platformfüggetlen objektumtípusokat.
 
 
 * Általános LDAP:</br>
- **Forgatókönyv:** Ha csak néhány tárolók adott partíció van kijelölve, majd a keresés továbbra is megtörténik a teljes partíció. Specifikus szűri a Synchronization szolgáltatás által, de nem MA, ami problémát okozhat teljesítménycsökkenést. </br>
+ **Forgatókönyv:** amikor csak néhány tárolók adott partíción van kijelölve, majd a keresés továbbra is végezheti el teljes partíció. Szinkronizálási szolgáltatás, de nem a MA, ami problémát okozhat teljesítménycsökkenést specifikus lesz szűrve. </br>
 
- **Megoldás leírása:** megváltozott GLDAP összekötő kód révén lehetséges nyissa meg az összes tároló keresztül, és azok helyett a teljes partíció kereséssel objektumok kereséséhez.
+ **Megoldás leírása:** megváltozott GLDAP összekötő kódot, hogy az összes tároló keresztül lehetséges go és objektumok keresése azok helyett a teljes partícióban.
 
 
 * Lotus Domino:
@@ -162,73 +162,73 @@ Kiadás dátuma: 2017. március
   **Forgatókönyv:** Domino mail törlés támogatása egy személy eltávolítása az exportálás során. </br>
   **Megoldás:** konfigurálható mail törlés támogatása egy személy eltávolítása az exportálás során.
 
-### <a name="fixed-issues"></a>Javított problémák:
-* Általános webszolgáltatások:
- * A szolgáltatás URL-CÍMÉT az alapértelmezett módosításakor a SAP wsconfig WebService konfigurációs eszköz projekt, akkor történik, a következő hiba: nem található az elérési út egy része
+### <a name="fixed-issues"></a>Rögzített problémák:
+* Általános webes szolgáltatások:
+ * A szolgáltatás URL-CÍMÉT az alapértelmezett módosításakor SAP wsconfig projektek webszolgáltatás konfigurációs eszközt, majd a következő hiba történik: az elérési út egy része nem található
 
       ``'C:\Users\cstpopovaz\AppData\Local\Temp\2\e2c9d9b0-0d8a-4409-b059-dceeb900a2b3\b9bedcc0-88ac-454c-8c69-7d6ea1c41d17\cfg.config\cloneconfig.xml'. ``
 
 * Általános LDAP:
- * GLDAP Connector nem látja az AD LDS összes attribútum
- * Varázsló oldaltörések nem UPN attribútum a LDAP-címtár séma észlelésekor
- * Különbözeti importálása sikertelen teljes importálás során, ha nincs bejelölve a "objectclass" attribútum nem található felderítési hibákkal
- * Egy "Partíciók és hierarchiák konfigurálása" konfigurációs lapján nem jeleníti meg minden objektumokat típust az általános új kiszolgálók partíció értéke  
-LDAP MA. Ezek kimutatták RootDSE partíció csak objektumokat.
+ * GLDAP összekötő nem látja az összes attribútumot az AD LDS
+ * Varázsló oldaltörések nem egyszerű felhasználónév attribútum az LDAP directory-sémát a észlelésekor
+ * Különbözeti importálás miatt sikertelenül működő felderítési hibák teljes importálás során, ha nincs bejelölve a "objectclass" attribútum nem található
+ * Egy "Partíciók és hierarchiák konfigurálása" konfigurációs lapján nem jelenik meg minden olyan objektumok típusának megegyezik a partícióra új kiszolgálók esetében az általános  
+LDAP MA. Mutattak RootDSE partíció csak objektumokat.
 
 
 * Általános SQL:
- * Javítsa ki általános SQL vízjel különbözeti importálás többértékű attribútum nem importált hiba
- * Többértékű attribútum deleted\added értékek exportálásakor nincsenek deleted\added adatforrás.  
+ * Javításra általános SQL vízjel különbözeti importálás nem importált többértékű attribútum
+ * Többértékű attribútumok deleted\added értékek exportálásakor azok nem deleted\added az adatforrásban.  
 
 
 * Lotus Notes:
- * Egy adott mező "Teljes neve" jelenik meg a metaverzumba megfelelően azonban a megjegyzéseket az exportáláskor attribútum értéke Null vagy üres.
- * Hárítsa el az ismétlődő Certifier hiba
- * Kiválasztásakor az adatok nélkül a más objektumokkal a Lotus Domino-összekötő majd azt hibaüzenet jelenik meg a felderítés teljes-importálás végrehajtása közben.
- * Különbözeti importálás esetén éppen futó a Lotus Domino-összekötő rendszert futtató végén a Microsoft.IdentityManagement.MA.LotusDomino.Service.exe szolgáltatás néha értéket ad vissza egy alkalmazás hibát.
- * A csoporttagságot általános szolgáltatás megfelelően működik, és megmarad, kivéve az Exportálás próbálja meg eltávolítani a felhasználó a tagság futtatásakor frissítéssel sikeres jeleníti meg, de a felhasználó nem lesz beolvasása eltávolítva Lotus Notes tagjának kell lennie.
- * "Append elem alján" hozzá lett adva, a konfiguráció grafikus felhasználói Felülettel a Lotus MA új cikkek alján hozzáfűzendő többértékű attribútumok az exportálás során kiválaszthatja exportálás mód lehetőséget.
- * Összekötő adja hozzá a szükséges logikát, törölje a fájlt az E-mail mappa és azonosító tároló.
- * Törölje a tagság közötti NAB tag nem működik.
- * Értékek sikeresen törlődjenek többértékű attribútum
+ * Egy adott mező "Teljes neve" jelenik meg a metaverzumba megfelelően azonban a jegyzetek exportálásakor az attribútum értéke Null vagy üres.
+ * Javítás a duplikált Certifier hiba
+ * Amikor az objektum adatok nélkül van jelölve, a más objektumokkal Lotus Domino-összekötő majd azt hibaüzenetet kap a felderítési teljes-importálási végrehajtása közben.
+ * Különbözeti importálás folyamatban futó a Lotus Domino-összekötő futtató, a végén a Microsoft.IdentityManagement.MA.LotusDomino.Service.exe szolgáltatás időnként értéket ad vissza hibát.
+ * A csoporttagságot általános jól működik, és fenntartását, kivéve az Exportálás az egy felhasználó eltávolításakor a tagságát futtatásakor mutatja a frissítés sikeres, de a felhasználó a tagság Lotus Notes ténylegesen nem törlődnek.
+ * Export mód kiválasztásához, "Hozzáfűzés elem alján" hozzá lett adva, a grafikus felhasználói Felülettel, Lotus MA többértékű attribútumok esetén az exportálás során új cikkek alján hozzáfűzni kívánt konfigurációs lehetőséget.
+ * Összekötő hozzáadja a szükséges logikát, törölje a fájlt a levelek mappából, és a tároló azonosítója.
+ * Törölje a tagság NAB tag keresztezése nem működik.
+ * Többértékű atribut sikeresen törölni kell értékek
 
 ## <a name="111170"></a>1.1.117.0
 Kiadás dátuma: 2016. március
 
 **Új összekötő**  
-A kezdeti kiadása a [általános SQL-összekötő](https://docs.microsoft.com/microsoft-identity-manager/reference/microsoft-identity-manager-2016-connector-genericsql).
+Az első kiadása a [általános SQL-összekötő](https://docs.microsoft.com/microsoft-identity-manager/reference/microsoft-identity-manager-2016-connector-genericsql).
 
-**Új szolgáltatások:**
+**Új funkciók:**
 
-* Általános LDAP-összekötőhöz:
-  * Különbözeti importálás Isode való támogatása.
-* Web Services-összekötővel:
-  * Frissítve a csEntryChangeResult és setImportErrorCode tevékenység objektum szintű hibák a szinkronizálási motor vissza a visszaadandó engedélyezéséhez.
-  * Az új objektum szint hiba funkciójával SAP6 és SAP6User sablonok frissítése.
+* Általános LDAP-összekötő:
+  * Különbözeti importálás az Isode támogatása.
+* Webszolgáltatások összekötőjének:
+  * Frissítve a csEntryChangeResult és, hogy az objektum szintű hibák a szinkronizálási motor vissza a visszaadandó setImportErrorCode tevékenység.
+  * Frissítve az új objektum szintű hiba funkciók használatához a SAP6 és SAP6User sablonokat.
 * Lotus Domino-összekötő:
-  * Exportálás van szüksége egy certifier címjegyzék száma. Használhatja ugyanazt a jelszót, az összes képesítést adók engedélyezése a felügyelet megkönnyítése.
+  * Exportálási szüksége lesz egy certifier címjegyzék száma. Mostantól használhatja ugyanazt a jelszót az összes képesítést adók engedélyezése a felügyelet megkönnyítése érdekében.
 
-**Javított problémák:**
+**Rögzített problémák:**
 
-* Általános LDAP-összekötőhöz:
-  * Az IBM Tivoli DS, néhány hivatkozási attribútum a rendszer nem észlelt megfelelően.
-  * Nyissa meg az LDAP a különbözeti importálás során, a rendszer csonkolt elején és végén karakterláncok szóközöket.
-  * Novell és NetIQ exportálás, objektum áthelyezése, szervezeti egységek/tárolók között, és egyszerre átnevezni, az objektum sikertelen.
-* Web Services-összekötővel:
-  * Ha a webszolgáltatás ugyanezt a kötést a több végpontok közé, majd az összekötő nem megfelelően találta ezeket a végpontokat.
+* Általános LDAP-összekötő:
+  * Az IBM Tivoli DS néhány referenciaattribútumokon nem észlelt megfelelően.
+  * Nyissa meg LDAP során egy különbözeti importálást nem állhat kizárólag szóközökből elején és végén karakterláncok csonkolva lett.
+  * Novell és NetIQ az exportálást, objektum áthelyezése, szervezeti egységek és tárolók között, és a egy időben átnevezése nem sikerült az objektum.
+* Webszolgáltatások összekötőjének:
+  * Ha a webszolgáltatás több végpontok esetében ugyanezt a kötést, majd az összekötő nem megfelelően találta ezeket a végpontok.
 * Lotus Domino-összekötő:
-  * A fullName attribútum egy e-mail-adatbázisban való exportálás sikertelen volt.
-  * Amely is felvétele, illetve tag eltávolítása egy csoportból exportálás csak a hozzáadott tagok exportált.
-  * Ha egy megjegyzések dokumentum érvénytelen (az attribútum isValid értéke hamis), akkor az összekötő nem tud.
+  * A fullName attribútum egy e-mail-adatbázisban való exportálása nem működött.
+  * Az exportálási is hozzáadja, és a tag eltávolítása a csoportból csak a hozzáadott tagok exportált.
+  * Ha a megjegyzések dokumentum érvénytelen (az attribútum isValid hamis), akkor az összekötő nem tud.
 
-## <a name="older-releases"></a>Régebbi kiadásai
-2016. március, mielőtt az összekötők kiadott támogatási témakörök szerint.
+## <a name="older-releases"></a>Korábbi kiadások
+2016. március előtti az összekötők, támogatási témakörök jelentek meg.
 
 **Általános LDAP**
 
-* [KB3078617](https://support.microsoft.com/kb/3078617) -1.0.0597, 2015. szeptember
+* [KB3078617](https://support.microsoft.com/kb/3078617) -1.0.0597, 2015 szeptember
 * [KB3044896](https://support.microsoft.com/kb/3044896) -1.0.0549, 2015. március
-* [KB3031009](https://support.microsoft.com/kb/3031009) -1.0.0534, 2015. január
+* [KB3031009](https://support.microsoft.com/kb/3031009) -1.0.0534, 2015 január
 * [KB3008177](https://support.microsoft.com/kb/3008177) -1.0.0419, 2014. szeptember
 * [KB2936070](https://support.microsoft.com/kb/2936070) -4.3.1082, 2014. március
 
@@ -242,7 +242,7 @@ A kezdeti kiadása a [általános SQL-összekötő](https://docs.microsoft.com/m
 
 **Lotus Domino**
 
-* [KB3096533](https://support.microsoft.com/kb/3096533) -1.0.0597, 2015. szeptember
+* [KB3096533](https://support.microsoft.com/kb/3096533) -1.0.0597, 2015 szeptember
 * [KB3044895](https://support.microsoft.com/kb/3044895) -1.0.0549, 2015. március
 * [KB2977286](https://support.microsoft.com/kb/2977286) -5.3.0712, 2014. augusztus
 * [KB2932635](https://support.microsoft.com/kb/2932635) -5.3.1003, 2014. február  
@@ -252,20 +252,20 @@ A kezdeti kiadása a [általános SQL-összekötő](https://docs.microsoft.com/m
 ## <a name="troubleshooting"></a>Hibaelhárítás 
 
 > [!NOTE]
-> Amikor frissíti a Microsoft Identity Manager vagy az AADConnect ECMA2 összekötők használatával. 
+> Amikor frissíti a Microsoft Identity Manager vagy az aad Connect ECMA2 csatlakozók bármelyike használ. 
 
-Az összekötő-definíció felel meg a frissítés után frissítenie kell vagy a következő hiba jelentését figyelmeztetés azonosítója 6947 alkalmazás Eseménynapló elindítása kap: "szerelvény verziója AAD-összekötő konfigurációjában ("X.X.XXX. "X") korábbi, mint a tényleges verzió ("X.X.XXX. "X") a "C:\Program Files\Microsoft Azure AD Sync\Extensions\Microsoft.IAM.Connector.GenericLdap.dll".
+Az összekötő definíciójának megfelelően frissítése esetén frissítenie kell vagy jelentéséhez azonosító 6947 figyelmeztetés alkalmazás Eseménynapló elindítása a következő hibaüzenetet kap: "a verze Sestavení az AAD-összekötő konfigurációja ("X.X.XXX. "X") már korábban, mint a tényleges verzió ("X.X.XXX. "X") a "C:\Program Files\Microsoft Azure ad-ben Sync\Extensions\Microsoft.IAM.Connector.GenericLdap.dll".
 
 A definíció frissítése:
 * Az összekötő-példány tulajdonságainak megnyitása
-* Kattintson a kapcsolat / lapon kapcsolódni
-  * Az összekötő fiókjaként adja meg a jelszót
-* Ezután kattintson az egyes tulajdonság lapokon
-  * Ha az összekötő a partíciók lapon van a frissítés gombra, és kattintson a lapnak a frissítés gombra
-* Az összes tulajdonság lap elérése után kattintson az OK gombra a módosítások mentéséhez.
+* Kattintson a kapcsolat / lapon csatlakozni
+  * -Összekötő fiókjaként adja meg a jelszót
+* Ezután kattintson az egyes a tulajdonságlapokról
+  * A partíciók lapon az összekötő típusú-e a frissítés gomb, kattintson a frissítés gombra a lap
+* Után minden tulajdonságlapokról elért, kattintson az OK gombra a módosítások mentéséhez.
 
 
 ## <a name="next-steps"></a>További lépések
-További információ a [az Azure AD Connect szinkronizálási szolgáltatás](active-directory-aadconnectsync-whatis.md) konfigurációs.
+Tudjon meg többet a [Azure AD Connect szinkronizálási](active-directory-aadconnectsync-whatis.md) konfigurációja.
 
 További információ: [Helyszíni identitások integrálása az Azure Active Directoryval](active-directory-aadconnect.md).

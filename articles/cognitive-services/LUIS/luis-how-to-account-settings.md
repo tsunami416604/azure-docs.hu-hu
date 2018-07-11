@@ -8,16 +8,16 @@ manager: Kaiqb
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 06/04/2018
+ms.date: 07/08/2018
 ms.author: v-geberr
-ms.openlocfilehash: 1b5caf199cd5bfe0fa462950cc1f7beb3f2872b2
-ms.sourcegitcommit: 11321f26df5fb047dac5d15e0435fce6c4fde663
+ms.openlocfilehash: 8a1565b3816f2c6597ac941ac9a0ac48bc2c7bb7
+ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37887606"
+ms.lasthandoff: 07/09/2018
+ms.locfileid: "37915707"
 ---
-# <a name="manage-your-luis-account"></a>A LUIS-fiók kezelése
+# <a name="manage-account-and-authoring-key"></a>Fiók és a kulcs létrehozási kezelése
 A két kulcsfontosságú adatokat egy LUIS-fiók olyan felhasználói fiók és az Authoring Tool kulcs. A bejelentkezési adatait felügyelt [account.microsoft.com](https://account.microsoft.com). Az Authoring Tool kulcs felügyelje a [LUIS](luis-reference-regions.md) webhely **beállítások** lapot. 
 
 ## <a name="authoring-key"></a>Kulcs létrehozási

@@ -9,12 +9,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 03/14/2018
 ms.author: v-geberr
-ms.openlocfilehash: ec023ad796c57141cb35cce15b3d982adf2b8659
-ms.sourcegitcommit: 11321f26df5fb047dac5d15e0435fce6c4fde663
+ms.openlocfilehash: bd586c6abb27ae0c07ac7c832fba7c1f38e4e5c6
+ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37887759"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37950159"
 ---
 # <a name="batch-testing"></a>Kötegelt tesztelés
  A LUIS a teljesítmény méréséhez az aktuális betanított modell egy átfogó teszt Batch tesztelés. 
@@ -100,7 +100,7 @@ A két szakasz a diagram zöld színnel egyezik a várt előrejelzési.
 
 Ha a tesztelés azt jelzi, hogy a LUIS-alkalmazás nem ismeri fel a megfelelő szándékokat és entitásokat, használhatja a LUIS-alkalmazás teljesítményének növelése további utterances címkézés vagy szolgáltatások hozzáadására. 
 
-* [Az intelligens hangfelismerési szolgáltatással javasolt utterances felirat](Label-Suggested-Utterances.md) 
+* [Az intelligens hangfelismerési szolgáltatással javasolt utterances felirat](luis-how-to-review-endoint-utt.md) 
 * [A LUIS-alkalmazás a teljesítmény javítása szolgáltatások használata](luis-how-to-add-features.md) 
 * [Ebben az oktatóanyagban tesztelés batch ismertetése](luis-tutorial-batch-testing.md)
 * [Ismerje meg, a batch-fogalmak tesztelése](luis-concept-batch-test.md).

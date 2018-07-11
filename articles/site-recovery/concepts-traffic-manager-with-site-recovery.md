@@ -1,123 +1,123 @@
 ---
-title: Az Azure Traffic Manager az Azure Site Recovery szolgáltatással |} Microsoft Docs
-description: Azure Traffic Manager használata az Azure Site Recovery vész-helyreállítási és áttelepítés
+title: Az Azure Site Recovery az Azure Traffic Manager |} A Microsoft Docs
+description: Az Azure Traffic Manager használata az Azure Site Recovery vész-helyreállítási és áttelepítés
 services: site-recovery
 documentationcenter: ''
 author: mayanknayar
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 05/11/2018
+ms.date: 07/06/2018
 ms.author: manayar
-ms.openlocfilehash: d5b8887d4013f688cd20a0b2e4f6c0dbd5bdc9b6
-ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
+ms.openlocfilehash: 0be013a1b8d2c619d58034157240eafb241c4e59
+ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/11/2018
-ms.locfileid: "34071359"
+ms.lasthandoff: 07/09/2018
+ms.locfileid: "37919036"
 ---
 # <a name="azure-traffic-manager-with-azure-site-recovery"></a>Azure Traffic Manager az Azure Site Recovery-vel
 
-Az Azure Traffic Manager lehetővé teszi a forgalom eloszlása vezérelni az alkalmazási végpontokat. A végpont bármilyen internetre-szolgáltatott belül vagy kívül Azure.
+Az Azure Traffic Manager lehetővé teszi, hogy az alkalmazás végpontok közötti forgalom elosztását. A végpont bármely internethez csatlakoztatott szolgáltatás belül, vagy az Azure-on kívül üzemeltetett.
 
-A TRAFFIC Manager használ a tartománynévrendszer (DNS) ügyfél kéréseiket a leginkább megfelelő végpont, a forgalom-útválasztási módszer és a végpontok állapota alapján. A TRAFFIC Manager biztosít számos különböző [forgalom-útválasztási módszert](../traffic-manager/traffic-manager-routing-methods.md) és [megfigyelési lehetőségek végpont](../traffic-manager/traffic-manager-monitoring.md) különböző alkalmazásnak és az Automatikus feladatátvétel modellek. Ügyfelek közvetlenül a kijelölt végponthoz kapcsolódni. A TRAFFIC Manager nincs olyan proxy vagy az átjáró, és azt nem látja az ügyfél és a szolgáltatás között áthaladó forgalmat.
+A TRAFFIC Manager a tartománynévrendszer (DNS) használatával a leginkább megfelelő végpontra, a forgalom-útválasztási módszer és a végpontok állapota alapján az ügyfélkéréseket. A TRAFFIC Manager biztosít széles körű [forgalom-útválasztási módszerek](../traffic-manager/traffic-manager-routing-methods.md) és [megfigyelési lehetőségek végpont](../traffic-manager/traffic-manager-monitoring.md) különböző alkalmazás igényeinek megfelelően, és automatikus feladatátvételi modellek megfelelően. Az ügyfelek közvetlenül kapcsolódni a kiválasztott végpont. A TRAFFIC Manager nem a proxy- vagy egy átjárót, és nem jelenik meg a forgalom az ügyfél és a szolgáltatás között.
 
-Ez a cikk ismerteti, hogyan kombinálhatja a Azure forgalmat figyelő intelligens útválasztási az Azure Site Recovery hatékony vész-helyreállítási és áttelepítési funkcióin.
+Ez a cikk bemutatja, hogyan kombinálhatja az Azure a forgalmat figyelő intelligens útválasztás az Azure Site Recovery hatékony vészhelyreállítás és migrálási képességeken.
 
-## <a name="on-premises-to-azure-failover"></a>A helyszíni Azure-feladatátvétel
+## <a name="on-premises-to-azure-failover"></a>Helyszíniről Azure-feladatátvétel
 
-Az első esetben fontolja meg **a vállalat** , amely rendelkezik az összes, hogy a helyszíni környezetben futó alkalmazás infrastruktúráját. Üzleti folytonosság és megfelelőségi okokból **a vállalat** úgy dönt, hogy az Azure Site Recovery segítségével az alkalmazások védelmét.
+Az első forgatókönyv, fontolja meg a **a vállalat** , amely rendelkezik az összes, hogy a helyszíni környezetben futó alkalmazás infrastruktúráját. Üzleti folytonosság és a megfelelőségi okokból **a vállalat** úgy dönt, hogy a rajtuk található alkalmazások védelme az Azure Site Recovery használatával.
 
-**A vállalat** nyilvános végpontok alkalmazások futnak, és szeretne zökkenőmentesen átirányíthatják az adatforgalmat az Azure-bA egy katasztrófa eseményben. A [prioritás](../traffic-manager/traffic-manager-configure-priority-routing-method.md) forgalom-útválasztási módszer az Azure Traffic Managerben lehetővé teszi, hogy a vállalat a feladatátvételi mintát könnyen végrehajtásához.
+**A vállalat** nyilvános végpontokkal rendelkező alkalmazásokat futtat, és zökkenőmentesen forgalom átirányítása az Azure-bA az olyan vész-helyreállítási esemény szeretne. A [prioritású](../traffic-manager/traffic-manager-configure-priority-routing-method.md) forgalom-útválasztási módszer az Azure Traffic Manager lehetővé teszi, hogy a vállalat egyszerűen implementálni a feladatátvételi minta.
 
 A telepítő a következőképpen történik:
 - **A vállalat** létrehoz egy [Traffic Manager-profil](../traffic-manager/traffic-manager-create-profile.md).
-- Használatával a **prioritás** útválasztási módszer **a vállalat** hoz létre két végpontot – **elsődleges** a helyszíni és **feladatátvevő** az Azure. **Elsődleges** van hozzárendelve az 1-es prioritást és **feladatátvételi** prioritású virtuális gép 2 van hozzárendelve.
-- Mivel a **elsődleges** végpont Azure kívül helyezkedik el, a végpont jön létre egy [külső](../traffic-manager/traffic-manager-endpoint-types.md#external-endpoints) végpont.
-- Az Azure Site Recovery, az Azure hely nem rendelkezik a virtuális gépek vagy a feladatátvétel után már futó alkalmazások. Igen a **feladatátvételi** végpont is létrehoz egy **külső** végpont.
-- Alapértelmezés szerint felhasználói forgalomnak a helyszíni alkalmazások irányul, mert a végpont rendelkezik a legmagasabb prioritású társítva. Azure amennyiben sincs forgalom irányítja a rendszer a **elsődleges** végpont állapota kifogástalan.
+- Használatával a **prioritású** -útválasztási módszert **a vállalat** létrehoz két végpontot – **elsődleges** a helyszíni és **feladatátvételi** az Azure-hoz. **Elsődleges** hozzá van rendelve a prioritása 1 és **feladatátvételi** prioritású 2 van hozzárendelve.
+- Mivel a **elsődleges** szolgáltatásvégpontot futtató Azure-on kívülről, a végpont a létrehozás- [külső](../traffic-manager/traffic-manager-endpoint-types.md#external-endpoints) végpont.
+- Az Azure Site Recovery az Azure site nem rendelkezik minden olyan virtuális gépeket vagy feladatátvétel előtt futó alkalmazások. Így a **feladatátvételi** végpont is létrejön egy **külső** végpont.
+- Alapértelmezés szerint a felhasználói adatforgalmat a helyszíni alkalmazás irányul, mert, hogy a végpont rendelkezik a legmagasabb prioritású társítva. Nincs forgalom irányul, ha az Azure a **elsődleges** végpont állapota kifogástalan.
 
-![A helyszíni-az-Azure-feladatátvétel előtt](./media/concepts-traffic-manager-with-site-recovery/on-premises-failover-before.png)
+![A – helyszíni – Azure feladatátvétel előtt](./media/concepts-traffic-manager-with-site-recovery/on-premises-failover-before.png)
 
-A vész-események esetén a vállalat elindítható egy [feladatátvevő](site-recovery-failover.md) az Azure-bA és az alkalmazásokhoz az Azure-on. Ha Azure Traffic Manager észleli, hogy a **elsődleges** végpont már nem működik megfelelően, automatikusan használja a **feladatátvételi** végpont a DNS-válasz és a felhasználók csatlakozni az alkalmazást a helyreállított Azure.
+Az olyan vész-helyreállítási esemény a vállalat aktiválhat egy [feladatátvételi](site-recovery-failover.md) az Azure-ba, és helyreállítja a rajtuk található alkalmazások az Azure-ban. Ha az Azure Traffic Manager észleli, hogy a **elsődleges** végpont már nem kifogástalan, automatikusan használja a **feladatátvételi** végpont a DNS-válasz és a felhasználók az alkalmazást a helyreállított csatlakozni Azure-t.
 
-![A helyszíni-az-Azure-feladatátvétel után](./media/concepts-traffic-manager-with-site-recovery/on-premises-failover-after.png)
+![A – helyszíni – Azure feladatátvétel után](./media/concepts-traffic-manager-with-site-recovery/on-premises-failover-after.png)
 
-Attól függően, hogy az üzleti követelmények **a vállalat** eldönthetik, hogy egy magasabb vagy alacsonyabb [gyakoriság probing](../traffic-manager/traffic-manager-monitoring.md) helyszíni Azure egy katasztrófa eseményben közötti váltás, és minimális állásidő érdekében a felhasználók számára.
+Üzleti követelményeitől függően **a vállalat** kiválaszthatja, hogy egy magasabb vagy alacsonyabb [tesztelés gyakorisága](../traffic-manager/traffic-manager-monitoring.md) váltani a helyszínen az Azure-bA egy vész-helyreállítási esemény között, és győződjön meg, hogy a felhasználók minimális üzemen kívüli idővel.
 
-Amikor a katasztrófa tartalmazza, **a vállalat** visszaadhatja a feladatokat az Azure-ból a helyszíni környezetbe ([VMware](vmware-azure-failback.md) vagy [Hyper-V](hyper-v-azure-failback.md)) Azure Site Recovery segítségével. Most, amikor a Traffic Manager észleli, hogy a **elsődleges** végpont újra állapota kifogástalan, automatikusan használja a **elsődleges** végpont a saját DNS-válaszok.
+Ha a vészhelyreállítási megtalálható, **a vállalat** történő feladat-visszavétel az Azure-ból a helyszíni környezetben is ([VMware](vmware-azure-failback.md) vagy [Hyper-V](hyper-v-azure-failback.md)) Azure Site Recovery használatával. Most, ha a Traffic Manager észleli, hogy a **elsődleges** végpont újra állapota kifogástalan, automatikusan használja a **elsődleges** végpont a saját DNS-válaszok.
 
-## <a name="on-premises-to-azure-migration"></a>A helyszíni Azure áttelepítése
+## <a name="on-premises-to-azure-migration"></a>Helyszíniről Azure-migrálás
 
-Vész-helyreállítási mellett is engedélyezi az Azure Site Recovery [áttelepítése az Azure-bA](migrate-overview.md). Azure Site Recovery hatékony teszt feladatátvételi lehetőségeket használja, az ügyfelek kiértékelhetik, Azure alkalmazásteljesítmény anélkül, hogy befolyásolná a helyszíni környezetben. Vagy ha az ügyfelek áttelepítését, akkor telepítse át a teljes munkaterhelés együtt, vagy válassza ki az áttelepíteni, a méretezés fokozatosan.
+Vész-helyreállítási mellett az Azure Site Recovery lehetővé teszi a [migrálását az Azure-](migrate-overview.md). Azure Site Recovery hatékony tesztelési feladatátvételt képességek használata esetén a ügyfelek alkalmazások teljesítménye az Azure-ban anélkül, hogy befolyásolná a saját helyszíni környezetükben értékelhet. Vagy ha ügyfelek áttelepítését, azok, együtt a teljes számítási feladatok migrálása, vagy válasszon át, és fokozatosan skálázhatja.
 
-Az Azure Traffic Manager [Weighted](../traffic-manager/traffic-manager-configure-weighted-routing-method.md) útválasztási módszer használható az Azure-bA bejövő forgalom egy része közvetlen közben arra utasíthatja a legtöbb, a helyszíni környezetben. Ezt a módszert segítségével folytathatja a növekvő, több és több, a munkaterhelések áttelepítése az Azure-bA az Azure-bA hozzárendelt súlyozásoknak méretezési teljesítmény megállapításához.
+Az Azure Traffic Manager [súlyozott](../traffic-manager/traffic-manager-configure-weighted-routing-method.md) esetén használt útválasztási módszer segítségével közvetlen az Azure-bA a bejövő forgalom egy része során a helyszíni környezetet a legtöbb irányítja. Ez a megközelítés segíthet a méretezési teljesítmény értékeléséhez, szerint növekvő folyamokhoz hozzárendelt Azure-ba, a migrálás több és több, a számítási feladatok Azure-ban továbbra is.
 
-Például **B vállalat** úgy dönt, hogy lépésből áll, néhány alkalmazás környezetének áthelyezni, megtartja a többi helyszíni áttelepíteni. A kezdeti szakaszában a környezetben a legtöbb esetén a helyszíni, nagyobb súlyt hozzá van rendelve a helyszíni környezetben. A TRAFFIC manager végpont számára elérhető végpontok rendelt súlyok alapján adja vissza.
+Ha például **vállalati B** úgy dönt, hogy fázisban történik, a többi helyszíni megőrzése áthelyezése néhány az alkalmazási környezet migrálása. A kezdeti szakaszában a helyszínen, a környezetben a legtöbb esetén nagyobb súly hozzá van rendelve a helyszíni környezetben. A TRAFFIC manager végpont elérhető végpontok rendelt súlyok alapján ad vissza.
 
-![A helyszíni-az-Azure-áttelepítés](./media/concepts-traffic-manager-with-site-recovery/on-premises-migration.png)
+![A – helyszíni – Azure-migrálás](./media/concepts-traffic-manager-with-site-recovery/on-premises-migration.png)
 
-Az áttelepítés során mindkét végpont aktív, és a forgalom nagy részét a helyszíni környezetben van átirányítva. Az áttelepítés halad, mint nagyobb súlyt hozzárendelhetők legyenek az Azure-végpont, és végül a helyszíni végpont áttelepítés deaktivált után.
+Az áttelepítés során mindkét végpont aktívak, és a forgalom a legtöbb van irányítva a helyszíni környezetben. A migrálás végrehajtása egy nagyobb súly hozzárendelheti az Azure-ban a végpont és végül a helyi végpont lehet-e a migrálás után inaktív.
 
-## <a name="azure-to-azure-failover"></a>Azure az Azure-feladatátvétel
+## <a name="azure-to-azure-failover"></a>Azure-bA feladatátvétel
 
-Az ebben a példában megfontolandó **vállalati C** , amely rendelkezik az összes, hogy fut az Azure alkalmazás infrastruktúráját. Üzleti folytonosság és megfelelőségi okokból **vállalati C** úgy dönt, hogy az Azure Site Recovery segítségével az alkalmazások védelmét.
+Ebben az esetben érdemes lehet **vállalati C** , amely rendelkezik az összes, az Azure futtató alkalmazás infrastruktúra. Üzleti folytonosság és a megfelelőségi okokból **vállalati C** úgy dönt, hogy a rajtuk található alkalmazások védelme az Azure Site Recovery használatával.
 
-**Vállalati C** nyilvános végpontok alkalmazások futnak, és szeretne zökkenőmentesen átirányítja a forgalmát egy másik Azure-régió egy katasztrófa utáni esemény. A [prioritás](../traffic-manager/traffic-manager-configure-priority-routing-method.md) forgalom-útválasztási módszer lehetővé teszi, hogy **vállalati C** könnyen megvalósításához a feladatátvételi mintát.
+**Vállalati C** nyilvános végpontokkal rendelkező alkalmazásokat futtat, és zökkenőmentesen forgalom átirányítása egy másik Azure-régióban egy vész-helyreállítási esemény elvégezhessék. A [prioritású](../traffic-manager/traffic-manager-configure-priority-routing-method.md) forgalom-útválasztási módszer lehetővé teszi, hogy **vállalati C** egyszerűen implementálni a feladatátvételi minta.
 
 A telepítő a következőképpen történik:
 - **Vállalati C** létrehoz egy [Traffic Manager-profil](../traffic-manager/traffic-manager-create-profile.md).
-- Használatával a **prioritás** útválasztási módszer **vállalati C** hoz létre két végpontot – **elsődleges** a forrás régió (Azure Kelet-Ázsia) és **feladatátvételi** a helyreállítási régió (Azure Délkelet-Ázsiában). **Elsődleges** van hozzárendelve az 1-es prioritást és **feladatátvételi** prioritású virtuális gép 2 van hozzárendelve.
-- Mivel a **elsődleges** végpont az Azure-ban található, a végpont lehet, mint egy [Azure](../traffic-manager/traffic-manager-endpoint-types.md#azure-endpoints) végpont.
-- Az Azure Site Recovery az Azure site recovery nem rendelkezik a virtuális gépek vagy a feladatátvétel után már futó alkalmazások. Igen a **feladatátvételi** végpont hozhatók létre olyan [külső](../traffic-manager/traffic-manager-endpoint-types.md#external-endpoints) végpont.
-- Alapértelmezés szerint felhasználói forgalom van irányítva a régióban (Kelet-Ázsia) alkalmazás adott végpontra a legmagasabb prioritású társítva van. Forgalmat a helyreállítási régióban van irányítva, ha a **elsődleges** végpont állapota kifogástalan.
+- Használatával a **prioritás** -útválasztási módszert **vállalati C** létrehoz két végpontot – **elsődleges** a forrás régió (Azure Kelet-Ázsia) és **feladatátvételi** a helyreállítási régióban (az Azure Délkelet-Ázsia). **Elsődleges** hozzá van rendelve a prioritása 1 és **feladatátvételi** prioritású 2 van hozzárendelve.
+- Mivel a **elsődleges** végpont az Azure-ban üzemel, a végpont is, mint egy [Azure](../traffic-manager/traffic-manager-endpoint-types.md#azure-endpoints) végpont.
+- Az Azure Site Recovery az Azure site recovery nem rendelkezik minden olyan virtuális gépeket vagy feladatátvétel előtt futó alkalmazások. Így a **feladatátvételi** végpont hozható létre egy [külső](../traffic-manager/traffic-manager-endpoint-types.md#external-endpoints) végpont.
+- Alapértelmezés szerint felhasználói átirányítja a forgalmat a régió (Kelet-Ázsia) forrásalkalmazás, hogy a végpont rendelkezik a legmagasabb prioritású társítva. Nincs forgalom irányul a helyreállítási régióban, ha a **elsődleges** végpont állapota kifogástalan.
 
-![Azure-az-Azure-bA feladatátvétel előtt](./media/concepts-traffic-manager-with-site-recovery/azure-failover-before.png)
+![Azure – Azure feladatátvétel előtt](./media/concepts-traffic-manager-with-site-recovery/azure-failover-before.png)
 
-A vészhelyreállítás eseményben **vállalati C** elindítható egy [feladatátvevő](azure-to-azure-tutorial-failover-failback.md) és helyreállításához a helyreállítási az Azure-régió az alkalmazásokhoz. Ha az Azure Traffic Manager azt észleli, hogy az elsődleges végpont már nem működik megfelelően, akkor automatikusan használja a **feladatátvevő** végpont a DNS-válasz és a felhasználók csatlakozni az alkalmazás helyre a helyreállítási Azure-régió, () Délkeleti Ázsia).
+Az olyan vész-helyreállítási esemény **vállalati C** elindíthat egy [feladatátvételi](azure-to-azure-tutorial-failover-failback.md) és a rajtuk található alkalmazások a helyreállítási Azure-régió helyreállítása. Ha az Azure Traffic Manager észleli, hogy az elsődleges végpont már nem kifogástalan állapotú, akkor automatikusan használja a **feladatátvételi** végpont a DNS-válasz és a felhasználók kapcsolódnak az alkalmazáshoz az Azure-régiót (helyreállítási helyre Délkelet-Ázsiában).
 
-![Azure-az-Azure-bA a feladatátvételt követően](./media/concepts-traffic-manager-with-site-recovery/azure-failover-after.png)
+![Azure – Azure feladatátvétel után](./media/concepts-traffic-manager-with-site-recovery/azure-failover-after.png)
 
-Attól függően, hogy az üzleti követelmények **vállalati C** eldönthetik, hogy egy magasabb vagy alacsonyabb [gyakoriság probing](../traffic-manager/traffic-manager-monitoring.md) forrás- és a helyreállítási régiók közötti váltás, és a felhasználók minimális állásidővel.
+Üzleti követelményeitől függően **vállalati C** kiválaszthatja, hogy egy magasabb vagy alacsonyabb [tesztelés gyakorisága](../traffic-manager/traffic-manager-monitoring.md) forrás- és a helyreállítási régiók közötti váltás, és győződjön meg, hogy a felhasználók minimális üzemen kívüli idővel.
 
-Amikor a katasztrófa tartalmazza, **vállalati C** visszaadhatja a feladatokat a helyreállításhoz az Azure-régió a forrás-Azure Site Recovery segítségével az Azure-régió. Most, amikor a Traffic Manager észleli, hogy a **elsődleges** végpont újra állapota kifogástalan, automatikusan használja a **elsődleges** végpont a saját DNS-válaszok.
+Ha a vészhelyreállítási megtalálható, **vállalati C** visszaadhatja a feladatokat a helyreállításból az Azure-régióban a forrás Azure Site Recovery használatával az Azure-régióban. Most, ha a Traffic Manager észleli, hogy a **elsődleges** végpont újra állapota kifogástalan, automatikusan használja a **elsődleges** végpont a saját DNS-válaszok.
 
-## <a name="protecting-multi-region-enterprise-applications"></a>Több területi vállalati alkalmazások védelme
+## <a name="protecting-multi-region-enterprise-applications"></a>Többrégiós vállalati alkalmazások védelme
 
-Globális vállalatok gyakran felhasználói élmény javítása igazítása – az alkalmazások regionális igényeit. Honosítási és a késés csökkentése régiók-e osztani infrastruktúrát vezethet. A vállalatok egyes területeken regionális adatok törvények által is kötött, és válassza a elkülönítése tartozik a regionális határain belül infrastruktúrát.  
+Globális vállalatok gyakran javíthatja testreszabható alkalmazásaikat regionális igényeinek kiszolgálása érdekében. A honosítás és a késés csökkentése régióban osztott alkalmazás-infrastruktúra vezethet. A vállalatok egyes területeken regionális adatainak törvények által is kötve vannak, és elkülöníteni egy részét az alkalmazás-infrastruktúra regionális határain belül válassza.  
 
-Mérlegeljük, például ha **vállalati D** leválasztási külön kiszolgálására Németország és a világ többi alkalmazás végpontját. **Vállalati D** használja az Azure Traffic Manager [Geographic](../traffic-manager/traffic-manager-configure-geographic-routing-method.md) útválasztási módszer beállítására. A Németországi származó forgalmat van irányítva **1. végpont** és bármely Németország kívülről származó forgalmat van irányítva **végpont 2**.
+Vegyünk egy példát, **vállalati D** felosztott annak végpontjainak Németország és a világ többi részén a külön-külön kiszolgálása érdekében. **Vállalati D** már használja az Azure Traffic Manager [Geographic](../traffic-manager/traffic-manager-configure-geographic-routing-method.md) útválasztási módszer beállítására. Németország területéről származó forgalmat van irányítva **végpont 1** , és átirányítja a Németországi kívülről származó minden forgalmat **végpont 2**.
 
-Ezzel a beállítással a problémát, ha **1. végpont** nem működik a bármilyen okból nem a forgalom átirányítását van **végpont 2**. Németország származó forgalmat továbbra is kéri **1. végpont** függetlenül a végpont állapotát, így a német felhasználók való hozzáférés nélkül **vállalati D**tartozó alkalmazást. Hasonlóképpen ha **végpont 2** kerül offline módban vannak, nem a forgalom átirányítását van **1. végpont**.
+Ezt a problémát, ha **1. végpont** leáll, ha valamilyen okból nincs érkező forgalom átirányítása van **végpont 2**. Németország területéről származó forgalmat a rendszer továbbra is **1. végpont** függetlenül a végpont állapotát, és a német felhasználók való hozzáférés nélkül **vállalati D**a kérelmet. Hasonlóképpen ha **végpont 2** offline, kerül a van nem érkező forgalom átirányítása **végpont 1**.
 
-![Több területi alkalmazása előtt](./media/concepts-traffic-manager-with-site-recovery/geographic-application-before.png)
+![Többrégiós alkalmazás előtt](./media/concepts-traffic-manager-with-site-recovery/geographic-application-before.png)
 
-Elkerüléséhez ezt a problémát, és ellenőrizze az alkalmazás rugalmas **vállalati D** használ [Traffic Manager-profilok beágyazott](../traffic-manager/traffic-manager-nested-profiles.md) az Azure Site Recovery szolgáltatással. Egy beágyazott profil beállításaiban forgalom nem irányítja a rendszer az egyes végpontok, hanem más Traffic Manager-profilok. Ez a telepítő működése:
-- Földrajzi útválasztási egyedi végpontok használata helyett **vállalati D** földrajzi útválasztási Traffic Manager-profilokat használja.
-- Minden gyermek Traffic Manager-profilt használó **prioritás** útválasztási egy elsődleges és egy helyreállítási végpont, ezért beágyazási **prioritás** útválasztási belül **Geographic** útválasztási.
-- Ahhoz, hogy az alkalmazás rugalmas, minden munkaterhelés terjesztési használja az Azure Site Recovery számára a feladatátvételt egy vész-esemény esetén alapú helyreállítási régióban.
-- Ha a szülő Traffic Manager DNS-lekérdezést kap, a megfelelő gyermek Traffic Manager, amely elérhető a végpont a lekérdezésre van átirányítva.
+Kerülje ezt a problémát, és győződjön meg, hogy a rugalmas alkalmazások **vállalati D** használ [beágyazott Traffic Manager-profilok](../traffic-manager/traffic-manager-nested-profiles.md) az Azure Site Recoveryvel. Egy beágyazott profil beállításaiban nem átirányítja a forgalmat az egyes végpontokat, hanem más Traffic Manager-profilok. Itt van ez a beállítás működéséről:
+- Ahelyett, hogy az egyes végpontokat, földrajzi útválasztásának használó **vállalati D** földrajzi útválasztásának Traffic Manager-profilokat használja.
+- Minden egyes gyermek Traffic Manager-profilt használja **prioritású** útválasztás az elsődleges és a egy helyreállítási végpont, ezért beágyazása **prioritású** útválasztási belül **Geographic** útválasztási.
+- Ahhoz, hogy a rugalmas alkalmazások, az egyes számítási feladatok terjesztési történő feladatátvételt egy vész-helyreállítási esemény esetén-alapú helyreállítási régióba az Azure Site Recovery használja.
+- Ha a szülő Traffic Manager DNS-lekérdezést kap, a kapcsolódó gyermek, amely válaszol a lekérdezésre elérhető végpontot a Traffic Manager van átirányítva.
 
-![Több területi alkalmazás után](./media/concepts-traffic-manager-with-site-recovery/geographic-application-after.png)
+![Többrégiós alkalmazás után](./media/concepts-traffic-manager-with-site-recovery/geographic-application-after.png)
 
-Például ha a végpont az németországi központban sikertelen, az alkalmazás gyorsan állíthatók helyre Németország szerepel. Az új végpont a felhasználók minimális állásidővel Németország származó forgalmat kezeli. Hasonlóképpen Nyugat-Európában végpont kimaradás kezelhetik az alkalmazás munkaterhelés, Észak-Európa, a DNS átirányítja a felhasználókat a elérhető végpontot az Azure Traffic Manager-kezelési helyreállítása.
+Például ha nem sikerül a végpontot a közép-Németország, az alkalmazás gyorsan helyreállíthatók legyenek, Északkelet-Németország. Az új végpont kezeli a felhasználók minimális állásidővel Németország területéről származó forgalmat. Hasonlóképpen Nyugat-Európában végpont kimaradás tudja kezelni helyreállítása DNS átirányítja a felhasználót az elérhető végpontok Azure Traffic Manager kezelése az Észak-Európa, az alkalmazás feladata.
 
-A fenti telepítő bővíthető szükséges annyi régió és -végpont kombinációja tartalmazza. A TRAFFIC Manager lehetővé teszi, hogy a beágyazott profilok legfeljebb 10 szinteket, és a hurkok belül a beágyazott konfigurációs.
+A fenti beállítás is bővíthetők ki szükséges annyi régió és -végpont kombinációja. Traffic Manager lehetővé teszi, hogy a beágyazott profilok legfeljebb 10 szintjét, és a hurkok belül a beágyazott konfigurációját.
 
-## <a name="recovery-time-objective-rto-considerations"></a>Idő célkitűzés (RTO) kapcsolatos szempontok
+## <a name="recovery-time-objective-rto-considerations"></a>A helyreállítási időre vonatkozó célkitűzés (RTO) kapcsolatos szempontok
 
-A legtöbb szervezetben hozzáadásával vagy módosításával DNS-rekordokat kell kezelni egy külön csapat vagy valaki a szervezeten kívül. Ez lehetővé teszi, hogy a DNS-rekordok nagyon nehéz feladat. Más csapatok vagy szervezetek DNS-infrastruktúra kezelése DNS-rekordok frissítéséhez szükséges idő függ a szervezetben, és hatással van az alkalmazás RTO.
+A szervezetek többségében hozzáadásával vagy módosításával a DNS-rekordok kezelése egy külön csapat vagy valaki a szervezeten kívül. Ez teszi a nagy kihívást DNS-rekordok módosítása. Más csapatok vagy szervezetek DNS-infrastruktúra kezelésére DNS-rekordok frissítéséhez szükséges idő változó a szervezetben, és hatással van a az alkalmazás RTO.
 
-A Traffic Manager felügyelniük frontload DNS-frissítésekhez szükséges munka is. Manuális vagy parancsprogram-alapú intézkedés nem szükséges tényleges feladatátvétel időpontjában. Ez a megközelítés segíti a gyors váltás (és ezáltal csökkentését RTO) valamint elkerülhető az a költséges időigényes DNS-módosítás hibák vész-esemény. A Traffic Managerben, még akkor is a feladat-visszavétel lépés automatizált, amelyeket egyébként külön kellene külön-külön kell kezelni.
+A Traffic Manager használatával is frontload DNS-frissítésekhez szükséges munkát. Manuális vagy szkriptalapú semmit nem kell a tényleges feladatátvétel időpontjában. Ez a megközelítés segít a gyors váltás (és ezáltal emelő RTO), valamint kerülje a költséges időigényes DNS módosítása hibáinak egy vész-helyreállítási esemény. A Traffic Managerben, még a feladat-visszavétel lépés automatizált, amelyeket egyébként külön kellene külön.
 
-A megfelelő beállítás [időköz probing](../traffic-manager/traffic-manager-monitoring.md) keresztül alapszintű vagy gyors időköz egészségügyi ellenőrzések is jelentősen kapcsolja le a RTO a feladatátvétel során és csökkentheti az állásidőt, a felhasználók számára.
+A megfelelő beállítás [mintavételi időköz](../traffic-manager/traffic-manager-monitoring.md) alap- vagy gyors időköz health segítségével ellenőrzéseket is jelentősen feladatátvétel során a RTO leállásához és csökkenthető a leállások a felhasználók számára.
 
-Továbbá a DNS-időt élettartam (TTL) értékének a Traffic Manager-profil is optimalizálhatja. Élettartam (TTL), amelyhez a DNS-bejegyzés lesz gyorsítótárazva ügyfél által az érték. A bejegyzés DNS volna nem kérdezhető le kétszer belül a TTL-t. Minden DNS-rekord társítva TTL rendelkezik. Az érték a Traffic Manager további DNS-lekérdezések eredményez, de csökkentheti a RTO kimaradások gyorsabban felderítéséhez.
+Emellett optimalizálhatja az élettartam (TTL) értéke a Traffic Manager-profil DNS időt. Élettartam az érték, amelynek egy DNS-bejegyzést lenne gyorsítótárazható ügyfelek számára. Egy rekord DNS lenne nem kérdezhető le kétszer a vizualizált Élettartamon belül. Minden DNS-rekord társítva TTL rendelkezik. Ez az érték csökkentése a Traffic Manager több DNS-lekérdezéseket eredményez, de csökkentheti a RTO gyorsabban derítse valamilyen okból kimaradás lép fel.
 
-A TTL-t észlelt az ügyfél által is nem növekszik, ha az ügyfél és a mérvadó DNS-kiszolgáló közötti DNS-feloldókat számát növeli. DNS-feloldókat "számolja" a TTL-t, és csak továbbítására TTL érték, amely tükrözi az eltelt idő, mivel a rekord gyorsítótárazva lett. Ez biztosítja, hogy a DNS-rekord lekérdezi a a TTL-t, függetlenül a DNS-Feloldókat száma a lánc után az ügyfél frissítését.
+Az élettartam-ügyfél által tapasztalt is nem növeli az ügyfél és a mérvadó DNS-kiszolgáló közötti DNS feloldók számának növekedésével. DNS feloldók: count "Élettartama, és csak egy TTL-értéket, amely tükrözi az eltelt idő, mivel az a rekord gyorsítótárazva lett adja át. Ez biztosítja, hogy a DNS-rekord frissül az ügyfél az élettartam, attól függetlenül, a lánc DNS feloldók száma után.
 
 ## <a name="next-steps"></a>További lépések
-- A Traffic Manager további [útválasztási metódusait](../traffic-manager/traffic-manager-routing-methods.md).
-- További információ [Traffic Manager-profilok beágyazott](../traffic-manager/traffic-manager-nested-profiles.md).
-- További információ [végpontmonitoring kijelző](../traffic-manager/traffic-manager-monitoring.md).
-- További információ [helyreállítási tervek](site-recovery-create-recovery-plans.md) alkalmazás a feladatátvétel automatizálásához.
+- További tudnivalók a Traffic Manager [útválasztási metódusait](../traffic-manager/traffic-manager-routing-methods.md).
+- Tudjon meg többet [beágyazott Traffic Manager-profilok](../traffic-manager/traffic-manager-nested-profiles.md).
+- Tudjon meg többet [végpont-monitorozás](../traffic-manager/traffic-manager-monitoring.md).
+- Tudjon meg többet [helyreállítási tervek](site-recovery-create-recovery-plans.md) alkalmazás a feladatátvétel automatizálásához.

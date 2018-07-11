@@ -1,10 +1,10 @@
 ---
-title: Felhasználói adatok és az Azure AD zökkenőmentes egyszeri bejelentkezés |} Microsoft Docs
-description: Ez a cikk az Azure Active Directory (Azure AD) zökkenőmentes egyszeri Bejelentkezéssel és GDPR megfelelőségi foglalkozik.
+title: Felhasználói adatok védelme és az Azure AD közvetlen egyszeri bejelentkezés |} A Microsoft Docs
+description: Ez a cikk az Azure Active Directory (Azure AD) közvetlen egyszeri bejelentkezés és a GDPR-megfelelőség foglalkozik.
 services: active-directory
-keywords: Mi az Azure AD Connect GDPR, szükséges összetevőket az Azure AD, SSO, egyszeri bejelentkezést.
+keywords: Mi az Azure AD Connect, az általános adatvédelmi rendelet, SSO, Azure AD szükséges összetevői egyszeri bejelentkezés
 documentationcenter: ''
-author: swkrish
+author: billmath
 manager: mtillman
 ms.assetid: 9f994aca-6088-40f5-b2cc-c753a4f41da7
 ms.service: active-directory
@@ -15,39 +15,39 @@ ms.topic: article
 ms.date: 05/21/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: a4fc779cdfb177a9817049fd7b62b0014e141ce0
-ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
+ms.openlocfilehash: 50c97ce7a492c934e15634622d86bf587ffb3fb7
+ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "34592408"
+ms.lasthandoff: 07/09/2018
+ms.locfileid: "37915724"
 ---
-# <a name="user-privacy-and-azure-ad-seamless-single-sign-on"></a>Felhasználói adatok és az Azure AD zökkenőmentes egyszeri bejelentkezést.
+# <a name="user-privacy-and-azure-ad-seamless-single-sign-on"></a>Felhasználói adatok védelme és az Azure AD közvetlen egyszeri bejelentkezés
 
 [!INCLUDE [Privacy](../../../includes/gdpr-intro-sentence.md)]
 
 ## <a name="overview"></a>Áttekintés
 
 
-Az Azure AD zökkenőmentes SSO hozza létre a következő napló típust, amelyek tartalmazhatnak személyes adatokat: 
+Az Azure AD közvetlen egyszeri bejelentkezés hoz létre a következő log típusát, amely a személyes adatokat tartalmazhatnak: 
 
 - Az Azure AD Connect nyomkövetésének naplófájljait.
 
-Felhasználói adatok javítása zökkenőmentes egyszeri bejelentkezéshez két módon:
+Felhasználói adatok védelme növelése a közvetlen egyszeri bejelentkezés két módon:
 
-1.  Kérésre adatok kinyerése a személy, és adatok eltávolítása a telepítések az adott személyt.
-2.  Győződjön meg arról, 48 órával adatot nem őrződnek meg.
+1.  Kérésre személy adatokat nyerhet ki, és távolíthatja el az adatokat a telepítések az adott személy.
+2.  Győződjön meg arról, adatok nem őrződnek túli 48 óra.
 
-Javasoljuk a második lehetőség, mert az egyszerűbb bevezetéséhez és karbantartásához. Lásd az alábbi utasításokat az egyes naplóban:
+Javasoljuk, hogy a második lehetőség, egyszerűbb bevezetéséhez és karbantartásához. Lásd az alábbi utasítások minden egyes naplótípusnál:
 
-### <a name="delete-azure-ad-connect-trace-log-files"></a>Az Azure AD Connect nyomkövetési naplófájlok törlése
+### <a name="delete-azure-ad-connect-trace-log-files"></a>Az Azure AD Connect a nyomkövetési naplófájlok törlése
 
-Ellenőrizze a tartalmát **%ProgramData%\AADConnect** mappa és a delete a nyomkövetési napló tartalma (**nyomkövetési -\*.log** fájlok) a mappa telepítése vagy frissítése az Azure AD Connect 48 órán belül vagy zökkenőmentes SSO-konfigurációt, ez a művelet módosítja GDPR által szabályozott adatokat hozhat létre.
+Ellenőrizze a tartalmát **%ProgramData%\AADConnect** mappa, és törlése a nyomkövetési napló tartalma (**nyomkövetési -\*.log** fájlok) a mappa telepítése vagy frissítése az Azure AD Connect 48 órán belül vagy, ez a művelet a zökkenőmentes egyszeri bejelentkezési konfigurációjának módosítása is létrehozhat a GDPR hatálya alá tartozó adatok.
 
 >[!IMPORTANT]
->Ne törölje a **PersistedState.xml** fájl ebben a mappában, ezt a fájlt az Azure AD Connect korábbi telepítés állapotának karbantartásához használt és használatos, ha egy frissítés telepítésének történik. A fájl soha nem fog tartalmaz egy személy kapcsolatos adatokat, és soha nem lesz törölve.
+>Ne törölje a **PersistedState.xml** fájl ebben a mappában, ezt a fájlt az Azure AD Connect a korábbi telepítés állapotának karbantartásához használt és használatos, amikor a frissítési történik. A fájl minden olyan személy adatait soha nem fog tartalmazni, és soha nem törölhető.
 
-Tekintse át és a Windows Intézőben nyomkövetési naplófájlok törlése vagy a következő PowerShell-parancsfájl segítségével hajtsa végre a szükséges műveleteket:
+Tekintse át és a Windows Explorer használatával nyomkövetési naplófájlok törlése, vagy használhatja a következő PowerShell-parancsfájlt a szükséges műveletek végrehajtásához:
 
 ```
 $Files = ((Get-Item -Path "$env:programdata\aadconnect\trace-*.log").VersionInfo).FileName 
@@ -57,15 +57,15 @@ Foreach ($file in $Files) {
 }
 ```
 
-Mentse a parancsfájlt a fájlt a ". PS1 "kiterjesztéssel. Futtassa ezt a parancsfájlt, igény szerint.
+Mentse a parancsfájlt a fájlt a ". PS1 "kiterjesztéssel. Futtassa ezt a szkriptet, szükség szerint.
 
-További részletek kapcsolódó az Azure AD Connect GDPR követelmények, lásd: [Ez a cikk](active-directory-aadconnect-gdpr.md).
+Tudjon meg többet az Azure AD Connect általános adatvédelmi rendelet követelményeinek kapcsolódó, lásd: [Ez a cikk](active-directory-aadconnect-gdpr.md).
 
-### <a name="note-about-domain-controller-logs"></a>Tartomány a tartományvezérlő naplók kapcsolatos megjegyzés:
+### <a name="note-about-domain-controller-logs"></a>Domain controller naplók kapcsolatos megjegyzés:
 
-Ha naplózás engedélyezve van, a a termék hoz létre a biztonsági naplók a tartományvezérlők. Naplózási házirendek konfigurálásával kapcsolatos további tudnivalókért olvassa el ezt [cikk](https://technet.microsoft.com/library/dd277403.aspx).
+Ha naplózása engedélyezve van, a termék hozzon létre a biztonsági naplók a tartományvezérlők. Naplózási házirendek konfigurálásával kapcsolatos további tudnivalókért olvassa el ezt [cikk](https://technet.microsoft.com/library/dd277403.aspx).
 
 ## <a name="next-steps"></a>További lépések
-* [Tekintse át a Microsoft Privacy házirendet, a biztonsági és adatkezelési központ](https://www.microsoft.com/trustcenter)
-- [**Hibaelhárítás** ](active-directory-aadconnect-troubleshoot-sso.md) -Útmutató: a szolgáltatással kapcsolatos gyakori problémák megoldása.
-- [**UserVoice** ](https://feedback.azure.com/forums/169401-azure-active-directory/category/160611-directory-synchronization-aad-connect) – új funkciókérések tárolásához.
+* [Tekintse át a Microsoft Privacy szabályzat a biztonsági és adatkezelési központ](https://www.microsoft.com/trustcenter)
+- [**Hibaelhárítás** ](active-directory-aadconnect-troubleshoot-sso.md) – ismerje meg, a szolgáltatással kapcsolatos gyakori problémák megoldása.
+- [**UserVoice** ](https://feedback.azure.com/forums/169401-azure-active-directory/category/160611-directory-synchronization-aad-connect) – új funkcióra vonatkozó javaslata tárolásához.

@@ -1,6 +1,6 @@
 ---
-title: Helyezze át az adatokat, vagy az Azure Blob Storage SSIS-összekötők használata |} Microsoft Docs
-description: Azure Blob Storage SSIS-összekötők használata adatok áthelyezéséről.
+title: Adatok áthelyezése vagy onnan máshová SSIS-összekötők használatával az Azure Blob Storage |} A Microsoft Docs
+description: Adatok áthelyezése vagy onnan máshová SSIS-összekötők használatával az Azure Blob Storage.
 services: machine-learning,storage
 documentationcenter: ''
 author: deguhath
@@ -15,79 +15,79 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/04/2017
 ms.author: deguhath
-ms.openlocfilehash: 165180c49de75cf4b635a89dacec311d5370acd3
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 5db1e7b9c97a0c19ef5ec0a41ea675c33c4d46fc
+ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34837745"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37950916"
 ---
-# <a name="move-data-to-or-from-azure-blob-storage-using-ssis-connectors"></a>Helyezze át az adatokat, vagy az Azure Blob Storage SSIS-összekötők használata
-A [SQL Server Integration Services funkciócsomag a Azure](https://msdn.microsoft.com/library/mt146770.aspx) biztosít az Azure-ban való kapcsolódáshoz összetevők adatátviteli Azure és a helyszíni adatforrások és az Azure-ban tárolt folyamat adatok között.
+# <a name="move-data-to-or-from-azure-blob-storage-using-ssis-connectors"></a>Adatok áthelyezése vagy onnan máshová SSIS-összekötők használatával az Azure Blob Storage
+A [SQL Server Integration Services funkciócsomag Azure](https://msdn.microsoft.com/library/mt146770.aspx) szeretne csatlakozni az Azure-összetevők közötti Azure-ban és a helyszíni adatforrások, és dolgozza fel az adatokat az Azure-ban tárolt adatok átvitele biztosít.
 
 [!INCLUDE [blob-storage-tool-selector](../../../includes/machine-learning-blob-storage-tool-selector.md)]
 
-Ügyfelek kiterjeszti a felhőbe a helyszíni adatok került át, ha az összes Azure szolgáltatáson történő kialakíthatják a teljes Azure technológiák suite hozzáférhetne. Akkor használható, például az Azure Machine Learning vagy egy HDInsight-fürtre.
+Ügyfelek áttelepítette a helyszíni adatokat a felhőbe, ha azok bármely Azure-szolgáltatáshoz az Azure-technológiák a csomag teljes kihasználva is hozzáférhet. Azt is használható, például az Azure Machine Learning vagy HDInsight-fürtön.
 
-Ez az általában az első lépés lehet a [SQL](sql-walkthrough.md) és [HDInsight](hive-walkthrough.md) forgatókönyvek.
+Ez a általában az első lépés lehet a [SQL](sql-walkthrough.md) és [HDInsight](hive-walkthrough.md) forgatókönyvek.
 
-Canonical SSIS segítségével az üzleti igények hibrid adatok integrációs feladatokhoz a gyakori forgatókönyvek tárgyalását lásd: [ezzel nagyobb az SQL Server Integration Services funkciócsomag a Azure](http://blogs.msdn.com/b/ssis/archive/2015/06/25/doing-more-with-sql-server-integration-services-feature-pack-for-azure.aspx) blog.
+Az SSIS használata gyakori hibrid adatintegrációs forgatókönyveket az üzleti igények elvégzéséhez kanonikus forgatókönyvek, lásd: [ezzel nagyobb az SQL Server Integration Services funkciócsomag Azure](http://blogs.msdn.com/b/ssis/archive/2015/06/25/doing-more-with-sql-server-integration-services-feature-pack-for-azure.aspx) blog.
 
 > [!NOTE]
-> Az Azure blob storage teljes bevezetéséhez hivatkozik [Azure Blob alapjai](../../storage/blobs/storage-dotnet-how-to-use-blobs.md) és [Azure Blob szolgáltatás](https://msdn.microsoft.com/library/azure/dd179376.aspx).
+> Egy teljes körű Bevezetés az Azure blob storage, tekintse meg a [Azure Blob alapjai](../../storage/blobs/storage-dotnet-how-to-use-blobs.md) és [Azure Blob Service-ben](https://msdn.microsoft.com/library/azure/dd179376.aspx).
 > 
 > 
 
 ## <a name="prerequisites"></a>Előfeltételek
-Ebben a cikkben ismertetett feladatok végrehajtásához rendelkeznie kell Azure-előfizetés és Azure-tárfiók beállítása. Ismernie kell az Azure storage név és fiókkulcs fiókkulcs feltölteni, vagy töltse le az adatok.
+Ebben a cikkben ismertetett feladatok végrehajtásához Azure-előfizetéssel, és állítsa be Azure storage-fiókkal kell rendelkeznie. Ismernie kell a az Azure storage tárfióknév és fiókkulcs feltölteni, vagy töltse le az adatokat.
 
-* Beállítása egy **Azure-előfizetés**, lásd: [ingyenes egy hónapos próbaverzió](https://azure.microsoft.com/pricing/free-trial/).
-* Létrehozásával egy **tárfiók** és az első fiók és a kulcsadatokat, lásd: [tudnivalók az Azure storage-fiókok](../../storage/common/storage-create-storage-account.md).
+* Állíthat be egy **Azure-előfizetés**, lásd: [ingyenes egy hónapos próbaidőszak](https://azure.microsoft.com/pricing/free-trial/).
+* Létrehozásával egy **tárfiók** és a fiók és a legfontosabb adatok lekérését, lásd: [tudnivalók az Azure storage-fiókok](../../storage/common/storage-create-storage-account.md).
 
-Használatához a **SSIS-összekötők**, akkor le kell töltenie:
+Használatához a **SSIS-összekötők**, le kell töltenie:
 
-* **Az SQL Server 2014 vagy 2016 szabvány (vagy újabb)**: telepítése magában foglalja az SQL Server Integration Services.
-* **Microsoft SQL Server 2014 vagy 2016 Integration Services funkciócsomag az Azure-**: ezek tölthető le, osztályban, az a [SQL Server 2014 Integration Services](http://www.microsoft.com/download/details.aspx?id=47366) és [az SQL Server 2016 Integration Szolgáltatások](https://www.microsoft.com/download/details.aspx?id=49492) lapokat.
+* **Az SQL Server 2014 vagy 2016 Standard (vagy újabb)**: telepítés tartalmazza az SQL Server Integration Services.
+* **A Microsoft SQL Server 2014 vagy 2016 Integration Services Feature Pack for Azure**: ezek letölthető, az a [SQL Server 2014 Integration Services](http://www.microsoft.com/download/details.aspx?id=47366) és [SQL Server 2016 Integration Szolgáltatások](https://www.microsoft.com/download/details.aspx?id=49492) oldalakat.
 
 > [!NOTE]
-> SSIS SQL Server telepítve van, de nem szerepel az Express verzió. Milyen alkalmazások szerepelnek az SQL Server különböző kiadásai a további információkért lásd: [SQL Server kiadásai](http://www.microsoft.com/en-us/server-cloud/products/sql-server-editions/)
+> SSIS az SQL Server telepítve van, de nem szerepel az Express verzió. Milyen alkalmazások szerepelnek-e az SQL Server különböző kiadásainak kapcsolatos információkért lásd: [SQL Server-verziók](http://www.microsoft.com/en-us/server-cloud/products/sql-server-editions/)
 > 
 > 
 
-Oktatási anyagok SSIS lásd [beavatkozás nélküli a képzés SSIS](http://www.microsoft.com/download/details.aspx?id=20766)
+Lásd az SSIS oktatási anyagok [kéz a betanítási SSIS-hez](https://www.microsoft.com/sql-server/training-certification)
 
-Fel és futó beszerzésére információt SISS használatával állítanak össze egyszerű kinyerési, átalakítási és betöltési (ETL) csomagok, lásd: [SSIS-Útmutató: egyszerű ETL-csomag létrehozása](https://msdn.microsoft.com/library/ms169917.aspx).
+Információk beszerzése a felfelé és a futó használatával hozhat létre egyszerű kinyerési, átalakítási és betöltési (ETL) csomagok, lásd: SISS [SSIS-oktatóanyag: egy egyszerű ETL-csomag létrehozása](https://msdn.microsoft.com/library/ms169917.aspx).
 
 ## <a name="download-nyc-taxi-dataset"></a>Töltse le a NYC Taxi adatkészlet
-A bemutatott példában a nyilvánosan elérhető adatkészlet--itt használata a [NYC Taxi Utazgatással](http://www.andresmh.com/nyctaxitrips/) adatkészlet. Az adatkészlet hamarosan 173 millió taxi fel a következőt: az év 2013 áll. Az adatok két típusa van: út részletezi az adatok és a jegy ára adatokat. Minden hónapban van egy fájlt, mert tudunk 24 fájlok összes, amely egy tömörítetlen körülbelül 2GB.
+A bemutatott példában a nyilvánosan elérhető adatkészlet – ide használata a [NYC Taxi lelassítja](http://www.andresmh.com/nyctaxitrips/) adatkészlet. Az adatkészlet készül 173 millió i taxik fel a következőt: az év 2013 áll. Az adatok két típusa van: trip adatokat és diszkont adatok részleteit. Mivel minden hónapban egy fájlt, az összes, amelyeken, hogy megközelítőleg 2GB tömörítetlen 24 fájlok van.
 
-## <a name="upload-data-to-azure-blob-storage"></a>Adatok feltöltése az Azure blob storage
-A SSIS adatok funkciócsomag a helyszíni az Azure blob storage áthelyezéséhez példányának használjuk a [ **Azure Blob feltöltése feladat**](https://msdn.microsoft.com/library/mt146776.aspx), itt látható:
+## <a name="upload-data-to-azure-blob-storage"></a>Adatfeltöltés az Azure blob storage-bA
+Az SSIS használata az adatok funkciócsomag a helyszínről az Azure blob storage-áthelyezéséhez egy példányát használjuk a [ **Azure Blob feltöltése feladat**](https://msdn.microsoft.com/library/mt146776.aspx), itt látható:
 
-![Konfigurálja-adatok-tudományos-vm](./media/move-data-to-azure-blob-using-ssis/ssis-azure-blob-upload-task.png)
+![Konfigurálja-data-adatelemzési – a virtuális gép](./media/move-data-to-azure-blob-using-ssis/ssis-azure-blob-upload-task.png)
 
-A paraméterek, a feladat használja a dokumentum ismerteti:
+A paraméterek, a feladat használja ebben a témakörben találhatók:
 
 | Mező | Leírás |
 | --- | --- |
-| **AzureStorageConnection** |Egy meglévő Azure Storage Connection Manager határozza meg, vagy létrehoz egy új Azure-tárfiók a blob-fájlokat a rendszer hol tárolja mutató hivatkozik. |
-| **BlobContainer** |Megadja a blob-tároló, amely a feltöltött fájlok, blobok tárolására nevét. |
-| **BlobDirectory** |Megadja a blob könyvtárat egy blokkblob, a feltöltött fájl tárolására. A blob könyvtár virtuális hierarchikus. Ha a blob már létezik, it ia helyett. |
+| **AzureStorageConnection** |Megadja egy meglévő Azure Storage Connection Manager, vagy létrehoz egy újat, amely egy Azure storage-fiókot, amely a blob-fájlokat üzemeltető vonatkozik. |
+| **BlobContainer** |Itt adhatja meg, amelyek rendelkeznek a feltöltött fájlok blobként a blob-tároló neve. |
+| **BlobDirectory** |Megadja a blob könyvtárat a blokkblobok, a feltöltött fájl tárolására. A blob-könyvtár virtuális hierarchikus struktúrát. Ha a blob már létezik, informatikai ia cserélni. |
 | **LocalDirectory** |Megadja a helyi könyvtárat, amely tartalmazza a feltölteni kívánt fájlokat. |
-| **FileName** |Adja meg a név szűrőt a megadott minta fájlok. Például MySheet\*.xls\* például MySheet001.xls és MySheetABC.xlsx fájlokat tartalmazza |
-| **TimeRangeFrom/TimeRangeTo** |Megadja, idő tartomány szűrőt. A fájlok után módosítva *TimeRangeFrom* és előtt *TimeRangeTo* tartalmazza. |
+| **FileName** |Megad egy jelölje ki a megadott név mintával rendelkező fájlokat. Ha például MySheet\*.xls\* fájlok, például MySheet001.xls és MySheetABC.xlsx tartalmaz |
+| **TimeRangeFrom/TimeRangeTo** |Megadja a tartomány Időszűrő. Után módosult fájlok *TimeRangeFrom* és előtt *TimeRangeTo* tartalmazza. |
 
 > [!NOTE]
-> A **AzureStorageConnection** hitelesítő adatokat kell csak akkor lehet helyes, és a **BlobContainer** már léteznie kell az átvitel kísérlet történik.
+> A **AzureStorageConnection** hitelesítő adatokat kell csak akkor lehet helyes, és a **BlobContainer** léteznie kell az átvitel kísérlet történik.
 > 
 > 
 
-## <a name="download-data-from-azure-blob-storage"></a>Az Azure blob storage adatok letöltése
-Az Azure blob storage adatok letöltése a helyi tároló SSIS a,-példány használata a [Azure Blob feltöltése feladat](https://msdn.microsoft.com/library/mt146779.aspx).
+## <a name="download-data-from-azure-blob-storage"></a>Töltse le az adatok Azure blob storage-ból
+Adatok letöltése az Azure blob storage-ból a helyszíni tárolók az SSIS használatával, egy példányát használja a [Azure Blob feltöltése feladat](https://msdn.microsoft.com/library/mt146779.aspx).
 
 ## <a name="more-advanced-ssis-azure-scenarios"></a>Speciális SSIS-Azure-forgatókönyvek
-A SSIS funkciócsomag lehetővé teszi, hogy összetettebb folyamatok által kezelhető csomagolási feladatok együtt. Például a blob sikerült adatcsatorna közvetlenül a HDInsight-fürtöt, amelynek kimenete vissza a blob és helyszíni tárterületre letöltése sikerült. SSIS egy HDInsight-fürt további SSIS-összekötők használata futtathat Hive és a Pig feladatot:
+Az SSIS-feature pack lehetővé teszi, hogy komplex folyamatok által kezelendő csomagolási feladatok együtt. Sikerült a Blobadatok például közvetlenül egy HDInsight-fürtöt, vissza egy blobot, majd a helyszíni tárolók kimenete sikerült letölteni a hírcsatorna. SSIS futtathatja a Hive és Pig-feladatok további SSIS-összekötők használata egy HDInsight-fürtön:
 
-* A Hive parancsfájl futtatásához SSIS az Azure HDInsight-fürtök használata [Azure HDInsight Hive feladat](https://msdn.microsoft.com/library/mt146771.aspx).
-* A Pig-parancsprogram futtatásához SSIS az Azure HDInsight-fürtök használata [Azure HDInsight Pig feladatot](https://msdn.microsoft.com/library/mt146781.aspx).
+* Egy Hive-szkript futtatásához az Azure HDInsight-fürtön az SSIS használatával használja [Azure HDInsight Hive-tevékenység](https://msdn.microsoft.com/library/mt146771.aspx).
+* A Pig-parancsprogram futtatásához az Azure HDInsight-fürtön az SSIS használatával használja [Azure HDInsight Pig-tevékenység](https://msdn.microsoft.com/library/mt146781.aspx).
 

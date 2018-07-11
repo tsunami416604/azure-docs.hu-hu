@@ -1,5 +1,5 @@
 ---
-title: A LUIS a kulcsok kezelése |} A Microsoft Docs
+title: A LUIS a végpont kulcsok kezelése |} A Microsoft Docs
 description: A programozott API, a végpont és a külső kulcsok kezelése a Language Understanding (LUIS) használatával.
 titleSuffix: Azure
 services: cognitive-services
@@ -10,14 +10,14 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 03/21/2018
 ms.author: v-geberr
-ms.openlocfilehash: 99ba867b10c82d226948b13fda448cd24a33c553
-ms.sourcegitcommit: 11321f26df5fb047dac5d15e0435fce6c4fde663
+ms.openlocfilehash: 288c1456979ff9214b2f333768da65bd3da1a734
+ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37888728"
+ms.lasthandoff: 07/09/2018
+ms.locfileid: "37917795"
 ---
-# <a name="manage-your-luis-keys"></a>A LUIS kulcsok kezelése
+# <a name="manage-your-luis-endpoint-keys"></a>A LUIS-végpont kulcsok kezelése
 Egy kulcs használatával hozhat létre és a LUIS-alkalmazás közzététele vagy lekérdezni a végpont teszi lehetővé. 
 
 <a name="programmatic-key" ></a>

@@ -1,50 +1,48 @@
 ---
-title: Parancsfájl-művelet fejlesztése a HDInsight - Azure |} Microsoft Docs
-description: Ismerje meg a parancsfájlművelet Hadoop-fürtök testreszabása. Parancsfájl művelet fut a Hadoop-fürthöz további szoftvereket telepíteni, vagy módosítsa a fürt telepített alkalmazások használható.
+title: Parancsfájlművelet-alapú HDInsight - Azure-fejlesztés |} A Microsoft Docs
+description: Ismerje meg, hogyan szabhatja testre a Script Action Hadoop-fürtöket. Parancsfájlművelet használható egy fürtöt a telepített alkalmazások konfigurációjának módosítása vagy a Hadoop-fürtön futó további szoftverek telepíthetők.
 services: hdinsight
-documentationcenter: ''
 tags: azure-portal
 author: mumian
 manager: jhubbard
 editor: cgronlun
 ms.assetid: 836d68a8-8b21-4d69-8b61-281a7fe67f21
 ms.service: hdinsight
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/25/2017
 ms.author: jgao
 ROBOTS: NOINDEX
-ms.openlocfilehash: 921da2db8e235e17611788cae7e976597bd76703
-ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
+ms.openlocfilehash: 8b00661e1561b4aa93be26994b20e33feac97ff6
+ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/17/2018
-ms.locfileid: "34271615"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37952368"
 ---
-# <a name="develop-script-action-scripts-for-hdinsight-windows-based-clusters"></a>A HDInsight-Windows-alapú fürtök parancsfájlművelet-parancsfájlok fejlesztése
-A HDInsight parancsfájlművelet parancsfájlok írásának ismertetése. Parancsfájlművelet-parancsfájlok használatával kapcsolatos információkért lásd: [testreszabása HDInsight-fürtök használata parancsfájlművelet](hdinsight-hadoop-customize-cluster.md). A Linux-alapú HDInsight-fürtök írt ugyanazon cikk, lásd: [parancsfájlművelet fejlesztése parancsfájlok a HDInsight](hdinsight-hadoop-script-actions-linux.md).
+# <a name="develop-script-action-scripts-for-hdinsight-windows-based-clusters"></a>A HDInsight Windows-alapú fürtök Parancsfájlműveletekkel-parancsfájlok fejlesztése
+Útmutató a HDInsight Script Action parancsfájlokat írhat. A Script Action parancsfájlok segítségével további információkért lásd: [testreszabása HDInsight-fürtök szkriptműveletekkel](hdinsight-hadoop-customize-cluster.md). Ugyanahhoz a cikkhez írt Linux-alapú HDInsight-fürtök esetén, lásd: [Szkriptművelet fejlesztése HDInsight-parancsfájlok](hdinsight-hadoop-script-actions-linux.md).
 
 
 
 > [!IMPORTANT]
-> Az ebben a dokumentumban csak a lépések Windows-alapú HDInsight-fürtök. HDInsight csak érhető el a Windows korábbi, mint a HDInsight 3.4-es verziójához. A Linux az egyetlen operációs rendszer, amely a HDInsight 3.4-es vagy újabb verziói esetében használható. További tudnivalókért lásd: [A HDInsight elavulása Windows rendszeren](hdinsight-component-versioning.md#hdinsight-windows-retirement). A Parancsfájlműveletek használata a Linux-alapú fürtökön információkért lásd: [parancsfájl-művelet fejlesztése a HDInsight (Linux)](hdinsight-hadoop-script-actions-linux.md).
+> A jelen dokumentumban leírt lépések csak Windows-alapú HDInsight-fürtök esetében működik. HDInsight csak akkor használható a Windows-verziók alacsonyabb, mint a HDInsight 3.4-es. A Linux az egyetlen operációs rendszer, amely a HDInsight 3.4-es vagy újabb verziói esetében használható. További tudnivalókért lásd: [A HDInsight elavulása Windows rendszeren](hdinsight-component-versioning.md#hdinsight-windows-retirement). Információk a Linux-alapú fürtök parancsfájlműveletekkel: [Szkriptművelet fejlesztése a HDInsight (Linux)](hdinsight-hadoop-script-actions-linux.md).
 >
 >
 
 
 
-Parancsfájl művelet fut a Hadoop-fürthöz további szoftvereket telepíteni, vagy módosítsa a fürt telepített alkalmazások használható. A Parancsfájlműveletek olyan parancsfájlok, futtassa a fürtcsomópontokon, a HDInsight-fürtök telepítésekor, és a fürt csomópontjai HDInsight konfigurálásának befejezése után végrehajtás. A parancsfájlművelet hajtja végre a fiók rendszergazdai jogosultságokkal, és teljes hozzáférési jogosultsága ahhoz, hogy a fürt csomópontjai biztosít. Az egyes fürtökön megadható Parancsfájlműveletek hajthatnak végre, amely a megadott sorrendben listáját.
+Parancsfájlművelet használható egy fürtöt a telepített alkalmazások konfigurációjának módosítása vagy a Hadoop-fürtön futó további szoftverek telepíthetők. A Parancsfájlműveletek olyan parancsfájlok, amelyek futtatását a fürt csomópontjai a HDInsight-fürtök, és a végrehajtás után a fürtben található csomópontok HDInsight konfigurálásának befejezéséhez. Szkriptműveletet hajtja végre a fiók rendszergazdai jogosultságokkal, és a fürtcsomópontok teljes körű hozzáférési jogosultságokat biztosít. Ha mindegyik fürthöz kell végrehajtani, amely a megadott sorrendben szkriptműveletek listája adható meg.
 
 > [!NOTE]
-> Ha a következő hibaüzenet:
+> Ha a következő hibaüzenetet kapja:
 >
-> System.Management.Automation.CommandNotFoundException; ExceptionMessage: A kifejezés "Save-HDIFile" nem ismerhető fel egy parancsmag, a függvény, a parancsfájl vagy a futtatható program nevét. Ellenőrizze a helyesírást, a név, vagy ha egy elérési út része, ellenőrizze, hogy az elérési út helyességét, és próbálkozzon újra.
-> Mivel az nem tartozik a segédmódszereket van.  Lásd: [segédmódszereket egyéni parancsfájlok](hdinsight-hadoop-script-actions.md#helper-methods-for-custom-scripts).
+> System.Management.Automation.CommandNotFoundException; ExceptionMessage: A kifejezés "Save-HDIFile" nem ismerhető fel egy parancsmag, a függvény, a parancsfájl vagy a működtethető program nevét. Ellenőrizze a helyesírást, a neve, vagy ha egy elérési út része, ellenőrizze, hogy az elérési út helyes, és próbálkozzon újra.
+> Ez azért, mert nem tartozik a segédmetódusokat.  Lásd: [egyéni parancsfájlok segédmetódusokat](hdinsight-hadoop-script-actions.md#helper-methods-for-custom-scripts).
 >
 >
 
 ## <a name="sample-scripts"></a>Mintaszkriptek
-A HDInsight-fürtök létrehozása a Windows operációs rendszeren, a parancsfájl művelete Azure PowerShell-parancsfájlt. A következő parancsfájlt a hely konfigurációs fájljainak konfigurálásához végrehajtott minta:
+A HDInsight-fürtök létrehozása Windows operációs rendszeren, a Script Action az Azure PowerShell-szkript. A következő parancsfájl egy mintát, a hely konfigurációs fájlok konfigurálása:
 
 [!INCLUDE [upgrade-powershell](../../includes/hdinsight-use-latest-powershell.md)]
 
@@ -91,32 +89,34 @@ A HDInsight-fürtök létrehozása a Windows operációs rendszeren, a parancsf�
 
     Write-HDILog "$configFileName has been configured."
 
-A parancsfájl fogadja el a négy paraméter, a konfigurációs fájl nevét, a tulajdonságot kívánja módosítani, az értéket be szeretné állítani, és egy leírást. Példa:
+A parancsfájlnak, négy paramétert, a konfigurációs fájl neve, a módosítandó, a következőt kívánja beállítani, érték tulajdonság és egy leírást. Példa:
 
     hive-site.xml hive.metastore.client.socket.timeout 90
 
-Ezek a paraméterek értéke hive.metastore.client.socket.timeout 90 a hive-site.xml fájlban.  Az alapértelmezett értéke 60 másodperc.
+Ezek a paraméterek értékét hive.metastore.client.socket.timeout 90-re a hive-site.xml fájlban.  Az alapértelmezett értéke 60 másodperc.
 
-A parancsfájlpéldát is találhatók [ https://hditutorialdata.blob.core.windows.net/customizecluster/editSiteConfig.ps1 ](https://hditutorialdata.blob.core.windows.net/customizecluster/editSiteConfig.ps1).
+Ez a példaszkript is található [ https://hditutorialdata.blob.core.windows.net/customizecluster/editSiteConfig.ps1 ](https://hditutorialdata.blob.core.windows.net/customizecluster/editSiteConfig.ps1).
 
-HDInsight több parancsfájlok további összetevők telepíthetők a HDInsight-fürtök biztosítja:
+HDInsight további összetevők telepíthetők a HDInsight-fürtök számos szkript biztosítja:
 
 | Name (Név) | Szkript |
 | --- | --- |
-| **Spark telepítése** |https://hdiconfigactions.blob.core.windows.net/sparkconfigactionv03/spark-installer-v03.ps1. Lásd: [telepítése és használata a HDInsight Spark-fürtök][hdinsight-install-spark]. |
-| **R telepítéséhez** |https://hdiconfigactions.blob.core.windows.net/rconfigactionv02/r-installer-v02.ps1. Lásd: [telepítése és használata R HDInsight-fürtök] [a hdinsight-r-parancsfájl]. |
-| **Solr telepítése** |https://hdiconfigactions.blob.core.windows.net/solrconfigactionv01/solr-installer-v01.ps1. Lásd: [telepítése és használata Solr a HDInsight-fürtök](hdinsight-hadoop-solr-install.md). |
-| - **Giraph telepítése** |https://hdiconfigactions.blob.core.windows.net/giraphconfigactionv01/giraph-installer-v01.ps1. Lásd: [telepítése és használata Giraph a HDInsight-fürtök](hdinsight-hadoop-giraph-install.md). |
+| **A Spark telepítése** | `https://hdiconfigactions.blob.core.windows.net/sparkconfigactionv03/spark-installer-v03.ps1`. Lásd: [telepítése és használata a Spark on HDInsight-fürtök][hdinsight-install-spark]. |
+| **Az R telepítése** | `https://hdiconfigactions.blob.core.windows.net/rconfigactionv02/r-installer-v02.ps1`. Lásd: [telepítése és az R használata a HDInsight-fürtökön](r-server/r-server-hdinsight-manage.md#install-additional-r-packages-on-the-cluster). |
+| **A Solr telepítése** | `https://hdiconfigactions.blob.core.windows.net/solrconfigactionv01/solr-installer-v01.ps1`. Lásd: [telepítése és használata a Solr a HDInsight-fürtök](hdinsight-hadoop-solr-install.md). |
+| **A Giraph telepítése** | `https://hdiconfigactions.blob.core.windows.net/giraphconfigactionv01/giraph-installer-v01.ps1`. Lásd: [telepítése és használata a Giraph a HDInsight-fürtök](hdinsight-hadoop-giraph-install.md). |
+| **Hive-kódtárak előzetes betöltése** | `https://hdiconfigactions.blob.core.windows.net/setupcustomhivelibsv01/setup-customhivelibs-v01.ps1`. Lásd: [adja hozzá a Hive-kódtárak a HDInsight-fürtök](hdinsight-hadoop-add-hive-libraries.md) |
 
-Parancsfájlművelet is telepíthető, az Azure-portálon az Azure PowerShell vagy a HDInsight .NET SDK használatával.  További információkért lásd: [testreszabása HDInsight-fürtök használata parancsfájlművelet][hdinsight-cluster-customize].
+
+Parancsfájlművelet is telepíthető, az Azure Portalon, az Azure PowerShell-lel vagy a HDInsight .NET SDK használatával.  További információkért lásd: [testreszabása HDInsight-fürtök szkriptműveletekkel][hdinsight-cluster-customize].
 
 > [!NOTE]
-> A minta parancsfájlok csak a HDInsight-fürt verziószáma 3.1-es vagy újabb működik. A HDInsight-fürt verziókról további információkért lásd: [HDInsight-fürt verziókról](hdinsight-component-versioning.md).
+> Mintaszkriptek használata csak a HDInsight-fürt verziója 3.1-es vagy újabb. A HDInsight fürt verziókról további információkért lásd: [HDInsight fürtverziók](hdinsight-component-versioning.md).
 >
 >
 
-## <a name="helper-methods-for-custom-scripts"></a>Egyéni parancsfájlok segítő módszerei
-Parancsfájl művelet segítő módszereket segédprogramok egyéni parancsfájlok írása közben használható. Ezek a módszerek definiált [ https://hdiconfigactions.blob.core.windows.net/configactionmodulev05/HDInsightUtilities-v05.psm1 ](https://hdiconfigactions.blob.core.windows.net/configactionmodulev05/HDInsightUtilities-v05.psm1), és a használatával a következő minta parancsfájlokat is szerepelhet:
+## <a name="helper-methods-for-custom-scripts"></a>Egyéni parancsfájlok segédmetódusokat
+Parancsprogram-művelet segédmetódusokat olyan segédprogramok, amelyet használhat egyéni parancsfájlok írása közben. Ezek a metódusok vannak meghatározva [ https://hdiconfigactions.blob.core.windows.net/configactionmodulev05/HDInsightUtilities-v05.psm1 ](https://hdiconfigactions.blob.core.windows.net/configactionmodulev05/HDInsightUtilities-v05.psm1), és a parancsfájlok a következő minta használatával szerepelhet:
 
     # Download config action module from a well-known directory.
     $CONFIGACTIONURI = "https://hdiconfigactions.blob.core.windows.net/configactionmodulev05/HDInsightUtilities-v05.psm1";
@@ -135,73 +135,73 @@ Parancsfájl művelet segítő módszereket segédprogramok egyéni parancsfájl
         exit;
     }
 
-Ez a parancsfájl által biztosított segítő módszerek a következők:
+Ez a szkript által biztosított segítő módszerek a következők:
 
 | Segédmetódus | Leírás |
 | --- | --- |
-| **Save-HDIFile** |Töltse le a fájlt a a megadott egységes erőforrás-azonosító (URI) a helyi lemezen, amely az Azure virtuális gép csomópontot a fürthöz rendelt helyre. |
+| **Save-HDIFile** |Töltse le a fájlt, a megadott egységes erőforrás-azonosító (URI) egy olyan helyre, amely kapcsolódik az Azure-beli Virtuálisgép-csomóponttal, a fürt helyi lemezen. |
 | **Expand-HDIZippedFile** |Bontsa ki a tömörített fájlt. |
 | **Invoke-HDICmdScript** |Futtassa a parancsfájlt a cmd.exe. |
-| **Write-HDILog** |Kimeneti írása egy parancsfájl műveletéhez használt egyéni parancsfájl. |
-| **Get-Services** |Ha a parancsfájl végrehajtása a gépen futó szolgáltatásokat listájának lekérése. |
-| **Get-Service** |Az adott szolgáltatás nevű bemeneti adatként, részletes információ egy adott szolgáltatáshoz (a szolgáltatás neve, folyamatazonosító, állapot, stb.) Ha a parancsfájl végrehajtása a gépen. |
-| **Get-HDIServices** |HDInsight services fut a számítógépen, ahol a parancsfájl végrehajtása listájának lekérése. |
-| **Get-HDIService** |Az adott HDInsight szolgáltatásnévvel bemeneti adatként, részletes információ egy adott szolgáltatáshoz (a szolgáltatás neve, folyamatazonosító, állapot, stb.) Ha a parancsfájl végrehajtása a gépen. |
-| **Get-ServicesRunning** |Futó szolgáltatásokat a számítógépen a parancsfájl végrehajtása ahol listájának lekérése. |
-| **Get-ServiceRunning** |Ellenőrizze, hogy egy adott szolgáltatáshoz (a neve szerint) fut a számítógépen ahol a parancsfájl végrehajtása. |
-| **Get-HDIServicesRunning** |HDInsight services fut a számítógépen, ahol a parancsfájl végrehajtása listájának lekérése. |
-| **Get-HDIServiceRunning** |Ellenőrizze, hogy egy adott HDInsight-szolgáltatás (név) a számítógépen. Ha a parancsfájl végrehajtása. |
-| **Get-HDIHadoopVersion** |A verziója telepítve azon a számítógépen, ahol a parancsfájl végrehajtása Hadoop beolvasása. |
-| **Test-IsHDIHeadNode** |Ellenőrizze, hogy a számítógépen, ahol a parancsfájl végrehajtása egy átjárócsomóponttal. |
-| **Test-IsActiveHDIHeadNode** |Ellenőrizze, hogy a számítógépen, ahol a parancsfájl végrehajtása az aktív központi csomópont. |
-| **Test-IsHDIDataNode** |Ellenőrizze, hogy a számítógépen, ahol a parancsfájl végrehajtása egy adatcsomóponton. |
-| **Edit-HDIConfigFile** |A konfigurációs fájlok hive-site.xml, a core-site.xml, a hdfs-site.xml, a mapred-site.xml vagy a yarn-site.xml szerkesztéséhez. |
+| **Write-HDILog** |Kiírhatja a kimenetet szkriptműveletet használt egyéni parancsfájl. |
+| **Get-Services** |Ha a parancsfájl végrehajtása a gépen futó szolgáltatások listájának beolvasása. |
+| **Get-Service** |A bemenetként megadott szolgáltatás nevét, az adott szolgáltatásokhoz részletes információkhoz juthat (a szolgáltatás neve, a folyamat azonosítója, állam stb.) a számítógépen, ahol a szkriptet hajt végre. |
+| **Get-HDIServices** |A számítógépen futó, ahol a szkript végrehajtása HDInsight-szolgáltatások listájának beolvasása. |
+| **Get-HDIService** |Az adott HDInsight szolgáltatásnévvel bemenetként, egy adott szolgáltatáshoz részletes információkhoz juthat (a szolgáltatás neve, a folyamat azonosítója, állam stb.) a számítógépen, ahol a szkriptet hajt végre. |
+| **Get-ServicesRunning** |Futó szolgáltatások azon a számítógépen, a parancsfájl végrehajtása listájának beolvasása. |
+| **Get-ServiceRunning** |Ellenőrizze, hogy egy adott szolgáltatáshoz (név alapján) fut-e a számítógépen, a parancsfájl végrehajtása. |
+| **Get-HDIServicesRunning** |A számítógépen futó, ahol a szkript végrehajtása HDInsight-szolgáltatások listájának beolvasása. |
+| **Get-HDIServiceRunning** |Ellenőrizze, hogy egy adott HDInsight szolgáltatáshoz (név alapján) fut-e a számítógépen, a parancsfájl végrehajtása. |
+| **Get-HDIHadoopVersion** |Hadoop telepítve azon a számítógépen, ahol a parancsfájl végrehajtása verziójának beszerzéséhez. |
+| **Test-IsHDIHeadNode** |Ellenőrizze, hogy a számítógépen, ahol a parancsfájl végrehajtása-e a fő csomópontot. |
+| **Test-IsActiveHDIHeadNode** |Ellenőrizze, hogy a számítógépen, ahol a parancsfájl végrehajtása-e az aktív fő csomópont. |
+| **Test-IsHDIDataNode** |Ellenőrizze, hogy a számítógépen, ahol a parancsfájl végrehajtása-e az adatok csomópont. |
+| **Edit-HDIConfigFile** |A hive-site.xml konfigurációs fájlokat, a core-site.xml, a hdfs-site.xml, a mapred-site.xml vagy a yarn-site.xml szerkesztéséhez. |
 
-## <a name="best-practices-for-script-development"></a>Parancsfájl fejlesztési ajánlott eljárásai
-A HDInsight-fürtök egyéni parancsfájl fejlesztésekor van több bevált gyakorlatokat, amelyekkel tartsa szem előtt:
+## <a name="best-practices-for-script-development"></a>Ajánlott eljárások a parancsfájl-fejlesztés
+Egy HDInsight-fürthöz tartozó egyéni parancsfájl fejlesztésekor van néhány ajánlott eljárásokat, és tartsa szem előtt:
 
 * A Hadoop-verziójának ellenőrzése
 
-    Csak a HDInsight (Hadoop 2.4) 3.1-es verzióját vagy újabb támogatás parancsfájlművelet használatával egyéni összetevőinek telepítése egy fürt. Az egyéni parancsfájlt kell használnia a **Get-HDIHadoopVersion** segédmetódus Hadoop verziójának más feladatok végrehajtása a parancsfájl a folytatása előtt.
-* Tartalmaznak egy stabil parancsfájl erőforrások
+    Csak a HDInsight (Hadoop 2.4) 3.1-es verzióját vagy újabb támogatási Szkriptműveletek használatával egyéni összetevők telepíthetők a fürtön. Az egyéni szkriptet kell használnia a **Get-HDIHadoopVersion** segédmetódus Hadoop verziójának és egyéb feladatok végrehajtása a szkriptet a továbblépés előtt.
+* Adja meg a parancsfájl stabil hivatkozását
 
-    Felhasználók győződjön meg arról, hogy a parancsfájlok és egyéb összetevők szerepel a testreszabás, a fürt teljes élettartama alatt a fürt elérhetők maradnak, és, hogy a fájlok verzióinak ne változtassa meg az az időtartam. Ezeket az erőforrásokat szükség, ha a fürtben található csomópontok különösen szükség. Az ajánlott eljárás, hogy töltse le és archiválni egy tárfiókot, amely a felhasználó a tartalmát. Ez a fiók lehet az alapértelmezett tárfiókot, vagy időpontban a központi telepítés testreszabott fürt megadott további tárfiókok.
-    Fürt minták a Spark és R testreszabott, ha a dokumentáció, például van egy helyi példányát a tárfiókban lévő erőforrások: https://hdiconfigactions.blob.core.windows.net/.
-* Győződjön meg arról, hogy a fürt testreszabási parancsfájl idempotent
+    Felhasználók gondoskodnia kell, hogy az összes parancsfájl és más összetevőket, használja a fürt testreszabása a fürt élettartama során elérhetők maradnak, és, hogy a fájlok verzióinak ne módosítsa az időtartam számára. Ezeket az erőforrásokat szükség, ha a fürtben található csomópontok rendszerképének alaphelyzetbe állítása szükséges. Az ajánlott eljárás, hogy töltse le, és archiválja mindent egy tárfiókot, amelyet a felhasználó szabályozza. Ez a fiók lehet az alapértelmezett tárfiókot, vagy a megadott üzembe helyezési testre szabott fürt időpontjában további tárfiókokat.
+    A Spark-és R testreszabott fürt minták a dokumentációját, például van egy helyi példányát az erőforrásokat a tárfiók a megadott: https://hdiconfigactions.blob.core.windows.net/.
+* Győződjön meg arról, hogy a fürt testreszabása szkript idempotens
 
-    Várt kell, hogy a csomópontok egy HDInsight-fürt a fürt élettartama alatt vannak lemezképet. Amikor a fürt rendszerképének a fürt testreszabási parancsfájl futtatása. Ezt a parancsfájlt kell megtervezni, abban az értelemben, hogy szerepkörpéldány rendszerképét, akkor a parancsfájl győződjön meg arról, hogy a fürt küld vissza a ugyanaz az idempotent testreszabott állapotát az imént, miután a parancsfájl lefutott, a fürt kezdetben létrehozásának első alkalommal kell. Például ha egyéni parancsfájl telepítették az alkalmazást D:\AppLocation első futtassa, és minden ezt követő futtatáskor, különösen, akkor a parancsfájl ellenőrizze, hogy a az alkalmazás D:\AppLocation helyen van, a parancsfájlban szereplő lépések más folytatása előtt.
-* Az optimális helyen egyéni összetevők telepítéséhez
+    Vannak rendszerképét meg alaphelyzetbe, a fürt élettartama során állítják egy HDInsight-fürt csomópontjainak, hogy kell várt. A fürt testreszabása szkript fut le, amikor a fürt rendszerképének. Ez a szkript idempotens abban az értelemben, hogy esetén rendszerképének alaphelyzetbe állítása, a parancsfájl biztosítania kell, hogy a fürt ugyanazt a visszaadott állapot, amely csak akkor, ha a parancsfájl lefutott, az első alkalommal, amikor a fürt eredeti létrehozása volt testre szabott lennie kell megtervezni. Például ha egy egyéni parancsfájl az első futtatáskor D:\AppLocation az alkalmazást telepítette, majd minden egyes későbbi futtatásakor, esetén rendszerképének alaphelyzetbe állítása, a parancsfájl ellenőrizze-e a az alkalmazás D:\AppLocation helyen van, mielőtt továbblépne más lépéseit a parancsfájl.
+* Egyéni összetevők optimális helyre fogja telepíteni
 
-    Ha a fürtcsomópontok vannak lemezképet, a C:\ meghajtó-erőforrás és a D:\ rendszermeghajtón is újraformázza, adatokat és alkalmazásokat, amelyek adott meghajtókon telepítette elvesztését eredményezi. Ez a veszteség is előfordulhat, ha egy Azure virtuális gép (VM) csomópontot, amely a fürt része leáll, és olyan új csomópont cseréli le. Összetevők a D:\ meghajtóra, vagy a fürt C:\apps helyen telepíthető. A C:\ meghajtón más helyeken vannak fenntartva. Adja meg a helyet Ha alkalmazások vagy a könyvtárak a fürt testreszabási parancsfájl telepíteni.
-* Magas rendelkezésre állásának a fürt-architektúra
+    Ha a fürtcsomópontok vannak rendszerképének a C:\ meghajtóra-erőforrás és a D:\ rendszermeghajtó is újraformázza, így az adatok és az alkalmazásokat, amelyek korábban telepítette az adott meghajtókat. Ez akkor is előfordulhat, ha egy Azure virtuális gép (VM) csomópontot, a fürt részét képező leáll, és a egy új csomópont helyébe. Összetevők a D:\ meghajtóra, vagy a fürtön a C:\apps helyen telepíthető. A C:\ meghajtón található más helyeken vannak fenntartva. Adja meg a helyet, alkalmazások és a könyvtárakat a fürt testreszabása szkriptet az telepíteni.
+* Magas rendelkezésre állásának garantálása érdekében a fürt architektúra
 
-    HDInsight felépítésű egy aktív-passzív a magas rendelkezésre állás érdekében egy átjárócsomóponttal van aktív módot (ahol a HDInsight-szolgáltatás fut) és a más átjárócsomópont (mely a hdinsight szolgáltatások nem futnak) készenléti kiszolgálói módban van. A csomópontok aktív és passzív módban vált, ha a HDInsight szolgáltatások megszakadnak. A parancsfájlművelet kiszolgálók telepítését mindkét központi csomópont a magas rendelkezésre állású használata esetén vegye figyelembe, hogy a HDInsight feladatátvételi mechanizmus nem tudja, hogy automatikusan áthelyezze a feladatokat a felhasználók által telepített szolgáltatások. HDInsight központi csomópontokra, amelyeket várhatóan magas rendelkezésre állású legyen, felhasználók által telepített szolgáltatások vagy a saját feladatátvételi mechanizmus, ha az aktív-passzív módban van vagy kell aktív-aktív módban.
+    HDInsight van egy aktív – passzív architektúra magas rendelkezésre állás érdekében egyik fő csomópontja aktív módban (ahol a HDInsight-szolgáltatások futnak) és a fő csomópont (mely a HDInsight a szolgáltatások nem futnak) készenléti üzemmódban van. A csomópontok váltson aktív és passzív üzemmódban, ha HDInsight-szolgáltatások megszakadnak. Szolgáltatások telepítése a magas rendelkezésre állás érdekében két fő csomópontra szkriptműveletet használata esetén vegye figyelembe, hogy a HDInsight adatátvételi mechanizmus nem tudja automatikusan átadja a feladatokat a felhasználók által telepített szolgáltatások. Így által telepített szolgáltatásokhoz a HDInsight fő csomópont, amely várhatóan magas rendelkezésre állású kell, vagy saját adatátvételi mechanizmus, ha az aktív-passzív módban van, vagy aktív-aktív módban kell.
 
-    Egy HDInsight-parancsfájlművelet parancs mindkét központi csomópontján fut, amikor az átjárócsomópont szerepkör van megadva értékként a *ClusterRoleCollection* paraméter. Egyéni parancsfájl tervezésekor ügyeljen, hogy, hogy a telepítő tisztában-e a parancsfájlt. A problémák, ahol ugyanazok a szolgáltatások telepítve, és mindkét központi csomópont elindult és azok egymással versengő végül nem kell futtatnia. Is vegye figyelembe, hogy adatok nem vesztek el során, különösen, tehát parancsfájlművelet keresztül telepített szoftverek ezek az események rugalmasak lehetnek. Alkalmazások úgy kell megtervezni, magas rendelkezésre állású adatait, amely van osztva sok csomópontjai között. Akár 1/5 egy fürt csomópontja egyidejűleg lemezképet is lehet.
-* Az Azure Blob storage használata egyéni összetevők konfigurálása
+    Ha az átjárócsomópont szerepkör van megadva értékként a két fő csomópont futtat egy HDInsight-parancsfájlművelet parancs a *ClusterRoleCollection* paraméter. Így egyéni parancsfájl tervezésekor győződjön meg arról, hogy a parancsfájl figyelembe ezt a beállítást. Meg nem hibákba ütközne, ahol ugyanazok a szolgáltatások vannak telepítve, és mindkét a fő csomópont elindult és azok egymással versengő megtörténhet. Emellett vegye figyelembe, hogy történik adatvesztés rendszerképének alaphelyzetbe állítása, így parancsfájlművelet-n keresztül telepített szoftvereket is ellenáll az ilyen események. Alkalmazások kell kialakítani, hogy a munka sok csomóponton oszlik, magas rendelkezésre állású adatokkal. Akár 1/5, a fürt csomópontjai is lehet rendszerképét alaphelyzetbe állítják egyszerre.
+* Az Azure Blob storage használata az egyéni összetevők konfigurálása
 
-    Az egyéni összetevők, amelyek telepítése a fürtcsomópontokon előfordulhat, hogy rendelkezik a Hadoop elosztott fájlrendszerrel (HDFS) tárolót használjanak alapértelmezett konfigurációval. Módosítania kell a konfigurációt használja helyette az Azure Blob Storage tárolóban. A fürt lemezkép alaphelyzetbe a HDFS fájlrendszer formázott lekérdezi és elveszítik az ott tárolt adatokat. Azure Blob storage használatával helyette biztosítja, hogy az adatok őrződnek meg.
+    Az egyéni összetevők, a fürtcsomópontokon telepített alapértelmezett konfigurációja a Hadoop elosztott fájlrendszer (HDFS) storage használata lehet. Módosítania kell a konfigurációt, használja helyette az Azure Blob storage. Egy fürt rendszerképeit alaphelyzetbe állítani a HDFS-fájlrendszer lekérdezi formázva, és Ön elveszítik az ott tárolt adatokat. Az Azure Blob storage inkább biztosítja, hogy az adatok őrződnek meg.
 
 ## <a name="common-usage-patterns"></a>Gyakori használati minták
-Ez a szakasz néhány gyakori használati mintái, amelyek a saját egyéni parancsfájl írásakor mutatjuk be végrehajtási nyújt útmutatást.
+Ez a szakasz útmutatást nyújt az megvalósítása a használt használati mintáit, amelyek a saját egyéni parancsfájlok írása közben mutatjuk be.
 
 ### <a name="configure-environment-variables"></a>Környezeti változók konfigurálása
-Gyakran a parancsfájl művelet fejlesztési, úgy érzi, hogy a környezeti változók megadása szükséges. Például legvalószínűbb forgatókönyv esetén bináris egy külső webhelyről töltheti le, telepítse azt a fürt, és adja hozzá a "PATH" környezeti változó a telepítés helyét. Az alábbi kódrészletben bemutatja, hogyan környezeti változókat beállítani az egyéni parancsprogramok futtatására.
+Gyakran a parancsfájlművelet-alapú fejlesztés, úgy gondolja, hogy szükséges környezeti változókat. Például egy legvalószínűbb forgatókönyv akkor, ha egy külső helyről töltse le a bináris, telepítse azt a fürt és a hely, amelyre telepítve van, a "PATH" környezeti változó hozzáadása. Az alábbi kódrészlet bemutatja, hogyan állítsa be a környezeti változókat az egyéni szkript.
 
     Write-HDILog "Starting environment variable setting at: $(Get-Date)";
     [Environment]::SetEnvironmentVariable('MDS_RUNNER_CUSTOM_CLUSTER', 'true', 'Machine');
 
-A jelen nyilatkozat beállítja a környezeti változó **MDS_RUNNER_CUSTOM_CLUSTER** értékre a "true", továbbá beállítja ezt a változót kell gépre kiterjedő hatóköre. Fontos, hogy a környezeti változók a megfelelő hatókörben – számítógép vagy felhasználó van beállítva. Tekintse meg a [Itt] [ 1] környezeti változók beállításával kapcsolatos további információt.
+Ez az utasítás on értékűre állítja a környezeti változó **MDS_RUNNER_CUSTOM_CLUSTER** értéke "true", továbbá csoportok ezt a változót kell gépre kiterjedő hatókörét. Fontos, hogy a környezeti változók vannak beállítva a megfelelő hatókörben – számítógép vagy felhasználó. Tekintse meg [Itt] [ 1] környezeti változók beállításával kapcsolatos további információt.
 
-### <a name="access-to-locations-where-the-custom-scripts-are-stored"></a>Hozzáférés az egyéni parancsfájlok tároló helyekhez
-A fürt testreszabásához használt parancsfájlok kell bármelyik kell az alapértelmezett tárfiókot, a fürt vagy egy nyilvános csak olvasható tároló bármely más tárfiók. Ha a parancsfájl máshol található erőforrásokhoz fér hozzá az erőforrásokat nyilvánosan olvashatónak kell lennie. Például előfordulhat, hogy szeretne hozzáférni egy fájlhoz, és mentse a SaveFile-HDI-paranccsal.
+### <a name="access-to-locations-where-the-custom-scripts-are-stored"></a>Az egyéni parancsprogramok tárolására helyeken való hozzáférés
+Egy fürt testreszabására szolgáló parancsfájlokat kell egyaránt lehet az alapértelmezett tárfiókot, a fürt vagy egy nyilvános olvasási tárolóban, a többi storage-fiók. Ha a parancsfájl máshol található erőforrásokhoz fér hozzá az erőforrásokat kell nyilvánosan is olvasható. Például előfordulhat, hogy szeretné elérni egy fájlt, és mentse a SaveFile-HDI-parancs segítségével.
 
     Save-HDIFile -SrcUri 'https://somestorageaccount.blob.core.windows.net/somecontainer/some-file.jar' -DestFile 'C:\apps\dist\hadoop-2.4.0.2.1.9.0-2196\share\hadoop\mapreduce\some-file.jar'
 
-Ebben a példában, győződjön meg arról, hogy a tároló `somecontainer` tárfiókban `somestorageaccount` nyilvánosan elérhető. Ellenkező esetben a parancsfájl "Nem található" kivételt okoz, és sikertelen lesz.
+Ebben a példában győződjön meg arról, hogy a tároló `somecontainer` tárfiókban `somestorageaccount` nyilvánosan elérhető-e. Ellenkező esetben a parancsfájl egy "Nem található" kivételt jelez, és sikertelen lesz.
 
-### <a name="pass-parameters-to-the-add-azurermhdinsightscriptaction-cmdlet"></a>Az Add-AzureRmHDInsightScriptAction parancsmagnak paraméterekkel
-Az Add-AzureRmHDInsightScriptAction parancsmag több paraméterekkel, magában foglalja a parancsfájl az összes paraméter értékeként karakterlánc formázni kell. Példa:
+### <a name="pass-parameters-to-the-add-azurermhdinsightscriptaction-cmdlet"></a>Az Add-AzureRmHDInsightScriptAction parancsmag adja át a paramétereket
+Az Add-AzureRmHDInsightScriptAction parancsmag több paraméterek adhatók át, a parancsfájl az összes paramétert tartalmazó karakterlánc értékének kell. Példa:
 
     "-CertifcateUri wasb:///abc.pfx -CertificatePassword 123456 -InstallFolderName MyFolder"
 
@@ -210,8 +210,8 @@ vagy
     $parameters = '-Parameters "{0};{1};{2}"' -f $CertificateName,$certUriWithSasToken,$CertificatePassword
 
 
-### <a name="throw-exception-for-failed-cluster-deployment"></a>Sikertelen fürttelepítés kivétel throw
-Ha pontosan értesítés szeretné, hogy a fürt testreszabási sikertelen volt a vártnak, fontos, hogy kivételt jelez, és a fürt létrehozása sikertelen. Például előfordulhat, hogy szeretne feldolgozni egy fájlt, ha létezik, és kezelni a hiba eset, ha a fájl nem létezik. Ez biztosítja, hogy a parancsfájl szabályosan kilép, és a fürt állapota megfelelően van azonosítva. A következő példa bemutatja, hogyan ennek érdekében a következő kódrészletet:
+### <a name="throw-exception-for-failed-cluster-deployment"></a>Kivétel esetén a meghibásodott fürt throw
+Ha azt szeretné pontosan értesülni szeretne a tény, hogy a fürt testreszabása nem sikerült megfelelően működik, fontos, hogy kivételt, és a fürt létrehozása sikertelen. Például előfordulhat, hogy szeretné feldolgozni egy fájlt, ha létezik, és kezelni a hibaesetét, ahol a fájl nem létezik. Ez biztosítja, hogy a parancsfájl szabályosan kilép, és a fürt állapota megfelelően ismert. Az alábbi kódrészlet egy példán, hogyan lehet ezt elérni:
 
     If(Test-Path($SomePath)) {
         #Process file in some way
@@ -221,7 +221,7 @@ Ha pontosan értesítés szeretné, hogy a fürt testreszabási sikertelen volt 
     exit
     }
 
-Ezt a kódrészletet a Ha a fájl nem létezett, vezet, olyan állapotban, ahol a parancsfájl ténylegesen kilép szabályosan a hibaüzenet a következő nyomtatás után, és a fürt eléri futó állapotban, feltéve, hogy a "sikeres" fürt szabásának fejeződött be. Pontosan értesíti arról, hogy a fürt lényegében testreszabási Ha nem sikerült egy hiányzó fájlok miatt várt módon, hogy jobban megfelelő kivételt jelez, és a fürt testreszabási lépés sikertelen lesz. Ennek eléréséhez kell használnia a következő minta kódrészletet.
+Ebben a kódrészletben Ha a fájl nem létezik, vezet, egy állapot, ahol a parancsfájl valóban kilép szabályosan a hibaüzenet nyomtatás után, és a fürt eléri a futó állapotba kerül, feltéve, hogy a "sikeres" fürt személyre szabásának fejeződött be. Ha azt szeretné, pontosan értesítést kapjon arról, hogy a fürt testreszabása lényegében nem sikerült egy hiányzó fájlok miatt a várt módon, hogy jobban megfelelő kivételt, és a fürt testreszabása lépés sikertelen lesz. Ennek érdekében inkább a következő minta kódrészletet kell használnia.
 
     If(Test-Path($SomePath)) {
         #Process file in some way
@@ -232,29 +232,29 @@ Ezt a kódrészletet a Ha a fájl nem létezett, vezet, olyan állapotban, ahol 
     }
 
 
-## <a name="checklist-for-deploying-a-script-action"></a>Ellenőrzőlista a üzembe helyezéséhez egy parancsfájlművelet
-Azt a parancsfájlok telepítendő előkészítésekor tartott lépései a következők:
+## <a name="checklist-for-deploying-a-script-action"></a>Ellenőrzőlista a központi telepítése egy parancsprogram-művelet
+Ezek a szkriptek üzembe helyezéséhez előkészítésekor meggyőződtünk lépései a következők:
 
-1. Helyezze el az egyéni parancsfájlok, amely elérhető a fürt csomópontjai a telepítés során helyen tartalmazó fájlokat. Ez az alapértelmezett vagy a fürtöt tartalmazó környezetben, vagy bármely más nyilvánosan elérhető tároló időpontjában megadott további tárfiókok lehet.
-2. Győződjön meg arról, hogy azok végrehajtási idempotently, így a parancsfájl hajtható végre több alkalommal ugyanazon a csomóponton parancsfájlok ellenőrzést hozzáadása.
-3. Használja a `Write-Output` Azure PowerShell-parancsmag segítségével STDOUT, valamint az STDERR dokumentumokat nyomtassanak azokon. Ne használjon `Write-Host`.
-4. Használjon például egy ideiglenes mappába `$env:TEMP`, hogy a parancsfájlok által használt a letöltött fájlt, majd eltávolítással parancsfájlok rendelkezik végrehajtása után.
-5. Csak a D:\ vagy C:\apps egyéni szoftver telepítése. A C: meghajtón más helyeken nem használható, azok le foglalva. A C: meghajtón a C:\apps mappán kívüli fájlok telepítése azt eredményezheti, a telepítő hibákat reimages a csomópont alatt.
-6. Abban az esetben, ha az operációs rendszer szintű beállításokat vagy Hadoop szolgáltatás konfigurációs fájlok módosultak, érdemes lehet indítsa újra a HDInsight-szolgáltatásokat, így kiválaszthatja a bármely az operációs rendszer szintű beállításokat, például a parancsfájlokban beállított környezeti változókat.
+1. Helyezze el az olyan helyen, amely elérhető a fürt csomópontok üzembe helyezése során az egyéni parancsfájlok tartalmazó fájlokat. Ez az alapértelmezett vagy a további tárfiókok megadott időpontjában fürttelepítés, vagy bármely más nyilvánosan elérhető-e a tároló lehet.
+2. Adjon hozzá ellenőrzéseket, parancsfájlok, győződjön meg arról, hogy azok idempotently, hajtsa végre, hogy a parancsfájl hajtható végre több alkalommal ugyanazon a csomóponton.
+3. Használja a `Write-Output` STDOUT, valamint az STDERR nyomtatni az Azure PowerShell-parancsmagot. Ne használjon `Write-Host`.
+4. Használjon egy ideiglenes mappába, például `$env:TEMP`, hogy tartsa meg a letöltött fájlt a parancsfájlok által használt, majd eltávolítással parancsfájlok rendelkezik végrehajtása után.
+5. Csak a D:\ vagy C:\apps, egyéni szoftverek telepítését. A C: meghajtón található más helyekről kell nem használható, mivel azok le foglalva. Kívül esik a C:\apps mappát a C: meghajtón lévő fájlok telepítése eredményezhet a fürtbeállítási hibákhoz különbséglemezt a csomópont alatt.
+6. Abban az esetben, ha az operációs rendszer szintű beállításokat vagy a Hadoop szolgáltatás konfigurációs fájlok megváltoztak, érdemes lehet, hogy indítsa újra a HDInsight szolgáltatásokat, így azok minden olyan operációsrendszer-szintű beállítások, például a környezeti változók beállítása a szkriptekben bejelentkeztél.
 
 ## <a name="debug-custom-scripts"></a>Egyéni parancsfájlok hibakeresése
-A parancsfájl hibanaplókat más kimeneti az alapértelmezett tárfiókot, ahol létrehozták a fürthöz megadott együtt tárolják. A naplók tárolódnak a nevű tábla *u < \cluster-name-fragment >< \time-stamp > setuplog*. Ezek a rekordok, az összes, amelyen a parancsprogram lefut a fürtben lévő csomópontok (átjárócsomópont és feldolgozó csomópontokat) összesített naplók.
+A parancsfájl hibanaplóit tárolódnak, az alapértelmezett tárfiókot, a fürt a létrehozáskor megadott más kimeneti együtt. A naplók vannak tárolva egy tábla nevét *u < \cluster-name-fragment >< \time-stamp > setuplog*. Ezek a rekordok az összes, amelyen a parancsfájl a fürtben futó csomópontok (fő csomópontot és munkavégző csomópontok) rendelkező összesített naplókat.
 
-Ellenőrizze a naplókat, egyszerűen a HDInsight Tools for Visual Studio használandó. Az eszközök telepítése, lásd: [első lépések a Visual Studio Hadoop tools for HDInsight használatával](hadoop/apache-hadoop-visual-studio-tools-get-started.md#install-or-update-data-lake-tools-for-visual-studio)
+Egyszerűen tekintse meg a naplókat, hogy HDInsight Tools for Visual Studio használata. Az eszközök telepítése, lásd: [Visual Studio Hadoop tools for HDInsight használatának első lépései](hadoop/apache-hadoop-visual-studio-tools-get-started.md#install-or-update-data-lake-tools-for-visual-studio)
 
-**A részletek a naplóban a Visual Studio használatával**
+**A Visual Studio használatával a naplóban**
 
 1. Nyissa meg a Visual Studiót.
 2. Kattintson a **nézet**, és kattintson a **Server Explorer**.
-3. Kattintson a jobb gombbal az "Azure", kattintson a Csatlakozás gombra **Microsoft Azure-előfizetések**, és írja be a hitelesítő adatait.
-4. Bontsa ki a **tárolási**, bontsa ki a rendszer az alapértelmezett fájlrendszert használja az Azure storage-fiók, **táblák**, majd kattintson duplán a tábla neve.
+3. Kattintson a jobb gombbal az "Azure", kattintson a csatlakozás **a Microsoft Azure-előfizetések**, majd adja meg a hitelesítő adatait.
+4. Bontsa ki a **tárolási**, bontsa ki az Azure storage-fiókot használja az alapértelmezett fájlrendszerként, **táblák**, majd kattintson duplán a tábla neve.
 
-Akkor is távoli az STDOUT és az STDERR megjelenítéséhez egyéni parancsfájlok a fürt csomópontjai. A naplók minden egyes csomóponton csak ahhoz a csomóponthoz, és be vannak jelentkezve **C:\HDInsightLogs\DeploymentAgent.log**. Ezekben a naplófájlokban rögzíti az egyéni parancsfájl az összes kimenetének. A külső parancsfájl művelet egy példa napló részlet így néz ki:
+Akkor is távolról is megtekintheti az STDOUT és az STDERR egyéni szkriptek a fürt csomópontjai. A naplók minden egyes csomóponton csak ahhoz a csomóponthoz, és be vannak jelentkezve **C:\HDInsightLogs\DeploymentAgent.log**. Ezek a naplófájlok az egyéni szkriptet minden kimenő adatait rögzíti. Egy példa log kódrészlet egy Spark-szkript művelet így néz ki:
 
     Microsoft.Hadoop.Deployment.Engine.CustomPowershellScriptCommand; Details : BEGIN: Invoking powershell script https://configactions.blob.core.windows.net/sparkconfigactions/spark-installer.ps1.;
     Version : 2.1.0.0;
@@ -294,15 +294,15 @@ Akkor is távoli az STDOUT és az STDERR megjelenítéséhez egyéni parancsfáj
     Exception : ;
 
 
-Ez a napló az egyszerű, hogy a külső parancsfájl művelet lett végrehajtva a HEADNODE0 nevű virtuális Gépre, és, hogy a kivételek fordultak elő a végrehajtás során is.
+Ez a napló nincs bejelölve, hogy a Spark-szkript művelet lett végrehajtva a HEADNODE0 nevű virtuális gépre, és hogy nem tartalmaznak kivételeket a végrehajtás során fordultak elő.
 
-Abban az esetben, ha végrehajtási hiba történik, a kimeneti leíró azt is ez a naplófájl tartalmazza. Ezek a naplók található információk is segíthetnek megoldani az esetleg felmerülő problémákat parancsfájl.
+Abban az esetben, ha végrehajtási hiba történik, az azt leíró kimeneti is ez a naplófájl tartalmazza. Ezek a naplók a információk hasznosak, ha esetleg felmerülő problémákat parancsprogram-hibakeresés kell lennie.
 
 ## <a name="see-also"></a>Lásd még
-* [Parancsfájlművelet HDInsight-fürtök testreszabása][hdinsight-cluster-customize]
-* [Telepítse, és válassza a Spark on HDInsight-fürtök][hdinsight-install-spark]
-* [Telepítheti és használhatja a HDInsight-fürtök Solr](hdinsight-hadoop-solr-install.md).
-* [Telepítheti és használhatja a HDInsight-fürtök Giraph](hdinsight-hadoop-giraph-install.md).
+* [Szkriptműveletek használatával HDInsight-fürtök testre szabása][hdinsight-cluster-customize]
+* [Spark telepítése és használata HDInsight-fürtökön][hdinsight-install-spark]
+* [Soir telepítése és használata HDInsight-fürtökön](hdinsight-hadoop-solr-install.md).
+* [Giraph telepítése és használata HDInsight-fürtökön](hdinsight-hadoop-giraph-install.md).
 
 [hdinsight-provision]: hdinsight-provision-clusters.md
 [hdinsight-cluster-customize]: hdinsight-hadoop-customize-cluster.md

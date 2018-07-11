@@ -9,12 +9,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 06/08/2018
 ms.author: v-geberr;
-ms.openlocfilehash: c1d797e3dd3a0926cfce8fee323aaaa1a866a169
-ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
+ms.openlocfilehash: 6c4e4c7acb5083e758aa7c6b94e2464a85ae8e9e
+ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37436926"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37951113"
 ---
 # <a name="best-practices"></a>Ajánlott eljárások
 Az alkalmazások használatával hozhat létre a LUIS-alkalmazás. 
@@ -77,7 +77,7 @@ Ezek az eljárások nem érvényesek, mielőtt az alkalmazás kapott végpont k�
 Ez a tartalék a szándékkal, jelzett mindent az alkalmazáson kívül. Egy példa utterance (kifejezés) hozzáadása a nincs szándék, a többi része a LUIS-alkalmazás minden 10 példa kimondott szöveg.
 
 ## <a name="do-leverage-the-suggest-feature-for-active-learning"></a>Kihasználhatja a javaslat funkciót aktív tanulás
-Használat [aktív tanulás](label-suggested-utterances.md)a **tekintse át a végpont utterances** rendszeres időközönként, szándék további példa beszédmódok hozzáadása helyett. Az alkalmazás végponti utterances folyamatosan fogad, mivel a lista egyre növekvő és módosítása.
+Használat [aktív tanulás](luis-how-to-review-endoint-utt.md)a **tekintse át a végpont utterances** rendszeres időközönként, szándék további példa beszédmódok hozzáadása helyett. Az alkalmazás végponti utterances folyamatosan fogad, mivel a lista egyre növekvő és módosítása.
 
 ## <a name="do-monitor-the-performance-of-your-app"></a>Az alkalmazás teljesítményének figyelése
 Az előrejelzési pontosság teszt használatával figyelheti. 

@@ -8,15 +8,20 @@ ms.topic: conceptual
 ms.date: 3/26/2018
 ms.author: johnkem
 ms.component: ''
-ms.openlocfilehash: a69cefc3c9363c0e8378a90c44d6a466780402b1
-ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
+ms.openlocfilehash: 18a2aa289c89f98e6d20ddcdbd1217785fc163d1
+ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37434487"
+ms.lasthandoff: 07/09/2018
+ms.locfileid: "37918412"
 ---
 # <a name="automatically-enable-diagnostic-settings-at-resource-creation-using-a-resource-manager-template"></a>Automatikusan az diagnosztikai beállítások engedélyezése Resource Manager-sablonnal erőforrás létrehozásakor
 Ebben a cikkben bemutatjuk, hogyan használhatja egy [Azure Resource Manager-sablon](../azure-resource-manager/resource-group-authoring-templates.md) diagnosztikai beállításainak konfigurálása az erőforrás létrehozásakor. Ez lehetővé teszi, hogy automatikusan elindul, a diagnosztikai naplók és mérőszámok az Event Hubs archiválási őket a Storage-fiókban, vagy elküldheti a Log Analytics szolgáltatásba, amikor egy erőforrást hoznak létre streamelési.
+
+> [!WARNING]
+> A formátum a naplóadatok a tárfiókban lévő JSON-sorok 2018. november 1-től változik. [Tekintse meg a jelen cikk egy leírást a hatás és az eszközök kezeléséhez az új formátum frissítése.](./monitor-diagnostic-logs-append-blobs.md) 
+>
+> 
 
 A metódus a Resource Manager-sablonnal diagnosztikai naplóinak engedélyezéséről az erőforrás típusától függ.
 

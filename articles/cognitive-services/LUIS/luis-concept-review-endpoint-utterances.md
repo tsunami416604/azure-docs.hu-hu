@@ -9,18 +9,18 @@ ms.technology: luis
 ms.topic: article
 ms.date: 06/08/2018
 ms.author: v-geberr;
-ms.openlocfilehash: e416eec29ff9f4ac96eabf11c87424abeba0c75b
-ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
+ms.openlocfilehash: 4144db7474f20f464d14722431d5d4a2546a8c5a
+ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37855717"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37949849"
 ---
 # <a name="enable-active-learning-by-reviewing-endpoint-utterances"></a>Aktív tanulás engedélyezése endpoint utterances áttekintésével
 Aktív tanulás az előrejelzési pontosság és a legegyszerűbb megvalósításához három stratégia egyik. 
 
 ## <a name="what-is-active-learning"></a>Mi az aktív tanulás
-Aktív tanulás két lépésből áll. Először LUIS választ kap az alkalmazás végponti érvényesítési igénylő kimondott szöveg. A második lépést az alkalmazás tulajdonos vagy közreműködő, érvényesíteni a kiválasztott megcímkézzen [tekintse át](label-suggested-utterances.md), beleértve a megfelelő cél és minden olyan entitások a célt. A kimondott szöveg áttekintése, után betanítása, és tegye közzé újra az alkalmazást. 
+Aktív tanulás két lépésből áll. Először LUIS választ kap az alkalmazás végponti érvényesítési igénylő kimondott szöveg. A második lépést az alkalmazás tulajdonos vagy közreműködő, érvényesíteni a kiválasztott megcímkézzen [tekintse át](luis-how-to-review-endoint-utt.md), beleértve a megfelelő cél és minden olyan entitások a célt. A kimondott szöveg áttekintése, után betanítása, és tegye közzé újra az alkalmazást. 
 
 ## <a name="which-utterances-are-on-the-review-list"></a>A felülvizsgálati listán vannak melyik kimondott szöveg
 A LUIS ad hozzá a kimondott szöveg felülvizsgálati szándékot kiváltó felső alacsony pontszámmal rendelkezik, vagy a felső két szándék pontszámok túl kicsi. 
@@ -39,4 +39,4 @@ Ha az alkalmazás túl nagy, előfordulhat, hogy tekintse át az egyes kimondott
 
 ## <a name="next-steps"></a>További lépések
 
-* Ismerje meg, hogyan [tekintse át](Label-Suggested-Utterances.md) végpont kimondott szöveg
+* Ismerje meg, hogyan [tekintse át](luis-how-to-review-endoint-utt.md) végpont kimondott szöveg

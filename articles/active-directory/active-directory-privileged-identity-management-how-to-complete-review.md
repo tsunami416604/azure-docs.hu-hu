@@ -13,12 +13,12 @@ ms.component: protection
 ms.date: 06/06/2017
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: a3de94aa11b9326a9eadfb3385db83724f427ff2
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: fc6376a7bf1abd81e7a5ff17549a7b4a193edec4
+ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37447234"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37950580"
 ---
 # <a name="how-to-complete-an-access-review-in-azure-ad-privileged-identity-management"></a>Az Azure AD Privileged Identity Management hozzáférési felülvizsgálat befejezése
 A kiemelt szerepkörű rendszergazdák után tekintse át a privileged access egy [biztonsági felülvizsgálat megkezdése](active-directory-privileged-identity-management-how-to-start-security-review.md). Az Azure AD Privileged Identity Management (PIM) automatikusan arra kéri a felhasználót, tekintse át a hozzáférése az e-mailt küld. Ha a felhasználó nem kapott e-mailt, küldhet nekik az utasításokat [biztonsági felülvizsgálat végrehajtása](active-directory-privileged-identity-management-how-to-perform-security-review.md).
@@ -32,7 +32,7 @@ Miután biztonsági viszonyt keresztül, vagy minden felhasználó befejezte a s
 
 A hozzáférési felülvizsgálat részletei panelen módon egy szám felülvizsgálat kezeléséhez.
 
-![PIM hozzáférési felülvizsgálati gombok – képernyőkép][1]
+![PIM hozzáférési felülvizsgálati gombok – képernyőkép](./media/active-directory-privileged-identity-management-how-to-complete-review/PIM_review_buttons.png)
 
 ### <a name="remind"></a>Emlékeztetés
 Ha a hozzáférési felülvizsgálat be van állítva, így a felhasználók maguk, tekintse át a **emlékeztetése** gomb értesítést küld. 
@@ -54,7 +54,3 @@ Ha nem érdekli a felülvizsgálat minden további, törölje azt. A **törlése
 
 ## <a name="next-steps"></a>További lépések
 [!INCLUDE [active-directory-privileged-identity-management-toc](../../includes/active-directory-privileged-identity-management-toc.md)]
-
-<!--Image references-->
-
-[1]: ./media/active-directory-privileged-identity-management-how-to-complete-review/PIM_review_buttons.png

@@ -10,17 +10,17 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 06/20/2018
 ms.author: v-geberr
-ms.openlocfilehash: fe035c744e7cbc291fa392205239f331410412dc
-ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
+ms.openlocfilehash: 45289b712a127e70636e225778d7a36578b34fa5
+ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37866331"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37931628"
 ---
 # <a name="prebuilt-domain-reference"></a>Előre összeállított tartományhivatkozás
 Ez az útmutató információkkal szolgál a [előre összeállított tartományok](luis-how-to-use-prebuilt-domains.md), amely gyűjteményei előre összeállított szándékok és entitások, amelyek a LUIS kínál.
 
-[Egyéni tartományok](create-new-app.md), ezzel szemben az elindításához nincs leképezések és a modellek. Egy egyéni modell bármilyen előre összeállított tartományban szándékok és entitások adhat hozzá.
+[Egyéni tartományok](luis-how-to-start-new-app.md), ezzel szemben az elindításához nincs leképezések és a modellek. Egy egyéni modell bármilyen előre összeállított tartományban szándékok és entitások adhat hozzá.
 
 ## <a name="list-of-prebuilt-domains"></a>Előre összeállított tartományok listája
 A LUIS 20 előre összeállított tartományok kínál. 
@@ -154,7 +154,7 @@ A Szórakozás tartományban szándékok és entitások filmek, zene, játékoka
 | ContentRating | Media tartalom filmekhez például G vagy R minősítése.|Gyerek videó.<br/>PG besorolása.|
 | Műfaj | A műfajt filmet, játékot, alkalmazást vagy dal.|Comedies<br/>Dramas<br/>vicces|
 | Kulcsszó| Adjon meg egy attribútum általános keresési kulcsszó a pontosabb media tárolóhelyben nem létezik.|Zeneszámokat<br/>Hold folyam<br/>Amelia Earhart|
-| Nyelv | Media tartalom filmekhez például G vagy R minősítése.|francia<br/>Angol<br/>koreai|
+| Nyelv | Az adathordozó, például használja a beszélt nyelv filmet vagy a dal használt nyelv.|francia<br/>Angol<br/>koreai|
 | MediaFormat | A további technikai különleges, amelyben az adathordozó van formázva.|HD filmek<br/>3D filmek<br/>Letölthető|
 | MediaSource | A tároló vagy a Marketplace-en az adathordozó beszerzése a.|Netflix<br/>Prime|
 | MediaSubTypes| Adathordozó-típusok kisebb, mint a mozi- és játékokat.|Bemutatók<br/>DLC<br/>Pótkocsik|
@@ -417,7 +417,7 @@ At what time does Safeway close?
 |SelectItem|Válasszon egy elemet egy helyre vagy helyek kapcsolatos választási listájáról.|A második érték kiválasztása<br/>Válassza ki az első|
 |ShowMap|Egy terület térkép megjelenítése.|A második egy térképen megjelenítése<br/>Térkép megjelenítése<br/>Keresse meg a San Franciscóban a térképen|
 |ShowNext|A következő elem megjelenítése egy sorozatban.|Következő megjelenítése<br/>a következő oldalra lépéshez|
-|ShowPrevious|Sorozat megjelenítése az előző elemmel.|egy korábbi megjelenítése<br/>előző<br/>Nyissa meg az előző|
+|ShowPrevious|Sorozat megjelenítése az előző elemmel.|egy korábbi megjelenítése<br/>vissza<br/>Nyissa meg az előző|
 |StartOver|Indítsa újra az alkalmazást, vagy új munkamenet indításához.|Újrakezdés<br/>Új munkamenet<br/>
 restart|
 |TakesReservations|Kérje meg, hogy helyet fogad-e a foglalások.|Nem a tárban foglalások elfogadása<br/>Az lehetséges, ha szeretné tenni egy foglalást a olívaolaj kertben
@@ -546,7 +546,7 @@ Translate this sentence to English
 ### <a name="entities"></a>Entitások
 | Entitás neve | Leírás | Példák |
 | ---------------- |-----------------------|----|
-| TargetLanguage | Egy fordítási Célnyelv.|Francia<br/>Német<br/>koreai|
+| TargetLanguage | Egy fordítási Célnyelv.|francia<br/>német<br/>koreai|
 | Szöveg | A fordítandó szöveg.|Hello World<br/>jó reggelt<br/>jó estét|
 
 ## <a name="tv"></a>TV 
@@ -588,7 +588,7 @@ Repeat last question please
 | Mégse | Művelet törlése.|Az üzenet törlése<br/>Nem szeretnék többé elküldeni az e-mailben|
 | Megerősítés | Erősítse meg a műveletet.|Igen hoppá megerősítem, hogy<br/>Jól tudom vagyok megerősítése<br/>Rendben, szeretnék vagyok megerősítése|
 | FinishTask | Fejezze be a felhasználó egy feladatot.|Már nem használom<br/>Végeztem<br/>Művelet befejeződött|
-| GoBack | Lépjen vissza egy lépést, vagy térjen vissza az előző lépésben.|Lépjen vissza a Twitteren<br/>Lépjen vissza az adott lépés<br/>Visszalépés|
+| GoBack | Lépjen vissza egy lépést, vagy térjen vissza az előző lépésben.|Lépjen vissza a Twitteren<br/>Lépjen vissza az adott lépés<br/>Vissza|
 | Súgó | Kérelem segítséget.|Kérjük, segítsen<br/>Súgó megnyitása<br/>help|
 | Ismétlés | Ismételje meg a műveletet.|Ismételje meg az utolsó kérdés.<br/>Ismételje meg a legutóbbi dal|
 | ShowNext | A következő elem megjelenítése egy sorozatban. |Következő megjelenítése<br/>a következő oldalra lépéshez|

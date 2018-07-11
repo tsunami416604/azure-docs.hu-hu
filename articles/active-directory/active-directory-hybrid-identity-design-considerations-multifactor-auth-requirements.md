@@ -1,9 +1,9 @@
 ---
-title: Hibrid identitás Tervező - Azure multi-factor authentication követelményeinek |} Microsoft Docs
-description: Feltételes hozzáférés-vezérlést az Azure Active Directory ellenőrzi a megadott feltételek, ha a felhasználó hitelesítése és az alkalmazáshoz való hozzáférés előtt válasszon. Ha ezek a feltételek teljesülnek, a felhasználó hitelesítése és hozzáférni az alkalmazáshoz engedélyezett.
+title: Hibrid identitás Tervező – az Azure multi-factor authentication követelményeinek |} A Microsoft Docs
+description: A feltételes hozzáférés-vezérléssel Azure Active Directory ellenőrzi a meghatározott feltételek, válassza ki, amikor a felhasználó hitelesítése és engedélyezése az alkalmazáshoz való hozzáférés előtt. Ha ezek a feltételek teljesülnek, a felhasználó hitelesítése és hozzáférhessen az alkalmazáshoz.
 documentationcenter: ''
 services: active-directory
-author: femila
+author: billmath
 manager: billmath
 editor: ''
 ms.assetid: 9c59fda9-47d0-4c7e-b3e7-3575c29beabe
@@ -16,51 +16,51 @@ ms.date: 07/18/2017
 ms.component: hybrid
 ms.author: billmath
 ms.custom: seohack1
-ms.openlocfilehash: fe5ac8386394bf659de8d9905827359900f08d93
-ms.sourcegitcommit: b7290b2cede85db346bb88fe3a5b3b316620808d
+ms.openlocfilehash: 0c4d3edabbef6fe5626ce85c753cc7775ff2f1b9
+ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34801034"
+ms.lasthandoff: 07/09/2018
+ms.locfileid: "37915401"
 ---
-# <a name="determine-multi-factor-authentication-requirements-for-your-hybrid-identity-solution"></a>A hibrid identitáskezelési megoldás a többtényezős hitelesítési követelmények meghatározása
-A világ mobilitási, a felhasználói adatokat és alkalmazásokat a felhőben, és egy eszközről ezek az információk védelme vált kiemelkedő.  Minden nap van egy új főcím kapcsolatos biztonsági problémák.  Bár, nem garantálja az ilyen problémák elleni, a többtényezős hitelesítést, ezek a problémák megelőzése érdekében biztonsági további réteget biztosít.
-Indítsa el a multi-factor authentication a szervezetek szükséges követelmények értékelésekor. Ez azt jelenti, hogy mi a szervezet próbál biztonságos.  Ez a kiértékelés fontos, hogy a és a szervezetek felhasználók a multi-factor authentication lehetővé teszi a műszaki követelményeinek meghatározása.
+# <a name="determine-multi-factor-authentication-requirements-for-your-hybrid-identity-solution"></a>A hibrid identitáskezelési megoldás a multi-factor authentication követelményeinek meghatározása
+A világon a mobilitás, a felhasználói adatokat és alkalmazásokat a felhőben, és bármilyen eszközről Ez az információ biztonságossá tétele vált a kiemelkedő.  Minden nap van egy új főcíme kapcsolatos biztonsági incidensek.  Bár a nincs garancia arra, ilyen adatszivárgás elleni, a többtényezős hitelesítés, ezeket az adatszivárgás megakadályozása érdekében biztonsági réteget biztosít.
+Indítsa el a multi-factor authentication a szervezet követelményeinek kiértékelése. Azt jelenti mi van a szervezet szeretne biztonságossá tenni.  Ezt a próbaidőszakot fontos, hogy beállításához és a szervezetek felhasználók a multi-factor authentication lehetővé teszi a technikai követelmények meghatározása.
 
 > [!NOTE]
-> Ha nem ismeri a többtényezős hitelesítés és a hatása, erősen ajánlott, hogy olvassa el a cikk [Mi az Azure multi-factor Authentication?](authentication/multi-factor-authentication.md) előzetes folytatja a fejezet elolvasása.
+> Ha nem ismeri a többtényezős hitelesítés és a művelet, erősen ajánlott a cikk [Mi az Azure multi-factor Authentication?](authentication/multi-factor-authentication.md) folytatja a fejezet elolvasása előtt.
 > 
 > 
 
-Győződjön meg arról, hogy válaszoljon a következő:
+Ügyeljen arra, hogy válaszoljon a következő:
 
-* A vállalat próbál Microsoft-alkalmazások védelmét? 
+* A vállalat próbál biztonságossá tétele a Microsoft-alkalmazások? 
 * Hogyan közzétett ezeket az alkalmazásokat?
-* A vállalat biztosítja a távoli hozzáférés úgy, hogy az alkalmazottak a helyszíni alkalmazások elérésére?
+* A vállalat nyújt a munkatársak számára a helyszíni alkalmazások elérését engedélyezi a távoli hozzáférést?
 
-Ha igen, milyen típusú távelérési? Is fel kell mérnie, amelyben a felhasználók ezeket az alkalmazásokat elérő található. Ez a kiértékelés egy másik fontos eleme a megfelelő a multi-factor authentication-stratégia meghatározása. Győződjön meg arról, hogy válaszoljon a következő kérdésekre:
+Ha igen, milyen típusú távoli hozzáférést? Is kell kiértékelése, ahová a felhasználók ezeket az alkalmazásokat elérő kerülnek. Ezt a próbaidőszakot egy másik fontos lépés a megfelelő többtényezős hitelesítés stratégia meghatározása. Ügyeljen arra, hogy válaszoljon a következő kérdésekre:
 
-* Ha a felhasználók fog található?
-* Ezek lehetnek bárhol?
-* Nem a vállalat kíván létesíteni korlátozások a felhasználó földrajzi helye alapján?
+* Hol vannak a felhasználók fog található?
+* Ezek bárhol lehetnek?
+* Nem a vállalat szeretne létesíteni a korlátozásokat a felhasználó helye szerint?
 
-Ezek a követelmények elsajátítása után fontos is a többtényezős hitelesítést a felhasználói követelmények kiértékeléséhez. Ez a kiértékelés fontos, mert azt határozza meg a multi-factor Authentication hitelesítés terítésével követelményei. Győződjön meg arról, hogy válaszoljon a következő kérdésekre:
+Miután megértette ezeknek a követelményeknek, fontos is értékelheti ki a felhasználói követelmények a multi-factor Authentication hitelesítéshez. Ezt a próbaidőszakot fontos, mert azt határozza meg a multi-factor authentication szolgáltatás bevezetéséről követelményei. Ügyeljen arra, hogy válaszoljon a következő kérdésekre:
 
-* A felhasználók a multi-factor authentication tisztában van?
-* Néhány felhasználását lesz szükség a további hitelesítés?  
-  * Ha igen, minden esetben, ha külső hálózatokat vagy férnek hozzá bizonyos alkalmazásokat, vagy más feltételek mellett érkező?
-* A felhasználóinak kell képzési beállítása és valósítja meg a multi-factor authentication?
-* Mik a legfontosabb forgatókönyvek, amely a vállalat lehetővé szeretné tenni a felhasználók a többtényezős hitelesítést?
+* Ismeri a felhasználókat a multi-factor authentication?
+* Néhány felhasználása lesz szükség további hitelesítésre?  
+  * Ha igen, minden esetben, ha külső hálózatokat, vagy konkrét alkalmazások elérésére, vagy más feltételek érkező?
+* Kell-e a felhasználók és beállítása és a multi-factor authentication végrehajtása a betanítási?
+* Mik a főbb forgatókönyvek megvalósítását, amely a vállalat szeretne a multi-factor authentication szolgáltatás engedélyezése a felhasználók számára?
 
-Miután a fenti kérdések megválaszolása, fogja érti, ha nincsenek a helyszíni már megvalósította a multi-factor authentication. Ez a kiértékelés fontos, hogy a és a szervezetek felhasználók a multi-factor authentication lehetővé teszi a műszaki követelményeinek meghatározása. Győződjön meg arról, hogy válaszoljon a következő kérdésekre:
+A fenti kérdések megválaszolását, után lesz megértéséhez, ha nincsenek a helyszíni multi-factor authentication szolgáltatás már implementálva. Ezt a próbaidőszakot fontos, hogy beállításához és a szervezetek felhasználók a multi-factor authentication lehetővé teszi a technikai követelmények meghatározása. Ügyeljen arra, hogy válaszoljon a következő kérdésekre:
 
-* Vállalatának meg kell a multi-factor Authentication szolgáltatás a kiemelt jogosultságú fiókok védelméhez?
-* Vállalatának meg kell ahhoz, hogy az egyes alkalmazás megfelelőségi okokból MFA?
-* Vállalatának meg kell engedélyezéséről az ezen alkalmazás-vagy csak a rendszergazdák az összes jogosult felhasználók számára?
-* Szükség van mindig engedélyezve van az MFA- vagy csak amikor a felhasználók bejelentkeznek a vállalati hálózaton kívül?
+* A vállalatának van szüksége az MFA kiemelt jogosultságú fiókok védelméhez?
+* A vállalatának van szüksége ahhoz, hogy az egyes alkalmazás megfelelőségi okokból MFA?
+* Szüksége van-e alkalmazás-vagy csak a rendszergazdák az összes jogosult felhasználók számára engedélyezi az MFA Használatát a vállalatának?
+* Szükség van MFA mindig engedélyezve van, vagy csak amikor a felhasználók bejelentkeznek a vállalati hálózaton kívül?
 
 ## <a name="next-steps"></a>További lépések
-[A hibrid identitás bevezetési stratégia meghatározása](active-directory-hybrid-identity-design-considerations-identity-adoption-strategy.md)
+[A hibrid identitás bevezetési stratégia kidolgozása](active-directory-hybrid-identity-design-considerations-identity-adoption-strategy.md)
 
 ## <a name="see-also"></a>Lásd még
 [Kialakítási szempontok áttekintése](active-directory-hybrid-identity-design-considerations-overview.md)

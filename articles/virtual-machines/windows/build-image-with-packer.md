@@ -1,9 +1,9 @@
 ---
-title: Windows Azure Virtuálisgép-lemezképek létrehozása a csomagoló |} Microsoft Docs
-description: Csomagoló használata Windows virtuális gépek létrehozását az Azure-ban
+title: Windows Azure Virtuálisgép-rendszerképek létrehozása a Packer |} A Microsoft Docs
+description: Ismerje meg, hogyan Windows virtuálisgép-rendszerképek létrehozása az Azure-ban a Packer használatával
 services: virtual-machines-windows
 documentationcenter: virtual-machines
-author: iainfoulds
+author: cynthn
 manager: jeconnoc
 editor: tysonn
 tags: azure-resource-manager
@@ -13,20 +13,20 @@ ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 03/29/2018
-ms.author: iainfou
-ms.openlocfilehash: b7f07ec8736086483f91746512f10118ee90762d
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.author: cynthn
+ms.openlocfilehash: 5f19a6cb356332e95f96484953f1be3df006dd09
+ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "36333162"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37931922"
 ---
-# <a name="how-to-use-packer-to-create-windows-virtual-machine-images-in-azure"></a>Windows virtuális gép képek létrehozása az Azure-ban a csomagoló segítségével
-Minden virtuális gép (VM) az Azure-ban, amely meghatározza a Windows terjesztési és az operációs rendszer verziója lemezkép jön létre. Lemezképek előre telepített alkalmazások és konfigurációk tartalmazhatnak. Az Azure piactéren sok első és a külső képek biztosít a leggyakrabban használt operációs rendszer, és alkalmazás környezetekben, vagy a saját egyéni lemezképek igényeinek igazított hozhat létre. Ez a cikk részletesen a nyílt forráskódú eszköz [csomagoló](https://www.packer.io/) definiálására és egyéni lemezképeket az Azure-ban.
+# <a name="how-to-use-packer-to-create-windows-virtual-machine-images-in-azure"></a>Windows virtuálisgép-rendszerképek létrehozása az Azure-ban a Packer használatával
+Az Azure-ban minden virtuális gép (VM) jön létre egy rendszerképből, amely meghatározza a Windows-telepítési és az operációs rendszer verzióját. Rendszerképek előre telepített alkalmazások és konfigurációk tartalmazhatnak. Az Azure piactér sok első és a külső képek biztosít az operációs rendszer leggyakrabban használt, és az környezetek, vagy létrehozhat saját igényeire szabott lemezképek. Ez a cikk részletesen bemutatja a nyílt forráskódú eszköz [Packer](https://www.packer.io/) definiálására és egyéni lemezképeket az Azure-ban.
 
 
-## <a name="create-azure-resource-group"></a>Azure erőforráscsoport létrehozása
-A létrehozási folyamat során a csomagoló ideiglenes Azure-erőforrások létrehozza a, a forrás Virtuálisgép-buildekről nyújtanak. A forrás virtuális gép képként rögzíti, meg kell határoznia egy erőforráscsoportot. Ez az erőforráscsoport tárolja a csomagoló felépítési folyamat kimenetét.
+## <a name="create-azure-resource-group"></a>Azure-erőforráscsoport létrehozása
+Az összeállítási folyamat során Packer hozza létre, ideiglenes Azure-erőforrások, a forrás virtuális Gépet épít. Rögzíti a forrásoldali virtuális gép lemezképként való használatra, meg kell határoznia egy erőforráscsoportot. Ez az erőforráscsoport a Packer buildelési folyamat kimenete tárolja.
 
 Hozzon létre egy erőforráscsoportot a [New-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup) paranccsal. A következő példában létrehozunk egy *myResourceGroup* nevű erőforráscsoportot az *EastUS* helyen:
 
@@ -37,9 +37,9 @@ New-AzureRmResourceGroup -Name $rgName -Location $location
 ```
 
 ## <a name="create-azure-credentials"></a>Az Azure hitelesítő adatok létrehozása
-Csomagoló egyszerű szolgáltatás használatával végzi a hitelesítést. Egy Azure szolgáltatás egyszerű egy biztonsági azonosító, amely alkalmazások, szolgáltatások és automatizálási eszközökkel, például a csomagoló használható. Szabályozza, és adja meg az engedélyeket, hogy milyen műveletek a szolgáltatás egyszerű hajthat végre az Azure-ban.
+Csomagolói hitelesíti az Azure-ral egyszerű szolgáltatás használatával. Azure-beli szolgáltatásnév egy biztonsági identitás, az alkalmazások, szolgáltatások és automatizálási eszközökkel, mint például a Packer használható. Szabályozhatja és az egyszerű szolgáltatás az Azure-ban hajthat végre műveleteket helyrendszerszerepkörökre engedélyeinek megadásához.
 
-Az egyszerű szolgáltatás létrehozása [New-AzureRmADServicePrincipal](/powershell/module/azurerm.resources/new-azurermadserviceprincipal) és engedélyeket a szolgáltatás egyszerű létrehozása és erőforrások kezelése [New-AzureRmRoleAssignment](/powershell/module/azurerm.resources/new-azurermroleassignment):
+Az egyszerű szolgáltatás létrehozása [New-AzureRmADServicePrincipal](/powershell/module/azurerm.resources/new-azurermadserviceprincipal) és az egyszerű szolgáltatás létrehozása és-erőforrások kezelése a engedélyeket [New-AzureRmRoleAssignment](/powershell/module/azurerm.resources/new-azurermroleassignment):
 
 ```powershell
 $sp = New-AzureRmADServicePrincipal -DisplayName "AzurePacker" `
@@ -48,7 +48,7 @@ Sleep 20
 New-AzureRmRoleAssignment -RoleDefinitionName Contributor -ServicePrincipalName $sp.ApplicationId
 ```
 
-A hitelesítéshez az Azure-ba is be kell szereznie a Azure bérlői és előfizetés-azonosító a [Get-AzureRmSubscription](/powershell/module/azurerm.profile/get-azurermsubscription):
+Azure-beli hitelesítésre, is kell szerezze be az Azure bérlői és az előfizetés azonosítókat [Get-AzureRmSubscription](/powershell/module/azurerm.profile/get-azurermsubscription):
 
 ```powershell
 $sub = Get-AzureRmSubscription
@@ -56,23 +56,23 @@ $sub.TenantId[0]
 $sub.SubscriptionId[0]
 ```
 
-A két azonosító használja a következő lépésben.
+A következő lépésben használhat két azonosítóit a részletekben.
 
 
-## <a name="define-packer-template"></a>Adja meg a csomagoló sablon
-Lemezképeket, létrehozhat egy sablon JSON-fájlként. A sablon megadása a létrehozói és a tényleges felépítési folyamat végrehajtott provisioners. Csomagoló rendelkezik egy [az Azure-szerkesztő](https://www.packer.io/docs/builders/azure.html) , amely lehetővé teszi, hogy adható meg az Azure-erőforrások, például a szolgáltatás egyszerű létrehozott hitelesítő adatok az előző lépésben.
+## <a name="define-packer-template"></a>Csomagoló sablon meghatározása
+A lemezképeket, hozzon létre egy sablon JSON-fájlként. A sablonban és adjon meg sikerei provisioners, amely a tényleges buildelési folyamat végrehajtására. Csomagolói rendelkezik egy [az Azure jelentéskészítő](https://www.packer.io/docs/builders/azure.html) , amely lehetővé teszi, megadhatja az Azure-erőforrások, például az egyszerű szolgáltatás hitelesítő adatai az előző létrehozott lépést.
 
-Hozzon létre egy fájlt *windows.json* , majd illessze be a következő tartalmat. Adja meg a saját értékeket a következő:
+Hozzon létre egy fájlt *windows.json* , és illessze be az alábbi tartalommal. Adja meg a saját értékeit a következőkhöz:
 
 | Paraméter                           | Beszerzési helyét |
 |-------------------------------------|----------------------------------------------------|
-| *client_id*                         | Nézet szolgáltatás résztvevő-azonosító az `$sp.applicationId` |
+| *client_id*                         | Nézet szolgáltatásnév-Azonosítót a `$sp.applicationId` |
 | *client_secret*                     | A megadott jelszó `$securePassword` |
 | *tenant_id*                         | A kimeneti `$sub.TenantId` parancs |
 | *subscription_id*                   | A kimeneti `$sub.SubscriptionId` parancs |
-| *object_id*                         | A nézet szolgáltatás egyszerű objektum azonosítója: `$sp.Id` |
+| *object_id*                         | Nézet azonosítója a `$sp.Id` |
 | *managed_image_resource_group_name* | Az első lépésben létrehozott erőforráscsoport nevét |
-| *managed_image_name*                | A felügyelt lemezképe létrehozott nevét |
+| *managed_image_name*                | A létrehozott felügyelt lemez lemezkép neve |
 
 ```json
 {
@@ -118,19 +118,19 @@ Hozzon létre egy fájlt *windows.json* , majd illessze be a következő tartalm
 }
 ```
 
-Ez a sablon összeállít egy Windows Server 2016 virtuális Gépet, telepíti az IIS szolgáltatást, majd a virtuális Gépet a Sysprep használatúvá. Az IIS telepítését mutatja, hogyan használhatja a PowerShell webhelykiépítőt további parancsok futtatásához. A végső csomagoló lemezkép ezután tartalmazza a szükséges szoftverek telepítése és konfigurálása.
+Ezzel a sablonnal hoz létre egy Windows Server 2016 virtuális gép, telepíti az IIS szolgáltatást, és általánosítja a virtuális Gépet a Sysprep használatával. Az IIS telepítését mutatja, hogyan használhatja a PowerShell webhelykiépítőt további parancsok futtatásához. A végső Packer lemezkép ezután tartalmazza a szükséges szoftverek telepítése és konfigurálása.
 
 
-## <a name="build-packer-image"></a>Csomagoló lemezkép
-Ha még nincs telepítve a helyi számítógépre csomagoló [csomagoló telepítési utasításokat](https://www.packer.io/docs/install/index.html).
+## <a name="build-packer-image"></a>Csomagolói rendszerkép összeállítása
+Ha még nincs telepítve a helyi gépen Packer [csomagolói telepítési utasításokat](https://www.packer.io/docs/install/index.html).
 
-Megadásával hozhat létre a lemezképet a csomagoló sablonfájl az alábbiak szerint:
+A rendszerkép létrehozásához adja meg a Packer sablonfájl módon:
 
 ```bash
 ./packer build windows.json
 ```
 
-A kimenet a fenti parancsok például a következőképpen történik:
+Egy példa a kimenetre az az előző parancsokban a következőképpen történik:
 
 ```bash
 azure-arm output will be in this color.
@@ -204,11 +204,11 @@ ManagedImageName: myPackerImage
 ManagedImageLocation: eastus
 ```
 
-A virtuális gép létrehozása, a provisioners futtatására, és a központi telepítés tisztítása csomagoló néhány percet vesz igénybe.
+A virtuális gép létrehozása, futtassa a provisioners és a központi telepítés tisztítása Packer néhány percig tart.
 
 
-## <a name="create-a-vm-from-the-packer-image"></a>Hozzon létre egy virtuális Gépet a csomagoló lemezképből
-Mostantól létrehozhat egy virtuális Gépet a lemezkép [New-AzureRmVM](/powershell/module/azurerm.compute/new-azurermvm). A támogató hálózati erőforrások jönnek létre, ha még nem léteznek. Amikor a rendszer kéri, adjon meg egy rendszergazda felhasználónevet és jelszót hozható létre a virtuális Gépen. Az alábbi példakód létrehozza a virtuális gépek nevű *myVM* a *myPackerImage*:
+## <a name="create-a-vm-from-the-packer-image"></a>Virtuális gép létrehozása a Packer rendszerképből
+Most már létrehozhat egy virtuális Gépet a rendszerképből [New-AzureRmVM](/powershell/module/azurerm.compute/new-azurermvm). A támogató hálózati erőforrások jönnek létre, ha azok nem léteznek. Amikor a rendszer kéri, adja meg egy rendszergazdai felhasználónevet és jelszót a virtuális gép hozható létre. A következő példában létrehozunk egy nevű virtuális Gépet *myVM* a *myPackerImage*:
 
 ```powershell
 New-AzureRmVm `
@@ -223,12 +223,12 @@ New-AzureRmVm `
     -Image "myPackerImage"
 ```
 
-Ha létrehozott egy virtuális gépet egy másik erőforráscsoportban található vagy a régió, mint a csomagoló lemezkép, adja meg a lemezkép neve helyett a lemezkép-Azonosítót. Ezt úgy szerezheti be a lemezkép-Azonosítót a [Get-AzureRmImage](/powershell/module/AzureRM.Compute/Get-AzureRmImage).
+Ha szeretne egy másik erőforráscsoportban vagy régióban, mint a Packer lemezkép hozzon létre virtuális gépet, adja meg a rendszerkép neve helyett a lemezkép-azonosító. Szerezheti be a lemezkép-azonosító [Get-AzureRmImage](/powershell/module/AzureRM.Compute/Get-AzureRmImage).
 
-A csomagoló lemezképből a virtuális gép létrehozásához néhány percet vesz igénybe.
+A virtuális gép létrehozása a Packer lemezkép alapján néhány percet vesz igénybe.
 
 
-## <a name="test-vm-and-webserver"></a>Teszt virtuális gép és a webkiszolgáló
+## <a name="test-vm-and-webserver"></a>Virtuális gép és a webkiszolgáló tesztelése
 Kérje le a virtuális gép nyilvános IP-címét a [Get-AzureRmPublicIpAddress](/powershell/module/azurerm.network/get-azurermpublicipaddress) paranccsal. A következő példa a korábban létrehozott *myPublicIP* IP-címét kéri le:
 
 ```powershell
@@ -237,12 +237,12 @@ Get-AzureRmPublicIPAddress `
     -Name "myPublicIPAddress" | select "IpAddress"
 ```
 
-Tekintse meg a virtuális Gépet, az IIS telepítése a csomagoló webhelykiépítőt tartalmaz a művelet, írja be a nyilvános IP-címet a webböngésző.
+A virtuális Gépen, amely tartalmazza az IIS telepítését a Packer webhelykiépítőt a működés közben, hogy adja meg a nyilvános IP-címet egy webböngészőben.
 
 ![Alapértelmezett IIS-webhely](./media/build-image-with-packer/iis.png) 
 
 
 ## <a name="next-steps"></a>További lépések
-Ebben a példában a csomagoló már telepített IIS szolgáltatást egy Virtuálisgép-lemezkép létrehozásához használt. A Virtuálisgép-lemezkép mellett a meglévő központi telepítési munkafolyamatai, például segítségével telepítse az alkalmazást az Team Services, Ansible, Chef vagy Puppet lemezkép alapján létrehozott virtuális gépek.
+Ebben a példában használt Packer a Virtuálisgép-rendszerkép létrehozása az IIS már telepítve van. A Virtuálisgép-lemezkép együtt a meglévő központi telepítési munkafolyamatokba, használhatja például az alkalmazás üzembe helyezése a Team Services, az Ansible, Chef vagy Puppet a lemezképből létrehozott virtuális gépekre.
 
-További példa csomagoló sablonokat más Windows disztribúciókkal, lásd: [a GitHub-tárház](https://github.com/hashicorp/packer/tree/master/examples/azure).
+További Packer példasablonkészlet más Windows-disztribúciókat, lásd: [a GitHub-adattár](https://github.com/hashicorp/packer/tree/master/examples/azure).

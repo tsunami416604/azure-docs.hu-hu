@@ -9,12 +9,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: v-geberr
-ms.openlocfilehash: f47068df9da4187ee8720cf526b2d6c3b89e68e2
-ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
+ms.openlocfilehash: 927d95f6b6fac922d2c3701b8a5124efb18825f6
+ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37345525"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37951237"
 ---
 # <a name="test-your-luis-app"></a>A LUIS-alkalmazás tesztelése
 <a name="train-your-app"></a>
@@ -129,5 +129,5 @@ Tekintse meg a batch-tesztelés [fogalmak](luis-concept-batch-test.md) , és ism
 
 Ha a tesztelés azt jelzi, hogy a LUIS-alkalmazás nem ismeri fel a megfelelő szándékokat és entitásokat, további utterances címkézés vagy szolgáltatások hozzáadására a LUIS-alkalmazás pontosságának növelése érdekében használhatja. 
 
-* [Az intelligens hangfelismerési szolgáltatással javasolt utterances felirat](Label-Suggested-Utterances.md) 
+* [Az intelligens hangfelismerési szolgáltatással javasolt utterances felirat](luis-how-to-review-endoint-utt.md) 
 * [A LUIS-alkalmazás a teljesítmény javítása szolgáltatások használata](luis-how-to-add-features.md) 

@@ -9,24 +9,24 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 05/08/2018
 ms.author: v-geberr
-ms.openlocfilehash: 24e179e24423412a5ff25a64157e273b1a025a6f
-ms.sourcegitcommit: 11321f26df5fb047dac5d15e0435fce6c4fde663
+ms.openlocfilehash: 515bcf4e06de562d1c83082824daa4dca0b54226
+ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37888694"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37950515"
 ---
 # <a name="data-storage-and-removal"></a>Az adattárolás és eltávolítása
 A LUIS egy Azure data store, a kulcs által megadott a régióhoz tartozó, a titkosított adatokat tárolja. Ezek az adatok 30 napig tárolja. 
 
 ## <a name="export-and-delete-app"></a>Exportálás és az alkalmazás törlése
-Felhasználók teljes hozzáféréssel rendelkeznek a keresztül [exportálása](create-new-app.md#export-app) és [törlése](create-new-app.md#delete-app) az alkalmazást. 
+Felhasználók teljes hozzáféréssel rendelkeznek a keresztül [exportálása](luis-how-to-start-new-app.md#export-app) és [törlése](luis-how-to-start-new-app.md#delete-app) az alkalmazást. 
 
 ## <a name="utterances-in-an-intent"></a>A megjelölésű kimondott szöveg
 Példa utterances képzéshez használt törlése [LUIS](luis-reference-regions.md). Ha töröl egy példa utterance (kifejezés) a LUIS-alkalmazás, törlődik a LUIS webszolgáltatás és az exportálás nem érhető el.
 
 ## <a name="utterances-in-review"></a>Tekintse át a kimondott szöveg
-Beszédmódok törölheti, hogy a LUIS javasol a felhasználó megcímkézzen listájából a  **[áttekintés végpont kimondott szöveg lap](label-suggested-utterances.md)**. Beszédmódok törlése a listáról a továbbiakban nem javasolt, de nem törli azokat a naplókat.
+Beszédmódok törölheti, hogy a LUIS javasol a felhasználó megcímkézzen listájából a  **[áttekintés végpont kimondott szöveg lap](luis-how-to-review-endoint-utt.md)**. Beszédmódok törlése a listáról a továbbiakban nem javasolt, de nem törli azokat a naplókat.
 
 ## <a name="accounts"></a>Fiókok
 Ha töröl egy fiókot, az összes alkalmazás törlődnek, azokhoz példa kimondott szöveg és a naplókat. Az adatok a fiók előtt 60 napig megőrződnek, és adatok véglegesen törlődnek.
@@ -44,4 +44,4 @@ Adatok megőrzése vagy törlése céljából, inaktív LUIS alkalmazás bármik
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Ismerje meg exportálása és a egy alkalmazás törlése](create-new-app.md)
+> [Ismerje meg exportálása és a egy alkalmazás törlése](luis-how-to-start-new-app.md)

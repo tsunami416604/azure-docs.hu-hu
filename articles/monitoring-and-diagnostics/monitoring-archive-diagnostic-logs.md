@@ -8,16 +8,21 @@ ms.topic: conceptual
 ms.date: 06/07/2018
 ms.author: johnkem
 ms.component: logs
-ms.openlocfilehash: 99f150b2c62331a63e5bd4377f51fd11359628ab
-ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
+ms.openlocfilehash: a0146c0bf2b5a10f27cb59e32978aa6dff8f5982
+ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37436028"
+ms.lasthandoff: 07/09/2018
+ms.locfileid: "37916326"
 ---
 # <a name="archive-azure-diagnostic-logs"></a>Az Azure diagnosztikai naplóinak archiválása
 
 Ebben a cikkben bemutatjuk a használatáról az Azure portal, PowerShell-parancsmagok, CLI vagy REST API-val archiválása a [Azure diagnosztikai naplók](monitoring-overview-of-diagnostic-logs.md) a storage-fiókban. Ez a beállítás akkor hasznos, ha szeretné megőrizni a diagnosztikai naplók egy opcionális adatmegőrzési szabályzat naplózási, elemzési statikus vagy biztonsági mentés. A storage-fiók nem rendelkezik és a naplókat kibocsátó mindaddig, amíg a beállítást konfiguráló felhasználónak megfelelő hozzáférése RBAC mindkét előfizetéshez erőforrásnak ugyanabban az előfizetésben lennie.
+
+> [!WARNING]
+> A formátum a naplóadatok a tárfiókban lévő JSON-sorok 2018. november 1-től változik. [Tekintse meg a jelen cikk egy leírást a hatás és az eszközök kezeléséhez az új formátum frissítése.](./monitor-diagnostic-logs-append-blobs.md) 
+>
+> 
 
 ## <a name="prerequisites"></a>Előfeltételek
 

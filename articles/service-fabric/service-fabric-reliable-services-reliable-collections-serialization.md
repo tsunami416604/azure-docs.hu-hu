@@ -1,6 +1,6 @@
 ---
-title: Az Azure Service Fabric megbízható gyűjtemény objektum szerializálása |} Microsoft Docs
-description: Az Azure Service Fabric megbízható gyűjtemények objektum szerializálása
+title: Az Azure Service Fabric Reliable gyűjtemény objektumszerializáló |} A Microsoft Docs
+description: Az Azure Service Fabric Reliable Collections objektumszerializáló
 services: service-fabric
 documentationcenter: .net
 author: mcoskun
@@ -14,34 +14,34 @@ ms.tgt_pltfrm: na
 ms.workload: required
 ms.date: 5/8/2017
 ms.author: mcoskun
-ms.openlocfilehash: b02d8924749abb0e2fe815b555d55767bf1e5cc1
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 8fb6f1767741e950b300fd297250a6b64656191c
+ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34207665"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37952426"
 ---
-# <a name="reliable-collection-object-serialization-in-azure-service-fabric"></a>Az Azure Service Fabric megbízható gyűjtemény objektum szerializálása
-Megbízható gyűjtemények replikálja, és a gép hibák és áramkimaradások tartós szempontjából elemek megmaradnak.
-Replikáció és megőrizni az elemeket, megbízható gyűjtemények kell szerializálni azokat.
+# <a name="reliable-collection-object-serialization-in-azure-service-fabric"></a>Az Azure Service Fabric Reliable gyűjtemény objektumszerializáló
+A Reliable Collections replikálni, és ellenőrizze, hogy a gép hibák és áramkimaradások tartós azok az elemek megőrzéséhez.
+Replikálása és elemek is tartalmaz, a Reliable Collections őket szerializálni kell.
 
-Megbízható gyűjtemények egy adott típus megfelelő szerializáló beszerzése megbízható állapotkezelője.
-Megbízható állapotkezelője beépített objektumszerializáló tartalmazza, és lehetővé teszi, hogy egyéni objektumszerializáló regisztrálása az adott típus.
+A Reliable Collections lekérheti a megfelelő szerializáló adott írja be a következőt a Reliable State Manager.
+A Reliable State Manager beépített objektumszerializáló tartalmaz, és lehetővé teszi, hogy kell regisztrálni egy adott típusú egyéni objektumszerializáló.
 
 ## <a name="built-in-serializers"></a>Beépített objektumszerializáló
 
-Megbízható állapotkezelője beépített szerializálót néhány általános típust tartalmazza, úgy, hogy azokat hatékonyabban akkor szerializálható alapértelmezés szerint. A más típusú megbízható állapotkezelője visszaáll használja a [DataContractSerializer](https://msdn.microsoft.com/library/system.runtime.serialization.datacontractserializer(v=vs.110).aspx).
-Beépített objektumszerializáló még hatékonyabbak, mivel még ismernie a típusok nem módosítható, és nincs szükségük a típusát, például a típusnév vonatkozó információval.
+A Reliable State Manager tartalmaz néhány gyakori típusok, beépített szerializálót, úgy, hogy azok szerializálására hatékonyan alapértelmezés szerint. Más fájltípusok a Reliable State Manager visszavált használja a [DataContractSerializer](https://msdn.microsoft.com/library/system.runtime.serialization.datacontractserializer(v=vs.110).aspx).
+Beépített objektumszerializáló még hatékonyabbak, mivel ismerik a típusuk nem módosítható és nem kell például a típusnév típusára vonatkozó információkat tartalmazza.
 
-Megbízható állapotkezelője rendelkezik beépített szerializáló következő esetében: 
+A Reliable State Manager a következő típusú beépített szerializáló rendelkezik: 
 - GUID
-- logikai érték
+- logikai
 - bájt
 - sbyte
-- Byte]
-- Karakter
-- karakterlánc
-- Decimális
+- byte]
+- CHAR
+- sztring
+- tizedes tört
 - double
 - lebegőpontos
 - int
@@ -51,11 +51,11 @@ Megbízható állapotkezelője rendelkezik beépített szerializáló következ�
 - rövid
 - ushort
 
-## <a name="custom-serialization"></a>Egyedi szerializálás
+## <a name="custom-serialization"></a>Egyéni sorba rendezésre
 
-Egyéni objektumszerializáló gyakran használják, a teljesítmény növelése, vagy az adatok titkosítása a hálózaton, és a lemezen. Egyéb okok mellett egyéni objektumszerializáló általában hatékonyabb, mint az általános szerializáló óta, nem kell szerializálni típusára vonatkozó adatok. 
+Egyéni objektumszerializáló gyakran használják, a teljesítmény növelése és a hálózaton és lemezen lévő adatok titkosításához. Egyéb okok mellett egyéni objektumszerializáló általában hatékonyabb, mint az általános szerializáló mivel, nincs szükségük a típus adatainak szerializálásához. 
 
-[IReliableStateManager.TryAddStateSerializer<T> ](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.data.ireliablestatemanager.tryaddstateserializer--1?Microsoft_ServiceFabric_Data_IReliableStateManager_TryAddStateSerializer__1_Microsoft_ServiceFabric_Data_IStateSerializer___0__) egyéni szerializáló a(z) az adott típus T. regisztrálhatók Ez a regisztráció megtörténik az biztosítja, hogy helyreállítási megkezdése előtt az összes megbízható gyűjtemények a megfelelő szerializáló beolvasni a megőrzött adatok elérésére StatefulServiceBase kialakításában.
+[IReliableStateManager.TryAddStateSerializer<T> ](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.data.ireliablestatemanager.tryaddstateserializer) regisztrálható a megadott típus T. egyéni szerializálót Ez a regisztráció történjen, az annak érdekében, hogy helyreállítás megkezdése előtt az összes megbízható gyűjtemények férhetnek hozzá a megfelelő szerializáló a megőrzött adatok olvasása a StatefulServiceBase kialakításában.
 
 ```csharp
 public StatefulBackendService(StatefulServiceContext context)
@@ -69,16 +69,16 @@ public StatefulBackendService(StatefulServiceContext context)
 ```
 
 > [!NOTE]
-> Egyéni objektumszerializáló beépített objektumszerializáló keresztül kap elsőbbséget. Például egyéni szerializáló a(z) int regisztrálása esetén használatos szerializálni egész számok helyett a beépített szerializálót egész szám.
+> Egyéni objektumszerializáló beépített objektumszerializáló adott elsőbbséget. Például amikor regisztrál egy egyéni szerializálót int, azt van szerializálásához használt egész számok helyett a beépített szerializálót: egész szám.
 
-### <a name="how-to-implement-a-custom-serializer"></a>Egyéni szerializáló implementálása
+### <a name="how-to-implement-a-custom-serializer"></a>Egy egyéni szerializáló megvalósítása
 
-Egyéni szerializáló kell megvalósítania a [IStateSerializer<T> ](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.data.istateserializer-1) felületet.
+Egy egyéni szerializáló kell megvalósítani a [IStateSerializer<T> ](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.data.istateserializer-1) felületet.
 
 > [!NOTE]
-> IStateSerializer<T> egy túlterhelési írási és olvasási, amely fogad egy további T alapértéke nevű tartalmazza. Ez az API a különbözeti szerializálás van. Jelenleg különbözeti szerializálási funkció nem lesz közzétéve. Ezért ezek két túlterhelések nem hívják meg csak különbözeti szerializálási téve, és engedélyezve.
+> IStateSerializer<T> túlterhelés írási és olvasási, amely tartalmaz egy további T alapérték nevű. Az API-t a különbözeti szerializálásra. Jelenleg a különbözeti szerializálási funkció nem lesz közzétéve. Ezért ezek két túlterheléssel nem nevezzük mindaddig, amíg a különbözeti szerializálási kitéve, és engedélyezve.
 
-Az alábbiakban látható egy példa egyéni típus neve, amelyben négy tulajdonságok OrderKey
+Az alábbiakban egy példa négy tulajdonságot tartalmazó OrderKey nevű egyéni típus a
 
 ```csharp
 public class OrderKey : IComparable<OrderKey>, IEquatable<OrderKey>
@@ -96,8 +96,8 @@ public class OrderKey : IComparable<OrderKey>, IEquatable<OrderKey>
 }
 ```
 
-Az alábbiakban látható egy példa végrehajtásának IStateSerializer<OrderKey>.
-Vegye figyelembe, hogy olvasási és írási addsortproperty() baseValue, a továbbítást kompatibilitás a megfelelő túlterhelést hívni.
+Az alábbiakban a egy IStateSerializer megvalósítási példát szemléltet<OrderKey>.
+Vegye figyelembe, hogy olvasási és írási túlterheléssel, amelyek a baseValue, hívja meg a megfelelő túlterhelési továbbítást kompatibilitás.
 
 ```csharp
 public class OrderKeySerializer : IStateSerializer<OrderKey>
@@ -136,23 +136,23 @@ public class OrderKeySerializer : IStateSerializer<OrderKey>
 ```
 
 ## <a name="upgradability"></a>Bővíthetőség
-Az egy [működés közbeni frissítés alkalmazás](service-fabric-application-upgrade.md), a frissítés a csomópontok egy alkészlete, egyszerre több frissítési tartományt vonatkozik. A folyamat során néhány frissítési tartományok lesz az alkalmazás újabb verziója, és néhány frissítési tartományt kell az alkalmazás régebbi verzióját. A bevezetés alatt az alkalmazás új verzióját kell fogja tudni elolvasni az adatok a korábbi verziója, és az alkalmazás régebbi verziójához tudja olvasni az adatokat az új verziót kell lennie. Ha az adatformátum nem előre és hátra kompatibilis, a frissítés sikertelen lehet, vagy rosszabb, adatok esetleg elveszett vagy sérült.
+Az egy [alkalmazás frissítése működés közbeni](service-fabric-application-upgrade.md), a frissítés alkalmazott csomópontok egy része, egyszerre több frissítési tartományt. A folyamat során az alkalmazás újabb verziójában néhány frissítési tartományok lesznek, és néhány frissítési tartományok lesz az alkalmazás régebbi verzióját. A bevezetés során az alkalmazás új verziója, olvassa el a régi verziót, az adatok képesnek kell lennie, és az alkalmazás régebbi verzióját kell tudni olvasni az adatokat az új verziót. Ha a adatformátum nem előre és visszafelé kompatibilis, a frissítés sikertelen lehet, vagy rosszabb, adatok esetleg elveszett vagy sérült állapotba kerül.
 
-Ha a beépített szerializáló használ, nincs kompatibilitási foglalkoznia.
-Azonban ha egy egyéni szerializáló vagy a DataContractSerializer használ, az adatokat kell végtelenül lépkedhet kompatibilis.
-Más szóval szerializáló verziói képesnek kell lennie a szerializáltuk és bármilyen típusú.
+Ha beépített szerializáló használ, nem kell aggódnia a kompatibilitási.
+Azonban ha egy egyéni szerializáló vagy a DataContractSerializer használ, az adatokat kell korlátlanul előre és visszafelé kompatibilis.
+Más szóval a szerializáló minden verziója képesnek kell lennie szerializálható és deszerializálható bármelyik verziója, a típus.
 
-Adatok szerződés felhasználók hozzáadása, eltávolítása és mezők módosítása jól meghatározott versioning szabályait kell követnie. Adategyezmény ismeretlen mezők foglalkoznak, a szerializálás és a deszerializálás folyamatba csatlakoztatás és osztályöröklődést foglalkozó is rendelkezik. További információkért lásd: [adategyezmény használatával](https://msdn.microsoft.com/library/ms733127.aspx).
+Adatok szerződés felhasználók hozzáadása, eltávolítása és a mezők módosítása a jól definiált versioning szabályokat érdemes követnie. Adatok szerződést is foglalkoznak, ismeretlen mezőket, a szerializálást és deszerializálást folyamat történetének és osztályöröklődés foglalkozó támogatással rendelkezik. További információkért lásd: [adategyezményben használatával](https://msdn.microsoft.com/library/ms733127.aspx).
 
-Egyéni szerializáló felhasználók be kell tartaniuk a szerializáló, ellenőrizze, hogy visszamenőleges és továbbítja a kompatibilis használják az útmutatást.
-Gyakori módja az összes verzió támogatására elején mérete információk hozzáadása, és a csak a választható tulajdonságok hozzáadását.
-Így minden verzió tud olvasni, sokkal is és az adatfolyam fennmaradó része ugorhat.
+Egyéni felhasználóknak be kell tartaniuk a szerializáló használják, hogy ez visszafelé, és továbbítja a kompatibilis az útmutatást.
+Gyakori módja az összes verzió igazoló méretadatainak hozzáadása elején, és csak a nem kötelező tulajdonságok hozzáadását.
+Minden verziója ezzel a módszerrel olvashatja sokkal azt is, és ugorjon a stream hátralévő része felett.
 
 ## <a name="next-steps"></a>További lépések
   * [Szerializálási és frissítése](service-fabric-application-upgrade-data-serialization.md)
-  * [Fejlesztői leírás megbízható gyűjtemények](https://msdn.microsoft.com/library/azure/microsoft.servicefabric.data.collections.aspx)
-  * [Az alkalmazás használata a Visual Studio frissítése](service-fabric-application-upgrade-tutorial.md) végigvezeti Önt az alkalmazásfrissítés Visual Studio használatával.
-  * [Az alkalmazás használatával Powershell frissítése](service-fabric-application-upgrade-tutorial-powershell.md) végigvezeti Önt az alkalmazásfrissítés PowerShell használatával.
-  * Szabályozhatja, hogy az alkalmazás használatával frissíti [frissítése paraméterek](service-fabric-application-upgrade-parameters.md).
-  * Összetettebb funkciók használata az alkalmazás frissítésekor szakaszra [Speciális témakörök](service-fabric-application-upgrade-advanced.md).
-  * Alkalmazásfrissítések gyakori problémáinak megoldásához hajtsa végre a hivatkozással [Alkalmazásfrissítések hibaelhárítási](service-fabric-application-upgrade-troubleshooting.md).
+  * [A Reliable Collections – fejlesztői referencia](https://msdn.microsoft.com/library/azure/microsoft.servicefabric.data.collections.aspx)
+  * [Az alkalmazás használatával a Visual Studio frissítése](service-fabric-application-upgrade-tutorial.md) végigvezeti egy alkalmazás frissítése a Visual Studio használatával.
+  * [Az alkalmazás használatával Powershell frissítése](service-fabric-application-upgrade-tutorial-powershell.md) végigvezeti egy alkalmazás frissítése a PowerShell használatával.
+  * Vezérelheti, hogyan az alkalmazásfrissítések használatával [frissítési paraméterek](service-fabric-application-upgrade-parameters.md).
+  * Speciális funkciók használata közben lépésként tekintse át az alkalmazás frissítéséhez [haladó témakörök](service-fabric-application-upgrade-advanced.md).
+  * Az alkalmazásfrissítések gyakori problémák megoldása szerint hajtsa végre a hivatkozó [Alkalmazásfrissítések hibaelhárítása](service-fabric-application-upgrade-troubleshooting.md).

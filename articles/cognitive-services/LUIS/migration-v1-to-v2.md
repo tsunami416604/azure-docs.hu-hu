@@ -10,12 +10,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 03/01/2018
 ms.author: v-geberr
-ms.openlocfilehash: 7174a78aeb339c864b2eea384b794646c215bc25
-ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
+ms.openlocfilehash: b60aa551d55907fcac7953efa61473c845e3c2ae
+ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37344002"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37951056"
 ---
 # <a name="api-v2-migration-guide"></a>API v2-Migrálási útmutató
 Az 1. verziójának [végpont](https://aka.ms/v1-endpoint-api-docs) és [szerzői](https://aka.ms/v1-authoring-api-docs) API-k elavulttá válik. Ez az útmutató segítségével megtudhatja, hogyan 2. verzióban át [végpont](https://aka.ms/luis-endpoint-apis) és [szerzői](https://aka.ms/luis-authoring-apis) API-k. 
@@ -133,7 +133,7 @@ A LUIS metaadatokat visszaadni több API-k új névvel rendelkeznek.
 
 
 ## <a name="sample-renamed-to-suggest"></a>"Sample", "javaslat" nevet kapott:
-A LUIS javasol utterances meglévő [végpont utterances](label-suggested-utterances.md) , előfordulhat, hogy növelje a modell. A korábbi verzióban ez nevű **minta**. Az új verzióban neve megváltozik a mintából **javaslat**. Ezt nevezzük **[tekintse át a végpont utterances](https://docs.microsoft.com/azure/cognitive-services/LUIS/label-suggested-utterances)** a LUIS-webhelyen.
+A LUIS javasol utterances meglévő [végpont utterances](luis-how-to-review-endoint-utt.md) , előfordulhat, hogy növelje a modell. A korábbi verzióban ez nevű **minta**. Az új verzióban neve megváltozik a mintából **javaslat**. Ezt nevezzük **[tekintse át a végpont utterances](luis-how-to-review-endoint-utt.md)** a LUIS-webhelyen.
 
 | verzió: | útvonal |
 |--|--|

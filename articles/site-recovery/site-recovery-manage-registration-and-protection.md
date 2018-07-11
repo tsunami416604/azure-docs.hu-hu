@@ -1,55 +1,55 @@
 ---
-title: Távolítsa el a kiszolgálókat, és tiltsa le a védelmet |} Microsoft Docs
-description: Ez a cikk ismerteti, hogyan a Site Recovery-tároló kiszolgálók regisztrációját, és tiltsa le a védelmet a virtuális gépek és fizikai kiszolgálók.
+title: Kiszolgálók eltávolítása és a védelem letiltása |} A Microsoft Docs
+description: Ez a cikk ismerteti, hogyan lehet a Site Recovery-tároló kiszolgálók regisztrációját, és tiltsa le a védelmet a virtuális gépek és fizikai kiszolgálók.
 services: site-recovery
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 03/05/2018
+ms.date: 07/06/2018
 ms.author: raynew
-ms.openlocfilehash: 16a5eaac1138d328f81cfa7d50f8705da867e352
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 998cebdf8b63013128d91571f2610df7d6752e81
+ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/08/2018
-ms.locfileid: "29806415"
+ms.lasthandoff: 07/09/2018
+ms.locfileid: "37918781"
 ---
 # <a name="remove-servers-and-disable-protection"></a>Kiszolgálók eltávolítása és a védelem letiltása
 
-Ez a cikk ismerteti a Recovery Services-tároló kiszolgálók regisztrációját, és tiltsa le a védelmet a Site Recovery által védett gépek.
+Ez a cikk bemutatja, hogyan kiszolgálókat a Recovery Services-tároló regisztrációját, és a Site Recovery által védett gépek védelmének letiltása.
 
 
-## <a name="unregister-a--configuration-server"></a>A konfigurációs kiszolgáló regisztrációját
+## <a name="unregister-a--configuration-server"></a>A konfigurációs kiszolgáló regisztrációjának törlése
 
-Ha VMware virtuális gépek vagy windowsos/Linuxos fizikai kiszolgálók replikálása az Azure-ba, az alábbiak szerint tudja törölni a tárolóból egy frissíthető konfigurációs kiszolgáló:
+Ha az Azure-bA replikált VMware virtuális gépek vagy fizikai Windows/Linux-kiszolgálók regisztrációját is egy tárolóból egy adapterrrel konfigurációs kiszolgáló a következő:
 
 1. [Tiltsa le a védelmet a virtuális gépek](#disable-protection-for-a-vmware-vm-or-physical-server-vmware-to-azure).
-2. [Szüntesse meg, vagy törölje](vmware-azure-set-up-replication.md#disassociate-or-delete-a-replication-policy) replikációs házirend.
+2. [Szüntesse meg, vagy törölje](vmware-azure-set-up-replication.md#disassociate-or-delete-a-replication-policy) replikációs házirendek.
 3. [A konfigurációs kiszolgáló törlése](vmware-azure-manage-configuration-server.md#delete-or-unregister-a-configuration-server)
 
 ## <a name="unregister-a-vmm-server"></a>A VMM-kiszolgáló regisztrációjának törlése
 
-1. Állítsa le a felhők eltávolítani kívánt VMM-kiszolgálón lévő virtuális gépek replikálása.
-2. Törölje a VMM-kiszolgálón, amely a törölni kívánt felhők által használt hálózati leképezések. A **Site Recovery-infrastruktúra** > **System Center VMM** > **Hálózatleképezés**, kattintson a jobb gombbal a hálózatra való leképezés > **törlése**.
-3. Vegye figyelembe a VMM-kiszolgáló Azonosítóját.
-4. Felhőből a VMM-kiszolgálón szeretné eltávolítani a replikációs házirend társítását.  A **Site Recovery-infrastruktúra** > **System Center VMM** >  **replikációs házirendek**, kattintson duplán a tartozó házirend. Kattintson a jobb gombbal a felhő > **Disassociate**.
-5. Törölje a VMM-kiszolgáló vagy az aktív csomópontra. A **Site Recovery-infrastruktúra** > **System Center VMM** > **VMM-kiszolgálókon**, kattintson a jobb gombbal a kiszolgáló > **törlése**.
-6. Ha a VMM-kiszolgáló leválasztott állapotban volt, majd töltse le és futtassa a [karbantartási parancsprogramot](http://aka.ms/asr-cleanup-script-vmm) a VMM-kiszolgálón. Nyissa meg a PowerShell használata a **Futtatás rendszergazdaként** kapcsoló, a végrehajtási házirend az alapértelmezett (LocalMachine) hatókör módosítására. A parancsfájl adja meg az Azonosítót, a VMM-kiszolgáló el szeretné távolítani. A parancsfájl a regisztrációs és felhőpárosítási adatait a kiszolgálóról távolítja el.
-5. Futtassa a karbantartási parancsprogramot bármely másodlagos VMM-kiszolgálón.
-6. Futtassa a karbantartási parancsprogramot a bármely más passzív VMM-fürtcsomóponton, hogy a szolgáltató telepítve.
+1. Állítsa le a VMM-kiszolgáló el kívánja távolítani a felhőben lévő virtuális gépek replikálása.
+2. Törölje a felhőket a VMM-kiszolgálón, amelyet törölni szeretne által használt hálózati leképezéseket. A **Site Recovery-infrastruktúra** > **System Center VMM** > **Hálózatleképezés**, kattintson a jobb gombbal a hálózatleképezést > **Törlése**.
+3. Megjegyzés: a VMM-kiszolgáló Azonosítóját.
+4. A felhőket a VMM-kiszolgálóra el szeretné távolítani a replikációs házirend társításának megszüntetése.  A **Site Recovery-infrastruktúra** > **System Center VMM** >  **replikációs házirendek**, kattintson duplán a tartozó házirend. Kattintson a jobb gombbal a felhő > **Disassociate**.
+5. Törli a VMM-kiszolgáló vagy az aktív csomópontra. A **Site Recovery-infrastruktúra** > **System Center VMM** > **VMM-kiszolgálók**, kattintson a jobb gombbal a kiszolgáló > **törlése** .
+6. Ha a VMM-kiszolgálóról a leválasztott állapotban volt, majd töltse le és futtassa a [tisztítószkript](http://aka.ms/asr-cleanup-script-vmm) a VMM-kiszolgálón. Nyissa meg a PowerShell használata a **Futtatás rendszergazdaként** kapcsoló, a végrehajtási házirend az alapértelmezett (helyi gépen lévő) hatókör módosítására. A parancsfájl adja meg a VMM-kiszolgáló el kívánja távolítani a azonosítója. A parancsfájl eltávolítja a regisztráció és a felhőpárosítást adatait a kiszolgálóról.
+5. Futtassa a karbantartási parancsprogramot minden olyan másodlagos VMM-kiszolgálón.
+6. Futtassa a karbantartási parancsprogramot a bármely más passzív VMM fürtcsomópontokon van telepítve a szolgáltató.
 7. Távolítsa el manuálisan a VMM-kiszolgálón a szolgáltató. Ha rendelkezik fürttel, távolítsa el az összes csomópontot.
-8. Ha a virtuális gépek replikálása Azure-bA volt, távolítsa el a Microsoft Recovery Services Agent ügynököt a Hyper-V gazdagépekről, a törölt felhőkben szeretné.
+8. Ha a virtuális gépek az Azure-ba is replikál, az Microsoft Recovery Services-ügynök eltávolítása a törölt felhőben lévő Hyper-V-gazdagépek szeretné.
 
-## <a name="unregister-a-hyper-v-host-in-a-hyper-v-site"></a>A Hyper-V gazdagépet a Hyper-V hely regisztrációjának törlése
+## <a name="unregister-a-hyper-v-host-in-a-hyper-v-site"></a>A Hyper-V gazdagép egy Hyper-V hely regisztrációját
 
-A VMM által nem felügyelt Hyper-V-gazdagépek egy Hyper-V helyre gyűjti az adatokat. Távolítsa el a gazdagép egy Hyper-V hely az alábbiak szerint:
+Hyper-V gazdagépeket nem VMM által felügyelt Hyper-V hely vannak összegyűjtve. Egy gazdagép eltávolítása egy Hyper-V helyet a következő:
 
-1. Tiltsa le a replikációt a gazdagépen található Hyper-V virtuális gépek esetén.
-2. Szüntesse meg a Hyper-V hely házirendek. A **Site Recovery-infrastruktúra** > **a Hyper-V helyek** >  **replikációs házirendek**, kattintson duplán a tartozó házirend. Kattintson a jobb gombbal a hely > **Disassociate**.
-3. Hyper-V-gazdagépek törlése. A **Site Recovery-infrastruktúra** > **a Hyper-V helyek** > **Hyper-V-gazdagépek**, kattintson a jobb gombbal a kiszolgáló > **törlése** .
-4. Hyper-V hely törlése után minden gazdagép el lettek távolítva belőle. A **Site Recovery-infrastruktúra** > **a Hyper-V helyek** > **Hyper-V helyek**, kattintson a jobb gombbal a hely > **törlése** .
-5. Ha a Hyper-V gazdagépen található egy **Disconnected** állapotban, majd futtassa az alábbi parancsfájlt minden Hyper-V állomáson eltávolított. A parancsfájl a szükségtelenné vált beállításait a kiszolgálón, és megszünteti azt a tárolóból.
+1. Tiltsa le a gazdagépen található Hyper-V virtuális gépek replikációját.
+2. Szüntesse meg a Hyper-V-hely házirendjeinek. A **Site Recovery-infrastruktúra** > **Hyper-V helyek** >  **replikációs házirendek**, kattintson duplán a tartozó házirend. Kattintson a jobb gombbal a hely > **Disassociate**.
+3. A Hyper-V-gazdagépek törlése. A **Site Recovery-infrastruktúra** > **Hyper-V helyek** > **Hyper-V-gazdagépek**, kattintson a jobb gombbal a kiszolgáló > **törlése** .
+4. Hyper-V hely törlése után minden gazdagép el lettek távolítva belőle. A **Site Recovery-infrastruktúra** > **Hyper-V helyek** > **Hyper-V helyek**, kattintson a jobb gombbal a hely > **törlése** .
+5. A Hyper-V-gazdagép nem található egy **leválasztott** állapot, majd futtassa az alábbi parancsfájlt minden Hyper-V gazdagépen, amely az eltávolítani kívánt. A parancsfájl törli a beállításokat a kiszolgálón, és megszünteti azt a tárolóból.
 
 
 
@@ -135,76 +135,76 @@ A VMM által nem felügyelt Hyper-V-gazdagépek egy Hyper-V helyre gyűjti az ad
 
 
 
-## <a name="disable-protection-for-a-vmware-vm-or-physical-server-vmware-to-azure"></a>Tiltsa le a védelmet a VMware virtuális gép vagy a fizikai kiszolgálón (az Azure-bA VMware)
+## <a name="disable-protection-for-a-vmware-vm-or-physical-server-vmware-to-azure"></a>Tiltsa le a védelmet egy VMware virtuális gép vagy fizikai kiszolgáló (VMware – Azure)
 
-1. A **védett elemek** > **replikált elemek**, kattintson a jobb gombbal a gép > **tiltsa le a replikációt**.
-2. A **tiltsa le a replikációt** lapon, válassza ki az alábbi lehetőségek egyikét:
-    - **Tiltsa le a replikációt és eltávolítása (ajánlott)** – Ez a beállítás a replikált elem eltávolítása az Azure Site Recovery és az a gép replikálása leállt. Törölni a replikációs konfiguráció a konfigurációs kiszolgálón van, és a Site Recovery számlázási a védett kiszolgáló leállt.
-    - **Távolítsa el** -kellene ezt a beállítást használja, csak ha a forrás környezetében törölték, vagy nem érhető el (nem csatlakozik). Ez eltávolítja a replikált Azure Site Recovery (a számlázási le van állítva). A konfigurációs kiszolgálón replikációkonfiguráló **sem fog** törlődnek. 
-
-> [!NOTE]
-> A mobilitási szolgáltatás nem lesz eltávolítva a védett kiszolgálók mind a beállításokat távolítsa el manuálisan kell. Ha a kiszolgáló ismét ugyanarra a konfigurációs kiszolgálóra védeni kívánja, kihagyhatja a mobilitási szolgáltatás eltávolítása.
-
-## <a name="disable-protection-for-a-hyper-v-virtual-machine-hyper-v-to-azure"></a>Tiltsa le a védelmet a Hyper-V virtuális gép (Hyper-V az Azure-bA)
+1. A **védett elemek** > **replikált elemek**, kattintson a jobb gombbal a gépre > **tiltsa le a replikációt**.
+2. A **tiltsa le a replikációt** lapra, jelölje be az alábbi lehetőségek egyikét:
+    - **Tiltsa le a replikációt és Eltávolítás (ajánlott)** – ezzel a beállítással eltávolítja a replikált elemet az Azure Site Recovery szolgáltatásból, és a gép replikációja le van állítva. A konfigurációs kiszolgáló replikálási beállításai törlődnek, és a Site Recovery-számlázását a védett kiszolgáló le van állítva.
+    - **Távolítsa el** – Ez a beállítás kellene használni, csak ha a forráskörnyezetet törölték, vagy nem érhető el (nem csatlakozik). Ezzel eltávolítja a replikált elemet az Azure Site Recovery (a számlázás megáll). A konfigurációs kiszolgálón replikációs konfiguráció **nem lesz** törlődnek. 
 
 > [!NOTE]
-> Ez az eljárás használható, ha az Azure Hyper-V virtuális gépek a VMM-kiszolgáló nem replikál. Ha a virtuális gépek használja replikálja a **System Center VMM Azure** forgatókönyv, és kövesse az utasításokat [tiltsa le a védelmet a Hyper-V virtuális gépek replikálásához használata a System Center VMM szolgáltatással Az Azure forgatókönyv](#disable-protection-for-a-hyper-v-virtual-machine-replicating-using-the-system-centet-vmm-to-azure-scenario)
+> A mobilitási szolgáltatás nem lesz eltávolítva a védett kiszolgálók mind a beállításokat távolítsa el manuálisan kell. Ha a kiszolgálót ugyanarra a konfigurációs kiszolgálóra újra használatával védeni szeretné, kihagyhatja a mobilitási szolgáltatás eltávolítása.
 
-1. A **védett elemek** > **replikált elemek**, kattintson a jobb gombbal a gép > **tiltsa le a replikációt**.
+## <a name="disable-protection-for-a-hyper-v-virtual-machine-hyper-v-to-azure"></a>Tiltsa le a védelmet egy Hyper-V virtuális gép (a Hyper-V – Azure)
+
+> [!NOTE]
+> Ez az eljárás használható, ha az Azure Hyper-V virtuális gépeket a VMM-kiszolgáló nélkül replikál. Ha a virtuális gépek használatával replikál a **System Center VMM-ben az Azure-bA** forgatókönyvet, majd kövesse az utasításokat [tiltsa le a védelmet egy Hyper-V virtuális gép replikálásához használja a System Center VMM és az Az Azure-forgatókönyv](#disable-protection-for-a-hyper-v-virtual-machine-replicating-using-the-system-centet-vmm-to-azure-scenario)
+
+1. A **védett elemek** > **replikált elemek**, kattintson a jobb gombbal a gépre > **tiltsa le a replikációt**.
 2. A **tiltsa le a replikációt**, a következő lehetőségek közül választhat:
-     - **Tiltsa le a replikációt és eltávolítása (ajánlott)** – Ez a beállítás a replikált elem eltávolítása az Azure Site Recovery és az a gép replikálása leállt. A helyszíni virtuális gépen replikációs konfiguráció törlődnek, és a Site Recovery számlázási a védett kiszolgáló leállt.
-    - **Távolítsa el** -kellene ezt a beállítást használja, csak ha a forrás környezetében törölték, vagy nem érhető el (nem csatlakozik). Ez eltávolítja a replikált Azure Site Recovery (a számlázási le van állítva). A helyszíni virtuális gépen replikációkonfiguráló **sem fog** törlődnek. 
+     - **Tiltsa le a replikációt és Eltávolítás (ajánlott)** – ezzel a beállítással eltávolítja a replikált elemet az Azure Site Recovery szolgáltatásból, és a gép replikációja le van állítva. A helyszíni virtuális gépet a replikálási beállításai törlődnek, és a Site Recovery-számlázását a védett kiszolgáló le van állítva.
+    - **Távolítsa el** – Ez a beállítás kellene használni, csak ha a forráskörnyezetet törölték, vagy nem érhető el (nem csatlakozik). Ezzel eltávolítja a replikált elemet az Azure Site Recovery (a számlázás megáll). A helyszíni virtuális gépet a replikálási beállításai **nem lesz** törlődnek. 
 
     > [!NOTE]
-    > Ha úgy döntött, hogy a **eltávolítása** lehetőséget, majd futtassa a következő parancsfájlok a replikációs beállításokat a helyszíni Hyper-V kiszolgálón.
-1. A forrás Hyper-V gazdagép-kiszolgálón, a virtuális gép replikáció megszüntetéséhez. SQLVM1 cserélje le a virtuális gép nevét, és futtassa a parancsfájlt egy felügyeleti PowerShell
+    > Ha úgy döntött a **eltávolítása** lehetőséget, majd futtassa a következő parancsfájlok a replikációs beállításokat a helyszíni Hyper-V kiszolgálón.
+1. A forrás Hyper-V gazdakiszolgálón, távolítsa el a virtuális gép replikációját. SQLVM1 cserélje le a virtuális gép nevét, és futtassa a parancsfájlt egy felügyeleti PowerShell
 
 
     
-    $vmName = "SQLVM1"  $vm = Get-WmiObject -Namespace "root\virtualization\v2" -Query "Select * From Msvm_ComputerSystem Where ElementName = '$vmName'"  $replicationService = Get-WmiObject -Namespace "root\virtualization\v2"  -Query "Select * From Msvm_ReplicationService"  $replicationService.RemoveReplicationRelationship($vm.__PATH)
+    $vmName = "SQLVM1" $vm = Get-WmiObject – Namespace "root\virtualization\v2"-lekérdezés "válassza * Msvm_ComputerSystem a ahol ElementName"$vmName"=" $replicationService = Get-WmiObject – Namespace "root\virtualization\v2"-"kiválasztása * a Msvm_ lekérdezése ReplicationService"$replicationService.RemoveReplicationRelationship($vm.__PATH)
     
 
-## <a name="disable-protection-for-a-hyper-v-virtual-machine-replicating-to-azure-using-the-system-center-vmm-to-azure-scenario"></a>Tiltsa le a védelmet a Hyper-V virtuális gépek replikálása Azure-bA a System Center VMM-forgatókönyvet az Azure használatával
+## <a name="disable-protection-for-a-hyper-v-virtual-machine-replicating-to-azure-using-the-system-center-vmm-to-azure-scenario"></a>Tiltsa le a védelmet egy Hyper-V virtuális gép replikálása az Azure-ban a System Center VMM – Azure forgatókönyvére
 
-1. A **védett elemek** > **replikált elemek**, kattintson a jobb gombbal a gép > **tiltsa le a replikációt**.
+1. A **védett elemek** > **replikált elemek**, kattintson a jobb gombbal a gépre > **tiltsa le a replikációt**.
 2. A **tiltsa le a replikációt**, válassza ki az alábbi lehetőségek egyikét:
 
-    - **Tiltsa le a replikációt és eltávolítása (ajánlott)** – Ez a beállítás a replikált elem eltávolítása az Azure Site Recovery és az a gép replikálása leállt. A helyszíni virtuális gépen replikációs konfiguráció törlődnek, és a Site Recovery számlázási a védett kiszolgáló leállt.
-    - **Távolítsa el** -kellene ezt a beállítást használja, csak ha a forrás környezetében törölték, vagy nem érhető el (nem csatlakozik). Ez eltávolítja a replikált Azure Site Recovery (a számlázási le van állítva). A helyszíni virtuális gépen replikációkonfiguráló **sem fog** törlődnek. 
+    - **Tiltsa le a replikációt és Eltávolítás (ajánlott)** – ezzel a beállítással eltávolítja a replikált elemet az Azure Site Recovery szolgáltatásból, és a gép replikációja le van állítva. A helyszíni virtuális gépet a replikálási beállításai törlődnek, és a Site Recovery-számlázását a védett kiszolgáló le van állítva.
+    - **Távolítsa el** – Ez a beállítás kellene használni, csak ha a forráskörnyezetet törölték, vagy nem érhető el (nem csatlakozik). Ezzel eltávolítja a replikált elemet az Azure Site Recovery (a számlázás megáll). A helyszíni virtuális gépet a replikálási beállításai **nem lesz** törlődnek. 
 
     > [!NOTE]
-    > Ha úgy döntött, hogy a **eltávolítása** lehetőséget, majd az alábbi parancsfájl a replikációs beállításokat tun helyszíni VMM-kiszolgálón.
-3. Futtassa ezt a parancsfájlt a forrás VMM-kiszolgálón, PowerShell (a rendszergazda megfelelő jogosultsággal szükséges) a VMM-konzolról. Cserélje le a helyőrző **SQLVM1** a virtuális gép nevével.
+    > Ha úgy döntött a **eltávolítása** lehetőséget, majd az alábbi parancsfájlok a replikációs beállításokat tun helyszíni VMM-kiszolgálón.
+3. Futtassa ezt a szkriptet a forrás VMM-kiszolgálón (a rendszergazda megfelelő jogosultsággal szükséges) PowerShell használatával a VMM-konzolról. Cserélje le a helyőrző **SQLVM1** a virtuális gép nevére.
 
         $vm = get-scvirtualmachine -Name "SQLVM1"
         Set-SCVirtualMachine -VM $vm -ClearDRProtection
-4. A fenti lépések törölje a replikációs beállításokat a VMM-kiszolgálón. Állítsa le a replikációt a virtuális gép a Hyper-V kiszolgálón futó, futtassa a parancsfájlt. SQLVM1 cserélje le a virtuális gép, és a host01.contoso.com nevű, a Hyper-V gazdakiszolgáló nevét.
+4. A fenti lépések törölje a jelet a replikációs beállításokat a VMM-kiszolgálón. A Hyper-V gazdakiszolgálón futó virtuális gép replikálása leállításához futtassa ezt a szkriptet. SQLVM1 cserélje le a virtuális gépet, és host01.contoso.com nevére a Hyper-V gazdakiszolgáló nevét.
 
     
-    $vmName = "SQLVM1"  $hostName  = "host01.contoso.com"  $vm = Get-WmiObject -Namespace "root\virtualization\v2" -Query "Select * From Msvm_ComputerSystem Where ElementName = '$vmName'" -computername $hostName  $replicationService = Get-WmiObject -Namespace "root\virtualization\v2"  -Query "Select * From Msvm_ReplicationService"  -computername $hostName  $replicationService.RemoveReplicationRelationship($vm.__PATH)
+    $vmName = "SQLVM1" $hostName "host01.contoso.com" $vm = "root\virtualization\v2" Get-WmiObject – Namespace =-lekérdezés "válassza * Msvm_ComputerSystem a ahol ElementName"$vmName"=" - computername $hostName $replicationService = Get-WmiObject – Namespace "root\virtualization\v2"-"Kiválasztása * a Msvm_ReplicationService" - computername $hostName $replicationService.RemoveReplicationRelationship($vm.__PATH) lekérdezése
     
        
  
-## <a name="disable-protection-for-a-hyper-v-virtual-machine-replicating-to-secondary-vmm-server-using-the-system-center-vmm-to-vmm-scenario"></a>Tiltsa le a védelmet a Hyper-V virtuális gépek replikálása másodlagos VMM-kiszolgálón a System Center VMM VMM forgatókönyvhöz
+## <a name="disable-protection-for-a-hyper-v-virtual-machine-replicating-to-secondary-vmm-server-using-the-system-center-vmm-to-vmm-scenario"></a>Tiltsa le a védelmet egy Hyper-V virtuális gép replikálását a másodlagos VMM-kiszolgálón a System Center VMM a VMM-forgatókönyvet
 
-1. A **védett elemek** > **replikált elemek**, kattintson a jobb gombbal a gép > **tiltsa le a replikációt**.
+1. A **védett elemek** > **replikált elemek**, kattintson a jobb gombbal a gépre > **tiltsa le a replikációt**.
 2. A **tiltsa le a replikációt**, válassza ki az alábbi lehetőségek egyikét:
 
-    - **Tiltsa le a replikációt és eltávolítása (ajánlott)** – Ez a beállítás a replikált elem eltávolítása az Azure Site Recovery és az a gép replikálása leállt. A helyszíni virtuális gépen replikációs konfiguráció törlődnek, és a Site Recovery számlázási a védett kiszolgáló leállt.
-    - **Távolítsa el** -kellene ezt a beállítást használja, csak ha a forrás környezetében törölték, vagy nem érhető el (nem csatlakozik). Ez eltávolítja a replikált Azure Site Recovery (a számlázási le van állítva). A helyszíni virtuális gépen replikációkonfiguráló **sem fog** törlődnek. Futtassa az alábbi parancsfájlok a replikációs beállításokat a helyszíni virtuális gépek tisztítása.
+    - **Tiltsa le a replikációt és Eltávolítás (ajánlott)** – ezzel a beállítással eltávolítja a replikált elemet az Azure Site Recovery szolgáltatásból, és a gép replikációja le van állítva. A helyszíni virtuális gépet a replikálási beállításai törlődnek, és a Site Recovery-számlázását a védett kiszolgáló le van állítva.
+    - **Távolítsa el** – Ez a beállítás kellene használni, csak ha a forráskörnyezetet törölték, vagy nem érhető el (nem csatlakozik). Ezzel eltávolítja a replikált elemet az Azure Site Recovery (a számlázás megáll). A helyszíni virtuális gépet a replikálási beállításai **nem lesz** törlődnek. Futtassa az alábbi parancsfájlok a replikációs beállításokat a helyszíni virtuális gépek karbantartása.
 > [!NOTE]
-> Ha úgy döntött, hogy a **eltávolítása** lehetőséget, majd az alábbi parancsfájl a replikációs beállításokat tun helyszíni VMM-kiszolgálón.
+> Ha úgy döntött a **eltávolítása** lehetőséget, majd az alábbi parancsfájlok a replikációs beállításokat tun helyszíni VMM-kiszolgálón.
 
-3. Futtassa ezt a parancsfájlt a forrás VMM-kiszolgálón, PowerShell (a rendszergazda megfelelő jogosultsággal szükséges) a VMM-konzolról. Cserélje le a helyőrző **SQLVM1** a virtuális gép nevével.
+3. Futtassa ezt a szkriptet a forrás VMM-kiszolgálón (a rendszergazda megfelelő jogosultsággal szükséges) PowerShell használatával a VMM-konzolról. Cserélje le a helyőrző **SQLVM1** a virtuális gép nevére.
 
          $vm = get-scvirtualmachine -Name "SQLVM1"
          Set-SCVirtualMachine -VM $vm -ClearDRProtection
-4. A másodlagos VMM-kiszolgálón futtassa ezt a parancsfájlt a másodlagos virtuális gép beállításait:
+4. A másodlagos VMM-kiszolgálón futtassa ezt a szkriptet a másodlagos virtuális gép beállításait:
 
         $vm = get-scvirtualmachine -Name "SQLVM1"
         Remove-SCVirtualMachine -VM $vm -Force
-5. A másodlagos VMM-kiszolgálón frissítse a virtuális gépek a Hyper-V gazdagép-kiszolgálón, hogy a másodlagos virtuális gép újra a VMM-konzol lekérdezi észlelte.
-6. A fenti lépések kapcsolja ki a replikációs beállításokat a VMM-kiszolgálón. Ha le kívánja állítani a virtuális gép replikálását, futtassa a következő parancsfájlt bizony az elsődleges és másodlagos virtuális gépeket. SQLVM1 cserélje le a virtuális gép nevét.
+5. A másodlagos VMM-kiszolgálón frissítse a virtuális gépek a Hyper-V gazdakiszolgálón, hogy a másodlagos virtuális gép újra észlelt lekérdezi a VMM-konzolon.
+6. A fenti lépések törölje a jelet a replikációs beállításokat a VMM-kiszolgálón. Ha szeretné leállítani a virtuális gép replikációját, futtassa a következő szkriptet hoppá az elsődleges és másodlagos virtuális gépeken. SQLVM1 cserélje le a virtuális gép nevét.
 
         Remove-VMReplication –VMName “SQLVM1”
 

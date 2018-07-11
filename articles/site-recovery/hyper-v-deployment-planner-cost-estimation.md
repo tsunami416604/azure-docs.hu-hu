@@ -6,14 +6,14 @@ author: nsoneji
 manager: garavd
 ms.service: site-recovery
 ms.topic: article
-ms.date: 02/14/2018
+ms.date: 07/06/2018
 ms.author: nisoneji
-ms.openlocfilehash: 31461e70e81f0f48a8d67e31b98cfae2dd627a54
-ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
+ms.openlocfilehash: 01d4f3873c854776078986918e6ece55017c9193
+ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/22/2018
-ms.locfileid: "29467176"
+ms.lasthandoff: 07/09/2018
+ms.locfileid: "37917472"
 ---
 # <a name="cost-estimation-report-by-azure-site-recovery-deployment-planner"></a>Az Azure Site Recovery Deployment Planner költségbecslési jelentése 
 
@@ -171,9 +171,9 @@ A Site Recovery Deployment Planner az alábbi pénznemek bármelyikének haszná
 |---|---|---|---|---|---|---|---|
 |ARS|Argentin peso ($)||AUD|Ausztrál dollár ($)||BRL|Brazil real (R$)|
 |CAD|Kanadai dollár ($)||CHF|Svájci frank (CHF)||DKK|Dán korona (kr)|
-|EUR|Euró (€)||GBP|Angol font (£)||HKD|Hongkongi dollár (HK$)|
-|IDR|Indonéz rúpia (Rp)||INR|Indiai rúpia (₹)||JPY|Japán jen (¥)|
-|KRW|Koreai von (₩)||MXN|Mexikói peso (MX$)||MYR|Maláj ringgit (RM$)|
+|EUR|Euró (€)||GBP|Angol font (l)||HKD|Hongkongi dollár (HK$)|
+|IDR|Indonéz rúpia (Rp)||INR|Indiai rúpia (₹)||JPY|Japán jen y|
+|KRW|Koreai won (₩)||MXN|Mexikói peso (MX$)||MYR|Maláj ringgit (RM$)|
 |NOK|Norvég korona (kr)||NZD|Új-zélandi dollár ($)||RUB|Orosz rubel (руб)|
 |SAR|Szaúdi riál (SR)||SEK|Svéd korona (kr)||TWD|Tajvani új dollár (NT$)|
 |TRY|Török líra (TL)||USD| Amerikai dollár ($)||ZAR|Dél-afrikai rand (R)|

@@ -1,9 +1,9 @@
 ---
-title: Klasszikus Linux virtuális gép létrehozása az Azure CLI 1.0 |} Microsoft Docs
-description: 'Útmutató: az Azure CLI 1.0 klasszikus telepítési modellel rendelkező Linux virtuális gép létrehozása'
+title: Klasszikus Linuxos virtuális gép létrehozása az Azure CLI 1.0 |} A Microsoft Docs
+description: Ismerje meg, hogyan hozhat létre Linux rendszerű virtuális gép az Azure CLI 1.0-t a klasszikus üzemi modell használatával
 services: virtual-machines-linux
 documentationcenter: ''
-author: iainfoulds
+author: cynthn
 manager: jeconnoc
 editor: tysonn
 tags: azure-service-management
@@ -15,30 +15,30 @@ ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
 ms.date: 02/09/2017
-ms.author: iainfou
-ms.openlocfilehash: 6d3f0dd0c82ad32df4d6e17058d9b1bea57c301f
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.author: cynthn
+ms.openlocfilehash: 13d0ef93c3828c514e46e37494a66f7003eac827
+ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/05/2018
-ms.locfileid: "30841435"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37931614"
 ---
-# <a name="how-to-create-a-classic-linux-vm-with-the-azure-cli-10"></a>Klasszikus Linux virtuális gép létrehozása az Azure parancssori felület 1.0
+# <a name="how-to-create-a-classic-linux-vm-with-the-azure-cli-10"></a>Klasszikus Linuxos virtuális gép létrehozása az Azure CLI 1.0-s
 > [!IMPORTANT] 
-> Azure az erőforrások létrehozására és kezelésére két különböző üzembe helyezési modellel rendelkezik: [Resource Manager és klasszikus](../../../resource-manager-deployment-model.md). Ez a cikk a klasszikus telepítési modell használatát bemutatja. A Microsoft azt javasolja, hogy az új telepítések esetén a Resource Manager modellt használja. A Resource Manager-verziójáért lásd: [Itt](../create-cli-complete.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+> Az Azure az erőforrások létrehozásához és használatához két különböző üzembe helyezési modellel rendelkezik: [Resource Manager és klasszikus](../../../resource-manager-deployment-model.md). Ez a cikk ismerteti a klasszikus üzemi modell használatával. A Microsoft azt javasolja, hogy az új telepítések esetén a Resource Manager modellt használja. Az erőforrás-kezelő verzióját, lásd: [Itt](../create-cli-complete.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 
-Ez a témakör a Linux virtuális gép (VM) létrehozása az Azure CLI 1.0 klasszikus telepítési modellel rendelkező. A Linux-lemezkép az elérhető használjuk **képek** az Azure-on. Az Azure CLI 1.0 parancsok adja meg a következő konfigurációs beállításokkal, többek között:
+Ez a témakör ismerteti hogyan hozhat létre egy Linux rendszerű virtuális gép (VM) az Azure CLI 1.0 használatával a klasszikus üzemi modellt. Az elérhető egy Linuxos rendszerképet használunk **LEMEZKÉPEK** az Azure-ban. Az Azure CLI 1.0 parancsainak adja meg a következő konfigurációs beállításokkal, többek között:
 
-* A virtuális gép csatlakoztatása a virtuális hálózat
+* A virtuális gép csatlakoztatása virtuális hálózathoz
 * A virtuális gép hozzáadása egy meglévő felhőszolgáltatáshoz
-* A virtuális gép hozzáadása egy meglévő tárfiók
-* Adja hozzá a virtuális gép egy rendelkezésre állási csoport vagy a hely
+* A virtuális gép hozzáadása egy meglévő tárfiókot
+* A virtuális gép hozzáadása egy rendelkezésre állási csoport vagy a hely
 
 > [!IMPORTANT]
-> Ha azt szeretné, hogy egy virtuális hálózatot használ, így kapcsolódhat az állomásnév vagy állítsa be a létesítmények közötti kapcsolatok által közvetlenül a virtuális Gépet, győződjön meg arról, hogy a virtuális gép létrehozásakor adja meg a virtuális hálózatot. A virtuális gépek beállítható úgy, hogy csatlakozzon a virtuális hálózat csak a virtuális gép létrehozásakor. A virtuális hálózatokon, lásd: [Azure virtuális hálózat áttekintése](http://go.microsoft.com/fwlink/p/?LinkID=294063).
+> Ha azt szeretné, hogy a virtuális gép egy virtuális hálózatot használ, így is kapcsolódhat hozzá közvetlenül az állomásnév vagy állítsa be a létesítmények közötti kapcsolatokat, győződjön meg arról, a virtuális gép létrehozásakor adja meg a virtuális hálózatot. Virtuális gép beállítható úgy, hogy csatlakozzon a virtuális hálózat csak a virtuális gép létrehozásakor. További információ a virtuális hálózatok: [Azure Virtual Network áttekintése](http://go.microsoft.com/fwlink/p/?LinkID=294063).
 > 
 > 
 
-## <a name="how-to-create-a-linux-vm-using-the-classic-deployment-model"></a>Linux virtuális gépet a klasszikus telepítési modell létrehozása
+## <a name="how-to-create-a-linux-vm-using-the-classic-deployment-model"></a>A klasszikus üzemi modell használatával Linux virtuális gép létrehozása
 [!INCLUDE [virtual-machines-create-LinuxVM](../../../../includes/virtual-machines-create-linuxvm.md)]
 

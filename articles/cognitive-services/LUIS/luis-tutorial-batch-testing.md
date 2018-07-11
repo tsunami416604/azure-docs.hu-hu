@@ -8,21 +8,22 @@ manager: kamran.iqbal
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 03/19/2018
+ms.date: 07/06/2018
 ms.author: v-geberr
-ms.openlocfilehash: 27d6bbc628ac3183032a90d8f3ad98998c76a957
-ms.sourcegitcommit: 11321f26df5fb047dac5d15e0435fce6c4fde663
+ms.openlocfilehash: 962f33a178048c459e8c6c2948eb17f0e78904ae
+ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37888830"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37930990"
 ---
-# <a name="use-batch-testing-to-find-prediction-accuracy-issues"></a>Előrejelzési pontosság problémák kereséséhez használja a batch tesztelése
+# <a name="improve-app-with-batch-test"></a>A batch-teszt alkalmazás fejlesztéséhez
 
 Ez az oktatóanyag bemutatja, hogyan utterance (kifejezés) előrejelzési problémák kereséséhez használja a batch-tesztelés.  
 
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
+<!-- green checkmark -->
 > [!div class="checklist"]
 * Hozzon létre egy kötegfájlt teszt 
 * Egy batch-teszt futtatása
@@ -30,359 +31,169 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 * Javítsa a hibákat a szándék
 * A batch ellenőrzése hosszadalmas
 
-## <a name="prerequisites"></a>Előfeltételek
+Ehhez a cikkhez egy ingyenes [LUIS](luis-reference-regions.md#luis-website)-fiókra van szüksége a LUIS-alkalmazás létrehozásához.
 
-> [!div class="checklist"]
-> * Ez a cikk is szüksége lesz egy [LUIS](luis-reference-regions.md) fiók annak érdekében, hogy a LUIS-alkalmazás létrehozásához.
+## <a name="before-you-begin"></a>Előkészületek
+Ha nem rendelkezik az emberi erőforrások alkalmazásból a [tekintse át a végpont utterances](luis-tutorial-review-endpoint-utterances.md) az oktatóanyagban [importálása](luis-how-to-start-new-app.md#import-new-app) a JSON-kódot egy új alkalmazást a [LUIS](luis-reference-regions.md#luis-website) webhely. Az importálandó alkalmazás a [LUIS-minták](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/quickstarts/custom-domain-review-HumanResources.json) GitHub-adattárban található.
 
-> [!Tip]
-> Ha Ön még nem rendelkezik előfizetéssel, regisztrálhat egy [ingyenes fiókot](https://azure.microsoft.com/free/).
+Ha meg szeretné tartani az eredeti Emberi erőforrások alkalmazást, klónozza a [Settings](luis-how-to-manage-versions.md#clone-a-version) (Beállítások) lapon a verziót, és adja neki a következő nevet: `batchtest`. A klónozás nagyszerű mód, hogy kísérletezhessen a különböző LUIS-funkciókkal anélkül, hogy az az eredeti verzióra hatással lenne. 
 
-## <a name="create-new-app"></a>Új alkalmazás létrehozása
-Ez a cikk az előre összeállított tartomány HomeAutomation használja. Az előre összeállított tartományban van, szándék fog vonatkozni, az entitások és HomeAutomation eszközök, például lámpa való kimondott szöveg. A tartomány az alkalmazás létrehozását, betanítását és közzététele.
+## <a name="purpose-of-batch-testing"></a>A batch tesztelési célra
+A Batch tesztelése lehetővé teszi, hogy ellenőrizze a modellállapot ismert vizsgálati utterances vannak beállítva, és entitások címkével. A JSON-formátumú parancsfájlba a beszédmódok hozzáadása, és állítsa be az entitás címkék van szüksége, előre meghatározott az utterance (kifejezés) belül. 
 
-1. Az a [LUIS](luis-reference-regions.md) webhely, hozzon létre egy új alkalmazást kiválasztásával **új alkalmazás létrehozása** a a **MyApps** lapot. 
+A LUIS ajánlott tesztelési stratégiája használja az adatok három különálló csoportok: a modell, a batch teszt kimondott szöveg és a végpont kimondott szöveg a megadott példa kimondott szöveg. A jelen oktatóanyag esetében győződjön meg arról, hogy nem használ a kimondott szöveg vagy példa utterances (megjelölésű hozzá) a, vagy a végpont kimondott szöveg. 
 
-    ![Új alkalmazás létrehozása](./media/luis-tutorial-batch-testing/create-app-1.png)
+A példa kimondott szöveg és a végpont utterances, szemben a batch teszt kimondott szöveg ellenőrzése [exportálása](luis-how-to-start-new-app.md#export-app) az alkalmazás és [letöltése](luis-how-to-start-new-app.md#export-endpoint-logs) a lekérdezési napló. Hasonlítsa össze az alkalmazás például utterance és batch teszt megcímkézzen lekérdezési napló kimondott szöveg. 
 
-2. Adja meg a nevét `Batchtest-HomeAutomation` a párbeszédpanelen.
+Batch-tesztelés vonatkozó követelmények:
 
-    ![Adja meg az alkalmazás neve](./media/luis-tutorial-batch-testing/create-app-2.png)
+* 1000 tesztenként kimondott szöveg. 
+* Nincsenek ismétlődések. 
+* Engedélyezett entitástípusra: egyszerű és összetett.
 
-3. Válassza ki **előre összeállított tartományok** a bal alsó sarokban. 
+## <a name="create-a-batch-file-with-utterances"></a>Hozzon létre egy kötegfájlt a kimondott szöveg
+1. Hozzon létre `HumanResources-jobs-batch.json` egy szövegszerkesztőben, például [VSCode](https://code.visualstudio.com/). Töltse le vagy [a fájl](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/tutorial-batch-testing/HumanResources-jobs-batch.json) a LUIS-minták Github-adattárból.
 
-    ![Előre összeállított tartomány kiválasztása](./media/luis-tutorial-batch-testing/prebuilt-domain-1.png)
-
-4. Válassza ki **tartomány hozzáadása** HomeAutomation számára.
-
-    ![HomeAutomation tartomány hozzáadása](./media/luis-tutorial-batch-testing/prebuilt-domain-2.png)
-
-5. Válassza ki **Train** a jobb oldali navigációs sáv tetején.
-
-    ![Válassza ki a tanítási gomb](./media/luis-tutorial-batch-testing/train-button.png)
-
-## <a name="batch-test-criteria"></a>A Batch tesztkritériumban
-Batch tesztelés tesztelheti egyszerre legfeljebb 1000 kimondott szöveg. A batch nem rendelkezhet duplikált elemeket. [Exportálás](create-new-app.md#export-app) az alkalmazást, annak érdekében, hogy a jelenlegi utterances listájának megtekintéséhez.  
-
-A LUIS teszt stratégiát használ három különálló adatkészletek: modell utterances, a batch teszt kimondott szöveg és a végpont kimondott szöveg. Ebben az oktatóanyagban győződjön meg arról, hogy nem használja a kimondott szöveg vagy modell utterances (megjelölésű hozzá) a, vagy a végpont kimondott szöveg. 
-
-Ne használja a kimondott szöveg bármelyike már az alkalmazásban a batch-teszt:
-
-```
-'breezeway on please',
-'change temperature to seventy two degrees',
-'coffee bar on please',
-'decrease temperature for me please',
-'dim kitchen lights to 25 .',
-'fish pond off please',
-'fish pond on please',
-'illuminate please',
-'living room lamp on please',
-'living room lamps off please',
-'lock the doors for me please',
-'lower your volume',
-'make camera 1 off please',
-'make some coffee',
-'play dvd',
-'set lights bright',
-'set lights concentrate',
-'set lights out bedroom',
-'shut down my work computer',
-'silence the phone',
-'snap switch fan fifty percent',
-'start master bedroom light .',
-'theater on please',
-'turn dimmer off',
-'turn off ac please',
-'turn off foyer lights',
-'turn off living room light',
-'turn off staircase',
-'turn off venice lamp',
-'turn on bathroom heater',
-'turn on external speaker',
-'turn on my bedroom lights .',
-'turn on the furnace room lights',
-'turn on the internet in my bedroom please',
-'turn on thermostat please',
-'turn the fan to high',
-'turn thermostat on 70 .' 
-```
-
-## <a name="create-a-batch-to-test-intent-prediction-accuracy"></a>Hozzon létre egy batch szándék előrejelzési pontosság tesztelése
-1. Hozzon létre `homeauto-batch-1.json` egy szövegszerkesztőben, például [VSCode](https://code.visualstudio.com/). 
-
-2. A beszédmódok hozzáadása a **szándékot** azt szeretné, a teszt előre jelzett. A jelen oktatóanyag esetében legyen egyszerű, vesz utterances a `HomeAutomation.TurnOn` és `HomeAutomation.TurnOff` , és váltson a `on` és `off` a kimondott szöveg szövegére. Az a `None` szándékkal, pár, amelyek nem beszédmódok hozzáadása része a [tartomány](luis-glossary.md#domain) (tárgy) területre. 
-
-    Annak érdekében, hogy érti, hogyan a batch-vizsgálati eredmények korrelációját, ha a Batch JSON, legfeljebb hat leképezések hozzáadása.
+2. A JSON-formátumú parancsfájlba, az beszédmódok hozzáadása a **szándékot** azt szeretné, a teszt előre jelzett. 
 
     ```JSON
     [
         {
-          "text": "lobby on please",
-          "intent": "HomeAutomation.TurnOn",
-          "entities": []
+        "text": "Are there any janitorial jobs currently open?",
+        "intent": "GetJobInformation",
+        "entities": []
         },
         {
-          "text": "change temperature to seventy one degrees",
-          "intent": "HomeAutomation.TurnOn",
-          "entities": []
+        "text": "I would like a fullstack typescript programming with azure job",
+        "intent": "GetJobInformation",
+        "entities": []
         },
         {
-          "text": "where is my pizza",
-          "intent": "None",
-          "entities": []
+        "text": "Is there a database position open in Los Colinas?",
+        "intent": "GetJobInformation",
+        "entities": []
         },
         {
-          "text": "help",
-          "intent": "None",
-          "entities": []
-        },
-        {
-          "text": "breezeway off please",
-          "intent": "HomeAutomation.TurnOff",
-          "entities": []
-        },
-        {
-          "text": "coffee bar off please",
-          "intent": "HomeAutomation.TurnOff",
-          "entities": []
+        "text": "Can I apply for any database jobs with this resume?",
+        "intent": "GetJobInformation",
+        "entities": []
         }
     ]
     ```
 
 ## <a name="run-the-batch"></a>Futtassa a köteget
+
 1. Válassza ki **teszt** a felső navigációs sávban. 
 
-    ![A navigációs sávban válassza ki a teszt](./media/luis-tutorial-batch-testing/test-1.png)
+    [ ![Képernyőkép a LUIS-alkalmazás és felső, jobb oldali navigációs sávban kiemelt teszt](./media/luis-tutorial-batch-testing/hr-first-image.png)](./media/luis-tutorial-batch-testing/hr-first-image.png#lightbox)
 
 2. Válassza ki **Batch-tesztelési panel** a jobb oldali panelen. 
 
-    ![Válassza ki a Batch-teszt panel](./media/luis-tutorial-batch-testing/test-2.png)
+    [ ![Kiemelt Batch teszt panel képernyőképe a LUIS-alkalmazás](./media/luis-tutorial-batch-testing/hr-batch-testing-panel-link.png)](./media/luis-tutorial-batch-testing/hr-batch-testing-panel-link.png#lightbox)
 
 3. Válassza ki **importálás adatkészlet**.
 
-    ![Importálás adatkészlet kiválasztása](./media/luis-tutorial-batch-testing/test-3.png)
+    [ ![Képernyőkép a LUIS alkalmazás importálása adatkészlettel kiemelésével](./media/luis-tutorial-batch-testing/hr-import-dataset-button.png)](./media/luis-tutorial-batch-testing/hr-import-dataset-button.png#lightbox)
 
-4. Válassza ki a fájl rendszer helyét a `homeauto-batch-1.json` fájlt.
+4. Válassza ki a fájl rendszer helyét a `HumanResources-jobs-batch.json` fájlt.
 
-5. Nevezze el az adatkészlet `set 1`.
+5. Nevezze el az adatkészlet `intents only` válassza **kész**.
 
-    ![Fájl kiválasztása](./media/luis-tutorial-batch-testing/test-4.png)
+    ![Fájl kiválasztása](./media/luis-tutorial-batch-testing/hr-import-new-dataset-ddl.png)
 
 6. Kattintson a **Futtatás** gombra. Várjon, amíg a teszt történik.
 
-    ![Válasszon futtató](./media/luis-tutorial-batch-testing/test-5.png)
+    [ ![Képernyőkép a LUIS alkalmazás Futtatás kiemelésével](./media/luis-tutorial-batch-testing/hr-run-button.png)](./media/luis-tutorial-batch-testing/hr-run-button.png#lightbox)
 
 7. Válassza ki **eredmények megtekintéséhez**.
 
-    ![Eredmények megtekintése](./media/luis-tutorial-batch-testing/test-6.png)
-
 8. Tekintse át az eredményeket a graph és jelmagyarázat.
 
-    ![Batch-eredmények](./media/luis-tutorial-batch-testing/batch-result-1.png)
+    [ ![Képernyőkép a LUIS-alkalmazás és a batch terhelésiteszt-eredményei](./media/luis-tutorial-batch-testing/hr-intents-only-results-1.png)](./media/luis-tutorial-batch-testing/hr-intents-only-results-1.png#lightbox)
 
 ## <a name="review-batch-results"></a>Batch-eredmények áttekintése
-A batch-eredmények két szakaszokban találhatók. A felső rész tartalmazza a graph és a jelmagyarázat. Az alsó szakaszt utterances jeleníti meg, amikor kiválaszt egy a gráf neve.
+A batch diagram jeleníti meg az eredmények négy elemzésében. A diagram jobb szűrő van. Alapértelmezés szerint a szűrő értéke az első célja a listában. A szűrő tartalmazza, a leképezések és a hierarchikus csak egyszerű (szülő csak), és összetett entitásokat. Amikor kiválaszt egy szakasz a diagram vagy a diagramon belül a pontra, a társított utterance(s) a diagram alatt jelennek meg. 
 
-Hibák piros szín jelzi. A gráf van négy részből áll, és két a szakaszok vörös színnel jelenik meg. **Ezek a szakaszok a fókusz a a**. 
+A diagram rámutatáskor egérkereket nagyítása vagy csökkentheti a megjelenített a diagramon. Ez akkor hasznos, ha a fürtözött szorosan együtt diagramra hány pontot. 
 
-A szakasz azt jelzi, hogy a teszt nem megfelelően jobb felső sarokban előre jelzett-leképezés vagy entitás létezik-e. A bal alsó részén azt jelzi, hogy a teszt nem megfelelően előre jelzett-leképezés vagy entitás hiányában.
+A diagram van négy elemzésében, és két a szakaszok vörös színnel jelenik meg. **Ezek a szakaszok a fókusz a a**. 
 
-### <a name="homeautomationturnoff-test-results"></a>HomeAutomation.TurnOff terhelésiteszt-eredményei
-A jelmagyarázat, válassza ki a `HomeAutomation.TurnOff` szándékot. Egy zöld, sikeres ikonra a bal oldalon a név tartalmaz a jelmagyarázatban. Nincsenek a leképezés a hibák. 
+### <a name="applyforjob-test-results"></a>ApplyForJob terhelésiteszt-eredményei
+A **ApplyForJob** terhelésiteszt-eredményei jelennek meg a szűrő megjelenítése, hogy sikeres volt-e a négy előrejelzéseket az 1. Válassza ki a nevét **vakriasztás** megtekintéséhez a diagram alatt megcímkézzen felső megfelelő quadrant felett. 
 
-![Batch-eredmények](./media/luis-tutorial-batch-testing/batch-result-1.png)
+![A LUIS batch teszt kimondott szöveg](./media/luis-tutorial-batch-testing/hr-applyforjobs-false-positive-results.png)
 
-### <a name="homeautomationturnon-and-none-intents-have-errors"></a>HomeAutomation.TurnOn, és nincs leképezések hibásak
-A két szándék más hibák, ami azt jelenti, a teszt előrejelzéseket nem egyeztek a batch fájl verziójával kapcsolatos elvárások rendelkezik. Válassza ki a `None` szándék, tekintse át az első hiba a jelmagyarázatban. 
+Három megcímkézzen kellett egy felső szándéka **ApplyForJob**. A batch-fájlban megadott célja egy alacsonyabb pontszámok rendelkezett. Miért volt történik ez? A két szándék szorosan kapcsolódó szó választási lehetőség és a word elrendezésének tekintetében. Emellett nincsenek majdnem három alkalommal annyi példák **ApplyForJob** mint **GetJobInformation**. Ez a példa kimondott szöveg egyenetlenség tömege **ApplyForJob** leképezés a hónappal számolunk. 
 
-![Nincs leképezés](./media/luis-tutorial-batch-testing/none-intent-failures.png)
+Figyelje meg, hogy mindkét leképezések rendelkezik-e hibák azonos száma: 
 
-Hibák jelennek meg a diagram a piros szakaszokban: **hamis pozitív** és **téves negatív**. Válassza ki a **téves negatív** szakasz nevét a diagram alatt sikertelen megcímkézzen megtekintéséhez a diagramban. 
+![A LUIS batch tesztelési hibák szűrése](./media/luis-tutorial-batch-testing/hr-intent-error-count.png)
 
-![Téves negatív hibák](./media/luis-tutorial-batch-testing/none-intent-false-negative.png)
+A felső időponthoz tartozó az utterance (kifejezés) a **vakriasztás** szakasz `Can I apply for any database jobs with this resume?`. A word `resume` csak a felhasznált **ApplyForJob**. 
 
-A sikertelen utterance (kifejezés), `help` várta, mint egy `None` szándékot, de az előre jelzett teszt `HomeAutomation.TurnOn` szándékot.  
-
-Nincsenek két hibák, egy HomeAutomation.TurnOn a, és egy sem található. Mindkettő az utterance (kifejezés) által okozott `help` , mert nem felel meg az elvárás a None, és a egy váratlan pontosan megegyezik az HomeAutomation.TurnOn célja volt. 
-
-Ezért meghatározni a `None` utterances nem működik, tekintse át a jelenleg megcímkézzen `None`. 
-
-## <a name="review-none-intents-utterances"></a>Felülvizsgálat nincs szándék a kimondott szöveg
-
-1. Zárja be a **teszt** panelen válassza a **teszt** gombot a felső navigációs sávon. 
-
-2. Válassza ki **összeállítása** a felső navigációs panelen. 
-
-3. Válassza ki **nincs** szándék listájában leképezéseket.
-
-4. Válassza ki a Control + E megcímkézzen token megtekintéséhez 
-    
-    |Nincs leképezés a kimondott szöveg|Előrejelzési pontszám|
-    |--|--|
-    |"csökkentése hőmérséklet számomra."|0,44|
-    |"(dimenzió) megjelenítő kijelzőket a konyhai lámpa 25."|0.43|
-    |"a kötet alsó"|0.46|
-    |"az interneten, a saját szobája kérjük bekapcsolása"|0,28|
-
-## <a name="fix-none-intents-utterances"></a>Javítsa ki nincs szándék a kimondott szöveg
-    
-A megszólalásokat `None` alkalmazástartomány-en kívül kell maradniuk. Ezek a kimondott szöveg olyan viszonyított HomeAutomation, így azokat a nem megfelelő leképezés. 
-
-A LUIS is biztosít a kimondott szöveg, amely kisebb, mint 50 %-os (<.50) előrejelzési pontszámot. Ha a többi a két szándék megcímkézzen tekinti meg, sokkal nagyobb előrejelzési pontszámok jelenik meg. Ha LUIS alacsony értékeket, hogy jól jelzi példa megcímkézzen megcímkézzen zavaró, LUIS, a jelenlegi leképezés és más leképezések között. 
-
-Az alkalmazás jelenleg megcímkézzen javításához a `None` szándékot helyezhetők át a helyes leképezést kell és a `None` leképezést kell új, a megfelelő leképezések. 
-
-Három a megcímkézzen a `None` szándékot úgy van kialakítva, hogy az automation-eszközbeállítások csökkentheti. Például szavak használata `dim`, `lower`, vagy `decrease`. A negyedik utterance (kifejezés) megkérdezi, hogy kapcsolja be az interneten. Mivel az összes négy utterances bekapcsolása vagy erejének módosítása egy eszközhöz, azok kell áthelyezni a `HomeAutomation.TurnOn` szándékot. 
-
-Ez az egyetlen megoldás. Akkor is létrehozhat egy új szándéka `ChangeSetting` és helyezze át a kimondott szöveg használatával (dimenzió), csökkentheti, és be, hogy új szándékot csökkentéséhez. 
+A másik két pont a diagram sokkal alacsonyabb értékeket a megfelelő szándékkal, ami azt jelenti, azok a megfelelő leképezés közelebb rendelkezett. 
 
 ## <a name="fix-the-app-based-on-batch-results"></a>Javítsa ki az alkalmazást, a batch eredményei alapján
-Helyezze át a négy kimondott szöveg a `HomeAutomation.TurnOn` szándékot. 
+Ez a szakasz célja, hogy helytelenül voltak előre jelzett, a három megcímkézzen rendelkezik **ApplyForJob** , megfelelően kell elvégezni, a **GetJobInformation**, az alkalmazás kijavítása után. 
 
-1. Jelölje be a jelölőnégyzetet az utterance (kifejezés) lista fölött, így minden kimondott szöveg van kijelölve. 
+A látszólag gyors javítás ezek batch fájl beszédmódok hozzáadása a megfelelő leképezés lenne. Nincs mit kíván tenni, ha ez. Azt szeretné, hogy a LUIS megfelelően előre, anélkül, hogy hozzáadják őket a példaként a kimondott szöveg. 
 
-2. Az a **újbóli hozzárendelése a leképezés** legördülő menüben válassza `HomeAutomation.TurnOn`. 
+A kimondott szöveg eltávolításával kapcsolatos is vezetőnév **ApplyForJob** mindaddig, amíg az utterance (kifejezés) mennyiség megegyezik a **GetJobInformation**. Amely előfordulhat, hogy javítsa ki a vizsgálati eredmények, de a pontos előrejelzésére adott szándékot legközelebb akadályozná az intelligens HANGFELISMERÉSI. 
 
-    ![Helyezze át a kimondott szöveg](./media/luis-tutorial-batch-testing/move-utterances.png)
+Az első javítást, hogy a további beszédmódok hozzáadása **GetJobInformation**. A második javítás az, hogy csökkentse a word súlyát `resume` felé a **ApplyForJob** szándékot. 
 
-    Négy megcímkézzen hozzárendelését, miután az utterance (kifejezés) listázása a `None` célja a üres.
+### <a name="add-more-utterances-to-getjobinformation"></a>A további beszédmódok hozzáadása **GetJobInformation**
+1. Zárja be a batch-teszt panelen válassza a **tesztelése** gombot a felső navigációs panelen. 
 
-3. Négy új leképezések hozzáadása a nincs szándék számára:
+    [ ![Képernyőkép a LUIS teszt gomb kiemelésével](./media/luis-tutorial-batch-testing/hr-close-test-panel.png)](./media/luis-tutorial-batch-testing/hr-close-test-panel.png#lightbox)
 
-    ```
-    "fish"
-    "dogs"
-    "beer"
-    "pizza"
-    ```
+2. Válassza ki **GetJobInformation** leképezések listájából. 
 
-    Ezek a kimondott szöveg mindenképp HomeAutomation tartományán kívül van. Minden kimondásakor meg, tekintse meg a pontszám. A pontszám alacsony vagy még nagyon alacsony (és a piros Keretes azt) lehet. Miután az alkalmazást, a 8. lépésében a vonat a pontszám sokkal magasabb lesz. 
+    [ ![Képernyőkép a LUIS teszt gomb kiemelésével](./media/luis-tutorial-batch-testing/hr-select-intent-to-fix-1.png)](./media/luis-tutorial-batch-testing/hr-select-intent-to-fix-1.png#lightbox)
 
-7. Távolítsa el a címkék az utterance (kifejezés), és válassza a kék címke kiválasztásával **Remove label**.
-
-8. Válassza ki **Train** a jobb oldali navigációs sáv tetején. A pontszám minden kimondásakor, sokkal magasabb. Az összes értékeket a `None` szándékot fölött van.80 most. 
-
-## <a name="verify-the-fix-worked"></a>Ellenőrizze, hogy a javítás működött
-Annak érdekében, hogy ellenőrizze, hogy a batch-teszt megcímkézzen megfelelően előrejelzett számára a **nincs** szándékkal, futtassa újra a batch-vizsgálat.
-
-1. Válassza ki **teszt** a felső navigációs sávban. 
-
-2. Válassza ki **Batch-tesztelési panel** a jobb oldali panelen. 
-
-3. Kattintson a három pontra (***...*** ) gombot a batch nevétől jobbra **futtatása adatkészlet**. Várjon, amíg a batch-teszt történik.
-
-    ![Futtassa az adatkészlet](./media/luis-tutorial-batch-testing/run-dataset.png)
-
-4. Válassza ki **eredmények megtekintéséhez**. A leképezések összes kell zöld ikonok a leképezés neve a bal oldalon. A jobb oldali szűrővel, állítsa a `HomeAutomation.Turnoff` szándékkal, válassza ki a zöld pont a legközelebbi a diagram közepét felső jobb oldali panelen. Az utterance (kifejezés) nevét a táblázatban a diagram alatt jelenik meg. A pontszám `breezeway off please` nagyon alacsony. Egy nem kötelező tevékenységet, további beszédmódok hozzáadása célja, hogy növelni ezt az értéket. 
-
-    ![Futtassa az adatkészlet](./media/luis-tutorial-batch-testing/turnoff-low-score.png)
-
-<!--
-    The Entities section of the legend may have errors. That is the next thing to fix.
-
-## Create a batch to test entity detection
-1. Create `homeauto-batch-2.json` in a text editor such as [VSCode](https://code.visualstudio.com/). 
-
-2. Utterances have entities identified with `startPos` and `endPost`. These two elements identify the entity before [tokenization](luis-glossary.md#token), which happens in some [cultures](luis-supported-languages.md#tokenization) in LUIS. If you plan to batch test in a tokenized culture, learn how to [extract](luis-concept-data-extraction.md#tokenized-entity-returned) the non-tokenized entities.
-
-    Copy the following JSON into the file:
+3. Több, különböző hossza, a word választási lehetőség és a word-előkészítés, olyan a feltételek feltétlenül beszédmódok hozzáadása `resume` és `c.v.`:
 
     ```JSON
-    [
-        {
-          "text": "lobby on please",
-          "intent": "HomeAutomation.TurnOn",
-          "entities": [
-            {
-              "entity": "HomeAutomation.Room",
-              "startPos": 0,
-              "endPos": 4
-            }
-          ]
-        },
-        {
-          "text": "change temperature to seventy one degrees",
-          "intent": "HomeAutomation.TurnOn",
-          "entities": [
-            {
-              "entity": "HomeAutomation.Operation",
-              "startPos": 7,
-              "endPos": 17
-            }
-          ]
-        },
-        {
-          "text": "where is my pizza",
-          "intent": "None",
-          "entities": []
-        },
-        {
-          "text": "help",
-          "intent": "None",
-          "entities": []
-        },
-        {
-          "text": "breezeway off please",
-          "intent": "HomeAutomation.TurnOff",
-          "entities": [
-            {
-              "entity": "HomeAutomation.Room",
-              "startPos": 0,
-              "endPos": 9
-            }
-          ]
-        },
-        {
-          "text": "coffee bar off please",
-          "intent": "HomeAutomation.TurnOff",
-          "entities": [
-            {
-              "entity": "HomeAutomation.Device",
-              "startPos": 0,
-              "endPos": 10
-            }
-          ]
-        }
-      ]
+    Is there a new job in the warehouse for a stocker?
+    Where are the roofing jobs today?
+    I heard there was a medical coding job that requires a resume.
+    I would like a job helping college kids write their c.v.s. 
+    Here is my resume, looking for a new post at the community college using computers.
+    What positions are available in child and home care?
+    Is there an intern desk at the newspaper?
+    My C.v. shows I'm good at analyzing procurement, budgets, and lost money. Is there anything for this type of work?
+    Where are the earth drilling jobs right now?
+    I've worked 8 years as an EMS driver. Any new jobs?
+    New food handling jobs?
+    How many new yard work jobs are available?
+    Is there a new HR post for labor relations and negotiations?
+    I have a masters in library and archive management. Any new positions?
+    Are there any babysitting jobs for 13 year olds in the city today?
     ```
 
-3. Import the batch file, following the [same instructions](#run-the-batch) as the first import, and name the dataset `set 2`. Run the test.
+4. Az alkalmazás betanításához kiválasztásával **Train** a jobb felső navigációs.
 
-## Possible entity errors
-Since the intents in the right-side filter of the test panel still pass the test, this section focuses on correct entity identification. 
+## <a name="verify-the-fix-worked"></a>Ellenőrizze, hogy a javítás működött
+Annak érdekében, hogy ellenőrizze, hogy a batch-teszt megcímkézzen megfelelően előre jelzett, futtassa újra a batch-vizsgálat.
 
-Entity testing is diferrent than intents. An utterance will have only one top scoring intent, but it may have several entities. An utterance's entity may be correctly identified, may be incorrectly identified as an entity other than the one in the batch test, may overlap with other entities, or not identified at all. 
+1. Válassza ki **teszt** a felső navigációs sávban. Ha a batch-eredmények meg nyitva, válassza ki a **vissza a listához**.  
 
-## Review entity errors
-1. Select `HomeAutomation.Device` in the filter panel. The chart changes to show a single false positive and several true negatives. 
+2. Kattintson a három pontra (***...*** ) gombot a batch nevétől jobbra **futtatása adatkészlet**. Várjon, amíg a batch-teszt történik. Figyelje meg, hogy a **eredmények megtekintéséhez** már zöld gombot. Ez azt jelenti, hogy az egész köteget sikeresen lefutott.
 
-2. Select the False positive section name. The utterance for this chart point is displayed below the chart. The labeled intent and the predicted intent are the same, which is consistent with the test -- the intent prediction is correct. 
+3. Válassza ki **eredmények megtekintéséhez**. A leképezések összes kell zöld ikonok a leképezés neve a bal oldalon. 
 
-    The issue is that the HomeAutomation.Device was detected but the batch expected HomeAutomation.Room for the utterance "coffee bar off please". `Coffee bar` could be a room or a device, depending on the environment and context. As the model designer, you can either enforce the selection as `HomeAutomation.Room` or change the batch file to use `HomeAutomation.Device`. 
+    [ ![Képernyőkép a LUIS batch eredmények gomb kiemelésével](./media/luis-tutorial-batch-testing/hr-batch-test-intents-no-errors.png)](./media/luis-tutorial-batch-testing/hr-batch-test-intents-no-errors.png#lightbox)
 
-    If you want to reinforce that coffee bar is a room, you nee to add an utterances to LUIS that help LUIS decide a coffee bar is a room. 
 
-    The most direct route is to add the utterance to the intent but that to add the utterance for every entity detection error is not the machine-learned solution. Another fix would be to add an utterance with `coffee bar`.
+## <a name="what-has-this-tutorial-accomplished"></a>Mi van ebben az oktatóanyagban történik?
+Az alkalmazás előrejelzési pontosság hibák keresése a Batch és a modell javításának további példa utterances ad hozzá a megfelelő leképezés és képzési nőtt. 
 
-## Add utterance to help extract entity
-1. Select the **Test** button on the top navigation to close the batch test panel.
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+Ha már nincs rá szükség, törölje a LUIS-alkalmazást. Válassza ki **saját alkalmazások** bal felső menüjében. Kattintson a három pontra **...**  az alkalmazások listájában, az alkalmazás nevétől jobbra, válassza ki a **törlése**. A **Delete app?** (Törli az alkalmazást?) előugró párbeszédpanelen válassza az **OK** lehetőséget.
 
-2. On the `HomeAutomation.TurnOn` intent, add the utterance, `turn coffee bar on please`. The uttterance should have all three entities detected after you select enter. 
 
-3. Select **Train** on the top navigation panel. Wait until training completes successfully.
-
-3. Select **Test** on the top navigation panel to open the Batch testing pane again. 
-
-4. If the list of datasets is not visible, select **Back to list**. Select the ellipsis (***...***) button at the end of `Set 2` and select `Run Dataset`. Wait for the test to complete.
-
-5. Select **See results** to review the test results.
-
-6. 
--->
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [További tudnivalók a példa kimondott szöveg](luis-how-to-add-example-utterances.md)
+> [További információ a minták](luis-tutorial-pattern.md)
 
-[LUIS]: https://docs.microsoft.com/azure/cognitive-services/luis/luis-reference-regions

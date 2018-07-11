@@ -1,6 +1,6 @@
 ---
 title: Metrikariasztás létrehozása Resource Manager-sablonnal
-description: Megtudhatja, hogyan metrika riasztás létrehozása egy Resource Manager-sablon használatával.
+description: Ismerje meg, hogyan metrikariasztás létrehozása Resource Manager-sablon használatával.
 author: snehithm
 services: azure-monitor
 ms.service: azure-monitor
@@ -8,27 +8,31 @@ ms.topic: conceptual
 ms.date: 4/26/2018
 ms.author: snmuvva
 ms.component: alerts
-ms.openlocfilehash: 0a4e6c2ebb57aca13a53a8ff12953f0c7a90bc61
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: 4dba3d182c7c2927aa4feb88e70fe5711fcc6818
+ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35263446"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37932211"
 ---
 # <a name="create-a-metric-alert-with-a-resource-manager-template"></a>Metrikariasztás létrehozása Resource Manager-sablonnal
-Ez a cikk bemutatja, hogyan használható egy [Azure Resource Manager sablon](../azure-resource-manager/resource-group-authoring-templates.md) konfigurálása [újabb metrika riasztások](monitoring-near-real-time-metric-alerts.md) Azure-figyelőben. Resource Manager-sablonok lehetővé teszi a programozott módon hozza létre a riasztások következetes és reprodukálható módon a környezetben. Újabb metrika riasztások jelenleg érhetők el a [e típusú erőforrások csoportja](monitoring-near-real-time-metric-alerts.md#metrics-and-dimensions-supported).
+Ez a cikk bemutatja, hogyan használhatja egy [Azure Resource Manager-sablon](../azure-resource-manager/resource-group-authoring-templates.md) konfigurálása [újabb metrikákhoz kapcsolódó riasztások](monitoring-near-real-time-metric-alerts.md) az Azure monitorban. Resource Manager-sablonok lehetővé teszik a programozott módon riasztások beállítása egy egységes és megismételhető módon, a környezetek között. Újabb metrikákhoz kapcsolódó riasztások jelenleg érhetők el a [erőforrástípusok készlete](monitoring-near-real-time-metric-alerts.md#metrics-and-dimensions-supported).
 
-Az alapvető lépések a következők:
-
-1. A JSON-fájl, amely leírja a riasztás létrehozása, használja az alábbi sablonok közül.
-2. Szerkessze és használja a megfelelő paramétereket fájlt egy JSON-ként a riasztás testreszabása
-3. A sablon szabályzatsablonokat [bármely olyan telepítési módszerrel](../azure-resource-manager/resource-group-template-deploy.md).
+> [!IMPORTANT]
+> Resource Manager-sablonban megadott metrikariasztás nem fog működni az erőforrás típusa: Microsoft.OperationalInsights/workspaces; támogatja az metrikák a Log Analytics szolgáltatás előzetes verzióban. A kapcsolatot az erőforrás-sablonnal, az előzetes verzió funkcióit használja az érdeklődő felhasználók [Azure riasztások visszajelzés](mailto:azurealertsfeedback@microsoft.com)
 
 
-## <a name="resource-manager-template-for-a-simple-metric-alert"></a>Egy egyszerű metrika riasztás Resource Manager-sablon
-Hozzon létre egy riasztást, a Resource Manager-sablonnal, hozzon létre egy típusú erőforrást `Microsoft.Insights/metricAlerts` , és töltse ki az összes kapcsolódó tulajdonságok. Alatt van egy minta-sablont, amely egy metrika riasztási szabályt hoz létre.
+Az alapvető lépéseken az alábbiak szerint:
 
-Az alábbi json elmentse simplemetricalert.json a lépésein végighaladva céljából.
+1. Az alábbi sablonok egyikét használja, amely azt ismerteti, hogyan hozhat létre a riasztás JSON-fájlként.
+2. Szerkessze és használja a megfelelő paramétereket tartalmazó fájlt egy JSON-fájlként szabhatja testre a riasztás
+3. A sablon üzembe [bármely üzembe helyezési módszer](../azure-resource-manager/resource-group-template-deploy.md).
+
+
+## <a name="resource-manager-template-for-a-simple-metric-alert"></a>Az egyszerű metrikariasztás Resource Manager-sablon
+Hozzon létre egy riasztást, Resource Manager-sablonnal, hozzon létre egy erőforrást típusú `Microsoft.Insights/metricAlerts` , és töltse ki az összes kapcsolódó tulajdonságok. Alább egy mintasablon, amely létrehozza a metrikaalapú riasztási szabály van.
+
+Mentse az alábbi json simplemetricalert.json Ez az útmutató céljából.
 
 ```json
 {
@@ -180,11 +184,11 @@ Az alábbi json elmentse simplemetricalert.json a lépésein végighaladva célj
 }
 ```
 
-Riasztási szabály a séma és a Tulajdonságok magyarázatot [érhető el itt](https://docs.microsoft.com/en-us/rest/api/monitor/metricalerts/createorupdate).
+A séma és a Tulajdonságok magyarázata a riasztási szabály [itt érhetők el](https://docs.microsoft.com/en-us/rest/api/monitor/metricalerts/createorupdate).
 
-A paraméterek értékeit állíthatja be, a parancssorban vagy egy paraméterfájl keresztül. A minta paraméterfájl lejjebb tekinthetők meg. 
+Beállíthatja a paraméterek értékeit, a parancssorban vagy egy paraméterfájl keresztül. A paraméter egy mintafájlt lejjebb találja. 
 
-Alább json elmentse simplemetricalert.parameters.json, és szükség szerint módosítsa azt.
+Az alábbi json Mentés másként simplemetricalert.parameters.json, és szükség szerint módosítsa.
 
 ```json
 {
@@ -226,7 +230,7 @@ Alább json elmentse simplemetricalert.parameters.json, és szükség szerint m�
 ```
 
 
-A metrika riasztás a sablon és a paraméterek fájl, a PowerShell vagy Azure CLI használatával hozhat létre.
+A metrikariasztás a sablon és paraméterek fájllal, a PowerShell vagy az Azure CLI használatával is létrehozhat.
 
 Az Azure PowerShell használata
 
@@ -253,12 +257,12 @@ az group deployment create \
 
 > [!NOTE]
 >
-> A metrika riasztást egy másik erőforráscsoportban található a célerőforrás sikerült létrehozni, amíg a cél erőforrásként ugyanabban az erőforráscsoportban használatát javasoljuk.
+> Bár a metrikariasztás létrehozható egy másik erőforráscsoportot, amelybe a célként megadott erőforrás, mint a célerőforrás ugyanabban az erőforráscsoportban használatát javasoljuk.
 
-## <a name="resource-manager-template-for-a-more-advanced-metric-alert"></a>A speciális metrika riasztások Resource Manager-sablon
-Újabb metrika riasztások támogatási riasztásai többdimenziós metrikák, valamint a támogató több feltételt. Az alábbi sablon használatával dimenzionális mérőszámokat speciális metrika riasztás létrehozása, és adja meg a több feltételt.
+## <a name="resource-manager-template-for-a-more-advanced-metric-alert"></a>A speciális metrikariasztás Resource Manager-sablon
+Újabb metrikariasztásokat támogatja a többdimenziós metrikák riasztásai, valamint a támogatási több feltételt. Az alábbi sablon használatával fejlettebb metrikariasztás létrehozása a többdimenziós metrikák, és adja meg a több feltételt.
 
-Az alábbi json elmentse advancedmetricalert.json a lépésein végighaladva céljából.
+Mentse az alábbi json advancedmetricalert.json Ez az útmutató céljából.
 
 ```json
 {
@@ -374,9 +378,9 @@ Az alábbi json elmentse advancedmetricalert.json a lépésein végighaladva cé
 }
 ```
 
-A fenti sablon alább paraméterfájl együtt használható. 
+A fenti sablon használható együtt az alábbi alkalmazásparaméter-fájlt. 
 
-Mentse és advancedmetricalert.parameters.json a lépésein végighaladva céljából, az alábbi json módosítása.
+Mentse, és ez az útmutató céljából advancedmetricalert.parameters.json, az alábbi json módosítása.
 
 ```json
 {
@@ -443,7 +447,7 @@ Mentse és advancedmetricalert.parameters.json a lépésein végighaladva célj�
 ```
 
 
-A metrika a PowerShell vagy Azure CLI használata az aktuális munkakönyvtárban a sablon és a paraméterek fájllal riasztást hozhat létre
+A sablon és paraméterek fájllal, PowerShell vagy az Azure CLI használatával az aktuális munkakönyvtárba metrikariasztás hozhat létre
 
 Az Azure PowerShell használata
 ```powershell
@@ -470,8 +474,8 @@ az group deployment create \
 
 >[!NOTE]
 >
-> A metrika riasztást egy másik erőforráscsoportban található a célerőforrás sikerült létrehozni, amíg a cél erőforrásként ugyanabban az erőforráscsoportban használatát javasoljuk.
+> Bár a metrikariasztás létrehozható egy másik erőforráscsoportot, amelybe a célként megadott erőforrás, mint a célerőforrás ugyanabban az erőforráscsoportban használatát javasoljuk.
 
 ## <a name="next-steps"></a>További lépések
-* Tudjon meg többet az [értesítések az Azure-ban](monitoring-overview-unified-alerts.md)
-* Megtudhatja, hogyan [művelet csoport Resource Manager-sablonok létrehozása](monitoring-create-action-group-with-resource-manager-template.md)
+* Tudjon meg többet [riasztások az Azure-ban](monitoring-overview-unified-alerts.md)
+* Ismerje meg, hogyan [műveletcsoport létrehozása a Resource Manager-sablonokkal](monitoring-create-action-group-with-resource-manager-template.md)

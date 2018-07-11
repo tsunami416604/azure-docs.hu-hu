@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 07/05/2018
 ms.author: raynew
-ms.openlocfilehash: 530cc9a9dcfdd37253883aae9aa921600aa45c04
-ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
+ms.openlocfilehash: 02a790907908daf2db282a320f50d3a27efbd177
+ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2018
-ms.locfileid: "37908790"
+ms.lasthandoff: 07/09/2018
+ms.locfileid: "37917186"
 ---
 # <a name="contoso-migration--refactor-a-team-foundation-server-deployment-to-visual-studio-team-services-vsts"></a>Contoso áttelepítési: Újrabontás a Team Foundation Server üzembe helyezés a Visual Studio Team Services (VSTS)
 
@@ -278,7 +278,7 @@ Mielőtt hozzákezdene, Contoso vesz igénybe egy helyi SQL Server biztonsági m
     ![Migrate (Áttelepítés)](./media/contoso-migration-tfs-vsts/migrate7.png)
 
 
-## <a name="generate-a-dacpac"></a>Hozzon létre egy adatrétegbeli ALKALMAZÁSCSOMAG
+### <a name="generate-a-dacpac"></a>Hozzon létre egy adatrétegbeli ALKALMAZÁSCSOMAG
 
 Contoso (DACPAC) biztonsági másolatot készít a vsts-ben történő importáláshoz.
 

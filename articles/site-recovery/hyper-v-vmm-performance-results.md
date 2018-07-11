@@ -1,151 +1,151 @@
 ---
-title: Teszteredmények Hyper-V virtuális gépek replikálása egy másodlagos helyre, az Azure Site Recovery VMM-felhőkben |} Microsoft Docs
-description: Ez a cikk a Hyper-V virtuális gépek VMM-felhőkben egy másodlagos helyre Azure Site Recovery segítségével replikáció teljesítménytesztelési információkat biztosít.
+title: Teszteredmények Hyper-V virtuális gépek replikálása másodlagos helyre az Azure Site Recovery VMM-felhőkben |} A Microsoft Docs
+description: Ez a cikk ismerteti a Teljesítménytesztelés replikálás Hyper-V virtuális gépek egy másodlagos helyre az Azure Site Recovery VMM-felhőkben.
 services: site-recovery
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 02/13/2018
+ms.date: 07/06/2018
 ms.author: raynew
-ms.openlocfilehash: e15f435a3f32b8908b5b93bccc6c57710ab589bc
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 4e6884bdcbc0d9921186ec9ff11a701b707faeef
+ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2018
-ms.locfileid: "29378896"
+ms.lasthandoff: 07/09/2018
+ms.locfileid: "37921297"
 ---
-# <a name="test-results-for-hyper-v-replication-to-a-secondary-site"></a>A vizsgálati eredmények, a Hyper-V replikáció egy másodlagos helyre
+# <a name="test-results-for-hyper-v-replication-to-a-secondary-site"></a>Egy másodlagos helyre Hyper-V-replikáció terhelésiteszt-eredményei
 
-Ez a cikk ismerteti a System Center Virtual Machine Manager (VMM) egy felhőben, a Hyper-V virtuális gépek replikálása másodlagos adatközpontba esetén teljesítménytesztelési eredményeit.
+Ez a cikk a Teljesítménytesztelés, amikor a System Center Virtual Machine Manager (VMM) felhőkben, a Hyper-V virtuális gépek replikálása másodlagos adatközpontba eredményeit.
 
-## <a name="test-goals"></a>Tesztelési célokat
+## <a name="test-goals"></a>Tesztelési célok
 
-A cél vizsgálati volt, hogy vizsgálja meg, hogyan hajtja végre a Site Recovery stabil állapotot replikáció során.
+A cél tesztelése az volt, vizsgálja meg, hogyan hajtja végre a Site Recovery stabil állapotú replikáció során.
 
-- Ha virtuális gépek kezdeti replikáció befejeződött, és szinkronizál a változási különbözeteket stabil állapotot replikáció.
-- Fontos stabil állapotban teljesítményének mérése, mert az állam, mely a legtöbb virtuális gépeken maradnak, hacsak nem várt leállások esetén.
-- A teszttelepítés állt két helyszíni hely, a VMM-kiszolgáló minden helyen. Ez az üzembe helyezési teszt a központi iroda/fiók office központi telepítés, a jellemző nevében jár el az elsődleges hely központi iroda és a fiókiroda a másodlagos vagy helyreállítási helyként.
+- Stabil állapotú replikáció esetén a virtuális gépek kezdeti replikációja befejeződött, és szinkronizál a változásokat.
+- Fontos használata a stabil állapotot teljesítmény mérésére, a legtöbb virtuális gépek mely állapot, mert maradnak, kivéve, ha váratlan leállások esetén.
+- A tesztelési környezet foglalnak el két helyszíni hely, az egyes helyek VMM-kiszolgálóval. Ez az üzembe helyezési teszt jellemzően a fő office/office ágán, a központi iroda és az elsődleges hely és a fiókiroda a másodlagos vagy helyreállítási helyként.
 
-## <a name="what-we-did"></a>Azt adta
+## <a name="what-we-did"></a>Helyeztünk
 
-Mi a Microsoft a teszt felelt meg az itt található:
+Íme, mi a Microsoft a teszt felelt meg:
 
-1. A VMM-sablonok használatával létrehozott virtuális gépeket.
-2. Virtuális gépek elindult, és rögzített alapterv teljesítménymutatók 12 óránál nagyobb.
-3. Az elsődleges létrehozott felhők és a helyreállítási VMM-kiszolgálókon.
-4. A Site Recovery szolgáltatásban, beleértve a forrás- és a helyreállítási közötti megfeleltetés felhők konfigurált replikációs.
-5. Engedélyezve van a virtuális gépek védelmét, és a őket teljes kezdeti replikálása.
-6. Néhány óra múlva a rendszer stabilizációs várt.
-7. Rögzített teljesítménymutatók 12 óránál nagyobb, ahol minden virtuális gép maradt várt replikációs állapotban ezeket 12 óra.
-8. A különbözeti a baseline metrikák, valamint a replikációs metrikák mérni.
+1. A VMM-sablonok használatával létrehozott virtuális gépre.
+2. Virtuális gépek elindult, és a teljesítmény-mérőszámok rögzített 12 órán át.
+3. Létrehozott felhőket, az elsődleges és helyreállítási VMM-kiszolgálókon.
+4. A Site Recoveryben, beleértve a forrás és a helyreállítási közötti megfeleltetés felhők beállított replikációs.
+5. Engedélyezve van a virtuális gépek védelmét, és a kezdeti replikációjának befejezéséhez engedélyezett őket.
+6. Néhány óra múlva a rendszer stabilizálása várta.
+7. Rögzített teljesítmény-mérőszámok 12 órán át, ahol minden virtuális gép maradt várt replikációs állapotban ezeket 12 órán át.
+8. A teljesítmény-mérőszámok és a replikációs teljesítmény-mérőszámok között a különbözeti mérni.
 
 
 ## <a name="primary-server-performance"></a>Elsődleges kiszolgáló teljesítménye
 
-* Hyper-V replika (a Site Recovery által használt) aszinkron módon állapotváltozásait egy naplófájlba, a minimális tárolási terhet az elsődleges kiszolgálón.
-* A Hyper-V replika használja az önálló karbantartott memóriagyorsítótár IOPS terhet nyomon követésére minimalizálása érdekében. Tárolja a memóriában VHDX ír, és akkor írja ki azokat a naplófájlba a naplót a helyreállítási helyen küldött időpont előtt. A kiürítési lemez is akkor történik, ha az írási műveletek egy előre meghatározott korlátot elérte.
-* Az alábbi diagram megjeleníti a stabil állapotot IOPS terhelést a replikáció. Láthatja, hogy a terhelés miatt replikációs IOPS körülbelül 5 % meglehetősen kicsi.
+* Hyper-V replika (Site Recovery által használt) aszinkron módon naplófájlt használ, a minimális storage többletterhelést az elsődleges kiszolgálón nyomon követi a módosításokat.
+* Hyper-V replika nyomon követésére terhelés csökkentése érdekében a IOPS önálló karbantartott gyorsítótárban használja. Tárolja a vhdx-fájlt a memóriában ír, és a napló a helyreállítási helyre küldendő ideje előtt a naplófájlba kiüríti azokat. Flush lemez is történik, ha az írási műveletek egy előre meghatározott korlát.
+* Az alábbi diagram bemutatja IOPS többletterhelést egyenletes állapotú replikáció. Láthatjuk, hogy terhelés miatt a replikáció az IOPS érték körülbelül 5 %-át, amely meglehetősen kicsi.
 
   ![Elsődleges eredmények](./media/hyper-v-vmm-performance-results/IC744913.png)
 
-A Hyper-V replika az elsődleges kiszolgálón memóriát használja lemez teljesítmény optimalizálása érdekében. Az alábbi diagramon látható, terhet elsődleges a fürtben található összes kiszolgáló memóriájának marginális. A terhelés látható memória a replikáció, a Hyper-V kiszolgálón az összes telepített memória képest által használt memória aránya.
+Hyper-V replika az elsődleges kiszolgálón memóriát használ lemez teljesítmény optimalizálása érdekében. A következő diagramon látható, a memória többletterhelést az elsődleges fürt összes kiszolgálóján marginális. A memória terhelés látható-e a replikáció, a Hyper-V-kiszolgálón az összes telepített memória képest által használt memória aránya.
 
 ![Elsődleges eredmények](./media/hyper-v-vmm-performance-results/IC744914.png)
 
-Hyper-V replika rendelkezik olyan minimális CPU-terhelés. Ahogy az a diagramon, replikációs terhelés 2-3 % a tartományban van.
+Hyper-V replika a Processzor terhelését a minimális rendelkezik. A grafikonon látható, replikációs terhelést a 2-3 % hatótávolságán belül van.
 
 ![Elsődleges eredmények](./media/hyper-v-vmm-performance-results/IC744915.png)
 
 ## <a name="secondary-server-performance"></a>Másodlagos kiszolgáló teljesítménye
 
-A Hyper-V replika a helyreállítási kiszolgálón a kis méretű memória segítségével optimalizálja a tárolási műveletek száma. A diagram a memóriahasználat a helyreállítási kiszolgálón foglalja össze. A terhelés látható memória a replikáció, a Hyper-V kiszolgálón az összes telepített memória képest által használt memória aránya.
+Hyper-V replika kisebb mennyiségű memóriát használ a helyreállítási kiszolgálón optimalizálhatja a tárolási műveletek száma. A grafikon a memóriahasználat, a helyreállítási kiszolgálón foglalja össze. A memória terhelés látható-e a replikáció, a Hyper-V-kiszolgálón az összes telepített memória képest által használt memória aránya.
 
 ![Másodlagos eredmények](./media/hyper-v-vmm-performance-results/IC744916.png)
 
-A helyreállítási helyen i/o-műveletek mennyiségének feladata az elsődleges hely az írási műveletek számát. Most nézze meg a teljes i/o-műveletek a helyreállítási helyen összehasonlítva az összes i/o-művelet és az írási műveletek az elsődleges helyen. A diagramokon jelzik, hogy a teljes IOPS a helyreállítási helyen
+A helyreállítási helyre i/o-műveletek mennyiségét, akkor a függvény az elsődleges hely az írási műveletek számát. Nézzük tekintse meg a teljes i/o-műveletek a helyreállítási helyre összehasonlítva a teljes i/o-műveletek írása és az elsődleges helyen. A gráfok mutatják, hogy a teljes iops-t, a helyreállítási helyre
 
-* Körülbelül 1,5-szerese az írási IOPS az elsődleges.
-* Körülbelül 37 %-a a teljes IOPS, az elsődleges helyen.
+* Körülbelül 1,5-szerese az írási iops-t az elsődleges.
+* Az elsődleges helyen lévő teljes iops-érték körülbelül 37 %-át.
 
 ![Másodlagos eredmények](./media/hyper-v-vmm-performance-results/IC744917.png)
 
 ![Másodlagos eredmények](./media/hyper-v-vmm-performance-results/IC744918.png)
 
-## <a name="effect-on-network-utilization"></a>Hálózathasználat hatása
+## <a name="effect-on-network-utilization"></a>A hálózathasználat hatása
 
-Átlagosan 275 Mb / s a hálózati sávszélesség elleni egy meglévő sávszélesség 5 GB / s (a tömörítés engedélyezve), az elsődleges és a helyreállítási csomópontok között használt.
+275 Mb-os hálózati sávszélesség másodpercenként átlagosan másodpercenként 5 GB-os egy meglévő sávszélesség elleni használták (a tömörítés engedélyezése), az elsődleges és helyreállítási csomópontok között.
 
-![Hálózathasználat eredmények](./media/hyper-v-vmm-performance-results/IC744919.png)
+![Eredmények hálózati kihasználtság](./media/hyper-v-vmm-performance-results/IC744919.png)
 
-## <a name="effect-on-vm-performance"></a>VM teljesítményre gyakorolt hatás
+## <a name="effect-on-vm-performance"></a>A virtuális gép teljesítményére hatással
 
-Egy fontos szempont, hogy a replikáció a termelési számítási feladatokhoz a virtuális gépeken futó hatását. Ha az elsődleges hely képes megfelelően lett beállítva a replikáció, akkor nem adható meg gyakorolt hatás a munkaterhelések. Követés mechanizmus a Hyper-V replika lightweight biztosítja, hogy a virtuális gépeken futó számítási feladatok nem érintettek stabil állapot replikáció során. Ezt mutatja be a következő diagramjait.
+Egy fontos szempont, a replikáció a virtuális gépeken futó éles számítási feladatok hatását. Ha az elsődleges hely van fizikaimemória-replikációhoz, nem lehetnek hatással a számítási feladatok. Hyper-V replika egyszerűsített követési mechanizmus biztosítja, hogy a virtuális gépeken futó számítási feladatok nem érinti őket egyenletes állapotú replikáció. Ezt mutatja be a következő diagramok.
 
-Ez a grafikon azt ábrázolja, IOPS végrehajt a különböző terhelésekhez előtt futó virtuális gépek, és a replikáció engedélyezése után. Azt is láthatja, hogy nincs-e a kettő közötti különbség.
+Ez a diagram látható IOPS különböző számítási feladatokhoz, előtt futó virtuális gépek és a replikáció engedélyezése után. Azt is megfigyelheti, hogy nincs különbség a kettő között.
 
-![A replika hatás eredmények](./media/hyper-v-vmm-performance-results/IC744920.png)
+![Replika érvénybe eredmények](./media/hyper-v-vmm-performance-results/IC744920.png)
 
-A következő grafikon azt ábrázolja, az átviteli sebesség a különböző terhelésekhez előtt futó virtuális gépek és a replikáció engedélyezése után. Azt is láthatja, hogy a replikáció nincs jelentős hatással van.
+A következő diagram bemutatja az átviteli sebességet, mielőtt különböző számítási feladatokhoz, futó virtuális gépek és a replikáció engedélyezése után. Azt is megfigyelheti, hogy a replikáció nem jelentős befolyásolja.
 
 ![Eredmények replika hatások](./media/hyper-v-vmm-performance-results/IC744921.png)
 
 ## <a name="conclusion"></a>Összegzés
 
-Az eredmények szétválasztásához, hogy a hely helyreállítását követően alapján kialakulhat Hyper-V replika, méretezze át a helyes, legalább egy nagy méretű fürt esetén. A Site Recovery egyszerű üzembe helyezés, a replikáció, a kezelési és figyelési biztosít. Hyper-V replika a szükséges infrastruktúrát biztosít a sikeres replikáció méretezést. 
+Az eredmények egyértelműen bemutatják, hogy a Site Recovery, Hyper-V replika, így jól, legalább egy nagy fürt esetén méretezze át. Egyszerű telepítés, a replikáció, a felügyeleti és monitorozási a Site recoveryben. Hyper-V replika a szükséges infrastruktúrát biztosít a sikeres replikálás méretezése. 
 
-## <a name="test-environment-details"></a>Környezet részletei
+## <a name="test-environment-details"></a>Tesztelési környezet részletei
 
 ### <a name="primary-site"></a>Elsődleges hely
 
-* Az elsődleges hely öt Hyper-V rendszert futtató, 470 virtuális gépeket tartalmazó fürt rendelkezik.
-* A virtuális gépek különböző alkalmazásokat és szolgáltatásokat futtathatnak, és mindegyik rendelkezik a Site Recovery általi védelem engedélyezve van.
-* A fürt összes csomópontjára vonatkozóan tárolási egy iSCSI SAN által biztosított. Modell – Hitachi HUS130.
-* Minden egyes fürtkiszolgálón rendelkezik négy hálózati kártyák (NIC) a egy kapcsolóport.
-* Két, a hálózati kártyák egy iSCSI magánhálózati csatlakoznak, és két külső vállalati hálózatra csatlakoznak. A külső hálózatokat egyik csak a fürtkommunikáció számára van fenntartva.
+* Az elsődleges hely öt Hyper-V kiszolgálók, a 470 virtual machines szolgáltatásban futó tartalmazó fürt rendelkezik.
+* A virtuális gépek különböző számítási feladatok futtatásához, és az összes Site Recovery általi védelem engedélyezve van.
+* Egy iSCSI SAN által biztosított tárolási a fürt összes csomópontjára vonatkozóan. Modell – Hitachi HUS130.
+* Minden egyes fürtkiszolgálón négy hálózati kártyák (NIC) egy gbps rendelkezik.
+* A hálózati kártyák közül kettő az iSCSI-magánhálózati csatlakozik, és két külső vállalati hálózathoz csatlakozik. A külső hálózatok közül csak a fürtkommunikáció számára van fenntartva.
 
 ![Elsődleges hardverkövetelmények](./media/hyper-v-vmm-performance-results/IC744922.png)
 
-| Kiszolgáló | RAM | Modell | Processzor | Processzorok száma | NIC | Szoftver |
+| Kiszolgáló | RAM | Modell | Processzor | Processzorok száma | Hálózati adapter | Szoftver |
 | --- | --- | --- | --- | --- | --- | --- |
-| Hyper-V fürtben lévő kiszolgálókat: <br />ESTLAB-HOST11<br />ESTLAB-HOST12<br />ESTLAB-HOST13<br />ESTLAB-HOST14<br />ESTLAB-HOST25 |128ESTLAB-HOST25 rendelkezik 256 |Dell ™ PowerEdge ™ R820 |Intel(R) Xeon(R) CPU E5-4620 0 @ 2,20 GHz |4 |I x 4 kapcsolóport |Windows Server Datacenter 2012 R2 (x64) + Hyper-V szerepkör |
-| VMM Server |2 | | |2 |1 Gbps |Windows Server 2012 adatbázis R2 (x 64) + VMM 2012 R2 |
+| A Hyper-V fürtben lévő kiszolgálók: <br />ESTLAB-HOST11<br />ESTLAB-HOST12<br />ESTLAB-HOST13<br />ESTLAB-HOST14<br />ESTLAB-HOST25 |128ESTLAB-HOST25 256 rendelkezik |A Dell™ PowerEdge™ R820 |Intel(R) Xeon(R) CPU E5-4620 0 @ 2,20 GHz |4 |GB/s x 4 I |A Windows Server Datacenter 2012 R2 (x64) + Hyper-V szerepkör |
+| VMM-kiszolgáló |2 | | |2 |1 Gbps |A Windows Server 2012 adatbázis R2 (x 64) és a VMM 2012 R2-ben |
 
 ### <a name="secondary-site"></a>Másodlagos hely
 
-* A másodlagos hely tartozik egy hat csomópontos feladatátvevő fürtöt.
-* A fürt összes csomópontjára vonatkozóan tárolási egy iSCSI SAN által biztosított. Modell – Hitachi HUS130.
+* A másodlagos hely rendelkezik, egy hat csomópontos feladatátvevő fürtöt.
+* Egy iSCSI SAN által biztosított tárolási a fürt összes csomópontjára vonatkozóan. Modell – Hitachi HUS130.
 
-![Elsődleges hardver meghatározása](./media/hyper-v-vmm-performance-results/IC744923.png)
+![Elsődleges hardver-specifikáció](./media/hyper-v-vmm-performance-results/IC744923.png)
 
-| Kiszolgáló | RAM | Modell | Processzor | Processzorok száma | NIC | Szoftver |
+| Kiszolgáló | RAM | Modell | Processzor | Processzorok száma | Hálózati adapter | Szoftver |
 | --- | --- | --- | --- | --- | --- | --- |
-| Hyper-V fürtben lévő kiszolgálókat: <br />ESTLAB-HOST07<br />ESTLAB-HOST08<br />ESTLAB-HOST09<br />ESTLAB-HOST10 |96 |Dell ™ PowerEdge ™ R720 |Intel(R) Xeon(R) CPU E5-2630 0 @ 2.30-as GHz |2 |I x 4 kapcsolóport |Windows Server Datacenter 2012 R2 (x64) + Hyper-V szerepkör |
-| ESTLAB-HOST17 |128 |Dell ™ PowerEdge ™ R820 |Intel(R) Xeon(R) CPU E5-4620 0 @ 2,20 GHz |4 | |Windows Server Datacenter 2012 R2 (x64) + Hyper-V szerepkör |
-| ESTLAB-HOST24 |256 |Dell ™ PowerEdge ™ R820 |Intel(R) Xeon(R) CPU E5-4620 0 @ 2,20 GHz |2 | |Windows Server Datacenter 2012 R2 (x64) + Hyper-V szerepkör |
-| VMM Server |2 | | |2 |1 Gbps |Windows Server 2012 adatbázis R2 (x 64) + VMM 2012 R2 |
+| A Hyper-V fürtben lévő kiszolgálók: <br />ESTLAB-HOST07<br />ESTLAB-HOST08<br />ESTLAB-HOST09<br />ESTLAB-HOST10 |96 |A Dell™ PowerEdge™ R720 |Intel(R) Xeon(R) CPU E5-2630 0 @ 2.30-as GHz |2 |GB/s x 4 I |A Windows Server Datacenter 2012 R2 (x64) + Hyper-V szerepkör |
+| ESTLAB-HOST17 |128 |A Dell™ PowerEdge™ R820 |Intel(R) Xeon(R) CPU E5-4620 0 @ 2,20 GHz |4 | |A Windows Server Datacenter 2012 R2 (x64) + Hyper-V szerepkör |
+| ESTLAB-HOST24 |256 |A Dell™ PowerEdge™ R820 |Intel(R) Xeon(R) CPU E5-4620 0 @ 2,20 GHz |2 | |A Windows Server Datacenter 2012 R2 (x64) + Hyper-V szerepkör |
+| VMM-kiszolgáló |2 | | |2 |1 Gbps |A Windows Server 2012 adatbázis R2 (x 64) és a VMM 2012 R2-ben |
 
-### <a name="server-workloads"></a>Kiszolgáló-munkaterhelések
+### <a name="server-workloads"></a>Server számítási feladatok
 
-* Tesztelési célokra azt kivételezett gyakori vállalati forgatókönyvet a munkaterhelések.
-* Használjuk [IOMeter](http://www.iometer.org) a munkaterhelés jellemző szimuláció táblázat foglalja össze.
-* Minden IOMeter profilok írása a legrosszabb szimulálása véletlenszerű bájt írása minták munkaterhelések vannak állítva.
+* Tesztelési célokra azt követi a számítási feladatok gyakran használt vállalati forgatókönyvet.
+* Használjuk a [IOMeter](http://www.iometer.org) a munkaterhelés jellemző a szimuláció táblázat foglalja össze.
+* Összes IOMeter profil beállítása az írási szimulálásához legrosszabb véletlenszerű bájt írási számítási feladatok esetében.
 
-| Számítási feladat | I/o-méret (KB) | % Hozzáférés | % Olvasása | Függőben lévő i/o műveletek | I/o-minta |
+| Számítási feladat | I/o-mérete (KB) | A(z) % hozzáférés | % Olvasási | Függőben lévő i/o műveletek | I/o-minta |
 | --- | --- | --- | --- | --- | --- |
-| Fájlkiszolgáló |48163264 |60%20%5%5%10% |80%80%80%80%80% |88888 |Véletlenszerű 100 % |
-| SQL Server (1. kötet) SQL Server (kötet 2) |864 |100%100% |70%0% |88 |szekvenciális 100 %-os random100 % |
+| Fájlkiszolgáló |48163264 |60%20%5%5%10% |80%80%80%80%80% |88888 |Minden 100 %-os véletlenszerű |
+| Az SQL Server (1. kötet) SQL Server (2. kötet) |864 |100%100% |70%0% |88 |100 %-os random100 % szekvenciális |
 | Exchange |32 |100% |67% |8 |100 %-os véletlenszerű |
-| Munkaállomás/VDI |464 |66%34% |70%95% |11 |Mindkét véletlenszerű 100 %. |
-| Web File Server |4864 |33%34%33% |95%95%95% |888 |Véletlenszerű 75 % |
+| Munkaállomás/VDI |464 |66%34% |70%95% |11 |Mindkét 100 %-os véletlenszerű |
+| Web File Server |4864 |33%34%33% |95%95%95% |888 |Az összes 75 %-os véletlenszerű |
 
 ### <a name="vm-configuration"></a>Virtuálisgép-konfiguráció
 
-* Az elsődleges fürtön 470 virtuális géphez.
-* Minden virtuális gépek VHDX-lemezzel.
-* A táblázat foglalja össze a munkaterheléseket futtatnak virtuális gépeket. Az összes VMM-sablonok-ekkel hozta létre.
+* Az elsődleges fürtön 470 virtuális gépeket.
+* A vhdx az összes virtuális gépet.
+* A táblázatban összefoglalt számítási feladatokat futtató virtuális gépeket. Az összes VMM-sablonok-ekkel hozta létre.
 
-| Számítási feladat | Száma virtuális gépek | Minimális memória (GB) | Maximális memória (GB) | Logikai lemez mérete (GB) virtuális gépenként | Maximális IOPS |
+| Számítási feladat | Száma virtuális gépek | Minimális memória (GB) | Maximális memória (GB) | Logikai lemez mérete (GB) virtuális gépenként | Maximális iops-érték |
 | --- | --- | --- | --- | --- | --- |
 | SQL Server |51 |1 |4 |167 |10 |
 | Exchange Server |71 |1 |4 |552 |10 |
@@ -154,31 +154,31 @@ Az eredmények szétválasztásához, hogy a hely helyreállítását követően
 | Webkiszolgáló |149 |.5 |1 |80 |6 |
 | ÖSSZES |470 | | |96.83 TB |4108 |
 
-### <a name="site-recovery-settings"></a>Webhely-helyreállítási beállításai
+### <a name="site-recovery-settings"></a>A Site Recovery beállításait
 
-* A Site Recovery konfigurálása a helyszíni alkalmazások közötti adatszinkronizálás védelme
-* A VMM-kiszolgáló a Hyper-V fürt kiszolgálók és a virtuális gépek tartalmazó konfigurált, négy felhők rendelkezik.
+* A Site Recovery a helyszíni védelem helyszíni konfigurálása
+* A VMM-kiszolgálót a Hyper-V fürt kiszolgálók és a virtuális gépeket tartalmazó konfigurált, négy felhők rendelkezik.
 
-| Elsődleges VMM-felhő | Védett virtuális gépek | Replikációs gyakoriság | A további helyreállítási pontok |
+| Elsődleges VMM-felhőben | Védett virtuális gépek | Replikációs gyakoriság | További helyreállítási pontok |
 | --- | --- | --- | --- |
 | PrimaryCloudRpo15m |142 |15 perc |None |
 | PrimaryCloudRpo30s |47 |30 másodperc |None |
 | PrimaryCloudRpo30sArp1 |47 |30 másodperc |1 |
-| PrimaryCloudRpo5m |235 |5 perc |Nincs |
+| PrimaryCloudRpo5m |235 |5 perc |None |
 
 ### <a name="performance-metrics"></a>Teljesítmény-mérőszámok
 
-A táblázat összefoglalja a metrikák és a központi telepítésben lévő volt mért számlálókat.
+A táblázat összefoglalja a teljesítmény-mérőszámok és a központi telepítésben lévő is mért számlálókat.
 
-| Metrika | A számláló |
+| Metrika | Számláló |
 | --- | --- |
 | CPU |\Processor(_Total)\% Processor Time |
-| Rendelkezésre álló memória |\Memory\Available memória (MB) |
+| Elérhető memória |\Memory\Available (MB) |
 | IO |\PhysicalDisk(_Total)\Disk Transfers/sec |
 | Virtuális gép olvasási művelet/mp (IOPS) |\Hyper-V virtuális tárolóeszköz (<VHD>) \Read művelet/mp |
-| Virtuális gép (IOPS) írási művelet/mp |\Hyper-V virtuális tárolóeszköz (<VHD>) \Write műveletek/mp |
-| Olvassa el az átviteli sebesség VM |\Hyper-V virtuális tárolóeszköz (<VHD>) \Read bájtok/s |
-| Virtuális gép teljesítménye |\Hyper-V virtuális tárolóeszköz (<VHD>) \Write bájtok/s |
+| Virtuális gép (IOPS) írási művelet/mp |\Hyper-V virtuális tárolóeszköz (<VHD>) \Write művelet/mp |
+| Virtuális gép olvasási teljesítménye |\Hyper-V virtuális tárolóeszköz (<VHD>) \Read bájt/mp |
+| Virtuális gép a lemezírás teljesítménye |\Hyper-V virtuális tárolóeszköz (<VHD>) \Write bájt/mp |
 
 ## <a name="next-steps"></a>További lépések
 

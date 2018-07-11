@@ -1,6 +1,6 @@
 ---
 title: Az Azure diagnosztikai naplók áttekintése
-description: Ismerje meg az Azure diagnosztikai naplók és hogyan használhatja őket egy Azure-erőforrás belül bekövetkező események megértéséhez.
+description: Ismerje meg, Mik azok az Azure diagnosztikai naplók, és hogyan használhatja őket egy Azure-erőforrás belül előforduló események megértéséhez.
 author: johnkemnetz
 services: azure-monitor
 ms.service: azure-monitor
@@ -8,53 +8,58 @@ ms.topic: conceptual
 ms.date: 06/07/2018
 ms.author: johnkem
 ms.component: logs
-ms.openlocfilehash: e361259bc5ce2dd946d3ea8bc1e69f743a40c6df
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: a6435f74141429cbe4f9a169fd2f234161d486c4
+ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35264401"
+ms.lasthandoff: 07/09/2018
+ms.locfileid: "37918740"
 ---
-# <a name="collect-and-consume-log-data-from-your-azure-resources"></a>Gyűjtése és felhasználása az Azure-erőforrások naplóadatait
+# <a name="collect-and-consume-log-data-from-your-azure-resources"></a>Gyűjtése és felhasználása a naplófájlok adatait az Azure-erőforrások
 
-## <a name="what-are-azure-resource-diagnostic-logs"></a>Mik az Azure-erőforrás diagnosztikai naplók
+## <a name="what-are-azure-resource-diagnostic-logs"></a>Mik az Azure erőforrás-diagnosztikai naplók
 
-**Az Azure erőforrás-szintű diagnosztikai naplók** erőforrás a művelet részletes, gyakori adatait adja meg az erőforrás által kibocsátott naplók. Ezek a naplók tartalmának erőforrástípusok szerint változik. Hálózati biztonsági csoport szabály számlálók és a Key Vault-naplók például erőforrás naplók két kategóriájuk.
+**Az Azure erőforrásszintű diagnosztikai naplók** rendszer részletes, gyakori adatokat az erőforrás a művelet az erőforrás által kibocsátott naplók. Ezek a naplók a tartalom erőforrás típusa szerint változó. Ha például a hálózati biztonsági csoport szabályainak számlálói, illetve a Key Vault-naplók két kategóriába sorolhatók erőforrás-naplók.
 
-Erőforrás-szintű diagnosztikai naplók eltérnek a [tevékenységnapló](monitoring-overview-activity-logs.md). A műveletnapló erőforrást az előfizetésében Resource Manager használatával, például egy virtuális gép létrehozása vagy törlése a logikai alkalmazás a végrehajtott műveletek betekintést nyújt. A műveletnapló egy előfizetési szintű napló. Erőforrás-szintű diagnosztikai naplók Észreveheti az olyan műveletek végrehajtott belül az adott erőforrás, például a titkos kulcs lekérése a kulcstároló.
+Erőforrás-szintű diagnosztikai naplók különböznek a [tevékenységnapló](monitoring-overview-activity-logs.md). A tevékenységnaplóban a műveletek a Resource Manager használatával, például egy virtuális gépet hoz létre, vagy a logikai alkalmazás törlése az előfizetés erőforrásain végzett betekintést nyújt. A tevékenységnapló előfizetés-szintű napló. Diagnosztikai naplók erőforrásszintű cybercrime végrehajtott műveletekkel belül az adott erőforráshoz, például a Key Vault titkos kulcs lekérése.
 
-Erőforrás-szintű diagnosztikai naplók is eltérnek a vendég operációs rendszer szintű diagnosztikai naplókat. Vendég operációs rendszer diagnosztikai naplók, ezeket a virtuális gépek belül futó ügynök által gyűjtött vagy egyéb támogatott erőforrástípus. Erőforrás-szintű diagnosztikai naplók nem rögzítése és ügynök erőforrás-specifikus adatait az Azure platformon, igényelnek, amíg a vendég operációs rendszer szintű diagnosztikai naplók rögzítése az operációs rendszer és a virtuális gépen futó alkalmazások adatait.
+Diagnosztikai naplók erőforrásszintű is Vendég operációsrendszer-szintű diagnosztikai naplók különböznek. A vendég operációs rendszer a diagnosztikai naplók, ezek futhat virtuális gépen futó ügynök által gyűjtött vagy egyéb támogatott erőforrástípus. Diagnosztikai naplók erőforrásszintű nincs ügynök és a rögzítés erőforrás-specifikus adatok az Azure platform, igényelnek, miközben a Vendég operációsrendszer-szintű diagnosztikai naplók rögzítése az operációs rendszer és a egy virtuális gépen futó alkalmazások adatait.
 
-Nem minden erőforrások támogatja az erőforrás diagnosztikai naplók az itt ismertetett új típusú. A cikkben egy szakaszt, amely felsorolja, milyen támogatja az új erőforrás szintű diagnosztikai naplók.
+Nem minden erőforrás támogatja az új típusú erőforrás-diagnosztikai naplók az itt leírtak szerint. Ez a cikk egy szakaszt, amely felsorolja, mely erőforrástípusokat támogatja az új erőforráscsoport-szintű diagnosztikai naplók tartalmazza.
 
-![Erőforrás diagnosztikai naplók és a naplók más típusú ](./media/monitoring-overview-of-diagnostic-logs/Diagnostics_Logs_vs_other_logs_v5.png)
+![Erőforrás diagnosztikai naplók és más típusú naplók ](./media/monitoring-overview-of-diagnostic-logs/Diagnostics_Logs_vs_other_logs_v5.png)
 
-## <a name="what-you-can-do-with-resource-level-diagnostic-logs"></a>Teendők, az erőforrás-szintű diagnosztikai naplók
-Az alábbiakban néhány erőforrás diagnosztikai naplók teheti:
+## <a name="what-you-can-do-with-resource-level-diagnostic-logs"></a>Mire képes az erőforrásszintű diagnosztikai naplók
+Az alábbiakban néhány, az erőforrás-diagnosztikai naplók teheti:
 
-![Az erőforrás diagnosztikai naplók logikai elhelyezése](./media/monitoring-overview-of-diagnostic-logs/Diagnostics_Logs_Actions.png)
+![Logikai elhelyezése az erőforrás-diagnosztikai naplók](./media/monitoring-overview-of-diagnostic-logs/Diagnostics_Logs_Actions.png)
 
-* Mentse azokat egy [ **Tárfiók** ](monitoring-archive-diagnostic-logs.md) naplózási vagy manuális ellenőrzést. A megőrzési ideje (nap) használatával is megadhat **erőforrás diagnosztikai beállításainak**.
-* [Adatfolyam-őket **Event Hubs** ](monitoring-stream-diagnostic-logs-to-event-hubs.md) egy külső szolgáltatás vagy az egyéni elemzési megoldások, például a Power bi szempontjából.
-* Elemezheti őket a [Naplóelemzési](../log-analytics/log-analytics-azure-storage.md)
+* Menti azokat egy [ **Tárfiók** ](monitoring-archive-diagnostic-logs.md) naplózási vagy manuális ellenőrzést. A megőrzési ideje (nap) használatával is megadhat **erőforrás diagnosztikai beállításait**.
+* [Azokat a Stream **az Event Hubs** ](monitoring-stream-diagnostic-logs-to-event-hubs.md) egy külső szolgáltatás vagy az egyéni elemzési megoldással, például a Power bi támogatunk.
+* Elemezheti a [Log Analytics](../log-analytics/log-analytics-azure-storage.md)
 
-Egy tárfiókhoz vagy az Event Hubs névtér, amely megegyezik a naplók kibocsátó ugyanahhoz az előfizetéshez nincs használható. A beállítás konfiguráló felhasználónak mindkét előfizetéshez megfelelő RBAC hozzáféréssel kell rendelkeznie.
+Használhatja a storage-fiók vagy az Event Hubs-névtér, amely nem ugyanabban az előfizetésben, mint a naplókat kibocsátó. A beállítást konfiguráló felhasználónak rendelkeznie kell a megfelelő RBAC-hozzáférés mindkét előfizetéshez.
 
 > [!NOTE]
->  Jelenleg nem archiválhatja adatok tárolási funkciókat biztosító fiókot, amellyel mögött egy védett virtuális hálózatot.
+>  Jelenleg nem archiválhatja adatokat egy Storage-fiók, amely mögött egy biztonságos virtuális hálózaton.
 
-## <a name="resource-diagnostic-settings"></a>Erőforrás diagnosztikai beállítások
+> [!WARNING]
+> A formátum a naplóadatok a tárfiókban lévő JSON-sorok 2018. november 1-től változik. [Tekintse meg a jelen cikk egy leírást a hatás és az eszközök kezeléséhez az új formátum frissítése.](./monitor-diagnostic-logs-append-blobs.md) 
+>
+> 
 
-Erőforrás diagnosztikai naplókat a további nem-számítási erőforrások erőforrás diagnosztikai beállításainak használatával vannak konfigurálva. **Erőforrás diagnosztikai beállításainak** egy erőforrás-vezérlő:
+## <a name="resource-diagnostic-settings"></a>Erőforrás diagnosztikai beállításai
 
-* Ha erőforrás diagnosztikai naplók és a metrikák küldése (a Tárfiók, az Event Hubs, és/vagy Naplóelemzési).
-* Napló kategóriák kerülnek, és hogy metrikaadatokat is lett van küldve.
-* Mennyi ideig napló kategóriákhoz rendszer meddig őrizze meg a storage-fiók
-    - Egy nulla napos megőrzési azt jelenti, hogy a naplók végtelen tartanak. Ellenkező esetben a értéke lehet bármely 1 és 2147483647 között eltelt napok számát.
-    - Ha a megőrzési házirend-beállításokat, de naplók tárolása a Storage-fiók le van tiltva, (például, ha csak az Event Hubs vagy Naplóelemzési beállítások vannak jelölve), az adatmegőrzési hatástalan.
-    - Adatmegőrzési alkalmazott napi,, így napi (UTC) szerint naplókat, amelyik most már a megőrzési túl napjától végén házirend törlődnek. Például ha egy nap adatmegőrzési, mai nap kezdetén a napló, a nap előtt tegnap törlése akkor történik meg. A törlési folyamat kezdődik éjfél UTC, de vegye figyelembe, hogy törli a tárfiókot az naplók akár 24 óráig is eltarthat.
+Az erőforrás-diagnosztikai naplók nem – számítási erőforrásokat az erőforrás diagnosztikai beállításait használatával vannak konfigurálva. **Erőforrás diagnosztikai beállításait** egy erőforrás-vezérlő:
 
-Ezek a beállítások könnyen vannak konfigurálva, az Azure portálon erőforrás diagnosztikai beállításait, Azure PowerShell és a parancssori felület parancsait, vagy keresztül a [Azure figyelő REST API](https://msdn.microsoft.com/library/azure/dn931943.aspx).
+* Amennyiben erőforrás-diagnosztikai naplók és mérőszámok érkeznek (Storage-fiók, az Event Hubs, illetve a Log Analytics).
+* Melyik naplókategóriák küldik, és hogy metrikaadatok is elküldi a rendszer.
+* Mennyi ideig minden naplókategória megőrződjön-e a storage-fiókban
+    - Egy nulla napnyi adatmegőrzéshez azt jelenti, hogy naplókat tartják örökre. Ellenkező esetben az érték lehet minden olyan 1 és 2147483647 között eltelt napok számát.
+    - Ha a megőrzési házirend-beállításokat, de a naplók tárolása a Storage-fiók le van tiltva, (például, ha csak az Event Hubs és a Log Analytics lehetőség be van jelölve), az adatmegőrzési szabályzatok nem befolyásolják.
+    - Adatmegőrzési házirendek, az alkalmazott napi, hogy naponta (UTC), naplók, amely mostantól a megőrzési ideje meghaladja a nap végén törli a házirendet. Például ha egy nap adatmegőrzési, ma a nap kezdetén az a napja előtt tegnap naplóinak törlődnének. A törlési folyamat kezdődik UTC szerint éjfélig, de vegye figyelembe, hogy a naplók a tárfiókból a törlendő akár 24 órát is igénybe vehet.
+
+Ezek a beállítások egyszerűen vannak konfigurálva, az Azure Portalon erőforrás diagnosztikai beállításait, az Azure PowerShell és CLI-parancsok vagy keresztül a [Azure Monitor REST API](https://msdn.microsoft.com/library/azure/dn931943.aspx).
 
 > [!NOTE]
 > A többdimenziós metrikák diagnosztikai beállításokon keresztül történő küldése jelenleg nem támogatott. A dimenziókkal rendelkező metrikák egybesimított, egydimenziós metrikákként vannak exportálva, összesített dimenzióértékekkel.
@@ -64,80 +69,80 @@ Ezek a beállítások könnyen vannak konfigurálva, az Azure portálon erőforr
 >
 
 > [!WARNING]
-> Diagnosztikai naplók és a vendég operációs rendszer rétegből számítási erőforrások (például a virtuális gépek vagy a Service Fabric) használati metrikák [konfigurációs és kimenetek kiválasztása külön mechanizmusát](../azure-diagnostics.md).
+> Diagnosztikai naplók és a vendég operációs rendszer rétegből számítási erőforrások (például a virtuális gépek vagy a Service Fabric) használati metrikák [egy külön mechanizmus beállításához és a választott kimenetek](../azure-diagnostics.md).
 
-## <a name="how-to-enable-collection-of-resource-diagnostic-logs"></a>Az erőforrás diagnosztikai naplók gyűjtésének engedélyezése
+## <a name="how-to-enable-collection-of-resource-diagnostic-logs"></a>Erőforrás diagnosztikai naplók gyűjtésének engedélyezése
 
-Az erőforrás diagnosztikai naplók gyűjtésének engedélyezhető [erőforrás létrehozása a Resource Manager-sablon részeként](./monitoring-enable-diagnostic-logs-using-template.md) vagy a portál az adott erőforrás oldalról erőforrás létrehozása után. Azure PowerShell vagy a CLI-parancsok használatával, vagy a Azure REST API használatával bármikor gyűjtemény is engedélyezheti.
+Erőforrás-diagnosztikai naplók gyűjtését engedélyezhető [erőforrás létrehozása a Resource Manager-sablon részeként](./monitoring-enable-diagnostic-logs-using-template.md) vagy egy erőforrás létrehozása a portálon, hogy erőforrás oldaláról után. Gyűjtemény bármely pontján, az Azure PowerShell vagy parancssori felület parancsai, vagy az Azure Monitor REST API használatával is engedélyezheti.
 
 > [!TIP]
-> Ezek az utasítások nem feltétlenül vonatkozik közvetlenül minden erőforráshoz. Tekintse meg a séma hivatkozásokat, különleges lépések, amelyek érvényesek az egyes erőforrástípusok megérteni a lap alján.
+> Ezek az utasítások nem alkalmazható erre a minden erőforrás. Tekintse meg a séma hivatkozásokat, amelyek érvényesek az egyes erőforrástípusok különleges lépések megértéséhez a lap alján.
 
-### <a name="enable-collection-of-resource-diagnostic-logs-in-the-portal"></a>Az erőforrás diagnosztikai naplókat a portálon gyűjtésének engedélyezése
+### <a name="enable-collection-of-resource-diagnostic-logs-in-the-portal"></a>A portál erőforrás-diagnosztikai naplók gyűjtésének engedélyezéséhez
 
-Engedélyezheti az erőforrás diagnosztikai naplók az Azure portálon gyűjtemény egy erőforrás vagy egy adott erőforrás címen, vagy navigáljon az Azure-figyelő létrehozása után. Ennek engedélyezéséhez Azure figyelő keresztül:
+Erőforrás létrehozása vagy egy adott erőforrás zárolását, vagy az Azure Monitor után gyűjteménye, erőforrás-diagnosztikai naplók az Azure Portalon engedélyezheti. Ennek engedélyezéséhez az Azure Monitor-n keresztül:
 
-1. Az a [Azure-portálon](http://portal.azure.com), navigáljon az Azure-figyelő, és kattintson a **diagnosztikai beállítások**
+1. Az a [az Azure portal](http://portal.azure.com), keresse meg az Azure Monitor, majd kattintson a **diagnosztikai beállítások**
 
-    ![Figyelés szakaszban Azure-figyelő](media/monitoring-overview-of-diagnostic-logs/diagnostic-settings-blade.png)
+    ![Az Azure Monitor figyelési szakasza](media/monitoring-overview-of-diagnostic-logs/diagnostic-settings-blade.png)
 
-2. Opcionálisan erőforráscsoport és erőforrások típus szerint a lista szűréséhez, majd kattintson az erőforráson, amelynek szeretné beállítani a diagnosztikai.
+2. Igény szerint szűrje a listát, erőforráscsoport vagy erőforrás típusa, majd kattintson az a erőforrás, amelynek szeretné egy diagnosztikai beállítás.
 
-3. Ha a beállítások nem található az erőforrás a választott, kéri beállítás létrehozása. Kattintson a "Diagnosztika bekapcsolásához."
+3. Ha a beállítások nem létezik az erőforráson kiválasztott, kéri létre beállítást. Kattintson a "Engedélyezze a diagnosztikát."
 
-   ![Diagnosztikai beállítás - nincsenek meglévő beállítások hozzáadása](media/monitoring-overview-of-diagnostic-logs/diagnostic-settings-none.png)
+   ![Diagnosztikai beállítás - beállítások nélkül hozzáadása](media/monitoring-overview-of-diagnostic-logs/diagnostic-settings-none.png)
 
-   Ha az erőforrás-meglévő beállítások, látni fogja már ehhez az erőforráshoz konfigurált beállítások listája. A "Hozzáadás diagnosztikai beállításának."
+   Ha meglévő beállításokat az erőforráson, látni fogja a beállítások már konfigurálva van a ehhez az erőforráshoz. Kattintson a "Diagnosztikai beállítás hozzáadása."
 
    ![Diagnosztikai beállítás - meglévő beállítások hozzáadása](media/monitoring-overview-of-diagnostic-logs/diagnostic-settings-multiple.png)
 
-3. Adjon a beállítás nevét, jelölje be minden célhelyéhez, amelyet szeretne adatokat küldeni, és konfigurálja, hogy melyik erőforrást minden egyes célhelyhez használt. Beállíthatja a napokban ezek a naplók segítségével számos a **megőrzés (nap)** csúszkák (fiók célhelyet csak érvényes). Egy nulla napos megőrzési határozatlan ideig tárolja a naplókat.
+3. Adja meg a beállítás a neve, jelölje be a minden célhelyéhez, amely adatokat küldhet, és konfigurálja, hogy melyik erőforrást használja minden cél szeretné. Beállíthatja a megőrzi ezeket a naplókat a napok számát a **megőrzés (nap)** csúszkák (a storage-fiók cél csak érvényes). Egy nulla napnyi adatmegőrzéshez határozatlan ideig tárolja a naplókat.
 
    ![Diagnosztikai beállítás - meglévő beállítások hozzáadása](media/monitoring-overview-of-diagnostic-logs/diagnostic-settings-configure.png)
 
 4. Kattintson a **Save** (Mentés) gombra.
 
-Néhány másodpercen belül az új beállítás jelenik meg az ehhez az erőforráshoz beállítások listáját, és diagnosztikai naplókat a megadott célhelyre küldött, amint létrejön az új esemény-adatokat.
+Néhány pillanat múlva az új beállítás jelenik meg az ehhez az erőforráshoz beállítások listáját, és a diagnosztikai naplók érkeznek a megadott helyre, amint új esemény adat keletkezik.
 
-### <a name="enable-collection-of-resource-diagnostic-logs-via-powershell"></a>Az erőforrás diagnosztikai naplók PowerShell gyűjtésének engedélyezése
+### <a name="enable-collection-of-resource-diagnostic-logs-via-powershell"></a>PowerShell erőforrás-diagnosztikai naplók gyűjtésének engedélyezéséhez
 
-Az erőforrás diagnosztikai naplók Azure PowerShell gyűjtésének engedélyezéséhez használja a következő parancsokat:
+Ahhoz, hogy az erőforrás-diagnosztikai naplók az Azure Powershellen keresztül gyűjteménye, használja a következő parancsokat:
 
-Ahhoz, hogy a storage-fiókok a diagnosztikai naplók tárolására, az alábbi parancsot használja:
+Ahhoz, hogy a diagnosztikai naplókat egy tárfiókban, használja ezt a parancsot:
 
 ```powershell
 Set-AzureRmDiagnosticSetting -ResourceId [your resource id] -StorageAccountId [your storage account id] -Enabled $true
 ```
 
-A tárfiók azonosítója az erőforrás-azonosítója, amelyhez hozzá szeretné küldeni a naplókat a tárfiók.
+A tárfiók azonosítója, amelyhez is szeretne küldeni a naplókat a storage-fiók erőforrás-azonosító.
 
-Adatfolyamként való küldése a diagnosztikai naplók eseményközpontokba való engedélyezéséhez az alábbi parancsot használja:
+Diagnosztikai naplók egy eseményközpontba streamelésének engedélyezéséhez használja ezt a parancsot:
 
 ```powershell
 Set-AzureRmDiagnosticSetting -ResourceId [your resource id] -ServiceBusRuleId [your Service Bus rule id] -Enabled $true
 ```
 
-A service bus Szabályazonosító: karakterlánc a következő formátumban: `{Service Bus resource ID}/authorizationrules/{key name}`.
+A service bus Szabályazonosító egy karakterláncérték, ebben a formátumban: `{Service Bus resource ID}/authorizationrules/{key name}`.
 
-A diagnosztikai naplókat a Naplóelemzési munkaterület küldésének engedélyezéséhez az alábbi parancsot használja:
+A Log Analytics-munkaterület-diagnosztikai naplók küldése engedélyezéséhez használja ezt a parancsot:
 
 ```powershell
 Set-AzureRmDiagnosticSetting -ResourceId [your resource id] -WorkspaceId [resource id of the log analytics workspace] -Enabled $true
 ```
 
-Az erőforrás-azonosítója a Naplóelemzési munkaterület a következő paranccsal szerezheti be:
+Az erőforrás-Azonosítóját a Log Analytics-munkaterület a következő paranccsal szerezheti be:
 
 ```powershell
 (Get-AzureRmOperationalInsightsWorkspace).ResourceId
 ```
 
-Ezek a paraméterek ahhoz, hogy több kimenet beállításai kombinálhatja.
+Kombinálhatja ezeket a paramétereket, több kimeneti beállítások engedélyezéséhez.
 
-### <a name="enable-collection-of-resource-diagnostic-logs-via-azure-cli-20"></a>Az erőforrás diagnosztikai naplók keresztül Azure CLI 2.0 gyűjtésének engedélyezése
+### <a name="enable-collection-of-resource-diagnostic-logs-via-azure-cli-20"></a>Azure CLI 2.0-n keresztül erőforrás-diagnosztikai naplók gyűjtésének engedélyezéséhez
 
-Ahhoz, hogy az erőforrás diagnosztikai naplók az Azure CLI 2.0 keresztül gyűjteménye, használja a [az figyelő diagnosztikai-beállítások létrehozása](/cli/azure/monitor/diagnostic-settings#az-monitor-diagnostic-settings-create) parancsot.
+Ahhoz, hogy az erőforrás-diagnosztikai naplók az Azure CLI 2.0-n keresztül gyűjteménye, használja a [az monitor diagnostic-settings létrehozása](/cli/azure/monitor/diagnostic-settings#az-monitor-diagnostic-settings-create) parancsot.
 
-Ahhoz, hogy a Storage-fiókok a diagnosztikai naplók tárolására:
+Diagnosztikai naplókat egy tárfiókban engedélyezése:
 
 ```azurecli
 az monitor diagnostic-settings create --name <diagnostic name> \
@@ -155,9 +160,9 @@ az monitor diagnostic-settings create --name <diagnostic name> \
     }]'
 ```
 
-A `--resource-group` argumentum csak akkor kötelező, ha `--storage-account` nincs egy objektumot.
+A `--resource-group` argumentum csak akkor kötelező, ha `--storage-account` nem egy objektumot.
 
-Adatfolyamként diagnosztikai naplók az eseményközpontok felé:
+Diagnosztikai naplók egy eseményközpontba streamelésének engedélyezéséhez:
 
 ```azurecli
 az monitor diagnostic-settings create --name <diagnostic name> \
@@ -172,9 +177,9 @@ az monitor diagnostic-settings create --name <diagnostic name> \
     ]'
 ```
 
-A szabály azonosítója: a formátumú karakterláncot: `{Service Bus resource ID}/authorizationrules/{key name}`.
+A szabály azonosítója egy karakterláncérték, ebben a formátumban: `{Service Bus resource ID}/authorizationrules/{key name}`.
 
-Ahhoz, hogy elküldését a diagnosztikai naplókat a Naplóelemzési munkaterület:
+Ahhoz, hogy a Log Analytics-munkaterület-diagnosztikai naplók küldése:
 
 ```azurecli
 az monitor diagnostic-settings create --name <diagnostic name> \
@@ -189,34 +194,34 @@ az monitor diagnostic-settings create --name <diagnostic name> \
     ]'
 ```
 
-A `--resource-group` argumentum csak akkor kötelező, ha `--workspace` nincs Objektumazonosító
+A `--resource-group` argumentum csak akkor kötelező, ha `--workspace` nem egy objektum-azonosító
 
-Bármely paranccsal adhat hozzá további kategóriákra a diagnosztikai naplófájl át JSON-tömb szótárak hozzáadásával a `--logs` paraméter. Kombinálhatja a `--storage-account`, `--event-hub`, és `--workspace` paraméterekkel engedélyezheti a több kimenet beállításai.
+Bármely paranccsal adhat hozzá további kategóriát a diagnosztikai napló szótárak ad hozzá a JSON-tömböt adhatók be a `--logs` paraméter. Kombinálhatja a `--storage-account`, `--event-hub`, és `--workspace` paraméterek több kimeneti beállítások engedélyezéséhez.
 
-### <a name="enable-collection-of-resource-diagnostic-logs-via-rest-api"></a>Az erőforrás diagnosztikai naplók REST API-n keresztül gyűjtésének engedélyezése
+### <a name="enable-collection-of-resource-diagnostic-logs-via-rest-api"></a>REST API-n keresztül erőforrás-diagnosztikai naplók gyűjtésének engedélyezéséhez
 
-A Azure REST API használatával diagnosztikai beállítások módosításához lásd [Ez a dokumentum](https://msdn.microsoft.com/library/azure/dn931931.aspx).
+Az Azure Monitor REST API használatával diagnosztikai beállítások módosításához tekintse meg a [ebben a dokumentumban](https://msdn.microsoft.com/library/azure/dn931931.aspx).
 
-## <a name="manage-resource-diagnostic-settings-in-the-portal"></a>A portál erőforrás diagnosztikai beállítások kezelése
+## <a name="manage-resource-diagnostic-settings-in-the-portal"></a>Kezelheti az erőforrás diagnosztikai beállításait a portálon
 
-Győződjön meg arról, hogy az erőforrások vannak beállítva a diagnosztikai beállítások. Navigáljon a **figyelő** a portálon, és nyissa meg a **diagnosztikai beállítások**.
+Győződjön meg arról, hogy az összes erőforrás legyenek beállítva a diagnosztikai beállítások. Navigáljon a **figyelő** a portálon és a nyílt **diagnosztikai beállítások**.
 
-![Diagnosztikai naplók panelen a portálon](./media/monitoring-overview-of-diagnostic-logs/diagnostic-settings-nav.png)
+![Diagnosztikai naplók panel a portálon](./media/monitoring-overview-of-diagnostic-logs/diagnostic-settings-nav.png)
 
-Lehet, hogy kattintson "Az összes szolgáltatás" a figyelő szakaszban találja.
+Kattintson az "Összes szolgáltatások" lehet a Monitor terület található.
 
-Itt megtekintheti és összes erőforrást, amely támogatja a diagnosztikai beállításokat, hogy azok rendelkeznek-e engedélyezve diagnosztikai szűréséhez. Lásd: is lebontva, ha több beállítások erőforrás van beállítva, és ellenőrizze, melyik tárfiók, az Event Hubs névtér és/vagy adatok halad a Naplóelemzési munkaterület.
+Itt megtekintheti és szűrheti az összes olyan erőforrást, amely támogatja a diagnosztikai beállítások használatával ellenőrizheti, hogy engedélyezve van a diagnosztika. Lásd: is részletezéssel, ha a beállítások több erőforrás van beállítva, és ellenőrizze, melyik storage-fiók, az Event Hubs-névtér, illetve az adatok átvitele a Log Analytics-munkaterület.
 
 ![Diagnosztikai naplók eredmények a portál](./media/monitoring-overview-of-diagnostic-logs/diagnostic-settings-blade.png)
 
-Megjeleníti egy diagnosztikai beállítás hozzáadása a diagnosztikai beállítások nézet, ahol engedélyezheti, letiltása, vagy módosíthatja a kiválasztott erőforrás diagnosztikai beállításait.
+Diagnosztikai beállítás hozzáadása megjeleníti a diagnosztikai beállítások nézet, ahol engedélyezhetnek, letilthatnak vagy módosíthatja a kiválasztott erőforrás diagnosztikai beállításait.
 
-## <a name="supported-services-categories-and-schemas-for-resource-diagnostic-logs"></a>Támogatott szolgáltatások, a kategóriák és a sémák erőforrás diagnosztikai naplók
+## <a name="supported-services-categories-and-schemas-for-resource-diagnostic-logs"></a>Támogatott szolgáltatások, kategóriák és sémák a diagnosztikai naplókhoz erőforrás
 
-[Ebben a cikkben találhat](monitoring-diagnostic-logs-schema.md) támogatott szolgáltatások és a napló kategóriák és a szolgáltatások által használt sémák teljes listáját.
+[Ebben a cikkben](monitoring-diagnostic-logs-schema.md) támogatott szolgáltatások, valamint naplókategóriák és ezek a szolgáltatások által használt sémák teljes listáját.
 
 ## <a name="next-steps"></a>További lépések
 
-* [Adatfolyam-erőforrás diagnosztikai naplók **Event Hubs**](monitoring-stream-diagnostic-logs-to-event-hubs.md)
-* [A Azure REST API használatával erőforrás diagnosztikai beállításainak módosítása](https://msdn.microsoft.com/library/azure/dn931931.aspx)
-* [A Naplóelemzési az Azure storage naplóinak elemzése](../log-analytics/log-analytics-azure-storage.md)
+* [Az erőforrás-diagnosztikai naplók Stream **az Event Hubs**](monitoring-stream-diagnostic-logs-to-event-hubs.md)
+* [Módosítsa az erőforrás diagnosztikai beállításait az Azure Monitor REST API használatával](https://msdn.microsoft.com/library/azure/dn931931.aspx)
+* [A Log Analytics használatával az Azure storage-naplók elemzése](../log-analytics/log-analytics-azure-storage.md)
