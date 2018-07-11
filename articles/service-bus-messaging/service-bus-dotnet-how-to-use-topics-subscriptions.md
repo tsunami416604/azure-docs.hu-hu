@@ -12,14 +12,14 @@ ms.devlang: tbd
 ms.topic: hero-article
 ms.tgt_pltfrm: dotnet
 ms.workload: na
-ms.date: 12/6/2017
+ms.date: 07/03/2018
 ms.author: sethm
-ms.openlocfilehash: aa75ac48d650f28d4aaeb612f2900d705cf71b5b
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 8916ccb430da6bea66de3894201a11a70bb45df9
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2018
-ms.locfileid: "29396941"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37447200"
 ---
 # <a name="get-started-with-service-bus-topics"></a>Bevezetés a Service Bus-üzenettémák használatába
 
@@ -100,7 +100,7 @@ Indítsa el a Visual Studiót, majd hozzon létre egy új **Konzolalkalmazás (.
     using Microsoft.Azure.ServiceBus;
     ```
 
-2. A `Program` osztályban deklarálja az alábbi változókat. A `ServiceBusConnectionString` változó értékének állítsa be a névtér létrehozásakor kapott kapcsolati karakterláncot, a `TopicName` értékének pedig az üzenettéma létrehozásakor használt nevet:
+2. A `Program` osztályban deklarálja az alábbi változókat. A `ServiceBusConnectionString` változó értékének állítsa be a névtér létrehozásakor kapott kapcsolati sztringet, a `TopicName` értékének pedig az üzenettéma létrehozásakor használt nevet:
    
     ```csharp
     const string ServiceBusConnectionString = "<your_connection_string>";
@@ -246,7 +246,7 @@ Az imént elküldött üzenetek fogadásához hozzon létre egy másik .NET Core
     using Microsoft.Azure.ServiceBus;
     ```
 
-2. A `Program` osztályban deklarálja az alábbi változókat. A `ServiceBusConnectionString` változó értékének állítsa be a névtér létrehozásakor kapott kapcsolati karakterláncot, a `TopicName` értékének az üzenettéma létrehozásakor használt nevet, a `SubscriptionName` értékének pedig az üzenettéma-előfizetés létrehozásakor használt nevet:
+2. A `Program` osztályban deklarálja az alábbi változókat. A `ServiceBusConnectionString` változó értékének állítsa be a névtér létrehozásakor kapott kapcsolati sztringet, a `TopicName` értékének az üzenettéma létrehozásakor használt nevet, a `SubscriptionName` értékének pedig az üzenettéma-előfizetés létrehozásakor használt nevet:
    
     ```csharp
     const string ServiceBusConnectionString = "<your_connection_string>";
@@ -429,7 +429,7 @@ Gratulálunk! A .NET Standard kódtár használatával létrehozott egy üzenett
 
 ## <a name="next-steps"></a>További lépések
 
-Tekintse meg a [GitHub-tárunkat, ahol további példákat talál](https://github.com/Azure/azure-service-bus/tree/master/samples), amelyek a Service Bus üzenetkezelési szolgáltatásának néhány speciális funkcióját mutatják be.
+Tekintse meg Service Bus [GitHub-adattárunkat, ahol további példákat talál](https://github.com/Azure/azure-service-bus/tree/master/samples), amelyek a Service Bus üzenetkezelési szolgáltatásának néhány speciális funkcióját mutatják be.
 
 <!--Image references-->
 

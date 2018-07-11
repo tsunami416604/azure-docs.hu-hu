@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 04/30/2018
 ms.author: sethm
-ms.openlocfilehash: 1b2c9b3a0b7565e7de40d4dc0e623a62313b79db
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.openlocfilehash: dde7691d2fe4503de8a671d7f29e36558d474699
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/03/2018
-ms.locfileid: "32775523"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37440393"
 ---
 # <a name="service-bus-premium-and-standard-messaging-tiers"></a>A Service Bus prémium és standard szintű üzenetkezelés szintjei
 
@@ -57,7 +57,7 @@ Ha szabványos üzenetkezelés alatt futtat kódot, és továbbítani szeretné 
 
 ## <a name="get-started-with-premium-messaging"></a>Ismerkedés a prémium szintű üzenetkezeléssel
 
-A prémium szintű üzenetkezelés használatba vétele egyszerű, a folyamat pedig a standard szintű üzenetkezeléséhez hasonló. Első lépésként [hozzon létre egy névteret](service-bus-create-namespace-portal.md) az [Azure Portalon](https://portal.azure.com). Győződjön meg arról, hogy a **Tarifacsomag kiválasztása** területen a **Prémium** tarifacsomagot választotta ki.
+A prémium szintű üzenetkezelés használatba vétele egyszerű, a folyamat pedig a standard szintű üzenetkezeléséhez hasonló. Első lépésként [hozzon létre egy névteret](service-bus-create-namespace-portal.md) az [Azure Portalon](https://portal.azure.com). Győződjön meg arról, hogy a **Tarifacsomag** alatt a **Prémium** tarifacsomagot választotta ki. Az egyes tarifacsomagokkal kapcsolatos információk megtekintéséhez kattintson a **Díjszabási részletek megtekintése** elemre.
 
 ![create-premium-namespace][create-premium-namespace]
 
@@ -65,7 +65,7 @@ A prémium szintű üzenetkezelés használatba vétele egyszerű, a folyamat pe
 
 ## <a name="next-steps"></a>További lépések
 
-A Service Bus-üzenetkezelésről az alábbi témakörökben találhat további információkat.
+A Service Bus üzenetküldési funkcióival kapcsolatos további információkért tekintse meg a következőket:
 
 * [Az Azure Service Bus prémium szintű üzenetkezelés bemutatása (blogbejegyzés)](http://azure.microsoft.com/blog/introducing-azure-service-bus-premium-messaging/)
 * [Az Azure Service Bus prémium szintű üzenetkezelés bemutatása (Channel9)](https://channel9.msdn.com/Blogs/Subscribe/Introducing-Azure-Service-Bus-Premium-Messaging)

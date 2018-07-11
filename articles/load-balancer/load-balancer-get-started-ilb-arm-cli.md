@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/27/2017
+ms.date: 06/27/2018
 ms.author: kumud
-ms.openlocfilehash: a4093926ea2ea2bb0e477372a1ceb2dfbf22e8f0
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 92e464aa4e0dcb7199b6db44d2c28db5b6d1673c
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "36330968"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37097954"
 ---
 # <a name="create-an-internal-load-balancer-to-load-balance-vms-using-azure-cli-20"></a>Belső terheléselosztó létrehozása a virtuális gépek terhelésének elosztásához az Azure CLI 2.0 használatával
 
@@ -108,36 +108,9 @@ A terheléselosztási szabályok meghatározzák az előtérbeli IP-konfiguráci
 
 Mielőtt üzembe helyezné a virtuális gépeket, és tesztelné a terheléselosztót, hozza létre a támogató virtuális hálózati erőforrásokat.
 
-###  <a name="create-a-network-security-group"></a>Hálózati biztonsági csoport létrehozása
-Hozzon létre hálózati biztonsági csoportot a virtuális hálózat bejövő kapcsolatainak meghatározásához.
-
-```azurecli-interactive
-  az network nsg create \
-    --resource-group myResourceGroupILB \
-    --name myNetworkSecurityGroup
-```
-
-### <a name="create-a-network-security-group-rule"></a>Biztonságicsoport-szabály létrehozása
-
-Hozzon létre biztonságicsoport-szabályt a 80-as porton keresztül érkező bejövő kapcsolatok engedélyezéséhez.
-
-```azurecli-interactive
-  az network nsg rule create \
-    --resource-group myResourceGroupILB \
-    --nsg-name myNetworkSecurityGroup \
-    --name myNetworkSecurityGroupRuleHTTP \
-    --protocol tcp \
-    --direction inbound \
-    --source-address-prefix '*' \
-    --source-port-range '*' \
-    --destination-address-prefix '*' \
-    --destination-port-range 80 \
-    --access allow \
-    --priority 300
-```
 ### <a name="create-nics"></a>Hálózati adapterek létrehozása
 
-Hozzon létre két hálózati adaptert az [az network nic create](/cli/azure/network/nic#az_network_nic_create) paranccsal, és rendelje azokat a magánhálózati IP-címhez és a hálózati biztonsági csoporthoz. 
+Hozzon létre két hálózati adaptert az [az network nic create](/cli/azure/network/nic#az_network_nic_create) paranccsal, és rendelje hozzá őket a magánhálózati IP-címhez. 
 
 ```azurecli-interactive
 for i in `seq 1 2`; do
@@ -146,7 +119,6 @@ for i in `seq 1 2`; do
     --name myNic$i \
     --vnet-name myVnet \
     --subnet mySubnet \
-    --network-security-group myNetworkSecurityGroup \
     --lb-name myLoadBalancer \
     --lb-address-pools myBackEndPool
 done

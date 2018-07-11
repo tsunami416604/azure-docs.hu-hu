@@ -12,12 +12,12 @@ ms.topic: tutorial
 ms.date: 03/30/2018
 ms.author: sngun
 ms.custom: mvc
-ms.openlocfilehash: 7f8e8d920884c611965ff760bb0369e08163356e
-ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
+ms.openlocfilehash: 52d5977b2a454dec803ad1233fcb12cc9573521c
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37029604"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37100351"
 ---
 # <a name="azure-cosmos-db-data-migration-tool"></a>Azure Cosmos DB: Adatáttelepítési eszköz
 
@@ -450,7 +450,7 @@ Elérhető néhány speciális beállítás is importáláskor. Dátum típusú 
 
 Az Azure Cosmos DB szekvenciális rekordimportáló eszköze a következő speciális beállításokat támogatja:
 
-1. Number of Parallel Requests (Párhuzamos kérelmek száma): A párhuzamos kérelmek alapértelmezett száma kettő. Kisméretű dokumentumok importálásakor célszerű növelni a párhuzamos kérelmek számát. Ha azonban túlzottan nagy értéket ad meg, akkor leszabályozást tapasztalhat, mely csökkenti a teljesítményt.
+1. Number of Parallel Requests (Párhuzamos kérelmek száma): A párhuzamos kérelmek alapértelmezett száma kettő. Kisméretű dokumentumok importálásakor célszerű növelni a párhuzamos kérelmek számát. Ha azonban túl nagy értéket ad meg, akkor a rendszer korlátozhatja az importálás sebességét.
 2. Disable Automatic Id Generation (Automatikus azonosítógenerálás letiltása): Ha az összes importálandó dokumentum tartalmaz egy azonosítómezőt, akkor ennek a beállításnak a választása felgyorsíthatja az importálást. Az egyedi azonosítómezőt nem tartalmazó dokumentumokat nem importálja az eszköz.
 3. Update Existing Documents (Meglévő dokumentumok frissítése): Az eszköz alapértelmezés szerint nem cseréli le a meglévő dokumentumokat azonosítóütközés esetén. Ennek a beállításnak a választásával felülírhatja a meglévő dokumentumokat az azonos azonosítójú importált dokumentumokkal. Ez a funkció a meglévő dokumentumokat frissítő ütemezett adatáttelepítésekhez hasznos.
 4. Number of Retries on Failure (Újrapróbálkozások számára sikertelenség esetén): Meghatározza, hogy az eszköz hány alkalommal kísérelje meg ismét az Azure Cosmos DB-hez való csatlakozást átmeneti hiba fellépése esetén (például ha megszakad a hálózati kapcsolat).

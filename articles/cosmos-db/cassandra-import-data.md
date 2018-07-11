@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 11/15/2017
 ms.author: govindk
 ms.custom: mvc
-ms.openlocfilehash: 26731d80f5917f9d21aacafb5f8a79cfb02855af
-ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
+ms.openlocfilehash: 73c9f1fc26f5cb36cc475a66b67705c6177bebf8
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34795074"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37095672"
 ---
 # <a name="azure-cosmos-db-import-cassandra-data"></a>Azure Cosmos DB: Cassandra-adatok importálása
 
@@ -57,7 +57,7 @@ Ha Cassandra-adatokat szeretne importálni az Azure Cosmos DB-be a Cassandra API
 1. Táblák előzetes létrehozása és skálázása:
     * Az Azure Cosmos DB alapértelmezés szerint másodpercenként 1000 kérelemegységgel (RU/s) hoz létre egy új Cassandra API-táblát (a CQL-alapú létrehozás másodpercenként 400 kérelemegységgel történik). A cqlsh-val végzett migrálás indítása előtt hozza létre előre az összes táblát az [Azure Portalról](https://portal.azure.com) vagy a cqlsh-ból. 
 
-    * Az [Azure Portalon](https://portal.azure.com) növelje a táblák átviteli sebességét a migrálás időtartamára az alapértelmezett átviteli sebességről (400 vagy 1000 RU/s) 10000 RU/s-re. Nagyobb átviteli sebesség beállításakor nincs szükség szabályozásra, és gyorsabban végezhet a migrálással. Mivel az Azure Cosmos DB-ben órás egységekben történik a számlázás, költségtakarékossági okokból a migrálás után érdemes azonnal csökkentenie az átviteli sebességet.
+    * Az [Azure Portalon](https://portal.azure.com) növelje a táblák átviteli sebességét a migrálás időtartamára az alapértelmezett átviteli sebességről (400 vagy 1000 RU/s) 10000 RU/s-re. Nagyobb átviteli sebesség beállításakor nincs szükség a sebesség korlátozására, és gyorsabban végezhet a migrálással. Mivel az Azure Cosmos DB-ben órás egységekben történik a számlázás, költségtakarékossági okokból a migrálás után érdemes azonnal csökkentenie az átviteli sebességet.
 
 2. Állapítsa meg a művelethez tartozó kérelemegységek díját. Ezt tetszőleges Azure Cosmos DB Cassandra API SDK-val megteheti. Ez a példa a kérelemegység-díjak .NET-tel való beszerzését mutatja be. 
 

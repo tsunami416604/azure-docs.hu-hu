@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: afc9e7c0635f9920aa3ec7c9e6012aa4e41edb9d
-ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
+ms.openlocfilehash: 8e6873f45beac281adbc7a9669504f1703a9eaf5
+ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37062041"
+ms.lasthandoff: 07/02/2018
+ms.locfileid: "37345491"
 ---
 # <a name="deploy-azure-machine-learning-as-an-iot-edge-module---preview"></a>Az Azure Machine Learning üzembe helyezése IoT Edge-modulként – előzetes verzió
 
@@ -52,7 +52,7 @@ A fejlesztői gépen a következő előfeltételeknek kell rendelkezésre állni
 
 A folyamatazonosítás letiltásához meg kell adnia a **workload_uri** és a **management_uri** értékhez az IP-címet és portot az IoT Edge-démon konfigurációjának **connect** (csatlakozás) szakaszában.
 
-Elsőként szerezze be az IP-címet. Írja be az `ifconfig` parancsot a parancssorba, majd másolja a **docker0** interfész IP-címét.
+Elsőként szerezze be az IP-címet. Írja be az `ifconfig` parancsot a parancssorba, majd másolja ki a **docker0** interfész IP-címét.
 
 Szerkessze az IoT Edge-démon konfigurációs fájlját:
 
@@ -60,7 +60,7 @@ Szerkessze az IoT Edge-démon konfigurációs fájlját:
 sudo nano /etc/iotedge/config.yaml
 ```
 
-Frissítse a konfiguráció **connect** (csatlakozás) szakaszát. Például:
+Frissítse a konfiguráció **connect** (csatlakozás) szakaszát az IP-címmel. Például:
 ```yaml
 connect:
   management_uri: "http://172.17.0.1.1:15580"
@@ -125,7 +125,7 @@ Ellenőrizze, hogy a tárolórendszerkép sikeresen létrejött-e és a Machine 
 1. Ha már üzembe helyezte a tempSensor modult az IoT Edge-eszközön, akkor lehet, hogy automatikusan ki van töltve. Ha a modul még nem szerepel a listában, akkor vegye fel.
 
     1. Kattintson a **Hozzáadás** gombra, és válassza az **IoT Edge-modul** lehetőséget.
-    2. A **Név** mezőbe írja a következőt: `tempsensor`.
+    2. A **Név** mezőbe írja a következőt: `tempSensor`.
     3. A **Rendszerkép URI** mezőbe írja be a következőt: `mcr.microsoft.com/azureiotedge-simulated-temperature-sensor:1.0`.
     4. Kattintson a **Mentés** gombra.
 

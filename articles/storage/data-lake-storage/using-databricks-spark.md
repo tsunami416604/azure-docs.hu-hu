@@ -11,12 +11,12 @@ ms.workload: big-data
 ms.topic: tutorial
 ms.date: 6/27/2018
 ms.author: dineshm
-ms.openlocfilehash: 013369c84ca7f2ec232f542549c22260eca46980
-ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
+ms.openlocfilehash: 27ed860c7dd3b979a25860d453231de74d3f46be
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37062534"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37096916"
 ---
 # <a name="tutorial-access-azure-data-lake-storage-gen2-preview-data-with-databricks-using-spark"></a>Oktatóanyag: Hozzáférés a 2. generációs Azure Data Lake Storage előzetes verziójának adataihoz a Databricks és a Spark használatával
 
@@ -61,7 +61,7 @@ A következő lépés egy [Databricks-fürt](https://docs.azuredatabricks.net/) 
 8. Kattintson a **Fürt létrehozása** parancsra az oldal tetején (ez a folyamat akár 5 percig is eltarthat).
 9. Amikor a folyamat befejeződött, válassza az **Azure Databricks** lehetőséget a navigációs sáv bal felső részén.
 10. A lap alsó felén található **Új** területen válassza a **Notebook** lehetőséget.
-11. Írjon be egy szabadon választott nevet a **Név** mezőbe.
+11. Írjon be egy szabadon választott nevet a **Név** mezőbe, majd válassza ki a **Python** nyelvet.
 12. Az összes többi mező maradhat az alapértelmezett értéken.
 13. Kattintson a **Létrehozás** gombra.
 14. Másolja az alábbi kódot a **Cmd 1** cellába, és cserélje le az értékeket a tárfiókjából megőrzöttekre.
@@ -96,7 +96,7 @@ Nyissa meg újra a Databrickst a böngészőben, majd hajtsa végre a következ�
 5. Kattintson a **Létrehozás** gombra.
 6. Másolja az alábbi kódot a **Cmd 1** cellába (ez a kód automatikusan el lesz mentve a szerkesztőben).
 
-    ```
+    ```python
     #mount Azure Blob Storage as an HDFS file system to your databricks cluster
     #you need to specify a storage account and container to connect to. 
     #use a SAS token or an account key to connect to Blob Storage.  

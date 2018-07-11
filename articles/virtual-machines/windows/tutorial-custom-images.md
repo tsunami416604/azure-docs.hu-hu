@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 03/27/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: a449c1f9781ffc86de4786eaab3cb83999b86a72
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 930f5dc0369c998039b9cc0c089f60de17993be0
+ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32188048"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37435158"
 ---
 # <a name="tutorial-create-a-custom-image-of-an-azure-vm-with-azure-powershell"></a>Oktatóanyag: Egyéni rendszerkép létrehozása Azure virtuális gépről az Azure PowerShell-lel
 
@@ -121,12 +121,12 @@ New-AzureRmVm `
 
 ## <a name="image-management"></a>Rendszerkép kezelése 
 
-Az alábbiakban felsorolunk néhány gyakori rendszerképkezelési feladatot, és hogy miként lehet elvégezni ezeket a PowerShell használatával.
+Az alábbiakban felsorolunk néhány gyakori, a felügyelt rendszerképekkel kapcsolatos feladatot, és ismertetjük, hogy miként lehet ezeket elvégezni a PowerShell használatával.
 
 Listázza az összes rendszerképet név szerint.
 
 ```azurepowershell-interactive
-$images = Find-AzureRMResource -ResourceType Microsoft.Compute/images 
+$images = Get-AzureRMResource -ResourceType Microsoft.Compute/images 
 $images.name
 ```
 
@@ -149,7 +149,7 @@ Ebben az oktatóanyagban létrehozott egy egyéni virtuálisgép-rendszerképet.
 > * Az előfizetésben lévő összes rendszerkép listázása
 > * Rendszerkép törlése
 
-Lépjen tovább a következő oktatóanyagra, amelyben a magas rendelkezésre állású virtuális gépeket ismerheti meg.
+A következő oktatóanyagban a magas rendelkezésre állású virtuális gépeket ismerheti meg.
 
 > [!div class="nextstepaction"]
 > [Magas rendelkezésre állású virtuális gépek létrehozása](tutorial-availability-sets.md)

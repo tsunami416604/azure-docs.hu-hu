@@ -1,6 +1,6 @@
 ---
-title: Azure Service Fabric-fürt skálázása| Microsoft Docs
-description: Ez az oktatóanyag a Service Fabric-fürtök gyors skálázásának módját ismerteti.
+title: Service Fabric-fürt skálázása az Azure-ban | Microsoft Docs
+description: Ez az oktatóanyag a Service Fabric-fürtök Azure-beli gyors skálázásának módját ismerteti.
 services: service-fabric
 documentationcenter: .net
 author: Thraka
@@ -15,14 +15,14 @@ ms.workload: NA
 ms.date: 02/06/2018
 ms.author: adegeo
 ms.custom: mvc
-ms.openlocfilehash: 678ca45d12fd10a02d967cd32743b4d7b6ea26af
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 83f7a03744e7e8819d71eae81ed8e497797bef62
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34642699"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37109409"
 ---
-# <a name="tutorial-scale-a-service-fabric-cluster"></a>Oktatóanyag: Service Fabric-fürt skálázása
+# <a name="tutorial-scale-a-service-fabric-cluster-in-azure"></a>Oktatóanyag: Service Fabric-fürt skálázása az Azure-ban
 
 Ez az oktatóanyag egy sorozat második része, amely a meglévő fürtök horizontális fel- és leskálázásának módját mutatja be. Az oktatóanyag végére elsajátíthatja a fürtök skálázásának és a hátramaradt erőforrások eltávolításának módját.
 
@@ -41,14 +41,17 @@ Ebben az oktatóanyag-sorozatban az alábbiakkal ismerkedhet meg:
 > * [Az API Management üzembe helyezése a Service Fabrickel](service-fabric-tutorial-deploy-api-management.md)
 
 ## <a name="prerequisites"></a>Előfeltételek
+
 Az oktatóanyag elkezdése előtt:
-- Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
-- Telepítse az [Azure PowerShell-modul 4.1-es vagy újabb verzióját](https://docs.microsoft.com/powershell/azure/install-azurerm-ps), vagy az [Azure CLI 2.0-ás verzióját](/cli/azure/install-azure-cli).
-- Biztonságos [Windows-fürt](service-fabric-tutorial-create-vnet-and-windows-cluster.md) vagy [Linux-fürt](service-fabric-tutorial-create-vnet-and-linux-cluster.md) létrehozása az Azure-ban
-- Ha Windows-fürtöt telepít, állítson be egy Windows fejlesztési környezetet. Telepítse a [Visual Studio 2017](http://www.visualstudio.com) szoftvert, valamint az **Azure-fejlesztési**, **ASP.NET- és webes fejlesztési**, továbbá a **.NET Core platformfüggetlen fejlesztési** számítási feladatokat.  Ezután hozzon létre egy [.NET fejlesztési környezet](service-fabric-get-started.md).
-- Ha Linux-fürtöt telepít, állítson be Java fejlesztési környezetet [Linux](service-fabric-get-started-linux.md) vagy [MacOS](service-fabric-get-started-mac.md) operációs rendszeren.  Telepítse a [Service Fabric parancssori felületet](service-fabric-cli.md). 
+
+* Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+* Telepítse az [Azure PowerShell-modul 4.1-es vagy újabb verzióját](https://docs.microsoft.com/powershell/azure/install-azurerm-ps), vagy az [Azure CLI 2.0-ás verzióját](/cli/azure/install-azure-cli).
+* Biztonságos [Windows-fürt](service-fabric-tutorial-create-vnet-and-windows-cluster.md) vagy [Linux-fürt](service-fabric-tutorial-create-vnet-and-linux-cluster.md) létrehozása az Azure-ban
+* Ha Windows-fürtöt telepít, állítson be egy Windows fejlesztési környezetet. Telepítse a [Visual Studio 2017](http://www.visualstudio.com) szoftvert, valamint az **Azure-fejlesztési**, **ASP.NET- és webes fejlesztési**, továbbá a **.NET Core platformfüggetlen fejlesztési** számítási feladatokat.  Ezután hozzon létre egy [.NET fejlesztési környezet](service-fabric-get-started.md).
+* Ha Linux-fürtöt telepít, állítson be Java fejlesztési környezetet [Linux](service-fabric-get-started-linux.md) vagy [MacOS](service-fabric-get-started-mac.md) operációs rendszeren.  Telepítse a [Service Fabric parancssori felületet](service-fabric-cli.md).
 
 ## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
+
 Azure-parancsok végrehajtása előtt jelentkezzen be az Azure-fiókjába, és válassza ki az előfizetését.
 
 ```powershell
@@ -118,7 +121,7 @@ A leskálázás ugyanúgy működik, mint a felskálázás, azzal a különbség
 > [!NOTE]
 > Ez a rész kizárólag a *Bronz* tartóssági szintre vonatkozik. A tartóssággal kapcsolatos további információ: [Service Fabric-fürtök kapacitástervezése][durability].
 
-A virtuálisgép-méretezési csoportok horizontális leskálázásakor a méretezési csoport (a legtöbb esetben) a legutoljára létrehozott virtuálisgép-példányt távolítja el. Így tehát meg kell keresnie az utoljára létrehozott, egyező Service Fabric-csomópontot. Az utolsó csomópont azonosításához a legnagyobb értékű `NodeInstanceId` tulajdonságot kell keresnie egyes Service Fabric-csomópontokon. Az alábbi példakód ezen tulajdonság alapján rendezi a csomópontpéldányokat, és visszaadja a legnagyobb azonosítóértékkel rendelkező példány adatait. 
+A virtuálisgép-méretezési csoportok horizontális leskálázásakor a méretezési csoport (a legtöbb esetben) a legutoljára létrehozott virtuálisgép-példányt távolítja el. Így tehát meg kell keresnie az utoljára létrehozott, egyező Service Fabric-csomópontot. Az utolsó csomópont azonosításához a legnagyobb értékű `NodeInstanceId` tulajdonságot kell keresnie egyes Service Fabric-csomópontokon. Az alábbi példakód ezen tulajdonság alapján rendezi a csomópontpéldányokat, és visszaadja a legnagyobb azonosítóértékkel rendelkező példány adatait.
 
 ```powershell
 Get-ServiceFabricNode | Sort-Object { $_.NodeName.Substring($_.NodeName.LastIndexOf('_') + 1) } -Descending | Select-Object -First 1
@@ -180,7 +183,7 @@ else
     # Stop node
     $stopid = New-Guid
     Start-ServiceFabricNodeTransition -Stop -OperationId $stopid -NodeName $nodename -NodeInstanceId $nodeid -StopDurationInSeconds 300
-    
+
     $state = (Get-ServiceFabricNodeTransitionProgress -OperationId $stopid).State
     $loopTimeout = 10
 
@@ -191,7 +194,7 @@ else
         $state = (Get-ServiceFabricNodeTransitionProgress -OperationId $stopid).State
         Write-Host "Checking state... $state found"
     }
-    
+
     if ($state -ne [System.Fabric.TestCommandProgressState]::Completed)
     {
         Write-Error "Stop transaction failed with $state"
@@ -220,13 +223,12 @@ sfctl node remove-state --node-name _nt1vm_5
 > [!TIP]
 > A következő **sfctl**-lekérdezésekkel ellenőrizheti az egyes lépések állapotát
 >
-> **Inaktiválási állapot ellenőrzése**  
+> **Inaktiválási állapot ellenőrzése**
 > `sfctl node list --query "sort_by(items[*], &name)[-1].nodeDeactivationInfo"`
 >
-> **Leállítási állapot ellenőrzése**  
+> **Leállítási állapot ellenőrzése**
 > `sfctl node list --query "sort_by(items[*], &name)[-1].isStopped"`
 >
-
 
 ### <a name="scale-in-the-scale-set"></a>A méretezési csoport horizontális leskálázása
 
@@ -249,7 +251,6 @@ az vmss list-instances -n nt1vm -g sfclustertutorialgroup --query [*].name
 az vmss scale -g sfclustertutorialgroup -n nt1vm --new-capacity 5
 ```
 
-
 ## <a name="next-steps"></a>További lépések
 
 Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
@@ -258,7 +259,6 @@ Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 > * A fürtcsomópontok számának olvasása
 > * Fürtcsomópontok hozzáadása (horizontális felskálázás)
 > * Fürtcsomópontok eltávolítása (horizontális leskálázás)
-
 
 Folytassa a következő oktatóanyaggal, amelyben megismerheti, hogyan frissíthetők a fürtök futtatókörnyezetei.
 > [!div class="nextstepaction"]

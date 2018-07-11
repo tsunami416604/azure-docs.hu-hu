@@ -10,12 +10,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.date: 06/27/2018
 ms.author: jamesbak
-ms.openlocfilehash: d9720377beb1973b8ae4e9423fc991aa82646924
-ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
+ms.openlocfilehash: 10aad06d4ac8d76dc023648e8d6c0366bff859e6
+ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37061596"
+ms.lasthandoff: 07/02/2018
+ms.locfileid: "37344705"
 ---
 # <a name="tutorial-extract-transform-and-load-data-using-azure-databricks"></a>Oktatóanyag: Adatok kinyerése, átalakítása és betöltése az Azure Databricks használatával
 
@@ -117,7 +117,7 @@ Ebben a szakaszban létrehoz egy jegyzetfüzetet az Azure Databricks-munkaterül
 
 4. Írja be a következő kódot az első cellába, majd hajtsa végre a kódot:
 
-    ```python
+    ```scala
     spark.conf.set("fs.azure.account.key.<ACCOUNT_NAME>.dfs.core.windows.net", "<ACCOUNT_KEY>") 
     spark.conf.set("fs.azure.createRemoteFileSystemDuringInitialization", "true")
     dbutils.fs.ls("abfs://<FILE_SYSTEM_NAME>@<ACCOUNT_NAME>.dfs.core.windows.net/")
@@ -132,11 +132,14 @@ Ebben a szakaszban létrehoz egy jegyzetfüzetet az Azure Databricks-munkaterül
 
 A következő lépés egy mintaadatfájl feltöltése a tárfiókba későbbi átalakítás céljából az Azure Databricksben. 
 
-1. Ha még nem készített fiókot a 2. generációs Data Lake Storage használatához, kövesse a gyors útmutatót a fiók létrehozásához.
-2. A mintaadatok (**small_radio_json.json**) elérhetők a [U-SQL példákat és problémakövetést tartalmazó](https://github.com/Azure/usql/blob/master/Examples/Samples/Data/json/radiowebsite/small_radio_json.json) adattárban. Töltse le a JSON-fájlt, és jegyezze fel az elérési utat, ahová mentette a fájlt.
-3. Töltse fel az adatokat a tárfiókba. Az adatok tárfiókba történő feltöltésének módja eltérő attól függően, hogy a HNS (Hierarchical Namespace Service, hierarchikus névtérszolgáltatás) engedélyezve van-e.
+> [!NOTE]
+> Ha még nem készített a 2. generációt támogató Azure Data Lake Storage-fiókot, kövesse a [gyors útmutatót a fiók létrehozásához](./quickstart-create-account.md).
 
-    Ha a HNS engedélyezve van a 2. Azure generációs Data Lake Storage-fiókjában, a feltöltéshez használhatja az Azure Data Factoryt, terjesztési pontokat vagy az AzCopyt (10-es verzió). Az AzCopy 10-es verziója csak az előzetes verzióval rendelkező ügyfelek számára érhető el. Az AzCopy használata a Cloud Shellből:
+1. Töltse le a (**small_radio_json.json**) fájlt a [U-SQL példákat és problémakövetést ](https://github.com/Azure/usql/blob/master/Examples/Samples/Data/json/radiowebsite/small_radio_json.json) tartalmazó adattárból, és jegyezze fel az elérési utat, ahová a fájlt menti.
+
+2. Ezután töltse fel a mintaadatokat a tárfiókba. Az adatok tárfiókba történő feltöltésének módja eltérő attól függően, hogy a hierarchikus névtér-szolgáltatás engedélyezve van-e.
+
+    Ha a hierarchikus névtér engedélyezve van a 2. generációs Azure Storage-fiókjában, a feltöltéshez használhatja az Azure Data Factoryt, terjesztési pontokat vagy az AzCopyt (10-es verzió). Az AzCopy 10-es verziója csak az előzetes verzióval rendelkező ügyfelek számára érhető el. Az AzCopy használatához illessze be a következő kódot egy parancssori ablakba:
 
     ```bash
     set ACCOUNT_NAME=<ACCOUNT_NAME>
@@ -150,7 +153,7 @@ Térjen vissza a Databricks-jegyzetfüzethez, majd írja be a következő kódot
 
 1. Illessze be az alábbi kódrészletet egy üres kódcellába, és cserélje le a helyőrző értékeket a tárfiókból korábban mentett értékekkel.
 
-    ```python
+    ```scala
     dbutils.widgets.text("storage_account_name", "STORAGE_ACCOUNT_NAME", "<YOUR_STORAGE_ACCOUNT_NAME>")
     dbutils.widgets.text("storage_account_access_key", "YOUR_ACCESS_KEY", "<YOUR_STORAGE_ACCOUNT_SHARED_KEY>")
     ```
@@ -159,13 +162,13 @@ Térjen vissza a Databricks-jegyzetfüzethez, majd írja be a következő kódot
 
 2. Most már betöltheti a JSON-mintafájlt az Azure Databricks adathalmazaként. Illessze be az alábbi kódot egy új cellába, majd nyomja le a **SHIFT + ENTER** billentyűparancsot (győződjön meg arról, hogy lecserélte a helyőrző értékeket):
 
-    ```python
+    ```scala
     val df = spark.read.json("abfs://<FILE_SYSTEM_NAME>@<ACCOUNT_NAME>.dfs.core.windows.net/data/small_radio_json.json")
     ```
 
 3. Futtassa az alábbi kódot az adathalmaz tartalmának megtekintéséhez.
 
-    ```python
+    ```scala
     df.show()
     ```
 
@@ -190,7 +193,7 @@ A nyers **small_radio_json.json** mintaadat egy rádióállomás hallgatóit rö
 
 1. Első lépésként kérje le csak a *firstName*, *lastName*, *gender*, *location*, és *level* oszlopokat a már létrehozott adathalmazból.
 
-    ```python
+    ```scala
     val specificColumnsDf = df.select("firstname", "lastname", "gender", "location", "level")
     ```
 
@@ -225,7 +228,7 @@ A nyers **small_radio_json.json** mintaadat egy rádióállomás hallgatóit rö
 
 2.  Az adatok további átalakításához nevezze át a **level** oszlopot a következőre: **subscription_type**.
 
-    ```python
+    ```scala
     val renamedColumnsDF = specificColumnsDf.withColumnRenamed("level", "subscription_type")
     renamedColumnsDF.show()
     ```
@@ -267,28 +270,28 @@ Amint korábban említettük, az SQL Data Warehouse-összekötő az Azure Blob S
 
 1. Adja meg az Azure Storage-fiók Azure Databricksből való eléréséhez szükséges konfigurációt.
 
-    ```python
+    ```scala
     val storageURI = "<STORAGE_ACCOUNT_NAME>.dfs.core.windows.net"
-    val fileSystemName = "<FILE_SYSTEM_NJAME>"
+    val fileSystemName = "<FILE_SYSTEM_NAME>"
     val accessKey =  "<ACCESS_KEY>"
     ```
 
 2. Adjon meg egy ideiglenes mappát, amelyet a rendszer az adatok Azure Databricks és Azure SQL Data Warehouse közötti áthelyezésekor fog használni.
 
-    ```python
+    ```scala
     val tempDir = "abfs://" + fileSystemName + "@" + storageURI +"/tempDirs"
     ```
 
 3. Futtassa az alábbi kódrészletet az Azure Blob Storage hozzáférési kulcsainak a konfigurációban való tárolásához. Így nem kell egyszerű szövegként tárolnia a hozzáférési kulcsot a jegyzetfüzetben.
 
-    ```python
+    ```scala
     val acntInfo = "fs.azure.account.key."+ storageURI
     sc.hadoopConfiguration.set(acntInfo, accessKey)
     ```
 
 4. Adja meg az Azure SQL Data Warehouse-példányhoz való csatlakozáshoz szükséges értékeket. Az előfeltételek részeként már létre kellett hoznia egy SQL Data Warehouse-t.
 
-    ```python
+    ```scala
     //SQL Data Warehouse related settings
     val dwDatabase = "<DATABASE NAME>"
     val dwServer = "<DATABASE SERVER NAME>" 
@@ -302,7 +305,7 @@ Amint korábban említettük, az SQL Data Warehouse-összekötő az Azure Blob S
 
 5. Futtassa az alábbi kódrészletet a **renamedColumnsDF** nevű átalakított adathalmaz SQL Data Warehouse-táblaként való betöltéséhez. Ez a kódrészlet létrehoz egy **SampleTable** nevű táblát az SQL-adatbázisban.
 
-    ```python
+    ```scala
     spark.conf.set(
         "spark.sql.parquet.writeLegacyFormat",
         "true")

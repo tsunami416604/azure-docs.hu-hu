@@ -1,5 +1,5 @@
 ---
-title: Alkalmazások monitorozása az Azure Service Fabricben az ELK-val | Microsoft Docs
+title: Alkalmazások monitorozása a Service Fabricben az ELK-val az Azure-ban | Microsoft Docs
 description: Ez az oktatóanyag azt mutatja be, hogyan állíthatja be az ELK-t és monitorozhatja Service Fabric-alkalmazásait.
 services: service-fabric
 documentationcenter: java
@@ -15,21 +15,22 @@ ms.workload: NA
 ms.date: 02/26/2018
 ms.author: suhuruli
 ms.custom: mvc
-ms.openlocfilehash: 2c948a137abdbbf6ef8c64d26065030db1633a0a
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 938d8efeaa88cc5bebbf33e525132a030f1b3c7c
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2018
-ms.locfileid: "29949820"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37112503"
 ---
-# <a name="tutorial-monitor-your-service-fabric-applications-using-elk"></a>Oktatóanyag: Service Fabric-alkalmazások monitorozása az ELK-val 
-Ez az oktatóanyag egy sorozat negyedik része. Azt mutatja be, hogyan használhatja az ELK-t (Elasticsearch, Logstash és Kibana) az Azure-ban futó Service Fabric-alkalmazások monitorozására. 
+# <a name="tutorial-monitor-your-service-fabric-applications-using-elk"></a>Oktatóanyag: Service Fabric-alkalmazások monitorozása az ELK-val
+
+Ez az oktatóanyag egy sorozat negyedik része. Azt mutatja be, hogyan használhatja az ELK-t (Elasticsearch, Logstash és Kibana) az Azure-ban futó Service Fabric-alkalmazások monitorozására.
 
 A sorozat negyedik részében az alábbiakkal fog megismerkedni:
 > [!div class="checklist"]
 > * ELK-kiszolgáló beállítása az Azure-ban
 > * A Logstash konfigurálása, hogy naplókat fogadjon az Event Hubsról
-> * Platform- és alkalmazásnaplók vizualizációja a Kibanában 
+> * Platform- és alkalmazásnaplók vizualizációja a Kibanában
 
 Ebben az oktatóanyag-sorozatban az alábbiakkal ismerkedhet meg:
 > [!div class="checklist"]
@@ -40,13 +41,16 @@ Ebben az oktatóanyag-sorozatban az alábbiakkal ismerkedhet meg:
 > * [CI/CD beállítása](service-fabric-tutorial-java-jenkins.md)
 
 ## <a name="prerequisites"></a>Előfeltételek
+
 Az oktatóanyag elkezdése előtt:
-- Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
-- Állítsa be úgy az alkalmazást, hogy a [második részben](service-fabric-tutorial-debug-log-local-cluster.md) megadott helyen hozzon létre naplókat.
-- Teljesítse a [harmadik részt](service-fabric-tutorial-java-deploy-azure.md), hogy legyen egy működő Service Fabric-fürtje, amely naplókat küld az Event Hubsnak. 
-- Szükség van arra az Event Hubs-szabályzatra, amely figyelési engedéllyel rendelkezik, valamint a hozzá tartozó, a harmadik részből származó elsődleges kulcsra.
+
+* Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+* Állítsa be úgy az alkalmazást, hogy a [második részben](service-fabric-tutorial-debug-log-local-cluster.md) megadott helyen hozzon létre naplókat.
+* Teljesítse a [harmadik részt](service-fabric-tutorial-java-deploy-azure.md), hogy legyen egy működő Service Fabric-fürtje, amely naplókat küld az Event Hubsnak.
+* Szükség van arra az Event Hubs-szabályzatra, amely figyelési engedéllyel rendelkezik, valamint a hozzá tartozó, a harmadik részből származó elsődleges kulcsra.
 
 ## <a name="download-the-voting-sample-application"></a>A mintául szolgáló szavazóalkalmazás letöltése
+
 Ha nem hozta létre a mintául szolgáló szavazóalkalmazást [az oktatóanyag-sorozat első részében](service-fabric-tutorial-create-java-app.md), akkor le is töltheti. Egy parancssori ablakban futtassa a következő parancsot a mintaalkalmazás-adattár helyi számítógépre történő klónozásához.
 
 ```bash
@@ -54,9 +58,10 @@ git clone https://github.com/Azure-Samples/service-fabric-java-quickstart
 ```
 
 ## <a name="create-an-elk-server-in-azure"></a>ELK-kiszolgáló létrehozása az Azure-ban
-Az oktatóanyag lépéseit egy előre konfigurált ELK-környezetben is végrehajthatja. Ha már rendelkezik ilyennel, átugorhatja **A Logstash beállítása** szakaszt. Amennyiben nem rendelkezik ilyen környezettel, a következő módon hozhatja létre az Azure-ban. 
 
-1. Hozza létre a [Bitnami](https://ms.portal.azure.com/#create/bitnami.elk4-6) által hitelesített ELK-t az Azure-ban. Az oktatóanyag elvégzéséhez a létrehozott kiszolgálónak semmilyen konkrét specifikációnak nem kell megfelelnie. 
+Az oktatóanyag lépéseit egy előre konfigurált ELK-környezetben is végrehajthatja. Ha már rendelkezik ilyennel, átugorhatja **A Logstash beállítása** szakaszt. Amennyiben nem rendelkezik ilyen környezettel, a következő módon hozhatja létre az Azure-ban.
+
+1. Hozza létre a [Bitnami](https://ms.portal.azure.com/#create/bitnami.elk4-6) által hitelesített ELK-t az Azure-ban. Az oktatóanyag elvégzéséhez a létrehozott kiszolgálónak semmilyen konkrét specifikációnak nem kell megfelelnie.
 
 2. Keresse meg az erőforrását az Azure Portalon, és lépjen be **Támogatás + Hibaelhárítás** szakasz **Rendszerindítási diagnosztika** lapjára. Ezután kattintson a **Soros napló** fülre.
 
@@ -72,24 +77,24 @@ Az oktatóanyag lépéseit egy előre konfigurált ELK-környezetben is végreha
     [   26.029413] bitnami[1496]: #########################################################################
     ```
 
-4. Az Azure Portalon, a kiszolgáló Áttekintés oldalán kattintson a csatlakozási gombra. 
+4. Az Azure Portalon, a kiszolgáló Áttekintés oldalán kattintson a csatlakozási gombra.
 
     ![Virtuálisgép-kapcsolat](./media/service-fabric-tutorial-java-elk/vmconnection.png)
 
 5. Csatlakozzon SSH-kapcsolattal az ELK-rendszerképet üzemeltető kiszolgálóra a következő paranccsal.
 
     ```bash
-    ssh [USERNAME]@[CONNECTION-IP-OF-SERVER] 
-    
-    Example: ssh testaccount@104.40.63.157 
+    ssh [USERNAME]@[CONNECTION-IP-OF-SERVER]
+
+    Example: ssh testaccount@104.40.63.157
     ```
 
-## <a name="set-up-elk"></a>Az ELK beállítása 
+## <a name="set-up-elk"></a>Az ELK beállítása
 
 1. Első lépésként töltse be az ELK-környezetet.
 
     ```bash
-    sudo /opt/bitnami/use_elk 
+    sudo /opt/bitnami/use_elk
     ```
 
 2. Ha egy meglévő környezetet használ, futtassa a következő parancsot a Logstash leállításához.
@@ -98,13 +103,13 @@ Az oktatóanyag lépéseit egy előre konfigurált ELK-környezetben is végreha
     sudo /opt/bitnami/ctlscript.sh stop logstash
     ```
 
-3. Futtassa a következő parancsot az Event Hubs Logstash beépülő moduljának telepítéséhez. 
+3. Futtassa a következő parancsot az Event Hubs Logstash beépülő moduljának telepítéséhez.
 
     ```bash
     logstash-plugin install logstash-input-azureeventhub
     ```
 
-4. Hozzon létre vagy módosítson egy meglévő Logstash konfigurációs fájlt a következők szerint: amennyiben a fájl létrehozása mellett dönt, az Azure-ban található ELK Bitnami-rendszerkép használata esetén a következő helyen kell létrehoznia: ```/opt/bitnami/logstash/conf/access-log.conf```. 
+4. Hozzon létre vagy módosítson egy meglévő Logstash konfigurációs fájlt a következők szerint: amennyiben a fájl létrehozása mellett dönt, az Azure-ban található ELK Bitnami-rendszerkép használata esetén a következő helyen kell létrehoznia: ```/opt/bitnami/logstash/conf/access-log.conf```.
 
     ```json
     input
@@ -118,7 +123,7 @@ Az oktatóanyag lépéseit egy előre konfigurált ELK-környezetben is végreha
             partitions => 4
         }
     }
-    
+
     output {
          elasticsearch {
              hosts => [ "127.0.0.1:9200" ]
@@ -128,7 +133,7 @@ Az oktatóanyag lépéseit egy előre konfigurált ELK-környezetben is végreha
 
 5. A konfiguráció ellenőrzéséhez futtassa a következő parancsot:
 
-    ```bash 
+    ```bash
     /opt/bitnami/logstash/bin/logstash -f /opt/bitnami/logstash/conf/ --config.test_and_exit
     ```
 
@@ -144,18 +149,18 @@ Az oktatóanyag lépéseit egy előre konfigurált ELK-környezetben is végreha
     curl 'localhost:9200/_cat/indices?v'
     ```
 
-8. Nyissa meg a Kibana irányítópultját a **http://SERVER-IP** címen, és adja meg a Kibana felhasználónevét és jelszavát. Amennyiben az Azure-ban található ELK-rendszerképet használta, az alapértelmezett felhasználónév „user”, a jelszó pedig az, amit a **Rendszerindítási diagnosztika** futtatásakor kapott. 
+8. Nyissa meg a Kibana irányítópultját a **http://SERVER-IP** címen, és adja meg a Kibana felhasználónevét és jelszavát. Amennyiben az Azure-ban található ELK-rendszerképet használta, az alapértelmezett felhasználónév „user”, a jelszó pedig az, amit a **Rendszerindítási diagnosztika** futtatásakor kapott.
 
-    ![Kibana](./media/service-fabric-tutorial-java-elk/kibana.png)    
+    ![Kibana](./media/service-fabric-tutorial-java-elk/kibana.png)
 
 ## <a name="next-steps"></a>További lépések
+
 Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 
 > [!div class="checklist"]
-> * ELK-kiszolgáló üzembe helyezése az Azure-ban 
+> * ELK-kiszolgáló üzembe helyezése az Azure-ban
 > * A kiszolgáló konfigurálása, hogy az diagnosztikai adatokat kapjon a Service Fabric-fürttől
 
 Folytassa a következő oktatóanyaggal:
 > [!div class="nextstepaction"]
 > [CI/CD beállítása a Jenkins használatával](service-fabric-tutorial-java-jenkins.md)
-

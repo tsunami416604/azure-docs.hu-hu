@@ -1,64 +1,64 @@
 ---
-title: Egy Analysis Services-kiszolgáló létrehozása az Azure-ban |} Microsoft Docs
-description: 'Útmutató: az Analysis Services server-példány létrehozása az Azure-ban.'
+title: Rövid útmutató – Azure Analysis Services-kiszolgáló létrehozása az Azure Portal használatával | Microsoft Docs
+description: Útmutatás egy Azure-beli Analysis Services-kiszolgálópéldány létrehozásához.
 author: minewiskan
 manager: kfile
-ms.service: analysis-services
-ms.topic: conceptual
-ms.date: 04/23/2018
+ms.service: azure-analysis-services
+ms.topic: quickstart
+ms.date: 07/03/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: c49e886ee5b980e8fd059d72eb2e4a3f0dc895c4
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
-ms.translationtype: MT
+ms.openlocfilehash: 92209d82a6db18b7f1e1a5adbb52c1899bf4593f
+ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37950699"
 ---
-# <a name="create-an-analysis-services-server-in-azure-portal"></a>Egy Analysis Services-kiszolgáló létrehozása az Azure-portálon
-Ez a cikk végigvezeti egy Analysis Services-kiszolgáló erőforrás létrehozása az Azure-előfizetéshez.
+# <a name="quickstart-create-a-server---portal"></a>Gyors útmutató: Kiszolgáló létrehozása – Portal
 
-Mielőtt elkezdené, lesz szüksége: 
+Ez a rövid útmutató bemutatja, hogyan hozhat létre erőforrást egy Azure Analysis Services-kiszolgálóhoz Azure-előfizetésében a portál használatával.
+
+## <a name="prerequisites"></a>Előfeltételek 
 
 * **Azure-előfizetés**: A fiók létrehozásával kapcsolatban lásd: [Ingyenes Azure-próbaverzió](https://azure.microsoft.com/offers/ms-azr-0044p/).
-* **Az Azure Active Directory**: az előfizetéshez kell tartoznia az Azure Active Directory-bérlő. És meg kell jelentkeznie az Azure-bA egy olyan fiókkal, az adott Azure Active Directoryban. További információ: [Hitelesítés és felhasználói engedélyek](analysis-services-manage-users.md).
+* **Azure Active Directory**: Előfizetésének egy Azure Active Directory-bérlőhöz kell tartoznia. Emellett be kell jelentkeznie az Azure-ba az adott Azure Active Directoryban található fiókkal. További információ: [Hitelesítés és felhasználói engedélyek](analysis-services-manage-users.md).
 
 ## <a name="log-in-to-the-azure-portal"></a>Bejelentkezés az Azure Portalra 
 
-Jelentkezzen be az [Azure Portalra](https://portal.azure.com)
+[Bejelentkezés a portálra](https://portal.azure.com)
 
 
 ## <a name="create-a-server"></a>A kiszolgáló létrehozása
 
-1. Kattintson a **+ hozzon létre egy erőforrást** > **adatok + analitika** > **Analysis Services**.
+1. Kattintson a **+ Erőforrás létrehozása** > **Data + Analytics** > **Analysis Services** elemre.
 
     ![Portál](./media/analysis-services-create-server/aas-create-server-portal.png)
 
-2. A **Analysis Services**, töltse ki a kötelező mezőket, és nyomja le az **létrehozása**.
+2. Az **Analysis Services** területen töltse ki a kötelező mezőket, majd válassza a **Létrehozás** lehetőséget.
    
-    ![Kiszolgáló létrehozása](./media/analysis-services-create-server/aas-create-server-blade.png)
-   
-   * **Kiszolgálónév**: Adjon meg egy egyedi nevet mutató hivatkozás a kiszolgálón.
-   * **Előfizetés**: válassza ki az ehhez a kiszolgálóhoz társított előfizetést.
-   * **Erőforráscsoport**: hozzon létre egy új erőforráscsoportot, vagy válasszon ki egy már rendelkezik. Erőforráscsoportok vannak célja, hogy az Azure-erőforrások gyűjteményeinek kezelését. További tudnivalókért lásd: [erőforráscsoportok](../azure-resource-manager/resource-group-overview.md).
-   * **Hely**: az Azure-adatközpont hely üzemelteti a kiszolgálót. Válasszon a legnagyobb felhasználói bázis legközelebbi helyet.
-   * **IP-címek**: tarifacsomag kiválasztása. Ha éppen tesztel, és a modell mintaadatbázis telepíteni szeretné, jelölje be a szabad **D1** réteg. További tudnivalókért lásd: [Azure Analysis Services díjszabása](https://azure.microsoft.com/pricing/details/analysis-services/). 
-    * **Rendszergazda**: alapértelmezés szerint ez lesz a fiók, akkor van bejelentkezve. Az Azure Active Directory közül választhat egy másik fiókot.
-    * **Biztonsági mentés tárolási beállítását**: nem kötelező. Ha már rendelkezik egy [tárfiók](../storage/common/storage-introduction.md), modell-adatbázis biztonsági másolatának alapértelmezett adhat meg. Azt is megadhatja, [biztonsági mentése és visszaállítása](analysis-services-backup.md) beállításait később.
-    * **Tárolási kulcslejárat**: nem kötelező. A storage-kulcs lejárati időt megadni.
-3. Kattintson a **Create** (Létrehozás) gombra.
+   * **Kiszolgáló neve**: Írjon be egy egyedi nevet a kiszolgálóra való hivatkozáshoz.
+   * **Előfizetés**: Válassza ki a kiszolgálóhoz társítani kívánt előfizetést.
+   * **Erőforráscsoport**: Hozzon létre egy új erőforráscsoportot, vagy válasszon ki egy meglévőt. Az erőforráscsoportok segítségével Azure-erőforrások gyűjteményét kezelheti. További információ: [erőforráscsoportok](../azure-resource-manager/resource-group-overview.md).
+   * **Hely**: Ez az Azure-adatközpont üzemelteti a kiszolgálót. A legnagyobb felhasználói bázisához legközelebb eső helyet válassza ki.
+   * **Tarifacsomag**: Válasszon egy tarifacsomagot. Ha Ön éppen tesztel, és ezért a mintamodell-adatbázist kívánja telepíteni, válassza ki az ingyenes **D1** szintet. További tudnivalókat az [Azure Analysis Services díjszabását](https://azure.microsoft.com/pricing/details/analysis-services/) ismertető témakörben talál. 
+    * **Rendszergazda**: Alapértelmezés szerint ezzel a fiókkal fog bejelentkezni. Másik fiókot az Azure Active Directoryból választhat.
+    * **Biztonsági tárhely beállítása**: Nem kötelező. Ha már rendelkezik [tárfiókkal](../storage/common/storage-introduction.md), megadhatja azt a modelladatbázisok biztonsági másolatainak alapértelmezett tárolójaként. Később is megadhatja a [biztonsági mentés és visszaállítás](analysis-services-backup.md) beállításait.
+    * **Tárkulcs lejárata**: Nem kötelező. Adjon meg egy tárkulcslejárati időszakot.
 
-Hozzon létre egy perc alatt általában időt vesz igénybe. Ha a kiválasztott **portálon**, keresse meg a portálhoz, és az új kiszolgáló. Vagy keresse meg **minden szolgáltatás** > **Analysis Services** megjelenítéséhez, ha a kiszolgáló készen áll-e.
+A kiszolgáló létrehozása általában nem egészen egy percet vesz igénybe. Ha a **Hozzáadás a Portalhoz** lehetőséget választotta, a portáljára lépve megtekintheti az új kiszolgálót. Az **Összes szolgáltatás** > **Analysis Services** területre lépve is ellenőrizheti, hogy készen áll-e a kiszolgáló.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
-Ha már nincs szükség, a kiszolgáló törlése. A Server **áttekintése**, kattintson a **törlése**. 
+
+Ha már nincs rá szükség, törölje a kiszolgálót. Nyissa meg a kiszolgáló **Áttekintés** lapját, majd kattintson a **Törlés** elemre. 
 
  ![Felesleges tartalmak törlése](./media/analysis-services-create-server/aas-create-server-cleanup.png)
 
 
 ## <a name="next-steps"></a>További lépések
+Ebből a rövid útmutatóból megtudta, hogyan hozhat létre kiszolgálót az Azure-előfizetésében. Most, hogy már rendelkezik kiszolgálóval, biztonságosabbá teheti azt egy (nem kötelező) kiszolgálótűzfal konfigurálásával. Hozzáadhat a kiszolgálóhoz egy alapszintű minta adatmodellt is közvetlenül a portálról. A mintamodell azért hasznos, mert segít megismerni a modell adatbázis-szerepkörök konfigurálását és tesztelni az ügyfélkapcsolatokat. További tudnivalókért folytassa a mintamodell hozzáadását ismertető oktatóanyaggal.
 
-[Egy minta adatmodell hozzáadása](analysis-services-create-sample-model.md) -kiszolgálóhoz.  
-[Telepítsen egy helyszíni adatok átjárót](analysis-services-gateway-install.md) Ha saját adatmodelljének csatlakozik a helyi adatforrások.  
-[A táblázatos modell projekt telepítése](analysis-services-deploy.md) a Visual Studio eszközből.   
-
-
+> [!div class="nextstepaction"]
+> [Rövid útmutató: Kiszolgálótűzfal konfigurálása – Portál](analysis-services-qs-firewall.md)   
+> [!div class="nextstepaction"]
+> [Oktatóanyag: Mintamodell hozzáadása a kiszolgálóhoz](analysis-services-create-sample-model.md)

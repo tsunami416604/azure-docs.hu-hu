@@ -5,15 +5,15 @@ services: event-grid
 keywords: ''
 author: tfitzmac
 ms.author: tomfitz
-ms.date: 05/04/2018
+ms.date: 06/29/2018
 ms.topic: tutorial
 ms.service: event-grid
-ms.openlocfilehash: 31c8dd520079046808b32dad0d338415bed71c58
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.openlocfilehash: ee504f805c536ba9a6186514206546c3df1f0f1a
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/18/2018
-ms.locfileid: "34302977"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37127713"
 ---
 # <a name="route-custom-events-to-azure-relay-hybrid-connections-with-azure-cli-and-event-grid"></a>Egyéni események átvitele hibrid Azure Relay-kapcsolatokon keresztül az Azure CLI és az Event Grid segítségével
 
@@ -55,7 +55,7 @@ A témakörre való feliratkozással lehet tudatni az Event Griddel, hogy mely e
 
 `/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.Relay/namespaces/<relay-namespace>/hybridConnections/<hybrid-connection-name>`
 
-Az alábbi szkript lekéri a Relay-névtér erőforrás-azonosítóját. Létrehozza a hibrid kapcsolat azonosítóját, és feliratkozik egy Event Grid-témakörre. A végpontot `hybridconnection` típusúra állítja be, és a hibrid kapcsolat azonosítóját használja végpontként.
+Az alábbi szkript lekéri a Relay-névtér erőforrás-azonosítóját. Létrehozza a hibrid kapcsolat azonosítóját, és feliratkozik egy Event Grid-témakörre. A szkript a végpontot `hybridconnection` típusúra állítja be, és a hibrid kapcsolat azonosítóját használja végpontként.
 
 ```azurecli-interactive
 relayname=<namespace-name>
@@ -73,9 +73,25 @@ az eventgrid event-subscription create \
   --endpoint $hybridid
 ```
 
+## <a name="create-application-to-process-events"></a>Alkalmazás létrehozása események feldolgozásához
+
+Olyan alkalmazásra van szüksége, amely eseményeket tud lekérni a hibrid kapcsolatból. Ezt a műveletet a [Microsoft Azure Event Grid hibrid kapcsolat C# fogyasztói mintája](https://github.com/Azure-Samples/event-grid-dotnet-hybridconnection-destination) hajtja végre. Már befejezte az előfeltételként felsorolt lépéseket.
+
+1. Győződjön meg arról, hogy a Visual Studio 2017 15.5-ös vagy újabb verziója van telepítve.
+
+1. Klónozza az adattárat a helyi gépre.
+
+1. Töltse be a HybridConnectionConsumer projektet a Visual Studióban.
+
+1. A Program.cs fájlban cserélje le a `<relayConnectionString>` és `<hybridConnectionName>` elemeket a továbbítási kapcsolat sztringjére és a létrehozott hibrid kapcsolatra.
+
+1. Fordítsa és futtassa az alkalmazást a Visual Studióból.
+
 ## <a name="send-an-event-to-your-topic"></a>Esemény elküldése a témakörbe
 
-Aktiváljunk egy eseményt, és lássuk, hogyan küldi el az üzenetet az Event Grid a végpontnak. Először szükségünk lesz az egyéni témakör URL-címére és kulcsára. A `<topic_name>` helyett használja ismét a témakör nevét.
+Aktiváljunk egy eseményt, és lássuk, hogyan küldi el az üzenetet az Event Grid a végpontnak. Ez a cikk bemutatja, hogyan aktiválhatja az eseményt az Azure CLI használatával. Használhatja az [Event Grid közzétételi alkalmazást](https://github.com/Azure-Samples/event-grid-dotnet-publish-consume-events/tree/master/EventGridPublisher) is.
+
+Először szükségünk lesz az egyéni témakör URL-címére és kulcsára. A `<topic_name>` helyett használja ismét a témakör nevét.
 
 ```azurecli-interactive
 endpoint=$(az eventgrid topic show --name <topic_name> -g gridResourceGroup --query "endpoint" --output tsv)

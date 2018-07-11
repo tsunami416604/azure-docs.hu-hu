@@ -13,17 +13,17 @@ ms.topic: quickstart
 ms.date: 05/07/2018
 ms.author: jgao
 ms.custom: mvc
-ms.openlocfilehash: 292396b35bde63304d4c03bd80b2988b0a8fbba8
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 3621b5b5034bd7d2f7465fd061620844fba814fe
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33779174"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37096325"
 ---
 # <a name="quickstart-create-a-spark-cluster-in-hdinsight-using-the-azure-portal"></a>Rövid útmutató: Spark-fürt létrehozása a HDInsightban az Azure Portal használatával
 Megtudhatja, hogyan hozhat létre Apache Spark-fürtöt az Azure HDInsightban, és hogyan futtathat Spark SQL-lekérdezéseket a Hive-táblákon. Az Apache Spark a memóriában végzett feldolgozás segítségével teszi lehetővé a gyors adatelemzést és fürtszámítást. A Spark on HDInsight további információiért lásd: [Áttekintés: Apache Spark on Azure HDInsight](apache-spark-overview.md).
 
-Ebben a rövid útmutatóban egy HDInsight Spark-fürtöt hoz létre az Azure Portal használatával. A fürt Azure Storage-blobokat használ fürttárolóként.
+Ebben a rövid útmutatóban egy HDInsight Spark-fürtöt hoz létre az Azure Portal használatával. A fürt Azure Storage-blobokat használ fürttárolóként. A 2. generációs Data Lake Storage használatáról [a fürtök HDInsightban történő beállításáról szóló rövid útmutatóban](../../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md) talál további információt.
 
 > [!IMPORTANT]
 > A HDInsight-fürtök számlázása percenként történik, akár használja őket, akár nem. Mindig törölje a fürtöt, ha már nem használja. További információkért lásd a cikk [Az erőforrások eltávolítása](#clean-up-resources) című szakaszát.
@@ -71,9 +71,9 @@ Ha problémába ütközik a HDInsight-fürtök létrehozása során, előfordulh
 
 ## <a name="create-a-jupyter-notebook"></a>Jupyter notebook létrehozása
 
-A Jupyter notebook egy interaktív notebook-környezet, amely számos programozási nyelvet támogat. A notebook lehetővé teszi az adatai használatát, a kódok és markdown-szövegek egyesítését, valamint egyszerű vizualizációk elvégzését. 
+A Jupyter Notebook egy interaktív notebook-környezet, amely számos programozási nyelvet támogat. A notebook lehetővé teszi az adatai használatát, a kódok és markdown-szövegek egyesítését, valamint egyszerű vizualizációk elvégzését. 
 
-1. Nyissa meg az [Azure portált](https://portal.azure.com).
+1. Nyissa meg az [Azure Portalt](https://portal.azure.com).
 2. Válassza a **HDInsight-fürtök** lehetőséget, majd a létrehozott fürtöt.
 
     ![HDInsight-fürt megnyitása az Azure Portalon](./media/apache-spark-jupyter-spark-sql/azure-portal-open-hdinsight-cluster.png)
@@ -124,7 +124,7 @@ Az SQL az adatok lekérdezéséhez és meghatározásához leggyakrabban és leg
 2. A notebook **File** (Fájl) menüjében kattintson a **Close and Halt** (Bezárás és leállítás) elemre. A notebook leállítása felszabadítja a fürt erőforrásait.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
-A HDInsight az Azure Storage vagy az Azure Data Lake Store tárhelyein tárolja az adatokat, így a nem használt fürtök biztonságosan törölhetők. Ráadásul a HDInsight-fürtök akkor is díjkötelesek, amikor éppen nincsenek használatban. Mivel a fürt költsége a sokszorosa a tároló költségeinek, gazdaságossági szempontból is ésszerű törölni a használaton kívüli fürtöket. Ha azt tervezi, hogy rögtön elvégzi a [További lépések](#next-steps) szakaszban található oktatóanyagot is, akkor érdemes lehet megtartani a fürtöt.
+A HDInsight az Azure Storage vagy az Azure Data Lake Storage tárhelyein tárolja az adatokat, így a nem használt fürtök biztonságosan törölhetők. Ráadásul a HDInsight-fürtök akkor is díjkötelesek, amikor éppen nincsenek használatban. Mivel a fürt költsége a sokszorosa a tároló költségeinek, gazdaságossági szempontból is ésszerű törölni a használaton kívüli fürtöket. Ha azt tervezi, hogy rögtön elvégzi a [További lépések](#next-steps) szakaszban található oktatóanyagot is, akkor érdemes lehet megtartani a fürtöt.
 
 Lépjen vissza az Azure Portalra és válassza a **Törlés** lehetőséget.
 

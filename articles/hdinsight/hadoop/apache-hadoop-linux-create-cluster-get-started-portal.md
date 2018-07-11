@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: quickstart
 ms.date: 05/07/2018
 ms.author: nitinme
-ms.openlocfilehash: b9cf3ae3417b993cd721460484d6228daf7b283c
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: dd803fed4bc6a25904b2ea00a5b21af606ad7153
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34627347"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37097896"
 ---
 # <a name="quickstart-get-started-with-hadoop-and-hive-in-azure-hdinsight-using-the-azure-portal"></a>Rövid útmutató: A Hadoop és a Hive Azure HDInsightban való használatának első lépései az Azure Portalon
 
@@ -80,7 +80,7 @@ Ebben a szakaszban egy Hadoop-fürtöt hozhat létre a HDInsightban az Azure Por
     
     |Tulajdonság  |Leírás  |
     |---------|---------|
-    |**Elsődleges tároló típusa**     | Ehhez a cikkhez válassza az **Azure Storage** lehetőséget, hogy az Azure Storage Blobot használja alapértelmezett tárfiókként. Az Azure Data Lake Store-t is használhatja az alapértelmezett tárolóként. |
+    |**Elsődleges tároló típusa**     | Ehhez a cikkhez válassza az **Azure Storage** lehetőséget, hogy az Azure Storage Blobot használja alapértelmezett tárfiókként. Az Azure Data Lake Storage-ot is használhatja alapértelmezett tárolóként. |
     |**Kiválasztási módszer**     |  Ehhez a cikkhez válassza a **Saját előfizetések** lehetőséget az Azure-előfizetésében lévő egyik tárfiók használatához. Ha más előfizetések tárfiókját szeretné használni, válassza a **Hozzáférési kulcs** lehetőséget, majd adja meg a fiók hozzáférési kulcsát. |
     |**Új tárfiók létrehozása**     | Adja meg a tárfiók nevét.|
 
@@ -177,6 +177,7 @@ Ebben az oktatóanyagban megtanulhatta, hogyan hozhat létre Linux-alapú HDInsi
 Ha készen áll dolgozni a saját adataival, és szeretne többet megtudni a HDInsight adattárolási módszereiről, illetve arról, hogyan kerülnek az adatok a HDInsightba, tekintse meg a következő cikkeket:
 
 * További információt az Azure Storage HDInsight általi használatáról [az Azure Storage és a HDInsight együttes használatát](../hdinsight-hadoop-use-blob-storage.md) ismertető cikkben talál.
+* A [fürtök HDInsightban történő beállításáról szóló rövid útmutatóban](../../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md) talál további információt arról, hogyan hozhat létre egy HDInsight-fürtöt a Data Lake Storage segítségével.
 * További információ a HDInsightba való adatfeltöltésről: [Adatok feltöltése a HDInsightba](../hdinsight-upload-data.md).
 
 A HDInsight használatával történő adatelemzésről az alábbi cikkekben talál további információt:

@@ -1,5 +1,5 @@
 ---
-title: Tárolórendszerképek létrehozása az Azure Service Fabrichez | Microsoft Docs
+title: Tárolórendszerképek létrehozása a Service Fabricben az Azure-ban | Microsoft Docs
 description: Ez az oktatóanyag bemutatja, hogyan hozhat létre tárolórendszerképeket többtárolós Service Fabric-alkalmazásokhoz.
 services: service-fabric
 documentationcenter: ''
@@ -16,25 +16,25 @@ ms.workload: na
 ms.date: 09/15/2017
 ms.author: suhuruli
 ms.custom: mvc
-ms.openlocfilehash: 13cf13ce4a1456731d08f356ca405119ce1a6480
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: a2814ff299d1bfb003b6133e2b75b47a312f8728
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/24/2018
-ms.locfileid: "29558185"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37114040"
 ---
-# <a name="tutorial-create-container-images-for-service-fabric"></a>Oktatóanyag: tárolórendszerképek létrehozása a Service Fabrichez
+# <a name="tutorial-create-container-images-on-a-linux-service-fabric-cluster"></a>Oktatóanyag: Tárolórendszerképek létrehozása Linux Service Fabric-fürtön
 
-Ez az oktatóanyag egy olyan sorozat első része, amely azt mutatja be, hogyan használhatók tárolók a Linux Service Fabric-fürtökben. Ebben az oktatóanyagban egy többtárolós alkalmazást fog előkészíteni a Service Fabrichez. Az ezt követő oktatóanyagok ezeket a rendszerképeket fogják használni egy Service Fabric-alkalmazás részeként. Ezen oktatóanyag segítségével megtanulhatja a következőket: 
+Ez az oktatóanyag egy olyan sorozat első része, amely azt mutatja be, hogyan használhatók tárolók a Linux Service Fabric-fürtökben. Ebben az oktatóanyagban egy többtárolós alkalmazást fog előkészíteni a Service Fabrichez. Az ezt követő oktatóanyagok ezeket a rendszerképeket fogják használni egy Service Fabric-alkalmazás részeként. Ezen oktatóanyag segítségével megtanulhatja a következőket:
 
 > [!div class="checklist"]
-> * Alkalmazás forrásának klónozása a GitHubról  
+> * Alkalmazás forrásának klónozása a GitHubról
 > * Tárolórendszerkép létrehozása az alkalmazás forrásából
 > * Egy Azure Container Registry (ACR)-példány üzembe helyezése
 > * Egy tárolórendszerkép címkézése az ACR-hez
 > * A rendszerkép feltöltése az ACR-be
 
-Ebben az oktatóanyag-sorozatban az alábbiakkal ismerkedhet meg: 
+Ebben az oktatóanyag-sorozatban az alábbiakkal ismerkedhet meg:
 
 > [!div class="checklist"]
 > * Tárolórendszerképek létrehozása a Service Fabrichez
@@ -43,13 +43,13 @@ Ebben az oktatóanyag-sorozatban az alábbiakkal ismerkedhet meg:
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- A Linux fejlesztési környezet beállítása a Service Fabrichez. Kövesse az [itt](service-fabric-get-started-linux.md) található utasításokat a Linux környezet beállításához. 
-- Az oktatóanyag elvégzéséhez az Azure CLI 2.0.4-es vagy újabb verziójára lesz szükség. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI 2.0 telepítése]( /cli/azure/install-azure-cli). 
-- Egy Azure-előfizetéssel is rendelkeznie kell. Az ingyenes próbaverzióról további információt [itt](https://azure.microsoft.com/free/) talál.
+* A Linux fejlesztési környezet beállítása a Service Fabrichez. Kövesse az [itt](service-fabric-get-started-linux.md) található utasításokat a Linux környezet beállításához.
+* Az oktatóanyag elvégzéséhez az Azure CLI 2.0.4-es vagy újabb verziójára lesz szükség. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI 2.0 telepítése]( /cli/azure/install-azure-cli).
+* Egy Azure-előfizetéssel is rendelkeznie kell. Az ingyenes próbaverzióról további információt [itt](https://azure.microsoft.com/free/) talál.
 
 ## <a name="get-application-code"></a>Az alkalmazáskód letöltése
 
-A jelen oktatóanyagban használt mintaalkalmazás egy szavazóalkalmazás. Az alkalmazás egy előtérbeli webes összetevőből és egy háttérbeli Redis-példányból áll. Az összetevők tárolórendszerképekbe vannak csomagolva. 
+A jelen oktatóanyagban használt mintaalkalmazás egy szavazóalkalmazás. Az alkalmazás egy előtérbeli webes összetevőből és egy háttérbeli Redis-példányból áll. Az összetevők tárolórendszerképekbe vannak csomagolva.
 
 A git használatával töltse le az alkalmazás egy másolatát a fejlesztői környezetbe.
 
@@ -59,11 +59,11 @@ git clone https://github.com/Azure-Samples/service-fabric-containers.git
 cd service-fabric-containers/Linux/container-tutorial/
 ```
 
-A megoldás két mappát és egy „docker-compose.yml” fájlt tartalmaz. Az „azure-vote” mappa a Python előtér-szolgáltatást és a rendszerkép felépítéséhez használt Docker-fájlt tartalmazza. A „Voting” könyvtárban található meg a fürtön üzembe helyezett Service Fabric-alkalmazáscsomag. Ezek a könyvtárak tartalmazzák a jelen oktatóanyag elvégzéséhez szükséges elemeket.  
+A megoldás két mappát és egy „docker-compose.yml” fájlt tartalmaz. Az „azure-vote” mappa a Python előtér-szolgáltatást és a rendszerkép felépítéséhez használt Docker-fájlt tartalmazza. A „Voting” könyvtárban található meg a fürtön üzembe helyezett Service Fabric-alkalmazáscsomag. Ezek a könyvtárak tartalmazzák a jelen oktatóanyag elvégzéséhez szükséges elemeket.
 
 ## <a name="create-container-images"></a>Tárolórendszerképek létrehozása
 
-Az **azure-vote** könyvtárban futtassa a következő parancsot az előtéri webes összetevő rendszerképének felépítéséhez. Ez a parancs a könyvtárban lévő Docker-fájl alapján építi fel a rendszerképet. 
+Az **azure-vote** könyvtárban futtassa a következő parancsot az előtéri webes összetevő rendszerképének felépítéséhez. Ez a parancs a könyvtárban lévő Docker-fájl alapján építi fel a rendszerképet.
 
 ```bash
 docker build -t azure-vote-front .
@@ -86,13 +86,13 @@ tiangolo/uwsgi-nginx-flask   python3.6           590e17342131        5 days ago 
 
 ## <a name="deploy-azure-container-registry"></a>Azure Container Registry üzembe helyezése
 
-Először futtassa az **az login** parancsot, hogy bejelentkezzen az Azure-fiókjába. 
+Először futtassa az **az login** parancsot, hogy bejelentkezzen az Azure-fiókjába.
 
 ```bash
 az login
 ```
 
-Ezután az **az account** paranccsal válassza ki az előfizetését az Azure tárolóregisztrációs adatbázis létrehozásához. Be kell helyettesítenie a <subscription_id> kifejezést az Azure-előfizetés azonosítójával. 
+Ezután az **az account** paranccsal válassza ki az előfizetését az Azure tárolóregisztrációs adatbázis létrehozásához. Be kell helyettesítenie a <subscription_id> kifejezést az Azure-előfizetés azonosítójával.
 
 ```bash
 az account set --subscription <subscription_id>
@@ -106,13 +106,13 @@ Hozzon létre egy erőforráscsoportot az **az group create** paranccsal. Ebben 
 az group create --name <myResourceGroup> --location westus
 ```
 
-Hozzon létre egy Azure tárolóregisztrációs adatbázist az **az acr create** paranccsal. Cserélje le az \<acrName> kifejezést az előfizetésben létrehozni kívánt tárolóregisztrációs adatbázis nevére. Ennek a névnek alfanumerikusnak és egyedinek kell lennie. 
+Hozzon létre egy Azure tárolóregisztrációs adatbázist az **az acr create** paranccsal. Cserélje le az \<acrName> kifejezést az előfizetésben létrehozni kívánt tárolóregisztrációs adatbázis nevére. Ennek a névnek alfanumerikusnak és egyedinek kell lennie.
 
 ```bash
 az acr create --resource-group <myResourceGroup> --name <acrName> --sku Basic --admin-enabled true
 ```
 
-Az oktatóanyag hátralevő részében az „acrName” kifejezés helyettesíti a tárolóregisztrációs adatbázis választott nevét. Jegyezze fel ezt az értéket. 
+Az oktatóanyag hátralevő részében az „acrName” kifejezés helyettesíti a tárolóregisztrációs adatbázis választott nevét. Jegyezze fel ezt az értéket.
 
 ## <a name="log-in-to-your-container-registry"></a>Bejelentkezés a tárolóregisztrációs adatbázisba
 
@@ -164,7 +164,6 @@ docker tag azure-vote-front <acrName>.azurecr.io/azure-vote-front:v1
 
 Ha elkészült a címkézéssel, futtassa a „docker images” parancsot a művelet ellenőrzéséhez.
 
-
 Kimenet:
 
 ```bash
@@ -210,13 +209,13 @@ Az oktatóanyag végeztével a tárolórendszerképet egy privát Azure Containe
 Ebben az oktatóanyagban egy alkalmazást kértünk le a GitHubról, és tárolórendszerképeket hoztunk létre és küldtünk le egy regisztrációs adatbázisba. A következő lépéseket hajtotta végre:
 
 > [!div class="checklist"]
-> * Alkalmazás forrásának klónozása a GitHubról  
+> * Alkalmazás forrásának klónozása a GitHubról
 > * Tárolórendszerkép létrehozása az alkalmazás forrásából
 > * Egy Azure Container Registry (ACR)-példány üzembe helyezése
 > * Egy tárolórendszerkép címkézése az ACR-hez
 > * A rendszerkép feltöltése az ACR-be
 
-Folytassa a következő oktatóanyaggal, amely azt ismerteti, hogyan csomagolhatók tárolók egy Service Fabric-alkalmazásba a Yeoman használatával. 
+Folytassa a következő oktatóanyaggal, amely azt ismerteti, hogyan csomagolhatók tárolók egy Service Fabric-alkalmazásba a Yeoman használatával.
 
 > [!div class="nextstepaction"]
 > [Tárolók csomagolása és üzembe helyezése Service Fabric-alkalmazásként](service-fabric-tutorial-package-containers.md)

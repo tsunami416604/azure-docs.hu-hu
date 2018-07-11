@@ -12,12 +12,12 @@ ms.topic: tutorial
 ms.date: 06/06/2017
 ms.author: tvoellm
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 5fce6553ce7407f892ed1de1f71bc812798f91c0
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 237ab0ed99793f54574c4b81e883acb8c2bc57a9
+ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34611806"
+ms.lasthandoff: 06/28/2018
+ms.locfileid: "37082101"
 ---
 # <a name="export-the-azure-cosmos-db-emulator-certificates-for-use-with-java-python-and-nodejs"></a>Java-, Python- és Node.js-környezethez használható Azure Cosmos DB Emulator-tanúsítványok exportálása
 
@@ -99,7 +99,7 @@ Ebben az oktatóanyagban a következőket hajtotta végre:
 > * Exportálta az SSL-tanúsítványt
 > * Elsajátította a tanúsítvány használatát Javában, Pythonban és a Node.js-ben
 
-Továbbléphet az Azure Functions HTTP-trigger létrehozása Azure Cosmos DB bemeneti kötéssel című oktatóanyagra.
+Az Azure Cosmos DB-vel kapcsolatos további információért folytassa az Alapfogalmak szakasz áttekintésével. 
 
 > [!div class="nextstepaction"]
-> [Azure-függvény létrehozása az Azure Cosmos DB-ből származó bemeneti adatokkal](tutorial-functions-http-trigger.md) 
+>[Beállítható adatkonzisztencia-szintek az Azure Cosmos DB-ben](../cosmos-db/consistency-levels.md)

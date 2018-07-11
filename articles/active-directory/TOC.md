@@ -127,11 +127,13 @@
 #### [Többtényezős hitelesítés](active-directory-reporting-activity-sign-ins-mfa.md)
 
 
-
 ### Hibaelhárítás
 #### [Hiányzó naplózási adatok](active-directory-reporting-troubleshoot-missing-audit-data.md)
 #### [Hiányzó adatok a letöltésekben](active-directory-reporting-troubleshoot-missing-data-download.md)
 #### [Az Azure Active Directory-tevékenységnaplók tartalomcsomag-hibái](active-directory-reporting-troubleshoot-content-pack.md)
+#### [Hibák az Azure Active Directory Reporting API-ban](active-directory-reporting-troubleshoot-graph-api.md)
+
+
 ### [Szoftveres hozzáférés](active-directory-reporting-api-getting-started-azure-portal.md)
 #### [Előfeltételek](active-directory-reporting-api-prerequisites-azure-portal.md)
 #### [Naplózási minták](active-directory-reporting-api-audit-samples.md)

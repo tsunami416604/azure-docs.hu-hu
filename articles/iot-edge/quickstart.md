@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: df22040de398810fd9250ef46da2f95b6915c4a9
-ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
+ms.openlocfilehash: 11b2fccf3c02555f50f48252f2cd9968c9ec90d7
+ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37030658"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37436089"
 ---
 # <a name="quickstart-deploy-your-first-iot-edge-module-from-the-azure-portal-to-a-windows-device---preview"></a>Rövid útmutató: Az első IoT Edge-modul üzembe helyezése az Azure Portal segítségével egy Windows-eszközön – előzetes verzió
 
@@ -185,24 +185,31 @@ Konfigurálja a futtatókörnyezetet az IoT Edge-eszköz kapcsolati sztringjéve
 
 5. Hozzon létre egy **IOTEDGE_HOST** nevű környezeti változót, és cserélje le az *\<ip_address\>* paraméter értékét az IoT Edge-eszköz IP-címére. 
 
-   ```powershell
-   [Environment]::SetEnvironmentVariable("IOTEDGE_HOST", "http://<ip_address>:15580")
-   ```
+  ```powershell
+  [Environment]::SetEnvironmentVariable("IOTEDGE_HOST", "http://<ip_address>:15580")
+  ```
+  
+  Őrizze meg a környezeti változót az újraindítások között.
 
-6. A `config.yaml` fájlban keresse meg a **Connect settings** (Kapcsolati beállítások) szakaszt. Frissítse a **management_uri** és a **workload_uri** paraméter értékét az IP-címre és az előző szakaszban megnyitott portokra. 
+  ```powershell
+  SETX /M IOTEDGE_HOST "http://<ip_address>:15580"
+  ```
+
+
+6. A `config.yaml` fájlban keresse meg a **Connect settings** (Kapcsolati beállítások) szakaszt. Frissítse a **management_uri** és a **workload_uri** paraméter értékét az IP-címre és az előző szakaszban megnyitott portokra. Cserélje le a **\<GATEWAY_ADDRESS\>** címet az IP-címére. 
 
    ```yaml
    connect: 
-     management_uri: "http://<ip_address>:15580"
-     workload_uri: "http://<ip_address>:15581"
+     management_uri: "http://<GATEWAY_ADDRESS>:15580"
+     workload_uri: "http://<GATEWAY_ADDRESS>:15581"
    ```
 
 7. Keresse meg a **Listen settings** (Figyelési beállítások) szakaszt, és adja meg ugyanezeket az értékeket a **management_uri** és a **workload_uri** paraméter esetén. 
 
    ```yaml
    listen:
-     management_uri: "http://<ip_address>:15580"
-     workload_uri: "http://<ip_address:15581"
+     management_uri: "http://<GATEWAY_ADDRESS>:15580"
+     workload_uri: "http://<GATEWAY_ADDRESS>:15581"
    ```
 
 8. Keresse meg a **Moby Container Runtime settings** (Moby-tároló futtatókörnyezeti beállításai) szakaszt, és győződjön meg róla, hogy a **network** (hálózat) értéke `nat`.

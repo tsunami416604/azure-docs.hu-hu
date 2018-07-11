@@ -1,6 +1,6 @@
 ---
-title: A Windows-tárolók monitorozása és diagnosztikája az Azure Service Fabricben | Microsoft Docs
-description: Ebben az oktatóanyagban beállíthatja az Azure Service Fabricen vezényelt Windows-tárolók monitorozását és diagnosztikáját.
+title: Windows-tárolók monitorozása és diagnosztikája a Service Fabricben az Azure-ban | Microsoft Docs
+description: Ebben az oktatóanyagban konfigurálhatja a Log Analytics szolgáltatást az Azure Service Fabric Windows-tárolóinak monitorozására és diagnosztikájára.
 services: service-fabric
 documentationcenter: .net
 author: dkkapur
@@ -15,14 +15,14 @@ ms.workload: NA
 ms.date: 06/08/2018
 ms.author: dekapur
 ms.custom: mvc
-ms.openlocfilehash: f839b05a1d97ce78601697469c982839358d6b06
-ms.sourcegitcommit: ea5193f0729e85e2ddb11bb6d4516958510fd14c
+ms.openlocfilehash: b013627c5a0dc596c9897d7fa2c5bf2b2a79ee40
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/21/2018
-ms.locfileid: "36300856"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37114006"
 ---
-# <a name="tutorial-monitor-windows-containers-on-service-fabric-using-log-analytics"></a>Oktatóanyag: A Service Fabricen található Windows-tárolók monitorozása a Log Analytics használatával
+# <a name="tutorial-monitor-windows-containers-on-service-fabric-using-log-analytics"></a>Oktatóanyag: A Service Fabric Windows-tárolóinak monitorozása a Log Analytics használatával
 
 Ez az oktatóanyag második része, amely végigvezeti a Log Analytics beállításán a Service Fabricen vezényelt Windows-tárolók monitorozásához.
 
@@ -34,13 +34,16 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 > * A Log Analytics-ügynök konfigurálása tároló- és csomópontmetrikák felvételéhez
 
 ## <a name="prerequisites"></a>Előfeltételek
+
 Az oktatóanyag elkezdése előtt:
-- Rendelkeznie kell egy fürttel az Azure-on, vagy [létre kell hoznia egyet ennek az oktatóanyagnak a segítségével](service-fabric-tutorial-create-vnet-and-windows-cluster.md)
-- [Üzembe kell helyeznie hozzá egy tárolóba helyezett alkalmazást](service-fabric-host-app-in-a-container.md)
+
+* Rendelkeznie kell egy fürttel az Azure-on, vagy [létre kell hoznia egyet ennek az oktatóanyagnak a segítségével](service-fabric-tutorial-create-vnet-and-windows-cluster.md)
+* [Üzembe kell helyeznie hozzá egy tárolóba helyezett alkalmazást](service-fabric-host-app-in-a-container.md)
 
 ## <a name="setting-up-log-analytics-with-your-cluster-in-the-resource-manager-template"></a>Log Analytics beállítása a fürttel a Resource Manager-sablonban
 
 Abban az esetben, ha az oktatóanyag első részében [megadott sablont](https://github.com/ChackDan/Service-Fabric/tree/master/ARM%20Templates/Tutorial) használta, tartalmaznia kell az általános Service Fabric Azure Resource Manager-sablon alábbi kiegészítéseit. Ha saját fürttel rendelkezik, amelyet a tárolók Log Analytics szolgáltatással való monitorozására szeretne használni:
+
 * Hajtsa végre az alábbi módosításokat a Resource Manager-sablonon.
 * Helyezze üzembe a PowerShell használatával a fürt a [sablon üzembe helyezésével](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-creation-via-arm) történő frissítéséhez. Az Azure Resource Manager megállapítja, hogy az erőforrás létezik, ezután pedig frissítésként közzéteszi.
 
@@ -49,7 +52,7 @@ Abban az esetben, ha az oktatóanyag első részében [megadott sablont](https:/
 Hajtsa végre a következő módosításokat a *template.json* fájlban:
 
 1. Adja hozzá a Log Analytics-munkaterület helyét és nevét a *parameters* (paraméterek) szakaszhoz:
-    
+
     ```json
     "omsWorkspacename": {
       "type": "string",
@@ -74,8 +77,8 @@ Hajtsa végre a következő módosításokat a *template.json* fájlban:
 
     A név vagy hely értékének módosításához adja hozzá ugyanazokat a paramétereket a *template.parameters.json* fájlhoz, és módosítsa az ott használt értékeket.
 
-2. Adja hozzá a megoldás nevét és a megoldást a *variables* (változók) szakaszhoz: 
-    
+2. Adja hozzá a megoldás nevét és a megoldást a *variables* (változók) szakaszhoz:
+
     ```json
     "omsSolutionName": "[Concat('ServiceFabric', '(', parameters('omsWorkspacename'), ')')]",
     "omsSolution": "ServiceFabric"
@@ -102,7 +105,7 @@ Hajtsa végre a következő módosításokat a *template.json* fájlban:
     ```
 
 4. Adja hozzá a Log Analytics-munkaterületet önálló erőforrásként. A *resources* (erőforrások) szakaszban, a virtuálisgép-méretezési csoportok erőforrásait követően vegye fel az alábbiakat:
-    
+
     ```json
     {
         "apiVersion": "2015-11-01-preview",
@@ -193,21 +196,21 @@ A tárolómegoldások beállításához a munkaterületen keresse meg a *Tárol�
 
 Ha a rendszer kéri a *Log Analytics-munkaterületet*, válassza ki az erőforráscsoportban létrehozott munkaterületet, majd kattintson a **Létrehozás** parancsra. Ezzel hozzáad egy *tárolómonitorozási megoldást* a munkaterülethez, ami miatt a sablon által üzembe helyezett Log Analytics-ügynök automatikusan elkezdi Docker-naplók és -statisztikák gyűjtését. 
 
-Lépjen vissza az *erőforráscsoporthoz*, ahol meg kell jelennie az újonnan hozzáadott monitorozási megoldásnak. Ha a megoldásra kattint, a kezdőlapon meg kell jelennie, hogy hány tárolórendszerképet futtat. 
+Lépjen vissza az *erőforráscsoporthoz*, ahol meg kell jelennie az újonnan hozzáadott monitorozási megoldásnak. Ha a megoldásra kattint, a kezdőlapon meg kell jelennie, hogy hány tárolórendszerképet futtat.
 
 *Az oktatóanyag [második részéből](service-fabric-host-app-in-a-container.md) származó fabrikam tároló 5 példányát futtattam*.
 
 ![Tárolómegoldás kezdőlapja](./media/service-fabric-tutorial-monitoring-wincontainers/solution-landing.png)
 
-Ha a **Tárolómonitorozási megoldásra** kattint, a rendszer egy még részletesebb irányítópultra irányítja, ahol több ablaktáblán görgethet végig és lekérdezéseket futtathat a Log Analyticsben. 
+Ha a **Tárolómonitorozási megoldásra** kattint, a rendszer egy még részletesebb irányítópultra irányítja, ahol több ablaktáblán görgethet végig és lekérdezéseket futtathat a Log Analyticsben.
 
 *Vegye figyelembe, hogy 2017 szeptemberétől kezdve a megoldás folyamatosan frissül – hagyja figyelmen kívül a Kubernetes-eseményekkel kapcsolatos esetleges hibákat. Dolgozunk azon, hogy több vezérlőt integráljunk ugyanabba a megoldásba.*
 
-Mivel az ügynök Docker-naplókat vesz fel, alapértelmezés szerint az *stdout* és az *stderr* jelenik meg. Ha jobbra görget, láthatja a tárolórendszerkép leltárát, állapotát, metrikáit, valamint példákat olyan lekérdezésekre, amelyeket több információt tartalmazó adatok eléréséhez futtathat. 
+Mivel az ügynök Docker-naplókat vesz fel, alapértelmezés szerint az *stdout* és az *stderr* jelenik meg. Ha jobbra görget, láthatja a tárolórendszerkép leltárát, állapotát, metrikáit, valamint példákat olyan lekérdezésekre, amelyeket több információt tartalmazó adatok eléréséhez futtathat.
 
 ![Tárolómegoldás irányítópultja](./media/service-fabric-tutorial-monitoring-wincontainers/container-metrics.png)
 
-Ha az ablaktáblák közül bármelyikre rákattint, A rendszer átirányítja a megjelenített értéket létrehozó Log Analytics-lekérdezéshez. A felvett naplók különböző fajtáinak megtekintéséhez módosítsa a lekérdezést a következőre: *\**. Innen lekérdezéseket futtathat, szűrhet a tároló teljesítményére és naplóira, valamint megtekintheti a Service Fabric-platformeseményeket. Az ügynökök is folyamatosan szívveréseket bocsátanak ki minden csomópontból, és ezek a fürt konfigurációjának módosításakor történő ellenőrzésével meggyőződhet arról, hogy a rendszer továbbra is az összes számítógépről gyűjti az adatokat.   
+Ha az ablaktáblák közül bármelyikre rákattint, A rendszer átirányítja a megjelenített értéket létrehozó Log Analytics-lekérdezéshez. A felvett naplók különböző fajtáinak megtekintéséhez módosítsa a lekérdezést a következőre: *\**. Innen lekérdezéseket futtathat, szűrhet a tároló teljesítményére és naplóira, valamint megtekintheti a Service Fabric-platformeseményeket. Az ügynökök is folyamatosan szívveréseket bocsátanak ki minden csomópontból, és ezek a fürt konfigurációjának módosításakor történő ellenőrzésével meggyőződhet arról, hogy a rendszer továbbra is az összes számítógépről gyűjti az adatokat.
 
 ![Tároló lekérdezése](./media/service-fabric-tutorial-monitoring-wincontainers/query-sample.png)
 
@@ -222,10 +225,9 @@ Ekkor megnyílik a Log Analytics-munkaterület, ahol megtekintheti a megoldások
 
 Néhány perc múlva **frissítse** a Tárolómonitorozási megoldást, és ezután látnia kell, ahogy érkeznek a *Számítógép teljesítményére* vonatkozó adatok. Ez segít megérteni, hogyan használja a rendszer az erőforrásokat. Ezeket a metrikákat a fürt méretezésére vonatkozó, megfelelő döntések meghozásához is használhatja, vagy annak megerősítéséhez, hogy a fürt a vártnak megfelelően osztja el a terhelést.
 
-*Megjegyzés: A metrikák felhasználásához győződjön meg arról, hogy az idő szűrői megfelelően vannak beállítva.* 
+*Megjegyzés: A metrikák felhasználásához győződjön meg arról, hogy az idő szűrői megfelelően vannak beállítva.*
 
 ![Teljesítményszámlálók 2](./media/service-fabric-tutorial-monitoring-wincontainers/perf-counters2.png)
-
 
 ## <a name="next-steps"></a>További lépések
 

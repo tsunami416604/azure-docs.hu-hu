@@ -12,17 +12,18 @@ ms.workload: tbd
 ms.devlang: na
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 04/17/2018
+ms.date: 06/13/2018
 ms.author: wesmc
-ms.openlocfilehash: 748e5839233b9d71b9ed072d0cfe45f018471c52
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: c24e3045640471ed6ee7052f877850acd8e8cf00
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2018
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37101018"
 ---
 # <a name="tutorial-azure-signalr-service-authentication"></a>Oktatóanyag: Azure SignalR Service-hitelesítés
 
-A Microsoft Azure SignalR szolgáltatás jelenleg [nyilvános előzetes verzióként](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) érhető el.
+A Microsoft Azure SignalR szolgáltatás jelenleg [Nyilvános előzetes verzióban](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) van.
 
 Ez az oktatóanyag a rövid útmutatóban bemutatott csevegőszoba-alkalmazásra épít. Ha még nem végezte el a [Csevegőszoba létrehozása SignalR szolgáltatással](signalr-quickstart-dotnet-core.md) gyakorlatot, először végezze el azt. 
 
@@ -87,9 +88,10 @@ Az oktatóanyag elvégzéséhez az alábbi előfeltételekkel kell rendelkeznie:
 
 ### <a name="update-the-startup-class-to-support-github-authentication"></a>A Startup osztály frissítése a GitHub-hitelesítés támogatásához
 
-1. Adjon hozzá egy, a legújabb *Microsoft.AspNetCore.Authentication.Cookies* csomagra mutató hivatkozást, és állítsa vissza az összes csomagot.
+1. Adjon hozzá egy, a legújabb *Microsoft.AspNetCore.Authentication.Cookies* és *AspNet.Security.OAuth.GitHub* csomagokra mutató hivatkozást, és állítsa vissza az összes csomagot.
 
         dotnet add package Microsoft.AspNetCore.Authentication.Cookies -v 2.1.0-rc1-30656
+        dotnet add package AspNet.Security.OAuth.GitHub -v 2.0.0-rc2-final
         dotnet restore
 
 1. Nyissa meg a *Startup.cs* fájlt, és adjon hozzá `using` utasításokat az alábbi névterekhez:
@@ -392,7 +394,7 @@ Ebben a szakaszban be fogja kapcsolni a valódi hitelesítést azáltal, hogy ho
 
 ## <a name="deploy-the-app-to-azure"></a>Az alkalmazás üzembe helyezése az Azure-ban
 
-Ebben a fejezetben az Azure parancssori felületet (CLI) fogja használni az Azure Cloud Shellből, hogy létrehozzon egy új [Azure-webalkalmazást](https://docs.microsoft.com/azure/app-service/) az ASP.NET-alkalmazás Azure-ban való üzemeltetéséhez. A webalkalmazás a Git helyi üzemelő példányának használatára lesz konfigurálva. A webalkalmazás emellett a SignalR kapcsolati karakterlánccal, GitHub OAuth titkos alkalmazáskulcsokkal és egy üzembe helyező felhasználóval is konfigurálva lesz.
+Ebben a fejezetben az Azure parancssori felületet (CLI) fogja használni az Azure Cloud Shellből, hogy létrehozzon egy új [Azure-webalkalmazást](https://docs.microsoft.com/azure/app-service/) az ASP.NET-alkalmazás Azure-ban való üzemeltetéséhez. A webalkalmazás a Git helyi üzemelő példányának használatára lesz konfigurálva. A webalkalmazás emellett a SignalR kapcsolati sztringgel, GitHub OAuth titkos alkalmazáskulcsokkal és egy üzembe helyező felhasználóval is konfigurálva lesz.
 
 A jelen szakaszban ismertetett lépések az Azure CLI *signalr* bővítményét használják. Hajtsa végre az alábbi parancsot a *signalr* bővítmény Azure CLI 2.0-hoz való telepítéséhez:
 
@@ -443,7 +445,7 @@ az webapp create --name $WebAppName --resource-group $ResourceGroupName \
 
 Ebben a szakaszban alkalmazásbeállításokat fog hozzáadni a következő összetevőkhöz:
 
-* A SignalR Service-erőforrás kapcsolati karakterlánca
+* A SignalR Service-erőforrás kapcsolati sztringje
 * A GitHub OAuth-alkalmazás ügyfél-azonosítója
 * A GitHub OAuth-alkalmazás titkos ügyfélkulcsa
 
@@ -477,7 +479,7 @@ connstring="Endpoint=https://$signalRhostname;AccessKey=$signalRprimarykey;"
 #Add an app setting to the web app for the SignalR connection
 az webapp config appsettings set --name $WebAppName \
     --resource-group $ResourceGroupName \
-    --settings "Azure:SignalR:ConnectionString=$connstring" 
+    --settings "Azure__SignalR__ConnectionString=$connstring" 
 
 #Add the app settings to use with GitHub authentication
 az webapp config appsettings set --name $WebAppName \
@@ -587,13 +589,13 @@ Ha azt tervezi, hogy a következő oktatóanyaggal folytatja, megtarthatja és a
 Ha azonban befejezte az oktatóanyag mintaalkalmazásának használatát, a díjak elkerülése érdekében törölheti az ebben a rövid útmutatóban létrehozott Azure-erőforrásokat. 
 
 > [!IMPORTANT]
-> Az erőforráscsoport törlése nem visszaállítható; az erőforráscsoport és a benne foglalt erőforrások véglegesen törlődnek. Figyeljen arra, hogy ne töröljön véletlenül erőforráscsoportot vagy erőforrásokat. Ha a jelen minta üzemeltetését végző erőforrásokat egy meglévő, megtartani kívánt erőforrásokat tartalmazó erőforráscsoportban hozta létre, az erőforrásokat az erőforráscsoport törlése helyett külön-külön törölheti a megfelelő panelekről.
+> Az erőforráscsoport törlése nem vonható vissza; az erőforráscsoport és a benne foglalt erőforrások véglegesen törlődnek. Figyeljen arra, hogy ne töröljön véletlenül erőforráscsoportot vagy erőforrásokat. Ha a jelen minta üzemeltetését végző erőforrásokat egy meglévő, megtartani kívánt erőforrásokat tartalmazó erőforráscsoportban hozta létre, az erőforrásokat az erőforráscsoport törlése helyett külön-külön törölheti a megfelelő panelekről.
 > 
 > 
 
-Jelentkezzen be az [Azure portálra](https://portal.azure.com), és kattintson az **Erőforráscsoportok** elemre.
+Jelentkezzen be az [Azure Portalra](https://portal.azure.com), és kattintson az **Erőforráscsoportok** elemre.
 
-A **Szűrés név alapján...** mezőbe írja be az erőforráscsoport nevét. A jelen cikk utasításai egy *SignalRTestResources* nevű erőforráscsoportot használtak. Az eredménylistában kattintson a **…** ikonra az erőforráscsoport mellett, majd kattintson az **Erőforráscsoport törlése** lehetőségre.
+A **Szűrés név alapján...** mezőbe írja be az erőforráscsoport nevét. A jelen cikk utasításai egy *SignalRTestResources* nevű erőforráscsoportot használtak. Az eredménylistában kattintson a **…** ikonra az erőforráscsoport mellett, majd kattintson az **Erőforráscsoport törlése** elemre.
 
    
 ![Törlés](./media/signalr-authenticate-oauth/signalr-delete-resource-group.png)

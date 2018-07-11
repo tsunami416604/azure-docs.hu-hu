@@ -15,12 +15,12 @@ ms.workload: big-compute
 ms.date: 04/06/2018
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 182d65ea955cfa2cac611080c30e145c26284369
-ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
+ms.openlocfilehash: 3fe0d3836046ad143e746503210099ee5c640a08
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36751479"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37129098"
 ---
 # <a name="develop-large-scale-parallel-compute-solutions-with-batch"></a>Nagy léptékű párhuzamos számítási megoldások fejlesztése a Batch segítségével
 
@@ -506,8 +506,7 @@ Olyan esetekben, ahol néhány tevékenység meghiúsul, a Batch ügyfélalkalma
 * Megismerheti a Batch-megoldások fejlesztéséhez rendelkezésre álló [Batch API-kat és eszközöket](batch-apis-tools.md).
 * Tekintsen át lépésről lépésre egy Batch-mintaalkalmazást az [Ismerkedés az Azure Batch .NET-es kódtárával](batch-dotnet-get-started.md) című cikkben. Az oktatóanyagból [Python-verzió](batch-python-tutorial.md) is elérhető, amelyben a számítási feladat linuxos számítási csomópontokon fut.
 * Töltse le és telepítse a [BatchLabs][batch_labs] alkalmazást, amelyet bármikor használhat, ha a Batch-megoldások fejlesztése során segítségre van szüksége. A BatchLabs alkalmazással Azure Batch-alkalmazásokat hozhat létre és monitorozhat, és a felmerülő hibáikat is elháríthatja. 
-* Tanulja meg, hogyan hozhat létre [készletet linuxos számítási csomópontokból](batch-linux-nodes.md).
-* Keresse fel az [Azure Batch fórumot][batch_forum] az MSDN-en. Akár még csak most tanulja a Batch használatát, akár képzett szakértőnek számít, a fórum remek terepet biztosít, ahol felteheti kérdéseit.
+* Tekintse meg a közösségi forrásanyagokat, például a [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-batch) oldalt, a [Batch-közösség adattárát](https://github.com/Azure/Batch) és az [Azure Batch fórumot][batch_forum] az MSDN-en. 
 
 [1]: ./media/batch-api-basics/node-folder-structure.png
 

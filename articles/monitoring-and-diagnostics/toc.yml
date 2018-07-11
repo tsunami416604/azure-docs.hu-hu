@@ -103,6 +103,8 @@
           href: monitoring-stream-diagnostic-logs-to-event-hubs.md
         - name: Diagnosztikai beállítások engedélyezése Resource Manager-sablonokkal
           href: monitoring-enable-diagnostic-logs-using-template.md
+        - name: A JSON-sorok diagnosztikainapló-formátum használatára való felkészülés
+          href: monitor-diagnostic-logs-append-blobs.md
     - name: A tevékenységnapló használata
       items:
         - name: Események megtekintése a tevékenységnaplóban

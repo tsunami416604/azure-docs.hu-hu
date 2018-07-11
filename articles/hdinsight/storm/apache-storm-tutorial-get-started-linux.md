@@ -16,12 +16,12 @@ ms.workload: big-data
 ms.date: 02/27/2018
 ms.author: larryfr
 ms.custom: H1Hack27Feb2017,hdinsightactive,hdiseo17may2017
-ms.openlocfilehash: 0490ba63e651b0ef16175dca46b85a3e48bfd26f
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: a5abce003849258cf02616dc34b15597b3c6ea19
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
-ms.locfileid: "30179854"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37099381"
 ---
 # <a name="get-started-with-apache-storm-on-hdinsight-using-the-storm-starter-examples"></a>A HDInsight-alapú Apache Storm rendszer használatának első lépései Storm Starter-példákkal
 
@@ -73,7 +73,7 @@ HDInsight alatt futó Storm-fürt létrehozásához kövesse az alábbi lépése
 
 4. A fürt típusának kijelölése után erősítse meg a beállítást a __Kiválasztás__ gombbal. Ezután kattintson a __Tovább__ gombra az alapszintű konfiguráció befejezéséhez.
 
-5. A **Tárolás** szakaszban válasszon ki vagy hozzon létre egy Storage-fiókot. A jelen dokumentumban leírt lépésekben a jelen szakaszban található többi mező alapértelmezett értékét ne módosítsa. Kattintson a __Tovább__ gombra a tárolókonfiguráció mentéséhez.
+5. A **Tárolás** szakaszban válasszon ki vagy hozzon létre egy Storage-fiókot. A jelen dokumentumban leírt lépésekben a jelen szakaszban található többi mező alapértelmezett értékét ne módosítsa. Kattintson a __Tovább__ gombra a tárolókonfiguráció mentéséhez. A 2. generációs Data Lake Storage használatáról [a fürtök HDInsightban történő beállításáról szóló rövid útmutatóban](../../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md) talál további információt.
 
     ![A tárfiók HDInsight-beállításainak konfigurálása](./media/apache-storm-tutorial-get-started-linux/set-hdinsight-storage-account.png)
 

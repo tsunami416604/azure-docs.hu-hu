@@ -11,14 +11,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
-ms.date: 03/20/2018
+ms.date: 05/29/2018
 ms.author: ccompy
 ms.custom: mvc
-ms.openlocfilehash: 904641a433d55cc5f1d04b17ed067cd560c6b33c
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 082275e2acd81e34c057f863651528eb46e8501e
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37114961"
 ---
 # <a name="configure-your-app-service-environment-with-forced-tunneling"></a>Az App Service-környezet konfigurálása kényszerített bújtatással
 
@@ -37,6 +38,7 @@ Ha többet szeretne megtudni a virtuális hálózatokban történő útválaszt�
 Ha nem közvetlenül az internetre szeretné átirányítani a kimenő ASE-forgalmat, az alábbi lehetőségei vannak:
 
 * Közvetlen internetelérés engedélyezése az ASE számára
+* ASE-alhálózat konfigurálása a BGP-útvonalak figyelmen kívül hagyására
 * Az ASE alhálózat konfigurálása szolgáltatásvégpontok használatára az Azure SQL-hez és az Azure Storage szolgáltatáshoz
 * Saját IP-címek hozzáadása az ASE Azure SQL-tűzfalhoz
 
@@ -58,8 +60,22 @@ Ha a hálózat már irányít forgalmat a helyszínen, létre kell hozni egy alh
 
 ![Közvetlen internet-hozzáférés][1]
 
+## <a name="configure-your-ase-subnet-to-ignore-bgp-routes"></a>ASE-alhálózat konfigurálása a BGP-útvonalak figyelmen kívül hagyására ## 
+
+Az ASE-alhálózatot konfigurálhatja a BGP-útvonalak figyelmen kívül hagyására.  Amikor ez a beállítás érvényesül, az ASE gond nélkül hozzá tud férni a függőségeihez.  Ahhoz azonban, hogy az alkalmazásai hozzá tudjanak férni a helyszíni erőforrásokhoz, UDR-eket is létre kell hoznia.
+
+ASE-alhálózat konfigurálása a BGP-útvonalak figyelmen kívül hagyására:
+
+* Hozzon létre egy UDR-t, és rendelje hozzá az ASE-alhálózathoz, ha ez még nem történt meg.
+* Az Azure Portalon nyissa meg az ASE-alhálózathoz rendelt útválasztási táblázat felhasználói felületét.  Válassza a Konfiguráció lehetőséget.  A BGP-útvonalpropagálást állítsa Letiltva állapotúra.  Kattintson a Mentés gombra. A beállítás kikapcsolására vonatkozó információkat az [útválasztási táblázat létrehozásával][routetable] foglalkozó témakörben találja meg.
+
+Ezután az alkalmazásai nem fognak hozzáférni a helyszíni erőforrásokhoz. Ennek orvoslásához szerkessze az ASE-alhálózathoz rendelt UDR-t, és vegyen fel útvonalakat a helyszíni címtartományokhoz. A Következő ugrási típus értéke legyen Virtuális hálózati átjáró. 
+
 
 ## <a name="configure-your-ase-with-service-endpoints"></a>Az ASE konfigurálása szolgáltatásvégpontokkal ##
+
+ > [!NOTE]
+   > Az SQL-t használó szolgáltatásvégpontok nem működnek az US Government régiókban.  Az alábbi információk csak az Azure nyilvános régióiban érvényesek.  
 
 Ha az Azure SQL és az Azure Storage felé irányuló forgalmon kívül az ASE összes kimenő forgalmát át szeretné irányítani, végezze el a következő lépéseket:
 
@@ -141,3 +157,4 @@ A kommunikáció egyszerű megszakítása mellett a túl sok késés bevezetés�
 [routes]: ../../virtual-network/virtual-networks-udr-overview.md
 [template]: ./create-from-template.md
 [serviceendpoints]: ../../virtual-network/virtual-network-service-endpoints-overview.md
+[routetable]: ../../virtual-network/manage-route-table.md#create-a-route-table

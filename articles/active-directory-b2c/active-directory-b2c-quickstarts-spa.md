@@ -1,23 +1,23 @@
 ---
-title: Gyors üzembe helyezés – beállítása bejelentkezés Azure Active Directory B2C segítségével egyoldalas alkalmazások |} Microsoft Docs
-description: Futtassa egy egyoldalas mintaalkalmazás, amely Azure Active Directory B2C használatával biztosítja a fiók bejelentkezhet.
+title: Rövid útmutató – Bejelentkezés beállítása egyoldalas alkalmazáshoz az Azure Active Directory B2C használatával | Microsoft Docs
+description: Azure Active Directory B2C-alapú fiókbejelentkezést támogató egyoldalas mintaalkalmazás futtatása.
 services: active-directory-b2c
 author: davidmu1
 manager: mtillman
 ms.service: active-directory
 ms.workload: identity
-ms.topic: article
+ms.topic: quickstart
 ms.date: 2/13/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: ad9153b9b8d0235ad2cdc71b56f7b6179e98afdb
-ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
-ms.translationtype: MT
+ms.openlocfilehash: 7e600f55b9eeb2682b005b8c84c74ec25e054c36
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36293281"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37447251"
 ---
-# <a name="quickstart-set-up-sign-in-for-a-single-page-app-using-azure-active-directory-b2c"></a>Gyors üzembe helyezés: Állítson be bejelentkezés Azure Active Directory B2C segítségével egyoldalas alkalmazások
+# <a name="quickstart-set-up-sign-in-for-a-single-page-app-using-azure-active-directory-b2c"></a>Rövid útmutató: Bejelentkezés beállítása egyoldalas alkalmazáshoz az Azure Active Directory B2C használatával
 
 Az Azure Active Directory (Azure AD) B2C felhőalapú identitáskezelést nyújt az alkalmazás, az üzlet és az ügyfelek védelme érdekében. Az Azure AD B2C nyílt szabványú protokollokkal teszi lehetővé az alkalmazások hitelesítését közösségi hálózati és vállalati fiókokon.
 

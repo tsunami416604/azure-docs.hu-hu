@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 05/11/2018
 ms.author: dastanfo
 ms.custom: mvc
-ms.openlocfilehash: 85e6efcc4e213da4d6c650f7543403dd52e8337c
-ms.sourcegitcommit: 50f82f7682447245bebb229494591eb822a62038
+ms.openlocfilehash: 7ba5fa1d4c5b87d1c4828ee98dae36f415d37c20
+ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35248435"
+ms.lasthandoff: 07/02/2018
+ms.locfileid: "37344155"
 ---
 # <a name="tutorial-install-and-create-service-fabric-cluster"></a>Oktatóanyag: Service Fabric-fürt telepítése és létrehozása
 
@@ -61,13 +61,7 @@ A csomópontok a frissítésük után a következőképpen jelennek meg:
         }
 ```
 
-Ezután frissítenie kell néhány tulajdonságot.  A 34. sorban módosítania kell a diagnosztikai tároló kapcsolati sztringjét. A módosítás után a következőképpen kell kinéznie, miután behelyettesítette az IP-címét a `"connectionstring": "\\\\172.31.27.1\\c$\\DiagnosticsStore"` szakaszban
-
-A kapcsolati sztring frissítése után ne felejtse el létrehozni a mappát.  Ezt a következő parancs hozza létre. Ne felejtse el lecserélni az alábbi IP-címet a kapcsolati sztringbe beszúrt IP-címre:
-
-```powershell
-mkdir \\172.31.27.1\c$\DiagnosticsStore
-```
+Ezután frissítenie kell néhány tulajdonságot.  A 34. sorban módosítania kell a diagnosztikai tároló kapcsolati sztringjét. A módosítás után a következőképpen kell kinéznie: `"connectionstring": "C:\\ProgramData\\SF\\DiagnosticsStore"`
 
 Végül a konfiguráció `nodeTypes` szakaszában adjon hozzá egy új szakaszt a Windows által használt rövid élettartamú portok leképezéséhez.  A konfigurációs fájlnak a következőképpen kell kinéznie:
 

@@ -8,12 +8,12 @@ ms.date: 2/21/2018
 ms.topic: tutorial
 ms.service: backup
 manager: carmonm
-ms.openlocfilehash: 7429516538c892bea04d38a98abcfb13ba960d22
-ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
+ms.openlocfilehash: de91559d9c3626bdd07c2e497a8aa0b124f00b57
+ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36286400"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37434840"
 ---
 # <a name="questions-about-backing-up-azure-files"></a>Kérdések az Azure Files biztonsági mentéséről
 Ez a cikk az Azure Files biztonsági mentésével kapcsolatos általános kérdéseket válaszol meg. Egyes válaszokban részletes információkat tartalmazó cikkekre mutató hivatkozások találhatók. Emellett egy fórumbejegyzésben is feltehet kérdéseket az Azure Backup szolgáltatással kapcsolatban a [vitafórumon](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazureonlinebackup).
@@ -68,7 +68,7 @@ Az Azure-fájlmegosztások biztonsági mentése jelenleg előzetes verzióban é
 Ha a fenti listában nem szereplő régióban kell használnia ezt a megoldást, írjon a következő e-mail-címre: [AskAzureBackupTeam@microsoft.com](email:askazurebackupteam@microsoft.com).
 
 ### <a name="how-many-azure-file-shares-can-i-protect-in-a-vaultbr"></a>Hány Azure-fájlmegosztást védhetek meg egy tárban?<br/>
-Az előzetes verzióban táranként legfeljebb 25 tárfiók Azure-fájlmegosztásait védheti meg. Ezenkívül egyetlen tárban akár 200 Azure-fájlmegosztást is megóvhat.
+Az előzetes verzióban táranként legfeljebb 50 tárfiók Azure-fájlmegosztásait védheti meg. Ezenkívül egyetlen tárban akár 200 Azure-fájlmegosztást is megóvhat.
 
 ### <a name="can-i-protect-two-different-file-shares-from-the-same-storage-account-to-different-vaults"></a>Biztosíthatok védelmet két különböző fájlmegosztás számára ugyanabból a Storage-fiókból különböző tárolókba?
 Nem. A Storage-fiókban lévő összes fájlmegosztás számára csak ugyanazzal a tárolóval biztosítható védelem.

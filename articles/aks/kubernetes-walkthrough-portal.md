@@ -2,19 +2,19 @@
 title: Rövid útmutató – Rövid útmutató az Azure Kubernetes fürtportáljához
 description: Ebből a rövid útmutatóból megtudhatja, hogyan hozhat létre az AKS segítségével Kubernetes-fürtöt Linux-tárolók esetén az Azure Portallal.
 services: container-service
-author: neilpeterson
+author: iainfoulds
 manager: jeconnoc
 ms.service: container-service
 ms.topic: quickstart
 ms.date: 04/29/2018
-ms.author: nepeters
+ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 90d01ed7cc2483c8467d646ebf9ad056ea1a4baf
-ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
+ms.openlocfilehash: aa8a1cccd4eeb45e829cd8df73f128dd6cca416d
+ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36286596"
+ms.lasthandoff: 07/02/2018
+ms.locfileid: "37344474"
 ---
 # <a name="quickstart-deploy-an-azure-kubernetes-service-aks-cluster"></a>Rövid útmutató: Azure Kubernetes Service- (AKS-) fürt üzembe helyezése
 
@@ -28,11 +28,9 @@ A rövid útmutató feltételezi, hogy rendelkezik a Kubernetes használatára v
 
 Jelentkezzen be az Azure Portalra a http://portal.azure.com webhelyen.
 
-
-
 ## <a name="create-aks-cluster"></a>AKS-fürt létrehozása
 
-Válassza az **Erőforrás létrehozása** lehetőséget > válassza a **Kubernetes Service** > **Létrehozás** elemet.
+Válassza az **Erőforrás létrehozása** lehetőséget > válassza a **Kubernetes Service** elemet.
 
 Tegye a következőket az AKS-fürt létrehozására szolgáló űrlap címsorai alatt.
 

@@ -7,16 +7,16 @@ manager: kaiqb
 ms.service: cognitive-services
 ms.component: luis
 ms.topic: tutorial
-ms.date: 06/21/2018
+ms.date: 06/29/2018
 ms.author: v-geberr
-ms.openlocfilehash: 68c241833aab756bfc5e71c03da5d4175401910d
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: c5408d20a736f262e95ce7014c385b50521967ad
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "36335822"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37127855"
 ---
-# <a name="tutorial-create-app-using-a-list-entity"></a>Oktatóanyag: Alkalmazás létrehozása listaentitás használatával
+# <a name="tutorial-4-add-list-entity"></a>Oktatóanyag: 4. Listaentitás hozzáadása
 Ebben az oktatóanyagban létrehozunk egy alkalmazást, amely bemutatja, hogyan kérhetők le egy előre meghatározott listával egyező adatok. 
 
 <!-- green checkmark -->
@@ -30,7 +30,7 @@ Ebben az oktatóanyagban létrehozunk egy alkalmazást, amely bemutatja, hogyan 
 Ehhez a cikkhez egy ingyenes [LUIS](luis-reference-regions.md#luis-website)-fiókra van szüksége a LUIS alkalmazás létrehozásához.
 
 ## <a name="before-you-begin"></a>Előkészületek
-Ha még nincs meg az Emberi erőforrások alkalmazása a regex entitások [egyéni tartomány](luis-quickstart-intents-regex-entity.md) oktatóanyagából, [importálja](create-new-app.md#import-new-app) a JSON-t egy új alkalmazásba a [LUIS](luis-reference-regions.md#luis-website) webhelyén. Az importálandó alkalmazás a [LUIS-minták](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/quickstarts/custom-domain-regex-HumanResources.json) GitHub-adattárban található.
+Ha még nincs meg az Emberi erőforrások alkalmazása a [regex entitás](luis-quickstart-intents-regex-entity.md) oktatóanyagából, [importálja](create-new-app.md#import-new-app) a JSON-t egy új alkalmazásba a [LUIS](luis-reference-regions.md#luis-website) webhelyén. Az importálandó alkalmazás a [LUIS-minták](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/quickstarts/custom-domain-regex-HumanResources.json) GitHub-adattárban található.
 
 Ha meg szeretné tartani az eredeti Emberi erőforrások alkalmazást, klónozza a [Settings](luis-how-to-manage-versions.md#clone-a-version) (Beállítások) lapon a verziót, és adja neki a következő nevet: `list`. A klónozás nagyszerű mód, hogy kísérletezhessen a különböző LUIS-funkciókkal anélkül, hogy az az eredeti verzióra hatással lenne. 
 
@@ -97,8 +97,6 @@ mv john.w.smith@mycompany from office b-1234 to office h-4452
     |234-56-7891 – hh-2345|
 
     [ ![Képernyőkép a Szándék lapról, az új kimondott szövegek kiemelésével](./media/luis-quickstart-intent-and-list-entity/hr-enter-utterances.png) ](./media/luis-quickstart-intent-and-list-entity/hr-enter-utterances.png#lightbox)
-
-    Az alkalmazásban fel lettek véve előre összeállított számentitások az előző oktatóanyagban, ezért minden szám meg van címkézve. Ez az információ elég lehet az ügyfélalkalmazás számára, de a szám nem lesz megcímkézve a típussal. Egy új entitás létrehozása a megfelelő névvel lehetővé teszi, hogy az ügyfélalkalmazás feldolgozza az entitást, amikor visszakapja a LUIS-ból.
 
 ## <a name="create-an-employee-list-entity"></a>Alkalmazottlista-entitás létrehozása
 Most, hogy a **MoveEmployee** szándéknak vannak kimondott szövegei, a LUIS-nak meg kell értenie, hogy az alkalmazott pontosan micsoda. 
@@ -298,10 +296,10 @@ A csevegőrobot már elég információval rendelkezik az elsődleges művelet (
 A LUIS végzett ezzel a kéréssel. A hívó alkalmazás, például egy csevegőrobot, felhasználhatja a topScoringIntent eredményt és az entitás adatait a következő lépés végrehajtásához. A LUIS nem végzi el ezt a programozható munkát a csevegőrobotnak vagy a hívó alkalmazásnak. A LUIS csak azt határozza meg, hogy mi a felhasználó szándéka. 
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
-Ha már nincs rá szükség, törölje a LUIS-alkalmazást. Ehhez válassza az alkalmazáslistában az alkalmazás neve mellett jobbra található három pontot (...), majd a **Delete** (Törlés) lehetőséget. A **Delete app?** (Törli az alkalmazást?) előugró párbeszédpanelen válassza az **OK** lehetőséget.
+Ha már nincs rá szükség, törölje a LUIS-alkalmazást. Válassza a **My apps** (Saját alkalmazások) elemet a bal felső menüben. Válassza az alkalmazáslistában az alkalmazás neve mellett jobbra található három pontot (...), majd a **Delete** (Törlés) lehetőséget. A **Delete app?** (Törli az alkalmazást?) előugró párbeszédpanelen válassza az **OK** lehetőséget.
 
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Ismerkedés a hierarchikus entitások hozzáadásának módjával](luis-quickstart-intent-and-hier-entity.md)
+> [Hierarchikus entitás hozzáadása az alkalmazáshoz](luis-quickstart-intent-and-hier-entity.md)
 

@@ -9,14 +9,14 @@ ms.component: luis
 ms.topic: tutorial
 ms.date: 06/22/2018
 ms.author: v-geberr
-ms.openlocfilehash: 5fb93ebbd2da02df0c2cdf0d19ed282aeafe9473
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 6ba45de8ef41c8a57ca9c042a304e323a4fac263
+ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "36335560"
+ms.lasthandoff: 06/28/2018
+ms.locfileid: "37081693"
 ---
-# <a name="tutorial-create-app-that-uses-hierarchical-entity"></a>Oktatóanyag: Hierarchikus entitást használó alkalmazás létrehozása
+# <a name="tutorial-5-add-hierarchical-entity"></a>Oktatóanyag: 5. Hierarchikus entitás hozzáadása
 Ebben az oktatóanyagban létrehozunk egy alkalmazást, amely bemutatja, hogyan lehet kapcsolódó adatrészleteket keresni kontextus alapján. 
 
 <!-- green checkmark -->

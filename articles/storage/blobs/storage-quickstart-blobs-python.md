@@ -9,11 +9,12 @@ ms.service: storage
 ms.topic: quickstart
 ms.date: 04/09/2018
 ms.author: cshoe
-ms.openlocfilehash: 88f148e7ea175e928ee9f35b8728994a738e10da
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 8b3735380105bca8421e3f1d654425eea465918e
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37767399"
 ---
 # <a name="quickstart-upload-download-and-list-blobs-using-python"></a>Rövid útmutató: blobok feltöltése, letöltése és listázása a Python használatával
 
@@ -42,7 +43,7 @@ Ez a parancs a helyi git mappába klónozza az adattárat. A Python program megn
 
 [!INCLUDE [storage-copy-account-key-portal](../../../includes/storage-copy-account-key-portal.md)]
 
-## <a name="configure-your-storage-connection-string"></a>A tárolási kapcsolati karakterlánc konfigurálása
+## <a name="configure-your-storage-connection-string"></a>A tárolási kapcsolati sztring konfigurálása
 Az alkalmazásban meg kell adnia a tárfiók nevét és a fiókkulcsot, hogy létrehozhasson egy `BlockBlobService` objektumot. Nyissa meg az `example.py` fájlt az IDE Megoldáskezelőjéből. Az **accountname** és az **accountkey** értékeket cserélje le a fiók nevére, illetve kulcsára. 
 
 ```python 
@@ -52,7 +53,11 @@ block_blob_service = BlockBlobService(account_name='accountname', account_key='a
 ## <a name="run-the-sample"></a>Minta futtatása
 Ez a minta egy tesztfájlt hoz létre a „Dokumentumok” mappában. A mintaprogram feltölti a tesztfájlt a Blob-tárolóba, listázza a tárolóban található blobokat, majd letölti a fájlt egy új néven. 
 
-Futtassa a mintát. Az alábbi kimenet példa az alkalmazás futtatásakor kapott kimenetre:
+Első lépésként telepítse a függőségeket a `pip install` futtatásával:
+
+    pip install azure-storage
+
+Ezután futtassa a mintákat. Az alábbi kimenet példa az alkalmazás futtatásakor kapott kimenetre:
   
 ```
 Temp file = C:\Users\azureuser\Documents\QuickStart_9f4ed0f9-22d3-43e1-98d0-8b2c05c01078.txt
@@ -136,9 +141,9 @@ Szerezze be a tárolóban található fájlok listáját a **list_blobs** metód
 ```python
 # List the blobs in the container
 print("\nList blobs in the container")
-    generator = block_blob_service.list_blobs(container_name)
-    for blob in generator:
-        print("\t Blob name: " + blob.name)
+generator = block_blob_service.list_blobs(container_name)
+for blob in generator:
+    print("\t Blob name: " + blob.name)
 ```
 
 ### <a name="download-the-blobs"></a>A blobok letöltése

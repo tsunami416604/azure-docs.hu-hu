@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: quickstart
 ms.date: 05/07/2018
 ms.author: jgao
-ms.openlocfilehash: 48dbd89216d27e9495a9129c6b873f86a9a23338
-ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
+ms.openlocfilehash: c49371d194b3b6f94076cb00595ec9feaeb3fb44
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34763255"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37096400"
 ---
 # <a name="quickstart-get-started-with-hadoop-and-hive-in-azure-hdinsight-using-resource-manager-template"></a>Gyors útmutató: A Hadoop és a Hive Azure HDInsightban való használatának első lépései Resource Manager-sablonnal
 
@@ -255,6 +255,7 @@ Ebben a cikkben megtanulhatta, hogyan hozhat létre Linux-alapú HDInsight-fürt
 Ha készen áll dolgozni a saját adataival, és szeretne többet megtudni a HDInsight adattárolási módszereiről, illetve arról, hogyan kerülnek az adatok a HDInsightba, tekintse meg a következő cikkeket:
 
 * További információt az Azure Storage HDInsight általi használatáról [az Azure Storage és a HDInsight együttes használatát](../hdinsight-hadoop-use-blob-storage.md) ismertető cikkben talál.
+* A [fürtök HDInsightban történő beállításáról szóló rövid útmutatóban](../../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md) talál további információt arról, hogyan hozhat létre egy HDInsight-fürtöt a Data Lake Storage segítségével.
 * További információ a HDInsightba való adatfeltöltésről: [Adatok feltöltése a HDInsightba](../hdinsight-upload-data.md).
 
 A HDInsight használatával történő adatelemzésről az alábbi cikkekben talál további információt:

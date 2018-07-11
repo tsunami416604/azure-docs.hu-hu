@@ -1,29 +1,28 @@
 ---
 title: Azure-ba irányuló vészhelyreállítási próba végrehajtása helyszíni gépeken az Azure Site Recoveryvel | Microsoft Docs
 description: Arra vonatkozó ismeretek, hogyan hajthat végre a helyszínről az Azure-ba irányuló vészhelyreállítási próbát az Azure Site Recoveryvel
-services: site-recovery
 author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 06/20/2018
+ms.date: 07/03/2018
 ms.author: raynew
-ms.openlocfilehash: c706474018bd0751872381c6d28f0ad579ba772b
-ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
+ms.openlocfilehash: fa66e47715940584259e5cf555f3f6cd6f07e267
+ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36286579"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37437212"
 ---
 # <a name="run-a-disaster-recovery-drill-to-azure"></a>Vészhelyreállítási próba végrehajtása az Azure-ba
 
 Ebben a cikkben bemutatjuk, hogyan futtathat egy helyszíni gépről az Azure-ba irányuló vészhelyreállítási próbát egy feladatátvételi teszt segítségével. A próba adatveszteség nélkül ellenőrzi a replikációs stratégiát.
 
-Ez az oktatóanyag a negyedik rész abban a sorozatban, amely bemutatja, hogyan állíthat be Azure-ba irányuló vészhelyreállítást helyszíni VMware virtuális gépekhez.
+Ez az oktatóanyag a negyedik rész abban a sorozatban, amely bemutatja, hogyan állíthat be Azure-ba irányuló vészhelyreállítást helyszíni VMware vagy Hyper-V virtuális gépekhez.
 
 Az oktatóanyag feltételezi, hogy az első három oktatóanyag végére ért: 
-    - Az [első oktatóanyagban](tutorial-prepare-azure.md) konfiguráltuk a VMware vészhelyreállításhoz szükséges Azure-összetevőket.
-    - A [második oktatóanyagban](vmware-azure-tutorial-prepare-on-premises.md) helyszíni összetevőket készítettünk elő egy vészhelyreállításhoz, és áttekintettük az előfeltételeket.
-    - A [harmadik oktatóanyagban](vmware-azure-tutorial.md) beállítottuk és engedélyeztük a replikációt a helyszíni VMware virtuális gépünkhöz.
+    - Az [első oktatóanyagban](tutorial-prepare-azure.md) [előkészítettük az Azure-összetevőket](tutorial-prepare-azure.md) a VMware vagy Hyper-V vészhelyreállításához.
+    - A második oktatóanyagban előkészítettük a helyszíni összetevőket a [VMware](vmware-azure-tutorial-prepare-on-premises.md) vagy [Hyper-V](hyper-v-prepare-on-premises-tutorial.md) vészhelyreállításához.
+    - A harmadik oktatóanyagban beállítottuk és engedélyeztük a helyszíni [VMware virtuális gépek](vmware-azure-tutorial.md), [System Center VMM-mel rendelkező Hyper-V virtuális gépek](hyper-v-vmm-azure-tutorial.md) vagy [VMM nélküli Hyper-V virtuális gépek](hyper-v-azure-tutorial.md) replikációját.
 - Az oktatóanyagokat úgy terveztük meg, hogy az adott forgatókönyvhöz a legegyszerűbb üzembehelyezési utat mutassák be. Ahol lehet, az alapértelmezett beállításokat használják, és nem mutatják be az összes lehetséges beállítást és útvonalat. A Site Recovery beállítása mindegyik oktatóanyagban a legegyszerűbb módon történt, ahol ez megfelelő, az alapértelmezett beállítások használatával. Ha további információt szeretne a feladatátvételi teszt lépéseiről, olvassa el az [útmutatót](site-recovery-test-failover-to-azure.md).
 
 Az oktatóanyag segítségével megtanulhatja a következőket:
@@ -37,7 +36,7 @@ Ez az oktatóanyag
 
 ## <a name="verify-vm-properties"></a>A virtuális gép tulajdonságainak ellenőrzése
 
-A feladatátvételi teszt futtatása előtt ellenőrizze a VMware virtuális gép tulajdonságait, és győződjön meg arról, hogy a [Hyper-V virtuális gép](hyper-v-azure-support-matrix.md#replicated-vms) és a [VMware virtuális gép vagy fizikai kiszolgáló](vmware-physical-azure-support-matrix.md#replicated-machines) megfelel az Azure követelményeinek.
+A feladatátvételi teszt futtatása előtt ellenőrizze a virtuális gép tulajdonságait, és győződjön meg arról, hogy a [Hyper-V virtuális gép](hyper-v-azure-support-matrix.md#replicated-vms) vagy a [VMware virtuális gép](vmware-physical-azure-support-matrix.md#replicated-machines) megfelel az Azure követelményeinek.
 
 1. A **Védett elemek** területen kattintson a **Replikált elemek** > VM lehetőségre.
 2. A **Replikált elemek** ablaktáblában szerepel a virtuális gép információinak összegzése, állapota és a legújabb elérhető helyreállítási pontok. Kattintson a **Tulajdonságok** lehetőségre a további részletek megtekintéséhez.
@@ -70,3 +69,4 @@ Egyes forgatókönyvekben a feladatátvételhez további feldolgozás szüksége
 
 > [!div class="nextstepaction"]
 > [Feladatátvétel és feladat-visszavétel futtatása helyszíni VMware virtuális gépekhez](vmware-azure-tutorial-failover-failback.md).
+> [Feladatátvétel és feladat-visszavétel futtatása helyszíni Hyper-V rendszerű virtuális gépekhez](hyper-v-azure-failover-failback-tutorial.md).

@@ -7,16 +7,16 @@ manager: kaiqb
 ms.service: cognitive-services
 ms.component: luis
 ms.topic: tutorial
-ms.date: 06/26/2018
+ms.date: 06/29/2018
 ms.author: v-geberr
-ms.openlocfilehash: b718ed505babd2df6487aecd3a87f17590aef2b9
-ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
+ms.openlocfilehash: e6ab9d1db0144ffa68fe9dc3381ba31d57aa0cae
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37061247"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37130892"
 ---
-# <a name="tutorial-create-app-that-uses-simple-entity"></a>Oktatóanyag: Egyszerű entitást használó alkalmazás létrehozása
+# <a name="tutorial-6-add-simple-entity-and-phrase-list"></a>Oktatóanyag: 6. Egyszerű entitás és kifejezéslista hozzáadása
 Ebben az oktatóanyagban létrehozunk egy alkalmazást, amely bemutatja, hogyan nyerhetők ki gépi tanulással létrejött adatok egy kimondott szövegből az **Egyszerű** entitás használatával.
 
 <!-- green checkmark -->
@@ -45,7 +45,7 @@ Ez az alkalmazás bemutatja, hogy nyerhetők ki adatok egy kimondott szövegből
 |Kérem, adja be az önéletrajzomat a mérnöki pozícióra.|mérnöki terület|
 |Jelentkezés kitöltése az 123456 számú állásra|123456|
 
-Ez az oktatóanyag egy új entitást vesz fel az állás nevének kinyeréséhez. Egy adott feladatszám kinyerésének képessége a reguláris kifejezések [oktatóanyagában](luis-quickstart-intents-regex-entity.md) látható. 
+Ez az oktatóanyag egy új entitást vesz fel az állás nevének kinyeréséhez. 
 
 ## <a name="purpose-of-the-simple-entity"></a>Az egyszerű entitás célja
 Az ebben a LUIS-alkalmazásban található egyszerű entitás célja megtanítani a LUIS-nak, hogy mi az állás neve, és hol található meg a kimondott szövegben. A kimondott szöveg állás része szövegenként változhat a szóhasználat és a kimondott szöveg hossza alapján. A LUIS-nak minden kimondott szövegben lévő minden szándék álláspéldájára szüksége van.  
@@ -85,7 +85,7 @@ Ez a LUIS-alkalmazás számos szándékban rendelkezik állásnevekkel. Ezen sza
 
     ![Job (állás) nevű és simple (egyszerű) típusú egyszerű entitás modális előugró párbeszédpaneljének létrehozása](media/luis-quickstart-primary-and-secondary-data/hr-create-simple-entity-popup.png)
 
-5. A `Submit resume for engineering position` kimondott szövegben címkézze meg a mérnöki területet állásentitásként. Válassza ki a mérnöki terület kifejezést, majd válassza az állást az előugró menüben. 
+5. A `Submit resume for engineering position` kimondott szövegben címkézze meg a `engineering` kifejezést állásentitásként. Válassza ki a `engineering` kifejezést, majd válassza a **Job** (Állás) lehetőséget az előugró menüben. 
 
     [![](media/luis-quickstart-primary-and-secondary-data/hr-label-simple-entity.png "Képernyőkép a LUIS-ról, az állásentitás címkézése kiemelve")](media/luis-quickstart-primary-and-secondary-data/hr-label-simple-entity.png#lightbox)
 
@@ -292,7 +292,7 @@ Nyissa meg a [jobs-phrase-list.csv](https://github.com/Microsoft/LUIS-Samples/bl
 
     [![](media/luis-quickstart-primary-and-secondary-data/hr-create-phrase-list-1.png "Képernyőkép: az új kifejezéslista létrehozása előugró párbeszédpanel")](media/luis-quickstart-primary-and-secondary-data/hr-create-phrase-list-1.png#lightbox)
 
-    Ha több szót szeretne hozzáadni a kifejezéslistához, tekintse át az ajánlott szavakat, és adja hozzá a relevánsakat. 
+    Ha több szót szeretne hozzáadni a kifejezéslistához, tekintse át **Related Values** (Kapcsolódó értékek) listáját, és adja hozzá a relevánsakat. 
 
 4. A kifejezéslista aktiválásához kattintson a **Save** (Mentés) gombra.
 
@@ -369,7 +369,7 @@ Nyissa meg a [jobs-phrase-list.csv](https://github.com/Microsoft/LUIS-Samples/bl
 A kifejezéslista hozzáadása felerősítette a listában szereplő szavak jelét, de a rendszer **nem** használja pontos egyezésként. A kifejezéslistán számos állás szerepel a `lead` első szóval, és a `welder` állást is tartalmazza, de nem szerepel benne a `lead welder` állás. Lehet, hogy az állások kifejezéslistája nem teljes. Ha rendszeresen [áttekinti a végponti kimondott szövegeket](label-suggested-utterances.md) és állásokkal kapcsolatos egyéb szavakat is keres, adja hozzá ezeket a kifejezéslistához. Ezután tanítsa be ismét és tegye újra közzé az alkalmazást.
 
 ## <a name="what-has-this-luis-app-accomplished"></a>Milyen műveleteket végzett el a LUIS-alkalmazás?
-Az alkalmazás, egy egyszerű entitással és egy kifejezéslistával, azonosított egy természetes nyelvi lekérdezési szándékot, és visszaadta az üzenetadatokat. 
+Az alkalmazás, egy egyszerű entitással és egy kifejezéslistával azonosított egy természetes nyelvi lekérdezési szándékot, és visszaadta az állásadatokat. 
 
 A csevegőrobot már elég információval rendelkezik az állásra való jelentkezés elsődleges műveletének megállapításához, illetve a művelet paraméterének és a hivatkozott állás megállapításához. 
 
@@ -377,9 +377,9 @@ A csevegőrobot már elég információval rendelkezik az állásra való jelent
 A LUIS végzett ezzel a kéréssel. A hívó alkalmazás, például egy csevegőrobot, használhatja a topScoringIntent eredményt és az entitásból származó adatokat arra, hogy egy külső API használatával elküldje az állás információit egy emberierőforrás-képviselőhöz. Ha a csevegőrobot vagy a hívó alkalmazás egyéb programozható beállítással rendelkezik, a LUIS ezeket nem végzi el. A LUIS csak azt határozza meg, hogy mi a felhasználó szándéka. 
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
-Ha már nincs rá szükség, törölje a LUIS-alkalmazást. Ehhez válassza az alkalmazáslistában az alkalmazás neve mellett jobbra található három pontot (...), majd a **Delete** (Törlés) lehetőséget. A **Delete app?** (Törli az alkalmazást?) előugró párbeszédpanelen válassza az **OK** lehetőséget.
+Ha már nincs rá szükség, törölje a LUIS-alkalmazást. Válassza a **My apps** (Saját alkalmazások) elemet a bal felső menüben. Válassza az alkalmazáslistában az alkalmazás neve mellett jobbra található három pontot (...), majd a **Delete** (Törlés) lehetőséget. A **Delete app?** (Törli az alkalmazást?) előugró párbeszédpanelen válassza az **OK** lehetőséget.
 
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Ismerkedés az előre összeállított kulcskifejezés-entitás hozzáadásának módjával](luis-quickstart-intent-and-key-phrase.md)
+> [Előre összeállított kulcskifejezés-entitás hozzáadása](luis-quickstart-intent-and-key-phrase.md)

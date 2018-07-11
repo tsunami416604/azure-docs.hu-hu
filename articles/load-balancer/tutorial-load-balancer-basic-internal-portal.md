@@ -14,15 +14,15 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 04/30/2018
+ms.date: 06/28/2018
 ms.author: kumud
 ms.custom: mvc
-ms.openlocfilehash: 7902b5ad2d680a22a2d132187cdad5f96a334447
-ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
+ms.openlocfilehash: c0d19c53a0bd217935a494dfb4affbaa85062247
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37061845"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37097478"
 ---
 # <a name="tutorial-load-balance-internal-traffic-with-basic-load-balancer-to-vms-using-the-azure-portal"></a>Oktatóanyag: Virtuális gépek belső bejövő forgalmának terheléselosztása alapszintű Load Balancerrel az Azure Portal használatával
 
@@ -75,10 +75,10 @@ Eben a szakaszban két virtuális gépet fog létrehozni az alapszintű Load Bal
     - A létrehozandó új rendelkezésre állási csoport neve: *myAvailabilitySet*.
     -  Győződjön meg róla, hogy a következő virtuális hálózat van kiválasztva: *myVNet*.
     - Győződjön meg róla, hogy a következő alhálózat van kiválasztva: *myBackendSubnet*.
-    - A kötelezően létrehozandó új hálózati biztonsági csoport (tűzfal) neve: *myNetworkSecurityGroup*.
+5. A **Hálózati biztonsági csoport** területen válassza a **Speciális** lehetőséget. Ezután a **Hálózati biztonsági csoport (tűzfal)** beállításnál válassz a **Nincs** értéket.
 5. A rendszerindítási diagnosztika letiltásához kattintson a **Letiltva** elemre.
 6. Kattintson az **OK** gombra, majd az összefoglaló lapon ellenőrizze a beállításokat, és kattintson a **Létrehozás** gombra.
-7. Az 1–6. lépések használatával hozzon létre egy második virtuális gépet *VM2* néven, a *myAvailabilityset* rendelkezésre állási csoporttal, a *myVnet* virtuális hálózattal, a *myBackendSubnet* alhálózattal és a *myNetworkSecurityGroup* hálózati biztonsági csoporttal. 
+7. Az 1–6. lépésekkel hozzon létre egy második virtuális gépet *VM2* néven, a *myAvailabilityset* rendelkezésre állási csoporttal, a *myVnet* virtuális hálózattal, a *myBackendSubnet* alhálózattal, és válassza a **Nincs** beállítást a **hálózati biztonsági csoport (tűzfal)** menüben. 
 
 ### <a name="install-iis-and-customize-the-default-web-page"></a>Az IIS telepítése és az alapértelmezett webhely testreszabása
 
@@ -100,33 +100,6 @@ Eben a szakaszban két virtuális gépet fog létrehozni az alapszintű Load Bal
 5. Szüntesse meg a távoli asztali kapcsolatot a *myVM1*-gyel.
 6. Ismételje meg az 1–5. lépéseket a *myVM2*-vel az IIS telepítéséhez és az alapértelmezett weblap testreszabásához.
 
-## <a name="create-nsg-rules"></a>NSG-szabályok létrehozása
-
-Ebben a szakaszban NSG-szabályokat fog létrehozni a HTTP-t és RDP-t használó bejövő kapcsolatok engedélyezése érdekében.
-
-1. Kattintson az **Összes erőforrás** elemre a bal oldali menüben, majd az erőforrások listájában kattintson a **myResourceGroupLB** erőforráscsoportban található **myNetworkSecurityGroup** elemre.
-2. A **Beállítások** területen kattintson a **Bejövő biztonsági szabályok** lehetőségre, majd a **Hozzáadás** gombra.
-3. Adja meg az alábbi értékeket a *myHTTPRule* nevű bejövő biztonsági szabály számára a 80-as portot használó, bejövő HTTP-kapcsolatok engedélyezése érdekében:
-    - **Forrás**: *Szolgáltatáscímke*.
-    - **Forrás szolgáltatáscímkéje**: *Internet*
-    - **Célporttartomány**: *80*
-    - **Protokoll**: *TCP*
-    - **Művelet**: *Engedélyezés*
-    - **Prioritás**: *100*
-    - Név: *myHTTPRule*
-    - Leírás: *HTTP engedélyezése*
-4. Kattintson az **OK** gombra.
- 
-5. Ismételje meg a 2–4. lépéseket egy másik, *myRDPRule* nevű szabály létrehozásához, amely engedélyezi a 3389-es portot használó, bejövő RDP-kapcsolatokat. Ehhez adja meg az alábbi értékeket:
-    - **Forrás**: *Szolgáltatáscímke*.
-    - **Forrás szolgáltatáscímkéje**: *Internet*
-    - **Célporttartomány**: *3389*
-    - **Protokoll**: *TCP*
-    - **Művelet**: *Engedélyezés*
-    - **Prioritás**: *200*
-    - Név: *myRDPRule*
-    - Leírás: *RDP engedélyezése*
-
 ## <a name="create-basic-load-balancer-resources"></a>Alapszintű Load Balancer-erőforrások létrehozása
 
 Ebben a szakaszban a terheléselosztó beállításait fogja konfigurálni egy háttércímkészlet és egy állapotminta számára, illetve terheléselosztási és NAT-szabályokat fog megadni.
@@ -139,7 +112,7 @@ Annak érdekében, hogy a forgalmat el lehessen osztani a virtuális gépek köz
 1. Kattintson az **Összes erőforrás** elemre a bal oldali menüben, majd kattintson a **myLoadBalancer** lehetőségre az erőforráslistában.
 2. A **Beállítások** területen kattintson a **Háttérkészletek** lehetőségre, majd a **Hozzáadás** gombra.
 3. A **Háttérkészlet hozzáadása** oldalon tegye a következőket:
-    - Adja a következő nevet a háttérkészletnek: *myBackEndPool.
+    - Adja a következő nevet a háttérkészletnek: *myBackEndPool*.
     - A **Társítva ehhez** terület legördülő menüjében kattintson a **Rendelkezésre állási csoport** lehetőségre.
     - A **Rendelkezésre állási csoport** mezőben válassza ki a **myAvailabilitySet** elemet.
     - Kattintson a **Célhálózati IP-konfiguráció hozzáadása** elemre az összes létrehozott virtuális gép (*myVM1* & *myVM2*) hozzáadásához a háttérkészlethez.

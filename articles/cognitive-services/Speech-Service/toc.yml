@@ -41,6 +41,8 @@
       href: how-to-customize-pronunciation.md
     - name: Hangtípusok testreszabása (robot márkafüggő hangja)
       href: how-to-customize-voice-font.md
+    - name: Hangminták felvétele
+      href: record-custom-voice-samples.md
     - name: Átiratok előkészítése
       href: prepare-transcription.md
     - name: Egyéni audiostreamek használata

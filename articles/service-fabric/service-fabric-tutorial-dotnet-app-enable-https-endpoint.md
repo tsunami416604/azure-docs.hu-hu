@@ -1,5 +1,5 @@
 ---
-title: HTTPS-végpont hozzáadása Azure Service Fabric-alkalmazáshoz | Microsoft Docs
+title: HTTPS-végpont hozzáadása Service Fabric-alkalmazáshoz az Azure-ban | Microsoft Docs
 description: Ez az oktatóanyag azt ismerteti, hogyan adhat hozzá HTTPS-végpontot egy ASP.NET Core előtér-webszolgáltatáshoz, és hogyan helyezheti üzembe az alkalmazást egy fürtön.
 services: service-fabric
 documentationcenter: .net
@@ -15,14 +15,15 @@ ms.workload: NA
 ms.date: 04/12/2018
 ms.author: ryanwi
 ms.custom: mvc
-ms.openlocfilehash: a07e3ed3363ad968156aab2233073406d05b7dba
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 309a43d3383658029f4fe7f90f869888bac67bb1
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34364607"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37130050"
 ---
 # <a name="tutorial-add-an-https-endpoint-to-an-aspnet-core-web-api-front-end-service"></a>Oktatóanyag: HTTPS-végpont hozzáadása ASP.NET Core Web API előtér-szolgáltatáshoz
+
 Ez az oktatóanyag egy sorozat harmadik része.  Az oktatóanyag során el fogja sajátítani a HTTPS engedélyezését a Service Fabricen futó ASP.NET Core-szolgáltatásban. Ha ezzel végzett, rendelkezni fog egy HTTPS-kompatibilis ASP.NET Core webes kezelőfelületes szavazóalkalmazással, amely a 443-as porton figyel. Ha nem szeretné manuálisan létrehozni a szavazóalkalmazást a [NET Service Fabric-alkalmazás létrehozása](service-fabric-tutorial-deploy-app-to-party-cluster.md) szakaszban, akkor [letöltheti a forráskódot](https://github.com/Azure-Samples/service-fabric-dotnet-quickstart/) a kész alkalmazáshoz.
 
 A sorozat harmadik részében az alábbiakkal fog megismerkedni:
@@ -44,20 +45,25 @@ Ebben az oktatóanyag-sorozatban az alábbiakkal ismerkedhet meg:
 > * [Figyelés és diagnosztika beállítása az alkalmazáshoz](service-fabric-tutorial-monitoring-aspnet.md)
 
 ## <a name="prerequisites"></a>Előfeltételek
+
 Az oktatóanyag elkezdése előtt:
-- Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
-- [Telepítse a Visual Studio 2017](https://www.visualstudio.com/) 15.5-ös vagy újabb verzióját az **Azure-fejlesztési** és az **ASP.NET- és webfejlesztési** számítási feladattal.
-- [A Service Fabric SDK telepítése](service-fabric-get-started.md)
+
+* Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+* [Telepítse a Visual Studio 2017](https://www.visualstudio.com/) 15.5-ös vagy újabb verzióját az **Azure-fejlesztési** és az **ASP.NET- és webfejlesztési** számítási feladattal.
+* [A Service Fabric SDK telepítése](service-fabric-get-started.md)
 
 ## <a name="obtain-a-certificate-or-create-a-self-signed-development-certificate"></a>Tanúsítvány beszerzése vagy egy önaláírt fejlesztési tanúsítvány létrehozása
+
 Éles alkalmazásokhoz használjon [hitelesítésszolgáltatói (CA-)](https://wikipedia.org/wiki/Certificate_authority) tanúsítványt. Fejlesztési és tesztelési célok érdekében létrehozhat és használhat önaláírt tanúsítványt. A Service Fabric SDK biztosítja a *CertSetup.ps1* szkriptet, amely létrehozza az önaláírt tanúsítványt, és importálja azt a `Cert:\LocalMachine\My` tanúsítványtárolóba. Rendszergazdaként nyisson meg egy parancssort, és futtassa a következő parancsot egy CN=localhost tárgyú tanúsítvány létrehozásához:
 
 ```powershell
 PS C:\program files\microsoft sdks\service fabric\clustersetup\secure> .\CertSetup.ps1 -Install -CertSubjectName CN=localhost
 ```
 
-Ha már rendelkezik a tanúsítvány PFX kiterjesztésű fájljával, a következő lekérdezés futtatásával importálhatja a tanúsítványt a `Cert:\LocalMachine\My` tanúsítványtárolóba: 
+Ha már rendelkezik a tanúsítvány PFX kiterjesztésű fájljával, a következő lekérdezés futtatásával importálhatja a tanúsítványt a `Cert:\LocalMachine\My` tanúsítványtárolóba:
+
 ```powershell
+
 PS C:\mycertificates> Import-PfxCertificate -FilePath .\mysslcertificate.pfx -CertStoreLocation Cert:\LocalMachine\My -Password (ConvertTo-SecureString "!Passw0rd321" -AsPlainText -Force)
 
 
@@ -69,6 +75,7 @@ Thumbprint                                Subject
 ```
 
 ## <a name="define-an-https-endpoint-in-the-service-manifest"></a>HTTPS-végpont meghatározása a szolgáltatásjegyzékben
+
 Indítsa el a Visual Studiót **rendszergazdaként**, és nyissa meg a Választási megoldást. A Megoldáskezelőben nyissa meg a következőt: *VotingWeb/PackageRoot/ServiceManifest.xml*. A szolgáltatásjegyzék meghatározza a szolgáltatásvégpontokat.  Keresse meg a **Végpontok** szakaszt, és szerkessze a meglévő ServiceEndpoint végpontot.  Módosítsa a nevet VégpontHttps névre, és állítsa be a protokollt *https*, a típust *Bemenet*, a portot pedig *443* értékre.  Mentse a módosításokat.
 
 ```xml
@@ -101,16 +108,17 @@ Indítsa el a Visual Studiót **rendszergazdaként**, és nyissa meg a Választ�
 </ServiceManifest>
 ```
 
-
 ## <a name="configure-kestrel-to-use-https"></a>A Kestrel konfigurálása HTTPS használatára
-A Megoldáskezelőben nyissa meg a következő fájlt: *VotingWeb/VotingWeb.cs*.  A Kestrel konfigurálása HTTPS használatára és tanúsítvány megkeresésére a `Cert:\LocalMachine\My` tárolóban. Adja hozzá a következő using utasításokat: 
+
+A Megoldáskezelőben nyissa meg a következő fájlt: *VotingWeb/VotingWeb.cs*.  A Kestrel konfigurálása HTTPS használatára és tanúsítvány megkeresésére a `Cert:\LocalMachine\My` tárolóban. Adja hozzá a következő using utasításokat:
+
 ```csharp
 using System.Net;
 using Microsoft.Extensions.Configuration;
 using System.Security.Cryptography.X509Certificates;
 ```
 
-Frissítse a `ServiceInstanceListener` elemet úgy, hogy az új *VégpontHttps* végpontot használja, és a 443-as porton figyeljen. 
+Frissítse a `ServiceInstanceListener` elemet úgy, hogy az új *VégpontHttps* végpontot használja, és a 443-as porton figyeljen.
 
 ```csharp
 new ServiceInstanceListener(
@@ -171,10 +179,13 @@ private X509Certificate2 GetCertificateFromStore()
 ```
 
 ## <a name="give-network-service-access-to-the-certificates-private-key"></a>Hálózatiszolgáltatás-hozzáférés hozzáadása a tanúsítvány titkos kulcsához
-Előzőleg importálta a tanúsítványt a fejlesztői számítógép `Cert:\LocalMachine\My` tárolójába.  Explicit módon biztosítania kell a hozzáférést a szolgáltatást futtató fióknak (HÁLÓZATI SZOLGÁLTATÁS, alapértelmezés szerint) a tanúsítvány titkos kulcsához. Ezt megteheti manuálisan is (a certlm.msc eszköz használatával), de javasolt inkább automatikusan futtatni egy PowerShell-szkriptet. Ehhez [konfiguráljon egy indítási szkriptet](service-fabric-run-script-at-service-startup.md) a szolgáltatásjegyzék **SetupEntryPoint** pontjában.   
+
+Előzőleg importálta a tanúsítványt a fejlesztői számítógép `Cert:\LocalMachine\My` tárolójába.  Explicit módon biztosítania kell a hozzáférést a szolgáltatást futtató fióknak (HÁLÓZATI SZOLGÁLTATÁS, alapértelmezés szerint) a tanúsítvány titkos kulcsához. Ezt megteheti manuálisan is (a certlm.msc eszköz használatával), de javasolt inkább automatikusan futtatni egy PowerShell-szkriptet. Ehhez [konfiguráljon egy indítási szkriptet](service-fabric-run-script-at-service-startup.md) a szolgáltatásjegyzék **SetupEntryPoint** pontjában.
 
 ### <a name="configure-the-service-setup-entry-point"></a>Szolgáltatásbeállítás belépési pontjának konfigurálása
+
 A Megoldáskezelőben nyissa meg a következőt: *VotingWeb/PackageRoot/ServiceManifest.xml*.  A **CodePackage** szakaszban adja hozzá a **SetupEntryPoint** csomópontot, majd az **ExeHost** csomópontot.  Az **ExeHost** elemben állítsa be a **Program** értékét Setup.bat értékre, a **WorkingFolder** értékét pedig CodePackage értékre.  A VotingWeb szolgáltatás elindulásakor a rendszer futtatja a Setup.bat szkriptet a CodePackage mappában, még a VotingWeb.exe elindulása előtt.
+
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
 <ServiceManifest Name="VotingWebPkg"
@@ -190,7 +201,7 @@ A Megoldáskezelőben nyissa meg a következőt: *VotingWeb/PackageRoot/ServiceM
     <SetupEntryPoint>
       <ExeHost>
         <Program>Setup.bat</Program>
-        <WorkingFolder>CodePackage</WorkingFolder>        
+        <WorkingFolder>CodePackage</WorkingFolder>
       </ExeHost>
     </SetupEntryPoint>
 
@@ -213,6 +224,7 @@ A Megoldáskezelőben nyissa meg a következőt: *VotingWeb/PackageRoot/ServiceM
 ```
 
 ### <a name="add-the-batch-and-powershell-setup-scripts"></a>A köteg és a PowerShell beállítási szkriptjeinek hozzáadása
+
 A PowerShell a **SetupEntryPoint** pontból való futtatásához futtathatja a PowerShell.exe fájlt egy kötegfájlban, amely egy PowerShell-fájlra mutat. Először adja hozzá a kötegfájlt a szolgáltatásprojekthez.  A Megoldáskezelőben kattintson a jobb gombbal a **VotingWeb** pontra, és válassza az **Add**->**New Item** (Hozzáadás, Új elem) pontot, majd adjon hozzá egy új fájlt Setup.bat névvel.  Szerkessze a *Setup.bat* fájlt, és adja hozzá az alábbi parancsot:
 
 ```bat
@@ -229,7 +241,7 @@ $subject="localhost"
 $userGroup="NETWORK SERVICE"
 
 Write-Host "Checking permissions to certificate $subject.." -ForegroundColor DarkCyan
- 
+
 $cert = (gci Cert:\LocalMachine\My\ | where { $_.Subject.Contains($subject) })[-1]
 
 if ($cert -eq $null)
@@ -244,27 +256,27 @@ if ($cert -eq $null)
 }else
 {
     $keyName=$cert.PrivateKey.CspKeyContainerInfo.UniqueKeyContainerName
-    
+
     $keyPath = "C:\ProgramData\Microsoft\Crypto\RSA\MachineKeys\"
     $fullPath=$keyPath+$keyName
     $acl=(Get-Item $fullPath).GetAccessControl('Access')
 
- 
+
     $hasPermissionsAlready = ($acl.Access | where {$_.IdentityReference.Value.Contains($userGroup.ToUpperInvariant()) -and $_.FileSystemRights -eq [System.Security.AccessControl.FileSystemRights]::FullControl}).Count -eq 1
- 
+
     if ($hasPermissionsAlready){
         Write-Host "Account $userGroupCertificate already has permissions to certificate '$subject'." -ForegroundColor Green
         return $false;
     } else {
         Write-Host "Need add permissions to '$subject' certificate..." -ForegroundColor DarkYellow
-        
+
         $permission=$userGroup,"Full","Allow"
         $accessRule=new-object System.Security.AccessControl.FileSystemAccessRule $permission
         $acl.AddAccessRule($accessRule)
         Set-Acl $fullPath $acl
- 
+
         Write-Output "Permissions were added"
- 
+
         return $true;
     }
 }
@@ -273,10 +285,11 @@ Modify the *SetCertAccess.ps1* file properties to set **Copy to Output Directory
 ```
 
 ### <a name="run-the-setup-script-as-a-local-administrator"></a>Beállítási szkript futtatása helyi rendszergazdaként
-Alapértelmezés szerint a szolgáltatásbeállítás belépési pontjának végrehajtható fájlja ugyanolyan hitelesítő adatok alatt fut, mint a Service Fabric (általában a Hálózati szolgáltatási fiók). A *SetCertAccess.ps1* rendszergazdai jogosultságokat igényel. Az alkalmazásjegyzékben módosíthatja a biztonsági engedélyeket az indítási szkript futtatásához, egy helyi rendszergazdai fiókkal.  
+
+Alapértelmezés szerint a szolgáltatásbeállítás belépési pontjának végrehajtható fájlja ugyanolyan hitelesítő adatok alatt fut, mint a Service Fabric (általában a Hálózati szolgáltatási fiók). A *SetCertAccess.ps1* rendszergazdai jogosultságokat igényel. Az alkalmazásjegyzékben módosíthatja a biztonsági engedélyeket az indítási szkript futtatásához, egy helyi rendszergazdai fiókkal.
 
 A Solution Explorerben (Megoldáskezelő) nyissa meg a *Voting/ApplicationPackageRoot/ApplicationManifest.xml* fájlt. Először hozzon létre egy **Rendszerbiztonsági tagok** szakaszt, és adjon hozzá új felhasználót (például SetupAdminUser). Adja hozzá a SetupAdminUser felhasználói fiókot a rendszergazdák rendszercsoportjához.
-Ezután a VotingWebPkg **ServiceManifestImport** szakaszban konfigurálja a **RunAsPolicy** elemet, hogy alkalmazza a SetupAdminUser rendszerbiztonsági tagot a beállítási belépési pontra. Ez a szabályzat tájékoztatja a Service Fabricet, hogy a Setup.bat fájl SetupAdminUser-ként fut (rendszergazdai jogosultságokkal). 
+Ezután a VotingWebPkg **ServiceManifestImport** szakaszban konfigurálja a **RunAsPolicy** elemet, hogy alkalmazza a SetupAdminUser rendszerbiztonsági tagot a beállítási belépési pontra. Ez a szabályzat tájékoztatja a Service Fabricet, hogy a Setup.bat fájl SetupAdminUser-ként fut (rendszergazdai jogosultságokkal).
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -323,16 +336,18 @@ Ezután a VotingWebPkg **ServiceManifestImport** szakaszban konfigurálja a **Ru
 ```
 
 ## <a name="run-the-application-locally"></a>Az alkalmazás helyi futtatása
+
 A Megoldáskezelőben válassza ki a **Szavazó**alkalmazást, és állítsa be az **Alkalmazás URL-címe** tulajdonságot a következőre: https://localhost:443.
 
 Mentse a fájlokat és nyomja le az F5 billentyűt az alkalmazás helyi futtatásához.  Az alkalmazás üzembe helyezése után a webböngésző a [https://localhost:443](https://localhost:443) címet nyitja meg. Ha önaláírt tanúsítványt használ, látni fog egy figyelmeztetést, amely szerint a számítógépe nem bízik az adott webhely biztonságában.  Tovább a weblapra.
 
-![Szavazóalkalmazás][image2] 
+![Szavazóalkalmazás][image2]
 
 ## <a name="install-certificate-on-cluster-nodes"></a>Tanúsítvány telepítése fürtcsomópontokon
+
 Mielőtt üzembe helyezné az alkalmazást az Azure-ban, telepítse a tanúsítványt a távoli fürtcsomópontok `Cert:\LocalMachine\My` tárolójában.  Ha az előtér-webszolgáltatás elindul a fürtcsomóponton, az indítási szkript megkeresi a tanúsítványt, és konfigurálja a hozzáférési engedélyeket.
 
-Először exportálja a tanúsítványt egy PFX-fájlba. Nyissa meg a certlm.msc alkalmazást, majd keresse meg a **Személyes**>**tanúsítványok** elemet.  Kattintson a jobb gombbal a *localhost* tanúsítványra, és válassza a **Minden feladat**>**Exportálás** elemet.  
+Először exportálja a tanúsítványt egy PFX-fájlba. Nyissa meg a certlm.msc alkalmazást, majd keresse meg a **Személyes**>**tanúsítványok** elemet.  Kattintson a jobb gombbal a *localhost* tanúsítványra, és válassza a **Minden feladat**>**Exportálás** elemet.
 
 ![Tanúsítvány exportálása][image4]
 
@@ -353,7 +368,7 @@ $groupname="voting_RG"
 $clustername = "votinghttps"
 $ExistingPfxFilePath="C:\Users\sfuser\votingappcert.pfx"
 
-$appcertpwd = ConvertTo-SecureString –String $certpw –AsPlainText –Force  
+$appcertpwd = ConvertTo-SecureString -String $certpw -AsPlainText -Force
 
 Write-Host "Reading pfx file from $ExistingPfxFilePath"
 $cert = new-object System.Security.Cryptography.X509Certificates.X509Certificate2 $ExistingPfxFilePath, $certpw
@@ -381,7 +396,8 @@ Add-AzureRmServiceFabricApplicationCertificate -ResourceGroupName $groupname -Na
 ```
 
 ## <a name="open-port-443-in-the-azure-load-balancer"></a>A 443-as port megnyitása az Azure Load Balancerben
-Nyissa meg a 443-as portot a Load Balancerben, ha még nem tette meg.  
+
+Nyissa meg a 443-as portot a Load Balancerben, ha még nem tette meg.
 
 ```powershell
 $probename = "AppPortProbe6"
@@ -390,7 +406,7 @@ $RGname="voting_RG"
 $port=443
 
 # Get the load balancer resource
-$resource = Get-AzureRmResource | Where {$_.ResourceGroupName –eq $RGname -and $_.ResourceType -eq "Microsoft.Network/loadBalancers"} 
+$resource = Get-AzureRmResource | Where {$_.ResourceGroupName –eq $RGname -and $_.ResourceType -eq "Microsoft.Network/loadBalancers"}
 $slb = Get-AzureRmLoadBalancer -Name $resource.Name -ResourceGroupName $RGname
 
 # Add a new probe configuration to the load balancer
@@ -405,6 +421,7 @@ $slb | Set-AzureRmLoadBalancer
 ```
 
 ## <a name="deploy-the-application-to-azure"></a>Az alkalmazás központi telepítése az Azure-ban
+
 Mentsen minden fájlt, váltson Hibakeresésről Kiadásra, majd nyomja le az F6 billentyűt az újraépítéshez.  A Megoldáskezelőben kattintson a jobb gombbal a **Szavazás** elemre, majd válassza a **Közzététel** lehetőséget. Válassza ki az [Alkalmazás üzembe helyezése egy fürtön](service-fabric-tutorial-deploy-app-to-party-cluster.md) területen létrehozott fürt kapcsolati végpontját, vagy válasszon ki egy másik fürtöt.  Kattintson a **Közzététel** gombra az alkalmazás közzétételéhez a távoli fürtön.
 
 Az alkalmazás üzembe helyezése után nyisson meg egy webböngészőt, majd keresse meg a következő elemet: [https://mycluster.region.cloudapp.azure.com:443](https://mycluster.region.cloudapp.azure.com:443) (frissítse az URL-címet a fürtjéhez tartozó kapcsolati végponttal). Ha önaláírt tanúsítványt használ, látni fog egy figyelmeztetést, amely szerint a számítógépe nem bízik az adott webhely biztonságában.  Tovább a weblapra.
@@ -412,6 +429,7 @@ Az alkalmazás üzembe helyezése után nyisson meg egy webböngészőt, majd ke
 ![Szavazóalkalmazás][image3]
 
 ## <a name="next-steps"></a>További lépések
+
 Az oktatóanyag jelen részében megismerkedhetett a következőkkel:
 
 > [!div class="checklist"]
@@ -420,7 +438,7 @@ Az oktatóanyag jelen részében megismerkedhetett a következőkkel:
 > * Az SSL-tanúsítvány telepítése a távoli fürtcsomópontokon
 > * Hálózatiszolgáltatás-hozzáférés hozzáadása a tanúsítvány titkos kulcsához
 > * A 443-as port megnyitása az Azure Load Balancerben
-> * Az alkalmazás üzembe helyezése egy távoli fürtön 
+> * Az alkalmazás üzembe helyezése egy távoli fürtön
 
 Folytassa a következő oktatóanyaggal:
 > [!div class="nextstepaction"]

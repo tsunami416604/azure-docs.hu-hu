@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 06/06/2018
 ms.author: anithaa
 ms.custom: ''
-ms.openlocfilehash: f612eb9647bf64a9435b1c667700bf717d445931
-ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
+ms.openlocfilehash: e7e79d51b59d82ebf91d68f0714b8eb7bcaafbe6
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34824686"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37443630"
 ---
 # <a name="virtual-network-service-endpoints"></a>Virtuális hálózati szolgáltatásvégpontok
 
@@ -28,11 +28,13 @@ A virtuális hálózatok (VNet) szolgáltatásvégpontjai egy közvetlen kapcsol
 
 Ez a szolgáltatás a következő Azure-szolgáltatásokhoz és -régiókhoz érhető el:
 
-- **Azure Storage**: Az összes Azure-régióban általánosan elérhető
-- **Azure SQL Database**: Az összes Azure-régióban általánosan elérhető
-- **Azure Cosmos DB**: Az összes nyilvános Azure-felhőrégióban általánosan elérhető 
-- **Azure SQL Data Warehouse**: Előzetes verzióban az összes nyilvános Azure-felhőrégióban elérhető
+- **[Azure Storage](../storage/common/storage-network-security.md?toc=%2fazure%2fvirtual-network%2ftoc.json#grant-access-from-a-virtual-network)**: Az összes Azure-régióban általánosan elérhető.
+- **[Azure SQL Database](../sql-database/sql-database-vnet-service-endpoint-rule-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)**: Az összes Azure-régióban általánosan elérhető.
+- **[Azure Cosmos DB](../cosmos-db/vnet-service-endpoint.md?toc=%2fazure%2fvirtual-network%2ftoc.json)**: Az összes nyilvános Azure-felhőrégióban általánosan elérhető. 
+- **[Azure SQL Data Warehouse](../sql-database/sql-database-vnet-service-endpoint-rule-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)**: Előzetes verzióban az összes nyilvános Azure-felhőrégióban elérhető.
 - **Azure adatbázis-szolgáltatások a PostgreSQL-hez és a MySQL-hez**: Előzetes verzióban, azokban az Azure-régiókban, ahol az adatbázis-szolgáltatás elérhető.
+- **[Azure Service Bus](../service-bus-messaging/service-bus-service-endpoints.md?toc=%2fazure%2fvirtual-network%2ftoc.json)**: Előzetes verzióban elérhető.
+- **[Azure Event Hubs](../event-hubs/event-hubs-service-endpoints.md?toc=%2fazure%2fvirtual-network%2ftoc.json)**: Előzetes verzióban elérhető.
 
 A legfrissebb értesítésekért tekintse meg az [Azure-beli virtuális hálózatok frissítéseinek](https://azure.microsoft.com/updates/?product=virtual-network) oldalát.
 
@@ -68,7 +70,7 @@ A szolgáltatásvégpontok az alábbi előnyöket nyújtják:
 
 - A szolgáltatásvégpontokat a virtuális hálózatok alhálózatain konfiguráljuk. A végpontok bármilyen típusú számítási példányokkal működnek, ha azok az adott alhálózaton belül futnak.
 - A támogatott Azure-szolgáltatásokhoz (például az Azure Storage-hez vagy az Azure SQL Database-hez) egy alhálózaton több szolgáltatásvégpont is konfigurálható.
-- Az Azure SQL esetében a virtuális hálózatoknak és az Azure-szolgáltatási erőforrásnak ugyanabban a régióban kell lenniük. A GRS- és RA-GRS Azure Storage-fiókok használata esetén az elsődleges fióknak és a virtuális hálózatnak ugyanabban a régióban kell lennie. Minden egyéb szolgáltatás esetében az Azure-szolgáltatások erőforrásai bármelyik régióban üzemelő virtuális hálózathoz leköthetők. 
+- Az Azure SQL Database esetében a virtuális hálózatoknak és az Azure-szolgáltatási erőforrásnak ugyanabban a régióban kell lenniük. A GRS- és RA-GRS Azure Storage-fiókok használata esetén az elsődleges fióknak és a virtuális hálózatnak ugyanabban a régióban kell lennie. Minden egyéb szolgáltatás esetében az Azure-szolgáltatások erőforrásai bármelyik régióban üzemelő virtuális hálózathoz leköthetők. 
 - Az a virtuális hálózat, ahol a végpont konfigurálva van, lehet az Azure-szolgáltatási erőforrással egyazon előfizetésben, de egy másikban is. A végpontok beállításához és az Azure-szolgáltatások biztosításához szükséges engedélyekkel kapcsolatos további információkért lásd a [kiépítést](#Provisioning) ismertető szakaszt.
 - A támogatott szolgáltatások esetében a szolgáltatásvégpontokat használó virtuális hálózatokhoz biztosíthat új vagy meglévő erőforrásokat is.
 
@@ -80,7 +82,7 @@ A szolgáltatásvégpontok az alábbi előnyöket nyújtják:
 - A szolgáltatásvégpontok használatakor az Azure-szolgáltatások DNS-bejegyzései változatlanok maradnak, és továbbra is feloldják az Azure-szolgáltatáshoz rendelt nyilvános IP-címeket.
 - Hálózati biztonsági csoportok (NSG-k) szolgáltatásvégpontokkal:
   - Alapértelmezés szerint az NSG-k engedélyezik a kimenő internetforgalmat, így a virtuális hálózatról az Azure-szolgáltatások felé tartó forgalmat is. Ez a szolgáltatásvégpontok használatával is ugyanígy működik. 
-  - Ha szeretne megtagadni minden kimenő internetforgalmat, és csak a meghatározott Azure-szolgáltatások felé menő forgalmat szeretné engedélyezni, ezt az NSG-kben az __Azure-szolgáltatáscímkék__ használatával teheti meg. Az NSG-szabályok között megadhatja célként a támogatott Azure-szolgáltatásokat, az egyes címkékhez tartozó IP-címek karbantartását pedig az Azure biztosítja. További információért lásd az [NSG-khez elérhető Azure-szolgáltatáscímkéket](https://aka.ms/servicetags) ismertető szakaszt. 
+  - Ha szeretne megtagadni minden kimenő internetforgalmat, és csak a meghatározott Azure-szolgáltatások felé menő forgalmat szeretné engedélyezni, ezt az NSG-kben a [szolgáltatáscímkék](security-overview.md#service-tags) használatával teheti meg. Az NSG-szabályok között megadhatja célként a támogatott Azure-szolgáltatásokat, az egyes címkékhez tartozó IP-címek karbantartását pedig az Azure biztosítja. További információért lásd az [NSG-khez elérhető Azure-szolgáltatáscímkéket](security-overview.md#service-tags) ismertető szakaszt. 
 
 ### <a name="scenarios"></a>Forgatókönyvek
 

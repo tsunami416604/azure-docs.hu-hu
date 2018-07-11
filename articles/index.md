@@ -6,12 +6,12 @@ description: Ismerje meg, hogyan készíthet és felügyelhet hatékony alkalmaz
 ms.topic: hub-page
 featureFlags:
 - clicktale
-ms.openlocfilehash: fdce9dc733f8c1a389a44374641eb27ba40d6b37
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 557717b6fbb93bf3e0ca007fcc8b793441a13283
+ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37446016"
+ms.lasthandoff: 07/09/2018
+ms.locfileid: "37920906"
 ---
 <div id="main" class="v2">
     <div class="container">
@@ -177,6 +177,7 @@ Go</a>
                                                     <li><a class="barLink" href="/azure/app-service-web/">Web Apps</a></li>
                                                     <li><a class="barLink" href="/azure/azure-functions/">Kiszolgáló nélküli funkciók</a></li>
                                                     <li><a class="barLink" href="/azure/containers/">Containers</a></li>
+                                                    <li><a class="barLink" href="/azure/aks/">Mikroszolgáltatások a Kubernetesszel</a></li>
                                                     <li><a class="barLink" href="/azure/service-fabric/">Mikroszolgáltatások Service Fabric platformmal</a></li>
                                                 </ul>
                                             </div>
@@ -494,6 +495,11 @@ Tudnivalók a fejlesztésről és az üzemeltetésről az Azure-ral </a>
                                                 <img src="media/index/AppService.svg" alt="" />
                                                 <p>Tárolókhoz készült Web App</p>
                                             </a>
+                                        </li>
+                                        <li>
+                                            <a href="/azure/dev-spaces/">
+                                                <img src="media/index/AzureDevSpaceController_50x.svg" alt=""/>
+                                                <p>Azure Dev Spaces</p>
                                         </li>
                                     </ul>
                                     <h3>Integráció</h3>
@@ -883,7 +889,7 @@ Tudnivalók a fejlesztésről és az üzemeltetésről az Azure-ral </a>
                                         </li>
                                         <li>
                                             <a href="/azure/cognitive-services/labs/anomaly-finder/overview">
-                                                <img src="media/index/API_Anomaly_Finder.svg" alt="" /> 
+                                                <img src="media/index/API_Anomaly_Finder.svg" alt="" />
                                                 <p>Anomáliaészlelő</p>
                                             </a>
                                         </li>
@@ -2702,6 +2708,25 @@ s" alt="" />
                                                 <div class="cardText">
                                                     <h3>Tárolókhoz készült Web App</h3>
                                                     <p>Az üzleti igényeknek megfelelően méretezhető, tárolóalapú webalkalmazások gyors és egyszerű üzembe helyezése</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/azure/dev-spaces/">
+                                    <div class="cardSize">
+                                        <div class="cardPadding">
+                                            <div class="card">
+                                                <div class="cardImageOuter">
+                                                    <div class="cardImage">
+                                                        <img src="media/index/AzureDevSpaceController_50x.svg" alt="" />
+                                                    </div>
+                                                </div>
+                                                <div class="cardText">
+                                                    <h3>Azure Dev Spaces</h3>
+                                                    <p>Gyors Kubernetes-fejlesztés tárolókkal és mikroszolgáltatásokkal</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -5772,6 +5797,34 @@ Adatbázis-migrálási eszközök </h3>
                                                 </p>
                                                 <p>
                                                     <a href="https://aka.ms/dea-tool">Database Experimentation Assistant (DEA)</a>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li> <li>
+                                <div class="cardSize">
+                                    <div class="cardPadding">
+                                        <div class="card">
+                                            <div class="cardImageOuter">
+                                                <div class="cardImage">
+                                                    <img src="media/index/AzureDevSpaceController_50x.svg" alt="" />
+                                                </div>
+                                            </div>
+                                            <div class="cardText">
+                                                <h3>
+Azure Dev Spaces </h3>
+                                                <p>
+                                                    <a href="https://docs.microsoft.com/azure/dev-spaces/azure-dev-spaces">Első lépések</a>
+                                                </p>
+                                                <p>
+                                                    <a href="https://docs.microsoft.com/azure/dev-spaces/quickstart-netcore">Letöltés .NET Core-hoz és VS Code-hoz</a>
+                                                </p>
+                                                <p>
+                                                    <a href="https://docs.microsoft.com/azure/dev-spaces/quickstart-netcore-visualstudio">Letöltés .NET Core-hoz és Visual Studióhoz</a>
+                                                </p>
+                                                <p>
+                                                    <a href="https://docs.microsoft.com/azure/dev-spaces/quickstart-nodejs">Letöltés Node.js-hez</a>
                                                 </p>
                                             </div>
                                         </div>

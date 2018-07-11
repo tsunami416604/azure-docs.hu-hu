@@ -13,12 +13,12 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: craigg
-ms.openlocfilehash: 2b9644b8cfdcca9c9ded7890e325fe9488c9511f
-ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
+ms.openlocfilehash: 89cf9c9034c03b6ca51aca4bd2c4cd6edb8bcc13
+ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37061110"
+ms.lasthandoff: 06/28/2018
+ms.locfileid: "37084229"
 ---
 # <a name="provision-the-azure-ssis-integration-runtime-in-azure-data-factory"></a>Az Azure SSIS integrációs modul üzembe helyezése az Azure Data Factoryban
 Ez az oktatóanyag azt ismerteti, hogyan lehet üzembe helyezni egy Azure-SSIS integrációs modul (Integration Runtime, IR) modult az Azure Data Factoryban az Azure Portal felületén. Ezután az SQL Server Data Tools vagy az SQL Server Management Studio (SSMS) használatával SQL Server Integration Services-csomagokat helyezhet üzembe és futtathat ebben az Azure-beli modulban. Elméleti információk az Azure-SSIS integrációs modulokról: [Azure-SSIS integrációs modul](concepts-integration-runtime.md#azure-ssis-integration-runtime).
@@ -39,8 +39,8 @@ Az oktatóanyagban az alábbi lépéseket fogja végrehajtani:
 - Győződjön meg arról, hogy az Azure SQL Database-kiszolgálóján nincs SSIS-katalógus (SSISDB-adatbázis). Az Azure-SSIS IR üzembe helyezése nem támogatja a meglévő SSIS-katalógusok használatát. 
 
 > [!NOTE]
-> - Adat-előállítót a következő régiókban hozhat létre: USA keleti régiója, USA 2. keleti régiója, Délkelet-Ázsia és Nyugat-Európa. 
-> - A következő régiókban hozhat létre Azure-SSIS integrációs modult: USA keleti régiója, USA 2. keleti régiója, USA középső régiója, USA 2. nyugati régiója, Észak-Európa, Nyugat-Európa, az Egyesült királyság déli régiója és Kelet-Ausztrália. 
+> - Azon Azure-régiók megtekintéséhez, amelyekben jelenleg elérhető a Data Factory, a következő lapon válassza ki az Önt érdeklő régiókat, majd bontsa ki az **Elemzés** részt, és keresse meg a **Data Factory**: [Elérhető termékek régiók szerint](https://azure.microsoft.com/global-infrastructure/services/) szakaszt. 
+> - Azon Azure-régiók megtekintéséhez, amelyekben jelenleg elérhető az Azure-SSIS integrációs modul, a következő lapon válassza ki az Önt érdeklő régiókat, majd bontsa ki az **Elemzés** részt, és keresse meg az **SSIS integrációs modul**: [Elérhető termékek régiók szerint](https://azure.microsoft.com/global-infrastructure/services/) szakaszt. 
 
 ## <a name="create-a-data-factory"></a>Data factory létrehozása
 

@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 01/22/2018
 ms.author: douglasl
-ms.openlocfilehash: f31a7fbab99ad4a2dfd06b79cc2a450da0cffb62
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: 4a96fae7d6af8f37bcdf1fe13761caef471df7d2
+ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37048322"
+ms.lasthandoff: 06/28/2018
+ms.locfileid: "37085693"
 ---
 # <a name="transform-data-in-azure-virtual-network-using-hive-activity-in-azure-data-factory"></a>Azure virtuális hálózaton lévő adatok átalakítása Hive-tevékenység segítségével az Azure Data Factoryben
 Ebben az oktatóanyagban az Azure PowerShell-lel hoz létre egy Data Factory-folyamatot, amely egy Azure virtuális hálózaton (VNET) lévő HDInsight-fürtön futó Hive-tevékenységgel alakítja át az adatokat. Az oktatóanyagban az alábbi lépéseket fogja végrehajtani:
@@ -89,7 +89,7 @@ Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány
     ```powershell
     $selfHostedIntegrationRuntimeName = "MySelfHostedIR09142017" 
     ```
-2. Indítsa el a **PowerShellt**. Az Azure PowerShellt hagyja megnyitva a rövid útmutató végéig. Ha bezárja és újra megnyitja a programot, akkor újra le kell futtatnia a parancsokat. A Data Factory 2-es verziója jelenleg csak az USA keleti régiójában, az USA 2. keleti régiójában és a nyugat-európai régióban teszi lehetővé adat-előállítók létrehozását. Az adat-előállítók által használt adattárak (Azure Storage, Azure SQL Database stb.) és számítási erőforrások (HDInsight stb.) más régiókban is lehetnek.
+2. Indítsa el a **PowerShellt**. Az Azure PowerShellt hagyja megnyitva a rövid útmutató végéig. Ha bezárja és újra megnyitja a programot, akkor újra le kell futtatnia a parancsokat. Azon Azure-régiók megtekintéséhez, amelyekben jelenleg elérhető a Data Factory, a következő lapon válassza ki az Önt érdeklő régiókat, majd bontsa ki az **Elemzés** részt, és keresse meg a **Data Factory**: [Elérhető termékek régiók szerint](https://azure.microsoft.com/global-infrastructure/services/) szakaszt. Az adat-előállítók által használt adattárak (Azure Storage, Azure SQL Database stb.) és számítási erőforrások (HDInsight stb.) más régiókban is lehetnek.
 
     Futtassa a következő parancsot, és adja meg az Azure Portalra való bejelentkezéshez használt felhasználónevet és jelszót.
         

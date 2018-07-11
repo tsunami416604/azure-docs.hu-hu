@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 5863a8edbb20b2b0c231834259f1bb7b0423a8f6
-ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
+ms.openlocfilehash: 5bde54a65160c58d8bfba2f6c4c3b6a4317e46ed
+ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37033800"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37436442"
 ---
 # <a name="quickstart-deploy-your-first-iot-edge-module-from-the-azure-portal-to-a-windows-device---preview"></a>Rövid útmutató: Az első IoT Edge-modul üzembe helyezése az Azure Portal segítségével egy Windows-eszközön – előzetes verzió
 
@@ -81,29 +81,38 @@ Ebben a szakaszban az IoT Edge-futtatókörnyezet Linux-tárolókkal történő 
 
 2. Töltse le az IoT Edge-szervizcsomagot.
 
-   ```powershell
-   Invoke-WebRequest https://conteng.blob.core.windows.net/iotedged/iotedge.zip -o .\iotedge.zip
-   Expand-Archive .\iotedge.zip C:\ProgramData\iotedge -f
-   $env:Path += ";C:\ProgramData\iotedge"
-   SETX /M PATH "$env:Path"
-   ```
+  ```powershell
+  Invoke-WebRequest https://aka.ms/iotedged-windows-latest -o .\iotedged-windows.zip
+  Expand-Archive .\iotedged-windows.zip C:\ProgramData\iotedge -f
+  Move-Item c:\ProgramData\iotedge\iotedged-windows\* C:\ProgramData\iotedge\ -Force
+  rmdir C:\ProgramData\iotedge\iotedged-windows
+  $env:Path += ";C:\ProgramData\iotedge"
+  SETX /M PATH "$env:Path"
+  ```
 
-3. Hozza létre és indítsa el az IoT Edge-szolgáltatást.
+3. Telepítse a vcruntime környezetet.
+
+  ```powershell
+  Invoke-WebRequest -useb https://download.microsoft.com/download/0/6/4/064F84EA-D1DB-4EAA-9A5C-CC2F0FF6A638/vc_redist.x64.exe -o vc_redist.exe
+  .\vc_redist.exe /quiet /norestart
+  ```
+
+4. Hozza létre és indítsa el az IoT Edge-szolgáltatást.
 
    ```powershell
    New-Service -Name "iotedge" -BinaryPathName "C:\ProgramData\iotedge\iotedged.exe -c C:\ProgramData\iotedge\config.yaml"
    Start-Service iotedge
    ```
 
-4. Adjon hozzá tűzfalkivételeket azokhoz a portokhoz, amelyeket az IoT Edge-szolgáltatás használ.
+5. Adjon hozzá tűzfalkivételeket azokhoz a portokhoz, amelyeket az IoT Edge-szolgáltatás használ.
 
    ```powershell
    New-NetFirewallRule -DisplayName "iotedged allow inbound 15580,15581" -Direction Inbound -Action Allow -Protocol TCP -LocalPort 15580-15581 -Program "C:\programdata\iotedge\iotedged.exe" -InterfaceType Any
    ```
 
-5. Hozzon létre egy **iotedge.reg** nevű új fájlt, és nyissa meg egy szövegszerkesztőben. 
+6. Hozzon létre egy **iotedge.reg** nevű új fájlt, és nyissa meg egy szövegszerkesztőben. 
 
-6. Adja hozzá a következő tartalmat, és mentse a fájlt. 
+7. Adja hozzá a következő tartalmat, és mentse a fájlt. 
 
    ```input
    Windows Registry Editor Version 5.00
@@ -113,7 +122,7 @@ Ebben a szakaszban az IoT Edge-futtatókörnyezet Linux-tárolókkal történő 
    "TypesSupported"=dword:00000007
    ```
 
-7. Keresse meg a fájlt a Fájlkezelőben, és kattintson rá duplán a módosítások a Windows-beállításjegyzékbe történő importálásához. 
+8. Keresse meg a fájlt a Fájlkezelőben, és kattintson rá duplán a módosítások a Windows-beállításjegyzékbe történő importálásához. 
 
 ### <a name="configure-the-iot-edge-runtime"></a>Az IoT Edge-futtatókörnyezet konfigurálása 
 
@@ -131,21 +140,27 @@ Konfigurálja a futtatókörnyezetet az IoT Edge-eszköz kapcsolati sztringjéve
 
 4. A konfigurációs fájlban keresse meg az **Edge-eszköz gazdanevét** tartalmazó szakaszt. Frissítse a **hostname** (gazdanév) értéket a PowerShellből kimásolt gazdanévre.
 
-5. A rendszergazdai PowerShell-ablakban kérje le az IoT Edge-eszköz IP-címét. 
+3. A rendszergazdai PowerShell-ablakban kérje le az IoT Edge-eszköz IP-címét. 
 
    ```powershell
    ipconfig
    ```
 
-6. Másolja az **IPv4-cím** értékét a kimenet **vEthernet (DockerNAT)** szakaszába. 
+4. Másolja az **IPv4-cím** értékét a kimenet **vEthernet (DockerNAT)** szakaszába. 
 
-7. Hozzon létre egy **IOTEDGE_HOST** nevű környezeti változót, és cserélje le az *\<ip_address\>* paraméter értékét az IoT Edge-eszköz IP-címére. 
+5. Hozzon létre egy **IOTEDGE_HOST** nevű környezeti változót, és cserélje le az *\<ip_address\>* paraméter értékét az IoT Edge-eszköz IP-címére. 
 
-   ```powershell
-   [Environment]::SetEnvironmentVariable("IOTEDGE_HOST", "http://<ip_address>:15580")
-   ```
+  ```powershell
+  [Environment]::SetEnvironmentVariable("IOTEDGE_HOST", "http://<ip_address>:15580")
+  ```
 
-8. A `config.yaml` fájlban keresse meg a **Connect settings** (Kapcsolati beállítások) szakaszt. Frissítse a **management_uri** és a **workload_uri** paraméter értékét az IP-címre (a **\<GATEWAY_ADDRESS\>**-t lecserélve) és az előző szakaszban megnyitott portokra. 
+  Őrizze meg a környezeti változót az újraindítások között.
+
+  ```powershell
+  SETX /M IOTEDGE_HOST "http://<ip_address>:15580"
+  ```
+
+6. A `config.yaml` fájlban keresse meg a **Connect settings** (Kapcsolati beállítások) szakaszt. Frissítse a **management_uri** és a **workload_uri** paraméter értékét az IP-címre és az előző szakaszban megnyitott portokra. Cserélje le a **\<GATEWAY_ADDRESS\>** címet az IP-címére. 
 
    ```yaml
    connect: 
@@ -153,7 +168,7 @@ Konfigurálja a futtatókörnyezetet az IoT Edge-eszköz kapcsolati sztringjéve
      workload_uri: "http://<GATEWAY_ADDRESS>:15581"
    ```
 
-9. Keresse meg a **Listen settings** (Figyelési beállítások) szakaszt, és adja meg ugyanezeket az értékeket a **management_uri** és a **workload_uri** paraméter esetén. 
+7. Keresse meg a **Listen settings** (Figyelési beállítások) szakaszt, és adja meg ugyanezeket az értékeket a **management_uri** és a **workload_uri** paraméter esetén. 
 
    ```yaml
    listen:
@@ -161,20 +176,15 @@ Konfigurálja a futtatókörnyezetet az IoT Edge-eszköz kapcsolati sztringjéve
      workload_uri: "http://<GATEWAY_ADDRESS>:15581"
    ```
 
-10. Keresse meg a **Moby Container Runtime settings** (Moby-tároló futtatókörnyezeti beállításai) szakaszt. Távolítsa el a megjegyzés jelölését a **network** (hálózat) sor mellől, és győződjön meg arról, hogy annak értéke `nat`.
+8. Keresse meg a **Moby Container Runtime settings** (Moby-tároló futtatókörnyezeti beállításai) szakaszt, és győződjön meg róla, hogy a **network** (hálózat) értéke `nat`.
 
-   ```yaml
-   moby_runtime:
-     uri: "npipe://./pipe/docker_engine"
-     network: "nat"
-   ```
+9. Mentse a konfigurációs fájlt. 
 
-11. Mentse a konfigurációs fájlt. 
-
-12. A PowerShellben indítsa újra az IoT Edge-szolgáltatást.
+10. A PowerShellben indítsa újra az IoT Edge-szolgáltatást.
 
    ```powershell
-   Stop-Service iotedge
+   Stop-Service iotedge -NoWait
+   sleep 5
    Start-Service iotedge
    ```
 
@@ -194,9 +204,10 @@ Ellenőrizze, hogy a futtatókörnyezet megfelelően lett-e telepítve és konfi
    # Displays logs from today, newest at the bottom.
 
    Get-WinEvent -ea SilentlyContinue `
-  -FilterHashtable @{ProviderName= "iotedged";
-    LogName = "application"; StartTime = [datetime]::Today} |
-  select TimeCreated, Message | Sort-Object -Descending
+    -FilterHashtable @{ProviderName= "iotedged";
+      LogName = "application"; StartTime = [datetime]::Today} |
+    select TimeCreated, Message |
+    sort-object @{Expression="TimeCreated";Descending=$false}
    ```
 
 3. Tekintse meg az IoT Edge-eszközön futó összes modult. Mivel első alkalommal indította el ezt a szolgáltatást, csak az **edgeAgent** modulnak szabad futnia. Az edgeAgent alapértelmezés szerint fut, és segíti az eszközön esetlegesen üzembe helyezett további modulok telepítését és indítását. 

@@ -7,14 +7,14 @@ manager: jwillis
 ms.service: storage
 ms.workload: storage
 ms.topic: get-started-article
-ms.date: 06/22/2018
+ms.date: 07/03/2018
 ms.author: hux
-ms.openlocfilehash: 3f1dfa09c0f123d20a7be043aa8d0033a5b6bd72
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 6efc50bfee54c38511fb3346f1341f81741d14eb
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "36335771"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37445424"
 ---
 # <a name="azure-storage-account-options"></a>Az Azure Storage-fiók beállításai
 
@@ -46,7 +46,10 @@ A GPv2-tárfiókokban fiókszinten elérhető a **Hozzáférési szint** attrib�
 
 ### <a name="upgrade-a-storage-account-to-gpv2"></a>Tárfiók frissítése GPv2-fiókra
 
-A felhasználók bármikor frissíthetik GPv1- vagy Blob Storage-fiókjukat GPv2-fiókra a PowerShell vagy az Azure CLI használatával. Ez a módosítás nem vonható vissza, és minden egyéb módosítás tiltott.
+A felhasználók bármikor frissíthetik GPv1- vagy Blob Storage-fiókjukat GPv2-fiókra az Azure Portal, a PowerShell vagy az Azure CLI használatával. Ez a módosítás nem vonható vissza, és minden egyéb módosítás tiltott.
+
+#### <a name="upgrade-with-azure-portal"></a>Frissítés az Azure Portalon
+Ha GPv1- vagy Blob Storage-fiókját az Azure CLI segítségével kívánja GPv2-fiókra frissíteni az Azure Portal használatával, először jelentkezzen be az [Azure Portalra](https://portal.azure.com), és válassza ki tárfiókját. Válassza a **Beállítások** > **Konfiguráció** lehetőséget. Itt keresse meg a **Frissítés** gombot, amely mellett a frissítési folyamatra vonatkozó megjegyzés is olvasható.
 
 #### <a name="upgrade-with-powershell"></a>Frissítés a PowerShell-lel
 
@@ -262,9 +265,9 @@ A Blob Storage-tárfiókok georeplikációs adatátviteli költségei szintén a
 
 ## <a name="migrating-existing-data"></a>Meglévő adatok áttelepítése
 
-A GPv1-fiókok egyszerűen, leállás és API-módosítás, valamint adatok migrálása nélkül frissíthetők GPv2-re. Ezen oknál fogva erősen ajánlott a GPv1-fiókokat Blob Storage-fiók helyett GPv2-fiókba migrálni.
+A GPv1- vagy a Blob Storage-fiókok egyszerűen, leállás és API-módosítás, valamint adatok migrálása nélkül frissíthetők GPv2-re. Ezen oknál fogva erősen ajánlott a GPv1-fiókokat Blob Storage-fiók helyett GPv2-fiókba migrálni. További információk a GPv2-fiókra történő frissítéssel kapcsolatban: [Tárfiók frissítése GPv2-fiókra](#upgrade-a-storage-account-to-gpv2).
 
-Ha azonban Blob Storage-fiókba kell migrálnia, és nem áll módjában GPv2-fiókokat használni, az alábbi utasítások szerint járjon el. 
+Ha azonban GPv1-fiókból Blob Storage-fiókba kell migrálnia, és nem áll módjában GPv2-fiókokat használni, az alábbi utasítások szerint járjon el. 
 
 A Blob Storage-fiókok kifejezetten blokkblobok és hozzáfűző blobok tárolására készültek. A meglévő általános célú tárfiókok, amelyek a blobok mellett táblák, üzenetsorok, fájlok és lemezek tárolását is lehetővé teszik, nem konvertálhatóak Blob Storage-fiókká. A tárolási szintek használatához létre kell hoznia egy új Blob Storage-fiókot, és migrálni meglévő adatait az újonnan létrehozott fiókra. 
 

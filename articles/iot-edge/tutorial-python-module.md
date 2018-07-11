@@ -9,12 +9,12 @@ ms.date: 06/26/2018
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 884237a851461fe3d7a48708d221909804760ceb
-ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
+ms.openlocfilehash: 42af2b5ec6b591929f37afebe6546d61b8a3a02a
+ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37063122"
+ms.lasthandoff: 06/28/2018
+ms.locfileid: "37082848"
 ---
 # <a name="tutorial-develop-and-deploy-a-python-iot-edge-module-to-your-simulated-device"></a>Oktatóanyag: Python-alapú IoT Edge-modul fejlesztése és üzembe helyezése szimulált eszközön
 
@@ -34,7 +34,11 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* A [Linux](quickstart-linux.md) vagy [Windows-eszközök](quickstart.md) rövid útmutatójában létrehozott Azure IoT Edge-eszköz.
+* A [Linux](quickstart-linux.md) eszköz rövid útmutatójában létrehozott Azure IoT Edge-eszköz.
+
+   >[!Note]
+   >Az Azure IoT Edge-hez elérhető Python-modulok nem támogatják a Windows- és ARM-eszközöket. 
+
 * [Visual Studio Code](https://code.visualstudio.com/). 
 * [Azure IoT Edge-bővítmény a Visual Studio Code-hoz](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-edge) 
 * [Python-bővítmény a Visual Studio Code-hoz](https://marketplace.visualstudio.com/items?itemName=ms-python.python). 
@@ -245,7 +249,7 @@ az iot hub delete --name MyIoTHub --resource-group TestResources
 
 A teljes erőforráscsoport név alapján való törléséhez:
 
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com), és kattintson az **Erőforráscsoportok** elemre.
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com), és kattintson az **Erőforráscsoportok** elemre.
 
 2. A **Szűrés név alapján...** mezőbe írja be az IoT Hubot tartalmazó erőforráscsoport nevét. 
 

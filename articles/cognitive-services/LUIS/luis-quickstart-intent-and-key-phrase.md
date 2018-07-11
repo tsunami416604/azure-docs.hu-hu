@@ -9,14 +9,14 @@ ms.component: luis
 ms.topic: tutorial
 ms.date: 06/27/2018
 ms.author: v-geberr
-ms.openlocfilehash: 9acdfdde667d37bac5b96e4497b3e86d2cdeccb8
-ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
+ms.openlocfilehash: f3808620c4527f2971d8eb6d53a09c893b162b59
+ms.sourcegitcommit: 4597964eba08b7e0584d2b275cc33a370c25e027
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37063408"
+ms.lasthandoff: 07/02/2018
+ms.locfileid: "37340950"
 ---
-# <a name="tutorial-learn-how-to-return-data-from-keyphrase-entity"></a>Oktatóanyag: Ismerje meg, hogyan adhatók vissza adatok a keyPhrase-entitásból 
+# <a name="tutorial-7-add-keyphrase-entity"></a>Oktatóanyag: 7. keyPhrase entitás hozzáadása 
 Ebben az oktatóanyagban egy alkalmazást használhat, amely bemutatja, hogyan nyerhetők ki kulcstémák a kimondott szövegekből.
 
 <!-- green checkmark -->
@@ -201,10 +201,10 @@ A csevegőrobot már elegendő információval rendelkezik a beszélgetés köve
 A LUIS végzett ezzel a kéréssel. A hívó alkalmazás, például egy csevegőrobot, felhasználhatja a topScoringIntent eredményt és a kimondott szöveg keyPhrase adatait a következő lépés végrehajtásához. A LUIS nem végzi el ezt a programozható munkát a csevegőrobotnak vagy a hívó alkalmazásnak. A LUIS csak azt határozza meg, hogy mi a felhasználó szándéka. 
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
-Ha már nincs rá szükség, törölje a LUIS-alkalmazást. Ehhez válassza az alkalmazáslistában az alkalmazás neve mellett jobbra található három pontot (...), majd a **Delete** (Törlés) lehetőséget. A **Delete app?** (Törli az alkalmazást?) előugró párbeszédpanelen válassza az **OK** lehetőséget.
+Ha már nincs rá szükség, törölje a LUIS-alkalmazást. Válassza a **My apps** (Saját alkalmazások) elemet a bal oldali menüben. Válassza az alkalmazáslistában az alkalmazás neve mellett jobbra található három pontot (...), majd a **Delete** (Törlés) lehetőséget. A **Delete app?** (Törli az alkalmazást?) előugró párbeszédpanelen válassza az **OK** lehetőséget.
 
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Hangulatot és szándék-előrejelzést visszaadó alkalmazás létrehozása](luis-quickstart-intent-and-sentiment-analysis.md)
+> [Hangulatelemzés hozzáadása az alkalmazáshoz](luis-quickstart-intent-and-sentiment-analysis.md)
 

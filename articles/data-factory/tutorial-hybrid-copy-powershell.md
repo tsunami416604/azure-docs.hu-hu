@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 01/22/2018
 ms.author: jingwang
-ms.openlocfilehash: cfbd7080ff365daa15618b93dcfb9fd2d07aacff
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: d002955bcdb6e521fd3daddc223e07afa50f2208
+ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37046578"
+ms.lasthandoff: 06/28/2018
+ms.locfileid: "37082705"
 ---
 # <a name="tutorial-copy-data-from-an-on-premises-sql-server-database-to-azure-blob-storage"></a>Oktatóanyag: Adatok másolása helyszíni SQL Server-adatbázisból Azure Blob Storage-tárolóba
 Ebben az oktatóanyagban az Azure PowerShell használatával egy Data Factory-folyamatot hozunk létre az adatok egy helyszíni SQL Server-adatbázisból egy Azure Blob-tárolóba történő másolására. Létrehozhat és alkalmazhat egy saját üzemeltetésű integrációs modult, amely adatokat helyez át a helyszíni és a felhőalapú adattárolók között. 
@@ -185,7 +185,7 @@ Részletes információk: [Az Azure PowerShell telepítése és konfigurálása]
 >    The specified data factory name 'ADFv2TutorialDataFactory' is already in use. Data factory names must be globally unique.
 >    ```
 > * Az adat-előállító példányok létrehozásához annak a felhasználói fióknak, amellyel belép az Azure-ba, a *közreműködő* vagy *tulajdonos* szerepkör tagjának, vagy az Azure-előfizetés *rendszergazdájának* kell lennie.
-> * Jelenleg csak az USA keleti régiójában, az USA 2. keleti régiójában és a nyugat-európai régióban hozhatók létre adat-előállítók. Az adat-előállítók által használt adattárak (Azure Storage, Azure SQL Database stb.) és számítási erőforrások (Azure HDInsight stb.) más régiókban is lehetnek.
+> * Azon Azure-régiók megtekintéséhez, amelyekben jelenleg elérhető a Data Factory, a következő lapon válassza ki az Önt érdeklő régiókat, majd bontsa ki az **Elemzés** részt, és keresse meg a **Data Factory**: [Elérhető termékek régiók szerint](https://azure.microsoft.com/global-infrastructure/services/) szakaszt. Az adat-előállítók által használt adattárak (Azure Storage, Azure SQL Database stb.) és számítási erőforrások (Azure HDInsight stb.) más régiókban is lehetnek.
 > 
 > 
 

@@ -12,12 +12,12 @@ ms.topic: quickstart
 ms.date: 04/10/2018
 ms.author: sngun
 clicktale: true
-ms.openlocfilehash: f4391ebde6c7c7775c7c916de206ddb398bde1ef
-ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
+ms.openlocfilehash: 19da0591d61e55cc34a7a0cc17ed13b197cdabab
+ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34795431"
+ms.lasthandoff: 07/02/2018
+ms.locfileid: "37344692"
 ---
 # <a name="quickstart-build-a-net-web-app-with-azure-cosmos-db-using-the-sql-api-and-the-azure-portal"></a>Rövid útmutató: .NET-webalkalmazás létrehozása Azure Cosmos DB-vel, az SQL API és az Azure Portal használatával
 
@@ -55,7 +55,7 @@ Ha nincs telepítve a Visual Studio 2017, letöltheti és használhatja az **ing
 
 ## <a name="clone-the-sample-application"></a>A mintaalkalmazás klónozása
 
-Most pedig váltsunk át kódok használatára. Klónozunk egy SQL API-alkalmazást a GitHubról, beállítjuk a kapcsolati sztringet, és futtatjuk az alkalmazást. Látni fogja, milyen egyszerű az adatokkal programozott módon dolgozni. 
+Most pedig váltsunk át kódok használatára. Klónozunk egy [SQL API-alkalmazást a GitHubról](https://github.com/Azure-Samples/documentdb-dotnet-todo-app), beállítjuk a kapcsolati karakterláncot, és futtatjuk az alkalmazást. Látni fogja, milyen egyszerű az adatokkal programozott módon dolgozni. 
 
 1. Nyisson meg egy parancssort, hozzon létre egy git-samples nevű új mappát, majd zárja be a parancssort.
 

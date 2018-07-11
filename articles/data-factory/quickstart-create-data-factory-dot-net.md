@@ -13,12 +13,12 @@ ms.devlang: dotnet
 ms.topic: hero-article
 ms.date: 03/28/2018
 ms.author: jingwang
-ms.openlocfilehash: b934cff674ee6967c9ae97baa5c3b93226600e87
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: d5858ba7d10093264e1565d88ae518055b814d34
+ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37046340"
+ms.lasthandoff: 06/28/2018
+ms.locfileid: "37085742"
 ---
 # <a name="create-a-data-factory-and-pipeline-using-net-sdk"></a>Adat-előállító és folyamat létrehozása a .NET SDK használatával
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -145,7 +145,7 @@ Hozzon létre egy, a C# nyelvet használó .NET-konzolalkalmazást a Visual Stud
     using Microsoft.IdentityModel.Clients.ActiveDirectory;
     ```
 
-2. Adja hozzá az alábbi kódot a **Main** metódushoz, amely beállítja a változókat. A helyőrzőket cserélje le a saját értékeire. A Data Factory 2-es verziója jelenleg csak az USA keleti régiójában, az USA 2. keleti régiójában és a nyugat-európai régióban teszi lehetővé adat-előállítók létrehozását. Az adat-előállítók által használt adattárak (Azure Storage, Azure SQL Database stb.) és számítási erőforrások (HDInsight stb.) más régiókban is lehetnek.
+2. Adja hozzá az alábbi kódot a **Main** metódushoz, amely beállítja a változókat. A helyőrzőket cserélje le a saját értékeire. Azon Azure-régiók megtekintéséhez, amelyekben jelenleg elérhető a Data Factory, a következő lapon válassza ki az Önt érdeklő régiókat, majd bontsa ki az **Elemzés** részt, és keresse meg a **Data Factory**: [Elérhető termékek régiók szerint](https://azure.microsoft.com/global-infrastructure/services/) szakaszt. Az adat-előállítók által használt adattárak (Azure Storage, Azure SQL Database stb.) és számítási erőforrások (HDInsight stb.) más régiókban is lehetnek.
 
     ```csharp
     // Set variables

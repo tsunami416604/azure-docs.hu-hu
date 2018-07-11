@@ -12,12 +12,12 @@ ms.topic: tutorial
 ms.date: 05/07/2018
 ms.author: sngun
 ms.custom: mvc
-ms.openlocfilehash: cacda277082f62c9d98a7459cb5dbf74375bfd87
-ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
+ms.openlocfilehash: bdaead6fe739d62340ca225aa1a6d8adf9e86cb9
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34795346"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37100296"
 ---
 # <a name="azure-cosmos-db-import-mongodb-data"></a>Azure Cosmos DB: MongoDB-adatok importálása 
 
@@ -82,7 +82,7 @@ Példa:
         
     * Az Azure Cosmos DB alapértelmezés szerint másodpercenként 1000 kérelemegység (RU/s) sebességgel hoz létre egy új MongoDB-gyűjteményt. Még a mongoimport, mongorestore vagy mongomirror eszköz használatával végzett migrálás indítása előtt hozza létre előre az összes gyűjteményt az [Azure Portalról](https://portal.azure.com) vagy a MongoDB-illesztőprogramokról és -eszközökről. Ha a gyűjteménye nagyobb 10 GB-nál, mindenképpen [horizontálisan particionált/particionált gyűjteményt](partition-data.md) hozzon létre egy megfelelő szegmenskulccsal.
 
-    * Az [Azure Portalon](https://portal.azure.com) a migrálás idejére növelje a gyűjtemény átviteli sebességét 1000 RU/s értékről egypartíciós gyűjtemény és 2500 RU/s értékről horizontálisan particionált gyűjtemény esetében. Nagyobb átviteli sebesség beállításakor nincs szükség szabályozásra, és gyorsabban végezhet a migrálással. Mivel az Azure Cosmos DB-ben órás egységekben történik a számlázás, költségtakarékossági okokból a migrálás után érdemes azonnal csökkentenie az átviteli sebességet.
+    * Az [Azure Portalon](https://portal.azure.com) a migrálás idejére növelje a gyűjtemény átviteli sebességét 1000 RU/s értékről egypartíciós gyűjtemény és 2500 RU/s értékről horizontálisan particionált gyűjtemény esetében. Nagyobb átviteli sebesség beállításakor nincs szükség a sebesség korlátozására, és gyorsabban végezhet a migrálással. Mivel az Azure Cosmos DB-ben órás egységekben történik a számlázás, költségtakarékossági okokból a migrálás után érdemes azonnal csökkentenie az átviteli sebességet.
 
     * Az RU/s érték gyűjteményszinten való megadásán kívül beállíthat egy RU/s értéket gyűjtemények egy készletéhez is a szülő adatbázis szintjén. Ehhez arra van szükség, hogy előre létrehozza az adatbázist és a gyűjteményeket, valamint minden gyűjteményhez meghatározzon egy szegmenskulcsot.
 

@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 05/07/2018
 ms.author: larryfr
 ms.custom: H1Hack27Feb2017,hdinsightactive,mvc
-ms.openlocfilehash: 46c80f326c8210ac3282cf128058cee91ff3836c
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 1abc0a8ed9aec1082a4710647f6c03c87e1fd1d2
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33770837"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37098229"
 ---
 # <a name="tutorial-extract-transform-and-load-data-using-apache-hive-on-azure-hdinsight"></a>Oktatóanyag: Adatok kinyerése, átalakítása és betöltése az Azure HDInsight-alapú Apache Hive használatával
 
@@ -320,6 +320,7 @@ Ez az oktatóanyag azt mutatta be, hogyan végezheti el az adatok kinyerési, á
 
 A HDInsight használatának további módjaival kapcsolatban lásd a következő cikkeket:
 
+* [Oktatóanyag: Adatok kinyerése, átalakítása és betöltése az Azure HDInsight-alapú Apache Hive használatával](../storage/data-lake-storage/tutorial-extract-transform-load-hive.md)
 * [A Hive használata a HDInsightban][hdinsight-use-hive]
 * [A Pig használata a HDInsightban][hdinsight-use-pig]
 * [Java MapReduce-programok fejlesztése a Hadoophoz a HDInsightban][hdinsight-develop-mapreduce]

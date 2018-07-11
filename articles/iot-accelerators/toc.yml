@@ -10,6 +10,8 @@
   items:
     - name: Távoli monitorozási megoldás üzembe helyezése
       href: quickstart-remote-monitoring-deploy.md
+    - name: Eszközszimulációs megoldás üzembe helyezése
+      href: quickstart-device-simulation-deploy.md
 - name: Oktatóanyagok
   items:
     - name: IoT-eszközök monitorozása
@@ -149,10 +151,10 @@
           href: iot-accelerators-connected-factory-customize.md
     - name: Eszközszimuláció
       items:
-        - name: Megoldásgyorsító üzembe helyezése
-          href: iot-accelerators-device-simulation-deploy.md
-        - name: Szimuláció futtatása
-          href: iot-accelerators-device-simulation-explore.md
+        - name: Meglévő IoT Hub használata
+          href: iot-accelerators-device-simulation-choose-hub.md
+        - name: Egyéni eszközmodell használata
+          href: iot-accelerators-device-simulation-custom-model.md
 - name: Referencia
   items:
     - name: Fejlesztői referencia-útmutató

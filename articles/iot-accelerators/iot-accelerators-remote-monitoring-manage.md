@@ -1,115 +1,168 @@
 ---
-title: A távoli felügyeleti megoldás - Azure kezelés |} Microsoft Docs
-description: Ez az oktatóanyag bemutatja, hogyan csatlakozik a távoli felügyeleti megoldás eszközök kezelésére.
+title: Eszközök kezelése egy Azure-alapú távoli monitorozási megoldásban | Microsoft Docs
+description: Ez az oktatóanyag azt mutatja be, hogyan kezelheti a távoli monitorozási megoldásgyorsítóhoz csatlakoztatott eszközöket.
 author: dominicbetts
 manager: timlt
 ms.author: dobett
 ms.service: iot-accelerators
 services: iot-accelerators
-ms.date: 05/01/2018
-ms.topic: conceptual
-ms.openlocfilehash: 0f177c3a8746f801e52cdac6cb2189e9cc28e1e8
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
-ms.translationtype: MT
+ms.date: 06/12/2018
+ms.topic: tutorial
+ms.custom: mvc
+ms.openlocfilehash: 63baf6397b2542311525bac740c50b5eacbd35cf
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34627279"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37097427"
 ---
-# <a name="manage-and-configure-your-devices"></a>Kezelése és az eszközök konfigurálása
+# <a name="tutorial-configure-and-manage-devices-connected-to-your-monitoring-solution"></a>Oktatóanyag: A monitorozási megoldáshoz csatlakoztatott eszközök konfigurálása és kezelése
 
-Ez az oktatóanyag bemutatja az eszköz a távoli figyelésére szolgáló megoldás felügyeleti funkcióit. Ezek a képességek szemléltetésére az oktatóprogram egy olyan forgatókönyvet a Contoso IoT-alkalmazásban.
+Ebben az oktatóanyagban a távoli monitorozási megoldásgyorsítóval konfigurálhatja és kezelheti a csatlakoztatott IoT-eszközöket. Új eszközt fog hozzáadni a megoldásgyorsítóhoz, amelyet konfigurálni fog, és frissíteni fogja a belső vezérlőprogramját.
 
-Contoso bontsa ki a kimeneti növeléséhez létesítményekben egyik új gépek van rendezve. Várja meg az új gépek kézbesíti, amíg a megoldás működésének ellenőrzéséhez a szimuláció futtatni kívánt. Kezelőként szeretné kezelni, és az eszközök konfigurálása a távoli figyelésére szolgáló megoldás.
+A Contoso új gépet rendelt, amellyel az egyik létesítményét szeretné bővíteni. Amíg az új gép kézbesítésére vár, Ön lefuttat egy szimulációt a megoldás működésének tesztelése érdekében. A szimuláció futtatásához hozzá kell adnia új szimulált motoreszközt a távoli monitorozási megoldásgyorsítóhoz, és tesztelnie kell, hogy a szimulált eszköz megfelelő választ ad-e a műveletekre és a konfiguráció frissítéseire.
 
-Eszközök konfigurálása és kezelése bővíthető megoldás biztosításához, a távoli figyelésére szolgáló megoldás az IoT-központ funkciókat használ, mint [feladatok](../iot-hub/iot-hub-devguide-jobs.md) és [módszerek közvetlen](../iot-hub/iot-hub-devguide-direct-methods.md). Egy eszköz fejlesztői hogyan módszerek megvalósítja a fizikai eszköz kapcsolatban lásd: [testre szabhatja a távoli megfigyelési megoldásgyorsító](iot-accelerators-remote-monitoring-customize.md).
+Az eszközök rugalmas konfigurálásához és kezeléséhez a távoli monitorozási megoldásgyorsító olyan IoT Hub-funkciókat használ, amilyenek például a [feladatok](../iot-hub/iot-hub-devguide-jobs.md) és a [közvetlen metódusok](../iot-hub/iot-hub-devguide-direct-methods.md). Bár ebben az oktatóanyagban szimulált eszközök szerepelnek, az eszközfejlesztők a közvetlen metódusokat olyan [fizikai eszközökön is implementálhatják, amelyek a távoli monitorozási megoldásgyorsítóhoz vannak csatlakoztatva](iot-accelerators-connecting-devices.md).
 
-Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Az oktatóanyag során az alábbi lépéseket fogja végrehajtani:
 
 >[!div class="checklist"]
-> * A szimulált eszköz kiépítése.
-> * A szimulált eszköz tesztelése.
-> * Eszköz metódushívások a megoldásból.
-> * Konfigurálja újra az eszköz.
+> * Szimulált eszköz üzembe helyezése.
+> * Szimulált eszköz tesztelése.
+> * Eszköz belső vezérlőprogramjának frissítése.
+> * Eszköz újrakonfigurálása.
+> * Eszközök rendszerezése.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Ez az oktatóanyag van szükség a távoli figyelésére szolgáló megoldás telepített példányát az Azure-előfizetésben.
+Az oktatóanyag követéséhez rendelkeznie kell a távoli monitorozási megoldásgyorsító üzembe helyezett példányával az Azure-előfizetésében.
 
-Ha a távoli figyelésére szolgáló megoldás még nem telepítette még, el kell végeznie a [telepíteni a távoli megfigyelési megoldásgyorsító](iot-accelerators-remote-monitoring-deploy.md) oktatóanyag.
+Ha még nem helyezte üzembe a távoli monitorozási megoldásgyorsítót, végezze el [Távoli felhőalapú monitorozási megoldás üzembe helyezése](quickstart-remote-monitoring-deploy.md) rövid útmutatóban leírtakat.
 
-## <a name="add-a-simulated-device"></a>A szimulált eszköz hozzáadása
+## <a name="add-a-simulated-device"></a>Szimulált eszköz hozzáadása
 
-Keresse meg a **eszközök** a megoldás lapját, és válassza a **+ új eszköz**. Az a **új eszköz** panelen, kattintson a **szimulált**:
+Navigáljon a megoldás **Devices** (Eszközök) lapjára, majd kattintson a **+ New device** (Új eszköz) gombra:
 
-![A szimulált eszköz kiépítése](./media/iot-accelerators-remote-monitoring-manage/devicesprovision.png)
+[![Szimulált eszköz üzembe helyezése](./media/iot-accelerators-remote-monitoring-manage/devicesprovision-inline.png)](./media/iot-accelerators-remote-monitoring-manage/devicesprovision-expanded.png#lightbox)
 
-Az eszközök számát hagyja beállítása rendelkezésre **1**. Válassza ki a **hibás motor** eszköz modell, és válassza a **alkalmaz** a szimulált eszköz létrehozásához:
+Az **új eszköz** paneljén válassza a **Simulated** (Szimulált) lehetőséget, az üzembe helyezendő eszközök száma maradjon **1**, válassza ki a **Faulty Engine** (Hibás motor) eszközmodellt, majd kattintson az **Apply** (Alkalmaz) gombra a szimulált eszköz létrehozásához:
 
-![A szimulált motor eszköz kiépítése](./media/iot-accelerators-remote-monitoring-manage/devicesprovisionengine.png)
-
-Megtudhatja, hogyan lehet kiépíteni egy *fizikai* eszköz, lásd: [csatlakoztassa az eszközt a távoli megfigyelési megoldásgyorsító](iot-accelerators-connecting-devices-node.md).
+[![Szimulált motoreszköz üzembe helyezése](./media/iot-accelerators-remote-monitoring-manage/devicesprovisionengine-inline.png)](./media/iot-accelerators-remote-monitoring-manage/devicesprovisionengine-expanded.png#lightbox)
 
 ## <a name="test-the-simulated-device"></a>A szimulált eszköz tesztelése
 
-Az új szimulált eszköz részletes adatainak megtekintéséhez válassza ki a listából az eszközök a a **eszközök** lap. Az eszközzel kapcsolatos információkat jeleníti meg a **eszköz részletei** panel:
+Ha tesztelni szeretné, hogy a szimulált eszköz elküldi-e a telemetriai adatokat és a tulajdonságértékek jelentéseit, válassza ki az **eszközök** lapján található eszközlistából. Az eszköz valós idejű információi az **eszközt részletező** panelen jelennek meg:
 
-![Az új szimulált motor eszköz megtekintése](./media/iot-accelerators-remote-monitoring-manage/devicesviewnew.png)
+[![Az új szimulált motoreszköz megtekintése](./media/iot-accelerators-remote-monitoring-manage/devicesviewnew-inline.png)](./media/iot-accelerators-remote-monitoring-manage/devicesviewnew-expanded.png#lightbox)
 
-A **eszköz részletei**, ellenőrizze az új eszköz telemetriai adatokat küld. Az eszközről a különféle telemetriai adatfolyamok megtekintéséhez válassza a telemetriai adatok neve, mint **vibráció**:
+A **Device Details** (Eszközök részletei) résznél ellenőrizze, hogy az új eszköz elküldi-e a telemetriai adatokat. Az eszköz által küldött különböző rezgési telemetriastreamek megtekintéséhez kattintson a **Vibration** (Rezgés) gombra:
 
-![Válassza ki a telemetriai adatok adatfolyam megtekintése](./media/iot-accelerators-remote-monitoring-manage/devicesvibration.png)
+[![A megtekinteni kívánt telemetriastream kiválasztása](./media/iot-accelerators-remote-monitoring-manage/devicesvibration-inline.png)](./media/iot-accelerators-remote-monitoring-manage/devicesvibration-expanded.png#lightbox)
 
-A **eszköz részletei** panel az eszköz, például előfizetéscímkék értékeit, a támogatott módszerek és a tulajdonságok a eszköz által jelzett más információkat jelenít meg.
+Az **eszközt részletező** panel további információkat is megjelenít (például címkeértékeket, támogatott metódusokat, az eszköz által támogatott tulajdonságokat).
 
-Részletes diagnosztikai megtekintéséhez görgessen le a nézet **diagnosztika**.
+A részletes diagnosztikai adatok megtekintéséhez görgessen lefelé a **diagnosztikai** szakaszhoz:
 
-## <a name="act-on-a-device"></a>Az eszközön működésre
+[![Eszközdiagnosztika megtekintése](./media/iot-accelerators-remote-monitoring-manage/devicediagnostics-inline.png)](./media/iot-accelerators-remote-monitoring-manage/devicediagnostics-expanded.png#lightbox)
 
-Segítségével egy vagy több eszközön, az eszközök listájában jelölje ki őket, és válassza a **feladatok**. A **motor** eszközmodell eszköz támogatnia kell a három módszer megadása:
+## <a name="act-on-a-device"></a>Műveletek elvégzése egy eszközön
 
-![Motor módszerek](./media/iot-accelerators-remote-monitoring-manage/devicesmethods.png)
+Ha tesztelni szeretné, hogy a szimulált motoreszköz megfelelő választ ad-e a megoldásgyorsító által kezdeményezett műveletekre, futtassa a **FirmwareUpdate** metódust. Ha egy műveletet szeretne végrehajtani egy eszközön egy metódus futtatásával, válassza ki az eszközt az eszközök listájából, majd válassza a **Jobs** (Feladatok) lehetőséget. Ha több eszközön is szeretne műveleteket végezni, egyszerre több eszközt is kiválaszthat. A **feladatok** paneljén válassza a **Run method** (Metódus futtatása) lehetőséget. Az **Engine** (Motor) eszközmodell három metódust határoz meg: **FirmwareUpdate**, **FillTank** és **EmptyTank**:
 
-Válasszon **FillTank**, a feladat neve **FillEngineTank**, és válassza a **alkalmaz**:
+[![Motorokhoz kapcsolódó metódusok](./media/iot-accelerators-remote-monitoring-manage/devicesmethods-inline.png)](./media/iot-accelerators-remote-monitoring-manage/devicesmethods-expanded.png#lightbox)
 
-![A restart metódust ütemezése](./media/iot-accelerators-remote-monitoring-manage/devicesrestartengine.png)
+Válassza ki a **FirmwareUpdate** metódust, a feladat neveként adja meg az **UpdateEngineFirmware** nevet, a belső vezérlőprogram verziója legyen **2.0.0**, a belső vezérlőprogram URI-ja a **http://contoso.com/engine.bin**, majd kattintson az **Apply** (Alkalmaz) gombra:
 
-A feladat állapotának nyomon követheti a **karbantartási** lapon, válassza ki **feladatok**:
+[![A belső vezérlőprogram frissítési metódusának ütemezése](./media/iot-accelerators-remote-monitoring-manage/firmwareupdatejob-inline.png)](./media/iot-accelerators-remote-monitoring-manage/firmwareupdatejob-expanded.png#lightbox)
 
-![A figyelő az ütemezések feladat](./media/iot-accelerators-remote-monitoring-manage/maintenancerestart.png)
+A feladat állapotának nyomon követéséhez kattintson a **View job status** (Feladat állapotának megtekintése) elemre:
 
-### <a name="methods-in-other-devices"></a>Más eszközökön módszerek
+[![Ütemezett belsővezérlőprogram-frissítési feladat monitorozása](./media/iot-accelerators-remote-monitoring-manage/firmwareupdatestatus-inline.png)](./media/iot-accelerators-remote-monitoring-manage/firmwareupdatestatus-expanded.png#lightbox)
 
-Során a különböző szimulált eszköz típusa, láthatja, hogy más eszköztípusok esetében támogatja a különböző módszereket. A fizikai eszközök üzembe helyezése esetén az eszköz típusa határozza meg a módszerek támogatniuk kell az eszközt. Az eszköz fejlesztői általában a kódot, amely lehetővé teszi az eszköz működésének metódushívások válaszul fejlesztése felelős.
+Ha a feladat befejeződött, lépjen vissza az **eszközök** lapjára. Megjelenik a motoreszköz belső vezérlőprogramjának új verziója.
 
-Ütemezés módszerét több eszközön futtassa, jelölje ki a listában több eszközre a a **eszközök** lap. A **feladatok** panelen látható metódus típusú gyakori megoldás, hogy a kiválasztott eszközök.
+Ha az **eszközök** lapján több különböző típusú eszközt választ ki, létrehozhat egy feladatot, amellyel egy metódust az összes kiválasztott eszközön futtathat. A **feladatok** panelje a kiválasztott eszközöknek csak a közös metódusait jeleníti meg.
 
-## <a name="reconfigure-a-device"></a>Konfigurálja újra az eszköz
+## <a name="reconfigure-a-device"></a>Eszköz újrakonfigurálása
 
-Az eszköz a konfiguráció módosításához jelölje ki az eszközök listája a a **eszközök** lapon, majd kattintson a **feladatok**, és válassza a **konfigurálja újra a**. A feladatok panelen látható a kijelölt eszközt, amely módosíthatja a tulajdonságértékek:
+Ha tesztelni szeretné, hogy a motor konfigurációs tulajdonságai frissíthetők-e, válassza ki a motort az **eszközök** lapján található eszközlistából. Ezután kattintson a **Jobs** (Feladatok) gombra, majd válassza a **Reconfigure** (Újrakonfigurálás) lehetőséget. A feladatok paneljén a kiválasztott eszköz frissíthető tulajdonságértékei láthatók:
 
-![Konfigurálja újra az eszköz](./media/iot-accelerators-remote-monitoring-manage/devicesreconfigure.png)
+[![Eszköz újrakonfigurálása](./media/iot-accelerators-remote-monitoring-manage/devicesreconfigure-inline.png)](./media/iot-accelerators-remote-monitoring-manage/devicesreconfigure-expanded.png#lightbox)
 
-Olyan módosítást, vegye fel a feladatnak a nevét, a tulajdonságértékek frissítése, és válassza **alkalmaz**:
+A motor földrajzi helyének frissítéséhez adja meg az **UpdateEngineLocation** nevet, állítsa be a **-122,15** hosszúsági és a **47,62** szélességi fokot, a helyszín legyen **Factory 2**, végül kattintson az **Apply** (Alkalmaz) gombra:
 
-![Frissítés eszköz tulajdonság értéke](./media/iot-accelerators-remote-monitoring-manage/devicesreconfigurephysical.png)
+[![Eszköztulajdonság értékének frissítése](./media/iot-accelerators-remote-monitoring-manage/devicesreconfigurephysical-inline.png)](./media/iot-accelerators-remote-monitoring-manage/devicesreconfigurephysical-expanded.png#lightbox)
 
-A feladat állapotának nyomon követheti a **karbantartási** lapon, válassza ki **feladatok**.
+A feladat állapotának nyomon követéséhez kattintson a **View job status** (Feladat állapotának megtekintése) elemre:
+
+[![Eszköztulajdonság értékének frissítése](./media/iot-accelerators-remote-monitoring-manage/locationjobstatus-inline.png)](./media/iot-accelerators-remote-monitoring-manage/locationjobstatus-expanded.png#lightbox)
+
+Ha a feladat befejeződött, lépjen vissza az **irányítópultra**. A motoreszköz az új helyén jelenik meg a térképen:
+
+[![Motor földrajzi helyének megtekintése](./media/iot-accelerators-remote-monitoring-manage/enginelocation-inline.png)](./media/iot-accelerators-remote-monitoring-manage/enginelocation-expanded.png#lightbox)
+
+## <a name="organize-your-devices"></a>Eszközök rendszerezése
+
+Operátorként az eszközök rendszerezésének és kezelésének megkönnyítése érdekében érdemes őket ellátni a megfelelő csapatnevet tartalmazó címkével. A helyszíni szolgáltatási tevékenységek elvégzéséhez a Contoso két különböző csapatot állított fel:
+
+* A Smart Vehicle csapat a tehergépkocsikat és a prototípusokat felügyeli.
+* A Smart Building csapat a hűtőeszközökért, a liftekért és a motorokért felelős.
+
+Az összes eszköz megjelenítéséhez lépjen az **eszközök** lapjára, és válassza az **All devices** (Minden eszköz) szűrőt:
+
+[![Minden eszköz megjelenítése](./media/iot-accelerators-remote-monitoring-manage/devicesalldevices-inline.png)](./media/iot-accelerators-remote-monitoring-manage/devicesalldevices-expanded.png#lightbox)
+
+### <a name="add-tags"></a>Címkék hozzáadása
+
+Válassza ki az összes **Trucks** (Tehergépkocsi) és **Prototyping** (Prototípus) eszközt. Ezután kattintson a **Jobs** (Feladatok) gombra:
+
+[![Prototípus- és teherautó-eszközök kiválasztása](./media/iot-accelerators-remote-monitoring-manage/devicesmultiselect-inline.png)](./media/iot-accelerators-remote-monitoring-manage/devicesmultiselect-expanded.png#lightbox)
+
+Válassza a **Tag** (Címke) lehetőséget, adja meg az **AddConnectedVehicleTag** nevet, majd adja hozzá a **FieldService** nevű szöveges címkét, amelynek értéke legyen **ConnectedVehicle**. Ezután kattintson az **Apply** (Alkalmaz) gombra:
+
+[![Címke hozzáadása a prototípus- és teherautó-eszközökhöz](./media/iot-accelerators-remote-monitoring-manage/devicesaddtag-inline.png)](./media/iot-accelerators-remote-monitoring-manage/devicesaddtag-expanded.png#lightbox)
+
+Az eszköz lapon válassza ki az összes **Chiller** (Hűtőeszköz), **Elevator** (Lift) és **Engine** (Motor) eszközt. Ezután kattintson a **Jobs** (Feladatok) gombra:
+
+[![Hűtőeszközök, liftek és motorok kiválasztása](./media/iot-accelerators-remote-monitoring-manage/devicesmultiselect2-inline.png)](./media/iot-accelerators-remote-monitoring-manage/devicesmultiselect2-expanded.png#lightbox)
+
+Válassza a **Tag** (Címke) lehetőséget, adja meg az **AddSmartBuildingTag** nevet, majd adja hozzá a **FieldService** nevű szöveges címkét, amelynek értéke legyen **SmartBuilding**. Ezután kattintson az **Apply** (Alkalmaz) gombra:
+
+[![Címke hozzáadása a hűtőeszközökhöz, liftekhez és motorokhoz](./media/iot-accelerators-remote-monitoring-manage/devicesaddtag2-inline.png)](./media/iot-accelerators-remote-monitoring-manage/devicesaddtag2-expanded.png#lightbox)
+
+### <a name="create-filters"></a>Szűrők létrehozása
+
+A címkeértékek alapján létrehozhatja a szűrőket. Az **eszközök** lapján kattintson a **Manage device groups** (Eszközcsoportok kezelése) gombra:
+
+[![Eszközcsoportok kezelése](./media/iot-accelerators-remote-monitoring-manage/devicesmanagefilters-inline.png)](./media/iot-accelerators-remote-monitoring-manage/devicesmanagefilters-expanded.png#lightbox)
+
+Hozzon létre egy szöveges szűrőt, amely a **FieldService** címkenevet és a **SmartBuilding** értéket használja feltételként. Mentse a szűrőt **Smart Building** néven:
+
+[![A Smart Building szűrő létrehozása](./media/iot-accelerators-remote-monitoring-manage/smartbuildingfilter-inline.png)](./media/iot-accelerators-remote-monitoring-manage/smartbuildingfilter-expanded.png#lightbox)
+
+Hozzon létre egy szöveges szűrőt, amely a **FieldService** címkenevet és a **ConnectedVehicle** értéket használja feltételként. Mentse a szűrőt **Connected Vehicle** néven.
+
+[![A Connected Vehicle szűrő létrehozása](./media/iot-accelerators-remote-monitoring-manage/connectedvehiclefilter-inline.png)](./media/iot-accelerators-remote-monitoring-manage/connectedvehiclefilter-expanded.png#lightbox)
+
+A Contoso operátora mostantól lekérdezheti az eszközöket az üzemeltetési csapat alapján:
+
+[![A Connected Vehicle szűrő létrehozása](./media/iot-accelerators-remote-monitoring-manage/filterinaction-inline.png)](./media/iot-accelerators-remote-monitoring-manage/filterinaction-expanded.png#lightbox)
+
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+
+Ha tovább kíván lépni a következő oktatóanyagra, ne kapcsolja ki a távoli monitorozási megoldásgyorsítót. Ha csökkenteni szeretné a megoldásgyorsító futtatásának költségeit, amíg nem használja, állítsa le a szimulált eszközöket a beállítások panelen:
+
+[![Telemetria szüneteltetése](./media/iot-accelerators-remote-monitoring-manage/togglesimulation-inline.png)](./media/iot-accelerators-remote-monitoring-manage/togglesimulation-expanded.png#lightbox)
+
+Ha készen áll a következő oktatóanyag megkezdésére, újraindíthatja a szimulált eszközöket.
+
+Ha már nincs szüksége a megoldásgyorsítóra, törölje a [Kiépített megoldások](https://www.azureiotsolutions.com/Accelerators#dashboard) lapról:
+
+![Megoldás törlése](media/iot-accelerators-remote-monitoring-manage/deletesolution.png)
 
 ## <a name="next-steps"></a>További lépések
 
-Ez az oktatóanyag bemutatta, hogyan számára:
+Ebben az oktatóanyagban megtanulta, hogyan konfigurálhatja és kezelheti a távoli monitorozási megoldásgyorsítóhoz csatlakoztatott eszközöket. A következő oktatóanyagból azt tudhatja meg, hogyan használhatja a megoldásgyorsítót a csatlakoztatott eszközök problémáinak azonosítására és javítására.
 
-<!-- Repeat task list from intro -->
->[!div class="checklist"]
-> * A szimulált eszköz kiépítése.
-> * A szimulált eszköz tesztelése.
-> * Eszköz metódushívások a megoldásból.
-> * Konfigurálja újra az eszköz.
-
-Most, hogy rendelkezik megismerte az eszközök kezeléséhez, a javasolt lépések megtudhatja, hogyan:
-
-* [Hibaelhárítás és szervizelheti azokat a eszközökkel kapcsolatos problémákat](iot-accelerators-remote-monitoring-maintain.md).
-* [A megoldás tesztelése szimulált eszközökkel](iot-accelerators-remote-monitoring-test.md).
-* [Csatlakoztassa az eszközt a távoli megfigyelési megoldásgyorsító](iot-accelerators-connecting-devices-node.md).
-
-<!-- Next tutorials in the sequence -->
+> [!div class="nextstepaction"]
+> [Eszközriasztások használata a monitorozási megoldáshoz csatlakoztatott eszközök problémáinak azonosítására és javítására](iot-accelerators-remote-monitoring-maintain.md)

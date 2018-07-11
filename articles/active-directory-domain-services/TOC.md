@@ -54,6 +54,7 @@
 #### [Hiányzó szolgáltatásnevek visszaállítása](active-directory-ds-troubleshoot-service-principals.md)
 #### [A biztonságos LDAP hibái](active-directory-ds-troubleshoot-ldaps.md)
 ### [Eltérő bérlők hibáinak megoldása](active-directory-ds-mismatched-tenant-error.md)
+### [Felfüggesztett tartományok](active-directory-ds-suspension.md)
 
 
 # Referencia

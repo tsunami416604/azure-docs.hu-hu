@@ -59,16 +59,20 @@
           href: luis-quickstart-intent-and-list-entity.md
         - name: 5. Hierarchikus entitás hozzáadása
           href: luis-quickstart-intent-and-hier-entity.md
-        - name: 6. Egyszerű entitás és kifejezéslista hozzáadása
+        - name: 6. Összetett entitás hozzáadása
+          href: luis-tutorial-composite-entity.md
+        - name: 7. Egyszerű entitás és kifejezéslista hozzáadása
           href: luis-quickstart-primary-and-secondary-data.md
-        - name: 7. keyPhrase entitás hozzáadása
+        - name: 8. keyPhrase entitás hozzáadása
           href: luis-quickstart-intent-and-key-phrase.md
-        - name: 8. Hangulatelemzés hozzáadása
+        - name: 9. Hangulatelemzés hozzáadása
           href: luis-quickstart-intent-and-sentiment-analysis.md
     - name: Az alkalmazás továbbfejlesztése
       items:
         - name: A végpont beszédmódjainak áttekintése
           href: luis-tutorial-review-endpoint-utterances.md
+        - name: Kötegteszttel
+          href: luis-tutorial-batch-testing.md
         - name: Mintákkal
           href: luis-tutorial-pattern.md
 - name: Példák
@@ -138,7 +142,7 @@
     - name: Az alkalmazás megtervezése
       href: luis-how-plan-your-app.md
     - name: Új alkalmazás indítása
-      href: Create-new-app.md
+      href: luis-how-to-start-new-app.md
     - name: Modellépítés
       items:
         - name: Leképezések hozzáadása
@@ -147,15 +151,15 @@
           href: luis-how-to-add-example-utterances.md
         - name: Entitások hozzáadása
           href: luis-how-to-add-entities.md
-        - name: Csoportosított adatok kinyerése összetett entitás segítségével
-          href: luis-tutorial-composite-entity.md
-        - name: Pontos szöveg egyeztetése listaentitással a Node.js használatával
-          href: luis-tutorial-list-entity.md
-        - name: Alkalmazás létrehozása programozott módon a Node.js használatával
-          href: luis-tutorial-node-import-utterances-csv.md
+        - name: API-kkal
+          items:
+            - name: Alkalmazás létrehozása programozott módon a Node.js használatával
+              href: luis-tutorial-node-import-utterances-csv.md
+            - name: Pontos szöveg egyeztetése listaentitással a Node.js használatával
+              href: luis-tutorial-list-entity.md
     - name: Integrálás
       items:
-        - name: Gépelési hibák javítása a Bing Spell Check API 7-es verziójával
+        - name: A Bing Spell Check API 7-es verziójával
           href: luis-tutorial-bing-spellcheck.md
         - name: Beszédszolgáltatással
           href: luis-tutorial-speech-to-intent.md
@@ -176,7 +180,7 @@
     - name: Előrejelzés pontosságának javítása
       items:
         - name: A végpont beszédmódjainak áttekintése
-          href: Label-Suggested-Utterances.md
+          href: luis-how-to-review-endoint-utt.md
         - name: Kifejezéslista hozzáadása
           href: luis-how-to-add-features.md
         - name: Minták hozzáadása
@@ -189,36 +193,36 @@
           href: interactive-test.md
         - name: Kötegelt tesztelés
           href: luis-how-to-batch-test.md
-        - name: Pontosság javítása kötegelt teszteléssel
-          href: luis-tutorial-batch-testing.md
-    - name: Az alkalmazás közzététele
+    - name: Alkalmazás közzététele
       href: luis-how-to-publish-app.md
     - name: Előre összeállított modellek használata
       items:
-        - name: Előre összeállított entitások használata
+        - name: Entitások használata
           href: luis-prebuilt-entities.md
-        - name: Előre összeállított tartományok használata
+        - name: Tartományok használata
           href: luis-how-to-use-prebuilt-domains.md
-        - name: Az előre összeállított Cortana-alkalmazás használata
+        - name: Cortana használata
           href: luis-how-to-cortana-prebuilt-app.md
-    - name: A LUIS-alkalmazás felügyelete
+    - name: Alkalmazás kezelése
       items:
         - name: Az irányítópult használata
           href: luis-how-to-use-dashboard.md
-        - name: Kulcsok létrehozása
+        - name: Végponti kulcsok létrehozása
           href: luis-how-to-azure-subscription.md
-        - name: Kulcsok hozzáadása a LUIS szolgáltatásban
+        - name: Végponti kulcsok hozzáadása az alkalmazáshoz
           href: luis-how-to-manage-keys.md
-        - name: Végponthasználat megtekintése a PowerShell-lel
-          href: luis-how-to-manage-from-cloud-shell.md
         - name: Verziók kezelése
           href: luis-how-to-manage-versions.md
         - name: Együttműködés más szerzőkkel
           href: luis-how-to-collaborate.md
-        - name: Végpontkvóta elosztása a kulcsok között a Traffic Managerrel
-          href: traffic-manager.md
-    - name: A LUIS-fiók kezelése
-      href: luis-how-to-account-settings.md
+        - name: Szerzői kulcs kezelése
+          href: luis-how-to-account-settings.md
+        - name: Végponthasználat kezelése
+          items:
+            - name: Végponthasználat megtekintése a PowerShell-lel
+              href: luis-how-to-manage-from-cloud-shell.md
+            - name: Végpontkvóta elosztása a kulcsok között a Traffic Managerrel
+              href: traffic-manager.md
     - name: Áttérés az API 2-es verziójára
       href: migration-v1-to-v2.md
     - name: Régió megkeresése programozott módon
@@ -251,6 +255,8 @@
           href: luis-reference-prebuilt-deprecated.md
         - name: E-mail entitás
           href: luis-reference-prebuilt-email.md
+        - name: keyPhrase entitás
+          href: luis-reference-prebuilt-keyphrase.md
         - name: Szám entitás
           href: luis-reference-prebuilt-number.md
         - name: Sorszám entitás

@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: ad2895a457a20632823260f2429ac95fad82089c
-ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
+ms.openlocfilehash: 0790f504c978b4302812cffc9b655e817c156da3
+ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37060195"
+ms.lasthandoff: 06/28/2018
+ms.locfileid: "37081387"
 ---
 # <a name="tutorial-deploy-azure-stream-analytics-as-an-iot-edge-module---preview"></a>Oktatóanyag: Az Azure Stream Analytics üzembe helyezése IoT Edge-modulként – előzetes verzió
 
@@ -45,7 +45,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 Ebben a szakaszban egy Azure Stream Analytics-feladatot hozunk létre az IoT-központról érkező adatok fogadására, az eszközről küldött telemetriaadatok lekérdezésére, majd az eredmények továbbítására egy Azure Blob Storage-tárolóba. További információkat a [Stream Analytics dokumentációjának][azure-stream] „Áttekintés” szakaszában talál. 
 
-### <a name="create-a-storage-account"></a>Create a storage account
+### <a name="create-a-storage-account"></a>Tárfiók létrehozása
 
 Az Azure Stream Analytics-feladatokhoz szükség van egy Azure Storage-fiókra, amely a feladat kimenetének végpontjaként szolgál. Az ebben a szakaszban szereplő példa egy blob típusú tárolót használ. További információt [az Azure Storage dokumentációjának][azure-storage] „Blobok” szakaszában talál.
 
@@ -53,7 +53,7 @@ Az Azure Stream Analytics-feladatokhoz szükség van egy Azure Storage-fiókra, 
 
 2. A **Tárfiók létrehozása** panelen adja meg a tárfiók nevét, válassza ki ugyanazt a helyet, ahol az IoT-központot tárolja, válassza ugyanazt az erőforráscsoportot, amelyet az IoT-központhoz is, majd kattintson a **Létrehozás** gombra. Jegyezze fel a nevet későbbi felhasználásra.
 
-    ![Create a storage account][1]
+    ![Tárfiók létrehozása][1]
 
 
 ### <a name="create-a-stream-analytics-job"></a>Stream Analytics-feladat létrehozása
@@ -128,7 +128,7 @@ Most készen áll az Azure Stream Analytics-feladat IoT Edge-eszközön való ü
    Ha korábban már üzembe helyezte a tempSensor modult ezen az eszközön, előfordulhat, hogy az automatikusan megjelenik a mezőben. Amennyiben nem, vegye fel a modult a következő lépésekkel:
 
    1. Kattintson a **Hozzáadás** gombra, és válassza az **IoT Edge-modul** lehetőséget.
-   2. A névnél adja meg a **tempsensor** nevet.
+   2. A névnél adja meg a **tempSensor** nevet.
    3. A kép URI-címénél adja meg az **mcr.microsoft.com/azureiotedge-simulated-temperature-sensor:1.0** címet. 
    4. A többi beállítást ne módosítsa.
    5. Kattintson a **Mentés** gombra.
@@ -207,7 +207,7 @@ az iot hub delete --name MyIoTHub --resource-group TestResources
 
 A teljes erőforráscsoport név alapján való törléséhez:
 
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com), és kattintson az **Erőforráscsoportok** elemre.
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com), és kattintson az **Erőforráscsoportok** elemre.
 
 2. A **Szűrés név alapján...** mezőbe írja be az IoT Hubot tartalmazó erőforráscsoport nevét. 
 

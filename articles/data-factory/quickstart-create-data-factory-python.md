@@ -13,12 +13,12 @@ ms.devlang: python
 ms.topic: hero-article
 ms.date: 01/22/2018
 ms.author: shlo
-ms.openlocfilehash: 844527fcfdcc2e0db22a322cafd81d07e5bd35e7
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: 7d348bf2372ff3bc48590b6c5e97e8eee8a4136b
+ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37048111"
+ms.lasthandoff: 06/28/2018
+ms.locfileid: "37084943"
 ---
 # <a name="create-a-data-factory-and-pipeline-using-python"></a>Adat-előállító és folyamat létrehozása a Python használatával
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -106,7 +106,7 @@ Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány
             print("\tErrors: {}".format(activity_run.error['message']))
 
     ```
-3. Adja hozzá a következő kódot a **Main** metódushoz, amely létrehoz egy DataPipelineManagementClient osztályú példányt. Ezzel az objektummal adat-előállítót, társított szolgáltatást, adatkészleteket és folyamatot hozhat létre. Ezenfelül ez az objektum a folyamat futása részleteinek monitorozására is használható. Állítsa be a **subscription_id** változót az Azure-előfizetés azonosítójaként. A Data Factory 2-es verziója jelenleg csak az USA keleti régiójában, az USA 2. keleti régiójában és a nyugat-európai régióban teszi lehetővé adat-előállítók létrehozását. Az adat-előállítók által használt adattárak (Azure Storage, Azure SQL Database stb.) és számítási erőforrások (HDInsight stb.) más régiókban is lehetnek.
+3. Adja hozzá a következő kódot a **Main** metódushoz, amely létrehoz egy DataPipelineManagementClient osztályú példányt. Ezzel az objektummal adat-előállítót, társított szolgáltatást, adatkészleteket és folyamatot hozhat létre. Ezenfelül ez az objektum a folyamat futása részleteinek monitorozására is használható. Állítsa be a **subscription_id** változót az Azure-előfizetés azonosítójaként. Azon Azure-régiók megtekintéséhez, amelyekben jelenleg elérhető a Data Factory, a következő lapon válassza ki az Önt érdeklő régiókat, majd bontsa ki az **Elemzés** részt, és keresse meg a **Data Factory**: [Elérhető termékek régiók szerint](https://azure.microsoft.com/global-infrastructure/services/) szakaszt. Az adat-előállítók által használt adattárak (Azure Storage, Azure SQL Database stb.) és számítási erőforrások (HDInsight stb.) más régiókban is lehetnek.
 
     ```python   
     def main():

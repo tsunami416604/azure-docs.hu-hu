@@ -17,12 +17,12 @@ ms.workload: big-data
 ms.date: 04/26/2018
 ms.author: larryfr
 ms.custom: H1Hack27Feb2017,hdinsightactive,hdiseo17may2017
-ms.openlocfilehash: a76dbb9a232d99615629d1a3fec6010b37e73247
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: 2750ddaba4b3fe25e18b6d3b7e9a65656165818f
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37046778"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37446605"
 ---
 # <a name="connect-to-hdinsight-hadoop-using-ssh"></a>Csatlakozás a HDInsighthoz (Hadoop) SSH-val
 
@@ -137,7 +137,19 @@ Az SSH-felhasználói fiók jelszavának módosításával kapcsolatos informác
 
 ## <a id="domainjoined"></a>Hitelesítés: Tartományhoz csatlakoztatott HDInsight
 
-Ha __tartományhoz csatlakoztatott HDInsight-fürtöt__ használ, a `kinit` parancsot kell használnia az SSH-hoz való kapcsolódás után. Ez a parancs tartományi felhasználónevet és jelszót kér, és hitelesíti a munkamenetet a fürttel társított Azure Active Directory-tartománnyal.
+Ha __tartományhoz csatlakoztatott HDInsight-fürtöt__ használ, a `kinit` parancsot kell használnia a helyi SSH-felhasználóval való csatlakozás után. Ez a parancs tartományi felhasználónevet és jelszót kér, és hitelesíti a munkamenetet a fürttel társított Azure Active Directory-tartománnyal.
+
+Emellett engedélyezheti a Kerberos-hitelesítést minden egyes tartományhoz csatlakoztatott csomóponton (pl. átjárócsomóponton, határcsomóponton) annak érdekében, hogy ssh-kapcsolat jöjjön létre a tartományi fiók használatával. Ehhez szerkessze az sshd config fájlt:
+```bash
+sudo vi /etc/ssh/sshd_config
+```
+távolítsa el a megjegyzéseket, a `KerberosAuthentication` értékét pedig állítsa a következőre: `yes`
+
+```bash
+sudo service sshd restart
+```
+
+Ha bármikor ellenőrizni szeretné, hogy a Kerberos-hitelesítés sikeres volt-e, használja a `klist` parancsot.
 
 További információkat itt talál: [Tartományhoz csatlakoztatott HDInsight konfigurálása](./domain-joined/apache-domain-joined-configure.md).
 

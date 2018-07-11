@@ -2,18 +2,19 @@
 title: Rövid útmutató – Azure Kubernetes-fürt Linux esetén
 description: Ebből a rövid útmutatóból megtudhatja, hogyan hozhat létre az Azure CLI segítségével Kubernetes-fürtöt Linux-tárolók esetén az AKS-ben.
 services: container-service
-author: neilpeterson
+author: iainfoulds
 manager: jeconnoc
 ms.service: container-service
 ms.topic: quickstart
-ms.date: 03/14/2018
-ms.author: nepeters
+ms.date: 06/13/2018
+ms.author: iainfou
 ms.custom: H1Hack27Feb2017, mvc, devcenter
-ms.openlocfilehash: 3bcdd4ba935b0fe9fe891503999c907aa1667abd
-ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
+ms.openlocfilehash: 0105b9e59a2ae872c53f9522f93f2ffca7c1bd7a
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/11/2018
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37127838"
 ---
 # <a name="quickstart-deploy-an-azure-kubernetes-service-aks-cluster"></a>Rövid útmutató: Azure Kubernetes Service- (AKS-) fürt üzembe helyezése
 
@@ -27,23 +28,11 @@ Ez a rövid útmutató feltételezi, hogy ismeri a Kubernetes alapvető fogalmai
 
 Ha a parancssori felület helyi telepítését és használatát választja, akkor ehhez a rövid útmutatóhoz az Azure CLI 2.0.27-es vagy újabb verziójára lesz szükség. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése][azure-cli-install].
 
-## <a name="enabling-aks-preview"></a>Az AKS előzetes verziójának engedélyezése
-
-Gondoskodjon róla, hogy a szükséges Azure szolgáltatók engedélyezve legyenek az `az provider register` parancs segítségével.
-
-```azurecli-interactive
-az provider register -n Microsoft.Network
-az provider register -n Microsoft.Storage
-az provider register -n Microsoft.Compute
-az provider register -n Microsoft.ContainerService
-```
-
-A regisztrálás után készen áll egy Kubernetes-fürt létrehozására az AKS-sel.
-
 ## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
 
 Hozzon létre egy erőforráscsoportot az [az group create][az-group-create] paranccsal. Az Azure-erőforráscsoport olyan logikai csoport, amelyben az Azure-erőforrások üzembe helyezése és kezelése zajlik.
-Az erőforráscsoportok létrehozásakor meg kell adnia egy helyet, ahol az erőforrások megtalálhatók lesznek az Azure-ban. Amíg az AKS előzetes verzióként érhető el, csak bizonyos helybeállítások érhetők el. Ezek a következők: `eastus, westeurope, centralus, canadacentral, canadaeast`.
+
+Az erőforráscsoportok létrehozásakor meg kell adnia egy helyet, ahol az erőforrások megtalálhatók lesznek az Azure-ban.
 
 A következő példában létrehozunk egy *myResourceGroup* nevű erőforráscsoportot az *eastus* helyen.
 
@@ -68,7 +57,7 @@ Kimenet:
 
 ## <a name="create-aks-cluster"></a>AKS-fürt létrehozása
 
-Használja az [az aks create][az-aks-create] parancsot egy AKS-fürt létrehozásához. A következő példa egy *myAKSCluster* nevű fürtöt hoz létre egy csomóponttal.
+Használja az [az aks create][az-aks-create] parancsot egy AKS-fürt létrehozásához. A következő példa egy *myAKSCluster* nevű fürtöt hoz létre egy csomóponttal. AKS-fürt telepítésekor a tároló állapotmonitorozó megoldása is engedélyezhető. A tároló állapotmonitorozási megoldásának engedélyezéséről az [Azure Kubernetes Service állapotmonitorozásáról][aks-monitor] szóló témakörben talál további információt.
 
 ```azurecli-interactive
 az aks create --resource-group myResourceGroup --name myAKSCluster --node-count 1 --generate-ssh-keys
@@ -248,6 +237,8 @@ Az AKS-sel kapcsolatos további információkért és a kódtól az üzembe hely
 [kubernetes-service]: https://kubernetes.io/docs/concepts/services-networking/service/
 
 <!-- LINKS - internal -->
+[aks-monitor]: ../monitoring/monitoring-container-health.md
+[aks-tutorial]: ./tutorial-kubernetes-prepare-app.md
 [az-aks-browse]: /cli/azure/aks?view=azure-cli-latest#az_aks_browse
 [az-aks-create]: /cli/azure/aks?view=azure-cli-latest#az_aks_create
 [az-aks-get-credentials]: /cli/azure/aks?view=azure-cli-latest#az_aks_get_credentials
@@ -255,5 +246,4 @@ Az AKS-sel kapcsolatos további információkért és a kódtól az üzembe hely
 [az-group-create]: /cli/azure/group#az_group_create
 [az-group-delete]: /cli/azure/group#az_group_delete
 [azure-cli-install]: /cli/azure/install-azure-cli
-[aks-tutorial]: ./tutorial-kubernetes-prepare-app.md
 

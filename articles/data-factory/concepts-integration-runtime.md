@@ -13,17 +13,17 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 06/14/2018
 ms.author: jingwang
-ms.openlocfilehash: cd2964d0a579b903ddebfd19c90d2ce38d2374bc
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: 1e44c6eb4294cfb0e150d6dd1c20b9f4805ca84c
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37050420"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37112952"
 ---
 # <a name="integration-runtime-in-azure-data-factory"></a>Integrációs modul az Azure Data Factoryban
 Az integrációs modul (Integration Runtime, IR), az Azure Data Factory által használt számítási infrastruktúra a következő adatintegrációs képességeket biztosítja különböző hálózati környezetekben:
 
-- **Adatok áthelyezése**: Mozgathat adatokat a nyilvános hálózatok adattárai és a magánhálózatok (helyszíni vagy virtuális magánhálózatok) adattárai között. Támogatást biztosít a beépített összekötőkhöz, a formátum átalakításához, az oszlopleképezéshez és a nagy teljesítményű, méretezhető adatátvitelhez.
+- **Adatok áthelyezése**: Áthelyezhet adatokat a nyilvános hálózatok adattárai és a magánhálózatok (helyszíni vagy virtuális magánhálózatok) adattárai között. Támogatást biztosít a beépített összekötőkhöz, a formátum átalakításához, az oszlopleképezéshez és a nagy teljesítményű, méretezhető adatátvitelhez.
 - **Tevékenység küldése**: Elküldheti és monitorozhatja a különböző számítási szolgáltatásokon (HDInsight, Azure Machine Learning, Azure SQL Database, SQL Server és még sok más) futó átalakítási tevékenységeket.
 - **SSIS-csomag végrehajtása**: Natívan végrehajthat SQL Server Integration Services- (SSIS-) csomagokat egy Azure-beli felügyelt számítási környezetben.
 

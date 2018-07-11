@@ -84,8 +84,6 @@
           href: sql-database-service-tiers-dtu.md
         - name: Erőforráskorlátok
           href: sql-database-resource-limits.md
-    - name: Magas rendelkezésre állás
-      href: sql-database-high-availability.md
     - name: Logikai kiszolgálók és önálló adatbázisok
       items:
         - name: Logikai kiszolgálók és önálló adatbázisok
@@ -128,8 +126,46 @@
           href: sql-database-managed-instance-connect-app.md
         - name: A T-SQL eltérései
           href: sql-database-managed-instance-transact-sql-information.md
-    - name: Az SQL Server általános funkciói
-      href: sql-database-features.md
+    - name: Az üzletmenet folytonossága
+      items:
+        - name: Az üzletmenet folytonossága
+          href: sql-database-business-continuity.md
+        - name: Magas rendelkezésre állás
+          href: sql-database-high-availability.md
+        - name: Adatbázisok biztonsági mentése
+          href: sql-database-automated-backups.md
+        - name: Biztonsági mentés hosszú távú megőrzése
+          itmes:
+            - name: Biztonsági mentés hosszú távú megőrzése
+              href: sql-database-long-term-retention.md
+            - name: A biztonsági másolatok hosszú távú megőrzésének konfigurálása – SQL-tároló
+              href: sql-database-long-term-backup-retention-configure.md
+            - name: A biztonsági másolatok hosszú távú megőrzésének konfigurálása – Azure-tároló (elavult)
+              href: sql-database-long-term-backup-retention-configure-vault.md
+        - name: Feladatátvételi csoportok és georeplikáció
+          items:
+            - name: Feladatátvételi csoportok és georeplikáció
+              href: sql-database-geo-replication-overview.md
+            - name: Georeplikáció konfigurálása – Portál
+              href: sql-database-geo-replication-portal.md
+            - name: Replikák biztonságának konfigurálása
+              href: sql-database-geo-replication-security-config.md
+        - name: Adatbázis-helyreállítás
+          items:
+            - name: Adatbázis-helyreállítás
+              href: sql-database-recovery-using-backups.md
+            - name: Helyreállítás üzemkimaradás után
+              href: sql-database-disaster-recovery.md
+            - name: Helyreállítási gyakorlat végrehajtása
+              href: sql-database-disaster-recovery-drills.md
+        - name: Alkalmazástervezés
+          items:
+            - name: Tervezés vészhelyreállításra
+              href: sql-database-designing-cloud-solutions-for-disaster-recovery.md
+            - name: Tervezés rugalmas készletekhez
+              href: sql-database-disaster-recovery-strategies-for-applications-with-elastic-pool.md
+            - name: Tervezés alkalmazásfrissítésekhez
+              href: sql-database-manage-application-rolling-upgrade.md
     - name: Biztonság
       items:
         - name: Biztonság
@@ -192,76 +228,56 @@
               href: sql-database-always-encrypted.md
             - name: Az Azure Key Vault használata
               href: sql-database-always-encrypted-azure-key-vault.md
-    - name: Az üzletmenet folytonossága
+    - name: Rugalmas méretezhetőség
       items:
-        - name: Az üzletmenet folytonossága
-          href: sql-database-business-continuity.md
-        - name: Adatbázisok biztonsági mentése
-          href: sql-database-automated-backups.md
-        - name: Biztonsági mentés hosszú távú megőrzése
-          itmes:
-            - name: Biztonsági mentés hosszú távú megőrzése
-              href: sql-database-long-term-retention.md
-            - name: A biztonsági másolatok hosszú távú megőrzésének konfigurálása – SQL-tároló
-              href: sql-database-long-term-backup-retention-configure.md
-            - name: A biztonsági másolatok hosszú távú megőrzésének konfigurálása – Azure-tároló (elavult)
-              href: sql-database-long-term-backup-retention-configure-vault.md
-        - name: Feladatátvételi csoportok és georeplikáció
+        - name: Erőforrások méretezhetősége
+          href: sql-database-scale-resources.md
+        - name: Felskálázás olvasása
+          href: sql-database-read-scale-out.md
+        - name: Adatbázis horizontális skálázása
           items:
-            - name: Feladatátvételi csoportok és georeplikáció
-              href: sql-database-geo-replication-overview.md
-            - name: Georeplikáció konfigurálása – Portál
-              href: sql-database-geo-replication-portal.md
-            - name: Replikák biztonságának konfigurálása
-              href: sql-database-geo-replication-security-config.md
-        - name: Adatbázis-helyreállítás
-          items:
-            - name: Adatbázis-helyreállítás
-              href: sql-database-recovery-using-backups.md
-            - name: Helyreállítás üzemkimaradás után
-              href: sql-database-disaster-recovery.md
-            - name: Helyreállítási gyakorlat végrehajtása
-              href: sql-database-disaster-recovery-drills.md
-        - name: Alkalmazástervezés
-          items:
-            - name: Tervezés vészhelyreállításra
-              href: sql-database-designing-cloud-solutions-for-disaster-recovery.md
-            - name: Tervezés rugalmas készletekhez
-              href: sql-database-disaster-recovery-strategies-for-applications-with-elastic-pool.md
-            - name: Tervezés alkalmazásfrissítésekhez
-              href: sql-database-manage-application-rolling-upgrade.md
-    - name: Migrálás az SQL Database-be
-      items:
-        - name: Migrálás az SQL Database-be
-          href: sql-database-cloud-migrate.md
-        - name: Migrálás felügyelt példányra
-          href: sql-database-managed-instance-migrate.md
-        - name: SQL Database kezelése a migrálás után
-          href: sql-database-manage-after-migration.md
-    - name: Adatok betöltése és áthelyezése
-      items:
-        - name: Adatbázis másolása az Azure-on belül
-          href: sql-database-copy.md
-        - name: Adatbázis importálása BACPAC-ból
-          href: sql-database-import.md
-        - name: Adatbázis exportálása BACPAC-ba
-          href: sql-database-export.md
-        - name: Adatszinkronizálás
-          items:
-            - name: SQL-adatszinkronizálás
-              href: sql-database-sync-data.md
-            - name: Sémaváltozások replikálása
-              href: sql-database-update-sync-schema.md
-            - name: Monitorozás az OMS-szel
-              href: sql-database-sync-monitor-oms.md
-            - name: Ajánlott eljárások az adatszinkronizáláshoz
-              href: sql-database-best-practices-data-sync.md
-            - name: Az adatszinkronizálás hibaelhárítása
-              href: sql-database-troubleshoot-data-sync.md
-        - name: Adatok betöltése a BCP használatával
-          href: sql-database-load-from-csv-with-bcp.md
-        - name: Adatok betöltése az ADF használatával
-          href: ../data-factory/connector-azure-sql-database.md?toc=/azure/sql-database/toc.json
+            - name: Adatbázis horizontális skálázása
+              href: sql-database-elastic-scale-introduction.md
+            - name: Rugalmas ügyfélkönyvtár – konszolidálás
+              href: sql-database-elastic-database-client-library.md
+            - name: Rugalmas adatbázis ügyfélkönyvtárának frissítése
+              href: sql-database-elastic-scale-upgrade-client-library.md
+            - name: Szilánkleképezések
+              href: sql-database-elastic-scale-shard-map-management.md
+            - name: Lekérdezési útválasztás
+              href: sql-database-elastic-scale-data-dependent-routing.md
+            - name: Hitelesítő adatok kezelése
+              href: sql-database-elastic-scale-manage-credentials.md
+            - name: Szilánkos lekérdezés
+              href: sql-database-elastic-scale-multishard-querying.md
+            - name: Rugalmas eszközök
+              href: sql-database-elastic-scale-glossary.md
+            - name: Szilánkokra osztott adatok áthelyezése
+              href: sql-database-elastic-scale-overview-split-and-merge.md
+            - name: Rugalmas ügyfélkönyvtár – Dapper
+              href: sql-database-elastic-scale-working-with-dapper.md
+            - name: Rugalmas eszközök – gyakori kérdések
+              href: sql-database-elastic-scale-faq.md
+            - name: Szilánkokra osztott alkalmazás létrehozása
+              href: sql-database-elastic-scale-get-started.md
+            - name: Horizontálisan skálázott adatok lekérdezése
+              href: sql-database-elastic-query-getting-started.md
+            - name: Szilánkokra osztott adatok áthelyezése
+              href: sql-database-elastic-scale-configure-deploy-split-and-merge.md
+            - name: Biztonsági konfiguráció
+              href: sql-database-elastic-scale-split-merge-security-configuration.md
+            - name: Szilánk hozzáadása
+              href: sql-database-elastic-scale-add-a-shard.md
+            - name: Szilánkleképezési problémák javítása
+              href: sql-database-elastic-database-recovery-manager.md
+            - name: Szilánkokra osztott adatbázis migrálása
+              href: sql-database-elastic-convert-to-use-elastic-tools.md
+            - name: Számlálók létrehozása
+              href: sql-database-elastic-database-perf-counters.md
+            - name: Az Entity Framework használata
+              href: sql-database-elastic-scale-use-entity-framework-applications-visual-studio.md
+    - name: SQL-funkciók összehasonlítása
+      href: sql-database-features.md
     - name: Figyelés és hangolás
       items:
         - name: Figyelés és hangolás
@@ -318,52 +334,6 @@
           href: sql-database-troubleshoot-common-connection-issues.md
         - name: Azure Automation
           href: sql-database-manage-automation.md
-    - name: Horizontális felskálázás
-      items:
-        - name: Felskálázás olvasása
-          href: sql-database-read-scale-out.md
-        - name: Adatbázis horizontális skálázása
-          items:
-            - name: Adatbázis horizontális skálázása
-              href: sql-database-elastic-scale-introduction.md
-            - name: Rugalmas ügyfélkönyvtár – konszolidálás
-              href: sql-database-elastic-database-client-library.md
-            - name: Rugalmas adatbázis ügyfélkönyvtárának frissítése
-              href: sql-database-elastic-scale-upgrade-client-library.md
-            - name: Szilánkleképezések
-              href: sql-database-elastic-scale-shard-map-management.md
-            - name: Lekérdezési útválasztás
-              href: sql-database-elastic-scale-data-dependent-routing.md
-            - name: Hitelesítő adatok kezelése
-              href: sql-database-elastic-scale-manage-credentials.md
-            - name: Szilánkos lekérdezés
-              href: sql-database-elastic-scale-multishard-querying.md
-            - name: Rugalmas eszközök
-              href: sql-database-elastic-scale-glossary.md
-            - name: Szilánkokra osztott adatok áthelyezése
-              href: sql-database-elastic-scale-overview-split-and-merge.md
-            - name: Rugalmas ügyfélkönyvtár – Dapper
-              href: sql-database-elastic-scale-working-with-dapper.md
-            - name: Rugalmas eszközök – gyakori kérdések
-              href: sql-database-elastic-scale-faq.md
-            - name: Szilánkokra osztott alkalmazás létrehozása
-              href: sql-database-elastic-scale-get-started.md
-            - name: Horizontálisan skálázott adatok lekérdezése
-              href: sql-database-elastic-query-getting-started.md
-            - name: Szilánkokra osztott adatok áthelyezése
-              href: sql-database-elastic-scale-configure-deploy-split-and-merge.md
-            - name: Biztonsági konfiguráció
-              href: sql-database-elastic-scale-split-merge-security-configuration.md
-            - name: Szilánk hozzáadása
-              href: sql-database-elastic-scale-add-a-shard.md
-            - name: Szilánkleképezési problémák javítása
-              href: sql-database-elastic-database-recovery-manager.md
-            - name: Szilánkokra osztott adatbázis migrálása
-              href: sql-database-elastic-convert-to-use-elastic-tools.md
-            - name: Számlálók létrehozása
-              href: sql-database-elastic-database-perf-counters.md
-            - name: Az Entity Framework használata
-              href: sql-database-elastic-scale-use-entity-framework-applications-visual-studio.md
     - name: Több adatbázisra kiterjedő műveletek
       items:
         - name: Rugalmas adatbázis-feladatok
@@ -424,6 +394,40 @@
           href: sql-database-temporal-tables-retention-policy.md
         - name: Konfigurálás memórián belül
           href: sql-database-in-memory-oltp-migration.md
+- name: Útmutatók
+  items:
+    - name: Migrálás az SQL Database-be
+      items:
+        - name: Migrálás az SQL Database-be
+          href: sql-database-cloud-migrate.md
+        - name: Migrálás felügyelt példányra
+          href: sql-database-managed-instance-migrate.md
+        - name: SQL Database kezelése a migrálás után
+          href: sql-database-manage-after-migration.md
+    - name: Adatok betöltése és áthelyezése
+      items:
+        - name: Adatbázis másolása az Azure-on belül
+          href: sql-database-copy.md
+        - name: Adatbázis importálása BACPAC-ból
+          href: sql-database-import.md
+        - name: Adatbázis exportálása BACPAC-ba
+          href: sql-database-export.md
+        - name: Adatszinkronizálás
+          items:
+            - name: SQL-adatszinkronizálás
+              href: sql-database-sync-data.md
+            - name: Sémaváltozások replikálása
+              href: sql-database-update-sync-schema.md
+            - name: Monitorozás az OMS-szel
+              href: sql-database-sync-monitor-oms.md
+            - name: Ajánlott eljárások az adatszinkronizáláshoz
+              href: sql-database-best-practices-data-sync.md
+            - name: Az adatszinkronizálás hibaelhárítása
+              href: sql-database-troubleshoot-data-sync.md
+        - name: Adatok betöltése a BCP használatával
+          href: sql-database-load-from-csv-with-bcp.md
+        - name: Adatok betöltése az ADF használatával
+          href: ../data-factory/connector-azure-sql-database.md?toc=/azure/sql-database/toc.json
     - name: Alkalmazásfejlesztés
       items:
         - name: Kapcsolatok
@@ -448,8 +452,6 @@
           href: sql-database-develop-cplusplus-simple.md
         - name: Excel
           href: sql-database-connect-excel.md
-- name: Útmutatók
-  items:
     - name: Több-bérlős SaaS referenciaarchitektúrája
       items:
         - name: Wingtip-jegyek mintája

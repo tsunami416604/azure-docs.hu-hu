@@ -8,14 +8,14 @@ manager: craigg
 ms.service: sql-database
 ms.custom: mvc,DBs & servers
 ms.topic: quickstart
-ms.date: 06/20/2018
-ms.author: carlrab
-ms.openlocfilehash: 5592a22a5e9dad8b0b0aa2e9c9f704db9a31c914
-ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
+ms.date: 07/02/2018
+ms.author: sachinp
+ms.openlocfilehash: 264397fee8ea37321841a4130cb5977219861053
+ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/21/2018
-ms.locfileid: "36308224"
+ms.lasthandoff: 07/02/2018
+ms.locfileid: "37345423"
 ---
 # <a name="create-an-azure-sql-database-in-the-azure-portal"></a>Azure SQL Database létrehozása az Azure Portalon
 
@@ -86,7 +86,7 @@ Kövesse az alábbi lépéseket az Adventure Works LT mintaadatokat tartalmazó 
 8. A **Kiegészítő tárterület** beállítás használatához el kell fogadnia az előzetes verziójú szolgáltatás feltételeit.
 
    > [!IMPORTANT]
-   > Az 1 TB-ot meghaladó Prémium szintű tárterület az összes régióban elérhető, kivéve a következőket: Egyesült Királyság északi régiója, USA nyugati középső régiója, Egyesült Királyság 2. déli régiója, Kelet-Kína, USA Védelmi Minisztériuma – Középső régió, Közép-Németország, USA Védelmi Minisztériuma – Keleti régió, USA-beli államigazgatás délnyugati régiója, USA-beli államigazgatás déli középső régiója, Északkelet-Németország, Észak-Kína és USA-beli államigazgatás keleti régiója. Más régiókban a Prémium szinthez tartozó tárterület maximuma 1 TB. Lásd: [P11–P15 – Aktuális korlátozások]( sql-database-dtu-resource-limits-single-databases.md#single-database-limitations-of-p11-and-p15-when-the-maximum-size-greater-than-1-tb).  
+   > Az 1 TB-ot meghaladó Prémium szintű tárterület az összes régióban elérhető, kivéve a következőket: USA nyugati középső régiója, Kelet-Kína, US DoD – középső régió, US Gov Iowa, Közép-Németország, US DoD – keleti régió, US Gov délnyugati régió, Északkelet-Németország, Észak-Kína. Más régiókban a Prémium szinthez tartozó tárterület maximuma 1 TB. Lásd: [P11–P15 – Aktuális korlátozások]( sql-database-dtu-resource-limits-single-databases.md#single-database-limitations-of-p11-and-p15-when-the-maximum-size-greater-than-1-tb).  
 
 9. A kiszolgálószint, a DTU-szám és a tárterületméret kiválasztása után kattintson az **Alkalmaz** gombra.  
 

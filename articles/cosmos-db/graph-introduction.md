@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: overview
 ms.date: 01/05/2017
 ms.author: lbosq
-ms.openlocfilehash: 6fcd6389e3ff23c1cb2b2f0e5183ea43bae9f313
-ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
+ms.openlocfilehash: ee6e3adc3300178164b83ee1f8dc2ab307eec45b
+ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34796138"
+ms.lasthandoff: 06/28/2018
+ms.locfileid: "37081212"
 ---
 # <a name="introduction-to-azure-cosmos-db-graph-api"></a>Bevezetés az Azure Cosmos DB használatába: a Graph API
 
@@ -45,7 +45,7 @@ Az Azure Cosmos DB Graph API a következőket biztosítja:
 - Beállítható konzisztenciaszintek.
 - Átfogó SLA-k, beleértve egy 99,99%-os rendelkezésre állási SLA-t minden enyhén korlátozott konzisztenciájú egyrégiós és többrégiós fiókhoz, valamint 99,999%-os olvasási rendelkezésre állást minden többrégiós adatbázisfiókhoz.
 
-Az Azure Cosmos DB lekérdezéséhez használhatja a [Gremlint](http://tinkerpop.apache.org/docs/current/reference/#graph-traversal-steps), azaz az [Apache TinkerPop](http://tinkerpop.apache.org) gráfbejárási nyelvét, vagy más TinkerPop-kompatibilis gráfrendszereket, például az [Apache Spark GraphX](spark-connector-graph.md) rendszert.
+Az Azure Cosmos DB lekérdezéséhez használhatja az [Apache TinkerPop](http://tinkerpop.apache.org) gráfbejárási nyelvet vagy a [Gremlint](http://tinkerpop.apache.org/docs/current/reference/#graph-traversal-steps).
 
 A cikk áttekintést nyújt az Azure Cosmos DB Graph API-járól, és elmagyarázza, hogyan használhatja a nagyméretű, több milliárd csúcsot és élet tartalmazó gráfok tárolására. A gráfokat ezredmásodperces késéssel kérdezheti le, és könnyen fejlesztheti a gráfok struktúráját és sémáját.
 
@@ -93,7 +93,7 @@ Az Azure Cosmos DB a következő megkülönböztetett képességeket biztosítja
 
 * Kompatibilitás az Apache TinkerPoppal
 
- Az Azure Cosmos DB natív módon támogatja a nyílt forráskódú Apache TinkerPop szabványt, és integrálható más TinkerPop-kompatibilis rendszerekkel. Így egyszerűen válthat más gráfadatbázisokról (például Titan vagy Neo4j), vagy használhatja az Azure Cosmos DB-t különféle gráfelemző keretrendszerekkel (például [Apache Spark GraphX](spark-connector-graph.md)).
+ Az Azure Cosmos DB natív módon támogatja a nyílt forráskódú Apache TinkerPop szabványt, és integrálható más TinkerPop-kompatibilis rendszerekkel. Így egyszerűen válthat más gráfadatbázisokról (például Titan vagy Neo4j), vagy használhatja az Azure Cosmos DB-t különféle gráfelemző keretrendszerekkel (például Apache Spark GraphX).
 
 * Beállítható konzisztenciaszintek
 

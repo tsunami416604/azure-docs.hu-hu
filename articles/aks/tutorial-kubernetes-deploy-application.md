@@ -2,30 +2,30 @@
 title: Azure-on futó Kubernetes oktatóanyag – Alkalmazás üzembe helyezése
 description: AKS oktatóanyag – alkalmazás üzembe helyezése
 services: container-service
-author: neilpeterson
+author: iainfoulds
 manager: jeconnoc
 ms.service: container-service
 ms.topic: tutorial
 ms.date: 02/22/2018
-ms.author: nepeters
+ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: e992d7ca455ad4d95d0f10a94c6c9ce8055f8286
-ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
+ms.openlocfilehash: e0e349361afaac9aec816d7f5d158322d6f4e691
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/11/2018
-ms.locfileid: "34067673"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37100978"
 ---
 # <a name="tutorial-run-applications-in-azure-kubernetes-service-aks"></a>Oktatóanyag: Alkalmazások futtatása az Azure Kubernetes Service-ben (AKS)
 
-Ebben az oktatóanyagban, amely egy nyolcrészes sorozat negyedik része, egy alkalmazást helyezünk üzembe egy Kubernetes-fürtön. Ennek lépései az alábbiak:
+Ebben az oktatóanyagban, amely egy hétrészes sorozat negyedik része, egy alkalmazást helyezünk üzembe egy Kubernetes-fürtön. Ennek lépései az alábbiak:
 
 > [!div class="checklist"]
 > * Kubernetes-jegyzékfájlok frissítése
 > * Alkalmazás futtatása a Kubernetesben
 > * Az alkalmazás tesztelése
 
-Az ezt követő oktatóanyagokban horizontálisan felskálázzuk és frissítjük az alkalmazást, és a Log Analyticst a Kubernetes-fürt monitorozására konfiguráljuk.
+Az ezt követő oktatóanyagokban horizontálisan felskálázzuk és frissítjük ezt az alkalmazást.
 
 Ez az oktatóanyag feltételezi, hogy ismeri a Kubernetes alapvető fogalmait. A Kubernetesszel kapcsolatos részletes információkat a [Kubernetes dokumentációjában][kubernetes-documentation] találja.
 

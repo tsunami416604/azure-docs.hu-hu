@@ -1,7 +1,7 @@
 ---
 title: Többtárolós (előzetes verzió) alkalmazás létrehozása az Azure Web App for Containers szolgáltatásban egy Docker Compose konfigurációval
-description: Néhány perc alatt telepítheti az első többtárolós alkalmazását az Azure Web App for Containers szolgáltatásban
-keywords: azure app service, webalkalmazás, linux, docker, összeállítás, többtárolós, tároló, kubernetes
+description: Néhány perc alatt telepítheti az első többtárolós alkalmazását az Azure Web App for Containersben
+keywords: azure app service, webalkalmazás, linux, docker, összeállítás, többtárolós, több tárolós, webalkalmazás tárolókhoz, több tároló, tároló, kubernetes, wordpress, mysql-hez készült azure db, éles adatbázis tárolókkal
 services: app-service\web
 documentationcenter: ''
 author: msangapu
@@ -15,20 +15,20 @@ ms.topic: quickstart
 ms.date: 06/22/2018
 ms.author: msangapu
 ms.custom: mvc
-ms.openlocfilehash: ec5c92415668c925fe360c0c8887fd792a121842
-ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
+ms.openlocfilehash: bf567402a66f9152c7eb9b97925fec2a159ffe56
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36753717"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37127420"
 ---
-# <a name="create-a-multicontainer-preview-app-using-web-app-for-containers"></a>Többtárolós (előzetes verzió) alkalmazás létrehozása a Web App for Containers szolgáltatással
+# <a name="create-a-multi-container-preview-app-using-web-app-for-containers"></a>Többtárolós (előzetes verzió) alkalmazás létrehozása a Web App for Containers szolgáltatással
 
-A [Web App for Containers](app-service-linux-intro.md) segítségével rugalmasan használhatók a Docker-rendszerképek. Ez a rövid útmutató a többtárolós alkalmazások Web App for Containers szolgáltatásban történő üzembe helyezésén vezeti végig a [Cloud Shellben](https://docs.microsoft.com/en-us/azure/cloud-shell/overview) egy Docker Compose konfiguráció használatával. Kubernetes esetén kövesse a [többtárolós alkalmazásokra vonatkozó oktatóanyag](tutorial-multi-container-app.md) Kubernetesre vonatkozó lépéseit.
+A [Web App for Containers](app-service-linux-intro.md) segítségével rugalmasan használhatók a Docker-rendszerképek. Ez a rövid útmutató a többtárolós alkalmazásoknak a Web App for Containersben történő üzembe helyezésén vezeti végig a [Cloud Shellben](https://docs.microsoft.com/en-us/azure/cloud-shell/overview) egy Docker Compose-konfiguráció használatával. A Kuberneteshez és a MySQL-hez készült Azure DB teljes körű megoldásához kövesse a [többtárolós alkalmazásokról szóló oktatóanyag lépéseit](tutorial-multi-container-app.md).
 
-Ezt a rövid útmutatót a Cloud Shellben követjük végig, a parancsok azonban helyileg is futtathatók az [Azure CLI](/cli/azure/install-azure-cli) (2.0.32-es vagy újabb verzió) használatával. Ez a rövid útmutató egy Docker Compose konfigurációs fájlt használ.
+Ezt a rövid útmutatót a Cloud Shellben követjük végig, a parancsok azonban helyileg is futtathatók az [Azure CLI](/cli/azure/install-azure-cli) (2.0.32-es vagy újabb verzió) használatával. 
 
-![Minta többtárolós alkalmazás a Web App for Containers szolgáltatásban][1]
+![Minta többtárolós alkalmazás a Web Apps for Containersben][1]
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
@@ -36,7 +36,7 @@ Ezt a rövid útmutatót a Cloud Shellben követjük végig, a parancsok azonban
 
 ## <a name="download-the-sample"></a>A minta letöltése
 
-Ebben a rövid útmutatóban a [Docker](https://docs.docker.com/compose/wordpress/#define-the-project) Compose-fájlját fogja használni, de módosítani fogja azt, hogy tartalmazza az Azure Database for MySQL szolgáltatást, állandó tárolókat és a Redist. A konfigurációs fájl az [Azure-minták](https://github.com/Azure-Samples/multicontainerwordpress) között található.
+Ebben a rövid útmutatóban a [Docker](https://docs.docker.com/compose/wordpress/#define-the-project) Compose-fájlját fogja használni. A konfigurációs fájl az [Azure-minták](https://github.com/Azure-Samples/multicontainerwordpress) között található.
 
 [!code-yml[Main](../../../azure-app-service-multi-container/docker-compose-wordpress.yml)]
 
@@ -48,10 +48,12 @@ mkdir quickstart
 cd quickstart
 ```
 
-Ezután futtassa a következő parancsot a mintaalkalmazás-adattár a quickstart könyvtárba való klónozásához.
+Ezután futtassa a következő parancsot a mintaalkalmazás-adattár a quickstart könyvtárba való klónozásához. Ezután lépjen a `multicontainerwordpress` könyvtárba.
 
 ```bash
 git clone https://github.com/Azure-Samples/multicontainerwordpress
+
+cd multicontainerwordpress
 ```
 
 ## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
@@ -100,11 +102,9 @@ Az App Service-csomag létrehozása után az Azure CLI az alábbi példához has
 
 ## <a name="create-a-docker-compose-app"></a>Docker Compose-alkalmazás létrehozása
 
-Váltson a `multicontainerwordpress` könyvtárra a Cloud Shellben. Az [az webapp create](/cli/azure/webapp?view=azure-cli-latest#az_webapp_create) paranccsal hozzon létre egy többtárolós [webalkalmazást](app-service-linux-intro.md) a `myAppServicePlan` App Service-csomagban. Ne felejtse el kicserélni az _\<app_name>_ nevet egy egyedi alkalmazásnévre.
+A Cloud Shell-terminálban hozzon létre egy többtárolós [webalkalmazást](app-service-linux-intro.md) az `myAppServicePlan` App Service-csomagban az [az webapp create](/cli/azure/webapp?view=azure-cli-latest#az_webapp_create) paranccsal. Ne felejtse el kicserélni az _\<app_name>_ nevet egy egyedi alkalmazásnévre.
 
 ```bash
-cd multicontainerwordpress
-
 az webapp create --resource-group myResourceGroup --plan myAppServicePlan --name <app_name> --multicontainer-config-type compose --multicontainer-config-file compose-wordpress.yml
 ```
 
@@ -129,7 +129,7 @@ A webalkalmazás létrehozása után az Azure CLI az alábbi példához hasonló
 
 Keresse meg az üzembe helyezett alkalmazást a következő helyen: `http://<app_name>.azurewebsites.net`. Az alkalmazás betöltése eltarthat néhány percig. Ha hibaüzenet jelenik meg, várjon néhány percet, majd frissítse a böngészőt.
 
-![Minta többtárolós alkalmazás a Web App for Containers szolgáltatásban][1]
+![Minta többtárolós alkalmazás a Web Apps for Containersben][1]
 
 **Gratulálunk!** Létrehozott egy többtárolós alkalmazást a Web App for Containersben.
 
@@ -138,7 +138,7 @@ Keresse meg az üzembe helyezett alkalmazást a következő helyen: `http://<app
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Többtárolós alkalmazás létrehozása a Web App for Containersben](tutorial-multi-container-app.md)
+> [Többtárolós WordPress-alkalmazás létrehozása a Web App for Containersben](tutorial-multi-container-app.md)
 
 <!--Image references-->
 [1]: ./media/tutorial-multi-container-app/azure-multi-container-wordpress-install.png

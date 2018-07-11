@@ -1,6 +1,6 @@
 ---
-title: Használja az Azure Key Vault-webalkalmazások |} Microsoft Docs
-description: Ez az oktatóanyag segítségével megtudhatja, hogyan használható az Azure Key Vault egy webalkalmazás.
+title: Az Azure Key Vault használata egy webalkalmazásból – oktatóanyag | Microsoft Docs
+description: Ebben az oktatóanyagban megtudhatja, hogyan használhatja az Azure Key Vaultot egy webalkalmazásból.
 services: key-vault
 author: adhurwit
 manager: mbaldwin
@@ -8,80 +8,75 @@ tags: azure-resource-manager
 ms.assetid: 9b7d065e-1979-4397-8298-eeba3aec4792
 ms.service: key-vault
 ms.workload: identity
-ms.topic: article
-ms.date: 05/10/2018
+ms.topic: tutorial
+ms.date: 06/29/2018
 ms.author: adhurwit
-ms.openlocfilehash: 3a191c3ee7eea641aab81008a6da801b609fb4c5
-ms.sourcegitcommit: b7290b2cede85db346bb88fe3a5b3b316620808d
-ms.translationtype: MT
+ms.openlocfilehash: 5cd764395e91a82973318da7284b28d7a43d35ea
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34802102"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37115078"
 ---
-# <a name="use-azure-key-vault-from-a-web-application"></a>Használja az Azure Key Vault-webalkalmazások
+# <a name="tutorial-use-azure-key-vault-from-a-web-application"></a>Oktatóanyag: Az Azure Key Vault használata egy webalkalmazásból
+Ebben az oktatóanyagban megtudhatja, hogyan használhatja az Azure Key Vaultot egy webalkalmazásból az Azure-ban. Bemutatja, hogyan érhető el egy titkos kód egy Azure Key Vault-kulcstartóból egy webalkalmazásban való használathoz. Az oktatóanyag erre a folyamatra épül, és titkos ügyfélkulcs helyett tanúsítványt használ. Ez az oktatóanyag olyan webfejlesztők számára készült, akik tisztában vannak a webalkalmazások Azure-ban való létrehozásának alapjaival. 
 
-## <a name="introduction"></a>Bevezetés
+Eben az oktatóanyagban az alábbiakkal fog megismerkedni: 
 
-Ez az oktatóanyag segítségével az Azure Key Vault használata egy webalkalmazás az Azure-ban. Végigvezeti a titkos kulcs eléréséhez, hogy a webes alkalmazás használható az Azure Key Vault folyamatán.
+> [!div class="checklist"]
+> * Alkalmazásbeállítások hozzáadása a web.config fájlhoz
+> * Metódus hozzáadása hozzáférési jogkivonat lekéréséhez
+> * A jogkivonat lekérése az alkalmazás indításakor
+> * Hitelesítés tanúsítvánnyal 
 
-**Oktatóanyag áttekintésének várható időtartama:** 15 perc
-
-Áttekintést az Azure Key Vaultról a [What is Azure Key Vault?](key-vault-whatis.md) (Mi az Azure Key Vault?) című cikkben talál.
+Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az oktatóanyag teljesítéséhez szüksége lesz:
+Az oktatóanyag teljesítéséhez a következő elemekre lesz szüksége:
 
-* Egy URI-t az Azure Key Vault a titkos kulcs
-* Az Azure Active Directoryval, a kulcstároló eléréséhez használt regisztrált egy ügyfél-Azonosítót és egy Ügyfélkulcsot webalkalmazás
-* A webalkalmazás. Fogja azt megjelenítő webalkalmazásként Azure szolgáltatásba telepített ASP.NET MVC alkalmazásnak az lépéseit.
+* Egy Azure Key Vault-kulcstartóban tárolt titkos kulcshoz tartozó URI
+* Az Azure Active Directoryban regisztrált és a Key Vaulthoz hozzáférő webalkalmazás ügyfél-azonosítója és titkos ügyfélkulcsa
+* Egy webalkalmazás. Ez az oktatóanyag az Azure-ban webalkalmazásként üzembe helyezett ASP.NET MVC alkalmazás lépéseit mutatja be.
 
->[!IMPORTANT]
->* Ez a minta egy régebbi módja a manuális létesítési AAD identitások függ. Jelenleg egy új szolgáltatás nevű kép [felügyelt szolgáltatás identitásának (MSI)](https://docs.microsoft.com/azure/active-directory/msi-overview), amely automatikusan telepíthetik AAD identitások. Tekintse meg az alábbi minta a [GitHub](https://github.com/Azure-Samples/app-service-msi-keyvault-dotnet/) további tájékoztatást talál.
+Végezze el a [Bevezetés az Azure Key Vault használatába](key-vault-get-started.md) című szakaszt egy titkos kód URI-jének, egy ügyfél-azonosítónak és egy titkos ügyfélkulcsnak a lekéréséhez, és regisztrálja az alkalmazást. A webalkalmazás hozzá fog férni a tárolóhoz, és regisztrálva kell lennie az Azure Active Directoryban. Hozzáférési jogosultságokkal is rendelkeznie kell a Key Vaulthoz. Ha nem így van, térjen vissza az első lépéseket ismertető oktatóanyag Alkalmazás regisztrálása című szakaszára, és ismételje meg az ott leírt lépéseket. További információ az Azure Web Apps létrehozásáról: [A Web Apps áttekintése](../app-service/app-service-web-overview.md).
 
-> [!NOTE]
->* Fontos, hogy végrehajtotta a felsorolt [Ismerkedés az Azure Key Vault](key-vault-get-started.md) ehhez az oktatóanyaghoz, hogy az URI-t a titkos kulcs és az ügyfél-azonosító és a titkos ügyfélkódot webalkalmazás.
+Ez a minta az Azure Active Directory-identitások manuális kiépítésétől függ. Jelenleg előzetes verzióként érhető el egy [Managed Service Identity (MSI)](https://docs.microsoft.com/azure/active-directory/msi-overview) nevű új szolgáltatás, amely automatikusan épít ki Azure AD-identitásokat. További információt a [GitHubon](https://github.com/Azure-Samples/app-service-msi-keyvault-dotnet/) lévő mintában és az [MSI App Service-szel és Functionsszel való használatát ismertető kapcsolódó oktatóanyagban](https://docs.microsoft.com/azure/app-service/app-service-managed-service-identity) talál. 
 
 
-A webes alkalmazás, amely a Key Vault hozzáférhetnek az Azure Active Directoryban regisztrálva van, és megkapta-e hozzáféréssel a Key Vault a. Ha nem ez a helyzet, vissza regisztrálása a az alkalmazás az első lépéseket bemutató oktatóanyaghoz, és ismételje meg a ismertetett lépéseket.
+## <a id="packages"></a>NuGet-csomagok hozzáadása
 
-Ez az oktatóanyag célja alapjainak webalkalmazások létrehozása az Azure webalkalmazás-fejlesztőknek. Az Azure Web Apps szolgáltatással kapcsolatban [a Web Apps áttekintésével](../app-service/app-service-web-overview.md) foglalkozó témakörben tekinthet meg további információt.
+A webalkalmazásnak két csomagot kell telepítenie.
 
-## <a id="packages"></a>Adja hozzá a NuGet-csomagok
+* Active Directory Authentication Library – az Azure Active Directoryval való kommunikációra és a felhasználó identitásának kezelésére szolgáló metódusokkal rendelkezik
+* Azure Key Vault Library – az Azure Key Vaulttal való kommunikációra szolgáló metódusokkal rendelkezik
 
-Két csomagot, amelyet a webes alkalmazás telepítve van.
+Ezek a csomagok az Install-Package paranccsal telepíthetők a csomagkezelő konzolon.
 
-* Active Directory Authentication Library - Azure Active Directoryban való interakció és az identitásfelügyelet metódust tartalmaz.
-* Az Azure Key Vault Library - kommunikáció az Azure Key Vault metódust tartalmaz.
-
-Mindkét ezeket a csomagokat is telepíthető, a Package Manager konzolon az Install-Package paranccsal.
-
-```
-// this is currently the latest stable version of ADAL
-Install-Package Microsoft.IdentityModel.Clients.ActiveDirectory -Version 2.16.204221202
+```powershell
+Install-Package Microsoft.IdentityModel.Clients.ActiveDirectory 
 Install-Package Microsoft.Azure.KeyVault
 ```
 
-## <a id="webconfig"></a>Modify Web.Config
+## <a id="webconfig"></a>A web.config fájl módosítása
 
-Nincsenek három-alkalmazásbeállításokat, amelyek hozzá kell adni a web.config fájlban az alábbiak szerint.
+Három alkalmazásbeállítást kell hozzáadnia a web.config fájlhoz a következőképpen. A tényleges értékeket az Azure Portalon fogjuk hozzáadni egy további biztonsági réteg létrehozásához.
 
-```
+```xml
     <!-- ClientId and ClientSecret refer to the web application registration with Azure Active Directory -->
     <add key="ClientId" value="clientid" />
     <add key="ClientSecret" value="clientsecret" />
 
     <!-- SecretUri is the URI for the secret in Azure Key Vault -->
     <add key="SecretUri" value="secreturi" />
+    <!-- If you aren't hosting your app as an Azure Web App, then you should use the actual ClientId, Client Secret, and Secret URI values -->
 ```
 
-Ha nem kívánja futtatni, Azure Web Apps, majd adjon a tényleges ClientId, a titkos Ügyfélkulcs és a titkos kulcs URI-értékek a Web.config fájlban. Egyéb hagyja ki ezeket az üres értékeket, mert bővítjük a tényleges értékek egy további szintű biztonság Azure-portálon.
 
-## <a id="gettoken"></a>Módszer segítségével Access Token hozzáadása
 
-A Key Vault API használatához szükséges olyan hozzáférési jogkivonatot. A Key Vault ügyfél kezeli a Key Vault API-hívások, de kell megadnia, az egy függvénynek, amely lekérdezi a hozzáférési jogkivonat.  
+## <a id="gettoken"></a>Metódus hozzáadása hozzáférési jogkivonat lekéréséhez
 
-Az alábbiakban olvashatja a kódot, és szerezze be a hozzáférési tokent az Azure Active Directoryból. Ez a kód bárhol lépjen az alkalmazásban. Szeretnék Utils vagy EncryptionHelper osztályt.  
+A Key Vault API használatához hozzáférési jogkivonatra van szükség. A Key Vault-ügyfél kezeli a Key Vault API-hívásokat, de ehhez meg kell adnia egy olyan függvényt, amely lekérdezi a hozzáférési jogkivonatot. A következő példa egy kód, amely hozzáférési jogkivonatot kér le az Azure Active Directoryból. Ez a kód az alkalmazásban bárhová kerülhet. Én Utils vagy EncryptionHelper osztályt szeretek hozzáadni.  
 
 ```cs
 //add these using statements
@@ -105,15 +100,15 @@ public static async Task<string> GetToken(string authority, string resource, str
 
     return result.AccessToken;
 }
+// Using Client ID and Client Secret is a way to authenticate an Azure AD application.
+// Using it in your web application allows for a separation of duties and more control over your key management. 
+// However, it does rely on putting the Client Secret in your configuration settings.
+// For some people, this can be as risky as putting the secret in your configuration settings.
 ```
 
-> [!NOTE]
->* Jelenleg a hitelesítés legegyszerűbb módja a Felügyeltszolgáltatás-identitás (Managed Service Identity, MSI) nevű új funkció. További részletekért tekintse meg a következő példát, amely egy [.NET-alapú alkalmazásban található MSI-vel rendelkező kulcstartót](https://github.com/Azure-Samples/app-service-msi-keyvault-dotnet/) használ, valamint tekintse meg az [MSI App Service és Functions szolgáltatásokkal való használatával foglalkozó](https://docs.microsoft.com/azure/app-service/app-service-managed-service-identity) oktatóanyagot. 
->* Ügyfél-azonosító és a titkos ügyfélkódot használata a hitelesítés az Azure AD-alkalmazást egy másik módja. És használja azt a webes alkalmazásban és a kulcskezelést teljesebb körű vezérlése kizárás lehetővé teszi. De azt alapulnak, hogy a titkos Ügyfélkulcs és a konfigurációs beállításaiban, amely az egyes szerint kockázatos, ha a titkos kulcsot, amely a konfigurációs beállításokat a védeni kívánt lehet. Egy ügyfél-azonosító és a tanúsítvány használata helyett az ügyfél-azonosító és a titkos ügyfélkódot hitelesítéséhez az Azure AD-alkalmazás leírását a következő kapcsolatban.
+## <a id="appstart"></a>A titkos kód lekérése az alkalmazás indításakor
 
-## <a id="appstart"></a>A titkos kulcsot, az alkalmazás lépések beolvasása
-
-Most szükséges kód a Key Vault API és a titkos kulcs beolvasása. Az alábbi kód bárhova helyezhető, mindaddig, amíg előtt kell használnia az nevezik. Ezzel a kóddal rendelkezik I az alkalmazás indítás esemény a Global.asax helyezze el, hogy a kezdőlapon egyszer fut, és elérhetővé teszi a titkos kulcsot az alkalmazáshoz.
+Most kóddal kell hívnunk a Key Vault API-t, hogy lekérjük a titkos kódot. Az alábbi kód bárhol elhelyezhető, ha azelőtt hívja meg, mielőtt szükség lenne a használatára. Ezt a kódot a Global.asax alkalmazásindítási eseményébe tettem, így egyszer fut az induláskor, és elérhetővé teszi a titkos kódot az alkalmazás számára.
 
 ```cs
 //add these using statements
@@ -124,43 +119,47 @@ using System.Web.Configuration;
 var kv = new KeyVaultClient(new KeyVaultClient.AuthenticationCallback(Utils.GetToken));
 var sec = await kv.GetSecretAsync(WebConfigurationManager.AppSettings["SecretUri"]);
 
-//I put a variable in a Utils class to hold the secret for general  application use.
+//I put a variable in a Utils class to hold the secret for general application use.
 Utils.EncryptSecret = sec.Value;
 ```
 
-## <a id="portalsettings"></a>Alkalmazásbeállítások hozzáadása az Azure portálon (nem kötelező)
+## <a id="portalsettings"></a>Alkalmazásbeállítások hozzáadása az Azure Portalon
 
-Ha az Azure Web Apps, az Azure-portálon AppSettings hozzáadhat a tényleges értékek. Ezzel a tényleges értékek nem lesz a Web.config fájlban, de a portálon, melyekben külön hozzáférés-vezérlés képességeinek védett. Ezeket az értékeket a Web.config fájlban megadott értékek kerülnek behelyettesítésre. Győződjön meg arról, hogy a nevek megegyeznek-e.
+Az Azure-webalkalmazásban most hozzáadhatja az alkalmazásbeállítások tényleges értékeit az Azure Portalon. A lépés végrehajtásával a tényleges érték nem szerepel a web.config fájlban, hanem a portál védi, ahol Ön különálló hozzáférés-vezérlési képességekkel rendelkezik. A rendszer ezekkel az értékekkel helyettesíti a web.config fájlba írt értékeket. Győződjön meg arról, hogy a nevek egyeznek.
 
-![Az Azure portál megjeleníti-Alkalmazásbeállítások][1]
+![Az Azure Portalon megjelenő alkalmazásbeállítások][1]
 
-## <a name="authenticate-with-a-certificate-instead-of-a-client-secret"></a>A hitelesítést egy tanúsítványt a titkos Ügyfélkulcsot helyett
+## <a name="authenticate-with-a-certificate-instead-of-a-client-secret"></a>Hitelesítés tanúsítvánnyal titkos ügyfélkulcs helyett
 
-Egy Azure AD-alkalmazást hitelesítéséhez egy másik úgy, hogy egy ügyfél-Azonosítót és a tanúsítvány helyett egy ügyfél-azonosító és a titkos ügyfélkódot. A tanúsítvány használata az Azure Web Apps lépései a következők:
+Most, hogy megismerkedett az Azure AD-alkalmazás ügyfél-azonosítóval és titkos ügyfélkulccsal történő hitelesítésével, használjunk egy ügyfél-azonosítót és egy tanúsítványt. Ha tanúsítványt szeretne használni egy Azure-webalkalmazásban, használja a következő lépéseket:
 
-1. Futtasson, vagy hozzon létre egy tanúsítványt
-2. A tanúsítvány társítása egy Azure AD-alkalmazást
-3. Kód felvétele a webalkalmazás a tanúsítvány használatára
+1. Tanúsítvány beszerzése vagy létrehozása
+2. Tanúsítvány társítása egy Azure AD-alkalmazáshoz
+3. Kód hozzáadása a webalkalmazáshoz a tanúsítvány használatához
 4. Tanúsítvány hozzáadása a webalkalmazáshoz
 
-### <a name="get-or-create-a-certificate"></a>Futtasson, vagy hozzon létre egy tanúsítványt
+### <a name="get-or-create-a-certificate"></a>Tanúsítvány beszerzése vagy létrehozása
 
-Egy teszttanúsítványt használunk a célokra. Az alábbiakban néhány parancsokat, amelyek a fejlesztői parancssor segítségével hozzon létre egy tanúsítványt. Módosítsa a könyvtárat, ahová a létrehozott tanúsítvány fájlok.  Emellett a kezdő és záró dátumot a tanúsítvány, használja az aktuális dátum plusz 1 év.
+ Teszttanúsítványt készítünk ehhez az oktatóanyaghoz. Itt talál egy szkriptet önaláírt tanúsítvány létrehozásához. Módosítsa a könyvtárt arra a helyre, ahol létre szeretné hozni a tanúsítványfájlokat.  A tanúsítvány kezdő és záró dátumaként használhatja az aktuális dátumot plusz egy évet.
 
+```powershell
+#Create self-signed certificate and export pfx and cer files 
+$PfxFilePath = "c:\data\KVWebApp.pfx" 
+$CerFilePath = "c:\data\KVWebApp.cer" 
+$DNSName = "MyComputer.Contoso.com" 
+$Password ="MyPassword" 
+$SecStringPw = ConvertTo-SecureString -String $Password -Force -AsPlainText 
+$Cert = New-SelfSignedCertificate -DnsName $DNSName -CertStoreLocation "cert:\LocalMachine\My" -NotBefore 05/15/2018 -NotAfter 05/15/2019 
+Export-PfxCertificate -cert $cert -FilePath $PFXFilePath -Password $SecStringPw 
+Export-Certificate -cert $cert -FilePath $CerFilePath 
 ```
-makecert -sv mykey.pvk -n "cn=KVWebApp" KVWebApp.cer -b 07/31/2017 -e 07/31/2018 -r
-pvk2pfx -pvk mykey.pvk -spc KVWebApp.cer -pfx KVWebApp.pfx -po test123
-```
 
-Jegyezze fel a záró dátum és a jelszót a .pfx (ebben a példában: 07/31/2018 és test123). Szüksége lesz rájuk az alábbi.
+Jegyezze fel a .pfx fájl záró dátumát és jelszavát (ebben a példában 2019. május 15. és MyPassword). Ezekre az alábbi szkripthez lesz szükség. 
+### <a name="associate-the-certificate-with-an-azure-ad-application"></a>Tanúsítvány társítása egy Azure AD-alkalmazáshoz
 
-Teszttanúsítványt létrehozásával kapcsolatos további információkért lásd: [Útmutató: A saját tesztelése tanúsítvány létrehozása](https://msdn.microsoft.com/library/ff699202.aspx)
+Most, hogy van egy tanúsítványa, társítsa egy Azure AD-alkalmazással. A társítás a PowerShellen keresztül végezhető el. Az alábbi parancsokkal társíthatja a tanúsítványt az Azure AD-alkalmazással:
 
-### <a name="associate-the-certificate-with-an-azure-ad-application"></a>A tanúsítvány társítása egy Azure AD-alkalmazást
-
-Most, hogy rendelkezik egy tanúsítvánnyal, rendelje hozzá azt egy Azure AD-alkalmazást szeretné. Jelenleg az Azure-portál nem támogatja a munkafolyamat; Ez a PowerShell használatával elvégezhető. A tanúsítvány társítása az Azure AD-alkalmazás a következő parancsok futtatásával:
-
-```ps
+```powershell
 $x509 = New-Object System.Security.Cryptography.X509Certificates.X509Certificate2
 $x509.Import("C:\data\KVWebApp.cer")
 $credValue = [System.Convert]::ToBase64String($x509.GetRawCertData())
@@ -178,17 +177,18 @@ Set-AzureRmKeyVaultAccessPolicy -VaultName 'contosokv' -ServicePrincipalName "ht
 $x509.Thumbprint
 ```
 
-Ezek a parancsok futtatása után megtekintheti az alkalmazást az Azure ad-ben. Ha keres, győződjön meg arról, "A vállalat tulajdonában lévő alkalmazások" helyett "Alkalmazások a vállalat használ" a keresés párbeszédpanelen válasszon.
+A parancsok futtatása után láthatja az alkalmazást az Azure AD-ben. Az alkalmazásregisztrációk keresésekor győződjön meg arról, hogy a keresés párbeszédpanelen a „Minden alkalmazás” helyett a **Saját alkalmazások** van kiválasztva. 
 
-Az Azure AD-alkalmazás objektumának és szolgáltatásnév objektumok kapcsolatos további információkért lásd: [alkalmazás és szolgáltatás egyszerű objektumok](../active-directory/active-directory-application-objects.md).
+### <a name="add-code-to-your-web-app-to-use-the-certificate"></a>Kód hozzáadása a webalkalmazáshoz a tanúsítvány használatához
 
-### <a name="add-code-to-your-web-app-to-use-the-certificate"></a>Kód felvétele a webalkalmazás a tanúsítvány használatára
+Most kódot adunk a webalkalmazáshoz a tanúsítvány elérése érdekében, és hitelesítésre használjuk. 
 
-Most azt felveszi kód a webalkalmazásban a cert eléréséhez, és a hitelesítéshez használandó.
-
-Először nincs kódot, amely a tanúsítvány.
+Először van egy kód a tanúsítvány eléréséhez. Figyelje meg, hogy a StoreLocation a LocalMachine helyett CurrentUser értékű. És hogy „false” értéket adunk meg a Find metódushoz, mert teszttanúsítványt használunk.
 
 ```cs
+//Add this using statement
+using System.Security.Cryptography.X509Certificates;  
+
 public static class CertificateHelper
 {
     public static X509Certificate2 FindCertificateByThumbprint(string findValue)
@@ -211,9 +211,9 @@ public static class CertificateHelper
 }
 ```
 
-Vegye figyelembe, hogy a StoreLocation – CurrentUser LocalMachine helyett. És, hogy azt is biztosítja "false", a keresés metódus, mert a vizsgálati cert használjuk.
 
-Ezután van, amely a CertificateHelper használ, és létrehoz egy ClientAssertionCertificate, amelyre szükség van hitelesítési kódot.
+
+A következő a kód, amely a CertificateHelper elemet használja, és létrehozza a hitelesítéshez szükséges ClientAssertionCertificate elemet.
 
 ```cs
 public static ClientAssertionCertificate AssertionCert { get; set; }
@@ -225,7 +225,7 @@ public static void GetCert()
 }
 ```
 
-Ez az új kód segítségével kérheti le a hozzáférési jogkivonat. Ez a felváltja az előző példában GetToken metódust. I adott azt egy másik nevet kényelmét szolgálja.
+Itt látható a hozzáférési jogkivonat lekérésére szolgáló új kód. Ez a kód az előző példában szereplő GetToken elemet váltja fel. Az egyszerűség kedvéért más nevet adtam neki. Az egyszerű használat érdekében az összes kódot a webalkalmazás-projekt Utils osztályába tettem.
 
 ```cs
 public static async Task<string> GetAccessToken(string authority, string resource, string scope)
@@ -236,33 +236,34 @@ public static async Task<string> GetAccessToken(string authority, string resourc
 }
 ```
 
-I rendelkezik helyezték összes ezt a kódot a webalkalmazás projekt Utils osztály a használat megkönnyítése érdekében.
 
-Az utolsó kódváltoztatást az Application_Start metódus van. Először igazolnia kell betölteni a ClientAssertionCertificate GetCert() metódust. És majd a visszahívási metódus, amely azt adja meg, amikor hoz létre egy új KeyVaultClient módosítjuk. Vegye figyelembe, hogy ez a felváltja a kódot, amely azt az előző példában rendelkezett.
+
+Az utolsó kódmódosítás az Application_Start metódusban van. Először meg kell hívnunk a GetCert() metódust a ClientAssertionCertificate betöltéséhez. Ezután módosítjuk az új KeyVaultClient létrehozásakor megadott visszahívási metódust. Ez a kód lecseréli az előző példában szereplő kódot.
 
 ```cs
 Utils.GetCert();
 var kv = new KeyVaultClient(new KeyVaultClient.AuthenticationCallback(Utils.GetAccessToken));
 ```
 
-### <a name="add-a-certificate-to-your-web-app-through-the-azure-portal"></a>A tanúsítvány felvétele a webalkalmazás az Azure portálon keresztül
+### <a name="add-a-certificate-to-your-web-app-through-the-azure-portal"></a>Tanúsítvány hozzáadása a webalkalmazáshoz az Azure Portalon
 
-A tanúsítvány felvétele a webalkalmazás egyszerű lépésből áll. Először nyissa meg az Azure portálra, és keresse meg a webes alkalmazást. A webalkalmazás beállítási paneljén kattintson az "egyéni tartományok és SSL" bejegyzés. A panelen, hogy megnyílik fogja tölthet fel a létrehozott tanúsítványát, amelyet az előző példában KVWebApp.pfx, győződjön meg arról, hogy ne felejtse el a jelszót a PFX.
+A tanúsítvány webalkalmazáshoz való hozzáadása egy egyszerű kétlépéses folyamat. Először lépjen az Azure Portalra, és keresse meg a webalkalmazást. A webalkalmazás Beállítások területén kattintson az **SSL-beállítások** elemre. Amikor megnyílik, töltse fel az előző példában létrehozott KVWebApp.pfx tanúsítványt. Fontos, hogy jegyezze meg a .pfx fájl jelszavát.
 
-![A tanúsítvány felvétele egy webalkalmazást az Azure-portálon][2]
+![Tanúsítvány hozzáadása egy webalkalmazáshoz az Azure Portalon][2]
 
-A legutolsó dolog, hogy végre kell hajtani, hogy hozzáadjon egy alkalmazásbeállítást a webes alkalmazás, amelynek a neve webhely\_terhelés\_TANÚSÍTVÁNYOKAT és a *. Ezzel biztosíthatja, hogy minden tanúsítvány vannak betöltve. Ha csak a feltöltött tanúsítványok betölteni, ezután megadhatja az ujjlenyomatok vesszővel tagolt listája.
+Végül hozzá kell adnia egy alkalmazásbeállítást a WEBSITE\_LOAD\_CERTIFICATES nevű és * értékű webalkalmazáshoz. Ez a lépés gondoskodik róla, hogy az összes tanúsítvány be legyen töltve. Ha csak a feltöltött tanúsítványokat szeretné betölteni, akkor adja meg az ujjlenyomataik vesszővel elválasztott listáját.
 
-A tanúsítvány felvétele a webes alkalmazás kapcsolatos további információkért lásd: [tanúsítványok használata az Azure-webhelyek alkalmazásokban](https://azure.microsoft.com/blog/2014/10/27/using-certificates-in-azure-websites-applications/)
 
-### <a name="add-a-certificate-to-key-vault-as-a-secret"></a>A tanúsítvány felvétele a Key Vault egy titkos kulcsként
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+Amikor már nincs rájuk szükség, törölje az oktatóanyaghoz használt App Service-t, Key Vaultot és Azure AD-alkalmazást.  
 
-Ahelyett, hogy a tanúsítványt közvetlenül a Web App service feltölteni, tárolja egy titkos kulcsként kulcstároló, és telepítse onnan. Ez az egy kétlépéses folyamat a következő blogbejegyzésben [telepítése Azure Web App tanúsítványt Key Vault keresztül](https://blogs.msdn.microsoft.com/appserviceteam/2016/05/24/deploying-azure-web-app-certificate-through-key-vault/)
 
 ## <a id="next"></a>Következő lépések
+> [!div class="nextstepaction"]
+>[Azure Key Vault felügyeleti API-referencia](/dotnet/api/overview/azure/keyvault/management).
 
-Programozási hivatkozások: [Azure Key Vault C# ügyfél API-referencia](https://msdn.microsoft.com/en-us/library/azure/mt430941.aspx).
 
 <!--Image references-->
 [1]: ./media/key-vault-use-from-web-application/PortalAppSettings.png
 [2]: ./media/key-vault-use-from-web-application/PortalAddCertificate.png
+ 

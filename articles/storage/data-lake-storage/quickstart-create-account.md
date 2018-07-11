@@ -10,12 +10,12 @@ ms.service: storage
 ms.topic: quickstart
 ms.date: 06/27/2018
 ms.author: jamesbak
-ms.openlocfilehash: aafb86e7ebc99ea48e09b34b58682c983fe9f293
-ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
+ms.openlocfilehash: cf98d3097128a0f8934fc114bc37a517df118234
+ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37063105"
+ms.lasthandoff: 06/28/2018
+ms.locfileid: "37085388"
 ---
 # <a name="quickstart-create-an-azure-data-lake-storage-gen2-preview-storage-account"></a>Rövid útmutató: Előzetes verziójú, 2. generációs Azure Data Lake Storage-tárfiók létrehozása
 
@@ -50,7 +50,7 @@ A gombra kattintva megjelenik egy interaktív kezelőfelület jelenik, amelyet a
 
 ### <a name="install-the-cli-locally"></a>A parancssori felület helyi telepítése
 
-Az Azure CLI-t helyben is telepítheti és használhatja. A rövid útmutatóhoz az Azure CLI 2.0.4-es vagy újabb verziójára lesz szükség. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI 2.0 telepítése](/cli/azure/install-azure-cli).
+Az Azure CLI-t helyben is telepítheti és használhatja. A rövid útmutatóhoz az Azure CLI 2.0.38-as vagy újabb verziójára van szükség. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI 2.0 telepítése](/cli/azure/install-azure-cli).
 
 ## <a name="overview-of-creating-an-azure-data-lake-storage-gen2-account"></a>2. generációs Azure Data Lake Storage-fiókok létrehozása – áttekintés
 
@@ -68,7 +68,7 @@ Ne feledje ezeket a szabályokat a tárfiók elnevezésekor:
 
 ## <a name="create-an-account-using-the-azure-portal"></a>Fiókok létrehozása az Azure Portalon
 
-Jelentkezzen be az [Azure portálra](https://portal.azure.com).
+Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 
 ### <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
 
@@ -115,6 +115,15 @@ Erőforráscsoport eltávolítása az Azure Portallal:
 2. Keresse meg a törölni kívánt erőforráscsoportot, és kattintson a jobb gombbal a lista jobb oldalán lévő **Továbbiak** gombra (**...**).
 3. Válassza az **Erőforráscsoport törlése** elemet, és erősítse meg a választását.
 
+
+## <a name="upgrade-your-powershell-module"></a>A PowerShell-modul frissítése
+
+A 2. generációs Data Lake Storage PowerShell-lel történő használatához frissítenie kell a modult az előzetes verzióra.
+
+Ehhez nyisson meg egy emelt szintű PowerShell-munkamenetet, és írja be a következő parancsot: `Install-Module AzureRM.Storage –Repository PSGallery -RequiredVersion 5.0.4-preview –AllowPrerelease –AllowClobber –Force `
+
+Ezután indítsa újra a felületet.
+
 ## <a name="create-an-account-using-powershell"></a>Fiók létrehozása a PowerShell használatával
 
 Jelentkezzen be az Azure-előfizetésbe a `Login-AzureRmAccount` paranccsal, és a hitelesítéshez kövesse a képernyőn megjelenő utasításokat.
@@ -151,7 +160,7 @@ New-AzureRmStorageAccount -ResourceGroupName $resourceGroup `
   -Location $location `
   -SkuName Standard_LRS `
   -Kind StorageV2 
-  -HierarchialNamespace $True
+  -EnableHierarchicalNamespace $True
 ```
 
 ### <a name="clean-up-resources"></a>Az erőforrások eltávolítása
@@ -162,6 +171,12 @@ A [Remove-AzureRmResourceGroup](/powershell/module/azurerm.resources/remove-azur
 Remove-AzureRmResourceGroup -Name $resourceGroup
 ```
 
+## <a name="upgrade-your-cli-module"></a>A CLI-modul frissítése
+
+A 2. generációs Data Lake Storage CLI-vel történő használatához hozzá kell adnia a bővítményt a felülethez.
+
+Ehhez a Cloud Shell vagy a helyi felület használatával írja be a következő parancsot: `az extension add --name storage-preview`
+
 ## <a name="create-an-account-using-azure-cli"></a>Fiók létrehozása az Azure CLI használatával 
 
 Az Azure Cloud Shell indításához jelentkezzen be az [Azure Portalra](https://portal.azure.com).
@@ -171,6 +186,7 @@ A parancssori felület helyileg telepített példányára történő bejelentkez
 ```cli
 az login
 ```
+
 ### <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
 
 Ha az Azure CLI használatával kíván új erőforráscsoportot létrehozni, használja az [az group create](/cli/azure/group#az_group_create) parancsot. 
@@ -195,7 +211,7 @@ az storage account create \
     --location westus2 \
     --sku Standard_LRS \
     --kind StorageV2 \
-    --hierarchical-namespace true
+    --Enable-hierarchical-namespace true
 ```
 
 ### <a name="clean-up-resources"></a>Az erőforrások eltávolítása

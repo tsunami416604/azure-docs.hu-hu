@@ -3,9 +3,8 @@ title: Az Apache Kafka használatának első lépései – Azure HDInsight rövi
 description: Ebben a rövid útmutatóban megismerheti, hogyan hozhat létre Apache Kafka-fürtöt az Azure HDInsightban az Azure Portal használatával. A Kafka-témakörökről, -előfizetőkről és -fogyasztókról is olvashat.
 services: hdinsight
 documentationcenter: ''
-author: Blackmist
+author: dhgoelmsft
 manager: jhubbard
-editor: cgronlun
 ms.assetid: 43585abf-bec1-4322-adde-6db21de98d7f
 ms.service: hdinsight
 ms.custom: mvc,hdinsightactive
@@ -15,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 05/23/2018
 ms.author: larryfr
-ms.openlocfilehash: 17f7bc4d9325dd8040036e218c43e418f3c51b68
-ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
+ms.openlocfilehash: 776705281a1909cbeee657f7915d4c83ec8bbabe
+ms.sourcegitcommit: 4597964eba08b7e0584d2b275cc33a370c25e027
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37021208"
+ms.lasthandoff: 07/02/2018
+ms.locfileid: "37342153"
 ---
 # <a name="quickstart-create-a-kafka-on-hdinsight-cluster"></a>Rövid útmutató: Kafka on HDInsight-fürt létrehozása
 
@@ -101,7 +100,7 @@ Egy Kafka HDInsight-fürt létrehozásához kövesse az alábbi lépéseket:
 
     Kattintson a __Tovább__ gombra az alapszintű konfiguráció befejezéséhez.
 
-5. A **Tárolás** panelen válasszon ki vagy hozzon létre egy Storage-fiókot. A jelen dokumentumban leírt lépésekben a többi mező alapértelmezett értékét ne módosítsa. Kattintson a __Tovább__ gombra a tárolókonfiguráció mentéséhez.
+5. A **Tárolás** panelen válasszon ki vagy hozzon létre egy Storage-fiókot. A jelen dokumentumban leírt lépésekben a többi mező alapértelmezett értékét ne módosítsa. Kattintson a __Tovább__ gombra a tárolókonfiguráció mentéséhez. A 2. generációs Data Lake Storage használatáról [a fürtök HDInsightban történő beállításáról szóló rövid útmutatóban](../../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md) talál további információt.
 
     ![A tárfiók HDInsight-beállításainak konfigurálása](./media/apache-kafka-get-started/storage-configuration.png)
 

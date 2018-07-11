@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 09/03/2017
+ms.date: 07/01/2018
 ms.author: juliako
-ms.openlocfilehash: fcf02e39a305281501773db51383dff66c485493
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: da190bf2418f1cfb8ea952b69d3bf1d76258da5f
+ms.sourcegitcommit: 4597964eba08b7e0584d2b275cc33a370c25e027
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33780619"
+ms.lasthandoff: 07/02/2018
+ms.locfileid: "37342327"
 ---
 # <a name="create-an-azure-media-services-account-using-the-azure-portal"></a>Azure Media Services-fiók létrehozása az Azure Portal használatával
 > [!div class="op_single_selector"]
@@ -31,7 +31,9 @@ ms.locfileid: "33780619"
 > 
 > 
 
-Az Azure Portalon gyorsan létrehozhat egy Azure Media Services- (AMS-) fiókot. A fiókkal hozzáférhet olyan Media Services-szogáltatásokhoz, amelyekkel médiatartalmakat tárolhat, titkosíthat, kódolhat, kezelhet és továbbíthat az Azure környezetben. A Media Services-fiók létrehozásával egy időben létrejön egy kapcsolódó tárfiók is (illetve egy már meglévőt is használhat) ugyanabban a földrajzi régióban, ahol a Media Services-fiók is található.
+Az Azure Portalon gyorsan létrehozhat egy Azure Media Services- (AMS-) fiókot. A fiókkal hozzáférhet olyan Media Services-szogáltatásokhoz, amelyekkel médiatartalmakat tárolhat, titkosíthat, kódolhat, kezelhet és továbbíthat az Azure környezetben. A Media Services-fiók létrehozásával egy időben létrejön egy kapcsolódó tárfiók is (illetve egy már meglévőt is használhat) ugyanabban a földrajzi régióban, ahol a Media Services-fiók is található. 
+
+Az elsődleges tárfiók lehet általános célú v1 vagy általános célú v2. Az Azure Portal jelenleg csak a v1 kiválasztását támogatja, de hozzáadhatja a v2-t is, ha API-val vagy PowerShell-lel hoz létre fiókot. További információ a tárolási típusokról: [Tudnivalók az Azure Storage-fiókokról](https://docs.microsoft.com/azure/storage/common/storage-create-storage-account).
 
 Ez a cikk néhány általánosan használt fogalmat tárgyal, illetve bemutatja, hogyan hozhat létre Media Services-fiókot az Azure Portal használatával.
 
@@ -41,12 +43,9 @@ Ez a cikk néhány általánosan használt fogalmat tárgyal, illetve bemutatja,
 ## <a name="concepts"></a>Alapelvek
 A Media Services szolgáltatásainak eléréséhez két kapcsolódó fiók szükséges:
 
-* Egy Media Services-fiók. A fiók hozzáférést biztosít több felhőalapú, az Azure szolgáltatásban elérhető Media Services-szolgáltatáshoz. A Media Services-fiók nem tárol tényleges médiatartalmakat. Ehelyett metaadatokat tárol a fiókban található médiatartalmakról és médiafeldolgozási feladatokról. A fiók létrehozásakor ki kell választania egy elérhető Media Services-régiót. A választott régió egy adatközpont, amely a fiók metaadat-rekordjait tárolja.
+* Egy Media Services-fiók. A fiók hozzáférést biztosít több felhőalapú, az Azure-ban elérhető Media Services-erőforrásokhoz. A Media Services-fiók nem tárol tényleges médiatartalmakat. Ehelyett metaadatokat tárol a fiókban található médiatartalmakról és médiafeldolgozási feladatokról. A fiók létrehozásakor ki kell választania egy elérhető Media Services-régiót. A választott régió egy adatközpont, amely a fiók metaadat-rekordjait tárolja.
   
 * Egy Azure-tárfiók. A tárfiókoknak a Media Services-fiókkal azonos földrajzi régióban kell lenniük. Egy Media Services-fiók létrehozásakor választhat, hogy egy ugyanabban a régióban található, meglévő tárfiókot használ, vagy létrehoz egy újat ugyanabban a régióban. Egy Media Services-fiók törlésekor a kapcsolódó tárfiókban található blobok nem törlődnek.
-
-  > [!NOTE]
-  > A Media Services kiköti, hogy az elsődleges tárfióknak **Általános célú tárfióknak** kell lennie táblákkal, üzenetsorokkal. További információ a tárolási típusokról: [Tudnivalók az Azure Storage-fiókokról](https://docs.microsoft.com/azure/storage/common/storage-create-storage-account).
 
 ## <a name="create-an-ams-account"></a>AMS-fiók létrehozása
 A jelen szakaszban ismertetett lépések bemutatják az AMS-fiók létrehozásának módját.

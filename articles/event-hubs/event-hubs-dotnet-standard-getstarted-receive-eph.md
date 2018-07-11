@@ -14,27 +14,27 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/28/2017
 ms.author: sethm
-ms.openlocfilehash: 5eb5c2d1f0b85c907f788fb6ac752488601f613a
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: fd74405c8ca95ca1a5880ab26bf87705bde217de
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2018
-ms.locfileid: "29389835"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37127533"
 ---
 # <a name="get-started-receiving-messages-with-the-event-processor-host-in-net-standard"></a>Üzenetek fogadása az Event Processor Hosttal .NET Standardban – első lépések
 
 > [!NOTE]
 > Ez a minta elérhető a [GitHubon](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/SampleEphReceiver).
 
-Ez az oktatóanyag ismerteti, hogyan írható olyan .NET Core-konzolalkalmazás, amely egy eseményközpontból fogad üzeneteket az **Event Processor Host** kódtár használatával. Futtathatja a [GitHub](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/SampleEphReceiver) megoldást jelenlegi állapotában, kicserélve a karakterláncokat az eseményközpont és a Storage-fiók értékeire. Vagy létrehozhatja a saját megoldását is az oktatóanyag lépései alapján.
+Ez az oktatóanyag ismerteti, hogyan írható olyan .NET Core-konzolalkalmazás, amely egy eseményközpontból fogad üzeneteket az **Event Processor Host** kódtár használatával. Futtathatja a [GitHub](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/SampleEphReceiver) megoldást jelenlegi állapotában, kicserélve a sztringekat az eseményközpont és a Storage-fiók értékeire. Vagy létrehozhatja a saját megoldását is az oktatóanyag lépései alapján.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 * [Microsoft Visual Studio 2015 vagy 2017](http://www.visualstudio.com). Az oktatóanyag példái a Visual Studio 2017-et használják, de a Visual Studio 2015 is támogatott.
 * [.NET Core Visual Studio 2015- vagy 2017-eszközök](http://www.microsoft.com/net/core).
 * Azure-előfizetés.
-* Egy Azure Event Hubs névtér.
-* Egy Azure Storage-fiók.
+* Azure Event Hubs-névtér és -eseményközpont.
+* Egy Azure-tárfiók.
 
 ## <a name="create-an-event-hubs-namespace-and-an-event-hub"></a>Event Hubs-névtér és eseményközpont létrehozása  
 
@@ -123,11 +123,11 @@ A következő lépéseket végrehajtva adja hozzá a .NET Standard kódtár [**M
     using System.Threading.Tasks;
     ```
 
-2. Adjon állandókat a `Program` osztályhoz az eseményközpont kapcsolati karakterláncával, az eseményközpont nevével, a tárfiók tárolójának nevével, a tárfiók nevével és a tárfiók kulcsával. Adja hozzá a következő kódot a helyőrzőket a hozzájuk tartozó értékekre cserélve.
+2. Adjon állandókat a `Program` osztályhoz az eseményközpont kapcsolati sztringjével, az eseményközpont nevével, a tárfiók tárolójának nevével, a tárfiók nevével és a tárfiók kulcsával. Adja hozzá a következő kódot a helyőrzőket a megfelelő értékekre cserélve:
 
     ```csharp
-    private const string EhConnectionString = "{Event Hubs connection string}";
-    private const string EhEntityPath = "{Event Hub path/name}";
+    private const string EventHubConnectionString = "{Event Hubs connection string}";
+    private const string EventHubName = "{Event Hub path/name}";
     private const string StorageContainerName = "{Storage account container name}";
     private const string StorageAccountName = "{Storage account name}";
     private const string StorageAccountKey = "{Storage account key}";
@@ -143,9 +143,9 @@ A következő lépéseket végrehajtva adja hozzá a .NET Standard kódtár [**M
         Console.WriteLine("Registering EventProcessor...");
 
         var eventProcessorHost = new EventProcessorHost(
-            EhEntityPath,
+            EventHubName,
             PartitionReceiver.DefaultConsumerGroupName,
-            EhConnectionString,
+            EventHubConnectionString,
             StorageConnectionString,
             StorageContainerName);
 
@@ -174,8 +174,8 @@ A következő lépéseket végrehajtva adja hozzá a .NET Standard kódtár [**M
 
         public class Program
         {
-            private const string EhConnectionString = "{Event Hubs connection string}";
-            private const string EhEntityPath = "{Event Hub path/name}";
+            private const string EventHubConnectionString = "{Event Hubs connection string}";
+            private const string EventHubName = "{Event Hub path/name}";
             private const string StorageContainerName = "{Storage account container name}";
             private const string StorageAccountName = "{Storage account name}";
             private const string StorageAccountKey = "{Storage account key}";
@@ -223,4 +223,4 @@ Az alábbi webhelyeken további információt talál az Event Hubsról:
 * [Event Hubs – gyakori kérdések](event-hubs-faq.md)
 
 [1]: ./media/event-hubs-dotnet-standard-getstarted-receive-eph/event-hubs-python1.png
-[2]: ./media/event-hubs-dotnet-standard-getstarted-receive-eph/netcore.png
+[2]: ./media/event-hubs-dotnet-standard-getstarted-receive-eph/netcorercv.png

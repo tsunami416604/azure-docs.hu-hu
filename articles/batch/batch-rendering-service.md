@@ -1,5 +1,5 @@
 ---
-title: Azure Batch Rendering szolgáltatás – felhőméretű renderelés | Microsoft Docs
+title: Azure Batch Rendering – felhőméretű renderelés | Microsoft Docs
 description: Renderelési feladatok végezhetők Azure-alapú virtuális gépeken, közvetlenül a Maya szoftverből és használatalapú fizetéssel.
 services: batch
 author: dlepow
@@ -8,23 +8,23 @@ ms.service: batch
 ms.topic: hero-article
 ms.date: 05/10/2018
 ms.author: danlep
-ms.openlocfilehash: df1b2da7628e6c3f9f4bcbb02a936c33aad49698
-ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
+ms.openlocfilehash: 954a67ed126b505c9ba0da81b3ace0d25e840adb
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/12/2018
-ms.locfileid: "34076971"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37128588"
 ---
-# <a name="get-started-with-the-batch-rendering-service"></a>Ismerkedés a Batch Rendering szolgáltatással
+# <a name="get-started-with-batch-rendering"></a>A Batch Rendering használatának első lépései 
 
-Az Azure Batch Rendering szolgáltatás felhőméretű renderelési képességeket nyújt használatalapú fizetéssel. A Batch Rendering szolgáltatás elvégzi a feladatok ütemezését és sorba rendezését, a hibák és az újrapróbálkozások kezelését és a renderelési feladatokkal kapcsolatos automatikus skálázást. A Batch Rendering szolgáltatás támogatja renderelési alkalmazások, például az [Autodesk Maya](https://www.autodesk.com/products/maya/overview), a [3ds Max](https://www.autodesk.com/products/3ds-max/overview), az [Arnold](https://www.autodesk.com/products/arnold/overview) és a [V-Ray](https://www.chaosgroup.com/vray/maya) használatát. A Maya 2017-hez készült Batch beépülő modullal könnyedén elindíthat egy renderelési feladatot az Azure-on, rögtön a számítógépről.
+Az Azure Batch Rendering felhőméretű renderelési képességeket nyújt használatalapú fizetéssel. A Batch Rendering elvégzi a feladatok ütemezését és sorba rendezését, a hibák és az újrapróbálkozások kezelését és a renderelési feladatokkal kapcsolatos automatikus skálázást. A Batch Rendering támogatja renderelési alkalmazások, például az [Autodesk Maya](https://www.autodesk.com/products/maya/overview), a [3ds Max](https://www.autodesk.com/products/3ds-max/overview), az [Arnold](https://www.autodesk.com/products/arnold/overview) és a [V-Ray](https://www.chaosgroup.com/vray/maya) használatát. A Maya 2017-hez készült Batch beépülő modullal könnyedén elindíthat egy renderelési feladatot az Azure-on, rögtön a számítógépről.
 
 A Maya és a 3ds Max szoftverekkel a [BatchLabs](https://github.com/Azure/BatchLabs) asztali alkalmazás vagy a [Batch Templates parancssori felület](batch-cli-templates.md) használatával futtathat feladatokat. Az Azure Batch parancssori felületén kódírás nélkül futtathat Batch-feladatokat. Helyette sablonfájlok használatával hozhat létre Batch-készleteket, -feladatokat és -tevékenységeket. További információkért tekintse át [az Azure Batch parancssori felületi sablonjainak és fájlátviteli funkciójának használatával](batch-cli-templates.md) foglalkozó témakört.
 
 
 ## <a name="supported-applications"></a>Támogatott alkalmazások köre
 
-A Batch Rendering szolgáltatás jelenleg a következő alkalmazások használatát támogatja:
+A Batch Rendering jelenleg a következő alkalmazások használatát támogatja:
 
 CentOS 7 renderelési csomópontok esetében:
 - Autodesk Maya I/O 2017 5. frissítés (201708032230-s verzió)
@@ -49,7 +49,7 @@ Windows Server 2016 renderelési csomópontok esetén:
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-A Batch szolgáltatás használatához a következőkre van szükség:
+A Batch Rendering használatához a következőkre van szüksége:
 
 - [Egy Azure-fiók](https://azure.microsoft.com/free/).
 - **Egy Azure Batch-fiók.** Egy Batch-fiók az Azure Portalon történő létrehozásával kapcsolatos útmutatásért lásd a [Batch-fiókok az Azure Portalon történő létrehozását](batch-account-create-portal.md) ismertető cikket.
@@ -64,7 +64,7 @@ A Maya alkalmazáshoz készült Batch beépülő modul használatához a követk
 
 ## <a name="basic-batch-concepts"></a>Alapszintű Batch-fogalmak
 
-Mielőtt elkezdené használni a Batch Rendering szolgáltatást, nem árt, ha tisztában van néhány Batch-fogalommal, mint például a számítási csomópontok, a készletek és a feladatok jelentésével. Az Azure Batch szolgáltatással kapcsolatos általános információkért lásd [a párhuzamos számítási feladatok Batch használatával történő futtatását](batch-technical-overview.md) ismertető cikket.
+Mielőtt elkezdené használni a Batch Rendering szolgáltatást, célszerű tisztában lennie néhány Batch-fogalommal, mint például a számítási csomópontok, a készletek és a feladatok jelentésével. Az Azure Batch szolgáltatással kapcsolatos általános információkért lásd [a párhuzamos számítási feladatok Batch használatával történő futtatását](batch-technical-overview.md) ismertető cikket.
 
 ### <a name="pools"></a>Készletek
 
@@ -104,7 +104,7 @@ Az Azure Batch egyéni rendszerképek megadását is lehetővé teszi, így pont
 
 ## <a name="options-for-submitting-a-render-job"></a>Renderelési feladatok elküldésének különböző lehetőségei
 
-A használt 3D-alkalmazástól függően különféle lehetőségek állnak rendelkezésre, hogy be tudja küldeni a renderelési feladatokat a szolgáltatásba:
+A használt 3D alkalmazástól függően különféle lehetőségek állnak rendelkezésre, hogy be tudja küldeni a renderelési feladatokat:
 
 ### <a name="maya"></a>Maya
 
@@ -121,14 +121,14 @@ A 3ds Maxszel a következőket használhatja:
 - A [BatchLabs](https://azure.github.io/BatchLabs) asztali alkalmazást (a 3ds Max BatchLabs-sablonok használatára vonatkozó útmutatásért lásd a [BatchLabs-adatokat](https://github.com/Azure/BatchLabs-data/tree/master/ncj/3dsmax) összefoglaló témakört)
 - A [Batch-sablonok parancssori felületét](batch-cli-templates.md)
 
-A 3ds Max Batch Labs-sablonok segítségével VRay- és Arnold-jeleneteket renderelhet az Azure Batch renderelési szolgáltatásával. A VRay- és Arnold-sablonnak két változata létezik, az egyik a standard jelenetekhez, a másik pedig az olyan összetett jelenetekhez, amelyekhez egy 3ds Max-útvonalfájl szükséges az objektumokhoz és a textúrákhoz (.mxp fájl). A 3ds Max Batch Labs-sablonokkal kapcsolatos további információkért lásd a [BatchLabs-adatok](https://github.com/Azure/BatchLabs-data/tree/master/ncj/3dsmax) adattárat a GitHubon.
+A 3ds Max Batch Labs-sablonok segítségével VRay- és Arnold-jeleneteket renderelhet a Batch Renderinggel. A VRay- és Arnold-sablonnak két változata létezik, az egyik a standard jelenetekhez, a másik pedig az olyan összetett jelenetekhez, amelyekhez egy 3ds Max-útvonalfájl szükséges az objektumokhoz és a textúrákhoz (.mxp fájl). A 3ds Max Batch Labs-sablonokkal kapcsolatos további információkért lásd a [BatchLabs-adatok](https://github.com/Azure/BatchLabs-data/tree/master/ncj/3dsmax) adattárat a GitHubon.
 
-Emellett használhatja a [Batch Python SDK-t](https://docs.microsoft.com/azure/batch/batch-python-tutorial) is, hogy a renderelési szolgáltatást integrálni tudja a meglévő folyamattal.
+Emellett használhatja a [Batch Python SDK-t](https://docs.microsoft.com/azure/batch/batch-python-tutorial) is, hogy a renderelést integrálni tudja a meglévő folyamattal.
 
 
 ## <a name="use-the-batch-plug-in-for-maya-to-submit-a-render-job"></a>Renderelési feladat elküldése a Maya alkalmazáshoz készült Batch beépülő modul használatával
 
-A Maya alkalmazáshoz készült Batch beépülő modul használatával közvetlenül a Mayából küldhet feladatokat a Batch Rendering szolgáltatásnak. A következő szakaszok a feladatnak a beépülő modulból történő konfigurálását, majd elküldését ismertetik. 
+A Mayához készült Batch beépülő modullal közvetlenül a Mayából küldhet feladatokat a Batch Renderingnek. A következő szakaszok a feladatnak a beépülő modulból történő konfigurálását, majd elküldését ismertetik. 
 
 ### <a name="load-the-batch-plug-in-for-maya"></a>A Maya alkalmazáshoz készült Batch beépülő modul betöltése
 

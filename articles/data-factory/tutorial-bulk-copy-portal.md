@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 06/22/2018
 ms.author: jingwang
-ms.openlocfilehash: c42f7257b4b4077cc719c57e3136505f766e654c
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: 6079784a21b5dea8929fcfa3d8f296477b3b9520
+ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37046833"
+ms.lasthandoff: 06/28/2018
+ms.locfileid: "37083328"
 ---
 # <a name="copy-multiple-tables-in-bulk-by-using-azure-data-factory"></a>Táblák tömeges másolása az Azure Data Factory használatával
 Ez az oktatóanyag azt mutatja be, hogyan lehet **táblákat másolni az Azure SQL Database-ből az Azure SQL Data Warehouse-ba**. A minta egyéb másolási forgatókönyvek esetén is alkalmazható. Például táblák másolására az SQL Serverről/Oracle-ből az Azure SQL Database-be/Data Warehouse-ba/Azure Blobba, vagy különböző elérési utak másolására a Blobból Azure SQL Database-táblákba.
@@ -93,7 +93,7 @@ Az SQL Database és az SQL Data Warehouse esetében is engedélyezze az SQL Ser
          
       Az erőforráscsoportokkal kapcsolatos információkért tekintse meg a [Using resource groups to manage your Azure resources](../azure-resource-manager/resource-group-overview.md) (Erőforráscsoportok használata az Azure-erőforrások kezeléséhez) című cikket.  
 4. A **Verzió** résznél válassza a **V2** értéket.
-5. Válassza ki a Data Factory **helyét**. A Data Factory 2-es verziója jelenleg csak az USA keleti régiójában, az USA 2. keleti régiójában és a nyugat-európai régióban teszi lehetővé adat-előállítók létrehozását. Az adat-előállítók által használt adattárak (Azure Storage, Azure SQL Database stb.) és számítási erőforrások (HDInsight stb.) más régiókban is lehetnek.
+5. Válassza ki a Data Factory **helyét**. Azon Azure-régiók megtekintéséhez, amelyekben jelenleg elérhető a Data Factory, a következő lapon válassza ki az Önt érdeklő régiókat, majd bontsa ki az **Elemzés** részt, és keresse meg a **Data Factory**: [Elérhető termékek régiók szerint](https://azure.microsoft.com/global-infrastructure/services/) szakaszt. Az adat-előállítók által használt adattárak (Azure Storage, Azure SQL Database stb.) és számítási erőforrások (HDInsight stb.) más régiókban is lehetnek.
 6. Válassza a **Rögzítés az irányítópulton** lehetőséget.     
 7. Kattintson a **Create** (Létrehozás) gombra.
 8. Az irányítópulton megjelenő csempén a következő állapotleírás látható: **Adat-előállító üzembe helyezése**. 
@@ -282,7 +282,7 @@ A **GetTableListAndTriggerCopyData** a táblák listáját használja paraméter
 
 9. A folyamat beállításainak érvényesítéséhez kattintson az **Érvényesítés** gombra a felső folyamateszköztáron. Ellenőrizze, hogy nincs-e érvényesítési hiba. A **Folyamatérvényesítési jelentés** bezárásához kattintson a **>>** jelre.
 
-### <a name="create-the-pipeline-gettablelistandtriggercopydata"></a>Create the pipeline GetTableListAndTriggerCopyData
+### <a name="create-the-pipeline-gettablelistandtriggercopydata"></a>A GetTableListAndTriggerCopyData folyamat létrehozása
 
 Ez a folyamat két lépést hajt végre:
 

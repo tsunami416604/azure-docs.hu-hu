@@ -12,15 +12,15 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 05/01/2018
+ms.date: 06/29/2018
 ms.author: v-deasim
 ms.custom: mvc
-ms.openlocfilehash: 3f0ba3034c1ba9e68f83caaaf9aacb96134ca74b
-ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
+ms.openlocfilehash: 5d13c565302ae16b6fb2894f6a5a3843f47f9547
+ms.sourcegitcommit: 4597964eba08b7e0584d2b275cc33a370c25e027
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35235498"
+ms.lasthandoff: 07/02/2018
+ms.locfileid: "37342225"
 ---
 # <a name="tutorial-configure-https-on-an-azure-cdn-custom-domain"></a>Oktatóanyag: HTTPS konfigurálása Azure CDN egyéni tartományon
 
@@ -177,7 +177,7 @@ A CNAME rekordnak a következő formátumban kell lennie, ahol a *Név* az Ön e
 
 A CNAME rekordokkal kapcsolatos további információért tekintse meg a [CNAME DNS-rekord létrehozását ismertető](https://docs.microsoft.com/azure/cdn/cdn-map-content-to-custom-domain#create-the-cname-dns-records) részt.
 
-Ha a CNAME rekordja a megfelelő formátumban van, a DigiCert automatikusan ellenőrzi az egyéni tartománynevet, és hozzáadja azt az alternatív tulajdonosnevek (SAN) tanúsítványhoz. A DigitCert nem küld visszaigazoló e-mailt, és nem kell jóváhagynia a kérést. A tanúsítvány egy évig érvényes, és a lejárata előtt automatikusan megújul. Lépjen tovább a [Várakozás a propagálásra](#wait-for-propagation) részhez. 
+Ha a CNAME rekordja a megfelelő formátumban van, a DigiCert automatikusan ellenőrzi az egyéni tartománynevet, és létrehoz egy dedikált tanúsítványt. A DigitCert nem küld visszaigazoló e-mailt, és nem kell jóváhagynia a kérést. A tanúsítvány egy évig érvényes, és a lejárata előtt automatikusan megújul. Lépjen tovább a [Várakozás a propagálásra](#wait-for-propagation) részhez. 
 
 Az automatikus érvényesítés általában eltart néhány percig. Ha a tartománya egy órán belül sincs érvényesítve, nyisson meg egy támogatási jegyet.
 
@@ -214,7 +214,7 @@ Kövesse az űrlap utasításait; két ellenőrzési lehetősége van:
 
 - Jóváhagyhatja az adott gazdanevet, amelyet a kéréshez használtak. A további kérésekhez további jóváhagyás szükséges.
 
-A jóváhagyás után a DigiCert hozzáadja a SAN tanúsítványt az egyéni tartománynevéhez. A tanúsítvány egy évig érvényes, és a lejárata előtt automatikusan megújul.
+A jóváhagyás után a DigiCert befejezi az egyéni tartománynév tanúsítványának létrehozását. A tanúsítvány egy évig érvényes, és a lejárata előtt automatikusan megújul.
 
 ## <a name="wait-for-propagation"></a>Várakozás a propagálásra
 
@@ -288,11 +288,11 @@ Az alábbi táblázat a műveleti folyamatot mutatja, amely a HTTPS letiltásako
 
 1. *Ki a tanúsítványszolgáltató és milyen típusú tanúsítvány van használatban?*
 
-    A **Verizon Azure CDN** a tulajdonos alternatív nevével megadott (SAN) tanúsítványt használ, amelyet a DigiCert bocsát ki. Egy SAN tanúsítvány több teljesen minősített tartománynevet tud biztosítani egyetlen tanúsítvánnyal. A **Microsoft Azure CDN Standard** egyedi tanúsítványt használ, amelyet a DigiCert bocsát ki.
+    A rendszer **Verizon Azure CDN** és a **Microsoft CDN Standard** esetén egy Digicert által biztosított dedikált/egyetlen tanúsítványt használ az egyéni tartományhoz. 
 
-2. IP-címalapú vagy SNI TLS/SSL-t használ?
+2. *IP-címalapú vagy SNI TLS/SSL-t használ?*
 
-    A **Verizon Azure CDN** IP-címalapú TLS/SSL-t használ. A **Microsoft Azure CDN Standard** SNI TLS/SSL-t használ.
+    A **Verizon Azure CDN** és a **Microsoft CDN Standard** is SNI TLS/SSL-t használ.
 
 3. *Mi a teendő, ha nem kapok visszaigazolási e-mailt a DigiCerttől?*
 
@@ -309,6 +309,10 @@ Az alábbi táblázat a műveleti folyamatot mutatja, amely a HTTPS letiltásako
 6. *Szükségem van hitelesítésszolgáltató engedélyezési rekordra a DNS szolgáltatómnál?*
 
     Nem, hitelesítésszolgáltatói engedélyezési rekordra jelenleg nincs szükség. Viszont ha van ilyenje, mindenképpen tartalmaznia kell a DigiCertet mint érvényes CA-t.
+
+7. *2018. június 20-tól a Verizon Azure CDN alapértelmezés szerint SNI TLS/SSL-lel használja a dedikált tanúsítványokat. Mi történik a tulajdonos alternatív nevével (SAN) megadott tanúsítványt és IP-cím alapú TLS/SSL-t használó meglévő egyéni tartományaimmal?*
+
+    Ha a Microsoft elemzése szerint az alkalmazásába csak SNI-ügyfélkérelmek érkeznek, a meglévő tartományait a következő hónapokban fokozatosán migráljuk egyetlen tanúsítvány használatára. Ha a Microsoft észleli, hogy nem SNI-ügyfélkérelmek érkeznek az alkalmazásába, a tartományok az IP-cím alapú TLS/SSL-t használó SAN-tanúsítványban maradnak. A szolgáltatása és az ügyfélkérelmek támogatása egyik esetben sem szakad meg, attól függetlenül, hogy a kérelmek SNI- vagy nem SNI-kérelmek.
 
 
 ## <a name="next-steps"></a>További lépések

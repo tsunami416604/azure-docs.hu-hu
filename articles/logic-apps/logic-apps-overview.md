@@ -1,39 +1,35 @@
 ---
-title: Áttekintés – Az Azure Logic Apps vállalati integrációja | Microsoft Docs
-description: Automatikus munkafolyamatokat és üzleti folyamatokat hozhat létre, amelyekbe integrálhatók az adatok, szolgáltatások, alkalmazások és rendszerek egy vállalaton vagy intézményen belül. Adatintegrációs, rendszer-integrációs és vállalati alkalmazásintegrációs (EAI) megoldásokat vagy vezénylési forgatókönyveket is létrehozhat.
-keywords: automatizálás, munkafolyamatok, vállalati alkalmazásintegráció, EAI, rendszer-integráció, adatintegráció, vezénylés, integrációs szolgáltatások, iPaaS
+title: A vállalati integrációs megoldások és az Azure Logic Apps | Microsoft Docs
+description: Megismerheti, hogyan hozhat létre a Logic Apps segítségével olyan automatizált üzleti és munkafolyamatokat, amelyekbe integrálhatók az adatok, szolgáltatások, alkalmazások és rendszerek egy vállalaton vagy intézményen belül. Adatintegrációs, rendszer-integrációs és vállalati alkalmazásintegrációs (EAI) megoldásokat vagy vezénylési forgatókönyveket is létrehozhat.
 services: logic-apps
-author: ecfan
-manager: jeconnoc
-editor: ''
-documentationcenter: ''
-ms.assetid: 07765c05-72a6-4169-a8ab-f6420bfbaf07
 ms.service: logic-apps
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
+author: ecfan
+ms.author: estfan
+manager: jeconnoc
 ms.topic: overview
 ms.custom: mvc
-ms.date: 01/12/2018
-ms.author: LADocs; estfan
-ms.openlocfilehash: c575ae1f9c801072fb1f6f32a13f111b9edd18ce
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.date: 6/29/2018
+ms.reviewer: klam, LADocs
+ms.suite: integration
+ms.openlocfilehash: d3640710b3ba209c8e701cf5e340103c1d3d6fa7
+ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35299239"
+ms.lasthandoff: 06/28/2018
+ms.locfileid: "37082219"
 ---
 # <a name="what-is-azure-logic-apps"></a>Mi az Azure Logic Apps?
 
-A [Logic Apps](https://azure.microsoft.com/services/logic-apps) segítségével [munkafolyamatként](#logic-app-concepts) hozhat létre, ütemezhet és automatizálhat folyamatokat, lehetővé téve az alkalmazások, adatok, rendszerek és szolgáltatások integrációját egy adott vállalaton vagy intézményen belül. A Logic Apps egyszerűvé teszi a méretezhető megoldások tervezését és létrehozását az alkalmazások, adatok és rendszerek integrációja, a vállalati alkalmazásintegráció (EAI), valamint a vállalatok közötti (B2B) kommunikáció céljából, a felhőben és a helyszínen egyaránt.
+A [Logic Apps](https://azure.microsoft.com/services/logic-apps) segítségével olyan megoldásokat hozhat lére, amelyek alkalmazásokat, adatokat, rendszereket és szolgáltatásokat integrálnak egy vállalaton vagy intézményen belül úgy, hogy különböző feladatokat és üzleti folyamatokat [munkafolyamatként](#logic-app-concepts) automatizálnak. A Logic Apps egy Azure-beli felhőszolgáltatás, amely egyszerűvé teszi a méretezhető megoldások tervezését és létrehozását az alkalmazások, adatok és rendszerek integrációja, a vállalati alkalmazásintegráció (Enterprise Application Integration, EAI), valamint a vállalatok közötti (B2B) kommunikáció céljából, a felhőben és a helyszínen egyaránt.
 
 A logikai alkalmazások segítségével többek között a következő munkafolyamatok automatizálhatók:
 
 * Rendelések feldolgozása és irányítása a helyszíni rendszerek és a felhőszolgáltatások között.
-* Feltöltött fájlok áthelyezése egy FTP-kiszolgálóról az Azure Storage szolgáltatásba. 
+* Feltöltött fájlok áthelyezése egy SFTP- vagy FTP-kiszolgálóról az Azure Storage-ba. 
+* E-mail-értesítések küldése az Office 365-tel, ha valamilyen esemény következik be különböző rendszerekben, alkalmazásokban és szolgáltatásokban.
 * Egy adott témához tartozó tweetek monitorozása, vélemények elemzése, valamint riasztások és feladatok létrehozása az ellenőrzést igénylő elemekhez.
 
-Amikor logikai alkalmazásokkal hoz létre integrációs megoldásokat, [közel 200 beépített összekötő](../connectors/apis-list.md) közül választhat, mint például az SQL Database, az Azure-szolgáltatások, az Office 365, a Salesforce vagy a Google. Ezek az [összekötők](#logic-app-concepts) [eseményindítókat](#logic-app-concepts) és [műveleteket](#logic-app-concepts) biztosítanak az olyan logikai alkalmazások létrehozásához, amelyek valós időben, biztonságosan érik el és dolgozzák fel az adatokat.
+Amikor logikai alkalmazásokkal hoz létre integrációs megoldásokat, [több mint 200 összekötő](../connectors/apis-list.md) egyre növekvő választékából válogathat, amelyek között megtalálhatók más Azure-szolgáltatások, például a Service Bus, a Functions vagy a Storage; vagy egyéb szolgáltatások, amilyen például az Office 365, a Dynamics, a BizTalk, a Salesforce, az SAP, az Oracle DB, fájlmegosztások és egyebek. Ezek az [összekötők](#logic-app-concepts) [eseményindítókat](#logic-app-concepts) és [műveleteket](#logic-app-concepts) biztosítanak az olyan logikai alkalmazások létrehozásához, amelyek valós időben, biztonságosan érik el és dolgozzák fel az adatokat.
 
 > [!VIDEO https://channel9.msdn.com/Blogs/Azure/Introducing-Azure-Logic-Apps/player]
 
@@ -59,56 +55,59 @@ Az [ügyféltörténetekből](https://aka.ms/logic-apps-customer-stories) többe
 
 További információk a Logic Apps által kínált képességekről és előnyökről:
 
-* **Munkafolyamatok vizuális létrehozása könnyen használható eszközökkel**
+### <a name="visually-build-workflows-with-easy-to-use-tools"></a>Munkafolyamatok vizuális létrehozása könnyen használható eszközökkel
 
-  A vizuális tervezőeszközökkel időt takaríthat meg és egyszerűsítheti az összetett folyamatokat. 
-  A logikai alkalmazások létrehozásának minden lépését elvégezheti a Logic Apps Designer segítségével, amely a böngészőből az Azure Portalon, illetve a Visual Studióban is elérhető. Indítsa el a munkafolyamatot egy eseményindítóval, majd adjon hozzá bármennyi műveletet az [összekötő-katalógusból](../connectors/apis-list.md).
+A vizuális tervezőeszközökkel időt takaríthat meg és egyszerűsítheti az összetett folyamatokat. A logikai alkalmazások létrehozásának minden lépését elvégezheti a Logic Apps Designer segítségével, amely a böngészőből az Azure Portalon, illetve a Visual Studióban is elérhető. Indítsa el a munkafolyamatot egy eseményindítóval, majd adjon hozzá bármennyi műveletet az [összekötő-katalógusból](../connectors/apis-list.md).
 
-* **Gyorsabban láthat munkához a logikai alkalmazások sablonjaival**
+### <a name="get-started-faster-with-logic-app-templates"></a>Gyorsabban láthat munkához a logikai alkalmazások sablonjaival
 
-  A gyakran használt megoldásokat gyorsabban létrehozhatja, ha a [sablonkatalógus](../logic-apps/logic-apps-create-logic-apps-from-templates.md) előre megadott munkafolyamatai közül választ. 
-  A sablonok az egyszerű SaaS-kapcsolatokat biztosító alkalmazásoktól a speciális B2B-megoldásokig terjednek, de van néhány olyan is, amely csak kedvtelésből készült. További információk: [Logikai alkalmazások létrehozása előre megadott sablonból](../logic-apps/logic-apps-create-logic-apps-from-templates.md).
+A gyakran használt megoldásokat gyorsabban létrehozhatja, ha a [sablonkatalógus](../logic-apps/logic-apps-create-logic-apps-from-templates.md) előre megadott munkafolyamatai közül választ. A sablonok az egyszerű SaaS-kapcsolatokat biztosító alkalmazásoktól a speciális B2B-megoldásokig terjednek, de van néhány olyan is, amely csak kedvtelésből készült. További információk: [Logikai alkalmazások létrehozása előre megadott sablonból](../logic-apps/logic-apps-create-logic-apps-from-templates.md).
 
-* **Különböző környezetek különálló rendszereinek csatlakoztatása**
+### <a name="connect-disparate-systems-across-different-environments"></a>Különböző környezetek különálló rendszereinek csatlakoztatása
 
-  Bizonyos mintákat és munkafolyamatokat könnyű leírni, de annál nehezebb a programkódban implementálni. 
-  A logikai alkalmazások segítenek zökkenőmentes kapcsolatot teremteni a helyszíni és a felhőkörnyezetekben található különálló rendszerek között. Például összekapcsolhat egy felhőbeli marketingmegoldását a helyszíni számlázórendszerrel, vagy központosíthatja az API-k és rendszerek közötti üzenetküldést egy Enterprise Service Bus segítségével. A logikai alkalmazásokkal gyors, megbízható és konzisztens módon hozhatók létre újrahasznosítható és újrakonfigurálható megoldások ezekhez a forgatókönyvekhez.
+Bizonyos mintákat és munkafolyamatokat könnyű leírni, de annál nehezebb a programkódban implementálni. A logikai alkalmazások segítenek zökkenőmentes kapcsolatot teremteni a helyszíni és a felhőkörnyezetekben található különálló rendszerek között. Például összekapcsolhat egy felhőbeli marketingmegoldását a helyszíni számlázórendszerrel, vagy központosíthatja az API-k és rendszerek közötti üzenetküldést egy Enterprise Service Bus segítségével. A logikai alkalmazásokkal gyors, megbízható és konzisztens módon hozhatók létre újrahasznosítható és újrakonfigurálható megoldások ezekhez a forgatókönyvekhez.
 
-* **Vállalati integrációk és B2B-forgatókönyvek első osztályú támogatása**
+### <a name="first-class-support-for-enterprise-integration-and-b2b-scenarios"></a>Vállalati integrációk és B2B-forgatókönyvek első osztályú támogatása
 
-  A vállalatok és az intézmények az iparági szabványoknak megfelelő, de különböző üzenetküldési protokollok és formátumok (pl. EDIFACT, AS2 és X12) használatával kommunikálnak egymással elektronikus formában. 
-  Az [Enterprise Integration Pack (EIP)](../logic-apps/logic-apps-enterprise-integration-overview.md) segítségével olyan logikai alkalmazásokat hozhat létre, amelyek átalakítják a partnerek által használt formátumban lévő üzeneteket saját intézménye rendszerei által felismerhető és feldolgozható formátumokba. A logikai alkalmazások ezeket az átalakításokat zökkenőmentesen és biztonságosan intézik, titkosítás és digitális aláírások használatával.
+A vállalatok és az intézmények az iparági szabványoknak megfelelő, de különböző üzenetküldési protokollok és formátumok (pl. EDIFACT, AS2 és X12) használatával kommunikálnak egymással elektronikus formában. Az [Enterprise Integration Pack (EIP)](../logic-apps/logic-apps-enterprise-integration-overview.md) segítségével olyan logikai alkalmazásokat hozhat létre, amelyek átalakítják a partnerek által használt formátumban lévő üzeneteket saját intézménye rendszerei által felismerhető és feldolgozható formátumokba. A logikai alkalmazások ezeket az átalakításokat zökkenőmentesen és biztonságosan intézik, titkosítás és digitális aláírások használatával.
 
-  Kezdjen kicsiben a jelenlegi rendszereivel és szolgáltatásaival, majd érjen el folyamatos növekedést a saját tempójában. Ha készen áll, a Logic Apps és az EIP segítségével megvalósíthat és vertikálisan felskálázhat olyan fejlettebb integrációs forgatókönyveket, amelyek többek között a következő funkciókat biztosítják:
+Kezdjen kicsiben a jelenlegi rendszereivel és szolgáltatásaival, majd érjen el folyamatos növekedést a saját tempójában. Ha készen áll, a Logic Apps és az EIP segítségével megvalósíthat és vertikálisan felskálázhat olyan fejlettebb integrációs forgatókönyveket, amelyek többek között a következő funkciókat biztosítják:
 
-  * Használja a következő termékeket és szolgáltatásokat: 
-    * [Microsoft BizTalk Server](https://docs.microsoft.com/biztalk/core/introducing-biztalk-server) 
-    * [API Management](../api-management/api-management-key-concepts.md) 
-    * [Azure Functions](../azure-functions/functions-overview.md) 
-    * [Azure Service Bus](../service-bus-messaging/service-bus-messaging-overview.md)
-  * [XML-üzenetek](../logic-apps/logic-apps-enterprise-integration-xml.md) feldolgozása
-  * [Egybesimított fájlok](../logic-apps/logic-apps-enterprise-integration-flatfile.md) feldolgozása
-  * Üzenetváltás az [EDIFACT](../logic-apps/logic-apps-enterprise-integration-edifact.md), [AS2](../logic-apps/logic-apps-enterprise-integration-as2.md), és [X12](../logic-apps/logic-apps-enterprise-integration-x12.md) protokollokkal
-  * A B2B összetevők és egyéb elemek tárolása és kezelése egy helyen az [integrációs fiókok](../logic-apps/logic-apps-enterprise-integration-accounts.md) segítségével:
-    * [Partnerek](../logic-apps/logic-apps-enterprise-integration-partners.md)
-    * [Egyezmények](../logic-apps/logic-apps-enterprise-integration-agreements.md) 
-    * [Leképezések XML-átalakításhoz](../logic-apps/logic-apps-enterprise-integration-maps.md)
-    * [Sémák XML-érvényesítéshez](../logic-apps/logic-apps-enterprise-integration-schemas.md)
+* Használja a következő termékeket és szolgáltatásokat:
 
-* **Írja meg egyszer, használja újra bármikor**
+  * [Microsoft BizTalk Server](https://docs.microsoft.com/biztalk/core/introducing-biztalk-server)
+  * [Azure Functions](../azure-functions/functions-overview.md)
+  * [Azure API Management](../api-management/api-management-key-concepts.md)
+  * [Azure Service Bus](../service-bus-messaging/service-bus-messaging-overview.md)
 
-  Hozza létre logikai alkalmazásait sablonként, hogy több környezetben és régióban is [üzembe helyezhesse és újrakonfigurálhassa az alkalmazásait](../logic-apps/logic-apps-create-deploy-template.md).
+* [XML-üzenetek](../logic-apps/logic-apps-enterprise-integration-xml.md) feldolgozása
+* [Egybesimított fájlok](../logic-apps/logic-apps-enterprise-integration-flatfile.md) feldolgozása
+* Üzenetváltás az [EDIFACT](../logic-apps/logic-apps-enterprise-integration-edifact.md), [AS2](../logic-apps/logic-apps-enterprise-integration-as2.md), és [X12](../logic-apps/logic-apps-enterprise-integration-x12.md) protokollokkal
+* A B2B összetevők és egyéb elemek tárolása és kezelése egy helyen az [integrációs fiókok](../logic-apps/logic-apps-enterprise-integration-accounts.md) segítségével:
 
-* **Beépített bővíthetőség**
+  * [Partnerek](../logic-apps/logic-apps-enterprise-integration-partners.md)
+  * [Egyezmények](../logic-apps/logic-apps-enterprise-integration-agreements.md) 
+  * [XML-átalakítási leképezések](../logic-apps/logic-apps-enterprise-integration-maps.md)
+  * [XML-érvényesítési sémák](../logic-apps/logic-apps-enterprise-integration-schemas.md)
+   
+Ha például a Microsoft BizTalk Servert használja, a logikai alkalmazások a [BizTalk Server-összekötő](../connectors/apis-list.md#on-premises-connectors) segítségével csatlakozhatnak a BizTalk Serverhez és kommunikálhatnak vele. Ezután BizTalk-szerű műveleteket végezhet és terjeszthet ki a logikai alkalmazásokban [integrációs fiókösszekötők](../connectors/apis-list.md#integration-account-connectors) hozzáadásával, amelyek az Enterprise Integration Packban érhetők el. 
 
-  Ha nem találja az egyéni kódok futtatásához kívánt vagy szükséges összekötőt, akkor kibővítheti a logikai alkalmazásokat saját kódrészletei igény szerinti meghívásával az [Azure Functions](../azure-functions/functions-overview.md) szolgáltatáson keresztül. 
-  Létrehozhatja a saját [API-jait](../logic-apps/logic-apps-create-api-app.md) és [egyéni összekötőit](../logic-apps/custom-connector-overview.md), amelyeket meghívhat a logikai alkalmazásokból.
+Ez fordítva is működik, a BizTalk Server csatlakozhat a logikai alkalmazásokhoz és kommunikálhat velük a [Logic Appshez való Microsoft BizTalk Server-adapter](https://www.microsoft.com/download/details.aspx?id=54287) segítségével. Ismerje meg, hogyan [állítható be és használható a BizTalk Server-adapter](https://docs.microsoft.com/biztalk/core/logic-app-adapter) a BizTalk Serverben.
 
-* **Csak a valóban használt funkciókért kell fizetni**
+### <a name="write-once-reuse-often"></a>Írja meg egyszer, használja újra bármikor
+
+Hozza létre logikai alkalmazásait sablonként, hogy több környezetben és régióban is [üzembe helyezhesse és újrakonfigurálhassa az alkalmazásait](../logic-apps/logic-apps-create-deploy-template.md).
+
+### <a name="built-in-extensibility"></a>Beépített bővíthetőség
+
+Ha nem találja az egyéni kódok futtatásához kívánt vagy szükséges összekötőt, akkor kibővítheti a logikai alkalmazásokat saját kódrészletei igény szerinti meghívásával az [Azure Functions](../azure-functions/functions-overview.md) szolgáltatáson keresztül. Létrehozhatja a saját [API-jait](../logic-apps/logic-apps-create-api-app.md) és [egyéni összekötőit](../logic-apps/custom-connector-overview.md), amelyeket meghívhat a logikai alkalmazásokból.
+
+### <a name="pay-only-for-what-you-use"></a>Csak a valóban használt funkciókért kell fizetni
   
-  A Logic Apps használatalapú [díjszabást és méréseket](../logic-apps/logic-apps-pricing.md) használ, hacsak nincsenek korábbi, az App Service-csomagok segítségével létrehozott logikai alkalmazásai is.
+A Logic Apps használatalapú [díjszabást és méréseket](../logic-apps/logic-apps-pricing.md) használ, hacsak nincsenek korábbi, az App Service-csomagok segítségével létrehozott logikai alkalmazásai is.
 
 Többet tudhat meg a Logic Apps szolgáltatásról az alábbi bevezető videókból:
+
 * [Integráció a Logic Apps szolgáltatással – A nulláról a teljességig](https://channel9.msdn.com/Events/Build/2017/C9R17)
 * [Vállalati integráció a Microsoft Azure Logic Apps használatával](https://channel9.msdn.com/Events/Ignite/Microsoft-Ignite-Orlando-2017/BRK2188)
 * [Speciális üzleti folyamatok létrehozása a Logic Apps segítségével](https://channel9.msdn.com/Events/Ignite/Microsoft-Ignite-Orlando-2017/BRK3179)

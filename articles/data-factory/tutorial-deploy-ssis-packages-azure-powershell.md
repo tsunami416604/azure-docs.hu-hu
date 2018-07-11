@@ -13,12 +13,12 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: craigg
-ms.openlocfilehash: 8db6cf93405ce1d7049c6b4165732d59d65b2d62
-ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
+ms.openlocfilehash: 8dc41eb3507368bb810c30a7680b73d0d1f26408
+ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37063175"
+ms.lasthandoff: 06/28/2018
+ms.locfileid: "37085411"
 ---
 # <a name="provision-the-azure-ssis-integration-runtime-in-azure-data-factory-with-powershell"></a>Azure SSIS integrációs modul üzembe helyezése az Azure Data Factoryben PowerShell segítségével
 Ez az oktatóanyag egy Azure-SSIS integrációs modul (IR) az Azure Data Factoryben való üzembe helyezésének lépéseit ismerteti. Ezután az SQL Server Data Tools (SSDT) vagy az SQL Server Management Studio (SSMS) használatával SQL Server Integration Services- (SSIS-) csomagokat helyezhet üzembe és futtathat ebben az Azure-beli modulban. Az oktatóanyag során a következő lépéseket hajtja végre:
@@ -44,8 +44,8 @@ Ez az oktatóanyag egy Azure-SSIS integrációs modul (IR) az Azure Data Factory
 - **Azure PowerShell**. Kövesse [az Azure PowerShell telepítését és konfigurálását](/powershell/azure/install-azurerm-ps) ismertető cikkben szereplő utasításokat. Egy PowerShell-lel futtatott szkripttel üzembe helyez egy Azure SSIS integrációs modult, amely a felhőben futtat SSIS-csomagokat. 
 
 > [!NOTE]
-> - Adat-előállítót a következő régiókban hozhat létre: USA keleti régiója, USA 2. keleti régiója, Délkelet-Ázsia és Nyugat-Európa. 
-> - A következő régiókban hozhat létre Azure-SSIS integrációs modult: USA keleti régiója, USA 2. keleti régiója, USA középső régiója, USA 2. nyugati régiója, Észak-Európa, Nyugat-Európa, az Egyesült királyság déli régiója és Kelet-Ausztrália.
+> - Azon Azure-régiók megtekintéséhez, amelyekben jelenleg elérhető a Data Factory, a következő lapon válassza ki az Önt érdeklő régiókat, majd bontsa ki az **Elemzés** részt, és keresse meg a **Data Factory**: [Elérhető termékek régiók szerint](https://azure.microsoft.com/global-infrastructure/services/) szakaszt. 
+> - Azon Azure-régiók megtekintéséhez, amelyekben jelenleg elérhető az Azure-SSIS integrációs modul, a következő lapon válassza ki az Önt érdeklő régiókat, majd bontsa ki az **Elemzés** részt, és keresse meg az **SSIS integrációs modul**: [Elérhető termékek régiók szerint](https://azure.microsoft.com/global-infrastructure/services/) szakaszt.
 
 ## <a name="launch-windows-powershell-ise"></a>A Windows PowerShell integrált parancsprogram-kezelési környezet (ISE) indítása
 Indítsa el a **Windows PowerShell integrált parancsprogram-kezelési környezetet** rendszergazdai jogosultságokkal. 
@@ -60,13 +60,11 @@ $SubscriptionName = "[Azure subscription name]"
 $ResourceGroupName = "[Azure resource group name]"
 # Data factory name. Must be globally unique
 $DataFactoryName = "[Data factory name]"
-# You can create a data factory in the following regions: East US, East US 2, Southeast Asia, and West Europe. 
 $DataFactoryLocation = "EastUS"
 
 # Azure-SSIS integration runtime information. This is a Data Factory compute resource for running SSIS packages
 $AzureSSISName = "[Specify a name for your Azure-SSIS IR]"
 $AzureSSISDescription = "[Specify a description for your Azure-SSIS IR]"
-# You can create Azure-SSIS IR in the following regions: East US, East US 2, Central US, West US 2, North Europe, West Europe, UK South, Australia East. 
 $AzureSSISLocation = "EastUS"
 # In public preview, only Standard_A4_v2, Standard_A8_v2, Standard_D1_v2, Standard_D2_v2, Standard_D3_v2, Standard_D4_v2 are supported
 $AzureSSISNodeSize = "Standard_D4_v2"
@@ -231,13 +229,11 @@ $SubscriptionName = "[Azure subscription name]"
 $ResourceGroupName = "[Azure resource group name]"
 # Data factory name. Must be globally unique
 $DataFactoryName = "[Data factory name]"
-# You can create a data factory of in the following regions: East US, East US 2, Southeast Asia, and West Europe. 
 $DataFactoryLocation = "EastUS"
 
 # Azure-SSIS integration runtime information. This is a Data Factory compute resource for running SSIS packages
 $AzureSSISName = "[Specify a name for your Azure-SSIS IR]"
 $AzureSSISDescription = "[Specify a description for your Azure-SSIS IR]"
-# You can create Azure-SSIS IR in the following regions: East US, East US 2, Central US, West US 2, North Europe, West Europe, UK South, Australia East. 
 $AzureSSISLocation = "EastUS"
 # In public preview, only Standard_A4_v2, Standard_A8_v2, Standard_D1_v2, Standard_D2_v2, Standard_D3_v2, Standard_D4_v2 are supported
 $AzureSSISNodeSize = "Standard_D4_v2"

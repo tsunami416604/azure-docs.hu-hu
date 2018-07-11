@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 05/21/2018
 ms.author: tomfitz
 ms.custom: mvc
-ms.openlocfilehash: eec54e0074cbc00fb8c51cf28ba477ef75f99a3c
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 42f7d767162f2f403b2cf921e31a38b711a3c773
+ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34657240"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37438234"
 ---
 # <a name="tutorial-learn-about-windows-virtual-machine-governance-with-azure-powershell"></a>Oktatóanyag: Windowsos virtuális gépek vezérlése az Azure PowerShell-lel
 
@@ -55,7 +55,7 @@ A virtuálisgép-megoldások kezeléséhez három erőforrás-specifikus szerepk
 * [Hálózati közreműködő](../../role-based-access-control/built-in-roles.md#network-contributor)
 * [Tárfiók-közreműködő](../../role-based-access-control/built-in-roles.md#storage-account-contributor)
 
-Ahelyett, hogy szerepköröket rendelne az egyéni felhasználókhoz, gyakran célszerűbb [létrehozni egy Azure Active Directory-csoportot](../../active-directory/active-directory-groups-create-azure-portal.md) azoknak a felhasználóknak, akiknek hasonló műveleteket kell elvégezniük. Ezután rendelje hozzá a csoportot a megfelelő szerepkörhöz. Ebben a cikkben az egyszerűség kedvéért egy tagok nélküli Azure Active Directory-csoportot fog létrehozni. A csoportot így is hozzárendelheti egy szerepkörhöz, hogy legyen hatóköre. 
+Ahelyett, hogy szerepköröket rendelne az egyéni felhasználókhoz, gyakran célszerűbb [létrehozni egy Azure Active Directory-csoportot](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md) azoknak a felhasználóknak, akiknek hasonló műveleteket kell elvégezniük. Ezután rendelje hozzá a csoportot a megfelelő szerepkörhöz. Ebben a cikkben az egyszerűség kedvéért egy tagok nélküli Azure Active Directory-csoportot fog létrehozni. A csoportot így is hozzárendelheti egy szerepkörhöz, hogy legyen hatóköre. 
 
 Az alábbi példa egy olyan Azure Active Directory-csoportot hoz létre, amelynek a neve *VMDemoContributors*, a levelezési beceneve pedig *vmDemoGroup*. A levelezési becenév a csoport aliasaként szolgál.
 
@@ -194,7 +194,7 @@ Set-AzureRmResource -Tag @{ Dept="IT"; Environment="Test"; Project="Documentatio
 
 ### <a name="find-resources-by-tag"></a>Erőforrások keresése címke szerint
 
-Az adott címkenévvel és -értékkel rendelkező erőforrások kereséséhez használja a [Find-AzureRmResource](/powershell/module/azurerm.resources/find-azurermresource) parancsot:
+Az adott címkenévvel és -értékkel rendelkező erőforrások kereséséhez használja a [Get-AzureRmResource](/powershell/module/azurerm.resources/get-azurermresource) parancsot:
 
 ```azurepowershell-interactive
 (Get-AzureRmResource -Tag @{ Environment="Test"}).Name

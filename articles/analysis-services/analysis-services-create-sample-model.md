@@ -1,23 +1,23 @@
 ---
-title: Oktatóanyag – Egyszerű mintamodell hozzáadása Azure Analysis Services-kiszolgálóhoz a portál használatával | Microsoft Docs
+title: Oktatóanyag – Alapszintű mintamodell hozzáadása az Azure Analysis Services-kiszolgálóhoz a portál használatával | Microsoft Docs
 description: Az oktatóanyagnak ez a leckéje a mintamodellek hozzáadását ismerteti az Azure Analysis Servicesben.
 author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: tutorial
-ms.date: 05/23/2018
+ms.date: 07/03/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: f44e33d2b735b6743b2b74760f816442c2cd17fe
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: c63995a461cee6bc39603a43604b8080942bd88b
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34596787"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37442807"
 ---
 # <a name="tutorial-add-a-sample-model-from-the-portal"></a>Oktatóanyag : Mintamodell hozzáadása a portálról
 
-Az oktatóanyag elvégzése során egyszerű táblázatos Adventure Works-modelladatbázist adhat hozzá kiszolgálójához. A mintamodell az Adventure Works Internet Sales (1200) minta-adatmodell kiegészített változata. A mintamodellek a modellkezelés, az eszközökhöz és ügyfélalkalmazásokhoz való kapcsolódás és a modelladatok lekérdezése tesztelésekor hasznosak. Ez az oktatóanyag az [Azure Portalt](https://portal.azure.com) és az [SQL Server Management Studiót](/sql/ssms/download-sql-server-management-studio-ssms.md) (SSMS) használja a következőkhöz: 
+Az oktatóanyag elvégzése során egyszerű táblázatos Adventure Works-modelladatbázist adhat hozzá kiszolgálójához. A mintamodell az Adventure Works Internet Sales (1200) minta-adatmodell kiegészített változata. A mintamodellek a modellkezelés, az eszközökhöz és ügyfélalkalmazásokhoz való kapcsolódás és a modelladatok lekérdezése tesztelésekor hasznosak. Ez az oktatóanyag az [Azure Portalt](https://portal.azure.com) és az [SQL Server Management Studiót](/sql/ssms/download-sql-server-management-studio-ssms) (SSMS) használja a következőkhöz: 
 
 > [!div class="checklist"]
 > * Kiegészített táblázatos adatmodell-minta hozzáadása kiszolgálóhoz 

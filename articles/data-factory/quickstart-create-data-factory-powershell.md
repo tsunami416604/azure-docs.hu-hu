@@ -13,12 +13,12 @@ ms.devlang: powershell
 ms.topic: hero-article
 ms.date: 01/22/2018
 ms.author: jingwang
-ms.openlocfilehash: f31282af79f3f091f8147124afe9d4cbeb641196
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: 17be4668bacaf94b0421f6cce83dfcf98f302f60
+ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37049538"
+ms.lasthandoff: 06/28/2018
+ms.locfileid: "37081140"
 ---
 # <a name="create-an-azure-data-factory-using-powershell"></a>Azure-beli adat-előállító létrehozása a PowerShell használatával 
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -91,7 +91,7 @@ Vegye figyelembe a következő szempontokat:
     The specified Data Factory name 'ADFv2QuickStartDataFactory' is already in use. Data Factory names must be globally unique.
     ```
 * Data Factory-példányok létrehozásához a felhasználói fióknak, amellyel belép az Azure-ba, a **közreműködő** vagy **tulajdonos** szerepkörök tagjának, vagy az Azure-előfizetés **rendszergazdájának** kell lennie.
-* A Data Factory jelenleg csak az USA keleti régiójában, az USA 2. keleti régiójában és a nyugat-európai régióban teszi lehetővé adat-előállítók létrehozását. Az adat-előállítók által használt adattárak (Azure Storage, Azure SQL Database stb.) és számítási erőforrások (HDInsight stb.) más régiókban is lehetnek.
+* Azon Azure-régiók megtekintéséhez, amelyekben jelenleg elérhető a Data Factory, a következő lapon válassza ki az Önt érdeklő régiókat, majd bontsa ki az **Elemzés** részt, és keresse meg a **Data Factory**: [Elérhető termékek régiók szerint](https://azure.microsoft.com/global-infrastructure/services/) szakaszt. Az adat-előállítók által használt adattárak (Azure Storage, Azure SQL Database stb.) és számítási erőforrások (HDInsight stb.) más régiókban is lehetnek.
 
 ## <a name="create-a-linked-service"></a>Társított szolgáltatás létrehozása
 

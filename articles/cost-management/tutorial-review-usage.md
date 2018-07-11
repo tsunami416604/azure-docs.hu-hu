@@ -5,16 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 04/26/2018
+ms.date: 06/07/2018
 ms.topic: tutorial
 ms.service: cost-management
 ms.custom: ''
 manager: dougeby
-ms.openlocfilehash: 79857f05505a59de94d7a6926afe38cceeac34f3
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 5505ec8dd25e5468fad81d4eb26980202425969a
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 07/04/2018
+ms.locfileid: "35628125"
 ---
 <!-- Intent: As a cloud-consuming user, I need to view usage and costs for my cloud resources and services.
 -->
@@ -27,6 +28,7 @@ Az Azure Cost Managementben megtekintheti a használati mutatókat és a költs�
 > * Használati és költségtrendek követése
 > * A használat hatékonysági hiányosságainak észlelése
 > * Szokatlan kiadásokra és túlköltekezésre figyelmeztető riasztások létrehozása
+> * Adatok exportálása
 
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 
@@ -41,7 +43,7 @@ A használati és költségadatokat a Cloudyn portálon tekintheti át. Nyissa m
 
 ## <a name="track-usage-and-cost-trends"></a>Használati és költségtrendek követése
 
-A használattal és költségekkel kapcsolatos tényleges kiadásokat időalapú jelentésekkel követheti, és megfigyelheti a kirajzolódó tendenciákat. A tendenciák követéséhez használja a tényleges időalapú költségeket tartalmazó jelentést. A portál tetején lévő menüben kattintson a **Costs**(Költségek) > **Cost Analysis**(Költségelemzés) > **Actual Cost Over Time** (Tényleges időalapú költségek) elemre. Amikor először megnyitja a jelentést, még nincsenek beállítva rajta csoportok vagy szűrők.
+A használattal és költségekkel kapcsolatos tényleges kiadásokat időalapú jelentésekkel követheti, és megfigyelheti a kirajzolódó tendenciákat. A tendenciák követéséhez használja a tényleges időalapú költségeket tartalmazó jelentést. A portál bal felső részén kattintson a **Costs**(Költségek) > **Cost Analysis**(Költségelemzés) > **Actual Cost Over Time** (Tényleges időalapú költségek) elemre. Amikor először megnyitja a jelentést, még nincsenek beállítva rajta csoportok vagy szűrők.
 
 Egy példa a jelentésekre:
 
@@ -89,12 +91,15 @@ Az érintetteket automatikusan figyelmeztetheti a rendellenes kiadásokról és 
 
 Riasztásokat bármely kiadáshoz és bármely költségjelentés alapján létrehozhat. Példánkban a rendszer a tényleges időalapú költségeket tartalmazó jelentés alapján értesíti, amint az Azure-beli virtuális gépekkel kapcsolatos kiadások megközelítik a teljes költségkeretet. Az összes további lépés szükséges a riasztás létrehozásához. A portál tetején lévő menüben kattintson a **Costs**(Költségek) > **Cost Analysis**(Költségelemzés) > **Actual Cost Over Time** (Tényleges időalapú költségek) elemre. A **Groups** (Csoportok) alatt állítsa be a **Service** (Szolgáltatás), a **Filter on the service** (Szűrés a következő szolgáltatásra) alatt pedig az **Azure/VM** (Azure/virtuális gép) lehetőséget. A jelentés jobb felső sarkában kattintson az **Actions** (Műveletek) gombra, majd válassza a **Schedule report** (Jelentés ütemezése) lehetőséget.
 
-A **Scheduling** (Ütemezés) lapon állítsa be a jelentés elküldését a saját e-mail-címére a kívánt gyakorisággal. Ügyeljen arra, hogy a **Send via email** (Küldés e-mailben) beállítás legyen kiválasztva. Az e-mailben küldött jelentés az összes használt címkét, csoportosítást és szűrőt tartalmazza majd. Kattintson a **Threshold** (Küszöbérték) lapra, és válassza az **Actual Cost vs. Threshold** (Tényleges költségek a küszöbértékhez képest) lehetőséget. Ha a teljes költségvetése 500 000 dollár, és szeretne értesítést kapni, amikor a költségek elérik ennek a felét, hozzon létre egy **vörös riasztást** 250 000 és egy **sárga riasztást** 240 000 dollárra. A megadott értékekben ne használjon vesszőt. Ezután válassza ki az egymást követő riasztások számát. Ha a riasztások száma eléri a megadott számot, a rendszer nem küld további riasztásokat. Mentse az ütemezett jelentést.
+A jelentés mentésére vagy ütemezésére szolgáló mező **Scheduling** (Ütemezés) lapján állítsa be a jelentés elküldését a saját e-mail-címére a kívánt gyakorisággal. Ügyeljen arra, hogy a **Send via email** (Küldés e-mailben) beállítás legyen kiválasztva. Az e-mailben küldött jelentés az összes használt címkét, csoportosítást és szűrőt tartalmazza majd. Kattintson a **Threshold** (Küszöbérték) lapra, és válassza az **Actual Cost vs. Threshold** (Tényleges költségek a küszöbértékhez képest) lehetőséget. Ha a teljes költségvetése 500 000 dollár, és szeretne értesítést kapni, amikor a költségek elérik ennek a felét, hozzon létre egy **vörös riasztást** 250 000 és egy **sárga riasztást** 240 000 dollárra. A megadott értékekben ne használjon vesszőt. Ezután válassza ki az egymást követő riasztások számát. Ha a riasztások száma eléri a megadott számot, a rendszer nem küld további riasztásokat. Mentse az ütemezett jelentést.
 
 ![példa jelentésre](./media/tutorial-review-usage/schedule-alert01.png)
 
 Azt is megteheti, hogy a Cost Percentage vs. Budget (Költségszázalék a költségvetési küszöbértékhez képest) mutatót választja a riasztások alapjául. Ennek a mutatónak a használatával pontos összegek helyett a költségvetés százalékos arányában határozhatja meg a küszöböket.
 
+## <a name="export-data"></a>Adatok exportálása
+
+A jelentésekhez kapcsolódó riasztások létrehozásához hasonlóan a jelentésekből adatokat is exportálhat. Előfordulhat például, hogy a Cloudyn-fiókok listáját vagy más felhasználói adatokat szeretne exportálni. Egy jelentés exportálásához nyissa meg a jelentést, majd kattintson a jobb felső sarokban található **Actions** (Műveletek) gombra. Kiválaszthatja például az **Export all report data** (Az összes jelentésadat exportálása) elemet, így letöltheti és kinyomtathatja az információkat. Másik lehetőségként kiválaszthatja a **Schedule report** (Jelentés ütemezése) beállítást a jelentés e-mailben történő elküldésének ütemezéséhez.
 
 ## <a name="next-steps"></a>További lépések
 
@@ -104,6 +109,7 @@ Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 > * Használati és költségtrendek követése
 > * A használat hatékonysági hiányosságainak észlelése
 > * Szokatlan kiadásokra és túlköltekezésre figyelmeztető riasztások létrehozása
+> * Adatok exportálása
 
 
 A következő oktatóanyag azt mutatja be, hogyan jelezheti előre a kiadásokat az előzményadatok alapján.

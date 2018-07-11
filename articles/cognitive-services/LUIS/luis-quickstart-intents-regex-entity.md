@@ -7,16 +7,16 @@ manager: kaiqb
 ms.service: cognitive-services
 ms.component: luis
 ms.topic: tutorial
-ms.date: 06/18/2018
+ms.date: 06/29/2018
 ms.author: v-geberr
-ms.openlocfilehash: 317d5b37b90f6c436e3cecf0486d587f54960598
-ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
+ms.openlocfilehash: 522d24c1c03a338633c340502087300c890d1771
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/22/2018
-ms.locfileid: "36316542"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37128445"
 ---
-# <a name="tutorial-use-regular-expression-entity"></a>Oktatóanyag: Reguláriskifejezés-entitás használata
+# <a name="tutorial-3-add-regular-expression-entity"></a>Oktatóanyag: 3. Reguláriskifejezés-entitás hozzáadása
 Ebben az oktatóanyagban létrehoz egy alkalmazást, amely bemutatja, hogyan nyerhető ki konzisztensen formázott adat egy kimondott szövegből a **Reguláris kifejezés** entitás segítségével.
 
 
@@ -31,7 +31,7 @@ Ebben az oktatóanyagban létrehoz egy alkalmazást, amely bemutatja, hogyan nye
 Ehhez a cikkhez egy ingyenes [LUIS](luis-reference-regions.md#luis-website)-fiókra van szüksége a LUIS-alkalmazás létrehozásához.
 
 ## <a name="before-you-begin"></a>Előkészületek
-Ha még nincs meg az Emberi erőforrások alkalmazása az előre összeállított entitások [egyéni tartomány](luis-tutorial-prebuilt-intents-entities.md) oktatóanyagából, [importálja](create-new-app.md#import-new-app) a [LUIS-minták](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/quickstarts/custom-domain-prebuilts-HumanResources.json) GitHub-adattárból a JSON-t egy új alkalmazásba a [LUIS](luis-reference-regions.md#luis-website) webhelyén.
+Ha még nincs meg az Emberi erőforrások alkalmazása az [előre összeállított entitások](luis-tutorial-prebuilt-intents-entities.md) oktatóanyagából, [importálja](create-new-app.md#import-new-app) a [LUIS-minták](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/quickstarts/custom-domain-prebuilts-HumanResources.json) GitHub-adattárból a JSON-t egy új alkalmazásba a [LUIS](luis-reference-regions.md#luis-website) webhelyén.
 
 Ha meg szeretné tartani az eredeti Emberi erőforrások alkalmazást, klónozza a [Settings](luis-how-to-manage-versions.md#clone-a-version) (Beállítások) lapon a verziót, és adja neki a következő nevet: `regex`. A klónozás nagyszerű mód, hogy kísérletezhessen a különböző LUIS-funkciókkal anélkül, hogy az az eredeti verzióra hatással lenne. 
 
@@ -144,54 +144,70 @@ Ahhoz, hogy LUIS-előrejelzéseket kaphasson egy csevegőrobotban vagy más alka
 
     ![A Publish (Közzététel) lap képernyőképe a kiemelt végponti URL-címmel](./media/luis-quickstart-intents-regex-entity/publish-select-endpoint.png)
 
-2. Lépjen az URL-cím végéhez, és írja be a következőt: `When were HRF-123456 and hrf-234567 published?`. Az utolsó lekérdezésisztring-paraméter `q`, a kimondott szöveg pedig a **query**. A kimondott szöveg nem egyezik meg egyik címkézett kimondott szöveggel sem, ezért tesztnek pont megfelelő, és `FindForm` szándékot kell visszaadnia `HRF-123456` és `hrf-234567` űrlapszámmal.
+2. Lépjen az URL-cím végéhez, és írja be a következőt: `When were HRF-123456 and hrf-234567 published in the last year?`. Az utolsó lekérdezésisztring-paraméter `q`, a kimondott szöveg pedig a **query**. A kimondott szöveg nem egyezik meg egyik címkézett kimondott szöveggel sem, ezért tesztnek pont megfelelő, és `FindForm` szándékot kell visszaadnia `HRF-123456` és `hrf-234567` űrlapszámmal.
 
     ```
     {
-      "query": "When were HRF-123456 and hrf-234567 published?",
+      "query": "When were HRF-123456 and hrf-234567 published in the last year?",
       "topScoringIntent": {
         "intent": "FindForm",
-        "score": 0.970179737
+        "score": 0.9993477
       },
       "intents": [
         {
           "intent": "FindForm",
-          "score": 0.970179737
+          "score": 0.9993477
         },
         {
           "intent": "ApplyForJob",
-          "score": 0.0131893409
-        },
-        {
-          "intent": "Utilities.StartOver",
-          "score": 0.00364777143
+          "score": 0.0206110049
         },
         {
           "intent": "GetJobInformation",
-          "score": 0.0024568392
+          "score": 0.00533067342
+        },
+        {
+          "intent": "Utilities.StartOver",
+          "score": 0.004215215
         },
         {
           "intent": "Utilities.Help",
-          "score": 0.00173760345
+          "score": 0.00209096959
         },
         {
           "intent": "None",
-          "score": 0.00173070864
-        },
-        {
-          "intent": "Utilities.Confirm",
-          "score": 0.00130692765
+          "score": 0.0017655947
         },
         {
           "intent": "Utilities.Stop",
-          "score": 0.00130328839
+          "score": 0.00109490135
+        },
+        {
+          "intent": "Utilities.Confirm",
+          "score": 0.0005704638
         },
         {
           "intent": "Utilities.Cancel",
-          "score": 0.0006671795
+          "score": 0.000525338168
         }
       ],
       "entities": [
+        {
+          "entity": "last year",
+          "type": "builtin.datetimeV2.daterange",
+          "startIndex": 53,
+          "endIndex": 61,
+          "resolution": {
+            "values": [
+              {
+                "timex": "2017",
+                "type": "daterange",
+                "start": "2017-01-01",
+                "end": "2018-01-01"
+              }
+            ]
+          }
+        },
         {
           "entity": "hrf-123456",
           "type": "HRF-number",
@@ -237,10 +253,10 @@ A csevegőrobot már elég információval rendelkezik az elsődleges művelet (
 A LUIS végzett ezzel a kéréssel. A hívó alkalmazás, például egy csevegőrobot felhasználhatja a topScoringIntent eredményt és az űrlapszámokat, és kereshet egy harmadik fél API-t. Ezt nem végzi el a LUIS. A LUIS csak azt határozza meg, hogy mi a felhasználó szándéka, és kinyeri a szándék alapján az adatokat. 
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
-Ha már nincs rá szükség, törölje a LUIS-alkalmazást. Ehhez válassza az alkalmazáslistában az alkalmazás neve mellett jobbra található három pontot (...), majd a **Delete** (Törlés) lehetőséget. A **Delete app?** (Törli az alkalmazást?) előugró párbeszédpanelen válassza az **OK** lehetőséget.
+Ha már nincs rá szükség, törölje a LUIS-alkalmazást. Válassza a **My apps** (Saját alkalmazások) elemet a bal oldali menüben. Válassza az alkalmazáslistában az alkalmazás neve mellett jobbra található három pontot (...), majd a **Delete** (Törlés) lehetőséget. A **Delete app?** (Törli az alkalmazást?) előugró párbeszédpanelen válassza az **OK** lehetőséget.
 
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Tudnivalók a KeyPhrase entitásról](luis-quickstart-intent-and-key-phrase.md)
+> [Tudnivalók a listaentitásról](luis-quickstart-intent-and-list-entity.md)
 

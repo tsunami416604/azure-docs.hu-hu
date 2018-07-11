@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 01/11/2018
 ms.author: shlo
-ms.openlocfilehash: ae0247df0bbde07e755bd910bca08b8703969cec
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: e4e90082f483720699fb029db33bc8110173c0aa
+ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37047275"
+ms.lasthandoff: 06/28/2018
+ms.locfileid: "37082954"
 ---
 # <a name="introduction-to-azure-data-factory"></a>Az Azure Data Factory bemutatása 
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -113,11 +113,11 @@ A Data Factory alapelveivel kapcsolatban további információkat a következő 
 
 ## <a name="supported-regions"></a>Támogatott régiók
 
-Jelenleg az USA keleti régiójában, az USA 2. keleti régiójában és a nyugat-európai régióban hozhat létre data factoryt. A data factory azonban más Azure-régiókban lévő adattárakhoz és számítási szolgáltatásokhoz is hozzáférhet az adatok adattárak közötti mozgatása vagy az adatok számítási szolgáltatásokkal történő feldolgozása érdekében.
+Azon Azure-régiók megtekintéséhez, amelyekben jelenleg elérhető a Data Factory, a következő lapon válassza ki az Önt érdeklő régiókat, majd bontsa ki az **Elemzés** részt, és keresse meg a **Data Factory**: [Elérhető termékek régiók szerint](https://azure.microsoft.com/global-infrastructure/services/) szakaszt. A data factory azonban más Azure-régiókban lévő adattárakhoz és számítási szolgáltatásokhoz is hozzáférhet az adatok adattárak közötti mozgatása vagy az adatok számítási szolgáltatásokkal történő feldolgozása érdekében.
 
 Maga az Azure Data Factory nem tárol adatokat. Lehetővé teszi viszont olyan adatvezérelt munkafolyamatok létrehozását, amelyekkel előkészíthető a támogatott adattárak közötti adatmozgás és az adatok számítási szolgáltatásokkal történő feldolgozása más régiókban, illetve helyszíni környezetben. Lehetővé teszi továbbá a munkafolyamatok monitorozását és kezelését mind szoftveres, mind pedig felhasználói felületi mechanizmusokkal.
 
-Bár a Data Factory csak az USA keleti régiójában, az USA 2. keleti régiójában, illetve a nyugat-európai régióban érhető el, az adatok Data Factoryval történő áthelyezését biztosító szolgáltatás globálisan számos régióban elérhető. Ha az adattár tűzfal mögött található, akkor a helyszíni környezetben telepített helyi Integration Runtime végzi az adatok áthelyezését.
+Bár a Data Factory csak bizonyos régiókban érhető el, az adatok Data Factoryval történő áthelyezését biztosító szolgáltatás globálisan számos régióban elérhető. Ha az adattár tűzfal mögött található, akkor a helyszíni környezetben telepített helyi Integration Runtime végzi az adatok áthelyezését.
 
 Tegyük fel például, hogy számítási környezetei, mint például az Azure HDInsight-fürt és az Azure Machine Learning a nyugat-európai régión kívül futnak. Létrehozhat egy Azure Data Factory-példányt az USA keleti vagy 2. keleti régiójában, és felhasználhatja a Nyugat-Európában lévő számítási környezetein futtatott feladatok ütemezéséhez. A Data Factory néhány ezredmásodperc alatt aktiválja a feladatot a számítási környezetben, a feladatnak a számítási környezetben való futtatásához szükséges idő viszont nem változik.
 

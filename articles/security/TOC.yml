@@ -194,6 +194,10 @@
           href: ./blueprints/fedramp-iaaswa-overview.md
         - name: PaaS webalkalmazás
           href: ./blueprints/fedramp-paaswa-overview.md
+    - name: TIC
+      items:
+        - name: Trusted Internet Connection az Azure-ral
+          href: ./compliance/compliance-tic.md
     - name: PCI DSS
       items:
         - name: Adatelemzés

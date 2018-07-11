@@ -3,7 +3,7 @@ title: Rövid útmutató – Linux rendszerű virtuális gép létrehozása az A
 description: Ez a rövid útmutató a Linux rendszerű virtuális gépek az Azure Portallal történő létrehozását ismerteti.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
-author: iainfoulds
+author: cynthn
 manager: jeconnoc
 editor: tysonn
 tags: azure-resource-manager
@@ -13,15 +13,15 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 04/24/2018
-ms.author: iainfou
+ms.date: 07/03/2018
+ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 18ac0291bff2c0fbfffdd5dfa3097f8a6acb561f
-ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
+ms.openlocfilehash: 03d4ad081a788299bab563ca6b956edc347732da
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "34012883"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37447958"
 ---
 # <a name="quickstart-create-a-linux-virtual-machine-in-the-azure-portal"></a>Rövid útmutató: Linux rendszerű virtuális gép létrehozása az Azure Portalon
 
@@ -63,7 +63,7 @@ Jelentkezzen be az Azure Portalra a http://portal.azure.com címen.
 
     ![Képernyőkép a virtuális gépek méreteivel](./media/quick-create-portal/create-linux-vm-portal-sizes.png)
 
-5. A **Beállítások** menüpont alatt tartsa meg az alapértelmezett beállításokat, majd kattintson az **OK** gombra.
+5. A **Beállítások** lap **Hálózat** > **Hálózati biztonsági csoport** > **területén válassza a nyilvános bejövő portokat**, majd válassza a **HTTP** és az **SSH(22)** lehetőséget. Tartsa meg az alapértelmezett értékeket a többi beállításnál, majd kattintson az **OK** gombra.
 
 6. Az Összefoglalás lapon válassza a **Létrehozás** lehetőséget a virtuális gép üzembe helyezésének megkezdéséhez.
 
@@ -99,14 +99,6 @@ sudo apt-get -y install nginx
 
 Ha ezzel elkészült, az `exit` paranccsal lépjen ki az SSH-munkamenetből, és térjen vissza a virtuális gép tulajdonságaihoz az Azure Portalon.
 
-## <a name="open-port-80-for-web-traffic"></a>A 80-as port megnyitása a webes adatforgalom számára
-
-A hálózati biztonsági csoport (NSG) feladata a bejövő és kimenő forgalom védelme. Ha létrehoz egy virtuális gépet az Azure Portalon, a 22-es porton létrejön egy bejövő szabály az SSH-kapcsolatok számára. Mivel ezen a virtuális gépen egy webkiszolgáló üzemel, a 80-as porthoz létre kell hoznia egy NSG-szabályt.
-
-1. A virtuális gép áttekintő oldalán válassza a **Hálózat** elemet.
-2. Megjelenik a meglévő bejövő vagy kimenő szabályok listája. Válassza a **Bejövő-portszabály hozzáadása** lehetőséget.
-3. Válassza felül az **Alapszintű** lehetőséget, majd válassza a *HTTP* szolgáltatást az elérhető szolgáltatások listájából. A rendszer automatikusan megadja a 80-as portot, a prioritást és egy nevet.
-4. A szabály létrehozásához kattintson a **Hozzáadás** parancsra.
 
 ## <a name="view-the-web-server-in-action"></a>A webkiszolgáló működésének ellenőrzése
 

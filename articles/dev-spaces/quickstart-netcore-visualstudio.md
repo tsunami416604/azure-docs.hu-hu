@@ -11,12 +11,12 @@ ms.topic: quickstart
 description: Gyors Kubernetes-fejlesztés tárolókkal és mikroszolgáltatásokkal az Azure-ban
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, tárolók
 manager: douge
-ms.openlocfilehash: 3b0e03d47a03411e3e6dc2d073d5087bcb42e03e
-ms.sourcegitcommit: 0408c7d1b6dd7ffd376a2241936167cc95cfe10f
+ms.openlocfilehash: 43b232e612f2ea4b47789e29a7f241bf4c35271d
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/26/2018
-ms.locfileid: "36960423"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37100121"
 ---
 # <a name="quickstart-create-a-kubernetes-dev-space-with-azure-dev-spaces-net-core-and-visual-studio"></a>Rövid útmutató: Kubernetes Dev Spaces-tér létrehozása az Azure Dev Spaces segítségével (.NET Core és Visual Studio)
 
@@ -39,7 +39,7 @@ Ebből az útmutatóból a következőket tudhatja meg:
 
 ## <a name="set-up-azure-dev-spaces"></a>Az Azure Dev Spaces beállítása
 
-Telepítse az [Azure Dev Spaceshez készült Visual Studio-bővítményt](https://aka.ms/get-azds-visualstudio).
+[A Kuberneteshez készült Visual Studio-eszközök](https://aka.ms/get-azds-visualstudio) telepítése.
 
 ## <a name="connect-to-a-cluster"></a>Csatlakozás fürthöz
 

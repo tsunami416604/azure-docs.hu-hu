@@ -1,5 +1,5 @@
 ---
-title: .NET-alkalmazás létrehozása a Service Fabrichez | Microsoft Docs
+title: .NET-alkalmazás létrehozása a Service Fabricben az Azure-ban | Microsoft Docs
 description: Ez az oktatóanyag azt ismerteti, hogyan hozhat létre egy alkalmazást az ASP.NET Core kezelőfelülete és egy megbízható állapotalapú háttérszolgáltatás segítségével, majd hogyan helyezheti üzembe az alkalmazást egy fürtön.
 services: service-fabric
 documentationcenter: .net
@@ -12,17 +12,18 @@ ms.devlang: dotNet
 ms.topic: tutorial
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 06/15/2018
+ms.date: 06/28/2018
 ms.author: ryanwi
 ms.custom: mvc
-ms.openlocfilehash: a1197277b97c14e95bdab67f7c3d00b75a841f22
-ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
+ms.openlocfilehash: 4aac44d46b6c5d202431aa34a1dc7b962466c799
+ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36267574"
+ms.lasthandoff: 07/02/2018
+ms.locfileid: "37346188"
 ---
 # <a name="tutorial-create-and-deploy-an-application-with-an-aspnet-core-web-api-front-end-service-and-a-stateful-back-end-service"></a>Oktatóanyag: Alkalmazás létrehozása és üzembe helyezése egy ASP.NET Core Web API kezelőfelületi szolgáltatás és egy állapotalapú háttérszolgáltatás segítségével
+
 Ez az oktatóanyag egy sorozat első része.  Megtudhatja, hogyan hozhat létre egy Azure Service Fabric-alkalmazást egy ASP.NET Core Web API kezelőfelületi és egy állapotalapú háttérszolgáltatás segítségével az adatok tárolásához. Az útmutató elvégzése után rendelkezni fog egy ASP.NET Core webes kezelőfelületes szavazóalkalmazással, amely egy, a fürtben található állapotalapú háttérszolgáltatásba menti a szavazati adatokat. Ha nem szeretné manuálisan létrehozni a szavazóalkalmazást, akkor [letöltheti a forráskódot](https://github.com/Azure-Samples/service-fabric-dotnet-quickstart/) a kész alkalmazáshoz, és folytathatja a [mintául szolgáló szavazóalkalmazás bemutatásával](#walkthrough_anchor).  Ha szeretné, megtekintheti az oktatóanyag [útmutató videóját](https://channel9.msdn.com/Events/Connect/2017/E100).
 
 ![Alkalmazásdiagram](./media/service-fabric-tutorial-create-dotnet-app/application-diagram.png)
@@ -43,12 +44,14 @@ Ebben az oktatóanyag-sorozatban az alábbiakkal ismerkedhet meg:
 > * [Figyelés és diagnosztika beállítása az alkalmazáshoz](service-fabric-tutorial-monitoring-aspnet.md)
 
 ## <a name="prerequisites"></a>Előfeltételek
+
 Az oktatóanyag elkezdése előtt:
-- Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
-- [Telepítse a Visual Studio 2017](https://www.visualstudio.com/) 15.5-ös vagy újabb verzióját az **Azure-fejlesztési** és az **ASP.NET- és webfejlesztési** számítási feladattal.
-- [A Service Fabric SDK telepítése](service-fabric-get-started.md)
+* Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+* [Telepítse a Visual Studio 2017](https://www.visualstudio.com/) 15.5-ös vagy újabb verzióját az **Azure-fejlesztési** és az **ASP.NET- és webfejlesztési** számítási feladattal.
+* [A Service Fabric SDK telepítése](service-fabric-get-started.md)
 
 ## <a name="create-an-aspnet-web-api-service-as-a-reliable-service"></a>ASP.NET Web API-szolgáltatás létrehozása megbízható szolgáltatásként
+
 Először hozza létre a szavazóalkalmazás webes kezelőfelületét az ASP.NET Core használatával. Az ASP.NET Core egy egyszerűsített, platformfüggetlen webes fejlesztési keretrendszer, amely segítségével modern webes felhasználói felületeket és webes API-kat hozhat létre. Az ASP.NET Core Service Fabricbe történő integrálásának teljes megértéséhez mindenképpen javasolt [az ASP.NET Core a Service Fabric Reliable Services szolgáltatásban](service-fabric-reliable-services-communication-aspnetcore.md) való használatát ismertető cikk alapos elolvasása. Egyelőre az első lépésekhez elég, ha elvégzi ezt az oktatóanyagot. Az ASP.NET Core-ról az [ASP.NET Core dokumentációjában](https://docs.microsoft.com/aspnet/core/) találhat további információt.
 
 1. Indítsa el a Visual Studiót **rendszergazdaként**.
@@ -61,11 +64,11 @@ Először hozza létre a szavazóalkalmazás webes kezelőfelületét az ASP.NET
 
    ![A Visual Studio Új projekt párbeszédpanelje](./media/service-fabric-tutorial-create-dotnet-app/new-project-dialog.png)
 
-5. Az **Új Service Fabric-szolgáltatás** oldalon válassza ki az **Állapot nélküli ASP.NET Core** elemet, majd adjon nevet a szolgáltatásnak (**VotingWeb**).
+5. Az **Új Service Fabric-szolgáltatás** oldalon válassza ki az **Állapot nélküli ASP.NET Core** elemet, adjon nevet a szolgáltatásnak (**VotingWeb**), majd kattintson az **OK** gombra.
    
    ![Az ASP.NET-webszolgáltatás kiválasztása az új szolgáltatás párbeszédpanelen](./media/service-fabric-tutorial-create-dotnet-app/new-project-dialog-2.png) 
 
-6. A következő oldalon az ASP.NET Core projektsablonjai találhatók. A jelen oktatóanyag esetében válassza ki a **Webalkalmazás (Model-View-Controller)** lehetőséget. 
+6. A következő oldalon az ASP.NET Core projektsablonjai találhatók. A jelen oktatóanyag esetében válassza ki a **Webalkalmazás (Model-View-Controller)** lehetőséget, majd kattintson az **OK** gombra.
    
    ![ASP.NET-projekt típusának kiválasztása](./media/service-fabric-tutorial-create-dotnet-app/vs-new-aspnet-project-dialog.png)
 
@@ -73,42 +76,8 @@ Először hozza létre a szavazóalkalmazás webes kezelőfelületét az ASP.NET
 
    ![A Megoldáskezelő az alkalmazás az ASP.NET Core Web API szolgáltatással történő létrehozása után]( ./media/service-fabric-tutorial-create-dotnet-app/solution-explorer-aspnetcore-service.png)
 
-### <a name="add-angularjs-to-the-votingweb-service"></a>AngularJS hozzáadása a VotingWeb szolgáltatáshoz
-Adja hozzá az [AngularJS](http://angularjs.org/)-t a szolgáltatáshoz a [Bower-támogatás](/aspnet/core/client-side/bower) használatával. Először adjon hozzá a projekthez egy *.bowerrc* beállításfájlt.  A Megoldáskezelőben kattintson a jobb gombbal a **VotingWeb** elemre, majd válassza **Hozzáadás -> Új elem** lehetőséget. Válassza a **C#** elemet, majd a **JSON-fájlt**.  Írja be a *Név* mezőbe a **.bowerrc** fájlnevet, és kattintson a **Hozzáadás** gombra.
-
-Nyissa meg a *.bowerrc* fájlt, és cserélje ki annak tartalmát a következőre, amely azt jelzi, hogy a Bower a csomagobjektumokat a *wwwroot/lib* könyvtárba telepíti.
-
-```json
-{
- "directory": "wwwroot/lib"
-}
-```
-
-Mentse a *.bowerrc* módosításait.  Ez létrehoz egy *.bowerrc* fájlt a projektben.  
-
-Ezután adjon hozzá a projekthez egy Bower-konfigurációs fájlt.  A Megoldáskezelőben kattintson a jobb gombbal a **VotingWeb** elemre, majd válassza **Hozzáadás -> Új elem** lehetőséget. Válassza a **C#** elemet, majd a **JSON-fájlt**.  Írja be a *Név* mezőbe a **bower.json** fájlnevet, és kattintson a **Hozzáadás** gombra.
-
-Nyissa meg a *bower.json* fájlt, és cserélje ki annak tartalmát az alábbi angular, valamint angular-bootstrap bejegyzésekre, majd mentse a módosításokat.
-
-```json
-{
-  "name": "asp.net",
-  "private": true,
-  "dependencies": {
-    "bootstrap": "3.3.7",
-    "jquery": "3.2.1",
-    "jquery-validation": "1.16.0",
-    "jquery-validation-unobtrusive": "3.2.6",
-    "angular": "v1.6.8",
-    "angular-bootstrap": "v1.1.0"
-  }
-}
-```
-
-A *bower.json* fájl mentésekor a Visual Studio Bower-támogatása telepíti az Angulart a projekt *wwwroot/lib* mappájába. Ezenkívül szerepel a *Dependencies/Bower* mappában is.
-
 ### <a name="update-the-sitejs-file"></a>A site.js fájl frissítése
-Nyissa meg a *wwwroot/js/site.js* fájlt.  Cserélje le annak tartalmát a kezdőlapnézetek által használt JavaScripttel:
+Nyissa meg a **wwwroot/js/site.js** fájlt.  Cserélje le annak tartalmát a kezdőlapnézetek által használt következő JavaScripttel, majd mentse a módosításokat.
 
 ```javascript
 var app = angular.module('VotingApp', ['ui.bootstrap']);
@@ -148,7 +117,8 @@ app.controller('VotingAppController', ['$rootScope', '$scope', '$http', '$timeou
 ```
 
 ### <a name="update-the-indexcshtml-file"></a>Az Index.cshtml fájl frissítése
-Nyissa meg a *Views/Home/Index.cshtml* fájlt, amely a kezdőlapvezérlő egyedi nézete.  Cserélje le annak tartalmát a következőkkel, majd mentse a módosításokat.
+
+Nyissa meg a **Views/Home/Index.cshtml** fájlt, amely a kezdőlapvezérlő egyedi nézete.  Cserélje le annak tartalmát a következőkkel, majd mentse a módosításokat.
 
 ```html
 @{
@@ -211,7 +181,9 @@ Nyissa meg a *Views/Home/Index.cshtml* fájlt, amely a kezdőlapvezérlő egyedi
 ```
 
 ### <a name="update-the-layoutcshtml-file"></a>A _Layout.cshtml fájl frissítése
-Nyissa meg a *Views/Shared/_Layout.cshtml* fájlt, amely az ASP.NET-alkalmazás alapértelmezett elrendezését tartalmazza.  Cserélje le annak tartalmát a következőkkel, majd mentse a módosításokat.
+
+Nyissa meg a **Views/Shared/_Layout.cshtml** fájlt, amely az ASP.NET-alkalmazás alapértelmezett elrendezését tartalmazza.  Cserélje le annak tartalmát a következőkkel, majd mentse a módosításokat.
+
 
 ```html
 <!DOCTYPE html>
@@ -221,7 +193,7 @@ Nyissa meg a *Views/Shared/_Layout.cshtml* fájlt, amely az ASP.NET-alkalmazás 
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>@ViewData["Title"]</title>
 
-    <link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="~/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet"/>
     <link href="~/css/site.css" rel="stylesheet"/>
 
 </head>
@@ -232,8 +204,8 @@ Nyissa meg a *Views/Shared/_Layout.cshtml* fájlt, amely az ASP.NET-alkalmazás 
 
 <script src="~/lib/jquery/dist/jquery.js"></script>
 <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
-<script src="~/lib/angular/angular.js"></script>
-<script src="~/lib/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.7.2/angular.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/2.5.0/ui-bootstrap-tpls.js"></script>
 <script src="~/js/site.js"></script>
 
 @RenderSection("Scripts", required: false)
@@ -242,11 +214,12 @@ Nyissa meg a *Views/Shared/_Layout.cshtml* fájlt, amely az ASP.NET-alkalmazás 
 ```
 
 ### <a name="update-the-votingwebcs-file"></a>A VotingWeb.cs fájl frissítése
-Nyissa meg a *VotingWeb.cs* fájlt, amely létrehozza az ASP.NET Core WebHostot az állapotmentes szolgáltatáson belül a WebListener webkiszolgáló használatával.  
 
-Adja hozzá az `using System.Net.Http;` direktívát a fájl elejéhez.  
+Nyissa meg a *VotingWeb.cs* fájlt, amely létrehozza az ASP.NET Core WebHostot az állapotmentes szolgáltatáson belül a WebListener webkiszolgáló használatával.
 
-Cserélje le a `CreateServiceInstanceListeners()` függvényt a következőkkel, majd mentse a módosításokat.
+Adja hozzá az `using System.Net.Http;` direktívát a fájl elejéhez.
+
+Cserélje le a `CreateServiceInstanceListeners()` függvényt a következő kóddal, majd mentse a módosításokat.
 
 ```csharp
 protected override IEnumerable<ServiceInstanceListener> CreateServiceInstanceListeners()
@@ -279,7 +252,7 @@ protected override IEnumerable<ServiceInstanceListener> CreateServiceInstanceLis
 }
 ```
 
-Adja hozzá a `GetVotingDataServiceName` metódust is, amely lekérdezéskor visszaadja a szolgáltatás nevét:
+Adja meg a következő `GetVotingDataServiceName` metódust is a `CreateServiceInstanceListeners()` alatt, és mentse a módosításokat. A `GetVotingDataServiceName` lekérdezéskor visszaadja a szolgáltatás nevét.
 
 ```csharp
 internal static Uri GetVotingDataServiceName(ServiceContext context)
@@ -289,9 +262,10 @@ internal static Uri GetVotingDataServiceName(ServiceContext context)
 ```
 
 ### <a name="add-the-votescontrollercs-file"></a>A VotesController.cs fájl hozzáadása
-Adjon hozzá egy vezérlőt, amely meghatározza a szavazási műveleteket. Kattintson a jobb gombbal a **Vezérlők** mappára, majd válassza a **Hozzáadás->Új elem->Osztály** lehetőséget.  A fájlnak adja a „VotesController.cs” nevet, majd kattintson a **Hozzáadás** gombra.  
 
-Cserélje le a fájl tartalmát a következőkkel, majd mentse a módosításokat.  A későbbiekben, a [VotesController.cs fájl frissítése](#updatevotecontroller_anchor) során ez a fájl úgy módosul, hogy a háttérszolgáltatásból a szavazás adatait olvasni és írni is tudja.  Egyelőre a vezérlő statikus sztringadatokat ad vissza a nézetben.
+Adjon hozzá egy vezérlőt, amely meghatározza a szavazási műveleteket. Kattintson a jobb gombbal a **Vezérlők** mappára, majd válassza a **Hozzáadás->Új elem->Visual C#->ASP.NET Core->Osztály** lehetőséget. A fájlnak adja a **VotesController.cs** nevet, majd kattintson a **Hozzáadás** gombra.  
+
+Cserélje le a *VotesController.cs* fájl tartalmát a következőkre, majd mentse a módosításokat.  A későbbiekben, a [VotesController.cs fájl frissítése](#updatevotecontroller_anchor) során ez a fájl úgy módosul, hogy a háttérszolgáltatásból a szavazás adatait olvasni és írni is tudja.  Egyelőre a vezérlő statikus sztringadatokat ad vissza a nézetben.
 
 ```csharp
 namespace VotingWeb.Controllers
@@ -334,7 +308,10 @@ namespace VotingWeb.Controllers
 ```
 
 ### <a name="configure-the-listening-port"></a>A figyelőport konfigurálása
-A VotingWeb kezelőfelületi szolgáltatás létrehozásakor a Visual Studio véletlenszerűen kiválaszt egy portot, amelyen a szolgáltatás a figyelést végzi.  A VotingWeb szolgáltatás az alkalmazás kezelőfelületeként működik, és fogadja a külső forgalmat, úgyhogy rendeljük ezt a szolgáltatást egy rögzített, jól ismert porthoz.  A [szolgáltatásjegyzék](service-fabric-application-and-service-manifests.md) deklarálja a szolgáltatásvégpontokat. A Megoldáskezelőben nyissa meg a következőt: *VotingWeb/PackageRoot/ServiceManifest.xml*.  Keresse meg a **Végpont** erőforrást az **Erőforrások** szakaszban, és módosítsa a **Port** értékét 80-ra, vagy egy másik portra. Az alkalmazás helyi üzembe helyezéséhez és futtatásához az alkalmazásfigyelő-portnak a számítógépen megnyitva és elérhető állapotban kell lennie.
+
+A VotingWeb kezelőfelületi szolgáltatás létrehozásakor a Visual Studio véletlenszerűen kiválaszt egy portot, amelyen a szolgáltatás a figyelést végzi.  A VotingWeb szolgáltatás az alkalmazás kezelőfelületeként működik, és fogadja a külső forgalmat, úgyhogy rendeljük ezt a szolgáltatást egy rögzített, jól ismert porthoz.  A [szolgáltatásjegyzék](service-fabric-application-and-service-manifests.md) deklarálja a szolgáltatásvégpontokat.
+
+A Megoldáskezelőben nyissa meg a következőt: *VotingWeb/PackageRoot/ServiceManifest.xml*.  Keresse meg az **Endpoint** (Végpont) elemet a **Resources** (Erőforrások) szakaszban, és módosítsa a **Port** értékét **8080**-ra. Az alkalmazás helyi üzembe helyezéséhez és futtatásához az alkalmazásfigyelő-portnak a számítógépen megnyitva és elérhető állapotban kell lennie.
 
 ```xml
 <Resources>
@@ -342,53 +319,50 @@ A VotingWeb kezelőfelületi szolgáltatás létrehozásakor a Visual Studio vé
       <!-- This endpoint is used by the communication listener to obtain the port on which to 
            listen. Please note that if your service is partitioned, this port is shared with 
            replicas of different partitions that are placed in your code. -->
-      <Endpoint Protocol="http" Name="ServiceEndpoint" Type="Input" Port="80" />
+      <Endpoint Protocol="http" Name="ServiceEndpoint" Type="Input" Port="8080" />
     </Endpoints>
   </Resources>
 ```
 
-Ezenkívül frissítse az alkalmazás URL-címének tulajdonságértékét a szavazási projektben, így a webböngésző a megfelelő portot nyitja meg, amikor az F5 billentyű lenyomásával hibakeresést hajt végre.  A Megoldáskezelőben válassza ki a **Voting** projektet, és frissítse az **Alkalmazás URL-címe** tulajdonságot.
+Az alkalmazás URL-címének tulajdonságértékét is frissítse a szavazási projektben, így a webböngésző a megfelelő portot nyitja meg, amikor hibakeresést hajt végre az alkalmazásban.  A Megoldáskezelőben válassza ki a **Voting** projektet, és frissítse az **Alkalmazás URL-címe** tulajdonságot **8080**-ra.
 
 ![Alkalmazás URL-címe](./media/service-fabric-tutorial-deploy-app-to-party-cluster/application-url.png)
 
-### <a name="deploy-and-run-the-application-locally"></a>Az alkalmazás üzembe helyezése és helyi futtatása
-Most már futtathatja az alkalmazást. Nyomja le az `F5` billentyűt a Visual Studióban, hogy üzembe helyezze az alkalmazást a hibakereséshez. Az `F5` használata sikertelen lesz, ha korábban nem **rendszergazdaként** nyitotta meg a Visual Studiót.
+### <a name="deploy-and-run-the-voting-application-locally"></a>A szavazóalkalmazás helyi üzembe helyezése és futtatása
+Most már futtathatja a szavazóalkalmazást a hibakereséshez. A Visual Studióban nyomja le az **F5** billentyűt, hogy hibakeresési módban üzembe helyezze az alkalmazást a helyi Service Fabric-fürtön. Az alkalmazást nem lehet majd futtatni, ha korábban nem **rendszergazdaként** nyitotta meg a Visual Studiót.
 
 > [!NOTE]
-> Az alkalmazás első helyi történő üzembe helyezésekor a Visual Studio létrehoz egy helyi hibakeresési fürtöt.  A fürt létrehozása eltarthat egy ideig. A fürt létrehozási állapota a Visual Studio kimeneti ablakában jelenik meg.
+> Az alkalmazás első helyi üzembe helyezésekor a Visual Studio létrehoz egy helyi hibakeresési Service Fabric-fürtöt.  A fürt létrehozása eltarthat egy ideig. A fürt létrehozási állapota a Visual Studio kimeneti ablakában jelenik meg.
 
-Ezen a ponton a webalkalmazásnak így kell kinéznie:
+A szavazóalkalmazás helyi Service Fabric-fürtön való üzembe helyezése után a webalkalmazás automatikusan megnyílik egy böngészőlapon, és a következőképpen kell kinéznie:
 
 ![ASP.NET Core-kezelőfelület](./media/service-fabric-tutorial-create-dotnet-app/debug-front-end.png)
 
 Az alkalmazás hibakeresésének leállításához lépjen vissza a Visual Studióba, és nyomja le a **Shift + F5** billentyűparancsot.
 
 ## <a name="add-a-stateful-back-end-service-to-your-application"></a>Állapotalapú háttérszolgáltatás hozzáadása az alkalmazáshoz
+
 Most, hogy az alkalmazásban egy ASP.NET Web API-szolgáltatás fut, adjon hozzá egy állapotalapú megbízható szolgáltatást, hogy adatokat tárolhasson az alkalmazásban.
 
 A Service Fabric megbízható gyűjtemények használatával konzisztens módon és megbízhatóan tárolja az adatokat a szolgáltatásban. A megbízható gyűjtemények olyan, magas rendelkezésre állású és megbízható gyűjteményosztályok, amelyeket mindenki jól ismerhet, aki már használt C#-gyűjteményeket.
 
 Ebben az oktatóanyagban létrehoz egy szolgáltatást, amely egy számlálóértéket tárol egy megbízható gyűjteményben.
 
-1. A Megoldáskezelőben kattintson a jobb gombbal a **Szolgáltatások** elemre az alkalmazásprojektben, és válassza a **Hozzáadás > Új Service Fabric-szolgáltatás** lehetőséget.
+1. A Megoldáskezelőben kattintson a jobb gombbal a **Szolgáltatások** elemre a Voting alkalmazásprojektben, és válassza a **Hozzáadás -> Új Service Fabric-szolgáltatás...** lehetőséget.
     
-2. Az **Új Service Fabric-szolgáltatás** párbeszédablakban válassza az **Állapotalapú ASP.NET Core** lehetőséget, nevezze el a szolgáltatást (**VotingData**), majd nyomja meg az **OK** gombot.
-
-    ![A Visual Studio Új szolgáltatás párbeszédpanelje](./media/service-fabric-tutorial-create-dotnet-app/add-stateful-service.png)
+2. Az **Új Service Fabric-szolgáltatás** párbeszédablakban válassza az **Állapotalapú ASP.NET Core** lehetőséget, nevezze el a szolgáltatást (**VotingData**), majd nyomja le az **OK** gombot.
 
     A szolgáltatásprojekt létrehozása után az alkalmazás két szolgáltatást fog tartalmazni. Miközben létrehozza az alkalmazást, hasonlóképpen adhat hozzá további szolgáltatásokat. Mindegyik – a többitől függetlenül – verziószámmal ellátható és frissíthető.
 
-3. A következő oldalon az ASP.NET Core projektsablonjai találhatók. A jelen oktatóanyag esetében válassza ki a **Web API** lehetőséget.
+3. A következő oldalon az ASP.NET Core projektsablonjai találhatók. A jelen oktatóanyaghoz válassza az **API** lehetőséget.
 
-    ![ASP.NET-projekt típusának kiválasztása](./media/service-fabric-tutorial-create-dotnet-app/vs-new-aspnet-project-dialog2.png)
-
-    A Visual Studio létrehoz egy szolgáltatási projektet, és megjeleníti azt a Megoldáskezelőben.
+    A Visual Studio létrehoz egy VotingData nevű szolgáltatási projektet, és megjeleníti azt a Megoldáskezelőben.
 
     ![Megoldáskezelő](./media/service-fabric-tutorial-create-dotnet-app/solution-explorer-aspnetcore-webapi-service.png)
 
 ### <a name="add-the-votedatacontrollercs-file"></a>A VoteDataController.cs fájl hozzáadása
 
-A **VotingData** projektben kattintson a jobb gombbal a **Vezérlők** mappára, majd válassza a **Hozzáadás->Új elem->Osztály** lehetőséget. A fájlnak adja a „VoteDataController.cs” nevet, és kattintson a **Hozzáadás** parancsra. Cserélje le a fájl tartalmát a következőkkel, majd mentse a módosításokat.
+A **VotingData** projektben kattintson a jobb gombbal a **Vezérlők** mappára, majd válassza a **Hozzáadás->Új elem->Osztály** lehetőséget. A fájlnak adja a **VoteDataController.cs** nevet, és kattintson a **Hozzáadás** parancsra. Cserélje le a fájl tartalmát a következőkkel, majd mentse a módosításokat.
 
 ```csharp
 namespace VotingData.Controllers
@@ -475,11 +449,14 @@ namespace VotingData.Controllers
 ```
 
 ## <a name="connect-the-services"></a>A szolgáltatások összekapcsolása
+
 A következő lépésben két szolgáltatást fog összekapcsolni, majd beállítani az előtér-webalkalmazást úgy, hogy az lekérje a szavazási információt a háttérszolgáltatásból, majd beállítsa azt.
 
 A Service Fabric teljes rugalmasságot biztosít a megbízható szolgáltatásokkal folytatott kommunikáció terén. Egy alkalmazáson belül előfordulhat, hogy TCP-n keresztül elérhető szolgáltatások vannak. Elképzelhető, hogy más szolgáltatások egy HTTP REST API-n keresztül, megint más szolgáltatások pedig webes szoftvercsatornákon keresztül érhetők el. A rendelkezésre álló lehetőségekről és azok kompromisszumairól a [szolgáltatásokkal folytatott kommunikációt](service-fabric-connect-and-communicate-with-services.md) ismertető részben találhat további információt.
 
-Ebben az oktatóanyagban az [ASP.NET Core Web API-t](service-fabric-reliable-services-communication-aspnetcore.md) használjuk és a [Service Fabric fordított proxyt](service-fabric-reverseproxy.md), hogy az előtérbeli webszolgáltatás kommunikálhasson a háttérbeli adatszolgáltatással. A fordított proxy általában a 19081-es port használatára van konfigurálva. A portot a fürt beállítására használt ARM-sablonban kell beállítani. A használt portot a **Microsoft.ServiceFabric/clusters** erőforrás fürtsablonblonjában tudja megkeresni:
+Ez az oktatóanyag az [ASP.NET Core Web API-t](service-fabric-reliable-services-communication-aspnetcore.md) és a [Service Fabric fordított proxyt](service-fabric-reverseproxy.md) használja, hogy a VotingWeb webes kezelőfelületi szolgáltatás kommunikálhasson a háttérbeli VotingData szolgáltatással. A fordított proxy alapértelmezés szerint a 19081-es port használatára van konfigurálva, és alkalmasnak kell lennie ehhez az oktatóanyaghoz. A portot a fürt beállítására használt ARM-sablonban kell beállítani. A használt portot a **Microsoft.ServiceFabric/clusters** erőforrás fürtsablonjában tudja megkeresni, illetve a fürtjegyzék HttpApplicationGatewayEndpoint elemében.
+
+<u>Microsoft.ServiceFabric/clusters reverseProxyEndpointPort erőforrás</u>
 
 ```json
 "nodeTypes": [
@@ -492,11 +469,19 @@ Ebben az oktatóanyagban az [ASP.NET Core Web API-t](service-fabric-reliable-ser
           }
         ],
 ```
+A HttpApplicationGatewayEndpoint elem megtekintése a helyi Service Fabric-fürtjegyzékben:
+1. Nyisson meg egy böngészőablakot, és navigáljon a http://localhost:19080 címre.
+2. Kattintson a **Jegyzék** gombra.
+3. Jegyezze fel a HttpApplicationGatewayEndpoint elem portját. Ez alapértelmezés szerint a 19081-es port. Ha mégsem az, akkor módosítania kell a portot a következő VotesController.cs kód GetProxyAddress metódusában.
+
+
+
 
 <a id="updatevotecontroller" name="updatevotecontroller_anchor"></a>
 
 ### <a name="update-the-votescontrollercs-file"></a>A VotesController.cs fájl frissítése
-A **VotingWeb** projektben nyissa meg a *Controllers/VotesController.cs* fájlt.  Cserélje le a `VotesController` osztálydefiníció tartalmát a következőkkel, majd mentse a módosításokat.
+
+A **VotingWeb** projektben nyissa meg a *Controllers/VotesController.cs* fájlt.  Cserélje le a `VotesController` osztálydefiníció tartalmát a következőkkel, majd mentse a módosításokat. Ha az előző lépésben kikeresett fordítottproxy-port nem a 19081-es, módosítsa a GetProxyAddress metódusban használt portot a 19081-esről a talált portra.
 
 ```csharp
 public class VotesController : Controller
@@ -608,16 +593,20 @@ public class VotesController : Controller
     }
 }
 ```
+
 <a id="walkthrough" name="walkthrough_anchor"></a>
 
 ## <a name="walk-through-the-voting-sample-application"></a>A mintául szolgáló szavazóalkalmazás bemutatása
+
 A szavazóalkalmazás két szolgáltatásból áll:
-- Webes kezelőfelületi szolgáltatás (VotingWeb) – Olyan ASP.NET Core webes kezelőfelületi szolgáltatás, amely kiszolgálja a weboldalt, és webes API-kat biztosít a háttérszolgáltatással folytatott kommunikációhoz.
-- Háttérszolgáltatás (VotingData) – Olyan ASP.NET Core webszolgáltatás, amely egy API-t biztosít a szavazási eredmények tárolásához egy megbízható, lemezen őrzött szótárban.
+
+* Webes kezelőfelületi szolgáltatás (VotingWeb) – Olyan ASP.NET Core webes kezelőfelületi szolgáltatás, amely kiszolgálja a weboldalt, és webes API-kat biztosít a háttérszolgáltatással folytatott kommunikációhoz.
+* Háttérszolgáltatás (VotingData) – Olyan ASP.NET Core webszolgáltatás, amely egy API-t biztosít a szavazási eredmények tárolásához egy megbízható, lemezen őrzött szótárban.
 
 ![Alkalmazásdiagram](./media/service-fabric-tutorial-create-dotnet-app/application-diagram.png)
 
 Amikor szavazatot adnak le az alkalmazásban, az alábbi eseményekre kerül sor:
+
 1. A JavaScript HTTP PUT kérelemként elküldi a szavazati kérést a webes API-nak a webes kezelőfelületi szolgáltatásban.
 
 2. A webes kezelőfelületi szolgáltatás egy proxy segítségével megkeresi és továbbítja a HTTP PUT kérelmet a háttérszolgáltatásnak.
@@ -625,37 +614,42 @@ Amikor szavazatot adnak le az alkalmazásban, az alábbi eseményekre kerül sor
 3. A háttérszolgáltatás fogadja a bejövő kérelmet, és egy megbízható szótárban tárolja a frissített eredményt, amelyet a fürt több csomópontjára is replikál, és egy lemezen őriz. Az alkalmazás összes adata a fürtön tárolódik, így nincs szükség adatbázisra.
 
 ## <a name="debug-in-visual-studio"></a>Hibakeresés a Visual Studióban
+
 A Visual Studióban történő hibakeresés során egy helyi Service Fabric fejlesztési fürtöt használ. Arra is lehetősége van, hogy a hibakeresési folyamatot a saját forgatókönyvéhez igazítsa. Ebben az alkalmazásban az adatokat a háttérszolgáltatásban egy megbízható szótár segítségével tárolja. A Visual Studio alapértelmezés szerint a hibakereső leállításakor eltávolítja az alkalmazást. Az alkalmazás eltávolításával a háttérszolgáltatásban tárolt adatok is el lesznek távolítva. Ha szeretné megtartani az adatokat a hibakeresési munkamenetek között, akkor módosítania kell az **Application Debug Mode** (Alkalmazás hibakeresési módja) tulajdonságot a **Voting** (Szavazás) projektben a Visual Studióban.
 
 Ha szeretné megtekinteni, hogy mi történik a kódban, hajtsa végre a következő lépéseket:
-1. Nyissa meg a **VotesController.cs** fájlt, és állítson be egy töréspontot a webes API **Put** metódusában (63. sor). A fájlt megkeresheti a Visual Studio Megoldáskezelőjében.
 
-2. Nyissa meg a **VoteDataController.cs** fájlt, és állítson be egy töréspontot a webes API **Put** metódusában (53. sor).
+1. Nyissa meg a **VotingWeb\VotesController.cs** fájlt, és állítson be egy töréspontot a webes API **Put** metódusában (63. sor).
 
-3. Térjen vissza a böngészőhöz, és kattintson egy szavazási lehetőségre vagy adjon meg egy újat. Az első töréspont a webes kezelőfelület API-vezérlőjében jelentkezik.
+2. Nyissa meg a **VotingData\VoteDataController.cs** fájlt, és állítson be egy töréspontot a webes API **Put** metódusában (53. sor).
+
+3. Nyomja le az **F5** billentyűt az alkalmazás hibakeresési módban való elindításához.
+
+4. Térjen vissza a böngészőhöz, és kattintson egy szavazási lehetőségre vagy adjon meg egy újat. Az első töréspont a webes kezelőfelület API-vezérlőjében jelentkezik.
     
+
     1. A böngészőben futó JavaScript ekkor küld kérelmet a webes kezelőfelületi szolgáltatás API-vezérlőjének.
-    
+
     ![Szavazási kezelőfelületi szolgáltatás hozzáadása](./media/service-fabric-tutorial-create-dotnet-app/addvote-frontend.png)
 
     2. Elsőként hozza létre a ReverseProxyra mutató URL-címet a háttérszolgáltatás számára **(1)**.
     3. Ezután küldje el a HTTP PUT kérelmet a ReverseProxyhoz **(2)**.
     4. Végül küldje vissza a választ a háttérszolgáltatásból az ügyfélhez **(3)**.
 
-4. A folytatáshoz nyomja le az **F5** billentyűt.
+5. A folytatáshoz nyomja le az **F5** billentyűt.
     1. Ezzel elérte a háttérszolgáltatás töréspontját.
-    
+
     ![Szavazási háttérszolgáltatás hozzáadása](./media/service-fabric-tutorial-create-dotnet-app/addvote-backend.png)
 
     2. A metódus első sorában **(1)** a `StateManager` használatával egy `counts` nevű megbízható szótárt kérhet le vagy adhat hozzá.
     3. A megbízható szótárakban tárolt értékekkel folytatott mindennemű interakcióhoz tranzakcióra van szükség, amelyet ez a using utasítás **(2)** hoz létre.
     4. A tranzakcióban frissítse a szavazási lehetőséghez tartozó kulcs értékét, majd véglegesítse a műveletet **(3)**. Ha a véglegesítési metódus visszatért, az adatok frissülnek a szótárban, és a fürt egyéb csomópontjaira is replikálódnak. Az adatok ettől fogva biztonságosan tárolódnak a fürtön, és a háttérszolgáltatás feladatait más csomópontok is átvehetik, míg az adatok továbbra is elérhetők maradnak.
-5. A folytatáshoz nyomja le az **F5** billentyűt.
+6. A folytatáshoz nyomja le az **F5** billentyűt.
 
 A hibakeresési munkamenet leállításához nyomja le a **Shift+F5** billentyűkombinációt.
 
-
 ## <a name="next-steps"></a>További lépések
+
 Az oktatóanyag jelen részében megismerkedhetett a következőkkel:
 
 > [!div class="checklist"]

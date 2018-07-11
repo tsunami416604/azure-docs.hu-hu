@@ -16,12 +16,12 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 05/14/2018
 ms.author: jgao
-ms.openlocfilehash: 0d0fb9bad8c6120100ae3ee766aea7620dd6105f
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 362a9ae9cb1a1ebc30193b76929f0a683414e5fd
+ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34201757"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37435297"
 ---
 # <a name="use-data-lake-store-with-azure-hdinsight-clusters"></a>A Data Lake Store és az Azure HDInsight-fürtök együttes használata
 
@@ -100,10 +100,10 @@ Egy Data Lake Store-fiók kiegészítő fiókként történő hozzáadásához v
 
 ## <a name="configure-data-lake-store-access"></a>A Data Lake Store-hoz történő hozzáférés konfigurálása
 
-A Data Lake Store-hoz a HDInsight-fürtből történő hozzáférés konfigurálásához rendelkeznie kell egy Azure Active Directory- (Azure AD-) szolgáltatásnévvel. Kizárólag Azure AD-rendszergazdák hozhatnak létre szolgáltatásnevet. A szolgáltatásnevet egy tanúsítvánnyal kell létrehozni. További információkért lásd: [A Data Lake Store-hoz történő hozzáférés konfigurálása](../data-lake-store/data-lake-store-hdinsight-hadoop-use-portal.md#configure-data-lake-store-access), és [Szolgáltatásnév létrehozása önaláírt tanúsítvánnyal](../azure-resource-manager/resource-group-authenticate-service-principal.md#create-service-principal-with-self-signed-certificate).
+A Data Lake Store-hoz a HDInsight-fürtből történő hozzáférés konfigurálásához rendelkeznie kell egy Azure Active Directory- (Azure AD-) szolgáltatásnévvel. Kizárólag Azure AD-rendszergazdák hozhatnak létre szolgáltatásnevet. A szolgáltatásnevet egy tanúsítvánnyal kell létrehozni. További információkért lásd a [fürtök HDInsightban történő beállításának rövid útmutatóját](../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md) és a [Szolgáltatásnév létrehozása önaláírt tanúsítvánnyal](../azure-resource-manager/resource-group-authenticate-service-principal.md#create-service-principal-with-self-signed-certificate) témakört.
 
 > [!NOTE]
-> Ha a Data Lake Store-t a HDInsight-fürt kiegészítő tárolójaként tervezi használni, akkor kifejezetten ezt a megoldást javasoljuk, amikor létrehozza a fürtöt az ebben a cikkben leírtaknak megfelelően. Az Azure Data Lake Store-t kiegészítő tárolóként hozzáadni egy meglévő HDInsight-fürthöz bonyolult folyamat, és sok hibalehetőséggel jár.
+> Ha a Data Lake Store-t a HDInsight-fürt kiegészítő tárolójaként tervezi használni, akkor kifejezetten ezt a megoldást javasoljuk, amikor létrehozza a fürtöt az ebben a cikkben leírtaknak megfelelően. Az Azure Data Lake Store-t nem lehet kiegészítő tárolóként hozzáadni egy meglévő HDInsight-fürthöz.
 >
 
 ## <a name="access-files-from-the-cluster"></a>Fájlok elérése a fürtből
@@ -130,7 +130,7 @@ Többféleképpen is elérheti egy HDInsight-fürtből a Data Lake Store-ban tá
 
 Az alábbi hivatkozások a Data Lake Store-hozzáféréssel rendelkező HDInsight-fürtök létrehozásának részletes útmutatóira mutatnak.
 
-* [A Portal használata](../data-lake-store/data-lake-store-hdinsight-hadoop-use-portal.md)
+* [A Portal használata](../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md)
 * [A PowerShell használata (alapértelmezett tárolóként beállított Data Lake Store-ral)](../data-lake-store/data-lake-store-hdinsight-hadoop-use-powershell-for-default-storage.md)
 * [A PowerShell használata (kiegészítő tárolóként beállított Data Lake Store-ral)](../data-lake-store/data-lake-store-hdinsight-hadoop-use-powershell.md)
 * [Azure-sablonok használata](../data-lake-store/data-lake-store-hdinsight-hadoop-use-resource-manager-template.md)
@@ -142,8 +142,7 @@ Ebből a cikkből megtanulta, hogyan használhatja HDFS-kompatibilis Azure Data 
 További információkért lásd:
 
 * [Azure HDInsight – első lépések][hdinsight-get-started]
-* [Az Azure Data Lake Store használatának első lépései](../data-lake-store/data-lake-store-get-started-portal.md)
-* [Data Lake Store-t használó HDInsight-fürt létrehozása az Azure Portal használatával](../data-lake-store/data-lake-store-hdinsight-hadoop-use-portal.md)
+* [Rövid útmutató: Fürtök beállítása a HDInsightban](../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md)
 * [Data Lake Store-t használó HDInsight-fürt létrehozása az Azure PowerShell használatával](../data-lake-store/data-lake-store-hdinsight-hadoop-use-powershell.md)
 * [Adatok feltöltése a HDInsightba][hdinsight-upload-data]
 * [A Hive használata a HDInsightban][hdinsight-use-hive]

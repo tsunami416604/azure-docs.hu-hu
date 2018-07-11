@@ -1,5 +1,5 @@
 ---
-title: Az Azure Service Fabric-futtatókörnyezet frissítése | Microsoft Docs
+title: A Service Fabric-futtatókörnyezet frissítése az Azure-ban | Microsoft Docs
 description: Ez az oktatóanyag bemutatja, hogyan frissíthető egy Azure-ban tárolt Service Fabric-fürt futtatókörnyezetének frissítése a PowerShell segítségével.
 services: service-fabric
 documentationcenter: .net
@@ -15,14 +15,14 @@ ms.workload: NA
 ms.date: 11/28/2017
 ms.author: adegeo
 ms.custom: mvc
-ms.openlocfilehash: 375e0171f1a131ad95a9c6594cc0e05926e4dcc5
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 7e7304b259931c5196a4865383cf0b4ace4c4398
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34642835"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37109766"
 ---
-# <a name="tutorial-upgrade-the-runtime-of-a-service-fabric-cluster"></a>Oktatóanyag: Service Fabric-fürt futtatókörnyezetének frissítése
+# <a name="tutorial-upgrade-the-runtime-of-a-service-fabric-cluster-in-azure"></a>Oktatóanyag: Service Fabric-fürt futtatókörnyezetének frissítése az Azure-ban
 
 Ez az oktatóanyag a sorozat harmadik része, és egy Azure Service Fabric-fürtön található Service Fabric-futtatókörnyezet frissítését mutatja be. Az oktatóanyag ezen része az Azure-ban futó Service Fabric-fürtökhöz készült, és nem vonatkozik a különálló Service Fabric-fürtökre.
 
@@ -45,14 +45,17 @@ Ebben az oktatóanyag-sorozatban az alábbiakkal ismerkedhet meg:
 > * [Az API Management üzembe helyezése a Service Fabrickel](service-fabric-tutorial-deploy-api-management.md)
 
 ## <a name="prerequisites"></a>Előfeltételek
+
 Az oktatóanyag elkezdése előtt:
-- Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
-- Telepítse az [Azure PowerShell-modul 4.1-es vagy újabb verzióját](https://docs.microsoft.com/powershell/azure/install-azurerm-ps), vagy az [Azure CLI 2.0-ás verzióját](/cli/azure/install-azure-cli).
-- Biztonságos [Windows-fürt](service-fabric-tutorial-create-vnet-and-windows-cluster.md) vagy [Linux-fürt](service-fabric-tutorial-create-vnet-and-linux-cluster.md) létrehozása az Azure-ban
-- Ha Windows-fürtöt telepít, állítson be egy Windows fejlesztési környezetet. Telepítse a [Visual Studio 2017](http://www.visualstudio.com) szoftvert, valamint az **Azure-fejlesztési**, **ASP.NET- és webes fejlesztési**, továbbá a **.NET Core platformfüggetlen fejlesztési** számítási feladatokat.  Ezután hozzon létre egy [.NET fejlesztési környezet](service-fabric-get-started.md).
-- Ha Linux-fürtöt telepít, állítson be Java fejlesztési környezetet [Linux](service-fabric-get-started-linux.md) vagy [MacOS](service-fabric-get-started-mac.md) operációs rendszeren.  Telepítse a [Service Fabric parancssori felületet](service-fabric-cli.md). 
+
+* Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+* Telepítse az [Azure PowerShell-modul 4.1-es vagy újabb verzióját](https://docs.microsoft.com/powershell/azure/install-azurerm-ps), vagy az [Azure CLI 2.0-ás verzióját](/cli/azure/install-azure-cli).
+* Biztonságos [Windows-fürt](service-fabric-tutorial-create-vnet-and-windows-cluster.md) vagy [Linux-fürt](service-fabric-tutorial-create-vnet-and-linux-cluster.md) létrehozása az Azure-ban
+* Ha Windows-fürtöt telepít, állítson be egy Windows fejlesztési környezetet. Telepítse a [Visual Studio 2017](http://www.visualstudio.com) szoftvert, valamint az **Azure-fejlesztési**, **ASP.NET- és webes fejlesztési**, továbbá a **.NET Core platformfüggetlen fejlesztési** számítási feladatokat.  Ezután hozzon létre egy [.NET fejlesztési környezet](service-fabric-get-started.md).
+* Ha Linux-fürtöt telepít, állítson be Java fejlesztési környezetet [Linux](service-fabric-get-started-linux.md) vagy [MacOS](service-fabric-get-started-mac.md) operációs rendszeren.  Telepítse a [Service Fabric parancssori felületet](service-fabric-cli.md).
 
 ### <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
+
 Azure-parancsok végrehajtása előtt jelentkezzen be az Azure-fiókjába, és válassza ki az előfizetését.
 
 ```powershell
@@ -192,7 +195,8 @@ sfctl cluster upgrade-status
 }
 ```
 
-## <a name="conclusion"></a>Összegzés
+## <a name="next-steps"></a>További lépések
+
 Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 
 > [!div class="checklist"]

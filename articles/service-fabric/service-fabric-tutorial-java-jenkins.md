@@ -1,5 +1,5 @@
 ---
-title: CI/CD beállítása egy Azure Service Fabric Java-alkalmazás számára | Microsoft Docs
+title: Jenkins konfigurálása Java-alkalmazáshoz Azure-beli Service Fabric-fürtön | Microsoft Docs
 description: Ez az oktatóanyag azt mutatja be, hogyan állíthat be folyamatos integrációt a Jenkins segítségével egy Java Service Fabric-alkalmazás üzembe helyezéséhez.
 services: service-fabric
 documentationcenter: java
@@ -15,15 +15,16 @@ ms.workload: NA
 ms.date: 02/26/2018
 ms.author: suhuruli
 ms.custom: mvc
-ms.openlocfilehash: bd986b8741b55a10018f7400c9415e7aedfbf119
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 59e36a2c8b719f2e8e3fd6aec20b91605221d8b2
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2018
-ms.locfileid: "29949837"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37109443"
 ---
-# <a name="tutorial-set-up-a-jenkins-environment-with-service-fabric"></a>Oktatóanyag: Jenkins-környezet beállítása a Service Fabric segítségével
-Ez az oktatóanyag egy sorozat ötödik része. Azt mutatja be, hogy a Jenkins segítségével hogyan helyezheti üzembe egy alkalmazás frissítéseit. Ebben az oktatóanyagban a Service Fabric Jenkins beépülő moduljával és a szavazóalkalmazást üzemeltető GitHub-adattárral helyezi üzembe az alkalmazást a fürtön. 
+# <a name="tutorial-configure-a-jenkins-environment-to-enable-cicd-for-a-java-application-on-service-fabric"></a>Oktatóanyag: Jenkins-környezet konfigurálása a CI/CD engedélyezéséhez Service Fabric-fürtön lévő Java-alkalmazás számára
+
+Ez az oktatóanyag egy sorozat ötödik része. Azt mutatja be, hogy a Jenkins segítségével hogyan helyezheti üzembe egy alkalmazás frissítéseit. Ebben az oktatóanyagban a Service Fabric Jenkins beépülő moduljával és a szavazóalkalmazást üzemeltető GitHub-adattárral helyezi üzembe az alkalmazást a fürtön.
 
 A sorozat ötödik részében az alábbiakkal fog megismerkedni:
 > [!div class="checklist"]
@@ -39,15 +40,16 @@ Ebben az oktatóanyag-sorozatban az alábbiakkal ismerkedhet meg:
 > * [Figyelés és diagnosztika beállítása az alkalmazáshoz](service-fabric-tutorial-java-elk.md)
 > * CI/CD beállítása
 
-
 ## <a name="prerequisites"></a>Előfeltételek
-- Telepítse a Gitet a helyi számítógépre [a Git letöltési oldaláról](https://git-scm.com/downloads). A Gitre vonatkozó további információért lásd a [Git dokumentációját](https://git-scm.com/docs).
-- A [Jenkins](https://jenkins.io/) gyakorlati ismerete szükséges.
-- Hozzon létre egy [GitHub](https://github.com/)-fiókot. A GitHub működését is ismernie kell.
-- Telepítse a [Dockert](https://www.docker.com/community-edition) a számítógépre.
+
+* Telepítse a Gitet a helyi számítógépre [a Git letöltési oldaláról](https://git-scm.com/downloads). A Gitre vonatkozó további információért lásd a [Git dokumentációját](https://git-scm.com/docs).
+* A [Jenkins](https://jenkins.io/) gyakorlati ismerete szükséges.
+* Hozzon létre egy [GitHub](https://github.com/)-fiókot. A GitHub működését is ismernie kell.
+* Telepítse a [Dockert](https://www.docker.com/community-edition) a számítógépre.
 
 ## <a name="pull-and-deploy-service-fabric-jenkins-container-image"></a>A Service Fabric Jenkins-tároló rendszerképének letöltése és telepítése
-A Jenkinst egy Service Fabric-fürtben vagy azon kívül is beállíthatja. Az alábbi utasítások a fürtön kívüli beállítást mutatják be egy Docker-rendszerkép használatával. Ha szeretné, a Jenkins előre konfigurált összeállítási környezetét is használhatja. A következő tárolórendszerképen előre telepítve van a Service Fabric beépülő modul, és azonnal használható a Service Fabricben. 
+
+A Jenkinst egy Service Fabric-fürtben vagy azon kívül is beállíthatja. Az alábbi utasítások a fürtön kívüli beállítást mutatják be egy Docker-rendszerkép használatával. Ha szeretné, a Jenkins előre konfigurált összeállítási környezetét is használhatja. A következő tárolórendszerképen előre telepítve van a Service Fabric beépülő modul, és azonnal használható a Service Fabricben.
 
 1. Kérje le a Service Fabric Jenkins-tárolójának rendszerképét: ``docker pull rapatchi/jenkins:v10``. A rendszerképhez előre telepítve van a Service Fabric Jenkins beépülő modulja.
 
@@ -68,8 +70,8 @@ A Jenkinst egy Service Fabric-fürtben vagy azon kívül is beállíthatja. Az a
     Ha a tároló azonosítója 2d24a73b5964, használja a 2d24 értéket.
     * Ez a jelszó szükséges ahhoz, hogy bejelentkezzen a Jenkins-irányítópultra a ``http://<HOST-IP>:8080`` portálról.
     * Az első bejelentkezés után létrehozhatja saját felhasználói fiókját, vagy maradhat a rendszergazdai fiók használata mellett.
-    
-5. Állítsa be a GitHubot a Jenkins használatához az [új SSH-kulcs létrehozásával és SSH-ügynökhöz adásával](https://help.github.com/articles/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent/) foglalkozó cikk lépéseit követve. Mivel a parancsok futtatása a Docker-tárolóból történik, kövesse a Linux-környezetre vonatkozó útmutatást. 
+
+5. Állítsa be a GitHubot a Jenkins használatához az [új SSH-kulcs létrehozásával és SSH-ügynökhöz adásával](https://help.github.com/articles/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent/) foglalkozó cikk lépéseit követve. Mivel a parancsok futtatása a Docker-tárolóból történik, kövesse a Linux-környezetre vonatkozó útmutatást.
     * Kövesse a GitHub utasításait az SSH-kulcs létrehozásához. Ezután adja hozzá az SSH-kulcsot ahhoz a GitHub-fiókhoz, amely az adattárat üzemelteti.
     * Futtassa a fenti hivatkozással elérhető parancsokat a Jenkins Docker-felületén (és ne a saját gazdagépén).
     * Ahhoz, hogy a saját gazdagépéről jelentkezhessen be a Jenkinsbe, használja a következő parancsokat:
@@ -78,7 +80,7 @@ A Jenkinst egy Service Fabric-fürtben vagy azon kívül is beállíthatja. Az a
     docker exec -t -i [first-four-digits-of-container-ID] /bin/bash
     ```
 
-    Győződjön meg arról, hogy a fürt vagy gép, ahol a Jenkins-tároló rendszerképe fut, nyilvános IP-címmel rendelkezik. A nyilvános IP-cím lehetővé teszi, hogy a Jenkins-példány megkapja a GitHub értesítéseit.    
+    Győződjön meg arról, hogy a fürt vagy gép, ahol a Jenkins-tároló rendszerképe fut, nyilvános IP-címmel rendelkezik. A nyilvános IP-cím lehetővé teszi, hogy a Jenkins-példány megkapja a GitHub értesítéseit.
 
 ## <a name="create-and-configure-a-jenkins-job"></a>Jenkins-feladatok létrehozása és konfigurálása
 
@@ -111,9 +113,9 @@ A Jenkinst egy Service Fabric-fürtben vagy azon kívül is beállíthatja. Az a
 7. A **Build** (Felépítés) szakaszban az **Add build step** (Felépítési lépés hozzáadása) legördülő listából válassza az **Invoke Gradle Script** (Gradle szkript meghívása) lehetőséget. A megjelenő vezérlőn nyissa meg a speciális menüt, és adja meg a **fő felépítési szkript** elérési útját az alkalmazásához. A rendszer felveszi a build.gradle elemet a megadott elérési útból, és annak megfelelően működik.
 
     ![Service Fabric, Jenkins felépítési művelet](./media/service-fabric-tutorial-java-jenkins/jenkinsbuildscreenshot.png)
-  
-8. A **Post-Build Actions** (Felépítés utáni műveletek) legördülő menüből válassza a **Deploy Service Fabric Project** (Service Fabric-projekt üzembe helyezése) elemet. Itt meg kell adnia annak a fürtnek az adatait, ahová a Jenkins által lefordított Service Fabric-alkalmazást üzembe kívánja helyezni. A tanúsítvány elérési útja megegyezik a hellyel, ahová a kötet csatlakoztatva van (/tmp/myCerts). 
-   
+
+8. A **Post-Build Actions** (Felépítés utáni műveletek) legördülő menüből válassza a **Deploy Service Fabric Project** (Service Fabric-projekt üzembe helyezése) elemet. Itt meg kell adnia annak a fürtnek az adatait, ahová a Jenkins által lefordított Service Fabric-alkalmazást üzembe kívánja helyezni. A tanúsítvány elérési útja megegyezik a hellyel, ahová a kötet csatlakoztatva van (/tmp/myCerts).
+
     Az üzembe helyezéshez szükséges egyéb adatokat is megadhat. Az alábbi képernyőképen áttekintheti, hogy milyen alkalmazásadatokat lehet megadni:
 
     ![Service Fabric, Jenkins felépítési művelet](./media/service-fabric-tutorial-java-jenkins/sfjenkins.png)
@@ -122,11 +124,11 @@ A Jenkinst egy Service Fabric-fürtben vagy azon kívül is beállíthatja. Az a
     > Ha a Service Fabricet használja a Jenkins-tároló rendszerképének üzembe helyezéséhez, a fürtnek meg kell egyeznie azzal, ahol a Jenkins-tárolóalkalmazás található.
     >
 
-## <a name="update-your-existing-application"></a>Meglévő alkalmazás frissítése 
+## <a name="update-your-existing-application"></a>Meglévő alkalmazás frissítése
 
-1. Frissítse a HTML címét a *VotingApplication/VotingWebPkg/Code/wwwroot/index.html* fájlban a **Service Fabric Voting Sample v2** hozzáadásával. 
+1. Frissítse a HTML címét a *VotingApplication/VotingWebPkg/Code/wwwroot/index.html* fájlban a **Service Fabric Voting Sample v2** hozzáadásával.
 
-    ```html 
+    ```html
     <div ng-app="VotingApp" ng-controller="VotingAppController" ng-init="refresh()">
         <div class="container-fluid">
             <div class="row">
@@ -138,7 +140,7 @@ A Jenkinst egy Service Fabric-fürtben vagy azon kívül is beállíthatja. Az a
     </div>
     ```
 
-2. Frissítse az **ApplicationTypeVersion** és a **ServiceManifestVersion** verziószámát **2.0.0** értékre a *Voting/VotingApplication/ApplicationManifest.xml* fájlban. 
+2. Frissítse az **ApplicationTypeVersion** és a **ServiceManifestVersion** verziószámát **2.0.0** értékre a *Voting/VotingApplication/ApplicationManifest.xml* fájlban.
 
     ```xml
     <?xml version="1.0" encoding="utf-8" standalone="no"?>
@@ -155,13 +157,13 @@ A Jenkinst egy Service Fabric-fürtben vagy azon kívül is beállíthatja. Az a
              <StatelessService InstanceCount="1" ServiceTypeName="VotingWebType">
                 <SingletonPartition/>
              </StatelessService>
-          </Service>      
+          </Service>
        <Service Name="VotingDataService">
                 <StatefulService MinReplicaSetSize="3" ServiceTypeName="VotingDataServiceType" TargetReplicaSetSize="3">
                     <UniformInt64Partition HighKey="9223372036854775807" LowKey="-9223372036854775808" PartitionCount="1"/>
                 </StatefulService>
             </Service>
-        </DefaultServices>      
+        </DefaultServices>
     </ApplicationManifest>
     ```
 
@@ -177,17 +179,18 @@ A Jenkinst egy Service Fabric-fürtben vagy azon kívül is beállíthatja. Az a
     </CodePackage>
     ```
 
-4. Az alkalmazás frissítését elvégző Jenkins-feladat inicializálásához küldje le az új módosításokat a GitHub-adattárba. 
+4. Az alkalmazás frissítését elvégző Jenkins-feladat inicializálásához küldje le az új módosításokat a GitHub-adattárba.
 
 5. A Service Fabric Explorerben kattintson az **Applications** (Alkalmazások) legördülő menüre. A frissítés állapotának megtekintéséhez kattintson az **Upgrades in Progress** (Folyamatban lévő frissítések) fülre.
 
     ![Folyamatban lévő frissítés](./media/service-fabric-tutorial-create-java-app/upgradejava.png)
 
-6. A **http://\<Host-IP>:8080** megnyitásakor a szavazóalkalmazás minden funkciójával együtt elérhetővé válik. 
+6. A **http://\<Host-IP>:8080** megnyitásakor a szavazóalkalmazás minden funkciójával együtt elérhetővé válik.
 
     ![Szavazóalkalmazás – helyi](./media/service-fabric-tutorial-java-jenkins/votingv2.png)
 
 ## <a name="next-steps"></a>További lépések
+
 Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 
 > [!div class="checklist"]
