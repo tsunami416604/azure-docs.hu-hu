@@ -12,14 +12,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/02/2018
+ms.date: 07/10/2018
 ms.author: jeedes
-ms.openlocfilehash: 2c2b6e25cd86cadf070fdb8bf73ec4fa4acb28a9
-ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
+ms.openlocfilehash: 9c6d819234111c461bf4793376324dbe77e85ae2
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37872018"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38295362"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-imagineer-webvision"></a>Oktatóanyag: Azure Active Directory-integráció az Imagineer WebVision
 
@@ -107,9 +107,9 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
 
     ![Imagineer WebVision tartomány és URL-címeket egyetlen bejelentkezési adatait](./media/imagineerwebvision-tutorial/tutorial_imagineerwebvision_url.png)
 
-    a. Az a **bejelentkezési URL-** szövegmezőbe írja be a következő minta használatával URL-címe: `https://<YOUR SERVER URL>/SSO/?azure`
+    a. Az a **bejelentkezési URL-** szövegmezőbe írja be a következő minta használatával URL-címe: `https://<YOUR SERVER URL>/<yourapplicationloginpage>`
 
-    b. Az a **azonosító** szövegmezőbe írja be a következő minta használatával URL-címe: `https://<YOUR SERVER URL>/default.aspx`
+    b. Az a **azonosító** szövegmezőbe írja be a következő minta használatával URL-címe: `https://<YOUR SERVER URL>/<yourapplicationloginpage>`
 
     > [!NOTE] 
     > Ezek a értékei nem valódi. Ezek az értékek frissítse a tényleges bejelentkezési URL- és azonosító. Kapcsolattartó [Imagineer WebVision ügyfél-támogatási csapatának](mailto:support@itgny.com) beolvasni ezeket az értékeket.

@@ -1,19 +1,19 @@
-## <a name="transfer-local-files-to-cloud-shell"></a>Helyi fájlok átvitele a felhő rendszerhéj
-A `clouddrive` directory szinkronizál az Azure portál tárolás panel. Ezen a panelen vihet át a helyi fájlokat vagy a fájlmegosztásból. Felhő rendszerhéj található fájlokat frissítése is megjelenik a file storage grafikus felhasználói Felülettel amikor frissíteni a panelt.
+## <a name="transfer-local-files-to-cloud-shell"></a>Helyi fájlok átvitele a Cloud Shellben
+A `clouddrive` directory szinkronizál az Azure portal tároló panelen. Használja ezt a panelt, vagy a fájlmegosztásból helyi fájlok átvitelét. A Cloud Shell található fájlokat frissítése tükrözi a file storage grafikus felhasználói felület a panel frissítésekor.
 
 ### <a name="download-files"></a>Fájlok letöltése
 
-![A helyi fájlok listája](../articles/cloud-shell/media/persisting-shell-storage/download.png)
-1. Az Azure-portálon lépjen a csatlakoztatott fájlmegosztáshoz.
+![Helyi fájlok listája](../articles/cloud-shell/media/persisting-shell-storage/download.png)
+1. Az Azure Portalon nyissa meg a csatlakoztatott fájlmegosztás.
 2. Válassza ki a cél-fájlt.
 3. Válassza ki a **letöltése** gombra.
 
 ### <a name="upload-files"></a>Fájlok feltöltése
 
-![Fel kell tölteni a helyi fájlok](../articles/cloud-shell/media/persisting-shell-storage/upload.png)
-1. Nyissa meg a csatlakoztatott fájlmegosztáshoz.
+![Helyi fájlok tölthető fel.](../articles/cloud-shell/media/persisting-shell-storage/upload.png)
+1. Nyissa meg a csatlakoztatott fájlmegosztás.
 2. Válassza ki a **feltöltése** gombra.
-3. Válassza ki a fájl vagy a feltölteni kívánt fájlokat.
+3. Válassza ki a fájlt vagy a feltölteni kívánt fájlokat.
 4. Erősítse meg a feltöltést.
 
-Most látnia kell, hogy elérhető-e a fájlokat a `clouddrive` felhő rendszerhéj könyvtárába.
+Meg kell jelennie a fájlokat, amelyek érhetők el a `clouddrive` könyvtárat a Cloud Shellben.

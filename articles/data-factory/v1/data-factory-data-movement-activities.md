@@ -1,6 +1,6 @@
 ---
-title: Adatok áthelyezése a másolási tevékenység használatával |} Microsoft Docs
-description: 'További tudnivalók az adat-előállító adatcsatornák adatmozgás: adatáttelepítés felhő tárolja, valamint egy helyi tárolóban és a felhőben levő tárolójának között. Használja a másolási tevékenység.'
+title: Adatok áthelyezése másolási tevékenységgel |} A Microsoft Docs
+description: 'Adatok áthelyezése a Data Factory-folyamatok ismertetése: felhőalapú adattárak között, valamint a helyszíni és felhőbeli üzlet közötti adatok migrálása. Másolási tevékenység használatával.'
 services: data-factory
 documentationcenter: ''
 author: linda33wj
@@ -15,57 +15,57 @@ ms.date: 12/05/2017
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 6b13c70d86af195e50190083aa562811236cdd4b
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37054258"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38299860"
 ---
-# <a name="move-data-by-using-copy-activity"></a>Adatok áthelyezése a másolási tevékenység használatával
+# <a name="move-data-by-using-copy-activity"></a>Adatok áthelyezése másolási tevékenység használatával
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [1-es verziójával](data-factory-data-movement-activities.md)
-> * [(Az aktuális verzió) 2-es verzió](../copy-activity-overview.md)
+> * [1-es verzió](data-factory-data-movement-activities.md)
+> * [2-es verzió (aktuális verzió)](../copy-activity-overview.md)
 
 > [!NOTE]
-> Ez a cikk a Data Factory 1 verziójára vonatkozik. A Data Factory szolgáltatásnak aktuális verziójának használatakor lásd [másolási tevékenység során a V2](../copy-activity-overview.md).
+> Ez a cikk a Data Factory 1-es verziójára vonatkozik. Ha a jelenlegi verzió a Data Factory szolgáltatás használ, tekintse meg [másolási tevékenység a v2-ben](../copy-activity-overview.md).
 
 ## <a name="overview"></a>Áttekintés
-Az Azure Data Factoryben, az másolási tevékenység követve másolja át a helyszíni és a felhő közötti adattárolókhoz. Miután a rendszer átmásolja az adatokat, azt kell tovább át legyenek-e és elemzése. Használhatja a másolási tevékenység közzététele átalakítását és az elemzés eredményeinek az üzleti intelligenciával és alkalmazás-fogyasztás.
+Az Azure Data Factory segítségével a másolási tevékenység adatokat másolni a helyszíni és felhőbeli között adattárakban. Után az adatok másolását követően képes lehet további alakította át és elemzése. A másolási tevékenység használatával Adatátalakítási és elemzési eredmények az üzleti intelligenciára épülő (BI) és az alkalmazás elküldött közzététele.
 
-![Másolási tevékenység szerepe](media/data-factory-data-movement-activities/copy-activity.png)
+![Szerepkör-másolási tevékenység](media/data-factory-data-movement-activities/copy-activity.png)
 
-Másolási tevékenység működteti a biztonságos, megbízható, méretezhető, és [világszerte elérhető szolgáltatás](#global). Ez a cikk részletesen az adatátvitelt jelölik a Data Factory és a másolási tevékenység.
+A másolási tevékenység működteti, biztonságos, megbízható, méretezhető, és [, globálisan elérhető szolgáltatás](#global). Ez a cikk részletesen a Data Factory és a másolási tevékenység az adatok áthelyezését.
 
-Első lépésként nézzük meg az adatok áttelepítési módját két felhő adattárolók között, valamint egy helyszíni adattároló és a felhő-tárolóban.
+Először nézzük meg, hogyan adatáttelepítés két felhőalapú adattár közötti adatáthelyezéshez, és a egy a helyszíni és felhőalapú adattárak között történik.
 
 > [!NOTE]
-> Általában kapcsolatos további tudnivalókért lásd: [ismertetése folyamatok és a tevékenységek](data-factory-create-pipelines.md).
+> Az általános tevékenység kapcsolatos további információkért lásd: [ismertetése folyamatok és tevékenységek](data-factory-create-pipelines.md).
 >
 >
 
-### <a name="copy-data-between-two-cloud-data-stores"></a>Másolja az adatokat két felhő adattárolók között
-Ha a forrás- és fogadó adattárolókhoz a felhőben, a másolási tevékenység végighalad a következő szakaszokra adatok másolása a forráskiszolgálóról a fogadó. A szolgáltatás, amely a másolási tevékenység megoldásaira épül:
+### <a name="copy-data-between-two-cloud-data-stores"></a>Adatmásolás két felhőalapú adattár közötti adatáthelyezéshez
+Ha a forrás- és fogadó adattárak a felhőben, a másolási tevékenység végighalad a következő szakaszokban az adatokat másol a forrásadattárból a fogadó. A másolási tevékenység biztosító szolgáltatás:
 
-1. Olvassa be az adatokat a forrás-tárolót.
-2. Szerializálással/deszerializálással, tömörítés/kibontás, oszlopleképezés hajt végre, és az adattípus átalakítása. Ezek a konfigurációk a bemeneti adatkészletet, a kimeneti adatkészlet és a másolási tevékenység alapuló műveleteket végez el.
-3. A cél-tárolót írja az adatokat.
+1. Beolvassa az adatokat a forrásadattárból.
+2. Szerializálás/deszerializálás, tömörítése és kibontása, oszlop leképezése hajt végre, és írja be az átalakítás. Ezeket a műveleteket a konfiguráció a bemeneti adatkészlet, a kimeneti adatkészlet és a másolási tevékenység alapján hajtja végre.
+3. A célként megadott adattárba ír adatokat.
 
-A szolgáltatás automatikusan kiválasztja azt a optimális régió az adatátvitel végrehajtásához. Ebben a régióban egyike általában a legközelebbi fogadó adattárba.
+A szolgáltatás automatikusan kiválasztja azt az optimális régió az adatmozgás végrehajtásához. Ebben a régióban egyike általában a legközelebbi a fogadó adattárba.
 
 ![Felhő-felhőbe történő másolás](./media/data-factory-data-movement-activities/cloud-to-cloud.png)
 
-### <a name="copy-data-between-an-on-premises-data-store-and-a-cloud-data-store"></a>Egy helyszíni adattároló és felhőalapú adattároló közötti adatok másolása
-Egy helyszíni adattároló és felhőalapú adattároló közötti biztonságos áthelyezni az adatokat, telepítse az adatkezelési átjáró a helyi számítógépen. Az adatkezelési átjáró olyan ügynök, amely lehetővé teszi a hibrid adatmozgatást és feldolgozását. Telepítheti az ugyanazon a számítógépen, az adatok tárolásához saját magát vagy egy külön számítógépen, amely hozzáfér az adattárolóhoz.
+### <a name="copy-data-between-an-on-premises-data-store-and-a-cloud-data-store"></a>Másolja az adatokat egy helyszíni és felhőalapú adattárak között
+Biztonságos az adatok egy helyszíni és egy felhőalapú adattár közötti áthelyezése, telepítse az adatkezelési átjáró a helyszíni gépen. Az adatkezelési átjáró, az ügynök, amely lehetővé teszi az adatok hibrid áthelyezése és feldolgozása. Telepítheti ugyanarra a gépre, az adatok tárolására, saját maga, vagy egy külön számítógépen, amely hozzáfér az adattárhoz.
 
-Ebben a forgatókönyvben az adatkezelési átjáró a szerializálással/deszerializálással, tömörítés/kibontás, oszlopleképezés hajt végre, és adattípus átalakítása. Nem adatfolyam az Azure Data Factory szolgáltatáson keresztül. Ehelyett az adatkezelési átjáró közvetlenül a adatokat ír az céltár.
+Ebben a forgatókönyvben az adatkezelési átjáró végzi a szerializálás/deszerializálás, tömörítése és kibontása, oszlop leképezése, és típusátalakítás. Nem adatfolyam keresztül az Azure Data Factory szolgáltatásban. Ehelyett az adatkezelési átjáró közvetlenül a adatokat ír az céltár.
 
-![A helyszíni-felhő másolása](./media/data-factory-data-movement-activities/onprem-to-cloud.png)
+![A helyi – a felhőbe irányuló másolás](./media/data-factory-data-movement-activities/onprem-to-cloud.png)
 
-Lásd: [adatok áthelyezése között a helyszíni és felhőalapú adattároló](data-factory-move-data-between-onprem-and-cloud.md) bemutatása és forgatókönyv. Lásd: [az adatkezelési átjáró](data-factory-data-management-gateway.md) az ügynök kapcsolatos részletes információkat.
+Lásd: [közötti a helyszíni és felhőalapú adattárak](data-factory-move-data-between-onprem-and-cloud.md) bemutatása és a forgatókönyv. Lásd: [adatkezelési átjáró](data-factory-data-management-gateway.md) az ügynök kapcsolatos részletes információkat.
 
-Át is helyezheti az adatkezelési átjáró használatával Azure IaaS virtuális gépek (VM) tárolt adatokat a/támogatott adattárolókhoz. Ebben az esetben telepíthető az adatkezelési átjáró ugyanazon virtuális gép az adattároló magát, vagy egy külön virtuális gépre, amely hozzáfér az adattárolóhoz.
+Azure IaaS virtuális gépeket (VM) az adatkezelési átjáró segítségével által szolgáltatott adatokat, és a támogatott adattárak is helyezheti. Ebben az esetben telepíthető az adatkezelési átjáró ugyanazon virtuális Géphez az adatok tárolására, saját maga, vagy egy különálló virtuális gépen, amely hozzáfér az adattárhoz.
 
-## <a name="supported-data-stores-and-formats"></a>Támogatott adatokat tárolja, és formázza
+## <a name="supported-data-stores-and-formats"></a>Támogatott adattárak és formátumok
 A Data Factory másolási tevékenysége adatokat másol egy forrásadattárból egy fogadó adattárba. A Data Factory a következő adattárakat támogatja. Az adatok bármilyen forrásból bármilyen fogadóba másolhatók. Az adattárra kattintva megtudhatja, hogy az adott tárolóba, illetve tárolóból hogyan másolhat adatokat.
 
 > [!NOTE] 
@@ -77,24 +77,24 @@ A Data Factory másolási tevékenysége adatokat másol egy forrásadattárból
 > A * jellel ellátott adattárak lehetnek helyszíniek vagy az Azure IaaS részei, és használatukhoz telepíteni kell az [Adatkezelési átjárót](data-factory-data-management-gateway.md) a helyszíni/Azure IaaS gépre.
 
 ### <a name="supported-file-formats"></a>Támogatott fájlformátumok
-Használhatja a másolási tevékenység **másolja a fájlokat-van** között két fájl alapú adattárolókhoz, kihagyhatja a [szakasz formázása](data-factory-create-datasets.md) mind a bemeneti és kimeneti adatkészlet-definíciók. Az adatokat a szerializálással/deszerializálással nélkül hatékonyan másolja.
+Használhatja a másolási tevékenység **másolja a fájlokat,-van** két fájlalapú adattárak között, akkor kihagyhatja a [szakasz formázása](data-factory-create-datasets.md) mind a bemeneti és kimeneti adatkészlet-definíciókban. Az adatokat bármely szerializálás/deszerializálás nélkül hatékonyan másolja.
 
-Másolási tevékenység során is beolvassa és megadott formátumú fájlok ír: **szöveg, JSON, Avro, ORC és Parquet**, és a tömörítési kodek **GZip, Deflate, BZip2 és ZipDeflate** támogatottak. Lásd: [fájl- és tömörítési formátum támogatott](data-factory-supported-file-and-compression-formats.md) adatokkal.
+Másolási tevékenység is olvas és ír a megadott formátumú: **szöveg, JSON, Avro, ORC és a parquet eszközökben**, és a tömörítési kodek **GZip, Deflate, BZip2 és ZipDeflate** támogatottak. Lásd: [támogatott fájl- és tömörítési formátumok](data-factory-supported-file-and-compression-formats.md) adatokkal.
 
-Például a következő másolási tevékenység teheti meg:
+Ha például a következő másolási tevékenységek teheti:
 
-* Másolja az adatokat a helyszíni SQL Server, és az Azure Data Lake Store írási ORC formátumban.
-* Szöveges (CSV) formátumú fájlok másolását a helyszíni fájlrendszer, és az Avro formátum az Azure Blob írni.
-* Tömörített fájlok másolását a helyszíni fájlrendszer, és kibontani majd föld Azure Data Lake Store.
-* Adatok másolása GZip tömörített szöveges (CSV) formátumú az Azure Blob, és az Azure SQL Database írni.
+* Adatok másolása helyszíni SQL Server és írni az Azure Data Lake Store ORC formátumban.
+* Fájlok másolása a helyszíni fájlrendszer (CSV) szöveges formátumban, és Avro formátumban az Azure-Blobba írni.
+* Tömörített fájlok másolása a helyszíni fájlrendszerben és az Azure Data Lake Store föld majd kibontása a.
+* A GZip tömörített szöveg (CSV) formátumú adatok másolása az Azure-Blobból, és az Azure SQL Database írási.
 
-## <a name="global"></a>Globálisan elérhető adatátvitel
-Az Azure Data Factory csak az USA keleti régiója, Észak-Európa, és az USA nyugati régiója, régiók érhető el. Azonban a szolgáltatást, amely a rendszert működtet a másolási tevékenység nem áll rendelkezésre globálisan a következő régiók és földrajzi. A globálisan elérhető topológia hatékony adatmozgás, amely általában a kereszt-régió ugrások nem biztosítja. Lásd: [régiói](https://azure.microsoft.com/regions/#services) a Data Factory és az adatátvitelt jelölik a régióban rendelkezésre állását.
+## <a name="global"></a>Globálisan elérhető adatáthelyezés
+Az Azure Data Factory csak az USA nyugati RÉGIÓJA, USA keleti Régiójában és észak-európai régióban érhető el. Azonban a másolási tevékenység biztosító szolgáltatás érhető el globálisan az alábbi régiók és földrajzi területek számára. A globálisan elérhető topológia általában Ezzel elkerülheti a régiók közötti útválasztók ugrásainak hatékony adatáthelyezés biztosítja. Lásd: [-szolgáltatások régió szerint](https://azure.microsoft.com/regions/#services) Data Factory és a egy régióban Adatáthelyezés rendelkezésre állását.
 
-### <a name="copy-data-between-cloud-data-stores"></a>Adatok másolása felhő adattárolók között
-Ha a forrás- és fogadó adattárolókhoz a felhőben, adat-előállító szolgáltatástelepítésben a régiót, amelyben ugyanazon a földrajzi hely, az adatokat a fogadó legközelebbi használja. A hozzárendeléseket a következő táblázatban tekintheti meg:
+### <a name="copy-data-between-cloud-data-stores"></a>Adatok másolása a felhőalapú adattár közötti adatáthelyezéshez
+Ha a forrás- és fogadó adattárak a felhőben, a Data Factory szolgáltatástelepítés azonos földrajzi helyen az adatok áthelyezése a fogadó legközelebb eső régióban használja. A hozzárendeléseket a következő táblázatban tekintheti meg:
 
-| Az adatok céltárolót geográfiai | A cél adattár régió | Adatátvitel használt terület |
+| Földrajzi hely, a cél-adattárak | A célként megadott adattárba régiója | Adatáthelyezés használt régió |
 |:--- |:--- |:--- |
 | Egyesült Államok | USA keleti régiója | USA keleti régiója |
 | &nbsp; | USA 2. keleti régiója | USA 2. keleti régiója |
@@ -123,29 +123,29 @@ Ha a forrás- és fogadó adattárolókhoz a felhőben, adat-előállító szolg
 | Korea | Korea középső régiója | Korea középső régiója |
 | &nbsp; | Korea déli régiója | Korea középső régiója |
 
-Azt is megteheti, explicit módon adhatja meg a Data Factory szolgáltatásnak a Másolás megadásával végrehajtásához használt területe `executionLocation` tulajdonság a másolási tevékenység `typeProperties`. Ez a tulajdonság támogatott értékek fent felsorolt **régió használt adatmozgás** oszlop. Vegye figyelembe, hogy az adatok végighalad az adott régióban a hálózaton keresztül másolása során. Például, hogy közötti másolás Azure tárolja, koreai, megadhatja `"executionLocation": "Japan East"` a japán régió keresztül (lásd: [JSON minta](#by-using-json-scripts) hivatkozásként).
+Azt is megteheti, explicit módon adhatja meg a Data Factory szolgáltatás megadásával a másolás végrehajtásához használt régió `executionLocation` tulajdonság a másolási tevékenység `typeProperties`. Ez a tulajdonság támogatott értékei fent felsorolt **adatáthelyezés használt régió** oszlop. Vegye figyelembe, hogy az adatok halad végig, hogy a régióban a hálózaton keresztül másolása során. Például, hogy közötti másolás az Azure tárolja, koreai, megadhatja `"executionLocation": "Japan East"` útvonalhoz japán régióban keresztül (lásd: [példa JSON](#by-using-json-scripts) hivatkozásként van listázva).
 
 > [!NOTE]
-> Ha a cél adattár régió nincs előző listában, vagy ismeretlen, alapértelmezés szerint másolási tevékenység nem sikerül egy másik régióban tett lépéseket megkerülve kivéve, ha `executionLocation` van megadva. A támogatott régióban lista kibontásra váró adott idő alatt.
+> Ha a célként megadott adattárba régiója nem szerepel a fenti listában, vagy nem észlelhető, alapértelmezés szerint a másolási tevékenység sikertelen lép át egy másik régióba, kivéve, ha `executionLocation` van megadva. A támogatott régióban listában kibomlik idővel.
 >
 
-### <a name="copy-data-between-an-on-premises-data-store-and-a-cloud-data-store"></a>Egy helyszíni adattároló és felhőalapú adattároló közötti adatok másolása
-Amikor adatokat a helyszíni (vagy Azure virtuális gépek/IaaS) közötti másolással és felhőalapú tárolók, [az adatkezelési átjáró](data-factory-data-management-gateway.md) végez adatátvitelt jelölik a helyi számítógépen vagy virtuális gép. Az adatok nem keresztül folyik a szolgáltatás felhőalapú, ha nem használ a [másolási előkészített](data-factory-copy-activity-performance.md#staged-copy) funkció. Ebben az esetben adatáramlás keresztül az átmeneti Azure Blob storage a fogadó adattárba írás előtt.
+### <a name="copy-data-between-an-on-premises-data-store-and-a-cloud-data-store"></a>Másolja az adatokat egy helyszíni és felhőalapú adattárak között
+Amikor adatok másolásakor a helyszíni (vagy Azure virtuális gépek/IaaS) és a felhőalapú tárolók, [adatkezelési átjáró](data-factory-data-management-gateway.md) adatáthelyezés hajt végre egy helyszíni gépre vagy virtuális gépen. Az adatok nem továbbítva, a szolgáltatás a felhőben, ha nem használ a [szakaszos Másolás](data-factory-copy-activity-performance.md#staged-copy) képesség. Ebben az esetben áramlanak keresztül az adatok az átmeneti Azure Blob storage a fogadó adattár való írás előtt.
 
-## <a name="create-a-pipeline-with-copy-activity"></a>Hozzon létre egy folyamatot másolási tevékenység
-A másolási tevékenység több módon is létrehozhat folyamat:
+## <a name="create-a-pipeline-with-copy-activity"></a>Másolási tevékenységgel rendelkező folyamat létrehozása
+Többféle módon másolási tevékenységgel rendelkező folyamatot hozhat létre:
 
-### <a name="by-using-the-copy-wizard"></a>A varázsló segítségével
-A Data Factory másolása varázsló segítségével hozzon létre egy folyamatot másolási tevékenység. Ez az adatcsatorna teszi lehetővé adatok támogatott forrásokból másolása a célok *JSON írása nélkül* társított szolgáltatások, adathalmazok és adatcsatornák definícióit. Lásd: [Data Factory másolása varázsló](data-factory-copy-wizard.md) a varázsló vonatkozó további információért.  
+### <a name="by-using-the-copy-wizard"></a>A másolás varázsló használatával
+A Data Factory másolás varázslójával segít másolási tevékenységgel rendelkező folyamat létrehozása. Ez a folyamat lehetővé teszi, hogy az adatok másolása támogatott forrásokból a célhelyekre *JSON írása nélkül* társított szolgáltatások, adatkészletek és folyamatok definíciói. Lásd: [Data Factory másolás varázslójával](data-factory-copy-wizard.md) további információ a varázsló.  
 
 ### <a name="by-using-json-scripts"></a>JSON-parancsfájlok használatával
-Az Azure-portálon, a Visual Studio vagy az Azure PowerShell Data Factory Editor segítségével hozzon létre egy folyamatot JSON definícióját (másolási tevékenység). Ezután telepítheti azt a folyamat létrehozása a Data Factory. Lásd: [oktatóanyag: másolási tevékenység során használja az Azure Data Factory-feldolgozási folyamat](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) oktatóanyagért részletes utasításokat tartalmaz.    
+Az Azure portal, a Visual Studio vagy az Azure PowerShell-lel a Data Factory Editor használatával hozzon létre egy folyamatot egy JSON-definíciót (a másolási tevékenység használatával). Ezt követően telepítheti a Data Factoryban a folyamat létrehozásához. Lásd: [oktatóanyag: Azure Data Factory-folyamatot másolási tevékenységgel használata](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) részletes utasításokat tartalmazó oktatóanyagért.    
 
-JSON-tulajdonságok (például a nevét, leírását, valamint bemeneti és kimeneti táblák és házirendek) minden típusú tevékenységek érhetők el. A rendelkezésre álló tulajdonságok a `typeProperties` szakasz a tevékenység tevékenységek minden típusának függenek.
+Az összes típusú tevékenységet (például név, leírás, bemeneti és kimeneti táblák és szabályzatok) JSON-tulajdonságokkal érhetők el. Az elérhető tulajdonságok köre az `typeProperties` a tevékenység szakaszban tevékenységek minden típusának számától függ.
 
-A másolási tevékenység során a `typeProperties` szakasz források típusától függően változik, és a fogadók esetében. Kattintson a forrás/fogadó a a [támogatott források és mosdók](#supported-data-stores-and-formats) szakaszban olvashat a másolási tevékenység támogatja az adott adattároló típusú tulajdonságokhoz.
+A másolási tevékenységhez a `typeProperties` szakasz források típusú függően változik, és a fogadók. Kattintson egy forrásként/fogadóként a a [forrásként és fogadóként támogatott](#supported-data-stores-and-formats) szakaszt, amely támogatja a másolási tevékenység adattár típus tulajdonságainak ismertetése.
 
-Íme egy minta JSON-definícióból:
+Íme egy példa JSON-definíciót:
 
 ```json
 {
@@ -188,30 +188,30 @@ A másolási tevékenység során a `typeProperties` szakasz források típusát
   }
 }
 ```
-A kimeneti adatkészlet definiált ütemezés határozza meg, amikor a tevékenység futtatása (például: **napi**, a frekvenciát **nap**, és intervallumhoz **1**). A tevékenység adatokat másol egy bemeneti adatkészlet (**forrás**) kimeneti adatkészlethez (**fogadó**).
+Az ütemezés szerint van meghatározva a kimeneti adatkészlet határozza meg, hogy a tevékenység futásakor (például: **napi**, gyakoriság **nap**, és az időintervallumot, **1**). A tevékenység adatokat másol a bemeneti adatkészletek (**forrás**), egy kimeneti adatkészletet (**fogadó**).
 
-A másolási tevékenység több bemeneti adatkészletet is megadhat. A tevékenység futtatása előtt győződjön meg arról a függőségek használhatók. Azonban csak az első adatkészlet adatainak másolódik a céladatkészletből. További információkért lásd: [ütemezés és a végrehajtás](data-factory-scheduling-and-execution.md).  
+Másolási tevékenység egynél több bemeneti adatkészletet is megadhat. Ezek segítségével ellenőrizze a függőségeket, a tevékenység futtatása előtt. Azonban csak az első adatkészletből származó adatokat a rendeltetési adatkészlet másolódik. További információkért lásd: [ütemezés és végrehajtás](data-factory-scheduling-and-execution.md).  
 
 ## <a name="performance-and-tuning"></a>Teljesítmény és finomhangolás
-Tekintse meg a [másolási tevékenység teljesítmény- és hangolási útmutató](data-factory-copy-activity-performance.md), amely ismerteti az Azure Data Factory (másolási tevékenység) adatátvitel teljesítményét befolyásoló tényezők. Felsorolja a belső tesztelése során a megfigyelt teljesítmény és a másolási tevékenység teljesítményének optimalizálásához különböző módját tárgyalja.
+Tekintse meg a [másolási tevékenységek teljesítményéről és finomhangolásáról szóló útmutató](data-factory-copy-activity-performance.md), amely ismerteti az adatáthelyezés (másolási tevékenység) az Azure Data Factoryban teljesítményét befolyásoló tényezők. Felsorolja a megfigyelt teljesítmény belső tesztelése során és a különböző módjait a másolási tevékenység teljesítményének ismerteti.
 
 ## <a name="fault-tolerance"></a>Hibatűrés
-Alapértelmezés szerint a másolási tevékenység során leáll másolja az adatokat, és térjen vissza a hiba nem kompatibilis adatok között a forrás és a fogadó; Ha előforduló miközben kihagyásához és a naplófájl a nem kompatibilis sorok és a csak másolatot explicit módon konfigurálhatja ezeket kompatibilis adatokba, így a másolás sikeresen befejeződött. Tekintse meg a [másolási tevékenység hibatűrést](data-factory-copy-activity-fault-tolerance.md) a további részletek.
+Alapértelmezés szerint a másolási tevékenység adatokat, és lépjen vissza a sikertelen másolás leáll Ha ütközik a forrás és fogadó; nem kompatibilis adatait amíg explicit módon konfigurálhatja kihagyásához és a naplófájl az inkompatibilis sorok és csak a Másolás ezeket kompatibilis adatokat, hogy a másolás sikeresen befejeződött. Tekintse meg a [másolási tevékenység a hibatűrés](data-factory-copy-activity-fault-tolerance.md) a további részleteket.
 
 ## <a name="security-considerations"></a>Biztonsági szempontok
 Tekintse meg a [biztonsági szempontok](data-factory-data-movement-security-considerations.md), amely ismerteti, hogy a biztonsági infrastruktúra, amely adatátviteli szolgáltatások az Azure Data Factory használatával az adatok védelme.
 
 ## <a name="scheduling-and-sequential-copy"></a>Ütemezési és soros másolása
-Lásd: [ütemezés és a végrehajtás](data-factory-scheduling-and-execution.md) adat-előállítóban ütemezés és a végrehajtási működésével kapcsolatos részletes információk. Akkor is futtathatók több másolási műveletek egymás után szekvenciális/rendezett módon. Tekintse meg a [egymás után másolja](data-factory-scheduling-and-execution.md#multiple-activities-in-a-pipeline) szakasz.
+Lásd: [ütemezés és végrehajtás](data-factory-scheduling-and-execution.md) adat-előállítóban ütemezési és végrehajtási működésével kapcsolatos részletes információk. Lehetőség több másolási műveletek futtatásához egymás után több egymást követő/rendezett módon. Tekintse meg a [egymás után másolja](data-factory-scheduling-and-execution.md#multiple-activities-in-a-pipeline) szakaszban.
 
 ## <a name="type-conversions"></a>Típuskonverziók
-Különböző adattárolókhoz natív típusa különböző rendszerek rendelkezik. Másolási tevékenység az eseményforrás-típusnak a következő kétlépéses módszert típusok gyűjtése automatikus típuskonverziók hajtja végre:
+Különböző adattárakban különböző nativní typ rendszerek rendelkezik. Másolási tevékenység végzi az automatikus típuskonverziók a fogadó-típusokat az alábbi kétlépéses módszer a forrás-típusok közül:
 
-1. A natív eseményforrás-típusnak átalakítása .NET-típus.
-2. .NET-típus konvertálása a natív a fogadó típusa.
+1. Natív forrástípusok .NET típusúra konvertálni.
+2. Typ .NET natív fogadó típusúra konvertálni.
 
-A .NET-típus egy adattároló natív típusa rendszerről leképezése nem a megfelelő adatokat tároló cikkben. (Az adott hivatkozásra a [adattárolókhoz támogatott](#supported-data-stores) tábla). A leképezések segítségével határozza meg a megfelelő típusú a táblák létrehozása során, hogy a másolási tevékenység során hajtja végre a megfelelő átalakításra.
+A leképezés egy adattár .NET típusra nativní typ rendszer a megfelelő adatokat tároló cikkben szerepel. (A megadott hivatkozásra kattintva a [támogatott adattárak](#supported-data-stores) tábla). Ezeket a leképezéseket segítségével megfelelő típusainak meghatározása a táblák létrehozása során, úgy, hogy a másolási tevékenység végzi a megfelelő átalakítás.
 
 ## <a name="next-steps"></a>További lépések
-* A másolási tevékenység több, lásd: [adatok másolása az Azure Blob Storage tárolóban az Azure SQL Database](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md).
-* Adatok áthelyezése egy helyszíni adattároló felhőalapú adattároló kapcsolatos további tudnivalókért lásd: [tárolt adatok mozgatása a helyszíni adattárolókhoz felhőbe](data-factory-move-data-between-onprem-and-cloud.md).
+* További információ a másolási tevékenység, lásd: [adatok másolása az Azure Blob storage-ból az Azure SQL Database](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md).
+* Adatok áthelyezése a helyszíni adattárolókból a felhőalapú adattárban kapcsolatos további információkért lásd: [adatok áthelyezése a helyszínről a felhőbe adattárak](data-factory-move-data-between-onprem-and-cloud.md).

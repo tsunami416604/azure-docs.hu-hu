@@ -3,12 +3,12 @@
    
    ![Kattintson a nyilvános IP-cím erőforrás a portálon](./media/virtual-machines-common-portal-create-fqdn/locatePublicIP.PNG)
 
-2. Adja meg a kívánt DNS-nevet, és válassza ki **mentése**.
+2. Adja meg a kívánt DNS-nevet, majd **mentése**.
    
-   ![Adjon meg egy DNS-névcímke a nyilvános IP-erőforrás](./media/virtual-machines-common-portal-create-fqdn/dnsNameLabel.PNG)
+   ![Adjon meg egy DNS-név címke a nyilvános IP-erőforráshoz](./media/virtual-machines-common-portal-create-fqdn/dnsNameLabel.PNG)
 
 
-3. Térjen vissza a virtuális gép – áttekintés panelt, zárja be a *nyilvános IP-cím* panelen. Ellenőrizze, hogy a *DNS-név* most látható.
+3. A virtuális gép áttekintése panelre való visszatéréshez, zárja be a *nyilvános IP-cím* panelen. Ellenőrizze, hogy a *DNS-név* mostantól látható.
    
-   ![Erősítse meg az új DNS-címke beállítása](./media/virtual-machines-common-portal-create-fqdn/fqdnCreated.PNG)
+   ![Erősítse meg az új DNS-címke értéke.](./media/virtual-machines-common-portal-create-fqdn/fqdnCreated.PNG)
 

@@ -1,12 +1,12 @@
 ---
-title: "Csatlakoztassa a C használatával Linux |} Microsoft Docs"
-description: "Eszköz csatlakoztatása az Azure IoT Suite előre konfigurált távoli figyelési megoldást igényelnek a futó Linux C alkalmazással ismerteti."
-services: 
+title: C linuxon való eszköz csatlakoztatása |} A Microsoft Docs
+description: Ismerteti, hogyan lehet egy eszköz csatlakoztatása az Azure IoT Suite előre konfigurált távoli figyelési megoldásban a linuxon futó C nyelven írt alkalmazás használatával.
+services: ''
 suite: iot-suite
 documentationcenter: na
 author: dominicbetts
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 0c7c8039-0bbf-4bb5-9e79-ed8cff433629
 ms.service: iot-suite
 ms.devlang: na
@@ -16,27 +16,28 @@ ms.workload: na
 ms.date: 11/02/2017
 ms.author: dobett
 ms.openlocfilehash: a5768041a13d5ddc355c054dc85ba651b0752aba
-ms.sourcegitcommit: 295ec94e3332d3e0a8704c1b848913672f7467c8
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2017
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38723874"
 ---
-# <a name="connect-your-device-to-the-remote-monitoring-preconfigured-solution-linux"></a>Csatlakoztassa az eszközt a távoli felügyeleti előkonfigurált megoldás (Linux)
+# <a name="connect-your-device-to-the-remote-monitoring-preconfigured-solution-linux"></a>Az eszköz csatlakoztatása a távoli figyelési előre konfigurált megoldáshoz (Linux)
 [!INCLUDE [iot-suite-v1-selector-connecting](../../includes/iot-suite-v1-selector-connecting.md)]
 
-## <a name="build-and-run-a-sample-c-client-linux"></a>Hozza létre, és egy minta C-ügyfél Linux
-A következő lépések bemutatják a hozzon létre egy ügyfélalkalmazást, amely kommunikál a távoli felügyeleti előkonfigurált megoldás. Ez az alkalmazás a C és beépített és Ubuntu Linux rendszeren futtassa.
+## <a name="build-and-run-a-sample-c-client-linux"></a>Hozza létre és futtassa a minta C ügyfél Linux
+A következő lépések bemutatják, hogyan hozhat létre egy ügyfélalkalmazás, amely kommunikál a távoli figyelési előre konfigurált megoldás. Ez az alkalmazás C nyelven írt és a beépített és Ubuntu Linux rendszeren futtassa.
 
-A lépések elvégzésével Ubuntu 15.04 vagy 15.10 verzióját futtató eszközök kell. A folytatás előtt telepítse a csomagokat az Ubuntu eszközre, a következő parancsot:
+A lépések elvégzéséhez szüksége Ubuntu 15.04 vagy 15.10 verzióját futtató eszközök. A folytatás előtt telepítse az előfeltételként szolgáló csomagok a következő parancsot az Ubuntu eszközön:
 
 ```
 sudo apt-get install cmake gcc g++
 ```
 
-## <a name="install-the-client-libraries-on-your-device"></a>A klienskódtárak segítségével telepítse az eszközre
-Az Azure IoT Hub klienskódtárak segítségével telepítheti az Ubuntu eszköz használt csomag érhetők el a **apt get** parancsot. Az alábbi lépésekkel telepítse a csomagot, amely tartalmazza az IoT-központ ügyfél és a fejléc fájlokat a számítógépre Ubuntu:
+## <a name="install-the-client-libraries-on-your-device"></a>Az eszközön az ügyfél-kódtárak telepítése
+Az Azure IoT Hub-ügyfélkönyvtárak-csomagként telepítheti az Ubuntu eszköz használatával érhetők el a **apt-get paranccsal** parancsot. A következő lépéseket követve telepítse a csomagot, amely tartalmazza az IoT Hub ügyfél erőforrástár és a fejléc fájlokat a számítógépre Ubuntu:
 
-1. A rendszerhéj a AzureIoT tárház hozzáadása a számítógéphez:
+1. Vegyen fel egy rendszerhéjból, a számítógépre a AzureIoT tárház:
    
     ```
     sudo add-apt-repository ppa:aziotsdklinux/ppa-azureiot
@@ -49,19 +50,19 @@ Az Azure IoT Hub klienskódtárak segítségével telepítheti az Ubuntu eszköz
     ```
 
 ## <a name="install-the-parson-json-parser"></a>Telepítse a Parson JSON-elemző
-Az IoT-központ klienskódtárak segítségével a Parson JSON-elemző használatával elemezni üzenet Payload van jelen. A megfelelő mappát a számítógépén klónozza a Parson GitHub-tárházban, a következő parancsot:
+Az IoT Hub-ügyfélkönyvtárak a Parson JSON-elemző használatával elemezni üzenetet is észleltünk adattartalmakat. A megfelelő mappát a számítógépen klónozza a Parson GitHub-tárházban, a következő paranccsal:
 
 ```
 git clone https://github.com/kgabis/parson.git
 ```
 
-## <a name="prepare-your-project"></a>Készítse elő a projekthez
-A Ubuntu gépen, hozzon létre egy nevű **távoli\_figyelési**. Az a **távoli\_figyelési** mappába:
+## <a name="prepare-your-project"></a>-Projektek előkészítése
+Az Ubuntu-gép, hozzon létre egy mappát nevű **távoli\_figyelési**. Az a **távoli\_figyelési** mappa:
 
 - Hozza létre a négy fájlokat **main.c**, **távoli\_monitoring.c**, **távoli\_monitoring.h**, és **CMakeLists.txt**.
-- Hozzon létre nevű **parson**.
+- Hozzon létre nevű mappát **parson**.
 
-Másolja a fájlokat **parson.c** és **parson.h** Parson összetevőtárházat be helyi másolatát a **távoli\_figyelési/parson** mappa.
+Másolja a fájlokat **parson.c** és **parson.h** származó be a Parson tárház helyi példányának a **távoli\_figyelési/parson** mappát.
 
 Egy szövegszerkesztőben nyissa meg a **távoli\_monitoring.c** fájlt. Adja hozzá a következő `#include`-utasításokat:
    
@@ -99,11 +100,11 @@ int main(void)
 ```
 
 ## <a name="build-and-run-the-application"></a>Az alkalmazás fordítása és futtatása
-Az alábbi lépések bemutatják, hogyan használható *CMake* hozhat létre az ügyfélalkalmazást.
+Az alábbi lépések bemutatják, hogyan használható *CMake* ügyfélalkalmazás hozhat létre.
 
-1. Egy szövegszerkesztőben nyissa meg a **CMakeLists.txt** fájlt a **remote_monitoring** mappa.
+1. Egy szövegszerkesztőben nyissa meg a **CMakeLists.txt** fájlt a **remote_monitoring** mappát.
 
-1. Az alábbi utasítások segítségével meghatározhatja, hogyan hozható létre az ügyfél-alkalmazás hozzáadása:
+1. Adja hozzá az alábbi utasítások segítségével meghatározhatja, hogyan hozhat létre az ügyfélalkalmazás:
    
     ```
     macro(compileAsC99)
@@ -151,7 +152,7 @@ Az alábbi lépések bemutatják, hogyan használható *CMake* hozhat létre az 
         m
     )
     ```
-1. Az a **remote_monitoring** mappa, hozzon létre egy mappát tárolásához a *ellenőrizze* CMake hoz létre fájlokat, majd futtassa a **cmake** és **győződjön** parancsok az alábbiak szerint:
+1. Az a **remote_monitoring** mappában hozzon létre egy mappát tárolásához a *győződjön meg arról,* CMake által létrehozott fájlokat, majd futtassa a **cmake** és **győződjön meg arról,** a következő parancsokat:
    
     ```
     mkdir cmake
@@ -160,7 +161,7 @@ Az alábbi lépések bemutatják, hogyan használható *CMake* hozhat létre az 
     make
     ```
 
-1. Az ügyfélalkalmazás futtatása, és telemetriai adatokat küldhet az IoT hubhoz:
+1. Futtassa az ügyfélalkalmazást és telemetriát küldjön az IoT hubnak:
    
     ```
     ./sample_app

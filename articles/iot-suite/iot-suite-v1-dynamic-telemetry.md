@@ -1,12 +1,12 @@
 ---
-title: "Használjon dinamikus telemetriai |} Microsoft Docs"
-description: "Ez az oktatóanyag megtudhatja, hogyan használható az Azure IoT Suite távoli felügyeleti előkonfigurált megoldás dinamikus telemetriai."
-services: 
+title: Dinamikus telemetria használata |} A Microsoft Docs
+description: Ez az oktatóanyag további dinamikus telemetria használata az Azure IoT Suite távoli figyelési előre konfigurált megoldás.
+services: ''
 suite: iot-suite
-documentationcenter: 
+documentationcenter: ''
 author: dominicbetts
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 562799dc-06ea-4cdd-b822-80d1f70d2f09
 ms.service: iot-suite
 ms.devlang: na
@@ -16,34 +16,35 @@ ms.workload: na
 ms.date: 11/02/2017
 ms.author: dobett
 ms.openlocfilehash: 60e9ee00fabf15a62e782c70bca251b1a8e617c3
-ms.sourcegitcommit: 295ec94e3332d3e0a8704c1b848913672f7467c8
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2017
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38724000"
 ---
-# <a name="use-dynamic-telemetry-with-the-remote-monitoring-preconfigured-solution"></a>Dinamikus telemetriai adatokat a távoli felügyeleti előkonfigurált megoldás
+# <a name="use-dynamic-telemetry-with-the-remote-monitoring-preconfigured-solution"></a>Dinamikus telemetria használata a távoli figyelési előre konfigurált megoldás
 
-Dinamikus telemetriai lehetővé teszi bármely telemetriai adatokat küldött a távoli felügyeleti előkonfigurált megoldás megjelenítése. A szimulált eszköz, amely az előkonfigurált megoldás üzembe helyezéséhez telemetriát hőmérséklet és a páratartalom, amely az irányítópulton jelenítheti meg. Ha meglévő szimulált eszközök testreszabása, hozzon létre új szimulált eszköz, vagy fizikai eszközök csatlakoztatása az előkonfigurált megoldás az egyéb telemetriai értékek, például a külső hőmérséklet, RPM vagy szélsebesség küldhet. Majd jelenítheti meg az irányítópulton a további telemetriai adatokat.
+Dinamikus telemetria megjelenítése semmilyen telemetriai adatot küld a távoli figyelési előre konfigurált megoldás lehetővé teszi. A szimulált eszközök, amelyek az előre konfigurált megoldás üzembe helyezéséhez küldjön hőmérséklettel és páratartalommal kapcsolatos telemetriai adatokat, amelyek az irányítópulton jelenítheti meg. Ha meglévő szimulált eszközök testreszabása, új szimulált eszköz létrehozása vagy fizikai eszközök csatlakoztatása az előre konfigurált megoldás elküldheti egyéb telemetriai értékeket, például a külső hőmérsékletet, RPM vagy szélsebesség. Majd a további telemetria az irányítópulton jelenítheti meg.
 
-Ez az oktatóanyag egy egyszerű Node.js szimulált eszköz könnyen módosíthatja dinamikus telemetriai kísérletezhet használja.
+Ebben az oktatóanyagban egy egyszerű Node.js szimulált eszköz egyszerűen kísérletezhet a dinamikus telemetria módosíthatja.
 
 Az oktatóanyag elvégzéséhez szüksége lesz:
 
 * Aktív Azure-előfizetés. Ha nincs fiókja, néhány perc alatt létrehozhat egy ingyenes próbafiókot. További információ: [Ingyenes Azure-fiók létrehozása][lnk_free_trial].
 * [NODE.js] [ lnk-node] verzió 0.12.x vagy újabb.
 
-Az operációs rendszereken, például a Windows vagy Linux, ahol telepítheti a Node.js oktatóanyag hajthatja végre.
+Ebben az oktatóanyagban bármely operációs rendszerben, mint például a Windows vagy Linux rendszerű, ahol telepítheti a Node.js hajthatja végre.
 
 [!INCLUDE [iot-suite-v1-provision-remote-monitoring](../../includes/iot-suite-v1-provision-remote-monitoring.md)]
 
 [!INCLUDE [iot-suite-v1-send-external-temperature](../../includes/iot-suite-v1-send-external-temperature.md)]
 
-## <a name="add-a-telemetry-type"></a>A telemetria-típus hozzáadása
+## <a name="add-a-telemetry-type"></a>Egy telemetriai típus hozzáadása
 
-A következő lépés, hogy a telemetriai adatok új értékek vannak beállítva a Node.js szimulált eszköz állítja elő:
+A következő lépés, hogy cserélje le az új értékek vannak beállítva a Node.js szimulált eszköz által létrehozott telemetriát:
 
-1. A Node.js szimulált eszköz leállításához írja be a **Ctrl + C** a parancssor vagy a rendszerhéj.
-2. A remote_monitoring.js fájlban megtekintheti a meglévő hőmérséklet, a páratartalom és a külső hőmérséklet telemetriai alapadatokhoz értékeit. Adja meg az alapadatokhoz értékét **rpm** az alábbiak szerint:
+1. Írja be a Node.js szimulált eszköz leállítása **Ctrl + C** a parancssort vagy a rendszerhéjat.
+2. A remote_monitoring.js fájlt láthatja a meglévő hőmérséklet, a páratartalmat és a külső hőmérsékleti telemetria alapadatok értékeit. Adjon meg egy értéket alapadatok **rpm** módon:
 
     ```nodejs
     // Sensors data
@@ -53,7 +54,7 @@ A következő lépés, hogy a telemetriai adatok új értékek vannak beállítv
     var rpm = 200;
     ```
 
-3. A Node.js szimulált eszköz használ a **generateRandomIncrement** függvény véletlenszerű növekmény hozzáadása alapszintű adatértékek remote_monitoring.js fájlban. Ügyfélfuttatási a **rpm** érték hozzáadásával egy kódsort a meglévő randomizations után az alábbiak szerint:
+3. A Node.js a szimulált eszközt használja a **generateRandomIncrement** függvény hozzáadása egy véletlenszerű növekmény az alap adatértékek remote_monitoring.js fájlban. Véletlenszerűvé tétele a **rpm** hozzáadásával egy sor kódot a meglévő randomizations után a következő értéket:
 
     ```nodejs
     temperature += generateRandomIncrement();
@@ -62,7 +63,7 @@ A következő lépés, hogy a telemetriai adatok új értékek vannak beállítv
     rpm += generateRandomIncrement();
     ```
 
-4. Az eszköz küld az IoT-központ a JSON-adattartalmat az új rpm érték hozzáadása:
+4. Az új rpm érték hozzáadása a JSON-adattartalom az eszköz küld az IoT hubnak:
 
     ```nodejs
     var data = JSON.stringify({
@@ -74,20 +75,20 @@ A következő lépés, hogy a telemetriai adatok új értékek vannak beállítv
     });
     ```
 
-5. Futtassa a szimulált eszköz Node.js, a következő parancsot:
+5. A szimulált eszköz Node.js, a következő parancs futtatásával:
 
     `node remote_monitoring.js`
 
-6. Az új RPM telemetriai típus fog megjelenni a diagram az irányítópulton a láthatja:
+6. Figyelje meg az új RPM telemetriai típus, amely a diagramon az irányítópulton jeleníti meg:
 
-![Az irányítópult RPM hozzáadása][image3]
+![RPM hozzáadása az irányítópulthoz][image3]
 
 > [!NOTE]
-> Tiltsa le, majd engedélyezze a a Node.js-eszköz szükség a **eszközök** lap állapotúként jelenik meg azonnal az irányítópulton.
+> Tiltsa le, majd engedélyezze a Node.js eszközoldali a szeretne a **eszközök** a változás azonnal megtekintéséhez az irányítópult lapon.
 
-## <a name="customize-the-dashboard-display"></a>Az irányítópult megjelenítéséhez
+## <a name="customize-the-dashboard-display"></a>Irányítópult megjelenítéséhez
 
-A **eszközinformáció** hibaüzenet is tartalmazza az eszköz küldhet az IoT-központ telemetriai adatok metaadatait. A metaadatok lehet meghatározni az telemetriai adatokat küld az eszközre. Módosítsa a **deviceMetaData** felvenni a remote_monitoring.js fájlban egy **Telemetriai** definíció alábbi a **parancsok** definition. A következő kódrészletben látható kódot a **parancsok** definition (ne feledje hozzáadni egy `,` után a **parancsok** definition):
+A **Device-Info** üzenetet is tartalmazhat az eszköz IoT hubbal küldhet telemetriát metaadatait. A metaadatok lehet meghatározni az telemetriát küld az eszközre. Módosítsa a **deviceMetaData** tartalmazza a remote_monitoring.js fájlban egy **Telemetriai** definíció következő a **parancsok** definíciója. A következő kód kódrészletet mutat be a **parancsok** definition (adja hozzá a `,` után a **parancsok** definíció):
 
 ```nodejs
 'Commands': [{
@@ -119,10 +120,10 @@ A **eszközinformáció** hibaüzenet is tartalmazza az eszköz küldhet az IoT-
 ```
 
 > [!NOTE]
-> A távoli felügyeleti megoldás hasonlítsa össze a metaadat-definíciójában a telemetriai adatok adatfolyam adatokat nem használja.
+> A távoli figyelési megoldás a kis-és egyezést használatával hasonlítsa össze az adatok használata a telemetria-adatfolyam metaadatainak definíciója.
 
 
-Hozzáadása egy **Telemetriai** definícióját, ahogy az előző kódrészletet az nem változtatja meg az irányítópult viselkedését. Azonban a metaadatok is lehetnek egy **DisplayName** attribútum az irányítópult megjelenítéséhez. Frissítés a **Telemetriai** metaadat-definíciójában, ahogy az a következő kódrészletet:
+Hozzáadás egy **Telemetriai** definícióját a fenti kódrészletben látható módon nem változtatja meg az irányítópultot. Azonban a metaadatok is lehetnek egy **DisplayName** attribútum az irányítópult megjelenítéséhez. Frissítés a **Telemetriai** metaadatainak definíciója az alábbi kódrészletben látható módon:
 
 ```nodejs
 'Telemetry': [
@@ -144,18 +145,18 @@ Hozzáadása egy **Telemetriai** definícióját, ahogy az előző kódrészlete
 ]
 ```
 
-Az alábbi képernyőfelvételen látható, hogyan Ez a változás módosítja az irányítópulton a diagram jelmagyarázatának:
+Az alábbi képernyőképen látható, hogyan módosítja ezt a módosítást a a diagram jelmagyarázatának az irányítópulton:
 
 ![A diagram jelmagyarázatának testreszabása][image4]
 
 > [!NOTE]
-> Tiltsa le, majd engedélyezze a a Node.js-eszköz szükség a **eszközök** lap állapotúként jelenik meg azonnal az irányítópulton.
+> Tiltsa le, majd engedélyezze a Node.js eszközoldali a szeretne a **eszközök** a változás azonnal megtekintéséhez az irányítópult lapon.
 
-## <a name="filter-the-telemetry-types"></a>A telemetria-típusok szűrése
+## <a name="filter-the-telemetry-types"></a>Szűrés a telemetriai adatok típusa
 
-Alapértelmezés szerint a diagram az irányítópulton látható minden adatsort a telemetria-adatfolyamban. Használhatja a **eszközinformáció** metaadatok az adott telemetriai típusok a diagram a megjelenítését. 
+Alapértelmezés szerint a diagramot az irányítópulton a telemetriai adatok Stream minden egyes adatsorra jeleníti meg. Használhatja a **Device-Info** metaadatokra ahhoz, hogy adott telemetriatípusok a diagramra a megjelenítését. 
 
-Ahhoz, hogy a diagram megjelenítése csak a hőmérséklet és a páratartalom telemetriai, hagyja el **ExternalTemperature** a a **eszközinformáció** **Telemetriai** metaadat az alábbiak szerint:
+Ahhoz, hogy a diagram megjelenítése egyetlen hőmérséklettel és páratartalommal kapcsolatos telemetriai adatokat, hagyja ki a következő **ExternalTemperature** származó a **Device-Info** **Telemetriai** metaadatait az alábbiak szerint:
 
 ```nodejs
 'Telemetry': [
@@ -177,22 +178,22 @@ Ahhoz, hogy a diagram megjelenítése csak a hőmérséklet és a páratartalom 
 ]
 ```
 
-A **külső hőmérséklet** a diagram már nem jelenik meg:
+A **öltözet hőmérséklet** már nem jelenik meg a diagramon:
 
-![Az irányítópult telemetriai adatok szűrése][image5]
+![Az irányítópulton a telemetria szűrése][image5]
 
-Ez a módosítás csak a diagram megjelenítési érinti. A **ExternalTemperature** adatértékek továbbra is tárolja, a háttérbeli feldolgozás érhető el.
+Ez a változás csak a diagramon megjelenítendő van hatással. A **ExternalTemperature** adatértékek továbbra is tárolja és elérhetővé minden jut a háttérbeli feldolgozásnak.
 
 > [!NOTE]
-> Tiltsa le, majd engedélyezze a a Node.js-eszköz szükség a **eszközök** lap állapotúként jelenik meg azonnal az irányítópulton.
+> Tiltsa le, majd engedélyezze a Node.js eszközoldali a szeretne a **eszközök** a változás azonnal megtekintéséhez az irányítópult lapon.
 
-## <a name="handle-errors"></a>Hibák kezelésének
+## <a name="handle-errors"></a>Hibáinak kezelése
 
-A diagramon megjelenítendő egy adatfolyam a **típus** a a **eszközinformáció** metaadatok meg kell egyeznie a telemetriai adatok értékeinek adatok típusát. Például, ha a metaadatok azt jelenti, hogy a **típus** páratartalom adatok az **int** és egy **dupla** páratartalom telemetriai adatok nem jelennek meg a diagramra, majd a telemetriai adatok adatfolyamban található. Azonban a **páratartalom** értékek továbbra is tárolja, a háttér-feldolgozási érhető el.
+A diagramon megjeleníthető egy adatfolyam a **típus** a a **Device-Info** metaadatok meg kell egyeznie a telemetriaértékeket adattípusát. Például, ha a metaadatok azt jelenti, hogy a **típus** nedvességtartalma adatok van **int** és a egy **dupla** a telemetria-adatfolyam megtalálható, majd a páratartalommal kapcsolatos telemetriai adatok nem jelennek meg a diagramon. Azonban a **páratartalom** értékek továbbra is tárolja és elérhetővé minden háttérbeli feldolgozásra.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Most, hogy korábban már látott dinamikus telemetriai használata, többet is megtudhat arról, hogyan az előkonfigurált megoldásokat eszköz adatai: [eszköz információk metaadatait a távoli figyelési megoldást előre konfigurált][lnk-devinfo].
+Most, hogy megtudhatta, hogyan használhatja a dinamikus telemetria, további az előre konfigurált megoldások használatával eszközadatokat kapcsolatos: [eszköz információk metaadatait a távoli figyelési előre konfigurált megoldás] [ lnk-devinfo].
 
 [lnk-devinfo]: iot-suite-v1-remote-monitoring-device-info.md
 

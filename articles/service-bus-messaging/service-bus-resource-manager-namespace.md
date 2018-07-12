@@ -1,6 +1,6 @@
 ---
-title: Service Bus üzenetkezelés névteret Azure Resource Manager-sablon létrehozása |} Microsoft Docs
-description: Service Bus üzenetkezelés névtér létrehozása az Azure Resource Manager-sablon segítségével
+title: Hozzon létre a Service Bus üzenetkezelési névteret Azure Resource Manager-sablonnal |} A Microsoft Docs
+description: Azure Resource Manager-sablon használatával létrehozhat egy Service Bus Messaging-névteret
 services: service-bus-messaging
 documentationcenter: .net
 author: sethmanheim
@@ -15,35 +15,35 @@ ms.workload: na
 ms.date: 04/11/2018
 ms.author: sethm
 ms.openlocfilehash: e7e811b86d1ea0454b964fb297cb05b6a4734abd
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31411834"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38232420"
 ---
-# <a name="create-a-service-bus-namespace-using-an-azure-resource-manager-template"></a>Azure Resource Manager-sablonnal Service Bus-névtér létrehozása
+# <a name="create-a-service-bus-namespace-using-an-azure-resource-manager-template"></a>Hozzon létre egy Azure Resource Manager-sablon használatával a Service Bus-névtér
 
-Ez a cikk ismerteti az Azure Resource Manager sablon használata, amely létrehoz egy Service Bus-névtér típusú **Messaging** a Standard Termékváltozat. A cikk is definiálja a megadott paraméterek, a telepítés végrehajtásához. Ez a sablont használhatja a saját környezeteiben, vagy testre is szabhatja a saját követelményeinek megfelelően.
+Ez a cikk azt ismerteti, hogyan használható az Azure Resource Manager-sablon, amely létrehozza a Service Bus-névtér, típus **üzenetkezelés** a Standard Termékváltozat. A cikk azt is meghatározza, a megadott paraméterek, a telepítés végrehajtására. Ez a sablont használhatja a saját környezeteiben, vagy testre is szabhatja a saját követelményeinek megfelelően.
 
 A sablonok létrehozásáról további információkat az [Authoring Azure Resource Manager templates][Authoring Azure Resource Manager templates] (Azure Resource Manager-sablonok készítése) című témakörben talál.
 
-A teljes sablon, tekintse meg a [Service Bus-névtér sablon] [ Service Bus namespace template] a Githubon.
+A teljes sablont, tekintse meg a [a Service Bus-névtér sablon] [ Service Bus namespace template] a Githubon.
 
 > [!NOTE]
-> A következő Azure Resource Manager-sablonok letöltése és központi telepítés érhetők el. 
+> Az alábbi Azure Resource Manager-sablonok letöltése és központi telepítési érhetők el. 
 > 
-> * [Hozzon létre egy Service Bus-névtér várólista](service-bus-resource-manager-namespace-queue.md)
-> * [Hozzon létre egy Service Bus-névtér témakör és előfizetés](service-bus-resource-manager-namespace-topic.md)
-> * [Hozzon létre egy Service Bus-névtér várólista és engedélyezési szabály](service-bus-resource-manager-namespace-auth-rule.md)
-> * [A témakör, előfizetés és a szabály a Service Bus-névtér létrehozása](service-bus-resource-manager-namespace-topic-with-rule.md)
+> * [Service Bus-névtér létrehozása az üzenetsorhoz](service-bus-resource-manager-namespace-queue.md)
+> * [Service Bus-névtér létrehozása témakörrel és előfizetéssel](service-bus-resource-manager-namespace-topic.md)
+> * [Service Bus-névtér létrehozása az üzenetsor és engedélyezési szabály](service-bus-resource-manager-namespace-auth-rule.md)
+> * [Service Bus-névtér létrehozása témakörrel, előfizetéssel és szabály](service-bus-resource-manager-namespace-topic-with-rule.md)
 > 
-> Ellenőrizze a legutóbbi sablonok, látogasson el a [Azure gyors üzembe helyezési sablonokat] [ Azure Quickstart Templates] gyűjteménye, majd keresse meg a Service Bus.
+> A legújabb sablonokat keressen, látogasson el a [Azure gyorsindítási sablonok] [ Azure Quickstart Templates] katalógusban, és keresse meg a Service Bus.
 > 
 > 
 
 ## <a name="what-will-you-deploy"></a>Mit fog üzembe helyezni?
 
-Ezen sablon esetén a Service Bus-névtér telepít egy [Standard vagy prémium](https://azure.microsoft.com/pricing/details/service-bus/) Termékváltozat.
+Ezzel a sablonnal egy Service Bus-névtér telepít egy [Standard vagy prémium szintű](https://azure.microsoft.com/pricing/details/service-bus/) Termékváltozat.
 
 Az automatikus üzembe helyezéshez kattintson az alábbi gombra:
 
@@ -51,9 +51,9 @@ Az automatikus üzembe helyezéshez kattintson az alábbi gombra:
 
 ## <a name="parameters"></a>Paraméterek
 
-Az Azure Resource Managerrel meghatározhatja a sablon üzembe helyezésekor megadandó értékek paramétereit. A sablon nevű szakaszban tartalmaz `Parameters` , amely tartalmazza az összes a paraméterértékek. Azokhoz az értékekhez adjon meg paramétert, amelyek az üzembe helyezendő projekt vagy az üzembe helyezési környezet alapján változhatnak. Ne adjon meg olyan paramétereket olyan értékhez, amelyek nem változnak. A sablonban minden egyes paraméterérték az üzembe helyezendő erőforrások megadásához lesz felhasználva.
+Az Azure Resource Managerrel meghatározhatja a sablon üzembe helyezésekor megadandó értékek paramétereit. A sablon tartalmaz nevű szakaszban `Parameters` , amely tartalmazza az összes paraméter értékét. Azokhoz az értékekhez adjon meg paramétert, amelyek az üzembe helyezendő projekt vagy az üzembe helyezési környezet alapján változhatnak. Ne adjon meg olyan paramétereket olyan értékhez, amelyek nem változnak. A sablonban minden egyes paraméterérték az üzembe helyezendő erőforrások megadásához lesz felhasználva.
 
-Ez a sablon meghatározza, hogy a következő paraméterekkel:
+Ez a sablon határozza meg a következő paraméterekkel:
 
 ### <a name="servicebusnamespacename"></a>serviceBusNamespaceName
 
@@ -70,7 +70,7 @@ A Service Bus-névtér létrehozása neve.
 
 ### <a name="servicebussku"></a>serviceBusSKU
 
-A Service Bus neve [SKU](https://azure.microsoft.com/pricing/details/service-bus/) létrehozásához.
+A Service Bus neve [Termékváltozat](https://azure.microsoft.com/pricing/details/service-bus/) hozhat létre.
 
 ```json
 "serviceBusSku": { 
@@ -86,13 +86,13 @@ A Service Bus neve [SKU](https://azure.microsoft.com/pricing/details/service-bus
 
 ```
 
-A sablon határozza meg az értékeket, amelyek ehhez a paraméterhez (Standard vagy prémium) megengedettek. Ha nincs érték megadva, az erőforrás-kezelő (általános) alapértelmezett értéket rendeli hozzá.
+A sablon határozza meg az értékeket, amelyeknél engedélyezve van a ezt a paramétert (Standard vagy prémium). Ha nem ad meg értéket, az erőforrás-kezelő (általános) alapértelmezett értéket rendeli hozzá.
 
-A Service Bus árazással kapcsolatos további információkért lásd: [Service Bus árak és számlázás][Service Bus pricing and billing].
+További információ a Service Bus díjszabásáról: [a Service Bus díjszabása és számlázási][Service Bus pricing and billing].
 
 ### <a name="servicebusapiversion"></a>serviceBusApiVersion
 
-A sablon Service Bus API verzióját.
+A Service Bus API verzióját a sablont.
 
 ```json
 "serviceBusApiVersion": { 
@@ -107,7 +107,7 @@ A sablon Service Bus API verzióját.
 
 ### <a name="service-bus-namespace"></a>Service Bus-névtér
 
-Létrehoz egy standard Service Bus-névtér típusú **Messaging**.
+Létrehoz egy standard szintű Service Bus-névtér típusú **üzenetkezelés**.
 
 ```json
 "resources": [
@@ -145,10 +145,10 @@ azure group deployment create <my-resource-group> <my-deployment-name> --templat
 ```
 
 ## <a name="next-steps"></a>További lépések
-Most, hogy már létrehozott és telepített Azure Resource Manager eszközzel, megtudhatja, hogyan kezelheti ezeket az erőforrásokat ezek a cikkek olvasásával:
+Most, hogy létrehozta és erőforrások Azure Resource Managerrel üzembe helyezett, megtudhatja, hogyan kezelhetők ezek a cikkek elolvasásával:
 
-* [A PowerShell használatával a Service Bus kezelése](service-bus-manage-with-ps.md)
-* [A Service Bus Explorer Service Bus-erőforrások kezelése](https://github.com/paolosalvatori/ServiceBusExplorer/releases)
+* [Service Bus kezelése a PowerShell](service-bus-manage-with-ps.md)
+* [A Service Bus-erőforrások kezelése a Service Bus Explorerrel](https://github.com/paolosalvatori/ServiceBusExplorer/releases)
 
 [Authoring Azure Resource Manager templates]: ../azure-resource-manager/resource-group-authoring-templates.md
 [Service Bus namespace template]: https://github.com/Azure/azure-quickstart-templates/blob/master/101-servicebus-create-namespace/

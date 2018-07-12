@@ -1,6 +1,6 @@
 ---
-title: A logic apps létrehozása az Azure Resource Manager-sablonok alapján |} Microsoft Docs
-description: Létrehozhat és telepíthet a logic app munkafolyamatok Azure Resource Manager-sablonok
+title: Logikai alkalmazások létrehozása az Azure Resource Manager-sablonokkal |} A Microsoft Docs
+description: Létrehozása és üzembe helyezése Azure Resource Manager-sablonokkal rendelkező logikai alkalmazások munkafolyamataiba
 services: logic-apps
 documentationcenter: ''
 author: ecfan
@@ -15,20 +15,20 @@ ms.topic: article
 ms.date: 10/15/2017
 ms.author: LADocs; estfan
 ms.openlocfilehash: 0772ed0e6cca98c4e59b563a23549909636d55d0
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35298222"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38572620"
 ---
-# <a name="create-and-deploy-logic-apps-with-azure-resource-manager-templates"></a>Logikai alkalmazások az Azure Resource Manager-sablonok létrehozása és telepítése
+# <a name="create-and-deploy-logic-apps-with-azure-resource-manager-templates"></a>Logikai alkalmazások az Azure Resource Manager-sablonok létrehozását és telepítését
 
-Az Azure Logic Apps biztosít az Azure Resource Manager sablonokban használható, nem csak a logic apps automatizálhatja a munkafolyamatok létrehozásához, hanem az erőforrások és a központi telepítéshez használt paraméterek megadása. Ez a sablon a saját üzleti helyzetekben használhatja, vagy állítsa be a sablon az igényeinek megfelelő. További információ a [a logic apps Resource Manager-sablon](https://github.com/Azure/azure-quickstart-templates/blob/master/101-logic-app-create/azuredeploy.json) és [Azure Resource Manager sablon struktúra és szintaxis](../azure-resource-manager/resource-group-authoring-templates.md).
+Az Azure Logic Apps biztosít az Azure Resource Manager-sablonok, amelyet használhat, nem csak automatizálhatja a munkafolyamatokat logikai alkalmazásokat hozhat létre, hanem az erőforrásokat és üzembe helyezéshez használt paraméterek meghatározására. Ez a sablon használata a saját üzleti forgatókönyvek esetén, vagy testre szabhatja a sablont az igényeknek. Tudjon meg többet a [Resource Manager-sablon a logic apps](https://github.com/Azure/azure-quickstart-templates/blob/master/101-logic-app-create/azuredeploy.json) és [Azure Resource Manager-sablonok szerkezetének és szintaxisának](../azure-resource-manager/resource-group-authoring-templates.md).
 
 ## <a name="define-the-logic-app"></a>Adja meg a logikai alkalmazás
 
-A példa logic app-definíciót óránként egyszer fut, és Pingeli a megadott helyre a `testUri` paraméter.
-Használja a sablon paraméterértékeket logic app nevét (```logicAppName```) és a hely tesztelési pingelése (```testUri```). További információ [ezeket a paramétereket adjon meg a sablon a](#define-parameters). A sablon is állítja be a logikai alkalmazás helyét és az Azure erőforráscsoport ugyanazon a helyen. 
+Ebben a példában logic app-definíciójának óránként egyszer futtatja, és Pingeli a megadott helyen a `testUri` paraméter.
+A sablon paraméter értékét használja a logikai alkalmazás nevét (```logicAppName```) és a teszteléshez ping helye (```testUri```). Tudjon meg többet [ezek a paraméterek meghatározása a sablonban](#define-parameters). A sablon ugyanarra a helyre, az Azure-erőforráscsoportot, a logikai alkalmazás helyét is beállítja. 
 
 ``` json
 {
@@ -81,32 +81,32 @@ Használja a sablon paraméterértékeket logic app nevét (```logicAppName```) 
 
 [!INCLUDE [app-service-logic-deploy-parameters](../../includes/app-service-logic-deploy-parameters.md)]
 
-Az alábbiakban a sablon paramétereihez tartozó leírások:
+Az alábbiakban a sablonban szereplő paraméterekkel leírása:
 
-| Paraméter | Leírás | JSON-definíció példa | 
+| Paraméter | Leírás | Példa JSON-definíció | 
 | --------- | ----------- | ----------------------- | 
-| `logicAppName` | A nevét adja meg a logikai alkalmazást az, hogy a sablon hoz létre. | "logicAppName": { "type": "string", "metadata": { "description": "myExampleLogicAppName" } } |
-| `testUri` | Meghatározza a tesztelési ping helyét. | "testUri": {"type": "string", "defaultValue": "http://azure.microsoft.com/status/feed/"} | 
+| `logicAppName` | Meghatározza a nevét, hogy a sablon létrehoz a logikai alkalmazás. | "logicAppName": { "type": "string", "metadata": { "description": "myExampleLogicAppName" } } |
+| `testUri` | Tesztelési pingelni a hely határozza meg. | "testUri": {"type": "string", "defaultValue": "http://azure.microsoft.com/status/feed/"} | 
 ||||
 
-További információ [REST API-t a Logic Apps munkafolyamat-definíciót és tulajdonságok](https://docs.microsoft.com/rest/api/logic/workflows) és [logikai alkalmazás definícióiról rendelkező JSON kialakításának](logic-apps-author-definitions.md).
+Tudjon meg többet [REST API a Logic Apps munkafolyamat-definíció és tulajdonságok](https://docs.microsoft.com/rest/api/logic/workflows) és [logikaialkalmazás-definíciók JSON-ra épülő](logic-apps-author-definitions.md).
 
-## <a name="deploy-logic-apps-automatically"></a>A logic apps automatikus központi telepítés
+## <a name="deploy-logic-apps-automatically"></a>Logikai alkalmazások automatikus telepítése
 
-Hozzon létre, és egy logikai alkalmazás automatikus telepítése az Azure-ba, válassza a **az Azure telepítéséhez** itt:
+Hozzon létre, és automatikusan egy logikai alkalmazás üzembe helyezése az Azure-ba, válassza a **üzembe helyezés az Azure** itt:
 
 [![Üzembe helyezés az Azure-ban](./media/logic-apps-create-deploy-azure-resource-manager-templates/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-logic-app-create%2Fazuredeploy.json)
 
-Ez a művelet bejelentkezik, az Azure portálra, ahol adja meg a logikai alkalmazás adatait, és végezze el a módosításokat a sablonból vagy a paraméterek. Például az Azure-portálon kérni fogja ezeket az adatokat:
+Ez a művelet bejelentkezik, az Azure Portalt, ahol adja meg a logikai alkalmazás részleteit, és végezze el a módosításokat a sablon és paraméterek. Például az Azure Portalon kéri az alábbi részleteket:
 
 * Azure-előfizetés neve
 * Használni kívánt erőforráscsoportot
-* Logic app helye
+* Logikai alkalmazás helye
 * A logikai alkalmazás nevét
 * Egy teszt URI
 * A megadott feltételek és kikötések elfogadása
 
-## <a name="deploy-logic-apps-with-commands"></a>A logic apps-parancsokkal telepítése
+## <a name="deploy-logic-apps-with-commands"></a>A logic apps-parancsokkal üzembe helyezése
 
 [!INCLUDE [app-service-deploy-commands](../../includes/app-service-deploy-commands.md)]
 

@@ -1,6 +1,6 @@
 ---
-title: Automatizálja az operációs rendszer és a keretrendszer javítását az Azure tároló beállításjegyzék Build (ACR összeállítása)
-description: ACR létrehozásához, egy csomag funkcióját biztosító biztonságos, Azure-tároló beállításjegyzék bevezetést automatikus tároló lemezkép összeállítása és a felhőben javítását.
+title: Automatizálja az operációs rendszer és a keretrendszert az Azure Container Registry létrehozása (ACR Builddel) javítása
+description: ACR Builddel, egy csomag az Azure Container Registry védelmét biztosító funkcióit bemutató automatikus tároló-rendszerkép összeállítását és a javítással, a felhőben.
 services: container-registry
 author: mmacy
 manager: jeconnoc
@@ -9,63 +9,63 @@ ms.topic: article
 ms.date: 05/01/2018
 ms.author: marsma
 ms.openlocfilehash: 3ef91270bceb5865bdbdf9c436e4519595a3dc09
-ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/11/2018
-ms.locfileid: "34057774"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38582630"
 ---
-# <a name="automate-os-and-framework-patching-with-acr-build"></a>Az operációs rendszer és a keretrendszer javítását az ACR Build automatizálása
+# <a name="automate-os-and-framework-patching-with-acr-build"></a>Automatizálja az operációs rendszer és a keretrendszer javítás ACR builddel
 
-Tárolók új virtualizációs, az infrastruktúra és működési követelmények alkalmazás és a fejlesztői függőségek elkülönítése tartalmaz. Mi marad, azonban szükség, cím, hogyan az alkalmazásvirtualizálás lett-e.
+Tárolók adja meg az új szintet jelentenek a virtualizálás, alkalmazás és a fejlesztői függőségek infrastruktúra-és működési követelmények elkülönítése. Milyen állapotban marad, azonban szükség, cím, hogyan van az application virtualization tudjon fókuszálni.
 
-**ACR Build**, egy tartalmazó csomag Azure tároló beállításjegyzék, a szolgáltatásokat, nem csak natív tároló kép összeállítása képességet biztosít, de is automatizálja [az operációs rendszer és a keretrendszer javítás](#automate-os-and-framework-patching) az a Docker tárolókat.
+**ACR Builddel**, egy csomag az Azure Container Registry lévő szolgáltatások nem csak natív tároló build képesség biztosít, de is automatizálja [operációs rendszer és a javítással keretrendszer](#automate-os-and-framework-patching) a Docker-tárolók számára.
 
 [!INCLUDE [container-registry-build-preview-note](../../includes/container-registry-build-preview-note.md)]
 
-## <a name="what-is-acr-build"></a>Mi az az ACR Build?
+## <a name="what-is-acr-build"></a>Mi az ACR Builddel?
 
-Egy Azure-natív kép összeállítása tárolószolgáltatás Azure tároló beállításjegyzék Build. Lehetővé teszi, hogy belső – hurok fejlesztési ACR összeállítása a felhőben, igény szerinti tároló lemezképpel épít fel és kód véglegesítési és végzett forráslemezkép automatizált épít frissítését.
+Az Azure Container Registry létrehozása szolgáltatása egy natív Azure tároló rendszerképet hozhat létre. ACR Builddel lehetővé teszi, hogy belső-hurok fejlesztés a felhőben, igény szerinti tárolórendszerképet hoz létre, és automatizált buildekig kód érvényesítése és alap forráslemezkép a frissítése.
 
-Eseményindító tároló kép automatikusan épít, amikor kódot elkötelezte magát a Git-tárház, vagy amikor frissül egy tároló alapjául szolgáló lemezképhez. A frissítés eseményindítók alapjául szolgáló lemezképhez, az operációs rendszer automatizálhatja és alkalmazás-keretrendszer munkafolyamat, a rendszerbiztonsági tagok nem módosítható tároló megtartásával biztonságos környezetek fenntartása érdekében.
+Eseményindító tárolórendszerkép automatikusan épít, amikor a kód számára fontos, hogy egy Git-tárház, vagy amikor frissül egy tároló alaplemezkép. Az alaplemezkép frissítés eseményindítók, automatizálhatja az operációs rendszer és alkalmazási keretrendszer munkafolyamat, biztonságos környezetben fenntartása a rendszerbiztonsági tagok nem módosítható a tárolók megtartásával javítása.
 
-## <a name="quick-build-inner-loop-extended-to-the-cloud"></a>Gyors Build: belső – hurok terjeszteni a felhőben
+## <a name="quick-build-inner-loop-extended-to-the-cloud"></a>Gyors Build: belső ciklikus kiterjesztése a felhőbe a
 
-Életciklus-felügyeletének elejére elindítja a fejlesztők véglegesíti a kód első sora előtt. ACR Build [gyors létrehozása](container-registry-tutorial-quick-build.md) szolgáltatás lehetővé teszi egy integrált helyi belső – hurok fejlesztési felület, kiszervezésével buildek az Azure-bA. A gyors hoz létre ellenőrizheti a automatizált build definíciók előtt véglegesítése a kódot.
+Az életciklus-felügyelet elején elindítja a fejlesztők számára az első sornyi kód véglegesítése előtt. ACR Builddel [gyors létrehozása](container-registry-tutorial-quick-build.md) funkció lehetővé teszi egy integrált helyi belső-hurok fejlesztési környezetet biztosít, tehermentesítést buildeket, az Azure-bA. A gyors hoz létre ellenőrizheti az automatizált buildelési definíciókat a kód véglegesítése előtt.
 
-Az ismerős használatával `docker build` formátum, a [az acr build] [ az-acr-build] parancs az Azure parancssori felületen időt vesz igénybe a helyi környezet, elküldi a ACR Build szolgáltatás, és alapértelmezés szerint leküldéses értesítések beépített kép során a beállításjegyzék létrehozása után. ACR Build követi a georeplikált nyilvántartó szétszórt fejlesztési csapat kihasználhatják a legközelebbi replikált beállításjegyzék engedélyezése. Előzetes ACR build nem áll rendelkezésre az USA keleti régiója és Nyugat-Európában területeket.
+Az ismert `docker build` formátum, a [az acr-build] [ az-acr-build] parancs az Azure CLI-ben vesz igénybe egy helyi környezetet, elküldi azt az ACR Builddel szolgáltatásnak, és alapértelmezés szerint leküldi az összeállított rendszerképet a beállításjegyzékbe, Befejezés. ACR Builddel követi a georeplikált tárolójegyzékek elosztott fejlesztői csapatok kihasználhatja a legközelebbi replikált beállításjegyzék engedélyezése. Előzetes verzióban az ACR-build régiókban érhető el az USA keleti Régiójában és Nyugat-Európa.
 
-ACR Build út a hardvercseréhez egy egyszerű tároló életciklusát. Például integrálása ACR összeállítása a CI/CD megoldás. A következő futtatásával [az bejelentkezési] [ az-login] a egy [szolgáltatás egyszerű][az-login-service-principal], a CI/CD megoldás hogyan adhat ki volt [az acrösszeállítása] [ az-acr-build] parancsok futtatásával indítsa buildek lemezképet.
+ACR Builddel tervezték, mint egy egyszerű tároló életciklus. Ha például integrálhatja az ACR Builddel CI/CD-megoldását. Végrehajtásával [az bejelentkezési] [ az-login] az egy [szolgáltatásnév][az-login-service-principal], CI/CD-megoldását sikerült majd ki [az acr builddel] [ az-acr-build] parancsok felhőplatformos termékeiért buildek kép.
 
-Gyors buildek használata az első ACR Build oktatóanyag [lemezképeket tároló a felhőben az Azure tároló beállításjegyzék Build](container-registry-tutorial-quick-build.md).
+Megtudhatja, hogyan használja a gyors hoz létre az első ACR Builddel oktatóanyagban [felhőbeli tárolórendszerképek létrehozása az Azure Container Registry létrehozása](container-registry-tutorial-quick-build.md).
 
-## <a name="automatic-build-on-source-code-commit"></a>A forrás kód véglegesítési automatikus build
+## <a name="automatic-build-on-source-code-commit"></a>A forrás kód véglegesítésére automatikus build
 
-Automatikusan elindítható a tároló-lemezkép összeállítása ACR használata hozhat létre. Ha kód nem véglegesített Git-tárházba. Felépíteni, konfigurálható az Azure CLI paranccsal [az acr build-tevékenység][az-acr-build-task], egy Git-tárház és opcionálisan egy ágat és Dockerfile adhatók meg. A csapat kód véglegesíti a tárházhoz, amikor egy ACR Build által létrehozott webhook a tárházban definiált tároló kép build váltja ki.
+Amikor a kód számára fontos, hogy egy Git-tárház használata ACR Builddel tárolórendszerkép aktiválják automatikusan hozhat létre. Buildekkel kapcsolatos feladatok, konfigurálható az Azure CLI-paranccsal [az acr-build-tevékenység][az-acr-build-task], lehetővé teszik egy Git-tárház és opcionálisan egy ágat és docker-fájlban adja meg. Csapata a tárházba kód véglegesítésére, amikor egy ACR Builddel által létrehozott webhook aktiválja a tároló rendszerképét az adattárban lévő meghatározott build.
 
-Megtudhatja, hogyan indít buildek a második ACR Build oktatóanyag a forrás kód érvényesítéskor [automatizálás tároló kép hoz létre az Azure tároló beállításjegyzék Build](container-registry-tutorial-build-task.md).
+Ismerje meg, hogyan build aktiválása a forrás kód véglegesítés az ACR Builddel második oktatóanyagban [automatizálása tárolórendszerképet hoz létre az Azure Container Registry létrehozása](container-registry-tutorial-build-task.md).
 
-## <a name="automate-os-and-framework-patching"></a>Az operációs rendszer és a keretrendszer javítását automatizálása
+## <a name="automate-os-and-framework-patching"></a>Automatizálja az operációs rendszer és a keretrendszer javítása
 
-A hatványa ACR Build valóban javítható a tároló-létrehozási folyamat képességét a észleli a frissítést az alapjául szolgáló lemezképhez, származik. Ha a beállításjegyzék kerül a frissített alapjául szolgáló lemezképhez, ACR Build automatikusan építhet bármely alkalmazás-lemezképek alapján.
+Hatékonyságát ACR Builddel valóban növelése érdekében a tároló létrehozási folyamat képességét a frissítés alapképet észleléséhez származik. Ha a frissített alaplemezkép van leküldte a tárolójegyzékbe, ACR Builddel automatikusan hozhat létre bármilyen alkalmazás-lemezképek alapján.
 
-Tároló képek körben osztályozhatók *alap* képek és *alkalmazás* képek. A kiinduló lemezképeket általában tartalmaznak, az operációs rendszer és az alkalmazás-keretrendszert, amelyen az alkalmazás épül, valamint más testreszabás is szerepelt. A kiinduló lemezképek maguk általában a alapján nyilvános fölérendelt képek, például [Alpine Linux] [ base-alpine] vagy [Node.js][base-node]. Előfordulhat, hogy ossza meg az alkalmazás-lemezképek számos egy közös alapjául szolgáló lemezképhez.
+Tárolórendszerképek széles körben kategorizálhatók *alap* lemezképek és *alkalmazás* lemezképek. Az alaplemezképek rendszerint az operációs rendszer és alkalmazási keretrendszerek, amelyen az alkalmazást a létrehozása mellett egyéb testreszabásokat. Ezek alaplemezképek önmagukban általában nyilvános felsőbb rétegbeli rendszerképen alapuló, például [Alpine Linux] [ base-alpine] vagy [Node.js][base-node]. Előfordulhat, hogy ossza meg az alkalmazás-lemezképek számos közös alapképet.
 
-Az operációs rendszer vagy alkalmazás keretrendszer lemezkép frissítésekor a felsőbb rétegbeli karbantartó által például kritikus fontosságú az operációs rendszer biztonsági javítással, frissíteni kell a alap lemezképeket, hogy a kritikus hiba. Minden egyes alkalmazás-lemezképet kell majd is úgy, hogy ezek a felsőbb rétegbeli javítások, most már szerepel az alapjául szolgáló lemezképhez tartalmazza.
+Egy operációs rendszer vagy alkalmazás keretrendszer-lemezkép frissítésekor a felsőbb rétegbeli karbantartó által, például egy kritikus fontosságú az operációs rendszer biztonsági javítás is frissítenie kell az alaplemezképek a kritikus fontosságú javítás szükséges. Minden egyes alkalmazás-lemezképet majd is újra kell építeni ezeket most már szerepel az alaprendszerképet a felsőbb rétegbeli javításokat tartalmazza.
 
-ACR Build dinamikusan felderíti az alapjául szolgáló lemezképhez függőségek, a tároló lemezkép stílusbeállításokat, mert azt képes észlelni, amikor egy alkalmazás-lemezképet alapjául szolgáló lemezképhez frissül. Egy előre konfigurált [feladat létrehozása](container-registry-tutorial-base-image-update.md#create-build-task), majd létre ACR **automatikusan újraépíti az összes alkalmazás-lemezképet** meg. Az automatikus észlelése és újraépítését, ACR Build menti az idő és erőfeszítés általában szükséges manuális nyomon követése és minden alkalmazás frissítése rendszerképet készítene a frissített alapjául szolgáló lemezképhez hivatkozik.
+ACR Builddel dinamikusan felderíti az alaplemezkép függőségeit, amikor azt összeállít egy tárolórendszerképet, mert azt képes észlelni, ha egy alkalmazás-lemezképet alaplemezkép frissül. Egy előre konfigurált [készítése feladatot](container-registry-tutorial-base-image-update.md#create-build-task), majd az ACR Builddel **automatikusan újraépíti az összes alkalmazás-lemezképet** az Ön számára. Ezt automatikus észlelése és újraépítése, az ACR Builddel menti a frissített alaplemezkép hivatkozó kép, az idő és munka, általában az manuálisan nyomon követésére, és minden alkalmazás frissítése szükséges.
 
-További tudnivalók az operációs rendszer és a keretrendszer javítását a harmadik ACR Build oktatóanyagban [automatizálás kép alapjául szolgáló lemezképhez frissítés épít, az Azure tároló beállításjegyzék Build](container-registry-tutorial-base-image-update.md).
+Ismerje meg az operációs rendszer és a keretrendszer javítás ACR Builddel harmadik oktatóanyag [automatizálása rendszerképet az Azure Container Registry létrehozása épül rendszerkép alapszintű frissítésének](container-registry-tutorial-base-image-update.md).
 
 > [!NOTE]
-> A kezdeti előzetes alapjául szolgáló lemezképhez frissítések eseményindító épít, csak akkor, ha az alkalmazás és a képek a azonos Azure-tárolót beállításjegyzék található.
+> A kezdeti előzetes alaplemezkép frissítések eseményindító csak akkor, amikor az ugyanazon az Azure container registry találhatók az alap- és az alkalmazás képeket hoz létre.
 
 ## <a name="next-steps"></a>További lépések
 
-Amikor készen áll a automatizálja az operációs rendszer és a keretrendszer által a felhőalapú tároló-lemezképek összeállításakor javítását, tekintse meg a három részből ACR Build oktatóanyag adatsorozat.
+Amikor elkészült, az operációs rendszer és a felhőben a tárolólemezképek létrehozásával javítás keretrendszer automatizálása, tekintse meg háromrészes ACR Builddel oktatóanyag-sorozat.
 
 > [!div class="nextstepaction"]
-> [Lemezképeket tároló a felhőben az Azure tároló beállításjegyzék összeállítása](container-registry-tutorial-quick-build.md)
+> [Tárolórendszerképek összeállítása a felhőben az Azure Container Registry Build használatával](container-registry-tutorial-quick-build.md)
 
 <!-- LINKS - External -->
 [base-alpine]: https://hub.docker.com/_/alpine/

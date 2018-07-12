@@ -1,6 +1,6 @@
 ---
-title: Hozzáférés az Azure Media Services API - CLI 2.0 |} Microsoft Docs
-description: Ez az útmutató az Azure Media Services API eléréséhez kövesse.
+title: Az Azure Media Services API - hozzáférés az Azure CLI |} A Microsoft Docs
+description: Kövesse az ebben az útmutatóban az Azure Media Services API eléréséhez.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -12,27 +12,27 @@ ms.topic: article
 ms.custom: mvc
 ms.date: 03/19/2018
 ms.author: juliako
-ms.openlocfilehash: 9295c3f9dfabc8ef7749758e926df443843720a1
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: e20cac5f1063589bdbfee0f384ac6af5a39811ed
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34639775"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38724028"
 ---
-# <a name="access-azure-media-services-api-with-cli-20"></a>Hozzáférés az Azure Media Services API CLI 2.0
+# <a name="access-azure-media-services-api-with-the-azure-cli"></a>Hozzáférés az Azure Media Services API-t az Azure CLI-vel
  
-Az Azure AD szolgáltatás egyszerű hitelesítést kell használnia csatlakozni az Azure Media Services API. Az alkalmazás kell igényelni egy az Azure AD-jogkivonatot, amely a következő paraméterekkel rendelkezik:
+Az Azure AD egyszerű szolgáltatásnév hitelesítése az Azure Media Services API csatlakozni kell használnia. Az alkalmazásnak kell az Azure AD-token a következő paraméterekkel rendelkező kérelem:
 
-* Azure AD-bérlő végpont
-* A Media Services erőforrás URI azonosítója
-* Erőforrás URI azonosítója a többi Media Services szolgáltatásokhoz
-* Az Azure AD alkalmazás értékek: az ügyfél-azonosító és a titkos ügyfélkódot
+* Az Azure AD-bérlő végpont
+* A Media Services-erőforrás-URI
+* Erőforrás URI-t a Media Services – REST
+* Az Azure AD-alkalmazás értékeire: az ügyfél-azonosító és titkos Ügyfélkód
 
-Ez a cikk bemutatja, hogyan CLI 2.0 használata az Azure AD-alkalmazás és szolgáltatás egyszerű létrehozása, és az Azure Media Services-erőforrások eléréséhez szükséges értékeket.
+Ez a cikk bemutatja, hogyan hozzon létre egy Azure AD-alkalmazás és szolgáltatás egyszerű, és az Azure Media Services-erőforrások eléréséhez szükséges értékek beolvasása az Azure CLI használatával.
 
 ## <a name="prerequisites"></a>Előfeltételek 
 
-Hozzon létre egy új Azure Media Services-fiók leírtak [a gyors üzembe helyezés](create-account-cli-quickstart.md).
+Hozzon létre egy új Azure Media Services-fiók leírtak [ebben a rövid útmutatóban](create-account-cli-quickstart.md).
 
 ## <a name="log-in-to-azure"></a>Jelentkezzen be az Azure-ba
 
@@ -40,7 +40,7 @@ Jelentkezzen be az [Azure Portalra](http://portal.azure.com), és indítsa el a 
 
 [!INCLUDE [cloud-shell-powershell.md](../../../includes/cloud-shell-powershell.md)]
 
-Ha a CLI helyi telepítését és használatát választja, akkor ehhez a témakörhöz az Azure CLI 2.0-ás vagy újabb verziójára lesz szükség. A rendelkezésére álló verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI 2.0 telepítése]( /cli/azure/install-azure-cli). 
+Ha a CLI helyi telepítését és használatát választja, akkor ehhez a témakörhöz az Azure CLI 2.0-ás vagy újabb verziójára lesz szükség. A rendelkezésére álló verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni, tekintse meg kell [az Azure CLI telepítése](/cli/azure/install-azure-cli). 
 
 [!INCLUDE [media-services-v3-cli-access-api-include](../../../includes/media-services-v3-cli-access-api-include.md)]
 
@@ -51,4 +51,4 @@ Ha a CLI helyi telepítését és használatát választja, akkor ehhez a témak
 
 ## <a name="see-also"></a>Lásd még
 
-[CLI 2.0](https://docs.microsoft.com/en-us/cli/azure/ams?view=azure-cli-latest)
+[Azure CLI](https://docs.microsoft.com/en-us/cli/azure/ams?view=azure-cli-latest)

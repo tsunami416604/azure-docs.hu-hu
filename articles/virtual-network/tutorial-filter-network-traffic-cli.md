@@ -1,6 +1,6 @@
 ---
-title: Hálózati forgalmat - az Azure parancssori felület |} Microsoft Docs
-description: Ebből a cikkből megtanulhatja a hálózati biztonsági csoport, az Azure parancssori felülettel rendelkező alhálózathoz, a hálózati forgalom szűrésére.
+title: Szűrheti a hálózati forgalom – Azure CLI-vel |} A Microsoft Docs
+description: Ebben a cikkben megismerheti, hogyan szűrheti a hálózati forgalmat alhálózatokra egy hálózati biztonsági csoportot, az Azure CLI használatával.
 services: virtual-network
 documentationcenter: virtual-network
 author: jimdial
@@ -18,35 +18,35 @@ ms.date: 03/30/2018
 ms.author: jdial
 ms.custom: ''
 ms.openlocfilehash: 11dc0e5f6ee398b2a745ed60cbc166e2a1697c3e
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31423177"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38721067"
 ---
-# <a name="filter-network-traffic-with-a-network-security-group-using-the-azure-cli"></a>Hálózati forgalom szűrésére, a hálózati biztonsági csoport az Azure parancssori felület használatával
+# <a name="filter-network-traffic-with-a-network-security-group-using-the-azure-cli"></a>Hálózati forgalom szűrése hálózati biztonsági csoport az Azure CLI használatával
 
-Szűrheti a hálózati forgalom a bejövő és kimenő virtuális hálózati alhálózat a hálózati biztonsági csoport. Hálózati biztonsági csoportok tartalmazzák a szabályokat, amelyek IP-cím, port és protokoll által a hálózati forgalom szűrésére. Egy alhálózaton üzembe helyezett erőforrás biztonsági szabályok érvényesek. Ebben a cikkben az alábbiakkal ismerkedhet meg:
+A virtuális hálózatok alhálózatainak bejövő vagy kimenő hálózati forgalmát hálózati biztonsági csoport segítségével szűrheti. A hálózati biztonsági csoportok biztonsági szabályokat tartalmaznak, amelyek IP-cím, port és protokoll szerint szűrik a hálózati forgalmat. A biztonsági szabályok az egyes alhálózatokban üzembe helyezett erőforrásokra vonatkoznak. Ebben a cikkben az alábbiakkal ismerkedhet meg:
 
-* A hálózati biztonsági csoport és a biztonsági szabályok létrehozása
-* Hozzon létre egy virtuális hálózatot, és rendelje hozzá egy alhálózatot a hálózati biztonsági csoport
-* Virtuális gépek (VM) telepítése egy alhálózatba
+* Hálózati biztonsági csoport és biztonsági szabályok létrehozása
+* Virtuális hálózat létrehozása és hálózati biztonsági csoport hozzárendelése egy alhálózathoz
+* Virtuális gépek üzembe helyezése egy alhálózaton
 * Forgalomszűrők tesztelése
 
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Telepítése és a parancssori felület helyileg használata mellett dönt, ez a cikk számára szükséges, hogy futnak-e az Azure parancssori felület 2.0.28 verzió vagy újabb. A verzió megkereséséhez futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI 2.0 telepítése](/cli/azure/install-azure-cli). 
+Ha helyi telepítése és használata a parancssori felület, ez a cikk megköveteli, hogy futnak-e az Azure CLI 2.0.28-as vagy újabb. A verzió megkereséséhez futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI 2.0 telepítése](/cli/azure/install-azure-cli). 
 
 
 ## <a name="create-a-network-security-group"></a>Hálózati biztonsági csoport létrehozása
 
-Hálózati biztonsági csoport biztonsági szabályokat tartalmazza. Biztonsági szabályok adja meg a forrás és cél. Források és célok lehetnek biztonsági csoportok.
+A hálózati biztonsági csoportok biztonsági szabályokat tartalmaznak. A biztonsági szabályok egy forrást és egy célt határoznak meg. A források és célok lehetnek alkalmazásbiztonsági csoportok.
 
-### <a name="create-application-security-groups"></a>Biztonsági csoportok létrehozása
+### <a name="create-application-security-groups"></a>Alkalmazásbiztonsági csoportok létrehozása
 
-Először hozzon létre egy erőforráscsoportot, ebben a cikkben létrehozott összes erőforrás [az csoport létrehozása](/cli/azure/group#az_group_create). A következő példa egy erőforrás csoportot hoz létre a *eastus* helye: 
+Először hozzon létre egy erőforráscsoportot a a jelen cikkben létrehozott összes erőforrás [az csoport létrehozása](/cli/azure/group#az_group_create). A következő példa létrehoz egy erőforráscsoportot az *eastus* helyen: 
 
 ```azurecli-interactive
 az group create \
@@ -54,7 +54,7 @@ az group create \
   --location eastus
 ```
 
-Az alkalmazás biztonsági csoport létrehozása [az hálózati asg létrehozása](/cli/azure/network/asg#az_network_asg_create). Az alkalmazáscsoport biztonsági lehetővé teszi csoport kiszolgálókat a hasonló Portszűrési követelmények. Az alábbi példakód létrehozza a két alkalmazás biztonsági csoportok.
+Hozzon létre egy alkalmazásbiztonsági csoportot a [az hálózati adaptertől létrehozása](/cli/azure/network/asg#az_network_asg_create). Az alkalmazásbiztonsági csoportok lehetővé teszik, hogy csoportokba rendezze a hasonló portszűrési követelményekkel rendelkező kiszolgálókat. Az alábbi példa két alkalmazásbiztonsági csoportot hoz létre.
 
 ```azurecli-interactive
 az network asg create \
@@ -70,7 +70,7 @@ az network asg create \
 
 ### <a name="create-a-network-security-group"></a>Hálózati biztonsági csoport létrehozása
 
-Hozzon létre egy hálózati biztonsági csoport [az hálózati nsg létrehozása](/cli/azure/network/nsg#az_network_nsg_create). Az alábbi példakód létrehozza a hálózati biztonsági csoport nevű *myNsg*: 
+Hozzon létre egy hálózati biztonsági csoport [az network nsg létrehozása](/cli/azure/network/nsg#az_network_nsg_create). Az alábbi példa egy *myNsg* nevű hálózati biztonsági csoportot hoz létre: 
 
 ```azurecli-interactive 
 # Create a network security group
@@ -79,9 +79,9 @@ az network nsg create \
   --name myNsg
 ```
 
-### <a name="create-security-rules"></a>Szabályok létrehozása
+### <a name="create-security-rules"></a>Biztonsági szabályok létrehozása
 
-A biztonsági szabály létrehozása [az hálózati nsg-szabály létrehozása](/cli/azure/network/nsg/rule#az_network_nsg_rule_create). Az alábbi példa létrehoz egy szabályt, amely lehetővé teszi, hogy a forgalom az internetről bejövő a *myWebServers* alkalmazáscsoport biztonsági 80-as és 443-as portokon keresztül:
+Hozzon létre egy biztonsági szabályt az [az network nsg-szabály létrehozása](/cli/azure/network/nsg/rule#az_network_nsg_rule_create). Az alábbi példa egy olyan szabályt hoz létre, amely engedélyezi az internetről a *myWebServers* alkalmazásbiztonsági csoportba bejövő forgalmat a 80-as és 443-as porton keresztül.
 
 ```azurecli-interactive
 az network nsg rule create \
@@ -98,7 +98,7 @@ az network nsg rule create \
   --destination-port-range 80 443
 ```
 
-Az alábbi példa létrehoz egy szabályt, amely lehetővé teszi, hogy a forgalom az internetről bejövő a *myMgmtServers* alkalmazáscsoport biztonsági 22-es porton keresztül:
+Az alábbi példa létrehoz egy szabályt, amely lehetővé teszi, hogy a forgalom az internetről bejövő a *myMgmtServers* alkalmazásbiztonsági csoport 22-es porton keresztül:
 
 ```azurecli-interactive
 az network nsg rule create \
@@ -115,11 +115,11 @@ az network nsg rule create \
   --destination-port-range 22
 ```
 
-Ebben a cikkben SSH (22-es portot) az interneten van kitéve a *myAsgMgmtServers* virtuális gép. Éles környezetben 22-es porton csatlakozik az internethez, hogy csökkenjen helyett javasoljuk, hogy csatlakozni használatával kezelni kívánt Azure-erőforrások egy [VPN](../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fvirtual-network%2ftoc.json) vagy [titkos](../expressroute/expressroute-introduction.md?toc=%2fazure%2fvirtual-network%2ftoc.json) hálózati kapcsolat.
+Ez a cikk az SSH (22-es port) közvetlenül csatlakozik az internethez a *myAsgMgmtServers* virtuális Gépet. Éles környezetben, a 22-es port az internethez való csatlakoztatása helyett javasolt, hogy csatlakozni használatával kezelni kívánt Azure-erőforrások egy [VPN](../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fvirtual-network%2ftoc.json) vagy [privát](../expressroute/expressroute-introduction.md?toc=%2fazure%2fvirtual-network%2ftoc.json) hálózati kapcsolat.
 
 ## <a name="create-a-virtual-network"></a>Virtuális hálózat létrehozása
 
-Hozzon létre egy virtuális hálózatot az [az network vnet create](/cli/azure/network/vnet#az_network_vnet_create) paranccsal. Az alábbi példa létrehoz egy virtuális nevű *myVirtualNetwork*:
+Hozzon létre egy virtuális hálózatot az [az network vnet create](/cli/azure/network/vnet#az_network_vnet_create) paranccsal. Az alábbi példa egy *myVirtualNetwork* virtuális hálózatot hoz létre:
 
 ```azurecli-interactive 
 az network vnet create \
@@ -128,7 +128,7 @@ az network vnet create \
   --address-prefixes 10.0.0.0/16
 ```
 
-Adjon hozzá egy alhálózatot a virtuális hálózat [az alhálózaton virtuális hálózat létrehozása](/cli/azure/network/vnet/subnet#az_network_vnet_subnet_create). A következő példakóddal felveheti nevű alhálózat *mySubnet* a virtuális hálózat és társult a *myNsg* hálózati biztonsági csoportra, és azt:
+Adjon hozzá egy alhálózatot a virtuális hálózat [az alhálózaton virtuális hálózat létrehozása](/cli/azure/network/vnet/subnet#az_network_vnet_subnet_create). Az alábbi példa egy *mySubnet* nevű alhálózatot ad hozzá a virtuális hálózathoz, és hozzárendeli a *myNsg* hálózati biztonsági csoportot.
 
 ```azurecli-interactive
 az network vnet subnet create \
@@ -141,11 +141,11 @@ az network vnet subnet create \
 
 ## <a name="create-virtual-machines"></a>Virtuális gépek létrehozása
 
-Hozzon létre két virtuális gépek a virtuális hálózat, hogy ellenőrizhesse a forgalom egy későbbi lépésben szűrést. 
+Hozzon létre két virtuális gépet a virtuális hálózatban, hogy érvényesíthesse majd a fogalom szűrését egy később lépésben. 
 
-Hozzon létre egy virtuális gépet az [az vm create](/cli/azure/vm#az_vm_create) paranccsal. Az alábbi példakód létrehozza a virtuális gép, egy webkiszolgáló erre a célra. A `--asgs myAsgWebServers` beállítás hatására az Azure létrehozza a virtuális gép tagja hálózati kapcsolat létrehozásához a *myAsgWebServers* alkalmazás biztonsági csoport.
+Hozzon létre egy virtuális gépet az [az vm create](/cli/azure/vm#az_vm_create) paranccsal. Az alábbi példa egy virtuális gépet hoz létre, amely webkiszolgálóként fog szolgálni. A `--asgs myAsgWebServers` beállítás hatására az Azure-t, győződjön meg arról, a hálózati adaptert hoz létre a virtuális gép tagja a *myAsgWebServers* alkalmazásbiztonsági csoporthoz.
 
-A `--nsg ""` beállítás megadása a Azure hoz létre, amikor létrehozza a virtuális hálózati adapter alapértelmezett hálózati biztonsági csoport létrehozása az Azure megakadályozása. Ez a cikk egyszerűsítésére, a jelszó szolgál. Kulcsok általában használják az éles környezetekben. Ha kulcsok használja, konfigurálnia kell a SSH-ügynöktovábbítást a hátralévő lépéseket. További információkért az SSH-ügyfél a dokumentációban. Cserélje le `<replace-with-your-password>` az alábbi parancs a jelszóval.
+A `--nsg ""` megadva a beállítás megakadályozza, hogy az Azure alapértelmezett hálózati biztonsági csoport a hálózati adapter Azure hoz létre, amikor létrehozza a virtuális gép létrehozása. Ez a cikk egyszerűsítésére, jelszó használatos. Kulcsok jellemzően használják az éles környezetekben. Kulcsok használata, ha az SSH-ügynöktovábbítást a hátralévő lépéseket számára is konfigurálnia kell. További információkért tekintse meg az SSH-ügyfél dokumentációját. Cserélje le `<replace-with-your-password>` az a következő parancsot egy tetszőleges jelszót.
 
 ```azurecli-interactive
 adminPassword="<replace-with-your-password>"
@@ -162,7 +162,7 @@ az vm create \
   --admin-password $adminPassword
 ```
 
-A virtuális gép létrehozásához néhány percet vesz igénybe. A virtuális gép létrehozása után az alábbi példához hasonló kimenetet visszaadja: 
+A virtuális gép üzembe helyezése néhány percet vesz igénybe. A virtuális gép létrehozása után az alábbi példához hasonló kimenetet ad vissza: 
 
 ```azurecli 
 {
@@ -177,7 +177,7 @@ A virtuális gép létrehozásához néhány percet vesz igénybe. A virtuális 
 }
 ```
 
-Vegye figyelembe a **publicIpAddress**. Ez a cím a virtuális gép egy későbbi lépésben az internetről való eléréséhez használt.  Hozzon létre egy virtuális Gépet egy felügyeleti kiszolgálója:
+Jegyezze fel a **publicIpAddress** értékét. Ezzel a címmel eléri a virtuális Gépet egy későbbi lépésben az internetről.  Hozzon létre egy felügyeleti kiszolgálóként szolgáló virtuális gépet:
 
 ```azurecli-interactive
 az vm create \
@@ -192,29 +192,29 @@ az vm create \
   --admin-password $adminPassword
 ```
 
-A virtuális gép létrehozásához néhány percet vesz igénybe. A virtuális gép létrehozása után vegye figyelembe a **publicIpAddress** visszaadott kimenet. Ez a cím a következő lépésben a virtuális gép eléréséhez használt. Nem folytathatja a következő lépés a virtuális gép létrehozása Azure befejezéséig.
+A virtuális gép üzembe helyezése néhány percet vesz igénybe. A virtuális gép létrehozása után jegyezze fel a **publicIpAddress** visszaadott kimenet. Ezzel a címmel a következő lépésben a virtuális gép eléréséhez. Ne ugorjon a következő lépésre, amíg az Azure be nem fejezte a virtuális gép létrehozását.
 
 ## <a name="test-traffic-filters"></a>Forgalomszűrők tesztelése
 
-Az SSH-munkamenetet létrehozni a következő paranccsal a *myVmMgmt* virtuális gép. Cserélje le *<publicIpAddress>* a virtuális gép a nyilvános IP-címmel. A fenti példában az IP-cím van *13.90.242.231*.
+Használja az SSH-munkamenet létrehozásához a következő parancs a *myVmMgmt* virtuális Gépet. Cserélje le *<publicIpAddress>* a virtuális gép nyilvános IP-címét. A fenti példában az IP-cím van *13.90.242.231*.
 
 ```bash 
 ssh azureuser@<publicIpAddress>
 ```
 
-Amikor a rendszer kéri a jelszót, adja meg a megadott jelszó [hozzon létre virtuális gépek](#create-virtual-machines).
+Amikor a rendszer jelszót kér, adja meg a megadott jelszó [hoz létre virtuális gépeket](#create-virtual-machines).
 
-A csatlakozás sikeres, mert a 22-es portot az internetről bejövő engedélyezett a *myAsgMgmtServers* biztonsági csoport, amely a hálózati adapter csatlakozik a *myVmMgmt* virtuális gép.
+A kapcsolat sikeresen létrejön, mert a 22-es porton engedélyezve van az internetről bejövő a *myAsgMgmtServers* alkalmazásbiztonsági csoport, amely a hálózati adapter csatlakozik a *myVmMgmt* virtuális gép van.
 
-A következő parancs segítségével SSH-kapcsolatot a *myVmWeb* virtuális gép a *myVmMgmt* VM:
+Használja az ssh-n a következő parancsot a *myVmWeb* virtuális gépről a *myVmMgmt* virtuális Géphez:
 
 ```bash 
 ssh azureuser@myVmWeb
 ```
 
-A csatlakozás sikeres, mert az egyes hálózati biztonsági csoportok alapértelmezett biztonsági szabály lehetővé teszi, hogy a forgalmat a virtuális hálózaton belül az összes IP-címek között az összes porton keresztül. SSH-kapcsolatot nem lehet a *myVmWeb* VM az internetről, mert a biztonsági szabály az a *myAsgWebServers* port nem engedélyezi az internetről bejövő 22.
+A kapcsolat sikeresen létrejön, mert az egyes hálózati biztonsági csoportokon belüli alapértelmezett biztonsági szabály minden porton keresztül engedélyezi a forgalmat a virtuális hálózaton belüli összes IP-cím között. Ssh-KAPCSOLATOT nem lehet a *myVmWeb* virtuális Géphez az internetről, mert a biztonsági szabálya a *myAsgWebServers* port nem engedélyezi az internetről bejövő 22-es.
 
-Az alábbi parancsokkal nginx kiszolgáló telepíthető a *myVmWeb* VM:
+Használja az alábbi parancsokat az nginx-webkiszolgálót telepítettünk a *myVmWeb* virtuális Géphez:
 
 ```bash 
 # Update package source
@@ -224,17 +224,17 @@ sudo apt-get -y update
 sudo apt-get -y install nginx
 ```
 
-A *myVmWeb* VM engedélyezett kimenő nginx beolvasni, mert az alapértelmezett biztonsági szabály lehetővé teszi minden kimenő forgalom az internethez az internethez. Kilépés a *myVmWeb* SSH-munkamenetet, így a `username@myVmMgmt:~$` Rákérdezés a a *myVmMgmt* virtuális gép. A nginx üdvözlőképernyő beolvasása a *myVmWeb* VM, adja meg a következő parancsot:
+A *myVmWeb* engedélyezett, hogy a virtuális gép kimenő lekérni az nginx-et, mert az alapértelmezett biztonsági szabály lehetővé teszi, hogy az internetre irányuló összes kimenő forgalom az internethez. Kilépés a *myVmWeb* SSH-munkamenetből marad, a `username@myVmMgmt:~$` kérdés, a *myVmMgmt* virtuális gép. Az nginx üdvözlőképernyőn beolvasni a *myVmWeb* virtuális Gépet, adja meg a következő parancsot:
 
 ```bash
 curl myVmWeb
 ```
 
-Jelentkezzen ki a *myVmMgmt* virtuális gép. Annak ellenőrzéséhez, hogy hozzá tud férni a *myVmWeb* webkiszolgáló, az Azure-on kívüli, adja meg `curl <publicIpAddress>` a saját számítógépéről. A csatlakozás sikeres, mert a 80-as porton az internetről bejövő engedélyezett a *myAsgWebServers* biztonsági csoport, amely a hálózati adapter csatlakozik a *myVmWeb* virtuális gép.
+Jelentkezzen ki a *myVmMgmt* virtuális Gépet. Annak ellenőrzéséhez, hogy elérhető a *myVmWeb* webkiszolgálót az Azure-on kívül, adja meg, `curl <publicIpAddress>` a saját számítógépéről. A kapcsolat sikeresen létrejön, mert a 80-as porton engedélyezve van az internetről bejövő a *myAsgWebServers* alkalmazásbiztonsági csoport, amely a hálózati adapter csatlakozik a *myVmWeb* virtuális gép van.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha már nincs szükség, [az csoport törlése](/cli/azure/group#az_group_delete) használatával távolítsa el az erőforráscsoport és a benne található erőforrásokat.
+Ha már nincs rá szükség, [az csoport törlése](/cli/azure/group#az_group_delete) , távolítsa el az erőforráscsoportot és az összes benne található erőforrást.
 
 ```azurecli-interactive 
 az group delete --name myResourceGroup --yes
@@ -242,6 +242,6 @@ az group delete --name myResourceGroup --yes
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben a cikkben egy hálózati biztonsági csoportot hozott létre, és azt társított virtuális hálózati alhálózat. Hálózati biztonsági csoportokkal kapcsolatos további információkért lásd: [hálózati biztonsági csoport – áttekintés](security-overview.md) és [a hálózati biztonsági csoportok kezelése](manage-network-security-group.md).
+Ebben a cikkben létrehozott egy hálózati biztonsági csoportot, és hozzárendelte azt egy virtuális hálózat alhálózatához. A hálózati biztonsági csoportokkal kapcsolatos további információ: [Hálózati biztonsági csoportok áttekintése](security-overview.md) és [Hálózati biztonsági csoportok kezelése](manage-network-security-group.md).
 
-Alapértelmezés szerint az alhálózatok közötti forgalmat Azure útvonalak. Ehelyett választhatja, hogy egy virtuális Gépet, mint egy tűzfal keresztül alhálózatok közötti forgalom például. Megtudhatja, hogyan: [hoznia egy útválasztási táblázatot](tutorial-create-route-table-cli.md).
+Az Azure alapértelmezés szerint irányítja a forgalmat az alhálózatok között. Ehelyett lehetősége van arra, hogy egy virtuális gépen keresztül irányítsa a forgalmat az alhálózatok között, amely így például tűzfalként is szolgálhat. További információ [hozzon létre egy útválasztási táblázatot](tutorial-create-route-table-cli.md).

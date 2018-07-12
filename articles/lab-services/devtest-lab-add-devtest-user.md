@@ -1,6 +1,6 @@
 ---
-title: Adja hozzá a tulajdonosok és a felhasználók a Azure DevTest Labs szolgáltatásban |} Microsoft Docs
-description: Adja hozzá a tulajdonosok és a felhasználók a Azure DevTest Labs szolgáltatásban az Azure-portálon vagy a PowerShell használatával
+title: Tulajdonosok és felhasználók hozzáadása az Azure DevTest Labs szolgáltatásban |} A Microsoft Docs
+description: Tulajdonosok és felhasználók hozzáadása az Azure DevTest Labs szolgáltatásban az Azure Portalon vagy a PowerShell használatával
 services: devtest-lab,virtual-machines
 documentationcenter: na
 author: spelluru
@@ -15,77 +15,77 @@ ms.topic: article
 ms.date: 06/01/2018
 ms.author: spelluru
 ms.openlocfilehash: 8f9504458b1f332193e8457bcc9cf41e85fd6aca
-ms.sourcegitcommit: c722760331294bc8532f8ddc01ed5aa8b9778dec
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34736187"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38573400"
 ---
-# <a name="add-owners-and-users-in-azure-devtest-labs"></a>Adja hozzá a tulajdonosok és a felhasználók a Azure DevTest Labs szolgáltatásban
+# <a name="add-owners-and-users-in-azure-devtest-labs"></a>Tulajdonosok és felhasználók hozzáadása az Azure DevTest Labs szolgáltatásban
 > [!VIDEO https://channel9.msdn.com/Blogs/Azure/How-to-set-security-in-your-DevTest-Lab/player]
 > 
 > 
 
-Hozzáférés az Azure DevTest Labs vezérli [átruházásához hozzáférés-vezérlés (RBAC)](../role-based-access-control/overview.md). Szerepalapú használ, akkor is elkülönítse azon belül a csapat a *szerepkörök* ahol engedélyezheti, hogy csak olyan mértékű hozzáférést a felhasználóknak a feladataik elvégzéséhez szükséges. Közül három ezeket az RBAC-szerepkörök *tulajdonos*, *DevTest Labs felhasználói*, és *közreműködő*. Ebből a cikkből megismerheti milyen műveletek is elvégezhetők a három fő RBAC-szerepkörök. Ott megismerheti a felhasználók felvétele egy tesztlabor - mind a portálon keresztül egy PowerShell-parancsfájlt, és felhasználók hozzáadása az előfizetés szintjén.
+Az Azure DevTest Labs szolgáltatásban hozzáférést vezérlik [Azure szerepköralapú hozzáférés-vezérlés (RBAC)](../role-based-access-control/overview.md). Az RBAC használatával, akkor is elkülönítse azokat a csapaton belül *szerepkörök* , ahol megadta csak olyan mértékű hozzáférést a felhasználók számára a munkájuk elvégzéséhez szükséges. Közül három ezek RBAC-szerepkörök *tulajdonosa*, *DevTest Labs-felhasználó*, és *közreműködői*. Ebből a cikkből megtudhatja, milyen műveletek végezhetők az egyes a három fő RBAC-szerepkört. Itt megismerheti a felhasználók hozzáadása egy laborhoz – mind a portálon keresztül, és a egy PowerShell-szkripttel nevezhetnek és felhasználók hozzáadása az előfizetés szintjén.
 
-## <a name="actions-that-can-be-performed-in-each-role"></a>Az egyes szerepkörökhöz végrehajtható műveletek
-Az a felhasználó hozzárendelheti három fő szerepkörök állnak rendelkezésre:
+## <a name="actions-that-can-be-performed-in-each-role"></a>Minden szerepkör végrehajtott műveletek
+Az egy felhasználó hozzárendelheti három fő szerepkörök állnak rendelkezésre:
 
 * Tulajdonos
 * DevTest Labs-felhasználó
 * Közreműködő
 
-A következő táblázat bemutatja, ezek a szerepkörök a felhasználók által végrehajtható műveleteket:
+Az alábbi táblázat mutatja be, hogy ezek a szerepkörök minden egyes felhasználók által végrehajtható műveleteket:
 
-| **A szerepet betöltő felhasználók műveleteket hajthat végre.** | **DevTest Labs felhasználó** | **Tulajdonos** | **Közreműködő** |
+| **A szerepkör felhasználói műveleteket hajthat végre.** | **DevTest Labs-felhasználó** | **Tulajdonos** | **Közreműködő** |
 | --- | --- | --- | --- |
-| **Labor feladatok** | | | |
+| **Tesztlabor-feladatok** | | | |
 | Felhasználók hozzáadása egy laborhoz |Nem |Igen |Nem |
 | Költség-beállítások frissítése |Nem |Igen |Igen |
-| **Alapszintű VM-feladatok** | | | |
-| Hozzáadhat és eltávolíthat egyéni lemezképek |Nem |Igen |Igen |
-| Hozzáadása, módosítása és törlése képletek |Igen |Igen |Igen |
-| Engedélyezett Azure piactéren elérhető rendszerkép |Nem |Igen |Igen |
-| **VM-feladatok** | | | |
+| **Alap VM-feladatok** | | | |
+| Hozzáadhat és eltávolíthat egyéni rendszerképek |Nem |Igen |Igen |
+| Hozzáadása, frissítése és törlése a képletek |Igen |Igen |Igen |
+| Engedélyezett Azure Marketplace-rendszerképek |Nem |Igen |Igen |
+| **Virtuális gépek feladatainak** | | | |
 | Virtuális gépek létrehozása |Igen |Igen |Igen |
-| Indítás, Leállítás, és törölje a virtuális gépek |Csak virtuális gépek a felhasználó által létrehozott |Igen |Igen |
-| Virtuális gép házirendek frissítése |Nem |Igen |Igen |
-| Az adatlemezek és a virtuális gépek hozzáadása |Csak virtuális gépek a felhasználó által létrehozott |Igen |Igen |
+| Indítása, leállítása és virtuális gépek törlése |Csak a felhasználó által létrehozott virtuális |Igen |Igen |
+| Frissítse a virtuális gépek házirendjei |Nem |Igen |Igen |
+| Az adatlemezeket és a virtuális gépek hozzáadása/eltávolítása |Csak a felhasználó által létrehozott virtuális |Igen |Igen |
 | **Összetevő-feladatok** | | | |
 | Hozzáadhat és eltávolíthat összetevő adattárak |Nem |Igen |Igen |
-| Az összetevők alkalmazása |Igen |Igen |Igen |
+| Összetevők alkalmazása |Igen |Igen |Igen |
 
 > [!NOTE]
-> Amikor egy felhasználó létrehoz egy virtuális Gépet, a rendszer automatikusan hozzárendeli, hogy a felhasználó a **tulajdonos** a létrehozott virtuális gép szerepkör.
+> Amikor egy felhasználó létrehoz egy virtuális Gépet, a felhasználó automatikusan hozzá lesz rendelve a **tulajdonos** a létrehozott virtuális gép szerepkör.
 > 
 > 
 
-## <a name="add-an-owner-or-user-at-the-lab-level"></a>A tesztkörnyezet szinten egy tulajdonos vagy a felhasználó hozzáadása
-Tulajdonosa és a felhasználók az Azure-portálon a labor szintjén adhatók meg. Lehet, hogy egy felhasználó egy külső felhasználó érvényes [Microsoft-fiók (msa-t)](devtest-lab-faq.md#what-is-a-microsoft-account).
-A következő lépések végigvezetik egy tulajdonos vagy a felhasználó hozzáadása egy laborhoz a Azure DevTest Labs szolgáltatásban:
+## <a name="add-an-owner-or-user-at-the-lab-level"></a>A lab szintjén egy tulajdonos vagy a felhasználó hozzáadása
+Tulajdonosok és a felhasználók az Azure Portalon a labor szintjén adhatók meg. A felhasználó lehet egy külső felhasználót érvényes [Microsoft-fiókkal (MSA)](devtest-lab-faq.md#what-is-a-microsoft-account).
+A következő lépések végigvezetik a tulajdonosnak vagy felhasználó hozzáadása Azure DevTest Labs szolgáltatásban létrehozott tesztkörnyezet folyamatán:
 
 1. Jelentkezzen be az [Azure Portalra](http://go.microsoft.com/fwlink/p/?LinkID=525040).
 2. Válassza ki **minden szolgáltatás**, majd válassza ki **DevTest Labs** a listából.
-3. Válassza ki a kívánt labor labs listájának megtekintéséhez.
-4. A labor paneljén válassza **konfigurációs és házirendek**. 
-5. Az a **konfigurációs és házirendek** lapon jelölje be **hozzáférés-vezérlés (IAM)** a bal oldali menüből. 
-6. Válassza ki **Hozzáadás** egy felhasználót a szerepkörbe való felvételre az eszköztáron.
+3. Tesztkörnyezetek listájában jelölje ki a kívánt tesztkörnyezetben.
+4. A labor paneljén válassza ki a **Konfigurace a zásady**. 
+5. Az a **Konfigurace a zásady** lapon jelölje be **hozzáférés-vezérlés (IAM)** a bal oldali menüből. 
+6. Válassza ki **Hozzáadás** hozzáadása egy felhasználó egy szerepkörhöz az eszköztáron.
 
     ![Felhasználó hozzáadása](./media/devtest-lab-add-devtest-user/devtest-users-blade.png)
-1. Az a **engedélyek hozzáadása** ablakban, a következő műveleteket hajthatja végre: 
-    1. Válassza ki a szerepkör (például: DevTest Labs felhasználó). A szakasz [szerepkörönként végrehajtott műveletekből](#actions-that-can-be-performed-in-each-role) felsorolja azokat a különböző, a tulajdonosa, a DevTest felhasználói és a közreműködői szerepkör a felhasználók által végrehajtható műveleteket.
-    2. Válassza ki a felhasználót, fel kell venni a szerepkör. 
+1. Az a **engedélyek hozzáadása** ablakban hajtsa végre a következőket: 
+    1. Válasszon egy szerepkört (például: DevTest Labs-felhasználó). A szakasz [minden szerepkörben végrehajtható műveletek](#actions-that-can-be-performed-in-each-role) felsorolja azokat a különböző műveleteket, hogy a felhasználók a tulajdonos, DevTest-felhasználó, és közreműködő szerepkörrel végezhet el.
+    2. Válassza ki a felhasználót a szerepkörhöz kell hozzáadni. 
     3. Kattintson a **Mentés** gombra. 
 
-        ![Adja hozzá felhasználót a szerepkörhöz](./media/devtest-lab-add-devtest-user/add-user.png) 
+        ![Adja hozzá a felhasználót a szerepkörhöz](./media/devtest-lab-add-devtest-user/add-user.png) 
 11. Amikor visszatér a **felhasználók** panelen, a felhasználó hozzá lett adva.  
 
-## <a name="add-an-external-user-to-a-lab-using-powershell"></a>Külső felhasználó hozzáadása egy laborhoz PowerShell használatával
-Mellett felhasználók hozzáadása az Azure portálon, a külső felhasználó adhat hozzá a labor egy PowerShell-parancsfájl használatával. A paraméterértékek módosítsa a következő példában a **értékek módosítása** megjegyzés.
-Kérheti le a `subscriptionId`, `labResourceGroup`, és `labName` értékeit a labor panel az Azure portálon.
+## <a name="add-an-external-user-to-a-lab-using-powershell"></a>Külső felhasználó hozzáadása egy laborhoz PowerShell-lel
+Felhasználók hozzáadása az Azure Portalon, valamint egy külső felhasználót adhat hozzá a labor egy PowerShell-parancsfájl használatával. A paraméter értékét módosítsa a következő példában a **értékek módosítása** megjegyzést.
+Lekérheti a `subscriptionId`, `labResourceGroup`, és `labName` értékeket a labor panelről az Azure Portalon.
 
 > [!NOTE]
-> A parancsfájlpéldát feltételezi, hogy a megadott felhasználó az Active Directory vendégként hozzáadva, és sikertelen lesz, ha a feltételek nem teljesülnek. A felhasználó nem szerepel az Active Directory hozzáadása egy tesztkörnyezetet, az Azure-portál használatával rendelje hozzá a felhasználót a szerepkörhöz a szakaszban ismertetett módon [egy tulajdonos vagy a felhasználó hozzáadása a labor szinten](#add-an-owner-or-user-at-the-lab-level).   
+> A minta parancsfájl feltételezi, hogy a megadott felhasználó az Active Directory vendégként bővült, és sikertelen lesz, ha, amely nem áll fenn. Felhasználó hozzáadása egy laborhoz nem található az Active Directory, az Azure portal segítségével rendelje hozzá a felhasználót egy szerepkörhöz, amint az a szakasz az [tulajdonosa vagy felhasználó hozzáadása a labor szintjén](#add-an-owner-or-user-at-the-lab-level).   
 > 
 > 
 
@@ -113,28 +113,28 @@ Kérheti le a `subscriptionId`, `labResourceGroup`, és `labName` értékeit a l
     $labId = ('subscriptions/' + $subscriptionId + '/resourceGroups/' + $labResourceGroup + '/providers/Microsoft.DevTestLab/labs/' + $labName)
     New-AzureRmRoleAssignment -ObjectId $adObject.Id -RoleDefinitionName 'DevTest Labs User' -Scope $labId
 
-## <a name="add-an-owner-or-user-at-the-subscription-level"></a>Az előfizetés szintjén egy tulajdonos vagy a felhasználó hozzáadása
-Az Azure engedélyek rendszer nem propagál származik gyermek hatókörben az Azure-ban. Ezért az Azure-előfizetéssel, amely tartalmazza a labs tulajdonosai a program automatikusan e labs tulajdonosai. A virtuális gépek és egyéb erőforrások a labor felhasználók és az Azure DevTest Labs szolgáltatás által létrehozott is saját. 
+## <a name="add-an-owner-or-user-at-the-subscription-level"></a>Adjon hozzá egy tulajdonosi vagy a felhasználó az előfizetés szintjén
+Azure-engedélyeket, az Azure-ban a gyermek hatókörben vannak propagálni szülőhatókörben. Ezért az Azure-előfizetéssel, amely tartalmazza a labs tulajdonosai a program automatikusan ezeket labs tulajdonosai. Emellett a virtuális gépek és egyéb erőforrások a labor létrehozása felhasználók és az Azure DevTest Labs szolgáltatás által létrehozott saját. 
 
-A labor panel az keresztül labor adhat hozzá további tulajdonosai a [Azure-portálon](http://go.microsoft.com/fwlink/p/?LinkID=525040). Azonban a hozzáadott tulajdonos felügyeleti hatóköre sokkal szűkebb, mint az előfizetés tulajdonosa hatókör. A hozzáadott tulajdonosai például nem rendelkezik teljes körű hozzáférés az egyes erőforrásokhoz az előfizetést a DevTest Labs szolgáltatás által létrehozott. 
+A labor létrehozása panelen keresztül labor is hozzáadhat további tulajdonosok a [az Azure portal](http://go.microsoft.com/fwlink/p/?LinkID=525040). Azonban az új tulajdonos felügyeleti hatóköre sokkal szűkebb, mint az előfizetés tulajdonosa hatókör. Például a hozzáadva tulajdonosok nem rendelkezik teljes hozzáféréssel néhány, az előfizetésben a DevTest Labs szolgáltatás által létrehozott erőforrást. 
 
-Tulajdonosa hozzá Azure-előfizetéssel, kövesse az alábbi lépéseket:
+Tulajdonos hozzáadása egy Azure-előfizetést, kövesse az alábbi lépéseket:
 
 1. Jelentkezzen be az [Azure Portalra](http://go.microsoft.com/fwlink/p/?LinkID=525040).
 2. Válassza ki **minden szolgáltatás**, majd válassza ki **előfizetések** a listából.
-3. Válassza ki a kívánt előfizetést.
+3. Válassza ki a kívánt előfizetés azonosítóértékét.
 4. Válassza ki **hozzáférés** ikonra. 
    
-    ![Használó felhasználók](./media/devtest-lab-add-devtest-user/access-users.png)
-5. Az a **felhasználók** panelen válassza **Hozzáadás**.
+    ![Hozzáféréssel rendelkező felhasználók](./media/devtest-lab-add-devtest-user/access-users.png)
+5. Az a **felhasználók** panelen válassza ki **Hozzáadás**.
    
     ![Felhasználó hozzáadása](./media/devtest-lab-add-devtest-user/devtest-users-blade.png)
-6. Az a **Szerepkörválasztás** panelen válasszon ki **tulajdonos**.
-7. Az a **felhasználók hozzáadása az** panelen adja meg az e-mail cím vagy a tulajdonos hozzáadni kívánt felhasználó nevét. Ha a felhasználó nem található, kap olyan hibaüzenetet, amely ismerteti, hogy a problémát. Ha a felhasználó megtalálható, a felhasználó megtalálható-e a **felhasználói** szövegmezőben.
+6. Az a **Szerepkörválasztás** panelen válasszon ki **tulajdonosa**.
+7. Az a **felhasználók hozzáadása** panelen adja meg a tulajdonosként hozzáadni kívánt felhasználó nevét vagy e-mail cím. Ha a felhasználó nem található, megjelenik egy hibaüzenet, amely elmagyarázza a hibát. Ha a felhasználó megtalálható, területen látható, hogy a felhasználó a **felhasználói** szövegmezőben.
 8. Válassza ki a található felhasználónév.
-9. Válassza ki **válasszon**.
-10. Válassza ki **OK** bezárásához a **hozzáférés hozzáadása** panelen.
-11. Amikor visszatér a **felhasználók** panelen, a felhasználó tulajdonos hozzáadva. Ez a felhasználó már létrehozott az előfizetéshez tartozó bármely labs tulajdonosa, és így képes tulajdonos feladatok elvégzéséhez. 
+9. Válassza ki **kiválasztása**.
+10. Válassza ki **OK** gombra kattintva zárja be a **hozzáférés hozzáadása** panelen.
+11. Amikor visszatér a **felhasználók** panelen, a felhasználó hozzá van adva tulajdonosai. Ez a felhasználó már bármilyen ebben az előfizetésben létrehozott labs tulajdonosa, és így tulajdonos feladatok végrehajtásához. 
 
 [!INCLUDE [devtest-lab-try-it-out](../../includes/devtest-lab-try-it-out.md)]
 

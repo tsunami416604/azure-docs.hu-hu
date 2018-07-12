@@ -3,23 +3,23 @@ title: Fenyegetések felderítése az Azure Security Centerben | Microsoft Docs
 description: Ebben a dokumentumban megismerkedhet az Azure Security Center fenyegetésfelderítési funkcióinak használatával, amelyek segítségével azonosíthatja a potenciális fenyegetéseket a virtuális gépein és számítógépein.
 services: security-center
 documentationcenter: na
-author: terrylan
+author: TerryLanfear
 manager: mbaldwin
 editor: ''
 ms.assetid: a771a3a1-2925-46ca-8e27-6f6a0746f58b
 ms.service: security-center
 ms.devlang: na
-ms.topic: hero-article
+ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/12/2017
-ms.author: yurid
-ms.openlocfilehash: 9654c25bf6b51d48dc195d6a536b61312fdcbeff
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
-ms.translationtype: HT
+ms.date: 07/10/2018
+ms.author: terrylan
+ms.openlocfilehash: 832998a6028a8977b43e343ed778cc0b60388728
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/03/2018
-ms.locfileid: "32774573"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38561364"
 ---
 # <a name="threat-intelligence-in-azure-security-center"></a>Fenyegetések felderítése az Azure Security Centerben
 Ez a cikk segít az Azure Security Center fenyegetésfelderítésének a biztonsággal kapcsolatos problémák kezeléséhez történő használatában.
@@ -43,20 +43,24 @@ A [biztonsági incidensek megoldási folyamatának](https://docs.microsoft.com/a
 - A sérült rendszerek azonosítása.
 - A támadók által elért fájlok azonosítása, és azok bizalmasságának felmérése.
 
-Ezekhez a feladatokhoz használhatja a Security Center fenyegetésfelderítési adatait. 
+Ezekhez a feladatokhoz használhatja a Security Center fenyegetésfelderítési adatait.
 
 ## <a name="access-the-threat-intelligence"></a>A fenyegetésfelderítés elérése
 A környezet aktuális fenyegetésfelderítési állapotának megjelenítéséhez előbb ki kell választania azt a munkaterületet, ahol az adatok találhatók. Ha nem rendelkezik több munkaterülettel, a rendszer a munkaterület-választót kihagyva azonnal a **Fenyegetésfelderítés** irányítópultra lép. Az irányítópult elérése:
 
 1. Nyissa meg a **Security Center** irányítópultját.
 
-2. A bal oldali panelen, a **Felderítés** terület alatt válassza a **Fenyegetésfelderítés** elemet. Megjelenik a **Fenyegetésfelderítés** irányítópult.
+2. A bal oldali panelen a **veszélyforrások elleni védelem** kiválasztása **Fenyegetésfelderítés**. Megnyílik a térképen.
+
+    ![Fenyegetésfelderítési térkép](./media/security-center-threat-intel/security-center-threat-intel.png)
+
+3. A térkép tetején válassza **megtekintése a klasszikus fenyegetésfelderítés**. A **Fenyegetésfelderítés** irányítópult nyílik meg.
 
     ![Fenyegetésfelderítési irányítópult](./media/security-center-threat-intel/security-center-threat-intel-fig1.png)
 
     > [!NOTE]
-    > Ha a jobb szélső oszlopban a **CSOMAG FRISSÍTÉSE** szöveg látható, akkor a munkaterület az ingyenes előfizetést használja. A funkció használatához frissítsen a Standard előfizetésre. Ha a jobb szélső oszlopban a **FRISSÍTÉS SZÜKSÉGES** szöveg látható, frissítse az [Azure Log Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-overview)et a funkció használatához. A díjszabással kapcsolatos további információkért olvassa el az Azure Security Center díjszabását ismertető cikket. 
-    > 
+    > Ha a jobb szélső oszlopban a **CSOMAG FRISSÍTÉSE** szöveg látható, akkor a munkaterület az ingyenes előfizetést használja. A funkció használatához frissítsen a Standard előfizetésre. Ha a jobb szélső oszlopban a **FRISSÍTÉS SZÜKSÉGES** szöveg látható, frissítse az [Azure Log Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-overview)et a funkció használatához. A díjszabással kapcsolatos további információkért olvassa el az Azure Security Center díjszabását ismertető cikket.
+    >
 3. Ha több munkaterületet szeretne vizsgálni, rangsorolja a vizsgálatot a **Kártékony IP-címek** oszlop szerint. Ez az oszlop a munkaterülethez tartozó kártékony IP-címek aktuális számát jeleníti meg. Jelölje ki a használni kívánt munkaterületet, és megjelenik a **Fenyegetésfelderítés** irányítópult.
 
     ![Fenyegetésfelderítési információk](./media/security-center-threat-intel/security-center-threat-intel-fig5.png)
@@ -97,7 +101,6 @@ Ebben a cikkben megismerkedett a fenyegetésfelderítés a Security Centerben a 
 * [Biztonsági riasztások kezelése és válaszadás a riasztásokra az Azure Security Centerben](https://docs.microsoft.com/azure/security-center/security-center-managing-and-responding-alerts). A Security Center-riasztások kezelését és a biztonsági eseményekre való válaszadást ismertető útmutató.
 * [Biztonsági állapotfigyelés az Azure Security Centerben](security-center-monitoring.md). Az Azure-erőforrások állapotának figyelését ismertető útmutató.
 * [Az Azure Security Center biztonsági riasztásainak megismerése](https://docs.microsoft.com/azure/security-center/security-center-alerts-type). A különböző típusú biztonsági riasztásokat ismertető útmutató.
-* [Az Azure Security Center hibaelhárítási útmutatója](https://docs.microsoft.com/azure/security-center/security-center-troubleshooting-guide). A Security Center gyakori problémáinak elhárítását ismereti. 
+* [Az Azure Security Center hibaelhárítási útmutatója](https://docs.microsoft.com/azure/security-center/security-center-troubleshooting-guide). A Security Center gyakori problémáinak elhárítását ismereti.
 * [Azure Security Center – gyakori kérdések](security-center-faq.md) Választ találhat a szolgáltatás használatával kapcsolatos gyakori kérdésekre.
 * [Azure Security blog](http://blogs.msdn.com/b/azuresecurity/). Blogbejegyzések az Azure biztonsági és megfelelőségi funkcióiról.
-

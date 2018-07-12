@@ -1,5 +1,5 @@
 > [!NOTE]
-> **Egyéni házirendek olyan nyilvános előzetes verziójában.**
+> **Egyéni szabályzatok olyan nyilvános előzetes verzióban érhető el.**
 
-> Egyéni házirend elsősorban összetett forgatókönyvek esetében megoldására készült. A legtöbb esetben azt javasoljuk, hogy használja-e Azure Active Directory B2C [beépített házirendek](..\articles\active-directory-b2c\active-directory-b2c-reference-policies.md). Beépített házirendek olyan könnyebben a konfiguráció beállítása.
+> Egyéni szabályzat elsősorban az összetett forgatókönyvek tervezték. A legtöbb esetben azt javasoljuk, hogy használja az Azure Active Directory B2C [beépített szabályzatok](..\articles\active-directory-b2c\active-directory-b2c-reference-policies.md). Beépített szabályzatok használata egyszerűbb, állítsa be a konfigurációhoz.
 

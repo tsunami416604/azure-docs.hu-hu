@@ -1,6 +1,6 @@
 ---
-title: Azure Media Services eseményeket továbbítani egy egyéni webes végpontjának |} Microsoft Docs
-description: Esemény rács Azure Media Services feladat állapotmódosítási esemény használni.
+title: Az Azure Media Services-események átirányítása egyéni webes végpontra |} A Microsoft Docs
+description: Azure Event Grid használatával előfizetni a Media Services feladat állapotváltozási esemény.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -11,18 +11,18 @@ ms.workload: ''
 ms.topic: article
 ms.date: 03/19/2018
 ms.author: juliako
-ms.openlocfilehash: 6a098f43819bb6581b2c5978fbcc4a378a8514c1
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: e9df0cd24ef890765b78c25a073d671889be10a7
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34638500"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38724063"
 ---
-# <a name="route-azure-media-services-events-to-a-custom-web-endpoint-using-cli"></a>Azure Media Services eseményeket továbbítani egy egyéni webkiszolgáló-végpont parancssori felület használatával
+# <a name="route-azure-media-services-events-to-a-custom-web-endpoint-using-cli"></a>Az Azure Media Services-események átirányítása egyéni webes végpontra parancssori felület használatával
 
-Az Azure Event Grid egy felhőalapú eseménykezelési szolgáltatás. Ebben a cikkben Azure CLI használata az Azure Media Services feladat állapotváltozási események előfizetni, és az eredmények megjelenítéséhez esemény következik be. 
+Az Azure Event Grid egy felhőalapú eseménykezelési szolgáltatás. Ebben a cikkben az Azure CLI használata az Azure Media Services feladat állapotváltozási események előfizetni, és elindítjuk az eseményt az eredmény megtekintéséhez. 
 
-Általában olyan végpontoknak szoktunk eseményeket küldeni, amelyek reagálnak az eseményre, például egy webhooknak vagy egy Azure-függvénynek. Ez az oktatóanyag bemutatja, hogyan hozzon létre, és állítsa be a webhook.
+Általában olyan végpontoknak szoktunk eseményeket küldeni, amelyek reagálnak az eseményre, például egy webhooknak vagy egy Azure-függvénynek. Ez az oktatóanyag bemutatja, hogyan hozhat létre, és állítsa be a webhook.
 
 A cikkben leírt lépések elvégzése után látni fogja, hogy az eseményadatokat egy végpontnak küldte el a rendszer.
 
@@ -32,43 +32,43 @@ Jelentkezzen be az [Azure Portalra](http://portal.azure.com), és indítsa el a 
 
 [!INCLUDE [cloud-shell-powershell.md](../../../includes/cloud-shell-powershell.md)]
 
-Ha a parancssori felület helyi telepítését és használatát választja, akkor ehhez a cikkhez az Azure CLI 2.0-s vagy újabb verziójára lesz szükség. A rendelkezésére álló verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI 2.0 telepítése]( /cli/azure/install-azure-cli). 
+Ha a parancssori felület helyi telepítését és használatát választja, akkor ehhez a cikkhez az Azure CLI 2.0-s vagy újabb verziójára lesz szükség. A rendelkezésére álló verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni, tekintse meg kell [az Azure CLI telepítése](/cli/azure/install-azure-cli). 
 
 [!INCLUDE [media-services-cli-create-v3-account-include](../../../includes/media-services-cli-create-v3-account-include.md)]
 
-Ügyeljen arra, hogy ne feledje az értékeket, amelyeket Ön a Media Services-fiók neve, a tároló neve és az erőforrás neve.
+Ellenőrizze, hogy ne felejtse el az értékeket, amelyeket Ön a Media Services-fiók neve, a tároló neve és a erőforrás neve.
 
-## <a name="enable-event-grid-resource-provider"></a>Erőforrás-szolgáltató esemény rács engedélyezése
+## <a name="enable-event-grid-resource-provider"></a>Event Grid erőforrás-szolgáltató engedélyezése
 
-Először is végre kell hajtani, győződjön meg arról, hogy rendelkezik-e esemény rács erőforrás-szolgáltató engedélyezve van az előfizetésben. 
+Először is szüksége, győződjön meg arról, hogy rendelkezik-e Event Grid erőforrás-szolgáltató engedélyezve van az előfizetésben. 
 
-Az a **Azure** portal tegye a következőket:
+Az a **Azure** portál tegye a következőket:
 
-1. Nyissa meg az előfizetésekhez.
+1. Ugrás az előfizetésekre.
 2. Válassza ki előfizetését.
-3. A beállítások válassza ki az erőforrás-szolgáltatók.
+3. A beállítások területen válassza ki az erőforrás-szolgáltatók.
 4. Keresse meg "EventGrid".
-5. Ellenőrizze, hogy regisztrálva van-e az esemény rács. Ha nem, nyomja meg a **regisztrálása** gombra.  
+5. Ellenőrizze, hogy regisztrálva van az Event Griddel. Ha nem, nyomja le az **regisztrálása** gombra.  
 
-## <a name="create-a-generic-azure-function-webhook"></a>Egy Azure-függvény általános webhook létrehozása 
+## <a name="create-a-generic-azure-function-webhook"></a>Általános webhook Azure-függvény létrehozása 
 
 ### <a name="create-a-message-endpoint"></a>Üzenetvégpont létrehozása
 
-Előfizetés az esemény rács cikk, mielőtt hozzon létre egy végpontot, amely összegyűjti az üzeneteket, így meg lehet tekinteni őket.
+Az Event Grid cikk való feliratkozás, előtt hozzon létre egy végpontot, amely gyűjti az üzeneteket, hogy meg tudja őket tekinteni.
 
-Általános webhook váltja ki, a függvény létrehozása a [általános webhook](https://docs.microsoft.com/azure/azure-functions/functions-create-generic-webhook-triggered-function) cikk. Ebben az oktatóanyagban a **C#** kódot használja.
+Leírtak szerint az általános webhook által aktivált függvény létrehozása a [általános webhook](https://docs.microsoft.com/azure/azure-functions/functions-create-generic-webhook-triggered-function) cikk. Ebben az oktatóanyagban a **C#** kódot használja.
 
-A webhook létrehozása után másolja az URL-címet parancsával a *függvény URL-cím beszerzése* tetején található hivatkozásra a **Azure** portál ablakának. Nem kell az URL-cím utolsó része (*& clientID alapértelmezett =*).
+A webhook létrehozása után másolja az URL-címet kattintva a *függvény URL-Címének lekérése* tetején található hivatkozásra a **Azure** portál ablakának. Nem kell az URL-cím utolsó része (*& clientID = default*).
 
 ![A webhook létrehozása](./media/job-state-events-cli-how-to/generic_webhook_files.png)
 
 ### <a name="validate-the-webhook"></a>A webhook ellenőrzése
 
-Ha saját webhook végpont regisztrálása esemény rács, küld, akkor egy POST kérést egy egyszerű érvényességi kóddal igazolnia a végpont tulajdonosa. Az alkalmazás kell válaszolnia által echo vissza az érvényesítési kódot. Esemény rács webHook végpontok, amelyek még nem kapott az érvényesítés nem kézbesíteni. További információkért lásd: [esemény rács biztonsági és hitelesítési](https://docs.microsoft.com/azure/event-grid/security-authentication). Ez a szakasz két részből áll, amelyek felelt meg az érvényesítési definiálni kell határozza meg.
+Ha regisztrálja az Event Griddel saját webhook-végpontot, azt, egy POST kérést küld egy egyszerű érvényesítési kóddal végpont tulajdonjogának igazolásához. Az alkalmazás kell válaszolnia a által echo vissza az érvényesítési kódot. Event Grid webHook végpontok, amelyek még nem telt az érvényesítés nem kézbesíteni. További információkért lásd: [Event Grid biztonsági és hitelesítési](https://docs.microsoft.com/azure/event-grid/security-authentication). Ez a szakasz két részből áll, amely át az ellenőrzés céljából meg kell határozni határozza meg.
 
 #### <a name="update-the-source-code"></a>A Forráskód módosítása
 
-Miután létrehozta a webhook a **run.csx** fájl jelenik meg a böngészőben. Cserélje le az alapértelmezett kód a következő kódra. 
+A webhook létrehozása után a **run.csx** fájl így jelenik meg a böngészőben. Cserélje le az alapértelmezett kód a következő kóddal. 
 
 ```csharp
 #r "Newtonsoft.Json"
@@ -106,9 +106,9 @@ public static async Task<object> Run(HttpRequestMessage req, TraceWriter log)
 }
 ```
 
-#### <a name="update-test-request-body"></a>Tesztelési kérelem törzsében frissítése
+#### <a name="update-test-request-body"></a>Frissítse a tesztelési kérelem törzse
 
-Jobb oldalán a **Azure** két lap megjelenik, a portál ablakának: **-fájlokat tekinthetnek meg** és **teszt**. Kattintson a **Teszt** fülre. Az a **Request body**, illessze be a következő json. Mivel, nincs szükség semmilyen értéket módosítására is beilleszthető legyen.
+Jobb oldalán a **Azure** portál ablakban megjelenik a két lap található: **fájlok megtekintését** és **teszt**. Kattintson a **Teszt** fülre. Az a **kérelem törzse**, illessze be a következő JSON-fájllal. Nem, nincs szükség sem tudják módosítani, beillesztheti.
 
 ```json
 [{
@@ -124,15 +124,15 @@ Jobb oldalán a **Azure** két lap megjelenik, a portál ablakának: **-fájloka
 ]
 ```
 
-Nyomja le az **mentéséhez, és futtassa** az ablak tetején.
+Nyomja meg **mentés és Futtatás** az ablak tetején.
 
 ![Kérelem törzse](./media/job-state-events-cli-how-to/generic_webhook_test.png)
 
-## <a name="register-for-the-event-grid-subscription"></a>Az esemény rács előfizetés regisztrálása 
+## <a name="register-for-the-event-grid-subscription"></a>Az Event Grid-előfizetés regisztrálása 
 
-Előfizet egy cikkben esemény rács mely eseményeket kíván nyomon követni. A következő példa a Media Services-fiók létrehozása, és adja át az URL-cím és a végpontnak a eseményértesítés létrehozott Azure-függvény webhook a számítógépcsoportra fizetett elő. 
+Event Grid megállapítani, hogy mely eseményeket kívánja nyomon követni egy cikk fizet. Az alábbi példa feliratkozik a Media Services-fiók létrehozása, és az Azure-függvény webhook hozott létre az eseményértesítés végpontjaként adja át az URL-címet. 
 
-Cserélje le `<event_subscription_name>` esemény előfizetési egyedi névvel. A `<resource_group_name>` és `<ams_account_name>` elemnél a korábban létrehozott értékeket adja meg.  Az a `<endpoint_URL>` illessze be a végpont URL-CÍMÉT. Távolítsa el *& clientID alapértelmezett =* az URL-címről. Ha megadja a végpontot a feliratkozáskor, az Event Grid az adott végpontra irányítja az eseményeket. 
+Cserélje le `<event_subscription_name>` az esemény-feliratkozás egyedi nevére. A `<resource_group_name>` és `<ams_account_name>` elemnél a korábban létrehozott értékeket adja meg.  Az a `<endpoint_URL>` illessze be a végpont URL-CÍMÉT. Távolítsa el *& clientID = default* az URL-címből. Ha megadja a végpontot a feliratkozáskor, az Event Grid az adott végpontra irányítja az eseményeket. 
 
 ```cli
 amsResourceId=$(az ams account show --name <ams_account_name> --resource-group <resource_group_name> --query id --output tsv)
@@ -143,15 +143,15 @@ az eventgrid event-subscription create \
   --endpoint <endpoint_URL>
 ```
 
-A Media Services-fiók erőforrás-azonosító értéke ehhez hasonlóan néz ki:
+A Media Services fiók erőforrás-azonosító értéke ehhez hasonlóan néz ki:
 
 /Subscriptions/81212121-2f4f-4b5d-a3dc-ba0015515f7b/resourceGroups/amsResourceGroup/Providers/Microsoft.Media/mediaservices/amstestaccount
 
 ## <a name="test-the-events"></a>Az események tesztelése
 
-Egy kódolási feladat futtatásához. Például, amint a [videofájlok adatfolyam](stream-files-dotnet-quickstart.md) gyors üzembe helyezés.
+Egy kódolási feladat futtatásához. Például leírtak szerint a [videofájlok Stream](stream-files-dotnet-quickstart.md) rövid.
 
-Ön kiváltotta az eseményt, az Event Grid pedig elküldte az üzenetet a feliratkozáskor konfigurált végpontnak. Tallózással keresse meg a korábban létrehozott webhook. Kattintson a **figyelő** és **frissítése**. Láthatja, hogy a feladat állapota megváltozik események: "Aszinkron", "Ütemezett", "Feldolgozásra", "Kész", "Error", "Megszakítva", "Visszavonás".  További információkért lásd: [Media Services esemény sémák](media-services-event-schemas.md).
+Ön kiváltotta az eseményt, az Event Grid pedig elküldte az üzenetet a feliratkozáskor konfigurált végpontnak. Keresse meg a korábban létrehozott webhook. Kattintson a **figyelő** és **frissítése**. Láthatja, hogy a feladat állapota események: "Sorba állított", "Ütemezett", "Feldolgozási", "Kész", "Error", "Megszakítva", "Megszakítás".  További információkért lásd: [Media Services Eseménysémák](media-services-event-schemas.md).
 
 Példa:
 
@@ -185,8 +185,8 @@ az group delete --name <resource_group_name>
 
 ## <a name="next-steps"></a>További lépések
 
-[Események reagálnak](reacting-to-media-services-events.md)## lásd még:
+[Reagálás eseményekre](reacting-to-media-services-events.md)
 
 ## <a name="see-also"></a>Lásd még
 
-[CLI 2.0](https://docs.microsoft.com/en-us/cli/azure/ams?view=azure-cli-latest)
+[Azure CLI](https://docs.microsoft.com/en-us/cli/azure/ams?view=azure-cli-latest)

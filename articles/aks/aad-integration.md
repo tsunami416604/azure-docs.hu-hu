@@ -9,18 +9,18 @@ ms.topic: article
 ms.date: 6/17/2018
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 7ae3818795cddf5dfbb93ca6cc8dfff9d1c44c03
-ms.sourcegitcommit: 4597964eba08b7e0584d2b275cc33a370c25e027
+ms.openlocfilehash: e75577ae917cbe14a123ff5e2d44da2edc8062ef
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37341239"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38307313"
 ---
 # <a name="integrate-azure-active-directory-with-aks---preview"></a>Az Azure Active Directory integrálása az AKS - előzetes verzió
 
 Az Azure Kubernetes Service (AKS) beállítható úgy, hogy az Azure Active Directory használata a felhasználók hitelesítéséhez. Ebben a konfigurációban amelyre be tud jelentkezni egy Azure Kubernetes Service-fürtön az Azure Active Directory-hitelesítési tokent. Fürt a rendszergazdák emellett képesek a felhasználók identitás- vagy a csoport tagsága alapján Kubernetes szerepköralapú hozzáférés-vezérlés konfigurálása.
 
-Ez a dokumentum létrehozása AKS és Azure ad-ben az összes szükséges előfeltételeket, az Azure AD-kompatibilis fürt üzembe helyezése és az AKS-fürtöt hoz létre egy egyszerű RBAC szerepkör részletes.
+Ez a dokumentum létrehozása AKS és Azure ad-ben az összes szükséges előfeltételeket, az Azure AD-kompatibilis fürt üzembe helyezése és az AKS-fürtöt hoz létre egy egyszerű RBAC szerepkör részletes. Vegye figyelembe, hogy akkor a meglévő nem RBAC engedélyezve van az AKS-fürtök jelenleg nem lehet frissíteni, az RBAC használja.
 
 > [!IMPORTANT]
 > Az Azure Kubernetes Service (AKS) RBAC és az Azure AD integrációja jelenleg **előzetes**. Az előzetes verziók azzal a feltétellel érhetők el, hogy Ön beleegyezik a [kiegészítő használati feltételekbe](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). A szolgáltatás néhány eleme megváltozhat a nyilvános rendelkezésre állás előtt.

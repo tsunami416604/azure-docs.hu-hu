@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 12/15/2017
 ms.author: cynthn
-ms.openlocfilehash: a295c7533369033f0a8c732c134481760a8e913e
-ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
+ms.openlocfilehash: a59183365ada644f2ff1aae7d52bac5fb1f42354
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37930579"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38295767"
 ---
 # <a name="how-to-use-docker-machine-to-create-hosts-in-azure"></a>A Docker Machine használata gazdagépek létrehozása az Azure-ban
 Ez a cikk részletesen használata [a Docker Machine](https://docs.docker.com/machine/) gazdagépek létrehozása az Azure-ban. A `docker-machine` parancs létrehoz egy Linux rendszerű virtuális gép (VM) az Azure-ban, majd telepíti a Docker. Ezután kezelheti az Azure-ban, a helyi eszközök és a munkafolyamatok a Docker-gazdagépek. Dockeres gép használata a Windows 10, Linux bash kell használnia.
@@ -40,7 +40,7 @@ docker-machine create -d azure \
     --azure-subscription-id $sub \
     --azure-ssh-user azureuser \
     --azure-open-port 80 \
-    --azure-size "Standard_D2_v2" \
+    --azure-size "Standard_DS2_v2" \
     myvm
 ```
 

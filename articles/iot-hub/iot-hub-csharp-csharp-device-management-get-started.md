@@ -1,6 +1,6 @@
 ---
-title: Ismerkedés az Azure IoT Hub kezelés (.NET/.NET) |} Microsoft Docs
-description: Hogyan használható az Azure IoT Hub kezelés távoli eszköz újraindítás kezdeményezése. Az Azure IoT-eszközök a .NET SDK használatával valósítja meg a szimulált eszköz alkalmazást, amely közvetlen módszer és a Azure IoT szolgáltatást a service-alkalmazást, amely hívja meg a közvetlen módszer végrehajtásához .NET SDK tartalmazza.
+title: Az Azure IoT Hub-Eszközfelügyelet (.NET/.NET) – első lépések |} A Microsoft Docs
+description: Hogyan használható az Azure IoT Hub-Eszközfelügyelet egy távoli eszköz-újraindítás kezdeményezése. Az Azure IoT eszközoldali SDK for .NET segítségével megvalósítani egy szimulált eszközalkalmazás, amely tartalmazza a közvetlen metódus és az Azure IoT szolgáltatás SDK for .NET megvalósítása a service-alkalmazás, amely a közvetlen metódust hív meg.
 author: dominicbetts
 manager: timlt
 ms.service: iot-hub
@@ -10,26 +10,26 @@ ms.topic: conceptual
 ms.date: 09/15/2017
 ms.author: dobett
 ms.openlocfilehash: c1cee32e3ee60ce229308055cca7f0e9832ddc49
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34633825"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38578900"
 ---
-# <a name="get-started-with-device-management-netnet"></a>Eszközkezelés (.NET/.NET) az első lépései
+# <a name="get-started-with-device-management-netnet"></a>Ismerkedés az eszközfelügyelettel (.NET/.NET)
 
 [!INCLUDE [iot-hub-selector-dm-getstarted](../../includes/iot-hub-selector-dm-getstarted.md)]
 
 Ez az oktatóanyag a következőket mutatja be:
 
-* Az Azure-portál használatával létrehoz egy IoT-központot, és az IoT hub hozzon létre egy eszközidentitás.
-* Létrehoz egy szimulált eszköz alkalmazást, amely tartalmazza a közvetlen módszer, amely az eszköz újraindul. Közvetlen módszerek a felhőből hívják.
-* A .NET-Konzolalkalmazás, amely behívja az újraindítás közvetlen módszer a szimulált eszköz alkalmazás keresztül az IoT hub létrehozása.
+* Az Azure portal használatával hozzon létre egy IoT hubot, és hozzon létre egy új eszközidentitást az IoT hubban.
+* Egy szimulált eszközalkalmazás létrehozása, amely közvetlen metódus, amely az eszköz újraindul. Közvetlen metódusok a felhő kerül meghívásra.
+* Hozzon létre egy .NET-konzolalkalmazást, amely meghívja ezt az újraindítást közvetlen metódus a szimulált eszközalkalmazásnak, az IoT hub segítségével a.
 
 Az oktatóanyag végén két .NET-konzolalkalmazással fog rendelkezni:
 
-* **SimulateManagedDevice**, amely kapcsolódik az IoT hub korábban létrehozott eszköz identitású kap egy újraindítás közvetlen módszer, szimulálja a fizikai számítógép újraindítása, és jelentést az idő az utolsó újraindítás.
-* **TriggerReboot**, amely közvetlen metódus meghívja a szimulált eszköz alkalmazás jeleníti meg a választ, és jeleníti meg a frissített jelentett tulajdonságok.
+* **SimulateManagedDevice**, csatlakozik az IoT hubhoz a korábban létrehozott eszközidentitással újraindítás közvetlen metódus kap, szimulálja a fizikai számítógép újraindítása és az utolsó újraindítás időpontja jelenti.
+* **TriggerReboot**, közvetlen metódus a szimulált eszközalkalmazásnak, amely hívások jeleníti meg a választ, és megjeleníti a frissített jelentett tulajdonságokként.
 
 Az oktatóanyag teljesítéséhez a következőkre lesz szüksége:
 
@@ -41,10 +41,10 @@ Az oktatóanyag teljesítéséhez a következőkre lesz szüksége:
 <a id="DeviceIdentity_csharp"></a>
 [!INCLUDE [iot-hub-get-started-create-device-identity-portal](../../includes/iot-hub-get-started-create-device-identity-portal.md)]
 
-## <a name="trigger-a-remote-reboot-on-the-device-using-a-direct-method"></a>Az eszközön, a közvetlen módszer használatával távoli újraindítás eseményindító
-Ebben a szakaszban egy .NET-Konzolalkalmazás (használatával C#) közvetlen metódussal eszköz távoli újraindítást kezdeményezett hoz létre. Az alkalmazás számára az eszköz legutóbbi újraindítás eszköz iker lekérdezések használ.
+## <a name="trigger-a-remote-reboot-on-the-device-using-a-direct-method"></a>A távoli közvetlen metódus az eszközön újra kell indítani az eseményindító
+Ebben a szakaszban konzolalkalmazást hoz létre egy .NET (C# használatával), amely közvetlen metódus használó eszközök távoli újraindítást kezdeményez. Az alkalmazás számára az eszköz legutóbbi újraindítás ikereszköz-lekérdezések használja.
 
-1. A Visual Studióban adjon hozzá egy Visual C# Windows klasszikus asztalialkalmazás-projektet az új megoldáshoz a **Console App (.NET Framework)** (Konzolalkalmazás (.NET-keretrendszer)) projektsablonnal. A Microsoft .NET-keretrendszer 4.5.1-es vagy újabb verzióját használja. Nevet a projektnek **TriggerReboot**.
+1. A Visual Studióban adjon hozzá egy Visual C# Windows klasszikus asztalialkalmazás-projektet az új megoldáshoz a **Console App (.NET Framework)** (Konzolalkalmazás (.NET-keretrendszer)) projektsablonnal. A Microsoft .NET-keretrendszer 4.5.1-es vagy újabb verzióját használja. Adja a projektnek **TriggerReboot**.
 
     ![Új Visual C# Windows klasszikus asztalialkalmazás-projekt][img-createserviceapp]
 
@@ -57,14 +57,14 @@ Ebben a szakaszban egy .NET-Konzolalkalmazás (használatával C#) közvetlen me
         using Microsoft.Azure.Devices;
         using Microsoft.Azure.Devices.Shared;
         
-5. Adja hozzá a **Program** osztályhoz a következő mezőket: Cserélje le a helyőrző értékét "Hozzon létre egy IoT-központot." szakaszban létrehozott központ IoT-központ kapcsolati karakterlánccal 
+5. Adja hozzá a **Program** osztályhoz a következő mezőket: A helyőrző értékét cserélje le a hub, az "IoT hub létrehozása." szakaszban létrehozott IoT Hub kapcsolati karakterláncára 
    
         static RegistryManager registryManager;
         static string connString = "{iot hub connection string}";
         static ServiceClient client;
         static string targetDevice = "myDeviceId";
         
-6. Adja hozzá a **Program** osztályhoz a következő metódust.  Ezt a kódot az eszköz iker lekérdezi az újraindítás eszköz, és kiírja a jelentésben szereplő tulajdonságok.
+6. Adja hozzá a **Program** osztályhoz a következő metódust.  Ez a kód beolvassa az éppen újraindul eszköz az ikereszköz, és kiírja a jelentett tulajdonságokat.
    
         public static async Task QueryTwinRebootReported()
         {
@@ -72,7 +72,7 @@ Ebben a szakaszban egy .NET-Konzolalkalmazás (használatával C#) közvetlen me
             Console.WriteLine(twin.Properties.Reported.ToJson());
         }
         
-7. Adja hozzá a **Program** osztályhoz a következő metódust.  Ez a kód indít el az újraindítást követően az eszközön, a közvetlen módszer használatával.
+7. Adja hozzá a **Program** osztályhoz a következő metódust.  Ez a kód közvetlen metódus az eszközön az újraindítás kezdeményezése.
 
         public static async Task StartReboot()
         {
@@ -96,21 +96,21 @@ Ebben a szakaszban egy .NET-Konzolalkalmazás (használatával C#) közvetlen me
 8. Hozza létre a megoldást.
 
 > [!NOTE]
-> Ez az oktatóanyag csak egyetlen lekérdezés jelentett eszköztulajdonságok hajt végre. Az éles kódban ajánlott lekérdezési változások észleléséhez a jelentett tulajdonságai.
+> Ebben az oktatóanyagban az eszköz a jelentett tulajdonságokat csak egyetlen lekérdezést hajt végre. Az éles kódban javasoljuk, hogy lekérdezési változások észleléséhez a jelentett tulajdonságokat.
 
 ## <a name="create-a-simulated-device-app"></a>Szimulált eszközalkalmazás létrehozása
 Ez a szakasz tartalma
 
-* Amely válaszol a felhő által nevű közvetlen metódust a .NET-Konzolalkalmazás létrehozása
-* A szimulált eszköz újraindítását eseményindító
-* A jelentésben szereplő tulajdonságok használatával engedélyezhető az eszköz iker lekérdezések azonosíthatja azokat az eszközöket, és ha tartanak újraindítása után
+* Hozzon létre egy .NET-konzolalkalmazást, amely a felhő által meghívott közvetlen metódusra válaszol
+* Az eseményindító egy szimulált eszköz-újraindítás
+* A jelentett tulajdonságok használatával ikereszköz-lekérdezéseket engedélyez az eszközök azonosítására és ha azok utolsó újraindítása
 
-1. A Visual Studióban adjon hozzá egy Visual C# nyelvű Windows klasszikus asztalialkalmazás-projektet az aktuális megoldáshoz a **Console Application** (Konzolalkalmazás) projektsablonnal. Nevet a projektnek **SimulateManagedDevice**.
+1. A Visual Studióban adjon hozzá egy Visual C# nyelvű Windows klasszikus asztalialkalmazás-projektet az aktuális megoldáshoz a **Console Application** (Konzolalkalmazás) projektsablonnal. Adja a projektnek **SimulateManagedDevice**.
    
-    ![Új Visual C# klasszikus Windows-eszköz alkalmazás][img-createdeviceapp]
+    ![Új Visual C# Windows klasszikus eszközalkalmazás][img-createdeviceapp]
     
 2. A Megoldáskezelőben kattintson a jobb gombbal a **SimulateManagedDevice** projektre, és kattintson a **NuGet-csomagok kezelése...** .
-3. Az a **NuGet-Csomagkezelő** ablakban válassza ki **Tallózás** keresse meg a **microsoft.azure.devices.client**. Válassza ki **telepítése** telepítéséhez a **Microsoft.Azure.Devices.Client** csomagot, majd fogadja el a használati feltételeket. Ez az eljárás tölti le, telepíti, és hozzáad egy hivatkozást a [Azure IoT-eszközök SDK] [ lnk-nuget-client-sdk] NuGet csomag és annak függőségeit.
+3. Az a **NuGet-Csomagkezelő** ablakban válassza **Tallózás** és keressen rá a **microsoft.azure.devices.client**. Válassza ki **telepítése** telepítéséhez a **Microsoft.Azure.Devices.Client** csomagot, és fogadja el a használati feltételeket. Ez az eljárás letölti, telepíti, és hozzáad egy hivatkozást a [Azure IoT eszközoldali SDK-t] [ lnk-nuget-client-sdk] NuGet csomagot és annak függőségeit.
    
     ![NuGet-Csomagkezelő ablak ügyfélalkalmazás][img-clientnuget]
 4. Adja hozzá a következő `using` utasításokat a **Program.cs** fájl elejéhez:
@@ -118,12 +118,12 @@ Ez a szakasz tartalma
         using Microsoft.Azure.Devices.Client;
         using Microsoft.Azure.Devices.Shared;
 
-5. Adja hozzá a **Program** osztályhoz a következő mezőket: Cserélje le a helyőrző értékét az előző szakaszban feljegyzett eszköz kapcsolati karakterlánccal.
+5. Adja hozzá a **Program** osztályhoz a következő mezőket: A helyőrző értékét cserélje le az eszközt az előző szakaszban feljegyzett kapcsolati karakterlánccal.
    
         static string DeviceConnectionString = "HostName=<yourIotHubName>.azure-devices.net;DeviceId=<yourIotDeviceName>;SharedAccessKey=<yourIotDeviceAccessKey>";
         static DeviceClient Client = null;
 
-6. Adja hozzá a következőt valósítja meg a közvetlen az eszközön:
+6. Adja hozzá a következő, a közvetlen metódus megvalósításához az eszközön:
 
         static Task<MethodResponse> onReboot(MethodRequest methodRequest, object userContext)
         {
@@ -153,7 +153,7 @@ Ez a szakasz tartalma
             return Task.FromResult(new MethodResponse(Encoding.UTF8.GetBytes(result), 200));
         }
 
-7. Végül adja hozzá az alábbi kódot a **fő** módszert, nyissa meg a kapcsolatot az IoT hub és a metódus figyelő inicializálása:
+7. Végül adja hozzá a következő kódot a **fő** metódus az IoT hub-kapcsolat megnyitásához, és a metódus figyelő inicializálása:
    
         try
         {
@@ -177,7 +177,7 @@ Ez a szakasz tartalma
             Console.WriteLine("Error in sample: {0}", ex.Message);
         }
         
-8. A Visual Studio Megoldáskezelőben kattintson a jobb gombbal a megoldásra, majd kattintson a **Kezdőprojektek beállítása** parancsra. Válassza ki **egyetlen kezdőprojekt**, majd válassza ki a **SimulateManagedDevice** projekt legördülő menüből. Hozza létre a megoldást.       
+8. A Visual Studio Megoldáskezelőben kattintson a jobb gombbal a megoldásra, majd kattintson a **Kezdőprojektek beállítása** parancsra. Válassza ki **egyetlen kezdőprojekt**, majd válassza ki a **SimulateManagedDevice** projekt a legördülő menüből. Hozza létre a megoldást.       
 
 > [!NOTE]
 > Az egyszerűség kedvéért ez az oktatóanyag nem valósít meg semmilyen újrapróbálkozási házirendet. Az éles kódban újrapróbálkozási házirendeket is meg kell valósítania (például egy exponenciális leállítást) a [tranziens hibakezelést][lnk-transient-faults] ismertető MSDN-cikkben leírtak szerint.
@@ -185,11 +185,11 @@ Ez a szakasz tartalma
 
 ## <a name="run-the-apps"></a>Az alkalmazások futtatása
 Most már készen áll az alkalmazások futtatására.
-1. A .NET-eszköz alkalmazás futtatása **SimulateManagedDevice**.  Kattintson a jobb gombbal a **SimulateManagedDevice** projektre, válassza **Debug**, majd válassza ki **Start új példány**. Akkor kell megkezdeni a figyelést az IoT Hub a metódushívások: 
+1. Futtatás a .NET-eszközalkalmazást **SimulateManagedDevice**.  Kattintson a jobb gombbal a **SimulateManagedDevice** projektre, válassza **Debug**, majd válassza ki **új példány indítása**. Azt el kell indulnia a metódust hívja az IoT hub figyeli: 
 
-2. Most, hogy az eszköz csatlakoztatva van, és várakozik a metódus meghívásához, futtassa a .NET **TriggerReboot** alkalmazásnak, hogy a rendszer újraindítása metódus a szimulált eszköz alkalmazás indításához. Kattintson a jobb gombbal a **TriggerReboot** projektre, válassza **Debug**, majd válassza ki **Start új példány**. Megtekintheti az "Rebooting!" Az oktatóprogram a **SimulatedManagedDevice** konzol és az eszköz a jelentett tulajdonságaiban, amely az utolsó újraindítás időpontja, írt a **TriggerReboot** konzol.
+2. Most, hogy az eszköz csatlakoztatva van, és megpróbálkozni, Várakozás futtatása a .NET **TriggerReboot** alkalmazás a szimulált eszközalkalmazás újraindítás metódus meghívásához. Kattintson a jobb gombbal a **TriggerReboot** projektre, válassza **Debug**, majd válassza ki **új példány indítása**. Megtekintheti az "Újraindítás!" írt a **SimulatedManagedDevice** konzol és az eszköz a jelentett tulajdonságok, többek között az utolsó újraindítás időpontja, nyelven írt a **TriggerReboot** konzolon.
    
-    ![Szolgáltatás és az eszköz alkalmazás futtatása][img-combinedrun]
+    ![Szolgáltatás és eszköz alkalmazás futtatása][img-combinedrun]
 
 [!INCLUDE [iot-hub-dm-followup](../../includes/iot-hub-dm-followup.md)]
 

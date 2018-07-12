@@ -1,6 +1,6 @@
 ---
-title: Nagy teljesítményű prémium szintű Storage, és az Azure által kezelt lemezeken Windows virtuális gépek |} Microsoft Docs
-description: További tudnivalók a prémium szintű Storage nagy teljesítményű és felügyelt lemezek Azure virtuális gépekhez. Az Azure DS-méretek, DSv2-méretek, GS sorozatnak, és támogatja a prémium szintű Storage Fs sorozatú virtuális gépeket.
+title: Nagy teljesítményű Premium Storage és az Azure managed disks Windows virtuális gépek |} A Microsoft Docs
+description: További tudnivalók a Premium Storage nagy teljesítményű és a felügyelt lemezek az Azure virtuális gépek. Az Azure-DS-sorozat, DSv2-sorozat, GS-sorozat, és Fs sorozatú virtuális gépek Premium Storage támogatja.
 services: virtual-machines-windows
 documentationcenter: ''
 author: ramankumarlive
@@ -15,21 +15,21 @@ ms.topic: article
 ms.date: 03/30/2018
 ms.author: ramankum
 ms.openlocfilehash: af55ff4b0ea9e161fdf2422f4b35a3155c23d82b
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/05/2018
-ms.locfileid: "30319055"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38721037"
 ---
 [!INCLUDE [virtual-machines-common-premium-storage.md](../../../includes/virtual-machines-common-premium-storage.md)]
 
-### <a name="design-and-implement-with-premium-storage"></a>Tervezési és a prémium szintű Storage végrehajtása
-* [A prémium szintű Storage teljesítmény tervezése](premium-storage-performance.md)
-* [Prémium szintű Storage BLOB storage műveletek](http://go.microsoft.com/fwlink/?LinkId=521969)
+### <a name="design-and-implement-with-premium-storage"></a>Tervezzenek és valósítsanak meg a Premium Storage
+* [A teljesítmény a Premium Storage tervezése](premium-storage-performance.md)
+* [A Premium Storage BLOB storage-műveletek](http://go.microsoft.com/fwlink/?LinkId=521969)
 
 ### <a name="operational-guidance"></a>Műveleti útmutató
-* [Prémium szintű Azure-tárhelyre végzi az áttelepítést](../../storage/common/storage-migration-to-premium-storage.md)
+* [Az Azure Premium Storage áttelepítése](../../storage/common/storage-migration-to-premium-storage.md)
 
 ### <a name="blog-posts"></a>Blogbejegyzések
-* [Prémium szintű Storage általánosan elérhető](https://azure.microsoft.com/blog/azure-premium-storage-now-generally-available-2/)
-* [A GS sorozatnak bejelentése: prémium szintű Storage hozzáadása a támogatási szolgálathoz a legnagyobb virtuális gépeket a nyilvános felhőben](https://azure.microsoft.com/blog/azure-has-the-most-powerful-vms-in-the-public-cloud/)
+* [Az Azure Premium Storage általánosan elérhető](https://azure.microsoft.com/blog/azure-premium-storage-now-generally-available-2/)
+* [A GS-sorozat bejelentése: hozzáadása a Premium Storage támogatja a legnagyobb virtuális gépekhez a nyilvános felhőben](https://azure.microsoft.com/blog/azure-has-the-most-powerful-vms-in-the-public-cloud/)

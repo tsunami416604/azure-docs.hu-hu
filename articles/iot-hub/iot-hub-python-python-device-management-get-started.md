@@ -1,6 +1,6 @@
 ---
-title: Ismerkedés az Azure IoT Hub kezelés (Python) |} Microsoft Docs
-description: Hogyan használható az IoT-központ kezelés távoli eszköz újraindítás kezdeményezése. Az Azure IoT Python SDK használatával a szimulált eszköz alkalmazást, amely magában foglalja a közvetlen módszer és a service-alkalmazást, amely hívja meg a közvetlen módszer megvalósításához.
+title: Ismerkedés az Azure IoT Hub-Eszközfelügyelet (Python) |} A Microsoft Docs
+description: Hogyan használhatja az IoT Hub-Eszközfelügyelet egy távoli eszköz-újraindítás kezdeményezése. A Pythonhoz készült Azure IoT SDK használatával egy szimulált eszközalkalmazás, amely tartalmazza a közvetlen metódus és egy service-alkalmazás, amely a közvetlen metódust hív meg.
 author: kgremban
 manager: timlt
 ms.service: iot-hub
@@ -10,33 +10,33 @@ ms.topic: conceptual
 ms.date: 01/02/2018
 ms.author: kgremban
 ms.openlocfilehash: fa966ee2ea26cccc7d841a0e969d8329ac5bc0de
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34635287"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38573417"
 ---
-# <a name="get-started-with-device-management-python"></a>Eszközkezelés (Python) az első lépései
+# <a name="get-started-with-device-management-python"></a>Ismerkedés az eszközfelügyelettel (Python)
 
 [!INCLUDE [iot-hub-selector-dm-getstarted](../../includes/iot-hub-selector-dm-getstarted.md)]
 
 Ez az oktatóanyag a következőket mutatja be:
 
-* Az Azure-portál használatával létrehoz egy IoT-központot, és az IoT hub hozzon létre egy eszközidentitás.
-* Létrehoz egy szimulált eszköz alkalmazást, amely tartalmazza a közvetlen módszer, amely az eszköz újraindul. Közvetlen módszerek a felhőből hívják.
-* Hozzon létre egy Python-Konzolalkalmazás, amely behívja az újraindítás közvetlen módszer a szimulált eszköz alkalmazásban az IoT hub keresztül.
+* Az Azure portal használatával hozzon létre egy IoT hubot, és hozzon létre egy új eszközidentitást az IoT hubban.
+* Egy szimulált eszközalkalmazás létrehozása, amely közvetlen metódus, amely az eszköz újraindul. Közvetlen metódusok a felhő kerül meghívásra.
+* Hozzon létre egy Python-Konzolalkalmazás, amely meghívja ezt az újraindítást közvetlen metódus a szimulált eszközalkalmazásnak, az IoT hub segítségével a.
 
-Ez az oktatóanyag végén két Python konzol alkalmazások közül választhat:
+Ez az oktatóanyag végén két Python-konzolalkalmazással fog rendelkezni:
 
-**dmpatterns_getstarted_device.PY**, amely kapcsolódik az IoT hub korábban létrehozott eszköz identitású kap egy újraindítás közvetlen módszer, szimulálja a fizikai számítógép újraindítása, és jelentést az idő az utolsó újraindítás.
+**dmpatterns_getstarted_device.PY**, csatlakozik az IoT hubhoz a korábban létrehozott eszközidentitással újraindítás közvetlen metódus kap, szimulálja a fizikai számítógép újraindítása és az utolsó újraindítás időpontja jelenti.
 
-**dmpatterns_getstarted_service.PY**, amely közvetlen metódus meghívja a szimulált eszköz alkalmazás jeleníti meg a választ, és jeleníti meg a frissített jelentett tulajdonságok.
+**dmpatterns_getstarted_service.PY**, közvetlen metódus a szimulált eszközalkalmazásnak, amely hívások jeleníti meg a választ, és megjeleníti a frissített jelentett tulajdonságokként.
 
 Az oktatóanyag teljesítéséhez a következőkre lesz szüksége:
 
 * [Python 2.x vagy 3.x][lnk-python-download]. Mindenképp a rendszernek megfelelő, 32 vagy 64 bites telepítést használja. Amikor a rendszer erre kéri, mindenképp adja hozzá a Pythont a platformspecifikus környezeti változóhoz. Ha a Python 2.x verziót használja, előfordulhat, hogy [telepítenie vagy frissítenie kell a *pip*-et, a Python csomagkezelő rendszerét][lnk-install-pip].
-    * Telepítse a [azure-IOT hubbal-eszközügyfél](https://pypi.org/project/azure-iothub-device-client/) csomag, a parancs használatával   `pip install azure-iothub-device-client`
-    * Telepítse a [azure-IOT hubbal-szolgáltatásügyfél](https://pypi.org/project/azure-iothub-service-client/) csomag, a parancs használatával   `pip install azure-iothub-service-client`
+    * Telepítse a [azure-iothub-device-client](https://pypi.org/project/azure-iothub-device-client/) csomag, a parancs használatával   `pip install azure-iothub-device-client`
+    * Telepítse a [azure-iothub-service-client](https://pypi.org/project/azure-iothub-service-client/) csomag, a parancs használatával   `pip install azure-iothub-service-client`
 * Ha Windows operációs rendszert használ, a [Visual C++ terjeszthető csomagra][lnk-visual-c-redist] van szükség a Python natív DLL-jei használatához.
 * Aktív Azure-fiók. (Ha nincs fiókja, létrehozhat egy [ingyenes fiókot][lnk-free-trial] néhány perc alatt.)
 
@@ -47,13 +47,13 @@ Az oktatóanyag teljesítéséhez a következőkre lesz szüksége:
 ## <a name="create-a-simulated-device-app"></a>Szimulált eszközalkalmazás létrehozása
 Ez a szakasz tartalma:
 
-* Hozzon létre egy Python-konzolalkalmazást, amely válaszol a felhő által meghívott egy közvetlen módszer
-* Eszköz újraindítás szimulálásához.
-* A jelentésben szereplő tulajdonságok használatával engedélyezhető az eszköz iker lekérdezések azonosíthatja azokat az eszközöket, és ha tartanak újraindítása után
+* Hozzon létre egy Python-Konzolalkalmazás, amely a felhő által meghívott közvetlen metódusra válaszol
+* Egy eszköz-újraindítás szimulálásához.
+* A jelentett tulajdonságok használatával ikereszköz-lekérdezéseket engedélyez az eszközök azonosítására és ha azok utolsó újraindítása
 
-1. Egy szövegszerkesztő használatával hozzon létre egy **dmpatterns_getstarted_device.py** fájlt.
+1. Egy szövegszerkesztővel hozzon létre egy **dmpatterns_getstarted_device.py** fájlt.
 
-1. Adja hozzá a következő `import` elején utasítások a **dmpatterns_getstarted_device.py** fájlt.
+1. Adja hozzá a következő `import` elején található utasításokat a **dmpatterns_getstarted_device.py** fájlt.
    
     ```python
     import random
@@ -64,7 +64,7 @@ Ez a szakasz tartalma:
     from iothub_client import IoTHubClient, IoTHubClientError, IoTHubTransportProvider, IoTHubClientResult, IoTHubError, DeviceMethodReturnValue
     ```
 
-1. Adja hozzá a változókat, beleértve a **CONNECTION_STRING** változót és az ügyfél memóriahiba lépett fel.  Cserélje le a kapcsolati karakterlánc az eszköz kapcsolati karakterláncot.  
+1. Adja hozzá változókat, például egy **connections_string** változót, és az ügyfél memóriahiba lépett fel.  Cserélje le a kapcsolati karakterláncot az eszköz kapcsolati karakterláncát.  
    
     ```python
     CONNECTION_STRING = "{deviceConnectionString}"
@@ -81,7 +81,7 @@ Ez a szakasz tartalma:
     METHOD_CALLBACKS = 0
     ```
 
-1. Adja hozzá a következő függvény visszahívások megvalósításához a közvetlen módszer az eszközön.
+1. Adja hozzá a következő függvény visszahívásait, hogy a közvetlen metódus megvalósításához az eszközön.
    
     ```python
     def send_reported_state_callback(status_code, user_context):
@@ -112,7 +112,7 @@ Ez a szakasz tartalma:
         return device_method_return_value
     ```
 
-1. Indítsa el a közvetlen módszer figyelő, és várjon, amíg.
+1. Indítsa el a közvetlen metódus figyelőt, és várjon.
    
     ```python
     def iothub_client_init():
@@ -151,12 +151,12 @@ Ez a szakasz tartalma:
 > Az egyszerűség kedvéért ez az oktatóanyag nem valósít meg semmilyen újrapróbálkozási házirendet. Az éles kódban újrapróbálkozási házirendeket is meg kell valósítania (például egy exponenciális leállítást) a [tranziens hibakezelést][lnk-transient-faults] ismertető MSDN-cikkben leírtak szerint.
 
 
-## <a name="trigger-a-remote-reboot-on-the-device-using-a-direct-method"></a>Az eszközön, a közvetlen módszer használatával távoli újraindítás eseményindító
-Ebben a szakaszban egy Python-Konzolalkalmazás közvetlen metódussal eszköz távoli újraindítást kezdeményezett hoz létre. Az alkalmazás számára az eszköz legutóbbi újraindítás eszköz iker lekérdezések használ.
+## <a name="trigger-a-remote-reboot-on-the-device-using-a-direct-method"></a>A távoli közvetlen metódus az eszközön újra kell indítani az eseményindító
+Ebben a szakaszban hozzon létre egy Python-Konzolalkalmazás, amely közvetlen metódus használó eszközök távoli újraindítást kezdeményez. Az alkalmazás számára az eszköz legutóbbi újraindítás ikereszköz-lekérdezések használja.
 
-1. Egy szövegszerkesztő használatával hozzon létre egy **dmpatterns_getstarted_service.py** fájlt.
+1. Egy szövegszerkesztővel hozzon létre egy **dmpatterns_getstarted_service.py** fájlt.
 
-1. Adja hozzá a következő `import` elején utasítások a **dmpatterns_getstarted_service.py** fájlt.
+1. Adja hozzá a következő `import` elején található utasításokat a **dmpatterns_getstarted_service.py** fájlt.
    
     ```python
     import sys, time
@@ -165,7 +165,7 @@ Ebben a szakaszban egy Python-Konzolalkalmazás közvetlen metódussal eszköz t
     from iothub_service_client import IoTHubDeviceMethod, IoTHubError, IoTHubDeviceTwin
     ```
 
-1. Adja hozzá a következő tartományváltozók deklarációjában. Csak cserélje le a helyőrző értékeket _IoTHubConnectionString_ és _deviceId_.
+1. Adja hozzá a következő változódeklarációkat. Csak cserélje le a helyőrző értékeket _IoTHubConnectionString_ és _deviceId_.
    
     ```python
     CONNECTION_STRING = "{IoTHubConnectionString}"
@@ -177,7 +177,7 @@ Ebben a szakaszban egy Python-Konzolalkalmazás közvetlen metódussal eszköz t
     WAIT_COUNT = 10
     ```
 
-1. Adja hozzá a következő függvény meghívásához indítsa újra a céleszközt, majd az eszköz twins lekérdezése az eszköz metódust, és a legutóbbi újraindítás beolvasása.
+1. Adja hozzá a következő függvényt indítsa újra a céleszközt, majd az ikereszközök lekérdezése az eszközmetódus meghívása és az utolsó újraindítás időpontja beolvasása.
    
     ```python
     def iothub_devicemethod_sample_run():
@@ -234,19 +234,19 @@ Ebben a szakaszban egy Python-Konzolalkalmazás közvetlen metódussal eszköz t
 ## <a name="run-the-apps"></a>Az alkalmazások futtatása
 Most már készen áll az alkalmazások futtatására.
 
-1. A parancssorba a következő parancsot a rendszer újraindítása közvetlen módszer figyelését.
+1. Parancsot a parancssorba futtassa a következő parancsot, amellyel megkezdheti a újraindítás közvetlen metódus figyel.
    
     ```
     python dmpatterns_getstarted_device.py
     ```
 
-1. Egy másik parancssorban futtassa a következő parancsot a távoli újraindítás és a lekérdezés megadása a eszköz iker található az utolsó újraindítás idő elindítani.
+1. Egy másik parancssorban futtassa a következő parancsot a távoli újraindítás és a lekérdezés az ikereszköz található az utolsó újraindítás időpontja eseményindítóra.
    
     ```
     python dmpatterns_getstarted_service.py
     ```
 
-1. A közvetlen módszer a konzolon eszköz válasz megjelenik.
+1. Láthatja, hogy az eszköz válasza a közvetlen metódus a konzolon.
 
 [!INCLUDE [iot-hub-dm-followup](../../includes/iot-hub-dm-followup.md)]
 

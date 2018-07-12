@@ -1,6 +1,6 @@
 ---
-title: Virtuális gép létrehozása az Azure portálon |} Microsoft Docs
-description: Windows virtuális gép létrehozása az Azure portálon.
+title: Virtuális gép létrehozása az Azure Portalon |} A Microsoft Docs
+description: Windows virtuális gép létrehozása az Azure Portalon.
 services: virtual-machines-windows
 documentationcenter: ''
 author: cynthn
@@ -17,35 +17,35 @@ ms.topic: article
 ms.date: 05/30/2017
 ms.author: cynthn
 ms.openlocfilehash: 5fd2128ff436d3211f41c7dfdcc4c2b8aabd0eb0
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2018
-ms.locfileid: "30917829"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38232326"
 ---
-# <a name="create-a-virtual-machine-running-windows-in-the-azure-portal"></a>Az Azure portálon Windows rendszerű virtuális gép létrehozása
+# <a name="create-a-virtual-machine-running-windows-in-the-azure-portal"></a>Az Azure Portalon Windows rendszerű virtuális gép létrehozása
 > [!div class="op_single_selector"]
 > * [Azure Portal](tutorial.md)
-> * [PowerShell: Klasszikus telepítési](create-powershell.md)
+> * [PowerShell: Klasszikus üzembe helyezéssel](create-powershell.md)
 >
 >
 
 <br>
 
 > [!IMPORTANT]
-> Azure az erőforrások létrehozására és kezelésére két különböző üzembe helyezési modellel rendelkezik: [Resource Manager és klasszikus](../../../resource-manager-deployment-model.md). Ez a cikk a klasszikus telepítési modell használatát bemutatja. A Microsoft azt javasolja, hogy az új telepítések esetén a Resource Manager modellt használja. Megtudhatja, hogyan [a következő lépések segítségével a Resource Manager üzembe helyezési modellel](../../virtual-machines-windows-hero-tutorial.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) használatával a **Azure-portálon**.
+> Az Azure az erőforrások létrehozásához és használatához két különböző üzembe helyezési modellel rendelkezik: [Resource Manager és klasszikus](../../../resource-manager-deployment-model.md). Ez a cikk ismerteti a klasszikus üzemi modell használatával. A Microsoft azt javasolja, hogy az új telepítések esetén a Resource Manager modellt használja. Ismerje meg, hogyan [ezeket a lépéseket a Resource Manager üzemi modell használatával](../../virtual-machines-windows-hero-tutorial.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) használatával a **az Azure portal**.
 > [!INCLUDE [virtual-machines-common-classic-createportal](../../../../includes/virtual-machines-classic-portal.md)]
 
-Az oktatóanyag bemutatja, hogyan hozzon létre egy Azure virtuális gép (VM) fut a Windows Azure-portálon. A Windows Server lemezkép használjuk példaként, de ez csak egyike a számos rendszerképet az Azure kínál. Vegye figyelembe, hogy a rendszerképek függ-e az előfizetés. Windows asztali rendszerképek például MSDN-előfizetők számára elérhető lehet.
+Ez az oktatóanyag bemutatja, hogyan hozhat létre egy Azure virtuális gép (VM) az Azure Portalon Windows rendszerű. Példaként egy Windows Server-rendszerképet használunk, de ez csak egyike az Azure számos rendszerképnek. Vegye figyelembe, hogy a lemezkép előfizetéstől függenek-e az előfizetés. Windows asztali rendszerképek például az MSDN-előfizetők számára elérhető lehet.
 
-Ez a szakasz bemutatja, hogyan használható a **irányítópult** válassza ki, majd létre az a virtuális gépet az Azure portálon.
+Ez a szakasz bemutatja, hogyan használható a **irányítópult** válassza ki, és majd a virtuális gép létrehozása az Azure Portalon.
 
-Virtuális gépek használatával is létrehozhat [a saját lemezképek](createupload-vhd.md). Ezzel és más módszerekkel kapcsolatos további tudnivalókért lásd: [Windows virtuális gépek létrehozásának különböző módszerei](../../virtual-machines-windows-creation-choices.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+Virtuális gépek használatával is létrehozhat [saját lemezképek](createupload-vhd.md). Ez és egyéb módszerekkel kapcsolatos további információkért lásd: [Windows virtuális gépek létrehozásának különböző módszerei](../../virtual-machines-windows-creation-choices.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 
 ## <a id="createvirtualmachine"> </a>A virtuális gép létrehozása
 [!INCLUDE [virtual-machines-create-WindowsVM](../../../../includes/virtual-machines-create-windowsvm.md)]
 
 ## <a name="next-steps"></a>További lépések
-* Megtudhatja, hogyan [a Resource Manager üzembe helyezési modellel virtuális gép létrehozása](../../virtual-machines-windows-hero-tutorial.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) az Azure portálon.
-* Jelentkezzen be a virtuális gép. Útmutatásért lásd: [jelentkezzen be a Windows Server rendszerű virtuális gép](connect-logon.md).
-* Adatok tárolására lemezt csatlakoztatni. Csatolhat is üres és a lemezek, amelyek adatokat tartalmaznak. Útmutatásért lásd: a [adatlemezt csatolni a klasszikus üzembe helyezési modellel létrehozott Windows virtuális gépek](attach-disk.md).
+* Ismerje meg, hogyan [hozzon létre egy virtuális Gépet, a Resource Manager üzemi modell használatával](../../virtual-machines-windows-hero-tutorial.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) az Azure Portalon.
+* Jelentkezzen be a virtuális gépet. Útmutatásért lásd: [jelentkezzen be a Windows Server rendszerű virtuális gép](connect-logon.md).
+* Adatok tárolása a lemez csatolása. Üres lemez és az adatokat tartalmazó lemezeket csatolhat. Útmutatásért tekintse meg a [adatlemez csatolása a klasszikus üzemi modellel létrehozott Windows virtuális gép](attach-disk.md).

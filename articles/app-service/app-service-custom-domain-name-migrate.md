@@ -1,6 +1,6 @@
 ---
-title: Egy aktív DNS-név áttelepítése az Azure App Service |} Microsoft Docs
-description: Ismerje meg, hogyan telepíthet át egy egyéni DNS-tartománynév, amely már hozzá van rendelve egy élő webhelyet az Azure App Service állásidő nélkül.
+title: Aktív DNS-név migrálása az Azure App Service |} A Microsoft Docs
+description: Ismerje meg, hogyan telepíthet át egyéni DNS-tartománynév, amely az Azure App Service-állásidő nélkül élő webhely már hozzá van rendelve.
 services: app-service
 documentationcenter: ''
 author: cephalin
@@ -16,116 +16,116 @@ ms.topic: article
 ms.date: 06/28/2017
 ms.author: cephalin
 ms.openlocfilehash: cd04be2046a23901471cb7bd0da9e0ed2d514d0d
-ms.sourcegitcommit: 9ea2edae5dbb4a104322135bef957ba6e9aeecde
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/03/2018
-ms.locfileid: "27566491"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38307296"
 ---
-# <a name="migrate-an-active-dns-name-to-azure-app-service"></a>Egy aktív DNS-név áttelepítése az Azure App Service
+# <a name="migrate-an-active-dns-name-to-azure-app-service"></a>Aktív DNS-név migrálása az Azure App Service-ben
 
 Ez a cikk bemutatja, hogyan telepíthet át egy aktív DNS-név [Azure App Service](../app-service/app-service-web-overview.md) állásidő nélkül.
 
-Áttelepítésekor a élő hely és a DNS-tartománynevet az App Service, a DNS-név már kiszolgál élő forgalmat. Az áttelepítés során az állásidő DNS-feloldás elkerülhető, az aktív DNS-név megelőző jelleggel kötése App Service-alkalmazás.
+Élő webhely és a DNS-tartománynév migrálása az App Service-, ha a DNS-név már van élő forgalmat bonyolító. Az áttelepítés során a DNS-feloldás állásidő elkerülhető, kötelező érvényű előrelátó módon aktív DNS-nevét az App Service-alkalmazást.
 
-Ha nem aggódik DNS-feloldás az állásidő, lásd: [egy meglévő egyéni DNS-névvel hozzárendelése az Azure Web Apps](app-service-web-tutorial-custom-domain.md).
+Ha Ön nem tudja a DNS-feloldás állásidő kapcsolatos, tekintse meg [meglévő egyéni DNS-név leképezése az Azure Web Apps](app-service-web-tutorial-custom-domain.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Ez az útmutató befejezése:
+Ez az útmutató végrehajtásához:
 
-- [Győződjön meg arról, hogy az App Service alkalmazás nem ingyenes szint](app-service-web-tutorial-custom-domain.md#checkpricing).
+- [Győződjön meg arról, hogy az App Service-alkalmazást nem az ingyenes szinten](app-service-web-tutorial-custom-domain.md#checkpricing).
 
-## <a name="bind-the-domain-name-preemptively"></a>A tartománynév megelőző jelleggel kötése
+## <a name="bind-the-domain-name-preemptively"></a>A tartománynév előrelátó módon kötése
 
-Az egyéni tartománynév megelőző jelleggel kötését, elérheti a DNS-rekordok módosítása előtt az alábbi:
+Egyéni tartomány előrelátó módon kötni, elvégezni a DNS-rekordok módosítása előtt az alábbi:
 
 - Tartomány tulajdonjogának ellenőrzése
-- A tartománynév, az alkalmazás engedélyezése
+- A tartomány nevét az alkalmazás engedélyezése
 
-Végül a környezetbe való áttelepítéskor a egyéni DNS-neve a régi webhely az App Service-alkalmazást, lesz állásidő nélkül a DNS-feloldás eredményének.
+Végül pedig az egyéni DNS-nevet a régi helyről való migráláskor az App Service-alkalmazás, leállás nélkül az kell DNS-feloldás.
 
 [!INCLUDE [Access DNS records with domain provider](../../includes/app-service-web-access-dns-records.md)]
 
-### <a name="create-domain-verification-record"></a>Tartomány ellenőrzési rekord létrehozása
+### <a name="create-domain-verification-record"></a>Tartomány-ellenőrzési rekord létrehozása
 
-Ellenőrizze a tartomány tulajdonosa, vegye fel a TXT-rekord. A TXT-rekord a maps _awverify.&lt; altartomány >_ való  _&lt;alkalmazásnév >. azurewebsites.net_. 
+Tartomány tulajdonjogának ellenőrzéséhez adjon hozzá egy txt típusú rekordot. A TXT-rekord leképezi a _awverify.&lt; altartomány >_ való  _&lt;alkalmazásnév >. azurewebsites.net_. 
 
-A TXT-rekord van szüksége a DNS-rekord, amelyet át szeretne függ. Tekintse meg a következő táblázat (`@` általában jelenti. a legfelső szintű tartomány):
+A TXT-rekordot kell attól függ, hogy a migrálni kívánt DNS-rekord. Példákért lásd a következő táblázat (`@` általában a gyökértartományt jelöli):
 
-| DNS-rekord példa | TXT-állomás | TXT érték |
+| DNS-rekord példa | Txt típusú gazdagép | Txt típusú érték |
 | - | - | - |
 | @ (root) | _awverify_ | _&lt;alkalmazásnév >. azurewebsites.net_ |
-| a webszolgáltatáshoz (rész) | _awverify.www_ | _&lt;alkalmazásnév >. azurewebsites.net_ |
-| \*(helyettesítő) | _awverify.\*_ | _&lt;alkalmazásnév >. azurewebsites.net_ |
+| www (al) | _awverify.www_ | _&lt;alkalmazásnév >. azurewebsites.net_ |
+| \* (helyettesítő karakter) | _awverify.\*_ | _&lt;alkalmazásnév >. azurewebsites.net_ |
 
-A DNS-rekordok lapon jegyezze fel a rekordtípust a DNS-név, amelyet át szeretne. App Service leképezéseket a CNAME és A rekordok támogatja.
+Jegyezze fel a DNS-rekordok oldala a DNS-név, amelyeket szeretné áttelepíteni a rekord típusa. Az App Service támogatja a leképezéseket a CNAME és a egy a rekordot.
 
-### <a name="enable-the-domain-for-your-app"></a>A tartomány, az alkalmazás engedélyezése
+### <a name="enable-the-domain-for-your-app"></a>A tartomány az alkalmazás engedélyezése
 
-Az a [Azure-portálon](https://portal.azure.com), válassza ki az alkalmazás oldal bal oldali navigációs **egyéni tartományok**. 
+Az a [az Azure portal](https://portal.azure.com), az oldal bal oldali navigációs sávján válassza **egyéni tartományok**. 
 
-![Az egyéni tartomány menü](./media/app-service-web-tutorial-custom-domain/custom-domain-menu.png)
+![Egyéni tartomány menü](./media/app-service-web-tutorial-custom-domain/custom-domain-menu.png)
 
-Az a **egyéni tartományok** lapon jelölje be a  **+**  melletti ikon **állomásnév hozzáadása**.
+Az a **egyéni tartományok** lapon válassza ki a **+** melletti ikon **gazdagépnév hozzáadása**.
 
-![Adja hozzá a gazdagép neve](./media/app-service-web-tutorial-custom-domain/add-host-name-cname.png)
+![Gazdagépnév hozzáadása](./media/app-service-web-tutorial-custom-domain/add-host-name-cname.png)
 
-Írja be a teljesen minősített tartománynevét, hogy hozzáadta a TXT-rekord, például a `www.contoso.com`. Egy helyettesítő tartomány (például \*. contoso.com), minden DNS-neve, amely megfelel a helyettesítő tartományt is használhatja. 
+Írja be a teljesen minősített tartománynevét, amelyhez hozzáadta a TXT-rekordot, például `www.contoso.com`. Egy helyettesítő karaktert tartalmazó tartomány (például \*. contoso.com), használhat bármilyen DNS-név, amely megfelel a helyettesítő karaktert tartalmazó tartomány. 
 
-Válassza ki **érvényesítése**.
+Válassza az **Érvényesítés** lehetőséget.
 
-A **állomásnév hozzáadása** gomb aktiválásakor. 
+A **Gazdagépnév hozzáadása** gomb aktívvá válik. 
 
-Győződjön meg arról, hogy **állomásnév rekordtípus** értéke a DNS-áttelepíteni kívánt típusát.
+Győződjön meg arról, hogy **gazdagépnév rekordtípusa** a migrálni kívánt DNS-rekordtípus értékre van állítva.
 
-Válassza ki **állomásnév hozzáadása**.
+Válassza a **Gazdagépnév hozzáadása** lehetőséget.
 
 ![DNS-név hozzáadása az alkalmazáshoz](./media/app-service-web-tutorial-custom-domain/validate-domain-name-cname.png)
 
-Ez eltarthat egy ideig, megjelennek az alkalmazás új gazdagép **egyéni tartományok** lap. Próbálja meg frissíteni a böngészőt az adatok frissítéséhez.
+Eltarthat egy ideig, amíg az új gazdanév megjelenik az alkalmazás **Egyéni tartományok** lapján. Próbálja meg frissíteni a böngészőt az adatok frissítéséhez.
 
 ![CNAME rekord hozzáadva](./media/app-service-web-tutorial-custom-domain/cname-record-added.png)
 
-Az egyéni DNS-neve most már engedélyezve van az Azure alkalmazásban. 
+Az egyéni DNS-név engedélyezve van az Azure alkalmazásban. 
 
-## <a name="remap-the-active-dns-name"></a>Adja meg újból az aktív DNS-név
+## <a name="remap-the-active-dns-name"></a>Az aktív DNS-név újramegfeleltetése
 
-Ehhez csak dolog balra van ismételt leképezését, az aktív DNS-rekord App Service mutasson. Jobb most, még mindig mutat a régi helyről.
+Ehhez a csak egy dolog maradt rendszer újramegfeleltetése aktív DNS-rekordját, mutasson az App Service-ben. Jobb, továbbra is mutat a régi webhelyre.
 
 <a name="info"></a>
 
-### <a name="copy-the-apps-ip-address-a-record-only"></a>Másolja az alkalmazás IP-cím (csak egy a rekordot)
+### <a name="copy-the-apps-ip-address-a-record-only"></a>Másolja az alkalmazás IP-címet (csak egy a rekordot)
 
-Ha egy CNAME rekordot a rendszer újramegfeleltetése, hagyja ki az ebben a szakaszban. 
+Ha egy CNAME-rekordot rendszer újramegfeleltetése, kihagyhatja ezt a szakaszt. 
 
-Adja meg újból az A rekord, az App Service alkalmazás külső IP-címet, amely megjelenik-e a kell a **egyéni tartományok** lap.
+Az App Service-alkalmazás külső IP-cím, amely jelenik meg kell újramegfeleltetése egy A rekordot, a **egyéni tartományok** lapot.
 
-Zárja be a **állomásnév hozzáadása** lap választásával **X** jobb felső sarokban. 
+Zárja be a **gazdagépnév hozzáadása** lap választásával **X** jobb felső sarokban. 
 
-Az a **egyéni tartományok** lapon, az alkalmazás IP-cím másolásához.
+Az **Egyéni tartományok** oldalon másolja az alkalmazás IP-címét.
 
-![Az Azure alkalmazásba portálnavigációjával](./media/app-service-web-tutorial-custom-domain/mapping-information.png)
+![Navigálás a portálon egy Azure-alkalmazáshoz](./media/app-service-web-tutorial-custom-domain/mapping-information.png)
 
-### <a name="update-the-dns-record"></a>A DNS-bejegyzésének frissítése
+### <a name="update-the-dns-record"></a>A DNS-rekord frissítése
 
-Vissza a tartomány-szolgáltató DNS-rekordok oldalán válassza ki a DNS-rekord adja meg újból.
+Vissza a tartományszolgáltatója DNS-rekordok oldala válassza ki a DNS-rekord újramegfeleltetése.
 
-Az a `contoso.com` : Példa a gyökérkönyvtár, például az alábbi táblázatban szereplő példák A vagy CNAME rekord remap: 
+Az a `contoso.com` legfelső szintű tartomány példájában, például az alábbi táblázatban szereplő példák a vagy CNAME rekord újramegfeleltetése: 
 
-| FQDN-példa | Bejegyzéstípus | Gazdagép | Érték |
+| FQDN-példa | Rekordtípus | Gazdagép | Érték |
 | - | - | - | - |
-| a contoso.com (root) | A | `@` | IP-cím a [másolja az alkalmazás IP-cím](#info) |
-| a www.contoso.com (rész) | CNAME | `www` | _&lt;alkalmazásnév >. azurewebsites.net_ |
-| \*. contoso.com (helyettesítő) | CNAME | _\*_ | _&lt;alkalmazásnév >. azurewebsites.net_ |
+| a contoso.com (root) | A | `@` | [Az alkalmazás IP-címének másolása](#info) szakaszból származó IP-cím |
+| www.contoso.com (al) | CNAME | `www` | _&lt;alkalmazásnév >. azurewebsites.net_ |
+| \*. contoso.com (helyettesítő karakter) | CNAME | _\*_ | _&lt;alkalmazásnév >. azurewebsites.net_ |
 
 A beállítások mentéséhez.
 
-DNS-lekérdezések kell kezdődnie, az App Service alkalmazáshoz feloldása után azonnal DNS-propagálás történik.
+DNS-lekérdezések el kell indulnia, közvetlenül az után történik, DNS-propagálás oldja fel az App Service-alkalmazást.
 
 ## <a name="next-steps"></a>További lépések
 
-Tudnivalók az App Service egy egyéni SSL-tanúsítvány kötését.
+Ismerje meg, hogyan köthet egyéni SSL-tanúsítvány App Service-ben.
 
 > [!div class="nextstepaction"]
-> [Egy meglévő egyéni SSL-tanúsítvány kötését az Azure Web Apps](app-service-web-tutorial-custom-ssl.md)
+> [Meglévő egyéni SSL-tanúsítvány kötése az Azure Web Appshez](app-service-web-tutorial-custom-ssl.md)

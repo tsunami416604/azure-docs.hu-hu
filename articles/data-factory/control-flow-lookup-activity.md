@@ -1,6 +1,6 @@
 ---
-title: Az Azure Data Factory keresési tevékenység |} Microsoft Docs
-description: Megtudhatja, hogyan kereshet meg egy értéket külső forrásból keresési tevékenység használata. Erre a kimenetre a későbbi tevékenységek is hivatkozhatnak.
+title: Keresési tevékenység az Azure Data Factoryban |} A Microsoft Docs
+description: Ismerje meg, hogyan használhatja a keresési tevékenység külső forrásból kereshet meg egy értéket. Erre a kimenetre a későbbi tevékenységek is hivatkozhatnak.
 services: data-factory
 documentationcenter: ''
 author: sharonlo101
@@ -14,22 +14,22 @@ ms.topic: conceptual
 ms.date: 06/15/2018
 ms.author: shlo
 ms.openlocfilehash: 25ed439674fcf7136e29034eb97e0652ae9ba111
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37059065"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38237832"
 ---
-# <a name="lookup-activity-in-azure-data-factory"></a>Az Azure Data Factory keresési tevékenység
+# <a name="lookup-activity-in-azure-data-factory"></a>Keresési tevékenység az Azure Data Factoryban
 
-Keresési tevékenység használható bármelyik az ADF-támogatott adatforrás egy dataset beolvasása.  A következő esetekben használhatók:
-- Dinamikus meghatározásához mely objektumok (fájlok, táblák stb) működését a soron következő tevékenységek, helyett bekódolásának az objektum neve
+Keresési tevékenység használható egy adatkészlet lekérése az ADF-támogatott adatforrás valamelyikét.  A következő esetben használható:
+- Mely objektumokat (fájlok, táblák stb.) a soron következő tevékenysége, fix kódolása az objektum neve helyett a művelethez használandó dinamikus meghatározásához
 
-Keresési tevékenység olvashatja, és egy konfigurációs fájlban, konfigurációs táblázat vagy egy lekérdezés vagy tárolt eljárás végrehajtása eredményét tartalmát adja vissza.  Keresési tevékenység kimenetét a singleton értéke esetén egy további példányát vagy átalakítási tevékenység szerepel, illetve egy ForEach tevékenység szerepel, ha az attribútumok tömbjét.
+Keresési tevékenység olvasása és a egy konfigurációs fájlban, a konfiguráció táblázat vagy a lekérdezés vagy tárolt eljárás végrehajtásának eredménye tartalmát adja vissza.  A keresési tevékenység kimenetét használja a következő másolási vagy Adatátalakítási tevékenységgel, ha a singleton értéke, vagy egy ForEach tevékenység használja, ha attribútumok tömbjét.
 
-## <a name="supported-capabilities"></a>Támogatott képességei
+## <a name="supported-capabilities"></a>Támogatott képességek
 
-A következő adatforrások keresési támogatottak. A sorok maximális számát is keresési a tevékenység által visszaadott **5000**, és legfeljebb **2MB** mérete. És jelenleg keresési tevékenység időtúllépés maximális időtartama egy óra.
+Keresés a következő adatforrások támogatottak. A sorok maximális számát is keresési tevékenység által visszaadott **5000**, és akár **2MB** mérete. És jelenleg a maximális időtartam, a keresési tevékenység az időkorlát lejárta előtt egy óra.
 
 [!INCLUDE [data-factory-v2-supported-data-stores](../../includes/data-factory-v2-supported-data-stores-for-lookup-activity.md)]
 
@@ -53,24 +53,24 @@ A következő adatforrások keresési támogatottak. A sorok maximális számát
 }
 ```
 
-## <a name="type-properties"></a>A típus tulajdonságai
+## <a name="type-properties"></a>Tulajdonságok
 Name (Név) | Leírás | Típus | Kötelező?
 ---- | ----------- | ---- | --------
-Adatkészlet | Az adatkészlet-hivatkozásban biztosít a kereséshez. Beolvasása – részletek minden egyes megfelelő összekötő cikkben "Adatkészlet tulajdonságai" szakaszában. | Kulcs/érték pár | Igen
-source | Adatkészlet-specifikus forrás tulajdonságait, ugyanaz, mint a másolási tevékenység forrását tartalmazza. Beolvasása – részletek minden egyes megfelelő összekötő cikkben "Másolása a tevékenység tulajdonságai" szakaszában. | Kulcs/érték pár | Igen
-firstRowOnly | Azt jelzi, hogy csak az első sor vagy az összes sor visszaadása. | Logikai | Nem. Az alapértelmezett szint a `true`.
+adatkészlet | Az adatkészlet-hivatkozásban biztosít a kereséshez. Ismerje meg a részleteket az "Adatkészlet tulajdonságai" szakaszban minden megfelelő összekötő a cikkben. | Kulcs/érték pár | Igen
+source | Tartalmazza az adatkészlet-specifikus forrás tulajdonságait, ugyanaz, mint a másolási tevékenység forrása. Ismerje meg a részleteket az "Másolási tevékenység tulajdonságai" szakaszban minden megfelelő összekötő a cikkben. | Kulcs/érték pár | Igen
+firstRowOnly | Azt jelzi, hogy csak az első sort vagy minden sort adja vissza. | Logikai | Nem. Az alapértelmezett szint a `true`.
 
 **Vegye figyelembe a következő szempontokat:**
 
-1. A forrásoszlop ByteArray típusú nem támogatott.
-2. Struktúra nem támogatott az adatkészlet-definícióban. Szöveges formátumú fájlok, használhatja a fejlécsor arra, hogy az oszlop nevét.
-3. Ha a keresési forrás egy JSON (oka) t, a `jsonPathDefinition` a teljes újra kialakításában a JSON-objektum nem támogatott beállítás, objektumok, veszi.
+1. Forrásoszlop ByteArray típus nem támogatott.
+2. Struktúra nem támogatott adatkészlet-definícióban. A szöveges formátumú fájlok, használhatja a fejlécsor a oszlop nevét.
+3. Ha a keresési forrás egy JSON-fájl a `jsonPathDefinition` a teljes beállítást újra átalakítását a JSON-objektum nem támogatott, objektumok, a rendszer lekéri.
 
-## <a name="use-the-lookup-activity-result-in-a-subsequent-activity"></a>Használja a keresési tevékenység eredménye a következő tevékenységben
+## <a name="use-the-lookup-activity-result-in-a-subsequent-activity"></a>Használja a keresési tevékenység eredménye a soron következő tevékenysége
 
-A keresési eredmény eredmény abban az esetben a `output` a tevékenységfuttatási eredmény szakasza.
+A keresési eredményt adja vissza a `output` szakaszában a tevékenységfuttatás eredményét.
 
-* **Ha `firstRowOnly` értéke `true` (alapértelmezett)**, a kimeneti formátuma a következő kódban látható módon. A keresési eredménye alapján egy rögzített `firstRow` kulcs. Az eredmény a soron következő tevékenységek használatához a mintát `@{activity('MyLookupActivity').output.firstRow.TableName}`.
+* **Amikor `firstRowOnly` értékre van állítva `true` (alapértelmezett)**, a kimenet formátuma a következő kódban látható módon. A Keresés eredménye szerint egy rögzített `firstRow` kulcsot. Az eredmény a soron következő tevékenysége használatához használja a következő mintát, `@{activity('MyLookupActivity').output.firstRow.TableName}`.
 
     ```json
     {
@@ -82,7 +82,7 @@ A keresési eredmény eredmény abban az esetben a `output` a tevékenységfutta
     }
     ```
 
-* **Ha `firstRowOnly` értéke `false`** , a kimeneti formátuma a következő kódban látható módon. A `count` mező azt jelzi, hogy hány rekordot ad vissza, és részletes jelennek meg a rögzített `value` tömb. Ebben az esetben a keresési tevékenység általában követi a [Foreach tevékenység](control-flow-for-each-activity.md). Átadhatók a `value` tömb a ForEach tevékenység `items` mező szerkezet használatával `@activity('MyLookupActivity').output.value`. Hozzáférés elemeknek a `value` tömb, a következő szintaxissal: `@{activity('lookupActivity').output.value[zero based index].propertyname}`. Példa: `@{activity('lookupActivity').output.value[0].tablename}`.
+* **Amikor `firstRowOnly` értékre van állítva `false`** , a kimenet formátuma a következő kódban látható módon. A `count` mező jelzi, hogy hány rekordok lesznek visszaadva, és részletes értékek szerint egy rögzített `value` tömb. Ebben az esetben a keresési tevékenység általában követ egy [Foreach tevékenység](control-flow-for-each-activity.md). Továbbíthatja a `value` tömb a ForEach tevékenység `items` mezőt minta használatával `@activity('MyLookupActivity').output.value`. Hozzáférés elemeknek a `value` tömböt, használja a következő szintaxist: `@{activity('lookupActivity').output.value[zero based index].propertyname}`. Íme egy példa: `@{activity('lookupActivity').output.value[0].tablename}`.
 
     ```json
     {
@@ -101,15 +101,15 @@ A keresési eredmény eredmény abban az esetben a `output` a tevékenységfutta
     ```
 
 ## <a name="example"></a>Példa
-Ebben a példában a másolási tevékenység során másol adatokat az Azure SQL Database-példányt az SQL-szereplő Azure Blob Storage tárolóban. Az SQL-tábla neve tárolódik a JSON-fájl, a Blob Storage tárolóban. A keresési tevékenység keresi a futási időben a tábla neve. Ez a megközelítés lehetővé teszi, hogy a JSON nem kell újratelepíteni adatcsatornákat és adathalmazokat dinamikusan módosítani. 
+Ebben a példában a másolási tevékenység adatokat másol az Azure SQL Database-példány az SQL-táblájába az Azure Blob storage. Az SQL-tábla neve egy JSON-fájlt a Blob storage-ban van tárolva. A keresési tevékenység megkeresi a tábla neve futásidőben. Ez a megközelítés lehetővé teszi, hogy a JSON-adatcsatornákat és adathalmazokat ismételt üzembe helyezése nélkül dinamikusan módosíthatók. 
 
-Ebben a példában csak az első sor keresési mutatja be. Az összes sort, és az eredmények láncolt ForEach tevékenység a keresési, tekintse meg a minták [több tábla másolja a tömeges Azure Data Factory használatával](tutorial-bulk-copy.md).
+Ez a példa bemutatja a keresés csak az első sorhoz. Keresés az összes sort, és összekapcsolja az eredményeket a ForEach tevékenység, a mintáiban találhat [több táblák tömeges másolása az Azure Data Factory használatával](tutorial-bulk-copy.md).
 
 ### <a name="pipeline"></a>Folyamat
-Ez az adatcsatorna két tevékenységet tartalmaz: *keresési* és *másolási*. 
+Ez a folyamat két tevékenységet tartalmaz: *keresési* és *másolási*. 
 
-- A keresési tevékenység LookupDataset, amely az Azure Blob storage helyéről használatára van konfigurálva. A keresési tevékenység ezen a helyen JSON fájlból olvassa be az SQL-tábla neve. 
-- A másolási tevékenység során használja a keresési tevékenység (az SQL-tábla neve). A forrás adatkészletben (SourceDataset) a tableName tulajdonságot a keresési tevékenység kimenete használatára van konfigurálva. A másolási tevékenység során az SQL-táblából adatokat az Azure Blob storage SinkDataset tulajdonság által megadott helyre másolja. 
+- A keresési tevékenység LookupDataset, amely az Azure Blob storage egy olyan helyre hivatkozik használatára van konfigurálva. A keresési tevékenység beolvassa egy JSON-fájlt ezen a helyen az SQL-tábla neve. 
+- A másolási tevékenység használja a keresési tevékenység (az SQL-tábla neve) kimenetét. A tableName tulajdonságot a forrásadatkészlet (SourceDataset) a keresési tevékenység kimenete használatára van konfigurálva. A másolási tevékenység adatokat másol egy Azure Blob Storage-SinkDataset tulajdonság által megadott helyre a SQL-táblát. 
 
 
 ```json
@@ -167,7 +167,7 @@ Ez az adatcsatorna két tevékenységet tartalmaz: *keresési* és *másolási*.
 ```
 
 ### <a name="lookup-dataset"></a>Keresési adatkészlet
-A keresési adatkészlet hivatkozik a *sourcetable.json* AzureStorageLinkedService típus által megadott Azure Storage keresési mappában. 
+A keresési adatkészlet hivatkozik a *sourcetable.json* AzureStorageLinkedService típusa által megadott Azure Storage keresési mappában található fájl. 
 
 ```json
 {
@@ -190,8 +190,8 @@ A keresési adatkészlet hivatkozik a *sourcetable.json* AzureStorageLinkedServi
 }
 ```
 
-### <a name="source-dataset-for-the-copy-activity"></a>A másolási tevékenység során a forrás adatkészlet
-A forrás adatkészlet használja a keresési tevékenység, amely az SQL-tábla neve. A másolási tevékenység során másol adatokat az SQL-tábla az Azure Blob storage a fogadó dataset által meghatározott helyre. 
+### <a name="source-dataset-for-the-copy-activity"></a>Forrásadatkészletet a másolási tevékenység
+A forrásadatkészlet használja a keresési tevékenység, amely az SQL-tábla neve kimenetét. A másolási tevékenység adatokat másol az Azure Blob storage, a fogadó-adatkészlet által meghatározott helyre a az SQL-táblát. 
 
 ```json
 {
@@ -209,8 +209,8 @@ A forrás adatkészlet használja a keresési tevékenység, amely az SQL-tábla
 }
 ```
 
-### <a name="sink-dataset-for-the-copy-activity"></a>A másolási tevékenységhez dataset gyűjtése
-A másolási tevékenység során másol az SQL táblázat segítségével adatokat a *filebylookup.csv* fájlt a *csv* az Azure Storage AzureStorageLinkedService tulajdonság által megadott mappában. 
+### <a name="sink-dataset-for-the-copy-activity"></a>Fogadó adatkészlet a másolási tevékenység
+A másolási tevékenység adatokat másol az SQL-táblát az *filebylookup.csv* fájlt a *csv* az Azure Storage, az AzureStorageLinkedService tulajdonság által megadott mappába. 
 
 ```json
 {
@@ -233,7 +233,7 @@ A másolási tevékenység során másol az SQL táblázat segítségével adato
 ```
 
 ### <a name="azure-storage-linked-service"></a>Azure Storage társított szolgáltatás
-Ez a tárfiók a JSON-fájl, az SQL-táblák nevét tartalmazza. 
+Ezt a tárfiókot az SQL-táblák nevére a JSON-fájl tartalmazza. 
 
 ```json
 {
@@ -251,7 +251,7 @@ Ez a tárfiók a JSON-fájl, az SQL-táblák nevét tartalmazza.
 ```
 
 ### <a name="azure-sql-database-linked-service"></a>Azure SQL Database társított szolgáltatás
-Az Azure SQL Database-példányt a Blob storage másolandó adatokat tartalmazza. 
+Az Azure SQL Database-példány tartalmazza az adatokat a Blob storage kell másolni. 
 
 ```json
 {
@@ -271,7 +271,7 @@ Az Azure SQL Database-példányt a Blob storage másolandó adatokat tartalmazza
 
 ### <a name="sourcetablejson"></a>sourcetable.json
 
-#### <a name="set-of-objects"></a>Objektumok csoportja
+#### <a name="set-of-objects"></a>Objektumok közül
 
 ```json
 {
@@ -284,7 +284,7 @@ Az Azure SQL Database-példányt a Blob storage másolandó adatokat tartalmazza
 }
 ```
 
-#### <a name="array-of-objects"></a>Objektumokból álló tömb
+#### <a name="array-of-objects"></a>Objektumok tömbje
 
 ```json
 [ 
@@ -300,9 +300,9 @@ Az Azure SQL Database-példányt a Blob storage másolandó adatokat tartalmazza
 ```
 
 ## <a name="next-steps"></a>További lépések
-Tekintse meg a többi adat-előállító által támogatott vezérlésfolyam-tevékenységek: 
+Tekintse meg a többi Data Factory által támogatott átvitelvezérlési tevékenység: 
 
-- [Feldolgozási sor tevékenység végrehajtása](control-flow-execute-pipeline-activity.md)
+- [Folyamat végrehajtása tevékenység](control-flow-execute-pipeline-activity.md)
 - [Minden egyes tevékenységhez](control-flow-for-each-activity.md)
-- [Metaadatok tevékenység beolvasása](control-flow-get-metadata-activity.md)
+- [Metaadatok beolvasása tevékenység](control-flow-get-metadata-activity.md)
 - [Webes tevékenység](control-flow-web-activity.md)

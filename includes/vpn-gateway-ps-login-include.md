@@ -9,15 +9,15 @@ ms.date: 03/21/2018
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: d4d370e6b76fcfc502366642842bfeb923a13991
-ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/21/2018
-ms.locfileid: "36313676"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38732674"
 ---
-Ez a konfiguráció megkezdése előtt meg kell bejelentkezni az Azure-fiókjával. A parancsmag kéri a bejelentkezési hitelesítő adatait az Azure-fiókjával. Történő bejelentkezés után az tölti le a fiókbeállításoknál, hogy az Azure PowerShell elérhetők legyenek. További információ: [A Windows PowerShell használata a Resource Managerrel](../articles/powershell-azure-resource-manager.md).
+Mielőtt hozzálát, jelentkezzen be Azure-fiókjába. A parancsmag kéri az Azure-fiók bejelentkezési hitelesítő adataival. Bejelentkezés után letölti a fiók beállításait így elérhetők legyenek az Azure PowerShell-lel. További információ: [A Windows PowerShell használata a Resource Managerrel](../articles/powershell-azure-resource-manager.md).
 
-A bejelentkezéshez nyissa meg a PowerShell-konzolt emelt szintű jogosultságokkal, és a fiókjához. A következő példa segít a kapcsolódásban:
+Jelentkezzen be, nyissa meg a PowerShell-konzolt emelt szintű jogosultságokkal, és csatlakozzon a fiókjához. A következő példa segít a kapcsolódásban:
 
 ```powershell
 Connect-AzureRmAccount

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 09/14/2017
 ms.author: daveba
-ms.openlocfilehash: 30e186c86d9947c5d0ef609a1c447dc6ed938c35
-ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
+ms.openlocfilehash: d8490dcba35cfeabb3da589f3d079571d5e98d3b
+ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2018
-ms.locfileid: "37902411"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38969204"
 ---
 # <a name="configure-a-vm-managed-service-identity-by-using-a-template"></a>A virtuális gépek Felügyeltszolgáltatás-identitás konfigurálása egy sablon használatával
 
@@ -49,7 +49,7 @@ A lehetőséget választja, függetlenül a sablon szintaxisa megegyezik kezdeti
 
 Ebben a szakaszban engedélyezze, majd tiltsa le a rendszer hozzárendelt identitás egy Azure Resource Manager-sablon használatával.
 
-### <a name="enable-system-assigned-identity-during-creation-of-an-azure-vm-or-on-an-existing-vm"></a>Engedélyezze a rendszerhez rendelt identitáshoz egy Azure virtuális Gépen, vagy pedig egy meglévő virtuális gép létrehozása során
+### <a name="enable-system-assigned-identity-during-creation-of-an-azure-vm-or-on-an-existing-vm"></a>Engedélyezze a rendszerhez rendelt identitáshoz egy Azure virtuális Gépen vagy egy meglévő virtuális Gépet a létrehozása során
 
 1. Jelentkezzen be az Azure-bA helyileg vagy az Azure Portalon az Azure-előfizetéshez társított olyan fiókot használjon, amely tartalmazza a virtuális Gépet. Emellett győződjön meg arról, hogy a fiók tartozik egy szerepkör, amely lehetővé teszi a virtuális gép (például "Virtuális gép közreműködő" szerepkör) írási engedéllyel.
 
@@ -101,16 +101,68 @@ Ebben a szakaszban engedélyezze, majd tiltsa le a rendszer hozzárendelt identi
 
    ![Képernyőkép a frissítés után a sablon](../media/msi-qs-configure-template-windows-vm/template-file-after.png)
 
-### <a name="disable-a-system-assigned-identity-from-an-azure-vm"></a>Tiltsa le a rendszer hozzárendelt identitás Azure virtuális gépből
+### <a name="assign-a-role-the-vms-system-assigned-identity"></a>Szerepkör hozzárendelése a virtuális gép rendszer által hozzárendelt identitással
 
-> [!NOTE]
-> A Felügyeltszolgáltatás-identitást a virtuális gépről letiltása jelenleg nem támogatott. Addig is válthat a rendszer által hozzárendelt, és a felhasználó hozzárendelt identitások között.
+Miután engedélyezte a rendszer által hozzárendelt identitással a virtuális Gépen, érdemes lehet megadni, például egy szerepkör **olvasó** hozzáférés az erőforráscsoporthoz, amelyben létrehozták.
+
+1. Jelentkezzen be az Azure-bA helyileg vagy az Azure Portalon az Azure-előfizetéshez társított olyan fiókot használjon, amely tartalmazza a virtuális Gépet. Ezenkívül győződjön meg arról, hogy a fiók tartozik egy szerepkör, amely lehetővé teszi a virtuális gép (például "Virtuális gép közreműködő" szerepkör) írási engedéllyel.
+ 
+2. Betölteni a sablont, egy [szerkesztő](#azure-resource-manager-templates) , és adja hozzá a következő információkat biztosíthat a virtuális gép **olvasó** hozzáférés az erőforráscsoporthoz, amelyben létrehozták.  A sablon struktúra a szerkesztő és a választott telepítési modell függvénye.
+   
+   Alatt a `parameters` szakaszban adja hozzá a következő:
+
+    ```JSON
+    "builtInRoleType": {
+          "type": "string",
+          "defaultValue": "Reader"
+        },
+        "rbacGuid": {
+          "type": "string"
+        }
+    ```
+
+    Alatt a `variables` szakaszban adja hozzá a következő:
+
+    ```JSON
+    "Reader": "[concat('/subscriptions/', subscription().subscriptionId, '/providers/Microsoft.Authorization/roleDefinitions/', 'acdd72a7-3385-48ef-bd42-f606fba81ae7')]"
+    ```
+
+    Alatt a `resources` szakaszban adja hozzá a következő:
+
+    ```JSON
+    {
+        "apiVersion": "2017-09-01",
+         "type": "Microsoft.Authorization/roleAssignments",
+         "name": "[parameters('rbacGuid')]",
+         "properties": {
+                "roleDefinitionId": "[variables(parameters('builtInRoleType'))]",
+                "principalId": "[reference(variables('vmResourceId'), '2017-12-01', 'Full').identity.principalId]",
+                "scope": "[resourceGroup().id]"
+          },
+          "dependsOn": [
+                "[concat('Microsoft.Compute/virtualMachines/', parameters('vmName'))]"
+            ]
+    }
+    ```
+
+### <a name="disable-a-system-assigned-identity-from-an-azure-vm"></a>Tiltsa le a rendszer hozzárendelt identitás Azure virtuális gépből
 
 Ha egy virtuális Gépet, amely már nincs szüksége a felügyeltszolgáltatás-identitás van:
 
 1. Jelentkezzen be az Azure-bA helyileg vagy az Azure Portalon az Azure-előfizetéshez társított olyan fiókot használjon, amely tartalmazza a virtuális Gépet. Emellett győződjön meg arról, hogy a fiók tartozik egy szerepkör, amely lehetővé teszi a virtuális gép (például "Virtuális gép közreműködő" szerepkör) írási engedéllyel.
 
-2. Módosítsa az azonosító típusát `UserAssigned`.
+2. Betölteni a sablont, egy [szerkesztő](#azure-resource-manager-templates) , és keresse meg a `Microsoft.Compute/virtualMachines` házirendsablonokkal erőforrás a `resources` szakaszban. Ha egy virtuális Gépet, amely csak a rendszer által hozzárendelt identitással rendelkezik, letilthatja, módosítsa úgy az identitás típus `None`.  Ha a virtuális gép system és a felhasználó által hozzárendelt identitások is van, távolítsa el `SystemAssigned` identitástípus és tarthatja `UserAssigned` együtt a `identityIds` a felhasználó által hozzárendelt identitások tömbje.  Az alábbi példa bemutatja, hogyan távolítsa el a rendszer hozzárendelt identitás egy virtuális gépről a nem a felhasználói identitások:
+   
+   ```JSON
+    {
+      "apiVersion": "2017-12-01",
+      "type": "Microsoft.Compute/virtualMachines",
+      "name": "[parameters('vmName')]",
+      "location": "[resourceGroup().location]",
+      "identity": { 
+          "type": "None"
+    }
+   ```
 
 ## <a name="user-assigned-identity"></a>A felhasználóhoz hozzárendelt identitás
 

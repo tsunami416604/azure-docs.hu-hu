@@ -1,5 +1,5 @@
-Azure Cloud rendszerhéj található az adott egy webböngésző-alapú felület és Azure-erőforrások fejlesztését.
+Az Azure Cloud Shell egy böngészőalapú rendszerhéj-felület és Azure-erőforrások fejlesztését.
 
-Felhő rendszerhéj kínál a böngésző által elérhető, előre konfigurált rendszerhéj élmény nem növeli a telepítése, versioning, és a gép karbantartása, saját magának az Azure erőforrások kezeléséhez.
+A cloud Shell kínál a böngésző által elérhető, előre konfigurált rendszerhéj-felület anélkül telepítése, verziószámozás, és karbantartása a gép saját maga az Azure-erőforrások kezeléséhez.
 
-Felhő rendszerhéj kérelem alapú számítógépek kiépítését, és emiatt gép állapota nem minden munkamenetben megmarad. Felhő rendszerhéj interaktív munkamenet lett tervezve, mivel a parancskörnyezet automatikusan leáll, 20 perc rendszerhéj inaktivitás után.
+A cloud Shell kiépíti a gépeket egy kérelem alapon, és ennek eredményeképpen gép állapota nem hozzárendelése minden munkamenetben megmarad. Mivel a Cloud Shell interaktív munkamenet során létrejött, a parancskörnyezet automatikusan leáll, 20 perc rendszerhéj inaktivitás után.

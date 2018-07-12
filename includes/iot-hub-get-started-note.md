@@ -1,2 +1,2 @@
 > [!NOTE]
-> Ez az oktatóanyag elindítása előtt [-eszköz beállításához](../articles/iot-hub/iot-hub-raspberry-pi-kit-node-get-started.md). A cikkben az Azure IoT-eszközök és az IoT-központ, és az eszközön való futtatásának mintaalkalmazás telepítése. Az alkalmazás összegyűjtött érzékelő adatokat küld az IoT hub.
+> Ez az oktatóanyag megkezdése előtt [az eszköz beállítása](../articles/iot-hub/iot-hub-raspberry-pi-kit-node-get-started.md). A cikkben beállítása az Azure IoT-eszköz és az IoT hubot, és futtassa az eszközön egy mintaalkalmazást telepít. Az alkalmazás küld az IoT hub begyűjtött érzékelőadatokat.

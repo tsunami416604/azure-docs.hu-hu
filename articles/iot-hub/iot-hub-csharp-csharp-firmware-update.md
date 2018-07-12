@@ -1,6 +1,6 @@
 ---
-title: Eszköz belső vezérlőprogram frissítési Azure IoT Hub (.NET/.NET) |} Microsoft Docs
-description: Hogyan használható az eszközkezelés Azure IoT hub eszköz vezérlőprogram-frissítés kezdeményezése. Az Azure IoT-eszközök a .NET SDK használatával valósítja meg a szimulált eszköz alkalmazások és az Azure IoT szolgáltatás SDK for .NET egy service-alkalmazást, amely elindítja a belső vezérlőprogram-frissítés végrehajtásához.
+title: Eszköz belső vezérlőprogramjának frissítése az Azure IoT Hub (.NET/.NET) |} A Microsoft Docs
+description: Hogyan lehet Azure IoT Hub eszközfelügyeleti használatával kezdeményezheti az eszköz belső vezérlőprogram frissítése. Az Azure IoT eszközoldali SDK for .NET használatával egy szimulált eszközalkalmazás és az Azure IoT service SDK for .NET-service-alkalmazás, amely elindítja a belső vezérlőprogram-frissítés megvalósítása valósítanak meg.
 author: dominicbetts
 manager: timlt
 ms.service: iot-hub
@@ -9,47 +9,47 @@ ms.devlang: csharp
 ms.topic: conceptual
 ms.date: 10/19/2017
 ms.author: dobett
-ms.openlocfilehash: cd669a9585ac5aecf935202a04065a828a2174be
-ms.sourcegitcommit: c722760331294bc8532f8ddc01ed5aa8b9778dec
+ms.openlocfilehash: 1bf7a647ab2fdc175231133b0cfd8abdd51b6d43
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34736755"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38723930"
 ---
-# <a name="use-device-management-to-initiate-a-device-firmware-update-netnet"></a>Egy eszköz belső vezérlőprogram-frissítés (.NET/.NET) kezdeményezésére történő Eszközkezelés használata
+# <a name="use-device-management-to-initiate-a-device-firmware-update-netnet"></a>Kezdeményezheti az eszköz belső vezérlőprogram frissítése (.NET/.NET) device management használatával
 [!INCLUDE [iot-hub-selector-firmware-update](../../includes/iot-hub-selector-firmware-update.md)]
 
 ## <a name="introduction"></a>Bevezetés
-Az a [Ismerkedés az eszközkezelés] [ lnk-dm-getstarted] oktatóanyag, megtudhatta, hogyan használható a [eszköz iker] [ lnk-devtwin] és [közvetlen módszerek ] [ lnk-c2dmethod] primitívek távolról az eszköz újraindítását. Ez az oktatóanyag az ugyanazon az IoT-központ primitívek használ, és bemutatja, hogyan hajtsa végre egy végpontok közötti szimulált belső vezérlőprogram-frissítés.  A belső vezérlőprogram frissítési implementációja szerepel ebben a mintában a [málna Pi eszköz megvalósítási minta][lnk-rpi-implementation].
+Az a [Eszközfelügyelet – első lépések] [ lnk-dm-getstarted] oktatóanyag bemutatta, hogyan használható a [ikereszköz] [ lnk-devtwin] és [közvetlen metódusok ] [ lnk-c2dmethod] primitívek távolról újraindítja az eszközt. Ebben az oktatóanyagban használja az ugyanazon az IoT Hub primitívek, és bemutatja, hogyan teheti egy teljes körű szimulált belsővezérlőprogram-frissítést.  Ez a minta a belső vezérlőprogram frissítési megvalósítása szerepel a [Raspberry Pi eszköz megvalósítási minta][lnk-rpi-implementation].
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-whole.md)]
 
 Ez az oktatóanyag a következőket mutatja be:
 
-* Hozzon létre egy .NET-Konzolalkalmazás, amely behívja a **firmwareUpdate** közvetlen módszer a szimulált eszköz alkalmazásban az IoT hub keresztül.
-* Hozzon létre egy szimulált eszköz alkalmazást, amely egy **firmwareUpdate** közvetlen módszer. Ez a módszer indít el egy többlépcsős folyamat, amely megvárja-e a belső vezérlőprogram lemezképet letölti, letölti a belső vezérlőprogram lemezképet és a belső vezérlőprogram kép végül vonatkozik. A frissítés egyes szakasza alatt az eszköz használatával a jelentésben szereplő tulajdonságok előrehaladásról.
+* Hozzon létre egy .NET-konzolalkalmazást, amely meghívja a **firmwareUpdate** a közvetlen metódus a szimulált eszközalkalmazásnak, az IoT hub segítségével.
+* Egy szimulált eszközalkalmazás létrehozása, amely valósít meg egy **firmwareUpdate** közvetlen metódust. Ez a módszer folyamatot kezdeményez, többlépcsős, a belső vezérlőprogram rendszerképének letöltésére vár, a belső vezérlőprogram rendszerképének letöltése és végül alkalmazza a belsővezérlőprogram-lemezképet. A frissítés minden egyes fázisa során az eszköz jelentett tulajdonságait felhasználva jelenti az állapotot.
 
-Ez az oktatóanyag végén akkor egy .NET (C#) Konzolalkalmazás eszköz és a .NET (C#) háttér-Konzolalkalmazás:
+Ez az oktatóanyag végén rendelkezésére a .NET (C#) Konzolalkalmazás-eszköz és egy .NET (C#) háttér-konzolalkalmazást:
 
-* **SimulatedDeviceFwUpdate**, amely csatlakozik az IoT hub, korábban létrehozott eszköz identitású megkapja a **firmwareUpdate** közvetlen módszer, több államot folyamatot, ezzel szimulálva a belső vezérlőprogram-frissítés futtatásakor például: Várakozás a lemezkép letöltése a, az új lemezkép letöltése, és végül a kép alkalmazása.
+* **SimulatedDeviceFwUpdate**, csatlakozik az IoT hubhoz a korábban létrehozott eszközidentitással kap a **firmwareUpdate** közvetlen metódus, szimulálja a belső vezérlőprogram frissítése több államot folyamat fut például: Várakozás a lemezkép letöltése a, az új lemezkép letöltése, és végül a lemezkép alkalmazása.
 
-* **TriggerFWUpdate**, az SDK szolgáltatás használó távolról meghívni a **firmwareUpdate** közvetlen módszer a szimulált eszköz jeleníti meg a választ, és rendszeres időközönként (minden 500ms) jeleníti meg a frissített jelentett tulajdonságok.
+* **TriggerFWUpdate**, amely használatával a Szolgáltatásoldali SDK-val távolról meghívása a **firmwareUpdate** közvetlen metódus a szimulált eszközt, megjeleníti a választ, és rendszeres időközönként (minden 500ms) jeleníti meg a frissített jelentett tulajdonságok.
 
 Az oktatóanyag teljesítéséhez a következőkre lesz szüksége:
 
 * Visual Studio 2015 vagy Visual Studio 2017.
 * Aktív Azure-fiók. (Ha nincs fiókja, létrehozhat egy [ingyenes fiókot][lnk-free-trial] néhány perc alatt.)
 
-Kövesse a [Ismerkedés az eszközkezelés](iot-hub-csharp-csharp-device-management-get-started.md) cikk az IoT hub létrehozása, és az IoT-központ kapcsolati karakterláncot.
+Kövesse a [Eszközfelügyelet – első lépések](iot-hub-csharp-csharp-device-management-get-started.md) a cikk az IoT hub létrehozása és az IoT Hub kapcsolati karakterláncának beszerzése.
 
 [!INCLUDE [iot-hub-get-started-create-hub](../../includes/iot-hub-get-started-create-hub.md)]
 
 [!INCLUDE [iot-hub-get-started-create-device-identity-portal](../../includes/iot-hub-get-started-create-device-identity-portal.md)]
 
-## <a name="trigger-a-remote-firmware-update-on-the-device-using-a-direct-method"></a>Indítás, az eszközön, a közvetlen módszer használatával távoli vezérlőprogram-frissítés
-Ebben a szakaszban egy .NET-Konzolalkalmazás (használatával C#), amely indít el egy távoli belső vezérlőprogram frissítése egy eszközön hoz létre. Az alkalmazás közvetlen módszer előtt használja a frissítés, és az eszköz iker lekérdezések rendszeres időközönként a aktív belső vezérlőprogram frissítése a állapot lekérdezése céljából.
+## <a name="trigger-a-remote-firmware-update-on-the-device-using-a-direct-method"></a>Aktiválja az eszközön, a közvetlen metódus használatával távoli belső vezérlőprogram frissítése
+Ebben a szakaszban konzolalkalmazást hoz létre egy .NET (C# használatával), amely kezdeményezi egy távoli belső vezérlőprogram frissítése egy eszközön. Az alkalmazás közvetlen metódus kezdeményezni a frissítést, és használja az ikereszköz-lekérdezések rendszeres időközönként beolvasni az aktív belső vezérlőprogram frissítésének állapotát.
 
-1. A Visual Studióban adjon hozzá egy Visual C# nyelvű Windows klasszikus asztalialkalmazás-projektet az aktuális megoldáshoz a **Console Application** (Konzolalkalmazás) projektsablonnal. Nevet a projektnek **TriggerFWUpdate**.
+1. A Visual Studióban adjon hozzá egy Visual C# nyelvű Windows klasszikus asztalialkalmazás-projektet az aktuális megoldáshoz a **Console Application** (Konzolalkalmazás) projektsablonnal. Adja a projektnek **TriggerFWUpdate**.
 
     ![Új Visual C# Windows klasszikus asztalialkalmazás-projekt][img-createserviceapp]
 
@@ -64,7 +64,7 @@ Ebben a szakaszban egy .NET-Konzolalkalmazás (használatával C#), amely indít
     using Microsoft.Azure.Devices.Shared;
     ```
 
-5. Adja hozzá a **Program** osztályhoz a következő mezőket: Cserélje le a több helyőrző értékeket az előző szakaszban és az eszköz azonosítója a központ IoT-központ kapcsolati karakterlánccal.
+5. Adja hozzá a **Program** osztályhoz a következő mezőket: A több helyőrző értékeket cserélje le a hub, az eszköz azonosítója, és az előző szakaszban létrehozott IoT Hub kapcsolati karakterláncára.
    
     ```csharp   
     static RegistryManager registryManager;
@@ -73,7 +73,7 @@ Ebben a szakaszban egy .NET-Konzolalkalmazás (használatával C#), amely indít
     static string targetDevice = "{deviceIdForTargetDevice}";
     ```
         
-6. Adja hozzá a **Program** osztályhoz a következő metódust. Ez a módszer kérdezze le a frissített állapota az eszköz a két minden 500 ezredmásodpercben. Ír a konzol csak akkor, ha az állapot ténylegesen változott. Leállítja az ebben a példában az előfizetéséhez, a felesleges IoT-központ üzenetek fel megelőzése érdekében lekérdezési, amikor az eszköz jelzi a **applyComplete** vagy hiba történt.  
+6. Adja hozzá a **Program** osztályhoz a következő metódust. Ez a módszer az ikereszközön frissített állapota minden 500 ezredmásodperc kérdezi le. Ír a konzol csak akkor, ha az állapot ténylegesen változott. Leáll az előfizetésében, további IoT Hub-üzenetek felhasználása elkerülése érdekében ebben a példában a lekérdezési, amikor az eszköz jelenti az állapotot **applyComplete** vagy hiba történt.  
    
     ```csharp   
     public static async Task QueryTwinFWUpdateReported(DateTime startTime)
@@ -120,7 +120,7 @@ Ebben a szakaszban egy .NET-Konzolalkalmazás (használatával C#), amely indít
     }
     ```
 
-8. Végül adja hozzá a következő sorokat a **fő** metódust. Létrehoz egy beállításjegyzék olvassa el az eszköz iker rendelkező, elindul a lekérdezési feladat egy munkavégző szál-kezelőt, és ezután elindítja a frissítést.
+8. Végül adja hozzá a következő sorokat a **fő** metódust. Ez létrehoz egy beállításjegyzék manager olvasni az ikereszköz az útmutatókkal a lekérdezési feladatot egy munkavégző szálon, és majd elindítják a belső vezérlőprogram frissítését.
    
     ```csharp   
     registryManager = RegistryManager.CreateFromConnectionString(connString);
@@ -137,16 +137,16 @@ Ebben a szakaszban egy .NET-Konzolalkalmazás (használatával C#), amely indít
 ## <a name="create-a-simulated-device-app"></a>Szimulált eszközalkalmazás létrehozása
 Ebben a szakaszban:
 
-* Amely válaszol a felhő által nevű közvetlen metódust a .NET-Konzolalkalmazás létrehozása
-* Közvetlen módszerrel háttérszolgáltatás által indított vezérlőprogram-frissítés szimulálása
+* Hozzon létre egy .NET-konzolalkalmazást, amely a felhő által meghívott közvetlen metódusra válaszol
+* A belső vezérlőprogram frissítésének közvetlen módszerrel háttérszolgáltatás által aktivált szimulálása
 * A jelentett tulajdonságok használatával ikereszköz-lekérdezéseket engedélyez az eszközök azonosítására és utolsó belsővezérlőprogram-frissítésük időpontjának megállapítására
 
-1. A Visual Studióban adjon hozzá egy Visual C# nyelvű Windows klasszikus asztalialkalmazás-projektet az aktuális megoldáshoz a **Console Application** (Konzolalkalmazás) projektsablonnal. Nevet a projektnek **SimulateDeviceFWUpdate**.
+1. A Visual Studióban adjon hozzá egy Visual C# nyelvű Windows klasszikus asztalialkalmazás-projektet az aktuális megoldáshoz a **Console Application** (Konzolalkalmazás) projektsablonnal. Adja a projektnek **SimulateDeviceFWUpdate**.
    
-    ![Új Visual C# klasszikus Windows-eszköz alkalmazás][img-createdeviceapp]
+    ![Új Visual C# Windows klasszikus eszközalkalmazás][img-createdeviceapp]
     
 2. A Megoldáskezelőben kattintson a jobb gombbal a **SimulateDeviceFWUpdate** projektre, és kattintson a **NuGet-csomagok kezelése**.
-3. Az a **NuGet-Csomagkezelő** ablakban válassza ki **Tallózás** keresse meg a **microsoft.azure.devices.client**. Válassza ki **telepítése** telepítéséhez a **Microsoft.Azure.Devices.Client** csomagot, majd fogadja el a használati feltételeket. Ez az eljárás tölti le, telepíti, és hozzáad egy hivatkozást a [Azure IoT-eszközök SDK] [ lnk-nuget-client-sdk] NuGet csomag és annak függőségeit.
+3. Az a **NuGet-Csomagkezelő** ablakban válassza **Tallózás** és keressen rá a **microsoft.azure.devices.client**. Válassza ki **telepítése** telepítéséhez a **Microsoft.Azure.Devices.Client** csomagot, és fogadja el a használati feltételeket. Ez az eljárás letölti, telepíti, és hozzáad egy hivatkozást a [Azure IoT eszközoldali SDK-t] [ lnk-nuget-client-sdk] NuGet csomagot és annak függőségeit.
    
     ![NuGet-Csomagkezelő ablak ügyfélalkalmazás][img-clientnuget]
 4. Adja hozzá a következő `using` utasításokat a **Program.cs** fájl elejéhez:
@@ -157,14 +157,14 @@ Ebben a szakaszban:
     using Microsoft.Azure.Devices.Shared;
     ```
 
-5. Adja hozzá a **Program** osztályhoz a következő mezőket: Cserélje le a helyőrző értékét a eszköz kapcsolati karakterlánccal a **hozzon létre egy eszközidentitás** szakasz.
+5. Adja hozzá a **Program** osztályhoz a következő mezőket: A helyőrző értékét cserélje le az eszköz kapcsolati karakterláncának részben megadott a **eszközidentitás létrehozása** szakaszban.
    
     ```csharp   
     static string DeviceConnectionString = "HostName=<yourIotHubName>.azure-devices.net;DeviceId=<yourIotDeviceName>;SharedAccessKey=<yourIotDeviceAccessKey>";
     static DeviceClient Client = null;
     ```
 
-6. Vissza a felhőben, az eszköz iker az állapot jelentése érdekében adja hozzá a következő metódust: 
+6. A felhőbe az ikereszköz keresztül állapot jelentése érdekében adja hozzá a következő metódust: 
 
     ```csharp   
     static async Task reportFwUpdateThroughTwin(Twin twin, TwinCollection fwUpdateValue)
@@ -188,7 +188,7 @@ Ebben a szakaszban:
     }
     ```
 
-7. Adja hozzá a következő metódust, ezzel szimulálva a belső vezérlőprogram lemezkép letöltése:
+7. Adja hozzá a következő metódust, hogy szimulálja a belső vezérlőprogram rendszerképének letöltése:
         
     ```csharp   
     static async Task<byte[]> simulateDownloadImage(string imageUrl)
@@ -204,7 +204,7 @@ Ebben a szakaszban:
     }
     ```
 
-8. Adja hozzá a következő metódust, ezzel szimulálva a belső vezérlőprogram kép alkalmazása az eszközre:
+8. Adja hozzá a belsővezérlőprogram-lemezkép alkalmazása az eszköz szimulálása a következő metódust:
         
     ```csharp   
     static async Task simulateApplyImage(byte[] imageData)
@@ -219,7 +219,7 @@ Ebben a szakaszban:
     }
     ```
  
-9.  Adja hozzá a következő metódust kell letölteni a belső vezérlőprogram kép szimulálásához. Az állapot frissítése **Várakozás** , és törölje a kettős más belső vezérlőprogram frissítési tulajdonságaiból. Ezeket a tulajdonságokat a meglévő értékeket eltávolítása előzetes belső vezérlőprogram-frissítésekre adatútvonalai törlődtek. Ez azért szükséges, mert a jelentett tulajdonságai, a JAVÍTÁSI művelet (különbözeti), és nem PUT művelet (a teljes adatkészletet tulajdonságait, amely a felváltja a korábbi értékei) küldött. Az eszközök általában értesülnek ez elérhető frissítésekről, és egy rendszergazdai házirendnek megfelelően elkezdik letölteni és alkalmazni a frissítést. Ebben a függvényben kell futnia a házirendet engedélyező logikának. 
+9.  Adja hozzá a következő metódust szimulálja a belső vezérlőprogram rendszerképének letöltésére vár. Az állapot frissítése **Várakozás** és más belső vezérlőprogram frissítési tulajdonságainak az ikereszköz törölje. Ezek a Tulajdonságok törlődik minden meglévő érték eltávolítása előzetes lemezfirmware-frissítések. Erre akkor szükség, mert a JAVÍTÁSI művelet (különbözeti) és a egy PUT művelet nem (teljes tulajdonságai készletét, amely lecseréli az összes korábbi értéket) küldött jelentett tulajdonságok. Az eszközök általában értesülnek ez elérhető frissítésekről, és egy rendszergazdai házirendnek megfelelően elkezdik letölteni és alkalmazni a frissítést. Ebben a függvényben kell futnia a házirendet engedélyező logikának. 
         
     ```csharp   
     static async Task waitToDownload(Twin twin, string fwUpdateUri)
@@ -240,7 +240,7 @@ Ebben a szakaszban:
     }
     ```
 
-10. Adja hozzá a következő metódust a letöltéshez. Az állapot frissíti **letöltése** keresztül eszköz iker meghívja a szimulálás letöltési metódust, és jelzi a **downloadComplete** vagy **downloadFailed** – a kettős attól függően, hogy a letöltési művelet eredménye. 
+10. Adja hozzá a következő metódust a letöltéshez. Frissíti az állapot **letöltése** az ikereszközök használatával meghívja a szimulálás letöltésének módját, és a egy állapotjelentést az **downloadComplete** vagy **downloadFailed** keresztül az ikereszköz függően a letöltési művelet eredményét. 
         
     ```csharp   
     static async Task<byte[]> downloadImage(Twin twin, string fwUpdateUri)
@@ -272,7 +272,7 @@ Ebben a szakaszban:
     }
     ```
 
-11. Adja hozzá a következő metódust alkalmazza a lemezképet. Az állapot frissíti **alkalmazása** eszköz iker keresztül alkalmazza a szimulálás hívások kép metódust, és a frissítések állapotának **applyComplete** vagy **applyFailed** keresztül a a két attól függően, hogy az alkalmazási művelet eredményét. 
+11. Adja hozzá a következő metódust a alkalmazni a lemezképet. Frissíti az állapot **alkalmazása** keresztül az ikereszköz hívások szimulálás a alkalmazni képen metódust, és a frissítések állapota **applyComplete** vagy **applyFailed** keresztül a ikereszköz függően az alkalmazási művelet eredményét. 
         
     ```csharp   
     static async Task applyImage(Twin twin, byte[] imageData)
@@ -304,7 +304,7 @@ Ebben a szakaszban:
     }
     ```
 
-12. Adja hozzá a következő metódust letölti a lemezképet, a lemezkép alkalmazása az eszközre keresztül arra a belső vezérlőprogram frissítési művelet előkészítése:
+12. Adja hozzá a következő metódust a belső vezérlőprogram frissítési műveletet kell letölteni a képet, a lemezkép alkalmazása az eszközön keresztül előkészítése:
         
     ```csharp   
     static async Task doUpdate(string fwUpdateUrl)
@@ -324,7 +324,7 @@ Ebben a szakaszban:
     }
     ```
 
-13. Adja hozzá a következő metódust a **updateFirmware** közvetlen módszer a felhőből. Azt az URL-cím kibontja a belső vezérlőprogram-frissítés a üzenetadatokat, és úgy, hogy átadja a **doUpdate** feladat, amely a szálkészlet egy másik szál megkezdése. Majd azonnal választ ad vissza a módszer a felhőbe.
+13. Adja hozzá a következő metódust a **updateFirmware** közvetlen metódus a felhőből. Ez az URL-címet a belső vezérlőprogram frissítési kigyűjti az üzenet hasznos adattartalmából, és azt a **doUpdate** feladat a szálkészlet egy másik szál megkezdése. Majd azonnal választ ad vissza a mód a felhőbe.
         
     ```csharp   
     static Task<MethodResponse> onFirmwareUpdate(MethodRequest methodRequest, object userContext)
@@ -339,11 +339,11 @@ Ebben a szakaszban:
     }
     ```
 > [!NOTE]
-> Ez a módszer elindítja a szimulált frissítés rendszergazdaként futtatni a **feladat** és majd azonnal válaszol-e a metódus hívása, tájékoztatása a szolgáltatást, hogy elindult-e a frissítést. Az eszköz iker jelentett tulajdonságai a szolgáltatás frissítési állapot és a befejezési kapnak. Ha a frissítés elkezdése metódus hívásának, nem pedig a művelet befejezését követően válaszolunk mert:
-> * A tényleges frissítési folyamat várhatóan nagyon tovább tart, mint a metódus hívása időtúllépés.
-> * A tényleges frissítési folyamat nagyon valószínű, hogy újra kell indítani, amelyek volna el az alkalmazás elvégzése a **MethodRequest** objektum nem érhető el. (Jelentett tulajdonságainak frissítése azonban nem lehetséges újraindítása után is.) 
+> Ez a metódus a szimulált frissítést futtató elindít egy **feladat** és ezután azonnal reagál a metódus meghívása, a szolgáltatás arról értesíti, hogy a belső vezérlőprogram frissítése megkezdődött. A szolgáltatás révén az ikereszköz jelentett tulajdonságait frissítési állapot és -befejezési kapnak. A metódus meghívása a frissítés indításakor, nem pedig a művelet befejezését követően reagálunk mert:
+> * Egy valódi frissítési folyamat nagyon valószínű, mint az a metódus hívása időtúllépés hosszabb időt vesz igénybe.
+> * Egy valódi frissítési folyamat nagyon valószínű, hogy újra kell indítani, amely akkor indítsa újra a alkalmazáskészítés a **MethodRequest** objektum nem érhető el. (Jelentett tulajdonságok frissítése azonban nem lehetséges a számítógép újraindítása után is.) 
 
-14. Végül adja hozzá az alábbi kódot a **fő** módszert, nyissa meg a kapcsolatot az IoT hub és a metódus figyelő inicializálása:
+14. Végül adja hozzá a következő kódot a **fő** metódus az IoT hub-kapcsolat megnyitásához, és a metódus figyelő inicializálása:
    
     ```csharp   
     try
@@ -377,17 +377,17 @@ Ebben a szakaszban:
 
 ## <a name="run-the-apps"></a>Az alkalmazások futtatása
 Most már készen áll az alkalmazások futtatására.
-1. A .NET-eszköz alkalmazás futtatása **SimulatedDeviceFWUpdate**.  Kattintson a jobb gombbal a **SimulatedDeviceFWUpdate** projektre, válassza **Debug**, majd válassza ki **Start új példány**. Akkor kell megkezdeni a figyelést az IoT Hub a metódushívások: 
+1. Futtatás a .NET-eszközalkalmazást **SimulatedDeviceFWUpdate**.  Kattintson a jobb gombbal a **SimulatedDeviceFWUpdate** projektre, válassza **Debug**, majd válassza ki **új példány indítása**. Azt el kell indulnia a metódust hívja az IoT hub figyeli: 
 
-2. Ha az eszköz csatlakoztatva van, és várakozik a metódus meghívásához, futtassa a .NET **TriggerFWUpdate** alkalmazásnak, hogy a belső vezérlőprogram frissítési módszer a szimulált eszköz alkalmazás meghívni. Kattintson a jobb gombbal a **TriggerFWUpdate** projektre, válassza **Debug**, majd válassza ki **Start új példány**. Megtekintheti az írt feladatütemezési frissítése a **SimulatedDeviceFWUpdate** konzol, valamint a feladatütemezési jelentett az eszköz a jelentett tulajdonságai a **TriggerFWUpdate** konzol. Vegye figyelembe, hogy a a folyamat befejezéséhez néhány másodpercig tart. 
+2. Miután az eszköz csatlakoztatva van, és megpróbálkozni, Várakozás futtatása a .NET **TriggerFWUpdate** meghívni a belső vezérlőprogram frissítési metódus a szimulált eszközalkalmazás az alkalmazást. Kattintson a jobb gombbal a **TriggerFWUpdate** projektre, válassza **Debug**, majd válassza ki **új példány indítása**. Megtekintheti az update-ben írt feladatütemezési a **SimulatedDeviceFWUpdate** a jelentett tulajdonságok az eszköz a jelentett konzolt, és a feladatütemezés a **TriggerFWUpdate** konzolon. Vegye figyelembe, hogy a folyamat eltarthat néhány másodpercig. 
    
-    ![Szolgáltatás és az eszköz alkalmazás futtatása][img-combinedrun]
+    ![Szolgáltatás és eszköz alkalmazás futtatása][img-combinedrun]
 
 
 ## <a name="next-steps"></a>További lépések
-Ez az oktatóanyag elindítása egy távoli belső vezérlőprogram frissítése egy eszközön a közvetlen módszer használatával, és a jelentésben szereplő tulajdonságok segítségével nyomon követheti a belső vezérlőprogram frissítése.
+Ebben az oktatóanyagban használt közvetlen metódus aktiválhat egy távoli belső vezérlőprogram frissítése egy eszközön, és hajtsa végre a belső vezérlőprogram frissítésének állapotát a jelentett tulajdonságok segítségével.
 
-Megtudhatja, hogyan terjeszthető ki az IoT-megoldás és az ütemezések metódushívások több eszközön, tekintse meg a [ütemezés és a szórásos feladatok] [ lnk-tutorial-jobs] oktatóanyag.
+Ismerje meg, hogyan bővítheti az IoT-megoldás és az ütemezés metódus meghívja a több eszközre, tekintse meg a [feladatok ütemezése és szórása] [ lnk-tutorial-jobs] oktatóanyag.
 
 <!-- images -->
 [img-servicenuget]: media/iot-hub-csharp-csharp-firmware-update/servicesdknuget.png
@@ -399,7 +399,7 @@ Megtudhatja, hogyan terjeszthető ki az IoT-megoldás és az ütemezések metód
 [lnk-devtwin]: iot-hub-devguide-device-twins.md
 [lnk-c2dmethod]: iot-hub-devguide-direct-methods.md
 [lnk-dm-getstarted]: iot-hub-csharp-csharp-device-management-get-started.md
-[lnk-tutorial-jobs]: iot-hub-csharp-node-schedule-jobs.md
+[lnk-tutorial-jobs]: iot-hub-csharp-csharp-schedule-jobs.md
 
 [lnk-dev-setup]: https://github.com/Azure/azure-iot-sdk-node/blob/master/doc/node-devbox-setup.md
 [lnk-free-trial]: http://azure.microsoft.com/pricing/free-trial/

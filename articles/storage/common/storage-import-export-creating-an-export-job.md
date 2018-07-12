@@ -1,6 +1,6 @@
 ---
-title: Hozzon létre egy feladatot az Azure Import/Export exportálási |} Microsoft Docs
-description: Útmutató a Microsoft Azure Import/Export szolgáltatás exportálási feladat létrehozásához.
+title: Hozzon létre egy feladatot az Azure Import/Export export |} A Microsoft Docs
+description: Ismerje meg, hogyan hozhat létre a Microsoft Azure Import/Export szolgáltatás exportálási feladat.
 author: muralikk
 manager: syadav
 editor: tysonn
@@ -15,57 +15,57 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: muralikk
 ms.openlocfilehash: 3fb3f2af5e5cebcac21f4372bc9d9dc9ee837202
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34363247"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38232267"
 ---
 # <a name="creating-an-export-job-for-the-azure-importexport-service"></a>Az Azure Import/Export szolgáltatás exportálási feladat létrehozása
-A Microsoft Azure Import/Export szolgáltatás REST API használatával exportálási feladat létrehozása a következő lépésekből áll:
+A Microsoft Azure Import/Export szolgáltatás REST API használatával exportálási feladat létrehozása az alábbi lépésekből áll:
 
--   A bináris objektumok exportálása kiválasztása.
+-   Az exportálandó blobok kiválasztása.
 
--   Az beszerzése szállítási helyről.
+-   A szállítási címhez tartozó hely beszerzése.
 
 -   Az exportálási feladat létrehozása.
 
--   A szállítási üres meghajtó Microsoft támogatott szolgáltatónként szolgáltatáson keresztül.
+-   A szállítási támogatott szolgáltató szolgáltatáson keresztül a Microsoft az üres meghajtókon.
 
--   Az exportálási feladat frissítése a csomag információval.
+-   Az exportálási feladat frissítése a csomaginformációkat használva.
 
--   Vissza a Microsoft a meghajtók küld.
+-   A meghajtók kap vissza a Microsofttól.
 
- Lásd: [a Windows Azure Import/Export szolgáltatás adatok átviteléhez a Blob Storage segítségével](storage-import-export-service.md) áttekintését a Import/Export szolgáltatás és egy az oktatóanyag bemutatja, hogyan használható a [Azure-portálon](https://portal.azure.com/) létrehozása és kezelése az importálás és exportálni a feladatokat.
+ Lásd: [a Windows Azure Import/Export szolgáltatás az adatok átvitele a Blob Storage használatával](storage-import-export-service.md) áttekintheti az Import/Export szolgáltatás és a egy oktatóanyag, amely azt ismerteti, hogyan használhatja az a [az Azure portal](https://portal.azure.com/) hozhat létre és Importálás kezelése és a feladatok exportálása.
 
-## <a name="selecting-blobs-to-export"></a>Blobok exportálása kiválasztása
- Exportálási feladat létrehozásához szüksége lesz a tárfiók exportálni kívánt BLOB listáját tartalmazzák. Válassza ki az exportálandó blobok néhány módja van:
+## <a name="selecting-blobs-to-export"></a>Exportálandó blobok kiválasztása
+ Exportálási feladat létrehozása, szüksége lesz, amely az Ön tárfiókjából exportálandó blobok listáját adja meg. Válassza ki az exportálandó blobok néhány módja van:
 
--   Egy blob relatív elérési út használatával egyetlen blob és a pillanatképek összes kiválasztása.
+-   Egy blob relatív elérési út segítségével válassza ki egy blob és az összes hozzá tartozó pillanatképek.
 
--   Egy blob relatív elérési út használatával válassza ki a pillanatképek nélkül egyetlen blob.
+-   Egy blob relatív elérési út segítségével válassza ki a pillanatképek nélkül egyetlen blobhoz.
 
--   Egy blob relatív elérési utat és egy pillanatkép idő segítségével válassza ki a egyetlen pillanatkép.
+-   A relatív blob elérési útja és a egy pillanatkép idő segítségével válassza ki egy egységes pillanatképet.
 
--   Egy blob előtagja segítségével válassza ki az összes BLOB és a pillanatfelvételeket a megadott előtaggal.
+-   Egy blob előtag segítségével válassza ki a blobok és a pillanatképek a megadott előtaggal.
 
--   Exportálhatja a blobok és a pillanatképek a tárfiókban.
+-   Exportálhatja a blobok és a pillanatképek a storage-fiókban.
 
- Blobok exportálása megadásával kapcsolatos további információkért lásd: a [Put feladat](/rest/api/storageimportexport/jobs#Jobs_CreateOrUpdate) műveletet.
+ Exportálandó blobok megadásával kapcsolatos további információkért lásd: a [Put feladat](/rest/api/storageimportexport/jobs#Jobs_CreateOrUpdate) műveletet.
 
-## <a name="obtaining-your-shipping-location"></a>A szállítási hely beszerzése
-Exportálási feladat létrehozása, előtt be kell szereznie a szállítási hely nevét és címét meghívásával a [első hely](https://portal.azure.com) vagy [lista helyek](/rest/api/storageimportexport/listlocations) műveletet. `List Locations` helyek és a levelezési címek listáját adja vissza. Jelöljön ki egy helyet a visszaadott listából, és küldje el a merevlemez-meghajtók adott címre. Használhatja a `Get Location` közvetlenül beszerzése a szállítási cím, egy adott helyre vonatkozó műveletet.
+## <a name="obtaining-your-shipping-location"></a>A szállítási címhez tartozó hely beszerzése
+Exportálási feladat létrehozása előtt be kell szereznie egy szállítási hely nevét és címét meghívásával a [beolvasása hely](https://portal.azure.com) vagy [lista helyek](/rest/api/storageimportexport/listlocations) műveletet. `List Locations` helyek és a levelezési címét listáját adja vissza. Válasszon egy helyet a visszaadott listában, és arra a címre rögzített meghajtók kiszállítása. Is használhatja a `Get Location` művelet egy konkrét hely a szállítási cím közvetlenül beszerzése.
 
-A szállítási raktár beszerzése az alábbi lépésekkel:
+A szállítási címhez tartozó hely beszerzése az alábbi lépésekkel:
 
--   Azonosítsa a tárfiók helyének nevét. Ez az érték található a **hely** található a tárfiók **irányítópult** az Azure portál vagy a service management API művelettel lekérdezett [Storage-fiók beszerzése Tulajdonságok](/rest/api/storagerp/storageaccounts#StorageAccounts_GetProperties).
+-   Azonosítsa a helyet a tárfiók nevére. Ez az érték alatt található a **hely** a storage-fiókban található **irányítópult** az Azure portal vagy a service management API művelet használatával lekérdezett [Storage-fiók beszerzése Tulajdonságok](/rest/api/storagerp/storageaccounts#StorageAccounts_GetProperties).
 
--   A hely által biztosított feldolgozni ezt a tárfiókot meghívásával beolvasása a `Get Location` műveletet.
+-   Elérhető feldolgozni ezt a tárfiókot meghívásával helyének beolvasásához a `Get Location` műveletet.
 
--   Ha a `AlternateLocations` helyének tulajdonság tartalmaz maga a hely, akkor használja ezt a helyet kapcsolatát. Ellenkező esetben hívható meg a `Get Location` műveletet a másodlagos helyek. Az eredeti helyre ideiglenesen le lehet, hogy a következő karbantartási.
+-   Ha a `AlternateLocations` helye tulajdonsága tartalmaz magát a helyet, akkor már használja ezt a helyet. Ellenkező esetben hívja a `Get Location` a másodlagos helyek újra a műveletet. Az eredeti helyre ideiglenesen megtakarítása karbantartás céljából.
 
 ## <a name="creating-the-export-job"></a>Az exportálási feladat létrehozása
- Az exportálási feladat létrehozása, hívja meg a [Put feladat](/rest/api/storageimportexport/jobs#Jobs_CreateOrUpdate) műveletet. Meg kell adnia a következő információkat:
+ Az exportálási feladat létrehozásához hívja a [Put feladat](/rest/api/storageimportexport/jobs#Jobs_CreateOrUpdate) műveletet. Adja meg a következő információkat kell:
 
 -   A feladat nevét.
 
@@ -73,25 +73,25 @@ A szállítási raktár beszerzése az alábbi lépésekkel:
 
 -   A szállítási hely neve, az előző lépésben beszerzett.
 
--   A feladat típusa (Exportálás).
+-   Feladat típusa (Exportálás).
 
--   A válaszcím, ahol a meghajtók kell-e küldeni az exportálási feladat befejeződése után.
+-   A válaszcím, ahol a meghajtók kell küldeni az exportálási feladat befejezése után.
 
--   A blobok (vagy blob előtagok) exportálható listáját.
+-   Exportálandó blobok (vagy blob előtagok) listája.
 
-## <a name="shipping-your-drives"></a>A meghajtók szállítási
- Ezután használhatja az Azure Import/Export eszköz annak meghatározásához, hány meghajtót szeretne küldeni, a blobok választja, exportálva és a meghajtó mérete alapján. Tekintse meg a [Azure Import/Export eszköz hivatkozás](storage-import-export-tool-how-to-v1.md) részleteiről.
+## <a name="shipping-your-drives"></a>A szállítási meghajtó
+ Ezután használhatja az Azure Import/Export eszköz meghatározásához, hány meghajtót szeretne küldeni, a blobok az exportálandó kiválasztott és a meghajtó mérete alapján. Tekintse meg a [Azure Import/Export eszköz referencia](storage-import-export-tool-how-to-v1.md) részleteiről.
 
- A meghajtók csomagban csomagot, majd küldje el azokat a korábbi lépésben kapott címre. Megjegyzés: a csomag a következő lépéshez követési száma.
+ Csomagot a meghajtók, egyetlen csomagban, és küldje őket a korábbi lépésben kapott címre. Vegye figyelembe a nyomkövetési azonosító szám a csomag a következő lépéshez.
 
 > [!NOTE]
->  A meghajtók, amely előállít egy azonosítószám a csomag támogatott szolgáltatónként szolgáltatáson keresztül kell küldje el.
+>  Meg kell egy támogatott szolgáltató szolgáltatással, amely a csomag biztosít egy nyomkövetési azonosító szám meghajtók kiszállítása.
 
-## <a name="updating-the-export-job-with-your-package-information"></a>Az exportálási feladat frissítése a csomag információval
- Miután a nyilvántartási szám, hívja az [frissítés Feladattulajdonság](/rest/api/storageimportexport/jobs#Jobs_Update) művelet frissíti a vivőjel nevét, és nyomon követését a projekt száma. Opcionálisan megadhat a számát, a címet, és a szállítási dátumot is.
+## <a name="updating-the-export-job-with-your-package-information"></a>Az exportálási feladat frissítése a csomaginformációkat használva
+ Miután a nyomkövetési azonosító szám, hívja a [feladat tulajdonságainak](/rest/api/storageimportexport/jobs#Jobs_Update) művelet frissíti a szállító nevét és követési szám a feladathoz. Opcionálisan megadhatja a meghajtók, a feladó címe és a szállítási címhez tartozó dátumot is számát.
 
 ## <a name="receiving-the-package"></a>A csomag fogadása
- Az exportálási feladat feldolgozása után a meghajtók visszatér, a titkosított adatok. Kérheti le a BitLocker-kulcsot a meghajtókhoz meghívásával a [Get Job](/rest/api/storageimportexport/jobs#Jobs_Get) műveletet. Majd fel is oldhatja a meghajtót, a kulcs használatával. A meghajtó jegyzékfájl egyes fájlokat a meghajtó, valamint az eredeti blob cím az egyes fájlok listáját tartalmazza.
+ Az exportálási feladat feldolgozása után a meghajtók visszatér, a titkosított adatok. Kérheti le a BitLocker-kulcsot a meghajtókhoz meghívásával a [Get Job](/rest/api/storageimportexport/jobs#Jobs_Get) műveletet. Ezután fel is oldhatja a meghajtó a kulccsal. A meghajtó jegyzékfájl egyes meghajtókon tartalmazza azokat a fájlokat a meghajtó, valamint az eredeti blob-címet az összes fájl esetében.
 
 [!INCLUDE [storage-import-export-delete-personal-info.md](../../../includes/storage-import-export-delete-personal-info.md)]
 

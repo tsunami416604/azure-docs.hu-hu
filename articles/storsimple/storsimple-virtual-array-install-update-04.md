@@ -1,6 +1,6 @@
 ---
-title: Telepítse a frissítéseket a StorSimple virtuális tömb |} Microsoft Docs
-description: A StorSimple virtuális tömb webes felhasználói felület használata az Azure portál és a gyorsjavítások metódussal frissítés alkalmazása
+title: Telepítse a frissítéseket a StorSimple Virtual Array |} A Microsoft Docs
+description: A StorSimple Virtual Array webes felhasználói felület használata az Azure portal és a gyorsjavítások módszerrel frissítés alkalmazása
 services: storsimple
 documentationcenter: NA
 author: alkohli
@@ -15,29 +15,29 @@ ms.workload: TBD
 ms.date: 02/07/2017
 ms.author: alkohli
 ms.openlocfilehash: 3fb246b1515e7a637e6cff6499bf324c3f80dd45
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23875780"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38232189"
 ---
-# <a name="install-update-04-on-your-storsimple-virtual-array"></a>A StorSimple virtuális tömb 0,4 frissítés telepítése
+# <a name="install-update-04-on-your-storsimple-virtual-array"></a>A 0.4 telepítse a StorSimple Virtual Array
 
 ## <a name="overview"></a>Áttekintés
 
-Ez a cikk ismerteti a StorSimple virtuális tömb 0,4 frissítés telepítéséhez, és az Azure-portál a helyi webes felhasználói felületen keresztül szükséges lépéseket. Szeretné alkalmazni a szoftverfrissítések vagy gyorsjavítások a StorSimple virtuális tömb naprakész állapotban tartása érdekében. 
+Ez a cikk a helyi webes felhasználói felületen és az Azure Portalon a StorSimple Virtual Array az a 0.4 telepítendő szükséges lépéseket ismerteti. Szoftverfrissítések vagy gyorsjavítások a StorSimple Virtual Array tartsa naprakészen a alkalmazni kell. 
 
-Ne feledje, hogy egy frissítés vagy gyorsjavítás telepítése az eszköz újraindul. Fényében, hogy a StorSimple virtuális tömb a egycsomópontos eszközről szó, a folyamatban lévő összes i/o megszakad, és az eszköz leállást észlel. 
+Ne feledje, hogy egy frissítés vagy gyorsjavítás telepítése az eszköz újraindul. Tekintve, hogy a StorSimple Virtual Array egy egyetlen csomóponttal rendelkező eszköz, a folyamatban lévő összes i/o megszakad, és a az eszköz állásidő élményhez. 
 
-Egy frissítés alkalmazása előtt javasoljuk, hogy szánjon a kötetek vagy megosztások offline állapotba a gazdagépen első, majd az eszközről. Ez minimalizálja az adatvesztést lehetőségét.
+Mielőtt alkalmazná a frissítést, javasoljuk, hogy tegye meg a kötetek vagy megosztások kapcsolat nélküli módban a gazdagépen első és az eszköz majd. Így minimálisra csökkenthető az adatsérülés lehetőségét.
 
 > [!IMPORTANT]
-> Ha a frissítés 0,1 vagy GA szoftver verziója fut, a gyorsjavítás módszer a helyi webes felhasználói felületen keresztül frissítés 0,3 kell használnia. Ha a frissítés 0,2 futtatja, vagy később, akkor javasoljuk, hogy az Azure-portálon a frissítések telepítése.
+> 0.1-es frissítés vagy a GA szoftververziók futtatja, ha a gyorsjavítás metódus a helyi webes felhasználói felületen a 0.3 telepítéséhez kell használnia. Ha 0.2-es frissítést futtatja, vagy később, akkor javasoljuk, hogy telepítse a frissítéseket az Azure Portalon keresztül.
  
 
 ## <a name="use-the-local-web-ui"></a>A helyi webes felhasználói felület használata
 
-Két lépésben történik a helyi webes felhasználói felület használata esetén:
+Ha a helyi webes felhasználói felület még két lépésre van:
 
 * A frissítés vagy gyorsjavítás letöltése
 * A frissítés vagy gyorsjavítás telepítése
@@ -48,65 +48,65 @@ Hajtsa végre a következő lépéseket a szoftverfrissítés a Microsoft Update
 
 #### <a name="to-download-the-update-or-the-hotfix"></a>A frissítés vagy gyorsjavítás letöltése
 
-1. Indítsa el az Internet Explorert, és keresse fel a [http://catalog.update.microsoft.com](http://catalog.update.microsoft.com) címet.
+1. Indítsa el az Internet Explorert és keresse meg [ http://catalog.update.microsoft.com ](http://catalog.update.microsoft.com).
 
 2. Ha most használja először a Microsoft Update katalógust ezen a számítógépen, kattintson a **Telepítés** gombra, amikor a rendszer a Microsoft Update katalógus beépülő moduljának telepítésére kéri.
 
-3. A keresési mezőbe, a Microsoft Update katalógus adja meg a Tudásbázis (KB) le szeretné tölteni a gyorsjavítást. Adja meg **3216577** frissítési 0,4, és kattintson a **keresési**.
+3. A keresőmezőbe, a Microsoft Update katalógus adja meg a letölteni kívánt gyorsjavítás Tudásbázis (KB) száma. Adja meg **3216577** Update 0,4, és kattintson **keresési**.
    
-    A gyorsjavítás-lista megjelenik, például **StorSimple virtuális tömb frissítés 0,4**.
+    A gyorsjavítás-lista megjelenik, például **StorSimple Virtual Array a 0.4**.
    
     ![Keresés a katalógusban](./media/storsimple-virtual-array-install-update-04/download1.png)
 
-4. Kattintson az **Add** (Hozzáadás) parancsra. Ezzel a frissítést hozzáadja a kosárhoz.
+4. Kattintson a **Hozzáadás** parancsra. Ezzel a frissítést hozzáadja a kosárhoz.
 
 5. Kattintson a **Kosár megtekintése** gombra.
 
 6. Kattintson a **Letöltés** gombra. Adja meg vagy **tallózással** válassza ki a helyet, ahová a fájlokat le szeretné tölteni. A frissítések a megadott helyre lesznek letöltve, azon belül az egyes frissítések nevével egyező nevű almappákba. A mappa átmásolható egy, az eszközről elérhető hálózati megosztásra is.
 
-7. Nyissa meg a másolt mappát, a Microsoft Update önálló csomagfájl kell megjelennie `WindowsTH-KB3011067-x64`. A frissítés vagy gyorsjavítás telepítése a fájllal.
+7. Nyissa meg a másolt mappa kell, és láthatja, a Microsoft Update önálló csomagfájl `WindowsTH-KB3011067-x64`. Ez a fájl segítségével telepítheti a frissítést vagy gyorsjavítást.
 
 ### <a name="install-the-update-or-the-hotfix"></a>A frissítés vagy gyorsjavítás telepítése
 
-A frissítés vagy gyorsjavítás telepítése előtt győződjön meg arról, hogy a frissítést, vagy a gyorsjavítás letöltése vagy a gazdagépen helyileg vagy egy hálózati megosztáson keresztül érhető el. 
+A frissítés vagy gyorsjavítás telepítése előtt győződjön meg arról, hogy a frissítést, vagy a gyorsjavítás letöltése vagy helyileg, a gazdagépen vagy egy hálózati megosztáson keresztül érhető el. 
 
-Ezt a módszert egy GA futtató eszközre telepítse a frissítéseket, vagy 0,1 szoftververziók frissítésére. Ez az eljárás kisebb, mint 2 percet is igénybe vehet. Hajtsa végre a következő lépésekkel telepíti a frissítést vagy gyorsjavítást.
+Ez a módszer használatával egy GA futtató eszközre telepítse a frissítéseket, vagy 0,1 szoftververziók frissítése. Ez az eljárás végrehajtásához kevesebb mint 2 percet vesz igénybe. A következő lépésekkel telepítse a frissítést vagy gyorsjavítást.
 
 #### <a name="to-install-the-update-or-the-hotfix"></a>A frissítés vagy gyorsjavítás telepítése
 
-1. A helyi webes felhasználói felület váltson **karbantartási** > **szoftverfrissítés**.
+1. A helyi webes felhasználói felületen váltson **karbantartási** > **szoftverfrissítés**.
    
     ![eszköz frissítése](./media/storsimple-virtual-array-install-update/update1m.png)
 
-2. A **frissítés fájl elérési útját**, írja be a fájl nevét, a frissítés vagy gyorsjavítás. A frissítés vagy gyorsjavítás telepítési fájl is tallózással, ha egy hálózati megosztáson. Kattintson az **Alkalmaz** gombra.
+2. A **frissítési fájl elérési útja**, adja meg a fájl nevét, a frissítés vagy gyorsjavítás. A frissítés vagy gyorsjavítás telepítési fájl is tallózással, ha egy hálózati megosztáson. Kattintson az **Alkalmaz** gombra.
    
     ![eszköz frissítése](./media/storsimple-virtual-array-install-update/update2m.png)
 
-3. A figyelmeztetés akkor jelenik meg. Ez a megadott van egy egycsomópontos eszköz után a frissítés nincs alkalmazva, az eszköz újraindul, és nincs leállás. Kattintson a pipa ikonra.
+3. Egy figyelmeztetés jelenik meg. Ez a megadott van egy egyetlen csomóponttal rendelkező eszköz, miután a frissítés nincs alkalmazva, az eszköz újraindul, és üzemkimaradást okoz. Kattintson a pipa ikonra.
    
    ![eszköz frissítése](./media/storsimple-virtual-array-install-update/update3m.png)
 
-4. A frissítés elindul. Az eszköz sikeres frissítése után újraindul. Ennek az időtartamnak a helyi felhasználói felülete nem érhető el.
+4. A frissítés elindításakor. Az eszköz sikeres frissítése után újraindul. A helyi felhasználói felületen Ez az időtartam nem érhető el.
    
     ![eszköz frissítése](./media/storsimple-virtual-array-install-update/update5m.png)
 
-5. Az újraindítás befejeződése után kattintva megnyílik a **bejelentkezés** lap. Győződjön meg arról, hogy az eszköz szoftvere frissítette, a helyi webes felhasználói felület, keresse fel **karbantartási** > **szoftverfrissítés**. A megjelenített szoftverfrissítési verziót kell **10.0.0.0.0.10289.0** 0,4 frissítés.
+5. Az újraindítás befejeződése után megnyílik a **jelentkezzen be a** lapot. Győződjön meg arról, hogy az eszköz szoftverének frissítette, a helyi webes felhasználói felületen, lépjen a **karbantartási** > **szoftverfrissítés**. A megjelenített szoftverfrissítési verziónak kell lennie **10.0.0.0.0.10289.0** a 0.4 számára.
    
    > [!NOTE]
-   > A szoftver verziójával egy némileg eltérő módon a helyi webes felhasználói felület és az Azure-portálon jelentés azt. Például a helyi webes felhasználói Felületét jelent **10.0.0.0.0.10289** és az Azure portál jelentések **10.0.10289.0** azonos verziójához.
+   > A helyi webes felhasználói felület kissé másféle és az Azure Portalon a szoftver verziójával azt jelentést. Például a helyi webes felületén jelentések **10.0.0.0.0.10289** és az Azure portal jelentések **10.0.10289.0** esetében ugyanazt a verziót.
    
     ![eszköz frissítése](./media/storsimple-virtual-array-install-update/update6m.png)
 
 ## <a name="use-the-azure-portal"></a>Az Azure Portal használata
 
-Ha Update futtatása 0,2 és újabb verziók, azt javasoljuk, hogy telepítse a frissítéseket az Azure portálon keresztül. A portál eljárás a felhasználónak kell vizsgálat, töltse le és telepítse a frissítéseket. Ez az eljárás befejezéséhez körülbelül 7 perc. Hajtsa végre a következő lépésekkel telepíti a frissítést vagy gyorsjavítást.
+0,2 és újabb verzióit futtató frissítése, azt javasoljuk, hogy az Azure Portalon keresztül frissítések telepítése. A portál eljárás a felhasználónak vizsgálata, töltse le és telepítse a frissítéseket. Ez az eljárás végrehajtásához körülbelül 7 perc szükséges. A következő lépésekkel telepítse a frissítést vagy gyorsjavítást.
 
 [!INCLUDE [storsimple-virtual-array-install-update-via-portal](../../includes/storsimple-virtual-array-install-update-via-portal-04.md)]
 
-A telepítés befejezése után (a feladatok állapota a 100 %-os), nyissa meg a StorSimple eszköz Manager szolgáltatáshoz. Válassza ki **eszközök** majd jelölje ki, és kattintson az eszközre, ezt a szolgáltatást a csatlakoztatott eszközök közül frissíti. Az a **beállítások** paneljén lépjen **kezelése** válassza ki azt **eszközfrissítésekhez**. A megjelenített szoftverfrissítési verziót kell **10.0.10289.0**.
+A telepítés befejezése után (a feladat állapotát a 100 %-os), nyissa meg a StorSimple-Eszközkezelő szolgáltatásban. Válassza ki **eszközök** majd válassza ki, és kattintson az eszköz frissíti a szolgáltatáshoz csatlakozó eszközök listájából. Az a **beállítások** panelen lépjen a **kezelés** szakaszt, és válassza **Eszközfrissítések**. A megjelenített szoftverfrissítési verziónak kell lennie **10.0.10289.0**.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-További információ [felügyelete a StorSimple virtuális tömb](storsimple-ova-web-ui-admin.md).
+Tudjon meg többet [felügyelete a StorSimple Virtual Array](storsimple-ova-web-ui-admin.md).
 

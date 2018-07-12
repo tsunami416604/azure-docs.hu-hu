@@ -1,6 +1,6 @@
 ---
-title: Decoration jelölők segítségével jelölje ki a szöveget |} Microsoft Docs
-description: Keresés adott szöveg díszítés engedélyezése jeleníti meg.
+title: Kiemeli a szöveget decoration jelölők használata |} A Microsoft Docs
+description: Bemutatja, hogyan szöveg dekorációkat a keresési találatok engedélyezése.
 services: cognitive-services
 author: swhite-msft
 manager: ehansen
@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 07/06/2017
 ms.author: scottwhi
 ms.openlocfilehash: dbff2fb80c9d13783881bb94fc94fa8e1d609d3d
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35346866"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38300788"
 ---
-# <a name="using-decoration-markers-to-highlight-text"></a>Jelölje ki a szöveget decoration jelölők használatával
+# <a name="using-decoration-markers-to-highlight-text"></a>Kiemelheti a szöveg decoration jelölők használatával
 
 [!INCLUDE [cognitive-services-bing-hit-highlighting](../../../includes/cognitive-services-bing-hit-highlighting.md)]

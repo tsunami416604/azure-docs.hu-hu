@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/04/2017
 ms.author: dstefan
-ms.openlocfilehash: d2a63a1a9b335b7765c5eaf8c90e1d755b2ce9c9
-ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
+ms.openlocfilehash: 45dedd8c4d6ae2f9b54873d87f82c2e605a8c2aa
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37867120"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38451699"
 ---
 # <a name="azure-active-directory-proof-of-concept-playbook-building-blocks"></a>Az Azure Active Directory megvalósíthatósági fogalom forgatókönyv: építőelemek
 
@@ -45,7 +45,7 @@ Az alábbiakban néhány bármely POC-t az Azure AD Premium szükséges előfelt
 | Meghatározott és ellenőrzött tartományok | [Egyéni tartománynév hozzáadása az Azure Active Directoryhoz](active-directory-domains-add-azure-portal.md)<br/>**Megjegyzés:** egyes számítási feladatokhoz, mint a Power BI sikerült kiépítve a takaró alatt egy azure AD-bérlővel. Ellenőrizze, hogy egy bérlő társítva-e egy adott tartományon, navigáljon a https://login.microsoftonline.com/{domain}/v2.0/.well-known/openid-configuration. Ha sikeres válasz lekérése, majd a tartomány már hozzá van rendelve a bérlőhöz, és vegye át lehet szükség. Ha igen, forduljon a Microsofthoz további útmutatást tartalmaz. További információ az átvétel lehetőség is: [Mi az az Azure önkiszolgáló regisztráció?](users-groups-roles/directory-self-service-signup.md) |
 | Az Azure AD Premium vagy EMS-próba engedélyezve | [Az Azure Active Directory Premium egy hónapig ingyenesen használható](https://azure.microsoft.com/trial/get-started-active-directory/) |
 | Azure AD Premium vagy EMS-licenceket rendelt PoC-felhasználók | [Saját magának, mind pedig a felhasználók az Azure Active Directoryban](active-directory-licensing-get-started-azure-portal.md) |
-| Az Azure AD globális rendszergazdai hitelesítő adatait | [Rendszergazdai szerepkörök hozzárendelése az Azure Active Directory](users-groups-roles/directory-assign-admin-roles.md) |
+| Az Azure AD globális rendszergazdai hitelesítő adatait | [Rendszergazdai szerepkörök hozzárendelése az Azure Active Directoryban](users-groups-roles/directory-assign-admin-roles.md) |
 | Nem kötelező, de erősen ajánlott: tartalékként párhuzamos laborkörnyezetben | [Az Azure AD Connect előfeltételei](./connect/active-directory-aadconnect-prerequisites.md) |
 
 ## <a name="directory-synchronization---password-hash-sync-phs---new-installation"></a>Címtár szinkronizálási - Jelszókivonat-szinkronizálás (nál) – új telepítés
@@ -468,24 +468,24 @@ Hozzávetőleges teljes ideje: 15 perc
 
 | Előfeltétel | További források |
 | --- | --- |
-| A globális rendszergazda, amely a POC a PIM szolgáltatásra része lesz azonosítása | [Az Azure AD Privileged Identity Management használatának megkezdése](active-directory-privileged-identity-management-getting-started.md) |
-| Azonosítsa a globális rendszergazdája lesz a biztonsági rendszergazda | [Az Azure AD Privileged Identity Management használatának megkezdése](active-directory-privileged-identity-management-getting-started.md)<br/> [Különböző rendszergazdai szerepkörökkel az Azure Active Directory PIM-ben](active-directory-privileged-identity-management-roles.md) |
-| Választható lehetőség: Győződjön meg arról, ha a globális rendszergazdák rendelkeznek-e e-mailek elérését, amelyeket szeretne a PIM e-mail-értesítések | [Mi az Azure AD Privileged Identity Management?: a szerepkör-aktiválási beállítások konfigurálása](active-directory-privileged-identity-management-configure.md#configure-the-role-activation-settings)
+| A globális rendszergazda, amely a POC a PIM szolgáltatásra része lesz azonosítása | [Az Azure AD Privileged Identity Management használatának megkezdése](privileged-identity-management/pim-getting-started.md) |
+| Azonosítsa a globális rendszergazdája lesz a biztonsági rendszergazda | [Az Azure AD Privileged Identity Management használatának megkezdése](privileged-identity-management/pim-getting-started.md)<br/> [Különböző rendszergazdai szerepkörökkel az Azure Active Directory PIM-ben](privileged-identity-management/pim-roles.md) |
+| Választható lehetőség: Győződjön meg arról, ha a globális rendszergazdák rendelkeznek-e e-mailek elérését, amelyeket szeretne a PIM e-mail-értesítések | [Mi az Azure AD Privileged Identity Management?: a szerepkör-aktiválási beállítások konfigurálása](privileged-identity-management/pim-configure.md#configure-the-role-activation-settings)
 
 
 ### <a name="steps"></a>Lépések
 
 | Lépés | További források |
 | --- | --- |
-| Jelentkezzen be https://portal.azure.com egy globális rendszergazdai (elérhetővé tétel GA) és a rendszerindítási a PIM panel. A globális rendszergazda, amely végrehajtja ezt a lépést a biztonsági rendszergazda van áttöltésekor.  Adjuk a színész GA1 | [Az Azure AD Privileged Identity Management biztonsági varázslója használatával](active-directory-privileged-identity-management-security-wizard.md) |
-| Azonosítsa a globális rendszergazda, és át azokat állandó jogosulttá. Ez lehet egy külön rendszergazdai ajánlattartalomnak az 1. lépésben használt. Adjuk a színész GA2 | [Az Azure AD Privileged Identity Management: Hogyan lehet egy felhasználói szerepkör hozzáadása vagy eltávolítása](active-directory-privileged-identity-management-how-to-add-role-to-user.md)<br/>[Mi az Azure AD Privileged Identity Management?: a szerepkör-aktiválási beállítások konfigurálása](active-directory-privileged-identity-management-configure.md#configure-the-role-activation-settings)  |
+| Jelentkezzen be https://portal.azure.com egy globális rendszergazdai (elérhetővé tétel GA) és a rendszerindítási a PIM panel. A globális rendszergazda, amely végrehajtja ezt a lépést a biztonsági rendszergazda van áttöltésekor.  Adjuk a színész GA1 | [Az Azure AD Privileged Identity Management biztonsági varázslója használatával](privileged-identity-management/pim-security-wizard.md) |
+| Azonosítsa a globális rendszergazda, és át azokat állandó jogosulttá. Ez lehet egy külön rendszergazdai ajánlattartalomnak az 1. lépésben használt. Adjuk a színész GA2 | [Az Azure AD Privileged Identity Management: Hogyan lehet egy felhasználói szerepkör hozzáadása vagy eltávolítása](privileged-identity-management/pim-how-to-add-role-to-user.md)<br/>[Mi az Azure AD Privileged Identity Management?: a szerepkör-aktiválási beállítások konfigurálása](privileged-identity-management/pim-configure.md#configure-the-role-activation-settings)  |
 | Most jelentkezzen be a GA2 https://portal.azure.com , és próbálja meg módosítani a "Felhasználói beállítások". Figyelje meg, hogy néhány lehetőség szürkén jelennek meg. | |
-| Egy új lapon, és ugyanabban a munkamenetben, mint 3. lépés, nyissa meg most https://portal.azure.com és a PIM panel hozzáadása az irányítópulthoz. | [Aktiválása vagy inaktiválása szerepkörök az Azure AD Privileged Identity Management: a Privileged Identity Management alkalmazás felvétele](active-directory-privileged-identity-management-how-to-activate-role.md#add-the-privileged-identity-management-application) |
-| A globális rendszergazdai szerepkörrel aktiválási kérelmeinek megadása | [Aktiválása vagy inaktiválása szerepkörök az Azure AD Privileged Identity Management: a szerepkör aktiválása](active-directory-privileged-identity-management-how-to-activate-role.md#activate-a-role) |
+| Egy új lapon, és ugyanabban a munkamenetben, mint 3. lépés, nyissa meg most https://portal.azure.com és a PIM panel hozzáadása az irányítópulthoz. | [Aktiválása vagy inaktiválása szerepkörök az Azure AD Privileged Identity Management: a Privileged Identity Management alkalmazás felvétele](privileged-identity-management/pim-how-to-activate-role.md#add-the-privileged-identity-management-application) |
+| A globális rendszergazdai szerepkörrel aktiválási kérelmeinek megadása | [Aktiválása vagy inaktiválása szerepkörök az Azure AD Privileged Identity Management: a szerepkör aktiválása](privileged-identity-management/pim-how-to-activate-role.md#activate-a-role) |
 | Vegye figyelembe, hogy ha GA2 soha nem jelentkezett az MFA-hoz, az Azure MFA regisztrációs szükség lesz |  |
 | Lépjen vissza a 3. lépésben az eredeti fülre, és a böngésző Frissítés gombjára. Vegye figyelembe, hogy mostantól hozzáférhet a "Felhasználói beállítások" módosítása | |
 | Igény szerint ha a globális rendszergazdák e-mail engedélyezve van, ellenőrizheti GA1 és GA2 a Beérkezett fájlok és az értesítés a szerepkör aktiválása folyamatban |  |
-| 8 ellenőrizze a naplózási előzmények, és vizsgálja meg, a jelentés GA2 megszerzését ellenőrizze-e meg. | [Mi az Azure AD Privileged Identity Management?: szerepkör tevékenység áttekintése](active-directory-privileged-identity-management-configure.md#review-role-activity) |
+| 8 ellenőrizze a naplózási előzmények, és vizsgálja meg, a jelentés GA2 megszerzését ellenőrizze-e meg. | [Mi az Azure AD Privileged Identity Management?: szerepkör tevékenység áttekintése](privileged-identity-management/pim-configure.md#review-role-activity) |
 
 ### <a name="considerations"></a>Megfontolandó szempontok
 

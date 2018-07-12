@@ -1,6 +1,6 @@
 ---
-title: Az Azure PowerShell-megoldások kezelése |} Microsoft Docs
-description: Azure PowerShell és a Resource Manager segítségével kezelheti az erőforrásokat.
+title: Kezelheti az Azure-megoldások a PowerShell-lel |} A Microsoft Docs
+description: Azure PowerShell és a Resource Manager használatával kezelheti az erőforrásokat.
 services: azure-resource-manager
 documentationcenter: ''
 author: tfitzmac
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/16/2018
 ms.author: tomfitz
-ms.openlocfilehash: 02616ef566dd576c3f406d4b9f3059dab27bf3e0
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 5f7c569eabcf6e4b743f1b6616161787764e8f84
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34603413"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38723860"
 ---
 # <a name="manage-resources-with-azure-powershell"></a>Az Azure PowerShell-erőforrások kezelése
 
@@ -33,9 +33,9 @@ Ha a PowerShell helyi telepítése és használata mellett dönt, olvassa el [az
 
 [!INCLUDE [Resource Manager governance scope](../../includes/resource-manager-governance-scope.md)]
 
-Ebben a cikkben alkalmaz minden beállításokat az erőforráscsoporthoz, egyszerűen távolítsa el ezeket a beállításokat, amikor hajtja végre.
+Ebben a cikkben alkalmaz az összes beállításokat egy erőforráscsoportot, így könnyen eltávolíthatja ezeket a beállításokat, ha ezzel elkészült.
 
-Hozzon létre az erőforráscsoportot.
+Hozzuk létre az erőforráscsoportot.
 
 ```azurepowershell-interactive
 Set-AzureRmContext -Subscription <subscription-name>
@@ -48,17 +48,17 @@ Az erőforráscsoport jelenleg üres.
 
 [!INCLUDE [Resource Manager governance policy](../../includes/resource-manager-governance-rbac.md)]
 
-### <a name="assign-a-role"></a>A szerepkör hozzárendelése
+### <a name="assign-a-role"></a>Szerepkör hozzárendelése
 
-Ez a cikk telepít, a virtuális gépek és a kapcsolódó virtuális hálózatot. A virtuálisgép-megoldások kezeléséhez három erőforrás-specifikus szerepkör létezik, amelyek biztosítják a leggyakrabban szükséges hozzáféréseket:
+Ebben a cikkben üzembe helyezi a virtuális gépek és a kapcsolódó virtuális hálózat. A virtuálisgép-megoldások kezeléséhez három erőforrás-specifikus szerepkör létezik, amelyek biztosítják a leggyakrabban szükséges hozzáféréseket:
 
 * [Virtuális gépek közreműködője](../role-based-access-control/built-in-roles.md#virtual-machine-contributor)
 * [Hálózati közreműködő](../role-based-access-control/built-in-roles.md#network-contributor)
 * [Tárfiók-közreműködő](../role-based-access-control/built-in-roles.md#storage-account-contributor)
 
-Ahelyett, hogy szerepköröket rendelne az egyéni felhasználókhoz, gyakran célszerűbb [létrehozni egy Azure Active Directory-csoportot](../active-directory/active-directory-groups-create-azure-portal.md) azoknak a felhasználóknak, akiknek hasonló műveleteket kell elvégezniük. Ezután rendelje hozzá a csoportot a megfelelő szerepkörhöz. Ebben a cikkben az egyszerűség kedvéért egy tagok nélküli Azure Active Directory-csoportot fog létrehozni. A csoportot így is hozzárendelheti egy szerepkörhöz, hogy legyen hatóköre. 
+Ahelyett, hogy szerepköröket rendelne az egyéni felhasználókhoz, gyakran célszerűbb [létrehozni egy Azure Active Directory-csoportot](../active-directory/fundamentals/active-directory-groups-create-azure-portal.md) azoknak a felhasználóknak, akiknek hasonló műveleteket kell elvégezniük. Ezután rendelje hozzá a csoportot a megfelelő szerepkörhöz. Ebben a cikkben az egyszerűség kedvéért egy tagok nélküli Azure Active Directory-csoportot fog létrehozni. A csoportot így is hozzárendelheti egy szerepkörhöz, hogy legyen hatóköre. 
 
-Az alábbi példa létrehoz egy csoportot, és hozzárendeli a virtuális gép közreműködő szerepkört ahhoz az erőforráscsoporthoz. Futtatásához a `New-AzureAdGroup` parancsban, vagy használja kell a [Azure Cloud rendszerhéj](/azure/cloud-shell/overview) vagy [töltse le az Azure AD PowerShell modult](https://www.powershellgallery.com/packages/AzureAD/).
+Az alábbi példa létrehoz egy csoportot, és hozzárendeli azt az erőforráscsoportot a virtuális gép közreműködő szerepkört. Futtatásához a `New-AzureAdGroup` parancsot, meg kell, vagy használja a [Azure Cloud Shell](/azure/cloud-shell/overview) vagy [töltse le az Azure AD PowerShell modul](https://www.powershellgallery.com/packages/AzureAD/).
 
 ```azurepowershell-interactive
 $adgroup = New-AzureADGroup -DisplayName VMDemoContributors `
@@ -78,7 +78,7 @@ A folyamatot általában a **Hálózati közreműködő** és a **Tárfiók-köz
 
 ### <a name="apply-policies"></a>Szabályzatok alkalmazása
 
-Az előfizetése már számos szabályzatdefinícióval rendelkezik. A rendelkezésre álló házirend-definíciók megjelenítéséhez használja:
+Az előfizetése már számos szabályzatdefinícióval rendelkezik. Elérhető szabályzatdefiníciók használja:
 
 ```azurepowershell-interactive
 (Get-AzureRmPolicyDefinition).Properties | Format-Table displayName, policyType
@@ -86,9 +86,9 @@ Az előfizetése már számos szabályzatdefinícióval rendelkezik. A rendelkez
 
 Itt láthatja a meglévő szabályzatdefiníciókat. A szabályzat típusa lehet **Beépített** vagy **Egyéni**. Keresse meg azokat a definíciókat, amelyek az Ön által hozzárendelni kívánt feltételt írják le. Ebben a cikkben olyan szabályzatokat rendel hozzá, amelyek:
 
-* a helyek, az összes erőforrás korlátozása
+* korlátozza a helyek, az összes erőforrás
 * korlátozza a virtuális gépek termékváltozatok
-* virtuális gépek, amelyek nem kezelt lemezek naplózása
+* felügyelt lemezeket nem használó virtuális gépek naplózása
 
 ```azurepowershell-interactive
 $locations ="eastus", "eastus2"
@@ -134,7 +134,7 @@ Az üzembe helyezés befejezése után további kezelési beállításokat alkal
 
 [!INCLUDE [Resource Manager governance locks](../../includes/resource-manager-governance-locks.md)]
 
-### <a name="lock-a-resource"></a>Egy erőforrás zárolása
+### <a name="lock-a-resource"></a>Erőforrás zárolása
 
 A virtuális gép és a hálózati biztonsági csoport zárolásához használja:
 
@@ -161,7 +161,7 @@ A virtuális gép csak akkor lehet törölni, ha kifejezetten távolítsa el a z
 
 [!INCLUDE [Resource Manager governance tags Powershell](../../includes/resource-manager-governance-tags-powershell.md)]
 
-Címkék egy virtuális géphez segítségével:
+A címkék alkalmazása a virtuális gép használja:
 
 ```azurepowershell-interactive
 $r = Get-AzureRmResource -ResourceName myVM `
@@ -172,7 +172,7 @@ Set-AzureRmResource -Tag @{ Dept="IT"; Environment="Test"; Project="Documentatio
 
 ### <a name="find-resources-by-tag"></a>Erőforrások keresése címke szerint
 
-A címke neve és értéke erőforrások megkereséséhez használja:
+A címke nevét és értékét az erőforrások megkereséséhez használja:
 
 ```azurepowershell-interactive
 (Find-AzureRmResource -TagName Environment -TagValue Test).Name
@@ -186,17 +186,17 @@ Find-AzureRmResource -TagName Environment -TagValue Test | Where-Object {$_.Reso
 
 ### <a name="view-costs-by-tag-values"></a>Költségek megtekintése címkeértékek szerint
 
-Címkék alkalmazása az erőforrásokat, után megtekintheti a címkék erőforrás költségeket. Költség elemzéshez megjelenítése a legutóbbi használati, ezért még nem láthatók a költségek igénybe vesz igénybe. A költségek érhetők el, tekintheti költségek erőforrások erőforráscsoportok közötti az előfizetésben. Felhasználónak rendelkeznie kell [szintű hozzáféréssel előfizetés számlázási adatokat](../billing/billing-manage-access.md) költségeket megjelenítéséhez.
+Erőforrások a címkék alkalmazása után megtekintheti a költségeket címkék erőforrás esetén. A legújabb használati megjelenítéséhez, ezért még nem láthatók a költségek költségelemzés egy ideig tart. A költségek érhetők el, megtekintheti az erőforrások költségeit erőforráscsoportok közt az előfizetésében. A felhasználóknak rendelkezniük [előfizetési szintű hozzáféréssel a számlázási adatokat](../billing/billing-manage-access.md) megtekintéséhez a költségeket.
 
-A portál kódcímke költségek megtekintéséhez jelölje ki az előfizetését, és válassza ki **költség Analysis**.
+A portálon a címke szerinti költségek megtekintéséhez válassza ki az előfizetését, és válassza **költségelemzés**.
 
 ![Költségelemzés](./media/powershell-azure-resource-manager/select-cost-analysis.png)
 
-Ezt követően a címke értéke alapján szűrni, és válassza ki **alkalmaz**.
+Ezután a címke értéke szűrés, és válassza ki **alkalmaz**.
 
 ![Nézet költség címke szerint](./media/powershell-azure-resource-manager/view-costs-by-tag.png)
 
-Használhatja a [Azure számlázási API-k](../billing/billing-usage-rate-card-overview.md) költségek programozott módon megtekintéséhez.
+Is használhatja a [Azure számlázási API-kat](../billing/billing-usage-rate-card-overview.md) programozott módon a költségek megtekintéséhez.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
@@ -220,7 +220,7 @@ Remove-AzureRmResourceGroup -Name myResourceGroup
 ```
 
 ## <a name="next-steps"></a>További lépések
-* A virtuális gépek figyelésével kapcsolatos további tudnivalókért lásd: [figyelésére és frissítésére a Windows rendszerű virtuális gép az Azure PowerShell](../virtual-machines/windows/tutorial-monitoring.md).
-* További információ az Azure Security Center megvalósításához ajánlott biztonsági eljárások használatáról [virtuális gép biztonsági figyelje az Azure Security Center](../virtual-machines/windows/tutorial-azure-security.md).
-* Meglévő erőforrásokat áthelyezheti egy új erőforráscsoportot. Tekintse meg a [erőforrások áthelyezése új erőforráscsoportba vagy előfizetésbe](resource-group-move-resources.md).
+* A virtuális gépek monitorozásával kapcsolatos tudnivalókért lásd: [figyelésére és frissítésére az Azure PowerShell használatával Windows virtuális gép](../virtual-machines/windows/tutorial-monitoring.md).
+* További információ az Azure Security Center megvalósításához ajánlott biztonsági eljárásokat, [virtuális gép biztonságának monitorozása az Azure Security Center használatával](../virtual-machines/windows/tutorial-azure-security.md).
+* Meglévő erőforrásokat áthelyezheti egy új erőforráscsoportot. Példák: [erőforrások áthelyezése új erőforráscsoportba vagy előfizetésbe](resource-group-move-resources.md).
 * Nagyvállalatoknak az [Azure enterprise scaffold - prescriptive subscription governance](/azure/architecture/cloud-adoption-guide/subscription-governance) (Azure nagyvállalati struktúra - előíró előfizetés-irányítás) című cikk nyújt útmutatást az előfizetéseknek a Resource Managerrel való hatékony kezeléséről.

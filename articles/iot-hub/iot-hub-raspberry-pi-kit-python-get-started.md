@@ -1,9 +1,9 @@
 ---
-title: A felhő (Python) - málna Pi csatlakozzon az Azure IoT Hub Raspberry Pi |} Microsoft Docs
-description: Megtudhatja, hogyan kell beállítania, és Azure IoT-központ málna Pi adatokat küldeni az Azure felhőalapú platform ebben az oktatóanyagban málna Pi csatlakozni.
+title: Raspberry Pi Raspberry Pi csatlakoztatása Azure IoT Hub (Python) - felhőhöz |} A Microsoft Docs
+description: Ismerje meg, hogyan beállítása és a Raspberry Pi csatlakoztatása az Azure IoT hubba a Raspberry Pi adatokat küldeni az Azure felhőalapú platformján ebben az oktatóanyagban.
 author: rangv
 manager: ''
-keywords: az Azure iot raspberry pi, raspberry pi iot-központ, raspberry pi adatokat küldött a felhőben, raspberry pi felhőbe
+keywords: az Azure iot raspberry pi, a raspberry pi az iot hub, a raspberry pi send adatait a felhőbe, a raspberry pi a felhőbe
 ms.service: iot-hub
 services: iot-hub
 ms.devlang: python
@@ -11,142 +11,142 @@ ms.topic: conceptual
 ms.date: 04/11/2018
 ms.author: rangv
 ms.openlocfilehash: 15b917d811dff2d70b638ab82c808bdc7fa1012b
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34635151"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38235729"
 ---
-# <a name="connect-raspberry-pi-to-azure-iot-hub-python"></a>Raspberry Pi csatlakozni az Azure IoT Hub (Python)
+# <a name="connect-raspberry-pi-to-azure-iot-hub-python"></a>Raspberry Pi csatlakozhat az Azure IoT Hub (Python)
 
 [!INCLUDE [iot-hub-get-started-device-selector](../../includes/iot-hub-get-started-device-selector.md)]
 
-Ebben az oktatóanyagban akkor először tanulás alapjainak málna Pi Raspbian futtató használata. Majd megtudhatja, hogyan kapcsolódhat zökkenőmentesen az eszközök a felhőbe [Azure IoT Hub](iot-hub-what-is-iot-hub.md). Windows 10 IoT minta, látogasson el a [Windows fejlesztői központ](http://www.windowsondevices.com/).
+Ez az oktatóanyag első lépésként, tanulás a Raspberry Pi Raspbian futtató való használatának alapjait. Ezután megismerheti, hogyan zökkenőmentes csatlakozás használatával a felhőbe az eszközök [Azure IoT Hub](iot-hub-what-is-iot-hub.md). A Windows 10 IoT Core-minta, nyissa meg a [Windows Dev Center](http://www.windowsondevices.com/).
 
-Még nem rendelkezik egy csomagot? Próbálja [málna Pi online szimulátor](iot-hub-raspberry-pi-web-simulator-get-started.md). Vagy egy új csomag vásárlása [Itt](https://azure.microsoft.com/develop/iot/starter-kits).
+Még nem rendelkezik egy csomagot? Próbálja ki [Raspberry Pi online szimulátor](iot-hub-raspberry-pi-web-simulator-get-started.md). Vagy egy új csomag vásárlása [Itt](https://azure.microsoft.com/develop/iot/starter-kits).
 
-## <a name="what-you-do"></a>Mit
+## <a name="what-you-do"></a>TEENDŐ
 
-* Létrehoz egy IoT-központot.
-* Eszköz regisztrálása az IoT hub a pi.
+* Hozzon létre egy IoT hubot.
+* Eszköz regisztrálása az IoT hub pi.
 * A telepítő Raspberry Pi.
-* Futtassa a mintaalkalmazást érzékelő adatokat küldeni az IoT hub Pi.
+* A mintaalkalmazás futtatása az IoT hub érzékelői adatokat küldendő Pi-on.
 
-Az IoT-központ az Ön által létrehozott málna Pi csatlakozni. Majd futtassa a mintaalkalmazást a hőmérséklet és a páratartalom adatokat gyűjteni BME280 érzékelő Pi. Végezetül az érzékelő adatokat küldött az IoT hub.
+Raspberry Pi csatlakozni az IoT hub által létrehozott. Ezután futtassa a mintaalkalmazás hőmérséklettel és páratartalommal kapcsolatos adatok gyűjtését BME280 érzékelő Pi-on. Végül az érzékelő adatokat küld az IoT hubnak.
 
 ## <a name="what-you-learn"></a>Ismertetett témák
 
-* Megtudhatja, hogyan hozzon létre egy Azure IoT-központot, és az új eszköz kapcsolati karakterláncot.
+* Útmutató az Azure IoT hub létrehozása és az új eszköz kapcsolati karakterláncának beszerzése.
 * Hogyan BME280 érzékelő Pi kapcsolódni.
-* Megtudhatja, hogyan futtatja a mintaalkalmazás Pi érzékelő adatok gyűjtéséért felelős ügyfélfeladatot.
-* Hogyan érzékelő adatokat küldeni az IoT hub.
+* Hogyan gyűjtheti az érzékelőktől kapott adatok egy mintaalkalmazás Pi-on való futtatásával.
+* Hogyan küldhet az IoT hub érzékelői adatokat.
 
 ## <a name="what-you-need"></a>Mi szükséges
 
 ![Mi szükséges](media/iot-hub-raspberry-pi-kit-c-get-started/0_starter_kit.jpg)
 
-* A Pi 2 málna vagy málna Pi 3 kártya.
-* Aktív Azure-előfizetés. Ha az Azure-fiók nem rendelkezik [hozzon létre egy Azure próbafiókot](https://azure.microsoft.com/free/) csak néhány perc múlva.
-* A figyelő egy USB-billentyűzet és egér Pi-hez.
-* A Mac vagy a Windows vagy Linux rendszerű számítógép.
-* Az internethez.
-* Egy 16 GB-os vagy újabb microSD-kártyán.
-* Egy USB-SD adapter vagy microSD-kártyán írása a microSD-kártyán operációsrendszer-képet.
-* Egy 5-volt 2-amp tápegység a 6-mértékű kiszolgálóhasználat micro USB-kábellel.
+* A Raspberry Pi 2 vagy a Raspberry Pi 3 tábla.
+* Aktív Azure-előfizetés. Ha nem rendelkezik Azure-fiók [hozzon létre egy ingyenes Azure próbafiókot](https://azure.microsoft.com/free/) mindössze néhány perc múlva.
+* Egy figyelő, egy USB billentyűzetből és egérből Pi csatlakozó.
+* Mac vagy Windows vagy Linux rendszert futtató számítógép.
+* Internetkapcsolat.
+* 16 GB-os vagy újabb microSD-kártyán.
+* USB-SD adapter vagy microSD kártya írása a microSD-kártyán operációsrendszer-képet.
+* 5 voltos 2-és a egy power adja meg a 6-ragadós micro USB-kábellel.
 
 A következő elemek nem kötelező:
 
-* Az összeállított Adafruit BME280 hőmérséklet, a terhelés, és a páratartalom érzékelő.
+* Az összeállított Adafruit BME280 páratartalom, hőmérséklet és nyomás érzékelő.
 * Egy breadboard.
-* 6/aljzat átkötés fenyegetéseknek.
-* Egy szórt 10 mm LED-jét.
+* 6-F/M átkötés fenyegetéseknek.
+* Szórt 10 mm LED.
 
 
 > [!NOTE] 
-Ezek az elemek nem kötelező, mert a kód a minta támogatási szimulált érzékelőadatait.
+Ezek az elemek nem kötelező, mivel a kód minta támogatási szimulált érzékelői adatokat.
 
 
 [!INCLUDE [iot-hub-get-started-create-hub-and-device](../../includes/iot-hub-get-started-create-hub-and-device.md)]
 
-## <a name="set-up-raspberry-pi"></a>Málna Pi beállítása
+## <a name="set-up-raspberry-pi"></a>Raspberry Pi beállítása
 
-### <a name="install-the-raspbian-operating-system-for-pi"></a>A Pi a Raspbian operációs rendszer telepítése
+### <a name="install-the-raspbian-operating-system-for-pi"></a>Pi a Raspbian operációs rendszer telepítése
 
-Készítse elő a microSD-kártyán Raspbian kép telepítéséhez.
+Készítse elő a Raspbian lemezkép telepítésének microSD-kártyán.
 
 1. Töltse le a Raspbian.
-   1. [Töltse le az asztallal Raspbian Jessie](https://www.raspberrypi.org/downloads/raspbian/) (a .zip-fájlt).
+   1. [Töltse le a Desktopban Raspbian Jessie](https://www.raspberrypi.org/downloads/raspbian/) (a .zip-fájlt).
    1. Bontsa ki a Raspbian lemezképet a számítógép egyik mappájába.
-1. A microSD-kártyán Raspbian telepítése.
+1. Telepítse a Raspbian a microSD-kártyán.
    1. [Töltse le és telepítse a Etcher SD-kártya író segédprogram](https://etcher.io/).
-   1. Futtassa a Etcher, és az 1. lépésben válassza ki a kibontott Raspbian kép.
-   1. Jelölje ki a microSD-kártyát meghajtót. Vegye figyelembe, hogy Etcher előfordulhat, hogy már választott ki a megfelelő meghajtó.
-   1. Kattintson a microSD-kártyán Raspbian telepítése Flash.
-   1. Eltávolítja a számítógépről a microSD-kártyán, ha a telepítés befejeződött. Biztonságos a microSD-kártyán közvetlenül eltávolítani, mert Etcher automatikusan kiadása vagy leválasztja a microSD-kártyán befejezése után is.
-   1. A microSD-kártyán beszúrása Pi.
+   1. Etcher futtassa, és jelölje ki a kibontott Raspbian lemezképét az 1. lépésben.
+   1. Válassza ki a microSD-kártyán meghajtót. Vegye figyelembe, hogy Etcher előfordulhat, hogy már ki van választva a megfelelő meghajtót.
+   1. Kattintson a Flash Raspbian telepíteni a microSD-kártyán.
+   1. Eltávolítja a számítógépről a microSD-kártyán, amikor a telepítés befejeződött. Biztonságos-e a microSD-kártyán közvetlenül eltávolítani, mert Etcher automatikusan kiadása, vagy a befejezéskor microSD-kártyán leválasztja.
+   1. A Pi szúrhat be a microSD-kártyán.
 
-### <a name="enable-ssh-and-i2c"></a>SSH- és I2C engedélyezése
+### <a name="enable-ssh-and-i2c"></a>Az SSH és I2C engedélyezése
 
-1. Pi csatlakozni a monitor, billentyűzet és egér. Indítsa el a Pi, majd jelentkezzen be Raspbian `pi` felhasználónevet és `raspberry` a jelszót.
-1. Kattintson a Raspberry ikonra > **beállítások** > **málna Pi konfigurációs**.
+1. Pi csatlakozni a monitorból, billentyűzetből és egérből. Indítsa el a Pi, majd jelentkezzen be Raspbian használatával `pi` felhasználónevet és a `raspberry` jelszóként.
+1. A Raspberry ikonra > **beállítások** > **Raspberry Pi konfigurációs**.
 
    ![A Raspbian beállítások menü](media/iot-hub-raspberry-pi-kit-c-get-started/1_raspbian-preferences-menu.png)
 
-1. Az a **felületek** lapon **I2C** és **SSH** való **engedélyezése**, és kattintson a **OK**. Ha nem rendelkezik a fizikai érzékelők és szimulált érzékelőadatait használni szeretne, ez a lépés nem kötelező megadni.
+1. Az a **felületek** lapra, és állítsa **I2C** és **SSH** való **engedélyezése**, és kattintson a **OK**. Ha nem rendelkezik fizikai érzékelők, és szeretné használni a szimulált érzékelői adatokat, ez a lépés nem kötelező.
 
-   ![I2C és a Raspberry Pi SSH engedélyezése](media/iot-hub-raspberry-pi-kit-c-get-started/2_enable-spi-ssh-on-raspberry-pi.png)
+   ![I2C és a Raspberry Pi-on SSH engedélyezése](media/iot-hub-raspberry-pi-kit-c-get-started/2_enable-spi-ssh-on-raspberry-pi.png)
 
 > [!NOTE] 
-SSH- és I2C engedélyezéséhez található további referencia dokumentumok [raspberrypi.org](https://www.raspberrypi.org/documentation/remote-access/ssh/) és [RASPI-CONFIG](https://www.raspberrypi.org/documentation/configuration/raspi-config.md).
+Az SSH és I2C engedélyezéséhez találhat további segédanyagok [raspberrypi.org](https://www.raspberrypi.org/documentation/remote-access/ssh/) és [RASPI-CONFIG](https://www.raspberrypi.org/documentation/configuration/raspi-config.md).
 
 ### <a name="connect-the-sensor-to-pi"></a>Csatlakozás az érzékelő Pi
 
-Használják a breadboard és átkötés LED és egy BME280 Pi kell kapcsolódniuk az alábbiak szerint. Ha még nem rendelkezik az érzékelő [hagyja ki ezt a szakaszt](#connect-pi-to-the-network).
+Csatlakozhat a breadboard és átkötés fenyegetéseknek LED és a egy BME280 Pi módon. Ha nem rendelkezik az érzékelő [kihagyhatja ezt a szakaszt](#connect-pi-to-the-network).
 
-![A Pi málna és érzékelő kapcsolat](media/iot-hub-raspberry-pi-kit-node-get-started/3_raspberry-pi-sensor-connection.png)
+![A Raspberry Pi és érzékelő kapcsolat](media/iot-hub-raspberry-pi-kit-node-get-started/3_raspberry-pi-sensor-connection.png)
 
-A BME280 érzékelő gyűjthet a hőmérséklet és a páratartalom adatokat. És a LED fog villogni, ha egy eszköz és a felhő közötti kommunikációt. 
+A BME280 érzékelő hőmérséklettel és páratartalommal kapcsolatos adatokat gyűjthet. És a LED fog villogni, ha egy eszköz és a felhő közötti kommunikációt. 
 
-PIN-kód érzékelő használja a következő vezetékezést:
+Érzékelő PIN-kód használja a következő kábelezés:
 
-| Indítsa el a (érzékelő & LED)     | Záró (tábla)            | Kábel szín   |
+| Indítsa el a (érzékelő & LED)     | Teljes (tábla)            | Kábel színe   |
 | -----------------------  | ---------------------- | ------------: |
-| VDD (PIN-kód 5 g.)             | 3.3V PWR (1. Pin)       | A fehér kábel   |
-| GND (7G PIN-kód)             | GND (PIN-kód 6)            | Barna kábel   |
+| VDD (5 g. PIN-kód)             | 3.3V PWR (1 PIN-kód)       | Fehér kábel   |
+| GND (PIN-kód 7G)             | GND (6 PIN-kód)            | Barna kábel   |
 | SDI (PIN-kód 10G)            | I2C1 SDA (3 PIN-kód)       | Piros kábel     |
-| SCK (8G PIN-kód)             | I2C1 SCL (PIN-kód 5)       | Narancssárga kábel  |
-| LED VDD (PIN-kód 18F)        | GPIO 24 (PIN-kód 18)       | A fehér kábel   |
-| LED GND (PIN-kód 17F)        | GND (PIN-kód 20)           | Fekete kábel   |
+| SCK (8G PIN-kód)             | I2C1 SCL (5 PIN-kód)       | Narancssárga kábel  |
+| LED VDD (18F PIN-kód)        | GPIO 24 (18 PIN-kód)       | Fehér kábel   |
+| LED GND (17F PIN-kód)        | GND (20 PIN-kód)           | Fekete kábellel   |
 
-Megjelenítéséhez kattintson ide [málna Pi 2. és 3 PIN-kód hozzárendelések](https://developer.microsoft.com/windows/iot/docs/pinmappingsrpi) hivatkozhat.
+Kattintson ide a megtekintéshez [Raspberry Pi-2 és 3 PIN-kód-leképezések](https://developer.microsoft.com/windows/iot/docs/pinmappingsrpi) referenciaként.
 
-Miután sikeresen csatlakozott a málna Pi BME280, meg kell például a kép alatt.
+Miután sikeresen csatlakozott a Raspberry Pi BME280, kell tenni, például a kép alatt.
 
 ![Csatlakoztatott Pi és BME280](media/iot-hub-raspberry-pi-kit-node-get-started/4_connected-pi.jpg)
 
-### <a name="connect-pi-to-the-network"></a>A Pi csatlakoznak a hálózathoz
+### <a name="connect-pi-to-the-network"></a>A Pi csatlakoztatása a hálózathoz
 
-Kapcsolja be a Pi a micro USB-kábelen és a tápegység. Az Ethernet-kábel segítségével Pi csatlakozni a vezetékes hálózatra, vagy hajtsa végre a [málna Pi alapját utasításainak](https://www.raspberrypi.org/learning/software-guide/wifi/) Pi a vezeték nélküli hálózathoz való kapcsolódáshoz. Miután a Pi sikeresen csatlakozott a hálózathoz, azt kell jegyezze fel az a [IP-címet a pi](https://learn.adafruit.com/adafruits-raspberry-pi-lesson-3-network-setup/finding-your-pis-ip-address).
+A Pi kapcsolja be a micro USB-kábelen keresztül és a tápegység. Az Ethernet-kábel használatával Pi csatlakoztatása a vezetékes hálózathoz, vagy kövesse a [utasításait a Raspberry Pi Foundation](https://www.raspberrypi.org/learning/software-guide/wifi/) Pi a vezeték nélküli hálózathoz való kapcsolódáshoz. Miután a Pi sikeresen csatlakozott a hálózathoz, jegyezze fel az kell a [IP-címét a Pi](https://learn.adafruit.com/adafruits-raspberry-pi-lesson-3-network-setup/finding-your-pis-ip-address).
 
-![Vezetékes hálózathoz csatlakoznak](media/iot-hub-raspberry-pi-kit-node-get-started/5_power-on-pi.jpg)
+![Vezetékes hálózathoz csatlakozik](media/iot-hub-raspberry-pi-kit-node-get-started/5_power-on-pi.jpg)
 
 > [!NOTE]
-> Győződjön meg arról, hogy a Pi és a számítógép ugyanahhoz a hálózathoz csatlakozik. Például ha a számítógép vezeték nélküli hálózathoz Pi egy vezetékes hálózathoz van csatlakoztatva, előfordulhat, hogy nem látja az IP-cím devdisco kimenet.
+> Győződjön meg arról, hogy a Pi csatlakozik-e a számítógép ugyanazon a hálózaton. Például ha a számítógép vezeték nélküli hálózathoz csatlakoztatva van, a Pi vezetékes hálózathoz van csatlakoztatva, Ön nem láthatja a devdisco kimenetben szereplő IP-cím.
 
-## <a name="run-a-sample-application-on-pi"></a>A Pi mintaalkalmazás futtatása
+## <a name="run-a-sample-application-on-pi"></a>A mintaalkalmazás futtatása Pi-on
 
-### <a name="install-the-prerequisite-packages"></a>Az előfeltételként szükséges csomagok telepítése
+### <a name="install-the-prerequisite-packages"></a>Telepítse az előfeltételként szolgáló csomagok
 
-A számítógép a következő SSH-ügyfél segítségével a málna Pi csatlakozni.
+A következő SSH-ügyfelet a gazdagép számítógépről szeretne csatlakozni a Raspberry Pi valamelyikét használja.
    
    **Windows-felhasználók**
-   1. Töltse le és telepítse [PuTTY](http://www.putty.org/) Windows. 
-   1. Az IP-cím a tartományban a gazdagép nevét (vagy IP-cím) szakaszában másolja, és válassza ki az SSH a kapcsolattípus.
+   1. Töltse le és telepítse [PuTTY](http://www.putty.org/) Windows számára. 
+   1. Másolja ki a gazdagép nevét (vagy IP-cím), a Pi szakasz IP-címét, és válassza ki az SSH a kapcsolat típusaként.
    
    
-   **Mac és Ubuntu felhasználók**
+   **Mac- és Ubuntu-felhasználók**
    
-   A beépített SSH-ügyfél Ubuntu vagy macOS használja. Előfordulhat, hogy futtatásához szükséges `ssh pi@<ip address of pi>` Pi SSH-kapcsolaton keresztül csatlakozni.
+   A beépített SSH-ügyfél használata Ubuntu vagy macOS rendszeren. Előfordulhat, hogy kell futtatnia `ssh pi@<ip address of pi>` Pi SSH-n keresztül kapcsolódni.
    > [!NOTE] 
    Az alapértelmezett felhasználónév az `pi` , és a jelszó `raspberry`.
 
@@ -166,43 +166,43 @@ A számítógép a következő SSH-ügyfél segítségével a málna Pi csatlako
    nano config.py
    ```
 
-   5 makrók van ebben a fájlban configurate is. Az első egy `MESSAGE_TIMESPAN`, amely megadja, hogy az időtartam (ezredmásodpercben) két felhőbe küldött üzenetek között. A második érték `SIMULATED_DATA`, vagyis az, hogy szimulált érzékelőadatait vagy nem logikai értéket. `I2C_ADDRESS` a I2C címet a BME280 érzékelő csatlakoztatva van. `GPIO_PIN_ADDRESS` a GPIO cím szolgál a LED-jét. Az utolsót `BLINK_TIMESPAN`, amely meghatározni a TimeSpan érték, ha a LED ezredmásodpercben be van kapcsolva.
+   Nincsenek 5 makrók configurate használhatja ezt a fájlt. Az első egy `MESSAGE_TIMESPAN`, amely megadja az időtartam (ezredmásodpercben), két a felhőbe küldött üzenetek között. A második érték `SIMULATED_DATA`, azaz az e használni a szimulált érzékelői adatokat, vagy nem logikai érték. `I2C_ADDRESS` a I2C címével, amely a BME280 érzékelő van csatlakoztatva van. `GPIO_PIN_ADDRESS` az a GPIO cím a LED számára. A `BLINK_TIMESPAN`, amely definiálva az időtartam, ezredmásodpercben bekapcsolásakor a LED.
 
-   Ha Ön **nem rendelkezik az érzékelő**, beállíthatja a `SIMULATED_DATA` egy érték `True` a minta kérelem létrehozása és használata a szimulált érzékelőadatait.
+   Ha Ön **nem rendelkezik az érzékelő**állítsa be a `SIMULATED_DATA` értéket a következőre `True` , hogy a mintaalkalmazás létrehozása és használata a szimulált érzékelői adatokat.
 
-1. Mentse és zárja be a vezérlő-O billentyűkombináció lenyomásával > Enter > CTRL-X.
+1. Mentéséhez és bezárásához nyomja meg az ellenőrző-O > Enter > CTRL-X.
 
-### <a name="build-and-run-the-sample-application"></a>Hozza létre, és futtassa a mintaalkalmazást
+### <a name="build-and-run-the-sample-application"></a>A minta-alkalmazás összeállítása és futtatása
 
-1. A minta-alkalmazás létrehozása a következő parancs futtatásával. Mivel az Azure IoT készült SDK-k Python burkolók az Azure IoT eszköz C SDK fölött, szüksége lesz a C-függvénytárak összeállításához, ha azt szeretné, vagy hozza létre a Python-könyvtárak forráskód kell.
+1. A mintaalkalmazás létrehozása a következő parancs futtatásával. Mivel az Azure IoT SDK Pythonhoz készült felül az Azure IoT eszközoldali C SDK burkolókat, szüksége lesz a C-függvénytárak összeállításához, ha azt szeretné, vagy létre kell hozni a Python-kódtárakat a kódból származzanak.
 
    ```bash
    sudo chmod u+x setup.sh
    sudo ./setup.sh
    ```
    > [!NOTE] 
-   Azt is megadhatja a kívánt futtatásával verzió `sudo ./setup.sh [--python-version|-p] [2.7|3.4|3.5]`. Ha paraméter nélkül parancsfájlt futtatja, a parancsfájl automatikusan észleli a python telepített verzióját (keresési feladatütemezési 2.7 -> 3.4 -> 3.5). Győződjön meg arról, hogy a Python verzió tartja konzisztens során kialakításához és futtatásához. 
+   Azt is megadhatja a kívánt futtatásával verziót `sudo ./setup.sh [--python-version|-p] [2.7|3.4|3.5]`. Ha paraméter nélkül parancsfájlt futtat, a parancsfájl automatikusan észleli a python telepítve verzióját (keresési feladatütemezési 2.7 -> 3.4 -> 3.5). Ellenőrizze, hogy során készítése és a Python-verzió tartja konzisztens. 
    
    > [!NOTE] 
-   Épület a Python ügyféloldali kódtár (iothub_client.so) kisebb, mint 1GB RAM-MAL rendelkező Linux rendszerű eszközökön, láthatja a build a lent látható módon iothub_client_python.cpp felépítésekor első Beragadt 98 % `[ 98%] Building CXX object python/src/CMakeFiles/iothub_client_python.dir/iothub_client_python.cpp.o`. Ha ezt a problémát tapasztal, ellenőrizze az eszköz használatával a memória-felhasználás `free -m command` egy másik terminál ablakban ebben az időszakban. Ha kevés a memória iothub_client_python.cpp fájl fordítása közben fut, akkor előfordulhat, hogy ideiglenesen növelje a lapozófájl több elérhető memória, a Python ügyféloldali SDK-könyvtár eszköz sikeresen létrehozásához lekérdezni.
+   Az alkalmazásfejlesztés a Python ügyféloldali kódtár (iothub_client.so) kisebb, mint 1GB RAM-MAL rendelkező Linux rendszerű eszközökön, látni hozhat létre az első iothub_client_python.cpp kiépítésekor, ahogy az alábbi 98 % megakad `[ 98%] Building CXX object python/src/CMakeFiles/iothub_client_python.dir/iothub_client_python.cpp.o`. Ha a probléma, ellenőrizze a csökkenhet az eszköz használatának `free -m command` idő alatt egy másik terminálablakban. Ha nincs elég memória iothub_client_python.cpp fájl fordítása közben fut, előfordulhat, a lapozóterület beolvasni a sikeres kiépítéséhez a Python ügyféloldali eszközoldali SDK-könyvtár több elérhető memória ideiglenes növelésére.
    
-1. Futtassa a mintaalkalmazást a következő parancs futtatásával:
+1. A mintaalkalmazás futtatása a következő parancs futtatásával:
 
    ```bash
    python app.py '<your Azure IoT hub device connection string>'
    ```
 
    > [!NOTE] 
-   Győződjön meg arról, hogy Ön-e beillesztési az eszköz kapcsolati karakterláncát azokat a szimpla idézőjelben. Ha a python, 3, akkor a parancs használata és `python3 app.py '<your Azure IoT hub device connection string>'`.
+   Győződjön meg arról, másolás és beillesztés az eszköz kapcsolati karakterláncának be a szimpla idézőjelek között. És a python 3 használja, akkor a paranccsal `python3 app.py '<your Azure IoT hub device connection string>'`.
 
 
-   A következő kimeneti bemutatja az érzékelő adatokat és az IoT hub küldött üzenetek kell megjelennie.
+   Amely az érzékelőktől kapott adatok és az IoT hubnak küldött üzeneteket jeleníti meg a következő kimenetnek kell megjelennie.
 
-   ![Kimeneti - érzékelő adatokat küld az IoT hub málna Pi](media/iot-hub-raspberry-pi-kit-c-get-started/success.png
+   ![Kimenet – Raspberry Pi az IoT hubnak küldött érzékelőktől kapott adatok](media/iot-hub-raspberry-pi-kit-c-get-started/success.png
 )
 
 ## <a name="next-steps"></a>További lépések
 
-Egy mintaalkalmazás érzékelő adatokat gyűjteni, és küldje el az IoT hub futtatását. A málna Pi az IoT hub vagy küldési üzenetek a málna Pi egy parancssori felület a küldött üzenetek, olvassa el a [kezelése felhő eszközt az IOT hubbal-explorer oktatóanyag üzenetküldési](https://docs.microsoft.com/en-gb/azure/iot-hub/iot-hub-explorer-cloud-device-messaging).
+Egy mintaalkalmazás érzékelőktől kapott adatok összegyűjtésére, és küldje el az IoT hubnak küldött futtatott. A Raspberry Pi a Raspberry Pi egy parancssori felületen az IoT hub- vagy küldés üzeneteket küldött üzenetek, olvassa el a [kezelés: az eszközök felhőalapú üzenetkezelése az iothub-explorer oktatóanyag](https://docs.microsoft.com/en-gb/azure/iot-hub/iot-hub-explorer-cloud-device-messaging).
 
 [!INCLUDE [iot-hub-get-started-next-steps](../../includes/iot-hub-get-started-next-steps.md)]

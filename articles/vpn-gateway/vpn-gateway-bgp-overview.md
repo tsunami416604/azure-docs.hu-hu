@@ -1,5 +1,5 @@
 ---
-title: Az Azure VPN Gatewayek BGP áttekintése |} Microsoft Docs
+title: BGP és az Azure VPN Gateway együttműködésének áttekintése |} A Microsoft Docs
 description: Ez a cikk bemutatja, hogyan használható a BGP az Azure VPN Gateway megoldással együtt.
 services: vpn-gateway
 documentationcenter: na
@@ -16,11 +16,11 @@ ms.workload: infrastructure-services
 ms.date: 01/12/2017
 ms.author: yushwang
 ms.openlocfilehash: 13a17eb3d78e70a09864bf218f1027d6e98486a6
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23883508"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38720050"
 ---
 # <a name="overview-of-bgp-with-azure-vpn-gateways"></a>A BGP és az Azure VPN Gateway együttműködésének áttekintése
 Ez a cikk ismerteti az Azure VPN Gateway megoldásban a BGP (Border Gateway Protocol) támogatását.
@@ -32,28 +32,28 @@ A BGP egy olyan opcionális szolgáltatás, amely az Azure útvonalalapú VPN-á
 
 A BGP használata számos előnyt és új képességet biztosít:
 
-### <a name="prefix"></a>Támogatja az automatikus és rugalmas előtag frissítések
+### <a name="prefix"></a>Az automatikus és rugalmas előtagfrissítések támogatása
 A BGP használatakor kizárólag egy minimális előtag megadására van szükség egy adott BGP-társ számára, az IPsec S2S VPN-alagúton keresztül. Lehet ez olyan kicsi is, mint a helyszíni VPN-eszközhöz tartozó BGP-társ IP-címének gazdaelőtagja (/32-es előtag). Szabályozhatja az Azure-on meghirdetett helyszíni hálózati előtagok körét az Azure Virtual Network hozzáférésének biztosításához.
 
-Is előfordulhat, hogy tartalmazza a VNet-címelőtagjait, például a nagy privát IP-címterület (például: 10.0.0.0/8) némelyike nagyobb előtagok hirdethető meg. Vegye figyelembe, ha az előtagok nem lehet azonos a VNet-előtagok egyike. A rendszer elutasítja a virtuális hálózat előtagjaival azonos útvonalakat.
+Bizonyos, például egy nagy privát IP-címteret (például 10.0.0.0/8) a virtuális hálózat címelőtagjainak tartalmazhatják nagyobb előtagok is meghirdethetők. Vegye figyelembe, hogy az előtagok nem egyezhetnek a virtuális hálózat előtagjainak egyikével sem. A rendszer elutasítja a virtuális hálózat előtagjaival azonos útvonalakat.
 
-### <a name="multitunnel"></a>Egy VNet és egy helyszíni hely közötti több alagutat támogatja a BGP-alapú automatikus feladatátvételi
-Ugyanazon a helyen több kapcsolat is létesíthető az Azure virtuális hálózat és a helyszíni VPN-eszközök között. Ezen képesség révén több alagút (elérési út) létesíthető a két hálózat között, aktív-aktív konfiguráció formájában. Ha az alagutat egyik le van választva, visszavonja a megfelelő útvonalak BGP keresztül, és automatikusan lesz a forgalom a fennmaradó alagutak.
+### <a name="multitunnel"></a>Virtuális hálózat és helyszíni helyek között több alagút támogatja a BGP-alapú automatikus feladatátvétellel
+Ugyanazon a helyen több kapcsolat is létesíthető az Azure virtuális hálózat és a helyszíni VPN-eszközök között. Ezen képesség révén több alagút (elérési út) létesíthető a két hálózat között, aktív-aktív konfiguráció formájában. Ha az alagutak valamelyike le van választva, az annak megfelelő útvonalak BGP-n keresztül visszavonásra kerülnek, és a forgalom automatikusan lesz a többi alagútra.
 
 A következő ábra erre a magas rendelkezésre állású beállításra mutat egyszerű példát:
 
 ![Több aktív elérési út](./media/vpn-gateway-bgp-overview/multiple-active-tunnels.png)
 
-### <a name="transitrouting"></a>Támogatja a tranzit útválasztást a helyszíni hálózatokhoz és a több Azure Vnet között
+### <a name="transitrouting"></a>A helyszíni hálózatai és a több Azure virtuális hálózat közötti tranzit jellegű Útválasztás támogatása
 A BGP több átjáró számára biztosítja a különböző hálózatokról származó előtagok megtanulásának és propagálásának lehetőségét, és hogy azok közvetlen vagy közvetett módon csatlakoznak-e. Ezzel engedélyezhető az Azure VPN-átjárók használatával történő tranzit útválasztás a helyszínek között vagy több Azure virtuális hálózaton.
 
 A következő ábra egy olyan, több elérési úttal rendelkező, többugrásos topológiára mutat példát, amely két helyszíni hálózat közötti tranzit adatátvitelre képes, Azure VPN-átjárókon keresztül, a Microsoft Networks keretein belül:
 
 ![Többugrásos átvitel](./media/vpn-gateway-bgp-overview/full-mesh-transit.png)
 
-## <a name="faq"></a>A BGP – GYAKORI KÉRDÉSEK
+## <a name="faq"></a>BGP – GYAKORI KÉRDÉSEK
 [!INCLUDE [vpn-gateway-faq-bgp-include](../../includes/vpn-gateway-faq-bgp-include.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 A BGP helyek és virtuális hálózatok közötti kapcsolathoz történő konfigurálásának lépéseit [A BGP használatának első lépései Azure VPN-átjárókon](vpn-gateway-bgp-resource-manager-ps.md) című részben tekintheti meg.
 

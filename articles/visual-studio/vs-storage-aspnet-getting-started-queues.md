@@ -1,6 +1,6 @@
 ---
-title: Ismerkedés az Azure várólista-tároló és a Visual Studio kapcsolódó szolgáltatások (ASP.NET) |} Microsoft Docs
-description: Ismerkedés az Azure üzenetsorának tárhelyet használ egy ASP.NET-projekt, a Visual Studio egy tárfiókot, a Visual Studio kapcsolódó szolgáltatások használatával történő kapcsolódás után
+title: Az Azure queue storage és a Visual Studio csatlakoztatott szolgáltatások (ASP.NET) használatának első lépései |} A Microsoft Docs
+description: Ismerkedés az Azure queue storage használata az ASP.NET-projektben a Visual Studióban egy storage-fiók használata a Visual Studio csatlakoztatott szolgáltatásain való csatlakozást követően
 services: storage
 author: ghogen
 manager: douge
@@ -12,20 +12,20 @@ ms.topic: conceptual
 ms.date: 12/23/2016
 ms.author: ghogen
 ms.openlocfilehash: d06fde0dc6c289a09b9fe4c9e2ffbb50c3027490
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2018
-ms.locfileid: "31798321"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38719442"
 ---
-# <a name="get-started-with-azure-queue-storage-and-visual-studio-connected-services-aspnet"></a>Ismerkedés az Azure várólista-tároló és a Visual Studio kapcsolódó szolgáltatások (ASP.NET)
+# <a name="get-started-with-azure-queue-storage-and-visual-studio-connected-services-aspnet"></a>Ismerkedés az Azure queue storage és a Visual Studio csatlakoztatott szolgáltatások (ASP.NET)
 [!INCLUDE [storage-try-azure-tools-queues](../../includes/storage-try-azure-tools-queues.md)]
 
 ## <a name="overview"></a>Áttekintés
 
-Az Azure várólista-tároló alkalmazás-összetevők közötti üzenetküldési felhő biztosít. A méretezhető alkalmazások tervezésekor az alkalmazás összetevői gyakran le vannak választva, hogy egymástól függetlenül lehessen őket méretezni. A Queue Storage aszinkron üzenetkezelést biztosít az alkalmazások összetevői közötti kommunikációhoz, függetlenül attól, hogy az összetevők a felhőben, asztali gépen, egy helyszíni kiszolgálón vagy egy mobileszközön futnak. A Queue Storage támogatja az aszinkron feladatok kezelését és a feldolgozási munkafolyamatok kialakítását is.
+Az Azure queue storage felhőbeli üzenetkezelést alkalmazás-összetevők közötti biztosít. A méretezhető alkalmazások tervezésekor az alkalmazás összetevői gyakran le vannak választva, hogy egymástól függetlenül lehessen őket méretezni. A Queue Storage aszinkron üzenetkezelést biztosít az alkalmazások összetevői közötti kommunikációhoz, függetlenül attól, hogy az összetevők a felhőben, asztali gépen, egy helyszíni kiszolgálón vagy egy mobileszközön futnak. A Queue Storage támogatja az aszinkron feladatok kezelését és a feldolgozási munkafolyamatok kialakítását is.
 
-Ez az oktatóanyag bemutatja, hogyan írhat kódot ASP.NET olyan gyakori forgatókönyveket tartalmaz Azure üzenetsor-kezelési tárolási entitások használata. Ilyen például a gyakori feladatokat, mint egy Azure-üzenetsorba, létrehozása és hozzáadása, módosítása, olvasása, és eltávolítása a üzenetsor-üzeneteket.
+Ez az oktatóanyag bemutatja, hogyan írhat kódot ASP.NET az Azure queue storage entitások használata néhány gyakori forgatókönyvet. Ezek a forgatókönyvek között megtalálható a gyakori feladatokat, mint létrehozása az Azure-üzenetsort, és hozzáadása, módosítása, olvasó és üzenetsorbeli üzenetek eltávolítása.
 
 ##<a name="prerequisites"></a>Előfeltételek
 
@@ -38,21 +38,21 @@ Ez az oktatóanyag bemutatja, hogyan írhat kódot ASP.NET olyan gyakori forgat�
 
 [!INCLUDE [storage-development-environment-include](../../includes/vs-storage-aspnet-getting-started-setup-dev-env.md)]
 
-### <a name="create-an-mvc-controller"></a>Hozzon létre az MVC-vezérlő 
+### <a name="create-an-mvc-controller"></a>Hozzon létre egy MVC-vezérlő 
 
-1. A a **Megoldáskezelőben**, kattintson a jobb gombbal **tartományvezérlők**, és a helyi menüből válassza ki a **Hozzáadás -> tartományvezérlő**.
+1. Az a **Megoldáskezelőben**, kattintson a jobb gombbal **tartományvezérlők**, és a helyi menüből válassza az **Hozzáadás -> vezérlő**.
 
-    ![Vezérlő hozzáadása az ASP.NET MVC alkalmazások számára](./media/vs-storage-aspnet-getting-started-queues/add-controller-menu.png)
+    ![Vezérlő hozzáadása egy ASP.NET MVC-alkalmazáshoz](./media/vs-storage-aspnet-getting-started-queues/add-controller-menu.png)
 
-1. A a **hozzáadása Scaffold** párbeszédablakban válassza **MVC 5 vezérlő - üres**, és válassza ki **Hozzáadás**.
+1. A a **hozzáadása Scaffold** párbeszédpanelen válassza **MVC 5 vezérlő - üres**, és válassza ki **Hozzáadás**.
 
     ![Adja meg az MVC-vezérlő típusa](./media/vs-storage-aspnet-getting-started-queues/add-controller.png)
 
-1. Az a **vezérlő hozzáadása** párbeszédpanelen, a tartományvezérlő nevét *QueuesController*, és válassza ki **Hozzáadás**.
+1. Az a **vezérlő hozzáadása** párbeszédpanelen adja a vezérlő *QueuesController*, és válassza ki **Hozzáadás**.
 
-    ![Neve az MVC-vezérlő](./media/vs-storage-aspnet-getting-started-queues/add-controller-name.png)
+    ![Az MVC-vezérlő neve](./media/vs-storage-aspnet-getting-started-queues/add-controller-name.png)
 
-1. Adja hozzá a következő *használatával* irányelvek a `QueuesController.cs` fájlt:
+1. Adja hozzá a következő *használatával* irányelveket a `QueuesController.cs` fájlt:
 
     ```csharp
     using Microsoft.Azure;
@@ -62,15 +62,15 @@ Ez az oktatóanyag bemutatja, hogyan írhat kódot ASP.NET olyan gyakori forgat�
     ```
 ## <a name="create-a-queue"></a>Üzenetsor létrehozása
 
-A következő lépések bemutatják, hogyan várólista létrehozása:
+A következő lépések bemutatják, hogyan hozhat létre egy várólista:
 
 > [!NOTE]
 > 
-> Ez a szakasz azt feltételezi, hogy végrehajtotta a [beállította a fejlesztőkörnyezetet](#set-up-the-development-environment). 
+> Ez a szakasz azt feltételezi, hogy végrehajtotta a lépéseket [a fejlesztési környezet beállítása](#set-up-the-development-environment). 
 
 1. Nyissa meg az `QueuesController.cs` fájlt. 
 
-1. Adja hozzá a hívott metódus **CreateQueue** , amely visszaadja az **ActionResult**.
+1. Adjon meg egy metódust nevű **CreateQueue** , amely adja vissza egy **ActionResult**.
 
     ```csharp
     public ActionResult CreateQueue()
@@ -81,41 +81,41 @@ A következő lépések bemutatják, hogyan várólista létrehozása:
     }
     ```
 
-1. Belül a **CreateQueue** módszer, lekérni egy **CloudStorageAccount** objektum, amely a tárfiók adatait jelöli. A tárolási kapcsolati karakterlánc és tárfiókadatok beolvasása az Azure szolgáltatás konfigurációs az alábbi kód használatával: (módosítása  *&lt;tárfióknév >* elérni az Azure storage-fiók nevére.)
+1. Belül a **CreateQueue** metódus első egy **CloudStorageAccount** objektum, amely a storage-fiók adatait jelöli. A tárolási kapcsolati karakterlánccal és a tárfiókjával kapcsolatos információkat kaphat az Azure szolgáltatás konfigurációja a következő kód használatával: (módosítása  *&lt;storage-fiók-neve >* Ön az Azure storage-fiók neve fér hozzá.)
    
     ```csharp
     CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
        CloudConfigurationManager.GetSetting("<storage-account-name>_AzureStorageConnectionString"));
     ```
 
-1. Első egy **CloudQueueClient** objektum által jelképezett várólista szolgáltatás ügyfél.
+1. Get- **CloudQueueClient** objektum egy várólista szolgáltatásügyfél jelöli.
    
     ```csharp
     CloudQueueClient queueClient = storageAccount.CreateCloudQueueClient();
     ```
-1. Első egy **CloudQueue** hivatkozni kell a kívánt sor nevét képviselő objektum. A **CloudQueueClient.GetQueueReference** metódus nem tesz egy kérelmet a queue storage. A referencia-e a várólista létezik adja vissza. 
+1. Get- **CloudQueue** egy hivatkozást a kívánt üzenetsor neve képviselő objektum. A **CloudQueueClient.GetQueueReference** metódus nem derül egy kérelmet a queue storage. A referencia-e a várólista létezik adja vissza. 
    
     ```csharp
     CloudQueue queue = queueClient.GetQueueReference("test-queue");
     ```
 
-1. Hívja a **CloudQueue.CreateIfNotExists** módszer a várólista létrehozására, ha még nem létezik. A **CloudQueue.CreateIfNotExists** metódus beolvasása **igaz** , ha a várólista nem létezik, és sikeresen létrejött. Ellenkező esetben **hamis** adja vissza.    
+1. Hívja a **CloudQueue.CreateIfNotExists** metódust hozzon létre egy üzenetsort, ha még nem található. A **CloudQueue.CreateIfNotExists** metódus visszatért **igaz** Ha az üzenetsor nem létezik, és sikeresen létrehozva. Ellenkező esetben **hamis** adja vissza.    
 
     ```csharp
     ViewBag.Success = queue.CreateIfNotExists();
     ```
 
-1. Frissítés a **ViewBag** a várólista nevét.
+1. Frissítés a **ViewBag** az üzenetsor nevére.
 
     ```csharp
     ViewBag.QueueName = queue.Name;
     ```
 
-1. A a **Solution Explorer**, bontsa ki a **nézetek** mappát, kattintson a jobb gombbal **várólisták**, és válassza a helyi menüben a **Hozzáadás -> nézet**.
+1. A a **Megoldáskezelőben**, bontsa ki a **nézetek** mappát, kattintson a jobb gombbal **üzenetsorok**, és a helyi menüből válassza ki a **Hozzáadás -> nézet**.
 
-1. Az a **nézet hozzáadása** párbeszédpanelen adja meg **CreateQueue** a nézet nevét, majd válassza a **Hozzáadás**.
+1. Az a **nézet hozzáadása** párbeszédpanelen adja meg **CreateQueue** a nézet nevét, és válassza a **Hozzáadás**.
 
-1. Nyissa meg `CreateQueue.cshtml`, és módosítsa úgy, hogy például a következő kódrészletet:
+1. Nyissa meg `CreateQueue.cshtml`, és módosítsa, hogy a következő kódrészletet hasonlóan néz ki:
 
     ```csharp
     @{
@@ -127,31 +127,31 @@ A következő lépések bemutatják, hogyan várólista létrehozása:
     Creation of @ViewBag.QueueName @(ViewBag.Success == true ? "succeeded" : "failed")
     ```
 
-1. Az a **Megoldáskezelőben**, bontsa ki a **Nézet -> megosztott** mappát, majd nyissa meg `_Layout.cshtml`.
+1. Az a **Megoldáskezelőben**, bontsa ki a **Nézet -> megosztott** mappát, és nyissa meg `_Layout.cshtml`.
 
-1. Után utolsó **Html.ActionLink**, adja hozzá a következő **Html.ActionLink**:
+1. Az utolsó után **Html.ActionLink**, adja hozzá a következő **Html.ActionLink**:
 
     ```html
     <li>@Html.ActionLink("Create queue", "CreateQueue", "Queues")</li>
     ```
 
-1. Futtassa az alkalmazást, és válassza ki **létrehozás várólista** az alábbi képernyőfelvételhez hasonló eredmények megtekintése érdekében:
+1. Futtassa az alkalmazást, és válassza ki **üzenetsor létrehozása** eredmények az alábbi képernyőfelvételhez hasonló megtekintéséhez:
   
     ![Üzenetsor létrehozása](./media/vs-storage-aspnet-getting-started-queues/create-queue-results.png)
 
-    Ahogy korábban említettük a **CloudQueue.CreateIfNotExists** metódus beolvasása **igaz** csak a várólista nem létezik és jön létre. Ezért amikor a várólista létezik-e, futtassa az alkalmazást, ha a metódus visszaadja **hamis**. Az alkalmazás többször is lefuthat, az alkalmazás ismételt futtatása előtt kell törölnie a várólistát. A sor törlése megteheti a **CloudQueue.Delete** metódust. A várólista használatával is törölheti a [Azure-portálon](http://go.microsoft.com/fwlink/p/?LinkID=525040) vagy a [Microsoft Azure Tártallózó](../vs-azure-tools-storage-manage-with-storage-explorer.md).  
+    Ahogy korábban említettük a **CloudQueue.CreateIfNotExists** metódus visszatért **igaz** csak az üzenetsor nem létezik a és jön létre. Ezért, ha az alkalmazás futtatása során a várólista létezik, a metódus adja vissza **hamis**. Az alkalmazás futtatásához többször, az alkalmazás újbóli futtatása előtt kell törölnie a várólistát. A várólista törlése keresztül lehetséges az **CloudQueue.Delete** metódust. Az üzenetsor használatával is törölhet az [az Azure portal](http://go.microsoft.com/fwlink/p/?LinkID=525040) vagy a [Microsoft Azure Storage Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md).  
 
-## <a name="add-a-message-to-a-queue"></a>A várólista üzenet hozzáadása
+## <a name="add-a-message-to-a-queue"></a>Adjon meg egy üzenetet egy üzenetsorba
 
-Miután megismerte [egy sor](#create-a-queue), erre a várólistára üzenetet is hozzáadhat. Ez a szakasz bemutatja, hogyan üzenet ad hozzá egy várólista *teszt-várólista*. 
+Miután [létrehozott egy üzenetsort](#create-a-queue), üzenetet az üzenetsornak is hozzáadhat. Ez a szakasz végigvezeti a felvesz egy üzenetet egy üzenetsorba *test-várólista*. 
 
 > [!NOTE]
 > 
-> Ez a szakasz azt feltételezi, hogy végrehajtotta a [beállította a fejlesztőkörnyezetet](#set-up-the-development-environment). 
+> Ez a szakasz azt feltételezi, hogy végrehajtotta a lépéseket [a fejlesztési környezet beállítása](#set-up-the-development-environment). 
 
 1. Nyissa meg az `QueuesController.cs` fájlt.
 
-1. Adja hozzá a hívott metódus **AddMessage** , amely visszaadja az **ActionResult**.
+1. Adjon meg egy metódust nevű **AddMessage** , amely adja vissza egy **ActionResult**.
 
     ```csharp
     public ActionResult AddMessage()
@@ -162,49 +162,49 @@ Miután megismerte [egy sor](#create-a-queue), erre a várólistára üzenetet i
     }
     ```
  
-1. Belül a **AddMessage** módszer, lekérni egy **CloudStorageAccount** objektum, amely a tárfiók adatait jelöli. A tárolási kapcsolati karakterlánc és tárfiókadatok beolvasása az Azure szolgáltatás konfigurációs az alábbi kód használatával: (módosítása  *&lt;tárfióknév >* elérni az Azure storage-fiók nevére.)
+1. Belül a **AddMessage** metódus első egy **CloudStorageAccount** objektum, amely a storage-fiók adatait jelöli. A tárolási kapcsolati karakterlánccal és a tárfiókjával kapcsolatos információkat kaphat az Azure szolgáltatás konfigurációja a következő kód használatával: (módosítása  *&lt;storage-fiók-neve >* Ön az Azure storage-fiók neve fér hozzá.)
    
     ```csharp
     CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
        CloudConfigurationManager.GetSetting("<storage-account-name>_AzureStorageConnectionString"));
     ```
    
-1. Első egy **CloudQueueClient** objektum által jelképezett várólista szolgáltatás ügyfél.
+1. Get- **CloudQueueClient** objektum egy várólista szolgáltatásügyfél jelöli.
    
     ```csharp
     CloudQueueClient queueClient = storageAccount.CreateCloudQueueClient();
     ```
 
-1. Első egy **CloudQueueContainer** hivatkozni kell a várólista képviselő objektum. 
+1. Get- **CloudQueueContainer** egy hivatkozást a várólista képviselő objektum. 
    
     ```csharp
     CloudQueue queue = queueClient.GetQueueReference("test-queue");
     ```
 
-1. Hozzon létre a **CloudQueueMessage** az üzenetet a várólistában hozzá szeretné képviselő objektum. A **CloudQueueMessage** objektum vagy egy karakterláncból (UTF-8 formátumban), vagy egy bájttömböt hozható létre.
+1. Hozzon létre a **CloudQueueMessage** az üzenetet az üzenetsorba hozzáadni kívánt képviselő objektum. A **CloudQueueMessage** objektum vagy egy karakterláncból (UTF-8 formátumban), vagy egy bájttömböt hozható létre.
 
     ```csharp
     CloudQueueMessage message = new CloudQueueMessage("Hello, Azure Queue Storage");
     ```
 
-1. Hívja a **CloudQueue.AddMessage** a várakozási sorba a messaged adható hozzá.
+1. Hívja a **CloudQueue.AddMessage** metódus hozzáadása a messaged az üzenetsorba.
 
     ```csharp
     queue.AddMessage(message);
     ```
 
-1. Néhány létrehozásáról és **ViewBag** a Nézet tulajdonságai.
+1. Hozzon létre, és állítsa be néhány **ViewBag** a nézet tulajdonságait.
 
     ```csharp
     ViewBag.QueueName = queue.Name;
     ViewBag.Message = message.AsString;
     ```
 
-1. A a **Solution Explorer**, bontsa ki a **nézetek** mappát, kattintson a jobb gombbal **várólisták**, és válassza a helyi menüben a **Hozzáadás -> nézet**.
+1. A a **Megoldáskezelőben**, bontsa ki a **nézetek** mappát, kattintson a jobb gombbal **üzenetsorok**, és a helyi menüből válassza ki a **Hozzáadás -> nézet**.
 
-1. Az a **nézet hozzáadása** párbeszédpanelen adja meg **AddMessage** a nézet nevét, majd válassza a **Hozzáadás**.
+1. Az a **nézet hozzáadása** párbeszédpanelen adja meg **AddMessage** a nézet nevét, és válassza a **Hozzáadás**.
 
-1. Nyissa meg `AddMessage.cshtml`, és módosítsa úgy, hogy például a következő kódrészletet:
+1. Nyissa meg `AddMessage.cshtml`, és módosítsa, hogy a következő kódrészletet hasonlóan néz ki:
 
     ```csharp
     @{
@@ -216,31 +216,31 @@ Miután megismerte [egy sor](#create-a-queue), erre a várólistára üzenetet i
     The message '@ViewBag.Message' was added to the queue '@ViewBag.QueueName'.
     ```
 
-1. Az a **Megoldáskezelőben**, bontsa ki a **Nézet -> megosztott** mappát, majd nyissa meg `_Layout.cshtml`.
+1. Az a **Megoldáskezelőben**, bontsa ki a **Nézet -> megosztott** mappát, és nyissa meg `_Layout.cshtml`.
 
-1. Után utolsó **Html.ActionLink**, adja hozzá a következő **Html.ActionLink**:
+1. Az utolsó után **Html.ActionLink**, adja hozzá a következő **Html.ActionLink**:
 
     ```html
     <li>@Html.ActionLink("Add message", "AddMessage", "Queues")</li>
     ```
 
-1. Futtassa az alkalmazást, és válassza ki **Hozzáadás üzenet** az alábbi képernyőfelvételhez hasonló eredmények megtekintése érdekében:
+1. Futtassa az alkalmazást, és válassza ki **üzenet hozzáadása** eredmények az alábbi képernyőfelvételhez hasonló megtekintéséhez:
   
     ![Üzenet hozzáadása](./media/vs-storage-aspnet-getting-started-queues/add-message-results.png)
 
-A két szakasz - [üzenet olvasása az üzenetsorból eltávolítása nélkül](#read-a-message-from-a-queue-without-removing-it) és [olvasási és eltávolítása egy üzenetet az üzenetsorból](#read-and-remove-a-message-from-a-queue) -bemutatják, hogyan lehet üzenetek olvasása az üzenetsorból.    
+A két szakasz - [üzenet olvasása az üzenetsorból nélkül lehet inaktiválni](#read-a-message-from-a-queue-without-removing-it) és [olvasási és a egy üzenetet az üzenetsorból remove](#read-and-remove-a-message-from-a-queue) -bemutatják, hogyan üzenetek olvasása az üzenetsorból.    
 
-## <a name="read-a-message-from-a-queue-without-removing-it"></a>Egy üzenet olvasása az üzenetsorból eltávolítása nélkül
+## <a name="read-a-message-from-a-queue-without-removing-it"></a>Üzenet olvasása az üzenetsorból nélkül lehet inaktiválni
 
-Ez a szakasz bemutatja, hogyan való aszinkron üzenet (az első üzenet olvasása eltávolítása nélkül).  
+Ez a szakasz bemutatja, hogyan betekintés az üzenetsorban található üzenet (olvassa el az első üzenet eltávolítása nélkül).  
 
 > [!NOTE]
 > 
-> Ez a szakasz azt feltételezi, hogy végrehajtotta a [beállította a fejlesztőkörnyezetet](#set-up-the-development-environment). 
+> Ez a szakasz azt feltételezi, hogy végrehajtotta a lépéseket [a fejlesztési környezet beállítása](#set-up-the-development-environment). 
 
 1. Nyissa meg az `QueuesController.cs` fájlt.
 
-1. Adja hozzá a hívott metódus **PeekMessage** , amely visszaadja az **ActionResult**.
+1. Adjon meg egy metódust nevű **PeekMessage** , amely adja vissza egy **ActionResult**.
 
     ```csharp
     public ActionResult PeekMessage()
@@ -251,43 +251,43 @@ Ez a szakasz bemutatja, hogyan való aszinkron üzenet (az első üzenet olvasá
     }
     ```
  
-1. Belül a **PeekMessage** módszer, lekérni egy **CloudStorageAccount** objektum, amely a tárfiók adatait jelöli. A tárolási kapcsolati karakterlánc és tárfiókadatok beolvasása az Azure szolgáltatás konfigurációs az alábbi kód használatával: (módosítása  *&lt;tárfióknév >* elérni az Azure storage-fiók nevére.)
+1. Belül a **PeekMessage** metódus első egy **CloudStorageAccount** objektum, amely a storage-fiók adatait jelöli. A tárolási kapcsolati karakterlánccal és a tárfiókjával kapcsolatos információkat kaphat az Azure szolgáltatás konfigurációja a következő kód használatával: (módosítása  *&lt;storage-fiók-neve >* Ön az Azure storage-fiók neve fér hozzá.)
    
     ```csharp
     CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
        CloudConfigurationManager.GetSetting("<storage-account-name>_AzureStorageConnectionString"));
     ```
    
-1. Első egy **CloudQueueClient** objektum által jelképezett várólista szolgáltatás ügyfél.
+1. Get- **CloudQueueClient** objektum egy várólista szolgáltatásügyfél jelöli.
    
     ```csharp
     CloudQueueClient queueClient = storageAccount.CreateCloudQueueClient();
     ```
 
-1. Első egy **CloudQueueContainer** hivatkozni kell a várólista képviselő objektum. 
+1. Get- **CloudQueueContainer** egy hivatkozást a várólista képviselő objektum. 
    
     ```csharp
     CloudQueue queue = queueClient.GetQueueReference("test-queue");
     ```
 
-1. Hívja a **CloudQueue.PeekMessage** módszer a várólista első üzenetébe olvasni a eltávolítása nélkül. 
+1. Hívja a **CloudQueue.PeekMessage** módszer, olvassa el a várólista első üzenetébe anélkül, hogy eltávolítaná az üzenetsorból. 
 
     ```csharp
     CloudQueueMessage message = queue.PeekMessage();
     ```
 
-1. Frissítés a **ViewBag** két értékekkel: a várólista nevét és az üzenetet, amely lett beolvasva. A **CloudQueueMessage** vezérlőnek két tulajdonságait az objektum értékének lekérését: **CloudQueueMessage.AsBytes** és **CloudQueueMessage.AsString**. **AsString** (ebben a példában használt) egy karakterláncot ad vissza, miközben **AsBytes** adja vissza egy bájttömböt.
+1. Frissítés a **ViewBag** a két érték: a várólista nevét és az üzenetet, amely lett beolvasva. A **CloudQueueMessage** objektum esetében az objektum érték első két tulajdonságok közzététele: **CloudQueueMessage.AsBytes** és **CloudQueueMessage.AsString**. **AsString** (ebben a példában használt) egy karakterláncot ad vissza, miközben **AsBytes** Bájttömbbel adja vissza.
 
     ```csharp
     ViewBag.QueueName = queue.Name; 
     ViewBag.Message = (message != null ? message.AsString : "");
     ```
 
-1. A a **Solution Explorer**, bontsa ki a **nézetek** mappát, kattintson a jobb gombbal **várólisták**, és válassza a helyi menüben a **Hozzáadás -> nézet**.
+1. A a **Megoldáskezelőben**, bontsa ki a **nézetek** mappát, kattintson a jobb gombbal **üzenetsorok**, és a helyi menüből válassza ki a **Hozzáadás -> nézet**.
 
-1. Az a **nézet hozzáadása** párbeszédpanelen adja meg **PeekMessage** a nézet nevét, majd válassza a **Hozzáadás**.
+1. Az a **nézet hozzáadása** párbeszédpanelen adja meg **PeekMessage** a nézet nevét, és válassza a **Hozzáadás**.
 
-1. Nyissa meg `PeekMessage.cshtml`, és módosítsa úgy, hogy például a következő kódrészletet:
+1. Nyissa meg `PeekMessage.cshtml`, és módosítsa, hogy a következő kódrészletet hasonlóan néz ki:
 
     ```csharp
     @{
@@ -302,29 +302,29 @@ Ez a szakasz bemutatja, hogyan való aszinkron üzenet (az első üzenet olvasá
     </table>    
     ```
 
-1. Az a **Megoldáskezelőben**, bontsa ki a **Nézet -> megosztott** mappát, majd nyissa meg `_Layout.cshtml`.
+1. Az a **Megoldáskezelőben**, bontsa ki a **Nézet -> megosztott** mappát, és nyissa meg `_Layout.cshtml`.
 
-1. Után utolsó **Html.ActionLink**, adja hozzá a következő **Html.ActionLink**:
+1. Az utolsó után **Html.ActionLink**, adja hozzá a következő **Html.ActionLink**:
 
     ```html
     <li>@Html.ActionLink("Peek message", "PeekMessage", "Queues")</li>
     ```
 
-1. Futtassa az alkalmazást, és válassza ki **betekintés üzenet** az alábbi képernyőfelvételhez hasonló eredmények megtekintése érdekében:
+1. Futtassa az alkalmazást, és válassza ki **Peek message** eredmények az alábbi képernyőfelvételhez hasonló megtekintéséhez:
   
-    ![Üzenet megtekintése](./media/vs-storage-aspnet-getting-started-queues/peek-message-results.png)
+    ![Belepillantás üzenetbe](./media/vs-storage-aspnet-getting-started-queues/peek-message-results.png)
 
 ## <a name="read-and-remove-a-message-from-a-queue"></a>Olvassa el, és távolítsa el az üzenetet az üzenetsorból
 
-Ebben a szakaszban megismerheti, hogyan kiolvasni, és távolítsa el az üzenetet az üzenetsorból.   
+Ebben a szakaszban megismerheti, hogyan olvassa el, és távolítsa el az üzenetet egy üzenetsorból.   
 
 > [!NOTE]
 > 
-> Ez a szakasz azt feltételezi, hogy végrehajtotta a [beállította a fejlesztőkörnyezetet](#set-up-the-development-environment). 
+> Ez a szakasz azt feltételezi, hogy végrehajtotta a lépéseket [a fejlesztési környezet beállítása](#set-up-the-development-environment). 
 
 1. Nyissa meg az `QueuesController.cs` fájlt.
 
-1. Adja hozzá a hívott metódus **ReadMessage** , amely visszaadja az **ActionResult**.
+1. Adjon meg egy metódust nevű **ReadMessage** , amely adja vissza egy **ActionResult**.
 
     ```csharp
     public ActionResult ReadMessage()
@@ -335,50 +335,50 @@ Ebben a szakaszban megismerheti, hogyan kiolvasni, és távolítsa el az üzenet
     }
     ```
  
-1. Belül a **ReadMessage** módszer, lekérni egy **CloudStorageAccount** objektum, amely a tárfiók adatait jelöli. A tárolási kapcsolati karakterlánc és tárfiókadatok beolvasása az Azure szolgáltatás konfigurációs az alábbi kód használatával: (módosítása  *&lt;tárfióknév >* elérni az Azure storage-fiók nevére.)
+1. Belül a **ReadMessage** metódus első egy **CloudStorageAccount** objektum, amely a storage-fiók adatait jelöli. A tárolási kapcsolati karakterlánccal és a tárfiókjával kapcsolatos információkat kaphat az Azure szolgáltatás konfigurációja a következő kód használatával: (módosítása  *&lt;storage-fiók-neve >* Ön az Azure storage-fiók neve fér hozzá.)
    
     ```csharp
     CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
        CloudConfigurationManager.GetSetting("<storage-account-name>_AzureStorageConnectionString"));
     ```
    
-1. Első egy **CloudQueueClient** objektum által jelképezett várólista szolgáltatás ügyfél.
+1. Get- **CloudQueueClient** objektum egy várólista szolgáltatásügyfél jelöli.
    
     ```csharp
     CloudQueueClient queueClient = storageAccount.CreateCloudQueueClient();
     ```
 
-1. Első egy **CloudQueueContainer** hivatkozni kell a várólista képviselő objektum. 
+1. Get- **CloudQueueContainer** egy hivatkozást a várólista képviselő objektum. 
    
     ```csharp
     CloudQueue queue = queueClient.GetQueueReference("test-queue");
     ```
 
-1. Hívja a **CloudQueue.GetMessage** metódus olvasni a várólista első üzenetébe. A **CloudQueue.GetMessage** módszer lehetővé teszi az üzenet nem látható üzeneteket olvasó, így nincs más kód módosíthatja vagy törölheti az üzenet feldolgozásakor a program a azt többi kód számára (alapértelmezés) 30 másodpercig. Az üzenet nem látható idő megváltoztatásához módosítsa a **visibilityTimeout** átadott paraméter a **CloudQueue.GetMessage** metódust.
+1. Hívja a **CloudQueue.GetMessage** módszer, olvassa el a várólista első üzenetébe. A **CloudQueue.GetMessage** módszer lehetővé teszi az üzenet nem látható (alapértelmezés szerint), hogy nincs más kód módosíthatja vagy törölheti az üzenet feldolgozásakor a, az üzenetek olvasásához többi kód 30 másodpercig. Az üzenet nem látható idő megváltoztatásához módosítsa a **visibilityTimeout** paramétert, hogy a rendszer a **CloudQueue.GetMessage** metódust.
 
     ```csharp
     // This message will be invisible to other code for 30 seconds.
     CloudQueueMessage message = queue.GetMessage();     
     ```
 
-1. Hívja a **CloudQueueMessage.Delete** metódus az üzenet törlése az üzenetsorból.
+1. Hívja a **CloudQueueMessage.Delete** metódus használatával törölheti az üzenetet az üzenetsorból.
 
     ```csharp
     queue.DeleteMessage(message);
     ```
 
-1. Frissítés a **ViewBag** törli az üzenetet, és a várólista nevét.
+1. Frissítés a **ViewBag** törli az üzenetet, és az üzenetsor nevére.
 
     ```csharp
     ViewBag.QueueName = queue.Name;
     ViewBag.Message = message.AsString;
     ```
  
-1. A a **Solution Explorer**, bontsa ki a **nézetek** mappát, kattintson a jobb gombbal **várólisták**, és válassza a helyi menüben a **Hozzáadás -> nézet**.
+1. A a **Megoldáskezelőben**, bontsa ki a **nézetek** mappát, kattintson a jobb gombbal **üzenetsorok**, és a helyi menüből válassza ki a **Hozzáadás -> nézet**.
 
-1. Az a **nézet hozzáadása** párbeszédpanelen adja meg **ReadMessage** a nézet nevét, majd válassza a **Hozzáadás**.
+1. Az a **nézet hozzáadása** párbeszédpanelen adja meg **ReadMessage** a nézet nevét, és válassza a **Hozzáadás**.
 
-1. Nyissa meg `ReadMessage.cshtml`, és módosítsa úgy, hogy például a következő kódrészletet:
+1. Nyissa meg `ReadMessage.cshtml`, és módosítsa, hogy a következő kódrészletet hasonlóan néz ki:
 
     ```csharp
     @{
@@ -393,29 +393,29 @@ Ebben a szakaszban megismerheti, hogyan kiolvasni, és távolítsa el az üzenet
     </table>
     ```
 
-1. Az a **Megoldáskezelőben**, bontsa ki a **Nézet -> megosztott** mappát, majd nyissa meg `_Layout.cshtml`.
+1. Az a **Megoldáskezelőben**, bontsa ki a **Nézet -> megosztott** mappát, és nyissa meg `_Layout.cshtml`.
 
-1. Után utolsó **Html.ActionLink**, adja hozzá a következő **Html.ActionLink**:
+1. Az utolsó után **Html.ActionLink**, adja hozzá a következő **Html.ActionLink**:
 
     ```html
     <li>@Html.ActionLink("Read/Delete message", "ReadMessage", "Queues")</li>
     ```
 
-1. Futtassa az alkalmazást, és válassza ki **olvasás/törlés üzenet** az alábbi képernyőfelvételhez hasonló eredmények megtekintése érdekében:
+1. Futtassa az alkalmazást, és válassza ki **olvasása/törlése üzenet** eredmények az alábbi képernyőfelvételhez hasonló megtekintéséhez:
   
-    ![Olvasási és törlési üzenet](./media/vs-storage-aspnet-getting-started-queues/read-message-results.png)
+    ![Olvassa el, és az üzenet törlése](./media/vs-storage-aspnet-getting-started-queues/read-message-results.png)
 
 ## <a name="get-the-queue-length"></a>Az üzenetsor hosszának lekérése
 
-Ez a szakasz bemutatja az beszerzése a várólista hossza (üzenetek száma). 
+Ez a szakasz mutatja be, hogyan tehet szert az üzenetsor hossza (üzenetek száma). 
 
 > [!NOTE]
 > 
-> Ez a szakasz azt feltételezi, hogy végrehajtotta a [beállította a fejlesztőkörnyezetet](#set-up-the-development-environment). 
+> Ez a szakasz azt feltételezi, hogy végrehajtotta a lépéseket [a fejlesztési környezet beállítása](#set-up-the-development-environment). 
 
 1. Nyissa meg az `QueuesController.cs` fájlt.
 
-1. Adja hozzá a hívott metódus **GetQueueLength** , amely visszaadja az **ActionResult**.
+1. Adjon meg egy metódust nevű **GetQueueLength** , amely adja vissza egy **ActionResult**.
 
     ```csharp
     public ActionResult GetQueueLength()
@@ -426,49 +426,49 @@ Ez a szakasz bemutatja az beszerzése a várólista hossza (üzenetek száma).
     }
     ```
  
-1. Belül a **ReadMessage** módszer, lekérni egy **CloudStorageAccount** objektum, amely a tárfiók adatait jelöli. A tárolási kapcsolati karakterlánc és tárfiókadatok beolvasása az Azure szolgáltatás konfigurációs az alábbi kód használatával: (módosítása  *&lt;tárfióknév >* elérni az Azure storage-fiók nevére.)
+1. Belül a **ReadMessage** metódus első egy **CloudStorageAccount** objektum, amely a storage-fiók adatait jelöli. A tárolási kapcsolati karakterlánccal és a tárfiókjával kapcsolatos információkat kaphat az Azure szolgáltatás konfigurációja a következő kód használatával: (módosítása  *&lt;storage-fiók-neve >* Ön az Azure storage-fiók neve fér hozzá.)
    
     ```csharp
     CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
        CloudConfigurationManager.GetSetting("<storage-account-name>_AzureStorageConnectionString"));
     ```
    
-1. Első egy **CloudQueueClient** objektum által jelképezett várólista szolgáltatás ügyfél.
+1. Get- **CloudQueueClient** objektum egy várólista szolgáltatásügyfél jelöli.
    
     ```csharp
     CloudQueueClient queueClient = storageAccount.CreateCloudQueueClient();
     ```
 
-1. Első egy **CloudQueueContainer** hivatkozni kell a várólista képviselő objektum. 
+1. Get- **CloudQueueContainer** egy hivatkozást a várólista képviselő objektum. 
    
     ```csharp
     CloudQueue queue = queueClient.GetQueueReference("test-queue");
     ```
 
-1. Hívja a **CloudQueue.FetchAttributes** metódusának segítéségével lekérheti a várólista attribútumok (beleértve a hossza). 
+1. Hívja a **CloudQueue.FetchAttributes** metódussal lehet bekérni az üzenetsor-attribútumok (beleértve a hossza). 
 
     ```csharp
     queue.FetchAttributes();
     ```
 
-6. Hozzáférés a **CloudQueue.ApproximateMessageCount** tulajdonság használatával beolvassa a várólista hossza.
+6. Hozzáférés a **CloudQueue.ApproximateMessageCount** tulajdonság az üzenetsor hosszának lekérése.
  
     ```csharp
     int? nMessages = queue.ApproximateMessageCount;
     ```
 
-1. Frissítés a **ViewBag** a nevét, valamint a várólista hossza.
+1. Frissítés a **ViewBag** a nevét, valamint az üzenetsor hossza.
 
     ```csharp
     ViewBag.QueueName = queue.Name;
     ViewBag.Length = nMessages;
     ```
  
-1. A a **Solution Explorer**, bontsa ki a **nézetek** mappát, kattintson a jobb gombbal **várólisták**, és válassza a helyi menüben a **Hozzáadás -> nézet**.
+1. A a **Megoldáskezelőben**, bontsa ki a **nézetek** mappát, kattintson a jobb gombbal **üzenetsorok**, és a helyi menüből válassza ki a **Hozzáadás -> nézet**.
 
-1. Az a **nézet hozzáadása** párbeszédpanelen adja meg **GetQueueLength** a nézet nevét, majd válassza a **Hozzáadás**.
+1. Az a **nézet hozzáadása** párbeszédpanelen adja meg **GetQueueLength** a nézet nevét, és válassza a **Hozzáadás**.
 
-1. Nyissa meg `GetQueueLengthMessage.cshtml`, és módosítsa úgy, hogy például a következő kódrészletet:
+1. Nyissa meg `GetQueueLengthMessage.cshtml`, és módosítsa, hogy a következő kódrészletet hasonlóan néz ki:
 
     ```csharp
     @{
@@ -480,29 +480,29 @@ Ez a szakasz bemutatja az beszerzése a várólista hossza (üzenetek száma).
     The queue '@ViewBag.QueueName' has a length of (number of messages): @ViewBag.Length
     ```
 
-1. Az a **Megoldáskezelőben**, bontsa ki a **Nézet -> megosztott** mappát, majd nyissa meg `_Layout.cshtml`.
+1. Az a **Megoldáskezelőben**, bontsa ki a **Nézet -> megosztott** mappát, és nyissa meg `_Layout.cshtml`.
 
-1. Után utolsó **Html.ActionLink**, adja hozzá a következő **Html.ActionLink**:
+1. Az utolsó után **Html.ActionLink**, adja hozzá a következő **Html.ActionLink**:
 
     ```html
     <li>@Html.ActionLink("Get queue length", "GetQueueLength", "Queues")</li>
     ```
 
-1. Futtassa az alkalmazást, és válassza ki **várólista hosszának lekérése** az alábbi képernyőfelvételhez hasonló eredmények megtekintése érdekében:
+1. Futtassa az alkalmazást, és válassza ki **üzenetsor hosszának lekérése** eredmények az alábbi képernyőfelvételhez hasonló megtekintéséhez:
   
-    ![Get-várólista hossza](./media/vs-storage-aspnet-getting-started-queues/get-queue-length-results.png)
+    ![Első sor hossza](./media/vs-storage-aspnet-getting-started-queues/get-queue-length-results.png)
 
 
 ## <a name="delete-a-queue"></a>Üzenetsor törlése
-Ez a szakasz bemutatja, hogyan várólista törlése. 
+Ez a szakasz bemutatja, hogyan várólistát töröl. 
 
 > [!NOTE]
 > 
-> Ez a szakasz azt feltételezi, hogy végrehajtotta a [beállította a fejlesztőkörnyezetet](#set-up-the-development-environment). 
+> Ez a szakasz azt feltételezi, hogy végrehajtotta a lépéseket [a fejlesztési környezet beállítása](#set-up-the-development-environment). 
 
 1. Nyissa meg az `QueuesController.cs` fájlt.
 
-1. Adja hozzá a hívott metódus **DeleteQueue** , amely visszaadja az **ActionResult**.
+1. Adjon meg egy metódust nevű **DeleteQueue** , amely adja vissza egy **ActionResult**.
 
     ```csharp
     public ActionResult DeleteQueue()
@@ -513,42 +513,42 @@ Ez a szakasz bemutatja, hogyan várólista törlése.
     }
     ```
  
-1. Belül a **DeleteQueue** módszer, lekérni egy **CloudStorageAccount** objektum, amely a tárfiók adatait jelöli. A tárolási kapcsolati karakterlánc és tárfiókadatok beolvasása az Azure szolgáltatás konfigurációs az alábbi kód használatával: (módosítása  *&lt;tárfióknév >* elérni az Azure storage-fiók nevére.)
+1. Belül a **DeleteQueue** metódus első egy **CloudStorageAccount** objektum, amely a storage-fiók adatait jelöli. A tárolási kapcsolati karakterlánccal és a tárfiókjával kapcsolatos információkat kaphat az Azure szolgáltatás konfigurációja a következő kód használatával: (módosítása  *&lt;storage-fiók-neve >* Ön az Azure storage-fiók neve fér hozzá.)
    
     ```csharp
     CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
        CloudConfigurationManager.GetSetting("<storage-account-name>_AzureStorageConnectionString"));
     ```
    
-1. Első egy **CloudQueueClient** objektum által jelképezett várólista szolgáltatás ügyfél.
+1. Get- **CloudQueueClient** objektum egy várólista szolgáltatásügyfél jelöli.
    
     ```csharp
     CloudQueueClient queueClient = storageAccount.CreateCloudQueueClient();
     ```
 
-1. Első egy **CloudQueueContainer** hivatkozni kell a várólista képviselő objektum. 
+1. Get- **CloudQueueContainer** egy hivatkozást a várólista képviselő objektum. 
    
     ```csharp
     CloudQueue queue = queueClient.GetQueueReference("test-queue");
     ```
 
-1. Hívja a **CloudQueue.Delete** metódus által képviselt a várólista törlése a **CloudQueue** objektum.
+1. Hívja a **CloudQueue.Delete** metódus használatával törölheti az üzenetsor által képviselt a **CloudQueue** objektum.
 
     ```csharp
     queue.Delete();
     ```
 
-1. Frissítés a **ViewBag** a nevét, valamint a várólista hossza.
+1. Frissítés a **ViewBag** a nevét, valamint az üzenetsor hossza.
 
     ```csharp
     ViewBag.QueueName = queue.Name;
     ```
  
-1. A a **Solution Explorer**, bontsa ki a **nézetek** mappát, kattintson a jobb gombbal **várólisták**, és válassza a helyi menüben a **Hozzáadás -> nézet**.
+1. A a **Megoldáskezelőben**, bontsa ki a **nézetek** mappát, kattintson a jobb gombbal **üzenetsorok**, és a helyi menüből válassza ki a **Hozzáadás -> nézet**.
 
-1. Az a **nézet hozzáadása** párbeszédpanelen adja meg **DeleteQueue** a nézet nevét, majd válassza a **Hozzáadás**.
+1. Az a **nézet hozzáadása** párbeszédpanelen adja meg **DeleteQueue** a nézet nevét, és válassza a **Hozzáadás**.
 
-1. Nyissa meg `DeleteQueue.cshtml`, és módosítsa úgy, hogy például a következő kódrészletet:
+1. Nyissa meg `DeleteQueue.cshtml`, és módosítsa, hogy a következő kódrészletet hasonlóan néz ki:
 
     ```csharp
     @{
@@ -560,20 +560,20 @@ Ez a szakasz bemutatja, hogyan várólista törlése.
     @ViewBag.QueueName deleted.
     ```
 
-1. Az a **Megoldáskezelőben**, bontsa ki a **Nézet -> megosztott** mappát, majd nyissa meg `_Layout.cshtml`.
+1. Az a **Megoldáskezelőben**, bontsa ki a **Nézet -> megosztott** mappát, és nyissa meg `_Layout.cshtml`.
 
-1. Után utolsó **Html.ActionLink**, adja hozzá a következő **Html.ActionLink**:
+1. Az utolsó után **Html.ActionLink**, adja hozzá a következő **Html.ActionLink**:
 
     ```html
     <li>@Html.ActionLink("Delete queue", "DeleteQueue", "Queues")</li>
     ```
 
-1. Futtassa az alkalmazást, és válassza ki **várólista hosszának lekérése** az alábbi képernyőfelvételhez hasonló eredmények megtekintése érdekében:
+1. Futtassa az alkalmazást, és válassza ki **üzenetsor hosszának lekérése** eredmények az alábbi képernyőfelvételhez hasonló megtekintéséhez:
   
     ![Üzenetsor törlése](./media/vs-storage-aspnet-getting-started-queues/delete-queue-results.png)
 
 ## <a name="next-steps"></a>További lépések
 Az Azure-ban való adattárolás további lehetőségeiről tekintse meg a többi szolgáltatás-útmutatót.
 
-  * [Ismerkedés az Azure blob storage és a Visual Studio kapcsolódó szolgáltatások (ASP.NET)](../storage/vs-storage-aspnet-getting-started-blobs.md)
-  * [Ismerkedés az Azure table storage és a Visual Studio kapcsolódó szolgáltatások (ASP.NET)](vs-storage-aspnet-getting-started-tables.md)
+  * [Ismerkedés az Azure blob storage és a Visual Studio csatlakoztatott szolgáltatások (ASP.NET)](../storage/vs-storage-aspnet-getting-started-blobs.md)
+  * [Ismerkedés az Azure table storage és a Visual Studio csatlakoztatott szolgáltatások (ASP.NET)](vs-storage-aspnet-getting-started-tables.md)

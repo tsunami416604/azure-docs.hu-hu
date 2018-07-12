@@ -1,1 +1,1 @@
-2017. November 15., kezdve virtuális gépek csak a lesznek a [Azure-portálon](https://portal.azure.com). 
+2017. November 15-én kezdve virtuális gépek csak az elérhető lesz a [az Azure portal](https://portal.azure.com). 

@@ -1,6 +1,6 @@
 ---
-title: Hozzon létre egy Load Balancer szabványos nyilvános zónaredundáns nyilvános IP-cím cím előtér Azure parancssori felületével |} Microsoft Docs
-description: Megtudhatja, hogyan hozzon létre egy Load Balancer szabványos nyilvános zónaredundáns nyilvános IP-cím cím előtér Azure parancssori felület használatával
+title: Hozzon létre egy nyilvános Load Balancer Standard zónaredundáns nyilvános előtérbeli IP-Címmel cím Azure parancssori felületével |} A Microsoft Docs
+description: Ismerje meg, hogyan hozhat létre egy nyilvános Load Balancer Standard zónaredundáns nyilvános előtérbeli IP-Címmel cím az Azure CLI használatával
 services: load-balancer
 documentationcenter: na
 author: KumudD
@@ -16,29 +16,29 @@ ms.workload: infrastructure-services
 ms.date: 03/22/2018
 ms.author: kumud
 ms.openlocfilehash: f3f479de8bc3975f4da07a7761ffc99f976db20e
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2018
-ms.locfileid: "30320237"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38235475"
 ---
-#  <a name="create-a-public-load-balancer-standard-with-zone-redundant-frontend-using-azure-cli"></a>Hozzon létre egy Load Balancer szabványos nyilvános zónaredundáns előtér Azure parancssori felület használatával
+#  <a name="create-a-public-load-balancer-standard-with-zone-redundant-frontend-using-azure-cli"></a>Az Azure CLI-vel zónaredundáns előtér egy nyilvános Load Balancer Standard létrehozása
 
-Ez a cikk lépésről-lépésre nyilvános létrehozása [Load Balancer szabványos](https://aka.ms/azureloadbalancerstandard) a zónaredundáns időtúllépést IP szabványos nyilvános cím segítségével.
+Ez a cikk végigvezeti egy nyilvános létrehozása [Load Balancer Standard](https://aka.ms/azureloadbalancerstandard) és a egy zónaredundáns frontend-IP szabványos nyilvános cím segítségével.
 
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Ha telepíti, és a parancssori felület helyileg választja, győződjön meg arról, hogy telepítette-e a legújabb [Azure CLI 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) és az Azure-fiókkal bejelentkezett [az bejelentkezési](https://docs.microsoft.com/cli/azure/reference-index?view=azure-cli-latest#az_login).
+Ha helyi telepítése és használata a parancssori felület választja, győződjön meg arról, hogy telepítette-e a legújabb [Azure CLI 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) és az Azure-fiókkal jelentkezett be [az bejelentkezési](https://docs.microsoft.com/cli/azure/reference-index?view=azure-cli-latest#az_login).
 
 > [!NOTE]
- Rendelkezésre állási zónák támogatása select Azure-erőforrások és a régiók és a virtuális gép mérete családok érhető el. További információ az első lépések, és mely Azure-erőforrások, régiók és virtuális gép mérete családok megpróbálhatja a rendelkezésre állási zónákat, lásd: [rendelkezésre állási zónák áttekintése](https://docs.microsoft.com/azure/availability-zones/az-overview). Ha támogatásra van szüksége, keresse fel a [StackOverflow](https://stackoverflow.com/questions/tagged/azure-availability-zones) fórumot, vagy [nyisson meg egy Azure támogatási jegyet](../azure-supportability/how-to-create-azure-support-request.md?toc=%2fazure%2fvirtual-network%2ftoc.json). 
+ A rendelkezésre állási zónák támogatása az Azure-erőforrásokhoz, és a régiók és a virtuális gép méretcsaládjai érhető el. További információ az első lépésekről, és melyik Azure-erőforrások, régiók, és próbálja meg a rendelkezésre állási zónák a virtuális gép méretcsaládjai, lásd: [a rendelkezésre állási zónákat áttekintő](https://docs.microsoft.com/azure/availability-zones/az-overview). Ha támogatásra van szüksége, keresse fel a [StackOverflow](https://stackoverflow.com/questions/tagged/azure-availability-zones) fórumot, vagy [nyisson meg egy Azure támogatási jegyet](../azure-supportability/how-to-create-azure-support-request.md?toc=%2fazure%2fvirtual-network%2ftoc.json). 
 
 
 ## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
 
-Hozzon létre egy erőforráscsoportot, a következő parancsot:
+Hozzon létre egy erőforráscsoportot, a következő paranccsal:
 
 ```azurecli-interactive
 az group create --name myResourceGroupSLB --location westeurope
@@ -46,7 +46,7 @@ az group create --name myResourceGroupSLB --location westeurope
 
 ## <a name="create-a-public-ip-standard"></a>Hozzon létre egy nyilvános IP Standard
 
-Hozzon létre egy nyilvános IP szabványos a következő parancsot:
+Hozzon létre egy nyilvános IP Standard a következő paranccsal:
 
 ```azurecli-interactive
 az network public-ip create --resource-group myResourceGroupSLB --name myPublicIP --sku Standard
@@ -54,24 +54,24 @@ az network public-ip create --resource-group myResourceGroupSLB --name myPublicI
 
 ## <a name="create-a-load-balancer"></a>Load Balancer létrehozása
 
-Hozzon létre egy Load Balancer szabványos nyilvános a szabványos nyilvános IP-cím a következő parancsot az előző lépésben létrehozott:
+A Standard nyilvános IP-címmel, amely a következő parancsot az előző lépésben létrehozott egy nyilvános Load Balancer Standard létrehozása:
 
 ```azurecli-interactive
 az network lb create --resource-group myResourceGroupSLB --name myLoadBalancer --public-ip-address myPublicIP --frontend-ip-name myFrontEnd --backend-pool-name myBackEndPool --sku Standard
 ```
 
-## <a name="create-an-lb-probe-on-port-80"></a>Hozzon létre egy LB mintavételi 80-as porton
+## <a name="create-an-lb-probe-on-port-80"></a>Hozzon létre egy LB probe 80-as porton
 
-A következő paranccsal terheléselosztói állapotfigyelő mintavétel létrehozása:
+Hozzon létre egy betöltési terheléselosztó állapotmintát a következő paranccsal:
 
 ```azurecli-interactive
 az network lb probe create --resource-group myResourceGroupSLB --lb-name myLoadBalancer \
   --name myHealthProbe --protocol tcp --port 80
 ```
 
-## <a name="create-an-lb-rule-for-port-80"></a>A 80-as port LB szabály létrehozása
+## <a name="create-an-lb-rule-for-port-80"></a>A 80-as porton LB-szabály létrehozása
 
-Hozzon létre olyan terheléselosztó szabályhoz a következő parancsot:
+Hozzon létre egy terheléselosztó-szabályt a következő paranccsal:
 
 ```azurecli-interactive
 az network lb rule create --resource-group myResourceGroup --lb-name myLoadBalancer --name myLoadBalancerRuleWeb \
@@ -80,7 +80,7 @@ az network lb rule create --resource-group myResourceGroup --lb-name myLoadBalan
 ```
 
 ## <a name="next-steps"></a>További lépések
-- További információ [szabványos terheléselosztó és a rendelkezésre állási zónák](load-balancer-standard-availability-zones.md).
+- Tudjon meg többet [Standard Load Balancer és rendelkezésre állási zónák](load-balancer-standard-availability-zones.md).
 
 
 

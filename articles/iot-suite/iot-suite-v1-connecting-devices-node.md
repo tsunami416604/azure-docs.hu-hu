@@ -1,12 +1,12 @@
 ---
-title: "Csatlakoztassa a Node.js használatával |} Microsoft Docs"
-description: "Eszköz csatlakoztatása az Azure IoT Suite előre konfigurált távoli figyelési megoldást igényelnek olyan alkalmazással Node.js nyelven írt ismerteti."
-services: 
+title: A Node.js használatával eszköz csatlakoztatása |} A Microsoft Docs
+description: Ismerteti, hogyan lehet egy eszköz csatlakoztatása az Azure IoT Suite előre konfigurált távoli figyelési megoldás egy Node.js-ben írt alkalmazás használatával.
+services: ''
 suite: iot-suite
 documentationcenter: na
 author: dominicbetts
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: fc50a33f-9fb9-42d7-b1b8-eb5cff19335e
 ms.service: iot-suite
 ms.devlang: na
@@ -16,28 +16,29 @@ ms.workload: na
 ms.date: 11/02/2017
 ms.author: dobett
 ms.openlocfilehash: 87a2e97638508eef1d90a219cfb38d1fcac81d55
-ms.sourcegitcommit: 295ec94e3332d3e0a8704c1b848913672f7467c8
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2017
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38723881"
 ---
-# <a name="connect-your-device-to-the-remote-monitoring-preconfigured-solution-nodejs"></a>Csatlakoztassa az eszközt a távoli felügyeleti előkonfigurált megoldás (Node.js)
+# <a name="connect-your-device-to-the-remote-monitoring-preconfigured-solution-nodejs"></a>Az eszköz csatlakoztatása a távoli figyelési előre konfigurált megoldás (Node.js)
 [!INCLUDE [iot-suite-v1-selector-connecting](../../includes/iot-suite-v1-selector-connecting.md)]
 
-## <a name="create-a-nodejs-sample-solution"></a>Node.js sample megoldás létrehozása
+## <a name="create-a-nodejs-sample-solution"></a>Hozzon létre egy node.js-minta megoldás
 
-Győződjön meg arról, hogy Node.js verziót 0.11.5, vagy később a fejlesztői gépen telepítve. Futtathat `node --version` verziójának a parancssorból.
+Győződjön meg arról, hogy a Node.js verzió 0.11.5 vagy újabb van telepítve a fejlesztői gépen. Futtathat `node --version` a parancssorban a verzió ellenőrzéséhez.
 
-1. Hozzon létre egy nevű **RemoteMonitoring** a fejlesztési számítógépén. Keresse meg a mappát a parancssori környezetben.
+1. Hozzon létre egy nevű **RemoteMonitoring** a fejlesztői gépen. Keresse meg a mappát a parancssori környezetben.
 
-1. Futtassa az alábbi parancsokat a végre kell hajtania a mintaalkalmazás letöltése és telepítése a csomagok:
+1. Futtassa az alábbi parancsokat a át kell adnia a mintaalkalmazás letöltése és telepítése a csomagokat:
 
     ```
     npm init
     npm install azure-iot-device azure-iot-device-mqtt --save
     ```
 
-1. Az a **RemoteMonitoring** mappa, hozzon létre egy nevű fájlt **remote_monitoring.js**. Nyissa meg ezt a fájlt egy szövegszerkesztőben.
+1. Az a **RemoteMonitoring** mappában hozzon létre egy fájlt nevű **remote_monitoring.js**. Nyissa meg ezt a fájlt egy szövegszerkesztőben.
 
 1. Az a **remote_monitoring.js** fájlt, adja hozzá a következő `require` utasításokat:
 
@@ -57,7 +58,7 @@ Győződjön meg arról, hogy Node.js verziót 0.11.5, vagy később a fejleszt�
     var deviceId = ConnectionString.parse(connectionString).DeviceId;
     ```
 
-1. Adja hozzá a következő változók néhány alapvető telemetriai adatok meghatározásához:
+1. Adja hozzá a következő változókat néhány alapvető telemetriai adatok meghatározásához:
 
     ```nodejs
     var temperature = 50;
@@ -65,7 +66,7 @@ Győződjön meg arról, hogy Node.js verziót 0.11.5, vagy később a fejleszt�
     var externalTemperature = 55;
     ```
 
-1. Adja hozzá a következő segítő függvény nyomtatni a művelet eredménye:
+1. Adja hozzá a következő segédfüggvény nyomtatni a művelet eredménye:
 
     ```nodejs
     function printErrorFor(op) {
@@ -75,7 +76,7 @@ Győződjön meg arról, hogy Node.js verziót 0.11.5, vagy később a fejleszt�
     }
     ```
 
-1. Adja hozzá a következő segítő függvény használatával a telemetriai adatok értékek ügyfélfuttatási:
+1. Adja hozzá a következő segédfüggvény véletlenszerűvé tétele a telemetriai adatok értékek használatával:
 
     ```nodejs
     function generateRandomIncrement() {
@@ -83,7 +84,7 @@ Győződjön meg arról, hogy Node.js verziót 0.11.5, vagy később a fejleszt�
     }
     ```
 
-1. Adja hozzá a következő definícióját a **deviceinfo információja** objektum indítási küld az eszköz:
+1. Adja hozzá a következő definícióját a **DeviceInfo** objektumot, az eszköz az indításakor küld:
 
     ```nodejs
     var deviceMetaData = {
@@ -97,7 +98,7 @@ Győződjön meg arról, hogy Node.js verziót 0.11.5, vagy később a fejleszt�
     };
     ```
 
-1. Adja hozzá a következő definícióját az eszköz iker jelentett értékek. Ez a definíció tartalmazza az eszköz támogatja a közvetlen módszerek:
+1. Adja hozzá a következő definícióját az ikereszköz jelentett értékek. Ez a definíció tartalmazza az eszköz támogatja a közvetlen módszerek:
 
     ```nodejs
     var reportedProperties = {
@@ -132,7 +133,7 @@ Győződjön meg arról, hogy Node.js verziót 0.11.5, vagy később a fejleszt�
     }
     ```
 
-1. Adja hozzá a következő függvény kezelni a **újraindítás** közvetlen metódus hívása:
+1. Adja hozzá a következő függvényt kezelni a **újraindítás** közvetlen metódus hívása:
 
     ```nodejs
     function onReboot(request, response) {
@@ -150,7 +151,7 @@ Győződjön meg arról, hogy Node.js verziót 0.11.5, vagy később a fejleszt�
     }
     ```
 
-1. Adja hozzá a következő függvény kezelni a **InitiateFirmwareUpdate** közvetlen metódus hívása. Ez a közvetlen módszer egy paraméter használatával adja meg a belső vezérlőprogram kép helyét, és kezdeményezi a belső vezérlőprogram frissítése az eszközön aszinkron módon:
+1. Adja hozzá a következő függvényt kezelni a **InitiateFirmwareUpdate** közvetlen metódus meghívása. A közvetlen metódus egy paraméter használatával adja meg a belső vezérlőprogram rendszerképének letöltésére helyét, és kezdeményez a belsővezérlőprogram-frissítési az eszközön aszinkron módon történik:
 
     ```nodejs
     function onInitiateFirmwareUpdate(request, response) {
@@ -177,12 +178,12 @@ Győződjön meg arról, hogy Node.js verziót 0.11.5, vagy később a fejleszt�
 
 1. Adja hozzá a következő kódot:
 
-    * Nyissa meg a kapcsolatot.
-    * Küldjön a **deviceinfo információja** objektum.
-    * A kezelő kívánt tulajdonságok beállítása.
-    * Jelentett tulajdonságok küldése.
-    * A közvetlen módszer kezelők regisztrálni.
-    * Indítsa el a telemetriai adatok küldését.
+    * Nyissa meg a kapcsolat.
+    * Küldés a **DeviceInfo** objektum.
+    * Állítsa be a kívánt tulajdonságok kezelő.
+    * Jelentett tulajdonságokat küldhet.
+    * Regisztrálja a kezelők számára a közvetlen metódusok.
+    * Indítsa el a telemetriai adatokat küldenek.
 
     ```nodejs
     client.open(function (err) {
@@ -244,7 +245,7 @@ Győződjön meg arról, hogy Node.js verziót 0.11.5, vagy később a fejleszt�
 
 1. A módosítások mentése a **remote_monitoring.js** fájlt.
 
-1. A következő parancsot egy parancssorból indítsa el a mintaalkalmazást:
+1. Futtassa a következő parancsot a mintaalkalmazás elindításához parancsot a parancssorba:
    
     ```
     node remote_monitoring.js

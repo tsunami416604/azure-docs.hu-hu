@@ -1,31 +1,31 @@
 ---
-title: Az Azure Resource Manager sablon erőforrások |} Microsoft Docs
-description: Az Azure Resource Manager-sablonok deklaratív JSON-szintaxis használatával erőforrások szakasza ismerteti.
+title: Az Azure Resource Manager-sablon erőforrásainak |} A Microsoft Docs
+description: Ismerteti az Azure Resource Manager-sablonok deklaratív JSON-szintaxist használva erőforrás szakaszába.
 services: azure-resource-manager
 documentationcenter: na
 author: tfitzmac
-manager: timlt
 editor: tysonn
 ms.service: azure-resource-manager
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/13/2017
+ms.date: 07/10/2018
 ms.author: tomfitz
-ms.openlocfilehash: 12dc5921cc1977b53f0457d89537193eadded188
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 1619f3bfdf49820ec529947ea02d1602a7b2aa8c
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38723832"
 ---
-# <a name="resources-section-of-azure-resource-manager-templates"></a>Azure Resource Manager-sablonok források szakasza
+# <a name="resources-section-of-azure-resource-manager-templates"></a>Erőforrások szakaszában található Azure Resource Manager-sablonok
 
-Erőforrások területen adja meg az erőforrások telepítése vagy frissítése. Ez a szakasz kérheti le bonyolult, mert ismernie kell a típusok esetében helyez üzembe adja meg a megfelelő értékeket.
+Az erőforrások szakaszban meghatározhatja az erőforrásokat, amelyek telepítése vagy frissítése. Ez a szakasz is kapott bonyolult, mert ismernie kell a típusok, helyezi üzembe, adja meg a megfelelő értékeket.
 
 ## <a name="available-properties"></a>Rendelkezésre álló tulajdonságok
 
-Meghatározhatja az erőforrások az alábbi szerkezettel:
+Az alábbi struktúra használatával erőforrásokat határoz meg:
 
 ```json
 "resources": [
@@ -84,33 +84,56 @@ Meghatározhatja az erőforrások az alábbi szerkezettel:
 | Elem neve | Szükséges | Leírás |
 |:--- |:--- |:--- |
 | feltétel | Nem | Logikai érték, amely azt jelzi, hogy telepítve van-e az erőforrás. |
-| apiVersion |Igen |Az erőforrás létrehozásához használt a REST API verziója. |
-| type |Igen |Az erőforrás típusát. Ezt az értéket az erőforrás-szolgáltató és az erőforrástípus névtere kombinációja (például **Microsoft.Storage/storageAccounts**). |
-| név |Igen |Az erőforrás nevét. A név URI összetevő korlátozások RFC3986 definiált kell követnie. Emellett Azure-szolgáltatások elérhetővé tenni az erőforrásnév kívül felek ellenőrzése a nevét, győződjön meg arról, hogy nincs egy másik identitás hamisításának kísérlet. |
-| location |Változó |Támogatja a megadott erőforráscsoport földrajzi elhelyezkedését. Kiválaszthatja a rendelkezésre álló helyeken, de általában érdemes válasszon egyet, amelynek mérete megközelítőleg a felhasználók. Általában is érdemes helyezendő erőforrásokat, amelyek ugyanabban a régióban kapcsolatba egymással. A legtöbb erőforrás szükséges egy helyre, de néhány típust (például egy szerepkör-hozzárendelés) igényel egy helyre. |
-| tags |Nem |Az erőforrás társított címkékkel. Címkékkel hogy logikusan rendszerezhesse az erőforrások az előfizetésből. |
-| Megjegyzések |Nem |A Megjegyzések a a sablonban lévő erőforrások dokumentálása |
-| másolás |Nem |Ha egynél több példány van szükség, az olyan erőforrások száma létrehozásához. Az alapértelmezett mód párhuzamos. Adja meg a soros módban, ha nem szeretné, hogy az összes vagy egy időben üzembe helyezendő erőforrásokat. További információkért lásd: [erőforrások több példánya létrehozása az Azure Resource Manager](resource-group-create-multiple.md). |
-| dependsOn |Nem |Ehhez az erőforráshoz központi telepítése előtt telepíteni kell erőforrások. Erőforrás-kezelő kiértékeli az erőforrások közti függőségeket, és telepíti azokat a megfelelő sorrendben. Ha nincsenek függő erőforrások, párhuzamos központi telepítés. Az érték lehet egy vesszővel elválasztott lista erőforrás nevét vagy egyedi erőforrás-azonosítók. Ez a sablon üzembe helyezett erőforrások csak felsorolása Erőforrások, amelyek nincsenek meghatározva a sablonban már léteznie kell. Kerülje a szükségtelen függőségek hozzáadásával még a központi telepítés lassú, és hozzon létre körkörös függőségi viszony. A beállítás függőségek útmutatást lásd: [függőségek meghatározása az Azure Resource Manager-sablonok](resource-group-define-dependencies.md). |
-| properties |Nem |Erőforrás-specifikus konfigurációs beállításokat. A tulajdonságok értékeit ugyanazok, mint a REST API művelet (PUT metódust) létrehozni az erőforrást a kérés törzsében meg az értékeket. Egy tulajdonság több példányát létrehozni egy másolatot tömb is megadható. |
-| sku | Nem | Bizonyos erőforrások értékeket, amelyek meghatározzák a Termékváltozat telepítendő engedélyezése. Például megadhatja a storage-fiókok felügyeletére szolgáló típusú. |
-| típusa | Nem | Bizonyos erőforrások engedélyezése egy érték, amely meghatározza a telepít erőforrás típusát. Megadhatja például, a típus Cosmos-adatbázis létrehozásához. |
-| csomag | Nem | Bizonyos erőforrások értékeket, amelyek meghatározzák a tervezi engedélyezése. Például megadhatja a virtuális gép Piactéri lemezképhez. | 
-| erőforrások |Nem |A múltbeli erőforrástól függő gyermekszintű erőforrása. Csak olyan típusú erőforrások a szülő erőforrás sémája által számukra engedélyezett. A gyermek-erőforrás teljesen minősített típusú tartalmaz szülő erőforrástípusra, például **Microsoft.Web/sites/extensions**. A szülő erőforrás függőség nem utal. Függőséget explicit módon meg kell adni. |
+| apiVersion |Igen |Az erőforrás létrehozásához használt REST API-verzió. |
+| type |Igen |Az erőforrás típusát. Ezt az értéket a névteret, az erőforrás-szolgáltató és az erőforrástípus kombinációja (például **Microsoft.Storage/storageAccounts**). |
+| név |Igen |Az erőforrás neve. A név RFC3986 meghatározott URI-összetevőt korlátozásokat kell követnie. Emellett az Azure-szolgáltatások elérhetővé az erőforrás neve kívüli felek ellenőrzése, hogy a név nem egy másik identitását meghamisítását tett kísérlet. |
+| location |Változó |Támogatott a megadott erőforráscsoport földrajzi helyét. Az elérhető helyek közül választhat, de általában logikus válasszon egyet a felhasználók közelében van. Általában is logikus helyezni erőforrásokat, amelyek ugyanabban a régióban léphetnek kapcsolatba egymással. A legtöbb erőforrástípusok szüksége egy olyan helyre, de bizonyos típusú (például a szerepkör-hozzárendelés) egy olyan helyre nem igényelnek. |
+| tags |Nem |Az erőforráshoz tartozó címkék. Hogy logikusan rendszerezhesse az erőforrások az előfizetésen címkékkel. |
+| Megjegyzések |Nem |Dokumentálja a sablonban az erőforrásokat a megjegyzések |
+| másolás |Nem |Ha több példány van szükség, az erőforrások létrehozásához számát. Az alapértelmezett mód párhuzamos. Adja meg a soros módra, amikor nem szeretné, hogy az összes vagy egy időben üzembe helyezendő erőforrásokat. További információkért lásd: [több erőforráspéldány létrehozása az Azure Resource Manager](resource-group-create-multiple.md). |
+| dependsOn |Nem |Az erőforrások telepíteni kell az erőforrás üzembe van helyezve. Resource Manager kiértékeli az erőforrások közti függőségeket, és a megfelelő sorrendben telepíti azokat. Ha az erőforrások nem függ egymástól, hogy helyezésük párhuzamosan. Az érték lehet egy erőforrás vesszővel elválasztott listáját nevét vagy az erőforrás egyedi azonosítók. Ez a sablon üzembe helyezett erőforrások csak listája. A sablonban nem meghatározott erőforrások már léteznie kell. Kerülje a szükségtelen függőségek hozzáadása a telepítéshez lelassíthatja, és hozzon létre körkörös függőségi. Beállítás függőségekkel kapcsolatos útmutatásért lásd: [függőségek meghatározása az Azure Resource Manager-sablonok](resource-group-define-dependencies.md). |
+| properties |Nem |Erőforrás-specifikus konfigurációs beállításokat. A tulajdonságok értékei ugyanazok, mint a REST API-művelet (PUT metódust) az erőforrás létrehozásához nyújt a kérelem törzsében szereplő értékek. Megadhat egy másolási tömböt egy tulajdonságot több példányát is. |
+| sku | Nem | Bizonyos erőforrások üzembe helyezéséhez a Termékváltozat definiáló engedélyezése. Ha például a tárfiókok a redundancia típusát is megadhat. |
+| típusa | Nem | Bizonyos erőforrások lehetővé teszik egy értéket, amely meghatározza a telepít erőforrás típusát. Ha például a Cosmos DB létrehozása típusát is megadhat. |
+| csomag | Nem | Bizonyos erőforrások lehetővé teszik az értékek, amelyek meghatározzák a csomag telepítéséhez. Ha például egy virtuális gépen a Marketplace-beli rendszerképét is megadhat. | 
+| erőforrások |Nem |Gyermek erőforrások, amelyek a definiált erőforrás függenek. Csak adja meg a séma a szülő erőforrás által számukra engedélyezett erőforrástípusok. Teljesen minősített erőforrás típusa, a gyermek tartalmazza a szülő erőforrás típusa, például **Microsoft.Web/sites/extensions**. A szülőerőforrás függőség nem implicit. Meg kell határoznia, hogy a függőséget explicit módon. |
+
+## <a name="condition"></a>Állapot
+
+Ha el kell döntenie, üzembe helyezés során e hozzon létre egy erőforrást, használja a `condition` elemet. Ez az elem értéke IGAZ vagy hamis értéket mutat. Ha az értéke true, az erőforrás üzembe van helyezve. FALSE (hamis) érték esetén az erőforrás nincs telepítve. Például adja meg, hogy van-e telepítve egy új tárfiókot, vagy egy meglévő tárfiókot használja, használja:
+
+```json
+{
+    "condition": "[equals(parameters('newOrExisting'),'new')]",
+    "type": "Microsoft.Storage/storageAccounts",
+    "name": "[variables('storageAccountName')]",
+    "apiVersion": "2017-06-01",
+    "location": "[resourceGroup().location]",
+    "sku": {
+        "name": "[variables('storageAccountType')]"
+    },
+    "kind": "Storage",
+    "properties": {}
+}
+```
+
+Egy teljes példát sablon által használt a `condition` elem, lásd: [egy új vagy meglévő virtuális hálózati, tárolási és nyilvános IP-Címmel rendelkező virtuális gép](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-new-or-existing-conditions).
 
 ## <a name="resource-specific-values"></a>Erőforrás-specifikus értékeket
 
-A **apiVersion**, **típus**, és **tulajdonságok** elemek eltérőek az egyes erőforrás. A **sku**, **jellegű**, és **terv** elemei a következők egyes erőforrástípusok esetében érhető el, de nem minden. Ezekhez a tulajdonságokhoz tartozó értékek meghatározásáról, lásd: [sablonra való hivatkozást](/azure/templates/).
+A **API-verzió**, **típus**, és **tulajdonságok** elemek különböznek az egyes erőforrástípusok. A **termékváltozat**, **kind**, és **terv** elemei bizonyos erőforrástípusok esetében elérhető, de nem minden. Ezek a tulajdonságok értékeit megállapításához lásd: [sablonreferenciája](/azure/templates/).
 
-## <a name="resource-names"></a>Erőforrások neve
-Általában három típusú erőforrásnevek a Resource Manager használata:
+## <a name="resource-names"></a>Erőforrás neve
 
-* Erőforrás neve, amely egyedinek kell lennie.
-* Erőforrás neve, amely nem kell egyedinek lennie, de válassza ki, amelyek segítenek azonosítani azokat az erőforrás nevének.
-* Erőforrás neve, amely lehet általános.
+Általában a Resource Managerben erőforrásnevek három típusú dolgozni:
 
-### <a name="unique-resource-names"></a>Egyedi erőforrás neve
-Egy adat-hozzáférési végponttal rendelkezik erőforrás típussal egyedi erőforrás nevét kell megadnia. Néhány gyakori erőforrástípusok esetében, amelyek egyedi nevet kell megadni a következők:
+* Erőforrás nevének egyedinek kell lennie.
+* Nem kell egyedinek lennie tartalmazó erőforrásneveket, de válassza ki, amelyek segítségével azonosíthatja az erőforrás nevének megadásához.
+* Lehet, hogy általános erőforrásnevet.
+
+### <a name="unique-resource-names"></a>Egyedi erőforrásnevek
+
+Adja meg a minden erőforrás típusa, amely rendelkezik egy adat-hozzáférési végpont egyedi erőforráscsoport nevét. Néhány gyakori erőforrástípusok igénylő egy egyedi nevet a következők:
 
 * Azure Storage<sup>1</sup> 
 * Web Apps funkció az Azure App Service-ben
@@ -122,9 +145,9 @@ Egy adat-hozzáférési végponttal rendelkezik erőforrás típussal egyedi er�
 * Azure Search
 * Azure HDInsight
 
-<sup>1</sup> tárfiókneveket is kisbetűnek kell lennie, 24 karakter vagy kevesebb, és nem rendelkezik a kötőjel.
+<sup>1</sup> tárfiókneveket is kisbetűnek kell lennie, 24 karakter vagy kevesebb, és nem kell minden kötőjel.
 
-A név megadásakor, manuálisan hozzon létre egy egyedi nevet, vagy használja a [uniqueString()](resource-group-template-functions-string.md#uniquestring) nevet generálni az adott függvényt. Érdemes azt is egy előtagot, vagy hogy utótag a **uniqueString** eredménye. Az egyedi név módosítása segítségével további könnyen azonosíthatja az erőforrás típusa a neve. Például egy egyedi nevet a tárfiók hozhat létre a következő változó használatával:
+A név megadásakor, manuálisan hozzon létre egy egyedi nevet, vagy használja a [uniqueString()](resource-group-template-functions-string.md#uniquestring) függvény használatával létrehoz egy nevet. Érdemes azt is adjon hozzá egy előtagot vagy az utótag az **uniqueString** eredményt. Az egyedi név módosítását segítségével további könnyen azonosíthatja az erőforrás típusa, a neve. Ha például egy storage-fiók egy egyedi nevet is létrehozhat használatával a következő változót:
 
 ```json
 "variables": {
@@ -133,7 +156,7 @@ A név megadásakor, manuálisan hozzon létre egy egyedi nevet, vagy használja
 ```
 
 ### <a name="resource-names-for-identification"></a>Az azonosításhoz erőforrásnevek
-Egyes erőforrástípusok esetében érdemes nevét, de a nevek nem rendelkeznek egyedinek kell lennie. Ezen erőforrás esetében adja meg a nevet, amely azonosítja az erőforrás-környezetben, mind az erőforrástípus.
+Bizonyos erőforrástípusok, neve, de a nevük érdemes nem rendelkezik egyedinek kell lennie. Ezek erőforrástípusok megadhat egy nevet, amely azonosítja az erőforrás-környezet és az erőforrás típusát egyaránt.
 
 ```json
 "parameters": {
@@ -148,7 +171,7 @@ Egyes erőforrástípusok esetében érdemes nevét, de a nevek nem rendelkeznek
 ```
 
 ### <a name="generic-resource-names"></a>Általános erőforrás neve
-Erőforrás esetében, amelyek többnyire keresztül érhető el egy másik erőforráscsoportban használhatja az általános neve nem változtatható a sablonban. Például beállíthatja egy szabványos, általános nevet tűzfalszabályok SQL-kiszolgálón:
+Minden erőforrás esetében, amelyet leginkább keresztül érhető el egy másik erőforrás egy általános nevet, amely nem változtatható a sablonban is használhatja. Például beállíthatja egy szabványos, általános tűzfalszabályokat nevet egy SQL-kiszolgálón:
 
 ```json
 {
@@ -159,23 +182,23 @@ Erőforrás esetében, amelyek többnyire keresztül érhető el egy másik erő
 ```
 
 ## <a name="location"></a>Hely
-Ha a sablonok telepítésével, meg kell adnia az egyes erőforrások helyét. Különböző típusú támogatott különböző helyeken. Az adott erőforrástípus előfizetés számára elérhető helyek listáját megjelenítéséhez használja az Azure PowerShell vagy az Azure parancssori felület. 
+Sablon üzembe helyezésekor, meg kell adnia az egyes erőforrások helyét. Különböző típusú különböző helyeken támogatottak. Az előfizetéshez, az adott erőforrástípushoz elérhető helyek listájának megtekintéséhez használja az Azure PowerShell vagy az Azure CLI. 
 
-Az alábbi példában PowerShell a helyek az beszerzése a `Microsoft.Web\sites` erőforrás típusa:
+Az alábbi példa a PowerShell segítségével kéri le a helyek a `Microsoft.Web\sites` erőforrás típusa:
 
 ```powershell
 ((Get-AzureRmResourceProvider -ProviderNamespace Microsoft.Web).ResourceTypes | Where-Object ResourceTypeName -eq sites).Locations
 ```
 
-Az alábbi példában Azure CLI 2.0 a helyek az beszerzése a `Microsoft.Web\sites` erőforrás típusa:
+Az alábbi példa az Azure CLI segítségével kéri le a helyek a `Microsoft.Web\sites` erőforrás típusa:
 
 ```azurecli
 az provider show -n Microsoft.Web --query "resourceTypes[?resourceType=='sites'].locations"
 ```
 
-Után annak meghatározásához, hogy az erőforrások támogatott helyek, a sablonban beállított helyről. Állítsa ezt az értéket a legegyszerűbb módja, amely támogatja a erőforrástípusok helyen hozzon létre egy erőforráscsoportot, és mindegyik helyen `[resourceGroup().location]`. A sablon különböző helyeken való újbóli, és nem módosítható a sablonból vagy a paraméterek az értékeket. 
+Annak meghatározásához, hogy az erőforrások a támogatott helyek, miután a sablonban beállított adott helyen. Ezt az értéket a legegyszerűbb módja az, hogy hozzon létre egy erőforráscsoportot egy helyen, amely támogatja a erőforrástípusok, és állítsa be a táblázatnak `[resourceGroup().location]`. Erőforráscsoportok különböző helyeken a sablon újbóli telepítése, és nem sem tudják módosítani a sablonban vagy a paraméterek. 
 
-A következő példa bemutatja, amelyek az erőforráscsoportot és ugyanazon a helyen a rendszer:
+Az alábbi példa bemutatja egy ugyanazon a helyen az erőforráscsoport üzembe helyezett tárfiókot:
 
 ```json
 {
@@ -204,7 +227,7 @@ A következő példa bemutatja, amelyek az erőforráscsoportot és ugyanazon a 
 }
 ```
 
-Ha szeretné kódba foglalni a hely a sablonban, adja meg a támogatott régiók egyikéhez sem nevét. A következő példa bemutatja egy tárfiókot, északi középső Régiójában mindig központilag telepített:
+Ha szüksége kódba foglalni a helyet a sablonban, adja meg a támogatott régiók közül a nevét. Az alábbi példa bemutatja egy storage-fiókot, amelyet mindig USA északi középső Régiója:
 
 ```json
 {
@@ -233,13 +256,13 @@ Ha szeretné kódba foglalni a hely a sablonban, adja meg a támogatott régiók
 ## <a name="tags"></a>Címkék
 [!INCLUDE [resource-manager-governance-tags](../../includes/resource-manager-governance-tags.md)]
 
-### <a name="add-tags-to-your-template"></a>Címkék hozzáadása a sablon
+### <a name="add-tags-to-your-template"></a>Címkék hozzáadása a sablonhoz
 
 [!INCLUDE [resource-manager-tags-in-templates](../../includes/resource-manager-tags-in-templates.md)]
 
-## <a name="child-resources"></a>Gyermek-erőforrások
+## <a name="child-resources"></a>Gyermek-erőforrás
 
-Egyes erőforrástípusok belül is meghatározhat gyermekerőforrásait tömbjét. Gyermek erőforrások olyan erőforrások, csak egy másik erőforrás keretén belül található. Például egy SQL-adatbázis nem létezhet egy SQL server nélkül így az adatbázis egy alárendelt kiszolgáló. Megadhatja, hogy az adatbázis, a kiszolgáló meghatározása.
+Bizonyos erőforrástípusok belül is meghatározhat gyermekerőforrásait tömbjét. Gyermek erőforrások olyan erőforrások, csak egy másik erőforrás keretén belül léteznek. Például egy SQL-adatbázis nem létezhet anélkül, hogy egy SQL server, az adatbázis a kiszolgáló gyermek. Az adatbázis a kiszolgáló meghatározásán határozhatja meg.
 
 ```json
 {
@@ -258,13 +281,13 @@ Egyes erőforrástípusok belül is meghatározhat gyermekerőforrásait tömbj�
 }
 ```
 
-Amikor beágyazott, a típusuk értéke `databases` , de a teljes erőforrás típusa `Microsoft.Sql/servers/databases`. Nincs megadva `Microsoft.Sql/servers/` mivel feltételezzük, hogy a szülő erőforrás típusból. A gyermek-erőforrás neve legyen `exampledatabase` , de a teljes nevet tartalmazza a szülő nevének. Nincs megadva `exampleserver` mivel feltételezzük, hogy a szülő erőforrás.
+Beágyazott, ha a típus értéke `databases` , de a teljes erőforrás típusa `Microsoft.Sql/servers/databases`. Nem ad meg `Microsoft.Sql/servers/` mivel feltételezzük, hogy az erőforrás típusa. A gyermek-erőforrás neve értékre van állítva `exampledatabase` , de a teljes nevet tartalmazza a szülő neve. Nem ad meg `exampleserver` mivel feltételezzük, hogy a szülő erőforrás.
 
 A gyermek erőforrástípus formátuma: `{resource-provider-namespace}/{parent-resource-type}/{child-resource-type}`
 
 A gyermek-erőforrás neve formátuma: `{parent-resource-name}/{child-resource-name}`
 
-De azt nem kell meghatároznia az adatbázis-kiszolgálón belül. Megadhatja, hogy a gyermek-erőforrás legfelső szintjén. Előfordulhat, hogy ezt a módszert használja, ha az a szülő erőforrás nem ugyanazt a sablont, vagy ha szeretné használni `copy` több gyermek-erőforrás létrehozása. Ezt a módszert használja adja meg a teljes erőforrás típusát, és a szülő erőforrás neve tartalmazza a gyermek-erőforrás neve.
+Azonban nem kell az adatbázist a kiszolgálón belül meghatározásához. Megadhatja, hogy a gyermek-erőforrás, a legfelső szinten. Előfordulhat, hogy ezt a módszert használja, ha ugyanazt a sablont a szülő erőforrás nincs telepítve, vagy ha szeretné használni `copy` több gyermek-erőforrás létrehozása. Ezt a módszert használja adja meg a teljes erőforrás típusa, és a gyermek-erőforrás neve a szülő erőforrás nevét tartalmazza.
 
 ```json
 {
@@ -283,7 +306,7 @@ De azt nem kell meghatároznia az adatbázis-kiszolgálón belül. Megadhatja, h
 }
 ```
 
-Amikor egy erőforrást egy teljesen minősített hivatkozást hozhat létre, típusa és neve a szegmensek egyesítése sorrendje nem egyszerűen a két összefűzése.  A névtér után inkább sorozatát *típusnév/* a legjobban megfelel a legkevésbé egyedi párok:
+Egy teljesen minősített erőforrás hivatkozást létrehozásánál ahhoz, hogy típusa és neve a szegmensek egyesítése a nem egyszerűen csak az erősebbet összefűzésével. Után a névtér, használjon inkább egy sorozatát *típusnév/* párok a legkevésbé nejvíce specifické:
 
 ```json
 {resource-provider-namespace}/{parent-resource-type}/{parent-resource-name}[/{child-resource-type}/{child-resource-name}]*
@@ -291,12 +314,12 @@ Amikor egy erőforrást egy teljesen minősített hivatkozást hozhat létre, t�
 
 Példa:
 
-`Microsoft.Compute/virtualMachines/myVM/extensions/myExt` megfelelő `Microsoft.Compute/virtualMachines/extensions/myVM/myExt` helytelen
+`Microsoft.Compute/virtualMachines/myVM/extensions/myExt` helyes `Microsoft.Compute/virtualMachines/extensions/myVM/myExt` nem megfelelő
 
 ## <a name="recommendations"></a>Javaslatok
 A következő információkat az erőforrásokkal való munka során lehet hasznos:
 
-* Adjon meg más közreműködők a erőforrás megismerése érdekében **megjegyzések** a sablonban az egyes erőforrások:
+* Adjon meg más közreműködőkkel az erőforrás rendeltetésének megismerése érdekében **megjegyzések** az egyes erőforrások a sablonban:
    
    ```json
    "resources": [
@@ -311,7 +334,7 @@ A következő információkat az erőforrásokkal való munka során lehet haszn
    ]
    ```
 
-* Ha egy *nyilvános végpontot* a sablonban (például egy Azure Blob storage nyilvános végpontot), *do nem rögzített kód* a névtér. Használja a **hivatkozás** függvény dinamikusan beolvasni a névteret. A sablon telepítéséhez a különböző nyilvános névtér-környezetekben a végpont a sablonban manuális módosítása nélkül használhatja ezt a módszert használja. Állítsa be az API-verzió Ön a sablon a tárfiók által használt verziójával megegyező verzióra:
+* Ha egy *nyilvános végpontot* (például egy Azure Blob storage nyilvános végpont), a sablonban *do nem rögzített kód* a névtér. Használja a **referencia** függvény dinamikusan beolvasni a névteret. Ez a módszer használatával a végpont a sablonban manuális módosítása nélkül helyezheti üzembe a sablont a különböző nyilvános névtér-környezetekben. Az API-verzió beállítása ugyanarra a verzióra, amely a storage-fiókot használja a sablonban:
    
    ```json
    "osDisk": {
@@ -322,7 +345,7 @@ A következő információkat az erőforrásokkal való munka során lehet haszn
    }
    ```
    
-   Ha ugyanazt a sablont hoz létre a tárfiók van telepítve, nem kell adja meg a szolgáltató névterének neve, amikor az erőforrás hivatkozik. A következő példa bemutatja a egyszerűsített szintaxist:
+   Ha ugyanazt a sablont hoz létre a storage-fiók van telepítve, nem kell a szolgáltatói névtér adja meg, ha az erőforrás hivatkozik. Az alábbi példa bemutatja az egyszerűsített Szintaxis:
    
    ```json
    "osDisk": {
@@ -333,7 +356,7 @@ A következő információkat az erőforrásokkal való munka során lehet haszn
    }
    ```
    
-   Ha a sablont más értékek, amelyek egy nyilvános névtér használatára van konfigurálva, ezek helyett megfelelően azonos **hivatkozás** függvény. Például beállíthatja a **storageUri** a virtuális gép diagnosztikai profiljának tulajdonsága:
+   Ha más nyilvános névtér használatára beállított értékeket a sablonban, módosítsa ezeket az értékeket, hogy azonos **referencia** függvény. Például beállíthatja a **storageUri** a virtuális gép diagnosztikai profiljának tulajdonságát:
    
    ```json
    "diagnosticsProfile": {
@@ -344,7 +367,7 @@ A következő információkat az erőforrásokkal való munka során lehet haszn
    }
    ```
    
-   Meglévő tárfiókot, amely egy másik erőforráscsoportban található is hivatkozhat:
+   Egy meglévő tárfiókot, amely egy másik erőforráscsoportban található is lehet hivatkozni:
 
    ```json
    "osDisk": {
@@ -355,16 +378,16 @@ A következő információkat az erőforrásokkal való munka során lehet haszn
    }
    ```
 
-* Nyilvános IP-címek hozzárendelése a virtuális gép csak akkor, ha egy alkalmazás írja elő. A virtuális gép (VM) hibakereséshez vagy felügyeleti vagy felügyeleti célokra való kapcsolódáshoz használja a bejövő NAT-szabályok, a virtuális hálózati átjáró vagy egy jumpbox.
+* Nyilvános IP-címek hozzárendelése a virtuális gép csak akkor, ha egy alkalmazás írja elő. Ha csatlakozni szeretne egy virtuális gépet (VM) a hibakereséshez, vagy a felügyeleti vagy felügyeleti célokra, használja a bejövő NAT-szabályokat, a virtuális hálózati átjáró vagy a jumpbox.
    
      Virtuális gépekhez való csatlakozás kapcsolatos további információkért lásd:
    
-   * [Futtassa a virtuális gépek Azure-ban N szintű architektúrája](../guidance/guidance-compute-n-tier-vm.md)
-   * [A WinRM-hozzáférés beállítása az Azure Resource Manager virtuális gépekhez](../virtual-machines/windows/winrm.md)
-   * [A virtuális gép külső hozzáférés engedélyezése az Azure portál használatával](../virtual-machines/windows/nsg-quickstart-portal.md)
+   * [Virtuális gépek futtatása egy N szintű architektúrához az Azure-ban](../guidance/guidance-compute-n-tier-vm.md)
+   * [A WinRM-elérés beállítása virtuális gépekhez az Azure Resource Manager](../virtual-machines/windows/winrm.md)
+   * [A virtuális gép külső hozzáférés engedélyezése az Azure portal használatával](../virtual-machines/windows/nsg-quickstart-portal.md)
    * [A virtuális gép külső hozzáférés engedélyezése a PowerShell használatával](../virtual-machines/windows/nsg-quickstart-powershell.md)
-   * [A Linux virtuális gép külső hozzáférés engedélyezése az Azure parancssori felület használatával](../virtual-machines/virtual-machines-linux-nsg-quickstart.md)
-* A **domainNameLabel** nyilvános IP-címekhez tulajdonságnak egyedinek kell lennie. A **domainNameLabel** érték 3 és 63 karakter között kell, és kövesse a reguláris kifejezés által meghatározott szabályok: `^[a-z][a-z0-9-]{1,61}[a-z0-9]$`. Mivel a **uniqueString** függvény karakterláncot hoz létre, amely 13 karakterből áll, a **dnsPrefixString** paraméter értéke legfeljebb 50 karakter hosszú lehet:
+   * [A Linux rendszerű virtuális gép külső hozzáférés engedélyezése az Azure CLI-vel](../virtual-machines/virtual-machines-linux-nsg-quickstart.md)
+* A **domainNameLabel** nyilvános IP-címek tulajdonsága egyedinek kell lennie. A **domainNameLabel** értéket kell csak 3 és 63 karakter közötti lehet, és kövesse a reguláris kifejezés által meghatározott szabályok: `^[a-z][a-z0-9-]{1,61}[a-z0-9]$`. Mivel a **uniqueString** függvény létrehoz egy karakterlánc, amely 13 karakterből, a **dnsPrefixString** paraméter értéke legfeljebb 50 karakter hosszúságú lehet:
 
    ```json
    "parameters": {
@@ -381,7 +404,7 @@ A következő információkat az erőforrásokkal való munka során lehet haszn
    }
    ```
 
-* Ha jelszót ad hozzá egy egyéni parancsprogramok futtatására szolgáló bővítmény, használja a **commandToExecute** tulajdonságot a **protectedSettings** tulajdonság:
+* Amikor jelszót ad hozzá egy egyéni szkriptek futtatására szolgáló bővítmény, használja a **commandToExecute** tulajdonságot a **protectedSettings** tulajdonság:
    
    ```json
    "properties": {
@@ -401,14 +424,14 @@ A következő információkat az erőforrásokkal való munka során lehet haszn
    ```
    
    > [!NOTE]
-   > Győződjön meg arról, hogy titkos kulcsok titkosítását, ha azok paraméterként virtuális gépek és bővítmények, használja a **protectedSettings** tulajdonsága a megfelelő bővítményeket.
+   > Győződjön meg arról, hogy a titkok titkosítását, ha a azok paraméterként a virtuális gépek és a bővítményeket, használja a **protectedSettings** tulajdonságát a megfelelő bővítményeket.
    > 
    > 
 
 
 ## <a name="next-steps"></a>További lépések
 * A különböző megoldástípusokhoz használható teljes sablonok megtekintéséhez lásd: [Azure gyorsindítási sablonok](https://azure.microsoft.com/documentation/templates/).
-* A sablonon belül használhatja a functions szolgáltatással kapcsolatos részletekért lásd: [Azure Resource Manager Sablonfüggvényei](resource-group-template-functions.md).
-* Egyesítenie több sablon üzembe helyezése során, lásd: [kapcsolt sablonok használata az Azure Resource Manager](resource-group-linked-templates.md).
-* Szükség lehet egy másik erőforráscsoportban található erőforrások használatával. Ez a forgatókönyv nem közös, ha a storage-fiókok vagy több erőforrás csoporttal megosztott virtuális hálózatok. További információkért lásd: a [resourceId függvény](resource-group-template-functions-resource.md#resourceid).
-* Erőforrás neve vonatkozó megkötésekkel kapcsolatos további információkért lásd: [Azure-erőforrások elnevezési szabályai ajánlott](../guidance/guidance-naming-conventions.md).
+* A sablonon belül használhatja függvényeivel kapcsolatos részletekért lásd: [Azure Resource Manager-Sablonfüggvények](resource-group-template-functions.md).
+* Egynél több sablon üzembe helyezése során használatához lásd: [kapcsolt sablonok használata az Azure Resource Manager](resource-group-linked-templates.md).
+* Szükség lehet a belül egy másik erőforráscsoportban található erőforrások. Ebben a forgatókönyvben nem gyakori, ha a storage-fiókok vagy a virtuális hálózatokat, amelyek több erőforráscsoportok vannak megosztva. További információkért lásd: a [resourceId függvény](resource-group-template-functions-resource.md#resourceid).
+* Erőforrás neve vonatkozó megkötésekkel kapcsolatos további információkért lásd: [ajánlott az Azure-erőforrások elnevezési konvenciói](../guidance/guidance-naming-conventions.md).

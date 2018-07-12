@@ -1,6 +1,6 @@
 ---
-title: A Ruby a Queue storage használata |} Microsoft Docs
-description: Útmutató az Azure Queue szolgáltatás segítségével hozza létre, és törli az üzenetsorok, és helyezze, get, és törli az üzenetet. Ruby írt minták.
+title: A Queue storage, a Ruby használatával |} A Microsoft Docs
+description: Ismerje meg, hogyan használhatja az Azure Queue szolgáltatás létrehozása és törlése, üzenetsorok, és helyezze, beolvasása, és törli az üzenetet. Ruby nyelven írt mintát.
 services: storage
 documentationcenter: ruby
 author: tamram
@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 12/08/2016
 ms.author: tamram
 ms.openlocfilehash: 0d7624d47a6924a5c8dec66b47ac0887ff493879
-ms.sourcegitcommit: 1fbaa2ccda2fb826c74755d42a31835d9d30e05f
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2018
-ms.locfileid: "27993636"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38719073"
 ---
 # <a name="how-to-use-queue-storage-from-ruby"></a>How to use Queue storage from Ruby (A Queue Storage használata Rubyval)
 [!INCLUDE [storage-selector-queue-include](../../../includes/storage-selector-queue-include.md)]
@@ -27,54 +27,54 @@ ms.locfileid: "27993636"
 [!INCLUDE [storage-try-azure-tools-queues](../../../includes/storage-try-azure-tools-queues.md)]
 
 ## <a name="overview"></a>Áttekintés
-Ez az útmutató bemutatja, hogyan hajthat végre a szolgáltatást a Microsoft Azure Queue Storage szolgáltatást használó általános forgatókönyvhöz. A minták íródtak, a Ruby Azure API használatával.
-Az ismertetett forgatókönyvek **beszúrása**, **megtekintésekor**, **első**, és **törlése** üzenetek várólistára, valamint **létrehozása és törlése várólisták**.
+Ez az útmutató bemutatja, hogyan hajthat végre a Microsoft Azure Queue Storage szolgáltatást használó általános forgatókönyvhöz. A minták írták, a Ruby Azure API-val.
+Az ismertetett forgatókönyvek között megtalálható **beszúrása**, **Bepillantás**, **első**, és **törlése** várólista-üzenetek, valamint  **létrehozása és törlése a várólisták**.
 
 [!INCLUDE [storage-queue-concepts-include](../../../includes/storage-queue-concepts-include.md)]
 
 [!INCLUDE [storage-create-account-include](../../../includes/storage-create-account-include.md)]
 
-## <a name="create-a-ruby-application"></a>Ruby-alkalmazás létrehozása
-Ruby-alkalmazás létrehozása. Útmutatásért lásd: [Ruby-alkalmazás létrehozása az App Service Linux](https://docs.microsoft.com/azure/app-service/containers/quickstart-ruby).
+## <a name="create-a-ruby-application"></a>Ruby alkalmazás létrehozása
+Ruby alkalmazás létrehozása Útmutatásért lásd: [Ruby alkalmazás létrehozása Linuxon futó App Service-ben](https://docs.microsoft.com/azure/app-service/containers/quickstart-ruby).
 
-## <a name="configure-your-application-to-access-storage"></a>Állítsa be az alkalmazását tároló elérése érdekében
-Az Azure storage használatához szüksége töltse le és használja a Ruby azure csomagot, amely tartalmaz egy kényelmi szalagtár szerepel, amely a többi tárolási szolgáltatásokkal kommunikálni.
+## <a name="configure-your-application-to-access-storage"></a>Tárolás-alkalmazás konfigurálása
+Az Azure storage használatához szüksége letöltését és a Ruby azure csomagot, amely tartalmazza a kényelem kódtárak, amely kommunikálni a tárolási REST szolgáltatások használatát.
 
-### <a name="use-rubygems-to-obtain-the-package"></a>RubyGems használja a csomag beszerzése
-1. Használjon például egy parancssori felületet **PowerShell** (Windows), **Terminálszolgáltatások** (Mac), vagy **Bash** (Unix).
-2. Írja be a "gem telepítése azure" gem és függőségeinek telepítéséhez a parancsablakban.
+### <a name="use-rubygems-to-obtain-the-package"></a>A csomag beszerzése a RubyGems használatával
+1. Használjon egy parancssori felületet, mint például a **PowerShell** (Windows), a **Terminal** (Mac), vagy a **Bash** (Unix).
+2. Írja be a "gem-telepítés azure" a parancssori ablakban, a gemet és a függőségek telepítéséhez.
 
 ### <a name="import-the-package"></a>A csomag importálása
-Kedvenc szövegszerkesztőjével használja, a Ruby, ahol tárolására használni kívánt fájl elejéhez adja hozzá a következőket:
+Használja kedvenc szövegszerkesztőjét, ahol szeretne használni a storage, a Ruby fájl elejéhez adja hozzá a következőket:
 
 ```ruby
 require "azure"
 ```
 
 ## <a name="setup-an-azure-storage-connection"></a>Az Azure Storage-kapcsolat beállítása
-Az azure-moduljának a környezeti változókat olvassák **AZURE\_tárolási\_fiók** és **AZURE\_tárolási\_ACCESS_KEY** az Azure storage-fiókhoz való kapcsolódáshoz szükséges információkat. Ha ezek a környezeti változók nem, meg kell adnia a fiók használata előtt **Azure::QueueService** az alábbi kódra:
+Az azure-modul a környezeti változókat olvassa **AZURE\_tárolási\_fiók** és **AZURE\_tárolási\_ACCESS_KEY** információ az Azure storage-fiókjába való kapcsolódáshoz szükséges. Ha nincsenek beállítva ezek a környezeti változók, meg kell adnia a fiók adatait, mielőtt **Azure::QueueService** a következő kóddal:
 
 ```ruby
 Azure.config.storage_account_name = "<your azure storage account>"
 Azure.config.storage_access_key = "<your Azure storage access key>"
 ```
 
-Ezek az értékek beolvasása klasszikus vagy erőforrás-kezelő storage-fiókot az Azure-portálon:
+Ezeket az értékeket a következőképp kérheti le egy klasszikus vagy Resource Manager-tárfiókból az Azure Portalon:
 
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
-2. Nyissa meg a használni kívánt tárfiókot.
-3. Kattintson a beállítások panelen kattintson a jobb **hívóbetűk**.
-4. A elérési kulcsok paneljén megjelenő láthatja, a hozzáférési kulcs 1 és 2 elérési kulcsot. Ezek bármelyikét használhatja. 
-5. A Másolás ikonra a kulcs másolása a vágólapra. 
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
+2. Keresse meg a használni kívánt tárfiókot.
+3. A jobb oldali Beállítások panelen kattintson az **Hozzáférési kulcsok** lehetőségre.
+4. A megjelenő Hozzáférési kulcsok panelen láthatja az 1. és a 2. hozzáférési kulcsot. Ezek bármelyikét használhatja. 
+5. Kattintson a másolás gombra, hogy a kulcsot a vágólapra másolja. 
 
 ## <a name="how-to-create-a-queue"></a>Útmutató: A várólista létrehozása
-Az alábbi kód létrehoz egy **Azure::QueueService** objektum, amely lehetővé teszi a várólisták használata.
+Az alábbi kód létrehoz egy **Azure::QueueService** objektum, amely lehetővé teszi, hogy az üzenetsorok.
 
 ```ruby
 azure_queue_service = Azure::QueueService.new
 ```
 
-Használja a **create_queue()** várólista létrehozása a megadott nevű metódus.
+Használja a **create_queue()** metódussal hoz létre egy üzenetsort a megadott néven.
 
 ```ruby
 begin
@@ -84,28 +84,28 @@ rescue
 end
 ```
 
-## <a name="how-to-insert-a-message-into-a-queue"></a>Útmutató: A várólista üzenet beszúrása
-Üzenet beszúrása egy üzenetsort, használja a **create_message()** módszert, hozzon létre egy új üzenetet, és vegye fel a várólistára.
+## <a name="how-to-insert-a-message-into-a-queue"></a>Útmutató: Üzenet beszúrása egy üzenetsorba
+Üzenet beszúrása egy üzenetsorba, használja a **create_message()** metódust hozzon létre egy új üzenetet, és adja hozzá az üzenetsorhoz.
 
 ```ruby
 azure_queue_service.create_message("test-queue", "test message")
 ```
 
-## <a name="how-to-peek-at-the-next-message"></a>Útmutató: A következő üzenet megtekintése
-Is bepillanthat, hogy egy sor elején található üzenetbe anélkül, hogy eltávolítaná az üzenetsorból meghívásával a **betekintés\_messages()** metódust. Alapértelmezés szerint **betekintés\_messages()** lekéri egyetlen üzenetben. Betekintés kívánt hány üzeneteket is megadható.
+## <a name="how-to-peek-at-the-next-message"></a>Útmutató: A következő üzenet betekintés
+Anélkül, hogy eltávolítaná az üzenetsorból meghívásával is bepillanthat egy üzenetsorban található üzenet a **betekintési\_messages()** metódust. Alapértelmezés szerint **betekintési\_messages()** lekéri egy adott üzenet. Belepillantás kívánt üzenetek számának is megadhatja.
 
 ```ruby
 result = azure_queue_service.peek_messages("test-queue",
   {:number_of_messages => 10})
 ```
 
-## <a name="how-to-dequeue-the-next-message"></a>Útmutató: A következő üzenet created
-Eltávolíthatja a üzenetet az üzenetsorból két lépésben.
+## <a name="how-to-dequeue-the-next-message"></a>Útmutató: A következő üzenet eltávolítása a sorból
+Eltávolíthatja az üzenetet egy üzenetsorból két lépésben.
 
-1. A hívás esetén **lista\_messages()**, a hibaüzenet a következő várólista alapértelmezés szerint. Azt szeretné, hogy hány üzenet is megadható. Az üzenetek által visszaadott **lista\_messages()** ebből a várólistából üzeneteket olvasó többi kód láthatatlanná válik. Akkor adjon át a láthatósági időkorlátot másodpercben paraméterként.
-2. Szeretné távolítani az üzenetet az üzenetsorból, meg kell is hívni **delete_message()**.
+1. Meghívásakor **lista\_messages()**, a következő üzenetet kap egy üzenetsorban lévő alapértelmezés szerint. Azt is megadhatja, hogy hány üzenetet szeretne kapni. A kapott üzeneteket **lista\_messages()** válik az adott üzenetsorban üzeneteket olvasó többi kód számára. A láthatósági időkorlátot másodpercben paraméterként adja át.
+2. Befejeződik, az üzenet eltávolítása az üzenetsorból, meg kell is meghívhat **delete_message()**.
 
-A kétlépéses folyamat eltávolításával előállított üzenet biztosítja, hogy a kód nem tudja feldolgozni egy üzenetet, hardver- vagy szoftverhiba miatt, a kód egy másik példánya is megkaphassa ugyanazt az üzenetet, és próbálkozzon újra. A kód hívások **törlése\_message()** jobb gombbal az üzenet feldolgozása után.
+Az üzenet eltávolítása a két lépésből álló folyamat biztosítja, hogy a kód nem tudja feldolgozni egy üzenetet, mert hardveres vagy szoftveres hiba, amikor a kód egy másik példánya is megkaphassa ugyanazt az üzenetet, és próbálkozzon újra. A kód meghívja **törlése\_message()** jobb gombbal az üzenet feldolgozása után.
 
 ```ruby
 messages = azure_queue_service.list_messages("test-queue", 30)
@@ -113,8 +113,8 @@ azure_queue_service.delete_message("test-queue",
   messages[0].id, messages[0].pop_receipt)
 ```
 
-## <a name="how-to-change-the-contents-of-a-queued-message"></a>Útmutató: Az aszinkron üzenet tartalmának módosítása
-Egy üzenetet tartalmát helyben, az üzenetsorban módosíthatja. Az alábbi által használt kódot a **update_message()** üzenet frissítési módjának. A metódus egy rekord, amely tartalmazza az üzenetsorban lévő üzenetet és UTC dátum időt jelző érték, ha az üzenet a várólistában látható lesz a pop fogadását fog visszaadni.
+## <a name="how-to-change-the-contents-of-a-queued-message"></a>Útmutató: Az üzenetsorban található üzenet tartalmának módosítása
+Egy üzenetet tartalmát helyben, az üzenetsorban módosíthatja. Az alábbi kódot a **update_message()** metódus üzenet frissítéséhez. A metódus adja vissza egy rekord, amely tartalmazza az üzenetsorban található üzenet és a egy UTC dátum idő értéke jelöli, az üzenet az üzenetsorban látható lesz a pop fogadását.
 
 ```ruby
 message = azure_queue_service.list_messages("test-queue", 30)
@@ -127,9 +127,9 @@ pop_receipt, time_next_visible = azure_queue_service.update_message(
 Két módon szabhatja testre az üzenetek lekérését egy üzenetsorból.
 
 1. A kötegelt üzenet kérheti le.
-2. Beállíthat egy hosszabb vagy rövidebb láthatatlansági időkorlátot, így a kódnak hosszabb vagy rövidebb idő teljesen feldolgozni az egyes üzeneteket.
+2. Beállíthat egy hosszabb vagy rövidebb láthatatlansági időkorlátot hosszabb vagy rövidebb idő teljesen feldolgozni az egyes üzenet, amely lehetővé teszi, hogy a kód.
 
-Az alábbi példakód a **lista\_messages()** módszer segítségével 15 üzenetek egy hívásban. Majd kinyomtatja, és törli az egyes üzeneteket. Mindemellett a láthatatlansági időkorlátot minden üzenethez öt percre állítja be.
+Az alábbi példakód a **lista\_messages()** metódus lekéréséhez 15 üzeneteket egyetlen hívásával. Ezután jelenít meg, és törli az egyes üzeneteket. Mindemellett a láthatatlansági időkorlátot minden üzenethez öt percre állítja be.
 
 ```ruby
 azure_queue_service.list_messages("test-queue", 300
@@ -140,24 +140,24 @@ end
 ```
 
 ## <a name="how-to-get-the-queue-length"></a>Útmutató: Az üzenetsor hosszának lekérése
-A várólistában lévő üzenetek számának becslése kérheti le. A **beolvasása\_várólista\_metadata()** metódus kéri a queue szolgáltatás adhatja vissza a hozzávetőleges üzenetek száma és az üzenetsorral kapcsolatos metaadatokat.
+A várólistában lévő üzenetek számának becslése kérheti le. A **első\_várólista\_metadata()** módszert kéri a queue szolgáltatásból az üzenetek hozzávetőleges száma és a várólista metaadatait adja vissza.
 
 ```ruby
 message_count, metadata = azure_queue_service.get_queue_metadata(
   "test-queue")
 ```
 
-## <a name="how-to-delete-a-queue"></a>Útmutató: A várólista törlése
-Egy üzenetsor és a benne tárolt összes üzenet törléséhez hívja meg a **törlése\_queue()** a várólista-objektum metódust.
+## <a name="how-to-delete-a-queue"></a>Útmutató: Üzenetsor törlése
+Egy üzenetsor és a benne tárolt összes üzenet törléséhez hívja a **törlése\_queue()** metódust a várólista-objektum.
 
 ```ruby
 azure_queue_service.delete_queue("test-queue")
 ```
 
 ## <a name="next-steps"></a>További lépések
-Most, hogy megismerte a queue storage alapjait, az alábbi hivatkozásokból tájékozódhat az összetettebb tárolási feladatok elvégzéséről.
+Most, hogy megismerte a queue storage alapjait, az alábbi hivatkozásokból tájékozódhat az összetettebb tárolási feladatok.
 
 * Látogasson el a [Azure Storage csapat blogja](http://blogs.msdn.com/b/windowsazurestorage/)
-* Látogasson el a [Azure SDK for Ruby](https://github.com/WindowsAzure/azure-sdk-for-ruby) GitHub tárházából
+* Látogasson el a [Rubyhoz készült Azure SDK-t](https://github.com/WindowsAzure/azure-sdk-for-ruby) tárházban a Githubon
 
-A cikkben szereplő Azure Queue szolgáltatás és az Azure Service Bus-üzenetsorok tárgyalt összehasonlításához a [Service Bus-üzenetsorok használata](/develop/ruby/how-to-guides/service-bus-queues/) cikk című [Azure várólisták és a Service Bus-üzenetsorok - az képest és ellentétben](../../service-bus-messaging/service-bus-azure-and-service-bus-queues-compared-contrasted.md)
+Az ebben a cikkben tárgyalt Azure Queue szolgáltatás és az Azure Service Bus-üzenetsorok tárgyalt összehasonlítását a [használata a Service Bus-üzenetsorok](/develop/ruby/how-to-guides/service-bus-queues/) cikkre, lásd: [Azure-üzenetsorok és Service Bus-üzenetsorok - képest és Összehasonlítása](../../service-bus-messaging/service-bus-azure-and-service-bus-queues-compared-contrasted.md)

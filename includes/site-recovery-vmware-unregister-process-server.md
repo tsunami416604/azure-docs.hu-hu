@@ -12,7 +12,7 @@ A folyamatkiszolgálók regisztrációjának visszavonásához szükséges lép�
 > [!WARNING]
 > Ha nem lehet helyreállítani azt a virtuális gépet, amelyen a folyamatkiszolgáló telepítve van, használja az alábbi lépéseket.
 
-1. Jelentkezzen be rendszergazdaként a konfigurációs kiszolgáló.
+1. Jelentkezzen be a konfigurációs kiszolgálóra rendszergazdaként.
 2. Nyisson meg egy rendszergazdai parancssort, és keresse meg a `%ProgramData%\ASR\home\svsystems\bin` könyvtárat.
 3. Most futtassa a parancsot.
 
