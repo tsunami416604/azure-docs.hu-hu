@@ -6,14 +6,15 @@ author: mmacy
 manager: jeconnoc
 ms.service: container-registry
 ms.topic: tutorial
-ms.date: 10/24/2017
+ms.date: 04/30/2018
 ms.author: marsma
 ms.custom: mvc
-ms.openlocfilehash: 2e9a46f2a99bc9b530ac5859068bde58bf5b5098
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 8edb35b91327bde1fa824ec456b8a98962adb7ce
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38634087"
 ---
 # <a name="tutorial-push-an-updated-image-to-regional-deployments"></a>Oktatóanyag: Egy frissített rendszerkép leküldése regionálisan üzemelő példányokba
 
@@ -70,7 +71,7 @@ A módosított `Index.cshtml`-nek az alábbihoz hasonlónak kell lennie:
 
 ## <a name="rebuild-the-image"></a>A rendszerkép újraépítése
 
-Most, hogy frissítette a webalkalmazást, építse újra a tárolórendszerképét. Mint korábban, használja a teljes rendszerképnevet, beleértve a címke bejelentkezési URL-címét:
+Most, hogy frissítette a webalkalmazást, építse újra a tárolórendszerképét. Mint korábban, használja a címkéhez a teljes rendszerképnevet, beleértve a bejelentkezési kiszolgáló teljes tartománynevét (FQDN):
 
 ```bash
 docker build . -f ./AcrHelloworld/Dockerfile -t <acrName>.azurecr.io/acr-helloworld:v1
@@ -78,15 +79,16 @@ docker build . -f ./AcrHelloworld/Dockerfile -t <acrName>.azurecr.io/acr-hellowo
 
 ## <a name="push-image-to-azure-container-registry"></a>Rendszerkép leküldése az Azure Container Registrybe
 
-Most küldje le a frissített *acr-helloworld* tárolórendszerképet a georeplikált beállításjegyzékbe. Itt egy `docker push` paranccsal üzembe helyezi a frissített tárolórendszerképet a beállításjegyzék replikációiban, az *USA nyugati régiójában* és az *USA keleti régiójában* is.
+Következőként küldje le a frissített *acr-helloworld* tárolórendszerképet a georeplikált beállításjegyzékbe. Itt egy `docker push` paranccsal üzembe helyezi a frissített tárolórendszerképet a beállításjegyzék replikációiban, az *USA nyugati régiójában* és az *USA keleti régiójában* is.
 
 ```bash
 docker push <acrName>.azurecr.io/acr-helloworld:v1
 ```
 
-A kimenet az alábbihoz hasonlóan néz ki:
+A `docker push` kimenet az alábbihoz hasonló lesz:
 
-```bash
+```console
+$ docker push uniqueregistryname.azurecr.io/acr-helloworld:v1
 The push refers to a repository [uniqueregistryname.azurecr.io/acr-helloworld]
 5b9454e91555: Pushed
 d6803756744a: Layer already exists
@@ -126,19 +128,17 @@ Győződjön meg arról, hogy a frissített tárolórendszerkép az *USA keleti 
 
 ![Egy, az USA keleti régiójában futó módosított webalkalmazás böngészőnézete][deployed-app-eastus-modified]
 
-Egyetlen `docker push` mindkét regionális webalkalmazás üzemelő példányát frissítette, és az Azure Container Registry szolgáltatta a tárolórendszerképeket a hálózatközeli adattárakból.
+Egyetlen `docker push`, lehetővé tette mindkét regionális Web App üzemelő példányában futó webalkalmazás automatikus frissítését. És az Azure Container Registry az egyes üzemelő példányokhoz legközelebb eső adattárakból szolgáltatta a tárolólemezképeket.
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben az oktatóanyagban frissítette és leküldte a webalkalmazás tárolójának egy új verzióját a georeplikált beállításjegyzékbe. Az Azure Container Registry webhookjai értesítették a Web Apps for Containers alkalmazást a frissítésről, amely egy helyi lekérést indított a beállításjegyzékek replikáiból.
+Ebben az oktatóanyagban frissítette és leküldte a webalkalmazás tárolójának egy új verzióját a georeplikált beállításjegyzékbe. Az Azure Container Registry webhookjai értesítették a Web Apps for Containers alkalmazást a frissítésről, amely egy helyi lekérést indított a beállításjegyzékek legközelebbi replikájából.
 
-Az oktatóanyag-sorozat utolsó része a következő lépésekből állt:
+### <a name="acr-build-automated-image-build-and-patch"></a>ACR Build: Automatikus lemezképépítés és javítás
 
-> [!div class="checklist"]
-> * A webalkalmazás HTML-címének frissítése
-> * A Docker-rendszerkép összeállítása és címkézése
-> * A módosítás leküldése az Azure Container Registrybe
-> * A frissített alkalmazás megtekintése két különböző régióban
+A georeplikáción kívül az ACR Build az Azure Container Registry egy másik funkciója, amely segíthet a tároló üzembe helyezési folyamatának optimalizálásban. A képességeinek megismeréséhez kezdjen az ACR Build áttekintésével:
+
+[Operációs rendszer és keretrendszer javításának automatizálása az ACR Builddel](container-registry-build-overview.md)
 
 <!-- IMAGES -->
 [deployed-app-eastus-modified]: ./media/container-registry-tutorial-deploy-update/deployed-app-eastus-modified.png

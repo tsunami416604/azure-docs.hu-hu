@@ -14,11 +14,11 @@ ms.topic: get-started-article
 ms.date: 03/26/2018
 ms.author: wgries
 ms.openlocfilehash: 8fcc654b7f5068037ec0818e19d8dff09bc07537
-ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37030189"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38635088"
 ---
 # <a name="managing-azure-file-shares-with-azure-powershell"></a>Azure-fájlmegosztások felügyelete az Azure PowerShell használatával 
 Az [Azure Files](storage-files-introduction.md) a Microsoft könnyen használható felhőalapú fájlrendszere. Az Azure-fájlmegosztások Windows, Linux és macOS rendszeren csatlakoztathatók. Ez az útmutató az Azure-fájlmegosztások a PowerShell segítségével való használatának alapvető lépéseit mutatja be. Ebben a cikkben az alábbiakkal fog megismerkedni:
@@ -46,7 +46,7 @@ A következő példában létrehozunk egy *myResourceGroup* nevű erőforráscso
 New-AzureRmResourceGroup -Name myResourceGroup -Location EastUS
 ```
 
-## <a name="create-a-storage-account"></a>Create a storage account
+## <a name="create-a-storage-account"></a>Tárfiók létrehozása
 A tárfiókok az Azure-fájlmegosztások vagy más tárolási erőforrások, például blobok vagy üzenetsorok üzembe helyezéséhez használható tárolók közös készletei. Egy tárfiók korlátlan számú megosztást tartalmazhat, egy megosztás pedig korlátlan számú fájl tárolására használható, egészen a tárfiók kapacitásának korlátjáig.
 
 Ez a példa egy `mystorageacct<random number>` nevű tárfiókot hoz létre, és a tárfiók referenciáját a **$storageAcct** változóba helyezi. A tárfiókok névnek egyedinek kell lenniük, ezért a `Get-Random` paranccsal fűzzön számot a névhez. 
