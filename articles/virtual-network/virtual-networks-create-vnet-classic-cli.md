@@ -16,20 +16,20 @@ ms.workload: infrastructure-services
 ms.date: 03/15/2016
 ms.author: genli
 ms.openlocfilehash: 9d254fa17ae2b45a5771777bc7cedf9fa90d9815
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2018
-ms.locfileid: "31790763"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38477641"
 ---
-# <a name="create-a-virtual-network-classic-by-using-the-azure-cli"></a>Hozzon létre egy virtuális hálózat (klasszikus) az Azure parancssori felület használatával
+# <a name="create-a-virtual-network-classic-by-using-the-azure-cli"></a>Virtuális hálózat (klasszikus) létrehozása az Azure CLI-vel
 [!INCLUDE [virtual-networks-create-vnet-selectors-classic-include](../../includes/virtual-networks-create-vnet-selectors-classic-include.md)]
 
 [!INCLUDE [virtual-networks-create-vnet-intro](../../includes/virtual-networks-create-vnet-intro-include.md)]
 
 [!INCLUDE [azure-arm-classic-important-include](../../includes/azure-arm-classic-important-include.md)]
 
-Ez a dokumentum ismerteti a virtuális hálózat létrehozása a klasszikus üzembe helyezési modell használatával. Emellett [virtuális hálózat létrehozása a Resource Manager üzembe helyezési modellben az Azure parancssori felület használatával](quick-create-cli.md).
+Ez a dokumentum ismerteti a virtuális hálózat létrehozása a klasszikus üzemi modell használatával. Emellett [virtuális hálózat létrehozása a Resource Manager-alapú üzemi modellben az Azure CLI-vel](quick-create-cli.md).
 
 [!INCLUDE [virtual-networks-create-vnet-scenario-include](../../includes/virtual-networks-create-vnet-scenario-include.md)]
 

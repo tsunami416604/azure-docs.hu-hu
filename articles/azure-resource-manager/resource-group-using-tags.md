@@ -1,6 +1,6 @@
 ---
-title: Azure-erőforrások logikai szervezet címke |} Microsoft Docs
-description: Bemutatja, hogyan számlázási és kezelése az Azure-erőforrások rendszerezéséhez címkékkel.
+title: Azure-erőforrások logikai szervezet címkézése |} A Microsoft Docs
+description: Bemutatja a számlázási és kezelése az Azure-erőforrások rendszerezése címkékkel.
 services: azure-resource-manager
 documentationcenter: ''
 author: tfitzmac
@@ -15,11 +15,11 @@ ms.topic: conceptual
 ms.date: 05/16/2018
 ms.author: tomfitz
 ms.openlocfilehash: 8c828bb49548adfdb02ed6fb1611eb405ebf4ff2
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34602924"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38466260"
 ---
 # <a name="use-tags-to-organize-your-azure-resources"></a>Azure-erőforrások rendszerezése címkékkel
 
@@ -29,7 +29,7 @@ ms.locfileid: "34602924"
 
 ## <a name="powershell"></a>PowerShell
 
-A jelen cikk példái a 6.0-s vagy újabb, az Azure PowerShell igényelnek. Ha nem rendelkezik 6.0-s vagy újabb, [frissítenie](/powershell/azure/install-azurerm-ps).
+A cikkben szereplő példák használatához az Azure PowerShell 6.0-s vagy újabb verziója szükséges. Ha nem rendelkezik 6.0-s vagy újabb, [verzió frissítése](/powershell/azure/install-azurerm-ps).
 
 *Erőforráscsoportok* meglévő címkéinek megtekintéséhez használja a következőt:
 
@@ -70,7 +70,7 @@ Vagy *megadott névvel és erőforráscsoporttal rendelkező erőforrás* meglé
 (Get-AzureRmResource -Tag @{ Dept="Finance"}).Name
 ```
 
-A beolvasandó *-erőforrásokra, amelyekre egy adott címkenév*, használja:
+Az első *, amelyek egy adott címkével nevét erőforrásokhoz*, használja:
 
 ```powershell
 (Get-AzureRmResource -TagName Dept).Name
@@ -168,25 +168,25 @@ A szkript a következő formátumot adja vissza:
 }
 ```
 
-Vagy, hogy a meglévő címkék egy *erőforrást, amely rendelkezik a megadott nevét, típusát és erőforrás-csoport*, használja:
+Vagy meglévő címkéinek megtekintéséhez egy *erőforrás, amely rendelkezik a megadott név, típus és erőforrás-csoport*, használja:
 
 ```azurecli
 az resource show -n examplevnet -g examplegroup --resource-type "Microsoft.Network/virtualNetworks" --query tags
 ```
 
-Amikor ismétlése erőforrások gyűjteménye, érdemes megjelenítése az erőforrás által erőforrás-azonosító. A teljes példa a cikk későbbi részében. *Megadott erőforrás-azonosítóval rendelkező erőforrás* meglévő címkéinek megtekintéséhez használja a következőt:
+Hurkolás keresztül erőforrások gyűjteménye, amikor érdemes megjelenítése az erőforrás által erőforrás-azonosítója. A cikk későbbi részében látható egy teljes példát. *Megadott erőforrás-azonosítóval rendelkező erőforrás* meglévő címkéinek megtekintéséhez használja a következőt:
 
 ```azurecli
 az resource show --id <resource-id> --query tags
 ```
 
-Egy adott címkét tartalmazó erőforráscsoportokat használatához `az group list`:
+Adott címkével rendelkező erőforráscsoportok lekéréséhez használja `az group list`:
 
 ```azurecli
 az group list --tag Dept=IT
 ```
 
-Az erőforrások, amelyek egy adott címke és érték használatához `az resource list`:
+Egy bizonyos címkével és értékkel rendelkező összes erőforrást használja `az resource list`:
 
 ```azurecli
 az resource list --tag Dept=Finance
@@ -206,7 +206,7 @@ Ha *meglévő címkék nélküli erőforráshoz* szeretne címkéket adni, haszn
 az resource tag --tags Dept=IT Environment=Test -g examplegroup -n examplevnet --resource-type "Microsoft.Network/virtualNetworks"
 ```
 
-Címkék hozzáadása egy erőforrást, amely már a címkék, beolvasni a meglévő címkéket, formázza újra ezt az értéket, és alkalmazza újra a meglévő és új címkék: 
+Címkék hozzáadása a címkékkel rendelkező erőforráshoz, beolvasni a meglévő címkéket, formázza újra ezt az értéket, és alkalmazza ismét a meglévő és új címkéket: 
 
 ```azurecli
 jsonrtag=$(az resource show -g examplegroup -n examplevnet --resource-type "Microsoft.Network/virtualNetworks" --query tags)
@@ -230,7 +230,7 @@ do
 done
 ```
 
-A címkéket az összes erőforráscsoport erőforrásaihoz, és *tartsa meg az erőforrás meglévő címkék*, használja a következő parancsfájlt:
+Összes címkéjét szeretné alkalmazni egy erőforráscsoportot az erőforrásaira, és *szeretné megőrizni az erőforrások meglévő címkéit*, használja a következő szkriptet:
 
 ```azurecli
 groups=$(az group list --query [].name --output tsv)
@@ -258,22 +258,22 @@ done
 
 ## <a name="rest-api"></a>REST API
 
-Az Azure portál és a PowerShell is használható a [Resource Manager REST API](https://docs.microsoft.com/rest/api/resources/) a háttérben. Egy másik környezetbe címkézés integrálni kell, ha címkék használatával kaphat **beolvasása** az erőforrás-azonosító és a frissítés címkék használatával készlete egy **javítás** hívható meg.
+Az Azure portal és a PowerShell is használja a [Resource Manager REST API](https://docs.microsoft.com/rest/api/resources/) a háttérben. Ha integrálja a címkézés egy másik környezetbe kell, beszerezheti a címkék használatával **első** az erőforrás-azonosító és frissíteni a csoportot a címkék használatával egy **javítására** hívja.
 
-## <a name="tags-and-billing"></a>Címkék és a számlázás
+## <a name="tags-and-billing"></a>A címkék és számlázás
 
-Címkék segítségével az elszámolási adatok. Például, ha a másik szervezet számára több virtuális gép fut, a címkék használata csoport használatra költségközpont által. Címkék segítségével költségek futtatókörnyezetben, például a számlázási használata az éles környezetben futó virtuális gépek szerinti kategóriák.
+Címkék használatával az elszámolási adatok. Például ha különböző szervezetek több virtuális gépet futtat, használja a címkék használata a költséghely szerint. Címkék használatával költségek kategorizálása futtatókörnyezet, például a számlázási használata az éles környezetben futó virtuális gépek szerint.
 
-Információ a címkék keresztül lekérhesse a [Azure erőforrás-használat és RateCard API-k](../billing/billing-usage-rate-card-overview.md) vagy a használati vesszővel tagolt (CSV) fájl. Használat a fájl letöltése a [Azure-fiók portálon](https://account.windowsazure.com/) vagy [EA portal](https://ea.azure.com). További információ a számlázási adatokat programozott hozzáférést: [betekintést nyerhet a Microsoft Azure erőforrás-felhasználás](../billing/billing-usage-rate-card-overview.md). A REST API-műveleteket, lásd: [Azure számlázási REST API-referencia](https://msdn.microsoft.com/library/azure/1ea5b323-54bb-423d-916f-190de96c6a3c).
+Információ a címkék használatával lekérheti a [Azure erőforrás-használat és RateCard API-k](../billing/billing-usage-rate-card-overview.md) vagy a használati vesszővel elválasztott értékeket (CSV) fájl. A használati fájl letöltése a [Azure fiókportálon](https://account.windowsazure.com/) vagy [a nagyvállalati szerződések portáljának](https://ea.azure.com). Számlázási adatok való programozott hozzáféréssel kapcsolatos további információkért lásd: [betekintést nyerhet a Microsoft Azure erőforrás-használat](../billing/billing-usage-rate-card-overview.md). REST API-műveleteket, lásd: [Azure Billing – REST API-referencia](https://msdn.microsoft.com/library/azure/1ea5b323-54bb-423d-916f-190de96c6a3c).
 
-Amikor a fürt megosztott kötetei szolgáltatás használata számlázási címkék támogató szolgáltatások tölt le, a címkék jelennek meg a **címkék** oszlop. További információkért lásd: [a számlázási megérteni a Microsoft Azure](../billing/billing-understand-your-bill.md).
+Ha Ön a használati adatok letöltése CSV-szolgáltatásokhoz, amelyek támogatják a címkék a számlázási, a címkék megjelennek a **címkék** oszlop. További információkért lásd: [Microsoft Azure-hoz kapcsolódó számlák magyarázata](../billing/billing-understand-your-bill.md).
 
 ![Tekintse meg a számlázási címkék](./media/resource-group-using-tags/billing_csv.png)
 
 ## <a name="next-steps"></a>További lépések
 
-* Testreszabott házirendekkel alkalmazhat korlátozások és egyezmények az előfizetéshez. Megadhat egy házirendet, minden erőforrás rendelkezik-e egy adott címke értéke lehet szükség. További információkért lásd: [Mi az Azure-házirendet?](../azure-policy/azure-policy-introduction.md)
-* Megismerkedhet az Azure PowerShell használatával, ha az erőforrások telepítése esetén, lásd: [az Azure PowerShell használata Azure Resource Managerrel](powershell-azure-resource-manager.md).
-* Témakörben megismerkedhet az Azure parancssori felület használatával, ha az erőforrások telepítése esetén, [az Azure parancssori felület Mac, Linux és a Windows Azure Resource Manager használatával](xplat-cli-azure-resource-manager.md).
-* Megismerkedhet a portál használatával, lásd: [az Azure portál használata az Azure erőforrások kezeléséhez](resource-group-portal.md).  
+* Testreszabott házirendek használatával alkalmazhat korlátozások és konvenciói előfizetését. Egy Ön által meghatározott szabályzat szükség lehet, hogy az összes erőforrásnak rendelkeznie kell egy értéket egy adott címkét. További információkért lásd: [Mi az Azure Policy?](../azure-policy/azure-policy-introduction.md)
+* Az Azure PowerShell-lel erőforrások telepítésekor bemutatását lásd: [az Azure PowerShell az Azure Resource Manager](powershell-azure-resource-manager.md).
+* Bevezetés az Azure CLI használatával az erőforrások telepítésekor, lásd: [Mac, Linux és Windows az Azure Resource Manager az Azure CLI használatával](xplat-cli-azure-resource-manager.md).
+* Bevezetés a portál használatával, lásd: [az Azure-erőforrások kezelése az Azure portal használatával](resource-group-portal.md).  
 * Nagyvállalatoknak az [Azure enterprise scaffold - prescriptive subscription governance](/azure/architecture/cloud-adoption-guide/subscription-governance) (Azure nagyvállalati struktúra - előíró előfizetés-irányítás) című cikk nyújt útmutatást az előfizetéseknek a Resource Managerrel való hatékony kezeléséről.

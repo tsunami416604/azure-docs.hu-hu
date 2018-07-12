@@ -1,6 +1,6 @@
 ---
-title: Az Azure Functions SendGrid kötések
-description: Az Azure Functions SendGrid kötések hivatkozás.
+title: Az Azure Functions SendGrid-kötések
+description: Az Azure Functions SendGrid-kötések hivatkozhat.
 services: functions
 documentationcenter: na
 author: tdykstra
@@ -13,41 +13,41 @@ ms.workload: na
 ms.date: 11/29/2017
 ms.author: tdykstra
 ms.openlocfilehash: 0cd5730d049749949db13f29499e268a1ebccc18
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34830612"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38467950"
 ---
-# <a name="azure-functions-sendgrid-bindings"></a>Az Azure Functions SendGrid kötések
+# <a name="azure-functions-sendgrid-bindings"></a>Az Azure Functions SendGrid-kötések
 
-Ez a cikk ismerteti, hogyan küldjön e-mailek [SendGrid](https://sendgrid.com/docs/User_Guide/index.html) Azure Functions kötések. Az Azure Functions SendGrid egy kimeneti kötése támogatja.
+Ez a cikk azt ismerteti, hogyan e-mailek küldése használatával [SendGrid](https://sendgrid.com/docs/User_Guide/index.html) kötések az Azure Functions szolgáltatásban. Az Azure Functions kimeneti kötés SendGrid támogatja.
 
 [!INCLUDE [intro](../../includes/functions-bindings-intro.md)]
 
-## <a name="packages---functions-1x"></a>Csomagok - 1.x működik
+## <a name="packages---functions-1x"></a>Csomagok – 1.x függvények
 
-A SendGrid kötések szerepelnek a [Microsoft.Azure.WebJobs.Extensions.SendGrid](http://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.SendGrid) NuGet-csomag verziója 2.x. A csomag forráskódja van a [azure-webjobs-sdk-bővítmények](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/v2.x/src/WebJobs.Extensions.SendGrid/) GitHub-tárházban.
+A SendGrid-kötések szerepelnek a [Microsoft.Azure.WebJobs.Extensions.SendGrid](http://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.SendGrid) NuGet-csomag verziója 2.x. A csomag forráskódja a [azure-webjobs-sdk-bővítmények](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/v2.x/src/WebJobs.Extensions.SendGrid/) GitHub-adattárban.
 
 [!INCLUDE [functions-package](../../includes/functions-package.md)]
 
-## <a name="packages---functions-2x"></a>Csomagok - 2.x működik
+## <a name="packages---functions-2x"></a>Csomagok – 2.x függvények
 
-A SendGrid kötések szerepelnek a [Microsoft.Azure.WebJobs.Extensions.SendGrid](http://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.SendGrid) NuGet-csomag verziója 3.x. A csomag forráskódja van a [azure-webjobs-sdk-bővítmények](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.SendGrid/) GitHub-tárházban.
+A SendGrid-kötések szerepelnek a [Microsoft.Azure.WebJobs.Extensions.SendGrid](http://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.SendGrid) NuGet-csomag verziója 3.x. A csomag forráskódja a [azure-webjobs-sdk-bővítmények](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.SendGrid/) GitHub-adattárban.
 
 [!INCLUDE [functions-package-v2](../../includes/functions-package-v2.md)]
 
 ## <a name="example"></a>Példa
 
-Tekintse meg a nyelvspecifikus példát:
+Tekintse meg az adott nyelvű példa:
 
 * [C#](#c-example)
 * [C# script (.csx)](#c-script-example)
 * [JavaScript](#javascript-example)
 
-### <a name="c-example"></a>C# – példa
+### <a name="c-example"></a>C#-példa
 
-Az alábbi példa mutatja egy [C# függvény](functions-dotnet-class-library.md) , hogy indítás, használja a Service Bus-üzenetsorba, és a SendGrid kimeneti kötése.
+A következő példa bemutatja egy [C#-függvény](functions-dotnet-class-library.md) , hogy használja a Service Bus-üzenetsorba aktiválása és a SendGrid kimeneti kötést.
 
 ```cs
 [FunctionName("SendEmail")]
@@ -71,13 +71,13 @@ public class OutgoingEmail
 }
 ```
 
-Akkor kihagyhatja a attribútum `ApiKey` tulajdonság, ha az API-kulcs "AzureWebJobsSendGridApiKey" nevű Alkalmazásbeállítás szerepel.
+Kihagyhatja az attribútum beállítása `ApiKey` Ha API-kulcsát egy alkalmazásbeállításhoz "AzureWebJobsSendGridApiKey" nevű tulajdonság.
 
-### <a name="c-script-example"></a>C# parancsfájl – példa
+### <a name="c-script-example"></a>C#-szkript példa
 
-A következő példa bemutatja a SendGrid kimeneti kötelező egy *function.json* fájlt és egy [C# parancsfájl függvény](functions-reference-csharp.md) , amely a kötés használja.
+Az alábbi példa bemutatja egy kötelező a SendGrid-kimenet egy *function.json* fájl és a egy [C#-szkriptfüggvény](functions-reference-csharp.md) , amely a kötés használja.
 
-Itt az kötés adatai a *function.json* fájlt:
+Itt van a kötési adatait a *function.json* fájlt:
 
 ```json 
 {
@@ -95,9 +95,9 @@ Itt az kötés adatai a *function.json* fájlt:
 }
 ```
 
-A [konfigurációs](#configuration) a szakasz ismerteti ezeket a tulajdonságokat.
+A [konfigurációs](#configuration) szakasz mutatja be ezeket a tulajdonságokat.
 
-A C# parancsfájl kód itt látható:
+Íme a C#-szkriptkódot:
 
 ```csharp
 #r "SendGrid"
@@ -124,11 +124,11 @@ public static void Run(TraceWriter log, string input, out Mail message)
 }
 ```
 
-### <a name="javascript-example"></a>JavaScript – példa
+### <a name="javascript-example"></a>JavaScript-példa
 
-A következő példa bemutatja a SendGrid kimeneti kötelező egy *function.json* fájlt és egy [JavaScript függvény](functions-reference-node.md) , amely a kötés használja.
+Az alábbi példa bemutatja egy kötelező a SendGrid-kimenet egy *function.json* fájl és a egy [JavaScript-függvény](functions-reference-node.md) , amely a kötés használja.
 
-Itt az kötés adatai a *function.json* fájlt:
+Itt van a kötési adatait a *function.json* fájlt:
 
 ```json 
 {
@@ -146,9 +146,9 @@ Itt az kötés adatai a *function.json* fájlt:
 }
 ```
 
-A [konfigurációs](#configuration) a szakasz ismerteti ezeket a tulajdonságokat.
+A [konfigurációs](#configuration) szakasz mutatja be ezeket a tulajdonságokat.
 
-A JavaScript-kód itt látható:
+A következő JavaScript-kódot:
 
 ```javascript
 module.exports = function (context, input) {    
@@ -168,9 +168,9 @@ module.exports = function (context, input) {
 
 ## <a name="attributes"></a>Attribútumok
 
-A [C# osztálykönyvtárakhoz](functions-dotnet-class-library.md), használja a [SendGrid](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.SendGrid/SendGridAttribute.cs) attribútum.
+A [C#-osztálykódtárakat](functions-dotnet-class-library.md), használja a [SendGrid](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.SendGrid/SendGridAttribute.cs) attribútum.
 
-Konfigurálható attribútumtulajdonságok kapcsolatos információkért lásd: [konfigurációs](#configuration). Íme egy `SendGrid` metódus-aláírás attribútum példát:
+Konfigurálható attribútum-tulajdonságokkal kapcsolatos információkért lásd: [konfigurációs](#configuration). Íme egy `SendGrid` attribútum példa egy podpis metody:
 
 ```csharp
 [FunctionName("SendEmail")]
@@ -182,26 +182,26 @@ public static void Run(
 }
 ```
 
-Tekintse meg a teljes például [C# példa](#c-example).
+Egy teljes példa: [C#-példa](#c-example).
 
 ## <a name="configuration"></a>Konfiguráció
 
-Az alábbi táblázat ismerteti a beállított kötés konfigurációs tulajdonságok a *function.json* fájl és a `SendGrid` attribútum.
+A következő táblázat ismerteti a megadott kötés konfigurációs tulajdonságaiban a *function.json* fájlt, és a `SendGrid` attribútum.
 
 |Function.JSON tulajdonság | Attribútum tulajdonsága |Leírás|
 |---------|---------|----------------------|
-|**type**|| Szükséges – kell állítani `sendGrid`.|
-|**direction**|| Szükséges – kell állítani `out`.|
-|**name**|| Kötelező – a kérelem vagy kérelemtörzset függvény a kódban használt változó neve. Ez az érték ```$return``` Ha csak egy visszatérési értéket. |
-|**apiKey**|**ApiKey**| Az API-kulcsot tartalmazó alkalmazásbeállítás neve. Ha nincs beállítva, a beállítás alapértelmezett alkalmazás nevének megadása "AzureWebJobsSendGridApiKey".|
+|**type**|| Kötelező – kell állítani `sendGrid`.|
+|**direction**|| Kötelező – kell állítani `out`.|
+|**name**|| Kötelező – a a függvény kódját a kérelem vagy a kérelem törzsében használt változó neve. Ez az érték ```$return``` Ha csak egy visszatérési értéket tartalmaz. |
+|**apiKey**|**ApiKey**| Az API-kulcsot tartalmazó alkalmazásbeállítás neve. Ha nincs beállítva, az alapértelmezett alkalmazás beállítása a név "AzureWebJobsSendGridApiKey".|
 |**A**|**Címzett**| a címzett e-mail címét. |
-|**A**|**A**| a feladó e-mail címe. |
-|**subject**|**Tárgy**| az e-mail tárgyát. |
-|**Szöveg**|**Szöveg**| az e-mailek tartalmának. |
+|**a**|**A**| a feladó e-mail címe. |
+|**subject**|**Tárgy**| az e-mail tárgya. |
+|**szöveg**|**Szöveg**| az e-mail tartalma. |
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [További tudnivalók az Azure functions eseményindítók és kötések](functions-triggers-bindings.md)
+> [Tudjon meg többet az Azure functions eseményindítók és kötések](functions-triggers-bindings.md)

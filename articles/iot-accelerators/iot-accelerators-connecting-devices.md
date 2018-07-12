@@ -1,6 +1,6 @@
 ---
-title: Windows-eszközök a távoli figyelése c. - Azure kiépítése |} Microsoft Docs
-description: Ismerteti, hogyan lehet egy eszköz csatlakozni a távoli megfigyelési megoldásgyorsító, a C Windows rendszeren futó alkalmazást használ.
+title: Távoli figyelési C – az Azure Windows-eszköz kiépítése |} A Microsoft Docs
+description: Ismerteti, hogyan lehet egy eszköz csatlakoztatása a távoli figyelési megoldásgyorsító futó Windows C nyelven írt alkalmazás használatával.
 author: dominicbetts
 manager: timlt
 ms.service: iot-accelerators
@@ -9,27 +9,27 @@ ms.topic: conceptual
 ms.date: 03/14/2018
 ms.author: dobett
 ms.openlocfilehash: 139daea3e885636b352d4c9a1ba2651a24195b21
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34626955"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38309870"
 ---
-# <a name="connect-your-device-to-the-remote-monitoring-solution-accelerator-windows"></a>Csatlakoztassa az eszközt a távoli megfigyelési megoldásgyorsító (Windows)
+# <a name="connect-your-device-to-the-remote-monitoring-solution-accelerator-windows"></a>Az eszköz csatlakoztatása a távoli figyelési megoldásgyorsító (Windows)
 
 [!INCLUDE [iot-suite-selector-connecting](../../includes/iot-suite-selector-connecting.md)]
 
-Ez az oktatóanyag bemutatja, hogyan egy fizikai eszköz csatlakozni a távoli megfigyelési megoldásgyorsító.
+Ez az oktatóanyag bemutatja, hogyan kell egy fizikai eszköz csatlakoztatása a távoli figyelési megoldásgyorsító.
 
-## <a name="create-a-c-client-solution-on-windows"></a>C ügyfél megoldás létrehozása a Windows rendszeren
+## <a name="create-a-c-client-solution-on-windows"></a>A Windows C ügyfél megoldás létrehozása
 
-Csakúgy, mint a beágyazott korlátozott eszközökön futó alkalmazások, az Ügyfélkód az eszköz alkalmazás íródott a c kiszolgálóra. Ebben az oktatóanyagban hoz létre az alkalmazás a Windows rendszerű gépen.
+Csakúgy, mint legnagyobb beágyazott korlátozott eszközökön futó alkalmazásokhoz, az Ügyfélkód az eszköz alkalmazás írt c-hez Ebben az oktatóanyagban hozza létre az alkalmazást egy Windows rendszert futtató gépen.
 
-### <a name="create-the-starter-project"></a>Az alapszintű projekt létrehozása
+### <a name="create-the-starter-project"></a>A kezdő-projekt létrehozása
 
-Hozzon létre egy alapszintű projektet a Visual Studio 2017, és az IoT Hub eszköz ügyfél NuGet-csomagok hozzáadása:
+Hozzon létre egy alapszintű projektet a Visual Studio 2017-ben, és adja hozzá az IoT Hub eszköz ügyfél NuGet-csomagok:
 
-1. A Visual Studio, hozzon létre egy C-konzolalkalmazást a Visual C++ használatával **Windows-Konzolalkalmazás** sablont. Nevet a projektnek **RMDevice**.
+1. A Visual Studióban hozzon létre egy C-konzolalkalmazást a Visual C++ használatával **Windows-Konzolalkalmazást** sablont. Adja a projektnek **RMDevice**.
 
     ![Visual C++ Windows-Konzolalkalmazás létrehozása](./media/iot-accelerators-connecting-devices/visualstudio01.png)
 
@@ -37,45 +37,45 @@ Hozzon létre egy alapszintű projektet a Visual Studio 2017, és az IoT Hub esz
 
 1. A **Megoldáskezelőben**, nevezze át a fájlt `RMDevice.cpp` való `RMDevice.c`.
 
-    ![Solution Explorer ábrázoló RMDevice.c fájl átnevezése](./media/iot-accelerators-connecting-devices/visualstudio02.png)
+    ![Megoldás Explorer ábrázoló RMDevice.c fájl átnevezése](./media/iot-accelerators-connecting-devices/visualstudio02.png)
 
-1. A **Megoldáskezelőben**, kattintson a jobb gombbal a **RMDevice** projektre, majd kattintson **kezelése NuGet-csomagok**. Válasszon **Tallózás**, majd keresse meg, és telepítse a következő NuGet-csomagok:
+1. A **Megoldáskezelőben**, kattintson a jobb gombbal a **RMDevice** projektre, majd kattintson **NuGet-csomagok kezelése**. Válasszon **Tallózás**, majd keresse meg és telepítse a következő NuGet-csomagokat:
 
     * Microsoft.Azure.IoTHub.Serializer
     * Microsoft.Azure.IoTHub.IoTHubClient
     * Microsoft.Azure.IoTHub.MqttTransport
 
-    ![NuGet-Csomagkezelő telepített Microsoft.Azure.IoTHub csomagok jeleníti meg.](./media/iot-accelerators-connecting-devices/visualstudio03.png)
+    ![NuGet-Csomagkezelő telepített Microsoft.Azure.IoTHub csomagokat jeleníti meg.](./media/iot-accelerators-connecting-devices/visualstudio03.png)
 
-1. A **Solution Explorer**, kattintson a jobb gombbal a **RMDevice** projektre, majd válassza ki **tulajdonságok** nyissa meg a projektet a **tulajdonságlapjain** a párbeszédpanel. További információkért lásd: [beállításának Visual C++ projekt tulajdonságai](https://docs.microsoft.com/cpp/ide/working-with-project-properties).
+1. A **Megoldáskezelőben**, kattintson a jobb gombbal a **RMDevice** projektre, majd válassza ki **tulajdonságok** megnyitja a projektet **tulajdonságait tartalmazó oldalakon** párbeszédpanel bezárásához. További információkért lásd: [beállításának Visual C++ projekt tulajdonságai](https://docs.microsoft.com/cpp/ide/working-with-project-properties).
 
-1. Válassza ki a **C/C++** mappát, majd válassza ki a **előre le fordítva fejlécek** tulajdonságlapján.
+1. Válassza ki a **C/C++** mappát, majd válassza ki a **előre lefordított fejlécek** tulajdonságlap.
 
-1. Állítsa be **előre le fordítva fejléc** való **előre le nem használ fordítva fejlécek**. Válassza a **alkalmaz**.
+1. Állítsa be **előre lefordított fejléc** való **fejlécek nem használja az előre lefordított**. Válassza a **alkalmaz**.
 
-    ![Projekt tulajdonságok nem használja az előfordított fejlécek projekt megjelenítése](./media/iot-accelerators-connecting-devices/visualstudio04.png)
+    ![Projekt tulajdonságai nem használ lefordított fejlécek projekt megjelenítése](./media/iot-accelerators-connecting-devices/visualstudio04.png)
 
-1. Válassza ki a **Linker** mappát, majd válassza ki a **bemeneti** tulajdonságlapján.
+1. Válassza ki a **Linker** mappát, majd válassza ki a **bemeneti** tulajdonságlap.
 
-1. Adja hozzá `crypt32.lib` számára a **további függőségek** tulajdonság. A projekt tulajdonságértékek mentéséhez válasszon **OK** , majd **OK** újra.
+1. Adjon hozzá `crypt32.lib` , a **további függőségek** tulajdonság. Válassza ki a projekt mentése tulajdonságértékek, **OK** , majd **OK** újra.
 
-    ![Projekt tulajdonságok crypt32.lib beleértve Linker megjelenítése](./media/iot-accelerators-connecting-devices/visualstudio05.png)
+    ![Projekt tulajdonságai Linker, beleértve a crypt32.lib megjelenítése](./media/iot-accelerators-connecting-devices/visualstudio05.png)
 
 ### <a name="add-the-parson-json-library"></a>A Parson JSON könyvtár hozzáadása
 
-A Parson JSON könyvtár hozzáadása a **RMDevice** projektre, és adja hozzá a szükséges `#include` utasításokat:
+Adja hozzá a Parson JSON-könyvtárban a **RMDevice** projektre, és adja hozzá a szükséges `#include` utasításokat:
 
-1. A megfelelő mappát a számítógépén klónozza a Parson GitHub-tárházban, a következő parancsot:
+1. A megfelelő mappát a számítógépen klónozza a Parson GitHub-tárházban, a következő paranccsal:
 
     ```cmd
     git clone https://github.com/kgabis/parson.git
     ```
 
-1. Másolás a `parson.h` és `parson.c` fájlok a Parson tárház helyi másolatát a **RMDevice** projekt mappájából.
+1. Másolás a `parson.h` és `parson.c` a Parson-adattár helyi példányának fájlokat a **RMDevice** projektmappában.
 
-1. A Visual Studióban, kattintson a jobb gombbal a **RMDevice** projektre, válassza a **Hozzáadás**, és válassza a **meglévő cikk**.
+1. A Visual Studióban kattintson a jobb gombbal a **RMDevice** projektre, válassza a **Hozzáadás**, és válassza a **meglévő elem**.
 
-1. Az a **meglévő elem hozzáadása** párbeszédpanelen válassza a `parson.h` és `parson.c` -fájlok a **RMDevice** projekt mappájából. Ezeket a fájlokat két hozzáadása a projekthez, válassza a **Hozzáadás**.
+1. Az a **meglévő elem hozzáadása** párbeszédpanelen válassza ki a `parson.h` és `parson.c` található fájlokat a **RMDevice** projektmappában. Adja hozzá a projekthez két fájlt, válassza a **Hozzáadás**.
 
     ![Megoldáskezelő parson.h és parson.c fájlokat jeleníti meg.](./media/iot-accelerators-connecting-devices/visualstudio06.png)
 
@@ -93,15 +93,15 @@ A Parson JSON könyvtár hozzáadása a **RMDevice** projektre, és adja hozzá 
     ```
 
     > [!NOTE]
-    > Most már ellenőrizheti, hogy rendelkezik-e a helyes függőség beállítja azt a megoldás létrehozása a projekthez.
+    > Most ellenőrizheti, hogy rendelkezik-e a helyes függőség beállítja azt a megoldás létrehozása a projekthez.
 
 [!INCLUDE [iot-suite-connecting-code](../../includes/iot-suite-connecting-code.md)]
 
 ## <a name="build-and-run-the-sample"></a>A minta létrehozása és futtatása
 
-Adja hozzá a meghívni kívánt kódot a **távoli\_figyelési\_futtatása** funkciót, majd létre, és futtassa az alkalmazást:
+Adja hozzá a kódot kell elindítani a **távoli\_figyelési\_futtatása** függvényt, majd alkalmazás összeállítása és futtatása az eszköz:
 
-1. A meghívni kívánt a **távoli\_figyelési\_futtatása** működik, cserélje le a **fő** függvényt a következő kódot:
+1. Meghívni a **távoli\_figyelési\_futtatása** működik, cserélje le a **fő** függvény a következő kóddal:
 
     ```c
     int main()
@@ -111,12 +111,12 @@ Adja hozzá a meghívni kívánt kódot a **távoli\_figyelési\_futtatása** fu
     }
     ```
 
-1. Válasszon **Build** , majd **megoldás fordítása** hozható létre az eszköz alkalmazás.
+1. Válassza a **összeállítása** , majd **megoldás fordítása** hozhat létre az alkalmazást.
 
-1. A **Megoldáskezelőben**, kattintson a jobb gombbal a **RMDevice** projektre, válassza a **Debug**, és válassza a **Start új példányt** a minta futtatásához . A konzol üzenetet jeleníti meg:
+1. A **Megoldáskezelőben**, kattintson a jobb gombbal a **RMDevice** projektre, válassza a **Debug**, és válassza a **új példány indítása** a minta futtatásához . A konzolon, üzeneteket jelenít meg:
 
     * Az alkalmazás minta telemetriai adatokat küld a megoldásgyorsító.
-    * A megoldás irányítópultjának beállítani kívánt tulajdonságértékek kap.
-    * A megoldás irányítópultja metódusokra válaszol.
+    * A megoldás irányítópultján beállított kívánt tulajdonságértékeket kap.
+    * A megoldás irányítópultjáról indított metódusokra válaszol.
 
 [!INCLUDE [iot-suite-visualize-connecting](../../includes/iot-suite-visualize-connecting.md)]

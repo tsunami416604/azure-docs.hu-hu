@@ -1,29 +1,29 @@
 ---
-title: Azure Event rács használata CloudEvents séma események
-description: Ismerteti, hogyan lehet beállítani a CloudEvents séma események Azure esemény rácsban.
+title: CloudEvents-séma események Azure Event Grid használata
+description: Ismerteti, hogyan lehet az Azure Event Grid-események CloudEvents-séma beállítása.
 services: event-grid
 author: banisadr
 manager: timlt
 ms.service: event-grid
 ms.topic: conceptual
-ms.date: 05/22/2018
+ms.date: 06/14/2018
 ms.author: babanisa
-ms.openlocfilehash: a2cccbb4feaa7b6f3f51ac7204af4a3e1efc6349
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: f3541fb3dbca6243f6c10611aa968603745f97a1
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34625593"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38314433"
 ---
-# <a name="use-cloudevents-schema-with-event-grid"></a>Esemény rács CloudEvents séma használata
+# <a name="use-cloudevents-schema-with-event-grid"></a>CloudEvents-séma használata az Event GRID használatával
 
-Kívül a [alapértelmezett esemény séma](event-schema.md), Azure esemény rács natív módon támogatja az események a [CloudEvents JSON-séma](https://github.com/cloudevents/spec/blob/master/json-format.md). [CloudEvents](http://cloudevents.io/) van egy [nyissa meg a standard specification](https://github.com/cloudevents/spec/blob/master/spec.md) eseményadatok leíró közös módon.
+Mellett a [alapértelmezett eseménysémája](event-schema.md), az Azure Event Grid natív módon támogatja az események a [CloudEvents JSON-sémájában](https://github.com/cloudevents/spec/blob/master/json-format.md). [CloudEvents](http://cloudevents.io/) van egy [nyissa meg a standard szintű specifikáció](https://github.com/cloudevents/spec/blob/master/spec.md) esemény adatleíró gyakori módja.
 
-CloudEvents együttműködési leegyszerűsíti az esemény közös séma biztosít a közzététel, és fel a felhő alapú események. Ebben a sémában egységes tooling, normál módon az Útválasztás és események kezelésére és a külső esemény séma deszerializálása univerzális módokat teszi lehetővé. A közös séma könnyebben integrálhatja a munkahelyi különböző platformokon.
+CloudEvents együttműködési leegyszerűsíti egy közös eseménysémája azáltal, hogy a közzétételre, és a felhőt események alapján. Ez a séma lehetővé teszi, hogy egységes azokat az eszközöket, normál módon az Útválasztás és események kezelése és a külső eseménysémája deszerializálása univerzális módjait. Egy közös sémával rendelkező további egyszerűen integrálható a munkahelyi különböző platformokon.
 
-CloudEvents folyamatban van a blokkolt build [közreműködők](https://github.com/cloudevents/spec/blob/master/community/contributors.md), beleértve a Microsoft, a [felhő natív számítási Foundation](https://www.cncf.io/). Érhető el jelenleg 0,1 verzióként.
+CloudEvents folyamatban van, annak több build [közreműködők](https://github.com/cloudevents/spec/blob/master/community/contributors.md), Microsoft, beleértve a [Felhőbeli natív számítási Foundation](https://www.cncf.io/). Jelenleg a 0,1 verzióként érhető el.
 
-A cikkből megtudhatja, hogyan használható a CloudEvents séma esemény rács.
+Ez a cikk ismerteti a CloudEvents-séma használata az Event GRID használatával.
 
 [!INCLUDE [event-grid-preview-feature-note.md](../../includes/event-grid-preview-feature-note.md)]
 
@@ -56,44 +56,44 @@ A cikkből megtudhatja, hogyan használható a CloudEvents séma esemény rács.
 }
 ```
 
-CloudEvents v0.1 tulajdonságai a következők érhető el:
+CloudEvents v0.1 érhető el a következő tulajdonságokkal rendelkezik:
 
-| CloudEvents        | Típus     | Példa JSON-érték             | Leírás                                                        | Esemény rács leképezése
+| CloudEvents        | Típus     | Példa JSON-értéket             | Leírás                                                        | Event Grid-leképezés
 |--------------------|----------|--------------------------------|--------------------------------------------------------------------|-------------------------
-| eventType          | Karakterlánc   | "com.example.someevent"          | Típusa történt előfordulás                                   | eventType
-| eventTypeVersion   | Karakterlánc   | "1.0"                            | Az esemény típusa (nem kötelező) verziója                            | dataVersion
-| cloudEventsVersion | Karakterlánc   | "0,1"                            | A CloudEvents megadását az esemény által használt verziója        | *továbbítva*
-| source             | URI      | "/ mycontext"                     | Az esemény gyártó ismerteti                                       | a témakör #subject
-| Eseményazonosító            | Karakterlánc   | "1234-1234-1234"                 | Az esemény azonosítója                                                    | id
-| eventTime          | Időbélyeg| "2018-04-05T17:31:00Z"           | Ha az esemény történt (nem kötelező) időbélyegzője                    | eventTime
-| schemaURL          | URI      | „https://myschema.com”           | A séma, az adatok attribútum megfelelő (nem kötelező) mutató hivatkozás | *nem használható.*
-| contentType        | Karakterlánc   | az "application/json"               | Ismerteti az adatok kódolási formátum (nem kötelező)                       | *nem használható.*
-| Bővítmények         | Térkép      | {"extA": "vA", "extB", "vB"}  | Minden további metaadatot (nem kötelező)                                 | *nem használható.*
-| adat               | Objektum   | {"objA": "vA", "objB", "vB"}  | Az eseménytartalom (nem kötelező)                                       | adat
+| eventType          | Sztring   | "com.example.someevent"          | Előfordulás történt típusa                                   | eventType
+| eventTypeVersion   | Sztring   | "1.0"                            | Az esemény típusa (nem kötelező) verziója                            | dataVersion
+| cloudEventsVersion | Sztring   | "0.1"                            | Az esemény használ CloudEvents-specifikáció verziója        | *átadni*
+| source             | URI      | "/ mycontext"                     | Az esemény-előállítót ismerteti                                       | a témakör #subject
+| Eseményazonosító            | Sztring   | "1234-1234-1234"                 | Esemény azonosítója                                                    | id
+| eventTime          | Időbélyeg| "2018-04-05T17:31:00Z"           | Időbélyeg, ha az esemény történt-e (nem kötelező)                    | eventTime
+| schemaURL          | URI      | „https://myschema.com”           | A séma, az adatok attribútum betartó (nem kötelező) mutató hivatkozás | *nincs használatban*
+| contentType        | Sztring   | az "application/json"               | Ismerteti az adatok kódolási formátum (nem kötelező)                       | *nincs használatban*
+| Bővítmények         | Térkép      | {"extra": "sebezhetőség-felmérési", "extB", "vB"}  | Minden további metaadatok (nem kötelező)                                 | *nincs használatban*
+| adatok               | Objektum   | {"objA": "sebezhetőség-felmérési", "objB", "vB"}  | Az eseménytartalom (nem kötelező)                                       | adatok
 
-További információkért lásd: a [CloudEvents spec](https://github.com/cloudevents/spec/blob/master/spec.md#context-attributes).
+További információkért lásd: a [CloudEvents specifikációja](https://github.com/cloudevents/spec/blob/master/spec.md#context-attributes).
 
-## <a name="configure-event-grid-for-cloudevents"></a>Esemény rács CloudEvents konfigurálása
+## <a name="configure-event-grid-for-cloudevents"></a>Event Grid CloudEvents konfigurálása
 
-Jelenleg Azure esemény rács rendelkezik preview CloudEvents JSON formátumú bemeneti támogatása, és a kimenetet **nyugati középső Régiójában**, **USA középső RÉGIÓJA**, és **Észak-Európa**.
+Jelenleg az Azure Event Grid rendelkezik előzetes CloudEvents JSON formátumú bemeneti támogatása és a kimeneti **USA nyugati középső Régiója**, **USA középső RÉGIÓJA**, és **Észak-Európa**.
 
-A bemeneti és kimeneti CloudEvents séma események esemény rács is használhatja. A rendszer események, például a Blob Storage-események és az IoT-központ eseményeket, és az egyéni események CloudEvents is használhatja. Azt is alakíthatja ezeket az eseményeket a keresztülhaladnak a hálózaton oda-vissza.
+Event Grid bemeneti és kimeneti események CloudEvents-séma is használható. CloudEvents rendszer események, például a Blob Storage-események és az IoT Hub-események és az egyéni eseményeket is használhat. Ez a hálózati oda-vissza események át is alakíthatja.
 
 
-| A bemeneti séma       | Kimeneti séma
+| A bemeneti séma       | Kimeneti sémája
 |--------------------|---------------------
-| CloudEvents formátum | CloudEvents formátum
-| Esemény rács formátumban  | CloudEvents formátum
-| CloudEvents formátum | Esemény rács formátumban
-| Esemény rács formátumban  | Esemény rács formátumban
+| CloudEvents-formátum | CloudEvents-formátum
+| Event Grid-formátum  | CloudEvents-formátum
+| CloudEvents-formátum | Event Grid-formátum
+| Event Grid-formátum  | Event Grid-formátum
 
-A minden esemény lehetséges esemény rács érvényesítést kér, az esemény a rács témakörhöz közzétételekor, és az esemény-előfizetés létrehozása. További információkért lásd: [esemény rács biztonsági és hitelesítési](security-authentication.md).
+Az összes Eseménysémák Event Grid érvényesítést egy event grid-témakör való közzétételkor és a egy esemény-előfizetés létrehozásakor. További információkért lásd: [Event Grid biztonsági és hitelesítési](security-authentication.md).
 
 ### <a name="input-schema"></a>A bemeneti séma
 
-A bemeneti sémát beállítása egy egyéni témakörre CloudEvents, használja a következő paramétert az Azure parancssori felület a téma létrehozásakor `--input-schema cloudeventv01schema`. Az egyéni témakör bejövő események most vár CloudEvents v0.1 formátumban.
+A bemeneti sémát az egyéni témakörre való CloudEvents beállításához használja a következő paramétert az Azure CLI az üzenettéma létrehozásakor `--input-schema cloudeventv01schema`. Az egyéni témakör bejövő események most vár CloudEvents v0.1 formátumban.
 
-Egy esemény rács témakör létrehozásához használja:
+Az event grid-témakör létrehozásához használja:
 
 ```azurecli
 # if you have not already installed the extension, do it now.
@@ -107,13 +107,13 @@ az eventgrid topic create \
   --input-schema cloudeventv01schema
 ```
 
-CloudEvents jelenlegi verziója nem támogatja a kötegelés események. CloudEvent sémával rendelkező események közzétételét egy témakörbe, egyenként tegye közzé minden esemény.
+CloudEvents jelenlegi verziója nem támogatja az események kötegelés. CloudEvent sémával események közzétételére egy témakört, egyenként tegye közzé minden esemény.
 
-### <a name="output-schema"></a>Kimeneti séma
+### <a name="output-schema"></a>Kimeneti sémája
 
-Egy esemény előfizetés CloudEvents a kimeneti sémával beállításához használja a következő paramétert az Azure CLI-t az esemény előfizetés létrehozásakor `--event-delivery-schema cloudeventv01schema`. Az esemény előfizetés események most érkeznek CloudEvents v0.1 formátumban.
+Egy esemény-előfizetés CloudEvents kimeneti sémája beállításához használja a következő paramétert az Azure CLI az esemény-előfizetés létrehozásakor `--event-delivery-schema cloudeventv01schema`. Ez az esemény-előfizetés eseményeire most érkeznek CloudEvents v0.1 formátumban.
 
-Egy esemény-előfizetés létrehozása, használata:
+Egy esemény-előfizetés létrehozásához használja:
 
 ```azurecli
 az eventgrid event-subscription create \
@@ -124,10 +124,10 @@ az eventgrid event-subscription create \
   --event-delivery-schema cloudeventv01schema
 ```
 
-A CloudEvents jelenlegi verziója nem támogatja a kötegelés események. Egy esemény-előfizetést, amelyet a CloudEvent séma beállított külön-külön kap minden esemény. Jelenleg nem használható egy esemény rács eseményindító az Azure Functions alkalmazásoknak, ha az eseményt a rendszer a CloudEvents sémában. Egy HTTP-eseményindítóval kell használnia.
+A CloudEvents jelenlegi verziója nem támogatja az események kötegelés. Egy esemény-előfizetést, amely konfigurálva van a CloudEvent séma külön-külön mindegyik eseményt kap. Jelenleg nem használható egy Event Grid-trigger egy Azure Functions-alkalmazás, amikor az esemény továbbítsa a CloudEvents-séma. HTTP-trigger kell használnia. HTTP-trigger, amely fogadja az eseményeket a CloudEvents-séma végrehajtási példákért lásd [HTTP-trigger használja, mint az Event Grid-trigger](../azure-functions/functions-bindings-event-grid.md#use-an-http-trigger-as-an-event-grid-trigger).
 
 ## <a name="next-steps"></a>További lépések
 
-* Esemény kézbesítések figyelésével kapcsolatos további információkért lásd: [figyelő esemény rács üzenetkézbesítést](monitor-event-delivery.md).
-* Javasoljuk, hogy teszteléséhez megjegyzést, és [közre](https://github.com/cloudevents/spec/blob/master/CONTRIBUTING.md) CloudEvents számára.
-* Egy esemény rács Azure-előfizetés létrehozásával kapcsolatos további információkért lásd: [esemény rács előfizetés séma](subscription-creation-schema.md).
+* Esemény kézbesítések figyelésével kapcsolatos további információkért lásd: [figyelő Event Grid üzenetkézbesítése](monitor-event-delivery.md).
+* Javasoljuk, hogy tesztelje, Megjegyzés, és [közreműködés](https://github.com/cloudevents/spec/blob/master/CONTRIBUTING.md) CloudEvents való.
+* Az Azure Event Grid-előfizetés létrehozásával kapcsolatos további információkért lásd: [Event Grid-előfizetés séma](subscription-creation-schema.md).

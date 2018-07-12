@@ -11,16 +11,16 @@ ms.date: 01/26/2017
 ms.author: davidmu
 ms.component: B2C
 ms.openlocfilehash: 5c89f39b2f94309ea3d99230f5265d834c7093d9
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37444820"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38477449"
 ---
 # <a name="azure-active-directory-b2c-built-in-policies"></a>Az Azure Active Directory B2C: Beépített szabályzatok
 
 
-Az Azure Active Directory (Azure AD) B2C bővíthető házirend-keretrendszer a szolgáltatás alapvető erősségét. Például csak a teljes leírása fogyasztói identitások jellemzőit házirendek regisztráció, bejelentkezés vagy profil szerkesztéséhez. Például egy regisztrálási szabályzatot lehetővé teszi a viselkedés szabályozására, a következő beállítások konfigurálásához:
+Az Azure Active Directory (Azure AD) B2C bővíthető házirend-keretrendszer a szolgáltatás alapvető erősségét. Például csak a teljes leírása fogyasztói identitások jellemzőit házirendek regisztráció, bejelentkezés vagy profil szerkesztéséhez. A bejelentkezési szabályzat például az alábbi beállítások konfigurálásával teszi lehetővé a viselkedésmódok vezérlését:
 
 * Fióktípus esetében (például a Facebookhoz közösségi fiókok) vagy a helyi fiókok, például az e-mail-címeket, amelyek a fogyasztók iratkozzon fel az alkalmazás használatával
 * Attribútumok (például utónév, postai irányítószám és cipőméreten) regisztráció során a felhasználóknak gyűjtendő

@@ -1,6 +1,6 @@
 ---
-title: A StorSimple eszköz frissítése |} Microsoft Docs
-description: Ismerteti a StorSimple update szolgáltatás használatával normál és a karbantartási mód frissítéseket és gyorsjavításokat telepíti.
+title: A StorSimple eszköz frissítése |} A Microsoft Docs
+description: Ismerteti a StorSimple update szolgáltatás használatával normál és a karbantartási módú frissítések és gyorsjavítások telepítése.
 services: storsimple
 documentationcenter: NA
 author: SharS
@@ -15,111 +15,111 @@ ms.workload: TBD
 ms.date: 01/23/2018
 ms.author: v-sharos
 ms.openlocfilehash: 412978d2c343394f295e336690ec72153dda4b79
-ms.sourcegitcommit: 79683e67911c3ab14bcae668f7551e57f3095425
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/25/2018
-ms.locfileid: "28103608"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38452617"
 ---
-# <a name="update-your-storsimple-8000-series-device"></a>A StorSimple 8000 Series eszköz frissítése
+# <a name="update-your-storsimple-8000-series-device"></a>A StorSimple 8000 sorozatú eszköz frissítése
 > [!NOTE]
 > A StorSimple klasszikus portálja elavult. A StorSimple-eszközkezelők automatikusan átkerülnek az új Azure Portalra az elavulási ütemezésnek megfelelően. Erről az áthelyezésről kapni fog egy e-mailt és egy Portal-értesítést. Ez a dokumentum hamarosan el lesz távolítva. Ha kérdései vannak az áthelyezéssel kapcsolatban, tekintse meg a [Gyakori kérdések: Váltás az Azure Portalra](storsimple-8000-move-azure-portal-faq.md) szakaszt.
 
 ## <a name="overview"></a>Áttekintés
-A StorSimple frissítések szolgáltatások lehetővé teszik, egyszerűen a StorSimple eszköz naprakész állapotban tartása érdekében. Attól függően, hogy a frissítés típusa frissítéseket alkalmazhat az eszköz a Windows PowerShell felületén keresztül vagy a klasszikus Azure portálon keresztül. Ez az oktatóanyag leírja a frissítések típusának és azok telepítése.
+A StorSimple frissítések funkciói lehetővé teszik, hogy egyszerűen tartsa naprakészen a StorSimple-eszköz. A frissítés típusától függően az eszközt a klasszikus Azure portálon keresztül vagy a Windows PowerShell felületéről frissítéseket alkalmazhat. Ez az oktatóanyag leírja a frissítések típusának és azok telepítése.
 
-Kétféle eszközfrissítésekhez alkalmazhatja: 
+Kétféle típusú eszköz frissítéseit alkalmazhatja: 
 
-* Rendszeres (vagy normál módú) frissítéseket
-* Karbantartási mód frissítések
+* Normál (vagy normál módú) frissítések
+* Karbantartási módú frissítések
 
-A klasszikus Azure portálon vagy a Windows PowerShell; rendszeres frissítések telepítése a Windows PowerShell a karbantartási mód frissítések telepítése kell használnia. 
+A klasszikus Azure portálon vagy a Windows PowerShell; segítségével általános frissítések telepítése Windows PowerShell a karbantartási módú frissítések telepítése kell használnia. 
 
-Minden egyes frissítés típus külön-külön alább.
+Minden egyes frissítés típus leírása alább külön-külön.
 
-### <a name="regular-updates"></a>Rendszeres frissítések
-Rendszeres frissítéseket tudja telepíteni, ha az eszköz normál üzemmódban van nem zavaró frissítések érhetők el. Ezeket a frissítéseket a Microsoft Update webhelyen keresztül minden eszköz vezérlő érvényesek. 
+### <a name="regular-updates"></a>Általános frissítések
+Általános frissítések zavart nem okozó frissítések, amely telepíthető, amennyiben az eszköz normál módban. Ezeket a frissítéseket a Microsoft Update webhelyen keresztül mindkét eszközvezérlő lépnek. 
 
 > [!IMPORTANT]
-> A vezérlő feladatátvétel fordulhat elő, a frissítési folyamat alatt. Azonban ez nem érinti rendszer rendelkezésre állás vagy a műveletet.
+> A frissítési folyamat alatt a vezérlő feladatátvétele fordulhat elő. Azonban ez nem érinti rendszer rendelkezésre állás vagy a műveletet.
 > 
 > 
 
-* A klasszikus Azure portálon keresztül rendszeres frissítések telepítésével, lásd: [a klasszikus Azure portálon keresztül rendszeres frissítések telepítése](#install-regular-updates-via-the-azure-classic-portal).
-* A StorSimple rendszeres frissítéseket a Windows PowerShell használatával is telepíthet. További információkért lásd: [telepítse a Windows PowerShell segítségével rendszeres frissítéseket StorSimple](#install-regular-updates-via-windows-powershell-for-storsimple).
+* A klasszikus Azure portálon keresztül általános frissítések telepítésével kapcsolatos részletekért lásd: [a klasszikus Azure portálon keresztül rendszeres frissítések telepítése](#install-regular-updates-via-the-azure-classic-portal).
+* Általános frissítések a Windows PowerShell storsimple-höz készült is telepíthet. További információkért lásd: [Windows Powershellen keresztül rendszeres frissítések telepítése a storsimple-höz készült](#install-regular-updates-via-windows-powershell-for-storsimple).
 
-### <a name="maintenance-mode-updates"></a>Karbantartási mód frissítések
-Karbantartási mód frissítések például a belső vezérlőprogram-frissítések lemez zavaró frissítések érhetők el. Ezek a frissítések karbantartási módba kell állítani az eszköz szükséges. További információkért lásd: [2. lépés: Adja meg a karbantartási mód](#step2). A klasszikus Azure portálra a karbantartási mód frissítések telepítése nem használható. Ehelyett a StorSimple Windows PowerShell kell használnia. 
+### <a name="maintenance-mode-updates"></a>Karbantartási módú frissítések
+Karbantartási módú frissítések zavart okozó frissítések, például a lemez belső vezérlőprogramok frissítése is. A frissítések megkövetelik az eszköz karbantartási módba kell helyezni. További információkért lásd: [2. lépés: Adja meg a karbantartási mód](#step2). A klasszikus Azure portál használatával nem karbantartási módú frissítések telepítése. Ehelyett a storsimple Windows PowerShell kell használnia. 
 
-A karbantartási mód frissítések telepítése, lásd: [telepítése karbantartási mód frissítések keresztül a Windows PowerShell-lel](#install-maintenance-mode-updates-via-windows-powershell-for-storsimple).
+Karbantartási módú frissítések telepítésével kapcsolatos részletekért lásd: [telepítése karbantartási módú frissítések storsimple-höz készült Windows PowerShell segítségével](#install-maintenance-mode-updates-via-windows-powershell-for-storsimple).
 
 > [!IMPORTANT]
-> Karbantartási mód frissítések külön-külön kell alkalmazható minden tartományvezérlő. 
+> Karbantartási módú frissítések külön-külön kell alkalmazható minden vezérlő. 
 > 
 > 
 
 ## <a name="install-regular-updates-via-the-azure-classic-portal"></a>A klasszikus Azure portálon keresztül rendszeres frissítések telepítése
-Frissítések alkalmazása a StorSimple eszközt használhatja a klasszikus Azure portálon.
+A klasszikus Azure portál segítségével a frissítések alkalmazása a StorSimple-eszköz.
 
 [!INCLUDE [storsimple-install-updates-manually](../../includes/storsimple-install-updates-manually.md)]
 
-## <a name="install-regular-updates-via-windows-powershell-for-storsimple"></a>Telepítse a Windows PowerShell segítségével rendszeres frissítéseket StorSimple
-Azt is megteheti használhatja a Windows PowerShell-lel (normál mód) rendszeres frissítések alkalmazásához.
+## <a name="install-regular-updates-via-windows-powershell-for-storsimple"></a>A StorSimple Windows PowerShell-lel rendszeres frissítéseinek telepítése
+Storsimple-höz készült Windows PowerShell segítségével azt is megteheti, normál (normál módú) frissítések alkalmazásához.
 
 > [!IMPORTANT]
-> Bár a Windows PowerShell használatával a StorSimple rendszeres frissítések telepítése erősen ajánlott a klasszikus Azure portálon keresztül rendszeres frissítések telepítése. Verziótól kezdődően Update 1 előzetes ellenőrzése a portálról frissítések telepítése előtt történik. Az előzetes ellenőrzések megelőzik az hibák, és a gördülékenyebb élményt nyújtsanak. 
+> Bár a rendszeres frissítések storsimple-höz készült Windows PowerShell használatával is telepíthető, javasoljuk, hogy a klasszikus Azure portálon keresztül rendszeres frissítések telepítése. Frissítés 1-es verziótól kezdve előzetes ellenőrzése a portálon a frissítések telepítése előtt kell elvégezni. Az előzetes ellenőrzések megelőzik a hibákat, és a egyenletesebb élményt nyújt. 
 > 
 > 
 
 [!INCLUDE [storsimple-install-regular-updates-powershell](../../includes/storsimple-install-regular-updates-powershell.md)]
 
-## <a name="install-maintenance-mode-updates-via-windows-powershell-for-storsimple"></a>Telepítse a StorSimple karbantartási mód frissítéseket a Windows PowerShell segítségével
-Karbantartási mód frissítések alkalmazása a StorSimple eszközt használhatja a Windows PowerShell-lel. Az összes i/o-kérelmek fel van függesztve, ebben a módban. Például nem felejtő közvetlen elérésű memória (NVRAM) vagy a fürtözött szolgáltatás is le van állítva. Mindkét tartományvezérlők újraindítása van, adja meg, vagy lépjen ki az ebben a módban. Ebben a módban való kilépéskor a szolgáltatások folytatódik, és megfelelő kell lennie. (Ez eltarthat néhány percig.)
+## <a name="install-maintenance-mode-updates-via-windows-powershell-for-storsimple"></a>Storsimple-höz készült Windows Powershellen keresztül a karbantartási módú frissítések telepítése
+Storsimple-höz készült Windows PowerShell használatával a StorSimple-eszköz karbantartási módú frissítések vonatkoznak. Ebben a módban az összes i/o-kérések fel van függesztve. Nem felejtő közvetlen elérésű memória (NVRAM) például szolgáltatások vagy a fürtözési szolgáltatás is le lesz állítva. Mindkét vezérlő beírásakor, vagy lépjen ki az ebben a módban indulnak újra. Ebben a módban való kilépéskor összes szolgáltatás folytatódik, és kifogástalan állapotban kell lennie. (Ez eltarthat néhány percig.)
 
-Ha a karbantartási mód frissítések alkalmazására van szüksége, kapni fog egy riasztást, hogy rendelkezik-e telepíteni kell a klasszikus Azure portálon keresztül. Ez a riasztás Windows PowerShell-lel használata a frissítések telepítésére vonatkozó utasításokat tartalmazza. Miután frissítette az eszközt, a ugyanazzal az eljárással segítségével módosíthatja az eszköz rendszeres módra. Részletes útmutatásért lásd: [4. lépés: Kilépés a karbantartási mód](#step4).
+Ha a alkalmazni a karbantartási módú frissítések van szüksége, kapni fog egy riasztást, hogy a frissítések, amelyeket telepíteni kell a klasszikus Azure portálon keresztül. Ez a riasztás storsimple-höz készült Windows PowerShell használata a frissítések telepítésére vonatkozó utasításokat tartalmazza. Miután frissítette az eszközt, ugyanazt az eljárást használatával állítsa át az eszköz rendszeres módra. Lépésenkénti útmutatásért lásd: [4. lépés: kilépési karbantartási módba](#step4).
 
 > [!IMPORTANT]
-> * Mielőtt karbantartási módba, ellenőrizze, hogy mindkét eszközvezérlők kifogástalan ellenőrzésével a **hardverállapot** a a **karbantartási** a klasszikus Azure portálra a lap. Ha a tartományvezérlő nem működik megfelelően, a következő lépéseket illetően forduljon a Microsoft Support. További információkért látogasson el forduljon a Microsoft ügyfélszolgálatához. 
-> * Ha karbantartási módban, a frissítés először egy tartományvezérlő és a többi tartományvezérlőn kell.
+> * Mielőtt karbantartási üzemmódba, győződjön meg arról, hogy mindkét eszközvezérlő kifogástalan állapotú ellenőrzésével a **hardverállapot** a a **karbantartási** oldalon a klasszikus Azure portálon. Ha a vezérlő állapota nem kifogástalan, forduljon a Microsoft Support a következő lépésekhez. További információkért látogasson el, forduljon a Microsoft ügyfélszolgálatához. 
+> * Ha karbantartási módban van, először telepítse a frissítést egy tartományvezérlőre, majd a másik vezérlőre kell.
 > 
 > 
 
-### <a name="step-1-connect-to-the-serial-console-a-namestep1"></a>1. lépés: Csatlakozás soros konzolon<a name="step1">
-Először egy alkalmazás, például a PuTTY használatával a soros konzol eléréséhez. Az alábbi eljárás ismerteti, hogyan PuTTY a soros konzoljához való csatlakozáshoz.
+### <a name="step-1-connect-to-the-serial-console-a-namestep1"></a>1. lépés: Kapcsolódás a soros konzol <a name="step1">
+Első lépésként használja egy alkalmazás, például a PuTTY a soros konzol eléréséhez. Az alábbi eljárás ismerteti, hogyan PuTTY a soros konzoljához való csatlakozáshoz.
 
 [!INCLUDE [storsimple-use-putty](../../includes/storsimple-use-putty.md)]
 
-### <a name="step-2-enter-maintenance-mode-a-namestep2"></a>2. lépés: Adja meg a karbantartási mód<a name="step2">
-A konzol csatlakozik, határozza meg, hogy vannak-e a frissítések telepítéséhez, és adja meg a karbantartási módból, hogy telepítse őket.
+### <a name="step-2-enter-maintenance-mode-a-namestep2"></a>2. lépés: Adja meg a karbantartási mód <a name="step2">
+Miután csatlakozott a konzolon, határozza meg, hogy vannak-e a frissítések telepítését, és adja meg a karbantartási módban, hogy telepítse őket.
 
 [!INCLUDE [storsimple-enter-maintenance-mode](../../includes/storsimple-enter-maintenance-mode.md)]
 
-### <a name="step-3-install-your-updates-a-namestep3"></a>3. lépés: A frissítések telepítése<a name="step3">
-Következő lépésként telepítse a frissítéseket.
+### <a name="step-3-install-your-updates-a-namestep3"></a>3. lépés: A frissítések telepítése <a name="step3">
+Ezután telepítse a frissítéseket.
 
 [!INCLUDE [storsimple-install-maintenance-mode-updates](../../includes/storsimple-install-maintenance-mode-updates.md)]
 
-### <a name="step-4-exit-maintenance-mode-a-namestep4"></a>4. lépés: Kilépés a karbantartási mód<a name="step4">
-Végezetül kilép karbantartási módból.
+### <a name="step-4-exit-maintenance-mode-a-namestep4"></a>4. lépés: Kilépési karbantartási mód <a name="step4">
+Végül kilépett a karbantartási módból.
 
 [!INCLUDE [storsimple-exit-maintenance-mode](../../includes/storsimple-exit-maintenance-mode.md)]
 
-## <a name="install-hotfixes-via-windows-powershell-for-storsimple"></a>A StorSimple gyorsjavítások Windows PowerShell telepítése
-Frissítések a Microsoft Azure StorSimple, ellentétben a gyorsjavítás telepítve van egy megosztott mappából. Csakúgy, mint a frissítések két típusa van gyorsjavítások: 
+## <a name="install-hotfixes-via-windows-powershell-for-storsimple"></a>Storsimple-höz készült Windows Powershellen keresztül gyorsjavítások telepítése
+Frissítések a Microsoft Azure storsimple-höz készült, ellentétben a gyorsjavítás telepítve van egy megosztott mappából. Frissítések, a két típusa van gyorsjavítások: 
 
 * Rendszeres gyorsjavítások 
-* Karbantartási mód gyorsjavítások  
+* Karbantartási módú gyorsjavítások  
 
-A következő eljárások bemutatják, hogyan rendszeres és karbantartási mód gyorsjavítások telepítése a Windows PowerShell-lel segítségével.
+A következő eljárások azt ismertetik, hogyan használhatja a storsimple-höz készült Windows PowerShell normál és a karbantartási módú gyorsjavítások telepítése.
 
 [!INCLUDE [storsimple-install-regular-hotfixes](../../includes/storsimple-install-regular-hotfixes.md)]
 
 [!INCLUDE [storsimple-install-maintenance-mode-hotfixes](../../includes/storsimple-install-maintenance-mode-hotfixes.md)]
 
-## <a name="what-happens-to-updates-if-you-perform-a-factory-reset-of-the-device"></a>Mi történik a frissítéseket, ha az eszköz gyári beállításainak visszaállítását?
-Ha az eszköz visszaáll a gyári beállításokat, majd a frissítések elvesznek. A gyári alaphelyzetbe történő visszaállításhoz eszköz bejegyzés és konfigurálás után kell manuálisan telepítse a frissítéseket a klasszikus Azure portálon és/vagy a Windows PowerShell segítségével StorSimple. További információ a gyári beállítások visszaállítása: [visszaállítani az eszközt a gyári alapértelmezett beállításokra](storsimple-8000-manage-device-controller.md#reset-the-device-to-factory-default-settings).
+## <a name="what-happens-to-updates-if-you-perform-a-factory-reset-of-the-device"></a>Mi történik a frissítések, amennyiben az eszköz gyári beállítások visszaállítása?
+Ha egy eszköz gyári alaphelyzetbe állításához, majd a frissítések elvesznek. Miután az előállító-visszaállítási eszköz regisztrálva és konfigurálva van, szüksége lesz a manuális telepítéséhez frissítéseit a klasszikus Azure portál és/vagy a Windows PowerShell storsimple-höz készült. További információ a gyári beállítások visszaállítása: [állítsa alaphelyzetbe az eszközt a gyári alapértelmezett beállításokra](storsimple-8000-manage-device-controller.md#reset-the-device-to-factory-default-settings).
 
 ## <a name="next-steps"></a>További lépések
-* További információ [használata a Windows PowerShell-lel a StorSimple eszköz felügyeletéhez](storsimple-windows-powershell-administration.md).
-* További információ [a StorSimple Manager szolgáltatás használata a StorSimple eszköz felügyeletéhez](storsimple-manager-service-administration.md).
+* Tudjon meg többet [storsimple-höz készült Windows PowerShell használata a StorSimple-eszköz felügyeletéhez](storsimple-windows-powershell-administration.md).
+* Tudjon meg többet [a StorSimple Manager szolgáltatás használata a StorSimple-eszköz felügyeletéhez](storsimple-manager-service-administration.md).
 

@@ -12,11 +12,11 @@
 
 |Tulajdonság  |Alapértelmezett | Leírás |
 |---------|---------|---------| 
-|maxPollingInterval|60000|A maximális ezredmásodpercben várólista lekérdezések között.| 
-|visibilityTimeout|0|Egy üzenet feldolgozása közben az újrapróbálkozások közötti időközt sikertelen lesz.| 
-|batchSize|16|A Functions futtatókörnyezete egy időben kéri le, és párhuzamosan dolgozza fel a várólista-üzenetek száma. Ha a szám feldolgozott le a lekérdezi a `newBatchThreshold`, a futtatókörnyezet egy másik köteg lekérdezi, és megkezdi az üzenetek feldolgozását. Így a maximális száma párhuzamos éppen feldolgozott üzeneteinek másodpercenkénti függvény `batchSize` plus `newBatchThreshold`. Ezt a határt külön-külön minden várólista-eseményindítóval aktivált függvény vonatkozik. <br><br>Ha el szeretné kerülni a párhuzamos végrehajtás egy olyan sort a fogadott üzenetet, akkor megadhatja `batchSize` 1. Azonban ez a beállítás nem egyidejűségi, csak, feltéve, hogy a függvény app futó egyetlen virtuális gép (VM). A függvény alkalmazást több virtuális gépek méretezze át, ha egyes virtuális gépek futtathat egy példányát minden egyes várólista-eseményindítóval aktivált függvény.<br><br>A maximális `batchSize` 32. | 
-|maxDequeueCount|5|A rendszer hányszor próbálkozzon, egy üzenet feldolgozása előtt helyezze át a poison várólista száma.| 
-|newBatchThreshold|batchSize/2|Amikor egy időben feldolgozott üzenetek száma Ez a szám, a futtatókörnyezet egy másik köteg kéri le.| 
+|maxPollingInterval|60000|A maximális időköz ezredmásodpercben várólista lekérdezések között.| 
+|visibilityTimeout|0|Az üzenet feldolgozása során az újrapróbálkozások közötti időintervallum sikertelen lesz.| 
+|batchSize|16|A Functions futtatókörnyezete egy időben kéri le, és párhuzamosan dolgozza fel üzenetsorbeli üzenetek száma. Ha a feldolgozás alatt szám lekérdezi le a a `newBatchThreshold`, a modul egy másik köteg lekérdezi, és elindítja a feldolgozási ezeket az üzeneteket. A függvény feldolgozott egyidejű üzenetek maximális száma így `batchSize` plusz `newBatchThreshold`. Ez a korlátozás külön-külön mindegyik üzenetsor által aktivált függvény vonatkozik. <br><br>Ha el szeretné kerülni a párhuzamos végrehajtása egy üzenetsorban fogadott üzenetek, beállíthat `batchSize` 1-re. Azonban ez a beállítás használata esetén nem egyidejűségi csak, feltéve, hogy a függvényalkalmazás futtatása egyetlen virtuális gépen (VM). Ha több virtuális gépre méretezhető a függvényalkalmazás, minden virtuális gép futhat egy példányát minden egyes üzenetsor által aktivált függvény.<br><br>A maximális `batchSize` 32. | 
+|maxDequeueCount|5|A hányszor próbálkozzon, egy üzenet feldolgozása az ártalmas üzenetsor áthelyezés előtt.| 
+|newBatchThreshold|batchSize/2|Minden alkalommal, amikor ez a szám a lekérdezi az egyidejűleg feldolgozott üzenetek száma, a modul egy másik köteg kérdezi le.| 
 
 
 

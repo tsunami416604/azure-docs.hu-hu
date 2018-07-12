@@ -1,6 +1,6 @@
 ---
-title: Anomáliadetektálás Javascript-alkalmazást – Microsoft kognitív szolgáltatások |} Microsoft Docs
-description: Megismerkedhet a Javascript webes alkalmazás, amely az Anomáliadetektálási észlelési API kognitív Microsoft-szolgáltatásokban. Eredeti adatpontok küldeni API, és a várt érték és anomáliadetektálási pontok.
+title: Anomáliadetektálás Javascript-alkalmazás – a Microsoft Cognitive Services |} A Microsoft Docs
+description: Ismerje meg, amely az Anomáliadetektáló API-t használja a Microsoft Cognitive Services Javascript webes alkalmazás. Küldés eredeti adatpontok API-hoz és a várt érték és anomáliadetektálási pontokat.
 services: cognitive-services
 author: wenya
 manager: bix
@@ -10,64 +10,64 @@ ms.topic: article
 ms.date: 05/01/2018
 ms.author: wenya
 ms.openlocfilehash: 42c3941a05efe8b74f818cd99f3606b3073892a9
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35348175"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38453169"
 ---
-# <a name="anomaly-detection-javascript-application"></a>Az anomáliadetektálási észlelési Javascript-alkalmazás
+# <a name="anomaly-detection-javascript-application"></a>Rendellenességek észlelése Javascript-alkalmazását
 
-Megismerkedhet a webes alkalmazás, amely az Anomáliadetektálási észlelési REST API egy anomáliadetektálási észleléséhez. A példa az Anomáliadetektálási észlelési API adatsorozat időadatok elküldi az előfizetés kulccsal, majd a anomáliadetektálási pontok és a várt érték az egyes adatpontokban lekérdezi az API-n.
+Ismerje meg egy webalkalmazást, amely az Anomáliadetektáló REST API-t használja egy rendellenességek észlelésére. A példa az idősoros adatainak az Anomáliadetektáló API-t, elküldi az előfizetési kulccsal végzett, majd minden anomáliadetektálási pontok és a várt érték az egyes lekérdezi az API-ból.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 ### <a name="platform-requirements"></a>Platform-követelmények
 
-Ebben az oktatóanyagban egy egyszerű szövegszerkesztőben fejlesztettek ki.
+Ebben az oktatóanyagban egy egyszerű szövegszerkesztő használatával fejlesztettek ki.
 
-### <a name="subscribe-to-anomaly-detection-and-get-a-subscription-key"></a>Az anomáliadetektálás szolgáltatásra, és egy előfizetés kulcs beszerzése 
+### <a name="subscribe-to-anomaly-detection-and-get-a-subscription-key"></a>Fizessen elő a rendellenességek észlelése és a egy előfizetési kulcs lekérése 
 
 [!INCLUDE [GetSubscriptionKey](../includes/get-subscription-key.md)]
 
-## <a name="get-and-use-the-example"></a>Kérheti le és használja a példát
+## <a name="get-and-use-the-example"></a>És a példában a
 
-Ez az oktatóanyag idő adatsorozat adatok anomáliadetektálás két eseteit tartalmazza. Lássunk neki.
+Ez az oktatóanyag két forgatókönyvet time series rendellenesség-észlelést biztosít. Első lépések.
 
 <a name="Step1"></a> 
-### <a name="download-the-tutorial-project"></a>Az oktatóanyag projekt letöltése
+### <a name="download-the-tutorial-project"></a>Az oktatóanyag projektjének letöltése
 
-Klónozott a [kognitív szolgáltatások JavaScript Anomáliadetektálási észlelési oktatóanyag](https://github.com/MicrosoftAnomalyDetection/javascript-sample), vagy töltse le a .zip fájlt, és bontsa ki üres könyvtárba.
+Klónozás a [Cognitive Services JavaScript rendellenességek észlelése oktatóanyagban](https://github.com/MicrosoftAnomalyDetection/javascript-sample), vagy töltse le a .zip-fájlt, majd kicsomagolhatja azt egy üres könyvtárra.
 
 <a name="Step2"></a>
-### <a name="run-the-example"></a>A példa futtatásához
+### <a name="run-the-example"></a>A példa Futtatás
 
-Két esetben megpróbálhatja a példa van.
-1. Helyezze a **előfizetés kulcs** az Előfizetés kulcs mezőbe a anomalydetection.html funkció észleléséhez.
-2. Az anomáliadetektálási észlelési API-végpont helyezze, és győződjön meg arról, hogy a megfelelő terület előfizetési régióban használunk.
+Próbálja meg a példában két forgatókönyv közül választhat.
+1. Helyezze a **előfizetési kulcs** az előfizetési kulcs mezőbe a funkciót, anomalydetection.html észlelése.
+2. Helyezze a rendellenességek észlelése API végpont, és győződjön meg arról, hogy a megfelelő régiót használ előfizetés régióban.
 3. Nyissa meg a **anomalydetection.html** fájl egy webböngészőben.
 
-**1. forgatókönyv hibakeresés heti idő adatsorozat adatainak**
+**1. forgatókönyv hibakeresés heti idősorozat-adatok**
 1. Időszak mezőben adjon meg időszak **7**. 
-2. A mintaadatok lecserélése pontok mezőben a heti idő adatsorozat adatpontjainak (Json), vagy a mintaadatok közvetlenül használható.
-3. Az Anomáliadetektálás gombra, és erősítse meg az eredményt a megfelelő választ szövegmezőben.
+2. Cserélje le a mintaadatokat a pontok mezőben a heti idő adatsorozat adatpontjainak (Json), vagy közvetlenül a mintaadatok használatával.
+3. A rendellenességek észlelése gombra, és erősítse meg a megfelelő választ szövegmezőbe írja az eredményt.
 
-**2. forgatókönyv Hibakeresés az idő adatsor egy pont nélkül**
-1. Üres időszakban időszak bejegyezve, hagyja azt feltételezik, hogy nem tudja a idősorozat időszak.
-2. Az azonos idő adatsorozat adatokon az 1. forgatókönyv használatát.
-3. Az Anomáliadetektálás gombra, és ellenőrizze a megfelelő választ szövegmezőben időszak mezőben.
+**2. forgatókönyv észlelése az idősorozat-adatok pont nélkül**
+1. Az üres időszakban időszak mezőjénél, hagyja azt feltételezik, hogy nem tudja azt az időszakot, az idősorozat.
+2. Az azonos idősoros adatainak használatával az 1. forgatókönyv szerint.
+3. A rendellenességek észlelése gombra, és ellenőrizze a megfelelő választ szövegmezőbe az időszak mezőben.
 
 <a name="Step3"></a>
-### <a name="read-the-result"></a>Az eredmény olvasása
+### <a name="read-the-result"></a>Olvassa el az eredmény
 
 [!INCLUDE [diagrams](../includes/diagrams.md)]
 
 <a name="Review"></a>
 ### <a name="review-and-learn"></a>Tekintse át, és ismerje meg
 
-Most le a futó alkalmazások. Tekintsük át, hogyan a példa az alkalmazás integrálja az kognitív szolgáltatások technológiával. Ez a lépés megkönnyíti az alkalmazás létrehozása vagy a saját Microsoft Anomáliadetektálás használó alkalmazás fejlesztése.
-Ez például az alkalmazás lehetővé teszi az Anomáliadetektálási észlelési Restful API használata végpont.
-Tekintse át a Restful API lekérdezi használatáról a mintaalkalmazás, vizsgáljuk meg egy kódrészletet a anomalydetection.html.
+Mostantól kap egy futó alkalmazás. Tekintsük át, hogyan integrálható a a PéldaAlkalmazás Cognitive Services-technológiát. Ebben a lépésben könnyebben továbbra is használhatja ezt az alkalmazást, vagy a saját Microsoft Anomáliadetektálás használatával alkalmazás fejlesztése.
+Ez a példa az alkalmazás lehetővé teszi, hogy használja az Anomáliadetektáló Restful API-végpont.
+Tekintse át, hogyan lekérdezi a Restful API-t használja a mintaalkalmazás, tekintsük át egy kódrészletet a anomalydetection.html.
 ```JavaScript
 function anomalyDetection(url, subscriptionKey, points, period) {
     var obj = new Object();

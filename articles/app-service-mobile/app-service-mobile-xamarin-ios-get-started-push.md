@@ -1,6 +1,6 @@
 ---
-title: Leküldéses értesítések hozzáadása a Xamarin.iOS-alkalmazás az Azure App Service
-description: Azure App Service használata leküldéses értesítések küldésére a Xamarin.iOS-alkalmazás
+title: A Xamarin.iOS-alkalmazást az Azure App Service leküldéses értesítések hozzáadása
+description: Ismerje meg, hogyan küldhet leküldéses értesítéseket a Xamarin.iOS-alkalmazást az Azure App Service használatával
 services: app-service\mobile
 documentationcenter: xamarin
 author: conceptdev
@@ -15,38 +15,38 @@ ms.topic: article
 ms.date: 10/12/2016
 ms.author: crdun
 ms.openlocfilehash: b8d5a8d8725e2e9412cef7c377b17a77f34be27d
-ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2018
-ms.locfileid: "27592507"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38473648"
 ---
 # <a name="add-push-notifications-to-your-xamarinios-app"></a>Leküldéses értesítések Xamarin.iOS-alkalmazás hozzáadása
 [!INCLUDE [app-service-mobile-selector-get-started-push](../../includes/app-service-mobile-selector-get-started-push.md)]
 
 ## <a name="overview"></a>Áttekintés
-Ebben az oktatóanyagban leküldéses értesítések hozzáadása a [Xamarin.iOS gyors üzembe helyezési](app-service-mobile-xamarin-ios-get-started.md) projektre, hogy egy leküldéses értesítést küld az eszköz minden alkalommal, amikor egy olyan rekordot csatlakoztatva van.
+Ebben az oktatóanyagban a leküldéses értesítések hozzáadása az [Xamarin.iOS gyors üzembe helyezési](app-service-mobile-xamarin-ios-get-started.md) projekthez, hogy a leküldéses értesítést küld az eszköz minden alkalommal, amikor a rendszer beszúr egy rekordot.
 
-Ha nem használja a letöltött gyors üzembe helyezési kiszolgálóprojektet, szüksége lesz a leküldéses értesítési kiterjesztési csomagot. Lásd: [használható a .NET-háttérrendszer server SDK az Azure Mobile Apps a](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md) további információt.
+Ha nem használja a letöltött gyorsútmutató-kiszolgálói projektet, szüksége lesz a leküldéses értesítési kiterjesztési csomag. Lásd: [használható a .NET háttérkiszolgáló-SDK az Azure Mobile Apps a](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md) további információt.
 
 ## <a name="prerequisites"></a>Előfeltételek
-* Fejezze be a [Xamarin.iOS gyors üzembe helyezés](app-service-mobile-xamarin-ios-get-started.md) oktatóanyag.
-* Egy fizikai iOS-eszközön. Leküldéses értesítések nem támogatottak az iOS-szimulátorban.
+* Végezze el a [Xamarin.iOS rövid](app-service-mobile-xamarin-ios-get-started.md) oktatóanyag.
+* Egy fizikai iOS-eszközön. Leküldéses értesítések iOS-szimulátorban történő nem támogatottak.
 
-## <a name="register-the-app-for-push-notifications-on-apples-developer-portal"></a>Az alkalmazás az Apple fejlesztői portálján a leküldéses értesítések regisztrálása
+## <a name="register-the-app-for-push-notifications-on-apples-developer-portal"></a>Regisztrálja az alkalmazást leküldéses értesítésekhez az Apple fejlesztői portálján
 [!INCLUDE [Enable Apple Push Notifications](../../includes/enable-apple-push-notifications.md)]
 
 ## <a name="configure-your-mobile-app-to-send-push-notifications"></a>Leküldéses értesítések küldéséhez a mobilalkalmazás konfigurálása
 [!INCLUDE [app-service-mobile-apns-configure-push](../../includes/app-service-mobile-apns-configure-push.md)]
 
-## <a name="update-the-server-project-to-send-push-notifications"></a>Frissítés a kiszolgáló projekt leküldéses értesítések küldéséhez
+## <a name="update-the-server-project-to-send-push-notifications"></a>Leküldéses értesítések küldéséhez a kiszolgálói projekt frissítése
 [!INCLUDE [app-service-mobile-update-server-project-for-push-template](../../includes/app-service-mobile-update-server-project-for-push-template.md)]
 
-## <a name="configure-your-xamarinios-project"></a>A Xamarin.iOS-projekt konfigurálása
+## <a name="configure-your-xamarinios-project"></a>Xamarin.iOS-projekt konfigurálása
 [!INCLUDE [app-service-mobile-xamarin-ios-configure-project](../../includes/app-service-mobile-xamarin-ios-configure-project.md)]
 
 ## <a name="add-push-notifications-to-your-app"></a>Leküldéses értesítések hozzáadása az alkalmazáshoz
-1. A **QSTodoService**, adja hozzá a következő tulajdonságot, hogy **AppDelegate** lekérheti a mobil ügyfél:
+1. A **QSTodoService**, adja hozzá a következő tulajdonságot úgy, hogy **AppDelegate** vásárolhatja meg a mobil ügyfelekből:
    
             public MobileServiceClient GetClient {
             get
@@ -58,7 +58,7 @@ Ha nem használja a letöltött gyors üzembe helyezési kiszolgálóprojektet, 
                 client = value;
             }
         }
-2. Adja hozzá a következő `using` nyilatkozat tetején a **AppDelegate.cs** fájlt.
+2. Adja hozzá a következő `using` utasítással felső részén a **AppDelegate.cs** fájlt.
    
         using Microsoft.WindowsAzure.MobileServices;
         using Newtonsoft.Json.Linq;
@@ -78,9 +78,9 @@ Ha nem használja a letöltött gyors üzembe helyezési kiszolgálóprojektet, 
    
             return true;
         }
-4. Ugyanebben a fájlban, bírálja felül a **RegisteredForRemoteNotifications** esemény. Ebben a kódban regisztrál egy egyszerű sablon értesítést küldjön el az összes támogatott platformon, a kiszolgáló.
+4. Ugyanebben a fájlban, bírálja felül a **RegisteredForRemoteNotifications** esemény. Ez a kód egy egyszerű sablon értesítést küld el minden támogatott platformon a kiszolgáló által regisztrálni.
    
-    Sablonok a Notification hubs használatával kapcsolatban lásd: [sablonok](../notification-hubs/notification-hubs-templates-cross-platform-push-messages.md).
+    A Notification hubs használatával sablonokat a további információkért lásd: [sablonok](../notification-hubs/notification-hubs-templates-cross-platform-push-messages.md).
 
         public override void RegisteredForRemoteNotifications(UIApplication application, NSData deviceToken)
         {
@@ -100,7 +100,7 @@ Ha nem használja a letöltött gyors üzembe helyezési kiszolgálóprojektet, 
         }
 
 
-1. Ezt követően bírálja felül a **DidReceivedRemoteNotification** esemény:
+1. Ezután felülbírálják a **DidReceivedRemoteNotification** esemény:
    
         public override void DidReceiveRemoteNotification (UIApplication application, NSDictionary userInfo, Action<UIBackgroundFetchResult> completionHandler)
         {
@@ -118,20 +118,20 @@ Ha nem használja a letöltött gyors üzembe helyezési kiszolgálóprojektet, 
             }
         }
 
-Az alkalmazás most frissíteni leküldéses értesítések támogatásához használható.
+Az alkalmazás most már frissül, és támogatja a leküldéses értesítéseket.
 
 ## <a name="test"></a>Teszt leküldéses értesítések az alkalmazásban
-1. Nyomja meg a **futtatása** gombra kattint, hogy a projekt felépítéséhez és a kompatibilis iOS-eszközön indítsa el az alkalmazást, majd kattintson az **OK** leküldéses értesítések fogadásához.
+1. Nyomja le az **futtatása** gombot a projekt buildjének elkészítéséhez, és a kompatibilis iOS-eszközön indítsa el az alkalmazást, majd kattintson a **OK** leküldéses értesítések fogadásához.
    
    > [!NOTE]
-   > Az alkalmazásból explicit módon el kell fogadnia a leküldéses értesítések. A kérelem csak akkor történik meg az első alkalommal futtatja az alkalmazást.
+   > Az alkalmazásból explicit módon el kell fogadnia a leküldéses értesítések. Ezt a kérelmet csak akkor történik meg, amely az alkalmazás első alkalommal.
    > 
    > 
 2. Az alkalmazásban írjon be egy feladatot, és kattintson a plusz (**+**) ikonra.
-3. Győződjön meg arról, hogy értesítést kap, majd kattintson az **OK** az értesítés bezárásának engedélyezése.
-4. Ismételje meg a 2. lépés azonnal zárja be az alkalmazást, majd ellenőrizze, hogy megjelenik-e értesítést.
+3. Győződjön meg arról, hogy értesítés érkezik, majd kattintson a **OK** az értesítés elvetéséhez.
+4. Ismételje meg a 2. lépés azonnal zárja be az alkalmazást, majd győződjön meg arról, hogy egy értesítés jelenik meg.
 
-Ez az oktatóanyag sikeresen befejeződött.
+Ebben az oktatóanyagban sikeresen befejeződött.
 
 <!-- Images. -->
 

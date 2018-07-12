@@ -1,6 +1,6 @@
 ---
-title: Hozzon létre egy alkalmazás több webhely-üzemeltetés – Azure PowerShell |} Microsoft Docs
-description: Ismerje meg, amelyen több helyet az Azure Powershell Alkalmazásátjáró létrehozása.
+title: Application gateway létrehozása több hely üzemeltetése – Azure PowerShell-lel |} A Microsoft Docs
+description: Ismerje meg, hogyan hozhat létre egy application gateway, amelyen több különböző Azure Powershell-lel.
 services: application-gateway
 author: vhorne
 manager: jpconnock
@@ -13,36 +13,36 @@ ms.workload: infrastructure-services
 ms.date: 01/26/2018
 ms.author: victorh
 ms.openlocfilehash: beacf3d36c2a74d1744a1048834bf66acfbc1682
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34355967"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38306733"
 ---
-# <a name="create-an-application-gateway-with-multiple-site-hosting-using-azure-powershell"></a>Hozzon létre egy alkalmazás több helyet üzemeltető Azure PowerShell használatával
+# <a name="create-an-application-gateway-with-multiple-site-hosting-using-azure-powershell"></a>Hozzon létre egy application gateway több hely üzemeltetése az Azure PowerShell-lel
 
-Azure Powershell segítségével konfigurálhatja [több webhely tárolása](application-gateway-multi-site-overview.md) létrehozásakor egy [Alkalmazásátjáró](application-gateway-introduction.md). Ebben az oktatóanyagban hoz létre a virtuálisgép-méretezési csoportok használatával háttérkészletek menüpontot. Ezután konfigurálja figyelők és szabályok alapján a tartományok, amelyek a saját győződjön meg arról, hogy a webes forgalom érkezik a készletek a megfelelő kiszolgálókat. Ez az oktatóanyag feltételezi, hogy Ön a tulajdonosa több tartományok és felhasználási mintái *www.contoso.com* és *www.fabrikam.com*.
+Azure PowerShell-lel való konfigurálásához használható [, több webhely üzemeltetése](application-gateway-multi-site-overview.md) létrehozásakor egy [az application gateway](application-gateway-introduction.md). Ebben az oktatóanyagban háttérkészletek virtuálisgép-méretezési csoportok használatával hoz létre. Ezután az Ön tulajdonában lévő tartományok alapján konfigurálhat figyelőket és szabályokat a webes forgalom a készletekben lévő megfelelő kiszolgálókra irányításához. Ez az oktatóanyag feltételezi, hogy Ön több tartománnyal rendelkezik. Példaként a *www.contoso.com* és a *www.fabrikam.com* tartományt használja.
 
 Ebben a cikkben az alábbiakkal ismerkedhet meg:
 
 > [!div class="checklist"]
 > * A hálózat beállítása
 > * Application Gateway létrehozása
-> * Figyelők és útválasztási szabályok létrehozása
-> * A háttérkészlet hozzon létre virtuálisgép-méretezési csoportok
-> * Hozzon létre egy CNAME rekordot a tartományban
+> * Figyelők és az útválasztási szabályok létrehozása
+> * Virtuálisgép-méretezési csoportok létrehozása a háttérkészletekkel
+> * CNAME rekord létrehozása a tartományban
 
-![Többhelyes útválasztási – példa](./media/application-gateway-create-multisite-azureresourcemanager-powershell/scenario.png)
+![Többhelyes útválasztási példa](./media/application-gateway-create-multisite-azureresourcemanager-powershell/scenario.png)
 
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 
 [!INCLUDE [cloud-shell-powershell.md](../../includes/cloud-shell-powershell.md)]
 
-Ha a PowerShell helyi telepítése és használata mellett dönt, az oktatóanyaghoz az Azure PowerShell-modul 3.6-os vagy újabb verziójára lesz szükség. A verzió megkereséséhez futtassa ` Get-Module -ListAvailable AzureRM` . Ha frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-azurerm-ps) ismertető cikket. Ha helyileg futtatja a PowerShellt, akkor emellett a `Connect-AzureRmAccount` futtatásával kapcsolatot kell teremtenie az Azure-ral.
+Ha a PowerShell helyi telepítése és használata mellett dönt, az oktatóanyaghoz az Azure PowerShell-modul 3.6-os vagy újabb verziójára lesz szükség. A verzió megkereséséhez futtassa a következőt: ` Get-Module -ListAvailable AzureRM`. Ha frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-azurerm-ps) ismertető cikket. Ha helyileg futtatja a PowerShellt, akkor emellett a `Connect-AzureRmAccount` futtatásával kapcsolatot kell teremtenie az Azure-ral.
 
 ## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
 
-Az erőforráscsoport olyan logikai tároló, amelybe a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat. Hozzon létre egy Azure-erőforrás csoport használatával [New-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup).  
+Az erőforráscsoport olyan logikai tároló, amelybe a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat. Hozzon létre egy Azure-erőforráscsoportot a [New-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup) parancsmaggal.  
 
 ```azurepowershell-interactive
 New-AzureRmResourceGroup -Name myResourceGroupAG -Location eastus
@@ -50,7 +50,7 @@ New-AzureRmResourceGroup -Name myResourceGroupAG -Location eastus
 
 ## <a name="create-network-resources"></a>Hálózati erőforrások létrehozása
 
-Konfigurálja az alhálózatok nevű *myBackendSubnet* és *myAGSubnet* használatával [New-AzureRmVirtualNetworkSubnetConfig](/powershell/module/azurerm.network/new-azurermvirtualnetworksubnetconfig). Hozzon létre a virtuális hálózat nevű *myVNet* használatával [New-AzureRmVirtualNetwork](/powershell/module/azurerm.network/new-azurermvirtualnetwork) az alhálózati konfigurációjú. És végezetül hozza létre a nyilvános IP-cím nevű *myAGPublicIPAddress* használatával [New-AzureRmPublicIpAddress](/powershell/module/azurerm.network/new-azurermpublicipaddress). Ezeket az erőforrásokat segítségével adja meg a hálózati kapcsolat az Alkalmazásátjáró és a kapcsolódó erőforrások.
+Konfigurálja a *myBackendSubnet* és a *myAGSubnet* nevű alhálózatot a [New-AzureRmVirtualNetworkSubnetConfig](/powershell/module/azurerm.network/new-azurermvirtualnetworksubnetconfig) parancsmaggal. Hozza létre a *myVNet* nevű virtuális hálózatot a [New-AzureRmVirtualNetwork](/powershell/module/azurerm.network/new-azurermvirtualnetwork) parancsmag és az alhálózat-konfigurációk használatával. Végül hozza létre a *myAGPublicIPAddress* nevű nyilvános IP-címet a [New-AzureRmPublicIpAddress](/powershell/module/azurerm.network/new-azurermpublicipaddress) parancsmaggal. Ezek az erőforrások biztosítják az alkalmazásátjáró és a hozzá kapcsolódó erőforrások hálózati kapcsolatát.
 
 ```azurepowershell-interactive
 $backendSubnetConfig = New-AzureRmVirtualNetworkSubnetConfig `
@@ -74,9 +74,9 @@ $pip = New-AzureRmPublicIpAddress `
 
 ## <a name="create-an-application-gateway"></a>Application Gateway létrehozása
 
-### <a name="create-the-ip-configurations-and-frontend-port"></a>Az IP-konfigurációk és elülső rétegbeli portot létrehozása
+### <a name="create-the-ip-configurations-and-frontend-port"></a>Az IP-konfigurációk és az előtérbeli port létrehozása
 
-Társítsa *myAGSubnet* átjáró használatával korábban létrehozott [New-AzureRmApplicationGatewayIPConfiguration](/powershell/module/azurerm.network/new-azurermapplicationgatewayipconfiguration). Rendelje hozzá *myAGPublicIPAddress* átjáró használatával [New-AzureRmApplicationGatewayFrontendIPConfig](/powershell/module/azurerm.network/new-azurermapplicationgatewayfrontendipconfig).
+A korábban létrehozott *myAGSubnet* alhálózatot társítsa az alkalmazásátjáróhoz a [New-AzureRmApplicationGatewayIPConfiguration](/powershell/module/azurerm.network/new-azurermapplicationgatewayipconfiguration) parancsmaggal. Rendelje hozzá a *myAGPublicIPAddress* IP-címet az alkalmazásátjáróhoz a [New-AzureRmApplicationGatewayFrontendIPConfig](/powershell/module/azurerm.network/new-azurermapplicationgatewayfrontendipconfig) parancsmaggal.
 
 ```azurepowershell-interactive
 $vnet = Get-AzureRmVirtualNetwork `
@@ -94,9 +94,9 @@ $frontendport = New-AzureRmApplicationGatewayFrontendPort `
   -Port 80
 ```
 
-### <a name="create-the-backend-pools-and-settings"></a>A háttérkészlet és a beállítások létrehozása
+### <a name="create-the-backend-pools-and-settings"></a>A háttérkészletek létrehozása és beállítása
 
-Hozzon létre nevű háttérkészletek *contosoPool* és *fabrikamPool* átjáró használatára vonatkozó [New-AzureRmApplicationGatewayBackendAddressPool](/powershell/module/azurerm.network/new-azurermapplicationgatewaybackendaddresspool). Adja meg a készlet használatával beállításait [New-AzureRmApplicationGatewayBackendHttpSettings](/powershell/module/azurerm.network/new-azurermapplicationgatewaybackendhttpsettings).
+Hozzon létre nevű háttérkészletek *contosoPool* és *fabrikamPool* az application gatewayhez [New-AzureRmApplicationGatewayBackendAddressPool](/powershell/module/azurerm.network/new-azurermapplicationgatewaybackendaddresspool). Konfigurálja a készlet beállításait a [New-AzureRmApplicationGatewayBackendHttpSettings](/powershell/module/azurerm.network/new-azurermapplicationgatewaybackendhttpsettings) parancsmaggal.
 
 ```azurepowershell-interactive
 $contosoPool = New-AzureRmApplicationGatewayBackendAddressPool `
@@ -111,11 +111,11 @@ $poolSettings = New-AzureRmApplicationGatewayBackendHttpSettings `
   -RequestTimeout 120
 ```
 
-### <a name="create-the-listeners-and-rules"></a>A figyelők és szabályok létrehozása
+### <a name="create-the-listeners-and-rules"></a>Figyelők és szabályok létrehozása
 
-Egy figyelő szükséges ahhoz, hogy a forgalmat a háttérkészlet megfelelően továbbítani az Alkalmazásátjáró. Ebben az oktatóanyagban létrehoz minden a két tartomány figyelők. Ebben a példában figyelői jönnek létre, a tartományok *www.contoso.com* és *www.fabrikam.com*.
+Egy figyelő szükséges ahhoz, hogy az application gateway a háttérkészletek megfelelően irányíthatja a forgalmat. Ebben az oktatóanyagban létrehoz minden a két tartomány figyelők. Ebben a példában a figyelőket a *www.contoso.com* és a *www.fabrikam.com* tartományhoz hozzuk létre.
 
-A figyelők nevű létrehozása *contosoListener* és *fabrikamListener* használatával [New-AzureRmApplicationGatewayHttpListener](/powershell/module/azurerm.network/new-azurermapplicationgatewayhttplistener) az előtér-beállításokkal és elülső rétegbeli portot, amelyet korábban hozott létre. A figyelők tudni, hogy mely háttérkészlet, a bejövő forgalmat használandó szabályok szükségesek. Nevű alapszintű szabályokat hozhat létre *contosoRule* és *fabrikamRule* használatával [New-AzureRmApplicationGatewayRequestRoutingRule](/powershell/module/azurerm.network/new-azurermapplicationgatewayrequestroutingrule).
+A figyelők nevű létrehozása *contosoListener* és *fabrikamListener* használatával [New-AzureRmApplicationGatewayHttpListener](/powershell/module/azurerm.network/new-azurermapplicationgatewayhttplistener) előtér-konfigurációval és előtérbeli port, amelyet korábban hozott létre. A figyelők tudni, hogy melyik használja a bejövő forgalmat a háttérkészlet szabályok szükségesek. Nevű alapszintű szabályokat hozhat létre *contosoRule* és *fabrikamRule* használatával [New-AzureRmApplicationGatewayRequestRoutingRule](/powershell/module/azurerm.network/new-azurermapplicationgatewayrequestroutingrule).
 
 ```azurepowershell-interactive
 $contosolistener = New-AzureRmApplicationGatewayHttpListener `
@@ -146,7 +146,7 @@ $fabrikamRule = New-AzureRmApplicationGatewayRequestRoutingRule `
 
 ### <a name="create-the-application-gateway"></a>Application Gateway létrehozása
 
-Most, hogy létrehozta a szükséges támogató erőforrásokat, adja meg az Alkalmazásátjáró nevű paramétereinek *myAppGateway* használatával [New-AzureRmApplicationGatewaySku](/powershell/module/azurerm.network/new-azurermapplicationgatewaysku), majd létre szeretne hozni, használatával[ Új AzureRmApplicationGateway](/powershell/module/azurerm.network/new-azurermapplicationgateway).
+Most, hogy létrehozta a szükséges támogató erőforrásokat, adja meg a *myAppGateway* nevű alkalmazásátjáróra vonatkozó paramétereket a [New-AzureRmApplicationGatewaySku](/powershell/module/azurerm.network/new-azurermapplicationgatewaysku) parancsmaggal, majd hozza létre az átjárót a [New-AzureRmApplicationGateway](/powershell/module/azurerm.network/new-azurermapplicationgateway) parancsmaggal.
 
 ```azurepowershell-interactive
 $sku = New-AzureRmApplicationGatewaySku `
@@ -167,9 +167,9 @@ $appgw = New-AzureRmApplicationGateway `
   -Sku $sku
 ```
 
-## <a name="create-virtual-machine-scale-sets"></a>Hozzon létre virtuálisgép-méretezési csoportok
+## <a name="create-virtual-machine-scale-sets"></a>Virtuálisgép-méretezési csoportok létrehozása
 
-Ebben a példában két virtuálisgép-méretezési készlet, amely támogatja a két háttérkészletek létrehozott hoz létre. A méretezési csoportok az Ön által létrehozott megnevezett *myvmss1* és *myvmss2*. Minden méretezési készlet két virtuálisgép-példány, amelyre telepíti az IIS tartalmaz. A méretezési készletben a háttérkészletbe, amikor konfigurálja az IP-beállításokat rendel.
+Ebben a példában két virtuálisgép-méretezési csoportot hoz létre, amelyek támogatják a két létrehozott háttérkészletet. Az*myvmss1* és *myvmss2* nevű méretezési csoportokat hozza létre. Minden méretezési csoport két virtuálisgép-példányt tartalmaz, amelyekre az IIS-t telepíti. Az IP-beállítások konfigurálásakor hozzárendel egy méretezési csoportot a háttérkészlethez.
 
 ```azurepowershell-interactive
 $vnet = Get-AzureRmVirtualNetwork `
@@ -248,34 +248,34 @@ for ($i=1; $i -le 2; $i++)
 }
 ```
 
-## <a name="create-cname-record-in-your-domain"></a>CNAME rekord létrehozására a tartományban
+## <a name="create-cname-record-in-your-domain"></a>CNAME rekord létrehozása a tartományban
 
-Nyilvános IP-címmel az Alkalmazásátjáró létrehozása után lekérni a DNS-címét, és hozzon létre egy CNAME rekordot a tartomány segítségével. Használhat [Get-AzureRmPublicIPAddress](/powershell/module/azurerm.network/get-azurermpublicipaddress) lekérni a DNS-címét az Alkalmazásátjáró. Másolás a *fqdn* a DNSSettings értékének és az legyen az Ön által létrehozott CNAME rekord értékét. A-rekordok használata nem ajánlott, mert a VIP módosíthatja az Alkalmazásátjáró újraindításakor.
+Az alkalmazásátjáró nyilvános IP-címmel történő létrehozása után lekérheti a DNS-címet, és a segítségével létrehozhat egy CNAME rekordot a tartományban. Az alkalmazásátjáró DNS-címét a [Get-AzureRmPublicIPAddress](/powershell/module/azurerm.network/get-azurermpublicipaddress) parancsmaggal kérheti le. Másolja a DNSSettings *fqdn* értékét, és használja a létrehozandó CNAME rekord értékeként. Az A rekordok használata nem javasolt, mivel a virtuális IP-cím változhat az alkalmazásátjáró újraindításakor.
 
 ```azurepowershell-interactive
 Get-AzureRmPublicIPAddress -ResourceGroupName myResourceGroupAG -Name myAGPublicIPAddress
 ```
 
-## <a name="test-the-application-gateway"></a>Az Alkalmazásátjáró tesztelése
+## <a name="test-the-application-gateway"></a>Az alkalmazásátjáró tesztelése
 
-Adjon meg a tartománynevet a böngésző címsorába. Például a http://www.contoso.com.
+Adja meg a tartománya nevét a böngésző címsorában. Például: http://www.contoso.com.
 
-![Az alkalmazás átjáró contoso hely tesztelése](./media/application-gateway-create-multisite-azureresourcemanager-powershell/application-gateway-iistest.png)
+![Contoso webhely tesztelése az alkalmazásátjáróban](./media/application-gateway-create-multisite-azureresourcemanager-powershell/application-gateway-iistest.png)
 
-Módosítsa a címet a másik tartományban, és az alábbihoz hasonlót kell megjelennie:
+Változtassa meg a címet a másik tartományára. Ekkor az eredmény a következő példához hasonló:
 
-![Az alkalmazás átjáró fabrikam hely tesztelése](./media/application-gateway-create-multisite-azureresourcemanager-powershell/application-gateway-iistest2.png)
+![Fabrikam webhely tesztelése az alkalmazásátjáróban](./media/application-gateway-create-multisite-azureresourcemanager-powershell/application-gateway-iistest2.png)
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben a cikkben megtanulta, hogyan:
+Ebben a cikkben megtanulta, hogyan lehet:
 
 > [!div class="checklist"]
 > * A hálózat beállítása
 > * Application Gateway létrehozása
-> * Figyelők és útválasztási szabályok létrehozása
-> * A háttérkészlet hozzon létre virtuálisgép-méretezési csoportok
-> * Hozzon létre egy CNAME rekordot a tartományban
+> * Figyelők és az útválasztási szabályok létrehozása
+> * Virtuálisgép-méretezési csoportok létrehozása a háttérkészletekkel
+> * CNAME rekord létrehozása a tartományban
 
 > [!div class="nextstepaction"]
-> [További tudnivalók az Alkalmazásátjáró teendők](application-gateway-introduction.md)
+> [Ismerje meg részletesebben az alkalmazásátjárók lehetőségeit](application-gateway-introduction.md)

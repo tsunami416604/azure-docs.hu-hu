@@ -42,6 +42,10 @@
           href: contoso-migration-refactor-linux-app-service-mysql.md
         - name: 11. Contoso – TFS migrálása a VSTS-be
           href: contoso-migration-tfs-vsts.md
+        - name: 12. Contoso – Alkalmazás szerkezetének átalakítása az Azure Service Fabricben és az Azure SQL Database-ben
+          href: contoso-migration-rearchitect-container-sql.md
+        - name: 13. Contoso – Alkalmazás újbóli összeállítása az Azure-ban
+          href: contoso-migration-rebuild.md
     - name: Nagy méretű környezet felderítése és értékelése
       href: how-to-scale-assessment.md
     - name: Gépek csoportosítása

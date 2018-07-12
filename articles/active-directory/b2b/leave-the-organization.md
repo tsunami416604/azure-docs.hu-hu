@@ -1,60 +1,60 @@
 ---
-title: Egy szervezetet vendégfelhasználóként egy – Azure Active Directory |} Microsoft Docs
-description: Bemutatja, hogyan egy Azure AD B2B Vendég felhasználó elhagyja a szervezetek a hozzáférési panelen.
+title: Hagyja meg vendégként – Azure Active Directory-szervezet |} A Microsoft Docs
+description: Bemutatja, hogyan egy Azure AD B2B vendégfelhasználó hagyhatja egy szervezet a hozzáférési panelen.
 services: active-directory
 ms.service: active-directory
 ms.component: B2B
 ms.topic: article
 ms.date: 05/11/2018
-ms.author: twooley
-author: twooley
+ms.author: mimart
+author: msmimart
 manager: mtillman
 ms.reviewer: sasubram
-ms.openlocfilehash: 3415989cb6cec68f95e7d317671c31ba9bd231e9
-ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
-ms.translationtype: HT
+ms.openlocfilehash: 17b34b173a10a355817fee0f5928b7fb478125e3
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/17/2018
-ms.locfileid: "34267437"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38590421"
 ---
-# <a name="leave-an-organization-as-a-guest-user"></a>Egy szervezetet vendégfelhasználóként egy
+# <a name="leave-an-organization-as-a-guest-user"></a>Egy szervezet meg vendégként
 
-Egy Azure Active Directory (Azure AD) B2B Vendég felhasználó dönt, hogy egy szervezet bármikor hagyja, ha már nincs szükségük használják az alkalmazásokat a szervezet vagy karbantartása van társítva. A felhasználó hagyhatja a szervezetek saját maguk, anélkül, hogy a rendszergazda segítségére.
+Egy Azure Active Directory (Azure AD) B2B vendégfelhasználó dönt, hogy egy szervezet bármikor hagyja, ha már nincs szükségük használják az alkalmazásokat, hogy a szervezet vagy karbantartása van társítva. A felhasználó hagyhatja egy szervezet saját, forduljon a rendszergazdához, nélkül.
 
-## <a name="leave-an-organization"></a>Egy szervezetet
+## <a name="leave-an-organization"></a>Egy szervezet
 
-Egy szervezet, mint a bejelentkezett felhasználó, hogy a [hozzáférési Panel](https://myapps.microsoft.com), tegye a következőket:
+Egy szervezet felhasználóként jelentkezett be, hogy a [hozzáférési Panel](https://myapps.microsoft.com), tegye a következőket:
 
-1. Ha van már nincs bejelentkezve a szervezet számára, hogy elhagyja, a jobb felső sarokban válassza ki a nevét, majd kattintson a elhagyja a szervezet.
-2. A jobb felső sarkában válassza ki a nevét.
+1. Ha még nem jelentkezett elhagyja a szervezet, a jobb felső sarokban válassza ki a nevét, majd kattintson a elhagyja a szervezetet.
+2. A jobb felső sarokban válassza ki a nevét.
 3. A **szervezetek**, válassza a beállítások (fogaskerék) ikonra.
  
-   ![A hozzáférési Panel felhasználói beállításait ábrázoló képernyőfelvétel](media/leave-the-organization/UserSettings.png) 
+   ![Képernyőfelvétel a hozzáférési panelen felhasználói beállításokat:](media/leave-the-organization/UserSettings.png) 
 
-3. A **szervezetek**, szervezet, amely hagyja, és válassza ki a kívánt található **szervezetet**.
+3. A **szervezetek**, keresse meg a szervezet, amely hagyja, és válassza ki a kívánt **szervezet**.
 
-   ![A felhasználói felületen hagyja szervezet pontját megjelenítő képernyőkép](media/leave-the-organization/LeaveOrg.png)
+   ![Képernyőfelvétel: a szervezet beállítást hagyja a felhasználói felületen](media/leave-the-organization/LeaveOrg.png)
 
-4. Amikor a rendszer rákérdez, válassza ki a **hagyja**. 
+4. Ha a rendszer kéri, erősítse meg, válassza ki a **hagyja**. 
 
 ## <a name="account-removal"></a>Fiók eltávolítása
 
-Amikor egy felhasználó elhagyja a szervezet, a felhasználói fiók "törölték" a címtárban. Alapértelmezés szerint a user objektum áthelyezése a **törölt felhasználók** terület az Azure ad-ben azonban nincs véglegesen törölve 30 napig. A helyreállítható törlés lehetővé teszi, hogy a rendszergazdához, és állítsa vissza a felhasználói fiók (beleértve a csoportok és engedélyek), ha a felhasználó egy kérést a fiók visszaállítása a 30 napos időszakon belül.
+Amikor egy felhasználó elhagyja a szervezetet, a felhasználói fiók "törölték" a címtárban. Alapértelmezés szerint a felhasználói objektum átkerül a **törölt felhasználók** terület az Azure ad-ben de ez nem végleges törlése 30 napig. A helyreállítható törlés lehetővé teszi a rendszergazdák állítsa vissza a felhasználói fiók (beleértve a csoportok és engedélyek), ha a felhasználó kérést küld a fiók visszaállítása a 30 napos időszakon belül.
 
-Igény szerint egy Bérlői rendszergazda véglegesen törölheti a fiók a 30 napos időszak alatt. Ehhez tegye a következőket:
+Igény szerint egy Bérlői rendszergazda véglegesen törölheti a fiókot a 30 napos időszakban bármikor. Ehhez tegye a következőket:
 
-1. Az a [Azure-portálon](https://portal.azure.com), jelölje be **Azure Active Directory**.
-2. A **kezelése**, jelölje be **felhasználók**.
+1. Az a [az Azure portal](https://portal.azure.com)válassza **Azure Active Directory**.
+2. A **kezelés**válassza **felhasználók**.
 3. Válassza ki **törölt felhasználók**.
-4. A törölt felhasználói melletti jelölőnégyzetet, majd válassza ki és **véglegesen törli**.
+4. A törölt felhasználó melletti jelölőnégyzetet, majd válassza ki és **véglegesen törli a**.
 
-Ha a felhasználó véglegesen törli ezt a műveletet nem módosítható.
+Ha egy felhasználó véglegesen törli, ez a művelet nem módosítható.
 
 [!INCLUDE [GDPR-related guidance](../../../includes/gdpr-dsr-and-stp-note.md)]
 
 ## <a name="next-steps"></a>További lépések
 
-- Azure AD B2B áttekintését lásd: [Mi az az Azure AD B2B együttműködés?](what-is-b2b.md)
+- Az Azure AD B2B áttekintését lásd: [Mi az Azure AD B2B együttműködés?](what-is-b2b.md)
 
 
 

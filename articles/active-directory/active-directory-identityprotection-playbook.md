@@ -1,8 +1,8 @@
 ---
-title: Az Azure Active Directory Identity Protection-forgatókönyv |} Microsoft Docs
-description: Ismerje meg, az Azure AD Identity Protection miként korlátozhatja, hogy a támadó kihasználni a sérült biztonságú identitás vagy az eszköz és identitás vagy egy eszköz, amely korábban gyanús vagy megsértik ismert biztonságossá tételéhez.
+title: Az Azure Active Directory Identity Protection-forgatókönyv |} A Microsoft Docs
+description: Ismerje meg, hogyan Azure AD Identity Protection segítségével is korlátozhatja, hogy a támadó biztonsági rés kiaknázása elleni egy sérült biztonságú identitás vagy egy eszközt, és biztonságos identitás vagy egy eszköz, amely korábban gyanús vagy ismert legyen feltörni.
 services: active-directory
-keywords: az Azure active directory azonosító adatok védelmét, a cloud discovery, alkalmazások, biztonság, kockázat, kockázati szint, biztonsági rés, biztonsági házirend kezelése
+keywords: az Azure active directory identity protection, a cloud discovery, alkalmazások, biztonság, kockázati, kockázati szint, biztonsági rést, biztonsági házirend kezelése
 documentationcenter: ''
 author: MarkusVi
 manager: mtillman
@@ -16,155 +16,155 @@ ms.topic: article
 ms.date: 06/27/2018
 ms.author: markvi
 ms.reviewer: nigu
-ms.openlocfilehash: 566748d7d7a2ec89c69ab706700583a9db1f5246
-ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
+ms.openlocfilehash: c0fd22bb9abb0710b9b4601777a0f0256386af77
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/28/2018
-ms.locfileid: "37083957"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38473938"
 ---
 # <a name="azure-active-directory-identity-protection-playbook"></a>Az Azure Active Directory Identity Protection-forgatókönyv
 
 Ez a forgatókönyv segítséget:
 
-* Az Identity Protection környezetben adatok feltöltése a szimuláció kockázati eseményekről és biztonsági rések
-* Kockázati-alapú feltételes hozzáférés szabályzatainak beállítása, és ezek a házirendek hatásának tesztelése
+* Töltse ki az adatokat az Identity Protection környezetben szimuláló kockázati eseményekről és biztonsági rések szerint
+* Állítsa be a kockázatalapú feltételes hozzáférési szabályzatokat, és ezek a házirendek hatásának tesztelése
 
 
 ## <a name="simulating-risk-events"></a>Kockázati események szimulálása
 
-Ez a szakasz biztosít lépéseket a következő kockázatok eseménytípusok szimulálva:
+Ebben a szakaszban részletes lépéseket a következő kockázati események típusai számos:
 
-* Bejelentkezések névtelen IP-címről (egyszerű)
+* Névtelen IP-címek (egyszerű) történő bejelentkezések
 * Bejelentkezések ismeretlen helyekről (közepes)
-* Lehetetlen odautazás bejelentkezés szokatlan helyekről (nehéz)
+* Bejelentkezés szokatlan helyekről (nehéz)
 
-Más kockázati események nem szimulált, biztonságos módon.
+Nem lehet szimulált más kockázati események biztonságos módon.
 
 ### <a name="sign-ins-from-anonymous-ip-addresses"></a>Névtelen IP-címről történő bejelentkezések
 
-A kockázat esemény kapcsolatos további információkért lásd: [névtelen IP-címekről bejelentkezések](active-directory-reporting-risk-events.md#sign-ins-from-anonymous-ip-addresses). 
+A kockázati esemény kapcsolatos további információkért lásd: [névtelen IP-címekről történő bejelentkezések](active-directory-reporting-risk-events.md#sign-ins-from-anonymous-ip-addresses). 
 
-A következő eljárás olyan kell használnia:
+A következő eljárás végrehajtásával előírja, hogy:
 
-- A [Tor böngésző](https://www.torproject.org/projects/torbrowser.html.en) névtelen IP-címek szimulálásához. Szükség lehet a virtuális gép használja, ha a szervezet korlátozza a Tor böngészővel.
-- Egy olyan fiókot, amely még nincs regisztrálva a többtényezős hitelesítés.
+- A [Tor böngésző](https://www.torproject.org/projects/torbrowser.html.en) névtelen IP-címek szimulálásához. Szüksége lehet egy virtuális gép használja, ha a szervezet korlátozza a Tor böngészővel.
+- Egy olyan fiókot, amely még nem regisztrált a multi-factor Authentication hitelesítéshez.
 
-**Szimulálása a bejelentkezés egy névtelen IP-címről, a következő lépésekkel**:
+**Szimulálására a bejelentkezés névtelen IP-, a következő lépésekkel**:
 
-1. Használja a [Tor böngésző](https://www.torproject.org/projects/torbrowser.html.en), navigáljon a [ https://myapps.microsoft.com ](https://myapps.microsoft.com).   
-2. Adja meg a fiók, akkor jelenik meg a hitelesítő adatait a **névtelen IP-címekről bejelentkezések** jelentés.
+1. Használatával a [Tor böngésző](https://www.torproject.org/projects/torbrowser.html.en), navigáljon a [ https://myapps.microsoft.com ](https://myapps.microsoft.com).   
+2. Adja meg a megjeleníteni kívánt a fiók hitelesítő adatait a **névtelen IP-címekről történő bejelentkezések** jelentést.
 
-A bejelentkezés mutatja az Identity Protection-irányítópult 10 – 15 percen belül. 
+A bejelentkezési megjelenik-e az Identity Protection irányítópulton 10 – 15 percen belül. 
 
 ### <a name="sign-ins-from-unfamiliar-locations"></a>Ismeretlen helyekről történt bejelentkezések
 
-A kockázat esemény kapcsolatos további információkért lásd: [bejelentkezések ismeretlen helyekről](active-directory-reporting-risk-events.md#sign-in-from-unfamiliar-locations). 
+A kockázati esemény kapcsolatos további információkért lásd: [ismeretlen helyről történő bejelentkezések](active-directory-reporting-risk-events.md#sign-in-from-unfamiliar-locations). 
 
-Ismeretlen helyek szimulálása, akkor jelentkezzen be egy helyről, és az eszköz teszt fiókja rendelkezik nem jelentkezett be az előtt.
+Ismeretlen helyről a szimulálásához kell egy helyet és egy eszköz a tesztfiók nem jelentkezett be, mielőtt jelentkezhessen be.
 
-Az alábbi eljárást használja egy újonnan létrehozott:
+Az alábbi eljárás egy újonnan létrehozott használja:
 
-- VPN-kapcsolat, az új helyre szimulálásához.
+- VPN-kapcsolat, az új helyet szimulálása.
 
-- Virtuális gép, ezzel szimulálva egy új eszközt.
+- A virtuális gép, egy új eszköz szimulálásához.
 
-A következő eljárás szükséges, hogy egy felhasználói fiókot használjon, amely rendelkezik:
+A következő eljárás végrehajtásával előírja, hogy egy felhasználói fiókot, amely rendelkezik:
 
-- Legalább egy 30 napos bejelentkezési előzményei.
+- Legalább egy 30 napos bejelentkezési előzményeit.
 - Többtényezős hitelesítés engedélyezve van.
 
 
-**Szimulálása a bejelentkezés egy ismeretlen helyről, a következő lépésekkel**:
+**Szimulálására a bejelentkezés ismeretlen helyről, a következő lépésekkel**:
 
-1. Bejelentkezés a fiókot, ha sikertelen az MFA-kérdést az MFA-kérdést nem átadásával.
-2. Keresse meg az új VPN-kapcsolattal [ https://myapps.microsoft.com ](https://myapps.microsoft.com) , és adja meg a teszt fiók hitelesítő adatait.
+1. Ha a teszt fiókkal történő bejelentkezés, átadja az MFA-hitelesítést nem adja át az MFA-hitelesítést.
+2. Az új VPN használatával keresse meg a [ https://myapps.microsoft.com ](https://myapps.microsoft.com) , és adja meg a teszt-fiókjának hitelesítő adatait.
    
 
-A bejelentkezés mutatja az Identity Protection-irányítópult 10 – 15 percen belül.
+A bejelentkezési megjelenik-e az Identity Protection irányítópulton 10 – 15 percen belül.
 
-### <a name="impossible-travel-to-atypical-location"></a>Lehetetlen odautazás alapján ezúttal szokatlan helyre
+### <a name="impossible-travel-to-atypical-location"></a>Szokásostól eltérő helyre való lehetetlen utazás
 
-A kockázat esemény kapcsolatos további információkért lásd: [Impossible utazik, és a hely nem típusos](active-directory-reporting-risk-events.md#impossible-travel-to-atypical-locations). 
+A kockázati esemény kapcsolatos további információkért lásd: [lehetetlen utazás a szokásostól eltérő helyre való](active-directory-reporting-risk-events.md#impossible-travel-to-atypical-locations). 
 
-Lehetetlen odautazás feltétel szimulálva nem nehéz, mert az algoritmus által használt gépi tanulással például lehetetlen odautazás ismerős eszközökről vagy a virtuális magánhálózatok, hogy a címtárban más felhasználók által használt bejelentkezések hamis-tömkelegére kimenő gyomláláskor. Ezen felül az algoritmus igényel 14 napos bejelentkezési előzményeit és a felhasználó 10 bejelentkezések kockázati események létrehozásának megkezdése előtt. Az összetett gépi tanulási modellek miatt, és a fenti szabályok esély van, amely a következő lépéseket a kockázati események nem vezet. Előfordulhat, hogy szeretné ezeket a lépéseket a kockázat esemény közzététele több Azure AD-fiókok replikálása.
+Az algoritmus által használt gépi tanulás, például lehetetlen utazás a jól ismert eszközök, vagy a könyvtárban más felhasználók által használt VPN-eket történő bejelentkezések vakriasztások gyomláláskor szimulálására a lehetetlen utazás feltétel azért bonyolult. Ezenkívül az algoritmus szükséges 14 nap bejelentkezési előzményeit, és 10 bejelentkezések a felhasználó kockázati eseményeket megkezdése előtt. Miatt az összetett gépi tanulási modelleket, és a fenti szabályok van arra, hogy az alábbi lépéseket egy kockázati esemény nem vezet. Előfordulhat, hogy szeretné replikálni a kockázati esemény közzététele több Azure AD-felhasználók ezeket a lépéseket.
 
 
-**Ezzel szimulálva egy lehetetlen odautazás alapján ezúttal szokatlan helyre, a következő lépésekkel**:
+**A szokásostól eltérő helyre való lehetetlen utazás szimulálása, a következő lépésekkel**:
 
-1. Keresse meg a szabványos böngészővel [ https://myapps.microsoft.com ](https://myapps.microsoft.com).  
-2. Adjon meg egy lehetetlen odautazás kockázat eseményt generál a fiók hitelesítő adatait.
-3. Módosítsa a felhasználói ügynök. Módosítsa az Internet Explorer felhasználói ügynök fejlesztői eszközök, vagy módosítsa a felhasználói ügynök Firefox vagy felhasználói ügynök kapcsoló bővítményével Chrome.
-4. Az IP-címének módosítása. Az IP-címe a VPN-és a Tor bővítmény használatával, vagy egy új gépet az Azure különböző adatközpont dolgozik módosíthatja.
-5. Bejelentkezés az [ https://myapps.microsoft.com ](https://myapps.microsoft.com) hitelesítő adatokkal, mielőtt, és a korábbi bejelentkezés után néhány percen belül.
+1. A szokásos böngésző használatával keresse meg a [ https://myapps.microsoft.com ](https://myapps.microsoft.com).  
+2. Adja meg a lehetetlen utazás kockázati esemény létrehozásához használni kívánt fiók hitelesítő adatait.
+3. Módosítsa a felhasználói ügynök. Az Internet Explorer felhasználói ügynök módosíthatja a fejlesztői eszközök, vagy módosítsa a felhasználói ügynök, a Firefox vagy a Chrome, a felhasználói ügynök környezetválasztó bővítmény használatával.
+4. Módosítsa az IP-címet. Az IP-cím a VPN, egy Tor-bővítmény használatával, vagy egy új gépet az Azure-ban, egy másik adatközpontban felpörög módosíthatja.
+5. Jelentkezzen be [ https://myapps.microsoft.com ](https://myapps.microsoft.com) előtt és után a korábbi bejelentkezési néhány percen belül hitelesítő adatokkal.
 
-A bejelentkezés megjelennek az Identity Protection-irányítópult 2 – 4 órán belül.
+A bejelentkezési megjelenik-e az Identity Protection irányítópultjának 2 – 4 órán belül.
 
-## <a name="simulating-vulnerabilities"></a>Biztonsági rések szimulálása
-Biztonsági rések egy hibás szereplő is kihasználható az Azure AD környezetben gyengeségei miatt. Jelenleg biztonsági rések 3 típusú illesztett az Azure AD Identity Protection használó egyéb szolgáltatásokat az Azure AD. A biztonsági rések jelenik meg az Identity Protection-Irányítópult automatikusan után ezek a funkciók be vannak állítva.
+## <a name="simulating-vulnerabilities"></a>Biztonsági rések kiváltása
+Biztonsági rések gyengeségek kihasználhatnák azokat kiderítsék Azure ad-ben környezetben. Jelenleg biztonsági rések 3 típusú illesztett az Azure AD Identity Protection, az Azure ad-ben más funkcióit. A biztonsági rések megjelenik az Identity Protection irányítópultjának automatikusan után ezek a funkciók be vannak-e beállítva.
 
 * Az Azure AD [többtényezős hitelesítés](authentication/multi-factor-authentication.md)
-* Az Azure AD [Cloud Discovery](/cloud-app-security/set-up-cloud-discovery).
-* Az Azure AD [Privileged Identity Management](active-directory-privileged-identity-management-configure.md). 
+* Az Azure AD [a Cloud Discovery](/cloud-app-security/set-up-cloud-discovery).
+* Az Azure AD [Privileged Identity Management](privileged-identity-management/pim-configure.md). 
 
 
-## <a name="testing-security-policies"></a>Biztonsági házirendek tesztelése
+## <a name="testing-security-policies"></a>Biztonsági szabályzatok tesztelése
 
-Ez a rész nyújt lépéseket a felhasználó kockázat és a bejelentkezési kockázat biztonsági házirend teszteléséhez.
-
-
-### <a name="user-risk-security-policy"></a>Felhasználói kockázat biztonsági házirend
-
-További információkért lásd: [felhasználói kockázat biztonsági házirend](active-directory-identityprotection.md#user-risk-security-policy).
-
-![Felhasználói kockázati](./media/active-directory-identityprotection-playbook/02.png "forgatókönyv")
+Ez a szakasz biztosít lépéseket a felhasználói kockázat és bejelentkezési kockázat biztonsági házirend teszteléséhez.
 
 
-**Egy felhasználói kockázat biztonsági házirend, hajtsa végre a következő lépéseket**:
+### <a name="user-risk-security-policy"></a>Felhasználói kockázati biztonsági házirend
 
-1. Bejelentkezés az [ https://portal.azure.com ](https://portal.azure.com) a bérlő globális rendszergazdai hitelesítő adatokkal.
+További információkért lásd: [felhasználói kockázati biztonsági házirend](active-directory-identityprotection.md#user-risk-security-policy).
+
+![Felhasználói kockázat](./media/active-directory-identityprotection-playbook/02.png "forgatókönyv")
+
+
+**Felhasználói kockázati biztonsági házirendet, hajtsa végre az alábbi lépéseket**:
+
+1. Jelentkezzen be [ https://portal.azure.com ](https://portal.azure.com) a bérlőhöz tartozó globális rendszergazdai hitelesítő adatokkal.
 2. Navigáljon a **Identity Protection**. 
-3. Az a **Azure AD Identity Protection** kattintson **felhasználói kockázat házirendnek**.
-4. Az a **hozzárendelések** területen válassza ki a kívánt felhasználók (és a csoportok) és a felhasználó kockázati szintjét.
+3. Az a **Azure AD Identity Protection** kattintson **felhasználói kockázati házirend**.
+4. Az a **hozzárendelések** területen válassza ki a kívánt felhasználókat (és csoportokat) és a felhasználói kockázat szintje.
 
-    ![Felhasználói kockázati](./media/active-directory-identityprotection-playbook/03.png "forgatókönyv")
+    ![Felhasználói kockázat](./media/active-directory-identityprotection-playbook/03.png "forgatókönyv")
 
-5. A vezérlők területen válassza ki a kívánt hozzáférés-vezérlés (pl. a jelszó módosítása szükséges).
-5. Mint **házirend kényszerítése**, jelölje be **ki**.
-6. Jogosultságszint-emelés egy olyan fiókot, amelyet a felhasználó kockázatát például szimulálva a kockázati események közül néhány alkalommal.
-7. Várjon néhány percet, és ellenőrizze, hogy a felhasználó felhasználói szinten-e a közepes. Ha nem, a felhasználó további kockázati események szimulálása.
-8. Mint **házirend kényszerítése**, jelölje be **a**.
-9. Felhasználói kockázat-alapú feltételes hozzáférés egy felhasználó használata egy emelt szintű kockázati szintjét a bejelentkezéssel most tesztelheti.
+5. A vezérlők területen válassza ki a kívánt hozzáférés-vezérlés (pl. a jelszómódosítás megkövetelése).
+5. Mint **szabályzat kényszerítése**válassza **ki**.
+6. Jogosultságszintjének például egy olyan fiókot, amelyet a felhasználó kockázatát szimulálására a kockázati események közül néhány alkalommal.
+7. Várjon néhány percet, és ellenőrizze, hogy a felhasználó felhasználói szinten: Közepes. Ha nem, a felhasználó további kockázati események szimulálása.
+8. Mint **szabályzat kényszerítése**válassza **a**.
+9. Most tesztelheti a felhasználói kockázatalapú feltételes hozzáférés a felhasználó használata az emelt szintű kockázati szint bejelentkezéssel.
     
     
 
-### <a name="sign-in-risk-security-policy"></a>Bejelentkezési kockázat biztonsági házirend
+### <a name="sign-in-risk-security-policy"></a>Biztonsági házirend bejelentkezési kockázat
 
-További információkért lásd: [felhasználói kockázat biztonsági házirend](active-directory-identityprotection.md#user-risk-security-policy).
+További információkért lásd: [felhasználói kockázati biztonsági házirend](active-directory-identityprotection.md#user-risk-security-policy).
 
 ![Bejelentkezési kockázati](./media/active-directory-identityprotection-playbook/01.png "forgatókönyv")
 
 
-**A bejelentkezési a kockázat házirendnek, hajtsa végre az alábbi lépéseket:**
+**Bejelentkezési kockázati házirend teszteléséhez hajtsa végre az alábbi lépéseket:**
 
-1. Bejelentkezés az [ https://portal.azure.com ](https://portal.azure.com) a bérlő globális rendszergazdai hitelesítő adatokkal.
+1. Jelentkezzen be [ https://portal.azure.com ](https://portal.azure.com) a bérlőhöz tartozó globális rendszergazdai hitelesítő adatokkal.
 
-2. Navigáljon a **Azure AD Identity Protection**.
+2. Navigáljon a **az Azure AD Identity Protection**.
 
-3. A fő **Azure AD Identity Protection** kattintson **bejelentkezési kockázat házirendnek**. 
+3. A fő **Azure AD Identity Protection** kattintson **bejelentkezési kockázati házirend**. 
 
-4. Az a **hozzárendelések** szakaszban válassza ki a kívánt felhasználók (és a csoportok), bejelentkezési kockázati szint.
+4. Az a **hozzárendelések** részen válassza ki a kívánt felhasználókat (és csoportokat), és bejelentkezési kockázati szint.
 
     ![Bejelentkezési kockázati](./media/active-directory-identityprotection-playbook/04.png "forgatókönyv")
 
 
-5. Az a **vezérlők** területen válassza ki a kívánt hozzáférés-vezérlés (például **többtényezős hitelesítést**). 
+5. Az a **vezérlők** területen válassza ki a kívánt hozzáférés-vezérlés (például **többtényezős hitelesítés megkövetelése**). 
 
-6. Mint **házirend kényszerítése**, jelölje be **a**.
+6. Mint **szabályzat kényszerítése**válassza **a**.
 
 7. Kattintson a **Save** (Mentés) gombra.
 
-8. Most tesztelheti bejelentkezés kockázat-alapú feltételes hozzáférés a bejelentkezéssel kockázatos munkamenet használatával (például úgy, hogy a Tor böngésző használatával). 
+8. Most tesztelheti bejelentkezési kockázatalapú feltételes hozzáférés a bejelentkezéssel kockázatos munkamenet használatával (például úgy, hogy a Tor böngésző használatával). 
 
  
 

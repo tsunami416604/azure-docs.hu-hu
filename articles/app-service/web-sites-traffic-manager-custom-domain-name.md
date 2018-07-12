@@ -1,6 +1,6 @@
 ---
-title: A webalkalmazás egyéni tartománynév beállítása az Azure App Service által használt Traffic Manager terheléselosztás.
-description: Adjon nevet az egyéni tartomány egy egy webalkalmazást az Azure App Service szolgáltatásban, amely tartalmazza a Traffic Manager a(z) terheléselosztást.
+title: Webes alkalmazás egy egyéni tartománynév konfigurálása az Azure App Service, a terheléselosztás a Traffic Manager használó.
+description: Egy egyéni tartománynevet használja az-webalkalmazás létrehozása az Azure App Service, amely a terheléselosztás a Traffic Manager tartalmazza.
 services: app-service\web
 documentationcenter: ''
 author: cephalin
@@ -15,18 +15,18 @@ ms.topic: article
 ms.date: 08/17/2016
 ms.author: cephalin
 ms.openlocfilehash: c78fb7883559e46ebaa1d8dab59a15c55fb76fdf
-ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/09/2018
-ms.locfileid: "27713851"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38317390"
 ---
-# <a name="configuring-a-custom-domain-name-for-a-web-app-in-azure-app-service-using-traffic-manager"></a>A webalkalmazáshoz tartozó egyéni tartománynév konfigurálása az Azure App Service szolgáltatásban a Traffic Managerrel
+# <a name="configuring-a-custom-domain-name-for-a-web-app-in-azure-app-service-using-traffic-manager"></a>Webes alkalmazás egy egyéni tartománynév konfigurálása az Azure App Service, Traffic Manager használatával
 [!INCLUDE [web-selector](../../includes/websites-custom-domain-selector.md)]
 
 [!INCLUDE [intro](../../includes/custom-dns-web-site-intro-traffic-manager.md)]
 
-Ez a cikk ismerteti az egyéni tartománynév általános utasításokat egy [App Service](app-service-web-overview.md) alkalmazást, amely integrálva van a [Traffic Manager](../traffic-manager/traffic-manager-overview.md) a(z) terheléselosztást.
+Ez a cikk az egyéni tartománynév használatára vonatkozó általános útmutatást biztosít egy [App Service-ben](app-service-web-overview.md) alkalmazást, amely integrálva van a [Traffic Manager](../traffic-manager/traffic-manager-overview.md) terheléselosztásra.
 
 [!INCLUDE [tmwebsitefooter](../../includes/custom-dns-web-site-traffic-manager-notes.md)]
 
@@ -39,29 +39,29 @@ Ez a cikk ismerteti az egyéni tartománynév általános utasításokat egy [Ap
 
 <a name="bkmk_configsharedmode"></a>
 
-## <a name="configure-your-web-apps-for-standard-mode"></a>A szabványos mód a webalkalmazások konfigurálása
+## <a name="configure-your-web-apps-for-standard-mode"></a>A web apps a normál üzemeltetési módra konfigurálni
 [!INCLUDE [modes](../../includes/custom-dns-web-site-modes-traffic-manager.md)]
 
 <a name="bkmk_configurecname"></a>
 
-## <a name="add-a-dns-record-for-your-custom-domain"></a>Az egyéni tartomány DNS-rekord hozzáadása
+## <a name="add-a-dns-record-for-your-custom-domain"></a>A DNS-rekordot az egyéni tartomány hozzáadása
 > [!NOTE]
-> Ha tartományi Azure App Service Web Apps keresztül vásárolt, majd ugorjon a következő lépéseket és az utolsó lépésében hivatkozik [tartomány vásárlása Web Apps](custom-dns-web-site-buydomains-web-app.md) cikk.
+> Ha tartományhoz az Azure App Service Web Apps keresztül vásárolt, akkor ugorjon a következő lépéseket és az utolsó lépésében tekintse meg [tartomány vásárlása a Web Apps](custom-dns-web-site-buydomains-web-app.md) cikk.
 > 
 > 
 
-Az egyéni tartomány társítandó egy webalkalmazást az Azure App Service-ben, hozzá kell adnia egy új bejegyzést a DNS-tábla az egyéni tartományhoz. Ez a felügyeleti eszközök tartomány szolgáltatótól használatával teheti meg.
+Az egyéni tartomány hozzárendelése egy webalkalmazást az Azure App Service-ben, hozzá kell adnia egy új bejegyzést a DNS-tábla az egyéni tartományhoz. Ehhez a tartományszolgáltatója felügyeleti eszközöket.
 
 [!INCLUDE [Access DNS records with domain provider](../../includes/app-service-web-access-dns-records-no-h.md)]
 
-Minden tartomány-szolgáltató a mintaadatokról eltérők lehetnek, amíg leképez *a* az egyéni tartománynevet (például **contoso.com**) *való* a Traffic Manager szolgáltatásbeli tartománynevére ( **contoso.trafficmanager.NET**), amely integrálva van a webes alkalmazást.
+Minden tartomány szolgáltató tulajdonságairól eltérőek lehetnek, amíg leképezése *a* az egyéni tartomány nevét (például **contoso.com**) *való* a Traffic Manager szolgáltatásbeli tartománynévre ( **contoso.trafficmanager.NET**), amely integrálva van a webalkalmazás.
    
 > [!NOTE]
-> Ha egy olyan rekordot már használatban van, és megelőző jelleggel kötni az alkalmazások azt szeretné, egy további CNAME-rekordot is létrehozhat. Ahhoz például, hogy megelőző jelleggel kötési **www.contoso.com** a webes alkalmazás, hozzon létre egy CNAME rekordot a **awverify.www** való **contoso.trafficmanager.net**. A webalkalmazás a "www" CNAME rekord módosítása nélkül Ezután felvehet "www.contoso.com". További információkért lásd: [hozzon létre DNS-rekordok az egyéni tartomány webalkalmazáshoz][CREATEDNS].
+> Ha a rekord már használatban van, és előrelátó módon kötni az alkalmazások azt szeretné, egy további CNAME-rekordot is létrehozhat. Például előrelátó módon kötési **www.contoso.com** a webalkalmazást, hozzon létre egy CNAME rekordot a **awverify.www** való **contoso.trafficmanager.net**. A webes alkalmazás a "www" CNAME-rekord módosítása nélkül Ezután hozzáadhatja "www.contoso.com". További információkért lásd: [-webalkalmazás létrehozása az egyéni tartomány létrehozása DNS-rekordok][CREATEDNS].
 > 
 > 
 
-Miután befejezte a hozzáadása vagy módosítása a tartomány DNS-szolgáltató DNS-rekordokat, a módosítások mentéséhez.
+Miután befejezte a hozzáadásával vagy módosításával a tartományszolgáltatója DNS-rekordokat, a módosítások mentéséhez.
 
 <a name="enabledomain"></a>
 

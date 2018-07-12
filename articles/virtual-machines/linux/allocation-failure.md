@@ -1,6 +1,6 @@
 ---
-title: Azure Linux virtuális gép pufferallokációs hibák elhárítása |} Microsoft Docs
-description: Hozzon létre, újraindításakor vagy átméretezésekor egy Linux virtuális Gépet az Azure-ban fellépő lefoglalási hibák elhárítása
+title: Azure Linux virtuális gépek foglalási hibáinak elhárítása |} A Microsoft Docs
+description: Foglalási hibák elhárítása, amikor létrehozása, újraindítása vagy az Azure-ban Linux rendszerű virtuális gép átméretezése
 services: virtual-machines-linux, azure-resource-manager
 documentationcenter: ''
 author: JiangChen79
@@ -16,13 +16,13 @@ ms.topic: article
 ms.date: 04/13/2018
 ms.author: cjiang
 ms.openlocfilehash: 44732739e87db153a3ab6f79f8f0b147ccb31654
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2018
-ms.locfileid: "31525369"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38308106"
 ---
-# <a name="troubleshoot-allocation-failures-when-you-create-restart-or-resize-linux-vms-in-azure"></a>Hozzon létre, újraindításakor vagy átméretezésekor Linux virtuális gépek Azure-ban fellépő lefoglalási hibák elhárítása
+# <a name="troubleshoot-allocation-failures-when-you-create-restart-or-resize-linux-vms-in-azure"></a>Amikor létrehozása, újraindítása vagy átméretezése az Azure-ban Linux rendszerű virtuális gépek foglalási hibáinak elhárítása
 
 [!INCLUDE [virtual-machines-common-allocation-failure](../../../includes/virtual-machines-common-allocation-failure.md)]
 

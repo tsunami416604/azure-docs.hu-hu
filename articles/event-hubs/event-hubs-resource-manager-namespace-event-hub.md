@@ -1,6 +1,6 @@
 ---
-title: Azure Event Hubs névtér és felhasználó-csoport létrehozása sablon alapján |} Microsoft Docs
-description: Hozzon létre egy Event Hubs-névtér az eseményközpontok és egy felhasználói csoport Azure Resource Manager-sablonok használatával
+title: Hozzon létre egy Azure Event Hubs névtér és a fogyasztói csoportot egy sablon használatával |} A Microsoft Docs
+description: Event Hubs-névtér létrehozása egy eseményközponttal, valamint egy fogyasztói csoportot az Azure Resource Manager-sablonok használatával
 services: event-hubs
 documentationcenter: .net
 author: sethmanheim
@@ -15,19 +15,19 @@ ms.workload: na
 ms.date: 04/30/2018
 ms.author: sethm
 ms.openlocfilehash: 4b4dc5be9697bb96aec658fccbdf13b299e79e9e
-ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/01/2018
-ms.locfileid: "32311260"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38309851"
 ---
-# <a name="create-an-event-hubs-namespace-with-event-hub-and-consumer-group-using-an-azure-resource-manager-template"></a>Az Event Hubs-névtér létrehozása Azure Resource Manager-sablonnal esemény hub és felhasználói csoport
+# <a name="create-an-event-hubs-namespace-with-event-hub-and-consumer-group-using-an-azure-resource-manager-template"></a>Event Hubs-névtér létrehozása az Azure Resource Manager-sablon használatával event hub és a fogyasztói csoport
 
-Ez a cikk bemutatja, hogyan használható az Azure Resource Manager-sablon típusú névtér létrehozása [Event Hubs](event-hubs-what-is-event-hubs.md), egy eseményközpontba és egy fogyasztói csoporton. A cikk bemutatja, hogyan határozza meg, mely erőforrásokat központilag telepíti, és hogyan adhat meg a paramétereket, amelyek megadott, amikor a központi telepítés végrehajtása. Ez a sablont használhatja a saját környezeteiben, vagy testre is szabhatja a saját követelményeinek megfelelően.
+Ez a cikk bemutatja, hogyan típusú névtér létrehozása az Azure Resource Manager-sablon használatával [az Event Hubs](event-hubs-what-is-event-hubs.md), és az egy eseményközponttal és a egy fogyasztói csoporton. A cikk bemutatja, hogyan határozza meg, mely erőforrások vannak telepítve, és a megadott paramétereket definiálása az üzembe helyezés végrehajtása esetén. Ez a sablont használhatja a saját környezeteiben, vagy testre is szabhatja a saját követelményeinek megfelelően.
 
-Sablonok létrehozásával kapcsolatos további információkért lásd: [Azure Resource Manager-sablonok készítése][Authoring Azure Resource Manager templates].
+Sablonok létrehozásával kapcsolatos információkért lásd: [Azure Resource Manager-sablonok készítése][Authoring Azure Resource Manager templates].
 
-A teljes sablon, tekintse meg a [hub és felhasználói csoport eseménysablon] [ Event Hub and consumer group template] a Githubon.
+A teljes sablont, tekintse meg a [Event hub és a fogyasztói csoport sablon] [ Event Hub and consumer group template] a Githubon.
 
 > [!NOTE]
 > A legújabb sablonokért keresse fel az [Azure-gyorssablonok][Azure Quickstart Templates] gyűjteményt, és keressen az Event Hubs kifejezésre.
@@ -36,7 +36,7 @@ A teljes sablon, tekintse meg a [hub és felhasználói csoport eseménysablon] 
 
 ## <a name="what-will-you-deploy"></a>Mit fog üzembe helyezni?
 
-Ezen sablon esetén telepít egy Event Hubs névtér eseményközpontban, és a fogyasztói csoportot.
+Ezzel a sablonnal egy Event Hubs-névtér egy eseményközponttal, valamint egy fogyasztói csoport üzembe helyezése.
 
 Az automatikus üzembe helyezéshez kattintson az alábbi gombra:
 
@@ -44,7 +44,7 @@ Az automatikus üzembe helyezéshez kattintson az alábbi gombra:
 
 ## <a name="parameters"></a>Paraméterek
 
-Az Azure Resource Managerrel meghatározhatja a sablon üzembe helyezésekor megadandó értékek paramétereit. A sablonban található egy `Parameters` nevű rész, amely magába foglalja az összes paraméterértéket. Meg kell határozni egy paramétert értékek, amelyek változhatnak, a projekt telepít vagy a környezet, amely telepíti alapján. Ne adjon meg olyan paramétereket olyan értékhez, amelyek nem változnak. A sablon minden paraméter értéke határozza meg a telepített erőforrások esetén.
+Az Azure Resource Managerrel meghatározhatja a sablon üzembe helyezésekor megadandó értékek paramétereit. A sablonban található egy `Parameters` nevű rész, amely magába foglalja az összes paraméterértéket. Olyan értékeket, amelyek eltérnek a projekt telepítésekor vagy a környezet, amely telepíti alapján paramétert meg kell határozni. Ne adjon meg olyan paramétereket olyan értékhez, amelyek nem változnak. A sablonban minden egyes paraméterérték az üzembe helyezett erőforrásokat határozza meg.
 
 A sablon meghatározza a következő:
 
@@ -70,7 +70,7 @@ Az Event Hubs-névtérben létrehozott eseményközpont neve.
 
 ### <a name="eventhubconsumergroupname"></a>eventHubConsumerGroupName
 
-A fogyasztói csoportot az eseményközpont létre neve.
+A létrehozott eseményközpont fogyasztói csoport neve.
 
 ```json
 "eventHubConsumerGroupName": {
@@ -90,7 +90,7 @@ A sablon API-verziója.
 
 ## <a name="resources-to-deploy"></a>Üzembe helyezendő erőforrások
 
-Létrehoz egy névtér, típus **EventHubs**, az event hubs és a fogyasztói csoportot:
+Létrehoz egy típusú névteret **EventHubs**, és az eseményközpont és a egy fogyasztói csoportot:
 
 ```json
 "resources":[  
