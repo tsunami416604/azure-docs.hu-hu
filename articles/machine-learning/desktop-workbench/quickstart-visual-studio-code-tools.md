@@ -7,18 +7,20 @@ ms.author: ahgyger
 manager: haining
 ms.reviewer: garyericson, jasonwhowell, mldocs
 ms.service: machine-learning
+ms.component: core
 ms.workload: data-services
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 11/15/2017
-ms.openlocfilehash: 00bf5c1405e5a37c7f72c8e78a76907987e8d2a2
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 16379b94a751ccd61a76ce1d3dda6a3ff1515751
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38767068"
 ---
 # <a name="visual-studio-code-tools-for-ai"></a>Visual Studio Code Tools for AI
-A Visual Studio Code Tools for AI egy fejlesztési bővítmény, amely mélytanulási és AI-megoldások összeállítását, tesztelését és üzembe helyezését teszi lehetővé. Zökkenőmentes integrációt biztosít az Azure Machine Learninggel, többek között egy futtatásielőzmények-nézetet, amely a korábbi betanítások és egyéni mérőszámok teljesítményét részletezi. Mintatallózó nézetet is kínál, amely lehetővé teszi az új projektek tallózását és elindítását a [Microsoft Cognitive Toolkittel (korábban CNTK)](http://www.microsoft.com/cognitive-toolkit), [Google TensorFlow-val](https://www.tensorflow.org) és más mélytanulási keretrendszerekkel. Végül egy tallózót biztosít a számítási célokhoz, amely lehetővé teszi modellek távoli környezetben (például Azure-beli virtuális gépeken vagy GPU-val rendelkező Linux-kiszolgálókon) való betanítási feladatainak elküldését. 
+A Visual Studio Code Tools for AI egy fejlesztési bővítmény, amely mélytanulási és AI-megoldások összeállítását, tesztelését és üzembe helyezését teszi lehetővé. Zökkenőmentes integrációt biztosít az Azure Machine Learninggel, többek között egy futtatásielőzmények-nézetet, amely a korábbi betanítások és egyéni mérőszámok teljesítményét részletezi. Mintatallózó nézetet is kínál, amely lehetővé teszi az új projektek tallózását és elindítását a [Microsoft Cognitive Toolkittel (korábban CNTK)](http://www.microsoft.com/en-us/cognitive-toolkit), [Google TensorFlow-val](https://www.tensorflow.org) és más mélytanulási keretrendszerekkel. Végül egy tallózót biztosít a számítási célokhoz, amely lehetővé teszi modellek távoli környezetben (például Azure-beli virtuális gépeken vagy GPU-val rendelkező Linux-kiszolgálókon) való betanítási feladatainak elküldését. 
  
 ## <a name="getting-started"></a>Első lépések 
 Első lépésként le kell tölteni és telepíteni kell a [Visual Studio Code](https://code.visualstudio.com/Download)-ot. Miután megnyitotta a Visual Studio Code-ot, hajtsa végre a következő lépéseket:

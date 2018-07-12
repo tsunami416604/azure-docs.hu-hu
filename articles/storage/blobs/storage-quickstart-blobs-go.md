@@ -10,11 +10,11 @@ ms.topic: quickstart
 ms.date: 04/09/2018
 ms.author: seguler
 ms.openlocfilehash: 1ce3debd8b04cf6c799dd7d6a3c87f843f1e0338
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32189153"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38707563"
 ---
 # <a name="quickstart-upload-download-and-list-blobs-using-go"></a>Rövid útmutató: blobok feltöltése, letöltése és listázása a Go használatával
 
@@ -43,7 +43,7 @@ Ez a parancs a helyi git mappába klónozza az adattárat. A Blob Storage-hoz k�
 
 [!INCLUDE [storage-copy-account-key-portal](../../../includes/storage-copy-account-key-portal.md)]
 
-## <a name="configure-your-storage-connection-string"></a>A tárolási kapcsolati karakterlánc konfigurálása
+## <a name="configure-your-storage-connection-string"></a>A tárolási kapcsolati sztring konfigurálása
 Ehhez a megoldáshoz a tárfióknevét és -kulcsát biztonságosan legyen tárolnia helyileg, a mintakódot futtató gép környezeti változóiban. A környezeti változók létrehozásához kövesse az alábbi példák egyikét az operációs rendszerének megfelelően.
 
 # <a name="linuxtablinux"></a>[Linux](#tab/Linux)

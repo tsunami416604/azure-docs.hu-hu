@@ -17,15 +17,15 @@ ms.date: 04/24/2018
 ms.author: cynthn
 ms.custom: mvc
 ms.openlocfilehash: b09a85686e19ae92c3e437bedff54bff8371784f
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32182357"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38719039"
 ---
 # <a name="quickstart-create-a-windows-virtual-machine-with-the-azure-cli-20"></a>Rövid útmutató: Windows rendszerű virtuális gép létrehozása az Azure CLI 2.0-val
 
-Az Azure CLI 2.0 az Azure-erőforrások parancssorból vagy szkriptekkel történő létrehozására és kezelésére használható. Ez a rövid útmutató bemutatja, hogyan használja az Azure CLI 2.0-t Windows Server 2016-ot futtató virtuális gép (VM) üzembe helyezésére az Azure-ban. Ha látni szeretné a virtuális gépet feladatvégzés közben, hozzon létre RDP-kapcsolatot a virtuális géphez, és telepítse az IIS webkiszolgálót.
+Az Azure CLI 2.0 az Azure-erőforrások parancssorból vagy szkriptekkel történő létrehozására és kezelésére használható. Ez a rövid útmutató bemutatja, hogyan használja az Azure CLI 2.0-t Windows Server 2016-ot futtató virtuális gép (VM) üzembe helyezésére az Azure-ban. A virtuális gép működésének ellenőrzéséhez ezután RDP-kapcsolaton keresztül csatlakozzon a géphez, és telepítse az IIS-webkiszolgálót.
 
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 
@@ -81,7 +81,7 @@ az vm open-port --port 80 --resource-group myResourceGroup --name myVM
 
 ## <a name="connect-to-virtual-machine"></a>Csatlakozás virtuális géphez
 
-Az alábbi parancs használatával hozzon létre egy távoli asztali munkamenetet a helyszíni számítógépéről. Cserélje le az IP-címet a virtuális gépe nyilvános IP-címére. Amikor a rendszer kéri, adja meg a virtuális gép létrehozásakor használt hitelesítő adatokat.
+Az alábbi parancs használatával hozzon létre egy távoli asztali munkamenetet a helyszíni számítógépéről. Cserélje le az IP-címet a virtuális gépe nyilvános IP-címére. Amikor a rendszer kéri, adja meg a virtuális gép létrehozásakor használt hitelesítő adatokat:
 
 ```powershell
 mstsc /v:publicIpAddress
@@ -89,17 +89,17 @@ mstsc /v:publicIpAddress
 
 ## <a name="install-web-server"></a>A webkiszolgáló telepítése
 
-A virtuális gép működés közbeni megtekintéséhez telepítse az IIS webkiszolgálót. Nyisson meg egy PowerShell-parancssort a virtuális gépen, és futtassa a következő parancsot:
+A virtuális gép működésének ellenőrzéséhez telepítse az IIS-webkiszolgálót. Nyisson meg egy PowerShell-parancssort a virtuális gépen, és futtassa a következő parancsot:
 
 ```powershell
 Install-WindowsFeature -name Web-Server -IncludeManagementTools
 ```
 
-Ha befejezte, zárja be a virtuális gép RDP-kapcsolatát.
+Ha elkészült, zárja be a virtuális géphez nyitott RDP-kapcsolatot.
 
 ## <a name="view-the-web-server-in-action"></a>A webkiszolgáló megtekintése működés közben
 
-Miután az IIS telepítve lett, és a 80-as port meg van nyitva a virtuális gépen az internet irányából, egy tetszőleges böngésző használatával megtekintheti az alapértelmezett IIS-kezdőlapot. Használja a virtuális gép korábbi lépésben beszerzett nyilvános IP-címét. A következő példában az alapértelmezett IIS-webhely látható:
+Miután az IIS telepítve lett, és a 80-as port meg van nyitva a virtuális gépen az internet irányából, egy tetszőleges böngésző használatával megtekintheti az alapértelmezett IIS-kezdőlapot. Használja a virtuális gép az egyik előző lépésben megkapott nyilvános IP-címét. Az alábbi példa az alapértelmezett IIS-webhelyet mutatja:
 
 ![Alapértelmezett IIS-webhely](./media/quick-create-powershell/default-iis-website.png)
 
@@ -113,7 +113,7 @@ az group delete --name myResourceGroup
 
 ## <a name="next-steps"></a>További lépések
 
-Ennek a rövid útmutatónak a követésével üzembe helyezett egy egyszerű virtuális gépet, megnyitott egy hálózati portot a webes forgalomnak, és telepített egy alapszintű webkiszolgálót. Ha bővebb információra van szüksége az Azure-alapú virtuális gépekkel kapcsolatban, lépjen tovább a Windows rendszerű virtuális gépekről szóló oktatóanyagra.
+Ebben a rövid útmutatóban üzembe helyezett egy egyszerű virtuális gépet, megnyitott egy hálózati portot a webes forgalom számára, valamint telepített egy alapszintű webkiszolgálót. Ha bővebb információra van szüksége az Azure-alapú virtuális gépekkel kapcsolatban, lépjen tovább a Windows rendszerű virtuális gépekről szóló oktatóanyagra.
 
 > [!div class="nextstepaction"]
 > [Windowsos virtuális gépek az Azure-ban – oktatóanyagok](./tutorial-manage-vm.md)

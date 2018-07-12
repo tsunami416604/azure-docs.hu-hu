@@ -3,7 +3,7 @@ title: Rövid útmutató – Linux virtuális gép létrehozása az Azure CLI 2.
 description: Ebből a rövid útmutatóból elsajátíthatja, hogyan használható az Azure CLI 2.0 Linux virtuális gépek létrehozásra
 services: virtual-machines-linux
 documentationcenter: virtual-machines
-author: iainfoulds
+author: cynthn
 manager: jeconnoc
 editor: tysonn
 tags: azure-resource-manager
@@ -14,18 +14,18 @@ ms.topic: quickstart
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 04/24/2018
-ms.author: iainfou
+ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 1c45f8f010d69337d21fce327933990a573988a4
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 6536860bb75d068a96899f2d30ec7a6126a28436
+ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32187929"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37927631"
 ---
 # <a name="quickstart-create-a-linux-virtual-machine-with-the-azure-cli-20"></a>Rövid útmutató: Linux virtuális gép létrehozása az Azure CLI 2.0-val
 
-Az Azure CLI 2.0 az Azure-erőforrások parancssorból vagy szkriptekkel történő létrehozására és kezelésére használható. Ez a rövid útmutató bemutatja, hogyan használja az Azure CLI 2.0-t Ubuntut futtató Linux virtuális gép (VM) üzembe helyezésére az Azure-ban. Ha látni szeretné a virtuális gépet munka közben, hozzon létre SSH-kapcsolatot a virtuális géphez, és telepítse az NGINX webkiszolgálót.
+Az Azure CLI 2.0 az Azure-erőforrások parancssorból vagy szkriptekkel történő létrehozására és kezelésére használható. Ez a rövid útmutató bemutatja, hogyan használja az Azure CLI 2.0-t Ubuntut futtató Linux virtuális gép (VM) üzembe helyezésére az Azure-ban. A virtuális gép működésének ellenőrzéséhez ezután SSH-kapcsolaton keresztül csatlakozzon a géphez, és telepítse az NGINX-webkiszolgálót.
 
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 
@@ -91,7 +91,7 @@ ssh azureuser@publicIpAddress
 
 ## <a name="install-web-server"></a>A webkiszolgáló telepítése
 
-A virtuális gép működés közbeni megtekintéséhez telepítse az NGINX webkiszolgálót. A csomagforrások frissítéséhez és a legújabb NGINX-csomag telepítéséhez futtassa a következő parancsokat az SSH-munkamenetből:
+A virtuális gép működésének ellenőrzéséhez telepítse az NGINX-webkiszolgálót. A csomagforrások frissítéséhez és a legújabb NGINX-csomag telepítéséhez futtassa a következő parancsokat az SSH-munkamenetből:
 
 ```bash
 # update packages
@@ -119,7 +119,7 @@ az group delete --name myResourceGroup
 
 ## <a name="next-steps"></a>További lépések
 
-Ennek a rövid útmutatónak a követésével üzembe helyezett egy egyszerű virtuális gépet, megnyitott egy hálózati portot a webes forgalomnak, és telepített egy alapszintű webkiszolgálót. Ha bővebb információra van szüksége az Azure-beli virtuális gépekkel kapcsolatban, lépjen tovább a Linux rendszerű virtuális gépekről szóló oktatóanyagra.
+Ebben a rövid útmutatóban üzembe helyezett egy egyszerű virtuális gépet, megnyitott egy hálózati portot a webes forgalom számára, valamint telepített egy alapszintű webkiszolgálót. Ha bővebb információra van szüksége az Azure-beli virtuális gépekkel kapcsolatban, lépjen tovább a Linux rendszerű virtuális gépekről szóló oktatóanyagra.
 
 
 > [!div class="nextstepaction"]

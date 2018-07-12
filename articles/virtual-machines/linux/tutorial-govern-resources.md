@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 02/21/2018
 ms.author: tomfitz
 ms.custom: mvc
-ms.openlocfilehash: 4ce2b133ed4266028f1d99151939538fb8ce60f5
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: aeb94a430e633299637d4e9b96ef6b2c0309b163
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32190768"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38722915"
 ---
 # <a name="tutorial-learn-about-linux-virtual-machine-governance-with-azure-cli-20"></a>Oktatóanyag: A Linux rendszerű virtuális gépek Azure CLI 2.0-val történő vezérlése
 
@@ -29,7 +29,7 @@ ms.locfileid: "32190768"
 
 Ha a parancssori felület helyi telepítését és használatát választja, akkor ehhez az oktatóanyaghoz az Azure CLI 2.0.30-as vagy újabb verziójára lesz szükség. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI 2.0 telepítése]( /cli/azure/install-azure-cli).
 
-## <a name="understand-scope"></a>A hatókör bemutatása
+## <a name="understand-scope"></a>A hatókör megismerése
 
 [!INCLUDE [Resource Manager governance scope](../../../includes/resource-manager-governance-scope.md)]
 
@@ -55,7 +55,7 @@ A virtuálisgép-megoldások kezeléséhez három erőforrás-specifikus szerepk
 * [Hálózati közreműködő](../../role-based-access-control/built-in-roles.md#network-contributor)
 * [Tárfiók-közreműködő](../../role-based-access-control/built-in-roles.md#storage-account-contributor)
 
-Ahelyett, hogy szerepköröket rendelne az egyéni felhasználókhoz, gyakran célszerűbb [létrehozni egy Azure Active Directory-csoportot](../../active-directory/active-directory-groups-create-azure-portal.md) azoknak a felhasználóknak, akiknek hasonló műveleteket kell elvégezniük. Ezután hozzárendelheti a csoporthoz a megfelelő szerepkört. Ebben a cikkben az egyszerűség kedvéért egy tagok nélküli Azure Active Directory-csoportot fog létrehozni. A csoportot így is hozzárendelheti egy szerepkörhöz, hogy legyen hatóköre. 
+Ahelyett, hogy szerepköröket rendelne az egyéni felhasználókhoz, gyakran célszerűbb [létrehozni egy Azure Active Directory-csoportot](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md) azoknak a felhasználóknak, akiknek hasonló műveleteket kell elvégezniük. Ezután rendelje hozzá a csoportot a megfelelő szerepkörhöz. Ebben a cikkben az egyszerűség kedvéért egy tagok nélküli Azure Active Directory-csoportot fog létrehozni. A csoportot így is hozzárendelheti egy szerepkörhöz, hogy legyen hatóköre. 
 
 Az alábbi példa egy olyan Azure Active Directory-csoportot hoz létre, amelynek a neve *VMDemoContributors*, a levelezési beceneve pedig *vmDemoGroup*. A levelezési becenév a csoport aliasaként szolgál.
 
@@ -175,7 +175,7 @@ A zárolások teszteléséhez futtassa az alábbi parancsot:
 az group delete --name myResourceGroup
 ```
 
-Megjelenik egy hibaüzenet, amely szerint zárolás miatt a törlési művelet nem hajtható végre. Az erőforráscsoport törlése csak akkor mehet végbe, ha külön eltávolítja a zárolásokat. Ez a lépés a következő helyen található: [Erőforrások megtisztítása](#clean-up-resources).
+Megjelenik egy hibaüzenet, amely szerint a törlési művelet nem hajtható végre egy zárolás miatt. Az erőforráscsoport csak akkor törölhető, ha külön eltávolítja a zárolásokat. Ezt a lépést [Az erőforrások eltávolítása](#clean-up-resources) című szakasz ismerteti.
 
 ## <a name="tag-resources"></a>Erőforrások címkézése
 

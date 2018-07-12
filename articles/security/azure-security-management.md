@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: terrylan
-ms.openlocfilehash: 209fdda974dee2386328da43991cc9d453e61aa7
-ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
+ms.openlocfilehash: edfabf1f93c78cf29ff3561f437053df11e15bd5
+ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37062160"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37857480"
 ---
 # <a name="security-management-in-azure"></a>Biztonságkezelés az Azure-ban
 Az Azure-előfizetők több eszközről kezelhetik felhőkörnyezeteiket, például felügyeleti munkaállomásokról, fejlesztői PC-kről, és olyan jogosult végfelhasználói eszközökről is, amelyek feladatspecifikus engedélyekkel rendelkeznek. Egyes esetekben a felügyeleti feladatkörök ellátását olyan webalapú konzolok használatával végzik, mint például az [Azure Portal](https://azure.microsoft.com/features/azure-portal/). Más esetekben az Azure-hoz való közvetlen kapcsolat létesíthető virtuális magánhálózatokon (VPN), terminálszolgáltatásokon, ügyfél-alkalmazásprotokollokon, vagy (szoftveresen) az Azure Service Management API-n (SMAPI) keresztül. Továbbá az ügyfél-végpontok lehetnek vagy tartományhoz csatlakoztatottak, vagy pedig elkülönítettek és felügyelet nélküliek, mint például a táblagépek vagy az okostelefonok.
@@ -93,7 +93,7 @@ A megerősített munkaállomásokon a rendszergazda általános jogú felhaszná
 * Végrehajtási korlátozások. Csak előre megadott végrehajtható fájlokat engedélyezzen, amelyek szükségesek a kezeléshez („alapértelmezésként elutasítás”). A felhasználó alapesetben semmilyen program futtatására nem kap engedélyt, kivéve, ha az explicit módon meg van határozva az engedélyezési listában.
 * Legkisebb jogosultság. A felügyeleti munkaállomások felhasználóinak ne legyen rendszergazdai jogosultsága magához a helyi géphez. Ez biztosítja, hogy ne változtathassák meg szándékosan vagy véletlenül a rendszer konfigurációját vagy a rendszerfájlokat.
 
-Mindezt kényszerítheti [csoportházirend-objektumok](https://www.microsoft.com/download/details.aspx?id=2612) (GPO-k) használatával az Active Directory Domain Servicesben (AD DS), és ezeknek az összes felügyeleti fiókra való alkalmazásával a (helyi) felügyeleti tartományon keresztül.
+Mindezt kényszerítheti [csoportházirend-objektumok](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-admin-guide-administer-group-policy) (GPO-k) használatával az Active Directory Domain Servicesben (AD DS), és ezeknek az összes felügyeleti fiókra való alkalmazásával a (helyi) felügyeleti tartományon keresztül.
 
 ### <a name="managing-services-applications-and-data"></a>A szolgáltatások, alkalmazások és adatok felügyelete
 Az Azure felhőszolgáltatások konfigurálása lehetséges az Azure Portalon vagy SMAPI-n keresztül, a Windows PowerShell parancssori felületen, vagy olyan egyedi alkalmazás használatával, amely kihasználja ezeket a RESTful-felületeket. Ilyen mechanizmusokat használó szolgáltatások például az alábbiak: Azure Active Directory (Azure AD), Azure Storage, Azure Websites, Azure Virtual Network.

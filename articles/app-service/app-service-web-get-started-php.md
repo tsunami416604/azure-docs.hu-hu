@@ -15,12 +15,12 @@ ms.topic: quickstart
 ms.date: 12/13/2017
 ms.author: cephalin;cfowler
 ms.custom: mvc
-ms.openlocfilehash: 4eaae22f1ccbcb73eb7244f55ea4629aae053171
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 2d1144a94a74e56cae6ff0a4b026a64540086c11
+ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34597756"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38968578"
 ---
 # <a name="create-a-php-web-app-in-azure"></a>PHP-webapp létrehozása az Azure-ban
 
@@ -30,7 +30,7 @@ ms.locfileid: "34597756"
 
 Az [Azure Web Apps](app-service-web-overview.md) egy hatékonyan méretezhető, önjavító webes üzemeltetési szolgáltatás.  Ez a gyorsútmutató a PHP-alkalmazás Azure Web Apps szolgáltatásban történő üzembe helyezésén vezeti végig. A Cloud Shellben az [Azure CLI-vel](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) létrehozza a webalkalmazást, a Gittel pedig üzembe helyezi a PHP-mintakódot a webalkalmazásban.
 
-![Az Azure-ban futó mintaalkalmazás]](media/app-service-web-get-started-php/hello-world-in-browser.png)
+![Az Azure-ban futó mintaalkalmazás](media/app-service-web-get-started-php/hello-world-in-browser.png)
 
 Ezeket a lépéseket Mac, Windows vagy Linux rendszert futtató gépen is követheti. Az előfeltételek telepítése után a lépések végrehajtása nagyjából öt percet vesz igénybe.
 
@@ -92,6 +92,7 @@ az --% webapp create --resource-group myResourceGroup --plan myAppServicePlan --
 A webalkalmazás létrehozása után az Azure CLI az alábbi példához hasonló eredményeket jelenít meg:
 
 ```json
+Local git is configured with url of 'https://<username>@<app_name>.scm.azurewebsites.net/<app_name>.git'
 {
   "availabilityState": "Normal",
   "clientAffinityEnabled": true,
@@ -104,6 +105,11 @@ A webalkalmazás létrehozása után az Azure CLI az alábbi példához hasonló
   < JSON data removed for brevity. >
 }
 ```
+Ezzel létrehozott egy üres, új webalkalmazást, engedélyezett Git üzemelő példánnyal.
+
+> [!NOTE]
+> A távoli Git URL-címe a `deploymentLocalGitUrl` tulajdonságban látható, a következő formátumban: `https://<username>@<app_name>.scm.azurewebsites.net/<app_name>.git`. Mentse ezt az URL-t, mert később még szüksége lesz rá.
+>
 
 Tallózással keresse meg az újonnan létrehozott webalkalmazást. Az _&lt;app name>_ helyett adja meg az előző lépés során létrehozott alkalmazás egyedi nevét.
 

@@ -9,12 +9,12 @@ ms.service: storage
 ms.topic: quickstart
 ms.date: 05/29/2018
 ms.author: sangsinh
-ms.openlocfilehash: 4a83ebbcf045ac2b74957effceadfe80609e960c
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 195537b271c442b954d6d6e6fa8d1491c07822e8
+ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36237426"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38970244"
 ---
 # <a name="immutable-storage-feature-of-azure-blob-storage-preview"></a>Az Azure Blob Storage Immutable Storage (nem módosítható tárolás) funkciója (előzetes verzió)
 
@@ -42,7 +42,7 @@ A nem módosítható tárolási funkció lehetővé teszi a következőket:
 
 - **Tárolószintű konfiguráció:** A nem módosítható tárolási funkció segítségével a felhasználóknak lehetősége nyílik az időalapú adatmegőrzési szabályzat és a jogi célú visszatartási címkék konfigurálására a tárolók szintjén.  Az egyszerű tárolószintű beállítások segítségével a felhasználók létrehozhatnak és lezárhatnak időalapú adatmegőrzési szabályzatokat, meghosszabbíthatják a megőrzési időtartamot, célú visszatartást állíthatnak be vagy oldhatnak fel, és más műveleteket is végezhetnek.  Ezek a szabályzatok a tárolóban található összes blobra vonatkoznak, a meglévőkre és az újakra is.
 
-- **Naplózási támogatás:** Minden tárolóhoz tartozik egy auditnapló, amely legfeljebb öt időalapú adatmegőrzési parancsot jelenít meg a legfeljebb három megőrzésiidőtartam-hosszabbítási bejegyzéssel rendelkező zárolt időalapú adatmegőrzési szabályzatokhoz.  Az időalapú adatmegőrzések esetében a naplóbejegyzés tartalmazza a felhasználói azonosítót, a parancs típusát, az időbélyegeket és a megőrzési időtartamot. A jogi célú visszatartások esetében a bejegyzés tartalmazza a felhasználói azonosítót, a parancs típusát, az időbélyegeket és a jogi céllal történő zárolás címkéit. Az SEC 17a-4(f) szabályozási irányelveknek megfelelően a bejegyzés mindaddig megőrzésre kerül, amíg a tároló létezik. A vezérlősík összes tevékenységét tartalmazó átfogóbb naplót az [Azure tevékenységnaplóban](https://docs.microsoft.com/en-us/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs) talál. A felhasználó felelőssége, hogy gondoskodjon a naplók állandó tárolásáról, mivel szabályozási és egyéb célból is szükség lehet rájuk.
+- **Naplózási támogatás:** Minden tárolóhoz tartozik egy auditnapló, amely legfeljebb öt időalapú adatmegőrzési parancsot jelenít meg a legfeljebb három megőrzésiidőtartam-hosszabbítási bejegyzéssel rendelkező zárolt időalapú adatmegőrzési szabályzatokhoz.  Az időalapú adatmegőrzések esetében a naplóbejegyzés tartalmazza a felhasználói azonosítót, a parancs típusát, az időbélyegeket és a megőrzési időtartamot. A jogi célú visszatartások esetében a bejegyzés tartalmazza a felhasználói azonosítót, a parancs típusát, az időbélyegeket és a jogi céllal történő zárolás címkéit. Az SEC 17a-4(f) szabályozási irányelveknek megfelelően a bejegyzés mindaddig megőrzésre kerül, amíg a tároló létezik. A vezérlősík összes tevékenységét tartalmazó átfogóbb naplót az [Azure tevékenységnaplóban](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs) talál. A felhasználó felelőssége, hogy gondoskodjon a naplók állandó tárolásáról, mivel szabályozási és egyéb célból is szükség lehet rájuk.
 
  Ez a funkció minden nyilvános Azure-régióban elérhető.
 
@@ -68,18 +68,18 @@ A jogi célú visszatartások beállításáról és feloldásáról további in
 
 A tároló jogi célú visszatartással és időalapú adatmegőrzési szabályzattal is rendelkezhet egyszerre. Az adott tárolóban található összes blob nem módosítható állapotban marad, amíg az összes jogi célú visszatartás feloldásra nem kerül, még ha azok tényleges adatmegőrzési időtartama le is jár. Ugyanekkor egy blob addig nem módosítható állapotban marad, amíg a tényleges megőrzési időtartam le nem jár, még a jogi célú visszatartások feloldását követően is.
 Az alábbi táblázat a különböző nem módosítható forgatókönyvek esetén letiltott blobművelet-típusokat mutatja be.
-Tekintse át az [Azure Blob Service API](https://docs.microsoft.com/en-us/rest/api/storageservices/blob-service-rest-api) dokumentációját a Blob REST API-jával kapcsolatos részletes információkért.
+Tekintse át az [Azure Blob Service API](https://docs.microsoft.com/rest/api/storageservices/blob-service-rest-api) dokumentációját a Blob REST API-jával kapcsolatos részletes információkért.
 
 |Forgatókönyv  |Blob állapota  |Nem engedélyezett blobműveletek  |
 |---------|---------|---------|
 |A blob tényleges adatmegőrzési időtartama még nem járt le és/vagy jogi célú visszatartás van érvényben     |Nem módosítható: törlés- és írásvédett         |Delete Container, Delete Blob, Put Blob1, Put Block, Put Block List, Set Blob Metadata, Put Page, Set Blob Properties, Snapshot Blob, Incremental Copy Blob, Append Block         |
 |A blobon beállított tényleges megőrzési időtartam lejárt     |Csak írásvédett (a törlési műveletek engedélyezettek)         |Put Blob, Put Block, Put Block List, Set Blob Metadata, Put Page, Set Blob Properties, Snapshot Blob, Incremental Copy Blob, Append Block         |
-|A tárolón semmilyen jogi célú visszatartás és időalapú adatmegőrzési szabályzat nem érvényesül     |Változtatható         |Nincs         |
-|Nincs WORM-szabályzat (időalapú adatmegőrzés vagy jogi célú visszatartás) létrehozva     |Változtatható         |Nincs         |
+|A tárolón semmilyen jogi célú visszatartás és időalapú adatmegőrzési szabályzat nem érvényesül     |Változtatható         |None         |
+|Nincs WORM-szabályzat (időalapú adatmegőrzés vagy jogi célú visszatartás) létrehozva     |Változtatható         |None         |
 
 > [!NOTE]
 > A blob létrehozásához szükséges első Put Blob, illetve Put Block List és Put Block műveletek a fenti listán szereplő első két forgatókönyvben engedélyezve vannak, de az ezeket követő összes további művelet tiltott.
-> A nem módosítható tárolási funkció csak a GPv2-ben érhető el, a Blob Storage-fiókokat pedig az [Azure Resource Manageren](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-overview) keresztül kell létrehozni.
+> A nem módosítható tárolási funkció csak a GPv2-ben érhető el, a Blob Storage-fiókokat pedig az [Azure Resource Manageren](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) keresztül kell létrehozni.
 
 ## <a name="pricing"></a>Díjszabás
 
@@ -94,7 +94,7 @@ A nyilvános előzetes verzió használatára a következő korlátozások érv�
 
 ## <a name="getting-started"></a>Első lépések
 
-Az Azure-blobok Azure Immutable Storage (nem módosítható tárolás) funkcióját az [Azure Portal](http://portal.azure.com), az Azure [CLI 2.0](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest) és az Azure [PowerShell](https://github.com/Azure/azure-powershell/releases/tag/Azure.Storage.v4.4.0-preview-May2018) legújabb verziói is támogatják.
+Az Azure-blobok Azure Immutable Storage (nem módosítható tárolás) funkcióját az [Azure Portal](http://portal.azure.com), az Azure [CLI 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) és az Azure [PowerShell](https://github.com/Azure/azure-powershell/releases/tag/Azure.Storage.v4.4.0-preview-May2018) legújabb verziói is támogatják.
 
 ### <a name="azure-portal"></a>Azure Portal
 
@@ -130,7 +130,7 @@ Az Azure-blobok Azure Immutable Storage (nem módosítható tárolás) funkciój
 
 ### <a name="cli-20"></a>CLI 2.0
 
-Telepítse a [CLI-bővítményt](http://docs.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest) az `az extension add -n storage-preview` paranccsal.
+Telepítse a [CLI-bővítményt](http://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) az `az extension add -n storage-preview` paranccsal.
 
 Ha már telepítette a bővítményt, használja a következő parancsot a nem módosítható tárolási funkció engedélyezéséhez: `az extension update -n storage-preview`
 

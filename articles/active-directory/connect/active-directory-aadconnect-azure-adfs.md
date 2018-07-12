@@ -4,7 +4,7 @@ description: Ebből a dokumentumból megtanulhatja, hogyan helyezze üzembe az A
 keywords: AD FS üzembe helyezése azure-ban, azure adfs üzembe helyezése, azure adfs, azure ad fs, adfs üzembe helyezése, ad fs üzembe helyezése, adfs azure-ban, adfs üzembe helyezése azure-ban, AD FS üzembe helyezése azure-ban, adfs azure, az AD FS bemutatása, Azure, AD FS az Azure-ban, iaas, ADFS, adfs áthelyezése az azure-ba
 services: active-directory
 documentationcenter: ''
-author: anandyadavmsft
+author: billmath
 manager: mtillman
 editor: ''
 ms.assetid: 692a188c-badc-44aa-ba86-71c0e8074510
@@ -15,14 +15,14 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 07/17/2017
 ms.component: hybrid
-ms.author: anandy; billmath
+ms.author: billmath
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 34a5e223dfc8ff51ce03a973e88a962643c71202
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: f2ebe6c7a70e4e574ea4953ca9ed01801190f80e
+ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36212672"
+ms.lasthandoff: 07/09/2018
+ms.locfileid: "37917135"
 ---
 # <a name="deploying-active-directory-federation-services-in-azure"></a>Az Active Directory összevonási szolgáltatások üzembe helyezése az Azure-ban
 Az AD FS egyszerű, mégis biztonságos identitás-összevonást, valamint webes egyszeri bejelentkezési (SSO) funkciókat biztosít. Az Azure AD vagy O365 segítségével megvalósított összevonás lehetővé teszi a felhasználóknak a helyszíni bejelentkezési adatok segítségével történő hitelesítést, valamint a felhőben futó erőforrások elérését. Ezért fontos, hogy magas rendelkezésre állást biztosító AD FS-infrastruktúrát alkalmazzon, amely garantálja a helyszíni és a felhőben lévő erőforrások elérhetőségét. Az AD FS Azure-ban történő üzembe helyezésével minimális erőfeszítéssel kialakíthatja a magas rendelkezésre állást.

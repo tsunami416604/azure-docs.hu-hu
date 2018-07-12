@@ -3,7 +3,7 @@ title: Oktatóanyag – Linux rendszerű webkiszolgáló védelme SSL-tanúsítv
 description: Ez az oktatóanyag bemutatja, hogyan védheti meg az NGINX-webkiszolgálót futtató Linux rendszerű virtuális gépet az Azure Key Vaultban tárolt SSL-tanúsítványok és az Azure CLI 2.0 használatával.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
-author: iainfoulds
+author: cynthn
 manager: jeconnoc
 editor: tysonn
 tags: azure-resource-manager
@@ -14,14 +14,14 @@ ms.topic: tutorial
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 04/30/2018
-ms.author: iainfou
+ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: f86cc891b67cddf3a4046260d2977371af3d0596
-ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
+ms.openlocfilehash: f1d8576791a569007efd7d3fa446ab32a130919d
+ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/01/2018
-ms.locfileid: "32313358"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37927981"
 ---
 # <a name="tutorial-secure-a-web-server-on-a-linux-virtual-machine-in-azure-with-ssl-certificates-stored-in-key-vault"></a>Oktatóanyag: Webkiszolgáló védelme Linux rendszerű virtuális gépen az Azure-ban, a Key Vaultban tárolt SSL-tanúsítványok segítségével
 A webkiszolgálók védelméhez egy Secure Sockets Layer- (SSL-) tanúsítvánnyal titkosítható a webes adatforgalom. Ezek az SSL-tanúsítványok az Azure Key Vaultban tárolhatók, és lehetővé teszik a tanúsítványok biztonságos üzembe helyezését a Linux rendszerű virtuális gépeken az Azure-ban. Ezen oktatóanyag segítségével megtanulhatja a következőket:

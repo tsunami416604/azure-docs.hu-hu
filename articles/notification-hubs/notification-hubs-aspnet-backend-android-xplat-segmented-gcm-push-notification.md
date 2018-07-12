@@ -16,11 +16,11 @@ ms.custom: mvc
 ms.date: 04/06/2018
 ms.author: dimazaid
 ms.openlocfilehash: 00d6a2de3f51ef8ade50f29b14a4bc944ae5fee6
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33778409"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38700863"
 ---
 # <a name="tutorial-push-notifications-to-specific-android-devices-using-azure-notification-hubs-and-google-cloud-messaging"></a>Oktatóanyag: Leküldéses értesítések küldése adott Android-eszközökre az Azure Notification Hubs és a Google Cloud Messaging használatával
 [!INCLUDE [notification-hubs-selector-breaking-news](../../includes/notification-hubs-selector-breaking-news.md)]
@@ -28,7 +28,7 @@ ms.locfileid: "33778409"
 ## <a name="overview"></a>Áttekintés
 Ez az oktatóanyag azt mutatja be, hogy hogyan továbbíthat friss híreket az Android-alkalmazásokba az Azure Notification Hubs használatával. Az oktatóanyag végére regisztrálni tud majd az Önt érdeklő hírkategóriákra, és csak az ezekre a kategóriákra vonatkozó leküldéses értesítéseket kapni. Ezt a forgatókönyvet gyakran használják olyan alkalmazásokban, ahol az értesítéseket egy adott téma iránt korábban érdeklődő felhasználók csoportjainak kell elküldeni. Ilyen lehet például egy RSS-olvasó, a zenerajongóknak készült alkalmazások stb.
 
-A közvetítési forgatókönyveket úgy lehet engedélyezni, ha az értesítési központban a regisztráció létrehozásakor hozzáad egy vagy több *címkét*. Ha az értesítések küldése egy címkére történik, az adott címkére regisztrált összes eszköz megkapja az értesítést. A címkék egyszerű karakterláncok, nem szükséges őket előzetesen kiosztani. További információ a címkékről: [Útválasztás és címkekifejezések az értesítési központokban](notification-hubs-tags-segment-push-message.md).
+A közvetítési forgatókönyveket úgy lehet engedélyezni, ha az értesítési központban a regisztráció létrehozásakor hozzáad egy vagy több *címkét*. Ha az értesítések küldése egy címkére történik, az adott címkére regisztrált összes eszköz megkapja az értesítést. A címkék egyszerű sztringek, nem szükséges őket előzetesen kiosztani. További információ a címkékről: [Útválasztás és címkekifejezések az értesítési központokban](notification-hubs-tags-segment-push-message.md).
 
 Az oktatóanyag során a következő lépéseket hajtja végre: 
 
@@ -211,7 +211,7 @@ Az első lépésben hozzá kell adni a felhasználói felületi elemeket a megl�
     }
     ```
 
-    Győződjön meg arról, hogy a központ neve és a kapcsolati karakterlánc megfelelően be van állítva a NotificationSettings osztályban.
+    Győződjön meg arról, hogy a központ neve és a kapcsolati sztring megfelelően be van állítva a NotificationSettings osztályban.
 
     > [AZURE.NOTE] Mivel az ügyfélalkalmazással terjesztett hitelesítő adatok általában nem biztonságosak, csak a figyelési hozzáférés kulcsát terjessze az ügyfélalkalmazással. A figyelési hozzáférés lehetővé teszi, hogy az alkalmazás regisztráljon értesítésekre, a meglévő regisztrációkat azonban nem lehet módosítani, és értesítéseket sem lehet küldeni. A teljes körű hozzáférési kulcsot egy biztonságos háttérszolgáltatásban használja a rendszer értesítések kiküldésére és a meglévő regisztrációk módosítására.
 1. Adja hozzá a következő importálásokat:

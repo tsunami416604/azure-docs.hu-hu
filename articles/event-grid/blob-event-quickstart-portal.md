@@ -5,15 +5,15 @@ services: event-grid
 keywords: ''
 author: tfitzmac
 ms.author: tomfitz
-ms.date: 06/26/2018
+ms.date: 07/05/2018
 ms.topic: quickstart
 ms.service: event-grid
-ms.openlocfilehash: 604bb45c7da5ba6d99600b57d4b957a1f7dafb13
-ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
+ms.openlocfilehash: 4e547a97cde896acc4b6c8b19bc6c6cebf512adb
+ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37024585"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37867630"
 ---
 # <a name="create-and-route-blob-storage-events-with-the-azure-portal-and-event-grid"></a>Blob Storage-események létrehozása és átirányítása az Azure Portal és az Event Grid segítségével
 
@@ -25,7 +25,7 @@ A folyamat végén látni fogja, hogy a rendszer elküldte az eseményadatokat a
 
 ![Eredmények megtekintése](./media/blob-event-quickstart-portal/view-results.png)
 
-## <a name="create-a-storage-account"></a>Create a storage account
+## <a name="create-a-storage-account"></a>Tárfiók létrehozása
 
 A Blob Storage-események használatához szüksége lesz vagy egy [Blob Storage-fiókra](../storage/common/storage-create-storage-account.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#blob-storage-accounts), vagy egy [General Purpose v2-tárfiókra](../storage/common/storage-account-options.md#general-purpose-v2). Az általános célú **General Purpose v2- (GPv2-)** fiókok olyan tárfiókok, amelyek a Storage-szolgáltatások összes funkcióját támogatják, beleértve a blobokat, a fájlokat, az üzenetsorokat és a táblákat is. A **Blob Storage-fiók** egy speciális tárfiók a strukturálatlan adatok blobként (objektumként) való tárolására az Azure Storage-ban. A Blob Storage-fiókok olyanok, mint a meglévő általános célú tárfiókjai, és a jelenlegi rendszereivel megegyező szintű tartósságot, rendelkezésre állást, méretezhetőséget és teljesítményt nyújtanak, beleértve a 100%-os API-konzisztenciát a blokkblobokhoz és a hozzáfűző blobokhoz. A csak blokkok és hozzáfűző blobok tárolását igénylő alkalmazásokhoz javasoljuk a Blob Storage-fiókok használatát. 
 
@@ -56,6 +56,8 @@ A Blob Storage-eseményekre való feliratkozás előtt hozzuk létre az esemény
 1. A hely látható, de még nem lett közzétéve esemény.
 
    ![Új hely megtekintése](./media/blob-event-quickstart-portal/view-site.png)
+
+[!INCLUDE [event-grid-register-provider-portal.md](../../includes/event-grid-register-provider-portal.md)]
 
 ## <a name="subscribe-to-the-blob-storage"></a>Feliratkozás a Blob Storage-ra
 

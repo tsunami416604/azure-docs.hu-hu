@@ -12,12 +12,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 06/28/2018
 ms.author: juliako
-ms.openlocfilehash: e5b8cc9285d9637a04c4bec47b0185652aa7c84e
-ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
+ms.openlocfilehash: 314ffce8a9f8dde62cac670099afbc2223df37e4
+ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37114224"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38971998"
 ---
 # <a name="tutorial-analyze-videos-with-azure-media-services"></a>Oktatóanyag: Videók elemzése az Azure Media Serviceszel 
 
@@ -112,7 +112,7 @@ Egy új [átalakításpéldány](https://docs.microsoft.com/rest/api/media/trans
 
 #### <a name="job"></a>Feladat
 
-Ahogy korábban említettük, az [átalakítási](https://docs.microsoft.com/rest/api/media/transforms) objektum a recept, a [feladat](https://docs.microsoft.com/en-us/rest/api/media/jobs) pedig maga a kérés a Media Services számára, hogy alkalmazza az adott **átalakítást** egy meghatározott bemeneti video- vagy audiotartalomra. A **feladat** meghatároz bizonyos adatokat, például a bemeneti videó és a kimenet helyét. A videó helyét a következők használatával adhatja meg: HTTPS URL-címek, SAS URL-címek, vagy a Media Service-fiókban található objektumok. 
+Ahogy korábban említettük, az [átalakítási](https://docs.microsoft.com/rest/api/media/transforms) objektum a recept, a [feladat](https://docs.microsoft.com/rest/api/media/jobs) pedig maga a kérés a Media Services számára, hogy alkalmazza az adott **átalakítást** egy meghatározott bemeneti video- vagy audiotartalomra. A **feladat** meghatároz bizonyos adatokat, például a bemeneti videó és a kimenet helyét. A videó helyét a következők használatával adhatja meg: HTTPS URL-címek, SAS URL-címek, vagy a Media Service-fiókban található objektumok. 
 
 A jelen példában a feladat bemeneti objektuma egy helyi videó.  
 
@@ -120,7 +120,7 @@ A jelen példában a feladat bemeneti objektuma egy helyi videó.
 
 ### <a name="wait-for-the-job-to-complete"></a>Várakozás a feladat befejeződésére
 
-A feladat végrehajtása némi időt vesz igénybe, és fontos, hogy értesüljön arról, ha ez megtörtént. Több módon is kérhet értesítést a [feladat](https://docs.microsoft.com/en-us/rest/api/media/jobs) végrehajtásáról. Ezek közül a legegyszerűbb az itt bemutatott lekérdezés. 
+A feladat végrehajtása némi időt vesz igénybe, és fontos, hogy értesüljön arról, ha ez megtörtént. Több módon is kérhet értesítést a [feladat](https://docs.microsoft.com/rest/api/media/jobs) végrehajtásáról. Ezek közül a legegyszerűbb az itt bemutatott lekérdezés. 
 
 Éles alkalmazások esetében nem javasolt a lekérdezés használata a lehetséges késés miatt. Túlzott használat esetén a lekérdezés kapacitása korlátozott lehet egy adott fiókban. Fejlesztőknek inkább az Event Grid használata javasolt.
 

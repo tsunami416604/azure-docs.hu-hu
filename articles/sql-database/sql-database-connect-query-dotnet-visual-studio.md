@@ -11,11 +11,11 @@ ms.topic: quickstart
 ms.date: 04/01/2018
 ms.author: carlrab
 ms.openlocfilehash: d785436f157fb694ccf4447db91f28b25c9f2a3a
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2018
-ms.locfileid: "31791103"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38704699"
 ---
 # <a name="use-net-c-with-visual-studio-to-connect-and-query-an-azure-sql-database"></a>A .NET (C#) használata a Visual Studióval Azure SQL Database-adatbázishoz való kapcsolódáshoz és lekérdezéséhez
 
@@ -37,11 +37,11 @@ A rövid útmutató elvégzéséhez győződjön meg arról, hogy rendelkezik az
 
 #### <a name="for-adonet"></a>ADO.NET esetén
 
-1. A folytatáshoz kattintson az **Adatbázis-kapcsolati karakterláncok megjelenítése** elemre.
+1. A folytatáshoz kattintson az **Adatbázis-kapcsolati sztringek megjelenítése** elemre.
 
-2. Tekintse át az **ADO.NET** teljes kapcsolati karakterláncát.
+2. Tekintse át az **ADO.NET** teljes kapcsolati sztringjét.
 
-    ![ADO.NET kapcsolati karakterlánc](./media/sql-database-connect-query-dotnet/adonet-connection-string.png)
+    ![ADO.NET kapcsolati sztring](./media/sql-database-connect-query-dotnet/adonet-connection-string.png)
 
 > [!IMPORTANT]
 > Rendelkeznie kell egy tűzfalszabállyal azon számítógép nyilvános IP-címéhez, amelyen ezt az oktatóanyagot elvégzi. Ha más számítógépet használ, vagy más nyilvános IP-címe van, hozzon létre egy [kiszolgálószintű tűzfalszabályt az Azure Portalon](sql-database-get-started-portal.md#create-a-server-level-firewall-rule). 

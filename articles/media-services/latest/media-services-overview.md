@@ -16,12 +16,12 @@ ms.workload: media
 ms.date: 06/14/2018
 ms.author: juliako
 ms.custom: mvc
-ms.openlocfilehash: 489801852202163ef40d57da0082e39793196d85
-ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
+ms.openlocfilehash: 5205a6746f6a698768a60375e2e77db9cb535a71
+ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36264094"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38971907"
 ---
 # <a name="what-is-azure-media-services-v3"></a>Az Azure Media Services v3 ismertetése
 
@@ -45,7 +45,7 @@ A Media Services lehetővé teszi különböző média-munkafolyamatok létrehoz
 * Előfizetéses videoszolgáltatás létrehozása, és DRM-védelemmel ellátott tartalmak streamelése, ha egy ügyfélnek (például egy filmstúdiónak) korlátoznia kell a szerzői joggal védett munkákhoz való hozzáférést és azok használatát.
 * Offline tartalmak biztosítása repülőn, vonaton és autóban való lejátszáshoz. Előfordulhat, hogy egy ügyfélnek le kell töltenie a tartalmat a telefonjára vagy táblagépére a lejátszáshoz, amikor várhatóan nem fognak hálózathoz csatlakozni.
 * Feliratok hozzáadása a videókhoz a szélesebb közönség kiszolgálása érdekében (például hallássérültek vagy olyan személyek esetén, akik más nyelven szeretnének feliratot olvasni). 
-* Oktatási célú e-tanulási videoplatform megvalósítása az Azure Media Services és az [Azure Cognitive Services API-jai](https://docs.microsoft.com/en-us/azure/#pivot=products&panel=ai) segítségével a beszéd szövegként történő feliratozása, a több nyelvre való fordítás stb. érdekében.
+* Oktatási célú e-tanulási videoplatform megvalósítása az Azure Media Services és az [Azure Cognitive Services API-jai](https://docs.microsoft.com/azure/#pivot=products&panel=ai) segítségével a beszéd szövegként történő feliratozása, a több nyelvre való fordítás stb. érdekében.
 * Az Azure CDN engedélyezése a nagyléptékű méretezés megvalósításához az azonnali nagy terhelések (például a termékbevezetési események kezdetének) jobb kezelése érdekében. 
 
 ## <a name="v3-capabilities"></a>A v3 képességei

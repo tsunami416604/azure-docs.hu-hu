@@ -15,12 +15,12 @@ ms.topic: quickstart
 ms.date: 06/07/2017
 ms.author: msangapu
 ms.custom: mvc
-ms.openlocfilehash: eb1c769e034f37d05de63896f65290db79103637
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: 44c3f8ce05854e993ad551a025eec447d882c326
+ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35293904"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38969544"
 ---
 # <a name="create-a-nodejs-web-app-in-azure-app-service-on-linux"></a>Node.js-webalkalmazás létrehozása a Linuxon futó Azure App Service-ben
 
@@ -28,7 +28,7 @@ ms.locfileid: "35293904"
 > Ebben a cikkben egy alkalmazást helyezünk üzembe a Linuxon futó App Service-ben. A _Windowson_ futó App Service-ben való üzembe helyezéssel kapcsolatban lásd: [Node.js-webalkalmazás létrehozása az Azure-ban](../app-service-web-get-started-nodejs.md).
 >
 
-A [Linuxon futó App Service](app-service-linux-intro.md) hatékonyan méretezhető, önjavító webes üzemeltetési szolgáltatást nyújt a Linux operációs rendszer használatával. Ez a rövid útmutató a Node.js-alkalmazások Linuxon futó App Service-be történő üzembe helyezésén vezeti végig a [Cloud Shell](https://docs.microsoft.com/en-us/azure/cloud-shell/overview) használatával.
+A [Linuxon futó App Service](app-service-linux-intro.md) hatékonyan méretezhető, önjavító webes üzemeltetési szolgáltatást nyújt a Linux operációs rendszer használatával. Ez a rövid útmutató a Node.js-alkalmazások Linuxon futó App Service-be történő üzembe helyezésén vezeti végig a [Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) használatával.
 
 Ezt a rövid útmutatót a Cloud Shellben végezzük el, a parancsok azonban helyileg is futtathatók az [Azure CLI](/cli/azure/install-azure-cli) használatával.
 
@@ -40,7 +40,7 @@ Ezt a rövid útmutatót a Cloud Shellben végezzük el, a parancsok azonban hel
 
 ## <a name="install-web-app-extension-for-cloud-shell"></a>A Cloud Shell webalkalmazás-bővítményének telepítése
 
-A rövid útmutató elvégzéséhez az [az web app extension](https://docs.microsoft.com/en-us/cli/azure/extension?view=azure-cli-latest#az-extension-add) hozzáadása szükséges. Ha a bővítmény már telepítve van, frissítse a legújabb verzióra. A webalkalmazás-bővítmény frissítéséhez írja be az `az extension update -n webapp` parancsot.
+A rövid útmutató elvégzéséhez az [az web app extension](https://docs.microsoft.com/cli/azure/extension?view=azure-cli-latest#az-extension-add) hozzáadása szükséges. Ha a bővítmény már telepítve van, frissítse a legújabb verzióra. A webalkalmazás-bővítmény frissítéséhez írja be az `az extension update -n webapp` parancsot.
 
 A webalkalmazás-bővítmény telepítéséhez futtassa az alábbi parancsot:
 
@@ -136,7 +136,7 @@ Az `az webapp up` parancs a következő műveleteket hajtja végre:
 
 - Egy alkalmazás létrehozása a megadott néven.
 
-- Fájlok [tömörített üzembe helyezése](https://docs.microsoft.com/en-us/azure/app-service/app-service-deploy-zip) az aktuális munkakönyvtárból a webalkalmazásba.
+- Fájlok [tömörített üzembe helyezése](https://docs.microsoft.com/azure/app-service/app-service-deploy-zip) az aktuális munkakönyvtárból a webalkalmazásba.
 
 ## <a name="browse-to-the-app"></a>Az alkalmazás megkeresése tallózással
 

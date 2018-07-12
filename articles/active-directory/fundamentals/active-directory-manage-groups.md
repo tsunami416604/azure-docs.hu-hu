@@ -14,12 +14,12 @@ ms.date: 08/28/2017
 ms.author: lizross
 ms.custom: H1Hack27Feb2017;it-pro
 ms.reviewer: piotrci
-ms.openlocfilehash: ae97a41835c61155fe3fc7174fd93be00eb22873
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: cce3b4f15acbcc6ce78ea0623c6b9f3c23941cb0
+ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37767384"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37859625"
 ---
 # <a name="manage-access-to-resources-with-azure-active-directory-groups"></a>Erőforrások hozzáférésének kezelése Azure Active Directory-csoportokkal
 Az Azure Active Directory (Azure AD) egy átfogó identitás- és hozzáférés-kezelési megoldás, amely hatékony képességeket biztosít a hozzáférés kezeléséhez a helyszíni és felhőalapú alkalmazásokhoz és erőforrásokhoz kapcsolódóan, beleértve a Microsoft Online Servicest, mint az Office 365, valamint számos más, nem Microsoft SaaS-alkalmazást. A jelen cikk áttekintést biztosít, ha azonban azonnal szeretné megkezdeni az Azure AD-csoportok használatát, kövesse a [biztonsági csoportoknak az Azure AD-ben való kezelését](active-directory-groups-create-azure-portal.md) ismertető cikket. Ha szeretné megtudni, hogyan kezelhet csoportokat az Azure Active Directoryban a PowerShell használatával, a [csoportkezelésre szolgáló Azure Active Directory-parancsmagokat](../users-groups-roles/groups-settings-v2-cmdlets.md) ismertető cikkből tájékozódhat bővebben.
@@ -74,7 +74,7 @@ Készen áll a kezdésre? Próbálja ki az Azure AD-csoportokkal végrehajtható
 ## <a name="next-steps"></a>További lépések
 Most, hogy megismerkedett a hozzáférés-kezelés alapjaival, áttekintheti az Azure Active Directory további speciális képességeit az alkalmazásokhoz és erőforrásokhoz való hozzáférés kezeléséhez.
 
-* [Speciális szabályok létrehozása attribútumokkal](../active-directory-groups-dynamic-membership-azure-portal.md)
+* [Speciális szabályok létrehozása attribútumokkal](../users-groups-roles/groups-dynamic-membership.md)
 * [Biztonsági csoportok kezelése az Azure AD-ben](active-directory-groups-create-azure-portal.md)
 * [Graph API-referencia a csoportokhoz](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/groups-operations#GroupFunctions)
 * [Azure Active Directory-parancsmagok csoportbeállítások konfigurálásához](../users-groups-roles/groups-settings-cmdlets.md)

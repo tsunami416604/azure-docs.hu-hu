@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 06/20/2018
+ms.date: 07/05/2018
 ms.author: shlo
-ms.openlocfilehash: ceff54b15ef70c9654142566bb1d54b6a7990833
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: 0af6ea05b663f0954785ce966440e3f698ad14a8
+ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37048638"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37867086"
 ---
 # <a name="pipeline-execution-and-triggers-in-azure-data-factory"></a>Folyamat-végrehajtás és eseményindítók az Azure Data Factoryban
 > [!div class="op_single_selector" title1="Select the version of the Data Factory service that you're using:"]
@@ -105,8 +105,8 @@ A kérelem hasznos adatainak törzsébe adja át a paramétereket. A .NET SDK, a
 
 ```json
 {
-  “sourceBlobContainer”: “MySourceFolder”,
-  “sinkBlobCountainer”: “MySinkFolder”
+  "sourceBlobContainer": "MySourceFolder",
+  "sinkBlobCountainer": "MySinkFolder"
 }
 ```
 
@@ -137,7 +137,7 @@ A folyamatok futtatása triggerek használatával is elvégezhető. Az eseményi
 
 - Ütemezési eseményindító: a folyamatokat időpont alapú ütemezés szerint meghívó eseményindító.
 
-- Átfedésmentes ablakos eseményindító: az állapot megőrzése mellett, rendszeres időközönként működő eseményindító. Az Azure Data Factory jelenleg nem támogatja az eseményalapú eseményindítókat. A fájlérkezési eseményre válaszoló folyamatfuttatások eseményindítói például nem támogatottak.
+- Átfedésmentes ablakos eseményindító: az állapot megőrzése mellett, rendszeres időközönként működő eseményindító.
 
 - Eseményalapú trigger: olyan trigger, amely egy eseményre válaszol.
 

@@ -13,11 +13,11 @@ ms.date: 02/20/2018
 ms.author: rogarana
 ms.custom: mvc
 ms.openlocfilehash: 7434de9fa176f608655606772e079cb7631dde93
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/19/2018
-ms.locfileid: "31600420"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38698652"
 ---
 # <a name="create-a-virtual-machine-and-storage-account-for-a-scalable-application"></a>Virtuális gép és tárfiók létrehozása egy méretezhető alkalmazás számára
 
@@ -26,7 +26,7 @@ Ez az oktatóanyag egy sorozat első része. Ez az oktatóanyag egy olyan alkalm
 A sorozat első részében a következőkkel ismerkedhet meg:
 
 > [!div class="checklist"]
-> * Create a storage account
+> * Tárfiók létrehozása
 > * Virtuális gép létrehozása
 > * Egyéni szkriptbővítmény konfigurálása
 
@@ -44,7 +44,7 @@ Hozzon létre egy Azure-erőforráscsoportot a [New-AzureRmResourceGroup](/power
 New-AzureRmResourceGroup -Name myResourceGroup -Location EastUS
 ```
 
-## <a name="create-a-storage-account"></a>Create a storage account
+## <a name="create-a-storage-account"></a>Tárfiók létrehozása
  
 A minta 50 nagy méretű fájlt tölt fel egy Azure Storage-fiókban lévő blobtárolóba. A tárfiók egy egyedi névteret biztosít az Azure Storage-adatobjektumok tárolásához és hozzáféréséhez. A [New-AzureRmStorageAccount](/powershell/module/AzureRM.Storage/New-AzureRmStorageAccount) paranccsal hozzon létre egy tárfiókot a létrehozott erőforráscsoportban.
 
@@ -130,7 +130,7 @@ Set-AzureRMVMCustomScriptExtension -ResourceGroupName myResourceGroup `
 A sorozat első részében megismerkedett a tárfiókok létrehozásával, a virtuális gépek üzembe helyezésével, illetve a virtuális gépnek az előírt előfeltételek szerinti konfigurálásával, például a következőkkel:
 
 > [!div class="checklist"]
-> * Create a storage account
+> * Tárfiók létrehozása
 > * Virtuális gép létrehozása
 > * Egyéni szkriptbővítmény konfigurálása
 

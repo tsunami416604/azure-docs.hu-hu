@@ -15,11 +15,11 @@ ms.workload: infrastructure-services
 ms.date: 06/06/2018
 ms.author: cherylmc
 ms.openlocfilehash: 99ecf8af278823fbae41cb14df5c2372d6451e0c
-ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35236195"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38719652"
 ---
 # <a name="vpn-gateway-faq"></a>VPN Gateway – gyakori kérdések
 

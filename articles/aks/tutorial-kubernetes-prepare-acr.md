@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 02/22/2018
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: e72ec06f7c682e68ca94ba5d4044d1d9974b0b24
-ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
+ms.openlocfilehash: 1e512bdd0a7df50b19fa49bd7b83632499775b04
+ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37100971"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37927723"
 ---
 # <a name="tutorial-deploy-and-use-azure-container-registry"></a>Oktatóanyag: Az Azure Container Registry üzembe helyezése és használata
 
@@ -122,7 +122,7 @@ Ez eltarthat néhány percig.
 
 ## <a name="list-images-in-registry"></a>A regisztrációs adatbázisban található rendszerképek felsorolása
 
-Az Azure Container Registrybe elküldött rendszerképek listájának lekéréséhez használja az [az acr repository list][az-acr-repository-list] parancsot. Frissítse a parancsot az ACR-példány nevével.
+Az Azure Container Registrybe leküldött rendszerképek listájának lekéréséhez használja az [az acr repository list][az-acr-repository-list] parancsot. Frissítse a parancsot az ACR-példány nevével.
 
 ```azurecli
 az acr repository list --name <acrName> --output table
