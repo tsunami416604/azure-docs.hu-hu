@@ -224,6 +224,8 @@
           href: virtual-machine-scale-sets-networking.md
         - name: Sablon konvertálása felügyelt lemezhez
           href: virtual-machine-scale-sets-convert-template-to-md.md
+        - name: Tervezett karbantartás
+          href: virtual-machine-scale-sets-maintenance-notifications.md
     - name: Hibaelhárítás
       items:
         - name: Automatikus méretezés

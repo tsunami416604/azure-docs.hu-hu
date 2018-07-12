@@ -17,11 +17,11 @@ ms.date: 04/20/2017
 ms.author: glenga
 ms.custom: mvc
 ms.openlocfilehash: cbe7bf95574ca7a77d666981691da05357ce9a0d
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/09/2018
-ms.locfileid: "29843578"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38467826"
 ---
 # <a name="create-a-function-app-that-connects-to-an-azure-storage-account"></a>Egy Azure Storage-fiókhoz kapcsolódó függvényalkalmazás létrehozása
 
@@ -37,7 +37,7 @@ Ha a helyi CLI-t használja, akkor az Azure CLI 2.0-s vagy újabb verzióját ke
 
 ## <a name="sample-script"></a>Példaszkript
 
-Ez a példa létrehoz egy Azure-függvényalkalmazást, és hozzáadja a tároló kapcsolati karakterláncát egy alkalmazásbeállításhoz.
+Ez a példa létrehoz egy Azure-függvényalkalmazást, és hozzáadja a tároló kapcsolati sztringjét egy alkalmazásbeállításhoz.
 
 [!code-azurecli-interactive[main](../../../cli_scripts/azure-functions/create-function-app-connect-to-storage/create-function-app-connect-to-storage-account.sh "Integrate Function App into Azure Storage Account")]
 
@@ -56,7 +56,7 @@ A szkript a következő parancsokat használja. A táblázatban lévő összes p
 |---|---|
 | [az login](https://docs.microsoft.com/cli/azure/reference-index#az_login) | Bejelentkezik az Azure-ba. |
 | [az group create](https://docs.microsoft.com/cli/azure/group#az_group_create) | Létrehoz egy erőforráscsoportot egy helyen |
-| [az storage account create](https://docs.microsoft.com/cli/azure/storage/account) | Create a storage account |
+| [az storage account create](https://docs.microsoft.com/cli/azure/storage/account) | Tárfiók létrehozása |
 | [az functionapp create](https://docs.microsoft.com/cli/azure/functionapp#az_functionapp_create) | Létrehoz egy új függvényalkalmazást. |
 | [az group delete](https://docs.microsoft.com/cli/azure/group#az_group_delete) | A fölöslegessé vált elemek eltávolítása |
 

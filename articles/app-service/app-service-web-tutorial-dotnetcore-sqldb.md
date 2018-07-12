@@ -15,11 +15,11 @@ ms.date: 04/11/2018
 ms.author: cephalin
 ms.custom: mvc
 ms.openlocfilehash: 90cd9b4b29c0860355d318201df49262afd82de5
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32154432"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38472661"
 ---
 # <a name="tutorial-build-a-net-core-and-sql-database-web-app-in-azure-app-service"></a>Oktatóanyag: .NET Core- és SQL Database-webalkalmazás összeállítása az Azure App Service-ben
 
@@ -146,15 +146,15 @@ Hozzon létre egy [S0 teljesítményszintű](../sql-database/sql-database-servic
 az sql db create --resource-group myResourceGroup --server <server_name> --name coreDB --service-objective S0
 ```
 
-### <a name="create-connection-string"></a>Kapcsolati karakterlánc létrehozása
+### <a name="create-connection-string"></a>Kapcsolati sztring létrehozása
 
-Cserélje le a következő karakterláncot a korábban használt *\<server_name>*, *\<db_username>* és *\<db_password>* értékre.
+Cserélje le a következő sztringet a korábban használt *\<server_name&gt;*, *\<db_username&gt;* és *\<db_password&gt;* értékre.
 
 ```
 Server=tcp:<server_name>.database.windows.net,1433;Database=coreDB;User ID=<db_username>;Password=<db_password>;Encrypt=true;Connection Timeout=30;
 ```
 
-Ez a .NET Core-alkalmazás kapcsolati karakterlánca. Másolja későbbi felhasználás céljára.
+Ez a .NET Core-alkalmazás kapcsolati sztringje. Másolja későbbi felhasználás céljára.
 
 ## <a name="deploy-app-to-azure"></a>Alkalmazás üzembe helyezése az Azure-ban
 
@@ -174,7 +174,7 @@ Ebben a lépésben az SQL Database-hez csatlakoztatott .NET Core-alkalmazást he
 
 ### <a name="configure-an-environment-variable"></a>Környezeti változó konfigurálása
 
-Kapcsolati karakterláncok az Azure-alkalmazáshoz való beállításához használja az [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az_webapp_config_appsettings_set) parancsot a Cloud Shellben. A következő parancsban cserélje az *\<app name>*, valamint a *\<connections_string>* paramétert a korábban beállított kapcsolati karakterláncra.
+Kapcsolati sztringek az Azure-alkalmazáshoz való beállításához használja az [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az_webapp_config_appsettings_set) parancsot a Cloud Shellben. A következő parancsban cserélje az *\<app name&gt;*, valamint a *\<connections_string&gt;* paramétert a korábban beállított kapcsolati sztringre.
 
 ```azurecli-interactive
 az webapp config connection-string set --resource-group myResourceGroup --name <app name> --settings MyDbConnection='<connection_string>' --connection-string-type SQLServer
@@ -212,7 +212,7 @@ else
 services.BuildServiceProvider().GetService<MyDatabaseContext>().Database.Migrate();
 ```
 
-Ha ez a kód azt észleli, hogy éles üzemben fut (ami Azure-környezetet jelez), az SQL Database-hez való csatlakozáshoz beállított kapcsolati karakterláncot használja.
+Ha ez a kód azt észleli, hogy éles üzemben fut (ami Azure-környezetet jelez), az SQL Database-hez való csatlakozáshoz beállított kapcsolati sztringet használja.
 
 Ha az Azure-ban fut, a `Database.Migrate()` hívás segítséget nyújt, mert automatikusan létrehozza a .NET Core-alkalmazáshoz szükséges adatbázisokat a migrálási konfiguráció alapján. 
 

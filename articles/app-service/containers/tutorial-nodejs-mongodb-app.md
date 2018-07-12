@@ -1,6 +1,6 @@
 ---
 title: Node.js- és MongoDB-webalkalmazás létrehozása Linuxon futó Azure App Service-ben | Microsoft Docs
-description: Megismerheti, hogyan tehet szert egy olyan, a Linuxon futó Azure App Service-ben működő Node.js-alkalmazásra, amely MongoDB-kapcsolati karakterlánccal rendelkező Cosmos DB-hez csatlakozik.
+description: Megismerheti, hogyan tehet szert egy olyan, a Linuxon futó Azure App Service-ben működő Node.js-alkalmazásra, amely MongoDB-kapcsolati sztringgel rendelkező Cosmos DB-hez csatlakozik.
 services: app-service\web
 documentationcenter: nodejs
 author: cephalin
@@ -16,11 +16,11 @@ ms.date: 10/10/2017
 ms.author: cephalin
 ms.custom: mvc
 ms.openlocfilehash: ee7f37f83d6b3503df1af61509f6f85ca19bc13e
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2018
-ms.locfileid: "29932745"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38472951"
 ---
 # <a name="build-a-nodejs-and-mongodb-web-app-in-azure-app-service-on-linux"></a>Node.js- és MongoDB-webalkalmazás létrehozása Linuxon futó Azure App Service-ben
 
@@ -161,7 +161,7 @@ A Cosmos DB-fiók létrehozása után az Azure CLI az alábbi példához hasonl�
 
 ## <a name="connect-app-to-production-mongodb"></a>Alkalmazás csatlakoztatása az éles MongoDB-hez
 
-Ebben a lépésben a MEAN.js-mintaalkalmazást a MongoDB-kapcsolati karakterlánc használatával a korábban létrehozott Cosmos DB-adatbázishoz fogjuk csatlakoztatni.
+Ebben a lépésben a MEAN.js-mintaalkalmazást a MongoDB-kapcsolati sztring használatával a korábban létrehozott Cosmos DB-adatbázishoz fogjuk csatlakoztatni.
 
 ### <a name="retrieve-the-database-key"></a>Az adatbáziskulcs lekérése
 
@@ -186,7 +186,7 @@ Másolja a `primaryMasterKey` értékét. A következő lépés során szükség
 
 <a name="devconfig"></a>
 
-### <a name="configure-the-connection-string-in-your-nodejs-application"></a>A kapcsolati karakterlánc konfigurálása a Node.js-alkalmazásban
+### <a name="configure-the-connection-string-in-your-nodejs-application"></a>A kapcsolati sztring konfigurálása a Node.js-alkalmazásban
 
 A helyi MEAN.js-adattár _config/env/_ mappájában hozzon létre egy _local-production.js_ nevű fájlt. A _.gitignore_ a fájlnak az adattáron kívül való tartására lett konfigurálva.
 
@@ -212,7 +212,7 @@ Egy helyi terminálablakban futtassa a következő parancsot a szkriptek lekicsi
 gulp prod
 ```
 
-Egy helyi terminálablakban futtassa az alábbi parancsot a _config/env/local-production.js_ fájlban konfigurált kapcsolati karakterlánc használatára. Hagyja figyelmen kívül a tanúsítványhibát és a config.domain figyelmeztetést.
+Egy helyi terminálablakban futtassa az alábbi parancsot a _config/env/local-production.js_ fájlban konfigurált kapcsolati sztring használatára. Hagyja figyelmen kívül a tanúsítványhibát és a config.domain figyelmeztetést.
 
 ```bash
 NODE_ENV=production node server.js
@@ -257,7 +257,7 @@ Ebben a lépésben a MongoDB-hez csatlakoztatott Node.js-alkalmazást fogja üze
 
 ### <a name="configure-an-environment-variable"></a>Környezeti változó konfigurálása
 
-Alapértelmezés szerint a MEAN.js-projekt a Git-adattáron kívül tartja a _config/env/local-production.js_ fájlt. Az Azure-webalkalmazás esetén ezért alkalmazásbeállításokat kell használnia a MongoDB kapcsolati karakterláncának meghatározásához.
+Alapértelmezés szerint a MEAN.js-projekt a Git-adattáron kívül tartja a _config/env/local-production.js_ fájlt. Az Azure-webalkalmazás esetén ezért alkalmazásbeállításokat kell használnia a MongoDB kapcsolati sztringjének meghatározásához.
 
 Az alkalmazásbeállítások megadásához használja az [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az_webapp_config_appsettings_set) parancsot a Cloud Shellben.
 

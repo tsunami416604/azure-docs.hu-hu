@@ -15,11 +15,11 @@ ms.custom: mvc
 ms.date: 05/10/2018
 ms.author: barclayn
 ms.openlocfilehash: e7aa675e849fb8c4dac0bfb5a1ae44dd16ca25e3
-ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/11/2018
-ms.locfileid: "34068296"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38539205"
 ---
 # <a name="quickstart-create-an-azure-key-vault-using-powershell"></a>Rövid útmutató: Azure Key Vault-kulcstartó létrehozása a PowerShell használatával
 
@@ -70,7 +70,7 @@ A tároló létrehozása után az Azure-fiókja az egyetlen fiók, amely bármit
 
 Titkos kulcs a tárolóhoz való hozzáadásához csak néhány lépést kell végrehajtania. Ebben az esetben egy alkalmazás által használható jelszót fog megadni. A jelszó neve **ExamplePassword** lesz, és a **Pa$$w0rd** értékét fogja tárolni.
 
-Először konvertálja a Pa$$w0rd értéket egy biztonságos karakterláncra az alábbiak beírásával:
+Először konvertálja a Pa$$w0rd értéket egy biztonságos sztringre az alábbiak beírásával:
 
 ```azurepowershell
 $secretvalue = ConvertTo-SecureString 'Pa$$w0rd' -AsPlainText -Force

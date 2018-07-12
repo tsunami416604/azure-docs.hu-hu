@@ -15,12 +15,12 @@ ms.topic: get-started-article
 ms.date: 06/07/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: f40f2102729cc317f74bd5a91b17a349a7824476
-ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
+ms.openlocfilehash: d58418b45192a6c1e31b4c3c918a27fe253d8c34
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34849991"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38473986"
 ---
 # <a name="custom-installation-of-azure-ad-connect"></a>Az Azure AD Connect testreszabott telepítése
 Az Azure AD Connect **Custom settings** (Egyéni beállítások) menüje akkor használható, ha részletesebb beállításokra van szükség a telepítéshez. Akkor van rá szükség, ha több erdővel rendelkezik vagy ha választható szolgáltatásokat kíván konfigurálni, amelyeket a gyorstelepítés nem tartalmaz. Minden olyan esetben szükséges, ahol a [**gyorstelepítés**](active-directory-aadconnect-get-started-express.md) beállítás nem megfelelő az üzemelő példányhoz vagy a topológiához.
@@ -67,7 +67,7 @@ Ez a fiók kizárólag egy Azure AD-szolgáltatásfiók létrehozására lesz ha
 Ha a globális rendszergazdai fiókon engedélyezve van az MFA, újra meg kell adnia a jelszót a bejelentkezési előugró ablakban, és teljesítenie kell az MFA-kérdést. A kérdés lehet egy ellenőrző kód megadása vagy egy telefonhívás.  
 ![Felhasználói bejelentkezési MFA](./media/active-directory-aadconnect-get-started-custom/connectaadmfa.png)
 
-A globális rendszergazdai fiókon engedélyezve lehet a [Privileged Identity Management](../active-directory-privileged-identity-management-getting-started.md) is.
+A globális rendszergazdai fiókon engedélyezve lehet a [Privileged Identity Management](../privileged-identity-management/pim-getting-started.md) is.
 
 Ha hibaüzenetet kap, és problémák adódnak a kapcsolódással, tekintse meg a [Troubleshoot connectivity problems](active-directory-aadconnect-troubleshoot-connectivity.md) (Kapcsolati problémák elhárítása) szakaszt.
 

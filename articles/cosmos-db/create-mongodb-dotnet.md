@@ -12,11 +12,11 @@ ms.topic: quickstart
 ms.date: 05/22/2018
 ms.author: sngun
 ms.openlocfilehash: 2e0de0f15612b21345bd8df6f9808222ec328c3d
-ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34798729"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38542621"
 ---
 # <a name="azure-cosmos-db-build-a-mongodb-api-web-app-with-net-and-the-azure-portal"></a>Azure Cosmos DB: MongoDB API Webalkalmazás létrehozása .NET-tel és az Azure Portallal
 
@@ -69,7 +69,7 @@ Ez a lépés nem kötelező. Ha meg szeretné ismerni, hogyan jönnek létre az 
 
 Az alábbi kódrészletek mind a DAL könyvtárban lévő Dal.cs fájlból származnak.
 
-* A Mongo Client inicializálása.
+* Inicializálja a Mongo Clientet.
 
     ```cs
         MongoClientSettings settings = new MongoClientSettings();

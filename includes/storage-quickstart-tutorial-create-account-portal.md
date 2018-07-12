@@ -12,4 +12,4 @@ Először hozzon létre egy általános célú tárfiókot ehhez a gyors útmuta
 7. A többi mező alapértelmezett értékeit ne módosítsa.
 8. A tárfiók létrehozásához válassza a **Rögzítés az irányítópulton**, majd a **Létrehozás** lehetőséget. 
 
-A tárfiók a létrehozása után rögzítve lesz az Azure Portal irányítópultján. A megnyitáshoz válassza ki a tárfiókot. A **Beállítások** területen válassza a **Hozzáférési kulcsok** elemet. Válassza az elsődleges fiók hozzáférési kulcsát, majd kattintson a **Másolás** gombra, hogy a kapcsolódó kapcsolati karakterláncot a vágólapra másolja. Ezt követően illessze be a karakterláncot egy szövegszerkesztőbe, hogy később használhassa.
+A tárfiók a létrehozása után rögzítve lesz az Azure Portal irányítópultján. A megnyitáshoz válassza ki a tárfiókot. A **Beállítások** területen válassza a **Hozzáférési kulcsok** elemet. Válassza az elsődleges fiók hozzáférési kulcsát, majd kattintson a **Másolás** gombra, hogy a kapcsolódó kapcsolati sztringet a vágólapra másolja. Ezt követően illessze be a sztringet egy szövegszerkesztőbe, hogy később használhassa.
