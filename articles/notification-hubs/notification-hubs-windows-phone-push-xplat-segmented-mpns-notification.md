@@ -16,11 +16,11 @@ ms.custom: mvc
 ms.date: 04/14/2018
 ms.author: dimazaid
 ms.openlocfilehash: c61a6efaa4a56636400acfe5a212cddad47f4f0c
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33776994"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38652745"
 ---
 # <a name="tutorial-push-notifications-to-specific-windows-phone-devices-by-using-azure-notification-hubs"></a>Oktatóanyag: Leküldéses értesítések küldése adott Windows Phone-eszközökre az Azure Notification Hubs használatával
 [!INCLUDE [notification-hubs-selector-breaking-news](../../includes/notification-hubs-selector-breaking-news.md)]
@@ -200,7 +200,7 @@ Az első lépésben hozzá kell adni a felhasználói felületi elemeket a megl�
     ```
     
     Ez az osztály az elszigetelt tárolót használja azon hírkategóriák tárolására, amelyeket az eszköznek meg kell kapnia. Ezenkívül tartalmaz a szóban forgó kategóriákra való regisztrációra szolgáló metódusokat is, amelyek [sablonalapú](notification-hubs-templates-cross-platform-push-messages.md) értesítésregisztrációt használnak.
-1. Az App.xaml.cs projektfájlban adja hozzá az alábbi tulajdonságot az **App** osztályhoz. A `<hub name>` és a `<connection string with listen access>` helyőrzőt cserélje le az értesítési központ nevére és a *DefaultListenSharedAccessSignature* korábban beszerzett kapcsolati karakterláncára.
+1. Az App.xaml.cs projektfájlban adja hozzá az alábbi tulajdonságot az **App** osztályhoz. A `<hub name>` és a `<connection string with listen access>` helyőrzőt cserélje le az értesítési központ nevére és a *DefaultListenSharedAccessSignature* korábban beszerzett kapcsolati sztringjére.
    
     ```csharp
     public Notifications notifications = new Notifications("<hub name>", "<connection string with listen access>");
