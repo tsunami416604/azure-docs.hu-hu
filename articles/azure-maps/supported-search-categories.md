@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
-ms.openlocfilehash: aa309abecdf0fb0c0acaf18e53bde4600c101a44
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.openlocfilehash: b2bb5e0f9b138af5ff69599b7ba35457788c8a65
+ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "34655092"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38968447"
 ---
 # <a name="azure-maps-supported-categories"></a>Az Azure Maps támogatott kategóriák
 
-Amikor egy [kategória keresési](https://docs.microsoft.com/en-us/rest/api/maps/search/getsearchpoicategory) pontok a lényeges, kategóriába sorolhatók több mint száz támogatott. Alább felsoroljuk a támogatott alkalmazáskategória-neveket a kategória alapján. Kategória kódok akkor jönnek létre, a legfelső szintű kategóriákat. Az összes alkulcsát kategóriák ugyanazon kategória kóddal rendelkeznek. Ne feledje, hogy a kategóriák listája az új adatok kiadásokban változhat.
+Amikor egy [kategória keresési](https://docs.microsoft.com/rest/api/maps/search/getsearchpoicategory) pontok a lényeges, kategóriába sorolhatók több mint száz támogatott. Alább felsoroljuk a támogatott alkalmazáskategória-neveket a kategória alapján. Kategória kódok akkor jönnek létre, a legfelső szintű kategóriákat. Az összes alkulcsát kategóriák ugyanazon kategória kóddal rendelkeznek. Ne feledje, hogy a kategóriák listája az új adatok kiadásokban változhat.
 
 <br/>
 

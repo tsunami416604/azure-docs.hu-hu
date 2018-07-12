@@ -1,22 +1,22 @@
-## <a name="customize-and-extend-the-device-management-actions"></a>Testreszabására és kibővítésére az eszköz felügyeleti műveletei
+## <a name="customize-and-extend-the-device-management-actions"></a>Testreszabhatja és kibővítheti az eszköz felügyeleti műveletei
 
-Az IoT-megoldások bontsa ki az eszköz felügyeleti minták meghatározott készletét, vagy egyéni minták engedélyezése az eszköz iker és a felhő eszközre metódus primitívek használatával. Más eszközök felügyeleti műveletei közé a gyári beállítások visszaállítása, belső vezérlőprogram frissítése, szoftverfrissítés, az energiagazdálkodás, hálózat és kapcsolatok kezelése és az adattitkosítás.
+Az IoT-megoldások eszközfelügyeleti minták meghatározott készletével kibontható vagy egyéni minták engedélyezése az ikereszköz és a felhőből az eszközre metódus primitívek használatával. Más eszközök felügyeleti műveletei közé tartoznak a gyári beállítások visszaállítása, belső vezérlőprogram frissítése, szoftverfrissítés, az energiagazdálkodás, hálózati és a kapcsolódási felügyeleti és adattitkosítás.
 
 ## <a name="device-maintenance-windows"></a>Eszköz karbantartási időszakok
 
-Általában konfigurálnia eszközök ütemezze, hogy a megszakítások számát és az állásidő minimálisra csökkenti a műveletek elvégzéséhez. Eszköz karbantartási időszakok határozzák meg, ha egy eszköz konfigurációjában frissítenie kell a gyakran használt mintát. A háttér-megoldások az eszköz iker kívánt tulajdonságainak segítségével határozza meg, és az eszközön, amely lehetővé teszi, hogy a karbantartási időszak egy házirendet aktiválja. Ha az eszköz a karbantartási ablak házirendet kap, azt az eszköz iker jelentett tulajdonságának segítségével jelenteni a házirend állapota. A háttér-alkalmazás majd eszköz iker lekérdezések segítségével eszközről és minden egyes házirend megfelelőségi igazolnia.
+Általában konfigurálnia eszközök, amelyek segítségével csökkentheti a megszakítások és állásidő egyszerre műveletek végrehajtásához. Eszköz karbantartási időszakok egy gyakran használt minta határozzák meg, amikor egy eszköz frissítenie kell annak konfigurációját. A háttér-megoldások az ikereszköz kívánt tulajdonságait segítségével határozza meg, és aktiválja a szabályzat az eszközön, amely lehetővé teszi, hogy a karbantartási időszak. Ha egy eszköz a karbantartási időszak házirendet kap, azt az ikereszköz jelentett tulajdonsága segítségével jelenteni a házirend állapotát. A háttéralkalmazás számára annak igazolását, az eszközök és az egyes szabályzatok megfelelőségi ikereszköz-lekérdezések felhasználhatja.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Ebben az oktatóanyagban használt közvetlen módszer a indul el, a távoli újra kell indítani az eszközön. A jelentésben szereplő tulajdonságok használatával jelentés az utolsó újraindítás ideje az eszközről, és az eszköz iker felderíteni az eszköz a felhőre a legutóbbi újraindítás lekérdezett.
+Ebben az oktatóanyagban használt közvetlen metódus a-trigger egy távoli újraindítása az eszközön. A jelentett tulajdonságok az eszköz legutóbbi újraindítás jelentésére használhatók, és az ikereszköz felderíteni a felhőből az eszköz legutóbbi újraindítás kérdezhető le.
 
-A folytatáshoz, a légkondicionáló frissítést keresztül Ismerkedés az IoT-központ és az eszköz felügyeleti minták például távolról, lásd:
+Ismerkedés az IoT Hub és az eszközfelügyeleti minták például távolról keresztül a vezeték nélküli belső vezérlőprogram frissítését a folytatáshoz tekintse meg:
 
-[Oktatóanyag: Módjáról a belső vezérlőprogram frissítése][lnk-fwupdate]
+[Oktatóanyag: Hogyan belső vezérlőprogram frissítése][lnk-fwupdate]
 
-Megtudhatja, hogyan terjeszthető ki az IoT-megoldás és az ütemezések metódushívások több eszközön, tekintse meg a [ütemezés és a szórásos feladatok] [ lnk-tutorial-jobs] oktatóanyag.
+Ismerje meg, hogyan bővítheti az IoT-megoldás és az ütemezés metódus meghívja a több eszközre, tekintse meg a [feladatok ütemezése és szórása] [ lnk-tutorial-jobs] oktatóanyag.
 
-Ismerkedés az IoT-központ a folytatáshoz tekintse meg a [Ismerkedés az IoT-Edge][lnk-iot-edge].
+Ismerkedés az IoT Hub a folytatáshoz tekintse meg a [Ismerkedés az IoT Edge szolgáltatással][lnk-iot-edge].
 
 [lnk-fwupdate]: ../articles/iot-hub/iot-hub-node-node-firmware-update.md
 [lnk-tutorial-jobs]: ../articles/iot-hub/iot-hub-node-node-schedule-jobs.md

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: jeedes
-ms.openlocfilehash: 9decab5c35cda03e8532c48654203be7d95a5801
-ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
+ms.openlocfilehash: c1bf5ba68d8242a0ef0831987ac6fd041c62ace9
+ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37858843"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38969367"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-arc-publishing---sso"></a>Oktatóanyag: Azure Active Directory-integráció az ív közzétételi – egyszeri bejelentkezés
 
@@ -149,7 +149,7 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
     1. Kattintson a **Ok**
 
     > [!NOTE]
-    > Itt a **csoportok** attribútum van leképezve a **user.assignedroles**. Ezek a leképezéséhez a csoportnevek vissza az alkalmazás Azure AD-ben létrehozott egyéni szerepkörök. További útmutatás található [Itt](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-enterprise-app-role-management) egyéni szerepkörök létrehozásával az Azure ad-ben. 
+    > Itt a **csoportok** attribútum van leképezve a **user.assignedroles**. Ezek a leképezéséhez a csoportnevek vissza az alkalmazás Azure AD-ben létrehozott egyéni szerepkörök. További útmutatás található [Itt](https://docs.microsoft.com/azure/active-directory/active-directory-enterprise-app-role-management) egyéni szerepkörök létrehozásával az Azure ad-ben. 
 
 1. Az a **SAML-aláíró tanúsítvány** területén kattintson **tanúsítvány (Base64)** , és mentse a tanúsítványfájlt, a számítógépen.
 

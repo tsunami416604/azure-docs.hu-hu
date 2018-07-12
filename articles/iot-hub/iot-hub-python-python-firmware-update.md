@@ -1,6 +1,6 @@
 ---
-title: Eszköz belső vezérlőprogram frissítése az Azure IoT Hub (Python) |} Microsoft Docs
-description: Hogyan használható az eszközkezelés Azure IoT hub eszköz vezérlőprogram-frissítés kezdeményezése. A szimulált eszköz alkalmazásának és a service-alkalmazást, amely elindítja a belső vezérlőprogram-frissítés végrehajtásához használhatja az Azure IoT SDK-k a Python.
+title: Eszköz belső vezérlőprogramjának frissítése az Azure IoT Hub (Python) szolgáltatással |} A Microsoft Docs
+description: Hogyan lehet Azure IoT Hub eszközfelügyeleti használatával kezdeményezheti az eszköz belső vezérlőprogram frissítése. Az Azure IoT SDK Pythonhoz készült használatával valósítható meg egy szimulált eszközalkalmazás és a egy service-alkalmazás, amely elindítja a belső vezérlőprogram frissítését.
 author: kgremban
 manager: timlt
 ms.service: iot-hub
@@ -10,29 +10,29 @@ ms.topic: conceptual
 ms.date: 02/16/2018
 ms.author: kgremban
 ms.openlocfilehash: d2ebdf54e595c2f02464c0c2446a6e5f5feefb9c
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34634641"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38482020"
 ---
-# <a name="use-device-management-to-initiate-a-device-firmware-update-pythonpython"></a>Használjon Eszközkezelés kezdeményezheti a eszköz belső vezérlőprogram frissítése (Python vagy Python)
+# <a name="use-device-management-to-initiate-a-device-firmware-update-pythonpython"></a>Eszközfelügyelet használatát kezdeményezéséhez egy eszköz belső vezérlőprogramjának frissítéséhez (Python vagy Python)
 [!INCLUDE [iot-hub-selector-firmware-update](../../includes/iot-hub-selector-firmware-update.md)]
 
-Az a [Ismerkedés az eszközkezelés] [ lnk-dm-getstarted] oktatóanyag, megtudhatta, hogyan használható a [eszköz iker] [ lnk-devtwin] és [közvetlen módszerek ] [ lnk-c2dmethod] primitívek távolról az eszköz újraindítását. Ez az oktatóanyag használja az ugyanazon az IoT-központ primitívek és nyújt útmutatást, és bemutatja, hogyan hajtsa végre egy végpontok közötti szimulált belső vezérlőprogram-frissítés.  Ebben a mintában az Intel Edison eszköz minta szolgál a belső vezérlőprogram frissítési megvalósításához.
+Az a [Eszközfelügyelet – első lépések] [ lnk-dm-getstarted] oktatóanyag bemutatta, hogyan használható a [ikereszköz] [ lnk-devtwin] és [közvetlen metódusok ] [ lnk-c2dmethod] primitívek távolról újraindítja az eszközt. Ebben az oktatóanyagban használja az ugyanazon az IoT Hub primitívek és útmutatást nyújt, és bemutatja, hogyan teheti egy teljes körű szimulált belsővezérlőprogram-frissítést.  Ezt a mintát az Intel Edison eszköz minta a belső vezérlőprogram frissítési végrehajtására szolgál.
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-whole.md)]
 
 Ez az oktatóanyag a következőket mutatja be:
 
-* Hozzon létre egy Python-Konzolalkalmazás, amely behívja a firmwareUpdate közvetlen módszer a szimulált eszköz alkalmazásban az IoT hub keresztül.
-* Hozzon létre egy szimulált eszköz alkalmazást, amely egy **firmwareUpdate** közvetlen módszer. Ez a módszer indít el egy többlépcsős folyamat, amely megvárja-e a belső vezérlőprogram lemezképet letölti, letölti a belső vezérlőprogram lemezképet és a belső vezérlőprogram kép végül vonatkozik. A frissítés egyes szakasza alatt az eszköz használatával a jelentésben szereplő tulajdonságok előrehaladásról.
+* Hozzon létre egy Python-Konzolalkalmazás, amely meghívja ezt firmwareUpdate közvetlen metódus a szimulált eszköz alkalmazásban az IoT hub segítségével.
+* Egy szimulált eszközalkalmazás létrehozása, amely valósít meg egy **firmwareUpdate** közvetlen metódust. Ez a módszer folyamatot kezdeményez, többlépcsős, a belső vezérlőprogram rendszerképének letöltésére vár, a belső vezérlőprogram rendszerképének letöltése és végül alkalmazza a belsővezérlőprogram-lemezképet. A frissítés minden egyes fázisa során az eszköz jelentett tulajdonságait felhasználva jelenti az állapotot.
 
-Ez az oktatóanyag végén két Python konzol alkalmazások közül választhat:
+Ez az oktatóanyag végén két Python-konzolalkalmazással fog rendelkezni:
 
-**dmpatterns_fwupdate_service.PY**, amely közvetlen metódus meghívja a szimulált eszköz alkalmazás jeleníti meg a választ, és rendszeres időközönként (minden 500ms) jeleníti meg a frissített jelenteni tulajdonságait.
+**dmpatterns_fwupdate_service.PY**, amely meghívja a közvetlen metódus a szimulált eszközalkalmazásnak, a jeleníti meg a válasz és rendszeres időközönként (minden 500ms) jeleníti meg a frissített jelentett tulajdonságokként.
 
-**dmpatterns_fwupdate_device.PY**, amely kapcsolódik az IoT hub, korábban létrehozott eszköz identitású kap egy firmwareUpdate közvetlen módszer esetén az több államot folyamatot, a belső vezérlőprogram frissítési például szimulálásához: Várakozás a kép Töltse le, az új lemezkép letöltése, és végül a kép alkalmazása.
+**dmpatterns_fwupdate_device.PY**, csatlakozik az IoT hubhoz a korábban létrehozott eszközidentitással firmwareUpdate közvetlen metódus kap, szimulálja a belső vezérlőprogram frissítési többek között több állapot folyamaton keresztül futtatja: Várakozás a kép Töltse le, az új lemezkép letöltése, és végül a lemezkép alkalmazása.
 
 Az oktatóanyag teljesítéséhez a következőkre lesz szüksége:
 
@@ -44,18 +44,18 @@ Az oktatóanyag teljesítéséhez a következőkre lesz szüksége:
 
 [!INCLUDE [iot-hub-get-started-create-device-identity-portal](../../includes/iot-hub-get-started-create-device-identity-portal.md)]
 
-## <a name="trigger-a-remote-firmware-update-on-the-device-using-a-direct-method"></a>Indítás, az eszközön, a közvetlen módszer használatával távoli vezérlőprogram-frissítés
-Ebben a szakaszban egy eszköz távoli vezérlőprogram-frissítés kezdeményező Python-Konzolalkalmazás létrehozása. Az alkalmazás közvetlen módszer előtt használja a frissítés, és az eszköz iker lekérdezések rendszeres időközönként a aktív belső vezérlőprogram frissítése a állapot lekérdezése céljából.
+## <a name="trigger-a-remote-firmware-update-on-the-device-using-a-direct-method"></a>Aktiválja az eszközön, a közvetlen metódus használatával távoli belső vezérlőprogram frissítése
+Ebben a szakaszban hozzon létre egy Python-Konzolalkalmazás, amely kezdeményezi egy távoli belső vezérlőprogram frissítése egy eszközön. Az alkalmazás közvetlen metódus kezdeményezni a frissítést, és használja az ikereszköz-lekérdezések rendszeres időközönként beolvasni az aktív belső vezérlőprogram frissítésének állapotát.
 
-1. A parancssorba a következő parancsot a telepítendő a **azure-IOT hubbal-szolgáltatásügyfél** csomag:
+1. A parancssorban futtassa a telepítéséhez a következő parancsot a **azure-iothub-service-client** csomag:
    
     ```cmd/sh
     pip install azure-iothub-service-client
     ```
 
-1. A munkakönyvtár, a egy szövegszerkesztő használatával hozzon létre egy **dmpatterns_getstarted_service.py** fájlt.
+1. A munkakönyvtárban egy szövegszerkesztő használatával hozzon létre egy **dmpatterns_getstarted_service.py** fájlt.
 
-1. Adja hozzá a következő "import" utasítások és változók elején a **dmpatterns_getstarted_service.py** fájlt. Cserélje le `IoTHubConnectionString` és `deviceId` azt már korábban említettük a értékekkel:
+1. Adja hozzá a következő "import" utasításokat és változókat elején a **dmpatterns_getstarted_service.py** fájlt. Cserélje le `IoTHubConnectionString` és `deviceId` a korábban feljegyzett értékekkel:
    
     ```python
     import sys
@@ -73,7 +73,7 @@ Ebben a szakaszban egy eszköz távoli vezérlőprogram-frissítés kezdeményez
     MESSAGE_COUNT = 5
     ```
 
-1. Adja hozzá a következő függvény közvetlen metódust, és a firmwareUpdate értékének megjelenítése jelentett tulajdonság. Is hozzáadhat a `main` rutin:
+1. Adja hozzá a következő függvényt hívja meg a közvetlen metódust, és a firmwareUpdate értékének megjelenítése jelentett tulajdonság. Is hozzáadhat a `main` rutin:
    
     ```python
     def iothub_firmware_sample_run():
@@ -134,19 +134,19 @@ Ebben a szakaszban egy eszköz távoli vezérlőprogram-frissítés kezdeményez
 ## <a name="create-a-simulated-device-app"></a>Szimulált eszközalkalmazás létrehozása
 Ebben a szakaszban:
 
-* Hozzon létre egy Python-konzolalkalmazást, amely válaszol a felhő által meghívott egy közvetlen módszer
+* Hozzon létre egy Python-Konzolalkalmazás, amely a felhő által meghívott közvetlen metódusra válaszol
 * Aktivál egy szimulált belsővezérlőprogram-frissítést
 * A jelentett tulajdonságok használatával ikereszköz-lekérdezéseket engedélyez az eszközök azonosítására és utolsó belsővezérlőprogram-frissítésük időpontjának megállapítására
 
-1. A parancssorba a következő parancsot a telepítendő a **azure-IOT hubbal-eszközügyfél** csomag:
+1. A parancssorban futtassa a telepítéséhez a következő parancsot a **azure-iothub-device-client** csomag:
    
     ```cmd/sh
     pip install azure-iothub-device-client
     ```
 
-1. Egy szövegszerkesztő használatával hozzon létre egy **dmpatterns_fwupdate_device.py** fájlt.
+1. Egy szövegszerkesztővel hozzon létre egy **dmpatterns_fwupdate_device.py** fájlt.
 
-1. Adja hozzá a következő "import" utasítások és változók elején a **dmpatterns_fwupdate_device.py** fájlt. Cserélje le `deviceConnectionString` az IoT hub az eszköz kapcsolati karakterlánccal:
+1. Adja hozzá a következő "import" utasításokat és változókat elején a **dmpatterns_fwupdate_device.py** fájlt. Cserélje le `deviceConnectionString` az eszköz kapcsolati karakterlánccal az IoT hubról:
    
     ```python
     import time, datetime
@@ -167,7 +167,7 @@ Ebben a szakaszban:
     CLIENT = IoTHubClient(CONNECTION_STRING, PROTOCOL)
     ```
 
-1. Adja hozzá a következő funkciókat biztosít a Tulajdonságok frissítések jelentett és valósítja meg a közvetlen használt:
+1. Adja hozzá a következő függvényeket, jelentett tulajdonságok frissítések és a közvetlen metódus megvalósításához használt:
    
     ```python
     def send_reported_state_callback(status_code, user_context):
@@ -215,7 +215,7 @@ Ebben a szakaszban:
         CLIENT.send_reported_state(reported_state, len(reported_state), send_reported_state_callback, SEND_REPORTED_STATE_CONTEXT)
     ```
 
-8. Adja hozzá a következő függvény, amely az eszköz iker inicializálja jelentett tulajdonságait, és várja meg, a közvetlen hívandó metódust. Is hozzáadhat a `main` rutin:
+8. Adja hozzá a következő függvényt, amely inicializálja az ikereszköz jelentett tulajdonságait, és várjon, amíg meghívandó közvetlen metódus. Is hozzáadhat a `main` rutin:
    
     ```python
     def iothub_firmware_sample_run():
@@ -248,34 +248,34 @@ Ebben a szakaszban:
     ```
 
 > [!NOTE]
-> Az egyszerűség kedvéért ez az oktatóanyag nem valósít meg semmilyen újrapróbálkozási házirendet. Az éles kódban, meg kell valósítania újrapróbálkozási házirendek (például az exponenciális leállítási), az MSDN-cikkben leírtak [átmeneti hiba kezelése](https://msdn.microsoft.com/library/hh675232.aspx).
+> Az egyszerűség kedvéért ez az oktatóanyag nem valósít meg semmilyen újrapróbálkozási házirendet. Az éles kódban újrapróbálkozási házirendeket (például egy exponenciális leállítást), az MSDN-cikkben leírtak implementálandó [átmeneti hibák kezelésével](https://msdn.microsoft.com/library/hh675232.aspx).
 > 
 
 
 ## <a name="run-the-apps"></a>Az alkalmazások futtatása
 Most már készen áll az alkalmazások futtatására.
 
-1. A parancssorba a következő parancsot a rendszer újraindítása közvetlen módszer figyelését.
+1. Parancsot a parancssorba futtassa a következő parancsot, amellyel megkezdheti a újraindítás közvetlen metódus figyel.
    
     ```cmd/sh
     python dmpatterns_fwupdate_device.py
     ```
 
-1. Egy másik parancssorban futtassa a következő parancsot a távoli újraindítás és a lekérdezés megadása a eszköz iker található az utolsó újraindítás idő elindítani.
+1. Egy másik parancssorban futtassa a következő parancsot a távoli újraindítás és a lekérdezés az ikereszköz található az utolsó újraindítás időpontja eseményindítóra.
    
     ```cmd/sh
     python dmpatterns_fwupdate_service.py
     ```
 
-1. A közvetlen módszer a konzolon eszköz válasz megjelenik. Jegyezze fel az egész a belső vezérlőprogram frissítési jelentett tulajdonságok módosítása.
+1. Láthatja, hogy az eszköz válasza a közvetlen metódus a konzolon. Jegyezze fel a módosítás a jelentett tulajdonságok a belső vezérlőprogram frissítése során.
 
-    ![Program kimenete][1]
+    ![a program kimenete][1]
 
 
 ## <a name="next-steps"></a>További lépések
-Ez az oktatóanyag elindítása egy távoli belső vezérlőprogram frissítése egy eszközön a közvetlen módszer használatával, és a jelentésben szereplő tulajdonságok segítségével nyomon követheti a belső vezérlőprogram frissítése.
+Ebben az oktatóanyagban használt közvetlen metódus aktiválhat egy távoli belső vezérlőprogram frissítése egy eszközön, és hajtsa végre a belső vezérlőprogram frissítésének állapotát a jelentett tulajdonságok segítségével.
 
-Megtudhatja, hogyan terjeszthető ki az IoT-megoldás és az ütemezések metódushívások több eszközön, tekintse meg a [ütemezés és a szórásos feladatok] [ lnk-tutorial-jobs] oktatóanyag.
+Ismerje meg, hogyan bővítheti az IoT-megoldás és az ütemezés metódus meghívja a több eszközre, tekintse meg a [feladatok ütemezése és szórása] [ lnk-tutorial-jobs] oktatóanyag.
 
 [lnk-devtwin]: iot-hub-devguide-device-twins.md
 [lnk-c2dmethod]: iot-hub-devguide-direct-methods.md

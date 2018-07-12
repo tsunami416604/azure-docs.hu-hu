@@ -17,11 +17,11 @@ ms.custom: mvc
 ms.date: 04/14/2018
 ms.author: dimazaid
 ms.openlocfilehash: 14b9a4ed66995a73f00234f4b25f52fccbcbe556
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33777300"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38562604"
 ---
 # <a name="tutorial-push-notifications-to-windows-phone-apps-by-using-azure-notification-hubs"></a>Oktatóanyag: Leküldéses értesítések küldése Windows Phone-alkalmazásokba az Azure Notification Hubs használatával
 [!INCLUDE [notification-hubs-selector-get-started](../../includes/notification-hubs-selector-get-started.md)]
@@ -31,7 +31,7 @@ Ez az oktatóanyag azt mutatja be, hogy hogyan használható az Azure Notificati
 Az oktatóanyagban létrehoz egy üres Windows Phone 8-alkalmazást, amely leküldéses értesítéseket fogad a Microsoft leküldéses értesítéseket kezelő szolgáltatásának (MPNS) a használatával. Az alkalmazást létrehozását követően az értesítési központ használatával fog leküldéses értesítéseket küldeni az alkalmazást futtató összes eszközre.
 
 > [!NOTE]
-> A Notification Hubs Windows Phone SDK nem támogatja a Windows leküldéses értesítéseket kezelő szolgáltatásának (WNS) használatát Windows Phone 8.1 Silverlight-alkalmazások esetén. Ha a WNS-t szeretné használni (az MPNS helyett) Windows Phone 8.1 Silverlight-alkalmazásokkal kövesse a [Notification Hubs – Windows Phone Silverlight-oktatóanyagot], amely REST API-kat használ.
+> A Notification Hubs Windows Phone SDK nem támogatja a Windows leküldéses értesítéseket kezelő szolgáltatásának (WNS) használatát Windows Phone 8.1 Silverlight-alkalmazások esetén. Ha a WNS-t szeretné használni (az MPNS helyett) Windows Phone 8.1 Silverlight-alkalmazásokkal kövesse a [Notification Hubs – Windows Phone Silverlight-oktatóanyag], amely REST API-kat használ.
 
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni: 
 
@@ -111,7 +111,7 @@ Ebben a szakaszban egy új Windows Phone-alkalmazást hoz létre, amely regisztr
    > 
    > 
    
-    Szúrja be a központ nevét és az előző szakaszban feljegyzett, **DefaultListenSharedAccessSignature** nevű kapcsolati karakterláncot.
+    Szúrja be a központ nevét és az előző szakaszban feljegyzett, **DefaultListenSharedAccessSignature** nevű kapcsolati sztringet.
     Ez a kód lekéri a csatorna URI azonosítóját az alkalmazás számára az MPNS-ből, majd regisztrálja a csatorna URI azonosítóját az értesítési központban. Emellett biztosítja azt, hogy a csatorna URI azonosítója legyen regisztrálva az értesítési központban az alkalmazás minden indításakor.
    
    > [!NOTE]
@@ -180,5 +180,5 @@ Ebben az egyszerű példában leküldéses értesítéseket küldött az összes
 [Use Notification Hubs to send breaking news]: notification-hubs-windows-phone-push-xplat-segmented-mpns-notification.md
 [toast catalog]: http://msdn.microsoft.com/library/windowsphone/develop/jj662938(v=vs.105).aspx
 [tile catalog]: http://msdn.microsoft.com/library/windowsphone/develop/hh202948(v=vs.105).aspx
-[Notification Hubs – Windows Phone Silverlight-oktatóanyagot]: https://github.com/Azure/azure-notificationhubs-samples/tree/master/PushToSLPhoneApp
+[Notification Hubs – Windows Phone Silverlight-oktatóanyag]: https://github.com/Azure/azure-notificationhubs-samples/tree/master/PushToSLPhoneApp
 

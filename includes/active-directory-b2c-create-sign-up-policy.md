@@ -1,4 +1,4 @@
-Ha szeretné csak akkor engedélyezze a regisztrációs az alkalmazásra, használja a **előfizetési** házirend. Ez a házirend a regisztráció során végighaladnia ügyfelek szolgáltatásokat írja le, illetve az alkalmazás sikeres regisztrációra által kapott jogkivonatok tartalmát.
+Ha azt szeretné csak engedélyezése előfizetési az alkalmazásban, használhat egy **előfizetési** házirend. Ez a szabályzat írja le, hogy ügyfeleink során előfizetési és a jogkivonatokat, amelyeket az alkalmazás fogad a sikeres regisztrálásokkor.
 
 [!INCLUDE [active-directory-b2c-portal-navigate-b2c-service](active-directory-b2c-portal-navigate-b2c-service.md)]
 

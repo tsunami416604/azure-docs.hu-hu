@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/06/2018
 ms.author: azcspmt;jonbeck;cynthn
 ms.custom: include file
-ms.openlocfilehash: 83dbe4b7bad8935e7d047a06d6d01ca74329027d
-ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
+ms.openlocfilehash: d7cae11314876bf07b9fcf3d3632a9f42b378626
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2018
-ms.locfileid: "37906643"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38942836"
 ---
 Az optimalizált Virtuálisgép-méretek ajánlat egy magas memória – Processzor aránya, amelyek ideális választás relációs adatbázis-kiszolgálókhoz, közepes és nagy gyorsítótárakhoz és memóriabeli elemzésekhez. Ez a cikk ismerteti a vcpu-k, az adatlemezeket és a hálózati adapterek, valamint tárolási átviteli sebesség és a hálózati sávszélességet az ennél a csoportosításnál méreteire vonatkoztatva számát. 
 
@@ -97,20 +97,20 @@ Prémium szintű Storage gyorsítótárazási: támogatott
 
 | Méret            | vCPU | Memória: GiB | Ideiglenes tárterület (SSD) GiB | Adatlemezek max. száma | Maximális gyorsítótárazott és ideiglenes tárolóteljesítmény: IOPS/MBps (gyorsítótár mérete GiB-ban) | Max. gyorsítótárazás nélküli lemezteljesítmény: IOPS/MBps | Hálózati adapterek max. száma / várt hálózati sávszélesség (Mbps) |
 |-----------------|------|-------------|----------------|----------------|-----------------------------------------------------------------------|-------------------------------------------|------------------------------|
-| M8ms&nbsp;<sup>3</sup>    | 8  | 218.75 | 256  | 8  | 10 000 vagy 100 (793)  | 5000 / 125 | 4 / 2000 |
-| M16ms&nbsp;<sup>3</sup>   | 16 | 437.5  | 512  | 16 | 20 000 / 200-as (1,587) | 10,000 / 250 | 8 / 4000 |
+| Standard m8ms&nbsp;<sup>3</sup>    | 8  | 218.75 | 256  | 8  | 10 000 vagy 100 (793)  | 5000 / 125 | 4 / 2000 |
+| Standard m16ms&nbsp;<sup>3</sup>   | 16 | 437.5  | 512  | 16 | 20 000 / 200-as (1,587) | 10,000 / 250 | 8 / 4000 |
 | Standard m32ts | 32 | 192    | 1,024 | 32 | 40 000 / 400-as (3,174) | 20,000 / 500 | 8 / 8,000 |
 | Standard m32ls | 32 | 256    | 1,024 | 32 | 40 000 / 400-as (3,174) | 20,000 / 500 | 8 / 8,000 |
-| M32ms&nbsp;<sup>3</sup>   | 32 | 875    | 1,024 | 32 | 40 000 / 400-as (3,174) | 20,000 / 500 | 8 / 8,000 |
+| Standard m32ms&nbsp;<sup>3</sup>   | 32 | 875    | 1,024 | 32 | 40 000 / 400-as (3,174) | 20,000 / 500 | 8 / 8,000 |
 | Standard m64s  | 64 | 1,024   | a 2048 | 64 | 80,000 / 800 (6,348)| 40,000 / 1,000 | 8 / 16,000          |
-|Standard m64ls  | 64 | 512    | a 2048 | 64 | 80,000 / 800 (6,348) | 40,000 / 1,000 | 8 / 16,000 |
-| Standard m 64 MS&nbsp;<sup>3</sup>  | 64   | 1,792 | a 2048 | 64 | 80,000 / 800 (6,348)| 40,000 / 1,000 | 8 / 160,00          |
+| Standard m64ls  | 64 | 512    | a 2048 | 64 | 80,000 / 800 (6,348) | 40,000 / 1,000 | 8 / 16,000 |
+| Standard m 64 MS&nbsp;<sup>3</sup>  | 64   | 1,792 | a 2048 | 64 | 80,000 / 800 (6,348)| 40,000 / 1,000 | 8 / 16,000          |
 | Standard m 128 s&nbsp;<sup>2,&nbsp;3</sup> | 128  | a 2048        | 4096  | 64 | 160,000 / 1,600 (12,696) | 80,000 / 2,000                            | 8 / 30,000          |
 | Standard m 128 MS&nbsp;<sup>2,&nbsp;3,&nbsp;4</sup> | 128  | 3,892  | 4096 | 64 | 160,000 / 1,600 (12,696) | 80,000 / 2,000                            | 8 / 30,000          |
-| Standard_M64   | 64  | 1,024 | 7,168  | 64 | 80,000 / 800 (1,228) | 40 000 / 1000 | 8 / 16000 |
-| Standard_M64m  | 64  | 1,792 | 7,168  | 64 | 80,000 / 800 (1,228) | 40 000 / 1000 | 8 / 16000 |
-| Standard_M128&nbsp;<sup>2  | 128 | a 2048 | 14,336 | 64 | 250 000 / 1,600 (2,456) | 80,000 / 2000 | 8 / 32000 |
-| Standard_M128m&nbsp;<sup>2 | 128 | 3,892 | 14,336 | 64 | 250 000 / 1,600 (2,456) | 80,000 / 2000 | 8 / 32000 |
+| Standard_M64   | 64  | 1,024 | 7,168  | 64 | 80,000 / 800 (1,228) | 40,000 / 1,000 | 8 / 16,000 |
+| Standard_M64m  | 64  | 1,792 | 7,168  | 64 | 80,000 / 800 (1,228) | 40,000 / 1,000 | 8 / 16,000 |
+| Standard_M128&nbsp;<sup>2  | 128 | a 2048 | 14,336 | 64 | 250 000 / 1,600 (2,456) | 80,000 / 2,000 | 8 / 32000 |
+| Standard_M128m&nbsp;<sup>2 | 128 | 3,892 | 14,336 | 64 | 250 000 / 1,600 (2,456) | 80,000 / 2,000 | 8 / 32000 |
 
 
 

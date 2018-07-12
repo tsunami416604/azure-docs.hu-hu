@@ -1,95 +1,95 @@
 ---
-title: -Munkaterhelések biztonsági mentése az Azure-bA az Azure Backup Server használatával
-description: Azure Backup Server használatával védeni, vagy a munkaterhelések biztonsági mentése az Azure portálon.
+title: Használja az Azure Backup Server számítási feladatainak biztonsági mentéséhez az Azure-bA
+description: Az Azure Backup Server használatával védeni, vagy biztonsági másolatot az Azure Portalon.
 services: backup
 author: PVRK
 manager: shivamg
-keywords: az Azure biztonsági mentési kiszolgáló; munkaterhelések; védelme -munkaterhelések biztonsági mentése
+keywords: az Azure backup server; számítási feladatok; védelme számítási feladatainak biztonsági mentése
 ms.service: backup
 ms.topic: conceptual
-ms.date: 6/27/2018
+ms.date: 7/10/2018
 ms.author: adigan
-ms.openlocfilehash: 0364643c087453e423544937052aa6aad233b3b3
-ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
+ms.openlocfilehash: 67243aca9f5f578402ff79422783148af53798c6
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37099660"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38546017"
 ---
-# <a name="install-and-configure-azure-backup-server"></a>Azure biztonsági mentés kiszolgáló telepítése és konfigurálása
+# <a name="install-and-configure-azure-backup-server"></a>Azure Backup-kiszolgáló telepítése és konfigurálása
 > [!div class="op_single_selector"]
 > * [Azure Backup Server](backup-azure-microsoft-azure-backup.md)
 > * [SCDPM](backup-azure-dpm-introduction.md)
 >
 >
 
-Ez a cikk azt ismerteti, hogyan készítse fel a környezetet az Azure Backup Server használatával-munkaterhelések biztonsági mentése. Az Azure Backup Server a Hyper-V virtuális gépek, a Microsoft SQL Server, a SharePoint Server, a Microsoft Exchange és a Windows-ügyfelek például alkalmazások és szolgáltatások védelmet biztosíthat egyetlen konzolról.
+Ez a cikk ismerteti, hogyan készítse elő a környezetét, használja az Azure Backup Server számítási feladatainak biztonsági mentéséhez. Az Azure Backup Server alkalmazások és szolgáltatások, például a Hyper-V virtuális gépek, a Microsoft SQL Server, SharePoint Server, a Microsoft Exchange és a Windows ügyfelek védheti egyetlen konzolról.
 
 > [!NOTE]
-> Az Azure Backup Server most megvédheti a VMware virtuális gépeket, és magasabb szintű biztonságra képességeket biztosít. A termék telepítését, a lentebbi; 1. frissítés és a legújabb Azure Backup szolgáltatás ügynökének vonatkoznak. Az Azure Backup Server VMware-kiszolgálók biztonsági mentésével kapcsolatos további tudnivalókért tekintse meg a cikket, [használata Azure biztonsági mentés kiszolgáló biztonsági mentése a VMware server](backup-azure-backup-server-vmware.md). Biztonsági képességeivel kapcsolatos további tudnivalókért tekintse meg [Azure biztonsági mentési biztonsági jellemzőkkel dokumentáció](backup-azure-security-feature.md).
+> Az Azure Backup Server most is a VMware virtuális gépek védelméhez és továbbfejlesztett biztonsági képességeket biztosít. A termék telepítése; az alábbi szakaszokban leírtak szerint 1. frissítést és a legújabb Azure Backup szolgáltatás ügynökének vonatkoznak. VMware-kiszolgálók az Azure Backup Server biztonsági mentésével kapcsolatos további tudnivalókért tekintse meg ezt a cikket [a VMware-kiszolgáló biztonsági mentése az Azure Backup Server](backup-azure-backup-server-vmware.md). Biztonsági képességeivel kapcsolatos további információkért tekintse meg [az Azure backup biztonsági funkciók dokumentációja](backup-azure-security-feature.md).
 >
 >
 
-Infrastruktúra, a szolgáltató (IaaS) munkaterhelések, például az Azure virtuális gépeken is védheti.
+Infrastruktúra-szolgáltatás (IaaS) számítási feladatok, például az Azure-beli virtuális gépek, is védheti.
 
 > [!NOTE]
-> Azure az erőforrások létrehozására és kezelésére két üzembe helyezési modellel rendelkezik: [Resource Manager és klasszikus](../azure-resource-manager/resource-manager-deployment-model.md). Ez a cikk ismerteti, a telepített, a Resource Manager modellt használó virtuális gépek visszaállítására.
+> Az Azure az erőforrások létrehozásához és használatához két üzembe helyezési modellel rendelkezik: [Resource Manager és klasszikus](../azure-resource-manager/resource-manager-deployment-model.md). A cikk a Resource Manager modellel üzembe helyezett virtuális gépek visszaállításához információkat és eljárásokat ismerteti.
 >
 >
 
-Az Azure Backup Server örökli nagy részét a munkaterhelés biztonsági mentési funkció a Data Protection Manager (DPM). Ez a cikk a DPM dokumentációjának ismertetnek néhányat az megosztott funkciókat mutató hivatkozásokat tartalmaz. Azure Backup Server, ha nagy része megegyezik a DPM funkcióval megosztja. Az Azure Backup-kiszolgáló nem a szalagra történő biztonsági mentése, és nem integrálható a System Center.
+Az Azure Backup Server a Data Protection Manager (DPM) örökli a számítási feladatok biztonsági funkciók. Ez a cikk a DPM dokumentációjának ismertetnek néhányat a megosztott funkciót hivatkozásokat tartalmaz. Bár az Azure Backup Server fájlmegosztások szinte ugyanazokat a funkciókat biztosítja, mint a DPM. Az Azure Backup Server nem létezik a szalagra történő biztonsági mentése, és nem integrálható a System Centerrel.
 
 ## <a name="choose-an-installation-platform"></a>Válasszon egy telepítési platform
-Az első lépés az Azure Backup Server használatba felé, hogy állítson be egy Windows Server. A kiszolgáló Azure vagy a helyszíni lehet.
+Az Azure Backup Server és az első lépést, hogy állítsa be a Windows Server. A kiszolgáló Azure-ban vagy a helyszínen is lehet.
 
 ### <a name="using-a-server-in-azure"></a>Az Azure-kiszolgáló használatával
-Egy Azure Backup Servert futtató kiszolgáló kiválasztásakor ajánlott a kiindulási pont egy Windows Server 2012 R2 Datacenter vagy a Windows Server 2016 Datacenter gyűjtemény képe. A cikk [az első Windows rendszerű virtuális gép létrehozása az Azure portálon](../virtual-machines/virtual-machines-windows-hero-tutorial.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json), nyújt segítséget Ismerkedés az Azure, az ajánlott virtuális gép még akkor is, ha soha nem használta az Azure-t. A virtuális gép (VM) ajánlott minimális követelményei kell lennie: A2 szabványosnak kétmagos processzor és 3.5-ös GB RAM-MAL.
+Ha a kiszolgáló Azure Backup Server futtatásához, ajánlott a katalógus-lemezkép a Windows Server 2012 R2 Datacenter vagy a Windows Server 2016 Datacenter megkezdése. A cikk [az első Windows virtuális gép létrehozása az Azure Portalon](../virtual-machines/virtual-machines-windows-hero-tutorial.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json), nyújt segítséget a javasolt virtuális gép az Azure-ban – első lépések akkor is, ha soha nem használta az Azure-t. A kiszolgáló virtuális gép (VM) vonatkozó ajánlott minimális követelményeknek kell: két maggal és 3,5 GB RAM-MAL rendelkező Standard A2.
 
-Sok apró munkaterhelések védelme a Azure Backup Server rendelkezik. A cikk [DPM telepítése Azure virtuális gépként](https://technet.microsoft.com/library/jj852163.aspx), segítséget nyújt a apró ismertetik. A gép történő telepítése előtt olvassa el ebben a cikkben teljesen.
+Az Azure Backup Server számítási feladatok védelmét már sok apró sajátosságaival. A cikk [DPM telepítése Azure virtuális gépként](https://technet.microsoft.com/library/jj852163.aspx), segít ismertetik ezeket a vállalatánál. A gép üzembe helyezése előtt olvassa el ebben a cikkben teljesen.
 
-### <a name="using-an-on-premises-server"></a>A helyszíni kiszolgáló használata
-Ha nem szeretné, hogy az Azure-ban az alap server futtatásához, a kiszolgáló futtathatja a Hyper-V virtuális gépek, VMware virtuális gép vagy egy fizikai gazdagéphez. A Kiszolgálóhardver ajánlott minimális követelményei, kétmagos processzor és 4 GB RAM-MAL. A támogatott operációs rendszerek a következő táblázatban láthatók:
+### <a name="using-an-on-premises-server"></a>Egy helyszíni kiszolgáló használatával
+Ha nem szeretné, hogy a kiszolgáló futtatása az Azure-ban, a Hyper-V virtuális gépek, VMware virtuális gép vagy egy fizikai gazdagép futtathatja a kiszolgálón. A kiszolgáló hardveres ajánlott minimális követelményei, kétmagos processzor és 4 GB RAM-MAL. Az alábbi táblázatban felsorolt támogatott operációs rendszerek:
 
 | Operációs rendszer | Platform | SKU |
 |:--- | --- |:--- |
-| Windows Server 2016 és a legújabb szervizcsomag-verzió |64 bit |Standard, Datacenter, Essentials (MABS v2 onwards) |
+| A Windows Server 2016 és a legújabb szervizcsomagok |64 bit |Standard, Datacenter, Essentials (MABS v2 onwards) |
 | Windows Server 2012 R2 és a legújabb szervizcsomagok |64 bit |Standard, Datacenter, Foundation |
 | Windows Server 2012 és a legújabb szervizcsomagok |64 bit |Datacenter, Foundation, Standard |
 | Windows Storage Server 2012 R2 és a legújabb szervizcsomagok |64 bit |Standard, Workgroup |
 | Windows Storage Server 2012 és a legújabb szervizcsomagok |64 bit |Standard, Workgroup |
 
-A DPM-tároló, a Windows Server deduplikálásával is deduplikálása. További tudnivalók [DPM és deduplikáció](https://technet.microsoft.com/library/dn891438.aspx) együttműködése a Hyper-V virtuális gépek telepítésekor.
+A DPM-tároló használata a Windows Server Adatdeduplikáció deduplikálhatja. Tudjon meg többet [DPM és deduplikáció](https://technet.microsoft.com/library/dn891438.aspx) együttműködése a Hyper-V virtuális gépek üzembe helyezésekor.
 
 > [!NOTE]
-> Az Azure Backup Server futtatásra tervezték, egy dedikált, meghatározott célú kiszolgálón. Az Azure Backup Server nem telepíthető:
+> Az Azure Backup Server dedikált, meghatározott célú kiszolgálókén történő futtatásra tervezték. Az Azure Backup Server nem telepíthető:
 > - Tartományvezérlőként futó számítógépre
 > - Olyan számítógépre, amelyen telepítve van az Alkalmazáskiszolgáló szerepkör
 > - Olyan számítógépre, amely System Center Operations Manager felügyeleti kiszolgálóként működik
 > - Olyan számítógépre, amelyen az Exchange Server fut
 > - Olyan számítógépre, amely fürtcsomópontként működik
 
-Azure Backup Server mindig csatlakoztatása a tartományhoz. Ha a kiszolgáló egy másik tartományba helyezi át, először telepítse az Azure Backup Server, majd csatlakoztassa a kiszolgálót az új tartományhoz. Egy meglévő Azure Backup Server gépet áthelyezése egy új tartományba, telepítés *nem támogatott*.
+Az Azure Backup Server mindig csatlakoztatása a tartományhoz. Ha azt tervezi, a kiszolgáló áthelyezése egy másik tartományba, először telepítse az Azure Backup Server, majd csatlakoztassa a kiszolgálót az új tartományhoz. Egy Azure Backup Server meglévő gépre áthelyezése másik tartományba, üzembe helyezés után *nem támogatott*.
 
-Biztonsági mentési adatok küldése az Azure-ba, vagy helyileg legyen, hogy a helykiszolgáló biztonsági mentése Azure szerepelnie kell a Recovery Services-tároló.
+Biztonsági mentési adatokat küldjön az Azure-ba, vagy helyileg tárolja, hogy az Azure Backup Server regisztrálva kell lennie egy Recovery Services-tárolót.
 
 [!INCLUDE [backup-create-rs-vault.md](../../includes/backup-create-rs-vault.md)]
 
 ### <a name="set-storage-replication"></a>Tárreplikáció beállítása
-A tárreplikáció lehetősége lehetővé teszi, hogy georedundáns tárolás és helyileg redundáns tárolás között válasszon. Alapértelmezés szerint a Recovery Services-tárolók georedundáns tárolás használata. Ha ebben a tárolóban a elsődleges tároló, hagyja a tárolási beállítást, a georedundáns tárolást. Ha egy olcsóbb, rövidebb élettartamú megoldást szeretne, válassza a helyileg redundáns tárolást. A [georedundáns](../storage/common/storage-redundancy-grs.md) és a [helyileg redundáns](../storage/common/storage-redundancy-lrs.md) tárolási lehetőségekről többet olvashat az [Azure tárreplikáció áttekintése](../storage/common/storage-redundancy.md) című cikkben.
+A tárreplikáció lehetősége lehetővé teszi, hogy georedundáns tárolás és helyileg redundáns tárolás között válasszon. Alapértelmezés szerint a Recovery Services-tárolók használata a georedundáns tárolás. Ha ebben a tárban a elsődleges tároló, hagyja a beállítást georedundáns tárolás beállítása. Ha egy olcsóbb, rövidebb élettartamú megoldást szeretne, válassza a helyileg redundáns tárolást. A [georedundáns](../storage/common/storage-redundancy-grs.md) és a [helyileg redundáns](../storage/common/storage-redundancy-lrs.md) tárolási lehetőségekről többet olvashat az [Azure tárreplikáció áttekintése](../storage/common/storage-redundancy.md) című cikkben.
 
 A tárreplikációs beállítás szerkesztése:
 
-1. Válassza ki a tároló, a tároló irányítópult és a beállítások menü megnyitásához. Ha a **beállítások** menü nem nyitható meg **összes beállítás** a tároló irányítópultjának.
-2. A a **beállítások** menüben kattintson a **biztonsági infrastruktúra** > **biztonsági mentési konfigurációhoz** megnyitásához a **biztonsági mentési konfigurációhoz**panelen. Az a **biztonsági mentési konfigurációhoz** menüben válassza ki a tárolási replikációs beállítás a tároló számára.
+1. Válassza ki a tárolót, a tároló irányítópultját és a beállítások menü megnyitásához. Ha a **beállítások** menü nem nyílik meg, kattintson a **minden beállítás** a tároló irányítópultján.
+2. Az a **beállítások** menüben kattintson a **biztonsági mentési infrastruktúra** > **biztonsági mentés konfigurációja** megnyitásához a **biztonsági mentés konfigurációja**panelen. Az a **biztonsági mentés konfigurációja** menüben válassza ki a tárolóreplikációs beállítást a tároló számára.
 
     ![A Backup-tárolók listája](./media/backup-azure-vms-first-look-arm/choose-storage-configuration-rs-vault.png)
 
     Miután kiválasztotta a tárolási beállítást a tároló számára, készen áll, hogy hozzárendelje a virtuális gépet a tárolóhoz. A hozzárendelés megkezdéséhez fel kell fedezni és regisztrálni kell az Azure virtuális gépeket.
 
-## <a name="software-package"></a>Szoftvercsomag
+## <a name="software-package"></a>Szoftverfrissítési csomag
 ### <a name="downloading-the-software-package"></a>A csomag letöltése
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
-2. Ha már rendelkezik egy Recovery Services-tároló nyitva, folytassa a 3. Ha nem rendelkezik a Recovery Services-tároló nyílt, de az Azure portálon, a főmenü kattintson **Tallózás**.
+2. Ha már rendelkezik egy Recovery Services-tároló nyílt, folytassa a 3. lépés. Ha nem rendelkezik egy Recovery Services-tároló nyílt, de az Azure Portal, a főmenü **Tallózás**.
 
    * Az erőforrások listájába írja be a következőt: **Recovery Services**.
    * Ahogy elkezd gépelni, a lista a beírtak alapján szűri a lehetőségeket. Amikor meglátja a **Recovery Services-tárolót**, kattintson rá.
@@ -102,44 +102,44 @@ A tárreplikációs beállítás szerkesztése:
      Megnyílik a kiválasztott tároló irányítópultja.
 
      ![Tároló panelének megnyitása](./media/backup-azure-microsoft-azure-backup/vault-dashboard.png)
-3. A **beállítások** alapértelmezés szerint megnyílik panelen. Ha be van zárva, kattintson a **beállítások** beállítások panel megnyitásához.
+3. A **beállítások** panel alapértelmezés szerint megnyílik. Ha be van zárva, kattintson a **beállítások** a beállítások panel megnyitásához.
 
     ![Tároló panelének megnyitása](./media/backup-azure-microsoft-azure-backup/vault-setting.png)
-4. Kattintson a **biztonsági mentés** az első lépések varázsló megnyitásához.
+4. Kattintson a **Backup** az első lépések varázsló megnyitásához.
 
     ![Biztonsági mentés első lépések](./media/backup-azure-microsoft-azure-backup/getting-started-backup.png)
 
-    Az a **Ismerkedés a biztonsági mentés** panelt megnyitó, **biztonsági mentési célok** lesz automatikusan kiválasztva.
+    Az a **Ismerkedés a biztonsági mentés** a megnyíló panelen **mentési cél használatát** lesz automatikusan kiválasztva.
 
     ![Backup-goals-default-opened](./media/backup-azure-microsoft-azure-backup/getting-started.png)
 
-5. Az a **biztonsági mentési cél** panelen a a **a számítási feladatok futtató** menüjében válassza **helyszíni**.
+5. Az a **biztonsági mentés célja** panelen, a **a számítási feladat futtató** menüben válassza **helyszíni**.
 
-    ![a helyszíni és a munkaterhelések célok](./media/backup-azure-microsoft-azure-backup/backup-goals-azure-backup-server.png)
+    ![a helyszíni és a célokat, számítási feladatok](./media/backup-azure-microsoft-azure-backup/backup-goals-azure-backup-server.png)
 
-    Az a **miről szeretne biztonsági másolatot készíteni?** legördülő menüben válassza ki az Azure Backup Server használatával védeni kívánt munkaterhelések, és kattintson **OK**.
+    Az a **miről szeretne biztonsági másolatot készíteni?** legördülő menüben válassza ki az Azure Backup Server használatával védeni kívánt számítási feladatokat, és kattintson **OK**.
 
-    A **Ismerkedés a biztonsági mentés** varázsló kapcsolók a **infrastruktúra előkészítése** beállítással-munkaterhelések biztonsági mentése az Azure-bA.
+    A **Ismerkedés a biztonsági mentés** varázsló kapcsolók a **infrastruktúra előkészítése** beállítás számítási feladatainak biztonsági mentéséhez az Azure-bA.
 
    > [!NOTE]
-   > Ha szeretné fájlok és mappák biztonsági mentése, ajánlott az Azure Backup-ügynök használatával, és a cikk útmutatása [először: fájlok és mappák biztonsági mentését](backup-try-azure-backup-in-10-mins.md). Ha több, mint a fájlokat és mappákat védeni kívánja, vagy a jövőben bontsa ki a védelmi igényeinek szeretne, válassza ki azokat a munkaterheléseket.
+   > Ha azt szeretné, hogy csak a fájlok és mappák biztonsági mentése, javasoljuk, hogy az Azure Backup ügynök használatával, és az-cikkben szereplő útmutatást [áttekintés: fájlok és mappák biztonsági mentése](backup-try-azure-backup-in-10-mins.md). Ha több, mint a fájlokat és mappákat védeni kívánja, vagy bontsa ki az adatvédelmi igényeket a jövőben tervez, válassza ki azokat a munkaterheléseket.
    >
    >
 
     ![Első lépések varázsló módosítása](./media/backup-azure-microsoft-azure-backup/getting-started-prep-infra.png)
 
-6. Az a **infrastruktúra előkészítése** panelen kattintson a **letöltése** Azure Backup Server telepítése és a letöltési tárolói hitelesítő adatokat. A recovery services-tároló az Azure Backup Server regisztráció során a tárolói hitelesítő adatokat használja. A hivatkozások a letöltőközpontból, amelyben a szoftvercsomag tölthető le.
+6. Az a **infrastruktúra előkészítése** panelen kattintson a **letöltése** mutató hivatkozásokat az Azure Backup Server telepítése és a letöltés a tároló hitelesítő adatai. A tároló hitelesítő adatait használja az Azure Backup Server a helyreállítási tárban való regisztrálása során. A hivatkozásokra kattintva a letöltőközpontból, amelyben a szoftvercsomag tölthető le.
 
-    ![Az Azure Backup Server infrastruktúra előkészítése](./media/backup-azure-microsoft-azure-backup/azure-backup-server-prep-infra.png)
+    ![Azure Backup Server infrastruktúra előkészítése](./media/backup-azure-microsoft-azure-backup/azure-backup-server-prep-infra.png)
 
-7. Válassza ki a fájlokat, és kattintson a **következő**. Töltse le a Microsoft Azure Backup letöltési oldala érkező összes fájlt, és a fájlokat helyezze ugyanabba a mappába.
+7. Válassza ki az összes fájlt, és kattintson a **tovább**. Töltse le a Microsoft Azure Backup letöltési oldalról érkező összes fájlt, és helyezze el az összes fájlt ugyanabba a mappába.
 
-    ![A letöltőközpontból 1](./media/backup-azure-microsoft-azure-backup/downloadcenter.png)
+    ![1. letöltőközpontból](./media/backup-azure-microsoft-azure-backup/downloadcenter.png)
 
-    Mivel a fájlok letöltési mérete nem haladhatja meg > 3G, a 10 MB/s le hivatkozást a letöltés befejezéséhez legfeljebb 60 percig is eltarthat.
+    Minden a fájlok letöltési mérete nem haladhatja meg a > 3G, mivel a 10 MB/s letöltése hivatkozásra a letöltés befejezéséhez legfeljebb 60 percig is tarthat.
 
-### <a name="extracting-the-software-package"></a>A csomag kibontása
-A fájlok letöltése után kattintson **MicrosoftAzureBackupInstaller.exe**. Ekkor elindul a **Microsoft Azure biztonsági mentés telepítővarázsló** kibontásához a telepítési fájlokat, Ön által meghatározott helyre. Kövesse a varázsló lépéseit, majd kattintson a a **kibontása** gombra a kinyerési folyamat megkezdéséhez.
+### <a name="extracting-the-software-package"></a>A szoftverfrissítési csomag kicsomagolásához használt
+Minden fájl letöltése után kattintson a **MicrosoftAzureBackupInstaller.exe**. Ekkor elindul a **a Microsoft Azure Backup telepítővarázsló** kibontani a telepítőfájlokat egy Ön által megadott helyre. Kövesse a varázsló lépéseit, majd kattintson a a **kinyerése** gomb a kinyerési folyamat megkezdéséhez.
 
 > [!WARNING]
 > Bontsa ki a telepítési fájlok legalább 4GB szabad lemezterület szükséges.
@@ -148,105 +148,105 @@ A fájlok letöltése után kattintson **MicrosoftAzureBackupInstaller.exe**. Ek
 
 ![A Microsoft Azure biztonsági mentési beállítása varázsló](./media/backup-azure-microsoft-azure-backup/extract/03.png)
 
-Ha a kinyerési folyamat befejeződött, a jelölőnégyzet bejelölésével indítsa el a kibontott frissen *setup.exe* elindítja a Microsoft Azure Backup Server telepítése, és kattintson a a **Befejezés** gombra.
+Miután a kinyerési folyamat befejezése után, jelölje be a jelölőnégyzetet, elindíthatja a frissen kinyert *setup.exe* megkezdése a Microsoft Azure Backup Server telepítése, és kattintson a a **Befejezés** gombra.
 
-### <a name="installing-the-software-package"></a>A csomag telepítése
-1. Kattintson a **a Microsoft Azure Backup szolgáltatás** a telepítő varázsló elindításához.
+### <a name="installing-the-software-package"></a>A szoftverfrissítési csomag telepítése
+1. Kattintson a **a Microsoft Azure Backup** a telepítővarázsló elindításához.
 
     ![A Microsoft Azure biztonsági mentési beállítása varázsló](./media/backup-azure-microsoft-azure-backup/launch-screen2.png)
-2. Az üdvözlőképernyőn kattintson a **következő** gombra. Ehhez szükséges, hogy a *előfeltételek ellenőrzésének* szakasz. Ezen a képernyőn kattintson a **ellenőrizze** meghatározni, ha az Azure Backup Server hardver- és előfeltételek teljesülnek. Ha minden előfeltétele sikeresen, látni fogja egy üzenet, amely azt jelzi, hogy a gép megfelel-e a követelményeknek. Kattintson a **következő** gombra.
+2. Az üdvözlőképernyőn kattintson a **tovább** gombra. Ezzel továbblép a *előfeltétel-ellenőrzési* szakaszban. Ezen a képernyőn kattintson a **ellenőrizze** meghatározni, ha a hardver- és az Azure Backup Server teljesült. Ha minden előfeltétel a sikeresen teljesül, látni fogja a egy üzenet jelzi, hogy a gép megfelel-e a követelményeknek. Kattintson a **tovább** gombra.
 
-    ![Az Azure Backup Server - üdvözlő és az Előfeltételek ellenőrzése](./media/backup-azure-microsoft-azure-backup/prereq/prereq-screen2.png)
-3. Microsoft Azure Backup Server szükséges SQL Server Standard. További az Azure Backup Server telepítési csomag részeként elérhető csomagolt a megfelelő SQL Server bináris fájljait, akkor szükséges, ha nem szeretné használni a saját SQL. Egy új Azure Backup Server telepítésének indításakor ki kell választania a beállítás **ezzel a beállítással új SQL Server-példány telepítése** , és kattintson a **ellenőrzés és telepítés** gombra. Ha az előfeltételek telepítése sikeresen megtörtént, kattintson **következő**.
+    ![Az Azure Backup Server – Üdvözöljük és az Előfeltételek ellenőrzése](./media/backup-azure-microsoft-azure-backup/prereq/prereq-screen2.png)
+3. A Microsoft Azure Backup Server szükséges SQL Server Standard. Az Azure Backup Server-telepítési csomag emellett tartalmaz csomagolt a megfelelő SQL Server bináris fájlokat, akkor szükséges, ha nem szeretné használni a saját SQL. -Es verziótól kezdve egy új Azure Backup Server telepítése során ki kell választania a beállítás **ezzel a beállítással új SQL Server-példány telepítése** , és kattintson a **ellenőrzés és telepítés** gombra. Ha az előfeltételek telepítése sikeresen megtörtént, kattintson **tovább**.
 
-    ![Az Azure Backup Server - SQL ellenőrzése](./media/backup-azure-microsoft-azure-backup/sql/01.png)
+    ![Az Azure Backup Server – SQL ellenőrzése](./media/backup-azure-microsoft-azure-backup/sql/01.png)
 
-    Ha hiba lép fel, indítsa újra a gépet ajánlás, ehhez, és kattintson az **ellenőrizze újra**.
-
-   > [!NOTE]
-   > Az Azure Backup Server egy távoli SQL Server-példány nem fog működni. Az Azure Backup Server által használt példány kell elhelyezkednie.
-   >
-   >
-4. Adjon meg egy helyet, a Microsoft Azure Backup server fájlok telepítéséhez, majd kattintson **következő**.
-
-    ![A Microsoft Azure biztonsági mentési PreReq2](./media/backup-azure-microsoft-azure-backup/space-screen.png)
-
-    Az ideiglenes helyen történő biztonsági mentés Azure feltétele. Győződjön meg arról, az ideiglenes helye az adatok biztonsági mentése a felhőbe tervezett legalább 5 %-át. A lemezvédelem különálló lemezek be kell állítani a telepítés befejeződése után. Tárolókészletek kapcsolatos további információkért lásd: [tárolókészletek konfigurálása és a lemezes tárolás](https://technet.microsoft.com/library/hh758075.aspx).
-5. Adjon meg egy erős jelszót a korlátozott helyi felhasználói fiókokhoz, és kattintson a **következő**.
-
-    ![A Microsoft Azure biztonsági mentési PreReq2](./media/backup-azure-microsoft-azure-backup/security-screen.png)
-6. Adja meg, hogy a használni kívánt *Microsoft Update* frissítések keresését, és kattintson a **következő**.
+    Ha hiba történik, a javaslatra kattintva indítsa újra a gépet, ehhez, és kattintson a **újbóli ellenőrzés**.
 
    > [!NOTE]
-   > Javasoljuk, a Windows Update, Microsoft Update szolgáltatásban, ami biztonsági és fontos frissítéseket kínál a Windowshoz és más termékek, például a Microsoft Azure Backup Server átirányítása.
+   > Az Azure Backup Server nem működik a távoli SQL Server-példányt. Az Azure Backup Server által használt példány kell lennie a helyi.
+   >
+   >
+4. A Microsoft Azure Backup server-fájlok a telepítés helyét adja meg, és kattintson a **tovább**.
+
+    ![A Microsoft Azure Backup PreReq2](./media/backup-azure-microsoft-azure-backup/space-screen.png)
+
+    Az ideiglenes hely esetében történő biztonsági mentés Azure követelmény. Győződjön meg arról, az ideiglenes hely az adatok biztonsági mentése a felhőre tervezett legalább 5 %-át. A lemezvédelem különböző lemezen a telepítés befejezése után konfigurálni kell. Tárolókészletek kapcsolatos további információkért lásd: [konfigurálhatók a tárolókészletek és a lemezes tárolás](https://technet.microsoft.com/library/hh758075.aspx).
+5. Adjon meg egy erős jelszót a korlátozott helyi felhasználói fiókokhoz, és kattintson a **tovább**.
+
+    ![A Microsoft Azure Backup PreReq2](./media/backup-azure-microsoft-azure-backup/security-screen.png)
+6. Válassza ki, hogy a használni kívánt *Microsoft Update* keressen frissítéseket, és kattintson a **tovább**.
+
+   > [!NOTE]
+   > Javasoljuk, hogy a Windows Update átirányítása a Microsoft Update szolgáltatásban, amely a biztonsági és fontos frissítéseket kínál a Windows- és egyéb termékek, mint a Microsoft Azure Backup Server.
    >
    >
 
-    ![A Microsoft Azure biztonsági mentési PreReq2](./media/backup-azure-microsoft-azure-backup/update-opt-screen2.png)
-7. Tekintse át a *összegzése a beállítások* kattintson **telepítése**.
+    ![A Microsoft Azure Backup PreReq2](./media/backup-azure-microsoft-azure-backup/update-opt-screen2.png)
+7. Tekintse át a *beállítások összefoglalása* kattintson **telepítése**.
 
-    ![A Microsoft Azure biztonsági mentési PreReq2](./media/backup-azure-microsoft-azure-backup/summary-screen.png)
-8. A telepítési fázisban történik. Az első fázisban a Microsoft Azure Recovery Services Agent telepítve van a kiszolgálón. A varázsló is ellenőrzi az internetkapcsolat. Ha internetkapcsolat érhető el nyugodtan folytathatja a telepítést, ha nem, meg kell adnia a proxy adatait, az internethez való kapcsolódáshoz.
+    ![A Microsoft Azure Backup PreReq2](./media/backup-azure-microsoft-azure-backup/summary-screen.png)
+8. A telepítés ciklusokban történik. Az első szakaszban a Microsoft Azure Recovery Services Agent telepítve van a kiszolgálón. A varázsló internetkapcsolattal is keres. Ha érhető el internetkapcsolat folytathatja a telepítést, ha nem, meg kell adnia a proxy adatait az internethez való kapcsolódáshoz.
 
-    A következő lépés, hogy a Microsoft Azure Recovery Services Agent konfigurálása. A konfigurálás részeként meg kell adnia a tárolói hitelesítő adatokat regisztrálni a gépet, hogy a recovery services-tároló. Az Azure és a helyszínen között küldött adatok titkosításához/visszafejtéséhez egy hozzáférési kódot is biztosítja. Automatikusan egy hozzáférési kódot létrehozni, vagy adja meg a saját legalább 16 karakterből álló jelszót. A varázsló folytatásához, amíg az ügynök nincs konfigurálva.
+    A következő lépés, hogy a Microsoft Azure Recovery Services Agent konfigurálása. A konfiguráció részeként akkor a tároló hitelesítő adatokat a gépet a helyreállítási tárban való regisztrálásához. Meg fog adni egy jelszót az adatok Azure-ban és a helyszíni eredetű között küldött titkosítási/visszafejtési. Automatikusan hozzon létre egy hozzáférési kódot, vagy adjon meg a saját legalább 16 karakterből álló jelszót. A varázsló folytatásához, amíg az ügynök úgy van beállítva.
 
     ![Az Azure biztonsági mentési Serer PreReq2](./media/backup-azure-microsoft-azure-backup/mars/04.png)
-9. Miután a Microsoft Azure Backup-kiszolgáló regisztrálása sikeresen befejeződött, a teljes telepítővarázsló onnantól telepítésével és konfigurálásával, az SQL Server és az Azure Backup Server-összetevőt. Az SQL Server-összetevő telepítése után az Azure biztonsági mentés kiszolgáló-összetevők telepítve vannak.
+9. Miután a Microsoft Azure Backup-kiszolgáló regisztrálása sikeresen befejeződött, a varázsló általános abból telepítését és konfigurációját az SQL Server és az Azure Backup Server összetevőket. Miután az SQL Server-összetevő telepítése befejeződött, az Azure Backup Server ezeket az összetevőket.
 
     ![Azure Backup Server](./media/backup-azure-microsoft-azure-backup/final-install/venus-installation-screen.png)
 
-A telepítési lépés befejezése után a termék asztali ikonok lesz létrehozva is. Csak az ikonra duplán kattintva indítsa el a terméket.
+A telepítési lépés befejezése után a termék asztali ikonok létrejön is. Csak az ikonra duplán kattintva indítsa el a termék.
 
-### <a name="add-backup-storage"></a>Biztonsági mentési tároló hozzáadása
-Az első biztonsági másolat tárhely az Azure Backup Server géphez csatolt tárhelyen tárolnia. Lemezek hozzáadásával kapcsolatos további információkért lásd: [tárolókészletek konfigurálása és a lemezes tárolás](https://technet.microsoft.com/library/hh758075.aspx).
+### <a name="add-backup-storage"></a>Backup storage hozzáadása
+Az első biztonsági másolat az Azure Backup Server géphez csatolt storage másolatok. Lemezek hozzáadásával kapcsolatos további információkért lásd: [konfigurálhatók a tárolókészletek és a lemezes tárolás](https://technet.microsoft.com/library/hh758075.aspx).
 
 > [!NOTE]
-> Kell hozzáadnia a biztonságimásolat-tároláshoz, akkor is, ha azt tervezi, hogy az adatok küldése az Azure-bA. Az Azure Backup Server aktuális architektúra, az Azure mentési tároló tartalmazza a *második* a helyi tároló közben az adatok másolatát tartalmazza az első (és kötelező) biztonsági másolatot.
+> Adja hozzá a biztonsági mentési tár, még akkor is, ha azt tervezi, hogy adatokat küldjön az Azure-bA kell. Az Azure Backup Server aktuális architektúra, az Azure Backup-tároló tárolja a *második* közben a helyi tárhely az adatok másolatát tárolja az első (és kötelező) a biztonsági másolat.
 >
 >
 
 ## <a name="network-connectivity"></a>Hálózati kapcsolat
-Az Azure Backup Server esetén az Azure Backup szolgáltatás a termék sikeres működéséhez kapcsolat szükséges. Hogy a számítógép rendelkezik-e az Azure-bA kapcsolattal érvényesítéséhez használja a ```Get-DPMCloudConnection``` parancsmag az Azure Backup Server PowerShell-konzolban. Ha a parancsmag kimenete értéke igaz, akkor van kapcsolat, ellenkező esetben nincs kapcsolat.
+Az Azure Backup Server az Azure Backup szolgáltatás a termék sikeres működéséhez kapcsolat szükséges. Ellenőrizze, hogy a gépe képes az Azure-ba, használja a ```Get-DPMCloudConnection``` parancsmagot az Azure Backup Server PowerShell-konzolon. Ha a parancsmag kimenete értéke igaz, akkor a kapcsolat létezik, ellenkező esetben nincs kapcsolat.
 
-Egy időben az Azure-előfizetést kell lennie állapota kifogástalan. Az előfizetés állapotának megállapítása és a kezeléséhez jelentkezzen be a [előfizetés portal](https://account.windowsazure.com/Subscriptions).
+Egy időben az Azure-előfizetést kell lennie a kifogástalan állapotban. Ismerje meg, az előfizetés állapotát, és a felügyelet, jelentkezzen be a [előfizetési portálra](https://account.windowsazure.com/Subscriptions).
 
-Miután eldöntötte, hogy az Azure-előfizetés és Azure kapcsolat állapotát, az alábbi táblázat segítségével megtudhatja, milyen hatással a biztonsági mentés/visszaállítás funkciói.
+Ha már tudja, hogy az állapot, az Azure-kapcsolat és az Azure-előfizetést, az alábbi táblázat segítségével ismerje meg, hogy a művelet hatása a biztonsági mentési és visszaállítási funkció érhető el.
 
-| Kapcsolati állapota | Azure-előfizetés | Azure biztonsági mentés | Biztonsági mentés lemezre | Állítsa vissza az Azure-ból | Állítsa vissza a lemezről |
+| Kapcsolati állapota | Azure-előfizetés | Azure biztonsági mentés | Biztonsági mentés lemezre | Állítsa vissza az Azure-ból | Lemez visszaállítása |
 | --- | --- | --- | --- | --- | --- |
 | Csatlakozva |Aktív |Engedélyezve |Engedélyezve |Engedélyezve |Engedélyezve |
 | Csatlakozva |Elévült |Leállítva |Leállítva |Engedélyezve |Engedélyezve |
-| Csatlakozva |Platformelőfizetés |Leállítva |Leállítva |Leállított és az Azure helyreállítási pontjainak törlése |Leállítva |
-| Elveszett kapcsolat > 15 nap |Aktív |Leállítva |Leállítva |Engedélyezve |Engedélyezve |
-| Elveszett kapcsolat > 15 nap |Elévült |Leállítva |Leállítva |Engedélyezve |Engedélyezve |
-| Elveszett kapcsolat > 15 nap |Platformelőfizetés |Leállítva |Leállítva |Leállított és az Azure helyreállítási pontjainak törlése |Leállítva |
+| Csatlakozva |– Figyelmeztetés megszüntetésről |Leállítva |Leállítva |A leállított és az Azure helyreállítási pontok törlése |Leállítva |
+| Kapcsolat > 15 napon keresztül |Aktív |Leállítva |Leállítva |Engedélyezve |Engedélyezve |
+| Kapcsolat > 15 napon keresztül |Elévült |Leállítva |Leállítva |Engedélyezve |Engedélyezve |
+| Kapcsolat > 15 napon keresztül |– Figyelmeztetés megszüntetésről |Leállítva |Leállítva |A leállított és az Azure helyreállítási pontok törlése |Leállítva |
 
-### <a name="recovering-from-loss-of-connectivity"></a>Végezze el a kapcsolat megszakadása
-Ha egy tűzfal vagy egy proxy, amely megakadályozza hozzáférés az Azure-ba, kell engedélyezett a következő tartomány címek a tűzfal /-proxy profil:
+### <a name="recovering-from-loss-of-connectivity"></a>A kapcsolat megszakadása helyreállítása
+Ha van egy tűzfal vagy proxy, amely megakadályozza, hogy hozzáférést az Azure-ba, szüksége, amelyeket engedélyezni kell a következő tartomány címeket, a tűzfal vagy proxy profil:
 
-* www.msftncsi.com
+* `http://www.msftncsi.com/ncsi.txt`
 * \*.Microsoft.com
 * \*.WindowsAzure.com
 * \*.microsoftonline.com
 * \*.windows.net
 
-Amennyiben a kapcsolat az Azure-bA az Azure Backup Server géphez visszaállítása sikeresen megtörtént, a végrehajtható műveletek az Azure-előfizetés állapota határozza meg. A fenti táblázatban engedélyezett, ha a számítógép "kapcsolódó" műveleteire vonatkozó részleteket tartalmaz.
+Miután a kapcsolat az Azure-bA az Azure Backup Server gép vissza lett állítva, a végrehajtható műveletek az Azure-előfizetés állapota határozza meg. A fenti táblázatban rendelkezik engedélyezett, ha a gép "csatlakoztatva" műveletek részleteit.
 
 ### <a name="handling-subscription-states"></a>– Előfizetési állapotok kezelése
-Lehetséges az Azure-előfizetés érvénybe egy *lejárt* vagy *Deprovisioned* állapotát a *aktív* állapotát. Azonban ez rendelkezik néhány hatással vannak a termék működését az állapot nem *aktív*:
+Az Azure-előfizetéssel is meg lehet egy *lejárt* vagy *megszüntetett* állapotát a *Active* állapota. Azonban ez rendelkezik néhány következmények a termék működését, amíg az állapota nem *aktív*:
 
-* A *Deprovisioned* előfizetés elveszti a funkció akkor van platformelőfizetés időszakra vonatkozóan. Forduljon a *aktív*, a szolgáltatások a biztonsági mentés/visszaállítás újjáélesztett van. A biztonsági mentési adatok a helyi lemezen is esetén lekérhetők tartották megfelelően nagy megőrzési időtartam. Azonban a biztonsági mentési adatok az Azure-ban végérvényesen elvesznek az előfizetés kerül, ha a *Deprovisioned* állapotát.
-* Egy *lejárt* előfizetés csak elveszíti funkcióját, amíg nem lett végrehajtva *aktív* újra. Bármely az időtartamot, ameddig az előfizetés az ütemezett biztonsági mentések *lejárt* nem fog futni.
+* A *megszüntetett* előfizetés elveszti a funkciót, a rendszer eltávolította a következő időszakra vonatkozóan. Bekapcsolása folyamatban lévő *aktív*, a termék biztonsági mentési és visszaállítási funkciójának újjáélesztett van. A biztonsági mentés a helyi lemezen lévő adatokat is lekérhetők Ha elég nagy megőrzési idővel rendelkező tartották. Azonban a biztonsági mentési adatok az Azure-ban végérvényesen elvesznek az előfizetés kerül, ha a *megszüntetett* állapota.
+* Egy *lejárt* előfizetés csak elveszíti a funkciót, amíg nem lett végrehajtva *aktív* újra. Bármely, az időszak, amely az előfizetés volt ütemezett biztonsági mentések *lejárt* nem fog futni.
 
 ## <a name="troubleshooting"></a>Hibaelhárítás
-Ha a Microsoft Azure Backup server hibákkal megszakad, miközben a telepítési fázis (vagy biztonsági mentési vagy visszaállítási), tekintse meg a [hiba kódok dokumentum](https://support.microsoft.com/kb/3041338) további információt.
-Azt is jelentheti [Azure biztonsági mentés kapcsolatos gyakori kérdések](backup-azure-backup-faq.md)
+Ha a Microsoft Azure Backup server hibákkal meghiúsul, a telepítési fázis (vagy biztonsági mentése és visszaállítása) során, tekintse meg a [hiba kódok dokumentum](https://support.microsoft.com/kb/3041338) további információt.
+Emellett olvassa el [Azure Backup kapcsolatos gyakori kérdések](backup-azure-backup-faq.md)
 
 ## <a name="next-steps"></a>További lépések
-Részletes információt kaphat a [a környezet előkészítése a DPM](https://technet.microsoft.com/library/hh758176.aspx) a Microsoft TechNet webhelyen. Támogatott konfigurációk, amelyen Azure Backup Server telepítése és használt adatait is tartalmazza.
+Részletes információkat szerezhet a [a környezet előkészítése a DPM](https://technet.microsoft.com/library/hh758176.aspx) a Microsoft TechNet webhelyen. Támogatott konfigurációk, amelyen az Azure Backup Server telepíthető és használható kapcsolatos információkat is tartalmaz.
 
-Ezek a cikkek segítségével egy mélyrehatóbb ismereteket szerezhet a munkaterhelések védelme a Microsoft Azure Backup server.
+Ezek a cikkek segítségével mélyebb betekintést nyerni a munkaterhelések védelme a Microsoft Azure Backup server használatával.
 
-* [SQL Server biztonsági másolat](backup-azure-backup-sql.md)
+* [Az SQL Server biztonsági másolat](backup-azure-backup-sql.md)
 * [A SharePoint server biztonsági másolat](backup-azure-backup-sharepoint.md)
-* [Alternatív kiszolgáló biztonsági mentése](backup-azure-alternate-dpm-server.md)
+* [Másodlagos kiszolgáló biztonsági mentése](backup-azure-alternate-dpm-server.md)

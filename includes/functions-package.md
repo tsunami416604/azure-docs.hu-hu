@@ -10,16 +10,16 @@ ms.date: 05/23/2018
 ms.author: tdykstra
 ms.custom: include file
 ms.openlocfilehash: 75be516dc3f23ee02638a6ca9981a6732b00e27a
-ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37063721"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38738915"
 ---
-Az alábbi táblázat ismerteti a kötés támogatásához minden egyes fejlesztői környezetben.
+Az alábbi táblázat bemutatja, hogyan lehet ezt a kötést támogatása hozzáadva minden fejlesztési környezetben.
 
 | Fejlesztési környezet               | A támogatás hozzáadása <br>Functions 1.x  |
 |----------------------|----------------|---------------|
-|Helyi fejlesztési - C# osztálytár       | [A csomag telepítése](../articles/azure-functions/functions-triggers-bindings.md#c-class-library-with-visual-studio-2017) | 
-|Helyi fejlesztési - C# parancsfájl, JavaScript, F # |Automatikus         |
-|Portál fejlesztési|  Automatikus    |
+|Helyi fejlesztés – C# osztálytár       | [A csomag telepítése](../articles/azure-functions/functions-triggers-bindings.md#c-class-library-with-visual-studio-2017) | 
+|Helyi fejlesztés – C#-szkript, JavaScript, F # |Automatikus         |
+|A fejlesztői portál|  Automatikus    |

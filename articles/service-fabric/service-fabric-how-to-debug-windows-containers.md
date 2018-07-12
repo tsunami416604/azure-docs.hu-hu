@@ -1,6 +1,6 @@
 ---
-title: Windows-tárolók a Service Fabric és a Visual STUDIO hibakeresési |} Microsoft Docs
-description: Útmutató a hibakereséshez a Windows Azure Service Fabric használatával a Visual Studio 2017 a tárolók.
+title: Windows-tárolókat Service Fabric és a VS hibakeresési |} A Microsoft Docs
+description: Megtudhatja, hogyan hibakeresése a Visual Studio 2017 használatával az Azure Service Fabric Windows-tárolók.
 services: service-fabric
 documentationcenter: .net
 author: mikkelhegn
@@ -13,72 +13,72 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 05/14/2018
 ms.author: mikhegn
-ms.openlocfilehash: bca33fe187668d38d4451b2de5b9e54d86e40ba9
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 437c38a8e674fcdf06e26a7191ceecef9d901470
+ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34655249"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38968320"
 ---
-# <a name="how-to-debug-windows-containers-in-azure-service-fabric-using-visual-studio-2017"></a>Útmutató: Windows tárolókat az Azure Service Fabric használatával a Visual Studio 2017 hibakeresése
+# <a name="how-to-debug-windows-containers-in-azure-service-fabric-using-visual-studio-2017"></a>Útmutató: Windows-tárolókhoz az Azure Service Fabric használatával a Visual Studio 2017 hibakeresése
 
-A Visual Studio 2017 frissítés 7 (15.7) a tárolókban lévő .NET-alkalmazások hibakeresését is a Service Fabric szolgáltatásként. Ez a cikk bemutatja, hogyan konfigurálja a környezetet, és ezután a futó helyi Service Fabric-fürt tároló .NET alkalmazások hibakeresése.
+A Visual Studio 2017 Update 7 (15.7) a tárolókban lévő .NET-alkalmazások, a Service Fabric-szolgáltatások is hibakeresési. Ez a cikk bemutatja, hogyan konfigurálja a környezetet, és ezután hibakeresése egy helyi Service Fabric-fürtön futó tárolóban lévő .NET-alkalmazás.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Windows 10, hajtsa végre ezt a gyors üzembe helyezés [konfigurálása Windows 10-es Windows tárolók futtatásához](https://docs.microsoft.com/en-us/virtualization/windowscontainers/quick-start/quick-start-windows-10)
-* A Windows Server 2016 hajtsa végre ezt a gyors üzembe helyezés [Windows 2016 konfigurálása a Windows-tárolók futtatásához](https://docs.microsoft.com/en-us/virtualization/windowscontainers/quick-start/quick-start-windows-server)
-* Állítsa be a helyi Service Fabric-környezetet a következő [Windows a fejlesztőkörnyezet előkészítése](https://docs.microsoft.com/en-us/azure/service-fabric/service-fabric-get-started)
+* A Windows 10-es, kövesse az ebben a rövid útmutatóban a [konfigurálása a Windows 10-es Windows-tárolók futtatásához](https://docs.microsoft.com/virtualization/windowscontainers/quick-start/quick-start-windows-10)
+* Windows Server 2016 rendszerben, kövesse az ebben a rövid útmutatóban a [Windows 2016 konfigurálása a Windows-tárolók futtatásához](https://docs.microsoft.com/virtualization/windowscontainers/quick-start/quick-start-windows-server)
+* A helyi Service Fabric-környezet beállítása a következő [a Windows fejlesztési környezet előkészítése](https://docs.microsoft.com/azure/service-fabric/service-fabric-get-started)
 
-## <a name="configure-your-developer-environment-to-debug-containers"></a>A fejlesztői környezet hibakeresési tárolók konfigurálása
+## <a name="configure-your-developer-environment-to-debug-containers"></a>Tárolók hibakeresése a fejlesztői környezet beállítása
 
-1. Ellenőrizze, hogy a Docker ablak szolgáltatás fut a következő lépés végrehajtása előtt.
+1. Győződjön meg arról, hogy a Docker ablak szolgáltatás fut-e a következő lépés végrehajtása előtt.
 
-1. DNS-feloldás tárolók közötti támogatásához akkor állíthatja be a helyi fejlesztési fürtöt, a számítógépnév használatával.
+1. Annak érdekében, hogy támogatja a DNS-feloldás tárolók között, akkor a helyi fejlesztési fürt beállításához a számítógépnevet használja.
     1. Rendszergazdaként nyissa meg PowerShell
-    1. Keresse meg a fürt SDK telepítési mappáját, általában `C:\Program Files\Microsoft SDKs\Service Fabric\ClusterSetup`
-    1. Futtassa a parancsfájlt `DevClusterSetup.ps1` paraméterrel `-UseMachineName`
+    1. Keresse meg a fürt SDK-telepítési mappa, általában `C:\Program Files\Microsoft SDKs\Service Fabric\ClusterSetup`
+    1. Futtassa a szkriptet `DevClusterSetup.ps1` paraméterrel `-UseMachineName`
 
     ``` PowerShell
       C:\Program Files\Microsoft SDKs\Service Fabric\ClusterSetup\DevClusterSetup.ps1 -UseMachineName
     ```
 
     > [!NOTE]
-    > Használhatja a `-CreateOneNodeCluster` beállítani egy egy csomópontos fürtre. Az alapértelmezett helyi öt csomópontból álló fürt hoz létre.
+    > Használhatja a `-CreateOneNodeCluster` , állítson be egy egycsomópontos fürtöt. Alapértelmezés szerint létrehoz egy helyi ötcsomópontos fürt.
     >
 
-    A DNS-szolgáltatás a Service Fabric kapcsolatos további információkért lásd: [DNS-szolgáltatás az Azure Service Fabric](https://docs.microsoft.com/en-us/azure/service-fabric/service-fabric-dnsservice).
+    A Service fabric DNS szolgáltatással kapcsolatos további tudnivalókért lásd: [DNS-szolgáltatás az Azure Service Fabric](https://docs.microsoft.com/azure/service-fabric/service-fabric-dnsservice).
 
-### <a name="known-limitations-when-debugging-containers-in-service-fabric"></a>Amikor a hibakeresést a Service Fabric a tárolók ismert korlátozásai
+### <a name="known-limitations-when-debugging-containers-in-service-fabric"></a>Tárolók Service Fabricben történő hibakeresése során ismert korlátozások
 
-Alább az ismert korlátozásai a Service Fabric és a lehetséges megoldások a hibakeresési tárolók listája:
+Alább az ismert korlátozások hibakeresési tárolók a Service Fabric és a lehetséges megoldások listája:
 
-* Localhost használ ClusterFQDNorIP nem támogatják az DNS-feloldás tárolókban lévő.
-    * Megoldás: A helyi gép nevét (lásd fent) használatával fürt beállítása
-* A virtuális gépen futó Windows10 nem kap vissza a tároló a DNS-válaszban.
-    * Megoldás: UDP ellenőrzőösszeg-kiszervezés a virtuális gépek hálózati adapter az IPv4 protokoll letiltása
-    * Megjegyzés: Ez csökkenti a hálózati teljesítmény a számítógépen.
+* Localhost ClusterFQDNorIP használatával nem támogatja DNS-feloldás tárolókban.
+    * Megoldás: A gép nevét (lásd fent) használatával helyi fürt beállítása
+* Egy virtuális gépen futó Windows 10-es nem kap vissza a tárolót a DNS-válaszban.
+    * Megoldás: UDP ellenőrzőösszeg-kiszervezés IPv4 a virtuális gépek hálózati Adapteren tiltsa le
+    * Ne feledje, ez csökkenti a hálózati teljesítmény a gépen.
     * https://github.com/Azure/service-fabric-issues/issues/1061
-* A DNS-sel az alkalmazás szolgáltatások feloldása szolgáltatásnév nem működik a Windows10, ha az alkalmazás lett telepítve, használja a Docker Compose
-    * Megoldás: Servicename.applicationname végpontok feloldásához használja.
+* Feloldása szolgáltatások DNS-sel ugyanazt az alkalmazást a szolgáltatásnév nem működik a Windows 10-es, ha az alkalmazás üzemel, a Docker Compose használatával
+    * Megoldás: A Szolgáltatásvégpontok megoldásához servicename.applicationname használja
     * https://github.com/Azure/service-fabric-issues/issues/1062
-* IP-cím ClusterFQDNorIP használja, ha a gazdagép elsődleges IP módosításakor megszakadnak DNS funkciót.
-    * Megoldás: Hozza létre újra a fürtöt a gazdagépen az új elsődleges IP-cím használatával, vagy használja a számítógép nevét. Ez az elvárt működés.
-* Ha a hozták létre a fürt FQDN nem oldható fel a hálózaton, a DNS sikertelen lesz.
-    * Megoldás: A helyi fürt elsődleges IP-címe a host használatával hozza létre. Ez az elvárt működés.
-* Egy tároló nyomkövetésére docker naplók csak akkor jelenik meg a Visual Studio kimeneti ablakában nem Service Fabric API-k segítségével, beleértve a Service Fabric Explorer
+* ClusterFQDNorIP IP-címet használja, ha a gazdagép elsődleges IP módosítása megszakítja a DNS-funkciók.
+    * Megoldás: Hozza létre újra a fürtöt az új elsődleges IP használata a gazdagépen, vagy használja a gép nevét. Ez az elvárt működés.
+* Ha a fürt létrejött, az FQDN nem oldható fel a hálózaton, a DNS sikertelen lesz.
+    * Megoldás: Hozza létre újra a helyi fürtöt, az elsődleges IP-címe a host használatával. Ez az elvárt működés.
+* Amikor hibakeresést egy tároló, docker-naplók csak akkor jelenik meg a Visual Studio kimeneti ablakában, nem Service Fabric API-kon keresztül, beleértve a Service Fabric Explorer
 
-## <a name="debug-a-net-application-running-in-docker-containers-on-service-fabric"></a>A Service Fabric docker-tárolókban lévő futó .NET alkalmazások hibakeresése
+## <a name="debug-a-net-application-running-in-docker-containers-on-service-fabric"></a>A Service Fabric docker-tárolókban futó .NET-alkalmazás hibakeresése
 
-1. Visual Studio futtassa rendszergazdaként.
+1. Futtassa a Visual Studiót rendszergazdaként.
 
-1. Nyisson meg egy létező .NET-alkalmazás, vagy hozzon létre egy újat.
+1. Nyissa meg a meglévő .NET-alkalmazás, vagy hozzon létre egy újat.
 
-1. Kattintson jobb gombbal a projektre, és válassza ki **Hozzáadás -> tároló Orchestrator támogatás -> Service Fabric**
+1. Kattintson a jobb gombbal a projektre, és válassza ki **Hozzáadás -> tároló az Orchestrator-támogatás a Service Fabric ->**
 
-1. Nyomja le az **F5** az alkalmazás hibakeresését végzi el.
+1. Nyomja meg **F5** az alkalmazás hibakeresésének elkezdéséhez.
 
-    Visual Studio .NET és a .NET Core konzol és az ASP.NET-projekt típusokat támogatja.
+    A Visual Studio támogatja a .NET és .NET Core konzol és az ASP.NET-projekt típusa.
 
 ## <a name="next-steps"></a>További lépések
-További információt a Service Fabric és a tárolók képességeit, a hivatkozásra: [Service Fabric-tárolók áttekintése](service-fabric-containers-overview.md).
+További információ ezekről a képességekről, a Service Fabric és a tárolók, a hivatkozásra: [a Service Fabric-tárolók áttekintése](service-fabric-containers-overview.md).

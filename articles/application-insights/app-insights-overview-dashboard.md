@@ -1,6 +1,6 @@
 ---
-title: Az Azure alkalmazás irányítópult – áttekintés |} Microsoft Docs
-description: Alkalmazások figyelése az Azure Application insights szolgáltatással és az áttekintő irányítópulthoz funkciókkal.
+title: Az Azure Application Insights áttekintő irányítópult |} A Microsoft Docs
+description: Alkalmazások figyelése az Azure Application Insights és irányítópultjának megnyitására funkciókat.
 services: application-insights
 documentationcenter: ''
 author: mrbullwinkle
@@ -11,61 +11,55 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 06/22/2018
+ms.date: 07/11/2018
 ms.author: mbullwin
-ms.openlocfilehash: 4a639b51fd930c5c74ee78b37fbe8e97e39dbc32
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: cf7c151121ddf8b2dc57d5db66a62f4d46e463de
+ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "36337561"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38970972"
 ---
-# <a name="application-insights-overview-dashboard"></a>Application Insights – áttekintés irányítópult
+# <a name="application-insights-overview-dashboard"></a>Application Insights áttekintő irányítópult
 
-Az Application Insights mindig nyújtott gyors és:-a-áttekintő értékeléséhez, az alkalmazás állapotának és teljesítményének a összefoglaló áttekintés ablaktábláján. Az új áttekintő irányítópulthoz gyorsabb rugalmasabb élményt nyújt.
+Az Application Insights mindig biztosított gyors és a egy pillantással értékeléséhez, az alkalmazás állapotát és teljesítményét egy összegző áttekintés ablaktábláján. Az új áttekintő irányítópult gyorsabb, rugalmasabb élményt nyújt.
 
-## <a name="how-do-i-test-out-the-new-experience"></a>Hogyan tesztelheti ki az új felület?
+## <a name="how-do-i-test-out-the-new-experience"></a>Hogyan az új lehetőségek kipróbálásához?
 
-Alapértelmezés szerint most elindítja az új áttekintő irányítópulthoz:
+Az új áttekintő irányítópult mostantól alapértelmezés szerint elindul:
 
-![A betekintő áttekintése](.\media\app-insights-overview-dashboard\overview-0001.png)
+![Áttekintő kép panel](.\media\app-insights-overview-dashboard\overview.png)
 
-## <a name="better-performance"></a>Jobb teljesítmény
+## <a name="better-performance"></a>Jobb teljesítmény érdekében
 
-Tartomány időbeállítást egyszerűsített, egy kattintással egyszerű felületet.
+Időtartomány kijelölésének egyszerűsített, egy egyszerű, egykattintásos felületen.
 
 ![Időtartomány](.\media\app-insights-overview-dashboard\app-insights-overview-dashboard-03.png)
 
-A teljes teljesítmény nagy mértékben nőtt. Ön hozzáférhet az egy kattintással népszerű szolgáltatások, mint **keresési** és **Analytics**. Minden KPI csempe dinamikus frissítéséhez alapértelmezett megfelelő Application Insights szolgáltatásainak betekintést nyújt. További részletek nem sikerült a kérelmek válassza **hibák** alatt a **vizsgálat** fejléc:
+Általános teljesítménye jelentősen nőtt. Népszerű szolgáltatások, mint az egykattintásos hozzáférést rendelkezik **keresési** és **Analytics**. Egyes alapértelmezett dinamikus frissítése a KPI-csempe megfelelő Application Insights-funkciók betekintést nyújt. Tudjon meg többet sikertelen kérelmek válassza **hibák** alatt a **vizsgálat** fejléc:
 
 ![Meghibásodások](.\media\app-insights-overview-dashboard\app-insights-overview-dashboard-04.png)
 
 ## <a name="application-dashboard"></a>Alkalmazás irányítópultja
 
-Alkalmazás irányítópult kihasználja a meglévő irányítópult technológia az alkalmazás állapotának és teljesítményének a teljes mértékben testreszabható egytáblás áttekintése Azure-ban.
+Alkalmazás irányítópult kihasználja a meglévő irányítópult technológia adjon meg egy teljes mértékben testre szabható egyetlen tekintse át az alkalmazás állapotát és teljesítményét az Azure-ban.
 
-Az alapértelmezett irányítópult válassza eléréséhez _alkalmazás irányítópult_ bal felső sarokban.
+Az alapértelmezett irányítópulton válassza el _alkalmazás irányítópult_ a bal felső sarokban.
 
 ![Irányítópult-nézet](.\media\app-insights-overview-dashboard\app-insights-overview-dashboard-05.png)
 
-Ha ez az irányítópult eléréséhez először, akkor az alapértelmezett nézet fog megjelenni:
+Ha most először az irányítópulthoz hozzáférő, indítja el az alapértelmezett nézet:
 
 ![Irányítópult-nézet](.\media\app-insights-overview-dashboard\app-insights-overview-dashboard-06.png)
 
-Beállíthatja, hogy az alapértelmezett nézet tetszés szerint azt. Vagy is hozzáadhat, és a csapat igényeinek legjobban megfelelő, az irányítópult törlése.
+Ha például azt megtarthatja az alapértelmezett nézet. Vagy is hozzáadhat, és a csapat igényeinek legjobban megfelelő, az az irányítópult törlése.
 
 > [!NOTE]
-> Az Application Insights-erőforráshoz hozzáféréssel rendelkező összes felhasználó azonos alkalmazás-irányítópult élmény megosztani. Egy felhasználó által végrehajtott módosítások módosítani fogja a nézet az összes felhasználó számára.
+> Application Insights-erőforrás-hozzáféréssel rendelkező összes felhasználó azonos alkalmazás-irányítópult élmény megosztani. Egy felhasználó által végrehajtott módosításokat fog módosítsa a nézet az összes felhasználó számára.
 
-Lépjen vissza az Áttekintés felületet csak válasszon:
+Nyissa meg újra az áttekintő tapasztalatok csak adja meg:
 
-![Áttekintés gomb](.\media\app-insights-overview-dashboard\app-insights-overview-dashboard-07.png)
-
-## <a name="access-the-classic-overview-dashboard"></a>Hozzáférés a klasszikus áttekintő irányítópulthoz
-
-A régi áttekintése elmaradt válasszon **klasszikus áttekintése**.
-
-![Klasszikus – áttekintés](.\media\app-insights-overview-dashboard\overview-classic.png)
+![Áttekintés gombra](.\media\app-insights-overview-dashboard\app-insights-overview-dashboard-07.png)
 
 ## <a name="next-steps"></a>További lépések
 

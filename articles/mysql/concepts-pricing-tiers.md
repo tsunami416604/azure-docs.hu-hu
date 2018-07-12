@@ -1,6 +1,6 @@
 ---
-title: Tarifacsomagok MySQL az Azure-adatbázis
-description: Ez a cikk ismerteti a tarifacsomagok MySQL az Azure-adatbázis.
+title: Az Azure Database for MySQL tarifacsomagok
+description: Ez a cikk ismerteti a tarifacsomagok az Azure Database for MySQL-hez.
 services: mysql
 author: jan-eng
 ms.author: janeng
@@ -8,42 +8,42 @@ manager: kfile
 editor: jasonwhowell
 ms.service: mysql
 ms.topic: article
-ms.date: 06/21/2018
-ms.openlocfilehash: d42fa432f57def5e4f80480e41c2299098e20d7d
-ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
+ms.date: 07/11/2018
+ms.openlocfilehash: 547839234e15455f3e268bad4d92972ea1f47e4c
+ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37020691"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38971937"
 ---
-# <a name="azure-database-for-mysql-pricing-tiers"></a>Azure tarifacsomagok MySQL-adatbázis
+# <a name="azure-database-for-mysql-pricing-tiers"></a>Azure Database for MySQL-hez tarifacsomagok
 
-Létrehozhat egy MySQL-kiszolgálóhoz tartozó Azure-adatbázis az egyik három különböző árképzési szinteket: alapvető, általános célú és Memóriaoptimalizált. A tarifacsomagok a számítási, amelyek létesíthetők vCores, vCore memória és az adatok tárolására használt tárolótechnológián szerint megkülönböztetett forgalomosztályból. Minden erőforrás törlődnek MySQL kiszolgálói szinten. Egy egy vagy több adatbázist is van.
+Létrehozhat egy Azure Database for MySQL-kiszolgáló három különböző tarifacsomag egyikében: alapszintű, általános célú és memóriahasználatra optimalizált. A tarifacsomag, amelyek kioszthatóak virtuális magok, memória / virtuális mag és a tárolási technológiát, az adatok tárolására használt számítási mennyisége alapján különbözteti meg. Az összes erőforrás a MySQL-kiszolgáló szintjén vannak üzembe helyezve. A kiszolgáló egy vagy több adatbázissal rendelkezhet.
 
-|    | **Basic** | **Általános célú** | **Memóriaoptimalizált** |
+|    | **Basic** | **Általános célú** | **Memóriahasználatra optimalizált** |
 |:---|:----------|:--------------------|:---------------------|
-| Számítási létrehozása | 4, 5. generációból generációs | 4, 5. generációból generációs | Gen 5 |
+| Számítási generáció | A gen 4, 5 általános | A gen 4, 5 általános | Gen 5 |
 | Virtuális magok | 1, 2 | 2, 4, 8, 16 és 32 |2, 4, 8, 16 |
-| Memória mennyisége vCore | 2 GB | 5 GB | 10 GB |
-| Tároló mérete | 5 GB és 1 TB | 5 GB és 4 TB | 5 GB és 4 TB |
-| Tárolási típus | Az Azure standard szintű tárolót | Azure Premium Storage | Azure Premium Storage |
-| Adatbázis biztonsági mentés megőrzési időtartam | 7-35 nap | 7-35 nap | 7-35 nap |
+| Memória / virtuális mag | 2 GB | 5 GB | 10 GB |
+| Tároló mérete | 5 GB – 1 TB | 5 GB-tól 4 TB-ig | 5 GB-tól 4 TB-ig |
+| Tárolási típus | Az Azure standard szintű Storage | Azure Premium Storage | Azure Premium Storage |
+| Adatbázis biztonsági másolatainak megőrzési ideje | 7 – 35 nap | 7 – 35 nap | 7 – 35 nap |
 
-Válasszon egy tarifacsomagot, használja a következő táblázat kiindulási pontként.
+Válasszon egy tarifacsomagot, használja az alábbi táblázat kiindulási pontként.
 
 | Tarifacsomag | Kívánt teljesítményprofilok |
 |:-------------|:-----------------|
-| Alapszintű | Könnyű számítási és adatátviteli teljesítményt igénylő munkaterhelésekhez. Ilyen például a fejlesztési vagy tesztelési használt kiszolgálók, vagy csak kevés számítógépet érintő ritkán használt alkalmazások. |
-| Általános rendeltetés | A legtöbb üzleti szolgáltatások, amelyek kiegyensúlyozott számítási és memóriakapacitást méretezhető i/o-átviteli. Például a webes és mobilalkalmazások és más vállalati alkalmazásokat futtató kiszolgálók.|
-| Memóriára optimalizált | Gyorsabb tranzakció-feldolgozást és magasabb szintű párhuzamosság memórián belüli teljesítményt igénylő nagy teljesítményű adatbázis munkaterhelésekhez. Például a kiszolgálók a valós idejű adatok és nagy teljesítményű tranzakciós vagy analitikai alkalmazások feldolgozásához.|
+| Alapszintű | Kis számítási és i/o-teljesítményt igénylő munkaterhelések. Ilyenek például fejlesztési vagy tesztelési célokra használt kiszolgálók vagy kisméretű, ritkán használt alkalmazásokhoz. |
+| Általános rendeltetés | A legtöbb üzleti számítási feladathoz, amely kiegyensúlyozott számítást és memóriát, valamint méretezhető i/o-teljesítményt igényelnek. Ilyenek például a kiszolgálók üzemeltetésére, webes és mobilalkalmazások és egyéb nagyvállalati alkalmazások.|
+| Memóriára optimalizált | Kiemelkedő teljesítményű adatbázisokat igénylő számítási feladatok memórián belüli teljesítmény szükséges a gyorsabb tranzakciófeldolgozás és a magasabb szintű egyidejűség érdekében. Ilyenek például a kiszolgálók feldolgozásához, valós idejű és nagy teljesítményű tranzakciós vagy elemző alkalmazások.|
 
-Miután létrehozott egy kiszolgálót, vCores hardver generációs és árképzési száma réteg (kivéve a Basic érkező vagy oda irányuló) módosítható felfelé vagy lefelé másodpercen belül. Is egymástól függetlenül beállíthatja másolatot tároló és a biztonsági mentés megőrzési időszak felfelé vagy lefelé alkalmazás állásidő nélkül. A biztonsági másolatok tárolási típusa nem módosítható, miután a kiszolgáló akkor jön létre. További információkért lásd: a [válik erőforrások](#scale-resources) szakasz.
+Miután létrehozott egy kiszolgálót, a virtuális magok, a hardver generációja és a díjszabás számát réteg (kivéve, és az alapszintű) módosíthatja felfelé vagy lefelé másodpercen belül. Is egymástól függetlenül módosíthatja felfelé storage és a biztonsági másolat megőrzési idejének felfelé vagy lefelé az alkalmazás leállása nélkül. A biztonsági mentési tár írja be a kiszolgáló létrehozása után nem módosítható. További információkért lásd: a [méretezni az erőforrásokat](#scale-resources) szakaszban.
 
-## <a name="compute-generations-and-vcores"></a>Számítási generációt és vCores
+## <a name="compute-generations-and-vcores"></a>Számítási generáció és a virtuális magok
 
-A számítási erőforrások vannak megadva, a vCores, amelyek tartalmazzák az alapul szolgáló hardverben, a logikai Processzor. Jelenleg két számítási generációja, generációs 4. és 5. generációból közül választhat. 4 logikai processzorok Intel E5-2673 v3 alapulnak. generációból (Haswell) 2.4-GHz-es processzor. 5 logikai processzorok Intel E5-2673 v4 alapulnak. generációból (Broadwell) 2.3-GHz-es processzor. 4. generációból és generációs 5 (az "X" jelöli elérhető), a következő régiókban érhetők el.
+A számítási erőforrások szolgálnak, amelyek jelölik az alapul szolgáló hardver logikai CPU, a virtuális magok. Jelenleg két számítási generáció, 4. generációs és a Gen 5 közül választhat. Gen 4 logikai CPU k Intel E5-2673 v3 (Haswell) 2,4 GHz-es processzorral. Gen 5 logikai CPU k Intel E5-2673 v4 (Broadwell) 2.3 GHz-es processzorral. A gen 4 és a Gen 5 ("X" azt jelzi, hogy elérhető), a következő régiókban érhetők el.
 
-| **Az Azure-régió** | **4. generációból** | **5. generációból** |
+| **Az Azure-régió** | **A gen 4** | **A gen 5** |
 |:---|:----------:|:--------------------:|
 | USA középső régiója | X |  |
 | USA keleti régiója | X | X |
@@ -63,6 +63,8 @@ A számítási erőforrások vannak megadva, a vCores, amelyek tartalmazzák az 
 | Kelet-Ázsia | X | X |
 | Délkelet-Ázsia | X | X |
 | Kelet-Ausztrália |  | X |
+| Ausztrália középső régiója |  | X |
+| Ausztrália 2. középső régiója |  | X |
 | Délkelet-Ausztrália |  | X |
 | Közép-India | X | X |
 | Nyugat-India | X | X |
@@ -74,43 +76,43 @@ A számítási erőforrások vannak megadva, a vCores, amelyek tartalmazzák az 
 
 ## <a name="storage"></a>Storage
 
-A tároló, kiépítése nem MySQL-kiszolgáló az Azure-adatbázishoz rendelkezésre álló tárolókapacitás mennyiségét. A tárolót használja a rendszer az adatbázisfájlokat, az ideiglenes fájlok, a tranzakciós naplók és a a MySQL-kiszolgáló naplói. A teljes rendszermemóriához viszonyítva kiépítése tárolási-kiszolgálóhoz is határozza meg a rendelkezésre álló i/o-kapacitás.
+A tároló üzembe helyezi az érték a tárolási kapacitás érhető el az Azure database for MySQL-kiszolgálót. A storage szolgál az adatbázisfájlokat, az ideiglenes fájlok, tranzakciós naplókhoz és a MySQL-kiszolgáló naplóit. Tároló üzembe helyezésekor teljes mennyisége is meghatározza a rendelkezésre álló i/o-kapacitás a kiszolgálóhoz.
 
-|    | **Basic** | **Általános célú** | **Memóriaoptimalizált** |
+|    | **Basic** | **Általános célú** | **Memóriahasználatra optimalizált** |
 |:---|:----------|:--------------------|:---------------------|
-| Tárolási típus | Az Azure standard szintű tárolót | Azure Premium Storage | Azure Premium Storage |
-| Tároló mérete | 5 GB és 1 TB | 5 GB és 4 TB | 5 GB és 4 TB |
-| Tárolási növekmény mérete | 1 GB | 1 GB | 1 GB |
-| IO | Változó |3 IOPS/GB<br/>100 minimális IOPS<br/>Maximális iops-érték 6000 | 3 IOPS/GB<br/>100 minimális IOPS<br/>Maximális iops-érték 6000 |
+| Tárolási típus | Az Azure standard szintű Storage | Azure Premium Storage | Azure Premium Storage |
+| Tároló mérete | 5 GB – 1 TB | 5 GB-tól 4 TB-ig | 5 GB-tól 4 TB-ig |
+| Növekmény tárméret | 1 GB | 1 GB | 1 GB |
+| IO | Változó |3 IOPS/GB<br/>Minimum 100 IOPS<br/>Maximális 6000 iops-érték | 3 IOPS/GB<br/>Minimum 100 IOPS<br/>Maximális 6000 iops-érték |
 
-Hozzáadhat további tárolási kapacitás alatt és után a kiszolgáló létrehozása. Az alapszintű rétegben nem biztosít egy IOPS garantált. Az általános célú és Memóriaoptimalizált tarifacsomagok az IOPS méretezést 3:1 arányt a kiépített méretét.
+Hozzáadhat további tárolókapacitás alatt és a kiszolgáló létrehozása után. Az alapszintű csomag nem biztosítanak az iops-t. Az általános célú és memóriahasználatra optimalizált tarifacsomagok az iops-t a kiépített tárhely méretére vonatkozik egy 3:1 arányt a skálázás.
 
-Az i/o-felhasználás az Azure portálon vagy az Azure CLI-parancsok segítségével figyelheti. Figyelésére vonatkozó adatok gyűjtése le van [tárolási kapacitása, tárolási százalékos, használt tárolási és IO százalék](concepts-monitoring.md).
+Az i/o-használat az Azure Portalon vagy Azure CLI-parancsok használatával követheti nyomon. A releváns metrikákat kíván monitorozni vannak [tárhelykorlátozás, tárolási százalékos aránya, felhasznált tárterület és i/o-százalék](concepts-monitoring.md).
 
-### <a name="reaching-the-storage-limit"></a>A megadott tárolási kapacitás elérése
+### <a name="reaching-the-storage-limit"></a>Skálázhatósági méretkorlátot
 
-A kiszolgáló van megjelölve csak olvasható, amikor eléri a szabad tárhelymemóriájának mennyiségét, kisebb, mint 5 GB vagy 5 %-a kiépített, amelyik kisebb. Ha például 100 GB tárhely ellátta, és a tényleges kihasználtság 95 GB, a kiszolgáló van megjelölve, csak olvasható. Másik lehetőségként ellátta 5 GB tárhelyet, ha a kiszolgáló van megjelölve csak olvasható 250 MB-nál kevesebb a szabad tárhely elérésekor.  
+A kiszolgáló van megjelölve csak olvasható, amikor szabad tárterület mérete eléri a kisebb, mint 5 GB-os vagy a felhasznált tárterület 5 %-át, amelyik érték kisebb. Ha például 100 GB tárhelyet kiépítése, és a tényleges használat halad 95 GB, a kiszolgáló van megjelölve, csak olvasható. Azt is megteheti, ha 5 GB adattárolás kiépítése, a kiszolgáló van megjelölve csak olvasható, ha a szabad tárhely eléri a 250 MB-nál kevesebb.  
 
-A szolgáltatás tett kísérletet a kiszolgáló írásvédett, amíg minden új írási tranzakció kérések le vannak tiltva, és a meglévő aktív tranzakciók végrehajtása folytatódik. Ha a kiszolgáló értéke csak olvasható, további írási műveletek és a tranzakciós érvényesítése sikertelen. Olvasási lekérdezések továbbra is működnek majd megszakítás nélkül. Növelje a kiosztott tárolási, miután a kiszolgáló készen áll a írási tranzakción újra fogadására lesz.
+A szolgáltatás megpróbál, hogy a kiszolgáló írásvédett, amíg minden új írási tranzakció kérés le vannak tiltva, és továbbra is meglévő aktív tranzakciók végrehajtása. Ha a kiszolgáló értékre van állítva, csak olvasható, minden ezt követő írási műveletek és a tranzakciós érvényesítése sikertelen. Olvasási lekérdezések továbbra is zavartalanul működni fog. Miután megnöveli a felhasznált tárterület, a kiszolgáló készen áll majd újra el kell fogadniuk írási tranzakciók.
 
 ## <a name="backup"></a>Backup
 
-A szolgáltatás automatikusan felveszi a kiszolgáló biztonsági másolatait. Biztonsági mentések minimális megőrzési időtartama hét nap. Megadhat egy legfeljebb 35 napos megőrzési idővel. A megőrzési bármikor módosítható a kiszolgáló élettartama során. Helyileg redundáns és georedundáns biztonsági mentések közül választhat. Georedundáns biztonsági mentéseket is tárolódnak a [párosítása, földrajzi régió](https://docs.microsoft.com/azure/best-practices-availability-paired-regions) a régió, ahol a kiszolgáló akkor jön létre. A redundancia katasztrófa esetén védelmet biztosít. Ezenkívül igénybe veheti a kiszolgáló tárolt bármely más Azure-régió, ahol a szolgáltatás érhető georedundáns biztonsági való. Már nem módosíthatja, miután a kiszolgáló akkor jön létre két biztonsági másolatok tárolási lehetőségek közötti.
+A szolgáltatás automatikusan biztonsági másolatokat a kiszolgálóról vesz igénybe. A minimális megőrzési idő a biztonsági másolatok hét napon. Beállíthatja, hogy egy legfeljebb 35 napos megőrzési idővel. A megőrzési bármikor módosítható a kiszolgáló élettartama során. Helyileg redundáns és georedundáns biztonsági mentések közül választhat. Georedundáns biztonsági mentéseket is vannak tárolva a [földrajzilag párosított régióba](https://docs.microsoft.com/azure/best-practices-availability-paired-regions) a régió, ahol a kiszolgáló akkor jön létre. Ezt a redundanciát biztosít védelmet egy esetleges vészhelyzet esetén. Bármely más Azure-régió, amelyben a szolgáltatás georedundáns biztonsági másolat érhető el, a kiszolgáló helyreállítására is kaphat. Nem alkalmas a kiszolgáló létrehozása után két biztonsági másolati tárhely beállításai között módosíthatja.
 
 ## <a name="scale-resources"></a>Erőforrások skálázása
 
-Miután létrehozta a kiszolgáló, egymástól függetlenül módosíthatja a vCores, a hardver létrehozása, a tarifacsomag (kivéve a Basic érkező vagy oda irányuló), a tároló és a biztonsági mentés megőrzési idő mennyiségét. A biztonsági másolatok tárolási típusa nem módosítható, miután a kiszolgáló akkor jön létre. Felfelé vagy lefelé vCores száma is méretezhető. A biztonsági mentés megőrzési idő is méretezhető felfelé vagy lefelé 7 35 napon. A tárhely méretét pedig csak növelni. Az erőforrások skálázás végezhető vagy a portál vagy az Azure parancssori felület használatával. Az Azure parancssori felület használatával skálázás példáért lásd: [figyelő és a skála egy Azure parancssori felület használatával MySQL-kiszolgálóhoz tartozó Azure-adatbázis](scripts/sample-scale-server.md).
+Miután létrehozta a kiszolgáló, egymástól függetlenül módosíthatja a virtuális magok, a hardver generációja, a tarifacsomag (kivéve a, illetve onnan alapszintű), a storage és a biztonsági másolat megőrzési idejének összege. A biztonsági mentési tár írja be a kiszolgáló létrehozása után nem módosítható. A virtuális magok számát felfelé és lefelé skálázhatók. A biztonsági másolat megőrzési idejének méretezhetők felfelé vagy lefelé 7-ről 35 napon belül. A tároló mérete pedig csak növelni. Az erőforrások méretezése elvégezhető a portál vagy az Azure CLI-vel felületén keresztül. A méretezés az Azure CLI-vel egy példa: [figyelés és méret egy Azure Database for MySQL-kiszolgálóhoz az Azure CLI-vel](scripts/sample-scale-server.md).
 
-VCores számának módosítása esetén a hardver létrehozása, vagy az árképzési szint, az eredeti kiszolgáló másolatát hozza létre az új számítási foglalási. Miután az új kiszolgálón fut, kapcsolatok bekapcsolt állapotban az új kiszolgálóra. Során, amikor a rendszer való működésre vált az új kiszolgáló jelenleg nincs új kapcsolatok hozhatók létre, és minden nem véglegesített tranzakciót visszaállít a rendszer. Ebben az ablakban platformonként változó, de a legtöbb esetben egy percen belül.
+Amikor módosítja a virtuális magok száma, a hardver generációja, vagy a tarifacsomagot, az eredeti kiszolgáló egy példányát az új számítási felosztás jön létre. Miután az új kiszolgáló üzembe helyezéséig, kapcsolatok szálról az új kiszolgálóra. Során a pillanatban, amikor a rendszer átvált az új kiszolgáló új kapcsolat nem hozható létre, és az összes nem véglegesített tranzakció vissza legyen állítva. Ebben az ablakban változik, de a legtöbb esetben kevesebb mint egy percet.
 
-Tárolási méretezés és a biztonsági másolatok megőrzésének időszakának módosításával olyan online true műveletekkel. Nincs állásidő nélkül, és az alkalmazás nincs hatással. IOPS méretezést a kiépített tárterület mérete, mert tárolási vertikális felskálázásával növelheti az IOPS érhető el a kiszolgáló.
+Tároló méretezése és a biztonsági másolat megőrzési idejének módosítása is igaz online. Nem jár, és a folyamatot nem befolyásolja az alkalmazás. IOPS és a felhasznált tárterület mérete logikákat tárolási vertikális felskálázásával növelheti a rendelkezésre álló IOPS a kiszolgáló.
 
 ## <a name="pricing"></a>Díjszabás
 
-A legfrissebb információkat, lásd: a szolgáltatás [árképzést ismertető oldalra](https://azure.microsoft.com/pricing/details/mysql/). A költség, a konfiguráció azt szeretné, hogy a [Azure-portálon](https://portal.azure.com/#create/Microsoft.MySQLServer) havi költségét jeleníti meg a **tarifacsomag** lapon a kiválasztott beállítások alapján. Ha nem rendelkezik Azure-előfizetéssel, az Azure árképzési Számológép segítségével egy becsült ár. A a [Azure árképzési Számológép](https://azure.microsoft.com/pricing/calculator/) webhelyen, jelölje be **elemek hozzáadása**, bontsa ki a **adatbázisok** kategória, és válassza a **MySQLazAzure-adatbázis**a beállítások testreszabása.
+A legfrissebb díjszabási információkért tekintse meg a szolgáltatás [díjszabását ismertető lapon](https://azure.microsoft.com/pricing/details/mysql/). A költség, a konfiguráció azt szeretné, hogy a [az Azure portal](https://portal.azure.com/#create/Microsoft.MySQLServer) havi költségét jeleníti meg a **tarifacsomag** lapon a kiválasztott beállítások alapján. Ha nem rendelkezik Azure-előfizetéssel, az Azure díjkalkulátorát segítségével a becsült ár beolvasása. A a [Azure díjkalkulátor](https://azure.microsoft.com/pricing/calculator/) webhely, válassza **elemek hozzáadása**, bontsa ki a **adatbázisok** kategória, és válassza **, Azure Database for MySQL**testre szabhatja beállítások.
 
 ## <a name="next-steps"></a>További lépések
 
-- Megtudhatja, hogyan [MySQL-kiszolgáló létrehozása a portálon](howto-create-manage-server-portal.md).
-- Megtudhatja, hogyan [figyelése és az Azure parancssori felület használatával egy MySQL-kiszolgálóhoz tartozó Azure-adatbázis méretezése](scripts/sample-scale-server.md).
-- További tudnivalók a [korlátozások szolgáltatás](concepts-limits.md).
+- Ismerje meg, hogyan [MySQL-kiszolgáló létrehozása a portálon](howto-create-manage-server-portal.md).
+- Ismerje meg, hogyan [monitorozása és skálázása az Azure Database for MySQL-kiszolgálóhoz-Azure CLI-vel](scripts/sample-scale-server.md).
+- További információ a [szolgáltatás korlátozásai](concepts-limits.md).

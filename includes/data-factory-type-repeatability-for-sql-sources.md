@@ -1,7 +1,7 @@
-## <a name="repeatability-during-copy"></a>Ismételhetőség másolása során
-Amikor az adatok másolását az Azure SQL/SQL-kiszolgálón más adatokból tárolja egy kell ismételhetőség tartsa szem előtt, nem kívánt eredmények elkerülése érdekében. 
+## <a name="repeatability-during-copy"></a>Másolás során az ismételhetőség
+Amikor adatmásolásra más adatokat az Azure SQL és SQL Server tárolja egy kell ismételhetőség nem kívánt eredmények elkerülése érdekében szem előtt tartani. 
 
-Adat másolása az Azure SQL-/ SQL Server-adatbázis, ha a másolási tevékenység során lesz alapértelmezés szerint a fogadó tábla adatkészlet APPEND alapértelmezés szerint. Például ha az adatok másolása CSV (vesszővel tagolt értékek) fájl adatforrás az Azure SQL-/ SQL Server Database két rekordokat tartalmazó, ez az a táblázat néz:
+Adat másolása az Azure SQL és SQL Server-adatbázist, amikor a másolási tevékenység lesz alapértelmezés szerint a fogadó tábla adatkészlet HOZZÁFŰZÉS alapértelmezés szerint. Például ha másol adatokat egy adatforrásból CSV (vesszővel tagolt értékek) fájl két rekordot az Azure SQL és SQL Server-adatbázist tartalmazó, ez az a tábla néz ki:
 
 ```
 ID    Product        Quantity    ModifiedDate
@@ -10,7 +10,7 @@ ID    Product        Quantity    ModifiedDate
 7     Down Tube    2            2015-05-01 00:00:00
 ```
 
-Tegyük fel, hogy hiba található a forrásfájl és a mennyiséget le cső 2 4 a forrásfájl frissítése. Az adatszelet az adott időszakra újra futtatni, ha talál fűzött Azure SQL-/ SQL Server-adatbázis két új bejegyzést. Az alábbiakban azt feltételezi, hogy az oszlopok a tábla egyik sincs elsődleges kulcs megszorítását.
+Tegyük fel, hogy hibákat talált a forrásfájl, és a le cső mennyiség 2 4 a forrásfájl frissítve. Ha újra futtatja az adatszelet az adott időszak, látni fogja a két új rekordot hozzáfűzi az Azure SQL és SQL Server-adatbázist. Az alábbi feltételezi, hogy egyetlen sem az oszlopok a tábla rendelkezik-e az elsődleges kulcshoz tartozó korlátozás.
 
 ```
 ID    Product        Quantity    ModifiedDate
@@ -21,15 +21,15 @@ ID    Product        Quantity    ModifiedDate
 7     Down Tube    4            2015-05-01 00:00:00
 ```
 
-Ennek elkerülése érdekében meg kell adnia UPSERT szemantikáját egyikét, ami az alábbiakban említett 2 mechanizmusok alatt.
+Ennek elkerülése érdekében meg kell adnia UPSERT szemantika egyik kihasználva az alábbiakban említett 2 mechanizmusok alatt.
 
 > [!NOTE]
-> A szelet futtatható újra automatikusan az Azure Data Factory megadott újrapróbálkozási házirend szerint.
+> A szelet újból futtatható automatikusan az Azure Data Factoryban a megadott újrapróbálkozási szabályzatának megfelelően.
 > 
 > 
 
 ### <a name="mechanism-1"></a>1 mechanizmus
-Kihasználhatja **sqlWriterCleanupScript** tulajdonság először törlési művelet végrehajtásához a szelet futtatásakor. 
+Kihasználhatja **sqlWriterCleanupScript** tulajdonság először karbantartási művelet végrehajtásához a szelet futtatásakor. 
 
 ```json
 "sink":  
@@ -39,9 +39,9 @@ Kihasználhatja **sqlWriterCleanupScript** tulajdonság először törlési műv
 }
 ```
 
-A karbantartási parancsprogramot volna hajtható végre első példányát egy adott szelet, amely az adatokat törölni, hogy a szelet megfelelő SQL-táblából során. A tevékenység ezt követően szúrja be az adatokat a SQL táblázatba. 
+A karbantartási parancsprogramot lenne hajtható végre első egy adott szelet, amely lenne törölheti az adatait, hogy a szelet megfelelő SQL-táblát másolása során. A tevékenység később szúrja be az adatokat az SQL-táblába. 
 
-Ha a szelet most újra futtatni, akkor megkeresi a mennyiség frissíteni, mivel a szükséges.
+Ha a szelet most újra futtatni, akkor megtalálja a mennyiség frissül, mint a keresett.
 
 ```
 ID    Product        Quantity    ModifiedDate
@@ -50,25 +50,25 @@ ID    Product        Quantity    ModifiedDate
 7     Down Tube    4            2015-05-01 00:00:00
 ```
 
-Tegyük fel, a strukturálatlan szélvédőmosó rekordot a rendszer eltávolítja az eredeti csv a. Futtassa újból a szeletet volna eredményt a következő: 
+Tegyük fel, a strukturálatlan ablakmosó rekordot akkor távolítja el az eredeti csv-fájlból. Majd ismét futtatni a szeletet előállítására a következő eredményt: 
 
 ```
 ID    Product        Quantity    ModifiedDate
 ...    ...            ...            ...
 7     Down Tube    4            2015-05-01 00:00:00
 ```
-Nincs új kellett elvégezni. A másolási tevékenység futott a karbantartási parancsprogramot a megfelelő adatokat, hogy a szelet törlése. Ezután a bemeneti olvasni a fürt megosztott kötetei szolgáltatás (amelyeket majd mindössze 1 bejegyzés) és a táblába beszúrt. 
+Jelenleg nincs semmi kellett elvégezni. A másolási tevékenység lefutott a karbantartási parancsprogramot, törölheti az adott szeletre vonatkozó megfelelő adatait. Majd a bemeneti olvasni (amely majd tárolt rekordok csak 1) a CSV-t és a táblába beszúrt. 
 
 ### <a name="mechanism-2"></a>2 mechanizmus
 > [!IMPORTANT]
-> sliceIdentifierColumnName jelenleg nem támogatott az Azure SQL Data Warehouse. 
+> sliceIdentifierColumnName jelenleg nem támogatott az Azure SQL Data warehouse-hoz. 
 
-Azzal, hogy a kijelölt oszlop van egy másik mechanizmust ismételhetőség eléréséhez (**sliceIdentifierColumnName**) a cél tábla. Ebben az oszlopban szeretne győződjön meg arról, a forrás és cél maradnak szinkronizált Azure Data Factory által használni. Ezt a módszert akkor működik, ha módosításával vagy a cél SQL tábla sémáját definiáló rugalmasságot. 
+Egy másik mechanizmust ismételhetőség érdekében egy dedikált oszlop egyik (**sliceIdentifierColumnName**) a cél táblában. Ebben az oszlopban annak érdekében, hogy a forrás- és legyen naprakész szinkronizált Azure Data Factory által volna használható. Ez a módszer rugalmasságot biztosít a cél SQL-tábla sémájának definiálásához vagy módosítása esetén működik. 
 
-Ebben az oszlopban által az Azure Data Factory ismételhetőség célból használják, és a folyamat Azure Data Factory nem teszik séma módosításait a táblába. Ez a megközelítés használatának módja:
+Ez az oszlop használni kívánt Azure Data Factory által ismételhetőség célokra, és a folyamat során az Azure Data Factory nem hajt végre a séma módosítása a táblához. Ez a módszer használatának módja:
 
-1. Adja meg a cél SQL táblázat típusú oszlop bináris (32). Ebben az oszlopban megkötés kell lennie. Ehhez a példához tegyük nevezze ebben az oszlopban "ColumnForADFuseOnly".
-2. Használhatja a másolási tevékenység az alábbiak szerint:
+1. Adja meg egy oszlop bináris típusú (32) a cél SQL-táblát. Ez az oszlop a korlátozások nélkül kell lennie. Nevet Ez az oszlop, "ColumnForADFuseOnly" Ebben a példában.
+2. Használja az a másolási tevékenység az alábbiak szerint:
    
     ```json
     "sink":  
@@ -79,7 +79,7 @@ Ebben az oszlopban által az Azure Data Factory ismételhetőség célból haszn
     }
     ```
 
-Az Azure Data Factory feltölti az oszlop szerint annak érdekében, hogy a forrás és cél maradnak szinkronizált igényét. Az oszlop értékeinek nem használható ebben a környezetben kívül a felhasználó által. 
+Az Azure Data Factory fel ezt az oszlopot a szükséges forrás és cél maradjon szinkronizált megfelelően. Ez az oszlop értékeit kell nem használható az adott környezeten kívül a felhasználó által. 
 
-1 mechanizmus hasonlóan másolási tevékenység során automatikusan az először törölje az adatokat az SQL-tábla érkező adott szeletek, és futtassa a a másolási tevékenység során általában illesztendő adatok forrásból, hogy a szelet célját. 
+1 mechanizmus hasonlóan, a másolási tevékenység automatikusan az először törölje az adatokat a célhelyről az SQL-táblát az adott szeletre vonatkozó, és futtassa a másolási tevékenység általában az adatok beszúrásához forrásból a célra, hogy a szelet. 
 

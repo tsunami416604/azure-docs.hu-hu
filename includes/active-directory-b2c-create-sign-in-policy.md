@@ -1,7 +1,7 @@
-Bejelentkezés az alkalmazásban csak engedélyezni szeretné, ha használja a **bejelentkezési** házirend. Ez a házirend az, hogy az ügyfelek végighaladnia során be- és a jogkivonatok, amelyek megkapják az alkalmazás tartalmát a sikeres bejelentkezések feladatait ismerteti.
+Ha azt szeretné, csak jelentkezzen be az alkalmazás engedélyezéséhez használja a **bejelentkezési** házirend. Ez a szabályzat írja le, hogy ügyfelek során be- és a tartalom jogkivonatokat, amelyeket az alkalmazás fogad a sikeres bejelentkezésekkor.
 
 [!INCLUDE [active-directory-b2c-portal-navigate-b2c-service](active-directory-b2c-portal-navigate-b2c-service.md)]
-Kattintson a **bejelentkezési házirendek**.
+Kattintson a **bejelentkezési szabályzatok**.
 
 A panel tetején kattintson a **+Add** (+Hozzáadás) lehetőségre.
 

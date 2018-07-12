@@ -1,6 +1,6 @@
 ---
-title: Leküldéses értesítések hozzáadása az Apache Cordova-alkalmazás az Azure App Service Mobile Apps szolgáltatással |} Microsoft Docs
-description: Megtudhatja, hogyan küldhet leküldéses értesítéseket az Apache Cordova-alkalmazást a Mobile Apps segítségével.
+title: Leküldéses értesítések hozzáadása az Apache Cordova-alkalmazást az Azure App Service Mobile Apps szolgáltatással |} A Microsoft Docs
+description: Ismerje meg, hogyan küldhet leküldéses értesítéseket az Apache Cordova-alkalmazást a Mobile Apps segítségével.
 services: app-service\mobile
 documentationcenter: javascript
 manager: crdun
@@ -15,88 +15,88 @@ ms.topic: article
 ms.date: 10/30/2016
 ms.author: crdun
 ms.openlocfilehash: 13c1a53cfa3f998c9e3fa3ee1ee2dcec37357095
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34597994"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38547267"
 ---
-# <a name="add-push-notifications-to-your-apache-cordova-app"></a>Leküldéses értesítések hozzáadása az Apache Cordova-alkalmazás
+# <a name="add-push-notifications-to-your-apache-cordova-app"></a>Az Apache Cordova-alkalmazáshoz a leküldéses értesítések hozzáadása
 [!INCLUDE [app-service-mobile-selector-get-started-push](../../includes/app-service-mobile-selector-get-started-push.md)]
 
 ## <a name="overview"></a>Áttekintés
-Ebben az oktatóanyagban leküldéses értesítések hozzáadása a [Apache Cordova gyors üzembe helyezés] [ 5] projektre, hogy egy leküldéses értesítést küld az eszköz minden alkalommal, amikor egy olyan rekordot csatlakoztatva van.
+Ebben az oktatóanyagban a leküldéses értesítések hozzáadása az [Apache Cordova rövid] [ 5] projekthez, hogy a leküldéses értesítést küld az eszköz minden alkalommal, amikor a rendszer beszúr egy rekordot.
 
-Ha nem használja a letöltött gyorsútmutató-projekt, akkor a leküldéses értesítési kiterjesztési csomag. További információkért lásd: [használható a .NET SDK háttér-kiszolgáló az a Mobile Apps][1].
+Ha nem használja a letöltött gyorsútmutató-kiszolgálói projektet, a leküldéses értesítési kiterjesztési csomag kell. További információkért lásd: [használható a .NET háttérkiszolgáló-SDK-t az a Mobile Apps][1].
 
 ## <a name="prerequisites"></a>Előfeltételek
-Ez az oktatóanyag feltételezi, hogy rendelkezik-e egy Apache Cordova-alkalmazás kifejlesztett a Visual Studio 2015-öt. Ez az eszköz a Google Android Emulator, Android-eszközön, a Windows-eszköz vagy az iOS-eszközök kell futtatnia.
+Ez az oktatóanyag feltételezi, hogy az Apache Cordova-alkalmazáshoz, amelyek célja a Visual Studio 2015. Ez az eszköz a Google Android Emulator, egy Android-eszközön, a Windows-eszköz vagy egy iOS-eszközön kell futtatnia.
 
 Az oktatóanyag elvégzéséhez a következőkre lesz szüksége:
 
-* Számítógép, amelyen fut [Visual Studio Community 2015] [ 2] vagy újabb verzió
-* [Apache Cordova Visual Studio eszközök][4]
+* A számítógép [Visual Studio Community 2015] [ 2] vagy újabb
+* [A Visual Studio Nástroje Pro Apache Cordova][4]
 * Egy [aktív Azure-fiók][3]
-* A befejezett [Apache Cordova gyors üzembe helyezés] [ 5] projekt
-* (Android) A [Google-fiók] [ 6] egy hitelesített e-mail címmel
-* (csak iOS) Egy [Apple Fejlesztőprogrambeli tagság] [ 7] és egy iOS-eszközön (iOS-szimulátor nem támogatja a leküldéses értesítések)
-* (Windows) A [Microsoft áruház fejlesztői fiókjába] [ 8] és egy Windows 10 rendszerű eszköz
+* A befejezett [Apache Cordova rövid] [ 5] projekt
+* (Android) A [Google-fiók] [ 6] ellenőrzött e-mail-címmel
+* (iOS) Egy [Apple Fejlesztőprogrambeli tagság] [ 7] és a egy iOS-eszközön (iOS-szimulátor nem támogatja a leküldéses értesítések)
+* (Windows) A [Microsoft Store fejlesztői fiók] [ 8] és a egy Windows 10 rendszerű eszköz
 
 ## <a name="configure-hub"></a>Egy értesítési központ konfigurálása
 [!INCLUDE [app-service-mobile-configure-notification-hub](../../includes/app-service-mobile-configure-notification-hub.md)]
 
-[Ebben a szakaszban lépéseket bemutató videót][9].
+[Ebben a szakaszban szereplő lépéseket ismertető videó][9].
 
-## <a name="update-the-server-project"></a>Frissítés a kiszolgáló-projekt
+## <a name="update-the-server-project"></a>A kiszolgálói projekt frissítése
 [!INCLUDE [app-service-mobile-update-server-project-for-push-template](../../includes/app-service-mobile-update-server-project-for-push-template.md)]
 
 ## <a name="add-push-to-app"></a>Módosítsa a Cordova-alkalmazáshoz
-Győződjön meg arról, hogy leküldéses értesítések kezeléséhez készen áll-e a Apache Cordova-alkalmazás projekt, telepítse a Cordova leküldéses beépülő modul és a platform-specifikus leküldéses szolgáltatások.
+Annak érdekében, hogy az Apache Cordova-alkalmazás projekt készen áll a leküldéses értesítések kezeléséhez, a Cordova beépülő modul leküldéses és platformspecifikus leküldéses szolgáltatások telepítéséhez.
 
-#### <a name="update-the-cordova-version-in-your-project"></a>Frissítse a Cordova-verzió a projektben.
-A projekt egy Apache Cordova 6.1.1 verziónál korábbi verzióját használja, ha az ügyfél projekt frissítése. A projekt frissítéséhez tegye a következőket: 
+#### <a name="update-the-cordova-version-in-your-project"></a>Frissítse a projekt a Cordova-verzió.
+A projekt Apache Cordova 6.1.1 verziónál korábbi verzióját használja, ha az ügyfél projekt frissítése. A projekt frissítéséhez tegye a következőket: 
 
-* A configuration designer megnyitásához kattintson a jobb gombbal `config.xml`.
+* A konfigurációtervező megnyitásához kattintson a jobb gombbal `config.xml`.
 * Válassza ki a **platformok** fülre.
-* Az a **Cordova CLI** szövegmezőben, jelölje be **6.1.1**. 
-* Válassza ki a projekt frissítéséhez **Build**, majd válassza ki **megoldás fordítása**.
+* Az a **Cordova CLI** szövegbeviteli mezőben válasszon ki **6.1.1**. 
+* A projekt frissítéséhez válassza ki **összeállítása**, majd válassza ki **megoldás fordítása**.
 
 #### <a name="install-the-push-plugin"></a>A leküldéses beépülő modul telepítése
-Apache Cordova-alkalmazás natív módon nem kezeli a eszköz vagy a hálózatkezelő képességeit.  Ezek a képességek által biztosított beépülő modulok, amelyek közzé vagy [npm] [ 10] vagy a Githubon. A `phonegap-plugin-push` beépülő modul kezeli a hálózati leküldéses értesítéseket.
+Az Apache Cordova-alkalmazások natív módon nem kezeli a eszköz vagy a hálózatkezelő képességeit.  Ezek a képességek által biztosított beépülő modulokat, amelyek a közzétett vagy [npm] [ 10] vagy a Githubon. A `phonegap-plugin-push` beépülő modul kezeli a hálózati leküldéses értesítéseket.
 
-A leküldéses beépülő modul a következő módokon telepítheti:
+A leküldéses beépülő modul a következő módokon telepíthető:
 
-**A parancssorból:**
+**A parancssorba:**
 
 Futtassa az alábbi parancsot:
 
     cordova plugin add phonegap-plugin-push
 
-**A Visual studióban:**
+**A Visual Studión belül:**
 
-1. A Solution Explorerben nyissa meg a `config.xml` fájlt. Válassza ki, **beépülő modulok** > **egyéni**. Válassza ki **Git** telepítési forrásként. 
+1. A Megoldáskezelőben nyissa meg a `config.xml` fájlt. Majd **beépülő modulok** > **egyéni**. Válassza ki **Git** telepítési forrásként. 
     
 2. Adja meg `https://github.com/phonegap/phonegap-plugin-push` forrásaként.
 
-    ![Nyissa meg a config.xml fájlt a Megoldáskezelőben][img1]
+    ![Nyissa meg a soubor Config.XML v fájlt a Megoldáskezelőben][img1]
 
 3. Válassza ki a telepítési forrás melletti nyílra.
 
-4. A **SENDER_ID**, ha már telepítette a Google Developer Console projekt numerikus Projektazonosítónak, hozzáadhatja azt itt. Ellenkező esetben adja meg a helyőrző értékét, például 777777. Android céloz meg, ha ezt az értéket a config.xml fájl később frissítheti.
+4. A **SENDER_ID**, ha már rendelkezik egy numerikus projekt Azonosítóját, a Google Developer Console projekt, akkor is Itt veheti fel. Ellenkező esetben adja meg a helyőrző értéket, például 777777. Android céloz meg, ha ezt az értéket később a soubor Config.XML v fájlban frissítheti.
 
     >[!NOTE]
-    >Től verzió 2.0.0 google-services.json telepítve kell lennie a gyökérmappában található, a projekt konfigurálásához a küldő azonosítója. További információkért lásd: a [dokumentáció.](https://github.com/phonegap/phonegap-plugin-push/blob/master/docs/INSTALLATION.md)
+    >2.0.0-s verziójával kezdődően a google-services.json telepítve kell lennie a gyökérmappájában lévő mappának a projekt konfigurálásához a feladó azonosítója. További információkért lásd: a [ügyféltelepítési dokumentációban.](https://github.com/phonegap/phonegap-plugin-push/blob/master/docs/INSTALLATION.md)
 5. Válassza a **Hozzáadás** lehetőséget.
 
-A leküldéses beépülő modul telepítve van.
+A leküldéses beépülő modul már telepítve van.
 
 #### <a name="install-the-device-plugin"></a>Az eszköz beépülő modul telepítése
-Kövesse ugyanezt az eljárást a leküldéses beépülő modul telepítéséhez is használt. Az eszköz beépülő modul hozzáadása a Core beépülő modulok listában. (Található, jelölje be **beépülő modulok** > **Core**.) Ez a platform nevének megszerzése beépülő van szüksége.
+Kövesse ugyanazt az eljárást a leküldéses beépülő modul telepítéséhez is használt. Az eszköz beépülő modul hozzáadása a Core beépülő modulok listában. (Is megkeresheti, válassza ki a **beépülő modulok** > **Core**.) Ez a platform nevének beszerzése a beépülő modul van szüksége.
 
-#### <a name="register-your-device-when-the-application-starts"></a>Regisztrálja az eszközt, ha az alkalmazás indítása 
-Kezdetben magában foglalja az egyes minimális kód Android rendszerhez. Az alkalmazás futtatását iOS vagy Windows 10 később módosíthatja.
+#### <a name="register-your-device-when-the-application-starts"></a>Regisztrálja az eszközt, az alkalmazás indításakor 
+Minimális kód kezdetben Android tartalmazza. Az alkalmazás futtatását az iOS-vagy Windows 10-es később módosíthatja.
 
-1. Adjon hozzá egy **registerForPushNotifications** a visszahívás a bejelentkezési folyamat során. Másik lehetőségként felveheti alján a **onDeviceReady** módszert:
+1. Adja hozzá egy hívást **registerForPushNotifications** a visszahívás a bejelentkezési folyamat során. Másik lehetőségként felveheti alján a **onDeviceReady** módszer:
 
         // Log in to the service.
         client.login('google')
@@ -116,9 +116,9 @@ Kezdetben magában foglalja az egyes minimális kód Android rendszerhez. Az alk
 
             }, handleError);
 
-    Ez a példa bemutatja hívása **registerForPushNotifications** sikeres hitelesítést követően. Hívása `registerForPushNotifications()` gyakran szükség.
+    Ez a példa bemutatja a hívó **registerForPushNotifications** sikeres hitelesítést követően. Meghívhatja `registerForPushNotifications()` gyakran szükség.
 
-2. Adja hozzá az új **registerForPushNotifications** módszert az alábbiak szerint:
+2. Az új **registerForPushNotifications** módszert az alábbiak szerint:
 
         // Register for push notifications. Requires that phonegap-plugin-push be installed.
         var pushRegistration = null;
@@ -162,27 +162,27 @@ Kezdetben magában foglalja az egyes minimális kód Android rendszerhez. Az alk
 
         pushRegistration.on('error', handleError);
         }
-3. (Android) Cserélje le az előzőekben látható kód `Your_Project_ID` numerikus project azonosítója a az alkalmazás a [Google Developer Console][18].
+3. (Android) Cserélje le a fenti kóddal, `Your_Project_ID` numerikus project azonosítója, az alkalmazás a [Google Developer Console][18].
 
-## <a name="optional-configure-and-run-the-app-on-android"></a>(Választható) Konfigurálja és az Android-alkalmazás futtatása
+## <a name="optional-configure-and-run-the-app-on-android"></a>(Nem kötelező) Konfigurálja és futtassa az alkalmazást Android rendszeren
 Ez a szakasz az Android leküldéses értesítések engedélyezéséhez végezze el.
 
 #### <a name="enable-gcm"></a>Engedélyezze a Firebase Cloud Messaging
-Mivel a Google Android platform kezdetben céloz, engedélyeznie kell a Firebase Cloud Messaging.
+Céloz meg a Google Android platform kezdetben, mivel a Firebase Cloud Messaging kell engedélyeznie.
 
 [!INCLUDE [notification-hubs-enable-firebase-cloud-messaging](../../includes/notification-hubs-enable-firebase-cloud-messaging.md)]
 
-#### <a name="configure-backend"></a>A Mobile Apps háttér FCM használatával leküldéses kérelmek küldésére konfigurálása
+#### <a name="configure-backend"></a>A mobilalkalmazás háttérrendszere FCM használatával leküldéses kérelmek küldésére konfigurálása
 [!INCLUDE [app-service-mobile-android-configure-push](../../includes/app-service-mobile-android-configure-push.md)]
 
-#### <a name="configure-your-cordova-app-for-android"></a>Konfigurálja a Cordova-alkalmazás Android rendszerhez
-Nyissa meg a Cordova-alkalmazáshoz config.xml. Ezután cserélje le `Your_Project_ID` numerikus project azonosítója a az alkalmazás a [Google Developer Console][18].
+#### <a name="configure-your-cordova-app-for-android"></a>Az Android a Cordova-alkalmazás konfigurálása
+Nyissa meg a Cordova-alkalmazás soubor Config.XML v. Ezután cserélje le `Your_Project_ID` numerikus project azonosítója, az alkalmazás a [Google Developer Console][18].
 
         <plugin name="phonegap-plugin-push" version="1.7.1" src="https://github.com/phonegap/phonegap-plugin-push.git">
             <variable name="SENDER_ID" value="Your_Project_ID" />
         </plugin>
 
-Nyissa meg a index.js. Ezután frissítse a kódot, és használja a numerikus projekt ID azonosítójával.
+Nyissa meg az index.js. Frissítse a kódot, a projekt numerikus azonosítója.
 
         pushRegistration = PushNotification.init({
             android: { senderID: 'Your_Project_ID' },
@@ -190,117 +190,117 @@ Nyissa meg a index.js. Ezután frissítse a kódot, és használja a numerikus p
             wns: {}
         });
 
-#### <a name="configure-device"></a>Android-eszköz az USB-hibakeresés konfigurálása
-Az alkalmazás Android-eszköz telepítése előtt kell USB-hibakeresés engedélyezése. A következő lépéseket az Android-telefonon:
+#### <a name="configure-device"></a>Az USB-hibakeresés Android-eszköz konfigurálása
+Az Android-eszközön az alkalmazás telepítése előtt szüksége USB-hibakeresés engedélyezése. Az alábbi lépéseket az Androidos telefonján:
 
-1. Ugrás a **beállítások** > **névjegye**. Koppintson a **buildszáma** mindaddig, amíg a fejlesztői mód engedélyezve van (körülbelül hét alkalommal).
-2. Vissza a **beállítások** > **fejlesztői beállítások**, engedélyezése **USB-hibakeresés**. Androidos telefonja majd kapcsolódjon a fejlesztési számítógép USB-kábellel.
+1. Lépjen a **beállítások** > **névjegye**. Koppintson a **buildszám** mindaddig, amíg a fejlesztői mód engedélyezve van (körülbelül hét alkalommal).
+2. Térjen vissza **beállítások** > **fejlesztői beállítások**, engedélyezze **USB-hibakeresés**. Az Androidos telefonján majd csatlakozni a fejlesztési számítógép USB-kábellel.
 
-Tesztelt Ez egy Android 6.0 (Marshmallow) rendszert futtató Google Nexus 5 X-eszköz használatával. A módszerek azonban által közösen bármelyik modern Android verzióját.
+Tesztelt Ez egy Android 6.0 (Marshmallow) rendszert futtató Google Nexus 5 X-eszköz használatával. Azonban a technikák által közösen bármelyik modern Androidos verzióját.
 
 #### <a name="install-google-play-services"></a>Google Play-szolgáltatások telepítése
-A leküldéses beépülő modul az Android Google Play-szolgáltatások a leküldéses értesítések támaszkodik.
+A leküldéses beépülő modul leküldéses értesítések az Android Google Play szolgáltatások támaszkodik.
 
-1. A Visual Studio válassza **eszközök** > **Android** > **Android SDK Manager**. Ezután bontsa ki a **kiegészítő funkciók** mappát. A megfelelő jelölőnégyzeteket győződjön meg arról, hogy a következő SDK-k mindegyikének telepítve van:
+1. A Visual Studióban válassza ki a **eszközök** > **Android** > **Android SDK Manager**. Ezután bontsa ki a **kiegészítő funkciók** mappát. Jelölje be a megfelelő győződjön meg arról, hogy a következő SDK-k mindegyike van telepítve:
 
-   * Android 2.3-as vagy újabb
-   * Google-tárház változat 27 vagy nagyobb
-   * Google Play-szolgáltatásokra 9.0.2 vagy újabb
+   * Android 2.3 vagy újabb
+   * Google-tárház változat 27-es vagy újabb
+   * A Google Play-szolgáltatások 9.0.2-es vagy újabb
 
-2. Válassza ki **csomagok**. Várjon, amíg a telepítés befejezéséhez.
+2. Válassza ki **csomagok telepítéséhez**. Várjon, amíg a telepítés befejeződik.
 
-Az aktuális szükséges kódtárak láthatók a [phonegap-beépülőmodul-leküldéses telepítési dokumentáció][19].
+A jelenlegi szükséges kódtárak szerepelnek a [phonegap-beépülő modul – leküldéses ügyféltelepítési dokumentáció][19].
 
-#### <a name="test-push-notifications-in-the-app-on-android"></a>Teszt leküldéses értesítések Android rendszeren az alkalmazásban
-Most teszt leküldéses értesítések segítségével az alkalmazás fut, és a TodoItem tábla elemek beszúrása. Mindaddig, amíg az azonos háttér használata tesztelheti egy második eszköz, vagy ugyanarra az eszközre. Az Android platformon a Cordova-alkalmazás tesztelése a következő módszerek valamelyikével:
+#### <a name="test-push-notifications-in-the-app-on-android"></a>Teszt leküldéses értesítések az alkalmazásban androidon
+Így most teszt leküldéses értesítések az alkalmazás futtatása és az elem beszúrása a TodoItem táblába. Ugyanazon az eszközön, illetve egy második eszköz, amennyiben az ugyanazon háttérrendszer használata tesztelheti. Az Android platformon a Cordova-alkalmazás teszteléséhez a következő módszerek egyikével:
 
-* *A fizikai eszközön:* a fejlesztési számítógép USB-kábellel csatlakoztassa az Android-eszköz.  Ahelyett, hogy **Google Android Emulator**, jelölje be **eszköz**. Visual Studio telepíti az alkalmazást az eszközre, és futtatja az alkalmazást. Ezután kommunikálhat az alkalmazást az eszközön.
+* *A fizikai eszközön:* Android-eszköz csatlakoztatása a fejlesztési számítógép USB-kábellel.  Helyett **Google Android Emulator**válassza **eszköz**. Visual Studio telepíti az alkalmazást az eszközön, és futtatja az alkalmazást. Ezután használhatja az alkalmazást az eszközön.
 
-  Képernyő-megosztási alkalmazások, mint például [Mobizen] [ 20] is segítséget nyújt a Android-alkalmazások fejlesztésével. Mobizen projekt az Android egy webes böngésző képernyőn a számítógépen.
+  Képernyő-megosztási alkalmazások, mint például [Mobizen] [ 20] is segítséget nyújt a Android-alkalmazások fejlesztéséhez használható. Mobizen-projektek, az Android képernyő egy webböngészőt a számítógépen.
 
-* *Az Android-emulátorban:* további konfigurációs lépésekre, amelyek szükségesek az emulátor használatakor.
+* *Egy Android-emulátor:* vannak további konfigurációs lépések, amelyek szükségesek, amikor az emulátor használata.
 
-    Ellenőrizze, hogy a virtuális eszköz, amely rendelkezik a Google API-k, célként beállítva, ahogy az az Android virtuális eszközt (AVD) kezelő telepíti.
+    Ellenőrizze, hogy a virtuális eszköz, amely rendelkezik a Google API-kat, állítsa be a cél, ahogyan az az Android virtuális eszközt (AVD) kezelő végzi.
 
     ![Android virtuális eszközt kezelője](./media/app-service-mobile-cordova-get-started-push/google-apis-avd-settings.png)
 
-    Ha szeretné használni a gyorsabb x86 emulátor, [a HAXM illesztőprogram telepítése][11], majd adja meg az emulátorban történő használatát.
+    Ha szeretné használni a gyorsabb x86 emulátorban, [a HAXM illesztőprogramot telepítse][11], majd konfigurálja az emulátorban, használhatja azt.
 
-    A Google-fiók hozzáadása az Android-eszközön kiválasztásával **alkalmazások** > **beállítások** > **fiók hozzáadása**. Kövesse az utasításokat.
+    Google-fiók hozzáadása az Android-eszköz kiválasztásával **alkalmazások** > **beállítások** > **fiók hozzáadása**. Ezután kövesse az utasításokat.
 
-    ![A Google-fiók hozzáadása az Android-eszközön](./media/app-service-mobile-cordova-get-started-push/add-google-account.png)
+    ![Google-fiók hozzáadása az Android-eszközön](./media/app-service-mobile-cordova-get-started-push/add-google-account.png)
 
-    Futtassa a todolist alkalmazást előtt, és egy új teendő elem beszúrása. Ebben az esetben egy értesítési ikon jelenik meg az értesítési területen. Úgy is megnyithatja az értesítési fiókot, az értesítés a teljes szöveg megtekintéséhez.
+    A todolist alkalmazást előtt futtassa, és a egy új teendő elem beszúrása. Ennek során egy értesítési ikon jelenik meg az értesítési területen. A teljes szöveg a bejelentés megtekintése az értesítési fiókot is megnyithatja.
 
-    ![értesítési nézet](./media/app-service-mobile-cordova-get-started-push/android-notifications.png)
+    ![Értesítés megtekintése](./media/app-service-mobile-cordova-get-started-push/android-notifications.png)
 
-## <a name="optional-configure-and-run-on-ios"></a>(Választható) Konfigurálására és futtatására IOS rendszerű eszközökön
-Ez a szakasz az iOS-eszközök a Cordova-projekt futtatása. Ha nem dolgozik iOS-eszközök, ez a szakasz kihagyhatja.
+## <a name="optional-configure-and-run-on-ios"></a>(Nem kötelező) Konfigurálhat és IOS-eszközökön futtathatja
+Ez a szakasz olyan iOS-eszközökön a Cordova-projekt futtatása. Ha nem dolgozik iOS-eszközök, kihagyhatja ezt a szakaszt.
 
-#### <a name="install-and-run-the-ios-remote-build-agent-on-a-mac-or-cloud-service"></a>Telepítse, és futtassa az iOS távoli build ügynök Mac vagy felhőalapú szolgáltatásként
-A Cordova-alkalmazást a Visual Studio használatával iOS futtatása előtt halad át a lépéseket a [iOS beállítási útmutató] [ 12] telepíteni és futtatni a távoli build ügynök.
+#### <a name="install-and-run-the-ios-remote-build-agent-on-a-mac-or-cloud-service"></a>Telepítse és futtassa az IOS-es távoli fordító-ügynökhöz a Mac vagy felhőalapú szolgáltatásként
+Cordova-alkalmazás futtatása a Visual Studio használatával iOS rendszeren, előtt végignézzük a lépéseket a a [iOS beállítási útmutató] [ 12] telepíteni és futtatni a távoli fordító-ügynökhöz.
 
-Győződjön meg arról, hogy az IOS-alkalmazást hozhat létre. A telepítő útmutató szükségesek az IOS-alkalmazás létrehozása a Visual Studio eszközből. Ha nem rendelkezik a Mac, hozhat létre iOS rendszerhez készült hasonló MacInCloud szolgáltatás a távoli build ügynök használatával. További információkért lásd: [az iOS-alkalmazás futtatása a felhőben][21].
+Ellenőrizze, hogy az IOS-alkalmazást hozhat létre. A beállítási útmutató a lépések szükségesek az IOS-alkalmazás létrehozása a Visual Studióból. Ha nem rendelkezik a Mac, hozhat létre iOS-hez a távoli fordító-ügynökhöz hasonlóan MacInCloud szolgáltatás használatával. További információkért lásd: [az iOS-alkalmazás futtatása a felhőben][21].
 
 > [!NOTE]
-> XCode 7 vagy újabb IOS rendszerű eszközökön a leküldéses beépülő modul használatához szükséges.
+> XCode 7 vagy újabb IOS-eszközökön a leküldéses beépülő modul használata szükséges.
 
-#### <a name="find-the-id-to-use-as-your-app-id"></a>Keresse meg az Alkalmazásazonosító használandó Azonosítóját
-Leküldéses értesítések, nyitott config.xml a Cordova-alkalmazáshoz, az alkalmazás regisztrálása előtt található a `id` attribútum értéke a widget elemben, és másolja azt későbbi használatra. A következő XML-kódban, az azonosító: `io.cordova.myapp7777777`.
+#### <a name="find-the-id-to-use-as-your-app-id"></a>Keresse meg az Azonosítót használja, az App-ID
+Az alkalmazást a leküldéses értesítésekre, open config.xml a Cordova-alkalmazáshoz, a regisztráció előtt keresse meg a `id` attribútum a widget elemben lévő értéket, és másolja azt későbbi használatra. A következő XML-ben az azonosító: `io.cordova.myapp7777777`.
 
         <widget defaultlocale="en-US" id="io.cordova.myapp7777777"
           version="1.0.0" windows-packageVersion="1.1.0.0" xmlns="http://www.w3.org/ns/widgets"
             xmlns:cdv="http://cordova.apache.org/ns/1.0" xmlns:vs="http://schemas.microsoft.com/appx/2014/htmlapps">
 
-Ez az azonosító újabb verzióival való használatához, amikor egy alkalmazás azonosítója hoz létre az Apple fejlesztői portáljáról. Ha egy másik alkalmazás Azonosítót hoz létre a fejlesztői portálján, néhány további lépéseket kell végrehajtania az oktatóanyag későbbi részében. A widget elem Azonosítóját meg kell egyeznie az alkalmazás Azonosítóját a developer portálon.
+Ez az azonosító később, akkor használja, ha az Apple fejlesztői portálján hozzon létre egy App ID. Ha a fejlesztői portálon hoz létre egy másik alkalmazás azonosítója, néhány további lépést kell végeznie az oktatóanyag későbbi részében. A widget elem Azonosítóját meg kell egyeznie az Alkalmazásazonosítót a fejlesztői portálon.
 
-#### <a name="register-the-app-for-push-notifications-on-apples-developer-portal"></a>Az alkalmazás az Apple fejlesztői portálján a leküldéses értesítések regisztrálása
+#### <a name="register-the-app-for-push-notifications-on-apples-developer-portal"></a>Regisztrálja az alkalmazást leküldéses értesítésekhez az Apple fejlesztői portálján
 [!INCLUDE [Enable Apple Push Notifications](../../includes/enable-apple-push-notifications.md)]
 
 [Tekintse meg hasonló lépéseket ismertető videót](https://channel9.msdn.com/series/Azure-connected-services-with-Cordova/Azure-connected-services-task-5-Set-up-apns-for-push)
 
-#### <a name="configure-azure-to-send-push-notifications"></a>Leküldéses értesítések küldéséhez Azure konfigurálása
+#### <a name="configure-azure-to-send-push-notifications"></a>Leküldéses értesítések küldése az Azure konfigurálása
 [!INCLUDE [app-service-mobile-apns-configure-push](../../includes/app-service-mobile-apns-configure-push.md)]
 
 #### <a name="verify-that-your-app-id-matches-your-cordova-app"></a>Győződjön meg arról, hogy az alkalmazás azonosítója egyezik-e a Cordova-alkalmazáshoz
-Ha az alkalmazás Azonosítóját, amely az Apple Developer-fiók már létrehozott a config.xml fájl widget elemének azonosítója megegyezik, kihagyhatja ezt a lépést. Azonban ha az azonosító nem egyezik, a következő lépéseket:
+Ha az alkalmazás azonosítója, amelyet az Apple Developer-fiók már a soubor Config.XML v fájlban a widget elem azonosítója megegyezik, kihagyhatja ezt a lépést. Ha az azonosító nem egyezik, tegye a következőket:
 
-1. Törölje a platformok mappát a projektből.
-2. Törölje a beépülő modulok mappát a projektből.
-3. Törölje a node_modules mappát a projektből.
-4. Az id attribútum használata az alkalmazás azonosítója, amelyet az Apple fejlesztői fiókban hozott létre a config.xml fájlban widget elem frissítése.
+1. A platformok mappa törlése a projektből.
+2. A beépülő modulok mappa törlése a projektből.
+3. A node_modules mappa törlése a projektből.
+4. Frissítse az azonosító attribútum a widget elem a soubor Config.XML v fájlban, az alkalmazás azonosítója, amelyet az Apple developer-fiók használata.
 5. A projekt újraépítéséhez.
 
 ##### <a name="test-push-notifications-in-your-ios-app"></a>Teszt leküldéses értesítéseket az iOS-alkalmazás
-1. Visual Studio, ügyeljen arra, hogy **iOS** központi telepítés céljaként van kiválasztva. Válassza ki **eszköz** csatlakoztatott iOS-eszközön a leküldéses értesítések futtatásához.
+1. A Visual Studióban, győződjön meg arról, hogy **iOS** van kiválasztva, a központi telepítési céllal. Válassza ki **eszköz** futtatásához a leküldéses értesítéseket a csatlakoztatott iOS-eszközön.
 
-    A leküldéses értesítések iOS-eszközön, amely kapcsolódik a Számítógéphez, az iTunes futtatása. Az iOS-szimulátor nem támogatja a leküldéses értesítéseket.
+    A leküldéses értesítések iOS-eszközön, amely kapcsolódik a számítógéphez, az iTunes futtathatja. Az iOS-szimulátor nem támogatja a leküldéses értesítéseket.
 
-2. Válassza ki a **futtatása** gomb vagy **F5** a projekt felépítéséhez és az alkalmazás elindításához az iOS-eszközök Visual Studio. Válassza ki **OK** leküldéses értesítések fogadásához.
+2. Válassza ki a **futtatása** gomb vagy **F5** a projekt buildjének elkészítéséhez, és indítsa el az alkalmazást az iOS-eszközök a Visual studióban. Válassza ki **OK** leküldéses értesítések fogadásához.
 
    > [!NOTE]
-   > Leküldéses értesítések első megerősítést kér az alkalmazás.
+   > Az alkalmazás első futtatása során a leküldéses értesítések megerősítését kéri.
 
-3. Az alkalmazásban írjon be egy feladatot, majd válassza ki a plusz **(+)** ikonra.
-4. Győződjön meg arról, hogy egy értesítést fogadott a rendszer. Válassza ki **OK** az értesítés bezárásának engedélyezése.
+3. Az alkalmazásban írjon be egy feladatot, és válassza a plusz **(+)** ikonra.
+4. Győződjön meg arról, hogy az értesítés érkezett. Válassza ki **OK** az értesítés elvetéséhez.
 
-## <a name="optional-configure-and-run-on-windows"></a>(Választható) Konfigurálja és futtassa a Windows
-Ez a szakasz ismerteti az Apache Cordova-alkalmazás projekt futtatásáról a Windows 10-eszközök (a PhoneGap leküldéses beépülő modul támogatja a Windows 10). Ha nem dolgozik Windows-eszközökkel, ez a szakasz kihagyhatja.
+## <a name="optional-configure-and-run-on-windows"></a>(Nem kötelező) Konfigurálja és futtassa a Windows
+Ez a szakasz ismerteti, hogyan futtathat a Apache Cordova-projektet (a PhoneGap leküldéses beépülő modul támogatja a Windows 10-es) a Windows 10-es eszközökön. Ha nem dolgozik Windows-eszközök, kihagyhatja az ebben a szakaszban.
 
-#### <a name="register-your-windows-app-for-push-notifications-with-wns"></a>Alkalmazás regisztrálása a Windows leküldéses értesítéseket a WNS-sel való
-A tároló beállításait használja a Visual Studio alkalmazásban, válassza a Windows célja a megoldás platformok listája, például **Windows-x64** vagy **Windows-x86**. (Elkerülése érdekében **Windows-AnyCPU** leküldéses értesítésekre.)
+#### <a name="register-your-windows-app-for-push-notifications-with-wns"></a>A leküldéses értesítések Windows alkalmazás regisztrálása a WNS-sel
+A Store beállítások használatához a Visual Studióban, válassza ki a Windows-tároló a listából megoldás platformok, mint például **Windows-x64** vagy **Windows-x86**. (Elkerülése érdekében **Windows-AnyCPU** leküldéses értesítésekre való.)
 
 [!INCLUDE [app-service-mobile-register-wns](../../includes/app-service-mobile-register-wns.md)]
 
-[Egy hasonló lépéseket bemutató videó][13]
+[Tekintse meg hasonló lépéseket ismertető videót][13]
 
 #### <a name="configure-the-notification-hub-for-wns"></a>A WNS az értesítési központ konfigurálása
 [!INCLUDE [app-service-mobile-configure-wns](../../includes/app-service-mobile-configure-wns.md)]
 
-#### <a name="configure-your-cordova-app-to-support-windows-push-notifications"></a>A Cordova-alkalmazás támogatja a Windows leküldéses értesítéseket konfigurálása
-A configuration designer megnyitásához kattintson a jobb gombbal **config.xml**. Válassza ki **adatforrásnézet-tervezőből**. Ezután válassza ki a **Windows** lapra, majd válassza ki **Windows 10** alatt **Windows célverzió**.
+#### <a name="configure-your-cordova-app-to-support-windows-push-notifications"></a>A Cordova-alkalmazás támogatja a Windows leküldéses értesítések konfigurálása
+A konfigurációtervező megnyitásához kattintson a jobb gombbal **soubor Config.XML v**. Válassza ki **adatforrásnézet-tervezőből**. Ezután válassza ki a **Windows** lapra, és válassza ki **Windows 10-es** alatt **Cílová Verze Windows**.
 
-Az alapértelmezett (hibakereséshez) leküldéses értesítések támogatásához használható alkot, nyissa meg a build.json fájlt. Ezután másolja a "release" konfigurációs hibakeresési konfigurációjához.
+Leküldéses értesítések támogatásához az alapértelmezett (Hibakeresés) hoz létre, nyissa meg a build.json fájlt. Ezután másolja a "release" konfiguráció a hibakeresési konfigurációhoz.
 
         "windows": {
             "release": {
@@ -309,7 +309,7 @@ Az alapértelmezett (hibakereséshez) leküldéses értesítések támogatásáh
             }
         }
 
-A frissítés után a build.json kell tartalmaznia a következő kódot:
+A frissítés után a build.json fájlt tartalmaznia kell a következő kódot:
 
     "windows": {
         "release": {
@@ -322,22 +322,22 @@ A frissítés után a build.json kell tartalmaznia a következő kódot:
             }
         }
 
-Az alkalmazás elkészítésére, és ellenőrizze, hogy rendelkezik-e hibák. Az ügyfélalkalmazás most regisztrálni kell az értesítések a Mobile Apps háttérből. Ismételje meg minden Windows-projektet a megoldásban ez a szakasz.
+Az alkalmazás létrehozása, és ellenőrizze, hogy rendelkezik-e hibák. Az ügyfélalkalmazás most regisztráljanak az értesítések a Mobile Apps háttéralkalmazásból. Ismételje meg minden Windows-projektet a megoldásban ez a szakasz.
 
-#### <a name="test-push-notifications-in-your-windows-app"></a>Teszt leküldéses értesítések a Windows-alkalmazásokban
-A Visual Studio, győződjön meg arról, hogy a Windows platform van kiválasztva a telepítés céljaként például **Windows-x64** vagy **Windows-x86**. Futtassa az alkalmazást a Visual Studio futtató Windows 10 rendszerű Számítógépeken, válassza a **helyi számítógép**.
+#### <a name="test-push-notifications-in-your-windows-app"></a>Teszt leküldéses értesítéseket a Windows-alkalmazás
+A Visual Studióban, győződjön meg arról, hogy egy Windows-platform van kiválasztva a telepítés céljaként például **Windows-x64** vagy **Windows-x86**. Futtassa az alkalmazást a Visual Studio futtató Windows 10 rendszerű, válassza a **helyi gép**.
 
 1. Válassza ki a **futtatása** gombot a projekt buildjének elkészítéséhez, és indítsa el az alkalmazást.
 
-2. Az alkalmazásban írjon be egy új todoitem nevét, majd válassza ki a plusz **(+)** ikonra kattintva vegye fel azt.
+2. Az alkalmazásban írjon be egy nevet az új beállíthatnánk, és válassza a plusz **(+)** ikonra kattintva adja hozzá.
 
-Győződjön meg arról, hogy értesítést kapott, a cikk felvételekor.
+Győződjön meg arról, hogy értesítés érkezik, az elem hozzáadásakor.
 
 ## <a name="next-steps"></a>Következő lépések
-* További információ a [Notification Hubs] [ 17] leküldéses értesítések tájékozódhat.
+* További információ [Notification Hubs] [ 17] a leküldéses értesítések megismerése.
 * Ha még nem tette meg, továbbra is az oktatóanyag által [hitelesítés hozzáadása] [ 14] az Apache Cordova-alkalmazáshoz.
 
-Megtudhatja, hogyan használja a következő SDK-IT:
+Ismerje meg, hogyan használható a következő SDK-k:
 
 * [Apache Cordova SDK][15]
 * [ASP.NET Server SDK][1]

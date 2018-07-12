@@ -1,19 +1,19 @@
 ---
 title: A prediktív karbantartási megoldásgyorsító áttekintése – Azure | Microsoft Docs
-description: Az Azure IoT – prediktív karbantartás megoldásgyorsító áttekintése.
+description: Az Azure IoT prediktív karbantartási megoldásgyorsító áttekintése.
 author: dominicbetts
 manager: timlt
 ms.service: iot-accelerators
 services: iot-accelerators
 ms.topic: conceptual
-ms.date: 11/14/2017
+ms.date: 07/12/2018
 ms.author: dobett
-ms.openlocfilehash: 6bd61f301fa4468ef1d308d4da275c760ee09dc0
-ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
+ms.openlocfilehash: ed87b3c935fe4032460f8e524f963355fb3157d9
+ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/28/2018
-ms.locfileid: "37088622"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38970301"
 ---
 # <a name="predictive-maintenance-solution-accelerator-overview"></a>A prediktív karbantartási megoldásgyorsító áttekintése
 
@@ -29,7 +29,17 @@ A kék elemek Azure-szolgáltatások, amelyek a megoldásgyorsító üzembe hely
 
 A zöld elem egy repülőmotort jelképező szimulált eszköz. Ezekről a szimulált eszközökről a [szimulált eszközökkel](#simulated-devices) foglalkozó szakaszban tudhat meg többet.
 
-A szürke elemek az *eszközfelügyeleti* képességeket megvalósító összetevőket jelölik. A prediktív karbantartási megoldásgyorsító jelenlegi kiadása nem biztosítja ezeket az erőforrásokat. Eszközkezeléssel kapcsolatos további tudnivalókért tekintse meg a [megoldásgyorsító távoli megfigyelési][lnk-remote-monitoring].
+A szürke elemek az *eszközfelügyeleti* képességeket megvalósító összetevőket jelölik. A prediktív karbantartási megoldásgyorsító jelenlegi kiadása nem biztosítja ezeket az erőforrásokat. Eszközök felügyeletével kapcsolatos további tudnivalókért tekintse meg a [távoli figyelési megoldásgyorsító][lnk-remote-monitoring].
+
+## <a name="azure-resources"></a>Azure-erőforrások
+
+A kiépített erőforrások megtekintéséhez az Azure Portalon keresse meg a kiválasztott megoldásnévvel rendelkező erőforráscsoportot.
+
+![][img-resource-group]
+
+A megoldásgyorsító kiépítésekor egy e-mailt kap, amely tartalmazza a Machine Learning-munkaterületre mutató hivatkozást. A Machine Learning-munkaterületet is elérheti a [azureiotsolutions.com] [ lnk-azureiotsuite] lap a kiépített megoldáshoz. Amikor a megoldás **Kész** állapotban van, elérhetővé válik egy csempe ezen az oldalon.
+
+![][img-machine-learning]
 
 ## <a name="simulated-devices"></a>Szimulált eszközök
 
@@ -61,6 +71,11 @@ Az **Event Processor Host** egy Azure-beli webes feladatban fut. Az **eseményfe
 ## <a name="machine-learning"></a>Machine Learning
 A Machine Learning összetevő egy olyan modellt használ, amely valódi repülőgépek adataiból jött lére. A Machine Learning-munkaterületet a megoldás csempéjéről érheti el, amely az [azureiotsuite.com][lnk-azureiotsuite] oldalon található. A csempe akkor érhető el, amikor a megoldás **Kész** állapotban van.
 
+Az Azure Machine Learning-modellel mutatja be ezeket a képességeket, IoT-megoldás megoldásgyorsítók szolgáltatásokon keresztül gyűjtött eszköztelemetriából dolgozik sablonként érhető el. A Microsoft felépítette egy [regressziós modell] [ lnk_regression_model] felépítette egy repülőmotor nyilvánosan elérhető adatok alapján<sup>\[1\]</sup>, és lépésenkénti útmutatóját a modell használatának módjáról.
+
+Az Azure IoT prediktív karbantartási megoldásgyorsító az ebből a sablonból létrehozott regressziós modellt használja. A rendszer az Azure-előfizetésben helyezi üzembe a modellt, és egy automatikusan létrehozott API-n keresztül teszi közzé. A megoldásban a tesztadatok egy része szerepel, amely (összesen 100-ból) 4 motort és (összesen 21-ből) 4 érzékelőadat-streamet ábrázol. Ezek az adatok elegendők ahhoz, hogy pontos eredményt biztosítsanak a betanított modellből.
+
+*\[1\] A. Saxena és K. Goebel (2008). „Turbofan Engine Degradation Simulation Data Set”, NASA Ames Prognostics Data Repository (https://c3.nasa.gov/dashlink/resources/139/), NASA Ames Research Center, Moffett Field, CA*
 
 ## <a name="next-steps"></a>További lépések
 A prediktív karbantartási megoldásgyorsító fő összetevőinek áttekintése után érdemes lehet testre szabni azt.
@@ -71,10 +86,13 @@ Megismerheti az IoT-megoldásgyorsítók egyéb szolgáltatásait és funkcióit
 * [IoT-biztonság létrehozása az alapoktól][lnk-security-groundup]
 
 [img-architecture]: media/iot-accelerators-predictive-walkthrough/architecture.png
+[img-resource-group]: media/iot-accelerators-predictive-walkthrough/resource-group.png
+[img-machine-learning]: media/iot-accelerators-predictive-walkthrough/machine-learning.png
 
-[lnk-remote-monitoring]: iot-accelerators-remote-monitoring-explore.md
+[lnk-remote-monitoring]: quickstart-predictive-maintenance-deploy.md
 [lnk-cortana-analytics]: http://gallery.cortanaintelligence.com/Collection/Predictive-Maintenance-Template-3
 [lnk-azureiotsuite]: https://www.azureiotsolutions.com/
 [lnk-faq]: iot-accelerators-faq.md
 [lnk-security-groundup]:/azure/iot-fundamentals/iot-security-ground-up
 [lnk-machine-learning]: https://azure.microsoft.com/services/machine-learning/
+[lnk_regression_model]: http://gallery.cortanaanalytics.com/Collection/Predictive-Maintenance-Template-3

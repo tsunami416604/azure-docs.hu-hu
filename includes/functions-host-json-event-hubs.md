@@ -10,6 +10,6 @@
 
 |Tulajdonság  |Alapértelmezett | Leírás |
 |---------|---------|---------| 
-|maxBatchSize|64|A receive hurok érkezett események maximális száma.|
-|prefetchCount|n/a|Az alapértelmezett PrefetchCount, amelyet az alapul szolgáló EventProcessorHost fog használni.| 
+|maxBatchSize|64|A ciklust a fogadás egy fogadott események maximális száma.|
+|prefetchCount|n/a|Az alapértelmezett PrefetchCount, amely az alapul szolgáló EventProcessorHost használni fog.| 
 |batchCheckpointFrequency|1|Az EventHub kurzor ellenőrzőpont létrehozása előtt feldolgozható kötegek esemény száma.| 

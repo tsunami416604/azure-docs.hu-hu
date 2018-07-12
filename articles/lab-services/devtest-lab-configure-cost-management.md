@@ -1,6 +1,6 @@
 ---
-title: Tekintse meg a labor becsült havi költségtrend Azure DevTest Labs szolgáltatásban |} Microsoft Docs
-description: További tudnivalók az Azure DevTest Labs havi becsült költség trend diagram.
+title: A havi becsült labor költség trend megtekintése az Azure DevTest Labs szolgáltatásban |} A Microsoft Docs
+description: További információ az Azure DevTest Labs havi becsült költség trend diagram.
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
 author: spelluru
@@ -15,93 +15,93 @@ ms.topic: article
 ms.date: 04/05/2018
 ms.author: spelluru
 ms.openlocfilehash: 13535dae82ef2c8896dad7d6221553d15e4e6a95
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33787632"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38573811"
 ---
-# <a name="view-the-monthly-estimated-lab-cost-trend-in-azure-devtest-labs"></a>Tekintse meg a labor becsült havi költségtrend Azure DevTest Labs szolgáltatásban
-A DevTest Labs költség felügyeleti funkciója segítségével nyomon követheti a labor költségét. Ez a cikk bemutatja, hogyan használja a **becsült havi Költségtrend** diagram megjelenítése az aktuális naptári hónapra az aktuális naptári hónapra becsült költség-date és a várható befejezési hónap költsége. Ez a cikk is bemutatja, hogyan jobb kezelése érdekében úgy, hogy költségkeret célozza meg, és küszöbértékeket, hogy a elérésekor, eseményindító jelentik az eredményeket a DevTest Labs labor költségeket.
+# <a name="view-the-monthly-estimated-lab-cost-trend-in-azure-devtest-labs"></a>A havi becsült labor költség trend megtekintése az Azure DevTest Labs szolgáltatásban
+A Cost Management szolgáltatás a DevTest Labs segítségével nyomon követheti a labor költségét. Ez a cikk bemutatja, hogyan használhatja a **havi becsült költség Trend** diagram a jelenlegi naptári hónap becsült költség dátumig és a hónap teljes költségről megtekintése az aktuális hónap. Ez a cikk emellett bemutatja, hogyan kontrollja tesztlabor beállításával költségkeret célokhoz és küszöbértékekhez, elérésekor, eseményindító DevTest Labs-jelentik az eredményeket.
 
-## <a name="viewing-the-monthly-estimated-cost-trend-chart"></a>A havi becsült Költségtrend diagram megtekintése
-A havi becsült Költségtrend diagram megtekintéséhez kövesse az alábbi lépéseket: 
+## <a name="viewing-the-monthly-estimated-cost-trend-chart"></a>A havi becsült költség Trend diagram megtekintése
+A havi becsült költség Trend diagram megtekintéséhez kövesse az alábbi lépéseket: 
 
 1. Jelentkezzen be az [Azure Portalra](http://go.microsoft.com/fwlink/p/?LinkID=525040).
-1. Ha szükséges, jelölje be **minden szolgáltatás**, majd válassza ki **DevTest Labs** a listából. (Előfordulhat, hogy az irányítópult már látható a labor **összes erőforrás**).
-1. Válassza ki a kívánt labor labs listájának megtekintéséhez.  
-1. A tesztlabor a **áttekintése** területen válassza **konfigurációs és házirendek**.   
-1. A bal oldali alatt **költség követési**, jelölje be **költségtrend**.
+1. Ha szükséges, válassza ki a **minden szolgáltatás**, majd válassza ki **DevTest Labs** a listából. (Előfordulhat, hogy a tesztkörnyezet már látható az irányítópult alatt **összes erőforrás**).
+1. Tesztkörnyezetek listájában jelölje ki a kívánt tesztkörnyezetben.  
+1. A laborgyakorlat **áttekintése** területen válassza **Konfigurace a zásady**.   
+1. A bal oldali alatt **költségek nyomon követése**, jelölje be **költség trend**.
 
-   Az alábbi képernyőfelvételen költség diagram példáját mutatja be. 
+   Az alábbi képernyőfelvételhez költség diagram egy példát mutat be. 
    
-    ![A diagram költség](./media/devtest-lab-configure-cost-management/graph.png)
+    ![A Cost diagram](./media/devtest-lab-configure-cost-management/graph.png)
 
-A **becsült költség** érték az aktuális naptári hónapra becsült költség dátumig. A **becsült költség** számítja ki a labor költség előző az öt napig teljes aktuális naptári hónapra vonatkozó becsült költsége van.
+A **becsült költség** értéke a jelenlegi naptári hónap becsült költség dátumig. A **előre jelzett költsége** becsült költsége van a teljes aktuális hónap, a labor költség számítja ki az előző öt nap.
 
-A költségek összegeket a következő egész számra kerekíti. Példa: 
+A költségek összegeket a legközelebbi egész számra kerekíti. Példa: 
 
 * 5.01 kerekít legfeljebb 6 
 * 5.50 kerekít legfeljebb 6
 * 5.99 kerekít legfeljebb 6
 
-Azt jelzi, a diagram felett, a költségek, alapértelmezés szerint a diagram a látja a rendszer *becsült* használatával költségek [használatalapú fizetés](https://azure.microsoft.com/offers/ms-azr-0003p/) díjakat kínál. Azt is beállíthatja a saját költségeik célokat, a diagramok által megjelenített [kezelése, a költség célokat a tesztkörnyezethez.](#managing-cost-targets-for-your-lab)
+Meghatározza a diagram felett, a költségek, alapértelmezés szerint a diagram a láthatja azokat *becsült* költségek használatával [használatalapú](https://azure.microsoft.com/offers/ms-azr-0003p/) ajánlja fel díjakat. Is beállíthat, amely szerint a diagramokban jelennek meg a saját költségkeret-beállítási célok [kezelése a költségek célokat a tesztkörnyezethez.](#managing-cost-targets-for-your-lab)
 
-Ezenkívül a következők *nem* költség kiszámításakor:
+Ezenkívül a következők *nem* szereplő költség:
 
-* CSP és Dreamspark-előfizetés használata jelenleg nem támogatott Azure DevTest Labs használja a [Azure számlázási API-k](../billing/billing-usage-rate-card-overview.md) a költség, amely nem támogatja a kriptográfiai Szolgáltató vagy a Dreamspark-előfizetések labor kiszámításához.
-* Az ajánlatok díjaival számolva. Jelenleg nem használható a (lásd az előfizetéshez tartozó), hogy Ön rendelkezik egyeztet Microsoft vagy a Microsoft partnerei ajánlatok díjaival számolva. Csak a használatalapú fizetés díjszabás szolgálnak.
-* A adók
-* A kedvezményeket
+* Kriptográfiai Szolgáltató és a Dreamspark-előfizetések jelenleg nem támogatottak, használja az Azure DevTest Labs a [Azure számlázási API-k](../billing/billing-usage-rate-card-overview.md) a költség, amely nem támogatja a kriptográfiai Szolgáltató vagy a Dreamspark-előfizetések labor kiszámításához.
+* Az ajánlat érvényes. Az ajánlat (látható díját az előfizetéshez tartozó), hogy Ön rendelkezik egyeztetése a Microsoft vagy a Microsoft partnerek jelenleg nem használható. Csak az utólagos elszámolású szolgálnak.
+* Az adókat
+* Slevy
 * A Számlázás pénzneme. Jelenleg a labor költség csak USD pénznemben jelenik meg.
 
-## <a name="managing-cost-targets-for-your-lab"></a>A tesztkörnyezet költség célok kezelése
-DevTest Labs lehetővé teszi majd megtekintheti a havi becsült Költségtrend diagram költségkeret target beállításával jobb kezelése érdekében a költségeket a tesztkörnyezetben. DevTest Labs szolgáltatásban is küldheti el Önnek értesítést a megadott cél költségeik vagy küszöbérték elérésekor. 
+## <a name="managing-cost-targets-for-your-lab"></a>A tesztkörnyezet céljainak költségek kezelése
+DevTest Labs lehetővé teszi kontrollja a tesztkörnyezetben, majd megtekintheti a havi becsült költség Trend diagram költségkeret cél beállításával. DevTest Labs segítségével is értesítést küld a célként megadott kiadások vagy a küszöbérték elérésekor. 
 
-1. A tesztkörnyezet a **áttekintése** ablaktáblán válassza előbb **konfigurációs és házirendek**.
-1. A bal oldali alatt **költség követési**, jelölje be **költségtrend**.
+1. A laborgyakorlat **áttekintése** ablaktáblán válassza előbb **Konfigurace a zásady**.
+1. A bal oldali alatt **költségek nyomon követése**, jelölje be **költség trend**.
 
     ![Cél gomb kezelése](./media/devtest-lab-configure-cost-management/cost-trend.png)
 
-1. Az a **költségtrend** ablaktáblán válassza előbb **kezelése cél**.
+1. Az a **költség trend** ablaktáblán válassza **kezelés cél**.
 
     ![Cél gomb kezelése](./media/devtest-lab-configure-cost-management/cost-trend-manage-target.png)
 
-1. A kezelés cél panelen adja meg a kívánt költségkeret cél és a küszöbértékeket. Is beállíthatja, hogy minden egyes megadott küszöbértéknél jelentett, a költség trend diagramon vagy webhook értesítést.
+1. A kezelés cél panelen adja meg a kívánt költségkeret cél és a küszöbértékeket. Beállíthatja, hogy egyes kiválasztott küszöbérték készüljön jelentés, a költség trend diagramra vagy webhook értesítést is.
 
-    ![Cél ablaktábla kezelése](./media/devtest-lab-configure-cost-management/cost-trend-manage-target-pane.png)
+    ![Cél panelen kezelése](./media/devtest-lab-configure-cost-management/cost-trend-manage-target-pane.png)
 
-   - Válassza ki a időintervalluma költség célok nyomon követni kívánt időszak.
-      - **Havi**: havonta költség célok nyomon követi.
-      - **Rögzített**: költség célok követi a kezdő dátum és végső dátummezők megadott dátumtartományra vonatkozóan. Általában ez előfordulhat, hogy megfeleljen mennyi ideig a projekt futásra nem ütemezték.
-   - Adjon meg egy **céloz költség**. Előfordulhat például, ez milyen mértékű azt tervezi, hogy egy meghatározott időszakban ebben a tesztkörnyezetben.
-   - Válassza ki az engedélyezni vagy letiltani a küszöbérték azt szeretné, akár 125 %-át a megadott – 25 %-os lépésekben – jelentett **céloz költség**.
-      - **Értesítés**: Ezzel a küszöbértékkel teljesülésekor értesíti, a webhook URL-CÍMÉT, akkor adja meg.
-      - **A diagram megrajzolásához**: Ha ezt a küszöbértéket teljesül, az eredmények ábrázolási megtekintheti, költség trend gráf leírtak [megtekintése a havi becsült Költségtrend diagram](#viewing-the-monthly-estimated-cost-trend-chart).
-   - Ha úgy dönt, hogy **értesítendő** amikor teljesül a küszöbértéket, meg kell adnia a webhook URL-CÍMÉT. A költségek Integrációk területen jelölje ki a **integrációs hozzáadásához kattintson ide**.
+   - Válassza ki egy adott időszakban, mely során költség célok nyomon követni kívánt.
+      - **Havi**: havi költség célok nyomon követi.
+      - **Rögzített**: költség célok nyomon követi a kezdő dátum és végső dátummezők megadott dátumtartományra vonatkozóan. Általában ezt meg az mennyi ideig a projekthez való futásra van ütemezve.
+   - Adjon meg egy **költség cél**. Előfordulhat például, ez mennyi azt tervezi, hogy a megadott időszakban a jelen labor beváltható.
+   - Engedélyezheti vagy tilthatja le semmilyen küszöbérték válassza azt szeretné, akár 125 %-át a megadott, 25 %-os léptékben – jelentett **költség cél**.
+      - **Értesítés**: a küszöbértéket, amikor értesítést kap, adja meg a webhook URL-cím szerint.
+      - **Vykreslit v grafu**: Ha ezt a küszöbértéket, az eredmények ábrázolási is megtekintheti, költség trend gráfokon leírtak szerint [a havi becsült költség Trend diagram megtekintése](#viewing-the-monthly-estimated-cost-trend-chart).
+   - Ha úgy dönt, hogy **értesítendő** a küszöbértéket, amikor meg kell adnia a webhook URL-CÍMÉT. A költségek Integrációk területen jelölje ki a **Ide kattintva hozzáadhat egyet integrációs**.
 
-      A Webhook URL-CÍMÉT adja meg a konfigurálás értesítési ablaktáblát, és válassza ki **OK**.
+      A konfigurálás értesítési panelen adjon meg egy Webhook URL-CÍMÉT, majd **OK**.
 
-       ![Értesítési ablaktáblát konfigurálása](./media/devtest-lab-configure-cost-management/configure-notification.png)
+       ![Konfigurálja az értesítési ablaktáblát](./media/devtest-lab-configure-cost-management/configure-notification.png)
 
-      - Ha megad **értesítendő**, meg kell adnia a webhook URL-címet.
-      - Hasonlóképpen, ha a webhook URL-CÍMÉT határozza meg, meg kell adnia **értesítési** való **a** a költség küszöbérték ablaktáblán.
-      - Létre kell hoznia egy webhook előtt írja be ide.  
+      - Ha megad **értesítendő**, meg kell adnia a webhook URL-CÍMÉT.
+      - Hasonlóképpen, ha egy webhook URL-CÍMÉT határozza meg, meg kell adnia **értesítési** való **a** a költségek küszöbérték ablaktáblán.
+      - Létre kell hoznia egy webhookot előtt írja be ide.  
 
-      További információ a webhookok: [webhook vagy API Azure-függvény létrehozása](../azure-functions/functions-create-a-web-hook-or-api-function.md). 
+      További információ a webhookok: [hozzon létre egy webhook vagy API Azure-függvény](../azure-functions/functions-create-a-web-hook-or-api-function.md). 
  
 
 [!INCLUDE [devtest-lab-try-it-out](../../includes/devtest-lab-try-it-out.md)]
 
 ## <a name="related-blog-posts"></a>Kapcsolódó blogbejegyzések
-* [Ennek érdekében a költségek a DevTest Labs szolgáltatásban két dolgot](https://blogs.msdn.microsoft.com/devtestlab/2016/06/21/keep-your-cost-on-track/)
-* [Miért költség küszöbértékek?](https://blogs.msdn.microsoft.com/devtestlab/2016/04/11/why-cost-thresholds/)
+* [A DevTest Labs szolgáltatásban a költségek érdekében két dolgot](https://blogs.msdn.microsoft.com/devtestlab/2016/06/21/keep-your-cost-on-track/)
+* [Miért érdemes a költségek küszöbértékei?](https://blogs.msdn.microsoft.com/devtestlab/2016/04/11/why-cost-thresholds/)
 
 ## <a name="next-steps"></a>További lépések
-Az alábbiakban ezután próbálja meg a következőkről:
+Íme néhány az alábbiakkal próbálkozhat a következő:
 
-* [Labor házirendeket definiálhat az](devtest-lab-set-lab-policy.md) -megtudhatja, hogyan használja annak a szabályozására, hogyan használhatók a labor és a virtuális gépek különböző házirendek beállítása. 
-* [Hozzon létre egyéni lemezkép](devtest-lab-create-template.md) – a virtuális gépek létrehozásakor megad egy talál, amely lehet, vagy egy egyéni lemezképet, vagy egy Piactéri lemezképhez. Ez a cikk bemutatja, hogyan egyéni lemezkép létrehozása a VHD-fájl.
-* [Konfigurálja a piactéren elérhető rendszerkép](devtest-lab-configure-marketplace-images.md) - DevTest Labs támogatja az Azure piactéren elérhető rendszerkép alapján virtuális gépek létrehozását. Ez a cikk bemutatja, hogyan határozhatja meg, ha bármely, az Azure piactéren elérhető rendszerkép lehet egy, amikor a virtuális gépek létrehozásakor használt.
-* [Hozzon létre egy virtuális Gépet egy tesztkörnyezetben](devtest-lab-add-vm.md) -bemutatja, hogyan hozható létre a virtuális gépek alapjául szolgáló lemezképhez (vagy egyéni vagy Marketplace), és hogyan működnek együtt a virtuális gépen.
+* [Laborszabályzatok definiálása](devtest-lab-set-lab-policy.md) – ismerje meg, hogyan állíthatja be annak a szabályozására, hogyan használhatók a labor és annak virtuális gépein használható a különböző házirendeket. 
+* [Egyéni lemezkép készítése](devtest-lab-create-template.md) – a virtuális gép létrehozásakor megad egy talál, amely egy egyéni rendszerkép vagy a Piactéri lemezképet. Ez a cikk bemutatja, hogyan hozzon létre egy egyéni rendszerkép VHD-fájlból.
+* [Piactér képeinek konfigurálása](devtest-lab-configure-marketplace-images.md) – DevTest Labs támogatja az Azure Marketplace-rendszerképek alapján virtuális gépek létrehozását. Ez a cikk bemutatja, hogyan határozhatja meg, ha van ilyen, az Azure Marketplace-rendszerképek lehet a labor virtuális gépek létrehozásakor használt.
+* [Virtuális gép létrehozása tesztkörnyezetben](devtest-lab-add-vm.md) -azt ábrázolja, hogyan hozhat létre egy virtuális Gépet egy alaplemezkép (vagy egyéni vagy a Marketplace-en), és a virtuális gépen összetevők használata.
 

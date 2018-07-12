@@ -10,6 +10,6 @@
 
 |Tulajdonság  |Alapértelmezett | Leírás |
 |---------|---------|---------| 
-|maxConcurrentCalls|16|A visszahívás, amely az üzenet szivattyú kell kezdeményezni az egyidejű hívások maximális száma. Alapértelmezés szerint a Functions futtatókörnyezete dolgozza fel a több üzenetet párhuzamosan. Állítsa át tudja irányítani a futtatókörnyezet egyszerre csak egyetlen üzenetsor vagy témakör üzenet feldolgozásához, `maxConcurrentCalls` 1. | 
-|prefetchCount|n/a|Az alapértelmezett PrefetchCount, amelyet az alapul szolgáló MessageReceiver fog használni.| 
-|autoRenewTimeout|00:05:00|A maximális időtartamot, amelyen belül az üzenet zár megújításra kerül automatikusan.| 
+|maxConcurrentCalls|16|Egyidejű hívás, amely az üzenet szivattyú kell kezdeményezni a visszahívás maximális számát. Alapértelmezés szerint a Functions futtatókörnyezete dolgozza fel a több üzenetet egy időben. A közvetlen egyszerre csak egy üzenetsor vagy témakör üzenetet feldolgozni a futtatókörnyezetet, állítsa `maxConcurrentCalls` 1-re. | 
+|prefetchCount|n/a|Az alapértelmezett PrefetchCount, amely az alapul szolgáló MessageReceiver használni fog.| 
+|autoRenewTimeout|00:05:00|A maximális időtartamot, amelyen belül az üzenet zárolási újul meg automatikusan.| 

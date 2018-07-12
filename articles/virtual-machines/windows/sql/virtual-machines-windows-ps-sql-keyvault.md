@@ -1,6 +1,6 @@
 ---
-title: Kulcstároló integrálható az SQL Server rendszerhez a Windows-alapú virtuális gépek (erőforrás-kezelő) Azure-ban |} Microsoft Docs
-description: Megtudhatja, hogyan használható az Azure Key Vault SQL Server titkosítási konfigurálásának automatizálásához. Ez a témakör ismerteti, hogyan használható az Azure Key Vault-integráció az erőforrás-kezelőt hozott létre az SQL Server virtuális gépekkel.
+title: A Key Vault integrálható az SQL Server a Windows virtuális gépek az Azure-ban (Resource Manager) |} A Microsoft Docs
+description: Megtudhatja, hogyan automatizálhatja a konfigurációját az Azure Key Vault használata az SQL Server titkosítását. Ez a témakör azt ismerteti, hogyan használható az Azure Key Vault-integráció az SQL Server rendszerű virtuális gépek a Resource Managerrel létrehozott.
 services: virtual-machines-windows
 documentationcenter: ''
 author: rothja
@@ -16,55 +16,55 @@ ms.workload: iaas-sql-server
 ms.date: 04/30/2018
 ms.author: jroth
 ms.openlocfilehash: 2b398f59aed1610825f495a6089990d393531305
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/03/2018
-ms.locfileid: "32774726"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38597406"
 ---
-# <a name="configure-azure-key-vault-integration-for-sql-server-on-azure-virtual-machines-resource-manager"></a>SQL Server az Azure Key Vault-integráció konfigurálása az Azure virtuális gépeken (erőforrás-kezelő)
+# <a name="configure-azure-key-vault-integration-for-sql-server-on-azure-virtual-machines-resource-manager"></a>Az SQL Server az Azure Key Vault-integráció konfigurálása Azure-beli virtuális gépeken (Resource Manager)
 
 > [!div class="op_single_selector"]
 > * [Resource Manager](virtual-machines-windows-ps-sql-keyvault.md)
 > * [Klasszikus](../sqlclassic/virtual-machines-windows-classic-ps-sql-keyvault.md)
 
 ## <a name="overview"></a>Áttekintés
-Nincsenek több SQL Server titkosítási szolgáltatások, például a [átlátható adattitkosítás (TDE)](https://msdn.microsoft.com/library/bb934049.aspx), [oszlop a blokkszintű titkosítás (törlése)](https://msdn.microsoft.com/library/ms173744.aspx), és [a biztonsági másolat titkosításához](https://msdn.microsoft.com/library/dn449489.aspx). Titkosítási űrlapok kell kezelése és a titkosításhoz használt kriptográfiai kulcsok tárolásához. Az Azure Key Vault (AKV) szolgáltatás szolgáltatást javítására készült, a biztonsági és kezelésére, ezek a kulcsok egy magas rendelkezésre állású és biztonságos helyen. A [SQL Server-összekötő](http://www.microsoft.com/download/details.aspx?id=45344) lehetővé teszi, hogy ezek a kulcsok Azure Key Vault a használni kívánt SQL Server.
+Nincsenek több SQL Server titkosítási funkciók, például [transzparens adattitkosítás (TDE)](https://msdn.microsoft.com/library/bb934049.aspx), [oszlop a blokkszintű titkosítás (CLE)](https://msdn.microsoft.com/library/ms173744.aspx), és [biztonsági mentés titkosítása](https://msdn.microsoft.com/library/dn449489.aspx). Ezek az űrlapok titkosítási kezelését és a titkosításhoz használt kriptográfiai kulcsok tárolásához szükséges. Az Azure Key Vault (AKV) szolgáltatás célja a biztonsági és a egy biztonságos és magas rendelkezésre állású helyen ezek a kulcsok kezelését. A [SQL Server-összekötő](http://www.microsoft.com/download/details.aspx?id=45344) lehetővé teszi, hogy ezek a kulcsok Azure Key vault használata az SQL Server.
 
-SQL Server helyszíni gépeken futtatja, hogy van-e [lépések követésével hozzáférni a helyszíni SQL Server-számítógépen az Azure Key Vault](https://msdn.microsoft.com/library/dn198405.aspx). Az SQL Server Azure virtuális gépeken, időt takaríthat meg használatával, de a *Azure Key Vault-integráció* szolgáltatás.
+A helyszíni gépek az SQL Server futtatja, van-e [lépések a helyszíni SQL Server-gép az Azure Key Vault elérése](https://msdn.microsoft.com/library/dn198405.aspx). Az SQL Server Azure virtuális gépeken, időt takaríthat használatával, de a *Azure Key Vault-integráció* funkció.
 
-Ha ez a funkció engedélyezve van, automatikusan telepíti az SQL Server-összekötő, konfigurálja az Azure Key Vault eléréséhez EKM-szolgáltatóval, és lehetővé teszi a tároló eléréséhez a hitelesítő adatot hoz létre. A korábban említett helyszíni ismertetettek nézett, láthatja, hogy ez a szolgáltatás automatizálja a 2. és 3. Még mindig manuálisan kell egyedül, ha a kulcstartó és a kulcsokat. Ott a teljes telepítése az SQL virtuális gép automatikus. Ez a funkció a telepítés befejezése után hajthat végre T-SQL utasítást, hogy az adatbázis vagy a biztonsági mentések titkosításához, a szokásos módon megkezdéséhez.
+Ez a funkció engedélyezve van, amikor szolgáltatás automatikusan telepíti az SQL Server-összekötő, konfigurálja az EKM-szolgáltató Azure Key Vault elérése érdekében, és létrehozza a hitelesítő adatokat, ezáltal lehetővé teszi a hozzáférést a tárolóhoz. A korábban említett helyszíni dokumentáció lépéseit nézett, láthatja, hogy ez a funkció automatizálja a 2. és 3. Továbbra is kell manuálisan egyedül, ha a key vaulttal és a kulcsokat. Itt az SQL virtuális gép teljes beállítása automatizált. Ez a funkció a telepítés befejezését követően megkezdheti az adatbázisok vagy a biztonsági mentések titkosításához, ahogy azt szokásosan tenné a T-SQL utasításokkal hajthat végre.
 
 [!INCLUDE [AKV Integration Prepare](../../../../includes/virtual-machines-sql-server-akv-prepare.md)]
 
-## <a name="enabling-and-configuring-akv-integration"></a>Engedélyezése és AKV-integráció konfigurálása
-Kiépítés során AKV-integráció engedélyezéséhez, vagy konfigurálja úgy a meglévő virtuális gépekhez.
+## <a name="enabling-and-configuring-akv-integration"></a>Engedélyezése és konfigurálása az AKV-integráció
+Üzembe helyezés során az AKV-integráció engedélyezése, vagy konfigurálja a meglévő virtuális gépekhez.
 
 ### <a name="new-vms"></a>Új virtuális gépek
-Ha egy új SQL Server virtuális gép a Resource Manager kiépíteni, az Azure-portálon biztosítja az Azure Key Vault-integráció engedélyezéséhez. Az Azure Key Vault szolgáltatás csak az Enterprise, Developer és SQL Server kiadásai próbaverzióját érhető el.
+Ha egy új SQL Server virtuális gép és a Resource Manager szeretne kiépíteni, az Azure Portalon biztosítja az Azure Key Vault-integráció engedélyezése. Az Azure Key Vault szolgáltatás csak az Enterprise, Developer és az SQL Server kiadások értékelésére érhető el.
 
 ![SQL Azure Key Vault-integráció](./media/virtual-machines-windows-ps-sql-keyvault/azure-sql-arm-akv.png)
 
-Kiépítés részletes útmutatást lásd: [egy SQL Server rendszerű virtuális gép az Azure portálon](virtual-machines-windows-portal-sql-server-provision.md).
+További üzembe helyezésének részletes útmutató: [az Azure Portalon az SQL Server virtuális gép kiépítése](virtual-machines-windows-portal-sql-server-provision.md).
 
 ### <a name="existing-vms"></a>Meglévő virtuális gépek
-Meglévő SQL Server virtuális gépek válassza ki az SQL Server virtuális gépet. Válassza ki a **SQL Server-konfigurációs** szakasza a **beállítások** panelen.
+Meglévő SQL Server virtuális gépek esetében válassza ki az SQL Server virtuális gépet. Válassza ki a **SQL Server-konfiguráció** szakaszában a **beállítások** panelen.
 
 ![Meglévő virtuális gépek SQL AKV-integráció](./media/virtual-machines-windows-ps-sql-keyvault/azure-sql-rm-akv-existing-vms.png)
 
-Az a **SQL Server-konfigurációs** panelen kattintson a **szerkesztése** gomb az automatikus Key Vault integration szakaszban.
+Az a **SQL Server-konfiguráció** panelen kattintson a **szerkesztése** a automatikus Key Vault-integráció szakaszban gombot.
 
-![Meglévő virtuális gépek SQL AKV-integráció konfigurálása](./media/virtual-machines-windows-ps-sql-keyvault/azure-sql-rm-akv-configuration.png)
+![SQL AKV-integráció konfigurálása a meglévő virtuális gépek](./media/virtual-machines-windows-ps-sql-keyvault/azure-sql-rm-akv-configuration.png)
 
-Ha elkészült, kattintson a **OK** gomb alján a **SQL Server-konfigurációs** panelt, és menti a módosításokat.
+Ha elkészült, kattintson a **OK** gomb alján a **SQL Server-konfiguráció** panelen a módosítások mentéséhez.
 
 > [!NOTE]
-> Az itt létrehozott hitelesítő adat neve kell hozzárendelni egy SQL-bejelentkezési később. Ez lehetővé teszi, hogy az SQL-bejelentkezési a kulcstároló eléréséhez. 
+> Az itt létrehozott hitelesítő adat neve lesz rendelve egy SQL-bejelentkezési később. Ez lehetővé teszi az SQL-bejelentkezési hozzáférjen a kulcstartóhoz. 
 >
 >
 
 > [!NOTE]
-> Beállíthatja úgy is AKV-integráció sablon használatával. További információkért lásd: [Azure gyors üzembe helyezés sablon az Azure Key Vault-integráció](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-sql-existing-keyvault-update).
+> Beállíthatja az AKV-integráció-sablon használatával. További információkért lásd: [Azure Key Vault-integráció az Azure gyorsindítási sablon](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-sql-existing-keyvault-update).
 > 
 > 
 

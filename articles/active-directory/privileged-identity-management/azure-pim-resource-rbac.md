@@ -15,12 +15,12 @@ ms.workload: identity
 ms.component: protection
 ms.date: 03/30/2018
 ms.author: rolyon
-ms.openlocfilehash: 7cf628495a79fe775528080ae6ec31df8e9a0f37
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 07fe49be9fcb879b86d2b8a33799d11deb7d7446
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37447581"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38528620"
 ---
 # <a name="pim-for-azure-resources"></a>A PIM használata Azure-erőforrások
 
@@ -59,7 +59,7 @@ Saját szerepkörök az Azure AD-címtárbeli szerepkörök és az Azure-erőfor
 
 ## <a name="activate-roles"></a>Szerepkörök aktiválása
 
-Szerepkörök aktiválása az Azure-erőforrások mutatja be egy új környezetet biztosít, amely lehetővé teszi, hogy a jogosult szerepkör tagjai az aktiválás a jövőbeli dátum/idő ütemezése, és válassza ki a maximális (a rendszergazdák által konfigurált) belül egy adott aktiválási időtartamát. Ismerje meg [itt az Azure AD-szerepkörök aktiválása](../active-directory-privileged-identity-management-how-to-activate-role.md).
+Szerepkörök aktiválása az Azure-erőforrások mutatja be egy új környezetet biztosít, amely lehetővé teszi, hogy a jogosult szerepkör tagjai az aktiválás a jövőbeli dátum/idő ütemezése, és válassza ki a maximális (a rendszergazdák által konfigurált) belül egy adott aktiválási időtartamát. Ismerje meg [itt az Azure AD-szerepkörök aktiválása](pim-how-to-activate-role.md).
 
 ![](media/azure-pim-resource-rbac/contributor.png)
 
@@ -156,7 +156,7 @@ Válassza ki a tekintse át a meglévő hozzáférési felülvizsgálatok megtek
 
 ![](media/azure-pim-resource-rbac/owner.png)
 
-[További információ a hozzáférési felülvizsgálatok](../active-directory-privileged-identity-management-how-to-perform-security-review.md)
+[További információ a hozzáférési felülvizsgálatok](pim-how-to-perform-security-review.md)
 
 >[!NOTE]
 Értékelések jelenleg csak támogatottak előfizetés erőforrástípusok.
@@ -196,5 +196,5 @@ Válassza ki a saját szerepkörök a bal oldali navigációs menüben, és vál
 ## <a name="next-steps"></a>További lépések
 
 - [Az Azure-erőforrások beépített szerepkörök](../../role-based-access-control/built-in-roles.md)
-- Ismerje meg [itt az Azure AD-szerepkörök aktiválása](../active-directory-privileged-identity-management-how-to-activate-role.md)
+- Ismerje meg [itt az Azure AD-szerepkörök aktiválása](pim-how-to-activate-role.md)
 - [A PIM jóváhagyási munkafolyamatokat](azure-ad-pim-approval-workflow.md)

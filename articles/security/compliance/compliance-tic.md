@@ -8,12 +8,12 @@ ms.service: security
 ms.topic: article
 ms.date: 06/20/2018
 ms.author: dlap
-ms.openlocfilehash: 7b813500eecba3aa1902c28b9b7c56da6c4516b7
-ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
-ms.translationtype: MT
+ms.openlocfilehash: cf24810c0aa414e751e55df163563f013c1a0081
+ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37967530"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38969945"
 ---
 # <a name="trusted-internet-connection-guidance"></a>Megbízható internetes kapcsolat útmutató
 
@@ -199,7 +199,7 @@ Az alábbi minta házirendek TIC megfelelőségi célokra hasznos lehet:
 |Engedélyezett helyek | Győződjön meg arról, hogy az összes erőforrás telepítve vannak-e a régió, a megfelelő virtuális hálózatok és a Network Watcher konfigurálása  | https://docs.microsoft.com/azure/azure-policy/scripts/allowed-locs |
 |Nem engedélyezett erőforrástípusok Tartománycímkét például  | Tiltják az erőforrástípusok, amelyek nem rendelkeznek megfelelőségi csomag telepítését. Tegyük fel ez a szabályzat központi telepítését a nyilvános IP-cím erőforrás időtartamig használható. Bár az NSG-szabályok segítségével hatékonyan a bejövő internetes forgalom blokkolása, megakadályozza a nyilvános IP-címek használatát további csökkentve a támadási felületet.    | https://docs.microsoft.com/azure/azure-policy/scripts/not-allowed-res-type  |
 
-### <a name="azure-traffic-analytics"></a>Az Azure Traffic Analytics
+### <a name="azure-traffic-analyticshttpsazuremicrosoftcomen-inblogtraffic-analytics-in-preview"></a>Azure [Traffic Analytics](https://azure.microsoft.com/en-in/blog/traffic-analytics-in-preview/)
 
 A Traffic Analytics az Azure Network Watcher flow naplóadatokat és magas szintű áttekintést nyújt a hálózati forgalom a többi naplófájlt használ fel. Ezek az adatok akkor lehet hasznos TIC megfelelőségi vizsgálatához és problémás azonosítása. Magas szintű irányítópult gyors képernyő, amely a virtuális gépek kommunikál az internethez, ami majd célzott listáját biztosítja a TIC útválasztáshoz használható.
 

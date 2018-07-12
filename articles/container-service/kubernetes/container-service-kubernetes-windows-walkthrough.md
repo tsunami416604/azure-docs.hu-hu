@@ -1,5 +1,5 @@
 ---
-title: Gyors üzembe helyezés – a Windows Azure Kubernetes fürt
+title: Rövid útmutató – Windows Azure Kubernetes-fürt
 description: Ebből a rövid útmutatóból megtudhatja, hogyan hozhat létre Kubernetes-fürtöt Windows-tárolókhoz az Azure Container Service szolgáltatásban az Azure parancssori felületével.
 services: container-service
 author: dlepow
@@ -10,11 +10,11 @@ ms.date: 07/18/2017
 ms.author: danlep
 ms.custom: H1Hack27Feb2017, mvc, devcenter
 ms.openlocfilehash: 74ce913548fbcefdc441d0d2b772c864dacd4482
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32164999"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38485444"
 ---
 # <a name="deploy-kubernetes-cluster-for-windows-containers"></a>Kubernetes-fürt üzembe helyezése Windows-tárolókhoz
 
@@ -162,7 +162,7 @@ A pod nyilvános IP-címmel történő közzétételéhez írja be a következő
 kubectl expose pods iis --port=80 --type=LoadBalancer
 ```
 
-Ez a parancs Kubernetes hoz létre egy szolgáltatás és az Azure terheléselosztó szabályhoz a szolgáltatás egy nyilvános IP-címmel. 
+Ezzel a paranccsal a Kubernetes létrehoz egy szolgáltatás és a egy nyilvános IP-címmel a szolgáltatás egy Azure load balancer-szabályt. 
 
 Futtassa az alábbi parancsot a szolgáltatás állapotának megtekintéséhez.
 

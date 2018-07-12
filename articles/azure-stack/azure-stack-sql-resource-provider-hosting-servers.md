@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 07/10/2018
 ms.author: jeffgilb
 ms.reviewer: jeffgo
-ms.openlocfilehash: c9249de56979d47a29fc9d7c12b99e41b3ada0fd
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: de2e1defeff9ab2dd78bdf019009b62955f73b88
+ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38465837"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38970551"
 ---
 # <a name="add-hosting-servers-for-the-sql-resource-provider"></a>Az erőforrás-szolgáltató SQL üzemeltetési kiszolgáló hozzáadása
 
@@ -66,7 +66,7 @@ Az alábbi adatokat a további biztonsági útmutatást nyújt:
 
 * Az összes Azure Stack-tároló a BitLocker titkosítja, így tetszőleges SQL-példányra, az Azure Stacken titkosított blobot a tárhelyet fogja használni.
 * Az erőforrás-szolgáltató az SQL teljes mértékben támogatja a TLS 1.2. Győződjön meg arról, hogy bármely SQL Server, az SQL-RP-mel felügyelt konfigurálva van a TLS 1.2 _csak_ és a függő Entitás, amely alapértelmezés szerint. A TLS 1.2-es, az SQL Server támogatása az összes támogatott verzióit lásd: [a TLS 1.2 támogatása a Microsoft SQL Server](https://support.microsoft.com/en-us/help/3135244/tls-1-2-support-for-microsoft-sql-server).
-* Használja az SQL Server Configuration Manager beállítása a **ForceEncryption** mindig lehetőséget annak biztosítása érdekében az SQL server felé minden kommunikáció titkosított. Lásd: [, konfigurálja a kiszolgálót, hogy a titkosított kapcsolatokat](https://docs.microsoft.com/en-us/sql/database-engine/configure-windows/enable-encrypted-connections-to-the-database-engine?view=sql-server-2017#ConfigureServerConnections).
+* Használja az SQL Server Configuration Manager beállítása a **ForceEncryption** mindig lehetőséget annak biztosítása érdekében az SQL server felé minden kommunikáció titkosított. Lásd: [, konfigurálja a kiszolgálót, hogy a titkosított kapcsolatokat](https://docs.microsoft.com/sql/database-engine/configure-windows/enable-encrypted-connections-to-the-database-engine?view=sql-server-2017#ConfigureServerConnections).
 * Győződjön meg róla, minden ügyfélalkalmazás is titkosított kapcsolaton keresztül kommunikál.
 * Az SQL Server-példányok által használt tanúsítványok megbízhatósági kapcsolata konfigurálva van az RP-ből.
 
@@ -106,8 +106,8 @@ Adjon hozzá egy önálló üzemeltető kiszolgálót, amely már be van állít
 
 SQL Always On példányok konfigurálásához további lépéseket igényel, és megköveteli a három virtuális gép (vagy fizikai gépek.) Ez a cikk azt feltételezi, hogy már rendelkezik egy Always On rendelkezésre állási csoportjainak alapos ismerete. További információkért tekintse át a következő cikkeket:
 
-* [SQL Server Always On rendelkezésre állási csoportok az Azure-beli virtuális gépek bemutatása](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-availability-group-overview)
-* [Always On rendelkezésre állási csoportok (SQL Server)](https://docs.microsoft.com/en-us/sql/database-engine/availability-groups/windows/always-on-availability-groups-sql-server?view=sql-server-2017)
+* [SQL Server Always On rendelkezésre állási csoportok az Azure-beli virtuális gépek bemutatása](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-availability-group-overview)
+* [Always On rendelkezésre állási csoportok (SQL Server)](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/always-on-availability-groups-sql-server?view=sql-server-2017)
 
 > [!NOTE]
 > Erőforrás-szolgáltató SQL adapter _csak_ támogatja az SQL 2016 SP1 Enterprise, vagy később-példány AlwaysOn rendelkezésre állási csoportok számára. Az adapter konfigurációs van szükség, például az automatikus összehangolása új SQL-szolgáltatások.

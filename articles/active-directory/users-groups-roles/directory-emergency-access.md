@@ -10,12 +10,12 @@ ms.service: active-directory
 ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: markwahl-msft
-ms.openlocfilehash: 185f6730babe077332be9f054ba338ff48295eca
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 4f3772abc1cdbd3b35b8b1f16e7a47c0f1a17783
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37449887"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38595654"
 ---
 # <a name="manage-emergency-access-administrative-accounts-in-azure-ad"></a>A válságkezelési-hozzáférési rendszergazdai fiókok kezelése az Azure ad-ben 
 
@@ -82,6 +82,6 @@ A vészelérési fiókok használata a munkatársak betanítást, tegye a követ
 - [Regisztráljon az Azure Active Directory Premium](../fundamentals/active-directory-get-started-premium.md), ha még nem regisztrált már.
 - [Az Azure többtényezős hitelesítés megkövetelése az egyes felhasználók rendszergazdák hozzárendelt](https://docs.microsoft.com/azure/multi-factor-authentication/multi-factor-authentication-get-started-user-states).
 - [A globális rendszergazdák erősebb védelmét konfigurálja az Office 365-ben](https://support.office.com/article/Protect-your-Office-365-global-administrator-accounts-6b4ded77-ac8d-42ed-8606-c014fd947560), ha Office 365-höz használ.
-- [A globális rendszergazdák hozzáférési felülvizsgálat végrehajtása](../active-directory-privileged-identity-management-how-to-start-security-review.md) és [pontosabb rendszergazdai szerepkörök meglévő globális rendszergazda az átmenet](directory-assign-admin-roles.md).
+- [A globális rendszergazdák hozzáférési felülvizsgálat végrehajtása](../privileged-identity-management/pim-how-to-start-security-review.md) és [pontosabb rendszergazdai szerepkörök meglévő globális rendszergazda az átmenet](directory-assign-admin-roles.md).
 
 

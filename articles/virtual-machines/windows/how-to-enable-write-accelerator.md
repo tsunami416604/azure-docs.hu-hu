@@ -1,6 +1,6 @@
 ---
-title: Az Azure írási gyorsító |} Microsoft Docs
-description: Engedélyezi, és írás gyorsító használata dokumentációja
+title: Az Azure Írásgyorsító |} A Microsoft Docs
+description: Engedélyezése és használata Írásgyorsító – dokumentáció
 services: virtual-machines-windows
 documentationcenter: ''
 author: raiye
@@ -17,10 +17,10 @@ ms.date: 5/9/2018
 ms.author: raiye
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: da9aa33bd5273a172614fa8e0d1d0623bae168a0
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "33943458"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38531444"
 ---
 [!INCLUDE [how-to-enable-write-accelerator](../../../includes/virtual-machines-common-how-to-enable-write-accelerator.md)]

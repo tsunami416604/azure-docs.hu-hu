@@ -1,4 +1,4 @@
-Ha engedélyezzük a profil az alkalmazásra, használja a **profil szerkesztése** házirend. Ezzel a házirend-profil szerkesztése és a jogkivonatokat, amelyek az alkalmazás sikeres befejezését követően kap tartalmát során az ügyfelek végighaladnia szolgáltatásokat írja le.
+Ha szeretné engedélyezni, profilszerkesztést az alkalmazásban, használhatja a **profilszerkesztést** házirend. Ez a szabályzat írja le, hogy ügyfeleink profilszerkesztést és a jogkivonatokat, amelyeket az alkalmazás fogad a sikeres végrehajtása során.
 
 [!INCLUDE [active-directory-b2c-portal-navigate-b2c-service](active-directory-b2c-portal-navigate-b2c-service.md)]
 

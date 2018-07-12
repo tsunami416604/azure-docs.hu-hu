@@ -8,7 +8,7 @@
 * [Összesítés](../articles/application-insights/app-insights-analytics-reference.md)
   * Statisztikák kiszámítására szolgál egy rekordcsoportban
 * [Skalárok](../articles/application-insights/app-insights-analytics-reference.md)
-  * Lekérdezési paraméterek kialakítására szolgáló számok, karakterláncok és egyéb kifejezések.
+  * Lekérdezési paraméterek kialakítására szolgáló számok, sztringek és egyéb kifejezések.
 * [Az Elemzés használata](../articles/application-insights/app-insights-analytics-using.md)
   * Az Elemzés használata.
 * [Nyelvi referencia](../articles/application-insights/app-insights-analytics-reference.md)

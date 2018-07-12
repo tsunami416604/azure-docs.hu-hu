@@ -1,6 +1,6 @@
 ---
-title: Az erőforrás-szolgáltató REST API-t használó Azure IoT hub létrehozása |} Microsoft Docs
-description: Hogyan lehet az erőforrás-szolgáltató REST API segítségével létrehoz egy IoT-központot.
+title: Az erőforrás-szolgáltató REST API használatával az Azure IoT hub létrehozása |} A Microsoft Docs
+description: Hogyan hozzon létre egy IoT hubot az erőforrás-szolgáltató REST API használatával.
 author: dominicbetts
 manager: timlt
 ms.service: iot-hub
@@ -10,20 +10,20 @@ ms.topic: conceptual
 ms.date: 08/08/2017
 ms.author: dobett
 ms.openlocfilehash: 06f05da839ebca2ae53e255acce7f07d1989673c
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34635219"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38539771"
 ---
-# <a name="create-an-iot-hub-using-the-resource-provider-rest-api-net"></a>Létrehoz egy IoT-központot, az erőforrás-szolgáltató REST API (.NET) használata
+# <a name="create-an-iot-hub-using-the-resource-provider-rest-api-net"></a>Az erőforrás-szolgáltató REST API (.NET) használatával IoT hub létrehozása
 
 [!INCLUDE [iot-hub-resource-manager-selector](../../includes/iot-hub-resource-manager-selector.md)]
 
-Használhatja a [IoT-központ erőforrás-szolgáltató REST API] [ lnk-rest-api] létrehozásához és kezeléséhez programozott módon Azure IoT-központok. Ez az oktatóanyag bemutatja, hogyan IoT hub létrehozása a C# programban az IoT-központ erőforrás-szolgáltató REST API használatával.
+Használhatja a [az IoT Hub erőforrás-szolgáltató REST API-val] [ lnk-rest-api] hozhat létre, és az Azure IoT hubs programozással felügyelheti. Ez az oktatóanyag bemutatja, hogyan hozzon létre egy IoT hubra a C#-program az IoT Hub erőforrás-szolgáltató REST API használatával.
 
 > [!NOTE]
-> Azure az erőforrások létrehozására és kezelésére két különböző üzembe helyezési modellel rendelkezik: [Azure Resource Manager és klasszikus](../azure-resource-manager/resource-manager-deployment-model.md).  Ez a cikk az Azure Resource Manager telepítési modell használatát bemutatja.
+> Az Azure az erőforrások létrehozásához és használatához két különböző üzembe helyezési modellel rendelkezik: [Azure Resource Manager és klasszikus](../azure-resource-manager/resource-manager-deployment-model.md).  Ez a cikk ismerteti az Azure Resource Manager üzemi modell használatával.
 
 Az oktatóanyag teljesítéséhez a következőkre lesz szüksége:
 
@@ -33,17 +33,17 @@ Az oktatóanyag teljesítéséhez a következőkre lesz szüksége:
 
 [!INCLUDE [iot-hub-prepare-resource-manager](../../includes/iot-hub-prepare-resource-manager.md)]
 
-## <a name="prepare-your-visual-studio-project"></a>Készítse elő a Visual Studio-projekt
+## <a name="prepare-your-visual-studio-project"></a>A Visual Studio-projektek előkészítése
 
-1. A Visual Studio project using Visual C# klasszikus Windows asztal létrehozása a **Konzolalkalmazás (.NET-keretrendszer)** projektsablon. Nevet a projektnek **CreateIoTHubREST**.
+1. A Visual Studióban hozzon létre egy Visual C# Windows klasszikus Asztalialkalmazás-projektet az a **Console App (.NET Framework)** projektsablonnal. Adja a projektnek **CreateIoTHubREST**.
 
 2. A Megoldáskezelőben kattintson a jobb gombbal a projektre, és kattintson a **NuGet-csomagok kezelése**.
 
-3. Ellenőrizze a NuGet Package Manager **Include prerelease**, és a a **Tallózás** lapon keresse meg **Microsoft.Azure.Management.ResourceManager**. Válassza ki a csomagot, kattintson a **telepítése**, a **változások áttekintése** kattintson **OK**, majd kattintson a **elfogadom** fogadására a licencek.
+3. Ellenőrizze a NuGet Package Manager **Include prerelease**, és az a **Tallózás** lapon keresse meg **Microsoft.Azure.Management.ResourceManager**. Válassza ki a csomagot, kattintson a **telepítése**, a **változások áttekintése** kattintson **OK**, majd kattintson **elfogadom** fogadására a licenceket.
 
-4. Keressen rá a NuGet Package Manager **Microsoft.IdentityModel.Clients.ActiveDirectory**.  Kattintson a **telepítése**, a **változások áttekintése** kattintson **OK**, majd kattintson a **elfogadom** elfogadja a licencfeltételeket.
+4. A NuGet-Csomagkezelőt, keressen **Microsoft.IdentityModel.Clients.ActiveDirectory**.  Kattintson a **telepítése**, a **változások áttekintése** kattintson **OK**, majd kattintson a **elfogadom** elfogadásához.
 
-5. A productscontract.cs fájlban cserélje le a meglévő **használatával** utasítások a következő kóddal:
+5. A program.cs fájlban cserélje le a meglévő **használatával** utasítások a következő kóddal:
 
     ```csharp
     using System;
@@ -59,7 +59,7 @@ Az oktatóanyag teljesítéséhez a következőkre lesz szüksége:
     using System.Threading;
     ```
 
-6. A program.cs fájlban adja hozzá a következő statikus változó a helyőrző értékeket. A feljegyezte **ApplicationId**, **SubscriptionId**, **TenantId**, és **jelszó** az oktatóanyag korábbi. **Az erőforráscsoport neve** az IoT hub létrehozása során használ az erőforráscsoport neve. Használhat egy korábban létező vagy egy új erőforráscsoportot. **IoT Hub name** hoz létre, mint például az IoT-központ neve **MyIoTHub**. Az IoT hub nevét globálisan egyedinek kell lennie. **A központi telepítés neve** van, mint a központi telepítés nevét **Deployment_01**.
+6. A program.cs fájlban adja hozzá a következő statikus változókat, és cserélje le a helyőrző értékeket. Jegyezze fel végzett **ApplicationId**, **SubscriptionId**, **TenantId**, és **jelszó** Ez az oktatóanyag korábbi. **Erőforráscsoport neve** használhatja az IoT hub létrehozásakor az erőforráscsoport neve. Használhat egy korábban létező vagy új erőforráscsoportot. **Az IoT Hub nevét** hoz létre, mint például az IoT-központ neve **MyIoTHub**. Az IoT hub nevére globálisan egyedinek kell lennie. **A központi telepítés neve** el például egy nevet a központi telepítéshez **Deployment_01**.
 
     ```csharp
     static string applicationId = "{Your ApplicationId}";
@@ -74,11 +74,11 @@ Az oktatóanyag teljesítéséhez a következőkre lesz szüksége:
 
 [!INCLUDE [iot-hub-get-access-token](../../includes/iot-hub-get-access-token.md)]
 
-## <a name="use-the-resource-provider-rest-api-to-create-an-iot-hub"></a>Az erőforrás-szolgáltató REST API használatával létrehoz egy IoT-központot
+## <a name="use-the-resource-provider-rest-api-to-create-an-iot-hub"></a>IoT hub létrehozása az erőforrás-szolgáltató REST API használatával
 
-Használja a [IoT-központ erőforrás-szolgáltató REST API] [ lnk-rest-api] az IoT-központ létrehozásához az erőforráscsoportban. Az erőforrás-szolgáltató REST API segítségével módosíthatja egy meglévő IoT-központot.
+Használja a [az IoT Hub erőforrás-szolgáltató REST API-val] [ lnk-rest-api] hozhat létre egy IoT hubot az erőforráscsoportban. Az erőforrás-szolgáltató REST API segítségével módosíthatja egy meglévő IoT hubbal.
 
-1. Adja hozzá a következő metódust a program.cs fájlt:
+1. A program.cs fájlhoz adja hozzá a következő metódust:
 
     ```csharp
     static void CreateIoTHub(string token)
@@ -94,7 +94,7 @@ Használja a [IoT-központ erőforrás-szolgáltató REST API] [ lnk-rest-api] a
     client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
     ```
 
-3. Adja hozzá a következő kódot a **CreateIoTHub** metódust. Ez a kód ismerteti az IoT hub létrehozása, és létrehoz egy JSON-megjelenítés. A helyek, amelyek támogatják az IoT-központ aktuális listáját lásd: [Azure állapot][lnk-status]:
+3. Adja hozzá a következő kódot a **CreateIoTHub** metódust. Ez a kód bemutatja az IoT hub létrehozása és hoz létre egy JSON-reprezentációval. A helyek, amelyek támogatják az IoT Hub aktuális listáját lásd: [Azure állapotlapján][lnk-status]:
 
     ```csharp
     var description = new
@@ -112,7 +112,7 @@ Használja a [IoT-központ erőforrás-szolgáltató REST API] [ lnk-rest-api] a
     var json = JsonConvert.SerializeObject(description, Formatting.Indented);
     ```
 
-4. Adja hozzá a következő kódot a **CreateIoTHub** metódust. Ez a kód elküldi a REST-kérelmet az Azure-bA. A kód majd ellenőrzi a választ, és lekéri az URL-cím segítségével a központi telepítés a feladat állapotának figyelése:
+4. Adja hozzá a következő kódot a **CreateIoTHub** metódust. Ez a kód elküldi a REST-kérelmet az Azure-bA. A kód ezután ellenőrzi a választ, és olvassa be az URL-cím segítségével a szolgáltatástelepítési feladat állapotának figyelése:
 
     ```csharp
     var content = new StringContent(JsonConvert.SerializeObject(description), Encoding.UTF8, "application/json");
@@ -128,7 +128,7 @@ Használja a [IoT-központ erőforrás-szolgáltató REST API] [ lnk-rest-api] a
     var asyncStatusUri = result.Headers.GetValues("Azure-AsyncOperation").First();
     ```
 
-5. Adja hozzá a következő kódot végén a **CreateIoTHub** metódust. Ezt a kódot használja a **asyncStatusUri** történő várakozás a telepítés befejezéséhez az előző lépésben beolvasott cím:
+5. Adja hozzá a következő kódot végéhez a **CreateIoTHub** metódust. Ez a kód a **asyncStatusUri** , várjon, amíg az üzembe helyezés befejeződik az előző lépésben lekért címmel:
 
     ```csharp
     string body;
@@ -140,7 +140,7 @@ Használja a [IoT-központ erőforrás-szolgáltató REST API] [ lnk-rest-api] a
     } while (body == "{\"status\":\"Running\"}");
     ```
 
-6. Adja hozzá a következő kódot végén a **CreateIoTHub** metódust. Ez a kód lekéri az IoT hub létrehozása és a konzolablakba írja őket a konzol kulcsának:
+6. Adja hozzá a következő kódot végéhez a **CreateIoTHub** metódust. Ez a kód lekéri a kulcsok az IoT hub hoztunk létre, és megjeleníti őket a konzolhoz:
 
     ```csharp
     var listKeysUri = string.Format("https://management.azure.com/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.Devices/IotHubs/{2}/IoTHubKeys/listkeys?api-version=2016-02-03", subscriptionId, rgName, iotHubName);
@@ -149,38 +149,38 @@ Használja a [IoT-központ erőforrás-szolgáltató REST API] [ lnk-rest-api] a
     Console.WriteLine("Keys: {0}", keysresults.Content.ReadAsStringAsync().Result);
     ```
 
-## <a name="complete-and-run-the-application"></a>Végezze el, és futtassa az alkalmazást
+## <a name="complete-and-run-the-application"></a>Írja be az alkalmazás futtatása
 
-Meghívásával hajthatja végre az alkalmazás most már a **CreateIoTHub** metódus előtt most felépíti és futtatja azt.
+Az alkalmazás meghívásával már végrehajthatók a **CreateIoTHub** módszer előtt felépíti és futtatja azt.
 
-1. Adja hozzá a következő kódot végén a **fő** módszert:
+1. Adja hozzá a következő kódot végéhez a **fő** módszer:
 
     ```csharp
     CreateIoTHub(token.AccessToken);
     Console.ReadLine();
     ```
 
-2. Kattintson a **Build** , majd **megoldás**. Javíthatja az esetleges hibákat.
+2. Kattintson a **összeállítása** , majd **megoldás**. Javítsa az esetleges hibákat.
 
-3. Kattintson a **Debug** , majd **Start Debugging** az alkalmazás futtatásához. A központi telepítés futtatása több percig is eltarthat.
+3. Kattintson a **Debug** , majd **Start Debugging** az alkalmazás futtatásához. Futtassa az üzembe helyezés több percig is eltarthat.
 
-4. Győződjön meg arról, hogy az alkalmazás fel van véve az új IoT hub, látogasson el a [Azure-portálon] [ lnk-azure-portal] és tekintse meg az erőforrások listáját. Másik megoldásként használhatja a **Get-AzureRmResource** PowerShell-parancsmagot.
+4. Győződjön meg arról, hogy az alkalmazás hozzáadása az új IoT hubot, látogasson el a [az Azure portal] [ lnk-azure-portal] és erőforrások listájának megtekintése. Másik megoldásként használhatja a **Get-AzureRmResource** PowerShell-parancsmagot.
 
 > [!NOTE]
-> A mintaalkalmazás ad hozzá egy S1 Standard IoT-központot, amelynek kell fizetni. Ha elkészült, az IoT hub használatával törölheti a [Azure-portálon] [ lnk-azure-portal] vagy használatával a **Remove-AzureRmResource** PowerShell-parancsmag, amikor elkészült.
+> Ez a példa az alkalmazás hozzáadása egy S1 Standard IoT hubot, amelyhez számítunk fel díjat. Amikor elkészült, törölheti az IoT hubon keresztül a [az Azure portal] [ lnk-azure-portal] vagy a **Remove-AzureRmResource** PowerShell-parancsmagot, ha elkészült.
 
 ## <a name="next-steps"></a>További lépések
-Most telepítette az IoT-központ az erőforrás-szolgáltató REST API-t használ, érdemes lehet további felfedezése:
+Most egy IoT hubra, az erőforrás-szolgáltató REST API használatával telepített, akkor érdemes vizsgálódáshoz:
 
-* Olvassa el a képességeit a [IoT-központ erőforrás-szolgáltató REST API][lnk-rest-api].
-* Olvasási [Azure Resource Manager áttekintése] [ lnk-azure-rm-overview] tudhat meg többet az Azure Resource Manager képességeit.
+* Olvassa el a képességeit a [az IoT Hub erőforrás-szolgáltató REST API-val][lnk-rest-api].
+* Olvasási [Azure Resource Manager áttekintése] [ lnk-azure-rm-overview] további információ ezekről a képességekről az Azure Resource Manager.
 
-Az IoT-központ fejlesztésével kapcsolatos további tudnivalókért tekintse meg a következő cikkeket:
+Az IoT Hub fejlesztésével kapcsolatos további tudnivalókért tekintse meg a következő cikkeket:
 
-* [C SDK bemutatása][lnk-c-sdk]
+* [Bevezetés a C SDK-t][lnk-c-sdk]
 * [Az Azure IoT SDK-k][lnk-sdks]
 
-Az IoT-központ képességeit további megismeréséhez lásd:
+Részletesebb megismerése az IoT Hub képességeit, tekintse meg:
 
 * [Mesterséges intelligencia telepítése peremeszközökön az Azure IoT Edge szolgáltatással][lnk-iotedge]
 

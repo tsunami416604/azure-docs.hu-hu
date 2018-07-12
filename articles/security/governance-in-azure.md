@@ -1,6 +1,6 @@
 ---
-title: Az Azure-ban irányítás |} Microsoft Docs
-description: További információk a felhőalapú számítási szolgáltatás is méretezhető felfelé és lefelé az alkalmazás vagy a vállalat igényeinek.
+title: Irányítás az Azure-ban |} A Microsoft Docs
+description: Ismerje meg a felhőalapú számítástechnikai szolgáltatások méretezhetők felfelé és lefelé az alkalmazás vagy a vállalat igényeinek.
 services: security
 documentationcenter: na
 author: UnifyCloud
@@ -14,161 +14,161 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/01/2017
 ms.author: TomSh
-ms.openlocfilehash: 9c6509f25be7fe520a427e17ca1206e10f296fea
-ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
+ms.openlocfilehash: 579e900ee6616af8fd197e501364acd8e18d3e37
+ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37110762"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38970523"
 ---
 # <a name="governance-in-azure"></a>Irányítás az Azure-ban
 
-Azure lehetővé teszi számos biztonsági beállítások és képes azokat, hogy megfeleljen a szervezet központi telepítések igényeknek is.
+Az Azure kínál számos biztonsági beállítások és irányítása őket, hogy a szervezet üzemelő példányok egyedi követelményeinek teljesítheti.
 
-Azure-felhőbe irányítás hivatkozik a döntéshozó folyamatainak, a feltételek és a házirendek a tervezési részt, architektúra, beszerzési, telepítési, műveletet és felügyelete a felhőalapú informatika. Azure-felhőbe irányítás biztosít egy integrált naplózási és áttekintését, és hogy tanácsadást a szervezet az Azure platformon a felhasználási tanácsadási megközelítést. 
+Az Azure cloud cégirányítási hivatkozik a döntéshozatal elősegítéséhez, a feltételek és a szabályzatok a tervezésének, architektúra, beszerzési, üzembe helyezés, műveletet és kezelését a felhő-számítástechnika. Az Azure cloud cégirányítási beépített naplózási és áttekintéséhez és az Azure platform a felhasználási szervezetek beküldte tanácsadási megközelítést nyújt. 
 
-A terv készítése az Azure-felhőbe irányítás, meg kell tennie egy részletes nézze meg a személyeket, folyamatok és technológiák most helyen. Ezután hozhat létre keretrendszerek, amelyek megkönnyítik az informatikai következetesen Azure szolgáltatásait is használni ugyanakkor biztosítható a felhasználók a rugalmasságot biztosít a üzleti igények támogatásához.
+Hozzon létre egy Azure-felhő cégirányítási tervet, hogy Önnek kell tennie szűrőtípusok a személyeket, folyamatokat és technológiák most helyen. Ezután hozhat létre, amelyek megkönnyítik a keretrendszerek következetesen támogatásához az üzleti igényeknek megfelelően a rugalmasságot biztosítanak a felhasználók számára, miközben az a funkciók az Azure informatikai.
 
-## <a name="implementation-of-policies-processes-and-standards"></a>Házirendek, folyamatok és szabványok végrehajtása 
+## <a name="implementation-of-policies-processes-and-standards"></a>Végrehajtási házirendek, eljárások és szabványok 
 
-Felügyeleti létesített szerepkörök és felelősségek információk biztonsági házirendek és a folyamatos működésének végrehajtásának felügyeletére Azure között. Az Azure felügyeleti biztonsági és a megfelelő csapatok (beleértve a harmadik felek) belül folytonossági eljárások felügyeletéért felelős. Azt is elősegíti a biztonsági házirendek, folyamatok és szabványoknak való megfelelés.
+Felügyeleti szerepkörök és felelősségek való végrehajtásának információk biztonsági házirendeket és folyamatos működésének felügyelete az Azure-ban hozott létre. Az Azure felügyeleti biztonsági és a megfelelő csapatok (beleértve a harmadik felek) belül folytonossági eljárások felügyeletéért felelős. Emellett elősegíti a biztonsági házirendek, folyamatok és szabványoknak való megfelelést.
 
 ### <a name="account-provisioning"></a>Fiók kiépítése
 
-Fiók hierarchia meghatározása szerkezeti Azure-szolgáltatásokat a vállalaton belül, és egy fő lépés. A core irányítási szerkezete. Az ügyfelek, akik rendelkeznek a nagyvállalati szerződés (EA) tovább lehet részlegek, a fiókok és az előfizetések a környezetben.
+Fiók hierarchia meghatározása az egyik legfontosabb lépés használhatja, és az Azure-szolgáltatások a vállalaton belül struktúra. Fontos a mag irányítási szerkezete. Nagyvállalati Szerződés (EA) rendelkező ügyfelek feloszthatja a részlegek, fiókok és előfizetések környezetét.
 
 ![Fiók kiépítése](./media/governance-in-azure/security-governance-in-azure-fig1.png)
 
-Ha nem rendelkezik nagyvállalati szerződéssel, érdemes lehet [Azure címkék](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags) a hierarchia meghatározásához az előfizetés szintjén. Azure-előfizetéssel, amely tartalmazza az összes erőforrást alapvető egysége. Az Azure, például a magok száma és erőforrások több korlátok is meghatározza. Előfizetések tartalmazhat [erőforráscsoportok](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview), amely erőforrásai szerepelhetnek. [Szerepköralapú hozzáférés-vezérlést (RBAC)](https://docs.microsoft.com/en-us/azure/role-based-access-control/overview) alapelvek a ezen három szinten.
+Ha nem rendelkezik nagyvállalati szerződéssel, érdemes [Azure címkék](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags) az előfizetés szintjén a hierarchia meghatározásához. Azure-előfizetése a alapszintű egység, amely tartalmazza az összes erőforrást. Azure-magok és az erőforrások száma például számos korlátok is meghatározza. Előfizetések tartalmazhat [erőforráscsoportok](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview), amely erőforrásokat is tartalmazhat. [Szerepköralapú hozzáférés-vezérlés (RBAC)](https://docs.microsoft.com/azure/role-based-access-control/overview) elvek vonatkoznak ezek három szinten.
 
-Minden vállalati nem egyezik. A nem vállalati vállalatok számára Azure címkék használatával a hierarchia hogyan Azure szerveződik rugalmasságot tesz lehetővé. Az Azure-erőforrások telepítése előtt a hierarchiában a modell, és megismerheti a hatását a számlázás, erőforrás-hozzáférés és összetettségét.
+Minden vállalati eltér. Nem vállalati vállalatok esetében a hierarchiában, az Azure címkék használatával lehetővé teszi a rugalmasság az Azure hogyan vannak rendszerezve. Az Azure-erőforrások üzembe helyezése, előtt modell egy hierarchia, és a számlázás, az erőforrás-hozzáférés és az összetettség gyakorolt hatás megértéséhez.
 
 ### <a name="subscription-controls"></a>Előfizetés vezérlők
 
-Előfizetések erőforrások használatának jelentett és számlázható hogyan határozza meg. Külön számlázási és támogatási előfizetéseinek állíthat be. Egy Azure-fiók több előfizetéssel is rendelkezhet. Előfizetések segítségével határozza meg a vállalat több részlegek az Azure erőforrás-használatát.
+Előfizetések meghatározhatja az erőforrások használati jelentett és a számlázás. Beállíthat külön számlázási és fizetési előfizetések. Egy Azure-fiók több előfizetéssel is rendelkezhet. Előfizetések segítségével határozza meg a vállalat több szervezeti egységek az Azure-erőforrások használatára.
 
-Például egy vállalat rendelkezik-e informatikai, HR, és Marketing részlegek, és ezek között különböző projektek futnak. A vállalat létrehozhatja a számlázási minden részleg használata az Azure-erőforrások, például a virtuális gépek. A vállalat ezután vezérelheti a pénzügyi minden részleg.
+Ha például a vállalat rendelkezik informatikai, HR, és a Marketing részlegek, és ezeket a szervezeti futnak a különböző projektek. A vállalat a számlázás az Azure-erőforrások, például a virtuális gépek minden részleg használati is alapulhatnak. A vállalat ezután vezérelheti az egyes szervezeti egységek pénzügyeit.
 
-Azure-előfizetések létrehozása három paramétert:
+Az Azure-előfizetések létrehozására a három paramétert:
 
-- Előfizető egyedi azonosítója
+- Egyedi feliratkozói azonosítója
 
-- Számlázási helye
+- A számlázás helye
 
-- Rendelkezésre álló erőforrások csoportja
+- Rendelkezésre álló erőforrások készlete
 
-Egy adott paraméterek adni egy Microsoft Fiókazonosító hitelkártyaszám és a teljes csomag Azure-szolgáltatáshoz. A Microsoft érvényesíti a felhasználás-korlátok, attól függően, hogy az előfizetés-típus.
+Egyéni ezeket a paramétereket egy Microsoft-fiók azonosító, hitelkártyaszám és a teljes körű Azure-szolgáltatások közé tartozik. A Microsoft megköveteli a használati korlátok, az előfizetés típusától függően.
 
-Az Azure regisztrációs hierarchiák határozza meg, hogyan szolgáltatások felépítése nagyvállalati szerződéssel belül. A nagyvállalati szerződés portál lehetővé teszi az ügyfelek felosztása nagyvállalati szerződéssel rugalmas olyan hierarchiájára, amely a szervezet igényeinek megfelelően testre szabhatók alapján társított Azure-erőforrások eléréséhez. A hierarchia mintát egyeznie kell a szervezet felügyeleti és a kapcsolódó számlázási és erőforrás-hozzáférési fiók földrajzi szerkezetének.
+Azure-regisztrációjához hierarchiák határozza meg, hogyan szolgáltatások struktúrája nagyvállalati szerződés belül. A nagyvállalati szerződés portál segítségével az ügyfelek való felosztásához, amelyek a szervezet igényeinek megfelelően testre szabható rugalmas hierarchiák alapján nagyvállalati szerződés társított Azure-erőforrásokhoz való hozzáférést. A hierarchia minta egyeznie kell a szervezet felügyeleti és földrajzi szerkezetét, hogy figyelembe vegye a társított számlázás- és erőforrás-hozzáférés.
 
-A három magas szintű hierarchia minták működési, üzleti egység, és földrajzi. Szervezeti egységek olyan felügyeleti szerkezetet fiók csoporthoz. Minden részleg fiókokhoz rendelhetők hozzá előfizetések, amelyek a számlázási és számos kulcsfontosságú korlátok silók létrehozása az Azure (például a virtuális gépek és tárfiókok száma).
+A három magas szintű hierarchia minták működési, üzleti egység, és a földrajzi. Szervezeti fiók csoporthoz egy felügyeleti szerkezet. Minden részleg fiókokhoz rendelhetők az előfizetéseket, ami a számlázási és számos kulcsfontosságú korlátok silók létrehozása az Azure-ban (például a virtuális gépek és a storage-fiókok száma).
 
 ![Előfizetés vezérlők](./media/governance-in-azure/security-governance-in-azure-fig2.png)
 
 
-A nagyvállalati szerződéssel rendelkező szervezetek számára Azure-előfizetések hierarchiája egy negyedik szintű:
+Az Azure-előfizetések nagyvállalati szerződéssel rendelkező szervezeteknek, hajtsa végre a negyedik szintű hierarchia:
 
-1. Vállalati alkalmazásbeléptetési rendszergazda
+1. Vállalati regisztrálási rendszergazdaként
 
-2. szervezeti egység rendszergazdája
+2. Szervezeti egység rendszergazdája
 
-3. fiók tulajdonosának
+3. Fióktulajdonos
 
 4. Szolgáltatás-rendszergazda
 
-Ezt a hierarchiát szabályozza a következő:
+Ezt a hierarchiát szabályozza a következőket:
 
-- Számlázási kapcsolatban.
+- A számlázás kapcsolat.
 
-- Fiók felügyeleti.
+- A fiókadminisztrátori.
 
-- Hozzáférés az erőforrásokhoz az RBAC-en keresztül.
+- RBAC-n keresztül erőforrásokhoz való hozzáférés.
 
 - Határok:
 
-  - Használati és elszámolási (díjszabási kártyát ajánlat számok alapján)
+  - Használat és elszámolás (díjszabási kártyát ajánlat számok alapján)
 
   - Korlátok
 
   - Virtuális hálózat
 
-- Melléklet az Azure Active Directory (Azure AD). Egy Azure AD-példányban sok a lekérdezés társítható.
+- Melléklet az Azure Active Directory (Azure AD). Sok előfizetést egy Azure AD-példányt társítható.
 
-- Vállalati beléptetési fiók társítását.
+- Egy vállalati regisztrációs fiókhoz társítva.
 
 ### <a name="role-based-access-control"></a>Szerepköralapú hozzáférés-vezérlés
 
-[Az RBAC](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles) lehetővé teszi a részletes hozzáféréskezelést az Azure-erőforrások. Az RBAC segítségével biztosíthat csak olyan mértékű hozzáférést a felhasználóknak frissíteniük kell a munkája elvégzéséhez. A vállalatok a pontos engedélyeket, amelyekre szükségük ad az alkalmazottak kell összpontosítania. Túl sok engedélyek támadók fiókot fedheti fel. Túl kevés engedélyek jelenti azt, hogy az alkalmazottak nem munkavégzéséhez hatékony. 
+[Az RBAC](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles) részletes hozzáférés az Azure-erőforrások kezelését teszi lehetővé. Az RBAC használatával biztosíthat csak olyan mértékű hozzáférést a felhasználóknak frissíteniük kell a munkája elvégzéséhez. Vállalatok kell összpontosítania a jogosultságot ad az alkalmazottak a pontos szükséges engedélyeket. Túl sok engedély teszik elérhetővé a támadók számára egy fiókot. Túl kevés engedélyek jelenti azt, hogy az alkalmazottak nem munkavégzéséhez hatékony. 
 
-Jogosultságot ad a Mindenki helyett korlátozás engedélyek az Ön Azure-előfizetés vagy erőforrásokhoz, engedélyezheti a csak bizonyos műveleteket. Például az RBAC segítségével lehetővé teszik egy alkalmazott egy előfizetésben található virtuális gépek kezeléséhez, miközben egy másik alkalmazott kezeli az SQL-adatbázisok ugyanahhoz az előfizetéshez.
+Helyett, így mindenki korlátozás nélküli engedélyeket az Azure-előfizetés vagy erőforrásokhoz, engedélyezheti csak bizonyos műveleteket. Ha például az RBAC használatával lehetővé teszik egy alkalmazott egy előfizetésben található virtuális gépek kezelése, miközben egy másik alkalmazott kezeli az SQL-adatbázisok ugyanabban az előfizetésben.
 
-Hozzáférés biztosításához rendelhet szerepköröket felhasználók, csoportok és alkalmazások egy adott hatókörben. A szerepkör-hozzárendelés hatóköre lehet előfizetés, egy erőforráscsoport vagy egy erőforrást. A szülő hatókörben szerepkörrel is benne a gyermekek számára engedélyezi a hozzáférést. Például egy felhasználó, aki hozzáfér az erőforráscsoporthoz kezelheti az erőforrásokat tartalmaz, például webhelyekhez, virtuális gépek és alhálózatok. Minden egyes előfizetésen belül legfeljebb 2000 szerepkör-hozzárendelések is létrehozhat.
+Hozzáférést biztosítani, akkor szerepköröket rendelhet felhasználókat, csoportokat vagy alkalmazásokat egy bizonyos hatókörben. Szerepkör-hozzárendelés hatóköre egy előfizetés, erőforráscsoport vagy egyetlen erőforrás lehet. Egy szülő hatókörben hozzárendelt szerepkör is hozzáférést biztosít az ebben lévő gyermekei. Például egy erőforráscsoporthoz hozzáféréssel rendelkező felhasználó az összes erőforrást, amely tartalmaz, mint például a websites, a virtuális gépek és alhálózatok kezelheti. Minden egyes-előfizetésben legfeljebb 2000 szerepkör-hozzárendeléseket is létrehozhat.
 
-A szerepkör az engedélyek csoportja, és Szerepalapú több beépített szerepkörrel rendelkezik. A következő beépített szerepkörök alkalmazása az összes erőforrástípus:
+A szerepkör az engedélyek csoportja, és számos beépített szerepkörrel rendelkezik az RBAC. A következő beépített szerepkörök minden erőforrástípus vonatkoznak:
 
-- **Tulajdonos** összes erőforrást, beleértve a jogot, hogy mások számára delegálása teljes hozzáféréssel rendelkezik.
+- **Tulajdonos** összes erőforrás, beleértve a másoknak való hozzáférés delegálására jogosultak is teljes hozzáféréssel rendelkezik.
 
-- **A közreműködői** is létrehozása és kezelése az Azure-erőforrások minden típusú, de nem tud hozzáférést biztosítani, mások számára.
+- **Közreműködői** is létrehozása és kezelése minden típusú Azure-erőforrások, de nem adhat hozzáférést másoknak.
 
 - **Olvasó** tekintheti meg az összes Azure-erőforrások.
 
-A beépített szerepkörök az Azure-ban a többi adott Azure-erőforrások felügyelet lehetővé tételéhez. Például a virtuális gép közreműködői szerepkör lehetővé teszi, hogy a felhasználó számára a virtuális gépek létrehozására és kezelésére. A beépített szerepkörök és a műveletek listáját, [beépített RBAC-szerepkörök](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles).
+A beépített szerepkörök az Azure-ban a rest lehetővé teszik az adott Azure-erőforrások kezelése. A virtuális gépek Közreműködője szerepkör például lehetővé teszi, hogy a felhasználó számára a virtuális gépek létrehozása és kezelése. A beépített szerepkörök és a műveletek listáját lásd: [beépített RBAC-szerepkörök](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles).
 
-Az RBAC az Azure-erőforrások felügyeleti műveletek támogatja az Azure portál és az Azure Resource Manager API-k. A legtöbb esetben az RBAC-szintnek műveletek az Azure-erőforrások nem lehet engedélyezni. Hogyan RBAC történő kiterjesztése adatok műveleteivel kapcsolatos információkért lásd: [megérteni a szerepkör-definíciók](https://docs.microsoft.com/en-us/azure/role-based-access-control/role-definitions).
+Az RBAC az Azure Portalon és az Azure Resource Manager API-k az Azure-erőforrások felügyeleti műveleteket támogatja. A legtöbb esetben az RBAC-szintnek műveleteket az Azure-erőforrások nem lehet engedélyezni. További információ az RBAC hogyan történő kiterjesztése az műveletekhez: [megismerheti a szerepkör-definíciók](https://docs.microsoft.com/azure/role-based-access-control/role-definitions).
 
-Ha a beépített szerepkörök nem felelnek meg a kívánt hozzáférés igényeinek, akkor [hozzon létre egy egyéni biztonsági szerepkört](https://docs.microsoft.com/azure/role-based-access-control/custom-roles). Hasonlóan a beépített szerepkörök felhasználók, csoportok és a előfizetés, az erőforráscsoport és az erőforrás-hatókör alkalmazásokat egyéni szerepkörök rendelhetők. Egyéni szerepkörök használatával hozhat létre [Azure PowerShell](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-powershell), [Azure CLI](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli), és a [REST API](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-rest).
+Ha a beépített szerepkörök nem felelnek meg a megadott típusú hozzáférést igényeinek, [hozzon létre egy egyéni szerepkört](https://docs.microsoft.com/azure/role-based-access-control/custom-roles). Csakúgy, mint a beépített szerepkörök egyéni szerepkörök, felhasználók, csoportok és az előfizetés, erőforráscsoport és erőforrás-hatókör-alkalmazásokkal is hozzárendelhető. Létrehozhat egyéni szerepköröket is az [Azure PowerShell-lel](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-powershell), [Azure CLI-vel](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli), és a [REST API-val](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-rest).
 
 ### <a name="resource-management"></a>Erőforrás-kezelés
 
-Azure biztosít két üzembe helyezési modellek: [klasszikus](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-deployment-model) és az Azure Resource Manager.
+Az Azure két üzembe helyezési modellt kínál: [klasszikus](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-deployment-model) és Azure Resource Manager.
 
-A klasszikus modellben minden erőforrás létezik-e egymástól függetlenül. Nincs mód kapcsolódó erőforrások csoportosítása. Akkor kell manuálisan követheti nyomon erőforrások jött létre a megoldás vagy az alkalmazáshoz, és ne felejtse el összehangolt kezelheti őket. A felügyeleti alapvető egysége, az előfizetés. Feltörhető, ami nagyszámú előfizetések létrehozása egy előfizetésen belüli erőforrások le.
+A klasszikus modellben az egyes erőforrások egymástól függetlenül létezik. Nincs lehetőség a kapcsolódó erőforrások csoportosítása. Rendelkezik manuálisan követheti nyomon erőforrásokat a megoldás vagy az alkalmazások alkotják, és összehangolt kezelheti őket a vágólapra. Az alapvető egysége a előfizetésre szükség. Meglehetősen nehéz, ami nagyszámú előfizetések létrehozása egy előfizetésen belüli erőforrások felosztania.
 
-A Resource Manager üzembe helyezési modellel magába foglalja a [erőforráscsoport](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview). Az erőforráscsoport közös életciklussal rendelkező erőforrások tárolója. A megoldás összes erőforrást, vagy csak azokat az erőforrásokat, amelyet szeretne kezelése csoportként része lehet. A szervezet számára legideálisabb elosztás alapján eldöntheti, hogyan szeretné elosztani az erőforrásokat az erőforráscsoportok között.
+A Resource Manager üzemi modell fogalma magában foglalja egy [erőforráscsoport](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview). Az erőforráscsoport közös életciklussal rendelkező erőforrások tárolója. A megoldás összes erőforrását, vagy csak azokat az erőforrásokat egy csoportként kezelheti kívánt is alkalmas. A szervezet számára legideálisabb elosztás alapján eldöntheti, hogyan szeretné elosztani az erőforrásokat az erőforráscsoportok között.
 
 A Resource Manager-alapú üzemi modell számos előnyt kínál:
 
 - A megoldás összes szolgáltatását egy csoportként helyezheti üzembe, felügyelheti és figyelheti meg, és nem különálló erőforrásokként kell kezelnie azokat.
 
-- Ismételten a teljes életciklus megoldás üzembe helyezése, és biztos lehet abban, hogy az erőforrások telepítése konzisztens lesz.
+- Ismételt üzembe helyezése a megoldás teljes életciklusa során, és biztos lehet benne, hogy az erőforrások telepítése konzisztens lesz.
 
-- Hozzáférés-vezérlés az erőforráscsoportban alkalmazhatja az összes erőforrást. Ezek a házirendek automatikusan alkalmazzák, amikor új erőforrásokat ad az erőforráscsoportot.
+- Hozzáférés-vezérlés az erőforráscsoportban lévő összes erőforrást alkalmazhatja. Ezek a házirendek a rendszer automatikusan alkalmazza, amikor új erőforrásokat ad az erőforráscsoporthoz.
 
 - Címkékkel láthatja el az erőforrásokat, így logikusan rendszerezhető az előfizetés összes erőforrása.
 
 - A megoldás infrastruktúráját JavaScript Object Notation (JSON) formátumban definiálhatja. Ez a JSON-fájl az úgynevezett Resource Manager-sablon.
 
-- Meghatározhatja az erőforrások, hogy azok van telepítve, a megfelelő sorrendben közti függőségeket.
+- Megadhatja, hogy a helyes sorrendben üzembe helyezésük erőforrások közti függőségeket.
 
 ![Resource Manager](./media/governance-in-azure/security-governance-in-azure-fig4.png)
 
 A sablonokra vonatkozó javaslatokat talál a [Best practices for creating Azure Resource Manager templates](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-template-best-practices) (Az Azure Resource Manager-sablonok létrehozásának ajánlott eljárásai) című cikkben.
 
-Az Azure Resource Manager segítségével győződjön meg arról, hogy az erőforrások a megfelelő sorrendben jöttek létre függőségek elemzésével. Ha egy erőforrást támaszkodik egy értéket egy másik erőforrás (például a virtuális gép a lemezeket a tárfiók kellene), akkor [függőség beállítása](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-define-dependencies) a sablonban.
+Az Azure Resource Manager segítségével, győződjön meg arról, hogy az erőforrások a megfelelő sorrendben jöjjenek létre függőségek elemzésével biztosítja. Ha egy erőforrás támaszkodik egy értéket egy másik erőforráshoz (például egy virtuális gépet kellene a tárfiókot lemezek), akkor [beállíthat egy függőséget](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-define-dependencies) a sablonban.
 
-A sablonokat az infrastruktúra frissítésére is használhatja. Hozzáadhat például egy erőforrást a megoldáshoz, valamint hozzáadhat konfigurációs szabályokat a már telepített erőforrásokhoz. Ha a sablon meghatározza a létrehoznia egy erőforrást, de az erőforrás már létezik, az erőforrás-kezelő egy új eszköz létrehozása helyett frissítést hajt végre. Erőforrás-kezelő állapot frissíti a meglévő eszközt, mintha új lenne.
+A sablonokat az infrastruktúra frissítésére is használhatja. Hozzáadhat például egy erőforrást a megoldáshoz, valamint hozzáadhat konfigurációs szabályokat a már telepített erőforrásokhoz. Ha a sablon határozza meg, de az erőforrás már létezik egy erőforrás létrehozását, a Resource Manager egy új eszköz létrehozása helyett frissítést végez. Resource Manager frissíti a meglévő eszközt állapot, mintha új lenne.
 
-Erőforrás-kezelő bővítményeket biztosít olyan forgatókönyvek amikor további műveletek, például a Szoftvertelepítés nem szerepel a telepítő van szüksége.
+Resource Manager bővítményeket biztosít a forgatókönyvek amikor szüksége van további műveleteket, például szoftver, amely nem szerepel a telepítő telepíti.
 
 ### <a name="resource-tracking"></a>Erőforrás-követés
 
-A szervezet felhasználói erőforrásokat ad az előfizetés, ezért rendelni az erőforrások a megfelelő részleg, az ügyfél és a környezet fontosabbá válik. Metaadatok csatolhat erőforrásoknak [címkék](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags). Címkék használata az erőforrás vagy a tulajdonos ismertetik. Címkék lehetővé teszik a nem csak összesítése és többféle módon erőforrások csoport, de is az adatokat a jóváírási céljából.
+Ahogy a szervezet felhasználói erőforrások hozzáadása az előfizetéshez, válik fontosabb erőforrásokat társítani a megfelelő részleg, a vevő és a környezet. Metaadatok csatlakoztathat erőforrásai a [címkék](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags). Címkék használatával az erőforrás vagy a tulajdonos kapcsolatos adatok megadása. A címkék lehetővé teszi nemcsak összesíteni és csoportosíthatók az erőforrások több módszert is, de is az adatokat a jóváírási céljából.
 
-Használjon címkék összetett gyűjteménye erőforráscsoportok és erőforrásokat, és ha kell vizuálisan megjeleníteni az eszközöket, amelyek a legtöbb legcélszerűbb módon. Például jelölheti meg az erőforrásokat, amelyek hasonló szerepet töltenek a szervezet vagy, amely a részleghez tartoznak.
+Használja a címkék, ha egy összetett gyűjteménye, erőforráscsoport és erőforrások, vizuálisan megjeleníteni az eszközöket, amelyek a legésszerűbb is ugyanúgy kell. Megjelölheti például, amelyek hasonló szerepet töltenek a szervezetben, vagy a részleghez tartozó erőforrások.
 
-Címkék nélkül a szervezet felhasználói több erőforrást, amely később azonosításához és kezeléséhez nehéz lehet hozhat létre. Például előfordulhat, hogy törölni kívánja a projekthez tartozó összes erőforrást. Ha ezeket az erőforrásokat a projekt nem címkével rendelkeznek, manuálisan találnia őket. A címkézés hasznos módja a felesleges költségek csökkentéséhez az előfizetésében.
+Címkék nélkül a felhasználók a szervezet több erőforrást, amely a későbbiekben azonosítani és felügyelni nehéz lehet, hogy hozhat létre. Például előfordulhat, hogy törölni kívánt projekt összes erőforrását. Ha a projekt nem címkézett ezeket az erőforrásokat, kell manuálisan látja őket. A címkézés hasznos módja a felesleges költségek csökkentéséhez az előfizetésében.
 
-Erőforrások azonos címkével lássa ugyanabban az erőforráscsoportban lenniük, hogy nem kell. Létrehozhat saját címkerendszert, annak érdekében, hogy a szervezete összes felhasználója helyett használjon a címkéket alkalmazása. véletlenül némileg eltérő címkéket (például "részleg" helyett "osztály").
+Egy címke megosztása ugyanabban az erőforráscsoportban található erőforrásokat nem szükséges. Létrehozhat saját címkerendszert, győződjön meg arról, hogy a szervezet összes felhasználója közös címkék alkalmazása véletlenül némileg eltérő címkéket (például "részleg" helyett "Részl") helyett.
 
-Erőforrás-házirendek lehetővé teszik a szervezet általános szabályok létrehozásához. Győződjön meg arról, hogy a megfelelő értékekkel erőforrások címkézett házirendeket hozhat létre.
+Erőforrás-szabályzatok lehetővé teszik a szervezet általános szabályok létrehozása. Győződjön meg arról, hogy erőforrások megfelelő címkékkel látja a megfelelő értékeket a szabályzatokat hozhat létre.
 
-A címkézett erőforrásokat az Azure Portalon is megtekintheti. A [használati jelentés](https://docs.microsoft.com/azure/billing/billing-understand-your-bill) számára az előfizetés címke neveit és értékeit tartalmazza, ezért oszthatja kimenő költségek címkék alapján.
+A címkézett erőforrásokat az Azure Portalon is megtekintheti. A [használati jelentés](https://docs.microsoft.com/azure/billing/billing-understand-your-bill) az előfizetés tartalmazza a címkék nevét és értékeit, így Ön is részletezheti a költségeket címkék alapján.
 
-Címkékkel kapcsolatos további információkért lásd: [számlázási címkéket házirend kezdeményezésére](../azure-policy/scripts/billing-tags-policy-init.md).
+Címkékkel kapcsolatos további információkért lásd: [számlázási címkék szabályzatának kezdeményezése](../azure-policy/scripts/billing-tags-policy-init.md).
 
 Az alábbi korlátozások érvényesek a címkékre:
 
-- Minden erőforrás vagy erőforráscsoport legfeljebb 15 címke kulcs/érték párok rendelkezhet. A korlátozás csak a közvetlenül az erőforráscsoportra vagy erőforrásra alkalmazott címkékre érvényes. Erőforráscsoport 15 címke kulcs/érték párok tartalmazó sok erőforrást tartalmazhat.
+- Minden egyes erőforrás vagy erőforráscsoport legfeljebb 15 címkenév kulcs/érték párral rendelkezhet. A korlátozás csak a közvetlenül az erőforráscsoportra vagy erőforrásra alkalmazott címkékre érvényes. Egy erőforráscsoport tartalmazhatja, amelyek mindegyikére 15 címkenév kulcs/érték párral sok erőforrást.
 
 - A címke neve legfeljebb 512 karakter hosszúságú lehet.
 
@@ -176,155 +176,155 @@ Az alábbi korlátozások érvényesek a címkékre:
 
 - Az egyes erőforráscsoportokra alkalmazott címkéket nem öröklik az adott erőforráscsoportba tartozó erőforrások.
 
-Ha több mint 15 értéket kell társítania egy erőforráshoz, használjon JSON-sztringet a címke értékéhez. A JSON-karakterláncban tartalmazhat egyetlen címke kulcs alkalmazott sok értéket.
+Ha több mint 15 értéket kell társítania egy erőforráshoz, használjon JSON-sztringet a címke értékéhez. A JSON-karakterlánc is tartalmazhat egyetlen címkekulcs alkalmazott sok érték.
 
-#### <a name="tags-for-billing"></a>Címkék a számlázáshoz
+#### <a name="tags-for-billing"></a>A számlázási címkék
 
-Címkék lehetővé teszik az elszámolási adatok. Például ha a különböző szervezetek több virtuális gép fut, címkék használata csoport használatra költségközpont által. Címkék segítségével költségek futtatókörnyezetben, például a számlázási használata az éles környezetben futó virtuális gépek szerinti kategóriák.
+A címkék lehetővé teszik az elszámolási adatok. Például ha különböző szervezetek több virtuális gépet futtat, címkék használata használata a költséghely szerint. Címkék használatával költségek kategorizálása futtatókörnyezet, például a számlázási használata az éles környezetben futó virtuális gépek szerint.
 
-Információ a címkék keresztül lekérhesse a [Azure erőforrás-használat és RateCard API-k](https://docs.microsoft.com/azure/billing/billing-usage-rate-card-overview) vagy a használati vesszővel tagolt (CSV) fájl. Használat a fájl letöltése a [fiókok az Azure portál](https://account.windowsazure.com/) vagy a [EA portal](https://ea.azure.com/).
+Információ a címkék használatával lekérheti a [Azure erőforrás-használat és RateCard API-k](https://docs.microsoft.com/azure/billing/billing-usage-rate-card-overview) vagy a használati vesszővel elválasztott értékeket (CSV) fájl. A használati fájl letöltése a [fiókok az Azure portal](https://account.windowsazure.com/) vagy a [a nagyvállalati szerződések portáljának](https://ea.azure.com/).
 
-További információ a számlázási adatokat programozott hozzáférést: [betekintést nyerhet a Microsoft Azure erőforrás-felhasználás](https://docs.microsoft.com/azure/billing/billing-usage-rate-card-overview). A REST API-műveleteket, lásd: [Azure számlázási REST API-referencia](https://msdn.microsoft.com/library/azure/1ea5b323-54bb-423d-916f-190de96c6a3c).
+Számlázási adatok való programozott hozzáféréssel kapcsolatos további információkért lásd: [betekintést nyerhet a Microsoft Azure erőforrás-használat](https://docs.microsoft.com/azure/billing/billing-usage-rate-card-overview). REST API-műveleteket, lásd: [Azure Billing – REST API-referencia](https://msdn.microsoft.com/library/azure/1ea5b323-54bb-423d-916f-190de96c6a3c).
 
-Ha tölthetik le a fürt megosztott kötetei szolgáltatás használatát támogató szolgáltatások számlázási, a címkéket a címkék jelennek meg a címkék oszlop.
+Ha Ön a használati adatok letöltése CSV-szolgáltatásokhoz, amelyek támogatják a címkék a számlázási, a címkék a címkék oszlopban jelennek meg.
 
 ### <a name="critical-resource-controls"></a>Kritikus fontosságú erőforrás-vezérlők
 
-Mivel a szervezet alapvető szolgáltatások ad hozzá az előfizetés, válik fontosabb, győződjön meg arról, hogy ezek a szolgáltatások elérhetők-e üzleti megszűnésének megelőzése érdekében. [Erőforrás zárolások](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-lock-resources) engedélyezi, hogy hol módosítsa vagy törölje azokat az alkalmazások és a felhőalapú infrastruktúra jelentős hatással van a jó minőségű erőforrásokon végrehajtott műveletek korlátozása. Zárolások alkalmazhat egy előfizetés, az erőforráscsoportot, vagy az erőforrás. Általában zárolások alkalmazása eligazodást erőforrások, például a virtuális hálózatok, az átjárók és a storage-fiókok.
+Ahogy a szervezet alapvető szolgáltatásához ad hozzá az előfizetés, válik fontosabb, győződjön meg arról, hogy ezek a szolgáltatások érhetők el üzleti fenntartásához. [Erőforrás-zárolások](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-lock-resources) korlátozhatja a műveletek az értékes erőforrásokat, módosítsa vagy törölje őket jelentős hatást gyakorol az alkalmazások és a felhő-infrastruktúra rendelkezik. Egy előfizetés, erőforráscsoport vagy erőforrás zárolása alkalmazhat. Zárolások általában alapvető erőforrások, például a virtuális hálózatok, az átjárók és a storage-fiókok a alkalmazni.
 
-Erőforrás zárolások jelenleg két értéket támogatja: **CanNotDelete** és **ReadOnly**. **CanNotDelete** azt jelenti, hogy a felhasználói (a megfelelő jogosultságokkal) is még olvasni, vagy módosítani az erőforrást, de nem lehet törölni. **Csak olvasható** azt jelenti, hogy a jogosult felhasználók nem lehet törölni vagy módosítani az erőforrást.
+Erőforrás-zárolások jelenleg támogatja a két érték: **védve** és **ReadOnly**. **Védve** azt jelenti, hogy a felhasználók (a szükséges engedélyekkel) is olvasni vagy módosítani az erőforrást, de nem lehet törölni. **Csak olvasható** azt jelenti, hogy engedéllyel rendelkező felhasználók nem lehet törölni vagy módosítani az erőforrást.
 
-Erőforrás zárolások csak alkalmazása fordul elő a felügyeleti vezérlősík, amely küldött műveletek műveletek <https://management.azure.com>. A zárolás nem korlátozza, hogyan erőforrások feladatokat a saját. Erőforrás módosítások korlátozott, de erőforrás műveletek nem korlátozottak. Például egy **ReadOnly** zárolást SQL-adatbázis nem engedi törölhessék vagy módosíthassák az adatbázist, de nem akadályozza meg a létrehozása, frissítése vagy törlése az adatbázisban.
+Erőforrás-zárolások csak vonatkozik, amelyek a felügyeleti sík, olyan küldött műveleteket tartalmaz, amely egy operations <https://management.azure.com>. A zárolása nem korlátozza, erőforrások hogyan hajthat végre a saját funkciók. Erőforrás-módosítások korlátozva, de az erőforrás-műveletek nem korlátozódnak. Ha például egy **ReadOnly** SQL-adatbázis zárolása megakadályozza a törlését vagy módosítását az adatbázis, de nem akadályozza meg a létrehozása, frissítése vagy törlése az adatbázisban található adatok.
 
-Alkalmazása **ReadOnly** váratlan eredményekhez vezethet, mivel bizonyos műveleteket, amelyek az adatok, például olvasási műveletek további műveleteket igényelnek. Például, ha kialakít egy **ReadOnly** zárolását egy tárfiókot minden felhasználót megakadályoz a kulcsainak listázása. A művelet kulcsainak listázása egy POST kérést segítségével kezel, mert a visszaadott kulcsok írási műveletek érhetők el.
+Alkalmazása **ReadOnly** váratlan eredményekhez vezethet, mivel bizonyos műveletek, amelyek úgy tűnik, például olvasási műveletekhez szükséges további művelet. Például elhelyezése egy **ReadOnly** a storage-fiók zárolása megakadályozza, hogy minden felhasználó a kulcsok listázása. A kulcsok listázása művelet POST-kérés történik, mert a visszaadott kulcsok az írási műveletek érhetők el.
 
 ![Kritikus fontosságú erőforrás-vezérlők](./media/governance-in-azure/security-governance-in-azure-fig5.png)
 
-Például ha helyez el egy **csak olvasható** az Azure App Service erőforrás zárolását megakadályozza, hogy a Visual Studio Server Explorer megjelenítése az erőforrás fájlok, mert adott interakció írási hozzáféréssel kell rendelkeznie.
+A példában egy másik elhelyezése egy **ReadOnly** egy Azure App Service erőforrás zárolása megakadályozza, hogy a Visual Studio Server Explorer fájl az erőforrás jelenik meg, mert a kapcsolati írási hozzáférésre van szüksége.
 
-Szerepköralapú hozzáférés-vezérlés, ellentétben a felügyeleti zárolás korlátozás alkalmazandó összes felhasználók és szerepkörök használhat. Engedélyeinek beállításával kapcsolatos további tudnivalókért lásd: [RBAC és az Azure-portálon-hozzáférés kezelése](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal).
+Szerepköralapú hozzáférés-vezérlés, ellentétben a felügyeleti zárolások összes felhasználók és szerepkörök korlátozások alkalmazásához használhat. Engedélyek beállításával kapcsolatos további információkért lásd: [rbac-RÓL és az Azure portal-hozzáférés kezelése](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal).
 
-A szülő hatókörben zárolást alkalmazásakor hatókörön belüli összes erőforrás öröklik az azonos zárolása. A hozzáadott később még akkor is, erőforrások örökölt a zárolást. Az öröklés a legszigorúbb zár lép érvénybe.
+Amikor alkalmazza a zárolást, egy szülő hatókörben, a hatókörön belüli összes erőforrás azonos zárolási öröklik. Hozzáadását a későbbiekben még akkor is, erőforrások a zárolási öröklik a szülő. A legszigorúbb zárolást az öröklési ciklus élvez elsőbbséget.
 
-Hozzon létre, vagy törölje a felügyeleti zárolás, Microsoft.Authorization/ vagy Microsoft.Authorization/locks/ műveletek hozzáféréssel kell rendelkeznie. A beépített szerepkörök csak a tulajdonos és a felhasználói hozzáférés adminisztrátora kapnak ezeket a műveleteket.
+Létrehozásához, vagy felügyeleti zárolások törlése, Microsoft.Authorization/ vagy Microsoft.Authorization/locks/ műveletek hozzáféréssel kell rendelkeznie. A beépített szerepkörök csak a tulajdonos és a felhasználói hozzáférés rendszergazdája megkapják ezeket a műveleteket.
 
 ### <a name="api-access-to-billing-information"></a>API-hozzáférés az számlázási adatokat
 
-Azure számlázás API-k segítségével lekéréses használati és erőforrás adatokat be a kívánt adatok elemzésére szolgáló eszközöket. Az Azure erőforrás-használat és RateCard API-k segítségével pontosan előre jelezni, és a költségek kezelésére. Az API-kat használják, mint a egy erőforrás-szolgáltató és az Azure erőforrás-kezelő által közzétett API-kban család része.
+Használat és a resource adatok be az előnyben részesített adatelemző eszközökkel Azure Billing API-k használatával. Az Azure erőforrás-használat és RateCard API-k segítségével pontos előrejelzésére és kezelésére a költségeket. Az API-k vannak megvalósítva egy erőforrás-szolgáltató és a termékcsalád az az Azure Resource Manager által elérhetővé tett API-k egy részét.
 
-#### <a name="resource-usage-api-preview"></a>Erőforrás-használat API (előzetes verzió)
+#### <a name="resource-usage-api-preview"></a>Erőforrás-használati API (előzetes verzió)
 
-Használja az Azure [erőforrás-használati API](https://msdn.microsoft.com/library/azure/mt219003) a becsült Azure felhasználási adatok eléréséhez. Az API-t tartalmazza:
+Az Azure használata [erőforrás-használati API](https://msdn.microsoft.com/library/azure/mt219003) kívánt becsült Azure-használati adatait. Az API-t tartalmazza:
 
-- **Szerepalapú**: konfigurálja a hozzáférési házirendek a [Azure-portálon](https://portal.azure.com/) vagy [Azure PowerShell-parancsmagok](https://docs.microsoft.com/powershell/azure/overview) adhatja meg, mely felhasználók vagy alkalmazások ingyenesen juthatnak az előfizetés használati adatok. Hívóknak kell használnia szabványos Azure Active Directory-jogkivonatokat a hitelesítéshez. A hívó hozzáadása a számlázási olvasó, olvasó, tulajdonosi vagy közreműködői szerepkör egy adott Azure-előfizetés a használati adatok eléréséhez.
+- **Az RBAC**: konfigurálása hozzáférési házirendek a a [az Azure portal](https://portal.azure.com/) vagy [Azure PowerShell-parancsmagok](https://docs.microsoft.com/powershell/azure/overview) megadásához, hogy mely felhasználók vagy alkalmazások révén ingyenesen juthatnak az előfizetés használati adatokat. Hívó standard szintű Azure Active Directory-jogkivonatok hitelesítést kell használnia. Adja hozzá a hívó érhet el a használati adatokat egy adott Azure-előfizetés vagy a számlázási olvasó, olvasó, tulajdonos vagy közreműködő szerepkörrel.
 
-- **Óránként vagy naponta összesített**: hívóknak adhat meg, hogy meg kívánják óránként vagy naponta lépésekben az Azure használati adatok. Az alapértelmezett érték a napi.
+- **Óránkénti vagy napi aggregáció**: Hívóit adhatja meg szeretnének-e az Azure használati adatok óránkénti vagy napi lépésekben. Az alapértelmezett érték a napi.
 
-- **(Erőforrás-címkét tartalmaz) példány metaadatok**: példányszintű részletek, például a teljesen minősített erőforrás URI beolvasása (/subscriptions/ {előfizetés-azonosító} /...), erőforrás csoport adatai, és az erőforráscímkék. A metaadatok segítségével deterministically és szoftveresen használati lefoglalni a címkék, például a kereszt-díjszabási használatából adódó alapján.
+- **(Erőforrás-címkét tartalmaz) példány metaadatok**: példányszintű részleteket, például a teljesen minősített erőforrás-URI (/subscriptions/ {előfizetés azonosítója} /...), erőforrás-csoport adatai, és az erőforráscímkék. A metaadatok segítségével determinisztikus és programozott módon használati lefoglalni a címkék az alkalmazási helyzetek, például a kereszt-díjszabási alapján.
 
-- **Erőforrás-metaadatok**: erőforrás részletek, például a mérési neve mérő kategória, mérő alkategóriát, egység vagy régió biztosítják a hívó szeretné jobban megismerni mi felhasznált. Erőforrás-metaadatok terminológia igazítása az Azure-portálon keresztül is dolgozunk Azure használati CSV, EA számlázási CSV, és más nyilvánosan elérhető lép segítséget adatok összefüggéseket keresztül lép.
+- **Az erőforrás metaadatának**: erőforrás részleteit, például a fogyasztásmérő neve, mérőszám kategóriája, fogyasztásmérő alkategóriája, egységek és régió ad a hívó, amit felhasznált jobb megértése. Erőforrás-metaadatok terminológia igazítása az Azure Portalon keresztül is dolgozunk az Azure használati CSV, a nagyvállalati szerződés számlázási CSV és egyéb nyilvános, adatainak korreláltatására élményt nyújt segítséget.
 
-- **Minden használati kínálnak típusok**: használati adatok érhető el az összes kínálnak, használatalapú fizetés, MSDN, pénzügyi kötelezettségvállalást, pénzügyi kreditet és EA is beleértve.
+- **Minden használati típusok ajánlat**: használati adatok érhető el az összes típusok, beleértve a használatalapú fizetés, MSDN, pénzügyi kötelezettségvállalást, a fizetésre használható Kredit és nagyvállalati szerződéssel rendelkező kínálnak.
 
 #### <a name="resource-ratecard-api"></a>Erőforrás RateCard API
 
-Az Azure erőforrás RateCard API segítségével listájának elérhető Azure-erőforrások és az egyes becsült díjszabási információkat. Az API-t tartalmazza:
+Az Azure-erőforrás RateCard API használatával elérhető Azure-erőforrások és a becsült díjszabási információkat az egyes listájának beolvasása. Az API-t tartalmazza:
 
-- **Az RBAC**: a hozzáférési házirendek konfigurálása az Azure portálon, vagy adja meg, hogy mely felhasználók vagy alkalmazások ingyenesen juthatnak az RateCard adatokat az Azure PowerShell-parancsmagok használatával. Hívóknak kell használnia szabványos Azure Active Directory-jogkivonatokat a hitelesítéshez. A hívó hozzáadása a olvasó, a tulajdonos vagy közreműködő szerepkört egy adott Azure-előfizetés a használati adatok eléréséhez.
+- **Az RBAC**: a hozzáférési szabályzatok konfigurálása az Azure Portalon, vagy adja meg, hogy mely felhasználók vagy alkalmazások beszerezheti az RateCard adatokhoz való hozzáférés az Azure PowerShell-parancsmagok használatával. Hívó standard szintű Azure Active Directory-jogkivonatok hitelesítést kell használnia. Adja hozzá a hívó érhet el a használati adatokat egy adott Azure-előfizetés az olvasó, tulajdonosi vagy közreműködői szerepkörhöz.
 
-- **Használatalapú fizetés, az MSDN, a pénzügyi kötelezettségvállalást a és a pénzügyi kreditet ajánlatok (de nem EA) támogatása**: Ez az API felület Azure ajánlat szintű arány információkat nyújt. Ez az API felület védőfalkezelőbe meg kell felelnie az ajánlat információkat az erőforrás részletek és sebességét. EA jelenleg nem támogatott, mert EA ajánlatok testreszabott beléptetési mértékek. 
+- **Használatalapú fizetés, az MSDN, a pénzügyi kötelezettségvállalás és a fizetésre használható Kredit ajánlatokat (de nem a nagyvállalati szerződéssel rendelkező) támogatása**: Ez az API az Azure-ajánlat szintű díjszabás információival. Ez az API hívója erőforrás részleteit és a díjak az ajánlati információkat kell adja át. Nagyvállalati szerződéssel rendelkező jelenleg nem támogatott, mert a nagyvállalati szerződésre vonatkozó ajánlatok testreszabott regisztrációs mértékek. 
 
 #### <a name="scenarios"></a>Forgatókönyvek
 
-A használati és RateCard API-k kombinációja lehetővé teszi, ezek a forgatókönyvek:
+A használat és RateCard API-k együttes használata lehetővé teszi az ezekben a forgatókönyvekben:
 
-- **Azure megérteni a hónapban töltenek**: a használati együttes használata, és a hónap során töltött RateCard API-k, a felhő jobb betekintést eléréséhez. Elemezheti óránként és napi használat és kell fizetni becslése.
+- **Tudnivalók az Azure a hónap során töltött**: a használati kombinációját használja, és RateCard API-k segítségével megismerkedhet a felhő jobb csak a hónap során. Elemezheti az óránkénti vagy a napi használat és a költség becslése.
 
-- **Riasztások beállítása**: a használati és RateCard API-k segítségével becsült felhő használat és díjak és erőforrás-alapú vagy pénzügyi-alapú értesítések beállítása.
+- **Riasztásokat állíthat be**: becsült felhőbeli fogyasztást és a költségek, és erőforrás-alapú vagy pénzügyi-alapú riasztásokat állíthat be a használat és RateCard API-k használatával.
 
-- **Számlázási előrejelzése**: Get a becsült felhasználás és a felhő kiadásokat, és gépi tanulási algoritmusok előre jelezni, mi a számlázási lenne az elszámolási időszak végén alkalmazni.
+- **Számlázási előrejelzése**: Get, a becsült használat és a felhőbeli költségek, és gépi tanulási algoritmusok előre jelezni, hogy mi a számla lenne az elszámolási időszakban végén a alkalmazni.
 
-- **Hajtsa végre a előtti felhasználási elemzés**: a RateCard API használatával megjósolható, hogy mekkora a számlázási okozna a várható használati a munkaterhelések az Azure-bA helyezi át. Ha meglévő alkalmazások más felhők vagy magánfelhőkben, az az Azure-ral használatának is leképezheti Azure jobb becslése beolvasandó díjszabás televíziózással töltenek. Ez a becslés lehetővé teszi a forgáspont kínálnak, és hasonlítsa össze a különböző típusú túl használatalapú fizetés, például a pénzügyi kötelezettségvállalást a és a pénzügyi kreditet között.
+- **Hajtsa végre az elemzés előzetes használatalapú**: előrejelezheti, hogy mekkora a számla lenne a várható használat a számítási feladatok Azure-ba való áthelyezésekor a RateCard API-val. Ha rendelkezik meglévő számítási feladatokat, az egyéb felhőkben vagy privát felhők, a használat az Azure-ral is leképezheti díjak beolvasni egy jobb becslés az Azure-költségek. Ez a becslés teszi lehetővé az ajánlat forgáspont, és hasonlítsa össze a különböző típusú túl az utólagos elszámolású, például a pénzügyi kötelezettségvállalás és a fizetésre használható Kredit között.
 
-- **Hajtsa végre egy elemzési**: meg lehet határozzák meg, hogy egy másik régióban, vagy egy másik Azure-erőforrás-konfigurációban alkalmazásokat és szolgáltatásokat futtathatnak költséghatékonyabb. Azure-erőforrás költségek az Azure-régió használata esetén előfordulhat, hogy tér el a rendszer. Azt is meghatározhatja, hogy ha egy másik Azure-ajánlat típusa a nagyobb mértékben nyújt egy Azure-erőforrás.
+- **Lehetőségelemzési elemzésével**: képes meghatározni, hogy azt helyett egy másik régióban található, vagy az Azure-erőforrás egy másik konfigurációs a számítási feladatok futtatásához. Az Azure erőforrás-használati díjak szerint előfordulhat, hogy különbözik az Azure-régiót használ. Azt is meghatározhatja, hogy ha egy másik Azure-ajánlat típus jobb sebesség nyújt egy Azure-erőforrás.
 
-### <a name="networking-controls"></a>Hálózati vezérlő
+### <a name="networking-controls"></a>Hálózati vezérlők
 
-Erőforrásokhoz való hozzáférést lehet (a vállalati hálózatból) belső vagy külső (internetes) keresztül. Is egyszerűen a szervezet felhasználói erőforrások véletlenül be a megfelelő hellyel, és potenciálisan nyissa meg ezeket a rosszindulatú hozzáférésektől. Csakúgy, mint a helyszíni eszközök, a vállalatok megfelelő ellenőrzéssel győződjön meg arról, hogy Azure-felhasználók a megfelelő döntéseket kell hozzáadnia.
+Erőforrásokhoz való hozzáférés lehet (a vállalati hálózaton belül) belső vagy külső (az interneten) keresztül. A felhasználók a szervezet véletlenül a nem megfelelő helyszíni helyezni erőforrásokat, és potenciálisan rosszindulatú hozzáférés meg is gyerekjáték. Csakúgy, mint a helyszíni eszközök, vállalatok hozzá kell adnia a megfelelő szabályozásokkal győződjön meg arról, hogy az Azure-felhasználók a helyes döntések meghozatalában.
 
-![Hálózati vezérlő](./media/governance-in-azure/security-governance-in-azure-fig6.png)
+![Hálózati vezérlők](./media/governance-in-azure/security-governance-in-azure-fig6.png)
 
-A következő alapvető erőforrások előfizetés irányításhoz, adja meg a hozzáférés alapvető irányítását.
+A következő alapvető erőforrások előfizetés-irányítás, egyszerű hozzáférés vezérlése érdekében adja meg.
 
 #### <a name="network-connectivity"></a>Hálózati kapcsolat
 
-[Virtuális hálózatok](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview) alhálózatok tároló objektumok. Bár nem feltétlenül szükséges, egy virtuális hálózatot gyakran használják alkalmazások belső vállalati erőforrásokhoz való csatlakozás. Az Azure Virtual Network szolgáltatás lehetővé teszi, hogy biztonságosan kapcsolódjanak a Azure-erőforrások egymástól a virtuális hálózatok.
+[Virtuális hálózatok](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview) alhálózatok tároló objektumok. Bár ez nem feltétlenül szükséges, egy virtuális hálózatot gyakran használják a belső vállalati erőforrásokhoz az alkalmazásoknak az összekapcsolása. Az Azure Virtual Network szolgáltatás lehetővé teszi, hogy biztonságosan csatlakoztathatja az Azure-erőforrások egymáshoz a virtuális hálózatok.
 
-Egy virtuális hálózat a felhőben saját hálózati ábrázolása. Egy virtuális hálózathoz hozzárendelve az előfizetés Azure-felhő logikai elkülönítése. Virtuális hálózatok a helyszíni hálózathoz is kapcsolódhatnak.
+Egy virtuális hálózat saját felhőbeli hálózatának egy reprezentációja. Egy virtuális hálózat egy dedikált az előfizetéshez az Azure felhő logikai elkülönítése. Virtuális hálózatok is csatlakozhat a helyszíni hálózathoz.
 
-Az alábbiakban lehetőségeket biztosít az Azure virtuális hálózatok:
+Az alábbiakban az Azure virtual Network hálózatokhoz használható képességek:
 
-- **Elkülönítési**: virtuális hálózatok el különítve egymástól. Létrehozhat külön virtuális hálózatokat fejlesztési, tesztelési és éles, amelyek ugyanazon a CIDR címblokkokat használják. Ezzel szemben több virtuális hálózat, amely különböző a CIDR címblokkokat használja, és összekapcsolhatja az hálózatok is létrehozhat. Több virtuális hálózat is szegmentálhatja. Azure belső névfeloldást biztosít egy virtuális hálózathoz csatlakozó virtuális gépek és az Azure Cloud Services szerepkör-példányok. Konfigurálhatja az Azure belső névfeloldást használata helyett a saját DNS-kiszolgálók használandó virtuális hálózat.
+- **Elkülönítés**: virtuális hálózatok különítve egymástól. Létrehozhat önálló virtuális hálózatok a fejlesztési, tesztelési és éles környezetek, amelyek ugyanazt a CIDR címblokkokat használják. Ezzel szemben létrehozhat több virtuális hálózat, amely eltérő a CIDR címblokkokat használja, és hálózatok kapcsolhatja össze. Több alhálózatra is oszthatja a virtuális hálózat. Az Azure belső névfeloldást biztosít a virtuális gépek és az Azure Cloud Services-szerepkörpéldányok, amely egy virtuális hálózathoz csatlakoznak. Igény szerint konfigurálhatja egy virtuális hálózatot az Azure belső névfeloldást használata helyett a saját DNS-kiszolgálók használatához.
 
-- **Internetkapcsolat**: minden Azure virtuális gépek és Felhőszolgáltatások szerepkörpéldányokat egy virtuális hálózathoz csatlakozó rendelkezik internetkapcsolattal, alapértelmezés szerint. Bejövő hozzáférés adható konkrét erőforrásokhoz, engedélyezheti igény szerint is.
+- **Internetkapcsolat**: minden Azure virtual machines és a egy virtuális hálózathoz csatlakozó Felhőszolgáltatásiszerepkör-példányokat a alapértelmezés szerint Internet-hozzáféréssel rendelkezik. Bejövő hozzáférést bizonyos erőforrásokhoz, igény szerint is engedélyezheti.
 
-- **Az Azure erőforrás-kapcsolat**: kapcsolódás Azure-erőforrások, például a Cloud Services és a virtuális gépek, az azonos virtuális hálózatban. Az erőforrások kapcsolódhatnak egymáshoz magánhálózati IP-címek, még akkor is, ha külön alhálózatokon fontosságúak. Azure biztosít alapértelmezett között alhálózatokat, virtuális hálózatok és a helyszíni hálózatokban, így nem kell konfigurálnia és felügyelnie az útvonalakat.
+- **Azure-erőforrások kapcsolat**: Azure-erőforrások, például a Cloud Services és a virtuális gépek, csatlakozhat ugyanahhoz a virtuális hálózathoz. Az erőforrások keresztül is csatlakozhat egymással magánhálózati IP-címek, még akkor is, ha külön alhálózatokon. Az Azure biztosítja az alapértelmezett alhálózatokat, virtuális hálózatok és a helyszíni hálózatok közötti útválasztást, így konfigurálhatja és kezelheti az útvonalak nem kell.
 
-- **Virtuális hálózati kapcsolat**: virtuális hálózatok kapcsolódhatnak egymáshoz. Minden virtuális hálózathoz kapcsolódó erőforrások ezután kommunikálhat bármely más virtuális hálózaton erőforrás.
+- **Virtuális hálózati kapcsolat**: virtuális hálózat kapcsolható össze egymással. Bármely virtuális hálózathoz csatlakozó erőforrás és bármely más virtuális hálózaton erőforrás kommunikálhat.
 
-- **A helyi kapcsolat**: kapcsolódás virtuális hálózatok a helyszíni hálózatokban magánhálózati kapcsolatok a hálózati és az Azure között, vagy a pont-pont virtuális magánhálózati (VPN) kapcsolaton keresztül az interneten keresztül.
+- **Helyszíni kapcsolatok**: csatlakozhat virtuális hálózatok között a hálózat és az Azure magánhálózati kapcsolatokat, vagy egy helyek közötti virtuális magánhálózat (VPN) kapcsolaton keresztül a helyszíni hálózatok az interneten keresztül.
 
-- **Forgalomszűrést végez**: szűrheti a hálózati forgalom (bejövő és kimenő) a virtuális gépek és Felhőszolgáltatások forrás IP-cím és port, cél IP-cím és port és protokoll.
+- **Forgalom szűrése**: hálózati forgalom (bejövő és kimenő) virtuális gépek és Felhőszolgáltatások forrás IP-cím és port, cél IP-cím és port és protokoll szerint szűrheti.
 
-- **Útválasztás**: opcionálisan felülbírálhatja az alapértelmezett Azure útválasztás konfigurálása a saját útvonalak, vagy a hálózati átjáró BGP-útvonalakat használatával.
+- **Útválasztás**: igény szerint felülbírálhatja az alapértelmezett Azure útválasztás, a saját útvonalak konfigurálásához, vagy egy hálózati átjárón keresztül a BGP-útvonalak segítségével.
 
-#### <a name="network-access-controls"></a>Hálózati hozzáférés-vezérlést
+#### <a name="network-access-controls"></a>Hálózati hozzáférés-vezérléssel
 
-[Hálózati biztonsági csoportok](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg) (NSG-k), például egy tűzfal, és adjon meg szabályokat, a hogyan erőforrás "működik" a hálózaton keresztül. Ezek biztosítanak szabályozhatják, hogyan egy alhálózat (vagy a virtuális gép) is csatlakozni az internethez vagy más alhálózatok ugyanabban a virtuális hálózatban.
+[Hálózati biztonsági csoportok](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg) (NSG), például egy tűzfal, és hogyan erőforrás "beszélhetünk" a hálózaton keresztül szabályokat adja meg. Szabályozhatja, hogyan egy alhálózat (vagy a virtuális gép) kapcsolódhatnak az interneten vagy más alhálózatokra az azonos virtuális hálózatba biztosítanak.
 
-Hálózati biztonsági csoport felsorolja azokat a szabályokat, amelyek az Azure virtuális hálózatokhoz kapcsolódó erőforrások hálózati adatforgalom engedélyezéséhez vagy letiltásához. Az NSG-k társítható alhálózatok, az egyes virtuális gépek (klasszikus) vagy az egyes hálózati adapterek (NIC) csatolva a virtuális gépek (Resource Manager).
+A hálózati biztonsági csoportok biztonsági szabályokat, amelyek engedélyezik vagy megtagadják a hálózati forgalmat az Azure virtuális hálózataihoz csatlakoztatott erőforrásokhoz listáját tartalmazza. Az NSG-k társíthatók alhálózatokhoz, egyedi virtuális gépek (klasszikus) vagy az egyes hálózati adapterek (NIC) csatolva a virtuális gépeken (Resource Manager).
 
-Amikor egy NSG-t hozzárendelnek egy alhálózathoz, a szabályok vonatkoznak a alhálózathoz csatlakoztatott összes erőforrást. További korlátozhatja forgalom NGS társítása a virtuális gép vagy a hálózati adapterhez.
+Ha az NSG-t hozzárendelik egy alhálózathoz, a szabályok érvényesek lesznek az alhálózathoz csatlakozó összes erőforrást. Tovább korlátozhatja a forgalom társít egy NSG-t egy virtuális Géphez vagy hálózati adapterhez.
 
-## <a name="security-and-compliance-with-organizational-standards"></a>Biztonság és a vállalati szabványoknak való megfelelés
+## <a name="security-and-compliance-with-organizational-standards"></a>Biztonság és a szervezeti szabványoknak való megfelelés
 
-Minden üzleti eltérő igényeknek és a fog élvezzék által nyújtott megoldások különböző előnyeit. Továbbra is ügyfeleknek mindenfajta az ugyanazon alapvető kétségei vannak a felhőre történő. Mi az ügyfelek szeretné, hogy a szolgáltatók van:
+Minden cég rendelkezik a különböző igények és fog élhessen előnyt biztosít a felhőalapú megoldások. Továbbra is vevők mindenféle az ugyanazon alapvető kétségei vannak a felhőbe. Milyen ügyfelei a felhőszolgáltatóknak, amelyek szeretnék a következő:
 
-- **Az adatok biztonságos**: informatikai vezetők megerősíti, hogy a felhő megnövekedett adat biztonsági és felügyeleti szabályozást biztosít. Azonban továbbra is érintett, hogy a felhőben történő hagyja őket sebezhetőbb a támadók, mint az aktuális belső fejlesztésű megoldások fontosságúak.
+- **Az adatok biztonságos**: informatikai vezetők tudomásul veszi, hogy a felhő nagyobb biztonságot és a felügyeleti vezérlő tud-e biztosítani. De továbbra is érintett, hogy a felhőbe való migrálás hagyja őket sebezhetőbbé támadókat, mint a jelenlegi belső fejlesztésű megoldások.
 
-- **Tartsa titokban adataink**: felhőszolgáltatások egyedi adatvédelmi kihívást ablakába. Mivel a vállalatok keresse meg a felhőbe, az infrastruktúra használati díjait és javíthatják a nagyon hatékony eszközök, azokat is aggódni vezérelhető, hogy az adatok tárolására, ki fér hozzá, és felhasználásáról lekérdezi.
+- **Az adatok bizalmas jellegének megőrzése**: felhőszolgáltatások egyedi adatvédelmi kihívások előléptetése. Vállalatok keresse meg a felhőbe, az infrastruktúra költségein mentéséhez, és növelheti a rugalmasságot, azokat is aggódni az adatok tárolására, ki fér hozzá, és hogyan lekérdezi a használt irányítását.
 
-- **Vezérlő biztosítják**: még akkor is, mivel a vállalatok központi telepítése további innovatív megoldások a felhő előnyeit, fontosságúak érintett elveszíti az adatokat vezérlő. A legutóbbi közzétételeket, állami intézményekhez el az ügyféladatokat, mind a jogi, és a aktusokról azt jelenti, ellenőrizze a néhány igazgatók óvatos az adatok tárolása a felhőben.
+- **Ossza meg velünk vezérlő**: még akkor is, mivel a vállalatok további innovatív megoldások üzembe helyezéséhez a felhő előnyeit, azok aggódik elvesztése adataik felett. A legutóbbi közzétételeket kormányzati szervei jogi és a aktusokról azt jelenti, hogy keresztül éri el a vásárlói adatokat, győződjön meg arról, bizonyos informatikai igazgatók óvatos az adataikat a felhőben tárolja.
 
-- **Átláthatóságának elősegítése**: üzleti döntéshozók megérteni a biztonsági, adatvédelmi és vezérlő fontosságát. De is kívánják-egymástól függetlenül győződjön meg arról, hogyan azok adatot tárol, és a biztonságos hozzáférés lehetőséget.
+- **Átlátszóság előléptetése**: üzleti döntéshozók megismerheti a biztonsági, adatvédelmi és vezérlés fontosságát. Azonban akkor is érdemes egymástól függetlenül győződjön meg arról, hogyan azok adatot tárol, és a biztonságos hozzáférés lehetővé teszi.
 
-- **Megfelelőség fenntartásában**: vállalatok bontsa ki a felhőalapú technológiái által nyújtott használatát, az összetettségét és szabványok és köre tovább fejleszteni. A vállalatok kell, hogy teljesülnek-e a megfelelőségi követelményeket.
+- **Megfelelőség**: vállalatok bontsa ki a felhőalapú technológiák használatát, mivel az összetettséget és a szabványoknak és előírásoknak hatókörén tovább fejlődik. Vállalatok kell tudnia, hogy teljesülnek-e azok megfelelőségéről.
 
-## <a name="security-configuration-for-monitoring-logging-and-auditing"></a>Biztonsági beállítások a figyelés, és naplózás
+## <a name="security-configuration-for-monitoring-logging-and-auditing"></a>Biztonsági konfiguráció, a monitorozás, naplózás és naplózás
 
-Az Azure-előfizetők több eszközről kezelhetik felhőkörnyezeteiket. Ezek az eszközök közé tartozik a felügyeleti munkaállomásokról, fejlesztői PC-kről és még jogosult végfelhasználói eszközökről is, amelyek feladatspecifikus engedélyekkel rendelkeznek. 
+Az Azure-előfizetők több eszközről is kezelhetik felhőkörnyezeteiket. Ilyen eszköz például előfordulhat, hogy a felügyeleti munkaállomásokról, fejlesztői PC-kről és jogosult végfelhasználói eszközökről is, amelyek feladatspecifikus engedélyekkel rendelkeznek. 
 
-Bizonyos esetekben a felügyeleti funkciók webalapú konzolok, például az Azure-portálon keresztül történik. Más esetekben előfordulhat, közvetlen kapcsolat az Azure-bA helyszíni rendszerekből VPN, Terminálszolgáltatások, ügyfél-alkalmazásprotokollokon, vagy (szoftveresen) az Azure Service API (SMAPI). Emellett ügyfél-végpontok lehetnek vagy tartományhoz csatlakoztatva vagy pedig elkülönítettek és felügyelet nélküliek, például a táblagépük vagy okostelefonjuk használatával.
+Bizonyos esetekben a felügyeleti feladatkörök webalapú konzolok, például az Azure Portalon keresztül. Egyéb esetben lehet közvetlen kapcsolat az Azure-bA a helyszíni rendszerekből a VPN-eket, távoli asztali szolgáltatásokat, ügyfél-alkalmazásprotokollokon, vagy (szoftveresen) az Azure Service Management API (SMAPI) keresztül. Ezenkívül az ügyfél-végpontok lehetnek vagy tartományhoz csatlakoztatott vagy pedig elkülönítettek és felügyelet nélküliek, például táblagépek vagy az okostelefonok.
 
-A variancia jelentős kockázat adhat hozzá egy felhő üzembe helyezése. Kezelését, nyomon követheti és felügyeleti műveletek naplózhatók nehéz lehet. A variancia nem szabályozott hozzáférést a felhőszolgáltatások kezelésére használt ügyfél-végpontok biztonsági fenyegetésekkel is vezethet. Az általános vagy személyes munkaállomások fejlesztésre és infrastruktúra-kezelésre való használata olyan kiszámíthatatlan fenyegetési vektoroknak enged utat, mint például a webböngészés (pl. alapesetben megbízható weboldalak megfertőződése, ún. watering hole attack) vagy az e-mail (pl. pszichológiai manipuláció és adathalászat).
+Is ugyanakkor nagymértékű kockázatot üzembe helyezése a felhőben. Nem könnyű kezelését, nyomon követheti, és rendszergazdai műveletek naplózhatók. Ez a felhőszolgáltatások kezelésére használt ügyfél-végpontok nem szabályozott hozzáférést biztonsági fenyegetésekkel is eredményezhet. Az általános vagy személyes munkaállomások fejlesztésre és infrastruktúra-kezelésre való használata olyan kiszámíthatatlan fenyegetési vektoroknak enged utat, mint például a webböngészés (pl. alapesetben megbízható weboldalak megfertőződése, ún. watering hole attack) vagy az e-mail (pl. pszichológiai manipuláció és adathalászat).
 
-A megfigyelés és a naplózás biztosítják követésének és értelmezésének felügyeleti tevékenységek alapul. Az összes művelet teljes részletességű naplózása nem mindig lehet valósítható meg a keletkező adatmennyiség miatt. De a felügyeleti házirendek hatékonyságának naplózása az ajánlott eljárás.
+Megfigyelés, naplózás, és a naplózás biztosítják a követésének és értelmezésének rendszergazdai tevékenységet. Naplózás összes művelet teljes mindig nem megvalósítható a keletkező adatmennyiség miatt. De a felügyeleti házirendek hatékonyságának naplózása ajánlott eljárás.
 
-Az Azure biztonsági irányítás az Azure Active Directory tartományi szolgáltatások (AD DS) csoportházirend-objektumok segítségével a rendszergazdák Windows felületek, például a fájlmegosztás szabályozhatja. Vegye fel felügyeleti munkaállomások figyelését, és naplózás folyamatokat. Kövessen nyomon minden rendszergazdai és fejlesztői hozzáférést és tevékenységet.
+Az Azure security irányítás az Azure Active Directory Domain Services (AD DS) csoportházirend-objektumok segítségével szabályozhatja a rendszergazdák összes Windows felületek, például a fájlmegosztást. A felügyeleti munkaállomásokra a figyelés, naplózás és folyamatok naplózását. Kövessen nyomon minden rendszergazdai és fejlesztői hozzáférést és tevékenységet.
 
 ### <a name="azure-security-center"></a>Azure Security Center
 
-[Az Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-intro) központi előfizetések erőforrások biztonsági állapotát jeleníti meg. Az ajánlásokat, amelyekkel megakadályozható a fertőzött erőforrásokat. Engedélyezheti, hogy a részletesebb házirendek – például házirendek alkalmazása az adott erőforrás-csoportok, amelyek lehetővé teszik a vállalat személyessé tétele érdekében a kockázat, azok még címzési azok állapotát.
+[Az Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-intro) központi előfizetés erőforrásainak biztonsági állapotát jeleníti meg. Javaslatok, amelyek meggátolják a feltört erőforrásokat biztosít. Engedélyezheti, hogy a részletesebb szabályzatok – például szabályzatok alkalmazása az adott erőforrás-csoportok lehetővé teszik a vállalat a megfelelő, azok állapotát a kockázatnak, címzést használ.
 
 ![Azure Security Center](./media/governance-in-azure/security-governance-in-azure-fig7.png)
 
-A Security Center itt integrált biztonsági monitorozást és kezelése az Azure-előfizetések között, megkönnyíti a nehezen észlelhető fenyegetések azonosítását szabályzatkezelést, és számos biztonsági megoldással együttműködik. Miután engedélyezte a [biztonsági házirendek](https://docs.microsoft.com/azure/security-center/security-center-policies) az előfizetéshez tartozó erőforrásokra, a Security Center a potenciális biztonsági réseket azonosításához az erőforrások biztonsági elemzi. A hálózati konfigurációval kapcsolatos információk azonnal elérhetők.
+Security Center integrált biztonsági monitorozást és felügyeletet biztosít az Azure-előfizetésekre, megkönnyíti a nehezen észlelhető fenyegetések azonosítását szabályzatkezelést, és a biztonsági megoldások széles ökoszisztémájával képes együttműködni. Miután engedélyezte a [biztonsági házirendek](https://docs.microsoft.com/azure/security-center/security-center-policies) az előfizetéshez tartozó erőforrások, a Security Center elemzi az erőforrások azonosíthatja a potenciális biztonsági réseket. A hálózati konfigurációval kapcsolatos információk azonnal elérhetők.
 
-Az Azure Security Center ajánlott eljárás elemzési és biztonsági házirendek kezelése Azure-előfizetés belül az összes erőforrás kombinációját jelenti. Lehetővé teszi a biztonsági csoportok és a kockázati tisztviselő megakadályozása, észlelését és válaszadás a biztonsági fenyegetések automatikusan gyűjti és elemzi az Azure-erőforrások, a hálózati és a partneri megoldások, például kártevőirtó-programok és tűzfalak biztonsági adatait.
+Az Azure Security Center ajánlott gyakorlat elemzési és biztonsági házirendek kezelése az Azure-előfizetésen belüli összes erőforrás kombinációját jelenti. Lehetővé teszi a biztonsági csoportok és a kockázati tisztviselők megelőzését, észlelését és vállalatot érintő biztonsági fenyegetésekre automatikusan gyűjti és elemzi az Azure-erőforrások, a hálózati és a partneri megoldások, például kártevőirtó-programok és tűzfalak biztonsági adatait.
 
-Ezenkívül az Azure Security Center bővített analitikát alkalmaz, beleértve a gépi tanulási és viselkedéssel összefüggő elemzésekkel. Globális fenyegetésfelderítési adataival, a Microsoft-termékek és szolgáltatások, a Microsoft Digital Crimes Unit (DCU), a Microsoft biztonsági válasz Center (MSRC) használ, és a külső hírcsatornák. Alkalmazhat [biztonsági irányítás](https://www.credera.com/blog/credera-site/azure-governance-part-4-other-tools-in-the-toolbox/) tágabb értelemben véve az előfizetés szintjén. Vagy szűkítheti az egyes konkrét követelmények, és alkalmazni azokat az egyes erőforrások házirenddefiníción keresztül.
+Emellett az Azure Security Center bővített analitikát alkalmaz, beleértve a gépi tanulás és viselkedéselemzés. A Microsoft-termékek és szolgáltatások, a Microsoft Digital Crimes Unit (DCU), a Microsoft Security Response Center (MSRC) globális fenyegetésészlelési intelligenciát használ, és a külső hírcsatornák. Alkalmazhat [biztonsági cégirányítási](https://www.credera.com/blog/credera-site/azure-governance-part-4-other-tools-in-the-toolbox/) széles körben az előfizetés szintjén. Vagy szűkíthetők azt le a konkrét követelmények, és azokat a szabályzat-definíció egyedi erőforrásai a alkalmazni.
 
-Végül az Azure Security Center erőforrás biztonsági állapota ezek a házirendek alapján elemzi, és ezt az információt használja osztályon irányítópultok és a próbálkozások esemény, például a kártevő-észlelési vagy kártékony IP-kapcsolatot vonatkozó riasztások elküldésére. Javaslatok alkalmazásával kapcsolatos további információkért lásd: [végrehajtási biztonsági javaslatok az Azure Security Centerben](https://docs.microsoft.com/azure/security-center/security-center-recommendations).
+Végül az Azure Security Center elemzi az erőforrás biztonsági állapota ezen házirendek alapján, és adja meg a részletes betekintést biztosító irányítópultok és a riasztási az eseményeket, mint például a kártevő-észlelési vagy rosszindulatú IP-kapcsolati kísérletek ezen információk segítségével. Javaslatok alkalmazásával kapcsolatos további információkért lásd: [biztonsági javaslatok alkalmazása az Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-recommendations).
 
 Az Azure Security Center figyeli a következő Azure-erőforrások:
 
@@ -334,71 +334,71 @@ Az Azure Security Center figyeli a következő Azure-erőforrások:
 
 - SQL Database-adatbázisok
 
-- Partnermegoldások integrálva van az Azure-előfizetéshez, például a virtuális gépeken és a webes alkalmazás tűzfal a [App Service Environment-környezet](https://docs.microsoft.com/azure/app-service/app-service-app-service-environments-readme)
+- Partneri megoldások az Azure-előfizetésében integrált, például a virtuális gépeken és a egy WebApp tűzfalat a [App Service Environment-környezet](https://docs.microsoft.com/azure/app-service/app-service-app-service-environments-readme)
 
-A Security Center első megnyitásakor adatgyűjtés engedélyezett az előfizetésében szereplő összes virtuális gépet. Azt javasoljuk, hogy mindig engedélyezett adatgyűjtés azonban úgy is [tiltsa le](https://docs.microsoft.com/azure/security-center/security-center-faq) a Security Center-házirendben.
+A Security Center első használatakor az adatgyűjtés engedélyezése az összes virtuális gépet az előfizetésében. Azt javasoljuk, hogy maradjon az adatgyűjtés engedélyezve van, de is [tiltsa le azt](https://docs.microsoft.com/azure/security-center/security-center-faq) a Security Center-házirendben.
 
 ### <a name="log-analytics"></a>Log Analytics
 
-Az Azure Naplóelemzés szoftverek fejlesztési és a szolgáltatás csapat információ-biztonság és [cégirányítási program](https://github.com/Microsoft/azure-docs/blob/master/articles/log-analytics/log-analytics-security.md) támogatja az üzleti követelmények. Igazodjon a törvény és szabályozás részben ismertetett módon [Microsoft Azure Trust Center](https://azure.microsoft.com/support/trust-center/) és [Microsoft Megbízhatósági központ megfelelőségi](https://www.microsoft.com/TrustCenter/Compliance/default.aspx). Hogyan hoz létre a Naplóelemzési biztonsági követelmények biztonsági vezérlők azonosítja, és kezeli, és a figyelők kockázatok ott is ismerteti. Évente a csapata áttekinti a házirendek, szabványok, eljárások és útmutatást.
+Az Azure Log Analytics szoftverek fejlesztési és a szolgáltatás csapata információ-biztonság és [cégirányítási program](https://github.com/Microsoft/azure-docs/blob/master/articles/log-analytics/log-analytics-security.md) támogatja az üzleti követelmények. Létrehozásakor törvényeknek és szabályozásoknak ismertetett módon [Microsoft Azure Trust Center](https://azure.microsoft.com/support/trust-center/) és [Microsoft Megbízhatósági központ – megfelelőség](https://www.microsoft.com/TrustCenter/Compliance/default.aspx). Hogyan hozza létre a Log Analytics biztonsági követelmények, azonosítja a biztonsági vezérlőket, és kezeli, és a figyelők kockázatok ott is ismerteti. Évente a csapat áttekinti a házirendek, szabványok, eljárásokra és irányelveket.
 
-Minden Naplóelemzési fejlesztési csoport egy tagja megkapja a formális alkalmazás biztonsági képzés. A verziókezelő rendszer megvédi a fejlesztési minden szoftver projekt.
+Minden Log Analytics fejlesztői csapat egyik tagja megkapja a hivatalos alkalmazás biztonsági képzés. A verziókövetési rendszerét védi minden egyes szoftverfrissítési projekt fejlesztés alatt.
 
-A Microsoft hogyan felügyeli, és értékeli az összes szolgáltatás a Microsoft biztonsági és megfelelőségi csoport rendelkezik. Biztonsági informatikusok jött létre a csoport, és nem fontosságúak Naplóelemzési fejlesztése mérnöki osztályai társítva. A biztonsági tisztviselő saját felügyeleti lánc rendelkezik. Akkor végezze el a termékek és szolgáltatások segítségével, győződjön meg arról, biztonsági és megfelelőségi független értékeléseket.
+A Microsoft rendelkezik egy biztonsági és megfelelőségi csapat felügyeli, és minden szolgáltatás a Microsoft értékeli. A csapat alkotó Information security officer, és azok még nem fejlesztése a Log Analytics mérnöki projektjei társítva. A biztonsági tisztviselők rendelkezik a saját felügyeleti láncot. Független értékelések termékek és szolgáltatások biztosításához, biztonsági és megfelelőségi programokról.
 
-Naplóelemzési legfontosabb funkcióit biztosítja az Azure-ban futó szolgáltatások készlete. Mindegyik szolgáltatás egy adott felügyeleti funkciót biztosít, és a szolgáltatások kombinálásával különféle felügyeleti forgatókönyvek valósíthatók meg.
+A Log Analytics központi funkcióit az Azure-ban futó szolgáltatások biztosítják. Mindegyik szolgáltatás egy adott felügyeleti funkciót biztosít, és a szolgáltatások kombinálásával különféle felügyeleti forgatókönyvek valósíthatók meg.
 
 ![Azure-szolgáltatások kezelése](./media/governance-in-azure/security-governance-in-azure-fig9.JPG)
 
-A felügyeleti szolgáltatások arra tervezték, a felhőben. Azok még teljesen Azure szolgáltatásban üzemeltetett, így azok nem olyan tartalmaznak, telepítése és kezelése a helyszíni erőforrások. Konfigurációs minimális, és működik, és lehet percek.
+A felügyeleti szolgáltatások arra tervezték, a felhőben. Ön teljes mértékben Azure-ban üzemeltetett, így nem jár együtt üzembe helyezése és kezelése a helyszíni erőforrásokhoz. Konfigurációs minimális, és helyezheti üzembe lehet percek alatt.
 
-Az Adatközpont bármilyen Windows vagy Linux rendszerű számítógépre helyeznek az ügynök, és adatokat küld a Naplóelemzési. Itt elemzése felhőalapú vagy helyszíni szolgáltatásokat gyűjtött összes egyéb adatokkal együtt. Azure biztonsági mentési és az Azure Site Recovery segítségével a biztonsági mentési és magas rendelkezésre állás érdekében a helyszíni erőforrások felhő előnyeit.
+Helyezzen egy ügynök minden olyan Windows vagy Linux rendszerű számítógépen a helyi adatközpontban, és adatokat küld a Log Analytics szolgáltatásba. Itt elemezhetők más felhőbeli vagy helyszíni szolgáltatásokból gyűjtött adatokkal együtt. Az Azure Backup és az Azure Site Recovery használatával a helyszíni erőforrások biztonsági mentésére és magas rendelkezésre állásának a felhő előnyeit.
 
-![Az Azure irányítópult szolgáltatások](./media/governance-in-azure/security-governance-in-azure-fig8.png)
+![Felügyeleti szolgáltatások az Azure-irányítópulton](./media/governance-in-azure/security-governance-in-azure-fig8.png)
 
-A felhőben Runbookok általában nem tud hozzáférni a helyszíni erőforrások, de az ügynök telepíthető egy vagy több, az adatközpontban található runbookok futtató számítógépeken. Amikor elindít egy runbookot, akkor adja meg, hogy úgy, hogy a felhőben vagy a helyi feldolgozók futtassa le.
+A felhőben futó Runbookok általában nem férnek hozzá a helyszíni erőforrásokhoz, de egy vagy több olyan számítógép, amely a runbookokat az adatközpontban is telepíthető egy ügynök. Amikor elindít egy runbookot, hogy adja meg, hogy annak futtatását a felhőben vagy a helyi feldolgozón.
 
-A Microsoft és a partnerek, hogy az Azure-előfizetéshez Naplóelemzési befektetéseit értékének növelése érdekében hozzáadhat különböző megoldások érhetők el. Például az Azure kínál [megoldások](https://docs.microsoft.com/azure/operations-management-suite/operations-management-suite-solutions)--előre csomagolt beállítása az logika, amely egy vagy több felügyeleti szolgáltatások használatával egy felügyeleti forgatókönyv megvalósításához.
+A Microsoft és partnerei, hogy növelje befektetéseit a Log Analytics az Azure-előfizetése adhat különböző megoldások érhetők el. Például az Azure kínál [felügyeleti megoldások](https://docs.microsoft.com/azure/operations-management-suite/operations-management-suite-solutions)--előrecsomagolt csoportok logika, amely egy vagy több felügyeleti szolgáltatás segítségével egy felügyeleti forgatókönyv megvalósításához.
 
-![Az Azure-ban megoldások gyűjteménye](./media/governance-in-azure/security-governance-in-azure-fig10.png)
+![Katalógus megoldások az Azure-ban](./media/governance-in-azure/security-governance-in-azure-fig10.png)
 
-Partnerként létrehozhat saját megoldások támogatják az alkalmazások és szolgáltatások és azok a felhasználók számára az Azure piactér vagy gyorsindítási sablonok keresztül.
+Partnerként létrehozhat saját megoldások támogatják az alkalmazások és szolgáltatások és azok a felhasználók számára az Azure Marketplace piactéren vagy a rövid útmutató sablonok.
 
-## <a name="performance-alerting-and-monitoring"></a>Teljesítményriasztások és figyelése
+## <a name="performance-alerting-and-monitoring"></a>Teljesítmény-figyelmeztetések és monitorozás
 
 ### <a name="alerting"></a>Riasztások kezelése
 
-A riasztások jelezhetik az Azure-erőforrás figyelési metrikákat, események vagy naplók metódus. Ezek értesítést küldenek, ha a megadott feltétel teljesül.
+Riasztások egy metódust az Azure-erőforrások figyelési metrikákat, eseményeket és naplókat. Ezek a értesíteni, a megadott feltétel teljesülése esetén.
 
-Riasztások szolgáltatásban, beleértve a érhetők el:
+Szolgáltatások, beleértve a különböző riasztások állnak rendelkezésre:
 
-- **Az Azure Application Insights**: lehetővé teszi a webalkalmazás-teszt- és metrika riasztásokat. További információkért lásd: [riasztások beállítása a Application Insights](https://docs.microsoft.com/azure/application-insights/app-insights-alerts) és [figyelése rendelkezésre állásának és reakcióidőt, a webhely](https://docs.microsoft.com/azure/application-insights/app-insights-monitor-web-app-availability).
+- **Az Azure Application Insights**: lehetővé teszi, hogy a webes teszt- és a mérőszám riasztások. További információkért lásd: [riasztások beállításához az Application Insights](https://docs.microsoft.com/azure/application-insights/app-insights-alerts) és [rendelkezésre állásának és válaszkészségének megfigyelése bármely webhelyen](https://docs.microsoft.com/azure/application-insights/app-insights-monitor-web-app-availability).
 
-- **Naplófájl Analytics**: lehetővé teszi, hogy a tevékenység és a diagnosztikai naplók szolgáltatáshoz útválasztását. Lehetővé teszi a metrika, a napló és a más riasztástípusok ettől. További információkért lásd: [Naplóelemzési riasztások](https://docs.microsoft.com/azure/log-analytics/log-analytics-alerts).
+- **Log Analytics**: lehetővé teszi az Útválasztás és diagnosztikai naplókat a Log Analytics szolgáltatásba. Lehetővé teszi a mérőszám, a napló és a más riasztástípusok. További információkért lásd: [riasztások a Log Analyticsben](https://docs.microsoft.com/azure/log-analytics/log-analytics-alerts).
 
-- **Az Azure figyelő**: lehetővé teszi, hogy a riasztások metrika értékek és a tevékenység alkalmazásnapló-események alapján. Használhatja a [Azure figyelő REST API](https://msdn.microsoft.com/library/dn931943.aspx) riasztások kezelése. További információkért lásd: [riasztások létrehozása az Azure-portálon, a PowerShell vagy a parancssori felület használatával](https://docs.microsoft.com/azure/monitoring-and-diagnostics/insights-alerts-portal).
+- **Az Azure Monitor**: lehetővé teszi, hogy a riasztások metrikaértékek és a tevékenységnapló-események alapján. Használhatja a [Azure Monitor REST API](https://msdn.microsoft.com/library/dn931943.aspx) riasztások kezelésével. További információkért lásd: [riasztások létrehozása az Azure portal, PowerShell vagy a parancssori felület segítségével](https://docs.microsoft.com/azure/monitoring-and-diagnostics/insights-alerts-portal).
 
 ### <a name="monitoring"></a>Figyelés
 
-A cloud App teljesítményproblémákat hatással lehet az üzleti. A több összekapcsolt összetevőkkel és gyakori kiadásokban degradations bármikor fordulhat elő. És ha az alkalmazást, a felhasználók általában felderítése a tesztjei során nem talált problémákat. Meg kell a problémákról értesülnek azonnal, eszközöket, és diagnosztizálása és elhárítása.
+Teljesítményproblémákat okozhat a cloud App befolyásolhatja az üzleti. Több egymáshoz kapcsolódó összetevők és a gyakori kiadások romlását fordulhat elő, tetszőleges időpontban. És ha egy alkalmazást fejleszt, a felhasználók általában problémákat, amelyek nem találta meg a tesztelés. Ezek a problémák azonnal tudnia kell, és diagnosztizálása és kijavítása azokat az eszközöket.
 
-Nincs számos eszközt az Azure-alkalmazások és szolgáltatások figyelését. A funkciók némelyike átfedésben vannak. Ez az az oka részben a fellazítja a fejlesztési és a művelet az alkalmazások között.
+Nincs a különböző eszközök, Azure-alkalmazások és szolgáltatások figyelésre. Azok a funkciók némelyike átfedik egymást. Részben okozza felismerhetetlenné fejlesztési és a egy alkalmazás művelet között.
 
 Az alábbiakban a fő eszközöket:
 
-- **Az Azure figyelő** alapvető eszköz a Azure-on futó szolgáltatások figyelése. Biztosít egy szolgáltatás és a környezet átviteli infrastruktúra szintű adatait. Ha az Ön által felügyelt Azure-ban és eldöntötte, hogy a méretezési felfelé vagy lefelé erőforrások az alkalmazásokat, Azure figyelő segítségével indítsa el.
+- **Az Azure Monitor** alapszintű eszköz a szolgáltatások az Azure-ban. Biztosít egy szolgáltatás és a környezete adatforgalmáról infrastruktúra-szintű adatokat. Ha az Azure-ban, és eldönti, hogy méretezhető és állíthat le erőforrásokat az alkalmazások felügyeli, az Azure Monitor segítségével indítsa el.
 
-- **Az Application Insights** fejlesztési és egy üzemi felügyeleti megoldás is használható. Működését tekintve a csomag telepítése az alkalmazásban, így biztosít jelenít meg több belső nézetét. Az adatok közé tartoznak a függőségi, kivétel nyomkövetési adatok, a pillanatképeket és végrehajtási profilok hibakeresés válaszidejét. Eszközöket biztosít minden a telemetriai adat segítséget az alkalmazás hibakeresését és segít megérteni a felhasználók tevékenységeit vele elemzése. Beállíthatja, hogy egy csúcs az igények válaszidők van valami miatt egy alkalmazást vagy egy külső resourcing probléma. Használatakor a Visual Studio és az alkalmazás hibás, akkor rögtön a probléma kódsort az, hogy kijavíthassuk.
+- **Az Application Insights** fejlesztési, valamint egy figyelési megoldás éles környezetben is használható. Úgy működik, hogy egy csomag telepítése az alkalmazásban, így azt áttekintést nyújt a több belső eseményeit. A válaszidőket a függőségek, kivételek hívásláncokat – hibakereső pillanatképek és végrehajtási profiljainak szerepel. Eszközöket biztosít, az összes ezt a telemetriát is segítséget nyújt az alkalmazás hibakeresése, és a segítségével megismerheti, mit felhasználók általi használatát, elemzésére. Beállíthatja, hogy a válaszidők ugrásszerű-e valami miatt az alkalmazás vagy külső resourcing probléma. Használatakor a Visual Studio és az alkalmazás vétkes, akkor lépjen közvetlenül a probléma kódsort, hogy kijavíthassuk.
 
-- **Naplófájl Analytics** rendelkező kell állítani a teljesítményt és a karbantartási terv éles környezetben futó alkalmazások van. Azt gyűjti, és számos más forrásból, 10 – 15 perces késleltetéssel összesíti. Körű informatikai felügyeleti megoldást nyújt az Azure-ba, a helyszíni és a külső felhőalapú infrastruktúra (például az Amazon Web Services). Eszközök adatelemzéshez forrás lehetővé teszi összetett lekérdezések összes naplófájlt, és a megadott feltételek proaktív riasztást küldhet biztosít. Még a saját központi tárházban egyéni adatainak gyűjtéséről és majd lekérdezése, és adott adatok megjelenítése.
+- **Log Analytics** van azok számára, akik teljesítmény hangolása és megtervezik a karbantartást, éles környezetben futó alkalmazások. Azt gyűjti, és összesíti az adatokat számos más forrásból, 10 – 15 perces késéssel. Az Azure-hoz, egy teljes körű IT-felügyeleti megoldást biztosít a helyszíni és külső felhő alapú infrastruktúra (például az Amazon Web Services). Eszközök adatainak elemzését forrásokból, lehetővé teszi az összes napló összetett lekérdezéseket, és proaktív módon riasztja Önt a megadott feltételek biztosít. Akár az a központi tárházban egyéni adatok gyűjtése és majd lekérdezheti, és megjelenítheti az adatokat.
 
-- **A System Center Operations Manager** van, felügyelheti és figyelheti a nagy felhőalapú telepítések. Valószínűleg már tisztában van, a helyi Windows Server felügyeleti eszközként és Hyper-V alapú felhők, de is integrálása és az Azure-alkalmazások kezelése. Többek között az Application Insights telepíthet a meglévő élő alkalmazásokra. Ha egy alkalmazás leáll, az Operations Manager megtudhatja, másodpercben.
+- **A System Center Operations Manager** kezeléséhez és monitorozásához nagyméretű felhőbeli telepítések van. Esetleg már ismerős vele a helyszíni Windows Server felügyeleti eszközként és Hyper-V-alapú felhők, de is integrálása és kezelése az Azure-alkalmazások. Többek között azt is telepítheti az Application Insights meglévő élő alkalmazások. Ha egy alkalmazás leáll, az Operations Manager kiderül, hogy másodpercek alatt.
 
 
 ## <a name="next-steps"></a>További lépések
 
 - [Az Azure Resource Manager-sablonok létrehozásának ajánlott eljárásai](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-template-best-practices)
 
-- [Azure-előfizetés irányítás implementációi](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-subscription-examples)
+- [Példák a megvalósítása az Azure előfizetés-irányítás](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-subscription-examples)
 
 - [A Microsoft Azure Government](https://docs.microsoft.com/azure/azure-government/)

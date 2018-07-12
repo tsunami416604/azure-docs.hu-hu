@@ -1,82 +1,83 @@
 ---
-title: Az Azure Machine Learning modell felügyeleti webes szolgáltatások felhasználásához |} Microsoft Docs
-description: Ez a dokumentum ismerteti a lépéseket és fogalmak telepített modell kezelése az Azure Machine Learning webszolgáltatások felhasználása részt.
+title: Az Azure Machine Learning Modellkezelés webes szolgáltatás használata során |} A Microsoft Docs
+description: Ez a dokumentum ismerteti a lépéseket és fogalmak vesz részt az Azure Machine Learning modellkezelés használatával üzembe helyezett webszolgáltatások felhasználása.
 services: machine-learning
 author: raymondlaghaeian
 ms.author: raymondl
 manager: hjerez
 ms.reviewer: jasonwhowell, mldocs
 ms.service: machine-learning
-ms.component: desktop-workbench
+ms.component: core
 ms.workload: data-services
 ms.topic: article
 ms.date: 09/06/2017
-ms.openlocfilehash: f87f865ef6d2c3403903a1bdcc402c01c3e9f939
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 4a49ccff68003cf7b81a7d945176992a2893d1ac
+ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34831989"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38972634"
 ---
 # <a name="consuming-web-services"></a>Webszolgáltatások felhasználása
-Miután telepít egy modell valós idejű webszolgáltatásként, elküldi a adatok, és előrejelzéseket beolvasása számos különböző rendszerek és alkalmazások. A valós idejű webszolgáltatás közzétesz egy REST API előrejelzéseket kapcsolódnak. A webszolgáltatás egy vagy több előrejelzéseket egyszerre beolvasandó egyetlen vagy több sor formátumú adatokat küldhet.
+Miután telepített egy modellt, valós idejű webszolgáltatásként, küldje el az adatokat, és kaphatnak előjelzéseket számos különböző eszközplatformról és alkalmazások. A valós idejű webszolgáltatás REST API-t az első előrejelzéseket tesz elérhetővé. A web Service, egyszerre egy vagy több előrejelzés beolvasása egyetlen vagy több sor formátumban küldhet adatokat.
 
-Az a [Azure Machine Learning webszolgáltatás](model-management-service-deploy.md), külső alkalmazás szinkron módon kommunikál a prediktív modell azáltal, hogy a HTTP POST híváson a szolgáltatás URL-CÍMÉT. Ahhoz, hogy egy webes szolgáltatás hívása, az ügyfélalkalmazás kell meghatároznia az API-kulcsot, amely jön létre, amikor előrejelzéshez telepíti, és a kérelem adatai üzembe a POST kérés törzsében.
+Az a [Azure Machine Learning Web service](model-management-service-deploy.md), egy külső alkalmazás szinkron módon kommunikál a prediktív modellek azáltal, hogy a HTTP POST híváson a szolgáltatás URL-CÍMÉT. Ahhoz, hogy a webszolgáltatás felé irányuló hívások, az ügyfélalkalmazás kell adja meg az API-kulcsot, amely egy előrejelzési telepíti, és a kérelem adatai elhelyezi a POST-kérés törzse jön létre.
 
-Ne feledje, hogy API-kulcsokat csak a fürt telepítési módban érhető el. Helyi webszolgáltatások nincs kulcsok.
+> [!NOTE]
+> Vegye figyelembe, hogy API-kulcsok csak a fürt üzembe helyezési módban érhető el. Helyi webszolgáltatások nem rendelkezik a kulcsokat.
 
-## <a name="service-deployment-options"></a>Szolgáltatás központi telepítési lehetőségek
-Az Azure Machine Learning webszolgáltatások is telepíthető, a felhő alapú fürtök is a termelési, és a tesztelési forgatókönyvek, és helyi munkaállomáson docker-motorhoz. Mindkét esetben a prediktív modell funkció változatlan marad. Fürt-alapú telepítés biztosítja, méretezhető és performant megoldás alapján Azure tárolószolgáltatások, amíg a helyi központi telepítést használhat a hibakeresés. 
+## <a name="service-deployment-options"></a>Szolgáltatás központi telepítési beállítások
+Az Azure Machine Learning webszolgáltatások is telepíthető, a felhő alapú fürtök termelési és tesztelési célokra, valamint a helyi munkaállomáson docker-motor. A funkció a prediktív modell mindkét esetben ugyanaz marad. Fürt-alapú üzembe helyezési méretezhető biztosít, és nagy teljesítményű megoldás alapján az Azure Container Service, amíg a helyi telepítés hibakeresést is használható. 
 
-Az Azure Machine Learning CLI és API biztosítja a létrehozására és kezelésére kényelmes parancsok számítási környezeteket szolgáltatás üzembe helyezése a ```az ml env``` lehetőséget. 
+Az Azure Machine Learning parancssori és API-t biztosít a kényelmes parancsokkal hozhat létre és kezelhet számítási környezetek a használatával üzembe helyezéséhez a ```az ml env``` lehetőséget. 
 
-## <a name="list-deployed-services-and-images"></a>Lista telepített szolgáltatások és a képeket
-A jelenleg telepített szolgáltatások és a Docker képek CLI paranccsal listázhatja ```az ml service list realtime -o table```. Vegye figyelembe, hogy ez a parancs mindig működik az aktuális számítási környezet környezetében. Azt nem mutat, amely a telepített szolgáltatások értéke nem lehet az aktuális környezetben. Környezet használatának beállításához ```az ml env set```. 
+## <a name="list-deployed-services-and-images"></a>Lista telepített szolgáltatások és képek
+A jelenleg telepített szolgáltatások és a Docker-rendszerképek CLI-paranccsal listázhatja ```az ml service list realtime -o table```. Vegye figyelembe, hogy ez a parancs mindig az aktuális számítási környezet összefüggésében működik. Nem állítható be az aktuális környezetben nem jelenik meg telepített szolgáltatásokat. Környezet használatának beállításához ```az ml env set```. 
 
-## <a name="get-service-information"></a>Szolgáltatás adatai beolvasása
-A webszolgáltatás sikeres telepítése után a következő paranccsal beolvasni a szolgáltatás URL-CÍMÉT és egyéb adatait a szolgáltatás-végpont meghívása. 
+## <a name="get-service-information"></a>Szolgáltatás adatai olvashatók be
+Miután a web service telepítése sikerült, a következő paranccsal beolvasni a szolgáltatás URL-CÍMÉT és egyéb részletek a szolgáltatásvégpont hívása. 
 
 ```
 az ml service usage realtime -i <web service id>
 ```
 
-Ez a parancs megjeleníti a szolgáltatás URL-címe, szükséges kérelemfejléc, swagger URL-cím és a szolgáltatás hívása, ha a szolgáltatás API-séma a központi telepítéskor kapott a mintaadatok.
+Ez a parancs kiírja ezt az URL-címe, szükséges kérelemfejlécek, swagger URL-cím és a szolgáltatás meghívása, ha a szolgáltatás API-séma a központi telepítéskor lett megadva a mintaadatokat.
 
-A szolgáltatás a CLI-ről, a HTTP-lekérdezés létrehozása a bemeneti adatokat tartalmazó minta CLI parancs beírásával nélkül lehet tesztelni:
+A szolgáltatás közvetlenül a parancssori felület a HTTP-kérést összeállítása a bemeneti adatokat a mintául szolgáló parancssori parancs beírásával nélkül lehet tesztelni:
 
 ```
 az ml service run realtime -i <web service id> -d "Your input data"
 ```
 
-## <a name="get-the-service-api-key"></a>Az API-kulcs beszerzése
-A webes szolgáltatás kulcs beszerzéséhez a következő paranccsal:
+## <a name="get-the-service-api-key"></a>A szolgáltatás API-kulcs beszerzése
+A webes kulcs lekéréséhez használja a következő parancsot:
 
 ```
 az ml service keys realtime -i <web service id>
 ```
-HTTP-kérelem létrehozásakor a billentyűvel hitelesítési fejlécéhez: "Engedélyezés": "tulajdonosi <key>"
+HTTP-kérés létrehozásakor használja a kulcsot az engedélyezési fejléc: "Engedélyezés": "tulajdonosi <key>"
 
-## <a name="get-the-service-swagger-description"></a>Szolgáltatásleírás a Swagger
-Ha a szolgáltatás API-séma, a szolgáltatási végpont teszi ki a Swagger-dokumentum, ```http://<ip>/api/v1/service/<service name>/swagger.json```. A Swagger-dokumentum automatikusan a szolgáltatásügyfél létrehozása és a szükséges bemeneti adatok és egyéb adatait a szolgáltatás használható.
+## <a name="get-the-service-swagger-description"></a>A Swagger szolgáltatásleírás lekérése
+Ha a szolgáltatás API-séma van megadva, a szolgáltatási végpont teszi ki a Swagger-dokumentumok ```http://<ip>/api/v1/service/<service name>/swagger.json```. A Swagger-dokumentumok automatikus létrehozásához a szolgáltatás ügyfele, és vizsgálja meg a várt bemeneti adatokat és egyéb adatait a szolgáltatás használható.
 
-## <a name="get-service-logs"></a>Szolgáltatás-naplófájlok
-A szolgáltatás viselkedésének megértése és a problémák diagnosztizálásához, számos módon a szolgáltatásnaplók beolvasása:
-- Parancssori felület parancs ```az ml service logs realtime -i <service id>```. Ez a parancs a fürt és a helyi módok működik.
-- A szolgáltatás naplózási engedélyezve volt a központi telepítés, a service naplóit is kapnak AppInsight. A parancssori felület parancs ```az ml service usage realtime -i <service id>``` AppInsight URL-CÍMÉT jeleníti meg. Vegye figyelembe, hogy később, a AppInsight naplók által a 2 – 5 perc.
-- Fürt naplók megtekinthetők, amely csatlakozik, ha úgy állítja be az aktuális fürtözött környezetben Kubernetes konzollal ```az ml env set```
-- Helyi docker naplók helyben fut a szolgáltatás esetén a docker-motor naplók keresztül érhetők el.
+## <a name="get-service-logs"></a>Szolgáltatási naplók lekérése
+A szolgáltatás viselkedésének megértéséhez, és diagnosztizálhatja a problémákat, számos módon a szolgáltatási naplók begyűjtéséről:
+- CLI-paranccsal ```az ml service logs realtime -i <service id>```. Ezt a parancsot a fürt és a helyi módban is működik.
+- Ha a szolgáltatás naplózás engedélyezve lett a központi telepítéskor, a szolgáltatás naplói is küld AppInsight. A CLI-paranccsal ```az ml service usage realtime -i <service id>``` AppInsight URL-CÍMÉT jeleníti meg. Vegye figyelembe, hogy a AppInsight-naplók késleltethetők 2 – 5 percet.
+- Fürt naplóit tekinthetnek meg az aktuális fürt környezet beállításakor csatlakoztatott Kubernetes konzolon keresztül ```az ml env set```
+- Helyi docker-naplók a helyben fut a szolgáltatás esetén a docker engine-naplók keresztül érhetők el.
 
-## <a name="call-the-service-using-c"></a>Meghívja a szolgáltatást használó C#
-A szolgáltatás URL-címe használatával egy C# Konzolalkalmazás a kérés küldése. 
+## <a name="call-the-service-using-c"></a>Meghívja a szolgáltatást, C# használatával
+A szolgáltatás URL-címe használatával egy kérelmet küld a C# Konzolalkalmazást. 
 
-1. A Visual Studióban hozzon létre egy új Konzolalkalmazás: 
-    * A menüben kattintson a gombra, a fájl -> Új projekt ->
-    * A Visual Studio C#, kattintson a Windows osztály asztali, majd válassza ki a Konzolalkalmazás.
-2. Adja meg _MyFirstService_ , a projekt nevét, majd kattintson az OK gombra.
-3. A projekt hivatkozásainak beállítása hivatkozások _System.NET névtérbeli_, és _System.Net.Http_.
-4. Kattintson az eszközök -> NuGet-Csomagkezelő Csomagkezelő konzol ->, majd telepítse a Microsoft.AspNet.WebApi.Client csomagot.
-5. Nyissa meg a Program.cs fájlt, és cserélje le a kódot az alábbira:
-6. Frissítés a _SERVICE_URL_ és _API_KEY_ paraméterek a webszolgáltatás származó információkkal.
+1. A Visual Studióban hozzon létre egy új Konzolalkalmazást: 
+    * A menüben kattintson a, a fájl -> New Project ->
+    * A Visual Studio C# nyelven írt Windows osztály asztali kattintson, majd válassza ki a Konzolalkalmazást.
+2. Adja meg `MyFirstService` a projekt nevét, majd kattintson az OK gombra.
+3. A projekt Referenciáihoz, hivatkozásainak beállítása `System.Net`, és `System.Net.Http`.
+4. Kattintson az eszközök -> NuGet Package Manager Csomagkezelői konzol ->, majd telepítse a **Microsoft.AspNet.WebApi.Client** csomagot.
+5. Nyissa meg **Program.cs** fájlt, és cserélje le a kódot az alábbira:
+6. Frissítés a `SERVICE_URL` és `API_KEY` paraméterek a webszolgáltatás adataival.
 7. Futtassa a projektet.
 
 ```csharp
@@ -146,11 +147,11 @@ namespace MyFirstService
 }
 ```
 
-## <a name="call-the-web-service-using-python"></a>Hívja meg a webszolgáltatás pythonos környezetekben
-Python segítségével kérelmet küld a valós idejű webszolgáltatás. 
+## <a name="call-the-web-service-using-python"></a>A Python használatával webes szolgáltatás hívása
+A valós idejű webszolgáltatás-kérés küldése a Python használatával. 
 
-1. Másolja az alábbi példakód egy új Python-fájl.
-2. Frissítse az adatokat, az URL-cím és az api_key paraméterek. Helyi webszolgáltatások távolítsa el az "Engedélyezés" fejléc.
+1. Másolja a következő mintakód egy új Python-fájlt.
+2. Frissítse az adatait, az URL-cím és api_key paramétereket. A helyi webszolgáltatások távolítsa el az "Engedélyezés" fejléc.
 3. Futtassa a kódot. 
 
 ```python

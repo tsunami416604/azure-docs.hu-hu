@@ -14,15 +14,15 @@ ms.component: protection
 ms.date: 04/02/2018
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: d2f61f1ebdd473a24115c7774801f5b7694f224f
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 483f30a6546cf21d93b96b08eede6afae828d9e4
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37443205"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38548304"
 ---
 # <a name="activate-roles-for-azure-resources-by-using-privileged-identity-management"></a>Az Azure-erőforrások szerepkörök aktiválása a Privileged Identity Management használatával
-Privileged Identity Management (PIM) az Azure-erőforrások szerepkörök aktiválása az új felhasználói élményt vezet be. Jogosult szerepkör tagjai egy jövőbeli dátumot és időpontot az aktiválási ütemezheti. Ezek is kiválaszthatja, hogy egy adott aktiválási időtartamát, a maximális (a rendszergazdák által konfigurált) belül. További információkért lásd: [aktiválása vagy inaktiválása az Azure AD Privileged Identity Management szerepkörök](../active-directory-privileged-identity-management-how-to-activate-role.md).
+Privileged Identity Management (PIM) az Azure-erőforrások szerepkörök aktiválása az új felhasználói élményt vezet be. Jogosult szerepkör tagjai egy jövőbeli dátumot és időpontot az aktiválási ütemezheti. Ezek is kiválaszthatja, hogy egy adott aktiválási időtartamát, a maximális (a rendszergazdák által konfigurált) belül. További információkért lásd: [aktiválása vagy inaktiválása az Azure AD Privileged Identity Management szerepkörök](pim-how-to-activate-role.md).
 
 ## <a name="activate-roles"></a>Szerepkörök aktiválása
 Keresse meg a **saját szerepkörök** szakaszban a bal oldali panelen. Válassza ki **aktiválás** az aktiválni kívánt szerepkör esetében.

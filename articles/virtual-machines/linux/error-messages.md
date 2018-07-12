@@ -1,6 +1,6 @@
 ---
-title: Közös Linux virtuális gép hibakódok az Azure-ban |} Microsoft Docs
-description: A gyakori hibakódokat észlelt, amikor kiépítése és kezelése a Linux virtuális gépek Azure-ban megismerését
+title: Gyakori Linux rendszerű virtuális gép hibakódjai az Azure-ban |} A Microsoft Docs
+description: Megismerheti az egyes észlelt, amikor üzembe helyezése és kezelése az Azure-ban Linux rendszerű virtuális gépek gyakori hibakódok
 services: virtual-machines-linux
 documentationcenter: ''
 author: xujing-ms
@@ -16,14 +16,14 @@ ms.workload: infrastructure
 ms.date: 5/22/2017
 ms.author: xujing
 ms.openlocfilehash: 6d1e344cc0ec66f026bcf9e7c4ab50fd71dc6ca4
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2018
-ms.locfileid: "30905425"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38705979"
 ---
-# <a name="understand-common-error-messages-when-you-manage-linux-virtual-machines-in-azure"></a>Leggyakoribb hibaüzenetek megértéséhez, ha Ön kezeli a Linux virtuális gépek Azure-ban
+# <a name="understand-common-error-messages-when-you-manage-linux-virtual-machines-in-azure"></a>Gyakori hibaüzenetek ismertetése, ha Ön kezeli a Linux rendszerű virtuális gépek az Azure-ban
 
-Ez a cikk ismerteti a leggyakoribb hibakódok és üzenetek jelentkezhetnek, ha létrehozása és kezelése a Linux virtuális gépek (VM) az Azure-ban.
+Ez a cikk ismerteti az egyes leggyakoribb hibakódok és üzenetek felmerülhet a létrehozásakor vagy Linux rendszerű virtuális gépek (VM) az Azure-ban kezelheti.
 
 [!INCLUDE [virtual-machines-common-error-messages](../../../includes/virtual-machines-common-error-messages.md)]

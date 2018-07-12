@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 06/29/2018
 ms.author: snmuvva
 ms.component: alerts
-ms.openlocfilehash: 63659b5606e4bab8365f4f7a94c42a0fa5eafee6
-ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
+ms.openlocfilehash: 4d51b099532d3052acc190231ec4be17765a427e
+ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37928372"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38971023"
 ---
 # <a name="introduction"></a>Bevezetés
 Az Azure Monitor mostantól támogatja a [új metrika riasztástípus](monitoring-overview-unified-alerts.md) amely jelentős előnyökkel jár a korábbi keresztül [klasszikus metrikariasztásokat](insights-alerts-portal.md). Metrikák érhetők el a [az Azure-szolgáltatások nagy lista](monitoring-supported-metrics.md). Az újabb riasztások az erőforrástípus (növekvő) részét támogatja. Ez a cikk adott részére sorolja fel. 
@@ -28,7 +28,7 @@ A népszerű Log Analytics-naplók, metrikák, naplók (előzetes verzió) rész
 > Adott metrika és/vagy a dimenzió csak megjelenik létezik-e adatokat, a választott időszakban. Ezek a metrikák az Azure Log Analytics-munkaterületek az USA keleti RÉGIÓJA, USA Középnyugati Régiójában és Nyugat-Európa rendelkező ügyfelek számára érhetők el. A Log Analytics mérőszámainak jelenleg nyilvános előzetes verzióban érhető el, és változhat.
 
 ## <a name="portal-powershell-cli-rest-support"></a>Portál, PowerShell, CLI, REST-támogatással
-Jelenleg csak az Azure Portalon létrehozhat újabb metrikákhoz kapcsolódó riasztások [REST API-val](https://docs.microsoft.com/en-us/rest/api/monitor/metricalerts/createorupdate) vagy [Resource Manager-sablonok](monitoring-create-metric-alerts-with-templates.md). Konfigurálás a PowerShell és az Azure parancssori felület (Azure CLI 2.0) használatával újabb riasztások támogatása hamarosan elérhető lesz.
+Jelenleg csak az Azure Portalon létrehozhat újabb metrikákhoz kapcsolódó riasztások [REST API-val](https://docs.microsoft.com/rest/api/monitor/metricalerts/createorupdate) vagy [Resource Manager-sablonok](monitoring-create-metric-alerts-with-templates.md). Konfigurálás a PowerShell és az Azure parancssori felület (Azure CLI 2.0) használatával újabb riasztások támogatása hamarosan elérhető lesz.
 
 ## <a name="metrics-and-dimensions-supported"></a>Metrikák és a támogatott méretek
 Újabb metrikákhoz kapcsolódó riasztások támogatja a dimenziók használó metrikákhoz riasztásokat. Dimenziók segítségével szűrheti a metrika a megfelelő szintre. Az összes támogatott mérőszámok együtt alkalmazható dimenziók fel és az ábrázolt [Azure Monitor - metrikák Explorer (előzetes verzió)](monitoring-metric-charts.md).

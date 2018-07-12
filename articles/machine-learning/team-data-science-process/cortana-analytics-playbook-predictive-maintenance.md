@@ -1,6 +1,6 @@
 ---
-title: A prediktív karbantartási megoldásokat Azure AI útmutatója |} Microsoft Docs
-description: A prediktív karbantartási megoldásokat több függőleges iparágakban megoldásaira épül, adattudomány átfogó leírást.
+title: A prediktív karbantartási megoldásokat az Azure AI útmutatója |} A Microsoft Docs
+description: A data science-megoldás több vertikális iparágak prediktív karbantartási megoldások átfogó leírást.
 services: machine-learning
 author: fboylu
 manager: cgronlun
@@ -14,431 +14,431 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/11/2018
 ms.author: fboylu
-ms.openlocfilehash: ff2e1660ffcc1f397697b27084e000371c7c84f3
-ms.sourcegitcommit: 828d8ef0ec47767d251355c2002ade13d1c162af
+ms.openlocfilehash: 816ba560ccb9b06414dff8ffaea054e88d216b10
+ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36938009"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38972383"
 ---
-# <a name="azure-ai-guide-for-predictive-maintenance-solutions"></a>A prediktív karbantartási megoldásokat Azure AI útmutatója
+# <a name="azure-ai-guide-for-predictive-maintenance-solutions"></a>A prediktív karbantartási megoldásokat az Azure AI útmutatója
 
 ## <a name="summary"></a>Összegzés
 
-A prediktív karbantartási (**PdM**) olyan népszerű alkalmazás prediktív elemzés, amelyek segítségével a vállalatok számára a különböző iparágak magas eszköz kihasználtságának eléréséhez és a működési költségek megtakarítását. Ez az útmutató egyesíti az üzleti és analitikai iránymutatásokat és gyakorlati tanácsok sikeresen fejlesztésére és PdM megoldások segítségével telepítheti a [AI a Microsoft Azure platform](https://azure.microsoft.com/overview/ai-platform) technológia.
+Prediktív karbantartás (**PdM**) prediktív elemzéseket, amelyek segítségével a vállalatok számos iparágban eszköz magas kihasználtság eléréséhez és a működési költségeket, akár egy népszerű alkalmazás. Ez az útmutató egyesíti az üzleti és analitikai irányelvek és gyakorlati tanácsok sikeresen fejlesztéséhez és üzembe helyezése a PdM-megoldások használatával a [a Microsoft Azure AI-platform](https://azure.microsoft.com/overview/ai-platform) technológia.
 
-Első Ez az útmutató bemutatja, iparág-specifikus üzleti forgatókönyvek és ezek a forgatókönyvek jogosító PdM folyamatán. A követelmények és a modellezési módszereket PdM megoldások is rendelkezésre állnak. A fő az útmutató tartalma adatok tudományos folyamat – beleértve az adatok előkészítése, a szolgáltatás mérnöki csapathoz, a modell létrehozása és a modell operationalization lépésein. Ezeket a kulcsfontosságú fogalmakat kiegészítése, ez az útmutató számos olyan megoldást sablonok PdM alkalmazásfejlesztés felgyorsítása érdekében. Az útmutató hasznos képzési erőforrásokra vonatkozó további információt a adattudomány mögött AI gyakorló is mutat. 
+Márpedig Ez az útmutató bemutatja, iparág-specifikus üzleti forgatókönyvek és a feltételeknek megfelelő ezekben a forgatókönyvekben a PdM folyamatán. A követelményekkel és modellezési technikák PdM megoldásokra is biztosítja. A fő tartalom az útmutató az adatelemzési folyamat – beleértve az adat-előkészítés, a funkciófejlesztési, a modell létrehozásához és a modell operacionalizálás van. Ezek a legfontosabb fogalmak kiegészíteni, ez az útmutató segítségével felgyorsíthatja az alkalmazásfejlesztési PdM megoldássablonok készletét sorolja fel. Az útmutató hasznos képzési segédanyagokat a gyakorlott további információ a mesterséges Intelligencia, a data science mögött is mutat. 
 
-### <a name="data-science-guide-overview-and-target-audience"></a>Adatok tudományos útmutató áttekintése és azon célközönség
-Ez az útmutató az első felében tipikus üzleti problémák, a PdM a problémák megoldására végrehajtási előnyeit ismerteti, és néhány gyakori alkalmazási esetei sorolja fel. Az Üzleti döntéshozóknak (BDMs) ki ezt a tartalmat a előnyeit. A második fele a adattudomány mögött PdM ismerteti, és ezeket az alapelveket a jelen útmutatóban vázolt használatával készített PdM megoldások listáját tartalmazza. Tanulási útvonalai és oktatóanyag mutató hivatkozások is biztosít. Műszaki döntéshozók (TDMs) számára a tartalom.
+### <a name="data-science-guide-overview-and-target-audience"></a>Data Science útmutató áttekintése és azon célközönség
+Ez az útmutató első felében tipikus üzleti problémák, ezek a problémák megoldása érdekében PdM végrehajtási előnyeit ismerteti, és néhány gyakori felhasználási esetét sorolja fel. Ez a tartalom az üzleti döntéshozók (BDMs) előnyeit. A második felében semmit a data science mögött PdM ismerteti, és ebben az útmutatóban leírt elveket felhasználásával PdM megoldások listáját tartalmazza. Képzési tervek és képzési anyagokat hivatkozásokat is tartalmaz. Szakmai döntéshozók (TDMs), ez a tartalom hasznosnak fogja.
 
 | Kezdje... | Ha Ön... |
 |:---------------|:---------------|
-| [Üzleti esetben prediktív karbantartás](#Business-case-for-predictive-maintenance) |állásidő és a működési költségek csökkentése érdekében, és növeli a készülék kihasználtságát szeretnék üzleti döntéshozó (BDM) |
-| [A prediktív karbantartási Adattudomány](#Data-Science-for-predictive-maintenance) |műszaki döntéshozó (TDM) kiértékelése technológiákkal PdM megtudhatja, hogy az egyedi adatok feldolgozása és a prediktív karbantartási AI követelményei |
-| [A prediktív karbantartási megoldás sablonok](#Solution-templates-for-predictive-maintenance)|a szoftver felelős mérnök vagy AI fejlesztői gyorsan készíthet egy bemutató és egy-a-koncepció igazolása passzív keresése |
-| [A prediktív karbantartási oktatóanyagok](#Training-resources-for-predictive-maintenance) | a fenti részének vagy egészének és tudhat meg a adattudomány, eszközöket és technikákat eligazodást fogalmakat.
+| [A prediktív karbantartáshoz üzleti eset](#Business-case-for-predictive-maintenance) |csökkenti az állásidőt és az üzemeltetési költségeket, és javíthatja a berendezések kihasználtsági szeretne üzleti döntéshozó (BDM) |
+| [Adatelemzés a prediktív karbantartáshoz](#Data-Science-for-predictive-maintenance) |technikai döntéshozó (TDM) kiértékelése PdM technológiák megértéséhez egyedi adatfeldolgozás és a prediktív karbantartási AI-követelményei |
+| [A prediktív karbantartási megoldás sablonok](#Solution-templates-for-predictive-maintenance)|egy szoftvertervező vagy szeretne gyorsan Felállítható egy bemutatót vagy egy proof-of-concept AI-fejlesztés |
+| [A prediktív karbantartáshoz tanfolyamok forrásai](#Training-resources-for-predictive-maintenance) | a fenti egy részének vagy egészének, és ismerje meg, az adatelemzés, eszközöket és technikákat alapvető fogalmakat szeretné.
 
-### <a name="prerequisite-knowledge"></a>Előfeltételek Tudásbázis
-A BDM tartalom nem várja el a korábbi adatok tudományos, hogy az olvasó. A TDM tartalom statisztikák és adatelemzéssel vonatkozó általános ismeretekre bizonyulhat hasznosnak. Azure Data AI, Python, R, XML, és szolgáltatások JSON ismerete ajánlott. AI technikák Python és R csomagban valósíthatók meg. Megoldás sablonok valósíthatók meg Azure-szolgáltatások, a fejlesztői eszközök és az SDK-k használatával.
+### <a name="prerequisite-knowledge"></a>Ismeretekre vonatkozó Előfeltételek
+A BDM tartalom bármely korábbi data science el, hogy az olvasó nem várja. A TDM tartalom statisztikák és adatok adatelemzési alapszintű ismerete hasznos lehet. Azure Data és a mesterséges Intelligencia szolgáltatásokat, Python, R, XML, és JSON Tudásbázis ajánlott. Mesterséges Intelligencia technikák vannak megvalósítva, a Python- és R-csomagokat. Megoldássablonok vannak megvalósítva, Azure-szolgáltatások, fejlesztői eszközök és SDK-k használatával.
 
-## <a name="business-case-for-predictive-maintenance"></a>Üzleti esetben prediktív karbantartás
+## <a name="business-case-for-predictive-maintenance"></a>A prediktív karbantartáshoz üzleti eset
 
-Vállalatok számára szükséges kritikus berendezések maximális hatékonyság és a visszatérési megvalósításához nagy befektetések kihasználtsági futnia kell. Ezek az eszközök repülőgép motorok, turbinák, felvonók vagy ipari hőmérsékletű -, amely költségeket millióira - fénymásolókról, kávé gépek vagy Vízhűtők mindennapi készülékek le terjedhet.
-- Alapértelmezés szerint a legtöbb vállalat támaszkodnak _javítási karbantartási_, ahol részek helyett és ha azt elmulasztják. Javítási karbantartásnak részek teljesen használt (tehát nem általi lefoglalását összetevő élettartam), de költségek az üzleti állásidő, munka és tervezett karbantartást követelmények (ki óra vagy kényelmetlen helyek).
-- A következő szint vállalatok számára ajánlott: _megelőző karbantartás céljából_, amennyiben azok egy részére hasznos élettartamát határozza meg és karbantartása, vagy cserélje le a hiba előtt. Megelőző karbantartás céljából Ezzel elkerülheti a nem ütemezett és végzetes hibák. De ütemezett üzemszünet magas költségek, hiány használat előtt használja, és továbbra is tartalmazó teljes élettartamuk összetevő tartani.
-- Az adatdeduplikálás _prediktív karbantartási_ javítási és megelőző karbantartás engedélyezésével közötti egyensúly optimalizálása _JIT_ cseréje az összetevők. Ezek megközelítik hiba ezt a módszert csak ezek az összetevők helyettesíti. Összetevő lifespans (képest megelőző karbantartás céljából) kiterjesztésével és tervezett karbantartást és a munka költségek csökkentését (keresztül javítási karbantartási), vállalatok képes arra, hogy költséghatékony és versenyképes előnyeit.
+Vállalatok kritikus berendezésekre a maximális hatékonyság és kihasználtságának nyomon követésével valósíthat meg a visszaadandó tőkebefektetések futniuk van szükség. Ezek az eszközök repülőgép-hajtóművek, turbina, elevator vagy ipari hőmérsékletű – több millió – mindennap berendezések fénymásolókról, kávé gépek vagy Vízhűtők le követelnek egyéb fontos terjedhet.
+- Alapértelmezés szerint a legtöbb vállalkozás támaszkodjon _javítási karbantartási_, ahol részek cseréje és amikor meghiúsulnak. Javítási karbantartásnak részek teljesen használt (tehát nem pazarolni arra összetevő élettartama), de a költségeket az üzleti az állásidő, munkaerő és nem tervezett karbantartási követelményeket (ki óra vagy feladatátadáshoz helyek).
+- Jelenleg a következő szint vállalkozások gyakorlat _megelőző jellegű karbantartási_, amennyiben azok határozza meg a hasznos gyűjteményszintű egy részére, és karbantartása, vagy cserélje le a hiba előtt. Megelőző jellegű karbantartási elkerülheti a nem ütemezett és a katasztrofális hibák. De az ütemezett üzemszünet magas költségeket, az összetevő előtt feltételeit, és a munka továbbra is teljes élettartamuk korrigáljuk kihasználását.
+- A cél az _prediktív karbantartási_ , hogy optimalizálja a javítási és megelőző jellegű karbantartási engedélyezésével közötti egyensúlyt _szerinti_ összetevők cserélni. Ez a módszer csak, amelyek közel hibát váltja fel összetevőket. (Ellentétben a megelőző karbantartás) összetevő lifespans kiterjesztésével, és nem tervezett karbantartás és a munka költségek csökkentése (keresztül helyesbítő karbantartás), vállalatok is költséghatékony és versenyelőny.
 
 ## <a name="business-problems-in-pdm"></a>A PdM üzleti problémák
-Vállalatok szembesülhetnek magas működési kockázat, váratlan hibák miatt és a problémák az alapvető ok betekintést összetett rendszerek korlátozott. A fő üzleti kérdéseket a következők:
+Vállalkozások arc váratlan hibák miatt magas működési kockázatokat és a problémák kiváltó okának betekintést a komplex rendszerek korlátozott. A fő üzleti kérdéseket a következők:
 
-- Rendellenességek észlelését berendezések vagy a rendszer teljesítményét és funkciót.
-- Előre jelezni, hogy egy eszköz a közeljövőben meghiúsulhat.
-- Egy eszköz a fennmaradó élettartama becslése.
-- A fő oka sikertelen volt-e az eszköz azonosítására.
-- Azonosítsa a karbantartási műveleteket kell végeznie, akkor, ha az eszköz.
+- Rendellenességek észlelése berendezések vagy a rendszer teljesítményével vagy funkcióival.
+- Előrejelezheti, hogy egy eszköz a közeljövőben meghiúsulhat.
+- Becsülje meg egy eszköz a fennmaradó hasznos élettartamát.
+- Azonosítsa a hibát egy eszköz fő okait.
+- Azonosítsa a karbantartási műveleteket kell hajtható végre, akkor, ha az eszköz.
 
-Tipikus cél nyilatkozatai PdM a következők:
+Tipikus cél utasításokat a PdM a következők:
 
-- Kritikus kritikus berendezések működési kockázat csökkentése.
-- Megnövelheti az eszközök megtérülési rátát előrejelzésére hibák, mielőtt bekövetkeznének.
-- Karbantartási költségek szabályozásához just-in-time karbantartási műveletek engedélyezése.
-- Ügyfél kopásállóság alacsonyabb, a márka lemezképet, és elvesznek forgalmi javítása.
-- Alacsonyabb készlet költségeket csökkenti a készlet által az újrarendelési előrejelzésére mutasson.
-- Csatlakozik a különböző karbantartási problémákat minták felderítése.
-- Adja meg a KPI-k (fő teljesítménymutatók) állapotfigyelő pontszámait mint Eszközállapotok.
-- Becsült hátralévő eszközök élettartamát.
-- Javasoljuk, időben karbantartási tevékenységeket.
-- Csak az idő készlet engedélyezéséhez részek helyettesítő rendelés dátumai becslése.
+- A működés szempontjából kritikus fontosságú berendezések működési kockázat csökkentéséhez.
+- Növelje eszközállomány aránya alapján hibákat, mielőtt bekövetkeznének.
+- Karbantartási költség ellenőrzés just-in-time-karbantartási műveletek engedélyezésével.
+- Alacsonyabb vásárlói kopásállóság, a márka lemezképet, és elveszett értékesítési javítása.
+- Alacsonyabb a készlet költségei átrendezési előrejelzésével a leltári állományt csökkentésével.
+- Fedezze fel a minták csatlakozik a különböző karbantartási problémákat.
+- Adja meg a KPI-k (fő teljesítménymutatók) például az egészségügyi pontszámok Eszközállapotok.
+- Becsült hátralévő időtartama van, az eszközök.
+- Javasoljuk a megfelelő időben karbantartási tevékenységek miatt.
+- Csak az idő készlet engedélyezéséhez becslése a rendelési dátum részek kell cserélni.
 
-A cél kimutatásai a kiindulási pont:
+Cél utasítások a kiindulási pontok:
 
-- _adatszakértőkön_ elemzéséhez és prediktív konkrét problémák megoldására.
-- _a felhő mérnökök és a fejlesztők_ hozzáfoghat egy teljes körű megoldás.
+- _az adatszakértők_ elemzéséhez, és adott prediktív kapcsolatos problémák megoldásához.
+- _a felhőbeli tervezők és fejlesztők_ történő helyreállíthatósága egy teljes körű megoldást.
 
 ## <a name="qualifying-problems-for-predictive-maintenance"></a>Jogosult a prediktív karbantartási kapcsolatos problémák
-Fontos, hogy nem minden esetben használja, vagy üzleti problémák hatékonyan megoldhatók PdM emelje ki. Nincsenek három fontos megfelelő feltételeket, amelyek a probléma kiválasztása során figyelembe kell venni:
+Fontos kiemelni, hogy nem minden használati esetek vagy üzleti problémák hatékonyan megoldhatók PdM. Van három fontos feltételeknek megfelelő feltételek, amelyeknek a probléma kiválasztása során figyelembe kell venni:
 
-- A probléma-nak kell lennie a prediktív jellegű; Ez azt jelenti, hogy kell lennie a cél- vagy előre az eredmény. A probléma lehet egy egyszerű elérési útja hibák megelőzése, azok észlelése esetén végrehajtott műveletet.
-- A probléma, amely tartalmazza a készülék működési előzményeinek rekorddal kell rendelkeznie _jó vagy rossz eredményekkel_. Hibás eredményekkel mérséklésére műveletek is biztosítani kell az ezeket a rekordokat részeként. Hibajelentések, karbantartási rögzít teljesítménycsökkenés, javítsa ki, és cserélje le naplókat is fontos. Ezenkívül, és helyettesítő rekordok javítása érdekében végzett javítások is hasznosak.
-- A rögzített előzmények tükröződnek _vonatkozó_ adatokat _elegendő_ elég quality támogatásához a használati eset. Adatok relevanciájának és megfelelősége kapcsolatos további információkért lásd: [prediktív karbantartási követelményeit](#Data-requirements-for-predictive-maintenance).
-- Végül az üzleti pontosan ismeri a probléma tartomány szakértők kell rendelkeznie. A belső folyamatokat és eljárásokat kell az elemző megértéséhez, valamint az adatok értelmezéséhez segítséget tud nyújtani a tisztában kell lennie. Akkor is kell tudni elvégezni a szükséges módosításokat a meglévő üzleti folyamatok jobb adatgyűjtés a problémák, szükség esetén.
+- A probléma azt kell prediktív jellegű; vagyis kell egy cél- vagy egy előre serkenti az eredményt. A probléma a hibák megelőzése, észlelése esetén végrehajtandó világos és egyértelmű utat is rendelkezhet.
+- A probléma rendelkeznie kell egy rekordot a készülék, amely tartalmazza a működési előzmények _jó vagy hibás eredményeket_. Milyen műveleteket hibás eredményeket mérséklésére is biztosítani kell ezeket a rekordokat részeként. Javítsa ki a hibajelentéseket, a teljesítménycsökkenés, karbantartási naplóit, és cserélje le naplókat is fontosak. Emellett javításokat, és helyettesítő rekordok vállalt is hasznosak.
+- A rögzített előzmények megjelennek _megfelelő_ az adatok _elegendő_ elegendő és megfelelő minőségű, a használati eset támogatására. Adatok relevancia és megfelelőségéről és kapcsolatos további információkért lásd: [adatkövetelmények prediktív karbantartást](#Data-requirements-for-predictive-maintenance).
+- Végül az üzleti tartomány szakértők a probléma egyértelművé kell rendelkeznie. A belső folyamatai és eljárásai tudna segítséget az elemző ismertetése, és az adatok értelmezéséhez tisztában kell lennie. Akkor is tudnia kell, hogy a szükséges módosításokat a meglévő üzleti folyamatokba segítségével kapcsolatos problémák esetén a megfelelő adatok gyűjtése, ha szükséges.
 
-## <a name="sample-pdm-use-cases"></a>A minta PdM használati esetek
-Ez a szakasz a különböző iparágak például űrtechnikai segédprogramok vagy szállítására PdM használati esetek gyűjteménye összpontosít. Az egyes szakaszokon kezdődik-e egy üzleti probléma, és a PdM, a vonatkozó adatok az üzleti problémát, és végül a PdM megoldás előnyeit körülvevő előnyeit ismerteti.
+## <a name="sample-pdm-use-cases"></a>Minta PdM alkalmazási helyzetek
+Ez a szakasz a PdM alkalmazási helyzetek, például a légi közlekedésben, segédprogramok és szállítási számos iparág gyűjteménye összpontosít. Minden szakasz üzleti problémák megoldására kezdődik, és felvázolja az előnyöket, PdM, a vonatkozó adatokat a környező az üzleti problémát, és végül a PdM-megoldások előnyeit.
 
-| Üzleti probléma | Számos előnyt biztosít az PdM |
+| Üzleti probléma | A PdM előnyei |
 |:-----------------|-------------------|
-|**Repülési**      |                   |
-|_Késleltetés és a törlések repülési_ gépi kapcsolatos problémák miatt. Hibák, nem javítható időben megszakítandó járatok okozhatnak, és megzavarhatják ütemezés és a műveletek. |PdM megoldásokat képes előre jelezni késleltetett vagy a gépi hibák miatt megszakítva repülőgép valószínűségét.|
-|_Repülőgép motor részek hiba_: repülőgép motor része cserékhez belül a légitársaság iparági általános karbantartási feladatokat közé tartoznak. Karbantartási megoldásokhoz szükséges, hogy az összetevő-készlet rendelkezésre állásának, és a tervezési gondos felügyeleti|Gyűjtse össze a beruházási költségek jelentős csökkenéséhez vezet az eszközintelligencia összetevő megbízhatóság igényt.|
+|**Típus**      |                   |
+|_Késleltetés és a lemondások eszközmegfelelőségre_ vehesse a műszaki problémák miatt. Hibák időben nem javítható megszakítandó repülőjáratok okozhatnak, és akadályozza az ütemezés és a műveletek. |PdM megoldások tudja jelezni a valószínűsége annak, légi késleltetett, vagy több vehesse a műszaki hibák miatt megszakadt.|
+|_Repülőgéphajtómű-részek hiba_: repülőgép motor rész cseréjére a repülőgépipar belül a legtöbb gyakori karbantartási feladatok közé tartoznak. Karbantartás megoldás szükséges összetevő készlet rendelkezésre állásának, szállítási és tervezési gondos kezelése|Tudja gyűjteni az eszközintelligencia összetevő megbízhatósági vezet jelentős csökkentését, beruházási költségeket.|
 |**Pénzügyi** |                         |
-|_ATM hiba_ belül a banki iparági gyakori probléma. A probléma jelentheti a valószínűsége annak, hogy egy ATM cash visszavonása tranzakció megszakadt, lekérdezi a pénzbeli adagoló egy dokumentum a probléma megoldásáig részben vagy egészben hiba miatt. A tranzakció sikertelen előrejelzéseket alapján, adatközponthoz is kiszolgálásra proaktív megakadályozhatja, hogy a hiba lépett fel a.| Hanem engedélyezi a gép félúton keresztül a tranzakció sikertelen, a kívánatos esetben programot a gép visszautasítja a szolgáltatás az előrejelzés alapján.|
+|_ATM hiba_ gyakran okoz problémát a banki iparágon belül van. A probléma itt, hogy a jelentés a valószínűsége annak, hogy egy ATM készpénz kivonási tranzakció az készpénz adagolót egy tanulmány és részben vagy egészben hiba miatt beolvasása megszakítva. Tranzakciós hibák előrejelzésen alapuló, adatközponthoz karbantarthatók a proaktív módon megakadályozza, hogy a hiba lépett fel.| Hanem engedélyezi a gép midway keresztül egy tranzakció sikertelen, a kívánatos Ez esetben a program, szolgáltatás megtagadása a gép az előrejelzések alapján.|
 |**Energiafogyasztás** |                          |
-|_Turbinás hibák szél_: szél turbinák környezeti felel országokban fő energia forrásai, és nagy beruházási költségek vonatkozhat. A szél turbinák nyilvános kulcsokra épülő a kódgenerátor motor. a hiba Ez a beállítás a turbinás hatástalan. Egyúttal nagyon költséges javításához.|Előrejelzése KPI-k, például az energiavállalatok MTTF (átlagos idő) segítségével turbinás hibák megelőzése, és minimális állásidő érdekében. Hiba valószínűség tájékoztatja a figyelheti, hogy hamarosan sikertelen turbinák technikusok, valamint ütemezheti a karbantartás ideje-alapú rendszerek. A prediktív modellek adjon meg másik tényező befolyásolja a hiba, amely segítségével a technikusok betekintést jobb megértése érdekében az esetleges problémák okait.|
-|_Áramköri megszakító hibák_: kiemelt sorok mindig garantálja az energia kézbesítési működőképes legyen terjesztés házak és vállalatok számára. Kör szóhatároló szert: csökkenthetjük vagy power való megosztása kárt elkerülése sorok során túl van terhelve vagy káros időjárás feltételeket. Itt az üzleti probléma előre jelezni az áramköri megszakító hibák.| PdM megoldások javítási költségek csökkentése és eszközökre, például a kapcsolatcsoport szóhatároló élettartamát növelése érdekében. Váratlan meghibásodások és szolgáltatásmegszakadások csökkentésével az energiagazdálkodási hálózati minőségének javítása érdekében azokat.|
+|_Megszünteti a turbina hibák_: szél turbina a fő energiaforrás kímélő országban, és olyan magas tőkeköltségek terén. A szél turbina legfontosabb összetevője a készítő motor. a hiba jelenik meg a turbina hatástalanok. Emellett akkor is rendkívül költséges javításához.|Előrejelzésére MTTF (átlagos idő) például KPI-k segítségével az energiaszolgáltató vállalatok számára turbina hibák megelőzése, valamint a minimális üzemen kívüli idővel. Hiba valószínűségek figyelésére, amelyek várhatóan hamarosan sikertelen turbina szerelők értesíti, és karbantartási idő-alapú rendszerek ütemezése. Prediktív modelleket adjon meg másik tényező befolyásolja a hiba, amely segítségével a technikusok betekintést jobban megismerheti az esetleges problémák okait.|
+|_Áramkör-megszakító hibák_: lakhelyek és vállalkozások számára terjesztés a kiemelt sorokat garantálja az energia kézbesítési mindig működőképes legyen. Áramkör-megszakítók segítségével korlátozható vagy power sérülésének elkerülése érdekében az időjárási viszonyok során terhelve vagy káros sorokat. Itt az üzleti problémát az áramkör-megszakító előforduló hibák előrejelzésében.| PdM megoldások javítási költségek csökkentése és a gyűjteményszintű az eszközökre, például az áramkör-megszakítók növelése érdekében. Segítik az energiagazdálkodási hálózati minőségének javítása a váratlan meghibásodások és szolgáltatáskiesések csökkentésével.|
 |**Szállítási és logisztikai** |    |
-|_Foglalhatja ajtó hibák_: nagy foglalhatja vállalatok tartalmazza a működési felvonók világszerte több millió teljes verem szolgáltatást. Foglalhatja biztonsági, megbízhatósági és hasznos üzemidő fő fontos szempont, az ügyfelek számára. Ezeknek a vállalatoknak keresztül érzékelők, a javítási és megelőző karbantartás segítségével nyomon követni ezek, és számos egyéb attribútumai. Az egy foglalhatja a leginkább szembetűnő ügyfél probléma foglalhatja ajtók hibásan működik. Az üzleti probléma ebben az esetben arra, hogy a Tudásbázis prediktív alkalmazás, amely képes a lehetséges okai ajtó hibák.| Felvonók potenciálisan 20-30 év élettartamot beruházási beruházásokat. Így minden lehetséges értékesítést lehet versenyhelyzetében; ezért elvárásainak- és támogatási szolgálatához a rendszer magas. A prediktív karbantartási is adjon meg a vállalatoktól előnyös használhatóságát termékeikben versenytársaik, majd szolgáltatásajánlatok.|
-|_Hibák kerék_: hibák fiók kerék fele az összes derailments betanítása és a globális oldalon iparágat milliárd költsége. Kerék hibákat is okozhat a sínek romlani, néha, amely túl korán hibájához oldalon. Oldalon oldaltörések katasztrofális esemény, például derailments vezethet. Ilyen esetekben elkerülése érdekében vasutak kerekek teljesítményének figyeléséhez, és cserélje le őket megelőző módon. Itt az üzleti probléma az előrejelzés kerék hibák.| Kerekek prediktív karbantartási segít just-in-time csere |
-|_Subway vonat ajtó hibák_: egy fő subway műveletek késést oka, hogy a vonat autók ajtó hibák. Itt az üzleti probléma a vonat ajtó hibák előre jelezni.|Korai tájékoztatási ajtó hiba vagy ajtó hibát, amíg a napok számát segít a Karbantartás ütemezése ajtó betanítása üzleti optimalizálás.|
+|_Itt ajtó hibák_: nagy felvonó vállalatok számára működési elevator világszerte több millió teljes verem szolgáltatást biztosítanak. Itt biztonságát, megbízhatóságát és üzemidő olyan ügyfelek számára, akik fő területtel kell foglalkoznunk. Ezek a vállalatok keresztül érzékelők, javítási és megelőző jellegű karbantartással segítségével nyomon követheti ezeket és más jellemzők különböző. Az itt található a legjelentősebb ügyfél probléma itt ajtók hibásan működik. Az üzleti problémát ebben az esetben, hogy egy Tudásbázis prediktív alkalmazás, amely előrejelzi a lehetséges okai ajtó hibák.| Elevator tőkeberuházás potenciálisan egy 20-30 éves időtartama van a rendszer. Így lehet, hogy minden lehetséges értékesítés versenyhelyzetében; ezért a keresésről szolgáltatás és a támogatási. Prediktív karbantartás is ezek a vállalatok a termékeikben versenytársaik használhatóságát és szolgáltatásajánlatok.|
+|_Hibák kerék_: kerék hibák fiókhoz tartozó összes fele derailments betanításához, és optimalizálhatja a költségeket a globális sín ipar több milliárd. Kerék hibák is okozhatja a rails romlani, néha okoz a sín túl korán érvényteleníteni. Sín oldaltörések katasztrofális esemény, például derailments vezethet. Az ilyen példányok elkerülése érdekében vasutak kerekek teljesítményének figyeléséhez, és megelőző jellegű módon le kell. Az üzleti problémát itt kerék hibák előrejelzését.| Prediktív karbantartás kerekek segít a just-in-time csere |
+|_Subway train ajtó hibák_: A subway műveletek az késleltetések legfőbb oka train autó ajtó hibák. Itt az üzleti problémát, hogy train ajtó előforduló hibák előrejelzésében.|Korai ismertségét, ajtó hiba, vagy egy ajtó hiba hátralévő napok száma segít az üzleti optimalizálás karbantartási ütemezések ajtó betanításához.|
 
-A következő szakasz részletesen ismerteti a kapcsolatban a fentiekben ismertetett PdM előnyök megvalósításához a lekérdezi.
+Ez a szakasz bemutatja, hogyan valósíthat meg a fent ismertetett PdM előnyeit a részletek beolvasása.
 
-## <a name="data-science-for-predictive-maintenance"></a>A prediktív karbantartási Adattudomány
+## <a name="data-science-for-predictive-maintenance"></a>Adatelemzés a prediktív karbantartáshoz
 
-Ez a szakasz tudományos alapelvek és eljárás általános útmutatást nyújt a PdM a. Célja, hogy egy TDM érdekében megoldásokért felelős mérnök vagy egy fejlesztő megérteni az Előfeltételek és a végpontok közötti AI alkalmazások PdM kiépítése során. Ez a szakasz a bemutatók áttekintése és olvasható, és a koncepció igazolása sablonok felsorolt [prediktív karbantartási megoldás sablonok](#Solution-templates-for-predictive-maintenance). Ezen alapelvek és ajánlott eljárásokat használhatja az Azure-ban a PdM megoldás megvalósításához.
+Ez a szakasz data science alapelvek és eljárás általános útmutatást nyújt a PdM a. Célja, hogy egy TDM, megoldásfejlesztőként segítségével, vagy egy fejlesztői megismerheti az előfeltételeket és a teljes körű AI-alkalmazások PdM kiépítése során. Ez a szakasz egy át a bemutatókat, valamint tudjon meg, és a felsorolt proof-of-concept sablonok [prediktív karbantartási megoldás sablonok](#Solution-templates-for-predictive-maintenance). Ezután használhatja ezeket alapelvek és ajánlott eljárások a PdM-megoldás megvalósítása az Azure-ban.
 
 > [!NOTE]
-> Ez az útmutató nem célja az olvasó Adattudomány mutatja meg. Számos hasznos források megadta-e további információ a részben [oktatóanyagok prediktív karbantartási](#Training-resources-for-predictive-maintenance). A [megoldás sablonok](#Solution-templates-for-predictive-maintenance) az útmutatóban szereplő néhány, az alábbi AI eljárások bizonyos PdM problémák bemutatása.
+> Ez az útmutató nem készült, akik az olvasó adatelemzés. Számos hasznos források áll rendelkezésre további információ a részben [a prediktív karbantartáshoz tanfolyamok forrásai](#Training-resources-for-predictive-maintenance). A [megoldássablonok](#Solution-templates-for-predictive-maintenance) az útmutatóban szereplő adott PdM problémák AI technikát mutatják be.
 
-## <a name="data-requirements-for-predictive-maintenance"></a>A prediktív karbantartási követelményeit
+## <a name="data-requirements-for-predictive-maintenance"></a>Prediktív karbantartás adatok követelményei
 
-A learning sikere attól függ, milyen tanított folyamatban van a a minőségének és (b) a tanuló képességét. Prediktív modelleket ismerje meg az előzményadatok minták, és előre jelezni jövőbeli eredményt bizonyos valószínűséggel ezen megfigyelt minták alapján. A modellek prediktív pontossága attól függ, a alkalmazhatóságát megfelelősége és tanítási és tesztelési adatok. "Pontozza a mennyiségeket" a modell segítségével új adatok ugyanazokat a szolgáltatásokat és séma kell rendelkeznie a tanítási és tesztelési célú adatként. Új adatokat a szolgáltatás jellemzőit (típus, sűrűség, terjesztési és így tovább) kell egyeznie a tanítási és tesztelési adathalmazokat. Ez a szakasz az ilyen adatok követelmények célja.
+Minden tanuló sikeres (a) a mi van folyamatban színesített minőségét, és (b) a learner képességét függ. Prediktív modelleket az előzményadatok minták bemutatása és a jövőbeni következmények előrejelzésére bizonyos valószínűséggel ezeket a megfigyelt mintáknak megfelelően. A modellek prediktív pontossága attól függ, a alkalmazhatóságát, a megfelelősége és a tanítási és tesztelési adatok minőségét. Az új adatok, amelyek "sorolódik" modell használatával ugyanazokat a szolgáltatásokat és séma kell rendelkeznie a tanítási és tesztelési adatként. A szolgáltatás jellemzői (típus, sűrűség, terjesztési és így tovább) az új adatok, amelyek a tanítási és tesztelési adatkészletek egyeznie kell. Az ebben a szakaszban célja az ilyen adatok követelményeinek.
 
 ### <a name="relevant-data"></a>A vonatkozó adatokat
 
-Először az adatok-nak kell lennie _a problémára vonatkozó_. Vegye figyelembe a _hiba kerék_ tárgyalt-és nagybetűhasználattal újabb - a betanítási adatok tartalmaznia kell a kerék műveleteivel kapcsolatos funkciók. Ha a probléma előre jelezni sikertelen volt a _vontatási rendszer_, mint amelyek a különböző összetevők vontatási rendszer rendelkezik a betanítási adatok. Az első esetben egy adott összetevőre célozza meg, míg a második esetben célozza nagyobb alrendszer hibája. Az általános javasoljuk, hogy előrejelzés rendszerek nagyobb alrendszereket helyett meghatározott összetevőkre vonatkozó tervezési, mivel ez utóbbi fog rendelkezik több megvédheti adatait. A tartomány szakértő (lásd: [befolyásoló problémákat prediktív karbantartási](#Qualifying-problems-for-predictive-maintenance)) kiválasztásának lépésein. az adatok elemzéséhez legfontosabb részhalmazának segítségül. Nagyobb részletes ismertetése a releváns adatforrásokkal [adatok előkészítése az prediktív karbantartási](#Data-preparation-for-predictive-maintenance).
+Először is az adatok azt kell _a problémához kapcsolódó_. Vegye figyelembe a _hiba kerék_ tárgyalt kis-és nagybetűhasználattal újabb – a betanítási adatok tartalmaznia kell a kerék műveletekkel kapcsolatos funkciók. Ha a probléma előre jelezni a sikertelen volt a _elősegítik rendszer_, kiterül és kitölti a különböző összetevők elősegítik rendszer rendelkezik a betanítási adatok. Az első esetben egy adott összetevőre célozza meg, míg a második esetben célozza meg, a nagyobb alrendszer hibát. Az általános ajánlás az előrejelzési rendszerek nagyobb alrendszerek helyett az egyes összetevőkkel kapcsolatos tervezési, mivel ez utóbbi fog rendelkezik több elosztott adatok. A tartomány-szakértő (lásd: [befolyásoló problémákat a prediktív karbantartáshoz](#Qualifying-problems-for-predictive-maintenance)) segíthet a kiválasztja a leginkább releváns adatokat az elemzéshez alkészleteiben. A releváns adatforrások ismertetik részletesebben [adat-előkészítés a prediktív karbantartáshoz](#Data-preparation-for-predictive-maintenance).
 
-### <a name="sufficient-data"></a>Elegendő adatot
-Gyakran feltett kérdéseket tekintetében előzmények adatai: (1) "hány sikertelen események szükségesek a modell betanításához?" (2) "rekordok minősül"elegendő"?" Nincsenek nem végleges válaszokat, de csak szabályok megoldás. (1), a sikertelen események száma több jobb a modell. (2) és a hibaesemények pontos számát határozza meg az adatokat, majd a megoldani kívánt probléma környezetében. De a tükrözés oldalán, ha egy gép meghibásodik túl gyakran majd az üzleti váltják fel őket, amely csökkenti a sikertelen példányok. Itt ebben az esetben a tartományból szakértői útmutatást fontos. Van azonban a probléma a folyamatosan növekvő adatmennyiségnek módszerek _ritka események_. A szakasz ismerteti [kezelnek imbalanced adatokat](#Handling-imbalanced-data).
+### <a name="sufficient-data"></a>Elegendő adat
+Előzményadatait meghibásodása kapcsolatban gyakran feltett kérdésekre: (1) "hány sikertelen események szükségesek a modell betanításához?" (2) "hány rekordok minősül"elegendő"?" Nincsenek nem végleges válaszokat, de csak szabályok költségcsökkenést eredményezzen. (1) a több sikertelen események száma jobb a modell. (2) és sikertelen események pontos száma attól függ, az adatok és a probléma alatt megoldott kontextusában. De a tükrözés oldalon, ha egy gép túl gyakran sikertelen majd az üzleti lecseréli, amely hiba példányok csökkenti. Itt újra, a tartományból szakértői útmutatást fontos. Előfordulhatnak azonban olyan méretezhetők a probléma, a metódusok _ritka események_. A szakasz tárgyalja azok [imbalanced adatok kezelésének alapelveit](#Handling-imbalanced-data).
 
 ### <a name="quality-data"></a>Minőségi adatok
-Az adatok minőségének kritikus – minden előrejelzőjének attribútum értéke lehet _pontos_ együtt a cél változó értékét. Az adatminőségi statisztikák és adatok felügyeleti egy jól vizsgált területre, és emiatt ki, az útmutató hatókörén.
+Kritikus fontosságú az adatok minőségét – minden előjelző közé kell esnie _pontos_ a célként megadott változó értékének együtt. Adatminőség statisztikák és adatok felügyelete egy jól vizsgált területre, és ezért vette az a jelen útmutató.
 
 > [!NOTE]
-> Több erőforrást és vállalati termékek minőségének adatok továbbítására is van. Hivatkozások mintát lejjebb tekinthetők meg:
-> - Dasu, T, a Johnson, a T., felderítő adatbányászat, és az adatok tisztítása, Wiley, 2003.
-> - [Felderítő adatelemzés, Wikipedia](https://en.wikipedia.org/wiki/Exploratory_data_analysis)
-> - [Hellerstein, J, mennyiségi adatok nagy adatbázisokhoz tisztítása](http://db.cs.berkeley.edu/jmh/papers/cleaning-unece.pdf)
-> - [de Jonge, E, van der keresés, M, bevezetés az adatok r tisztítása](https://cran.r-project.org/doc/contrib/de_Jonge+van_der_Loo-Introduction_to_data_cleaning_with_R.pdf)
+> Több erőforrást és vállalati termékek minőségét adatok is van. A hivatkozások minta lejjebb:
+> - Dasu, T, a Johnson, a T., felderítő Data szintű adatbányászatra, és az adatok törlését, Wiley, 2003.
+> - [Feltáró jellegű adatok elemzése, Wikipedia](https://en.wikipedia.org/wiki/Exploratory_data_analysis)
+> - [Hellerstein, J, kvantitatív adatoknak nagy méretű adatbázisok törlése](http://db.cs.berkeley.edu/jmh/papers/cleaning-unece.pdf)
+> - [de Jonge, E, van der keresés, M, r-adatok törlését bemutatása](https://cran.r-project.org/doc/contrib/de_Jonge+van_der_Loo-Introduction_to_data_cleaning_with_R.pdf)
 
-## <a name="data-preparation-for-predictive-maintenance"></a>Adatok előkészítése az prediktív karbantartás
+## <a name="data-preparation-for-predictive-maintenance"></a>Adat-előkészítés a prediktív karbantartáshoz
 
 ### <a name="data-sources"></a>Adatforrások
 
-A prediktív karbantartási releváns adatforrásokkal tartalmazza, azonban nem csak:
-- Hiba előzmények
+A prediktív karbantartáshoz kapcsolódó adatforrások közé tartozik, de nem korlátozódik:
+- Sikertelen futtatások előzményei
 - Karbantartási javítási előzmények
-- Gép üzemi körülmények között
-- Berendezések metaadatok
+- Gép működési feltételek
+- Készülék-metaadatok
 
-#### <a name="failure-history"></a>Hiba előzmények
-Sikertelen események ritkák PdM alkalmazásokban. Azonban amikor a előrejelzési modellek létrehozása, az algoritmus kell egy összetevő normál működési mintát, valamint a sikertelen minták megismerése. Így a betanítási adatok mindkét kategóriák példák elegendő számú kell tartalmaznia. Karbantartási rögzíti és részek helyettesítő előzmények szolgálnak sikertelen események kereséséhez. Néhány tartomány Tudásbázis segítségével a betanítási adatok rendellenességeinek is adható meg hibák.
+#### <a name="failure-history"></a>Sikertelen futtatások előzményei
+Hibaesemények ritkák PdM-alkalmazásokban. Azonban prediktív modellek létrehozását, az algoritmus kell normál műveleti minta egy összetevő, valamint a hiba minták megismeréséhez. Így a betanítási adatok tartalmaznia kell mindkét kategóriákból példák elegendő számú. Rekordok és a részek karbantartási helyettesítő előzményei szolgálnak sikertelen események megtalálásához. Az egyes tartományi ismeretek segítségével a betanítási adatok rendellenességeket is kódhibáiként lehet definiálni.
 
 #### <a name="maintenancerepair-history"></a>Karbantartási javítási előzmények
-Egy eszköz karbantartási előzmények azokról az összetevőkről cseréje esetén javítási tevékenységét stb részleteit tartalmazza. Ezek az események rögzítése teljesítménycsökkenést minták. Ez a betanítási adatok számára elengedhetetlen információ hiányában félrevezető modell eredmények vezethet. Hiba előzmények a karbantartási előzmények belül is találhatók a különleges hibakódok vagy rendelés dátumai részeit. További adatforrások hiba minták befolyásoló legyen a vizsgált és tartomány szakértők által biztosított.
+Az eszköz karbantartási előzményeit azokról az összetevőkről cseréje esetén, például végzett javítási tevékenységek részleteit tartalmazza. Ezeket az eseményeket rögzíteni teljesítménycsökkenés mintákat. Ez rendkívül fontos információ a betanítási adatok hiányában félrevezető modell eredményeinek vezethet. Sikertelen futtatások előzményei a belül előzmények karbantartási is található a speciális hibakódok vagy rendelés dátumát részei. További adatforrások hiba minták befolyásoló meg kell vizsgálni és tartomány-szakértők által biztosított.
 
-#### <a name="machine-operating-conditions"></a>Gép üzemi körülmények között
-A készülék műveletben érzékelő alapján (vagy egyéb) streamadatok egy fontos adatforrás. A PdM a kulcs feltételezése a, hogy a számítógép rendszerállapotát időbeli mindennapos működése során csökkenti. Az adatok várhatóan idő-változó szolgáltatásokat tartalmazhat, rögzítheti a korosodási mintát, és bármely rendellenességeket, amelyek a csökkenéséhez vezet. A historikus szempontja, hogy az adatok az algoritmus a hibát, és a hibát nem jelentő kombinációját további adott idő alatt szükség. Az ilyen adatpontok alapján, az algoritmus megtanulja előre jelezni, hány további időegységekkel a gép folytathatja a munkát, mielőtt sikertelen.
+#### <a name="machine-operating-conditions"></a>Gép működési feltételek
+Streamelési adatok alapján (vagy más) érzékelő a készülék műveletben egy fontos adatforráshoz. A PdM a fő feltételezése a, hogy a készülék állapota csökkenti a szokásos működés során idővel. Az adatok várható elévülési ezt a mintát, és felismerheti a rendellenességeket, amelyek teljesítménycsökkenést vezet rögzítése időfüggő funkciókat tartalmaznak. A historikus szempont az adatok az algoritmus a hiba és a hibát nem jelentő további idővel szükség. Ezek az adatpontok alapján, az algoritmus megtanulja előrejelzése idő hány több egységet egy gép folytathatja a munkát, mielőtt sikertelen lesz.
 
-#### <a name="static-feature-data"></a>Statikus szolgáltatás
-Statikus funkciók a készülék metaadatait. Többek között a készülék típusa, a modell, a gyártott dátumát, indítsa el a szolgáltatás dátuma, a rendszer, és egyéb technikai specifikációk helyét.
+#### <a name="static-feature-data"></a>A szolgáltatás statikus adatok
+Statikus szolgáltatása, a készülék metaadatait. Példák a készülék típusa, a modell, a gyártó dátumát, indítsa el a szolgáltatás dátuma, a rendszer és az egyéb műszaki specifikációk helyét.
 
-Példák vonatkozó adatokat a [minta PdM használati esetekben](#Sample-PdM-use-cases) listáját az alábbi táblázatban:
+Példák a vonatkozó adatokat a [minta PdM használati esetek](#Sample-PdM-use-cases) lenti táblázatban láthatóak:
 
-| Használati eset | Példák vonatkozó adatok |
+| Használati eset | Példák a vonatkozó adatok |
 |:---------|---------------------------|
-|_Repülési késleltetés és a sikertelen_ | Útvonal-információkat repülési repülési ágak és a lap naplókat. Repülési engedélyezi adatok tartalmazza a útválasztási indító/érkezési dátum, idő, repülőtéri, layovers stb. Lap napló rögzíti az alapoktól karbantartási személyzet hiba és karbantartási kódok sorozata tartalmazza.|
-|_Repülőgép motor részek hiba_ | Adatok összegyűjtése az érzékelők a repülőgép információval szolgálnak a különböző részeinek feltétellel. Karbantartási rekordok összetevő hibák történtek, és azok helyettesítve azonosításához.|
-|_ATM hiba_ | Minden tranzakció (cash/ellenőrzés helyezésekor) érzékelő értékek és cash kiadása. Információk résnek mérés megjegyzések között, vegye figyelembe a vastagsága, vegye figyelembe a érkezési távolság, ellenőrizze attribútumok stb. Karbantartási azt jelzi, hogy adja meg a hibakódok, a javítási információkat, és a fizetési adagoló utoljára újratöltése esetén.|
-|_Szél turbinás hiba_ | Az érzékelők figyelése turbinás körülmények például hőmérséklet, szél irányát, energia, generátor sebesség stb. A különböző régiókban található szél farmok több szél turbinák adatokat gyűjtött. Minden turbinás rendszerint kell több érzékelő értékek mérések továbbítását rögzített időközönként.|
-|_Áramköri megszakító hibák_ | Karbantartási naplófájlokat, amelyek megoldani a problémát, megelőző és rendszeres műveletek közé tartozik. Működési adatok, amely tartalmazza a kapcsolatcsoport szóhatároló, mint a Megnyitás és Bezárás műveletek küldött automatikus és manuális parancsokat. Eszköz metaadatait, például a dátum előállítása, a hely, a modell, stb. Áramköri megszakító specifikációk például feszültség szintek, a földrajzi hely, a környezeti feltételek.|
-|_Foglalhatja ajtó hibák_| A metaadatok foglalhatja például típusát foglalhatja, gyártott dátum, karbantartás gyakorisága, épület típus, és így tovább. Működési adatok például ajtó ciklusok, átlagos ajtajának bezárása idő száma. Az okok előzmények hiba.|
-|_Kerék hibák_ | A érzékelőadatait, hogy intézkedések törlés gyorsulás, fékezési példányok, vezetői távolság, sebesség stb. Statikus adatait a kerekeket, például a gyártó, gyártott dátum. Adatai részét adatbázisból következtetni rendelési és a mennyiségek nyomon.|
-|_Subway vonat ajtó hibák_ | Ajtó nyitó és záró idő szerint, egyéb működési adatok, például vonat ajtók az aktuális állapot. Statikus adatok eszköz azonosítója, időpont és feltétel értéke oszlopot tartalmazhat.|
+|_Repülési késleltetés és a lemondások_ | A légi Repülőút szakaszainak formájában az útvonal-információkat, és naplók lapon. Repülőjáratok alapját képező adatainak útválasztási kitérnek például indító/érkezés dátuma, ideje, repülőterek, layovers stb. Oldal log tartalmazza a hiba- és karbantartási kódokat az alapoktól karbantartó személyzet által rögzített sorozatát.|
+|_Repülőgép motor részek hiba_ | Maradjon a repülő karbantartására, amely információkat tartalmaz a feltétel a különböző részeiből szenzorait gyűjtött adatokat. Karbantartási rögzíti és segít azonosítani összetevő hiba előfordulásakor is szövegelemekben.|
+|_ATM-hiba_ | Minden egyes tranzakció (cash/ellenőrzés helyezésével) érzékelőinek és készpénz kiadása. Információk a gap a mérési megjegyzések között, vastagsága vegye figyelembe, vegye figyelembe a beérkezés távolság, ellenőrizze a attribútumok stb. Hibakódok, a javítási információkat, utolsó időpont, amikor a pénzen adagolót biztosító karbantartási rekordok újratöltése esetén.|
+|_A szél turbina hiba_ | Érzékelő megfigyelik a turbina például a hőmérséklet, viszonyítva megadott szélirány, generált power, generátor sebességet stb. A szél-farmok különböző régiókban található több szél turbina összegyűjtött adatokat. Általában minden turbina mérések továbbítását rögzített időközönként több érzékelőinek fog rendelkezni.|
+|_Áramkör-megszakító hiba_ | Karbantartási naplók, amely korrekciós, megelőző jellegű, és rendszeres műveleteket tartalmazza. Operatív adatok, amelyek között műveletek esetében például megszakítók küldött automatikus és manuális parancsokat is tartalmaz. Eszközök metaadatait, például dátum előállítása, a helyet, a modell, stb. Áramkör-megszakító előírásai például feszültség szintek, a földrajzi hely, a környezeti feltételek.|
+|_Itt ajtó hibák_| Itt metaadatok például itt, gyártott dátum, karbantartás gyakorisága, épület típusa és stb. Operatív információk, például ajtó ciklusokat, átlagos ajtó bezárása idő számát. Sikertelen futtatások előzményei okait.|
+|_Kerék hibák_ | Érzékelőktől kapott adatok, hogy a mértékek kerék gyorsítás, fékezési példányok, vezetői távolság, megoldáscsomagja stb. Statikus adatait a kerekeket, például a gyártó, gyártott dátum. Hiba adatok következtetni rész rendelési adatbázisból, amelyek nyomon követik a rendelés dátuma és mennyisége.|
+|_Subway train ajtó hibák_ | Ajtó nyitó és záró idő, egyéb működési adatok, például train ajtók állapotban van. Statikus adatok eszköz azonosítója, idő és feltétel értéke oszlop tartalmazhat.|
 
 ### <a name="data-types"></a>Adattípusok
-A fenti adatforrások megadott, a két fő adattípusok megfigyelt PdM a tartományban a következők:
+Adja meg a fenti adatforrások, a két fő adattípusok megfigyelhető a PdM-tartományt a következők:
 
-- _A historikus adatok_: működési telemetriai adatokat, a gép feltételek, a munkahelyi rendelés típusok, prioritású kód, amely a rögzítés időpontjában fog rendelkezni az időbélyegeket. Hiba, a karbantartási/repair és a használati előzmények is minden eseményhez tartozó időbélyegzőket.
-- _Statikus adatok_: gép operátor szolgáltatásokkal és általában statikusak óta leírják a műszaki adatok a gépeket vagy operátor attribútumok. Ezek a funkciók módosulhatnak adott idő alatt, ha van továbbá a hozzájuk kapcsolódó időbélyegzőket.
+- _A historikus adatok_: operatív telemetriát, a gép feltételek, a munkahelyi rendelés típusok, prioritás kódok, amely a rögzítés idején időbélyege lesz. Hiba, a karbantartás és javítás és a használati előzmények is minden eseményhez tartozó időbélyeggel rendelkezik.
+- _Statikus adatok_: gép szolgáltatása és operátor általában statikus mivel, bemutatják a műszaki specifikációk gépek vagy operátor attribútumok. Ezek a funkciók módosulhatnak, idővel, ha van továbbá időbélyegeket társítva.
 
-Előrejelzőjének és a cél változók csal Előfeldolgozott/átalakítja az [numerikus kategorikus és más adattípusok](https://www.statsdirect.com/help/basics/measurement_scales.htm) attól függően, hogy a használt algoritmus.
+Változók előjelző és a cél legyen üzenetfájlrekordok/átalakításának [numerikus kategorikus és más adattípusok](https://www.statsdirect.com/help/basics/measurement_scales.htm) attól függően, a használt algoritmus.
 
 ### <a name="data-preprocessing"></a>Adatok előfeldolgozása
-Hogy előfeltételeként _jellemzőkiemelés_, készítse elő a különböző adatfolyamok sikerült létrehozni a séma, ahonnan könnyen összeállíthat szolgáltatások adatait. Az adatok megjelenítése először a rekordok táblázatként. A tábla minden sorára egy képzési példányát képviselik, és az oszlop felel meg a _előrejelzőjének_ (más néven független attribútumok változók) szolgáltatásokat. Az adatok rendezése úgy, hogy az utolsó oszlop(ok) a _cél_ (függő változó). Képzési feltünteti hozzárendelése egy _címke_ ebben az oszlopban értékeként.
+Az előfeltételként _jellemzőkiemelés_, készítse elő az adatokat a különböző Streamek összeállításához, amelyből létre új funkciókat könnyebbé vált a sémát. Megjelenítheti az adatokat először a rekordok táblaként. A tábla minden sorára jelenti egy képzési példányt, és az oszlopok jelölik _előjelző_ funkciók (más néven független attribútumok vagy változók). Adatok rendezése úgy, hogy az utolsó oszlopot a _cél_ (függő változó). Képzési példányonként hozzárendelése egy _címke_ , ez az oszlop értékét.
 
-A historikus adatok időegységek érzékelőadatait időtartama felosztani. Minden rekordot kell tartoznia, az adott eszköz számára egy időegységet _és kínáljon különböző információkat_. Időegységek Többszörösök másodperc, perc, óra, nap, az üzleti igények alapján vannak definiálva, hónap, és így tovább. Időegység _nem feltétlenül kell egyeznie a használatra vonatkozó adatok gyűjtésének gyakorisága_. A gyakoriság értéke magas, ha az adatok nem lehetséges, hogy megjelenítése bármely jelentős különbség az egyik a másikra. Tegyük fel például, hogy környezeti hőmérséklet gyűjtötte a program minden 10 másodperc. További információk biztosítása nélkül csak használja ugyanazt az intervallum betanítási adatok inflates példák száma. Ebben az esetben a jobb stratégia lehet használni az adatok több mint 10 percig, illetve egy órával az üzleti indoklásának alapuló.
+Időegységek érzékelőktől kapott adatok időtartama osztása historikus adatok esetén. Az adott eszköz számára időegységet kell tartoznia minden egyes rekord _és kínáljon különböző információkat_. Időegységek hányszorosa másodperc, perc, óra, nap, az üzleti igényeknek megfelelően vannak meghatározva, hónapok, és így tovább. Az időegység _nem rendelkezik azonos adatok gyűjtésének gyakorisága_. Ha a gyakoriság értéke nagy, előfordulhat, hogy nem jelennek bármely lényeges különbség egy egységből a másikba. Tegyük fel például, hogy környezeti hőmérséklet gyűjtötte a program 10 másodpercenként. Csak ugyanazon az intervallum használ a betanítási adatok megnöveli a példák száma anélkül, hogy minden további információt. Ebben az esetben egy jobb stratégia lehet az adatok több mint 10 perc vagy egy órán alapuló a szakmai indoklással használja.
 
-A statikus adatok
-- _Karbantartási rekordok_: nyers karbantartási egy eszköz azonosítója és a Timestamp típusú karbantartási adott időben egy adott időpontban végzett tevékenységeket a adatokkal rendelkezik. Átalakítás karbantartási tevékenységek _kategorikus_ oszlopok, ahol minden kategória leíró egyedi van leképezve a megadott karbantartási művelet. A séma karbantartási rekordok tartalmazhat eszköz azonosítója, az idő és a karbantartási műveletet.
+Statikus adatok esetében
+- _Karbantartási rekordok_: nyers karbantartási adat rendelkezik egy eszköz azonosítóját, valamint a timestamp információkat, karbantartási időben egy adott időpontban végzett tevékenységeket. Karbantartási tevékenységek átalakítása _kategorikus_ oszlop, amelyben minden kategória leíró egyedi képez le egy adott karbantartási művelet. Eszköz azonosítója, időpont és karbantartási művelet karbantartási rekordok a séma tartalmazhat.
 
-- _Hiba a rekordok_: hibák vagy a hiba oka adott hibakódok vagy adott üzleti feltételek által meghatározott hibaesemények lehet rögzíteni. Azokban az esetekben, ahol a készülék már több hibakódok a tartomány szakértői kell azonosításához, amelyek a célváltozó megfelelő megfelelően. A fennmaradó hibakódok vagy feltételek használatával hozható létre _előrejelzőjének_ funkciókat, amelyek ilyen hibához függ. A sémát a sikertelen műveletet tartalmazhat eszköz azonosítója, az idő, a hiba vagy a hiba okát is megadva - ha rendelkezésre áll.
+- _Hiba a rekordok_: hibák vagy a hibák okainak adott hibakódok vagy adott üzleti feltételei által meghatározott hibaesemények lehet rögzíteni. Azokban az esetekben, ahol a készülék rendelkezik-e több hibakódok szakértői tartomány kell azonosíthatja azokat, amelyek a célváltozó tárolására. A fennmaradó hibakódok vagy feltételek használatával hozhat létre _előjelző_ ezek a hibák az jellemzőket. Hiba rekordok a séma tartalmazhat eszköz azonosítója, ideje, hiba vagy a hiba oka – Ha elérhető.
 
-- _Számítógép és az operátorral metaadatok_: a számítógép és az operátorral adatok egyesítése egy séma rendelhet hozzá eszközt az operátorral együtt annak attribútumai. A séma, a gép feltételeket eszköz azonosítója, eszköz, operátor azonosító operátor szolgáltatásokkal és tartalmazhat.
+- _Gép és az operátorral metaadatok_: a gép és az operátorral adatok egyesítése egy sémát, hogy egy eszköz társítása a operátor szerinti szűrése, annak attribútumai mellett. A gép feltételek a séma tartalmazhat eszköz azonosítója, az eszközintelligencia-funkciók, operátor azonosítója és operátor funkciókat.
 
-Más adatok előfeldolgozása lépések közé tartoznak a _hiányzó értékek kezelése_ és _normalizálási_ az attribútumértékek. Részletes túlmutat a jelen útmutató – bizonyos hasznos hivatkozásokat a következő szakaszban talál.
+Más adatok előfeldolgozási lépéseket _kezelése a hiányzó értékeket_ és _normalizálási_ az attribútumértékek. Részletes leírásáért lásd az túlmutat a jelen útmutató – tekintse meg a következő szakaszban néhány hasznos hivatkozásokat is.
 
-A fenti rendelkező Előfeldolgozott adatforrások helyen, a végső átalakítása előtt a szolgáltatás mérnöki csapathoz, hogy a fenti táblák időbélyeg és eszköz azonosítója alapján. Az eredményül kapott tábla kellene hiba oszlop null értékeket, a normál működés számítógép esetén. A null értékeket is lehet imputált történő normál működéséhez. A hiba oszlop használatával létrehozhat _címkék a prediktív modell_. További információkért lásd [modellezési módszereket prediktív karbantartási](#Modeling-techniques-for-predictive-maintenance).
+A fentiekben üzenetfájlrekordok helyen, a végső átalakítása előtt funkciófejlesztési, hogy az eszköz azonosítóját, valamint időbélyegző alapján a fenti táblázatokhoz csatlakozhat adatforrásokhoz. Az eredményül kapott tábla kellene null értékeket azokhoz a hiba oszlop gépen a normál működés esetén. Ezeket az értékeket null is lehet imputált egy mutató a normál működés szerint. Ebben az oszlopban a hiba használatával létrehozhat _prediktív modell címkék_. További információkért lásd a szakasz [modellezési technikák, prediktív karbantartás](#Modeling-techniques-for-predictive-maintenance).
 
 ## <a name="feature-engineering"></a>Jellemzőkiemelés
-A szolgáltatás az első lépés előtt az adatok modellezését szó. A szerepkör az adatok tudományos folyamatban [itt leírt](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/create-features). A _szolgáltatás_ prediktív attribútumot a modell - például hőmérséklet, nyomás, vibráció és így tovább. PdM szolgáltatás mérnöki csapathoz foglal magában, absztrakt módon megjelenítve a számítógép állapotának méretezhető időtartama alatt gyűjtött előzményadatokat keresztül. Ebben az értelemben nem egyezik, például a távoli megfigyelési, anomáliadetektálás és tárhelyhiba-észlelés a társaktól. 
+Funkciófejlesztési első lépése előtt az adatok modellezését. Az adatelemzési folyamat szerepét [az itt leírtak szerint](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/create-features). A _funkció_ attribútum prediktív modell – például a hőmérsékletet, nyomás, rezgés és így tovább. PdM funkciófejlesztési magában foglalja a gép állapota paltformfüggetlen eloszlatása időtartama alatt gyűjtött előzményadatok keresztül. Ebben az értelemben akkor különböző, például a távoli megfigyelés, a rendellenességek észlelése és a hibaészlelés a társaktól. 
 
-### <a name="time-windows"></a>Windows indításakor
-Az eseményeket a jelentés tartalmazza az elvégzendő figyelési távoli _között eltelt időt_. Anomáliadetektálási észlelési modellek időben bejövő adatfolyamok (pontszám) jelző rendellenességeket frissítésétől pontok adatok kiértékeléséhez. Tárhelyhiba-észlelés kell lennie az adott típusok pontok ideje a előforduló hibák osztályozza. Ezzel szemben PdM magában foglalja a hibák alatt becslése egy _későbbi időszakra_funkciókat, amelyek megfelelnek a gépek működését keresztül alapján _korábbi időszakra vonatkozó_. PdM, a szolgáltatás egyes pontokról idő esetén túl zajos prediktív kell. Így az adatok az egyes szolgáltatásokhoz kell lennie _smoothened_ adatpontok összesítésével idő windows keresztül.
+### <a name="time-windows"></a>Idő windows
+Távoli megfigyelés, az eseményeket a jelentés tartalmazza az elvégzendő _között eltelt_. Rendellenességek észlelése modellek (pontszám) bejövő adatfolyam jelző rendellenességeket pontok kezdődően az időben értékeli. Adott típusú kell pontok ideje a előforduló hibák osztályozza a hibaészlelés. Ezzel szemben a PdM magában foglalja a hibák előrejelzésére keresztül egy _jövőbeli időszakban_funkciók, amelyek a gépek működését keresztül alapján _múltbéli időszak_. A PdM idő egyes pontok adatait a szolgáltatás túl zajos prediktív kell. Így az adatok az egyes szolgáltatásokhoz kell lennie _smoothened_ idő windows keresztül az adatpontok összesítésével.
 
-### <a name="lag-features"></a>Lag szolgáltatások
-Az üzleti követelmények határozza meg, milyen távolságban a modellnek az elkövetkező előre jelezni. Ennek az időtartamnak segítségével határozza meg, "milyen távolságban vissza a modell már meg" ezek előrejelzéseket készítsen a. A "keresése vissza" időszak neve a _lag_, és a szolgáltatások fejthetők vissza a késés időszakban nevezzük _szolgáltatások lag_. Ez a szakasz ismerteti, amelyek lag funkciókra adatforrásokból az időbélyegeket és a szolgáltatás létrehozása statikus adatforrásokból lehet létrehozni. Lag funkciók jellemzően _numerikus_ jellegűek.
+### <a name="lag-features"></a>Késés funkciók
+Az üzleti követelmények meghatározása, hogy milyen a modell előre jelezni az elkövetkező rendelkezik. Viszont, ennek az időtartamnak segít "milyen vissza a modell rendelkezik keresse ki az" meghatározása, hogy ezek az előrejelzések. A "szeretne vissza" időszak neve a _lag_, és a szolgáltatások, a késés időszakban fejthetők vissza az úgynevezett _funkciók lag_. Ez a szakasz bemutatja az adatforrásokból az időbélyegeket és a szolgáltatás létrehozása a statikus adatforrások gyűjteménynévmintája lag jellemzőket. Késés funkciók jellemzően _numerikus_ jellegűek.
 
 > [!IMPORTANT]
-> Az ablak mérete kísérletezhet határozzák meg, és kell véglegesítésre szakértői tartomány segítségével. Azonos szerint tárolja a kijelölés és lag szolgáltatások, az összesítések és windows típusú definíció.
+> Az ablak mérete Kísérletezési keresztül határozza meg, és szakértői tartomány segítségével. érdemes véglegesíthető. Azonos csoportosítani a kijelölés és a késés funkciók, az összesítések és a típus a windows-definícióját tartalmazza.
 
 #### <a name="rolling-aggregates"></a>Működés közbeni összesítések
-Az egyes rekordokhoz, egy eszköz a működés közbeni ablak méretének "W" választja időegységekkel száma az összesítések kiszámításához. Lag szolgáltatások majd kiszámítása a W időszakok _időpontja előtt_ , hogy a rekord. 1. ábrán kék vonalak megjelenítése érzékelő értékeket az eszközhöz tartozó minden időegység rögzítve. A működés közbeni szolgáltatás értékek átlaga keresztül egy ablak méretének W = 3 jelöl azokat. T tartományában időbélyegek az összes rekordot keresztül számított mozgóátlaga<sub>1</sub> (narancs) a t<sub>2</sub> (a zöld). A W értéke általában percben vagy az adatok természetétől függően óra. De bizonyos problémák nagy W (azaz 12 hónap) kiadási biztosíthat az eszköz teljes előzményeinek a rekord a időpontig.
+Az egyes rekordok egy eszköz a működés közbeni ablak méretének "W" választja idő egységek száma az összesítések kiszámításához. Késés funkciók majd számítja ki a W időszakok használatával _időpont előtt_ az adott rekord. Az 1. ábrán a kék vonal rögzítve az eszközre minden egyes időegység érzékelő értékek megjelenítése. W = 3 méretű ablak fölé funkció érték mozgóátlaga azok jelöl. A gördülő átlagát számított keresztül időbélyegeket t a tartományban az összes rekordot<sub>1</sub> (a narancssárga) t<sub>2</sub> (a zöld). A W értéke általában percben vagy az adatok természetétől függően órában. Azonban az egyes problémák, nagy W (például: 12 hónap) kiadási tud biztosítani az eszköz teljes előzményeit a rekord a időpontig.
 
-![1. ábra Működés közbeni összesített szolgáltatások](./media/cortana-analytics-playbook-predictive-maintenance/rolling-aggregate-features.png) 1. ábra. Működés közbeni összesített szolgáltatások
+![1. ábra A működés közbeni összesített funkciók](./media/cortana-analytics-playbook-predictive-maintenance/rolling-aggregate-features.png) 1. ábra. A működés közbeni összesített funkciók
 
-Működés közbeni összesítések egy olyan időkeretet keresztül többek között a száma, átlagos, CUMESUM (halmozott összege) intézkedések, minimális és maximális értékeket. Ezenkívül variancia, szórás és száma túl N szórás szorzataként kiugró gyakran használják. Az alkalmazható összesítések példái a [eseteinek](#Sample-PdM-use-cases) a jelen útmutató az alábbiakban találhatók. 
-- _Késleltetés repülési_: hibakódok keresztül az elmúlt nap vagy hét számát.
-- _Repülőgép motor része hiba_: működés közbeni azt jelenti, szórás és sum az elmúlt nap, hét stb. Ez a mérőszám a vállalati tartomány szakértői együtt kell meghatározni.
-- _ATM hibák_: működés közbeni azt jelenti, középérték, tartomány, szórás szorzataként, három szórás szorzataként, a felső és alsó CUMESUM túl kiugró száma.
-- _Subway vonat ajtó hibák_: elmúlt nap során, hetente, kéthetente stb események száma.
-- _Áramköri megszakító hibák_: hiba száma keresztül múlt héten, év, három év stb.
+Működés közbeni összesítések adott időtartamra példák count, average, CUMESUM (halmozott összege) mértékek, minimális/maximális értékei. Ezenkívül eltérés, szórás és N szórás szorzataként túli kiugró értékek száma gyakran használják. Példák, amelyek alkalmazandók lehetnek az összesítések a [használati esetek](#Sample-PdM-use-cases) ebben az útmutatóban alább láthatók. 
+- _Késleltetés eszközmegfelelőségre_: a múlt héten nap/hibakódok száma.
+- _Repülőgéphajtómű-rész hiba_: a működés közbeni azt jelenti, hogy, szórás és összeg az elmúlt nap során hét stb. Ez a metrika az üzleti tartomány szakértői együtt kell meghatározni.
+- _ATM-hibák_: a működés közbeni azt jelenti, hogy, medián, tartomány, szórás szorzataként, három szórás szorzataként, felső és alsó CUMESUM túli kiugró értékek száma.
+- _Subway train ajtó hibák_: száma, események időbeli elmúlt nap, heti, Kétheti stb.
+- _Áramkör-megszakító hibák_: hibaszámait felett múlt héten, év, három év stb.
 
-A PdM egy másik hasznos módszer akkor rögzítheti a trend módosítások, a teljesítményt és a algoritmusokkal, amely a rendellenességek észlelését adatok megváltozik.
+A PdM egy másik hasznos módszer, hogy trend módosításokat, adatforgalmi csúcsokhoz és az adatok rendellenességek észlelése az algoritmusok használatával megváltozik.
 
 #### <a name="tumbling-aggregates"></a>Átfedésmentes összesítések
-Az egyes feliratú rekord egy eszköz, egy ablak méretének _W -<sub>k</sub>_  van definiálva, ahol _k_ méretű windows száma _W_. Összesítések létrehozása keresztül _k_ _átfedésmentes windows_ _W-k, W -<sub>(k-1)</sub>,..., W -<sub>2</sub>, W -<sub>1</sub>_  előtt egy olyan rekordot időbélyeg időszakokra. _k_ rögzítheti a rövid távú hatások kevés vagy hosszú távú teljesítménycsökkenést minták rögzítéséhez sok lehet. (lásd a 2. ábra).
+Minden rekord egy eszköz, méretű ablak feliratú _W -<sub>k</sub>_  van definiálva, ahol _k_ windows méretű száma _W_. Összesítések majd jönnek létre keresztül _k_ _az átfedésmentes ablakok_ _W-k, W -<sub>(k-1)</sub>,..., W -<sub>2</sub>, W -<sub>1</sub>_  előtt egy rekord időbélyeg időszakokra. _k_ lehet néhány rövid távú hatások rögzítése vagy sok teljesítménycsökkenés hosszú távú mintázatok rögzítéséhez. (lásd a 2. ábra).
 
-![2. ábra Összesített szolgáltatások átfedésmentes](./media/cortana-analytics-playbook-predictive-maintenance/tumbling-aggregate-features.png) 2. ábra. Összesített szolgáltatások átfedésmentes
+![2. ábra Átfedésmentes összesített funkciók](./media/cortana-analytics-playbook-predictive-maintenance/tumbling-aggregate-features.png) 2. ábra. Átfedésmentes összesített funkciók
 
-Például lag szolgáltatások, a szél turbinák használati eset előfordulhat, hogy létrehozza és W = 1 k = 3. Az egyes felső és alsó kiugró használatával az elmúlt három hónap lag azt tartalmazzák.
+Például lag funkciók, az a szél turbina használati eset lehet, hogy lehet létrehozni a W = 1 és k = 3. A lag minden az elmúlt három havi felső és alsó kiugró értékek használatával azt tartalmazzák.
 
-### <a name="static-features"></a>Statikus szolgáltatások
+### <a name="static-features"></a>Statikus funkciók
 
-Műszaki adatok előállítása, a modell számának, a helyre, például a dátum a készülék példák statikus szolgáltatásokat. Akkor számít _kategorikus_ modellezési változókat. Néhány példa a áramköri megszakító használati eset: feszültség, aktuális, energiafogyasztási kapacitás, típusú átalakító, és áramforrásról. Kerék hibák kulcsszava kerekek (acélötvözet vs) típusú csak példaként szolgál.
+A berendezés előállítása, a modell számának, a helyre, például a dátum a műszaki specifikációk adunk néhány ötletet statikus funkciókat. Akkor azok _kategorikus_ modellezési változókat. Néhány példa az áramkör-megszakító használati esetekhez: feszültség, aktuális, energiakapacitás, típusú átalakító, és az áramforrást. Kerék hibák kulcsszava kerekek (ötvözött vs acélból) típusú csak példaként szolgál.
 
-Az eddig tárgyalt adatok előkészítése erőfeszítéseket a folyamatban az alább látható módon vannak rendszerezve data vezethetnek. Képzési, tesztelése és érvényesítési adatok a logikai séma (Ez a példa bemutatja idő nap egységben) kell rendelkeznie.
+Az adatok előkészítési erőfeszítéseket eddig tárgyalt folyamatban vannak rendezve, ahogy az alábbi adatokat kell vezethet. Képzés, tesztelési és érvényesítési adatok rendelkeznie kell a logikai séma (Ez a példa bemutatja idő nap egységben).
 
 | Eszközazonosító | Time | <Feature Columns> | Címke |
 | ---- | ---- | --- | --- |
-| A123 |Naponta 1 | . . . | . |
-| A123 |2 nap | . . . | . |
+| A123 |1. napi | . . . | . |
+| A123 |2. napon | . . . | . |
 | ...  |...   | . . . | . |
-| B234 |Naponta 1 | . . . | . |
-| B234 |2 nap | . . . | . |
+| B234 |1. napi | . . . | . |
+| B234 |2. napon | . . . | . |
 | ...  |...   | . . . | . |
 
-A szolgáltatás műszaki osztály utolsó lépése a **címkézés** a cél változó. A folyamat be nem függ a modellezési módszer. Viszont a modellezési technika az üzleti probléma és a rendelkezésre álló adatok jellegétől függ. A következő szakaszban tárgyalt címkézését.
+Az utolsó lépés funkciófejlesztési a **címkézés** a cél változó. Ez a folyamat szolgáltatás a modellezési technika függ. Viszont a modellezési módszer az üzleti probléma megoldására és a rendelkezésre álló adatok jellegétől függ. A következő szakaszban tárgyalt címkézést.
 
 > [!IMPORTANT]
-> Adatok előkészítése, a szolgáltatás fejlesztés olyan fontos, mint a modellezési technikák sikerül sikeres PdM megoldást találni. A tartomány szakértő és a gyakorló kell fektetnek jelentős mennyiségű időt a megfelelő szolgáltatásokat és a modell adatait. A szolgáltatás műszaki osztály sok könyvek egy kis mintát az alábbiak:
-> - Pyle, D. adatok előkészítése az adatbányászati (az Morgan Kaufmann számozási adatok felügyeleti rendszerekhez), 1999
-> - Zheng, A., Casari A. szolgáltatás mérnöki csapathoz, a Machine Learning szolgáltatáshoz: elvek és Adatszakértőkön, O'Reilly, 2018 technikákat.
-> - Dong, G. Liu H. A szolgáltatás (szerkesztőt), műszaki osztály gépi tanulási és adatelemzés (Chapman & Hall/CRC adatbányászat és Tudásbázis felderítési adatsorozat), a CRC nyomja le az ENTER 2018.
+> Adat-előkészítési és funkciófejlesztési feladatok olyan fontos, mint a modellezési módszerek a PdM-megoldások sikeres érkeznek. A tartomány szakértő és az azoknak megfelelő szolgáltatásokat és a modell adatainak díjszabással jelentős mennyiségű időt kell befektetni. Egy kis számos könyvek funkciófejlesztési a mintát az alábbiak:
+> - Pyle, adatbányászati (Morgan Kaufmann oktatóanyagokban az adatkezelő rendszerek) 1999 D. adatok előkészítése
+> - Zheng, A., Casari, a Machine Learning A. Funkciófejlesztési: elvek és technikák adatszakértők, O'Reilly, 2018.
+> - Dong, G. Liu, h (Szerkesztő), a szolgáltatás műszaki gépi tanulási és adatelemzési (Chapman & Hall/CRC adatbányászat és a Knowledge Discovery sorozat) CRC nyomja le, 2018.
 
-## <a name="modeling-techniques-for-predictive-maintenance"></a>A prediktív karbantartási modellezési módszereket
+## <a name="modeling-techniques-for-predictive-maintenance"></a>A prediktív karbantartáshoz modellezési technikák
 
-Ez a szakasz ismerteti a fő modellezési módszereket, a PdM problémákat, az adott címke konstrukció módszerek együtt. Figyelje meg, hogy különböző iparágak egyetlen modellezési módszer segítségével. A modellezési technika az tudományos problémára, mint az adatok az elvégzendő keretében párosítva van.
+Ez a szakasz ismerteti a fő modellezési technikák PdM kapcsolatos problémák esetén a megadott címkével konstrukció módszereket együtt. Figyelje meg, hogy a különböző iparágak egyetlen modellezési módszer használható. A modellezés technika párosítva van a data science probléma, mint az adatok csak olyan mélységben kontextusában.
 
 > [!IMPORTANT]
-> Címkék hiba esetekben és a szalagcímkézési stratégia kiválasztása  
-> a tartomány szakértői egyeztetve kell meghatározni.
+> A hiba eseteket és a címkézési stratégia tartozó címkék kiválasztását  
+> meg kell határozni a tartomány szakértői egyeztetve.
 
 ### <a name="binary-classification"></a>Bináris osztályozás
-Bináris osztályozási szolgál _annak, hogy berendezés jövőbeli időn belül nem sikerül előrejelzése_ - hívott a _jövőbeli horizon időszak X_. X határozza meg az üzleti problémát és az adatok kezelésére, a tartomány szakértői egyeztetve. Például a következők:
-- _Minimális átfutási idő_ szükséges összetevők használ, karbantartási erőforrásokat, a karbantartás egy, valószínűleg az adott időköz során előforduló problémák elkerülése érdekében.
-- _események minimális száma_ , amely akkor fordulhat elő, mielőtt a probléma akkor fordul elő.
+Bináris osztályozás szolgál _előre jelezni a valószínűsége annak, hogy a berendezés jövőbeli időn belül nem sikerül_ – néven a _jövőbeli horizon időszak X_. X határozza meg az üzleti problémát és az adatokat, a tartomány szakértői egyeztetve. Példák:
+- _minimális ügyfélátfutási idő_ szükséges cserélje le az összetevők, karbantartási erőforrások üzembe helyezése, karbantartásához, amely nagy eséllyel fordulnak elő az adott időszakban probléma elkerülése érdekében.
+- _minimális száma, események_ , amely akkor fordulhat elő, mielőtt probléma merül fel.
 
-Ezzel a módszerrel a példák két típusú jelöli. Egy pozitív példában _hiba azt jelzi, amely_, címke = 1. A negatív példa, amely megadja, hogy a normál működés, címkével = 0. A célváltozó, és ezért a címke értéke, _kategorikus_. A modell kell azonosítania minden egyes új példa, sikertelen vagy általában a következő X időegységek működnek.
+Ezzel a technikával a betanítási példákat kétféle jelöli. Egy pozitív például _egy hibát jelez, amely_, a címkével ellátott = 1. Egy negatív példának, amely azt jelzi, hogy a normál működés, a címkével ellátott = 0. A célváltozó, és ezért a címke értéke, _kategorikus_. A modell azonosítania kell minden egyes új például valószínűleg sikertelen, vagy át a következő X mértékegységét módon működnek.
 
-#### <a name="label-construction-for-binary-classification"></a>Bináris besorolási címke létrehozása
-Itt a kérdés: "Mi az a valószínűsége annak, hogy az eszköz meghiúsul a következő X időegységekkel?" Ezt a kérdést, Címke X rekordok "készül sikertelen" az eszköz a meghibásodás előtt válaszolnia (címke = 1), és minden egyéb rögzíti, hogy a "szokásos" címke (címke = 0). (lásd a 3. ábra).
+#### <a name="label-construction-for-binary-classification"></a>A bináris osztályozási címke építése
+Itt a kérdést: "Mi a valószínűsége annak, hogy az eszköz meghiúsul a következő X időegységben?" A kérdés, a Címke X rekordokat "készül az nem", az eszköz a meghibásodás előtti választ (címke = 1), és a többi rekord, hogy "normál" címke (címke = 0). (lásd a 3. ábra).
 
-![3. ábra A bináris osztályozási címkézés](./media/cortana-analytics-playbook-predictive-maintenance/labelling-for-binary-classification.png) 3. ábra. A bináris osztályozási címkézés
+![3. ábra Bináris osztályozás címkézését](./media/cortana-analytics-playbook-predictive-maintenance/labelling-for-binary-classification.png) 3. ábra. Bináris osztályozás címkézését
 
-Stratégia címkézését a használati esetek néhány példát alább láthatók.
-- _Késések repülési_: X 1 nap, akkor választható, előre jelezni késések 24 órán belül. Majd a hibák előtt 24 órán belül minden repülőútra feliratú 1.
-- _ATM cash eredményeként hibák_: lehet, hogy A célja meghatározni a következő egy óra tranzakció hibája valószínűségét. Ebben az esetben, és ismételje meg a hiba az elmúlt egy órában belül minden tranzakciók vannak címkézve 1. Hiba valószínűség előre a következő N pénznem keresztül az mellőzni, megjegyzések belül, ha nem az utolsó N megjegyzések mellőzni összes megjegyzések 1 címkével.
-- _Áramköri megszakító hibák_: lehet, hogy a cél a következő áramköri megszakító parancshiba előre jelezni. Ebben az esetben X kell lennie egy jövőbeli parancs van kiválasztva.
-- _Ajtó hibák betanítása_: X akkor választható, mint két nap.
-- _Turbinás hibák szél_: X akkor választható, mint két hónapig.
+Címkézés stratégia a használati esetek néhány példát alább láthatók.
+- _Eszközmegfelelőségre az késleltetések_: X 1 nap, akkor választható, előre jelezni az késleltetések 24 órán belül. 1, majd minden repülőjáratok, amelyek előtt hibák 24 órán belül vannak ellátva.
+- _ATM készpénz hibák eredményeként_: A cél lehet megállapítani a hiba annak valószínűsége, hogy egy tranzakció a következő egy óra. Ebben az esetben az elmúlt órában a hiba történt az összes tranzakciók 1 van jelölve. 1 használatával előrejelzi a hibák valószínűségét keresztül a következő N pénznem megjegyzések mellőzni, törölni, ha nem az utolsó N megjegyzések belül az összes jegyzet van jelölve.
+- _Áramkör-megszakító hibák_: lehet, hogy a cél az áramkör-megszakító tovább parancshiba előrejelzésére. Ebben az esetben X van kiválasztva egy jövőbeli parancsot is.
+- _Ajtó hibák betanításához_: X akkor választható, mint két nap.
+- _Megszünteti a turbina hibák_: X akkor választható, két hónapos időszakra.
 
-### <a name="regression-for-predictive-maintenance"></a>A prediktív karbantartási regressziós
-Regressziós modell használt _a fennmaradó élettartama (Szabályainak) egy eszköz számítási_. Szabályainak az, hogy mennyi ideig előtt a következő hiba történik az eszköz működőképességét típusúként van definiálva. Minden egyes képzési példa: egy rekord, amely egy időegységet tartozik _nY_ eszköz, ahol _n_ a többszöröse. A modell számítható ki, minden új példában Szabályainak egy _folyamatos szám_. Ez a szám azt jelzi, hogy a hiba előtt hátralévő idő: időtartama.
+### <a name="regression-for-predictive-maintenance"></a>A prediktív karbantartáshoz regresszió
+Regressziós modellek is használható _a fennmaradó hasznos élettartamát (RUL) egy eszköz számítási_. Rul-JÉNEK meghatározása az, hogy mennyi ideig egy eszköz működik, mielőtt a következő hiba történik. Minden egyes képzési például, egy rekord, amelyhez tartozik egy időegységet _nY_ az eszközökre, ahol _n_ van az a többszörös. A modell kell minden egyes új példa, mint az rul értékének kiszámításához egy _folyamatos szám_. Ez a szám azt jelzi, hogy az az időtartam, a hiba előtt van hátra.
 
-#### <a name="label-construction-for-regression"></a>Címke konstrukció visszavonták
-Itt a kérdés: "Mi az hasznos élettartama (Szabályainak) a készülék?" Az egyes rekordokhoz a meghibásodás előtt kiszámíthatja a címke a következő hiba hátralévő idő egységek száma. Ezzel a módszerrel a feliratai folyamatos változók. (Lásd a 4. ábra:)
+#### <a name="label-construction-for-regression"></a>A regresszió címke építése
+Itt a kérdést: "Mi az a készülék fennmaradó hasznos élettartamának (RUL)?" Az egyes rekordok a meghibásodás előtti kiszámíthatja a címke a következő hiba előtt hátralévő idő egységek számát. Ezzel a módszerrel a címkékhez folyamatos változókat. (Lásd a 4. ábra)
 
-![4. ábra A regressziós címkézés](./media/cortana-analytics-playbook-predictive-maintenance/labelling-for-regression.png) 4. ábra. A regresszió címkézés
+![4. ábra Regresszió címkézését](./media/cortana-analytics-playbook-predictive-maintenance/labelling-for-regression.png) 4. ábra. Regresszió címkézését
 
-Az regressziós címkézés végezhető el a hiba pont alapján. A számítási nincs lehetőség anélkül, hogy tudnák, mennyi ideig az eszköz rendelkezik megélték a hiba előtt. Így ezzel szemben a bináris osztályozási eszközök esetleges hibákat, az adatok nélkül nem használható modellezési. A legjobb kérdését egy másik statisztikai technikával nevű [túlélési Analysis](https://en.wikipedia.org/wiki/Survival_analysis). Azonban lehetséges komplikációk lépnek fel ezzel a módszerrel, például az idő-változó adatok gyakorisággal PdM használati esetek alkalmazásakor. Túlélési elemzési további információkért lásd: [ezen egy-személyhívó](https://www.cscu.cornell.edu/news/statnews/stnews78.pdf).
+Regresszió, a címkézés történik hivatkozó egy meghibásodási pont. A számítást esetén nem lehet anélkül, hogy mennyi ideig az eszköz ötszáz évet a meghibásodása előtt. Tehát ezzel szemben a bináris osztályozási eszközök az adatok az esetleges hibák nélkül nem használható modellezési. Ez leginkább a problémával nevű másik statisztikai technikát [Túléléselemzés](https://en.wikipedia.org/wiki/Survival_analysis). Azonban lehetséges komplikációk ezt a technikát alkalmazásakor érintő időfüggő adatok rendszeres időközönként a PdM-használati esetek fordulhatnak elő. Túléléselemzés további információkért lásd: [ebben egy személyhívóra](https://www.cscu.cornell.edu/news/statnews/stnews78.pdf).
 
-### <a name="multi-class-classification-for-predictive-maintenance"></a>A prediktív karbantartási besorolást több osztály
-Több osztály besorolás technikák is használható két olyan eset a PdM megoldások:
-- Előre jelezni _két jövőbeli eredményt_: első eredménye _sikertelenségét időtartományt_ az adott eszköz számára. Az eszköz van rendelve egy több lehetséges idő alatt. A második eredménye a hibák valószínűségét oka az, hogy egy jövőbeli időszakban _hatására a több legfelső szintű egyik_. Az előrejelzés lehetővé teszi, hogy a karbantartási személyzet figyelendő tünetei és terv ütemtervük.
-- Előre jelezni _a legvalószínűbb okának_ egy adott hiba. Az eredmény azt javasolja, hogy a hiba elhárításához karbantartási műveletek megfelelő halmazát. Kiváltó okokért és az ajánlott javítási rangsorolt listáját segítségével a technikusok azok javítási műveletek rangsorolhatja meghibásodás után.
+### <a name="multi-class-classification-for-predictive-maintenance"></a>A prediktív karbantartáshoz többcsoportos besorolás
+Többcsoportos osztályozási technikák gondoskodnak a PdM-megoldásokban is használható két forgatókönyvet:
+- Előrejelzése _két jövőbeni következmények_: az első eredmény _hibáira időtartományt_ az adott eszköz számára. Az eszköz van rendelve egy több lehetséges időtartamra. A második eredménye a hibák valószínűségét oka az, hogy egy jövőbeli időszakban _hatására a több legfelső szintű egyik_. Az előrejelzési lehetővé teszi, hogy a karbantartó személyzet tünetek és a terv karbantartási ütemezések megtekintéshez.
+- Előrejelezheti _a legvalószínűbb gyökerének_ megadott hiba. Az eredmény a megfelelő készletét az adott karbantartási műveleteket a hiba elhárításához javasolja. Kiváltó okokért és javasolt javítások rangsorolt listáját segítségével a technikusok rangsorolhatja a javítási lépések hiba után.
 
-#### <a name="label-construction-for-multi-class-classification"></a>Több osztály besorolási címke létrehozása
-Itt a kérdés: "Mi az a valószínűsége annak, hogy egy eszköz meghiúsul a következő _nZ_ időegységekkel ahol _n_ időszakok száma?" Ez a kérdés megválaszolásához címke nZ rögzíti egy eszköz gyűjtő idő (3Z, 2Z, Z) használatával a meghibásodás előtt. Minden más címke "normál" rögzíti (címke = 0). Ezzel a módszerrel a célváltozó rendelkezik _kategorikus_ értékeket. (Lásd az 5. ábra).
+#### <a name="label-construction-for-multi-class-classification"></a>Többcsoportos besorolási címke építése
+Itt a kérdést: "Mi a valószínűsége annak, hogy egy eszköz meghiúsul a következő _nZ_ időegységben ahol _n_ időszakok száma?" Ez a kérdés megválaszolásához nZ rekordok gyűjtő idő (3Z, 2Z, a – Z) használatával egy eszköz a meghibásodás előtti címkét. Minden egyéb címkét "normál" rögzíti (label = 0). Ez a módszer a célváltozó tartalmazza _kategorikus_ értékeket. (Lásd az 5. ábra).
 
-![5. ábra Idő előrejelzés multiclass besorolási címkék](./media/cortana-analytics-playbook-predictive-maintenance/labelling-for-multiclass-classification-for-failure-time-prediction.png) 5. ábra. Idő előrejelzés több osztály besorolási címkék
+![5. ábra Hiba ideje előrejelzéshez többosztályos osztályozási címkézését](./media/cortana-analytics-playbook-predictive-maintenance/labelling-for-multiclass-classification-for-failure-time-prediction.png) 5. ábra. Hiba ideje előrejelzési többcsoportos besorolási címkézés
 
-Itt a kérdés: "Mi az a valószínűsége annak, hogy az eszköz meghiúsul a következő alapvető ok/probléma miatt időegységekkel X _P<sub>i</sub>_?" Ha _i_ kiválthatja száma. Ezt a kérdést, Címke X rögzíti az eszköz a meghibásodás előtt válaszolnia "hamarosan alapvető ok miatt sikertelenek _P<sub>i</sub>_" (címke = _P<sub>i</sub>_). Minden más rögzíti, hogy a "szokásos" címke (címke = 0). A metódusban feliratainak is kategorikus (lásd a 6. ábrát).
+Itt a kérdést: "Mi a valószínűsége annak, hogy az eszköz meghiúsul a következő alapvető ok/probléma miatt időegységben X _P<sub>i</sub>_?" ahol _i_ kiválthatja a száma. A kérdés, a Címke X rekordokat egy eszköz, a meghibásodás előtt válaszolnia "alapvető ok miatt sikertelen about _P<sub>i</sub>_" (címke = _P<sub>i</sub>_). Minden más rögzíti, hogy "normál" címke (label = 0). Ez a módszer a címkék is kategorikus (lásd a 6. ábra).
 
-![6. ábra Legfelső szintű OK előrejelzés multiclass besorolási címkék](./media/cortana-analytics-playbook-predictive-maintenance/labelling-for-multiclass-classification-for-root-cause-prediction.png) 6. ábra. A legfelső szintű OK előrejelzés több osztály besorolás címkézés
+![6. ábra Alapvető ok előrejelzéshez többosztályos osztályozási címkézését](./media/cortana-analytics-playbook-predictive-maintenance/labelling-for-multiclass-classification-for-root-cause-prediction.png) 6. ábra. Alapvető ok előrejelzési többcsoportos besorolási címkézés
 
-A modell hozzárendel miatt minden probléma valószínűség _P<sub>i</sub>_  és hibák nélkül valószínűségét. Ezeket a valószínűség nagyságrendet is rendezett engedélyezi a problémák, amelyek fordulhat elő, a jövőben előrejelzését.
+A modell rendeli hozzá a hiba miatt minden valószínűség _P<sub>i</sub>_  és hibák nélkül valószínűségét. Ezek valószínűségek, hogy a problémákat, amelyek a legnagyobb valószínűséggel fordulnak elő a jövőben előrejelzését magnitude szerint is rendezve.
 
-Itt a kérdés: "karbantartási műveleteket tegye javasolnak meghibásodás után?" Ez a kérdés megválaszolásához címkézés _nem szükséges egy jövőbeli horizon ki kell_, mert a modell a jövőben nem becslése sikertelen. Az imént becslése a legvalószínűbb okának _után a hiba már elvégzett_.
+Itt a kérdést: "milyen karbantartási műveletek ajánlanak egy meghibásodás után?" Ezt a kérdést megválaszolni címkézés _nem szükséges egy jövőbeli horizon kiválasztandó_, mert a modell a későbbiekben nem becslése hiba. Ez csak becslése a legvalószínűbb alapvető OK _a hiba bekövetkezése után_.
 
-## <a name="training-validation-and-testing-methods-for-predictive-maintenance"></a>Képzési, érvényesítése és a vizsgálati prediktív karbantartás
-A [Team adatok tudományos folyamat](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/overview) biztosít a modell train-teszt-érvényesítése ciklusban teljes körét. Ez a szakasz ismerteti a PdM egyedi szempontokat.
+## <a name="training-validation-and-testing-methods-for-predictive-maintenance"></a>Oktatás, érvényesítése és a prediktív karbantartáshoz tesztelési módszer
+A [csoportos adatelemzési folyamat](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/overview) biztosít egy teljes körű, a modell train-teszt ellenőrzése ciklus. Ez a szakasz PdM egyedi szempontokat ismerteti.
 
-### <a name="cross-validation"></a>Kereszt-ellenőrzési
-Az adatdeduplikálás [kereszt-ellenőrzési](https://en.wikipedia.org/wiki/Cross-validation_(statistics)) határozza meg a "teszt" a modell a tanítási fázisban az adatkészletet. Ezen adatok nevezzük a _érvényesítési set_. A technika megkönnyíti korlát problémák, mint például _overfitting_ és lehetőséget ad meg, hogyan fogja generalize a modell egy független adatkészletben egyet. Ez azt jelenti, hogy egy ismeretlen beállítása, amely a valós probléma lehet. A PdM a képzés és tesztelési rutin kell figyelembe kell venni a idő különböző szempontokat is jobban generalize nem látható jövőbeli adatokon.
+### <a name="cross-validation"></a>Keresztellenőrzés
+A cél az [keresztellenőrzés](https://en.wikipedia.org/wiki/Cross-validation_(statistics)) határozza meg a "teszt" a modell a betanítási fázisban az adatkészletet. Ez az adatkészlet neve a _érvényesítési set_. Ez a módszer segít korlát problémák, mint például _overfitting_ és a egy betekintést enged meg, hogyan általánossá tétele a modell, egy független adatkészlet. Azt jelenti egy ismeretlen adatkészlet, amely lehet a problémát. A PdM a képzés és tesztelési rutin jobban általánosításához a jövőbeli nem látható adatok az idő különböző szempontokat figyelembe kell.
 
-Sok gépi tanulási algoritmusok hiperparamétereket, amely jelentősen módosíthatja a modell teljesítmény számos függ. Vannak ezen hiperparamétereket optimális értékét a modell betanításakor nem automatikusan számítja. Az adatok tudósok kell megadni. Számos módon, hogy a rendszer hiperparamétereket helyes értékeket.
+Számos gépi tanulási algoritmusok, amelyek jelentős mértékben módosíthatják a modellek teljesítményének hiperparaméterek számos függenek. Ezek hiperparaméterek optimális értékét nem vannak számított automatikusan, a modell betanításakor. Az adatszakértő kell megadni. Többféleképpen is megtalálni a hiperparaméterek helyes értékeket.
 
-A leggyakoribb még _k hajtott kereszt-ellenőrzési_ , amely felosztja a véletlenszerűen be példákat _k_ modellrészt. Minden egyes értékhalmazt hiperparamétereket, futtassa az alábbi parancsot a tanulási algoritmus _k_ alkalommal. Minden egyes ismétlés használata a példák az aktuális modellrészek az érvényesítés, és a többi példák mint képzési készletként. Az algoritmus betanítása példák keresztül, és a metrikák számítási érvényesítési példák keresztül. Ez a ciklus végén számítási átlaga _k_ teljesítménymutatók. Az egyes hyperparameter értékek válassza ki a legjobb átlagos teljesítmény melyeket. Hiperparamétereket kiválaszthatják legtöbbször kísérleti jellegűek.
+A leggyakoribb eset az egyik megoldás _k lépésből kereszt-ellenőrzési_ , amely felosztja a példák véletlenszerűen be _k_ modellrész. Az egyes hiperparaméterek értékek, futtassa a tanulási algoritmus _k_ alkalommal. Minden egyes ismétléskor használjuk a példákban az aktuális modellrészek az érvényesítés, és a példák a többi képzési készletként. Az algoritmus betanítása példák keresztül, és a teljesítmény-mérőszámok számítási érvényesítési példák keresztül. Ez a ciklus végén az átlag kiszámításakor a _k_ teljesítmény-mérőszámon. Az egyes hiperparaméter értékek válassza ki az azokat, amelyeket a legjobb átlagos teljesítmény. Hiperparaméterek kiválaszthatják gyakran kísérleti jellegű.
 
-A PdM problémák adatok ügyfélként, amely az adatok több forrásból származó események idősor. Ezeket a rekordokat a címkézés időpontja szerint rendezhető. Ezért ha a dataset van szétosztva _véletlenszerűen_ képzési és -ellenőrzés be van állítva, a _néhány a példák mint érvényesítési példák némelyike időben későbbi lehet_. Néhány érkező adatok alapján hyperparameter értékek jövőbeli teljesítmény fog becsült _előtt_ modell betanítása volt. Ezek becsléseket túlságosan optimista, lehet, különösen akkor, ha az idősor nincs helyhez kötött és idővel fejlődésének. Emiatt a kiválasztott hyperparameter értékek optimálisnál lehet.
+A PdM-problémák adatok, amelyek az adatok több forrásból származó események időbeli adatsoroknál rögzíti. Ezeket a rekordokat a címkézés időpontja szerint rendezhető. Ezért ha az adatkészlet van felosztva _véletlenszerűen_ képzés és érvényesítési csoportba _néhány példája képzés lehet későbbi időpontban, mint érvényesítési példák némelyike_. Lesz az egyes érkező adatok alapján becsült hiperparaméter értékek jövőbeli teljesítményét _előtt_ modell volt konfigurálható. Ezek becsléseket túlságosan optimista, lehet, különösen akkor, ha az idősorozat-nem álló és haladásával idővel. Ennek eredményeképpen a kiválasztott hiperparaméter értékek optimálisnál lehet.
 
-Az ajánlott módja a példák felosztása tanítási és a beállított érvényességi egy _időfüggő_ módon, ahol az összes érvényesítési többek között az összes példák mint időben későbbi. Az egyes hyperparameter értékek betanítását az algoritmus a tanítási adathalmazt keresztül. A modell teljesítmény mérésére érvényesítési ugyanazokat keresztül. A legjobb teljesítményt megjelenítő hyperparameter értékeinek kiválasztása A kereszt-ellenőrzési által véletlenszerűen választott értékekkel jövőbeli modell jobb teljesítményt eredményez tanítási és érvényesítés felosztás által választott Hyperparameter értékeket.
+Az ajánlott módszer az, hogy a példák felosztása tanítási és beállítása az érvényesítés egy _időfüggő_ módját, ahol az összes érvényesítési példák későbbi időben, mint az összes képzési példákat. Az egyes hiperparaméter értékek betanítása az algoritmus a tanítási adathalmazt keresztül. A modellek teljesítményének mérésére érvényesítési ugyanezek keresztül. Válassza ki a hiperparaméter értékek azt mutatják be, a legjobb teljesítmény érdekében. Hiperparaméter értékek kiválasztani az train és érvényesítési split eredmény jobban jövőbeli modell teljesítményét, mint a kereszt-ellenőrzési által véletlenszerűen kiválasztott értékekkel.
 
-A végső modell betanítása tanulási algoritmus a legjobb hyperparameter értékek teljes betanítási adatok által hozhatók létre.
+A kész modell hozhat létre tanulási algoritmus betanítási teljes betanítási adatokon ajánlott hiperparaméter értékeivel.
 
-### <a name="testing-for-model-performance"></a>A modell teljesítmény tesztelése
-Miután egy modelljei épülnek, az új adatok a jövőbeni teljesítményét becsült szükség. Egy jó a teljesítmény metrika hyperparameter értékek kiszámított az érvényesítési készleten, vagy egy átlagos teljesítmény metrika történik a kereszt-ellenőrzési becslése. Ezek becsléseket általában túlságosan optimista. Az üzleti gyakran előfordulhat néhány további iránymutatás hogyan szeretnék tesztelni a modellt.
+### <a name="testing-for-model-performance"></a>Modellek teljesítményének tesztelése
+A modell a létrehozása után az új adatokat a későbbi teljesítményét becsült szükség. Egy jó a teljesítmény-mérőszám hiperparaméter értékek kiszámítása keresztül az érvényesítési beállítása, vagy egy átlagos teljesítmény-mérőszám kereszt-ellenőrzési alapján kiszámított becslése. Ezek becsléseket gyakran túlságosan optimista történik. Az üzleti gyakran előfordulhat néhány további irányelvek a hogyan szeretnék teszteli a modellt.
 
-Az ajánlott módszer a PdM, hogy a példák felosztása képzési, érvényesítés, és tesztadatok állít be egy _időfüggő_ módon. Minden teszt példák a képzés és érvényesítési példák időben későbbinek kell lennie. A felosztás után a modell generálásához, és mérheti a teljesítményét a fentebb leírt módon.
+Az ajánlott módszer a PdM példák felosztáskor képzés, ellenőrzés, és beállítja a Tesztadatok egy _időfüggő_ módon. Az összes teszt példák a képzés és érvényesítési példák időben későbbinek kell lennie. A felosztás után a modell generálásához, és a teljesítmény mérésére, a fentebb leírt módon.
 
-Ha idősorozat helyhez kötött és könnyen előre jelezni, véletlenszerű és időfüggő megközelítések jövőbeli teljesítmény hasonló becsléseket hoz létre. De ha idősorozat nem helyhez kötött és/vagy nehezen becsülhető, az időfüggő módszerrel hoz létre a jövőbeli teljesítmény modell becslése.
+Ha idősorozat-helyhez kötött és könnyen kiismerhető, véletlenszerű és időfüggő megközelítések létrehozása hasonló becsléseket jövőbeli teljesítmény. De ha idősorozat-nem helyhez kötött, és/vagy nehezen becsülhető, az időfüggő megközelítés realisztikusabb jövőbeli teljesítmény becslései hoz létre.
 
 ### <a name="time-dependent-split"></a>Időfüggő felosztása
-Ez a szakasz ismerteti az időfüggő vegyes megvalósításához ajánlott eljárások. Egy időfüggő kétirányú felosztása tanítási és tesztelési között az alábbiakban.
+Ez a szakasz ismerteti az időfüggő split megvalósításához ajánlott eljárások. Egy időfüggő kétirányú felosztása tanítási és tesztelési között az alábbiakban ismertetjük.
 
-Tegyük fel például különböző érzékelők mérték időbélyegzővel események adatfolyam. Adja meg a szolgáltatások és a feliratok tanítási és tesztelési példák több eseményeket tartalmazó időkeret keresztül. Például bináris osztályozási múltbeli események alapján funkciók létrehozása, és a jövőbeni események típuson belüli "X" a jövőben időegységekkel alapján címkék létrehozása (lásd a a [jellemzőkiemelés](#Feature-engineering) és [modellezési technikák](#Modeling-techniques-applied-to-PdM-use-cases)). Így például szalagcímkézési időkerete szolgáltatása időkeretet később származnak.
+Tegyük fel, az időbélyegzővel események például a különféle érzékelőktől származó mérések adatfolyam. Adja meg a funkciók és címkék a tanítási és tesztelési példák több esemény tartalmazó időkereteknek keresztül. Például a bináris osztályozási funkciói elmúlt események alapján hozzon létre, és címkék alapján az "X" egységet jövőbeli időpontot a jövőbeni események létrehozása (a következő szakaszokban talál a [jellemzőkiemelés](#Feature-engineering) és [modellezése technikák](#Modeling-techniques-applied-to-PdM-use-cases)). A címkézési időkereten egy példa, így később, mint az időkeretet funkcióját származnak.
 
-Időfüggő valószínűségét, válasszon egy _levágási idő T betanítása<sub>c</sub>_  , ahol a modell betanításához a beállított, legfeljebb T előzményadatok használatával hiperparamétereket<sub>c</sub>. Jövőbeli címkék, amelyekre nem térnek T kiszivárgásának elkerülésére<sub>c</sub> azokat a betanítási adatok, válassza ki a címke példák X kell legújabb idő előtt T egységek<sub>c</sub>. A 7. ábrán látható példát minden négyzet jelenti. a rekord a következő adatkészletben, ahol szolgáltatásait és címkék vannak számított fent leírt módon. Az ábrán látható, az azt jelzi, hogy a képzés és egy tesztelési X = 2 és W = 3 kell kísérhet:
+Időfüggő felosztása, válasszon egy _képzés a megszakítási idő T<sub>c</sub>_  , amikor egy modell betanításához hiperparaméterek lehetőségeire az előzményadatok T akár a<sub>c</sub>. Jövőbeli címkék, amely nem T kiszivárgását elkerülése érdekében<sub>c</sub> a betanítási adatok, válassza ki a legújabb képzési példák címke, x idő előtt T egységek<sub>c</sub>. 7. ábra a példában minden egyes négyzeten egy rekordot a az adatkészlet, ahol funkciók és címkék számítja ki a fent leírt módon. Az ábra bemutatja a rekordokat, amelyek kell képzés és egy tesztelési X = 2 és W = 3:
 
-![7. ábra Ossza fel a bináris osztályozási időfüggő](./media/cortana-analytics-playbook-predictive-maintenance/time-dependent-split-for-binary-classification.png) 7. ábra. Ossza fel a bináris osztályozási időfüggő
+![7. ábra Bináris osztályozás felosztást időfüggő](./media/cortana-analytics-playbook-predictive-maintenance/time-dependent-split-for-binary-classification.png) 7. ábra. Bináris osztályozás felosztást időfüggő
 
-A zöld négyzetes határoz meg a képzés használható mértékegységét tartozó bejegyzéseket. Minden egyes képzési példa generálja figyelembe véve az elmúlt három szolgáltatás létrehozásához, és a két jövőbeli időszak előtt T címkézési<sub>c</sub>. Ha a két jövőbeli időszakok bármely részét T túl van<sub>c</sub>, adott példa kizárása a tanítási adathalmazt, mert nem látható feltételezett túl T<sub>c</sub>.
+A zöld négyzetes jelölik az időegységek képzéshez használható tartozó bejegyzéseket. Minden egyes képzési példa hozza létre a mérlegeli az elmúlt három funkció létrehozása céljából, és a két későbbi időszakokra vonatkozóan előtt T címkézés<sub>c</sub>. Ha bármely része a két későbbi elszámolási időszakokra van-e túl az T<sub>c</sub>, példa kizárása a tanítási adathalmazt, mert az nem látható-e túl az T feltételezi<sub>c</sub>.
 
-A fekete négyzetes határoz meg a rekordokat a végső címkézett adatkészlet, amelyeket nem lehet felhasználni a tanítási adathalmazt, megadva a fenti korlátozás. Ezeket a rekordokat nem lesz is alá vonni adatok, mert azok előtt T<sub>c</sub>. Emellett a szalagcímkézési időkeret részben függ a képzés időtartományban, ideális, amelyek nem. Tanítási és tesztelési adatokat kell külön szalagcímkézési időkeret címke információk adatszivárgás megelőzése érdekében.
+A fekete négyzetes a végső címkézett adatkészlet, amely nem lehet a tanítási adathalmazt, a fenti korlátozás adott a rekordok képviseli. Ezek a bejegyzések nem is használható az adatokat, tesztelést, mivel azok T előtt<sub>c</sub>. Emellett a címkézési időkereteknek részlegesen függenek képzési időkeretet, ideális, amelyek nem. Betanítási és vizsgálati adatokat külön címkézési időkereteknek címke információkat kiszivárgásának megelőzése érdekében kell rendelkeznie.
 
-Az eddig tárgyalt módszer lehetővé teszi, hogy a modell betanítására és tesztelésére példák, amelyek közel T időbélyegeket közötti átfedés<sub>c</sub>. Példák belüli W mértékegységét t kizárandó egy megoldást, a nagyobb elkülönítése<sub>c</sub> a vizsgálat beállítása. De ilyen egy agresszív vegyes attól függ, hogy adatok rendelkezésre állását.
+Az eddig tárgyalt módszer lehetővé teszi a betanításhoz és teszteléshez időbélyege közel T példái között átfedés<sub>c</sub>. Példák a W mértékegységét t kizárása egy megoldást a nagyobb elkülönítése<sub>c</sub> a vizsgálat beállítása. Azonban az ilyen egy agresszív split bőséges adatok rendelkezésre állásától függ.
 
-Szabályainak előrejelzésére használt regressziós modell több súlyosan érinti a kiszivárgásának probléma. A véletlenszerű vegyes metódussal szélsőséges túlzott méretezés vezet. Regressziós problémák, a felosztás kell úgy, hogy a rekordok előtt T hibákkal rendelkező eszközök tartozó<sub>c</sub> lépjen be a gyakorlókészlethez. A megszakítási után hibákkal rendelkező eszközök rögzíti a TesztKészlet kísérhet.
+Használt RUL előrejelzésére regressziós modellek több súlyosan érinti a kiszivárgását probléma. A véletlenszerű split metódussal szélsőséges túlzott méretezés vezet. Regresszió kapcsolatos problémák esetén a felosztás kell lennie, hogy mielőtt T hibákkal rendelkező eszközök tartozó bejegyzéseket<sub>c</sub> lépjen be a gyakorlókészlethez. Rekordok után a megszakítási hibákkal rendelkező eszközök nyissa meg a teszt csoportba.
 
-Esetén a modell betanítására és tesztelésére adatai azonos egy másik ajánlott eljárás, hogy használja a felosztás által eszköz azonosítója. A felosztás kell lennie, az eszközök a gyakorlókészlethez egyike sem szerepel a modell teljesítményének tesztelése. Ezzel a megközelítéssel a modellnek van egy új eszközök biztosítható a modell eredmények jobb esélyét.
+Vágását meghatározó adatok betanítására és tesztelésére egy másik ajánlott eljárás, amely elágazást idéz eszköz által használandó A felosztás kell, hogy az eszközök a gyakorlókészlethez egyike használatban vannak a modellek teljesítményének tesztelése. Ezzel a megközelítéssel egy modellnek van egy új eszközök realisztikusabb eredmények biztosítása jobb esélyét.
 
 ### <a name="handling-imbalanced-data"></a>Imbalanced adatok kezelése
-A besorolási problémák, ha nincsenek további példákat a többi, mint egy osztály az adatkészlet, különállónak _imbalanced_. Ideális esetben minden egyes osztály a betanítási adatok elég képviselőinek előnyben részesített ahhoz, hogy más osztályok megkülönböztetését. Ha egy osztály 10 %-nál kisebb az adatokat, az adatok imbalanced kell tekinteni. A underrepresented osztály egy _kisebbségi osztály_.
+Osztályozási problémák, a további példái egy osztályát, mint a többi, ha az adatkészlet van szólt kell _imbalanced_. Ideális esetben minden egyes osztály a betanítási adatok elegendő képviselői előnyben részesített különböző osztályokhoz megkülönböztetése engedélyezéséhez. Ha egy osztály kevesebb mint 10 %-ban az adatokat, az adatok imbalanced kell tekinteni. Az alulreprezentált osztály egy _kisebbségi osztály_.
 
-Sok PdM problémák szembesülhetnek ilyen imbalanced adatkészleteket, ha egy osztály súlyosan underrepresented a más osztály vagy osztályok képest. Bizonyos esetekben a kisebbségi osztály jelenthet a teljes adatpontok csak 0,001 %. Nincs egyedi PdM osztály egyensúlyhiány. Más tartományokban, amelyben hibák és rendellenességeket is ritka előfordulások szembesülhetnek hasonló problémát, csalások felderítéséhez és hálózati behatolás példákat. Ezek a hibák jött létre a kisebbségi osztály példák.
+Számos PdM problémára ilyen imbalanced adatkészletekhez, ahol egy osztály van súlyosan alulreprezentált képest a másik osztály vagy osztályok között. Bizonyos esetekben a kisebbségi osztály jelenthet az összes adatpont csak 0,001 %. Osztály egyenetlenségének nem egyedi a PdM. A face hasonló problémát, példák, a csalások észlelése és a hálózati behatolások más tartományok, ahol hibák és a rendellenességeket is ritkán fordul elő. Ezek a hibák kisebbségi osztály példák alkotják.
 
-Osztály egyensúlyhiány adatok, a legtöbb szabványos tanulási algoritmusok teljesítményének biztonsága sérül, mivel minimalizálása érdekében a teljes Hibaarány irányulnak. Az adatkészlet 99 % negatív és 1 % pozitív példák egy modell által negatív példányait címkék 99 % pontossága hozzá jeleníthető meg. De a modell nem sorolja be az összes pozitív példák; így akkor is, ha az adatok pontosságát magas, az algoritmus nem hasznos egy. Következésképpen hagyományos értékelési-metrikák többek között _Hibaarány általános pontosságának_ imbalanced learning nem elégségesek. Imbalanced adatkészletek szemben, más metrikákkal modell kiértékelése használják:
+Az osztály egyenetlenségének az adatokat legtöbb szabványos tanulási algoritmusok teljesítményének integritása sérül, mivel minimalizálása érdekében az általános Hibaarány irányulnak. Egy adatkészlet a 99 %-os negatív és pozitív példák 1 % a modell szerint minden példány negatív címkézés 99 %-os pontossággal rendelkezik is megjeleníthetők. De a modellt rosszul fog besorolni összes pozitív példák; így akkor is, ha az adatok pontosságát magas, az algoritmus nem hasznos egy. Ebből következően hagyományos értékelési mérőszámok például _Hibaarány általános pontosságát_ imbalanced tanulási nem elégségesek. Amikor megmérkőzött a imbalanced adatkészleteket, más metrikákkal modell kiértékelése használják:
 - Pontosság
 - Visszahívás
 - F1 pontszámok
-- Költség igazítva ROC (fogadó működési jellemzőit)
+- Költség igazított ROC (fogadó működési jellemzőit)
 
-A metrikák kapcsolatos további információkért lásd: [modell kiértékelése](#Model-evaluation).
+Ezek a metrikák kapcsolatos további információkért lásd: [minta értékelés](#Model-evaluation).
 
-Van azonban néhány módszereket, amelyek segítenek a orvoslása érdekében osztály egyensúlyhiány probléma. A két fő részesítse _mintavételi technikák_ és _költség-és nagybetűket tanulási_.
+Vannak azonban bizonyos módszereket, amelyek segítenek a osztályba orvosolják egyenetlenségének probléma. A két fő részesítse _mintavételi technikák_ és _költség-és nagybetűket learning_.
 
 #### <a name="sampling-methods"></a>Mintavételi
-Imbalanced tanulási magában foglalja a mintavételi módosítani a tanítási adathalmazt, hogy egy elosztott terhelésű készlet módszerek használatát. Mintavételi módszereket nem alkalmazható a tesztelési készlethez. Habár számos mintavételi módszert, vannak-e a legtöbb nagyon egyszerű néhányat a meglévők közül _véletlenszerű oversampling_ és _alatt mintavételi_.
+Imbalanced learning mintavételi módosíthatja a tanítási adathalmazt, elosztott terhelésű adatkészlet módszerek használatát foglalja magában. Mintavételi módszereket nem alkalmazható a teszt-készlethez. Habár számos mintavételi technikák, a legtöbb nagyon egyszerű élvezzenek _véletlenszerű oversampling_ és _alatt mintavételi_.
 
-_Véletlenszerű oversampling_ magában foglalja a kiválasztása véletlenszerűen kisebbségi osztályból származik, ezek a példák replikálásának és tanítási adathalmazt hozzáadását. Következésképpen kisebbségi osztály szereplő példák száma nő, és végül elosztása a különböző osztályokhoz példák száma. Oversampling hátránya, hogy egyes példák több példánya okozhat a osztályozó túl adott, ami túlzott méretezés válik. A modell előfordulhat, hogy megjelenítése nagy képzési pontosságának, de előfordulhat, hogy a teljesítményét, a nem látható tesztadatokat optimálisnál.
+_Véletlenszerű oversampling_ magában foglalja egy véletlenszerűen vett minta kiválasztása kisebbségi osztályból, ezek a példák replikálásának és tanítási adathalmazt hozzáadását. Ebből következően kisebbségi osztály szereplő példák száma növekszik, és végül a különböző osztályokhoz példák számát egyensúlyba hozni. Oversampling hátránya, hogy egyes példák több példánya okozhat az osztályozó által igénybe vett túl adott, ami túlzott méretezés válik. A modell előfordulhat, hogy megjelenítése nagy képzési pontossága, de lehet, hogy a teszt nem látható adatok teljesítménye optimálisnál.
 
-Ezzel ellentétben _véletlenszerű alatt mintavételi_ kiválasztása véletlenszerűen többsége osztályból, és ezek a példák eltávolítása a tanítási adathalmazt. Azonban példák eltávolítása a legtöbb osztály okozhat a teljesíti a legtöbb osztály kapcsolatos fontosabb fogalmakra osztályozó. _Hibrid mintavételi_ ahol kisebbségi osztály túlzott mintavételi és többsége osztály alatt-mintát ugyanazon belül-e egy másik életképes megközelítést.
+Ezzel szemben _véletlenszerű alatt mintavételi_ egy véletlenszerűen vett minta kiválasztja a legtöbb osztályt, és ezek a példák eltávolítása a tanítási adathalmazt. Azonban példák eltávolítása a legtöbb osztály okozhat az osztályozó által igénybe vett, hagyja ki a legtöbb osztály kapcsolatos fontos fogalmakat. _Hibrid mintavételi_ ahol kisebbségi osztály túlterhelt a mintavételezett pedig legtöbb osztály alatt-mintát egyszerre ideje-e egy másik életképes megközelítést.
 
-Nincsenek számos kifinomult mintavételi technikákat. A választott módszerrel adatok tulajdonságok és ismétlődő kísérletek által az adatok tudósok eredmények függ.
+Nincsenek számos kifinomult mintavételi technikákat. A választott módszer az adatok tulajdonságokat és iteratív kísérletek által az adatszakértő eredményeit függ.
 
-#### <a name="cost-sensitive-learning"></a>Bizalmas tanulási költsége
-A PdM a kisebbségi osztály alkotó hibák az érdekesebb normál példák mint vannak. Ezért a elsősorban főként a sikertelen végrehajtása esetén az algoritmus teljesítményét. Egy pozitív forrásosztállyal egy negatív helytelenül előrejelzésére is drágább, mint fordítva. Ez a helyzet gyakran hivatkozik, amely egyenlőtlen elvesztése vagy téves sorolásához elemek aszimmetrikus költségét különböző osztályú. Az ideális osztályozó továbbítsa magas előrejelzés pontosságát keresztül kisebbségi osztály a legtöbb a(z) pontosságára veszélyeztetése nélkül.
+#### <a name="cost-sensitive-learning"></a>Költség-és nagybetűket tanulás
+A PdM hibák kisebbségi osztály alkotó érdekesek lehetnek több, mint a normál példákat. Így célja főként a hibák az algoritmus teljesítményéről. Egy pozitív osztályba tartozik egy negatív osztály helytelenül előrejelzésének is drágább, mint a fordítva. Ez a helyzet gyakran különböző osztályokhoz említett egyenlőtlen veszteség vagy rosszul Írisz elemek aszimmetrikus költsége. Az ideális osztályozó kell magas előrejelzési pontosság keresztül kézbesítsen a kisebbségi osztály a legtöbb osztály pontosságának kompromisszumok nélkül.
 
-Ez az egyenleg eléréséhez több módja van. Egyenlőtlen veszteség probléma mérséklése érdekében magas költségekkel hozzárendelése kisebbségi osztály hibás osztályozás, és próbálja meg minimálisra csökkenteni a teljes költség szempontjából. Algoritmusok, például _SVMs (támogatási vektoros gépek)_ fogadja el ezt a módszert eredendően, lehetővé téve a betanítás során meg kell adni a pozitív és negatív példák költségét. Hasonlóképpen, például az módszerek kiemelése _súlyozott döntési fák_ általában megjelenítése a megfelelő teljesítmény imbalanced adatokkal.
+Többféle módon a szabályozásra. Eltérő veszteség a probléma megoldásához, magas költségeket rendel kisebbségi osztály hibás osztályozás, és próbálja meg minimálisra csökkenteni a teljes költség. Algoritmusok, például _SVMs (támogatási vektor gépek)_ természetüknél fogva, elfogadja ezt a módszert a betanítás során meg kell adni a pozitív és negatív példák költségeit azáltal, hogy. Ehhez hasonlóan kiemelési például módszerek _súlyozott döntési fák_ általában bemutatják a jó teljesítmény imbalanced adatokkal.
 
-## <a name="model-evaluation"></a>Modell kiértékelése
-Hibás osztályozás a PdM forgatókönyvekben, ahol üzleti téves riasztásokat költségét magas jelentős probléma. Például az és a föld motor hibát egy helytelen előrejelzését alapján repülőgép döntést ütemezések megzavarhatják és tervek változatlan marad. A gép offline állapotba a szerelvény véve a bevétel elvesztéséhez vezethet. Ezért fontos a megfelelő metrikák teszt új adatokkal szemben a modell kiértékelése.
+## <a name="model-evaluation"></a>Modell értékelése
+Hibás osztályozás a PdM olyan forgatókönyvekben, ahol üzleti vakriasztások költsége magas jelentős probléma. Például döntést és a egy repülő motor hibát egy helytelen előrejelzésével alapján föld ütemezések zavarja és utazási tervek. Egy gép kapcsolat nélküli módban meglévő véve bevételkiesést vezethet. Ezért fontos modell értékelése a jobb teljesítmény-mérőszámait teszt új adatokkal szemben.
 
-Tipikus teljesítménymutatók PdM modellek értékeléséhez használt alább:
+Tipikus teljesítmény-mérőszámok PdM modellek értékeli ki, hogy az alábbiak ismertetik:
 
-- [Pontosság](https://en.wikipedia.org/wiki/Accuracy_and_precision) a legnépszerűbb metrika egy osztályozó teljesítmény leíró használt. De pontossága érzékeny adatok azokat a terjesztéseket, és a imbalanced adatkészletek forgatókönyvek hatástalan intézkedés. Más metrikákkal használja helyette. Eszközök, például [zavart mátrix](https://en.wikipedia.org/wiki/Confusion_matrix) segítségével számítási, valamint arról a modell pontosságát az okból.
-- [Pontosság](https://en.wikipedia.org/wiki/Precision_and_recall) PdM a modellek kapcsolódnak a téves riasztásokat aránya. A modell pontosságát alacsonyabb általában nagyobb mértékű téves riasztásokat felel meg.
-- [Visszahívása](https://en.wikipedia.org/wiki/Precision_and_recall) arány azt jelzi, hogy hány a sikertelen teszt készletében sikerült helyesen azonosítani a modell. A nagyobb visszaírási sebesség jelenti a modell sikeres, az igaz a hibák azonosításához.
-- [F1 pontszám](https://en.wikipedia.org/wiki/F1_score) pontosság és a visszaírási közötti 1 (ajánlott) (legrosszabb) 0 értékkel harmonikus átlaga.
+- [Pontosság](https://en.wikipedia.org/wiki/Accuracy_and_precision) a legnépszerűbb metrika egy osztályozó teljesítmény leírásához használja. De pontossága adatok disztribúciók-és nagybetűket, és hatástalan intézkedés imbalanced adatkészletek a forgatókönyvekhez. Más metrikákkal használja. Eszközök, például a [keveredési mátrixot](https://en.wikipedia.org/wiki/Confusion_matrix) számítási és a modell pontosságát kapcsolatos okból szolgálnak.
+- [Pontosság](https://en.wikipedia.org/wiki/Precision_and_recall) PdM-modellek a vakriasztások száma vonatkoznak. A modell pontosságát alacsonyabb általában egy téves riasztásokat nagyobb mértékű felel meg.
+- [Idézze](https://en.wikipedia.org/wiki/Precision_and_recall) arány azt jelzi, hogy a hibák a teszt csoport hány sikerült helyesen azonosítani a modellhez. Magasabb visszaírási érvényes jelenti azt, hogy a modell létrejött a valódi hibák azonosítására.
+- [F1 pontszám](https://en.wikipedia.org/wiki/F1_score) harmonikus átlaga pontosság és a visszahívás közötti (ajánlott) 1-re (legrosszabb) 0 értékre.
 
-A bináris besorolás
-- [Fogadó görbék (ROC) működő](https://en.wikipedia.org/wiki/Receiver_operating_characteristic) népszerű metrika is van. A ROC görbék modell teljesítmény értelmezi egy üzemi pontját a ROC alapján.
-- A PdM problémákat, de _decile táblák_ és _diagramok növekedési_ , még informatívabbá. Csak az a pozitív osztály (hibák) összpontosít, és adja meg az algoritmus teljesítményét mint ROC görbék összetettebb képe.
-  - _Decile táblák_ tesztelési példák használatát egy hiba valószínűség csökkenő sorrendben. A rendezett minták majd szerint vannak csoportosítva deciles (10 % a legnagyobb valószínűséggel minták majd 20 %, 30 %, és így tovább). Az egyes decile a arány (true pozitív gyakoriság) /(random baseline) segít, minden egyes decile algoritmus teljesítményének. A véletlenszerű alapterv veszi értékek 0,1, 0,2, és így tovább.
-  - [Diagramok növekedési](http://www2.cs.uregina.ca/~dbd/cs831/notes/lift_chart/lift_chart.html) decile igaz pozitív sebessége és a véletlenszerű igaz pozitív aránya az összes deciles ábrázolásához. Az első deciles rendszerint a fókusz eredmények, mivel azok megjelenítése, hogy a legnagyobb növekedését. Első deciles is látható, reprezentatív "veszélyben", a PdM a használatakor.
+A bináris osztályozási
+- [Fogadó görbék (ROC) működő](https://en.wikipedia.org/wiki/Receiver_operating_characteristic) egyben egy népszerű metrikát. ROC-görbét, a modellek teljesítményének értelmezi a egy működési fixpontos a ROC alapján.
+- De PdM kapcsolatos problémák esetén _decile táblák_ és _diagramok lift_ konkrétabb. A pozitív osztály (hibák) összpontosíthat, és adja meg, mint a ROC-görbét algoritmus teljesítményének összetettebb képe.
+  - _Decile táblák_ hiba valószínűségek egy csökkenő sorrendben tesztelési példák használatával jön létre. A rendezett minták majd deciles vannak csoportosítva (10 %-a legnagyobb valószínűséggel a mintákat, majd 20 %-os, 30 %-át, és így tovább). Az egyes decile az arány (valódi pozitív díj) /(random baseline) segít megbecsülni az egyes decile algoritmus teljesítmény. A véletlenszerű alapkonfiguráció veszi értékek 0.1, 0.2-es és így tovább.
+  - [Növekedési diagram](http://www2.cs.uregina.ca/~dbd/cs831/notes/lift_chart/lift_chart.html) jeleníti meg a decile valódi pozitív sebesség és az összes deciles véletlenszerű valódi pozitív aránya. Az első deciles rendszerint a fókuszt az eredmények, mivel megmutatják a legnagyobb előnyökre is szert. Első deciles is látható a "veszélyben", a képviselője a PdM használatakor.
 
-## <a name="model-operationalization-for-predictive-maintenance"></a>Modell operationalization prediktív karbantartás
+## <a name="model-operationalization-for-predictive-maintenance"></a>A prediktív karbantartáshoz modell operacionalizálás
 
-Az adatok tudományos folyamat előnyt is tudjuk, csak ha a betanított modell legyen működési. Ez azt jelenti, hogy a modell kell telepíteni az új, korábban nem látható adatok alapján előrejelzéseket készítsen üzleti rendszerekbe.  Az új adatok pontosan meg kell felelnie a _modell aláírás_ a betanított modell két módon:
-- minden szolgáltatás minden logikai példányát (azaz a tábla sorának) az új adatok jelen kell lennie.
-- az új adatokat előre fel kell dolgozni, és a szolgáltatások mindegyikének fejthetők vissza, a pontosan ugyanúgy, mint a betanítási adatok.
+A data science gyakorlat az előny, hogy csak ha a betanított modell jön létre operatív. Azt jelenti a modell telepíteni kell az üzleti rendszerekbe adatelemzésre új, a korábban látott adatok alapján.  Az új adatok pontosan meg kell felelnie a a _modell aláírás_ a betanított modell két módon:
+- minden logikai példányát (például: egy sort a táblázatban) az új adatok szerepelniük kell az összes funkciót.
+- az új adatokat előre fel kell dolgozni, és minden funkció fejthetők vissza, pontosan ugyanúgy mint a betanítási adatok.
 
-A fenti eljárás az sokféleképpen academic és iparági szakirodalomban van megadva. De a következő utasításokat ugyanazt jelenti:
-- _Új adatok pontozása_ a modell segítségével
-- _Alkalmazzák a modellt_ új adatokhoz
-- _Azok_ a modell
-- _Telepítése_ a modell
+A fenti folyamat academic és iparági elsajátításához számos módon van megadva. De ugyanazt jelenti a következő utasításokat:
+- _Új adatok pontozásához_ a modell használatával
+- _A modell a alkalmazni_ új adatokhoz
+- _Üzembe helyezés_ a modell
+- _Üzembe helyezése_ a modell
 - _Futtassa a modell_ új adatokkal szemben
 
-Ahogy korábban is hangsúlyoztuk, a PdM modell operationalization eltér a társaknak. Anomáliadetektálás és tárhelyhiba-észlelés általában érintő forgatókönyvek megvalósításához _online pontozási_ (más néven _valós idejű pontozási_). Itt, a modell _pontszámok_ minden bejövő rekord, és visszaadja az előrejelzéshez. Az előrejelzés anomáliadetektálás, arra utal, hogy történt-e az anomáliadetektálási esetén (Példa: egy osztály SVM). A tárhelyhiba-észlelés lenne a típus vagy a hiba az osztály.
+Ahogyan korábban hangsúlyoztuk, a PdM modell operacionalizálás eltér a társaktól. Rendellenességek észlelése és a hibaészlelés általában érintő forgatókönyvek megvalósítása _online pontozási_ (más néven _valós idejű pontozási_). Itt, a modell _pontszámok_ minden bejövő rekordot, és előrejelzést. A rendellenességek észlelése, a nevezzük azt jelzi, hogy történt-e egy rendellenességet (Példa: egy szintű SVM). A hibák észlelése a típus vagy hiba az osztály lenne.
 
-Ezzel szemben, magában foglalja a PdM _kötegelt pontozási_. Felel meg a modell aláírás, az új adatok funkciók a azonos módon a betanítási adatok fejthetők vissza. Az új adatokat általában nagy adatkészletek esetében a funkciók windows idő alatt összesített értéket és kötegelt a program pontozza a mennyiségeket. Kötegelt pontozási általában történik például elosztott rendszerek [Spark](http://spark.apache.org/) vagy [Azure Batch](https://docs.microsoft.com/azure/batch/batch-api-basics). Többféle alternatívák - is az optimálisnál gyengébb:
-- Adatfolyam-továbbítási adatok motorok memóriában windows keresztül támogatja a csoportosítást. Így sikerült állították, hogy támogatják az online pontozási. De ezek a rendszerek megfelelő-e, vagy a ritka elemek keskeny Windows sűrű adatok szélesebb windows keresztül. Azok előfordulhat, hogy nem méretezhető a sűrű adatok esetén hálózatokon szélesebb idő windows PdM forgatókönyvek látható módon.
-- Ha a kötegelt pontozás nem érhető el, a megoldást támogató kis kötegekben új adatok kezelésének egyszerre online pontozási.
+Ezzel szemben az magában foglalja a PdM _kötegelt pontozási_. Felelnek meg a modell aláírás, az új adatokat az a funkciók a betanítási adatok az azonos módon fejthetők vissza. Jellemző, az új adatok nagy adatkészleteknél funkciók összesített értéket jelenít meg időt a windows és pontozunk a Batch szolgáltatásban. Kötegelt pontozási általában történik az elosztott rendszerek [Spark](http://spark.apache.org/) vagy [Azure Batch](https://docs.microsoft.com/azure/batch/batch-api-basics). Van néhány alternatívák - mindkét optimálisnál:
+- Streamelési adatmotort támogatja az aggregálást keresztül a windows a memóriában. Így sikerült állították, azok támogatási online pontozási. Azonban ezekben a rendszerekben kiválóan alkalmasak a, vagy a ritka elemek keskeny windows sűrű adatok szélesebb körű windows keresztül. Előfordulhat, hogy nem méretezni őket a sűrű adatok számára is szélesebb körű időtartományok keresztül PdM forgatókönyvek látható módon.
+- Ha a kötegelt pontozás nem érhető el, a megoldás az, kisebb kötegekben új adatok kezelésének egyszerre online pontozási igazítani.
 
 ## <a name="solution-templates-for-predictive-maintenance"></a>A prediktív karbantartási megoldás sablonok
 
-Ez az útmutató utolsó része PdM megoldás sablonok, oktatóanyagok és az Azure-ban végrehajtott kísérletekhez listáját jeleníti meg. Ezek az alkalmazások PdM is telepíthető az Azure-előfizetés bizonyos esetekben percen belül. A koncepció igazolása bemutatók, védőfalak alternatívák, vagy tényleges éles megvalósítások gyorsító kísérletezhet, is használhatók. Ezek a sablonok találhatók a [Azure Eszközintelligencia-katalógus](http://gallery.azure.ai) vagy [Azure GitHub](https://github.com/Azure). A következő különböző mintákat adott idő alatt a megoldás sablonba lesz állítva.
+Ez az útmutató az utolsó szakaszában PdM megoldássablonokkal, oktatóanyagok és az Azure-ban megvalósított kísérletek listáját tartalmazza. Ezek az alkalmazások PdM is telepíthető az Azure-előfizetés bizonyos esetekben percen belül. Mint proof-of-concept bemutatókat láthat, próbakörnyezetbe lehetőségeket, vagy tényleges éles megvalósításokhoz gyorsítók kísérletezhet lefordítja használható. Ezek a sablonok találhatók a [Azure AI-katalógusban](http://gallery.azure.ai) vagy [Azure GitHub](https://github.com/Azure). Ezek a különböző minták idővel Ez a megoldássablon be lesz állítva.
 
 | # | Beosztás | Leírás |
 |--:|:------|-------------|
-| 1 | [Prediktív karbantartási Azure Machine Learning minta](https://github.com/Azure/MachineLearningSamples-PredictiveMaintenance) |Hiba a következő N mértékegységét keresztül-előrejelzés PdM minta. Ez a minta Azure ML munkaterület projektként írása, és a PdM kezdőknek ideális. [További dokumentáció](https://docs.microsoft.com/azure/machine-learning/desktop-workbench/scenario-predictive-maintenance) Ez a minta kapcsolódik.|
-| 2 | [Az Azure prediktív karbantartási megoldás sablon](https://github.com/Azure/AI-PredictiveMaintenance) | Egy teljes körű keretrendszer több PdM forgatókönyv bemutatásához. Ez a sablon mutatja be két olyan eset: az egyik új használati eset valós idejű hiba feltétel besorolás. A második forgatókönyv, egyszerűen egy integrálása a megoldás [1] Ez a megoldás sablon. Azt mutatja be más új vagy meglévő forgatókönyvek hozzáadása telepített ugyanazon az infrastruktúrán újból.|
-| 3 | [Learning a prediktív karbantartási mély](https://github.com/Azure/MachineLearningSamples-DeepLearningforPredictiveMaintenance) | A bemutató-megoldás LSTM (hosszú rövid távú memória) hálózatok (ismétlődő Neurális hálózatokat osztály) használatával prediktív karbantartási, az Azure Notebook egy [erre a példára által írt blogbejegyzés](https://azure.microsoft.com/blog/deep-learning-for-predictive-maintenance).|
-| 4 | [Az R prediktív karbantartási Fenyegetésmodellezési útmutatója](https://gallery.azure.ai/Notebook/Predictive-Maintenance-Modelling-Guide-R-Notebook-1) | Az r parancsfájlok PdM fenyegetésmodellezési útmutatója|
-| 5 | [Űrtechnikai Azure prediktív karbantartás](https://gallery.azure.ai/Solution/Predictive-Maintenance-for-Aerospace-1) | Az Azure ML v1.0 repülőgép karbantartás alapján első PdM megoldás sablonok egyikét. Ez az útmutató a projekt származik. |
-| 6 | [Az IoT-Edge Azure AI eszköztára](https://github.com/Azure/ai-toolkit-iot-edge) | AI az az IoT-edge használatával TensorFlow; részletes eszközkészlet csomagok tanulási modellek Azure IoT Edge-kompatibilis Docker-tárolókban, és tegye elérhetővé a REST API-k, modellek.
-| 7 | [Az Azure IoT – prediktív karbantartás](https://github.com/Azure/azure-iot-predictive-maintenance) | Az Azure IoT Suite számítógépek - előkonfigurált megoldás. Repülőgép karbantartási PdM sablon IoT Suite. [Egy másik dokumentum](https://docs.microsoft.com/azure/iot-suite/iot-suite-predictive-overview) és [forgatókönyv](https://docs.microsoft.com/azure/iot-suite/iot-suite-predictive-walkthrough) kapcsolódó ugyanabban a projektben. |
-| 8 | [Az SQL Server R Services prediktív karbantartási sablon](https://gallery.azure.ai/Tutorial/Predictive-Maintenance-Template-with-SQL-Server-R-Services-1) | Az R-szolgáltatásoknak fennmaradó élettartama forgatókönyvek bemutató. |
-| 9 | [A prediktív karbantartási Fenyegetésmodellezési útmutatója](https://gallery.azure.ai/Collection/Predictive-Maintenance-Modelling-Guide-1) | Repülőgép dataset karbantartásának fejthetők vissza az R használatával [kísérletek](https://gallery.azure.ai/Experiment/Predictive-Maintenance-Modelling-Guide-Experiment-1) és [adatkészletek](https://gallery.azure.ai/Experiment/Predictive-Maintenance-Modelling-Guide-Data-Sets-1) és [Azure notebook](https://gallery.azure.ai/Notebook/Predictive-Maintenance-Modelling-Guide-R-Notebook-1) és [kísérletek](https://gallery.azure.ai/Experiment/Predictive-Maintenance-Step-1-of-3-data-preparation-and-feature-engineering-2)az AzureML 1.0-s verzió|
+| 1 | [Prediktív karbantartás az Azure Machine Learning minta](https://github.com/Azure/MachineLearningSamples-PredictiveMaintenance) |Előrejelzési hiba a következő N mértékegységét keresztül PdM-minta. Ez a példa egy Azure Machine Learning Workbench-projekt kiírt, és ideális megoldást biztosít a PdM kezdők számára. [További dokumentáció](https://docs.microsoft.com/azure/machine-learning/desktop-workbench/scenario-predictive-maintenance) kapcsolatos ezt a mintát.|
+| 2 | [Az Azure prediktív karbantartási megoldás – sablon](https://github.com/Azure/AI-PredictiveMaintenance) | Egy nyílt forráskódú megoldás sablon, amely bemutatja a gépi tanulás modellezési és a egy teljes Azure-infrastruktúra képes a prediktív karbantartási forgatókönyveket IoT távoli figyelési környezetében. |
+| 3 | [Mélytanulás a prediktív karbantartás](https://github.com/Azure/MachineLearningSamples-DeepLearningforPredictiveMaintenance) | Egy bemutató megoldással LSTM (hosszú rövid távú memória) hálózatok (ismétlődő Neurális hálózatokat egy osztály) használatával prediktív karbantartás, az Azure Notebooks- [blogbejegyzés erre a példára](https://azure.microsoft.com/blog/deep-learning-for-predictive-maintenance).|
+| 4 | [Prediktív karbantartás Fenyegetésmodellezési útmutatója az R](https://gallery.azure.ai/Notebook/Predictive-Maintenance-Modelling-Guide-R-Notebook-1) | Az r-parancsfájlokkal PdM fenyegetésmodellezési útmutatója|
+| 5 | [Az Azure prediktív karbantartás a légi közlekedésben](https://gallery.azure.ai/Solution/Predictive-Maintenance-for-Aerospace-1) | Az első PdM alapján az Azure ML v1.0 repülőgép karbantartás megoldás sablonok egyikét. Ez az útmutató adja meg a projekt. |
+| 6 | [Az Azure IoT Edge AI-eszközkészlet](https://github.com/Azure/ai-toolkit-iot-edge) | Az IoT edge használatával TensorFlow; a mesterséges Intelligencia eszközkészlet csomagok deep learning-modellek Azure IoT Edge-kompatibilis a Docker-tárolókban, és elérhetővé tehettük ezen modellek REST API.
+| 7 | [Az Azure IoT prediktív karbantartási](https://github.com/Azure/azure-iot-predictive-maintenance) | Számítógépek – az Azure IoT Suite előre konfigurált megoldás. Repülőgép karbantartási PdM sablon az IoT Suite használatával. [Egy másik dokumentumba](https://docs.microsoft.com/azure/iot-suite/iot-suite-predictive-overview) és [forgatókönyv](https://docs.microsoft.com/azure/iot-suite/iot-suite-predictive-walkthrough) kapcsolatos ugyanazon a projekten. |
+| 8 | [SQL Server R Services segítségével prediktív karbantartási sablon](https://gallery.azure.ai/Tutorial/Predictive-Maintenance-Template-with-SQL-Server-R-Services-1) | Bemutatót a fennmaradó hasznos élettartamát forgatókönyv R-szolgáltatások alapján. |
+| 9 | [Prediktív karbantartás Fenyegetésmodellezési útmutatója](https://gallery.azure.ai/Collection/Predictive-Maintenance-Modelling-Guide-1) | Repülőgép karbantartási adatkészlet szolgáltatás fejthetők vissza az R használatával [kísérletek](https://gallery.azure.ai/Experiment/Predictive-Maintenance-Modelling-Guide-Experiment-1) és [adatkészletek](https://gallery.azure.ai/Experiment/Predictive-Maintenance-Modelling-Guide-Data-Sets-1) és [Azure Notebooks](https://gallery.azure.ai/Notebook/Predictive-Maintenance-Modelling-Guide-R-Notebook-1) és [kísérletek](https://gallery.azure.ai/Experiment/Predictive-Maintenance-Step-1-of-3-data-preparation-and-feature-engineering-2)az AzureML 1.0-s verzió|
 
-## <a name="training-resources-for-predictive-maintenance"></a>A prediktív karbantartási oktatóanyagok
+## <a name="training-resources-for-predictive-maintenance"></a>A prediktív karbantartáshoz tanfolyamok forrásai
 
-A [Azure AI képzési terv prediktív karbantartási](https://github.com/Azure/AI-PredictiveMaintenance/blob/master/docs/azure-ai-learning-path-for-predictive-maintenance.md) biztosít az oktatóanyag a bemutatják a fogalmakat és matematikai algoritmusok és technikák PdM problémák használt mögött. 
+A [Azure AI-képzési terv a prediktív karbantartási](https://github.com/Azure/AI-PredictiveMaintenance/blob/master/docs/azure-ai-learning-path-for-predictive-maintenance.md) a képzési anyagokat a fogalmakat és matematikai algoritmusok és technikákat, amelyekkel a PdM-problémák mögött jobban megértheti a biztosít. 
 
-Microsoft Azure ingyenes tartalom és a képzési általános AI fogalmak és eljárások kínál.
+A Microsoft Azure ingyenes tartalom és képzési AI általános fogalmak és eljárások kínál.
 
 | Képzési erőforrást  | Rendelkezésre állás |
 |:-------------------|--------------|
-| [AI Developer az Azure-on](http://azure.microsoft.com/training/learning-paths/azure-ai-developer) | Nyilvános |
-| [Microsoft AI iskolai](http://aischool.microsoft.com/learning-paths) | Nyilvános |
-| [Az Azure AI tanulási a Githubról](https://github.com/Azure/connectthedots/blob/master/readme.md) | Nyilvános |
-| [LinkedIn tanulás](http://www.linkedin.com/learning) | Nyilvános |
-| [Microsoft AI Youtube előadások](https://www.youtube.com/watch?v=NvrH7_KKzoM&t=4s) | Nyilvános |
-| [Microsoft AI megjelenítése](http://channel9.msdn.com/Shows/AI-Show) | Nyilvános |
-| [LearnAI@MS](http://learnanalytics.microsoft.com) | Microsoft-partnerek számára |
-| [A Microsoft Partner Network](http://learningportal.microsoft.com) | Microsoft-partnerek számára |
+| [AI-fejlesztés az Azure-ban](http://azure.microsoft.com/training/learning-paths/azure-ai-developer) | Nyilvános |
+| [A Microsoft AI iskolai](http://aischool.microsoft.com/learning-paths) | Nyilvános |
+| [Az Azure AI-tanulás a Githubról](https://github.com/Azure/connectthedots/blob/master/readme.md) | Nyilvános |
+| [LinkedIn Learning](http://www.linkedin.com/learning) | Nyilvános |
+| [A Microsoft AI Youtube-Webináriumok](https://www.youtube.com/watch?v=NvrH7_KKzoM&t=4s) | Nyilvános |
+| [A Microsoft AI Show](http://channel9.msdn.com/Shows/AI-Show) | Nyilvános |
+| [LearnAI@MS](http://learnanalytics.microsoft.com) | A Microsoft-partnerek számára |
+| [A Microsoft Partner Network](http://learningportal.microsoft.com) | A Microsoft-partnerek számára |
 
-Emellett a AI szabad MOOCS (nyitott nagy online tanfolyamokat) is online felajánlott academic intézmények például Stanford és MIT, és az egyéb oktatási vállalatok.
+Emellett a mesterséges Intelligencia ingyenes MOOC (tömeges nyílt online kurzusok) olyan oktatási intézmények például Stanford és MIT online kínált és más oktatási cégek.

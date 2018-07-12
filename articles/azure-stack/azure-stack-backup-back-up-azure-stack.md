@@ -1,6 +1,6 @@
 ---
-title: Készítsen biztonsági másolatot az Azure-verem |} Microsoft Docs
-description: Egy igény szerinti biztonsági mentés végrehajtásához Azure veremben helyen biztonsági mentéssel.
+title: Azure Stack biztonsági mentése |} A Microsoft Docs
+description: Hajtsa végre az Azure Stacken egy igény szerinti biztonsági mentést a biztonsági mentési helyen.
 services: azure-stack
 documentationcenter: ''
 author: mattbriggs
@@ -15,43 +15,60 @@ ms.topic: article
 ms.date: 5/08/2017
 ms.author: mabrigg
 ms.reviewer: hectorl
-ms.openlocfilehash: c2a6727692a7a74b3e5fe32de8800722a9ed91b5
-ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
+ms.openlocfilehash: 2570423a3cae2a15f0cfd294f1d91e6730748f68
+ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/12/2018
-ms.locfileid: "34075187"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38972606"
 ---
-# <a name="back-up-azure-stack"></a>Készítsen biztonsági másolatot az Azure-verem
+# <a name="back-up-azure-stack"></a>Készítsen biztonsági másolatot az Azure Stackben
 
-*A következőkre vonatkozik: Azure verem integrált rendszerek és az Azure verem szoftverfejlesztői készlet*
+*A következőkre vonatkozik: Azure Stackkel integrált rendszerek és az Azure Stack fejlesztői készlete*
 
-Egy igény szerinti biztonsági mentés végrehajtásához Azure veremben helyen biztonsági mentéssel. Ha az infrastruktúra biztonsági másolat szolgáltatás engedélyezése szüksége, tekintse meg [biztonsági mentés engedélyezése a felügyeleti portál Azure verem](azure-stack-backup-enable-backup-console.md).
+Hajtsa végre az Azure Stacken egy igény szerinti biztonsági mentést a biztonsági mentési helyen. A PowerShell-környezet konfigurálása, lásd: [Azure Stack PowerShell telepítése ](azure-stack-powershell-install.md). Jelentkezzen be az Azure Stack, lásd: [konfigurálja az operátor környezetet, és jelentkezzen be az Azure Stack](azure-stack-powershell-configure-admin.md).
 
-> [!Note]  
->  A PowerShell-környezet konfigurálása, lásd: [verem Azure PowerShell telepítése ](azure-stack-powershell-install.md).
+## <a name="start-azure-stack-backup"></a>Azure Stack biztonsági mentés indítása
 
-## <a name="start-azure-stack-backup"></a>Azure verem biztonsági mentés indítása
-
-Nyissa meg a Windows PowerShell operátor felügyeleti környezetben egy rendszergazda jogú parancssort, majd futtassa az alábbi parancsokat:
+-AsJob változót, nyomon követheti az új biztonsági mentést elindítani a Start-AzSBackup használatával. 
 
 ```powershell
-    Start-AzSBackup -Location $location.Name
+    $backupjob = Start-AzsBackup -Force -AsJob
+    "Start time: " + $backupjob.PSBeginTime;While($backupjob.State -eq "Running"){("Job is currently: " + $backupjob.State+" ;Duration: " + (New-TimeSpan -Start ($backupjob.PSBeginTime) -End (Get-Date)).Minutes);Start-Sleep -Seconds 30};$backupjob.Output
 ```
 
-## <a name="confirm-backup-completed-in-the-administration-portal"></a>Erősítse meg a biztonsági mentés a felügyeleti portálon
+## <a name="confirm-backup-completed-via-powershell"></a>Erősítse meg a biztonsági mentés PowerShell-lel
 
-1. Nyissa meg a verem Azure felügyeleti portálon, a [ https://adminportal.local.azurestack.external ](https://adminportal.local.azurestack.external).
-2. Válassza ki **további szolgáltatások** > **infrastruktúra biztonsági mentés**. Válasszon **konfigurációs** a a **infrastruktúra biztonsági mentés** panelen.
-3. Keresse a **neve** és **dátuma** a biztonsági másolat **elérhető biztonsági másolatok** lista.
+```powershell
+    if($backupjob.State -eq "Completed"){Get-AzsBackup | where {$_.BackupId -eq $backupjob.Output.BackupId}}
+```
+
+- Az eredmény a következő kimenet hasonlóan kell kinéznie:
+
+  ```powershell
+      BackupDataVersion : 1.0.1
+      BackupId          : <backup ID>
+      RoleStatus        : {NRP, SRP, CRP, KeyVaultInternalControlPlane...}
+      Status            : Succeeded
+      CreatedDateTime   : 7/6/2018 6:46:24 AM
+      TimeTakenToCreate : PT20M32.364138S
+      DeploymentID      : <deployment ID>
+      StampVersion      : 1.1807.0.41
+      OemVersion        : 
+      Id                : /subscriptions/<subscription ID>/resourceGroups/System.local/providers/Microsoft.Backup.Admin/backupLocations/local/backups/<backup ID>
+      Name              : local/<local name>
+      Type              : Microsoft.Backup.Admin/backupLocations/backups
+      Location          : local
+      Tags              : {}
+  ```
+
+## <a name="confirm-backup-completed-in-the-administration-portal"></a>Erősítse meg a biztonsági mentés a felügyeleti portál
+
+1. Nyissa meg az Azure Stack felügyeleti portálon található [ https://adminportal.local.azurestack.external ](https://adminportal.local.azurestack.external).
+2. Válassza ki **további szolgáltatások** > **infrastruktúra biztonsági mentését**. Válasszon **konfigurációs** a a **infrastruktúra biztonsági mentését** panelen.
+3. Keresse meg a **neve** és **dátuma** a biztonsági mentési **elérhető biztonsági másolatok** listája.
 4. Ellenőrizze a **állapot** van **sikeres**.
-
-<!-- You can also confirm the backup completed from the administration portal. Navigate to `\MASBackup\<datetime>\<backupid>\BackupInfo.xml`
-
-In ‘Confirm backup completed’ section, the path at the end doesn’t make sense (ie relative to what, datetime format, etc?)
-\MASBackup\<datetime>\<backupid>\BackupInfo.xml -->
-
 
 ## <a name="next-steps"></a>További lépések
 
-- További információ a munkafolyamat helyreállítására, adatvesztési eseményhez. Lásd: [végzetes adatvesztés helyreállíthatók](azure-stack-backup-recover-data.md).
+- További információ a munkafolyamat adatvesztési esemény utáni helyreállításhoz. Lásd: [végzetes adatvesztés utáni helyreállítás](azure-stack-backup-recover-data.md).

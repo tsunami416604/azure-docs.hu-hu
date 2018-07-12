@@ -14,20 +14,20 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 04/20/2018
 ms.author: tdykstra
-ms.openlocfilehash: 0179a48b74ef0e37d3ac2e7fd18d43e488a89823
-ms.sourcegitcommit: 4597964eba08b7e0584d2b275cc33a370c25e027
+ms.openlocfilehash: 020a775c45ef3c46f9dfc5da7d4a7e470def4705
+ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37341382"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38969911"
 ---
 # <a name="durable-functions-publishing-to-azure-event-grid-preview"></a>Durable Functions közzétételét az Azure Event Grid (előzetes verzió)
 
-Ez a cikk bemutatja, hogyan állítható be Azure Durable Functions egyéni vezénylési életciklussal kapcsolatos események (például a létrehozott, befejezett, és a sikertelen) közzétételére [Azure Event Grid-témakör](https://docs.microsoft.com/en-us/azure/event-grid/overview). 
+Ez a cikk bemutatja, hogyan állítható be Azure Durable Functions egyéni vezénylési életciklussal kapcsolatos események (például a létrehozott, befejezett, és a sikertelen) közzétételére [Azure Event Grid-témakör](https://docs.microsoft.com/azure/event-grid/overview). 
 
 Az alábbiakban néhány olyan forgatókönyvekben, ahol ez a funkció hasznos:
 
-* **DevOps-forgatókönyvekre, mint kék vagy zöld üzembe**: érdemes tudni, hogy ha implementálása előtt minden feladatot futtatja a [egymás melletti központi telepítési stratégiát](https://docs.microsoft.com/en-us/azure/azure-functions/durable-functions-versioning#side-by-side-deployments).
+* **DevOps-forgatókönyvekre, mint kék vagy zöld üzembe**: érdemes tudni, hogy ha implementálása előtt minden feladatot futtatja a [egymás melletti központi telepítési stratégiát](https://docs.microsoft.com/azure/azure-functions/durable-functions-versioning#side-by-side-deployments).
 
 * **Speciális monitorozás és diagnosztika támogatási**: Ön is nyomon követheti, orchestration állapotinformációit, például SQL-adatbázis vagy a cosmos DB lekérdezésekhez optimalizált külső tárban.
 
@@ -36,19 +36,19 @@ Az alábbiakban néhány olyan forgatókönyvekben, ahol ez a funkció hasznos:
 ## <a name="prerequisites"></a>Előfeltételek
 
 * Telepítés [Microsoft.Azure.WebJobs.Extensions.DurableTask](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.DurableTask) 1.3.0-rc vagy újabb a Durable Functions-projekt.
-* Telepítés [Azure Storage Emulator](https://docs.microsoft.com/en-us/azure/storage/common/storage-use-emulator).
-* Telepítés [Azure CLI 2.0](https://docs.microsoft.com/en-us/cli/azure/?view=azure-cli-latest) vagy [Azure Cloud Shell](https://docs.microsoft.com/en-us/azure/cloud-shell/overview)
+* Telepítés [Azure Storage Emulator](https://docs.microsoft.com/azure/storage/common/storage-use-emulator).
+* Telepítés [Azure CLI 2.0](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) vagy [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview)
 
 ## <a name="create-a-custom-event-grid-topic"></a>Egy egyéni Event Grid-témakör létrehozása
 
 Hozzon létre egy Event Grid-témakör Durable Functions származó események küldéséhez. Az alábbi utasításokat a témakör létrehozásához az Azure CLI-vel szemléltetik. Megtudhatja, hogyan teheti a PowerShell vagy az Azure portal használatával kapcsolatos információkért tekintse meg a következő cikkeket:
 
-* [EventGrid rövid útmutató: Egyéni esemény létrehozása – PowerShell](https://docs.microsoft.com/en-us/azure/event-grid/custom-event-quickstart-powershell)
-* [EventGrid rövid útmutató: Egyéni esemény létrehozása – Azure portal](https://docs.microsoft.com/en-us/azure/event-grid/custom-event-quickstart-portal)
+* [EventGrid rövid útmutató: Egyéni esemény létrehozása – PowerShell](https://docs.microsoft.com/azure/event-grid/custom-event-quickstart-powershell)
+* [EventGrid rövid útmutató: Egyéni esemény létrehozása – Azure portal](https://docs.microsoft.com/azure/event-grid/custom-event-quickstart-portal)
 
 ### <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
 
-Hozzon létre egy erőforráscsoportot a `az group create` parancsot. Event Grid jelenleg nem támogatja az összes régióban. Információ arról, hogy mely régiókban érhető el: a [Event Grid áttekintése](https://docs.microsoft.com/en-us/azure/event-grid/overview). 
+Hozzon létre egy erőforráscsoportot a `az group create` parancsot. Event Grid jelenleg nem támogatja az összes régióban. Információ arról, hogy mely régiókban érhető el: a [Event Grid áttekintése](https://docs.microsoft.com/azure/event-grid/overview). 
 
 ```bash
 az group create --name eventResourceGroup --location westus2
@@ -115,7 +115,7 @@ A témakör kulcsot az Alkalmazásbeállítás beállítása a függvényalkalma
 }
 ```
 
-Győződjön meg arról, hogy [Storage Emulator](https://docs.microsoft.com/en-us/azure/storage/common/storage-use-emulator) működik. Tanácsos futtatni a `AzureStorageEmulator.exe clear all` parancs végrehajtása előtt.
+Győződjön meg arról, hogy [Storage Emulator](https://docs.microsoft.com/azure/storage/common/storage-use-emulator) működik. Tanácsos futtatni a `AzureStorageEmulator.exe clear all` parancs végrehajtása előtt.
 
 ## <a name="create-functions-that-listen-for-events"></a>Az események függvények létrehozása
 
@@ -147,7 +147,7 @@ public static void Run(JObject eventGridEvent, TraceWriter log)
 }
 ```
 
-Válassza a(z) `Add Event Grid Subscription` lehetőséget. Ez a művelet hozzáad egy Event Grid-előfizetést, az Ön által létrehozott Event Grid-témakör. További információkért lásd: [az Azure Event Griddel kapcsolatos fogalmak](https://docs.microsoft.com/en-us/azure/event-grid/concepts)
+Válassza a(z) `Add Event Grid Subscription` lehetőséget. Ez a művelet hozzáad egy Event Grid-előfizetést, az Ön által létrehozott Event Grid-témakör. További információkért lásd: [az Azure Event Griddel kapcsolatos fogalmak](https://docs.microsoft.com/azure/event-grid/concepts)
 
 ![Válassza ki az Event Grid-Trigger hivatkozásra.](media/durable-functions-event-publishing/eventgrid-trigger-link.png)
 
@@ -262,10 +262,10 @@ Az alábbi lista ismerteti az életciklus-események séma:
 * **ID**: az Event Grid-esemény egyedi azonosítója.
 * **tulajdonos**: az esemény tárgya elérési útját. `durable/orchestrator/{orchestrationRuntimeStatus}`. `{orchestrationRuntimeStatus}` lesz `Running`, `Completed`, `Failed`, és `Terminated`.  
 * **adatok**: Durable Functions-specifikus paramétereket.
-    * **hubName**: [TaskHub](https://docs.microsoft.com/en-us/azure/azure-functions/durable-functions-task-hubs) nevét.
+    * **hubName**: [TaskHub](https://docs.microsoft.com/azure/azure-functions/durable-functions-task-hubs) nevét.
     * **Függvénynév**: Orchestrator függvény neve.
     * **instanceId**: instanceId Durable Functions.
-    * **OK**: a követési esemény társított további adatokat. További információkért lásd: [(az Azure Functions) Durable Functions-diagnosztika](https://docs.microsoft.com/en-us/azure/azure-functions/durable-functions-diagnostics)
+    * **OK**: a követési esemény társított további adatokat. További információkért lásd: [(az Azure Functions) Durable Functions-diagnosztika](https://docs.microsoft.com/azure/azure-functions/durable-functions-diagnostics)
     * **runtimeStatus**: Vezénylési futásidejű állapot. Fut, befejezett, sikertelen, meg lett szakítva. 
 * **esemény típusa**: "orchestratorEvent"
 * **eventTime**: esemény időpontja (UTC).

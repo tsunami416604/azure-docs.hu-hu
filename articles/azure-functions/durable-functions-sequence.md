@@ -1,6 +1,6 @@
 ---
-title: Működik a tartós funkciókkal - Azure-láncolás
-description: Megtudhatja, hogyan futtasson egy tartós funkciók mintát, amely a funkciók egy műveletsorozatot hajt végre.
+title: Durable Functions - Azure-láncolás függvény
+description: Ismerje meg, hogyan futtathat egy Durable Functions-minta, amely végrehajtja a funkciók sorozatát.
 services: functions
 author: cgillum
 manager: cfowler
@@ -14,104 +14,104 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 03/19/2018
 ms.author: azfuncdf
-ms.openlocfilehash: e53b38bf336816ca670fad3ab70a43e5cc8b3437
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: a5b337e5318154e299f82b1102ca832303d752f7
+ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33763560"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38970054"
 ---
-# <a name="function-chaining-in-durable-functions---hello-sequence-sample"></a>A tartós funkciók - Hello feladatütemezési minta láncolás működik
+# <a name="function-chaining-in-durable-functions---hello-sequence-sample"></a>Durable Functions - Hello feladatütemezési minta a láncolási függvény
 
-A minta a funkciók sorozatát végrehajtási meghatározott sorrendben függvény láncolás hivatkozik. A kimenet egy függvény gyakran kell másik függvény a bemeneti alkalmazható. Ez a cikk ismerteti egy használó mintaalkalmazás [tartós funkciók](durable-functions-overview.md) láncolás függvény végrehajtásához.
+Függvény-láncolás a minta egy adott sorrendben hajtsa végre a funkciók sorozatát jelenti. A kimenet egy függvény gyakran kell egy másik függvény a bemeneti alkalmazható. Ez a cikk azt ismerteti, használó minta [Durable Functions](durable-functions-overview.md) láncolási függvény végrehajtásához.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* [Telepítse a tartós funkciók](durable-functions-install.md).
+* [Durable Functions telepítése](durable-functions-install.md).
 
-## <a name="the-functions"></a>A Funkciók
+## <a name="the-functions"></a>Az funkciók
 
 Ez a cikk ismerteti a mintaalkalmazást a következő funkciókat:
 
-* `E1_HelloSequence`: Az orchestrator függvény, amely behívja `E1_SayHello` többször sorrendje egy sorozatban. A kimeneteinek tárol a `E1_SayHello` hívja, és a eredményeit rögzíti.
-* `E1_SayHello`: Egy tevékenység függvény, amely lefoglalja a karakterlánc a "Hello"szövegrészt.
+* `E1_HelloSequence`: Egy orchestrator-függvény, amely meghívja a `E1_SayHello` többször sorrendben. A kimenő adatait tárolja a `E1_SayHello` hívások, valamint rögzíti az eredményeket.
+* `E1_SayHello`: Egy tevékenység-függvény, amely lefoglalja a "Hello" karakterlánc.
 
-Az alábbi szakaszok ismertetik a konfiguráció és a C# a parancsfájlkezelést, és a JavaScript használt kódot. A Visual Studio fejlesztési kód a cikk végén meg.
+Az alábbi szakaszok ismertetik a konfiguráció és a C# a parancsfájlkezelést, és a JavaScript által használt kódot. A Visual Studio fejlesztési kód a cikk végén található meg.
 
 > [!NOTE]
-> Tartós funkciók érhető el a JavaScript csak a v2 funkciók futtatókörnyezetben.
+> Tartós függvények a v2 Functions futtatókörnyezete csak a JavaScript érhető el.
 
 ## <a name="e1hellosequence"></a>E1_HelloSequence
-### <a name="functionjson-file"></a>Function.JSON fájl
+### <a name="functionjson-file"></a>Function.JSON fájlt
 
-Ha Visual Studio Code vagy az Azure-portálon fejlesztési, itt van tartalma a *function.json* az orchestrator függvény fájlt. A legtöbb orchestrator *function.json* fájlok szinte teljesen így jelennek meg.
+Ha Visual Studio Code vagy az Azure portal-fejlesztéshez, Íme a tartalmát a *function.json* az orchestrator függvény fájlt. A legtöbb orchestrator *function.json* fájlokat, így szinte teljesen jelennek meg.
 
 [!code-json[Main](~/samples-durable-functions/samples/csx/E1_HelloSequence/function.json)]
 
-Fontos, a `orchestrationTrigger` kötéstípus. Minden orchestrator-funkciók az indítási típust kell használnia.
+A lényeg az, a `orchestrationTrigger` typ vazby. Orchestrator összes függvényt kell használnia a trigger típusa.
 
 > [!WARNING]
-> Elfogadják a "nincs i/o" szabály orchestrator funkciók, ne használja a bemeneti vagy kimeneti kötések használatakor a `orchestrationTrigger` indítás kötés.  Ha más bemeneti vagy kimeneti kötések van szükség, azok helyette használandó környezetében `activityTrigger` függvények, amelyek az orchestrator által meghívott.
+> Betartja a orchestrator funkciók a "nincs i/o" szabályt, nem használja minden olyan bemeneti vagy kimeneti kötés használatakor a `orchestrationTrigger` kötés aktiválásához.  Ha más bemeneti vagy kimeneti kötések van szükség, kell helyette használni őket kontextusában `activityTrigger` függvények, amelyek az orchestrator által meghívott.
 
-### <a name="c-script-visual-studio-code-and-azure-portal-sample-code"></a>C# parancsfájl (Visual Studio Code és az Azure portál mintakód) 
+### <a name="c-script-visual-studio-code-and-azure-portal-sample-code"></a>C#-szkript (Visual Studio Code és az Azure portal minta kód) 
 
-A forrás kód itt látható:
+A következő kódot:
 
 [!code-csharp[Main](~/samples-durable-functions/samples/csx/E1_HelloSequence/run.csx)]
 
-Minden C# vezénylési funkciók típusú paramétert kell `DurableOrchestrationContext`, amely megtalálható a `Microsoft.Azure.WebJobs.Extensions.DurableTask` szerelvény. C#-parancsfájlok használata, ha a szerelvény is használatával lehet hivatkozni a `#r` jelöléssel. A környezeti objektumot lehetővé teszi, hogy másik hívás *tevékenység* funkciók és pass bemeneti paraméterek használata a [CallActivityAsync](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_CallActivityAsync_) metódust.
+C# vezénylés a függvények rendelkeznie kell egy paraméter típusa `DurableOrchestrationContext`, amely megtalálható a `Microsoft.Azure.WebJobs.Extensions.DurableTask` sestavení. Ha a C#-szkript használata esetén a szerelvény lehet rá hivatkozni használatával a `#r` jelöléssel. A környezeti objektumon teszi lehetővé más hívás *tevékenység* függvényeket, és adja át a bemeneti paramétereket használja a [CallActivityAsync](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_CallActivityAsync_) metódus.
 
-A kód hívások `E1_SayHello` háromszor sorrendben különböző paraméterértékekkel. Minden hívás visszatérési értékének hozzáadódik a `outputs` lista, amelyet a függvény végén adja vissza.
+A kód meghívja `E1_SayHello` háromszor sorrendben exportálásánál különböző paraméterértékekkel. A visszaadott érték az egyes hívások adnak hozzá a `outputs` listát, amely a függvény végén adja vissza.
 
 ### <a name="javascript"></a>Javascript
 
-A forrás kód itt látható:
+A következő kódot:
 
 [!code-javascript[Main](~/samples-durable-functions/samples/javascript/E1_HelloSequence/index.js)]
 
-Minden JavaScript vezénylési funkciók tartalmaznia kell a `durable-functions` modul. Ez az a következőkből fordítja le a vezénylési függvény műveletek tartós meg végrehajtási protokoll folyamaton a nyelvek esetén a JavaScript-függvénytárat. Az orchestration függvény és más JavaScript-funkcióként között három jelentős különbség van:
+JavaScript a vezénylési függvények tartalmaznia kell a `durable-functions` modul. Ez az egy JavaScript-függvénytárat, amely lefordítja a vezénylési függvény műveletek a tartós végrehajtás protokoll folyamaton kívüli nyelv be. Van egy vezénylési függvényt és egyéb JavaScript-függvények közötti három jelentős különbség:
 
-1. A függvény egy [generátor függvény.](https://docs.microsoft.com/en-us/scripting/javascript/advanced/iterators-and-generators-javascript)
-2. A funkció be van burkolva hívásakor a `durable-functions` modul (Itt `df`).
-3. A függvény meghívásával karakterlánccal végződik-e `return`, nem `context.done`.
+1. A függvény egy [generátor függvény.](https://docs.microsoft.com/scripting/javascript/advanced/iterators-and-generators-javascript)
+2. A függvény hívása van csomagolva az `durable-functions` modul (Itt `df`).
+3. A függvény meghívásával ér véget `return`, nem `context.done`.
 
-A `context` objektum tartalmaz egy `df` objektum lehetővé teszi, hogy másik hívás *tevékenység* funkciók és pass bemeneti paraméterek használata a `callActivityAsync` metódus. A kód hívások `E1_SayHello` háromszor sorrendben különböző paraméterértékekkel használatával `yield` annak jelzésére, hogy a végrehajtási megvárja-e a tevékenység aszinkron függvényhívások vissza kell adni. Minden hívás visszatérési értékének hozzáadódik a `outputs` lista, amelyet a függvény végén adja vissza.
+A `context` az objektum tartalmaz egy `df` objektum teszi lehetővé más hívás *tevékenység* függvényeket, és adja át a bemeneti paramétereket használja a `callActivityAsync` metódus. A kód meghívja `E1_SayHello` háromszor sorrendben exportálásánál különböző paraméterértékekkel használatával `yield` jelzi a végrehajtás a tevékenység aszinkron függvényhívások vissza kell várnia kell. A visszaadott érték az egyes hívások adnak hozzá a `outputs` listát, amely a függvény végén adja vissza.
 
 ## <a name="e1sayhello"></a>E1_SayHello
-### <a name="functionjson-file"></a>Function.JSON fájl
+### <a name="functionjson-file"></a>Function.JSON fájlt
 
-A *function.json* fájl a tevékenység függvény `E1_SayHello` hasonló az `E1_HelloSequence` azzal a különbséggel, hogy használja az `activityTrigger` kötéstípus ahelyett, hogy egy `orchestrationTrigger` kötéstípus.
+A *function.json* fájl a tevékenység függvény `E1_SayHello` a hasonló `E1_HelloSequence` azzal a különbséggel, hogy használja egy `activityTrigger` kötéstípus helyett egy `orchestrationTrigger` typ vazby.
 
 [!code-json[Main](~/samples-durable-functions/samples/csx/E1_SayHello/function.json)]
 
 > [!NOTE]
-> Az orchestration függvény által meghívott függvényeket kell használnia a `activityTrigger` kötés.
+> Egy vezénylési függvény által meghívott függvényeket kell használnia a `activityTrigger` kötést.
 
-Végrehajtásának `E1_SayHello` egy viszonylag trivial művelet formázási karakterlánc.
+Végrehajtásának `E1_SayHello` formázási művelet viszonylag triviális karakterlánc.
 
 ### <a name="c"></a>C#
 
 [!code-csharp[Main](~/samples-durable-functions/samples/csx/E1_SayHello/run.csx)]
 
-Ez a függvény típusú paraméterrel rendelkezik [DurableActivityContext](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableActivityContext.html), az orchestrator függvény által átadott bemeneti eléréséhez használt [ `CallActivityAsync<T>` ](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_CallActivityAsync_).
+Ez a függvény típusú paraméterrel rendelkezik [DurableActivityContext](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableActivityContext.html), amellyel az orchestrator-függvény hívása által átadott bemeneteként [ `CallActivityAsync<T>` ](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_CallActivityAsync_).
 
 ### <a name="javascript"></a>JavaScript
 
 [!code-javascript[Main](~/samples-durable-functions/samples/javascript/E1_SayHello/index.js)]
 
-Eltérően a JavaScript vezénylési JavaScript tevékenység függvényt kell semmilyen különleges beállítás. Az orchestrator függvény által átadott bemenetet található a `context.bindings` objektum neve alatt a `activitytrigger` kötés – ebben az esetben `context.bindings.name`. A kötés neve lehet beállítani az exportált függvény paramétereként és érhető el közvetlenül, amely példakód funkciója.
+JavaScript-vezénylési függvény eltérően tevékenység JavaScript-függvény kell semmilyen speciális beállítást. A bemeneti az orchestrator függvény által átadott található a `context.bindings` objektum neve alatt található a `activitytrigger` kötés – ebben az esetben `context.bindings.name`. A kötés neve lehet állítja be az exportált függvény egy paramétert és érhető el közvetlenül, amely a mintakód leírása.
 
 ## <a name="run-the-sample"></a>Minta futtatása
 
-Végrehajtásához a `E1_HelloSequence` vezénylési, a következő HTTP POST kérelem küldése.
+Végrehajtásához a `E1_HelloSequence` vezénylés, a következő HTTP POST kérés küldése.
 
 ```
 POST http://{host}/orchestrators/E1_HelloSequence
 ```
 
-Például ha a minta egy "myfunctionapp" nevű funkció alkalmazást futtatja, cserélje le az "{állomás}" "myfunctionapp.azurewebsites.net".
+Például ha a minta egy függvényalkalmazáshoz "myfunctionapp" nevű rendszert használ, cserélje le "{host}" "myfunctionapp.azurewebsites.net".
 
-Az eredménye egy HTTP 202 választ, ilyen (rövidített kivonatosan mutatja):
+Az eredmény egy HTTP-202 választ (az áttekinthetőség vágott) ehhez hasonló lesz:
 
 ```
 HTTP/1.1 202 Accepted
@@ -122,13 +122,13 @@ Location: http://{host}/admin/extensions/DurableTaskExtension/instances/96924899
 (...trimmed...)
 ```
 
-Ezen a ponton a vezénylési sorba van, és azonnal futtatni kezdődik. Az URL-címet a `Location` fejléc segítségével ellenőrizze a végrehajtási állapotát.
+Ezen a ponton a vezénylési várólistára van, és azonnal futni kezd. Az URL-címet a `Location` fejlécet is használható a végrehajtási állapotának ellenőrzéséhez.
 
 ```
 GET http://{host}/admin/extensions/DurableTaskExtension/instances/96924899c16d43b08a536de376ac786b?taskHub=DurableFunctionsHub&connection=Storage&code={systemKey}
 ```
 
-A vezénylési állapotának eredménye. Fut, és gyorsan, elkészül, így azt a *befejezve* állapot választ adott a következőképpen néz ki (rövidített kivonatosan mutatja):
+Ez a vezénylési állapotát. Fut, és gyorsan, befejeződik, így látható, a *befejezve* állapot, a válasz a következőhöz hasonló (az áttekinthetőség vágott):
 
 ```
 HTTP/1.1 200 OK
@@ -138,22 +138,22 @@ Content-Type: application/json; charset=utf-8
 {"runtimeStatus":"Completed","input":null,"output":["Hello Tokyo!","Hello Seattle!","Hello London!"],"createdTime":"2017-06-29T05:24:57Z","lastUpdatedTime":"2017-06-29T05:24:59Z"}
 ```
 
-Ahogy látja, a `runtimeStatus` példány van *befejezve* és a `output` orchestrator függvény végrehajtása JSON-szerializált eredményét tartalmazza.
+Amint láthatja, a `runtimeStatus` , de a példány *befejezve* és a `output` orchestrator függvény végrehajtása JSON-szerializált eredményét tartalmazza.
 
 > [!NOTE]
-> A HTTP POST-végpont, fut-e az orchestrator függvény meg van valósítva a mintaalkalmazást, mint a HTTP "HttpStart" nevű funkció. Eseményindító egyéb hasonló alapszintű logikát Megvalósíthat például `queueTrigger`, `eventHubTrigger`, vagy `timerTrigger`.
+> A HTTP POST-végpontot, amely az orchestrator függvény lépések implementálva van a mintaalkalmazást, mint a HTTP-trigger "HttpStart" nevű függvény. Megvalósíthat például minden olyan eseményindító esetében hasonló kezdő szintű logikai `queueTrigger`, `eventHubTrigger`, vagy `timerTrigger`.
 
-Tekintse meg a függvény végrehajtási naplót. A `E1_HelloSequence` függvény elindult, és több alkalommal leírt ismétlési hiba miatt befejeződött a [áttekintése](durable-functions-overview.md). Másrészről, történtek, csak három végrehajtások `E1_SayHello` mivel ezen függvény végrehajtások visszajátszani nem beolvasása.
+Tekintse meg a függvény végrehajtási naplókat. A `E1_HelloSequence` függvény elindult, és többször befejeződött leírt visszajátszását hiba miatt a [áttekintése](durable-functions-overview.md). Másrészről, volt, csak három végrehajtások `E1_SayHello` ezeket függvénykivételek visszajátszani nem lekérése óta.
 
-## <a name="visual-studio-sample-code"></a>A Visual Studio mintakód
+## <a name="visual-studio-sample-code"></a>A Visual Studio-mintakód
 
-Íme egy egyetlen C# fájlban található, a Visual Studio-projekt vezénylési:
+Az orchestration-fájlként egyetlen C# Visual Studio-projektet a következő:
 
 [!code-csharp[Main](~/samples-durable-functions/samples/precompiled/HelloSequence.cs)]
 
 ## <a name="next-steps"></a>További lépések
 
-Ez a példa azt mutatják, egy egyszerű függvény-láncolás vezénylési. A következő példa bemutatja, hogyan fan-kimenő/fan-a minta végrehajtásához. 
+Ez a minta egy egyszerű függvény-láncolás vezénylési bemutatta. A következő minta bemutatja a fan-kimenő/fan-a minta megvalósítása. 
 
 > [!div class="nextstepaction"]
-> [A Fan-kimenő/fan-a minta futtatásához](durable-functions-cloud-backup.md)
+> [Fan-kimenő/fan-a minta futtatása](durable-functions-cloud-backup.md)

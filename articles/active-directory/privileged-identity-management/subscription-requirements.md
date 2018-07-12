@@ -16,12 +16,12 @@ ms.component: protection
 ms.date: 06/01/2017
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: b4322ab5c90b04cf4eb0591e97e5e026664a2769
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 681169fc3db69c2dfb8aa36d6e2896e0ddba8b56
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37442372"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38548128"
 ---
 # <a name="azure-active-directory-privileged-identity-management-subscription-requirements"></a>Az Azure Active Directory Privileged Identity Management előfizetési követelmények
 
@@ -38,7 +38,7 @@ Ha nem biztos abban, hogy a szervezet rendelkezik-e a próbaverzióra vagy vás�
 2. Adja meg `Connect-MsolService` a bérlő felhasználói hitelesítést.
 3. Adja meg `Get-MsolSubscription | ft SkuPartNumber,IsTrial,Status`.
 
-Ez a parancs lekéri a bérlő az előfizetések listáját. Ha nincs visszaadott sor, szüksége lesz egy Azure AD Premium P2 próbaverziójának, vásárlás beszerzése az Azure AD Premium P2 szintű előfizetésre vagy EMS E5 csomagra szóló előfizetés az Azure AD Privileged Identity Management használatához.  A próbaverzió és az Azure AD Privileged Identity Management használatának megkezdése, olvassa el [Ismerkedés az Azure AD Privileged Identity Management](../active-directory-privileged-identity-management-getting-started.md).
+Ez a parancs lekéri a bérlő az előfizetések listáját. Ha nincs visszaadott sor, szüksége lesz egy Azure AD Premium P2 próbaverziójának, vásárlás beszerzése az Azure AD Premium P2 szintű előfizetésre vagy EMS E5 csomagra szóló előfizetés az Azure AD Privileged Identity Management használatához.  A próbaverzió és az Azure AD Privileged Identity Management használatának megkezdése, olvassa el [Ismerkedés az Azure AD Privileged Identity Management](pim-getting-started.md).
 
 Ha ez a parancs visszaadja a sor melyik SkuPartNumber "AAD_PREMIUM_P2" vagy "EMSPREMIUM" és a IsTrial értéke "True", ez azt jelzi, hogy az Azure AD Premium P2 próbaverziójára megtalálható a bérlőben.  Ha nincs engedélyezve az előfizetési állapotot, és nem kell vásárolni az Azure AD Premium P2 vagy az EMS E5 előfizetéssel, majd meg kell vásárolnia egy Azure AD Premium P2 szintű előfizetésre, vagy az EMS E5 csomagra szóló előfizetés az Azure AD Privileged Identity Management használatának folytatásához.
 
@@ -61,5 +61,5 @@ Ha egy Azure AD Premium P2 szintű előfizetésre, vagy az EMS E5 csomagra szól
 
 ## <a name="next-steps"></a>További lépések
 
-- [Az Azure AD Privileged Identity Management – első lépések](../active-directory-privileged-identity-management-getting-started.md)
-- [Szerepkörök az Azure AD Privileged Identity Management](../active-directory-privileged-identity-management-roles.md)
+- [Az Azure AD Privileged Identity Management – első lépések](pim-getting-started.md)
+- [Szerepkörök az Azure AD Privileged Identity Management](pim-roles.md)

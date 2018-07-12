@@ -14,18 +14,18 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 04/30/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 4f09fa7b3f2aff38a016626af2d538f1eab3f5e8
-ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
+ms.openlocfilehash: 0bc88a510c05e88351b4ac7d69839a37c0e4fdd8
+ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37856623"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38970489"
 ---
 # <a name="durable-functions-overview"></a>Durable Functions áttekintése
 
 *Durable Functions* kiterjesztése [Azure Functions](functions-overview.md) és [Azure webjobs-feladatok](../app-service/web-sites-create-web-jobs.md) , amellyel írási állapot-nyilvántartó functions egy kiszolgáló nélküli környezetben. A bővítmény kezeli a állapot, ellenőrzőpontok és újraindul az Ön számára.
 
-A bővítmény lehetővé teszi, hogy egy új típusú nevű függvény az állapot-nyilvántartó munkafolyamatok meghatározhatja egy *vezérlőfüggvény*. Íme néhány az orchestrator-funkciók előnyeit:
+A bővítmény lehetővé teszi, hogy egy új típusú nevű függvény az állapot-nyilvántartó munkafolyamatok meghatározhatja egy [ *vezérlőfüggvény*](durable-functions-types-features-overview.md#orchestrator-functions). Íme néhány az orchestrator-funkciók előnyeit:
 
 * A munkafolyamatok definiálják a kódban. JSON-sémáinak vagy tervezők nem szükségesek.
 * Más funkciók is hívják meg szinkron és aszinkron módon történik. Meghívott függvényeken kimenete melyekbe menthetők a helyi változókhoz.
@@ -340,7 +340,7 @@ Az orchestrator funkciók képesek megbízhatóan fenntartani a végrehajtási �
 
 Az Event Sourcing a bővítmény által használata átlátszó. Valójában a `await` operátor szerepel egy orchestrator-függvényt az orchestrator szál irányítását poskytne térjen vissza a tartós feladat keretrendszer dispatcher. A kézbesítő fel minden olyan új műveletek (például egy vagy több alárendelt függvények hívása, vagy egy tartós időzítő ütemezésének) ütemezett az orchestrator függvény ezután véglegesíti Storage. A transzparens véglegesítési művelet fűz a *futtatási előzményei* orchestration-példány. Az előzmények tárolása egy tárolótáblában. A véglegesítési művelet üzeneteket ad hozzá egy üzenetsorba, a tényleges feladatok ütemezéséhez. Ezen a ponton az orchestrator függvény memóriából lehet. A számlázás, leállítja a használata az Azure Functions Használatalapú csomagban.  Ha több munka elvégzéséhez, a függvény újraindítását, és állapotában újraépíti.
 
-Miután egy vezénylési függvény van megadva ehhez további munkahelyi (például egy válaszüzenetet érkezik, vagy egy tartós időzítő lejár), az orchestrator felébred újra és újra végrehajtja a kezdetektől a teljes függvény annak érdekében, hogy építse újra a helyi állapotot. Ha az ismétlés során a kód megpróbálja meghívni a függvényt (vagy bármely más aszinkron munkahelyi), tartós feladat keretében a csúcskategóriás a *futtatási előzményei* , az aktuális vezénylési. Ha úgy találja, hogy a tevékenység függvény már végre lett hajtva kurzorműveletnek néhány eredmény, visszajátssza a függvény eredménye, és az orchestrator kód fusson tovább. Ez továbbra is fennáll, addig, amíg a függvénykódot beolvasása, vagy befejeződött vagy ütemezett új aszinkron során van egy pontra történik.
+Miután egy vezénylési függvény van megadva ehhez további munkahelyi (például egy válaszüzenetet érkezik, vagy egy tartós időzítő lejár), az orchestrator felébred újra és újra végrehajtja a kezdetektől a teljes függvény annak érdekében, hogy építse újra a helyi állapotot. Ha az ismétlés során a kód megpróbálja meghívni a függvényt (vagy bármely más aszinkron munkahelyi), tartós feladat keretében a csúcskategóriás a *futtatási előzményei* , az aktuális vezénylési. Ha úgy találja, hogy a [tevékenység függvény](durable-functions-types-features-overview.md#activity-functions) eredménye már végrehajtott és kurzorműveletnek néhány, a függvény eredménye visszajátssza és az orchestrator kód fusson tovább. Ez továbbra is fennáll, addig, amíg a függvénykódot beolvasása, vagy befejeződött vagy ütemezett új aszinkron során van egy pontra történik.
 
 ### <a name="orchestrator-code-constraints"></a>Az orchestrator kód megkötései
 
@@ -384,7 +384,7 @@ Az összes ismert problémák nyomon követése a [GitHub-problémák](https://g
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Olvassa Durable Functions – dokumentáció](durable-functions-bindings.md)
+> [Olvassa Durable Functions – dokumentáció](durable-functions-types-features-overview.md)
 
 > [!div class="nextstepaction"]
 > [Telepítse a Durable Functions bővítmény és a minták](durable-functions-install.md)

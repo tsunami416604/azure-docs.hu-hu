@@ -1,6 +1,6 @@
 ---
-title: A Power BI - Azure használatával távoli figyelési adatok megjelenítése |} Microsoft Docs
-description: Ez az oktatóanyag a Power BI Desktop és használja Cosmos DB integerate adatok egy távoli figyelésére szolgáló megoldás a testreszabott képi megjelenítés be. A felhasználók a saját egyéni irányítópultok építhetnek és megosztásához azokat nem a megoldás a felhasználók számára.
+title: Távoli figyelési adatok megjelenítése használatával a Power bi-ban – Azure |} A Microsoft Docs
+description: Ebben az oktatóanyagban a Power BI Desktop és a Cosmos DB integerate adatok távoli figyelési megoldást, egy egyéni vizualizációt. Így a felhasználók is a saját egyéni irányítópultok létrehozása és megosztása őket, ne a megoldás a felhasználók számára.
 author: asdonald
 manager: hegate
 ms.author: asdonald
@@ -8,103 +8,103 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 05/01/2018
 ms.topic: conceptual
-ms.openlocfilehash: e396d69a61679a85fdfbd3e8fd43216635dec51d
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: ae039573cf202059114f23cca86207c117a35ead
+ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34627790"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38970401"
 ---
-# <a name="visualize-remote-monitoring-data-using-power-bi"></a>A Power BI használatával távoli figyelési adatok megjelenítése
+# <a name="visualize-remote-monitoring-data-using-power-bi"></a>A Power BI segítségével történő távoli megfigyelési adatok megjelenítése
 
-Ez az oktatóanyag végigvezeti beépülő modul távoli figyelési megoldást adatait a Power BI-bA CosmosDB módjáról. A a kapcsolat létrejött majd a saját egyéni irányítópultot létrehozni, szabadon adja hozzá a távoli figyelési megoldást irányítópult alakzatot vissza. A workstream konkrétabb diagramjait keletkezik, kívül, amelyekbe már nem teszi lehetővé. Ez az oktatóanyag integrálása más adatfolyamokat vagy egyéni irányítópultok számára a távoli figyelésére szolgáló megoldás kívül használhatja. A Power BI irányítópultok felépítése azt jelenti, hogy minden egyes panel egymással nehezen kiválasztásakor is tehet. Például lehet egy, a szimulált teherautók csak információkat jeleníti meg, szűrő, és minden egyes adatra az irányítópult volna módosításának csak szimulált teherautó információk megjelenítéséhez. Ha azt szeretné, csak a Power BI eszközök használata, ezeket a lépéseket a képi megjelenítés tetszőleges eszköz általi használatát, és ha létrehozott egy Cosmos-adatbázis, vagy egyéni adatbázis bekapcsolódhatnak is kiterjeszthető. 
+Ez az oktatóanyag végigvezeti a távoli figyelési megoldás adatok a Power BI-bA CosmosDB beépülő modul hogyan. Ez a kapcsolat létrejött is majd a saját egyéni irányítópultokat hozhat létre, és adja hozzá őket vissza arra a távoli figyelési megoldás irányítópultján. Ez workstream lehetővé teszi a speciális diagramjait létrehozni, beépített kívül. Ebben az oktatóanyagban használhatja integrálása más adatfolyamokat, vagy a távoli figyelési megoldás kívül fogják egyéni irányítópultokat készíthet majd. A Power bi Szolgáltatásban irányítópultokat készít, az azt jelenti, hogy minden egyes egymással kapcsolatot tarthatnak egyes funkciódarabokat kiválasztása panel is teheti. Például lehet egy szűrőt, amely megjeleníti a szimulált látható információk csak adatait, és az irányítópult egyes adathordozónevek lenne használhatják csak szimulált teherautó információk megjelenítéséhez. Ha szeretné a Power BI eltérő eszközzel, ezeket a lépéseket, a tetszőleges vizualizációs eszköz használatát, és az, Cosmos-adatbázis, vagy egyéni adatbázis környezet igénybe vételét, ha már beállította egy is kiterjesztheti. 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Rendelkeznie kell egy távoli figyelésére szolgáló megoldás jelenleg fut.
-- Hozzáféréssel kell rendelkeznie [Azure Portal](https://portal.azure.com) és az előfizetés, amelyen az IoT Hub és a megoldás fut
-- Rendelkeznie kell [Power BI desktop](https://powerbi.microsoft.com) bármely verziójának fog tenni telepítve,
+- Rendelkeznie kell a távoli figyelési megoldás jelenleg fut.
+- Hozzáféréssel kell rendelkeznie [az Azure Portal](https://portal.azure.com) és az előfizetés, amelyre az IoT Hub és a megoldás futtatása
+- Rendelkeznie kell [Power BI desktop](https://powerbi.microsoft.com) telepítve van, bármely verziója újrabuildelése
 
 
-## <a name="information-needed-from-azure-portal"></a>Azure-portálon szükséges információk
+## <a name="information-needed-from-azure-portal"></a>Az Azure Portalról szükséges információk
 
-1. Navigáljon a [Azure Portal](https://portal.azure.com) , és jelentkezzen be, szükség esetén
+1. Navigáljon a [az Azure Portal](https://portal.azure.com) és szükség esetén jelentkezzen be
 
-2. A bal oldali panelen kattintson a csoportok
+2. A bal oldali panelen kattintson az erőforráscsoportok
 
-    ![Ügyféloldali Panel Nav](./media/iot-accelerators-integrate-data-powerbi/side_panel.png)
+    ![Panel navigációs oldal](./media/iot-accelerators-integrate-data-powerbi/side_panel.png)
 
-3. Keresse meg az erőforráscsoportot, amelyek az Iot-megoldásból fut, és kattintson adott erőforráscsoport – Áttekintés lapon kell fordítani. 
+3. Keresse meg az erőforráscsoportot, amelynek az Iot-megoldás fut-e, és kattintson az adott erőforráscsoportba tartozó – áttekintés oldalra kell venni. 
 
-4. Az adott áttekintése lapon kattintson az elem, amelynek típusa "Azure Cosmos DB fiók", majd megnyílik a Cosmos DB adatfolyam – áttekintés oldalra, hogy az IoT-megoldás.
+4. Az adott áttekintése oldalon kattintson az elem, amelynek típusa "Az Azure Cosmos DB-fiók", majd megnyílik a Cosmos DB-adatfolyam áttekintés oldalán, az adott IoT-megoldás.
 
     ![Erőforráscsoport](./media/iot-accelerators-integrate-data-powerbi/resource_groups.png)
 
-5. A bal oldali panelen kattintson a "Kulcsok" szakaszban, és jegyezze fel a Power bi használhatók a következő értékeket:
+5. A bal oldali panelen kattintson a "Kulcsok" szakaszban, és jegyezze fel a következő értékeket a Power bi használhatók:
 
     - URI
     - Elsődleges kulcs
 
     ![keys](./media/iot-accelerators-integrate-data-powerbi/keys.png)
 
-## <a name="setting-up-the-stream-in-power-bi"></a>A Power BI-adatfolyam beállítása
+## <a name="setting-up-the-stream-in-power-bi"></a>A Power bi-ban a Stream beállítása
   
-1. Nyissa meg a Power bi-ban egy asztali alkalmazás, és kattintson az "Adatok beolvasása" a bal felső sarkában. 
+1. Nyissa meg a Power bi-ban az asztali alkalmazások és az "Adatok lekérése" kattintson a bal felső sarokban. 
 
-    ![Adatok beolvasása](./media/iot-accelerators-integrate-data-powerbi/get_data.png)
+    ![Adatok lekérése](./media/iot-accelerators-integrate-data-powerbi/get_data.png)
 
-2. Adatok megadását kéri, válassza a "Azure Cosmos DB" keresése, és válassza ezt az összekötőt. Ez az összekötő lényegében kéri le az adatokat közvetlenül a az Azure IoT-megoldásból cosmos adatbázisból
+2. Ha a rendszer kéri, adja meg az adatokat, válassza az "Azure Cosmos DB" Search, és válassza ki a összekötőt. Ez az összekötő lényegében közvetlenül az Azure IoT-megoldások a cosmos-adatbázis az adatokat kér le
   
     ![Cosmos DB](./media/iot-accelerators-integrate-data-powerbi/cosmos_db.png)
   
-3. Adja meg az adatokat, amelyek fölött rögzített:
+3. Adja meg az adatokat, amelyek a fenti rögzített:
 
     * URI
     * Elsődleges kulcs
 
-4. Válassza ki a Power BI-bA importálni kívánt összes tábla. Ez a művelet az adatok betöltésének indítsa lesz. Minél hosszabb a megoldás fut, a hosszabb ideig is igénybe vehet az adatok betöltése (legfeljebb néhány óra). 
+4. Válassza ki a Power BI-bA importálni kívánt összes tábla. Ez a művelet elindít az adatok betöltését. A megoldás minél hosszabb ideje fut, a hosszabb ideig is igénybe vehet az adatok betöltéséhez (akár néhány órát). 
 
     ![Tábla importálása](./media/iot-accelerators-integrate-data-powerbi/import_tables.png)
 
-5. Miután befejezte az adatok betöltését, kattintson a "Szerkesztés" a lekérdezésekben Power BI felső sorában, és bontsa ki a táblákat a nyilak a sárga sávon minden táblához kattintva. Ez lényegében bővített az összes oszlopot. Megfigyelheti, milyen műveleteket, mint a nedvességnek, sebesség idő stb. az adatok nincsenek a megfelelő típusú.
+5. Miután befejeződött az adatok betöltése, kattintson a "Lekérdezések szerkesztése" a Power BI a felső sorba, és bontsa ki az összes táblát a sárga sáv minden egyes nyilakra kattintva. Ez lényegében bővített az összes oszlopot. Megfigyelheti, hogyan többek között az páratartalom, idő csökkentéséhez, stb. az adatok nem megfelelő típusú állnak.
 
     ![Új oszlop](./media/iot-accelerators-integrate-data-powerbi/new_column.png)
   
-    Például a Power BI-bA származó adatokat UNIX idő, amikor érkezett az összekötő segítségével történő megváltozott. Az átalakításhoz beállításához módosítástól fogva lehet egy olyan új oszlop létrehozása és használni a egyenlet idő dátumformátumra alakítja: 
+    Például a Power BI-bA érkező adatok módosítva lett, mikor, honnan az összekötőn keresztül UNIX-ideje. Az átalakításhoz beállításához továbbítja azt is egy olyan új oszlop létrehozása és használata a egyenlőségi kaphat a dátum-idő formátuma: 
 
     ```text
     #datetime(1970, 1, 1, 0, 0, 0) + #duration(0, 0, 0, [Document.device.msg.received]/1000)
     ```
 
-    ![Frissített tábla](./media/iot-accelerators-integrate-data-powerbi/updated_table.png)
+    ![Frissíteni a táblát](./media/iot-accelerators-integrate-data-powerbi/updated_table.png)
   
-    Document.Device.msg.Received UNIX formázással oszlop csak egy, és másokkal átalakítás igénylő helyett. 
+    Document.Device.msg.Received csak az egyik az oszlopok UNIX formázásával és helyett az átalakítás igénylő másokkal. 
   
-    Más adatpontok karakterlánc módosíthatja a Double típust vagy Int, ha a fentiek szerint lépések megfelelő használja ugyanazt lett konvertálva.
+    Egyéb adatpontok átalakítottunk karakterlánc is módosítható Double típusú értékekkel, típus vagy Int, ahol megfelelő lépésekkel a fentiek szerint.
 
 ## <a name="creating-a-dashboard"></a>Irányítópult létrehozása
 
-Az adatfolyam a csatlakozás után készen áll a testreszabott irányítópultok létrehozásával! Az alábbi irányítópult véve a telemetriai adatokat a szimulált eszköz immmited alatt, és különböző megjelenítő pivots köré, mint például: 
+A stream a csatlakozás után készen áll a személyre szabott irányítópultokat hozhat létre! Az irányítópult az alábbi véve a telemetriát a szimulált eszközök által immmited folyamatban, és különböző megjelenítő szűkítése körül, mint például egy példát: 
 
-* Eszköz helyét a térképen (megfelelő)
-* Az állapot és a súlyosság rendelkező eszközök. (bal felső)
-* Eszközök szabályok, és ha bármely számukra (bal alsó) állapotra vált riasztást
+* Eszköz helyét egy térképen (jobb oldali)
+* Állapot és súlyosság eszközök. (bal felső sarokban)
+* Eszközök szabályokkal helyen, és nincsenek bármely riasztás kezdeti időszak után őket (bal alsó)
 
-![Power bi képi megjelenítés](./media/iot-accelerators-integrate-data-powerbi/visual_data.png)
+![A Power bi-Vizualizáció](./media/iot-accelerators-integrate-data-powerbi/visual_data.png)
 
-## <a name="publishing-the-dashboard-and-refreshing-the-data"></a>Közzététel az irányítópult és az Adatfrissítés
+## <a name="publishing-the-dashboard-and-refreshing-the-data"></a>Az irányítópult közzététele, és az adatok frissítése
 
-Miután sikeresen létrehozta az irányítópultok, azt javasoljuk, hogy Ön [közzététele a Power BI-irányítópult](https://docs.microsoft.com/en-us/power-bi/desktop-upload-desktop-files) másokkal.
+Miután sikeresen létrehozta az irányítópultokon, azt javasoljuk, hogy Ön [közzététele a Power BI-irányítópultok](https://docs.microsoft.com/power-bi/desktop-upload-desktop-files) másokkal való megosztásához.
 
-Emellett érdemes [adatok frissítése](https://docs.microsoft.com/en-us/power-bi/refresh-data) a közzétett irányítópultján győződjön meg arról, hogy rendelkezik-e a legújabb adathalmaz.
+Is érdemes [frissítheti az adatokat](https://docs.microsoft.com/power-bi/refresh-data) , győződjön meg arról, hogy rendelkezik-e a legújabb adatkészlet, a közzétett irányítópultján.
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben a cikkben megtanulta, megjelenítheti a Power BI használatával távoli figyelési adatok kapcsolatos
+Ebben a cikkben megtanulta, hogyan jelenítheti meg a távoli figyelési adatok a Power BI használatával kapcsolatos
 
-A távoli figyelésére szolgáló megoldás testreszabásával kapcsolatos további információkért lásd:
+A távoli figyelési megoldás testreszabásával kapcsolatos további információkért lásd:
 
-* [A távoli figyelési megoldást igényelnek felhasználói felület testreszabása](iot-accelerators-remote-monitoring-customize.md)
+* [A távoli figyelési megoldás felhasználói felület testreszabása](iot-accelerators-remote-monitoring-customize.md)
 * [Fejlesztői referencia-útmutató](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/wiki/Developer-Reference-Guide)
 * [Fejlesztői hibaelhárítási útmutató](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/wiki/Developer-Troubleshooting-Guide)
 

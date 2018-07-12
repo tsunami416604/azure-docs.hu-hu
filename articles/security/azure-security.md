@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: bda8f72de16d1d8d95823de98aab8ec209908e63
-ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
+ms.openlocfilehash: a1cd2ecc738434fc8d5de03ef538be3ea896fa2b
+ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37437790"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38971006"
 ---
 # <a name="introduction-to-azure-security"></a>Bevezetés az Azure Security
 ## <a name="overview"></a>Áttekintés
@@ -113,7 +113,7 @@ A szakasz a legfontosabb funkcióit az alkalmazás biztonsági és összefoglal�
 Az egyik legegyszerűbb – első lépések a biztonsági rések tesztelése a [App Service-alkalmazás](https://docs.microsoft.com/azure/app-service/app-service-web-overview) használata a [teljesíteni a Tinfoil Security-integráció](https://azure.microsoft.com/blog/web-vulnerability-scanning-for-azure-app-service-powered-by-tinfoil-security/) ellenőrzés az alkalmazás használatát egy biztonsági rés végrehajtásához. Tekintse meg az eredményt egy könnyen érthető jelentésben, és ismerje meg, hogyan háríthatja el az egyes biztonsági lépésről lépésre.
 
 ### <a name="penetration-testing"></a>Behatolástesztelés
-Ha inkább saját behatolási teszteket végrehajtására, vagy egy másik képolvasó suite vagy szolgáltató szeretne használni, kövesse a [Azure behatolástesztelést jóváhagyási folyamat](https://docs.microsoft.com/en-us/azure/security/azure-security-pen-testing ) és előzetes hagyassa jóvá a kívánt behatolási teszteket végrehajtásához.
+Ha inkább saját behatolási teszteket végrehajtására, vagy egy másik képolvasó suite vagy szolgáltató szeretne használni, kövesse a [Azure behatolástesztelést jóváhagyási folyamat](https://docs.microsoft.com/azure/security/azure-security-pen-testing ) és előzetes hagyassa jóvá a kívánt behatolási teszteket végrehajtásához.
 
 ### <a name="web-application-firewall"></a>Webalkalmazási tűzfal
 A webalkalmazási tűzfal (WAF) az [Azure Application Gateway](https://azure.microsoft.com/services/application-gateway/) segít megvédeni a webalkalmazásokat az ismert webalapú támadásoktól, például SQL-injektálás, a többhelyes parancsfájlok futtatására és a munkamenet-eltérítés. Által azonosított fenyegetések elleni védelemre hozzárendeléskor a [nyílt Web Application Security Project (OWASP), a legfontosabb 10 gyakori sebezhetőségként](https://msdn.microsoft.com/library/).

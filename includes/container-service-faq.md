@@ -64,7 +64,7 @@ Kereshet gyakran használt URL-címeket a fürt számára az Azure Portalon, az 
 
 ### <a name="how-do-i-tell-which-orchestrator-version-is-running-in-my-cluster"></a>Hogyan állapíthatom meg, hogy melyik vezénylőverzió fut a fürtben?
 
-* DC/OS: Lásd a [Mesosphere dokumentációját](https://support.mesosphere.com/hc/en-us/articles/207719793-How-to-get-the-DCOS-version-from-the-command-line-).
+* DC/OS: Lásd a [Mesosphere dokumentációját](https://docs.mesosphere.com/1.7/usage/cli/command-reference/).
 * Docker Swarm: Futtassa a `docker version` parancsot
 * Kubernetes: Futtassa a `kubectl version` parancsot
 
@@ -72,9 +72,9 @@ Kereshet gyakran használt URL-címeket a fürt számára az Azure Portalon, az 
 
 Az Azure Container Service jelenleg nem biztosít eszközöket a fürtre telepített vezénylő verziófrissítéséhez. Ha a Container Service egy későbbi verziót támogat, üzembe helyezhet egy új fürtöt. Egy másik lehetőség a vezénylőspecifikus eszközök használata, amelyek segítségével a már beüzemelt fürtök frissíthetők. Lásd például a [DC/OS verziófrissítését](https://dcos.io/docs/1.8/administration/upgrading/) ismertető cikket.
  
-### <a name="where-do-i-find-the-ssh-connection-string-to-my-cluster"></a>Hol találom a fürtömhöz tartozó SSH kapcsolati karakterláncot?
+### <a name="where-do-i-find-the-ssh-connection-string-to-my-cluster"></a>Hol találom a fürtömhöz tartozó SSH kapcsolati sztringet?
 
-A kapcsolati karakterláncot az Azure Portalon vagy az Azure parancssori eszközök segítségével keresheti meg. 
+A kapcsolati sztringet az Azure Portalon vagy az Azure parancssori eszközök segítségével keresheti meg. 
 
 1. A portálon lépjen a fürttelepítés erőforráscsoportjába.  
 
@@ -82,7 +82,7 @@ A kapcsolati karakterláncot az Azure Portalon vagy az Azure parancssori eszköz
 
 3. A **Deployment history** (Telepítési előzmények) panelen kattintson arra az üzemelő példányra, amelynek neve a **microsoft-acs** karakterlánccal kezdődik, és a központi telepítés dátumával folytatódik. Például: microsoft-acs-201701310000.  
 
-4. A **Summary** (Összefoglalás) lapon az **Outputs** (Kimenetek) részben számos fürthivatkozás található. Az **SSHMaster0** biztosítja a Container Service-fürt első főkiszolgálójához tartozó SSH kapcsolati karakterláncot. 
+4. A **Summary** (Összefoglalás) lapon az **Outputs** (Kimenetek) részben számos fürthivatkozás található. Az **SSHMaster0** biztosítja a Container Service-fürt első főkiszolgálójához tartozó SSH kapcsolati sztringet. 
 
 A fent említetteknek megfelelően Azure-eszközöket is használhat a főkiszolgálók teljes tartománynevének megkeresésére. Létesítsen SSH-kapcsolatot a főkiszolgálóval a főkiszolgáló teljes tartománynevét és a fürt létrehozásakor megadott felhasználónevet használva. Például:
 

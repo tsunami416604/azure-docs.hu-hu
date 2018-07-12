@@ -1,6 +1,6 @@
 ---
-title: Visual Studio használatával Azure virtuális géphez |} Microsoft Docs
-description: Visual Studio használatával Azure virtuális géphez.
+title: Egy Azure virtuális gépen a Visual Studio használatával |} A Microsoft Docs
+description: A Visual Studio használatával egy Azure virtuális gépen.
 services: virtual-machines-windows
 documentationcenter: virtual-machines
 author: PhilLee-MSFT
@@ -15,44 +15,44 @@ ms.prod: vs-devops-alm
 ms.date: 03/02/2018
 ms.author: phillee
 keywords: visualstudio
-ms.openlocfilehash: 7809e0b9265ec62bded67d0b0ed851ee0ba98315
-ms.sourcegitcommit: ea5193f0729e85e2ddb11bb6d4516958510fd14c
+ms.openlocfilehash: ce587fcbc3bcbea129db1d3d9d0fb60cebdf8e0e
+ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/21/2018
-ms.locfileid: "36301699"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38972366"
 ---
-# <a name="visual-studio-images-on-azure"></a>A Visual Studio képek az Azure-on
-Visual Studio egy előre konfigurált Azure virtuális gépen (VM) használata egy gyors és egyszerű módot eljusson semmi sem egy összesítő és futó fejlesztői környezetben. A Visual Studio különböző konfigurációival rendszerkép érhetők el a [Azure piactér](https://azuremarketplace.microsoft.com/marketplace/apps?search=%22visual%20studio%202017%22&page=1).
+# <a name="visual-studio-images-on-azure"></a>Azure Visual Studio-rendszerképek
+A Visual Studio használatával egy előre konfigurált Azure virtuális gépen (VM) módja a gyors és egyszerű nyissa meg a művelet egy felfelé és a futó fejlesztési környezetben. Visual Studio különböző konfigurációival rendszerképek érhetők el a [Azure Marketplace-en](https://azuremarketplace.microsoft.com/marketplace/apps?search=%22visual%20studio%202017%22&page=1).
 
 Most ismerkedik az Azure-ral? [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/free).
 
-## <a name="what-configurations-and-versions-are-available"></a>Milyen konfigurációk és verziói érhetők el?
-A legutóbbi Főverziók, a Visual Studio 2017 és a Visual Studio 2015-öt, képek található az Azure piactéren. Minden egyes főverzió látja, eredetileg kiadott (RTW) verziója és a legújabb frissített verziója. A Visual Studio Enterprise és a Visual Studio Community kiadások szövegek kínál. Ezeket a lemezképeket legalább havonta frissítve lett, hogy tartalmazza a legújabb Visual Studio és a Windows-frissítéseket. A képek nevének azonban változatlan marad, mindegyik lemezkép leírása tartalmazza a telepített verzió és a lemezkép "dátum".
+## <a name="what-configurations-and-versions-are-available"></a>Mely konfigurációkat és verziói érhetők el?
+A legutóbbi főbb verziók, Visual Studio 2017-et és a Visual Studio 2015-öt, a lemezképek az Azure Marketplace-en található. Minden főbb verzióhoz megjelenik a eredetileg kiadott (RTW) verziója és a legújabb frissített verzióit. Ezek a fájlok mindegyike kínál a Visual Studio Enterprise és a Visual Studio Community kiadása. Ezek a lemezképek legalább havonta frissül a legújabb Visual Studio és a Windows-frissítéseket tartalmaznak. A rendszerképek nevei változatlanok maradnak, amíg minden Képleírás tartalmazza a telepített verzió és a kép "megfelelő".
 
 | Verzió                                              | Kiadás                     |     Termék verziószáma     |
 |:------------------------------------------------------------:|:----------------------------:|:-----------------------:|
-| A Visual Studio 2017: Legújabb (15.7 verzió)                    |    Vállalati, közösségi     |      15.7.3 verzió     |
-| A Visual Studio 2017: Legújabb előzetes (15.8, 2. előzetes verzió) |    Vállalati, közösségi     |      15.8.2 verzió     |
-|         Visual Studio 2017: RTW                              |    Vállalati, közösségi     |      15.0.13 verzió    |
-|   Visual Studio 2015-öt: Legújabb (3. frissítés)                      |    Vállalati, közösségi     |  14.0.25431.01 verzió  |
-|         Visual Studio 2015: RTW                              |             None             | (A karbantartáshoz lejárt) |
+| A Visual Studio 2017: Legújabb (15.7 verzió)                    |    Vállalati, Közösség     |      Verzió 15.7.5     |
+| A Visual Studio 2017: Legújabb előzetes verziót (15.8, 4 előzetes verzió) |    Vállalati, Közösség     |      Verzió 15.8.4     |
+|         Visual Studio 2017: RTW                              |    Vállalati, Közösség     |      Verzió 15.0.15    |
+|   Visual Studio 2015: Legújabb (3. frissítés)                      |    Vállalati, Közösség     |  Verzió 14.0.25431.01  |
+|         Visual Studio 2015: RTW                              |             None             | (Karbantartási lejárt) |
 
 > [!NOTE]
-> Megfelel-e a Microsoft karbantartása házirend a Visual Studio 2015 eredetileg végleges (RTW) verziójának karbantartáshoz érvényessége lejárt. A Visual Studio 2015 Update 3 az egyetlen fennmaradó verzió érhető el a Visual Studio 2015-öt sor a rendszer.
+> Fogja a providerhez kiadott Microsoft karbantartási szabályzat a Visual Studio 2015 (RTW) eredetileg kiadott verzióját karbantartási érvényessége lejárt. A Visual Studio 2015 Update 3 az egyetlen fennmaradó verzió érhető el a Visual Studio 2015-öt termék sor.
 
-További információkért lásd: a [Visual Studio karbantartása házirend](https://www.visualstudio.com/productinfo/vs-servicing-vs).
+További információkért lásd: a [Visual Studio karbantartási szabályzat](https://www.visualstudio.com/productinfo/vs-servicing-vs).
 
 ## <a name="what-features-are-installed"></a>Telepített szolgáltatások?
-Minden rendszerkép, hogy a Visual Studio Edition ajánlott szolgáltatáskészletet tartalmazza. A telepítés általában a következőket tartalmazza:
+Az egyes rendszerképek tartalmának a Visual Studio-kiadás ajánlott funkciókészlethez. A telepítés általában a következőket tartalmazza:
 
-* Az összes rendelkezésre álló feladatoknál – beleértve az egyes munkaterhelésekhez ajánlott választható összetevők
-* .NET 4.6.2-es és .NET 4.7 SDK-k, a célcsoport-kezelési csomagokat és a fejlesztői eszközök
+* Az összes rendelkezésre álló számítási feladatokat, beleértve az egyes számítási feladatok ajánlott választható összetevők
+* .NET 4.6.2-es verziójára és a .NET 4.7 SDK-k, a célcsoport-kezelési csomagokat és a fejlesztői eszközök
 * Visual F #
-* A Visual Studio GitHub-bővítmény
+* GitHub-bővítmény a Visual Studio
 * LINQ to SQL-eszközök
 
-A Visual Studio telepítésére, amikor a lemezképek összeállításakor használt parancssor a következőképpen történik:
+A Visual Studio telepítése a rendszerképek készítése során használt parancssor a következőképpen történik:
 
 ```
     vs_enterprise.exe --allWorkloads --includeRecommended --passive ^
@@ -66,10 +66,10 @@ A Visual Studio telepítésére, amikor a lemezképek összeállításakor haszn
        add Microsoft.VisualStudio.Component.LinqToSql
 ```
 
-Ha a képek nem adja meg a Visual Studio szolgáltatás, amelyekre szüksége van, a lap jobb felső sarkában a visszajelzés eszközzel visszajelzést.
+Ha a lemezképek nem tartalmaznak, amelyekre szüksége van a Visual Studio szolgáltatás, az oldal jobb felső sarkában a visszajelzés eszközzel visszajelzést.
 
-## <a name="what-size-vm-should-i-choose"></a>Milyen méretű VM válasszam?
-Azure virtuális gépek méretét teljes számos. Mivel a Visual Studio egy hatékony, többszálas alkalmazást, érdemes, amely tartalmazza a processzorok és a 7 Gigabájt memóriát legalább két Virtuálisgép-méretet. Azt javasoljuk, hogy a következő Virtuálisgép-méretek a Visual Studio lemezképek:
+## <a name="what-size-vm-should-i-choose"></a>Milyen méretű virtuális gép válasszam?
+Az Azure virtuálisgép-méretek széles kínál. Mivel a Visual Studio egy hatékony, több szálon futó alkalmazást, azt szeretné, amely tartalmazza a processzorok és a 7 GB memória, legalább két virtuális gép mérete. A Visual Studio-lemezképek a következő virtuális gépek méretei javasoljuk:
 
    * Standard_D2_v3
    * Standard_D2s_v3
@@ -79,37 +79,37 @@ Azure virtuális gépek méretét teljes számos. Mivel a Visual Studio egy hat�
    * Standard_D2S_v2
    * Standard_D3_v2
     
-A legújabb méreteket további információkért lásd: [méretek a Windows virtuális gépek Azure-ban](/azure/virtual-machines/windows/sizes).
+A legújabb gépméretek további információkért lásd: [méretek a Windows virtuális gépek az Azure-ban](/azure/virtual-machines/windows/sizes).
 
-Az Azure-ral a virtuális gép átméretezésével is a kezdeti beállítás egyensúlyba. Egy új virtuális Gépet egy megfelelő méretű kiépítése, vagy a meglévő virtuális Gépet a különböző mögöttes hardver átméretezése. További információkért lásd: [méretezze át a Windows virtuális gépek](/azure/virtual-machines/windows/resize-vm).
+Az Azure-ban fürtméret növelése a kezdeti beállítás szerint a virtuális gép átméretezése. Egy új virtuális gép létrehozása több megfelelő méretű, vagy más mögöttes hardver a meglévő virtuális gép átméretezése. További információkért lásd: [Windows virtuális gép átméretezése](/azure/virtual-machines/windows/resize-vm).
 
-## <a name="after-the-vm-is-running-whats-next"></a>Miután a virtuális gép fut, mi az a következő?
-A Visual Studio modelljébe "állapotba hozása a saját licenc" az Azure-ban. Csakúgy, mint egy saját hardver-telepítést, az első lépések egyikét a Visual Studio telepítési van licencelési. Visual Studio vagy feloldásához:
-- Bejelentkezés a Visual Studio-előfizetéssel társított Microsoft-fiókkal 
+## <a name="after-the-vm-is-running-whats-next"></a>Miután a virtuális gép fut, mit tartogat a jövő?
+A Visual Studio követi a "saját licenc használata" modellt az Azure-ban. Csakúgy, mint egy saját hardver-telepítést, az első lépések a Visual Studio telepítésekor van licencelése. A Visual Studio vagy feloldásához:
+- A Visual Studio-előfizetéssel társított Microsoft-fiókkal 
 - A kezdeti vásárlásakor kapott termékkulcsot a Visual Studio feloldása
 
-További információkért lásd: [jelentkezzen be a Visual Studio](/visualstudio/ide/signing-in-to-visual-studio) és [Visual Studio feloldásához hogyan](/visualstudio/ide/how-to-unlock-visual-studio).
+További információkért lásd: [jelentkezzen be a Visual Studio](/visualstudio/ide/signing-in-to-visual-studio) és [feloldásához a Visual Studio hogyan](/visualstudio/ide/how-to-unlock-visual-studio).
 
-## <a name="how-do-i-save-the-development-vm-for-future-or-team-use"></a>Hogyan lehet, mentse a jövőben a virtuális gép fejlesztési vagy team használnak?
+## <a name="how-do-i-save-the-development-vm-for-future-or-team-use"></a>Hogyan tudok mentse a jövőben a virtuális gép fejlesztési vagy csapatot használni?
 
-Fejlesztési környezetekben skáláját túl nagy, és nincs társítva a összetettebb környezetben létrehozására. Függetlenül a környezet konfiguráció mentéséhez, vagy rögzítése képként"base" későbbi felhasználás céljából, vagy más a csoport tagjai számára a konfigurált virtuális Gépet. Ezután egy új virtuális gép indításakor kiépítése azt az Azure piactér kép, hanem az alapjául szolgáló lemezképhez.
+A különböző fejlesztési környezetek hatalmas, és valódi költséggel az összetett környezetek kialakítására. A környezet konfigurációját, függetlenül mentheti, vagy rögzítése, a konfigurált virtuális gép "alap lemezképeként" későbbi használat céljából, vagy a csoport egyéb tagjai számára. Ezt követően az új virtuális gép indításakor annak üzembe helyezésekor az alaprendszerképet az Azure Marketplace-beli rendszerképét ahelyett.
 
-Rövid összefoglaló: a rendszer-előkészítő eszköz (Sysprep) és a virtuális gép leállítása és rögzítse *(1. ábra)* a virtuális gépet rendszerképként az Azure-portálon a felhasználói felületen. Az Azure menti a `.vhd` fájlt, amely tartalmazza a tárfiók a kép. Az új lemezkép majd mutatja az előfizetés az erőforrások listájához a kép erőforrásként.
+Rövid összefoglalás: a rendszer-előkészítő eszköz (Sysprep) és állítsa le a futó virtuális Gépre, és ezután rögzítheti *(1. ábra)* a virtuális Gépet rendszerképként az Azure Portalon a felhasználói felületen. Az Azure menti a `.vhd` fájlt, amely tartalmazza a rendszerkép tetszőleges storage-fiókban. Az új rendszerképet, majd az előfizetéshez tartozó erőforrások listájában kép erőforrásként jelenik meg.
 
-<img src="media/using-visual-studio-vm/capture-vm.png" alt="Capture an image through the Azure portal UI" style="border:3px solid Silver; display: block; margin: auto;"><center>*(1. ábra) Rögzítsen egy rendszerképet az Azure portálon felhasználói felületén keresztül.*</center>
+<img src="media/using-visual-studio-vm/capture-vm.png" alt="Capture an image through the Azure portal UI" style="border:3px solid Silver; display: block; margin: auto;"><center>*(1. ábra) Rögzíthet egy képet, az Azure portal felhasználói felületén keresztül.*</center>
 
-További információkért lásd: [egy felügyelt képre egy általánosított virtuális gép létrehozása az Azure-ban](/azure/virtual-machines/windows/capture-image-resource).
+További információkért lásd: [általánosított virtuális gép felügyelt rendszerképének létrehozása az Azure-ban](/azure/virtual-machines/windows/capture-image-resource).
 
 > [!IMPORTANT]
-> Ne felejtse el a virtuális gép előkészítése a Sysprep használatával. A lépés elmaradt az Azure nem tud kiépíteni egy virtuális Gépet a lemezképből.
+> Ne felejtse el a virtuális gép előkészítése a Sysprep eszközt használja. Hagyja ki ezt a lépést, ha az Azure nem tud kiépíteni a rendszerképből egy virtuális Gépet.
 
 > [!NOTE]
-> Néhány lemezkép tárolási költsége továbbra is fel Önnek, de a teljesen új virtuális gép számára minden csapattag számára, akik szüksége van rá, hogy az általános költségek növekményes költség jelentéktelen lehet képest. Például a néhány dollár létrehozni és tárolni egy 127 GB-os lemezképet, amely a teljes csapata által újrafelhasználható havi költségeket. Azonban ezek a költségek is jelentéktelen minden alkalmazott fektet kimenő építsenek, és egy megfelelően konfigurált fejlesztői mezőben saját használatra érvényesítése órához képest.
+> Továbbra is díjat kell néhány költsége a lemezképek tárolását, de a növekményes költségekkel, hogy a jelentés minden egyes csapattag számára szüksége van rá a virtuális gép teljesen új újraépítése költségek képest. Például létrehozni és tárolni egy 127 GB-os rendszerképet, amely a teljes csapata által újrafelhasználható havi pár dollárért költségei. Azonban ezeket a díjakat is jelentéktelen minden alkalmazott fektet építse ki, és a egy megfelelően konfigurált fejlesztési mező saját használatra érvényesítéséhez órához képest.
 
-Emellett a fejlesztési feladatok vagy technológiák előfordulhat, hogy kell további méretezési, például a fejlesztési és több gép konfigurációjában fajtáinak. Azure DevTest Labs hozhat létre _receptet_ , amely automatizálja a "mesterlemezzel." rekordcsoportjának létrehozása DevTest Labs segítségével a csapata futó virtuális gépeinek házirendjeinek kezelése. [Azure DevTest Labs segítségével a fejlesztők](/azure/devtest-lab/devtest-lab-developer-lab) DevTest Labs további információt a legjobb forrása.
+Ezenkívül a fejlesztési feladatokat vagy technológiák előfordulhat, hogy kell több méretezési, például a fejlesztői konfigurációk és több gép konfigurációja. Az Azure DevTest Labs használatával hozzon létre _receptek_ , amely automatizálja a "mesterlemezzel." rekordcsoportjának létrehozása DevTest Labs használatával házirendjeinek kezelése a csapat futó virtuális gépek. [Azure DevTest Labs használatával a fejlesztők](/azure/devtest-lab/devtest-lab-developer-lab) práci s DevTest Labs további információt a legjobb forrása.
 
 ## <a name="next-steps"></a>További lépések
-Most, hogy megismerkedett az előre konfigurált Visual Studio-lemezképek, a következő lépésre egy új virtuális gép létrehozásához:
+Most, hogy megismerkedett az előre konfigurált Visual Studio-lemezképek, a következő lépésben egy új virtuális Gépet hoz létre:
 
-* [Hozzon létre egy virtuális Gépet az Azure portálon keresztül](quick-create-portal.md)
-* [Windows virtuális gépek – áttekintés](overview.md)
+* [Hozzon létre egy virtuális Gépet az Azure Portalon keresztül](quick-create-portal.md)
+* [Windows Virtual Machines – áttekintés](overview.md)

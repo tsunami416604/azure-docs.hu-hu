@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 07/02/2018
 ms.author: brenduns
 ms.reviewer: jeffgo
-ms.openlocfilehash: 9216d43bd6431bb16c14e0bf2d8fb7d174365417
-ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
+ms.openlocfilehash: c61e94191a20696a1fa8c8e632a83f980f256934
+ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2018
-ms.locfileid: "37902700"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38971091"
 ---
 # <a name="azure-marketplace-items-available-for-azure-stack"></a>Elérhető az Azure Stackhez az Azure piactéren elemek
 
@@ -36,7 +36,7 @@ Minden alkalommal, amikor frissítések érhetők el a virtuális gép (VM) bőv
 |![Egyéni szkriptbővítmény](media/azure-stack-marketplace-azure-items/cse.png) | [Egyéni szkriptbővítmény](https://docs.microsoft.com/azure/virtual-machines/windows/extensions-customscript)| **A Custom Script bővítmény a Windows beépített verzióját töltse le ezt a frissítést.** | Microsoft | Windows |
 |![PowerShell DSC bővítmény](media/azure-stack-marketplace-azure-items/dsc.png) | [PowerShell DSC bővítmény](https://docs.microsoft.com/azure/virtual-machines/windows/extensions-dsc-overview)| **A frissítés letöltése a PowerShell DSC bővítmény beépített verziójára. A frissített támogatja a TLS 1.2-es verzió.** | Microsoft | Windows |
 | ![A Microsoft kártevőirtó bővítmény](media/azure-stack-marketplace-azure-items/cse.png) | [A Microsoft kártevőirtó bővítmény](https://docs.microsoft.com/azure/security/azure-security-antimalware)| Microsoft Antimalware az Azure az alkalmazások és a bérlői környezetekhez, a háttérben, emberi beavatkozás nélkül futtatható egyetlen-ügynök megoldás is. **A kártevőirtó bővítmény beépített verzióját töltse le ezt a frissítést.** | Microsoft | Windows |
-| ![A Microsoft Azure diagnosztikai bővítmény](media/azure-stack-marketplace-azure-items/cse.png) | [A Microsoft Azure diagnosztikai bővítmény](https://docs.microsoft.com/en-us/azure/virtual-machines/extensions/diagnostics-windows)| A Microsoft Azure Diagnostics a funkció, amely lehetővé teszi az üzembe helyezett alkalmazás diagnosztikai adatgyűjtés Azure-on belül. **A diagnosztikai bővítményt a Windows beépített verzióját töltse le ezt a frissítést.** | Microsoft | Windows || ![A Microsoft Monitoring bővítmény](media/azure-stack-marketplace-azure-items/cse.png) | [A Microsoft Monitoring Agent bővítményt](https://docs.microsoft.com/en-us/azure/virtual-machines/extensions/oms-windows)| A Microsoft Monitoring Agent bővítményt szolgál az OMS-SZEL adja meg a virtuális gép ellenőrzési képesség. **A Monitoring Agent bővítmény a Windows beépített verzióját töltse le ezt a frissítést.** | Microsoft | Windows |
+| ![A Microsoft Azure diagnosztikai bővítmény](media/azure-stack-marketplace-azure-items/cse.png) | [A Microsoft Azure diagnosztikai bővítmény](https://docs.microsoft.com/azure/virtual-machines/extensions/diagnostics-windows)| A Microsoft Azure Diagnostics a funkció, amely lehetővé teszi az üzembe helyezett alkalmazás diagnosztikai adatgyűjtés Azure-on belül. **A diagnosztikai bővítményt a Windows beépített verzióját töltse le ezt a frissítést.** | Microsoft | Windows || ![A Microsoft Monitoring bővítmény](media/azure-stack-marketplace-azure-items/cse.png) | [A Microsoft Monitoring Agent bővítményt](https://docs.microsoft.com/azure/virtual-machines/extensions/oms-windows)| A Microsoft Monitoring Agent bővítményt szolgál az OMS-SZEL adja meg a virtuális gép ellenőrzési képesség. **A Monitoring Agent bővítmény a Windows beépített verzióját töltse le ezt a frissítést.** | Microsoft | Windows |
 |![Egyéni szkriptbővítmény](media/azure-stack-marketplace-azure-items/cse.png) | [Egyéni szkriptbővítmény](https://docs.microsoft.com/azure/virtual-machines/windows/extensions-customscript)|**Ez a frissítés letöltése az egyéni Szkriptbővítmény beépített verziójára Linux. Ez a bővítmény több verzióját, és le kell töltenie 1.5.2.1 és 2.0.x programból is.** | Microsoft | Linux |
 | ![Linuxos Virtuálisgép-hozzáférés](media/azure-stack-marketplace-azure-items/cse.png) | [Linuxos Virtuálisgép-hozzáférés](https://azure.microsoft.com/blog/using-vmaccess-extension-to-reset-login-credentials-for-linux-vm/)| **A frissítés letöltéséhez a vmaccess bővítmény a beépített verziójú Linux-bővítmény. A frissítés azért fontos, ha azt tervezi, a Debian Linux rendszerű virtuális gépek használata.** | Microsoft | Linux |
 | ![Acronis Backup bővítmény linuxhoz](media/azure-stack-marketplace-azure-items/acronis.png) | [Acronis Backup bővítmény linuxhoz](https://azuremarketplace.microsoft.com/marketplace/apps/Acronis.acronis-backup-lin-arm) | A Microsoft Azure-Acronis Backup bővítmény a data protection termékek Acronis biztonsági mentés operációsrendszer-család része. | Nemzetközi GmbH Acronis. | Linux |

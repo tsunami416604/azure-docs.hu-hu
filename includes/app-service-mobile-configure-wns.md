@@ -1,7 +1,7 @@
 
-1. Az a [Azure-portálon](https://portal.azure.com/), jelölje be **összes tallózása** > **alkalmazásszolgáltatások**. Ezután válassza ki a Mobile Apps háttér. A **beállítások**, jelölje be **App Service leküldéses**. Ezután válassza ki az értesítési központ nevére.
-2. Ugrás a **Windows (WNS)**. Írja be a **biztonsági kulcs** (titkos) és **CSOMAGAZONOSÍTÓT** a Live Services webhely beszerzett. Válassza ki, **mentése**.
+1. Az a [az Azure portal](https://portal.azure.com/)válassza **összes tallózása** > **App Services**. Ezután válassza ki a Mobile Apps háttérrendszerre. A **beállítások**válassza **App Service Push**. Ezután válassza ki az értesítési központ nevére.
+2. Lépjen a **Windows (WNS)**. Majd adja meg a **biztonsági kulcs** (ügyfélkulcs) és **csomag biztonsági azonosítója** a Live Services webhely beszerzett. Majd **mentése**.
 
-    ![A WNS kulcsát állítsa a portálon](./media/app-service-mobile-configure-wns/mobile-push-wns-credentials.png)
+    ![Állítsa be a WNS-kulcs a portálon](./media/app-service-mobile-configure-wns/mobile-push-wns-credentials.png)
 
-A háttér most WNS leküldéses értesítések küldéséhez használatára van konfigurálva.
+A háttérrendszer konfigurálva van leküldéses értesítések küldése a WNS használatával.

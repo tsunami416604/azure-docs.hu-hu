@@ -1,6 +1,6 @@
 ---
-title: Kezelés az Azure Active Directoryban bemutatása |} Microsoft Docs
-description: Ismerje meg, hogyan Eszközkezelés segítségével tehet szert az erőforrásoknak a környezetben elérő eszközök vezérlését.
+title: Az Eszközfelügyelet az Azure Active Directory – bevezetés |} A Microsoft Docs
+description: Ismerje meg, hogyan Eszközfelügyelet segítségével is szabályozhatja az eszközöket, amelyek a környezetében erőforrásokat érnek el.
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
@@ -16,159 +16,159 @@ ms.topic: article
 ms.date: 05/21/2018
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: 96de05eb8ebae85b73eaa012efdfb38ac074abf8
-ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
+ms.openlocfilehash: 5d5ddd83a2335e7a08bac587aa627f1dcae9738c
+ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37110920"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38970900"
 ---
-# <a name="introduction-to-device-management-in-azure-active-directory"></a>Kezelés az Azure Active Directoryban bemutatása
+# <a name="introduction-to-device-management-in-azure-active-directory"></a>Az Eszközfelügyelet az Azure Active Directory bemutatása
 
-Mobileszköz-first, a felhő-első világában Azure Active Directory (Azure AD) lehetővé teszi, hogy az egyszeri bejelentkezés eszközök, alkalmazások és szolgáltatások bárhonnan. Az eszközök - kapcsolja a saját eszközök használata (BYOD), beleértve a elterjedése informatikai szakemberek számára két másik célt szemben:
+Mobileszközök és a felhő-és felhőközpontú világában Azure Active Directory (Azure AD) lehetővé teszi, hogy egyszeri bejelentkezéshez az eszközök, alkalmazások és szolgáltatások bárhonnan. Eszközök – beleértve a Bring Your Own Device (BYOD), elterjedése informatikai szakemberek számára két ellentétes céljait néz szembe:
 
-- A végfelhasználók számára, hogy termelékenyebben legyenek a tetszőleges helyről és időben ellenőrizniük
+- Biztosítson hatékony eszközöket hatékonyan dolgozzanak, bárhol is legyenek, és minden alkalommal, amikor a végfelhasználók számára
 - A vállalati eszközök védelme bármikor
 
-Eszközön a felhasználók kihozhatják hozzáférés a vállalati eszközöket. A vállalati eszközök védelme informatikai rendszergazdaként, szeretné befolyásolni ezeket az eszközöket. Ez lehetővé teszi, hogy győződjön meg arról, hogy a felhasználók a biztonsági és megfelelőségi szabványoknak megfelelő eszközökről érnek el az erőforrásokat. 
+Eszközön a felhasználók egyre hozzáférés a vállalati eszközöket. A vállalati eszközök védelme informatikai rendszergazdaként, érdemes szabályozhatják, ezeket az eszközöket. Ez lehetővé teszi, hogy győződjön meg arról, hogy a felhasználók az erőforrásokhoz hozzáférő eszközei megfeleljenek a biztonsági és megfelelőségi szabványoknak. 
 
-Eszközkezelés egyben a alapját [eszközalapú feltételes hozzáférési](active-directory-conditional-access-policy-connected-applications.md). Az eszközalapú feltételes hozzáférés biztosítható, hogy az erőforrásoknak a környezetben való hozzáférés csak felügyelt eszközökkel való lehetőség.   
+Eszközkezelés egyben alapját [eszközalapú feltételes hozzáférési](active-directory-conditional-access-policy-connected-applications.md). Eszközalapú feltételes hozzáféréssel biztosíthatja, hogy a környezetben lévő erőforrások elérése csak akkor lehetséges, a felügyelt eszközökkel.   
 
-Ez a cikk ismerteti, hogyan működik a kezelés az Azure Active Directoryban.
+Ez a cikk ismerteti, hogyan Eszközfelügyelet az Azure Active Directoryban.
 
-## <a name="getting-devices-under-the-control-of-azure-ad"></a>Az Azure AD felügyelete alatt eszközök
+## <a name="getting-devices-under-the-control-of-azure-ad"></a>Az Azure AD vezérlése alá eszközeinek
 
-Ahhoz, hogy egy eszköz, az Azure AD felügyelete alatt, két lehetősége van:
+Egy eszköz Azure AD vezérlése alá lekéréséhez két lehetősége van:
 
 - Regisztrálása 
 - Csatlakozás
 
-**Regisztrálás** egy eszközt az Azure AD lehetővé teszi egy eszköz identitás kezelése. Amikor regisztrál egy eszközt, az Azure AD eszközregisztrációval látja el az eszközt, amellyel hitelesíteni az eszközt, ha egy felhasználó bejelentkezik az Azure AD-identitással. Az identitás segítségével engedélyezheti vagy tilthatja le egy eszközt.
+**Regisztrálás** egy eszközt az Azure AD lehetővé teszi egy eszköz identitásának kezelése. Amikor regisztrál egy eszközt, az Azure AD eszközregisztrációval biztosít az eszközt, amellyel hitelesíteni az eszközt, ha egy felhasználó bejelentkezik az Azure AD-identitást az. Az identitás engedélyezése vagy letiltása az eszköz használható.
 
-Például a Microsoft Intune mobileszköz-lévő eszközattribútumok megoldás együtt, az eszközattribútumokon az Azure AD frissítődik az eszközzel kapcsolatos további információk. Ez lehetővé teszi további feltételes hozzáférési szabályok létrehozását, amelyek arra kényszerítik az eszközhozzáféréseket, hogy megfeleljenek a biztonsági és megfelelőségi szabványoknak. A Microsoft Intune-beli regisztrálásának eszközökön további információkért lásd: eszközök regisztrálása felügyeletre a Intune-ban.
+Ha például a Microsoft Intune mobileszköz-eszközattribútumok megoldás össze, az eszköz attribútumait az Azure ad-ben az eszköz további információival frissülnek. Ez lehetővé teszi további feltételes hozzáférési szabályok létrehozását, amelyek arra kényszerítik az eszközhozzáféréseket, hogy megfeleljenek a biztonsági és megfelelőségi szabványoknak. További információ az eszközök regisztrációját a Microsoft Intune-ban tekintse meg az eszközök regisztrálása felügyeletre az Intune-ban.
 
-**Csatlakozás** egy eszköz bővítménye, egy eszköz regisztrálása. Ez azt jelenti, az eszköz regisztrálása az összes előnyt biztosít, és továbbá a is helyi állapotát módosítja az eszköz. A helyi állapotváltás lehetővé teszi, hogy a felhasználókat, hogy jelentkezzen be egy eszközt egy szervezeti munkahelyi vagy iskolai fiókot egy személyes fiók helyett.
+**Csatlakozás** eszköz az eszköz regisztrálásához ajánlatos a kiterjesztése. Ez azt jelenti, hogy azt az adott eszköz regisztrálásához ajánlatos előnyeit nyújtja, és emellett is megváltozik a helyi állapota. A helyi állapotának módosítása lehetővé teszi a felhasználóknak, hogy jelentkezzen be egy eszközt egy szervezeti munkahelyi vagy iskolai fiókot egy személyes fiók helyett.
 
-## <a name="azure-ad-registered-devices"></a>Az Azure AD regisztrált eszközök   
+## <a name="azure-ad-registered-devices"></a>Az Azure ad-ben regisztrált eszközök   
 
-Az Azure AD regisztrált eszközök célja támogatásával biztosítja, hogy a **kapcsolja a saját eszközök használata (BYOD)** forgatókönyv. Ebben a forgatókönyvben egy felhasználó hozzáférhessen a szervezet Azure Active Directory szabályozott erőforrások egy személyes eszközt használ.  
+Az Azure ad-ben regisztrált eszközök célja, hogy a támogatást nyújtani a **Bring Your Own Device (BYOD)** forgatókönyv. Ebben a forgatókönyvben egy felhasználó hozzáférhessen a szervezet Azure Active Directory szabályozott erőforrások egy személyes eszköz használatával.  
 
-![Az Azure AD regisztrált eszközök](./media/device-management-introduction/03.png)
+![Az Azure ad-ben regisztrált eszközök](./media/device-management-introduction/03.png)
 
-A hozzáférés a munkahelyi vagy iskolai fiókkal az eszközön beírt alapul.  
-Windows 10 például lehetővé teszi a felhasználók munkahelyi vagy iskolai fiók hozzáadása a személyi számítógép, táblagép vagy telefon.  
-Amikor a felhasználó hozzáadta a munkahelyi vagy iskolai fiókkal, az eszköz regisztrálva az Azure ad-vel és opcionálisan a szervezet van-e beállítva mobileszköz-felügyelet (MDM) rendszerben regisztrált. A szervezet felhasználók adja hozzá a munkahelyi vagy iskolai kényelmesen a személyes eszközökre fiókot:
+A hozzáférést a munkahelyi vagy iskolai fiókkal az eszközön megadott alapul.  
+Windows 10-es például lehetővé teszi a felhasználók munkahelyi vagy iskolai fiók hozzáadása egy személyi számítógép, táblagépen vagy telefonon.  
+Amikor egy felhasználó hozzá van adva egy munkahelyi vagy iskolai fiókkal, az eszköz regisztrálva az Azure ad-ben, és igény szerint, amely a cége konfigurálta a mobileszköz-felügyelet (MDM) rendszerben regisztrált. A szervezet felhasználói adja hozzá a munkahelyi, akár kényelmesen iskolai fiókot egy személyes eszköz:
 
-- A munkahelyi alkalmazás első alkalommal való hozzáféréskor
-- Kézzel a **beállítások** menü Windows 10 esetén 
+- Amikor első alkalommal a munkahelyi alkalmazásokhoz hozzáféréssel rendelkező
+- Manuálisan keresztül a **beállítások** menüből a Windows 10 esetén 
 
-Az Azure AD regisztrált eszközöket a Windows 10, iOS, Android és macOS konfigurálhatja.
+Azure ad-ben regisztrált eszközök konfigurálhatók a Windows 10, iOS, Android és MacOS rendszeren.
 
-## <a name="azure-ad-joined-devices"></a>Az Azure AD csatlakoztatott eszközök
+## <a name="azure-ad-joined-devices"></a>Az Azure AD-csatlakoztatott eszközök
 
-Az Azure AD csatlakoztatott eszközök célja leegyszerűsítése érdekében:
+Az Azure AD-csatlakoztatott eszközök célja, hogy egyszerűsítse:
 
-- A munkahelyi eszközök a Windows központi telepítése 
-- A szervezeti alkalmazások és erőforrások Windows-eszköz való hozzáférést
-- Felhőalapú felügyelet a munkahelyi eszközök
+- Munkahelyi eszközök Windows központi telepítései 
+- Hozzáférés a vállalati alkalmazásokhoz és erőforrásokhoz bármely Windows-eszközről
+- Felhőalapú felügyelet munkahelyi által birtokolt eszközök
 
-![Az Azure AD regisztrált eszközök](./media/device-management-introduction/02.png)
+![Az Azure ad-ben regisztrált eszközök](./media/device-management-introduction/02.png)
 
-Az Azure AD Join is telepíthető a következő módszerek egyikével sem: 
- - [Windows automata](https://docs.microsoft.com/en-us/windows/deployment/windows-autopilot/windows-10-autopilot)
- - [Tömeges központi telepítés](https://docs.microsoft.com/en-us/intune/windows-bulk-enroll)
- - [Az önkiszolgáló felhasználói élmény](device-management-azuread-joined-devices-frx.md) 
+Az Azure AD Join is üzembe helyezhetők az alábbi módszerek egyikének használatával: 
+ - [Windows Autopilot](https://docs.microsoft.com/windows/deployment/windows-autopilot/windows-10-autopilot)
+ - [Tömeges üzembe helyezés](https://docs.microsoft.com/intune/windows-bulk-enroll)
+ - [Önkiszolgáló élményt](device-management-azuread-joined-devices-frx.md) 
 
-**Az Azure AD Join** célja a szervezeteknek, amelyek szeretnék felhő-első (Ez azt jelenti, hogy elsősorban felhőalapú szolgáltatásokat használ, a célja, hogy egy helyszíni infrastruktúra-felhasználás csökkentése) vagy csak felhőalapú (a helyszíni infrastruktúra nélkül). Nincsenek a méretét vagy a szervezeteknek, amelyek telepítheti az Azure AD Join típusú korlátozások. Az Azure AD Join works is jól hibrid környezetben, a felhőalapú és a helyszíni alkalmazásokhoz és erőforrásokhoz való hozzáférés engedélyezése.
+**Az Azure AD Join** célja a szervezeteknek, amelyek szeretne felhőközpontú (azaz elsősorban az a cloud services, az a célja, hogy az a helyszíni infrastruktúra-felhasználás csökkentése) vagy csak felhőalapú (nem a helyszíni infrastruktúra). Nem vonatkoznak korlátozások a mérete vagy a szervezeteknek, amelyek üzembe helyezhet az Azure AD-csatlakozás típusa. Az Azure AD-csatlakozás működését is jól hibrid környezetben, felhőbeli és a helyszíni alkalmazásokhoz és erőforrásokhoz való hozzáférés engedélyezése.
 
-Az Azure AD csatlakoztatott eszközök végrehajtási tesz lehetővé a következő előnyöket biztosítja:
+Az Azure AD-csatlakoztatott eszközök végrehajtási nyújt a következő előnyökkel jár:
 
-- **Egyszeri bejelentkezéses (SSO)** az Azure által kezelt SaaS-alkalmazásokhoz és szolgáltatásokhoz. Nem jelennek meg a felhasználók további hitelesítési kérések munkahelyi erőforrásokhoz való hozzáféréskor. Az egyszeri bejelentkezés funkcióra van, akkor is, ha azok nem érhető el a tartományi hálózathoz csatlakoznak.
+- **Egyszeri bejelentkezéses (SSO)** az Azure által felügyelt SaaS-alkalmazások és szolgáltatások. A felhasználók számára nem jelenik meg a további hitelesítési kérések munkahelyi erőforrásokhoz való hozzáféréskor. Az egyszeri bejelentkezési funkciója akkor is, ha nem érhető el a tartományi hálózathoz csatlakoznak.
 
-- **Vállalati kompatibilis központi** a felhasználói beállítások csatlakoztatott eszközön. Csatlakozás a Microsoft-fiókkal (például Hotmail) eszközön beállítások megtekintéséhez nem kell.
+- **A megfelelő központi vállalati** felhasználói beállítások között csatlakoztatott eszközökre. Felhasználóknak nem kell egy Microsoft-fiók csatlakoztatásához (például a Hotmail) beállítások megtekintéséhez a különböző eszközökön.
 
-- **A vállalati Windows áruház elérésének** használata az Azure AD-fiókot. A felhasználók a szervezet által előre kiválasztott alkalmazások leltárt közül választhatnak.
+- **Windows Store vállalatoknak hozzáférést** egy Azure AD-fiók használatával. A felhasználók a szervezet által előre kiválasztott alkalmazások leltárát közül választhat.
 
-- **A Windows Hello** erőforrásokhoz való biztonságosabb és kényelmesebb hozzáférés támogatása.
+- **Windows Hello** támogatja a biztonságos és kényelmes hozzáférést a munkahelyi erőforrásokhoz.
 
-- **Hozzáférés korlátozása** alkalmazások csak olyan eszközökön, amelyek megfelelnek a megfelelőségi szabályzatnak.
+- **Hozzáférés korlátozása** az alkalmazások csak olyan eszközök, amelyek megfelelnek a megfelelőségi szabályzat.
 
-- **A helyszíni erőforrásokhoz való zavartalan hozzáférés** Ha az eszköz rendelkezik-e sor a láthatáron a helyi tartományvezérlőre. 
-
-
-Az Azure AD join elsődlegesen a helyi Windows Server Active Directory infrastruktúrával nem rendelkező szervezeteknek, amíg biztosan használata forgatókönyvekben ahol:
-
-- Az Azure AD felhőalapú infrastruktúra átmenet kívánt és MDM például Intune-ra.
-
-- Nem használhat egy helyszíni tartományhoz való csatlakozást, például, ha le kell töltenie a mobil eszközök, például táblagépekről és mobiltelefonokról vezérlése alatt.
-
-- A felhasználók elsősorban Office 365- vagy más SaaS-alkalmazásokhoz az Azure ad-vel integrált eléréséhez szükséges.
-
-- Az Azure AD ahelyett, hogy az Active Directory a felhasználók egy csoportjánál kezelni kívánt. Ez is vonatkozik, például határozza munkavállalók, alvállalkozói és a diákok.
-
-- Szeretne távoli fiókirodák munkavállalók csatlakozó képességek biztosítása a korlátozott a helyszíni infrastruktúrával.
-
-Beállíthatja, hogy csatlakozott az Azure AD-eszközök Windows 10 rendszerű eszközökhöz.
+- **A helyszíni erőforrásokhoz való zavartalan hozzáférés** mikor van-e az eszközön a helyi tartományvezérlőre üzemel. 
 
 
-## <a name="hybrid-azure-ad-joined-devices"></a>Az Azure AD hibrid csatlakoztatott eszközök
+Bár az Azure AD-csatlakozás elsősorban egy helyszíni Windows Server Active Directory infrastruktúrával nem rendelkező szervezeteknek, természetesen használhat, a forgatókönyvek ahol:
 
-Több mint egy évtizedben számos szervezet rendelkezik használni a tartományhoz való csatlakozást, a helyszíni Active Directoryban való engedélyezéséhez:
+- Szeretné való áttérés az Azure AD felhőalapú infrastruktúra és a mobileszköz-kezelési, mint például az Intune-ban.
 
-- INFORMATIKAI részlegek munkahelyi tulajdonban lévő eszközök kezelésére egy központi helyről.
+- Nem használhat egy helyszíni tartományhoz való csatlakozás, például, ha le szeretné kérni a mobileszközökön, például táblagépekről és mobiltelefonokról irányítása alatt.
 
-- Jelentkezzen be az eszközét a következővel a Active Directory a felhasználók munkahelyi vagy iskolai fiókok. 
+- A felhasználók elsősorban kell Office 365 vagy más Azure AD-vel integrált SaaS-alkalmazások eléréséhez.
 
-Általában egy helyszíni tárhely szervezetek támaszkodnak imaging módszerek ellátja az eszközöket, és gyakran használják **System Center Configuration Manager (SCCM)** vagy **csoportházirend (GP)** kezelése őket.
+- Az Active Directory helyett az Azure AD a felhasználók egy csoportjánál kezelni szeretne. Ez lehet alkalmazni, például idénymunkásoknak, alvállalkozók és diákok.
 
-Ha a környezetben egy helyszíni AD kockázatokat, és azt is szeretné az Azure Active Directory által biztosított képességek hasznos, hibrid csatlakozott az Azure AD-eszközöket is létrehozható. Ezek a nyomtatók is, a helyszíni Active Directory és az Azure Active Directory tartományhoz.
+- Azt szeretné, csatlakozó képességeket biztosít a távoli fiókirodákban munkavállalók csak a helyszíni infrastruktúrával.
 
-![Az Azure AD regisztrált eszközök](./media/device-management-introduction/01.png)
+Az Azure AD-csatlakoztatott eszközök a Windows 10 rendszerű eszközökhöz konfigurálhat.
+
+
+## <a name="hybrid-azure-ad-joined-devices"></a>Hibrid Azure AD-hez csatlakoztatott eszközök
+
+Több mint egy évtizede nyújt védelmet, a számos szervezet használta a tartományhoz való csatlakozást, a helyszíni Active Directory engedélyezése:
+
+- IT-részlegek számára a munkahelyi eszközök kezelését egy központi helyről.
+
+- Jelentkezzen be az Active Directory-eszközeiket, hogy a felhasználók munkahelyi vagy iskolai fiókokat. 
+
+Általában egy helyszíni erőforrás-igényű rendelkező szervezetek támaszkodjon imaging módszerek eszközök kiépítése, és gyakran **System Center Configuration Manager (SCCM)** vagy **csoportházirend (GP)** kezelése őket.
+
+Ha a környezetben egy helyszíni AD erőforrás-igényű, és azt is szeretné profitál az Azure Active Directory által biztosított képességek, a hibrid Azure AD-csatlakoztatott eszközök valósíthat meg. Ezek a is, amelyek a helyszíni Active Directory és az Azure Active Directory tartományhoz.
+
+![Az Azure ad-ben regisztrált eszközök](./media/device-management-introduction/01.png)
 
 
 Az Azure AD hibrid csatlakoztatott eszközöket kell használnia, ha:
 
-- Win32 alkalmazásokat értünk ezekre az eszközökre, a számítógép Active Directory-hitelesítés használó telepítve van.
+- Ezek a gép Active Directory-hitelesítést használó eszközökre telepített Win32-alkalmazások rendelkezik.
 
-- Eszközkezelés a csoportházirend van szüksége.
+- A csoportházirend-eszközök kezeléséhez szükséges.
 
-- Biztosan folytatja a lemezkép-készítési megoldások segítségével konfigurálhatja az eszközöket az alkalmazottak számára.
+- Továbbra is konfigurálhatja az eszközöket az alkalmazottak lemezkép-készítési megoldások használni szeretne.
 
-Konfigurálhatja a Hybrid Azure AD csatlakoztatott eszközök a Windows 10-es és régebbi eszközök, például a Windows 8 és Windows 7.
+Konfigurálhatja a hibrid Azure AD-hez csatlakoztatott eszközök a Windows 10-es és régebbi verziójú eszközök, például a Windows 8 és Windows 7.
 
 ## <a name="summary"></a>Összegzés
 
-Az eszköz kezelése az Azure ad-ben a következőket teheti: 
+Az Eszközfelügyelet az Azure ad-ben a következőket teheti: 
 
-- Az Azure AD felügyelete alatt eszközükkel egyszerűsíthető
+- Egyszerűsítheti, hogy az eszközök felügyelete alatt, az Azure ad-ben
 
-- A vállalat felhőalapú erőforrások egy könnyen használható hozzáférést biztosítania a felhasználók
+- Adja meg a felhasználók egy könnyen használható hozzáférést a szervezet felhőalapú erőforrások
 
-A görgetőgomb szabályként kell használnia:
+Egy USB-szabály használjon:
 
-- Az Azure AD regisztrált eszközökön:
+- Az Azure ad-ben regisztrált eszközökön:
 
-    - Személyes eszközök 
+    - Személyes eszközök esetén 
 
-    - A manuális regisztrálják az eszközeiket az Azure ad szolgáltatással
+    - Manuális eszközöket szeretne regisztrálni Azure ad-ben
 
-- Az Azure AD csatlakoztatott eszközök: 
+- Az Azure AD-csatlakoztatott eszközök: 
 
-    - A szervezete tulajdonában lévő eszközök
+    - A szervezet tulajdonában lévő eszközök esetében
 
-    - Az eszközök, amelyek **nem** csatlakozik egy helyszíni AD
+    - Eszközök **nem** csatlakozik egy helyszíni AD
 
-    - A manuális regisztrálják az eszközeiket az Azure ad szolgáltatással
+    - Manuális eszközöket szeretne regisztrálni Azure ad-ben
 
     - Az eszköz a helyi állapotának módosítása
 
-- Az Azure AD hibrid csatlakoztatott eszközökhöz, egy helyszíni tartományhoz csatlakoztatott eszközök AD     
+- Hibrid Azure AD-hez csatlakoztatott eszközök helyszíni tartományhoz csatlakoztatott eszközök AD     
 
-    - A szervezete tulajdonában lévő eszközök
+    - A szervezet tulajdonában lévő eszközök esetében
 
     - Egy helyszíni tartományhoz csatlakoztatott eszközök AD
 
-    - Az automatikusan regisztrálják az eszközeiket az Azure ad szolgáltatással
+    - Automatikusan eszközöket szeretne regisztrálni Azure ad-ben
 
     - Az eszköz a helyi állapotának módosítása
 
@@ -176,13 +176,13 @@ A görgetőgomb szabályként kell használnia:
 
 ## <a name="next-steps"></a>További lépések
 
-- Áttekintést az Azure portálon eszközök felügyelete, lásd: [az Azure portál használatával eszközök kezelése](device-management-azure-portal.md)
+- Áttekintheti az Azure Portalon eszközök felügyelete, lásd: [az Eszközfelügyelet az Azure portal használatával](device-management-azure-portal.md)
 
-- Eszközalapú feltételes hozzáférési kapcsolatos további információkért lásd: [Azure Active Directory eszközalapú feltételes hozzáférési házirendek konfigurálása](active-directory-conditional-access-policy-connected-applications.md).
+- Eszközalapú feltételes hozzáférési kapcsolatos további információkért lásd: [Azure Active Directory eszközalapú feltételes hozzáférési szabályzatok konfigurálhatók](active-directory-conditional-access-policy-connected-applications.md).
 
-- Telepítés:
-    - Az Azure Active Directory regisztrált Windows 10-eszközök című [konfigurálása az Azure Active Directory regisztrált Windows 10-eszközök](device-management-azuread-registered-devices-windows10-setup.md)
-    - Az Azure Active Directoryhoz csatlakoztatott eszközök című [konfigurálása az Azure Active Directoryhoz csatlakoztatott eszközök](device-management-azuread-joined-devices-setup.md)
-    - Hibrid csatlakozott az Azure AD-eszközök esetén lásd: [hogyan hibrid konfigurálása az Azure Active Directoryhoz csatlakoztatott eszközök](device-management-hybrid-azuread-joined-devices-setup.md).
+- A telepítő:
+    - Az Azure Active Directory regisztrált Windows 10-es eszközök, lásd: [konfigurálása Azure Active Directoryban regisztrált Windows 10-eszközök](device-management-azuread-registered-devices-windows10-setup.md)
+    - Az Azure Active Directoryhoz csatlakoztatott eszközök, lásd: [konfigurálása Azure Active Directory-hez csatlakoztatott eszközök](device-management-azuread-joined-devices-setup.md)
+    - Hibrid Azure AD-hez csatlakoztatott eszközök esetén lásd: [hogyan hibrid konfigurálása Azure Active Directoryhoz csatlakoztatott eszközök](device-management-hybrid-azuread-joined-devices-setup.md).
 
 

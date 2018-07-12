@@ -1,6 +1,6 @@
 ---
-title: Megjelenítheti a figyelési adatok az Azure idő adatsorozat insights szolgáltatással távoli |} Microsoft Docs
-description: Útmutató a idő adatsorozat Insights környezet vizsgálatát és elemzését a távoli figyelésére szolgáló megoldás idő adatsorozat adatainak beállításait.
+title: Távoli megfigyelés az Azure Time Series Insights-adatok megjelenítése |} A Microsoft Docs
+description: Ismerje meg, hogyan konfigurálhatja a Time Series Insights-környezet vizsgálata és elemzése az idősorozat-adatok a távoli figyelési megoldás.
 author: philmea
 manager: timlt
 ms.author: philmea
@@ -8,31 +8,31 @@ ms.date: 04/29/2018
 ms.topic: conceptual
 ms.service: iot-accelerators
 services: iot-accelerators
-ms.openlocfilehash: 7a0a5d4f1fbba5d7bd2813e8b9c300a37853e06c
-ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
+ms.openlocfilehash: f16fdfca704b8f8cb175de637ad7f3ef143d3ed7
+ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37111476"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38968955"
 ---
-# <a name="visualize-remote-monitoring-data-with-time-series-insights"></a>Az idő adatsorozat insights szolgáltatással távoli figyelési adatok megjelenítése
+# <a name="visualize-remote-monitoring-data-with-time-series-insights"></a>Távoli Monitorozási adatok vizualizálása a Time Series Insights
 
-Operátor érdemes további kiterjeszteni a out be adatok a távoli megfigyelési által biztosított a képi megjelenítés megoldás előkonfigurálására szolgálnak. A megoldásgyorsító kívül ÁME mezőben integrációját. Ez az útmutató megtudhatja konfigurálása idő adatsorozat elemzések számára telemetriát elemzése és rendellenességek észlelését.
+Az operátornak érdemes lehet további kiterjesztése a megadott box adatok képi megjelenítés, a távoli figyelési szolgáltatás által biztosított előkonfigurálása megoldás. A megoldásgyorsító kívül a szolgáltatással való TSI biztosít. Ebben az útmutatóban, megtudhatja, hogyan konfigurálhatja a Time Series Insights eszköz telemetriai adatok elemzéséhez, és észlelje a rendellenességeket.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Ez az útmutató elvégzéséhez a következőkre lesz szüksége:
+Ez az útmutató végrehajtásához a következőkre lesz szüksége:
 
-* [Az előre konfigurált távoli figyelésére szolgáló megoldás telepítése](iot-accelerators-remote-monitoring-deploy.md)
+* [A távoli figyelési előre konfigurált megoldás üzembe helyezése](iot-accelerators-remote-monitoring-deploy.md)
 
-## <a name="create-a-consumer-group"></a>Egy felhasználói csoport létrehozása
+## <a name="create-a-consumer-group"></a>Hozzon létre egy fogyasztói csoportot
 
-Szüksége lesz az IoT hub adatfolyam idő adatsorozat insights használandó dedikált fogyasztói csoportot létrehozni.
+Szüksége lesz egy dedikált fogyasztói csoport létrehozása az IoT hub streamelési adatok a Time Series Insights használandó.
 
 > [!NOTE]
-> Alkalmazások az fogyasztói csoportok segítségével olvasnak be adatokat Azure IoT-központot. Minden felhasználói csoport lehetővé teszi, hogy legfeljebb öt kimeneti fogyasztók. Minden ötödik kimeneti mosdók, és legfeljebb 32 fogyasztói csoportot hozhat létre egy új fogyasztói csoportot kell létrehoznia.
+> Adatok lekérése az Azure IoT Hub fogyasztói csoportok alkalmazások használják. Minden felhasználói csoport legfeljebb öt kimeneti fogyasztók számára lehetővé teszi. Egy új felhasználói csoportot kell létrehozni, a minden ötödik kimeneti fogadóként és legfeljebb 32 fogyasztói csoportot is létrehozhat.
 
-1. Az Azure portálon a felhő rendszerhéj gombra.
+1. Az Azure Portalon a Cloud Shell gombra.
 
 1. Hajtsa végre a következő parancsot egy új felhasználói csoport létrehozása:
 
@@ -40,109 +40,109 @@ Szüksége lesz az IoT hub adatfolyam idő adatsorozat insights használandó de
 az iot hub consumer-group create --hub-name contosorm30526 --name timeseriesinsights --resource-group ContosoRM
 ```
 
-## <a name="create-a-new-time-series-insights-environment"></a>Hozzon létre egy új idő adatsorozat Insights környezetet
+## <a name="create-a-new-time-series-insights-environment"></a>Új Time Series Insights-környezet létrehozása
 
-Az Azure Time Series Insights egy teljes körűen felügyelt elemzési, tárolási és vizualizációs szolgáltatás, amellyel IoT-méretű idősoros adatok felhőbeli kezelését végezheti el. Nagy mértékben skálázható adattárolást kínál idősoros adatokhoz, és lehetővé teszi, hogy másodpercek alatt feldolgozza és elemezze a világ bármely részéről beérkező események milliárdjait. Ezen idő adatsorozat Insights, tárolására és terabájt idősorozat adatok kezelése, vizsgálatát, és jelenítheti meg egyszerre több milliárd események, elemezheti a kiváltó okának, és hasonlítsa össze a különböző webhelyekre és eszközök.
+Az Azure Time Series Insights egy teljes körűen felügyelt elemzési, tárolási és vizualizációs szolgáltatás, amellyel IoT-méretű idősoros adatok felhőbeli kezelését végezheti el. Nagy mértékben skálázható adattárolást kínál idősoros adatokhoz, és lehetővé teszi, hogy másodpercek alatt feldolgozza és elemezze a világ bármely részéről beérkező események milliárdjait. A Time Series Insights használja, tárolhatja és kezelheti a terabájtnyi idősoros adatot, ismerje meg, és milliárd esemény egyszerre megjelenítése, egyetlen elvégezheti az alapvető okok elemzése, és összehasonlíthat több helyet és objektumot.
 
 1. Jelentkezzen be az [Azure Portalra](http://portal.azure.com/).
 
-1. Válassza ki **hozzon létre egy erőforrást** > **az eszközök internetes hálózatát** > **idő adatsorozat Insights**.
+1. Válassza ki **erőforrás létrehozása** > **IOT-** > **Time Series Insights**.
 
-    ![Új idő adatsorozat Insights](./media/iot-accelerators-time-series-insights/new-time-series-insights.png)
+    ![Új Time Series Insights](./media/iot-accelerators-time-series-insights/new-time-series-insights.png)
 
-1. Az idő adatsorozat Insights környezet létrehozása, az alábbi táblázatban a értékeket használja:
+1. A Time Series Insights-környezet létrehozásához használja az alábbi táblázatban az értékeket:
 
     | Beállítás | Érték |
     | ------- | ----- |
-    | A környezeti neve | Az alábbi képernyőfelvételen a nevet használja, **contorosrmtsi**. Amikor végzett ezzel a lépéssel, válassza ki a saját egyedi nevét. |
+    | Környezet neve | A nevet használja az alábbi képernyőképen **contorosrmtsi**. Válassza ki a saját egyedi nevet, ha e lépés elvégzése után. |
     | Előfizetés | Válassza ki saját Azure-előfizetését a legördülő menüből. |
-    | Erőforráscsoport | **Új**. A név használjuk **ContosoRM**. |
-    | Hely | Használjuk **USA keleti régiója**. A környezet létrehozása a távoli figyelésére szolgáló megoldás ugyanabban a régióban. |
+    | Erőforráscsoport | **Hozzon létre új**. A nevet használjuk **ContosoRM**. |
+    | Hely | Használjuk **USA keleti Régiójában**. A környezet létrehozása és a távoli figyelési megoldás ugyanabban a régióban. |
     | SKU |**S1** |
     | Kapacitás | **1** |
     | Rögzítés az irányítópulton | **Igen** |
 
-    ![Adatsorozat adatmodellünk idő](./media/iot-accelerators-time-series-insights/new-time-series-insights-create.png)
+    ![A Time Series Insights létrehozása](./media/iot-accelerators-time-series-insights/new-time-series-insights-create.png)
 
-1. Kattintson a **Create** (Létrehozás) gombra. A környezet létre kell néhány percet is igénybe vehet.
+1. Kattintson a **Create** (Létrehozás) gombra. A környezetben kell létrehozni egy kis időt is igénybe vehet.
 
 ## <a name="create-event-source"></a>Eseményforrás létrehozása
 
-Hozzon létre egy új eseményforrás az IoT hub való kapcsolódáshoz. Győződjön meg arról, hogy a az előző lépésekben létrehozott fogyasztói csoportot használjon. Idő adatsorozat Insights minden szolgáltatás való dedikált fogyasztócsoportot nem használja egy másik szolgáltatás szükséges.
+Hozzon létre egy új eseményforrás csatlakozni az IoT hubhoz. Győződjön meg arról, hogy használja a fogyasztói csoportot az előző lépésekben létrehozott-e. A Time Series Insights igényel minden egyes szolgáltatást, hogy dedikált fogyasztói csoportot nem használatban van egy másik szolgáltatás.
 
-1. Nyissa meg az új adatsorozat környezetben.
+1. Keresse meg az új Time Series-környezetet.
 
-1. Válassza ki a bal oldali **eseményforrások**.
+1. A bal oldalon válassza ki a **eseményforrások**.
 
-    ![Nézet Eseményforrások](./media/iot-accelerators-time-series-insights/time-series-insights-event-sources.png)
+    ![Esemény források megtekintése](./media/iot-accelerators-time-series-insights/time-series-insights-event-sources.png)
 
 1. Kattintson a **Hozzáadás** parancsra.
 
-    ![Forrás hozzáadása](./media/iot-accelerators-time-series-insights/time-series-insights-event-sources-add.png)
+    ![Eseményforrás hozzáadása](./media/iot-accelerators-time-series-insights/time-series-insights-event-sources-add.png)
 
-1. Az IoT hub beállítása egy új eseményforrás, az alábbi táblázatban szereplő értékek használatához:
+1. Az IoT hub új esemény forrásként konfigurálásához használja az alábbi táblázatban az értékeket:
 
     | Beállítás | Érték |
     | ------- | ----- |
-    | Eseményforrás neve | Az alábbi képernyőfelvételen a nevet használja, **contosorm-iot-központ**. Amikor végzett ezzel a lépéssel, használja a saját egyedi nevét. |
+    | Forrás neve | A nevet használja az alábbi képernyőképen **contosorm-iot-hub**. Használja a saját egyedi névre, ha e lépés elvégzése után. |
     | Forrás | **IoT Hub** |
-    | Importálási beállítás | **Az elérhető előfizetések IoT Hubjának használata** |
+    | Importálási beállítás | **Az IoT Hub használata a rendelkezésre álló előfizetések közül** |
     | Előfizetési azonosító | Válassza ki saját Azure-előfizetését a legördülő menüből. |
-    | Az IOT-központ nevét | **contosorma57a6**. A távoli figyelésére szolgáló megoldás a az IoT hub nevét használja. |
-    | Az IOT hub házirend neve | **iothubowner** használandó házirendet legyen egy tulajdonos házirendet. |
-    | Az IOT hub házirend kulcs | A mező automatikusan feltöltődik értékkel. |
-    | Az IOT hub fogyasztói csoportot | **timeseriesinsights** |
-    | Eseményszerializációs formátum | **JSON**     | Időbélyeg-tulajdonság neve | Hagyja üresen |
+    | IOT hub nevét | **contosorma57a6**. A távoli figyelési megoldás az IoT-központ nevét használja. |
+    | IOT hub házirend neve | **iothubowner** győződjön meg, hogy a használt szabályzat egy tulajdonos házirend. |
+    | IOT hub házirendjének kulcsa | Ez a mező automatikusan fel van töltve. |
+    | IOT hub fogyasztói csoport | **timeseriesinsights** |
+    | Eseményszerializációs formátum | **JSON**     | Időbélyegző-tulajdonság neve | Hagyja üresen |
 
     ![Eseményforrás létrehozása](./media/iot-accelerators-time-series-insights/time-series-insights-event-source-create.png)
 
 1. Kattintson a **Create** (Létrehozás) gombra.
 
 > [!NOTE]
-> Ha szeretne további felhasználó hozzáférést biztosítson a idő adatsorozat Insights explorer, az alábbi lépéseket használhatja [adatok hozzáférést](https://docs.microsoft.com/en-us/azure/time-series-insights/time-series-insights-data-access#grant-data-access).
+> Ha további felhasználókat a hozzáférési jogot a Time Series Insights explorer van szüksége, használhatja az alábbi lépéseket [adathozzáférés](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-data-access#grant-data-access).
 
 ## <a name="time-series-insights-explorer"></a>Time Series Insights Explorer
 
-Az idő adatsorozat Insights explorer a webes alkalmazás, amely segít az adatok képi megjelenítéseket készíthet.
+A Time Series Insights explorer egy webalkalmazást, amely segítséget nyújt az adatok vizualizációkat hozhat létre.
 
 1. Válassza ki a **áttekintése** fülre.
 
-1. Kattintson a **nyissa meg a környezetben**, amely ekkor megnyílik a idő adatsorozat Insights explorer webalkalmazás.
+1. Kattintson a **nyissa meg a környezet**, hogy megnyissa a Time Series Insights explorer webalkalmazás.
 
     ![Time Series Insights Explorer](./media/iot-accelerators-time-series-insights/time-series-insights-environment.png)
 
-1. Jelölje ki a idő kijelölés panelen **utolsó 12 óra** a gyors időpontokban menüre, majd a **keresési**.
+1. Az időkiválasztási panelre, válassza ki **utolsó 12 órából** az időpontokban menüben, majd kattintson a gyors **keresési**.
 
-    ![Idő adatsorozat Insights Explorer Keresés](./media/iot-accelerators-time-series-insights/time-series-insights-search-time.png)
+    ![Idősorozat-elemzések Explorer Keresés](./media/iot-accelerators-time-series-insights/time-series-insights-search-time.png)
 
-1. A feltételek a bal oldali panelen válassza ki a mérték értékének **hőmérséklet** és a felosztás által érték **IOT hubbal-kapcsolat-eszközazonosító**.
+1. A feltételek a bal oldali panelen válassza ki a mérték értékét **hőmérséklet** és a felosztás által érték **iothub-kapcsolat-eszközazonosító**.
 
-    ![Idő adatsorozat Insights Explorer lekérdezés](./media/iot-accelerators-time-series-insights/time-series-insights-query1.png)
+    ![Idősorozat-Insights Explorer-lekérdezés](./media/iot-accelerators-time-series-insights/time-series-insights-query1.png)
 
-1. Kattintson a jobb gombbal a diagramra, majd a **események tallózása**.
+1. Kattintson a jobb gombbal a diagramra, majd válassza a **események tallózása**.
 
-    ![Adatsorozat Insights Explorer események](./media/iot-accelerators-time-series-insights/time-series-insights-explore-events.png)
+    ![Time Series Insights Explorer események](./media/iot-accelerators-time-series-insights/time-series-insights-explore-events.png)
 
-1. Az események megjelennek-e a rács táblázatos formátumban.
+1. A rács táblázatos formátumban jelennek az eseményeket.
 
-    ![Idő adatsorozat Insights Explorer tábla](./media/iot-accelerators-time-series-insights/time-series-insights-table.png)
+    ![Time Series Insights Explorer tábla](./media/iot-accelerators-time-series-insights/time-series-insights-table.png)
 
 1. A perspektíva megtekintése gombra.
 
-    ![Idő adatsorozat Insights Explorer perspektíva](./media/iot-accelerators-time-series-insights/time-series-insights-explorer-perspective.png)
+    ![Time Series Insights Explorer perspektíva](./media/iot-accelerators-time-series-insights/time-series-insights-explorer-perspective.png)
 
-1. Kattintson a **Hozzáadás** perspektíva egy új lekérdezés létrehozásához.
+1. Kattintson a **Hozzáadás** a perspektíva egy új lekérdezés létrehozásához.
 
-    ![Idő adatsorozat Insights Explorer felvétele](./media/iot-accelerators-time-series-insights/time-series-insights-new-query.png)
+    ![Time Series Insights Explorerben lekérdezés hozzáadása](./media/iot-accelerators-time-series-insights/time-series-insights-new-query.png)
 
-1. Válassza ki a gyors idő **utolsó 12 óra**, biztosítása **páratartalom** és a felosztás által a **IOT hubbal-kapcsolat-eszközazonosító**.
+1. Válassza ki a rövid idő **utolsó 12 órából**, a mérték **páratartalom** és a egy felosztása, **iothub-kapcsolat-eszközazonosító**.
 
-    ![Idő adatsorozat Insights Explorer lekérdezés](./media/iot-accelerators-time-series-insights/time-series-insights-query2.png)
+    ![Idősorozat-Insights Explorer-lekérdezés](./media/iot-accelerators-time-series-insights/time-series-insights-query2.png)
 
-1. A perspektíva nézet gombra az eszköz metrikák az irányítópult megtekintéséhez.
+1. Kattintson a perspektíva megtekintése gombra az eszköz mérőszámok irányítópult megtekintésére.
 
-    ![Idő adatsorozat Explorer irányítópult](./media/iot-accelerators-time-series-insights/time-series-insights-dashboard.png)
+    ![Time Series Insights Explorer irányítópultja](./media/iot-accelerators-time-series-insights/time-series-insights-dashboard.png)
 
 ## <a name="next-steps"></a>További lépések
 
-Vizsgálatát, és az idő adatsorozat Insights Explorer adatait kapcsolatos további tudnivalókért lásd: [Azure idő adatsorozat Insights explorer](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-explorer).
+Ismerje meg, és kérdezhet le adatokat a Time Series Insights Explorer kapcsolatos tudnivalókért lásd: [Azure Time Series Insights explorer](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-explorer).

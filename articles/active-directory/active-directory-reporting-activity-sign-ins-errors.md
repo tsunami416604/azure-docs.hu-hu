@@ -16,12 +16,12 @@ ms.component: compliance-reports
 ms.date: 05/31/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 8892f9a2699d18fbaf9161ffb01906a071ab2243
-ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
+ms.openlocfilehash: bbd826b636bebca90eacba43ca879a725cddf7d2
+ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37856756"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38971074"
 ---
 # <a name="sign-in-activity-report-error-codes-in-the-azure-active-directory-portal"></a>Bejelentkezési tevékenységre vonatkozó jelentések hibakódjai az Azure Active Directory portálon
 
@@ -78,7 +78,7 @@ A következő szakasz az összes lehetséges hiba és a kapcsolódó leírások 
 |50012| Ez az általános hibaüzenet, amely azt jelzi, hogy a hitelesítés sikertelen volt. Ez akkor fordulhat elő, például a hitelesítő adatokat vagy a jogcímeket a kérelemben hiányzik vagy érvénytelen. Győződjön meg arról, hogy a kérelmet küld-e a megfelelő hitelesítő adatokat és a jogcímeket. |
 |50013|A helyességi feltétel több ok miatt érvénytelen – A jogkivonat kiállítója nem egyezik meg az API-verzióval az érvényes időtartományban – lejárt – nem megfelelő formátumú – a helyességi feltétel frissítési jogkivonata nem elsődleges frissítési jogkivonat.|
 |50017|Az érvényesítés nem sikerült az alábbi okok egyike miatt:<ul><li>A kiállítási tanúsítvány nem szerepel a megbízható tanúsítványok listájában</li><li>A várt CrlSegment nem található</li><li>A kiállítási tanúsítvány nem szerepel a megbízható tanúsítványok listájában</li><li>A különbözeti CRL terjesztési pontja megfelelő CRL terjesztési pont nélkül lett konfigurálva</li><li>időtúllépési hiba miatt nem sikerült érvényes CRL-szegmenseket lekérni</li><li>A CRL letöltése nem sikerült</li></ul>Lépjen kapcsolatba a bérlő rendszergazdájával.|
-|50020|A felhasználó nem engedélyezett – jogkivonatok kibocsátása nem sikerült, a verzióval kapcsolatos probléma miatt – a kibocsátó neve nincs megadva – a kibocsátó nevével kapcsolatos probléma (null – maximális hossz). Lépjen kapcsolatba az alkalmazás tulajdonosával|
+|50020|A felhasználó nem jogosult a következő okok valamelyike.<ul><li>A felhasználó megpróbál bejelentkezni egy olyan MSA-fiókkal, a v1-végponttal</li><li>A felhasználó nem létezik a bérlőben.</li></ul> Lépjen kapcsolatba az alkalmazás tulajdonosával.|
 |50027|A JWT-jogkivonat az alábbi okok miatt érvénytelen:<ul><li>nem tartalmazza az egyszeri kulcs jogcímét vagy a tárgy jogcímét</li><li>tárgyazonosító eltérése</li><li>dupla jogcím az idToken-jogcímekben</li><li>nem várt kiállító</li><li>nem várt célközönség</li><li>nem az érvényes időtartományon belül van </li><li>a jogkivonat formátuma nem megfelelő</li><li>A kiállító külső azonosító jogkivonata nem felelt meg az aláírás-ellenőrzésen.</li></ul>Lépjen kapcsolatba az alkalmazás tulajdonosával|
 |50029|Érvénytelen URI – a tartománynév érvénytelen karaktert tartalmaz. Lépjen kapcsolatba a bérlő rendszergazdájával.|
 |50034|A felhasználó nem létezik a címtárban. Lépjen kapcsolatba a bérlő rendszergazdájával.|
@@ -100,7 +100,7 @@ A következő szakasz az összes lehetséges hiba és a kapcsolódó leírások 
 |50089|A folyamat jogkivonata lejárt – a hitelesítés nem sikerült. A felhasználónak újra be kell jelentkeznie a felhasználónévvel és jelszóval|
 |50097|Eszközhitelesítés szükséges – a DeviceId – DeviceAltSecId jogcímek null értékűek, vagy nem létezik az eszközazonosítónak megfelelő eszköz|
 |50099|A JWT-aláírás érvénytelen. Lépjen kapcsolatba az alkalmazás tulajdonosával.|
-|50105|A bejelentkezett felhasználó nincs hozzárendelve a bejelentkezett alkalmazás egyik szerepköréhez sem. Rendelje hozzá az alkalmazást a felhasználóhoz. További információ: [https://docs.microsoft.com/en-us/azure/active-directory/application-sign-in-problem-federated-sso-gallery#user-not-assigned-a-role](https://docs.microsoft.com/en-us/azure/active-directory/application-sign-in-problem-federated-sso-gallery#user-not-assigned-a-role)|
+|50105|A bejelentkezett felhasználó nincs hozzárendelve a bejelentkezett alkalmazás egyik szerepköréhez sem. Rendelje hozzá az alkalmazást a felhasználóhoz. További információ: [https://docs.microsoft.com/azure/active-directory/application-sign-in-problem-federated-sso-gallery#user-not-assigned-a-role](https://docs.microsoft.com/azure/active-directory/application-sign-in-problem-federated-sso-gallery#user-not-assigned-a-role)|
 |50107|A kért összevonásitartomány-objektum nem létezik. Lépjen kapcsolatba a bérlő rendszergazdájával.|
 |50120|JWT-fejléchiba. Lépjen kapcsolatba a bérlő rendszergazdájával.|
 |50124|A jogcím-átalakítás érvénytelen bemeneti paramétert tartalmaz. Lépjen kapcsolatba a bérlő rendszergazdájával a szabályzat frissítése érdekében.|
@@ -174,9 +174,10 @@ A következő szakasz az összes lehetséges hiba és a kapcsolódó leírások 
 |81001|A felhasználó Kerberos-jegye túl nagy. Ez akkor fordulhat elő, ha a felhasználó túl sok csoportban szerepel, és így a Kerberos-jegy túl sok csoporttagságot tartalmaz. Csökkentse a felhasználó csoporttagságait, majd próbálkozzon újra.|
 |81005|A hitelesítési csomag nem támogatott|
 |81007|A bérlőn nincs engedélyezve a Seamless SSO|
-|90014| Hiányzik egy kötelező mező protokoll üzenet, forduljon az alkalmazás tulajdonosa. Ha az alkalmazás tulajdonosa, győződjön meg arról, hogy rendelkezik-e a szükséges paramétereket, a bejelentkezési kérelem számára. 
+|90010|A kérelem nem támogatott különböző okok miatt. Például a kérés használatával jön létre egy nem támogatott kérelmi metódus (csak POST metódus támogatott), vagy az, hogy a kért jogkivonatot aláíró algoritmus nem támogatott. Lépjen kapcsolatba az alkalmazás fejlesztőjével.|
+|90014| Hiányzik egy kötelező mező protokoll üzenet, forduljon az alkalmazás tulajdonosa. Ha az alkalmazás tulajdonosa, győződjön meg arról, hogy rendelkezik-e a szükséges paramétereket, a bejelentkezési kérelem számára. |
 |90072| A fióknak rendelkeznie kell adni a bérlőn külső felhasználóként először. Kijelentkezés és bejelentkezés újra egy másik Azure AD-fiókot.|
-|90094| A támogatás rendszergazdai engedélyekkel kell rendelkeznie. Kérje meg a bérlői rendszergazda történő ehhez az alkalmazáshoz.
+|90094| A támogatás rendszergazdai engedélyekkel kell rendelkeznie. Kérje meg a bérlői rendszergazda történő ehhez az alkalmazáshoz.|
 
 ## <a name="next-steps"></a>További lépések
 

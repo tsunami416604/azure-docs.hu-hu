@@ -1,6 +1,6 @@
 ---
-title: Az Azure-veremben SQL Adapter erőforrás-szolgáltató által biztosított adatbázisok használatával |} Microsoft Docs
-description: Létrehozása és kezelése az SQL-Adapter erőforrás-szolgáltató használatával kiépített SQL-adatbázisok
+title: Az Azure Stacken SQL Adapter erőforrás-szolgáltató által biztosított adatbázisok használata |} A Microsoft Docs
+description: Útmutató az SQL-Adapter erőforrás-szolgáltató használatával az SQL-adatbázisok létrehozása és kezelése
 services: azure-stack
 documentationCenter: ''
 author: jeffgilb
@@ -14,68 +14,68 @@ ms.topic: article
 ms.date: 06/18/2018
 ms.author: jeffgilb
 ms.reviewer: jeffgo
-ms.openlocfilehash: 56d21b76268f94f4254985a6924c4ca2d778a9cd
-ms.sourcegitcommit: ea5193f0729e85e2ddb11bb6d4516958510fd14c
+ms.openlocfilehash: 2f286c48822956c82f99808092c26f6637be5cb1
+ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/21/2018
-ms.locfileid: "36300822"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38968826"
 ---
-# <a name="create-sql-databases"></a>SQL-adatbázis létrehozása
+# <a name="create-sql-databases"></a>SQL-adatbázisok létrehozása
 
-Hozhat létre és kezelheti a felhasználói portálon önkiszolgáló adatbázisokat. Egy Azure verem felhasználónak ajánlattal az SQL-adatbázis szolgáltatást tartalmazó előfizetéssel kell rendelkeznie.
+Hozzon létre, és az adatbázisok önkiszolgáló a felhasználói portálon. Az Azure Stack felhasználói kell rendszerképre szűrjük, amelyek az SQL database szolgáltatás tartalmaz egy előfizetést.
 
-1. Jelentkezzen be a [Azure verem](azure-stack-poc.md) felhasználói portálon.
+1. Jelentkezzen be a [Azure Stack](azure-stack-poc.md) felhasználói portálon.
 
 2. Válassza ki **+ új** &gt; **adatok + tárolás** &gt; **SQL Server-adatbázis** &gt; **hozzáadása**.
 
-3. A **Create Database**, adja meg a szükséges információkat, például **adatbázisnév** és **maximális méretét megabájtban**.
+3. A **Create Database**, adja meg a szükséges információkat, például **adatbázisnév** és **maximális mérete (MB)**.
 
    >[!NOTE]
-   >Az adatbázis méretének legalább 64 MB Méretűnek kell lennie, amely növelheti a adatbázis központi telepítése után.
+   >Az adatbázis méretének legalább 64 MB, amely lehet növelni kell lennie az adatbázis üzembe helyezése után.
 
    Konfigurálja a más beállításokat a környezetéhez szükséges módon.
 
-4. A **Create Database**, jelölje be **SKU**. A **válassza ki a Termékváltozat**, válassza ki az adatbázis a Termékváltozat.
+4. A **Create Database**válassza **Termékváltozat**. A **válassza ki a Termékváltozat**, válassza ki az adatbázis a Termékváltozat.
 
    ![Adatbázis létrehozása](./media/azure-stack-sql-rp-deploy/newsqldb.png)
 
    >[!NOTE]
-   >Üzemeltetési kiszolgáló hozzáadása az Azure-vermet, hozzá vannak rendelve a Termékváltozat. Adatbázisokat üzemeltető kiszolgálók egy termékváltozatban készletében jönnek létre.
+   >Azure Stack üzemeltetési kiszolgáló van hozzáadva, mert hozzá vannak rendelve a Termékváltozat. Az üzemeltető kiszolgálók a Termékváltozat a készletben található adatbázisok jönnek létre.
 
 5. Válassza ki **bejelentkezési**.
-6. A **válassza ki a bejelentkezési**, válasszon egy érvényes bejelentkezési adatokkal, vagy válasszon **+ hozzon létre egy új bejelentkezést**.
-7. A **új bejelentkezés**, adjon meg egy nevet **adatbázis-bejelentkezési adatokat** és egy **jelszó**.
+6. A **válassza ki a bejelentkezési**, válasszon egy meglévő bejelentkezést, vagy válasszon **+ új bejelentkezés létrehozása**.
+7. A **új bejelentkezés**, adjon meg egy nevet **adatbázis bejelentkezési** és a egy **jelszó**.
 
    >[!NOTE]
-   >Ezek a beállítások esetén, amely a csak ehhez az adatbázishoz való hozzáférés hoz létre SQL hitelesítő. A bejelentkezési felhasználónevét globálisan egyedinek kell lennie. Az azonos Termékváltozat használó adatbázisok bejelentkezési beállítások újrafelhasználhatók.
+   >Ezek a beállítások a jön létre a hozzáférés csak ehhez az adatbázishoz tartozó SQL-hitelesítés hitelesítő adatok. A következő bejelentkezési felhasználónevet globálisan egyedinek kell lennie. Bejelentkezési beállítások ugyanazon Termékváltozat használó más adatbázisok felhasználhatja.
 
-   ![Hozzon létre egy új adatbázis-bejelentkezési adatokat](./media/azure-stack-sql-rp-deploy/create-new-login.png)
+   ![Hozzon létre egy új adatbázis-bejelentkezés](./media/azure-stack-sql-rp-deploy/create-new-login.png)
 
 8. Válassza ki **OK** az adatbázis telepítésének befejezéséhez.
 
-A **Essentials**, az adatbázis telepítését követően bemutatott, tekintse meg a **kapcsolati karakterlánc**. Ez a karakterlánc bármely olyan alkalmazásban, amelyet az SQL Server adatbázisának elérésére használhat.
+A **Essentials**, amely az adatbázis üzembe helyezése után jelenik meg, jegyezze fel a **kapcsolati karakterlánc**. Ez a karakterlánc bármely olyan alkalmazásban, amelyet az SQL Server-adatbázisának eléréséhez használható.
 
-![A kapcsolat-karakterlánc beolvasása](./media/azure-stack-sql-rp-deploy/sql-db-settings.png)
+![A kapcsolati karakterlánc](./media/azure-stack-sql-rp-deploy/sql-db-settings.png)
 
 ## <a name="sql-always-on-databases"></a>SQL Always On adatbázisok
 
-Úgy lett kialakítva mindig az adatbázisok kezelése másképp mint egy önálló kiszolgáló környezetben. További információkért lásd: [vezet be, az SQL Server Always On rendelkezésre állási csoportok az Azure virtuális gépeken](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-availability-group-overview).
+A kialakításból fakadóan AlwaysOn adatbázisok másképp kezeli, mint egy önálló kiszolgáló környezetben. További információkért lásd: [bemutatkozik az SQL Server Always On rendelkezésre állási csoportok az Azure-beli virtuális gépek](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-availability-group-overview).
 
-### <a name="verify-sql-always-on-databases"></a>SQL Always On adatbázisok ellenőrzése
+### <a name="verify-sql-always-on-databases"></a>Ellenőrizze az SQL Always On adatbázisok
 
-Az alábbi képernyőfelvételen látható, hogyan használhatja az SQL Server Management Studio segítségével megvizsgálhatók az adatbázis állapotát SQL Always On.
+Az alábbi képernyőfelvételen látható, hogyan használhatja az SQL Server Management Studio és tekintse meg az SQL Always On adatbázis állapota.
 
 ![AlwaysOn adatbázis állapota](./media/azure-stack-sql-rp-deploy/verifyalwayson.png)
 
-Always On adatbázisokat kell szinkronizálva, és elérhető az SQL Server-példányok megjelenítése, és rendelkezésre állási csoportok jelennek meg. Az adatbázis-példa az előző képernyőfelvétel-készítés newdb1 állapota pedig **newdb1 (szinkronizálva)**.
+AlwaysOn adatbázisok kell szinkronizálva, és az SQL Server-példányok rendelkezésre megjelenítése és a rendelkezésre állási csoportok jelennek meg. Az adatbázis-példa az előző képernyő-rögzítési newdb1 az állapota pedig **newdb1 (szinkronizálva)**.
 
 ### <a name="delete-an-alwayson-database"></a>Az AlwaysOn adatbázis törlése
 
-Ha SQL AlwaysOn adatbázis törlése az erőforrás-szolgáltató, SQL adatbázis törli, az elsődleges replikából, és a rendelkezésre állási csoportból.
+Ha törli az erőforrás-szolgáltató az SQL AlwaysOn adatbázis, SQL adatbázis törli, az elsődleges replikából, és a rendelkezésre állási csoportból.
 
-SQL majd az adatbázis a visszaállítási állapotba helyezi a a más replikákon, és az adatbázis nem dobható el, kivéve, ha elindul. Ha az adatbázis eldobása nem, a másodlagos replikák állapotba egy nem szinkronizál.
+SQL ezután a replikákon az adatbázis beteszi a visszaállítási állapotba, és az adatbázis nem dobható el, kivéve, ha által aktivált. Ha az adatbázis eldobása nem, a másodlagos replikákon egy Not Synchronizing állapotba kerülnek.
 
 ## <a name="next-steps"></a>További lépések
 
-[Az SQL Server erőforrás-szolgáltató karbantartása](azure-stack-sql-resource-provider-maintain.md)
+[Az SQL Server erőforrás-szolgáltató kezelése](azure-stack-sql-resource-provider-maintain.md)

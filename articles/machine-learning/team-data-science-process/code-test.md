@@ -1,6 +1,6 @@
 ---
-title: Az Azure-on tesztelték a UCI felnőtt bevétel előrejelzés adatkészlet - csapat tudományos folyamata és a Visual Studio Team Services adatok tudományos kódot
-description: Adatok tudományos kód UCI felnőtt bevétel előrejelzési adatokat tartalmazó tesztelése
+title: Adatok tudományos kódot a UCI felnőtt bevétel előrejelzése adatkészlet – csoportos adatelemzési folyamat és a Visual Studio Team Services az Azure-beli tesztelése
+description: Data science kód UCI felnőtt jövedelem előrejelzési adatokkal tesztelés
 services: machine-learning, team-data-science-process
 documentationcenter: ''
 author: weig
@@ -15,151 +15,151 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/19/2018
 ms.author: weig
-ms.openlocfilehash: de1ed0b85957413a254503fc72375866dfd1bea1
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 7d9d63d6c3d5c8ccf1777a46832457670d307d4a
+ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34837157"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38970859"
 ---
-# <a name="data-science-code-testing-with-the-uci-adult-income-prediction-dataset"></a>Adatok tudományos kód a UCI felnőtt bevétel előrejelzés adatkészletben tesztelése
-Ez a cikk kód tesztelése egy adatelemezési munkafolyamatot tartalmaz előzetes útmutatást. Ilyen tesztelés adatszakértőkön egy rendszeres és hatékony módot biztosít ellenőrizze a minőségi és a várt eredményt kapja, a kód. Egy csoport adatok tudományos folyamat (TDSP) használjuk [UCI felnőtt bevétel adatkészlet használó projekt](https://github.com/Azure/MachineLearningSamples-TDSPUCIAdultIncome) azt korábban közzétett jeleníthető meg, hogyan végezhető a kód tesztelése. 
+# <a name="data-science-code-testing-with-the-uci-adult-income-prediction-dataset"></a>Adatok adatelemzési kódot a UCI felnőtt bevétel előrejelzése adatkészlettel tesztelése
+Ez a cikk tartalmaz útmutatást előzetes kód tesztelése egy adatelemzési munkafolyamathoz. Az ilyen tesztelést adatszakértők egy rendszeres és hatékony módszert kínál ellenőrizze a minőség és a kódját a várt eredményt kapja. A csoportos adatelemzési folyamat (TDSP) használjuk [a UCI felnőtt jövedelem adatkészletet használó projekt](https://github.com/Azure/MachineLearningSamples-TDSPUCIAdultIncome) azt korábban közzétett megjelenítéséhez a kódot tesztelés menetét. 
 
-## <a name="introduction-on-code-testing"></a>Bevezetés a kód tesztelése
-"Tesztelés" mértékegysége szoftverfejlesztői egy régóta használható. De a adattudomány, gyakran nem egyértelmű milyen, amely azt jelenti, és hogyan kell tesztelni kód egy adatok tudományos életciklus különböző szakaszaiban a, mint:
+## <a name="introduction-on-code-testing"></a>Bevezetés a kódot tesztelés
+"Egységtesztelés" egy hosszú időre visszanyúló eljárás szoftverfejlesztői. De adatelemzés, gyakran nem egyértelmű milyen, amely azt jelenti, és hogyan kell tesztelni kódot az adatelemzési életciklus különböző szakaszaiban például:
 
 * Adatok előkészítése
 * Adatok minőségi vizsgálata
 * Modellezés
-* Telepítési modell 
+* Modell-üzembehelyezés 
 
-Ez a cikk lecseréli a kifejezés "egység tesztelés" a "tesztelés kód". A Funkciók, amelyek segítenek annak ellenőrzéséhez, ha egy bizonyos lépés egy adatok tudományos életciklus kódját van olyan eredmények "elvárt." vizsgálatánál hivatkozik A személy, aki ír a vizsgálat határozza meg, hogy mi "vártnak" attól függően, hogy a függvény eredménye például, az adatok minőségi ellenőrzése vagy modellezési.
+Ez a cikk váltja fel az előfizetési időszak "egység tesztelése" a "kód tesztelése." Hivatkozik tesztelésre, az a Funkciók, amelyek segítségével felmérheti, ha egy adattudományi életciklus egyes lépéseihez szükséges kódot az olyan eredmények ", várt." A személy, aki írja a teszt határozza meg, mi az "megfelelően működik," attól függően, a függvény eredménye például, minőségi ellenőrzése vagy modellezési.
 
-Ez a cikk hasznos források hivatkozásokat biztosít.
+Ez a cikk hivatkozásokat hasznos forrásokat biztosít.
 
-## <a name="visual-studio-team-services-for-the-testing-framework"></a>A tesztelési keretrendszer Visual Studio Team Services
-Ez a cikk ismerteti, hogyan végrehajtása és a Visual Studio Team Services (VSTS) használatával tesztelési automatizálása. Előfordulhat, hogy alternatív eszközök használata mellett dönt. Azt is bemutatják, hogyan állítsa be az automatikus létrehozási VSTS használatával, és ügynököket építése. Build ügynököket, az Azure Data tudományos virtuális gépek (DSVMs) használjuk.
+## <a name="visual-studio-team-services-for-the-testing-framework"></a>A Visual Studio Team Services esetében a tesztelési keretrendszer
+Ez a cikk ismerteti, hogyan hajtsa végre és tesztelése a Visual Studio Team Services (VSTS) használatával automatizálható. Dönthet, hogy más eszközökkel. Azt is bemutatják, hogyan egy automatikus build beállítása a VSTS használatával, és hozhat létre ügynököket. A build-ügynökök használ az Azure Data Science virtuális gépek (Dsvm).
 
-## <a name="flow-of-code-testing"></a>Kód vizsgálatának folyamata
-A tesztelési kód tudományos adatok projektben általános munkafolyamat így néz ki: 
+## <a name="flow-of-code-testing"></a>A kód a tesztelési folyamat
+Az adatelemzési projektjéhez tesztelési szabályzat a teljes munkafolyamat így néz ki: 
 
-![Folyamatábra kód tesztelése](./media/code-test/test-flow-chart.PNG)
+![A kód tesztelési folyamatábra](./media/code-test/test-flow-chart.PNG)
 
     
 ## <a name="detailed-steps"></a>Részletes lépések
 
-Az alábbi lépések segítségével beállítása és futtatása a kód tesztelése és az automatizált build a build ügynök és a VSTS használatával:
+A következő lépések segítségével állítsa be, és futtassa a kódot tesztelés és a egy automatizált összeállítási fordító-ügynökhöz és a VSTS használatával:
 
-1. Hozzon létre egy projektet a Visual Studio asztali alkalmazások:
+1. Hozzon létre egy projektet a Visual Studio asztali alkalmazásban:
 
     ![A Visual Studio "Új projekt létrehozása" képernyő](./media/code-test/create_project.PNG)
 
-   A projekt létrehozása után találhatja meg a Megoldáskezelőben a jobb oldali ablaktáblában:
+   Miután létrehozta a projektet, megtalálhatja azt a Megoldáskezelőben a jobb oldali ablaktáblán:
     
     ![A projekt létrehozásának lépései](./media/code-test/create_python_project_in_vs.PNG)
 
     ![Megoldáskezelő](./media/code-test/solution_explorer_in_vs.PNG)
 
-3. A projekt kódját hírcsatorna a VSTS projekt kód tárházba: 
+3. Hírcsatorna projektkódját a VSTS projekt kód tárházba: 
 
-    ![Projekt kód tárház](./media/code-test/create_repo.PNG)
+    ![Projekt kódtár](./media/code-test/create_repo.PNG)
 
-4. Tegyük fel, hogy néhány előkészítése munkaelem, például az adatfeldolgozást, a szolgáltatás termékgondozó csoportja és a felirat oszlopok létrehozása ezt. Győződjön meg arról, hogy a kód a várt eredményeket előállító szeretné. Íme néhány kódot, amely annak megállapítására, hogy az adatkezelési kód megfelelően működik-e használhatja:
+4. Tegyük fel, hogy néhány előkészítő munka, például adatbetöltést, funkciófejlesztési és címke oszlopok létrehozásához végezze el. Ellenőrizze, hogy a kód létrehozza az eredményeket várhatóan szeretné. Íme néhány kódot, amely annak megállapítására, hogy megfelelően működik az adatfeldolgozási kódot használhatja:
 
-    * Ellenőrizze, hogy az oszlopnevek jobb:
+    * Ellenőrizze, hogy megfelelő oszlopainak nevét:
     
-      ![Az oszlopnevek egyező kódot](./media/code-test/check_column_names.PNG)
+      ![Az oszlopnevek egyező kód](./media/code-test/check_column_names.PNG)
 
     * Ellenőrizze, hogy megfelelőek-e a válasz szintek:
 
-      ![A megfelelő szintű kód](./media/code-test/check_response_levels.PNG)
+      ![Kód az egyező szintek](./media/code-test/check_response_levels.PNG)
 
-    * Ellenőrizze, hogy ésszerű válasz százalékos aránya:
+    * Ellenőrizze, hogy a válasz százalékos ésszerű:
 
-      ![Válasz százalékos kódja](./media/code-test/check_response_percentage.PNG)
+      ![Kód választ százalékának](./media/code-test/check_response_percentage.PNG)
 
-    * Ellenőrizze az adatok minden egyes oszlopának hiányzó aránya:
+    * A hiányzó sebessége az egyes oszlopok az adatok ellenőrzése:
     
-      ![Hiányzó arány kódja](./media/code-test/check_missing_rate.PNG)
+      ![A hiányzó ráta kód](./media/code-test/check_missing_rate.PNG)
 
 
-5. Miután megtette, az adatfeldolgozás és -szolgáltatás mérnöki munka, és meg már jó modell betanítása, győződjön meg arról, hogy a modell betanítása akkor is helyes pontozása új adatkészletek. A következő két tesztek segítségével ellenőrizze a előrejelzés szintek és a terjesztési címke értékek:
+5. Miután hajtotta végre az adatfeldolgozás és a szolgáltatás mérnöki munkát, és a megfelelő modellek, hogy betanított, győződjön meg arról, hogy az Ön betanított modell is pontszámot rendelni az új adatkészletek megfelelően. A következő két tesztek segítségével ellenőrizze az előrejelzési szintek és a felirat értékek eloszlása:
 
-    * Ellenőrizze az előrejelzés szintek:
+    * Ellenőrizze az előrejelzési szintek:
     
-      ![Előrejelzés szintek ellenőrzése a következő kódot](./media/code-test/check_prediction_levels.PNG)
+      ![Kód ellenőrzése előrejelzési szintek](./media/code-test/check_prediction_levels.PNG)
 
-    * Az előrejelzés értékek terjesztését ellenőrzése:
+    * Ellenőrizze az előrejelzési értékek eloszlása:
 
-      ![Előrejelzés értékek ellenőrzése a következő kódot](./media/code-test/check_prediction_values.PNG)
+      ![Előrejelzési értékek ellenőrzésére szolgáló kód](./media/code-test/check_prediction_values.PNG)
 
-6. A vizsgálati funkciók együtt történő nevű Python-parancsfájl PUT **test_funcs.py**:
+6. A vizsgálati függvények együttesen nevű Python-szkriptet, PUT **test_funcs.py**:
 
-    ![A teszt funkciók Python-parancsfájl](./media/code-test/create_file_test_func.PNG)
+    ![Python-szkriptet a tesztelési funkciók](./media/code-test/create_file_test_func.PNG)
 
 
-7. Miután a teszt kódok készen áll, a Visual Studio környezet állíthat be.
+7. Után készen áll a teszt kódokat, beállíthatja a tesztelési környezetet a Visual Studióban.
 
-   Egy nevű Python-fájl létrehozásához **test1.py**. Ezt a fájlt hozzon létre egy osztályt, amely tartalmazza az összes tesztet szeretne. A következő példa bemutatja, előkészített hat tesztek:
+   Hozzon létre egy Python-fájlt nevű **test1.py**. Ezt a fájlt hozzon létre egy osztályt, amely tartalmazza az összes tesztet szeretne tenni. Az alábbi példa bemutatja az előkészített hat tesztek:
     
-    ![Az osztály tesztek listáját Python-fájl](./media/code-test/create_file_test1_class.PNG)
+    ![Python-fájlt osztályban található tesztek listája](./media/code-test/create_file_test1_class.PNG)
 
-8. Ezek a tesztek automatikusan észlelhetők Ha **codetest.testCase** az osztály neve után. Nyissa meg a teszt Explorer a jobb oldali ablaktáblán, majd válassza **minden**. A tesztek egymás után futnak, és jelzi, hogy a teszt sikeres-e vagy sem.
+8. Ezek a tesztek automatikusan felderíthető, ha beírja a **codetest.testCase** az osztály neve után. A jobb oldali ablaktáblában nyissa meg a teszt Explorert, és válassza ki **összes futtatása**. Az összes teszt egymás után fog futni, és jelzi, ha a teszt sikeres-e vagy sem.
 
     ![A tesztek futtatása](./media/code-test/run_tests.PNG)
 
-9. Ellenőrizze a kódban a projekt tárházba Git-parancsok használatával. A legutóbbi munkahelyi röviddel a VSTS jelenik meg.
+9. Ellenőrizze a kódban, hogy a projekt tárház Git-parancsok használatával. A legutóbbi munkahelyi röviddel a vsts-ben jelennek meg.
 
-    ![Git-parancsok a kódban ellenőrzése](./media/code-test/git_check_in.PNG)
+    ![Git-parancsok a kód ellenőrzése](./media/code-test/git_check_in.PNG)
 
-    ![A VSTS legutóbbi munka](./media/code-test/git_check_in_most_recent_work.PNG)
+    ![Legutóbbi munkahelyi a vsts-ben](./media/code-test/git_check_in_most_recent_work.PNG)
 
-10. Állítsa be automatikus build, és tesztelje a VSTS:
+10. Állítsa be az automatikus hozhat létre, és tesztelje a vsts-ben:
 
-    a. A projekt tárházban, válassza ki **Build és a kibocsátási**, majd válassza ki **+ új** új build folyamatot létrehozni.
+    a. Válassza ki a projektadattárat **készítése és kiadása**, majd válassza ki **+ új** új buildelési folyamat létrehozásához.
 
-       ![Kiválasztott beállításokat egy új build folyamat elindítása](./media/code-test/create_new_build.PNG)
+       ![Új buildelési folyamat indítása szolgáló kiválasztások](./media/code-test/create_new_build.PNG)
 
     b. Kövesse az utasításokat, jelölje be a forráshely kódja, a projekt nevét, a tárház és a fiókadatokat.
     
-       ![Forrás, a nevet, a tárház és a fiókiroda adatokat](./media/code-test/fill_in_build_info.PNG)
+       ![Forrás, a nevet, a tárházat és a ág adatokat](./media/code-test/fill_in_build_info.PNG)
 
-    c. Válasszon olyan sablont. Mivel nincs Python projektsablon, indítsa el a kiválasztásával **üres folyamat**. 
+    c. Válasszon egy sablont. Mivel az nem érhető el Python projekt sablon, először jelöljön ki **üres folyamat**. 
 
        ![Sablonok és a "Üres folyamat" gomb](./media/code-test/start_empty_process_template.PNG)
 
-    d. A build nevet, és jelölje ki az ügynököt. Itt az alapértelmezett dönthet úgy, ha azt szeretné, hogy egy DSVM használatára a felépítési folyamat befejezéséhez. A beállítás ügynökök kapcsolatos további információkért lásd: [felépítéséhez és az ügynökök kiadási](https://docs.microsoft.com/en-us/vsts/build-release/concepts/agents/agents?view=vsts).
+    d. Nevezze el a build, és válassza ki az ügynököt. Az alapértelmezett itt is válassza, ha a buildelési folyamat befejezéséhez a dsvm-hez használni kívánt. A beállítás ügynökök kapcsolatos további információkért lásd: [készítése és kiadása ügynökök](https://docs.microsoft.com/vsts/build-release/concepts/agents/agents?view=vsts).
     
-       ![Buildelés és ügynök megerősítése](./media/code-test/select_agent.PNG)
+       ![Kiválasztott hozhat létre és az ügynök](./media/code-test/select_agent.PNG)
 
-    e. Válassza ki **+** a bal oldali ablaktáblán, adja hozzá egy feladatot a build fázisban. Mivel a Python-parancsfájl futtatása az oktatóanyagban módosítjuk **test1.py** az ellenőrzés befejezéséhez ezt a feladatot használja egy PowerShell-parancsot futtasson Python kódot.
+    e. Válassza ki **+** feladat hozzáadása a build ebben a szakaszban a bal oldali panelen. Mivel a Python-szkript futtatásához fogunk **test1.py** összes ellenőrzés befejeződik, ezt a feladatot használja egy PowerShell-parancsot a Python-kód futtatása.
     
-       ![A PowerShell kiválasztva "Tevékenységek hozzáadása" ablak](./media/code-test/add_task_powershell.PNG)
+       !["Tevékenységek hozzáadása" panelen a kiválasztott PowerShell-lel](./media/code-test/add_task_powershell.PNG)
 
-    f. A PowerShell részleteit töltse ki a szükséges információkat, például a nevét, és a PowerShell-verziót. Válasszon **beágyazott parancsfájlja** típusként. 
+    f. A PowerShell részletei között adja meg a szükséges információkat, például a nevét és a PowerShell-verzió. Válasszon **beágyazott parancsfájlja** típusaként. 
     
-       A mezőbe a **beágyazott parancsfájlja**, beírhatja **python test1.py**. Győződjön meg arról, hogy a környezeti változó helyesen van beállítva a Python. Ha egy másik verzió vagy a Python kernel van szüksége, explicit módon az elérési utat is megadhat az ábrán látható módon: 
+       Alatti mezőbe **beágyazott parancsfájlja**, beírhatja **python test1.py**. Győződjön meg arról, hogy a környezeti változó megfelelően van beállítva a Pythonhoz készült. Ha egy másik verzió vagy a Python kernel van szüksége, explicit módon adhatja meg az elérési utat az ábrán látható módon: 
     
        ![PowerShell-részletek](./media/code-test/powershell_scripts.PNG)
 
-    g. Válassza ki **mentés és a feldolgozási sor** definition folyamat befejezéséhez.
+    g. Válassza ki **várólistára & mentése** a build definíció folyamat befejezéséhez.
 
-       !["& Várólistára mentése" gombra](./media/code-test/save_and_queue_build_definition.PNG)
+       !["A Mentés és a várólista" gomb](./media/code-test/save_and_queue_build_definition.PNG)
 
-Most már minden alkalommal, amikor a kód tárház új véglegesítési kerül, a felépítési folyamat automatikusan elindul. (Itt vesszük fő a tárház, de megadhat bármilyen fiókirodai.) A folyamat fut a **test1.py** győződjön meg arról, hogy minden a kódban definiált megfelelően fut a ügynökszámítógépet fájlban. 
+Most már minden alkalommal, amikor egy új véglegesítés át lett helyezve a kódtárat, a létrehozási folyamat automatikusan elindul. (Jelen példában használjuk fő mint a tárház, de megadhat bármilyen ág.) A folyamat a **test1.py** az ügynökgépen, győződjön meg arról, hogy minden definiálva a kód megfelelően fut, a fájlt. 
 
-Riasztások megfelelően vannak beállítva, ha kell értesítést e-mailben a build befejezésekor. Azt is ellenőrizze, hogy a VSTS build állapotát. Ha a hiba, tekintse meg a részletes a build, és megtudhatja, mely adat megszakad.
+Riasztások megfelelően legyenek beállítva, ha Ön fog értesítést küldünk e-mailben a build elkészült. A build állapota a vsts-ben is ellenőrizheti. Ha nem sikerül, ellenőrizze a részleteket a build, és ismerje meg, hogy megszakad a kódrészlet meghatározásával.
 
-![E-mail értesítések build siker](./media/code-test/email_build_succeed.PNG)
+![E-mail értesítés a build success](./media/code-test/email_build_succeed.PNG)
 
-![Build sikeres VSTS bejelentése](./media/code-test/vs_online_build_succeed.PNG)
+![VSTS-értesítés a build success](./media/code-test/vs_online_build_succeed.PNG)
 
 ## <a name="next-steps"></a>További lépések
-* Tekintse meg a [UCI bevétel előrejelzés tárház](https://github.com/Azure/MachineLearningSamples-TDSPUCIAdultIncome) egység vizsgálatok adatok tudományos forgatókönyvek konkrét példákat.
-* Kövesse az előző Vázlat és példákat a saját adatok tudományos projektek UCI bevétel előrejelzés forgatókönyvet.
+* Tekintse meg a [UCI bevétel előrejelzése tárház](https://github.com/Azure/MachineLearningSamples-TDSPUCIAdultIncome) konkrét példákat egységteszteket adatelemzési célokra.
+* Kövesse az előző szerkezeti és példákat a saját adatelemzési projektek UCI bevétel előrejelzése forgatókönyvhöz.
 
 ## <a name="references"></a>Referencia
 * [Csoportos adatelemzési folyamat](https://aka.ms/tdsp)
-* [Visual Studio tesztelés eszközök](https://www.visualstudio.com/vs/features/testing-tools/)
-* [VSTS tesztelés erőforrások](https://www.visualstudio.com/team-services/)
-* [Adatok tudományos virtuális gépek](https://azure.microsoft.com/services/virtual-machines/data-science-virtual-machines/)
+* [Visual Studio-tesztelési eszközök](https://www.visualstudio.com/vs/features/testing-tools/)
+* [VSTS-tesztelés erőforrások](https://www.visualstudio.com/team-services/)
+* [Adatelemző virtuális gépek](https://azure.microsoft.com/services/virtual-machines/data-science-virtual-machines/)

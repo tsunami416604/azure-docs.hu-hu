@@ -1,6 +1,6 @@
 ---
-title: Azure IaaS Linux virtuális gép lemezeivel kapcsolatos gyakori kérdések (GYIK) |} Microsoft Docs
-description: Azure IaaS Linux virtuális gép és a premium lemezek (felügyelt és nem felügyelt) kapcsolatos gyakori kérdések
+title: Azure IaaS Linux virtuális gép lemezeivel kapcsolatos gyakori kérdések (GYIK) |} A Microsoft Docs
+description: Azure IaaS Linux rendszerű virtuális gépek és a prémium szintű lemezek (felügyelt és nem felügyelt) – gyakori kérdések
 services: virtual-machines-linux
 documentationcenter: ''
 author: roygara
@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 06/15/2017
 ms.author: rogarana
 ms.openlocfilehash: 4d5a57f8c25479983bd380fc9787ca0f2f39ff13
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2018
-ms.locfileid: "30905085"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38718869"
 ---
 [!INCLUDE [virtual-machines-faq-for-disks](../../../includes/virtual-machines-faq-for-disks.md)]

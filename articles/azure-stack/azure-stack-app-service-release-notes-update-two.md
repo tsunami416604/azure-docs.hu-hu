@@ -1,6 +1,6 @@
 ---
-title: App Service Azure veremben frissítése 2 kibocsátási megjegyzései |} Microsoft Docs
-description: Ismerje meg a frissítés két az App Service Azure veremben, az ismert problémákról, valamint a frissítés letöltése helyét.
+title: Az Azure Stack App Service frissítése 2 kibocsátási megjegyzései |} A Microsoft Docs
+description: Ismerje meg a frissítés két App Service-ben az Azure Stacken, az ismert hibákat, és hol töltse le a frissítést.
 services: azure-stack
 documentationcenter: ''
 author: apwestgarth
@@ -15,46 +15,46 @@ ms.topic: article
 ms.date: 05/18/2018
 ms.author: anwestg
 ms.reviewer: brenduns
-ms.openlocfilehash: 8e1790b7d0b3a210a9142fc8580ff8ed4d64311c
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: be09773a1ce3e80547d9e5f0e9de2a2d9e093c60
+ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34360394"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38970917"
 ---
-# <a name="app-service-on-azure-stack-update-2-release-notes"></a>App Service az Azure-verem update 2 kibocsátási megjegyzései
+# <a name="app-service-on-azure-stack-update-2-release-notes"></a>App Service-ben az Azure Stack 2-es frissítés – kibocsátási megjegyzések
 
-*A következőkre vonatkozik: Azure verem integrált rendszerek és az Azure verem szoftverfejlesztői készlet*
+*A következőkre vonatkozik: Azure Stackkel integrált rendszerek és az Azure Stack fejlesztői készlete*
 
-A kibocsátási megjegyzések a fejlesztései és a javításokat az Azure App Service Azure verem Update 2 és olyan ismert problémákat ismertetik. Ismert problémák közvetlenül a telepítés, a frissítési folyamat és a problémákat a build (telepítés utáni) kapcsolatos problémák vannak felosztva.
+A kibocsátási megjegyzések láthatók a fejlesztései, valamint a javításokat az Azure App Service az Azure Stack Update 2 és olyan ismert problémákat. Ismert problémák az üzembe helyezési, frissítési folyamat és a build (telepítés utáni) problémái közvetlenül kapcsolódó problémák vannak felosztva.
 
 > [!IMPORTANT]
-> A 1804 frissítés alkalmazásához a integrált Azure verem rendszerre, vagy telepítheti a legújabb Azure verem szoftverfejlesztői készlet Azure App Service 1.2 telepítése előtt.
+> Az Azure Stackkel integrált rendszereknél 1804 frissítés alkalmazása, vagy a legújabb Azure Stack fejlesztői készletének telepítése előtt üzembe helyezése az Azure App Service 1.2-es.
 >
 >
 
 ## <a name="build-reference"></a>Hivatkozás létrehozása
 
-Az App Service az Azure verem Update 2 buildszáma **72.0.13698.10**
+Az App Service az Azure Stack 2. frissítés buildszámát **72.0.13698.10**
 
 ### <a name="prerequisites"></a>Előfeltételek
 
 > [!IMPORTANT]
-> Az Azure App Service Azure veremben új telepítés most igényel a [három-tulajdonos helyettesítő tanúsítvány](azure-stack-app-service-before-you-get-started.md#get-certificates) , amelyben az Azure App Service-ben mostantól kezelése a Kudu SSO fejlesztései miatt. Az új tulajdonos  **\*. sso.appservice.\< a régióban\>.\< tartománynév\>.\< bővítmény\>**
+> Új telepítések esetén az Azure App Service az Azure Stacken most szükséges egy [három-tulajdonos helyettesítő tanúsítvány](azure-stack-app-service-before-you-get-started.md#get-certificates) köszönhető, amelyben az Azure App Service mostantól kezelése a Kudu egyszeri Bejelentkezést. Az új tulajdonos  **\*. sso.appservice.\< régió\>.\< tartománynév\>.\< bővítmény\>**
 >
 >
 
-Tekintse meg a [mielőtt hozzáfogna dokumentáció](azure-stack-app-service-before-you-get-started.md) központi telepítésének megkezdése előtt.
+Tekintse meg a [mielőtt elkezdené a dokumentáció](azure-stack-app-service-before-you-get-started.md) központi telepítésének megkezdése előtt.
 
-### <a name="new-features-and-fixes"></a>Új szolgáltatásokat és javításokat
+### <a name="new-features-and-fixes"></a>Új funkciókkal és javításokkal
 
-Az Azure App Service Azure verem Update 2 tartalmazza a következő fejlesztéseket és javításokat:
+Az Azure App Service az Azure Stack Update 2 tartalmazza a következő fejlesztések és javítások:
 
-- Szoftverfrissítések **App Services-bérlő, a rendszergazda, Funkciók portálok és a Kudu eszközök**. Konzisztens Azure verem portál SDK-verzió.
+- Frissítések **App Services-bérlő, a rendszergazda, a Functions-portálok és eszközök a Kudu**. Az Azure Stack Portal SDK-verzió összhangban.
 
-- Alapvető szolgáltatásához megbízhatóságának és engedélyezésével kapcsolatos gyakori hibák könnyebb diagnosztizálására üzenetküldési hiba javítása frissítése.
+- Fokozható a megbízhatóság és a hibaüzenetek gyakori problémák egyszerűbb diagnosztika engedélyezése a core-szolgáltatás frissítése.
 
-- **A következő alkalmazás-keretrendszerbeli és eszközök frissítések**:
+- **A következő alkalmazás-keretrendszerek és eszközök frissítések**:
   - A hozzáadott .net-keretrendszer 4.7.1.
   - Hozzáadott **Node.JS** verziók:
     - NodeJS 6.12.3
@@ -63,41 +63,41 @@ Az Azure App Service Azure verem Update 2 tartalmazza a következő fejlesztése
     - NodeJS 8.11.1
   - Hozzáadott **NPM** verziók:
     - 5.6.0
-  - .Net frissítése alapvető konzisztens az Azure App Service nyilvános felhőben lévő összetevők.
+  - Frissítve a .net alapvető összetevők konzisztens az Azure App Service nyilvános felhőben.
   - Frissített Kudu
 
-- A központi telepítés az automatikus felcserélés tárolóhely szolgáltatás engedélyezve van - [automatikus felcserélés konfigurálása](https://docs.microsoft.com/azure/app-service/web-sites-staged-publishing#configure-auto-swap)
+- Automatikus felcserélés az üzembe helyezési tárhelyek szolgáltatás engedélyezve van - [automatikus felcserélés konfigurálása](https://docs.microsoft.com/azure/app-service/web-sites-staged-publishing#configure-auto-swap)
 
-- Teszteli az éles funkció engedélyezve van - [tesztelése éles környezetben bemutatása](https://azure.microsoft.com/resources/videos/introduction-to-azure-websites-testing-in-production-with-galin-iliev/)
+- Az éles funkció engedélyezve van – tesztelés [tesztelés éles környezetben bemutatása](https://azure.microsoft.com/resources/videos/introduction-to-azure-websites-testing-in-production-with-galin-iliev/)
 
-- Az Azure Functions proxyk engedélyezve van - [Azure Functions proxyk használata](https://docs.microsoft.com/en-us/azure/azure-functions/functions-proxies)
+- Az Azure Functions-proxyk engedélyezése – [Azure Functions-proxyk használata](https://docs.microsoft.com/azure/azure-functions/functions-proxies)
 
-- App Service felügyeleti bővítmény UX támogatja hozzá:
-  - Titkos Elforgatás
-  - Tanúsítvány-Elforgatás
-  - Rendszer hitelesítőadat-Elforgatás
-  - Kapcsolati karakterlánc Elforgatás
+- App Service-ben a felügyeleti bővítmény UX támogatja a következőkhöz:
+  - Titkos kód rotációja
+  - Tanúsítvány rotációja
+  - Rendszer hitelesítő adatok elforgatása
+  - Kapcsolati karakterlánc rotációja
 
 ### <a name="known-issues-post-installation"></a>Ismert problémák (telepítés utáni)
 
-- Munkavállalók nem érhető el a fájlkiszolgáló, ha az App Service egy meglévő virtuális hálózat és a fájlkiszolgáló csak érhető el a privát hálózaton.
+- Feldolgozók nem érhető el a fájlkiszolgálót, amikor az App Service-ben meglévő virtuális hálózaton van üzembe helyezve, és a fájlkiszolgáló csak érhető el a magánhálózaton.
 
-Ha úgy dönt, hogy az üzembe helyezés meglévő virtuális hálózat és a fájl kiszolgálóhoz való csatlakozás belső IP-címet, hozzá kell adnia egy kimenő biztonsági szabály engedélyezése az SMB adatforgalmát. a munkavégző és a fájlkiszolgáló között. Ehhez nyissa meg a felügyeleti portál WorkersNsg, és a következő tulajdonságokkal kimenő biztonsági szabály felvétele:
- * Forrás: bármely
- * Forrás-porttartomány: *
+Ha úgy döntött, hogy egy meglévő virtuális hálózattal és belső IP-cím szeretne csatlakozni a fájlkiszolgáló üzembe helyezése, hozzá kell adnia egy kimenő biztonsági szabályt a feldolgozó és a fájlkiszolgáló között SMB-forgalom engedélyezése. Ehhez nyissa meg a WorkersNsg a felügyeleti portálon, és adjon hozzá egy kimenő biztonsági szabályt a következő tulajdonságokkal:
+ * Forrás: összes
+ * Forrás porttartomány: *
  * Cél: IP-címek
- * Cél IP-címtartomány: IP-címtartományra a fájlkiszolgáló
- * Célporttartomány: 445-ös
+ * Cél IP-címtartomány: IP-címtartományt a fájlkiszolgálóhoz
+ * Cél porttartomány: 445-ös
  * Protokoll: TCP
  * Művelet: engedélyezése
  * Prioritás: 700
  * Name: Outbound_Allow_SMB445
 
-### <a name="known-issues-for-cloud-admins-operating-azure-app-service-on-azure-stack"></a>Azure App Service Azure veremben működő felhő rendszergazdák kapcsolatos ismert problémák
+### <a name="known-issues-for-cloud-admins-operating-azure-app-service-on-azure-stack"></a>Ismert problémák működtetése az Azure App Service az Azure Stack felhő-rendszergazdák számára
 
-A dokumentációban találja a [Azure verem 1804 kibocsátási megjegyzései](azure-stack-update-1804.md)
+A dokumentáció a [Azure Stack 1804 kibocsátási megjegyzései](azure-stack-update-1804.md)
 
 ## <a name="next-steps"></a>További lépések
 
-- Az Azure App Service áttekintéséért lásd: [Azure verem – áttekintés az Azure App Service](azure-stack-app-service-overview.md).
-- App Service Azure veremben telepítendő előkészítése további információkért lásd: [az App Service Azure veremben megkezdése előtt](azure-stack-app-service-before-you-get-started.md).
+- Az Azure App Service áttekintését lásd: [Azure App Service az Azure Stack áttekintése](azure-stack-app-service-overview.md).
+- Hogyan készíti elő az Azure Stack App Service üzembe helyezése kapcsolatos további információkért lásd: [az App Service-ben az Azure Stack használatának megkezdése előtt](azure-stack-app-service-before-you-get-started.md).

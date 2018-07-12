@@ -1,4 +1,4 @@
-Ahhoz, hogy a minden részletre kiterjedő jelszó-változtatási az alkalmazásra, használja a **jelszó-átállítási** házirend. Az új jelszó összes bérlőre vonatkozó létrehozási lehetősége [itt](../articles/active-directory-b2c/active-directory-b2c-reference-sspr.md) van meghatározva. Ez a házirend az, hogy a felhasználók jelszó-változtatási és -jogkivonatokat, amelyek az alkalmazás sikeres befejezését követően kap tartalmát során végighaladnia feladatait ismerteti.
+Ahhoz, hogy a minden részletre kiterjedő jelszó kérését az alkalmazásban, használhat egy **új jelszó kérésére vonatkozó** házirend. Az új jelszó összes bérlőre vonatkozó létrehozási lehetősége [itt](../articles/active-directory-b2c/active-directory-b2c-reference-sspr.md) van meghatározva. Ez a szabályzat írja le, hogy a felhasználók jelszó-visszaállítás és a jogkivonatokat, amelyeket az alkalmazás fogad a sikeres végrehajtása során.
 
 [!INCLUDE [active-directory-b2c-portal-navigate-b2c-service](active-directory-b2c-portal-navigate-b2c-service.md)]
 

@@ -17,11 +17,11 @@ ms.custom: mvc
 ms.date: 04/05/2018
 ms.author: dimazaid
 ms.openlocfilehash: efad7353a477577e5b5ac862b418ce78b1c4c304
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33778477"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38697252"
 ---
 # <a name="tutorial-push-notifications-to-android-devices-by-using-azure-notification-hubs-and-google-cloud-messaging"></a>Oktatóanyag: Leküldéses értesítések küldése Android-eszközökre az Azure Notification Hubs és a Google Cloud Messaging használatával
 [!INCLUDE [notification-hubs-selector-get-started](../../includes/notification-hubs-selector-get-started.md)]
@@ -62,7 +62,7 @@ Az oktatóanyag során a következő lépéseket hajtja végre:
 
     ![Azure Notification Hubs – Google (GCM)](./media/notification-hubs-android-get-started/notification-hubs-gcm-api.png)
 
-Az értesítési központ konfigurálva lett a GCM-mel való együttműködésre, és rendelkezik a kapcsolati karakterláncokkal az alkalmazás regisztrálására értesítések fogadásához és leküldéses értesítések küldéséhez.
+Az értesítési központ konfigurálva lett a GCM-mel való együttműködésre, és rendelkezik a kapcsolati sztringekkel az alkalmazás regisztrálására értesítések fogadásához és leküldéses értesítések küldéséhez.
 
 ## <a id="connecting-app"></a>Az alkalmazás csatlakoztatása az értesítési központhoz
 ### <a name="create-a-new-android-project"></a>Új Android-projekt létrehozása
@@ -148,8 +148,8 @@ Az értesítési központ konfigurálva lett a GCM-mel való együttműködésre
     Frissítse ezt a három helyőrzőt a `NotificationSettings` osztály alábbi kódjában:
    
    * **SenderId**: A [Google Cloud Console-on](http://cloud.google.com/console) korábban beszerzett projektszám.
-   * **HubListenConnectionString**: A központ **DefaultListenAccessSignature** kapcsolati karakterlánca. Ez a kapcsolati karakterlánc az [Azure Portalon] a központ **Beállítások** paneljének **Hozzáférési szabályzatok** elemére kattintva másolható át.
-   * **HubName**: Az [Azure Portalon] a központ lapján megjelenő értesítési központ nevét használja.
+   * **HubListenConnectionString**: A központ **DefaultListenAccessSignature** kapcsolati sztringje. Ez a kapcsolati sztring az [Azure portal] a központ **Beállítások** paneljének **Hozzáférési szabályzatok** elemére kattintva másolható át.
+   * **HubName**: Az [Azure portal] a központ lapján megjelenő értesítési központ nevét használja.
      
      `NotificationSettings` kód:
      
@@ -447,7 +447,7 @@ Az értesítési központ konfigurálva lett a GCM-mel való együttműködésre
       ![Tesztelés Android rendszeren – Értesítések][21]
 
 ### <a name="test-send-push-notifications-from-the-azure-portal"></a>Leküldéses értesítések küldésének tesztelése az Azure Portalról
-A leküldéses értesítések fogadásának az alkalmazásban való teszteléséhez értesítéseket küldhet az [Azure Portalon]. 
+A leküldéses értesítések fogadásának az alkalmazásban való teszteléséhez értesítéseket küldhet az [Azure portal]. 
 
 1. A **Hibaelhárítás** szakaszban válassza a **Tesztküldés** lehetőséget. 
 2. A **Platformok** beállításnál válassza az **Android** lehetőséget.
@@ -488,7 +488,7 @@ Az értesítések elküldése általában háttérkiszolgáló használatával t
     android:layout_marginBottom="42dp"
     android:hint="@string/notification_message_hint" />
     ```
-2. Az Android Studio projektnézetében bontsa ki a következőt: **App** > **src** > **main** > **res** > **values**. Nyissa meg a `strings.xml` fájlt, és adja hozzá a `Button` és az `EditText` vezérlő által hivatkozott karakterláncértékeket. A fájl alján, közvetlenül a `</resources>` rész előtt adja hozzá az alábbi sorokat.
+2. Az Android Studio projektnézetében bontsa ki a következőt: **App** > **src** > **main** > **res** > **values**. Nyissa meg a `strings.xml` fájlt, és adja hozzá a `Button` és az `EditText` vezérlő által hivatkozott sztringértékeket. A fájl alján, közvetlenül a `</resources>` rész előtt adja hozzá az alábbi sorokat.
 
     ```xml   
     <string name="send_button">Send Notification</string>
@@ -496,7 +496,7 @@ Az értesítések elküldése általában háttérkiszolgáló használatával t
     ```
 3. A `NotificationSetting.java` fájlban adja hozzá az alábbi beállítást a `NotificationSettings` osztályhoz.
    
-    Frissítse a `HubFullAccess` fájlt a központ **DefaultFullSharedAccessSignature** kapcsolati karakterláncával. Ez a kapcsolati karakterlánc az [Azure Portalon] az értesítési központ **Beállítások** oldalának **Hozzáférési szabályzatok** elemére kattintva másolható át.
+    Frissítse a `HubFullAccess` fájlt a központ **DefaultFullSharedAccessSignature** kapcsolati sztringjével. Ez a kapcsolati sztring az [Azure portal] az értesítési központ **Beállítások** oldalának **Hozzáférési szabályzatok** elemére kattintva másolható át.
    
     ```java
     public static String HubFullAccess = "<Enter Your DefaultFullSharedAccess Connection string>";
@@ -524,9 +524,9 @@ Az értesítések elküldése általában háttérkiszolgáló használatával t
     private String HubSasKeyName = null;
     private String HubSasKeyValue = null;
     ```
-6. Az értesítési központba történő üzenetküldéshez hozzon létre egy Software Access Signature (SaS)-jogkivonatot, amely hitelesíti a POST-kéréseket. Elemezze a kapcsolati karakterlánc legfontosabb adatait, majd az SaS-jogkivonat létrehozását, ahogyan az az [általánosan használt fogalmakat ismertető](http://msdn.microsoft.com/library/azure/dn495627.aspx) REST API-referenciában szerepel. Az alábbi kód egy megvalósítási példát szemléltet.
+6. Az értesítési központba történő üzenetküldéshez hozzon létre egy Software Access Signature (SaS)-jogkivonatot, amely hitelesíti a POST-kéréseket. Elemezze a kapcsolati sztring legfontosabb adatait, majd az SaS-jogkivonat létrehozását, ahogyan az az [általánosan használt fogalmakat ismertető](http://msdn.microsoft.com/library/azure/dn495627.aspx) REST API-referenciában szerepel. Az alábbi kód egy megvalósítási példát szemléltet.
    
-    A `MainActivity.java` fájlban adja hozzá a `MainActivity` osztályhoz az alábbi metódust a kapcsolati karakterlánc elemzéséhez.
+    A `MainActivity.java` fájlban adja hozzá a `MainActivity` osztályhoz az alábbi metódust a kapcsolati sztring elemzéséhez.
    
     ```java
     /**
@@ -731,4 +731,4 @@ Ebben az oktatóanyagban szórásos értesítéseket küldött a háttérrendsze
 [Notification Hubs Guidance]: http://msdn.microsoft.com/library/jj927170.aspx
 [Use Notification Hubs to push notifications to users]: notification-hubs-aspnet-backend-gcm-android-push-to-user-google-notification.md
 [Use Notification Hubs to send breaking news]: notification-hubs-aspnet-backend-android-xplat-segmented-gcm-push-notification.md
-[Azure Portalon]: https://portal.azure.com
+[Azure Portal]: https://portal.azure.com

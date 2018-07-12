@@ -1,6 +1,6 @@
 ---
-title: Azure Service Fabric javítás vezénylési alkalmazással Linux |} Microsoft Docs
-description: Alkalmazás automatizálhatja az operációs rendszer a Linux Service Fabric-fürt javítását.
+title: Az Azure Service Fabric patch orchestration alkalmazás linuxos |} A Microsoft Docs
+description: Az alkalmazás a Linux Service Fabric-fürt operációs rendszer javításának automatizálása.
 services: service-fabric
 documentationcenter: .net
 author: novino
@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 5/22/2018
 ms.author: nachandr
-ms.openlocfilehash: ea999945ace53099eb9dec15397310c9b5d1b904
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 00e5f5a73973a34a8611143719c91a2b1ad0c8eb
+ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34643124"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38971266"
 ---
-# <a name="patch-the-linux-operating-system-in-your-service-fabric-cluster"></a>A Linux operációs rendszert a Service Fabric-fürt javítás
+# <a name="patch-the-linux-operating-system-in-your-service-fabric-cluster"></a>A Linux operációs rendszer a Service Fabric-fürtben
 
 > [!div class="op_single_selector"]
 > * [Windows](service-fabric-patch-orchestration-application.md)
@@ -29,61 +29,61 @@ ms.locfileid: "34643124"
 >
 >
 
-A javítás vezénylési alkalmazása az Azure Service Fabric-alkalmazás, amely automatizálja az operációs rendszer javítását a Service Fabric-fürt leállítása nélkül.
+A patch orchestration application az Azure Service Fabric-alkalmazás, amely automatizálja az operációs rendszer javításának Service Fabric-fürt, üzemkimaradás nélkül.
 
-A javítás vezénylési alkalmazást a következő szolgáltatásokat biztosítja:
+A patch orchestration alkalmazást a következő szolgáltatásokat biztosítja:
 
-- **Operációs rendszer automatikus frissítés telepítése**. Az operációs rendszer frissítéseinek automatikusan letöltődjön és települjön. Fürtcsomópont újraindítása van szükség esetén a fürt leállítása nélkül.
+- **Az operációs rendszer telepítése**. Az operációs rendszer frissítése automatikusan letöltődjön és települjön. Fürtcsomópontok fürt állásidő nélkül igény szerint indulnak újra.
 
-- **Fürttámogató javítását és állapotfigyelő integrációs**. Frissítések alkalmazása során a javítás vezénylési alkalmazás-csomópont állapotát figyeli. Fürtcsomópontok frissített egy csomópont egyszerre egy időben vagy több frissítési tartományt. Ha a fürt állapotának miatt a javítási folyamat leáll, javítását leáll súlyosbító a probléma megelőzése érdekében.
+- **A fürttámogató javításait és egészségügyi integrációs**. Frissítések alkalmazása során a patch orchestration alkalmazást a fürt csomópontjainak állapotát figyeli. Fürtcsomópontok frissített egy csomópont egyszerre egy időben vagy több frissítési tartományt. Ha a fürt állapota miatt a javítási folyamat leáll, javítás leállt súlyosbító a probléma elkerülése érdekében.
 
 ## <a name="internal-details-of-the-app"></a>Az alkalmazás belső részletei
 
-A javítás vezénylési alkalmazást a következő alösszetevők áll:
+A patch orchestration alkalmazást a következő alösszetevők tevődik össze:
 
-- **Koordinátora szolgáltatás**: az állapotalapú szolgáltatás felelős:
-    - A feladat az operációs rendszer frissítése a teljes fürtre koordinációs.
-    - Az operációs rendszer frissítési végrehajtott műveletek eredményét tárolásához.
-- **Csomópont-ügynökszolgáltatás**: Ez az állapot nélküli szolgáltatás fut a Service Fabric-fürt összes csomópontján. A szolgáltatás felelős:
-    - A csomópont ügynök démon Linux rendszerindítása.
-    - A démon szolgáltatás figyelése.
-- **Csomópont ügynök démon**: A Linux-démon szolgáltatás lefuttat egy magasabb szintű jogosultság (root). Ezzel szemben a csomópont ügynök és a koordinátor szolgáltatást, futtassa alacsonyabb szintű jogosultság. A szolgáltatás felelős a fürt összes csomópontján a következő frissítési feladatok végrehajtására:
-    - Letiltása folyamatban van a csomópont automatikus az operációs rendszer frissítése.
-    - Letölti és telepíti az operációs rendszer frissítés a házirendnek megfelelően a felhasználó van megadva.
-    - A gép feladás egy vagy több operációs rendszer telepítése újraindítása, ha szükséges.
-    - Operációs rendszer frissítése érdekében eredményeinek feltöltése a koordinátor szolgáltatást.
-    - Jelentéskészítési rendszerállapot-jelentéseket abban az esetben, ha egy művelet sikertelen volt a kimerítsék összes ismételt próbálkozás után.
+- **Koordinátor szolgáltatást**: az állapotalapú szolgáltatás felelős:
+    - Az operációs rendszer frissítési feladat az egész fürt összehangolása.
+    - Az eredmény a befejezett operációsrendszer-frissítési műveletek tárolására.
+- **Csomópont-ügynökszolgáltatás**: A állapotmentes szolgáltatás fut a Service Fabric-fürt összes csomópontján. A szolgáltatás felelős:
+    - A Linuxon futó csomóponti ügynök démon rendszerindításra.
+    - A démon szolgáltatás figyelésére.
+- **Csomópont ügynök démon**: A Linux-démon szolgáltatás fut le egy magasabb szintű jogosultságot (root). Ezzel szemben a csomópont az ügynök és a koordinátor szolgáltatást futtatni egy alacsonyabb szintű jogosultságokkal. A szolgáltatás felelős a a fürt összes csomópontján a következő frissítési feladatok végrehajtása:
+    - A csomóponton automatikus operációsrendszer-frissítés letiltása.
+    - Letöltése és telepítése az operációs rendszer frissítése a házirend szerint a felhasználó adta meg.
+    - A gép bejegyzés operációsrendszer-frissítés telepítése újraindítása, ha szükséges.
+    - Operációs rendszer frissítése eredményeinek feltöltését a koordinátor szolgáltatást.
+    - Jelentéskészítési rendszerállapot-jelentéseket abban az esetben, ha egy művelet nem sikerült kimerítése összes újrapróbálkozás után.
 
 > [!NOTE]
-> A javítás vezénylési alkalmazás a Service Fabric javítási manager szolgáltatás használ a letiltása vagy engedélyezése a csomópont és állapotát ellenőrzi. A javítási feladat, a javítás vezénylési alkalmazás által létrehozott követi nyomon, hogy minden csomópont a frissítés folyamatban.
+> A patch orchestration app letiltása vagy engedélyezése a csomópont és állapotellenőrzéseket hajthat végre a Service Fabric javítási manager rendszer szolgáltatást használja. A javítási feladat a patch orchestration alkalmazás által létrehozott minden egyes csomópont esetében a frissítési folyamatot követi nyomon.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-### <a name="ensure-that-your-azure-vms-are-running-ubuntu-1604"></a>Győződjön meg arról, hogy az Azure virtuális gépeken futnak Ubuntu 16.04
-Ebben a dokumentumban Ubuntu 16.04 írása idején (`Xenial Xerus`) az egyetlen támogatott verzió.
+### <a name="ensure-that-your-azure-vms-are-running-ubuntu-1604"></a>Győződjön meg arról, hogy az Azure-beli virtuális gépek futnak Ubuntu 16.04
+Ez a dokumentum, Ubuntu 16.04 írása idején (`Xenial Xerus`) az egyetlen támogatott verzió.
 
-### <a name="ensure-that-the-service-fabric-linux-cluster-is-version-62x-and-above"></a>Győződjön meg arról, hogy a service fabric linux-fürt verzió 6.2.x vagy újabb verzió
+### <a name="ensure-that-the-service-fabric-linux-cluster-is-version-62x-and-above"></a>Győződjön meg arról, hogy a service fabric linux-fürt verziója 6.2.x vagy újabb verzió
 
-Javítás vezénylési app linux használja a futásidejű bizonyos funkcióinak, amely csak a service fabric futásidejű verzióját 6.2.x vagy újabb verzió.
+Patch orchestration app linux használ modul szolgáltatásokat, amelyek csak érhetők el a service fabric-futtatókörnyezet verziója 6.2.x vagy újabb verzió.
 
-### <a name="enable-the-repair-manager-service-if-its-not-running-already"></a>A kezelő szolgáltatás engedélyezése (Ha nem már fut)
+### <a name="enable-the-repair-manager-service-if-its-not-running-already"></a>A repair-kezelő szolgáltatás engedélyezése (Ha nincs már fut)
 
-A javítás vezénylési alkalmazásnak van szüksége. a javítás manager szolgáltatás engedélyezni kell a fürtön.
+A patch orchestration alkalmazás szükséges a javítási manager rendszerszolgáltatás engedélyezni kell a fürtön.
 
 #### <a name="azure-clusters"></a>Az Azure-fürtök
 
-Az Azure linux fürtökön használható a az ezüst és arany tartóssági szint a repair-kezelő szolgáltatás alapértelmezés szerint engedélyezve van. Az Azure-fürtöket helyez a bronz tartóssági szint, alapértelmezés szerint nem rendelkeznek a repair-kezelő szolgáltatás engedélyezve van. Ha a szolgáltatás már engedélyezve van, megtekintheti a Service Fabric Explorer rendszer szolgáltatások szakaszának futnak.
+Az Azure linux-fürtök a tagjainak silver és gold tartóssági szint a repair-kezelő szolgáltatás alapértelmezés szerint engedélyezve van. Az Azure-fürtöket a bronz tartóssági szint, alapértelmezés szerint nem rendelkezik a repair-kezelő szolgáltatás engedélyezve van. Ha a szolgáltatás már engedélyezve van, a rendszer-services szakaszban a Service Fabric Explorert a működés láthatja.
 
 ##### <a name="azure-portal"></a>Azure Portal
-Azure-portálon manager javítást engedélyezheti a fürt beállítása során. Válassza ki **Manager javítást tartalmaz** lehetőség alatt **bővítményeire** fürtkonfiguráció időpontjában.
-![Az engedélyezés Manager javítást kép Azure-portálon](media/service-fabric-patch-orchestration-application/EnableRepairManager.png)
+A fürt beállításának idején manager javítást igényel az Azure Portal használatával engedélyezheti. Válassza ki **közé tartozik a javításkezelő** lehetőség **bővítmény szolgáltatásai** fürtkonfiguráció időpontjában.
+![Az Azure Portalról, amely lehetővé teszi javításkezelő kép](media/service-fabric-patch-orchestration-application/EnableRepairManager.png)
 
-##### <a name="azure-resource-manager-deployment-model"></a>Az Azure Resource Manager telepítési modell
-Másik lehetőségként használhatja a [Azure Resource Manager üzembe helyezési modellben](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-creation-via-arm) ahhoz, hogy a javítási manager szolgáltatás a meglévő és új Service Fabric-fürtök. Szerezze be a sablon a fürt, amely számára telepíteni kívánja. A minta-sablonok, vagy hozzon létre egy egyéni Azure Resource Manager telepítési modell sablont. 
+##### <a name="azure-resource-manager-deployment-model"></a>Az Azure Resource Manager üzemi modell
+Másik lehetőségként használhatja a [Azure Resource Manager üzemi modell](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-creation-via-arm) ahhoz, hogy a javítási manager szolgáltatás új és meglévő Service Fabric-fürtökön. Szerezze be a sablon a fürt, amely számára telepíteni kívánja. A mintasablonokat használja, vagy hozzon létre egy egyéni Azure Resource Manager üzembe helyezési modell sablont. 
 
-Ahhoz, hogy a javítási manager szolgáltatás használ [Azure Resource Manager telepítési modell sablon](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-creation-via-arm):
+Ahhoz, hogy a javítási manager szolgáltatás használata [Azure Resource Manager üzembe helyezési modell sablon](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-creation-via-arm):
 
-1. Először ellenőrizze, hogy a `apiversion` értéke `2017-07-01-preview` a a `Microsoft.ServiceFabric/clusters` erőforrás. Ha nem egyezik, akkor frissítenie kell a `apiVersion` értékre `2017-07-01-preview` vagy magasabb:
+1. Először ellenőrizze, hogy a `apiversion` értékre van állítva `2017-07-01-preview` számára a `Microsoft.ServiceFabric/clusters` erőforrás. Ha nem egyeznek, akkor frissítenie kell a `apiVersion` értékre `2017-07-01-preview` vagy magasabb:
 
     ```json
     {
@@ -95,7 +95,7 @@ Ahhoz, hogy a javítási manager szolgáltatás használ [Azure Resource Manager
     }
     ```
 
-2. Most a repair-kezelő szolgáltatás engedélyezéséhez adja hozzá az alábbiakat `addonFeatures` szakasz után a `fabricSettings` szakasz:
+2. Mostantól engedélyezheti a repair-kezelő szolgáltatás a következő `addonFeatures` szakasz után a `fabricSettings` szakaszban:
 
     ```json
     "fabricSettings": [
@@ -106,74 +106,74 @@ Ahhoz, hogy a javítási manager szolgáltatás használ [Azure Resource Manager
     ],
     ```
 
-3. A fürt sablon ezekkel a módosításokkal frissítése után alkalmazza őket, és lehetővé teszik a frissítés befejezéséhez. Most már megtekintheti a javítási manager szolgáltatás fut a fürtön. Azt nevezzük `fabric:/System/RepairManagerService` részében a rendszer szolgáltatások a Service Fabric Explorerben talál. 
+3. Ezek a módosítások a fürtsablonhoz frissítése után alkalmazza őket, és lehetővé teszik a frissítés befejezéséhez. Most már megtekintheti a javítási manager rendszer szolgáltatás fut a fürtben. Azt nevezzük `fabric:/System/RepairManagerService` a Service Fabric Explorert a rendszer szolgáltatások szakaszában. 
 
 ### <a name="standalone-on-premises-clusters"></a>Önálló helyszíni fürtök
 
-Különálló Service Fabric Linux-fürtök nem támogatják a jelen dokumentum írása idején.
+Önálló Service Fabric Linux-fürtökön nem támogatottak a jelen dokumentum írása idején.
 
-### <a name="disable-automatic-os-update-on-all-nodes"></a>Tiltsa le az összes olyan csomóponton, automatikus az operációs rendszer
+### <a name="disable-automatic-os-update-on-all-nodes"></a>Az összes csomóponton automatikus operációsrendszer-frissítés letiltani
 
-Automatikus operációs rendszer frissítése érdekében előfordulhat, hogy előfordulhat, hogy a rendelkezésre állást és vagy a futó alkalmazások viselkedését. A javítás vezénylési alkalmazás alapértelmezés szerint próbál tiltsa le az automatikus frissítés az operációs rendszer a fürt minden csomópontján, az ilyen helyzetek megelőzése érdekében.
-Az Ubuntu [felügyelet nélküli frissítések](https://help.ubuntu.com/community/AutomaticSecurityUpdates) javítás vezénylési alkalmazás le vannak tiltva.
+Operációs rendszer automatikus frissítései előfordulhat, hogy rendelkezésre állási elvesztését, és vagy módosítani a futó alkalmazások működésében. A patch orchestration alkalmazás alapértelmezés szerint próbálja meg a fürt minden csomópontján, hogy az ilyen forgatókönyvek például az automatikus operációsrendszer-frissítés letiltani.
+Az Ubuntu [felügyelet nélküli frissítéseket](https://help.ubuntu.com/community/AutomaticSecurityUpdates) patch orchestration alkalmazás le van tiltva.
 
-## <a name="download-the-app-package"></a>A csomag letöltése
+## <a name="download-the-app-package"></a>Az alkalmazás-csomag letöltése
 
 Telepítési parancsfájlok mellett alkalmazást is letölthető [archív hivatkozás](https://go.microsoft.com/fwlink/?linkid=867984).
 
-Alkalmazás sfpkg formátumban letölthető a [sfpkg hivatkozás](https://go.microsoft.com/fwlink/?linkid=867984&pc=sfpkg). Ez hasznos előre [Azure Resource Manager-alapú alkalmazás központi telepítésének](service-fabric-application-arm-resource.md).
+Alkalmazás sfpkg formátumban letölthető [sfpkg hivatkozás](https://go.microsoft.com/fwlink/?linkid=867984&pc=sfpkg). Ez hasznos tartalmaz [Azure Resource Manager-alapú alkalmazás központi telepítésének](service-fabric-application-arm-resource.md).
 
 ## <a name="configure-the-app"></a>Az alkalmazás konfigurálása
 
-A javítás vezénylési alkalmazás viselkedése beállítható úgy, hogy az igényeinek. Az alapértelmezett érték felülírására történő alkalmazás paraméterében alkalmazás létrehozása vagy frissítése során. Alkalmazás paraméterek megadásával megadható `ApplicationParameter` számára a `Start-ServiceFabricApplicationUpgrade` vagy `New-ServiceFabricApplication` parancsmagok.
+A patch orchestration app viselkedését konfigurálhatja az igényeinek. Alkalmazás létrehozása vagy módosítása során az alkalmazás paraméter megadásával bírálja felül az alapértelmezett értékeket. Alkalmazás paraméterek megadásával adható meg `ApplicationParameter` , a `Start-ServiceFabricApplicationUpgrade` vagy `New-ServiceFabricApplication` parancsmagok.
 
 |**A paraméter**        |**Típus**                          | **Részletek**|
 |:-|-|-|
-|MaxResultsToCache    |Hosszú                              | Frissítés eredmények, amelyek gyorsítótárazza maximális száma. <br>Alapértelmezett érték 3000 feltéve, hogy a: <br> -Csomópontok száma 20. <br> -A csomópont havonta történik frissítések száma: öt. <br> -Művelet eredmények száma 10 is lehet. <br> -Az elmúlt három hónap eredmények kell tárolni. |
-|TaskApprovalPolicy   |Enum <br> {NodeWise, UpgradeDomainWise}                          |TaskApprovalPolicy azt jelzi, hogy a házirendet, amely a frissítések telepítése a Service Fabric-fürt csomópontjai között a koordinátor-szolgáltatás által használandó.<br>                         Engedélyezett értékek a következők: <br>                                                           <b>NodeWise</b>. A frissítései telepített egy csomópont egyszerre. <br>                                                           <b>UpgradeDomainWise</b>. A frissítései telepített több frissítési tartományt egyszerre. (A maximumot, a frissítési tartományokhoz tartozó összes számítógépen lépjen a frissítéshez.)
-| UpdateOperationTimeOutInMinutes | Int <br>(Alapértelmezett: 180)                   | Megadja azt az időtartamot, a frissítési művelet (letöltése vagy telepítése). Ha a művelet nem végzi el a megadott időkorláton belül, megszakadt.       |
-| RescheduleCount      | Int <br> (Alapértelmezett: 5).                  | Maximális száma a szolgáltatás reschedules az operációs rendszer frissítése, abban az esetben, ha egy művelet hiba folyamatosan fennáll.          |
-| RescheduleTimeInMinutes  | Int <br>(Alapértelmezett: 30). | Az időköz, ahol a szolgáltatás miatti újraütemezés az operációs rendszer frissítése, ha a probléma továbbra is fennáll. |
-| UpdateFrequency           | Vesszővel elválasztott karakterlánc (alapértelmezett: "Heti, szerda, 7:00:00")     | Az operációs rendszer frissítéseinek telepítése a fürt gyakoriságát. A formátum és a lehetséges értékek a következők: <br>– Havonta, NN ÓÓ: pp:, például havi, 5, 12:22:32. <br> -Hetente, nap, formátumban, például hetente, kedd, 12:22:32.  <br> -Napi, óó: pp:, ha például naponta, 12:22:32.  <br> -Nincs azt jelzi, ez a frissítés nem végezhető el.  <br><br> Minden időpontok UTC formátumban.|
-| UpdateClassification | Vesszővel elválasztott karakterlánc (alapértelmezett: "securityupdates") | A fürt csomópontjain telepítendő frissítések típusát. Elfogadható értékek a következők securityupdates, minden. <br> -securityupdates - csak a biztonsági frissítéseket telepíti <br> az összes rendelkezésre álló frissítéseket a apt - összes - telepíti.|
-| ApprovedPatches | Vesszővel elválasztott karakterlánc (alapértelmezett: "") | A rendszer a jóváhagyott frissítések fürtcsomóponton telepítve kell lennie. A vesszővel elválasztott listáját tartalmazza a jóváhagyott csomagok és opcionálisan kívánt célverzió.<br> például: "apt utils 1.2.10ubuntu1, python3-jwt-t, apt átviteli https < 1.2.194, libsystemd0 = > 229-4ubuntu16 =" <br> A fenti telepíti <br> -apt utils rendelkező verzió 1.2.10ubuntu1, ha az elérhető apt-gyorsítótárában. Adott verzió nem érhető el, akkor célszerű műveletvégzés. <br> -python3-jwt frissítések elérhető legújabb verzióra. A csomag nincs jelen, majd esetén műveletvégzés. <br> -verziójához, amely kisebb, mint 1.2.194 apt átviteli https-frissítések. Ebben a verzióban nincs jelen, majd esetén műveletvégzés. <br> -verziójához, amely nagyobb vagy egyenlő 229-4ubuntu16 libsystemd0 frissítések. Ha ilyen verzió nem létezik, akkor célszerű műveletvégzés.|
-| RejectedPatches | Vesszővel elválasztott karakterlánc (alapértelmezett: "") | A lista nem kell telepíteni a fürtcsomópontokon <br> például: "bash, sudo" <br> Az előző kiszűri a bash, sudo a frissítéseket. |
+|MaxResultsToCache    |Hosszú                              | Frissítés eredményeket, amely a gyorsítótárba kerüljenek maximális számát. <br>Alapértelmezett érték 3000 feltéve, hogy a: <br> -Csomópontok száma, 20. <br> -Történik a havi csomópont frissítések száma, öt. <br> -Művelet eredmények száma 10 lehet. <br> -Az elmúlt három havi eredmény kell tárolni. |
+|TaskApprovalPolicy   |Enum <br> {NodeWise, UpgradeDomainWise}                          |TaskApprovalPolicy azt jelzi, hogy a szabályzatot, amely a frissítések telepítése a Service Fabric-fürt csomópontjain a koordinátor-szolgáltatás által használandó.<br>                         Engedélyezett értékek a következők: <br>                                                           <b>NodeWise</b>. A frissítések olyan telepített egy csomópont egyszerre. <br>                                                           <b>UpgradeDomainWise</b>. Frissítések egyszerre több frissítési tartományt telepített állnak. (A maximumot, a frissítési tartományokhoz tartozó összes csomópontját meg frissítés.)
+| UpdateOperationTimeOutInMinutes | Int <br>(Alapértelmezett: 180)                   | Megadja azt az időtartamot, minden olyan frissítési művelet (letöltése vagy telepítése). A művelet a megadott időkorláton belül nem végzi el, ha megszakadt.       |
+| RescheduleCount      | Int <br> (Alapértelmezett: 5).                  | A szolgáltatás átütemez az operációs rendszer maximális száma abban az esetben, ha egy művelet meghiúsul, tartósan frissítése.          |
+| RescheduleTimeInMinutes  | Int <br>(Alapértelmezés: 30). | Az időköz, ahol a szolgáltatás az operációs rendszer átütemez frissítés abban az esetben, ha hiba továbbra is fennáll. |
+| UpdateFrequency           | Vesszővel tagolt karakterláncot (alapértelmezett: "Hetente, szerda, 7:00:00")     | A gyakoriság, az operációs rendszer frissítéseinek telepítése a fürtön. A formátum és a lehetséges értékek a következők: <br>-Ha például havonta, 5., 12:22:32 havi, NN formátumban. <br> -Hetente, nap, formátumban, például hetente, kedd, 12:22:32.  <br> – Napi, formátumban, például naponta, 12:22:32.  <br> – Nincs azt jelzi, hogy a frissítés nem hajtható végre.  <br><br> Minden esetben vannak (UTC).|
+| UpdateClassification | Vesszővel tagolt karakterláncot (alapértelmezett: "securityupdates") | A fürt csomópontjain telepítendő frissítések típusát. Elfogadható értékek a következők securityupdates, minden. <br> -securityupdates – csak a biztonsági frissítéseket telepíti <br> az összes elérhető frissítés az apt - all - telepíti.|
+| ApprovedPatches | Vesszővel tagolt karakterláncot (alapértelmezett: "") | Ez az a jóváhagyott frissítések, amelyek a fürtcsomópontokat, telepítenie kell. A vesszővel tagolt listában tartalmazza a jóváhagyott csomagok és igény szerint kívánt cílová verze.<br> például: "apt utils 1.2.10ubuntu1, python3-jwt, apt-átviteli – https < 1.2.194, libsystemd0 = > 229-4ubuntu16 =" <br> A fenti telepíti <br> -verzió 1.2.10ubuntu1, ha elérhető, az apt-gyorsítótár az apt utils. Ha adott verzió nem érhető el, majd, műveletvégzés. <br> -python3-jwt frissítéseit is elérhető legújabb verzióra. Ha a csomag nem található, majd műveletvégzés. <br> -verziójához, amely kisebb, mint 1.2.194 apt-átviteli – https-frissítések. Ez a verzió nem szerepel, majd, hogy műveletvégzés. <br> -verziójához, amely nagyobb vagy egyenlő 229-4ubuntu16 libsystemd0 frissítéseket. Ha egy ilyen verzió nem létezik, majd, műveletvégzés.|
+| RejectedPatches | Vesszővel tagolt karakterláncot (alapértelmezett: "") | Ez az, hogy a frissítések, amelyek nem telepíthetők a fürtcsomópontokon <br> például: "a bash, a sudo" <br> Az előző kiszűri a bash, a sudo frissítések fogadását. |
 
 
 > [!TIP]
-> Ha azt szeretné, azonnal megtörténjen-e az operációs rendszer frissítése, `UpdateFrequency` relatív az alkalmazás telepítési idejét. Tegyük fel, hogy öt csomópontból tesztet a fürt, és tervezze meg az alkalmazás központi telepítése a következő körülbelül 5:00 PM UTC. Ha azt feltételezi, hogy az alkalmazás frissítése vagy a központi telepítési 30 percig tart a lehető, állítsa be a UpdateFrequency "Naponta, 17:30:00."
+> Ha azt szeretné, hogy operációsrendszer-frissítés azonnal elvégzi, `UpdateFrequency` az alkalmazás üzembe helyezési idő viszonyítva. Tegyük fel, hogy egy öt csomópontot számláló tesztfürt és tervez üzembe helyezni az alkalmazást, körülbelül 5:00 Órakor (UTC). Ha azt feltételezik, hogy az alkalmazás frissítése vagy telepítése 30 percig tart, a maximális, állítsa be a UpdateFrequency "Naponta, 17:30:00."
 
 ## <a name="deploy-the-app"></a>Az alkalmazás üzembe helyezése
 
-1. Készítse elő a fürt befejező az előzetesen szükséges lépések leírását.
-2. A javítás vezénylési alkalmazás mint bármely más Service Fabric-alkalmazás telepítése. PowerShell vagy Azure Service Fabric parancssori felület használatával telepítheti az alkalmazást. Kövesse a [központi telepítése és törlése alkalmazás PowerShell-lel](https://docs.microsoft.com/azure/service-fabric/service-fabric-deploy-remove-applications) vagy [Azure Service Fabric parancssori felület használatával alkalmazás központi telepítése](https://docs.microsoft.com/azure/service-fabric/scripts/cli-deploy-application)
-3. Konfigurálja az alkalmazást a telepítés során, adja át a `ApplicationParamater` számára a `New-ServiceFabricApplication` parancsmag vagy a parancsfájlok. Az Ön kényelme érdekében powershell (Deploy.ps1) és (Deploy.sh) bash parancsfájlok megadott együtt az alkalmazást. A parancsprogram használata:
+1. Készítse elő a fürt befejező az előfeltételként felsorolt lépéseket.
+2. A patch orchestration alkalmazás például a többi Service Fabric-alkalmazást üzembe helyezése. Az alkalmazás a PowerShell vagy az Azure Service Fabric parancssori felület segítségével telepíthet. Kövesse a [PowerShell-lel telepítés és eltávolítás alkalmazások](https://docs.microsoft.com/azure/service-fabric/service-fabric-deploy-remove-applications) vagy [alkalmazás üzembe helyezése az Azure Service Fabric parancssori felület használatával](https://docs.microsoft.com/azure/service-fabric/scripts/cli-deploy-application)
+3. Az alkalmazás konfigurálása a központi telepítés alkalmával, át kell adnia a `ApplicationParamater` , a `New-ServiceFabricApplication` parancsmag vagy a parancsfájlokat. Az Ön kényelme érdekében a powershell (Deploy.ps1) és (Deploy.sh) bash-szkriptek megadott együtt az alkalmazás. A parancsprogram használata:
 
-    - Csatlakozás a Service Fabric-fürt.
-    - Hajtsa végre a központi telepítés parancsfájlt. Az alkalmazás paraméter nem kötelező továbbadni a parancsfájlnak. például:.\Deploy.ps1 - ApplicationParameter @{UpdateFrequency = "Naponta, 11:00:00"} OR./Deploy.sh "{\"UpdateFrequency\":\"naponta, 11:00:00\"}" 
+    - Csatlakozhat a Service Fabric-fürtön.
+    - Hajtsa végre az üzembe helyezés parancsfájlt. Lehetősége van átadni az alkalmazás paraméter a parancsfájlt. például:.\Deploy.ps1 - ApplicationParameter @{UpdateFrequency = "Naponta, 11:00:00"} vagy./Deploy.sh "{\"UpdateFrequency\":\"naponta, 11:00:00\"}" 
 
 > [!NOTE]
-> A parancsfájl és az alkalmazás mappájában PatchOrchestrationApplication ne ugyanabban a könyvtárban.
+> A parancsfájl, és az alkalmazás mappájában PatchOrchestrationApplication tartsa ugyanabban a címtárban.
 
 ## <a name="upgrade-the-app"></a>Az alkalmazás frissítése
 
-Egy meglévő javítás vezénylési alkalmazást frissítéséhez kövesse a [az alkalmazásfrissítés Service Fabric PowerShell-lel](https://docs.microsoft.com/azure/service-fabric/service-fabric-application-upgrade-tutorial-powershell) vagy [Service Fabric az alkalmazásfrissítés Azure Service Fabric parancssori felület használatával](https://docs.microsoft.com/azure/service-fabric/service-fabric-sfctl-application#sfctl-application-upgrade)
+A patch orchestration meglévő alkalmazás frissítéséhez kövesse [PowerShell használatával a Service Fabric-alkalmazás frissítése](https://docs.microsoft.com/azure/service-fabric/service-fabric-application-upgrade-tutorial-powershell) vagy [Azure Service Fabric parancssori felület használatával a Service Fabric-alkalmazás frissítése](https://docs.microsoft.com/azure/service-fabric/service-fabric-sfctl-application#sfctl-application-upgrade)
 
 ## <a name="remove-the-app"></a>Távolítsa el az alkalmazást
 
-Az alkalmazás eltávolításához kövesse [központi telepítése és törlése alkalmazás PowerShell-lel](https://docs.microsoft.com/azure/service-fabric/service-fabric-deploy-remove-applications) vagy [Azure Service Fabric CLI-t használó alkalmazások eltávolítása](https://docs.microsoft.com/azure/service-fabric/service-fabric-sfctl-application#sfctl-application-delete)
+Az alkalmazás eltávolításához kövesse [PowerShell-lel telepítés és eltávolítás alkalmazások](https://docs.microsoft.com/azure/service-fabric/service-fabric-deploy-remove-applications) vagy [alkalmazások eltávolítása az Azure Service Fabric parancssori felület használatával](https://docs.microsoft.com/azure/service-fabric/service-fabric-sfctl-application#sfctl-application-delete)
 
-Az Ön kényelme érdekében powershell (Undeploy.ps1) és (Undeploy.sh) bash parancsfájlok megadott együtt az alkalmazást. A parancsprogram használata:
+Az Ön kényelme érdekében a powershell (Undeploy.ps1) és (Undeploy.sh) bash-szkriptek megadott együtt az alkalmazás. A parancsprogram használata:
 
-  - Csatlakozás a Service Fabric-fürt.
-  - A parancsfájl Undeploy.ps1 vagy Undeploy.sh végrehajtása
+  - Csatlakozhat a Service Fabric-fürtön.
+  - Hajtsa végre a parancsfájl Undeploy.ps1 vagy Undeploy.sh
 
 > [!NOTE]
-> A parancsfájl és az alkalmazás mappájában PatchOrchestrationApplication ne ugyanabban a könyvtárban.
+> A parancsfájl, és az alkalmazás mappájában PatchOrchestrationApplication tartsa ugyanabban a címtárban.
 
 ## <a name="view-the-update-results"></a>A frissítési eredmények megtekintése
 
-A javítás vezénylési alkalmazás közzététele a REST API-kat a felhasználó számára a korábbi eredmények megtekintése céljából. Az alábbiakban látható egy minta eredmény: ```testadm@bronze000001:~$ curl -X GET http://10.0.0.5:20002/PatchOrchestrationApplication/v1/GetResults```
+A patch orchestration app közzététele a REST API-k, a felhasználó korábbi eredményeinek megjelenítésére. Következő egy minta eredmény: ```testadm@bronze000001:~$ curl -X GET http://10.0.0.5:20002/PatchOrchestrationApplication/v1/GetResults```
 ```json
 [ 
   { 
@@ -217,158 +217,158 @@ A javítás vezénylési alkalmazás közzététele a REST API-kat a felhasznál
 ] 
 ```
 
-A JSON a mezők az alábbiak szerint:
+A JSON mezők az alábbiak szerint:
 
 Mező | Értékek | Részletek
 -- | -- | --
-Operationresult adatokat a | 0 - sikeres<br> 1 – sikeres volt, a hibák<br> 2 – nem sikerült<br> 3 - megszakítva<br> 4 - megszakadt az időkorlát | Azt jelzi, hogy általános műveletet (jellemzően egy vagy több frissítés telepítését) eredményét.
-ResultCode | Ugyanaz, mint az operationresult adatokat a | Ez a mező egy egyedi frissítés telepítési művelet eredményét jelzi.
-OperationType | 1 - telepítés<br> 0 - keresés, és töltse le.| A csak művelettípus, amelyek akkor jelennek meg az eredmények alapértelmezés szerint egy telepítés.
-UpdateClassification | Alapértelmezett érték "securityupdates" | A frissítési művelet során telepített frissítések típusa
-UpdateFrequency | Alapértelmezett érték "Heti, szerda, 7:00:00" | Frissítési gyakoriság, a frissítés konfigurálva.
-RebootRequired | igaz – volt szükség újraindításra<br> hamis - nem volt szükség újraindításra | Azt jelzi, újraindítás szükséges a frissítések telepítésének befejezéséhez.
+Operationresult adatokat a | 0 – sikeres<br> 1 – sikeres hibákkal<br> 2 – nem sikerült<br> 3 – megszakítva<br> 4 – megszakítva időkorlát | Azt jelzi, hogy általános művelet (általában egy vagy több frissítés telepítését) eredményét.
+Eredménykód | Ugyanaz, mint az operationresult adatokat a | Ebben a mezőben azt jelzi, hogy egyedi frissítés telepítési művelet eredményét.
+OperationType | 1 – telepítés<br> 0 – keresse meg és töltse le.| Telepítés a, amelyek akkor jelennek meg az eredményeket alapértelmezés szerint csak OperationType.
+UpdateClassification | Az alapértelmezett érték "securityupdates" | A frissítési művelet során telepített frissítések típusa
+UpdateFrequency | Az alapértelmezett érték "Hetente, szerda, 7:00:00" | Frissítés gyakorisága már konfigurálva van a frissítés.
+RebootRequired | igaz – volt szükség újraindításra<br> hamis – nem volt szükség újraindításra | Azt jelzi, újraindítás szükséges a frissítések telepítésének befejezéséhez.
 ApprovedList | Alapértelmezett érték a "" | A frissítés jóváhagyott javítások
 RejectedList | Alapértelmezett érték a "" | A frissítés elutasított javítások
 
-Ha még nincs frissítés ütemezett, JSON eredménye üres.
+Nincs frissítés még van ütemezve, akkor az eredmény JSON je prázdná.
 
-Jelentkezzen be a fürt frissítési érhetünk el a lekérdezést. Ezután az a koordinátor szolgáltatást az elsődleges replika cím, majd nyomja le az URL-CÍMÉT a böngésző: http://&lt;REPLIKA IP-&gt;:&lt;ApplicationPort&gt;/PatchOrchestrationApplication/v1/GetResults .
+Jelentkezzen be a fürt frissítési lekérdezéseredmények. Ismerje meg, a koordinátor szolgáltatást az elsődleges replika címét, és nyomja le az URL-címet a böngésző: http://&lt;REPLIKA IP-&gt;:&lt;ApplicationPort&gt;/PatchOrchestrationApplication/v1/GetResults .
 
-A koordinátor szolgáltatás REST-végpont dinamikus-porttal rendelkezik. A pontos URL-cím ellenőrzéséhez tekintse meg a Service Fabric Explorerben talál. Például az eredmények érhetők el: `http://10.0.0.7:20000/PatchOrchestrationApplication/v1/GetResults`.
+A REST-végpont a koordinátor szolgáltatást a dinamikus port van. Ellenőrizze a pontos URL-címet, tekintse meg a Service Fabric Explorert. Ha például az eredmények esetén érhető el `http://10.0.0.7:20000/PatchOrchestrationApplication/v1/GetResults`.
 
 ![REST-végpont képe](media/service-fabric-patch-orchestration-application/Rest_Endpoint.png)
 
-## <a name="diagnosticshealth-events"></a>Diagnosztika/állapotával kapcsolatos események
+## <a name="diagnosticshealth-events"></a>Diagnosztikai/hálózatállapot-események
 
 ### <a name="diagnostic-logs"></a>Diagnosztikai naplók
 
-Javítás vezénylési app naplókat a rendszer a Service Fabric-futtatókörnyezet naplók részeként gyűjti.
+Patch orchestration alkalmazásnaplókat a rendszer a Service Fabric-futtatókörnyezet naplóiban részeként gyűjti.
 
-Abban az esetben, ha szeretné rögzíteni a naplók diagnosztikai eszköz/folyamat a kiválasztott keresztül. Javítás vezénylési alkalmazás a következő használja rögzített szolgáltató azonosítók keresztül események naplózása [eventsource](https://docs.microsoft.com/dotnet/api/system.diagnostics.tracing.eventsource?view=netstandard-2.0)
+Szeretne diagnosztikai eszköz vagy folyamat tetszőleges keresztül naplók rögzítésére. Események keresztül bejelentkezni a következő rögzített szolgáltató azonosítók használja Patch orchestration application [eventsource](https://docs.microsoft.com/dotnet/api/system.diagnostics.tracing.eventsource?view=netstandard-2.0)
 
 - e39b723c-590c-4090-abb0-11e3e6616346
 - fc0028ff-bfdc-499f-80dc-ed922c52c5e9
 - 24afa313-0d3b-4c7c-b485-1047fd964b60
 - 05dc046c-60e9-4ef7-965e-91660adffa68
 
-### <a name="health-reports"></a>Állapotjelentések száma
+### <a name="health-reports"></a>Rendszerállapot-jelentések
 
-A javítás vezénylési app állapotjelentések a koordinátor szolgáltatást vagy a csomópont-ügynökszolgáltatás is közzéteszi a következő esetekben:
+A patch orchestration alkalmazás rendszerállapot-jelentések a koordinátor szolgáltatást vagy a csomópont-ügynökszolgáltatás is közzéteszi a következő esetekben:
 
-#### <a name="an-update-operation-failed"></a>Frissítési művelet nem sikerült
+#### <a name="an-update-operation-failed"></a>Egy olyan frissítési művelet nem sikerült
 
-Frissítési művelet nem sikerül, a csomópont, a jelentés jön létre, a csomópont Agent szolgáltatásra. Az állapotjelentés részleteit tartalmazzák a problematikus csomópont nevét.
+Ha egy csomópont-frissítési művelet meghiúsul, a jelentés a csomópont-ügynök szolgáltatás jön létre. Az állapotjelentés részleteit a problematikus csomópontot nevét tartalmazzák.
 
-Miután javítása sikeresen befejeződött a problematikus csomóponton, a rendszer automatikusan törli a jelentést.
+Javítás sikeresen befejeződött a problematikus csomópontot, miután a rendszer automatikusan törli a jelentést.
 
-#### <a name="the-node-agent-daemon-service-is-down"></a>A csomópont ügynök démon szolgáltatás nem működik
+#### <a name="the-node-agent-daemon-service-is-down"></a>A csomópont ügynök démon szolgáltatás leállt
 
-A csomópont ügynök démon szolgáltatás nem működik egy csomóponton, szemben a csomópont-ügynökszolgáltatás figyelmeztetési szintű állapotjelentése jön létre.
+Ha a csomópont ügynök démon szolgáltatás nem működik egy csomóponton, a csomópont-ügynök szolgáltatás figyelmeztetési szintű állapotjelentés jön létre.
 
-#### <a name="the-repair-manager-service-is-not-enabled"></a>A kezelő szolgáltatás nincs engedélyezve
+#### <a name="the-repair-manager-service-is-not-enabled"></a>A javítási manager szolgáltatás nincs engedélyezve
 
-Figyelmeztetési szintű állapotjelentés a koordinátor szolgáltatás generál, ha a kezelő szolgáltatás nem található a fürtön.
+Figyelmeztetési szintű állapotjelentése az koordinátora szolgáltatás generál, ha a javítás manager szolgáltatás nem található a fürtön.
 
 ## <a name="frequently-asked-questions"></a>Gyakori kérdések
 
-Q. **Miért látom azt a fürt állapota a javítás vezénylési alkalmazás futtatásakor?**
+VÁLASZOK. **Miért látok a fürt hibás állapotú, a patch orchestration alkalmazás futása során?**
 
-A. A telepítés során a javítás vezénylési app letiltja, vagy újraindítja a csomópontot. Ez a művelet ideiglenesen is a fürt állapotának eredményez.
+A. A telepítés során a patch orchestration app letiltja, vagy újraindítja a csomópontot. Ez a művelet átmenetileg leáll a fürt állapotának eredményezhet.
 
-Az alkalmazás a házirend alapján, vagy több csomópont is leáll a javítási művelet során *vagy* teljes frissítési tartományok egyidejűleg is leáll.
+Az alkalmazás a házirend alapján, vagy egy csomópont is leáll a javítási művelet során *vagy* teljes frissítési tartomány egyszerre is leáll.
 
-A telepítés végén, a csomópont újra engedélyezve utáni újraindítás.
+A telepítés végén, a csomópontok ismét vannak engedélyezve. Indítsa újra közzé.
 
-A következő példában a fürt lett hibaállapota ideiglenesen jön létre, mert a két csomópont le volt, és a MaxPercentageUnhealthyNodes házirend megsértette a kapott a következő. A hiba nem ideiglenes, amíg a javítási művelet folyamatban.
+A következő példában a fürt hiba történt a hibás állapotú ideiglenesen jön létre, mert a két csomópont volt, és a MaxPercentageUnhealthyNodes szabályzat megsértve van. A hiba nem átmeneti, amíg folyamatban a javítási művelet.
 
-![A nem megfelelő fürt képe](media/service-fabric-patch-orchestration-application/MaxPercentage_causing_unhealthy_cluster.png)
+![Nem megfelelő állapotú-fürt képe](media/service-fabric-patch-orchestration-application/MaxPercentage_causing_unhealthy_cluster.png)
 
-Ha a probléma továbbra is fennáll, nézze meg a hibaelhárítási szakaszban.
+Ha a probléma nem szűnik meg, tekintse meg a hibaelhárítási szakaszt.
 
-Q. **Javítás vezénylési app figyelmeztetési állapotban van.**
+VÁLASZOK. **Patch orchestration alkalmazás figyelmeztetési állapotban van.**
 
-A. Ellenőrizze, hogy ha egy állapotjelentése az alkalmazáshoz képest közzé-e az alapvető okát. A figyelmeztetés általában, a probléma részleteit tartalmazza. Ha a probléma nem átmeneti, az alkalmazás automatikus helyreállítás ebből az állapotból várt.
+A. Ellenőrizze, hogy ha egy jelentés tesznek közzé az alkalmazáshoz képest-e a hiba okát. Általában a figyelmeztetés a probléma részleteit tartalmazza. Ha a probléma átmeneti, az alkalmazás az automatikus helyreállítás ebből az állapotból kellene szerepelnie.
 
-Q. **Mi a teendő, ha a fürt állapota nem megfelelő, és a sürgős operációs rendszer frissítés teendő?**
+VÁLASZOK. **Mi a teendő, ha a fürt nem kifogástalan, és egy sürgős operációsrendszer-frissítés van szükség?**
 
-A. A javítás vezénylési app nem telepíti a frissítések, miközben a fürt állapota nem megfelelő. A javítás vezénylési app munkafolyamat feloldásához a fürt hálózatra kapcsolása, Kifogástalan állapotba.
+A. A patch orchestration app nem frissítések telepítése, míg a fürt állapota nem kifogástalan. A patch orchestration munkafolyamat feloldásához hozza a fürt állapota kifogástalan.
 
-Q. **Miért több fürtjére kiterjedő javítását valóban túl sokáig futtatásához?**
+VÁLASZOK. **Miért nem különböző fürtökben üzemelő javítás tart sokáig futtatásához?**
 
-A. Az idő a javítás vezénylési alkalmazás szükséges alapvetően a következő tényezőktől függ:
+A. A patch orchestration alkalmazás számára szükséges idő nagyrészt a következő tényezőktől függ:
 
-- A házirend a koordinátor szolgáltatást. 
-  - Az alapértelmezett házirend `NodeWise`, egyszerre csak egy csomópont javítását eredményez. Különösen, ha egy nagyobb fürt, azt javasoljuk, hogy használja a `UpgradeDomainWise` házirend fürtön gyorsabb javítását eléréséhez.
-- A letöltés és telepítés elérhető frissítések száma. 
-- Töltse le és telepítse a frissítéshez szükséges átlagos időtartam amely nem lehet hosszabb néhány óra múlva.
-- A virtuális gép és a hálózati sávszélesség teljesítményét.
+- A szabályzat a koordinátor szolgáltatást. 
+  - Az alapértelmezett házirend `NodeWise`, egyszerre csak egy csomópont javítás eredménye. Különösen akkor, ha van egy nagyobb méretű fürt, azt javasoljuk, hogy a `UpgradeDomainWise` szabályzatot, hogy gyorsabban javítás fürtön.
+- A letöltés és telepítés készült frissítések száma. 
+- Az átlagos idő szükséges töltse le és telepítse a frissítést, amely nem lehet hosszabb néhány óra múlva.
+- A teljesítmény, a virtuális gép és a hálózati sávszélességet.
 
-Q. **Biztonsági frissítések úgy dönt, hogyan segített javítás vezénylési alkalmazás mely frissítések érhetők el.**
+VÁLASZOK. **Hogyan segített patch orchestration alkalmazás úgy dönt, hogy mely frissítések a biztonsági frissítéseket.**
 
-A. Javítás vezénylési alkalmazás distro-specifikus logika használ a meghatározásához, hogy mely frissítések közül a rendelkezésre álló frissítéseket biztonsági frissítések érhetők el. Például: az ubuntu archívumokat $RELEASE frissítéseket keres az alkalmazás-biztonsági, $RELEASE-frissítések ($RELEASE = xenial, illetve a linux szabványos alap). 
+A. Patch orchestration alkalmazás meghatározására szolgál, hogy mely frissítések között az elérhető frissítések állnak biztonsági frissítések disztribúció-specifikus logika használ. Például: az ubuntu-archívumok $RELEASE frissítéseket keres az app-biztonság, $RELEASE-frissítések ($RELEASE = xenial vagy a linux standard alap végleges verziót). 
 
  
-Q. **Hogyan zárolhatja be egy csomag verzióját?**
+VÁLASZOK. **Hogyan zárolhat be a csomag egy adott verzióját?**
 
-A. A ApprovedPatches beállítások segítségével zárolja a csomagok egy adott verzióra. 
+A. A ApprovedPatches beállítások segítségével a csomagok egy adott verzió zárolása. 
 
 
-Q. **Mi történik, az automatikus frissítések engedélyezve az Ubuntu?**
+VÁLASZOK. **Mi történik, az automatikus frissítések engedélyezve van, az Ubuntu?**
 
-A. Amint telepítette a javítás vezénylési alkalmazást a fürtön lévő, a felügyelet nélküli frissítéseket a fürtcsomóponton le fogja tiltani. A rendszeres frissítés munkafolyamat volna vezérlik a javítás vezénylési alkalmazást.
-Ahhoz, hogy a környezet konzisztencia fürtön, javasoljuk, keresztül javítás vezénylési alkalmazás csak a frissítések telepítése. 
+A. Amint a fürt patch orchestration alkalmazást telepít, a felügyelet nélküli frissítéseket a fürtcsomóponton bővítés le lesz tiltva. A rendszeres frissítés minden munkafolyamat a patch orchestration alkalmazás által lenne meghatározni.
+Ahhoz, hogy a környezet konzisztencia fürtszinten, javasoljuk, telepíti a frissítéseket csak a patch orchestration alkalmazás keresztül. 
  
-Q. **Frissítés utáni vezénylési app tegye a nem használt csomagok karbantartása nem javítás?**
+VÁLASZOK. **Frissítés utáni vezénylési alkalmazás tegye fel nem használt csomagokat a karbantartás nem javítására?**
 
-A. Igen, a tisztítás telepítés utáni lépéseket részeként történik. 
+A. Igen, a karbantartása telepítés utáni lépések részeként történik. 
 
-Q. **Javítás Vezénylési alkalmazás segítségével a saját fejlesztői fürt (egy csomópontos fürtre) javítás?**
+VÁLASZOK. **Patch Orchestration alkalmazás használható fejlesztési fürt (egycsomópontos fürt) javítására?**
 
-A. Nem, javítás vezénylési alkalmazás nem használható javítás egy csomópontos fürtre. Ez a korlátozás van, úgy lett kialakítva, mint [háló rendszerszolgáltatások szolgáltatás](https://docs.microsoft.com/en-us/azure/service-fabric/service-fabric-technical-overview#system-services) vagy alkalmazások vevői fognak adódni az állásidőt, és ezért a javítási feladat javítás céljából volna soha nem beolvasása jóvá manager javítást.
+A. Nem, Patch orchestration alkalmazás javítás egycsomópontos fürt nem használható. Ezt a korlátozást a rendszer kialakításából fakad, [service fabric-rendszerszolgáltatások](https://docs.microsoft.com/azure/service-fabric/service-fabric-technical-overview#system-services) vagy vevő alkalmazások leállhatnak, és ezért bármely javítás a javítási feladat lenne soha nem get jóvá manager javítást igényel.
 
 ## <a name="troubleshooting"></a>Hibaelhárítás
 
-### <a name="a-node-is-not-coming-back-to-up-state"></a>A csomópont nem érkezik vissza állapot mentése
+### <a name="a-node-is-not-coming-back-to-up-state"></a>A csomópont nem várható biztonsági állapot mentése
 
-**A csomópont Beragadt letiltása állapotban mert**:
+**A csomópont előfordulhat, hogy elakadt letiltását állapotban, mert**:
 
-A biztonsági ellenőrzés folyamatban. Ebben a helyzetben a kijavításához ellenőrizze, hogy elég csomópont elérhető állapota kifogástalan.
+Egy biztonsági ellenőrzés függőben. A helyzet orvoslása érdekében győződjön meg arról, hogy elegendő csomópontok elérhető kifogástalan állapotban.
 
-**A csomópont Beragadt letiltott állapotban, mert**:
+**A csomópont előfordulhat, hogy elakadt tiltva, mert**:
 
 - A csomópont manuálisan le lett tiltva.
-- A csomópont egy Azure infrastruktúra folyamatban lévő feladat miatt le lett tiltva.
-- A csomópont ideiglenesen letiltotta a javítás vezénylési alkalmazás javítására, de a csomópont.
+- A csomópont egy folyamatban lévő Azure-infrastruktúra feladat miatt le lett tiltva.
+- A csomópont ideiglenesen letiltotta a patch orchestration alkalmazás javítása a csomópontot.
 
-**A csomópont Beragadt lefelé állapotban mert**:
+**A csomópont előfordulhat, hogy elakadt lefelé állapotban, mert**:
 
-- A csomópont manuálisan lefelé állapotba helyezték.
-- A csomópont (ami előfordulhat, hogy a javítás vezénylési alkalmazás által kiváltott) újraindítás alatt állnak.
-- A csomópont hibás VM vagy a gép vagy a hálózati csatlakozási problémák miatt nem működik.
+- A csomópont manuálisan okot lefelé állapotban.
+- A csomópont (ami előfordulhat, hogy a patch orchestration alkalmazás által kiváltott) újraindítás alatt állnak.
+- A csomópont hibás virtuális gép vagy a gép vagy a hálózati kapcsolódási problémák miatt nem működik.
 
-### <a name="updates-were-skipped-on-some-nodes"></a>Frissítések kihagyta egyes csomópontokon
+### <a name="updates-were-skipped-on-some-nodes"></a>Frissítések ki lett hagyva az egyes csomópontok
 
-A javítás vezénylési app megpróbál telepíteni egy frissítést a átütemezése házirendnek megfelelően. A szolgáltatás megpróbálja helyreállítani a csomópontot, és az alkalmazás házirendjének megfelelően a frissítés kihagyása.
+A patch orchestration alkalmazást próbál telepíteni egy frissítést a átütemezése házirendnek megfelelően. A szolgáltatás megpróbálja helyreállítani a csomópontot, és hagyja ki a frissítést az alkalmazás-házirend szerint.
 
-Ebben az esetben a figyelmeztetési szintű állapotjelentése szemben a csomópont-ügynökszolgáltatás jön létre. A frissítés eredménye is tartalmazza a hiba lehetséges okát.
+Ebben az esetben a csomópont-ügynök szolgáltatás figyelmeztetési szintű állapotjelentés jön létre. Frissítés az eredmény tartalmazza a hiba lehetséges okainak is.
 
-### <a name="the-health-of-the-cluster-goes-to-error-while-the-update-installs"></a>A fürt állapotának hibás kerül, amíg a frissítés telepítése
+### <a name="the-health-of-the-cluster-goes-to-error-while-the-update-installs"></a>A fürt állapotának hiba kerül, amíg a frissítés telepítése
 
-Hibás frissítés leállíthatja az alkalmazások vagy a fürt egy adott csomópont vagy a frissítési tartomány állapotát. A javítás vezénylési app bármely ezt követő frissítési műveletek megszünteti, addig, amíg a fürt újra nem működik megfelelően.
+A hibás frissítése egy alkalmazás vagy egy adott csomópont vagy a frissítési tartomány a fürt állapotának leállíthatja. A patch orchestration app megszünteti a későbbi frissítési műveleteket, mindaddig, amíg a fürt állapota kifogástalan újra.
 
-A rendszergazda kell beavatkozásra, és határozza meg, miért az alkalmazás vagy a fürt nem kifogástalanná válásának miatt a korábban telepített frissítést.
+A rendszergazdák beavatkozhat kell, és határozza meg, miért érdemes az alkalmazás vagy a fürt vált egy korábban telepített frissítés miatt nem kifogástalan.
 
 ## <a name="disclaimer"></a>Jogi nyilatkozat
 
-A javítás vezénylési app telemetriai nyomon követéséhez a használati és teljesítményadatokat gyűjt. A telemetriai követi a beállítást, a Service Fabric-futtatókörnyezet telemetriai beállítás (amely alapértelmezés szerint be van).
+A patch orchestration alkalmazás használatának és teljesítményének nyomon követéséhez telemetriát gyűjt. Az alkalmazás telemetriai követi a beállítást, a Service Fabric-futtatókörnyezet telemetriai beállítás (amely alapértelmezés szerint be van kapcsolva).
 
 ## <a name="release-notes"></a>Kibocsátási megjegyzések
 
-### <a name="version-010"></a>0.1.0 verzió
-- Privát előzetes kiadás
+### <a name="version-010"></a>Verzió 0.1.0
+- Privát előzetes verzió
 
 ### <a name="version-200"></a>2.0.0-s verzió
-- Nyilvános kiadás
+- Nyilvános kiadása
 
 ### <a name="version-201-latest"></a>2.0.1-es verziója (legújabb)
-- Újrafordítani az alkalmazás legújabb Service Fabric SDK használatával
+- Újrafordítani az alkalmazást a legújabb Service Fabric SDK használatával
