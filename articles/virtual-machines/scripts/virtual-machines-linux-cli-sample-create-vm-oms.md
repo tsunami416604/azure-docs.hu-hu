@@ -3,7 +3,7 @@ title: Azure CLI-példaszkript – Linux rendszerű virtuális gép létrehozás
 description: Azure CLI-példaszkript – Linux rendszerű virtuális gép létrehozása OMS-monitorozással
 services: virtual-machines-linux
 documentationcenter: virtual-machines
-author: iainfoulds
+author: cynthn
 manager: jeconnoc
 editor: tysonn
 tags: azure-service-management
@@ -14,14 +14,14 @@ ms.topic: sample
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 02/27/2017
-ms.author: iainfou
+ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: cda46d250dc052b024c8f090bafe7a22b94d41ac
-ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
+ms.openlocfilehash: 92bc86a1db4aca563a089e20c3e19557517f2d9b
+ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37098834"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37932619"
 ---
 # <a name="monitor-a-vm-with-operations-management-suite"></a>Virtuális gép monitorozása az Operations Management Suite használatával
 

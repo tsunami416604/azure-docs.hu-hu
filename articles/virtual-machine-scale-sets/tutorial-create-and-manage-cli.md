@@ -3,7 +3,7 @@ title: Oktatóanyag – Azure virtuálisgép-méretezési csoport létrehozása 
 description: Megismerheti, hogy az Azure CLI 2.0 segítségével hogyan hozhat létre virtuálisgép-méretezési csoportokat, valamint néhány általános felügyeleti feladattal ismerkedhet meg, például a példány elindításának és leállításának módjával vagy a méretezési csoport kapacitásának módosításával.
 services: virtual-machine-scale-sets
 documentationcenter: ''
-author: iainfoulds
+author: cynthn
 manager: jeconnoc
 editor: ''
 tags: azure-resource-manager
@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/27/2018
-ms.author: iainfou
+ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: dc8c58efcaeb5491eb23257e470f42a8d7cfd5c1
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: a076603519cdce5a16881e0f0703d8187001e058
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2018
-ms.locfileid: "30246763"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38452549"
 ---
 # <a name="tutorial-create-and-manage-a-virtual-machine-scale-set-with-the-azure-cli-20"></a>Oktatóanyag: Virtuálisgép-méretezési csoport létrehozása és kezelése az Azure CLI 2.0 használatával
 A virtuálisgép-méretezési csoportok segítségével azonos, automatikus skálázású virtuális gépek csoportját hozhatja létre és kezelheti. A virtuálisgép-méretezési csoport életciklusa során egy vagy több felügyeleti feladat futtatására lehet szükség. Ezen oktatóanyag segítségével megtanulhatja a következőket:

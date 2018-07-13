@@ -14,12 +14,12 @@ ms.date: 08/04/2017
 ms.author: lizross
 ms.reviewer: krbain
 ms.custom: it-pro
-ms.openlocfilehash: 82d475e5adadb4e7670f24a6193348c9e1b37a16
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 3c71c9c49413045e3a730c10e90ea3c12648b4cb
+ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37767423"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37857722"
 ---
 # <a name="create-a-group-and-add-members-in-azure-active-directory"></a>Csoport létrehozása és tagok hozzáadása az Azure Active Directoryban
 > [!div class="op_single_selector"]
@@ -40,7 +40,7 @@ Ez a cikk ismerteti egy új csoport létrehozásának és feltöltésének módj
 
    ![A Hozzáadás parancs kiválasztása](./media/active-directory-groups-create-azure-portal/add-group-command.png)
 5. A **Csoport** panelen adja meg a csoport nevét és leírását.
-6. Csoporttagok felvételéhez válassza ki a **Hozzárendelt** típust a **Tagságtípus** mezőben, majd válassza a **Tagok** elemet. További információ a csoporttagságok dinamikus kezelésével kapcsolatban: [Attribútumok használata speciális csoporttagsági szabályok létrehozásához](../active-directory-groups-dynamic-membership-azure-portal.md).
+6. Csoporttagok felvételéhez válassza ki a **Hozzárendelt** típust a **Tagságtípus** mezőben, majd válassza a **Tagok** elemet. További információ a csoporttagságok dinamikus kezelésével kapcsolatban: [Attribútumok használata speciális csoporttagsági szabályok létrehozásához](../users-groups-roles/groups-dynamic-membership.md).
 
    ![Hozzáadni kívánt tagok kiválasztása](./media/active-directory-groups-create-azure-portal/select-members.png)
 7. A **Tagok** panelen jelöljön ki egy vagy több, a csoporthoz hozzárendelni kívánt felhasználót vagy eszközt, majd a panel alján található **Kiválasztás** gombbal adja őket hozzá a csoporthoz. A **Felhasználó** mezővel aszerint szűrheti a megjelenített elemeket, hogy a megadott szöveg megtalálható-e egy felhasználó- vagy eszköznévben. Helyettesítő karakterek nem használhatók a mezőben.
@@ -56,4 +56,4 @@ E cikkekben további információk találhatók az Azure Active Directoryval kap
 * [Csoportbeállítások kezelése](active-directory-groups-settings-azure-portal.md)
 * [Csoporttagok kezelése](active-directory-groups-members-azure-portal.md)
 * [Csoporttagságok kezelése](active-directory-groups-membership-azure-portal.md)
-* [A csoportban lévő felhasználók dinamikus szabályainak kezelése](../active-directory-groups-dynamic-membership-azure-portal.md)
+* [A csoportban lévő felhasználók dinamikus szabályainak kezelése](../users-groups-roles/groups-dynamic-membership.md)

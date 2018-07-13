@@ -14,11 +14,11 @@ ms.topic: get-started-article
 ms.date: 03/26/2018
 ms.author: wgries
 ms.openlocfilehash: 00fd984a6bed8691712df0d4c335d2b9d4fd3ffa
-ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37029390"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38701818"
 ---
 # <a name="manage-azure-file-shares-using-azure-cli"></a>Azure-fájlmegosztások kezelése az Azure CLI használatával
 Az [Azure Files](storage-files-introduction.md) a Microsoft egyszerűen használható felhőalapú fájlrendszere. Az Azure-fájlmegosztások Windows, Linux és macOS rendszeren csatlakoztathatók. Ez a cikk az Azure-fájlmegosztások az Azure CLI segítségével való használatának alapvető lépéseit mutatja be. Az alábbiak végrehajtásának módját ismerheti meg: 
@@ -48,7 +48,7 @@ A következő példában létrehozunk egy *myResourceGroup* nevű erőforráscso
 az group create --name myResourceGroup --location eastus
 ```
 
-## <a name="create-a-storage-account"></a>Create a storage account
+## <a name="create-a-storage-account"></a>Tárfiók létrehozása
 A tárfiókok az Azure-fájlmegosztások vagy más tárolási erőforrások, például blobok vagy üzenetsorok üzembe helyezéséhez használható tárolók közös készletei. Egy tárfiók korlátlan számú fájlmegosztást tartalmazhat. Egy megosztás korlátlan számú fájl tárolására használható, egészen a tárfiók kapacitásának korlátjáig.
 
 A következő példa létrehoz egy *mystorageaccount\<random number\>* nevű tárfiókot az [az storage account create](/cli/azure/storage/account#create) paranccsal, majd a tárfiók nevét a `$STORAGEACCT` változóba helyezi. A tárfiókok nevének egyedinek kell lenniük. A `$RANDOM` elem egy számot fűz a tárfiók nevéhez, hogy egyedivé tegye. 

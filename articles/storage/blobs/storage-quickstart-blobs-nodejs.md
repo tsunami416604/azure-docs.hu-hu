@@ -10,11 +10,11 @@ ms.topic: quickstart
 ms.date: 04/09/2018
 ms.author: cshoe
 ms.openlocfilehash: 07ac5195d9653affdbb0f305ac1697cecd379319
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32190979"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38308134"
 ---
 # <a name="quickstart-upload-download-and-list-blobs-using-nodejs"></a>Rövid útmutató: blobok feltöltése, letöltése és listázása a Node.js használatával
 
@@ -36,9 +36,9 @@ Az alkalmazás megnyitásához keresse meg a *storage-blobs-node-quickstart* map
 
 [!INCLUDE [storage-copy-connection-string-portal](../../../includes/storage-copy-connection-string-portal.md)]
 
-## <a name="configure-your-storage-connection-string"></a>A tárolási kapcsolati karakterlánc konfigurálása
+## <a name="configure-your-storage-connection-string"></a>A tárolási kapcsolati sztring konfigurálása
 
-Az alkalmazás futtatása előtt meg kell adnia a tárfiókjához tartozó kapcsolati karakterláncot. A mintatadattár tartalmaz egy *.env.example* nevű fájlt. Ezt a fájlt átnevezheti a *.example* bővítmény eltávolításával, amelynek eredményeként létrejön egy *.env* nevű fájl. A *.env* fájlban adja meg a kapcsolati karakterlánc értékét az *AZURE_STORAGE_CONNECTION_STRING* kulcs után.
+Az alkalmazás futtatása előtt meg kell adnia a tárfiókjához tartozó kapcsolati sztringet. A mintatadattár tartalmaz egy *.env.example* nevű fájlt. Ezt a fájlt átnevezheti a *.example* bővítmény eltávolításával, amelynek eredményeként létrejön egy *.env* nevű fájl. A *.env* fájlban adja meg a kapcsolati sztring értékét az *AZURE_STORAGE_CONNECTION_STRING* kulcs után.
 
 ## <a name="install-required-packages"></a>Szükséges csomagok telepítése
 

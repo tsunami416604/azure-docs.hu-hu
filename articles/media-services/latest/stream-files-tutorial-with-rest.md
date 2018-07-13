@@ -13,11 +13,11 @@ ms.custom: mvc
 ms.date: 05/30/2018
 ms.author: juliako
 ms.openlocfilehash: 0faed5d72002f24d7be7602c5f16c18e66a0089e
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34651459"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38308613"
 ---
 # <a name="tutorial-upload-encode-and-stream-videos-with-rest"></a>Oktatóanyag: Videók feltöltése, kódolása és streamelése REST használatával
 
@@ -108,7 +108,7 @@ Ebben a szakaszban olyan kéréseket küldünk, amelyek a kódolás és az URL-e
 
 1. A Postman bal ablakában válassza a „Step 1: Get AAD Auth token” (1. lépés: AAD-hitelesítési jogkivonat lekérése) lehetőséget.
 2. Ezután válassza az „Get Azure AD Token for Service Principal Authentication” (Azure AD-jogkivonat lekérése egyszerű szolgáltatásnév hitelesítéséhez) lehetőséget.
-3. Kattintson a **Send (Küldés)** gombra.
+3. Kattintson a **Küldés** gombra.
 
     A rendszer a következő **POST** műveletet küldi el.
 
@@ -126,7 +126,7 @@ A kimeneti [objektum](https://docs.microsoft.com/rest/api/media/assets) tárolja
 
 1. A Postman bal ablakában válassza az „Assets” (Objektumok) lehetőséget.
 2. Ezután válassza a „Create or update an Asset” (Objektum létrehozása vagy frissítése) lehetőséget.
-3. Kattintson a **Send (Küldés)** gombra.
+3. Kattintson a **Küldés** gombra.
 
     A rendszer a következő **PUT** műveletet küldi el.
 
@@ -147,7 +147,7 @@ Használhatja a beépített EncoderNamedPreset beállítást vagy az egyéni el�
 
 1. A Postman bal ablakában válassza az „Encoding and Analysis” (Kódolás és elemzés) lehetőséget.
 2. Ezután kattintson a „Create Transform” (Átalakítás létrehozása) elemre.
-3. Kattintson a **Send (Küldés)** gombra.
+3. Kattintson a **Küldés** gombra.
 
     A rendszer a következő **PUT** műveletet küldi el.
 
@@ -163,7 +163,7 @@ Ebben a példában a feladat bemenete egy HTTPS URL-címen („https://nimbuscdn
 
 1. A Postman bal ablakában válassza az „Encoding and Analysis” (Kódolás és elemzés) lehetőséget.
 2. Ezután válassza a „Create or Update Job” (Feladat létrehozása vagy frissítése) lehetőséget.
-3. Kattintson a **Send (Küldés)** gombra.
+3. Kattintson a **Küldés** gombra.
 
     A rendszer a következő **PUT** műveletet küldi el.
 
@@ -190,7 +190,7 @@ A Media Service-fiókban korlátozva van a StreamingPolicy-bejegyzések száma. 
 
 1. A Postman bal ablakában válassza a „Streaming Policies” (Streamelési szabályzatok) lehetőséget.
 2. Ezután válassza a „Create a Streaming Policy” (Streamelési szabályzat létrehozása) lehetőséget.
-3. Kattintson a **Send (Küldés)** gombra.
+3. Kattintson a **Küldés** gombra.
 
     A rendszer a következő **PUT** műveletet küldi el.
 
@@ -206,7 +206,7 @@ A [StreamingLocator](https://docs.microsoft.com/rest/api/media/streaminglocators
 
 1. A Postman bal ablakában válassza a „Streaming Policies” (Streamelési szabályzatok) lehetőséget.
 2. Ezután válassza a „List Paths” (Elérési utak listázása) lehetőséget.
-3. Kattintson a **Send (Küldés)** gombra.
+3. Kattintson a **Küldés** gombra.
 
     A rendszer a következő **POST** műveletet küldi el.
 

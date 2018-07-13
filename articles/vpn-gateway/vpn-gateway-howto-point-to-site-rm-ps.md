@@ -16,11 +16,11 @@ ms.workload: infrastructure-services
 ms.date: 02/12/2018
 ms.author: cherylmc
 ms.openlocfilehash: 42afdee5ac58db005a7ecfb6388c88a974704a03
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/19/2018
-ms.locfileid: "31601219"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38295730"
 ---
 # <a name="configure-a-point-to-site-connection-to-a-vnet-using-native-azure-certificate-authentication-powershell"></a>Pont–hely kapcsolat konfigurálása virtuális hálózathoz az Azure natív tanúsítványalapú hitelesítésének használatával: PowerShell
 
@@ -360,7 +360,7 @@ A szokásos gyakorlat az, hogy a főtanúsítvánnyal kezelik a hozzáférést a
 ### <a name="revokeclientcert"></a>Ügyféltanúsítvány visszavonása
 
 1. Kérje le az ügyféltanúsítvány ujjlenyomatát. További információkat [a tanúsítványok ujjlenyomatának lekérését ismertető útmutatóban](https://msdn.microsoft.com/library/ms734695.aspx) találhat.
-2. Másolja át az adatokat egy szövegszerkesztőbe, és távolítsa el az összes szóközt, hogy egy folyamatos karakterláncot kapjon. Ez a karakterlánc a következő lépésben változóként van deklarálva.
+2. Másolja át az adatokat egy szövegszerkesztőbe, és távolítsa el az összes szóközt, hogy egy folyamatos sztringet kapjon. Ez a sztring a következő lépésben változóként van deklarálva.
 3. Deklarálja a változókat. Győződjön meg róla, hogy az előző lépésben lekért ujjlenyomatot deklarálja.
 
   ```powershell

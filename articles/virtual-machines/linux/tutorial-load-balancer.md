@@ -3,7 +3,7 @@ title: Oktatóanyag – Linux rendszerű virtuális gépek terheléselosztása a
 description: Ebből az oktatóanyagból megtudhatja, hogyan hozhat létre terheléselosztót az Azure CLI 2.0-val egy magas rendelkezésre állású és biztonságos alkalmazáshoz három Linux rendszerű virtuális gépen keresztül
 services: virtual-machines-linux
 documentationcenter: virtual-machines
-author: iainfoulds
+author: cynthn
 manager: jeconnoc
 editor: tysonn
 tags: azure-resource-manager
@@ -14,14 +14,14 @@ ms.topic: tutorial
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 11/13/2017
-ms.author: iainfou
+ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: baae0ee72056d2f7437a865b11f738ef0a2e6934
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: c6ca58fb901be416a2640091862724dbc1611390
+ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32193121"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37931949"
 ---
 # <a name="tutorial-load-balance-linux-virtual-machines-in-azure-to-create-a-highly-available-application-with-the-azure-cli-20"></a>Oktatóanyag: Linux rendszerű virtuális gépek terheléselosztása az Azure CLI 2.0 használatával az Azure-ban magas rendelkezésre állású alkalmazások létrehozásához
 

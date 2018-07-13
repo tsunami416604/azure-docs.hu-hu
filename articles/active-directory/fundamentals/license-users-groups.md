@@ -17,12 +17,12 @@ ms.date: 08/22/2017
 ms.author: lizross
 ms.reviewer: jeffgilb
 custom: it-pro
-ms.openlocfilehash: 738e96bf631833b8d35847114ee08fc3f5bec2a4
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 6fc1d808fb712f7acb60e490663cb7301e22153c
+ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37767391"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37856089"
 ---
 # <a name="quickstart-license-users-in-azure-active-directory"></a>Gyors útmutató: Felhasználók licencelése az Azure Active Directoryban
 A licencalapú Azure AD-szolgáltatások az Azure-bérlőn belüli Azure Active Directory- (Azure AD-) előfizetés aktiválásával működnek. Az előfizetés aktiválását követően a szolgáltatások képességeit az Azure AD-rendszergazdák kezelhetik, és a licenccel rendelkező felhasználók használhatják. Az Enterprise Mobility + Security, a prémium szintű Azure AD vagy az alapszintű Azure AD megvásárlása esetén a rendszer frissíti a bérlőt az előfizetéssel, beleértve az érvényességi időszakot és az előre kifizetett licenceket is. Az előfizetéssel kapcsolatos információkat, beleértve a hozzárendelt és a rendelkezésre álló licencek számát, az Azure Portal **Azure Active Directory** részén tekintheti meg a **Licencek** csempe megnyitásával. Emellett a **Licencek** panelről kezelheti legkönnyebben a licenc-hozzárendeléseket is.
@@ -35,7 +35,7 @@ A fizetős képességek konfigurálásához mindössze egy előfizetést kell be
 * A döntést delegálhatja is a vállalat más vezetői számára ([önkiszolgáló csoportok](../users-groups-roles/groups-self-service-management.md) használatával).
 
 > [!TIP]
-> A csoportokhoz való licenc-hozzárendelés részletes ismertetését, beleértve a speciális forgatókönyveket és az Office 365 licencelési forgatókönyveit a [licencek az Azure Active Directoryban csoporttagság alapján való felhasználókhoz rendelését](../active-directory-licensing-group-assignment-azure-portal.md) ismertető témakörben olvashatja.
+> A csoportokhoz való licenc-hozzárendelés részletes ismertetését, beleértve a speciális forgatókönyveket és az Office 365 licencelési forgatókönyveit a [licencek az Azure Active Directoryban csoporttagság alapján való felhasználókhoz rendelését](../users-groups-roles/licensing-groups-assign.md) ismertető témakörben olvashatja.
 
 ## <a name="assign-licenses-to-users-and-groups"></a>Licencek hozzárendelése felhasználókhoz és csoportokhoz
 Egy aktív előfizetés használatával először saját magához rendeljen egy licencet, majd a böngésző frissítésével ellenőrizze, hogy az előfizetésben szereplő összes funkció látható-e. A következő lépés licencek hozzárendelése azokhoz a felhasználókhoz, akiknek hozzáférésre van szükségük a fizetős Azure AD-funkciókhoz. A licencek hozzárendelésének egy egyszerű módja a licencek felhasználói csoportokhoz való hozzárendelése egyes személyek helyett. Amikor licenceket rendel egy csoporthoz, mindegyik csoporttaghoz hozzárendel egy licencet. Ha felhasználókat ad a csoporthoz vagy távolít el abból, automatikusan megtörténik a megfelelő licencek hozzárendelése vagy eltávolítása. 

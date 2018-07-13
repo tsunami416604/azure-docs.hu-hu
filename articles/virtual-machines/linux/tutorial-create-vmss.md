@@ -3,7 +3,7 @@ title: Oktatóanyag – Virtuálisgép-méretezési csoport létrehozása Linux 
 description: Ebből az oktatóanyagból megtudhatja, hogyan használhatja az Azure CLI 2.0-t magas rendelkezésre állású alkalmazások létrehozásához és üzembe helyezéséhez Linux rendszerű virtuális gépeken, virtuálisgép-méretezési csoport használatával
 services: virtual-machine-scale-sets
 documentationcenter: ''
-author: iainfoulds
+author: cynthn
 manager: jeconnoc
 editor: ''
 tags: azure-resource-manager
@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.devlang: azurecli
 ms.topic: tutorial
 ms.date: 06/01/2018
-ms.author: iainfou
+ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 305c8b46f82409257061e1cb0ab79b3bf958384d
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: b8e25934dfd1bfa9d94d3452044443e7a5002534
+ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34839605"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37932670"
 ---
 # <a name="tutorial-create-a-virtual-machine-scale-set-and-deploy-a-highly-available-app-on-linux-with-the-azure-cli-20"></a>Oktatóanyag: Virtuálisgép-méretezési csoport létrehozása és magas rendelkezésre állású alkalmazás üzembe helyezése Linuxon, az Azure CLI 2.0 használatával
 

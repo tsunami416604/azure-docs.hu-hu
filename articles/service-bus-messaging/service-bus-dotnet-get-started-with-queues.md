@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 12/7/2017
 ms.author: sethm
 ms.openlocfilehash: 6af7e4d238c10c0fed3443db58644e3557525993
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
-ms.locfileid: "26642460"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38308365"
 ---
 # <a name="get-started-with-service-bus-queues"></a>Bevezetés a Service Bus által kezelt üzenetsorok használatába
 
@@ -81,7 +81,7 @@ Indítsa el a Visual Studiót, majd hozzon létre egy új **Konzolalkalmazás (.
     using Microsoft.Azure.ServiceBus;
     ```
 
-2. A `Program` osztályban deklarálja az alábbi változókat. A `ServiceBusConnectionString` változó értékének állítsa be a névtér létrehozásakor kapott kapcsolati karakterláncot, a `QueueName` értékének pedig az üzenetsor létrehozásakor használt nevet:
+2. A `Program` osztályban deklarálja az alábbi változókat. A `ServiceBusConnectionString` változó értékének állítsa be a névtér létrehozásakor kapott kapcsolati sztringet, a `QueueName` értékének pedig az üzenetsor létrehozásakor használt nevet:
    
     ```csharp
     const string ServiceBusConnectionString = "<your_connection_string>";
@@ -229,7 +229,7 @@ Az imént elküldött üzenetek fogadásához hozzon létre egy másik .NET Core
     using Microsoft.Azure.ServiceBus;
     ```
 
-2. A `Program` osztályban deklarálja az alábbi változókat. A `ServiceBusConnectionString` változó értékének állítsa be a névtér létrehozásakor kapott kapcsolati karakterláncot, a `QueueName` értékének pedig az üzenetsor létrehozásakor használt nevet:
+2. A `Program` osztályban deklarálja az alábbi változókat. A `ServiceBusConnectionString` változó értékének állítsa be a névtér létrehozásakor kapott kapcsolati sztringet, a `QueueName` értékének pedig az üzenetsor létrehozásakor használt nevet:
    
     ```csharp
     const string ServiceBusConnectionString = "<your_connection_string>";
@@ -410,7 +410,7 @@ Az imént elküldött üzenetek fogadásához hozzon létre egy másik .NET Core
 
 Gratulálunk! Ezzel létrehozott egy üzenetsort, elküldött egy üzenetkészletet az üzenetsornak, és fogadta is tőle az üzeneteket.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Tekintse meg a [GitHub-tárunkat, ahol további példákat talál](https://github.com/Azure/azure-service-bus/tree/master/samples), amelyek a Service Bus üzenetkezelési szolgáltatásának néhány speciális funkcióját mutatják be.
 

@@ -15,11 +15,11 @@ ms.topic: get-started-article
 ms.date: 02/27/2018
 ms.author: wgries
 ms.openlocfilehash: ea401099ce90248be0ecb99109b845ff9a91f70d
-ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37029325"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38308497"
 ---
 # <a name="manage-azure-file-shares-with-azure-storage-explorer"></a>Azure-fájlmegosztások felügyelete az Azure Storage Explorerrel 
 Az [Azure Files](storage-files-introduction.md) a Microsoft egyszerűen használható felhőalapú fájlrendszere. Ez a cikk az Azure-fájlmegosztások az [Azure Storage Explorerrel](https://azure.microsoft.com/features/storage-explorer/) való használatának alapvető lépéseit mutatja be. A Storage Explorer a Windows, macOS és Linux esetén egyaránt elérhető népszerű ügyféleszköz. A Storage Explorer segítségével felügyelheti az Azure-fájlmegosztásokat és más tárolási erőforrásokat.
@@ -38,7 +38,7 @@ Ebben a cikkben az alábbiakkal ismerkedhet meg:
 
 Ha nem rendelkezik Azure-előfizetéssel, első lépésként létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
-## <a name="create-a-storage-account"></a>Create a storage account
+## <a name="create-a-storage-account"></a>Tárfiók létrehozása
 A Storage Explorer nem használható új erőforrások létrehozására. A bemutatóhoz hozzon létre egy tárfiókot az [Azure Portalon](https://portal.azure.com/). 
 
 [!INCLUDE [storage-files-create-storage-account-portal](../../../includes/storage-files-create-storage-account-portal.md)]

@@ -13,12 +13,12 @@ ms.topic: overview
 ms.date: 03/07/2018
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: 927d2ccef6a250d489273a17b070a4a0aa820bee
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 9e5039623b1f9b53c636ebaeb1e956d852185577
+ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37767563"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37952052"
 ---
 # <a name="what-is-azure-ad-privileged-identity-management"></a>Mi az az Azure AD Privileged Identity Management?
 
@@ -101,13 +101,13 @@ Az Azure AD Privileged Identity Management rendszergazdai irányítópultján a 
 *   Az elmúlt 30 nap során új szerepkör-hozzárendeléseket kapott felhasználók és csoportok (Azure-erőforrásszerepkörök)
 
 
-![A PIM irányítópultja – képernyőkép][2]
+![A PIM irányítópultja – képernyőkép](./media/active-directory-privileged-identity-management-configure/PIM_Admin_Overview.png)
 
 ## <a name="privileged-role-management"></a>A kiemelt szerepkörök kezelése
 
 Az Azure AD Privileged Identity Management segítségével úgy kezelheti a rendszergazdákat, hogy állandó vagy jogosult rendszergazdákat adhat hozzá vagy távolíthat el az egyes Azure AD-címtárszerepkörökből. Az Azure-erőforrásokhoz (Előzetes verzió) készült PIM használatával a tulajdonosok, a felhasználói hozzáférésekért felelős rendszergazdák és a globális rendszergazdák, akik engedélyezték az előfizetések kezelését a bérlőjükben, felhasználókat vagy csoportokat rendelhetnek hozzá az Azure-erőforrásszerepkörökhöz. A felhasználók vagy csoportok lehetnek jogosultak (az igény szerinti eléréséhez), kaphatnak időhöz kötött hozzáférést egy adott kezdő és befejező időpont között (ehhez nem szükséges aktiválás), vagy rendelkezhetnek állandó hozzáféréssel (ha ez engedélyezve van a szerepkör-beállítások között).
 
-![Rendszergazdák hozzáadása/eltávolítása a PIM-ben – képernyőkép][3]
+![Rendszergazdák hozzáadása/eltávolítása a PIM-ben – képernyőkép](./media/active-directory-privileged-identity-management-configure/PIM_AddRemove.png)
 
 ## <a name="configure-the-role-activation-settings"></a>A szerepkör-aktiválási beállítások konfigurálása
 
@@ -119,7 +119,7 @@ A [szerepkör-beállítások](active-directory-privileged-identity-management-ho
 * A szolgáltatásjegy vagy esemény száma
 * [A jóváhagyási munkafolyamat követelményei – Előzetes verzió](./privileged-identity-management/azure-ad-pim-approval-workflow.md)
 
-![A PIM beállításai – rendszergazda aktiválása – képernyőkép][4]
+![A PIM beállításai – rendszergazda aktiválása – képernyőkép](./media/active-directory-privileged-identity-management-configure/PIM_Settings_w_Approval_Disabled.png)
 
 Figyelje meg, hogy a képen a **többtényezős hitelesítés** gombjai le vannak tiltva. Bizonyos magas jogosultságú szerepkörök esetében szükséges a többtényezős hitelesítés a fokozott védelem érdekében.
 
@@ -140,13 +140,13 @@ Ha egy rendszergazda aktiválni kíván egy szerepkört, inicializálnia kell az
 
 A szerepkörök aktiválása testre szabható. A PIM beállításaiban meg lehet határozni az aktiválás időtartamát, és hogy a rendszergazdának milyen adatokat kell megadnia a szerepkör aktiválásához.
 
-![Rendszergazdai szerepkör aktiválásának kérelme a PIM-ben – képernyőkép][5]
+![Rendszergazdai szerepkör aktiválásának kérelme a PIM-ben – képernyőkép](./media/active-directory-privileged-identity-management-configure/PIM_RequestActivation.png)
 
 ## <a name="review-role-activity"></a>Szerepkör-tevékenységek áttekintése
 
 Kétféle módon követhető nyomon, hogy az alkalmazottak és a rendszergazdák mire használják a kiemelt szerepköröket: Az első lehetőség a [Címtárszerepkörök előzménynaplójának](active-directory-privileged-identity-management-how-to-use-audit-log.md) megtekintése. Az előzménynaplók nyomon követik a kiemelt szerepkörök hozzárendeléseit, a szerepkör-aktiválási előzményeket és az Azure-erőforrások (Előzetes verzió) szerepköreinek beállításait érintő módosításokat. 
 
-![Aktiválási előzmények a PIM-ben – képernyőkép][6]
+![Aktiválási előzmények a PIM-ben – képernyőkép](./media/active-directory-privileged-identity-management-configure/PIM_ActivationHistory.png)
 
 A második lehetőség a rendszeres [hozzáférési felülvizsgálatok](active-directory-privileged-identity-management-how-to-start-security-review.md) bevezetése. Ezeket a hozzáférési felülvizsgálatokat elvégezheti egy hozzárendelt felülvizsgáló (például egy csapatvezető), vagy az alkalmazottak saját magukat is felülvizsgálhatják. Ez a legjobb módszer annak monitorozására, hogy kinek van szüksége továbbra is hozzáférésre, és kinek nincs.
 
@@ -158,12 +158,3 @@ Ha a vállalat nem újítja meg a Prémium szintű Azure AD P2-előfizetést, va
 ## <a name="next-steps"></a>További lépések
 
 [!INCLUDE [active-directory-privileged-identity-management-toc](../../includes/active-directory-privileged-identity-management-toc.md)]
-
-<!--Image references-->
-
-[1]: ./media/active-directory-privileged-identity-management-configure/PIM_EnablePim.png
-[2]: ./media/active-directory-privileged-identity-management-configure/PIM_Admin_Overview.png
-[3]: ./media/active-directory-privileged-identity-management-configure/PIM_AddRemove.png
-[4]: ./media/active-directory-privileged-identity-management-configure/PIM_Settings_w_Approval_Disabled.png
-[5]: ./media/active-directory-privileged-identity-management-configure/PIM_RequestActivation.png
-[6]: ./media/active-directory-privileged-identity-management-configure/PIM_ActivationHistory.png

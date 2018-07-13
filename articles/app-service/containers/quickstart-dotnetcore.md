@@ -17,11 +17,11 @@ ms.date: 04/11/2018
 ms.author: cfowler
 ms.custom: mvc
 ms.openlocfilehash: 89973581d7c6aa99ab671d5bd04f258898e9235e
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31391630"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38306837"
 ---
 # <a name="create-a-net-core-web-app-in-app-service-on-linux"></a>.NET Core-webalkalmazás létrehozása Linuxon futó App Service-ben
 
@@ -42,7 +42,7 @@ A cikk lépéseit Mac, Windows vagy Linux rendszert futtató gépen is követhet
 A gyorsútmutató elvégzéséhez:
 
 * <a href="https://git-scm.com/" target="_blank">A Git telepítése</a>
-* <a href="https://www.microsoft.com/net/core/" target="_blank">Telepítse a .NET Core-t</a>
+* <a href="https://www.microsoft.com/net/core/" target="_blank">A .NET Core telepítése</a>
 
 ## <a name="create-the-app-locally"></a>Az alkalmazás helyi létrehozása
 

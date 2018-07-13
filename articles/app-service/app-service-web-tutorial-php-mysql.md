@@ -16,11 +16,11 @@ ms.date: 10/20/2017
 ms.author: cephalin
 ms.custom: mvc
 ms.openlocfilehash: 4bb6f12781666792aad31789a59d752dd5a822de
-ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/04/2018
-ms.locfileid: "33205713"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38307187"
 ---
 # <a name="tutorial-build-a-php-and-mysql-web-app-in-azure"></a>Oktatóanyag: PHP- és MySQL-webalkalmazás létrehozása az Azure-ban
 
@@ -557,7 +557,7 @@ A PHP leállításához írja be a `Ctrl + C` billentyűparancsot a terminálon.
 
 ### <a name="publish-changes-to-azure"></a>Módosítások közzététele az Azure-ba
 
-A módosítás Azure-adatbázisban való végrehajtásához futtasson Laravel-adatbázis migrálásokat a termelési kapcsolati karakterlánccal a helyi terminálablakban.
+A módosítás Azure-adatbázisban való végrehajtásához futtasson Laravel-adatbázis migrálásokat a termelési kapcsolati sztringgel a helyi terminálablakban.
 
 ```bash
 php artisan migrate --env=production --force

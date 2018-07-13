@@ -12,12 +12,12 @@ ms.topic: tutorial
 ms.date: 06/15/2018
 ms.author: cephalin
 ms.custom: mvc
-ms.openlocfilehash: 9ae476e21e4935ea555e671c3c7144748d60abb6
-ms.sourcegitcommit: 5821eef990c26fa045e4beacce39f6b02b83156b
+ms.openlocfilehash: 927c8f6d0fefbc592999487217c41aeecc96b0d9
+ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/15/2018
-ms.locfileid: "35662701"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37950981"
 ---
 # <a name="build-a-ruby-and-postgres-web-app-in-azure-app-service-on-linux"></a>Ruby- és Postgres-webalkalmazás létrehozása a Linuxon futó Azure App Service-ben
 
@@ -42,7 +42,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 Az oktatóanyag elvégzéséhez:
 
 * [A Git telepítése](https://git-scm.com/)
-* [Telepítse a Ruby 2.3-as verzióját](https://www.ruby-lang.org/documentation/installation/)
+* [Telepítse a Ruby 2.3-as verzióját](https://www.ruby-lang.org/en/documentation/installation/)
 * [Telepítse a Ruby on Rails 5.1-es verzióját](http://guides.rubyonrails.org/v5.1/getting_started.html)
 * [A PostgreSQL telepítése és futtatása](https://www.postgresql.org/download/)
 
@@ -117,7 +117,7 @@ A Rails-kiszolgáló leállításához írja be a `Ctrl + C` billentyűparancsot
 
 Ebben a lépésben egy Postgres-adatbázist fog létrehozni az [Azure Database for PostgreSQL](/azure/postgresql/) rendszerében. Később konfigurálni fogja a Ruby on Rails-alkalmazást az adatbázishoz való csatlakozásra.
 
-### <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
+### <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
 
 [!INCLUDE [Create resource group](../../../includes/app-service-web-create-resource-group-linux-no-h.md)] 
 

@@ -3,7 +3,7 @@ title: Oktatóanyag – Fejlesztési folyamat létrehozása az Azure-ban a Jenki
 description: Oktatóanyag – Ebben az oktatóanyagban megtudhatja, hogyan hozhat létre az Azure-ban egy Jenkins-alapú virtuális gépet, amely a GitHubról kéri le a kódok véglegesítését, és létrehoz egy új Docker-tárolót az alkalmazása futtatásához.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
-author: iainfoulds
+author: cynthn
 manager: jeconnoc
 editor: tysonn
 tags: azure-resource-manager
@@ -14,14 +14,14 @@ ms.topic: tutorial
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 03/27/2017
-ms.author: iainfou
+ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: f50555775d369da7cf9321d5493bf4e1d84a7bf2
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: b19d02e7d2bcbd696a7256c06b067f976fd36161
+ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34211191"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37931728"
 ---
 # <a name="tutorial-create-a-development-infrastructure-on-a-linux-vm-in-azure-with-jenkins-github-and-docker"></a>Oktatóanyag: Fejlesztési infrastruktúra létrehozása egy Azure-beli Linux rendszerű virtuális gépen a Jenkins, a GitHub és a Docker használatával
 
@@ -148,8 +148,8 @@ Ahhoz, hogy a Jenkins válaszoljon a GitHub eseményeire, például egy kód vé
 A Jenkins webhely kezdőlapján válassza a **Create new jobs** (Új feladatok létrehozása) lehetőséget.
 
 - A feladatnak adja a *HelloWorld* nevet. Válassza a **Freestyle project** (Szabad stílusú projekt) lehetőséget, majd kattintson az **OK** gombra.
-- A **General** (Általános) szakaszban válassza ki a **GitHub project** (GitHub-projekt) lehetőséget, majd adja meg az elágaztatott adattár URL-címét, például: *https://github.com/iainfoulds/nodejs-docs-hello-world*
-- A **Source code management** (Forráskódkezelés) szakaszban válassza a **Git** elemet, majd adja meg az elágaztatott *.git*-adattár URL-címét, például: *https://github.com/iainfoulds/nodejs-docs-hello-world.git*
+- A **General** (Általános) szakaszban válassza ki a **GitHub project** (GitHub-projekt) lehetőséget, majd adja meg az elágaztatott adattár URL-címét, például: *https://github.com/cynthn/nodejs-docs-hello-world*
+- A **Source code management** (Forráskódkezelés) szakaszban válassza a **Git** elemet, majd adja meg az elágaztatott *.git*-adattár URL-címét, például: *https://github.com/cynthn/nodejs-docs-hello-world.git*
 - A **Build Triggers** (Eseményindítók létrehozása) szakaszban válassza a **GitHub hook trigger for GITScm polling** (GitHub beavatkozási pont eseményindító GITScm lekérdezés esetén) lehetőséget.
 - A **Build** (Létrehozás) szakaszban válassza az **Add build step** (Létrehozási lépés hozzáadása) lehetőséget. Válassza az **Execute shell** (Felület futtatása) lehetőséget, majd a parancssori ablakba írja be a következőt: `echo "Testing"`.
 - Kattintson a feladatablak alján található **Save** (Mentés) gombra.
