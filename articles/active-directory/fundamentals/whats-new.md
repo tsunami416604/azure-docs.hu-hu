@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: lizross
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 9f0d0b9732b2af36a0411329cede01a9b8cc8efc
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: 480bbd543ddef60dc8dd84d4b454ef5a8c742636
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37920814"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39008392"
 ---
 # <a name="whats-new-in-azure-active-directory"></a>Újdonságok az Azure Active Directoryban?
 
@@ -34,6 +34,18 @@ Az Azure AD folyamatosan fejlesztései kap. Naprakész a legújabb fejlemények,
 - Módosítások tervek
 
 Ezen a lapon havonta frissül, így rendszeresen ellenőrizni.
+
+## <a name="july-2018"></a>2018. július
+
+### <a name="view-legacy-authentications-through-sign-ins-activity-logs"></a>A régi hitelesítések megtekintése a bejelentkezések tevékenységnaplói révén
+
+**Típus:** új szolgáltatás  
+**Szolgáltatási kategóriához:** jelentéskészítés  
+**A termék funkció:** Monitorozás és jelentéskészítés
+ 
+Bevezetésével a **ügyfélalkalmazás** -naplókat a bejelentkezési tevékenységek mezője ügyfelek is most lásd: felhasználók, amelyek az örökölt hitelesítés használata. Ügyfelek érhetik el ezeket az információkat a bejelentkezések az MS Graph API használatával is, vagy a bejelentkezés keresztül Tevékenységnaplók az Azure AD-portálra, ahol használhatja a **ügyfélalkalmazás** örökölt hitelesítések szűrés vezérlő. Tekintse meg a dokumentáció További részletekért.
+
+---
 
 ## <a name="june-2018"></a>2018. június
 
@@ -242,16 +254,6 @@ Egyéni szabályzatok használatával most már hozzáadhat az Azure AD közös 
 **A termék funkció:** egyszeri bejelentkezés
  
 Felhasználók most már elérheti alkalmazások belső URL-címeket, még ha a vállalati hálózaton kívülről keresztül a saját alkalmazások biztonságos bejelentkezési bővítménye az Azure ad használatával. Ez minden olyan alkalmazással, amely bármely böngészőben, amelyen telepítve van hozzáférési Panel böngészőbővítményének használatánál az Azure AD-alkalmazásproxy használatával közzétett fog működni. Az URL-cím átirányítási funkció automatikusan engedélyezve lesz, miután egy felhasználó bejelentkezik a bővítményt. A bővítmény letölthető [Edge](https://go.microsoft.com/fwlink/?linkid=845176), [Chrome](https://go.microsoft.com/fwlink/?linkid=866367), és [Firefox](https://go.microsoft.com/fwlink/?linkid=866366).
-
----
-
-### <a name="view-legacy-authentications-through-sign-ins-activity-logs"></a>A régi hitelesítések megtekintése a bejelentkezések tevékenységnaplói révén
-
-**Típus:** új szolgáltatás  
-**Szolgáltatási kategóriához:** jelentéskészítés  
-**A termék funkció:** Monitorozás és jelentéskészítés
- 
-Bevezetésével a **ügyfélalkalmazás** -naplókat a bejelentkezési tevékenységek mezője ügyfelek is most lásd: felhasználók, amelyek az örökölt hitelesítés használata. Ügyfelek érhetik el ezeket az információkat a bejelentkezések az MS Graph API használatával is, vagy a bejelentkezés keresztül Tevékenységnaplók az Azure AD-portálra, ahol használhatja a **ügyfélalkalmazás** örökölt hitelesítések szűrés vezérlő. Tekintse meg a dokumentáció További részletekért.
 
 ---
  

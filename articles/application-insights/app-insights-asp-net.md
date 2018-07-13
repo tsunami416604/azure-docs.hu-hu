@@ -1,6 +1,6 @@
 ---
-title: "Webalkalmazás-elemzés beállítása az ASP.NET-hez az Azure Application Insights segítségével | Microsoft Docs"
-description: "Konfigurálhatja a helyszínen vagy az Azure-ban üzemeltetett ASP.NET-webhely teljesítményét, rendelkezésre állását és használatelemzését."
+title: Webalkalmazás-elemzés beállítása az ASP.NET-hez az Azure Application Insights segítségével | Microsoft Docs
+description: Teljesítmény, a rendelkezésre állás és a felhasználói viselkedés elemzési eszközök az ASP.NET-webhely konfigurálása helyszíni vagy Azure-ban.
 services: application-insights
 documentationcenter: .net
 author: mrbullwinkle
@@ -10,14 +10,15 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: conceptual
 ms.date: 01/19/2018
 ms.author: mbullwin
-ms.openlocfilehash: 4fea71509b2dec897a3dafef627e243ae25447ad
-ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
-ms.translationtype: HT
+ms.openlocfilehash: 73bb1e3d06066c422614bc9d6d3431b49be9c6de
+ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/27/2018
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38991309"
 ---
 # <a name="set-up-application-insights-for-your-aspnet-website"></a>Az Application Insights beállítása az ASP.NET-webhelyhez
 
@@ -157,6 +158,6 @@ További témaköröket is elolvashat, ha a következők érdeklik:
 * [Intelligens diagnosztika](app-insights-proactive-diagnostics.md): Ezek a tesztek automatikusan futnak, a beállításukhoz semmit sem kell tennie. Értesítést kap, ha az alkalmazásában szokatlanul magas a meghiúsult kérelmek száma.
 * [Metrikariasztások](app-insights-alerts.md): Állítsa be ezeket, hogy figyelmeztetést kapjon, ha egy metrika átlépi a küszöbértéket. Az alkalmazás kódjába beépített egyedi metrikákhoz is állíthat be riasztásokat.
 
-### <a name="automation"></a>Automatizálás
+### <a name="automation"></a>Automation
 
 * [Application Insights-erőforrások létrehozásának automatizálása](app-insights-powershell.md)

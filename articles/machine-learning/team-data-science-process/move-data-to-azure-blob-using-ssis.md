@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/04/2017
 ms.author: deguhath
-ms.openlocfilehash: 5db1e7b9c97a0c19ef5ec0a41ea675c33c4d46fc
-ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
+ms.openlocfilehash: 2f73a08d14d02b4e4b441b6ac85c6ceb97b9f173
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37950916"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39004982"
 ---
 # <a name="move-data-to-or-from-azure-blob-storage-using-ssis-connectors"></a>Adatok áthelyezése vagy onnan máshová SSIS-összekötők használatával az Azure Blob Storage
 A [SQL Server Integration Services funkciócsomag Azure](https://msdn.microsoft.com/library/mt146770.aspx) szeretne csatlakozni az Azure-összetevők közötti Azure-ban és a helyszíni adatforrások, és dolgozza fel az adatokat az Azure-ban tárolt adatok átvitele biztosít.
@@ -83,7 +83,7 @@ A paraméterek, a feladat használja ebben a témakörben találhatók:
 > 
 
 ## <a name="download-data-from-azure-blob-storage"></a>Töltse le az adatok Azure blob storage-ból
-Adatok letöltése az Azure blob storage-ból a helyszíni tárolók az SSIS használatával, egy példányát használja a [Azure Blob feltöltése feladat](https://msdn.microsoft.com/library/mt146779.aspx).
+Adatok letöltése az Azure blob storage-ból a helyszíni tárolók az SSIS használatával, egy példányát használja a [Azure Blob letöltése feladat](https://msdn.microsoft.com/library/mt146779.aspx).
 
 ## <a name="more-advanced-ssis-azure-scenarios"></a>Speciális SSIS-Azure-forgatókönyvek
 Az SSIS-feature pack lehetővé teszi, hogy komplex folyamatok által kezelendő csomagolási feladatok együtt. Sikerült a Blobadatok például közvetlenül egy HDInsight-fürtöt, vissza egy blobot, majd a helyszíni tárolók kimenete sikerült letölteni a hírcsatorna. SSIS futtathatja a Hive és Pig-feladatok további SSIS-összekötők használata egy HDInsight-fürtön:

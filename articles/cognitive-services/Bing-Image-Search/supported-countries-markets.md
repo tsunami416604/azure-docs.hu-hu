@@ -1,6 +1,6 @@
 ---
-title: Támogatott országokból és nyelvek Bing kép keresési API az Azure-on |} Microsoft Docs
-description: Megtudhatja, mely országokból és a nyelv által támogatott, a lemezkép Bing keresési API.
+title: A Bing Image Search API az Azure-ban támogatott nyelvek és országok/régiók |} A Microsoft Docs
+description: Ismerje meg, hogy mely országok/régiók és nyelvek a Bing Image Search API által támogatott.
 services: cognitive-services
 author: v-jerkin
 manager: jhubbard
@@ -9,34 +9,34 @@ ms.component: bing-image-search
 ms.topic: article
 ms.date: 10/06/2017
 ms.author: v-jerkin
-ms.openlocfilehash: d0d33ee714ba5cd1ce4e846b96c04f755933bee1
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 97e2bed509146172c10aa9ac2658b99ed7610fcc
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35348951"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39004438"
 ---
-# <a name="bing-image-search-countries-and-languages"></a>Bing kép keresési országokból és nyelvek
+# <a name="bing-image-search-countriesregions-and-languages"></a>Bing – Képkeresés országok/régiók és nyelvek
 
-A kép Bing keresési API támogatja a több mint három tucat országok, számos egynél több nyelv. Egy ország megadó lekérdezés szolgál elsősorban az adott ország érdeklődések alapján keresési eredmények szűkítéséhez. Emellett az eredmények Bing mutató hivatkozásokat is tartalmaznak, és ezeket a hivatkozásokat is localize a Bing felhasználói élményt a megadott ország vagy nyelv szerint.
+A Bing Image Search API több mint három tucat országok/régiók, számos, az egynél több nyelvet támogat. Adjon meg egy adott ország/régió lekérdezéssel elsősorban az ország/régió kimutatott érdeklődések alapján találatok szűkítése szolgálja ki. Ezenkívül az eredmények Bing mutató hivatkozásokat is tartalmazhat, és ezeket a hivatkozásokat is honosítani a Bing felhasználói élmény az adott ország/régió vagy nyelv szerint.
 
-Adja meg az ország és a nyelv, állítsa be a `mkt` (piaci) lekérdezésparamétert egy kódot a **piacok** az alábbi táblázatban. A piacon egy ország és a nyelv megadása Ha inkább tekintse meg a felhasználó egy másik nyelven jelenítse meg, állítsa `setLang` lekérdezésparaméter a megfelelő nyelvi kód.
+Adja meg az országot/régiót és a nyelvet, állítsa be a `mkt` (piaci) lekérdezési paraméter a kódot a **piacok** az alábbi táblázat. A piacon ország/régió és nyelv is megadja. Ha a felhasználó részesíti előnyben, hogy különböző nyelveken jelenítse meg, és állítsa `setLang` lekérdezési paraméter, a megfelelő nyelvi kódot.
 
-Másik megoldásként megadhatja, az ország használatával a `cc` lekérdezési paraméter. Ha megad egy ország, is meg kell egy vagy több nyelvkódjait használatával a `Accept-Language` HTTP-fejléc. A támogatott nyelvek változhat ország; a piacon tábla minden egyes ország, számukra.
+Másik lehetőségként megadhatja az országot/régiót használ a `cc` lekérdezési paraméter. Ha megad egy adott ország/régió, meg kell adnia egy vagy több nyelvi kódot használ a `Accept-Language` HTTP-fejléc. Ország/régió; szerint változik a támogatott nyelvek minden ország/régió, a piacot táblázatban azok jellegűek.
 
 > [!NOTE]
-> A trendek képek API jelenleg csak a következő piacon támogatja:
-> - en-US (angol nyelvű, az Amerikai Egyesült Államok) 
-> - en-hitelesítésszolgáltató (angol nyelvű, Kanada) 
-> - en-AU (angol nyelvű, Ausztrália) 
+> A népszerű képek API jelenleg csak a következő piacok támogatja:
+> - en-US (angol nyelven, Egyesült Államok) 
+> - en-hitelesítésszolgáltató (angol nyelven, Kanada) 
+> - en-Ausztrália (angol nyelven, Ausztrália) 
 > - zh-CN (kínai, Kína)
 
 ## <a name="countries"></a>Országok
 
-|Ország|Kód|
+|Ország/régió|Kód|
 |-------|----|
 |Argentína|AR|
-|Ausztrália|AU|
+|Ausztrália|AUSZTRÁLIA|
 |Ausztria|AT|
 |Belgium|LEHET|
 |Brazília|BR|
@@ -46,23 +46,23 @@ Másik megoldásként megadhatja, az ország használatával a `cc` lekérdezés
 |Finnország|FI|
 |Franciaország|JK|
 |Németország|NÉMETORSZÁG|
-|Hongkong|HK|
-|India|IN|
+|Hongkong KKT|HK|
+|India|INDIA|
 |Indonézia|ID (Azonosító)|
 |Olaszország|IT|
 |Japán|JP|
-|Korea|KR|
-|Malajzia|A|
+|Korea|KOREA|
+|Malajzia|SAJÁT|
 |Mexikó|MX|
 |Hollandia|NL|
 |Új-Zéland|NZ|
 |Norvégia|NEM|
 |Kína|CN|
 |Lengyelország|PL|
-|Portugália|PT|
+|Portugália|CSENDES-ÓCEÁNI IDŐ|
 |Fülöp-szigetek|PH|
-|Oroszország|RU|
-|Szaúd-Arábia|RENDSZERGAZDAI (SA)|
+|Oroszország|KÉRELEMEGYSÉG|
+|Szaúd-Arábia|SA|
 |Dél-Afrika|ZA|
 |Spanyolország|ES|
 |Svédország|HASZNÁLATA|
@@ -75,22 +75,22 @@ Másik megoldásként megadhatja, az ország használatával a `cc` lekérdezés
 
 ## <a name="markets"></a>Piacok
 
-|Ország|Nyelv|Piaci kódot|
+|Ország/régió|Nyelv|Piaci kód|
 |-------|--------|-----------|
 |Argentína|spanyol|es-AR|
-|Ausztrália|Angol|en-AU|
-|Ausztria|német|de-AT|
+|Ausztrália|Angol|en-Ausztrália|
+|Ausztria|német|Németország-AT|
 |Belgium|holland|nl-BE|
-|Belgium|francia|FR-kell|
+|Belgium|francia|FR-lehet|
 |Brazília|portugál|pt-BR|
-|Kanada|Angol|en-Kanada|
-|Kanada|francia|FR-Kanada|
+|Kanada|Angol|en-hitelesítésszolgáltató|
+|Kanada|francia|FR-hitelesítésszolgáltató|
 |Chile|spanyol|es-CL|
 |Dánia|dán|da-DK|
 |Finnország|finn|fi-FI|
 |Franciaország|francia|FR-FR|
 |Németország|német|de-DE|
-|Hongkong|Kínai (hagyományos)|zh-HK|
+|Hongkong KKT|Kínai (hagyományos)|zh-HK|
 |India|Angol|en-IN|
 |Indonézia|Angol|en-azonosító|
 |Olaszország|olasz|it-IT|
@@ -110,12 +110,12 @@ Másik megoldásként megadhatja, az ország használatával a `cc` lekérdezés
 |Spanyolország|spanyol|es-ES|
 |Svédország|svéd|SV-SE|
 |Svájc|francia|FR-CH|
-|Svájc|német|de-CH|
+|Svájc|német|Németország – CH|
 |Tajvan|Kínai (hagyományos)|zh-TW|
 |Törökország|török|tr-TR|
 |Egyesült Királyság|Angol|en-GB|
 |Egyesült Államok|Angol|hu-HU|
-|Egyesült Államok|spanyol|es-US|
+|Egyesült Államok|spanyol|es-USA|
 
 ## <a name="next-steps"></a>További lépések
-A Bing hírek keresési végpontok kapcsolatos további információkért lásd: [hírek kép keresési API-v7 referencia](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference).
+A Bing News Search végpontok kapcsolatos további információkért lásd: [hírek Image Search API 7-es referencia](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference).

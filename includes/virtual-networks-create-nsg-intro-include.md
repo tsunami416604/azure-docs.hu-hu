@@ -9,13 +9,13 @@ ms.date: 04/13/2018
 ms.author: genli
 ms.custom: include file
 ms.openlocfilehash: 7a31b8bc764c5548870042d9c17458706d746200
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34371252"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38760375"
 ---
-A virtuális hálózat egy NSG-t legalább egy további virtuális gépek (VM), szerepkörpéldányok, hálózati adapterek (NIC), vagy alhálózat forgalmának ellenőrzésére használhatja. A hálózati biztonsági csoport olyan hozzáférés-vezérlési szabályokat tartalmaz, amelyek engedélyezik vagy megtagadják a forgalmat a forgalom iránya, a protokoll, a forrás címe és portja, illetve a cél címe és portja alapján. Az NSG szabályainak bármikor módosíthatók, és a módosításai érvényesek lesznek minden példányok kapcsolódnak.
+Az NSG-KET egy vagy több virtuális gépeken (VM), szerepkörpéldányok, hálózati adapterek (NIC) vagy alhálózat forgalmának ellenőrzésére használhatja a virtuális hálózaton. A hálózati biztonsági csoport olyan hozzáférés-vezérlési szabályokat tartalmaz, amelyek engedélyezik vagy megtagadják a forgalmat a forgalom iránya, a protokoll, a forrás címe és portja, illetve a cél címe és portja alapján. A szabályokat az NSG-KET bármikor módosíthatók, és a módosítások érvénybe lépnek minden társított példány.
 
-Az NSG-k kapcsolatos további információkért látogasson el [Mi az az NSG](../articles/virtual-network/security-overview.md).
+NSG-kkel kapcsolatos további információkért látogasson el [Mi az az NSG-KET](../articles/virtual-network/security-overview.md).
 

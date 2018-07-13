@@ -1,37 +1,37 @@
 ---
-title: Az Azure-leképezések térkép vezérlőelem használata |} Microsoft Docs
+title: Az Azure Maps térkép vezérlőelem használata |} A Microsoft Docs
 description: Ismerje meg, hogyan használható az Azure Maps térkép vezérlőelem ügyféloldali Javascript-függvénytárat.
-author: kgremban
-ms.author: kgremban
+author: dsk-2015
+ms.author: dkshir
 ms.date: 05/07/2018
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 0b0549e7a7ea6389597e483f239a75743a96fef1
-ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
+ms.openlocfilehash: 228d2d3331b510a0f07dbd3ca278715466d747af
+ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/22/2018
-ms.locfileid: "36317964"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38988891"
 ---
-# <a name="how-to-use-the-azure-maps-map-control"></a>Az Azure-leképezések térkép vezérlőelem használata
-A térkép vezérlőelem ügyféloldali Javascript-függvénytárat lehetővé teszi a webkiszolgáló vagy a mobilalkalmazás leképezések és beágyazott Azure leképezhető funkció megjelenítéséhez. 
+# <a name="how-to-use-the-azure-maps-map-control"></a>Az Azure Maps térkép vezérlőelem használata
+A térkép vezérlőelem ügyféloldali Javascript-kódtár térképeket és beágyazott Azure Maps-funkciók jelennek meg a webes vagy mobilalkalmazás segítségével. 
 
-## <a name="create-a-new-map-in-a-web-page"></a>Hozzon létre egy új leképezés egy weblapon
+## <a name="create-a-new-map-in-a-web-page"></a>Egy weblapon egy új térkép létrehozása
 
-A térkép vezérlőelem ügyféloldali Javascript-könyvtár használatával térképre ágyazható be egy weblapon.
+A térkép vezérlőelem ügyféloldali Javascript-kódtár használatával egy térkép is beágyazható egy weblapon.
 
-1. Hozzon létre egy új fájlt, és adjon neki nevet MapSearch.html.
+1. Hozzon létre egy új fájlt, és nevezze el MapSearch.html.
 
-2. Az Azure-leképezések stíluslap és parancsfájl forrás hivatkozásokat adni a `<head>` elem a fájl:
+2. Adja hozzá az Azure Maps stíluslap és parancsfájl forrás hivatkozásokat a `<head>` elem a fájl:
 
     ```html
     <link rel="stylesheet" href="https://atlas.microsoft.com/sdk/css/atlas.min.css?api-version=1.0" type="text/css" />
     <script src="https://atlas.microsoft.com/sdk/js/atlas.min.js?api-version=1.0"></script>
     ```
     
-3. Ahhoz, hogy hatására a böngésző új leképezés, hozzáadni egy **#map** hivatkozik a `<style>` elemet.
+3. Annak érdekében, hogy a render egy új térkép a böngészőben, adjon hozzá egy **#map** hivatkozzon a `<style>` elemet.
 
     ```html
     #map {
@@ -40,7 +40,7 @@ A térkép vezérlőelem ügyféloldali Javascript-könyvtár használatával t�
             }
     ``` 
     
-4. Ahhoz, hogy a térkép vezérlőelem inicializálására, adjon meg egy új szakaszt a html törzs, és hozzon létre egy parancsfájlt. A saját Azure Maps fiókkulcs használja a parancsfájlban. Ha a fiók létrehozása, vagy keresse meg a, tekintse meg kell [Azure Maps fiókja és -kulcsok kezelése](how-to-manage-account-keys.md)
+4. A térkép vezérlőelem inicializálásához a html törzsében új definiálására, és hozzon létre egy parancsfájlt. A parancsfájl a saját az Azure Maps-fiók kulcsot használni. Ha hozzon létre egy fiókot, vagy keresse meg a, tekintse meg kell [az Azure Maps-fiók és kulcsok kezelése](how-to-manage-account-keys.md)
 
     ```html
     <div id="map">
@@ -55,11 +55,11 @@ A térkép vezérlőelem ügyféloldali Javascript-könyvtár használatával t�
     </div>
     ```
     
-5. A böngészőben nyissa meg a fájlt, és a megjelenített megjelenítése.
+5. A böngészőben nyissa meg a fájlt, és megtekintheti a megjelenített térképen.
 
 ## <a name="next-steps"></a>További lépések
 
-Ez a cikk egy alapszintű térkép létrehozása az Azure-leképezések kulccsal bemutatta. További kód hozzáadása a maps, tekintse meg a következő cikkeket: 
+Ez a cikk láthatta, hogyan hozhat létre egy egyszerű térképet az Azure Maps-kulcs. A maps hozzá további kódot példák a következő cikkekben talál: 
 
-* [Térkép létrehozásához](map-create.md)
+* [Térkép létrehozása](map-create.md)
 * [A PIN-kód hozzáadása](map-add-pin.md)

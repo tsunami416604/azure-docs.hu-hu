@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/03/2018
 ms.author: sngun
-ms.openlocfilehash: 30ebe4f990dc65e53c34673f0948d3aa2240385c
-ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
+ms.openlocfilehash: fb8ae3b6225b2029ced3687083777ae47cb54acf
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37859700"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39002330"
 ---
 # <a name="azure-cosmos-db-faq"></a>Az Azure Cosmos DB – gyakori kérdések
 ## <a name="azure-cosmos-db-fundamentals"></a>Az Azure Cosmos DB – alapok
@@ -120,6 +120,9 @@ Az Azure Cosmos DB az összes Azure-régióban a megadott megtalálható a [Azur
 
 Tároló és az adatbázis átviteli szintű üzembe helyezésének egymástól különálló ajánlatok, és mindkét közötti váltáskor szükséges áttelepítés forrás adatait a célhelyre. Ami azt jelenti, hogy hozzon létre egy új adatbázist vagy egy új gyűjteményt, és ezután telepítse át az adatok segítségével kell [tömeges végrehajtó könyvtár](bulk-executor-overview.md) vagy [Azure Data Factory](../data-factory/connector-azure-cosmos-db.md).
 
+### <a name="how-do-i-create-fixed-collection-with-partition-key"></a>Hogyan hozhatok létre a rögzített gyűjtemény partíciós kulccsal
+
+Jelenleg létrehozhat gyűjtemény partíciós kulcs adattovábbítási kapacitással rendelkező használatával a [CreatePartitionedCollection](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/CollectionManagement/Program.cs#L118) metódus a .net SDK-t vagy a használatával a [Azure CLI-vel](https://docs.microsoft.com/cli/azure/cosmosdb/collection?view=azure-cli-latest#az-cosmosdb-collection-create). A rögzített gyűjtemény létrehozása az Azure portal használatával jelenleg nem érhető támogatott.  
 
 ## <a name="develop-against-the-sql-api"></a>Fejlesztés az SQL API-n
 

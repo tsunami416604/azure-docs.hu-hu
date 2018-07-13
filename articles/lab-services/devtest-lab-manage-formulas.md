@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/17/2018
 ms.author: spelluru
-ms.openlocfilehash: 40c30958c5e0e24f2b35475848c1828df4a40d0c
-ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
+ms.openlocfilehash: b7a68f545f60829e5da83f0734c57a4d210cb843
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "33787611"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39001481"
 ---
 # <a name="manage-azure-devtest-labs-formulas"></a>Az Azure DevTest Labs-képletek kezelése
 
@@ -61,7 +61,7 @@ A következő lépések végigvezetik az egyéni rendszerkép, Piactéri rendsze
     * **Název vzorce** – adjon meg egy nevet a képlet. Ez az érték alaplemezképek listája jelenik meg a virtuális gép létrehozásakor. A nevet, írja be, és nem érvényes, ha egy üzenet azt jelzi, hogy érvényes nevet a követelményei érvényességét.
     * **Leírás** -a képlet az olyan leírást adjon meg. Ezt az értéket a virtuális gép esetén érhető el a képlet helyi menüből.
     * **Felhasználónév** – adjon meg egy rendszergazdai jogosultságokkal rendelkező felhasználói nevet.
-    * **Jelszó** – adja meg - vagy válassza ki a legördülő listából – a titkos kulcsot (jelszó), amely a megadott felhasználó használni kívánt társított értéket. A titkos kulcsok kapcsolatos további információkért lásd: [Azure DevTest Labs: személyes titkoskód-tárolót](https://azure.microsoft.com/updates/azure-devtest-labs-keep-your-secrets-safe-and-easy-to-use-with-the-new-personal-secret-store/).
+    * **Jelszó** – adja meg - vagy válassza ki a legördülő listából – a titkos kulcsot (jelszó), amely a megadott felhasználó használni kívánt társított értéket. Mentése folyamatban van a titkos kulcsok a key vaultban, és használja őket, labor-erőforrások létrehozásakor kapcsolatos további információkért lásd: [Store titkos kulcsok Azure Key vaultban](devtest-lab-store-secrets-in-key-vault.md).
     * **Virtuálisgép-lemeztípust** – adja meg vagy HDD (merevlemez-meghajtó) vagy SSD (SSD-meghajtóra), mely tárolólemez-típusba jelzi a virtuális gépek kiépítése ezen alapszintű rendszerkép használata engedélyezett.
     * ** A virtuális gép mérete ** – válasszon az előre definiált elemek, amelyek a Processzormagok, memória mérete és a merevlemez mérete, a virtuális gép létrehozása. 
     * **Összetevők** – megnyitásához válassza ki a **adjon hozzá összetevőket** panel, ahol, illetve konfigurálhatja az alaprendszerképet hozzáadni kívánt összetevők. Összetevők kapcsolatos további információkért lásd: [az Azure DevTest Labs szolgáltatásban virtuális gép egyéni összetevők létrehozása](devtest-lab-artifact-author.md).

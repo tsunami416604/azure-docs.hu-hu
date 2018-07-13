@@ -1,6 +1,6 @@
 ---
-title: A Microsoft Azure StorSimple adatkezelő áttekintése |} Microsoft Docs
-description: A StorSimple adatok Manager szolgáltatással áttekintése
+title: A Microsoft Azure StorSimple Data Manager áttekintése |} A Microsoft Docs
+description: A StorSimple Data Manager szolgáltatás áttekintése
 services: storsimple
 documentationcenter: NA
 author: vidarmsft
@@ -14,38 +14,38 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 05/21/2018
 ms.author: vidarmsft
-ms.openlocfilehash: d57229ad79909aa0334cc623d727b733a1ec73f9
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
-ms.translationtype: HT
+ms.openlocfilehash: 5845fd246b20d29739eb6d60bbc8621489ccc0d6
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34652008"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39009167"
 ---
-# <a name="storsimple-data-manager-solution-overview"></a>StorSimple adatkezelő megoldási áttekintés
+# <a name="storsimple-data-manager-solution-overview"></a>A StorSimple Data Manager-megoldás áttekintése
 
 ## <a name="overview"></a>Áttekintés
 
-A Microsoft Azure StorSimple felhőbeli tárhelyét használja a helyszíni megoldás, és automatikusan rétegek adatok kiterjesztése a helyszíni tárolási és a felhő között. Adatok a felhőben a maximális hatékonyság és csökkenthetők a költségek deduplikált és tömörített formátumban tárolja. Az adatok tárolási StorSimple formátumban, mivel nincs könnyen felhasználhatóvá más felhőalapú alkalmazásokhoz is használható.
+A Microsoft Azure StorSimple felhőalapú tárolás kiterjesztése a helyszíni megoldást, és automatikusan rétegek adatokat, mint a helyszíni tárolók és a felhőben használja. Egy deduplikált és tömörített formátumban, a maximális hatékonyság és a költségek csökkentése a felhőben tárolt adatokat. Mivel az adatok StorSimple-formátumban tárolódik, akkor sem könnyen fogyaszthatóvá más felhőalapú alkalmazásokkal, amelyek igénybe szeretnék.
 
-A StorSimple-kezelő lehetővé teszi, hogy zökkenőmentesen eléréséhez, és a StorSimple formátum adatok használhatók a felhőben. Ennek érdekében StorSimple formátum átalakítása natív blobok és a fájlokat, amelyek más szolgáltatásokon, például az Azure Media Services, Azure HDInsights és Azure Machine Learning használható.
+A StorSimple Data Manager lehetővé teszi, hogy zökkenőmentesen elérheti és használhatja az StorSimple formátumú adatokat a felhőben. Ezt nem átalakításával keletkező StorSimple a formátum natív blobok és-fájlokat, amelyek más szolgáltatásokkal, például az Azure Media Services, Azure Hdinsight és az Azure Machine Learning is használhatja.
 
-Ez a cikk áttekintést a StorSimple adatkezelő megoldás. Azt is bemutatja, hogyan használható ez a szolgáltatás írási StorSimple adatokat használó alkalmazások és más Azure-szolgáltatásokkal a felhőben.
+Ez a cikk a StorSimple Data Manager-megoldás áttekintése. Azt is bemutatja, hogyan használható ez a szolgáltatás a StorSimple-adatokat használó alkalmazások írására, és más Azure-szolgáltatások a felhőben.
 
 ## <a name="how-it-works"></a>Hogyan működik?
 
-A StorSimple adatkezelő szolgáltatás azonosítja a StorSimple-adatokat a StorSimple 8000 series helyszíni eszközről a felhőbe. A StorSimple-adatok a felhőben van deduplikált, tömörített StorSimple formátumban. Az adatkezelő service API-k bontsa ki a StorSimple formátumú adatokat, és átalakíthatja a más formátumba, például az Azure-blobok és Azure fájlok biztosít. Ezt átalakítják Azure HDInsight és az Azure Media Services majd könnyen használt adatok. A data transformation így lehetővé teszi, hogy a StorSimple 8000 series helyszíni eszköz StorSimple az átalakított adatok működéséhez ezeket a szolgáltatásokat. Ez a folyamat a következő ábrán látható.
+A StorSimple Data Manager szolgáltatás a felhőben, helyszíni eszköz a StorSimple 8000 sorozat a StorSimple data azonosítja. A StorSimple a felhőbeli adatok deduplikált van, a StorSimple-formátumban tömörített. A Data Manager szolgáltatás API-k, bontsa ki a StorSimple-adatok formázása és átalakítása más formátumba való, mint például az Azure-blobok és az Azure Files biztosít. Ez az átalakított adatok ezután azonnal használja fel az Azure HDInsight és az Azure Media services. Az Adatátalakítási így lehetővé teszi ezeket a szolgáltatásokat szeretne végezni a StorSimple 8000 sorozat a helyszíni eszköz származó, átalakított StorSimple adatokat. Ez a folyamat a következő ábra mutatja be.
 
 ![Magas szintű diagramját](./media/storsimple-data-manager-overview/storsimple-data-manager-overview2.png)
 
 
-## <a name="data-manager-use-cases"></a>Adatkezelő használati esetek
+## <a name="data-manager-use-cases"></a>Adatkezelő alkalmazási helyzetek
 
-Az Azure Functions, az Azure Automation és az Azure Data Factory az adatkezelő használatával vannak StorSimple be ismét az adatok futó munkafolyamatok. Előfordulhat, hogy fel szeretné dolgoztatni a médiatartalmak, hogy akkor tárolja a StorSimple az Azure Media Services, a gépi tanulási algoritmus futtatása az adatok vagy a Hadoop fürtök elindítani a StorSimple tárolt adatok elemzésére. Az Azure StorSimple levő adatokkal együtt az elérhető szolgáltatások túlnyomó tömbje az adatok power zárolásának feloldásához.
+Az Azure Functions, az Azure Automation és az Azure Data Factory az adatkezelő segítségével munkafolyamatokat futtat az adatok StorSimple szolgáltatásba betölt, rendelkezik. Előfordulhat, hogy szeretne feldolgozni a médiatartalmak, hogy tárolja a StorSimple az Azure Media Services vagy egy gépi tanulási algoritmus futtatása az adatok, vagy viszi, megjelenik egy Hadoop-fürtöt, amely a StorSimple tárolja az adatok elemzéséhez. A szoftverleltáradatokkal együtt a StorSimple az Azure-on elérhető szolgáltatások hatalmas választékának, rejlő az adatokat.
 
 
 ## <a name="region-availability"></a>Régiónkénti elérhetőség
 
-A StorSimple-kezelő a következő 7 régiókban érhető el:
+A StorSimple Data Manager a következő 7 régióban érhető el:
 
  - Délkelet-Ázsia
  - USA keleti régiója
@@ -55,37 +55,45 @@ A StorSimple-kezelő a következő 7 régiókban érhető el:
  - Észak-Európa
  - Nyugat-Európa
 
-Azonban a StorSimple-kezelő a következő régiókban adatok átalakítására használható. 
+A StorSimple Data Manager azonban az alábbi régiókban adatok átalakítására használható. 
 
-![Az adatok területek](./media/storsimple-data-manager-overview/data-manager-job-definition-different-regions-m.png)
+![Az adatok régiók](./media/storsimple-data-manager-overview/data-manager-job-definition-different-regions-m.png)
 
-Ebben a készletben nem nagyobb, mivel az erőforrások telepítése a fenti régiók valamelyikében képes az átalakítási folyamat Tulajdonságkészítő a régiók alatt. Igen mindaddig, amíg az adatok közül legalább 19 régióban található, átalakíthatja az adatokat, használhatja a szolgáltatást.
+A készlet, nagyobb, mert az erőforrások üzembe helyezésének, a fenti régiók egyikében képes használni az átalakítási folyamat az az alábbi régiókban. Így mindaddig, amíg az adatok a 19 régiók egyikében található, alakíthatja át az adatokat, ezt a szolgáltatást használja.
 
 
-## <a name="choosing-a-region"></a>A régió kiválasztásával
+## <a name="choosing-a-region"></a>A régió kiválasztása
 
 Azt javasoljuk, hogy:
- - A forrás-storage-fiók (a StorSimple eszköz társított egyik) és a cél tárfiók (amelyen kívánja az adatokat a natív formátum) azonos Azure-régióban kell.
- - A kezelő és a feladat definíciójának elindítani, amely tartalmazza a StorSimple tárfiók a régióban. Ha ez nem lehetséges, kapcsolja be az adatkezelő legközelebbi Azure-régióban, és majd a StorSimple tárfiók ugyanabban a régióban hozza létre a feladat definíciójához. 
+ - A forrás tárfiókban (a StorSimple-eszköz társított egyet), és ugyanazon Azure-régióban kell céloldali tárfiók (Ha azt szeretné, az adatok natív formátumban).
+ - A Data Manager és a feladat definíciója csatlakozva a régióban, amely a StorSimple tárfiókot tartalmaz. Ha ez nem lehetséges, léptetik be a Data Manager legközelebbi Azure-régióban, és majd a StorSimple tárfiók ugyanabban a régióban hozza létre a feladatdefiníciót. 
 
-    A StorSimple tárfiók nincs 26 régiókban, amely támogatja a feladat definíciójának létrehozását, azt javasoljuk, hogy nem futtatja a StorSimple adatkezelő hosszú késések és potenciálisan magas kilépő díjakat látható módon.
+    Ha a StorSimple tárfiók nem támogatja a feladat definíciójának létrehozása 26 régióban, azt javasoljuk, hogy nem StorSimple Data Manager szerint hosszú késések és potenciálisan nagy a kimenő forgalom költségeit.
 
 ## <a name="security-considerations"></a>Biztonsági szempontok
 
-A StorSimple-kezelő a StorSimple formátum natív formátumra alakítja át a szolgáltatásadat-titkosítási kulcs szükséges. A szolgáltatásadat-titkosítási kulcs jön létre, amikor az első eszköz regisztrálása a StorSimple szolgáltatásban. Ez a kulcs további információkért látogasson el [StorSimple biztonsági](storsimple-8000-security.md).
+A StorSimple Data Manager a szolgáltatásadat-titkosítási kulcs natív formátumban, a StorSimple a formátum átalakításához szükséges. A szolgáltatásadat-titkosítási kulcs jön létre, amikor az első eszköz regisztrálja magát a StorSimple szolgáltatással. Ezt a kulcsot a további információkért lépjen [StorSimple biztonsági](storsimple-8000-security.md).
 
-A bemenetként megadott szolgáltatásadat-titkosítási kulcs egy adatkezelő létrehozásakor létrehozott egy kulcstartót tárolódik. A tárolónak ugyanabban a régióban Azure, a StorSimple adatkezelő helyezkedik el. Ezt a kulcsot a rendszer törli, a kezelő szolgáltatás törlésekor.
+A szolgáltatásadat-titkosítási kulcs egy bemenetként tárolja a kulcstartóhoz, amely egy Data Manager létrehozásakor jön létre. A tárolóban található azonos Azure-régióban, a StorSimple Data Manager. Ezt a kulcsot a Data Manager szolgáltatás törlésekor törlődik.
 
-Ezt a kulcsot a számítási erőforrások használják az átalakítás végrehajtásához. Ezek a számítási erőforrások és a feladat definíciójához Azure ugyanabban a régióban találhatók. Ebben a régióban lehet, vagy nem lehet ugyanaz, mint a régió, ahol kapcsolná az adatkezelő fel.
+Ezt a kulcsot használják a számítási erőforrásokat az átalakítás végrehajtásához. Ezek a számítási erőforrások és a feladat definíciója Azure ugyanabban a régióban találhatók. Ebben a régióban is, vagy nem lehet ugyanaz, mint a régió, ahol mentése a Data Manager tenné.
 
-Az adatkezelő régió eltér a definíció régiója, ha fontos, hogy tudomásul veszi a milyen adatok metaadatok e régió helyezkedik el. A következő ábra szemlélteti a hatást, hogy a különböző régiókban adatkezelő és a feladat definíciójához.
+Ha a Data Manager régió eltér a feladat definíciója régió, fontos, hogy megértette minden ezekben a régiókban található milyen adatokat vagy metaadatokat. A következő ábra szemlélteti a hatást, hogy a Data Manager és a feladat definíciója különböző régiókban.
 
-![Különböző régiókban szolgáltatás és a feladat meghatározása](./media/storsimple-data-manager-overview/data-manager-job-different-regions.png)
+![Különböző régiókban a szolgáltatás és a feladat definíciója](./media/storsimple-data-manager-overview/data-manager-job-different-regions.png)
 
 ## <a name="managing-personal-information"></a>Személyes adatok kezelése
 
-A StorSimple-kezelő nem gyűjt, és semmilyen személyes adatok megjelenítése. További információkért tekintse át a Microsoft Privacy házirendje [biztonsági és adatkezelési központ](https://www.microsoft.com/trustcenter).
+A StorSimple Data Manager nem összegyűjtése és megjelenítése a személyes adatokat. További információkért tekintse át a Microsoft Privacy szabályzatokban [biztonsági és adatkezelési központ](https://www.microsoft.com/trustcenter).
+
+## <a name="known-limitations"></a>Ismert korlátozások
+
+A szolgáltatás jelenleg a következő korlátozások vonatkoznak:
+- A StorSimple Data Manager jelenleg nem működik, amelyek a bitlocker-titkosítású kötetek. Látni fogja a sikertelen feladatok, ha megpróbálja futtatni a szolgáltatást egy titkosított meghajtó.
+- Néhány metaadat-fájlok (beleértve az ACL-ek) az átalakított adatok nem lesznek megőrizve.
+- Ez a szolgáltatás csak NTFS-kötetekről működik.
+- Fájl elérési útja hosszúságok kell lennie 256 karakternél rövidebb más a feladat sikertelen lesz.
 
 ## <a name="next-steps"></a>További lépések
 
-[Használja a StorSimple adatokat kezelő felhasználói felületén, az adatok átalakítására](storsimple-data-manager-ui.md).
+[Használja a StorSimple Data Manager felhasználói Felületét, hogy az adatok átalakítása](storsimple-data-manager-ui.md).

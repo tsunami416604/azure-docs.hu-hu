@@ -1,6 +1,6 @@
 ---
-title: MPI alkalmazások futtatásához hozzon létre egy Linux RDMA fürt |} Microsoft Docs
-description: Méretű H16r, H16mr, A8 vagy A9 virtuális gépeket az Azure RDMA hálózati MPI alkalmazások futtatásához használandó Linux-fürt létrehozása
+title: Linux RDMA-fürt beállítása MPI-alkalmazások futtatására |} A Microsoft Docs
+description: Méret H16r, H16mr, a8-as vagy a9-es virtuális gépek futtatásához az MPI-alkalmazások az Azure RDMA hálózati használata Linux-fürt létrehozása
 services: virtual-machines-linux
 documentationcenter: ''
 author: dlepow
@@ -13,146 +13,151 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 03/14/2017
+ms.date: 07/11/2018
 ms.author: danlep
-ms.openlocfilehash: d53305aae3b12c0de983dced85a9626cf98c6309
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 471fd4095fe45e76f94df8c61a07eeb9bbc1c120
+ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34210375"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38990727"
 ---
 # <a name="set-up-a-linux-rdma-cluster-to-run-mpi-applications"></a>Linuxos RDMA-fürt beállítása MPI-alkalmazások futtatására
-Ismerje meg, hogyan állíthat be az Azure-ban Linux RDMA fürt [nagy teljesítményű számítási Virtuálisgép-méretek](../sizes-hpc.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) párhuzamos Message Passing Interface (MPI) alkalmazások futtatásához. Ez a cikk lépéseit Intel MPI futhat egy fürt Linux HPC lemezkép előkészítése. Előkészítő, miután a virtuális gépek használata a lemezkép és az RDMA-kompatibilis Azure Virtuálisgép-méretek, (jelenleg H16r, H16mr, A8 és A9) egy fürt központi telepítése. A fürt használatával, amely a távoli közvetlen memória-hozzáférés (RDMA) technológián alapulnak, alacsony késésű, nagy átviteli hálózati hatékonyan kommunikációhoz MPI-alkalmazások futtatására.
+
+Ismerje meg, hogyan állítható be az Azure-ban a Linux RDMA-fürt [nagy teljesítményű számítási Virtuálisgép-méretek](../sizes-hpc.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) párhuzamos Message Passing Interface (MPI) alkalmazások futtatásához. Ez a cikk lépéseit egy Linux-alapú HPC rendszerkép futtatása az Intel MPI-fürtön való előkészítéséhez. Előkészítés, miután a lemezkép és az egyik virtuális gépek-fürt üzembe a [RDMA-kompatibilis Azure Virtuálisgép-méretek](../sizes-hpc.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#rdma-capable-instances). A fürt használatával, amely a távoli közvetlen memória-hozzáféréses (RDMA) technológiát alapján alacsony késésű, nagy átviteli sebességű hálózati hatékonyan kommunikációhoz MPI-alkalmazások futtatására.
 
 > [!IMPORTANT]
-> Azure az erőforrások létrehozására és kezelésére két különböző üzembe helyezési modellel rendelkezik: [Azure Resource Manager](../../../resource-manager-deployment-model.md) és klasszikus. Ez a cikk a klasszikus üzembehelyezési modellt ismerteti. A Microsoft azt javasolja, hogy az új telepítések esetén a Resource Manager modellt használja.
+> Az Azure az erőforrások létrehozásához és használatához két különböző üzembe helyezési modellel rendelkezik: [Azure Resource Manager](../../../azure-resource-manager/resource-manager-deployment-model.md) és klasszikus. Ez a cikk a klasszikus üzembehelyezési modellt ismerteti. A Microsoft azt javasolja, hogy az új telepítések esetén a Resource Manager modellt használja.
 
-## <a name="cluster-deployment-options"></a>Fürt üzembe helyezési lehetőségei
-Az alábbiakban módszert hozhat létre Linux RDMA-fürtöt, vagy a Feladatütemező nélkül használhat.
+## <a name="cluster-deployment-options"></a>Fürt üzembe helyezési beállítások
+Az alábbiakban különböző módszerek Linux RDMA-fürt létrehozása vagy Feladatütemezőt nélkül használhatja.
 
-* **Az Azure CLI-parancsfájlok**: a cikk későbbi részében látható, használja a [Azure parancssori felület](../../../cli-install-nodejs.md) (CLI) egy fürt RDMA-kompatibilisek-e virtuális gépek telepítését parancsfájllal történő. A parancssori felület szolgáltatásfelügyelet módban a fürtcsomópontok Feladattervek hoz létre a klasszikus üzembe helyezési modellel, így sok számítási csomópont telepítése több percig is eltarthat. A klasszikus üzembe helyezési modellt használja az RDMA hálózati kapcsolat engedélyezéséhez telepítenie kell a virtuális gépek ugyanazt a felhőszolgáltatásban található.
-* **Az Azure Resource Manager-sablonok**: egy fürt, amely összeköti az RDMA hálózati RDMA-kompatibilisek-e virtuális gépek telepítése a Resource Manager üzembe helyezési modellel is használhatja. Is [létrehozhat saját sablont](../../../resource-group-authoring-templates.md), vagy ellenőrizze a [Azure gyors üzembe helyezési sablonokat](https://azure.microsoft.com/documentation/templates/) Microsoft vagy a közösségi kívánt megoldás üzembe helyezéséhez által közzétett sablonokat. Resource Manager-sablonok is biztosít a Linux-fürt üzembe gyors és megbízható módot. Szeretné engedélyezni az RDMA hálózati kapcsolatot a Resource Manager üzembe helyezési modellel használatakor, központi telepítését az azonos rendelkezésre állási csoport a virtuális gépek.
-* **HPC Pack**: Microsoft HPC Pack fürt létrehozása az Azure-ban, és adja hozzá az RDMA-kompatibilisek-e, a támogatott Linux-disztribúció az RDMA hálózati eléréséhez futtató számítási csomópontok. További információkért lásd: [Ismerkedés az Azure-ban HPC Pack-fürtben lévő Linux számítási csomópontok](hpcpack-cluster.md).
+* **Az Azure CLI-szkriptek**: a cikk későbbi részében látható, ahogy a [Azure parancssori felület](../../../cli-install-nodejs.md) (CLI) használatával az RDMA-kompatibilis virtuális gépek az üzembe helyezési parancsfájlt. Szolgáltatásfelügyelet módban a parancssori felület a fürtcsomópontok tárolókonfigurációhoz hoz létre a klasszikus üzemi modellben, így számos számítási csomópontok üzembe helyezése eltarthat néhány percig. Az RDMA hálózati kapcsolat engedélyezéséhez a klasszikus üzemi modell használatakor a ugyanazon a felhőszolgáltatáson a virtuális gépek üzembe helyezése.
+* **Az Azure Resource Manager-sablonok**: a Resource Manager üzemi modell üzembe helyezéséhez, amely csatlakozik az RDMA hálózati RDMA-kompatibilis virtuális gépek fürtjeit is használhatja. Is [saját sablon létrehozása](../../../resource-group-authoring-templates.md), vagy ellenőrizze a [Azure gyorsindítási sablonok](https://azure.microsoft.com/documentation/templates/) a kívánt megoldás üzembe helyezéséhez a Microsoft vagy a Közösség által biztosított sablonok. Resource Manager-sablonok a gyors és megbízható módot Linux-fürt üzembe helyezése is biztosítanak. A Resource Manager üzemi modell használatakor az RDMA hálózati kapcsolat engedélyezéséhez a virtuális gépek ugyanazon rendelkezésre állási vagy virtuálisgép-méretezési csoport üzembe.
+* **HPC Pack**:-Microsoft HPC Pack-fürt létrehozása az Azure-ban, és adja hozzá az RDMA-kompatibilis számítási csomópontok, amely az RDMA hálózati hozzáféréshez támogatott Linux-disztribúció. További információkért lásd: [Linuxos számítási csomópontok HPC Pack-fürtökben, az Azure-ban – első lépések](hpcpack-cluster.md).
 
-## <a name="sample-deployment-steps-in-the-classic-model"></a>A klasszikus modellben minta az üzembe helyezés lépései
-A következő lépések bemutatják, hogyan telepítse a SUSE Linux Enterprise Server (SLES) 12 SP1 HPC virtuális Gépet az Azure piactérről, testre szabhatja, és hozzon létre egy egyéni Virtuálisgép-lemezkép az Azure parancssori felület használatával. A lemezkép használatával majd RDMA-kompatibilisek-e virtuális gépek a fürt a telepítési parancsfájl.
+## <a name="sample-deployment-steps-in-the-classic-model"></a>Minta üzembe helyezési lépéseket a klasszikus modellben
+A következő lépések bemutatják, hogyan SUSE Linux Enterprise Server (SLES) 12 HPC virtuális gép üzembe helyezése az Azure Marketplace-ről, weblapokkal és egyéni Virtuálisgép-rendszerképek létrehozása az Azure CLI használatával. Ezután a rendszerképét is használhatják az RDMA-kompatibilis virtuális gépek az üzembe helyezési szkript.
 
 > [!TIP]
-> Hasonló lépések segítségével az Azure piactéren CentOS alapú HPC képek alapján RDMA-kompatibilisek-e virtuális gépek fürt központi telepítése. Néhány lépést esetekben némileg eltérőek lehetnek. 
->
+> Hasonló lépéseket követve az Azure piactéren a CentOS-alapú HPC rendszerképen alapuló RDMA-kompatibilis virtuális gépek üzembe helyezése. Néhány lépésben feljegyzett némileg eltérőek.
 >
 
 ### <a name="prerequisites"></a>Előfeltételek
-* **Ügyfélszámítógép**: Azure kommunikálni Mac, Linux vagy a Windows ügyfél számítógépre van szüksége. Ezek a lépések feltételezik, hogy a Linux-ügyfelet kell használnia.
-* **Azure-előfizetés**: Ha nem rendelkezik előfizetéssel, létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/) néhány percig. Nagyobb fürtök esetén fontolja meg a használatalapú előfizetés vagy egyéb beszerzési lehetőségek.
-* **Virtuális gép mérete rendelkezésre állási**: A következő példány értékek RDMA-kompatibilis: H16r, H16mr, A8 és A9. Ellenőrizze [régiónként rendelkezésre álló termékek](https://azure.microsoft.com/regions/services/) a Azure-régiók rendelkezésre állás érdekében.
-* **Magok kvóta**: szükség lehet a számítási igényű virtuális gépek fürt központi telepítése magszámra vonatkozó kvóta növeléséhez. Például legalább 128 magok kell, ha azt szeretné, 8 A9 virtuális gépek telepítése ebben a cikkben ismertetett módon. Az előfizetés is lehet, hogy korlátozza az egyes virtuális gép mérete családok, többek között a H-sorozat telepítheti magok száma. A kvóta növelését [nyissa meg az online támogatás ügyfélkérés](../../../azure-supportability/how-to-create-azure-support-request.md) díjmentesen.
-* **Az Azure CLI**: [telepítése](../../../cli-install-nodejs.md) az Azure CLI és [csatlakozni az Azure-előfizetéshez](/cli/azure/authenticate-azure-cli) az ügyfélszámítógépről.
+* **Ügyfélszámítógép**: Azure kommunikálni Mac, Linux vagy Windows ügyfél számítógépre van szüksége. A lépések feltételezik, hogy egy Linux-ügyfél használ.
+* **Azure-előfizetés**: Ha nem rendelkezik előfizetéssel, létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/) mindössze néhány perc alatt. A nagyobb fürtök esetén fontolja meg a használatalapú fizetéses előfizetésre, vagy egyéb fizetési lehetőségeket.
+* **Virtuális gép mérete rendelkezésre állása**: Ellenőrizze [elérhető termékek régiók szerint](https://azure.microsoft.com/regions/services/) H-sorozat vagy egyéb RDMA-kompatibilis Virtuálisgép-méretek az Azure-régiók rendelkezésre állását.
+* **Magkvóta**: növelje a magok nagy számítási igényű virtuális gépek üzembe helyezéséhez szükség lehet. Például legalább 128 maggal kell, ha azt szeretné, 8 a9-es virtuális gépek üzembe helyezéséhez, ahogyan az ebben a cikkben. Az előfizetés is korlátozhatja az egyes virtuális gép többek között a H-sorozat családokban üzembe helyezhető magok számát. Kérje egy kvótájának növelését, [nyisson meg egy támogatási kérést online](../../../azure-supportability/how-to-create-azure-support-request.md) díjmentesen.
+* **Az Azure CLI**: [telepítése](../../../cli-install-nodejs.md) az Azure CLI és [csatlakozhat az Azure-előfizetés](/cli/azure/authenticate-azure-cli) az ügyfélszámítógépről.
 
-### <a name="provision-an-sles-12-sp1-hpc-vm"></a>Az SLES 12 SP1 HPC virtuális gép kiépítése
-Az Azure-bA az Azure parancssori felülettel történő bejelentkezés után futtassa `azure config list` annak ellenőrzéséhez, hogy a kimenet látható-e a szolgáltatásfelügyeleti módban. Ha nem, a mód beállítása a következő parancs futtatásával:
+Emellett tekintse át a központi telepítési szempontokról a [RDMA-kompatibilis Azure Virtuálisgép-méretek](../sizes-hpc.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#rdma-capable-instances).
+
+### <a name="provision-an-sles-12-hpc-vm"></a>Az SLES 12 HPC virtuális gép
+Miután bejelentkezett az Azure-bA az Azure CLI-vel, futtassa `azure config list` annak ellenőrzéséhez, hogy a kimenet megjeleníti a szolgáltatásfelügyelet módban. Ha nem jelenik meg, állítsa a módot a következő parancs futtatásával:
 
     azure config mode asm
 
 
-Írja be az alábbi listában az összes olyan előfizetést, amelyet Ön jogosult-e használni:
+Írja be a következő használatára jogosult előfizetések listáját:
 
     azure account list
 
-Az aktuális aktív előfizetéssel, amelynél az `Current` beállítása `true`. Ha ez az előfizetés nem az a fürt létrehozásához használni kívánt, az aktív előfizetéssel állítsa be a megfelelő előfizetés-azonosító:
+Az aktuális aktív előfizetést, amelynél az `Current` beállítása `true`. Ha ez az előfizetés nem az a fürt létrehozásához használni kívánt, az aktív előfizetést as állítsa be a megfelelő előfizetés-azonosító:
 
     azure account set <subscription-Id>
 
-Tekintse meg az Azure-ban a nyilvánosan elérhető SLES 12 SP1 HPC-lemezképek, a következőhöz hasonló parancs futtatása, feltéve, hogy a rendszerhéj-környezet támogatja **grep**:
+Tekintheti meg a nyilvánosan elérhető SLES 12 HPC-rendszerképeket az Azure-ban, az alábbihoz hasonló parancs futtatására, feltéve, hogy a rendszerhéj-környezetet támogatja **grep**:
 
     azure vm image list | grep "suse.*hpc"
 
-SLES 12 SP1 HPC képének az RDMA-kompatibilisek-e virtuális gép kiépítése a következőhöz hasonló parancs futtatásával:
+Virtuális gép egy RDMA-kompatibilis SLES 12 SP3 HPC-lemezképpel az alábbihoz hasonló parancs futtatásával:
 
-    azure vm create -g <username> -p <password> -c <cloud-service-name> -l <location> -z A9 -n <vm-name> -e 22 b4590d9e3ed742e4a1d46e5424aa335e__suse-sles-12-sp1-hpc-v20160824
+    azure vm create -g <username> -p <password> -c <cloud-service-name> -l <location> -z A9 -n <vm-name> -e 22 b4590d9e3ed742e4a1d46e5424aa335e__suse-sles-12-sp3-hpc-v20170913
 
 Az elemek magyarázata:
 
-* A méret (ebben a példában A9) egyike az RDMA-kompatibilisek-e Virtuálisgép-méretek.
-* A külső SSH-port száma (a példában az SSH alapértelmezés 22) bármilyen érvényes portszámot. A belső SSH-portszám 22 van beállítva.
-* Új felhőalapú szolgáltatás az Azure-régió, a hely által meghatározott jön létre. Adjon meg egy helyet, ahol a Virtuálisgép-méretet választott érhető el.
-* A SUSE rangsorolási támogatással (amely további költségeket terhel) a SLES 12 SP1 kép neve jelenleg lehet ezek két lehetőség közül: 
+* A méret (ebben a példában A9) az RDMA-kompatibilis Virtuálisgép-méretek egyike.
+* A külső SSH-port száma (22-es ebben a példában az SSH alapértelmezés szerinti megoldás) bármilyen érvényes portszámot. A belső SSH-portszám 22-es értékre van állítva.
+* A hely által meghatározott Azure-régióban jön létre egy új felhőszolgáltatást. Adjon meg egy helyet, ahol a választott Virtuálisgép-méret érhető el, például "West US".
+* A SUSE elsőbbségi támogatás (amely keletkeznek többletköltségek) a SLES 12 lemezképnév jelenleg is lehet a lehetőségek közül, hogy rendelkezik `priority` a nevében, például: 
 
- `b4590d9e3ed742e4a1d46e5424aa335e__suse-sles-12-sp1-hpc-v20160824`
-
-  `b4590d9e3ed742e4a1d46e5424aa335e__suse-sles-12-sp1-hpc-priority-v20160824`
-
+ `b4590d9e3ed742e4a1d46e5424aa335e__suse-sles-12-sp3-hpc-priority-v20170913`
 
 ### <a name="customize-the-vm"></a>A virtuális gép testreszabása
-A virtuális gép befejeződése kiépítés, a virtuális gép külső IP-cím (vagy DNS-név) a virtuális gép SSH, és a külső portra a számát, és majd testreszabása után. Kapcsolat részletekért lásd: [Linuxot futtató virtuális gép bejelentkezés](../mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). Parancsok végrehajtása a felhasználó nevében, konfigurálta a virtuális Gépen, kivéve, ha a rendszergazdai hozzáférés szükséges egy lépés befejezéséhez.
+Miután a virtuális gép befejezte a kiépítést, a virtuális gép külső IP-cím (vagy DNS-név) használatával a virtuális gép ssh-KAPCSOLATOT, és a külső port számát konfigurált, és testre szabni. Kapcsolat részletek: [bejelentkezés egy Linux rendszerű virtuális gép](../mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). Hajtsa végre a parancsokat a felhasználó a virtuális gépen konfigurált, kivéve, ha egy lépés végrehajtásához szükséges rendszergazdai hozzáférés.
 
 > [!IMPORTANT]
-> A Microsoft Azure nem legfelső szintű hozzáférés biztosítása a Linux virtuális gépek. Ahhoz, hogy a rendszergazdai hozzáférés esetén a virtuális gép felhasználóként, futtassa a parancsokat `sudo`.
+> A Microsoft Azure nem biztosít a Linux rendszerű virtuális gépek rendszergazdai hozzáférés. Rendszergazdai hozzáférést, ha a felhasználót, hogy a virtuális Géphez csatlakoztatott futtassa a parancsokat `sudo`.
 >
 >
 
-* **Frissítések**: frissítések telepítése zypper használatával. Akkor is telepíteni szeretne NFS segédprogramok.
+* **Frissítések**: frissítések telepítése a zypper használatával. Érdemes azt is, NFS segédprogramok telepítése.
 
   > [!IMPORTANT]
-  > SLES 12 SP1 HPC virtuális gépen azt javasoljuk, hogy a rendszermag-frissítéseket, amelyek problémákat okozhatnak a Linux RDMA illesztőprogramok nem alkalmazza.
+  > A SLES 12 HPC virtuális gép azt javasoljuk, hogy a kernel-frissítéseket, amelyek akkor okozhat problémát és a Linux RDMA-illesztőprogramok nem alkalmazza.
   >
   >
-* **Intel MPI**: Intel MPI a SLES 12 SP1 HPC virtuális Gépre telepítése után a következő parancs futtatásával:
+* **Az Intel MPI**: a virtuális gép a Intel MPI telepítésének befejezéséhez az alábbi parancs futtatásával:
 
-        sudo rpm -v -i --nodeps /opt/intelMPI/intel_mpi_packages/*.rpm
-* **Memóriát zárolni**: A MPI kódok zárolni a rendelkezésre álló memória az RDMA, adja hozzá, vagy módosítsa a /etc/security/limits.conf fájlban a következő beállításokat. Ez a fájl szerkesztése legfelső szintű hozzáférés szükséges.
-
+    ```bash
+    sudo rpm -v -i --nodeps /opt/intelMPI/intel_mpi_packages/*.rpm
     ```
+
+* **Memóriát zárolni**: az MPI-kódok zárolni a rendelkezésre álló memória az rdma-t, adja hozzá, vagy módosítsa a /etc/security/limits.conf fájlban a következő beállításokat. Ez a fájl szerkesztése a legfelső szintű hozzáférésre van szüksége.
+
+    ```bash
     <User or group name> hard    memlock <memory required for your application in KB>
 
     <User or group name> soft    memlock <memory required for your application in KB>
     ```
 
   > [!NOTE]
-  > Tesztelési célokra is állíthatja memlock korlátlan. Például: `<User or group name>    hard    memlock unlimited`. További információkért lásd: [beállítás ismert legjobb módszerei zárolt memória mérete](https://software.intel.com/en-us/blogs/2014/12/16/best-known-methods-for-setting-locked-memory-size).
+  > Tesztelési célokra is beállíthat memlock korlátlan. Például: `* hard memlock unlimited`. További információkért lásd: [beállítás ismert legjobb módszerei zárolt memória mérete](https://software.intel.com/en-us/blogs/2014/12/16/best-known-methods-for-setting-locked-memory-size).
   >
   >
-* **SLES virtuális gépek SSH-kulcsok**: készítése SSH-kulcsok a felhasználói fiókhoz, a számítási csomópontok közötti megbízhatósági kapcsolat létrehozása az SLES a fürt MPI-feladatok futtatásakor. Ha telepítette a HPC CentOS-alapú virtuális gépek, ne ezt a lépést. Tekintse meg a passwordless SSH megbízhatóság kialakításához fürt csomópontjai között a lemezképet, és a fürt központi telepítése után a cikk útmutatást.
+* **SLES virtuális gépek SSH-kulcsok**: hozzon létre SSH-kulcsok a felhasználói fiókjához a számítási csomópontok közötti megbízhatósági kapcsolat létrehozása a a SLES-fürt MPI-feladatok futtatásakor. Ha telepítette a CentOS-alapú HPC virtuális gép, ne kövesse ezt a lépést. Tekintse meg az utasításokat a cikk későbbi részében az SSH-beállításának megbízhatósági kapcsolat a fürt csomópontjai között a lemezképet, és a fürt üzembe helyezése után.
 
-    SSH-kulcsok létrehozásához futtassa a következő parancsot. Amikor a bemeneti kéri, válassza ki **Enter** a kulcs létrehozásához az alapértelmezett helyen jelszó beállítása nélkül.
+  Az SSH-kulcsok létrehozásához futtassa a `ssh-keygen` parancsot. Amikor a bemeneti kéri, válassza ki a **Enter** a kulcsok létrehozásához az alapértelmezett hely a jelszó beállítása nélkül.
 
-        ssh-keygen
+  A nyilvános kulcsot a fájlhoz hozzáfűzni kívánt authorized_keys ismert nyilvános kulcsok.
 
-    A nyilvános kulcs hozzáfűzése ismert nyilvános kulcsok authorized_keys fájlhoz.
+  ```bash
+  cat ~/.ssh/id_rsa.pub >> ~/.ssh/authorized_keys
+  ```
 
-        cat ~/.ssh/id_rsa.pub >> ~/.ssh/authorized_keys
+  A ~/.ssh címtárban, szerkeszteni vagy létrehozni a `config` fájlt. Az IP-címtartományt a magánhálózati, amely az Azure-ban (ebben a példában 10.32.0.0/16) használatát tervezi, adja meg:
 
-    A ~/.ssh könyvtárban szerkesztheti, és a konfigurációs fájl létrehozása. Adja meg az IP-címtartományt, amely (ebben a példában 10.32.0.0/16) Azure-ban használni kívánt magánhálózat:
+  ```bash
+  host 10.32.0.*
+  StrictHostKeyChecking no
+  ```
 
-        host 10.32.0.*
-        StrictHostKeyChecking no
+  Másik lehetőségként a következőképpen listázhatja a fürt minden virtuális gép magánhálózati IP-címe:
 
-    Alternatív megoldásként listában az alábbiak szerint a fürt egyes virtuális gépek magánhálózati IP-címe:
-
-    ```
-    host 10.32.0.1
-     StrictHostKeyChecking no
-    host 10.32.0.2
-     StrictHostKeyChecking no
-    host 10.32.0.3
-     StrictHostKeyChecking no
-    ```
+  ```bash
+  host 10.32.0.1
+  StrictHostKeyChecking no
+  host 10.32.0.2
+  StrictHostKeyChecking no
+  host 10.32.0.3
+  StrictHostKeyChecking no
+  ...
+  ```
 
   > [!NOTE]
-  > Konfigurálás `StrictHostKeyChecking no` biztonsági kockázatot hozhat létre, ha egy adott IP-cím vagy a tartomány nincs megadva.
+  > Konfigurálás `StrictHostKeyChecking no` hozhat létre biztonsági kockázatot jelenthetnek, ha egy adott IP-cím vagy tartomány nincs megadva.
   >
   >
-* **Alkalmazások**: telepítse a szükséges, vagy hajtsa végre a más testreszabás is szerepelt, mielőtt a lemezképet rögzítené alkalmazásokat.
+* **Alkalmazások**: olyan alkalmazásokat van szüksége, vagy más testreszabás végrehajtása előtt rögzíti a lemezképet.
 
 ### <a name="capture-the-image"></a>A lemezkép rögzítése
-A lemezkép rögzítése, először futtassa a következő parancsot a Linux virtuális Gépet. Ezt a parancsot a virtuális gép deprovisions, de megőrzi a felhasználói fiókok és a beállított SSH-kulcsok.
+A lemezkép rögzítése, először futtassa a következő parancsot a Linux rendszerű virtuális gépen. Ez a parancs a virtuális gép deprovisions, de kezeli a felhasználói fiókok és az Ön által beállított SSH-kulcsokat.
 
-```
+```bash
 sudo waagent -deprovision
 ```
 
-Az ügyfélszámítógépről a következő parancsokat az Azure parancssori felület a lemezkép rögzítése. További információkért lásd: [rögzítése képként klasszikus Linuxos virtuális gép](capture-image-classic.md).  
+Az ügyfélszámítógépen futtassa a következő Azure CLI-parancsok lemezképének rögzítéséhez. További információkért lásd: [képként klasszikus Linuxos virtuális gép rögzítése](capture-image-classic.md).  
 
 ```
 azure vm shutdown <vm-name>
@@ -161,14 +166,14 @@ azure vm capture -t <vm-name> <image-name>
 
 ```
 
-Ezek a parancsok futtatása után a virtuális gép lemezképének rögzítése a használatra, és a virtuális gép törlődik. Most már rendelkezik egy fürt üzembe helyezésére az egyéni lemezképet.
+Ezek a parancsok futtatása után a virtuális gép lemezképének rögzítése a használatra, és a virtuális gép törlődik. Most már készen áll a fürt üzembe helyezése az egyéni rendszerkép.
 
-### <a name="deploy-a-cluster-with-the-image"></a>A lemezképpel fürt központi telepítése
-Módosítsa a következő Bash parancsfájlt a környezetének megfelelő értékekkel, és futtassa az ügyfélszámítógépről. Azure telepíti a virtuális gépek Feladattervek a klasszikus üzembe helyezési modellel, mert a nyolc A9 virtuális gépeket, javasolt ezt a parancsfájlt a telepítendő néhány percet vesz igénybe.
+### <a name="deploy-a-cluster-with-the-image"></a>A lemezkép-fürt üzembe helyezése
+Módosítsa az alábbi Bash-szkript a környezetének megfelelő értékekkel, és futtassa az ügyfélszámítógépről. Azure üzembe helyezte a virtuális gépek a klasszikus üzemi modellben tárolókonfigurációhoz, mert ez a szkript a javasolt nyolc a9-es virtuális gépek üzembe helyezése néhány percet vesz igénybe.
 
-```
+```bash
 #!/bin/bash -x
-# Script to create a compute cluster without a scheduler in a VNet in Azure
+# Script to create a compute cluster without a scheduler in a classic VNet in Azure
 # Create a custom private network in Azure
 # Replace 10.32.0.0 with your virtual network address space
 # Replace <network-name> with your network identifier
@@ -193,93 +198,97 @@ portnumber=101
 # In this cluster there will be 8 size A9 nodes, named cluster11 to cluster18. Specify your captured image in <image-name>. Specify the username and password you used when creating the SSH keys.
 
 for (( i=11; i<19; i++ )); do
-        azure vm create -g <username> -p <password> -c <cloud-service-name> -z A9 -n $vmname$i -e $portnumber$i -w <network-name> -b Subnet-1 <image-name>
+        azure vm create -g <username> -p <password> -c <cloud-service-name> -z A9 -n $vmname$i -e $portnumber$i -w <network-name> -b Subnet-1 <image-name>;
 done
 
 # Save this script with a name like makecluster.sh and run it in your shell environment to provision your cluster
 ```
 
-## <a name="considerations-for-a-centos-hpc-cluster"></a>A CentOS HPC-fürt szempontjai
-Ha be szeretné állítani a HPC egy SLES 12 helyett az Azure piactéren CentOS alapú HPC lemezképet alapján fürt, kövesse az előző szakaszban leírt általános lépéseket. Vegye figyelembe a következő eltérésekkel, telepítéséhez és a virtuális gép konfigurálása során:
+## <a name="considerations-for-a-centos-hpc-cluster"></a>CentOS HPC-fürt szempontjai
+Ha a fürt létrehozása HPC SLES 12 helyett az Azure piactéren a CentOS-alapú HPC-rendszerképeket alapján szeretné, kövesse az előző szakaszban általános lépéseket. Amikor először hozzon létre és konfigurálhatja a virtuális Gépet, vegye figyelembe a következő eltérésekkel:
 
-- Intel MPI már telepítve van a virtuális gép kiépítése a CentOS-alapú HPC-lemezkép.
-- Zárolási memóriabeállításait már kerülnek a virtuális gép /etc/security/limits.conf fájlban.
-- SSH-kulcsok a virtuális gép kiépítése a rögzítési nem hoznak létre. Ajánlja felhasználói hitelesítés beállítása a fürt telepítése után. További információkért lásd a következő.  
+- Az Intel MPI már telepítve van a CentOS-alapú HPC-lemezképből üzembe helyezett virtuális gépen.
+- Zárolási memóriabeállítások már jelentek meg a virtuális gép /etc/security/limits.conf fájlt.
+- SSH-kulcsokat a virtuális gép üzembe helyezésekor a rögzítés nem hoznak létre. Ehelyett azt javasoljuk, felhasználó-alapú hitelesítés beállítása a fürt üzembe helyezése után. További információkért tekintse meg a következő szakaszt.  
 
-### <a name="set-up-passwordless-ssh-trust-on-the-cluster"></a>A fürt passwordless SSH megbízhatóságának beállítása
-Egy CentOS-alapú HPC-fürtre, a számítási csomópontok közötti megbízhatósági kapcsolat létrehozásához két módszer áll rendelkezésre: állomás alapú hitelesítés és a felhasználó-alapú hitelesítés. Gazdagép-alapú hitelesítés Ez a cikk hatókörén kívül esik, és általában kell elvégezni egy bővítmény parancsfájl központi telepítése során. Felhasználó-alapú hitelesítés kényelmes, a telepítés után a megbízható kapcsolat kialakítása és a generáció és a fürt az SSH-kulcsok a számítási csomópontok közötti megosztásának igényel. Ezt a módszert gyakran nevezik passwordless SSH-bejelentkezéskor, és futó MPI-feladatok esetén szükséges.
+### <a name="set-up-passwordless-ssh-trust-on-the-cluster"></a>A fürt beállításának SSH bizalmi kapcsolat beállítása
+A CentOS-alapú HPC-fürt, a számítási csomópontok közötti megbízhatósági kapcsolat létrehozása két módszer van: gazdagép-alapú hitelesítés és a felhasználó-alapú hitelesítés. Gazdagép-alapú hitelesítés ebben a cikkben hatókörén kívül esik, és általában keresztül kell elvégezni egy bővítmény parancsfájl központi telepítése során. Felhasználó-alapú hitelesítés egy kényelmes megoldás az üzembe helyezés után a megbízhatósági kapcsolat létrehozása, és szükség van a létrehozása és a fürt SSH-kulcsokat a számítási csomópontok közötti megosztását. Ezt a módszert gyakran nevezik beállításának SSH-bejelentkezéskor, és akkor szükséges, ha az MPI-feladatok.
 
-Egy minta parancsfájlt a Közösségtől hozzájárult érhető el a [GitHub](https://github.com/tanewill/utils/blob/master/user_authentication.sh) CentOS-alapú HPC-fürt könnyen felhasználói hitelesítést. Töltse le és használja ezt a parancsfájlt a következő lépések segítségével. Módosítsa ezt a parancsfájlt vagy más módszerrel használatával szeretne létrehozni a számítási fürtcsomópontok közötti passwordless SSH hitelesítés is.
+Egy mintaszkriptet `user_authentication.sh` a CentOS-alapú HPC a felhasználó-alapú hitelesítés engedélyezése a következő fürtön:
 
-    wget https://raw.githubusercontent.com/tanewill/utils/master/user_authentication.sh
+```bash
+#!/bin/bash
+# For CentOS user must first install epel-release, sshpass, and nmap (sshpass and nmap are available from epel-release for CentOS)
 
-A parancsfájl futtatásához kell tudni, hogy az előtag, az alhálózati IP-címek számára. Az előtag lekérése a következő parancs futtatásával a fürtcsomópontok egyike. A kimeneti hasonlóan kell kinéznie 10.1.3.5, és az előtag a 10.1.3 részét.
+# usage ./user_authentication.sh [username] [password] [internalIP prefix]
+# ./user_authentication.sh azureuser Azure@123 10.32.0
+USER=$1
+PASS=$2
+IPPRE=$3
+HEADNODE=`hostname`
 
-    ifconfig eth0 | grep -w inet | awk '{print $2}'
+mkdir -p .ssh
+echo -e  'y\n' | ssh-keygen -f .ssh/id_rsa -t rsa -N ''
 
-Most futtassa a parancsfájl segítségével történő három paramétert: a közös felhasználónevet, a számítási csomópontokat, a számítási csomópontokat, és az alhálózati előtag, az előző parancs által visszaküldött közös jelszót.
+echo 'Host *' >> .ssh/config
+echo 'StrictHostKeyChecking no' >> .ssh/config
+chmod 400 .ssh/config
+chown azureuser:azureuser /home/azureuser/.ssh/config
 
-    ./user_authentication.sh <myusername> <mypassword> 10.1.3
+nmap -sn $IPPRE.* | grep $IPPRE. | awk '{print $5}' > nodeips.txt
+for NAME in `cat nodeips.txt`; do sshpass -p $PASS ssh -o ConnectTimeout=2 $USER@$NAME 'hostname' >> nodenames.txt;done
+
+NAMES=`cat nodenames.txt` #names from names.txt file
+for NAME in $NAMES; do
+    sshpass -p $PASS scp -o "StrictHostKeyChecking no" -o ConnectTimeout=2 /home/$USER/nodenames.txt $USER@$NAME:/home/$USER/
+    sshpass -p $PASS ssh -o ConnectTimeout=2 $USER@$NAME "mkdir .ssh && chmod 700 .ssh"
+    sshpass -p $PASS ssh -o ConnectTimeout=2 $USER@$NAME "echo -e  'y\n' | ssh-keygen -f .ssh/id_rsa -t rsa -N ''"
+    sshpass -p $PASS ssh -o ConnectTimeout=2 $USER@$NAME 'touch /home/'$USER'/.ssh/config'
+    sshpass -p $PASS ssh -o ConnectTimeout=2 $USER@$NAME 'echo "Host *" >  /home/'$USER'/.ssh/config'
+    sshpass -p $PASS ssh -o ConnectTimeout=2 $USER@$NAME 'echo StrictHostKeyChecking no >> /home/'$USER'/.ssh/config'
+    sshpass -p $PASS ssh -o ConnectTimeout=2 $USER@$NAME 'chmod 400 /home/'$USER'/.ssh/config'
+    cat .ssh/id_rsa.pub | sshpass -p $PASS ssh -o ConnectTimeout=2 $USER@$NAME 'cat >> .ssh/authorized_keys'
+    sshpass -p $PASS scp -o "StrictHostKeyChecking no" -o ConnectTimeout=2 $USER@$NAME:/home/$USER/.ssh/id_rsa.pub .ssh/sub_node.pub
+
+    for SUBNODE in `cat nodeips.txt`; do
+         sshpass -p $PASS ssh -o ConnectTimeout=2 $USER@$SUBNODE 'mkdir -p .ssh'
+         cat .ssh/sub_node.pub | sshpass -p $PASS ssh -o ConnectTimeout=2 $USER@$SUBNODE 'cat >> .ssh/authorized_keys'
+    done
+    sshpass -p $PASS ssh -o ConnectTimeout=2 $USER@$NAME 'chmod 700 .ssh/'
+    sshpass -p $PASS ssh -o ConnectTimeout=2 $USER@$NAME 'chmod 640 .ssh/authorized_keys'
+done
+```
+
+Ez a szkript futtatásához az alábbi lépések segítségével. Ez a szkript módosíthatja vagy használjon másik módszert létesíteni beállításának SSH-hitelesítést a fürt számítási csomópontjai között is.
+
+A parancsfájl futtatásához, akkor ismernie kell az előtag, az alhálózati IP-cím. Az előtag lekéréséhez futtassa a következő parancsot a fürtcsomópontok egyike. A kimeneti hasonlóan kell kinéznie 10.1.3.5, és az előtag a 10.1.3 részét.
+
+```bash
+ifconfig eth0 | grep -w inet | awk '{print $2}'
+```
+
+Most futtassa a szkriptet három paraméter használatával: a gyakori felhasználónevet, a számítási csomópontokon, a számítási csomópontokat, és az alhálózati előtag, az előző parancs által visszaadott felhasználóhoz tartozó gyakori jelszavát.
+
+```bash
+./user_authentication.sh <myusername> <mypassword> 10.1.3
+```
 
 A parancsfájl a következő műveleteket hajtja végre:
 
-* A gazdacsomópont nevű .ssh, ami azonban szükséges az passwordless bejelentkezési hoz létre egy könyvtárat.
-* Létrehoz egy konfigurációs fájlt a .ssh könyvtárban, amely arra utasítja a fürt minden csomópontján bejelentkezési engedélyezése passwordless bejelentkezni.
-* A csomópont nevét és a fürt összes csomópontjának csomópont IP-címet tartalmazó fájlokat hozza létre. Ezek a fájlok megmaradnak a későbbi felhasználás a parancsfájl futtatása után.
-* A privát és nyilvános kulcsból álló kulcspárt a fürt minden csomópontján (beleértve a gazdacsomópont) hoz létre, és létrehozza a bejegyzéseket a authorized_keys fájlba.
+* A gazdacsomópont nevű .ssh, amelyre szükség az beállításának bejelentkezési hoz létre egy könyvtárat.
+* Létrehoz egy konfigurációs fájlt, amely arra utasítja, hogy a bejelentkezés bármely olyan csomópontról a fürt beállításának bejelentkezési .ssh könyvtárában.
+* A csomópont nevét és a csomópont IP-címeket a fürt összes csomópontja tartalmazó fájlokat hoz létre. Ezeket a fájlokat a későbbi felhasználás céljából a szkript futtatása után van hátra.
+* Létrehoz egy nyilvános és titkos kulcspárt a fürt minden csomópontján (beleértve a gazdacsomópont), és bejegyzést hoz létre a authorized_keys fájlba.
 
 > [!WARNING]
-> A parancsfájl futtatása, biztonsági kockázatot is létrehozhat. Győződjön meg arról, hogy a nyilvános kulcs információja ~/.ssh nem terjesztése.
+> A parancsfájl futtatása, biztonsági kockázatot is létrehozhat. Győződjön meg arról, hogy a nyilvánoskulcs-adatait a ~/.ssh nem elosztott.
 >
->
 
-## <a name="configure-intel-mpi"></a>Intel MPI konfigurálása
-MPI alkalmazások futtatásához Azure Linux RDMA szüksége konfigurálása bizonyos Intel MPI vonatkozó környezeti változókat. Íme egy minta Bash parancsfájl konfigurálása a változókat, az alkalmazás futtatásához szükséges. Intel MPI-példány igény szerint módosítsa az elérési utat mpivars.sh.
+## <a name="run-mpi-on-a-basic-two-node-cluster"></a>Alapszintű két csomópontos fürt MPI futtatása
+Ha ezt még nem tette meg, először állítsa be a környezetet az Intel MPI-t.
 
-```
-#!/bin/bash -x
-
-# For a SLES 12 SP1 HPC cluster
-
-source /opt/intel/impi/5.0.3.048/bin64/mpivars.sh
-
-# For a CentOS-based HPC cluster
-
-# source /opt/intel/impi/5.1.3.181/bin64/mpivars.sh
-
-export I_MPI_FABRICS=shm:dapl
-
-# THIS IS A MANDATORY ENVIRONMENT VARIABLE AND MUST BE SET BEFORE RUNNING ANY JOB
-# Setting the variable to shm:dapl gives best performance for some applications
-# If your application doesn’t take advantage of shared memory and MPI together, then set only dapl
-
-export I_MPI_DAPL_PROVIDER=ofa-v2-ib0
-
-# THIS IS A MANDATORY ENVIRONMENT VARIABLE AND MUST BE SET BEFORE RUNNING ANY JOB
-
-export I_MPI_DYNAMIC_CONNECTION=0
-
-# THIS IS A MANDATORY ENVIRONMENT VARIABLE AND MUST BE SET BEFORE RUNNING ANY JOB
-
-# Command line to run the job
-
-mpirun -n <number-of-cores> -ppn <core-per-node> -hostfile <hostfilename>  /path <path to the application exe> <arguments specific to the application>
-
-#end
-```
-
-A Hosts fájl formátuma a következő. Adja hozzá az egyes csomópontok egy sort a fürtön. Adja meg a korábban, nem a DNS-nevek meghatározott privát IP-címek a virtuális hálózati. Például a két gazdagépek 10.32.0.1 és 10.32.0.2 IP-címekkel rendelkező, a fájl tartalmazza a következő:
-
-```
-10.32.0.1:16
-10.32.0.2:16
-```
-
-## <a name="run-mpi-on-a-basic-two-node-cluster"></a>MPI futtatnak egy alapszintű két csomópontot tartalmazó fürtben
-Ha még nem tette meg, először állítsa be a környezetet az Intel MPI.
-
-```
-# For a SLES 12 SP1 HPC cluster
+```bash
+# For a SLES 12 HPC cluster
 
 source /opt/intel/impi/5.0.3.048/bin64/mpivars.sh
 
@@ -288,33 +297,33 @@ source /opt/intel/impi/5.0.3.048/bin64/mpivars.sh
 # source /opt/intel/impi/5.1.3.181/bin64/mpivars.sh
 ```
 
-### <a name="run-an-mpi-command"></a>Egy MPI parancs futtatása
-Egy MPI paranccsal jelenítse meg, hogy MPI megfelelően van telepítve, és képes kommunikálni a közötti legalább két számítási csomópontjain a számítási csomópontok egyikén. A következő **mpirun** parancs elindul a **állomásnév** két csomópont parancs.
+### <a name="run-an-mpi-command"></a>Az MPI-parancs futtatása
+Az egyik a számítási csomópontokat, hogy MPI megfelelően van telepítve, és kommunikálhat között legalább két számítási csomópontok egy MPI parancsot tartalmazza. A következő **mpirun** futtatása paranccsal a **állomásnév** két csomópont parancsot. Az a `-hosts` paraméterben adja át az IP-címek két csomópontot az Azure virtuális hálózat (például 10.32.0.4,10.32.0.5).
 
-```
+```bash
 mpirun -ppn 1 -n 2 -hosts <host1>,<host2> -env I_MPI_FABRICS=shm:dapl -env I_MPI_DAPL_PROVIDER=ofa-v2-ib0 -env I_MPI_DYNAMIC_CONNECTION=0 hostname
 ```
-A kimenetében csomópontjaihoz bemenetként továbbított nevei `-hosts`. Például egy **mpirun** két csomóponttal rendelkező parancs kimenetét a következő adja vissza:
+A kimeneti felsorolásban szerepelnie kell a nevek az összes olyan csomópontot, amely bemenetként átadott `-hosts`. Ha például egy **mpirun** két csomópont parancs kimenete az alábbihoz hasonló:
 
 ```
 cluster11
 cluster12
 ```
 
-### <a name="run-an-mpi-benchmark"></a>Egy MPI teljesítményteszt futtatása
-A következő Intel MPI parancs fut egy pingpong javasolt fürtkonfiguráció és az RDMA hálózati kapcsolat ellenőrzése.
+### <a name="run-an-mpi-benchmark"></a>Futtassa az MPI-teljesítményteszt
+A következő Intel MPI-parancs futtatása egy pingpong teljesítményteszt, ellenőrizze a fürt konfigurációját, valamint az RDMA hálózati kapcsolat.
 
-```
+```bash
 mpirun -hosts <host1>,<host2> -ppn 1 -n 2 -env I_MPI_FABRICS=shm:dapl -env I_MPI_DAPL_PROVIDER=ofa-v2-ib0 -env I_MPI_DYNAMIC_CONNECTION=0 IMB-MPI1 pingpong
 ```
 
-Működő rendelkező fürtön két csomópont a következőhöz hasonló kimenetnek kell megjelennie. A Azure RDMA hálózati késés, vagy az üzenet 3 ezredmásodperc alatt legfeljebb 512 bájt méretű várt.
+Egy működő fürtöt két csomóponttal, a kimenetnek kell megjelennie a következőhöz hasonló. Az Azure RDMA hálózati vagy az üzenet 3 mikroszekundum alatti késést mérete legfeljebb 512 bájt várható.
 
 ```
 #------------------------------------------------------------
 #    Intel (R) MPI Benchmarks 4.0 Update 1, MPI-1 part
 #------------------------------------------------------------
-# Date                  : Fri Jul 17 23:16:46 2015
+# Date                  : Fri Jul 6 17:16:46 2018
 # Machine               : x86_64
 # System                : Linux
 # Release               : 3.12.39-44-default
@@ -373,10 +382,50 @@ Működő rendelkező fürtön két csomópont a következőhöz hasonló kimene
 # All processes entering MPI_Finalize
 
 ```
+### <a name="sample-mpi-run-script"></a>Minta MPI-parancsfájl futtatása
+Íme egy Bash-mintaszkript MPI-alkalmazások futtatásához szükséges változók konfigurálásához. Módosítsa az elérési útját `mpivars.sh` Intel MPI-példány igény szerint.
 
+```bash
+#!/bin/bash -x
+
+# For a SLES 12 HPC cluster
+
+source /opt/intel/impi/5.0.3.048/bin64/mpivars.sh
+
+# For a CentOS-based HPC cluster
+
+# source /opt/intel/impi/5.1.3.181/bin64/mpivars.sh
+
+export I_MPI_FABRICS=shm:dapl
+
+# THIS IS A MANDATORY ENVIRONMENT VARIABLE AND MUST BE SET BEFORE RUNNING ANY JOB
+# Setting the variable to shm:dapl gives best performance for some applications
+# If your application doesn’t take advantage of shared memory and MPI together, then set only dapl
+
+export I_MPI_DAPL_PROVIDER=ofa-v2-ib0
+
+# THIS IS A MANDATORY ENVIRONMENT VARIABLE AND MUST BE SET BEFORE RUNNING ANY JOB
+
+export I_MPI_DYNAMIC_CONNECTION=0
+
+# THIS IS A MANDATORY ENVIRONMENT VARIABLE AND MUST BE SET BEFORE RUNNING ANY JOB
+
+# Command line to run the MPI job. Substitute with values appropriate for your application.
+
+mpirun -n <number-of-cores> -ppn <core-per-node> -hostfile <hostfilename>  /path <path to the application exe> <arguments specific to the application>
+
+#end
+```
+
+A Hosts fájl formátuma a következő. Adjon hozzá egy sor minden egyes csomópont esetében a fürtben. Adja meg a korábban, nem a DNS-nevek meghatározott privát IP-címeket a virtuális hálózatról. Ha például két gazdagépek 10.32.0.4 és 10.32.0.4 IP-címekkel rendelkező, a fájl a következőket tartalmazza:
+
+```bash
+10.32.0.4:16
+10.32.0.5:16
+```
 
 
 ## <a name="next-steps"></a>További lépések
-* Regisztrálhat és futtathat a Linux MPI alkalmazások a Linux-fürt.
-* Tekintse meg a [Intel MPI Library dokumentációjában](https://software.intel.com/en-us/articles/intel-mpi-library-documentation/) Intel MPI útmutatót.
-* Próbálja meg egy [gyorsindítási sablonon](https://github.com/Azure/azure-quickstart-templates/tree/master/intel-lustre-clients-on-centos) HPC CentOS-alapú lemezkép használatával az Intel fényesség fürt létrehozásához. További információkért lásd: [Intel felhő Edition telepítését a Microsoft Azure fényesség](https://blogs.msdn.microsoft.com/arsen/2015/10/29/deploying-intel-cloud-edition-for-lustre-on-microsoft-azure/).
+* Üzembe helyezése, és a Linux MPI alkalmazások futtatása a Linux-fürtön.
+* Tekintse meg a [Intel MPI Library dokumentációjában](https://software.intel.com/en-us/articles/intel-mpi-library-documentation/) útmutató az Intel MPI-t.
+* Próbálja ki egy [gyorsindítási sablon](https://github.com/Azure/azure-quickstart-templates/tree/master/intel-lustre-clients-on-centos) egy Intel Lustre fürt létrehozása HPC CentOS-alapú lemezkép használatával. 

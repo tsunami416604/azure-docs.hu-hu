@@ -9,16 +9,16 @@ services: iot-edge
 ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: kgremban
-ms.openlocfilehash: 3d34628a5a47788bca8cdafcb6e199a0c2cb3bcc
-ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
+ms.openlocfilehash: 18a1481b72904b0ac9c27e100271dc0fd0666baf
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37437841"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39001762"
 ---
 # <a name="install-azure-iot-edge-runtime-on-windows-to-use-with-windows-containers"></a>Az Azure IoT Edge-futtatókörnyezet telepíthető Windows használható a Windows-tárolókkal
 
-Az Azure IoT Edge-futtatókörnyezet minden IoT Edge-eszközön van telepítve. Három összetevőt tartalmaz. A **IoT Edge biztonsági démon** biztosít, és fenntartja az Edge-eszközön a biztonsági követelményeknek. A démon a naplózásra kerül minden rendszerindításkor elindul, és csatlakoztatja az eszközt az IoT Edge-ügynök elindításával. A **IoT Edge-ügynök** elősegíti a központi telepítési és figyelési modulja a peremhálózati eszközön, beleértve az IoT Edge hubot. Az **IoT Edge-központ** az IoT Edge-eszközön lévő modulok, valamint az eszköz és az IoT Hub közötti kommunikációt kezeli.
+Az Azure IoT Edge-futtatókörnyezet minden IoT Edge-eszközön van telepítve. Három összetevőből áll. A **IoT Edge biztonsági démon** biztosít, és fenntartja az Edge-eszközön a biztonsági követelményeknek. A démon a naplózásra kerül minden rendszerindításkor elindul, és csatlakoztatja az eszközt az IoT Edge-ügynök elindításával. A **IoT Edge-ügynök** elősegíti a központi telepítési és figyelési modulja a peremhálózati eszközön, beleértve az IoT Edge hubot. Az **IoT Edge-központ** az IoT Edge-eszközön lévő modulok, valamint az eszköz és az IoT Hub közötti kommunikációt kezeli.
 
 Ez a cikk felsorolja a lépéseket az Azure IoT Edge-futtatókörnyezet telepítéséhez a Windows x64 (Intel vagy AMD) a rendszer. 
 
@@ -52,8 +52,9 @@ Invoke-WebRequest https://aka.ms/iotedged-windows-latest -o .\iotedged-windows.z
 Expand-Archive .\iotedged-windows.zip C:\ProgramData\iotedge -f
 Move-Item c:\ProgramData\iotedge\iotedged-windows\* C:\ProgramData\iotedge\ -Force
 rmdir C:\ProgramData\iotedge\iotedged-windows
-$env:Path += ";C:\ProgramData\iotedge"
-SETX /M PATH "$env:Path"
+$sysenv = "HKLM:\SYSTEM\CurrentControlSet\Control\Session Manager\Environment"
+$path = (Get-ItemProperty -Path $sysenv -Name Path).Path + ";C:\ProgramData\iotedge"
+Set-ItemProperty -Path $sysenv -Name Path -Value $path
 ```
 
 Telepítse a (ezt a lépést kihagyhatja az Edge-eszköz IoT core) használatával vcruntime:
@@ -142,7 +143,7 @@ Adja meg az IP-cím lekéréséhez `ipconfig` a PowerShell-ablakban, és másolj
 
 ![nat][img-nat]
 
-Frissítés a **workload_uri** és **management_uri** a a **csatlakoztatása:** szakaszában a konfigurációs fájlban. Cserélje le **\<GATEWAY_ADDRESS\>** másolt IP-címmel. 
+Frissítés a **workload_uri** és **management_uri** a a **csatlakoztatása:** szakaszában a konfigurációs fájlban. Cserélje le **\<GATEWAY_ADDRESS\>** másolt vEthernet IP-címét.
 
 ```yaml
 connect:
@@ -150,7 +151,7 @@ connect:
   workload_uri: "http://<GATEWAY_ADDRESS>:15581"
 ```
 
-Adja meg ugyanazt a címet, az a **figyelni:** szakaszában a konfigurációt, az átjáró-címet az IP-cím használatával.
+Adja meg ugyanazt a címet, az a **figyelni:** szakaszban.
 
 ```yaml
 listen:
@@ -164,7 +165,7 @@ A PowerShell ablakában hozzon létre egy környezeti változó **IOTEDGE_HOST**
 [Environment]::SetEnvironmentVariable("IOTEDGE_HOST", "http://<GATEWAY_ADDRESS>:15580")
 ```
 
-A környezeti változó megőrzése újraindítások között.
+Őrizze meg a környezeti változót az újraindítások között.
 
 ```powershell
 SETX /M IOTEDGE_HOST "http://<GATEWAY_ADDRESS>:15580"

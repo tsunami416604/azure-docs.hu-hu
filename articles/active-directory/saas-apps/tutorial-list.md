@@ -16,12 +16,12 @@ ms.date: 07/09/2018
 ms.author: markvi
 ms.custom: it-pro
 ms.reviewer: jeedes
-ms.openlocfilehash: e9bd1f91f7e7fac1b882c89ffb2195491ca2c07b
-ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
+ms.openlocfilehash: bbbfc495f1ec262ccc067f3cd00b75e1a3e0c178
+ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37929933"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38990193"
 ---
 # <a name="saas-application-integration-with-azure-active-directory"></a>SaaS-alkalmazás integráció az Azure Active Directoryval
 
@@ -109,7 +109,7 @@ Hol vannak üzembe helyezési útmutató felhasználó, az oktatóanyag az felha
 | ![embléma](./media/tutorial-list/active-directory-saas-blackboard-learn-shibboleth-tutorial.png)| [További Antik - Shibboleth](blackboard-learn-shibboleth-tutorial.md)|
 | ![embléma](./media/tutorial-list/active-directory-saas-bluejeans-tutorial.png)| [BlueJeans](bluejeans-tutorial.md)|[BlueJeans - felhasználók átadása](bluejeans-provisioning-tutorial.md)|
 | ![embléma](./media/tutorial-list/active-directory-saas-bomgarremotesupport-tutorial.png)| [Bomgar távoli támogatása](bomgarremotesupport-tutorial.md)|
-| ![embléma](./media/tutorial-list/active-directory-saas-bonus-tutorial.png)| [Bonusly](bonus-tutorial.md)|
+| ![embléma](./media/tutorial-list/active-directory-saas-bonus-tutorial.png)| [Bonusly](bonus-tutorial.md)|[Bonusly - felhasználók átadása](bonusly-provisioning-tutorial.md)
 | ![embléma](./media/tutorial-list/active-directory-saas-boomi-tutorial.png)| [Boomi](boomi-tutorial.md)|
 | ![embléma](./media/tutorial-list/active-directory-saas-box-tutorial.png)| [Box](box-tutorial.md)| [Box - felhasználók átadása](box-userprovisioning-tutorial.md)|
 | ![embléma](./media/tutorial-list/active-directory-saas-boxcryptor-tutorial.png)| [Boxcryptor](boxcryptor-tutorial.md)|
@@ -139,7 +139,7 @@ Hol vannak üzembe helyezési útmutató felhasználó, az oktatóanyag az felha
 | ![embléma](./media/tutorial-list/active-directory-saas-ciscocloud-tutorial.png)| [Cisco felhő](ciscocloud-tutorial.md)|
 | ![embléma](./media/tutorial-list/active-directory-saas-ciscocloudlock-tutorial.png)| [Cisco Cloudlock](ciscocloudlock-tutorial.md)|
 | ![embléma](./media/tutorial-list/active-directory-saas-cisco-spark-tutorial.png)| [Cisco Spark](cisco-spark-tutorial.md)|[Cisco Spark - felhasználók átadása](cisco-spark-provisioning-tutorial.md)|
-| ![embléma](./media/tutorial-list/active-directory-saas-cisco-webex-tutorial.png)| [Cisco Webex](cisco-webex-tutorial.md)|[Cisco Webex - felhasználók átadása](cisco-webex-provisioning-tutorial.md)|
+| ![embléma](./media/tutorial-list/active-directory-saas-cisco-webex-tutorial.png)| [Cisco Webex](cisco-webex-tutorial.md)|)|[Cisco Webex - felhasználók átadása](cisco-webex-provisioning-tutorial.md)|
 | ![embléma](./media/tutorial-list/active-directory-saas-sharefile-tutorial.png)| [A Citrix ShareFile](sharefile-tutorial.md)|
 | ![embléma](./media/tutorial-list/active-directory-saas-clarizen-tutorial.png)| [Clarizen](clarizen-tutorial.md)|[Clarizen - felhasználók átadása](clarizen-provisioning-tutorial.md)|
 | ![embléma](./media/tutorial-list/active-directory-saas-clearreview-tutorial.png)| [Felülvizsgálat törlése](clearreview-tutorial.md)|
@@ -178,7 +178,7 @@ Hol vannak üzembe helyezési útmutató felhasználó, az oktatóanyag az felha
 | ![embléma](./media/tutorial-list/active-directory-saas-dome9arc-tutorial.png)| [Dome9 ív](dome9arc-tutorial.md)|
 | ![embléma](./media/tutorial-list/active-directory-saas-domo-tutorial.png)| [Domo](domo-tutorial.md)|
 | ![embléma](./media/tutorial-list/active-directory-saas-dowjones-factiva-tutorial.png)| [Dő Jones Factiva](dowjones-factiva-tutorial.md)|
-| ![embléma](./media/tutorial-list/active-directory-saas-dropboxforbusiness-tutorial.png)| [Dropbox Business](dropboxforbusiness-tutorial.md)| [Dropbox Business - felhasználók átadása](dropboxforbusiness-provisioning-tutorial.md)|
+| ![embléma](./media/tutorial-list/active-directory-saas-dropboxforbusiness-tutorial.png)| [Dropbox Business](dropboxforbusiness-tutorial.md)| [Dropbox Business - felhasználók átadása](dropboxforbusiness-provisioning-tutorial.md)| 
 | ![embléma](./media/tutorial-list/active-directory-saas-druva-tutorial.png)| [Druva](druva-tutorial.md)|
 | ![embléma](./media/tutorial-list/active-directory-saas-dynamicsignal-tutorial.png)| [A dinamikus jel](dynamicsignal-tutorial.md)|
 | ![embléma](./media/tutorial-list/active-directory-saas-easyterritory-tutorial.png)| [EasyTerritory](easyterritory-tutorial.md)|

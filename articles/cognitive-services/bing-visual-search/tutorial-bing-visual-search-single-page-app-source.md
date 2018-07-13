@@ -1,7 +1,7 @@
 ---
-title: Bing kép keresési egyoldalas webalkalmazást (forráskód) |} Microsoft Docs
+title: A Bing Visual Search egyoldalas webalkalmazást (forráskód) |} A Microsoft Docs
 titleSuffix: Bing Web Search APIs - Cognitive Services
-description: Az oktatóanyag bemutatja, hogyan használja a kép Bing keresési API egy egyoldalas webalkalmazást forráskódja.
+description: A Bing Visual Search API használata egy egyoldalas webalkalmazást a bemutató oktatóanyag forráskódját.
 services: cognitive-services
 author: v-jerkin
 manager: ehansen
@@ -10,16 +10,16 @@ ms.component: bing-image-search
 ms.topic: article
 ms.date: 10/04/2017
 ms.author: v-jerkin
-ms.openlocfilehash: 636b809a1018a79f5ddd0e6d5ee91b0c34d01552
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 9b6164b811f897ec5cd8a67d27d3aa4f3d250f2e
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35348706"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39002592"
 ---
-# <a name="tutorial-visual-search-single-page-web-app"></a>Oktatóanyag: Visual keresési egyoldalas webalkalmazás
+# <a name="tutorial-visual-search-single-page-web-app"></a>Oktatóanyag: Egyoldalas vizuális keresés webalkalmazás
 
-Ez az a teljes forráskód ismertet a [Visual keresési egyoldalas webalkalmazást](tutorial-bing-visual-search-single-page-app.md) oktatóanyag Bing Visual kereséshez. Az alkalmazás futtatásához, a forrás kódot bemásolhatja a Jegyzettömbben vagy más szövegszerkesztőben, és mentse a fájt `bing-visual-search.html`. Ezután nyissa meg a mentett fájlt a Microsoft Edge vagy egy másik népszerű böngésző.
+Ez az a teljes forráskódot tárgyalt a [vizuális keresés egyoldalas webalkalmazást](tutorial-bing-visual-search-single-page-app.md) oktatóanyag, a Bing Visual search. Az alkalmazás futtatásához, a forráskód másolja a Jegyzettömbbe vagy más szövegszerkesztőben, és mentse `bing-visual-search.html`. Ezután nyissa meg a mentett fájlt a Microsoft Edge vagy más népszerű böngésző.
 
 ```html
 <!DOCTYPE html>
@@ -113,7 +113,7 @@ try {
 function getSubscriptionKey() {
     var key = retrieveValue(API_KEY_COOKIE);
     while (key.length !== 32) {
-        key = prompt("Enter Bing Search API subscription key:", "").trim();
+        key = prompt("Enter Bing Image Search API subscription key:", "").trim();
     }
     // always set the cookie in order to update the expiration date
     storeValue(API_KEY_COOKIE, key);
@@ -131,7 +131,7 @@ function escape(text) {
         replace(/'/g, "&apos;").replace(/"/g, "&quot;");
 }
 
-// get the host portion of a URL, strpping out search result formatting and www too
+// get the host portion of a URL, stripping out search result formatting and www too
 function getHost(url) {
     return url.replace(/<\/?b>/g, "").replace(/^https?:\/\//, "").split("/")[0].replace(/^www\./, "");
 }
@@ -270,7 +270,7 @@ function handleBingResponse() {
         // 401 is unauthorized; force re-prompt for API key for next request
         if (this.status === 401) invalidateSubscriptionKey();
 
-        // some error responses don't have a top-level errors object, so gin one up
+        // some error responses don't have a top-level errors object
         var errors = jsobj.errors || [jsobj];
         var errmsg = [];
 

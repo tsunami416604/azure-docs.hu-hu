@@ -1,6 +1,6 @@
 ---
-title: Csak idő virtuális gép férnek hozzá az Azure Security Centerben |} Microsoft Docs
-description: Ez a dokumentum azt mutatja be, hogyan igény szerint VM hozzáférés az Azure Security Center segítséget nyújt az Azure virtuális gépeken való hozzáférés szabályozása.
+title: Csak az idő a virtuális gép eléréséhez az Azure Security Centerben |} A Microsoft Docs
+description: Ez a dokumentum azt ismerteti, hogyan igény szerint Virtuálisgép-hozzáférés az Azure Security Center segít az Azure virtuális gépekhez való hozzáférés vezérlése.
 services: security-center
 documentationcenter: na
 author: TerryLanfear
@@ -12,188 +12,188 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/04/2018
+ms.date: 07/10/2018
 ms.author: terrylan
-ms.openlocfilehash: 60a5de16f4146e112a85d74634c662e228a0854f
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 288524e58efd64670df098f249f3ad0b1cca464c
+ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34640557"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38990578"
 ---
-# <a name="manage-virtual-machine-access-using-just-in-time"></a>JIT-virtuális gép hozzáférés kezelése
+# <a name="manage-virtual-machine-access-using-just-in-time"></a>Igény szerint virtuálisgép-hozzáférés kezelése
 
-Csak az idő a virtuális gép (VM) hozzáférés segítségével az Azure virtuális gépeken, támadásoknak való kitettség csökkentése során könnyen hozzá lehet férni a virtuális gépekhez, szükség esetén csatlakoztassa a bejövő forgalom zárolását.
+Csak az idő a virtuális gép (VM) hozzáférés segítségével zárolását, így az Azure virtuális gépekre, csökkentve a támadásokkal szembeni sérülékenységet ugyanakkor könnyű hozzáférést biztosít arra, hogy szükség esetén a virtuális gépekhez csatlakozhat a bejövő forgalmat.
 
 > [!NOTE]
-> A csak időbeli funkció érhető el a Security Center Standard csomagra.  A Security Center tarifacsomagjaival kapcsolatos további információért lásd a [díjszabást](security-center-pricing.md).
+> Az igény szerinti funkció érhető el a Standard szintű, a Security Center.  A Security Center tarifacsomagjaival kapcsolatos további információért lásd a [díjszabást](security-center-pricing.md).
 >
 >
 
 ## <a name="attack-scenario"></a>Támadás
 
-Találgatásos támadások gyakran felügyeleti célportjainak jelentkezhessenek be a virtuális gépek eléréséhez. Ha sikeres, a támadó ellenőrzése alatt tartja a virtuális gép igénybe, és egy foothold létesíteni a környezetbe.
+Találgatásos támadások, gyakran cél felügyeleti portokhoz való hozzáférést egy virtuális géphez. Sikeres, ha egy támadó irányítását a virtuális gép felett, és egy foothold létesíteni a saját környezetben.
 
-Egy találgatásos támadással való kitettség csökkentése érdekében módja az, hogy mennyi ideig legyen egy nyitott port korlátozza. A felügyeleti portoknak nem kell mindig nyitva lenniük. Csak addig kell nyitva lenniük, amíg Ön csatlakozik a virtuális géphez, például azért, hogy felügyeleti vagy karbantartási feladatokat végezzen. Amikor a JIT engedélyezve van, a Security Center az [hálózati biztonsági csoport](../virtual-network/security-overview.md#security-rules) (NSG) szabályok, amelyek felügyelet portjai való hozzáférés korlátozása, így nem tudja megcélozni a támadók.
+Találgatásos támadás való kitettség csökkentése érdekében egyik módja, hogy korlátozza, ameddig egy port nyitva. A felügyeleti portoknak nem kell mindig nyitva lenniük. Csak addig kell nyitva lenniük, amíg Ön csatlakozik a virtuális géphez, például azért, hogy felügyeleti vagy karbantartási feladatokat végezzen. JIT engedélyezése esetén a Security Center használ [hálózati biztonsági csoport](../virtual-network/security-overview.md#security-rules) (NSG) szabályok, amelyek a felügyeleti portokhoz való hozzáférés korlátozása, így a támadók tudják célba.
 
-![Csak az idő forgatókönyv][1]
+![Csak az idő a forgatókönyv][1]
 
 ## <a name="how-does-just-in-time-access-work"></a>Hogyan csak az idő access működik?
 
-Ha az igény szerinti hozzáférés engedélyezve van, a Security Center minden, az Azure-beli virtuális gépekre érkező forgalmat zárol egy NSG-szabály létrehozásával. Kiválaszthatja a a virtuális Gépre, amelyre a bejövő forgalom lesz zárolva. Ezeket a portokat szabályozzák az imént idő megoldásban.
+Ha az igény szerinti hozzáférés engedélyezve van, a Security Center minden, az Azure-beli virtuális gépekre érkező forgalmat zárol egy NSG-szabály létrehozásával. Kiválaszthatja a portokat a virtuális gépen, amelyre a bejövő forgalom lesz zárolva. Ezeket a portokat szabályozza az igény szerinti megoldást.
 
-Amikor egy felhasználó egy virtuális Géphez való hozzáférést igényel, a Security Center ellenőrzi, hogy a felhasználó rendelkezik-e [szerepköralapú hozzáférés-vezérlést (RBAC)](../role-based-access-control/role-assignments-portal.md) írási hozzáférést biztosítson a virtuális gép az engedélyeket. Ha írási engedélyek lettek, a kérelem jóváhagyása és a Security Center automatikusan konfigurálja a hálózati biztonsági csoportok (NSG-k) a kijelölt porton ennyi ideig bejövő adatforgalom engedélyezésére adott meg. Az időszak lejárta után a Security Center az NSG-ket visszaállítja korábbi állapotába. Ezeket a kapcsolatokat, korábban már létrehozott nem alatt szakadnak meg, azonban.
+Amikor egy felhasználó egy virtuális Géphez való hozzáférés, a Security Center ellenőrzi, hogy a felhasználó rendelkezik-e [szerepköralapú hozzáférés-vezérlés (RBAC)](../role-based-access-control/role-assignments-portal.md) , amely írási hozzáférést nyújt a virtuális gép engedélyeit. Írási engedéllyel rendelkeznek, a kérés jóváhagyást, és a Security Center automatikusan konfigurálja a hálózati biztonsági csoportok (NSG-k) a kijelölt porton ennyi ideig forgalom engedélyezéséhez. a megadott. Az időszak lejárta után a Security Center visszaállítja az NSG-k korábbi állapotába. Ezeket a kapcsolatokat korábban már létrehozott nem folyamatban szakadnak meg, azonban.
 
 > [!NOTE]
-> Biztonsági központ csak a virtuális gép elérhető jelenleg csak virtuális gépek Azure Resource Manager használatával telepített. Ismerje meg, a klasszikus és Resource Manager üzembe helyezési modellel kapcsolatos információkért tekintse meg a [Azure Resource Manager és klasszikus üzembe helyezési](../azure-resource-manager/resource-manager-deployment-model.md).
+> Time VM access csak a Security Center jelenleg csak virtuális gépek Azure Resource Managerrel üzembe helyezett támogatja. Ismerje meg, a klasszikus és Resource Manager üzembe helyezési modellel kapcsolatos információkért tekintse meg a [Azure Resource Manager és klasszikus üzembe helyezési](../azure-resource-manager/resource-manager-deployment-model.md).
 >
 >
 
-## <a name="using-just-in-time-access"></a>Csak az idő access használatával
+## <a name="using-just-in-time-access"></a>Csak a szerinti hozzáférés használata
 
 1. Nyissa meg a **Security Center** irányítópultját.
 
-2. A bal oldali panelen válassza ki a **közvetlenül a virtuális gép elérhető**.
+2. A bal oldali panelen válassza ki a **igény szerinti Virtuálisgép-hozzáférési**.
 
-![Virtuális gép hozzáférés JIT csempéje][2]
+![Virtuálisgép-hozzáférési szerinti csempe][2]
 
-A **közvetlenül a virtuális gép elérhető** ablak nyílik meg.
+A **igény szerinti Virtuálisgép-hozzáférési** ablak nyílik meg.
 
-![Virtuális gép hozzáférés JIT csempéje][10]
+![Virtuálisgép-hozzáférési szerinti csempe][10]
 
 A **Just in time VM access** (Igény szerinti hozzáférés a virtuális gépekhez) információt nyújt a virtuális gépek állapotáról:
 
-- **Configured** (Konfigurált) – Olyan virtuális gépek, amelyeket úgy vannak konfigurálva, hogy támogassák a virtuális gépek igény szerinti elérését. Közölt adatok az elmúlt héten, és az egyes virtuális gépek magában foglalja a jóváhagyott kéréseket, legutóbbi hozzáférés dátuma és időpontja és utolsó felhasználó számát.
-- **Recommended** (Ajánlott) – Olyan virtuális gépek, amelyek támogatni tudják a virtuális gépek igény szerinti elérését, de nem lettek erre konfigurálva. Javasoljuk, hogy engedélyezze a csak az idő VM hozzáférés-vezérlés a virtuális gépeken. Lásd: [konfigurálása csak hozzáférési házirendben idő](#configuring-a-just-in-time-access-policy).
+- **Configured** (Konfigurált) – Olyan virtuális gépek, amelyeket úgy vannak konfigurálva, hogy támogassák a virtuális gépek igény szerinti elérését. Az adatok a múlt hétre vonatkoznak, és az egyes virtuális Gépekhez tartalmazza a jóváhagyott kérések, a legutóbbi hozzáférés dátuma és ideje és utolsó felhasználó számát.
+- **Recommended** (Ajánlott) – Olyan virtuális gépek, amelyek támogatni tudják a virtuális gépek igény szerinti elérését, de nem lettek erre konfigurálva. Javasoljuk, hogy engedélyezze a idő VM hozzáférés-vezérlés csak az ezeknek a virtuális gépeknek. Lásd: [konfigurálása igény szerinti hozzáférés szabályzat](#configuring-a-just-in-time-access-policy).
 - **No recommendation** (Nincs javaslat) – A virtuális gépek a következő okokból kerülhetnek ebbe a kategóriába:
   - Missing NSG (Hiányzó NSG) – Az igény szerinti megoldáshoz szükség van egy NSG-re.
-  - Classic VM (Klasszikus virtuális gép) – A Security Centerben a virtuális gépek igény szerinti elérése jelenleg csak az Azure Resource Manageren keresztül üzembe helyezett virtuális gépek esetén támogatott. A klasszikus üzembe helyezési nem támogatja a csak az idő megoldás.
+  - Classic VM (Klasszikus virtuális gép) – A Security Centerben a virtuális gépek igény szerinti elérése jelenleg csak az Azure Resource Manageren keresztül üzembe helyezett virtuális gépek esetén támogatott. Klasszikus üzemi modellben nem támogatja az igény szerinti megoldást.
   - Other (Egyéb) – A virtuális gép akkor kerül ebbe a kategóriába, ha az előfizetés biztonsági szabályzatában vagy az erőforráscsoportban ki van kapcsolva az igény szerinti megoldás, vagy ha a virtuális gépnek hiányzik a nyilvános IP-címe, és nem rendelkezik NSG-vel.
 
-## <a name="configuring-a-just-in-time-access-policy"></a>Beállítása csak hozzáférési házirendben idő
+## <a name="configuring-a-just-in-time-access-policy"></a>Konfigurálás igény szerinti hozzáférési szabályzat
 
-Az engedélyezni kívánt virtuális gépek kiválasztása:
+Válassza ki az engedélyezni kívánt virtuális gépek:
 
-1. A **közvetlenül a virtuális gép elérhető**, jelölje be a **ajánlott** fülre.
+1. A **igény szerinti Virtuálisgép-hozzáférési**, jelölje be a **ajánlott** fülre.
 
   ![Csak az idő hozzáférés engedélyezése][3]
 
-2. A **virtuális gép**, válassza ki az engedélyezni kívánt virtuális gépeket. Ez helyezi a virtuális gépek melletti négyzetet.
-3. Válassza ki **engedélyezése virtuális gépeken JIT**.
+2. A **virtuális gép**, válassza ki az engedélyezni kívánt virtuális gépeket. Ez a virtuális gép melletti jelölőnégyzet bejelölésekor helyezi.
+3. Válassza ki **engedélyezése a virtuális gépek igény szerinti**.
 4. Kattintson a **Mentés** gombra.
 
-### <a name="default-ports"></a>Alapértelmezett port
+### <a name="default-ports"></a>Alapértelmezett portok
 
-Az alapértelmezett portok, amely a Security Center JIT engedélyezését javasolja tekintheti meg.
+Láthatja, hogy az alapértelmezett portokat, amelyek JIT engedélyezése a Security Center javasolja.
 
-1. A **közvetlenül a virtuális gép elérhető**, jelölje be a **ajánlott** fülre.
+1. A **igény szerinti Virtuálisgép-hozzáférési**, jelölje be a **ajánlott** fülre.
 
   ![Megjeleníti az alapértelmezett portok][6]
 
-2. A **virtuális gépek**, jelöljön ki egy virtuális Gépet. Ez a virtuális gép mellett be van jelölve, és megnyitja **JIT VM konfiguráció**. Ezt a panelt jeleníti meg az alapértelmezett portok.
+2. A **virtuális gépek**, válasszon ki egy virtuális Gépet. Ez mellett a virtuális gép be van jelölve, és megnyitja **virtuális gépek igény szerinti hozzáférés konfigurációs**. Ezt a panelt az alapértelmezett portok jeleníti meg.
 
-### <a name="add-ports"></a>Portok hozzáadása
+### <a name="add-ports"></a>Adja hozzá a portokat
 
-A **JIT VM konfiguráció**, is hozzáadhat és engedélyezése a csak akkor szeretne új port konfigurálása idő megoldásban.
+A **virtuális gépek igény szerinti hozzáférés konfigurációs**, is hozzáadhat és konfigurálhat egy új portot, amelyen szeretné, engedélyezheti az igény szerinti megoldást.
 
-1. A **JIT VM konfiguráció**, jelölje be **Hozzáadás**. Ekkor megnyílik **Hozzáadás portkonfigurációjának**.
+1. Alatt **virtuális gépek igény szerinti hozzáférés konfigurációs**válassza **Hozzáadás**. Ez megnyitja **Add port configuration**.
 
   ![Port konfigurálása][7]
 
-2. A **Hozzáadás portkonfigurációjának**, a port, a protokoll típusát, a forrás IP-címek és a kérelem maximális idő azonosításához.
+2. A **Add port configuration**, azonosíthatja a port, protokoll típusa, engedélyezett forrásoldali IP-címek és kérelem maximális időtartama.
 
-  Forrás IP-címek az IP-címtartományok is elérheti az engedélyezett kérésre engedélyezett.
+  Engedélyezett forrásoldali IP-címek számára hozzáférést kaphatnak, amelyek jóváhagyott kérelem engedélyezett IP-címtartományokkal.
 
-  Kérések maximális ideje a maximális időszak, hogy egy adott portot lehet megnyitni.
+  Kérelem maximális időtartama a maximális időtartam, hogy egy adott port nyitva lehet.
 
 3. Kattintson az **OK** gombra.
 
-## <a name="requesting-access-to-a-vm"></a>A virtuális gépek hozzáférést kérő
+## <a name="requesting-access-to-a-vm"></a>Egy virtuális Géphez való hozzáférés kérése
 
-Kérjen hozzáférést egy virtuális géphez:
+Egy virtuális Géphez való hozzáférés kérése:
 
-1. A **közvetlenül a virtuális gép elérhető**, jelölje be a **beállított** fülre.
-2. A **virtuális gépek**, válassza ki a virtuális gépeket, amely engedélyezi a hozzáférést. Ez helyezi a virtuális gépek melletti négyzetet.
-3. Válassza ki **hozzáférés kérése**. Ekkor megnyílik **hozzáférés kérése**.
+1. A **igény szerinti Virtuálisgép-hozzáférési**, jelölje be a **konfigurált** fülre.
+2. A **virtuális gépek**, válassza ki a virtuális gépeket, amely engedélyezi a hozzáférést. Ez a virtuális gép melletti jelölőnégyzet bejelölésekor helyezi.
+3. Válassza ki **hozzáférés kérése**. Ez megnyitja **hozzáférés kérése**.
 
-  ![Kérjen hozzáférést egy virtuális géphez][4]
+  ![Egy virtuális Géphez való hozzáférés kérése][4]
 
-4. A **hozzáférés kérése**, konfigurálnia az egyes virtuális gépek a portok megnyitásához és a forrás IP-címe, amely a port meg van nyitva, és a időszak, amelynek az port meg van nyitva. Kérhet hozzáférést csak a portok az imént beállított idő házirendben. Minden porthoz tartozik egy engedélyezett maximális időtartamot a csak származó idő házirendben.
-5. Válassza ki **portok megnyitása**.
-
-> [!NOTE]
-> Amikor egy felhasználó egy virtuális Géphez való hozzáférést igényel, a Security Center ellenőrzi, hogy a felhasználó rendelkezik-e [szerepköralapú hozzáférés-vezérlést (RBAC)](../role-based-access-control/role-assignments-portal.md) írási hozzáférést biztosítson a virtuális gép az engedélyeket. Ha írási engedélyekkel rendelkeznek, elfogadja a kérelmet.
->
->
+4. A **hozzáférés kérése**, konfigurálja az egyes virtuális Gépekhez a portok megnyitásához és a forrás IP-címe, amely a port meg van nyitva, és az idő ablak, amelynek a portot nyitjuk. Csak az éppen konfigurált portok hozzáférést kérhet szerinti szabályzat. Minden port rendelkezik a megengedett maximális ideje származik az igény szerinti szabályzat.
+5. Válassza ki **portok megnyitásához**.
 
 > [!NOTE]
-> Ha egy felhasználó hozzáférést kér a rendszer proxy mögött, a "Saját IP-címe" beállítás nem működnek. Előfordulhat, hogy a szervezet teljes tartományának megadása szükséges.
+> Amikor egy felhasználó egy virtuális Géphez való hozzáférés, a Security Center ellenőrzi, hogy a felhasználó rendelkezik-e [szerepköralapú hozzáférés-vezérlés (RBAC)](../role-based-access-control/role-assignments-portal.md) , amely írási hozzáférést nyújt a virtuális gép engedélyeit. Ha írási engedéllyel rendelkeznek, a kérés jóváhagyást.
 >
 >
 
-## <a name="editing-a-just-in-time-access-policy"></a>Szerkesztés csak hozzáférési házirendben idő
+> [!NOTE]
+> Ha egy felhasználó hozzáférést kér egy proxykiszolgáló mögött található, a "Saját IP-címe" beállítás nem működnek. Előfordulhat, hogy a szervezet teljes tartományának megadása szükséges.
+>
+>
 
-Módosíthatja a virtuális gép csak az idő a házirend meglévő, hozzáadásával és konfigurálásával, nyissa meg ezt a virtuális gépet az új port, illetve egy már védett port kapcsolódó más paraméter módosításával.
+## <a name="editing-a-just-in-time-access-policy"></a>Szerkesztési igény szerinti hozzáférési szabályzat
 
-Ahhoz, hogy csak az idő házirendet a virtuális gépek meglévő szerkesztésekor a **beállított** lapon:
+Virtuális gép csak az idő a házirend meglévő, hozzáadásával és konfigurálásával, nyissa meg a virtuális gép új port, illetve egy már védett port kapcsolatos más paraméter módosításával módosíthatja.
 
-1. A **virtuális gépek**, jelöljön ki egy virtuális Gépet, a port hozzáadása a soron belüli három pontra kattintva ezt a virtuális gépet. Ekkor megnyílik egy menüben.
-2. Válassza ki **szerkesztése** a menüben. Ekkor megnyílik **JIT VM konfiguráció**.
+Annak érdekében, hogy csak egy virtuális gép szerinti szabályzat a meglévő szerkesztésekor a **konfigurált** lapon:
+
+1. A **virtuális gépek**, válasszon egy virtuális Gépet, a port hozzáadása a virtuális Gépeket a soron belül három pontra kattintva. Megjelenik egy menü.
+2. Válassza ki **szerkesztése** menüjében. Ez megnyitja **virtuális gépek igény szerinti hozzáférés konfigurációs**.
 
   ![A szabályzat szerkesztése][8]
 
-3. A **JIT VM konfiguráció**, vagy szerkesztheti a meglévő beállítások már védett port a porton kattint, vagy választhat **Hozzáadás**. Ekkor megnyílik **Hozzáadás portkonfigurációjának**.
+3. A **virtuális gépek igény szerinti hozzáférés konfigurációs**, vagy szerkesztheti a meglévő beállítások már védett port portjának kattintva, vagy választhat **Hozzáadás**. Ez megnyitja **Add port configuration**.
 
-  ![Adjon hozzá egy portot][7]
+  ![Port hozzáadása][7]
 
-4. A **Hozzáadás portkonfigurációjának**, azonosítsa a port, protokolltípus kérelem ideje forrás IP-címek és a maximális engedélyezett.
+4. A **Add port configuration**, azonosíthatja a port, protokoll típusa, engedélyezett forrásoldali IP-címek, valamint a maximális kérelem időtartama.
 5. Kattintson az **OK** gombra.
 6. Kattintson a **Mentés** gombra.
 
-## <a name="auditing-just-in-time-access-activity"></a>Csak az idő-hozzáférési tevékenységet naplózás
+## <a name="auditing-just-in-time-access-activity"></a>Csak az idő hozzáférési tevékenység naplózása
 
-Akkor is kaphat a naplófájl-keresési VM tevékenységeket. Naplók megtekintése:
+Virtuális gép a tevékenységeket a naplóbeli keresés segítségével betekintést kaphatnak. A naplók megtekintéséhez:
 
-1. A **közvetlenül a virtuális gép elérhető**, jelölje be a **beállított** fülre.
-2. A **virtuális gépek**, válassza ki a virtuális gépek ezt a virtuális gépet a soron belüli három pontra kattintva adatainak megjelenítéséhez. Ekkor megnyílik egy menüben.
-3. Válassza ki **tevékenységnapló** a menüben. Ekkor megnyílik **tevékenységnapló**.
+1. A **igény szerinti Virtuálisgép-hozzáférési**, jelölje be a **konfigurált** fülre.
+2. A **virtuális gépek**, válasszon ki egy virtuális Gépet kapcsolatos információk megtekintéséhez kattintson a három pontra a soron belül a virtuális gép. Megjelenik egy menü.
+3. Válassza ki **tevékenységnapló** menüjében. Ez megnyitja **tevékenységnapló**.
 
-  ![Válassza ki a tevékenység naplója][9]
+  ![Válassza ki a tevékenységnaplóban][9]
 
-  **Tevékenységnapló** szűrt ezt a virtuális gépet és idő, dátum és előfizetés korábbi műveletek jeleníti meg.
+  **Tevékenységnapló** együtt idő, dátum és az előfizetés virtuális gép korábbi műveletek szűrt nézetét jeleníti meg.
 
-  ![Tevékenység napló megtekintése][5]
+  ![Tevékenységnapló megtekintése][5]
 
-A naplózási adatok kiválasztásával letöltheti **Ide kattintva letöltheti elemeinek CSV-ként**.
+Letöltheti a naplózási adatok kiválasztásával **Ide kattintva letöltheti az összes elem CSV-fájlként**.
 
-Módosítsa a szűrőt, és válasszon **alkalmaz** a Keresés és a napló létrehozása.
+Módosítsa a szűrőket, és válasszon **alkalmaz** hozzon létre egy keresési és a napló.
 
-## <a name="using-just-in-time-vm-access-via-powershell"></a>Igény szerint VM hozzáférés PowerShell használatával
+## <a name="using-just-in-time-vm-access-via-powershell"></a>Igény szerint Virtuálisgép-hozzáférési PowerShell használatával
 
-Ahhoz, hogy az csak a PowerShell idő megoldás győződjön meg arról, hogy a [legújabb](/powershell/azure/install-azurerm-ps) Azure PowerShell-verzió.
-Ha így tesz, telepítenie kell a [legújabb](https://aka.ms/asc-psgallery) az Azure Security Center a PowerShell-galériából.
+Annak érdekében, hogy használja az igény szerinti megoldást a Powershellen keresztül, ellenőrizze, hogy a [legújabb](/powershell/azure/install-azurerm-ps) Azure PowerShell-verzió.
+Ezt követően telepítenie kell a [legújabb](https://aka.ms/asc-psgallery) az Azure Security Center a PowerShell-galériából.
 
-### <a name="configuring-a-just-in-time-policy-for-a-vm"></a>Konfigurálása csak a virtuális gépek ideje házirend
+### <a name="configuring-a-just-in-time-policy-for-a-vm"></a>Konfigurálás igény szerinti szabályzat egy virtuális géphez
 
-Csak konfigurálása egy adott VM-idő szabályzatok futtassa ezt a parancsot a PowerShell-munkamenetben kell: Set-ASCJITAccessPolicy.
-A parancsmagok dokumentációira további kövesse.
+Konfigurálhat igény szerinti szabályzat egy adott virtuális gépen, futtassa ezt a parancsot a PowerShell-munkamenetben kell: Set-ASCJITAccessPolicy.
+A parancsmagok dokumentációira további információért kövesse.
 
-### <a name="requesting-access-to-a-vm"></a>A virtuális gépek hozzáférést kérő
+### <a name="requesting-access-to-a-vm"></a>Egy virtuális Géphez való hozzáférés kérése
 
-Egy adott virtuális Gépet, a csak a védett eléréséhez idő megoldásban ez a parancs futtatásához a PowerShell-munkamenetben szüksége: meghívása ASCJITAccess.
-A parancsmagok dokumentációira további kövesse.
+Egy adott virtuális Gépre, amely a egyszerűen elemezhetnek eléréséhez ideje a megoldásban, futtassa ezt a parancsot a PowerShell-munkamenetben kell: meghívása ASCJITAccess.
+A parancsmagok dokumentációira további információért kövesse.
 
 ## <a name="next-steps"></a>További lépések
-Ebben a cikkben megtanulta, hogyan igény szerint a Security Center segítséget nyújt a virtuális gép hozzáférés az Azure virtuális gépeken való hozzáférést.
+Ebben a cikkben megtanulta, hogyan igény szerint a Security Center segít a Virtuálisgép-hozzáférés az Azure virtuális gépekhez való hozzáférés.
 
 A Security Centerrel kapcsolatos további információkért olvassa el a következőket:
 
-- [Biztonsági szabályzatok beállítása](security-center-policies.md) – útmutató az Azure-előfizetések és -erőforráscsoportok biztonsági szabályzatainak konfigurálásához.
-- [Biztonsági javaslatok kezelése](security-center-recommendations.md) – megtudhatja, miként könnyítik meg a javaslatok az Azure-erőforrások védelme.
-- [Biztonsági állapotfigyelés](security-center-monitoring.md) – útmutató az Azure-erőforrások állapotának figyelésére.
-- [Kezelése és válaszadás a biztonsági riasztások](security-center-managing-and-responding-alerts.md) – útmutató kezelése és válaszadás a biztonsági riasztásokra.
-- [Partnermegoldások figyelése](security-center-partner-solutions.md) – megtudhatja, hogyan figyelheti a partnermegoldások biztonsági állapotát.
-- [Security Center: GYIK](security-center-faq.md) – gyakran ismételt kérdések a szolgáltatás használatával kapcsolatban.
+- [Biztonsági szabályzatok beállítása](security-center-policies.md) – ismerje meg, hogyan konfigurálhat biztonsági házirendeket az Azure-előfizetések és -erőforráscsoportok.
+- [Biztonsági javaslatok kezelése](security-center-recommendations.md) – megtudhatja, hogyan javaslatok az Azure-erőforrások védelme.
+- [Biztonsági állapotfigyelés](security-center-monitoring.md) – útmutató az Azure-erőforrások állapotának monitorozásához.
+- [Kezelése és válaszadás a biztonsági riasztások](security-center-managing-and-responding-alerts.md) – ismerje meg, hogyan kezelése és válaszadás a biztonsági riasztásokra.
+- [Partneri megoldások monitorozása](security-center-partner-solutions.md) – útmutató a partnermegoldások állapotának monitorozásához.
+- [A Security Center – gyakori kérdések](security-center-faq.md) – gyakran ismételt kérdések a szolgáltatás használatával kapcsolatban.
 - [Azure Security blog](https://blogs.msdn.microsoft.com/azuresecurity/) – Blogbejegyzések az Azure biztonsági és megfelelőségi funkcióiról.
 
 

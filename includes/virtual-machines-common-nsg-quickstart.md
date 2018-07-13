@@ -9,22 +9,22 @@ ms.date: 05/17/2018
 ms.author: cynthn
 ms.custom: include file
 ms.openlocfilehash: d9c8a0e6a3bd6d79a11ee0d0dab0500a209e5571
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34684982"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38941715"
 ---
-Nyissa meg a portot, vagy hozzon létre egy végpontot a virtuális gép (VM), az Azure-ban egy alhálózatot vagy a virtuális gép hálózati illesztő hálózati szűrő létrehozásával. Ezek a szűrők, amely szabályozza a bejövő és kimenő forgalmat, a hálózati biztonsági csoport az erőforrás a forgalmat fogadó csatolva helyezze el.
+Nyisson meg egy portot, vagy hozzon létre egy végpontot a virtuális géphez (VM) az Azure-ban egy alhálózatot vagy virtuális hálózati adapter hálózati szűrő létrehozásával. Ezeket a szűrőket, amely a bejövő és kimenő adatforgalom vezérlésére, helyezze el az erőforrás a forgalmat fogadó csatolt hálózati biztonsági csoport.
 
-Ilyenek például a webes forgalom most használja a 80-as porton. Ha elvégezte a kiszolgálására konfigurált virtuális gépek a szabványos TCP a webes kérelmek port 80-as (ne felejtse el a indítsa el a megfelelő szolgáltatásokat, és nyissa meg az összes operációs rendszer tűzfalszabályok, valamint a virtuális gépen), hogy:
+Használjuk a webes forgalom ilyenek például a 80-as porton. Miután egy virtuális gép kiszolgálására konfigurált webes kéréseket a szabványos TCP protokollt használja port 80-as (ne felejtse el indítsa el a megfelelő szolgáltatásokat, és nyissa meg a virtuális gépen, valamint bármely operációs rendszer tűzfalszabályok), akkor:
 
-1. Hálózati biztonsági csoport létrehozása.
-2. Hozzon létre egy bejövő forgalomra vonatkozó szabály átengedi a forgalmat:
+1. Hozzon létre egy hálózati biztonsági csoportot.
+2. Hozzon létre egy bejövő szabályt átengedi a forgalmat:
    * a "80" Célporttartomány
-   * a Forrásporttartomány a "*" (amely lehetővé teszi bármely forrásportból)
-   * a prioritás értéke kevesebb 65 500 (a magasabb prioritású, mint az alapértelmezett catch-all a kell megtagadási bejövő szabály)
-3. A hálózati biztonsági csoport társítani a virtuális gép hálózati adapter vagy az alhálózatot.
+   * a forrásport-tartományt a "*" (bármely forrásportból engedélyezése)
+   * prioritás értéke kisebb 65 500 (hogy magasabb prioritású, mint az alapértelmezett catch-all a rendszer megtagadja a bejövő szabály)
+3. A hálózati biztonsági csoport társítása a virtuális hálózati adapter vagy alhálózatot.
 
-Létrehozhat összetett hálózati konfigurációt megvédeni környezetét a hálózati biztonsági csoportok és a szabályok használatával. A példában csak egy vagy két olyan szabályok, amelyek lehetővé teszik a HTTP-forgalom vagy a távoli felügyelet. További információkért tekintse meg a következőt ["További információk"](#more-information-on-network-security-groups) szakasz vagy [Mi az a hálózati biztonsági csoport?](../articles/virtual-network/security-overview.md)
+Biztosítsa a környezetét a hálózati biztonsági csoportok és a szabályok egy összetett hálózati konfigurációt is létrehozhat. A példában csak egy vagy két olyan szabályokat, amelyek engedélyezik a HTTP-forgalom vagy a távoli felügyeleti. További információkért tekintse meg a következő ["További információ"](#more-information-on-network-security-groups) szakasz vagy [Mi az a hálózati biztonsági csoport?](../articles/virtual-network/security-overview.md)
 

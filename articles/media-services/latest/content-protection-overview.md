@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/25/2018
 ms.author: juliako
-ms.openlocfilehash: 2f0996482c599a664d02e172dcb20cda4e039af5
-ms.sourcegitcommit: 4597964eba08b7e0584d2b275cc33a370c25e027
+ms.openlocfilehash: 5ed98bb4c4f40b23988a4f73778e715bfbea2505
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37341664"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39004936"
 ---
 # <a name="content-protection-overview"></a>A Content protection áttekintése
 
@@ -90,7 +90,7 @@ A Media Services segítségével dinamikusan az AES-kulcsok vagy titkosított DR
 
 A Media Services v3, tartalomkulcs StreamingLocator társítva (lásd: [ebben a példában](protect-with-aes128.md)). Ha a Media Services kulcstovábbítást használ, meg kell automatikus létrehozása a tartalomkulcsot. Kell létrehoznia a tartalomkulcs saját kezűleg használatakor, saját kulcstovábbítást, vagy ha egy magas rendelkezésre állású forgatókönyv kezel, amelyekben két adatközpontban tartalom ugyanazzal a kulccsal van szükségük.
 
-Adatfolyam-lejátszó kér, amikor a Media Services a megadott kulcs használatával dinamikusan titkosítani a titkosítatlan AES vagy a DRM-titkosítás segítségével. Visszafejteni a streamet, a Windows Media player kér a kulcsot a Media Services kulcstovábbítást vagy a kulcstovábbítást megadott. Annak eldöntéséhez, hogy-e a felhasználó jogosult-e a kulcs lekérése, a szolgáltatás kiértékeli az engedélyezési házirendeket, amelyek a kulcshoz megadott.
+Adatfolyam-lejátszó kér, amikor a Media Services a megadott kulcs használatával dinamikusan titkosítani a titkosítatlan AES vagy a DRM-titkosítás segítségével. Visszafejteni a streamet, a Windows Media player kér a kulcsot a Media Services kulcstovábbítást vagy a kulcstovábbítást megadott. Annak eldöntéséhez, hogy-e a felhasználó jogosult-e a kulcs lekérése, a szolgáltatás kiértékeli a tartalom a kulcshoz megadott kulcs házirend.
 
 ## <a name="aes-128-clear-key-vs-drm"></a>AES-128-kulcsok vs. DRM
 

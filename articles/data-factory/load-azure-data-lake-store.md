@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/17/2018
 ms.author: jingwang
-ms.openlocfilehash: 7cdc4f0ef436fbd7ea3bdf1431b08be3b840290f
-ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
+ms.openlocfilehash: e401508fc5ffc1de666f727ffbb7790005384fc1
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37857201"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39003797"
 ---
 # <a name="load-data-into-azure-data-lake-storage-gen1-by-using-azure-data-factory"></a>Adatok betöltése az Azure Data Lake Storage Gen1 Azure Data Factory használatával
 
@@ -35,6 +35,7 @@ Ez a cikk bemutatja, hogyan használható a Data Factory az adatok másolása es
 
 > [!NOTE]
 > További információkért lásd: [adatok másolása az Azure Data Lake Store vagy az Azure Data Factory használatával](connector-azure-data-lake-store.md).
+
 ## <a name="prerequisites"></a>Előfeltételek
 
 * Azure-előfizetés: Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/) megkezdése előtt.
@@ -109,7 +110,7 @@ Ez a cikk bemutatja, hogyan használható a Data Factory az adatok másolása es
    3. Kattintson a **Tovább** gombra.
    
    > [!IMPORTANT]
-   > Ebben a bemutatóban használhat egy _felügyeltszolgáltatás-identitás_ a Data Lake Store hitelesítéséhez. Ügyeljen arra, hogy adja meg az egyszerű szolgáltatás az Azure Data Lake Store a megfelelő engedélyeket az alábbi [ezek az utasítások](connector-azure-data-lake-store.md#using-managed-service-identity-authentication).
+   > Ebben a bemutatóban használhat egy _felügyeltszolgáltatás-identitás_ a Data Lake Store hitelesítéséhez. Ügyeljen arra, hogy adja meg az MSI az Azure Data Lake Store a megfelelő engedélyeket az alábbi [ezek az utasítások](connector-azure-data-lake-store.md#using-managed-service-identity-authentication).
    
    ![Az Azure Data Lake Store-fiók megadása](./media/load-data-into-azure-data-lake-store/specify-adls.png)
 9. Az a **a kimeneti fájl vagy mappa kiválasztása** lap, adja meg **copyfroms3** , a kimeneti mappa nevét, és válassza **tovább**: 

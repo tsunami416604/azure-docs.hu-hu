@@ -15,12 +15,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 05/24/2018
 ms.author: tdykstra
-ms.openlocfilehash: 1b22357b201306ec09e586bfa52fbe9a821250da
-ms.sourcegitcommit: 11321f26df5fb047dac5d15e0435fce6c4fde663
+ms.openlocfilehash: 912176df2681f890cf3bbe6f69395ad39c9263fc
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37887470"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39004897"
 ---
 # <a name="azure-functions-triggers-and-bindings-concepts"></a>Az Azure Functions eseményindítók és kötések fogalmak
 
@@ -32,7 +32,7 @@ A *eseményindító* határozza meg, hogyan függvény hívása. A függvénynek
 
 Bemeneti és kimeneti *kötések* a kódon belül az adatokhoz való csatlakozáshoz deklaratív módszert biztosítanak. Kötések nem kötelező, és a egy függvényt is rendelkezik több bemeneti és kimeneti kötések. 
 
-Eseményindítók és kötések lehetővé teszik a hardcoding elkerülheti a szolgáltatásokat, amelyek dolgozik részleteit. A függvény adatok (például üzenetsori üzenet tartalma) függvény paraméterei fogadása. A visszaadott érték a függvény használatával (például üzenetsori üzenet létrehozására) adatokat küld egy `out` paramétert, vagy egy [gyűjtő objektum](functions-reference-csharp.md#writing-multiple-output-values).
+Eseményindítók és kötések lehetővé teszik a hardcoding elkerülheti a szolgáltatásokat, amelyek dolgozik részleteit. A függvény adatok (például üzenetsori üzenet tartalma) függvény paraméterei fogadása. A visszaadott érték a függvény akkor küldjön adatokat (például üzenetsori üzenetek létrehozásához). A C# és a C#-szkript, alternatív módszerekkel való adatküldés vannak `out` paraméterek és [gyűjtő objektumok](functions-reference-csharp.md#writing-multiple-output-values).
 
 Amikor funkciók fejlesztése az Azure portal használatával, az eseményindítók és kötések vannak konfigurálva a *function.json* fájlt. A portálon Ez a konfiguráció egy felhasználói Felületet biztosít, de szerkesztheti a fájlt közvetlenül a módosítása a következőre a **speciális szerkesztő**.
 
@@ -224,9 +224,11 @@ Visszatérési értékkel nyelveken hozhasson létre egy kimeneti kötést, a vi
 * C# osztálytár, a alkalmazni a kimeneti kötés attribútum a metódus visszatérési értéke.
 * Más nyelven, állítsa be a `name` tulajdonság *function.json* való `$return`.
 
-Ha egynél több elem írására van szüksége, használja a [gyűjtő objektum](functions-reference-csharp.md#writing-multiple-output-values) visszatérési érték helyett. Ha több kimeneti kötést, a visszaadott értékének használata csak az egyik.
+Ha több kimeneti kötést, a visszaadott értékének használata csak az egyik.
 
-Tekintse meg az adott nyelvű példa:
+C# és a C#-szkript, adatokat küldeni a kimeneti kötés egyéb módjai a következők `out` paraméterek és [gyűjtő objektumok](functions-reference-csharp.md#writing-multiple-output-values).
+
+Tekintse meg a nyelvspecifikus példa a visszaadott érték használatát:
 
 * [C#](#c-example)
 * [C# script (.csx)](#c-script-example)

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 12/12/2017
 ms.author: tdykstra
-ms.openlocfilehash: bde7a7788fd01bcbcc63296c0513af8eb4196021
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.openlocfilehash: 2308419ba79f6b482df6f68e865aafd0152ae090
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38970179"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39001888"
 ---
 # <a name="azure-functions-c-developer-reference"></a>Az Azure Functions C# – fejlesztői referencia
 
@@ -195,11 +195,13 @@ Minden egyes kötés rendelkezik a saját támogatott típusok; például egy bl
 
 ## <a name="binding-to-method-return-value"></a>Kötelező érvényű, a metódus visszatérési értéke
 
-A metódus visszatérési értékek használható egy kimeneti kötést az attribútum a metódus visszatérési érték alkalmazásával. Példák: [eseményindítók és kötések](functions-triggers-bindings.md#using-the-function-return-value).
+A metódus visszatérési értékek használható egy kimeneti kötést az attribútum a metódus visszatérési érték alkalmazásával. Példák: [eseményindítók és kötések](functions-triggers-bindings.md#using-the-function-return-value). 
+
+Akkor használja a visszaadott érték, ha mindig egy sikeres függvény végrehajtása a kimeneti kötés átadása visszatérési értéket eredményez. Ellenkező esetben használjon `ICollector` vagy `IAsyncCollector`, a következő szakaszban látható módon.
 
 ## <a name="writing-multiple-output-values"></a>Több kimeneti értékeinek írása
 
-Több érték írni egy kimeneti kötést, használja a [ `ICollector` ](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/ICollector.cs) vagy [ `IAsyncCollector` ](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/IAsyncCollector.cs) típusokat. Ezek a típusok gyűjteményei csak írási a metódus befejezésekor a kimeneti kötés írt.
+Több értéket írni egy kimeneti kötést, vagy ha sikeres függvényhívási nem azt eredményezheti, hogy semmit sem kell átadni a kimeneti kötés használja a [ `ICollector` ](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/ICollector.cs) vagy [ `IAsyncCollector` ](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/IAsyncCollector.cs) típusokat. Ezek a típusok gyűjteményei csak írási a metódus befejezésekor a kimeneti kötés írt.
 
 Ebben a példában több üzenetsorbeli üzenetek írja az üzenetsor használatával `ICollector`:
 
@@ -209,12 +211,12 @@ public static class ICollectorExample
     [FunctionName("CopyQueueMessageICollector")]
     public static void Run(
         [QueueTrigger("myqueue-items-source-3")] string myQueueItem,
-        [Queue("myqueue-items-destination")] ICollector<string> myQueueItemCopy,
+        [Queue("myqueue-items-destination")] ICollector<string> myDestinationQueue,
         TraceWriter log)
     {
         log.Info($"C# function processed: {myQueueItem}");
-        myQueueItemCopy.Add($"Copy 1: {myQueueItem}");
-        myQueueItemCopy.Add($"Copy 2: {myQueueItem}");
+        myDestinationQueue.Add($"Copy 1: {myQueueItem}");
+        myDestinationQueue.Add($"Copy 2: {myQueueItem}");
     }
 }
 ```

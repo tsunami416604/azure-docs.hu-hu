@@ -8,12 +8,12 @@ ms.service: security
 ms.topic: article
 ms.date: 06/20/2018
 ms.author: dlap
-ms.openlocfilehash: cf24810c0aa414e751e55df163563f013c1a0081
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
-ms.translationtype: HT
+ms.openlocfilehash: 9d71efa35713500911c67d1df15612b64c8e97da
+ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
+ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 07/12/2018
-ms.locfileid: "38969945"
+ms.locfileid: "38990829"
 ---
 # <a name="trusted-internet-connection-guidance"></a>Megbízható internetes kapcsolat útmutató
 
@@ -30,7 +30,7 @@ Egyszerűen szólva TIC célja szerveknek tudnia:
 
 Mai összes ügynökség külső kapcsolatokat kell átirányítani egy OMB jóváhagyott TIC keresztül. Szövetségi ügynökségek végezték a TIC Access Provider (TICAP), vagy a fő szint 1 internetszolgáltatók egyikével szolgáltatások Szerződő néven felügyelt megbízható Internet Protocol szolgáltatás (MTIPS) szolgáltatók a TIC programban való részvételhez szükségesek.  TIC kötelező kritikus funkciókkal rendelkezik, és még ma az Ügynökség és MTIPS szolgáltató által végrehajtott tartalmazza. A jelenlegi verziójában TIC, a EINSTEIN 2-es verzió behatolásérzékelési és a 3-as verziójú EINSTEIN gyorsított (3A) minden egyes TICAP és MTIPS behatolás-megelőzési eszközök vannak telepítve, és az Ügynökség hoz létre egy, a szervezeti ismertetése alapító Haza biztonsági (DHS) EINSTEIN képességek Szövetségi rendszerek központi telepítése.
 
-A feladata, hogy megvédje a .gov hálózatot részeként DHS szükséges nyers adatcsatornák az Ügynökség Netflow adatok incidensek összekapcsolását a Szövetségi vállalaton belül, és speciális eszközök használatával elemzéseket végezhetnek. DHS útválasztók lehetővé teszi, hogy IP-hálózati forgalom gyűjtése szerint kerül, vagy kilép egy felületet. A hálózati forgalmi adatai elemzésével a hálózati rendszergazda meghatározhatja többek között a forrás- és a forgalmat, osztály, szolgáltatás stb. Hálózati forgalmi adatai számít a "nem tartalom data" (például a fejlécet, forrás-IP, cél IP-cím, stb.), és lehetővé teszi, hogy tudni, hogy a tartalom; információk DHS azt jelenti, akik műveletet végzett mi történik, és milyen hosszú.
+A feladata, hogy megvédje a .gov hálózatot részeként DHS szükséges nyers adatcsatornák az Ügynökség Netflow adatok incidensek összekapcsolását a Szövetségi vállalaton belül, és speciális eszközök használatával elemzéseket végezhetnek. DHS útválasztók lehetővé teszi, hogy IP-hálózati forgalom gyűjtése szerint kerül, vagy kilép egy felületet. A hálózati forgalmi adatai egy hálózati elemzésével rendszergazdák megállapíthatják, többek között a forrás- és a forgalmat, osztály, szolgáltatás stb. Hálózati forgalmi adatai számít a "nem tartalom data" (például a fejlécet, forrás-IP, cél IP-cím, stb.), és lehetővé teszi, hogy tudni, hogy a tartalom; információk DHS azt jelenti, akik műveletet végzett mi történik, és milyen hosszú.
 
 A kezdeményezés is tartalmaz a biztonsági házirendek, irányelvek és keretrendszereket, amely a helyszíni infrastruktúra feltételezik. Kormányzati szerveknek áthelyezni a felhőbe költségmegtakarítást működési hatékonyságot és innovációt érhet el, mert TIC a megvalósítás követelményei vannak bizonyos esetekben a hálózati forgalom lelassul, és a sebességet és rugalmasságot, mely kormányzati a felhasználók korlátozása felhőalapú adatok elérését.
 
@@ -250,4 +250,3 @@ A Microsoft Azure, Office 365 és Dynamics 365-hozzáférés írásos és 2018 m
 
 *: Nyilvános előzetes verziója 2018. május kezdődően az Azure Government az  
 **: Az Azure Government 2018. május privát előzetes verzió
-

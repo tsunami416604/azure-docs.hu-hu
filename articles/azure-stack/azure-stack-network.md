@@ -12,15 +12,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/11/2018
+ms.date: 07/12/2018
 ms.author: jeffgilb
 ms.reviewer: wamota
-ms.openlocfilehash: 2d16d1dc7a53ca388b00ba02b6447e178a9f6edb
-ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
-ms.translationtype: HT
+ms.openlocfilehash: b39a1f7b0de01c50b04072cc0de011928c6af786
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38989237"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39003613"
 ---
 # <a name="network-connectivity"></a>Hálózati kapcsolat
 Ez a cikk segít eldönteni, hogy a legjobb integrálása az Azure Stack a meglévő hálózati környezetbe az Azure Stack hálózati infrastruktúra információkat nyújt. 
@@ -29,7 +29,7 @@ Ez a cikk segít eldönteni, hogy a legjobb integrálása az Azure Stack a megl�
 > Az Azure Stack (például www.bing.com) külső DNS-nevek feloldására, meg kell adnia a DNS-kiszolgálók DNS-kérelmeket továbbítsa. Az Azure Stack DNS követelményeivel kapcsolatos további információkért lásd: [adatközpontban Azure Stack - integrációs DNS](azure-stack-integrate-dns.md).
 
 ## <a name="physical-network-design"></a>Fizikai hálózati terv
-Az Azure Stack megoldás támogatja a szolgáltatások és a működés rugalmas és magas rendelkezésre állású fizikai infrastruktúrát igényel. ToR böngészőből szegély kapcsolókhoz kimenő portok korlátozva, SFP + adathordozó és 1 GB vagy 10 GB-os átviteli sebességek esetén. Ellenőrizze a számítógépgyártó (OEM) hardver szállítójával a rendelkezésre állás érdekében. Az alábbi ábrán a javasolt tervezési jelöli:
+Az Azure Stack megoldás támogatja a szolgáltatások és a működés rugalmas és magas rendelkezésre állású fizikai infrastruktúrát igényel. ToR böngészőből szegély kapcsolókhoz kimenő portok korlátozva, SFP + vagy SFP28 adathordozó és 1 GB-os, 10 GB-os vagy 25 GB megbízhatóbbak. Ellenőrizze a számítógépgyártó (OEM) hardver szállítójával a rendelkezésre állás érdekében. Az alábbi diagram bemutatja a javasolt tervezési:
 
 ![Ajánlott az Azure Stack hálózati terv](media/azure-stack-network/recommended-design.png)
 

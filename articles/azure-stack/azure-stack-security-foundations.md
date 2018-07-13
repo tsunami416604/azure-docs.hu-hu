@@ -1,85 +1,89 @@
 ---
-title: "Azure verem biztonsági vezérlők megértése |} Microsoft Docs"
-description: "Szolgáltatás-rendszergazdaként Azure verem biztonsági vezérlők megismerése"
+title: Megismerheti az Azure Stack biztonsági vezérlők |} A Microsoft Docs
+description: Szolgáltatás-rendszergazdaként a alkalmazni az Azure Stack biztonsági ellenőrzések ismertetése
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: mattbriggs
 manager: femila
-editor: 
+editor: ''
 ms.assetid: cccac19a-e1bf-4e36-8ac8-2228e8487646
 ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/06/2018
+ms.date: 07/12/2018
 ms.author: mabrigg
-ms.openlocfilehash: c1d92f8f2ed9e8ab504afc65bab861e1f7bb3689
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: a3bd314a1df3c45c76b2e3a5acb31c1474d0fdf5
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39008831"
 ---
-# <a name="azure-stack-infrastructure-security-posture"></a>Az Azure verem infrastruktúra biztonságot
+# <a name="azure-stack-infrastructure-security-posture"></a>Az Azure Stack infrastruktúrájának biztonsági rendszer kialakításához
 
-*A következőkre vonatkozik: Azure verem integrált rendszerek*
+*A következőkre vonatkozik: Azure Stackkel integrált rendszerek*
 
-Biztonsági szempontok és a megfelelőségi szabályzat közé tartoznak, a hibrid felhő használata fő illesztőprogramjait. Azure verem forgatókönyvek esetén úgy lett kialakítva, és a intézkedések már ismerni Azure verem elfogadásakor.
+Biztonsági szempontok és a megfelelőségi szabályzat is a fő illesztőprogramokat a hibrid felhők között. Ezek a forgatókönyvek az Azure Stack tervezték, és fontos megérteni a már a vezérlők beállítása az Azure Stack elfogadásakor.
 
-Azure-készletben az alábbi két egyszerre használható biztonsági előírások réteg. Az első réteget a Azure verem infrastruktúrában, ami a hardverösszetevők egészen akár az Azure erőforrás-kezelő ki, és a rendszergazda és a bérlői portál is magában foglalja. A második réteg bérlők létrehozni, telepíteni és kezelni a munkaterhelések áll, és magában foglalja többek között a virtuális gépek és alkalmazásszolgáltatások webhelyeket.  
+Két biztonsági rendszer kialakításához rétegek futhatnak az Azure Stackben. Az első réteg az Azure Stack-infrastruktúra, amely tartalmazza a hardverösszetevők, akár az Azure Resource Manager. Az első réteget tartalmaz, a rendszergazda és a bérlői portált. A második réteg a számítási feladatok létre, telepítheti és kezelheti a bérlők által áll. A második réteg például a virtuális gépek és alkalmazásszolgáltatások webhelyeket tartalmaz.
 
 ## <a name="security-approach"></a>Biztonsági módszer
-Azure verem úgy lett kialakítva, a biztonságot a modern fenyegetésekkel szembeni védelmét, és a a fő megfelelőségi szabványok követelményeinek teljesítéséhez lett létrehozva. Ennek eredményeképpen a biztonságot az Azure-verem infrastruktúra két oszlopok épül:
 
- - **Tegyük fel megszegésre kerül.**  
-Azt feltételezi, hogy a rendszer már nem tettek kezdve összpontosítani *észlelésére, és a behatolás hatásának korlátozása* és a támadások megelőzése érdekében csak közben. 
- - **Alapértelmezés szerint megerősítve.**  
-Az infrastruktúra futó jól meghatározott hardvereket és szoftvereket, mivel azt *engedélyezése, konfigurálása és ellenőrzése minden biztonsági szolgáltatás* alapértelmezés szerint.
+Az Azure stack biztonsági állapotáról célja, hogy a modern fenyegetésekkel szemben, és a fontos megfelelőségi előírásoknak, a követelmények teljesítéséhez lett létrehozva. Ennek eredményeképpen a biztonsági állapotáról, az Azure Stack-infrastruktúra két oszloppal épül:
 
+ - **Feltételezése**  
+Feltételezzük, hogy a rendszer még nem tettek kezdve összpontosíthat *észlelése, a problémák hatását korlátozása* helyett csak próbál támadások megelőzése érdekében. 
+ - **Alapértelmezés szerint megerősített**  
+Mivel az infrastruktúra meghatározott hardveren és szoftverekről, Azure Stack *lehetővé teszi, hogy konfigurálja és érvényesíti a biztonsági funkciók* alapértelmezés szerint.
 
+Mivel az Azure Stack egy integrált rendszer kerül, a Microsoft határozza meg az Azure Stack-infrastruktúra biztonsági állapotát. Csakúgy, mint az Azure-ban, bérlők felelős azok bérlői számítási feladatok biztonsági rendszerébe. Ez a dokumentum Ez a alapvető ismeretek az Azure Stack-infrastruktúra biztonsági állapotát.
 
-Azure verem egy integrált rendszert, a rendszer, mert a biztonságot az Azure-verem infrastruktúra Microsoft határozzák meg. Csakúgy, mint az Azure bérlők felelősek meghatározása a bérlői terhelések biztonsági állapotát. Ez a dokumentum a biztonságot az Azure-verem infrastruktúra eligazodást Tudásbázis biztosít.
+## <a name="data-at-rest-encryption"></a>Az adatok inaktív adatok titkosítása
+Az összes Azure Stack infrastruktúra és a bérlői adatok titkosítása a Bitlocker használatával. A titkosítás fizikai elvesztése / eltulajdonítása Azure Stack tároló-összetevők ellen védi. 
 
-## <a name="data-at-rest-encryption"></a>Adatok inaktív adatok titkosítása
-Minden Azure verem az infrastrukturális és bérlői adatok titkosítása a Bitlocker használatával. A titkosítási fizikai elvész vagy ellopják az Azure-verem tárolási összetevőinek véd. 
+## <a name="data-in-transit-encryption"></a>Adatok az átvitel során titkosítás
+Az Azure Stack infrastruktúra-összetevőket a TLS 1.2 titkosított csatornákon használatával kommunikálni. Titkosítási tanúsítványok önálló kezeli az infrastruktúrát. 
 
-## <a name="data-in-transit-encryption"></a>Adatok adatátvitel közbeni titkosítás
-A verem Azure infrastruktúra-összetevőihez kommunikálni a TLS 1.2 titkosított csatornákon keresztül. Titkosítási tanúsítványok önálló kezeli az infrastruktúra. 
+Minden külső infrastruktúra-végpontokra, például a REST-végpontokat vagy az Azure Stack portálon támogatja a TLS 1.2-es biztonságos kommunikációhoz. Titkosítási tanúsítványok, a harmadik féltől származó, vagy a vállalati hitelesítésszolgáltatóval, azokat a végpontokat kell ellátni. 
 
-Külső infrastrukturális végpontjai, például a REST-végpontok vagy a verem Azure portal TLS 1.2-es támogatja a biztonságos kommunikációhoz. Titkosítási tanúsítványok, a harmadik fél vagy a vállalati hitelesítésszolgáltató, ezekre a végpontokra meg kell adni. 
+Önaláírt tanúsítványokat külső végpontokkal is használható, amíg a Microsoft erősen tanácsolja elleni használja őket. 
 
-Önaláírt tanúsítványokat külső végpontokkal is használható, amíg a Microsoft nyomatékosan tesz, azok használatának mellőzését. 
+## <a name="secret-management"></a>Titkos kódok kezelése
+Az Azure Stack-infrastruktúra titkos adatait, például jelszavak, számos függvényt használja. Ezek többsége automatikusan vannak elforgatott gyakran, mert azok a csoport felügyelt szolgáltatásfiókok, amelyek 24 óránként elforgatása.
 
-## <a name="secret-management"></a>Titkos kezelése
-Azure-verem infrastruktúra titkos adatait, például jelszavak, számos működéséhez használja. Legtöbbjük a program automatikusan elforgatja gyakran, mivel azok csoport által felügyelt szolgáltatásfiókok, amelyek elforgatása 24 óránként.
+A fennmaradó titkos kódok, amelyek nem csoport felügyelt szolgáltatásfiókok manuálisan is rotációja parancsprogrammal Rendszerjogosultságú végpontját.
 
-A fennmaradó titkos kulcsok, amelyek nincsenek csoport által felügyelt szolgáltatásfiókok forgatható el manuálisan a kiemelt végpont parancsfájllal.
+## <a name="code-integrity"></a>Kódintegritás
+Az Azure Stack felhasznál a legújabb Windows Server 2016 biztonsági funkciói. Őket egyik, a Windows Defender Device Guard, amely biztosítja az alkalmazások engedélyezési listáinak, és biztosítja, hogy, hogy csak hitelesített a kód lefut az Azure Stack-infrastruktúrán belül. 
 
-## <a name="code-integrity"></a>A kódintegritás
-Az Azure verem alkalmazza a legújabb Windows Server 2016 funkciókat. Az egyik legyen a Windows Defender Eszközvédelem, amely alkalmazások engedélyezése biztosít, és biztosítja, hogy csak hitelesített kód futtatása az Azure-verem infrastruktúráján belül. 
+Microsoft vagy az OEM-partner által aláírt jogosult kódot, és a Microsoft által definiált szabályzat megadott engedélyezett szoftverek listája szerepel. Más szóval csak olyan szoftver, amely az Azure Stack-infrastruktúra futtatásához jóvá lett hagyva hajthatók végre. Jogosulatlan kódvégrehajtást tett bármilyen kísérlet le van tiltva, és a egy naplózási jön létre.
 
-Microsoft vagy az OEM partner által aláírt engedélyezett kódot, és megtalálható a Microsoft által megadott házirend megadott engedélyezett szoftverek listáját. Ez azt jelenti csak az Azure-verem infrastruktúra futtatását jóváhagyott szoftverek hajtható végre. Jogosulatlan kódot próbál le van tiltva, és naplózási jön létre.
+A Device Guard-szabályzat is megakadályozza, hogy külső ügynökeinek és szoftverének futtatása az Azure Stack-infrastruktúra.
 
-A Eszközvédelem házirend is megakadályozza, hogy külső ügynökeinek és szoftverének az Azure-verem infrastruktúrában működő.
-
-## <a name="credential-guard"></a>Hitelesítőadat-emelés
-Egy másik Windows Server 2016-os biztonsági szolgáltatás Azure verem a Windows Defender hitelesítőadat-őrfeltétellel az önmagukat Azure verem infrastruktúra hitelesítő adatokat a Pass-the-Hash és Pass-the-Ticket támadások elleni védelméhez használt.
+## <a name="credential-guard"></a>Credential Guard
+Egy másik Windows Server 2016 biztonsági szolgáltatás az Azure Stackben a Windows Defender Credential Guard, amelyet az Azure Stack infrastruktúra hitelesítő adatok védelme a Pass-the-Hash és Pass-the-ticket típusú támadásokkal szemben.
 
 ## <a name="antimalware"></a>Kártevőirtó
-A Windows Defender víruskereső minden összetevő Azure verem (Hyper-V-gazdagépek és virtuális gépek) védett.
+Az Azure Stackben (Hyper-V-gazdagépek és virtuális gépek) minden összetevő a Windows Defender víruskereső használható védett.
+
+A csatlakoztatott esetben víruskereső definíció- és keresőmotor-frissítéseket érvényesek naponta több alkalommal. Kapcsolat nélküli esetekben használható, a kártevőirtó-frissítések alkalmazása a havi Azure Stack-frissítés részeként. Lásd: [frissítése a Windows Defender víruskereső használható az Azure Stacken](azure-stack-security-av.md) további információt.
 
 ## <a name="constrained-administration-model"></a>Korlátozott adminisztrációs modell
-Azure verem felügyeleti szabályozza az egy adott célhoz három belépési pontok használatával: 
-1. A [adminisztrációs portálhoz](azure-stack-manage-portals.md) pont kattintson élményt nyújt a napi felügyeleti műveleteket.
-2. Az Azure Resource Manager tesz elérhetővé a felügyeleti portál, a REST API-n keresztül, PowerShell és az Azure CLI által használt összes felügyeleti műveletet. 
-3. Az alacsony szintű műveleteket, például data center integrációs vagy forgatókönyvek támogatása, Azure verem közzétesz egy PowerShell-végpont nevű [kiemelt végpont](azure-stack-privileged-endpoint.md). Ehhez a végponthoz tesz elérhetővé, csak szerepel az engedélyezési listán parancsmagokat, és fokozottan ellenőrzi.
+Az Azure Stackben felügyeleti szabályozza mindegyike adott célt három belépési pontok használatával: 
+1. A [adminisztrátori portál](azure-stack-manage-portals.md) pont kattintással élményt nyújt a napi felügyeleti műveleteket.
+2. Az Azure Resource Manager a felügyeleti portál egy REST API, PowerShell és az Azure CLI által használt összes felügyeleti műveletet tesz elérhetővé. 
+3. Adott alacsony szintű műveletek, például data center integration vagy forgatókönyvek támogatása, Azure Stack egy nevű PowerShell-végpontot tesz közzé [kiemelt végponthoz](azure-stack-privileged-endpoint.md). Ezt a végpontot tesz elérhetővé, csak engedélyezési listához hozzáadni kívánt parancsmagok, és erősen ellenőrzi.
 
-## <a name="network-controls"></a>Hálózati vezérlő
-Hálózati hozzáférés-vezérlési List(ACL) többrétegű Azure verem infrastruktúra tartalmaz. A hozzáférés-vezérlési jogosulatlan hozzáférés elkerülése érdekében az infrastruktúra-összetevőihez, és csak az elérési utakat a működéséhez szükséges infrastruktúra kommunikációt korlátozza. 
+## <a name="network-controls"></a>Hálózati vezérlők
+Az Azure Stack-infrastruktúra hálózati hozzáférés-vezérlési List(ACL) több réteget tartalmaz. Az ACL-ek jogosulatlan hozzáférés elkerülése érdekében az infrastruktúra-összetevőket, és csak az elérési utak a működéséhez szükséges infrastruktúra kommunikációt korlátozza. 
 
-Hálózati hozzáférés-vezérlési listákat a három réteg lépnek érvénybe:
-1.  Állvány kapcsolók tetejéhez
-2.  A szoftveralapú hálózati
-3.  Gazdagép és virtuális gép operációs rendszer tűzfal 
+Hálózati hozzáférés-vezérlési listák érvényben vannak, a három réteg:
+1.  Tor-kapcsolók
+2.  Szoftveralapú hálózat
+3.  Gazdagép és a virtuális gép operációsrendszer-tűzfalak
 
+## <a name="next-steps"></a>További lépések
 
+- [Ismerje meg, az Azure Stack titkos kulcsainak rotálása](azure-stack-rotate-secrets.md)

@@ -1,12 +1,12 @@
 | Erőforrás | Alapértelmezett korlát | Felső korlát |
 | --- | --- | --- |
-| Erőforrások / [erőforráscsoport](../articles/azure-resource-manager/resource-group-overview.md#resource-groups) (erőforrás típusonkénti) |800 |Egy erőforrástípus változik |
-| Az üzembe helyezési előzményeket erőforráscsoportra központi telepítések |800 |800 |
-| Üzemelő példányonként források |800 |800 |
-| Felügyeleti zárolásainak (egyedi hatókör) |20 |20 |
-| (Egyes erőforrás vagy erőforráscsoport) címkék száma |15 |15 |
+| Erőforrások száma [erőforráscsoport](../articles/azure-resource-manager/resource-group-overview.md#resource-groups) (/ erőforrástípust) |800 |Erőforrás típusa szerint változó |
+| Az üzembe helyezési előzmények erőforráscsoportonként központi telepítések |800 |800 |
+| Erőforrások száma üzemelő példányonként |800 |800 |
+| Felügyeleti zárolások (/ egyedi hatókör) |20 |20 |
+| A címkék száma (egy erőforrást vagy erőforráscsoportot) |15 |15 |
 | Címke kulcs hossza |512 |512 |
-| Címke érték hossza |256 |256 |
+| Címke hossza |256 |256 |
 
 
 #### <a name="template-limits"></a>Sablon korlátok
@@ -15,13 +15,13 @@
 | --- | --- | --- |
 | Paraméterek |256 |256 |
 | Változók |256 |256 |
-| Erőforrások (például a példányszám) |800 |800 |
+| Erőforrások (beleértve a másolási száma) |800 |800 |
 | Kimenetek |64 |64 |
-| Sablon kifejezés |24,576 karakter |24,576 karakter |
+| Kifejezés |24,576 karakter |24,576 karakter |
 | Az exportált sablonok erőforrások |200 |200 | 
-| Sablonok mérete |1 MB |1 MB |
-| A paraméter mérete |64 KB |64 KB |
+| Sablon mérete |1 MB |1 MB |
+| Fájl mérete paraméter |64 KB |64 KB |
 
-Néhány sablon korlátot azért lépheti túl a beágyazott sablon használatával. További információkért lásd: [kapcsolt sablonok használata az Azure-erőforrások telepítésekor](../articles/azure-resource-manager/resource-group-linked-templates.md). A paraméterek, változók vagy kimenetek számának csökkentése érdekében kombinálható egy objektum több értéket. További információkért lásd: [paraméterekként objektumok](../articles/azure-resource-manager/resource-manager-objects-as-parameters.md).
+Néhány sablon korlát beágyazott sablonok segítségével is lehet. További információkért lásd: [kapcsolt sablonok használata az Azure-erőforrások üzembe helyezésekor](../articles/azure-resource-manager/resource-group-linked-templates.md). A paraméterek, a változók és a kimenetek számának csökkentése, több értéket is egyesítendő objektum. További információkért lásd: [paraméterekként objektumok](../articles/azure-resource-manager/resource-manager-objects-as-parameters.md).
 
-Ha Ön eléri a erőforráscsoportra 800 központi telepítések, központi telepítések törlése az előzmények már nem szükséges. Az előzmények bejegyzéseinek törölheti [az csoport központi telepítésének törlése](/cli/azure/group/deployment#az_group_deployment_delete) Azure CLI használata esetén vagy [Remove-AzureRmResourceGroupDeployment](/powershell/module/azurerm.resources/remove-azurermresourcegroupdeployment) a PowerShellben. Bejegyzést az üzemelő példány előzményeinek a törlése nem érinti a telepítés erőforrások. 
+Ha eléri a korlátot, az adott erőforráscsoport esetében 800 központi telepítések, törölje a központi telepítések az előzményekben tekintheti át, hogy már nincs rá szükség. Bejegyzések törölheti az előzményekből [az csoport központi telepítésének törlése](/cli/azure/group/deployment#az_group_deployment_delete) Azure CLI-hez, vagy [Remove-AzureRmResourceGroupDeployment](/powershell/module/azurerm.resources/remove-azurermresourcegroupdeployment) a PowerShellben. Az üzembe helyezési előzmények bejegyzés törlése nem befolyásolja az üzembe helyezés erőforrásokat. 

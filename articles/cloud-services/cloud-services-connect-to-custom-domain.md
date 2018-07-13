@@ -1,9 +1,9 @@
 ---
-title: Csatlakozás egy Felhőszolgáltatás egy egyéni tartományvezérlőhöz |} Microsoft Docs
-description: Ismerje meg a webes vagy feldolgozói szerepköröket egy egyéni AD tartományhoz, PowerShell és az Active Directory-tartománynak bővítmény használatával
+title: Cloud Service csatlakoztatása egyéni tartományvezérlőhöz |} A Microsoft Docs
+description: Ismerje meg, hogyan csatlakozhat egy egyéni Active Directory-tartománynak, PowerShell és az Active Directory-tartománynak bővítmény használatával a webes/feldolgozói szerepkörök
 services: cloud-services
 documentationcenter: ''
-author: Thraka
+author: jpconnock
 manager: timlt
 editor: ''
 ms.assetid: 1e2d7c87-d254-4e7a-a832-67f84411ec95
@@ -13,28 +13,28 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/18/2017
-ms.author: adegeo
-ms.openlocfilehash: 4a50ae5e19ff9bf79b7f5361e5a274a2aba350f5
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.author: jeconnoc
+ms.openlocfilehash: b05e20b5c99c6f1b5b1bf93ca781ec97284fba79
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/09/2018
-ms.locfileid: "29845655"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39004915"
 ---
-# <a name="connecting-azure-cloud-services-roles-to-a-custom-ad-domain-controller-hosted-in-azure"></a>Azure Cloud Services szerepkörök csatlakozik egy egyéni Azure-ban üzemeltetett AD tartományvezérlő
-Első üzembe helyezünk egy virtuális hálózatot (VNet) az Azure-ban. Majd felveszi azt a virtuális hálózat egy Active Directory-tartományvezérlőhöz (az Azure virtuális gép üzemeltetett). Ezután azt fogja meglévő felhőszolgáltatás szerepköreit hozzá a korábban létrehozott virtuális hálózatot, majd csatlakoztassa őket a tartományvezérlő.
+# <a name="connecting-azure-cloud-services-roles-to-a-custom-ad-domain-controller-hosted-in-azure"></a>Az Azure Cloud Services-szerepkörök csatlakozik az Azure AD Domain Controller egyéni
+Mi lesz először beállítása egy virtuális hálózatot (VNet) az Azure-ban. Majd hozzáadjuk egy Active Directory tartományvezérlővel (egy Azure virtuális gépen található) a virtuális hálózathoz. Ezután azt fogja hozzáadása meglévő felhőszolgáltatásokhoz tartozó szerepkörök az előre létrehozott virtuális hálózathoz, majd csatlakoztassa őket a tartományvezérlő.
 
-Mielőtt azt először néhány dolgot szem előtt tartani:
+Mielőtt, néhány dolgot figyelembe kell venni:
 
-1. Ez az oktatóanyag PowerShell használja, ezért győződjön meg arról, hogy az Azure PowerShell telepítve, és készen áll. Ha segítséget szeretne kapni beállítása az Azure PowerShell, lásd: [telepítése és konfigurálása az Azure PowerShell](/powershell/azure/overview).
-2. Az AD-tartományvezérlő és a webes vagy feldolgozói szerepkör-példányok kell lennie a Vneten belül.
+1. Ebben az oktatóanyagban a Powershellt használja, ezért ellenőrizze, hogy az Azure PowerShell telepítve, nyissa meg. Azure PowerShell-lel beállításához segítséget szeretne kérni, lásd: [telepítése és konfigurálása az Azure PowerShell-lel](/powershell/azure/overview).
+2. Az AD-tartományvezérlő és a webes/feldolgozói szerepkört példányok kell lennie a virtuális hálózaton.
 
-Kövesse a cikk részletesen ismerteti, és ha esetleges problémákat tapasztal, hagyja, a cikk végén megjegyzést. Valaki fog visszaszerezheti (Igen, találtunk megjegyzések).
+Kövesse a cikk részletesen ismerteti, és ha problémákat tapasztal, írjon rólunk a cikk végén található megjegyzés. Valaki fog kollégáink felveszik Önnel (Igen, hogy olvasási megjegyzések).
 
-A hálózat, a felhőalapú szolgáltatás által hivatkozott kell egy **klasszikus virtuális hálózatot**.
+A hálózat, a felhőalapú szolgáltatás által hivatkozott kell lennie egy **klasszikus virtuális hálózat**.
 
 ## <a name="create-a-virtual-network"></a>Virtuális hálózat létrehozása
-Létrehozhat egy virtuális hálózatot az Azure-ban az Azure portálon vagy a PowerShell. Ebben az oktatóanyagban a PowerShell szolgál. Hozzon létre egy virtuális hálózatot az Azure portál használatával, lásd: [hozzon létre egy virtuális hálózatot](../virtual-network/quick-create-portal.md). A cikk ismerteti a virtuális hálózat (erőforrás-kezelő) létrehozása, de létre kell hoznia egy virtuális hálózat (klasszikus) felhőszolgáltatásai számára. Ehhez a portálon, válassza ki a **hozzon létre egy erőforrást**, típus *virtuális hálózati* a a **keresési** mezőbe, majd nyomja le az **Enter**. A keresési eredmények között a **mindent**, jelölje be **virtuális hálózati**. A **telepítési modell kiválasztása**, jelölje be **klasszikus**, majd jelölje be **létrehozása**. Kövesse a cikkben található lépéseket.
+Létrehozhat egy virtuális hálózatot az Azure-ban az Azure portal vagy a PowerShell használatával. Ebben az oktatóanyagban a PowerShell használnak. Hozzon létre egy virtuális hálózatot az Azure portal használatával, lásd: [hozzon létre egy virtuális hálózatot](../virtual-network/quick-create-portal.md). A cikk ismerteti, hogy egy virtuális hálózatot (Resource Manager) hoz létre, de létre kell hoznia egy virtuális hálózat (klasszikus) felhőszolgáltatásokhoz. Ehhez a portálon, válassza ki a **erőforrás létrehozása**, típus *virtuális hálózat* a a **keresési** mezőbe, majd nyomja le az **Enter**. A keresési eredmények alapján **mindent**válassza **virtuális hálózati**. Alatt **telepítési modell kiválasztása**válassza **klasszikus**, majd **létrehozás**. Kövesse a cikkben található lépéseket.
 
 ```powershell
 #Create Virtual Network
@@ -64,9 +64,9 @@ Set-AzureVNetConfig -ConfigurationPath $vnetConfigPath
 ```
 
 ## <a name="create-a-virtual-machine"></a>Virtuális gép létrehozása
-A virtuális hálózat beállításának befejezése után szüksége lesz egy AD-tartományvezérlő létrehozása. Ebben az oktatóanyagban azt szeretné állítani egy AD-tartományvezérlő egy Azure virtuális gépen.
+Miután befejezte a virtuális hálózat létrehozása, szüksége lesz egy AD-tartományvezérlő létrehozása. A jelen oktatóanyag esetében azt szeretné állítani egy AD-tartományvezérlő egy Azure virtuális gépen.
 
-Ehhez hozzon létre egy virtuális gépet a PowerShell segítségével az alábbi parancsok használatával:
+Ehhez hozzon létre egy virtuális gépet a PowerShell használatával a következő parancsokat:
 
 ```powershell
 # Initialize variables
@@ -86,19 +86,19 @@ New-AzureQuickVM -Windows -ServiceName $vmsvc1 -Name $vm1 -ImageName $imgname -A
 ```
 
 ## <a name="promote-your-virtual-machine-to-a-domain-controller"></a>A virtuális gép egy tartományvezérlő előléptetése
-A virtuális gép konfigurálása az AD-tartományvezérlő, be kell jelentkezzen be a virtuális Gépet, majd konfigurálja.
+A virtuális gép konfigurálásához AD tartományvezérlőként, szüksége lesz jelentkezzen be a virtuális Gépre, és konfigurálja azt.
 
-Jelentkezzen be a virtuális Gépet, akkor az RDP-fájl beolvasása a PowerShell használatával, az alábbi parancsokat használja:
+Jelentkezzen be a virtuális Gépet, akkor az RDP-fájljának beolvasása a Powershellen keresztül, használja a következő parancsokat:
 
 ```powershell
 # Get RDP file
 Get-AzureRemoteDesktopFile -ServiceName $vmsvc1 -Name $vm1 -LocalPath <rdp-file-path>
 ```
 
-Miután bejelentkezett a virtuális gép, állítsa be a virtuális gép AD-tartományvezérlő, tekintse meg a részletes útmutatót [az ügyfél AD-tartományvezérlő beállításával](http://social.technet.microsoft.com/wiki/contents/articles/12370.windows-server-2012-set-up-your-first-domain-controller-step-by-step.aspx).
+Miután bejelentkezett a virtuális Gépet, a virtuális gép beállításához AD-tartományvezérlő, a következő, a részletes útmutató [hogyan állítható be az ügyfél AD-tartományvezérlő](http://social.technet.microsoft.com/wiki/contents/articles/12370.windows-server-2012-set-up-your-first-domain-controller-step-by-step.aspx).
 
-## <a name="add-your-cloud-service-to-the-virtual-network"></a>A felhőalapú szolgáltatás hozzáadása a virtuális hálózathoz
-Ezt követően kell a felhőalapú szolgáltatás központi telepítés hozzáadása az új Vnetet. Ehhez az szükséges, módosítsa a felhőalapú szolgáltatás szolgáltatáskonfigurációs séma vonatkozó szakaszaihoz ad hozzá a szolgáltatáskonfigurációs séma, a Visual Studio vagy az Ön által választott szerkesztőben.
+## <a name="add-your-cloud-service-to-the-virtual-network"></a>A Felhőszolgáltatás a virtuális hálózat hozzáadása
+Következő lépésként hozzá kell a felhőszolgáltatás üzembe helyezésének és az új vnet között. Ehhez módosítsa a cloud service cscfg vonatkozó szakaszaihoz vezetnek ad hozzá a cscfg a Visual Studio vagy a tetszőleges szövegszerkesztőben.
 
 ```xml
 <ServiceConfiguration serviceName="[hosted-service-name]" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceConfiguration" osFamily="[os-family]" osVersion="*">
@@ -129,10 +129,10 @@ Ezt követően kell a felhőalapú szolgáltatás központi telepítés hozzáad
 </ServiceConfiguration>
 ```
 
-Ezután hozza létre a felhőalapú szolgáltatások projektet, és telepítheti az Azure. Ha segítséget szeretne kapni a cloud services csomag telepítése az Azure-ba, tekintse meg a [létrehozásáról és központi telepítése egy felhőalapú szolgáltatás](cloud-services-how-to-create-deploy-portal.md)
+Ezután a cloud services-projekt létrehozása és üzembe helyezése az Azure. Kérjen segítséget a cloud services csomag telepítése az Azure-ba, lásd: [létrehozása és a egy felhőalapú szolgáltatás üzembe helyezése](cloud-services-how-to-create-deploy-portal.md)
 
-## <a name="connect-your-webworker-roles-to-the-domain"></a>A webes vagy feldolgozói szerepköröket csatlakozni a tartományhoz
-Miután a felhőszolgáltatás-projekt Azure van telepítve, csatlakoztassa a szerepkörpéldányok az egyéni AD-tartomány, az Active Directory-tartománynak kiterjesztés használatával. Az Active Directory-tartománynak-bővítmény hozzáadása a meglévő felhőalapú szolgáltatások telepítéséhez, és az egyéni tartományhoz, a PowerShell hajtható végre a következő parancsokat:
+## <a name="connect-your-webworker-roles-to-the-domain"></a>A webes/feldolgozói szerepkörök a csatlakozás tartományhoz
+Az Azure-ban a felhőszolgáltatás-projekt üzembe helyezése után csatlakozzon a szerepkörpéldányok az egyéni AD-tartományhoz az Active Directory-tartománynak bővítmény használatával. Adja hozzá az Active Directory-tartománynak bővítményt a meglévő cloud services üzembe helyezésével, és az egyéni tartományhoz csatlakozik, hajtsa végre az alábbi parancsokat a PowerShellben:
 
 ```powershell
 # Initialize domain variables
@@ -148,9 +148,9 @@ $dmcred = New-Object System.Management.Automation.PSCredential ($dmuser, $dmspwd
 Set-AzureServiceADDomainExtension -Service <your-cloud-service-hosted-service-name> -Role <your-role-name> -Slot <staging-or-production> -DomainName $domain -Credential $dmcred -JoinOption 35
 ```
 
-És azt.
+És ennyi az egész.
 
-A felhőszolgáltatások egyéni tartományvezérlő kell csatlakoztatni. Ha azt szeretné, további információt az Active Directory-tartománynak bővítmény konfigurálásáról a különböző beállítások, a PowerShell súgójának használata. Néhány példa kövesse:
+A cloud Services szolgáltatások az egyéni tartományvezérlőn kell csatlakoztatni. Ha további információ az Active Directory-tartománynak bővítmény konfigurálása a különböző beállításokat szeretne, használja a PowerShell segítségével. Néhány példa kövesse:
 
 ```powershell
 help Set-AzureServiceADDomainExtension

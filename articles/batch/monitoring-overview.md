@@ -1,6 +1,6 @@
 ---
-title: Az Azure Batch figyelése |} Microsoft Docs
-description: Tudnivalók Azure figyelési szolgáltatásokat, metrikákat, diagnosztikai naplók és egyéb szolgáltatásokat az Azure-köteg.
+title: Az Azure Batch figyelése |} A Microsoft Docs
+description: További információk az Azure figyelési szolgáltatások, metrikák, a diagnosztikai naplók és más figyelési szolgáltatásokat az Azure Batch.
 services: batch
 author: dlepow
 manager: jeconnoc
@@ -11,62 +11,62 @@ ms.topic: article
 ms.workload: na
 ms.date: 04/05/2018
 ms.author: danlep
-ms.openlocfilehash: 29ac86ed5c744d37150b0f1b2db17f60306fe77e
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: fd4226254e076957ac8651f9172f1f3f82427a60
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2018
-ms.locfileid: "31789951"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39001830"
 ---
 # <a name="monitor-batch-solutions"></a>Batch-megoldások monitorozása
 
-Azure, a Batch szolgáltatás meg a szolgáltatások, eszközök és API-k figyelése a kötegelt megoldások számos. Ez a cikk áttekintése segítséget nyújt a megfigyelési módszer is létezik, amely megfelel az igényeinek.
+Az Azure és a Batch szolgáltatás biztosít a szolgáltatások, eszközök és a Batch-megoldások monitorozása az API-k széles. Áttekintő cikkben segítséget nyújt a figyelési módszer is létezik, amely a legjobban az igényeinek.
 
-A Azure összetevőkkel és szolgáltatásokkal figyelhető az Azure-erőforrások áttekintését lásd: [figyelése Azure-alkalmazások és erőforrások](../monitoring-and-diagnostics/monitoring-overview.md).
+Az Azure-összetevőket és Azure-erőforrások figyeléséhez elérhető szolgáltatások áttekintését lásd: [figyelése az Azure-alkalmazások és erőforrások](../monitoring-and-diagnostics/monitoring-overview.md).
 
 ## <a name="subscription-level-monitoring"></a>Előfizetés-szintű figyelése
 
-Az előfizetés szintjén, beleértve a Batch-fiókok, a [Azure tevékenységnapló](../monitoring-and-diagnostics/monitoring-overview-activity-logs.md) gyűjt adatokat működési események [különböző kategóriákba](../monitoring-and-diagnostics/monitoring-overview-activity-logs.md#categories-in-the-activity-log).
+Az előfizetés szintjén, amely magában foglalja a Batch-fiókok, a [Azure tevékenységnapló](../monitoring-and-diagnostics/monitoring-overview-activity-logs.md) gyűjti a működési események adatait [különböző kategóriákba](../monitoring-and-diagnostics/monitoring-overview-activity-logs.md#categories-in-the-activity-log).
 
-A Batch-fiókok kifejezetten, a műveletnapló gyűjti a fiókok létrehozását és törlését és kulcs kezelése kapcsolódó eseményeket.
+A Batch-fiókok kifejezetten, a tevékenységnapló gyűjti a fiók létrehozásának és törlésének és kulcskezelési kapcsolódó eseményeket.
 
-Egy események lekérése a tevékenységnapló módja az Azure-portálon. Kattintson a **minden szolgáltatás** > **tevékenységnapló**. Vagy az Azure parancssori felület, PowerShell-parancsmagokkal vagy a Azure REST API használatával események lekérdezését. A műveletnapló exportálja, vagy is konfigurálja [napló tevékenységriasztásokat](../monitoring-and-diagnostics/monitoring-activity-log-alerts-new-experience.md).
+Események lekérése a tevékenységnaplót egyik módja, hogy az Azure Portalon. Kattintson a **minden szolgáltatás** > **tevékenységnapló**. Vagy, a lekérdezés az események az Azure CLI, PowerShell-parancsmagok vagy az Azure Monitor REST API használatával. A tevékenységnapló exportálása, vagy is konfigurálása [tevékenységnapló-riasztások](../monitoring-and-diagnostics/monitoring-activity-log-alerts-new-experience.md).
 
-## <a name="batch-account-level-monitoring"></a>Batch-fiók szintű figyelése
+## <a name="batch-account-level-monitoring"></a>Batch-fiókszintű figyelése
 
-Minden olyan szolgáltatását használja Batch-fiók figyelése [Azure figyelő](../monitoring-and-diagnostics/monitoring-overview-azure-monitor.md). Az Azure adatokat gyűjt [metrikák](../monitoring-and-diagnostics/monitoring-overview-metrics.md) , illetve opcionálisan [diagnosztikai naplók](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md) Batch-fiók, például a készletek, feladatok és feladatok szintjén hatókörű erőforrások. Gyűjtése és felhasználása ezeket az adatokat, manuálisan vagy programon keresztül a Batch-fiók a tevékenységek figyeléséhez és problémák elemzéséhez. További információkért lásd: [metrikákat, a riasztások és a naplókat a további diagnosztikai értékelési és monitoring kötegelt](batch-diagnostics.md).
+Szolgáltatását használja, amely minden egyes Batch-fiók figyelése [Azure Monitor](../monitoring-and-diagnostics/monitoring-overview-azure-monitor.md). Az Azure Monitor gyűjt [metrikák](../monitoring-and-diagnostics/monitoring-overview-metrics.md) és opcionálisan [diagnosztikai naplók](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md) a Batch-fiókot, például a készletek, feladatok és tevékenységek szintjén hatókörön belüli erőforrások. Gyűjtése és felhasználása ezeket az adatokat, manuálisan vagy programon keresztül a Batch-fiókban lévő tevékenységek figyelését, és diagnosztizálhatja a problémákat. További információkért lásd: [Batch-metrikák, a riasztások és a naplókat a további diagnosztikai kiértékeléséhez és figyeléséhez](batch-diagnostics.md).
  
 > [!NOTE]
-> Metrikák érhetők el a további konfigurálás nélkül a Batch-fiók alapértelmezés szerint, és egy 30 napos működés közbeni előzmények rendelkeznek. Engedélyeznie kell a következő Batch-fiókhoz diagnosztikai naplózás, és Ön tudomásával tárolja, és diagnosztikai naplófájl adatok feldolgozása további költségeket. 
+> Metrikák érhetők el további konfiguráció nélkül a Batch-fiók alapértelmezés szerint, és a egy 30 napos gördülő előzmények rendelkeznek. Engedélyeznie kell a Batch-fiók diagnosztikai naplózását, és Ön további költségekkel járhat tárolásához, vagy diagnosztikai naplóadatokat feldolgozni. 
 
-## <a name="batch-resource-monitoring"></a>Kötegelt erőforrás-figyelése
+## <a name="batch-resource-monitoring"></a>Batch-erőforrások monitorozása
 
-A Batch-alkalmazások, a segítségével a kötegelt API-k figyelése, vagy az erőforrások, többek között a feladatok, a feladatok, a csomópontok és a készletek állapotának lekérdezése. Példa:
+A Batch-alkalmazások a Batch API-k vagy többek között a feladatok, a feladatok, a csomópontok és a készletek az erőforrások állapotának monitorozásához használja. Példa:
 
-* [Feladatok számlálása állapot szerint](batch-get-task-counts.md)
-* [Létrehozhat olyan lekérdezéseket, a lista kötegelt erőforrásokhoz hatékonyan](batch-efficient-list-queries.md)
-* [A feladat függőségek létrehozása](batch-task-dependencies.md)
-* Használja a [manager feladata](/rest/api/batchservice/job/add#jobmanagertask)
+* [Feladatok száma, és a számítási csomópontok állapot szerint](batch-get-resource-counts.md)
+* [Hozzon létre hatékony lekérdezések Batch-erőforrások listája](batch-efficient-list-queries.md)
+* [Tevékenységfüggőségek létrehozása](batch-task-dependencies.md)
+* Használja a [feladatkezelői tevékenység](/rest/api/batchservice/job/add#jobmanagertask)
 * A figyelő a [feladat állapota](/rest/api/batchservice/task/list#taskstate)
 * A figyelő a [csomópont állapota](/rest/api/batchservice/computenode/list#computenodestate)
 * A figyelő a [tárolókészlet állapota](/rest/api/batchservice/pool/get#poolstate)
-* A figyelő [tárolókészlet a fiók használata](/rest/api/batchservice/pool/listusagemetrics)
-* [Count készlet csomópontok állapota alapján](/rest/api/batchservice/account/listpoolnodecounts)
+* A figyelő [készletéből, a fiók használata](/rest/api/batchservice/pool/listusagemetrics)
+* [Készlet csomópontjainak száma a state szerint](/rest/api/batchservice/account/listpoolnodecounts)
 
-## <a name="vm-performance-counters-and-application-monitoring"></a>VM teljesítményszámlálók és az alkalmazás figyelése
+## <a name="vm-performance-counters-and-application-monitoring"></a>Virtuális gép teljesítményszámlálók és az alkalmazás figyelése
 
-* [Az Application Insights](../application-insights/app-insights-overview.md) van az Azure-szolgáltatások segítségével programokon keresztül a rendelkezésre állását, teljesítményét és használatát a kötegelt feladatok és a feladatok figyelése. Egyszerűen get teljesítményszámlálók a számítási csomópontok (VM) és a tevékenységek ki a virtuális gépek egyéni adatait. 
+* [Az Application Insights](../application-insights/app-insights-overview.md) használhatja a rendelkezésre állását, teljesítményét és használatát, a Batch-feladatok és a feladatok programozott figyelése Azure-szolgáltatások. Egyszerűen get Teljesítménymérők számítási csomópontok (virtuális gépek) és a virtuális gépek minden feladatokhoz egyéni információ. 
 
-  Egy vonatkozó példáért lásd: [figyelője és az Application insights szolgáltatással Batch .NET-alkalmazás hibakeresési](monitor-application-insights.md) és az ahhoz mellékelt [kódminta](https://github.com/Azure/azure-batch-samples/tree/master/CSharp/ArticleProjects/ApplicationInsights).
+  Egy vonatkozó példáért lásd: [Monitor és a Batch .NET-alkalmazás, az Application Insights hibakeresési](monitor-application-insights.md) és a kísérő [kódminta](https://github.com/Azure/azure-batch-samples/tree/master/CSharp/ArticleProjects/ApplicationInsights).
 
   > [!NOTE]
-  > Az Application Insights használatához további költségekkel járhat. Tekintse meg a [beállítások árképzési](https://azure.microsoft.com/pricing/details/application-insights/). 
+  > Az Application Insights használatával további költségeket számítanak fel. Tekintse meg a [díjszabási lehetőségek](https://azure.microsoft.com/pricing/details/application-insights/). 
   >
 
-* A [BatchLabs](https://github.com/Azure/BatchLabs) egy ingyenes, számos funkcióval ellátott, különálló ügyféleszköz Azure Batch-alkalmazások létrehozásához, hibakereséséhez és monitorozásához. Töltse le a [telepítőcsomagot](https://azure.github.io/BatchLabs/) Mac, Linux vagy Windows rendszerre. Választható lehetőségként konfigurálhatja a kötegelt megoldást [Application Insights adatainak megjelenítése](https://github.com/Azure/batch-insights) például a virtuális gép teljesítményszámlálók BatchLabs.
+* A [BatchLabs](https://github.com/Azure/BatchLabs) egy ingyenes, számos funkcióval ellátott, különálló ügyféleszköz Azure Batch-alkalmazások létrehozásához, hibakereséséhez és monitorozásához. Töltse le a [telepítőcsomagot](https://azure.github.io/BatchLabs/) Mac, Linux vagy Windows rendszerre. Választható lehetőségként konfigurálhatja a Batch-megoldás a [Application Insights-adatok megjelenítése](https://github.com/Azure/batch-insights) például a virtuális gép teljesítményszámlálókat BatchLabs.
 
 
 ## <a name="next-steps"></a>További lépések
 
 * Megismerheti a Batch-megoldások fejlesztéséhez rendelkezésre álló [Batch API-kat és eszközöket](batch-apis-tools.md).
-* További információ [diagnosztikai naplózás](batch-diagnostics.md) kötegelt.
+* Tudjon meg többet [diagnosztikai naplózás](batch-diagnostics.md) a Batch használatával.

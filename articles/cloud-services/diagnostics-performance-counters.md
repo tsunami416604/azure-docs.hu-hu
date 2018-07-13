@@ -1,9 +1,9 @@
 ---
-title: Az Azure Felhőszolgáltatások teljesítményszámlálók gyűjtése |} Microsoft Docs
-description: Ismerje meg, használata és teljesítményszámlálók létrehozása az Azure Diagnostics és az Application Insights Felhőszolgáltatások útmutató.
+title: Collect, a teljesítményszámlálók az Azure Cloud Servicesben |} A Microsoft Docs
+description: Ismerje meg, hogyan derítheti fel, használata és teljesítményszámlálók létrehozása a Cloud Services, Azure Diagnostics és az Application Insights.
 services: cloud-services
 documentationcenter: .net
-author: thraka
+author: jpconnock
 manager: timlt
 editor: ''
 ms.assetid: ''
@@ -13,21 +13,21 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/02/18
-ms.author: adegeo
-ms.openlocfilehash: 3e0af48c172fa912f0ac9e05b7b761dd7eaad795
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.author: jeconnoc
+ms.openlocfilehash: d3aeb930dcb325aebc8c6b0a9dfde3602312618b
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2018
-ms.locfileid: "29134350"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39001463"
 ---
-# <a name="collect-performance-counters-for-your-azure-cloud-service"></a>Az Azure felhőalapú szolgáltatás a teljesítményszámlálók adatainak összegyűjtése
+# <a name="collect-performance-counters-for-your-azure-cloud-service"></a>Az Azure-felhőszolgáltatás teljesítményszámlálók gyűjtése
 
-Teljesítményszámlálók teszik lehetővé az, hogy nyomon kövesse az alkalmazás és a gazdagép mennyire működnek. A Windows Server hardver, alkalmazások, az operációs rendszer és több kapcsolódó számos különböző teljesítményszámlálók biztosít. Begyűjthetik, és a teljesítményszámlálók küldése az Azure-ba, elemezheti az adatait a jobb döntéseket. 
+Teljesítményszámlálók nyújt arról, hogy az alkalmazás és a gazdagép hajt végre nyomon követéséhez. A Windows Server hardver, alkalmazások, az operációs rendszer és egyéb kapcsolódó számos különböző teljesítményszámlálókat biztosít. Begyűjti és a teljesítményszámlálók küldése az Azure-ba, elemezheti ezeket az információkat, így megalapozottabb döntéseket hozhat. 
 
 ## <a name="discover-available-counters"></a>Elérhető számlálók felderítése
 
-A teljesítményszámláló két részből áll, a készlet neve (más néven kategória) és egy vagy több számlálók épül fel. PowerShell használatával a rendelkezésre álló teljesítményszámlálók listáját:
+A teljesítményszámláló két részből áll, a készlet nevét (más néven kategória) és a egy vagy több számlálók épül fel. PowerShell segítségével a rendelkezésre álló teljesítményszámlálók listája:
 
 ```PowerShell
 Get-Counter -ListSet * | Select-Object CounterSetName, Paths | Sort-Object CounterSetName
@@ -52,9 +52,9 @@ Authorization Manager Applications              {\Authorization Manager Appl...
 #... results cut to save space ...
 ```
 
-A `CounterSetName` tulajdonság a beállítása (vagy kategória), és egy jól jelzi, hogy mi kapcsolódó a teljesítményszámlálókat. A `Paths` tulajdonság készletének teljesítményszámlálók gyűjteményét jelképezi. Is lehetett beolvasni a `Description` további információt a számlálókészlet tulajdonság.
+A `CounterSetName` tulajdonság beállítása (vagy kategória) jelöli, és jól mutatja, milyen kapcsolódó a teljesítményszámlálókat. A `Paths` tulajdonság egy számlálót egy gyűjteményét képviseli. Sikerült érhet el a `Description` tulajdonság a számlálókészlet további információt.
 
-Összes számlálót állítja be, amelyet a `CounterSetName` értékét, és bontsa ki a `Paths` gyűjtemény. Mindegyik elérési út elem lekérheti számlálót. Ahhoz például, hogy a rendelkezésre álló kapcsolatos számlálókat beolvasása a `Processor` beállításához bontsa ki a `Paths` gyűjtemény:
+A beállított összes számlálót lekéréséhez használja a `CounterSetName` értékét, és bontsa ki a `Paths` gyűjtemény. Mindegyik elérési út elem lekérdezheti, ha egy számlálót. Például az elérhető számlálók kapcsolatos lekérése a `Processor` állítsa be, bontsa ki a `Paths` gyűjtemény:
 
 ```PowerShell
 Get-Counter -ListSet * | Where-Object CounterSetName -eq "Processor" | Select -ExpandProperty Paths
@@ -76,17 +76,17 @@ Get-Counter -ListSet * | Where-Object CounterSetName -eq "Processor" | Select -E
 \Processor(*)\C3 Transitions/sec
 ```
 
-Ezen egyéni számláló elérési utak adhatók hozzá a diagnosztikai keretrendszer a felhőalapú szolgáltatás használja. A teljesítményszámláló-elérési út összeállított hogyan kapcsolatos további információkért lásd: [a számláló elérési útjának](https://msdn.microsoft.com/library/windows/desktop/aa373193(v=vs.85)).
+Ezek az egyes számláló elérési utak adhatók hozzá a diagnosztikai keretrendszer a felhőszolgáltatás használja. A teljesítményszámláló-elérési út összeállított hogyan kapcsolatos további információkért lásd: [számláló elérési út megadását](https://msdn.microsoft.com/library/windows/desktop/aa373193(v=vs.85)).
 
 ## <a name="collect-a-performance-counter"></a>A teljesítményszámláló gyűjtése.
 
-A teljesítményszámláló felveheti az Azure Diagnostics és az Application Insights felhőszolgáltatáshoz.
+A cloud Services, Azure Diagnostics vagy az Application Insights-teljesítményszámláló is hozzáadhatók.
 
 ### <a name="application-insights"></a>Application Insights
 
-Azure Application Insights Felhőszolgáltatásai számára lehetővé teszi, akkor adja meg, milyen gyűjtendő kérelemteljesítmény-számlálókat. Miután [Application Insights hozzáadása a projekthez](../application-insights/app-insights-cloudservices.md#sdk), nevű konfigurációs fájl **ApplicationInsights.config** hozzáadódik a Visual Studio-projektet. A konfigurációs fájl határozza meg, milyen típusú információkat az Application Insights gyűjt, és az Azure-bA küldése.
+A Cloud Services az Azure Application Insights lehetővé teszi, hogy Ön adja meg, hogy mely teljesítményszámlálókat szeretné gyűjteni. Miután [az Application Insights hozzáadása a projekthez](../application-insights/app-insights-cloudservices.md#sdk), egy konfigurációs fájlt **ApplicationInsights.config** adnak hozzá a Visual Studio-projektben. A konfigurációs fájl határozza meg, milyen típusú információt az Application Insights összegyűjti, és az Azure-bA küldi.
 
-Nyissa meg a **ApplicationInsights.config** fájlt, és keresse a **ApplicationInsights** > **TelemetryModules** elemet. Minden egyes `<Add>` gyermekelem telemetriai adatokat gyűjthet, és a konfigurálás egy típusa határozza meg. A teljesítmény számláló telemetriai modul típusa `Microsoft.ApplicationInsights.Extensibility.PerfCounterCollector.PerformanceCollectorModule, Microsoft.AI.PerfCounterCollector`. Ha ez az elem már definiálva van, nem adja hozzá azt még egyszer. Minden teljesítményszámláló gyűjtéséhez definiálva egy csomópontot a `<Counters>`. Íme egy példa a meghajtó teljesítményszámlálók összegyűjtő:
+Nyissa meg a **ApplicationInsights.config** fájlt és keresse meg a **ApplicationInsights** > **fájl TelemetryModules** elemet. Minden egyes `<Add>` gyermekelem egy telemetriai adatokat gyűjt, és a konfiguráció típusát határozza meg. A teljesítmény számláló telemetriai modultípus van `Microsoft.ApplicationInsights.Extensibility.PerfCounterCollector.PerformanceCollectorModule, Microsoft.AI.PerfCounterCollector`. Ha ez az elem már definiálva van, vegye fel egy második alkalommal. Minden teljesítményszámláló gyűjtésére van definiálva egy nevű csomópont alatt `<Counters>`. Íme egy példa által gyűjtött teljesítményszámlálók meghajtó:
 
 ```xml
 <ApplicationInsights xmlns="http://schemas.microsoft.com/ApplicationInsights/2013/Settings">
@@ -105,7 +105,7 @@ Nyissa meg a **ApplicationInsights.config** fájlt, és keresse a **ApplicationI
 <!-- ... cut to save space ... -->
 ```
 
-Teljesítményszámlálók egy jelenik meg egy `<Add>` elem alatt `<Counters>`. A `PerformanceCounter` attribútum adja meg, milyen teljesítményszámláló gyűjtéséhez. A `ReportAs` attribútum a cím megjelenítése a teljesítményszámláló az Azure portálon. Minden gyűjtött számláló helyezni, kategóriát **egyéni** a portálon. Azure Diagnostics eltérően nem állítható be az időköz, a teljesítményszámlálók gyűjtése és az Azure-bA küldése. Az Application insights szolgáltatással teljesítményszámlálók gyűjtése és küld percenként. 
+Minden teljesítményszámláló jelenik meg egy `<Add>` elemet `<Counters>`. A `PerformanceCounter` attribútum adja meg, hogy milyen teljesítményszámláló gyűjtése a. A `ReportAs` attribútum a cím megjelenítése a teljesítményszámláló az Azure Portalon. Bármilyen teljesítményszámláló gyűjtése, a rendszer elhelyezi egy kategóriát **egyéni** a portálon. Azure Diagnostics, ellentétben nem állítható be az időközt, a teljesítményszámlálók gyűjtése és Azure-ra. Az Application Insights teljesítményszámlálók gyűjtése és minden percben küldött. 
 
 Az Application Insights automatikusan gyűjti a következő teljesítményszámlálókkal:
 
@@ -116,22 +116,22 @@ Az Application Insights automatikusan gyűjti a következő teljesítményszáml
 * \Process(??APP_WIN32_PROC??)\IO Data Bytes/sec
 * \Processor(_Total)\% Processor Time
 
-További információkért lásd: [rendszerteljesítmény-számlálók az Application Insightsban](../application-insights/app-insights-performance-counters.md) és [Application Insights Azure-szolgáltatásokhoz](../application-insights/app-insights-cloudservices.md#performance-counters).
+További információkért lásd: [rendszerteljesítmény-számlálók az Application Insights](../application-insights/app-insights-performance-counters.md) és [Application Insights az Azure Cloud Services](../application-insights/app-insights-cloudservices.md#performance-counters).
 
 ### <a name="azure-diagnostics"></a>Azure Diagnostics
 
 > [!IMPORTANT]
-> Ezeket az adatokat a tárfiók összesítve, amíg a portál does **nem** biztosít a Diagramadat natív módot. Erősen ajánlott, hogy egy másik diagnosztika szolgáltatást, mint az Application Insights az alkalmazásba integrálja.
+> Ezeket az adatokat összesített értéket jelenít meg a tárfiókba, míg a portálon nem **nem** natív módon az adatokat diagram. Azt javasoljuk, hogy egy másik diagnostics szolgáltatást, például az Application Insights, az alkalmazásba integrálja.
 
-Az Azure Diagnostics a Felhőszolgáltatások bővítménnyel megadhatja, milyen gyűjtendő kérelemteljesítmény-számlálókat. Azure Diagnostics beállításához tekintse meg a [felhőalapú szolgáltatás Figyelés áttekintése](cloud-services-how-to-monitor.md#setup-diagnostics-extension).
+A Cloud Services az Azure Diagnostics bővítmény lehetővé teszi, hogy Ön adja meg, hogy mely teljesítményszámlálókat szeretné gyűjteni. Azure Diagnostics beállításával kapcsolatban lásd: [Cloud Service-Figyelés áttekintése](cloud-services-how-to-monitor.md#setup-diagnostics-extension).
 
-A gyűjtendő kérelemteljesítmény-számlálókat vannak definiálva a **diagnostics.wadcfgx** fájlt. A Visual Studio (meg van adva egy szerepkör) fájl megnyitása, és keresse a **DiagnosticsConfiguration** > **PublicConfig** > **WadCfg**  >  **DiagnosticMonitorConfiguration** > **PerformanceCounters** elemet. Adjon hozzá egy új **PerformanceCounterConfiguration** elem gyermek. Ez az elem két attribútumokkal rendelkezik: `counterSpecifier` és `sampleRate`. A `counterSpecifier` attribútum adja meg, melyik számláló értéke (az előző szakaszban itt ismertetett) gyűjt rendszer teljesítményét. A `sampleRate` érték azt jelzi, hogy milyen gyakran van kérdezi le azt az értéket. A teljes teljesítményszámlálók átkerülnek Azure megfelelően a szülő `PerformanceCounters` elem `scheduledTransferPeriod` attribútum értéke.
+A gyűjtendő teljesítményszámlálókat meghatározott a **diagnostics.wadcfgx** fájlt. A Visual Studióban nyissa meg ezt a fájlt (van definiálva szerepkörönként), és keresse meg a **DiagnosticsConfiguration** > **PublicConfig** > **WadCfg**  >  **DiagnosticMonitorConfiguration** > **PerformanceCounters** elemet. Vegyen fel egy új **PerformanceCounterConfiguration** gyermek elemet. Ez az elem két attribútumokkal rendelkezik: `counterSpecifier` és `sampleRate`. A `counterSpecifier` attribútum adja meg, melyik gyűjtéséhez számláló (az előző szakaszban bekeretezett) beállítása a rendszer teljesítménye. A `sampleRate` érték azt jelzi, hogy milyen gyakran van kérdezi le azt az értéket. Egész minden teljesítményszámlálót átkerülnek az Azure-ban a szülő megfelelően `PerformanceCounters` elem `scheduledTransferPeriod` attribútum értéke.
 
-További információ a `PerformanceCounters` schema elemben, tekintse meg a [Azure Diagnostics séma](../monitoring-and-diagnostics/azure-diagnostics-schema-1dot3-and-later.md#performancecounters-element).
+További információ a `PerformanceCounters` sémaelem, tekintse meg a [Azure Diagnostics-séma](../monitoring-and-diagnostics/azure-diagnostics-schema-1dot3-and-later.md#performancecounters-element).
 
-Az által megadott idő a `sampleRate` XML időtartama adattípus annak jelzésére, hogy milyen gyakran van kérdezi le azt a teljesítményszámláló attribútum használja. Az alábbi példában a sebesség értéke `PT3M`, ami azt jelenti, `[P]eriod[T]ime[3][M]inutes`: három percenként.
+A megadott időszakra a `sampleRate` az XML-időtartam adatokat írja be annak jelzésére, hogy milyen gyakran van kérdezi le azt a teljesítményszámláló attribútum használja. Az alábbi példában a sebesség értéke `PT3M`, ami azt jelenti, `[P]eriod[T]ime[3][M]inutes`: percen át 3 percenként.
 
-További információt az `sampleRate` és `scheduledTransferPeriod` vannak definiálva, tekintse meg a **időtartam adattípus** szakasz a [W3 XML dátum és idő dátum típusú](https://www.w3schools.com/XML/schema_dtypes_date.asp) oktatóanyag.
+További információ a `sampleRate` és `scheduledTransferPeriod` vannak meghatározott, lásd a **időtartama adattípus** című rész a [W3 XML dátum és idő dátum típusú](https://www.w3schools.com/XML/schema_dtypes_date.asp) oktatóanyag.
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -167,9 +167,9 @@ További információt az `sampleRate` és `scheduledTransferPeriod` vannak defi
 
 ## <a name="create-a-new-perf-counter"></a>Hozzon létre egy új teljesítményszámlálója
 
-Egy új teljesítményszámláló hozható létre és használja a kódot. A kódot, amely létrehoz egy új teljesítményszámláló futnia kell emelt szintű, ellenkező esetben sikertelen lesz. A felhőalapú szolgáltatás `OnStart` indítási kódot hozhat létre a teljesítményszámláló, nincs szükség a szerepkör futtatásához emelt szintű környezetben. Vagy emelt szintű fut, és létrehozza a teljesítményszámláló indítási tevékenységhez hozhat létre. Indítási feladatokkal kapcsolatos további információkért lásd: [hogyan lehet konfigurálni és futtatni egy felhőalapú szolgáltatás indítási feladatokat](cloud-services-startup-tasks.md).
+Egy új teljesítményszámláló létrehozhatók és a kód által használt. A kód, amely létrehoz egy új teljesítményszámláló az emelt szintű, ellenkező esetben sikertelen lesz kell futnia. A felhőszolgáltatások `OnStart` indítási kódot a teljesítményszámláló, akkor a szerepkör futtatásához emelt szintű környezetben hozhat létre. Vagy létrehozhat egy indítási feladat, amely emelt szintű fut, és a teljesítményszámláló hoz létre. Indítási feladatok kapcsolatos további információkért lásd: [konfigurálása és a egy felhőalapú szolgáltatás indítási feladatok futtatásának](cloud-services-startup-tasks.md).
 
-A szerepkör futtatásához emelt szintű konfigurálása, vegye fel a `<Runtime>` elem a [.csdef](cloud-services-model-and-package.md#servicedefinitioncsdef) fájlt.
+A szerepkör futtatásához emelt szintű konfigurálása, adjon hozzá egy `<Runtime>` elem a [.csdef](cloud-services-model-and-package.md#servicedefinitioncsdef) fájlt.
 
 ```xml
 <ServiceDefinition name="CloudServiceLoadTesting" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceDefinition" schemaVersion="2015-04.2.6">
@@ -187,7 +187,7 @@ A szerepkör futtatásához emelt szintű konfigurálása, vegye fel a `<Runtime
 </ServiceDefinition>
 ```
 
-Hozzon létre, és regisztrálni egy új teljesítményszámláló néhány sornyi kódot. Használja a `System.Diagnostics.PerformanceCounterCategory.Create` metódus többszörös definíciót, amely a kategória és a számláló mind hoz létre. Az alábbi kód először ellenőrzi, ha a kategória létezik, és ha hiányoznak, mind a kategóriát, és a számláló hoz létre.
+Hozzon létre, és regisztráljon egy új teljesítményszámláló néhány sornyi kóddal. Használja a `System.Diagnostics.PerformanceCounterCategory.Create` metódus túlterhelését, amely létrehozza a kategória és a számláló is. Az alábbi kód először ellenőrzi, ha a kategória létezik, és ha hiányoznak, mind a kategória, és ez a számláló hoz létre.
 
 ```csharp
 using System.Diagnostics;
@@ -230,19 +230,19 @@ namespace WorkerRoleWithSBQueue1
 }
 ```
 
-Ha a számláló használni kívánt, hívja az `Increment` vagy `IncrementBy` metódust.
+Ha meg szeretné használni a számlálót, hívja a `Increment` vagy `IncrementBy` metódust.
 
 ```csharp
 // Increase the counter by 1
 counterServiceUsed.Increment();
 ```
 
-Most, hogy az alkalmazás által az egyéni számláló, Azure Diagnostics vagy az Application Insights nyomon követéséhez a számláló konfigurálni kell.
+Most, hogy az alkalmazás a. egyéni számláló használja, szüksége konfigurálása az Azure Diagnostics vagy az Application Insights nyomon követéséhez a számlálót.
 
 
 ### <a name="application-insights"></a>Application Insights
 
-Korábban is hangsúlyoztuk, a teljesítményszámlálók az Application Insights vannak definiálva a **ApplicationInsights.config** fájlt. Nyissa meg **ApplicationInsights.config** keresse meg a **ApplicationInsights** > **TelemetryModules** > **hozzáadása**  >  **Számlálók** elemet. Hozzon létre egy `<Add>` gyermekelem és beállítása a `PerformanceCounter` attribútumot a kategória és a kód létrehozott teljesítményszámláló nevét. Állítsa be a `ReportAs` attribútumot meg szeretné tekinteni a portálon rövid nevét.
+Korábban hangsúlyoztuk, a teljesítményszámlálók az Application Insights vannak meghatározva a **ApplicationInsights.config** fájlt. Nyissa meg **ApplicationInsights.config** , és keresse meg a **ApplicationInsights** > **fájl TelemetryModules** > **hozzáadása**  >  **Számlálók** elemet. Hozzon létre egy `<Add>` gyermekelemet és állítsa be a `PerformanceCounter` attribútumot a kategória és a teljesítményszámláló a kód szakaszban létrehozott nevét. Állítsa be a `ReportAs` attribútumot meg szeretné tekinteni a portálon egy rövid nevet.
 
 ```xml
 <ApplicationInsights xmlns="http://schemas.microsoft.com/ApplicationInsights/2013/Settings">
@@ -265,7 +265,7 @@ Korábban is hangsúlyoztuk, a teljesítményszámlálók az Application Insight
 
 ### <a name="azure-diagnostics"></a>Azure Diagnostics
 
-Már korábban is említettük, mint a gyűjtendő kérelemteljesítmény-számlálókat vannak definiálva a **diagnostics.wadcfgx** fájlt. A Visual Studio (meg van adva egy szerepkör) fájl megnyitása, és keresse a **DiagnosticsConfiguration** > **PublicConfig** > **WadCfg**  >  **DiagnosticMonitorConfiguration** > **PerformanceCounters** elemet. Adjon hozzá egy új **PerformanceCounterConfiguration** elem gyermek. Állítsa be a `counterSpecifier` attribútumot a kategória és a kód létrehozott teljesítményszámláló nevét. 
+Mint azt korábban említettük, a gyűjtendő teljesítményszámlálókat meghatározott a **diagnostics.wadcfgx** fájlt. A Visual Studióban nyissa meg ezt a fájlt (van definiálva szerepkörönként), és keresse meg a **DiagnosticsConfiguration** > **PublicConfig** > **WadCfg**  >  **DiagnosticMonitorConfiguration** > **PerformanceCounters** elemet. Vegyen fel egy új **PerformanceCounterConfiguration** gyermek elemet. Állítsa be a `counterSpecifier` attribútumot a kategória és a teljesítményszámláló a kód szakaszban létrehozott nevét. 
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -294,7 +294,7 @@ Már korábban is említettük, mint a gyűjtendő kérelemteljesítmény-száml
 
 ## <a name="more-information"></a>További információ
 
-- [Az Application Insights az Azure Cloud Services csomag](../application-insights/app-insights-cloudservices.md#performance-counters)
-- [Az Application Insightsban rendszerteljesítmény-számlálók](../application-insights/app-insights-performance-counters.md)
-- [A számláló elérési útjának](https://msdn.microsoft.com/library/windows/desktop/aa373193(v=vs.85))
-- [Az Azure Diagnostics séma - teljesítményszámlálók](../monitoring-and-diagnostics/azure-diagnostics-schema-1dot3-and-later.md#performancecounters-element)
+- [Az Application Insights az Azure Cloud Servicesben](../application-insights/app-insights-cloudservices.md#performance-counters)
+- [Az Application Insights rendszerteljesítmény-számlálók](../application-insights/app-insights-performance-counters.md)
+- [A számláló elérési út megadását](https://msdn.microsoft.com/library/windows/desktop/aa373193(v=vs.85))
+- [Azure Diagnostics-séma - teljesítményszámlálók](../monitoring-and-diagnostics/azure-diagnostics-schema-1dot3-and-later.md#performancecounters-element)

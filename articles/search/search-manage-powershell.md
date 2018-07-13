@@ -1,6 +1,6 @@
 ---
-title: Azure Search kezelése a Powershell-parancsfájlok |} Microsoft Docs
-description: Az Azure Search szolgáltatás PowerShell-parancsfájlokkal kezelheti. Hozzon létre vagy frissíteni az Azure Search szolgáltatást, és Azure Search adminisztrációs kulcsok kezelése
+title: Az Azure Search kezelése a Powershell-parancsfájlok |} A Microsoft Docs
+description: A PowerShell-parancsfájlok az Azure Search szolgáltatás kezelése. Hozzon létre vagy frissítése az Azure Search szolgáltatást, és az Azure Search az adminisztrációs kulcsok kezelése
 author: HeidiSteen
 manager: cgronlun
 tags: azure-resource-manager
@@ -10,40 +10,40 @@ ms.devlang: powershell
 ms.topic: conceptual
 ms.date: 08/15/2016
 ms.author: heidist
-ms.openlocfilehash: 8f83f2652f7bd34f53dde1674c022f8792ae7658
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 1d0024af3bbf9edfe8c43032878a8b61e35cea9c
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32181987"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39000990"
 ---
-# <a name="manage-your-azure-search-service-with-powershell"></a>A PowerShell segítségével az Azure Search szolgáltatás kezelése
+# <a name="manage-your-azure-search-service-with-powershell"></a>A PowerShell-lel az Azure Search szolgáltatás kezelése
 > [!div class="op_single_selector"]
-> * [Portal](search-manage.md)
+> * [Portál](search-manage.md)
 > * [PowerShell](search-manage-powershell.md)
 > 
 > 
 
-Ez a témakör ismerteti a PowerShell-parancsokat az Azure Search szolgáltatások felügyeleti feladatok elvégzéséhez. Végigvezetjük a search szolgáltatás létrehozása, skálázás, és annak API-kulcsok kezelése.
-Ezek a parancsok párhuzamosan használható felügyeleti lehetőségekről a [Azure Search felügyeleti REST API](https://docs.microsoft.com/rest/api/searchmanagement).
+Ez a témakör ismerteti a PowerShell-parancsok az Azure Search-szolgáltatás a felügyeleti feladatok végrehajtásához. Végigvezetjük a search szolgáltatás létrehozása, méretezését, és az API-kulcsok kezelése.
+Ezek a parancsok párhuzamos az elérhető lehetőségek a [Azure Search felügyeleti REST API](https://docs.microsoft.com/rest/api/searchmanagement).
 
 ## <a name="prerequisites"></a>Előfeltételek
-* Az Azure PowerShell 1.0-ás vagy újabb verzióját kell rendelkeznie. Útmutatásért lásd: [telepítse és konfigurálja az Azure Powershellt](/powershell/azure/overview).
-* Az Azure-előfizetéshez az alább ismertetett PowerShell kell bejelentkeznie.
+* Azure PowerShell 1.0-ás vagy újabb kell rendelkeznie. Útmutatásért lásd: [telepítse és konfigurálja az Azure Powershellt](/powershell/azure/overview).
+* Az Azure-előfizetéshez a PowerShell az alább ismertetett kell bejelentkeznie.
 
-Először meg kell ezzel a paranccsal az Azure bejelentkezési azonosító:
+Először be kell bejelentkezés az Azure a következő paranccsal:
 
     Connect-AzureRmAccount
 
-A Microsoft Azure bejelentkezési párbeszédpanelen adja meg az e-mail cím, az Azure-fiókjával, és a hozzá tartozó jelszó.
+Adja meg az e-mail-címét az Azure-fiókjával, és a hozzá tartozó jelszót a Microsoft Azure bejelentkezési párbeszédpanel.
 
-Alternatív megoldásként [egy egyszerű szolgáltatást a nem interaktív bejelentkezési](../azure-resource-manager/resource-group-authenticate-service-principal.md).
+Másik megoldásként is [egy egyszerű szolgáltatást a nem interaktív bejelentkezési](../azure-resource-manager/resource-group-authenticate-service-principal.md).
 
-Ha több Azure-előfizetéssel rendelkezik, az Azure-előfizetéshez be kell. Az aktuális előfizetések listájának megtekintéséhez futtassa ezt a parancsot.
+Ha több Azure-előfizetéssel rendelkezik, állítsa be az Azure-előfizetéshez szeretne. Az aktuális előfizetések listájának megtekintéséhez futtassa ezt a parancsot.
 
     Get-AzureRmSubscription | sort SubscriptionName | Select SubscriptionName
 
-Adja meg az előfizetést, futtassa a következő parancsot. A következő példában az előfizetés neve: `ContosoSubscription`.
+Válassza ki az előfizetést, futtassa a következő parancsot. A következő példában, az előfizetés nevét a `ContosoSubscription`.
 
     Select-AzureRmSubscription -SubscriptionName ContosoSubscription
 
@@ -126,11 +126,11 @@ Adja meg az előfizetést, futtassa a következő parancsot. A következő péld
     $resource | Remove-AzureRmResource
 
 ## <a name="next-steps"></a>További lépések
-Most, hogy a szolgáltatás létrehozása a következő lépésekre is: build egy [index](search-what-is-an-index.md), [lekérdezheti az indexét](search-query-overview.md), és végül létrehozása és kezelése a saját keresési alkalmazás az Azure Search használ.
+Most, hogy a szolgáltatás létrejött, a következő lépésekkel lehet: hozhat létre egy [index](search-what-is-an-index.md), [-index lekérdezése](search-query-overview.md), és végül hozzon létre és kezelheti saját keresőalkalmazást, amely az Azure Search használja.
 
-* [Az Azure Search-index létrehozása az Azure portálon](search-create-index-portal.md)
-* [Keresési ablak használata az Azure-portálon az Azure Search-index lekérdezése](search-explorer.md)
-* [Adatok betöltése a többitől indexelő beállítása](search-indexer-overview.md)
+* [Az Azure Search-index létrehozása az Azure Portalon](search-create-index-portal.md)
+* [A keresési ablakkal az Azure Portalon az Azure Search-index lekérdezése](search-explorer.md)
+* [Adatok betöltése az egyéb szolgáltatások indexelő beállítása](search-indexer-overview.md)
 * [Az Azure Search használata a .NET-ben](search-howto-dotnet-sdk.md)
-* [Az Azure Search forgalom elemzése](search-traffic-analytics.md)
+* [Az Azure Search-forgalom elemzése](search-traffic-analytics.md)
 

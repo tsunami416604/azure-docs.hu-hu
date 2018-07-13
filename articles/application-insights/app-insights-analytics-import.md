@@ -1,6 +1,6 @@
 ---
-title: Adatok importálása az Azure Application Insights Analytics |} Microsoft Docs
-description: Alkalmazás telemetriai kapcsolódása statikus adatok importálása, illetve importálhat egy külön adatfolyam Analytics lekérdezésre.
+title: Adatok importálása az Azure Application Insights Analytics |} A Microsoft Docs
+description: Az alkalmazás telemetriai adatainak csatlakozni statikus adatok importálása, vagy importálja egy külön stream Analytics lekérdezési.
 services: application-insights
 keywords: Nyissa meg a séma, az adatok importálása
 documentationcenter: ''
@@ -13,90 +13,90 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/04/2017
 ms.author: mbullwin
-ms.openlocfilehash: 688d620e19a8a6f536d134d9c4d7c837ec06bbdc
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: d891cd92e70d3491ee0c7a58f1409823301b299c
+ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35293621"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38989757"
 ---
-# <a name="import-data-into-analytics"></a>Adatok importálása elemzés
+# <a name="import-data-into-analytics"></a>Elemzési adatok importálása
 
-Az adatok importálása [Analytics](app-insights-analytics.md), vagy a csatlakozás a [Application Insights](app-insights-overview.md) telemetriai az alkalmazásból, vagy úgy, hogy egy külön adatfolyamként elemzése. Elemzés jól alkalmazható nagy mennyiségű időbélyegzővel adatstreamek telemetriai adatok elemzése hatékony lekérdezésnyelvet.
+Az adatok importálása [Analytics](app-insights-analytics.md), vagy a csatlakoztatáshoz az [Application Insights](app-insights-overview.md) az alkalmazásából származó telemetriai adatok, vagy úgy, hogy egy külön adatfolyamként elemzése. Analytics egy hatékony lekérdezési nyelvet, nagy mennyiségű időbélyegzővel Streamek telemetria elemzése jól alkalmazható tevékenységekről a.
 
-Adatok importálhatja a Analytics saját sémáját használja. Használatához a szabványos Application Insights sémák például kérelem vagy a nyomkövetés nem tartalmaz.
+A saját séma használatával analyticsbe is importálhat adatokat. Nem kell a standard Application Insights-sémák például kérelem vagy nyomkövetési használja.
 
-Importálhatja, JSON vagy Adatforrásnézet (elválasztó tagolt - vesszővel, pontosvesszővel válassza el vagy lapon) fájlok.
+Importálhatja, JSON vagy Adatforrásnézet (elválasztó tagolt - vesszőt, pontosvesszőt vagy lap) fájlokat.
 
-Nincsenek három olyan helyzetekben, ahol importálása a Analytics hasznos:
+Nincsenek három olyan helyzetekben, ahol Analyticshez való importálásával hasznos:
 
-* **Alkalmazás telemetriai csatlakozik.** Például a táblázat, amely a webhely URL-címek leképezve olvashatóbb weblapok címét sikerült importálni. Elemzés létrehozhat egy irányítópult diagram jelentés tíz legnépszerűbb oldalak a webhelyen. Most megmutatja a lap címek helyett az URL-címeket.
-* **A telemetriai összefüggéseket** más adatforrások, például a hálózati forgalom, a kiszolgáló adatait, vagy a CDN-naplófájljai.
-* **Egy külön adatfolyam Analytics vonatkozik.** Application Insights Analytics egy olyan erőteljes eszköz, amely ritka, időbélyegzővel adatfolyamok - SQL-re mint javulás megfelelően működik. Ha ilyen adatfolyam más forrásból, elemezheti az Analytics.
+* **Csatlakozzon az alkalmazás telemetriai adatainak.** Ha például sikerült importálni egy táblát, amely a webhely URL-címek képez olvashatóbb lap címét. Elemzés a webhelyen a tíz legelterjedtebb oldalt megjelenítő irányítópult diagram jelentést is létrehozhat. Most azt jeleníti meg a lap címét az URL-címek helyett.
+* **Az alkalmazás telemetriai adatainak** más forrásokból, például a hálózati forgalom, a kiszolgáló adatait, vagy a CDN-naplófájljai.
+* **Egy külön stream Analytics vonatkoznak.** Application Insights Analytics egy hatékony eszköz, amely nagyszerűen működik a ritka, időbélyegzővel adatfolyam - sokkal jobb, mint az SQL sok esetben. Ha például egy stream más forrásból, elemezheti az Analytics.
 
-Adatok küldése az adatokat az adatforrásból is könnyen. 
+Az adatforrás történő adatküldés ördöngösség. 
 
-1. (Egy alkalommal) Adja meg az adatokat egy az adatforrás sémája.
-2. (Rendszeres) Az adatok feltöltése az Azure storage és a REST API-t részünkre, amelyek új adatokat arra vár, hogy adatfeldolgozást hívja. Néhány percen belül az adatok érhető el elemzés lekérdezést.
+1. (Egy idő) Adja meg a séma "adatforrás" adatot.
+2. (Rendszeres) Az adatok feltöltése az Azure storage, és a REST API-t értesíteni minket, amely új adatok vár a feldolgozási hívja. Néhány percen belül az adatok elemzési lekérdezés érhető el.
 
-A feltöltési gyakoriságának definiálva van, és milyen gyors kívánja, hogy az adatokat, hogy a lekérdezések érhető el. Sokkal hatékonyabban, feltölteni az adatokat a nagyobb méretű adattömböket, de nem lehet nagyobb, mint 1GB.
+A feltöltési gyakoriságának definiálva van, és milyen gyors szeretné, hogy a lekérdezésekhez elérhető legyen az adatok. Legyen hatékonyabb feltölteni az adatokat a nagyobb méretű adattömböket, de nem lehet nagyobb, mint 1GB.
 
 > [!NOTE]
-> *Nagy mennyiségű adatforrást elemzése kapott?* [*Érdemes lehet* logstash *szállítási az adatok az Application Insightsban való.*](https://github.com/Microsoft/logstash-output-application-insights)
+> *Nagy mennyiségű elemzéséhez adatforrások van?* [*Fontolja meg* logstash *tehetnek az adatok Application insightsba.*](https://github.com/Microsoft/logstash-output-application-insights)
 > 
 
 ## <a name="before-you-start"></a>Előkészületek
 
 A következők szükségesek:
 
-1. Az Application Insights-erőforrás a Microsoft Azure-ban.
+1. Egy Application Insights-erőforrást a Microsoft Azure-ban.
 
- * Ha azt szeretné, hogy az adatok egyéb telemetriai elkülönítve [hozzon létre egy új Application Insights-erőforrást](app-insights-create-new-resource.md).
- * Ha való csatlakozás vagy az alkalmazás már be van állítva az Application insights szolgáltatással telemetriai adatok összehasonlítása, majd használhatja az erőforrást az alkalmazáshoz.
- * Közreműködő vagy tulajdonosa hozzá az adott erőforráshoz.
+ * Ha azt szeretné, külön-külön egyéb telemetriai adatok elemzéséhez [hozzon létre egy új Application Insights-erőforrást](app-insights-create-new-resource.md).
+ * Ha való csatlakozás vagy összehasonlítja az alkalmazás már be van állítva az Application Insights telemetriai adatait, majd használhatja az erőforrást az adott alkalmazáshoz.
+ * Ennek az erőforrásnak közreműködői vagy tulajdonosi hozzáférés.
  
-2. Az Azure storage. Az Azure storage-be feltölteni, és elemzés lekérdezi az adatok ott. 
+2. Az Azure storage. Feltöltése az Azure storage, és az Analytics az adatokat olvas be itt. 
 
- * Javasoljuk, hogy hozzon létre egy dedikált tárfiókot, a blobok. A BLOB megosztott más folyamatokkal, ha hosszabb ideig tart a folyamatok blobok olvasni.
+ * Azt javasoljuk, hogy a blobok egy dedikált storage-fiókot hoz létre. Ha a blobok osztanak meg más folyamatokkal, hosszabb ideig tart a folyamatok olvasni a blobokat.
 
 
-## <a name="define-your-schema"></a>A séma meghatározása
+## <a name="define-your-schema"></a>A séma meghatározásakor
 
-Adatok importálása előtt meg kell adnia egy *adatforrás,* amely adja meg a séma adatait.
-Legfeljebb 50 adatforrások egyetlen Application Insights-erőforrást is
+Adatok importálása előtt meg kell adni egy *adatforrás,* amely megadja, hogy a séma az adatokat.
+Használhat egy adott Application Insights-erőforrásban legfeljebb 50 adatforrások
 
-1. Az adatforrás varázsló elindításához. Használja az "Új adatforrás hozzáadása" gombra. Másik lehetőségként - kattintson a jobb felső sarkában található beállítások gombra, és kattintson "Az adatforrások" legördülő menüre.
+1. Az adatforrás varázsló elindításához. "Új adatforrás hozzáadása" gomb használatával. Másik lehetőségként – kattintson a beállítások gombra a jobb felső sarokban, és a legördülő menüből válassza a "Adatforrások".
 
     ![Új adatforrás hozzáadása](./media/app-insights-analytics-import/add-new-data-source.png)
 
-    Adja meg az új adatforrás nevét.
+    Adjon meg egy nevet az új adatforrás.
 
-2. Adja meg, hogy fel kell töltenie fájlok formátuma.
+2. Határozza meg, hogy a feltölteni kívánt fájlok formátuma.
 
-    A formátum megadása manuálisan, vagy egy minta-fájl feltöltése.
+    A formátum megadása manuálisan, vagy feltölt egy mintafájlt.
 
-    Ha az adatok CSV formátumban van, az első sor a minta lehet oszlopfejléceket. A következő lépésben mező nevét módosíthatja.
+    Ha az adatok CSV formátumban, a minta első sorának oszlopfejléceket is lehet. A mezők nevét a következő lépésben módosíthatja.
 
-    A minta tartalmaznia kell legalább 10 sorok vagy adatokat rögzíti.
+    A minta tartalmaznia kell legalább 10 sort vagy adatokat rögzíti.
 
-    Oszlop vagy mező neve alfanumerikus nevek (nélkül szóköz vagy írásjel) kell rendelkeznie.
+    Oszlop vagy a mező neve alfanumerikus nevét (a tárolóhelyek és írásjelek) nélkül kell rendelkeznie.
 
-    ![A minta-fájl feltöltése](./media/app-insights-analytics-import/sample-data-file.png)
+    ![Mintafájl feltöltése](./media/app-insights-analytics-import/sample-data-file.png)
 
 
-3. Tekintse át a séma, a varázsló azonosítóértékeket rendelkezik. Ha a mintából típusok következtetni, szükség lehet úgy, hogy az oszlopok következtetett típusú.
+3. Tekintse át a sémát, amely a varázsló van itt. A mintából típusok következtetni, ha szüksége lehet a következtetett típusú oszlopok módosítása.
 
     ![Tekintse át a következtetett séma](./media/app-insights-analytics-import/data-source-review-schema.png)
 
  * (Választható.) Töltse fel a sémadefiníciót. Tekintse meg az alábbi formátumban.
 
- * Válassza ki az időbélyegző. Minden adat Analytics kell rendelkezhetnek időbélyegmezővel. Típusúnak kell lennie `datetime`, de nem kell neve "időbélyeg" lehet. Ha az adatok egy dátum és idő ISO formátumú tartalmazó oszlop, akkor válassza ezt a Timestamp típusú oszlop. Ellenkező esetben válassza a "Data a Beérkezett", és az importálási folyamat felveszi időbélyegmezővel.
+ * Válassza ki a Timestamp. Az összes data Analytics kell rendelkezhetnek időbélyegmezővel. Típusúnak kell lennie `datetime`, de nem kell lennie a "timestamp" nevű. Ha az adatok egy adott napon és időpontban ISO formátumban tartalmazó oszlop, akkor válassza ezt a időbélyeg oszlop. Ellenkező esetben válassza a "adatként a Beérkezett", és a egy időbélyegmezőt hozzáadja az importálási folyamat.
 
 5. Az adatforrás létrehozása.
 
-### <a name="schema-definition-file-format"></a>Séma csomagdefiníciós fájlformátumról
+### <a name="schema-definition-file-format"></a>Séma csomagdefiníciósfájl-formátumról
 
-A séma, a felhasználói felületen szerkesztése, helyett betöltése a sémadefiníciót fájlból. A séma definition formátum a következőképpen történik: 
+Helyett szerkesztési felhasználói felületének a sémát, töltse be a sémadefiníciót fájlból. A séma definíció formátum a következőképpen történik: 
 
 Tagolt formátumú 
 ```
@@ -107,7 +107,7 @@ Tagolt formátumú
 ] 
 ```
 
-JSON formátumban 
+JSON-formátumban 
 ```
 [ 
     {"location": "$.name", "name": "name", "type": "string"}, 
@@ -116,34 +116,35 @@ JSON formátumban
 ]
 ```
  
-Minden oszlop azonosítja a helyét, nevét és típusát. 
+Minden oszlop helye, neve és típusa alapján azonosítja.
 
-* Hely – Format tagolt fájl, akkor azt a leképezett érték. A JSON formátum esetén a csatlakoztatott kulcs jpath.
-* Név – a megjelenített oszlop neve.
-* Írja be – az adott oszlop adattípusát.
+* Hely – Format tagolt fájl, akkor azt a leképezett érték. JSON-formátumban célszerű a jpath a leképezett kulcs.
+* Név – a oszlopban megjelenített nevét.
+* Írja be – ez az oszlop adattípusát.
  
-Abban az esetben a mintaadatok lett megadva, és fájlformátumot csak, a sémadefiníciót kell az összes oszlop leképezése és új oszlopok hozzáadása. 
-
-JSON lehetővé teszi, hogy az adatok részleges leképezést, ezért a sémadefiníciót JSON formátum nem kell minden kulcsot, amely megtalálható a mintaadatok hozzárendelését. Az oszlopokat, amelyek nem részei a mintaadatok is leképezheti. 
+> [!NOTE]
+> Abban az esetben példaadatok használta, és a fájl formátuma csak, sémadefiníciója kell minden oszlop leképezése és új oszlopok hozzáadása a végén.
+> 
+> JSON lehetővé teszi, hogy az adatok részleges leképezést, így a JSON-formátumú sémadefiníciója nem minden kulcs, amely megtalálható a mintaadatok leképezéséhez. Azt is leképezheti oszlopokat, amelyek nem részei a mintaadatokat. 
 
 ## <a name="import-data"></a>Adatok importálása
 
-Adatok importálásához töltse fel az Azure storage, az access-kulcs létrehozása, és végezze el a REST API-hívás.
+Adatok importálása, töltse fel az Azure storage, hozzon létre egy hozzáférési kulcsot, és végezze el a REST API-hívás.
 
 ![Új adatforrás hozzáadása](./media/app-insights-analytics-import/analytics-upload-process.png)
 
-Hajtsa végre a következő folyamat manuálisan, vagy állítsa be az automatikus rendszer rendszeres időközönként szeretne. Kövesse az alábbi lépéseket az importálni kívánt minden adatblokk kell.
+Hajtsa végre a következő folyamat manuálisan, vagy állítsa be az automatikus rendszerek rendszeres időközönként tennie. Kövesse az alábbi lépéseket az importálni kívánt minden adatblokkja esetében van szüksége.
 
-1. Az adatok feltöltése [Azure blob storage](../storage/blobs/storage-dotnet-how-to-use-blobs.md). 
+1. Töltse fel az adatokat [az Azure blob storage-bA](../storage/blobs/storage-dotnet-how-to-use-blobs.md). 
 
- * Blobok lehet bármely tömörítetlen legfeljebb 1GB méretet. Nagyméretű bináris objektumok MB több száz alkalmasak a teljesítmény szempontjából.
- * A Gzip ideje és a késleltetés a lekérdezés érhető el az adatok javítása érdekében tömöríthetők. Használja a `.gz` fájlnév-kiterjesztés.
- * Célszerű használni erre a célra külön tárfiókot a különböző szolgáltatások lelassulnak, ami teljesítmény hívások elkerülése érdekében.
- * Adatok nagy gyakorisággal küldésekor minden néhány másodpercben, javasoljuk, hogy egynél több tárfiókot használni, a teljesítményre vonatkozó megfontolásból.
+ * Blobok lehet bármelyik mérete legfeljebb 1GB tömörítetlen. A teljesítmény szempontjából ideálisak a nagy méretű blobok több száz MB-ot.
+ * A Gzip ideje és a lekérdezés elérhető legyen az adatok közel valós idejű tömöríthetők. Használja a `.gz` fájlnév-kiterjesztés.
+ * Célszerű használni erre a célra egy önálló tárfiókot teljesítménylassulás különböző szolgáltatásokat hívásait elkerülése érdekében.
+ * Amikor adatokat küld a nagy gyakoriságú, minden néhány másodpercben, ajánlott egynél több tárfiók használata a teljesítmény szempontjából.
 
  
-2. [Hozzon létre egy közös hozzáférésű Jogosultságkód-kulcsot a BLOB](../storage/blobs/storage-dotnet-shared-access-signature-part-2.md). A kulcs kell egy olyan lejárati időt egy nap van, és olvasási hozzáférést biztosítanak.
-3. Az Application Insights adatok váró értesíteni REST hívás.
+2. [A BLOB közös hozzáférésű Jogosultságkód kulcs létrehozása](../storage/blobs/storage-dotnet-shared-access-signature-part-2.md). A kulcs kell egy lejárati idővel egy nap, és olvasási hozzáférést nyújtanak.
+3. REST-hívások értesíteni, amely az adatokat arra vár, hogy az Application Insights.
 
  * Végpont: `https://dc.services.visualstudio.com/v2/track`
  * HTTP-metódus: POST
@@ -170,30 +171,30 @@ Hajtsa végre a következő folyamat manuálisan, vagy állítsa be az automatik
 
 A helyőrzőket a következők:
 
-* `Blob URI with Shared Access Key`: Kap ezt az eljárást a kulcs létrehozásához. A blob jellemző.
-* `Schema ID`: A megadott séma létrehozott a séma azonosító. A blob adatainak kell megfeleljen a sémának.
-* `DateTime`: Az idő, ahol a küldés, UTC. Ezek a formátumok fogadunk: ISO8601 (például "2016-01-01 13:45:01"); RFC822 ("Sze, 14 Dec 16 14:57:01 + 0000"); RFC850 ("szerda, 14-Dec-16 14:57:00 UTC"); RFC1123 ("Sze, 14 Dec 2016 14:57:00 + 0000").
+* `Blob URI with Shared Access Key`: Kap ezt az eljárást a kulcs létrehozása. Ez csak a blob.
+* `Schema ID`: A generált a megadott séma séma azonosító. A blob adatait meg kell felelnie a sémát.
+* `DateTime`: Az az időpont, amikor a kérelem elküldésekor, (UTC). Ezek a formátumok fogadunk: ISO8601 (például a "2016-01-01 13:45:01"); RFC822 ("szerda, 16 DEC. 14 14:57:01 + 0000"); RFC850 ("szerda, 16 – 14 közötti DEC. 14:57:00 (UTC)"); RFC1123 ("szerda, 14 DEC. 2016 14:57:00 + 0000").
 * `Instrumentation key` az Application Insights-erőforrás.
 
-A érhetők el az adatok Analytics néhány perc múlva.
+A data Analytics érhető el néhány perc múlva.
 
-## <a name="error-responses"></a>Hibaüzenetek
+## <a name="error-responses"></a>Hibaválaszok
 
-* **400 Hibás kérelem**: azt jelzi, hogy a kérések forgalma érvénytelen. Részletek:
- * Megfelelő instrumentation kulcs.
- * Érvényes időérték. Most már a ideje UTC Formátumban kell lennie.
- * Az esemény JSON megfelel-e a séma.
-* **403 Tiltott**: az elküldött blob nem érhető el. Győződjön meg arról, hogy a megosztott elérési kulcsával érvényes, és nem járt le.
-* **Nem található 404**:
+* **400 Hibás kérés**: azt jelzi, hogy a kérelem tartalma érvénytelen. Ellenőrzés:
+ * Megfelelő kialakítási kulcsot.
+ * Érvényes idő érték. Most már a időpontja (UTC) kell lennie.
+ * Az esemény JSON megfelel a sémának.
+* **403 Tiltott**: Miután elküldte a blob nem érhető el. Győződjön meg arról, hogy a közös hozzáférési kulcs érvényes, és nem járt le.
+* **404 nem található**:
  * A blob nem létezik.
  * A sourceId nem megfelelő.
 
-További részletes információk a válaszüzenetben hiba érhető el.
+További információt a válaszként megjelenített hibaüzenetét érhető el.
 
 
 ## <a name="sample-code"></a>Mintakód
 
-Ezt a kódot használja a [Newtonsoft.Json](https://www.nuget.org/packages/Newtonsoft.Json/9.0.1) NuGet-csomagot.
+Ez a kód a [Newtonsoft.Json](https://www.nuget.org/packages/Newtonsoft.Json/9.0.1) NuGet-csomagot.
 
 ### <a name="classes"></a>Osztályok
 
@@ -352,9 +353,9 @@ namespace IngestionClient
 } 
 ```
 
-### <a name="ingest-data"></a>Adatok kigyűjtése
+### <a name="ingest-data"></a>Adatok betöltése
 
-Ez a kód használható minden egyes blob. 
+Ez a kód használata minden egyes blob. 
 
 ```csharp
    AnalyticsDataSourceClient client = new AnalyticsDataSourceClient(); 
@@ -366,5 +367,5 @@ Ez a kód használható minden egyes blob.
 
 ## <a name="next-steps"></a>További lépések
 
-* [A Log Analytics lekérdezési nyelv bemutatása](app-insights-analytics-tour.md)
-* Ha Logstash használata esetén a [Logstash beépülő modul szeretnék adatokat küldeni a Application insights szolgáltatással](https://github.com/Microsoft/logstash-output-application-insights)
+* [Ismerkedjen meg a Log Analytics lekérdezési nyelv](app-insights-analytics-tour.md)
+* Ha Logstash használja, használja a [adatokat küldeni az Application Insights a Logstash beépülő modul](https://github.com/Microsoft/logstash-output-application-insights)

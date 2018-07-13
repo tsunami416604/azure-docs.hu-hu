@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/17/2018
+ms.date: 07/11/2018
 ms.author: spelluru
-ms.openlocfilehash: 268b9af7835c51d78812b35aff5aaac585961b01
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
-ms.translationtype: HT
+ms.openlocfilehash: 0414fa16f277c7495cc7fe4bdd7a51fc3a23ad93
+ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38619188"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38988622"
 ---
 # <a name="create-custom-artifacts-for-your-devtest-labs-virtual-machine"></a>A DevTest Labs szolgáltatásban virtuális gép egyéni összetevők létrehozása
 
@@ -113,7 +113,7 @@ Az alábbi példa bemutatja, hogyan hozhat létre egy érték kifejezések és f
 1. Telepítse a JSON-szerkesztővel. Szüksége lesz egy JSON-szerkesztő használata összetevő definíciós fájlokat. Azt javasoljuk, [Visual Studio Code](https://code.visualstudio.com/), amely Windows, Linux- és OS X érhető el.
 2. Egy mintául szolgáló artifactfile.json csomagdefiníciós fájl beolvasása. Tekintse meg a DevTest Labs csapat által létrehozott összetevők a [GitHub-adattár](https://github.com/Azure/azure-devtestlab). Az összetevők, amelyek segítségével egyéni összetevők létrehozása könyvtár gazdag hoztunk létre. Töltse le egy összetevő-definíciós fájlt, és hajtsa végre a módosításokat a saját összetevőket hozhat létre ahhoz.
 3. Ellenőrizze, hogy az IntelliSense használatát. Az IntelliSense segítségével megtekintheti az érvényes elemeket, amelyek segítségével hozhat létre egy összetevő-definíciós fájlt. A különböző lehetőségek értékek elem is látható. Például, ha szerkeszti a **targetOsType** elem, az IntelliSense bemutatja, két választási lehetőség, Windows vagy Linux.
-4. Az összetevő Store egy [Git-tárház](devtest-lab-add-artifact-repo.md).
+4. Az összetevő Store a [DevTest Labs nyilvános Git-tárház](https://github.com/Azure/azure-devtestlab/tree/master/Artifacts) vagy [saját Git-tárház](devtest-lab-add-artifact-repo.md).
    
    1. Hozzon létre minden egyes összetevő külön könyvtárat. A könyvtár neve ugyanaz, mint a szerelvényösszetevő nevének kell lennie.
    2. Az összetevő-definíciós fájl (artifactfile.json) Store hozott létre a címtárban.
@@ -122,9 +122,8 @@ Az alábbi példa bemutatja, hogyan hozhat létre egy érték kifejezések és f
       Íme egy példa, hogyan kell egy összetevő mappa kinéznie:
       
       ![Összetevő mappa példa](./media/devtest-lab-artifact-author/git-repo.png)
-5. A labor létrehozása a összetevőtár hozzáadása. Lásd: [összetevők és sablonok Git-adattár hozzáadása](devtest-lab-add-artifact-repo.md).
+5. Ha a saját tárház összetevők tárolására használ, adja hozzá a tárház a labor létrehozása a cikkben található utasításokat követve: [összetevők és sablonok Git-adattár hozzáadása](devtest-lab-add-artifact-repo.md).
 
-[!INCLUDE [devtest-lab-try-it-out](../../includes/devtest-lab-try-it-out.md)]
 
 ## <a name="related-articles"></a>Kapcsolódó cikkek
 * [A DevTest Labs szolgáltatásban az összetevők hibáinak diagnosztizálása](devtest-lab-troubleshoot-artifact-failure.md)

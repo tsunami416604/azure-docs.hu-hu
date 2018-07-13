@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 07/05/2018
+ms.date: 07/11/2018
 ms.author: magoedte
 ms.component: na
-ms.openlocfilehash: df4c60be8a29ab397424e9e5f9de7050f64d87c2
-ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
+ms.openlocfilehash: b7fd880683eed9e742007d6e595e1f275467b664
+ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37859776"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38990115"
 ---
 # <a name="log-analytics-data-security"></a>Log Analytics és adatbiztonság
 Az információ kiegészítésére az Azure Log Analytics információkat biztosít a dokumentum célközönsége [Azure adatvédelmi központ](../security/security-microsoft-trust-center.md).  
@@ -29,16 +29,34 @@ Ez a cikk ismerteti az adatok gyűjtése, feldolgozása és a Log Analytics ált
 
 A Log Analytics szolgáltatás a felhőbeli adatok biztonságosan kezeli a következő módszerekkel:
 
-* Az adatok elkülönítése
+* az adatok elkülönítése
 * Adatmegőrzés
 * Fizikai biztonság
-* Incidenskezelés
+* incidenskezelés
 * Megfelelőség
-* Biztonsági szabványok tanúsítványok
+* biztonsági szabványok tanúsítványok
 
 Lépjen kapcsolatba velünk, olyan kérdéseket, a javaslatokat vagy a problémákkal kapcsolatban az alábbi információkat, beleértve a biztonsági házirendeket [Azure-támogatási lehetőségek](http://azure.microsoft.com/support/options/).
 
-## <a name="data-segregation"></a>Az adatok elkülönítése
+## <a name="sending-data-securely-using-tls-12"></a>A TLS 1.2-es biztonságos az adatok küldése 
+
+A Log Analytics az átvitt adatok biztonságának biztosítása érdekében, erősen javasoljuk, hogy legalább az ügynök konfigurálása Transport Layer Security (TLS) 1.2-es. Sebezhetők régebbi verziói a TLS/Secure Sockets Layer (SSL) találhatók, és jelenleg továbbra is működnek, hogy a visszamenőleges kompatibilitás, amíg azok **nem ajánlott**, és az iparág gyorsan változó kénytelen volt megszakítani ezt támogatása ezen régebbi protokollok. 
+
+A [PCI biztonsági szabványok Tanácsa](https://www.pcisecuritystandards.org/) be van állítva egy [2018. június 30. a határidő](https://www.pcisecuritystandards.org/pdfs/PCI_SSC_Migrating_from_SSL_and_Early_TLS_Resource_Guide.pdf) régebbi verziói a TLS/SSL és a frissítés biztonságosabb protokoll letiltásához. Miután Azure támogatása, csökken, ha az ügynökök nem keresztül kommunikálnak, legalább a TLS 1.2-es nem tudná Log Analytics szolgáltatásnak. 
+
+Nem javasoljuk, hogy az ügynök csak a TLS 1.2 használatára, ha feltétlenül szükség szerint ez biztonságosabb tönkretehetik platform szintű biztonsági funkciókat, amelyek lehetővé teszik, hogy automatikusan felismeri és használja ki újabb protokollok elérhetővé váló programkedvezményekről például explicit módon beállítása mint TLS 1.3. 
+
+### <a name="platform-specific-guidance"></a>Platform konkrét útmutatást
+
+|Platformon és nyelven | Támogatás | További információ |
+| --- | --- | --- |
+|Linux | Linux-disztribúciók általában támaszkodhat [OpenSSL](https://www.openssl.org) a TLS 1.2 támogatása.  | Ellenőrizze a [OpenSSL változásnaplójában](https://www.openssl.org/news/changelog.html) annak ellenőrzéséhez, hogy az OpenSSL-verziót támogatja.|
+| Windows 8.0-s és 10 | Támogatott, és alapértelmezés szerint engedélyezve van. | Ellenőrizze, hogy továbbra is használja a [alapértelmezett beállítások](https://docs.microsoft.com/en-us/windows-server/security/tls/tls-registry-settings).  |
+| A Windows Server 2012-2016-ban | Támogatott, és alapértelmezés szerint engedélyezve van. | Ellenőrizze, hogy továbbra is használja a [alapértelmezett beállításai](https://docs.microsoft.com/en-us/windows-server/security/tls/tls-registry-settings) |
+| Windows 7 SP1 és a Windows Server 2008 R2 SP1 | Támogatott, de alapértelmezés szerint nincs engedélyezve. | Tekintse meg a [Transport Layer Security (TLS) beállításjegyzék-beállítások](https://docs.microsoft.com/en-us/windows-server/security/tls/tls-registry-settings) lap engedélyezése részleteiért.  |
+| Windows Server 2008 SP2 | A TLS 1.2 támogatásához szükséges frissítést. | Lásd: [frissítést a TLS 1.2 támogatása](https://support.microsoft.com/help/4019276/update-to-add-support-for-tls-1-1-and-tls-1-2-in-windows-server-2008-s) a Windows Server 2008 SP2. |
+
+## <a name="data-segregation"></a>az adatok elkülönítése
 Miután az adatokat a Log Analytics szolgáltatás által betöltött, az adatok van logikailag elkülönítve vannak tárolva a szolgáltatás egyes összetevőiben. Az összes adat munkaterület szerint van megcímkézve. Ez a címkézés megmarad az adatok teljes életciklusa alatt, és a szolgáltatás minden rétegében érvényes. Az adatok a kiválasztott régióban a storage fürtben egy dedikált adatbázisban tárolódik.
 
 ## <a name="data-retention"></a>Adatmegőrzés
@@ -70,7 +88,7 @@ Az alábbi táblázat az adattípusok példái láthatók:
 ## <a name="physical-security"></a>Fizikai biztonság
 A Log Analytics szolgáltatás kezeli a Microsoft ezért felelős munkatársai, és az összes tevékenység naplózása, és ellenőrizhető. A log Analytics egy Azure-szolgáltatásként működik, és megfelel-e az összes Azure-megfelelőségi és biztonsági követelményeknek. A 18 lapján tekintheti meg a fizikai biztonság az Azure-objektumok részleteit a [a Microsoft Azure biztonsági szolgáltatásainak áttekintése](http://download.microsoft.com/download/6/0/2/6028B1AE-4AEE-46CE-9187-641DA97FC1EE/Windows%20Azure%20Security%20Overview%20v1.01.pdf). Fizikai hozzáférési jogosultsága ahhoz, hogy biztonságos területek bárki, aki már nem rendelkezik a Log Analytics szolgáltatással, beleértve az átvitel és a megszűnés felelősséget módosítja egy munkanapon belül. Itt olvashat a globális fizikai infrastruktúra használjuk, [Microsoft Datacenters](https://azure.microsoft.com/en-us/global-infrastructure/).
 
-## <a name="incident-management"></a>Incidenskezelés
+## <a name="incident-management"></a>incidenskezelés
 A log Analytics egy incidenskezelési folyamatának, amelyek az összes Microsoft-szolgáltatásokkal rendelkezik. Összefoglalva, hogy:
 
 * A közös felelősség modell, ahol biztonsági feladata egy adott napszakban tartozik, és a egy részét az ügyfél tartozik

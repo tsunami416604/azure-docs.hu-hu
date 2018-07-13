@@ -10,14 +10,15 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
-ms.topic: get-started-article
-ms.date: 04/01/2018
+ms.topic: conceptual
+ms.date: 07/11/2018
 ms.author: mbullwin
-ms.openlocfilehash: 9eb7f74a365b51431aabd78de3c6d36c3c969bb6
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
-ms.translationtype: HT
+ms.openlocfilehash: 3a7d657a21b414d51375f912513ae045adec6d6e
+ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38991313"
 ---
 # <a name="monitor-a-sharepoint-site-with-application-insights"></a>SharePoint-hely megfigyelése az Application Insights segítségével
 Az Azure Application Insights figyeli alkalmazásai rendelkezésre állását, teljesítményét és használatát. Ebből a cikkből megismerheti, hogyan állíthatja be egy SharePoint-helyhez.
@@ -33,7 +34,7 @@ A megnyíló ablakban megtekintheti az alkalmazása teljesítmény- és használ
 
 ```HTML
 <!-- 
-To collect end-user usage analytics about your application, 
+To collect user behavior analytics tools about your application, 
 insert the following script into each page you want to track.
 Place this code immediately before the closing </head> tag,
 and before any other scripts. Your first data will appear 
@@ -83,18 +84,6 @@ Az első események megjelennek a keresésben.
 ![](./media/app-insights-sharepoint/09-search.png)
 
 Ha több adatot vár, néhány másodperc elteltével kattintson a Frissítés elemre.
-
-A felhasználókkal, munkamenetekkel és lapmegtekintésekkel kapcsolatos diagramok megtekintéséhez kattintson a **Használatelemzés** elemre az áttekintési panelen:
-
-![](./media/app-insights-sharepoint/06-usage.png)
-
-Bármely diagramra kattintva további részleteket tekinthet meg, például a Lapmegtekintések diagram esetében:
-
-![](./media/app-insights-sharepoint/07-pages.png)
-
-Vagy a Felhasználók diagram esetében:
-
-![](./media/app-insights-sharepoint/08-users.png)
 
 ## <a name="capturing-user-id"></a>Felhasználói azonosító rögzítése
 A normál weblapkódrészlet nem rögzíti a felhasználói azonosítót a SharePointból, de ez egy apró módosítással elvégezhető.

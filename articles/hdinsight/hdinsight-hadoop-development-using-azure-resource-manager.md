@@ -1,6 +1,6 @@
 ---
-title: A HDInsight az Azure Resource Manager eszközeinek át |} Microsoft Docs
-description: Azure Resource Manager Fejlesztőeszközök a HDInsight-fürtök áttelepítése
+title: A HDInsight az Azure Resource Manager-eszközök migrálása |} A Microsoft Docs
+description: Az Azure Resource Manager fejlesztői eszközökre a HDInsight-fürtök áttelepítése
 services: hdinsight
 editor: cgronlun
 manager: jhubbard
@@ -13,98 +13,98 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/21/2018
 ms.author: nitinme
-ms.openlocfilehash: 095205752b8432a741aab16983b175c21b02c0f4
-ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
+ms.openlocfilehash: 7234341fd63f4e841ac8d15a51293148d2c60975
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37017870"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39001871"
 ---
-# <a name="migrating-to-azure-resource-manager-based-development-tools-for-hdinsight-clusters"></a>A Fejlesztőeszközök Azure Resource Manager-alapú HDInsight-fürtök áttelepítése
+# <a name="migrating-to-azure-resource-manager-based-development-tools-for-hdinsight-clusters"></a>Áttelepítés az Azure Resource Manager-alapú fejlesztői eszközöket a HDInsight-fürtök
 
-A HDInsight-ból kivezettük való Azure Service Manager ASM-alapú eszközök hdinsight. Ha használta az Azure PowerShell, az Azure parancssori felület vagy a HDInsight .NET SDK a HDInsight-fürtök együttműködni, hosszúan PowerShell, a parancssori felület és a .NET SDK továbbítja az Azure Resource Manager-verziót használnak. Ez a cikk mutatók áttelepítése az új Resource Manager-alapú módszert biztosít. Megfelelő esetben ez a dokumentum a HDInsight a címterület-kezelési és erőforrás-kezelő módszerek közötti különbségeket mutatja be.
+HDInsight-alapú Azure Service Manager ASM-eszközök van kivezetése a HDInsight. Ha már használja az Azure PowerShell-lel, az Azure CLI vagy a HDInsight .NET SDK-val a HDInsight-fürtökkel működik, akkor arra biztatjuk a PowerShell, CLI és a jövőben .NET SDK-t az Azure Resource Manager-verziókat használhat. Ez a cikk mutatók történő áttelepítés az új Resource Manager-alapú megközelítést. Bárhol is alkalmazható, ez a dokumentum kiemeli a HDInsight az ASM- és erőforrás-kezelő módszerek közötti különbségeket.
 
 > [!IMPORTANT]
 > A címterület-kezelési támogatás PowerShell parancssori felület, és a .NET SDK nem küld a **2017. január 1**.
 > 
 > 
 
-## <a name="migrating-azure-cli-to-azure-resource-manager"></a>Az Azure CLI áttelepítése az Azure Resource Manager számára
+## <a name="migrating-azure-cli-to-azure-resource-manager"></a>Áttelepítés az Azure CLI Azure Resource Manager
 
 > [!IMPORTANT]
-> Az Azure CLI 2.0 nem támogatják a HDInsight-fürtök használata. Továbbra is használhatja Azure CLI 1.0 a hdinsight eszközzel, azonban az Azure CLI 1.0 elavult.
+> Az Azure CLI 2.0-val a HDInsight-fürt használata esetén nem biztosít támogatást. Továbbra is használhatja az Azure CLI 1.0-t a HDInsight, azonban az Azure CLI 1.0 elavult.
 
-A HDInsight az Azure CLI 1.0 keresztül használatához alapvető parancsok a következők:
+Az alábbiakban az alapszintű parancsainak Azure CLI 1.0 használatával HDInsight használata:
 
-* `azure hdinsight cluster create` -hoz létre egy új HDInsight-fürt
+* `azure hdinsight cluster create` – egy új HDInsight-fürtöt hoz létre
 * `azure hdinsight cluster delete` – egy meglévő HDInsight-fürt törlése
 * `azure hdinsight cluster show` – egy meglévő fürthöz kapcsolatos információk megjelenítése
-* `azure hdinsight cluster list` – ismerteti az Azure-előfizetés a HDInsight-fürtök
+* `azure hdinsight cluster list` -sorolja fel a HDInsight-fürtök az Azure-előfizetés
 
-Használja a `-h` kapcsolót, hogy a paraméterek és kapcsolók érhető el minden egyes parancsnál.
+Használja a `-h` kapcsoló vizsgálhatja meg a paramétereket és a kapcsolók érhető el minden egyes parancsnál.
 
 ### <a name="new-commands"></a>Új parancsok
-Elérhető az Azure Resource Manager új parancsok a következők:
+Az Azure Resource Managerrel használható új parancsok a következők:
 
-* `azure hdinsight cluster resize` -dinamikusan változik adhatja meg a fürt feldolgozó csomópontjainak számát
-* `azure hdinsight cluster enable-http-access` -HTTPs-hozzáférést biztosít a fürt (az alapértelmezés)
-* `azure hdinsight cluster disable-http-access` -letiltja a HTTPs-hozzáférés a fürthöz
-* `azure hdinsight script-action` -parancsokat biztosít létrehozása vagy kezelése Parancsfájlműveletek egy fürtön
-* `azure hdinsight config` -parancsok biztosít a konfigurációs fájl létrehozása, amely használható a `hdinsight cluster create` parancs használatával adja meg a konfigurációs adatokat.
+* `azure hdinsight cluster resize` – dinamikusan változtatja a fürtben található munkavégző csomópontok száma
+* `azure hdinsight cluster enable-http-access` -lehetővé teszi, hogy a fürt HTTPs-hozzáférést (az alapértelmezés szerint)
+* `azure hdinsight cluster disable-http-access` – a fürt HTTPs-hozzáférés letiltása
+* `azure hdinsight script-action` -parancsokat kínálja a létrehozásához és kezeléséhez Szkriptműveletek egy fürtön
+* `azure hdinsight config` -parancsokat biztosít a konfigurációs fájl létrehozása, amely használható a `hdinsight cluster create` parancs használatával adja meg a konfigurációs adatokat.
 
 ### <a name="deprecated-commands"></a>Elavult parancsok
-Ha használja a `azure hdinsight job` elküldeni a HDInsight-fürtjét, feladatok parancsok ezek a parancsok nem érhetők el az erőforrás-kezelő parancsok. Ha programozottan feladatok elküldéséhez a HDInsight parancsfájlok van szüksége, helyette használja a HDInsight által biztosított REST API-k. A REST API-k használatával feladatok elküldésekor további információkért lásd a következő dokumentumokat.
+Ha használja a `azure hdinsight job` küldhetők be feladatok a HDInsight-fürthöz, a parancsok ezek a parancsok nem érhetők el a Resource Manager-parancsok használatával. Ha programozott módon küldhetők be feladatok HDInsight parancsfájlok alapján van szüksége, Ehelyett használjon a HDInsight által biztosított REST API-kat. További információ a REST API-k használatával feladatok elküldése a következő dokumentumokban talál.
 
-* [Hadoop MapReduce-feladatok a HDInsight használata cURL használatával futtassa](hadoop/apache-hadoop-use-mapreduce-curl.md)
-* [A Hadoop Hive-lekérdezések futtatása a HDInsight használata cURL használatával](hadoop/apache-hadoop-use-hive-curl.md)
-* [Pig-feladatokhoz Hadoop on HDInsight használata cURL használatával futtassa](hadoop/apache-hadoop-use-pig-curl.md)
+* [És a Hadoop MapReduce feladatok futtatása HDInsight a cURL használatával](hadoop/apache-hadoop-use-mapreduce-curl.md)
+* [Hive-lekérdezések futtatásához a cURL használatával HDInsight Hadoop-keretrendszerrel](hadoop/apache-hadoop-use-hive-curl.md)
+* [A Pig-feladatok futtatása és a Hadoop HDInsight a cURL használatával](hadoop/apache-hadoop-use-pig-curl.md)
 
-Információk más módjairól MapReduce futtatásához, struktúra, és interaktív módon sertésfelmérés, lásd: [használata MapReduce a Hadoop on HDInsight](hadoop/hdinsight-use-mapreduce.md), [használata a hdinsight Hadoop Hive](hadoop/hdinsight-use-hive.md), és [a Pig használata a hadooppal HDInsight](hadoop/hdinsight-use-pig.md).
+Információ más különböző módon futtathatja a MapReduce-Hive, és Pig-alapú interaktív módon, lásd: [MapReduce használata a hadooppal a HDInsight](hadoop/hdinsight-use-mapreduce.md), [Hive használata a Hadooppal a HDInsight](hadoop/hdinsight-use-hive.md), és [a Pig használata a hadooppal HDInsight](hadoop/hdinsight-use-pig.md).
 
 ### <a name="examples"></a>Példák
 **Fürt létrehozása**
 
-* Régi parancs (ASM)- `azure hdinsight cluster create myhdicluster --location northeurope --osType linux --storageAccountName mystorage --storageAccountKey <storagekey> --storageContainer mycontainer --userName admin --password mypassword --sshUserName sshuser --sshPassword mypassword`
+* Régi parancs (ASM) – `azure hdinsight cluster create myhdicluster --location northeurope --osType linux --storageAccountName mystorage --storageAccountKey <storagekey> --storageContainer mycontainer --userName admin --password mypassword --sshUserName sshuser --sshPassword mypassword`
 * Új parancsot: `azure hdinsight cluster create myhdicluster -g myresourcegroup --location northeurope --osType linux --clusterType hadoop --defaultStorageAccountName mystorage --defaultStorageAccountKey <storagekey> --defaultStorageContainer mycontainer --userName admin -password mypassword --sshUserName sshuser --sshPassword mypassword`
 
-**A fürtök törlésével**
+**Fürt törlése**
 
-* Régi parancs (ASM)- `azure hdinsight cluster delete myhdicluster`
+* Régi parancs (ASM) – `azure hdinsight cluster delete myhdicluster`
 * Új parancsot: `azure hdinsight cluster delete mycluster -g myresourcegroup`
 
-**Lista fürtök**
+**Fürtök listázása**
 
-* Régi parancs (ASM)- `azure hdinsight cluster list`
+* Régi parancs (ASM) – `azure hdinsight cluster list`
 * Új parancsot: `azure hdinsight cluster list`
 
 > [!NOTE]
-> A parancs megadásával az erőforrás csoport használatával `-g` csak a fürtök ad vissza a megadott erőforráscsoportban.
+> A list parancs megadásával az erőforrás csoport használatával `-g` adja vissza a fürtök csak a megadott erőforráscsoportban.
 > 
 > 
 
 **Fürt információ megjelenítése**
 
-* Régi parancs (ASM)- `azure hdinsight cluster show myhdicluster`
+* Régi parancs (ASM) – `azure hdinsight cluster show myhdicluster`
 * Új parancsot: `azure hdinsight cluster show myhdicluster -g myresourcegroup`
 
-## <a name="migrating-azure-powershell-to-azure-resource-manager"></a>Az Azure PowerShell áttelepítése az Azure Resource Manager számára
-Az Azure PowerShell általános információk az Azure Resource Manager módban található [az Azure PowerShell használata Azure Resource Managerrel](../powershell-azure-resource-manager.md).
+## <a name="migrating-azure-powershell-to-azure-resource-manager"></a>Áttelepítés az Azure PowerShell az Azure Resource Manager
+Azure PowerShell-lel kapcsolatos általános információk az Azure Resource Manager módban található [az Azure PowerShell az Azure Resource Manager](../powershell-azure-resource-manager.md).
 
-Az Azure PowerShell Resource Manager parancsmagok és a címterület-kezelési parancsmagok telepíthetők. A két mód a parancsmag elkülönítsék névvel.  A Resource Manager módra van *AzureRmHDInsight* való hasonlítás parancsmag nevében szereplő *AzureHDInsight* a címterület-kezelési módban.  Például *New-AzureRmHDInsightCluster* vs. *New-AzureHDInsightCluster*. Paraméterek és kapcsolók hírek nevük lehet, hogy legyen, és nincsenek sok új paraméter elérhető erőforrás-kezelő használata esetén.  Például több parancsmagok szükséges nevű új kapcsoló *- ResourceGroupName*. 
+Az Azure PowerShell Resource Manager parancsmagjainak párhuzamosan lesz az ASM-parancsmagok is telepíthető. A parancsmagok a két mód a nevük alapján különböztethetők meg.  A Resource Manager módra van *AzureRmHDInsight* való hasonlítás parancsmag nevében szereplő *AzureHDInsight* az ASM-módban.  Ha például *New-AzureRmHDInsightCluster* vs. *New-AzureHDInsightCluster*. Paraméterek és kapcsolók rendelkezhetnek hírek neveket, és elérhetőek sok új paraméterek Resource Manager használata esetén.  Például számos olyan parancsmagot igényelnek-e egy új kapcsoló nevű *- ResourceGroupName*. 
 
-A HDInsight-parancsmagokat használhatja, csatlakozzon az Azure-fiókjával, és az új erőforráscsoport létrehozása:
+A HDInsight-parancsmagok használata előtt Azure-fiókjához csatlakozhat, és az egy új erőforráscsoport létrehozásához:
 
-* Connect-AzureRmAccount vagy [válasszon-AzureRmProfile](https://msdn.microsoft.com/library/mt619310.aspx). Lásd: [hitelesítéséhez az Azure Resource Manager egyszerű szolgáltatás](../azure-resource-manager/resource-group-authenticate-service-principal.md)
+* Connect-AzureRmAccount vagy [Select-azurermprofile új](https://msdn.microsoft.com/library/mt619310.aspx). Lásd: [hitelesítése egy egyszerű szolgáltatást az Azure Resource Managerrel](../azure-resource-manager/resource-group-authenticate-service-principal.md)
 * [New-AzureRmResourceGroup](https://msdn.microsoft.com/library/mt603739.aspx)
 
 ### <a name="renamed-cmdlets"></a>Átnevezett parancsmagok
-A HDInsight ASM-parancsmagok a Windows PowerShell-konzolban listázásához:
+A HDInsight ASM-parancsmagok a Windows PowerShell-konzol megjelenítése:
 
     help *azurermhdinsight*
 
-A következő táblázat a címterület-kezelési parancsmagok és a Resource Manager módra a nevek:
+Az alábbi táblázat az ASM-parancsmagok és a Resource Manager módban nevét:
 
-| Címterület-kezelési parancsmagok | Erőforrás-kezelő parancsmagok |
+| Az ASM-parancsmagok | Resource Manager-parancsmagok |
 | --- | --- |
 | Add-AzureHDInsightConfigValues |[Add-AzureRmHDInsightConfigValues](https://msdn.microsoft.com/library/mt603530.aspx) |
 | Add-AzureHDInsightMetastore |[Add-AzureRmHDInsightMetastore](https://msdn.microsoft.com/library/mt603670.aspx) |
@@ -117,7 +117,7 @@ A következő táblázat a címterület-kezelési parancsmagok és a Resource Ma
 | Grant-AzureHDInsightHttpServicesAccess |[Grant-AzureRmHDInsightHttpServicesAccess](https://msdn.microsoft.com/library/mt619407.aspx) |
 | Grant-AzureHdinsightRdpAccess |[Grant-AzureRmHDInsightRdpServicesAccess](https://msdn.microsoft.com/library/mt603717.aspx) |
 | Invoke-AzureHDInsightHiveJob |[Invoke-AzureRmHDInsightHiveJob](https://msdn.microsoft.com/library/mt603593.aspx) |
-| New-AzureHDInsightCluster |[New-AzureRmHDInsightCluster](https://msdn.microsoft.com/library/mt619331.aspx) |
+| New-AzureHDInsightCluster |[New-AzureRmHDInsightCluster](https://docs.microsoft.com/powershell/module/azurerm.hdinsight/new-azurermhdinsightcluster) |
 | New-AzureHDInsightClusterConfig |[New-AzureRmHDInsightClusterConfig](https://msdn.microsoft.com/library/mt603700.aspx) |
 | New-AzureHDInsightHiveJobDefinition |[New-AzureRmHDInsightHiveJobDefinition](https://msdn.microsoft.com/library/mt619448.aspx) |
 | New-AzureHDInsightMapReduceJobDefinition |[New-AzureRmHDInsightMapReduceJobDefinition](https://msdn.microsoft.com/library/mt603626.aspx) |
@@ -135,21 +135,21 @@ A következő táblázat a címterület-kezelési parancsmagok és a Resource Ma
 | Wait-AzureHDInsightJob |[Wait-AzureRmHDInsightJob](https://msdn.microsoft.com/library/mt603834.aspx) |
 
 ### <a name="new-cmdlets"></a>Új parancsmagok
-Az alábbiakban az új parancsmagok, amelyek csak erőforrás-kezelő módban érhető el. 
+Az alábbiakban az új parancsmagok, amelyek csak Resource Manager módban érhető el. 
 
-**Parancsfájl művelet kapcsolatos parancsmagok:**
+**Parancsprogram-művelet kapcsolatos parancsmagok:**
 
-* **Get-AzureRmHDInsightPersistedScriptAction**: lekérdezi a megőrzött Parancsfájlműveletek fürt és időrendben sorolja fel azokat, vagy egy megadott megőrzött parancsfájl művelet lekérdezi a részletek. 
-* **Get-AzureRmHDInsightScriptActionHistory**: a parancsfájlművelet előzményeinek lekérdezi a fürt, fordított időrendben sorolja fel, és lekérdezi a korábban végrehajtott parancsfájlművelet részleteit. 
-* **Remove-AzureRmHDInsightPersistedScriptAction**: egy megőrzött parancsfájl művelet eltávolítja a HDInsight-fürtöt.
-* **Set-AzureRmHDInsightPersistedScriptAction**: egy megőrzött parancsfájl műveletet kell azelőtti parancsfájlművelet állítja be.
-* **Küldje el AzureRmHDInsightScriptAction**: egy új parancsfájlművelet Azure HDInsight-fürtöt ad meg. 
+* **Get-AzureRmHDInsightPersistedScriptAction**: lekérdezi a fürthöz a megőrzött Parancsfájlműveletek és időrendben sorolja fel őket, vagy egy megadott megőrzött parancsfájlművelet részleteinek beolvasása. 
+* **Get-AzureRmHDInsightScriptActionHistory**: lekérdezi a parancsfájlművelet-előzmény-fürthöz tartozó, fordított időrendben sorolja fel, és lekérdezi a korábban végrehajtott szkriptműveletet részleteit. 
+* **Remove-AzureRmHDInsightPersistedScriptAction**: egy megőrzött parancsfájlművelet távolít el egy HDInsight-fürtön.
+* **Set-AzureRmHDInsightPersistedScriptAction**: állítja be a korábban végrehajtott szkriptműveletet kell egy megőrzött parancsfájlművelet.
+* **Küldje el AzureRmHDInsightScriptAction**: elküld egy új szkriptművelet egy Azure HDInsight-fürtön. 
 
-További használati információkért lásd: [testreszabása Linux-alapú HDInsight-fürtök használata parancsfájlművelet](hdinsight-hadoop-customize-cluster-linux.md).
+További használati információkért lásd: [testreszabása Linux-alapú HDInsight-fürtök szkriptműveletekkel](hdinsight-hadoop-customize-cluster-linux.md).
 
-**A fürt identitását kapcsolatos parancsmagok:**
+**Fürt identitáshoz kapcsolódó parancsmagok:**
 
-* **Adja hozzá AzureRmHDInsightClusterIdentity**: ad hozzá egy fürt identitását egy fürt konfigurációs objektumot, hogy a HDInsight-fürt elérhessék az Azure Data Lake tárolja. Lásd: [HDInsight-fürtök létrehozása az Azure PowerShell használatával a Data Lake Store](../data-lake-store/data-lake-store-hdinsight-hadoop-use-powershell.md).
+* **Adjon hozzá AzureRmHDInsightClusterIdentity**: ad hozzá egy fürt identitását egy fürt konfigurációs objektumot, hogy a HDInsight-fürt tudjon férni az Azure Data Lake Store. Lásd: [egy HDInsight-fürt létrehozása a Data Lake Store az Azure PowerShell-lel](../data-lake-store/data-lake-store-hdinsight-hadoop-use-powershell.md).
 
 ### <a name="examples"></a>Példák
 **Fürt létrehozása**
@@ -218,39 +218,39 @@ Régi parancs (ASM):
 
 
 #### <a name="other-samples"></a>Más minták
-* [A HDInsight-fürtök létrehozása](hdinsight-hadoop-create-linux-clusters-azure-powershell.md)
-* [Küldje el a Hive-feladatok](hadoop/apache-hadoop-use-hive-powershell.md)
-* [Küldje el a Pig-feladatokhoz](hadoop/apache-hadoop-use-pig-powershell.md)
-* [Sqoop feladatok elküldéséhez](hadoop/apache-hadoop-use-sqoop-powershell.md)
+* [HDInsight-fürtök létrehozása](hdinsight-hadoop-create-linux-clusters-azure-powershell.md)
+* [Hive-feladatok](hadoop/apache-hadoop-use-hive-powershell.md)
+* [A Pig-feladatok elküldése](hadoop/apache-hadoop-use-pig-powershell.md)
+* [Sqoop-feladatok elküldése](hadoop/apache-hadoop-use-sqoop-powershell.md)
 
-## <a name="migrating-to-the-new-hdinsight-net-sdk"></a>Az új HDInsight .NET SDK áttelepítése
-Az Azure Szolgáltatáskezelés-alapú [(ASM) HDInsight .NET SDK](https://msdn.microsoft.com/library/azure/mt416619.aspx) elavult. Hosszúan használja az Azure Resource Manager-alapú [Resource Manager-alapú HDInsight .NET SDK](https://docs.microsoft.com/dotnet/api/overview/azure/hdinsight). A következő ASM-alapú HDInsight-csomagok elavulttá válnak.
+## <a name="migrating-to-the-new-hdinsight-net-sdk"></a>Az új HDInsight .NET SDK-ba való migrálás
+Az Azure Service Management-alapú [(ASM) HDInsight .NET SDK-val](https://msdn.microsoft.com/library/azure/mt416619.aspx) most már elavult. Hosszúan használata az Azure Resource Management-alapú [Resource Manager-alapú HDInsight .NET SDK](https://docs.microsoft.com/dotnet/api/overview/azure/hdinsight). A következő ASM-alapú HDInsight-csomagok elavulttá válnak.
 
 * `Microsoft.WindowsAzure.Management.HDInsight`
 * `Microsoft.Hadoop.Client`
 
-Ez a témakör mutatókat biztosít a további információt a Resource Manager-alapú SDK használatával bizonyos feladatok elvégzéséhez.
+Ebben a szakaszban mutató hivatkozások segítségével további információt Ez a Resource Manager-alapú SDK-val bizonyos feladatokat ismerteti.
 
 | Hogyan... a Resource Manager-alapú HDInsight SDK használatával | Hivatkozások |
 | --- | --- |
-| .NET SDK használatával a HDInsight-fürtök létrehozása |Lásd: [HDInsight-fürtök létrehozása .NET SDK használatával](hdinsight-hadoop-create-linux-clusters-dotnet-sdk.md) |
-| A fürt parancsfájlművelet .NET SDK-val testreszabása |Lásd: [testreszabása HDInsight Linux clusters parancsfájlművelet használatával](hdinsight-hadoop-create-linux-clusters-dotnet-sdk.md#use-script-action) |
-| Alkalmazások interaktív .NET SDK-val az Azure Active Directory használatával hitelesíti |Lásd: [.NET SDK használatával futtassa Hive lekérdezések](hadoop/apache-hadoop-use-hive-dotnet-sdk.md). Ebben a cikkben a kódrészletet használja az interaktív hitelesítési módszerrel. |
-| Alkalmazások nem interaktív .NET SDK-val az Azure Active Directory használatával hitelesíti |Lásd: [a HDInsight nem interaktív alkalmazások létrehozása](hdinsight-create-non-interactive-authentication-dotnet-applications.md) |
-| .NET SDK használatával Hive feladat elküldése |Lásd: [elküldeni a Hive-feladatok](hadoop/apache-hadoop-use-hive-dotnet-sdk.md) |
-| Elküldeni a Pig feladatot .NET SDK használatával |Lásd: [elküldeni a Pig-feladatokhoz](hadoop/apache-hadoop-use-pig-dotnet-sdk.md) |
-| .NET SDK használatával Sqoop feladat elküldése |Lásd: [nyújt Sqoop feladatok](hadoop/apache-hadoop-use-sqoop-dotnet-sdk.md) |
-| Lista HDInsight-fürtök .NET SDK használatával |Lásd: [lista HDInsight-fürtök](hdinsight-administer-use-dotnet-sdk.md#list-clusters) |
-| A HDInsight-fürtök .NET SDK használatával méretezése |Lásd: [méretezési HDInsight-fürtök](hdinsight-administer-use-dotnet-sdk.md#scale-clusters) |
-| A HDInsight-fürtök .NET SDK használatával engedélyezéshez/visszavonáshoz elérésére |Lásd: [Grant/revoke access HDInsight-fürtök](hdinsight-administer-use-dotnet-sdk.md#grantrevoke-access) |
-| HTTP felhasználó hitelesítő adatait a HDInsight-fürtök .NET SDK használatával |Lásd: [frissítés HTTP felhasználói hitelesítő adatokat a HDInsight-fürtök](hdinsight-administer-use-dotnet-sdk.md#update-http-user-credentials) |
-| Az alapértelmezett tárfiók keresése a HDInsight-fürtök .NET SDK használatával |Lásd: [található az alapértelmezett tárfiókot, a HDInsight-fürtök](hdinsight-administer-use-dotnet-sdk.md#find-the-default-storage-account) |
-| .NET SDK használatával a HDInsight-fürtök törlése |Lásd: [törlése HDInsight-fürtök](hdinsight-administer-use-dotnet-sdk.md#delete-clusters) |
+| .NET SDK használatával HDInsight-fürtök létrehozása |Lásd: [létre HDInsight-fürtök .NET SDK használatával](hdinsight-hadoop-create-linux-clusters-dotnet-sdk.md) |
+| A Szkriptműveletek használatával a .NET SDK-val fürt testreszabása |Lásd: [-fürtök HDInsight Linux testreszabása Szkriptműveletek használatával](hdinsight-hadoop-create-linux-clusters-dotnet-sdk.md#use-script-action) |
+| Interaktív módon az Azure Active Directory .NET SDK-val alkalmazások hitelesítése |Lásd: [futtatása Hive-lekérdezések a .NET SDK használatával](hadoop/apache-hadoop-use-hive-dotnet-sdk.md). Ebben a cikkben a kódrészlet az interaktív hitelesítési módszert használ. |
+| Az alkalmazás nem interaktív .NET SDK-val az Azure Active Directory használatával hitelesíti |Lásd: [for HDInsight nem interaktív alkalmazások létrehozása](hdinsight-create-non-interactive-authentication-dotnet-applications.md) |
+| Elküldött egy Hive-feladatot a .NET SDK használata |Lásd: [küldje el a Hive-feladatok](hadoop/apache-hadoop-use-hive-dotnet-sdk.md) |
+| .NET SDK használatával a Pig feladat elküldése |Lásd: [elküldeni a Pig-feladatok](hadoop/apache-hadoop-use-pig-dotnet-sdk.md) |
+| .NET SDK használatával Sqoop feladat elküldése |Lásd: [feladatok elküldéséhez a sqoop használatával](hadoop/apache-hadoop-use-sqoop-dotnet-sdk.md) |
+| .NET SDK-t használó HDInsight-fürtök listázása |Lásd: [lista HDInsight-fürtök](hdinsight-administer-use-dotnet-sdk.md#list-clusters) |
+| .NET SDK-t használó HDInsight-fürtök méretezése |Lásd: [méretezési HDInsight-fürtök](hdinsight-administer-use-dotnet-sdk.md#scale-clusters) |
+| GRANT/revoke access HDInsight-fürtök .NET SDK használatával |Lásd: [Grant/revoke access HDInsight-fürtök](hdinsight-administer-use-dotnet-sdk.md#grantrevoke-access) |
+| A HTTP felhasználói hitelesítő adatokat, a .NET SDK használatával HDInsight-fürtök frissítése |Lásd: [frissítés HTTP-felhasználónál használt HDInsight-fürtök](hdinsight-administer-use-dotnet-sdk.md#update-http-user-credentials) |
+| Keresse meg az alapértelmezett tárfiók HDInsight-fürtök .NET SDK használatával |Lásd: [keresse meg az alapértelmezett tárfiókot, HDInsight-fürtök](hdinsight-administer-use-dotnet-sdk.md#find-the-default-storage-account) |
+| .NET SDK használatával HDInsight-fürtök törlése |Lásd: [törlése HDInsight-fürtök](hdinsight-administer-use-dotnet-sdk.md#delete-clusters) |
 
 ### <a name="examples"></a>Példák
-A következő példák a hogyan van egy művelet alapján történik a címterület-kezelési alapú SDK és az azzal egyenértékű kódrészletet a Resource Manager-alapú SDK-ban.
+Az alábbiakban néhány példa, hogy milyen művelet az ASM-alapú SDK és az azzal egyenértékű kódrészlet használatával a Resource Manager-alapú SDK végrehajtva.
 
-**A fürt CRUD-ügyfél létrehozása**
+**Egy fürt CRUD-ügyfelének létrehozása**
 
 * Régi parancs (ASM)
   
@@ -278,7 +278,7 @@ A következő példák a hogyan van egy művelet alapján történik a címterü
         var creds = new TokenCloudCredentials(subId.ToString(), accessToken);
   
         _hdiManagementClient = new HDInsightManagementClient(creds);
-* Új parancs (felhasználói engedélyezési)
+* Új parancs (felhasználói hitelesítés)
   
         //User auth
         //This will log the application in on behalf of the user.
@@ -353,7 +353,7 @@ A következő példák a hogyan van egy művelet alapján történik a címterü
         };
         client.Clusters.ConfigureHttpSettings(resourceGroup, dnsname, httpParams);
 
-**A fürtök törlésével**
+**Fürt törlése**
 
 * Régi parancs (ASM)
   

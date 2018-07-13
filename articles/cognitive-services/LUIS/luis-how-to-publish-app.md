@@ -10,12 +10,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: v-geberr;
-ms.openlocfilehash: 0f6ba76ede48502e4f3308b11d41bf141f0188fb
-ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
+ms.openlocfilehash: 43a26f9e81b788c2a110c24bf2e02c56c0714f1e
+ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37927774"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38988836"
 ---
 # <a name="publish-your-trained-app"></a>A betanított alkalmazás közzététele
 Ha befejezte a elkészítését és tesztelését a LUIS-alkalmazás, tegye közzé. Az alkalmazás közzététele után a közzétételi oldalon látható-e az összes kapcsolódó HTTP [végpontok](luis-glossary.md#endpoint). Ezeket a végpontokat kiszolgálónként [régió](luis-reference-regions.md) és a egy [kulcs](luis-how-to-manage-keys.md), majd integrálva vannak minden olyan ügyfél, a csevegőrobot, vagy a háttérrendszer alkalmazás. 
@@ -91,9 +91,9 @@ A leképezések és azok pontszámok is vannak-e a végpont naplók tartalmazza.
 ```
 
 ### <a name="enable-bing-spell-checker"></a>A Bing helyesírás-ellenőrzés engedélyezése 
-Az a **végpont URL-beállítások**, a **engedélyezése a Bing helyesírás-ellenőrzővel** jelölőnégyzet lehetővé teszi, hogy a LUIS, mielőtt előrejelzési kijavítsa a hibásan leírt szavakat. Ehhez szükséges, hogy hozzon létre egy  **[kulcs a Bing Spell Check](https://azure.microsoft.com/try/cognitive-services/?api=spellcheck-api)**. A kulcs létrehozása után két lekérdezési karakterlánc paraméterei kerülnek a közzétételi oldalon található végponti URL-cím. 
+Az a **végpont URL-beállítások**, a **engedélyezése a Bing helyesírás-ellenőrzővel** jelölőnégyzet lehetővé teszi, hogy a LUIS, mielőtt előrejelzési kijavítsa a hibásan leírt szavakat. Hozzon létre egy  **[kulcs a Bing Spell Check](https://azure.microsoft.com/try/cognitive-services/?api=spellcheck-api)**. A kulcs létrehozása után két lekérdezési karakterlánc paraméterei kerülnek a közzétételi oldalon található végponti URL-cím. 
 
-A LUIS-hívása alkalmazáshoz is hozhat létre a saját URL-címek, ellenőrizze, hogy a **helyesírás-ellenőrzés = true** sztringet és a **bing – helyesírás-ellenőrzés-subscription-key = {YOUR_BING_KEY_HERE}**. Cserélje le a `{YOUR_BING_KEY_HERE}` és a Bing helyesírás-ellenőrző kulcs.
+Adja hozzá a **helyesírás-ellenőrzés = true** sztringet és a **bing – helyesírás-ellenőrzés-subscription-key = {YOUR_BING_KEY_HERE}** . Cserélje le a `{YOUR_BING_KEY_HERE}` és a Bing helyesírás-ellenőrző kulcs.
 
 ```JSON
 {

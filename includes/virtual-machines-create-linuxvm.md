@@ -51,6 +51,6 @@
     azure vm start myVM
     ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 További részletek az Azure CLI 1.0 virtuális gépekre vonatkozó parancsairól: [Az Azure CLI 1.0 használata a klasszikus üzembehelyezési API-val](https://docs.microsoft.com/cli/azure/get-started-with-az-cli2).
 

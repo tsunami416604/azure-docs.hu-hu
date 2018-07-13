@@ -5,14 +5,14 @@ services: site-recovery
 author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 07/05/2018
+ms.date: 07/12/2018
 ms.author: raynew
-ms.openlocfilehash: 02a790907908daf2db282a320f50d3a27efbd177
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: 05340c8504150ed568e0d5ce5c8250127e59bca0
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37917186"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39003237"
 ---
 # <a name="contoso-migration--refactor-a-team-foundation-server-deployment-to-visual-studio-team-services-vsts"></a>Contoso áttelepítési: Újrabontás a Team Foundation Server üzembe helyezés a Visual Studio Team Services (VSTS)
 
@@ -33,6 +33,8 @@ Ez a dokumentum a cikkeket, amelyek megmutatják, hogyan a fiktív Contoso átte
 [9. cikk: Újrabontás az alkalmazások az Azure Web App és az Azure SQL Database](contoso-migration-refactor-web-app-sql.md) | Bemutatja, hogyan Contoso a SmartHotel alkalmazást áttelepíti egy Azure container-alapú webalkalmazásba, és az alkalmazás-adatbázis áttelepítése az Azure SQL-kiszolgálóra. | Elérhető
 [10. cikk: Újrabontás egy Linux-alkalmazást az Azure App Service és az Azure MySQL-kiszolgáló](contoso-migration-refactor-linux-app-service-mysql.md) | Bemutatja, hogyan Contoso áttelepíti az Azure App Service segítségével PHP 7.0 Docker-tárolót a osTicket Linux-alkalmazás. A központi telepítés kódbázis a Githubra áttelepítése. Az alkalmazás-adatbázis áttelepítése az Azure MySQL-hez. | Elérhető
 11. cikk: Újrabontás a TFS üzembe helyezés a vsts-ben | A fejlesztői TFS alkalmazás migrálása a vsts-ben az Azure-ban | Ez a cikk
+[A cikk 12: Azure-tárolók és az Azure SQL Database az alkalmazás újratervezése](contoso-migration-rearchitect-container-sql.md) | Bemutatja, hogyan Contoso áttelepíti, és rearchitects SmartHotel alkalmazás az Azure-bA. Az alkalmazás webes réteg egy Windows-tárolót, és a egy Azure SQL Database-ben az alkalmazás-adatbázis újratervezése azokat. | Elérhető
+[Cikk 13: Építse újra az alkalmazást az Azure-ban](contoso-migration-rebuild.md) | Bemutatja, hogyan építse újra a Contoso SmartHotel alkalmazás számos Azure-szolgáltatások és szolgáltatások, beleértve az App Services, Azure-beli Kubernetes, az Azure Functions, a Cognitive services és a Cosmos DB használatával. | Elérhető
 
 
 ## <a name="business-drivers"></a>A stratégiai

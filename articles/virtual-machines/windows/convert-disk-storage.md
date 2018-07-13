@@ -1,6 +1,6 @@
 ---
-title: Alakítsa át az Azure szabványos lemezek tárolási kezelik, prémium, és ez fordítva is igaz |} Microsoft Docs
-description: Azure konvertálása által kezelt lemezeken standard, premium, és fordítva, Azure PowerShell használatával.
+title: Átalakítása az Azure disks storage felügyelt standardról prémium szintre, és fordítva |} A Microsoft Docs
+description: Azure konvertálása felügyelt lemezek a standard, prémium szintű, és fordítva, az Azure PowerShell-lel.
 services: virtual-machines-windows
 documentationcenter: ''
 author: ramankum
@@ -15,29 +15,29 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/07/2017
 ms.author: ramankum
-ms.openlocfilehash: 19979240e13ac822921b7f43a158d171aeea0123
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 8ab7745c6b600ac20b6e6064108e15e7f8ab8b09
+ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34365236"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38991354"
 ---
-# <a name="convert-azure-managed-disks-storage-from-standard-to-premium-and-vice-versa"></a>Alakítsa át az Azure szabványos lemezek tárolási kezelik, prémium, és ez fordítva is igaz
+# <a name="convert-azure-managed-disks-storage-from-standard-to-premium-and-vice-versa"></a>Átalakítása az Azure disks storage felügyelt standardról prémium szintre, és fordítva
 
-Kezelt lemezek két tárolási lehetőségeket kínál: [prémium](premium-storage.md) (SSD-alapú) és [szabványos](standard-storage.md) (HDD-alapú). Ez lehetővé teszi, hogy egyszerűen válthat a két lehetőség közül választhat a teljesítmény igények alapján minimális állásidővel között. Ez a funkció nem felügyelt lemezek nem érhető el. Azonban úgy is könnyen [alakítsa át a felügyelt](convert-unmanaged-to-managed-disks.md) egyszerűen a két beállítás közötti váltáshoz.
+A felügyelt lemezek három tárolási lehetőséget kínál az: [prémium szintű SSD](../windows/premium-storage.md), Standard SSD(Preview) és [Standard HDD](../windows/standard-storage.md). Lehetővé teszi a teljesítmény igények alapján minimális állásidővel lehetőségek közötti egyszerű váltást. Nem felügyelt lemezek esetén ez nem támogatott. De könnyen [konvertálás felügyelt lemezekké](convert-unmanaged-to-managed-disks.md) egyszerűen a lemeztípusok közötti váltáshoz.
 
-Ez a cikk bemutatja, hogyan felügyelt lemezek konvertálása standard, premium, és ez fordítva is igaz Azure PowerShell használatával. Ha szeretné telepíteni vagy frissíteni, lásd: [Azure PowerShell telepítése és konfigurálása](/powershell/azure/install-azurerm-ps.md).
+Ez a cikk bemutatja a felügyelt lemezek konvertálása a standard, prémium szintű, és fordítva az Azure PowerShell használatával. Ha szeretné telepíteni, vagy frissít a csomagon belül, lásd: [Azure PowerShell telepítése és konfigurálása](/powershell/azure/install-azurerm-ps.md).
 
 ## <a name="before-you-begin"></a>Előkészületek
 
-* Az átalakítás újra kell indítani a virtuális gép, úgy ütemezni a áttelepítését a lemezek már meglévő karbantartási időszak alatt történjen. 
-* Használatakor a nem felügyelt lemezek, először [alakítsa át a felügyelt](convert-unmanaged-to-managed-disks.md) használatára Ez a cikk a két tárolási lehetőségek közötti váltáshoz. 
-* Ez a cikk az Azure PowerShell modul verziója 6.0.0 szükséges vagy újabb. A verzió azonosításához futtassa a következőt: ` Get-Module -ListAvailable AzureRM`. Ha frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-azurerm-ps) ismertető cikket. Is kell futtatnia `Connect-AzureRmAccount` kapcsolat létrehozása az Azure-ral.
+* Az átalakításhoz újra kell indítani a virtuális gép, ezért ütemezze a lemezek tároló áttelepítése egy már létező karbantartási időszakra. 
+* Ha először használja a nem felügyelt lemezek [konvertálás felügyelt lemezekké](convert-unmanaged-to-managed-disks.md) Ez a cikk használatával válthat a tárolási lehetőségek között. 
+* Ehhez a cikkhez az Azure PowerShell-modul verzióját 6.0.0 vagy újabb. A verzió azonosításához futtassa a következőt: ` Get-Module -ListAvailable AzureRM`. Ha frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-azurerm-ps) ismertető cikket. Emellett a `Connect-AzureRmAccount` futtatásával kapcsolatot kell teremtenie az Azure-ral.
 
 
-## <a name="convert-all-the-managed-disks-of-a-vm-from-standard-to-premium-and-vice-versa"></a>Alakítsa át a virtuális gépek összes felügyelt lemezeket szabványos prémium szintű, és ez fordítva is igaz
+## <a name="convert-all-the-managed-disks-of-a-vm-from-standard-to-premium-and-vice-versa"></a>A felügyelt lemezek, a virtuális gépek konvertálása standard prémium szintre, és ez fordítva is igaz
 
-A következő példában megmutatjuk, hogyan lehet váltani a prémium szintű Storage-standard a virtuális gép összes lemeze. Felügyelt premium lemezek, a virtuális Gépet kell használnia egy [Virtuálisgép-méretet](sizes.md) , amely támogatja a prémium szintű storage. Ebben a példában is, amely támogatja a prémium szintű storage méretre vált.
+Az alábbi példa bemutatja, hogyan lehet váltani a prémium szintű Storage standard virtuális gép mindegyik lemeze. Prémium szintű felügyelt lemezek használata, a virtuális Gépet kell használnia egy [Virtuálisgép-méret](sizes.md) , amely támogatja a premium storage. Ebben a példában is, amely támogatja a prémium szintű storage vált.
 
 ```azurepowershell-interactive
 # Name of the resource group that contains the VM
@@ -47,7 +47,7 @@ $rgName = 'yourResourceGroup'
 $vmName = 'yourVM'
 
 # Choose between StandardLRS and PremiumLRS based on your scenario
-$storageType = 'PremiumLRS'
+$storageType = 'Premium_LRS'
 
 # Premium capable size
 # Required only if converting storage from standard to premium
@@ -79,9 +79,9 @@ foreach ($disk in $vmDisks)
 
 Start-AzureRmVM -ResourceGroupName $rgName -Name $vmName
 ```
-## <a name="convert-a-managed-disk-from-standard-to-premium-and-vice-versa"></a>Standard felügyelt lemezes átalakítása prémium, és ez fordítva is igaz
+## <a name="convert-a-managed-disk-from-standard-to-premium-and-vice-versa"></a>Standard szintű felügyelt lemez konvertálása prémium szintű, és ez fordítva is igaz
 
-A fejlesztési és tesztelési célú munkaterheléshez érdemes lehet a költségek csökkentése a standard és premium lemezek keverékével van. Prémium szintű Storage, frissítse a lemezek csak az jobb teljesítményt igénylő végrehajtható. A következő példában megmutatjuk, hogyan lehet váltani egyetlen lemezt a virtuális gépek a szabványos prémium szintű Storage, és ez fordítva is igaz. Felügyelt premium lemezek, a virtuális Gépet kell használnia egy [Virtuálisgép-méretet](sizes.md) , amely támogatja a prémium szintű storage. Ebben a példában is, amely támogatja a prémium szintű storage méretre vált.
+A fejlesztési és tesztelési számítási feladatok esetében érdemes a standard és prémium szintű lemezek a költségek csökkentése érdekében keverékét rendelkezik. Ez a premium storage, csak azok a lemezek jobb teljesítményt igénylő frissítésével végezheti el. Az alábbi példa bemutatja, hogyan lehet váltani a prémium szintű Storage, a standard szintű virtuális gépek egyetlen lemezre, és ez fordítva is igaz. Prémium szintű felügyelt lemezek használata, a virtuális Gépet kell használnia egy [Virtuálisgép-méret](sizes.md) , amely támogatja a premium storage. Ebben a példában is, amely támogatja a prémium szintű storage vált.
 
 ```azurepowershell-interactive
 
@@ -89,13 +89,13 @@ $diskName = 'yourDiskName'
 # resource group that contains the managed disk
 $rgName = 'yourResourceGroupName'
 # Choose between StandardLRS and PremiumLRS based on your scenario
-$storageType = 'PremiumLRS'
+$storageType = 'Premium_LRS'
 # Premium capable size 
 $size = 'Standard_DS2_v2'
 
 $disk = Get-AzureRmDisk -DiskName $diskName -ResourceGroupName $rgName
 
-# Get the ARM resource to get name and resource group of the VM
+# Get parent VM resource
 $vmResource = Get-AzureRmResource -ResourceId $disk.diskId
 
 # Stop and deallocate the VM before changing the storage type
@@ -116,7 +116,37 @@ Update-AzureRmDisk -DiskUpdate $diskUpdateConfig -ResourceGroupName $rgName `
 Start-AzureRmVM -ResourceGroupName $vm.ResourceGroupName -Name $vm.Name
 ```
 
+## <a name="convert-a-managed-disk-from-standard-hdd-to-standard-ssd-and-vice-versa"></a>Felügyelt lemez konvertálása a standard HDD standard SSD-re és fordítva
+
+Az alábbi példa bemutatja, hogyan lehet váltani egy egyetlen lemezt egy virtuális gép a szabványos HDD standard SSD-re és fordítva.
+
+```azurepowershell-interactive
+
+$diskName = 'yourDiskName'
+# resource group that contains the managed disk
+$rgName = 'yourResourceGroupName'
+# Choose between Standard_LRS and StandardSSD_LRS based on your scenario
+$storageType = 'StandardSSD_LRS'
+
+$disk = Get-AzureRmDisk -DiskName $diskName -ResourceGroupName $rgName
+
+# Get parent VM resource
+$vmResource = Get-AzureRmResource -ResourceId $disk.diskId
+
+# Stop and deallocate the VM before changing the storage type
+Stop-AzureRmVM -ResourceGroupName $vm.ResourceGroupName -Name $vm.Name -Force
+
+$vm = Get-AzureRmVM $vmResource.ResourceGroupName -Name $vmResource.ResourceName 
+
+# Update the storage type
+$diskUpdateConfig = New-AzureRmDiskUpdateConfig -AccountType $storageType -DiskSizeGB $disk.DiskSizeGB
+Update-AzureRmDisk -DiskUpdate $diskUpdateConfig -ResourceGroupName $rgName `
+-DiskName $disk.Name
+
+Start-AzureRmVM -ResourceGroupName $vm.ResourceGroupName -Name $vm.Name
+```
+
 ## <a name="next-steps"></a>További lépések
 
-Tegye meg a virtuális gépek csak olvasható másolatát a használatával [pillanatképek](snapshot-copy-managed-disk.md).
+Készítsen róla egy írásvédett másolatot a virtuális gépek használatával [pillanatképek](snapshot-copy-managed-disk.md).
 

@@ -2,7 +2,7 @@ Az Azure-ügyfelek havonta 25 000 ingyenes e-mailt oldhatnak fel. Ez a havi 25 0
 
 ### <a name="to-sign-up-for-a-sendgrid-account"></a>SendGrid-fiók regisztrálása
 1. Jelentkezzen be az [Azure Portalra][Azure portal].
-2. A bal oldali menüben kattintson a **hozzon létre egy erőforrást**.
+2. A bal oldali menüben kattintson **erőforrás létrehozása**.
 
     ![command-bar-new][command-bar-new]
 3. Kattintson a **Bővítmények**, majd pedig a **SendGrid Email Delivery** lehetőségre.
@@ -59,11 +59,11 @@ Az Azure-ügyfelek havonta 25 000 ingyenes e-mailt oldhatnak fel. Ez a havi 25 0
     ![kulcs][key]
 2. A jelszó megegyezik azzal, amelyet a beállításkor megadott. Módosításokat a **Jelszó módosítása** vagy a **Jelszó alaphelyzetbe állítása** lehetőségek kiválasztásával eszközölhet.
 
-Az e-mailek kézbesítési eredményessége beállításainak kezeléséhez kattintson a **Kezelés gombra**. Ez a átirányítja a SendGrid-irányítópultot.
+Az e-mailek kézbesítési eredményessége beállításainak kezeléséhez kattintson a **Kezelés gombra**. Ez átirányítja a SendGrid-irányítópulton.
 
 ![kezelés][manage]
 
-További információ a SendGrid keresztül e-mailek küldéséhez, látogasson el a [E-mail API – áttekintés][Email API Overview].
+A SendGrid használatával e-mailt küld a további információért látogasson el a [E-mail API – áttekintés][Email API Overview].
 
 <!--images-->
 

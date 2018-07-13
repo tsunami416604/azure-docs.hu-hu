@@ -1,11 +1,11 @@
 | Erőforrás | Cél |
 |----------|---------------|
-| A fájlmegosztás maximális mérete | 5 TiB |
-| A fájlmegosztás maximális fájlméret | 1 TiB |
-| Egy megosztott fájlok maximális száma | Korlátlan |
-| Az egy maximális iops-érték | 1000 IOPS |
-| Egy fájlmegosztáson tárolt hozzáférési házirendek maximális száma | 5 |
-| A tárfiók / maximális lekérdezési gyakorisága | 20 000 kérelmek / másodperc bármilyen érvényes méretű fájlok<sup>3</sup> |
-| Cél átviteli egy fájlmegosztás | Másodpercenként legfeljebb 60 MiB |
-| Fájlonkénti maximális megnyitott leíróinak | 2000 megnyitott leíróinak |
-| Megosztás pillanatképek maximális száma | 200 megosztás pillanatképek |
+| Egy fájlmegosztás maximális mérete | 5 TiB |
+| Fájlmegosztásban lévő fájlok maximális mérete | 1 TiB |
+| Fájlmegosztásban lévő fájlok maximális száma | Korlátlan |
+| Megosztás gépenkénti maximális IOPS | 1000 IOPS |
+| Tárolt hozzáférési szabályzatok fájlmegosztásonként maximális száma | 5 |
+| Kérelem maximális díj / storage-fiók | érvényes méretű fájlok másodpercenként 20 000 kérelem<sup>3</sup> |
+| Cél átviteli sebességet egy fájlmegosztás | Másodpercenként legfeljebb 60 MiB |
+| Fájlonként maximálisan megnyitott leíróinak | 2000 megnyitott leíróinak |
+| Megosztási pillanatképek maximális száma | 200 megosztási pillanatképek |

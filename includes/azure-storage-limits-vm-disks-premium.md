@@ -21,6 +21,6 @@
 
 | Erőforrás | Alapértelmezett korlát |
 | --- | --- |
-| Virtuális gépenkénti maximális IOPS |80000 IOPS a GS5 virtuális Géphez |
-| Virtuális gépenkénti maximális átviteli sebesség |A GS5 virtuális Géphez 2000 MB/s |
+| Virtuális gépenkénti maximális IOPS |80 000 IOPS GS5 virtuális géppel |
+| Virtuális gépenkénti maximális átviteli sebesség |2000 MB/s GS5 virtuális géppel |
 

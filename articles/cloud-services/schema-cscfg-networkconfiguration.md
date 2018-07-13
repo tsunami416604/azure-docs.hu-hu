@@ -1,5 +1,5 @@
 ---
-title: Azure Cloud Services – NetworkConfiguration séma |} Microsoft Docs
+title: Azure Cloud Services – NetworkConfiguration séma |} A Microsoft Docs
 ms.custom: ''
 ms.date: 12/07/2016
 services: cloud-services
@@ -10,28 +10,28 @@ ms.tgt_pltfrm: ''
 ms.topic: reference
 ms.assetid: c1b94a9e-46e8-4a18-ac99-343c94b1d4bd
 caps.latest.revision: 28
-author: thraka
-ms.author: adegeo
+author: jpconnock
+ms.author: jeconnoc
 manager: timlt
-ms.openlocfilehash: ebe81b2e4dea347eb22b173ff1e9baf1ee6bb75d
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: ed071d1da30a598eef830b4485c246ffae09c950
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34359645"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39004114"
 ---
 # <a name="azure-cloud-services-config-networkconfiguration-schema"></a>Azure Cloud Services – Config NetworkConfiguration séma
 
-A `NetworkConfiguration` elem a szolgáltatás konfigurációs fájl határozza meg a virtuális hálózat és a DNS-értékek. Ezek a beállítások opcionálisak felhőszolgáltatásai számára.
+A `NetworkConfiguration` elem a szolgáltatás konfigurációs fájlja a virtuális hálózat és a DNS-értékeket adja meg. Ezek a beállítások megadása nem kötelező, a cloud services.
 
-A következő erőforrás tudhat meg többet a virtuális hálózatok és a kapcsolódó sémák használhatja:
+Használhatja a következő erőforrás, ha többet szeretne megtudni a virtuális hálózatok és a kapcsolódó sémák:
 
 - [Cloud Service (klasszikus) konfigurációs séma](schema-cscfg-file.md)
-- [Cloud Service (klasszikus) Definition séma](schema-csdef-file.md)
-- [Hozzon létre egy virtuális hálózatot (klasszikus)](../virtual-network/virtual-networks-create-vnet-classic-pportal.md)
+- [Cloud Service (klasszikus) definíciós séma](schema-csdef-file.md)
+- [Hozzon létre egy virtuális hálózat (klasszikus)](../virtual-network/virtual-networks-create-vnet-classic-pportal.md)
 
 ## <a name="networkconfiguration-element"></a>NetworkConfiguration elemet
-Az alábbi példa azt mutatja meg a `NetworkConfiguration` elem és gyermekelemeinek.
+A következő példa bemutatja a `NetworkConfiguration` elem és az alárendelt elemei.
 
 ```xml
 <ServiceConfiguration>
@@ -68,14 +68,14 @@ A következő táblázat ismerteti az alárendelt elemei a `NetworkConfiguration
 
 | Elem       | Leírás |
 | ------------- | ----------- |
-| AccessControl | Választható. Adja meg a végpontokkal való hozzáférésére vonatkozó szabályok egy felhőalapú szolgáltatás. Egy karakterláncot határozza meg a hozzáférés-vezérlő neve `name` attribútum. A `AccessControl` egy vagy több elemet tartalmaz `Rule` elemek. Egynél több `AccessControl` elem adható meg.|
-| Szabály | Választható. Meghatározza a megadott alhálózati az IP-címek végrehajtandó műveletet. A karakterlánc-érték határozza meg a szabály sorrendjét a `order` attribútum. Minél alacsonyabb a szabály number annál magasabb a prioritás. Például szabályok rendelési szám 100, 200-as és 300 sikerült lehet megadni. A szabály 100 számú élvez szabályt a 200-as sorrendhez.<br /><br /> Egy karakterláncot határozza meg a műveletet a szabály a `action` attribútum. Lehetséges értékek:<br /><br /> -   `permit` – Adja meg, hogy csak a megadott alhálózati tartományból csomagok kommunikál a végpont.<br />-   `deny` – Adja meg, hogy a hozzáférés megtagadva a végpontok a megadott alhálózati tartományba.<br /><br /> Egy karakterláncot határozza meg az alhálózat, IP-címek tartománya, hogy a szabály által érintett a `remoteSubnet` attribútum. A leírást a szabályhoz határozza meg egy karakterláncot a `description` attribútum.|
-| EndpointAcl | Választható. Adja meg a hozzáférés-vezérlési szabályok a végpont-hozzárendelés. A szerepkör, amely tartalmazza a végpont nevét határozza meg egy karakterláncot a `role` attribútum. Egy karakterláncot határozza meg a végpont neve a `endpoint` attribútum. A készlet nevét `AccessControl` alkalmazni kell a végpont szabályok határozzák meg egy karakterláncot a `accessControl` attribútum. Egynél több `EndpointAcl` elem adható meg.|
-| DNS-kiszolgáló | Választható. Megadja a DNS-kiszolgáló beállításait. Megadhatja a DNS-kiszolgálók nélkül a virtuális hálózati beállításait. Egy karakterláncot határozza meg a DNS-kiszolgáló nevét a `name` attribútum. A DNS-kiszolgáló IP-címét határozza meg egy karakterláncot a `IPAddress` attribútum. Az IP-cím érvényes IPv4-címnek kell lennie.|
-| VirtualNetworkSite | Választható. Megadja a virtuális hálózati hely szülőhelyének szánt központi telepítése a felhőalapú szolgáltatás nevét. Ez a beállítás nem hoz létre egy virtuális hálózati hely. Egy helyet, amely korábban már definiálva van a hálózati fájlt a virtuális hálózat hivatkozik. Egy felhőalapú szolgáltatás csak egy virtuális hálózati tagja lehet. Ha nem adja meg ezt a beállítást, a felhőalapú szolgáltatás nem telepíti a virtuális hálózathoz. Egy karakterláncot határozza meg a virtuális hálózati telephely neve a `name` attribútum.|
-| InstanceAddress | Választható. Adja meg a virtuális hálózati alhálózat szerepkör hozzárendelését vagy alhálózatokat. Amikor hozzárendel egy példány címet szerepkör nevét, amelybe a szerepkörhöz tartozó alhálózatok is megadhat. A `InstanceAddress` alhálózatok elemet tartalmaz. Egy karakterláncot határozza meg az alhálózatot vagy alhálózat társított szerepkör nevét a `roleName` attribútum.|
-| Alhálózat | Választható. Adja meg az alhálózatot, amely megfelel az alhálózat neve, a hálózati konfigurációs fájlban. Egy karakterláncot határozza meg az alhálózat neve a `name` attribútum.|
-| Foglalt IP-cím | Választható. Adja meg a fenntartott IP-cím, amely a központi telepítés társítva kell lennie. Fenntartott IP-cím létrehozása a fenntartott IP-cím létrehozásához kell használnia. Minden központi telepítési felhőszolgáltatásban társítható egy fenntartott IP-cím. Egy karakterláncot határozza meg a fenntartott IP-cím neve a `name` attribútum.|
+| AccessControl | Választható. Adja meg a végpontokra hozzáférésére vonatkozó szabályok egy felhőalapú szolgáltatás. Egy karakterláncot határozza meg a hozzáférés-vezérlési neve `name` attribútum. A `AccessControl` egy vagy több elemet tartalmaz `Rule` elemeket. Egynél több `AccessControl` elem lehet definiálni.|
+| Szabály | Választható. Meghatározza a megadott alhálózati IP-címtartományt a végrehajtandó műveletet. A szabály a sorrend határozza meg egy karakterláncértéket a a `order` attribútum. A szabály a kisebb szám a annál magasabb a prioritás. Például szabályokat a rendelési szám 100, 200-as és 300 sikerült adható meg. A sorszám: 100-vel rendelkező szabályhoz élvez a szabályt, amely rendelkezik egy 200 sorrendjét.<br /><br /> Egy karakterláncot határozza meg a műveletet a szabály a `action` attribútum. Lehetséges értékek:<br /><br /> -   `permit` – Itt adhatja meg, hogy csak a megadott alhálózat címtartományából csomagok kommunikál a végpontot.<br />-   `deny` – Itt adhatja meg, hogy a végpont a megadott alhálózati tartományban való hozzáférés megtagadva.<br /><br /> Egy karakterláncot határozza meg az alhálózat IP-címtartományt a szabály által érintett a `remoteSubnet` attribútum. Egy karakterláncot határozza meg a szabály leírása a `description` attribútum.|
+| EndpointAcl | Választható. Adja meg a hozzáférés-vezérlési szabályok egy végpontnak hozzárendelését. A szerepkör, amely tartalmazza a végpont nevét határozza meg egy karakterláncot a `role` attribútum. Egy karakterláncot határozza meg a végpont neve a `endpoint` attribútum. Készletét neve `AccessControl` keres a karakterláncban meghatározott szabályokat, amelyek a alkalmazni kell a végpont a `accessControl` attribútum. Egynél több `EndpointAcl` elemek lehet definiálni.|
+| DNS-kiszolgáló | Választható. Megadja a DNS-kiszolgáló beállításait. DNS-kiszolgálók nélkül a virtuális hálózat beállításait lehet megadni. Egy karakterláncot határozza meg a DNS-kiszolgáló nevét a `name` attribútum. Egy karakterláncot határozza meg a DNS-kiszolgáló IP-címét a `IPAddress` attribútum. Az IP-cím érvényes IPv4-címnek kell lennie.|
+| VirtualNetworkSite | Választható. Adja meg a használni kívánt központi telepítése a felhőszolgáltatás virtuális hálózati telephely neve. Ez a beállítás nem hoz létre egy virtuális hálózati telephelyhez. Egy helyet, amely korábban már definiálva van a hálózati fájlt a virtuális hálózat hivatkozik. Cloud service csak lehet egy virtuális hálózat tagja. Ha nem adja meg ezt a beállítást, a felhőszolgáltatás nem lesznek telepítve olyan virtuális hálózatot. A virtuális hálózati telephely nevét határozza meg egy karakterláncot a `name` attribútum.|
+| InstanceAddress | Választható. A társítás az alhálózathoz szerepkör vagy alhálózatokat megadja a virtuális hálózatban. Ha hozzárendel egy példány címre a szerepkör nevét, megadhatja az alhálózatok, akit be kíván társítani ehhez a szerepkörhöz. A `InstanceAddress` alhálózatok elemet tartalmaz. Egy karakterláncot határozza meg, amely az alhálózatra vagy alhálózatok társítva van a szerepkör nevét a `roleName` attribútum.|
+| Alhálózat | Választható. Adja meg az alhálózatot, amelyet felel meg az alhálózat neve, a hálózat konfigurációs fájljában. Egy karakterláncot határozza meg az alhálózat neve a `name` attribútum.|
+| Fenntartott IP-cím | Választható. Itt adhatja meg a fenntartott IP-cím, amely a központi telepítés társítva kell lennie. Fenntartott IP-cím létrehozása a fenntartott IP-cím létrehozásához kell használnia. Minden üzembe helyezés egy cloud service-ben is társítható egy fenntartott IP-cím. Egy karakterláncot határozza meg a fenntartott IP-cím nevére a `name` attribútum.|
 
 ## <a name="see-also"></a>Lásd még:
 [Cloud Service (klasszikus) konfigurációs séma](schema-cscfg-file.md)

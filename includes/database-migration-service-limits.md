@@ -1,5 +1,5 @@
-Az Azure-adatbázis áttelepítési szolgáltatás egy olyan teljes körűen felügyelt szolgáltatás lehetővé minimális állásidővel adatok Azure platformon több adatbázis forrásból zökkenőmentes áttelepítés.  
+Az Azure Database Migration Service egy teljes körűen felügyelt szolgáltatás, amely lehetővé teszi a zökkenőmentes migrálást a több adatbázis-forrásokhoz, az Azure-adatplatformokra minimális állásidővel.  
 
 | **Erőforrás** | **Alapértelmezett korlát** | **Megjegyzések** |
 | --- | --- | --- |
-| Szolgáltatások régiónként előfizetésenként maximális száma |2 | Ha szeretné növelni a korlátot, lépjen kapcsolatba a támogatással |
+| Maximális száma előfizetésenként és régiónként szolgáltatások |2 | Ha szeretné növelni a korlátot, lépjen kapcsolatba a támogatással |

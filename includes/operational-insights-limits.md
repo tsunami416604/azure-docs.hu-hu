@@ -9,11 +9,11 @@ ms.date: 05/16/2018
 ms.author: magoedte
 ms.custom: include file
 ms.openlocfilehash: 66cd09df128d454973d008adf4ffc5dd1017a18f
-ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/17/2018
-ms.locfileid: "34307488"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38755759"
 ---
 Az alábbi korlátok vonatkoznak az egyes Log Analytics-erőforrásokra előfizetésenként:
 
@@ -23,7 +23,7 @@ Az alábbi korlátok vonatkoznak az egyes Log Analytics-erőforrásokra előfize
 | Fizetős munkaterületek száma előfizetésenként | – | Az erőforráscsoporton belüli erőforrások száma és az előfizetésenkénti erőforráscsoportok száma korlátozza | 
 
 >[!NOTE]
->2018. április 2. frissítésétől új munkaterületeket, egy új előfizetés automatikusan használja a */ GB* árképzési terv.  Meglévő előfizetések. április 2 előtt létrehozott, vagy olyan előfizetést, amelyet volt kötve a meglévő EA beléptetési folytathatja a választás az új munkaterületek három árképzési szinteket. 
+>2018. április 2. egy új előfizetést az új munkaterületek automatikusan használja a *GB* tarifacsomagot.  Április 2. előtt létrehozott meglévő előfizetésekhez, vagy egy meglévő EA-regisztrációhoz kötött előfizetéshez továbbra is az új munkaterületekhez három tarifacsomag közötti választáshoz. 
 >
 
 Az alábbi korlátok vonatkoznak az egyes Log Analytics-munkaterületekre:
@@ -35,7 +35,7 @@ Az alábbi korlátok vonatkoznak az egyes Log Analytics-munkaterületekre:
 
 <sup>1</sup> Ha az ügyfél eléri az 500 MB-os napi adatátviteli korlátot, az adatelemzés leáll, és a következő nap elején folytatódik. A napi elszámolás UTC-alapú.
 
-<sup>2</sup> az Adatmegőrzés időtartama a különálló, OMS és / GB díjszabások 730 nap növelhető.
+<sup>2</sup> önálló, OMS, és GB díjszabások az Adatmegőrzés időtartama és 730 nap között lehet növelni.
 
 | Kategória | Korlátok | Megjegyzések
 | --- | --- | --- |

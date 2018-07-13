@@ -1,16 +1,16 @@
 
-1. A Visual Studio Solution Explorerben kattintson a jobb gombbal a Windows Áruházbeli alkalmazás projektjére. Válassza ki **tároló** > **az áruház alkalmazás társítása**.
+1. A Visual Studio Megoldáskezelőben kattintson a jobb gombbal a Windows Store-projektet. Válassza ki **Store** > **a Store-alkalmazás társításához**.
 
-    ![Windows Áruházbeli alkalmazás társítása](./media/app-service-mobile-register-wns/notification-hub-associate-win8-app.png)
-2. A varázslóban válassza **következő**. Majd jelentkezzen be Microsoft-fiókjával. A **lefoglalni egy új alkalmazásnév**, írja be az alkalmazás nevét, majd válassza ki **tartalék**.
-3. Az alkalmazás-regisztráció sikeres létrehozása után válassza ki az új alkalmazás nevét. Válassza ki **következő**, majd válassza ki **társítása**. Ez a folyamat hozzáadja a szükséges Windows Áruházbeli regisztrációs adatokat az alkalmazás jegyzékében.
-4. A Windows Áruházbeli alkalmazás használatával korábban létrehozott regisztrálás ismételje meg a Windows Phone Áruházbeli alkalmazás projektjére 1. és 3.  
-5. Lépjen a [Windows fejlesztői központ](https://dev.windows.com/en-us/overview), majd jelentkezzen be Microsoft-fiókjával. A **alkalmazásaimat**, válassza ki az új alkalmazás regisztrációt. Majd **szolgáltatások** > **leküldéses értesítések**.
-6. Az a **leküldéses értesítések** lap **Windows leküldéses értesítési szolgáltatások (WNS) és a Microsoft Azure Mobile Apps**, jelölje be **Live Services webhely**.  Jegyezze fel a közül a **CSOMAGAZONOSÍTÓT** és a *aktuális* értéket **Alkalmazáskulcsot**. 
+    ![Alkalmazás társítása a Windows Store](./media/app-service-mobile-register-wns/notification-hub-associate-win8-app.png)
+2. A varázslóban válassza a **tovább**. Majd jelentkezzen be Microsoft-fiókjával. A **foglaljon le egy új nevet az alkalmazáshoz**, írja be az alkalmazás nevét, és válassza **tartalék**.
+3. Az alkalmazásregisztráció sikeres létrehozása után válassza ki az új alkalmazás-neve. Válassza ki **tovább**, majd válassza ki **társítása**. Ez a folyamat hozzáadja a szükséges Windows Store regisztrációs adatokat az alkalmazásjegyzékhez.
+4. Ismételje meg a Windows Phone Store-alkalmazás projekt 1. és 3 ugyanazt a korábban létrehozott regisztrációt a Windows Store-alkalmazás használatával.  
+5. Nyissa meg a [Windows Dev Center](https://dev.windows.com/en-us/overview), majd jelentkezzen be Microsoft-fiókjával. A **saját alkalmazások**, válassza ki az új alkalmazás regisztrálása. Ezután bontsa ki a **szolgáltatások** > **leküldéses értesítések**.
+6. Az a **leküldéses értesítések** lap **Windows leküldéses értesítési szolgáltatása (WNS) és a Microsoft Azure Mobile Apps**válassza **Live Services webhely**.  Jegyezze fel az értékét a **csomag biztonsági azonosítója** és a *aktuális* értékét **Application Secret**. 
 
-    ![A fejlesztői központban Alkalmazásbeállítás](./media/app-service-mobile-register-wns/mobile-services-win8-app-push-auth.png)
+    ![Alkalmazás-beállítás, a fejlesztői központban](./media/app-service-mobile-register-wns/mobile-services-win8-app-push-auth.png)
 
    > [!IMPORTANT]
-   > Az alkalmazáskulcs és a csomag biztonsági azonosítója fontos biztonsági hitelesítő adatok. Ne ossza meg senkivel ezeket az értékeket, vagy ossza ki őket az alkalmazással.
+   > Az alkalmazáskulcs és a csomag biztonsági azonosítója fontos biztonsági hitelesítő adatok. Nem bárkivel megoszthatja ezeket az értékeket, vagy ossza ki őket az App-alkalmazással.
    >
    >

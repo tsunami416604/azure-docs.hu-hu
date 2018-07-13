@@ -1,6 +1,6 @@
 ---
-title: Az Azure Active Directory Connect – gyakori kérdések – |} Microsoft Docs
-description: A cikk az Azure AD Connect kapcsolatos gyakori kérdésekre ad választ.
+title: Az Azure Active Directory Connect – gyakori kérdések – |} A Microsoft Docs
+description: Ez a cikk az Azure AD Connect kapcsolatos gyakori kérdésekre ad választ.
 services: active-directory
 documentationcenter: ''
 author: billmath
@@ -14,188 +14,188 @@ ms.topic: article
 ms.date: 06/05/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 7edabc99da5e1466e848336c647a33213c9edd8b
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.openlocfilehash: 545766aa6c39fe678113297e584422872a6ded87
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37132917"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39008144"
 ---
 # <a name="azure-active-directory-connect-faq"></a>Azure Active Directory Connect – gyakori kérdések
 
 ## <a name="general-installation"></a>Általános telepítési
-**K: telepítési működnek, ha az Azure Active Directory (Azure AD) globális rendszergazda kéttényezős hitelesítést (2FA) engedélyezve van?**  
-Ez a forgatókönyv a 2016. februári buildek frissítésétől támogatott.
+**K: telepítési működik, ha az Azure Active Directory (Azure AD) globális rendszergazda a kétfaktoros hitelesítés (2FA) engedélyezve van?**  
+Ez a forgatókönyv cikk az 2016. február buildek esetében támogatott.
 
-**K: az Azure AD Connect felügyelet nélküli telepítéséhez úgy van?**  
-Az Azure AD Connect telepítés csak akkor, ha a telepítési varázsló használata támogatott. Egy felügyelet nélküli, csendes telepítése nem támogatott.
+**K: van mód a felügyelet nélküli Azure AD Connect telepítése?**  
+Az Azure AD Connect telepítés csak akkor, amikor a telepítési varázsló használata támogatott. Egy felügyelet nélküli, csendes telepítést nem támogatott.
 
-**K: erdővel rendelkezem ahol tartománya nem érhető el. Hogyan kell telepíteni az Azure AD Connect?**  
-Ez a forgatókönyv a 2016. februári buildek frissítésétől támogatott.
+**K: van olyan erdőben, ahol egy tartomány nem érhető el. Hogyan kell telepíteni az Azure AD Connect?**  
+Ez a forgatókönyv cikk az 2016. február buildek esetében támogatott.
 
-**K: az Azure Active Directory tartományi szolgáltatások (az Azure Active Directory tartományi szolgáltatások) rendszerállapot-ügynöke működnek a server core?**  
-Igen. Az ügynök telepítése után az alábbi PowerShell-parancsmag segítségével befejezheti a regisztrációs folyamat során: 
+**K: az Azure Active Directory Domain Services (Azure AD DS) health-ügynök működnek server core-on?**  
+Igen. Miután telepítette az ügynököt, a következő PowerShell-parancsmag segítségével befejezheti a regisztrációs folyamat: 
 
 `Register-AzureADConnectHealthADDSAgent -Credentials $cred`
 
-**K: az Azure AD Connect támogatási szinkronizálását a két tartomány Azure ad-val?**  
-Igen, ez a forgatókönyv támogatott. Tekintse meg [több tartomány](active-directory-aadconnect-multiple-domains.md).
+**K: az Azure AD Connect támogatási szinkronizálását a két tartomány az Azure ad-ben?**  
+Igen, ezt a forgatókönyvet. Tekintse meg [több tartomány](active-directory-aadconnect-multiple-domains.md).
  
-**K: az Active Directory-tartományhoz az Azure AD Connectben a több összekötő van?**  
-Az azonos AD-tartomány nem, több összekötők használata nem támogatott. 
+**K: van az Active Directory-tartományhoz az Azure AD Connect több összekötőket?**  
+Az azonos AD-tartomány nem, több összekötők nem támogatottak. 
 
-**K: áthelyezhető az Azure AD Connect-adatbázisban a helyi adatbázis egy távoli SQL Server-példányt?**   
-Igen, az alábbi lépéseket ennek ad általános útmutatást. Jelenleg dolgozunk részletesebb dokumentum.
-1. Készítsen biztonsági másolatot a LocalDB ADSync adatbázis.
-Ennek legegyszerűbb módja az Azure AD Connect ugyanazon a számítógépen telepített SQL Server Management Studio használatával. Csatlakozás *(localdb)\.\ADSync*, és majd készítsen biztonsági másolatot az ADSync adatbázis.
+**K: helyezhetem át az Azure AD Connect-adatbázist a helyi adatbázis távoli SQL Server-példányra?**   
+Igen, az alábbi lépéseket ennek módjáról ad általános útmutatást. Jelenleg dolgozunk egy részletesebb dokumentumot.
+1. A LocalDB ADSync-adatbázis biztonsági mentése.
+Ennek legegyszerűbb módja, hogy használja az SQL Server Management Studio Azure AD connecttel ugyanarra a gépre telepítve. Csatlakozás *(localdb)\.\ADSync*, majd készítsen biztonsági mentést az ADSync-adatbázis.
 
-2. Az ADSync adatbázis visszaállítása távoli SQL Server-példányhoz.
+2. Az ADSync-adatbázis visszaállítása távoli SQL Server-példányhoz.
 
-3. A meglévő szemben Azure AD Connect telepítése [távoli SQL-adatbázis](active-directory-aadconnect-existing-database.md).
-   A cikk bemutatja, hogyan telepíthet át egy helyi SQL-adatbázis használatával. Ha távoli SQL-adatbázis használata telepít, 5. lépésben a folyamat is be kell meglévő szolgáltatásfiók, amely a Windows szinkronizálási szolgáltatás futni fog. A szinkronizálási motor szolgáltatásfiókot az alábbiakban ismertetjük:
+3. A meglévő ellen az Azure AD Connect telepítése [távoli SQL-adatbázis](active-directory-aadconnect-existing-database.md).
+   A cikk bemutatja, hogyan telepíthető át egy helyi SQL-adatbázis használatával. Ha egy távoli SQL-adatbázis használatával telepít át, a folyamat 5. lépésében is be kell, amely a Windows szinkronizálási szolgáltatást futtató, meglévő szolgáltatásfiók. A szinkronizálási motor szolgáltatásfiók az alábbiakban ismertetjük:
    
-      **Meglévő szolgáltatásfiók használata**: alapértelmezés szerint az Azure AD Connect szinkronizálási szolgáltatások virtuális szolgáltatás-fiókot használ használatára. Ha távoli SQL Server-példányt használ, vagy egy hitelesítést igénylő proxyt használ, a felügyelt szolgáltatásfiókok vagy szolgáltatásfiók használata a tartományban, és a jelszó ismerete. Ezekben az esetekben adja meg a használni kívánt fiókot. Ellenőrizze, hogy a telepítést futtató felhasználók SQL-ben a rendszergazdák, hogy a bejelentkezési hitelesítő adatokat a szolgáltatás fiók is létrehozható. További információkért lásd: [az Azure AD Connect-fiókok és engedélyek](active-directory-aadconnect-accounts-permissions.md#azure-ad-connect-sync-service-account). 
+      **Meglévő szolgáltatásfiók használata**: az Azure AD Connect alapértelmezés szerint a szinkronizálási szolgáltatások egy helyi szolgáltatásfiókot használja használatára. Ha távoli SQL Server-példányt vagy egy hitelesítést igénylő proxyt használ, egy felügyelt szolgáltatásfiókot vagy szolgáltatásfiók használata a tartományban, és ismernie kell a jelszót. Ezekben az esetekben adja meg a használni kívánt fiókot. Győződjön meg arról, hogy a telepítést futtató felhasználók SQL-rendszergazdák, hogy a szolgáltatás fiók bejelentkezési hitelesítő adatok hozhatók létre. További információkért lásd: [az Azure AD Connect-fiókok és engedélyek](active-directory-aadconnect-accounts-permissions.md#azure-ad-connect-sync-service-account). 
    
-      A legújabb buildben az SQL-rendszergazda sávon kívül kiépítheti az adatbázist, majd az Azure AD Connect-rendszergazda adatbázis-tulajdonosi jogosultságokkal telepítheti. További információkért lásd: [telepítse az Azure AD Connect SQL meghatalmazott rendszergazdai jogosultság segítségével](active-directory-aadconnect-sql-delegation.md).
+      A legújabb buildben az SQL-rendszergazda sávon kívül kiépítheti az adatbázist, majd az Azure AD Connect-rendszergazda adatbázis-tulajdonosi jogosultságokkal telepítheti. További információkért lásd: [SQL meghatalmazott rendszergazdai engedélyek használatával telepítse az Azure AD Connect](active-directory-aadconnect-sql-delegation.md).
 
-Egyszerű dolgot megtartásához ajánlatos, hogy felhasználók, akik az Azure AD Connect telepítése SQL-rendszergazdák. Azonban az legutóbbi buildek segítségével most használja meghatalmazott rendszergazdák SQL, a [SQL meghatalmazott rendszergazdai engedélyek használatával telepítse az Azure AD Connect](active-directory-aadconnect-sql-delegation.md).
+Az egyszerűség kedvéért javasoljuk, hogy a felhasználók, akik az Azure AD Connect telepítése SQL-rendszergazdák lehet. Azonban legutóbbi-buildek használatával, így használja a delegált rendszergazdák SQL, leírtak szerint [SQL meghatalmazott rendszergazdai engedélyek használatával telepítse az Azure AD Connect](active-directory-aadconnect-sql-delegation.md).
 
 ## <a name="network"></a>Network (Hálózat)
-**K: van egy tűzfal, a hálózati eszköz, vagy valami mást, amely korlátozza a kapcsolatok maradhat, nyissa meg a hálózaton lévő idő. Milyen az ügyféloldali időkorlát küszöbértéke kell az Azure AD Connect használatakor?**  
-Minden hálózati szoftver, a fizikai eszközök vagy bármi más, amely korlátozza a maximális időt, amely kapcsolatok nyitva maradhat kell használnia a küszöbérték legalább öt perc (300 másodperc) a kiszolgáló, amelyen telepítve van-e az az Azure AD Connect ügyfél közötti kapcsolat és az Azure Active Directory. Ez a javaslat a korábban kiadott Microsoft Identity szinkronizálási eszközöket is vonatkozik.
+**K: van egy tűzfal, a hálózati eszköz, illetve bármi más, amely korlátozza a kapcsolatok maradhat, nyissa meg a hálózaton lévő idejét. Az ügyféloldali időkorlát küszöbértéke lennie az Azure AD Connect használata esetén?**  
+Az összes hálózati szoftvert, fizikai eszközök vagy bármi olyanra, amely korlátozza a maximális időtartam, a kapcsolat nyitva maradhat kell használnia egy küszöbértéket legalább öt percig (300 másodperc), ahol az Azure AD Connect-ügyfél telepítve van a kiszolgáló közötti kapcsolat és az Azure Active Directory. Ez a javaslat vonatkozik az összes korábban kiadott Microsoft Identity szinkronizálási eszközöket is.
 
 **K: egycímkés tartományok (által) támogatott vannak?**  
-Nem, az Azure AD Connect nem támogatja a helyszíni erdővel és által használó tartományokban.
+Bár javasoljuk, hogy ez a hálózati konfiguráció ellen ([cikkben](https://support.microsoft.com/en-us/help/2269810/microsoft-support-for-single-label-domains)), névvégződés nélküli tartomány Azure AD Connect-szinkronizálás használata támogatott, mindaddig, amíg működik-e a hálózati konfigurációt a egyetlen szintű tartomány megfelelően.
 
-**K: támogatott különálló AD-tartományok erdők vannak?**  
+**K: a támogatott különálló AD-tartományok erdők van?**  
 Nem, az Azure AD Connect nem támogatja a helyszíni erdők, amelyek tartalmazzák a különálló névtereket.
 
-**K: vannak "pontozott" NetBIOS-nevek támogatott?**  
-Nem, az Azure AD Connect nem támogatja a helyi erdők és tartományok, ahol a NetBIOS-nevet tartalmaz egy pontot (.).
+**K: van "pontozott" NetBIOS-nevek támogatott?**  
+Nem, az Azure AD Connect nem támogatja a helyszíni erdők vagy tartományok, ahol a NetBIOS-nevét tartalmazza, egy pontot (.).
 
-**K: támogatott tiszta IPv6-környezetben van?**  
-Nem, az Azure AD Connect nem támogatja a csak IPv6-környezetben.
+**K: van támogatott tiszta IPv6-környezetben?**  
+Nem, az Azure AD Connect nem támogatja a tiszta IPv6 környezetben.
 
 ## <a name="federation"></a>Összevonás
-**K: Mit tehetek, ha jelenik meg az Office 365 tanúsítvány megújítására kérő e-mailt?**  
-A tanúsítvány megújítására vonatkozó útmutatásért lásd: [megújítani a tanúsítványokat](active-directory-aadconnect-o365-certs.md).
+**K: Mi a teendő, esetén az Office 365 tanúsítvány megújítására kérő e-mailt kapok?**  
+A tanúsítvány megújításával kapcsolatos útmutatásért lásd: [tanúsítványok megújítása](active-directory-aadconnect-o365-certs.md).
 
-**K: van "automatikus frissítése függő" állítsa be az Office 365 függő entitás. Kell tennie semmit, amikor a jogkivonat-aláíró tanúsítványa automatikusan visszaállítja a?**  
-A cikkben ismertetett útmutatás [megújítani a tanúsítványokat](active-directory-aadconnect-o365-certs.md).
+**K: van "automatikus frissítése függő" állítsa be a függő entitás Office 365-höz. Ha saját jogkivonat-aláíró tanúsítványa automatikusan áthalad teendője kell?**  
+A cikkben ismertetett útmutatás [tanúsítványok megújítása](active-directory-aadconnect-o365-certs.md).
 
 ## <a name="environment"></a>Környezet
-**K: támogatott a kiszolgáló átnevezése, az Azure AD Connect telepítése után?**  
-Nem. A kiszolgáló nevének módosítása Ez a beállítás a szinkronizálási motor nem lehet kapcsolódni az SQL-adatbázispéldányt, és a szolgáltatás nem indult el.
+**K: támogatott-e a kiszolgáló átnevezése, az Azure AD Connect telepítése után?**  
+Nem. A kiszolgáló nevének módosítása rendereli a szinkronizálási motor nem lehet kapcsolódni az SQL database-példány, és a szolgáltatás nem indult el.
 
 ## <a name="identity-data"></a>Azonosító adatok
-**K: Miért nem egyezik meg a userPrincipalName (UPN) attribútum az Azure ad-ben a helyszíni egyszerű Felhasználónévvel?**  
-Információkért lásd: ezek a cikkek:
+**K: Miért nem egyezik meg az Azure ad userPrincipalName (UPN) attribútum a helyszíni egyszerű felhasználónév?**  
+Információkért tanulmányozza a következő cikkeket:
 
-* [Office 365, az Azure vagy az Intune-ban szereplő felhasználónevek nem egyeznek meg, a helyszíni egyszerű Felhasználónévvel vagy másodlagos bejelentkezési Azonosítóval](https://support.microsoft.com/en-us/kb/2523192)
-* [A felhasználói fiók egyszerű másik összevont tartományt használandó módosítása után a módosítások nem az Azure Active Directory szinkronizáló eszköz által szinkronizálása](https://support.microsoft.com/en-us/kb/2669550)
+* [Office 365, Azure vagy Intune-ban szereplő felhasználónevek nem egyeznek, a helyszíni egyszerű Felhasználónévvel vagy másodlagos bejelentkezési Azonosítóval](https://support.microsoft.com/en-us/kb/2523192)
+* [Az egyszerű felhasználónév a felhasználói fiókok különböző összevont tartományt használandó módosítása után a módosítások nem az Azure Active Directory szinkronizálási eszköz szinkronizálása](https://support.microsoft.com/en-us/kb/2669550)
 
-Beállíthatja úgy is engedélyezi a szinkronizálási motor frissíteni a megadott egyszerű felhasználónév leírtak szerint az Azure AD [az Azure AD Connect szinkronizálási szolgáltatás szolgáltatások](active-directory-aadconnectsyncservice-features.md).
+Beállíthatja, hogy a szinkronizálási motor frissítése az egyszerű Felhasználónevet, leírtak szerint az Azure AD [az Azure AD Connect szinkronizálási szolgáltatás funkciók](active-directory-aadconnectsyncservice-features.md).
 
-**K: támogatott soft-match egy helyszíni Azure AD-csoport vagy partner objektuma egy meglévő Azure AD-csoporthoz, vagy forduljon a objektum?**  
-Igen, a letölthető megfelelés a proxyAddress alapul. Letölthető megfelelő csoportokat, amelyek nem levelezési nem támogatott.
+**K: támogatott-e egyezéssel egy helyszíni Azure AD-csoport vagy kapcsolatobjektummal és a egy meglévő Azure AD-csoporthoz, vagy forduljon a objektumot?**  
+Igen, a helyreállítható egyezés a proxyAddress alapján történik. Helyreállítható megfelelő vannak nem levelezési csoportok esetében nem támogatott.
 
-**K: támogatott kézzel állítsa a ImmutableId attribútumot egy meglévő Azure AD-csoport, vagy forduljon a merevlemez-match azt egy helyszíni Azure Active Directory-csoportba, vagy forduljon a objektum objektum?**  
-Nem, manuálisan beállítása a ImmutableId attribútum egy meglévő Azure AD-csoport vagy partner objektuma merevlemez-találatra azt jelenleg nem támogatott.
+**K: támogatott-e manuálisan beállítani az ImmutableId attribútum egy meglévő Azure AD-csoporthoz, vagy forduljon a merevlemez-egyezést, egy helyszíni Azure Active Directory-csoportba, vagy forduljon a objektum objektum?**  
+Nem, manuálisan beállítást az ImmutableId attribútum egy meglévő Azure AD-csoport vagy kapcsolatobjektummal merevlemez-match, hogy jelenleg nem támogatott.
 
 ## <a name="custom-configuration"></a>Egyéni konfiguráció
-**K: hol szerepelnek a PowerShell-parancsmagok az Azure AD Connect?**  
-Ezen a webhelyen ismertetett parancsmagok kivételével más található az Azure AD Connect PowerShell-parancsmagok nem támogatottak a ügyfél használja.
+**K: hol vannak dokumentálva az Azure AD Connect PowerShell-parancsmagok?**  
+Ezen a helyen ismertetett parancsmagokat, kivéve más az Azure AD Connectben található PowerShell-parancsmagok nem támogatottak az ügyfél használja.
 
-**K: Használhatom a "Kiszolgáló exportálási/kiszolgáló importálás" lehetőséget, amely megtalálható a Synchronization Service Managert helyezhető át a konfigurációs kiszolgáló között?**  
-Nem. Ez a beállítás nem kéri le az összes konfigurációs beállításokat, és nem lehet megjeleníteni. Ehelyett a varázsló segítségével hozzon létre az alapkonfigurációt a második kiszolgálón, és a szerkesztővel szinkronizálási szabály létrehozása a PowerShell-parancsfájlokat egyéni szabályok áthelyezése kiszolgálók között. További információkért lásd: [áttelepítési éppen](active-directory-aadconnect-upgrade-previous-version.md#swing-migration).
+**K: használhatok a "Server exportálási/kiszolgáló importálás" lehetőséget, amely a Synchronization Service Managert, helyezze át a konfigurációs kiszolgáló között található?**  
+Nem. Ez a beállítás nem kéri le a beállításokat, és nem lehet. Ehelyett a második kiszolgálón az alapkonfiguráció létrehozása varázsló segítségével, és a szinkronizálási Szabályszerkesztő használatával létrehozhat egy PowerShell-parancsfájlokat minden olyan egyéni szabály mozgatása kiszolgálók között. További információkért lásd: [párhuzamos migrálás](active-directory-aadconnect-upgrade-previous-version.md#swing-migration).
 
-**K: kell gyorsítótárazzák a jelszavakat az Azure bejelentkezési oldal, és ez gyorsítótárazási megelőzhető, mert tartalmaz a jelszó bemeneti elemnek a *autocomplete = "false"* attribútum?**  
-Jelenleg a HTML attribútumainak módosítása a **jelszó** mező, beleértve az automatikus kiegészítés címke nem támogatott. Lehetővé teszi, hogy az egyéni JavaScript, amely lehetővé teszi, hogy azok az attribútumok hozzáadása jelenleg dolgozunk a **jelszó** mező.
+**K: kell gyorsítótárazzák a jelszavakat az Azure bejelentkezési oldala, és a gyorsítótárazás megelőzhető, mert tartalmaz egy jelszó bemeneti elemet a *automatikus kiegészítés = "false"* attribútumot?**  
+Jelenleg a HTML attribútumainak módosítása a **jelszó** mező, többek között az automatikus kiegészítés címke nem támogatott. Jelenleg folyamatban van egy szolgáltatás, amely lehetővé teszi, hogy egyedi JavaScript-kódot, amely lehetővé teszi bármely attribútum hozzáadását a **jelszó** mező.
 
-**K: az Azure bejelentkezési oldal megjeleníti a felhasználónevek, a felhasználók, akik korábban már sikeresen bejelentkezett. Ez a viselkedés kikapcsolható?**  
-Jelenleg a HTML attribútumainak módosítása a **jelszó** beviteli mezőt, beleértve az automatikus kiegészítés címke nem támogatott. Lehetővé teszi, hogy az egyéni JavaScript, amely lehetővé teszi, hogy azok az attribútumok hozzáadása jelenleg dolgozunk a **jelszó** mező.
+**K: az Azure bejelentkezési oldala a felhasználók, akik korábban már sikeresen bejelentkezett felhasználónevek jeleníti meg. Ez a viselkedés ki lehet kapcsolni?**  
+Jelenleg a HTML attribútumainak módosítása a **jelszó** beviteli mező, többek között az automatikus kiegészítés címke nem támogatott. Jelenleg folyamatban van egy szolgáltatás, amely lehetővé teszi, hogy egyedi JavaScript-kódot, amely lehetővé teszi bármely attribútum hozzáadását a **jelszó** mező.
 
-**K: akadályozza meg, hogy a munkamenetek van?**  
+**K: úgy, hogy az egyidejű munkamenetek van?**  
 Nem.
 
 ## <a name="auto-upgrade"></a>Automatikus frissítés
 
-**K: Mi a következő előnyöket és használatával következményeit automatikus frissítését?**  
-Azt is tanácsadás összes ügyfél automatikus frissítése az Azure AD Connect telepítésének engedélyezése. Az az előnye, hogy Ön mindig kapják meg a legújabb javítások, beleértve a biztonsági frissítések, az Azure AD Connect található biztonsági réseket. A frissítési folyamat csoportházirendes, és automatikusan megtörténik, amint egy új verziója érhető el. Az Azure AD Connect-ügyfelek a sok ezer automatikus frissítés minden új verziót használja.
+**K: Mik az előnyei és következményeinek használatával automatikus frissítés?**  
+Azt is beküldte ügyfeleknek, hogy azok az Azure AD Connect telepítési automatikus frissítés engedélyezése. Az az előnye, hogy Ön mindig kapják meg a legújabb javításokat, beleértve a biztonsági frissítéseket, a biztonsági réseket, hogy az Azure AD Connectben található. A frissítési folyamat fájdalommentes, és automatikusan megtörténik, amint egy új verzió érhető el. Az Azure AD Connect-ügyfeleket a sok ezer használja az automatikus frissítés minden egyes új kiadással.
 
-Az automatikus frissítési folyamat először mindig megállapítja, hogy egy telepítés automatikusan frissíthető. A nem jogosult, ha a frissítés végrehajtásának és tesztelését. A folyamat is tartalmaz, szabályok és a megadott környezeti tényezők egyéni változásai keres. Ha a tesztek jelzik, hogy egy frissítés sikertelen, az előző verzió automatikusan helyreáll.
+Az automatikus frissítési folyamat mindig először hoz létre, hogy jogosult az automatikus frissítés egy telepítés. Ha jogosult, a frissítés végrehajtott és tesztelését. A folyamat is tartalmaz szabályokat és a meghatározott környezeti tényezők egyéni módosításokat keres. Ha a tesztek azt mutatják, hogy a frissítés nem sikerül, automatikusan visszaáll az előző verziót.
 
-Attól függően, hogy a környezet mérete a folyamat eltarthat néhány óra múlva. Amíg a frissítés van folyamatban, nem Windows Server Active Directory és az Azure AD közötti szinkronizálás történik.
+A környezet méretétől függően a folyamat eltarthat néhány óra múlva. Amíg a frissítés folyamatban van, nem a Windows Server Active Directory és az Azure AD közötti szinkronizálása nem történik.
 
-**K: kaptam egy e-mailt kapok, amely már nem működik az automatikus frissítés és egy új verzió telepítéséhez van szükség. Miért kell ehhez?**  
-Az elmúlt évben megjelent egy verziója, az Azure AD Connect letiltó, bizonyos esetekben előfordulhat, hogy az automatikus frissítési szolgáltatás a kiszolgálón. A probléma az Azure AD Connectben verzió 1.1.750.0 megoldottuk azt. Ha Ön a probléma által érintett, csökkentheti az javításának PowerShell-parancsfájl futtatásával, vagy manuálisan frissítse az Azure AD Connect legújabb verziójának. 
+**Kérdés érkezett egy e-mailt kapok, hogy az automatikus frissítés nem működik, és a egy új verzió telepítése van szükség. Miért kell ehhez?**  
+A múlt évben kiadtunk egy verziója, az Azure AD Connect, bizonyos esetekben előfordulhat, hogy letiltotta az automatikus frissítési szolgáltatás a kiszolgálón. A probléma az Azure AD Connect verziója 1.1.750.0 kijavítása azt. Ha Ön a probléma által érintett, csökkentheti, javítsa ki a PowerShell-parancsprogram futtatásával, vagy manuálisan frissítse az Azure AD Connect legújabb verziójára. 
 
-A PowerShell parancsfájl futtatásához [töltse le a parancsfájl](https://aka.ms/repairaadconnect) , és futtassa az Azure AD Connect kiszolgálón egy rendszergazda PowerShell-ablakban. Futtassa a parancsfájlt, hogyan [a rövid videó](https://aka.ms/repairaadcau).
+A PowerShell-parancsprogram futtatásához [töltse le a parancsfájlt](https://aka.ms/repairaadconnect) és futtatása az Azure AD Connect-kiszolgálón rendszergazdai PowerShell-ablakban. Futtassa a parancsfájlt, hogyan [a rövid videó](https://aka.ms/repairaadcau).
 
-Frissítsen kézzel, töltse le, és a AADConnect.msi fájl legfrissebb verzióját futtassa.
+Manuálisan frissíteni, töltse le, és a AADConnect.msi fájl legújabb verzióját futtatják.
  
--  Ha az aktuális verziója régebbi, mint 1.1.750.0, [töltse le, és frissítse a legújabb verzióra](https://www.microsoft.com/en-us/download/details.aspx?id=47594).
-- Ha az Azure AD Connect verziója 1.1.750.0 vagy újabb, semmilyen további műveletet. A verzió, amely tartalmazza az automatikus frissítési javítást már használja. 
+-  Ha a jelenlegi verzió régebbi, mint 1.1.750.0, [töltse le és frissítsen a legújabb verzióra](https://www.microsoft.com/en-us/download/details.aspx?id=47594).
+- Ha az Azure AD Connect verziója 1.1.750.0 vagy újabb, semmilyen további műveletet nem szükséges. A verzió, amely tartalmazza az automatikus frissítési javítás már használja. 
 
-**K: kaptam egy e-mailt kapok kívánja újból engedélyezni az automatikus frissítés legújabb verziójára történő frissítéshez. Használok 1.1.654.0 verziója. Frissíteni kell?**  
-Igen, akkor verziójára 1.1.750.0 vagy újabb verziója szükséges újra engedélyezheti az automatikus frissítés. [Töltse le, és frissítse a legújabb verzióra](https://www.microsoft.com/en-us/download/details.aspx?id=47594).
+**Kérdés érkezett egy e-mailt kapok kívánja újból engedélyezni az automatikus frissítés a legújabb verzióra frissítéséhez. Verzió 1.1.654.0 használok. Kell frissíteni?**  
+Igen, meg kell 1.1.750.0 frissítést vagy újabb kívánja újból engedélyezni az automatikus frissítés. [Töltse le és frissítsen a legújabb verzióra](https://www.microsoft.com/en-us/download/details.aspx?id=47594).
 
-**K: kaptam egy e-mailt kapok kívánja újból engedélyezni az automatikus frissítés legújabb verziójára történő frissítéshez. Ha hoztam PowerShell automatikus frissítés engedélyezéséhez, tegye továbbra is kell telepíteni a legújabb verziót?**  
-Igen, továbbra is szeretné 1.1.750.0 verzióra való frissítés vagy újabb. Az automatikus frissítési szolgáltatás a PowerShell segítségével nem csökkenti az automatikus frissítési probléma 1.1.750.0 előtti verziói találhatók.
+**Kérdés érkezett egy e-mailt kapok kívánja újból engedélyezni az automatikus frissítés a legújabb verzióra frissítéséhez. Ha az automatikus frissítés engedélyezéséhez használtam a PowerShell, is meg kell telepíteni a legújabb verzióra?**  
+Igen, továbbra is szeretné 1.1.750.0 verzióra való frissítés vagy újabb verziója. A PowerShell-lel az automatikus frissítési szolgáltatás engedélyezése nem az elhárításukra automatikus frissítési 1.1.750.0 előtti verziói találhatók.
 
-**K: kívánt újabb verziójára, de nem biztos, akik az Azure AD Connect telepítése, és azt nem rendelkezik a felhasználónév és jelszó. Tegye van erre szükség?**
-Nem kell ismernie a felhasználónevet és jelszót, az Azure AD Connect frissítése eredetileg használt. A globális rendszergazdai szerepkörrel rendelkező bármely Azure AD-fiókot használni.
+**Kérdés egy újabb verzióra frissíteni szeretné, de nem biztos, akik az Azure AD Connect telepített, és hogy nem rendelkezik a felhasználónév és jelszó. Szükséges, hogy ez?**
+Ön nem ismernie kell a felhasználónevet és jelszót, amelyet eredetileg használt Azure AD Connect frissítése. A globális rendszergazdai szerepkörrel rendelkező összes Azure AD-fiókot használja.
 
-**K: Hogyan tudhatom meg, hogy milyen verziójú Azure AD Connect használok?**  
-Annak ellenőrzéséhez, hogy melyik Azure AD Connect verziója telepítve van a kiszolgálón, nyissa meg a Vezérlőpultot, és keresse meg a telepített Microsoft Azure AD Connect kiválasztásával **programok** > **programok és szolgáltatások** , ahogy az itt látható:
+**K: Hol találhatom meg az Azure AD Connect melyik verziót használok?**  
+Annak ellenőrzéséhez, hogy melyik Azure AD Connect verziója van telepítve a kiszolgálón, a Vezérlőpultot, és keressen a Microsoft Azure AD Connect telepített verziója kiválasztásával **programok** > **programok és szolgáltatások** , ahogy az itt látható:
 
-![A Vezérlőpulton az Azure AD Connect-verzió](media/active-directory-aadconnect-faq/faq1.png)
+![A Vezérlőpulton az Azure AD Connect verziója](media/active-directory-aadconnect-faq/faq1.png)
 
-**K: hogyan lehet frissíteni az Azure AD Connect legújabb verziójára?**  
-A legújabb verzióra frissítésével kapcsolatban [az Azure AD Connect: frissítés egy korábbi verziójáról a legújabb](active-directory-aadconnect-upgrade-previous-version.md). 
+**K: hogyan frissíthetem az Azure AD Connect legújabb verziójára?**  
+A legújabb verzióra frissítésével kapcsolatban lásd: [az Azure AD Connect: frissítés egy előző verzióról a legújabbra](active-directory-aadconnect-upgrade-previous-version.md). 
 
-**K: azt már frissített az Azure AD Connect legújabb verzióját az elmúlt évben. Szeretnénk frissítéséhez újra?**  
-Az Azure AD Connect csapat gyakori frissít a szolgáltatáshoz. Is kihasználhatják a hibajavításokat és biztonsági frissítések, valamint az új funkciók, fontos a kiszolgáló naprakészen tartása a legújabb verzióra. Ha az automatikus frissítés engedélyezéséhez a szoftververzió automatikusan frissül. Az Azure AD Connect verziókiadások megkereséséhez lásd: [az Azure AD Connect: verziókiadások](active-directory-aadconnect-version-history.md).
+**K: Mi már frissítve a legújabb verzióra, az Azure AD Connect tavaly. Szükségünk ismét?**  
+Az Azure AD Connect csapata elvégzi a gyakori frissítések a szolgáltatáshoz. Hibajavítások és biztonsági frissítések, valamint az új funkciók kihasználhatják, fontos a kiszolgáló naprakészen tartása a legújabb verzióra. Ha engedélyezi az automatikus frissítés, a szoftver verziója automatikusan frissül. Az Azure AD Connect verziókiadások talál [az Azure AD Connect: verziókiadások](active-directory-aadconnect-version-history.md).
 
-**K: mennyi időt vesz igénybe, a frissítés végrehajtásához, és milyen a a felhasználók számára?**  
-A frissítés szükséges idő a bérlő méretétől függ. Nagyobb szervezeteknek előfordulhat, a frissítés végrehajtásához a este vagy hétvégi ajánlott. A frissítés során a Nincs szinkronizálás tevékenység kerül sor.
+**K: mennyi időt vesz igénybe a frissítés végrehajtásához, és mi az a felhasználóim gyakorolt hatást?**  
+Frissítéséhez szükséges idő a bérlő méretétől függ. A nagyobb vállalatok a legjobb, ha a frissítés végrehajtásához az esténként vagy a hétvége folyamán érdemes lehet. A frissítés során nincs szinkronizálási tevékenység kerül sor.
 
-**K: I úgy érzi, hogy az Azure AD Connect, de az Office-portál frissítettem továbbra is említi DirSync. Miért van szó?**  
-Az Office-csapat az Office portál frissítéseinek aktuális termék nevének megfelelően működik. Ezek nem feltétlenül mely Szinkronizáló eszközt használ.
+**K: az Azure AD Connect, de az Office portálon frissítettem véleményem továbbra is a DirSync említi. Mi ez?**  
+Az Office-csapat dolgozik azon, hogy az Office portál frissítéseinek, hogy a jelenlegi termék nevét. Ezek nem feltétlenül melyik Szinkronizáló eszközt használ.
 
-**K: az automatikus frissítési állapota azt jelzi, "Felfüggesztve." Miért felfüggesztve azt? Kell engedélyezhető azt?**  
-Programhiba jelent a korábbi verziót, bizonyos körülmények között, hagyja el az automatikus frissítési állapot beállítása "Felfüggesztve." Manuális engedélyezése technikailag lehetséges, de számos összetett lépést igényel. Az ajánlott művelet, amelyet az Azure AD Connect legújabb verziójának telepítéséhez.
+**K: a automatikus frissítési állapotban lévő példányok, "Felfüggesztett." Miért felfüggesztett azt? Érdemes engedélyezni?**  
+Egy korábbi verziót, hogy bizonyos körülmények esetén hagyja meg az automatikus frissítési állapot "Felfüggesztett". Állítsa be a jelent meg. a hiba Manuális engedélyezése, technikailag lehetséges, de számos bonyolult lépéseket igényel. A legjobb dolog, amit az Azure AD Connect legújabb verziójának telepítéséhez.
 
-**K: a vállalat szigorú változáskezelés követelményekkel rendelkezik, és szabályozhatja, ha az rendelkezik leküldött szeretnék. Szabályozható, ha nincs elindítva az automatikus frissítés?**  
-Nem, nincs ilyen szolgáltatás ma. A szolgáltatás egy későbbi kiadásban kiértékelése megtörténik.
+**K: a vállalat szigorú változáskezelés követelményekkel rendelkezik, és szabályozhatja, mikor, rendelkezik leküldött szeretnék. Szabályozhatom, amikor az automatikus frissítés indul el?**  
+Nem, nincs nincs ilyen szolgáltatást még ma. A funkció a bevezetését későbbi verziókhoz kiértékelése megtörténik.
 
-**K: Ha az automatikus frissítése sikertelen volt fog hozzá egy e-mailt? Hogyan tudják meg, hogy, hogy az sikeres volt-e?**  
-Nem lehet értesítést fog az eredmény a frissítés. A szolgáltatás egy későbbi kiadásban kiértékelése megtörténik.
+**K: fog szerezhetem be egy e-mailt, ha az automatikus frissítés nem sikerült? Honnan tudom, hogy sikeres volt-e azt?**  
+Ön nem kap értesítést, a frissítés eredménye. A funkció a bevezetését későbbi verziókhoz kiértékelése megtörténik.
 
-**K: tegye közzé az ütemterv leküldéses automatikus frissítésének tervezésekor?**  
-Automatikus frissítés első lépése a kiadás során egy újabb verziója. Ha új kiadását, automatikusan leküldött frissítések. Az Azure AD Connect újabb verziók az alábbiak az előre bejelentett a [Azure AD terv](../fundamentals/whats-new.md).
+**K: tegye közzé az idővonalon automatikus frissítésekkel leküldenie tervezésekor?**  
+Automatikus frissítés egy újabb verzióra, a kibocsátási folyamat első lépéseként. Új kiadás történik, a frissítések automatikusan leküld. Az Azure AD Connect újabb verzióival az előzetesen bejelentett a [Azure AD ütemterv](../fundamentals/whats-new.md).
 
 **K: automatikus frissítés is frissíteni az Azure AD Connect Health?**  
-Igen, az automatikus frissítés is az Azure AD Connect Health frissíti.
+Igen, az automatikus frissítés frissíti az Azure AD Connect Health is.
 
-**K: ne akkor is automatikus frissítési átmeneti módban az Azure AD Connect-kiszolgálók?**  
-Igen, akkor is automatikus frissítési egy Azure AD Connect-kiszolgáló, amely átmeneti módban van.
+**K: ne, emellett automatikus frissítése az Azure AD Connect kiszolgálók átmeneti módban?**  
+Igen, akkor is automatikus frissítése az Azure AD Connect-kiszolgáló, amely átmeneti módban van.
 
-**Kérdés: Ha az automatikus frissítés sikertelen lesz, és a saját Azure AD Connect-kiszolgáló nem indul el, mit kell tennem?**  
-Bizonyos ritkán előforduló esetekben az Azure AD Connect szolgáltatás nem indul el a frissítés végrehajtása után. Ebben az esetben a kiszolgáló újraindul általában megoldja a problémát. Az Azure AD Connect szolgáltatás még mindig nem indul el, ha a támogatási jegy megnyitása. További információkért lásd: [Office 365 terméktámogatásának szolgáltatási kérelem létrehozása](https://blogs.technet.microsoft.com/praveenkumar/2013/07/17/how-to-create-service-requests-to-contact-office-365-support/). 
+**K: Ha automatikus frissítés sikertelen lesz, és saját Azure AD Connect-kiszolgáló nem indul el, mit kell tennem?**  
+Bizonyos ritkán előforduló esetekben az Azure AD Connect szolgáltatás nem indul el a frissítés végrehajtása után. Ezekben az esetekben a kiszolgáló újraindítása általában megoldja a problémát. Ha az Azure AD Connect szolgáltatást még mindig nem indul el, nyisson egy támogatási jegyet. További információkért lásd: [létre szolgáltatáskérést, lépjen kapcsolatba Office 365 támogatási](https://blogs.technet.microsoft.com/praveenkumar/2013/07/17/how-to-create-service-requests-to-contact-office-365-support/). 
 
-**K: nem biztos a kockázatok Mik az Azure AD Connect újabb verzióra való frissítésekor. Meghívhatja szeretnék segítséget kérek a frissítést?**  
-Ha az Azure AD Connect egy újabb verziójára frissít, a következő támogatási jegy megnyitása kell [Office 365 terméktámogatásának szolgáltatási kérelem létrehozása](https://blogs.technet.microsoft.com/praveenkumar/2013/07/17/how-to-create-service-requests-to-contact-office-365-support/).
+**K: nem biztos a kockázatok Mik az Azure AD Connect újabb verzióra frissítésekor. Meghívhat me segítik a frissítést?**  
+Ha Ön segítségre van szüksége az Azure AD Connect újabb verziójára frissít, nyisson egy támogatási jegyet, [létre szolgáltatáskérést, lépjen kapcsolatba Office 365 támogatási](https://blogs.technet.microsoft.com/praveenkumar/2013/07/17/how-to-create-service-requests-to-contact-office-365-support/).
 
 ## <a name="troubleshooting"></a>Hibaelhárítás
 **K: hogyan kaphat segítséget az Azure AD Connect?**
 
 [A Microsoft Tudásbázisban (KB)](https://www.microsoft.com/en-us/Search/result.aspx?q=azure%20active%20directory%20connect&form=mssupport)
 
-* Keresse meg az Azure AD Connect-támogatással kapcsolatos gyakori javítás / csere problémákat műszaki megoldásainak KB.
+* Keressen rá a KB, a műszaki megoldásokhoz az Azure AD Connect-támogatással kapcsolatos gyakori javítás/csere problémákra.
 
 [Az Azure Active Directory-fórumok](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=WindowsAzureAD)
 
-* Technikai kérdések és válaszok kereséséhez, vagy kérdései vannak az saját címen [az Azure AD-Közösség](https://social.msdn.microsoft.com/Forums/azure/en-US/newthread?category=windowsazureplatform&forum=WindowsAzureAD&prof=required).
+* Technikai kérdéseket és válaszokat kereshet, vagy a saját kérdései vannak a [az Azure AD-Közösség](https://social.msdn.microsoft.com/Forums/azure/en-US/newthread?category=windowsazureplatform&forum=WindowsAzureAD&prof=required).
 
-[Segítségre van szüksége az Azure AD](https://docs.microsoft.com/azure/active-directory/active-directory-troubleshooting-support-howto)
+[Kérhet támogatást az Azure ad-ben](https://docs.microsoft.com/azure/active-directory/active-directory-troubleshooting-support-howto)

@@ -9,12 +9,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: v-geberr
-ms.openlocfilehash: 291eb9ef7d8d089b443b55ac181e9fdd65fcb413
-ms.sourcegitcommit: 11321f26df5fb047dac5d15e0435fce6c4fde663
+ms.openlocfilehash: 55b0b40bdcb9f9be4d4d11d957f43ab35e61d759
+ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37888857"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38989938"
 ---
 # <a name="language-understanding-faq"></a>Language Understanding – gyakori kérdések
 
@@ -52,6 +52,10 @@ Lásd: [entitások](luis-concept-entity-types.md) és [adatkinyerés](luis-conce
 
 ### <a name="should-variations-of-an-example-utterance-include-punctuation"></a>Tartalmaznia kell egy példa utterance (kifejezés) változata írásjelek? 
 A példában szándéka kimondott szöveg szerint adja hozzá, a másik változata, vagy adja hozzá a példa utterance (kifejezés) minta a [figyelmen kívül hagyása szintaxis](luis-concept-patterns.md#pattern-syntax) az absztrakt. 
+
+### <a name="does-luis-currently-support-cortana"></a>A LUIS jelenleg támogatja a Cortana?
+
+A Cortana előre elkészített alkalmazásokat is elavult 2017-ben. Már nem támogatottak. 
 
 ## <a name="luis-endpoint"></a>A LUIS-végpont
 

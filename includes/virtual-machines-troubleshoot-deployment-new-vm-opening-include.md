@@ -1,5 +1,5 @@
-Amikor megpróbál létrehozni egy új Azure virtuális gép (VM), a előforduló gyakori hibák hibákat vagy olyan pufferallokációs hibák kiépíteni.
+Amikor megpróbál létrehozni egy új Azure virtuális gép (VM), az előforduló gyakori hibák és lefoglalási hibákat készül üzembe helyezni.
 
-* Üzembe helyezési hiba történik, ha az operációs rendszer lemezképének miatt helytelen előkészítő lépések vagy miatt a megfelelő beállítások kiválasztása során a lemezkép felvételén a portálról betöltése sikertelen.
-* Egy memóriafoglalási hiba eredménye, ha a fürt vagy a régió nincs rendelkezésre álló erőforrások vagy nem támogatja a kért Virtuálisgép-méretet.
+* Üzembe helyezési hiba akkor fordul elő, ha az operációs rendszer lemezképe nem sikerült betölteni a helytelen előkészítő lépések miatt, vagy a nem megfelelő beállítások kiválasztása során a portálról a lemezkép-rögzítési miatt.
+* Egy memóriafoglalási hiba eredménye, ha a fürt vagy a régió nem rendelkezik elérhető erőforrások vagy nem támogatja a kért Virtuálisgép-méretet.
 

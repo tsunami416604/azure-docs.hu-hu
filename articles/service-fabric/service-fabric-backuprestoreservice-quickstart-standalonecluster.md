@@ -1,6 +1,6 @@
 ---
-title: Rendszeres biztonsági mentése és visszaállítása az Azure Service Fabric (előzetes verzió) |} Microsoft Docs
-description: A Service Fabric rendszeres biztonsági mentése és visszaállítása a szolgáltatást ahhoz, hogy az alkalmazások adatvesztés elleni védelme.
+title: Rövid útmutató – rendszeres biztonsági mentése és visszaállítása az Azure Service Fabric (előzetes verzió) |} A Microsoft Docs
+description: A Service Fabric rendszeres biztonsági mentését, és a szolgáltatás engedélyezéséhez az alkalmazásadatok periodikus adatok biztonsági másolatának visszaállítása.
 services: service-fabric
 documentationcenter: .net
 author: hrushib
@@ -14,58 +14,58 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/04/2018
 ms.author: hrushib
-ms.openlocfilehash: e9bc85cec6cb1d0e35aa71f4e1934c057dbf946d
-ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
+ms.openlocfilehash: 5666ed4226104104b91b6f964abeb0490ef80866
+ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37114527"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38990744"
 ---
-# <a name="periodic-backup-and-restore-in-azure-service-fabric-preview"></a>Rendszeres biztonsági mentése és visszaállítása az Azure Service Fabric (előzetes verzió)
+# <a name="quickstart-periodic-backup-and-restore-in-azure-service-fabric-preview"></a>Gyors útmutató: Rendszeres biztonsági mentése és visszaállítása az Azure Service Fabric (előzetes verzió)
 > [!div class="op_single_selector"]
-> * [Azure-fürtök](service-fabric-backuprestoreservice-quickstart-azurecluster.md) 
+> * [Fürtök az Azure-ban](service-fabric-backuprestoreservice-quickstart-azurecluster.md) 
 > * [Önálló fürtök](service-fabric-backuprestoreservice-quickstart-standalonecluster.md)
 > 
 
-A Service Fabric egy elosztottrendszer-platform, amely megkönnyíti a egyszerűen fejleszthető és megbízható, elosztott, mikroszolgáltatások alapú felhőalapú alkalmazások kezelése. Lehetővé teszi mind az állapotmentes és állapotalapú micro szolgáltatások futtatásához. Állapotalapú szolgáltatások fenntarthatja a kérelem és válasz, vagy egy teljes tranzakció túl változtatható, mérvadó állapotát. Ha egy állapotalapú szolgáltatás hosszú ideig nem működik, vagy elveszíti az információk katasztrófa miatt, kell visszaállítani, néhány nemrég készült biztonsági másolatából állapotában szolgáltatást biztosító az ismét biztonsági után a folytatáshoz.
+Service Fabric egy elosztott rendszerplatform, amellyel egyszerűen hozhat létre és kezelhet, megbízható, elosztott, mikroszolgáltatás-alapú felhőalkalmazások a. Lehetővé teszi a is állapot nélküli és állapotalapú mikroszolgáltatásokhoz futtatását. Állapotalapú szolgáltatások megtarthatja a kérés és válasz vagy a teljes tranzakció túl változtatható, mérvadó állapotot. Ha az állapotalapú szolgáltatások hosszú ideig leáll, vagy elveszíti az információk katasztrófa miatt, azt kell ahhoz, hogy továbbra is a szolgáltatást biztosító követően betölt vissza néhány nemrég készült biztonsági másolatából állapotában visszaállíthatók.
 
-A Service Fabric állapotát annak biztosításához, hogy a szolgáltatás magas rendelkezésre állású több csomópont között replikálja. Akkor is, ha a fürtben egy csomópont meghibásodik, a szolgáltatás továbbra is elérhető. Bizonyos esetekben azonban kívánatos továbbra is a szolgáltatás adatok megbízható szélesebb körű-hibákkal szemben.
+A Service Fabric állapota győződjön meg arról, hogy a szolgáltatás magas rendelkezésre állású, több csomóponton replikálja. Akkor is, ha a fürtben egy csomópont meghibásodik, a szolgáltatás továbbra is elérhető. Bizonyos esetekben azonban kívánatos továbbra is a szolgáltatási adatok megbízható szélesebb körű meghibásodásokkal szemben.
  
-Szolgáltatás például érdemes biztonsági másolatot a ahhoz, hogy megvédje a következő esetekben:
-- A teljes Service Fabric-fürt állandó adatvesztés.
-- A szolgáltatás partíció replikák többsége végleges adatvesztést
-- Felügyeleti hibák, amelyek állapotát véletlenül lekérdezi törölt vagy sérült. Egy megfelelő jogosultsággal rendelkező rendszergazda például tévesen törli a szolgáltatást.
-- Hibák az szolgáltatásban adatvesztést okozhat. Ez például akkor fordulhat elő, a kód frissítése az írás a hibás egy megbízható gyűjtemény indításakor. Ebben az esetben a kód és az adatok is lehet, hogy egy korábbi állapotára visszaállítani.
-- Kapcsolat nélküli adatok feldolgozása. Előfordulhat, hogy az adatok az üzleti intelligencia, külön-külön történik, a szolgáltatás, amely az adatokat hoz létre a kapcsolat nélküli feldolgozása kényelmes.
+Például szolgáltatást érdemes biztonsági mentési adatokat a következő esetekben a védelme érdekében:
+- Ha egy egész Service Fabric-fürt állandó elvesztését.
+- A szolgáltatás partíció replikák többségi végleges adatvesztést
+- Felügyeleti hibák, amellyel az állapot véletlenül lekérdezi törölték vagy sérült állapotba kerül. Például egy megfelelő jogosultsággal rendelkező rendszergazda hibásan törli a szolgáltatást.
+- Hibák a szolgáltatásban, amely adatsérülést okozhat. Ez például akkor fordulhat elő, a kód frissítése az írás a hibás egy megbízható gyűjteményben indításakor. Ebben az esetben a kódot és az adatok is előfordulhat alakítható vissza egy korábbi állapotba.
+- Offline adatok feldolgozása. Érdemes lehet kényelmes szeretné, hogy a kapcsolat nélküli adatfeldolgozást az üzleti intelligenciát, amely a szolgáltatás, amely létrehozza az adatok külön-külön történik.
 
-A Service Fabric biztosít a beépített API időpontra történő [biztonsági mentése és visszaállítása](service-fabric-reliable-services-backup-restore.md). Alkalmazásfejlesztők ezen API-k használatával lehet, hogy rendszeresen készítsen biztonsági másolatot a szolgáltatás állapotát. Emellett ha a szolgáltatás-rendszergazdák aktiválják a biztonsági mentés, a szolgáltatás kívül egy adott időpontban, például az alkalmazást, a frissítés előtt fejlesztők kell teszi közzé a biztonsági mentés (és visszaállítása), az API-k a szolgáltatásból. A biztonsági mentések karbantartása újabb ez további költségek. Érdemes lehet például 5 növekményes biztonsági mentések érvénybe félig óránként egy teljes biztonsági mentés követ. A teljes biztonsági mentés után törölheti a korábbi növekményes biztonsági mentést. Ez a módszer alkalmazásfejlesztés során további költség nélkül vezető kód igényli.
+A Service Fabric biztosít a beépített API-t időponthoz kötött [biztonsági mentését és visszaállítását](service-fabric-reliable-services-backup-restore.md). Az alkalmazásfejlesztők ezen API-k használatával lehet, hogy rendszeresen készítsen biztonsági másolatot a szolgáltatás állapotát. Emellett ha szolgáltatás-rendszergazdák szeretne biztonsági mentést a kívül a szolgáltatás aktiválása egy adott időpontban, például az alkalmazás frissítése előtt fejlesztők kell a szolgáltatás API-ként tegye elérhetővé a biztonsági mentés (és visszaállítása). A fenti további költségek fenntartása a biztonsági mentések. Például előfordulhat, hogy szeretné 5 növekményes biztonsági mentések minden fél óra egy teljes biztonsági mentés követ. A teljes biztonsági mentést követően törölheti a korábbi növekményes biztonsági mentések. Ez a megközelítés szükséges alkalmazások fejlesztése során további költségek vezető további programkódokat kellene megtervezni.
 
-A rendszeres időközönként alkalmazásadatok biztonsági mentése egy elosztott alkalmazás kezelése és adatvesztés vagy a szolgáltatás rendelkezésre állásának elvesztése üzemszünetei ellen esetlegesen korán alapvető szükség. A Service Fabric biztosít egy nem kötelező biztonsági mentési és visszaállítási szolgáltatást, amely lehetővé teszi (többek között a Aktorszolgáltatások) állapotalapú Reliable Services rendszeres biztonsági mentését konfigurálását további kód írása nélkül. Azt is elősegíti a korábban végrehajtott biztonsági másolatok visszaállítása. 
+Az alkalmazásadatok rendszeres biztonsági mentése egy elosztott alkalmazás kezelése és az adatvesztés és szolgáltatás rendelkezésre állása hosszan tartó adatvesztés elleni esetlegesen korán alapszintű szüksége. A Service Fabric biztosít egy nem kötelező biztonsági mentés és visszaállítás szolgáltatást, amely lehetővé teszi, hogy rendszeres biztonsági mentés (beleértve a Aktorszolgáltatások), állapotalapú Reliable Services konfigurálása további kód írása nélkül. Azt is elősegíti a korábban végrehajtott biztonsági mentések visszaállítása. 
 
 > [!NOTE]
-> Rendszeres biztonsági mentési és visszaállítási funkció jelenleg **előzetes** és a termelési számítási feladatokhoz nem támogatott. 
+> Rendszeres biztonsági mentési és visszaállítási funkció megszakad **előzetes** és éles számítási feladatok esetében nem támogatott. 
 >
 
-A Service Fabric API-k érhetők el a következő funkciók rendszeres kapcsolódó biztonsági mentés és visszaállítás szolgáltatás biztosít:
+A Service Fabric egy érhet el a következő funkciók kapcsolatos rendszeres biztonsági mentés és visszaállítás szolgáltatás API-készletet biztosít:
 
-- Rendszeres biztonsági másolatot készíteni megbízható állapotalapú alkalmazások és szolgáltatások services és Reliable Actors-támogatással rendelkező töltse fel a biztonsági mentés (külső) tárolóhelyek ütemezni. Támogatott tárolóhelyek
+- Rendszeres biztonsági mentés ütemezése a Reliable Stateful services és Reliable Actors támogatásával (külső) történő biztonsági mentés tárolóhelyek feltölteni. Támogatott tárolási helyek
     - Azure Storage
-    - A fájlmegosztás (helyszíni)
-- Biztonsági másolatok felsorolása
-- Ad hoc biztonsági mentés partíció
-- Visszaállítás egy korábbi biztonsági mentésből partíció
-- Ideiglenesen felfüggesztheti a biztonsági másolatok
-- A biztonsági mentések (jövőbeli) megőrzési kezelése
+    - Fájlmegosztás (helyszíni)
+- Biztonsági másolatok számbavétele
+- Indítson egy ad hoc biztonsági mentést egy partíció
+- Visszaállítás egy korábbi biztonsági mentéssel partíció
+- Átmenetileg felfüggeszti a biztonsági mentések
+- A biztonsági mentések (későbbi) megőrzési kezelése
 
 ## <a name="prerequisites"></a>Előfeltételek
-* Service Fabric-fürt hálóval verzió 6.2 vagy újabb. A fürt beállítása a Windows Server kell lennie. Tekintse meg a [cikk](service-fabric-cluster-creation-for-windows-server.md) szükséges csomag lépéseit.
-* X.509 tanúsítvány a titkos kulcsok tárolási való csatlakozáshoz szükséges titkosítási biztonsági másolatok tárolására. Tekintse meg a [cikk](service-fabric-windows-cluster-x509-security.md) tudnia kell, hogyan szerezni, vagy egy önaláírt X.509-tanúsítvány létrehozásához.
-* Service Fabric megbízható állapotfüggő alkalmazás használatával a Service Fabric SDK 3.0-s verziójával készített vagy újabb. A célcsoport-kezelési .net alkalmazások alapvető 2.0, alkalmazás kell kialakítani, Service Fabric SDK 3.1-es verzióját vagy újabb.
+* Service Fabric-fürtön a Fabric verziója 6.2 vagy újabb. A fürt beállítása a Windows Server kell lennie. Tekintse meg [cikk](service-fabric-cluster-creation-for-windows-server.md) lépésekhez szükséges csomag letöltéséhez.
+* X.509-tanúsítvány a titkos kulcsok tárolási való csatlakozáshoz szükséges titkosítási biztonsági másolatok tárolására. Tekintse meg [cikk](service-fabric-windows-cluster-x509-security.md) tudnia kell, hogyan beszerezni, vagy hozzon létre egy önaláírt X.509-tanúsítványt.
+* Service Fabric Reliable Stateful alkalmazás használatával a Service Fabric SDK 3.0-s verzió vagy újabb. Alkalmazások .net Core 2.0, az alkalmazás kell kialakítani, Service Fabric SDK verziója 3.1-es vagy újabb.
 
 ## <a name="enabling-backup-and-restore-service"></a>Biztonsági mentés és visszaállítás szolgáltatás engedélyezése
-Először engedélyeznie kell a _biztonsági mentése és visszaállítása szolgáltatás_ a fürtön. Szerezze be a sablon a fürt, amely számára telepíteni kívánja. Használhatja a [mintasablon használatával](https://github.com/Azure-Samples/service-fabric-dotnet-standalone-cluster-configuration/tree/master/Samples). Engedélyezze a _biztonsági mentése és visszaállítása szolgáltatás_ a következő lépéseket:
+Először engedélyeznie kell a _biztonsági mentés és visszaállítás szolgáltatás_ a fürtben. Szerezze be a sablon a fürt, amely számára telepíteni kívánja. Használhatja a [mintasablon](https://github.com/Azure-Samples/service-fabric-dotnet-standalone-cluster-configuration/tree/master/Samples). Engedélyezze a _biztonsági mentés és visszaállítás szolgáltatás_ az alábbi lépéseket követve:
 
-1. Ellenőrizze, hogy a `apiversion` értéke `10-2017` a fürt konfigurációjába fájlt, és ha nem, frissítheti a következő kódrészletben látható:
+1. Ellenőrizze, hogy a `apiversion` értékre van állítva `10-2017` a fürt konfigurációját a fájlt, és ha nem, frissítse azt az alábbi kódrészletben látható módon:
 
     ```json
     {
@@ -76,7 +76,7 @@ Először engedélyeznie kell a _biztonsági mentése és visszaállítása szol
     }
     ```
 
-2. Most már engedélyezheti a _biztonsági mentése és visszaállítása szolgáltatás_ a következő `addonFeatures` szakaszában `properties` szakaszban, ahogy az a következő kódrészletet: 
+2. Most már engedélyezheti a _biztonsági mentés és visszaállítás szolgáltatás_ adja hozzá a következő `addonFeatures` szakaszba `properties` szakasz az alábbi kódrészletben látható módon: 
 
     ```json
         "properties": {
@@ -88,7 +88,7 @@ Először engedélyeznie kell a _biztonsági mentése és visszaállítása szol
 
     ```
 
-3. Konfigurálja az X.509 tanúsítvány a hitelesítő adatok titkosításához. Ez fontos annak érdekében, hogy a hitelesítő adatokat ad meg, ha bármelyik csatlakozhat titkosított előtt megőrzése. Titkosítási tanúsítvány konfigurálása a következő `BackupRestoreService` szakaszában `fabricSettings` szakaszban, ahogy az a következő kódrészletet: 
+3. X.509 tanúsítvány konfigurálása a hitelesítő adatok titkosításához. Ez fontos annak érdekében, hogy a hitelesítő adatokat, feltéve, ha bármelyik tárhelyhez csatlakozhat vannak titkosítva, mielőtt megőrzése. Titkosítási tanúsítvány konfigurálása a következő `BackupRestoreService` szakaszba `fabricSettings` szakasz az alábbi kódrészletben látható módon: 
 
     ```json
     "properties": {
@@ -105,20 +105,20 @@ Először engedélyeznie kell a _biztonsági mentése és visszaállítása szol
     }
     ```
 
-4. Miután a fenti változtatásokat a fürt konfigurációs fájl frissítése befejeződött, alkalmazza őket, és lehetővé teszik a központi telepítés/frissítés befejezéséhez. A befejezést követően a _biztonsági mentése és visszaállítása szolgáltatás_ elindul a fürtön. A megadott URI azonosító, a szolgáltatás `fabric:/System/BackupRestoreService` és a szolgáltatás a Service Fabric explorer rendszer szolgáltatás szakaszban található. 
+4. Miután frissítette a fürt konfigurációs fájlban a fenti módosítások, alkalmazhatja őket és lehetővé teszik a központi telepítés vagy frissítés befejezéséhez. A befejezést követően a _biztonsági mentés és visszaállítás szolgáltatás_ elindítja a fürtön belül. A szolgáltatás az Uri-ja `fabric:/System/BackupRestoreService` és a szolgáltatás is található a Service Fabric Explorert a szakaszban a rendszer szolgáltatás. 
 
-## <a name="enabling-periodic-backup-for-reliable-stateful-service-and-reliable-actors"></a>A megbízható állapotalapú alkalmazások és szolgáltatások szolgáltatás és a Reliable Actors rendszeres biztonsági mentés engedélyezése
-Bemutatjuk, keresztül történő engedélyezéséről a megbízható állapotalapú alkalmazások és szolgáltatások szolgáltatás és a Reliable Actors rendszeres biztonsági mentést. Ezek a lépések feltételezik
-- Hogy a fürt működik a _biztonsági mentése és visszaállítása szolgáltatás_.
-- A fürt egy megbízható állapotalapú alkalmazások és szolgáltatások szolgáltatás van telepítve. A gyors üzembe helyezési útmutató céljából alkalmazás Uri van `fabric:/SampleApp` , és az alkalmazáshoz tartozó megbízható állapotalapú alkalmazások és szolgáltatások szolgáltatás URI-jának `fabric:/SampleApp/MyStatefulService`. Ez a szolgáltatás telepítve van az egypartíciós, és a Partícióazonosító van `23aebc1e-e9ea-4e16-9d5c-e91a614fefa7`.  
+## <a name="enabling-periodic-backup-for-reliable-stateful-service-and-reliable-actors"></a>A Reliable Stateful service és a Reliable Actors rendszeres biztonsági mentés engedélyezése
+Nézzük meg a megbízható állapotalapú szolgáltatás és a Reliable Actors rendszeres biztonsági mentés engedélyezésének lépései. Ezek a lépések feltételezik
+- Hogy a fürt-e beállítva az _biztonsági mentés és visszaállítás szolgáltatás_.
+- Egy megbízható állapotalapú szolgáltatás üzembe helyezése a fürtön. A rövid útmutató céljából alkalmazás URI azonosítója van `fabric:/SampleApp` és az ehhez az alkalmazáshoz tartozó megbízható állapotalapú szolgáltatás Uri-ja `fabric:/SampleApp/MyStatefulService`. Ez a szolgáltatás üzembe helyezése egyetlen partícióval, és a Partícióazonosító `23aebc1e-e9ea-4e16-9d5c-e91a614fefa7`.  
 
-### <a name="create-backup-policy"></a>A biztonsági mentési házirend létrehozása
+### <a name="create-backup-policy"></a>Biztonsági mentési szabályzat létrehozása
 
-Első lépés, ha a biztonsági mentési házirend ütemezett biztonsági mentés, a célként megadott biztonsági mentési adatokat, a házirend nevét és a maximális növekményes biztonsági mentések teljes biztonsági mentés elindítása előtt engedélyezett leíró. 
+Első lépéseként leíró a biztonsági mentés ütemezése, cél-tároló biztonsági mentési adatokat, a házirend nevét és a maximális növekményes biztonsági mentések teljes biztonsági mentés elindítása előtt kell engedélyezni a biztonsági mentési szabályzat létrehozásához. 
 
-Biztonsági másolatok tárolására létrehozni a fájlmegosztást, és hozzáférést ReadWrite ezt a fájlmegosztást a Service Fabric-csomópont az összes számítógépen. Ez a példa azt feltételezi, hogy a megosztás neve `BackupStore` -e a `StorageServer`.
+Biztonságimásolat-tároláshoz hozzon létre fájlmegosztást, és az olvasási és írási hozzáférést biztosít a fájlmegosztás az összes Service Fabric-csomópont gépek. Ez a példa feltételezi, hogy a megosztás neve `BackupStore` -e a `StorageServer`.
 
-Hajtsa végre a következő PowerShell-parancsfájl az új házirend létrehozásához szükséges REST API meghívása.
+Hajtsa végre a következő PowerShell-parancsfájl az új szabályzat létrehozásához szükséges REST API meghívása.
 
 ```powershell
 $ScheduleInfo = @{
@@ -145,9 +145,9 @@ Invoke-WebRequest -Uri $url -Method Post -Body $body -ContentType 'application/j
 ```
 
 ### <a name="enable-periodic-backup"></a>Rendszeres biztonsági mentés engedélyezése
-Meghatározza az alkalmazás adatvédelmi követelményeinek teljesítéséhez házirendet, miután a biztonsági mentési házirendet az alkalmazással társított kell lennie. Követelmény, attól függően, hogy a biztonsági mentési házirend társítva van egy alkalmazás, szolgáltatás vagy egy partíció lehet.
+Után az alkalmazás adatvédelmi követelmények teljesítéséhez házirend meghatározása, a biztonsági mentési szabályzat az alkalmazás társítva kell lennie. Követelmény, függően a biztonsági mentési szabályzathoz társított egy alkalmazást, a szolgáltatás és a partíció is lehet.
 
-Hajtsa végre a következő PowerShell-parancsfájl az rendelje hozzá a biztonsági mentési házirend nevű szükséges REST API meghívása `BackupPolicy1` a fenti lépés alkalmazással létrehozott `SampleApp`.
+Hajtsa végre a következő PowerShell-szkript meghívása szükséges REST API-t a biztonsági mentési házirend társítása neve `BackupPolicy1` fenti alkalmazással létrehozott `SampleApp`.
 
 ```powershell
 $BackupPolicyReference = @{
@@ -160,17 +160,17 @@ $url = "http://localhost:19080/Applications/SampleApp/$/EnableBackup?api-version
 Invoke-WebRequest -Uri $url -Method Post -Body $body -ContentType 'application/json'
 ``` 
 
-### <a name="verify-that-periodic-backups-are-working"></a>Ellenőrizze, hogy működik-e a rendszeres biztonsági mentést
+### <a name="verify-that-periodic-backups-are-working"></a>Rendszeres biztonsági mentések működésének ellenőrzése
 
-Miután engedélyezte a biztonsági mentés az alkalmazáshoz, az alkalmazás a megbízható állapotalapú alkalmazások és szolgáltatások services és Reliable Actors tartozó összes partíció első biztonsági másolat rendszeres időközönként a tartozó biztonsági mentési házirend szerint elindul. 
+Miután engedélyezte az alkalmazás biztonsági mentése, az alkalmazás a Reliable Stateful services és Reliable Actors tartozó összes partíció indul el első készül rendszeres időközönként a társított biztonsági mentési szabályzatának megfelelően. 
 
 ![Partíció BackedUp Állapotesemény][0]
 
 ### <a name="list-backups"></a>Lista biztonsági mentések
 
-Megbízható állapotalapú alkalmazások és szolgáltatások services és Reliable Actors az alkalmazás tartozó összes partíció társított biztonsági mentések használatával vehető számba _GetBackups_ API. Követelmény, attól függően, hogy a biztonsági mentések alkalmazás, szolgáltatás vagy egy partíció számba.
+A Reliable Stateful services és Reliable Actors-alkalmazás tartozó összes partíció társított biztonsági másolatok használatával lehet enumerálni _GetBackups_ API-t. Követelmény, attól függően a biztonsági másolatok is enumerálni az alkalmazás, szolgáltatás vagy egy partíciót.
 
-Hajtsa végre a következő PowerShell parancsfájlt a HTTP API számba venni az összes partíció belül létrehozott biztonsági mentéseket a `SampleApp` alkalmazás.
+Hajtsa végre a következő PowerShell-parancsprogram enumerálni az összes partíción belül létrehozott biztonsági mentéseket a HTTP API meghívása a `SampleApp` alkalmazás.
 
 ```powershell
 $url = "http://localhost:19080/Applications/SampleApp/$/GetBackups?api-version=6.2-preview"
@@ -180,7 +180,7 @@ $response = Invoke-WebRequest -Uri $url -Method Get
 $BackupPoints = (ConvertFrom-Json $response.Content)
 $BackupPoints.Items
 ```
-Futtassa a fenti példa kimenete:
+Futtassa a fenti kimeneti példa:
 
 ```
 BackupId                : d7e4038e-2c46-47c6-9549-10698766e714
@@ -220,14 +220,15 @@ CreationTimeUtc         : 2018-04-01T20:09:44Z
 FailureError            : 
 ```
 
-## <a name="preview-limitation-caveats"></a>Tekintse meg a korlátozás / figyelmeztetések
-- Nem a Service Fabric PowerShell-parancsmagok beépített.
-- Service Fabric CLI nem támogatott.
-- Az automatikus biztonsági mentési végleges törlése nem támogatott. Kézi megtisztítsa azokat a biztonsági mentések igényel.
+## <a name="preview-limitation-caveats"></a>Előzetes verzió korlátozás / kikötések
+- Nem Service Fabric beépített PowerShell-parancsmagokat.
+- Service Fabric parancssori felület nem támogatott.
+-  Automatikus biztonsági másolat törlése nem támogatott. [Biztonsági mentés megőrzési parancsfájl](https://github.com/Microsoft/service-fabric-scripts-and-templates/tree/master/scripts/BackupRetentionScript) külső automation parancsprogram-alapú biztonsági mentések törléshez-telepítés lehet hivatkozni.
 - Nem támogatja a Service Fabric-fürtök Linux rendszeren.
 
 ## <a name="next-steps"></a>További lépések
-- [Biztonságimásolat-visszaállítással REST API-referencia](https://docs.microsoft.com/rest/api/servicefabric/sfclient-index-backuprestore)
+- [Rendszeres biztonsági mentési konfiguráció ismertetése](./service-fabric-backuprestoreservice-configure-periodic-backup.md)
+- [Biztonsági másolat visszaállítása – REST API-referencia](https://docs.microsoft.com/rest/api/servicefabric/sfclient-index-backuprestore)
 
 [0]: ./media/service-fabric-backuprestoreservice/PartitionBackedUpHealthEvent.png
 

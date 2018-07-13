@@ -8,24 +8,24 @@ ms.topic: include
 ms.date: 06/28/2018
 ms.author: jingwang
 ms.custom: include file
-ms.openlocfilehash: 28f5d2d670279aa1baf26584892747eb99bbdf43
-ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
+ms.openlocfilehash: 359f0ef4cd402b587f1ed2db9fa41141ab8dff1d
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37864723"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39008535"
 ---
 | Kategória | Adattár |
 |:--- |:--- |
 | **Azure** |[Azure Blob Storage](../articles/data-factory/connector-azure-blob-storage.md) |
 | &nbsp; |[Azure Cosmos DB](../articles/data-factory/connector-azure-cosmos-db.md) |
-| &nbsp; |[Az Azure Data Lake Storage Gen1](../articles/data-factory/connector-azure-data-lake-store.md) |
+| &nbsp; |[1. generációs Azure Data Lake Storage](../articles/data-factory/connector-azure-data-lake-store.md) |
 | &nbsp; |[Azure Database for MySQL](../articles/data-factory/connector-azure-database-for-mysql.md) |
 | &nbsp; |[Azure Database for PostgreSQL](../articles/data-factory/connector-azure-database-for-postgresql.md) |
-| &nbsp; |[Azure File Storage](../articles/data-factory/connector-azure-file-storage.md) |
+| &nbsp; |[Az Azure Files](../articles/data-factory/connector-azure-file-storage.md) |
 | &nbsp; |[Azure SQL Database](../articles/data-factory/connector-azure-sql-database.md) |
 | &nbsp; |[Azure SQL Data Warehouse](../articles/data-factory/connector-azure-sql-data-warehouse.md) |
-| &nbsp; |[Azure Table Storage](../articles/data-factory/connector-azure-table-storage.md) |
+| &nbsp; |[Azure Table storage](../articles/data-factory/connector-azure-table-storage.md) |
 | **Adatbázis** |[Amazon Redshift](../articles/data-factory/connector-amazon-redshift.md) |
 | &nbsp; |[DB2](../articles/data-factory/connector-db2.md) |
 | &nbsp; |[Drill (előzetes verzió)](../articles/data-factory/connector-drill.md) |

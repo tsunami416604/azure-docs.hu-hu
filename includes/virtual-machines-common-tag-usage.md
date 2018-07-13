@@ -2,19 +2,19 @@
 
 
 ## <a name="viewing-your-tags-in-the-usage-details"></a>A használat részleteiről a címkék megtekintése
-Címkék helyezve a számítási, hálózati, és a használat részleteiről a tárolási erőforrások a Resource Manager üzembe helyezési modellel lesz kitöltve a [számlázási portal](https://account.windowsazure.com/).
+A számítási, hálózati, elhelyezett címkék és a Resource Manager-alapú üzemi modellben tárerőforrások tölti fel a használattal kapcsolatos részletek az [számlázási portálon](https://account.windowsazure.com/).
 
-Kattintson a **töltse le a használat részleteiről** a használati adatok megtekintéséhez az előfizetésben.
+Kattintson a **töltse le a használat részleteiről** az előfizetésében a használati adatok megtekintéséhez.
 
-![Használat részletei az Azure portálon](./media/virtual-machines-common-tag-usage/azure-portal-tags-usage-details.png)
+![Használat részletei az Azure Portalon](./media/virtual-machines-common-tag-usage/azure-portal-tags-usage-details.png)
 
-Válassza ki a számlakivonatok és a **2-es verzió** használat részleteiről:
+Válassza ki a számlát, és a **2-es verzió** használatról:
 
-![2. verziójú Preview használat részleteiről Azure-portálon](./media/virtual-machines-common-tag-usage/azure-portal-version2-usage-details.png)
+![2. verziója előzetes verzió használati részletei az Azure Portalon](./media/virtual-machines-common-tag-usage/azure-portal-version2-usage-details.png)
 
-A használat részleteiről a címkék láthatja a **címkék** oszlop:
+A használat részleteiről tekintheti meg a címkék a **címkék** oszlopban:
 
-![Címkék oszlop Azure-portálon](./media/virtual-machines-common-tag-usage/azure-portal-tags-column.png)
+![A címkék oszlop az Azure Portalon](./media/virtual-machines-common-tag-usage/azure-portal-tags-column.png)
 
-Ezekkel a címkékkel együtt használati elemzésével szervezetek fog tudni betekintést nyerhet új azok fogyasztási adatokhoz.
+Ezekkel a címkékkel, valamint a használati adatainak elemzésével, szervezetek fog tudni új információkhoz juthat a használati adatokat.
 

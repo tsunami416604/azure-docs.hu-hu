@@ -1,6 +1,6 @@
 ---
-title: Ügyfél számlázási és az Azure-készletben jóváírási |} Microsoft Docs
-description: Ismerje meg, hogyan lehet lekérni az erőforrás-használati adatait az Azure oszlopból.
+title: Ügyfél számlázás és költséghelyi elszámolás az Azure Stackben |} A Microsoft Docs
+description: Ismerje meg, hogyan kérheti le az erőforrás-használati adatokat az Azure Stack.
 services: azure-stack
 documentationcenter: ''
 author: mattbriggs
@@ -11,62 +11,61 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/25/2018
+ms.date: 07/12/2018
 ms.author: mabrigg
 ms.reviewer: alfredop
-ms.openlocfilehash: eca335797f48b7c44351655f17c8b6499f3d5999
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: f2449176f96b18a374ff6d54fbf7e09c8f5e21cc
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2018
-ms.locfileid: "29877483"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39003577"
 ---
-# <a name="usage-and-billing-in-azure-stack"></a>Használati és számlázási Azure verem
+# <a name="usage-and-billing-in-azure-stack"></a>Használat és számlázás az Azure Stackben
 
-Ez a cikk ismerteti, hogyan Azure verem felhasználók számlázása az erőforrás-használat. Megtudhatja, hogyan érhető el a számlázási adatokat elemzés és vissza kell fizetni.
+Ez a cikk bemutatja, hogyan Azure Stack felhasználói erőforrás-használat számlázzuk ki. Megtudhatja, hogyan érhető el a számlázási adatokat analytics és a díj vissza.
 
-Azure verem gyűjt és használati adatok használt összes erőforrás csoportosítja, és továbbítja ezeket az adatokat az Azure kereskedelmi. Az Azure kereskedelmi váltók stb meg Azure verem használati azonos módon, akkor volna kiszámlázni Önnek Azure használatra.
+Az Azure Stack gyűjt, és a csoportok használt erőforrások használati adatait. Ezután az Azure Stack az Azure kereskedelmi továbbítja ezeket az adatokat. Az Azure kereskedelmi verziójánál díjat Azure Stack használatának ugyanúgy mint volna fel díjat az Azure-használat.
 
-Használati adatok és az Exportálás úgy, hogy a saját számlázással vagy az ingyenesen elérhető biztonsági másolatot a rendszer a számlázási adapter használatával vagy exportálni onnan üzleti intelligencia eszközhöz hasonló Microsoft Power bi-ban, és használni analytics is beszerezheti.
+Használati adatok és az exportálás, hogy a saját számlázási vagy költséghelyi elszámolási adapter használatával biztonsági másolatot a rendszer, vagy exportálhatja, és a egy üzleti intelligencia eszköz, például a Microsoft Power BI is kaphat.
 
 
 ## <a name="usage-pipeline"></a>Használati folyamat
 
-Mindegyik erőforrás-szolgáltató Azure verem bocsát ki a használati adatok egy erőforrás-használat. Rendszeres időközönként a Usage webszolgáltatás (óránkénti és naponta) összesíti használati adatait, és a használati adatbázisban tárolja. Az Azure verem operátorok és felhasználók használhatják a tárolt adatok az Azure verem Erőforrás kihasználtsága API-k segítségével. 
+Mindegyik erőforrás-szolgáltató az Azure Stackben közzéteszi a használati adatok erőforrás-használat. Rendszeres időközönként a Használatmérő szolgáltatást (óránként, és naponta) összesíti használati adatait, és a használati adatbázisban tárolja azokat. Az Azure Stack operátorai és felhasználói hozzáférhet a tárolt adatok az Azure Stack Resource használati API-kon keresztül. 
 
-Ha rendelkezik [Azure verem példány regisztrálva van az Azure](azure-stack-register.md), Azure verem a használati adatok küldése az Azure kereskedelmi van konfigurálva. Az adatok feltöltése az Azure-ba, után hozzá tud férni a számlázási portálon keresztül, vagy az Azure erőforrás-használati API-k használatával. Tekintse meg a [használati adatok jelentése](azure-stack-usage-reporting.md) témakörét, ahol több milyen használatával kapcsolatos adatok bejelentések Azure.  
+Ha rendelkezik [regisztrálva az Azure Stack-példány az Azure-ral](azure-stack-register.md), az Azure Stack a használati adatok küldése az Azure kereskedelmi van konfigurálva. Az adatok feltöltése az Azure-ba, után is férhet hozzá a számlázási portálon keresztül vagy az Azure erőforrás-használati API-k használatával. Tekintse meg a [használati adatok jelentése](azure-stack-usage-reporting.md) a cikkből megtudhatja, hogy több milyen használatával kapcsolatos adatok jelentése az Azure-bA.  
 
-A következő kép bemutatja a legfontosabb összetevők, a használati feldolgozási: 
+Az alábbi képen látható a használati folyamat a legfontosabb összetevők: 
 
 ![Használati folyamat](media\azure-stack-billing-and-chargeback\usagepipeline.png)
 
-## <a name="what-usage-information-can-i-find-and-how"></a>Milyen használati információk találhatók, és hogyan?
+## <a name="what-usage-information-can-i-find-and-how"></a>Milyen használati adatokat is megkeresheti, és hogyan?
 
-Az Azure verem erőforrás-szolgáltatók, köztük a számítási, tárolási és hálózati, az egyes előfizetésekhez óránként hozhat létre használati adatokat. A használati adatokat az erőforrás, például az erőforrás nevét, a használt előfizetés és a felhasznált mennyiség használt információkat tartalmaz. Mérőszámok azonosító erőforrásokkal kapcsolatos további tudnivalókért tekintse meg a [használati API – gyakori kérdések](azure-stack-usage-related-faq.md) cikk.
+Az Azure Stack-erőforrás-szolgáltatók (például számítási, tárolási és hálózati), az egyes előfizetésekhez óránkénti időközönként használati adatok létrehozásához. A használati adatokat az erőforrás, például az erőforrás nevét, a használt előfizetés és a felhasznált mennyiség használt információkat tartalmazza. A mérőszámok azonosító erőforrások kapcsolatos további információkért tekintse meg a [használati API – gyakori kérdések](azure-stack-usage-related-faq.md) cikk.
 
-Miután a használati adatokat összegyűjtötte-e, [Azure jelentett](azure-stack-usage-reporting.md) létrehozni egy számlázási, amely az Azure számlázási portálján keresztül lehet megtekinteni. 
+A használati adatok begyűjtését követően van [jelentett az Azure-bA](azure-stack-usage-reporting.md) számla, amely az Azure számlázási portálján tekinthetők létrehozásához. 
 
+> [!NOTE]  
+> Használati adatok jelentése, nem szükséges, az Azure Stack Development Kit és a kapacitás modellben licenc Azure Stackkel integrált rendszer felhasználók. Az Azure Stackben licenceléssel kapcsolatos további tudnivalókért tekintse meg a [formátumokat támogató csomagolási és díjszabás](https://azure.microsoft.com/mediahandler/files/resourcefiles/5bc3f30c-cd57-4513-989e-056325eb95e1/Azure-Stack-packaging-and-pricing-datasheet.pdf) Adatlap.
 
-> [!NOTE]
-> Használati adatok jelentése nincs szükség Azure verem szoftverfejlesztői készlet és integrált Azure verem rendszer felhasználók számára, akik a kapacitás modellben licenc. Azure-készletben licenceléssel kapcsolatos további tudnivalókért tekintse meg a [csomagolás és árképzési](https://azure.microsoft.com/mediahandler/files/resourcefiles/5bc3f30c-cd57-4513-989e-056325eb95e1/Azure-Stack-packaging-and-pricing-datasheet.pdf) Adatlap.
+Az Azure számlázási portálján felszámítható erőforrásokat használati adatait jeleníti meg. Mellett a felszámítható erőforrásokat az Azure Stack szélesebb készletét használja erőforrásokat, amely az Azure Stack környezettel REST API-k vagy a Powershellen keresztül érhető el a használati adatokat rögzíti. Az Azure Stack-operátorok a használati adatokat kaphat az összes felhasználói előfizetések. Egyéni felhasználók számára csak kaphat használati adatait. 
 
-A számlázási Azure-portálon a kiszabható erőforrásokra vonatkozó használati adatokat jeleníti meg. Azure verem terhelhető erőforrásokat, rögzíti a használati adatok összefoglalásához szélesebb körben állítja be a erőforrásokat, amelyek a verem Azure környezetben a REST API-k vagy a Powershellen keresztül érheti el. Az Azure verem operátorok előfizetéseket felhasználó kérheti le a használati adatok. Egyéni felhasználók számára csak beszerezheti használati adatait. 
+## <a name="usage-reporting-for-multitenant-cloud-service-providers"></a>Jelentéskészítés a több-bérlős Felhőszolgáltatók használat
 
-## <a name="usage-reporting-for-multitenant-cloud-service-providers"></a>Jelentéskészítés a több-bérlős Felhőszolgáltatók kihasználtsága
+Egy több-bérlős Felhőszolgáltató (CSP) rendelkező Azure Stack használatával számos ügyfél érdemes külön-külön mindegyik ügyfél használati jelentést, hogy a szolgáltató az Azure-előfizetések használati díjat. 
 
-Egy több-bérlős Felhőszolgáltató (CSP) rendelkező Azure verem használatával számos ügyfél érdemes külön-külön jelentést minden egyes ügyfél-használati, hogy a szolgáltató díjat használati különböző Azure-előfizetésekhez. 
-
-Minden ügyfél az identitásukat egy másik Azure Active Directory (Azure AD)-bérlője által képviselt lesz. Az Azure verem minden Azure AD-bérlő hozzárendelése egy CSP előfizetés támogatja. Az alapszintű Azure verem regisztráció bérlők és az előfizetések adhat hozzá. Az alap regisztráció történik az összes Azure-halom. Ha az előfizetés nincs regisztrálva a bérlő számára, a felhasználó továbbra is az Azure-vermet, és használatát a program elküldi az alap regisztrációjához használt előfizetés. 
+Minden egyes ügyfél-azonosítót fog kérni egy másik Azure Active Directory (Azure AD) bérlő által képviselt lesz. Az Azure Stack egy CSP előfizetés hozzárendelése minden egyes Azure AD-bérlő támogatja. Az alapszintű Azure Stack-regisztráció a bérlők és azok az előfizetések adhat hozzá. Az alap regisztrációját, készen áll az összes Azure-t. Ha egy előfizetést a bérlő nincs regisztrálva, a felhasználó továbbra is használhatja az Azure Stack, és használatuk küld a kiinduló regisztráció használt előfizetés. 
 
 
 ## <a name="next-steps"></a>További lépések
 
-[Az Azure verem regisztrálása](azure-stack-registration.md)
+[Regisztráljon az Azure Stack használatával](azure-stack-registration.md)
 
-[Jelentés Azure verem használati adatait az Azure-bA](azure-stack-usage-reporting.md)
+[Az Azure-bA az Azure Stack-használati adatok jelentése](azure-stack-usage-reporting.md)
 
-[Szolgáltató Erőforrás kihasználtsága API](azure-stack-provider-resource-api.md)
+[Szolgáltatói erőforrás-használati API](azure-stack-provider-resource-api.md)
 
-[A bérlői API-erőforrás-használat](azure-stack-tenant-resource-usage-api.md)
+[Bérlői erőforrás-használati API](azure-stack-tenant-resource-usage-api.md)
 
-[Használati kapcsolatos gyakori kérdések](azure-stack-usage-related-faq.md)
+[Használattal kapcsolatos gyakori kérdések](azure-stack-usage-related-faq.md)

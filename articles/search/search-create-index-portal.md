@@ -1,52 +1,50 @@
 ---
-title: Index létrehozása (Portal – Azure Search) | Microsoft Docs
-description: Index létrehozása az Azure Portal használatával.
+title: Az Azure Search-index létrehozása a portálon |} A Microsoft Docs
+description: Ismerje meg, hogyan tervezőkkel beépített portál index Azure Search-index létrehozása.
 manager: cgronlun
 author: heidisteen
 services: search
 ms.service: search
 ms.devlang: NA
-ms.topic: quickstart
-ms.date: 06/20/2017
+ms.topic: conceptual
+ms.date: 07/10/2018
 ms.author: heidist
-ms.openlocfilehash: 722f1eb989fb8c160def4024b1aa967a47b87697
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
-ms.translationtype: HT
+ms.openlocfilehash: bb1ba5e860dab237b3f6e16205b5e4cbad45e6e3
+ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34203869"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38990846"
 ---
-# <a name="create-an-azure-search-index-using-the-azure-portal"></a>Azure Search-index létrehozása az Azure Portal használatával
+# <a name="how-to-create-an-azure-search-index-using-the-azure-portal"></a>Az Azure portal segítségével Azure Search-index létrehozása
 
-Az Azure Portal beépített indextervezőjével az Azure Search szolgáltatáson futtatható [keresési index](search-what-is-an-index.md) tervezhető vagy hozható létre. 
+Az Azure Search tartalmaz egy beépített index Lekérdezéstervező prototípusok hasznos, ha a portálon vagy létrehozni egy [search-index](search-what-is-an-index.md) az Azure Search szolgáltatás található. Az eszköz séma konstrukció szolgál. Amikor menti a definíció, üres index válik teljesen ki, a az Azure Search szolgáltatásban. Hogyan betöltésük kereshető adatok van szerint strukturálhatja.
 
-Emellett létrehozhat keresési indexet a [.NET](search-create-index-dotnet.md) vagy [REST](search-create-index-rest-api.md) API-kkal is.
+Az index-Tervező csak egy indexet létrehozni csak egy megközelítés. Programozott módon, is létrehozhat egy indexet a [.NET](search-create-index-dotnet.md) vagy [REST](search-create-index-rest-api.md) API-k.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-A cikk feltételezi, hogy rendelkezik [Azure-előfizetéssel](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A261C142F) és az [Azure Search szolgáltatással](search-create-service-portal.md).  
+A cikk feltételezi, hogy rendelkezik [Azure-előfizetéssel](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A261C142F) és az [Azure Search szolgáltatással](search-create-service-portal.md).
 
-## <a name="find-your-search-service"></a>A Search szolgáltatás megkeresése
-1. Jelentkezzen be az Azure Portal oldalán, és tekintse át az [előfizetéséhez elérhető keresési szolgáltatásokat](https://portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices)
-2. Válassza ki az Azure Search szolgáltatást.
+## <a name="open-index-designer-and-name-an-index"></a>Index tervező megnyitása és a egy index neve
 
-## <a name="name-the-index"></a>Az index elnevezése
+1. Jelentkezzen be a [Azure Portalra](https://portal.azure.com), és nyissa meg a szolgáltatás irányítópultját. A gyorselérési sávon a **Minden szolgáltatás** elemre kattintva kereshet az aktuális előfizetésben meglévő „keresési szolgáltatásokat”. 
 
-1. Kattintson az **Index hozzáadása** gombra a lap tetején található parancssávon.
-2. Adjon nevet az Azure Search-indexnek. 
+2.  Kattintson az **Index hozzáadása** gombra a lap tetején található parancssávon.
+
+3. Adjon nevet az Azure Search-indexnek. Indexelés és a lekérdezési műveletek hivatkozott index neve. Az index neve része lesz az indexhez való kapcsolódáshoz és az Azure Search REST API-ban HTTP-kérelmek küldéséhez használt végpont URL-címének.
+
    * Kezdje betűvel.
    * Csak kisbetűket, számjegyeket vagy kötőjeleket ("-") használjon.
    * A név ne legyen 60 karakternél hosszabb.
 
-  Az index neve része lesz az indexhez való kapcsolódáshoz és az Azure Search REST API-ban HTTP-kérelmek küldéséhez használt végpont URL-címének.
-
 ## <a name="define-the-fields-of-your-index"></a>Az index mezőinek definiálása
 
-Az index összeállításához tartozik egy *Mezőkollekció*, amely az indexben kereshető adatok körét határozza meg. Még pontosabban ez adja meg a külön feltöltött dokumentumok struktúráját. A mezőkollekcióhoz kötelező és választható, névvel és típussal rendelkező mezők is tartoznak, a mezők felhasználási módját meghatározó index-tulajdonságokkal.
+Az index összeállításához tartozik egy *Mezőkollekció*, amely az indexben kereshető adatok körét határozza meg. A mezők gyűjteménye érvényesítette, a külön feltöltött dokumentumok struktúráját adja meg. A mezők is tartoznak, szükséges és választható mezők neve és írta be az index attribútumainak, amelyek meghatározzák, hogy miként legyen használható a mező.
 
 1. Nyissa meg a meződefiníciós panelt az **Index hozzáadása** panel **Mezők >** elemére kattintva. 
 
-2. Fogadja el a generált Edm.String típusú *key* (kulcs) mezőt. A mező neve alapértelmezés szerint *id*, de az [elnevezési szabályok](https://docs.microsoft.com/rest/api/searchservice/Naming-rules) betartása mellett át is nevezhető. A kulcs mező minden Azure Search-indexhez kötelező, és karakterláncnak (string) kell lennie.
+2. Fogadja el a generált Edm.String típusú *key* (kulcs) mezőt. A mező neve alapértelmezés szerint *id*, de az [elnevezési szabályok](https://docs.microsoft.com/rest/api/searchservice/Naming-rules) betartása mellett át is nevezhető. A kulcs mező minden Azure Search-indexhez kötelező, és sztringnek (string) kell lennie.
 
 3. Adja meg a feltölteni kívánt dokumentumokat teljesen leíró mezőket. Ha a dokumentumok tartalma *azonosító*, *szálloda neve*, *cím*, *város* és *régió*, akkor mindegyikhez hozza létre a megfelelő mezőt az indexben. A tulajdonságok beállításához [a lenti tervezési útmutató](#design) nyújt segítséget.
 
@@ -60,16 +58,17 @@ A portálon az indexek létrehozása billentyűzetfüggő. A szükséges művele
 
 1. Először építse fel a mezők listáját a nevek beírásával és az adattípusok beállításával.
 
-2. Ez után az egyes tulajdonságok feletti jelölőmezőket használva egyszerre engedélyezheti az adott beállítást az összes mezőre, majd egyesével törölheti a jelöléseket az olyan mezők mellett, amelyekhez nem szükséges. A karakterlánc-mezők például általában kereshetők. Ilyen esetben érdemes bejelölni a **Retrievable** (Lekérdezhető) és **Searchable** (Kereshető) tulajdonságokat, hogy a keresési eredményben megjelenjen a mező tartalma és lehetséges legyen a mezőn a teljes szöveges keresés. 
+2. Ez után az egyes tulajdonságok feletti jelölőmezőket használva egyszerre engedélyezheti az adott beállítást az összes mezőre, majd egyesével törölheti a jelöléseket az olyan mezők mellett, amelyekhez nem szükséges. A sztringmezők például általában kereshetők. Ilyen esetben érdemes bejelölni a **Retrievable** (Lekérdezhető) és **Searchable** (Kereshető) tulajdonságokat, hogy a keresési eredményben megjelenjen a mező tartalma és lehetséges legyen a mezőn a teljes szöveges keresés. 
 
 <a name="design"></a>
+
 ## <a name="design-guidance-for-setting-attributes"></a>Tervezési útmutató a tulajdonságok beállításához
 
 Új mezők bármikor megadhatók, a meglévő meződefiníciók azonban az index élettartamára rögzülnek. A fejlesztők ezért általában egyszerű indexek létrehozására vagy ötletek kipróbálására használják a portált, vagy a portál oldalain néznek utána egy beállításnak. Egy index rendszeres kiegészítése hatékonyabb az index újraépítését megkönnyítő kódalapú megközelítéssel.
 
 Az index mentése előtt elemzők és javaslattevők lesznek a mezőkhöz rendelve. Mindenképpen kattintsa végig az összes lapot, hogy az index definíciójához megadja a nyelvi elemzőket vagy javaslattevőket.
 
-A karakterlánc típusú mezők gyakran mint **Searchable** (Kereshető) és **Retrievable** (Lekérdezhető)vannak megjelölve.
+A sztring típusú mezők gyakran mint **Searchable** (Kereshető) és **Retrievable** (Lekérdezhető)vannak megjelölve.
 
 A keresési eredmények szűkítésére használt mezők **Sortable** (Rendezhető), **Filterable** (Szűrhető) és **Facetable** (Kategorizálható) tulajdonsággal is rendelkeznek.
 

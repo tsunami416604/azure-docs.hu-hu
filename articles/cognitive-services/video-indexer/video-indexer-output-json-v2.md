@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: article
 ms.date: 05/30/2018
 ms.author: juliako
-ms.openlocfilehash: 9e66bffe1a547e72143201f4afb8e5ae99065df9
-ms.sourcegitcommit: 4597964eba08b7e0584d2b275cc33a370c25e027
+ms.openlocfilehash: be94a508a10fdbbed194fb71e28fd7c3b72a080c
+ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37341698"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38989478"
 ---
 # <a name="examine-the-video-indexer-output-produced-by-v2-api"></a>A v2 API által előállított Videóindexelő kimenetének vizsgálata
 
@@ -126,6 +126,7 @@ Ez a szakasz az insights összegzését jeleníti meg.
 |indexingPreset|A készletet, a videó indexelésére használja.|
 |streamingPreset|A készlet tesz közzé a videót.|
 |linguisticModelId|A videó lefényképezze használt CRIS modell.|
+|statisztika | További információkért lásd: [statisztika](#statistics).|
 
 ```json
 {

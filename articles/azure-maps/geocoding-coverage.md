@@ -1,27 +1,27 @@
 ---
-title: A Maps-Azure geokódolás érvényességének |} Microsoft Docs
-description: További tudnivalók a Maps-Azure Geokódolás érvényességének
-author: kgremban
-ms.author: kgremban
+title: Az Azure Maps-geokódolás lefedettsége |} A Microsoft Docs
+description: További tudnivalók az Azure Maps-Geokódolás lefedettsége
+author: dsk-2015
+ms.author: dkshir
 ms.date: 05/07/2018
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 6602453abd02bf91b135980b4d2c7f99ba60c236
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: d7c1eaa26edef830ca156eef943fcb256d737d77
+ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34600289"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38989877"
 ---
-# <a name="azure-maps-geocoding-coverage"></a>Az Azure Maps geokódolás érvényességének
+# <a name="azure-maps-geocoding-coverage"></a>Az Azure Maps geokódolás lefedettsége
 
-Egy olyan hellyel, amely Azure Maps keresésekor a keresési szolgáltatás időt vesz igénybe a keresési feltételeket, és visszaadja a szélességi és hosszúsági koordinátákkal geokódolás nevezett folyamat. Leképezések azonban nem rendelkezik azonos szintű információkat és az összes régiók és országok pontosságát. Ez a cikk segítségével meghatározhatja, hogy milyen típusú helyeket megbízhatóan kereshet minden régióban. 
+Az Azure Maps hely keresése, ha a keresési szolgáltatás a keresési kifejezéseket lép, és adja vissza a szélességi és hosszúsági koordinátákat a geokódolás nevű folyamat. A Maps azonban nem rendelkezik azonos szintű információkat és az összes régió és ország pontossága. Ez a cikk segítségével határozhatja meg, milyen típusú helyeket megbízhatóan kereshet az egyes régiókban. 
 
 ## <a name="americas"></a>Amerika
 
-| Régió             | Cím pontok | Ház számok | Utca szint | Város szint | Bizonyos elemek kikeresése |
+| Régió             | Cím pontok | Ház számok | Utca szint | Város szint | Hasznos helyek |
 |-----------------------------------------------------|:---------------:|:--------------:|:------------:|:----------:|:------------------:|
 | Anguilla                                            |                 |                |              |      ✓     |          ✓         |
 | Antarktisz                                          |                 |                |              |      ✓     |          ✓         |
@@ -77,12 +77,12 @@ Egy olyan hellyel, amely Azure Maps keresésekor a keresési szolgáltatás idő
 | Amerikai Egyesült Államok                            |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Uruguay                                             |                 |        ✓       |       ✓      |      ✓     |          ✓         |
 | Venezuela                                           |                 |                |       ✓      |      ✓     |          ✓         |
-| Virgin-szigetek - brit                            |                 |                |              |      ✓     |          ✓         |
-| Virgin-szigetek - Amerikai Egyesült Államok                      |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
+| Virgin-szigetek – brit                            |                 |                |              |      ✓     |          ✓         |
+| Virgin-szigetek – Amerikai Egyesült Államok                      |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 
 ## <a name="asia-pacific"></a>Ázsia és a Csendes-óceáni térség
 
-| Régió             | Cím pontok |Ház számok | Utca szint | Város szint | Bizonyos elemek kikeresése |
+| Régió             | Cím pontok |Ház számok | Utca szint | Város szint | Hasznos helyek |
 |-----------------------------------------------------|:---------------:|:--------------:|:------------:|:----------:|:------------------:|
 | Amerikai Szamoa                                      |                 |                |       ✓      |      ✓     |          ✓         |
 | Ausztrália                                           |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
@@ -99,7 +99,7 @@ Egy olyan hellyel, amely Azure Maps keresésekor a keresési szolgáltatás idő
 | Fidzsi |                 |                |              |      ✓     |          ✓         |
 | Francia Polinézia                                    |                 |                |              |      ✓     |          ✓         |
 | Heard-sziget és McDonald-szigetek                   |                 |                |              |      ✓     |          ✓         |
-| Hongkong                                           |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
+| Hongkong KKT                                           |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Indonézia                                           |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Japán                                               |                 |                |              |      ✓     |          ✓         |
 | Kiribati                                            |                 |                |              |      ✓     |          ✓         |
@@ -142,7 +142,7 @@ Egy olyan hellyel, amely Azure Maps keresésekor a keresési szolgáltatás idő
 
 ## <a name="europe"></a>Európa
 
-| Régió             | Cím pontok |Ház számok | Utca szint | Város szint | Bizonyos elemek kikeresése |
+| Régió             | Cím pontok |Ház számok | Utca szint | Város szint | Hasznos helyek |
 |-----------------------------------------------------|:---------------:|:--------------:|:------------:|:----------:|:------------------:|
 | Albánia                                             |                 |                |       ✓      |      ✓     |          ✓         |
 | Andorra                                             |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
@@ -169,7 +169,7 @@ Egy olyan hellyel, amely Azure Maps keresésekor a keresési szolgáltatás idő
 | Guernsey                                            |                 |        ✓       |       ✓      |      ✓     |          ✓         |
 | Magyarország                                             |                 |        ✓       |       ✓      |      ✓     |          ✓         |
 | Izland                                             |                 |        ✓       |       ✓      |      ✓     |          ✓         |
-| Írországban (Köztársaság)                               |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
+| Írország (Köztársaság)                               |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Man-sziget                                         |                 |        ✓       |       ✓      |      ✓     |          ✓         |
 | Olaszország                                               |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Jan Mayen                                           |        ✓        |                |              |      ✓     |          ✓         |
@@ -211,7 +211,7 @@ Egy olyan hellyel, amely Azure Maps keresésekor a keresési szolgáltatás idő
 
 ## <a name="middle-east-and-africa"></a>Közel-Kelet és Afrika
 
-| Régió             | Cím pontok |Ház számok | Utca szint | Város szint | Bizonyos elemek kikeresése |
+| Régió             | Cím pontok |Ház számok | Utca szint | Város szint | Hasznos helyek |
 |-----------------------------------------------------|:---------------:|:--------------:|:------------:|:----------:|:------------------:|
 | Afganisztán                                         |                 |                |              |      ✓     |          ✓         |
 | Algéria                                             |                 |                |       ✓      |      ✓     |          ✓         |
@@ -231,7 +231,7 @@ Egy olyan hellyel, amely Azure Maps keresésekor a keresési szolgáltatás idő
 | Kongói Demokratikus Köztársaság                        |                 |                |       ✓      |      ✓     |          ✓         |
 | Dzsibuti                                            |                 |                |       ✓      |      ✓     |          ✓         |
 | Egyiptom                                               |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
-| Egyenlítői guineai, Köztársaság                      |                 |                |       ✓      |      ✓     |          ✓         |
+| Egyenlítői-Guinea, Köztársaság                      |                 |                |       ✓      |      ✓     |          ✓         |
 | Eritrea                                             |                 |                |       ✓      |      ✓     |          ✓         |
 | Etiópia                                            |                 |                |       ✓      |      ✓     |          ✓         |
 | Francia Déli Területek|                 |                |              |      ✓     |          ✓         |
@@ -279,13 +279,13 @@ Egy olyan hellyel, amely Azure Maps keresésekor a keresési szolgáltatás idő
 | Szudán                                               |                 |                |       ✓      |      ✓     |          ✓         |
 | Szváziföld                                           |                 |                |       ✓      |      ✓     |          ✓         |
 | Szíria                                               |                 |                |              |      ✓     |          ✓         |
-| São Tomé és Príncipe, Demokratikus Köztársaság       |                 |                |       ✓      |      ✓     |          ✓         |
+| Sao Tome és Principe, Demokratikus Köztársaság       |                 |                |       ✓      |      ✓     |          ✓         |
 | Tanzánia                                            |                 |                |       ✓      |      ✓     |          ✓         |
 | Togo                                                |                 |                |       ✓      |      ✓     |          ✓         |
 | Tunézia                                             |                 |                |       ✓      |      ✓     |          ✓         |
 | Uganda                                              |                 |                |       ✓      |      ✓     |          ✓         |
 | Egyesült Arab Emírségek                                |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
-| Nyugati                                           |                 |                |              |      ✓     |          ✓         |
+| Ciszjordániai                                           |                 |                |              |      ✓     |          ✓         |
 | Jemen                                               |                 |                |              |      ✓     |          ✓         |
 | Zambia                                              |                 |                |       ✓      |      ✓     |          ✓         |
 | Zimbabwe                                            |                 |                |       ✓      |      ✓     |          ✓         |
@@ -294,7 +294,7 @@ Egy olyan hellyel, amely Azure Maps keresésekor a keresési szolgáltatás idő
 
 ## <a name="next-steps"></a>További lépések
 
-Azure-leképezések geokódolás kapcsolatos további információkért tekintse meg a [keresési](https://docs.microsoft.com/rest/api/maps/search) lapok hivatkoznak.
+Az Azure Maps geokódolás kapcsolatos további információkért lásd: a [keresési](https://docs.microsoft.com/rest/api/maps/search) oldalak hivatkozhat.
 
-További tudnivalók a [a Maps érvényességének területek forgalom szolgáltatás](traffic-coverage.md). 
+További információ a [lefedettség területek a Maps szolgáltatás forgalom](traffic-coverage.md). 
 

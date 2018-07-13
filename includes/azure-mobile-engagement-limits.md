@@ -1,11 +1,11 @@
 | Erőforrás | Felső korlát |
 | --- | --- |
-| Alkalmazás gyűjtemény felhasználók |5 alkalmazás gyűjteményenként |
-| Adatpont átlagos |Aktív felhasználó/napi 200 |
-| Átlagos App-Info beállítása |Aktív felhasználó/naponta 50 |
-| Átlagos leküldött üzenetek |Aktív felhasználó/naponta 20 |
-| Szegmensek |alkalmazásonkénti 100 |
-| Szegmensenkénti feltételek |10 |
-| Aktív leküldéses kampányokra |alkalmazásonkénti 50 |
-| Teljes leküldéses kampányokra (tartalmazza a aktív & Befejezve) |alkalmazásonkénti 1000 |
+| Katalógusának felhasználói |Alkalmazás gyűjteményenként 5 |
+| Átlagos adatpont |200 / aktív felhasználó/nap |
+| Átlagos alkalmazásadat-beállítása |Aktív felhasználói naponta 50 |
+| Átlagos leküldéses üzenet |Aktív felhasználói naponta 20 |
+| Szegmensek |100 alkalmazásonként |
+| Feltételek szegmensenként |10 |
+| Aktív leküldéses kampány |50 alkalmazásonként |
+| Teljes leküldéses kampányok (tartalmazza a aktív & Befejezve) |1000 alkalmazásonként |
 

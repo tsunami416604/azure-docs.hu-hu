@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 12/15/2017
 ms.author: daveba
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: fc7c5b4ab025666fc7fa1d9073198ec90d8e71c3
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 59e74ee586a28935b5fde4b5c1089264e98e5087
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38611027"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39003095"
 ---
 # <a name="use-a-linux-vm-managed-service-identity-to-access-azure-storage-via-a-sas-credential"></a>Azure Storage elérése SAS-hitelesítő adatot keresztül egy Linux rendszerű virtuális gépek Felügyeltszolgáltatás-identitás segítségével
 
@@ -53,7 +53,7 @@ Ebben az oktatóanyagban létrehozunk egy új Linux rendszerű virtuális Gépet
 2. Válassza a **Számítás**, majd az **Ubuntu Server 16.04 LTS** elemet.
 3. Adja meg a virtuális gép adatait. A **hitelesítési típus**válassza **nyilvános SSH-kulcs** vagy **jelszó**. A létrehozott hitelesítő adatok lehetővé teszik jelentkezzen be a virtuális Gépre.
 
-    ![Kép ALT szövege](~/articles/active-directory/media/msi-tutorial-linux-vm-access-arm/msi-linux-vm.png)
+    ![Kép ALT szövege](../managed-service-identity/media/msi-tutorial-linux-vm-access-arm/msi-linux-vm.png)
 
 4. Válasszon egy **előfizetés** a virtuális gép a legördülő listában.
 5. Jelölje be egy új **erőforráscsoport** szeretne létrehozni, válassza ki a virtuális gép **hozzon létre új**. Amikor végzett, kattintson az **OK** gombra.
@@ -68,11 +68,11 @@ A virtuális gép MSI lehetővé teszi hozzáférési tokenek beszerzése az Azu
 3. Regisztráljon, és az MSI engedélyezéséhez, válassza ki a **Igen**, ha szeretné letiltani, válassza a nem.
 4. Győződjön meg arról, hogy kattintson **mentése** a konfiguráció mentéséhez.
 
-    ![Kép ALT szövege](~/articles/active-directory/media/msi-tutorial-linux-vm-access-arm/msi-linux-extension.png)
+    ![Kép ALT szövege](../managed-service-identity/media/msi-tutorial-linux-vm-access-arm/msi-linux-extension.png)
 
 5. Ha ellenőrizni szeretné milyen kiterjesztésű vannak-e a virtuális gépre, kattintson a **bővítmények**. Ha az MSI engedélyezve van, a **ManagedIdentityExtensionforLinux** megjelenik a listában.
 
-    ![Kép ALT szövege](~/articles/active-directory/media/msi-tutorial-linux-vm-access-arm/msi-extension-value.png)
+    ![Kép ALT szövege](../managed-service-identity/media/msi-tutorial-linux-vm-access-arm/msi-extension-value.png)
 
 ## <a name="create-a-storage-account"></a>Tárfiók létrehozása 
 

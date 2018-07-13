@@ -1,9 +1,9 @@
 
-1. Az a [Azure-portálon](https://portal.azure.com/), jelölje be **összes tallózása** > **alkalmazásszolgáltatások**. Ezután válassza ki a Mobile Apps háttér. 
-2. A **beállítások**, jelölje be **leküldéses**. Válassza ki **konfigurálása leküldéses értesítéseket kezelő szolgáltatása**.
-2. Ugrás a **Google (GCM)**. Adja meg a FCM korábbi kiszolgáló kulcsot a Firebase konzolból beszerzett, majd válassza ki **mentése**.
+1. Az a [az Azure portal](https://portal.azure.com/)válassza **összes tallózása** > **App Services**. Ezután válassza ki a Mobile Apps háttérrendszerre. 
+2. A **beállítások**válassza **leküldéses**. Válassza ki **leküldéses értesítési szolgáltatások konfigurálása**.
+2. Lépjen a **Google (GCM)**. Adja meg a Firebase-konzolból beszerzett FCM korábbi kiszolgáló kulcsot, és válassza ki **mentése**.
 
-A szolgáltatás konfigurálva van az Firebase Cloud Messaging dolgozni.
+A szolgáltatás most már konfigurálva van a Firebase Cloud Messaging.
 
 <!-- URLs. -->
 

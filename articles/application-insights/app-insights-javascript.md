@@ -10,14 +10,15 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: conceptual
 ms.date: 03/14/2017
 ms.author: mbullwin
-ms.openlocfilehash: c3c5a3029916b91b65a5bd0f6efa5c83f5dfcb66
-ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
-ms.translationtype: HT
+ms.openlocfilehash: 70269fc71fcb2ef9158b50d3bb281097abee0740
+ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/11/2018
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38991329"
 ---
 # <a name="application-insights-for-web-pages"></a>Application Insights weblapokhoz
 Megismerheti a weblap vagy alkalmazás teljesítményét és használatát. Ha a Visual Studio [Application Insightst](app-insights-overview.md) a lap szkriptjeihez adja, megkapja az oldalbetöltések és AJAX-hívások időzítését, a böngészőkivételek és az AJAX-hibák számát és részleteit, valamint a felhasználók és munkamenetek számát. Ezek mindegyike szegmentálható lap, ügyfél operációs rendszere és böngészőverziója, földrajzi hely és más dimenziók alapján. Beállíthat riasztásokat a hibaszámokról és a lassú lapbetöltésekről. Ha nyomkövetési hívásokat szúr be a JavaScript-kódba, nyomon követheti a webalkalmazás különböző szolgáltatásainak használati módját is.
@@ -56,7 +57,7 @@ A Gyors üzembe helyezés területen kérje le a weblapok szkriptjét:
 
 ```HTML
 <!-- 
-To collect end-user usage analytics about your application, 
+To collect user behavior analytics about your application, 
 insert the following script into each page you want to track.
 Place this code immediately before the closing </head> tag,
 and before any other scripts. Your first data will appear 
@@ -73,7 +74,7 @@ window.appInsights=appInsights,appInsights.queue&&0===appInsights.queue.length&&
 </script>
 ```
 
-Szúrja be a szkriptet minden olyan lap `</head>` címkéje elé, amelyet nyomon szeretne követni. Ha a webhelye mesterlappal rendelkezik, ide helyezheti a szkriptet. Például:
+Szúrja be a szkriptet minden olyan lap `</head>` címkéje elé, amelyet nyomon szeretne követni. Ha a webhelye mesterlappal rendelkezik, ide helyezheti a szkriptet. Példa:
 
 * Egy ASP.NET MVC-projektben a következő helyre helyezné a szkriptet: `View\Shared\_Layout.cshtml`
 * Egy SharePoint-helyen, a vezérlőpulton nyissa meg a [Hely beállításai / Mesterlap](app-insights-sharepoint.md) elemet.
@@ -126,7 +127,7 @@ Nyissa meg a Böngésző panelt a felhasználók böngészőinek összesített t
 
 ![A portal.azure.com címen nyissa meg az alkalmazás erőforrását, és kattintson a Beállítások, Böngésző lehetőségre](./media/app-insights-javascript/03.png)
 
-*Még nincsenek adatok? Kattintson a **Frissítés** gombra a lap tetején. Még mindig semmi? Lásd: [Hibaelhárítás](app-insights-troubleshoot-faq.md).*
+Még nincsenek adatok? Kattintson a **Frissítés** gombra a lap tetején. Még mindig semmi? Lásd: [Hibaelhárítás](app-insights-troubleshoot-faq.md).
 
 A Böngésző panel [Metrikaböngésző panel](app-insights-metrics-explorer.md) előre beállított szűrőkkel és diagramkijelölésekkel. Ha szeretné, szerkesztheti az időtartomány, a szűrők és a diagram konfigurációját, és kedvencként mentheti az eredményt. Kattintson az **Alapértelmezések visszaállítása** gombra, hogy visszaállítsa az eredeti panelkonfigurációt.
 
@@ -235,7 +236,7 @@ A lap neve ugyanazokat a karaktereket tartalmazhatja, mint egy URL-cím, de a re
 ## <a name="usage-tracking"></a>Használatkövetés
 Meg szeretné tudni, hogyan használják a felhasználók az alkalmazását?
 
-* [Információk a használatkövetésről](app-insights-web-track-usage.md)
+* [Ismerje meg a felhasználói viselkedés elemzési eszközök](app-insights-web-track-usage.md)
 * [Információk az egyéni eseményekről és a mérőszám API-ról](app-insights-api-custom-events-metrics.md).
 
 ## <a name="video"></a>Videó

@@ -12,11 +12,11 @@
 |---------------------|-------|-------|-------|-------|-------|-------|-------|
 | Lemezméret           | 32 GB | 64 GB | 128 GB| 512 GB            | 1024 GB (1 TB)    | 2048 GB (2 TB)    | 4095 GB (4 TB)    | 
 | IOPS-érték lemezenként       | 120   | 240   | 500   | 2300              | 5000              | 7500              | 7500              | 
-| Adattovábbítás lemezenként | 25 MB/s | 50 MB/s  | 100 MB/s | 150 MB/sec | 200 MB/s | 250 MB/s | 250 MB/s |
+| Adattovábbítás lemezenként | 25 MB/mp | 50 MB/mp  | 100 MB/mp | 150 MB/mp | 200 MB/mp | 250 MB/mp | 250 MB/mp |
 
 **Prémium felügyelt virtuálisgép-lemezek: virtuális gépenkénti korlátok**
 
 | Erőforrás | Alapértelmezett korlát |
 | --- | --- |
-| Virtuális gépenkénti maximális IOPS |80000 IOPS a GS5 virtuális Géphez |
-| Virtuális gépenkénti maximális átviteli sebesség |A GS5 virtuális Géphez 2000 MB/s |
+| Virtuális gépenkénti maximális IOPS |80 000 IOPS GS5 virtuális géppel |
+| Virtuális gépenkénti maximális átviteli sebesség |2000 MB/s GS5 virtuális géppel |

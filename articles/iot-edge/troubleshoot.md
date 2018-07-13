@@ -8,12 +8,12 @@ ms.date: 06/26/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 4862e3aa976287512fd69fdfe9295e3f3328d5a7
-ms.sourcegitcommit: 11321f26df5fb047dac5d15e0435fce6c4fde663
+ms.openlocfilehash: ecd19acdeba57a29a28187d42783bbf146095190
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37887776"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39001905"
 ---
 # <a name="common-issues-and-resolutions-for-azure-iot-edge"></a>Az Azure IoT Edge gyakori problémái és azok megoldásai
 
@@ -107,19 +107,43 @@ Miután az IoT Edge biztonsági démon fut, tekintse meg a naplókat a tárolók
 
 ### <a name="view-the-messages-going-through-the-edge-hub"></a>Az Edge hubon áthaladó üzeneteket megtekintése
 
-Megtekintheti az Edge hubon áthaladó üzeneteket, és gyűjtsön információt a részletes naplók eszköztulajdonságok frissítéseiről a edgeAgent és edgeHub futtatókörnyezet tárolóiból származó. Ezek a tárolók a részletes naplók bekapcsolásához állítsa be a `RuntimeLogLevel` környezeti változót: 
+Megtekintheti az Edge hubon áthaladó üzeneteket, és gyűjtsön információt a részletes naplók eszköztulajdonságok frissítéseiről a edgeAgent és edgeHub futtatókörnyezet tárolóiból származó. Ezek a tárolók a részletes naplók bekapcsolásához állítsa `RuntimeLogLevel` a yaml-konfigurációs fájlban. A fájl megnyitásához:
 
 Linux:
-    
-   ```cmd
-   export RuntimeLogLevel="debug"
+
+   ```bash
+   sudo nano /etc/iotedge/config.yaml
    ```
-    
+
 Windows rendszeren:
-    
-   ```powershell
-   [Environment]::SetEnvironmentVariable("RuntimeLogLevel", "debug")
+
+   ```cmd
+   notepad C:\ProgramData\iotedge\config.yaml
    ```
+
+Alapértelmezés szerint a `agent` elem lesz a következőhöz hasonló:
+
+   ```yaml
+   agent:
+     name: edgeAgent
+     type: docker
+     env: {}
+     config:
+       image: mcr.microsoft.com/azureiotedge-agent:1.0
+       auth: {}
+   ```
+
+Cserélje le `env: {}` együtt:
+
+> [!WARNING]
+> YAML-fájlok nem lehetnek identation lapokon. Használja helyette a 2 szóközöket.
+
+   ```yaml
+   env:
+     RuntimeLogLevel: debug
+   ```
+
+Mentse a fájlt, és indítsa újra a IoT Edge-kezelő.
 
 Az IoT Hub és az IoT Edge-eszközök között küldött üzeneteket is ellenőrizheti. Ezeket az üzeneteket a Visual Studio Code [Azure IoT-eszközkészlet](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit) bővítményével tekintheti meg. További útmutatásért lásd [az Azure IoT-fejlesztések esetén hasznos eszközt](https://blogs.msdn.microsoft.com/iotdev/2017/09/01/handy-tool-when-you-develop-with-azure-iot/).
 

@@ -9,23 +9,23 @@ ms.date: 02/26/2018
 ms.author: sethm
 ms.custom: include file
 ms.openlocfilehash: ab4c5b98ed9f6fcc8c271797db2d81dcc7ec4449
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/05/2018
-ms.locfileid: "29717030"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38755814"
 ---
-A következő táblázat felsorolja a kvóták, és korlátozza adott [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/). Az Event Hubs árazással kapcsolatos információkért lásd: [Event Hubs-díjszabás](https://azure.microsoft.com/pricing/details/event-hubs/).
+A következő táblázat felsorolja a kvóták, és korlátozza az adott [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/). További információ az Event Hubs-díjszabás: [Event Hubs-díjszabás](https://azure.microsoft.com/pricing/details/event-hubs/).
 
 | Korlát | Hatókör | Megjegyzések | Érték |
 | --- | --- | --- | --- | --- |
-| Az event hubs névtér másodpercenkénti száma |Névtér |A program elutasítja későbbi kérelmeket egy új eseményközpont létrehozásához. |10 |
-| Az event hubs egy partíciók száma |Entitás |- |32 |
-| Az event hubs egy fogyasztói csoportok száma |Entitás |- |20 |
-| Névtér AMQP-kapcsolatok száma |Névtér |További kapcsolatokat későbbi kérelmek vissza kell utasítani, és kivételt megkapta a hívó kód. |5000 |
+| Az event hubs-névterenként száma |Névtér |Egy új eseményközpont létrehozása a későbbi kérelmeket a rendszer elutasítja. |10 |
+| A partíciók száma az eseményközpont száma |Entitás |- |32 |
+| Egy eseményközpont fogyasztói csoportok száma |Entitás |- |20 |
+| Az AMQP-kapcsolatok száma névterenként száma |Névtér |További kapcsolatok későbbi kérelmeket a rendszer elutasítja, és a egy kivételt a hívó kód által fogadott. |5000 |
 | Az Event Hubs esemény maximális mérete|Entitás |- |256 KB |
-| Az eseményközpont neveként maximális mérete |Entitás |- |50 karakter hosszú lehet |
-| Nem epoch fogadók egyes fogyasztói csoportok száma |Entitás |- |5 |
-| Az eseményadatok maximális megőrzési időtartam |Entitás |- |1-7 nap |
-| Kapacitásegységek maximális száma |Névtér |Az átviteli egység túllépése okozza az adatokat, hogy lehet halmozódni és állít elő, egy  **[ServerBusyException](/dotnet/api/microsoft.servicebus.messaging.serverbusyexception)**. Átviteli egységek a szokásos nagyobb számú kérhet bejelentés réteghez egy [támogatási kérelem](/azure/azure-supportability/how-to-create-azure-support-request). [További átviteli egységek](../articles/event-hubs/event-hubs-auto-inflate.md) véglegesített beszerzési alapon 20 blokkok érhetők el. |20 |
-| Egy névtér engedélyezési szabályok száma |Névtér|A program elutasítja az engedélyezési szabályok létrehozása későbbi kérelmeket.|12 |
+| Maximális mérete egy eseményközpont neve |Entitás |- |50 karakter hosszú lehet |
+| Fogyasztói csoportok szerinti nem alapidőpont fogadók száma |Entitás |- |5 |
+| Az esemény adatok maximális megőrzési időtartam |Entitás |- |1 – 7 nap |
+| Kapacitásegységek maximális száma |Névtér |Az átviteli egység túllépő esetén az szabályozottan az adatok, és létrehoz egy  **[ServerBusyException](/dotnet/api/microsoft.servicebus.messaging.serverbusyexception)**. Több standard kapacitásegység is kérhető bejelentés réteghez egy [támogatási kérelem](/azure/azure-supportability/how-to-create-azure-support-request). [További átviteli egységek](../articles/event-hubs/event-hubs-auto-inflate.md) blokkok 20 vállalt vásárlási alapon érhetők el. |20 |
+| Az engedélyezési szabályok névterenként száma |Névtér|Engedélyezési szabály létrehozása a későbbi kérelmeket a rendszer elutasítja.|12 |

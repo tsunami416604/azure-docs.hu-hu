@@ -1,6 +1,6 @@
 ---
-title: Bing webes keresés API Azure országokból és nyelvek támogatott |} Microsoft Docs
-description: Megtudhatja, mely országokból és a nyelv által támogatott, a Bing webes keresés API.
+title: A Bing Web Search API az Azure-ban támogatott nyelvek és országok/régiók |} A Microsoft Docs
+description: Ismerje meg, hogy mely országok/régiók és nyelvek a Bing Web Search API által támogatott.
 services: cognitive-services
 author: v-jerkin
 manager: jhubbard
@@ -9,27 +9,27 @@ ms.component: bing-web-search
 ms.topic: article
 ms.date: 10/06/2017
 ms.author: v-jerkin
-ms.openlocfilehash: 7b62c4a4feb7144662a8fe4d692f11f1efe5db1b
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: e1994ddf3bf71d01adeac4ff8688bdd1e6eac660
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35347155"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39001718"
 ---
-# <a name="bing-web-search-countries-and-languages"></a>Bing webes keresés országokból és nyelvek
+# <a name="bing-web-search-countriesregions-and-languages"></a>Bing – internetes keresés országok/régiók és nyelvek
 
-A webes Bing keresési API támogatja a több mint három tucat országok, számos egynél több nyelv. Egy ország megadó lekérdezés szolgál elsősorban az adott ország érdeklődések alapján keresési eredmények szűkítéséhez. Emellett az eredmények Bing mutató hivatkozásokat is tartalmaznak, és ezeket a hivatkozásokat is localize a Bing felhasználói élményt a megadott ország vagy nyelv szerint.
+A Bing Web Search API több mint három tucat országok/régiók, számos, az egynél több nyelvet támogat. Adjon meg egy adott ország/régió lekérdezéssel elsősorban az ország/régió kimutatott érdeklődések alapján találatok szűkítése szolgálja ki. Ezenkívül az eredmények Bing mutató hivatkozásokat is tartalmazhat, és ezeket a hivatkozásokat is honosítani a Bing felhasználói élmény az adott ország/régió vagy nyelv szerint.
 
-Megadhat egy ország használatával a `cc` lekérdezési paraméter. Ha megad egy ország, is meg kell egy vagy több nyelvkódjait használatával a `Accept-Language` HTTP-fejléc. A támogatott nyelvek változhat ország; a piacon tábla minden egyes ország, számukra.
+Megadhatja, hogy egy ország/régió használata a `cc` lekérdezési paraméter. Ha megad egy adott ország/régió, meg kell adnia egy vagy több nyelvi kódot használ a `Accept-Language` HTTP-fejléc. Ország/régió; szerint változik a támogatott nyelvek minden ország/régió, a piacot táblázatban azok jellegűek.
 
-Azt is megteheti, előfordulhat, hogy megadja a piaci használatával a `mkt` lekérdezési paraméter és a kódot a **piacok** tábla. A piacon egyidejűleg megadásával határozza meg, egy ország és a kívánt nyelvet. A `setLang` lekérdezésparaméter ebben az esetben előfordulhat, hogy állítható be egy nyelvi kódot; általában ez a megadott azonos nyelv `mkt` kivéve, ha a felhasználó inkább tekintse meg a Bing más nyelven.
+Másik lehetőségként megadhatja azt a piaci használatával a `mkt` lekérdezési paraméter és a egy kódot a a **piacok** tábla. Egy adott ország/régió és a egy előnyben részesített nyelvi egyidejűleg adja meg a piacon adja meg. A `setLang` lekérdezési paraméter ebben az esetben előfordulhat, hogy állítható be olyan nyelvi kód; általában ez a megadott nyelvre `mkt` , kivéve, ha a felhasználó, tekintse meg a Bing más nyelvet részesíti előnyben.
 
 ## <a name="countries"></a>Országok
 
-|Ország|Kód|
+|Ország/régió|Kód|
 |-------|----|
 |Argentína|AR|
-|Ausztrália|AU|
+|Ausztrália|AUSZTRÁLIA|
 |Ausztria|AT|
 |Belgium|LEHET|
 |Brazília|BR|
@@ -39,23 +39,23 @@ Azt is megteheti, előfordulhat, hogy megadja a piaci használatával a `mkt` le
 |Finnország|FI|
 |Franciaország|JK|
 |Németország|NÉMETORSZÁG|
-|Hongkong|HK|
-|India|IN|
+|Hongkong KKT|HK|
+|India|INDIA|
 |Indonézia|ID (Azonosító)|
 |Olaszország|IT|
 |Japán|JP|
-|Korea|KR|
-|Malajzia|A|
+|Korea|KOREA|
+|Malajzia|SAJÁT|
 |Mexikó|MX|
 |Hollandia|NL|
 |Új-Zéland|NZ|
 |Norvégia|NEM|
 |Kína|CN|
 |Lengyelország|PL|
-|Portugália|PT|
+|Portugália|CSENDES-ÓCEÁNI IDŐ|
 |Fülöp-szigetek|PH|
-|Oroszország|RU|
-|Szaúd-Arábia|RENDSZERGAZDAI (SA)|
+|Oroszország|KÉRELEMEGYSÉG|
+|Szaúd-Arábia|SA|
 |Dél-Afrika|ZA|
 |Spanyolország|ES|
 |Svédország|HASZNÁLATA|
@@ -68,22 +68,22 @@ Azt is megteheti, előfordulhat, hogy megadja a piaci használatával a `mkt` le
 
 ## <a name="markets"></a>Piacok
 
-|Ország|Nyelv|Piaci kódot|
+|Ország/régió|Nyelv|Piaci kód|
 |-------|--------|-----------|
 |Argentína|spanyol|es-AR|
-|Ausztrália|Angol|en-AU|
-|Ausztria|német|de-AT|
+|Ausztrália|Angol|en-Ausztrália|
+|Ausztria|német|Németország-AT|
 |Belgium|holland|nl-BE|
-|Belgium|francia|FR-kell|
+|Belgium|francia|FR-lehet|
 |Brazília|portugál|pt-BR|
-|Kanada|Angol|en-Kanada|
-|Kanada|francia|FR-Kanada|
+|Kanada|Angol|en-hitelesítésszolgáltató|
+|Kanada|francia|FR-hitelesítésszolgáltató|
 |Chile|spanyol|es-CL|
 |Dánia|dán|da-DK|
 |Finnország|finn|fi-FI|
 |Franciaország|francia|FR-FR|
 |Németország|német|de-DE|
-|Hongkong|Kínai (hagyományos)|zh-HK|
+|Hongkong KKT|Kínai (hagyományos)|zh-HK|
 |India|Angol|en-IN|
 |Indonézia|Angol|en-azonosító|
 |Olaszország|olasz|it-IT|
@@ -104,9 +104,9 @@ Azt is megteheti, előfordulhat, hogy megadja a piaci használatával a `mkt` le
 |Spanyolország|spanyol|es-ES|
 |Svédország|svéd|SV-SE|
 |Svájc|francia|FR-CH|
-|Svájc|német|de-CH|
+|Svájc|német|Németország – CH|
 |Tajvan|Kínai (hagyományos)|zh-TW|
 |Törökország|török|tr-TR|
 |Egyesült Királyság|Angol|en-GB|
 |Egyesült Államok|Angol|hu-HU|
-|Egyesült Államok|spanyol|es-US|
+|Egyesült Államok|spanyol|es-USA|

@@ -10,13 +10,13 @@ ms.service: dms
 ms.workload: data-services
 ms.custom: mvc, tutorial
 ms.topic: article
-ms.date: 05/07/2018
-ms.openlocfilehash: be007fe06f7b3354dc88e319a76715d2e94eb3fb
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
-ms.translationtype: HT
+ms.date: 07/12/2018
+ms.openlocfilehash: c911b096af6662e11afb4c4262b92c239d252c36
+ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
+ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 07/12/2018
-ms.locfileid: "38971488"
+ms.locfileid: "38990227"
 ---
 # <a name="migrate-sql-server-to-azure-sql-database-managed-instance-using-dms"></a>SQL Server migrálása az Azure SQL Database felügyelt példány DMS használatával
 Az Azure Database Migration Service segítségével az adatbázisokat át egy helyszíni SQL Server-példánynak egy [Azure SQL Database felügyelt példányába](../sql-database/sql-database-managed-instance.md). A további módszereket is néhány manuális beavatkozást igénylő, tekintse meg a cikket [SQL Server-példány migrálása az Azure SQL Database felügyelt példányába történő](../sql-database/sql-database-managed-instance-migrate.md).

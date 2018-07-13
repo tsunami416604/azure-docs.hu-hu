@@ -1,6 +1,6 @@
 ---
-title: Hatékony lista lekérdezések - Azure Batch kialakítása |} Microsoft Docs
-description: Teljesítmény növeléséhez a lekérdezések szűrést, ha a kért információ kötegelt erőforrásokhoz, mint a gyűjtők, feladatok, feladatok, és a számítási csomópontok.
+title: Hatékony listázó lekérdezések – Azure Batch tervezése |} A Microsoft Docs
+description: Teljesítmény növeléséhez a szűrést a lekérdezéseket, ha a Batch-erőforrásokat, például a készletek, feladatok, tevékenységek információkat kér, és a számítási csomópontokon.
 services: batch
 documentationcenter: .net
 author: dlepow
@@ -12,33 +12,30 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: big-compute
-ms.date: 08/02/2017
+ms.date: 06/26/2018
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 950e422b3076e5abd5db6dd0ac452fa1c2d500d0
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.openlocfilehash: 6bc31e8541797930583e41fb6efbb6473cd4b894
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37129268"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39004455"
 ---
-# <a name="create-queries-to-list-batch-resources-efficiently"></a>Létrehozhat olyan lekérdezéseket, a lista kötegelt erőforrásokhoz hatékonyan
+# <a name="create-queries-to-list-batch-resources-efficiently"></a>Hozzon létre hatékony lekérdezések Batch-erőforrások listája
 
-Itt megtudhatja, hogyan és számítási csomópont-lekérdezés feladatok, feladatok, a szolgáltatás által visszaadott adatokat csökkentésével az Azure Batch-alkalmazások teljesítményének növelése a [Batch .NET] [ api_net]könyvtár.
+Itt megtudhatja, hogyan feladatok, tevékenységek, számítási csomópontok és más erőforrások lekérdezheti, ha a szolgáltatás által visszaadott adatmennyiség csökkentésével az Azure Batch-alkalmazás teljesítményének növelése érdekében a [Batch .NET] [ api_net] könyvtár.
 
-Szinte minden kötegelt alkalmazásokat kell bizonyos típusú figyelési vagy más műveletet, amely a Batch szolgáltatás gyakran rendszeres időközönként hajthat végre. Például annak megállapításához, hogy vannak-e minden fennmaradó feladatokban aszinkron feladatot, ha előbb telepítik azokra adatokat a feladat minden tevékenység. Nem sikerült meghatározni az állapotát a csomópontok a készlet, kell beolvasni az adatokat a készlet minden egyes csomópontjára. Ez a cikk azt ismerteti, hogyan a leghatékonyabb módon az ilyen lekérdezések végrehajtásához.
+Gyakorlatilag az összes Batch-alkalmazások kell valamilyen típusú, hogy milyen gyakran kérdezi le a Batch szolgáltatás rendszeres időközönként, figyelési vagy más művelet végrehajtásához. Például annak megállapításához, hogy vannak-e van hátra a feladat aszinkron tevékenységeket, be kell szereznie adatok minden tevékenység a feladat. Annak megállapításához, a készletben lévő csomópontok állapota, adatokat kell szereznie a készlet minden csomópontján. Ez a cikk bemutatja, hogyan hajthat végre ilyen-lekérdezéseket a lehető leghatékonyabb módon.
 
 > [!NOTE]
-> A Batch szolgáltatás különleges API-támogatást biztosít a számítási feladatok feladatokban közös forgatókönyv esetében. Ezek a lista lekérdezés helyett hívása a [beolvasása feladat száma] [ rest_get_task_counts] műveletet. Get feladat száma azt jelzi, hány feladatok várakoznak, fut, vagy végezze el, és hány feladatok sikeres vagy sikertelen volt. Get-feladat száma hatékonyabb, mint egy listájának lekérdezéséhez. További információkért lásd: [(előzetes verzió) állapota alapján feladat feladatok száma](batch-get-task-counts.md). 
->
-> Az beszerzése feladat száma művelet nem érhető el a Batch szolgáltatás verziókban rendszernél korábbi 2017-06-01.5.1. Ha a szolgáltatás egy régebbi verzióját használja, majd lekérdezéssel lista egy feladatot a feladatok száma helyette.
->
-> 
+> A Batch szolgáltatás speciális API-támogatást biztosít a gyakran használt esetekben számbavételi egy feladat tevékenységeit, és a Batch-készletben lévő számítási csomópontok számolását. Listalekérdezés ezek helyett meghívhatja a [beolvasása feladat száma] [ rest_get_task_counts] és [lista készlet csomópont Counts] [ rest_get_node_counts] műveletek. Ezek a műveletek még hatékonyabbak, mint listalekérdezés, de a visszaadandó több korlátozott információkat. Lásd: [feladatok száma, és a számítási csomópontok állapot szerint](batch-get-resource-counts.md). 
+
 
 ## <a name="meet-the-detaillevel"></a>A detaillevel paraméternek felel meg
-Éles kötegelt alkalmazás entitások, például a feladatok, a feladatok és a számítási csomópontok több ezer száma is. Amikor ezeket az erőforrásokat információkat kér le, potenciálisan nagy mennyiségű adatot kell "át a hálózaton" a Batch szolgáltatás az alkalmazás minden lekérdezésben. Az elemek száma és típusa, amely egy lekérdezés által visszaadott korlátozásával növelheti a sebesség, a lekérdezések, ezért az alkalmazás teljesítményét.
+Batch-alkalmazás egy éles környezetben entitások, például a feladatok, tevékenységek és csomópontok a több ezer száma is. Ezeket az erőforrásokat információt kér, amikor egy nagy mennyiségű adatot kell "adatbázisközi az átviteli" a Batch szolgáltatás az alkalmazás minden egyes lekérdezés. Azon elemek száma és a egy lekérdezés által visszaadott információk típusáról korlátozásával megnövelheti a lekérdezések sebességét, ezért az alkalmazás teljesítményét.
 
-Ez [Batch .NET] [ api_net] API kód részlet listák *minden* , amelyhez társítva van egy feladatot, valamint a feladat *összes* az egyes tevékenységek tulajdonságok:
+Ez [Batch .NET] [ api_net] API kódját kódrészlet listák *minden* , amelyhez társítva van egy feladatot, valamint a feladat *összes* mindegyik tevékenység tulajdonságai:
 
 ```csharp
 // Get a collection of all of the tasks and all of their properties for job-001
@@ -46,7 +43,7 @@ IPagedEnumerable<CloudTask> allTasks =
     batchClient.JobOperations.ListTasks("job-001");
 ```
 
-Sokkal hatékonyabb listájának lekérdezéséhez, azonban hajthatják végre a lekérdezést a "részletességi szintje" alkalmazásával. Ehhez a parancskimenetnél egy [ODATADetailLevel] [ odata] az objektum a [JobOperations.ListTasks] [ net_list_tasks] metódust. Ezt a kódrészletet adja vissza, csak az Azonosítót, a parancssor és a számítási csomópont információk tulajdonságainak befejezett feladatok:
+Sokkal hatékonyabb listalekérdezés, azonban hajthat végre egy "részletességi szint" alkalmazására a lekérdezést. Ezt az értéket egy [ODATADetailLevel] [ odata] az objektum a [JobOperations.ListTasks] [ net_list_tasks] metódust. Ez a kódrészlet csak az Azonosítót, a parancssori és a számítási csomópont információk befejezett feladatok tulajdonságait adja vissza:
 
 ```csharp
 // Configure an ODATADetailLevel specifying a subset of tasks and
@@ -60,60 +57,60 @@ IPagedEnumerable<CloudTask> completedTasks =
     batchClient.JobOperations.ListTasks("job-001", detailLevel);
 ```
 
-Az ebben a példaforgatókönyvben a feladat több ezer esetén a második lekérdezés eredményeként előálló általában visszaadott sokkal gyorsabb, mint az első. Amikor Ön listaelemet Batch .NET API-val ODATADetailLevel használatáról további információkat is megtalálható [alatt](#efficient-querying-in-batch-net).
+Ebben a példában a forgatókönyvben van-e több ezer, a feladat, a második lekérdezés eredményeinek általában visszaad sokkal gyorsabb, mint az első. A Batch .NET API-val elemek listázásakor ODATADetailLevel használatáról további információt megtalálható [alább](#efficient-querying-in-batch-net).
 
 > [!IMPORTANT]
-> Erősen ajánlott, hogy Ön *mindig* adjon meg egy ODATADetailLevel objektumot a .NET API-lista hívások maximális hatékonyság és az alkalmazás teljesítményének biztosítása érdekében. A részletességi szint Megadja, segítségével csökkentheti a Batch szolgáltatás válaszidejét, hálózathasználat javítása, és minimális memóriahasználat ügyfélalkalmazások.
+> Kifejezetten ajánljuk, hogy Ön *mindig* adja meg a maximális hatékonyság és az alkalmazás teljesítményének biztosítása a .NET API-lista hívások ODATADetailLevel objektum. A részletességi szint megadásával segítségével csökkentheti a Batch szolgáltatás válaszidőt, a hálózathasználat, és minimalizálja a memóriahasználat az ügyfélalkalmazások által.
 > 
 > 
 
 ## <a name="filter-select-and-expand"></a>Szűrés, válassza ki, és bontsa ki a
-A [Batch .NET] [ api_net] és [Batch REST] [ api_rest] API-k lehetővé teszi a listáját, és a visszaadott elemek mindkét számának csökkentése érdekében, valamint az egyes visszaadott információ mennyisége. Megadásával ehhez **szűrő**, **válasszon**, és **bontsa ki a karakterláncok** lista lekérdezések végrehajtása során.
+A [Batch .NET] [ api_net] és [Batch REST] [ api_rest] API-k lehetővé teszi, hogy mindkét listáját, a visszaadott elemek számának csökkentése, valamint az egyes visszaadott információk mennyisége. Ezt úgy teszi **szűrő**, **kiválasztása**, és **bontsa ki a karakterláncok** listázó lekérdezések végrehajtásakor.
 
 ### <a name="filter"></a>Szűrés
-A szűrési karakterláncot egy kifejezés, amely csökkenti az eredmények számát. Például egy feladat csak a futó feladatok listában, és csak a feladatok futtatásához készen áll a számítási csomópontok sorolja fel.
+A szűrési karakterláncot a rendszer egy kifejezés, amely csökkenti a visszaadott elemek száma. Például egy feladat csak a futó feladatok listája, vagy a listában csak az olyan számítási csomópontok, feladatok futtatása készen áll.
 
-* A szűrési karakterláncot tartalmaz egy vagy több kifejezést, egy kifejezés, amely egy tulajdonság neve, a kezelő és a érték áll. A tulajdonságok adhatók meg vonatkoznak minden lekérdezni, entity Type típusként, amelyek az operátorok mindegyik tulajdonság támogatott.
-* A logikai operátorok használatával több kifejezések egyesíthetők `and` és `or`.
-* Ez a példa szűrőlista karakterlánc csak a futó "leképezési" feladatok: `(state eq 'running') and startswith(id, 'renderTask')`.
+* A szűrési karakterláncot tartalmaz egy vagy több kifejezést, és a egy kifejezés, amely egy tulajdonság nevét, egy operátort és egy értékből áll. Adható meg a tulajdonságait jellemzőek minden entitás típusa, amely a lekérdezés, mivel minden egyes tulajdonság támogatott az operátorok.
+* A logikai operátorok használatával több kifejezésének kombinálható is `and` és `or`.
+* Ebben a példában szűrőlista karakterlánc csak a futó "renderelési" feladatok: `(state eq 'running') and startswith(id, 'renderTask')`.
 
 ### <a name="select"></a>Válassza ezt:
-A select karakterlánc, amely minden elemhez visszaadja a tulajdonságértéket korlátozza. A tulajdonságnevek listáját adja meg, és csak azokat a tulajdonságértékek a lekérdezés eredményében elemeket adja vissza.
+A select karakterlánc értékekre korlátozza a tulajdonságot, amely az egyes elemeket adja vissza. A tulajdonságnevek listájának megadását, és csak azokat a tulajdonságértékek adja vissza a lekérdezés eredményeit az elemek.
 
-* A select karakterlánc áll tulajdonságnevek vesszővel tagolt listája. Az entitástípus kérdez le tulajdonságok adhatja meg.
-* A példában válassza karakterlánc határozza meg, hogy a csak három tulajdonságértékek vissza kell-e az egyes feladatok: `id, state, stateTransitionTime`.
+* Jelölje be a karakterlánc áll a tulajdonságnevek vesszővel tagolt listája. Megadhatja, a tulajdonságoknál a entitástípus kérdez le.
+* Ebben a példában válassza karakterlánc Megadja, hogy csak három tulajdonságértékek vissza kell minden egyes feladathoz: `id, state, stateTransitionTime`.
 
 ### <a name="expand"></a>Kibontás
-A kibontott karakterlánc csökkenti a szükséges bizonyos adatok beszerzése API-hívások száma. Egy bővített karakterlánc használata esetén további információt az egyes elemek érhető el egyetlen API-hívással. Ahelyett, hogy az entitások, majd az a lista minden eleme az információt kérő listájának lekérése a kibontás karakterláncra ugyanazokat az információkat egyetlen API-hívással az beszerzése használhatja. Kevesebb az API-hívásokban azt jelenti, hogy a jobb teljesítmény érdekében.
+Expand karakterlánc csökkenti az egyes információk beszerzéséhez szükséges API-hívások számát. További információ az egyes elemek szerezhető be egy expand karakterlánc használata esetén egyetlen API hívással. Ahelyett, hogy az entitások, majd az a lista minden eleme az információt kérő listájának beszerzése a kibontás karakterláncra beszerzése egyetlen API hívással ugyanazokat az információkat használhatja. Kevesebb API-hívások azt jelenti, hogy a jobb teljesítmény érdekében.
 
-* A select karakterlánc hasonló, a kibontás karakterláncot határozza meg, hogy a lista lekérdezés eredményei között szerepel-e bizonyos adatokat.
-* A kibontott karakterlánc csak akkor támogatott, ha a feladatokat, a feladatütemezéseket, a feladatok és a készletek listázása használatban van. Jelenleg csak a támogatott statisztikai adatok.
-* Ha az összes tulajdonság szükséges, és válassza karakterlánc nélkül van megadva, a kibontás karakterlánc *kell* statisztikai adatok eléréséhez használható. Ha egy select karakterlánc egy részét tulajdonságok, majd beszerzésére szolgál `stats` a select karakterlánc adható meg, és a kibontás karakterlánc nem kell megadni.
-* Ez a példa bontsa ki a karakterláncot határozza meg, hogy a statisztikai adatok vissza kell-e az a lista minden eleme: `stats`.
+* Hasonló jelölje be a karakterláncot, expand karakterlánc azt szabályozza, hogy bizonyos adatok szerepel-e a lista a lekérdezés eredményében.
+* A kibontás karakterlánc csak akkor támogatott, listázás, feladatok, a feladatok ütemezését, a feladatok és a készletek használatban van. Jelenleg csak a támogatott statisztikai adatok.
+* Ha az összes tulajdonság megadása kötelező, és nincs select karakterlánc megadva, az expand-karakterlánc *kell* statisztikai információkat kaphat. Ha a select karakterláncnak, tulajdonságok egy részének majd beszerzésére használatos `stats` a select karakterlánc adható meg, és az expand-karakterlánc nem kell megadni.
+* Ebben a példában bontsa ki a karakterláncot adja meg, hogy statisztikai adatok a rendszer visszalépteti az a lista minden eleme: `stats`.
 
 > [!NOTE]
-> A három lekérdezés-karakterlánc típusú térített (szűrés, válassza ki, és bontsa ki a), meg kell győződnie arról, hogy a tulajdonságnevek és esetben egyezik, mint a REST API elem. Például, ha a .NET használata [CloudTask](https://msdn.microsoft.com/library/azure/microsoft.azure.batch.cloudtask) osztály, meg kell adnia **állapot** helyett **állapot**, annak ellenére, hogy a .NET tulajdonság [ CloudTask.State](https://msdn.microsoft.com/library/azure/microsoft.azure.batch.cloudtask.state). Tekintse meg az alábbi táblázatokban tulajdonságleképezései a .NET és REST API-k között.
+> A három lekérdezési karakterlánc típusok létesítő (szűrés, válassza ki, és bontsa ki), győződjön meg arról, hogy a tulajdonságnevek és esetben egyezik, mint a REST API-val elem. Például, amikor a .NET használata [CloudTask](https://msdn.microsoft.com/library/azure/microsoft.azure.batch.cloudtask) osztály, meg kell adnia **állapot** helyett **állapot**, annak ellenére, hogy a .NET-tulajdonság [ CloudTask.State](https://msdn.microsoft.com/library/azure/microsoft.azure.batch.cloudtask.state). Tekintse meg az alábbi táblázatokban tulajdonságleképezései a .NET és REST API-k között.
 > 
 > 
 
-### <a name="rules-for-filter-select-and-expand-strings"></a>Szabályok szűrő, válassza ki, és bontsa ki a karakterláncok
-* Tulajdonságok nevek szűrő, válassza ki, és bontsa ki a karakterláncok meg kell jelennie, mint a [Batch REST] [ api_rest] API – még akkor is, ha használ [Batch .NET] [ api_net]vagy az egyéb kötegelt SDK-k közül.
-* Minden tulajdonságnevek megkülönböztetik a kis-és nagybetűket, de a tulajdonságértékek-és nagybetűket.
-* Dátum és idő karakterláncok lehet két formátumok egyikét, és utasítás előtt szerepelnie kell a `DateTime`.
+### <a name="rules-for-filter-select-and-expand-strings"></a>Szabályok szűrőt, válassza ki, és bontsa ki a karakterláncok
+* Tulajdonságok nevei a szűrőt, válassza ki, és bontsa ki a karakterláncok meg kell jelennie, mint az a [Batch REST] [ api_rest] API – még akkor is, ha használ [Batch .NET] [ api_net]vagy valamelyik Batch SDK útján.
+* Minden tulajdonságnevek megkülönböztetik a kis-és nagybetűket, de a tulajdonságértékek megkülönbözteti a kis-és nagybetű nincs megkülönböztetve.
+* Dátum/idő karakterlánc lehet két formátumot, és meg kell előznie a `DateTime`.
   
-  * W3C-DTF formátum példa: `creationTime gt DateTime'2011-05-08T08:49:37Z'`
-  * RFC 1123 formátum példa: `creationTime gt DateTime'Sun, 08 May 2011 08:49:37 GMT'`
-* Logikai értékek a következők: vagy `true` vagy `false`.
-* Ha egy tulajdonság érvénytelen vagy operátor van megadva, a `400 (Bad Request)` hibát fog okozni.
+  * W3C-DTF formátum. példa: `creationTime gt DateTime'2011-05-08T08:49:37Z'`
+  * RFC 1123 formátum. példa: `creationTime gt DateTime'Sun, 08 May 2011 08:49:37 GMT'`
+* Logikai karakterláncok kiadásokhoz `true` vagy `false`.
+* Ha egy érvénytelen vlastnost nebo operátor van megadva, a `400 (Bad Request)` hibát fog eredményezni.
 
-## <a name="efficient-querying-in-batch-net"></a>Hatékony, a Batch .NET lekérdezése
-Belül a [Batch .NET] [ api_net] API-t a [ODATADetailLevel] [ odata] osztály szűrő ellátására szolgál, válassza ki, és bontsa ki a listában karakterláncok műveletek. A ODataDetailLevel osztály tulajdonságai három nyilvános karakterlánc, amely meg a konstruktorban, vagy közvetlenül az objektumra beállítva. Akkor továbbítja a ODataDetailLevel objektum paraméterként a különböző műveletek, mint [ListPools][net_list_pools], [ListJobs][net_list_jobs], és [ListTasks][net_list_tasks].
+## <a name="efficient-querying-in-batch-net"></a>Hatékony lekérdezése a Batch .NET-ben
+Belül a [Batch .NET] [ api_net] API-t, a [ODATADetailLevel] [ odata] osztály szűrő ellátására szolgál, válassza ki, és bontsa ki a karakterláncok listázása műveletek. A ODataDetailLevel osztály konstruktorában megadott, vagy közvetlenül a objektu nastavit három nyilvános karakterlánc-tulajdonságok rendelkezik. Ezután adja át a ODataDetailLevel objektum paraméterként a különféle műveletek például [ListPools][net_list_pools], [ListJobs][net_list_jobs], és [ListTasks][net_list_tasks].
 
-* [ODATADetailLevel][odata].[ FilterClause][odata_filter]: a visszaadott elemek számának korlátozásához.
-* [ODATADetailLevel][odata].[ SelectClause][odata_select]: Adja meg a tulajdonságértékek egyes elemek küld vissza a rendszer.
-* [ODATADetailLevel][odata].[ ExpandClause][odata_expand]: olvashatók be adatokat az összes egy API hívása helyett külön hívások minden elemhez.
+* [ODATADetailLevel][odata].[ FilterClause][odata_filter]: a visszaadott elemek száma.
+* [ODATADetailLevel][odata].[ SelectClause][odata_select]: Adja meg az egyes elemek visszaadott tulajdonságértékek.
+* [ODATADetailLevel][odata].[ ExpandClause][odata_expand]: kérhető le adat minden eleme egy API hívása helyett különálló hívásokat az egyes elemekhez.
 
-A következő kódrészletet a Batch .NET API használatával kérdezi le hatékonyan az egy adott készletét készletek statisztikáit a következőképpen a Batch szolgáltatás. Ebben a forgatókönyvben a kötegelt felhasználó teszt- és éles címkészletekkel rendelkezik. A teszt készletre azonosítók fűzve előtagként a "test" és a termelési gyűjtő azonosítók fűzve előtagként a "termék". A kódrészletet a *myBatchClient* megfelelően inicializálva példánya a [BatchClient](https://msdn.microsoft.com/library/azure/microsoft.azure.batch.batchclient) osztály.
+A következő kódrészletet a Batch .NET API használatával kérdezi le hatékonyan az egy adott készletét készletek statisztikáit a Batch szolgáltatást. Ebben a forgatókönyvben a Batch-felhasználók számára a készletek tesztelési és éles környezetben is. A teszt címkészlet azonosítókat a "test" előtaggal van, és az éles készletet azonosítók "éles" előtagot kapnak. A kódtöredék *myBatchClient* megfelelően inicializálva példánya a [BatchClient](https://msdn.microsoft.com/library/azure/microsoft.azure.batch.batchclient) osztály.
 
 ```csharp
 // First we need an ODATADetailLevel instance on which to set the filter, select,
@@ -142,69 +139,69 @@ List<CloudPool> testPools =
 ```
 
 > [!TIP]
-> Példányának [ODATADetailLevel] [ odata] válassza ki a konfigurált és kibontott záradék is átadhatók megfelelő Get módszerek, például a [PoolOperations.GetPool](https://msdn.microsoft.com/library/azure/microsoft.azure.batch.pooloperations.getpool.aspx), a visszaadott adatok korlátozásához.
+> Egy példányát [ODATADetailLevel] [ odata] konfigurált egyes és kibontás záradékok is átadható megfelelő Get módszerek, például [PoolOperations.GetPool](https://msdn.microsoft.com/library/azure/microsoft.azure.batch.pooloperations.getpool.aspx), a visszaadott adatok mennyisége korlátozza.
 > 
 > 
 
-## <a name="batch-rest-to-net-api-mappings"></a>A Batch REST .NET API rendelése
-Tulajdonságnevek szűrő, válassza ki, és bontsa ki a karakterláncok *kell* REST API mint a, mind a név és esetben tükrözi. Az alábbi táblázatok a .NET és REST API megfelelők esetében közötti hozzárendelések adja meg.
+## <a name="batch-rest-to-net-api-mappings"></a>A Batch .NET API leképezések a REST
+A tulajdonságnevek a szűrőt, válassza ki, és bontsa ki a karakterláncok *kell* REST API-val megfelelőik, mind a nevét és eset tükrözik. Az alábbi táblázatokban a .NET és REST API-val igényló közötti leképezéseket.
 
-### <a name="mappings-for-filter-strings"></a>Azon szűrőkarakterláncokban
-* **.NET-lista módszerek**: a .NET API-módszer ebben az oszlopban fogad el egy [ODATADetailLevel] [ odata] objektum paraméterként.
-* **REST kérelmek száma**: Ebben az oszlopban kapcsolódó REST API-t minden lap tartalmaz a táblázat, amelyben a tulajdonságok és az engedélyezett műveletek *szűrő* karakterláncok. Használhatja a tulajdonság nevét és a műveletek hoz egy [ODATADetailLevel.FilterClause] [ odata_filter] karakterlánc.
+### <a name="mappings-for-filter-strings"></a>Hozzárendelések szűrő-karakterlánc
+* **.NET-lista metódusokat**: a .NET API-módszer ebben az oszlopban levő fogad egy [ODATADetailLevel] [ odata] paraméterként objektum.
+* **REST-listára vonatkozó kérelmek**: Ebben az oszlopban levő kapcsolódó REST API-t minden lap tartalmaz egy táblát, amely megadja a tulajdonságok és műveletek engedélyezett *szűrő* karakterláncokat. Fogja használni, ezeket a tulajdonságnevek és műveletek amikor hozhat létre egy [ODATADetailLevel.FilterClause] [ odata_filter] karakterlánc.
 
-| .NET-lista módszerek | REST kérelmek száma |
+| .NET-metódusokat listája | REST-listára vonatkozó kérelmek |
 | --- | --- |
-| [CertificateOperations.ListCertificates][net_list_certs] |[A tanúsítványokat egy fiókot a listáról][rest_list_certs] |
+| [CertificateOperations.ListCertificates][net_list_certs] |[Egy fiók a tanúsítványok felsorolása][rest_list_certs] |
 | [CloudTask.ListNodeFiles][net_list_task_files] |[A feladathoz társított fájlok listázása][rest_list_task_files] |
-| [JobOperations.ListJobPreparationAndReleaseTaskStatus][net_list_jobprep_status] |[A feladat előkészítése és a feladat kiadási tevékenységek a feladat állapotának felsorolása][rest_list_jobprep_status] |
-| [JobOperations.ListJobs][net_list_jobs] |[A feladatok egy fiókot a listáról][rest_list_jobs] |
-| [JobOperations.ListNodeFiles][net_list_nodefiles] |[A csomópont fájlok listázása][rest_list_nodefiles] |
-| [JobOperations.ListTasks][net_list_tasks] |[A feladathoz társított feladatok felsorolása][rest_list_tasks] |
-| [JobScheduleOperations.ListJobSchedules][net_list_job_schedules] |[A feladatütemezéseket egy fiókot a listáról][rest_list_job_schedules] |
-| [JobScheduleOperations.ListJobs][net_list_schedule_jobs] |[A feladat ütemezés szerint társított feladatok listázásához][rest_list_schedule_jobs] |
-| [PoolOperations.ListComputeNodes][net_list_compute_nodes] |[A készlet számítási csomópontjai felsorolása][rest_list_compute_nodes] |
-| [PoolOperations.ListPools][net_list_pools] |[A készletek egy fiókot a listáról][rest_list_pools] |
+| [JobOperations.ListJobPreparationAndReleaseTaskStatus][net_list_jobprep_status] |[A feladat-előkészítési és a feladatkiadási tevékenységeket-feladat állapotának listázása][rest_list_jobprep_status] |
+| [JobOperations.ListJobs][net_list_jobs] |[A feladatok egy fiókot a listában][rest_list_jobs] |
+| [JobOperations.ListNodeFiles][net_list_nodefiles] |[A csomóponton lévő fájlok listázása][rest_list_nodefiles] |
+| [JobOperations.ListTasks][net_list_tasks] |[A feladathoz hozzárendelt feladatok felsorolása][rest_list_tasks] |
+| [JobScheduleOperations.ListJobSchedules][net_list_job_schedules] |[A feladatütemezések egy fiók listázása][rest_list_job_schedules] |
+| [JobScheduleOperations.ListJobs][net_list_schedule_jobs] |[A feladatütemezésbe tartozó feladatok listázása][rest_list_schedule_jobs] |
+| [PoolOperations.ListComputeNodes][net_list_compute_nodes] |[Egy készletben lévő számítási csomópontok listája][rest_list_compute_nodes] |
+| [PoolOperations.ListPools][net_list_pools] |[A készletekben található listában.][rest_list_pools] |
 
-### <a name="mappings-for-select-strings"></a>Jelölje be karakterláncok leképezéseit
-* **A Batch .NET típusok**: Batch .NET API-típusok.
-* **REST API entitások**: Ebben az oszlopban minden lap tartalmaz egy vagy több táblában, amely a REST API tulajdonságnevek a típus listából. A tulajdonságnevek hoz használt *válasszon* karakterláncok. Ezek azonos tulajdonságnevek fogja használni, amikor, hozhat létre egy [ODATADetailLevel.SelectClause] [ odata_select] karakterlánc.
+### <a name="mappings-for-select-strings"></a>Válassza ki a karakterláncok leképezéseit
+* **A Batch .NET-típusok**: a Batch .NET API-típusok.
+* **REST API-entitások**: Ebben az oszlopban minden oldal tartalmaz egy vagy több olyan táblát, amely a REST API-t a tulajdonságnevek a típus listából. Ezek a tulajdonságnevek hoz használt *kiválasztása* karakterláncokat. Ezek azonos tulajdonság nevét fogja használni, amikor hozhat létre egy [ODATADetailLevel.SelectClause] [ odata_select] karakterlánc.
 
-| Batch .NET típusok | REST API entitások |
+| A Batch .NET-típusok | REST API-entitás |
 | --- | --- |
-| [tanúsítvány][net_cert] |[A tanúsítvány adatainak beolvasása][rest_get_cert] |
-| [CloudJob][net_job] |[A feladat adatainak beolvasása][rest_get_job] |
-| [CloudJobSchedule][net_schedule] |[A feladatütemezés adatainak beolvasása][rest_get_schedule] |
-| [Átjárócsomópontján][net_node] |[A csomópont adatainak beolvasása][rest_get_node] |
-| [CloudPool][net_pool] |[Egy készlet adatainak beolvasása][rest_get_pool] |
-| [CloudTask][net_task] |[A feladat adatainak beolvasása][rest_get_task] |
+| [Tanúsítvány][net_cert] |[Tanúsítvány adatainak lekérése][rest_get_cert] |
+| [CloudJob][net_job] |[Egy feladat adatainak lekérése][rest_get_job] |
+| [CloudJobSchedule][net_schedule] |[A feladatütemezés adatainak lekérése][rest_get_schedule] |
+| [Átjárócsomópontján][net_node] |[Egy csomópont adatainak lekérése][rest_get_node] |
+| [CloudPool][net_pool] |[Egy készlet adatainak lekérése][rest_get_pool] |
+| [CloudTask][net_task] |[Feladat adatainak lekérése][rest_get_task] |
 
-## <a name="example-construct-a-filter-string"></a>Példa: egy szűrési karakterláncot létrehozni
-Ha, hozhat létre egy szűrési karakterláncot a [ODATADetailLevel.FilterClause][odata_filter], tekintse meg a fenti táblázatban "Szűrőkarakterláncokban leképezéseit" alatt található a REST API dokumentációjában oldalra, amely megfelel a lista elvégezni kívánt műveletet. Az első többsoros tábla adott oldalon megtalálja a szűrhető tulajdonságok és azok támogatott operátort. Ha szeretné beolvasni az összes olyan feladatot, amelynek kilépési kód: nem nulla, például a sor: a [egy feladatot a feladatok lista] [ rest_list_tasks] határozza meg a megfelelő tulajdonság karakterláncot és a processzoridő operátorok:
+## <a name="example-construct-a-filter-string"></a>Példa: egy szűrési karakterláncot hozhatnak létre.
+Amikor egy szűrési karakterláncot a hozhat létre [ODATADetailLevel.FilterClause][odata_filter], tekintse meg a fenti táblázat szerinti "Hozzárendelések szűrő-karakterlánc" Keresés a REST API dokumentáció lap, amely megfelel a lista a végrehajtani kívánt művelet. Az első többsoros tábla az adott oldalon megtalálja a szűrhető tulajdonságok és azok támogatott operátorok. Ha szeretné, amelynek kilépési kód: nem nulla összes feladat olvasható be, például a sor a [a feladathoz hozzárendelt feladatok felsorolása] [ rest_list_tasks] alkalmazható tulajdonság karakterlánc és engedélyezett operátorok adja meg:
 
 | Tulajdonság | Engedélyezett műveletek | Típus |
 |:--- |:--- |:--- |
 | `executionInfo/exitCode` |`eq, ge, gt, le , lt` |`Int` |
 
-Ebből kifolyólag a szűrési karakterláncot egy nem nulla kilépési kód minden feladat felsoroló lenne:
+Így a szűrési karakterláncot egy nullától eltérő kilépési kódot tartalmazó összes feladat listázása a következő lesz:
 
 `(executionInfo/exitCode lt 0) or (executionInfo/exitCode gt 0)`
 
-## <a name="example-construct-a-select-string"></a>Például: select karakterlánc összeállításához
-Összeállításához [ODATADetailLevel.SelectClause][odata_select], tekintse át a "Select karakterláncok leképezéseit" a fenti táblázatban, és nyissa meg a REST API-t a lapot, amely megfelel a listázásakor típusát. Az első többsoros tábla adott oldalon megtalálja a választható tulajdonságok és azok támogatott operátort. Ha csak a azonosítója és a parancssor az egyes feladatok listájában, például megtalálja a sorokra alkalmazandó tábla a [feladat adatainak beolvasása][rest_get_task]:
+## <a name="example-construct-a-select-string"></a>Példa: select karakterlánc hozhatnak létre
+Összeállításához [ODATADetailLevel.SelectClause][odata_select], tekintse meg a fenti táblázat "Válassza karakterláncok leképezéseit" alatt, és keresse meg a REST API-val oldalt, amely megfelel az entitás, amely listázásakor típusát. Az első többsoros tábla az adott oldalon megtalálja a választható tulajdonságok és azok támogatott operátorok. Ha szeretné lekérni, csak az Azonosítót és a egy lista minden egyes tevékenység parancssora, például megtalálja ezeket a sorokat a alkalmazni táblában a [feladat információinak lekérése][rest_get_task]:
 
 | Tulajdonság | Típus | Megjegyzések |
 |:--- |:--- |:--- |
 | `id` |`String` |`The ID of the task.` |
 | `commandLine` |`String` |`The command line of the task.` |
 
-A select karakterláncot, amely a azonosítója és minden felsorolt feladat-parancssorból lesz:
+Válassza ki, amely a azonosítója és a parancssor az egyes felsorolt tevékenységek karakterlánca lesz:
 
 `id, commandLine`
 
 ## <a name="code-samples"></a>Kódminták
-### <a name="efficient-list-queries-code-sample"></a>Hatékony lista lekérdezések kódminta
-Tekintse meg a [EfficientListQueries] [ efficient_query_sample] mintaprojektet a Githubon, hogy hogyan hatékony lista lekérdezése befolyásolhatja a teljesítményt az alkalmazásban. A C# Konzolalkalmazás hoz létre, és számos feladatot ad hozzá egy feladatot. Több hívásainak teszi majd, a [JobOperations.ListTasks] [ net_list_tasks] metódus és fázisok [ODATADetailLevel] [ odata] -objektumok a visszaadandó adatok mennyisége eltérő másik tulajdonságot értékekre állították be. Ez a következőhöz hasonló kimenetet hoz létre:
+### <a name="efficient-list-queries-code-sample"></a>Hatékony listázó lekérdezések kódminta
+Tekintse meg a [EfficientListQueries] [ efficient_query_sample] mintaprojektet a Githubon tekintheti meg, hogyan hatékony lista lekérdezése hatással lehetnek az alkalmazások teljesítményét. A C#-konzolalkalmazást hoz létre, és a feladatok nagy számú ad egy feladathoz. Ezután lehetővé teszi több alkalommal hívnia a [JobOperations.ListTasks] [ net_list_tasks] metódust, és pass [ODATADetailLevel] [ odata] objektumok konfigurálva, és a különböző tulajdonságértékek eltérő visszaadandó adatok mennyisége. A következőhöz hasonló kimenetet küld:
 
 ```
 Adding 5000 tasks to job jobEffQuery...
@@ -220,19 +217,19 @@ Adding 5000 tasks to job jobEffQuery...
 Sample complete, hit ENTER to continue...
 ```
 
-Ahogy az az eltelt idő, nagy mértékben csökkentheti lekérdezési válaszidőt, ha a tulajdonságok és a visszaadott elemek száma korlátozza. Ez, és az egyéb mintaprojektjeit megtalálhatja a [azure-köteg-minták] [ github_samples] GitHub tárházából.
+Ahogyan az eltelt idő, nagy mértékben csökkentheti lekérdezések válaszidejét, korlátozza a tulajdonságok és a visszaadott elemek száma. Ez és az egyéb mintaprojektekkel találja a [azure-batch-samples] [ github_samples] tárházban a Githubon.
 
-### <a name="batchmetrics-library-and-code-sample"></a>BatchMetrics és a kód a minta
-A EfficientListQueries kódmintában fenti mellett található a [BatchMetrics] [ batch_metrics] a projektre a [azure-köteg-minták] [ github_samples]GitHub-tárházban. A BatchMetrics mintaprojektet bemutatja, hatékonyan figyelése az Azure Batch feladat előrehaladását a kötegelt API használatával.
+### <a name="batchmetrics-library-and-code-sample"></a>BatchMetrics erőforrástár és a kód a minta
+EfficientListQueries fenti kódmintában, valamint annak a [BatchMetrics] [ batch_metrics] projektre a [azure-batch-samples] [ github_samples]GitHub-adattárban. A BatchMetrics mintaprojektet bemutatja, hogyan hatékony figyelése az Azure Batch-feladat állapotát a Batch API-val.
 
-A [BatchMetrics] [ batch_metrics] minta tartalmazza a .NET hordozhatóosztálytár-projektjének amely beépítheti saját projektek és egy egyszerű parancssori program a megadásával, és mutassa be a könyvtár használatát.
+A [BatchMetrics] [ batch_metrics] minta egy .NET-osztálytár projektet beépítheti a saját projektek és a kódtár használatát mutatja be, és a egy egyszerű parancssori program, amely magában foglalja.
 
-A mintaalkalmazás a projekt mutatja be a következő műveleteket:
+A projekten belül a mintaalkalmazást mutat be a következő műveleteket:
 
-1. Ahhoz, hogy töltse le a tulajdonság csak adott attribútumok kiválasztása
-2. Szűrés állapot átmenet alkalommal ahhoz, hogy csak a változások letöltése a legutóbbi lekérdezés óta
+1. Annak érdekében, hogy csak a szükséges tulajdonságokat letöltése adott attribútumok kiválasztása
+2. Szűrés állapot átmeneti alkalommal annak érdekében, hogy töltse le változások csak a legutóbbi lekérdezés óta
 
-Például a következő metódus jelenik meg, a BatchMetrics könyvtárban. Azt adja vissza, amely megadja, hogy csak egy ODATADetailLevel a `id` és `state` tulajdonságait a rendszer megkérdezi a entitások beszerzése. Azt is, hogy csak olyan entitások, amelynek állapota megváltozott, mert a megadott `DateTime` vissza kell adni a paraméter.
+Például a következő metódust a BatchMetrics könyvtárban jelenik meg. Azt adja vissza, amely megadja, hogy csak egy ODATADetailLevel a `id` és `state` tulajdonságok beszerzése az entitásokat a rendszer megkérdezi. Azt is megadja, hogy csak olyan entitások, amelynek állapota megváltozott, mert a megadott `DateTime` vissza kell adni a paraméter.
 
 ```csharp
 internal static ODATADetailLevel OnlyChangedAfter(DateTime time)
@@ -245,8 +242,8 @@ internal static ODATADetailLevel OnlyChangedAfter(DateTime time)
 ```
 
 ## <a name="next-steps"></a>További lépések
-### <a name="parallel-node-tasks"></a>Párhuzamos csomópont feladatok
-[Azure Batch számítási erőforrás-használat csomópont egyidejű feladatok maximális](batch-parallel-node-tasks.md) egy másik cikkben kapcsolódó Batch-alkalmazások teljesítményének. Bizonyos típusú munkaterheléseket is kihasználhatja a párhuzamos tevékenységek feldolgozás alatt álló nagyobb – de--kevesebb számítási csomópontot. Tekintse meg a [példa](batch-parallel-node-tasks.md#example-scenario) a cikkben talál részletes információt ilyen esetben.
+### <a name="parallel-node-tasks"></a>Párhuzamos csomóponti feladatok
+[Maximalizálhatja az Azure Batch számítási erőforrás-használat a párhuzamosan futó csomóponti feladatok](batch-parallel-node-tasks.md) egy másik cikk a Batch-alkalmazások teljesítményével kapcsolatos. Bizonyos típusú számítási feladatok párhuzamos végrehajtása profitálhatnának nagyobb –, de kevesebb – a számítási csomópontokon. Tekintse meg a [példaforgatókönyv](batch-parallel-node-tasks.md#example-scenario) ilyen esetben a részleteket a cikkben.
 
 
 [api_net]: http://msdn.microsoft.com/library/azure/mt348682.aspx
@@ -297,4 +294,5 @@ internal static ODATADetailLevel OnlyChangedAfter(DateTime time)
 [net_schedule]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.cloudjobschedule.aspx
 [net_task]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.cloudtask.aspx
 
-[rest_get_task_counts]: https://docs.microsoft.com/rest/api/batchservice/get-the-task-counts-for-a-job
+[rest_get_task_counts]: /rest/api/batchservice/get-the-task-counts-for-a-job
+[rest_get_node_counts]: /rest/api/batchservice/account/listpoolnodecounts

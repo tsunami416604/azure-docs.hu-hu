@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/17/2018
+ms.date: 07/11/2018
 ms.author: spelluru
-ms.openlocfilehash: 5f953cd6f33e5d46098566740efbf83a5fd80799
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 9ddf44ef933270c08b42f67387866cd7a3b34719
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38635316"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39004079"
 ---
 # <a name="add-a-vm-to-a-lab-in-azure-devtest-labs"></a>Virtuális gép hozzáadása Azure DevTest Labs szolgáltatásban létrehozott tesztkörnyezet
 Ha már rendelkezik [az első virtuális gép létrehozása](devtest-lab-create-first-vm.md), akkor valószínűleg sor került az előre betöltött [Piactéri lemezképhez](devtest-lab-configure-marketplace-images.md). Most, ha a labor további virtuális gépeket ad hozzá, azt is beállíthatja egy *alap* , amely vagy egy [egyéni rendszerkép](devtest-lab-create-template.md) vagy egy [képlet](devtest-lab-manage-formulas.md). Ez az oktatóanyag végigvezeti az Azure portal használatával egy virtuális gép hozzáadása a DevTest Labs szolgáltatásban létrehozott tesztkörnyezet.
@@ -40,12 +40,12 @@ Ez a cikk emellett bemutatja, hogyan kezelheti az összetevők a labor virtuáli
     ![Lab VM panel](./media/devtest-lab-add-vm/devtestlab-lab-vm-blade.png)
 
 1. Adjon meg egy **felhasználónév** kap, amely rendszergazdai jogosultságokkal a virtuális gépen.  
-1. Ha azt szeretné, a tárolt jelszó használatát a [titkoskód-tárolót](https://azure.microsoft.com/updates/azure-devtest-labs-keep-your-secrets-safe-and-easy-to-use-with-the-new-personal-secret-store)válassza **mentett titkos kulcs használata**, és adja meg a kulcs értékét, amely megfelel a titkos kód (jelszó). Ellenkező esetben a címkével ellátott szövegmezőbe írja be a jelszót **adjon meg egy értéket**.
+1. Ha azt szeretné, a tárolt jelszó használatát egy [az Azure key vault](devtest-lab-store-secrets-in-key-vault.md)válassza **mentett titkos kulcs használata**, és adja meg a kulcs értékét, amely megfelel a titkos kód (jelszó). Ellenkező esetben a címkével ellátott szövegmezőbe írja be a jelszót **adjon meg egy értéket**. Mentése folyamatban van a titkos kulcsok a key vaultban, és használja őket, labor-erőforrások létrehozásakor kapcsolatos további információkért lásd: [Store titkos kulcsok Azure Key vaultban](devtest-lab-store-secrets-in-key-vault.md).
 1. A **virtuálisgép-lemeztípust** határozza meg, melyik tárolólemez-típusba engedélyezett a virtuális gépek a tesztkörnyezetben.
-1. Válassza ki **virtuálisgép-méret** válasszon ki egy, az előre definiált elemek, amelyek a Processzormagok, memória mérete és a merevlemez mérete, a virtuális gép létrehozásához.
-1. Válassza ki **összetevők** és - összetevők – a listából válassza ki és konfigurálja az alaprendszerképet hozzáadni kívánt összetevők.
+2. Válassza ki **virtuálisgép-méret** válasszon ki egy, az előre definiált elemek, amelyek a Processzormagok, memória mérete és a merevlemez mérete, a virtuális gép létrehozásához.
+3. Válassza ki **összetevők** és - összetevők – a listából válassza ki és konfigurálja az alaprendszerképet hozzáadni kívánt összetevők.
     **Megjegyzés:** Ha most ismerkedik a DevTest Labs, vagy konfigurálása összetevők, tekintse meg a [hozzáadása egy meglévő összetevő egy virtuális Géphez](#add-an-existing-artifact-to-a-vm) szakaszt, és ezután térjen vissza ide, ha befejeződött.
-1. Válassza ki **speciális beállítások** a virtuális gép hálózati beállításai, és a lejárati beállítások konfigurálása. 
+4. Válassza ki **speciális beállítások** a virtuális gép hálózati beállításai, és a lejárati beállítások konfigurálása. 
 
    Beállíthatja, hogy lejárati, válassza a naptár ikonra, amelyen a virtuális gép automatikusan törlődni fognak dátumot adhat meg.  Alapértelmezés szerint a virtuális gép soha nem jár le. 
 1. Ha szeretné megtekintése és másolása az Azure Resource Manager-sablont, tekintse meg a [mentése az Azure Resource Manager-sablon](#save-azure-resource-manager-template) szakaszt, és térjen vissza ide, ha befejeződött.

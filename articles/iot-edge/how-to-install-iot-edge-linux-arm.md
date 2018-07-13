@@ -9,12 +9,12 @@ services: iot-edge
 ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: kgremban
-ms.openlocfilehash: 3672b26c07974d0fb2897953a05f7233c4d43c3b
-ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
+ms.openlocfilehash: 5b5212d5e1663fee01ff87642432818071d4f4dd
+ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2018
-ms.locfileid: "37903115"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38988534"
 ---
 # <a name="install-azure-iot-edge-runtime-on-linux-arm32v7armhf"></a>Telepítse az Azure IoT Edge-futtatókörnyezet (ARM32v7/armhf) Linux rendszeren
 
@@ -27,11 +27,9 @@ Ez a cikk a Linux ARM32v7/armhf Edge-eszközön (például a Raspberry Pi) az Az
 
 ## <a name="install-the-container-runtime"></a>A tároló-modul telepítése
 
-Az Azure IoT Edge támaszkodik egy [OCI-kompatibilis] [ lnk-oci] container modul (pl. Docker). Ha már rendelkezik a Docker CE/EE az Edge-eszközön telepítette, továbbra is használhassák a fejlesztéshez és teszteléshez az Azure IoT Edge segítségével. 
+Az Azure IoT Edge támaszkodik egy [OCI-kompatibilis] [ lnk-oci] tároló-futtatókörnyezet. A termelési forgatókönyvekhez, azt javasoljuk, használja a [Moby-alapú] [ lnk-moby] motor lejjebb találja. Legyen az egyetlen tároló motor hivatalosan támogatott az Azure IoT Edge segítségével. A docker CE/EE tárolórendszerképek Moby-alapú futásidejű kompatibilisek.
 
-A termelési forgatókönyvekhez, azt javasoljuk, használja a [Moby-alapú] [ lnk-moby] motor lejjebb találja. Legyen az egyetlen tároló motor hivatalosan támogatott az Azure IoT Edge segítségével. Docker CE/EE tárolórendszerképek teljes mértékben kompatibilisek az Moby modul.
-
-Az alábbi parancsok moby motor és a parancssori felület (CLI) telepítése. A parancssori felület az éles környezetekben üzemelő példányok esetén nem kötelező, de hasznos, ha fejlesztési.
+Az alábbi parancsokat a Moby-alapú motor és a parancssori felület (CLI) telepítése. A parancssori felület az éles környezetekben üzemelő példányok esetén nem kötelező, de hasznos, ha fejlesztési.
 
 ```cmd/sh
 

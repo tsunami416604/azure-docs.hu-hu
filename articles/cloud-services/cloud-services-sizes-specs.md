@@ -3,7 +3,7 @@ title: Virtuálisgép-méretet nyújt az Azure Cloud services a |} A Microsoft D
 description: Az Azure cloud service webes és feldolgozói szerepkörök eltérő virtuálisgép-méretek (és azonosítók) sorolja fel.
 services: cloud-services
 documentationcenter: ''
-author: Thraka
+author: jpconnock
 manager: timlt
 editor: ''
 ms.assetid: 1127c23e-106a-47c1-a2e9-40e6dda640f6
@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 07/18/2017
-ms.author: adegeo
-ms.openlocfilehash: 490fd248cdd14858e2ca71f94dcb9dbaa5726f9c
-ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
+ms.author: jeconnoc
+ms.openlocfilehash: 60ee7c2be29791db91db78472cc002e15390d36b
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "34608814"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39004788"
 ---
 # <a name="sizes-for-cloud-services"></a>A Cloud Services méretei
 Ez a témakör ismerteti az elérhető méretek és a Cloud Service-szerepkörpéldányok (webes és feldolgozói szerepkörök) beállításokat. Telepítési szempontok figyelembe ezeket az erőforrásokat használatának tervezésekor is tartalmazza. Minden méretét rendelkezik egy Azonosítót, amely helyezi a [szolgáltatásdefiníciós fájl](cloud-services-model-and-package.md#csdef). Árak méreteire vonatkoztatva érhetők az [Cloud Services díjszabása](https://azure.microsoft.com/pricing/details/cloud-services/) lapot.

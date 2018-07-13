@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: Azure Active Directory-integráció a helyszíni SharePoint |} Microsoft Docs'
-description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés Azure Active Directory és a helyszíni SharePoint között.
+title: 'Oktatóanyag: Azure Active Directory-integráció a helyszíni SharePoint |} A Microsoft Docs'
+description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés az Azure Active Directory és a helyszíni SharePoint-között.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -12,131 +12,128 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/14/2018
+ms.date: 07/12/2018
 ms.author: jeedes
-ms.openlocfilehash: 02421ace226f42da58eb9864fe0ef2e1ca550391
-ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
+ms.openlocfilehash: a2f90944145bf98f9d3f39a12cd463245c97e67d
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/22/2018
-ms.locfileid: "36319282"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39002262"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sharepoint-on-premises"></a>Oktatóanyag: Azure Active Directory-integráció a helyszíni SharePoint
 
-Ebben az oktatóanyagban elsajátíthatja a helyi integrálása az Azure Active Directory (Azure AD).
+Ebben az oktatóanyagban elsajátíthatja, hogyan integrálható a helyszíni SharePoint az Azure Active Directory (Azure AD).
 
-A helyi integrálása az Azure AD lehetővé teszi a következő előnyöket biztosítja:
+Helyszíni SharePoint-integrálása az Azure ad-ben nyújt a következő előnyökkel jár:
 
-- Szabályozhatja, aki hozzáfér a helyi Azure AD-ben.
-- Engedélyezheti a felhasználóknak, hogy automatikusan lekérni bejelentkezett SharePoint a helyi (egyszeri bejelentkezés) a saját Azure AD-fiókok.
-- A fiók egyetlen központi helyen – az Azure-portálon kezelheti.
+- Szabályozhatja, ki férhet hozzá a helyszíni SharePoint az Azure AD-ben.
+- Engedélyezheti a felhasználóknak, hogy automatikusan első bejelentkezett a SharePoint helyszíni (egyszeri bejelentkezés) az Azure AD-fiókjukat.
+- A fiókok egyetlen központi helyen – az Azure Portalon kezelheti.
 
-Ha meg szeretné ismerni az Azure AD SaaS integrálásáról további adatait, tekintse meg [alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](../manage-apps/what-is-single-sign-on.md).
+Ha meg szeretné ismerni a SaaS-alkalmazás integráció az Azure ad-vel kapcsolatos további részletekért, lásd: [Mi az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](../manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 Az Azure AD-integráció konfigurálása a helyszíni SharePoint, a következőkre van szükség:
 
-- Az Azure AD szolgáltatásra
-- A SharePoint a helyi bejelentkezés engedélyezett előfizetés
+- Az Azure AD-előfizetéshez
+- Egy helyszíni SharePoint-egyszeri bejelentkezés engedélyezett előfizetés
 
 > [!NOTE]
-> Ez az oktatóanyag lépéseit teszteléséhez nem ajánlott használata termelési környezetben.
+> Ebben az oktatóanyagban a lépéseket teszteléséhez nem ajánlott éles környezetben használja.
 
 Ebben az oktatóanyagban a lépéseket teszteléséhez kövesse ezeket a javaslatokat:
 
-- Ne használja az éles környezetben, nem szükséges.
-- Ha még nem rendelkezik az Azure AD próbaverziójának környezetben, akkor [egy hónapos próbaverzió beszerzése](https://azure.microsoft.com/pricing/free-trial/).
+- Ne használja az éles környezetben, csak szükség esetén.
+- Ha nem rendelkezik egy Azure ad-ben a próbakörnyezet, [egy hónapos próbaverzió beszerzése](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
-Ebben az oktatóanyagban tesztelése az Azure AD egyszeri bejelentkezéshez egy tesztkörnyezetben. Ebben az oktatóanyagban leírt forgatókönyv két fő építőelemeket áll:
+Ebben az oktatóanyagban tesztelni az Azure AD egyszeri bejelentkezés egy tesztkörnyezetben. Az ebben az oktatóanyagban ismertetett forgatókönyvben két fő építőelemeket áll:
 
-1. A helyi hozzáadása a gyűjteményből
-2. És tesztelés az Azure AD konfigurálása egyszeri bejelentkezés
+1. Helyszíni SharePoint-Hozzáadás a katalógusból
+2. Konfigurálás és tesztelés az Azure AD egyszeri bejelentkezés
 
-## <a name="adding-sharepoint-on-premises-from-the-gallery"></a>A helyi hozzáadása a gyűjteményből
-Az Azure AD integrálása a helyszíni SharePoint konfigurálásához kell hozzáadnia a helyi a gyűjteményből a felügyelt SaaS-alkalmazások listájára.
+## <a name="adding-sharepoint-on-premises-from-the-gallery"></a>Helyszíni SharePoint-Hozzáadás a katalógusból
+Az Azure AD-be a helyszíni SharePoint-integráció konfigurálásához, hozzá kell a helyszíni SharePoint a katalógusból a felügyelt SaaS-alkalmazások listájára.
 
-**Adja hozzá a helyi a gyűjteményből, hajtsa végre az alábbi lépéseket:**
+**Helyszíni SharePoint-hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a  **[Azure-portálon](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen **Azure Active Directory** ikonra.
+1. Az a  **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
 
     ![Az Azure Active Directory gomb][1]
 
-2. Navigáljon a **vállalati alkalmazások**. Ezután lépjen **összes alkalmazás**.
+2. Navigáljon a **vállalati alkalmazások**. Ezután lépjen a **minden alkalmazás**.
 
-    ![A vállalati alkalmazások panel][2]
+    ![A vállalati alkalmazások panelen][2]
 
-3. Új alkalmazás hozzáadásához kattintson **új alkalmazás** párbeszédpanel tetején gombra.
+3. Új alkalmazás hozzáadásához kattintson **új alkalmazás** gombra a párbeszédpanel tetején.
 
     ![Az új alkalmazás gomb][3]
 
-4. Írja be a keresőmezőbe, **helyszíni SharePoint**, jelölje be **helyszíni SharePoint** eredmény panelen kattintson a **Hozzáadás** gombra kattintva vegye fel az alkalmazást.
+4. A Keresés mezőbe írja be a **helyszíni SharePoint-**, jelölje be **helyszíni SharePoint-** eredmény panelen kattintson a **Hozzáadás** gombra kattintva vegye fel az alkalmazást.
 
-    ![A helyi az eredménylistában](./media\sharepoint-on-premises-tutorial/tutorial_sharepointonpremises_addfromgallery.png)
+    ![A helyi Sharepointot a találatok listájában](./media\sharepoint-on-premises-tutorial/tutorial_sharepointonpremises_addfromgallery.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD az egyszeri bejelentkezés tesztelése és konfigurálása
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés tesztelése és konfigurálása
 
-Ebben a szakaszban, konfigurálás és tesztelés az Azure AD egyszeri bejelentkezést a helyi "Britta Simon" nevű tesztfelhasználó alapján.
+Ebben a szakaszban, konfigurálás és tesztelés az Azure AD egyszeri bejelentkezés a helyszíni SharePoint "Britta Simon" nevű tesztfelhasználó alapján.
 
-Az egyszeri bejelentkezés működéséhez az Azure AD számára a helyszíni SharePoint megfelelőjére felhasználó egy felhasználó számára az Azure AD kell. Ez azt jelenti az Azure AD-felhasználó és a kapcsolódó felhasználó a SharePoint közötti kapcsolat kapcsolatot helyszíni kell létrehozni.
+Egyszeri bejelentkezés működjön, az Azure ad-ben tudnia kell, a helyszíni SharePoint-partner felhasználó mi egy felhasználó számára az Azure ad-ben. Más szóval egy Azure AD-felhasználót és a kapcsolódó felhasználó a Sharepointban hivatkozás kapcsolata a helyszíni kell létrehozni.
 
-Az Azure AD egyszeri bejelentkezést a helyszíni SharePoint tesztelése és konfigurálása, hogy végezze el a következő építőelemeket kell:
+Az Azure AD egyszeri bejelentkezés a helyszíni SharePoint tesztelése és konfigurálása, hajtsa végre a következő építőelemeit kell:
 
-1. **[Az Azure AD az egyszeri bejelentkezés konfigurálása](#configure-azure-ad-single-sign-on)**  – lehetővé teszi a felhasználók a szolgáltatás használatához.
-2. **[Hozzon létre egy Azure AD-teszt felhasználó](#create-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezést a Britta Simon teszteléséhez.
-3. **[A helyszíni SharePoint tesztfelhasználó létrehozása](#create-a-sharePoint-on-premises-test-user)**  - kell rendelkeznie a megfelelője a Britta Simon helyszíni SharePoint, amely csatolva van a felhasználó az Azure AD-ábrázolását.
-4. **[Rendelje hozzá az Azure AD-teszt felhasználó](#assign-the-azure-ad-test-user)**  - Britta Simon használata az Azure AD az egyszeri bejelentkezés engedélyezése.
+1. **[Az Azure AD egyszeri bejelentkezés konfigurálása](#configure-azure-ad-single-sign-on)**  – ahhoz, hogy ez a funkció használatát a felhasználók számára.
+2. **[Hozzon létre egy Azure ad-ben tesztfelhasználót](#create-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezés az Britta Simon teszteléséhez.
+3. **[A hozzáférési jogot a SharePoint helyszíni tesztfelhasználó](#grant-access-to-sharePoint-on-premises-test-user)**  – szeretné, hogy egy megfelelője a Britta Simon a helyszíni SharePoint-, amely kapcsolódik az Azure AD felhasználói ábrázolása.
+4. **[Rendelje hozzá az Azure ad-ben tesztfelhasználó](#assign-the-azure-ad-test-user)**  – Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
 5. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)**  – győződjön meg arról, hogy működik-e a konfiguráció.
 
-### <a name="configure-azure-ad-single-sign-on"></a>Az Azure AD az egyszeri bejelentkezés konfigurálása
+### <a name="configure-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása
 
-Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure portálon, és a SharePoint a helyszíni alkalmazásban egyszeri bejelentkezés konfigurálása.
+Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Portalon, és a SharePoint egy helyszíni alkalmazásba az egyszeri bejelentkezés konfigurálása.
 
-**A helyszíni SharePoint konfigurálása az Azure AD egyszeri bejelentkezést, hajtsa végre az alábbi lépéseket:**
+**Az Azure AD egyszeri bejelentkezés konfigurálása a helyszíni SharePoint, hajtsa végre az alábbi lépéseket:**
 
-1. Az Azure portálon a a **helyszíni SharePoint** alkalmazás integráció lapján, kattintson a **egyszeri bejelentkezés**.
+1. Az Azure Portalon az a **helyszíni SharePoint-** alkalmazás integrációs oldalán kattintson a **egyszeri bejelentkezési**.
 
-    ![Egyszeri bejelentkezés kapcsolat konfigurálása][4]
+    ![Egyszeri bejelentkezési hivatkozás konfigurálása][4]
 
-2. Az a **egyszeri bejelentkezés** párbeszédablakban válassza **mód** , **SAML-alapú bejelentkezés** egyszeri bejelentkezés engedélyezése.
+2. Az a **egyszeri bejelentkezési** párbeszédablakban válassza **mód** , **SAML-alapú bejelentkezés** egyszeri bejelentkezés engedélyezéséhez.
 
-    ![Egyszeri bejelentkezés párbeszédpanel](./media\sharepoint-on-premises-tutorial/tutorial_sharepointonpremises_samlbase.png)
+    ![Egyszeri bejelentkezési párbeszédpanel](./media\sharepoint-on-premises-tutorial/tutorial_sharepointonpremises_samlbase.png)
 
-3. Az a **a helyi tartomány és az URL-címek** területen tegye a következőket:
+3. Az a **helyszíni SharePoint-tartomány és URL-címek** szakaszban, hajtsa végre az alábbi lépéseket:
 
-    ![A helyi tartomány és az URL-címek egyetlen bejelentkezés információk](./media\sharepoint-on-premises-tutorial/tutorial_sharepointonpremises_url1.png)
+    ![A SharePoint a helyszíni tartomány és URL-címeket egyetlen bejelentkezési adatait](./media\sharepoint-on-premises-tutorial/tutorial_sharepointonpremises_url1.png)
 
-    a. Az a **bejelentkezési URL-cím** szövegmező, adja meg a következő minta használatával URL-címe: `https://<YourSharePointServerURL>/_trust/default.aspx`
+    a. Az a **bejelentkezési URL-** szövegmezőbe írja be a következő minta használatával URL-címe: `https://<YourSharePointServerURL>/_trust/default.aspx`
 
-    b. Az a **azonosító** szövegmező, adja meg a következő minta használatával URL-címe: `urn:sharepoint:<YourSharePointServerURL>`
+    b. Az a **azonosító** szövegmezőbe írja be az URL-cím: `urn:sharepoint:federation`
 
-    > [!NOTE]
-    > Ezek az értékek nincsenek valós. Frissítheti ezeket az értékeket a tényleges bejelentkezési URL-cím és azonosítója. Ügyfél [SharePoint helyszíni ügyfél-támogatási csoport](https://support.office.com/) beolvasni ezeket az értékeket.
+4. Az a **SAML-aláíró tanúsítvány** területén kattintson **metaadatainak XML** , és mentse a metaadat-fájlt a számítógépen.
 
-4. Az a **SAML-aláíró tanúsítványa** kattintson **metaadatainak XML-kódja** , és mentse a .cer kiterjesztésű fájlt a számítógépen a metaadat. Másolja és illessze be a letöltött metaadatait tartalmazó fájl elérési útját a Jegyzettömbbe.
-
-    ![A tanúsítvány letöltési hivatkozását](./media\sharepoint-on-premises-tutorial/tutorial_sharepointonpremises_certificate.png)
+    ![A tanúsítvány letöltési hivatkozás](./media\sharepoint-on-premises-tutorial/tutorial_sharepointonpremises_certificate.png)
 
 5. Kattintson a **mentése** gombra.
 
-    ![Egyszeri bejelentkezés Mentés gombra konfigurálása](./media\sharepoint-on-premises-tutorial/tutorial_general_400.png)
+    ![Egyszeri bejelentkezés Mentés gomb konfigurálása](./media\sharepoint-on-premises-tutorial/tutorial_general_400.png)
 
-6. A a **a helyi konfigurációs** kattintson **SharePoint konfigurálása a helyszíni** megnyitásához **bejelentkezés konfigurálása** ablak. Másolás a **egyszeri bejelentkezési URL-címe** a a **rövid összefoglaló szakasz.**
+6. Az a **helyszíni SharePoint-konfiguráció** területén kattintson **SharePoint konfigurálása a helyszíni** megnyitásához **bejelentkezés konfigurálása** ablak. Másolás a **egyszeri bejelentkezési szolgáltatás URL-cím** származó a **gyors útmutató szakaszban.**
 
-    ![A SharePoint a helyi konfigurációs](./media\sharepoint-on-premises-tutorial/tutorial_sharepointonpremises_configure.png)
+    ![A SharePoint helyszíni konfigurálása](./media\sharepoint-on-premises-tutorial/tutorial_sharepointonpremises_configure.png)
 
     > [!NOTE]
-    > A helyi alkalmazás SAML 1.1 használja a SAML 1.1 általa token, ezért az Azure AD vár WS Fed kérelmet a SharePoint-kiszolgáló és a hitelesítés után. token.
+    > Helyszíni SharePoint-alkalmazás a SAML 1.1-es használja a SAML 1.1-es általa token, így az Azure ad-ben a WS-Fed kérelmet a SharePoint-kiszolgáló és a hitelesítés után vár. token.
 
-7. Egy másik webes böngészőablakban jelentkezzen be a SharePoint a helyi vállalati webhely rendszergazdaként.
+7. Egy másik böngészőablakban jelentkezzen be a SharePoint helyszíni vállalati webhely rendszergazdaként.
 
-8. **A SharePoint Server 2016 egy új megbízható identitásszolgáltató konfigurálása**
+8. **A SharePoint Server 2016 egy új megbízható identitásszolgáltatóra konfigurálása**
 
-    Jelentkezzen be a SharePoint Server 2016-kiszolgáló, és nyissa meg a SharePoint 2016 felügyeleti rendszerhéjat. Töltse ki a $realm, $wsfedurl és $filepath Azure-portálon, és futtassa a következő parancsokat egy új megbízható identitásszolgáltató konfigurálása.
+    Jelentkezzen be a SharePoint Server 2016-kiszolgálón, és nyissa meg a SharePoint 2016 felügyeleti rendszerhéjat. Adja meg az értékeket $realm, $wsfedurl és az Azure Portalról $filepath, és futtassa a következő parancsokat egy új megbízható identitásszolgáltatóra konfigurálásához.
 
     > [!TIP]
-    > Ha ismerkedik a PowerShell használatával, vagy PowerShell működésével kapcsolatos tudnivalókért lásd: [SharePoint PowerShell](https://docs.microsoft.com/en-us/powershell/sharepoint/overview?view=sharepoint-ps). 
+    > Ha használja a PowerShell-lel vagy a PowerShell működésével kapcsolatos további tudnivalókat a kívánt [SharePoint PowerShell](https://docs.microsoft.com/en-us/powershell/sharepoint/overview?view=sharepoint-ps). 
 
     ```
     $realm = "<Identifier value from the SharePoint on-premises Domain and URLs section in the Azure portal>"
@@ -151,37 +148,37 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
     $ap = New-SPTrustedIdentityTokenIssuer -Name "AzureAD" -Description "SharePoint secured by Azure AD" -realm $realm -ImportTrustCertificate $cert -ClaimsMappings $map,$map2,$map3 -SignInUrl $wsfedurl -IdentifierClaim "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name"
     ```
 
-    Ezután kövesse az alábbi lépéseket ahhoz, hogy az alkalmazás megbízható identitásszolgáltató:
+    Ezután kövesse az alábbi lépéseket az alkalmazás megbízható identitásszolgáltatóra engedélyezése:
 
-    a. A központi felügyelet navigáljon **webalkalmazás kezelése** válassza ki a webalkalmazás az Azure ad-vel biztonságos kívánt.
+    a. Lépjen a központi felügyelet **webalkalmazás kezelése** , és válassza ki a webalkalmazást, amely meg szeretne védeni az Azure ad-ben.
 
-    b. Kattintson a menüszalagon található **hitelesítésszolgáltatókat** , és válassza a zónában, amelyet használni kíván.
+    b. A menüszalagon kattintson **hitelesítésszolgáltatók** , és válassza a zónában, amelyet használni kíván.
 
-    c. Válassza ki **megbízható identitásszolgáltató** és a nevű csak regisztrált azonosítása szolgáltató *AzureAD*.
+    c. Válassza ki **megbízható identitásszolgáltató** , és válassza ki az identitás-szolgáltató csak regisztrált nevű *AzureAD*.
 
-    d. A bejelentkezési oldal URL-cím beállításnál válassza ki a **egyéni bejelentkezési oldal** , és adja meg a "/_trust/" értéket.
+    d. Válassza ki a bejelentkezési oldal URL-cím beállítás **egyéni bejelentkezési oldalon** , és a "/_trust/" értéket.
 
     e. Kattintson az **OK** gombra.
 
     ![A hitelesítésszolgáltató konfigurálása](./media\sharepoint-on-premises-tutorial/fig10-configauthprovider.png)
 
-### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure AD-teszt felhasználó
+### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure ad-ben tesztfelhasználó számára
 
-Ez a szakasz célja a tesztfelhasználó létrehozása az Azure portálon Britta Simon nevezik.
+Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy tesztfelhasználót.
 
-   ![Hozzon létre egy Azure AD-teszt felhasználó][100]
+   ![Hozzon létre egy Azure ad-ben tesztfelhasználó számára][100]
 
 **Tesztfelhasználó létrehozása az Azure AD-ban, hajtsa végre az alábbi lépéseket:**
 
-1. Az Azure portálon a bal oldali ablaktáblán kattintson a **Azure Active Directory** gombra.
+1. Az Azure Portalon, a bal oldali ablaktáblán kattintson a **Azure Active Directory** gombra.
 
     ![Az Azure Active Directory gomb](./media\sharepoint-on-premises-tutorial/create_aaduser_01.png)
 
-2. Azon felhasználók listájának megtekintéséhez keresse fel **felhasználók és csoportok**, és kattintson a **minden felhasználó**.
+2. A felhasználók listájának megjelenítéséhez, lépjen a **felhasználók és csoportok**, és kattintson a **minden felhasználó**.
 
     ![A "felhasználók és csoportok" és "Minden felhasználó" hivatkozások](./media\sharepoint-on-premises-tutorial/create_aaduser_02.png)
 
-3. Megnyitásához a **felhasználói** párbeszédpanel, kattintson a **Hozzáadás** tetején a **minden felhasználó** párbeszédpanel megnyitásához.
+3. Megnyitásához a **felhasználói** párbeszédpanelen kattintson a **Hozzáadás** felső részén a **minden felhasználó** párbeszédpanel bezárásához.
 
     ![A Hozzáadás gombra.](./media\sharepoint-on-premises-tutorial/create_aaduser_03.png)
 
@@ -191,90 +188,115 @@ Ez a szakasz célja a tesztfelhasználó létrehozása az Azure portálon Britta
 
     a. Az a **neve** mezőbe írja be **BrittaSimon**.
 
-    b. Az a **felhasználónév** mezőbe írja be a felhasználó e-mail címe az Britta Simon.
+    b. Az a **felhasználónév** mezőbe írja be a felhasználó Britta Simon e-mail-címét.
 
-    c. Válassza ki a **megjelenítése jelszó** jelölje be a jelölőnégyzetet, és jegyezze fel a megjelenített érték a **jelszó** mezőbe.
+    c. Válassza ki a **jelszó megjelenítése** jelölje be a jelölőnégyzetet, és jegyezze fel a megjelenített érték a **jelszó** mezőbe.
 
     d. Kattintson a **Create** (Létrehozás) gombra.
 
-### <a name="create-a-sharepoint-on-premises-test-user"></a>A helyszíni SharePoint tesztfelhasználó létrehozása
+### <a name="grant-access-to-sharepoint-on-premises-test-user"></a>Hozzáférés engedélyezése a SharePoint helyszíni tesztfelhasználó számára
+
+A felhasználók, akik jelentkezzen be az Azure AD és a SharePoint eléréséhez fog hozzáférést kell adni az alkalmazáshoz az alábbi lépések segítségével állítsa be az engedélyeket a webalkalmazáshoz való hozzáférés.
 
 1. Kattintson a központi felügyelet **Alkalmazáskezelés**.
 
-2. A a **Alkalmazáskezelés** lap a **webalkalmazások** kattintson **webes alkalmazásokat kezeléséhez**.
+2. Az a **Alkalmazáskezelés** lap a **webalkalmazások** területén kattintson **webalkalmazások kezelése**.
 
 3. Kattintson a megfelelő webalkalmazás, majd a **felhasználói házirend**.
 
 4. Kattintson a webalkalmazás-házirend **felhasználó hozzáadása**.
 
-    ![A felhasználó által a név jogcímet keresése](./media\sharepoint-on-premises-tutorial/fig11-searchbynameclaim.png)
+    ![A jogcím nevét a felhasználó keresése](./media\sharepoint-on-premises-tutorial/fig11-searchbynameclaim.png)
 
-5. A a **felhasználó hozzáadása** párbeszédpanelen kattintson a megfelelő zónához **zónák**, és kattintson a **következő**.
+5. Az a **felhasználó hozzáadása** párbeszédpanelen kattintson a megfelelő zónához az **zónák**, és kattintson a **tovább**.
 
-6. Az a **webes alkalmazás-házirend** párbeszédpanel a **felhasználók kiválasztása** területen kattintson a **Tallózás** ikonra.
+6. A a **házirend-webalkalmazás** párbeszédpanel a **felhasználók kiválasztása** területén kattintson a **Tallózás** ikonra.
 
-7. Az a **található** szövegmező, írja be a felhasználó bejelentkezési nevét a könyvtárban, és kattintson a **keresési**. </br>Példa: *demouser@blueskyabove.onmicrosoft.com*.
+7. Az a **található** szövegmezőbe írja be a **felhasználó egyszerű felhasználóneve** érték, amelyhez az Azure AD-ban beállított a SharePoint helyszíni alkalmazás, és kattintson a **keresési**. </br>Példa: *brittasimon@contoso.com*.
 
-8. A listanézetben AzureAD fejléc alatt jelölje ki a name tulajdonság, majd kattintson **Hozzáadás** kattintson **OK** bezárhatja a párbeszédpanelt.
+8. Az Azure ad a listanézet cím alatt válassza ki a name tulajdonság, majd kattintson **Hozzáadás** kattintson **OK** a párbeszédpanel bezárásához.
 
-9. Az engedélyek párbeszédpanelen kattintson **teljes hozzáférés**.
+9. Az engedélyek párbeszédpanelen kattintson a **teljes hozzáférés**.
 
     ![Teljes hozzáférés biztosítása a felhasználói igények](./media\sharepoint-on-premises-tutorial/fig12-grantfullcontrol.png)
 
 10. Kattintson a **Befejezés**, és kattintson a **OK**.
 
-### <a name="fixing-people-picker"></a>Kijavítása személyek kiválasztása
+### <a name="configuring-one-trusted-identity-provider-for-multiple-web-applications"></a>Egy megbízható identitásszolgáltatóra több webalkalmazás konfigurálása
 
-Felhasználók most már be tud jelentkezni a SharePoint 2016 identitásokat az Azure AD, de még vannak a felhasználói élmény fokozása lehetőségeit. Például egy felhasználó keresése közli több keresési eredmények a személyek kiválasztása. Nincs a keresési eredmény az egyes 3 jogcímtípusok, amelyek a jogcím leképezésben lettek létrehozva. Válassza ki azt a felhasználót, a személyek objektumválasztó használata, kell pontosan írja be a felhasználónevet, és válassza ki a **neve** jogcím eredménye.
+A konfiguráció egyetlen webalkalmazás működik, de további konfigurálást igényel, ha több webalkalmazás ugyanazon a megbízható identitásszolgáltatóra használni szeretne. Tegyük fel például, egy webalkalmazás, az URL-cím használatára volt kiterjesztettük `https://portal.contoso.local` , és most szeretné hitelesíteni a felhasználókat `https://sales.contoso.local` is. Ehhez az identitásszolgáltató tartsa tiszteletben a WReply paramétert, és frissítse az alkalmazás regisztrálása az Azure ad-ben a válasz URL-cím hozzáadása frissíteni kell.
 
-![A keresési eredményekben jogcímek](./media\sharepoint-on-premises-tutorial/fig16-claimssearchresults.png)
+1. Az Azure Portalon nyissa meg az Azure AD-címtárban. Kattintson a **alkalmazásregisztrációk**, majd kattintson a **minden alkalmazás megtekintése**. Kattintson a korábban létrehozott alkalmazásra (SharePoint SAML-integráció).
 
-Nem lehet érvényesíteni a megadott értékek keres, ami talál helyesírási hibát vagy a felhasználók véletlenül a nem a megfelelő választás jogcím típusa például hozzárendelni a **vezetékneve** jogcímek. Ez azt előfordulhat, hogy a felhasználók sikeresen hozzáférését az erőforrásokhoz.
+2. Kattintson a **beállítások**.
 
-Ez a forgatókönyv segít, van egy nyílt forráskódú megoldást kínál [AzureCP](https://yvand.github.io/AzureCP/) biztosít egy egyéni jogcím-szolgáltató a SharePoint 2016 számára. Mi felhasználók adja meg, és hajtsa végre fogja használni az Azure AD Graph érvényesítése. További tudnivalókért olvassa el [AzureCP](https://yvand.github.io/AzureCP/).
+3. A beállítások panelen kattintson a **válasz URL-címek**. 
 
-### <a name="assign-the-azure-ad-test-user"></a>Rendelje hozzá az Azure AD-teszt felhasználó
+4. A további webalkalmazás URL-Címének hozzáadása `/_trust/default.aspx` hozzáfűzi az URL-címet (például `https://sales.contoso.local/_trust/default.aspx`), és kattintson a **mentése**.
 
-Ebben a szakaszban engedélyezze Britta Simon szerint a helyi való hozzáférés biztosítása Azure egyszeri bejelentkezéshez használandó.
+5. A SharePoint-kiszolgálóra, nyissa meg a **SharePoint 2016 felügyeleti rendszerhéj** , és hajtsa végre a következő parancsokat, a korábban használt jogkivonat megbízható kibocsátó neve.
+
+    ```
+    $t = Get-SPTrustedIdentityTokenIssuer "AzureAD"
+    $t.UseWReplyParameter=$true
+    $t.Update()
+    ```
+6. A központi felügyelet nyissa meg a webalkalmazást, és engedélyezze a meglévő megbízható identitásszolgáltatóra. Ne felejtse el a bejelentkezési oldal URL-címet is konfigurálhat egy egyéni bejelentkezési oldalon `/_trust/`.
+
+7. A központi felügyelet a webes alkalmazásban kattintson, és válassza **felhasználói házirend**. Adja hozzá a megfelelő engedélyekkel rendelkező felhasználó, ahogyan korábban ebben a cikkben is.
+
+### <a name="fixing-people-picker"></a>Személy kijelölése kijavítása
+
+Felhasználók, már bejelentkezhetnek a SharePoint 2016 identitásokat az Azure ad-ből, de továbbra is vannak, a felhasználói élmény fokozása lehetőségeit. Például egy felhasználó keresése jeleníti több keresési eredmények a személy kijelölése. Nincs minden jogcím leképezése létrehozott 3 jogcímtípusok egy keresési eredményben. Válassza ki a felhasználó a személyválasztója segítségével, kell pontosan írja be a felhasználónevet, és válassza ki a **neve** jogcím-eredményt.
+
+![Jogcímek keresési eredmények](./media\sharepoint-on-premises-tutorial/fig16-claimssearchresults.png)
+
+Nem történik ellenőrzés az értékek, keresse meg, ami elírások vagy véletlenül a nem a megfelelő választás felhasználók jogcím típusa például hozzárendelése a **Vezetéknév** jogcím. Ez megakadályozhatja, hogy felhasználók sikeresen elérik az erőforrásokat.
+
+Ebben a forgatókönyvben nyújtanak, van egy nyílt forráskódú megoldást [AzureCP](https://yvand.github.io/AzureCP/) , amely egy egyéni jogcímszolgáltatótól biztosít a SharePoint 2016. Mi felhasználók adja meg, és hajtsa végre fogja használni az Azure AD Graph érvényesítése. További információ: [AzureCP](https://yvand.github.io/AzureCP/).
+
+### <a name="assign-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
+
+Ebben a szakaszban engedélyezze Britta Simon ehhez biztosítson hozzáférést a helyszíni SharePoint Azure egyszeri bejelentkezés használatára.
 
 ![A felhasználói szerepkör hozzárendelése][200]
 
-**A helyi Britta Simon rendel, hajtsa végre az alábbi lépéseket:**
+**Britta Simon rendel a helyi Sharepointot, hajtsa végre az alábbi lépéseket:**
 
-1. Az Azure-portálon, nyissa meg az alkalmazások nézet, majd nyissa meg a könyvtár nézetet, és navigáljon **vállalati alkalmazások** kattintson **összes alkalmazás**.
+1. Az Azure Portalon nyissa meg az alkalmazások megtekintése, és a könyvtár nézetben keresse meg és nyissa meg **vállalati alkalmazások** kattintson **minden alkalmazás**.
 
     ![Felhasználó hozzárendelése][201]
 
-2. Az alkalmazások listában válassza ki a **helyszíni SharePoint**.
+2. Az alkalmazások listájában jelölje ki a **helyszíni SharePoint-**.
 
     ![Az alkalmazások listáját a SharePoint-hivatkozás](./media\sharepoint-on-premises-tutorial/tutorial_sharepointonpremises_app.png)
 
-3. A bal oldali menüben kattintson a **felhasználók és csoportok**.
+3. A bal oldali menüben kattintson **felhasználók és csoportok**.
 
     ![A "Felhasználók és csoportok" hivatkozásra][202]
 
-4. Kattintson a **Hozzáadás** gombra. Válassza ki **felhasználók és csoportok** a **hozzáadása hozzárendelés** párbeszédpanel.
+4. Kattintson a **Hozzáadás** gombra. Válassza ki **felhasználók és csoportok** a **hozzárendelés hozzáadása** párbeszédpanel.
 
-    ![A hozzárendelés hozzáadása panelen][203]
+    ![A hozzárendelés hozzáadása panel][203]
 
 5. A **felhasználók és csoportok** párbeszédablakban válassza **Britta Simon** a felhasználók listában.
 
-6. Kattintson a **válasszon** gombra **felhasználók és csoportok** párbeszédpanel.
+6. Kattintson a **kiválasztása** gombot **felhasználók és csoportok** párbeszédpanel.
 
-7. Kattintson a **hozzárendelése** gombra **hozzáadása hozzárendelés** párbeszédpanel.
+7. Kattintson a **hozzárendelése** gombot **hozzárendelés hozzáadása** párbeszédpanel.
 
 ### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata
 
-Ebben a szakaszban az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen tesztelése.
+Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 
-Ha a SharePoint a helyi csempe a hozzáférési panelen gombra kattint, szerezheti be automatikusan bejelentkezett a SharePoint a helyi alkalmazásba.
-A hozzáférési Panel kapcsolatos további információkért lásd: [a hozzáférési Panel bemutatása](../active-directory-saas-access-panel-introduction.md).
+Ha a hozzáférési panelen, a SharePoint helyszíni csempére kattint, szerezheti be automatikusan bejelentkezett a SharePoint helyszíni alkalmazásba.
+A hozzáférési panelen kapcsolatos további információkért lásd: [Bevezetés a hozzáférési Panel használatába](../active-directory-saas-access-panel-introduction.md).
 
 ## <a name="additional-resources"></a>További források
 
-* [Az Azure Active Directoryval SaaS-alkalmazások integrációjával kapcsolatos bemutatók felsorolása](tutorial-list.md)
-* [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryban?](../manage-apps/what-is-single-sign-on.md)
-
+* [SaaS-alkalmazások integrálása az Azure Active Directory foglalkozó oktatóanyagok listája](tutorial-list.md)
+* [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
+* [A SharePoint Server-hitelesítés az Azure AD-vel](https://docs.microsoft.com/en-us/office365/enterprise/using-azure-ad-for-sharepoint-server-authentication)
 
 <!--Image references-->
 

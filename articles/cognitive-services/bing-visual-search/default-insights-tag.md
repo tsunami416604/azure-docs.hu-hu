@@ -1,7 +1,7 @@
 ---
-title: Alapértelmezett címke insights |} Microsoft Docs
+title: Alapértelmezett címke insights |} A Microsoft Docs
 titleSuffix: Bing Web Search APIs - Cognitive Services
-description: Az alapértelmezett insights Visual keresési visszaadó kép ismerteti.
+description: Az alapértelmezett insights vizuális keresés kapcsolatos egy képet visszaadó részletesen ismerteti.
 services: cognitive-services
 author: swhite-msft
 manager: rosh
@@ -10,16 +10,16 @@ ms.technology: bing-visual-search
 ms.topic: article
 ms.date: 04/17/2018
 ms.author: scottwhi
-ms.openlocfilehash: c0bf51ab86e2ba99aeb859ea415e1afd355a86f2
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: a0ced7076c566c819f9e3f7abc5e2fa3930fa0b3
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35348702"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39004301"
 ---
 # <a name="default-insights-tag"></a>Az alapértelmezett insights címke
 
-Az alapértelmezett insights címke, a másikat a `displayName` mező üres karakterláncot kell beállítani. Az alábbi példa alapértelmezett insights (műveletek) lehetséges listáját jeleníti meg.
+Az alapértelmezett insights címke: rendelkezőt a `displayName` mező értéke üres karakterlánc. Az alábbi példa az alapértelmezett insights (műveletek) lehetséges listáját jeleníti meg. A műveleteknek a listája, a válasz tartalmazza a rendszerkép függ. És az egyes műveletek tekintetében a tulajdonságok listája lemezképek szerint változnak, ezért ellenőrizze, hogy a tulajdonság előtt próbálja meg használni, előfordulhat, hogy.
 
 ```json
 {
@@ -98,9 +98,9 @@ Az alapértelmezett insights címke, a másikat a `displayName` mező üres kara
 }
 ```
 
-## <a name="pagesincluding-insight"></a>PagesIncluding felmérése
+## <a name="pagesincluding-insight"></a>PagesIncluding insight
 
-A PagesIncluding insight, amelyek közé tartoznak a lemezkép listáját tartalmazza. Ténylegesen kép objektumok listájának és a `hostPageUrl` mező tartalmaz ahhoz a weboldalhoz, amely tartalmazza a kép URL-CÍMÉT. Példa a használatra, lásd: [PagesIncluding példa](./bing-insights-usage.md#pagesincluding-insight-example). 
+A PagesIncluding elemzés, amelyek közé tartozik a lemezkép listáját tartalmazza. Ténylegesen kép objektum listáját és a `hostPageUrl` mező tartalmazza a weblapra, amely tartalmazza a kép URL-CÍMÉT. Példa a használatra, lásd: [PagesIncluding példa](./bing-insights-usage.md#pagesincluding-insight-example). 
 
 ```json
       {
@@ -137,9 +137,9 @@ A PagesIncluding insight, amelyek közé tartoznak a lemezkép listáját tartal
       }
 ```
 
-## <a name="shoppingsources-insight"></a>ShoppingSources felmérése
+## <a name="shoppingsources-insight"></a>ShoppingSources insight
 
-A ShoppingSources insight webhelyek, ha a felhasználó vásárolhatja meg az elemet, az ábrán látható listáját tartalmazza. A weblap, ahol a felhasználó elem megvásárlásához előfordulhat, hogy az URL-cím, az ár, az elem és minősítési vagy felülvizsgálati adatok közé tartoznak ajánlatok listája Példa a használatra, lásd: [ShoppingSources példa](./bing-insights-usage.md#shoppingsources-insight-example).
+A ShoppingSources elemzés webhely, ahol a felhasználó vásárolhatja meg a cikk a képen látható listáját tartalmazza. Ajánlatok listája tartalmazza a weblapra, ahol a felhasználó előfordulhat, hogy vásárol, az elem URL-CÍMÉT, az ár elemet, és a minősítési vagy felülvizsgálat részletei. Példa a használatra, lásd: [ShoppingSources példa](./bing-insights-usage.md#shoppingsources-insight-example).
 
 ```json
       {
@@ -167,9 +167,9 @@ A ShoppingSources insight webhelyek, ha a felhasználó vásárolhatja meg az el
 ```
 
 
-## <a name="moresizes-insight"></a>MoreSizes felmérése
+## <a name="moresizes-insight"></a>Insight moreSizes
 
-A MoreSizes insight – a Bing az interneten található kép méretét (kisebb vagy nagyobb) száma (lásd a `availableSizesCount` mező).
+A MoreSizes elemzés azonosítja a méretek (nagyobb vagy kisebb), amely az interneten található Bing obrázku száma (lásd a `availableSizesCount` mezőben).
 
 ```json
       {
@@ -202,9 +202,9 @@ A MoreSizes insight – a Bing az interneten található kép méretét (kisebb 
       },
 ```
 
-## <a name="visualsearch-insight"></a>VisualSearch felmérése
+## <a name="visualsearch-insight"></a>VisualSearch insight
 
-A VisualSearch insight tartalmaz olyan lemezképkészlet, amellyel vizuálisan hasonlóak az eredeti kép (tartalmazza a tartalmat az eredeti ábrának hasonló). Példa a használatra, lásd: [VisualSearch példa](./bing-insights-usage.md#visualsearch-insight-example).
+A VisualSearch elemzés az eredeti képet (tartalmazza a tartalmat, amely az eredeti képen látható tartalom hasonló) vizuálisan hasonló képek listáját tartalmazza. Példa a használatra, lásd: [VisualSearch példa](./bing-insights-usage.md#visualsearch-insight-example).
 
 ```json
       {
@@ -242,9 +242,9 @@ A VisualSearch insight tartalmaz olyan lemezképkészlet, amellyel vizuálisan h
       }
 ```
 
-## <a name="recipes-insight"></a>Receptet felmérése
+## <a name="recipes-insight"></a>Insight receptek
 
-A receptet insight, amelyek közé tartozik egy receptet, hogy az ábrán látható a étele listáját tartalmazza. Példa a használatra, lásd: [receptet példa](./bing-insights-usage.md#recipes-insight-example).
+A receptek elemzés, amelyek tartalmazzák a recept, hogy az a képen látható élelmiszer listáját tartalmazza. Példa a használatra, lásd: [receptek példa](./bing-insights-usage.md#recipes-insight-example).
 
 ```json
       {
@@ -277,9 +277,9 @@ A receptet insight, amelyek közé tartozik egy receptet, hogy az ábrán látha
 ```
 
 
-## <a name="imagebyid-insight"></a>ImageById felmérése
+## <a name="imagebyid-insight"></a>ImageById insight
 
-A ImageById betekintést nyújt egy `Image` a kép insights a kért objektum.
+A ImageById elemzés biztosít egy `Image` a kép insights a kért objektum.
 
 ```json
       {
@@ -313,9 +313,9 @@ A ImageById betekintést nyújt egy `Image` a kép insights a kért objektum.
 ```
 
 
-## <a name="productvisualsearch-insight"></a>ProductVisualSearch felmérése
+## <a name="productvisualsearch-insight"></a>ProductVisualSearch insight
 
-A ProductVisualSearch insight a lemezképek az eredeti ábrának termékek kijelölése hasonló termékek listáját tartalmazza. A `insightsMetadata` mező tartalmazhat ajánlatokat, ahol a termék- és a termék vásárolhat. 
+A ProductVisualSearch elemzés termékek, az eredeti képen látható termékek vizuálisan hasonló képek listáját tartalmazza. A `insightsMetadata` mező tartalmazhat ajánlatokat, ahol a termék- és a termék ára vásárolhat. 
 
 ```json
       {
@@ -344,6 +344,9 @@ A ProductVisualSearch insight a lemezképek az eredeti ábrának termékek kijel
                 "shoppingSourcesCount" : 1,
                 "recipeSourcesCount" : 0,
                 "aggregateOffer" : {
+                  "name":"4-Piece Kitchen Package with...",
+                  "priceCurrency":"USD",
+                  "lowPrice":2756,
                   "offers" : [
                     {
                       "name" : "4-Piece Kitchen Package with...",
@@ -360,7 +363,8 @@ A ProductVisualSearch insight a lemezképek az eredeti ábrának termékek kijel
                       "availability" : "InStock",
                       "lastUpdated" : "2018-02-20T00:00:00.0000000"
                     }
-                  ]
+                  ],
+                  "offerCount":1
                 },
                 "pagesIncludingCount" : 4,
                 "availableSizesCount" : 2
@@ -374,9 +378,9 @@ A ProductVisualSearch insight a lemezképek az eredeti ábrának termékek kijel
 ```
 
 
-## <a name="relatedsearches-insight"></a>RelatedSearches felmérése
+## <a name="relatedsearches-insight"></a>RelatedSearches insight
 
-A RelatedSearches insight kapcsolódó mások számára (a többi felhasználó keresési kifejezések alapján) végrehajtott keresések listáját tartalmazza. Példa a használatra, lásd: [RelatedSearches példa](./bing-insights-usage.md#relatedsearches-insight-example).
+A RelatedSearches elemzés (a többi felhasználó keresési kifejezések alapján) a mások által végrehajtott kapcsolódó keresések listáját tartalmazza. Példa a használatra, lásd: [RelatedSearches példa](./bing-insights-usage.md#relatedsearches-insight-example).
 
 
 ```json
@@ -399,9 +403,9 @@ A RelatedSearches insight kapcsolódó mások számára (a többi felhasználó 
 ```
 
 
-## <a name="documentlevelsuggestions-insight"></a>DocumentLevelSuggestions felmérése
+## <a name="documentlevelsuggestions-insight"></a>DocumentLevelSuggestions insight
 
-A DocumentLevelSuggestions insight kép tartalma alapján javasolt kifejezéseket tartalmaz. 
+A DocumentLevelSuggestions elemzés a kép tartalma alapján javasolt keresési kifejezések listáját tartalmazza. 
 
 ```json
       {
@@ -426,6 +430,6 @@ A DocumentLevelSuggestions insight kép tartalma alapján javasolt kifejezéseke
 
 ## <a name="next-steps"></a>További lépések
 
-Tekintse meg a példák hogyan jelenjen meg a Bing előfordulhat, hogy a visual elemzéseket (lásd: [példák a Bing insights – használat](bing-insights-usage.md)).
+Tekintse meg a Bing hogyan jeleníthet meg a vizuális elemzések példák (lásd: [példák a Bing insights – használat](bing-insights-usage.md)).
 
-Használatának gyors megkezdése az első kérelem, tekintse meg a quickstarts: [C#](quickstarts/csharp.md) | [Java](quickstarts/java.md) | [node.js](quickstarts/nodejs.md)  |  [Python](quickstarts/python.md).
+Gyorsan megkezdheti az első kérelmét, tekintse meg a rövid útmutató: [C#](quickstarts/csharp.md) | [Java](quickstarts/java.md) | [node.js](quickstarts/nodejs.md)  |  [Python](quickstarts/python.md).

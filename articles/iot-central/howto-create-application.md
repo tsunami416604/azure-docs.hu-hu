@@ -1,55 +1,55 @@
 ---
-title: Azure IoT központi alkalmazás létrehozása |} Microsoft Docs
-description: Egy rendszergazdaként hogyan hozhat létre egy Azure IoT központi alkalmazást.
+title: Azure IoT Central-alkalmazás létrehozása | Microsoft Docs
+description: Egy rendszergazdaként hogyan hozhat létre az Azure IoT Central alkalmazáshoz.
+services: iot-central
+ms.service: iot-central
 author: tbhagwat3
 ms.author: tanmayb
-ms.date: 03/20/2018
+ms.date: 07/09/2018
 ms.topic: conceptual
-ms.service: iot-central
-services: iot-central
 manager: peterpr
-ms.openlocfilehash: 39992a1cc36d00a64ee6430cad5f24af3e1e1157
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 1fbe3ea142e1dd738cd341f57d2b8f48b539ac75
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34629286"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39003766"
 ---
-# <a name="create-your-azure-iot-central-application"></a>Az Azure IoT központi-alkalmazás létrehozása
+# <a name="create-your-azure-iot-central-application"></a>Azure IoT Central-alkalmazás létrehozása
 
-A Microsoft Azure IoT központi alkalmazás létrehozása a [alkalmazás létrehozása](https://apps.microsoftiotcentral.com/create) lap. Azure IoT központi alkalmazás létrehozása, kell végrehajtani ezen az oldalon a mezőket, és válassza a **létrehozása**. Ez a cikk további információ az egyes mezőket tartalmaz.
+A Microsoft Azure IoT központi alkalmazás létrehozása a [alkalmazás létrehozása](https://apps.microsoftiotcentral.com/create) lapot. Hozzon létre egy Azure IoT Central alkalmazáshoz, kell ezen a lapon az összes mezőt, és válassza a **létrehozás**. További információt az alábbi mezők mindegyike rendelkezik találja.
 
-![Alkalmazások lap létrehozása](media\howto-create-application\image1.png)
+![Alkalmazás-lap létrehozása](media\howto-create-application\image1.png)
 
-## <a name="payment-plan"></a>Támogatási terv
+## <a name="payment-plan"></a>Fizetési lehetőség
 
-A próbaverzió vagy egy fizetős alkalmazást is létrehozhat. További információ a próba- és fizetős alkalmazások ezen a lapon.
+Létrehozhat egy próba vagy a fizetős alkalmazásra. A próbaverziós és fizetős alkalmazások többet [Azure IoT Central díjszabását ismertető lapon](https://azure.microsoft.com/pricing/details/iot-central/)...
 
 ## <a name="application-name"></a>Alkalmazás neve
 
-Az alkalmazás neve jelenik meg a **alkalmazáskezelő** lap és minden Azure IoT központi alkalmazáson belül. Lehetősége van az Azure IoT központi alkalmazás bármely nevét. Válasszon egy nevet, amely Önnek és mások számára a szervezetében.
+Az alkalmazás neve jelenik meg a **alkalmazáskezelő** lapot, és minden egyes Azure IoT Central alkalmazáshoz. Kiválaszthatja, hogy bármilyen nevet az Azure IoT Central alkalmazáshoz. Válasszon egy nevet, amely logikus Ön és mások számára a szervezetben.
 
 ## <a name="application-url"></a>Alkalmazás URL-címe
 
-Az alkalmazás URL-címe a hivatkozásra kattintva az alkalmazást. A böngészőben szeretné menteni a könyvjelzőt, vagy ossza meg másokkal.
+Az alkalmazás URL-je a hivatkozásra kattintva az alkalmazás. A böngészőben szeretné menteni a könyvjelzőt, vagy ossza meg másokkal.
 
-Amikor az alkalmazás nevét, az alkalmazás URL-cím jön létre automatikusan. Tetszés szerint választhat egy másik URL-címet az alkalmazáshoz. Minden Azure IoT központi URL-Címének egyedinek kell lennie. Ha úgy dönt, az URL-cím már használatban van egy hibaüzenetet lát.
+Ad meg a nevet az alkalmazásnak, amikor az alkalmazás URL-címe, automatikusan létrehozott. Igény szerint választhat egy másik URL-címet az alkalmazás. Minden egyes Azure IoT Central URL-cím az Azure IoT Central belül egyedinek kell lennie. Akkor egy hibaüzenet jelenik meg, ha úgy dönt, az URL-cím már foglalt.
 
 ## <a name="directory"></a>Címtár
 
 Csak a fizetős alkalmazások.
 
-Válassza ki az Azure Active Directory-bérlő hozhat létre Azure IoT központi alkalmazást. Az Azure Active Directory-bérlő felhasználói identitások hitelesítő adatokat és más szervezeti adatait tartalmazza. Lehet, hogy több Azure-előfizetéssel társítva van egy egyetlen Azure Active Directory-bérlő.
+Válassza ki az Azure Active Directory-bérlő, hozhat létre Azure IoT Central-alkalmazást. Az Azure Active Directory-bérlő tartalmazza a felhasználói identitásokat, hitelesítő adatok és más szervezeti adatokat. Több Azure-előfizetéssel is társítható egy egyetlen Azure Active Directory-bérlő.
 
-Ha az Azure Active Directory-bérlő nem rendelkezik, egy jön létre az Ön Azure-előfizetés létrehozásakor.
+Az Azure Active Directory-bérlő nem rendelkezik, egy létrejön, amikor az Azure-előfizetés létrehozása.
 
 További tudnivalókért lásd: [Azure Active Directory](https://docs.microsoft.com/azure/active-directory/).
 
 ## <a name="azure-subscription"></a>Azure-előfizetés
 
-Azure-előfizetés eszközzel hozhat létre Azure services példányát. Az Azure IoT központi automatikusan rendelkezik hozzáféréssel az összes Azure-előfizetések talál, és a legördülő listában megjeleníti azokat a **alkalmazás létrehozása** lap. Válassza ki az Azure-előfizetés hozhat létre egy új Azure IoT központi alkalmazást.
+Azure-előfizetés lehetővé teszi a példányok az Azure-szolgáltatások létrehozásához. Az Azure IoT Central automatikusan megkeresi a hozzáfér az összes Azure-előfizetések, és megjeleníti őket a legördülő listában a **alkalmazás létrehozása** lapot. Válassza ki az új Azure IoT központi alkalmazás létrehozása az Azure-előfizetés.
 
-Ha nem rendelkezik Azure-előfizetéssel, létrehozhat egy ezen a lapon. Miután létrehozta az Azure-előfizetés, lépjen vissza a **alkalmazás létrehozása** lap. Megjelenik az új előfizetés a **Azure-előfizetés** legördülő listán.
+Ha nem rendelkezik Azure-előfizetéssel, létrehozhat egyet a a [oldala az Azure-előfizetési](https://aka.ms/createazuresubscription). Miután létrehozta az Azure-előfizetést, lépjen vissza a **alkalmazás létrehozása** lapot. Az új előfizetés megjelenik a **Azure-előfizetés** listából.
 
 További tudnivalókért lásd: [Azure-előfizetések](https://docs.microsoft.com/azure/guides/developer/azure-developer-guide#understanding-accounts-subscriptions-and-billing).
 
@@ -57,28 +57,28 @@ További tudnivalókért lásd: [Azure-előfizetések](https://docs.microsoft.co
 
 Csak a fizetős alkalmazások.
 
-Válassza ki a régiót, hol szeretné létrehozni az Azure IoT központi alkalmazást. Válasszon általában a régió, amely fizikailag közelebb az eszközök az optimális teljesítmény eléréséhez.
+Válassza ki a régiót, ahol szeretné az Azure IoT központi alkalmazás létrehozása. Általában a fizikailag az optimális teljesítmény eléréséhez az eszközök legközelebb eső régiót kell választania.
 
-További tudnivalókért lásd: [Azure-régiók](https://docs.microsoft.com/en-us/azure/guides/developer/azure-developer-guide#azure-regions).
+További tudnivalókért lásd: [Azure-régiók](https://docs.microsoft.com/azure/guides/developer/azure-developer-guide#azure-regions).
 
-Megtekintheti a régiókban, ahol Azure IoT központi érhető el a [régiónként rendelkezésre álló termékek](https://azure.microsoft.com/regions/services/) lap.
+Láthatja, hogy a régiók, amelyek az Azure IoT Central érhető el a [elérhető termékek régiók szerint](https://azure.microsoft.com/regions/services/) lapot.
 
 > [!Note]
-> Ha úgy dönt, hogy a régió, később nem helyezhető az alkalmazás más régióban.
+> Ha úgy dönt, a régiót, később nem lehet áthelyezni az alkalmazás egy másik régióba.
 
-## <a name="application-template"></a>Alkalmazássablon
+## <a name="application-template"></a>Alkalmazás sablon
 
-Az új Azure IoT központi alkalmazáshoz a rendelkezésre álló sablonok közül választhat. Alkalmazássablonok például az eszköz sablonok előre meghatározott elemeket tartalmazhat, és segítséget nyújtanak az irányítópultok első lépések:
+A rendelkezésre álló sablonok közül választhat az új Azure IoT Central alkalmazáshoz. Alkalmazássablonok tartalmazhat például eszközsablonok előre meghatározott elemek, és az irányítópultok segítségével első lépései.
 
-| Alkalmazássablon | Leírás |
+| Alkalmazás sablon | Leírás |
 | -------------------- | ----------- |
-| Egyéni alkalmazás   | Alkalmazást hoz létre üres ahhoz, hogy a saját eszköz sablonok és eszközök feltöltéséhez. |
-| A minta Contoso       | Alkalmazást hoz létre, amely tartalmazza az eszköz sablont egy egyszerű csatlakoztatott eszközön. A sablon használatával megismerésére Azure IoT központi. |
-| A minta Devkits       | Alkalmazást hoz létre az eszköz sablonok készen áll a egy MXChip vagy málna Pi eszköz csatlakozhat. Ha az eszköz a kód kísérletezés eszköz a fejlesztők a sablon használatához. |
+| Egyéni alkalmazás   | Létrehoz egy üres alkalmazást, hogy adja meg a saját eszköz sablonokat és eszközöket. |
+| Minta Contoso       | Létrehoz egy alkalmazást, amely tartalmaz egy egyszerű csatlakoztatott eszköz eszköz-sablont. Ez a sablon használatával első lépései az Azure IoT Central feltárása. |
+| Minta Devkits       | Létrehoz egy alkalmazás eszközsablonok készen áll, hogy egy MXChip vagy a Raspberry Pi-eszköz kapcsolódjon. Sablon használata, ha az eszköz a kódra kísérletezés eszköz a fejlesztők. |
 
 ## <a name="next-steps"></a>További lépések
 
-Most, hogy rendelkezik megtudta, hogyan hozhat létre egy Azure IoT központi alkalmazást, ez a javasolt következő lépésre:
+Most, hogy megtanulhatta, hogyan hozhat létre az Azure IoT Central alkalmazáshoz, Íme a javasolt következő lépésre:
 
 > [!div class="nextstepaction"]
 > [Az alkalmazás felügyelete](howto-administer.md)
