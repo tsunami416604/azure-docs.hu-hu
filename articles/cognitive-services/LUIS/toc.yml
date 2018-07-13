@@ -201,8 +201,6 @@
           href: luis-prebuilt-entities.md
         - name: Tartományok használata
           href: luis-how-to-use-prebuilt-domains.md
-        - name: Cortana használata
-          href: luis-how-to-cortana-prebuilt-app.md
     - name: Alkalmazás kezelése
       items:
         - name: Az irányítópult használata
@@ -271,8 +269,6 @@
           href: luis-reference-prebuilt-url.md
     - name: Előre összeállított tartományhivatkozás
       href: luis-reference-prebuilt-domains.md
-    - name: Előre összeállított Cortana-alkalmazáshivatkozás
-      href: luis-reference-cortana-prebuilt.md
     - name: 2-es verziójú API-k létrehozása
       href: 'https://aka.ms/luis-authoring-apis'
     - name: 2-es verziójú végponti API

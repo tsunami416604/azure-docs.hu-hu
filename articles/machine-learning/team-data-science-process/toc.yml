@@ -218,8 +218,6 @@
           items:
             - name: Áttekintés
               href: create-features.md
-            - name: Pandas használata
-              href: create-features-blob.md
             - name: SQL + Python használata
               href: create-features-sql-server.md
             - name: Hive-lekérdezések használata
