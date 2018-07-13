@@ -1,0 +1,52 @@
+- name: Azure Firewall-dokumentáció
+  href: index.yml
+- name: Áttekintés
+  items:
+    - name: Mi az Azure Firewall?
+      href: overview.md
+- name: Oktatóanyagok
+  items:
+    - name: 1. Üzembe helyezés és konfigurálás
+      href: tutorial-firewall-deploy-portal.md
+    - name: 2. Diagnosztikai naplók monitorozása
+      href: tutorial-diagnostics.md
+- name: Példák
+  items:
+    - name: Azure PowerShell
+      href: sample-powershell.md
+- name: Útmutatók
+  items:
+    - name: Regisztráció a nyilvános előzetes verzióra
+      href: public-preview.md
+    - name: Üzembe helyezés sablon használatával
+      href: deploy-template.md
+- name: Referencia
+  items:
+    - name: Azure CLI
+      href: /cli/azure/network
+    - name: Azure PowerShell
+      href: /powershell/azure/overview
+    - name: .NET
+      href: /dotnet/api
+    - name: Java
+      href: /java/api
+    - name: Node.js
+      href: 'https://azure.microsoft.com/develop/nodejs/#azure-sdk'
+    - name: Python
+      href: 'https://azure.microsoft.com/develop/python/'
+    - name: REST
+      href: /rest/api/firewall
+    - name: Azure Resource Manager
+      href: ../azure-resource-manager/resource-group-overview.md
+- name: További források
+  items:
+    - name: Szerzői sablonok
+      href: ../azure-resource-manager/resource-group-authoring-templates.md
+    - name: Azure-ütemterv
+      href: 'https://azure.microsoft.com/roadmap/'
+    - name: Közösségi sablonok
+      href: 'https://azure.microsoft.com/documentation/templates'
+    - name: Díjszabás
+      href: 'https://azure.microsoft.com/pricing/details/#Linux'
+    - name: Régiónkénti rendelkezésre állás
+      href: 'https://azure.microsoft.com/regions/services/'

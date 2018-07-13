@@ -28,7 +28,7 @@
 - name: Példák
   items:
     - name: Azure-kódminták
-      href: 'https://azure.microsoft.com/resources/samples/?service=media-services'
+      href: 'https://azure.microsoft.com/resources/samples/?sort=0&service=media-services&term=v3'
     - name: Azure CLI
       href: cli-samples.md
 - name: Alapelvek
@@ -95,12 +95,14 @@
       href: 'https://docs.microsoft.com/en-us/javascript/api/azure-arm-mediaservices/index?view=azure-node-latest'
     - name: Eseménysémák
       href: media-services-event-schemas.md
-    - name: DRM-licencsémák
+    - name: DRM-licencek
       items:
         - name: PlayReady-licencsablon
           href: playready-license-template-overview.md
         - name: Widevine-licencsablon
           href: widevine-license-template-overview.md
+        - name: FairPlay-licenckövetelmények
+          href: fairplay-license-overview.md
 - name: További források
   items:
     - name: Azure-ütemterv

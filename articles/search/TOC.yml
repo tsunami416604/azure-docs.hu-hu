@@ -7,18 +7,10 @@
 - name: Gyors útmutatók
   expanded: true
   items:
-    - name: A kognitív keresés kipróbálása
-      href: cognitive-search-quickstart-blob.md
     - name: Szolgáltatás létrehozása
       href: search-create-service-portal.md
-    - name: Portál
-      items:
-        - name: Index létrehozása
-          href: search-create-index-portal.md
-        - name: Adatok importálása
-          href: search-import-data-portal.md
-        - name: Keresési ablak
-          href: search-explorer.md
+    - name: A kognitív keresés kipróbálása
+      href: cognitive-search-quickstart-blob.md
     - name: .NET
       items:
         - name: Index létrehozása
@@ -39,18 +31,18 @@
           href: search-fiddler.md
 - name: Oktatóanyagok
   items:
+    - name: Beépített eszközök használata
+      href: search-get-started-portal.md
     - name: Kognitív keresés fejlesztése
       href: cognitive-search-tutorial-blob.md
-    - name: Az Azure SQL Database indexelése
-      href: search-indexer-tutorial.md
     - name: Azure-blobok indexelése
       href: search-semi-structured-data.md
+    - name: Az Azure SQL Database indexelése
+      href: search-indexer-tutorial.md
     - name: Szinonimák felvétele a .NET-ben
       href: search-synonyms-tutorial-sdk.md
     - name: Automatikus kitöltés felvétele a .NET-ben
       href: search-autocomplete-tutorial.md
-    - name: Útmutató a Portal használatához
-      href: search-get-started-portal.md
 - name: Példák
   items:
     - name: Azure-kódminták
@@ -129,6 +121,8 @@
       items:
         - name: Index definíciója
           href: search-what-is-an-index.md
+        - name: Index létrehozása (portál)
+          href: search-create-index-portal.md
         - name: Elemzők
           items:
             - name: Szövegelemzők
@@ -151,6 +145,8 @@
       items:
         - name: Leküldéses vagy Lekéréses indexelés
           href: search-what-is-data-import.md
+        - name: Importálási varázsló (portál)
+          href: search-import-data-portal.md
         - name: Index újraépítése
           href: search-howto-reindex.md
         - name: Nagy adatkészletek indexelése
@@ -181,6 +177,8 @@
       items:
         - name: Alapszintű lekérdezési konstrukció
           href: search-query-overview.md
+        - name: Keresési ablak (portál)
+          href: search-explorer.md
         - name: Egyszerű lekérdezési szintaxis
           href: 'https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search'
         - name: Lucene lekérdezési szintaxis

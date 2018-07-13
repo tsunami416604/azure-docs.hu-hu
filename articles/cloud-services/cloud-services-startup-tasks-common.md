@@ -1,9 +1,9 @@
 ---
-title: Cloud Services közös indítási feladatok |} Microsoft Docs
-description: Érdemes lehet a felhőalapú szolgáltatások webes szerepkör vagy a feldolgozói szerepkör végrehajtására közös indítási feladatok néhány példát biztosít.
+title: Gyakori indítási feladatok Cloud Serviceshez |} A Microsoft Docs
+description: Gyakori indítási feladatok végrehajtásához a cloud services webes szerepkör vagy a feldolgozói szerepkör érdemes példákat.
 services: cloud-services
 documentationcenter: ''
-author: Thraka
+author: jpconnock
 manager: timlt
 editor: ''
 ms.assetid: a7095dad-1ee7-4141-bc6a-ef19a6e570f1
@@ -13,25 +13,25 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/18/2017
-ms.author: adegeo
-ms.openlocfilehash: cee23da5b089b02bfc0ef10afd60f0f2272585b1
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: jeconnoc
+ms.openlocfilehash: 0737738bfd0ab27898631263f57302d15ee11d53
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23843699"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39006546"
 ---
-# <a name="common-cloud-service-startup-tasks"></a>A felhőalapú szolgáltatás indítási gyakori feladatok
-A cikkben néhány olyan gyakori indítási feladatok érdemes lehet végrehajtania a felhőalapú szolgáltatás. Használhatja az indítási feladatok műveletek végrehajtásához, a szerepkör indítása előtt. Végrehajtani kívánt műveletek közé tartozik egy összetevő telepítésével, COM-összetevők regisztrálása, beállításkulcsok vagy hosszú ideig futó folyamat elindítása. 
+# <a name="common-cloud-service-startup-tasks"></a>Gyakori Felhőszolgáltatás indítási feladatok
+Ez a cikk példákat néhány gyakori indítási feladatok, érdemes lehet végrehajtani a cloud service-ben. Indítási feladatok segítségével hajtsa végre a műveleteket a szerepkör elindítása előtt. Esetlegesen végrehajtani kívánt műveletek közé tartozik egy összetevő telepítése, COM-összetevők regisztrálása, beállításkulcsokat vagy hosszú ideig futó folyamat indítása. 
 
-Lásd: [Ez a cikk](cloud-services-startup-tasks.md) indítási feladatok működése, és kifejezetten hogyan hozza létre a bejegyzéseket, amelyek meghatározzák egy indítási tevékenységhez.
+Lásd: [Ez a cikk](cloud-services-startup-tasks.md) indítási feladatok működését, és kifejezetten a bejegyzéseket, amelyek meghatározzák egy indítási feladat létrehozásához.
 
 > [!NOTE]
-> Indítási feladatok nem alkalmazhatók, a virtuális gépek, csak a felhőalapú szolgáltatás webes és feldolgozói szerepköröket.
+> Indítási feladatok nem vonatkoznak, a virtuális gépek, csak felhőalapú szolgáltatás webes és feldolgozói szerepkörök.
 > 
 
-## <a name="define-environment-variables-before-a-role-starts"></a>Adja meg a környezeti változókat szerepkör indítása előtt
-Ha a környezeti változók egy adott feladat definiálva van szüksége, használja a [környezet] elem belül a [feladat] elem.
+## <a name="define-environment-variables-before-a-role-starts"></a>Környezeti változókat határozhat meg, a szerepkör elindítása előtt
+Ha egy adott tevékenységhez meghatározott környezeti változók van szüksége, használja a [környezet] elem belül a [Tevékenység] elemet.
 
 ```xml
 <ServiceDefinition name="MyService" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceDefinition">
@@ -48,7 +48,7 @@ Ha a környezeti változók egy adott feladat definiálva van szüksége, haszn�
 </ServiceDefinition>
 ```
 
-Változók is használhatja a [érvényes Azure XPath értékét](cloud-services-role-config-xpath.md) kell hivatkoznia, valamit a központi telepítésről. Használata helyett a `value` attribútumot, adja meg a [RoleInstanceValue] gyermekelemet.
+Változók is használhatja a [érvényes Azure XPath értéket](cloud-services-role-config-xpath.md) való hivatkozáshoz az üzembe helyezéssel kapcsolatos hiba. Használata helyett a `value` attribútumot, meghatározása egy [RoleInstanceValue] gyermekelemet.
 
 ```xml
 <Variable name="PathToStartupStorage">
@@ -57,23 +57,23 @@ Változók is használhatja a [érvényes Azure XPath értékét](cloud-services
 ```
 
 
-## <a name="configure-iis-startup-with-appcmdexe"></a>IIS indítási AppCmd.exe konfigurálása
-A [AppCmd.exe](https://technet.microsoft.com/library/jj635852.aspx) parancssori eszköz használható Azure indításkor IIS beállításainak kezelését. *AppCmd.exe* kényelmes, a parancssori hozzáférést biztosít a konfigurációs beállítások indítási feladatok Azure használható. Használatával *AppCmd.exe*, webhely beállításainál fel, módosíthatók, vagy az alkalmazások és a hely eltávolítása.
+## <a name="configure-iis-startup-with-appcmdexe"></a>Konfigurálja az IIS indítási AppCmd.exe
+A [AppCmd.exe](https://technet.microsoft.com/library/jj635852.aspx) parancssori eszköz használható az Azure-ban való indításkor az IIS-beállítások kezelése. *AppCmd.exe* kényelmes, a parancssori hozzáférést biztosít a konfigurációs beállításokhoz használt indítási feladatok az Azure-ban. Használatával *AppCmd.exe*, webhely beállításainak hozzáadhatja, módosítás, vagy eltávolítva a alkalmazásokat és webhelyeket.
 
-Van azonban néhány dolog, amit figyelje, hogy a használt *AppCmd.exe* az indítási feladatok:
+Vannak azonban néhány dolgot figyelheti a használatát a *AppCmd.exe* indítási feladatként:
 
-* Indítási feladatok egynél többször újraindításnál is futtatható. Például ha egy szerepkör újraindul.
-* Ha egy *AppCmd.exe* művelet csak egyszer történik, akkor hozhat létre hiba. Például egy szakaszt hozzáadni próbált *Web.config* kétszer tudta előállítani hiba.
-* Indítási feladat sikertelen, ha azok egy nem nulla kilépési kóddal tér vissza vagy **errorlevel**. Például ha *AppCmd.exe* hibát generál.
+* Indítási feladatok újraindításnál csak egyszer futtatható. Például ha a szerepkör újraindul.
+* Ha egy *AppCmd.exe* művelet többször történik, akkor előfordulhat, hogy egy hiba jön létre. Például próbál meg hozzáadni egy olyan szakasz *Web.config* kétszer kívánatosnál hiba.
+* Indítási feladatok sikertelen, ha egy nem nulla értékű kilépési kóddal tér vissza, vagy **errorlevel**. Például, hogy amikor *AppCmd.exe* hibát jelez.
 
-Ellenőrizze, hogy jó gyakorlat a **errorlevel** hívása után *AppCmd.exe*, könnyen a teendő, ha hívása burkolása *AppCmd.exe* rendelkező egy *.cmd* fájlt. Ha egy ismert **errorlevel** választ, amelyet figyelmen kívül vagy adja át azt vissza.
+Egy célszerű ellenőrizni a **errorlevel** hívása után *AppCmd.exe*, könnyen teendő, ha a hívást burkolása *AppCmd.exe* együtt egy *.cmd* fájlt. Ha azt észleli, hogy egy ismert **errorlevel** választ, akkor figyelmen kívül hagyása, vagy adja át azt vissza.
 
-Az által visszaadott errorlevel *AppCmd.exe* a winerror.h fájlban találhatók, és meg is látható [MSDN](https://msdn.microsoft.com/library/windows/desktop/ms681382.aspx).
+Az által visszaadott errorlevel *AppCmd.exe* szerepelnek a winerror.h fájlt, és az is látható [MSDN](https://msdn.microsoft.com/library/windows/desktop/ms681382.aspx).
 
-### <a name="example-of-managing-the-error-level"></a>A hibaszintet kezelése – példa
-Ebben a példában hozzáadja tömörítési szakaszt és egy tömörítési bejegyzést a JSON a *Web.config* fájl, a hiba- és naplózás.
+### <a name="example-of-managing-the-error-level"></a>A hiba szintje kezelése – példa
+Ebben a példában hozzáad egy tömörítési fejezetet, és a egy tömörítési bejegyzést JSON-a *Web.config* fájllal hiba- és naplózás.
 
-A fontos szakasza a [ServiceDefinition.csdef] fájl itt látható, amely többek között a a [executionContext](https://msdn.microsoft.com/library/azure/gg557552.aspx#Task) attribútumot `elevated` adhat *AppCmd.exe* módosítása a megfelelő engedélyekkel a *Web.config* fájlt:
+A vonatkozó részt a [ServiceDefinition.csdef] fájl látható itt, többek között a beállítás a [executionContext](https://msdn.microsoft.com/library/azure/gg557552.aspx#Task) attribútumot `elevated` biztosíthat *AppCmd.exe* módosítása a megfelelő engedélyekkel a *Web.config* fájlt:
 
 ```xml
 <ServiceDefinition name="MyService" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceDefinition">
@@ -86,7 +86,7 @@ A fontos szakasza a [ServiceDefinition.csdef] fájl itt látható, amely többek
 </ServiceDefinition>
 ```
 
-A *Startup.cmd* batch-fájl által használt *AppCmd.exe* tömörítés szakaszt és egy tömörítési bejegyzés hozzáadása a JSON a *Web.config* fájlt. A várt **errorlevel** 183, értéke nulla használatával győződjön meg a. A következő EXE parancssori program. Váratlan errorlevels StartupErrorLog.txt naplózása.
+A *Startup.cmd* batch-fájlt használ *AppCmd.exe* JSON-tömörítés szakasz és a egy tömörítési bejegyzés hozzáadása a *Web.config* fájlt. A várt **errorlevel** 183, értéke nulla használatával az győződjön meg arról. EXE parancssori program. Váratlan errorlevels StartupErrorLog.txt naplózása.
 
 ```cmd
 REM   *** Add a compression section to the Web.config file. ***
@@ -125,13 +125,13 @@ EXIT %ERRORLEVEL%
 ```
 
 ## <a name="add-firewall-rules"></a>A tűzfalszabályok hozzáadása
-Nincsenek hatékonyan két tűzfal Azure-ban. Az első tűzfal szabályozza a virtuális gép és a külvilág közötti kapcsolatok. Ez a tűzfal vezérli a [végpontok] eleme a [ServiceDefinition.csdef] fájlt.
+Az Azure-ban a rendszer lényegében két tűzfal. Az első tűzfal azt szabályozza, hogy a virtuális gép és a külvilág közötti kapcsolatokat. Ez a tűzfal vezérli a [végpontok] eleme a [ServiceDefinition.csdef] fájlt.
 
-A második tűzfal szabályozza a virtuális gép és a virtuális gépen belül a folyamatok közötti kapcsolatok. Ez a tűzfal vezérelhető a `netsh advfirewall firewall` parancssori eszközt.
+A második tűzfal azt szabályozza, hogy a virtuális gép és a virtuális gépen belül a folyamatok közötti kapcsolatok. Ez a tűzfal szabályozhatja a `netsh advfirewall firewall` parancssori eszköz.
 
-A szerepkörök belül elindított folyamat vonatkozó tűzfalszabályok az Azure létrehoz. Például egy szolgáltatás vagy program indításakor Azure automatikusan létrehozza a szükséges tűzfalszabályok ahhoz, hogy, hogy az internettel történő kommunikációra. Azonban a szerepkör (például egy COM + szolgáltatást, vagy a Windows ütemezett feladat) kívül a folyamat által elindított szolgáltatás létrehozása, ha szeretné manuálisan hozzon létre egy tűzfalszabályt, hogy a szolgáltatás eléréséhez. A tűzfalszabályok is létrehozható egy indítási tevékenységhez használatával.
+Az Azure létrehozza a tűzfalszabályok a folyamatok, a szerepkörök belüli használatába. Például amikor egy szolgáltatás vagy program, az Azure automatikusan létrehozza a szükséges tűzfalszabályok, hogy a szolgáltatás az internettel való kommunikációhoz. Azonban ha létrehoz egy szolgáltatást, amely a szerepkör (például egy COM + szolgáltatás vagy a Windows ütemezett feladat) kívül a folyamat elindul, meg kell manuálisan hozzon létre egy tűzfalszabályt, hogy a szolgáltatáshoz való hozzáférés engedélyezése. Ezek a tűzfal-szabályok egy indítási feladat segítségével hozható létre.
 
-Rendelkeznie kell egy olyan tűzfalszabályt hoz indítási tevékenységhez egy [executionContext][feladat] a **emelt szintű**. Adja hozzá a következő indítási feladat a [ServiceDefinition.csdef] fájlt.
+Rendelkeznie kell egy indítási feladat, amely létrehoz egy tűzfalszabályt egy [executionContext][tevékenység] , **emelt szintű**. Adja hozzá a következő indítási feladat a [ServiceDefinition.csdef] fájlt.
 
 ```xml
 <ServiceDefinition name="MyService" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceDefinition">
@@ -144,7 +144,7 @@ Rendelkeznie kell egy olyan tűzfalszabályt hoz indítási tevékenységhez egy
 </ServiceDefinition>
 ```
 
-A tűzfalszabály hozzáadásához használja a megfelelő `netsh advfirewall firewall` parancsok a indítási parancsfájlba. Ebben a példában a indítási feladathoz biztonsági és a titkosítás a 80-as TCP-porton.
+A tűzfalszabály hozzáadásához kell használnia a megfelelő `netsh advfirewall firewall` parancsok a indítási parancsfájlba. Ebben a példában az indítási feladat 80-as porton biztonság és titkosítás szükséges.
 
 ```cmd
 REM   Add a firewall rule in a startup task.
@@ -156,10 +156,10 @@ REM   If an error occurred, return the errorlevel.
 EXIT /B %errorlevel%
 ```
 
-## <a name="block-a-specific-ip-address"></a>Egy adott IP-cím letiltása
-Korlátozhatja egy Azure webes szerepkör elérés megadott IP-címek egy készletének a IIS módosításával **web.config** fájlt. Azt is szeretné használni, egy parancsfájlt, amely feloldja a **ipSecurity** szakasza a **ApplicationHost.config** fájlt.
+## <a name="block-a-specific-ip-address"></a>Egy adott IP-cím blokkolása
+Korlátozhatja az Azure webes szerepkör hozzáférési megadott IP-címek egy készletének az IIS módosításával **web.config** fájlt. Is kell használnia, amely feloldja a parancsfájl a **ipSecurity** szakaszában a **ApplicationHost.config** fájlt.
 
-Feloldásához a **ipSecurity** szakasza a **ApplicationHost.config** fájlt, hozzon létre egy parancsfájlt, amely a szerepkör indítása. Hozzon létre egy mappát a gyökérszinten a webes szerepkör nevű **indítási** és az ebben a mappában hozzon létre egy kötegfájlt nevű **startup.cmd**. Adja hozzá ezt a fájlt a Visual Studio-projektet, és állítsa be a tulajdonságokat **másolási mindig** annak érdekében, hogy a csomagban található.
+Feloldásához a **ipSecurity** szakaszában a **ApplicationHost.config** hozzon létre egy parancsfájlt, amely a szerepkör indítása. Hozzon létre egy mappát a webes szerepkör nevű gyökérszinten **indítási** és belül ebben a mappában hozzon létre egy kötegfájlt, nevű **startup.cmd**. Ez a fájl hozzáadása a Visual Studio-projektben, és állítsa be a tulajdonságokat **mindig Másolás** annak érdekében, hogy a csomag tartalmazza.
 
 Adja hozzá a következő indítási feladat a [ServiceDefinition.csdef] fájlt.
 
@@ -184,11 +184,11 @@ powershell -ExecutionPolicy Unrestricted -command "Install-WindowsFeature Web-IP
 %windir%\system32\inetsrv\AppCmd.exe unlock config -section:system.webServer/security/ipSecurity
 ```
 
-E feladat futtatásakor a **startup.cmd** kötegfájlt futtat minden alkalommal, amikor a webes szerepkör inicializálva van, győződjön meg arról, hogy a szükséges futtatandó **ipSecurity** szakasz meg oldva.
+Ez a feladat futtatásakor a **startup.cmd** batch fájl futtatását minden alkalommal, amikor a webes szerepkör inicializálva, biztosítva, hogy a szükséges **ipSecurity** szakasz fel oldva.
 
-Végül módosítsa úgy a [system.webServer szakasz](http://www.iis.net/configreference/system.webserver/security/ipsecurity#005) a webes szerepkör **web.config** fájl hozzáadása, amely hozzáféréssel, IP-címek listája az alábbi példában látható módon:
+Végül módosítsa úgy a [system.webServer szakasz](http://www.iis.net/configreference/system.webserver/security/ipsecurity#005) a webes szerepkör **web.config** fájlját, hogy hozzáféréssel, IP-címek listáját az alábbi példában látható módon:
 
-Ez a minta config **lehetővé teszi, hogy** eléréséhez a kiszolgálót, kivéve a két meghatározott összes IP-címek
+Ez a minta-konfiguráció **lehetővé teszi, hogy** a kiszolgálón, kivéve a két meghatározott összes IP-címek
 
 ```xml
 <system.webServer>
@@ -203,7 +203,7 @@ Ez a minta config **lehetővé teszi, hogy** eléréséhez a kiszolgálót, kiv�
 </system.webServer>
 ```
 
-Ez a minta config **megtagadja** hozzáférését az a kiszolgáló kivételével a két meghatározott összes IP-címek.
+Ez a minta-konfiguráció **megtagadja** nem férhet hozzá a kiszolgáló kivételével a két meghatározott összes IP-címek.
 
 ```xml
 <system.webServer>
@@ -219,9 +219,9 @@ Ez a minta config **megtagadja** hozzáférését az a kiszolgáló kivételéve
 ```
 
 ## <a name="create-a-powershell-startup-task"></a>PowerShell indítási feladat létrehozása
-A Windows PowerShell-parancsfájlok nem hívható közvetlenül a [ServiceDefinition.csdef] fájlt, de ezek is elindítható az indítási parancsfájlban.
+Windows PowerShell-parancsfájlok nem hívható meg közvetlenül a [ServiceDefinition.csdef] fájlt, de ezek is elindítható az indítási parancsfájlban.
 
-PowerShell (alapértelmezés) nem fut az aláíratlan parancsfájlok. Ha nem jelentkezik a parancsfájlt, kell konfigurálni a PowerShell használatával az aláíratlan parancsfájlok futtatása. Aláíratlan parancsfájlok futtatásához a **ExecutionPolicy** értékre kell állítani **nem korlátozott**. A **ExecutionPolicy** beállítás használata alapján a Windows PowerShell verzióját.
+PowerShell (alapértelmezés szerint) nem működik az aláíratlan parancsfájlok. Hacsak nem jelentkezik a parancsfájlt, a nem aláírt parancsfájlok futtatásához a PowerShell konfigurálása kell. A nem aláírt parancsfájlok futtatásához a **ExecutionPolicy** értékre kell állítani **Unrestricted**. A **ExecutionPolicy** beállításhoz tartozó használat alapján a Windows PowerShell-verzió.
 
 ```cmd
 REM   Run an unsigned PowerShell script and log the output
@@ -231,7 +231,7 @@ REM   If an error occurred, return the errorlevel.
 EXIT /B %errorlevel%
 ```
 
-A vendég operációs rendszer, amely futtatja a PowerShell 2.0 vagy kényszerítheti futtatásához 2-es 1.0 használata, és ha nem érhető el, használja az 1-es verziójával.
+Ha a vendég operációs rendszer, amely futtatja a PowerShell 2.0 vagy kényszerítheti, hogy futtassa a 2-es 1.0-t használ, és nem érhető el, használja az 1-es verzió.
 
 ```cmd
 REM   Attempt to set the execution policy by using PowerShell version 2.0 syntax.
@@ -247,14 +247,14 @@ REM   If an error occurred, return the errorlevel.
 EXIT /B %errorlevel%
 ```
 
-## <a name="create-files-in-local-storage-from-a-startup-task"></a>Az indítási feladat a helyi tárterület-fájlok létrehozása
-Az indítási feladat, amelyhez a később az alkalmazás által létrehozott fájlok tárolására használhatja a helyi tároló egyik erőforrásához.
+## <a name="create-files-in-local-storage-from-a-startup-task"></a>Fájlok létrehozása a helyi tárolóban egy indítási feladat
+Az indítási feladat, amely később érhető el az alkalmazás által létrehozott fájlok tárolására használhatja a helyi tároló egyik erőforrásához.
 
-A helyi tároló-erőforrás létrehozása, vegye fel a [LocalResources] szakaszban a [ServiceDefinition.csdef] fájlt, majd adja hozzá a [LocalStorage] gyermekelemet. A helyi tároló-erőforrás adjon egyedi nevet és egy megfelelő méretű az indítási tevékenységhez.
+A helyi tároló-erőforrás létrehozásához adja hozzá a [LocalResources] részt a [ServiceDefinition.csdef] fájlt, majd adja hozzá a [LocalStorage] gyermekelemet. A helyi erőforrást adjon egy egyedi nevet és egy megfelelő méretet az indítási tevékenység.
 
-Az indítási feladat a helyi tároló egyik erőforrásához használatához szüksége egy környezeti változó hivatkozást a helyi erőforrás tárolóhely létrehozásához. Ezután a indítási feladat és az alkalmazás képesek fájlok olvasása és írása a helyi tároló-erőforrás.
+Az indítási feladat a helyi tároló egyik erőforrásához használatához szeretne létrehozni egy környezeti változót, a helyi tároló-erőforrás helye hivatkozhat. Ezután az indítási feladat és az alkalmazás is olvashat és írhat fájlokat, a helyi erőforrást.
 
-A fontos szakasza a **ServiceDefinition.csdef** fájl itt látható:
+A vonatkozó részt a **ServiceDefinition.csdef** fájl itt látható:
 
 ```xml
 <ServiceDefinition name="MyService" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceDefinition">
@@ -278,7 +278,7 @@ A fontos szakasza a **ServiceDefinition.csdef** fájl itt látható:
 </ServiceDefinition>
 ```
 
-Tegyük fel ez **Startup.cmd** batch-fájlt használ a **PathToStartupStorage** környezeti változó létrehozása a fájl **MyTest.txt** a helyi tárolóhelyen.
+Tegyük fel ez **Startup.cmd** batch-fájlt használ a **PathToStartupStorage** környezeti változót a fájl létrehozásához **MyTest.txt** helyi tároló helye határozza meg.
 
 ```cmd
 REM   Create a simple text file.
@@ -293,7 +293,7 @@ REM   Exit the batch file with ERRORLEVEL 0.
 EXIT /b 0
 ```
 
-Elérhető helyi tároló mappát az Azure SDK használatával a [GetLocalResource](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleenvironment.getlocalresource.aspx) metódust.
+A keresztül elérhető helyi tároló mappát az Azure SDK használatával a [GetLocalResource](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleenvironment.getlocalresource.aspx) metódust.
 
 ```csharp
 string localStoragePath = Microsoft.WindowsAzure.ServiceRuntime.RoleEnvironment.GetLocalResource("StartupLocalStorage").RootPath;
@@ -301,12 +301,12 @@ string localStoragePath = Microsoft.WindowsAzure.ServiceRuntime.RoleEnvironment.
 string fileContent = System.IO.File.ReadAllText(System.IO.Path.Combine(localStoragePath, "MyTestFile.txt"));
 ```
 
-## <a name="run-in-the-emulator-or-cloud"></a>Futtassa az emulátor vagy a felhőben
-Az eltérő lépésekkel, ha működik a felhőben, ha a compute emulator a képest indítási feladat lehet. Például előfordulhat, hogy használandó friss másolati példányának SQL-adatok csak az emulátorban futtatásakor. Vagy előfordulhat, hogy szeretné a felhőben, amelyek nem kell tennie, ha az emulátorban futtatja az egyes teljesítményoptimalizálását.
+## <a name="run-in-the-emulator-or-cloud"></a>Futtassa az emulátor, vagy a felhőben
+Az indítási feladat eltérő lépésekkel, ha a felhőben, amikor a compute emulator képest működik is rendelkezhet. Például előfordulhat, hogy használni kívánt SQL-adatok friss másolatát csak akkor, ha az emulátorban fut. Vagy előfordulhat, hogy szeretne tenni bizonyos teljesítményoptimalizálás segíti, hogy nem kell tennie, ha az emulátorban futtatja a felhőben.
 
-Így meghatározhatja, hogy a compute emulator és a felhő végre különböző műveleteket érhető el a környezeti változó létrehozása a [ServiceDefinition.csdef] fájlt. Az indítási tevékenységhez érték környezeti változó tesztelje.
+Hozzon létre egy környezeti változóhoz a képességgel, amellyel különböző műveleteket hajthat végre a compute emulator és a felhő valósítható meg a [ServiceDefinition.csdef] fájlt. Az indítási feladat egy értéket a környezeti változó tesztelésére.
 
-A környezeti változó létrehozása, vegye fel a [változó]/[RoleInstanceValue] elemet, és hozzon létre egy XPath értékét `/RoleEnvironment/Deployment/@emulated`. Értékét a **ComputeEmulatorRunning %** környezeti változó `true` futtatásakor a compute emulator és `false` a felhő futtatásakor.
+A környezeti változó létrehozásához adja hozzá a [A változó]/[RoleInstanceValue] elemet, és hozzon létre egy XPath értékét `/RoleEnvironment/Deployment/@emulated`. Értékét a **ComputeEmulatorRunning %** környezeti változó `true` használatakor a compute emulator és `false` használatakor a felhő.
 
 ```xml
 <ServiceDefinition name="MyService" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceDefinition">
@@ -328,7 +328,7 @@ A környezeti változó létrehozása, vegye fel a [változó]/[RoleInstanceValu
 </ServiceDefinition>
 ```
 
-A feladat most ellenőrizheti a **ComputeEmulatorRunning %** környezeti változó különböző műveleteket hajt végre a szerepkör fut-e a felhő vagy az emulátorban a alapján. Íme egy .cmd héjparancsfájlt, amely ellenőrzi, hogy a környezeti változó.
+A feladat most ellenőrizheti a **ComputeEmulatorRunning %** környezeti változó különböző műveleteket hajt végre alapján a szerepkör fut-e a felhőben vagy az emulátorban. Íme egy .cmd héjparancsfájlt, amely ellenőrzi, hogy környezeti változót.
 
 ```cmd
 REM   Check if this task is running on the compute emulator.
@@ -342,9 +342,9 @@ IF "%ComputeEmulatorRunning%" == "true" (
 
 
 ## <a name="detect-that-your-task-has-already-run"></a>Észleli, hogy a feladat már futott
-A szerepkör, amely az indítási feladatok futtassa újra az újraindítás nélkül indítsa újra a is. Nincs a jelzőt, amely jelzi, hogy a feladat már futott a üzemeltetési virtuális Gépre van. Előfordulhat, hogy egyes feladatokat hol nem számít, hogy futnak-e több alkalommal. Azonban az olyan helyzet, ahol meg kell akadályozni a feladat futtatását egynél többször is futtathatja.
+A szerepkör-újra futtatni az indítási feladatok okozó újraindítás nélkül előfordulhat, hogy újraindítás. Nincs Nincs jelölő jelzi, hogy a feladat már futott a üzemeltető virtuális gépen. Szükség lehet néhány feladatot, nem számít, hogy futnak-e több alkalommal. Felmerülhet azonban olyan helyzet, ahol meg kell akadályoznia a feladat egynél többször.
 
-A legegyszerűbben úgy észleli, hogy a feladat már futott, hogy a fájl létrehozása a **% TEMP %** mappát, ha a feladat sikeres volt, és keresse meg azt a feladat elején. Íme egy minta cmd héjparancsfájlt, amelyet, amely meg.
+Észleli, hogy a feladat már futott a legegyszerűbb módja az, hogy hozzon létre egy fájlt a **% TEMP %** mappát, ha a feladat sikeres volt, és keresse meg azt a feladat elején. Íme egy példa cmd héjparancsfájlt, amely végez, amely az Ön számára.
 
 ```cmd
 REM   If Task1_Success.txt exists, then Application 1 is already installed.
@@ -379,19 +379,19 @@ REM   Exit normally.
 EXIT /B 0
 ```
 
-## <a name="task-best-practices"></a>A feladat gyakorlati tanácsok
-Az alábbiakban néhány gyakorlati tanácsok a feladatot a webes vagy feldolgozói szerepkör konfigurálásakor kell követnie.
+## <a name="task-best-practices"></a>A feladat ajánlott eljárások
+Az alábbiakban néhány ajánlott eljárást kell követni a feladatot a webes és feldolgozói szerepkörök konfigurálásakor.
 
-### <a name="always-log-startup-activities"></a>Mindig a napló indítási tevékenységek
-A Visual Studio nem biztosít a hibakereső gombra kattintva végighaladhat parancsfájlokat, ezért ezt a megfelelő parancsfájlokat működéséről a lehető legtöbb adatok eléréséhez. A parancsfájlokat, naplózására mindkét **stdout** és **stderr**, tudhatja meg fontos információk hibakeresését és javítsa ki a parancsfájlokat tett kísérlet során. Mindkét bejelentkezni **stdout** és **stderr** a StartupLog.txt a fájl a könyvtárban által hivatkozott a **% TEMP %** környezeti változó, adja hozzá a szöveget `>>  "%TEMP%\\StartupLog.txt" 2>&1` végéig adott sorok bejelentkezik. Ahhoz például, hogy a setup.exe hajtható végre a **PathToApp1Install %** könyvtár:
+### <a name="always-log-startup-activities"></a>Mindig az indítási tevékenység naplózása
+A Visual Studio nem biztosít hibakeresőt kötegfájlok elvégezhető, így hasznos a kötegelt fájlok működésére, a lehető legtöbb adatot beolvasása. A kimenet, kötegelt fájlok naplózása mindkét **stdout** és **stderr**, adhat meg fontos információkat hibakeresést, és javítsa ki a batch-fájlok tett kísérlet során. Való bejelentkezéshez mindkettőt **stdout** és **stderr** a StartupLog.txt a fájl a könyvtárban által hivatkozott a **% TEMP %** környezeti változót, adja hozzá a szöveget `>>  "%TEMP%\\StartupLog.txt" 2>&1` végére adott sorok bejelentkezik. Ha például a setup.exe végrehajtásához a **PathToApp1Install %** könyvtár:
 
     "%PathToApp1Install%\setup.exe" >> "%TEMP%\StartupLog.txt" 2>&1
 
-Egyszerűbbé teheti az XML-kódot, hozzon létre egy burkoló *cmd* meghívó összes az indítási és naplózás feladatokkal, és biztosítja, hogy minden gyermek-tevékenység osztja meg ugyanazt a környezeti változók.
+Leegyszerűsítheti az XML-t, létrehozhat egy burkoló *cmd* , amely meghívja ezt az indítási összes fájl és naplózási feladatok, és biztosítja, hogy minden egyes gyermek-tevékenység megosztja az azonos környezeti változókat.
 
-Előfordulhat, hogy találja zavaró való használata `>> "%TEMP%\StartupLog.txt" 2>&1` minden indítási tevékenységhez végén. Hozzon létre egy burkoló, amely kezeli az Ön naplózási kényszerítheti a feladat naplózás. A burkoló meghívja a futtatni kívánt valós kötegfájlt futtat. A célfájl kötegelt bármely olyan kimenete irányítja át a *Startuplog.txt* fájlt.
+Előfordulhat, hogy találja zavaró, ha használandó `>> "%TEMP%\StartupLog.txt" 2>&1` indítási feladatokon végén. Hozzon létre egy burkoló, amely kezeli az Ön számára a naplózási tevékenység naplózása kényszeríthető. Ez a burkoló meghívja a futtatni kívánt valós kötegfájlt futtat. A célfájl batch bármely olyan kimenete átirányítjuk a *Startuplog.txt* fájlt.
 
-A következő példa bemutatja, hogyan indítási parancsfájlt minden kimenetét. Ebben a példában a ServerDefinition.csdef hoz létre, amely behívja indítási feladat *logwrap.cmd*. *logwrap.cmd* hívások *Startup2.cmd*, minden kimenet átirányítása **% TEMP %\\StartupLog.txt**.
+Az alábbi példa bemutatja, hogyan indítási parancsfájlt minden kimenetét. Ebben a példában a ServerDefinition.csdef fájlt hoz létre egy indítási feladat, amely meghívja ezt *logwrap.cmd*. *logwrap.cmd* hívások *Startup2.cmd*, az összes parancskimenet **% TEMP %\\StartupLog.txt**.
 
 ServiceDefinition.cmd:
 
@@ -453,7 +453,7 @@ ECHO [%date% %time%] Some more log information about this task
 EXIT %ERRORLEVEL%
 ```
 
-A kimeneti példa a **StartupLog.txt** fájlt:
+A kimeneti mintát a **StartupLog.txt** fájlt:
 
 ```txt
 [Mon 10/17/2016 20:24:46.75] == START logwrap.cmd ============================================== 
@@ -465,53 +465,53 @@ A kimeneti példa a **StartupLog.txt** fájlt:
 ```
 
 > [!TIP]
-> A **StartupLog.txt** fájl található a *C:\Resources\temp\\{szerepkör-azonosító} \RoleTemp* mappa.
+> A **StartupLog.txt** fájl található, a *C:\Resources\temp\\{szerepkör azonosító} \RoleTemp* mappát.
 > 
 > 
 
 ### <a name="set-executioncontext-appropriately-for-startup-tasks"></a>Állítsa be megfelelően az indítási feladatok executionContext
-Állítsa be megfelelően az indítási tevékenységhez tartozó jogosultságok. Néha indítási feladatok futtatásához emelt szintű jogosultságokkal annak ellenére, hogy a szerepkört futtató normál jogosultsággal.
+Állítsa be az indítási feladat a megfelelő jogosultságokat. Néha az indítási feladatok kell futtassa megemelt jogosultságokkal annak ellenére, hogy a szerepkör normál jogosultságokkal futtatja.
 
-A [executionContext][feladat] attribútum állítja be az indítási feladat a jogosultsági szint. Használatával `executionContext="limited"` azt jelenti, hogy az indítási feladat a szerepkör az azonos jogosultsági szinten. Használatával `executionContext="elevated"` azt jelenti, hogy az indítási tevékenységhez rendszergazdai jogosultságokkal rendelkezik, amely lehetővé teszi, hogy a rendszergazdai feladatok elvégzéséhez rendszergazdai jogosultságokkal a szerepkör nélkül a indítási feladat.
+A [executionContext][tevékenység] attribútum állítja be a jogosultsági szintet, az indítási feladat. Használatával `executionContext="limited"` azt jelenti, hogy az indítási feladat a szerepkör azonos jogosultsági szintre. Használatával `executionContext="elevated"` azt jelenti, hogy az indítási feladat rendszergazdai jogosultságokkal rendelkezik, amely lehetővé teszi, hogy a rendszergazdai feladatok elvégzéséhez rendszergazdai jogosultságokkal a szerepköre anélkül indítási feladat.
 
-Emelt szintű jogosultság szükséges indítási tevékenységhez példa, hogy egy indítási feladat által használt **AppCmd.exe** IIS konfigurálásához. **AppCmd.exe** szükséges `executionContext="elevated"`.
+Egy indítási feladat emelt szintű jogosultságok szükségesek, például a egy indítási feladat által használt **AppCmd.exe** kívánja konfigurálni az IIS. **AppCmd.exe** igényel `executionContext="elevated"`.
 
-### <a name="use-the-appropriate-tasktype"></a>Használja a megfelelő taskType
-A [taskType][feladat] attribútum meghatározza, hogy a módját a indítási feladat végrehajtása. Három értékei: **egyszerű**, **háttér**, és **előtér**. A háttér és előtérben történő műveleteket aszinkron módon indulnak el, és majd az egyszerű feladatokat végre párhuzamosan egyenként.
+### <a name="use-the-appropriate-tasktype"></a>A megfelelő taskType használata
+A [taskType][tevékenység] attribútum meghatározza, hogy az indítási feladat úgy hajtja végre. Három értékek: **egyszerű**, **háttér**, és **előtérbeli**. A háttér-információkért és előtérben futó feladatok aszinkron módon futnak, és ezután az egyszerű feladatok végrehajtásának szinkron módon egyenként.
 
-A **egyszerű** indítási feladatok állíthatja be a sorrendben, amelyben a feladatokat a ServiceDefinition.csdef fájlban felsorolt által a feladatok futásának sorrendje. Ha egy **egyszerű** feladat egy nem nulla kilépési kóddal véget ér, akkor az indítási eljárás leáll, és a szerepkör nem indul el.
+A **egyszerű** indítási feladatok, beállíthatja a sorrend, amelyben a feladatokat a ServiceDefinition.csdef fájlban felsorolt szerint a feladatok futásának sorrendje. Ha egy **egyszerű** feladat nullától eltérő kilépési kódot végződik, akkor az indítási eljárás leáll, és a szerepkör nem indul el.
 
-A különbség a között **háttér** indítási feladatok és **előtér** indítási feladatok, hogy **előtér** feladatok megőrzése a szerepkört, amíg nem fut a  **előtérben** feladat befejeződik. Ez azt is jelenti, hogy ha a **előtér** feladat válaszol vagy összeomlik, a szerepkör nem indul újra amíg a **előtér** feladat kényszeríti lezárva. Emiatt **háttér** feladatok ajánlott aszinkron indítási feladatok, kivéve, ha az adott szolgáltatást van szüksége a **előtér** feladat.
+A különbség a között **háttér** indítási feladatok és **előtér** indítási feladatok, hogy **előtérbeli** feladatok tartsa a szerepkört, amíg nem fut a  **előtérbeli** feladat véget ér. Ez azt is jelenti, hogy ha a **előtérbeli** feladat válaszol vagy összeomlik, a szerepkör lesz indul-ig a **előtérbeli** feladat kényszerítetten zárva. Ebből kifolyólag **háttér** feladatok ajánlott aszinkron indítási feladatok, ha nincs szükség az adott szolgáltatást a **előtérbeli** feladat.
 
-### <a name="end-batch-files-with-exit-b-0"></a>A 0 kilépési /B End parancsfájlokat
-A szerepkör csak akkor kezdi, ha a **errorlevel** minden a egyszerű indítási tevékenységhez értéke nulla. Nem minden program beállítása a **errorlevel** (kilépési kód) megfelelően, ezért a parancsfájlt kell végződnie egy `EXIT /B 0` Ha minden megfelelően már futott.
+### <a name="end-batch-files-with-exit-b-0"></a>A 0 kilépési /B záró kötegfájlok
+A szerepkör csak fog elindulni, ha a **errorlevel** az egyes az egyszerű indítási feladat értéke nulla. Nem minden program állítsa be a **errorlevel** (kilépési kód) megfelelően, így a batch-fájlt kell végződnie egy `EXIT /B 0` Ha mindent megfelelően futott-e.
 
-Egy hiányzó `EXIT /B 0` indítási köteg végén fájl az oka leggyakrabban szerepköröket, amelyek nem indulnak el.
+Egy hiányzó `EXIT /B 0` indítási köteg végén található fájl általában az okozza, hogy ne indítsa el a szerepkörök.
 
 > [!NOTE]
-> I észrevette, hogy a beágyazott kötegelt fájlok néha lefagy használata esetén a `/B` paraméter. Érdemes lehet győződjön meg arról, hogy lefagy a probléma nem fordulhat elő, ha egy másik köteg fájl az aktuális köteg fájl, például ha használja a [napló burkoló](#always-log-startup-activities). Akkor kihagyhatja a `/B` ebben az esetben paraméter.
+> Már észrevette, hogy a beágyazott batch fájlok néha lefagy használatakor a `/B` paraméter. Győződjön meg arról, hogy lefagy a probléma nem fordulhat elő, ha egy másik köteg fájlt az aktuális kötegfájlt, például ha használja, érdemes a [log burkoló](#always-log-startup-activities). Kihagyhatja a `/B` ebben az esetben a paraméter.
 > 
 > 
 
-### <a name="expect-startup-tasks-to-run-more-than-once"></a>Várt indítási feladatokat futtatni egynél többször
-Nem minden szerepkör újrahasznosítja azt újraindítás többek között az összes szerepkör újrahasznosítja azt közé tartoznak az éppen futó összes indítási feladatok. Ez azt jelenti, hogy indítási feladatok többször is lefuthat gond nélkül újraindításnál képesnek kell lennie. Ez ismertet a [szakasz megelőző](#detect-that-your-task-has-already-run).
+### <a name="expect-startup-tasks-to-run-more-than-once"></a>Indítási feladatok futtatásának egynél többször várható
+Nem minden szerepkör-újrahasznosítást tartalmazzák a számítógép újraindítása, de az összes szerepkör-újrahasznosítást közé tartozik az összes indítási feladatok futtatása. Ez azt jelenti, hogy az indítási feladatok futtatható többször gond nélkül újraindítások között kell lennie. Ez a következő cikkben a [előző fejezet](#detect-that-your-task-has-already-run).
 
-### <a name="use-local-storage-to-store-files-that-must-be-accessed-in-the-role"></a>Használja a helyi tárolót tárolja a fájlokat kell elérni a szerepkörben
-Ha szeretné másolni, vagy hozzon létre egy fájlt a indítási feladat, amely majd elérhető az Ön szerepköre alatt, majd a helyi tároló kell helyezni, hogy a fájl. Tekintse meg a [szakasz megelőző](#create-files-in-local-storage-from-a-startup-task).
+### <a name="use-local-storage-to-store-files-that-must-be-accessed-in-the-role"></a>Használja a helyi tároló tárolja a fájlokat kell elérni a szerepkörben
+Ha meg szeretné másolni, vagy hozzon létre egy fájlt az indítási feladat, amely ezután elérhető a szerepköre alatt, majd a helyi tároló kell elhelyezni ezt a fájlt. Tekintse meg a [előző fejezet](#create-files-in-local-storage-from-a-startup-task).
 
-## <a name="next-steps"></a>Következő lépések
-Tekintse át a felhőbe [service modell és a csomag](cloud-services-model-and-package.md)
+## <a name="next-steps"></a>További lépések
+Tekintse át a felhőbe [szolgáltatási modell és -csomag](cloud-services-model-and-package.md)
 
-További tudnivalók [feladatok](cloud-services-startup-tasks.md) működik.
+Tudjon meg többet [feladatok](cloud-services-startup-tasks.md) működik.
 
-[Létrehozhat és telepíthet](cloud-services-how-to-create-deploy-portal.md) a cloud service-csomag.
+[Létrehozása és üzembe helyezése](cloud-services-how-to-create-deploy-portal.md) a felhőszolgáltatás-csomagok.
 
 [ServiceDefinition.csdef]: cloud-services-model-and-package.md#csdef
-[feladat]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Task
+[Tevékenység]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Task
 [Startup]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Startup
 [Runtime]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Runtime
-[környezet]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Environment
-[változó]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Variable
+[Környezet]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Environment
+[A változó]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Variable
 [RoleInstanceValue]: https://msdn.microsoft.com/library/azure/gg557552.aspx#RoleInstanceValue
 [RoleEnvironment]: https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleenvironment.aspx
 [Végpontok]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Endpoints

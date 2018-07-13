@@ -22,7 +22,7 @@
       items:
         - name: 1. Contoso – migrálás áttekintése
           href: contoso-migration-overview.md
-        - name: 2. Contoso – Azure-infrastruktúra beállítása
+        - name: 2. Contoso – Azure-infrastruktúra üzembe helyezése
           href: contoso-migration-infrastructure.md
         - name: 3. Contoso – Helyszíni erőforrások értékelése az Azure-ba való migráláshoz
           href: contoso-migration-assessment.md
@@ -30,7 +30,7 @@
           href: contoso-migration-rehost-vm-sql-managed-instance.md
         - name: 5. Contoso – alkalmazás áthelyezése Azure-beli virtuális gépekre
           href: contoso-migration-rehost-vm.md
-        - name: 6. Contoso – alkalmazás áthelyezése Azure-beli virtuális gépekre és az Azure SQL AlwaysOnra
+        - name: 6. Contoso – alkalmazás áthelyezése Azure-beli virtuális gépekre és az Azure SQL Server AlwaysOn rendelkezésre állási csoportokba
           href: contoso-migration-rehost-vm-sql-ag.md
         - name: 7. Contoso – Linux-alkalmazás áthelyezése Azure-beli virtuális gépekre
           href: contoso-migration-rehost-linux-vm.md
@@ -42,7 +42,7 @@
           href: contoso-migration-refactor-linux-app-service-mysql.md
         - name: 11. Contoso – TFS migrálása a VSTS-be
           href: contoso-migration-tfs-vsts.md
-        - name: 12. Contoso – Alkalmazás szerkezetének átalakítása az Azure Service Fabricben és az Azure SQL Database-ben
+        - name: 12. Contoso – alkalmazás szerkezetének átalakítása az Azure-tárolókban és az Azure SQL Database-ben
           href: contoso-migration-rearchitect-container-sql.md
         - name: 13. Contoso – Alkalmazás újbóli összeállítása az Azure-ban
           href: contoso-migration-rebuild.md

@@ -87,8 +87,6 @@
           href: batch-job-prep-release.md
         - name: Párhuzamosan futó csomóponti feladatok
           href: batch-parallel-node-tasks.md
-        - name: Feladatok számlálása állapot szerint
-          href: batch-get-task-counts.md
         - name: Tevékenységfüggőségek
           href: batch-task-dependencies.md
         - name: Felhasználói fiókok feladatok futtatásához
@@ -119,7 +117,9 @@
           href: batch-diagnostics.md
         - name: Monitorozás az Application Insights segítségével
           href: monitor-application-insights.md
-        - name: Hatékony listázó lekérdezések
+        - name: Erőforrások számlálása állapot szerint
+          href: batch-get-resource-counts.md
+        - name: Az erőforrások hatékony lekérdezése
           href: batch-efficient-list-queries.md
     - name: Fejlesztői eszközök használata
       items:

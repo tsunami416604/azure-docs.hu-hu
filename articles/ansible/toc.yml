@@ -24,6 +24,12 @@
     - name: Dinamikus leltárak kezelése
       href: ./ansible-manage-azure-dynamic-inventories.md
       maintainContext: true
+    - name: VMSS létrehozása és konfigurálása
+      href: ./ansible-create-configure-vmss.md
+    - name: Alkalmazás üzembe helyezése a VMSS-en
+      href: ./ansible-deploy-app-vmss.md
+    - name: AKS-fürtök létrehozása és konfigurálása
+      href: ./ansible-create-configure-aks.md
 - name: Referencia
   items:
     - name: Forgatókönyv-szerepkörök

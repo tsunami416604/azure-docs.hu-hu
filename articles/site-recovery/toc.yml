@@ -51,6 +51,8 @@
           href: tutorial-prepare-azure.md
         - name: Helyszíni gépek áttelepítése az Azure-ba
           href: migrate-tutorial-on-premises-azure.md
+        - name: Migrálás Windows Server 2008 vagy 2008 R2 kiszolgálóról az Azure-ba
+          href: migrate-tutorial-windows-server-2008.md
         - name: AWS-példányok áttelepítése az Azure-ba
           href: migrate-tutorial-aws-azure.md
         - name: Azure-beli virtuális gépek migrálása másik régióba

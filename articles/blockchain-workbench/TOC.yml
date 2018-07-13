@@ -40,8 +40,6 @@
           href: blockchain-workbench-data-sql-management-studio.md
 - name: Referencia
   items:
-    - name: Kódminták
-      href: 'https://github.com/Azure-Samples/blockchain'
     - name: Konfiguráció
       href: blockchain-workbench-configuration-overview.md
     - name: Adatbázisnézetek
@@ -50,6 +48,19 @@
       href: blockchain-workbench-messages-overview.md
     - name: REST API
       href: 'https://docs.microsoft.com/rest/api/azure-blockchain-workbench'
+- name: További források
+  expanded: true
+  items:
+    - name: Blog
+      href: 'https://azure.microsoft.com/blog/topics/blockchain/'
+    - name: Kódminták
+      href: 'https://github.com/Azure-Samples/blockchain'
+    - name: Közösség
+      href: 'https://techcommunity.microsoft.com/t5/Blockchain/bd-p/AzureBlockchain'
+    - name: Fórum
+      href: 'https://aka.ms/workbenchforum'
+    - name: Termékkel kapcsolatos visszajelzés
+      href: 'https://feedback.azure.com/forums/586780-blockchain'
     - name: Megoldássablonok
       items:
         - name: Ethereum munkaigazolás konzorcium

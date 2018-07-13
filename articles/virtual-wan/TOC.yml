@@ -1,0 +1,34 @@
+- name: A Virtual WAN dokumentációja
+  href: index.yml
+- name: Áttekintés
+  items:
+    - name: A Virtual WAN bemutatása
+      href: virtual-wan-about.md
+- name: Oktatóanyagok
+  items:
+    - name: Helyek közötti kapcsolat létrehozása
+      href: virtual-wan-site-to-site-portal.md
+- name: Útmutatók
+  items:
+    - name: Automatizálás konfigurálása – WAN-partnerek
+      href: virtual-wan-configure-automation-providers.md
+- name: Referencia
+  items:
+    - name: REST
+      href: /rest/api/azure
+- name: További források
+  items:
+    - name: GYIK
+      href: virtual-wan-faq.md
+    - name: Azure-ütemterv
+      href: 'https://azure.microsoft.com/roadmap/?category=networking'
+    - name: Blog
+      href: 'https://azure.microsoft.com/blog/topics/networking'
+    - name: Előfizetés- és szolgáltatáskorlátok
+      href: ../azure-subscription-service-limits.md?toc=%2fazure%2fvpn-gateway%2ftoc.json
+    - name: Díjszabás
+      href: 'https://azure.microsoft.com/pricing/details/vpn-gateway'
+    - name: Díjkalkulátor
+      href: 'https://azure.microsoft.com/pricing/calculator/'
+    - name: SLA
+      href: 'https://azure.microsoft.com/support/legal/sla'

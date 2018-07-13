@@ -31,6 +31,9 @@
       href: 'https://docs.azuredatabricks.net/user-guide/jobs.html'
     - name: Kapcsolódás adatforrásokhoz
       href: databricks-connect-to-data-sources.md
+    - name: Használat az Azure Data Factoryvel
+      href: ../data-factory/transform-data-using-databricks-notebook.md
+      maintainContext: true
     - name: 'Kapcsolódás Excel, R és Python használatával'
       href: connect-databricks-excel-python-r.md
     - name: A Databricks parancssori felület használata az Azure Cloud Shellből

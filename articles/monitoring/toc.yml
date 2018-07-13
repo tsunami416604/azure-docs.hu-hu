@@ -30,6 +30,12 @@
           href: ../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md?toc=%2fazure%2fmonitoring%2ftoc.json
         - name: Több Azure-előfizetés naplóinak begyűjtése
           href: ../log-analytics/log-analytics-activity-logs-subscriptions.md?toc=%2fazure%2fmonitoring%2ftoc.json
+- name: Adatok monitorozása
+  items:
+    - name: Adattípusok és elemzési eszközök
+      href: monitoring-data-collection.md
+    - name: Azure-beli monitorozási adatforrások
+      href: monitoring-data-sources.md
 - name: Erőforrások megfigyelése
   items:
     - name: Alkalmazások

@@ -4,7 +4,7 @@
   href: index.yml
 - name: Áttekintés
   items:
-    - name: Tudnivalók az Azure Mapsről
+    - name: Mi az Azure Maps?
       href: about-azure-maps.md
 - name: Gyors útmutatók
   items:
@@ -22,22 +22,10 @@
   items:
     - name: Nagyítási szintek és csemperács
       href: zoom-levels-and-tile-grid.md
-    - name: Geokódolás lefedettsége
-      href: geocoding-coverage.md
-    - name: Forgalmi lefedettség
-      href: traffic-coverage.md
-    - name: Megjelenítési lefedettség
-      href: render-coverage.md
-    - name: Útválasztási lefedettség
-      href: routing-coverage.md
     - name: Támogatott keresési kategóriák
       href: supported-search-categories.md
     - name: Támogatott nyelvek
       href: supported-languages.md
-    - name: Használatalapú modell
-      href: consumption-model.md
-    - name: geoJSON kiterjesztése
-      href: extend-geojson.md
 - name: Útmutatók
   items:
     - name: Maps-fiókok kezelése
@@ -76,6 +64,22 @@
           href: map-accessibility.md
 - name: Referencia
   items:
+    - name: Szolgáltatásbiztosítás
+      items:
+        - name: Geokódolás
+          href: geocoding-coverage.md
+        - name: Adatforgalom
+          href: traffic-coverage.md
+        - name: Megjelenítés
+          href: render-coverage.md
+        - name: Útválasztás
+          href: routing-coverage.md
+    - name: API- és paraméterbővítmények
+      items:
+        - name: Járműhasználati modell
+          href: consumption-model.md
+        - name: GeoJSON formátum kiterjesztése
+          href: extend-geojson.md
     - name: REST
       items:
         - name: Megjelenítő szolgáltatás
@@ -139,4 +143,4 @@
     - name: Műszaki esettanulmányok
       href: 'https://microsoft.github.io/techcasestudies/#technology=IoT&sortBy=featured'
     - name: Videók
-      href: 'https://azure.microsoft.com/documentation/videos'
+      href: 'https://iotschool.microsoft.com/learning-paths/4ZktHn3KEUIiUw64C0Aieo'

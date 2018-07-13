@@ -1,400 +1,400 @@
 ---
-title: Contoso-áttelepítési-infrastruktúra beállítása |} Microsoft Docs
-description: Ismerje meg, hogyan a Contoso beállítja az Azure-infrastruktúrák áttelepítése az Azure-bA.
+title: Contoso – egy áttelepítési infrastruktúra beállítása |} A Microsoft Docs
+description: Ismerje meg, hogy beállítja a Contoso egy Azure-infrastruktúra az Azure-ba való migrálásra.
 services: azure-migrate
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 06/19/2018
 ms.author: raynew
-ms.openlocfilehash: bf861dc6317a8cc3a3ed862dfd6c133a1dcbe685
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
-ms.translationtype: MT
+ms.openlocfilehash: bf1406c8e361e0a1433b0e26c477c3c34e987fcf
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36232370"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38562758"
 ---
-# <a name="contoso---deploy-a-migration-infrastructure"></a>Contoso - telepítsen egy áttelepítés
+# <a name="contoso---deploy-a-migration-infrastructure"></a>Contoso - áttelepítési infrastruktúra üzembe helyezése
 
-Ez a cikk megvizsgálja, hogy a Contoso hogyan állít be egy helyszíni és az Azure infrastruktúra áttelepítése az Azure-ba, és a hibrid környezetben futó üzleti előkészítésekor.
+Ez a cikk megvizsgálja, hogy beállítja a Contoso egy helyszíni és az Azure infrastruktúra előkészítése az Azure-ba történő migrálásra, valamint a hibrid környezetben futó üzleti.
 
-- Egy adott Contoso – mintaarchitektúra.
-- Az áttelepítési stratégiáját függ, hogy kell-e a cikkben leírt összes elemet. Például ha csak felhőalapú natív alkalmazások az Azure-ban most felépítése, szükség lehet egy kevésbé összetett hálózati struktúra.
+- Egy adott Contoso mintaarchitektúra.
+- Az áttelepítési stratégiáját függ, hogy kell-e a cikkben leírt összes elemet. Például ha az Azure-ban csak felhőbeli natív alkalmazásokat fejleszt, szüksége lehet egy kevésbé összetett hálózati struktúrát.
 
-Ez a dokumentum a második dokumentum hogyan Contoso áttelepíti a fiktív vállalat a helyszíni erőforrások a Microsoft Azure felhőbe cikkek sorozat. Az adatsorozat háttér-információkat tartalmaz, és telepítési forgatókönyv olyan készlete, amely bemutatja, hogyan állíthat be egy áttelepítési infrastruktúra felmérheti a helyszíni erőforrások az áttelepítéshez megfelelőségét, és futtassa az áttelepítések különböző típusú. Forgatókönyvek nő összetettségét, és a következőkben hozzáadott további cikkek adott idő alatt.
+Ez a dokumentum a második cikksorozatot, amely dokumentálja hogyan a fiktív Contoso áttelepíti a helyszíni erőforrások a Microsoft Azure felhőbe. A sorozat háttér-információkat is tartalmaz, és a központi telepítési forgatókönyv egy készletét, amely bemutatja, hogyan állítható be a migrálási infrastruktúra felmérheti a a helyszíni erőforrások migrálásra való alkalmasságát, és futtassa a különböző típusú áttelepítéseket. Forgatókönyvek egyre összetettebbé válnak, és adunk hozzá további cikkek idővel.
 
 **Cikk** | **Részletek** | **Állapot**
 --- | --- | ---
-[A következő cikket: 1: áttekintés](contoso-migration-overview.md) | Contoso-áttelepítési stratégia, a cikk adatsorozat és a mintaalkalmazások használjuk áttekintést nyújt. | Elérhető
-2. cikk: Az Azure-infrastruktúrák (Ez a cikk) központi telepítése | Ismerteti, hogyan Contoso előkészíti a helyszíni és az Azure-infrastruktúra az áttelepítéshez. Ugyanabban az infrastruktúrában található összes Contoso áttelepítési forgatókönyvek szolgál. | Elérhető
-[3. cikk: A helyszíni erőforrások felmérése](contoso-migration-assessment.md) | Bemutatja, hogyan Contoso fut-e a helyszíni kétrétegű SmartHotel alkalmazásuk VMware futó értékelését. Ezek értékeléséhez app virtuális gépek a [Azure áttelepítése](migrate-overview.md) szolgáltatás, és az alkalmazás SQL Server-adatbázis a [Azure adatbázis áttelepítési Segéd](https://docs.microsoft.com/sql/dma/dma-overview?view=sql-server-2017). | Elérhető
-[4. cikk: Áthelyezési Azure virtuális gépek és a felügyelt SQL-példány](contoso-migration-rehost-vm-sql-managed-instance.md) | Bemutatja, hogyan Contoso áttelepíti az Azure-bA a SmartHotel alkalmazást. Áttelepítés után az alkalmazás előtér VM használatával [Azure Site Recovery](https://docs.microsoft.com/azure/site-recovery/site-recovery-overview), és az alkalmazás adatbázis használata a [Azure-adatbázis áttelepítése](https://docs.microsoft.com/azure/dms/dms-overview) szolgáltatás kezelt SQL-példány át. | Elérhető
-[Cikk 5: Az Azure virtuális gépek áthelyezési](contoso-migration-rehost-vm.md) | Bemutatja, hogyan Contoso át SmartHotel alkalmazásuk csak a Site Recovery segítségével virtuális gépeket.
-[Cikk 6: Azure virtuális gépek és az SQL Server rendelkezésre állási csoportok áthelyezési](contoso-migration-rehost-vm-sql-ag.md) | Bemutatja, hogyan Contoso áttelepíti a SmartHotel alkalmazást. Azok a Site Recovery segítségével telepíti át az alkalmazás virtuális gépek és az adatbázis áttelepítési szolgáltatás áttelepítése az app-adatbázis egy SQL Server rendelkezésre állási csoporthoz. | Elérhető
-[7. cikk: Áthelyezési egy Linux-alkalmazást az Azure virtuális gépen](contoso-migration-rehost-linux-vm.md) | Bemutatja, hogyan Contoso áttelepíti a Linux osTicket app Azure virtuális gépeken. | Elérhető
-[8. cikk: Áthelyezési egy Linux alkalmazást az Azure virtuális gépek és az Azure-beli MySQL kiszolgáló](contoso-migration-rehost-linux-vm-mysql.md) | Bemutatja, hogyan Contoso áttelepíti a Linux osTicket alkalmazásba Site Recovery és MySQL munkaterület áttelepítése (biztonsági mentése és visszaállítása) Azure-beli MySQL Server-példány. | Elérhető
+[1. cikk: áttekintés](contoso-migration-overview.md) | Contoso-áttelepítési stratégia, a cikk sorozat és a mintaalkalmazások használjuk áttekintést nyújt. | Elérhető
+2. cikk: Üzembe helyezése egy Azure-infrastruktúra (a jelen cikkben) | Ismerteti, hogyan Contoso előkészíti a helyszíni és az Azure-infrastruktúra az áttelepítéshez. Az összes Contoso áttelepítési forgatókönyvek ugyanazon az infrastruktúrán használható. | Elérhető
+[3. cikk: A helyszíni erőforrások értékelése](contoso-migration-assessment.md) | Bemutatja, hogyan Contoso fut a VMware-en futó helyszíni kétrétegű SmartHotel alkalmazás értékelése. Mérje fel az alkalmazás virtuális gépek a [Azure Migrate](migrate-overview.md) szolgáltatás és az alkalmazás SQL Server-adatbázisnak a [Azure Database Migration Assistant](https://docs.microsoft.com/sql/dma/dma-overview?view=sql-server-2017). | Elérhető
+[4. cikk: Áthelyezési Azure virtuális gépek és a egy felügyelt SQL-példány](contoso-migration-rehost-vm-sql-managed-instance.md) | Bemutatja, hogyan Contoso áttelepíti az Azure-bA a SmartHotel alkalmazást. Az alkalmazás előtérbeli virtuális gépet át [Azure Site Recovery](https://docs.microsoft.com/azure/site-recovery/site-recovery-overview), és az adatbázis használatával a [Azure Database Migration](https://docs.microsoft.com/azure/dms/dms-overview) szolgáltatás migrálása a felügyelt SQL-példányt. | Elérhető
+[Cikk 5: Az Azure virtuális gépeken áthelyezési](contoso-migration-rehost-vm.md) | Bemutatja, hogyan a Contoso át SmartHotel alkalmazásuk virtuális gépek csak a Site Recovery használatával.
+[A cikk 6: Újratárolás az Azure virtuális gépek és az SQL Server rendelkezésre állási csoportok](contoso-migration-rehost-vm-sql-ag.md) | Bemutatja, hogyan telepíti át a Contoso a SmartHotel alkalmazást. A Site Recovery számára, hogy az alkalmazás virtuális gépeit és a egy SQL Server rendelkezésre állási csoportot az alkalmazás-adatbázis áttelepítése a Database Migration service használnak. | Elérhető
+[7. cikk: Egy Linux alkalmazás Újratárolása az Azure virtuális gépek](contoso-migration-rehost-linux-vm.md) | Bemutatja, hogyan Contoso telepíti át a Linux-osTicket alkalmazás Azure virtuális gépekre. | Elérhető
+[A cikk 8: Egy Linux alkalmazás Újratárolása az Azure virtuális gépek és az Azure MySQL-kiszolgáló](contoso-migration-rehost-linux-vm-mysql.md) | Bemutatja, hogyan Contoso áttelepíti az Azure MySQL Server-példány a Linux osTicket alkalmazás migrálása a Site Recovery és a MySQL Workbench segítségével (biztonsági mentés és visszaállítás). | Elérhető
 
-A Contoso beállítása az infrastruktúra-elemek cikkben szükségük az szituációkban az áttelepítés befejezéséhez. 
+Ez a cikk az infrastruktúra-elemek beállítása Contoso szükségük az áttelepítési forgatókönyvek végrehajtásához. 
 
 
 ## <a name="overview"></a>Áttekintés
 
-Ahhoz, azok áttelepítheti az Azure-ba, rendkívül fontos, hogy a Contoso az infrastruktúra előkészítése.  Általában öt területek kell gondolniuk van:
+Mielőtt nekik is át az Azure-ba, rendkívül fontos, hogy a Contoso az infrastruktúra előkészítése.  Általában akkor kell kidolgoznia öt széles körű területből áll:
 
-**1. lépés: Azure-előfizetések**: hogyan fogja azokat vásárláshoz, és működjön együtt az Azure platformon és a szolgáltatások?  
-**2. lépés: Hibrid identitás**: hogyan azok kezeli és a helyszíni és az Azure-erőforrások való hozzáférés szabályozása áttelepítése után? Hogyan azok kiterjesztése, vagy helyezze át az Identitáskezelés a felhőben?  
-**3. lépés: Vész-helyreállítási és rugalmasság**: hogyan fogja azok ellenőrizze, hogy az alkalmazások és infrastruktúrájukat rugalmas Ha valamilyen okból kimaradás és katasztrófa történik?  
-**4. lépés: Hálózati**: hogyan kell azokat a hálózati infrastruktúra megtervezésére, és a helyszíni adatközpontját és az Azure közötti kapcsolatot létrehozni?  
-**5. lépés: Biztonsági**: hogyan fogja azokat biztonságos a hibrid vagy az Azure-telepítés?  
-**6. lépés: Irányítás**: hogyan azok közli a telepítése összhangban a biztonsági és a cégirányítási követelmények?
+**1. lépés: Az Azure-előfizetések**: hogyan lesz, az Azure megvásárlása, és dolgozhat az Azure-platform és szolgáltatások?  
+**2. lépés: A hibrid identitás**: hogyan fog, kezelése és az áttelepítés után a helyszíni és Azure-erőforrásokhoz való hozzáférésének? Hogyan azok bővítése vagy Identitáskezelés áthelyezése a felhőbe?  
+**3. lépés: Vész-helyreállítási és rugalmasság**: hogyan fog, ellenőrizze, hogy az alkalmazások és infrastruktúra rugalmas leállások és katasztrófák kezelése fordulhat elő, ha?  
+**4. lépés: Hálózatkezelés**: hogyan kell azokat a hálózati infrastruktúra tervezése, és a helyszíni adatközpont és az Azure közötti kapcsolatot?  
+**5. lépés: Biztonsági**: hogyan fogja azokat biztonságos hibrid/Azure-beli üzembe helyezésükben?  
+**6. lépés: Cégirányítási**: hogyan azok biztosítják az üzembe helyezés, biztonsági és cégirányítási követelmények összhangban?
 
 ## <a name="before-you-start"></a>Előkészületek
 
-Mielőtt először az infrastruktúra megnézi, érdemes néhány háttér-információkat az Azure-képességek arról lesz szó ebben a cikkben olvasható:
+Mielőtt elkezdjük áttekinteni az infrastruktúra, érdemes olvassa el ebben a cikkben bemutatjuk az Azure-képességek néhány háttér-információkat:
 
-- Nincsenek elérhető Azure eléréséhez, beleértve a használatalapú fizetés, nagyvállalati szerződés (EA) megvásárlása számos beállítási lehetőséggel, vagy az úgynevezett nyílt licencelési Microsoft viszonteladók számára, vagy a Microsoft Partners felhő megoldás szolgáltatókat (CSP). További tudnivalók [beszerzési lehetőségek](https://azure.microsoft.com/pricing/purchase-options/), és megtudhatja, hogyan [Azure-előfizetések vannak rendszerezve](https://azure.microsoft.com/blog/organizing-subscriptions-and-resource-groups-within-the-enterprise/).
-- Azure áttekintést kaphat [identitások és hozzáférések felügyeletéhez](https://www.microsoft.com/en-us/trustcenter/security/identity). Különösen megismerése [az Azure AD és kiterjesztése a helyszíni AD a felhőbe](https://docs.microsoft.com/azure/active-directory/identity-fundamentals). Nincs a hasznos letölthető e-könyv kapcsolatos [identitás és hozzáférés-kezelés (IAM) hibrid környezetben](https://azure.microsoft.com/resources/hybrid-cloud-identity/).
-- Azure beállításokkal való hibrid kapcsolathoz hálózati robusztus infrastruktúrát kínál. Áttekintheti a [hálózat és a hálózati hozzáférés-vezérlés](https://docs.microsoft.com/azure/security/security-network-overview).
-- Bevezetés az [Azure biztonsági](https://docs.microsoft.com/azure/security/azure-security), és olvassa el a terv létrehozása [cégirányítási](https://docs.microsoft.com/azure/security/governance-in-azure).
+- Nincsenek elérhető az Azure a hozzáférés, beleértve a használatalapú fizetés, a nagyvállalati szerződés (EA) megvásárlása számos lehetőséget, vagy a Felhőszolgáltatók (CSP) néven ismert Microsoft-viszonteladók, vagy a Microsoft Partners Open licencprogram. Ismerje meg [vásárlási lehetőségek](https://azure.microsoft.com/pricing/purchase-options/), és megtudhatja, hogyan lehet [Azure-előfizetések vannak rendszerezve](https://azure.microsoft.com/blog/organizing-subscriptions-and-resource-groups-within-the-enterprise/).
+- Az Azure áttekintése [identitás és hozzáférés-kezelés](https://www.microsoft.com/en-us/trustcenter/security/identity). Különösen ismertetése [Azure ad-ben, és kiterjeszti a helyszíni AD a felhőbe](https://docs.microsoft.com/azure/active-directory/identity-fundamentals). Nincs információ hasznos letölthető e-könyv [identitás és hozzáférés-kezelés (IAM) hibrid környezetben](https://azure.microsoft.com/resources/hybrid-cloud-identity/).
+- Az Azure robusztus hálózati infrastruktúrát hibrid kapcsolódási lehetőségeket biztosít. Áttekintheti a [hálózatkezelés és a hálózati hozzáférés-vezérlés](https://docs.microsoft.com/azure/security/security-network-overview).
+- Ismerkedjen meg [Azure biztonsági](https://docs.microsoft.com/azure/security/azure-security), és olvassa el a terv létrehozása [cégirányítási](https://docs.microsoft.com/azure/security/governance-in-azure).
 
 
-## <a name="on-premises-architecture"></a>A helyszíni architektúrája
+## <a name="on-premises-architecture"></a>A helyszíni architektúra
 
-Itt található ábra: az aktuális Contoso helyszíni infrastruktúrát.
+Íme az aktuális Contoso a helyszíni infrastruktúra bemutató ábra.
 
  ![Contoso-architektúra](./media/contoso-migration-infrastructure/contoso-architecture.png)  
 
-- Contoso található az a New York Város keleti Amerikai Egyesült Államokban lévő egyik fő datacenter rendelkezik.
-- Három további helyi ágak keresztül az Amerikai Egyesült Államokban rendelkeznek.
-- A fő adatközpontok csatlakozik az internethez a részszálas metro ethernet-kapcsolat (500 MB/s).
-- Minden fiókiroda helyi csatlakozik az internethez, üzleti osztály kapcsolatok használata IPSec VPN-alagutat a fő adatközpontok vissza a. Ez lehetővé teszi, hogy a teljes hálózat véglegesen csatlakoztatja, és optimalizálja a internetkapcsolat.
-- A fő adatközpontok teljesen virtualizált a VMware. Két ESXi 6.5 virtualizációs gazdagépeket, kezeli a vCenter Server 6.5 rendelkeznek.
-- Contoso az Active Directory, az Identitáskezelés és a DNS-kiszolgálók a belső hálózaton.
-- A tartományvezérlők, az adatközpontban, a VMware virtuális gépek futtatásához. A helyi ágak: tartományvezérlő fizikai kiszolgálókon.
+- Contoso a az városa New York a kelet-Egyesült Államok található egy fő adatközpont rendelkezik.
+- Három további helyszíni ágakat Egyesült államokbeli városba rendelkeznek.
+- A fő adatközpont fiber metro ethernet-kapcsolattal (500 MB/s) az internethez csatlakozik.
+- Minden egyes fiókiroda helyi üzleti osztály kapcsolatok, térjen vissza a fő adatközpont IPSec VPN-alagutat az internetes csatlakozik. Ez lehetővé teszi, hogy a teljes hálózat véglegesen csatlakoztatja, és optimalizálja a internetkapcsolat.
+- A fő adatközpont teljes VMware-rel lesz virtualizálva. Két ESXi 6.5-ös virtualizációs gazdagépeket, a vCenter Server 6.5-ös által felügyelt rendelkeznek.
+- Contoso az Active Directory identitáskezelési és a DNS-kiszolgálók a belső hálózaton.
+- A tartományvezérlők VMware virtuális gépek futtatását az adatközpontban. A tartományvezérlők helyi ágat, fizikai kiszolgálókon futnak.
 
 
-## <a name="step-1-buy-and-subscribe-to-azure"></a>1. lépés: Vásárolhat és Azure előfizetés
+## <a name="step-1-buy-and-subscribe-to-azure"></a>1. lépés: Vásárol, és iratkozzon fel az Azure
 
-Contoso mérje fel, Azure megvásárlása, előfizetések tervezővel, és a szolgáltatások és erőforrások licenc szükséges.
+Contoso cégnek szüksége van, felderíthesse az Azure megvásárlása, hogyan tervezhet, előfizetések és szolgáltatásokat és erőforrásokat módjával.
 
-### <a name="buy-azure"></a>Azure megvásárlása
+### <a name="buy-azure"></a>Az Azure megvásárlása
 
-A Contoso fog egy [nagyvállalati szerződés (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/). Ez magában foglalja az Azure-ba, amely feljogosítja arra, hogy vett szolgáltatás érvényessége alatt nagy előnye, ideértve a rugalmas számlázási lehetőségek és optimalizált árképzési társaságuk kész előre.
+A Contoso fog egy [nagyvállalati szerződés (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/). Ez magában foglalja az Azure-ban, amely feljogosítja arra őket, hogy jelentős előnnyel jár, többek között rugalmas számlázási lehetőségeket és optimalizált díjszabása előzetes pénzügyi kötelezettségvállalást.
 
-- Contoso becsült Mi az Azure fordítják az éves ütemezéshez lesz. A szerződés aláírt azok fizetett teljes az első évre.
-- Contoso kell használnia a kötelezettségvállalások mindegyikét előtt az év, illetve azok elveszíti ezeket dollár értékét.
-- Ha valamilyen okból haladhatja meg az előre és töltött több, a Microsoft fog számla azokat a különbséget.
-- A kötelezettségvállalás fent költségeit lesz az azonos sebességét, és azokat a szerződésben. Nincsenek nem távelérésből eredő hátrányok csökkentésére a címen.
+- Contoso mi várható az éves Azure-költések kezelése lesz. Megállapodást, akkor, amikor azok fizetős teljes mértékben az első évben.
+- Contoso kell használnia minden kötelezettségeiket, vagy az év, akkor elveszíti ezeket dollárban értékét.
+- Ha valamilyen okból haladhatja meg a kötelezettségvállalásos és köszönhetően több, a Microsoft számláz őket a különbséget.
+- Minden fenti kötelezettségvállalás járó költségek a azonos díjszabás, valamint azokat, a szerződésben lesz. Nincsenek nem úgy kapcsolaton át.
 
 ### <a name="manage-subscriptions"></a>Előfizetések kezelése
 
-Után az Azure-fizet, Contoso ki kell deríteni az előfizetések kezelése. EGY rendelkeznek, és így nem vonatkozik korlát az Azure-előfizetések számát tudja állítani.
+Után kell fizetnie, az Azure-hoz, Contoso kell csomagváltással kapcsolatos tájékoztatásért előfizetéseiket. Nagyvállalati szerződéssel rendelkeznek, és így az Azure-előfizetések száma nincs korlátozva, állíthatja be.
 
-- Egy Azure nagyvállalati beléptetés határozza meg, hogyan vállalati alakzat és Azure-szolgáltatásokat használ, és határozza meg a core irányítási szerkezete.
-- Első lépésként a Contoso megbizonyosodott egy struktúra (a nagyvállalati beléptetés a egy vállalati scaffold néven ismert. Segítségükkel [Ez a cikk](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-manager-subscription-governance) felhasználóinál megértéséhez, valamint egy scaffold tervezése.
-- Most a Contoso határozott, hogy a működési módszert használja a-előfizetések kezeléséhez.
-    - A vállalati belül egyetlen IT-részleg az Azure keret szabályozza lesz rendelkeznek. Ez az előfizetések csak csoport lesz.
-    - Ezek majd tovább ezt a modellt a jövőben, hogy más vállalati csoportok csatlakozhat, a nagyvállalati beléptetés a részlegek.
-    - Az informatikai részleg belül a Contoso két előfizetések, éles üzemi pontjának és fejlesztési van strukturált.
-    - Contoso további előfizetések a jövőben van szükség, ha azok kell kezelni a hozzáférést, a házirendek és a megfelelőségi előfizetésekben. Fog tudni ehhez bevezetésével [Azure felügyeleti csoportok](https://docs.microsoft.com/azure/azure-resource-manager/management-groups-overview), mint a fenti előfizetések további réteget.
+- Az Azure nagyvállalati beléptetés határozza meg, hogyan vállalati alakzat és Azure-szolgáltatásokat használ, és egy alapvető cégirányítási struktúrát határozza meg.
+- Első lépésként Contoso eldöntöttük, egy struktúra (más néven egy enterprise scaffold a nagyvállalati beléptetés a. Használja azokat [Ez a cikk](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-manager-subscription-governance) könnyebben megérthetik, és a egy scaffold tervezéséhez.
+- Most a Contoso egy funkcionális módszer használatával előfizetéseiket határozott meg.
+    - A vállalati belső rendelkeznek, amely az Azure-költségvetési szabályozza egy informatikai részleghez. Ez az előfizetés csak csoport lesz.
+    - Majd tovább ebben a modellben a jövőben, hogy más céges csoportok a nagyvállalati beléptetés a részlegek, csatlakozhat.
+    - Az informatikai részleg belül Contoso két előfizetések, üzemi és fejlesztési van felépítve.
+    - Ha a Contoso van szüksége a jövőben további előfizetéseket, azok kell hozzáférést, a házirendek és a megfelelőséget ezen előfizetések kezelése. Ők is látni fogják megtenni bevezetésével [az Azure felügyeleti csoportok](https://docs.microsoft.com/azure/azure-resource-manager/management-groups-overview), mint a fenti előfizetések réteget.
 
-    ![Vállalati struktúra](./media/contoso-migration-infrastructure/enterprise-structure.png) 
+    ![Nagyvállalati struktúra](./media/contoso-migration-infrastructure/enterprise-structure.png) 
 
 ### <a name="examine-licensing"></a>Vizsgálja meg a licencelés
 
-Az előfizetések konfigurálva a Contoso is megtekinthetik a Microsoft szoftverlicencelési. A licencelési stratégia az erőforrásokat, amelyeket be szeretne áttelepíteni az Azure, és hogyan Azure virtuális gépek és szolgáltatások kijelölt és telepített függ. 
+Előfizetések konfigurálva, a Contoso tekintse meg a Microsoft-licencelési. Licencelési stratégiájuk az erőforrásokat, amelyeket be szeretne migrálni az Azure, és hogyan Azure virtuális gépek és szolgáltatások kiválasztott és üzembe helyezett függ. 
 
 #### <a name="azure-hybrid-benefit"></a>Azure Hybrid Benefit
 
-Virtuális gépek Azure-ban való telepítésekor, a standard rendszerkép által használt szoftver perc Contoso felszámított licenc magában foglalja. Contoso azonban lett egy hosszú távú Microsoft-ügyfél és EAs maradt, és nyissa meg a licencek és frissítési garancia (SA). 
+Az Azure-beli virtuális gépek üzembe helyezésekor, a standard szintű lemezképek tartalmaznak egy licenc, amely a Contoso számára a szoftverrel használt percalapú díja. Contoso azonban már egy hosszú távú a Microsoft ügyfél és EAs maradt, és nyissa meg a licenceket frissítési garancia (SA). 
 
-Azure hibrid juttatás lehetővé teheti, menti az Azure virtuális gépek és az SQL Server munkaterhelések konvertálása vagy újból felhasználja a Windows Server Datacenter és Standard edition licencek, a frissítési garancia kezelt Contoso áttelepítéshez, költséghatékony módszert biztosít. Ezzel a lépéssel engedélyezi a Contoso alacsonyabb alapján számítási sebességet fizetni a virtuális gépek és az SQL Server. [További információk](https://azure.microsoft.com/pricing/hybrid-benefit/).
+Az Azure Hybrid Benefit értékelem lehetővé mentése az Azure virtuális gépek és az SQL Server számítási feladatok átalakítása vagy újbóli használata a Windows Server Datacenter és Standard edition-licenceket frissítési garanciával rendelkező Contoso az áttelepítéshez, költséghatékony módszert biztosít. Ez lehetővé teszi a számítási díjat fizeti egy alacsonyabb alapú virtuális gépek és az SQL Server Contoso. [További információk](https://azure.microsoft.com/pricing/hybrid-benefit/).
 
 
-#### <a name="license-mobility"></a>Licenchordozhatósági
+#### <a name="license-mobility"></a>Licenc Mobility
 
-SA keresztüli Licenchordozhatósági biztosít a Microsoft mennyiségi licenc ügyfelek számára például a Contoso jogosult kiszolgáló alkalmazások telepítése a Azure aktív SA rugalmasan. Ez nem új licencek vásárlása céljából kell. A nem kapcsolódó mobilitási díjak meglévő licenceket is könnyen telepíthető az Azure-ban. [További információk](https://azure.microsoft.com/pricing/license-mobility/).
+SA keresztüli biztosít a Microsoft mennyiségi licenc ügyfelek például Contoso, a licenckövetelményeknek megfelelő kiszolgálói alkalmazásokat az Azure-beli aktív SA. Így nem szükséges új licenceket vásárolni. Nincs társított mobilitást díjak a meglévő licenceit is egyszerűen üzembe helyezhetők az Azure-ban. [További információk](https://azure.microsoft.com/pricing/license-mobility/).
 
-#### <a name="reserve-instances-for-predictable-workloads"></a>Tartalék példányok előre jelezhető munkaterhelések
+#### <a name="reserve-instances-for-predictable-workloads"></a>Foglaljon le előre megjósolható számítási feladatokkal példányai
 
-Kiszámítható munkaterhelések azok, amelyek folyamatosan elérhető legyen a futó virtuális gépeket. Például az üzletági alkalmazások, például egy SAP ERP rendszer.  Másrészről előre nem látható munkaterhelések azok változó. Például magas a képező virtuális gépek igény, és nem csúcsidőre időpontokban ki.
+Előre megjósolható számítási feladatokkal által mindig elérhető legyen a futó virtuális gépek igénylő. Például az üzleti alkalmazások, például egy SAP ERP-rendszer.  Másrészről kiszámíthatatlan számítási rendszer, amelynek a változó. Például virtuális gépek, amelyek során nagy kereslet, és nem csúcsidőre időpontokban ki.
 
 ![Fenntartott példány](./media/contoso-migration-infrastructure/reserved-instance.png) 
 
-Cserébe fenntartott példányok adott, akkor tudja, hogy a nagy időtartamok idő fenntartásához szükséges Virtuálisgép-példány használja, konzol egy kedvezményes, mind rangsorolt kapacitás kérheti le. Használatával [Azure fenntartott példányok](https://azure.microsoft.com/pricing/reserved-vm-instances/)együtt Azure hibrid juttatásra, a Contoso takaríthat 82 %-kal ki rendszeres használatalapú fizetés, árképzési (április 2018).
+Használja a fenntartott példányok adott Virtuálisgép-példányok, akkor tudja, hogy az idő nagy időtartamok karban kell tartani, engedélyezések konzol kérheti le egy kedvezmény, és Priorizált kapacitást. Használatával [Azure Reserved Instances](https://azure.microsoft.com/pricing/reserved-vm-instances/), valamint az Azure Hybrid Benefittel akár 82 %-a normál használatalapú ki Contoso takaríthat (2018 április) díjszabása.
 
 
-## <a name="step-2-manage-hybrid-identity"></a>2. lépés: A hibrid identitás kezelése
+## <a name="step-2-manage-hybrid-identity"></a>2. lépés: A hibrid Identitáskezelés
 
-Azure-erőforrások identitások és hozzáférések felügyeletéhez (IAM) a felhasználói hozzáférés szabályozása és ad húzza együtt az Azure-infrastruktúra fontos lépés.  
+Így, és az identitás és hozzáférés-kezelés (IAM) Azure-erőforrásokhoz való felhasználói hozzáférés szabályozása az Azure-infrastruktúra melyekbe fontos lépés.  
 
-- Contoso döntse el, a helyszíni Active Directoryban kiterjeszti a felhőbe, mint egy új külön rendszert az Azure-ban.
+- Contoso úgy dönt, hogy azok a helyszíni Active Directory kiterjesztheti a felhőbe, nem pedig egy új különálló rendszert az Azure-ban.
 - Akkor hozzon létre egy Azure-alapú Active Directory ehhez.
-- Contoso nem rendelkezik Office 365 helyen, így egy új Azure AD létre kell hozni azokat.
-- Office 365 az Azure AD használ a felhasználókezeléshez. Contoso használta az Office 365, ha azok volna már rendelkezik egy Azure AD alapelve, és ez az elsődleges AD.
-- [További](https://support.office.com/article/understanding-office-365-identity-and-azure-active-directory-06a189e7-5ec6-4af2-94bf-a22ea225a7a9) Office 365, Azure ad-val kapcsolatos és további [előfizetés hozzáadása](https://docs.microsoft.com/azure/active-directory/active-directory-how-subscriptions-associated-directory) egy meglévő Azure ad.
+- Contoso nem rendelkezik Office 365-höz a helyen, így szükségük van egy új Azure AD kiépítése.
+- Az Office 365 az Azure AD felhasználói felügyelethez. Contoso Office 365 használja, ha azok lenne már rendelkezik egy Azure ad-ben kulcsfontosságú alapelve, és használja, amely az elsődleges AD.
+- [További](https://support.office.com/article/understanding-office-365-identity-and-azure-active-directory-06a189e7-5ec6-4af2-94bf-a22ea225a7a9) az Office 365, Azure AD-ről, és ismerje meg [egy előfizetés hozzáadása](https://docs.microsoft.com/azure/active-directory/active-directory-how-subscriptions-associated-directory) egy meglévő Azure ad-hez.
 
-### <a name="create-an-azure-ad"></a>Hozzon létre egy Azure AD
+### <a name="create-an-azure-ad"></a>Hozzon létre egy Azure ad-ben
 
-A Contoso Azure-előfizetés használ az Azure AD ingyenes kiadás része. Adja hozzá egy új Active directory az alábbiak szerint:
+Contoso az Azure AD ingyenes kiadásának mobilalkalmazásoknak része egy Azure-előfizetést használ. Egy új AD-címtár adja hozzá a következőképpen:
 
-1. Az a [Azure-portálon](http://portal.azure.com/), navigáljon a Contoso **hozzon létre egy erőforrást** > **identitás** > **Azure Active Directory**.
-2. A **könyvtár létrehozása**, akkor adja meg a könyvtár nevét, egy kezdeti tartománynevet, és a régióban, amelyben az Azure AD-címtár kell létrehozni.
+1. Az a [az Azure portal](http://portal.azure.com/), Ugrás a Contoso **erőforrás létrehozása** > **identitás** > **Azure Active Directory**.
+2. A **könyvtár létrehozása**, adja meg a könyvtár nevét, egy kezdeti tartománynevet és a régiót, amelyben az Azure AD-címtárban kell létrehozni.
 
-    ![Az Azure AD létrehozása](./media/contoso-migration-infrastructure/azure-ad-create.png) 
+    ![Hozzon létre az Azure ad-ben](./media/contoso-migration-infrastructure/azure-ad-create.png) 
 
     > [!NOTE]
-    > Ha ezek a következő könyvtár létrehozásakor az űrlap domainname.onmicrosoft.com rendelkezik egy kezdeti tartománynevet. A név nem módosítható vagy törölhető. Ehelyett van szükségük a regisztrált tartománynév hozzáadása az Azure ad Szolgáltatásba.
+    > A könyvtár létrehozásához az űrlap domainname.onmicrosoft.com rendelkezik egy kezdeti tartománynevet. A név nem módosítható vagy törölhető. Ehelyett szükségük van a regisztrált tartománynév hozzáadása az Azure ad-ben.
 
 ### <a name="add-the-domain-name"></a>A tartománynév hozzáadása
 
-A szabványos tartománynevét használja, a Contoso meg kell adni egy egyéni nevet, az Azure ad Szolgáltatásba. Ez a beállítás lehetővé teszi a rendszergazdáknak az ismerős felhasználónevek hozzárendelése. Például egy felhasználó e-mail címét is bejelentkezés billg@contoso.com, ahelyett, hogy az igénylő billg@contosomigration.onmicrosoft.com. 
+A standard szintű tartománynevét használja, Contoso kell hozzáadása egy egyéni nevet az Azure ad-hez. Ez a beállítás lehetővé teszi, hogy a rendszergazdák jól ismert felhasználóneveket rendeljen. Például egy felhasználó e-mail-címmel bejelentkezhet billg@contoso.com, ahelyett, hogy kellene billg@contosomigration.onmicrosoft.com. 
 
-Egyéni név beállítása azok hozzáadása a címtárhoz, DNS-bejegyzés, és ellenőrizze a neve az Azure AD.
+Állíthat be egyéni nevet, adja hozzá a könyvtárat, DNS-bejegyzés, és ellenőrizze a neve az Azure ad-ben.
 
-1. A **egyéni tartománynevek** > **egyéni tartomány hozzáadása**, megnövelik a tartományhoz.
-2. A DNS-bejegyzés használata az Azure-ban van szükségük a tartományregisztráló regisztrálja őket. 
+1. A **egyéni tartománynevek** > **egyéni tartomány hozzáadása**, akkor hozzáadhatja a tartományt.
+2. DNS-bejegyzés használhatja az Azure, regisztrálnia kell azt a tartományregisztrálónál. 
 
-    - Az a **egyéni tartománynevek** listában, akkor vegye figyelembe a DNS-információkat a neve. Contoso MX bejegyzése használ.
-    - Ehhez a névkiszolgáló való hozzáférésre van szükségük. Contoso akkor jelentkezett be a Contoso.com tartományhoz, és az Azure Active Directory, az áttelepítés előtt feljegyzett adatokkal által biztosított DNS-bejegyzés új MX rekord létrehozása.  
-1. Miután a DNS-rekordok terjesztése, a tartományhoz tartozó részletek nevében kattintva **győződjön meg arról** ellenőrizze az egyéni nevet.
+    - Az a **egyéni tartománynevek** listán, vegye figyelembe a DNS-információkat a neve. Contoso MX bejegyzés használ.
+    - Ezek a névkiszolgáló ehhez hozzá kell férniük. Contoso esetén azok jelentkezett be a Contoso.com tartományhoz, és létrehozott egy új MX-rekordot az Azure AD-ben feljegyzett adatokkal által biztosított DNS-bejegyzést.  
+1. Miután a DNS-rekordok propagálása a tartományhoz, a részletek nevében kattintanak **győződjön meg arról** a egyéni név ellenőrzése.
 
-     ![Az Azure AD DNS](./media/contoso-migration-infrastructure/azure-ad-dns.png) 
+     ![Az Azure AD-DNS](./media/contoso-migration-infrastructure/azure-ad-dns.png) 
 
-### <a name="set-up-on-premises-and-azure-groups-and-users"></a>A helyszíni és az Azure csoportok és felhasználók
+### <a name="set-up-on-premises-and-azure-groups-and-users"></a>Állítsa be a helyszíni és Azure-csoportok és felhasználók
 
-Most, hogy az Azure AD fut, adja hozzá a dolgozóknak a Contoso kell a helyszíni Active Directory-csoportokat, amely szinkronizálja az Azure AD. Azt javasoljuk, hogy azok az erőforráscsoportok az Azure-ban nevei megegyeznek a helyszíni-neveket használja. Így könnyebben való szinkronizálás céljából egyezések azonosítására.
+Most, hogy az Azure ad-ben működő, Contoso kell hozzáadni az alkalmazottak számára a helyszíni AD-csoportokat, amely szinkronizálja az Azure ad-hez. Azt javasoljuk, hogy a helyi csoport neve megegyezik az Azure-ban az erőforráscsoportok nevei használnak. Így könnyebben azonosíthatók legyenek az egyezések szinkronizálás céljából.
 
-#### <a name="create-resource-groups-in-azure"></a>Az Azure erőforráscsoport-sablonok létrehozása
+#### <a name="create-resource-groups-in-azure"></a>Erőforráscsoportok létrehozása az Azure-ban
 
-Azure erőforráscsoport-sablonok összegyűjtésére Azure-erőforrások. Egy erőforráscsoport azonosítója használatával lehetővé teszi, hogy a csoportban lévő erőforrások a műveletek végrehajtásához Azure.
+Azure-erőforráscsoportok összegyűjtésére Azure-erőforrások. Műveletek végrehajtása a csoporton belül az erőforrásokat az Azure-erőforráscsoport azonosítója használata lehetővé teszi.
 
-- Azure-előfizetés tartozhat több erőforrás-csoportok, de az erőforráscsoport csak egyetlen előfizetéssel belül létezhet.
-- Emellett egyetlen erőforráscsoportként működnek rendelkezhet több erőforrást, de egy erőforrás csak egyetlen csoport is tartozhatnak.
+- Azure-előfizetések több erőforráscsoporthoz is rendelkezhet, de egy erőforráscsoportot csak akkor létezhet egyetlen előfizetésben jön létre.
+- Emellett egyetlen rendelkezhet több olyan erőforrást, de egy erőforrás csak egyetlen csoporthoz is tartozhatnak.
 
-A Contoso Azure erőforráscsoport-sablonok beállítása, az alábbi táblázat foglalja össze.
+Contoso beállítása Azure-erőforráscsoportot, az alábbi táblázat foglalja össze.
 
 **Erőforráscsoport** | **Részletek**
 --- | ---
-**ContosoCobRG** | A csoport tartalmazza az összes erőforrásaihoz (COB) üzleti folytonosság érdekében.  Ez magában foglalja a tárolók Contoso hoz létre, amikor az Azure Site Recovery szolgáltatásban, és az Azure Backup szolgáltatás használatával.<br/><br/> Ez is magában foglalja az áttelepítéshez, a Azure áttelepítése és az adatbázis áttelepítési szolgáltatásokkal együtt használt erőforrások.
-**ContosoDevRG** | Ez a csoport tartalmazza a fejlesztési és tesztelési erőforrásokat.
-**ContosoFailoverRG** | Ez a csoport az erőforrásokat a feladatátvételt követően zóna funkcionál.
-**ContosoNetworkingRG** | Ez a csoport tartalmazza az összes hálózati erőforrásokhoz.
-**ContosoRG** | Ez a csoport tartalmazza az üzemi alkalmazások és az adatbázisok erőforrásaihoz.
+**ContosoCobRG** | Ez a csoport tartalmazza (COB) üzleti folytonossági kapcsolódó összes erőforrást.  Ez magában foglalja a tárolók, amely a Contoso hoz létre az Azure Site Recovery szolgáltatás és az Azure Backup szolgáltatás használata során.<br/><br/> Ez is magában foglalja többek között az Azure Migrate és a Database Migration Service migráláshoz használt erőforrásokat.
+**ContosoDevRG** | Fejlesztési és tesztelési erőforrásokat tartalmazó csoport.
+**ContosoFailoverRG** | Ez a csoport erőforrások sikertelen alkotóelemeit zóna szolgál.
+**ContosoNetworkingRG** | Ez a csoport összes hálózati erőforrást tartalmazza.
+**ContosoRG** | Ez a csoport tartalmazza az éles alkalmazások és adatbázisok kapcsolódó erőforrásokat.
 
-Akkor hozzon létre erőforráscsoportok az alábbiak szerint:
+Ezek erőforráscsoportok a következőképpen hozhat létre:
 
-1. Az Azure portálon > **erőforráscsoportok**, adnak hozzá egy csoporthoz.
-2. Az egyes csoportok akkor adja meg a nevét, az előfizetés, amely a csoport tartozik, és a régióban.
+1. Az Azure Portal > **erőforráscsoportok**, akkor a csoport hozzáadása.
+2. Az egyes csoportokhoz, adja meg a nevét, az előfizetés, amely a csoport tartozik, és a régió.
 3. Erőforráscsoportok megjelennek a **erőforráscsoportok** listája.
 
     ![Erőforráscsoportok](./media/contoso-migration-infrastructure/resource-groups.png) 
 
 
-#### <a name="create-matching-security-groups-on-premises"></a>Hozzon létre megfelelő biztonsági csoportok a helyszíni
+#### <a name="create-matching-security-groups-on-premises"></a>Hozzon létre megfelelő biztonsági csoportokat a helyszíni
 
-1. A helyszíni Active Directoryban a Contoso kiderül, hogy az Azure erőforráscsoport-sablonok nevének egyeznie biztonsági csoportok beállítása.
+1. Contoso azok a helyszíni Active Directory biztonsági csoportokat, amelyek megfelelnek az Azure-erőforráscsoportok nevei nevű beállítását.
  
-    ![A helyszíni Active Directory biztonsági csoportokat](./media/contoso-migration-infrastructure/on-prem-ad.png) 
+    ![A helyszíni AD biztonsági csoportok](./media/contoso-migration-infrastructure/on-prem-ad.png) 
 
-2. Felügyeleti szempontból azokat, amelyek nem kerülnek be az összes többi csoport további csoport létrehozása. Ez a csoport összes erőforráscsoport jogokkal rendelkezik az Azure-ban. Globális rendszergazdák korlátozott számú a rendszer ehhez a csoporthoz adja hozzá.
+2. Felügyeleti szempontból során létrehoznak egy további olyan csoport, amely megjelenik az összes többi csoport. Ez a csoport lesz jogosult összes erőforráscsoport az Azure-ban. A globális rendszergazdák csak korlátozott számú hozzáadódik ehhez a csoporthoz.
 
 ### <a name="synchronize-ad"></a>Az AD szinkronizálása
 
-Contoso szeretne közös identitás biztosítása a helyszíni erőforrások eléréséhez, és a felhőben. Ehhez az Azure AD azok integrálása a helyszíni Active Directoryban. Ebben a modellben:
+Contoso szeretne közös identitást biztosíthat a helyszíni erőforrások eléréséhez és a felhőben. Ehhez az Azure ad-vel, integrálhatja a helyszíni Active Directory. Ebben a modellben:
 
-- Felhasználók és a szervezetek egy egyetlen identitást hozzáférni a helyszíni alkalmazásokhoz és felhőszolgáltatásokhoz, mint például az Office 365 vagy az interneten lévő többi hely ezer előnyeinek életbe.
-- Rendszergazdák kihasználhatják a csoportok megvalósításához Active Directory [szerepköralapú hozzáférés vezérlés (RBAC)](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal) az Azure-ban.
+- Felhasználók és a szervezetek kihasználhatja hozzáférni a helyszíni alkalmazásokhoz és felhőszolgáltatásokhoz, mint például az Office 365 vagy más az internetes oldalakkal több ezer olyan egyetlen identitás.
+- Rendszergazdák kihasználhatják a csoportok az Active Directory megvalósítása [szerepkör alapú hozzáférés-vezérlés (RBAC)](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal) az Azure-ban.
 
-Lehetővé teszi az integrációt, a Contoso használja a [Azure AD Connect eszköz](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect). Miután telepítette, és konfigurálja az eszközt a tartományvezérlőn, a helyi szinkronizálják a helyszíni AD-identitások az Azure ad. 
+Integráció, a Contoso használat megkönnyítése érdekében a [Azure AD Connect eszköz](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect). Telepítse és konfigurálja az eszközt a tartományvezérlőre, ha a helyi szinkronizálja a helyszíni AD-identitások az Azure ad-hez. 
 
-### <a name="download-the-tool"></a>Töltse le az eszközt
+### <a name="download-the-tool"></a>Az eszköz letöltéséhez
 
-1. Az Azure-portálon az Azure Ugrás **Azure Active Directory** > **az Azure AD Connect**, és letölti az eszköz legújabb verzióját a kiszolgálóhoz, a szinkronizálás használatát.
+1. Az Azure Portalon az Azure Ugrás **Azure Active Directory** > **az Azure AD Connect**, és letölti a legfrissebb verziót, az eszköz akkor használ, a szinkronizálás a kiszolgálóhoz.
 
-    ![Letöltési AD Connect](./media/contoso-migration-infrastructure/download-ad-connect.png) 
+    ![AD Connect letöltése](./media/contoso-migration-infrastructure/download-ad-connect.png) 
 
-2. Elindítja a **AzureADConnect.msi** telepítés használatával **gyorsbeállítások használata**. Ez a leggyakrabban használt telepítését, és egy egyerdős topológiával, a Jelszókivonat-szinkronizálást a hitelesítéshez használható.
+2. Elindítja a **AzureADConnect.msi** telepítés használatával **gyorsbeállítások használata**. Ez a leggyakoribb telepítési, és a egy egyerdős topológiával, a Jelszókivonat-szinkronizálást a hitelesítéshez használható.
 
-    ![AD Connect varázsló](./media/contoso-migration-infrastructure/ad-connect-wiz1.png) 
+    ![Az AD Connect varázsló](./media/contoso-migration-infrastructure/ad-connect-wiz1.png) 
 
 3. A **az Azure AD Connect**, akkor adja meg a hitelesítő adatokat az Azure AD (a képernyő CONTOSO\admin vagy contoso.com\admin) való kapcsolódáshoz.
 
-    ![AD Connect varázsló](./media/contoso-migration-infrastructure/ad-connect-wiz2.png) 
+    ![Az AD Connect varázsló](./media/contoso-migration-infrastructure/ad-connect-wiz2.png) 
 
-4. A **csatlakozás az Active Directory tartományi szolgáltatások**, akkor adja meg a helyszíni hitelesítő adatait az AD.
+4. A **csatlakozhat az AD DS**, akkor adja meg a hitelesítő adatait a helyszíni AD.
 
-     ![AD Connect varázsló](./media/contoso-migration-infrastructure/ad-connect-wiz3.png) 
+     ![Az AD Connect varázsló](./media/contoso-migration-infrastructure/ad-connect-wiz3.png) 
 
-5. A **beállíthatja az**, kattintanak **a szinkronizálási folyamat indítása, ha a konfiguráció befejezése** a szinkronizálás azonnali indításához. Majd telepíteniük.
+5. A **konfigurálásra kész**, kattintanak **indítsa el a szinkronizálást, amint a konfigurálás befejeződik** azonnal elindítani a szinkronizálást. Ezután telepítse.
 
 
-- A Contoso Azure közvetlen kapcsolattal rendelkezik. Ha a helyszíni AD, a rendszer proxy mögött olvasható ez [cikk](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-troubleshoot-connectivity).
-- Az első szinkronizálást követően a helyszíni Active Directory-objektumok láthatók az Azure AD-ben.
+- Contoso az Azure-bA közvetlen kapcsolattal rendelkezik. Ha a helyszíni AD egy proxyt, olvassa el ezt [cikk](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-troubleshoot-connectivity).
+- Az első szinkronizálást követően a helyszíni AD-objektumok az Azure AD-ben látható.
 
     ![A helyszíni AD az Azure-ban](./media/contoso-migration-infrastructure/on-prem-ad-groups.png) 
 
-- A Contoso informatikai csapat minden csoportban betöltött szerepük alapján jelennek meg.
+- Contoso IT-részlegének jelennek meg az egyes csoportokban szerepkörük alapján.
 
-    ![A helyszíni AD tagok az Azure-ban](./media/contoso-migration-infrastructure/on-prem-ad-group-members.png) 
+    ![A helyszíni AD-tagok az Azure-ban](./media/contoso-migration-infrastructure/on-prem-ad-group-members.png) 
 
-### <a name="set-up-rbac"></a>Az RBAC beállítása
+### <a name="set-up-rbac"></a>RBAC beállítását
 
-Azure [szerepköralapú hozzáférés-vezérlést (RBAC)](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal) lehetővé teszi a részletes hozzáféréskezelést az Azure-bA. Az RBAC használata lehetővé teszi, hogy csak olyan mértékű hozzáférést biztosítson, ami a felhasználóknak a feladataik elvégzéséhez szükséges. A megfelelő RBAC szerepkör hozzárendelése felhasználók, csoportok és alkalmazások egy hatókör szintjén. A szerepkör-hozzárendelés hatóköre lehet előfizetés, egy erőforráscsoport vagy egy erőforrást. 
+Azure [szerepköralapú hozzáférés-vezérlés (RBAC)](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal) hozzáféréskezelést az Azure lehetővé teszi. Az RBAC használata lehetővé teszi, hogy csak olyan mértékű hozzáférést biztosítson, ami a felhasználóknak a feladataik elvégzéséhez szükséges. A megfelelő RBAC-szerepkörök hozzárendelése felhasználók, csoportok és alkalmazások egy hatókör szintjén. Szerepkör-hozzárendelés hatóköre egy előfizetés, erőforráscsoport vagy egyetlen erőforrás lehet. 
 
-Contoso most szerepkörök hozzárendelése az AD-csoportok a helyszíni szinkronizált.
+Contoso most szerepköröket rendelhet az azok szinkronizálja a helyszíni AD-csoportokat.
 
-1. Az a **ControlCobRG** erőforráscsoport, kattintson **hozzáférés-vezérlés (IAM)** > **Hozzáadás**.
-2. A **engedélyek hozzáadása** > **szerepkör**, és melyik **közreműködő**, és válassza ki a **ContosoCobRG** AD-csoport a listából. A csoport megjelenik majd **kijelölt tagok** listája. 
-3. Ezek ismételje meg ezt az egyéb erőforráscsoportok ugyanazokkal az engedélyekkel (kivéve a **ContosoAzureAdmins**), a közreműködői engedélyekkel ad hozzá az AD-fiókot, amely megfelel az erőforráscsoportot.
-4. Az a **ContosoAzureAdmins** AD-csoport hozzárendelése a **tulajdonos** szerepkör.
+1. Az a **ControlCobRG** erőforráscsoportot, kattintson **hozzáférés-vezérlés (IAM)** > **Hozzáadás**.
+2. A **engedélyek hozzáadása** > **szerepkör**, kiválasztják **közreműködői**, és válassza ki a **ContosoCobRG** AD-csoportot a listából. A csoport megjelenik majd **kiválasztott tagok** listája. 
+3. Ezek ismételje meg ezt az egyéb erőforráscsoportok ugyanazokkal az engedélyekkel (kivéve a **ContosoAzureAdmins**), a közreműködői engedélyekkel ad hozzá az AD-fiókot, amely megegyezik az erőforráscsoport.
+4. Az a **ContosoAzureAdmins** AD-csoporthoz hozzárendelni a **tulajdonosa** szerepkör.
 
-    ![A helyszíni AD tagok az Azure-ban](./media/contoso-migration-infrastructure/on-prem-ad-groups.png) 
+    ![A helyszíni AD-tagok az Azure-ban](./media/contoso-migration-infrastructure/on-prem-ad-groups.png) 
 
 
-## <a name="step-3-design-for-resilience-and-disaster"></a>3. lépés: A rugalmasság és a vészhelyreállítás tervezése
+## <a name="step-3-design-for-resilience-and-disaster"></a>3. lépés: A rugalmasság és a vészhelyreállítás megtervezése
 
 Azure-erőforrások régiók belül vannak telepítve.
-- Régiók földrajzi vannak szervezve, és rezidens, a közös joghatóság alá, a megfelelőség és a rugalmasság követelményeit is figyelembe véve földrajzi határain belül.
-- A régió adatközpontok készlete áll. Ezek adatközpontok késleltetés által definiált szegélyhálózati belül van telepítve, és egy dedikált regionális alacsony késleltetésű hálózaton keresztül kapcsolódik.
-- Minden Azure-régió, egy másik régióban, a rugalmasságot van párosítva.
-- További információ a [Azure-régiók](https://azure.microsoft.com/global-infrastructure/regions/), és megismerheti [hogyan van párosítva régiók](https://docs.microsoft.com/azure/best-practices-availability-paired-regions).
+- Régiók régiócsoportokat, és az adatok tárolási helye, szuverenitását, megfelelőségi és rugalmassági követelmények földrajzi határokon belüli összes régió megfelel.
+- A régió olyan adatközpontok együttese, amelyek tevődik össze. Ezek az adatközpontok késési értékkel definiált szegélyhálózat-alapú belül vannak üzembe helyezve, és dedikált regionális kis késésű hálózati kapcsolatot.
+- Minden egyes Azure-régió párban áll egy másik régióban rugalmasság.
+- Olvassa el [Azure-régiók](https://azure.microsoft.com/global-infrastructure/regions/), és tudomásul [hogyan régióban van párosítva](https://docs.microsoft.com/azure/best-practices-availability-paired-regions).
 
 
-Nyissa meg az USA keleti régiója 2 (Virginia található), az elsődleges régióban, mint a másodlagos régióba USA középső RÉGIÓJA contoso mellett döntött. Többféle ennek oka:
+Contoso úgy döntött, hogy nyissa meg a másodlagos régió, USA középső RÉGIÓJA és USA keleti RÉGIÓJA 2 (Virginia található), az elsődleges régióba. Van néhány, ennek oka:
 
-- A Contoso datacenter győrben található, és azokat figyelembe venni a legközelebbi adatközpont késése.
-- 2 USA keleti régiójában rendelkezik, a szolgáltatás és a termékek kell használni. Nem minden Azure-régiók ugyanazok a termék és az elérhető szolgáltatások. Tekintse át [régiónként Azure termékek](https://azure.microsoft.com/global-infrastructure/services/).
-- USA középső RÉGIÓJA az Azure-párosított régió, az USA keleti régiója 2.
+- A Contoso-datacenter New Yorkban található, és a legközelebbi adatközpontba késés venni azokat.
+- Az USA keleti régiója 2 rendelkezik, a szolgáltatás és a termékek kell használniuk. Nem minden Azure régiója nem ugyanaz a termékek és szolgáltatások rendelkezésre álló tekintetében. Áttekintheti [az Azure-termékek régiók szerint](https://azure.microsoft.com/global-infrastructure/services/).
+- USA középső RÉGIÓJA az USA keleti RÉGIÓJA 2 Azure párosított régió.
 
-Mivel ezek a hibrid környezet gondolja, Contoso kell kell figyelembe venni, hogyan hozhat létre a rugalmasság és a vész-helyreállítási stratégiát régió rendelkeznek. Széles körű stratégiák közé a egyetlen területi telepítést, a szolgáltatások, például a tartalék tartományok és regionális hibatűrőnek, párosítás keresztül történő teljes aktív-aktív modell felhőszolgáltatások és adatbázis központilag telepítve és karbantartási Azure platformon két régió felhasználóit.
+A hibrid környezetről úgy gondolja, Contoso kell figyelembe venni a rugalmasság és a egy vész-helyreállítási stratégiát beépítése saját régió tervezési kell. Széles körben egyetlen régióban üzembe helyezés, a tartalék tartományok és regionális rugalmasság, a párosítás keresztül, egy teljes aktív-aktív minta a cloud services és a database szolgáltatása, telepített és karbantartási az Azure platform stratégiák közötti a felhasználók a két régióban.
 
-A Contoso egy középső közúti érvénybe választotta. Azokat fogja telepíteni az alkalmazásokat és az elsődleges régióban erőforrásokat, és ne a teljes infrastruktúra a másodlagos régióba, hogy működjön, és teljes biztonsági mentés esetén a teljes alkalmazás katasztrófa, vagy ha régió nem készen áll.
-
-
-## <a name="step-4-design-a-network-infrastructure"></a>4. lépés: A hálózati infrastruktúra kialakítása
-
-Helyen régió rendelkeznek a Contoso figyelembe kell venni egy hálózati stratégia készen áll. Gondolja, hogy a helyszíni adatközpontját és Azure csatlakozás kommunikálnak egymással, illetve az Azure-ban a hálózati infrastruktúra megtervezésére van szükségük. Kifejezetten van szükségük:
-
-**Hibrid hálózati kapcsolatok tervezése**: rájönni arra, hogyan azok fog hálózatok csatlakoztatása a helyszíni és az Azure között.
-**Egy Azure hálózati infrastruktúra megtervezésére**: döntse el, hogyan azokat elérhetővé hálózatok a régiók keresztül. Hogyan kell tájékoztatnia a hálózatokon belül ugyanabban a régióban, és régiók között.
-**És beállítása az Azure-hálózatok**: állítsa be az Azure-hálózatok és alhálózatok, és döntse el, mi legyen elhelyezve a bennük foglalt.
-
-### <a name="plan-hybrid-network-connectivity"></a>Hibrid hálózati kapcsolatok tervezése
-
-Contoso figyelembe veendő egy [architektúrák száma](https://docs.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/) a hibrid hálózatkezelés Azure és a helyszíni adatközpont között. [További](https://docs.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/considerations) kapcsolatos lehetőségek összehasonlítása.
-
-Ne feledje a Contoso a helyi hálózati infrastruktúra jelenleg áll Győri az adatközpontjában, és helyi elágazik az Amerikai keleti részén.  Minden helyen van egy üzleti osztály internetkapcsolat.  Összes majd csatlakozik-e az Adatközpont IPSec VPN-alagúton keresztül az interneten keresztül.
-
-![Contoso hálózati](./media/contoso-migration-infrastructure/contoso-networking.png) 
-
-Ez hogyan Contoso úgy döntött, a hibrid kapcsolat megvalósításához:
-
-1. A Contoso datacenter Győri és a két Azure-régiók USA keleti régiója 2 és USA középső RÉGIÓJA között új pont-pont VPN-kapcsolat beállítása.
-2. A fő Contoso datacenter keresztül átirányítja az fiókirodai office adatforgalomra egy Azure virtuális hálózatot. 
-3. Akkor növelheti az Azure-telepítés, mivel azok az adatközpontjában, és az Azure-régiók között ExpressRoute kapcsolat fog létesíteni. Ha ez történik, a VPN-webhelyek kapcsolat csak feladatátvételi célokra lesz megőrzését.
-    - [További](https://docs.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/considerations) közötti VPN- és ExpressRoute hibrid megoldás kiválasztása.
-    - Győződjön meg arról [ExpressRoute helyek és a támogatás](https://docs.microsoft.com/azure/expressroute/expressroute-locations-providers).
+Contoso úgy döntött, hogy a középső úton igénybe. VNET-ÉLES-KAPACITÁSEGYSÉG HASZNÁLHATÓ.
 
 
-**Csak VPN**
+## <a name="step-4-design-a-network-infrastructure"></a>A virtuális hálózat egy üzemi hálózat, a VNET-PROD_EUS2 hasonló.
 
-![Contoso VPN](./media/contoso-migration-infrastructure/hybrid-vpn.png) 
+VNET-AUTOMATIKUS RENDSZER-HELYREÁLLÍTÁSI-KAPACITÁSEGYSÉG HASZNÁLHATÓ. A virtuális hálózat olyan hely, ahol virtuális gépek jönnek létre a helyszíni feladatátvétel után, vagy helyként fog működni az Azure virtuális gépek, melyek feladatai át az elsődleges kiszolgálóról a másodlagos régióba. Ez a hálózat hasonlít az éles hálózati környezetben, de nincs rajta a tartományvezérlők.
+
+**Minden egyes régióban található virtuális hálózat lesz a saját címtér nélkül.
+**Alhálózatok**: az alhálózatok a rendszer ezeket az USA keleti régiója 2 hasonló módon lett tervezve. A kivétel ez alól, akkor nincs szüksége alhálózatra tartományvezérlők.
+**Az alábbi táblázat foglalja össze a virtuális hálózatok, az USA középső Régiójában.
+
+### <a name="plan-hybrid-network-connectivity"></a>VNET-HUB-KAPACITÁSEGYSÉGEK
+
+10.250.0.0/20 [VNET-HUB-EUS2, VNET-ASR-CUS, VNET-ÉLES-KAPACITÁSEGYSÉGEK
+
+VNET-ASR-KAPACITÁSEGYSÉGEK  10.255.16.0/20  VNET-HUB-CUS, VNET-ÉLES-KAPACITÁSEGYSÉGEK
+
+![VNET-ÉLES-KAPACITÁSEGYSÉGEK](./media/contoso-migration-infrastructure/contoso-networking.png) 
+
+10.255.32.0/20
+
+1. VNET-HUB-CUS, VNET-ASR-CUS, VNET-ÉLES-EUS2
+2. Hub/küllő párosított régióban 
+3. A velünk a Kapcsolatot a központi Agyhoz alhálózatok hálózati (VNET-HUB-CUS) Használható IP-címet
+    - [10.250.0.0/24
+    - 10.250.1.0/24
 
 
-**VPN- és ExpressRoute**
+**10.250.2.0/24**
 
-![Contoso VPN/ExpressRoute](./media/contoso-migration-infrastructure/hybrid-vpn-expressroute.png) 
+![10.250.3.0/24](./media/contoso-migration-infrastructure/hybrid-vpn.png) 
 
 
-### <a name="design-the-azure-network-infrastructure"></a>Az Azure hálózati infrastruktúra tervezése
+**Átjáró-alhálózat**
 
-Nagyon fontos, hogy a Contoso hálózatok hozzon létre úgy, hogy a hibrid telepítés segítségével biztonságos és skálázható módon telepíthetők. Ehhez az szükséges, Contoso végzése a hosszú távú megközelítést, és virtuális hálózatokról (Vnetekről) kell lennie a rugalmasság és készen áll a vállalati tervez. [További](https://docs.microsoft.com/azure/virtual-network/virtual-network-vnet-plan-design-arm) Vnetek tervezésével kapcsolatos.
+![A központi USA éles hálózaton (VNET-ÉLES-CUS) alhálózatok](./media/contoso-migration-infrastructure/hybrid-vpn-expressroute.png) 
 
-Szeretne csatlakozni a két régió, a Contoso központ hub hálózati modell megvalósításához határozott meg:
 
-- Minden régióban a Contoso központ küllős modell fogja használni.
-- Szeretne csatlakozni, hálózatok és hubok, Contoso fogja használni, Azure hálózati társviszony-létesítés.
+### <a name="design-the-azure-network-infrastructure"></a>Az éles hálózati környezetben az elsődleges régióban USA keleti RÉGIÓJA 2 párhuzamos nincs éles hálózati környezetben a másodlagos USA középső régiójában.
 
-#### <a name="network-peering"></a>Hálózati társviszony-létesítés
+TERMÉKKATALÓGUS-FE-KAPACITÁSEGYSÉGEK 10.255.32.0/22 [ÉLES – ALKALMAZÁS-KAPACITÁSEGYSÉGEK
 
-Azure biztosít a hálózati társviszony-létesítést úgy, hogy csatlakozzon a virtuális hálózatokat és hubok. Globális társviszony-létesítés lehetővé teszi, hogy a különböző régiókban Vnetek/hubok kapcsolatainak. Helyi társviszony-létesítés csatlakozik a Vnetek ugyanabban a régióban. VNet-társviszony létesítése – számos előnyt nyújtanak:
+10.255.36.0/22
 
-- Nincsenek társviszonyban Vnetek közötti hálózati forgalmat a sajátja.
-- A Vnetek közötti forgalom Microsoft hálózat másolatok. A Vnetek közötti kommunikáció nincs nyilvános interneten, az átjárók vagy a titkosításhoz kötelező.
-- Társviszony-létesítés biztosít egy alapértelmezett, a különböző Vnetek az erőforrások alacsony késésű és nagy sávszélességű kapcsolatot.
+- ÉLES – ADATBÁZIS-KAPACITÁSEGYSÉGEK
+- 10.255.40.0/23
 
-[További](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview) kapcsolatos hálózati társviszony-létesítés.
+#### <a name="network-peering"></a>Hálózatok közötti társviszony
 
-#### <a name="hub-to-hub-across-regions"></a>Hub-az-hub régiók között
+ÉLES – DC-KAPACITÁSEGYSÉGEK 10.255.42.0/24 Az USA középső RÉGIÓJA (VNET-ASR-CUS), az USA középső RÉGIÓJA feladatátvételi vagy helyreállítási hálózat alhálózatai A VNET-ASR-CUS hálózati a régiók közötti feladatátvétel célokat szolgál.
 
-Contoso telepíti minden egyes régió egy csomópontjában. Egy virtuális hálózatot (VNet) is, amely különbséglemezként funkcionál középpontja a helyszíni hálózatot az Azure-ban. A központ Vnetek fog csatlakozni egymáshoz globális Vnetben társviszony-létesítés használatával. Globális Vnetben társviszony-létesítés a Vnetek Azure-régiók közötti kapcsolatot.
+- A Site Recovery replikálja, és átadja a feladatokat az Azure virtuális gépek régiók közötti használható.
+- Azt is egy Azure-hálózathoz, amely a helyszínen maradnak, de a feladatátvételt az Azure-bA vész-helyreállítási védett munkaterhelésekhez Contoso adatközpontban működik. VNET-ASR-Kapacitásegységek az üzemi virtuális hálózat, az USA keleti RÉGIÓJA 2, de a domain controller alhálózat nélkül alapszintű ugyanabban az alhálózatban.
+- ASR-FE-KAPACITÁSEGYSÉGEK
 
-- A központ minden régióban nincsenek társviszonyban, a partner hubhoz más régióban.
-- A központ nincsenek társviszonyban, minden hálózathoz a régióban, és csatlakozni tud-e az összes hálózati erőforrásokhoz.
+[10.255.16.0/22
+
+#### <a name="hub-to-hub-across-regions"></a>ASR-ALKALMAZÁS-KAPACITÁSEGYSÉGEK
+
+10.255.20.0/22 ASR-ADATBÁZIS-KAPACITÁSEGYSÉGEK A hub használata a globális virtuális társhálózatok létesítésének egymáshoz virtuális hálózatok kapcsolódik. Globális virtuális társhálózatok létesítésének kapcsolódik a virtuális hálózatok az Azure-régiók között.
+
+- Az egyes régiókban a hub társviszonyban áll a partner hubra más régióban található.
+- A hub társviszonyban áll a régióban található minden hálózathoz és képes csatlakozni az összes hálózati erőforrásokhoz.
 
     ![Globális társviszony-létesítés](./media/contoso-migration-infrastructure/global-peering.png) 
 
-#### <a name="hub-and-spoke-within-a-region"></a>Hub-és-küllős régión belül
+#### <a name="hub-and-spoke-within-a-region"></a>Központ-küllő egy adott régión belül
 
-Minden régióban Contoso telepíti Vnetekhez különböző célokra küllős hálózatokként a régió központi. Régión belül Vnetek csatlakozhatnak-társviszony létesítése – szeretne az elosztóhoz, és egymást.
+Minden egyes régióban Contoso fog üzembe helyezni virtuális hálózatok különböző felhasználási célokra, mint a régió hub topológiájú hálózatokat. Egy régión belüli virtuális hálózatok használatával társviszony-létesítés a hubhoz, és egymást.
 
-#### <a name="design-the-hub-network"></a>A központi hálózat tervezése
+#### <a name="design-the-hub-network"></a>A hub hálózatot
 
-Belül a küllős modellt, amely a Contoso választotta, hogyan foglalkoznia kell a helyszíni adatközpontját és az internetről érkező forgalmat, továbbítja. Ez hogyan Contoso kezelésére, az USA keleti régiója 2 és a központi USA hubok útválasztási döntött:
+A küllős modell, amely a Contoso választotta, végiggondolni, hogyan lehet szükséges a helyszíni adatközpont és az internetről érkező forgalmat, lesznek irányítva. Itt látható, hogyan Contoso kezeli az USA 2. keleti régiója és USA középső RÉGIÓJA hubs egyaránt útválasztás választotta:
 
-- A "visszirányú c","néven ismert hálózati azok tervez, ez ugyanis, hogy az elérési utat, a bejövő, a kimenő hálózati kövesse a csomagok.
-- A hálózati architektúra tartalmaz két határokat, egy nem megbízható előtér-szegélyhálózati zóna és a háttér-megbízható helyek zónájába.
-- A tűzfal van egy hálózati adapter minden egyes zónában megbízható zónák hozzáférés szabályozása.
+- Egy "fordított c", más néven hálózati azok tervez, mivel ez az, hogy a csomagok kimenő bejövő hálózati elérési út.
+- A hálózati architektúra két határokat, egy nem megbízható előtér peremhálózati és egy háttér-megbízható zónába tartozik.
+- A tűzfal egy hálózati adapter lesz minden egyes zónában megbízható zónákhoz való hozzáférés szabályozása.
 - Az internetről:
-    - Internetes forgalom elért egy elosztott terhelésű nyilvános IP-címet a szegélyhálózaton.
-    - Ilyen típusú adatforgalom a tűzfalon keresztül, és tűzfalszabályok továbbítódik.
-    - Hálózati hozzáférés-vezérlést valósíthatók meg, miután forgalmat továbbítja a megfelelő helyre a megbízható helyek zónájába.
-    - A vnet kimenő forgalom az internethez, felhasználó által definiált útvonalak (udr-EK) használata történik. A forgalom kényszeríti a tűzfalon keresztül, és megfelelően Contoso házirendek megvizsgálni.
-- A Contoso datacenter:
-    - Bejövő forgalom a VPN-helyek (vagy ExpressRoute) a nyilvános IP-címét az Azure VPN gateway találatok.
-    - Tűzfal-szabályokat és a tűzfalon keresztül továbbítódik.
-    - Szabályok alkalmazása után forgalmat továbbíthatja a rendszer a belső megbízható helyek zónájába alhálózaton belső terheléselosztót (Standard Termékváltozat).
-    - VPN-kapcsolaton keresztül a helyszíni adatközpontját a megbízható alhálózati kimenő forgalmat a tűzfal és a szabályokat alkalmazza, mielőtt a felhasználó a VPN-helyek kapcsolaton keresztül történik.
+    - Internetes forgalom letiltottá terheléselosztott nyilvános IP-cím a szegélyhálózaton.
+    - Az adatforgalmat a tűzfalon keresztül, és a tűzfal-szabályok érvényesek.
+    - Hálózati hozzáférés-vezérléssel vannak bevezetése után a forgalmat továbbítja a megfelelő helyre a megbízható helyek zónájába.
+    - A virtuális hálózatok közötti kimenő forgalom az internethez, felhasználó által megadott útvonalak (udr-EK) használatával történik. A forgalom kényszerített a tűzfalon keresztül, és megfelelően Contoso házirendek megvizsgálni.
+- A Contoso adatközpontból:
+    - VPN-helyek (vagy ExpressRoute) bejövő forgalom eléri az Azure VPN-átjáró nyilvános IP-címét.
+    - Adatforgalmat a tűzfalon keresztül, és a tűzfal-szabályok érvényesek.
+    - Szabályok alkalmazása után forgalmat egy belső terheléselosztót (standard szintű Termékváltozat) a belső megbízható zóna alhálózaton lesznek továbbítva.
+    - A VPN-kapcsolaton keresztül a helyszíni adatközpontba a megbízható alhálózatról kimenő forgalmat a tűzfal és a szabályok a alkalmazni, mielőtt továbblépne a site-to-site VPN-kapcsolaton keresztül továbbít.
 
 
 
-### <a name="design-and-set-up-azure-networks"></a>És Azure-hálózatok beállítása
+### <a name="design-and-set-up-azure-networks"></a>Tervezési és az Azure-hálózatok beállítása
 
-A hálózati és útválasztási topológiájának helyen a Contoso készen áll az Azure-hálózatok és alhálózatok beállítása.
+A hálózat és a helyen útválasztási topológiáját, a Contoso beállítása az Azure-hálózatok és alhálózatok készen áll.
 
-- A Contoso Azure (0.0.0.0 127.255.255.255) egy osztály A magánhálózaton valósítja meg. Ez működik, a helyszíni óta aktuális rendelkeznek a B osztály privát cím terület 172.160.0/16, hogy a meg arról, hogy bármely átfedés címtartományai között nem lehet.
-- Ezek fog telepíteni az elsődleges és másodlagos régióban Vnetek.
-- Ezek fogja használni, amely tartalmazza az előtag elnevezési **VNET** és a régió rövidítés **EUS2** vagy **logikai csoport EGYÉ**. Ezt a szabványt használ, a központ hálózatok lesznek elnevezve **VNET-HUB-EUS2** (USA keleti régiója 2), és **VNET-HUB-logikai csoport EGYÉ** (központi USA).
-- Nem rendelkezik a Contoso egy [IP-Címkezelő megoldás](https://docs.microsoft.com/windows-server/networking/technologies/ipam/ipam-top), így azok kell terveznie az hálózati útválasztási nélkül hálózati címfordítást.
+- Contoso az Azure-ban (0.0.0.0 127.255.255.255) osztály egy magánhálózaton hajtja végre. Ez akkor működik, óta a helyszínen aktuális rendelkeznek a B osztály privát cím terület 172.160.0/16 növelhető meg arról, hogy nem kell minden olyan címtartományai között átfedés.
+- Ezek fogjuk telepíteni az elsődleges és másodlagos régióban található virtuális hálózatok.
+- Az előtagot tartalmazó elnevezési használatának mikéntjét **VNET** és a régió rövidítés **EUS2** vagy **CUS**. Használja ezt a szabványt, a hub hálózatok lesznek elnevezve **VNET-HUB-EUS2** (USA keleti RÉGIÓJA 2), és **VNET-HUB-CUS** (USA középső RÉGIÓJA).
+- Nem rendelkezik a Contoso egy [IP-Címkezelő megoldás](https://docs.microsoft.com/windows-server/networking/technologies/ipam/ipam-top), így a szükséges hálózati útválasztást, NAT nélkül tervezése
 
 
-#### <a name="virtual-networks-in-east-us-2"></a>Virtuális hálózatok, az USA keleti régiója 2. régiója
+#### <a name="virtual-networks-in-east-us-2"></a>USA 2. keleti régiójában található virtuális hálózatok
 
-USA keleti régiója 2 az elsődleges régióban, amely a Contoso erőforrások és szolgáltatások telepítéséhez használandó. Itt látható, hogyan fog azok felelős mérnök hálózatok:
+USA keleti RÉGIÓJA 2 az elsődleges régióban, amely a Contoso-erőforrások és szolgáltatások telepítéséhez használandó. Itt látható, hogy azok mérnök hálózatok fogjuk:
 
-- **Hub**: A virtuális hálózat, az USA keleti régiója 2 is középpontja a helyszíni adatközpontját elsődleges kapcsolata.
-- **Vnetek**: küllő Vnetek az USA keleti régiója 2 segítségével szükség esetén a feladatok elkülönítése céljából. A központ VNet mellett a Contoso két küllős Vnetek az USA keleti régiója 2 fog rendelkezni:
-    - **VNET-FEJLESZTŐI-EUS2**. Ez a virtuális hálózat a fejlesztési és tesztelési munkacsoport fog egy teljesen működőképes hálózati fejlesztői projektek ad meg. Egy éles kísérleti területre fog működni, és a termelési infrastruktúrával függvény hagyatkoznak.
-    - **VNET-termék-EUS2**: Azure IaaS éles összetevőket is található, a hálózathoz. 
-    -  Minden egyes virtuális hálózat lesz a saját egyedi címterület-átlapolás nélkül. Kívánnak konfigurálja az útválasztást anélkül, hogy a hálózati címfordítást.
+- **Hub**: az agyi virtuális hálózat, az USA 2. keleti régiója elsődleges kapcsolatot a helyszíni adatközpontját a központi helye.
+- **Virtuális hálózatok**: Kelet-USA 2. küllő virtuális hálózatok segítségével számítási feladatok elkülönítésére, ha szükséges. Az agyi virtuális hálózat mellett a Contoso két küllő virtuális hálózatok, az USA keleti RÉGIÓJA 2 fog rendelkezni:
+    - **VNET-DEV-EUS2**. A virtuális hálózat biztosít a fejlesztési és tesztelési csapata egy teljes körűen használható hálózati fejlesztési projektek lesz. Próbaüzem üzem területként fog működni, és a termelési infrastruktúrával függvényt fogja alkalmazni.
+    - **VNET-ÉLES-EUS2**: az Azure IaaS éles összetevőket ezen a hálózaton található. 
+    -  Minden egyes virtuális hálózat lesz a saját egyedi címtér nélkül. Konfigurálja az útválasztást, NAT nélkül kívánnak
 - **Alhálózatok**:
-    - Nem lesznek alhálózat minden hálózat minden egyes alkalmazás szinten
-    - A termelési hálózat minden alhálózat egy egyező alhálózatot rendelkezik fejlesztői virtuális.
-    - Emellett az éles hálózati környezetben van tartományvezérlők alhálózatot.
+    - Egy alhálózatot az kell minden hálózat minden egyes alkalmazás-szint
+    - A termelési hálózat minden alhálózata egy egyező alhálózatot kell fejlesztési a virtuális hálózaton.
+    - Emellett az éles hálózati környezetben van tartományvezérlők alhálózatát.
 
-Az alábbi táblázat foglalja össze Vnetek az USA keleti régiója 2.
+USA 2. keleti régiójában található virtuális hálózatok az alábbi táblázat foglalja össze.
 
-**Virtuális hálózat** | **tartomány** | **társ**
+**Virtuális hálózat** | **Címtartomány** | **Társ**
 --- | --- | ---
-**VNET-HUB-EUS2** | 10.240.0.0/20 | VNET-HUB-CUS2, A VNET-FEJLESZTŐI-EUS2, A VNET-TERMÉK-EUS2
-**VNET-FEJLESZTŐI-EUS2** | 10.245.16.0/20 | VNET-HUB-EUS2
-**VNET-TERMÉK-EUS2** | 10.245.32.0/20 | VNET-HUB-EUS2, VNET-TERMÉK-LOGIKAI CSOPORT EGYÉ
+**VNET-HUB-EUS2** | 10.240.0.0/20 | VNET-HUB-CUS2, VNET-DEV-EUS2, VNET-ÉLES-EUS2
+**VNET-DEV-EUS2** | 10.245.16.0/20 | VNET-HUB-EUS2
+**VNET-ÉLES-EUS2** | 10.245.32.0/20 | VNET-HUB-EUS2, VNET-ÉLES-KAPACITÁSEGYSÉGEK
 
-![Hub/küllős elsődleges régióban](./media/contoso-migration-infrastructure/primary-hub-peer.png) 
+![Hub/küllő elsődleges régióban](./media/contoso-migration-infrastructure/primary-hub-peer.png) 
 
 
-#### <a name="subnets-in-the-east-us-2-hub-network-vnet-hub-eus2"></a>A keleti Velünk 2 Hub (VNET-HUB-EUS2) hálózat alhálózatai
+#### <a name="subnets-in-the-east-us-2-hub-network-vnet-hub-eus2"></a>Alhálózatok az agyban East US 2 hálózati (VNET-HUB-EUS2)
 
 **Alhálózat/zóna** | **CIDR** | ** Használható IP-címet
 --- | --- | ---
@@ -405,56 +405,56 @@ Az alábbi táblázat foglalja össze Vnetek az USA keleti régiója 2.
 **GatewaySubnets** | 10.240.10.0/24 | 251
 
 
-#### <a name="subnets-in-the-east-us-2-dev-network-vnet-dev-eus2"></a>A keleti Velünk 2 fejlesztői (VNET-fejlesztői-EUS2) hálózat alhálózatai
+#### <a name="subnets-in-the-east-us-2-dev-network-vnet-dev-eus2"></a>Alhálózatok a East US 2 fejlesztési hálózatban (VNET-DEV-EUS2)
 
-A fejlesztői VNet egy éles kísérleti terület lesz a fejlesztő csapat által. Három alhálózatot tartalmaz.
+A fejlesztési virtuális hálózat a fejlesztői csapat próbaüzem üzem területként használja. Három alhálózatot tartalmaz.
 
-**Alhálózat** | **CIDR** | **címek** | **Az alhálózaton**
+**Alhálózat** | **CIDR** | **Címek** | **Az alhálózat**
 --- | --- | --- | ---
-**FEJLESZTŐI-FE-EUS2** | 10.245.16.0/22 | 1019 | Virtuális gépek Frontends vagy webes réteg
-**FEJLESZTŐI-ALKALMAZÁS-EUS2** | 10.245.20.0/22 | 1019 | Alkalmazás rétegbeli virtuális gépek
-**FEJLESZTŐI-DB-EUS2** | 10.245.24.0/23 | 507 | Adatbázis virtuális gépek
+**DEV-FE-EUS2** | 10.245.16.0/22 | 1019 | Előtérrendszer/webes szintű virtuális gépek
+**DEV-ALKALMAZÁS-EUS2** | 10.245.20.0/22 | 1019 | Alkalmazás szintű virtuális gépek
+**DEV-DB-EUS2** | 10.245.24.0/23 | 507 | Adatbázis-beli virtuális gépek
 
 
-#### <a name="subnets-in-the-east-us-2-production-network-vnet-prod-eus2"></a>Keleti Velünk 2 éles hálózati környezetben működő (VNET-termék-EUS2) alhálózatai
+#### <a name="subnets-in-the-east-us-2-production-network-vnet-prod-eus2"></a>Alhálózatok a East US 2 éles hálózaton (VNET-ÉLES-EUS2)
 
-Az Azure IaaS-összetevők az éles hálózati környezetben található. Minden alkalmazás szinthez saját alhálózatba tartozik. Alhálózatok egyeznek, a fejlesztői hálózat tartományvezérlők alhálózatot hozzáadásával.
+Azure IaaS-összetevőket az éles hálózati környezetben találhatók. Minden alkalmazás csomag esetében a saját alhálózatában. Alhálózatok megegyeznek a fejlesztési hálózat, alhálózat tartományvezérlők igény szerinti hozzáadásával.
 
-**Alhálózat** | **CIDR** | **címek** | **Az alhálózaton**
+**Alhálózat** | **CIDR** | **Címek** | **Az alhálózat**
 --- | --- | --- | ---
-**TERMÉK-FE-EUS2** | 10.245.32.0/22 | 1019 | Virtuális gépek Frontends vagy webes réteg
-**TERMÉK-ALKALMAZÁS-EUS2** | 10.245.36.0/22 | 1019 | Alkalmazás rétegbeli virtuális gépek
-**TERMÉK-DB-EUS2** | 10.245.40.0/23 | 507 | Adatbázis virtuális gépek
-**TERMÉK-DC-EUS2** | 10.245.42.0/23 | 251 | Tartományvezérlő virtuális gépek
+**TERMÉKKATALÓGUS-FE-EUS2** | 10.245.32.0/22 | 1019 | Előtérrendszer/webes szintű virtuális gépek
+**ÉLES – ALKALMAZÁS-EUS2** | 10.245.36.0/22 | 1019 | Alkalmazás szintű virtuális gépek
+**TERMÉKKATALÓGUS-DB-EUS2** | 10.245.40.0/23 | 507 | Adatbázis-beli virtuális gépek
+**ÉLES – DC-EUS2** | 10.245.42.0/23 | 251 | Tartományvezérlő virtuális gépek
 
 
-![Központi hálózati architektúra](./media/contoso-migration-infrastructure/azure-networks-eus2.png)
+![Hub hálózati architektúra](./media/contoso-migration-infrastructure/azure-networks-eus2.png)
 
 
-#### <a name="virtual-networks-in-central-us-secondary-region"></a>USA középső RÉGIÓJA (másodlagos régióba) lévő virtuális hálózatok
+#### <a name="virtual-networks-in-central-us-secondary-region"></a>USA középső RÉGIÓJA (másodlagos régió) lévő virtuális hálózatok
 
-USA középső RÉGIÓJA Contoso másodlagos régióban. Itt látható, hogyan fog azok felelős mérnök hálózatok:
+USA középső Régiójában a Contoso másodlagos régióba. Itt látható, hogy azok mérnök hálózatok fogjuk:
 
-- **Hub**: A virtuális hálózat, az USA keleti régiója 2 kapcsolat a helyszíni adatközpontját és a Vnetek az USA keleti régiója 2 segítségével szükség esetén feladatok elkülönítése céljából küllős középpontja hub külön más küllők felügyelt.
-- **Vnetek**: két Vnetek Államok középső rendelkeznek:
-    - VNET-TERMÉK-LOGIKAI CSOPORT EGYÉ. Ez a virtuális hálózat egy üzemi hálózat, a VNET-PROD_EUS2 hasonló. 
-    - VNET-ASR-LOGIKAI CSOPORT EGYÉ. Ez a virtuális hálózat fog működni, olyan hely, ahol a feladatátvétel a helyszíni után a virtuális gépek jönnek létre, vagy olyan hely, az Azure virtuális gépeken, amelyek feladatátvétel történt az elsődleges a másodlagos régióba. Ez a hálózat hasonlít az éles hálózati környezetben, de nincs meg minden olyan tartományvezérlőn.
-    -  Minden régióban VNet lesz a saját címterület-átlapolás nélkül. Kívánnak konfigurálja az útválasztást anélkül, hogy a hálózati címfordítást.
-- **Alhálózatok**: az alhálózatok fog tervezett, a hasonló módon ezeket az USA keleti régiója 2. A kivétel ez alól, hogy a tartományvezérlők nem kell egy alhálózatot.
+- **Hub**: A hubon, az USA keleti RÉGIÓJA 2 virtuális hálózat a helyszíni adatközpontját, és a küllő virtuális hálózatok, az USA keleti RÉGIÓJA 2 is használható, ha szükséges, számítási feladatok elkülönítésére csatlakozási lehetőségek központi helye külön-külön kezelt más küllőktől elkülönülten kezelhetőek.
+- **Virtuális hálózatok**: USA középső régiójában két virtuális hálózat rendelkeznek:
+    - VNET-ÉLES-KAPACITÁSEGYSÉG HASZNÁLHATÓ. A virtuális hálózat egy üzemi hálózat, a VNET-PROD_EUS2 hasonló. 
+    - VNET-AUTOMATIKUS RENDSZER-HELYREÁLLÍTÁSI-KAPACITÁSEGYSÉG HASZNÁLHATÓ. A virtuális hálózat olyan hely, ahol virtuális gépek jönnek létre a helyszíni feladatátvétel után, vagy helyként fog működni az Azure virtuális gépek, melyek feladatai át az elsődleges kiszolgálóról a másodlagos régióba. Ez a hálózat hasonlít az éles hálózati környezetben, de nincs rajta a tartományvezérlők.
+    -  Minden egyes régióban található virtuális hálózat lesz a saját címtér nélkül. Konfigurálja az útválasztást, NAT nélkül kívánnak
+- **Alhálózatok**: az alhálózatok a rendszer ezeket az USA keleti régiója 2 hasonló módon lett tervezve. A kivétel ez alól, akkor nincs szüksége alhálózatra tartományvezérlők.
 
-A Vnetek Államok középső az alábbi táblázat foglalja össze.
+Az alábbi táblázat foglalja össze a virtuális hálózatok, az USA középső Régiójában.
 
-**Virtuális hálózat** | **tartomány** | **társ**
+**Virtuális hálózat** | **Címtartomány** | **Társ**
 --- | --- | ---
-**VNET-HUB-LOGIKAI CSOPORT EGYÉ** | 10.250.0.0/20 | VNET-HUB-EUS2, A VNET-ASR-LOGIKAI CSOPORT EGYÉ, A VNET-TERMÉK-LOGIKAI CSOPORT EGYÉ
-**VNET-ASR-LOGIKAI CSOPORT EGYÉ** | 10.255.16.0/20 | VNET-HUB-LOGIKAI CSOPORT EGYÉ, VNET-TERMÉK-LOGIKAI CSOPORT EGYÉ
-**VNET-TERMÉK-LOGIKAI CSOPORT EGYÉ** | 10.255.32.0/20 | VNET-HUB-LOGIKAI CSOPORT EGYÉ, A VNET-ASR-LOGIKAI CSOPORT EGYÉ, A VNET-TERMÉK-EUS2  
+**VNET-HUB-KAPACITÁSEGYSÉGEK** | 10.250.0.0/20 | VNET-HUB-EUS2, VNET-ASR-CUS, VNET-ÉLES-KAPACITÁSEGYSÉGEK
+**VNET-ASR-KAPACITÁSEGYSÉGEK** | 10.255.16.0/20 | VNET-HUB-CUS, VNET-ÉLES-KAPACITÁSEGYSÉGEK
+**VNET-ÉLES-KAPACITÁSEGYSÉGEK** | 10.255.32.0/20 | VNET-HUB-CUS, VNET-ASR-CUS, VNET-ÉLES-EUS2  
 
 
-![Hub/küllős párosított régióban](./media/contoso-migration-infrastructure/paired-hub-peer.png)
+![Hub/küllő párosított régióban](./media/contoso-migration-infrastructure/paired-hub-peer.png)
 
 
-#### <a name="subnets-in-the--central-us-hub-network-vnet-hub-cus"></a>A központi Velünk Hub (VNET-HUB-logikai csoport EGYÉ) hálózat alhálózatai
+#### <a name="subnets-in-the--central-us-hub-network-vnet-hub-cus"></a>A velünk a Kapcsolatot a központi Agyhoz alhálózatok hálózati (VNET-HUB-CUS)
 
 **Alhálózat** | **CIDR** | **Használható IP-címet**
 --- | --- | ---
@@ -462,322 +462,322 @@ A Vnetek Államok középső az alábbi táblázat foglalja össze.
 **IB-TrustZone** | 10.250.1.0/24 | 251
 **Objekt-UntrustZone** | 10.250.2.0/24 | 251
 **Objekt-TrustZone** | 10.250.3.0/24 | 251
-**A GatewaySubnet** | 10.250.2.0/24 | 251
+**Átjáró-alhálózat** | 10.250.2.0/24 | 251
 
 
-#### <a name="subnets-in-the-central-us-production-network-vnet-prod-cus"></a>A központi, éles hálózati környezetben (VNET-termék-logikai csoport EGYÉ) alhálózatai
+#### <a name="subnets-in-the-central-us-production-network-vnet-prod-cus"></a>A központi USA éles hálózaton (VNET-ÉLES-CUS) alhálózatok
 
-USA keleti régiója 2 elsődleges régióban éles hálózati környezetben működő párhuzamosan nincs éles hálózati környezetben a másodlagos régióban USA középső RÉGIÓJA. 
+Az éles hálózati környezetben az elsődleges régióban USA keleti RÉGIÓJA 2 párhuzamos nincs éles hálózati környezetben a másodlagos USA középső régiójában. 
 
-**Alhálózat** | **CIDR** | **címek** | **Az alhálózaton**
+**Alhálózat** | **CIDR** | **Címek** | **Az alhálózat**
 --- | --- | --- | ---
-**TERMÉK-FE-LOGIKAI CSOPORT EGYÉ** | 10.255.32.0/22 | 1019 | Virtuális gépek Frontends vagy webes réteg
-**TERMÉK-ALKALMAZÁS-LOGIKAI CSOPORT EGYÉ** | 10.255.36.0/22 | 1019 | Alkalmazás rétegbeli virtuális gépek
-**TERMÉK-DB-LOGIKAI CSOPORT EGYÉ** | 10.255.40.0/23 | 507 | Adatbázis virtuális gépek
-**TERMÉK-DC-LOGIKAI CSOPORT EGYÉ** | 10.255.42.0/24 | 251 | Tartományvezérlő virtuális gépek
+**TERMÉKKATALÓGUS-FE-KAPACITÁSEGYSÉGEK** | 10.255.32.0/22 | 1019 | Előtérrendszer/webes szintű virtuális gépek
+**ÉLES – ALKALMAZÁS-KAPACITÁSEGYSÉGEK** | 10.255.36.0/22 | 1019 | Alkalmazás szintű virtuális gépek
+**ÉLES – ADATBÁZIS-KAPACITÁSEGYSÉGEK** | 10.255.40.0/23 | 507 | Adatbázis-beli virtuális gépek
+**ÉLES – DC-KAPACITÁSEGYSÉGEK** | 10.255.42.0/24 | 251 | Tartományvezérlő virtuális gépek
 
-#### <a name="subnets-in-the-central-us-failoverrecovery-network-in-central-us-vnet-asr-cus"></a>USA középső RÉGIÓJA (VNET-ASR-logikai csoport EGYÉ) a az USA középső RÉGIÓJA feladatátvételi vagy helyreállítási hálózat alhálózatai
+#### <a name="subnets-in-the-central-us-failoverrecovery-network-in-central-us-vnet-asr-cus"></a>Az USA középső RÉGIÓJA (VNET-ASR-CUS), az USA középső RÉGIÓJA feladatátvételi vagy helyreállítási hálózat alhálózatai
 
-A VNET-ASR-logikai csoport EGYÉ hálózati régiók közötti feladatátvétel célokat szolgál. A Site Recovery replikálásához és feladatátadásához Azure virtuális gépeken, régiók közötti használandó. Azt a helyszíni maradnak, de a feladatátadást vész-helyreállítási védett munkaterhelések Azure-hálózatot a Contoso adatközpontot is funkcionál.
+A VNET-ASR-CUS hálózati a régiók közötti feladatátvétel célokat szolgál. A Site Recovery replikálja, és átadja a feladatokat az Azure virtuális gépek régiók közötti használható. Azt is egy Azure-hálózathoz, amely a helyszínen maradnak, de a feladatátvételt az Azure-bA vész-helyreállítási védett munkaterhelésekhez Contoso adatközpontban működik.
 
-VNET-ASR-logikai csoport EGYÉ az üzemi virtuális hálózat, az USA keleti régiója 2. régiója, de a tartomány a tartományvezérlő alhálózat nélkül alapvető ugyanabban az alhálózatban.
+VNET-ASR-Kapacitásegységek az üzemi virtuális hálózat, az USA keleti RÉGIÓJA 2, de a domain controller alhálózat nélkül alapszintű ugyanabban az alhálózatban.
 
-**Alhálózat** | **CIDR** | **címek** | **Az alhálózaton**
+**Alhálózat** | **CIDR** | **Címek** | **Az alhálózat**
 --- | --- | --- | ---
-**AZ ASR-FE-LOGIKAI CSOPORT EGYÉ** | 10.255.16.0/22 | 1019 | Virtuális gépek Frontends vagy webes réteg
-**AZ ASR-ALKALMAZÁS-LOGIKAI CSOPORT EGYÉ** | 10.255.20.0/22 | 1019 | Alkalmazás rétegbeli virtuális gépek
-**AZ ASR-DB-LOGIKAI CSOPORT EGYÉ** | 10.255.24.0/23 | 507 | Adatbázis virtuális gépek
+**ASR-FE-KAPACITÁSEGYSÉGEK** | 10.255.16.0/22 | 1019 | Előtérrendszer/webes szintű virtuális gépek
+**ASR-ALKALMAZÁS-KAPACITÁSEGYSÉGEK** | 10.255.20.0/22 | 1019 | Alkalmazás szintű virtuális gépek
+**ASR-ADATBÁZIS-KAPACITÁSEGYSÉGEK** | 10.255.24.0/23 | 507 | Adatbázis-beli virtuális gépek
 
-![Központi hálózati architektúra](./media/contoso-migration-infrastructure/azure-networks-cus.png)
+![Hub hálózati architektúra](./media/contoso-migration-infrastructure/azure-networks-cus.png)
 
-#### <a name="configure-peered-connections"></a>Nincsenek társviszonyban kapcsolatok konfigurálása
+#### <a name="configure-peered-connections"></a>Társviszonyban kapcsolat konfigurálása
 
-A központ minden régióban fog társítottak, a központ más régióban, illetve a központ régión belül minden Vnetek. Ez lehetővé teszi hubok való kommunikációhoz, és megtekintheti az összes Vnetek régión belül. Vegye figyelembe:
+A hub, az egyes régiókban lesznek létesíthető társviszony a hub más régióban található, és a hub régión belül minden virtuális hálózatokhoz. Ez lehetővé teszi az hubok való kommunikációra, és a egy adott régión belül minden virtuális hálózatok megtekintéséhez. Vegye figyelembe:
 
-- Társviszony-létesítés kapcsolatot hoz létre duplex. Az első VNet a kezdeményező levő helyreállítani, és egy másik, a második virtuális hálózaton.
-- Az egy hibrid telepítésben forgalomhoz, amely egyenrangú társak közötti kell a VPN-kapcsolat a helyszíni adatközpontját és az Azure közötti láthatók. Ennek engedélyezéséhez van néhány speciális beállítással társviszonyban kapcsolatok használata esetén be kell állítania.
+- Társviszony-létesítés kétoldalas kapcsolatot hoz létre. Egy a kezdeményező társ az első virtuális hálózaton, és egy másikat a második virtuális hálózaton.
+- Az egy hibrid telepítésben egyenrangú társak közötti forgalom a VPN-kapcsolatot a helyszíni adatközpont és az Azure között látható kell. Ennek engedélyezéséhez nincsenek néhány speciális beállítással, hogy be kell állítani a virtuális társhálózatba tartozó kapcsolatok.
 
-Bármely érkező kapcsolatok küllős Vnetek keresztül a központ a helyszíni adatközponthoz Contoso kell továbbított és keresztirányú-kezelési forgalom engedélyezése a VPN-átjárók.
+Minden olyan kapcsolatot küllő virtuális hálózatok a hubon keresztül a helyszíni adatközponthoz Contoso kell, hogy a továbbított és keresztirányú forgalomnak a VPN-átjárók.
 
 ##### <a name="domain-controller"></a>Tartományvezérlő
 
-A tartományvezérlők a VNET-termék-EUS2 hálózati a Contoso biztosítani a forgalmat a EUS2 hub/éles hálózati környezetben között, mind a helyszíni VPN-kapcsolaton keresztül. Ehhez szükséges lehetővé teszi az alábbiak:
+A tartományvezérlők a VNET-ÉLES-EUS2 hálózatban a Contoso biztosítani szeretné, mind a EUS2 hub/éles hálózati környezetben között, valamint a helyszíni VPN-kapcsolaton haladjon a forgalom. Ehhez szükséges, hogy a következő:
 
-1. **Továbbított forgalom engedélyezése** és **átjáró átvitel konfigurációk engedélyezése** a peered kapcsolatban. Ebben a példában a VNET-HUB-EUS2 VNET-termék-EUS2 kapcsolatra lenne.
+1. **Továbbított forgalom engedélyezése** és **átjáró átviteli konfigurációk engedélyezése** a társviszonyban kapcsolat. Ebben a példában ez a VNET-HUB-EUS2 VNET-ÉLES-EUS2 kapcsolatra lenne.
 
     ![Társviszony-létesítés](./media/contoso-migration-infrastructure/peering1.png)
 
-2. **Engedélyezi a továbbított forgalmat** és **távoli átjárókat használ** más oldalán a társviszony, a VNET-termék-EUS2 VNET-HUB-EUS2 kapcsolatra.
+2. **Továbbított forgalom engedélyezéséhez** és **távoli átjárók használata** többi oldalán a társviszony, a VNET-ÉLES-EUS2 VNET-HUB-EUS2 kapcsolatra.
 
     ![Társviszony-létesítés](./media/contoso-migration-infrastructure/peering2.png)
 
-3. A helyszíni fog beállítani a biztonsági statikus útvonal, amely a helyi forgalmát átirányítja a virtuális hálózaton a VPN-alagúton keresztül irányíthatja. Az átjárón, amely a VPN-alagút biztosít a Contoso Azure szeretné elvégezni a konfigurálását. A Contoso a Windows útválasztási és távelérési használ.
+3. A helyszíni azok fog beállítani egy statikus útvonalat, amely a helyi forgalom irányítása a virtuális hálózathoz a VPN-alagúton keresztül irányítja. A konfigurációs szeretné befejezni az átjáró, amely a VPN-alagút biztosít a Contoso Azure-bA. Contoso a Windows útválasztási és távelérési használ.
 
     ![Társviszony-létesítés](./media/contoso-migration-infrastructure/peering3.png)
 
 ##### <a name="production-networks"></a>Éles hálózati környezetben 
 
-Egy spoked társ hálózati spoked társ hálózaton keresztül a központ egy másik régióban nem látható.
+Egy spoked egyenrangú hálózat nem látható egy spoked egyenrangú hálózat egy központon keresztül egy másik régióban.
 
-A Contoso-éles hálózati környezetben megtekintéséhez egymás mindkét régiókban van szükségük a VNET-termék-EUS2 és BBI-termék-logikai csoport EGYÉ közvetlen peered VPN-kapcsolat létrehozásához. 
+A Contoso éles hálózati környezetben megtekintéséhez egymással mindkét régióban létre kell hozniuk közvetlen társviszonyban kapcsolat a VNET-ÉLES-EUS2 és MŰVELE-ÉLES-CUS. 
 
 ![Társviszony-létesítés](./media/contoso-migration-infrastructure/peering4.png)
 
-### <a name="set-up-dns"></a>DNS-t
+### <a name="set-up-dns"></a>Állítsa be a DNS
 
-Erőforrások virtuális hálózatok központi telepítésekor több tartománynév feloldásával kapcsolatos lehetősége van. Azure által biztosított névfeloldás használata, vagy adja meg a DNS-kiszolgálók a feloldásához. A névfeloldás használata típusa attól függ, hogyan kell az erőforrások kommunikálnak egymással. Első [további információt](https://docs.microsoft.com/azure/virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances#azure-provided-name-resolution) az Azure DNS szolgáltatással kapcsolatos.
+Erőforrások a virtuális hálózatok központi telepítése esetén több lehetősége a tartománynevek feloldását rendelkezik. Használja az Azure által biztosított névfeloldást, vagy adja meg a DNS-kiszolgálók a feloldásához. A névfeloldás használata típusa attól függ, hogyan kell az erőforrások kommunikálni egymással. Első [bővebben](https://docs.microsoft.com/azure/virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances#azure-provided-name-resolution) az Azure DNS szolgáltatással kapcsolatban.
 
-Contoso mellett döntött, hogy az Azure DNS-szolgáltatás nincs-e a hibrid környezetben érdemes választani. Ehelyett azok fog használni a helyi DNS-kiszolgálóra.
+Contoso úgy döntött, hogy az Azure DNS szolgáltatásban nem jó választás a hibrid környezetben. Ehelyett használhatja a helyi DNS-kiszolgálók fogjuk azokat.
 
-- Mivel ez egy hibrid minden a virtuális gépek helyszíni hálózat és az Azure-ban kell tudják feloldani a megfelelő működéséhez. Ez azt jelenti, hogy a Vnetek egyéni DNS-beállításokat kell alkalmazni.
-- Contoso már van telepítve a Contoso-adatközpontban és a fiókirodákban található tartományvezérlők. Az elsődleges DNS-kiszolgálók CONTOSODC1(172.16.0.10) és CONTOSODC2(172.16.0.1)
-- Ha a Vnetek vannak telepítve, a helyszíni tartományvezérlők állítja be a hálózatok DNS-kiszolgálóként használni. 
-- Ennek konfigurálásához, amikor a virtuális hálózaton egyéni DNS-sel Azure rekurzív feloldókat IP-cím (például 168.63.129.16) a DNS-listához hozzá kell adni.  Ehhez az szükséges, Contoso minden egyes virtuális hálózaton konfigurálja a DNS-kiszolgáló beállításai. Például a VNET-HUB-EUS2 hálózati egyéni DNS-beállításainak következőképpen nézne ki:
+- Mivel ez egy hibrid hálózat összes a virtuális gépek a helyszínen és az Azure-ban képeseknek kell lenniük feloldani a megfelelő működéséhez. Ez azt jelenti, hogy a virtuális hálózatok egyéni DNS-beállításokat kell alkalmazni.
+- Contoso jelenleg rendelkezik a Contoso az adatközpontban és a fiókirodák telepített tartományvezérlő. Az elsődleges DNS-kiszolgálók CONTOSODC1(172.16.0.10) és CONTOSODC2(172.16.0.1)
+- Ha a virtuális hálózatok vannak telepítve, a helyszíni tartományvezérlők a hálózatokat a DNS-kiszolgálóként használandó lesz beállítva. 
+- Ennek konfigurálásához, ha egyéni DNS használata a virtuális hálózat az Azure rekurzív feloldók IP-címet (például a 168.63.129.16) a DNS-listához hozzá kell adni.  Ehhez a Contoso DNS-kiszolgáló beállításainak konfigurálja az egyes virtuális hálózatok. Például a VNET-HUB-EUS2 hálózati egyéni DNS-beállításainak a következő lesz:
     
     ![Egyéni DNS](./media/contoso-migration-infrastructure/custom-dns.png)
 
-A helyi tartományvezérlő mellett Contoso vannak valósít meg négy további-támogatja az Azure-hálózatok, két mindegyik régióhoz. Ez mit azok fogja központilag telepíteni az Azure-ban.
+A helyszíni tartományvezérlők mellett Contoso implementálási négy több-az Azure-hálózatok, két minden olyan régió esetében támogatja. Íme, mi azok helyezünk üzembe az Azure-ban.
 
 **Régió** | **TARTOMÁNYVEZÉRLŐ** | **Virtuális hálózat** | **Alhálózat** | **IP-cím**
 --- | --- | --- | --- | ---
-EUS2 | CONTOSODC3 | VNET-TERMÉK-EUS2 | TERMÉK-DC-EUS2 | 10.245.42.4
-EUS2 | CONTOSODC4 | VNET-TERMÉK-EUS2 | TERMÉK-DC-EUS2 | 10.245.42.5
-LOGIKAI CSOPORT EGYÉ | CONTOSODC5 | VNET-TERMÉK-LOGIKAI CSOPORT EGYÉ | TERMÉK-DC-LOGIKAI CSOPORT EGYÉ | 10.255.42.4
-LOGIKAI CSOPORT EGYÉ | CONTOSODC6 | VNET-TERMÉK-LOGIKAI CSOPORT EGYÉ | TERMÉK-DC-LOGIKAI CSOPORT EGYÉ | 10.255.42.4
+EUS2 | CONTOSODC3 | VNET-ÉLES-EUS2 | ÉLES – DC-EUS2 | 10.245.42.4
+EUS2 | CONTOSODC4 | VNET-ÉLES-EUS2 | ÉLES – DC-EUS2 | 10.245.42.5
+KAPACITÁSEGYSÉG HASZNÁLHATÓ | CONTOSODC5 | VNET-ÉLES-KAPACITÁSEGYSÉGEK | ÉLES – DC-KAPACITÁSEGYSÉGEK | 10.255.42.4
+KAPACITÁSEGYSÉG HASZNÁLHATÓ | CONTOSODC6 | VNET-ÉLES-KAPACITÁSEGYSÉGEK | ÉLES – DC-KAPACITÁSEGYSÉGEK | 10.255.42.4
 
-A helyszíni tartományvezérlők üzembe helyezésekor, után Contoso kell a DNS-beállítások vagy régió, hálózatok az új tartományvezérlők szerepeljenek a DNS-kiszolgálók listája.
+A helyszíni tartományvezérlők üzembe helyezése után Contoso frissítenie kell a DNS-beállítások hálózatokon a mindkét régióban tartalmazza az új tartományvezérlők a saját DNS-kiszolgálók listáját.
 
 
 
-#### <a name="set-up-domain-controllers-in-azure"></a>Az Azure-ban tartományvezérlők beállítása
+#### <a name="set-up-domain-controllers-in-azure"></a>Állítsa be a tartományvezérlőket az Azure-ban
 
-Hálózati beállítások frissítése után Contoso készen áll az Azure-ban a tartományvezérlők felé.
+Miután frissítette a hálózati beállítások, Contoso építse ki az Azure-ban a tartományvezérlők készen áll.
 
-1. Az Azure portálon ezek a megfelelő virtuális hálózatba egy új Windows Server virtuális gép központi telepítése.
-2. Azok minden helyen a virtuális gép rendelkezésre állási készletek hozza létre. Rendelkezésre állási készletek tegye a következőket:
-    - Győződjön meg arról, hogy az Azure-hálót a virtuális gépek elválasztja a különböző infrastruktúra az Azure-régióban. 
-    -  Lehetővé teszi, hogy jogosult legyen a virtuális gépek az Azure 99,95 % SLA Contoso.  [További információk](https://docs.microsoftcom/azure/virtual-machines/windows/regions-and-availability#availability-sets).
+1. Az Azure Portalon, a megfelelő virtuális hálózatot egy új Windows Server virtuális gép üzembe helyezése.
+2. Rendelkezésre állási csoportok az egyes helyeken a virtuális gép létrehozása azokat. A rendelkezésre állási csoportok tegye a következőket:
+    - Győződjön meg arról, hogy az Azure-hálót a virtuális gépek elkülöníti azokat különböző infrastruktúrákat az Azure-régióban. 
+    -  Lehetővé teszi, hogy a Contoso a 99,95 %-os SLA-t az Azure-beli virtuális gépek jogosult legyen.  [További információk](https://docs.microsoft.com/azure/virtual-machines/windows/tutorial-availability-sets).
 
     ![Rendelkezésre állási csoport](./media/contoso-migration-infrastructure/availability-group.png) 
-3. A virtuális gép telepítése után azok toll, a hálózati illesztő a virtuális gép számára. Itt, akkor állítsa be a magánhálózati IP-címe statikus cím, és adjon meg érvényes címet.
+3. A virtuális gép telepítése után a hálózati adaptert a virtuális gép tollas azokat. Itt, meg azokat a magánhálózati IP-cím statikus, és adjon meg egy érvényes címet.
 
     ![VIRTUÁLIS GÉP HÁLÓZATI ADAPTER](./media/contoso-migration-infrastructure/vm-nic.png)
 
-4. Most hogy adatlemezzel új a virtuális géphez. Ezt a lemezt az Active Directory-adatbázis és a sysvol-megosztás tartalmaz. 
-    - A lemez mérete határozza meg, hogy az támogatja-e IOPS száma.
-    - Adott idő alatt a környezet növekedésével növelje a lemez mérete módosítania kell.
-    - A meghajtó-állomás gyorsítótárazását írható/olvashatóvá nem állítható be. Active Directory-adatbázis nem támogatja ezt.
+4. Most, akkor új adatlemez csatolása a virtuális géphez. Ezt a lemezt tartalmaz, az Active Directory-adatbázis és a sysvol-megosztás. 
+    - A lemez mérete határozza meg az iops-érték, amely támogatja a száma.
+    - Idővel a lemez mérete esetleg növelnie kell a környezet növekedésével.
+    - A meghajtó-állomás gyorsítótárazását az olvasási/írási nem állítható be. Az Active Directory-adatbázisok nem támogatják ezt.
 
-     ![Active Directory-lemez](./media/contoso-migration-infrastructure/ad-disk.png)
+     ![Az Active Directory-lemez](./media/contoso-migration-infrastructure/ad-disk.png)
 
-5. A lemez hozzáadása után azokat a virtuális gép kapcsolódni a távoli asztali kapcsolaton keresztül, és nyissa meg a Kiszolgálókezelőt.
-6. Ezt a **fájl- és tárolási szolgáltatások**, az új kötet varázsló, amely biztosítja, hogy a meghajtó a megadott F: betű vagy újabb futnak a helyi virtuális Gépen.
+5. A lemez hozzáadása után azok csatlakozzon a virtuális Géphez távoli asztali kapcsolaton keresztül, és nyissa meg a Kiszolgálókezelőt.
+6. Ezt a **fájl- és tárolási szolgáltatások**, az új kötet varázsló, amely biztosítja, hogy a meghajtó a megadott F: betűvel vagy újabb futnak a helyi virtuális gépen.
 
      ![Új kötet varázsló](./media/contoso-migration-infrastructure/volume-wizard.png)
 
-7. A Kiszolgálókezelőben megnövelik a **Active Directory tartományi szolgáltatások** szerepkör. Ezt követően azok a virtuális gép konfigurálása tartományvezérlőként működik.
+7. A Kiszolgálókezelőben adnak hozzá a **Active Directory Domain Services** szerepkör. Ezután ezek a virtuális gép konfigurálása tartományvezérlőként.
 
       ![Kiszolgálói szerepkör](./media/contoso-migration-infrastructure/server-role.png)  
 
-9. Miután a virtuális gép van konfigurálva, a tartományvezérlő és újraindítása után, nyissa meg a DNS-kezelőben, és konfigurálása az Azure DNS-feloldási továbbítóként.  Ez lehetővé teszi, hogy a tartományvezérlő nem oldható fel az Azure DNS DNS-lekérdezéseket.
+9. Miután a virtuális gép egy tartományvezérlő konfigurálva, és újraindul, nyissa meg a DNS-kezelő és konfigurálása már az Azure DNS-feloldási továbbítóként.  Ez lehetővé teszi, hogy a tartományvezérlő nem oldható fel az Azure DNS DNS-lekérdezéseket.
 
     ![DNS-továbbító](./media/contoso-migration-infrastructure/dns-forwarder.png)
 
-10. Most majd frissítse az egyéni DNS-beállítások minden egyes vnet és a megfelelő tartományvezérlő, a virtuális hálózat régió. A helyszíni tartományvezérlők tartalmazzák a listában.
+10. Most majd frissítse az egyéni DNS-beállítások az egyes virtuális hálózatok a megfelelő tartományvezérlő számára, a virtuális hálózathoz. A helyszíni tartományvezérlők tartalmazzák a listában.
 
-### <a name="set-up-active-directory"></a>Az Active Directory beállítása
+### <a name="set-up-active-directory"></a>Active Directory beállítása
 
-AD a hálózatokban fontos szolgáltatás, és megfelelően kell konfigurálni. Contoso AD helyekben a Contoso datacenter, valamint a EUS2 és a logikai csoport EGYÉ régiók fog létrehozni.  
+AD egy kritikus fontosságú szolgáltatás a hálózatkezelés, és megfelelően kell konfigurálni. Contoso felépítheti az AD helyekben a Contoso-datacenter, valamint a EUS2 és kapacitásegység használható régiókat.  
 
-1. Akkor hozzon létre a datacenter hely (ContosoDatacenter) és két új helyeket (AZURE-EUS2 és AZURE-logikai csoport EGYÉ).
-2. Miután létrehozta a helyek, azok a helyek, a virtuális hálózatokat és a datacenter egyező alhálózatok hozzon létre.
+1. Akkor hozzon létre az Adatközpont-hely (ContosoDatacenter) és két új hely (az AZURE-EUS2 és az AZURE-CUS).
+2. Miután létrehozta a helyek, a helyek, a virtuális hálózatok és az Adatközpont megfelelő alhálózatok létrehozása azokat.
 
-    ![DC alhálózatok](./media/contoso-migration-infrastructure/dc-subnets.png)
+    ![Tartományvezérlő alhálózatok](./media/contoso-migration-infrastructure/dc-subnets.png)
 
-3. Ezután ezek hozzon létre két helykapcsolatok mindent csatlakozni. A tartományvezérlők majd helyezni az helyükre.
+3. Ezután, hozzon létre két helykapcsolatok mindent csatlakozni. A tartományvezérlők helyükre majd át.
 
-    ![DC hivatkozások](./media/contoso-migration-infrastructure/dc-links.png)
+    ![DC-hivatkozások](./media/contoso-migration-infrastructure/dc-links.png)
 
-4. Miután minden be van állítva, az Active Directory replikációs topológiájának rendelkezésre áll.
+4. Miután minden be van állítva, az Active Directory replikációs topológiájának van.
     
-    ![DC-replikáció](./media/contoso-migration-infrastructure/ad-resolution.png)
+    ![Tartományvezérlő replikációs](./media/contoso-migration-infrastructure/ad-resolution.png)
 
-5. Minden befejeződött, és a tartományvezérlők és helyek listáját a helyszíni Active Directory felügyeleti központ láthatók.
+5. Minden kész, és a tartományvezérlők és helyek listáját a helyszíni Active Directory felügyeleti központ láthatók.
 
     ![AD felügyeleti központban](./media/contoso-migration-infrastructure/ad-center.png)
 
-## <a name="step-5-plan-for-governance"></a>5. lépés: A cégirányítási megtervezése
+## <a name="step-5-plan-for-governance"></a>5. lépés: A cégirányítási tervezése
 
-Azure services és az Azure platform lehetővé teszi az irányítás vezérlők számos. [További](https://docs.microsoft.com/azure/security/governance-in-azure) vonatkozó beállítások alapvető ismeretekkel.
+Az Azure széles körű cégirányítási vezérlők lehet a szolgáltatások és az Azure platform biztosít. [További információ](https://docs.microsoft.com/azure/security/governance-in-azure) vonatkozó beállítások alapvető ismeretekkel.
 
-Az identitás és hozzáférés-vezérlést, Contoso bizonyos irányítási és a biztonsági szempontok bevezetni már megkezdődött. Széles körű nincsenek három olyan terület, akkor figyelembe kell vennie:
+Konfigurálása identitás és hozzáférés-vezérlés, Contoso már megkezdődött, szabályozási és biztonsági bizonyos aspektusainak vezetnek be. Széles körben három olyan terület, figyelembe kell vennie:
 
-- **Házirend**: az Azure-ban házirend vonatkozik, és érvényesíti a szabályok és hatások keresztül az erőforrások, hogy megfelel a vállalati követelményeknek és a szolgáltatásiszint-szerződések maradnak erőforrások.
-- **Zárolja**: Azure lehetővé teszi a zárolási előfizetések, erőforrások csoportokat és más erőforrások, így azok csak módosíthatják azokat ehhez hitelesítésszolgáltatóval.
-- **Címkék**: erőforrások hozható szabályozott, naplózva, és kezelhető címkékkel. Címkék metaadatok csatolása erőforrásokat, és erőforrásokat, illetve eszköztulajdonosok információt nyújt.
+- **A házirend**: szabályzat az Azure-ban vonatkozik, és kikényszeríti szabályok és hatások az erőforrások felett, hogy megfelelnek a vállalati követelményeknek és szolgáltatói szerződésekkel.
+- **Zárolja**: az Azure lehetővé teszi, hogy zárolási előfizetések, erőforráscsoportok és más erőforrások, így azok csak az ehhez a szolgáltató által módosíthatók.
+- **A címkék**: erőforrások is lehet szabályozza, naplózza és címkékkel rendelkező felügyelt. Címkék metaadatok csatlakoztathat erőforrásokat, erőforrások, illetve eszköztulajdonosok vonatkozó információkat.
 
 ### <a name="set-up-policies"></a>Házirendek beállítása
 
-Az Azure szolgáltatás kiértékeli az erőforrások, azok nem felelnek meg a már működik a házirend-definíciók keresése. Például előfordulhat, hogy rendelkezik olyan házirendet, amely csak lehetővé teszi, hogy a virtuális gépek bizonyos típusú, vagy egy adott címkének erőforrásokat igényel. 
+Az Azure Policy szolgáltatást kiértékeli az erőforrásokat, és azokat, amelyek nem felelnek meg a már működik a szabályzatdefiníciók vizsgálatát. Például előfordulhat, hogy rendelkezik egy szabályzatot, amely csak lehetővé teszi, hogy bizonyos típusú virtuális gépek, illetve egy adott címkével rendelkeznie erőforrásokra van szükség. 
 
-Azure házirendek adja meg a házirend-definíció, és a házirend-hozzárendelést, adja meg, amelyben a házirendet alkalmazni hatókörét. A hatókör felügyeleti csoportból az erőforráscsoporthoz között lehet. [Ismerje meg,](https://docs.microsoft.com/azure/azure-policy/create-manage-policy) létrehozása és házirendek kezelése.
+Azure házirendek határozzák meg a szabályzat-definíció, és a szabályzat-hozzárendelés megadása a hatókör, amelyben egy szabályzatot kell alkalmazni. A hatókör között lehet a felügyeleti csoport egy erőforráscsoporthoz. [Ismerje meg,](https://docs.microsoft.com/azure/azure-policy/create-manage-policy) vonatkozó szabályzatok létrehozása és kezelése.
 
-Ismerkedés a házirendek néhány contoso szeretne:
+Contoso szeretne néhány szabályzatok – első lépések:
 
-- Annak érdekében, hogy erőforrások csak telepíthetők a EUS2 és a logikai csoport EGYÉ régiókban házirend kívánják.
-- Csak a jóváhagyott termékváltozatok a virtuális gép termékváltozatok korlátozni kívánja azokat. Nem biztosítására, hogy költséges VM SKU nem kívánja.
+- Győződjön meg arról, hogy erőforrások kizárólag a EUS2 és CUS régióban telepíthető szabályzat szeretnének.
+- Szeretné korlátozni a virtuális gépek Termékváltozatait csak a jóváhagyott termékváltozatokra. A szándéka, hogy győződjön meg arról, hogy költséges VM Termékváltozatokban nem használja.
 
-#### <a name="limit-resources-to-regions"></a>Korlát erőforrásokat régiók
+#### <a name="limit-resources-to-regions"></a>Korlát erőforrások, régiók
 
-Contoso használja a beépített házirend-definíció **engedélyezett helyek** erőforrás régiók korlátozása.
+Contoso használja a beépített szabályzatdefiníciót **engedélyezett helyek** erőforrás régiók korlátozása.
 
-1. Az Azure portálon kattintson **minden szolgáltatás**, keresse meg a **házirend**.
-2. Válassza ki **hozzárendelések** > **házirendet**.
-3. A szabályzatok listájában válassza ki a **engedélyezett helyek**.
-4. Állítsa be **hatókör** az Azure-előfizetés, és válassza ki az engedélyezett listában szereplő két régió nevét.
+1. Az Azure Portalon kattintson a **minden szolgáltatás**, és keressen rá a **házirend**.
+2. Válassza ki **hozzárendelések** > **szabályzat hozzárendelése**.
+3. A házirend listán válassza ki a **engedélyezett helyek**.
+4. Állítsa be **hatókör** az Azure-előfizetést, és válassza a két régióban, az engedélyezett listában szereplő nevével.
 
-    ![Engedélyezett régiók házirend](./media/contoso-migration-infrastructure/policy-region.png)
+    ![A szabályzat engedélyezett régiók](./media/contoso-migration-infrastructure/policy-region.png)
 
-5. Alapértelmezés szerint a házirend beállítása a **Megtagadás**, ami azt jelenti, hogy ha valaki elindítja a központi telepítés, amely nem a EUS2 vagy logikai csoport EGYÉ az előfizetést, a telepítés meghiúsul. Mi történik, ha valaki van a Contoso előfizetés megpróbál egy üzembe helyezést beállítani az USA nyugati régiója itt található.
+5. Alapértelmezés szerint a szabályzat van beállítva, a **Megtagadás**, ami azt jelenti, hogy ha valaki egy központi telepítési az előfizetést, amely nem a EUS2 vagy CUS elindul, a telepítés meghiúsul. Íme, mi történik, ha a Contoso előfizetésben valaki megpróbálja-telepítés beállítása az USA nyugati adatközpontjába.
 
-    ![Nem sikerült házirend](./media/contoso-migration-infrastructure/policy-failed.png)
+    ![Nem sikerült a házirend](./media/contoso-migration-infrastructure/policy-failed.png)
 
-#### <a name="allow-specific-vm-skus"></a>Adott virtuális gép termékváltozatok engedélyezése
+#### <a name="allow-specific-vm-skus"></a>Lehetővé teszi az adott VM-termékváltozatok
 
-Contoso fogja használni a beépített házirend-definíció **lehetővé teszi a virtuális gépek termékváltozatok** korlátozására virtuális gépeket, az előfizetés hozhatók létre. 
+Contoso fogja használni a beépített szabályzatdefiníciót **engedélyezéséhez, hogy a virtuális gépek termékváltozatok** az előfizetésben létrehozott virtuális gépek korlátozására. 
 
-![Házirend Termékváltozat](./media/contoso-migration-infrastructure/policy-sku.png)
+![A házirend Termékváltozat](./media/contoso-migration-infrastructure/policy-sku.png)
 
 
 
-#### <a name="check-policy-compliance"></a>Szabályzatoknak való megfelelés ellenőrzése
+#### <a name="check-policy-compliance"></a>Szabályzatoknak való megfelelőség ellenőrzése
 
-Házirendek életbe azonnal, és a Contoso ellenőrizheti a megfelelőségét erőforrásokhoz. 
+Szabályzatok azonnal lép érvénybe, és a Contoso erőforrások megfelelőségének ellenőrzéséhez. 
 
-1. Az Azure portálon kattintson a **megfelelőségi** hivatkozásra.
-2. A megfelelőség-irányítópultot jelenik meg. Részletezve további tájékoztatást talál.
+1. Az Azure Portalon kattintson a **megfelelőségi** hivatkozásra.
+2. Az eszközmegfelelőségi irányítópult jelenik meg. További részleteket is részletezi.
 
     ![Szabályzatmegfelelőség](./media/contoso-migration-infrastructure/policy-compliance.png)
 
 
 ### <a name="set-up-locks"></a>Zárolások beállítása
 
-Contoso hosszú használja az ITIL keretrendszer rendszereik kezelését. Egyik legfontosabb szempontja a keretrendszer vezérlő váltása, és a Contoso biztosítani szeretné, győződjön meg arról, hogy az Azure-telepítés meg van valósítva a változáskezelés.
+Contoso hosszú használja ITIL keretében a felügyeleti rendszerek. Egyik legfontosabb szempontja a keretrendszer a változások, és győződjön meg arról, hogy változáskezelésre megvalósítása az Azure-telepítés, a Contoso biztosítani szeretné.
 
-Contoso fog zárolás végrehajtása az alábbiak szerint:
+Contoso implementálási zárolás a következő:
 
-- Minden éles vagy a feladatátvételi összetevő, amely rendelkezik a csak olvasható zárolási erőforráscsoportban kell lennie.  Ez azt jelenti, hogy vagy éles elemek törlése, a zárolás el kell távolítani. 
-- Nem éles erőforráscsoportok CanNotDelete zárolások fog rendelkezni. Ez azt jelenti, hogy a hitelesített felhasználók olvasni vagy módosítani az erőforrást, de nem lehet törölni.
+- Egy erőforráscsoport, amely olyan írásvédett zárolással rendelkezik minden olyan éles vagy feladatátvételi összetevő kell lennie.  Ez azt jelenti, hogy vagy éles elemek törlése, a zárolás el kell távolítani. 
+- Nem éles üzemi erőforráscsoportok zárolások védve lesz. Ez azt jelenti, hogy a jogosult felhasználók is olvasni vagy módosítani az erőforrást, de nem lehet törölni.
 
-[További](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-lock-resources) vonatkozó zárolásokat.
+[További](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-lock-resources) zárolások kapcsolatban.
 
-### <a name="set-up-tagging"></a>Címkézés beállítása
+### <a name="set-up-tagging"></a>Állítsa be a címkézés
 
-Erőforrások követheti nyomon, mivel azok van-e adva, szüksége lesz egyre a Contoso egy megfelelő részleg, az ügyfél és a környezet erőforrások hozzárendelni. 
+Erőforrások nyomon követésére, mivel a rendszer hozzáadja, csak Contoso erőforrások társítása egy megfelelő részleg, a vevő és a környezet számára egyre fontosabb. 
 
-Erőforrások információit és tulajdonosok lépések, mellett címkék lehetővé teszi Contoso összesítő és csoportosítási erőforrásokat, és az adatokat a jóváírási célokra használható.
+Amellett, hogy az erőforrások és a tulajdonosok kapcsolatos információkat, a címkék lehetővé teszi Contoso összesítő és csoport-erőforrásokat, és az adatokat a jóváírási célból.
 
-Contoso kell úgy, hogy az üzleti érdemes az Azure eszközök megjelenítéséhez. Például, de a szerepkör vagy a részleg. Vegye figyelembe, hogy az erőforrások azonos címkével lássa ugyanabban az erőforráscsoportban lenniük, hogy nem kell. Ehhez az szükséges, a Contoso létrehoz egy egyszerű címkerendszert, hogy bárki használja ugyanazt a címkét.
+Contoso szeretné vizuálisan megjeleníteni az Azure eszközeiket úgy, hogy üzleti van értelme. Például, de a szerepkör vagy a részleg. Vegye figyelembe, hogy erőforrások találhatók ugyanabban az erőforráscsoportban egy címke megosztása nem szükséges. Ehhez Contoso hoz létre egy egyszerű címkerendszert, így mindenki ugyanazt a címkét használja.
 
-**A címke neve** | **Érték**
+**Címke neve** | **Érték**
 --- | ---
-Költséghely | 12345: egy érvényes erőforrás elérhető kell legyen.
-Részleghez | (Az SAP) részleg nevét. Egyezések CostCenter.
-ApplicationTeam | Az alkalmazás támogatására vonatkozó birtokló csoport e-mail aliasát.
-Katalógusnév | Az alkalmazás vagy ShareServices, nevenként a szolgáltatási katalógus, amely támogatja az erőforrás.
-ServiceManager | E-mailek alias az ITIL a Service Manager az erőforráshoz.
-COBPriority | A prioritás által az üzleti célú beállítva. Az 1-5 értékeket.
-ENV | Fejlesztői, STG, termék a lehetséges értékek. Képviselő fejleszt, átmeneti és üzemi.
+Költséghely | 12345: egy érvényes költséghely SAP-kell lennie.
+Részleghez | (Az SAP) üzleti egység nevét. Egyezések CostCenter.
+ApplicationTeam | Az alkalmazás támogatására vonatkozó birtokló csoport e-mail-aliasát.
+Katalógusnév | Neve az alkalmazás vagy ShareServices, a szolgáltatáskatalógus, az erőforrás által támogatott száma.
+ServiceManager | E-mail-alias az ITIL Service Manager az erőforráshoz.
+COBPriority | A vállalat által az BCDR beállított prioritás. 1 – 5 értékét.
+ENV | DEV, STG, ÉLES lehetséges értékei. Jelölő fejlesztésével, átmeneti és éles környezetben.
 
 Példa: 
 
- ![Az Azure címkék](./media/contoso-migration-infrastructure/azure-tag.png)
+ ![Az Azure-címkék](./media/contoso-migration-infrastructure/azure-tag.png)
 
-Miután létrehozta a címke, a Contoso lépjen vissza, és hozzon létre új Azure házirend-definíciók és hozzárendeléseket, a szükséges címkéket használatának kényszerítése a teljes szervezetben.
+Miután létrehozta a címke, Contoso visszaléphet, és hozzon létre új Azure szabályzat-definíciókat és hozzárendeléseket, a szükséges címkéket használatának kényszerítése a szervezeten belül.
 
 
-## <a name="step-6-consider-security"></a>6. lépés:, Fontolja meg biztonsági
+## <a name="step-6-consider-security"></a>6. lépés: Fontos a biztonság
 
-Biztonsági elengedhetetlen a felhőben, és Azure széles köréről biztonsági eszközöket és képességeket nyújt. Ezek segítségével hozható létre biztonságos megoldás, a biztonságos Azure platformon. Olvasási [abban, hogy a megbízható felhőben](https://azure.microsoft.com/overview/trusted-cloud/) tudhat meg többet az Azure biztonsági.
+Biztonsági elengedhetetlen a felhőben, és az Azure széles választékának biztonsági eszközöket és képességeket nyújt. Ezek segítségével könnyebben hozhat létre, olyan biztonságos megoldásokat a biztonságos Azure-platformon. Olvasási [bizalom a megbízható felhőben](https://azure.microsoft.com/overview/trusted-cloud/) tudhat meg többet az Azure security.
 
 Van néhány fő szempontokat kell figyelembe venni a contoso
 
-- **Az Azure Security Center**: az Azure Security Center biztosít egységes biztonsági kezelése és az advanced threat protection hibrid felhő-munkaterhelések között. A Security Centerrel biztonsági szabályzatokat alkalmazhat a számítási feladatokra, korlátozhatja a fenyegetéseknek való kitettséget, valamint észlelheti és elháríthatja a támadásokat.  [További információk](https://docs.microsoft.com/azure/security-center/security-center-intro).
-- **Hálózati biztonsági csoportokkal (NSG-k)**: egy NSG egy szűrő (tűzfal) felsorolja azokat a biztonsági szabályok, amelyek alkalmazása esetén adatforgalom engedélyezéséhez vagy letiltásához hálózati erőforrások az Azure Vnetekhez csatlakoztatni. [További információk](https://docs.microsoft.com/azure/virtual-network/security-overview).
-- **Adattitkosítás**: Azure Disk Encryption egy olyan képességet, amely segít a Windows és Linux IaaS virtuális gépek lemezeit titkosításához. [További információk](https://docs.microsoft.com/azure/security/azure-security-encryption-atrest).
+- **Az Azure Security Center**: az Azure Security Center egységes biztonsági felügyeletet és fejlett fenyegetésvédelmet biztosít a hibrid felhőalapú számítási feladatokhoz. A Security Centerrel biztonsági szabályzatokat alkalmazhat a számítási feladatokra, korlátozhatja a fenyegetéseknek való kitettséget, valamint észlelheti és elháríthatja a támadásokat.  [További információk](https://docs.microsoft.com/azure/security-center/security-center-intro).
+- **Hálózati biztonsági csoportok (NSG-k)**: egy NSG-t egy szűrőt (tűzfal), amely felsorolja azokat a biztonsági szabályok, amelyek alkalmazásakor, vagy az Azure vnetekhez csatlakoztatni erőforrásokra irányuló hálózati forgalom megtagadásához. [További információk](https://docs.microsoft.com/azure/virtual-network/security-overview).
+- **Adattitkosítás**: az Azure Disk Encryption egy olyan funkció, amely segítséget nyújt a Windows és Linux rendszerű IaaS virtuális gépek lemezeinek titkosításához. [További információk](https://docs.microsoft.com/azure/security/azure-security-encryption-atrest).
 
 ### <a name="work-with-the-azure-security-center"></a>Az Azure Security Center használata
 
-A Contoso egy gyors képet kaphat a biztonsági állapotát az új hibrid felhős a és kifejezetten az Azure munkaterhelések keres.  Ennek eredményeképpen Contoso határozott végrehajtásához az Azure Security Center kezdődő, és a következő szolgáltatásokat: 
+Contoso keres egy gyors nézetet az új hibrid felhő és a kifejezetten az Azure számítási feladatok biztonsági rendszeréről.  Ennek eredményeképpen Contoso határozott megvalósítása az Azure Security Center indítása a következő funkciókkal: 
 
 - Központosított szabályzatkezelés
-- Folyamatos ellenőrzése
+- A folyamatos értékelés
 - Végrehajtható javaslatok 
 
 #### <a name="centralize-policy-management"></a>Központosíthatja a Csoportházirend kezelése
 
-Központi Csoportházirend kezelése, a Contoso által központilag teljes környezetüket között a biztonsági házirendek kezelése biztosítja a biztonsági követelményeknek való megfelelés majd. Akkor is gyorsan és egyszerűen létrehozható egy házirendet, amely minden, az Azure-erőforrások vonatkozik.
+Központosított szabályzatkezelés, a Contoso fogja, hogy biztonsági követelményeknek való megfelelés biztonsági szabályzatainak központi kezelésével a teljes környezetre. Ezek egyszerűen és gyorsan valósíthat meg egy szabályzatot, amely minden, az Azure-erőforrások vonatkozik.
 
 ![Biztonsági házirend](./media/contoso-migration-infrastructure/security-policy.png)
 
-#### <a name="assess-and-action"></a>Értékeléséhez és művelet
+#### <a name="assess-and-action"></a>Mérje fel, és a művelet
 
-Contoso fogja használni, a folyamatos biztonsági értékelést, amely figyeli a biztonsági gépek, hálózatok, tárolási, adat és alkalmazások; potenciális biztonsági problémákat felderítéséhez. 
+Contoso használja a folyamatos biztonsági értékelés, amely figyeli a biztonság, a gépek, hálózatok, tárolás, adatok és alkalmazások; felderítheti a potenciális biztonsági problémákat. 
 
-- A Security Center elemzi a Contoso-számítási, infrastruktúra és erőforrásokat, illetve az Azure-alkalmazások és szolgáltatások biztonsági állapotát.
-- Folyamatos assessment segít a Contoso műveleti csapata felderítéséhez a potenciális biztonsági problémákat, például a rendszer a hiányzó biztonsági frissítéseket, vagy hálózati portok kitett. 
-- A Contoso különösen biztosítania kell a virtuális gépek mindegyikének védelmét biztosítani. Security Center segítségével, a virtuális gép állapotának ellenőrzése és biztonsági rések kijavítani, ahhoz, azok még kihasznált rangsorolt és végrehajthatóként ajánlások.
+- A Security Center elemzi a Contoso számítási, az infrastruktúra és erőforrásokat, valamint az Azure-alkalmazások és szolgáltatások biztonsági állapotát.
+- A folyamatos értékelés segít felderíteni a potenciális biztonsági problémákat, például a rendszer a hiányzó biztonsági frissítések, a Contoso üzemeltetési csapat, vagy hálózati portok közzétéve. 
+- Különösen a Contoso biztosítani szeretné, hogy az összes virtuális gépeiken védettek. Security Center segítségével, a virtuális gép állapotának ellenőrzése, és a biztonsági rések javítása, mielőtt azok már kihasználták a rangsorolt és végrehajtható javaslatokat.
 
 ![Figyelés](./media/contoso-migration-infrastructure/monitoring.png)
 
 ### <a name="work-with-nsgs"></a>Az NSG-k használata
 
-Contoso korlátozhatja a hálózati forgalmat hálózati biztonsági csoportok használata a virtuális hálózatán lévő erőforrásokat.
+Contoso korlátozhatja a hálózati biztonsági csoportok használata a virtuális hálózatban lévő erőforrásokra irányuló hálózati forgalom.
 
 - A hálózati biztonsági csoport egy biztonsági szabályokból álló listát tartalmaz, amelyek engedélyezik vagy megtagadják a bejövő vagy kimenő hálózati forgalmat a forrás vagy a cél IP-címe, illetve portok vagy protokollok alapján.
-- Ha egy alhálózat alkalmazza, szabályok érvényesek az alhálózat összes erőforrást. Hálózati illesztők mellett ez az alhálózat üzembe helyezett Azure services példányát magában foglalja.
-- Biztonsági csoportok (ASGs) lehetővé teszik a hálózati biztonság beállítása egy alkalmazás struktúra, amely lehetővé teszi a csoport virtuális gépek természetes bővítménye, és határozza meg a hálózati biztonsági házirendek alapján ezeket a csoportokat.
-    - Alkalmazás biztonsági csoportok, az azt jelenti, hogy a biztonsági házirend léptékű manuális karbantartást explicit IP-címek nélkül is újrahasznosíthatja. A platform képes kezelni a konkrét IP-címek és a szabálykészletek jelentette összetettséget, így Ön az üzleti logikára összpontosíthat.
-    - Az alkalmazásbiztonsági csoportokat megadhatja forrásként és célként is a biztonsági szabályokban. Miután a biztonsági házirend lett meghatározva, virtuális gépek létrehozása, és rendelje hozzá a virtuális gép hálózati adapterek csoportba. 
+- Ha egy alhálózathoz, szabályok érvényesek az alhálózaton található összes erőforrást. Hálózati adapterek mellett ez tartalmazza a példányok az Azure-szolgáltatások üzembe helyezheti az alhálózaton.
+- Az alkalmazásbiztonsági csoportok (asg-k) lehetővé teszi egy alkalmazás struktúra, amely lehetővé teszi a virtuális gépek természetes bővítményeként konfigurálhatja a hálózati biztonságot, és ezen csoportok alapján a hálózati biztonsági szabályzatok meghatározása.
+    - Alkalmazás biztonsági csoportok jelenti azt, hogy a biztonsági szabályokat nagy léptékben, konkrét IP-címek manuális karbantartása nélkül is újrahasznosíthatja. A platform képes kezelni a konkrét IP-címek és a szabálykészletek jelentette összetettséget, így Ön az üzleti logikára összpontosíthat.
+    - Az alkalmazásbiztonsági csoportokat megadhatja forrásként és célként is a biztonsági szabályokban. A biztonsági szabály meghatározása után létrehozhat virtuális gépeket, és a virtuális gép hálózati adaptereket hozzárendelése egy csoporthoz. 
 
 
-Contoso NSG-ket és ASGs fogja végrehajtani. Érintett NSG-kezeléssel kapcsolatos. Kapcsolatos túlhasználat NSG-ket, és azt jelentheti, az a műveleti személyzet összetettsége miatt aggódó fontosságúak.  Ennek tudatában általuk elfogadott két fő rendszerbiztonsági tagok, hogy általános szabály használata:
+Contoso fogja végrehajtani az NSG-k és alkalmazásbiztonsági csoporttal. NSG-kezelésről érintett legyenek. Azok a miatt aggódó kapcsolatos túlhasználat NSG-k és az összetettséget, ez jelezheti azt a munkatársak számára.  Ezt szem általuk elfogadott két fő résztvevők általános szabály használják:
 
-- Az összes forgalom esetében bejövő és kimenő minden alhálózat (Észak-déli irányú), egy NSG szabály, kivéve a központ hálózatok GatewaySubnets érvényesek lesznek.
-- A tűzfalak és a tartományvezérlő által alhálózati NSG-ket és a hálózati NSG-ket is védi.
-- Az összes üzemi környezetben működő alkalmazásokat ASGs alkalmazva lesz.
+- Minden forgalmat, és kimenő (észak – dél), minden alhálózat egy NSG-szabályt, kivéve a Hub hálózatokban a GatewaySubnets érvényesek lesznek.
+- Minden olyan tűzfallal vagy a tartományvezérlő által alhálózati NSG-k és a hálózati adapter NSG-ket is védi.
+- Az összes éles üzemi alkalmazások alkalmazásbiztonsági csoporttal a alkalmazni kell.
 
 
-Contoso létrehozta ezt megjelenését az alkalmazásuk kezelésére mintáját.
+Contoso felépítette egy modell arról, hogyan ez fog megjelenni az alkalmazásaikban.
 
 ![Biztonság](./media/contoso-migration-infrastructure/asg.png)
 
 
-Az NSG-ket a ASGs társított legalacsonyabb jogosultsági szint annak biztosítására, hogy csak engedélyezett csomagok is haladjanak a hálózat egy részét a rendeltetési van konfigurálva.
+Az alkalmazásbiztonsági csoporttal társított NSG-k, győződjön meg arról, hogy csak engedélyezett csomagok is flow, a hálózat egy részét a cél minimális jogosultságokkal rendelkező lesz konfigurálva.
 
 **Művelet** | **Name (Név)** | **Forrás** | **Target** | **Port**
 --- | --- | --- | --- | --- 
-Engedélyezés | AllowiInternetToFE | VNET-HUB-EUS1/IB-TrustZone | AZ APP1-FE 80-AS ÉS 443-AS
-Engedélyezés | AllowWebToApp | AZ APP1-FE | AZ APP1-ADATBÁZIS | 1433
+Engedélyezés | AllowiInternetToFE | VNET-HUB-EUS1/IB-TrustZone | AZ APP1-FE 80-AS, 443-AS PORTON
+Engedélyezés | AllowWebToApp | AZ APP1-FE | AZ APP1-DB | 1433
 Engedélyezés | AllowAppToDB | AZ APP1-ALKALMAZÁS | Bármelyik | Bármelyik
 Megtagadás | DenyAllInbound | Bármelyik | Bármelyik | Bármelyik
 
 ### <a name="encrypt-data"></a>Adatok titkosítása
 
-Az Azure Disk Encryption integrálja az Azure Key Vault szabályozni, és a lemez-titkosítási kulcsok és titkos kulcsainak kulcstároló előfizetés kezeléséhez. Ez biztosítja, hogy a virtuális gépek lemezei lévő összes adat titkosítva legyenek az Azure tárolás közben.  
+Az Azure Disk Encryption integrálható az Azure Key Vault segítségével szabályozhatja, és a lemeztitkosítási kulcsokat és titkos kulcsokat a key vault-előfizetés kezelésére. Ez biztosítja, hogy minden adat a Virtuálisgép-lemezek vannak titkosítása az Azure storage-ban.  
 
-- Contoso megállapította, hogy adott virtuális gépek titkosítás használata.
-- Ezek fog alkalmazni a virtuális gépek ügyféllel, bizalmas, titkosítás vagy PPI adatok.
+- Contoso megállapította, hogy az adott virtuális gépek titkosítás megkövetelése.
+- Azok a alkalmazni ügyféllel, bizalmas, virtuális gépek titkosítási vagy PPI adatokat fogjuk.
 
 
 ## <a name="conclusion"></a>Összegzés
 
-Ebben a cikkben Contoso beállítása az Azure-infrastruktúra és állítsa be, vagy tervezett infrastruktúra házirend Azure-előfizetés, hibrid kikereséséhez vész-helyreállítási, a hálózat, az irányítás és a biztonsági. 
+Ebben a cikkben Contoso beállítása az Azure-infrastruktúra, és állítsa be, vagy tervezett, infrastruktúra-szabályzat Azure-előfizetés, akkor a hibrid azonosítsa, vészhelyreállítás, hálózatkezelés, cégirányítási és biztonsági. 
 
-A lépéseket, amelyek a Contoso befejeződött itt közül nem mindegyik szükségesek a felhőre való áttérést. Abban az esetben azok kívánta tervezze meg a hálózati infrastruktúra áttelepítések minden alkalmazástípus esetében használható, és biztonságos, rugalmas és méretezhető. 
+Nem minden Contoso itt végrehajtott lépések szükségesek a felhőre való áttelepítést. Abban az esetben azok minden típusú migrálások felhasználható a hálózati infrastruktúra tervezése szeretne, és biztonságos, rugalmas és méretezhető. 
 
-Az infrastruktúrával, és azok készen lépés, és próbálja ki az áttelepítés.
+Az e-infrastruktúrára azok készen áll át, és próbálja ki a migrálás.
 
 ## <a name="next-steps"></a>További lépések
 
-Egy első áttelepítési forgatókönyv szerint Contoso fog [helyszíni SmartHotel kétféle alkalmazásuk Azure áttelepítés értékeléséhez](contoso-migration-assessment.md). 
+Első áttelepítési forgatókönyvekben, mint a Contoso tervezi, hogy [mérje fel helyszíni SmartHotel kétszintű alkalmazás az Azure-ba való migráláshoz](contoso-migration-assessment.md). 

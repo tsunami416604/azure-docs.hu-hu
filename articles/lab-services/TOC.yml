@@ -63,6 +63,8 @@
           href: devtest-lab-create-first-vm.md
         - name: Tesztkörnyezetre vonatkozó szabályzatok létrehozása
           href: devtest-lab-get-started-with-lab-policies.md
+        - name: Titkos kulcsok tárolása az Azure Key Vaultban
+          href: devtest-lab-store-secrets-in-key-vault.md
         - name: Virtuális gépek használata tesztkörnyezetben
           items:
             - name: Virtuális gépek létrehozása
