@@ -17,11 +17,11 @@ ms.custom: mvc
 ms.date: 04/14/2018
 ms.author: dimazaid
 ms.openlocfilehash: 7bdc692104194bff4a25e6974ba72971af543cbf
-ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37028999"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38698160"
 ---
 # <a name="tutorial-push-notifications-to-chrome-apps-with-azure-notification-hubs"></a>Oktatóanyag: Leküldéses értesítések küldése Chrome-alkalmazásokba az Azure Notification Hubs használatával
 [!INCLUDE [notification-hubs-selector-get-started](../../includes/notification-hubs-selector-get-started.md)]

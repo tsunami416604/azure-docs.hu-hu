@@ -1,5 +1,5 @@
 ---
-title: A Media Services kibocsátási megjegyzései |} Microsoft Docs
+title: A Media Services kibocsátási megjegyzések |} A Microsoft Docs
 description: A Media Services kibocsátási megjegyzései
 services: media-services
 documentationcenter: ''
@@ -14,18 +14,18 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 10/18/2017
 ms.author: juliako
-ms.openlocfilehash: 1a874e31c05d287522810782f743d389c86dbe27
-ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
+ms.openlocfilehash: 5ef1ca201bc564949ee65f81970d0b040679d6b8
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37098923"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38671425"
 ---
 # <a name="azure-media-services-release-notes"></a>Az Azure Media Services kibocsátási megjegyzései
-Ezek a kibocsátási megjegyzések az Azure Media Services összesítse a módosításokat a korábbi kiadásokban és ismert problémákat.
+Ezek a kibocsátási megjegyzések az Azure Media Services összefoglalója változásokat a korábbi kiadások és ismert problémáit.
 
 > [!NOTE]
-> Azt szeretnénk, hogy hallhassa kapunk az ügyfelektől, hogy összpontosíthatunk előforduló problémák kijavítása. A problémákat, vagy kérdései vannak, a közlemény elküldése a [Az Azure Media Services MSDN fórum].
+> Szívesen meghallgatnánk az ügyfeleink, így Ön érintő problémák kijavítása összpontosíthatunk. Probléma jelentéséhez vagy tegyen fel kérdéseket, küldje el a hozzászólás a [Az Azure Media Services MSDN-fórum].
 > 
 > 
 
@@ -34,118 +34,118 @@ Ezek a kibocsátási megjegyzések az Azure Media Services összesítse a módos
 
 | Probléma | Leírás |
 | --- | --- |
-| Több közös HTTP-fejlécek nem találhatók a REST API-t. |Media Services-alkalmazások fejlesztése a REST API használatával, ha úgy gondolja, hogy egyes közös HTTP-fejléc mezőit (beleértve CLIENT-REQUEST-ID-azonosító, és VISSZATÉRÉSI-CLIENT-REQUEST-ID) nem támogatottak. A fejlécek az egy későbbi kiadásban lesz hozzáadva. |
-| Százalék-kódolás nem engedélyezett. |Media Services a IAssetFile.Name tulajdonság értékét használja, az adatfolyam-tartalmak (például http://{AMSAccount}.origin.mediaservices.windows.net/{GUID}/{IAssetFile.Name}/streamingParameters) URL-címek fejlesztéskor. Emiatt százalék-kódolás nem engedélyezett. A Name tulajdonság értéke nem lehet a következő [százalék kódolás-fenntartott karakterek](http://en.wikipedia.org/wiki/Percent-encoding#Percent-encoding_reserved_characters):! *' ();: @& = + $, /? % # [] ". Emellett lehetnek csak egy "." a fájlnévkiterjesztés. |
-| A ListBlobs metódus, amely része az Azure Storage szolgáltatás SDK verzió 3.x sikertelen lesz. |A Media Services SAS URL-címek alapján hoz létre a [2012-02-12](https://docs.microsoft.com/rest/api/storageservices/Version-2012-02-12) verziója. Ha a lista blobot, amely egy blob tároló a Storage szolgáltatás SDK használni kívánt, használja a [CloudBlobContainer.ListBlobs](http://msdn.microsoft.com/library/microsoft.windowsazure.storage.blob.cloudblobcontainer.listblobs.aspx) módszer, amelynek része a Storage szolgáltatás SDK verzió 2.x. |
-| A Media Services mechanizmus szabályozás korlátozza az alkalmazásokat, amelyek a szolgáltatás túl sok kéréseket erőforrás-felhasználása. A szolgáltatás a "Szolgáltatás nem érhető el" 503-as HTTP-állapotkód: Előfordulhat, hogy vissza. |További információkért lásd a 503-as HTTP-állapotkód: a leírását [Media Services hibakódok](media-services-encoding-error-codes.md). |
-| Ha entitások, legfeljebb 1000 entitások vissza van egy időben, mert a nyilvános REST 2-es korlátozza a lekérdezési eredmények 1000 eredmények. |Használja a Skip és érvénybe (.NET) / (REST) top, a [.NET példában](media-services-dotnet-manage-entities.md#enumerating-through-large-collections-of-entities) és [a REST API-példa](media-services-rest-manage-entities.md#enumerating-through-large-collections-of-entities). |
-| Egyes ügyfelek között egy ismétlődő címke probléma a Smooth Streaming jegyzékben származhatnak. |További információkért lásd: [ebben a szakaszban](media-services-deliver-content-overview.md#known-issues). |
-| Media Services .NET SDK-objektumok nem szerializálható, és ennek eredményeképpen az Azure Redis Cache nem működnek. |Ha az SDK AssetCollection objektum hozzáadása az Azure Redis Cache szerializálható kísérli meg, a rendszer kivételt hoz létre. |
+| Számos gyakori HTTP-fejlécek nem biztosított a REST API-ban. |A Media Services-alkalmazások fejlesztése a REST API-val, ha úgy gondolja, hogy néhány általános HTTP-fejléc mezők (beleértve a CLIENT-REQUEST-ID REQUEST-ID és a VISSZAADANDÓ-CLIENT-REQUEST-ID) nem támogatottak. A fejlécek, egy következő frissítés fog bővülni. |
+| %-Os-kódolást nem engedélyezett. |A Media Services IAssetFile.Name tulajdonság értékét használja, a streamelési tartalom (például http://{AMSAccount}.origin.mediaservices.windows.net/{GUID}/{IAssetFile.Name}/streamingParameters) URL-címek létrehozását. Ebből kifolyólag százalék-kódolást nem engedélyezett. A Name tulajdonság értéke nem lehet a következő [százalék-kódolás – fenntartott karakterek](http://en.wikipedia.org/wiki/Percent-encoding#Percent-encoding_reserved_characters):! *' ();: @& = + $, /? % # [] ". Ezenkívül lehetnek csak egy "." a fájlnév kiterjesztésével. |
+| A ListBlobs metódust, amely része az Azure Storage SDK-verzió 3.x sikertelen lesz. |A Media Services SAS URL-címek alapján hoz létre a [2012-02-12](https://docs.microsoft.com/rest/api/storageservices/Version-2012-02-12) verzió. Ha szeretne egy blob-tárolóban lévő blobok listázása a Storage SDK-val, használja a [CloudBlobContainer.ListBlobs](http://msdn.microsoft.com/library/microsoft.windowsazure.storage.blob.cloudblobcontainer.listblobs.aspx) módszer, amely része a Storage SDK-verziója 2.x. |
+| A Media Services mechanizmus szabályozás korlátozza az alkalmazásokat, amelyek a szolgáltatás túl sok kérést az erőforrás-használati. A szolgáltatás a "Szolgáltatás nem érhető el" 503-as HTTP-állapotkód: Előfordulhat, hogy vissza. |További információkért lásd az 503-as HTTP-állapotkód leírását [Media Services-hibakódok](media-services-encoding-error-codes.md). |
+| Ha entitást lekérdezni, legfeljebb 1000 entitások adja vissza egy időben, mert a nyilvános REST 2-es verzió korlátozza az 1000 eredmények lekérdezési eredményeket. |Kihagyás és igénybe (.NET) / (REST) leírtak szerint az első [ebben a példában .NET](media-services-dotnet-manage-entities.md#enumerating-through-large-collections-of-entities) és [a REST API-példa](media-services-rest-manage-entities.md#enumerating-through-large-collections-of-entities). |
+| Egyes ügyfelek között egy ismételje meg a címke a probléma a Smooth Streaming-jegyzékfájlban származhatnak. |További információkért lásd: [ebben a szakaszban](media-services-deliver-content-overview.md#known-issues). |
+| Media Services .NET SDK objektumok nem szerializálható, és ennek eredményeképpen az Azure Redis Cache nem működnek. |Ha az SDK AssetCollection objektumot az Azure Redis Cache hozzáadni, akkor a program kivételt vált ki. |
 
 
-## <a name="a-idrestversionhistoryrest-api-version-history"></a><a id="rest_version_history"/>REST API verziójának előzményei
-A Media Services REST API verziójának előzményei kapcsolatos információkért tekintse meg a [Az Azure Media Services REST API-referencia].
+## <a name="a-idrestversionhistoryrest-api-version-history"></a><a id="rest_version_history"/>REST API-korábbi verziók
+A Media Services REST API-korábbi verziók kapcsolatos információkért tekintse meg a [Az Azure Media Services REST API-referencia].
 
 ## <a name="may-2018"></a>2018. május 
 
-2018. május 12., az élő csatornák indítása rendszer már nem támogatja a RTP/MPEG-2 transport stream betöltési protokollt. Végezzen áttelepítést az RTP/MPEG-2 RTMP vagy töredezett MP4) (Smooth Streaming) betöltési protokollok.
+2018. május 12., az élő csatornák indítása fogja többé nem támogatja a RTP/MPEG-2 adatátviteli stream betöltési protokollját. Telepítse át a RTP/MPEG-2 RTMP vagy darabolt MP4 (Smooth Streaming) betöltési protokollokra.
 
 ## <a name="october-2017-release"></a>2017. októberi kiadás
 > [!IMPORTANT] 
-> A Media Services ból kivezettük való hozzáférés-vezérlési szolgáltatásban Azure hitelesítési kulcsokat támogatása. 2018. június 22. a már nem hitelesítheti a Media Services háttérrendszer működésében kód hozzáférés-vezérlési szolgáltatásban kulcsok használatával. Frissítse a kódot az Azure Active Directoryt (Azure AD) a [az Azure AD-alapú hitelesítés](media-services-use-aad-auth-to-access-ams-api.md). Ez a változás az Azure portálon kapcsolatos figyelmeztetések figyelje.
+> A Media Services az Azure Access Control Service-hitelesítési kulcsok támogatásának kivezetése. 2018. június 22. már nem hitelesítheti a Media Services-háttérrendszer használatával kód Access Control Service kulcsok használatával. Az Azure Active Directory (Azure AD) használja a kód frissítenie kell egy [az Azure AD-alapú hitelesítés](media-services-use-aad-auth-to-access-ams-api.md). Tekintse meg a figyelmeztetéseket erről a változásról, az Azure Portalon.
 
-### <a name="updates-for-october-2017"></a>2017. októberi frissítései
+### <a name="updates-for-october-2017"></a>2017. októberi frissítések
 #### <a name="sdks"></a>SDK-k
-* A .NET SDK frissült az Azure AD-alapú hitelesítés támogatásához. Hozzáférés-vezérlési szolgáltatásban hitelesítés támogatása el lett távolítva a legújabb .NET SDK Nuget.org bátorítva gyorsabb áttelepítést az Azure AD meg. 
-* A JAVA SDK frissült az Azure AD-alapú hitelesítés támogatásához. Az Azure AD-alapú hitelesítés támogatása a Java SDK lett adva. A Media Services a Java SDK használatáról információkért lásd: [Ismerkedés a Java-ügyfél SDK az Azure Media Services](media-services-java-how-to-use.md)
+* A .NET SDK frissült az Azure AD-hitelesítés támogatásához. A legújabb .NET SDK gyorsabb áttelepítés az Azure ad-val ösztönzik a Nuget.org webhelyen az Access Control Service-hitelesítés támogatása el lett távolítva. 
+* A JAVA SDK frissítve lett az Azure AD-hitelesítés támogatásához. Azure AD-hitelesítés támogatása hozzáadva a Java SDK-t. Információk a Java SDK használatának a Media Services: [a Java ügyfél-SDK használatának első lépései az Azure Media Services](media-services-java-how-to-use.md)
 
 #### <a name="file-based-encoding"></a>Fájl alapú kódolás
-* Most már használhatja a prémium szintű kódolás (HEVC) videó kodek kódolási H.265 nagy hatékonyságú videó tartalom kódolása. Ha úgy dönt, H.265 keresztül más kodekek, például a H.264, nincs árképzési hatással. HEVC szabadalmi licencek kapcsolatos információkért lásd: [Online szolgáltatási feltételek](https://azure.microsoft.com/support/legal/).
-* Forrás videót a H.265 (HEVC) videó kodek, például a videó iOS11 vagy GoPro Hero 6, használatával rögzíteni a kódolt most már használhatja a prémium szintű kódolás vagy a Standard Encoder ezeket a videók kódolásához. Szabadalmi licencek kapcsolatos információkért lásd: [Online szolgáltatási feltételek](https://azure.microsoft.com/support/legal/).
-* Több nyelv zeneszámok tartalmazó tartalomhoz a nyelvi értékek megfelelően jelölni kell a megfelelő fájlformátum specifikációjának (például ISO MP4) megfelelően. A Standard Encoder használja majd az adatfolyamként történő tartalom kódolása. Az eredő streamelési locator elérhető hang nyelvek listája.
-* Standard Encoder mostantól támogatja a két új csak rendszer készletek, "AAC hang" és "AAC jó minőségű hang." Speciális (AAC) kimeneti 128 kb/s és 192 Kbit/s átviteli sebességét, illetve kódolási hang sztereó is eredményez.
-* A prémium szintű kódolás mostantól támogatja a QuickTime/MOV fájlformátumok bemeneti adatként. A videó kodek egyikének kell lennie a [Apple ProRes típusok a Githubon cikkben szereplő](https://docs.microsoft.com/azure/media-services/media-services-media-encoder-standard-formats). A hang vagy AAC vagy impulzusos kód modulációs. A prémium szintű kódolás nem támogatja, például DVC/DVCPro videó QuickTime/MOV fájlok csomagolni bemeneti adatként. Standard Encoder a Videó kodekek támogatja.
-* A következő hibajavítások került sor kódolók képesek:
+* Most már használhatja a prémium szintű kódoló a tartalmat (HEVC) videó kodek kódolási H.265 nagy hatékonyságú videó kódolásához. Ha úgy dönt, H.265 keresztül más kodekek, például a H.264, nincs nincs ár hatását. HEVC szabadalmi licencekkel kapcsolatos információkért lásd: [Online szolgáltatások használati feltételeit](https://azure.microsoft.com/support/legal/).
+* Forrás videó H.265 (HEVC) videó kodekkel, például az ios11-et vagy GoPro Hero 6, rögzített videó kódolt most már használhatja a prémium szintű kódoló vagy a standard szintű Encoder ezek a videók kódolásához. Szabadalmi licencekkel kapcsolatos információkért lásd: [Online szolgáltatások használati feltételeit](https://azure.microsoft.com/support/legal/).
+* Több nyelv hangsáv tartalmazó tartalom a nyelv értékeket kell megfelelően neve alapján a megfelelő fájlformátum specifikációjának (például az ISO MP4). Ezután használhatja a standard szintű Encoder streamelési tartalmának kódolása. Az eredő a streamelési lokátorok hang elérhető nyelvek listája.
+* A standard szintű Encoder mostantól támogatja a két új csak hangfájlt tartalmazó rendszer készleteket, "AAC hang" és "AAC jó minőségű hang." Speciális kódolási jelölik a (AAC) kimeneti 128 kb/s és 192 Kb/s átviteli díjakat hang sztereó mindkét termék.
+* A prémium szintű kódoló mostantól támogatja az QuickTime/MOV fájlformátumok bemenetként. A videó kodek egyikének kell lennie a [Apple ProRes típusok a GitHub-cikkben felsorolt](https://docs.microsoft.com/azure/media-services/media-services-media-encoder-standard-formats). A hang vagy AAC vagy impulzusos kód modulációs. A prémium szintű kódoló nem támogatja, például DVC/DVCPro videó bemenetként QuickTime/MOV fájlok burkolja. A standard szintű Encoder ezek videokodekek támogatja.
+* A következő hibajavítások kódolók történtek:
 
-    * Feladatok egy bemeneti eszköz használatával most elküldéséhez. Ezek a feladatok befejezése után módosíthatja az eszköz (például hozzáadásához, törléséhez vagy nevezze át fájlokat az eszköz belül), valamint további feladatok elküldéséhez.
-    * A szabványos kódoló által előállított JPEG miniatűrök minőségének tovább lett fejlesztve.
-    * Standard Encoder bemeneti metaadatok és a nagyon rövid időtartam videók jobb miniatűr generációs kezeli.
-    * A használt a adás H.264 dekóder fejlesztései egyes ritka összetevők megszüntetéséhez. 
+    * Most már küldhet feladatokat egy bemeneti eszköz használatával. Miután ezek a feladatok, módosíthatja az eszköz (például hozzáadásához, törléséhez vagy fájlok belül az eszköz átnevezése), valamint további feladatok elküldéséhez.
+    * A standard szintű Encoder által előállított JPEG miniatűrök minőségének fejlesztése
+    * A Standard kódoló bemeneti metaadatok és a nagyon rövid időre videókban jobb miniatűrkészítés kezeli.
+    * Fejlesztések a standard szintű Encoder használt H.264 dekódolónak történő átadása egyes ritka összetevők kiküszöbölése. 
 
 #### <a name="media-analytics"></a>Media Analytics
-Általános rendelkezésre állását az Azure Media Redactor: A media processzor fellazítja a kijelölt személyeket felületei anonymization végez, és nyilvános biztonsági és hírek media olyan esetekben ideális. 
+Az Azure Media Redactor általános rendelkezésre állását: A médiafeldolgozót hajt végre az anonimizálás arcának felismerhetetlenné, és ideális közbiztonsági megfontolásokból és sajtóbeli híradásoknál használható. 
 
-Az új processzorokon áttekintéséért lásd: [ebben a blogbejegyzésben](https://azure.microsoft.com/blog/azure-media-redactor/). Dokumentáció és a beállítások információkért lásd: [kivonása az Azure Media Analytics lapok](media-services-face-redaction.md).
+Az új processzor áttekintéséhez lásd: [ebben a blogbejegyzésben](https://azure.microsoft.com/blog/azure-media-redactor/). Dokumentáció és a beállítások kapcsolatos tudnivalókat lásd: [szereplők az Azure Media Analytics arcok](media-services-face-redaction.md).
 
 
 
-## <a name="june-2017-release"></a>2017. június kiadás
+## <a name="june-2017-release"></a>2017 június kiadás
 
-Most már támogatja a Media Services [az Azure AD-alapú hitelesítés](media-services-use-aad-auth-to-access-ams-api.md).
+A Media Services már támogatja [az Azure AD-alapú hitelesítés](media-services-use-aad-auth-to-access-ams-api.md).
 
 > [!IMPORTANT]
-> Jelenleg a Media Services a hozzáférés-vezérlési szolgáltatásban hitelesítési modellt támogatja. 2018. június 1. a hozzáférés-vezérlési szolgáltatásban engedélyezési elavulttá válik. Javasoljuk, hogy mielőbb térjen át az Azure AD-hitelesítési modellre.
+> Jelenleg a Media Services támogatja az Access Control Service-hitelesítési modellre. 2018. június 1. Access Control Service engedélyezési elavulttá válik. Javasoljuk, hogy mielőbb térjen át az Azure AD-hitelesítési modellre.
 
-## <a name="march-2017-release"></a>2017. március kiadás
+## <a name="march-2017-release"></a>2017. márciusi kiadás
 
-Ezután már használhatja a szabványos kódoló [automatikus létrehozása egy sávszélességű létra](media-services-autogen-bitrate-ladder-with-mes.md) egy kódolási feladat létrehozásakor a karakterlánc a "adaptív Streameléshez" beállított megadásával. A Media Services streaming videó kódolására, használja a "Adaptív Streameléshez" készlet. Az adott forgatókönyv szerint az adott néven beállítás kódolással testreszabásához megkezdheti a [a készleteket](media-services-mes-presets-overview.md).
+Most már használhatja a standard szintű Encoder a [skála automatikus létrehozását](media-services-autogen-bitrate-ladder-with-mes.md) kódolási tevékenység létrehozásakor a karakterlánc a "adaptív Streamelés" előbeállítást megadásával. Kódolás a Media Services használatával folyamatos átviteli videó, használja a "Adaptív Streamelés" beállításkészletet. Testre szabhatja egy kódolási előbeállítást az adott forgatókönyvhöz, megkezdheti az [ezen készletek](media-services-mes-presets-overview.md).
 
-Ezután már használhatja Media Encoder Standard vagy a Media Encoder prémium munkafolyamat [állít elő, fMP4 adattömbök kódolási feladat létrehozása](media-services-generate-fmp4-chunks.md). 
+Most már használhatja a Media Encoder Standard vagy a Media Encoder Premium munkafolyamat való [hozzon létre egy kódolási feladat által létrehozott fMP4 adattömbök](media-services-generate-fmp4-chunks.md). 
 
-## <a name="february-2017-release"></a>2017. február kiadás
+## <a name="february-2017-release"></a>2017 február kiadás
 
-2017. április 1., kezdési 90 napnál régebbi fiókjában feladat rekordot automatikusan törlődik, és a kapcsolódó rekordok. Törlés következik be, akkor is, ha a rekordok száma nem éri el a kvóta felső határát. A feladat vagy tevékenység adatai archiválására, az ismertetett kódot használhatja [kezelése az eszközök és a kapcsolódó entitásokból a Media Services .NET SDK-val](media-services-dotnet-manage-entities.md).
+2017. április 1-én kezdve a fiókjában 90 napnál régebbi feladat rekordot automatikusan törlődik, és a kapcsolódó bejegyzések. Törlés akkor fordul elő, akkor is, ha a rekordok száma nem éri a maximális kvótát. A feladatok/műveletek adatainak archiválásához használhatja a kód ismertetett [kezelése az eszközök és a kapcsolódó entitások a Media Services .NET SDK-val](media-services-dotnet-manage-entities.md).
 
-## <a name="january-2017-release"></a>2017. január kiadás
+## <a name="january-2017-release"></a>2017 január kiadás
 
-A Media Services szolgáltatásban a streamvégpontján egy adatfolyam-szolgáltatás által biztosított tartalom közvetlenül egy ügyfélalkalmazás player vagy későbbi terjesztés tartalomkézbesítési hálózat (CDN) jelöli. A Media Services is biztosít az Azure Content Delivery Network való zökkenőmentes integrációt. A kimenő adatfolyam egy StreamingEndpoint szolgáltatásból lehet élő stream, az igény szerinti videó vagy az eszköz a Media Services-fiók a progresszív letöltés. Minden egyes Media Services-fiók egy alapértelmezett streamvégpontból tartalmazza. A fiók alatt további streamvégpontok hozhatók létre. 
+A Media Services szolgáltatásban a tartalomstreameléshez használt streamvégpont jelöli egy adatfolyam-szolgáltatást, amely tartalmat továbbít közvetlenül az ügyfél lejátszóalkalmazásába, vagy a content delivery network (CDN) további terjesztés céljából. Media Services az Azure Content Delivery Network zökkenőmentes integrációt is biztosít. A kimenő adatfolyam a Streamvégpontok szolgáltatás az élő stream, igény szerinti videó vagy egy progresszív letöltés, az eszköz a Media Services-fiók lehet. Minden egyes Media Services-fiók alapértelmezett streamvégpontja tartalmazza. További streamvégpontok a fiók alatt hozható létre. 
 
-Adatfolyam-végpontok, két verziója van 1.0-s és 2.0-s. 2017. január 10., kezdési egyetlen újonnan létrehozott Media Services-fiókot a 2.0-s verziójának alapértelmezett streamvégpontból tartalmazza. Ehhez a fiókhoz hozzáadni kívánt további streamvégpontok egyaránt 2.0-s verziójában. Ez a változás nincs hatással a meglévő fiókokat. Meglévő streamvégpontok 1.0-s verziója és a 2.0-s verziójának frissítése. Nincsenek viselkedés, a számlázással és a szolgáltatás módosításokat az módosítását. További információk: [Streamvégpontok áttekintése](media-services-streaming-endpoints-overview.md).
+A streamvégpontot választanak, két verziója 1.0-s és 2.0-s. 2017. január 10., kezdve minden újonnan létrehozott Media Services-fiókok tartalmazzák a 2.0-s verziójának alapértelmezett streamvégpontot. Adja hozzá az ehhez a fiókhoz további streamvégpontok egyúttal 2.0-s verzióját. Ez a változás nem érinti a meglévő fiókok. Meglévő streamvégpontok 1.0-s és 2.0-s verziójának frissíthetők. Nincsenek viselkedés, a számlázással és az módosítása funkció módosításokat. További információk: [Streamvégpontok áttekintése](media-services-streaming-endpoints-overview.md).
 
-Media Services a 2.15 verziójától kezdve, az adatfolyam-továbbítási végpont entitásban hozzáadva a következő tulajdonságokkal:
+A Media Services 2.15 verziójával kezdődően a streaming endpoint entitáshoz hozzáadva az alábbi tulajdonságokat:
 
 * CdnProvider 
 * CdnProfile
 * FreeTrialEndTime 
 * StreamingEndpointVersion 
 
-Ezeket a tulajdonságokat a további információkért lásd: [StreamingEndpoint](https://docs.microsoft.com/rest/api/media/operations/streamingendpoint). 
+Ezek a tulajdonságok további információkért lásd: [Streamvégpontok](https://docs.microsoft.com/rest/api/media/operations/streamingendpoint). 
 
 ## <a name="december-2016-release"></a>2016. december kiadás
 
- Most segítségével Media Services access telemetriai/metrikai adatok a szolgáltatásokhoz. Adatfolyam-továbbítási végpontra élő csatorna, telemetriai adatokat gyűjthet a Media Services aktuális verzióját használja, és archiválja entitások. További információkért lásd: [Media Services telemetriai](media-services-telemetry-overview.md).
+ Most már használhatja a Media Services telemetriai adatok és metrikák adatok elérését a szolgáltatásokhoz. Aktuális verzióját használja, a Media Services élő csatorna telemetriai adatainak gyűjtéséhez streamvégpontot, és archiválja az entitások. További információkért lásd: [Media Services telemetriai](media-services-telemetry-overview.md).
 
-## <a name="a-idjulychanges16july-2016-release"></a><a id="july_changes16"/>2016. július kiadás
-### <a name="updates-to-the-manifest-file-ism-generated-by-encoding-tasks"></a>Frissítések az Alkalmazásjegyzék-fájl (*. ISM) generálja a kódolási feladatokhoz
-Amikor egy kódolási feladat Media Encoder Standard vagy a Media Encoder Premium, a kódolási feladat hoz létre egy [adatfolyam jegyzékfájl](media-services-deliver-content-overview.md) (* .ism) található a kimeneti adategységen. A legújabb szolgáltatás a kiadástól kezdve a szintaxist, az adatfolyam-továbbítási jegyzékfájl frissült.
-
-> [!NOTE]
-> A jegyzékfájl (.ism) adatfolyamfájl szintaxisa a következő belső használatra van fenntartva. Van a jövőbeni kiadásokban változhat. Nem módosíthatók, ez a fájl tartalmának módosítására.
-> 
-> 
-
-### <a name="a-new-client-manifest-ismc-file-is-generated-in-the-output-asset-when-an-encoding-task-outputs-one-or-more-mp4-files"></a>Egy új ügyfél jegyzékfájl (*. ISMC) fájl található a kimeneti adategységen jön létre, amikor egy kódolási feladatok kimenete egy vagy több MP4-fájlok
-A szolgáltatás legújabb kiadása kezdődően egy vagy több MP4-fájlokat generál egy kódolási feladat befejezése után a kimeneti adategységen is tartalmaz egy adatfolyam-továbbítási ügyfél jegyzékfájl (*.ismc) fájlt. A .ismc fájl javítja a teljesítményt, a dinamikus adatfolyamként való továbbítására. 
+## <a name="a-idjulychanges16july-2016-release"></a><a id="july_changes16"/>2016. júliusi kiadás
+### <a name="updates-to-the-manifest-file-ism-generated-by-encoding-tasks"></a>Frissítések az Alkalmazásjegyzék-fájl (*. Kódolási feladatok által generált ISM)
+Media Encoder Standard vagy prémium szintű Media Encoder egy kódolási feladat elküldésekor a kódolási feladat létrehoz egy [streamelési jegyzékfájlt](media-services-deliver-content-overview.md) (* .ism) a kimeneti adategység. A szolgáltatás legújabb kiadással a streamelési jegyzékfájlt szintaxisa a következő frissítve lett.
 
 > [!NOTE]
-> Az ügyfél-jegyzékfájl (.ismc) fájl szintaxisa a következő belső használatra van fenntartva. Van a jövőbeni kiadásokban változhat. Nem módosíthatók, ez a fájl tartalmának módosítására.
+> A streamelési jegyzékfájlt (.ism) fájl szintaxisa a következő belső használatra van fenntartva. Fontos a jövőbeni kiadásokban változhat. Ne módosítsa vagy a fájl tartalmának módosítására.
 > 
 > 
 
-További információkért lásd: [ebben a blogban](https://blogs.msdn.microsoft.com/randomnumber/2016/07/08/encoder-changes-within-azure-media-services-now-create-ismc-file/).
+### <a name="a-new-client-manifest-ismc-file-is-generated-in-the-output-asset-when-an-encoding-task-outputs-one-or-more-mp4-files"></a>Egy új ügyfél-jegyzékfájlt (*. ISMC) fájl jön létre a kimeneti adategység, ha a kódolási tevékenység kimenete egy vagy több változó bitsebességű MP4-fájlokat
+Egy vagy több MP4-fájlokat hoz létre kódolási tevékenység befejezése után a legújabb szolgáltatásverzió kiadása, kezdve a kimeneti objektum is tartalmaz ügyfél streamelési jegyzékfájlt (*.ismc) fájl. A .ismc fájl segítségével dinamikus streamelési teljesítményének növelésében. 
+
+> [!NOTE]
+> Az ügyfél-jegyzékfájlt (.ismc) fájl szintaxisa a következő belső használatra van fenntartva. Fontos a jövőbeni kiadásokban változhat. Ne módosítsa vagy a fájl tartalmának módosítására.
+> 
+> 
+
+További információkért lásd: [ebben a blogbejegyzésben](https://blogs.msdn.microsoft.com/randomnumber/2016/07/08/encoder-changes-within-azure-media-services-now-create-ismc-file/).
 
 ### <a name="known-issues"></a>Ismert problémák
-Egyes ügyfelek között egy ismétlődő címke probléma a Smooth Streaming jegyzékben származhatnak. További információkért lásd: [ebben a szakaszban](media-services-deliver-content-overview.md#known-issues).
+Egyes ügyfelek között egy ismételje meg a címke a probléma a Smooth Streaming-jegyzékfájlban származhatnak. További információkért lásd: [ebben a szakaszban](media-services-deliver-content-overview.md#known-issues).
 
 ## <a id="apr_changes16"></a>2016. április kiadás
 ### <a name="media-analytics"></a>Media Analytics
- A Media Services Médiaelemzés hatékony videó eszközintelligencia bevezetni. További információkért lásd: [Media Services elemző áttekintése](media-services-analytics-overview.md).
+ A Media Services Media Analytics hatékony videó intelligens bevezetni. További információkért lásd: [Médiaelemzés-szolgáltatások – áttekintés](media-services-analytics-overview.md).
 
-### <a name="apple-fairplay-preview"></a>Apple FairPlay (előzetes verzió)
-Most már használhatja a Media Services dinamikus titkosítást a HTTP Live Streaming (HLS) az Apple FairPlay tartalom. Is használhatja a Media Services licenctovábbítási szolgáltatása képes biztosítani a FairPlay-licenc ügyfelek számára. További információkért olvassa el az "Azure Media Services a HLS-tartalmak védelme a Apple FairPlay."
+### <a name="apple-fairplay-preview"></a>Az Apple FairPlay (előzetes verzió)
+Most már használhatja a Media Services dinamikus titkosítást a HTTP Live Streaming (HLS) az Apple fairplay által tartalom. A Media Services licenctovábbítási szolgáltatása FairPlay-licenc továbbítására az ügyfelek is használhatja. További információkért lásd: "Az Azure Media Services Apple fairplay által védett HLS-tartalmak streamelésére használható."
 
-## <a id="feb_changes16"></a>2016. februári kiadás
-A Media Services SDK for .NET (3.5.3) legújabb verzióját a Google Widevine-kapcsolódó hibajavítás tartalmazza. Több eszköz szolgáltatással végzett Widevine titkosítása AssetDeliveryPolicy újból lehetetlen volt. A hibajavítás részeként a következő tulajdonság hozzá lett adva az SDK-val: WidevineBaseLicenseAcquisitionUrl.
+## <a id="feb_changes16"></a>2016. február kiadás
+A Media Services SDK for .NET (3.5.3) legújabb verzióját a Google Widevine kapcsolatos hibajavítás tartalmazza. Nem lehet újból felhasználja a Widevine titkosítása adategységek AssetDeliveryPolicy volt. A hibajavítás részeként a következő tulajdonság hozzá lett adva az SDK-val: WidevineBaseLicenseAcquisitionUrl.
 
     Dictionary<AssetDeliveryPolicyConfigurationKey, string> assetDeliveryPolicyConfiguration =
         new Dictionary<AssetDeliveryPolicyConfigurationKey, string>
@@ -155,275 +155,275 @@ A Media Services SDK for .NET (3.5.3) legújabb verzióját a Google Widevine-ka
     };
 
 ## <a id="jan_changes_16"></a>2016. január kiadás
-Kódolási fenntartott egységek lettek átnevezve kódoló nevek összetéveszthető csökkentése érdekében.
+A kódoláshoz fenntartott egységek lettek átnevezve kódoló nevekkel elkerülése érdekében.
 
-A Basic, Standard és Premium kódolási fenntartott egységek S1, S2, átnevezésre volt, és S3 szolgáltatás számára fenntartott egység, illetve. Az ügyfelek, akik alapszintű kódolási fenntartott egységek ma használható S1 a címke az Azure portálon (és a számlázási) jelenik meg. Standard és prémium szintű felhasználók lásd: a címkék S2 és S3, illetve. 
+A Basic, Standard és Premium kódoláshoz fenntartott egységek az S1, S2, is átnevezheti, és S3 szintű fenntartott egység, illetve. Ügyfelek, akik alapszintű kódoláshoz fenntartott egységek használatáért S1 látja, mint a címke az Azure Portalon (és a számlán). Standard és prémium szintű felhasználók tekintse meg a címkéket, S2 és S3, jelölik. 
 
-## <a id="dec_changes_15"></a>2015. decemberi kiadása
+## <a id="dec_changes_15"></a>2015 decemberi kiadása
 
-### <a name="media-encoder-deprecation-announcement"></a>Media Encoder érvénytelenítése bejelentés
+### <a name="media-encoder-deprecation-announcement"></a>Media Encoder elavulási értesítés
 
- Media Encoder indítása a Media Encoder Standard kiadása körülbelül 12 hónapon belül megszűnnek.
+ Media Encoder kezdve a Media Encoder Standard kiadása körülbelül 12 hónapon belül megszűnnek.
 
 ### <a name="azure-sdk-for-php"></a>Azure SDK a PHP-hoz
-Az Azure SDK csapat közzé az új verziót a [Azure SDK for PHP](http://github.com/Azure/azure-sdk-for-php) csomagot, amely a Media Services frissítéseket és új szolgáltatásokat tartalmazza. Különösen a Media Services SDK php mostantól támogatja a legújabb [védelmi tartalom](media-services-content-protection-overview.md) szolgáltatásokat. Ezek a szolgáltatások akkor a dinamikus titkosítás AES és DRM (PlayReady és Widevine), és a token korlátozás nélkül. Azt is támogatja a skálázás [kódoláshoz egység](media-services-dotnet-encoding-units.md).
+Az Azure SDK csapata közzétett új kiadása a [php-hez készült Azure SDK-t](http://github.com/Azure/azure-sdk-for-php) csomagot, amely a Media Services frissítéseit és új funkcióit tartalmazza. Ilyen például a Media Services php SDK mostantól támogatja a legújabb [content protection szolgáltatása](media-services-content-protection-overview.md) funkciókat. Ezeket a funkciókat a dinamikus titkosítás, az AES és DRM (PlayReady és Widevine), a és a jogkivonat-korlátozások nélkül. Ezenkívül támogatja skálázás [kódolási egységek](media-services-dotnet-encoding-units.md).
 
 További információkért lásd:
 
-* A következő [Kódminták](http://github.com/Azure/azure-sdk-for-php/tree/master/examples/MediaServices) gyors megkezdéséhez segítséget:
-  * **vodworkflow_aes.php**: fájl a PHP dinamikus AES-128 titkosítást és a kulcs kézbesítési szolgáltatás használatát mutatja. A .NET-mintát, tekintse meg a alapul [a dinamikus titkosítás használata AES-128 és a kulcs kézbesítési szolgáltatás](media-services-protect-with-aes128.md).
-  * **vodworkflow_aes.php**: A PHP-fájl mutatja be dinamikus titkosítást a PlayReady és a kézbesítési szolgáltatás használatát. A .NET-mintát, tekintse meg a alapul [használata PlayReady és/vagy Widevine a dynamic common encryption](media-services-protect-with-playready-widevine.md).
-  * **scale_encoding_units.php**: A PHP fájl kódolási fenntartott egységek méretezése jeleníti meg.
+* A következő [Kódminták](http://github.com/Azure/azure-sdk-for-php/tree/master/examples/MediaServices) segítenek a gyors kezdéshez:
+  * **vodworkflow_aes.php**: A PHP-fájl bemutatja, hogyan használhatja a dinamikus AES-128 titkosítást és a kulcstovábbítást. A .NET-minta leírtak alapján [használata AES-128, a dinamikus titkosítás és a kulcstovábbítást](media-services-protect-with-aes128.md).
+  * **vodworkflow_aes.php**: A PHP-fájl bemutatja, hogyan használhatja a dinamikus titkosítást a PlayReady és a licenctovábbítási szolgáltatása. A .NET-minta leírtak alapján [használja a PlayReady és/vagy Widevine dynamic common Encryption titkosítás](media-services-protect-with-playready-widevine.md).
+  * **scale_encoding_units.php**: Ez a PHP-fájl bemutatja a kódoláshoz fenntartott egységek méretezése.
 
-## <a id="nov_changes_15"></a>2015. november kiadás
- A Media Services kínál a felhőben a Widevine licenctovábbítási szolgáltatásra. További információkért lásd: [ebben a blogban](https://azure.microsoft.com/blog/announcing-google-widevine-license-delivery-services-public-preview-in-azure-media-services/). Lásd még [ebben az oktatóanyagban](media-services-protect-with-playready-widevine.md) és a [GitHub-tárházban](http://github.com/Azure-Samples/media-services-dotnet-dynamic-encryption-with-drm). 
+## <a id="nov_changes_15"></a>2015 novemberi kiadásban
+ A Media Services kínál a Widevine license delivery szolgáltatás a felhőben. További információkért lásd: [ebben a blogbejegyzésben](https://azure.microsoft.com/blog/announcing-google-widevine-license-delivery-services-public-preview-in-azure-media-services/). Lásd még [ebben az oktatóanyagban](media-services-protect-with-playready-widevine.md) és a [GitHub-adattár](http://github.com/Azure-Samples/media-services-dotnet-dynamic-encryption-with-drm). 
 
-A Media Services által biztosított Widevine licenctovábbítási szolgáltatások még csak előzetes verziójúak. További információkért lásd: [ebben a blogban](https://azure.microsoft.com/blog/announcing-google-widevine-license-delivery-services-public-preview-in-azure-media-services/).
+Media Services által kínált Widevine licenctovábbítási szolgáltatások vannak előzetes verzióban érhető el. További információkért lásd: [ebben a blogbejegyzésben](https://azure.microsoft.com/blog/announcing-google-widevine-license-delivery-services-public-preview-in-azure-media-services/).
 
-## <a id="oct_changes_15"></a>2015 október kiadás
-A Media Services mostantól élő a következő adatközpontokban: Dél-Brazília, Nyugat-India, Dél-India és közép-India. Ezután már használhatja az Azure portálon [Media Services-fiókok létrehozása](media-services-portal-create-account.md) leírt különböző feladatok végrehajtására és a [Media Services dokumentációs weblap](https://azure.microsoft.com/documentation/services/media-services/). Ezekben az adatközpontokban élő kódolás nincs engedélyezve. További nem minden alkalmazástípus kódoláshoz fenntartott egység is elérhetők ezekben az adatközpontokban.
+## <a id="oct_changes_15"></a>2015. október kiadás
+A Media Services már élő az a következő adatközpontokban: Dél-Brazília, Nyugat-India, Dél-India és közép-India. Most már használhatja az Azure Portalon [Media Services-fiókok létrehozása](media-services-portal-create-account.md) leírt különböző feladatok elvégzésére, és a [Media Services dokumentációs weblapon](https://azure.microsoft.com/documentation/services/media-services/). Ezekben az adatközpontokban a Live Encoding nincs engedélyezve. További nem minden típusú kódoláshoz fenntartott egység érhető el ezekben az adatközpontokban.
 
-* Dél-Brazília: Csak a Standard és alapszintű kódoláshoz fenntartott egység érhető el.
+* Dél-Brazília: Csak Standard és alapszintű kódoláshoz fenntartott egység érhető el.
 * Nyugat-India, Dél-India és közép-India: csak alap kódoláshoz fenntartott egységek érhetők el.
 
-## <a id="september_changes_15"></a>2015. szeptemberi kiadás
-A Media Services mostantól lehetővé teszi igény szerinti és élő adatfolyamok Widevine moduláris DRM technológiával is védeni. A következő kézbesítési szolgáltatások partnerek segítségével Widevine-licencek segítségével:
+## <a id="september_changes_15"></a>2015 szeptemberi kiadás
+Media Services mostantól lehetővé teszi az igény szerinti és élő adatfolyamok moduláris Widevine DRM-technológiával is védeni. A következő kézbesítési szolgáltatások partnerek segítségével Widevine-licencek segítségével:
 * [Axinom](http://www.axinom.com/press/ibc-axinom-drm-6/) 
 * [EZDRM](http://ezdrm.com/) 
 * [castLabs](http://castlabs.com/company/partners/azure/) 
 
-További információkért lásd: [ebben a blogban](https://azure.microsoft.com/blog/azure-media-services-adds-google-widevine-packaging-for-delivering-multi-drm-stream/).
+További információkért lásd: [ebben a blogbejegyzésben](https://azure.microsoft.com/blog/azure-media-services-adds-google-widevine-packaging-for-delivering-multi-drm-stream/).
   
 Az AssetDeliveryConfiguration Widevine használatára történő beállításához használja a [Media Services .NET SDK-t](https://www.nuget.org/packages/windowsazure.mediaservices/) (a 3.5.1-es vagy egy újabb verziót), vagy a REST API-t. 
-* A Media Services Apple ProRes videók támogatása. A forrás QuickTime-videók Apple ProRes vagy más használó fájlok most már feltöltheti. További információkért lásd: [ebben a blogban](https://azure.microsoft.com/blog/announcing-support-for-apple-prores-videos-in-azure-media-services/).
-* Most már használhatja Media Encoder Standard subclipping és élő archív kiolvasásához elvégzéséhez. További információkért lásd: [ebben a blogban](https://azure.microsoft.com/blog/sub-clipping-and-live-archive-extraction-with-media-encoder-standard/).
+* A Media Services Apple ProRes videók támogatása. A forrás QuickTime-videók Apple ProRes vagy más kodekek használó fájlok most már feltöltheti. További információkért lásd: [ebben a blogbejegyzésben](https://azure.microsoft.com/blog/announcing-support-for-apple-prores-videos-in-azure-media-services/).
+* Mostantól használhatja a Media Encoder Standard részklipkészítés és élő archívum kibontása tennie. További információkért lásd: [ebben a blogbejegyzésben](https://azure.microsoft.com/blog/sub-clipping-and-live-archive-extraction-with-media-encoder-standard/).
 * Az alábbi szűrési frissítések történtek: 
   
-  * Most már használhatja az Apple HLS formátum csak hang-szűrőt. A frissítés segítségével távolítsa el az csak követése megadásával (csak = false) URL-címét.
-  * Amikor fájlszűrők definiálása a eszközöket, most kombinálhatja több (legfeljebb három) szűrőt a egyetlen URL-címében.
+  * Mostantól használhatja az Apple HLS formátumban csak szűrővel rendelkező. Ez a frissítés segítségével távolítsa el a csak hangfájlt tartalmazó követése megadásával (csak = false) URL-címét.
+  * Ha szűrőket definiálhat az eszközök, most kombinálható több (legfeljebb három) szűrőt egy egyetlen URL-címben.
     
-    További információkért lásd: [ebben a blogban](https://azure.microsoft.com/blog/azure-media-services-release-dynamic-manifest-composition-remove-hls-audio-only-track-and-hls-i-frame-track-support/).
-* A Media Services I-keretek mostantól támogatja a HLS 4-es verzióját. I-keret támogatási előretekerés és visszatekerés műveletek optimalizálja. Alapértelmezés szerint az összes HLS 4-es verziójú kimenetének tartalmazza az I-keret lista (EXT-X-I-FRAME-STREAM-INF).
-További információkért lásd: [ebben a blogban](https://azure.microsoft.com/blog/azure-media-services-release-dynamic-manifest-composition-remove-hls-audio-only-track-and-hls-i-frame-track-support/).
+    További információkért lásd: [ebben a blogbejegyzésben](https://azure.microsoft.com/blog/azure-media-services-release-dynamic-manifest-composition-remove-hls-audio-only-track-and-hls-i-frame-track-support/).
+* A Media Services már támogatják e-keretek HLS 4-es verzióját. E-keret támogatási előretekerés és visszatekerés műveletek optimalizálja. Alapértelmezés szerint minden HLS-4. verziójú kimenetek közé tartozik az e-keret lista (EXT-X-I-FRAME-STREAM-INF).
+További információkért lásd: [ebben a blogbejegyzésben](https://azure.microsoft.com/blog/azure-media-services-release-dynamic-manifest-composition-remove-hls-audio-only-track-and-hls-i-frame-track-support/).
 
-## <a id="august_changes_15"></a>2015. augusztus kiadás
-* A Media Services SDK a Java verzióját 0.8.0 kiadás és az új mintát is elérhető. További információkért lásd:
+## <a id="august_changes_15"></a>2015 augusztus kiadás
+* A Media Services SDK a Java 0.8.0. verzió kiadását és az új mintát, mostantól elérhetők. További információkért lásd:
     
-* Az Azure Media Player több hangadatfolyam-támogatással rendelkező frissült. További információkért lásd: [ebben a blogbejegyzésben](https://azure.microsoft.com/blog/2015/08/13/azure-media-player-update-with-multi-audio-stream-support/).
+* Az Azure Media Player frissítve lett a többszörös hang Streamek támogatását. További információkért lásd: [ebben a blogbejegyzésben](https://azure.microsoft.com/blog/2015/08/13/azure-media-player-update-with-multi-audio-stream-support/).
 
-## <a id="july_changes_15"></a>2015. július kiadás
-* Az általános rendelkezésre állását Media Encoder Standard jelentették. További információkért lásd: [ebben a blogbejegyzésben](https://azure.microsoft.com/blog/2015/07/16/announcing-the-general-availability-of-media-encoder-standard/).
+## <a id="july_changes_15"></a>2015 júliusi kiadás
+* Az általánosan elérhető Media Encoder Standard mutattuk be. További információkért lásd: [ebben a blogbejegyzésben](https://azure.microsoft.com/blog/2015/07/16/announcing-the-general-availability-of-media-encoder-standard/).
   
-    Media Encoder Standard használ készletek, a [ebben a szakaszban](http://go.microsoft.com/fwlink/?LinkId=618336). Ha egy készletet használ az 4 KB-os kódolja, a Premium szolgáltatás számára fenntartott egység típus beolvasása. További információkért lásd: [méretezési kódolás](media-services-scale-media-processing-overview.md).
-* Élő valós idejű feliratok Media Services és a Media Player volt használva. További információkért lásd: [ebben a blogbejegyzésben](https://azure.microsoft.com/blog/2015/07/08/live-real-time-captions-with-azure-media-services-and-player/).
+    Standard szintű Media Encodert használja a készletek, leírtak szerint [ebben a szakaszban](http://go.microsoft.com/fwlink/?LinkId=618336). A készletet használhatja a 4K kódol, a prémium szintű szolgáltatás számára fenntartott egység típusának lekérése. További információkért lásd: [méretezési kódolás](media-services-scale-media-processing-overview.md).
+* A Media Services és a Media Player élő valós idejű feliratok használták. További információkért lásd: [ebben a blogbejegyzésben](https://azure.microsoft.com/blog/2015/07/08/live-real-time-captions-with-azure-media-services-and-player/).
 
-### <a name="media-services-net-sdk-updates"></a>Media Services .NET SDK frissítések
-A Media Services .NET SDK verziója most 3.4.0.0. A következő frissítéseket történtek: 
+### <a name="media-services-net-sdk-updates"></a>Media Services .NET SDK-frissítések
+A Media Services .NET SDK már 3.4.0.0 verzió. Az alábbi frissítések történtek: 
 
-* Támogatási élő archiváláshoz megtörtént. Egy élő archív tartalmazó objektumot nem lehet letölteni.
-* Támogatja a dinamikus szűrők megtörtént.
-* Funkcióit, hogy a felhasználók megtarthatja a tárolót, amíg azok az eszköz törlése megtörtént.
-* Hibajavításokat tartalmaz, majd ismételje meg a házirendek segítségével a csatornák kapcsolódó került sor.
-* Media Encoder prémium munkafolyamat volt engedélyezve.
+* Az élő archívumot volt implementálva. Az élő archívumot tartalmazó objektumot nem lehet letölteni.
+* A dinamikus szűrőt volt implementálva.
+* Funkcióit, hogy a felhasználók megtarthatja a tárolót, amíg az eszköz törlését a lett megvalósítva.
+* Hibajavítások kapcsolatos újrapróbálkozási szabályzatok csatornákon keresztül történtek.
+* Media Encoder Premium munkafolyamat engedélyezve lett.
 
-## <a id="june_changes_15"></a>2015. június kiadás
-### <a name="media-services-net-sdk-updates"></a>Media Services .NET SDK frissítések
-A Media Services .NET SDK verziója most 3.3.0.0. A következő frissítéseket történtek: 
+## <a id="june_changes_15"></a>2015 június kiadás
+### <a name="media-services-net-sdk-updates"></a>Media Services .NET SDK-frissítések
+A Media Services .NET SDK már 3.3.0.0 verzió. Az alábbi frissítések történtek: 
 
-* Az OpenId Connect felderítési spec támogatást kaptak.
-* Támogatást kaptak a identity provider oldalon kulcsok helyettesítő kezelése.
+* Az OpenId Connect-felderítési specifikációja váltak.
+* Az identity provider oldalán kulcsok váltása váltak.
 
-Ha használja az identitásszolgáltató, amely elérhetővé teszi az OpenID Connect felderítési dokumentum (az Azure ad-vel, mint a Google, és a Salesforce végre), Media Services JSON Web Tokens (JWTs) érvényesítése aláírási kulcsokat beszerezni az OpenID Connect felderítési spec találhatók. 
+Ha használhatja, amely közzéteszi az OpenID Connect-felderítési dokumentum Identitásszolgáltatóként (Azure AD-ben, a Google vagy a Salesforce végre), utasíthatja JSON webes jogkivonatainak (JWTs) érvényesítése aláírási kulcsokat lekérését az OpenID Connect-felderítési feldolgozása a Media Services. 
 
-További információkért lásd: [használata JSON webes kulcsokat és a Media Services JWT hitelesítés együttműködésének az OpenID Connect felderítési spec](http://gtrifonov.com/2015/06/07/using-json-web-keys-from-openid-connect-discovery-spec-to-work-with-jwt-token-authentication-in-azure-media-services/).
+További információkért lásd: [használható JSON webes kulcsok a JWT-hitelesítéssel, a Media Services működéséhez az OpenID Connect felderítési specifikációja](http://gtrifonov.com/2015/06/07/using-json-web-keys-from-openid-connect-discovery-spec-to-work-with-jwt-token-authentication-in-azure-media-services/).
 
-## <a id="may_changes_15"></a>2015. május kiadás
-Az alábbi új szolgáltatások bejelentette volt:
+## <a id="may_changes_15"></a>2015 május kiadás
+A következő új funkciók lettek bejelentett:
 
-* [A Media Services élő kódolás előnézete](media-services-manage-live-encoder-enabled-channels.md)
-* [Dinamikus jegyzék](media-services-dynamic-manifest-overview.md)
-* [Az Azure Media Hyperlapse media processzor előnézete](https://azure.microsoft.com/blog/?p=286281&preview=1&_ppp=61e1a0b3db)
+* [Valós idejű kódolás a Media Services előnézete](media-services-manage-live-encoder-enabled-channels.md)
+* [A dinamikus manifest](media-services-dynamic-manifest-overview.md)
+* [Előzetes verziója az Azure Media Hyperlapse médiafeldolgozót.](https://azure.microsoft.com/blog/?p=286281&preview=1&_ppp=61e1a0b3db)
 
-## <a id="april_changes_15"></a>2015. áprilisi kiadás
-### <a name="general-media-services-updates"></a>Általános Media Services frissítése
-* [Media Player](https://azure.microsoft.com/blog/2015/04/15/announcing-azure-media-player/) jelentették.
-* A Media Services REST 2.10 verziótól kezdődően a valós idejű üzenetküldési protokoll (RTMP) betöltési konfigurált csatornák jönnek létre az elsődleges és másodlagos betöltési URL-címeket. További információkért lásd: [csatorna betöltési konfigurációk](media-services-live-streaming-with-onprem-encoders.md#channel_input).
+## <a id="april_changes_15"></a>2015 áprilisi kiadás
+### <a name="general-media-services-updates"></a>Általános Media Services-frissítések
+* [A Media Player](https://azure.microsoft.com/blog/2015/04/15/announcing-azure-media-player/) mutattuk be.
+* A Media Services REST 2.10 kezdve tárterületeket, hogy a valós idejű üzenetkezelési protokollt (RTMP) jönnek létre az elsődleges és másodlagos betöltési URL-címeket. További információkért lásd: [csatorna betöltési konfigurációk](media-services-live-streaming-with-onprem-encoders.md#channel_input).
 * Az Azure Media Indexer frissítve lett.
-* Spanyol nyelvi támogatás hozzá lett adva.
-* Egy új konfigurációt az XML-formátuma hozzá lett adva.
+* Spanyol nyelvű támogatása hozzáadva.
+* Az XML-formátum egy új konfigurációt jelent meg.
 
-További információkért lásd: [ebben a blogban](https://azure.microsoft.com/blog/2015/04/13/azure-media-indexer-spanish-v1-2/).
+További információkért lásd: [ebben a blogbejegyzésben](https://azure.microsoft.com/blog/2015/04/13/azure-media-indexer-spanish-v1-2/).
 
-### <a name="media-services-net-sdk-updates"></a>Media Services .NET SDK frissítések
-A Media Services .NET SDK verziója most 3.2.0.0. A következő frissítéseket történtek:
+### <a name="media-services-net-sdk-updates"></a>Media Services .NET SDK-frissítések
+A Media Services .NET SDK már 3.2.0.0 verzió. Az alábbi frissítések történtek:
 
-* Változás megtörje: TokenRestrictionTemplate.Issuer és TokenRestrictionTemplate.Audience módosított egy karakterlánc típusúnak kell lennie.
-* Frissítés kapcsolatos egyéni újrapróbálkozási házirendek létrehozása megtörtént.
-* Hibajavítások végzett kapcsolódó feltöltése és a fájlok letöltése.
-* A MediaServicesCredentials osztály most elsődleges és másodlagos access control végpontok hitelesítése fogad el.
+* Kompatibilitástörő változás: módosult egy karakterlánc típusú TokenRestrictionTemplate.Issuer és TokenRestrictionTemplate.Audience.
+* Frissítések kapcsolódó hozhat létre egyéni újrapróbálkozási szabályzatok történtek.
+* Hibajavítások történtek kapcsolódó, fel- és fájlok letöltéséhez.
+* A MediaServicesCredentials osztály már elfogad hitelesíti a rendszer az elsődleges és másodlagos hozzáférés-vezérlési végpontokról.
 
 ## <a id="march_changes_15"></a>2015. márciusi kiadás
-### <a name="general-media-services-updates"></a>Általános Media Services frissítése
-* A Media Services most Content Delivery Network integrációt biztosít. Az integráció támogatása érdekében a CdnEnabled tulajdonság StreamingEndpoint lett adva. REST API-k 2.9 verziójától kezdve CdnEnabled használható. További információkért lásd: [StreamingEndpoint](https://docs.microsoft.com/rest/api/media/operations/streamingendpoint). CdnEnabled 3.1.0.2 verziójától kezdve a .NET SDK-t is használható. További információkért lásd: [StreamingEndpoint](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.mediaservices.client.istreamingendpoint\(v=azure.10\).aspx).
-* A Media Encoder prémium munkafolyamat jelentették. További információkért lásd: [bevezeti a prémium szintű Azure Media Services kódolási](https://azure.microsoft.com/blog/2015/03/05/introducing-premium-encoding-in-azure-media-services/).
+### <a name="general-media-services-updates"></a>Általános Media Services-frissítések
+* A Media Services most már a Content Delivery Network-integrációt biztosít. Streamvégpontok támogatja az integrációt, a CdnEnabled tulajdonság lett hozzáadva. CdnEnabled használható REST API-k 2.9-es verzióval kezdődően. További információkért lásd: [Streamvégpontok](https://docs.microsoft.com/rest/api/media/operations/streamingendpoint). CdnEnabled a .NET SDK használatával 3.1.0.2 verziótól kezdve használható. További információkért lásd: [Streamvégpontok](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.mediaservices.client.istreamingendpoint\(v=azure.10\).aspx).
+* A Media Encoder Premium munkafolyamat mutattuk be. További információkért lásd: [Introducing Premium encoding, az Azure Media Servicesben](https://azure.microsoft.com/blog/2015/03/05/introducing-premium-encoding-in-azure-media-services/).
 
-## <a id="february_changes_15"></a>2015. február kiadás
-### <a name="general-media-services-updates"></a>Általános Media Services frissítése
-A Media Services REST API verziója most 2.9. Ezen verziójával kezdődően a Content Delivery Network integrációja adatfolyam-végpontok is engedélyezheti. További információkért lásd: [StreamingEndpoint](https://msdn.microsoft.com/library/dn783468.aspx).
+## <a id="february_changes_15"></a>2015 február kiadás
+### <a name="general-media-services-updates"></a>Általános Media Services-frissítések
+A Media Services REST API már 2.9-es verzió. Ezen verziójával kezdődően a Content Delivery Network integráció streamvégpontok is engedélyezheti. További információkért lásd: [Streamvégpontok](https://msdn.microsoft.com/library/dn783468.aspx).
 
-## <a id="january_changes_15"></a>2015. januári kiadás
-### <a name="general-media-services-updates"></a>Általános Media Services frissítése
-A dinamikus titkosítás tartalomvédelem általános rendelkezésre állását jelentették. További információkért lásd: [Media Services adatfolyam biztonsági javítja az általános rendelkezésre állását DRM technológia](https://azure.microsoft.com/blog/2015/01/29/azure-media-services-enhances-streaming-security-with-general-availability-of-drm-technology/).
+## <a id="january_changes_15"></a>2015 januári kibocsátási
+### <a name="general-media-services-updates"></a>Általános Media Services-frissítések
+Az általánosan elérhető a dinamikus titkosítás segítségével a content protection mutattuk be. További információkért lásd: [Media Services fokozza a streamelési biztonságot az általánosan elérhető a DRM-technológia](https://azure.microsoft.com/blog/2015/01/29/azure-media-services-enhances-streaming-security-with-general-availability-of-drm-technology/).
 
-### <a name="media-services-net-sdk-updates"></a>Media Services .NET SDK frissítések
-A Media Services .NET SDK verziója most 3.1.0.1.
+### <a name="media-services-net-sdk-updates"></a>Media Services .NET SDK-frissítések
+A Media Services .NET SDK már 3.1.0.1 verzió.
 
-Ebben a kiadásban az alapértelmezett Microsoft.WindowsAzure.MediaServices.Client.ContentKeyAuthorization.TokenRestrictionTemplate konstruktor elavultak jelölésű. Az új konstruktor készít TokenType argumentumként.
+Ebben a kiadásban az alapértelmezett Microsoft.WindowsAzure.MediaServices.Client.ContentKeyAuthorization.TokenRestrictionTemplate konstruktor elavultak megjelölve. Az új konstruktort TokenType argumentumként vesz igénybe.
 
     TokenRestrictionTemplate template = new TokenRestrictionTemplate(TokenType.SWT);
 
 
 ## <a id="december_changes_14"></a>2014. decemberi kiadása
-### <a name="general-media-services-updates"></a>Általános Media Services frissítése
-* A Media Indexer hozzáadott néhány frissítéseket és új szolgáltatásokat. További információkért lásd: [Azure Media Indexer verzió 1.1.6.7 kibocsátási megjegyzések](https://azure.microsoft.com/blog/2014/12/03/azure-media-indexer-version-1-1-6-7-release-notes/).
-* Egy új REST API lett hozzáadva, használható kódolási fenntartott egységek frissítéséhez. További információkért lásd: [EncodingReservedUnitType többi](https://docs.microsoft.com/rest/api/media/operations/encodingreservedunittype).
-* A CORS támogatást kaptak a kulcs kézbesítési szolgáltatás.
-* Teljesítménnyel kapcsolatos fejlesztések történtek engedélyezési házirend-beállítások lekérdezése.
-* A kínai adatközpontban a [kézbesítési URL-cím kulcs](https://docs.microsoft.com/rest/api/media/operations/contentkey#get_delivery_service_url) már egy ügyfél (akárcsak más adatközpontokban).
-* HLS automatikus cél időtartama hozzá lett adva. Ennek az élő Stream továbbítása során, amikor HLS mindig dinamikusan csomagolni. A Media Services alapértelmezés szerint automatikusan HLS szegmens csomagolás aránya (FragmentsPerSegment) a keyframe időköz (KeyFrameInterval) alapján számítja ki. Ez a módszer is nevezzük képek (GOP) csoportja, amely az élő kódoló érkezik. További információkért lásd: [a Media Services használata élő adatfolyam](http://msdn.microsoft.com/library/azure/dn783466.aspx).
+### <a name="general-media-services-updates"></a>Általános Media Services-frissítések
+* A Media Indexer hozzáadott néhány frissítéseit és új funkcióit. További információkért lásd: [Azure Media Indexer 1.1.6.7 verzió kibocsátási megjegyzései](https://azure.microsoft.com/blog/2014/12/03/azure-media-indexer-version-1-1-6-7-release-notes/).
+* Egy új REST API hozzá lett adva, hogy a kódoláshoz fenntartott egységek frissítéséhez használhatja. További információkért lásd: [REST-tel EncodingReservedUnitType](https://docs.microsoft.com/rest/api/media/operations/encodingreservedunittype).
+* CORS-támogatás a kulcskézbesítési szolgáltatás lett hozzáadva.
+* Teljesítménnyel kapcsolatos fejlesztések történtek engedélyezésiházirend-beállítások lekérdezéséhez.
+* Kína adatközpontban a [kulcs kézbesítési URL-CÍMÉT](https://docs.microsoft.com/rest/api/media/operations/contentkey#get_delivery_service_url) már minden ügyfél (hasonlóan más adatközpontokban).
+* HLS automatikus cél időtartam lett hozzáadva. Élő streameléskor, HLS mindig dinamikusan csomagolva. A Media Services alapértelmezés szerint automatikusan HLS szegmens csomagolási arány (FragmentsPerSegment) a kulcsképkocka időköz (KeyFrameInterval) alapján számítja ki. Ez a módszer is nevezik képek (Képcsoporttal) csoportja, amely az élő kódoló érkezik. További információkért lásd: [együttműködnek a Media Services élő streamelési](http://msdn.microsoft.com/library/azure/dn783466.aspx).
 
-### <a name="media-services-net-sdk-updates"></a>Media Services .NET SDK frissítések
-A [Media Services .NET SDK](http://www.nuget.org/packages/windowsazure.mediaservices/) verziója most 3.1.0.0-s. A következő frissítéseket történtek:
+### <a name="media-services-net-sdk-updates"></a>Media Services .NET SDK-frissítések
+A [Media Services .NET SDK](http://www.nuget.org/packages/windowsazure.mediaservices/) már 3.1.0.0-s verzió. Az alábbi frissítések történtek:
 
-* A .NET-keretrendszer 4.5-ös verziójának a .NET SDK-függőség lett frissítve.
-* Egy olyan új API kódolási fenntartott egységek frissítésére használható hozzá lett adva. További információkért lásd: [frissítés szolgáltatás számára fenntartott egység típusát és a kódoláshoz fenntartott egység .NET használatával növelje](media-services-dotnet-encoding-units.md).
-* JWT jogkivonat hitelesítés támogatása hozzá lett adva. További információkért lásd: [JWT jogkivonat hitelesítési a Media Services és a dinamikus titkosítás](http://www.gtrifonov.com/2015/01/03/jwt-token-authentication-in-azure-media-services-and-dynamic-encryption/).
-* A PlayReady licencsablon a BeginDate és ExpirationDate relatív eltolások lettek hozzáadva.
+* A .NET-keretrendszer 4.5-ös verziója a .NET SDK-függőség lett frissítve.
+* Egy új API-t használó frissítse a kódoláshoz fenntartott egységek hozzá lett adva. További információkért lásd: [frissítési szolgáltatás számára fenntartott egység típusának és növelje a kódoláshoz fenntartott egység .NET-keretrendszerrel](media-services-dotnet-encoding-units.md).
+* JWT jogkivonat hitelesítés támogatása hozzáadva. További információkért lásd: [JWT jogkivonat-hitelesítés a Media Services és a dinamikus titkosítás](http://www.gtrifonov.com/2015/01/03/jwt-token-authentication-in-azure-media-services-and-dynamic-encryption/).
+* A PlayReady-licencsablon BeginDate és ExpirationDate relatív eltolások bővült.
 
-## <a id="november_changes_14"></a>2014. novemberi kiadásban
-* Most már használhatja a Media Services élő Smooth Streaming (fMP4) tartalmat tölti be SSL-kapcsolaton keresztül. Betöltési SSL-en keresztül, győződjön meg arról, hogy a bemeneti URL-címet frissíteni HTTPS. Jelenleg az Media Services nem támogatja az SSL az egyéni tartomány. További információ az élő Stream továbbítása: [együttműködik az Azure Media Services élő adatfolyam-továbbítási](http://msdn.microsoft.com/library/azure/dn783466.aspx).
-* Jelenleg egy RTMP élő adatfolyam nem betöltési SSL-kapcsolaton keresztül.
-* SSL-en keresztül adatfolyam csak akkor, ha a streamvégpontján, amelyről a tartalmat továbbít a 2014. szeptember 10 után lett létrehozva. Ha a streamelési URL-címek a 2014. szeptember 10 után létrehozott streamvégpontok alapuló "streaming.mediaservices.windows.net" (a új formátum) tartalmaz. Adatfolyam-továbbítási URL-címek, amelyek tartalmazzák a "origin.mediaservices.windows.net" (a régi formátumot) nem támogatja az SSL. Ha a régi formátumban kell megadni az URL-cím és adatfolyamként küldje el SSL,-en keresztül szeretné [hozzon létre egy új streamvégpont](media-services-portal-manage-streaming-endpoints.md). Az adatfolyamként SSL-en keresztül, használja az URL-címek alapján új streamvégpontra.
+## <a id="november_changes_14"></a>2014. novemberi kiadásában
+* Most már használhatja a Media Services élő Smooth Streaming (fMP4) tartalom betöltését a SSL-kapcsolaton keresztül. Hogy SSL-en keresztül, ügyeljen arra, hogy a bemeneti URL-címet frissíteni a HTTPS-re. Jelenleg az a Media Services nem támogatja az SSL egyéni tartománnyal rendelkező. Élő streameléssel kapcsolatos további információkért lásd: [használata az Azure Media Services élő Streamelési](http://msdn.microsoft.com/library/azure/dn783466.aspx).
+* SSL-kapcsolaton keresztül jelenleg nem képes feldolgozni a RTMP élő adatfolyamokat.
+* SSL-en keresztül adatfolyam csak akkor, ha a streamvégpontra, amelyről a tartalomkézbesítés 2014. szeptember 10-után jött létre. Ha a streamelési URL-címek alapján a 2014. szeptember 10-én után létrehozott streamelési végpontok az URL-címet tartalmaz "streaming.mediaservices.windows.net" (a új formátum). Streamelési URL-címek, amelyek tartalmazzák a "origin.mediaservices.windows.net" (a régi formátumot) nem támogatják az SSL. Ha az URL-cím szerepel a régi formátumot, és SSL,-en keresztül kívánja [hozzon létre egy új streamvégpont](media-services-portal-manage-streaming-endpoints.md). A tartalmak streamelésére SSL-en keresztül, használja az URL-címek az új streamvégpont alapján.
 
 ## <a id="october_changes_14"></a>2014. októberi kiadás
-### <a id="new_encoder_release"></a>Media Services kódoló kiadás
- A Media Services Azure Media Encoder új kiadásának jelentették. A legújabb Media Encoder meg van szó, csak a kimeneti GB-ban. Ellenkező esetben az új kódoló egy olyan szolgáltatás, amely kompatibilis a korábbi kódoló. További információkért lásd: [A Media Services díjszabásával kapcsolatos részletek].
+### <a id="new_encoder_release"></a>Media Services Encoder kiadás
+ A Media Services az Azure Media Encoder új kiadása mutattuk be. A legfrissebb Media Encoder fizetnie csak a kimeneti GB. Ellenkező esetben az új kódoló funkciója kompatibilis a korábbi kódolót. További információkért lásd: [A Media Services díjszabásával kapcsolatos részletek].
 
-### <a id="oct_sdk"></a>Media Services .NET SDK-val
-A Media Services SDK .NET-bővítmények verziója most 2.0.0.3.
+### <a id="oct_sdk"></a>A Media Services .NET SDK-val
+A Media Services SDK for .NET-bővítmények mostantól 2.0.0.3 verzió.
 
-A Media Services SDK for .NET verziója most 3.0.0.8. A következő frissítéseket történtek:
+A Media Services SDK for .NET már 3.0.0.8 verzió. Az alábbi frissítések történtek:
 
-* Újrapróbálkozási házirend osztályok újrabontása lett megvalósítva.
-* A felhasználói ügynök karakterlánca HTTP-kérelmek fejléceinek lett adva.
-* A NuGet visszaállítási összeállítása lépés jelent meg.
-* Forgatókönyv tesztek javítva lett x509 használandó tanúsítvány számára a tárházban.
-* Érvényesítési beállítások hozzá voltak adva a során a csatorna és a streamelési célból.
+* Újrabontás újrapróbálkozási házirend osztályok lett megvalósítva.
+* HTTP-kérelmek fejléceinek lett felvéve a böngészőazonosító sztringet.
+* Buildelési lépést NuGet visszaállítási hozzá lett adva.
+* Forgatókönyv tesztek x509 használandó javítva lett a tárházból tanúsítvány.
+* Ellenőrzési beállítások hozzá voltak adva a Ha a csatorna és a streamelési vége.
 
-### <a name="new-github-repository-to-host-media-services-samples"></a>Új GitHub tárház host Media Services-minták
-A mintákat a [Media Services minták GitHub-tárházban](https://github.com/Azure/Azure-Media-Services-Samples).
+### <a name="new-github-repository-to-host-media-services-samples"></a>Új GitHub-adattárban gazdagép Media Services-minták
+Minták szerepelnek a [Media Services-minták GitHub-adattár](https://github.com/Azure/Azure-Media-Services-Samples).
 
 ## <a id="september_changes_14"></a>2014. szeptember kiadás
-A Media Services REST metaadatok verziója most 2.7. A többi legújabb kapcsolatos további információkért tekintse meg a [Media Services REST API-referenciában](https://docs.microsoft.com/rest/api/media/operations/azure-media-services-rest-api-reference).
+A Media Services REST-metaadatok már 2.7-es verzió. A legújabb REST frissítésekkel kapcsolatos további információkért lásd: a [Media Services REST API-referencia](https://docs.microsoft.com/rest/api/media/operations/azure-media-services-rest-api-reference).
 
-A Media Services SDK for .NET verziója most 3.0.0.7
+A Media Services SDK for .NET már 3.0.0.7 verzió
 
-### <a id="sept_14_breaking_changes"></a>Módosítások megszakítása
-* Forrás nevet viseli [StreamingEndpoint].
-* A módosítás az alapértelmezett viselkedés kódolására, és tegye közzé az MP4-fájlok az Azure-portálon használatakor.
+### <a id="sept_14_breaking_changes"></a>Használhatatlanná tévő változásai
+* Forrás átnevezte [Streamvégpontok].
+* A módosítás az alapértelmezett viselkedés kódolásához, és tegye közzé az MP4-fájlokat az Azure portal használatakor.
 
-### <a id="sept_14_GA_changes"></a>Új funkciók/forgatókönyvek, amelyek általánosan rendelkezésre álló kiadásában
-* A Media Indexer media processzor jelent meg. További információkért lásd: [médiafájlok a Media Indexer az Index](http://msdn.microsoft.com/library/azure/dn783455.aspx).
-* Használhatja a [StreamingEndpoint] entitás hozzáadása egyéni tartománynevek (gazda).
+### <a id="sept_14_GA_changes"></a>Új funkciók/forgatókönyveket, amelyek részei az általánosan elérhető kiadások
+* A Media Indexer médiafeldolgozót jelent meg. További információkért lásd: [a Media Indexer médiafájlok indexelése](http://msdn.microsoft.com/library/azure/dn783455.aspx).
+* Használhatja a [Streamvégpontok] entitás hozzáadása az egyéni tartománynevek (fogadó).
   
-    Egy egyéni tartománynevét használja, a Media Services adatfolyam végpont nevét, adja hozzá egyéni állomásnevet a streamvégpontra. A Media Services REST API-k vagy a .NET SDK használatával adja hozzá az egyéni állomásnevet.
+    Egyéni tartománynév használata a Media Services streaming endpoint neveként, a streamvégpontnak egyéni állomásnevek hozzá. A Media Services REST API-k vagy a .NET SDK használatával egyéni állomásnevek hozzáadása.
   
-    A következők érvényesek:
+    A következő szempontokat kell figyelembe venni:
   
-  * Az egyéni tartománynév tulajdonjogát kell rendelkeznie.
-  * Media Services által is ellenőrizni kell a tartománynév tulajdonjogát. A tartomány ellenőrzéséhez hozzon létre egy CNAME rekordot, amely leképezhető a MediaServicesAccountId szülőtartomány DNS-mediaservices-dns-zóna ellenőrzése.
-  * Létre kell hoznia egy másik olyan CNAME rekordot, amely az egyéni állomásnevet (például sports.contoso.com) van leképezve a Media Services StreamingEndpoint gazdagép nevét (például amstest.streaming.mediaservices.windows.net).
+  * Az egyéni tartománynév tulajdonjogának kell rendelkeznie.
+  * A Media Services által érvényesíteni kell a tartománynév tulajdonjogát. A tartomány ellenőrzéséhez hozzon létre egy CNAME rekordot, amely leképezi a MediaServicesAccountId szülőtartomány DNS-mediaservices – dns-zóna ellenőrzése.
+  * Létre kell hoznia egy másik CName, amely egyéni gazdagépnévvel (például sports.contoso.com) a Media Services Streamvégpontok gazdagép nevét (például amstest.streaming.mediaservices.windows.net) van leképezve.
 
-    További információkért lásd: a CustomHostNames tulajdonságot a [StreamingEndpoint](http://msdn.microsoft.com/library/azure/dn783468.aspx) cikk.
+    További információkért lásd: CustomHostNames tulajdonsága a [Streamvégpontok](http://msdn.microsoft.com/library/azure/dn783468.aspx) cikk.
 
-### <a id="sept_14_preview_changes"></a>Új funkciók/forgatókönyvek a nyilvános előzetes kiadás részét képező
-* Élő adatfolyam-továbbítási minta. További információkért lásd: [a Media Services használata élő adatfolyam](http://msdn.microsoft.com/library/azure/dn783466.aspx).
-* Kulcs kézbesítési szolgáltatás. További információkért lásd: [a dinamikus titkosítás használata AES-128 és a kulcs kézbesítési szolgáltatás](http://msdn.microsoft.com/library/azure/dn783457.aspx).
-* A dinamikus titkosítás AES. További információkért lásd: [a dinamikus titkosítás használata AES-128 és a kulcs kézbesítési szolgáltatás](http://msdn.microsoft.com/library/azure/dn783457.aspx).
-* PlayReady-licenctovábbítási szolgáltatásra. 
-* PlayReady-titkosítás dinamikus. 
-* Media Services PlayReady licenc sablonja. További információkért lásd: a [A Media Services PlayReady licencsablon áttekintése].
-* Adatfolyam tárolási titkosított eszközökre. További információkért lásd: [adatfolyam formájában a tartalmat tároló titkosított](http://msdn.microsoft.com/library/azure/dn783451.aspx).
+### <a id="sept_14_preview_changes"></a>Új funkciók/forgatókönyveket, amelyek részei a nyilvános előzetes kiadás
+* Élő adatfolyam-továbbítási előzetes verzió. További információkért lásd: [együttműködnek a Media Services élő streamelési](http://msdn.microsoft.com/library/azure/dn783466.aspx).
+* Kulcstovábbítást. További információkért lásd: [használata AES-128, a dinamikus titkosítás és a kulcstovábbítást](http://msdn.microsoft.com/library/azure/dn783457.aspx).
+* AES-titkosítás dinamikus. További információkért lásd: [használata AES-128, a dinamikus titkosítás és a kulcstovábbítást](http://msdn.microsoft.com/library/azure/dn783457.aspx).
+* PlayReady licenctovábbítási szolgáltatása. 
+* A dinamikus PlayReady-titkosítást. 
+* A Media Services PlayReady licencsablon. További információkért lásd: a [a Media Services PlayReady licencsablon áttekintése].
+* Stream storage által titkosított eszközökre. További információkért lásd: [storage által titkosított tartalmat Stream](http://msdn.microsoft.com/library/azure/dn783451.aspx).
 
-## <a id="august_changes_14"></a>Augusztus 2014 kiadásban
-Amikor kódolása egy eszköz, a kódolási feladat befejezésekor egy kimeneti eszköz hozott létre. Ebben a kiadásban, amíg a Media Services kódoló előállított kimeneti eszközökre vonatkozó metaadatok. Jelen kiadástól kezdve a kódoló is eredményez bemeneti eszközökre vonatkozó metaadatok. További információkért lásd: [Bemeneti metaadatok] és [kimeneti metaadatok].
+## <a id="august_changes_14"></a>A 2014. augusztus kiadás
+Adategység kódolása, ha a kimeneti adategység jön létre, a kódolási feladat befejezésekor. Ebben a kiadásban, amíg a Media Services Encoder előállított kimeneti objektumok metaadatait. Ettől a kiadástól kezdve a kódoló is hoz létre bemeneti objektumok metaadatait. További információkért lásd: [bemeneti metaadatok] és [kimeneti metaadatok].
 
-## <a id="july_changes_14"></a>2014. július kiadás
-A következő hibajavításokat tartalmaz az Azure Media Services csomagoló és titkosító történtek:
+## <a id="july_changes_14"></a>2014. júliusi kiadás
+A következő hibajavítások az Azure Media Services Packager és a jelszótitkosító futtatásához történtek:
 
-* Amikor egy élő archív eszköz átkerülnek a HLS, csak hang lejátssza: Ez a hiba kijavítása volt, és most hang- és a videó lejátszása is.
-* Ha egy eszköz HLS és 128 bites AES envelope titkosítási van csomagolva, a csomagolt adatfolyamok nem játssza le az Android-eszközökön: A hiba volt rögzített, és a csomagolt adatfolyam lejátssza Android-eszközökön, amelyek támogatják a HLS.
+* Amikor egy élő archívumot eszköz átkerülnek a HLS, csak hang játszik: probléma volt rögzített, és most audio- és videotartalmak játszhatja le.
+* Ha egy eszköz van csomagolva, HLS és 128 bites AES boríték-titkosítást, a csomagolt adatfolyamok nem lejátszás Android-eszközökön: ezt a hibát kijavították, és az Android-eszközökön, amelyek támogatják a HLS játszik a csomagolt streamet.
 
-## <a id="may_changes_14"></a>Előfordulhat, hogy a 2014 kiadásban
-### <a id="may_14_changes"></a>Általános Media Services frissítése
-Ezután már használhatja [dinamikus becsomagolás] adatfolyam HLS 3-as verziójú. Az adatfolyam HLS 3-as verzió, vegye fel a következő formátumban a lokátor elérési útját: * .ism/manifest(format=m3u8-aapl-v3). További információkért lásd: [ezen a fórumon](https://social.msdn.microsoft.com/Forums/en-US/13b8a776-9519-4145-b9ed-d2b632861fde/dynamic-packaging-to-hls-v3).
+## <a id="may_changes_14"></a>2014. május kiadás
+### <a id="may_14_changes"></a>Általános Media Services-frissítések
+Most már használhatja [dinamikus csomagolási] Stream HLS 3-as verziójú. A stream HLS 3-as verziójú, adja hozzá a következő formátumban a forrás-lokátor elérési útja: * .ism/manifest(format=m3u8-aapl-v3). További információkért lásd: [ezen a fórumon](https://social.msdn.microsoft.com/Forums/en-US/13b8a776-9519-4145-b9ed-d2b632861fde/dynamic-packaging-to-hls-v3).
 
-A dinamikus csomagolás most is támogatja kézbesítéséhez Smooth Streaming PlayReady statikusan titkosított alapján PlayReady titkosított HLS (3-as verziójú és 4-es verzió). A PlayReady Smooth Streaming titkosításának információkért lásd: [Smooth Streaming védelme a Playreadyvel](http://msdn.microsoft.com/library/azure/dn189154.aspx).
+A dinamikus csomagolás most is támogatja a Smooth Streaming playreadyvel statikusan titkosított alapján PlayReady titkosított HLS (3-as verziójú és 4-es verzió). A Smooth Streaming playreadyvel titkosítása további információkért lásd: [Smooth Streaming védelme playreadyvel](http://msdn.microsoft.com/library/azure/dn189154.aspx).
 
-### <a name="may_14_donnet_changes"></a>Media Services .NET SDK frissítések
-A Media Services .NET SDK verziója most 3.0.0.5. A következő frissítéseket történtek:
+### <a name="may_14_donnet_changes"></a>Media Services .NET SDK-frissítések
+A Media Services .NET SDK már 3.0.0.5 verzió. Az alábbi frissítések történtek:
 
-* Sebesség és a rugalmasság is jobb, ha a feltöltés, és töltse le az adathordozó eszközök.
-* Újrapróbálkozási logika és átmeneti kivételkezelést fejlődésének volt: 
+* Sebesség és a rugalmasság akkor jobb, ha töltse fel, és töltse le a médiatartalmak ellátásához.
+* Fejlesztések történtek az újrapróbálkozási logika és az átmeneti kivételek kezelése: 
   
-  * Átmeneti hiba felderítését és újrapróbálkozási logika kifejlesztett lekérdezni, mentse a módosításokat, és töltse fel vagy fájlok letöltése okozott kivételekhez. 
-  * Amikor webes kivételek (például egy hozzáférés-vezérlési szolgáltatásban jogkivonatkérelem) során, végzetes hibák sikertelen gyorsabban most.
+  * Átmeneti hiba észlelése és újrapróbálkozási logikát is javítottuk a lekérdezése, mentse a módosításokat, és töltse fel a vagy fájlok letöltése okozott kivételeket. 
+  * Ha webes kivételek (például egy Access Control Service-jogkivonat kérése) alatt, végzetes hibák sikertelen gyorsabban most.
 
-További információkért lásd: [újrapróbálkozási logika a Media Services SDK for .NET].
+További információkért lásd: [Újrapróbálkozási logika, a Media Services SDK-ban a .NET-hez].
 
 ## <a id="april_changes_14"></a>2014. április kódoló kiadás
-### <a name="april_14_enocer_changes"></a>Media Services kódoló frissítések
-* Támogatást kaptak a fű Valley EDIUS lineáris szerkesztő használatával készült AVI fájlokat tölti be. A folyamat a videó enyhén tömörített a fű Valley HQ/HQX kodek használatával. További információkért lásd: [fű Valley időről a felhőn keresztül streaming EDIUS 7].
-*  Támogatást kaptak a Media Services-kódoló által a fájlok elnevezési megadásához. További információkért lásd: [vezérlő Media Services kódoló kimeneti fájl nevének](http://msdn.microsoft.com/library/azure/dn303341.aspx).
-*  Videó és/vagy a hang átfedések támogatást kaptak. További információkért lásd: [átfedések létrehozása](http://msdn.microsoft.com/library/azure/dn640496.aspx).
-*  Támogatást kaptak a több egyszerre több video-szegmens. További információkért lásd: [videó szegmensek több](http://msdn.microsoft.com/library/azure/dn640504.aspx).
-* Programhiba, volt az átkódolás MPEG-1 hang 3. rétegbeli (más néven MP3), ahol a hang kódolt MP4 lett rögzített.
+### <a name="april_14_enocer_changes"></a>Media Services Encoder frissítések
+* Támogatási AVI-fájlokban, hogy a élet Valley EDIUS nemlineáris szerkesztő használatával készült, hogy lett hozzáadva. Ebben a folyamatban a videó enyhén tömörített élet Valley HQ/HQX kodek használatával. További információkért lásd: [élet Valley készült továbbfejlesztésekkel bővült a felhőn keresztül streamelési EDIUS 7].
+*  Adja meg a fájlokat, a Media Services Encoder által előállított elnevezési támogatása hozzáadva. További információkért lásd: [vezérlő Media Services Encoder kimeneti fájl nevét](http://msdn.microsoft.com/library/azure/dn303341.aspx).
+*  Videó-és/vagy hang átfedések váltak. További információkért lásd: [átfedések létrehozása](http://msdn.microsoft.com/library/azure/dn640496.aspx).
+*  Támogatás hozzáadva összefűzheti több videó szegmensek. További információkért lásd: [videó szegmensek több](http://msdn.microsoft.com/library/azure/dn640504.aspx).
+* Egy hiba volt átkódolása, ahol a hanganyag kódolt olyan MP4, fájlnak az MPEG-1 hang 3. rétegbeli (más néven MP3) kapcsolódó rendszerriasztások mechanizmusában.
 
-## <a id="jan_feb_changes_14"></a>Feloldja a 2014. januári/február
-### <a name="jan_fab_14_donnet_changes"></a>Media Services .NET SDK 3.0.0.1, 3.0.0.2 és 3.0.0.3
-A módosítások 3.0.0.1 és 3.0.0.2 a következők:
+## <a id="jan_feb_changes_14"></a>2014. január/február kiadások
+### <a name="jan_fab_14_donnet_changes"></a>A Media Services .NET SDK-val 3.0.0.1, 3.0.0.2 és 3.0.0.3
+A 3.0.0.1 és 3.0.0.2 a változások a következők:
 
-* Az OrderBy utasítások a LINQ-lekérdezések használatát kapcsolatos problémák javítva lett.
-* Tesztelheti a megoldások [GitHubon] egység alapján tesztek és a forgatókönyv-alapú tesztek felosztása volt.
+* Javítva lett a LINQ-lekérdezések az OrderBy utasítások használatát kapcsolatos problémákat.
+* -Megoldások teszteléséhez [GitHubon] egység alapján tesztek és a forgatókönyv-alapú tesztek lett felosztva.
 
-A módosításokkal kapcsolatos további információkért lásd: a [feloldja a Media Services .NET SDK 3.0.0.1 és 3.0.0.2](http://www.gtrifonov.com/2014/02/07/windows-azure-media-services-.net-sdk-3.0.0.2-release/).
+A változásokkal kapcsolatos további információkért lásd: a [3.0.0.1 és 3.0.0.2 Media Services .NET SDK-kiadások](http://gtrifonov.com/2014/02/07/windows-azure-media-services-net-sdk-3-0-0-2-release/index.html).
 
-A következő változtak 3.0.0.3 verzióban:
+A következő változások történtek 3.0.0.3 verzióban:
 
-* Azure storage-függőségek frissített 3.0.3.0 verzióját használja.
-* A visszamenőleges kompatibilitás érdekében hiba 3.0 javítását. *.* kiadását.
+* Az Azure storage-függőségek frissített verziójának 3.0.3.0.
+* Előző verziókkal való kompatibilitási probléma 3.0 a rendszerriasztások mechanizmusában. *.* kiadások.
 
-## <a id="december_changes_13"></a>2013 decembere kiadás
-### <a name="dec_13_donnet_changes"></a>Media Services .NET SDK 3.0.0.0
+## <a id="december_changes_13"></a>2013. decemberi kibocsátási
+### <a name="dec_13_donnet_changes"></a>A Media Services .NET SDK-val 3.0.0.0
 > [!NOTE]
-> A 3.0.x.x kiadásokban nincsenek 2.4.x.x kiadásainak visszamenőlegesen kompatibilis.
+> A 3.0.x.x kiadásokban nem kompatibilisek visszamenőlegesen a 2.4.x.x kiadások.
 > 
 > 
 
-A Media Services SDK legújabb verziójára már 3.0.0.0. Töltse le a legfrissebb csomagot a Nugetből, vagy a bits az beszerzése [GitHubon].
+A Media Services SDK legújabb verzióját már 3.0.0.0. Töltse le a legújabb csomagot a Nugetről, vagy a bits, az első [GitHubon].
 
-A Media Services SDK verzió 3.0.0.0 verziótól kezdődően felhasználhatja a [Azure AD-hozzáférés-vezérlési szolgáltatásban](http://msdn.microsoft.com/library/hh147631.aspx) jogkivonatokat. További információkért lásd: "Újbóli hozzáférés-vezérlési szolgáltatásban tokenek" szakasz a [kapcsolódás a Media Services a .NET-keretrendszerhez készült Media Services SDK-t](http://msdn.microsoft.com/library/azure/jj129571.aspx).
+A Media Services SDK 3.0.0.0 verziójával kezdődően újból felhasználhatja a [Azure AD Access Control Service](http://msdn.microsoft.com/library/hh147631.aspx) jogkivonatokat. További információkért lásd: "Újbóli Access Control Service tokenek" szakasz a [kapcsolódás a Media Services Media Services SDK-val .NET-keretrendszerhez készült](http://msdn.microsoft.com/library/azure/jj129571.aspx).
 
-### <a name="dec_13_donnet_ext_changes"></a>Media Services .NET SDK-bővítmények 2.0.0.0-s
- A Media Services .NET SDK-bővítmények olyan kiegészítő módszerek és segédfüggvények találhatók, amelyek egyszerűbbé teszik a kódolást és megkönnyítik a Media Services fejlesztéséhez. A legújabb bits kaphat [Media Services .NET SDK-bővítmények](https://github.com/Azure/azure-sdk-for-media-services-extensions/tree/dev).
+### <a name="dec_13_donnet_ext_changes"></a>A Media Services .NET SDK-bővítmények 2.0.0.0-s
+ A Media Services .NET SDK-bővítmények olyan kiegészítő módszerek és segédfüggvények találhatók, amelyek egyszerűbbé teszik a kódolást és megkönnyítik a Media Services fejlesztéséhez. Beszerezheti a legújabb elemeket a [Media Services .NET SDK-bővítmények](https://github.com/Azure/azure-sdk-for-media-services-extensions/tree/dev).
 
-## <a id="november_changes_13"></a>A 2013. novemberi kiadásban
-### <a name="nov_13_donnet_changes"></a>Media Services .NET SDK változások
-Ebben a verzióban a Media Services SDK .NET leírók átmeneti hiba hibáit, amely jelentkezhet, ha a Media Services REST API-réteghez hívások indítása.
+## <a id="november_changes_13"></a>2013. novemberi kiadásban
+### <a name="nov_13_donnet_changes"></a>Media Services .NET SDK-módosítások
+Ebben a verzióban a Media Services SDK a .NET leírók átmeneti hibák hibákat, amelyek akkor jelentkeznek, amikor a hívások a Media Services REST API-réteg kezdve.
 
-## <a id="august_changes_13"></a>Augusztus 2013 kibocsátási
-### <a name="aug_13_powershell_changes"></a>Azure SDK tools Media Services PowerShell parancsmagok
-Most már szerepel a következő Media Services PowerShell-parancsmagok [Azure SDK tools](https://github.com/Azure/azure-sdk-tools):
+## <a id="august_changes_13"></a>2013. augusztus kiadás
+### <a name="aug_13_powershell_changes"></a>Azure SDK tools tartalmaz a Media Services PowerShell-parancsmagok
+A következő Media Services PowerShell-parancsmagok mostantól beletartoznak [Azure SDK tools](https://github.com/Azure/azure-sdk-tools):
 
 * Get-AzureMediaServices 
 
@@ -439,10 +439,10 @@ Most már szerepel a következő Media Services PowerShell-parancsmagok [Azure S
     Például:`Remove-AzureMediaServicesAccount -Name “MediaAccountName” -Force`
 
 ## <a id="june_changes_13"></a>2013. június kiadás
-### <a name="june_13_general_changes"></a>A Media Services változások
-A 2013. június Media Services kiadásokban szereplő frissítések érhetők el ebben a szakaszban említett a következő módosításokat:
+### <a name="june_13_general_changes"></a>A Media Services módosítások
+A következő módosításokat ebben a szakaszban említett a 2013. június Media Services-kiadások-frissítéseket is:
 
-* Lehetővé teszi több storage-fiókok összekapcsolása egy Media Services-fiókját. 
+* Lehetővé teszi több tárfiók csatolása egy Media Services-fiókját. 
     * Tárfiók
     * Asset.StorageAccountName és Asset.StorageAccount
 * Job.Priority frissítésének lehetőségét. 
@@ -453,82 +453,82 @@ A 2013. június Media Services kiadásokban szereplő frissítések érhetők el
 * Asset.Uri 
 * Locator.Name 
 
-### <a name="june_13_dotnet_changes"></a>Media Services .NET SDK változások
-A következő módosításokat-e adva a júniusi 2013 a Media Services SDK kiadását. A legújabb Media Services SDK a Githubon érhető el.
+### <a name="june_13_dotnet_changes"></a>Media Services .NET SDK-módosítások
+A következő változások legyenek belefoglalva a június 2013 a Media Services SDK-kiadások. A legfrissebb Media Services SDK a Githubon érhető el.
 
-* A Media Services SDK-t támogatja, több tároló linking fiókok 2.3.0.0 verziójától kezdve, a Media Services-fiók. A következő API-kat támogatja ezt a szolgáltatást:
+* A Media Services SDK-t támogatja, több tárolási linking fiókok 2.3.0.0-s kezdve a Media Services-fiókba. A következő API-kat támogatja ezt a szolgáltatást:
   
     * IStorageAccount típusa
     * Microsoft.WindowsAzure.MediaServices.Client.CloudMediaContext.StorageAccounts property
     * StorageAccount tulajdonság
     * StorageAccountName tulajdonság
   
-    További információkért lásd: [Media Services kezelése eszközök több tárfiókok között](http://msdn.microsoft.com/library/azure/dn271889.aspx).
-* Értesítési kapcsolatos API-k. 2.2.0.0 verziójától kezdve, hogy figyelheti az Azure Queue storage értesítésekre. További információkért lásd: [kezelni a Media Services feladat értesítések](http://msdn.microsoft.com/library/azure/dn261241.aspx).
+    További információkért lásd: [kezelése Media Services objektumai több tárfiókban](http://msdn.microsoft.com/library/azure/dn271889.aspx).
+* Értesítési kapcsolatos API-k. 2.2.0.0 verziójával kezdődően, figyelheti az Azure Queue storage értesítésekre. További információkért lásd: [kezelni a Media Services feladat értesítések](http://msdn.microsoft.com/library/azure/dn261241.aspx).
   
     * Microsoft.WindowsAzure.MediaServices.Client.IJob.JobNotificationSubscriptions tulajdonság
     * Microsoft.WindowsAzure.MediaServices.Client.INotificationEndPoint típusa
     * Microsoft.WindowsAzure.MediaServices.Client.IJobNotificationSubscription típusa
     * Microsoft.WindowsAzure.MediaServices.Client.NotificationEndPointCollection típusa
     * Microsoft.WindowsAzure.MediaServices.Client.NotificationEndPointType típusa
-* A tárolási ügyfél SDK 2.0 (Microsoft.WindowsAzure.StorageClient.dll) függőség
-* Függőség OData 5.5 (Microsoft.Data.OData.dll)
+* A Storage ügyféloldali SDK 2.0-s (Microsoft.WindowsAzure.StorageClient.dll) függőség
+* Függőség OData 5.5-ös (Microsoft.Data.OData.dll)
 
-## <a id="december_changes_12"></a>2012. decemberi kiadása
-### <a name="dec_12_dotnet_changes"></a>Media Services .NET SDK változások
-* IntelliSense: Számos különböző hiányzik az IntelliSense dokumentáció kaptak.
-* Microsoft.Practices.TransientFaultHandling.Core: Probléma volt rögzített ahol az SDK-t továbbra is rendelkezett egy régi verziója ezt a szerelvényt függőség. Az SDK-val most már hivatkozik a szerelvény 5.1.1209.1 verzióját.
+## <a id="december_changes_12"></a>2012. december kiadás
+### <a name="dec_12_dotnet_changes"></a>Media Services .NET SDK-módosítások
+* Az IntelliSense: Számos különböző hiányzik az IntelliSense dokumentáció hozzá lett adva.
+* Microsoft.Practices.TransientFaultHandling.Core: Probléma volt rögzített, az SDK továbbra is rendelkezett egy függőséget ezt a szerelvényt, régebbi verzióját. Az SDK-val most már hivatkozik a szerelvény 5.1.1209.1 verzióját.
 
-A 2012. November SDK található probléma javítását:
+A 2012. November SDK található hibák javításait:
 
-* IAsset.Locators.Count: Ez a szám most már megfelelően jelentenek új IAsset felületek összes keresők törlését követően.
-* IAssetFile.ContentFileSize: A most már megfelelően értéke feltöltés után IAssetFile.Upload(filepath) által.
-* IAssetFile.ContentFileSize: Ez a tulajdonság most már beállítható egy eszköz-fájl létrehozásakor. Korábban csak olvasás.
-* IAssetFile.Upload(filepath): Probléma volt rögzített ahol a szinkron feltöltés metódus lett kivétel a következő hiba Ha több fájl feltöltése az eszközhöz. A következő hiba történt a "kiszolgáló nem tudta hitelesíteni a kérelmet. Győződjön meg arról, hogy az engedélyezési fejléc értékének formátuma helyes többek között az aláírás."
-* IAssetFile.UploadAsync: Probléma volt rögzített fájlok öt fájlok egyidejű feltöltésének korlátozott.
-* IAssetFile.UploadProgressChanged: Az SDK-val most már biztosítja ezt az eseményt.
-* (Karakterlánc, BlobTransferClient, ILocator, CancellationToken) IAssetFile.DownloadAsync: Ez most valósul meg.
-* IAssetFile.DownloadAsync: Probléma volt rögzített korlátozott öt fájl a fájlok az egyidejű letöltését.
-* IAssetFile.Delete(): Probléma volt rögzített ahol hívó delete előfordulhat, hogy kivételt jelez, ha nincs fájl feltöltése a IAssetFile a.
-* Feladatok: Probléma volt rögzített ahol feladat sablonnal egy "MP4 zökkenőmentes adatfolyamok tevékenységhez" "PlayReady védelmi feladatokkal" láncolás nem hozott létre minden feladatot minden.
-* EncryptionUtils.GetCertificateFromStore(): Ez a módszer nullhivatkozás okozta kivétel alapuló tanúsítvány konfigurációs problémák keresésében egy hiba miatt már nem jelez.
+* IAsset.Locators.Count: Ez a szám most már megfelelően jelentett új IAsset adapteren minden kereső törlését követően.
+* IAssetFile.ContentFileSize: Most már megfelelően beállítás után egy feltöltési IAssetFile.Upload(filepath) szerint.
+* IAssetFile.ContentFileSize: Ez a tulajdonság már beállítható egy adategység-fájl létrehozásakor. Korábban csak olvasás.
+* IAssetFile.Upload(filepath): Probléma volt rögzített, a szinkron feltöltési módszer lett kivétel a következő hiba az eszközre feltöltésekor a rendszer több fájlt. Hiba: "a kiszolgáló nem tudta hitelesíteni a kérelmet. Győződjön meg arról, hogy az engedélyezési fejléc értékének formátuma megfelelő többek között az aláírás."
+* IAssetFile.UploadAsync: Probléma volt rögzített fájlok öt fájl egyidejű feltöltésének korlátozott.
+* IAssetFile.UploadProgressChanged: Az SDK-t mostantól megjeleníti ezt az eseményt.
+* IAssetFile.DownloadAsync (karakterlánc, BlobTransferClient, ILocator, CancellationToken): Ez a módszer túlterhelés mostantól megjeleníti.
+* IAssetFile.DownloadAsync: Probléma volt rögzített fájlok öt fájlt az egyidejű letöltését korlátozott.
+* IAssetFile.Delete(): Probléma volt rögzített ahol hívó delete előfordulhat, hogy kivételt, ha nem történt fájlfeltöltés a IAssetFile számára.
+* Feladatok: Probléma volt rögzített ahol egy "MP4 zökkenőmentes Streamek feladat" a "PlayReady védelmi feladat" feladat a sablonok segítségével-láncolás nem hozott létre tevékenységeket egyáltalán.
+* EncryptionUtils.GetCertificateFromStore(): Ez a módszer egy NULL értékű referencia kivételt adja vissza a tanúsítványt a tanúsítvány konfigurációs problémák alapján keres egy hiba miatt már nem jelez.
 
 ## <a id="november_changes_12"></a>2012. november kiadás
-Ebben a szakaszban említett módosításra a 2012. November (verzió: 2.0.0.0-s) szereplő frissítés SDK. Ezeket a módosításokat a 2012. júniusi Preview SDK módosulnak vagy írni kibocsátási írásbeli kódok lehet szükség.
+Ebben a szakaszban említett módosításra-frissítéseket a 2012. November (verzió 2.0.0.0-s) SDK-t. Ezeket a módosításokat a 2012. júniusi Preview, SDK kiadási módosulnak vagy feladatátvitelt írt kód lehet szükség.
 
 * Objektumok
   
-    * IAsset.Create(assetName) van a *csak* eszköz létrehozása funkciót. IAsset.Create már nem része a metódushívás fel a fájlokat. Használjon IAssetFile feltöltése.
-    * A IAsset.Publish és a AssetState.Publish számbavételi érték az SDK-t eltávolítottak. Ez az érték a ügyfélkulcshoz tartozó kódok kell írni.
+    * IAsset.Create(assetName) van a *csak* adategység létrehozása funkciót. IAsset.Create metódushívás részeként már nem tölt fel fájlokat. IAssetFile használja fel.
+    * Az SDK a IAsset.Publish módszer és a AssetState.Publish enumerálási érték lett eltávolítva. Hogy ezt az értéket meg kell írni.
 * FileInfo
   
-    * Ez az osztály eltávolították, majd IAssetFile cserélve.
+    * Ez az osztály lett eltávolítva, és IAssetFile helyébe.
   
 * IAssetFiles
   
-    * IAssetFile FileInfo váltja fel, és egy másik viselkedik. A használatához objektumpéldányt a IAssetFiles keresztül a Media Services SDK vagy a Storage szolgáltatás SDK fájlfeltöltés követ. A következő IAssetFile.Upload túlterhelések használhatók:
+    * IAssetFile váltja fel a FileInfo és a egy másik működés. A használatához az objektumpéldány IAssetFiles, kiegészítve a feltöltés, a Media Services SDK-t vagy a segítségével a Storage SDK-t. A következő IAssetFile.Upload túlterheléssel használhatók:
   
-        * IAssetFile.Upload(filePath): A szinkron módszer letiltja a szál, és ajánlott csak egyetlen fájl feltöltésekor.
-        * IAssetFile.UploadAsync (fájl elérési útja, blobTransferClient, lokátor, cancellationToken): az aszinkron metódus az előnyben részesített feltöltési módot. 
+        * IAssetFile.Upload(filePath): A szinkron módszer blokkolja a szál, és javasolt csak akkor, ha egy fájl feltöltése.
+        * IAssetFile.UploadAsync (fájl elérési útja, blobTransferClient, lokátort, cancellationToken): Ez a metódus aszinkron az előnyben részesített feltöltési mechanizmusa. 
     
-            Ismert hiba: a megszakítási jogkivonatot használja, ha a feltöltés megszakadt. A feladatok cancellation hány állapota lehet. Meg kell megfelelően dolgozza fel, és kivételek tud kezelni.
+            Ismert hiba: a megszakítás tokent használ, ha a feltöltés megszakítva. A feladatok számos megszakítás állapotok is rendelkezhet. Később kell a tényleges, kivételek kezelése.
 * Keresők
   
-    * A forrás-specifikus verziójával eltávolítva. A SAS-specifikus környezetben. (Eszköz, accessPolicy) Locators.CreateSasLocator általánosan rendelkezésre álló által eltávolított vagy elavult lesznek megjelölve. Az "Új funkciókat" frissített viselkedését a "Keresők" című szakaszában talál.
+    * A forrás-specifikus verziók el lettek távolítva. A SAS-specifikus környezet. Elavult vagy eltávolított általános rendelkezésre állás szerint Locators.CreateSasLocator (eszköz, accessPolicy) lesznek megjelölve. A frissített viselkedés "új funkciói" a "Keresők" című szakaszában talál.
 
-## <a id="june_changes_12"></a>2012. júniusi előzetes kiadás
-Az alábbi funkciókat lett az SDK. novemberi kiadásában új:
+## <a id="june_changes_12"></a>2012. júniusi előzetes verzió
+Az alábbi funkciókat lett az SDK novemberi kiadásában új:
 
 * Entitások törlése
   
-    * IAsset, IAssetFile, ILocator, IAccessPolicy és IContentKey objektumok objektumszinten, ez azt jelenti, hogy IObject.Delete() ahelyett, hogy a gyűjteményben, ez azt jelenti, hogy cloudMediaContext.ObjCollection.Delete(objInstance) törlési most törlődnek.
+    * Az objektumok szintjén, azaz IObject.Delete(), nem kell megadni célhelyként a gyűjtemény, azaz cloudMediaContext.ObjCollection.Delete(objInstance) törlési most törlődnek a IAsset, IAssetFile, ILocator, IAccessPolicy és IContentKey objektumokat.
 * Keresők
   
-    * Keresők most már léteznie kell a CreateLocator módszer használatával. Argumentumként a lokátor típusát szeretne létrehozni a LocatorType.SAS vagy LocatorType.OnDemandOrigin számbavételi értéket kell használniuk.
-    * Új tulajdonságok használatával könnyebben használható URI-azonosítók a tartalmat az beszerzése keresők hozzáadott. A keresők újratervezése nagyobb rugalmasságot biztosít a későbbi külső bővítési, és növeli a könnyen használható a media ügyfélalkalmazások.
-* Aszinkron metódus támogatása
+    * Keresők most már léteznie kell a CreateLocator módszer használatával. A LocatorType.SAS vagy LocatorType.OnDemandOrigin felsorolásértéktől argumentumként a lokátor típusát a létrehozni kívánt kell használniuk.
+    * Új tulajdonságok lokátorokat, hogy egyszerűbb legyen a tartalom használható URL-címének beszerzése bővült. A keresők újratervezése nagyobb rugalmasságot biztosít a későbbi külső bővítést, és növeli a könnyű használatra az adathordozó-ügyfélalkalmazások.
+* Asynchronní metoda támogatása
   
-    * Aszinkron támogatást kaptak a módszerek.
+    * Aszinkron támogatásának lett felvéve az összes módszer.
 
 ## <a name="media-services-learning-paths"></a>Media Services képzési tervek
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
@@ -541,14 +541,14 @@ Az alábbi funkciókat lett az SDK. novemberi kiadásában új:
 <!-- Images. -->
 
 <!--- URLs. --->
-[Az Azure Media Services MSDN fórum]: http://social.msdn.microsoft.com/forums/azure/home?forum=MediaServices
+[Az Azure Media Services MSDN-fórum]: http://social.msdn.microsoft.com/forums/azure/home?forum=MediaServices
 [Az Azure Media Services REST API-referencia]: https://docs.microsoft.com/rest/api/media/operations/azure-media-services-rest-api-reference
 [A Media Services díjszabásával kapcsolatos részletek]: http://azure.microsoft.com/pricing/details/media-services/
 [Bemeneti metaadatok]: http://msdn.microsoft.com/library/azure/dn783120.aspx
 [Kimeneti metaadatok]: http://msdn.microsoft.com/library/azure/dn783217.aspx
 [Deliver content]: http://msdn.microsoft.com/library/azure/hh973618.aspx
 [Index media files with the Azure Media Indexer]: http://msdn.microsoft.com/library/azure/dn783455.aspx
-[StreamingEndpoint]: http://msdn.microsoft.com/library/azure/dn783468.aspx
+[Streamvégpontok]: http://msdn.microsoft.com/library/azure/dn783468.aspx
 [Work with Media Services live streaming]: http://msdn.microsoft.com/library/azure/dn783466.aspx
 [Use AES-128 dynamic encryption and the key delivery service]: http://msdn.microsoft.com/library/azure/dn783457.aspx
 [Use PlayReady dynamic encryption and the license delivery service]: http://msdn.microsoft.com/library/azure/dn783467.aspx
@@ -556,11 +556,11 @@ Az alábbi funkciókat lett az SDK. novemberi kiadásában új:
 [A Media Services PlayReady licencsablon áttekintése]: http://msdn.microsoft.com/library/azure/dn783459.aspx
 [Stream storage-encrypted content]: http://msdn.microsoft.com/library/azure/dn783451.aspx
 [Azure portal]: https://portal.azure.com
-[dinamikus becsomagolás]: http://msdn.microsoft.com/library/azure/jj889436.aspx
+[dinamikus csomagolási]: http://msdn.microsoft.com/library/azure/jj889436.aspx
 [Nick Drouin's blog]: http://blog-ndrouin.azurewebsites.net/hls-v3-new-old-thing/
 [Protect Smooth Streaming with PlayReady]: http://msdn.microsoft.com/library/azure/dn189154.aspx
-[Újrapróbálkozási logika a Media Services SDK for .NET]: http://msdn.microsoft.com/library/azure/dn745650.aspx
-[Fű Valley időről a felhőn keresztül streaming EDIUS 7]: http://www.streamingmedia.com/Producer/Articles/ReadArticle.aspx?ArticleID=96351&utm_source=dlvr.it&utm_medium=twitter
+[Újrapróbálkozási logika, a Media Services SDK-ban a .NET-hez]: http://msdn.microsoft.com/library/azure/dn745650.aspx
+[Élet Valley készült továbbfejlesztésekkel bővült a felhőn keresztül streamelési EDIUS 7]: http://www.streamingmedia.com/Producer/Articles/ReadArticle.aspx?ArticleID=96351&utm_source=dlvr.it&utm_medium=twitter
 [Control Media Services Encoder output file names]: http://msdn.microsoft.com/library/azure/dn303341.aspx
 [Create overlays]: http://msdn.microsoft.com/library/azure/dn640496.aspx
 [Stitch video segments]: http://msdn.microsoft.com/library/azure/dn640504.aspx

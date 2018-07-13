@@ -1,6 +1,6 @@
 ---
-title: Apache Cordova beépülő modul használata az Azure Mobile Apps szolgáltatásban
-description: Apache Cordova beépülő modul használata az Azure Mobile Apps szolgáltatásban
+title: Az Apache Cordova beépülő modul használata az Azure Mobile Appsban
+description: Az Apache Cordova beépülő modul használata az Azure Mobile Appsban
 services: app-service\mobile
 documentationcenter: javascript
 author: conceptdev
@@ -15,27 +15,27 @@ ms.topic: article
 ms.date: 10/30/2016
 ms.author: crdun
 ms.openlocfilehash: 6fb8be96c9793e96f1f7d2ad8e212d056d7e9ba5
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32152586"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38467886"
 ---
-# <a name="how-to-use-apache-cordova-client-library-for-azure-mobile-apps"></a>Az Azure Mobile Apps Apache Cordova ügyféloldali kódtár használata
+# <a name="how-to-use-apache-cordova-client-library-for-azure-mobile-apps"></a>Az Apache Cordova ügyféloldali kódtár használata az Azure Mobile Apps
 [!INCLUDE [app-service-mobile-selector-client-library](../../includes/app-service-mobile-selector-client-library.md)]
 
-Ez az útmutató útmutatást ad teszi a végrehajtását szolgáltatást a legújabb használó általános forgatókönyvhöz [Apache Cordova beépülő modul az Azure Mobile Apps]. Ha most ismerkedik az Azure Mobile Apps, először végezzen [Azure Mobile Apps gyors üzembe helyezés] -háttéralkalmazás létrehozása, hozzon létre egy táblát, és egy előre elkészített Apache Cordova-projekt letöltése. Az útmutató azt összpontosítanak az ügyféloldali Apache Cordova beépülő modul is.
+Ez az útmutató bemutatja, hogy a legújabb használatával általános forgatókönyveinek végrehajtásával [Az Apache Cordova beépülő modul az Azure Mobile Appsban]. Ha most ismerkedik az Azure Mobile Apps, először hajtsa végre [Azure Mobile Apps alkalmazások gyors üzembe helyezési] egy háttérrendszer létrehozásához hozzon létre egy táblát, és töltse le egy előre elkészített Apache Cordova-projektet. Ebben az útmutatóban koncentrálunk az ügyféloldali Apache Cordova beépülő modult.
 
 ## <a name="supported-platforms"></a>Támogatott platformok
-Ez az SDK támogatja az Apache Cordova v6.0.0 és későbbi iOS, Android és Windows eszközökhöz.  A platform támogatása a következőképpen történik:
+Ez az SDK támogatja az Apache Cordova v6.0.0, és később iOS, Android és Windows eszközökhöz.  A platform támogatja a következőképpen történik:
 
-* Android API 19-24 (KitKat nugát keresztül).
-* iOS 8.0-s és újabb verziók.
+* Android API 19 – 24 (KitKat Nougat keresztül).
+* iOS 8.0 és újabb verziók.
 * Windows Phone 8.1-es.
-* Az univerzális Windows Platform.
+* Univerzális Windows Platform.
 
 ## <a name="Setup"></a>A telepítő és Előfeltételek
-Ez az útmutató feltételezi, hogy létrehozott egy táblát a háttérkiszolgálón. Ez az útmutató feltételezi, hogy rendelkezik-e a tábla a táblák ugyanazon séma ezen oktatóprogram a. Ez az útmutató feltételezi, hogy hozzáadta az Apache Cordova beépülő modul a kódot.  Ha nem tette, előfordulhat, hogy adja hozzá az Apache Cordova beépülő modul a projekthez a parancssorban:
+Ez az útmutató feltételezi, hogy létrehozott egy táblát a háttérrendszernek. Ez az útmutató feltételezi, hogy a tábla ezek az oktatóanyagok a táblákként ugyanazzal a sémával rendelkezik. Ez az útmutató azt is feltételezi, hogy hozzáadta az Apache Cordova beépülő modul a kódot.  Nem tette, ha az Apache Cordova beépülő modult adhat hozzá a projekthez a parancssorban:
 
 ```
 cordova plugin add cordova-plugin-ms-azure-mobile-apps
@@ -45,7 +45,7 @@ További létrehozásával kapcsolatos információkat [az első Apache Cordova-
 
 ## <a name="ionic"></a>Ionos v2 alkalmazás beállítása
 
-Megfelelően konfigurálni ionos v2 projektben, hozzon létre egy alapszintű alkalmazást, majd adja hozzá a Cordova beépülő modul:
+Megfelelő konfigurálásához ionos v2-projektben, először hozzon létre egy alapszintű alkalmazást, és adja hozzá a Cordova beépülő modult:
 
 ```
 ionic start projectName --v2
@@ -53,78 +53,78 @@ cd projectName
 ionic plugin add cordova-plugin-ms-azure-mobile-apps
 ```
 
-Adja hozzá a következő sorokat `app.component.ts` az ügyfél objektum létrehozásához:
+Adja hozzá a következő sorokat `app.component.ts` az ügyfél-objektum létrehozásához:
 
 ```
 declare var WindowsAzure: any;
 var client = new WindowsAzure.MobileServiceClient("https://yoursite.azurewebsites.net");
 ```
 
-Most már létrehozhatja és a projekt futtatását a böngészőben:
+Most már lefordíthatja, és futtassa a projektet a böngészőben:
 
 ```
 ionic platform add browser
 ionic run browser
 ```
 
-Az Azure Mobile Apps Cordova beépülő modul mindkét ionos v1 és v2 alkalmazásokat támogatja.  Csak az ionos v2 alkalmazásokhoz szükséges további deklaráció található a `WindowsAzure` objektum.
+Az Azure Mobile Apps Cordova beépülő modullal mindkét ionos v1 és v2-es alkalmazásokat támogatja.  Csak a ionos v2-alkalmazások a kiegészítő nyilatkozat megkövetelése a `WindowsAzure` objektum.
 
 [!INCLUDE [app-service-mobile-html-js-library.md](../../includes/app-service-mobile-html-js-library.md)]
 
-## <a name="auth"></a>Hogyan: hitelesíti a felhasználókat
-Az Azure App Service támogat hitelesítése és engedélyezése a felhasználók alkalmazás különböző külső Identitásszolgáltatók: Facebook, Google, a Microsoft Account és Twitter. A engedélyeket korlátozhatja a hozzáférést a megadott művelet csak a hitelesített felhasználók táblákon. Hitelesített felhasználók identitásának használhatja, ha az engedélyezési szabályok megvalósítását a kiszolgáló parancsfájlokat. További információkért lásd: a [Bevezetés a hitelesítés használatába] oktatóanyag.
+## <a name="auth"></a>Hogyan: felhasználók hitelesítése
+Az Azure App Service támogatja a hitelesítés és engedélyezés az alkalmazás felhasználóinak különböző külső identitásszolgáltató használatával: Facebook, Google, Microsoft Account és Twitter. Beállíthatja, hogy a engedélyeit azokon a táblákon, az adott műveletek csak a hitelesített felhasználók a hozzáférés korlátozásához. Az engedélyezési szabályok megvalósításához a kiszolgálóoldali parancsprogramok is használhatja a hitelesített felhasználók identitását. További információkért lásd: a [hitelesítés első lépései] oktatóanyag.
 
 Ha hitelesítési Apache Cordova-alkalmazást használ, a következő Cordova beépülő modulok elérhetőnek kell lennie:
 
-* [cordova-beépülőmodul-eszköz]
-* [cordova-beépülőmodul-inappbrowser]
+* [cordova beépülő modul-eszközök]
+* [cordova-beépülő modul – inappbrowser]
 
-Két hitelesítési forgalom támogatottak: a kiszolgáló folyamata és egy ügyfél folyamatában.  A kiszolgáló folyamata nyújt a legegyszerűbb felhasználói hitelesítés, a szolgáltató webes hitelesítés felület támaszkodnak. Az ügyféltanúsítvány-folyamat lehetővé teszi, hogy szorosabb integrációt eszközspecifikus képességeket például single-sign-on, szolgáltatói eszközspecifikus SDK-k támaszkodnak az.
+Két hitelesítési folyamatok támogatottak: a server flow és a egy ügyfél folyamatot.  A server flow a legegyszerűbb felhasználói hitelesítés támaszkodik a szolgáltató webes hitelesítés felületet nyújt. A client flow lehetővé teszi, hogy az eszköz specifikus képességek mélyebb integrációjuk például single-sign-on, a szolgáltatóhoz tartozó eszközspecifikus SDK-k támaszkodik.
 
 [!INCLUDE [app-service-mobile-html-js-auth-library.md](../../includes/app-service-mobile-html-js-auth-library.md)]
 
-### <a name="configure-external-redirect-urls"></a>Útmutató: a Mobile App Service konfigurálása külső átirányítási URL-címeket.
-Az Apache Cordova-alkalmazások számos különböző egy visszacsatolási funkció segítségével OAuth UI-forgalom kezelésére.  OAuth UI adatfolyamok – localhost problémákat okozhat, mert a hitelesítési szolgáltatás csak tudja, hol használják a szolgáltatás alapértelmezés szerint.  Hibás OAuth UI flow például a következők:
+### <a name="configure-external-redirect-urls"></a>Útmutató: a Mobile App Service konfigurálása külső átirányítási URL-címek.
+Az Apache Cordova-alkalmazások számos különböző egy visszacsatolási képesség segítségével OAuth felhasználói felület folyamatok kezeléséhez.  A localhost OAuth felhasználói felület folyamatok problémákat okozhat, mivel a hitelesítési szolgáltatás csak tudja, hogyan használják a szolgáltatást alapértelmezés szerint.  Problémás OAuth felhasználói felület folyamatok közé:
 
-* A Fodrozás emulátor.
-* Élő rendelkező ionos be újra.
-* A mobil-háttéralkalmazást helyileg futó
-* A mobil-háttéralkalmazást fut egy másik Azure App Service, mint a egy olyan hitelesítési.
+* A Ripple emulátort.
+* Töltse be újra a ionos élő.
+* A mobil háttérszolgáltatásban helyi futtatása
+* A mobil háttérszolgáltatásban fut, mint az egy biztosító hitelesítési különböző Azure App Service-ben.
 
-Kövesse ezeket az utasításokat a helyi beállításokat hozzáadni a konfigurációhoz:
+Kövesse az alábbi utasításokat, hogy a helyi beállításokban adja hozzá a konfigurációhoz:
 
-1. Jelentkezzen be az [Azure Portalra]
-2. Válassza ki **összes erőforrás** vagy **alkalmazásszolgáltatások** kattintson a mobilalkalmazás nevére.
+1. Jelentkezzen be az [Azure Portal]
+2. Válassza ki **összes erőforrás** vagy **App Services** majd kattintson a Mobile App nevére.
 3. Kattintson a **eszközök**
-4. Kattintson a **erőforrás-kezelő** OBSERVE menüben kattintson a **Ugrás**.  Megnyílik egy új ablakot vagy lapot.
-5. Bontsa ki a **config**, **authsettings** a helyhez, a bal oldali navigációs csomópontok.
+4. Kattintson a **erőforrás-kezelő** OBSERVE menüben kattintson a **Go**.  Megnyílik egy új ablakot vagy lapot.
+5. Bontsa ki a **config**, **authsettings** a webhely bal oldali navigációs csomópontok.
 6. Kattintson a **szerkesztése**
-7. Keresse meg a "allowedExternalRedirectUrls" elemet.  NULL értékű vagy egy tömböt is beállítható.  Módosítsa az értéket a következő értéket:
+7. Keresse meg a "allowedExternalRedirectUrls" elemet.  NULL értékű vagy egy olyan értéktömböt számbavételekhez állítható.  Módosítsa az értéket a következő értékre:
 
          "allowedExternalRedirectUrls": [
              "http://localhost:3000",
              "https://localhost:3000"
          ],
 
-    Cserélje le az URL-címeket a szolgáltatás URL-címei.  Például "http://localhost:3000" (a Node.js sample szolgáltatáshoz tartozó), vagy "http://localhost:4400" (a Fodrozás szolgáltatás).  Azonban ezen URL-címei, példák - a helyzet, beleértve a szolgáltatások a példákban eltérő lehet.
+    Cserélje le az URL-címeket a szolgáltatás URL-címeket.  Ilyenek például "http://localhost:3000" (az a Node.js sample szolgáltatás), vagy a "http://localhost:4400" (a Ripple-szolgáltatás).  Az URL-címek azonban olyan példák – a helyzet, beleértve a szolgáltatások a példákban eltérő lehet.
 8. Kattintson a **olvasási/írási** gombra a képernyő jobb felső sarkában.
 9. Kattintson a zöld **PUT** gombra.
 
-A beállítások mentése ezen a ponton.  Ne zárja be a böngészőablakot amíg tart a beállítások mentése.
-Ezek visszacsatolási URL-címeket is hozzá az App Service CORS-beállítások:
+A beállítások ezen a ponton lesznek mentve.  Ne zárja be a böngészőablakot amíg tart a beállítások mentése folyamatban van.
+Ezek visszacsatolási URL-címeket is hozzáadhat az App Service CORS-beállítások:
 
-1. Jelentkezzen be az [Azure Portalra]
-2. Válassza ki **összes erőforrás** vagy **alkalmazásszolgáltatások** kattintson a mobilalkalmazás nevére.
-3. A beállítások panelről automatikusan megnyílik.  Ha nem, kattintson a gombra **összes beállítás**.
-4. Kattintson a **CORS** az API menüjében.
-5. A mezőbe a felvenni kívánt URL-cím megadva, és nyomja le az Enter billentyűt.
+1. Jelentkezzen be az [Azure Portal]
+2. Válassza ki **összes erőforrás** vagy **App Services** majd kattintson a Mobile App nevére.
+3. A beállítások panel automatikusan megnyílik.  Ha nem, kattintson a gombra **minden beállítás**.
+4. Kattintson a **CORS** az API menüpont alatt.
+5. Az URL-cím hozzáadása a mezőbe a kívánt megadott, és nyomja le az Enter billentyűt.
 6. Adja meg a további URL-címek, szükség szerint.
 7. Kattintson a **Mentés** gombra a beállítások mentéséhez.
 
 Körülbelül 10 – 15 másodperc az új beállítások érvénybe léptetéséhez vesz igénybe.
 
-## <a name="register-for-push"></a>Útmutató: a leküldéses értesítések regisztrálása
-Telepítse a [phonegap-beépülőmodul-leküldéses] leküldéses értesítések kezeléséhez.  A beépülő modul könnyen segítségével adhatók a `cordova plugin add` parancsot a parancssorban, vagy a Git beépülő modul telepítő Visual Studio segítségével.  A következő kódot az Apache Cordova-alkalmazás regisztrálja az eszközt a leküldéses értesítések:
+## <a name="register-for-push"></a>Hogyan: leküldéses értesítések regisztrálása
+Telepítse a [phonegap-beépülő modul – leküldéses] leküldéses értesítések kezeléséhez.  Ez a beépülő modul is könnyen hozzáadhatók használatával a `cordova plugin add` parancsot a parancssorban vagy a Git-beépülő modul telepítő Visual Studión belül.  Az Apache Cordova-alkalmazásban a következő kód regisztrálja az eszközt a leküldéses értesítésekhez:
 
 ```
 var pushOptions = {
@@ -163,22 +163,22 @@ pushHandler.on('error', function (error) {
 });
 ```
 
-A Notification Hubs SDK használatával leküldéses értesítéseket küldeni a kiszolgálóról.  Soha ne küldjön leküldéses értesítéseket közvetlenül az ügyfelektől. Ezzel a szolgáltatásmegtagadási támadások elleni Notification hubs használatával vagy a pns-sel való is használható.  A pns-sel sikerült bA a forgalom miatt az ilyen támadásokat.
+A Notification Hubs SDK használatával leküldéses értesítések küldése a kiszolgálóról.  Soha ne küldjön leküldéses értesítéseket közvetlenül az ügyfelektől. Így felhasználható aktiválhat egy szolgáltatásmegtagadási támadást a Notification Hubs vagy a pns-sel szemben.  A pns-sel sikerült bA eredményeként az ilyen támadásokat a forgalmat.
 
 ## <a name="more-information"></a>További információ
 
-A részletes API részletei a [API-JÁNAK dokumentációja](http://azure.github.io/azure-mobile-apps-js-client/).
+A részletes API részletei a [API-dokumentáció](http://azure.github.io/azure-mobile-apps-js-client/).
 
 <!-- URLs. -->
-[Azure Portalra]: https://portal.azure.com
-[Azure Mobile Apps gyors üzembe helyezés]: app-service-mobile-cordova-get-started.md
-[Bevezetés a hitelesítés használatába]: app-service-mobile-cordova-get-started-users.md
+[Azure Portal]: https://portal.azure.com
+[Azure Mobile Apps alkalmazások gyors üzembe helyezési]: app-service-mobile-cordova-get-started.md
+[Hitelesítés első lépései]: app-service-mobile-cordova-get-started-users.md
 [Add authentication to your app]: app-service-mobile-cordova-get-started-users.md
 
-[Apache Cordova beépülő modul az Azure Mobile Apps]: https://www.npmjs.com/package/cordova-plugin-ms-azure-mobile-apps
+[Az Apache Cordova beépülő modul az Azure Mobile Appsban]: https://www.npmjs.com/package/cordova-plugin-ms-azure-mobile-apps
 [az első Apache Cordova-alkalmazás]: http://cordova.apache.org/#getstarted
 [phonegap-facebook-plugin]: https://github.com/wizcorp/phonegap-facebook-plugin
-[phonegap-beépülőmodul-leküldéses]: https://www.npmjs.com/package/phonegap-plugin-push
-[cordova-beépülőmodul-eszköz]: https://www.npmjs.com/package/cordova-plugin-device
-[cordova-beépülőmodul-inappbrowser]: https://www.npmjs.com/package/cordova-plugin-inappbrowser
+[phonegap-beépülő modul – leküldéses]: https://www.npmjs.com/package/phonegap-plugin-push
+[cordova beépülő modul-eszközök]: https://www.npmjs.com/package/cordova-plugin-device
+[cordova-beépülő modul – inappbrowser]: https://www.npmjs.com/package/cordova-plugin-inappbrowser
 [Query object documentation]: https://msdn.microsoft.com/library/azure/jj613353.aspx

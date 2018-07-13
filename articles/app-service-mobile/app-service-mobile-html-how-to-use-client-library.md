@@ -1,6 +1,6 @@
 ---
-title: A JavaScript SDK használata az Azure Mobile Apps szolgáltatásban
-description: Az Azure Mobile Apps v használata
+title: A JavaScript SDK használata az Azure Mobile Appsban
+description: V használata az Azure Mobile Apps-alkalmazáshoz
 services: app-service\mobile
 documentationcenter: javascript
 author: conceptdev
@@ -15,32 +15,32 @@ ms.topic: article
 ms.date: 10/30/2016
 ms.author: crdun
 ms.openlocfilehash: ba2eb5a7f888e4cffcd798259afa8194b4021025
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32151076"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38488892"
 ---
-# <a name="how-to-use-the-javascript-client-library-for-azure-mobile-apps"></a>A JavaScript ügyféloldali kódtár használata az Azure Mobile Apps-alkalmazáshoz
+# <a name="how-to-use-the-javascript-client-library-for-azure-mobile-apps"></a>A JavaScript ügyféloldali kódtár használata az Azure Mobile Apps
 [!INCLUDE [app-service-mobile-selector-client-library](../../includes/app-service-mobile-selector-client-library.md)]
 
-Ez az útmutató útmutatást ad teszi a végrehajtását szolgáltatást a legújabb használó általános forgatókönyvhöz [JavaScript SDK az Azure Mobile Apps]. Ha most ismerkedik az Azure Mobile Apps, először végezzen [Azure Mobile Apps gyors üzembe helyezés] -háttéralkalmazás létrehozása, és hozzon létre egy táblát. Ebben az útmutatóban azt összpontosítani a mobil-háttéralkalmazások használatával HTML/JavaScript webes alkalmazásokhoz.
+Ez az útmutató bemutatja, hogy a legújabb használatával általános forgatókönyveinek végrehajtásával [A JavaScript SDK for Azure Mobile Apps]. Ha most ismerkedik az Azure Mobile Apps, először végezzen [Azure Mobile Apps alkalmazások gyors üzembe helyezési] egy háttérrendszer létrehozása, és hozzon létre egy táblát. Ebben az útmutatóban koncentrálunk a mobil háttérszolgáltatásban használatával HTML/JavaScript webes alkalmazásokban.
 
 ## <a name="supported-platforms"></a>Támogatott platformok
-Jelenleg korlátozza a ismertebb böngésző aktuális és az utolsó verzióiban támogatott böngésző: Google Chrome, a Microsoft Edge, a Microsoft Internet Explorer vagy a Mozilla Firefox.  Várhatóan viszonylag modern böngészők függvényt SDK.
+Böngésző támogatása, a jelenlegi és a legutóbbi verzióra a főbb böngésző modelljeként: Google Chrome, a Microsoft Edge, a Microsoft Internet Explorer és a Mozilla Firefox.  Várhatóan viszonylag modern böngészőkben függvényt az SDK-t.
 
-A csomag terjesztésekor modulként univerzális JavaScript, így támogatja a globális változók globals, AMD, és az CommonJS formátumú.
+A csomag terjesztése egy univerzális JavaScript-modult, így támogatja a globals, AMD, és CommonJS formázza.
 
 ## <a name="Setup"></a>A telepítő és Előfeltételek
-Ez az útmutató feltételezi, hogy létrehozott egy táblát a háttérkiszolgálón. Ez az útmutató feltételezi, hogy rendelkezik-e a tábla a táblák ugyanazon séma ezen oktatóprogram a.
+Ez az útmutató feltételezi, hogy létrehozott egy táblát a háttérrendszernek. Ez az útmutató feltételezi, hogy a tábla ezek az oktatóanyagok a táblákként ugyanazzal a sémával rendelkezik.
 
-Az Azure Mobile Apps JavaScript SDK telepítése megteheti a `npm` parancs:
+Az Azure Mobile Apps JavaScript SDK telepítése keresztül lehetséges az `npm` parancsot:
 
 ```
 npm install azure-mobile-apps-client --save
 ```
 
-A könyvtár egy ES2015 modul, például Browserify és Webpack és egy AMD tárként CommonJS környezetekben is használható.  Példa:
+Az erőforrástár-ES2015 modulként CommonJS környezetekben, például Browserify és a webpack használatával készült, valamint az AMD-tár is használható.  Példa:
 
 ```
 # For ECMAScript 5.1 CommonJS
@@ -49,7 +49,7 @@ var WindowsAzure = require('azure-mobile-apps-client');
 import * as WindowsAzure from 'azure-mobile-apps-client';
 ```
 
-Az SDK előre elkészített verziójának úgy, hogy letölti a CDN-ről is használhatja:
+Egy előre elkészített verze sady SDK letöltésével közvetlenül a CDN-en is használhatja:
 
 ```html
 <script src="https://zumo.blob.core.windows.net/sdk/azure-mobile-apps-client.min.js"></script>
@@ -57,53 +57,53 @@ Az SDK előre elkészített verziójának úgy, hogy letölti a CDN-ről is hasz
 
 [!INCLUDE [app-service-mobile-html-js-library](../../includes/app-service-mobile-html-js-library.md)]
 
-## <a name="auth"></a>Hogyan: hitelesíti a felhasználókat
-Az Azure App Service támogat hitelesítése és engedélyezése a felhasználók alkalmazás különböző külső Identitásszolgáltatók: Facebook, Google, a Microsoft Account és Twitter. A engedélyeket korlátozhatja a hozzáférést a megadott művelet csak a hitelesített felhasználók táblákon. Hitelesített felhasználók identitásának használhatja, ha az engedélyezési szabályok megvalósítását a kiszolgáló parancsfájlokat. További információkért lásd: a [Bevezetés a hitelesítés használatába] oktatóanyag.
+## <a name="auth"></a>Hogyan: felhasználók hitelesítése
+Az Azure App Service támogatja a hitelesítés és engedélyezés az alkalmazás felhasználóinak különböző külső identitásszolgáltató használatával: Facebook, Google, Microsoft Account és Twitter. Beállíthatja, hogy a engedélyeit azokon a táblákon, az adott műveletek csak a hitelesített felhasználók a hozzáférés korlátozásához. Az engedélyezési szabályok megvalósításához a kiszolgálóoldali parancsprogramok is használhatja a hitelesített felhasználók identitását. További információkért lásd: a [hitelesítés első lépései] oktatóanyag.
 
-Két hitelesítési forgalom támogatottak: a kiszolgáló folyamata és egy ügyfél folyamatában.  A kiszolgáló folyamata nyújt a legegyszerűbb felhasználói hitelesítés, a szolgáltató webes hitelesítés felület támaszkodnak. Az ügyféltanúsítvány-folyamat lehetővé teszi, hogy szorosabb integrációt eszközspecifikus képességeket például single-sign-on, szolgáltatói SDK-k támaszkodnak az.
+Két hitelesítési folyamatok támogatottak: a server flow és a egy ügyfél folyamatot.  A server flow a legegyszerűbb felhasználói hitelesítés támaszkodik a szolgáltató webes hitelesítés felületet nyújt. A client flow lehetővé teszi, hogy az eszköz specifikus képességek mélyebb integrációjuk például single-sign-on, a szolgáltatóhoz tartozó SDK-k támaszkodik.
 
 [!INCLUDE [app-service-mobile-html-js-auth-library](../../includes/app-service-mobile-html-js-auth-library.md)]
 
-### <a name="configure-external-redirect-urls"></a>Útmutató: a Mobile App Service konfigurálása külső átirányítási URL-címeket.
-A JavaScript-alkalmazások számos különböző egy visszacsatolási funkció segítségével OAuth UI-forgalom kezelésére.  Ezek a képességek közé tartoznak:
+### <a name="configure-external-redirect-urls"></a>Útmutató: a Mobile App Service konfigurálása külső átirányítási URL-címek.
+Számos különböző típusú JavaScript-alkalmazások egy visszacsatolási képesség segítségével OAuth felhasználói felület folyamatok kezeléséhez.  Ilyen képességek:
 
 * A szolgáltatás helyben fut
 * Élő Újrabetöltés használata a ionos keretrendszer
-* App Service hitelesítés irányít át.
+* App Service-ben átirányítása a hitelesítéshez.
 
-Helyileg futó problémákat okozhat, mert alapértelmezés szerint az App Service hitelesítés csak engedélyezésére van konfigurálva a Mobile Apps-háttéralkalmazás való hozzáférést. Az alábbi lépések segítségével módosíthatja az App Service-beállítások a kiszolgáló a helyi futtatás során a hitelesítés engedélyezése:
+Helyileg futó problémákat okozhat, mert alapértelmezés szerint az App Service hitelesítés csak konfigurált engedélyezze a hozzáférést a Mobile Apps-háttéralkalmazást. Használja az alábbi lépéseket az App Service-hitelesítés engedélyezése, ha helyileg futtatja a kiszolgáló beállításainak módosítása:
 
-1. Jelentkezzen be az [Azure Portalra]
-2. Nyissa meg a mobilalkalmazás háttérrendszerének.
+1. Jelentkezzen be az [Azure Portal]
+2. Lépjen a Mobile Apps-háttéralkalmazást.
 3. Válassza ki **erőforrás-kezelő** a a **FEJLESZTŐESZKÖZÖK** menü.
-4. Kattintson a **Ugrás** az erőforrás-kezelő, a mobilalkalmazás háttérrendszerének egy új lapot vagy ablak megnyitásához.
-5. Bontsa ki a **config** > **authsettings** csomópont az alkalmazásra vonatkozóan.
-6. Kattintson a **szerkesztése** ahhoz, hogy az erőforrás Szerkesztés gomb.
-7. Keresés a **allowedExternalRedirectUrls** elemmel rendelkezik, ami null értékűnek kell lennie. Adja hozzá az URL-címek tömbjét:
+4. Kattintson a **Go** a Mobile Apps-háttéralkalmazás számára az erőforrás-kezelő megnyitása új lapon vagy ablakban.
+5. Bontsa ki a **config** > **authsettings** csomópont az alkalmazáshoz.
+6. Kattintson a **szerkesztése** gombra az erőforrás használatának engedélyezése.
+7. Keresse meg a **allowedExternalRedirectUrls** elemet, amely null értékű kell legyen. Az URL-címek hozzáadása a tömböt:
 
          "allowedExternalRedirectUrls": [
              "http://localhost:3000",
              "https://localhost:3000"
          ],
 
-    Az URL-címeket, a tömb cserélje le a szolgáltatást, amely ebben a példában az URL-címek `http://localhost:3000` a Node.js-mintát helyi szolgáltatás. Is `http://localhost:4400` a Fodrozás szolgáltatás vagy egy másik URL-cím, attól függően, hogy az alkalmazás konfigurálását.
-8. Kattintson a lap tetején **olvasási/írási**, majd kattintson a **PUT** a módosítások mentéséhez.
+    Az URL-címeket, a szolgáltatás, amely ebben a példában cserélje le az URL-címeket, a tömb `http://localhost:3000` a Node.js-minta helyi szolgáltatás. Is `http://localhost:4400` a Ripple szolgáltatás-vagy valamilyen más URL-cím, az alkalmazás konfigurációjától függően.
+8. Kattintson a lap tetején **olvasási/írási**, kattintson a **PUT** , mentse a módosításokat.
 
 Is szüksége lesz, ugyanazon visszacsatolási URL-címek hozzáadása a CORS-engedélyezési beállítások:
 
-1. Lépjen vissza a [Azure Portalra].
-2. Nyissa meg a mobilalkalmazás háttérrendszerének.
+1. Lépjen vissza a [Azure Portal].
+2. Lépjen a Mobile Apps-háttéralkalmazást.
 3. Kattintson a **CORS** a a **API** menü.
-4. Adja meg az egyes URL-címet az üres **engedélyezett eredetet** szövegmezőben.  Egy új szövegmező jön létre.
+4. Adja meg az egyes URL-CÍMÉT az üres **engedélyezett eredetek** szövegmezőben.  Egy új szövegmező jön létre.
 5. Kattintson a **mentése**
 
-Miután a háttér-frissítéseket, lesz, az új visszacsatolási URL-címek használatához az alkalmazás.
+A háttérrendszer a frissítések után lesz az új visszacsatolási URL-címek használata az alkalmazásban.
 
 <!-- URLs. -->
-[Azure Mobile Apps gyors üzembe helyezés]: app-service-mobile-cordova-get-started.md
-[Bevezetés a hitelesítés használatába]: app-service-mobile-cordova-get-started-users.md
+[Azure Mobile Apps alkalmazások gyors üzembe helyezési]: app-service-mobile-cordova-get-started.md
+[Hitelesítés első lépései]: app-service-mobile-cordova-get-started-users.md
 [Add authentication to your app]: app-service-mobile-cordova-get-started-users.md
 
-[Azure Portalra]: https://portal.azure.com/
-[JavaScript SDK az Azure Mobile Apps]: https://www.npmjs.com/package/azure-mobile-apps-client
+[Azure Portal]: https://portal.azure.com/
+[A JavaScript SDK for Azure Mobile Apps]: https://www.npmjs.com/package/azure-mobile-apps-client
 [Query object documentation]: https://msdn.microsoft.com/library/azure/jj613353.aspx

@@ -17,11 +17,11 @@ ms.custom: mvc
 ms.date: 04/14/2018
 ms.author: dimazaid
 ms.openlocfilehash: 2bc085989ff3bbbc50042c46b338f748a10aa87e
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33777773"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38232796"
 ---
 # <a name="tutorial-push-notifications-to-android-devices-by-using-azure-notification-hubs-and-google-firebase-cloud-messaging"></a>Oktatóanyag: Leküldéses értesítések küldése Android-eszközökre az Azure Notification Hubs és a Google Firebase Cloud Messaging használatával
 [!INCLUDE [notification-hubs-selector-get-started](../../includes/notification-hubs-selector-get-started.md)]
@@ -73,7 +73,7 @@ Az oktatóanyag elvégzéséhez egy aktív Azure-fiókra lesz szüksége. Ha nin
 
     ![Azure Notification Hubs – Google (GCM)](./media/notification-hubs-android-push-notification-google-fcm-get-started/notification-hubs-gcm-api.png)
 
-Az értesítési központ konfigurálva lett a Firebase Cloud Messaginggel való együttműködésre, és rendelkezik a kapcsolati karakterláncokkal az alkalmazás regisztrálására értesítések fogadásához és leküldéses értesítések küldéséhez.
+Az értesítési központ konfigurálva lett a Firebase Cloud Messaginggel való együttműködésre, és rendelkezik a kapcsolati sztringekkel az alkalmazás regisztrálására értesítések fogadásához és leküldéses értesítések küldéséhez.
 
 ## <a id="connecting-app"></a>Az alkalmazás csatlakoztatása az értesítési központhoz
 ### <a name="add-google-play-services-to-the-project"></a>Google Play-szolgáltatások felvétele a projektbe
@@ -165,8 +165,8 @@ Az értesítési központ konfigurálva lett a Firebase Cloud Messaginggel való
     Győződjön meg arról, hogy frissítette ezt a három helyőrzőt a `NotificationSettings` osztály alábbi kódjában:
    
    * **SenderId**: a [Firebase-konzol](https://firebase.google.com/console/) projektbeállításainak **Cloud Messaging** lapjáról korábban beszerzett küldőazonosító.
-   * **HubListenConnectionString**: A központ **DefaultListenAccessSignature** kapcsolati karakterlánca. Ez a kapcsolati karakterlánc az [Azure Portalon] a központ **Hozzáférési házirendek** elemére kattintva másolható át.
-   * **HubName**: Az [Azure Portalon] a központ lapján megjelenő értesítési központ nevét használja.
+   * **HubListenConnectionString**: A központ **DefaultListenAccessSignature** kapcsolati sztringje. Ez a kapcsolati sztring az [Azure Portal] a központ **Hozzáférési házirendek** elemére kattintva másolható át.
+   * **HubName**: Az [Azure Portal] a központ lapján megjelenő értesítési központ nevét használja.
      
      `NotificationSettings` kód:
      
@@ -487,7 +487,7 @@ Az értesítési központ konfigurálva lett a Firebase Cloud Messaginggel való
 
 ## <a name="test-the-app"></a>Az alkalmazás tesztelése
 ### <a name="test-send-notification-from-the-notification-hub"></a>Értesítések küldésének tesztelése az értesítési központból
-Az [Azure Portalon] az alábbi műveletek végrehajtásával küldhet leküldéses értesítéseket: 
+Az [Azure Portal] az alábbi műveletek végrehajtásával küldhet leküldéses értesítéseket: 
 
 1. Válassza a **Tesztküldés** elemet a **Hibaelhárítás** szakaszban.
 2. A **Platformok** beállításnál válassza az **Android** lehetőséget. 
@@ -532,4 +532,4 @@ Ebben az oktatóanyagban leküldéses értesítéseket küldött Android-eszköz
 [Notification Hubs Guidance]: notification-hubs-push-notification-overview.md
 [Use Notification Hubs to push notifications to users]: notification-hubs-aspnet-backend-gcm-android-push-to-user-google-notification.md
 [Use Notification Hubs to send breaking news]: notification-hubs-aspnet-backend-android-xplat-segmented-gcm-push-notification.md
-[Azure Portalon]: https://portal.azure.com
+[Azure Portal]: https://portal.azure.com
