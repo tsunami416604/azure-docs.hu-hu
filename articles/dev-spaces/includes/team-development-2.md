@@ -11,16 +11,16 @@ ms.date: 05/11/2018
 ms.topic: include
 manager: douge
 ms.openlocfilehash: 85f8632aae8a70b1282155881dbca6b25734a6c5
-ms.sourcegitcommit: 828d8ef0ec47767d251355c2002ade13d1c162af
-ms.translationtype: MT
+ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36936397"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37933204"
 ---
-### <a name="run-the-service"></a>A szolgáltatás futtatásához
+### <a name="run-the-service"></a>A szolgáltatás futtatása
 
-1. Kattintson az F5 (vagy típus `azds up` a Terminálszolgáltatások ablakban) futtatni a szolgáltatást. A szolgáltatás automatikusan elindul az újonnan kijelölt területen `default/scott`. 
-1. Ellenőrizheti, hogy a szolgáltatás fut a saját munkaterületen futtatásával `azds list` újra. Először, észrevehette példányának `mywebapi` innentől kezdve fut a `default/scott` terület (a verzió fut a `default` még mindig fut, de nem szerepel). Másodszor, a hozzáférési pont URL-címe `webfrontend` van előtagként a szöveg "scott.s.". Az URL-cím csak a `default/scott` terület. A speciális URL-cím jelzi, hogy a "scott URL-címe" küldött kérelmeket próbál meg szolgáltatásaihoz első útvonal a `default/scott` terület, de ha nem sikerül, akkor visszaáll a szolgáltatások a `default` terület.
+1. A szolgáltatás futtatásához nyomja le az F5 billentyűt (vagy írja be a terminálablakba az `azds up` parancsot). A szolgáltatás automatikusan az újonnan kiválasztott `default/scott` térben fog futni. 
+1. Az `azds list` ismételt futtatásával ellenőrizheti, hogy a szolgáltatás a saját területén fut-e. Először is, láthatja, hogy a `mywebapi` egy példánya most már a `default/scott` térben fut (a `default` térben futó verzió még fut, de nem szerepel a listán). Másodszor, a `webfrontend` hozzáférési pontjának URL-címe a „scott.s.” előtaggal kezdődik. Ezzel az URL-címmel csakis a `default/scott` tér rendelkezik. A speciális URL-cím azt jelzi, hogy a „scott URL”-címre küldött kérelmeket a rendszer először megpróbálja a `default/scott` térbe irányítani, de ha az nem sikerül, a rendszer visszavált a `default` tér szolgáltatásaira.
 
 ```
 Name         Space          Chart              Ports   Updated     Access Points
@@ -31,9 +31,9 @@ webfrontend  default        webfrontend-0.1.0  80/TCP  5h ago      http://scott.
 
 ![](../media/common/space-routing.png)
 
-A beépített szolgáltatás Azure fejlesztői szóközök tesztelheti kód egy megosztott helyre anélkül, hogy mindegyik fejlesztő újra létre kell hoznia a teljes verem szolgáltatások a saját munkaterületen. Az alkalmazás kódját előre propagálás fejlécek, a útválasztásához szükség van, a jelen útmutató az előző lépésben ismertetett módon.
+Az Azure Dev Spaces ezen beépített szolgáltatása lehetővé teszi, hogy tesztelhesse a kódot egy megosztott térben anélkül, hogy minden egyes fejlesztőnek ismételten létre kellene hoznia a saját tere teljes szolgáltatási vermét. Ez az útválasztás megköveteli az alkalmazáskódtól a propagálási fejlécek továbbítását, ahogy az az útmutató előző lépésében is látható.
 
-### <a name="test-code-in-a-space"></a>Olyan kódot tesztelése
-Új verziójának tesztelése `mywebapi` rendelkező `webfrontend`, nyissa meg a böngészőt, hogy a nyilvános hozzáférés pont URL-címe `webfrontend` és a jogi tudnivalók megjelenítése Névjegy lapra. Meg kell jelennie az új üzenet jelenik meg.
+### <a name="test-code-in-a-space"></a>Kód tesztelése egy térben
+A `mywebapi` új verzióját a `webfrontend`-del úgy tudja tesztelni, hogy megnyitja a böngészőjében a `webfrontend` nyilvános URL-címét, és felkeresi az About (Információ) oldalt. Meg kell jelennie az új üzenetnek.
 
-Most távolítsa el a "scott.s." az URL-címet, és frissítse a böngészőt részét. A régi viselkedését kell megjelennie (az a `mywebapi` verziójával futó `default`)
+Most távolítsa el az URL-cím „scott.s.” előtagját, és frissítse a böngészőt. Ekkor újra a régi működési mód jelenik meg (amikor a `mywebapi` verzió a `default` térben fut)

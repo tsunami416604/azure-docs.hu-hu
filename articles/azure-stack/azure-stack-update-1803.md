@@ -1,6 +1,6 @@
 ---
-title: Frissítés Azure verem 1803 |} Microsoft Docs
-description: További tudnivalók az Azure-verem 1803 frissítés Újdonságok integrált rendszerek, az ismert problémák és letöltéséről a frissítést.
+title: Az Azure Stack 1803 frissítés |} A Microsoft Docs
+description: 'További tudnivalók: Mi az az Azure Stack 1803 frissítés integrált rendszerek, az ismert problémák és hová töltse le a frissítést.'
 services: azure-stack
 documentationcenter: ''
 author: brenduns
@@ -12,192 +12,192 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/22/2018
+ms.date: 07/11/2018
 ms.author: brenduns
 ms.reviewer: justini
-ms.openlocfilehash: a74e77f84aa70519015a589cbc6e7478c0c41592
-ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
+ms.openlocfilehash: 11430a0d194a722c0c0520c936db3c08b1a6b863
+ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/22/2018
-ms.locfileid: "36318809"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38989571"
 ---
-# <a name="azure-stack-1803-update"></a>Az Azure verem 1803 frissítés
+# <a name="azure-stack-1803-update"></a>Azure Stack-1803 frissítése
 
-*A következőkre vonatkozik: Azure verem integrált rendszerek*
+*A következőkre vonatkozik: Azure Stackkel integrált rendszerek*
 
-Ez a cikk fejlesztést és 1803 frissítőcsomag, ismert problémái ebben a kiadásban, valamint a frissítés letöltése helyét. Ismert problémák a frissítési folyamat közvetlenül kapcsolatos problémák és a build (telepítés utáni) problémái vannak felosztva.
+Ez a cikk ismerteti a fejlesztést, és javítja a 1803 frissítési csomag, ismert problémák az ebben a kiadásban, valamint a helyét, a frissítés letöltése. Ismert problémákkal kapcsolatban közvetlenül a frissítési folyamat és a build (telepítés utáni) problémái vannak felosztva.
 
 > [!IMPORTANT]        
-> Ez a csomag csak integrált Azure verem rendszerek van. Ez a csomag nem vonatkoznak a Azure verem szoftverfejlesztői készlet.
+> Ez a csomag csak olyan Azure Stack integrált rendszerek. Ez a csomag nem vonatkoznak az Azure Stack Development Kit.
 
 ## <a name="build-reference"></a>Hivatkozás létrehozása    
-Az Azure verem 1803 frissítés buildszáma **20180329.1**.
+Az Azure Stack 1803 frissítés buildszáma **20180329.1**.
 
 
 ## <a name="before-you-begin"></a>Előkészületek    
 > [!IMPORTANT]    
-> Ne próbálja meg a frissítés telepítése során a virtuális gépek létrehozásához. További információ a frissítések kezelése: [kezelheti a frissítéseket az Azure-verem áttekintés](azure-stack-updates.md#plan-for-updates).
+> Ne kísérelje meg a frissítés telepítése során a virtuális gépek létrehozása. Frissítések kezelésével kapcsolatos további információkért lásd: [kezelheti a frissítéseket az Azure Stack áttekintés](azure-stack-updates.md#plan-for-updates).
 
 
 ### <a name="prerequisites"></a>Előfeltételek
-- Telepítse az Azure-verem [1802 frissítése](azure-stack-update-1802.md) az Azure verem 1803 frissítés alkalmazása előtt.   
+- Az Azure Stack telepítése [1802-es frissítés](azure-stack-update-1802.md) az Azure Stack 1803 frissítés alkalmazása előtt.   
 
-- Telepítés **AzS gyorsjavítás – 1.0.180312.1-Build 20180222.2** az Azure verem 1803 frissítés alkalmazása előtt. A gyorsjavítás a Windows Defender frissítések, és akkor használható, ha a frissítések letöltése Azure verem.
+- Telepítés **AzS gyorsjavítás – 1.0.180312.1-összeállítása 20180222.2** az Azure Stack 1803 frissítés alkalmazása előtt. Ez a gyorsjavítás frissíti a Windows Defender, és az Azure Stackhez készült frissítések letöltése esetén érhető el.
 
-  Telepítse a gyorsjavítást, hajtsa végre a normál eljárásai [frissítések telepítése Azure verem](azure-stack-apply-updates.md). A frissítés neve jelenik meg **AzS gyorsjavítás – 1.0.180312.1**, és a következő fájlokat tartalmazza: 
+  Telepítse a gyorsjavítást, kövesse a normál eljárásai [frissítések telepítése az Azure Stack](azure-stack-apply-updates.md). A frissítés neve jelenik meg **AzS gyorsjavítás – 1.0.180312.1**, és a következő fájlokat tartalmazza: 
     - PUPackageHotFix_20180222.2-1.exe
     - PUPackageHotFix_20180222.2-1.bin
     - Metadata.XML
 
-  Feltöltése után ezeket a fájlokat egy tárfiók és tároló, a felügyeleti portálon frissítés csempén futtatja a telepítést. 
+  Feltöltése után ezeket a fájlokat egy tárfiókot és tárolót, futtassa a telepítést a frissítés csempe a felügyeleti portálon. 
   
-  Azure verem frissítése, ellentétben a frissítés telepítése nincs hatással Azure verem verzióját. Annak ellenőrzéséhez, hogy a frissítés telepítve van, a lista megtekintése **telepített frissítések**.
+  Ellentétben az Azure Stackhez frissítéseket a frissítés telepítése nem módosítja az Azure Stack verzióját. Ellenőrizze a frissítés telepítve van-e, tekintse meg a listáját **telepített frissítések**.
 
 
 
 ### <a name="new-features"></a>Új funkciók 
-A frissítés tartalmazza a következő fejlesztéseket és javításokat Azure verem.
+A frissítés tartalmazza a következő fejlesztések és javítások az Azure Stackhez.
 
-- **Azure verem titkos kulcsok frissítése** - (fiókok és tanúsítványok). Titkos kulcsok kezelésével kapcsolatos további információkért lásd: [forgassa el a titkos kulcsok Azure verem](azure-stack-rotate-secrets.md). 
+- **Azure Stack titkos kódok frissítése** - (fiókok és -tanúsítványok). Titkos kódok kezelésével kapcsolatos további információkért lásd: [elforgatása a titkos kulcsok az Azure Stackben](azure-stack-rotate-secrets.md). 
 
-- <!-- 1914853 --> **Automatikus átirányítási HTTPS** használatakor HTTP a rendszergazdai és felhasználói portál eléréséhez. Ennek a fejlesztésnek köszönhetően a történt [UserVoice](https://feedback.azure.com/forums/344565-azure-stack/suggestions/32205385-it-would-be-great-if-there-was-a-automatic-redirec) az Azure-verem kapcsolatos visszajelzéseket. 
+- <!-- 1914853 --> **Az automatikus átirányítás a HTTPS** HTTP használhatja a rendszergazda és a felhasználói portál eléréséhez. Ennek a fejlesztésnek alapján történt [UserVoice](https://feedback.azure.com/forums/344565-azure-stack/suggestions/32205385-it-would-be-great-if-there-was-a-automatic-redirec) visszajelzést az Azure Stackhez. 
 
-- <!-- 2202621  --> **Hozzáférés a piactér** – használatával most már tudja nyitni a verem Azure piactér a [+ új](https://ms.portal.azure.com/#create/hub) belül a rendszergazda és a felhasználói portálon parancsát, úgy, ahogy az az Azure portálon teheti meg.
+- <!-- 2202621  --> **A piactér elérésére** – használatával most megnyithatja az Azure Stack piactéren a [+ új](https://ms.portal.azure.com/#create/hub) belül a rendszergazda és a felhasználói portálon parancsát, ugyanúgy az az Azure Portalon teheti meg.
  
-- <!-- 2202621 --> **Azure figyelő** -Azure verem hozzáadja [Azure figyelő](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-azure-monitor) számára a rendszergazda és a felhasználói portálon. Ez magában foglalja a metrikák és tevékenység-naplók új szoftverkategóriák. Azure-figyelőhöz a külső hálózatok eléréséhez port **13012** meg kell nyitni a tűzfal-konfigurációk. Azure verem szükséges portokkal kapcsolatos további információkért lásd: [Azure verem datacenter integrációs - végpontok közzététele](azure-stack-integrate-endpoints.md).
+- <!-- 2202621 --> **Az Azure Monitor** -hozzáadja az Azure Stack [Azure Monitor](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-azure-monitor) , a rendszergazda és a felhasználói portálon. Ez magában foglalja a mérőszámok és Tevékenységnaplók az új tallózók. Az Azure Monitor a külső hálózatok eléréséhez port **13012** Tűzfalkonfiguráció nyitva kell lennie. Azure Stack által igényelt portokat kapcsolatos további információkért lásd: [adatközpont integrációja az Azure Stack - végpontok közzététele](azure-stack-integrate-endpoints.md).
 
-   Ennek részeként is módosíthatja, a **további szolgáltatások**, *naplók* csomópontként jelenik meg, mint a *tevékenységi naplóit*. A funkció mostantól konzisztensek legyenek az Azure-portálon. 
+   Ennek részeként is módosíthatja, a **további szolgáltatások**, *Auditnaplók* jelenik meg, mint *tevékenységeket tartalmazó naplók*. A funkció mostantól az Azure Portallal konzisztens. 
 
-- <!-- 1664791 --> **Ritka fájlok** – Ha vegyen fel egy új lemezképet Azure verem, vagy piactér szindikálási, a lemezkép hozzáadása a kép ritka fájlok alakítja át. Azure verem verziójával 1803 előtt felvett lemezképek nem lehet konvertálni. Ehelyett újra elküldeni ezeket a képeket, ez a funkció előnyeit piactér szindikálási kell használnia. 
+- <!-- 1664791 --> **Ritka fájlok** – Ha egy új kép hozzáadása az Azure Stackhez, vagy keresztül marketplace tartalomtípus-gyűjtési, képet vehet fel a kép egy ritka fájlok alakítja át. Nem lehet konvertálni a lemezképek, amelyek az Azure Stack-verziók 1803 használata előtt adtak hozzá. Ehelyett ez a funkció kihasználásához képek újraküldeni marketplace tartalomtípus-gyűjtési kell használnia. 
  
-   Ritka fájlok egy hatékony fájlformátum tárolóhely lemezterület-használat csökkentésére, és az i/o javítására használjuk.  További információkért lásd: [ritka Fsutil](https://docs.microsoft.com/windows-server/administration/windows-commands/fsutil-sparse) a Windows Server. 
+   Ritka fájlok egy hatékony fájlformátum tárolási lemezterület-használat csökkentésére, és i/o javítására használjuk.  További információkért lásd: [ritka Fsutil](https://docs.microsoft.com/windows-server/administration/windows-commands/fsutil-sparse) a Windows Server. 
 
-### <a name="fixed-issues"></a>Javított problémák
+### <a name="fixed-issues"></a>Rögzített kapcsolatos problémák
 
-- <!-- 1739988 --> Belső Load Balancing (ILB) most már megfelelően kezeli a MAC-címek háttér virtuális gépekhez, emiatt ILB eldobni a csomagok és a háttér-hálózat, a háttér-hálózat használata a Linux-példányok esetén. ILB helyesen működik a Windows-példányok a háttér-hálózaton. 
+- <!-- 1739988 --> Belső Load Balancing (ILB) most már megfelelően kezeli a MAC-címek a háttérbeli virtuális géppel, amely hatására az ILB csomagok a háttérbeli hálózati eldobni a háttér-hálózat Linux-példány használata esetén. ILB jól működik, a Windows-példányok a háttér-hálózat. 
 
-- <!-- 1805496 --> Ha Azure verem közötti VPN-kapcsolatok akkor lecsatlakoznak Azure verem különböző beállítások használata az Azure-nál IKE-házirend miatt kapcsolatos problémát. A SALifetime (idő) és a SALiftetime (bájt) értéke nem volt az Azure-ral kompatibilis, és 1803 a Azure beállításai módosítva lettek. 1803 előtt (másodperc) SALifetime értéke történt 1803 14400 és 27,000 most módosításait. A SALifetime (bájt) értéke 1803 előtt volt 819,200 és a 1803 33,553,408 módosításait.
+- <!-- 1805496 --> Egy problémát, ahol az Azure Stack közötti VPN-kapcsolatok lenne lecsatlakoznak különböző beállítások, mint az Azure az IKE-házirend használata az Azure Stack miatt. SALifetime (idő), és SALiftetime (bájt) értékeit a rendszer nem kompatibilis az Azure-ral, és, hogy megváltoztak az 1803-as verzióban az Azure-beállításoknak megfelelően. Előtt 1803 SALifetime (másodperc) értéke volt 1803 14400 és 27,000 most módosításait. A SALifetime (bájt) értéke 1803 előtt volt 819,200 és az 1803 33,553,408 módosításait.
 
-- <!-- 2209262 --> Az IP probléma, ahol korábban látható, a portál; volt-e VPN-kapcsolatok azonban engedélyezése, és elvégezte az IP-továbbítás nincs hatása. A szolgáltatás alapértelmezés szerint és megváltoztathatja ezt még nem támogatott be van kapcsolva.  A vezérlő el lett távolítva a portálról. 
+- <!-- 2209262 --> A ahol VPN-kapcsolatok keretezte a portálon; IP-probléma azonban engedélyezése vagy IP-továbbítás vizualizációtól nem befolyásolja. A funkció alapértelmezés szerint és megváltoztathatja ezt még nem támogatott be van kapcsolva.  A vezérlő el lett távolítva a portálról. 
 
-- <!-- 1766332 --> Azure verem nem támogatja a házirend alapú VPN-átjárók, annak ellenére, hogy a beállítás megjelenik a portálon.  A beállítás el lett távolítva a portálról. 
+- <!-- 1766332 --> Az Azure Stack nem támogatja a házirend-alapú VPN-átjárók, annak ellenére, hogy a beállítás megjelenik a portálon.  A beállítás a portálról el lett távolítva. 
 
-- <!-- 1868283 --> Az Azure verem most megakadályozza, hogy a dinamikus lemezekkel létrehozott virtuális gép átméretezésével. 
+- <!-- 1868283 --> Az Azure Stack most megakadályozza a dinamikus lemezek segítségével létrehozott virtuális gép átméretezése. 
 
-- <!-- 1756324 --> Virtuális gépek használati adatainak most elválasztott óránként. Ez az Azure konzisztens. 
+- <!-- 1756324 --> Virtuális gépek használati adatainak most választja el egymástól, óránként történik. Ez az egységes Azure-ral. 
 
-- <!--  2253274 --> A probléma hol az rendszergazdai és felhasználói portálon, a beállítások panelről vnet alhálózatok betöltése sikertelen. A probléma megoldásához használja a PowerShell és a [Get-AzureRmVirtualNetworkSubnetConfig](https://docs.microsoft.com/powershell/module/azurerm.network/get-azurermvirtualnetworksubnetconfig?view=azurermps-5.5.0) parancsmag segítségével tekintheti meg és kezelheti ezeket az információkat.
+- <!--  2253274 --> A probléma, a rendszergazdai és felhasználói portálon, a beállítások panelen alhálózatok a virtuális hálózathoz nem sikerül betölteni. Áthidaló megoldásként a powershellel és a [Get-AzureRmVirtualNetworkSubnetConfig](https://docs.microsoft.com/powershell/module/azurerm.network/get-azurermvirtualnetworksubnetconfig?view=azurermps-5.5.0) parancsmag használatával tekintheti meg és kezelheti ezeket az információkat.
 
-- A virtuális gép, az üzenet létrehozásakor *nem lehet megjeleníteni a díjszabási* többé nem jelenik meg a Virtuálisgép-méretet a mérete kiválasztásakor.
+- Mikor hozzon létre egy virtuális gépet, az üzenet *nem jeleníthető meg az árképzés* már nem jelenik meg, ha válasszon méretet a virtuális gép méretét.
 
-- Különböző javítja a teljesítményt, stabilitását, biztonsági és az Azure-verem által használt operációs rendszer.
+- Különböző javítja a teljesítményt, stabilitását, biztonsági és az Azure Stack által használt operációs rendszer.
 
 
 ### <a name="changes"></a>Módosítások
-- A módszer egy újonnan létrehozott ajánlatot állapotának módosítása *titkos* való *nyilvános* vagy *leszerelt* megváltozott. További információkért lásd: [hozzon létre egy ajánlatot](azure-stack-create-offer.md).
+- A módszer egy újonnan létrehozott ajánlat az állapotváltozáshoz *privát* való *nyilvános* vagy *leszerelt* megváltozott. További információkért lásd: [hozzon létre egy ajánlatot](azure-stack-create-offer.md).
 
 
-### <a name="known-issues-with-the-update-process"></a>A frissítési folyamat szolgáltatással kapcsolatos ismert problémák    
-<!-- 2328416 --> A 1803 frissítés telepítése során a blob szolgáltatás és a belső blob szolgáltatást használó szolgáltatások állásidő is lehet. Ez magában foglalja az egyes virtuális gép műveleteit. Ez állásidő hibákat okozhat bérlő műveletek vagy riasztások szolgáltatásokból, nem férhet hozzá az adatokat. A probléma oldja fel saját magát, amikor a frissítés a telepítés befejeződött. 
+### <a name="known-issues-with-the-update-process"></a>A frissítési folyamat ismert problémái    
+<!-- 2328416 --> Az 1803-frissítés telepítése során a blob szolgáltatás és a blob szolgáltatás használó belső szolgáltatásokba állásidő is lehet. Ez néhány virtuális gép műveleteit tartalmazza. Állásidő emiatt bérlő hibák műveletek vagy riasztások származó szolgáltatásokat, amelyek nem férhetnek hozzá adataihoz. Ez a probléma megoldását magát a frissítés telepítésének befejezésekor. 
 
 
 
 ### <a name="post-update-steps"></a>Frissítés utáni lépések
-- 1803 a telepítés után bármely alkalmazandó gyorsjavításainak telepítéséhez. További információ a következő tudásbáziscikkeiből, megtekintése, valamint a [karbantartása házirend](azure-stack-servicing-policy.md).
+- 1803 a telepítés után bármely alkalmazandó gyorsjavítások telepítéséről. További információt a következő cikkeket, megtekintése, valamint a [karbantartási szabályzat](azure-stack-servicing-policy.md).
 
-  - [KB 4341390 - Azure verem gyorsjavítás 1.0.180424.12](https://support.microsoft.com/en-us/help/4341390).
+  - [KB 4344115 – az Azure Stack gyorsjavítás 1.0.180427.15](https://support.microsoft.com/help/4344115).
 
-- A frissítés telepítése után tekintse át a tűzfal konfigurációját, és győződjön meg arról [szükséges portok](azure-stack-integrate-endpoints.md) nyitva. Például a frissítés bevezeti *Azure figyelő* mely tartalmazza a naplók tevékenység naplókban is megváltoztatását. A módosítás port 13012 most szolgál, és meg van nyitva.  
+- Ez a frissítés telepítése után tekintse át a tűzfal-konfigurációjában, hogy [szükséges portokat](azure-stack-integrate-endpoints.md) nyitva. Például a frissítés vezet be *Azure Monitor* mely tevékenységeket tartalmazó naplók-naplók módosítását tartalmazza. Ezzel a port 13012 szolgál, és a is nyitva kell lennie.  
 
 
 ### <a name="known-issues-post-installation"></a>Ismert problémák (telepítés utáni)
-Az alábbiakban telepítés utáni build kapcsolatos ismert problémák **20180323.2**.
+Az alábbiakban a telepítés utáni ismert problémái build **20180323.2**.
 
 #### <a name="portal"></a>Portál
-- <!-- 2332636 - IS -->  Az AD FS használata az Azure-verem azonosítási rendszer és az Azure-verem ezen verziójára való frissítés esetén az alapértelmezett szolgáltató előfizetés alapértelmezett tulajdonosa lesz visszaállítva a beépített **CloudAdmin** felhasználó.  
-  Megkerülő megoldás: A frissítés telepítése után a probléma megoldásához használja a 3. lépés a [konfigurálása eseményindító automatizálási jogcím-szolgáltatói megbízhatósági Azure verem](azure-stack-integrate-identity.md#trigger-automation-to-configure-claims-provider-trust-in-azure-stack-1) alaphelyzetbe állítani az alapértelmezett szolgáltató előfizetés tulajdonosának eljárást.   
+- <!-- 2332636 - IS -->  Az AD FS használata az Azure Stack identitásrendszer és a frissítés erre a verzióra, az Azure Stack, az alapértelmezett szolgáltatója előfizetés alapértelmezett tulajdonosa áll vissza a beépített **CloudAdmin** felhasználói.  
+  Megkerülő megoldás: A frissítés telepítése után a probléma megoldásához használja a 3. lépés a [eseményindító automation konfigurálása jogcím-szolgáltatói megbízhatósági az Azure Stackben](azure-stack-integrate-identity.md#trigger-automation-to-configure-claims-provider-trust-in-azure-stack-1) eljárás alaphelyzetbe állítani az alapértelmezett szolgáltatója előfizetés tulajdonosa.   
 
-- Lehetővé teszi [új támogatási kérést nyithat a legördülő menüből](azure-stack-manage-portals.md#quick-access-to-help-and-support) a belül a felügyeleti portál nem érhető el. Ehelyett használja a következő hivatkozásra:     
-    - Azure verem integrált, rendszereihez https://aka.ms/newsupportrequest.
+- Lehetővé teszi [, nyisson egy új támogatási kérelmet a legördülő listából](azure-stack-manage-portals.md#quick-access-to-help-and-support) a belül a felügyeleti portálon nem érhető el. Ehelyett használja a következő hivatkozásra:     
+    - Az Azure Stack integrált rendszerek használata https://aka.ms/newsupportrequest.
 
-- <!-- 2050709 --> A felügyeleti portál nincs lehetőség a Blob, Table szolgáltatás, vagy várólista szolgáltatást storage mérőszámainak szerkesztése. Ugrás a tárolási, és válassza ki a blob, table vagy várólista-szolgáltatás csempe, megnyílik egy új panel, amely az adott szolgáltatásra vonatkozó mérőszámok diagramot jelenít meg. A lista elejéről a metrikák diagram csempe a Szerkesztés majd választásakor a diagram szerkesztése lehetőséget panel nyílik meg, de nem jelennek meg a beállítások szerkesztéséhez metrikákat.
+- <!-- 2050709 --> A felügyeleti portálon nincs lehetőség a Blob service, Table service vagy Queue szolgáltatás tármetrikák szerkesztése. Nyissa meg a Storage, és válassza ki a blob, tábla vagy üzenetsor-szolgáltatás csempéjét, amikor egy új panel nyílik meg, amely megjeleníti az adott szolgáltatásnak a teljesítménymetrikák diagramja. Majd válassza a felső a metrikák diagram csempe szerkesztése, ha a diagram szerkesztése panel megnyílik, de nem jeleníti meg a beállítások szerkesztéséhez metrikák.
 
-- Nem lehet a számítási és tárolási erőforrások megtekintése a felügyeleti portálon lehetséges. A probléma oka hiba jelentendő helytelenül sikeres frissítés a frissítés telepítése során. Ha a probléma akkor fordul elő, forduljon a Microsoft ügyfél-támogatási szolgálathoz segítségért.
+- Ez nem lehetséges számítási és tárolási erőforrások megtekintése a felügyeleti portálon. A probléma oka hiba történt a frissítés sikeres helytelenül jelenti a frissítés telepítése során. Ha a probléma akkor fordul elő, forduljon segítségért a Microsoft ügyfél-támogatási szolgálathoz.
 
-- A portál üres irányítópult jelenhet meg. Az irányítópult helyreállításához válassza ki a fogaskerék ikonra a portál jobb felső sarokban, majd válassza ki **alapértelmezett beállításainak visszaállítása**.
+- Előfordulhat, hogy megjelenik egy üres irányítópult, a portálon. Szeretné használni az irányítópultot, kattintson a fogaskerék ikonra a portál jobb felső sarokban, és válassza **alapértelmezett beállítások visszaállítása**.
 
-- Felhasználói előfizetések eredmények az árva erőforrások törlése. A probléma megoldásához először törölnie a felhasználói erőforrásokat és a teljes erőforráscsoport, és törölje a felhasználó előfizetések.
+- Felhasználói előfizetések eredmények az árva erőforrások törlése. Áthidaló megoldásként először törölje a felhasználó vagy a teljes erőforráscsoportot, és törölje a felhasználói előfizetések.
 
-- Az előfizetéshez az Azure-verem portálok engedélyek nem lehet megtekinteni. A probléma megoldásához a PowerShell használatával ellenőrizze az engedélyeket.
+- Engedélyek nem tekintheti meg az Azure Stack portálok használata az előfizetéshez. Áthidaló megoldásként a PowerShell segítségével ellenőrizze az engedélyeket.
 
-- A felügyeleti portál irányítópultján a frissítés csempe nem jelenik meg a frissítésekkel kapcsolatos információk. A probléma megoldásához kattintson a csempére kattintva frissítse azt.
+- A frissítés csempét az irányítópulton, a felügyeleti portálon, nem jelennek meg a frissítésekkel kapcsolatos információk. A probléma megoldásához kattintson a csempére, és frissítse azt.
 
-- A felügyeleti portálon vonatkozó kritikus riasztás láthatja a *Microsoft.Update.Admin* összetevő. A riasztás nevét, leírását és javítási összes jeleníti meg:  
-    - *Hiba – hiányzik a sablon FaultType ResourceProviderTimeout.*
+- A felügyeleti portálon, megjelenhet egy kritikus riasztása a következőhöz a *Microsoft.Update.Admin* összetevő. A riasztás nevét, leírását és szervizelési összes állapotúként jelennek meg:  
+    - *Hiba – hiányzik a sablon typu FaultType ResourceProviderTimeout.*
 
   Ez a riasztás biztonságosan figyelmen kívül hagyhatja. 
 
 
-#### <a name="health-and-monitoring"></a>Állapot- és figyelés
-- <!-- 1264761 - IS ASDK -->  A riasztásokat a *állapotfigyelő vezérlő* komponenst, amely rendelkezik a következő adatokat:  
+#### <a name="health-and-monitoring"></a>Állapot és figyelés
+- <!-- 1264761 - IS ASDK -->  A riasztásokat a *egészségügyi vezérlő* összetevő, amely rendelkezik a következő adatokat:  
 
-   Riasztási #1:
-   - NAME: Infrastruktúra-szerepkör nem kifogástalan
+   #1 riasztás:
+   - NAME: Infrastruktúra-szerepkör nem megfelelő állapotú
    - SÚLYOSSÁG: figyelmeztetés
-   - ÖSSZETEVŐ: Rendszerállapot-vezérlő
-   - Leírás: A rendszerállapot-vezérlő szívverés képolvasó nem érhető el. Ez érinthet állapotjelentések és metrikákat.  
+   - ÖSSZETEVŐ: Állapotfigyelő vezérlő
+   - Leírás: A health vezérlő szívverési képolvasó nem érhető el. Ez érinthet rendszerállapot-jelentések és metrikákat.  
 
   Riasztási #2:
-   - NAME: Infrastruktúra-szerepkör nem kifogástalan
+   - NAME: Infrastruktúra-szerepkör nem megfelelő állapotú
    - SÚLYOSSÁG: figyelmeztetés
-   - ÖSSZETEVŐ: Rendszerállapot-vezérlő
-   - Leírás: A rendszerállapot vezérlő tartalék képolvasó nem érhető el. Ez érinthet állapotjelentések és metrikákat.
+   - ÖSSZETEVŐ: Állapotfigyelő vezérlő
+   - Leírás: A health vezérlő tartalék képolvasó nem érhető el. Ez érinthet rendszerállapot-jelentések és metrikákat.
 
-  Mindkét riasztás biztonságosan figyelmen kívül hagyhatja. Ezek automatikusan megszűnik adott idő alatt.  
+  Mindkét riasztás biztonságosan figyelmen kívül hagyhatja. Ezek automatikusan megszűnik idővel.  
 
 
 #### <a name="marketplace"></a>Piactér
-- A felhasználók megkeresheti a teljes piactérre előfizetés nélkül, és láthatja például tervek és ajánlatok felügyeleti elemeket. Ezek az elemek nem működőképes a felhasználók számára is.
+- A felhasználók megkeresheti a teljes piactérre előfizetés nélkül, és megtekintheti a felügyeleti elemek, például a csomagokat és ajánlatokat. Ezek az elemek nem működik a felhasználók számára is.
 
 
 
 #### <a name="compute"></a>Compute
-- A virtuálisgép-méretezési csoportok skálázási beállításai nem érhetők el a portálon. Áthidaló megoldásként használja [Azure PowerShell](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-manage-powershell#change-the-capacity-of-a-scale-set). PowerShell-verzió különbségek, miatt kell használnia a `-Name` paraméter helyett `-VMScaleSetName`.
+- A virtual machine scale sets méretezési beállításait a portálon nem érhetők el. Áthidaló megoldásként használhatja [Azure PowerShell-lel](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-manage-powershell#change-the-capacity-of-a-scale-set). PowerShell-verzió különbségek, miatt kell használnia a `-Name` paraméter helyett `-VMScaleSetName`.
 
-- Nyissa meg a portálon beállított rendelkezésre állási létrehozásakor **új** > **számítási** > **rendelkezésre állási csoport**, csak hozhat létre egy rendelkezésre állási csoport egy tartalék tartomány és a frissítési tartomány 1. A probléma megoldásához, amikor egy új virtuális gép létrehozása, hozzon létre a rendelkezésre állási csoportot a powershellel, CLI-t, vagy a portálon.
+- Amikor létrehoz egy rendelkezésre állási csoportot a portálon a **új** > **számítási** > **rendelkezésre állási csoport**, csak hozhat létre egy rendelkezésre állási csoport egy tartalék tartomány és a frissítési tartomány 1. Áthidaló megoldásként egy új virtuális gép létrehozásakor, a rendelkezésre állási csoportot használja a Powershellt, CLI-t, vagy létrehozása a portálon.
 
-- Az Azure-verem felhasználói portál virtuális gépek létrehozásakor, a portál megjeleníti, hogy a D sorozat VM csatolhat adatlemezek száma helytelen. Az összes támogatott D sorozat virtuális gépek lehetővé teszi tetszőleges számú adatlemezek Azure beállításként.
+- Az Azure Stack felhasználói portál virtuális gépek létrehozásakor a portál megjeleníti, amelyek a D sorozatú virtuális gépek csatlakoztathat adatlemezek száma helytelen. Az összes támogatott D sorozatú virtuális gépek, az Azure konfigurációs lehetővé teszi tetszőleges számú adatlemezeket.
 
-- Egy Virtuálisgép-lemezkép nem hozható létre, amikor egy sikertelen elem, amely nem törölhető, előfordulhat, hogy a virtuális gép képek számítási panel hozzáadni.
+- Egy Virtuálisgép-lemezkép nem hozható létre, amikor egy sikertelen elem, amely nem törölhető, előfordulhat, hogy lehet hozzáadni a VM-lemezképek számítás panel.
 
-  A probléma megoldásához hozzon létre egy új Virtuálisgép-lemezkép, amely a Hyper-V segítségével hozhatók létre üres virtuális merevlemez (New-VHD-elérési út C:\dummy.vhd-- SizeBytes rögzített 1 GB-os). Ez a folyamat kell hárítsa el a problémát, amely megakadályozza a sikertelen elem törlése. Ezt követően a dummy lemezkép létrehozása után 15 perc sikeresen törlése.
+  Áthidaló megoldásként hozzon létre egy új Virtuálisgép-lemezkép hozható létre a Hyper-V keresztül próba VHD-vel (New-VHD-elérési út C:\dummy.vhd – rögzített - SizeBytes 1 GB-os). Ez a folyamat kell kijavítani a problémát, amely megakadályozza, hogy a sikertelen elem törlése. Ezt követően a helyőrző rendszerkép létrehozása után 15 percig sikeresen törölheti.
 
-  Ezután próbálkozzon redownload, amely korábban nem sikerült Virtuálisgép-lemezkép.
+  Ezután próbálkozzon töltse a Virtuálisgép-rendszerképet, amely korábban nem sikerült.
 
--  Ha a kiterjesztést a virtuális gép üzembe helyezéséhez a kiépítés túl sokáig tart, felhasználók hagyja, hogy a létesítési időtúllépési helyett a folyamat felszabadítani, vagy törölje a virtuális gép leállítására tett kísérlet.  
+-  Ha egy virtuális gép üzembe helyezése a bővítmény kiépítési túl hosszú időt vesz igénybe, felhasználók hagyja, hogy a kiépítési időtúllépési helyett a folyamat fel vagy töröljön a virtuális gép leállítása.  
 
-- <!-- 1662991 --> Linux Virtuálisgép-diagnosztika Azure verem nem támogatott. Engedélyezett Virtuálisgép-diagnosztika a Linux virtuális gép telepítésekor a központi telepítés sikertelen lesz. A központi telepítés is sikertelen lesz, ha engedélyezi a Linux virtuális gép alapvető metrikák diagnosztikai beállításait.  
+- <!-- 1662991 --> Linux rendszerű virtuális gép diagnosztikai nem támogatott az Azure Stackben. A Virtuálisgép-diagnosztika engedélyezve van egy Linux rendszerű virtuális Gépet helyez üzembe, a központi telepítés sikertelen lesz. Az üzembe helyezés akkor is sikertelen, ha engedélyezi a Linux rendszerű virtuális gép alapvető metrikák diagnosztikai beállításokon keresztül.  
 
 
 #### <a name="networking"></a>Hálózat
-- Miután egy virtuális Gépet létrehozták, és a társított egy nyilvános IP-cím, IP-címet a virtuális gép nem szüntesse meg. Disassociation úgy tűnik, hogy működik, de a korábban hozzárendelt nyilvános IP-cím marad az eredeti virtuális társítva.
+- Miután egy virtuális Gépet létrehozni, és társított nyilvános IP-címet, IP-címet a virtuális gép nem szüntesse meg. Társításának úgy tűnik, hogy működik, de az előzőleg hozzárendelt nyilvános IP-cím marad az eredeti virtuális gép társítva.
 
-  Jelenleg létrehozhat új virtuális gépek csak új nyilvános IP-címet kell használnia.
+  Jelenleg csak új nyilvános IP-címeket kell használnia az új virtuális gépek létrehozása.
 
-  Ez akkor fordul elő, akkor is, ha egy új virtuális géphez az IP-cím ismételt hozzárendelése (más néven a *virtuális IP-címcsere*). Az összes jövőbeni megpróbál a kapcsolaton keresztül a eredetileg társított virtuális Gépet, és nem egy IP-cím eredményén keresztül kapcsolódni.
+  Ez akkor fordul elő, akkor is, ha új virtuális gép IP-cím ismételt hozzárendelése (más néven egy *virtuális IP-címcsere*). Az összes jövőbeli próbál meg ezt az IP cím eredményt kapcsolaton keresztül a eredetileg kapcsolódó virtuális gép, és a egy újra csatlakozhat.
 
 
 
-- Azure verem támogatja egyetlen *helyi hálózati átjáró* / IP-címet. Ez az összes bérlői előfizetések között. Az első helyi hálózati átjáró kapcsolat létrehozására, későbbi helyi hálózati átjáró erőforrás létrehozása a azonos IP-címmel kísérlet után sem.
+- Az Azure Stack is támogatja egyetlen *helyi hálózati átjáró* IP-címenként. Ez az összes bérlői előfizetések között. Az első helyi hálózati átjáró kapcsolatának, ezt követő létrehozását, hozzon létre egy helyi hálózati átjáró erőforrás azonos IP-címmel rendelkező kísérlet után le lesznek tiltva.
 
-- A virtuális hálózat DNS-kiszolgáló használatára létrehozott *automatikus*, változó számára egy egyéni DNS-kiszolgáló sikertelen. A frissített beállításokkal nem elküldte azokat a virtuális gépekhez a Vneten belül.
+- A DNS-kiszolgáló beállítását a létrehozott virtuális hálózat *automatikus*, változó, egy egyéni DNS-kiszolgáló meghibásodik. A frissített beállításokat nem kerülnek az adott virtuális hálózatban lévő virtuális gépen.
 
-- Az Azure verem nem támogatja a további hálózati adapterek hozzáadása egy Virtuálisgép-példány, a virtuális gép telepítését követően. Ha a virtuális gép több hálózati adapter szükséges, akkor meg kell adni a központi telepítéskor.
+- Az Azure Stack nem támogatja a virtuális gép üzembe helyezése után további hálózati adapterek hozzáadása egy Virtuálisgép-példánnyal. Ha a virtuális gép több hálózati adaptert igényel, akkor meg kell határozni központi telepítéskor.
 
-- <!-- 2096388 --> A felügyeleti portál használatával nem frissíteni a hálózati biztonsági csoport szabályainak. 
+- <!-- 2096388 --> A felügyeleti portálon egy hálózati biztonsági csoportra vonatkozó szabályainak frissítése nem használhat. 
 
-    Az App Service megkerülő megoldás: a távoli asztal a vezérlő példányokra van szüksége, ha módosítja a biztonsági szabályok belül a hálózati biztonsági csoportok a PowerShell használatával.  Az alábbiakban példákat *engedélyezése*, majd állítsa vissza a konfiguráció *megtagadása*:  
+    Megkerülő megoldás az App Service: a tartományvezérlő-példányok távoli asztal kell, ha módosítja a biztonsági szabályok belül a hálózati biztonsági csoportok, a PowerShell használatával.  Az alábbiakban példákat *engedélyezése*, majd állítsa vissza a konfigurációt a *megtagadása*:  
     
     - *Engedélyezése:*
  
@@ -259,31 +259,31 @@ Az alábbiakban telepítés utáni build kapcsolatos ismert problémák **201803
         ```
 
 
-#### <a name="sql-and-mysql"></a>Az SQL és MySQL
-- A folytatás előtt tekintse át a fontos Megjegyzés: a [megkezdése előtt](#before-you-begin) közelében elindítása ezek a kibocsátási megjegyzéseket.
+#### <a name="sql-and-mysql"></a>SQL- és MySQL
+- A folytatás előtt tekintse át a fontos megjegyzést a [megkezdése előtt](#before-you-begin) közel kezdete ezek a kibocsátási megjegyzéseket.
 
-- Akár egy óraba felhasználók adatbázisokat hozhat létre egy új MySQL- vagy SQL-környezetben is igénybe vehet.
+- Akár egy óra elteltével a felhasználó adatbázist is létrehozhat egy új SQL vagy MySQL típusú központi telepítés is igénybe vehet.
 
-- Az erőforrás-szolgáltató, hogy a gazdagép SQL vagy MySQL elemek létrehozásához kiszolgálókon támogatott. A gazdagép-kiszolgálón létrehozott elemek, nem az erőforrás-szolgáltató által létrehozott okozhatja hibás állapotban.  
+- Konfigurációelemek létrehozása a kiszolgálókon, a fogadó SQL vagy MySQL csak az erőforrás-szolgáltató támogatott. A gazdagép-kiszolgálón létrehozott elemek nem az erőforrás-szolgáltató által létrehozott egy nem megfelelő állapot eredményezhet.  
 
-- <!-- IS, ASDK --> Nem támogatottak a különleges karaktereket, szóközöket és időszakok, beleértve a **termékcsalád** neve, amikor az SQL és a MySQL-szolgáltatók hoz létre a Termékváltozat.
+- <!-- IS, ASDK --> Különleges karaktereket, szóközöket és időszakok, többek között nem támogatottak a **termékcsalád** nevezze a Termékváltozat létrehozott SQL- és MySQL erőforrás-szolgáltatókat.
 
 > [!NOTE]  
-> Miután frissítette az Azure verem 1803, továbbra is használja az SQL és MySQL erőforrás-szolgáltató korábban már telepített.  Azt javasoljuk, hogy frissítse az SQL és MySQL amikor elérhetővé válik az új verziót. Azure-vermét, például frissítések alkalmazása az SQL és a MySQL-szolgáltatók egymás után.  Például 1711 verzióját használja, ha először alkalmazza a 1712, majd 1802 verziója, és frissítse a 1803.      
+> Miután frissítette az Azure Stack 1803, továbbra is használhatja az SQL- és MySQL erőforrás-szolgáltatókat korábban már telepített.  Azt javasoljuk, hogy frissítse az SQL és a MySQL amikor új kiadása elérhetővé válik. Azure Stack, például frissítések alkalmazása az SQL- és MySQL erőforrás-szolgáltatók egymás után.  Például 1711 verzióját használja, ha először a alkalmazni 1712, majd az 1802-es verzióját, és frissítse az 1803.      
 >   
-> Frissítés 1803 telepítése nem befolyásolja a felhasználók által MySQL vagy az SQL-erőforrás-szolgáltató aktuális használatát.
-> Az erőforrás-szolgáltató használata verziója, függetlenül a felhasználók adatait, a hozzájuk tartozó adatbázisok nincs megszáradásukig, és elérhető marad.    
+> A telepítés, frissítés 1803 nem befolyásolja a felhasználók által SQL vagy MySQL típusú erőforrás-szolgáltató jelenlegi felhasználása.
+> Az erőforrás-szolgáltatókat használ verziójától függetlenül adatbázisaikat a felhasználók adatait nem megszáradásukig, és elérhető marad.    
 
 
 
 #### <a name="app-service"></a>App Service
-- Ahhoz, hogy az első Azure-függvény létre előfizetést felhasználók regisztrálnia kell a storage erőforrás-szolgáltató.
+- Felhasználók, az első Azure-függvény létrehozása az előfizetés előtt regisztrálnia kell a tárolásierőforrás-szolgáltató.
 
-- Ahhoz, hogy az infrastruktúra kiterjesztése olyan esetekben (munkavállalók, kezelési, előtér-szerepkörök), PowerShell számítás a kibocsátási megjegyzésekben leírt módon kell használnia.
+- Annak érdekében, hogy a horizontális felskálázás infrastruktúra (feldolgozók, felügyeleti, előtér-szerepkörök), PowerShell számítási a kibocsátási megjegyzésekben leírtak szerint kell használnia.
 
 
 #### <a name="usage"></a>Használat  
-- Használati nyilvános IP-használat mérési adatokat jeleníti meg az azonos *EventDateTime* érték az egyes rekordokhoz ahelyett, hogy a *TimeDate* tájékoztat, hogy a rekord létrehozásának stamp. Ezeket az adatokat jelenleg nem használható a nyilvános IP-cím használatának pontos lehetet.
+- Használati nyilvános IP-használati mérőszámok adatait jeleníti meg, azonos *EventDateTime* érték helyett minden egyes rekordja esetében a *TimeDate* , amely megjeleníti a rekord létrehozásának stamp. Ezeket az adatokat jelenleg nem használható nyilvános IP-címek használata pontos nyilvántartása végrehajtásához.
 
 <!--
 #### Identity
@@ -291,20 +291,20 @@ Az alábbiakban telepítés utáni build kapcsolatos ismert problémák **201803
 
 
 
-#### <a name="downloading-azure-stack-tools-from-github"></a>A Githubból Azure verem eszközök letöltése
-- Használatakor a *meghívása webrequest* PowerShell parancsmag használatával töltheti le az Azure-verem eszközök a Githubból, hibaüzenet:     
-    -  *Invoke-webrequest: A kérelmet megszakították: SSL/TLS biztonságos csatorna nem hozható létre.*     
+#### <a name="downloading-azure-stack-tools-from-github"></a>Az Azure Stack-eszközök letöltése a Githubról
+- Használatakor a *invoke-webrequest* PowerShell-parancsmag használatával töltse le az Azure Stack-eszközök a Githubról, hibaüzenetet kap:     
+    -  *Invoke-webrequest: A kérés megszakadt: nem sikerült létrehozni az SSL/TLS biztonságos csatornát.*     
 
-  Ez a hiba oka a legutóbbi GitHub támogatási érvénytelenítése Tlsv1 és Tlsv1.1 kriptográfiai szabványok (a PowerShell alapértelmezett). További információkért lásd: [gyenge kriptográfiai szabványok eltávolítási figyelmeztetés](https://githubengineering.com/crypto-removal-notice/).
+  Ez a hiba oka egy legutóbbi GitHub támogatás elavulásának Tlsv1 és Tlsv1.1 titkosítási szabványok (a PowerShell-alapértelmezett). További információkért lásd: [gyenge titkosítási szabványok eltávolítási értesítés](https://githubengineering.com/crypto-removal-notice/).
 
-  A probléma megoldásához vegye fel `[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12` a PowerShell-konzolon TLSv1.2 használandó, ha a letöltés a GitHub-adattárak kényszerítheti a parancsfájl elején.
+  A probléma megoldásához adja hozzá `[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12` kényszerítése a PowerShell-konzol használatához TLSv1.2 GitHub-adattárak való letöltése esetén a parancsfájl elejére.
 
 
 ## <a name="download-the-update"></a>A frissítés letöltése
-Letöltheti az Azure verem 1803 frissítési csomagot [Itt](https://aka.ms/azurestackupdatedownload).
+Letöltheti az Azure Stack 1803 frissítési csomagot [Itt](https://aka.ms/azurestackupdatedownload).
 
 
 ## <a name="see-also"></a>Lásd még
-- A privilegizált végpont (EGP) segítségével figyelheti, és folytassa a frissítést, lásd: [figyelése Azure verem használatával a privilegizált végpont frissítések](azure-stack-monitor-update.md).
-- A frissítés-kezelés az Azure-verem áttekintését lásd: [kezelheti a frissítéseket az Azure-verem áttekintés](azure-stack-updates.md).
-- Az Azure veremnek megfelelő frissítések alkalmazásával kapcsolatos további információkért lásd: [Azure verem frissítések alkalmazása](azure-stack-apply-updates.md).
+- Az emelt szintű végpontját (EGP) használatával figyelheti, és folytathatja a frissítéseket, lásd: [monitorozása az Azure Stack használatával a privilegizált végpont frissítések](azure-stack-monitor-update.md).
+- A frissítéskezelés az Azure Stackben áttekintését lásd: [kezelheti a frissítéseket az Azure Stack áttekintés](azure-stack-updates.md).
+- Az Azure Stack frissítések alkalmazásával kapcsolatos további információkért lásd: [alkalmazza a frissítéseket az Azure Stackben](azure-stack-apply-updates.md).

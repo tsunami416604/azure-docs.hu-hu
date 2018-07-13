@@ -1,6 +1,6 @@
 ---
 title: Leküldéses értesítések hozzáadása iOS-alkalmazás az Azure Mobile Apps
-description: Megtudhatja, hogyan küldhet leküldéses értesítéseket az iOS-alkalmazás az Azure Mobile Apps segítségével.
+description: Ismerje meg, hogyan küldhet leküldéses értesítéseket az iOS-alkalmazás az Azure Mobile Apps segítségével.
 services: app-service\mobile
 documentationcenter: ios
 manager: crdun
@@ -15,46 +15,46 @@ ms.topic: article
 ms.date: 10/10/2016
 ms.author: crdun
 ms.openlocfilehash: 1fd90df3b6935d35834e1f571e80b945716b55ff
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2018
-ms.locfileid: "29116670"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38307255"
 ---
-# <a name="add-push-notifications-to-your-ios-app"></a>Leküldéses értesítések hozzáadása az iOS-alkalmazás
+# <a name="add-push-notifications-to-your-ios-app"></a>Leküldéses értesítések hozzáadása iOS-alkalmazáshoz
 [!INCLUDE [app-service-mobile-selector-get-started-push](../../includes/app-service-mobile-selector-get-started-push.md)]
 
 ## <a name="overview"></a>Áttekintés
-Ebben az oktatóanyagban leküldéses értesítések hozzáadása a [iOS gyors üzembe helyezés] projektre, hogy egy leküldéses értesítést küld az eszköz minden alkalommal, amikor egy olyan rekordot csatlakoztatva van.
+Ebben az oktatóanyagban a leküldéses értesítések hozzáadása az [iOS-es rövid útmutató] projekthez, hogy a leküldéses értesítést küld az eszköz minden alkalommal, amikor a rendszer beszúr egy rekordot.
 
-Ha nem használja a letöltött gyorsútmutató-projekt, szüksége lesz a leküldéses értesítési kiterjesztési csomagot. További információkért lásd: [használható a .NET-háttérrendszer server SDK az Azure Mobile Apps a](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md) útmutató.
+Ha nem használja a letöltött gyorsútmutató-kiszolgálói projektet, szüksége lesz a leküldéses értesítési kiterjesztési csomag. További információkért lásd: [használható a .NET háttérkiszolgáló-SDK az Azure Mobile Apps a](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md) útmutató.
 
-A [iOS-szimulátorban nem támogatja a leküldéses értesítések](https://developer.apple.com/library/ios/documentation/IDEs/Conceptual/iOS_Simulator_Guide/TestingontheiOSSimulator.html). Egy fizikai iOS-eszközön van szüksége, és egy [Apple Fejlesztőprogrambeli tagság](https://developer.apple.com/programs/ios/).
+A [az iOS-szimulátor nem támogatja a leküldéses értesítések](https://developer.apple.com/library/ios/documentation/IDEs/Conceptual/iOS_Simulator_Guide/TestingontheiOSSimulator.html). Kell egy fizikai iOS-eszköz és a egy [Apple Fejlesztőprogrambeli tagság](https://developer.apple.com/programs/ios/).
 
 ## <a name="configure-hub"></a>Értesítési központ konfigurálása
 [!INCLUDE [app-service-mobile-configure-notification-hub](../../includes/app-service-mobile-configure-notification-hub.md)]
 
-## <a id="register"></a>Regisztrálja az alkalmazást a leküldéses értesítésekre
+## <a id="register"></a>Alkalmazás regisztrálása leküldéses értesítésekhez
 [!INCLUDE [Enable Apple Push Notifications](../../includes/enable-apple-push-notifications.md)]
 
-## <a name="configure-azure-to-send-push-notifications"></a>Leküldéses értesítések küldéséhez Azure konfigurálása
+## <a name="configure-azure-to-send-push-notifications"></a>Leküldéses értesítések küldése az Azure konfigurálása
 [!INCLUDE [app-service-mobile-apns-configure-push](../../includes/app-service-mobile-apns-configure-push.md)]
 
 ## <a id="update-server"></a>Leküldéses értesítések küldéséhez háttérbeli frissítése
 [!INCLUDE [app-service-mobile-dotnet-backend-configure-push-apns](../../includes/app-service-mobile-dotnet-backend-configure-push-apns.md)]
 
-## <a id="add-push"></a>Leküldéses értesítések hozzáadása az alkalmazáshoz
+## <a id="add-push"></a>Leküldéses értesítések hozzáadása alkalmazáshoz
 [!INCLUDE [app-service-mobile-add-push-notifications-to-ios-app.md](../../includes/app-service-mobile-add-push-notifications-to-ios-app.md)]
 
 ## <a id="test"></a>Teszt leküldéses értesítések
 [!INCLUDE [Test Push Notifications in App](../../includes/test-push-notifications-in-app.md)]
 
-## <a id="more"></a>More
-* Sablonok rugalmasan, a platformok közötti leküldéses értesítések és honosított leküldéses értesítések küldését. [Azure Mobile Apps készült ügyféloldali kódtár használata iOS hogyan](app-service-mobile-ios-how-to-use-client-library.md#templates) bemutatja, hogyan kell regisztrálni a sablonokat.
+## <a id="more"></a>Több
+* Sablonok lehetővé teszik, többplatformos leküldések és honosított leküldéses értesítést küldhet. [Azure Mobile Apps-Klienskódtárának használata iOS hogyan](app-service-mobile-ios-how-to-use-client-library.md#templates) bemutatja, hogyan regisztrálhat a sablonokat.
 
 <!-- Anchors.  -->
 
 <!-- Images. -->
 
 <!-- URLs. -->
-[iOS gyors üzembe helyezés]: app-service-mobile-ios-get-started.md
+[iOS-es rövid útmutató]: app-service-mobile-ios-get-started.md

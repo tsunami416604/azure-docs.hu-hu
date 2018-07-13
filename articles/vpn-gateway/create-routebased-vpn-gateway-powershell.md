@@ -1,6 +1,6 @@
 ---
-title: 'Útválasztó-alapú Azure VPN-átjáró létrehozása: PowerShell |} Microsoft Docs'
-description: Gyors létrehozása a PowerShell használatával útvonalalapú VPN-átjáró
+title: 'Útválasztó-alapú Azure VPN-átjáró létrehozása: PowerShell |} A Microsoft Docs'
+description: Gyorsan létrehozhat egy útvonalalapú VPN-átjáró PowerShell-lel
 services: vpn-gateway
 documentationcenter: na
 author: cherylmc
@@ -16,16 +16,17 @@ ms.workload: infrastructure-services
 ms.date: 04/04/2018
 ms.author: cherylmc
 ms.openlocfilehash: efa07a68cda60ea2d8256a8d068639305f7f4c86
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38295455"
 ---
-# <a name="create-a-route-based-vpn-gateway-using-powershell"></a>PowerShell-lel útvonalalapú VPN-átjáró létrehozása
+# <a name="create-a-route-based-vpn-gateway-using-powershell"></a>PowerShell-lel az útvonalalapú VPN-átjáró létrehozása
 
-Ez a cikk segít gyorsan létrehozhat egy útválasztó-alapú Azure VPN gateway PowerShell használatával. VPN-átjáró a helyszíni hálózathoz egy VPN-kapcsolat létrehozása során használatos. VPN-átjáró a Vnetek csatlakozhatnak is használhatja.
+Ez a cikk segít gyorsan létrehozhat egy útválasztó-alapú Azure VPN gatewayen a PowerShell használatával. VPN-átjáró a helyszíni hálózathoz egy VPN-kapcsolat létrehozása során használatos. Virtuális hálózatok csatlakoztatása VPN gateway használhatja.
 
-A cikkben leírt lépéseket hoz létre egy virtuális hálózatot, alhálózatot, egy átjáró-alhálózatot és útválasztó-alapú VPN-átjáró (virtuális hálózati átjáró). Miután befejezte az átjáró létrehozása, majd létrehozhat kapcsolatokat. Ezeket a lépéseket az Azure-előfizetés szükséges. Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
+A jelen cikkben ismertetett lépések hoz létre virtuális hálózat, alhálózat, egy átjáró-alhálózatot és egy útvonalalapú VPN-átjáró (virtuális hálózati átjáró). Miután az átjáró létrehozása befejeződött, majd létrehozhat kapcsolatokat. Ezeket a lépéseket az Azure-előfizetés szükséges. Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 
 [!INCLUDE [cloud-shell-powershell.md](../../includes/cloud-shell-powershell.md)]
 
@@ -41,7 +42,7 @@ New-AzureRmResourceGroup -Name TestRG1 -Location EastUS
 
 ## <a name="vnet"></a>Virtuális hálózat létrehozása
 
-Hozzon létre egy virtuális hálózatot a [New-AzureRmVirtualNetwork](/powershell/module/azurerm.network/new-azurermvirtualnetwork) paranccsal. Az alábbi példa létrehoz egy virtuális hálózatot nevű **VNet1** a a **EastUS** helye:
+Hozzon létre egy virtuális hálózatot a [New-AzureRmVirtualNetwork](/powershell/module/azurerm.network/new-azurermvirtualnetwork) paranccsal. A következő példában létrehozunk egy nevű virtuális hálózatot **VNet1** a a **EastUS** helye:
 
 ```azurepowershell-interactive
 $virtualNetwork = New-AzureRmVirtualNetwork `
@@ -51,7 +52,7 @@ $virtualNetwork = New-AzureRmVirtualNetwork `
   -AddressPrefix 10.1.0.0/16
 ```
 
-Hozzon létre egy alhálózati konfiguráció használata a [New-AzureRmVirtualNetworkSubnetConfig](/powershell/module/azurerm.network/new-azurermvirtualnetworksubnetconfig) parancsmag.
+Hozzon létre egy alhálózati konfigurációt a [New-AzureRmVirtualNetworkSubnetConfig](/powershell/module/azurerm.network/new-azurermvirtualnetworksubnetconfig) parancsmagot.
 
 ```azurepowershell-interactive
 $subnetConfig = Add-AzureRmVirtualNetworkSubnetConfig `
@@ -60,44 +61,44 @@ $subnetConfig = Add-AzureRmVirtualNetworkSubnetConfig `
   -VirtualNetwork $virtualNetwork
 ```
 
-A virtuális hálózati alhálózat-konfigurációját állítsa a [Set-AzureRmVirtualNetwork](/powershell/module/azurerm.network/Set-AzureRmVirtualNetwork) parancsmag.
+Az alhálózati konfigurációt a virtuális hálózat használatához állítsa a [Set-AzureRmVirtualNetwork](/powershell/module/azurerm.network/Set-AzureRmVirtualNetwork) parancsmagot.
 
 
 ```azurepowershell-interactive
 $virtualNetwork | Set-AzureRmVirtualNetwork
 ```
 
-## <a name="gwsubnet"></a>Egy átjáró alhálózatának hozzáadása
+## <a name="gwsubnet"></a>Átjáró-alhálózat hozzáadása
 
-Az átjáró alhálózatának tartalmazza a fenntartott IP-címek, amelyek a virtuális hálózati átjáró szolgáltatások használják. Az alábbi példák segítségével egy átjáró alhálózatának hozzáadása:
+Az átjáróalhálózat tartalmazza a fenntartott IP-címek, amelyek a virtuális hálózati átjáró-szolgáltatások használják. Használja az alábbi példák egy átjáró alhálózatának hozzáadása:
 
-Egy változó beállítását a virtuális hálózat.
+Egy változó beállítása a virtuális hálózat számára.
 
 ```azurepowershell-interactive
 $vnet = Get-AzureRmVirtualNetwork -ResourceGroupName TestRG1 -Name VNet1
 ```
 
-Az átjáró alhálózati használata létrehozása a [Add-AzureRmVirtualNetworkSubnetConfig](/powershell/module/azurerm.network/Add-AzureRmVirtualNetworkSubnetConfig) parancsmag.
+Hozzon létre az átjáró alhálózatot a [Add-AzureRmVirtualNetworkSubnetConfig](/powershell/module/azurerm.network/Add-AzureRmVirtualNetworkSubnetConfig) parancsmagot.
 
 ```azurepowershell-interactive
 Add-AzureRmVirtualNetworkSubnetConfig -Name 'GatewaySubnet' -AddressPrefix 10.1.255.0/27 -VirtualNetwork $vnet
 ```
 
-A virtuális hálózati alhálózat-konfigurációját állítsa a [Set-AzureRmVirtualNetwork](/powershell/module/azurerm.network/Set-AzureRmVirtualNetwork) parancsmag.
+Az alhálózati konfigurációt a virtuális hálózat használatához állítsa a [Set-AzureRmVirtualNetwork](/powershell/module/azurerm.network/Set-AzureRmVirtualNetwork) parancsmagot.
 
 ```azurepowershell-interactive
 $virtualNetwork | Set-AzureRmVirtualNetwork
 ```
 
-## <a name="PublicIP"></a>A nyilvános IP-cím kérése
+## <a name="PublicIP"></a>Nyilvános IP-cím kérése
 
-VPN-átjáró rendelkeznie kell egy dinamikusan kiosztott nyilvános IP-címet. A VPN-átjáró kapcsolatot hoz létre, ha azt a megadott IP-címet. Az alábbi példát követve egy nyilvános IP-cím kérése:
+VPN-átjáró dinamikusan lefoglalt nyilvános IP-címmel kell rendelkeznie. VPN-átjáró kapcsolatot hoz létre, ha ez az Ön által megadott IP-címét. Használja az alábbi példa egy nyilvános IP-cím:
 
 ```azurepowershell-interactive
 $gwpip= New-AzureRmPublicIpAddress -Name VNet1GWIP -ResourceGroupName TestRG1 -Location 'East US' -AllocationMethod Dynamic
 ```
 
-## <a name="GatewayIPConfig"></a>Az átjáró IP-címkonfiguráció létrehozása
+## <a name="GatewayIPConfig"></a>Hozzon létre az átjáró IP-címének konfigurációja
 
 Az átjáró konfigurációja meghatározza az alhálózatot és a használandó nyilvános IP-címet. A következő példa használatával hozza létre az átjáró konfigurációját.
 
@@ -108,7 +109,7 @@ $gwipconfig = New-AzureRmVirtualNetworkGatewayIpConfig -Name gwipconfig1 -Subnet
 ```
 ## <a name="CreateGateway"></a>A VPN-átjáró létrehozása
 
-VPN-átjáró is igénybe vehet, 45 perc vagy több létrehozásához. Az átjáró befejezése után a kapcsolat a virtuális hálózat és egy másik virtuális hálózat között is létrehozhat. Vagy a virtuális hálózat és egy helyszíni hely közötti kapcsolatot. Létre VPN gateway a [New-AzureRmVirtualNetworkGateway](/powershell/module/azurerm.network/New-AzureRmVirtualNetworkGateway) parancsmag.
+A VPN-átjáró létrehozása több mint 45 percet is igénybe vehet. Az átjáró befejezése után létrehozhat egy kapcsolatot a virtuális hálózat és a egy másik virtuális hálózat között. Vagy hozzon létre egy kapcsolatot a virtuális hálózat és a egy helyszíni hely között. Hozzon létre egy VPN-átjárót a [New-AzureRmVirtualNetworkGateway](/powershell/module/azurerm.network/New-AzureRmVirtualNetworkGateway) parancsmaggal.
 
 ```azurepowershell-interactive
 New-AzureRmVirtualNetworkGateway -Name VNet1GW -ResourceGroupName TestRG1 `
@@ -118,13 +119,13 @@ New-AzureRmVirtualNetworkGateway -Name VNet1GW -ResourceGroupName TestRG1 `
 
 ## <a name="viewgw"></a>A VPN-átjáró megtekintése
 
-A VPN gateway használatával megtekintheti a [Get-AzureRmVirtualNetworkGateway](/powershell/module/azurerm.network/Get-AzureRmVirtualNetworkGateway) parancsmag.
+A VPN gateway-t is megtekintheti a [Get-AzureRmVirtualNetworkGateway](/powershell/module/azurerm.network/Get-AzureRmVirtualNetworkGateway) parancsmagot.
 
 ```azurepowershell-interactive
 Get-AzureRmVirtualNetworkGateway -Name Vnet1GW -ResourceGroup TestRG1
 ```
 
-A kimeneti ebben a példában hasonlóan fog kinézni:
+A kimenet ebben a példában hasonlóan néz ki:
 
 ```
 Name                   : VNet1GW
@@ -169,15 +170,15 @@ BgpSettings            : {
      
 ```
 
-## <a name="viewgwpip"></a>A nyilvános IP-cím megtekintése
+## <a name="viewgwpip"></a>Nyilvános IP-címének megtekintése
 
-A VPN-átjáró nyilvános IP-címének megtekintéséhez használja a [Get-AzureRmPublicIpAddress](/powershell/module/azurerm.network/Get-AzureRmPublicIpAddress) parancsmag.
+A VPN-átjáró nyilvános IP-cím megtekintéséhez használja a [Get-AzureRmPublicIpAddress](/powershell/module/azurerm.network/Get-AzureRmPublicIpAddress) parancsmagot.
 
 ```azurepowershell-interactive
 Get-AzureRmPublicIpAddress -Name VNet1GWIP -ResourceGroupName TestRG1
 ```
 
-A példa egy válasz, az IP-cím értéke a nyilvános IP-cím.
+A példa választ, az IP-cím értéke a nyilvános IP-címet.
 
 ```
 Name                     : VNet1GWIP
@@ -216,9 +217,9 @@ Remove-AzureRmResourceGroup -Name TestRG1
 
 ## <a name="next-steps"></a>További lépések
 
-Miután az átjáró létrehozása befejeződött, a kapcsolat a virtuális hálózat és egy másik virtuális hálózat között is létrehozhat. Vagy a virtuális hálózat és egy helyszíni hely közötti kapcsolatot.
+Miután az átjáró létrehozása befejeződött, létrehozhat egy kapcsolatot a virtuális hálózat és a egy másik virtuális hálózat között. Vagy hozzon létre egy kapcsolatot a virtuális hálózat és a egy helyszíni hely között.
 
 > [!div class="nextstepaction"]
-> [Pont-pont kapcsolat létrehozása](vpn-gateway-create-site-to-site-rm-powershell.md)<br><br>
+> [Hozzon létre egy helyek közötti kapcsolat](vpn-gateway-create-site-to-site-rm-powershell.md)<br><br>
 > [Pont – hely kapcsolat létrehozása](vpn-gateway-howto-point-to-site-rm-ps.md)<br><br>
-> [Kapcsolatot létesíthet egy másik virtuális hálózatot](vpn-gateway-vnet-vnet-rm-ps.md)
+> [Hozzon létre egy kapcsolatot egy másik virtuális hálózathoz](vpn-gateway-vnet-vnet-rm-ps.md)

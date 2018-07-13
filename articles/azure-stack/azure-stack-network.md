@@ -1,6 +1,6 @@
 ---
-title: Hálózati integráció szempontjai integrált Azure verem rendszerek |} Microsoft Docs
-description: Ismerje meg, mi mindent datacenter hálózati integráció az többcsomópontos Azure veremnek megfelelő tervezését.
+title: Hálózati integráció szempontok az Azure Stack integrált rendszerek |} A Microsoft Docs
+description: Ismerje meg, mi mindent adatközpont hálózati integrálása az Azure Stack több csomópontos tervezése.
 services: azure-stack
 documentationcenter: ''
 author: jeffgilb
@@ -12,80 +12,80 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/09/2018
+ms.date: 07/11/2018
 ms.author: jeffgilb
 ms.reviewer: wamota
-ms.openlocfilehash: 752481186167fccb46d5bf3beb87c1507e0f4feb
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
-ms.translationtype: MT
+ms.openlocfilehash: 2d16d1dc7a53ca388b00ba02b6447e178a9f6edb
+ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "33936517"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38989237"
 ---
 # <a name="network-connectivity"></a>Hálózati kapcsolat
-Ez a cikk információival Azure verem hálózati infrastruktúra segítségével eldöntheti, hogyan Azure verem legjobb integrálhatók a meglévő hálózati környezethez. 
+Ez a cikk segít eldönteni, hogy a legjobb integrálása az Azure Stack a meglévő hálózati környezetbe az Azure Stack hálózati infrastruktúra információkat nyújt. 
 
 > [!NOTE]
-> Az Azure oszlopból (például www.bing.com) külső DNS-nevek feloldására, meg kell adnia a DNS-kiszolgálók DNS-kérések továbbításához. Azure verem DNS követelményeivel kapcsolatos további információkért lásd: [Azure verem datacenter integrációs - DNS](azure-stack-integrate-dns.md).
+> Az Azure Stack (például www.bing.com) külső DNS-nevek feloldására, meg kell adnia a DNS-kiszolgálók DNS-kérelmeket továbbítsa. Az Azure Stack DNS követelményeivel kapcsolatos további információkért lásd: [adatközpontban Azure Stack - integrációs DNS](azure-stack-integrate-dns.md).
 
 ## <a name="physical-network-design"></a>Fizikai hálózati terv
-Az Azure-verem megoldás rugalmas és magas rendelkezésre állású fizikai infrastruktúra a művelet és a szolgáltatások támogatásához szükséges. Az alábbi ábra a javasolt tervezési jelöli:
+Az Azure Stack megoldás támogatja a szolgáltatások és a működés rugalmas és magas rendelkezésre állású fizikai infrastruktúrát igényel. ToR böngészőből szegély kapcsolókhoz kimenő portok korlátozva, SFP + adathordozó és 1 GB vagy 10 GB-os átviteli sebességek esetén. Ellenőrizze a számítógépgyártó (OEM) hardver szállítójával a rendelkezésre állás érdekében. Az alábbi ábrán a javasolt tervezési jelöli:
 
-![Ajánlott Azure verem hálózati terv](media/azure-stack-network/recommended-design.png)
+![Ajánlott az Azure Stack hálózati terv](media/azure-stack-network/recommended-design.png)
 
 
 ## <a name="logical-networks"></a>Logikai hálózatok
-Logikai hálózatok a mögöttes fizikai hálózati infrastruktúra absztrakciós jelölik. Szervezése és egyszerűsítése érdekében a gazdagépek, virtuális gépek és szolgáltatások hálózati feladatok használhatók. Logikai hálózatok létrehozása részeként a hálózati helyek adható meg a virtuális helyi hálózatokat (VLAN), IP-alhálózatok és a logikai hálózat minden fizikai helyen társított IP alhálózat-VLAN párok jönnek létre.
+Logikai hálózatok jelentik az alapul szolgáló fizikai hálózati infrastruktúra absztrakciója. Szervezése és egyszerűsítése érdekében a gazdagépek, virtuális gépek és szolgáltatások hálózati feladatok használhatók. Logikai hálózat létrehozása részeként a hálózati telephelyek jönnek létre adható meg virtuális helyi hálózatokat (VLAN), IP-alhálózatok és a logikai hálózatra valamennyi fizikai helyen a társított IP-alhálózat/VLAN párokat.
 
-Az alábbi táblázat a logikai hálózatok és a kapcsolódó IPv4 alhálózati megadott tartományok figyelembe kell vennie:
+Az alábbi táblázat a logikai hálózatok és társított, meg kell tervezni az IPv4 alhálózati tartományok:
 
 | Logikai hálózat | Leírás | Méret | 
 | -------- | ------------- | ------------ | 
-| Nyilvános VIP | Azure verem használ a hálózati 32 cím összesen. Nyolc nyilvános IP-címek használhatók a verem Azure-szolgáltatások egy kis készletét, és a többi bérlő virtuális gépek által használt. Ha tervezi az App Service és az SQL erőforrás-szolgáltató, 7 több címet használja. | / 26 (62 gazdagépek) – /22 (1022 gazdagép)<br><br>Ajánlott = /24 (254 gazdagép) | 
-| Kapcsoló-infrastruktúra | Pont-pont típusú IP-címek útválasztásra, dedikált felügyeleti felületek, és a kapcsoló rendelt visszacsatolási címek váltani. | /26 | 
-| Infrastruktúra | Való kommunikációhoz használt Azure verem belső összetevőnél. | /24 |
-| Privát | A tárolóhálózat és titkos virtuális IP-címek használata. | /24 | 
-| BMC | A bmc-k, a fizikai állomáson folytatott kommunikációhoz használandó. | /27 | 
+| Nyilvános virtuális IP-cím | Az Azure Stack összesen 32 címet a hálózati használ. Az Azure Stack-szolgáltatások egy kis készletét nyolc nyilvános IP-címeket használja, és a többi bérlő virtuális gépek által használt. Ha azt tervezi, használja az App Service-ben és az SQL erőforrás-szolgáltatók, 7 további címeket használják. | / 26 (62 gazdagépek) – /22 (1022 gazdagép)<br><br>Ajánlott = /24 (254 gazdagép) | 
+| Kapcsoló-infrastruktúra | Az Útválasztás megállapítása, dedikált IP-címek pont-pont típusú váltson a felügyeleti felületek és a kapcsoló visszacsatolási címeket. | /26 | 
+| Infrastruktúra | Azure Stack belső összetevőinek való kommunikációhoz használt. | /24 |
+| Privát | A tárolóhálózat és a privát virtuális IP-cím használható. | /24 | 
+| BMC | A bmc-k a fizikai gazdagépeken folytatott kommunikáció során használt. | /27 | 
 | | | |
 
 ## <a name="network-infrastructure"></a>Hálózati infrastruktúra
-A hálózati infrastruktúra Azure verem több logikai hálózatok, a kapcsolók konfigurált áll. Az alábbi ábrán látható, ezeket a logikai hálózatokat, és hogyan integrálható a-tor (TOR) alaplapi felügyeleti vezérlővel (BMC), és szegély (ügyfél hálózati) kapcsolók.
+Az Azure Stack a hálózati infrastruktúra több logikai hálózatok, a kapcsolók konfigurált áll. Az alábbi ábrán látható, ezeket a logikai hálózatokat, és hogyan integrálható a top-of-rack (TOR), alaplapi felügyeleti vezérlőnek (BMC), és a szegély (ügyfélhálózat) kapcsolók.
 
 ![Logikai hálózati diagram és kapcsoló kapcsolatok](media/azure-stack-network/NetworkDiagram.png)
 
-### <a name="bmc-network"></a>BMC hálózati
-Ez a hálózat a felügyeleti hálózathoz csatlakozó összes az alaplapi felügyeleti vezérlők (más néven szolgáltatás processzorok, például iDRAC, iLO, iBMC, stb.) van kijelölve. Ha van ilyen, az életciklus állomás (HLH) ezen a hálózaton található, és rendelkezhetnek OEM adott szoftver hardver karbantartás vagy a figyelés. 
+### <a name="bmc-network"></a>BMC-hálózat
+Ezt a hálózatot a felügyeleti hálózathoz csatlakozó összes az alaplapi felügyeleti vezérlők (más néven szolgáltatás processzorok, például iDRAC, iLO, iBMC, stb.) van kijelölve. Ilyen esetekben az életciklus állomás (HLH) ezen a hálózaton található, és rendelkezhetnek OEM-specifikus szoftver hardver karbantartás és a figyelés. 
 
-A HLH is találhatók a telepítési virtuális gép (DVM). A DVM Azure verem központi telepítése során használt, és eltávolítják a telepítés befejezéséről. A DVM csatlakoztatott telepítési helyzetekben, teszteléséhez, ellenőrizze, és több összetevő elérésére internet-hozzáférés szükséges. Ezeket az összetevőket a vállalati hálózathoz; kívül és belül is lehet. például NTP, a DNS és Azure. Kapcsolat követelményeivel kapcsolatos további információkért lásd: a [Azure verem tűzfal integrációs NAT szakasz](azure-stack-firewall.md#network-address-translation). 
+A HLH is találhatók a virtuális gép (DVM üzembe helyezés). A DVM Azure Stack üzembe helyezése során használja, és üzembe helyezés befejezése után a rendszer eltávolítja. A DVM internet-hozzáféréssel a csatlakoztatott központi telepítési forgatókönyv teszteléséhez, érvényesítése és több összetevőből eléréséhez szükséges. Ezek az összetevők belüli és kívüli a vállalati hálózathoz; lehet. Ha például NTP, DNS és az Azure. Kapcsolódási követelményeivel kapcsolatos további információkért lásd: a [NAT szakaszban az Azure Stack tűzfal integrációs](azure-stack-firewall.md#network-address-translation). 
 
 ### <a name="private-network"></a>Magánhálózat
-A /24 (254 gazdagép IP-címekhez) hálózat az Azure-verem régió (nem bővíti ki a szegély kapcsoló eszközökre az Azure-verem régió túl) a saját, és két alhálózat oszlik:
+Ez /24 (254 gazdagép IP-címek) hálózat magánjellegű (nem bővíti ki a szegély kapcsoló eszközök az Azure Stack régió túli) az Azure Stack-régió, és két alhálózatra oszlik:
 
-- **Tárolóhálózat**. Egy /25 (126 gazdagép IP-címekhez) hálózati használatával támogatja a közvetlen tárolóhelyek és a Server Message Block (SMB) tárolási forgalom és a virtuális gép élő áttelepítés. 
-- **Belső virtuális IP-hálózat**. A/25 hálózati csak belső dedikált virtuális IP-címek esetében az szoftveres terheléselosztóként üzemeljen.
+- **Tárolóhálózat**. Egy /25 (126 gazdagép IP-címek) a közvetlen tárolóhelyek és a Server Message Block (SMB) tárolási forgalom és a virtuális gép élő áttelepítésének támogatásához használt hálózati. 
+- **Belső virtuális IP-hálózat**. A/25-ös hálózati a szoftveres terheléselosztó virtuális csak belső dedikált IP-cím.
 
-### <a name="azure-stack-infrastructure-network"></a>Verem Azure infrastruktúra-hálózathoz
-Ez/24 van számára kijelölt hálózat belső Azure verem összetevők, hogy kommunikál, és exchange-adatok egymás között. Ez az alhálózat elérhető IP-címet igényel, de tartják titokban megoldás hozzáférés-vezérlési listák (ACL) segítségével. Azt a szegély kapcsolók, kivéve egy kis méretű egyenértékű egy /27 tartomány túl irányíthatja át nem várt hálózati külső erőforrások és/vagy az internet eléréséhez szükséges néhány szolgáltatás által használatos. 
+### <a name="azure-stack-infrastructure-network"></a>Az Azure Stack infrastruktúra-hálózathoz.
+Ez/24 hálózati Azure Stack belső összetevőkre van kijelölve, így kommunikál, és adatokat egymás között. Ez az alhálózat elérhető IP-címet igényel, de titokban a megoldás hozzáférés-vezérlési listák (ACL-ek) használatával. Legyen irányítva, / 27-es méretű egyenértékű kis számos kivételével a szegély kapcsolók túli várhatóan nem hálózati ezen szolgáltatások által használt fel, ha a külső erőforrásokat és/vagy az internethez való hozzáférést igényelnek. 
 
-### <a name="public-infrastructure-network"></a>Nyilvános infrastruktúra-hálózathoz
-Ez/27 hálózati a kis közé az Azure-verem infrastruktúra-alhálózat már említettük, nem igényel nyilvános IP-címek, de azt internetelérés NAT vagy transzparens Proxy keresztül. Ez a hálózat oszt ki a sürgős helyreállítási konzol rendszer (ERCS) a, a ERCS VM internet-hozzáférést igényel, az Azure regisztrációs és infrastruktúra biztonsági mentés során. A ERCS virtuális Gépet a felügyeleti hálózathoz hibaelhárítási célból irányíthatóknak kell lenniük.
+### <a name="public-infrastructure-network"></a>Nyilvános infrastruktúra-hálózaton
+Ez/27-es hálózati a kis tartományt az Azure Stack infrastruktúra alhálózatról azt korábban említettük, nem igényel nyilvános IP-címek, de ehhez szükség NAT vagy a transzparens Proxy internet-hozzáféréssel. Ezt a hálózatot a válságkezelési helyreállítási konzol System (ERCS) számára lefoglalt, a ERCS virtuális gépek internet-hozzáférést igényel a regisztráció az Azure-bA és infrastruktúra biztonsági mentések során. A ERCS virtuális Géphez hibaelhárítás céljából a felügyeleti hálózathoz címeknek irányíthatóknak kell lenniük.
 
-### <a name="public-vip-network"></a>Nyilvános virtuális IP-hálózat
-A nyilvános virtuális IP-hálózati hozzá van rendelve a hálózati vezérlő Azure-készletben. Egy logikai hálózatot a kapcsoló nincs. A SLB címek készletét használja, és hozzárendeli/32 hálózatokra vonatkozó bérlői munkaterheléseket. A kapcsoló-útválasztási táblázat ezek 32 IP-cím van-e hirdetve BGP keresztül a rendelkezésre álló útvonalként. Ez a hálózat a külső érhető el vagy nyilvános IP-címet tartalmaz. Az Azure-verem infrastruktúra az első 31 címet a nyilvános virtuális IP-hálózati foglalja le, amíg a többi bérlői virtuális gépek által használt. Az alhálózaton hálózati mérete között lehet (64 gazdagépek) /26 legalább /22 (1022 gazdagépek) legfeljebb, azt javasoljuk, hogy tervezi-e egy/24 hálózati.
+### <a name="public-vip-network"></a>Nyilvános VIP-hálózat
+A nyilvános VIP-hálózat van rendelve a hálózati vezérlő az Azure Stackben. Nem áll a logikai hálózatot, a kapcsolóhoz. A szoftveres Terheléselosztó használja a címkészletet, és hozzárendeli/32 hálózatok bérlői számítási feladatok esetében. A kapcsoló útválasztási tábla 32-címeket, BGP-n keresztül a rendelkezésre álló láncot hirdesse meg. Ehhez a hálózathoz külső elérhető vagy nyilvános IP-címeket tartalmazza. Az Azure Stack-infrastruktúra fenntartja az első 31 címeket a nyilvános VIP-hálózat, míg a többi bérlő virtuális gépek által használt. Az alhálózat hálózati mérete legalább/26-os (64 gazdagép) terjedhet maximális /22 (1022 gazdagép), azt javasoljuk, hogy egy/24 tervezi hálózati.
 
 ### <a name="switch-infrastructure-network"></a>Infrastruktúra-hálózati kapcsoló
-Ez/26 hálózati az alhálózatot, amely tartalmazza a point-to-point irányítható IP/30-as (2 gazdagép IP-címekhez) alhálózat és a loopbacks, amelyek dedikált/32-alhálózatok sávon kapcsoló felügyeleti és BGP-útválasztó azonosítója. Lehet, hogy ezt az IP-címek irányítható kívülről, a Azure verem megoldás az adatközponthoz, azokat a magán- vagy nyilvános IP-cím lehet.
+Ez/26 hálózati az alhálózatot, amely tartalmazza a point-to-point irányítható IP/30 (2 gazdagép IP-címek) alhálózatot és a loopbacks, amelyek dedikált/32 alhálózatokat a sávon kívüli kapcsoló kezelése és a BGP-útválasztó azonosítója. Ez az IP-címek kívülről, a helyi adatközpontban az Azure Stack megoldás irányítható, magán- vagy nyilvános IP-címei lehetnek.
 
 ### <a name="switch-management-network"></a>Kapcsoló felügyeleti hálózat
-A /29 (6 gazdagép IP-címek) hálózati van kijelölve, a csatlakozás a kapcsolók a felügyeleti portokat. Engedélyezi a központi telepítés, a felügyeletet és hibaelhárítást a sávon kívüli hozzáférést. A fent említett kapcsoló infrastruktúra-hálózathoz alapján számítja ki.
+Ez akár/29 méretű (6 gazdagép IP-címek) hálózati csatlakozás a felügyeleti portokat, a kapcsolók van kijelölve. Engedélyezi a sávon kívüli hozzáférést az üzembe helyezés, a felügyelet és hibaelhárítás. A fent említett hálózati kapcsoló infrastruktúra kiszámítása történik.
 
-## <a name="publish-azure-stack-services"></a>Azure verem szolgáltatásokat
-Azure verem szolgáltatások felhasználók számára elérhetővé külső Azure veremből lesz szüksége. Az Azure verem hoz létre az infrastruktúra-szerepkörök különböző végpontok. Ezeket a végpontokat a nyilvános IP-címkészletből hozzárendelt virtuális IP-címmel. A DNS-bejegyzés jön létre a külső DNS-zónában, amelyek a központi telepítéskor megadott végpontok. A felhasználói portál például a DNS-állomás bejegyzés portál van hozzárendelve.  *&lt;régió >.&lt; teljesen minősített tartományneve >*.
+## <a name="publish-azure-stack-services"></a>Közzététel az Azure Stack-szolgáltatások
+A felhasználók számára elérhetővé tenni az Azure Stack-szolgáltatások, a külső Azure Stack kell. Az Azure Stack állít be az infrastruktúra-szerepkörök különböző végpontjait. Ezeket a végpontokat hozzárendelt virtuális IP-cím a nyilvános IP-címkészletből. Minden végpont az üzembe helyezéskor megadott külső DNS-zóna egy DNS-bejegyzés jön létre. Ha például a felhasználói portál hozzá van rendelve a DNS állomásbejegyzéssel portál.  *&lt;régió >.&lt; teljesen minősített tartományneve >*.
 
 ### <a name="ports-and-urls"></a>Portok és URL-címek
-Azure verem szolgáltatásokat (például a portálok, Azure Resource Manager-, DNS, stb.) külső hálózatok számára elérhető, engedélyeznie kell a fenti végpontokkal való bejövő forgalom az adott URL-címeket, portokat és protokollokat.
+Azure Stack-szolgáltatásokat (például a portálok, az Azure Resource Manager-, DNS, stb.) elérhető külső hálózatokhoz, engedélyeznie kell a bejövő forgalmat a fenti végpontokkal az adott URL-címeket, portokat és protokollokat.
  
-Központi telepítés, ahol a transzparens proxy kimenő kapcsolatot biztosítani a hagyományos proxykiszolgálót, engedélyeznie kell a adott portok és URL-címeket mindkét [bejövő](https://docs.microsoft.com/azure/azure-stack/azure-stack-integrate-endpoints#ports-and-protocols-inbound) és [kimenő](https://docs.microsoft.com/azure/azure-stack/azure-stack-integrate-endpoints#ports-and-urls-outbound) kommunikációt. Idetartozik a portok és URL-címek identitás, piactér szindikálási, javítási és frissítési, regisztrációs és használati adatok.
+A központi telepítés, ha egy transzparens proxy kimenő portokhoz hagyományos proxykiszolgálónak engedélyeznie kell a adott portok és URL-címek is [bejövő](https://docs.microsoft.com/azure/azure-stack/azure-stack-integrate-endpoints#ports-and-protocols-inbound) és [kimenő](https://docs.microsoft.com/azure/azure-stack/azure-stack-integrate-endpoints#ports-and-urls-outbound) kommunikációt. Ezek közé tartozik a portok és URL-címek az identitás, marketplace tartalomtípus-gyűjtési, javítási és frissítési, regisztrációs és használati adatokat.
 
 ## <a name="next-steps"></a>További lépések
 [Szegély kapcsolat](azure-stack-border-connectivity.md)

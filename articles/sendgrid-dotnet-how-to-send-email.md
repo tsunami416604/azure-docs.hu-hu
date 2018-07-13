@@ -1,6 +1,6 @@
 ---
-title: A SendGrid e-mail szolgáltatás (.NET) használatával |} Microsoft Docs
-description: Megtudhatja, hogyan küldjön e-maileket a SendGrid e-mail szolgáltatás az Azure-on. A Kódminták C# nyelven íródtak, és a .NET API-t használja.
+title: A SendGrid e-mail szolgáltatással (.NET) használatával |} A Microsoft Docs
+description: Ismerje meg, hogyan e-mail küldése a SendGrid e-mail szolgáltatás az Azure-ban. C# nyelven írt kódmintákat, és a .NET API-val.
 services: ''
 documentationcenter: .net
 author: thinkingserious
@@ -15,66 +15,66 @@ ms.topic: article
 ms.date: 02/15/2017
 ms.author: dx@sendgrid.com
 ms.openlocfilehash: a5f07d02bfe4032d77a17e5972b88f6530125f28
-ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "27534855"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38634968"
 ---
-# <a name="how-to-send-email-using-sendgrid-with-azure"></a>Hogyan e-mailek küldése SendGrid az Azure-ral
+# <a name="how-to-send-email-using-sendgrid-with-azure"></a>Hogyan lehet E-mail küldése a SendGrid használatával az Azure-ral
 ## <a name="overview"></a>Áttekintés
-Ez az útmutató bemutatja, hogyan Azure a SendGrid e-mail szolgáltatás közös programozási feladatok elvégzéséhez. A Kódminták C nyelven íródtak\# és támogatja a .NET-szabvány 1.3. Az ismertetett forgatókönyvek hozhat létre, e-mailek, e-mailek küldéséhez, hozzáadása a mellékleteket, és különböző mail engedélyezése és nyomon követési beállítások közé tartozik. A SendGrid és e-mailek küldéséhez további információkért lásd: a [további lépések] [ Next steps] szakasz.
+Ez az útmutató bemutatja, hogyan hajthat végre gyakori programozási feladatokat, a SendGrid e-mail szolgáltatással az Azure-ban. A Kódminták C nyelven írt\# és támogatja a .NET Standard 1.3-as. Az ismertetett forgatókönyvek között megtalálható a hozhat létre, amely e-mailt, e-mailt küld, hozzáadása mellékleteket, és különböző mail engedélyezése és követési beállításai. A SendGrid és az e-mailt küld a további információkért lásd: a [további lépések] [ Next steps] szakaszban.
 
-## <a name="what-is-the-sendgrid-email-service"></a>Mi az a SendGrid E-mail szolgáltatás?
-SendGrid van egy [felhőalapú szolgáltatás] biztosít megbízható [tranzakciós e-mailben kézbesítésre], a méretezhetőség és a valós idejű elemzési rugalmas API-k, amelyek egyéni integrációs könnyedén együtt. Közös SendGrid használati esetek a következők:
+## <a name="what-is-the-sendgrid-email-service"></a>Mi az a SendGrid E-mail szolgáltatással?
+A SendGrid van egy [e-mail felhő alapú szolgáltatás] , amely megbízható biztosít [tranzakciós e-mail kézbesítési], a méretezhetőség és a valós idejű analitikát és rugalmas API-kat, amelyek elérhetőbbé teszik egyéni integrációs egyszerű. A SendGrid gyakori alkalmazási helyzetek a következők:
 
-* Az ügyfelek automatikusan küldése visszaigazolások vagy beszerzési visszaigazolások.
-* Az ügyfelek havi szórólapok és előléptetések terjesztési felügyelete sorolja fel.
-* Többek között a letiltott e-mailek és az ügyfél engagement valós idejű metrikáját gyűjtése.
-* Továbbító ügyfél lekérdezések.
-* A bejövő e-mailek feldolgozása.
+* Automatikusan adatokat küldjenek visszaigazolások vagy vásárlást visszaigazolásokhoz az ügyfelek számára.
+* Ügyfelek küld el havonta közleményekben és promóciók terjesztési felügyelete sorolja fel.
+* Letiltott e-mailek és az ügyfélkapcsolatokért például valós idejű metrikák gyűjtése.
+* Továbbítás felhasználói lekérdezések.
+* A bejövő e-mailek feldolgozását.
 
-További információkért látogasson el a [ https://sendgrid.com ](https://sendgrid.com) vagy SendGrid tartozó [C# könyvtár] [ sendgrid-csharp] GitHub-tárház.
+További információért látogasson el [ https://sendgrid.com ](https://sendgrid.com) vagy SendGrid [C# könyvtár] [ sendgrid-csharp] GitHub-adattárban.
 
 ## <a name="create-a-sendgrid-account"></a>A SendGrid-fiók létrehozása
 [!INCLUDE [sendgrid-sign-up](../includes/sendgrid-sign-up.md)]
 
-## <a name="reference-the-sendgrid-net-class-library"></a>A SendGrid .NET osztálytár referencia
-A [SendGrid NuGet-csomag](https://www.nuget.org/packages/Sendgrid) a legegyszerűbb módja a SendGrid API beszerzésének, és konfigurálja az alkalmazás összes függőségét. NuGet Microsoft Visual Studio 2015-höz mellékelt Visual Studio bővítménye, és fölött, amely megkönnyíti a telepítése és frissítése, kódtárak és eszközök.
+## <a name="reference-the-sendgrid-net-class-library"></a>Referencia a SendGrid .NET osztálytár
+A [SendGrid NuGet-csomag](https://www.nuget.org/packages/Sendgrid) legegyszerűbb módja a SendGrid API-t és az alkalmazás konfigurálása az összes függőség. NuGet egy Visual Studio-bővítmény a Microsoft Visual Studio 2015-höz mellékelt és fölött, amely megkönnyíti a telepíthet és frissíthet, könyvtárak és eszközök.
 
 > [!NOTE]
-> NuGet Ha futtatja a Visual Studio Visual Studio 2015-nél korábbi verziójának telepítéséhez látogasson el a [ http://www.nuget.org ](http://www.nuget.org), és kattintson a **NuGet telepítése** gombra.
+> Telepítse a NuGet, ha a Visual Studio Visual Studio 2015-nél korábbi verzióját futtatja, a Microsoft [ http://www.nuget.org ](http://www.nuget.org), kattintson a **NuGet telepítése** gombra.
 >
 >
 
-A SendGrid NuGet-csomagot az alkalmazás telepítéséhez tegye a következőket:
+A SendGrid NuGet-csomag telepítése az alkalmazásban, tegye a következőket:
 
-1. Kattintson a **új projekt** válassza ki a **sablon**.
+1. Kattintson a **új projekt** , és válassza ki a **sablon**.
 
    ![Új projekt létrehozása][create-new-project]
 2. A **Megoldáskezelőben**, kattintson a jobb gombbal **hivatkozások**, majd kattintson a **NuGet-csomagok kezelése**.
 
-   ![SendGrid NuGet-csomag][SendGrid-NuGet-package]
-3. Keresse meg **SendGrid** válassza ki a **SendGrid** elem az eredménylistában.
-4. Válassza ki a Nuget-csomag stabil legújabb verzióját kell lennie a hálózatiobjektum-modellje dolgozni a verzió legördülő listából, és az ebben a cikkben egy API-k.
+   ![A SendGrid NuGet-csomag][SendGrid-NuGet-package]
+3. Keresse meg **SendGrid** , és válassza ki a **SendGrid** elemet a találatok listájában.
+4. Válassza ki a Nuget-csomag legújabb stabil verzióját a verzió képesek együttműködni a hálózatiobjektum-modellt a legördülő menüből, és ebben a cikkben bemutatott API-k.
 
-   ![SendGrid csomag][sendgrid-package]
+   ![A SendGrid-csomagot][sendgrid-package]
 5. Kattintson a **telepítése** a telepítés befejezéséhez, és zárja be ezt a párbeszédpanelt.
 
-SendGrid tartozó .NET osztálytár nevezik **SendGrid**. A következő névterek tartalmazza:
+.NET-osztálytár SendGrid nevezzük **SendGrid**. A következő névterek tartalmazza:
 
-* **SendGrid** SendGrid tartozó API való kommunikációhoz.
-* **SendGrid.Helpers.Mail** segítő módszerek könnyen hozzanak létre az e-mailek küldése megadott SendGridMessage objektumokat.
+* **A SendGrid** SendGrid API-val való kommunikációhoz.
+* **SendGrid.Helpers.Mail** segédmetódusokat egyszerűen SendGridMessage objektumainak létrehozásához, amelyek adja meg az e-mailek küldése a.
 
-A következő kód névtér-deklarációk hozzáadása bármely kívánja programon keresztüli eléréséhez a SendGrid e-mail szolgáltatás C#-fájl elejéhez.
+Adja hozzá a következő kód névtér-deklarációk bármely, amelyben meg szeretné programozott módon érheti el a SendGrid e-mail szolgáltatás C#-fájl elejéhez.
 
     using SendGrid;
     using SendGrid.Helpers.Mail;
 
-## <a name="how-to-create-an-email"></a>Hogyan: hozzon létre egy e-mailt
-Használja a **SendGridMessage** objektum e-mailt létrehozni. Az üzenet-objektum létrehozása után beállíthatja a tulajdonságokat és metódusokat, beleértve az e-mailt olyasvalaki, az e-mail címzettjét, és a tárgy és törzs az e-mailek.
+## <a name="how-to-create-an-email"></a>How to: hozzon létre egy e-mailt
+Használja a **SendGridMessage** objektumot hozzon létre egy e-mail-üzenetet. Az üzenet-objektum létrehozása után beállíthatja a tulajdonságok és metódusok, beleértve az e-mailt küldő, az e-mail címzettje és a tulajdonos és az e-mail törzse.
 
-A következő példa bemutatja, hogyan hozhat létre teljesen ki van töltve e-mail objektumot:
+Az alábbi példa bemutatja, hogyan hozhat létre teljes mértékben ki van töltve e-mail objektumot:
 
     var msg = new SendGridMessage();
 
@@ -93,23 +93,23 @@ A következő példa bemutatja, hogyan hozhat létre teljesen ki van töltve e-m
     msg.AddContent(MimeType.Text, "Hello World plain text!");
     msg.AddContent(MimeType.Html, "<p>Hello World!</p>");
 
-Minden olyan tulajdonságok és módszerek által támogatott további információt a **SendGrid** írja be, lásd: [sendgrid-c Sharp] [ sendgrid-csharp] a Githubon.
+További információ az összes tulajdonságok és metódusok által támogatott a **SendGrid** írja be, lásd: [sendgrid-csharp] [ sendgrid-csharp] a Githubon.
 
-## <a name="how-to-send-an-email"></a>Útmutató: az e-mailek küldése
-Miután létrehozta az e-mailt, elküldheti azt a SendGrid tartozó API-val. Másik megoldásként használhat [. NET meg a szalagtár beépített][NET-library].
+## <a name="how-to-send-an-email"></a>Útmutató: E-mail küldése
+Miután létrehozott egy e-mail-üzenetet, elküldheti azt a SendGrid API-val. Másik megoldásként használhat [. NET a beépített könyvtár][NET-library].
 
-E-mailek küldéséhez, hogy megadnia a SendGrid API-kulcs szükséges. Ha API-kulcsokat konfigurálásával kapcsolatos részletek van szüksége, látogasson el a SendGrid tartozó API-kulcsokat [dokumentáció][documentation].
+E-mail-küldési kell írnia a SendGrid API-kulcsát. Ha az API-kulcsok konfigurálásával kapcsolatos részletes van szüksége, látogasson el a SendGrid API-kulcsok [dokumentáció][documentation].
 
-Az Azure portálon kattintson az alkalmazás beállításait, és vegye fel a kulcs/érték párok az alkalmazásbeállítások tárolhatjuk ezeket a hitelesítő adatokat.
+Alkalmazásbeállítások kattint, és vegye fel a kulcs/érték párok az alkalmazásbeállításoknál tárolhatja ezeket a hitelesítő adatokat az Azure Portalon keresztül.
 
- ![Az Azure alkalmazás beállításai][azure_app_settings]
+ ![Az Azure app beállításai][azure_app_settings]
 
- Majd hogy a hozzáférés az alábbiak szerint:
+ Ezt követően előfordulhat, hogy férhet hozzájuk a következő:
 
     var apiKey = System.Environment.GetEnvironmentVariable("SENDGRID_APIKEY");
     var client = new SendGridClient(apiKey);
 
-A következő példák szemléltetik a küldjön e-mail üzenetet a SendGrid webes API-t egy konzolalkalmazás használatával.
+Az alábbi példák bemutatják, hogyan küldése a SendGrid webes API-val egy olyan konzolalkalmazást, e-mailbe.
 
     using System;
     using System.Threading.Tasks;
@@ -142,11 +142,11 @@ A következő példák szemléltetik a küldjön e-mail üzenetet a SendGrid web
         }
     }
     
-## <a name="how-to-send-email-from-asp-net-core-api-using-mailhelper-class"></a>Útmutató: e-mail küldése az ASP .NET Core API MailHelper osztály használatával
+## <a name="how-to-send-email-from-asp-net-core-api-using-mailhelper-class"></a>Útmutató: e-mail küldéséhez az ASP .NET Core API MailHelper osztály használatával
 
-Az alábbi példában is használható egy e-mail üzenetben küldendő több személy az ASP .NET Core API használatával a `MailHelper` osztálya `SendGrid.Helpers.Mail` névtér. Ebben a példában az ASP .NET Core 1.0 használunk. 
+Az alábbi példában is használható az ASP .NET Core API használatával több személy egyetlen e-mail küldéséhez a `MailHelper` osztályát `SendGrid.Helpers.Mail` névtér. Ebben a példában az ASP .NET Core 1.0-t használjuk. 
 
-Ebben a példában az API-kulcsot a tárolt a `appsettings.json` fájl, amelyet a fenti példákban az Azure portálról felül.
+Ebben a példában az API-kulcs nem menteni az a `appsettings.json` bírálható felül az Azure Portalról, ahogyan az a fenti példa fájlt.
 
 A tartalmát `appsettings.json` fájl hasonlóan kell kinéznie:
 
@@ -162,7 +162,7 @@ A tartalmát `appsettings.json` fájl hasonlóan kell kinéznie:
      "SENDGRID_API_KEY": "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
     }
 
-Először létre kell hozzáadni az alábbi kód a a `Startup.cs` a .NET Core API-projekt fájl. Erre azért szükség, így nem tud hozzáférni a `SENDGRID_API_KEY` a a `appsettings.json` függőségi beszúrást segítségével az API-vezérlőben fájlt. A `IConfiguration` felület, a tartományvezérlő konstruktorának beszúrhatja azt a hozzáadása után a `ConfigureServices` az alábbi metódust. A tartalma `Startup.cs` fájlt a következőhöz hasonló a szükséges kód hozzáadása után:
+Először hozzá kell adnunk a az alábbi kódot a `Startup.cs` fájlt a .NET Core API-projekt. Ez azért szükséges, hogy elérheti a `SENDGRID_API_KEY` származó a `appsettings.json` függőségi beszúrást használatával az API-vezérlő fájlt. A `IConfiguration` felület, a vezérlő konstruktorának juttatható a hozzáadása után a `ConfigureServices` az alábbi metódust. Tartalmának `Startup.cs` fájlt a következőhöz hasonló a szükséges kód hozzáadása után:
 
         public IConfigurationRoot Configuration { get; }
 
@@ -173,7 +173,7 @@ Először létre kell hozzáadni az alábbi kód a a `Startup.cs` a .NET Core AP
             services.AddSingleton<IConfiguration>(Configuration);
         }
 
-A vezérlő után beszúrva a(z) a `IConfiguration` felületet, használhatjuk a `CreateSingleEmailToMultipleRecipients` metódusában a `MailHelper` osztály egyetlen e-mail küldés több címzettnek. A metódus fogad el egy további logikai paraméter nevű `showAllRecipients`. Ez a paraméter segítségével vezérlő e e-mail címzettek tudják megtekintéséhez egymás e-mail-címét, e-mail fejléc To szakaszában. A vezérlő példakód alatt hasonlóan kell lennie 
+A vezérlő betöltése után, a `IConfiguration` felületen, használhatjuk a `CreateSingleEmailToMultipleRecipients` módszere a `MailHelper` osztály egyetlen e-mail küldés több címzettnek. A metódus elfogad egy további logikai paraméter nevű `showAllRecipients`. Ez a paraméter segítségével ellenőrző e-mailek címzettjeinek megtekinthető lesz-e minden más e-mail-cím az e-mail adott fejléce To szakaszában. A mintakód vezérlő alatt például kell lennie 
 
     using System;
     using System.Collections.Generic;
@@ -218,8 +218,8 @@ A vezérlő után beszúrva a(z) a `IConfiguration` felületet, használhatjuk a
        }
     }
     
-## <a name="how-to-add-an-attachment"></a>Hogyan: hozzá mellékletet
-Mellékletek meghívásával adhatók hozzá egy üzenetet a **AddAttachment** metódus és minimálisan megadása a fájl nevét és a Base64-kódolású tartalmat kíván csatolni. A metódus hívása után minden fájlt csatolni szeretné vagy segítségével megadhat több mellékletet a **AddAttachments** metódust. A következő példa bemutatja, egy üzenet melléklet hozzáadása:
+## <a name="how-to-add-an-attachment"></a>Útmutató: a melléklet hozzáadása
+A mellékletek meghívásával is hozzáadhatók egy üzenetet a **AddAttachment** metódust, és minimálisan megadása a fájl nevét és a Base64-kódolású tartalmak kíván csatolni. A metódus meghívásának hatására, miután az összes fájl esetében a csatlakoztatni kívánt és használatával több mellékleteket tartalmazhatnak a **AddAttachments** metódust. A következő példa bemutatja egy melléklet hozzáadása:
 
     var banner2 = new Attachment()
     {
@@ -231,30 +231,30 @@ Mellékletek meghívásával adhatók hozzá egy üzenetet a **AddAttachment** m
     };
     msg.AddAttachment(banner2);
 
-## <a name="how-to-use-mail-settings-to-enable-footers-tracking-and-analytics"></a>Hogyan: láblécben, nyomon követési és elemzés engedélyezése levelezési beállítások használatával
-SendGrid a levelezési beállításokat és a nyomon követési beállítások további e-mail funkciókat biztosítja. Ezek a beállítások is hozzáadhatók az e-mailt adott funkciónak például kattintson nyomon követése, Google analytics, követési előfizetés, stb. Alkalmazások teljes listáját lásd: a [beállítások dokumentáció][settings-documentation].
+## <a name="how-to-use-mail-settings-to-enable-footers-tracking-and-analytics"></a>Hogyan: élőlábak, nyomon követés és az analytics engedélyezése a levelezési beállítások használatával
+A SendGrid levelezési beállítások és a nyomon követési beállítások e-mail további funkciókat biztosít. Ezek a beállítások is hozzáadhatók egy e-mail üzenethez ahhoz, hogy bizonyos funkciók, például a kampányban, a Google analytics, előfizetés nyomon követése és így tovább. Alkalmazások teljes listáját lásd: a [beállítások dokumentáció][settings-documentation].
 
-Alkalmazások alkalmazhatók **SendGrid** e-mailek részeként megvalósított metódusok használata a **SendGridMessage** osztály. Az alábbi példák bemutatják, a láblécben, majd kattintson a szűrő nyomon követése:
+Alkalmazások alkalmazhatók **SendGrid** e-mailek részeként megvalósított metódusok használata a **SendGridMessage** osztály. Az alábbi példák bemutatják, az élőláb, majd kattintson a szűrők követés:
 
-Az alábbi példák bemutatják, a láblécben, majd kattintson a szűrő nyomon követése:
+Az alábbi példák bemutatják, az élőláb, majd kattintson a szűrők követés:
 
-### <a name="footer-settings"></a>Élőláb beállításai
+### <a name="footer-settings"></a>Lábléc beállításai
     msg.SetFooterSetting(
                          true,
                          "Some Footer HTML",
                          "<strong>Some Footer Text</strong>");
 
-### <a name="click-tracking"></a>Kattintson a nyomon követése
+### <a name="click-tracking"></a>Kattintson a nyomon követés
     msg.SetClickTracking(true);
 
-## <a name="how-to-use-additional-sendgrid-services"></a>Útmutató: további SendGrid szolgáltatásokkal
-SendGrid több API-k és webhookokkal, amelyek segítségével kihasználhatja az Azure alkalmazáson belül további funkciókat kínál. További részletekért lásd: a [SendGrid API-referencia][SendGrid API documentation].
+## <a name="how-to-use-additional-sendgrid-services"></a>How to: további SendGrid-szolgáltatások használata
+A SendGrid több API-kat és webhookokat használatával kihasználhatja az Azure alkalmazásban további funkciókat kínál. További részletekért tekintse meg a [SendGrid API-referencia][SendGrid API documentation].
 
 ## <a name="next-steps"></a>További lépések
-Most, hogy megismerte a SendGrid E-mail szolgáltatás alapjait, az alábbi hivatkozásokból további.
+Most, hogy megismerte az alapokat, a SendGrid E-mail szolgáltatás, kövesse az alábbi hivatkozások további.
 
-* SendGrid C\# könyvtár tárház: [sendgrid-c Sharp][sendgrid-csharp]
-* SendGrid API-dokumentáció: <https://sendgrid.com/docs>
+* A SendGrid C\# könyvtár tárház: [sendgrid-csharp][sendgrid-csharp]
+* A SendGrid API-dokumentáció: <https://sendgrid.com/docs>
 
 [Next steps]: #next-steps
 [What is the SendGrid Email Service?]: #whatis
@@ -278,6 +278,6 @@ Most, hogy megismerte a SendGrid E-mail szolgáltatás alapjait, az alábbi hiva
 [documentation]: https://sendgrid.com/docs/Classroom/Send/api_keys.html
 [settings-documentation]: https://sendgrid.com/docs/API_Reference/SMTP_API/apps.html
 
-[felhőalapú szolgáltatás]: https://sendgrid.com/solutions
-[tranzakciós e-mailben kézbesítésre]: https://sendgrid.com/use-cases/transactional-email
+[e-mail felhő alapú szolgáltatás]: https://sendgrid.com/solutions
+[tranzakciós e-mail kézbesítési]: https://sendgrid.com/use-cases/transactional-email
 

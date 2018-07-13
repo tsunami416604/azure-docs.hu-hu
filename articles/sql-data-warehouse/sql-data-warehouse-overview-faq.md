@@ -1,6 +1,6 @@
 ---
-title: Azure SQL Data Warehouse kapcsolatos gyakori kérdések |} Microsoft Docs
-description: Ez a cikk felsorolja, ügyfelek és a fejlesztők Azure SQL Data Warehouse kapcsolatos gyakran ismételt kérdések
+title: Az Azure SQL Data Warehouse – gyakori kérdések |} A Microsoft Docs
+description: Ez a cikk felsorolja az Azure SQL Data Warehouse – gyakori kérdések az ügyfelek és -fejlesztőket ki
 services: sql-data-warehouse
 author: acomet
 manager: craigg-msft
@@ -11,109 +11,109 @@ ms.date: 04/17/2018
 ms.author: acomet
 ms.reviewer: igorstan
 ms.openlocfilehash: 7a570dfa6e0a2812a8dd3a25b8903c70fe07befc
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32187072"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38971703"
 ---
-# <a name="sql-data-warehouse-frequently-asked-questions"></a>SQL Data Warehouse gyakran ismételt kérdések
+# <a name="sql-data-warehouse-frequently-asked-questions"></a>SQL Data Warehouse gyakori kérdések
 
 ## <a name="general"></a>Általános kérdések
 
-Q. Mi nem SQL DW ajánlat adatbiztonságot?
+VÁLASZOK. Mi az SQL DW kínál a biztonsági adatok?
 
-A. SQL DW TDE például az adatok védelmének és naplózási számos megoldást kínál. További információkért lásd: [biztonsági].
+A. SQL dw-ben például a TDE-adatok védelme és a naplózás több megoldásokat kínál. További információkért lásd: [Biztonság].
 
-Q. Hol található, milyen jogi vagy üzleti szabványok SQL DW megfelelő?
+VÁLASZOK. Hol találhatok ki, hogy milyen jogi vagy üzleti szabványok SQL DW megfelelő?
 
-A. Látogasson el a [Microsoft Compliance] például SOC és ISO termék különböző megfelelőségi ajánlatok lapját. Először megfelelőségi cím akkor válassza ki, majd bontsa ki az Azure a Microsoft a hatókör felhő szolgáltatások szakaszában jobb oldalán a lapon, hogy milyen szolgáltatásokat az Azure-szolgáltatások megfelelőek.
+A. Látogasson el a [A Microsoft megfelelőségi] különböző megfelelőségi ajánlattal, például az SOC és ISO termék oldalán. Először válasszon megfelelőségi kilobájtban, majd bontsa ki az Azure a Microsoft releváns cloud services szakasz a jobb oldalon az oldal, hogy mely szolgáltatások az Azure-szolgáltatások rendszer megfelelő.
 
-Q. Kapcsolódhatnak a powerbi-ban?
+VÁLASZOK. A Power bi képes csatlakozni?
 
-A. Igen! Bár a Power bi támogatja a közvetlen lekérdezés SQL DW, nem célja a felhasználók vagy a valós idejű adatok nagy számú. A Power bi üzemi használatra ajánlott Azure Analysis Services vagy az Analysis Service IaaS Power bi használatával. 
+A. Igen! Bár a Power bi támogatja a közvetlen lekérdezés az SQL dw-vel, nem célja a felhasználók vagy a valós idejű adatok nagy számú. Üzemi használatra, a Power bi javasoljuk, a Power bi épülő Azure Analysis Services vagy az Analysis Service IaaS használatával. 
 
-Q. SQL Data Warehouse kapacitás korlátai
+VÁLASZOK. Mik az SQL Data Warehouse kapacitás korlátai?
 
-A. Tekintse meg az aktuális [kapacitáskorlátait] lap. 
+A. Tekintse meg az aktuális [kapacitáskorlátait] lapot. 
 
-Q. Miért a méretezési / / szüneteltet tart sokáig?
+VÁLASZOK. Miért érdemes a méretezési csoport/szüneteltethet és folytathat tart sokáig?
 
-A. Különböző tényezők befolyásolhatják a számítási műveletek ideje. Egy közös hosszú ideig futó műveletek: a tranzakciós visszaállítási eset. A skála vagy a szüneteltetési művelet elindításakor az összes bejövő munkamenetek le vannak tiltva, és lekérdezések merül vannak-e le. Ahhoz, hogy a rendszer stabil állapotban hagyásához tranzakciók kell állítható vissza a művelet megkezdése előtt. A nagyobb számának és nagyobb naplóméret tranzakciók, minél hosszabb a művelet fog elakadt a rendszer visszaállítása egy stabil állapotot.
+A. Számos tényező befolyásolhatja a számítási műveletek időpontját. Egy közös használatieset-tranzakciós visszaállítása hosszú ideig futó műveletek van. Egy méretezési csoport vagy a szüneteltetési művelet elindításakor blokkolja az összes bejövő munkamenetek és lekérdezések vannak ürítve. Annak érdekében, hogy a rendszer stabil állapotban hagyásához tranzakciók kell őket állítani egy művelet megkezdése előtt. A nagyobb számának és nagyobb a napló méretét a tranzakciók, minél hosszabb a művelet lesz elakadt stabil állapotba állítja vissza a rendszer.
 
-## <a name="user-support"></a>Felhasználói támogatás
+## <a name="user-support"></a>Felhasználó támogatása
 
-Q. Van a szolgáltatás kérelmet, ahol küldje el?
+VÁLASZOK. Van valamilyen funkcióra vonatkozó kérést, ahol küldje el azt?
 
-A. Ha egy szolgáltatás kérése, küldje el a a [UserVoice] lap
+A. Ha valamilyen funkcióra vonatkozó kérést, küldje el a az [UserVoice-on] lap
 
-Q. Hogyan tehetem x?
+VÁLASZOK. Hogyan tehetem x?
 
-A. Segítségre van az SQL Data Warehouse szolgáltatással fejleszt, a kérdéseit teheti fel a [Stack Overflow] lap. 
+A. Az SQL Data Warehouse fejlesztésébe segítségért a kérdéseit teheti fel az [Stack Overflow] lapot. 
 
-Q. Hogyan küldhetek egy támogatási jegy?
+VÁLASZOK. Hogyan küldhetek be támogatási jegy?
 
-A. [Támogatási jegy megjelenítése] nyilvántartásához Azure portálon keresztül.
+A. [Támogatási jegy megjelenítése] Azure-portálon keresztül lehet benyújtani.
 
-## <a name="sql-languagefeature-support"></a>SQL-nyelv/szolgáltatás támogatás 
+## <a name="sql-languagefeature-support"></a>Az SQL nyelv/funkciók támogatása 
 
-Q. Mely adattípusokat támogatja az SQL Data Warehouse?
+VÁLASZOK. Milyen adattípusokat támogatja az SQL Data Warehouse?
 
 A. Tekintse meg az SQL Data Warehouse [adattípusok].
 
-Q. Milyen táblában funkciók támogatásához?
+VÁLASZOK. Milyen tábla funkciókat támogatja?
 
-A. Míg az SQL Data Warehouse számos funkcióját támogatja, néhány nem támogatottak, és vannak dokumentálva [tábla nem támogatott funkciókat].
+A. Az SQL Data Warehouse számos funkciót támogatja, míg az egyes nem támogatottak, és vannak dokumentálva [A tábla nem támogatott funkciók].
 
-## <a name="tooling-and-administration"></a>Tooling és felügyelet
+## <a name="tooling-and-administration"></a>Eszközök és felügyelet
 
-Q. Támogatott az adatbázis-projekteket a Visual Studio.
+VÁLASZOK. Támogatott adatbázis-projekt a Visual Studióban.
 
-A. Jelenleg nem támogatott adatbázis-projekteket a Visual Studio az SQL Data Warehouse. Ha szeretné leadott szavazattal az ezt a szolgáltatást, látogasson el a User Voice [adatbázisprojekteket funkció kérés].
+A. Jelenleg nem támogatott adatbázis-projekt a Visual Studióban az SQL Data warehouse-hoz. Ha szeretné leadott szavazattal lekérni ezt a szolgáltatást, látogasson el a User Voice [Adatbázis-funkcióigénylés projektek].
 
-Q. Támogatja az SQL Data Warehouse REST API-kat?
+VÁLASZOK. Támogatja az SQL Data Warehouse a REST API-kat?
 
-A. Igen. A legtöbb REST funkciót az SQL Database használható érhető el az SQL Data Warehouse szolgáltatással. Belül dokumentációs oldalakat REST API információkat vagy [MSDN].
+A. Igen. A lehető legtöbb REST-funkció, amely használható az SQL Database az SQL Data Warehouse is érhető el. Belül dokumentációs oldalát érintő REST API-t információkat vagy [MSDN].
 
 
 ## <a name="loading"></a>Betöltés
 
-Q. Milyen ügyfél-illesztőprogram támogatja?
+VÁLASZOK. Milyen ügyfél illesztőprogramokat támogatja?
 
-A. DW illesztőprogram támogatása található meg a [kapcsolati karakterláncok] lap
+A. Illesztőprogram-támogatás a DW találhatók a [Kapcsolati sztringek] lap
 
-K: milyen fájlformátumok az SQL Data Warehouse PolyBase által támogatott?
+Kérdés: milyen fájlformátumok az SQL Data Warehouse a PolyBase által támogatott?
 
-V: Orc, RC, Parquet és strukturálatlan tagolt szövegfájl
+V: Orc, RC, Parquet és egybesimított karakterrel elválasztott szöveg
 
-K: Mit tud kapcsolódni a PolyBase használatával SQL DW? 
+K: milyen I kapcsolódhat a PolyBase az SQL DW? 
 
-V: [az Azure Data Lake Store] és [Azure Storage blobs szolgáltatásban]
+V: [Azure Data Lake Store] és [Azure Storage Blobs]
 
-K: van számítási leküldéses közzététele lehetőség, amikor csatlakozik az Azure Storage Blobsba vagy ADLS? 
+K: van számítási legördülő lista lehetséges, amikor csatlakozik az Azure Storage Blobból vagy az ADLS? 
 
-A: SQL DW PolyBase nem, csak a tárolási összetevőinek együttműködik. 
+V: nem, az SQL DW PolyBase csak a tároló-összetevők kommunikál. 
 
-K: kapcsolódni HDI?
+K: Csatlakozhatok HDI?
 
-V: HDI a HDFS rétegként ADLS vagy WASB is használhatja. Ha a HDFS rétegként vagy, majd akkor is, hogy adatok betöltése az SQL DW. Azonban nem hozható létre leküldéses közzététele számítási HDI-példányához. 
+V: HDI ADLS vagy WASB használhat a HDFS-összetevővel. Ha pedig a HDFS-réteget, majd betöltheti az adatokat az SQL DW-be. Azonban nem hozható létre legördülő lista számítási a HDI-példányhoz. 
 
 ## <a name="next-steps"></a>További lépések
-A teljes SQL Data warehouse további információkért lásd: a [áttekintése] lap.
+Teljes az SQL Data Warehouse további információkért lásd: a [Áttekintés] lapot.
 
 
 <!-- Article references -->
-[UserVoice]: https://feedback.azure.com/forums/307516-sql-data-warehouse
-[kapcsolati karakterláncok]: ./sql-data-warehouse-connection-strings.md
+[UserVoice-on]: https://feedback.azure.com/forums/307516-sql-data-warehouse
+[Kapcsolati sztringek]: ./sql-data-warehouse-connection-strings.md
 [Stack Overflow]: http://stackoverflow.com/questions/tagged/azure-sqldw
 [Támogatási jegy megjelenítése]: ./sql-data-warehouse-get-started-create-support-ticket.md
-[biztonsági]: ./sql-data-warehouse-overview-manage-security.md
-[Microsoft Compliance]: https://www.microsoft.com/en-us/trustcenter/compliance/complianceofferings
+[Biztonság]: ./sql-data-warehouse-overview-manage-security.md
+[A Microsoft megfelelőségi]: https://www.microsoft.com/en-us/trustcenter/compliance/complianceofferings
 [kapacitáskorlátait]: ./sql-data-warehouse-service-capacity-limits.md
 [adattípusok]: ./sql-data-warehouse-tables-data-types.md
-[tábla nem támogatott funkciókat]: ./sql-data-warehouse-tables-overview.md#unsupported-table-features
-[az Azure Data Lake Store]: ./sql-data-warehouse-load-from-azure-data-lake-store.md
-[Azure Storage blobs szolgáltatásban]: ./sql-data-warehouse-load-from-azure-blob-storage-with-polybase.md
-[adatbázisprojekteket funkció kérés]: https://feedback.azure.com/forums/307516-sql-data-warehouse/suggestions/13313247-database-project-from-visual-studio-to-support-azu
+[A tábla nem támogatott funkciók]: ./sql-data-warehouse-tables-overview.md#unsupported-table-features
+[Azure Data Lake Store]: ./sql-data-warehouse-load-from-azure-data-lake-store.md
+[Azure Storage Blobs]: ./sql-data-warehouse-load-from-azure-blob-storage-with-polybase.md
+[Adatbázis-funkcióigénylés projektek]: https://feedback.azure.com/forums/307516-sql-data-warehouse/suggestions/13313247-database-project-from-visual-studio-to-support-azu
 [MSDN]: https://msdn.microsoft.com/library/azure/mt163685.aspx
-[áttekintése]: ./sql-data-warehouse-overview-faq.md
+[Áttekintés]: ./sql-data-warehouse-overview-faq.md

@@ -1,9 +1,9 @@
 ---
-title: Lemezek titkosítani az Azure-skálázási készletekben az Azure PowerShell |} Microsoft Docs
-description: Virtuálisgép-példányok és a csatlakoztatott lemezek Windows virtuálisgép-méretezési csoportban lévő titkosítására Azure PowerShell használata
+title: Lemezek titkosítása az Azure méretezési csoportokhoz Azure PowerShell-lel |} A Microsoft Docs
+description: Ismerje meg, hogyan használhatja a Powershellt Virtuálisgép-példányok és a egy Windows virtuálisgép-méretezési csoportot a csatlakoztatott lemezek titkosítása
 services: virtual-machine-scale-sets
 documentationcenter: ''
-author: iainfoulds
+author: cynthn
 manager: jeconnoc
 editor: ''
 tags: azure-resource-manager
@@ -14,51 +14,52 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/30/2018
-ms.author: iainfou
-ms.openlocfilehash: 91138ffad0fd906061e0b0ce5cdb251f402d3341
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.author: cynthn
+ms.openlocfilehash: 850140404d95b77b3494754666e118b3566221c1
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/03/2018
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38630232"
 ---
-# <a name="encrypt-os-and-attached-data-disks-in-a-virtual-machine-scale-set-with-azure-powershell-preview"></a>Az operációs rendszer és az Azure PowerShell (előzetes verzió) beállítása egy virtuálisgép-méretezési csatolt adatlemezek titkosítása
+# <a name="encrypt-os-and-attached-data-disks-in-a-virtual-machine-scale-set-with-azure-powershell-preview"></a>Az operációs rendszer és az Azure PowerShell használatával (előzetes verzió) egy virtuálisgép-méretezési csoport a csatlakoztatott adatlemezekkel titkosítása
 
-És iparági szabványos titkosítási technológiával inaktív adatok megvédeni, hogy a virtuálisgép-méretezési csoportok Azure lemez titkosítás (ADE) támogatja. Titkosítási engedélyezhető a Windows és Linux rendszerű virtuális gép méretezési készlet. További információkért lásd: [lemez titkosítás a Windows Azure és a Linux](../security/azure-security-disk-encryption.md).
+És iparági szabványos titkosítási technológiával az inaktív adatok megvédeni, a virtual machine scale sets támogatja az Azure Disk Encryption (ADE). Titkosítási Windows és Linux rendszerű virtuális gép esetén is engedélyezhető a méretezési csoportokat. További információkért lásd: [Azure Disk Encryption a Windows és Linux rendszerű](../security/azure-security-disk-encryption.md).
 
 > [!NOTE]
->  A virtuálisgép-méretezési csoportok Azure lemeztitkosítás jelenleg nyilvános előzetes verziójában, minden Azure nyilvános régióban elérhető.
+>  Virtuálisgép-méretezési csoportokhoz az Azure disk encryption jelenleg nyilvános előzetes verzióként, elérhető minden nyilvános Azure-régióban.
 
-Az Azure lemez titkosítást is támogatja:
-- a skálázási készletek kezelt lemezek létre, és natív (vagy nem felügyelt) lemez méretezési készlet nem támogatott.
-- az operációs rendszer- és adatkötetek számára a Windows-méretezési készlet. Tiltsa le a titkosítást az operációs rendszer- és adatkötetek számára a Windows-méretezési csoportok esetén támogatott.
-- a Linux-méretezési csoportok az adatkötetek. Az operációs rendszer lemez titkosítása nem támogatott az aktuális előzetes a Linux-méretezési készlet.
+Az Azure disk encryption támogatják:
+- a méretezési csoportok felügyelt lemezekkel létrehozott, és natív (vagy nem felügyelt) lemezek méretezési csoportok esetében nem támogatott.
+- Windows méretezési csoportokban lévő operációsrendszer- és kötetek. Tiltsa le titkosítás támogatott operációsrendszer- és kötetek Windows-méretezési csoportokhoz.
+- a Linux rendszerű méretezési adatkötetnél. Az operációs rendszer lemeztitkosítás nem támogatott a Linux rendszerű méretezési csoportokhoz az aktuális előzetes verzióban érhető el.
 
-A skálázási készlet VM lemezkép alaphelyzetbe és a frissítési műveletek nem támogatottak az aktuális előzetes. A virtuális gép méretezési készletek Preview Azure lemeztitkosítás csak tesztelési környezetben ajánlott. A kép ne engedélyezze a termelési környezetben, ahol előfordulhat, hogy frissítenie kell egy operációsrendszer-lemezképhez egy titkosított méretezési csoportban lévő adatok titkosítása.
+Skálázási készlet virtuális gép rendszerkép alaphelyzetbe állítását és a frissítési műveletek nem támogatottak az aktuális előzetes verzióban érhető el. A virtuális gép méretezési csoportok előzetes verzióra az Azure disk encryption csak tesztelési környezetben ajánlott. Az előzetes verzióban ne engedélyezze a lemeztitkosítás az éles környezetben, ahol előfordulhat, hogy frissíteni szeretne egy titkosított méretezési csoportban lévő egy operációsrendszer-lemezképben.
 
 [!INCLUDE [cloud-shell-powershell.md](../../includes/cloud-shell-powershell.md)]
 
-Ha a PowerShell telepítéséhez és használatához a helyi mellett dönt, ez az oktatóanyag igényel-e az Azure PowerShell modul verziója 5.7.0 vagy újabb. A verzió azonosításához futtassa a következőt: `Get-Module -ListAvailable AzureRM`. Ha frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-azurerm-ps) ismertető cikket. Ha helyileg futtatja a PowerShellt, akkor emellett a `Login-AzureRmAccount` futtatásával kapcsolatot kell teremtenie az Azure-ral.
+Ha a PowerShell helyi telepítése és használata mellett dönt, az oktatóanyaghoz az Azure PowerShell-modul 5.7.0-s vagy újabb verziójára lesz szükség. A verzió azonosításához futtassa a következőt: `Get-Module -ListAvailable AzureRM`. Ha frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-azurerm-ps) ismertető cikket. Ha helyileg futtatja a PowerShellt, akkor emellett a `Login-AzureRmAccount` futtatásával kapcsolatot kell teremtenie az Azure-ral.
 
-## <a name="register-for-disk-encryption-preview"></a>A lemez titkosítása preview regisztrálása
+## <a name="register-for-disk-encryption-preview"></a>Lemez titkosítása előzetes regisztráció
 
-Az Azure disk encryption virtuálisgép-skálázási készletekben preview rendszert igényel önálló Regisztrálás az előfizetés [Register-AzureRmProviderFeature](/powershell/module/azurerm.resources/register-azurermproviderfeature). Csak kell végeznie az alábbi lépéseket a lemez titkosítási előzetes szolgáltatás első használatakor:
+Az Azure disk encryption virtuálisgép-méretezési csoportokhoz előzetes kell önálló regisztrálja az előfizetését [Register-AzureRmProviderFeature](/powershell/module/azurerm.resources/register-azurermproviderfeature). Csak akkor kell hajtsa végre a következő lépéseket a lemeztitkosítási előzetes szolgáltatás első használatakor:
 
 ```azurepowershell-interactive
 Register-AzureRmProviderFeature -ProviderNamespace Microsoft.Compute -FeatureName "UnifiedDiskEncryption"
 ```
 
-A regisztrációs kérelem való terjesztése akár 10 percet is igénybe vehet. Akkor is ellenőrizhesse az regisztrációs állapotát [Get-AzureRmProviderFeature](/powershell/module/AzureRM.Resources/Get-AzureRmProviderFeature). Ha a `RegistrationState` jelentések *regisztrált*, regisztrálja újra a *Mirosoft.Compute* szolgáltató [Register-AzureRmResourceProvider](/powershell/module/AzureRM.Resources/Register-AzureRmResourceProvider):
+A regisztrációs kérelem propagálása akár 10 percet is igénybe vehet. A regisztrációs állapot ellenőrzéséhez [Get-AzureRmProviderFeature](/powershell/module/AzureRM.Resources/Get-AzureRmProviderFeature). Ha a `RegistrationState` jelentések *regisztrált*, regisztrálja újra a *Mirosoft.Compute* szolgáltató [Register-AzureRmResourceProvider](/powershell/module/AzureRM.Resources/Register-AzureRmResourceProvider):
 
 ```azurepowershell-interactive
 Get-AzureRmProviderFeature -ProviderNamespace "Microsoft.Compute" -FeatureName "UnifiedDiskEncryption"
 Register-AzureRmResourceProvider -ProviderNamespace Microsoft.Compute
 ```
 
-## <a name="create-an-azure-key-vault-enabled-for-disk-encryption"></a>Hozzon létre egy Azure Key Vault lemez titkosítás engedélyezve
+## <a name="create-an-azure-key-vault-enabled-for-disk-encryption"></a>Hozzon létre egy Azure Key Vault engedélyezve a lemeztitkosítás
 
-Az Azure Key Vault kulcsok, a titkos kulcsok és a jelszót, amely engedélyezi, hogy biztonságosan végrehajtja az alkalmazások és szolgáltatások a tárolhatja. Titkosítási kulcsok Azure Key Vault szoftver-védelemmel vannak tárolva, vagy importálhat vagy a tanúsított FIPS 140-2 2. szint szabványok hardveres biztonsági modulokkal (HSM) a kulcsok létrehozásához. Ezek a titkosítási kulcsok titkosítására és visszafejtésére a virtuális Géphez csatolt virtuális lemezek segítségével. A titkosítási kulcsokat a felügyeletet, és naplózhatja a használatukat.
+Az Azure Key Vaultban tárolhatók, kulcsok, titkos kódok és jelszavak, amelyek lehetővé teszik, hogy biztonságosan végrehajtja azokat az alkalmazásokat és szolgáltatásokat. Titkosítási kulcsok Azure Key Vault szoftver védelemmel vannak tárolva, vagy Ön importálhat vagy hozhat létre a kulcsokat hardveres biztonsági modulokban (HSM) certified FIPS 140-2 szabványnak megfelelő 2. szint. Ezek a titkosítási kulcsok titkosítására és visszafejtésére a virtuális Géphez csatolt virtuális lemezek segítségével. Ezek a titkosítási kulcsok feletti ellenőrzés megtartása és naplózhatja azok használatát.
 
-Hozzon létre egy kulcstartót a [új-AzureRmKeyVault](/powershell/module/azurerm.keyvault/new-azurermkeyvault). A Key Vault a lemez titkosításához használt engedélyezéséhez állítsa a *EnabledForDiskEncryption* paraméter. Az alábbi példa is erőforráscsoport-név, kulcsot tároló neve és helye változó határozza meg. Adja meg a saját egyedi kulcstároló neve:
+A Key Vault létrehozása [új AzureRmKeyVault](/powershell/module/azurerm.keyvault/new-azurermkeyvault). Ahhoz, hogy a Key Vault lemeztitkosítás használandó, állítsa be a *EnabledForDiskEncryption* paraméter. A következő példában változókat erőforráscsoport-nevet, a kulcstartó nevét és helyét is meghatározza. Adja meg a saját egyedi Key Vault-névre:
 
 ```azurepowershell-interactive
 $rgName="myResourceGroup"
@@ -69,11 +70,11 @@ New-AzureRmResourceGroup -Name $rgName -Location $location
 New-AzureRmKeyVault -VaultName $vaultName -ResourceGroupName $rgName -Location $location -EnabledForDiskEncryption
 ```
 
-### <a name="use-an-existing-key-vault"></a>Használjon egy meglévő kulcstároló
+### <a name="use-an-existing-key-vault"></a>Egy meglévő a Key Vault használata
 
-Ez a lépés csak akkor szükséges, hogy van-e egy meglévő kulcstároló, amelyet meg kíván használni az adatok titkosítása. Ha az előző szakaszban létrehozott a kulcstároló, kihagyhatja ezt a lépést.
+Ez a lépés csak akkor van szükség, ha egy meglévő Key Vault használata a lemeztitkosítás kívánt. Hagyja ki ezt a lépést, ha az előző szakaszban létrehozott egy Key Vaultot.
 
-A méretezési készletben lemez titkosításra, engedélyezheti az előfizetés és régió egy meglévő kulcstároló [Set-AzureRmKeyVaultAccessPolicy](/powershell/module/AzureRM.KeyVault/Set-AzureRmKeyVaultAccessPolicy). A Kulcstárolónak a nevét adja meg a *$vaultName* változót az alábbiak szerint:
+Engedélyezheti egy meglévő Key Vault azonos előfizetésben és régióban, a méretezési csoport és lemeztitkosításhoz [Set-AzureRmKeyVaultAccessPolicy](/powershell/module/AzureRM.KeyVault/Set-AzureRmKeyVaultAccessPolicy). Határozza meg a Kulcstárolónak a nevét a *$vaultName* változót az alábbiak szerint:
 
 ```azurepowershell-interactive
 $vaultName="myexistingkeyvault"
@@ -107,7 +108,7 @@ New-AzureRmVmss `
 
 ## <a name="enable-encryption"></a>Titkosítás engedélyezése
 
-Virtuálisgép-példányok méretezési csoportban lévő titkosításához, először néhány adatra a Key Vault URI és erőforrás-azonosító [Get-AzureRmKeyVault](/powershell/module/AzureRM.KeyVault/Get-AzureRmKeyVault). Ezeket a változókat szolgálnak majd indítsa el a titkosítási folyamat [Set-AzureRmVmssDiskEncryptionExtension](/powershell/module/AzureRM.Compute/Set-AzureRmVmssDiskEncryptionExtension):
+Egy méretezési csoportban lévő Virtuálisgép-példányok titkosításához, először néhány adatra a Key Vault URI és az erőforrás-azonosító [Get-AzureRmKeyVault](/powershell/module/AzureRM.KeyVault/Get-AzureRmKeyVault). Ezeket a változókat használják, majd indítsa el a titkosítási folyamat a [Set-AzureRmVmssDiskEncryptionExtension](/powershell/module/AzureRM.Compute/Set-AzureRmVmssDiskEncryptionExtension):
 
 ```azurepowershell-interactive
 $diskEncryptionKeyVaultUrl=(Get-AzureRmKeyVault -ResourceGroupName $rgName -Name $vaultName).VaultUri
@@ -117,9 +118,9 @@ Set-AzureRmVmssDiskEncryptionExtension -ResourceGroupName $rgName -VMScaleSetNam
     -DiskEncryptionKeyVaultUrl $diskEncryptionKeyVaultUrl -DiskEncryptionKeyVaultId $keyVaultResourceId –VolumeType "All"
 ```
 
-Amikor a rendszer kéri, írja be a *y* folytatja, a titkosítási folyamat a skálán beállítani a Virtuálisgép-példányok.
+Amikor a rendszer kéri, írja be a *y* folytatja, a titkosítási folyamat a méretezési csoport a virtuális gép beállítása példányok.
 
-## <a name="check-encryption-progress"></a>Titkosítási folyamat állapotának ellenőrzése
+## <a name="check-encryption-progress"></a>Ellenőrizheti a titkosítási folyamatot
 
 Lemeztitkosítás állapotának ellenőrzéséhez használja [Get-AzureRmVmssDiskEncryption](/powershell/module/AzureRM.Compute/Get-AzureRmVmssDiskEncryption):
 
@@ -127,7 +128,7 @@ Lemeztitkosítás állapotának ellenőrzéséhez használja [Get-AzureRmVmssDis
 Get-AzureRmVmssDiskEncryption -ResourceGroupName $rgName -VMScaleSetName $vmssName
 ```
 
-Ha Virtuálisgép-példányok titkosítva vannak, a *EncryptionSummary* jelentések code *ProvisioningState/sikeres* látható módon a következő egy példa a kimenetre:
+Ha Virtuálisgép-példányok titkosítva vannak, a *EncryptionSummary* jelentések code *ProvisioningState/sikeres* az alábbi példa kimenetében látható módon:
 
 ```powershell
 ResourceGroupName            : myResourceGroup
@@ -149,7 +150,7 @@ EncryptionExtensionInstalled : True
 
 ## <a name="disable-encryption"></a>Tiltsa le a titkosítást
 
-Ha már nem szeretné használni a Virtuálisgép-példányok titkosított lemezek, a titkosítási letilthatja [Disable-AzureRmVmssDiskEncryption](/powershell/module/AzureRM.Compute/Disable-AzureRmVmssDiskEncryption) az alábbiak szerint:
+Ha már nem szeretne használni a Virtuálisgép-példányok titkosított lemezek, letilthatja a-titkosítással [Disable-AzureRmVmssDiskEncryption](/powershell/module/AzureRM.Compute/Disable-AzureRmVmssDiskEncryption) módon:
 
 ```azurepowershell-interactive
 Disable-AzureRmVmssDiskEncryption -ResourceGroupName $rgName -VMScaleSetName $vmssName
@@ -157,4 +158,4 @@ Disable-AzureRmVmssDiskEncryption -ResourceGroupName $rgName -VMScaleSetName $vm
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben a cikkben, az Azure PowerShell titkosításához használt virtuálisgép-méretezési készlet. Használhatja a [Azure CLI 2.0](virtual-machine-scale-sets-encrypt-disks-cli.md) vagy a sablonok [Windows](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-vmss-windows-jumpbox) vagy [Linux](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-vmss-linux-jumpbox).
+Ebben a cikkben, az Azure PowerShell titkosításához használt virtuálisgép-méretezési csoportot. Is használhatja a [Azure CLI 2.0](virtual-machine-scale-sets-encrypt-disks-cli.md) vagy sablonok [Windows](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-vmss-windows-jumpbox) vagy [Linux](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-vmss-linux-jumpbox).

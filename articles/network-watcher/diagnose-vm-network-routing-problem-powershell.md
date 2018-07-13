@@ -1,6 +1,6 @@
 ---
-title: A virtuális gép hálózati útválasztási probléma diagnosztizálása - Azure PowerShell |} Microsoft Docs
-description: Ebből a cikkből megtanulhatja a probléma diagnosztizálása érdekében a virtuális gép hálózati útválasztási a következő Ugrás funkcióval az Azure hálózati figyelőt.
+title: Virtuális gép hálózati útválasztási probléma diagnosztizálása – Azure PowerShell-lel |} A Microsoft Docs
+description: Ebből a cikkből elsajátíthatja, hogyan útválasztási problémáinak diagnosztizálása virtuális gépek hálózati használatával az Azure Network Watcher következő ugrás képességét.
 services: network-watcher
 documentationcenter: network-watcher
 author: jimdial
@@ -18,30 +18,31 @@ ms.date: 04/20/2018
 ms.author: jdial
 ms.custom: ''
 ms.openlocfilehash: f793a201b3fbf57ac2f420c4f4e57a230bc11468
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38299024"
 ---
-# <a name="diagnose-a-virtual-machine-network-routing-problem---azure-powershell"></a>A virtuális gép hálózati útválasztási probléma diagnosztizálása - Azure PowerShell
+# <a name="diagnose-a-virtual-machine-network-routing-problem---azure-powershell"></a>Virtuális gép hálózati útválasztási probléma diagnosztizálása – Azure PowerShell-lel
 
-Ebben a cikkben egy virtuális gép (VM) telepítése, és ellenőrizze a kommunikáció egy IP-címet, és az URL-CÍMÉT. Kommunikációs hiba, és hogy hogyan oldható meg okának megállapításához.
+Ebben a cikkben üzembe helyezése egy virtuális gépet (VM), és ezután ellenőrizze a kommunikációt egy IP-cím és az URL-címe. Meghatározza a kommunikációs hiba okát és feloldásának módját.
 
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-powershell.md)]
 
-Ha PowerShell telepítéséhez és használatához helyileg, a cikkben a AzureRM PowerShell modul verziója 5.4.1 szükséges vagy újabb. A telepített verzió azonosításához futtassa a következőt: `Get-Module -ListAvailable AzureRM`. Ha frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-azurerm-ps) ismertető cikket. Ha helyileg futtatja a PowerShellt, akkor emellett a `Login-AzureRmAccount` futtatásával kapcsolatot kell teremtenie az Azure-ral.
+Ha a helyi telepítése és használata PowerShell választja, ehhez a cikkhez az AzureRM PowerShell-modul 5.4.1-es vagy újabb. A telepített verzió azonosításához futtassa a következőt: `Get-Module -ListAvailable AzureRM`. Ha frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-azurerm-ps) ismertető cikket. Ha helyileg futtatja a PowerShellt, akkor emellett a `Login-AzureRmAccount` futtatásával kapcsolatot kell teremtenie az Azure-ral.
 
 ## <a name="create-a-vm"></a>Virtuális gép létrehozása
 
-A virtuális gépek létrehozása előtt létre kell hoznia a virtuális Gépet tartalmazó erőforráscsoport. Hozzon létre egy erőforráscsoportot a [New-AzureRmResourceGroup](/powershell/module/AzureRM.Resources/New-AzureRmResourceGroup) paranccsal. A következő példában létrehozunk egy *myResourceGroup* nevű erőforráscsoportot az *eastus* helyen.
+Mielőtt virtuális gépet hozhatna létre, létre kell hoznia egy erőforráscsoportot, amely majd tartalmazza a virtuális gépet. Hozzon létre egy erőforráscsoportot a [New-AzureRmResourceGroup](/powershell/module/AzureRM.Resources/New-AzureRmResourceGroup) paranccsal. A következő példában létrehozunk egy *myResourceGroup* nevű erőforráscsoportot az *eastus* helyen.
 
 ```azurepowershell-interactive
 New-AzureRmResourceGroup -Name myResourceGroup -Location EastUS
 ```
 
-A virtuális gép létrehozása [új AzureRmVM](/powershell/module/azurerm.compute/new-azurermvm). Ennek a lépésnek a futtatásakor a rendszer a hitelesítő adatok megadását kéri. Az itt megadott értékek határozzák meg a virtuális géphez tartozó felhasználónevet és jelszót.
+Hozza létre a virtuális gépet a [New-AzureRmVM](/powershell/module/azurerm.compute/new-azurermvm) paranccsal. Ennek a lépésnek a futtatásakor a rendszer a hitelesítő adatok megadását kéri. Az itt megadott értékek határozzák meg a virtuális géphez tartozó felhasználónevet és jelszót.
 
 ```azurepowershell-interactive
 $vM = New-AzureRmVm `
@@ -50,15 +51,15 @@ $vM = New-AzureRmVm `
     -Location "East US"
 ```
 
-A virtuális gép üzembe helyezése néhány percet vesz igénybe. A további lépéseket nem folytatható, amíg a virtuális gép létrehozása és a PowerShell-kimenet visszaadása.
+A virtuális gép üzembe helyezése néhány percet vesz igénybe. Ne folytassa a további lépések megtételét, amíg létre nem jön a virtuális gép, és a PowerShell vissza nem adja a kimenetet.
 
-## <a name="test-network-communication"></a>Tesztelje a hálózati kommunikációban
+## <a name="test-network-communication"></a>Hálózati kommunikáció tesztelése
 
-Hálózati kommunikáció a hálózati figyelőt teszteléséhez először engedélyezze a régióban, a tesztelni kívánt virtuális gép olyan hálózati figyelőt, és hálózati figyelőt a következő ugrás funkció segítségével tesztelheti a kommunikációs.
+Hálózati kommunikáció és a Network Watcher teszteléséhez először engedélyezni a network watchert a régióban, a tesztelni kívánt virtuális gép, és a Network Watcher következő ugrás képesség segítségével kommunikáció tesztelése.
 
-## <a name="enable-network-watcher"></a>Engedélyezze a hálózati figyelőt
+## <a name="enable-network-watcher"></a>A Network Watcher engedélyezése
 
-Ha már van egy hálózati figyelőt engedélyezve az USA keleti régiójában, [Get-AzureRmNetworkWatcher](/powershell/module/azurerm.network/get-azurermnetworkwatcher) beolvasása a hálózati figyelőt. A következő példa egy meglévő hálózati figyelőt nevű lekéri *NetworkWatcher_eastus* , hogy a *NetworkWatcherRG* erőforráscsoport:
+Ha már van egy hálózati figyelő engedélyezve az USA keleti régiójában, a [Get-AzureRmNetworkWatcher](/powershell/module/azurerm.network/get-azurermnetworkwatcher) paranccsal kérheti le a hálózati figyelőt. A következő példa egy meglévő, *NetworkWatcher_eastus* nevű hálózati figyelőt kér le, amely a *NetworkWatcherRG* erőforráscsoportban található:
 
 ```azurepowershell-interactive
 $networkWatcher = Get-AzureRmNetworkWatcher `
@@ -66,7 +67,7 @@ $networkWatcher = Get-AzureRmNetworkWatcher `
   -ResourceGroupName NetworkWatcherRG
 ```
 
-Ha még nem rendelkezik a hálózati figyelő engedélyezve van, az USA keleti régiójában, [New-AzureRmNetworkWatcher](/powershell/module/azurerm.network/new-azurermnetworkwatcher) egy hálózati figyelő létrehozásához az USA keleti régiójában:
+Ha még nincs hálózati figyelő engedélyezve az USA keleti régiójában, használja a [New-AzureRmNetworkWatcher](/powershell/module/azurerm.network/new-azurermnetworkwatcher) parancsot a hálózati figyelő USA keleti régiójában való létrehozására:
 
 ```azurepowershell-interactive
 $networkWatcher = New-AzureRmNetworkWatcher `
@@ -75,11 +76,11 @@ $networkWatcher = New-AzureRmNetworkWatcher `
   -Location "East US"
 ```
 
-### <a name="use-next-hop"></a>Használja a következő ugrás
+### <a name="use-next-hop"></a>A következő ugrás használata
 
-Azure automatikusan létrehozza az alapértelmezett célhelyekre útvonalak. Létrehozhat egyéni útvonalakat, amelyek felülírják az alapértelmezett útvonalak. Egyes esetekben egyéni útvonalak okozhat kommunikáció sikertelen lesz. A virtuális gép útválasztási teszteléséhez használja a [Get-AzureRmNetworkWatcherNextHop](/powershell/module/azurerm.network/get-azurermnetworkwatchernexthop) parancs használatával határozható meg, hogy a következő útválasztási Ugrás irányuló-címhez tartozó induló adatforgalmat.
+Az Azure automatikusan létrehoz útvonalakat az alapértelmezett célokhoz. Egyéni útvonalakat is létrehozhat, amelyekkel felülírhatja az Azure alapértelmezett útvonalait. Bizonyos esetekben az egyéni útvonalak kommunikációs hibákat eredményezhetnek. Útválasztás a virtuális gép teszteléséhez használja a [Get-AzureRmNetworkWatcherNextHop](/powershell/module/azurerm.network/get-azurermnetworkwatchernexthop) határozható meg, hogy a következő útválasztási Ugrás-címhez tartozó van irányuló parancsot.
 
-Tesztelje a virtuális gép kimenő kommunikáció www.bing.com IP-címek egyikére:
+Tesztelje a virtuális gép kimenő kommunikációját a www.bing.com IP-címeinek egyikén:
 
 ```azurepowershell-interactive
 Get-AzureRmNetworkWatcherNextHop `
@@ -89,9 +90,9 @@ Get-AzureRmNetworkWatcherNextHop `
   -DestinationIPAddress 13.107.21.200
 ```
 
-Néhány másodpercen belül a kimeneti figyelmeztet, amely a **NextHopType** van **Internet**, és hogy a **RouteTableId** van **Rendszerútvonal**. Ez az eredmény lehetővé teszi, hogy van-e a cél egy érvényes útvonalat.
+Néhány másodperc elteltével a kimeneti figyelmeztet, amely a **nexthoptype típusa** van **Internet**, és hogy a **RouteTableId** van **Rendszerútvonal**. Ez az eredmény jelzi, hogy nincs-e egy érvényes útvonalat a cél.
 
-A virtuális gép 172.31.0.100 kimenő kommunikáció teszteléséhez:
+Tesztelje a virtuális gép kimenő kommunikációját a 172.31.0.100 címen:
 
 ```azurepowershell-interactive
 Get-AzureRmNetworkWatcherNextHop `
@@ -101,11 +102,11 @@ Get-AzureRmNetworkWatcherNextHop `
   -DestinationIPAddress 172.31.0.100
 ```
 
-Adott vissza a kimeneti figyelmeztet, amely **nincs** van a **NextHopType**, és hogy a **RouteTableId** is **Rendszerútvonal**. Ez az eredmény tudatja, míg a cél érvényes rendszerútvonal, nincs irányíthatja a forgalmat a cél nem következő ugrás.
+Kapott kimenetre figyelmeztet, amely **nincs** van a **nexthoptype típusa**, és hogy a **RouteTableId** is **Rendszerútvonal**. Ez az eredmény azt jelzi, hogy létezik érvényes rendszerútvonal a cél felé, de nincs következő ugrás, hogy a forgalmat a cél felé irányítsa.
 
-## <a name="view-details-of-a-route"></a>Egy útvonal részleteinek megtekintése
+## <a name="view-details-of-a-route"></a>Útvonal részleteinek megtekintése
 
-Elemzéséhez további útválasztási, tekintse át a hálózati illesztő – a hatékony útvonalait a [Get-AzureRmEffectiveRouteTable](/powershell/module/azurerm.network/get-azurermeffectiveroutetable) parancs:
+Elemzéséhez további útválasztási, tekintse át a hálózati adapter az érvényes útvonalak a [Get-AzureRmEffectiveRouteTable](/powershell/module/azurerm.network/get-azurermeffectiveroutetable) parancsot:
 
 ```azurepowershell-interactive
 Get-AzureRmEffectiveRouteTable `
@@ -114,7 +115,7 @@ Get-AzureRmEffectiveRouteTable `
   Format-table
 ```
 
-Kimeneti, amely tartalmazza a következő szöveget ad vissza:
+A következő szöveget tartalmazó kimeneti adja vissza:
 
 ```powershell
 Name State  Source  AddressPrefix           NextHopType NextHopIpAddress
@@ -126,7 +127,7 @@ Name State  Source  AddressPrefix           NextHopType NextHopIpAddress
      Active Default {172.16.0.0/12}         None        {}              
 ```
 
-Ahogyan az előző kimeneti útvonal láthatja a **AaddressPrefix** a **0.0.0.0/0** továbbítja a nem szánt belüli más útvonal címelőtagokat akövetkezőugrásacímekforgalom**Internet**. Ahogyan azt is láthatja a kimenetben, azonban nincs olyan alapértelmezett útvonalat a 172.16.0.0/12 előtagot, amely tartalmazza a 172.31.0.100 cím, a **nextHopType** van **nincs**. Azure létrehoz egy alapértelmezett útvonalat 172.16.0.0/12, de nem adja meg a következő ugrás típusa, amíg nem ok arra, hogy. Ha például a 172.16.0.0/12 címtartomány hozzáadni a virtuális hálózat a címtér, Azure módosítja a **nextHopType** való **virtuális hálózati** az útvonal. Egy ellenőrzés ezután volna meg lehet jeleníteni **virtuális hálózati** , a **nextHopType**.
+Amint láthatja, hogy az előző kimeneti útvonal a **AaddressPrefix** , **0.0.0.0/0** belüli többi útvonal címelőtagokhoz, ahol egy következő ugrási típusú címeknemtartóösszesforgalmatirányítja**Internet**. Amint is látható a kimenetben, azonban van egy alapértelmezett útvonalat a 172.16.0.0/12 előtagot, amely tartalmazza a 172.31.0.100 címet, a **nextHopType** van **nincs**. Az Azure létrehoz egy alapértelmezett útvonalat a 172.16.0.0/12 címhez, de amíg nincs oka rá, nem határozza meg a következő ugrás típusát. Ha például a 172.16.0.0/12-címtartományt adott a virtuális hálózat címteréhez, Azure módosítja a **nextHopType** való **virtuális hálózati** útvonal. Egy ellenőrzés jelenik majd meg **virtuális hálózati** , a **nextHopType**.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
@@ -138,6 +139,6 @@ Remove-AzureRmResourceGroup -Name myResourceGroup -Force
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben a cikkben egy virtuális gép létrehozása, és felderítette a hálózati útválasztást a virtuális gépről. Megtudta, hogy Azure több alapértelmezett útvonalak és tesztelt útválasztási két különböző helyekre. További információ [az Azure útválasztási](../virtual-network/virtual-networks-udr-overview.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json) és [hozhat létre egyéni útvonalakat](../virtual-network/manage-route-table.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#create-a-route).
+Ebben a cikkben létrehozott egy virtuális Gépet, és felderítette a hálózati útválasztás a virtuális gépről. Megtudta, hogy az Azure számos alapértelmezett utat létrehoz, és tesztelte az útválasztást két különböző cél felé. További tudnivalók az [Azure-beli útválasztásról](../virtual-network/virtual-networks-udr-overview.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json) és az [egyéni útvonalak létrehozásáról](../virtual-network/manage-route-table.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#create-a-route).
 
-Kimenő virtuális gép kapcsolatok, akkor is meghatározhatja, a késés és engedélyezett és letiltott hálózati forgalmat a virtuális gép és a hálózati figyelőt egy végpont között [kapcsolati hibáinak elhárítása](network-watcher-connectivity-powershell.md) funkció. A hálózati figyelőt kapcsolat figyelő funkcióval időbeli egy virtuális gép és egy végpontot, például az IP-címet vagy URL-címe, közötti kommunikáció figyelheti. Megtudhatja, hogyan, lásd: [a hálózati kapcsolat figyelése](connection-monitor.md).
+Virtuális gép kimenő kapcsolatok esetén azt is meghatározhatja, a késés és engedélyezett és letiltott a virtuális gép és a egy végpontot a Network watcherrel közötti hálózati forgalom [kapcsolódási hibák elhárítása](network-watcher-connectivity-powershell.md) képesség. A Network Watcher kapcsolódási figyelő funkcióval idővel egy virtuális Gépet és a egy végpontot, például az IP-cím vagy URL-cím közötti kommunikáció követheti nyomon. További információ [hálózati kapcsolat figyeléséhez](connection-monitor.md).

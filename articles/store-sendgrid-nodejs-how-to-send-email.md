@@ -1,6 +1,6 @@
 ---
-title: A SendGrid e-mail szolgáltatás (Node.js) használatával |} Microsoft Docs
-description: Megtudhatja, hogyan küldjön e-maileket a SendGrid e-mail szolgáltatás az Azure-on. A Kódminták Node.js API használatával.
+title: A SendGrid e-mail szolgáltatás (Node.js) használata |} A Microsoft Docs
+description: Ismerje meg, hogyan e-mail küldése a SendGrid e-mail szolgáltatás az Azure-ban. A Kódminták írt, a Node.js API-val.
 services: ''
 documentationcenter: nodejs
 author: erikre
@@ -15,44 +15,44 @@ ms.topic: article
 ms.date: 01/05/2016
 ms.author: erikre
 ms.openlocfilehash: 327cea3a24cc47a9cc463b37cc2346ebc475ef7f
-ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "23873988"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38701855"
 ---
-# <a name="how-to-send-email-using-sendgrid-from-nodejs"></a>Hogyan küldhet e-mailek SendGrid Node.js-ből
-Ez az útmutató bemutatja, hogyan Azure a SendGrid e-mail szolgáltatás közös programozási feladatok elvégzéséhez. A minták íródtak, a Node.js API használatával. Az ismertetett forgatókönyvek **hozhat létre, e-mailek**, **e-mailek küldéséhez**, **mellékletek hozzáadása**, **szűrőkkel**, és **tulajdonságainak frissítése**. A SendGrid és e-mailek küldéséhez további információkért lásd: a [lépések](#next-steps) szakasz.
+# <a name="how-to-send-email-using-sendgrid-from-nodejs"></a>Hogyan lehet E-mail küldése a SendGrid, a Node.js használatával
+Ez az útmutató bemutatja, hogyan hajthat végre gyakori programozási feladatokat, a SendGrid e-mail szolgáltatással az Azure-ban. A minták írták, a Node.js API-val. Az ismertetett forgatókönyvek között megtalálható **hozhat létre, amely e-mailek**, **e-mail-küldési**, **mellékletek hozzáadása**, **ezekkel a szűrőkkel**, és **tulajdonságainak frissítése**. A SendGrid és az e-mailt küld a további információkért lásd: a [lépések](#next-steps) szakaszban.
 
-## <a name="what-is-the-sendgrid-email-service"></a>Mi az a SendGrid E-mail szolgáltatás?
-SendGrid van egy [felhőalapú szolgáltatás] biztosít megbízható [tranzakciós e-mailben kézbesítésre], a méretezhetőség és a valós idejű elemzési rugalmas API-k, amelyek egyéni integrációs könnyedén együtt. Gyakori SendGrid használati forgatókönyvek a következők:
+## <a name="what-is-the-sendgrid-email-service"></a>Mi az a SendGrid E-mail szolgáltatással?
+A SendGrid van egy [e-mail felhő alapú szolgáltatás] , amely megbízható biztosít [tranzakciós e-mail kézbesítési], a méretezhetőség és a valós idejű analitikát és rugalmas API-kat, amelyek elérhetőbbé teszik egyéni integrációs egyszerű. A SendGrid gyakori használati forgatókönyvek a következők:
 
-* Automatikusan az ügyfél számára a visszaigazolások küldésére
-* Az ügyfelek havi e-szórólapok és a különleges ajánlatokkal terjesztési felügyelete listája
-* Többek között a blokkolt e-mail, és az ügyfél reakcióidőt valós idejű metrikáját gyűjtése
-* Jelentések segítségével azonosíthatja a trendeket létrehozása
-* Ügyfél-lekérdezések továbbítása
-* E-mail értesítések az alkalmazásról
+* Automatikusan adatokat küldjenek a visszaigazolások az ügyfelek számára
+* Ügyfelek küldéséhez a havi e-közleményekben és ajánlatok küldésére terjesztési felügyelete listája
+* Valós idejű metrikák, például a blokkolt e-mail és a vásárlói válaszkészségének gyűjtése
+* Azonosíthatja a trendeket,-jelentések létrehozása
+* Továbbítás vásárlói kapcsolatos kérdésekben
+* E-mail-értesítések az alkalmazásból
 
 Tovább információ: [https://sendgrid.com](https://sendgrid.com).
 
 ## <a name="create-a-sendgrid-account"></a>A SendGrid-fiók létrehozása
 [!INCLUDE [sendgrid-sign-up](../includes/sendgrid-sign-up.md)]
 
-## <a name="reference-the-sendgrid-nodejs-module"></a>A SendGrid Node.js modul hivatkozik
-A SendGrid modul, a Node.js a csomópont package manager (npm) keresztül telepíthető a következő paranccsal:
+## <a name="reference-the-sendgrid-nodejs-module"></a>A SendGrid Node.js modult hivatkozhat.
+A SendGrid-modul a node.js-ben a node package Managerrel (npm) keresztül telepíthető a következő paranccsal:
 
     npm install sendgrid
 
-A telepítés után is megkövetelhető a modul az alkalmazásban az alábbi kód használatával:
+A telepítés után is szüksége van a modul az alkalmazás a következő kód használatával:
 
     var sendgrid = require('sendgrid')(sendgrid_username, sendgrid_password);
 
 A SendGrid modul exportálja a **SendGrid** és **E-mail** funkciók.
-**SendGrid** felelős a webes API-n keresztül e-mail elküldése közben **E-mail** foglalja az e-mailt.
+**A SendGrid** feladata a webes API-val, e-mail-küldési közben **E-mail** magában foglalja egy e-mail-üzenetet.
 
-## <a name="how-to-create-an-email"></a>Hogyan: hozzon létre egy e-mailt
-A SendGrid-modullal e-mailt létrehozása magában foglalja először e-mailt az e-mailek funkcióval, és majd küldje el azt a SendGrid függvény használatával. A következő egy példa az e-mailek funkcióval egy új üzenet létrehozása:
+## <a name="how-to-create-an-email"></a>How to: hozzon létre egy e-mailt
+A SendGrid modult használó e-mailbe létrehozása magában foglalja a először létrehoz egy e-mail-üzenetet az E-mail funkció segítségével, és elküldi azt a SendGrid függvény használatával. Az alábbiakban látható egy példa az e-mailek függvény használatával egy új üzenet létrehozását:
 
     var email = new sendgrid.Email({
         to: 'john@contoso.com',
@@ -61,16 +61,16 @@ A SendGrid-modullal e-mailt létrehozása magában foglalja először e-mailt az
         text: 'This is a sample email message.'
     });
 
-Egy HTML-üzenetet is megadhat a html-tulajdonság beállításával támogató ügyfelek. Példa:
+Megadhat egy HTML-üzenet is html-tulajdonság beállításával támogató ügyfelek. Példa:
 
     html: This is a sample <b>HTML<b> email message.
 
-A szöveg és a html-tulajdonságok beállítása sikeres-e tartalékként történő szöveges tartalom biztosít az ügyfelek, amelyek nem támogatják a HTML-üzenetek.
+Ügyfelek, amelyek nem támogatják a HTML-üzenetek a szöveg és a html-tulajdonságok beállítása sikeres-e tartalékként történő szöveges tartalom biztosít.
 
-Az e-mailek függvény által támogatott összes tulajdonság további információkért lásd: [sendgrid-nodejs][sendgrid-nodejs].
+További információ az E-mail funkció által támogatott összes tulajdonság: [sendgrid-nodejs][sendgrid-nodejs].
 
-## <a name="how-to-send-an-email"></a>Útmutató: az e-mailek küldése
-Miután létrehozta az e-mailek funkcióval e-mailt, elküldheti azt a SendGrid által biztosított webes API használatával. 
+## <a name="how-to-send-an-email"></a>Útmutató: E-mail küldése
+Miután létrehozott egy e-mail-üzenetet az E-mail funkció segítségével, elküldheti azt a SendGrid által biztosított webes API-val. 
 
 ### <a name="web-api"></a>Webes API
     sendgrid.send(email, function(err, json){
@@ -79,7 +79,7 @@ Miután létrehozta az e-mailek funkcióval e-mailt, elküldheti azt a SendGrid 
     });
 
 > [!NOTE]
-> A fenti példák azt szemléltetik sikeres egy e-mailek objektum és a visszahívás függvényben, amíg e-mailes tulajdonságai közvetlenül megadásával közvetlenül is hívhat meg a Küldés függvény. Példa:  
+> A fenti példákban egy e-mailt az objektum és a visszahívási függvény megadásának jelennek meg, amíg közvetlenül is hívhat a küldési függvényt közvetlenül megadja az e-mail-tulajdonságok. Példa:  
 > 
 > `````
 > sendgrid.send({
@@ -92,8 +92,8 @@ Miután létrehozta az e-mailek funkcióval e-mailt, elküldheti azt a SendGrid 
 > 
 > 
 
-## <a name="how-to-add-an-attachment"></a>Hogyan: hozzá mellékletet
-Mellékletek lehet hozzáadni egy üzenetet a fájl neve és elérési útjait a megadásával a **fájlok** tulajdonság. A következő példa bemutatja a melléklet küldése:
+## <a name="how-to-add-an-attachment"></a>Útmutató: a melléklet hozzáadása
+Mellékletek lehet hozzáadni egy üzenetet a fájl neve és elérési úton található megadásával a **fájlok** tulajdonság. A következő példa bemutatja a melléklet küldése:
 
     sendgrid.send({
         to: 'john@contoso.com',
@@ -113,16 +113,16 @@ Mellékletek lehet hozzáadni egy üzenetet a fájl neve és elérési útjait a
     });
 
 > [!NOTE]
-> Használatakor a **fájlok** tulajdonság, a fájl elérhetőnek kell lennie keresztül [fs.readFile](http://nodejs.org/docs/v0.6.7/api/fs.html#fs.readFile). Ha a fájlt csatolni szeretné az Azure Storage, például egy Blob tároló kell másolnia a fájlt helyi tárolóhoz vagy egy Azure meghajtó egy mellékletet használatával küldése előtt a **fájlok** tulajdonság.
+> Használatakor a **fájlok** tulajdonság, a fájlnak kell lennie keresztül elérhető [fs.readFile](http://nodejs.org/docs/v0.6.7/api/fs.html#fs.readFile). Ha csatolni kívánt fájlt, például egy Blob-tároló Azure Storage-ban üzemeltetett kell másolnia a fájlt helyi tárolóba vagy egy Azure-meghajtó előtt, egy melléklet használatával küldhető a **fájlok** tulajdonság.
 > 
 > 
 
 ## <a name="how-to-use-filters-to-enable-footers-and-tracking"></a>How to: Enable láblécek és követési szűrők használata
-SendGrid szűrők segítségével további e-mail-funkciókat biztosítja. Ezek a beállítások, amelyek e-mailt ahhoz, hogy bizonyos funkciók, például követési kattintson, Google analytics, követési előfizetés, és így tovább is hozzáadhatók. Szűrők teljes listáját lásd: [szűrőbeállítások][Filter Settings].
+A SendGrid szűrők használatával e-mail további funkciókat biztosít. Ezek a beállítások, amelyek e-mailbe ahhoz, hogy bizonyos funkciók, például engedélyezheti a kampányban, a Google analytics, előfizetés nyomon követése és így tovább lehet hozzáadni. Szűrők teljes listáját lásd: [szűrőbeállítások][Filter Settings].
 
 Szűrők használatával is alkalmazható egy üzenetet a **szűrők** tulajdonság.
-Minden egyes szűrő szűrő-specifikus beállításokat tartalmazó kivonat szerint van megadva.
-Az alábbi példák bemutatják, a láblécben, majd kattintson a szűrő nyomon követése:
+Minden szűrő egy szűrő-specifikus beállításokat tartalmazó kivonat szerint van megadva.
+Az alábbi példák bemutatják, az élőláb, majd kattintson a szűrők követés:
 
 ### <a name="footer"></a>Lábléc
     var email = new sendgrid.Email({
@@ -143,7 +143,7 @@ Az alábbi példák bemutatják, a láblécben, majd kattintson a szűrő nyomon
 
     sendgrid.send(email);
 
-### <a name="click-tracking"></a>Kattintson a nyomon követése
+### <a name="click-tracking"></a>Kattintson a nyomon követés
     var email = new sendgrid.Email({
         to: 'john@contoso.com',
         from: 'anna@contoso.com',
@@ -161,8 +161,8 @@ Az alábbi példák bemutatják, a láblécben, majd kattintson a szűrő nyomon
 
     sendgrid.send(email);
 
-## <a name="how-to-update-email-properties"></a>Útmutató: E-mail tulajdonságainak frissítése
-Néhány e-mail tulajdonság használatával felülírható **beállítása * tulajdonság***, illetve használatával **hozzáadása*tulajdonság x. Például hozzáadhat további címzetteket használatával
+## <a name="how-to-update-email-properties"></a>How to: e-mailek tulajdonságainak frissítése
+Néhány e-mail-tulajdonságok használatával lehet felülírni **beállítása * tulajdonság***, illetve használatával **hozzáadása*tulajdonság x. Például hozzáadhat további címzettek használatával
 
     email.addTo('jeff@contoso.com');
 
@@ -173,19 +173,19 @@ vagy állítsa be a szűrő használatával
 
 További információkért lásd: [sendgrid-nodejs][sendgrid-nodejs].
 
-## <a name="how-to-use-additional-sendgrid-services"></a>Útmutató: további SendGrid szolgáltatásokkal
-SendGrid webes API-k segítségével kihasználhatja az Azure alkalmazásról további SendGrid funkciókat kínál. Teljes részletekért lásd: a [SendGrid API-JÁNAK dokumentációja][SendGrid API documentation].
+## <a name="how-to-use-additional-sendgrid-services"></a>How to: további SendGrid-szolgáltatások használata
+A SendGrid kínál a webes API-kat használhatja az Azure-alkalmazásból további SendGrid funkciói kihasználhatók. További részletek: a [SendGrid API-dokumentáció][SendGrid API documentation].
 
 ## <a name="next-steps"></a>További lépések
-Most, hogy megismerte a SendGrid E-mail szolgáltatás alapjait, az alábbi hivatkozásokból további.
+Most, hogy megismerte az alapokat, a SendGrid E-mail szolgáltatás, kövesse az alábbi hivatkozások további.
 
-* SendGrid Node.js modul tárház: [sendgrid-nodejs][sendgrid-nodejs]
-* SendGrid API-dokumentáció: <https://sendgrid.com/docs>
-* SendGrid a különleges ajánlat Azure ügyfelek esetén: [http://sendgrid.com/azure.html](https://sendgrid.com/windowsazure.html)
+* A SendGrid Node.js modult tárházat: [sendgrid-nodejs][sendgrid-nodejs]
+* A SendGrid API-dokumentáció: <https://sendgrid.com/docs>
+* A SendGrid a különleges ajánlat Azure-ügyfelek számára: [http://sendgrid.com/azure.html](https://sendgrid.com/windowsazure.html)
 
 [special offer]: https://sendgrid.com/windowsazure.html
 [sendgrid-nodejs]: https://github.com/sendgrid/sendgrid-nodejs
 [Filter Settings]: https://sendgrid.com/docs/API_Reference/SMTP_API/apps.html
 [SendGrid API documentation]: https://sendgrid.com/docs
-[felhőalapú szolgáltatás]: https://sendgrid.com/email-solutions
-[tranzakciós e-mailben kézbesítésre]: https://sendgrid.com/transactional-email
+[e-mail felhő alapú szolgáltatás]: https://sendgrid.com/email-solutions
+[tranzakciós e-mail kézbesítési]: https://sendgrid.com/transactional-email
